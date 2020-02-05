@@ -52,7 +52,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 ```
 
 
-| パラメーター | 必須 | [説明] |
+| パラメーター | 必須 | 説明 |
 | --- | --- | --- |
 |{tenant}| Required | Azure AD B2C テナントの名前。|
 | {policy} | Required | 実行するユーザー フロー。 Azure AD B2C テナントに作成したユーザー フローの名前を指定します。 例: `b2c_1_sign_in`、`b2c_1_sign_up`、または`b2c_1_edit_profile`。 |
@@ -76,7 +76,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...        // the auth
 &state=arbitrary_data_you_can_receive_in_the_response                // the value provided in the request
 ```
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | コード |アプリが要求した承認コード。 アプリは、承認コードを使用してターゲット リソースのアクセス トークンを要求できます。 承認コードの有効期間は非常に短時間です。 通常、約 10 分で期限が切れます。 |
 | 状態 |詳細については前のセクションの表を参照してください。 要求に `state` パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 アプリは、要求と応答の `state` 値が同一であることを検証する必要があります。 |
@@ -90,7 +90,7 @@ error=access_denied
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | error |発生したエラーの種類を分類する際に使用できるエラー コード文字列。 この文字列はエラーへの対応に利用することもできます。 |
 | error_description |認証エラーの根本的な原因を特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -110,7 +110,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 ```
 
-| パラメーター | 必須 | [説明] |
+| パラメーター | 必須 | 説明 |
 | --- | --- | --- |
 |{tenant}| Required | Azure AD B2C テナントの名前。|
 |{policy}| Required| 認証コードの取得に使用されたユーザー フロー。 この要求に別のユーザー フローを使用することはできません。 |
@@ -133,7 +133,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | not_before |トークンが有効と見なされる時間 (エポック時間)。 |
 | token_type |トークン タイプ値。 Azure AD でサポートされるのは Bearer タイプのみです。 |
@@ -151,7 +151,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 }
 ```
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | error |発生したエラーの種類を分類する際に使用できるエラー コード文字列。 この文字列はエラーへの対応に利用することもできます。 |
 | error_description |認証エラーの根本的な原因を特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -176,7 +176,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| パラメーター | 必須 | [説明] |
+| パラメーター | 必須 | 説明 |
 | --- | --- | --- |
 |{tenant}| Required | Azure AD B2C テナントの名前。|
 |{policy} |Required |元の更新トークンの取得に使用されたユーザー フロー。 この要求に別のユーザー フローを使用することはできません。 |
@@ -199,7 +199,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | not_before |トークンが有効と見なされる時間 (エポック時間)。 |
 | token_type |トークン タイプ値。 Azure AD でサポートされるのは Bearer タイプのみです。 |
@@ -217,7 +217,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
 }
 ```
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | error |発生したエラーの種類を分類する際に使用できるエラー コード文字列。 この文字列はエラーへの対応に利用することもできます。 |
 | error_description |認証エラーの根本的な原因を特定しやすいように記述した具体的なエラー メッセージ。 |
