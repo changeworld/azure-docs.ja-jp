@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: 8c3265210f6ba5bb291401ce4691581dac8a0325
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 53644066276aa8e9fb57b4802142bca3fe4b342f
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289614"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760855"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure Virtual Network 内で Azure ML の実験と推論のジョブを安全に実行する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -179,11 +179,14 @@ Azure portal 内での NSG 規則の構成は、次の画像に示したとお�
 
 - NSG 規則を使用して、アウトバウンドのインターネット接続を拒否します。
 
-- 次の項目へのアウトバウンド トラフィックを制限します。
-   - Azure Storage (__Storage.Region_Name__ (例: Storage.EastUS) の __サービス タグ__ を使用)
-   - Azure Container Registry (__AzureContainerRegistry.Region_Name__ (例: AzureContainerRegistry.EastUS) の __サービス タグ__ を使用)
+- __コンピューティング インスタンス__または__コンピューティング クラスター__の場合は、次の項目への送信トラフィックを制限します。
+   - Azure Storage (__Storage__ の__サービス タグ__を使用)
+   - Azure Container Registry (__AzureContainerRegistry__ の__サービス タグ__を使用)
    - Azure Machine Learning (__AzureMachineLearning__ の__サービス タグ__を使用)
-   - コンピューティング インスタンスの場合、Azure Cloud (__AzureResourceManager__ の__サービス タグ__を使用)
+   
+- __コンピューティング インスタンス__については、次の項目も追加します。
+   - Azure Resource Manager (__AzureResourceManager__ の__サービス タグ__を使用)
+   - Azure Active Directory (__AzureActiveDirectory__ の__サービス タグ__を使用)
 
 Azure portal 内での NSG 規則の構成は、次の画像に示したとおりです。
 
@@ -206,12 +209,12 @@ Azure portal 内での NSG 規則の構成は、次の画像に示したとお�
 > run_config.environment.python.user_managed_dependencies = True
 > ```
 >
-> Estimator のトレーニング
+> __Estimator のトレーニング__
 > ```python
-> est = Estimator(source_directory='.', 
->                 script_params=script_params, 
->                 compute_target='local', 
->                 entry_script='dummy_train.py', 
+> est = Estimator(source_directory='.',
+>                 script_params=script_params,
+>                 compute_target='local',
+>                 entry_script='dummy_train.py',
 >                 user_managed=True)
 > run = exp.submit(est)
 > ```

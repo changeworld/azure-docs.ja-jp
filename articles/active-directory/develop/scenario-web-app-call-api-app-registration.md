@@ -14,27 +14,26 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 784de823e94aace6f91222c19c1ff8130c3f995f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5a57fcef3569734964bf6e8a41faa49800798f9b
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74962935"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759059"
 ---
-# <a name="web-app-that-calls-web-apis---app-registration"></a>Web API を呼び出す Web アプリ - アプリの登録
+# <a name="a-web-app-that-calls-web-apis-app-registration"></a>Web API を呼び出す Web アプリ: アプリの登録
 
-Web API を呼び出す Web アプリは、ユーザーをサインインさせる Web アプリと同じ登録を持ちます。 そのため、「[ユーザーをサインインさせる Web アプリ - アプリの登録](scenario-web-app-sign-user-app-registration.md)」の手順に従う必要があります
+Web API を呼び出す Web アプリの登録は、ユーザーをサインインさせる Web アプリと同じです。 そのため、「[ユーザーをサインインさせる Web アプリ: アプリの登録](scenario-web-app-sign-user-app-registration.md)」の手順に従ってください。
 
-ただし、Web アプリは現在 Web API を呼び出すため、機密クライアント アプリケーションになります。 そのため、追加の登録が若干必要となります。Microsoft ID プラットフォームとシークレット (クライアントの資格情報) を共有する必要があります。
+ただし、Web アプリは Web API も呼び出すようになっているため、機密クライアント アプリケーションになります。 そのため、追加の登録が必要になります。 アプリでは、クライアントの資格情報 ("*シークレット*") を Microsoft ID プラットフォームと共有する必要があります。
 
-[!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-registration-client-secrets.md)]
+[!INCLUDE [Registration of client secrets](../../../includes/active-directory-develop-scenarios-registration-client-secrets.md)]
 
 ## <a name="api-permissions"></a>API のアクセス許可
 
-Web アプリケーションは、サインインしたユーザーの代わりに API を呼び出せます。 委任されたアクセス許可を要求する必要があります。 詳細については、「[Web API にアクセスするためのアクセス許可を追加する](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)」を参照してください。
+Web アプリは、サインインしたユーザーの代わりに API を呼び出します。 そのためには、"*委任されたアクセス許可*" を要求する必要があります。 詳細については、「[Web API にアクセスするためのアクセス許可を追加する](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [アプリのコード構成](scenario-web-app-call-api-app-configuration.md)
+> [Web API を呼び出す Web アプリ: コード構成](scenario-web-app-call-api-app-configuration.md)

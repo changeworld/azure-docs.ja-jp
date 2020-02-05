@@ -1,6 +1,6 @@
 ---
 title: PowerShell で Azure Service Bus リソースを管理する | Microsoft ドキュメント
-description: PowerShell モジュールで Service Bus リソースを作成し、管理する
+description: この記事では Azure PowerShell モジュールを使用して、Service Bus のエンティティ (名前空間、キュー、トピック、サブスクリプション) を作成および管理する方法について説明します。
 services: service-bus-messaging
 documentationcenter: .NET
 author: axisc
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 0d15aa4d7b8a922f7606b7c4d1b357a80b3cbfab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e333dfb109840538fd5dec8110e1c32adedce989
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311048"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759263"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>PowerShell モジュールで Service Bus リソースを管理する
 
@@ -33,11 +33,11 @@ Azure Resource Manager テンプレートでも Service Bus エンティティ�
 
 開始する前に、次の前提条件を満たす必要があります。
 
-* Azure サブスクリプション。 サブスクリプションの入手方法の詳細については、[購入オプション][purchase options]、[メンバー オファー][member offers]、または[無料アカウント][free account]に関するページをご覧ください。
+* Azure サブスクリプション。 サブスクリプションの入手方法の詳細については、[購入オプション][purchase options]、[メンバー オファー][member offers]、または[無料アカウント][free account]に関するページを参照してください。
 * Azure PowerShell を搭載するコンピューター 手順については、「[Azure PowerShell コマンドレットの使用開始](/powershell/azure/get-started-azureps)」をご覧ください。
 * PowerShell スクリプト、NuGet パッケージ、.NET Framework の一般的理解。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 最初の手順では、PowerShell を使用して、Azure アカウントと Azure サブスクリプションにログインします。 [「Get started with Azure PowerShell cmdlets (Azure PowerShell コマンドレットの概要)」](/powershell/azure/get-started-azureps)の手順に従って、Azure アカウントにログインし、Azure サブスクリプションのリソースを取得し、アクセスします。
 
@@ -162,7 +162,7 @@ Set-AzServiceBusQueue -ResourceGroup $ResGrpName -NamespaceName $Namespace -Queu
 
 [Service Bus PowerShell モジュール](/powershell/module/az.servicebus) を使用してトピックやサブスクリプションなどの他のエンティティをプロビジョニングできます。 これらのコマンドレットは、前のセクションで説明したキュー作成コマンドレットに構文的に似ています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Service Bus Manager PowerShell モジュールの全ドキュメントを[ここ](/powershell/module/az.servicebus)から参照してください。 このページには、利用可能なすべてのコマンドレットが一覧されています。
 - Azure Resource Manager テンプレートの使用の詳細については、「[Azure Resource Manager テンプレートを使用して Service Bus リソースを作成する](service-bus-resource-manager-overview.md)」の記事を参照してください。

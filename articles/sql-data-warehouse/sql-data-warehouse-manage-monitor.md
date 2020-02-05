@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 08/23/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: b71d3b4824d8c1c73f40c8c6d87db315aabd423b
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 14c4bb843a93fe6d235354f24475b9974142db79
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555487"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721151"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>DMV を利用してワークロードを監視する
 この記事では、動的管理ビュー (DMV) を使用してワークロードを監視する方法について説明します。 Azure SQL Data Warehouse でのクエリの実行の調査が含まれます。
@@ -28,7 +28,7 @@ GRANT VIEW DATABASE STATE TO myuser;
 ```
 
 ## <a name="monitor-connections"></a>接続を監視する
-SQL Data Warehouse へのすべてのログインは、[sys.dm_pdw_exec_sessions][sys.dm_pdw_exec_sessions] に記録されます。  この DMV には、過去 10,000 件のログインが含まれています。  プライマリ キーである session_id が、新規ログオンのたびに順次割り当てられます。
+SQL Data Warehouse へのすべてのログインは、[sys.dm_pdw_exec_sessions](https://msdn.microsoft.com/library/mt203883.aspx) に記録されます。  この DMV には、過去 10,000 件のログインが含まれています。  プライマリ キーである session_id が、新規ログオンのたびに順次割り当てられます。
 
 ```sql
 -- Other Active Connections
@@ -36,7 +36,7 @@ SELECT * FROM sys.dm_pdw_exec_sessions where status <> 'Closed' and session_id <
 ```
 
 ## <a name="monitor-query-execution"></a>クエリ実行を監視する
-SQL Data Warehouse で実行されるすべてのクエリは、[sys.dm_pdw_exec_requests][sys.dm_pdw_exec_requests] に記録されます。  この DMV には、実行された過去 10,000 件のクエリが含まれています。  request_id により各クエリが一意に識別されます。これはこの DMV のプライマリ キーです。  request_id は、新しいクエリごとに順番に割り当てられ、クエリ ID を表す QID がプレフィックスとして付加されます。  特定の session_id のこの DMV にクエリを実行すると、そのログオンのクエリがすべて表示されます。
+SQL Data Warehouse で実行されるすべてのクエリは、[sys.dm_pdw_exec_requests](https://msdn.microsoft.com/library/mt203887.aspx) に記録されます。  この DMV には、実行された過去 10,000 件のクエリが含まれています。  request_id により各クエリが一意に識別されます。これはこの DMV のプライマリ キーです。  request_id は、新しいクエリごとに順番に割り当てられ、クエリ ID を表す QID がプレフィックスとして付加されます。  特定の session_id のこの DMV にクエリを実行すると、そのログオンのクエリがすべて表示されます。
 
 > [!NOTE]
 > ストアド プロシージャでは複数の要求 ID が使用されます。  要求 ID は順次割り当てられます。 
@@ -63,9 +63,9 @@ ORDER BY total_elapsed_time DESC;
 
 上記のクエリ結果から、調査するクエリの **要求 ID を書き留めます** 。
 
-アクティブな実行中のクエリが多数あるため、**中断**状態のクエリをキューに入れることができます。 これらのクエリは、UserConcurrencyResourceType 型の [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) 待機クエリにも表示されます。 コンカレンシーの制限に関する詳細については、「[Azure SQL Data Warehouse のメモリおよびコンカレンシーの制限](memory-concurrency-limits.md)」、または[ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)に関する記事を参照してください。 クエリの待機は、オブジェクト ロックなど、他の理由によっても発生します。  クエリがリソースを待っている場合は、この記事の下にある [リソースを待機しているクエリの調査][Investigating queries waiting for resources] に関するトピックをご覧ください。
+アクティブな実行中のクエリが多数あるため、**中断**状態のクエリをキューに入れることができます。 これらのクエリは、UserConcurrencyResourceType 型の [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) 待機クエリにも表示されます。 コンカレンシーの制限に関する詳細については、「[Azure SQL Data Warehouse のメモリおよびコンカレンシーの制限](memory-concurrency-limits.md)」、または[ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)に関する記事を参照してください。 クエリの待機は、オブジェクト ロックなど、他の理由によっても発生します。  クエリがリソースを待っている場合は、この記事の下にある [リソースを待機しているクエリの調査](#monitor-waiting-queries) に関するトピックをご覧ください。
 
-[sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) テーブル内のクエリの検索を簡素化するには、[LABEL][LABEL] を使用して、sys.dm_pdw_exec_requests ビューで検索できるクエリにコメントを割り当てます。
+[sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) テーブル内のクエリの検索を簡素化するには、[LABEL](https://msdn.microsoft.com/library/ms190322.aspx) を使用して、sys.dm_pdw_exec_requests ビューで検索できるクエリにコメントを割り当てます。
 
 ```sql
 -- Query with Label
@@ -82,7 +82,7 @@ WHERE   [label] = 'My Query';
 ```
 
 ### <a name="step-2-investigate-the-query-plan"></a>手順 2: クエリ プランを調査する
-要求 ID を使用して、[sys.dm_pdw_request_steps][sys.dm_pdw_request_steps] からクエリの分散 SQL (DSQL) プランを取得します。
+要求 ID を使用して、[sys.dm_pdw_request_steps](https://msdn.microsoft.com/library/mt203913.aspx) からクエリの分散 SQL (DSQL) プランを取得します。
 
 ```sql
 -- Find the distributed query plan steps for a specific query.
@@ -93,7 +93,7 @@ WHERE request_id = 'QID####'
 ORDER BY step_index;
 ```
 
-DSQL プランに予想よりも時間がかかる場合は、多くの DSQL 手順が存在する複雑なプランであったり、1 つの手順に長い時間を要することが原因であったりする可能性があります。  プランにいくつかの移動操作を含む多くの手順が存在する場合は、テーブルのディストリビューションを最適化して、データの移動を削減することを検討してください。 [テーブルのディストリビューション][Table distribution] に関する記事では、データを移動してクエリを解決する必要がある理由と、データの移動を最小限に抑えるためのいくつかのディストリビューションの方法について説明します。
+DSQL プランに予想よりも時間がかかる場合は、多くの DSQL 手順が存在する複雑なプランであったり、1 つの手順に長い時間を要することが原因であったりする可能性があります。  プランにいくつかの移動操作を含む多くの手順が存在する場合は、テーブルのディストリビューションを最適化して、データの移動を削減することを検討してください。 [テーブルのディストリビューション](sql-data-warehouse-tables-distribute.md)に関する記事で、クエリを解決するためにデータを移動する必要がある理由について説明しています。 その記事では、データ移動を最小限に抑えるためのいくつかの分散方法についても説明しています。
 
 1 つの手順に関する詳細を調査するには、実行時間の長いクエリ手順の *operation_type* 列を確認し、**手順インデックス**を書き留めます。
 
@@ -101,7 +101,7 @@ DSQL プランに予想よりも時間がかかる場合は、多くの DSQL 手
 * 手順 3b の**データ移動操作** に進みます (ShuffleMoveOperation、BroadcastMoveOperation、TrimMoveOperation、PartitionMoveOperation、MoveOperation、CopyOperation)。
 
 ### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>手順 3a: 分散データベースでの SQL を調査する
-要求 ID と手順インデックスを使用して、[sys.dm_pdw_sql_requests][sys.dm_pdw_sql_requests] から詳細情報を取得します。これには、配布されたすべてのデータベースに対するクエリの実行情報が含まれます。
+要求 ID と手順インデックスを使用して、[sys.dm_pdw_sql_requests](https://msdn.microsoft.com/library/mt203889.aspx) から詳細情報を取得します。これには、配布されたすべてのデータベースに対するクエリの実行情報が含まれます。
 
 ```sql
 -- Find the distribution run times for a SQL step.
@@ -111,7 +111,7 @@ SELECT * FROM sys.dm_pdw_sql_requests
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-クエリ手順が実行中の場合は、[DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] を使用して、特定の配布で実行中の手順に対する SQL Server プラン キャッシュから、SQL Server 推定プランを取得できます。
+クエリ手順が実行中の場合は、[DBCC PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx) を使用して、特定の配布で実行中の手順に対する SQL Server プラン キャッシュから、SQL Server 推定プランを取得できます。
 
 ```sql
 -- Find the SQL Server execution plan for a query running on a specific SQL Data Warehouse Compute or Control node.
@@ -121,7 +121,7 @@ DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
 ### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>手順 3 b: 分散データベース上のデータ移動を調査する
-要求 ID と手順インデックスを利用し、[sys.dm_pdw_dms_workers][sys.dm_pdw_dms_workers] から各配布で実行されているデータ移動手順に関する情報を取得します。
+要求 ID と手順インデックスを利用し、[sys.dm_pdw_dms_workers](https://msdn.microsoft.com/library/mt203878.aspx) から各配布で実行されているデータ移動手順に関する情報を取得します。
 
 ```sql
 -- Find the information about all the workers completing a Data Movement Step.
@@ -134,7 +134,7 @@ WHERE request_id = 'QID####' AND step_index = 2;
 * *total_elapsed_time* 列で、特定の配布で他の配布よりデータ移動に大幅に時間がかかっていないか確認します。
 * 実行時間の長い配布に対して、*rows_processed* 列で、その配布から移動された行の数が他の配布より大幅に大きいか確認します。 大きい場合、個の検出は、基になるデータの傾斜を示していることがあります。
 
-クエリが実行中の場合は、[DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] を使用して、特定の配布内で現在実行中の SQL 手順に対する SQL Server プラン キャッシュから、SQL Server 推定プランを取得できます。
+クエリが実行中の場合は、[DBCC PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx) を使用して、特定のディストリビューション内で現在実行中の SQL 手順に対する SQL Server プラン キャッシュから、SQL Server 推定プランを取得できます。
 
 ```sql
 -- Find the SQL Server estimated plan for a query running on a specific SQL Data Warehouse Compute or Control node.
@@ -289,24 +289,5 @@ ORDER BY
     gb_processed desc;
 ```
 
-## <a name="next-steps"></a>次の手順
-DMV の詳細については、[システム ビュー][System views]に関するページを参照してください。
-
-
-<!--Image references-->
-
-<!--Article references-->
-[SQL Data Warehouse best practices]: ./sql-data-warehouse-best-practices.md
-[System views]: ./sql-data-warehouse-reference-tsql-system-views.md
-[Table distribution]: ./sql-data-warehouse-tables-distribute.md
-[Investigating queries waiting for resources]: ./sql-data-warehouse-manage-monitor.md#waiting
-
-<!--MSDN references-->
-[sys.dm_pdw_dms_workers]: https://msdn.microsoft.com/library/mt203878.aspx
-[sys.dm_pdw_exec_requests]: https://msdn.microsoft.com/library/mt203887.aspx
-[sys.dm_pdw_exec_sessions]: https://msdn.microsoft.com/library/mt203883.aspx
-[sys.dm_pdw_request_steps]: https://msdn.microsoft.com/library/mt203913.aspx
-[sys.dm_pdw_sql_requests]: https://msdn.microsoft.com/library/mt203889.aspx
-[DBCC PDW_SHOWEXECUTIONPLAN]: https://msdn.microsoft.com/library/mt204017.aspx
-[DBCC PDW_SHOWSPACEUSED]: https://msdn.microsoft.com/library/mt204028.aspx
-[LABEL]: https://msdn.microsoft.com/library/ms190322.aspx
+## <a name="next-steps"></a>次のステップ
+DMV の詳細については、[システム ビュー](./sql-data-warehouse-reference-tsql-system-views.md)に関するページを参照してください。

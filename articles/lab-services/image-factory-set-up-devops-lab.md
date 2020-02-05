@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs で Azure DevOps からイメージ ファクトリを実行する | Microsoft Docs
-description: Azure DevTest Labs でカスタム イメージ ファクトリを作成する方法について説明します。
+title: Azure DevTest Labs で Azure DevOps からイメージ ファクトリを実行する
+description: この記事では、Azure DevOps (旧称 Visual Studio Team Services) からイメージ ファクトリを実行するために必要な、すべての準備について説明します。
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 101ed792f091a5074b42e3d06eed27d606d3d2a7
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: bb67f765684c77ed5f8527226bef578e450579e0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638954"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758684"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Azure DevOps からイメージ ファクトリを実行する
 この記事では、Azure DevOps (旧称 Visual Studio Team Services) からイメージ ファクトリを実行するために必要な、すべての準備について説明します。
@@ -78,7 +78,7 @@ Azure DevOps では、ソース コードを格納し、1 つの場所で Azure 
 コマンド ライン パラメーターを簡素化するには、イメージ ファクトリを一連のビルド変数にするキー値をカプセル化します。 **[変数]** タブを選択すると、いくつかの既定の変数の一覧が表示されます。 Azure DevOps に入力する変数の一覧を次に示します。
 
 
-| 変数名 | 値 | メモ |
+| 変数名 | Value | メモ |
 | ------------- | ----- | ----- |
 | ConfigurationLocation | /Scripts/ImageFactory/Configuration | これは、リポジトリ内の **Configuration** フォルダーへのフルパスです。 上記のリポジトリ全体をインポートした場合、左側の値が正しいです。 そうでない場合、構成の場所を指すように更新します。 |
 | DevTestLabName | MyImageFactory | イメージを生成するためのファクトリとして使用される Azure DevTest Labs のラボの名前です。 それがない場合は、作成します。 ラボが、サービス エンドポイントがアクセスするのと同じサブスクリプション内にあることを確認します。 |

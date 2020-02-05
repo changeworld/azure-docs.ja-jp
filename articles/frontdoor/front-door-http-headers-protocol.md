@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 3579aee46c610e5bb3efc0942944bbfc3fcb801d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 7c77527b7300c1149e96c94a4dbe122da226ac6d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790522"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720437"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door-service"></a>Azure Front Door Service での HTTP ヘッダー プロトコルのサポート
 この記事では、呼び出しパスの各部で Front Door Service がサポートするプロトコルの概要を示します (画像を参照)。 以下のセクションでは、Front Door Service がサポートする HTTP ヘッダーについて詳しく説明します。
@@ -53,10 +53,10 @@ Front Door Service では、制限により削除されない限り、受信し�
 | ------------- | ------------- |
 | X-Azure-Ref |  *X-Azure-Ref:0zxV+XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> これは、Front Door によって提供される要求を示す一意の参照文字列です。 これは、アクセス ログの検索に使用されるため、トラブルシューティングにおいて重要です。|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Front Door を作成する](quickstart-create-front-door.md)
-- [Front Door の仕組み](front-door-routing-architecture.md)
+- [Front Door のしくみ](front-door-routing-architecture.md)
 
 <!--Image references-->
 [1]: ./media/front-door-http-headers-protocol/front-door-protocol-summary.png

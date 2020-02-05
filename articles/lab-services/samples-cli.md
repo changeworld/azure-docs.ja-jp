@@ -1,6 +1,6 @@
 ---
 title: Azure Lab Services の Azure CLI サンプル | Microsoft Docs
-description: Azure CLI サンプル - Azure Lab Services でのラボの管理に役立つスクリプト
+description: この記事では、Azure Lab Services のラボの管理に役立つ Azure CLI スクリプト サンプルの一覧を示します。
 services: lab-services
 author: spelluru
 manager: ''
@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2018
+ms.date: 01/24/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 5c713215001c65c4bf735817f2e15caad0ae7eb8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 35c1a18587ebae1253bd1661a57e21c39f34ee51
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61084850"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760506"
 ---
 # <a name="azure-cli-samples-for-azure-lab-services"></a>Azure Lab Services の Azure CLI サンプル
 

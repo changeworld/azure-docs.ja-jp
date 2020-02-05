@@ -9,12 +9,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/07/2020
 tags: connectors
-ms.openlocfilehash: ebedb68f8826642437f53e5c5fa8cd0843e7c20e
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: dccb715c974037b4e3080f3e51576feae34c03df
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75665848"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76757970"
 ---
 # <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して IBM Informix データベース リソースを管理する
 
@@ -78,7 +78,7 @@ ms.locfileid: "75665848"
 
 1. この接続情報を入力し、 **[作成]** を選択します。
 
-   | プロパティ | JSON プロパティ | 必須 | 値の例 | [説明] |
+   | プロパティ | JSON プロパティ | Required | 値の例 | [説明] |
    |----------|---------------|----------|---------------|-------------|
    | [接続名] | `name` | はい | `informix-demo-connection` | Informix データベースへの接続に使用する名前 |
    | サーバー | `server` | はい | - クラウド: `informixdemo.cloudapp.net:9089` <br>- オンプレミス: `informixdemo:9089` | IPv4 または IPv6 形式の TCP/IP アドレスまたはエイリアスの後に、コロンと TCP/IP ポート番号が続きます |
@@ -117,7 +117,7 @@ ms.locfileid: "75665848"
 
 1. 入力を表示するには、 **[入力のリンク]** の下にある URL リンクを選択します。 出力を表示するには、 **[出力のリンク]** リンクの下にある URL リンクを選択します。 出力例を次に示します。
 
-   * **Get tables** を実行すると、テーブルの一覧が表示されます。
+   * **Get_tables** を実行すると、テーブルの一覧が表示されます。
 
      !["テーブルの取得" アクションの出力](./media/connectors-create-api-informix/InformixconnectorGetTablesLogicAppRunOutputs.png)
 

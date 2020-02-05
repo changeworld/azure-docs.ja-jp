@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 11dcf5dc0f05e51f3f427b09745cb581cc0d3780
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 32eb8e71cfb978fac5b4d6d05af4da4fdc9f67b5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513934"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715524"
 ---
 # <a name="ingest-historical-telemetry-data"></a>過去のテレメトリ データの取り込み
 
@@ -72,7 +72,7 @@ Azure FarmBeats インスタンスへのパートナー統合を有効にする�
 
  必要な資格情報が得られたので、デバイスとセンサーを定義できます。 これを行うには、FarmBeats API を呼び出してメタデータを作成します。 前のセクションで作成したクライアント アプリとして API を呼び出す必要があることに注意してください。
 
- FarmBeats Datahub には、デバイスまたはセンサーのメタデータの作成と管理を可能にする次の API が用意されています。
+ FarmBeats Datahub には、デバイスまたはセンサーのメタデータの作成と管理を可能にする次の API が用意されています。 パートナーとして、メタデータには読み取り、作成、更新のためのアクセスしかできないことに注意してください。**削除はパートナーによって許可されていません。**
 
 - /**DeviceModel**:DeviceModel は、デバイスのメタデータ (製造元など) およびデバイスの種類 (ゲートウェイまたはノードのいずれか) に対応します。
 - /**Device**:Device は、ファームに存在する物理デバイスに対応します。
@@ -381,6 +381,41 @@ write_client.stop()
       ]
     }
   ]
+}
+```
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>センサーから履歴またはストリーミング データを取り込んだ後で、テレメトリ データを表示できない
+
+**現象**: デバイスまたはセンサーがデプロイされており、FarmBeats 上でデバイスまたはセンサーを作成し、EventHub にテレメトリを取り込みましたが、FarmBeats 上でテレメトリ データを取得または表示することができません。
+
+**是正措置**:
+
+1. パートナー登録を確実に正しく完了させます。これを確認するには、ご利用の Datahub Swagger にアクセスし、/Partner API に移動し、Get を実行して、パートナーが登録されているかどうかを確認します。 そうなっていない場合は、[こちらの手順](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats)に従って、パートナーを追加してください。
+2. 確実に、パートナー クライアントの資格情報を使用して、メタデータ (DeviceModel、Device、SensorModel、Sensor) を作成します。
+3. 次に示すような正しいテレメトリ メッセージ形式を確実に使用します。
+
+```json
+{
+"deviceid": "<id of the Device created>",
+"timestamp": "<timestamp in ISO 8601 format>",
+"version" : "1",
+"sensors": [
+    {
+      "id": "<id of the sensor created>",
+      "sensordata": [
+        {
+          "timestamp": "< timestamp in ISO 8601 format >",
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
+        },
+        {
+          "timestamp": "<timestamp in ISO 8601 format>",
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
+        }
+      ]
+    }
+ ]
 }
 ```
 

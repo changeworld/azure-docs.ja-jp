@@ -3,20 +3,20 @@ title: SQL パーティション テーブルにデータを並列一括イン�
 description: データを SQL Server データベースに高速で並列一括インポートするためにパーティション分割されたテーブルを作成します。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 253f73cc58292778d88417b693c157fcbd7d92bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 673a801e218d055bf482dc97972e36584cddd402
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61428302"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721338"
 ---
 # <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>Azure VM 上の SQL Server にデータを高速に並列でインポートするためのテーブルの作成と最適化
 
@@ -54,7 +54,7 @@ ms.locfileid: "61428302"
         ( NAME = ''LogFileGroup'', FILENAME = ''' + @data_path + '<log_file_name>.ldf'' , SIZE = 1024KB , FILEGROWTH = 10%)
     ')
 
-## <a name="create-a-partitioned-table"></a>パーティション テーブルを作成する
+## <a name="create-a-partitioned-table"></a>パーティション テーブルを作成します。
 データ スキーマに従って、前の手順で作成されたデータベースのファイル グループにマッピングされる、パーティション分割されたテーブルを作成するには、まずパーティション関数とパーティション構成を作成する必要があります。 パーティション分割されたテーブルにデータが一括インポートされると、以下に説明されるように、パーティション構成に従ってレコードがファイル グループ間で配布されます。
 
 ### <a name="1-create-a-partition-function"></a>1.パーティション関数の作成
@@ -99,7 +99,7 @@ ms.locfileid: "61428302"
 * [データベースを変更](https://msdn.microsoft.com/library/bb522682.aspx)して、トランザクション ログの設定を BULK_LOGGED に変更し、ログのオーバーヘッドを最小限に抑えます。たとえば、以下のようにします。
   
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
-* データの読み込み時間を短縮するには、一括インポート操作を並列に起動します。 SQL Server データベースへのビッグ データの一括インポートを高速化するヒントについては、「 [1 時間未満で 1 TB を読み込む](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx)」を参照してください。
+* データの読み込み時間を短縮するには、一括インポート操作を並列に起動します。 SQL Server データベースへのビッグ データの一括インポートを高速化するヒントについては、「[1 時間未満で 1 TB を読み込む](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx)」を参照してください。
 
 次の PowerShell スクリプトは、BCP を使用した並行データ読み込みの例を示しています。
 

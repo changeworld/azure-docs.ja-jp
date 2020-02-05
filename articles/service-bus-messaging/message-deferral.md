@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus のメッセージ遅延 | Microsoft Docs
-description: Service Bus メッセージの配信を遅延させます
+title: Azure Service Bus - メッセージ遅延
+description: この記事では、Azure Service Bus メッセージの配信を遅延する方法について説明します。 メッセージは、キューまたはサブスクリプションに留まり、確保されます。
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: fc7e40661ae345412eb0336322599616dc89d6c4
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 249cf7414143f59540d198bb460d8b215f6a7664
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122187"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756353"
 ---
 # <a name="message-deferral"></a>メッセージ遅延
 

@@ -14,17 +14,16 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 011007b0a871052c89e8271f2b75168e314a3c72
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: bafd71f34602535bb6193a8d8114a1182e4e8f40
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044198"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701792"
 ---
 # <a name="a-web-api-that-calls-web-apis-app-registration"></a>Web API を呼び出す Web API: アプリの登録
 
-ダウンストリーム Web API を呼び出す Web API は、保護された Web API と同じ登録を持ちます。 そのため、「[保護された Web API:アプリの登録](scenario-protected-web-api-app-registration.md)」の手順に従う必要があります。
+ダウンストリーム Web API を呼び出す Web API は、保護された Web API と同じ登録を持ちます。 そのため、「[保護された Web API: アプリの登録](scenario-protected-web-api-app-registration.md)」の手順に従う必要があります。
 
 Web アプリは現在 Web API を呼び出すため、機密クライアント アプリケーションになります。 そのため、追加の登録情報が必要になります。このアプリでは、Microsoft ID プラットフォームとシークレット (クライアントの資格情報) を共有する必要があります。
 
@@ -37,4 +36,4 @@ Web アプリは、ベアラー トークンを受信したユーザーの代わ
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Web API を呼び出す Web API:コードの構成](scenario-web-api-call-api-app-configuration.md)
+> [Web API を呼び出す Web API: コード構成](scenario-web-api-call-api-app-configuration.md)

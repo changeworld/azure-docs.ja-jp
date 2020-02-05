@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 90c60d586d505ca0c9bd787c37e137f7a38ee1f7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 458c062eef011363724cb894ce67ba75181ba8ba
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60756547"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76757868"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Azure Data Box Edge のシステム要件
 
@@ -36,7 +36,7 @@ Data Box Edge のシステム要件は次のとおりです。
 
 [!INCLUDE [Supported storage accounts](../../includes/data-box-edge-gateway-supported-storage-accounts.md)]
 
-## <a name="supported-storage-types"></a>サポートされるストレージの種類
+## <a name="supported-storage-types"></a>サポートされているストレージの種類
 
 [!INCLUDE [Supported storage types](../../includes/data-box-edge-gateway-supported-storage-types.md)]
 
@@ -58,7 +58,7 @@ Azure IoT Edge では、サポートされている IoT Hub プロトコルを�
 
 Azure IoT Edge ランタイムをホストするサーバーのポート構成には、次の表を使用します。
 
-| ポート番号 | インまたはアウト | ポート範囲 | 必須 | ガイダンス |
+| ポート番号 | インまたはアウト | ポート範囲 | Required | ガイダンス |
 |----------|-----------|------------|----------|----------|
 | TCP 443 (HTTPS)| アウト       | WAN        | はい      | IoT Edge のプロビジョニングのため、送信用に開きます。 この構成は、手動スクリプトや Azure IoT Device Provisioning Service (DPS) を使用する場合に必要です。|
 
@@ -123,10 +123,10 @@ Azure IoT Edge ランタイムをホストするサーバーのポート構成�
 - Azure portal で入手できるコンピューティング メトリック。 Data Box Edge リソースに移動し、 **[監視] > [メトリック]** に移動します。 **[Edge コンピューティング - メモリ使用量]** と **[Edge コンピューティング - CPU の割合]** を調べて、使用できるリソースとリソースがどのように消費されているかを理解します。
 - デバイスの PowerShell インターフェイスから次のような監視コマンドを使用できます。
 
-    - `dkr`: コンテナー リソースの使用状況統計のライブ ストリームを取得します。 このコマンドは、CPU、メモリ使用量、メモリの制限、およびネットワーク IO のメトリックをサポートします。
-    - `dkr system df`: 使用されたディスク領域の量に関する情報を取得します。 
-    - `dkr image [prune]`: 未使用のイメージをクリーンアップして領域を解放します。
-    - `dkr ps --size`: 実行中のコンテナーのおおよそのサイズを表示します。 
+    - `dkrdbe stats`: コンテナー リソースの使用状況統計のライブ ストリームを取得します。 このコマンドは、CPU、メモリ使用量、メモリの制限、およびネットワーク IO のメトリックをサポートします。
+    - `dkrdbe system df`: 使用されたディスク領域の量に関する情報を取得します。 
+    - `dkrdbe image prune`: 未使用のイメージをクリーンアップして領域を解放します。
+    - `dkrdbe ps --size`: 実行中のコンテナーのおおよそのサイズを表示します。 
 
     使用可能なコマンドの詳細については、「[Monitor and troubleshoot compute modules (コンピューティング モジュールの監視とトラブルシューティング)](data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules)」を参照してください。
 

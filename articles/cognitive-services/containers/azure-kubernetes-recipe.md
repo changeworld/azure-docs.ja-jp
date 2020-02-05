@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 01/23/2020
 ms.author: dapine
-ms.openlocfilehash: e33aa98939eeb5b5394f1f5cc05e28ae8f6ae4f2
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 5c8b3ed329c03bd08b2a0b3e26ada7a4e36ceb49
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515240"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716875"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>Azure Kubernetes Service に Text Analytics 言語検出コンテナーをデプロイする
 
@@ -36,7 +36,7 @@ ms.locfileid: "72515240"
 
 ## <a name="running-the-sample"></a>サンプルの実行
 
-この手順では、言語検出用の Cognitive Services コンテナーのサンプルを読み込んで実行します。 このサンプルには、クライアント アプリケーション用と Cognitive Services コンテナー用の 2 つのコンテナーがあります。 これらの両方のイメージを Azure Container Registry にプッシュする必要があります。 独自のレジストリに設定したら、これらのイメージにアクセスしてコンテナーを実行する Azure Kubernetes Service を作成します。 コンテナーの実行中に、**kubectl** CLI を使用してコンテナーのパフォーマンスを監視します。 HTTP 要求を使用してクライアント アプリケーションにアクセスし、結果を確認します。
+この手順では、言語検出用の Cognitive Services コンテナーのサンプルを読み込んで実行します。 このサンプルには、クライアント アプリケーション用と Cognitive Services コンテナー用の 2 つのコンテナーがあります。 これらのイメージを両方とも Azure Container Registry にプッシュします。 独自のレジストリに設定したら、これらのイメージにアクセスしてコンテナーを実行する Azure Kubernetes Service を作成します。 コンテナーの実行中に、**kubectl** CLI を使用してコンテナーのパフォーマンスを監視します。 HTTP 要求を使用してクライアント アプリケーションにアクセスし、結果を確認します。
 
 ![サンプルのコンテナーの実行に関する概念的な構想](../text-analytics/media/how-tos/container-instance-sample/containers.png)
 
@@ -393,7 +393,7 @@ replicaset.apps/language-frontend-68b9969969   1         1         1         13h
 
 `http://<external-ip>/helloworld` の形式を使用して、ブラウザーで URL を `language-frontend` コンテナーの外部 IP に変更します。 `helloworld` の英語のカルチャ テキスト は `English` と予測されます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 クラスターの作業が終了したら、Azure リソース グループを削除します。
 
@@ -405,7 +405,7 @@ az group delete --name cogserv-container-rg
 
 * [Docker ユーザーのための kubectl](https://kubernetes.io/docs/reference/kubectl/docker-cli-to-kubectl/)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Cognitive Services コンテナー](../cognitive-services-container-support.md)

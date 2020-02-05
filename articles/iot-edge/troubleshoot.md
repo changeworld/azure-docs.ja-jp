@@ -8,12 +8,12 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 93e3a5ed442c975f75045d86d6b890ee4113c465
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 98d75f75a985fca3448becab216ad6570d948468
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514257"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772230"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge での一般的な問題と解決
 
@@ -265,7 +265,7 @@ Error parsing user input data: invalid hostname. Hostname cannot be empty or gre
 
 **根本原因**
 
-IoT Edge ランタイムは、64 文字未満のホスト名のみをサポートできます。 通常、物理マシンに長いホスト名は付いていませんが、これは仮想マシンではより一般的な問題です。 特に、Azure でホストされる Windows 仮想マシンのために自動生成されるホスト名は長くなる傾向があります。 
+IoT Edge ランタイムは、64 文字未満のホスト名のみをサポートできます。 通常、物理マシンに長いホスト名は付いていませんが、これは仮想マシンではより一般的な問題です。 特に、Azure でホストされる Windows 仮想マシンのために自動生成されるホスト名は長くなる傾向があります。
 
 **解決策**
 
@@ -302,7 +302,7 @@ IoT Edge ハブは IoT Edge ランタイムの一部であり、既定でパフ�
 
 **解決策**
 
-IoT Edge ハブに対して、環境変数 **OptimizeForPerformance** を **false** に設定します。 この作業を実行する 2 つの方法があります。
+IoT Edge ハブに対して、環境変数 **OptimizeForPerformance** を **false** に設定します。 環境変数を設定するには、次の 2 つの方法があります。
 
 Azure Portal で次の操作を行います。
 
@@ -340,7 +340,7 @@ Windows で `Get-WinEvent` の使用時に EventLogException が表示された�
 
 IoT Edge デーモンにレジストリ エントリを設定します。 次の内容の **iotedge.reg** ファイルを作成し、ダブルクリックするか `reg import iotedge.reg` コマンドを使用して Windows レジストリにインポートします。
 
-```
+```reg
 Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog\Application\iotedged]
@@ -351,10 +351,10 @@ Windows Registry Editor Version 5.00
 
 ## <a name="iot-edge-module-fails-to-send-a-message-to-the-edgehub-with-404-error"></a>IoT Edge モジュールが 404 エラーで edgeHub にメッセージを送信できない
 
-カスタム IoT Edge モジュールは、404 `Module not found` エラーで edgeHub にメッセージを送信できません。 IoT Edge デーモンによって、次のメッセージがログに出力されます。 
+カスタム IoT Edge モジュールは、404 `Module not found` エラーで edgeHub にメッセージを送信できません。 IoT Edge デーモンによって、次のメッセージがログに出力されます。
 
 ```output
-Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 ) 
+Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 )
 ```
 
 **根本原因**
@@ -401,7 +401,7 @@ IoT Edge は、Azure IoT Edge ランタイムとデプロイされたモジュ�
 
 上の例では、パブリックにアクセスできる DNS サービスに DNS サーバーが設定されます。 Edge デバイスがその環境からこの IP アドレスにアクセスできない場合は、アクセス可能な DNS サーバーのアドレスに置き換えます。
 
-プラットフォームの適切な場所に `daemon.json` を置きます。 
+プラットフォームの適切な場所に `daemon.json` を置きます。
 
 | プラットフォーム | Location |
 | --------- | -------- |
@@ -410,7 +410,7 @@ IoT Edge は、Azure IoT Edge ランタイムとデプロイされたモジュ�
 
 その場所に `daemon.json` ファイルが既にある場合は、それに対する **dns** キーを追加してファイルを保存します。
 
-*コンテナー エンジンを再起動して更新を有効にします*
+コンテナー エンジンを再起動して更新を有効にします。
 
 | プラットフォーム | command |
 | --------- | -------- |
@@ -431,7 +431,7 @@ IoT Edge のデプロイで各モジュールの *createOptions* に DNS サー�
 }
 ```
 
-これを *edgeAgent* および *edgeHub* モジュールにも設定してください。
+この構成は、*edgeAgent* および *edgeHub* モジュールにも忘れずに設定してください。
 
 ## <a name="next-steps"></a>次のステップ
 

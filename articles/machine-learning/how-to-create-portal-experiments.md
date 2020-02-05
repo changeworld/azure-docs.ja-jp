@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 00a316f69cfa77d705a789d40868105e9a098def
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 808d7ac7ded9b250e0835da51b6b547c05c622a9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894032"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720403"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Azure Machine Learning Studio で自動化された機械学習の実験を作成、調査、およびデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -153,9 +153,15 @@ Variance| この列のデータが平均値からどのくらい離れている�
 
 <a name="preprocess"></a>
 
-## <a name="advanced-preprocessing-options"></a>詳細な前処理オプション
+## <a name="advanced-featurization-options"></a>詳細な特徴付けオプション
 
-実験を構成するときに、詳細設定の `Preprocess` を有効にすることができます。 そうすることで、前処理の一環として、以下のデータ ガードレールと特徴付けの手順が自動的に実行されます。
+実験を構成するときに、詳細設定の `feauturization` を有効にすることができます。 
+
+|特徴付けの構成 | [説明] |
+| ------------- | ------------- |
+|"feauturization" = 'FeaturizationConfig'| カスタマイズされた特徴付け手順を使用する必要があることを示します。 [特徴付けをカスタマイズする方法の詳細](how-to-configure-auto-train.md#customize-feature-engineering)。|
+|"feauturization" = 'off'| 特徴付け手順が自動的に実行されないことを示します。|
+|"feauturization" = 'auto'| 前処理の一環として、以下のデータ ガードレールと特徴付けの手順が自動的に実行されることを示します。|
 
 |前処理手順&nbsp;| [説明] |
 | ------------- | ------------- |
@@ -218,7 +224,7 @@ Variance| この列のデータが平均値からどのくらい離れている�
 
 1. **[Deploy Model]\(モデルのデプロイ\)** ウィンドウにデータを入力します。
 
-    フィールド| 値
+    フィールド| Value
     ----|----
     Name| デプロイの一意の名前を入力します。
     [説明]| このデプロイの目的を識別しやすくするための説明を入力します。

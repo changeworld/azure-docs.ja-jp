@@ -2,20 +2,20 @@
 title: Team Data Science Process でのプロジェクト リーダーのタスク
 description: Team Data Science Process チームでのプロジェクト リーダーのタスクの詳細なチュートリアル
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/24/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8a94a2ae5298bbee8bb1c9c0fa044eb3189147be
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4a4d3a1480a852218e698862a509c4af45e49eb8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244347"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714416"
 ---
 # <a name="project-lead-tasks-in-the-team-data-science-process"></a>Team Data Science Process でのプロジェクト リーダーのタスク
 
@@ -45,13 +45,13 @@ ms.locfileid: "72244347"
 - チーム テンプレートとユーティリティの**リポジトリ**
 - プロジェクトのリポジトリを作成し、編集するための組織のアカウントに対する**アクセス許可**
 
-ローカル コンピューターまたは Data Science Virtual Machine (DSVM) でリポジトリをクローンしてその内容を変更したり、Azure ファイル ストレージを設定して DSVM にマウントしたりするには、次のものも必要です。
+ローカル コンピューターまたは Data Science Virtual Machine (DSVM) でリポジトリをクローンしてその内容を変更したり、Azure ファイル ストレージを設定して DSVM にマウントしたりするには、次のチェックリストを検討することも必要です。
 
 - Azure サブスクリプション。
 - コンピューターにインストールされた Git。 DSVM を使用している場合、Git は事前にインストールされています。 それ以外の場合は、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)をご覧ください。
 - DSVM を使用する場合は、Azure で作成して構成された Windows または Linux の DSVM。 詳細と手順については、[Data Science Virtual Machine ドキュメント](/azure/machine-learning/data-science-virtual-machine/)を参照してください。
-- Windows DSVM については、[Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) がコンピューターにインストールされていること。 *README.md* ファイルを下にスクロールして **[Download and Install]** セクションを見つけ、**最新のインストーラー**を選択します。 インストーラー ページから *.exe* インストーラーをダウンロードして実行します。 
-- Linux DSVM の場合、SSH 公開キーが DSVM で設定され、Azure DevOps で追加されていること。 詳細と手順については、[プラットフォームとツールの付録](platforms-and-tools.md#appendix)の **SSH 公開キーの作成**に関するセクションをご覧ください。 
+- Windows DSVM の場合、[Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) をコンピューターにインストールしておきます。 *README.md* ファイルを下にスクロールして **[Download and Install]** セクションを見つけ、**最新のインストーラー**を選択します。 インストーラー ページから *.exe* インストーラーをダウンロードして実行します。 
+- Linux DSVM の場合は、DSVM で設定されて Azure DevOps に追加された SSH 公開キー。 詳細と手順については、[プラットフォームとツールの付録](platforms-and-tools.md#appendix)の **SSH 公開キーの作成**に関するセクションをご覧ください。 
 
 ## <a name="create-a-project-repository-in-your-team-project"></a>チーム プロジェクトでプロジェクト リポジトリを作成する
 
@@ -91,7 +91,7 @@ ms.locfileid: "72244347"
 
 プロジェクト固有のニーズに合わせてプロジェクト リポジトリの内容をカスタマイズする必要がある場合、リポジトリのファイルとフォルダーを追加、削除、変更できます。 Azure Repos で直接操作したり、ローカル コンピューターまたは DSVM にリポジトリをクローンし、変更後、共有プロジェクト リポジトリに更新内容をコミット/プッシュしたりできます。 「[チーム リポジトリの内容をカスタマイズする](team-lead-tasks.md#customize-the-contents-of-the-team-repositories)」の指示に従ってください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Team Data Science Process で定義されている他の役割とタスクの詳細な説明へのリンクを次に示します。
 

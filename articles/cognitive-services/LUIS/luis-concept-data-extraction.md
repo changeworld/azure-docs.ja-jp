@@ -1,22 +1,15 @@
 ---
 title: データの抽出 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 意図とエンティティが含まれる発話テキストからデータを抽出します。 Language Understanding (LUIS) から抽出できるデータの種類について説明します。
-services: cognitive-services
 author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
-ms.author: diberry
-ms.openlocfilehash: ff0a9838d1fcc9db3b6cc25b47c840e01056e6cd
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.date: 01/23/2020
+ms.openlocfilehash: 1c1a744c06e5347625fb96518bd809481ee797e5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703144"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716293"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>意図とエンティティが含まれる発話テキストからデータを抽出する
 LUIS を使用すると、ユーザーの自然言語での発話から情報を取得できます。 この情報は、アクションを実行するために、プログラム、アプリケーション、またはチャットボットで使用できるような方法で抽出されます。 以降のセクションで、JSON の例を使用して、意図とエンティティから返されるデータについて説明します。
@@ -34,9 +27,9 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 
 `https://westus.api.cognitive.microsoft.com/luis/v3.0-preview/apps/<appID>/slots/<slot-type>/predict?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&query=book 2 tickets to paris`
 
-V3 予測エンドポイントの詳細については[こちら](luis-migration-api-v3.md)を参照してください。
+[V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
 
-* * * 
+* * *
 
 `appID` は、LUIS アプリの **[設定]** ページで確認できます。また、LUIS アプリの編集時に URL の一部 (`/apps/` の後) として確認できます。 `subscription-key` は、アプリの照会に使用するエンドポイント キーです。 LUIS を学習している間は無料のオーサリング/スターター キーを使用できますが、エンドポイント キーを、[想定される LUIS の使用法](luis-boundaries.md#key-limits)をサポートするキーに変更することが重要です。 `timezoneOffset` の単位は分です。
 
@@ -76,13 +69,13 @@ V3 予測エンドポイントの詳細については[こちら](luis-migration
 }
 ```
 
-V3 予測エンドポイントの詳細については[こちら](luis-migration-api-v3.md)を参照してください。
+[V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
 
-* * * 
+* * *
 
-|データ オブジェクト|データ型|データの場所|値|
+|データ オブジェクト|データ型|データの場所|Value|
 |--|--|--|--|
-|Intent|string|topScoringIntent.intent|"GetStoreInfo"|
+|Intent|String|topScoringIntent.intent|"GetStoreInfo"|
 
 チャットボットまたは LUIS 呼び出し元アプリが複数の意図のスコアに基づいて決定を行う場合、すべての意図のスコアを返します。
 
@@ -136,16 +129,16 @@ querystring パラメーター `show-all-intents=true` を設定します。 エ
 }
 ```
 
-V3 予測エンドポイントの詳細については[こちら](luis-migration-api-v3.md)を参照してください。
+[V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
 
-* * * 
+* * *
 
 意図は、スコアが最も高いものから最も低いものへと並べ替えられます。
 
-|データ オブジェクト|データ型|データの場所|値|Score|
+|データ オブジェクト|データ型|データの場所|Value|Score|
 |--|--|--|--|:--|
-|Intent|string|intents[0].intent|"GetStoreInfo"|0.984749258|
-|Intent|string|intents[1].intent|"None"|0.0168218873|
+|Intent|String|intents[0].intent|"GetStoreInfo"|0.984749258|
+|Intent|String|intents[1].intent|"None"|0.0168218873|
 
 事前構築済みのドメインを追加する場合、意図の名前は、`Utilties` や`Communication` などのドメインと、意図を表します。
 
@@ -199,15 +192,15 @@ V3 予測エンドポイントの詳細については[こちら](luis-migration
 }
 ```
 
-V3 予測エンドポイントの詳細については[こちら](luis-migration-api-v3.md)を参照してください。
+[V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
 
-* * * 
+* * *
 
-|Domain|データ オブジェクト|データ型|データの場所|値|
+|Domain|データ オブジェクト|データ型|データの場所|Value|
 |--|--|--|--|--|
-|Utilities|Intent|string|intents[0].intent|"<b>Utilities</b>.ShowNext"|
-|Communication|Intent|string|intents[1].intent|<b>Communication</b>.StartOver"|
-||Intent|string|intents[2].intent|"None"|
+|Utilities|Intent|String|intents[0].intent|"<b>Utilities</b>.ShowNext"|
+|Communication|Intent|String|intents[1].intent|<b>Communication</b>.StartOver"|
+||Intent|String|intents[2].intent|"None"|
 
 
 ## <a name="data-from-entities"></a>エンティティからのデータ
@@ -248,14 +241,13 @@ V3 予測エンドポイントの詳細については[こちら](luis-migration
     "number": [3]
 }
 ```
-V3 予測エンドポイントの詳細については[こちら](luis-migration-api-v3.md)を参照してください。
+[V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
 
-* * * 
+* * *
 
 ## <a name="tokenized-entity-returned"></a>返されるトークン化されたエンティティ
-いくつかの[カルチャ](luis-language-support.md#tokenization)では、`entity` 値が[トークン化](luis-glossary.md#token)されたエンティティ オブジェクトが返されます。 エンティティ オブジェクト内で LUIS によって返される startIndex および endIndex は、トークン化された新しい値にマップされていませんが、代わりに生のエンティティをプログラムで抽出できるように、元のクエリにマップされています。 
 
-たとえば、ドイツ語の場合、単語 `das Bauernbrot` は `das bauern brot` にトークン化されます。 トークン化された値 `das bauern brot` が返され、元の値は、元のクエリの startIndex および endIndex からプログラムで判断でき、`das Bauernbrot` が提供されます。
+LUIS での [トークンのサポート](luis-language-support.md#tokenization)を確認します。
 
 ## <a name="simple-entity-data"></a>シンプル エンティティ データ
 
@@ -263,11 +255,11 @@ V3 予測エンドポイントの詳細については[こちら](luis-migration
 
 ## <a name="composite-entity-data"></a>複合エンティティ データ
 
-[複合エンティティ](reference-entity-composite.md)は、事前構築済みエンティティ、シンプル、正規表現、リスト エンティティなどの他のエンティティで構成されます。 個別のエンティティが、エンティティ全体を形成します。 
+[複合エンティティ](reference-entity-composite.md)は、事前構築済みエンティティ、シンプル、正規表現、リスト エンティティなどの他のエンティティで構成されます。 個別のエンティティが、エンティティ全体を形成します。
 
 ## <a name="list-entity-data"></a>リスト エンティティ データ
 
-[リスト エンティティ](reference-entity-list.md)は、固定かつ限定された関連単語セットとそのシノニムを表します。 LUIS では、リスト エンティティの追加の値は検出されません。 現在のリストに基づいて新しい単語の候補を表示するには、 **[Recommend] (推奨)** 機能を使用します。 同じ値を持つリスト エンティティが複数存在する場合は、エンドポイント クエリに各エンティティが返されます。 
+[リスト エンティティ](reference-entity-list.md)は、固定かつ限定された関連単語セットとそのシノニムを表します。 LUIS では、リスト エンティティの追加の値は検出されません。 現在のリストに基づいて新しい単語の候補を表示するには、 **[Recommend] (推奨)** 機能を使用します。 同じ値を持つリスト エンティティが複数存在する場合は、エンドポイント クエリに各エンティティが返されます。
 
 ## <a name="prebuilt-entity-data"></a>事前構築済みのエンティティ データ
 [事前構築済み](luis-concept-entity-types.md)のエンティティは、オープン ソースの [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) プロジェクトを使用して、正規表現の一致に基づき検出されます。 事前構築済みのエンティティは、エンティティ配列で返され、`builtin::` というプレフィックスが付加された種類の名前が使用されます。 次のテキストは、返される事前構築済みのエンティティを含む発話の例です。
@@ -532,9 +524,9 @@ querystring パラメーター `verbose=true` あり。
 }
 ```
 
-V3 予測エンドポイントの詳細については[こちら](luis-migration-api-v3.md)を参照してください。
+[V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
 
-* * * 
+* * *
 ## <a name="regular-expression-entity-data"></a>正規表現エンティティ データ
 
 [正規表現エンティティ](reference-entity-regular-expression.md)は、指定した正規表現パターンに基づいてエンティティを抽出します。
@@ -544,11 +536,11 @@ V3 予測エンドポイントの詳細については[こちら](luis-migration
 
 ### <a name="add-prebuilt-personname-and-geographyv2-entities"></a>事前構築済みの PersonName エンティティと GeographyV2 エンティティを追加する
 
-[PersonName](luis-reference-prebuilt-person.md) エンティティと [GeographyV2](luis-reference-prebuilt-geographyV2.md) エンティティは、いくつかの[言語カルチャ](luis-reference-prebuilt-entities.md)で利用できます。 
+[PersonName](luis-reference-prebuilt-person.md) エンティティと [GeographyV2](luis-reference-prebuilt-geographyV2.md) エンティティは、いくつかの[言語カルチャ](luis-reference-prebuilt-entities.md)で利用できます。
 
 ### <a name="names-of-people"></a>人の名前
 
-人の名前は、言語およびカルチャに応じて、幾分ある種の形式を持つことがあります。 事前構築済みの **[personName](luis-reference-prebuilt-person.md)** エンティティ、または氏名の[ロール](luis-concept-roles.md)が含まれる **[簡易エンティティ](luis-concept-entity-types.md#simple-entity)** のどちらかを使用します。 
+人の名前は、言語およびカルチャに応じて、幾分ある種の形式を持つことがあります。 事前構築済みの **[personName](luis-reference-prebuilt-person.md)** エンティティ、または氏名の[ロール](luis-concept-roles.md)が含まれる **[簡易エンティティ](luis-concept-entity-types.md#simple-entity)** のどちらかを使用します。
 
 簡易エンティティを使用する場合は、必ず発話のさまざまな部分に姓と名を使用している例を提供してください。また、None 意図を含むあらゆる意図にわたるさまざまな長さの発話で、姓と名を使用している例を提供してください。 エンドポイントの発話を定期的に[確認](luis-how-to-review-endoint-utt.md)して、適切に予測されていないすべての名前にラベルを付けます。
 
@@ -599,7 +591,7 @@ V3 予測エンドポイントの詳細については[こちら](luis-migration
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
 
-V3 では、**ロール名**はオブジェクトのプライマリ名になります。 
+V3 では、**ロール名**はオブジェクトのプライマリ名になります。
 
 エンティティ名は `Location` で、2 つのロール、`Origin` と `Destination` があります。
 
@@ -681,13 +673,13 @@ querystring パラメーター `verbose=true` あり。
 }
 ```
 
-V3 予測エンドポイントの詳細については[こちら](luis-migration-api-v3.md)を参照してください。
+[V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
 
 * * *
 
 ## <a name="patternany-entity-data"></a>Pattern.any エンティティ データ
 
-[Pattern.any](reference-entity-pattern-any.md) は、エンティティの開始位置と終了位置を示すためにパターンのテンプレート発話でのみ使用される、可変長プレースホルダーです。  
+[Pattern.any](reference-entity-pattern-any.md) は、エンティティの開始位置と終了位置を示すためにパターンのテンプレート発話でのみ使用される、可変長プレースホルダーです。
 
 ## <a name="sentiment-analysis"></a>センチメント分析
 センチメント分析が構成されている場合、LUIS の json 応答には、センチメント分析が含まれます。 センチメント分析の詳細については、[Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) のドキュメントを参照してください。
@@ -754,7 +746,7 @@ V3 予測エンドポイントの詳細については[こちら](luis-migration
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
 
-V3 予測エンドポイントの詳細については[こちら](luis-migration-api-v3.md)を参照してください。
+[V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
 
 querystring パラメーター `verbose=true` なし。
 
@@ -817,7 +809,7 @@ querystring パラメーター `verbose=true` あり。
 }
 ```
 
-V3 予測エンドポイントの詳細については[こちら](luis-migration-api-v3.md)を参照してください。
+[V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
 
 * * *
 
@@ -1133,7 +1125,7 @@ querystring パラメーター `verbose=true` あり。
 }
 ```
 
-V3 予測エンドポイントの詳細については[こちら](luis-migration-api-v3.md)を参照してください。
+[V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
 
 * * *
 
@@ -1141,7 +1133,7 @@ V3 予測エンドポイントの詳細については[こちら](luis-migration
 
 単語またはフレーズが複数のリスト エンティティに一致すると、エンドポイント クエリからそれぞれのリスト エンティティが返されます。
 
-クエリ `when is the best time to go to red rock?` の場合、アプリの複数のリストに単語 `red` があると、LUIS ではすべてのエンティティを認識し、JSON エンドポイントの応答の一部としてエンティティの配列を返します。 
+クエリ `when is the best time to go to red rock?` の場合、アプリの複数のリストに単語 `red` があると、LUIS ではすべてのエンティティを認識し、JSON エンドポイントの応答の一部としてエンティティの配列を返します。
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
@@ -1270,10 +1262,10 @@ V3 予測エンドポイントの詳細については[こちら](luis-migration
 }
 ```
 
-V3 予測エンドポイントの詳細については[こちら](luis-migration-api-v3.md)を参照してください。
+[V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
 
 * * *
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [エンティティの追加](luis-how-to-add-entities.md)に関するページで、LUIS アプリにエンティティを追加する方法の詳細を確認します。

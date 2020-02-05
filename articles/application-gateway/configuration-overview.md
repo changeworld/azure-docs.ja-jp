@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: ce6f07a20044efed43cf24b3f0652691dff8b8aa
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 146dbdbf2f4e107e81515ce83188fa48c52aef36
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658340"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714859"
 ---
 # <a name="application-gateway-configuration-overview"></a>アプリケーション ゲートウェイ構成の概要
 
@@ -48,12 +48,12 @@ Application Gateway は、インスタンスごとに 1 つのプライベート
 
 ネットワーク セキュリティ グループ (NSG) は、Application Gateway でサポートされています。 ただし、いくつかの制限が適用されます。
 
-- Application Gateway v1 SKU の場合は TCP ポート 65503 ～ 65534、v2 SKU の場合は TCP ポート 65200 ～ 65535 で、宛先サブネットが **[すべて]** 、ソースが **GatewayManager** サービス タグである着信インターネット トラフィックを許可する必要があります。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 それらのゲートウェイの顧客を含む外部エンティティは、これらのエンドポイントで通信できません。
+- Application Gateway v1 SKU の TCP ポート 65503 ～ 65534 と、v2 SKU の TCP ポート 65200 ～ 65535 で、宛先サブネットが **[すべて]** 、ソースが **GatewayManager** サービス タグである着信インターネット トラフィックを許可する必要があります。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 それらのゲートウェイの顧客を含む外部エンティティは、これらのエンドポイントで通信できません。
 
 - 送信インターネット接続はブロックできません。 NSG の既定のアウトバウンド規則ではインターネット接続が許可されています。 推奨事項は次のとおりです。
 
   - 既定のアウトバウンド規則は削除しないでください。
-  - アウトバウンド インターネット接続を拒否する他のアウトバウンド規則は作成しないでください。
+  - アウトバウンド接続を拒否する他のアウトバウンド規則は作成しないでください。
 
 - **AzureLoadBalancer** タグからのトラフィックを許可する必要があります。
 

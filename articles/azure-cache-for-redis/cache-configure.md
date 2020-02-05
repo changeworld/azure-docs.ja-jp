@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: c4d5716c8a31ceccbe23c1f77ad3b88030ff3065
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f10be8efcd2d8e838b4b5f62310eb405f6ed0158
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972122"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714638"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure Cache for Redis の構成方法
 このトピックでは、Azure Cache for Redis インスタンスで利用可能な構成について説明します。 このトピックでは、Azure Cache for Redis インスタンスの既定の Redis サーバー構成についても説明します。
@@ -40,8 +40,8 @@ Azure Cache for Redis の設定の表示と構成は、 **[Azure Cache for Redis
     * [詳細設定](#advanced-settings)
     * [Azure Cache for Redis Advisor](#azure-cache-for-redis-advisor)
     * [スケール](#scale)
-    * [Redis クラスター サイズ](#cluster-size)
-    * [Redis データの保持](#redis-data-persistence)
+    * [クラスター サイズ](#cluster-size)
+    * [データの永続化](#redis-data-persistence)
     * [更新のスケジュール](#schedule-updates)
     * [geo レプリケーション](#geo-replication)
     * [Virtual Network](#virtual-network)
@@ -92,8 +92,8 @@ Azure Cache for Redis の設定の表示と構成は、 **[Azure Cache for Redis
 * [詳細設定](#advanced-settings)
 * [Azure Cache for Redis Advisor](#azure-cache-for-redis-advisor)
 * [スケール](#scale)
-* [Redis クラスター サイズ](#cluster-size)
-* [Redis データの保持](#redis-data-persistence)
+* [クラスター サイズ](#cluster-size)
+* [データの永続化](#redis-data-persistence)
 * [更新のスケジュール](#schedule-updates)
 * [geo レプリケーション](#geo-replication)
 * [Virtual Network](#virtual-network)
@@ -201,14 +201,9 @@ Redis キースペース通知は、 **[詳細設定]** ブレードで構成し
 <a name="cluster-size"></a>
 
 ### <a name="redis-cluster-size"></a>Redis クラスター サイズ
-クラスタリングが有効になっている実行中の Premium キャッシュのクラスター サイズを変更するには、 **[(プレビュー) Redis クラスター サイズ]** をクリックします。
+クラスタリングが有効になっている実行中の Premium キャッシュのクラスター サイズを変更するには、 **[クラスター サイズ]** をクリックします。
 
-> [!NOTE]
-> Azure Cache for Redis の Premium レベルは一般公開されていますが、Redis クラスター サイズ機能は現在プレビュー段階であることに注意してください。
->
->
-
-![Redis クラスター サイズ](./media/cache-configure/redis-cache-redis-cluster-size.png)
+![クラスター サイズ](./media/cache-configure/redis-cache-redis-cluster-size.png)
 
 クラスター サイズを変更するには、スライダーを使用するか、 **[シャード数]** ボックスに 1 ～ 10 の範囲の数値を入力し、 **[OK]** をクリックして保存します。
 
@@ -219,7 +214,7 @@ Redis キースペース通知は、 **[詳細設定]** ブレードで構成し
 
 
 ### <a name="redis-data-persistence"></a>Redis データの保持
-**[Redis データ永続化]** をクリックして、Premium Cache のデータ永続化を有効にする、無効にする、または構成することができます。 Azure Cache for Redis では、[RDB の永続化](cache-how-to-premium-persistence.md#configure-rdb-persistence)または [AOF の永続化](cache-how-to-premium-persistence.md#configure-aof-persistence)を使用して Redis の永続化を行うことができます。
+**[データ永続化]** をクリックして、Premium Cache のデータ永続化を有効にする、無効にする、または構成することができます。 Azure Cache for Redis では、[RDB の永続化](cache-how-to-premium-persistence.md#configure-rdb-persistence)または [AOF の永続化](cache-how-to-premium-persistence.md#configure-aof-persistence)を使用して Redis の永続化を行うことができます。
 
 詳細については、[Premium Azure Cache for Redis の永続化の構成方法](cache-how-to-premium-persistence.md)についてのページを参照してください。
 

@@ -1,6 +1,6 @@
 ---
 title: Azure DevTest Labs でのラボのクォータと制限のスケール | Microsoft Docs
-description: Azure DevTest Labs でラボをスケールする方法を説明します
+description: この記事では、Azure DevTest Labs でラボをスケーリングする方法について説明します。 使用量のクォータと制限を確認し、増加を要求します。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 231a227cbccaa4cbf74f3b13839c0ba42895cf24
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f3299c24bc751263ccd284a4fddb492fba5dd1e0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644853"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761187"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>DevTest Labs でのクォータと制限のスケール
 お気づきかもしれませんが、DevTest Labs での作業時に、一部の Azure リソースに一定の既定の制限があります。これは、DevTest Labs サービスに影響する場合があります。 これらの制限は、**クォータ**と呼ばれます。
@@ -35,7 +35,7 @@ Azure リソースの最も一般的な一部のクォータについては、[A
 ## <a name="view-your-usage-and-quotas"></a>使用量とクォータの表示
 次の手順では、特定の Azure リソースのサブスクリプションの現在のクォータや、使用した各クォータの割合を表示する方法を説明します。
 
-1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインする
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 1. **[その他のサービス]** を選択し、一覧の **[課金]** を選択します。
 1. [課金] ブレードでサブスクリプションを選択します。
 4. **[使用量 + クォータ]** を選択します。

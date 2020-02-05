@@ -3,26 +3,26 @@ title: Team Data Science Process ライフサイクル
 description: Team Data Science Process (TDSP) には、データ サイエンス プロジェクトを体系化するために使用できる推奨ライフサイクルが用意されています。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 00efe89314d4a1a5c3302e820b8609adf194aa59
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: a043a1655950f3ed7688e59352f8a912146e12c9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053240"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720454"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>Team Data Science Process ライフサイクル
 
-Team Data Science Process (TDSP) には、データ サイエンス プロジェクトを体系化するために使用できる推奨ライフサイクルが用意されています。 このライフサイクルは、プロジェクトを実行する際に、その開始から終了までにわたって進められる通常のステップを大まかにまとめたものです。 [CRISP-DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining) (Cross Industry Standard Process for Data Mining) や [KDD](https://wikipedia.org/wiki/Data_mining#Process) (Knowledge Discovery in Databases) などのデータ サイエンス ライフサイクルや組織独自のカスタム プロセスを使用する場合でも、このタスク ベースの TDSP を使用できます。 
+Team Data Science Process (TDSP) には、データ サイエンス プロジェクトを体系化するために使用できる推奨ライフサイクルが用意されています。 ライフサイクルには、正常なプロジェクトが従う完全な手順の概要が示されます。 [CRISP-DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining) (Cross Industry Standard Process for Data Mining) や [KDD](https://wikipedia.org/wiki/Data_mining#Process) (Knowledge Discovery in Databases) などのデータ サイエンス ライフサイクルや組織独自のカスタム プロセスを使用する場合でも、このタスク ベースの TDSP を使用できます。 
 
-このライフサイクルは、インテリジェント アプリケーションに付属することを意図したデータ サイエンス プロジェクト向けに設計されています。 このようなアプリケーションでは、機械学習モデルや人工知能モデルをデプロイして予測分析に使用します。 このプロセスは、探索的データ サイエンス プロジェクトや、アドホック分析プロジェクトに利用しても効果的ですが、 それらのプロジェクトでは、ここで説明する手順のいくつかは必要ない場合があります。 
+このライフサイクルは、インテリジェント アプリケーションに付属することを意図したデータ サイエンス プロジェクト向けに設計されています。 このようなアプリケーションでは、機械学習モデルや人工知能モデルをデプロイして予測分析に使用します。 このプロセスは、探索的データ サイエンス プロジェクトや、即席の分析プロジェクトに利用しても効果的です。 それらのプロジェクトでは、ここで説明する手順のいくつかは必要ない場合があります。 
 
 ## <a name="five-lifecycle-stages"></a>5 つのライフサイクル ステージ
 
@@ -31,7 +31,7 @@ TDSP ライフサイクルは、繰り返し実行される 5 つの主なステ
    1. [ビジネスの把握](lifecycle-business-understanding.md)
    2. [データの取得と理解](lifecycle-data.md)
    3. [モデリング](lifecycle-modeling.md)
-   4. [Deployment](lifecycle-deployment.md)
+   4. [デプロイ](lifecycle-deployment.md)
    5. [顧客による受け入れ](lifecycle-acceptance.md)
 
 TDSP ライフサイクルを視覚化すると、次のようになります。 
@@ -45,9 +45,9 @@ TDSP ライフサイクルは、繰り返し行う一連のステップとして
 
    * **目標**: 具体的な目標。
    * **実行方法**: 特定のタスクの概要とそれらを完了する方法についてのガイダンス。
-   * **アーティファクト**: 成果物と、それらを作成するためのサポート。
+   * **成果物**:成果物と、それらを作成するためのサポート。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 特定のシナリオ のプロセスに伴うすべての手順を初めから終わりまで完全に説明するチュートリアルが用意されています。 [例を含むチュートリアル](walkthroughs.md)の記事に、各シナリオが、簡潔な説明とリンク付きで示されています。 これらのチュートリアルは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明しています。 
 

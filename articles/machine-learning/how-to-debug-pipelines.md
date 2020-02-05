@@ -9,21 +9,21 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 12/12/2019
-ms.openlocfilehash: 991f7ebf51be5f805a8b12fa0af0fefeff0ef582
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 5ba26584f08e705b24749a76d6f607aa84b48fab
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76309559"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769121"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>機械学習パイプラインのデバッグとトラブルシューティング
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-この記事では、[Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) および [Azure Machine Learning デザイナー](https://docs.microsoft.com/azure/machine-learning/concept-designer)で[機械学習パイプライン](concept-ml-pipelines.md)をデバッグしてトラブルシューティングする方法について説明します。
-
+この記事では、[Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) および [Azure Machine Learning デザイナー (プレビュー)](https://docs.microsoft.com/azure/machine-learning/concept-designer) で[機械学習パイプライン](concept-ml-pipelines.md)をデバッグしてトラブルシューティングする方法について説明します。
 
 ## <a name="debug-and-troubleshoot-in-the-azure-machine-learning-sdk"></a>Azure Machine Learning SDK でのデバッグとトラブルシューティング
-以降のセクションでは、パイプラインの構築時に陥りやすい落とし穴と、パイプラインで実行されているコードをデバッグするためのさまざまな方法の概要について説明します。 パイプラインが予期したとおりに実行されない場合は、次のヒントを参考にしてください。 
+以降のセクションでは、パイプラインの構築時に陥りやすい落とし穴と、パイプラインで実行されているコードをデバッグするためのさまざまな方法の概要について説明します。 パイプラインが予期したとおりに実行されない場合は、次のヒントを参考にしてください。
+
 ### <a name="testing-scripts-locally"></a>スクリプトのローカルでのテスト
 
 パイプラインにおける最も一般的なエラーの 1 つは、アタッチされたスクリプト (データ クレンジング スクリプト、スコアリング スクリプトなど) が意図したとおりに実行されないこと、またはスクリプトに Azure Machine Learning Studio のワークスペースでデバッグが困難なリモート コンピューティング コンテキストの実行時エラーが含まれていることです。 
@@ -79,7 +79,49 @@ ms.locfileid: "76309559"
 | ステップを再利用しないパイプライン | ステップの再利用は既定で有効になっていますが、パイプライン ステップで無効にしていないか確認してください。 再利用が無効になっている場合は、ステップの `allow_reuse` パラメーターが `False` に設定されます。 |
 | パイプラインが不必要に再実行される | 基になるデータまたはスクリプトが変更されたときにのみステップが再実行されるようにするには、各ステップのディレクトリを分離します。 複数のステップに同じソース ディレクトリを使用すると、不要に再実行される可能性があります。 パイプライン ステップ オブジェクトで `source_directory` パラメーターを使用して、そのステップの分離されたディレクトリを指定し、複数のステップで同じ `source_directory` パスを使用しないようにします。 |
 
-## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーでのデバッグとトラブルシューティング
+### <a name="logging-options-and-behavior"></a>ログ オプションと動作
+
+次の表は、パイプラインのさまざまなデバッグ オプションに関する情報を示しています。 これは完全なリストではありません。ここに示されている Azure Machine Learning、Python、OpenCensus のオプションの他にもオプションはあります。
+
+| ライブラリ                    | 種類   | 例                                                          | 宛先                                  | リソース                                                                                                                                                                                                                                                                                                                    |
+|----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Azure Machine Learning SDK | メトリック | `run.log(name, val)`                                             | Azure Machine Learning ポータル UI             | [実験を追跡する方法](how-to-track-experiments.md#available-metrics-to-track)<br>[azureml.core.Run クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=experimental)                                                                                                                                                 |
+| Python の印刷とログ    | ログ    | `print(val)`<br>`logging.info(message)`                          | ドライバー ログ、Azure Machine Learning デザイナー | [実験を追跡する方法](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Python のログ](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
+| OpenCensus Python          | ログ    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights - トレース                | [Application Insights でパイプラインをデバッグする](how-to-debug-pipelines-application-insights.md)<br><br>[OpenCensus Azure Monitor エクスポーター](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Python ログのクックブック](https://docs.python.org/3/howto/logging-cookbook.html) |
+
+#### <a name="logging-options-example"></a>ログ オプションの例
+
+```python
+import logging
+
+from azureml.core.run import Run
+from opencensus.ext.azure.log_exporter import AzureLogHandler
+
+run = Run.get_context()
+
+# Azure ML Scalar value logging
+run.log("scalar_value", 0.95)
+
+# Python print statement
+print("I am a python print statement, I will be sent to the driver logs.")
+
+# Initialize python logger
+logger = logging.getLogger(__name__)
+logger.setLevel(args.log_level)
+
+# Plain python logging statements
+logger.debug("I am a plain debug statement, I will be sent to the driver logs.")
+logger.info("I am a plain info statement, I will be sent to the driver logs.")
+
+handler = AzureLogHandler(connection_string='<connection string>')
+logger.addHandler(handler)
+
+# Python logging with OpenCensus AzureLogHandler
+logger.warning("I am an OpenCensus warning statement, find me in Application Insights!")
+logger.error("I am an OpenCensus error statement with custom dimensions", {'step_id': run.id})
+``` 
+
+## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナー (プレビュー) でのデバッグとトラブルシューティング
 
 このセクションでは、デザイナーでパイプラインをトラブルシューティングする方法の概要について説明します。
 デザイナーで作成されたパイプラインの場合、作成ページまたはパイプラインの実行の詳細ページに**ログ ファイル**があります。
@@ -103,6 +145,9 @@ ms.locfileid: "76309559"
 1. プレビュー ペインで任意のモジュールを選択します。
 1. プロパティ ペインで、 **[ログ]** タブに移動します。
 1. ログ ファイル `70_driver_log.txt` を選択します
+
+## <a name="debug-and-troubleshoot-in-application-insights"></a>Application Insights のデバッグとトラブルシューティング
+この方法で OpenCensus Python ライブラリを使用する方法の詳細については、次のガイドを参照してください。[Application Insights での機械学習パイプラインのデバッグとトラブルシューティング](how-to-debug-pipelines-application-insights.md)
 
 ## <a name="next-steps"></a>次のステップ
 

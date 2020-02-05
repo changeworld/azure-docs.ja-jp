@@ -1,6 +1,6 @@
 ---
 title: Web アプリから Web API を呼び出す - Microsoft ID プラットフォーム | Azure
-description: Web API を呼び出す Web アプリの構築方法について説明します (Web API の呼び出し)
+description: Web API を呼び出す Web アプリの構築方法について説明します (保護された Web API の呼び出し)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -14,21 +14,20 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68d62101c9b2c8055374f8fd0fcf694441081b4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 28b4be46dc686c6e1b55f1ab36e0607057ebdbbd
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423559"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758973"
 ---
-# <a name="web-app-that-calls-web-apis---call-a-web-api"></a>Web API を呼び出す Web アプリ - Web API の呼び出し
+# <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Web API を呼び出す Web アプリ: Web API を呼び出す
 
 トークンを取得すると、保護された Web API を呼び出せます。
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-以下に、`HomeController` のアクションの簡略化されたコードを示します。 このコードは、Microsoft Graph を呼び出すトークンを取得します。 今回コードが追加されて、Microsoft Graph を REST API として呼び出す方法が示されています。 Graph API の URL は、`appsettings.json` ファイルで提供され、`webOptions` という名前の変数に読み取られます。
+以下に、`HomeController` のアクションの簡略化されたコードを示します。 このコードでは、Microsoft Graph を呼び出すトークンを取得します。 Microsoft Graph を REST API として呼び出す方法を示すコードが追加されています。 Microsoft Graph API の URL は、appsettings.json ファイルで提供され、`webOptions` という名前の変数に読み取られます。
 
 ```JSon
 {
@@ -48,10 +47,10 @@ public async Task<IActionResult> Profile()
  string accountIdentifier = claimsPrincipal.GetMsalAccountId();
  string loginHint = claimsPrincipal.GetLoginHint();
 
- // Get the account
+ // Get the account.
  IAccount account = await application.GetAccountAsync(accountIdentifier);
 
- // Special case for guest users as the Guest iod / tenant id are not surfaced.
+ // Special case for guest users, because the guest ID / tenant ID are not surfaced.
  if (account == null)
  {
   var accounts = await application.GetAccountsAsync();
@@ -63,7 +62,7 @@ public async Task<IActionResult> Profile()
                             .ExecuteAsync();
  var accessToken = result.AccessToken;
 
- // Calls the web API (here the graph)
+ // Calls the web API (Microsoft Graph in this case).
  HttpClient httpClient = new HttpClient();
  httpClient.DefaultRequestHeaders.Authorization =
      new AuthenticationHeaderValue(Constants.BearerAuthorizationScheme,accessToken);
@@ -85,7 +84,7 @@ public async Task<IActionResult> Profile()
 > [!NOTE]
 > 同じ原則を使用するとどの web API も呼び出すことができます。
 >
-> ほとんどの Azure の Web API には、呼び出しを簡略化する SDK が用意されています。 これは、Microsoft Graph の場合も同じです。 次の記事では、これらの側面を示すチュートリアルの場所について説明します。
+> Azure のほとんどの Web API には、API の呼び出しを簡略化する SDK が用意されています。 これは Microsoft Graph にも当てはまります。 次の記事では、API の使用方法を示すチュートリアルの探し方について説明します。
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
@@ -121,7 +120,7 @@ def graphcall():
     token = _get_token_from_cache(app_config.SCOPE)
     if not token:
         return redirect(url_for("login"))
-    graph_data = requests.get(  # Use token to call downstream service
+    graph_data = requests.get(  # Use token to call downstream service.
         app_config.ENDPOINT,
         headers={'Authorization': 'Bearer ' + token['access_token']},
         ).json()

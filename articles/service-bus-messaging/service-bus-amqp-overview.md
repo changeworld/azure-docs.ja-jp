@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus の AMQP 1.0 の概要 | Microsoft Docs
-description: Azure での Advanced Message Queuing Protocol (AMQP) 1.0 の使用について説明します。
+title: Azure Service Bus での AMQP 1.0 の概要
+description: オープン標準プロトコルである Advanced Message Queuing Protocol (AMQP) が Azure Service Bus によってどのようにサポートされているかについて説明します。
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 34829482e570354c1ab1e1fd6cec0c96b993cd83
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 50d21cfe8136b9c794eae5104bbb34e28f7c1661
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60403932"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759314"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Service Bus での AMQP 1.0 サポート
 Azure Service Bus クラウド サービスとオンプレミスの [Service Bus for Windows Server (Service Bus 1.1)](https://msdn.microsoft.com/library/dn282144.aspx) では、Advanced Message Queueing Protocol (AMQP) 1.0 をサポートしています。 AMQP を使用すると、オープンな標準プロトコルを使用したクロス プラットフォームのハイブリッド アプリケーションをビルドできます。 異なる言語とフレームワークを使用して作成され、異なるオペレーティング システムで実行可能であるコンポーネントを使用して、アプリケーションを構築できます。 これらのコンポーネントはすべて Service Bus に接続でき、構造化されたビジネス メッセージを効率よく完全な忠実度でシームレスに交換できます。
@@ -71,7 +71,7 @@ Azure Service Bus で AMQP 1.0 がサポートされるため、仲介型メッ�
 
 現時点では、次のクライアント ライブラリが Service Bus で機能することがわかっています。
 
-| 言語 | ライブラリ |
+| Language | ライブラリ |
 | --- | --- |
 | Java |Apache Qpid Java Message Service (JMS) クライアント<br/>IIT Software SwiftMQ Java クライアント |
 | C |Apache Qpid Proton-C |
@@ -85,7 +85,7 @@ Azure Service Bus で AMQP 1.0 がサポートされるため、仲介型メッ�
 * AMQP 1.0 は、プラットフォーム間共通のハイブリッド アプリケーションを構築するために使用できる、信頼性の高いオープンなメッセージング プロトコルです。 AMQP 1.0 は OASIS の標準です。
 * AMQP 1.0 サポートは、Azure Service Bus と Windows Server の Service Bus (Service Bus 1.1) で利用できるようになりました。 料金は、既存のプロトコルと同じです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 さらに詳しい情報については、 次のリンク先を参照してください。
 
 * [AMQP で .NET から Service Bus を使用する]

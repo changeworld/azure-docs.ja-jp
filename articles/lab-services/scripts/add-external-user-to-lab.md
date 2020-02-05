@@ -1,6 +1,6 @@
 ---
 title: PowerShell - Azure DevTest Labs のラボに外部ユーザーを追加する
-description: この PowerShell スクリプトは、Azure DevTest Labs でラボに外部ユーザーを追加します。
+description: この記事では、Azure DevTest Labs のラボに外部ユーザーを追加する Azure PowerShell スクリプトについて説明します。
 services: lab-services
 author: spelluru
 manager: ''
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: da5cc4a3809b1867e8aa2c3b21e88c2f30ae3d4d
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: e9efe5476da051d905feff3d6803cb60ea0c4beb
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169681"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760489"
 ---
 # <a name="use-powershell-to-add-an-external-user-to-a-lab-in-azure-devtest-labs"></a>PowerShell を使用して Azure DevTest Labs のラボに外部ユーザーを追加する
 

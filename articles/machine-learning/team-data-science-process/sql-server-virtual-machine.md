@@ -3,23 +3,23 @@ title: SQL Server 仮想マシンに保存されたデータを探索する - Te
 description: Azure の SQL Server 仮想マシンで Python または SQL を使用してデータを探索および処理し、特徴を生成します。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 877c639c35378b173b6ec9c8697725e3b3c09290
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: d3eb4d2faf58d1861fda9d04437f9f9530c77672
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053611"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718482"
 ---
 # <a name="heading"></a>Azure の SQL Server 仮想マシンでデータを処理する
-このドキュメントでは、Azure の SQL Server VM に保存されたデータを探索し、データの特徴を生成する方法について説明します。 これは、SQL を使用してデータを処理するか、Python などのプログラミング言語を使用して実行できます。
+このドキュメントでは、Azure の SQL Server VM に保存されたデータを探索し、データの特徴を生成する方法について説明します。 この目標は、SQL を使用してデータをラングリングするか、Python などのプログラミング言語を使用して達成できます。
 
 > [!NOTE]
 > このドキュメントのサンプルの SQL ステートメントは、データが SQL Server に存在することを前提としています。 存在しない場合は、クラウド データ サイエンス プロセス マップを参照して、SQL Server へデータを移動する方法を確認してください。
@@ -66,7 +66,7 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
 > 
 
 ### <a name="sql-countfeature"></a>カウント ベースの特徴の生成
-次の例では、カウント特徴を生成する 2 つの方法を示します。 最初の方法は、条件付きの合計を使用します。2 番目の方法は、Where 句を使用します。 これらを (主キーの列を使用することで) 元のテーブルと結合して、カウント特徴と元のデータを一緒にすることができます。
+次の例では、カウント特徴を生成する 2 つの方法を示します。 最初の方法は、条件付きの合計を使用します。2 番目の方法は、Where 句を使用します。 その後、これらの結果を (主キーの列を使用することで) 元のテーブルと結合して、カウント特徴と元のデータを一緒にすることができます。
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3> 
 
@@ -82,7 +82,7 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
 ### <a name="sql-featurerollout"></a>1 つの列からの特徴の展開
 このセクションでは、テーブル内の 1 つの列を展開して追加の特徴を生成する方法を示します。 この例は、特徴を生成しようとするテーブルに、緯度や経度の列があることを前提としています。
 
-緯度と経度の位置データ (リソースは stackoverflow の「 [How to measure the accuracy of latitude and longitude? (緯度と経度の精度を測定する方法)](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)」) の簡単な概要を次に示します。 これは、Featurize する前に [場所] フィールドを理解するうえで役立ちます。
+緯度と経度の位置データ (リソースは stackoverflow の「 [How to measure the accuracy of latitude and longitude? (緯度と経度の精度を測定する方法)](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)」) の簡単な概要を次に示します。 このガイダンスは、位置を 1 つまたは複数の特徴として含める前に理解するのに役立ちます。
 
 * 記号は、私たちが地球の北半球か南半球、東半球か西半球、それぞれどちらにいるかを示します。
 * 100 の位が 0 でなければ、それは経度を使用していることを示します。緯度ではありません。
@@ -95,7 +95,7 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
 * 小数第 5 位は、1.1 m に値します。木々を互いに識別することができます。 商用の GPS ユニットにおいて、このレベルの精度は微分補正によってのみ実現できます。
 * 小数第 6 位は、最大 0.11 m に値します。これは、造園設計、道路建設において構造を詳細に配置するために使用できます。 氷河と川の動きを追跡するには十分すぎるはずです。 これは、GPS の微分補正など、GPS を使用した精密な測定で実現できます。
 
-位置情報の Featurize は、地域、位置、および都市の情報に分けて、次のように実行します。 地域または地区の情報は、「 [Find a Location by Point (ポイントで位置情報を特定する)](https://msdn.microsoft.com/library/ff701710.aspx) 」で紹介されている Bing Maps API などの REST エンド ポイントを呼び出すことで取得することもできます。
+位置情報の Featurize は、地域、位置、および都市の情報に分けて、次のように実行します。 地域または地区の情報は、「[ポイントで位置情報を特定する](https://msdn.microsoft.com/library/ff701710.aspx)」に示されている Bing Maps API などの REST エンド ポイントを呼び出すことで取得することもできます。
 
     select 
         <location_columnname>
@@ -121,7 +121,7 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
 ![Azure ML リーダー][1] 
 
 ## <a name="python"></a>Python などのプログラミング言語の使用
-データが SQL Server に格納されている場合に、Python を使用してデータを探索し、特徴を生成する手順は、[データ サイエンス環境での Azure BLOB データの処理](data-blob.md)に関する記事で説明されているように、Python を使用して Azure BLOB のデータを処理する手順と似ています。 データは、データベースから pandas データ フレームに読み込む必要があります。その後、さらに処理することができます。 このセクションでは、データベースに接続して、データ フレームにデータを読み込むプロセスについて記載します。
+データが SQL Server に格納されている場合に、Python を使用してデータを探索し、特徴を生成する手順は、[データ サイエンス環境での Azure BLOB データの処理](data-blob.md)に関する記事で説明されているように、Python を使用して Azure BLOB のデータを処理する手順と似ています。 データをさらに処理するには、データベースから pandas データ フレームに読み込みます。 このセクションでは、データベースに接続して、データ フレームにデータを読み込むプロセスについて記載します。
 
 次の接続文字列形式を使用して pyodbc を使用し Python から SQL Server データベースに接続することができます (サーバー名、データベース名、ユーザー名およびパスワードは使用する特定の値に置き換えてください)。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services と PlayReady ライセンス テンプレート
+title: Azure Media Services v3 と Microsoft PlayReady ライセンス テンプレート
 description: このトピックでは、PlayReady ライセンスの設定に使用する PlayReady ライセンス テンプレートの概要を示します。
 author: juliako
 manager: femila
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: 0ce0d40bfd9d41838573f6355ceffc17761111c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6b12dcee2303632c4ec2ccc3602348a4e17fcd05
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61472653"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705889"
 ---
-# <a name="media-services-playready-license-template-overview"></a>Media Services PlayReady ライセンス テンプレートの概要 
+# <a name="media-services-v3-with-playready-license-template"></a>Media Services v3 と PlayReady ライセンス テンプレート 
 
 Azure Media Services では、**Microsoft PlayReady** を使用してコンテンツを暗号化できます。 Media Services では、PlayReady ライセンスの配信サービスも提供しています。 PlayReady ライセンスの構成には、Media Services の API を使用できます。 プレーヤーが PlayReady の保護されたコンテンツを再生しようとすると、ライセンスを取得する要求がライセンス配信サービスに送信されます。 ライセンス サービスはその要求を承認した後、ライセンスを発行します。このライセンスはクライアントに送信され、指定されたコンテンツの暗号化解除と再生に用いられます。
 
@@ -311,6 +311,6 @@ objContentKeyPolicyPlayReadyLicense = new ContentKeyPolicyPlayReadyLicense
     </xs:schema>
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [DRM での保護](protect-with-drm.md)に関するページを参照してください。

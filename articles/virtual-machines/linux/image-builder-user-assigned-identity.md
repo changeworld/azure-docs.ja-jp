@@ -7,18 +7,18 @@ ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: b6347765f8d2e21c352834dc8d28b65c28f99758
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 36016e462e3f4906c4dfe8c58501c82fd554f3bd
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671446"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720590"
 ---
 # <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>イメージを作成し、ユーザー割り当てマネージド ID を使用して Azure Storage 内のファイルにアクセスする 
 
 Azure Image Builder では、スクリプトの使用、または GitHub や Azure Storage などの複数の場所からのファイルのコピーがサポートされています。これらを使うには、それらが Azure Image Builder に外部からアクセスできる必要がありますが、SAS トークンを使って Azure Storage BLOB を保護できます。
 
-この記事で説明する、Azure VM Image Builder を使ってカスタマイズされたイメージを作成する方法では、サービスは[ユーザー割り当てマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) を使ってイメージのカスタマイズのために Azure Storage 内のファイルにアクセスするので、ファイルをパブリック アクセス可能にしたり、SAS トークンを設定したりする必要はありません。
+この記事では、Azure VM Image Builder を使ってカスタマイズされたイメージを作成する方法を示します。ここで、サービスにより、イメージをカスタマイズするために[ユーザー割り当てマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) を使って Azure Storage 内のファイルにアクセスされるので、ファイルをパブリック アクセス可能にしたり、SAS トークンを設定したりする必要がありません。
 
 次の例では、2 つのリソース グループを作成します。1 つはカスタム イメージ用に使われ、もう 1 つはスクリプト ファイルを含む Azure ストレージ アカウントをホストします。 これは、ビルド成果物またはイメージ ファイルが Image Builder の外部の別のストレージ アカウントに存在することがある、現実のシナリオをシミュレートするものです。 ユーザー割り当て ID を作成した後、それにスクリプト ファイルに対する読み取りアクセス許可を付与しますが、そのファイルへのパブリック アクセスは設定しません。 その後、シェル カスタマイザーを使ってそのスクリプトをストレージ アカウントからダウンロードし、実行します。
 
@@ -57,7 +57,7 @@ az provider register -n Microsoft.Storage
 ```
 
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 いくつかの情報を繰り返し使用するので、その情報を格納するいくつかの変数を作成します。
 
@@ -75,7 +75,7 @@ imageName=aibCustLinuxImgMsi01
 runOutputName=u1804ManImgMsiro
 ```
 
-サブスクリプション ID の変数を作成します。 `az account show | grep id` を使ってこれを取得できます。
+サブスクリプション ID の変数を作成します。 `az account show | grep id` を使用してこれを取得できます。
 
 ```azurecli-interactive
 subscriptionID=<Your subscription ID>
@@ -118,7 +118,7 @@ az storage blob copy start \
 
 
 
-イメージ リソース グループにリソースを作成するためのアクセス許可を Image Builder に付与します。 `--assignee` の値は、Image Builder サービスのアプリ登録 ID です。 
+イメージ リソース グループにリソースを作成するためのアクセス許可を Image Builder に付与します。 `--assignee` 値は、Image Builder サービスのアプリ登録 ID です。 
 
 ```azurecli-interactive
 az role assignment create \
@@ -232,6 +232,6 @@ az group delete -n $imageResourceGroup
 az group delete -n $strResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Image Builder の使用に関して問題がある場合は、「[Troubleshooting (トラブルシューティング)](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json)」をご覧ください。

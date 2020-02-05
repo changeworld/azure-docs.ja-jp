@@ -1,6 +1,6 @@
 ---
 title: Azure Service Bus のトラブルシューティング ガイド | Microsoft Docs
-description: Service Bus メッセージングの例外と推奨アクションの一覧。
+description: この記事では、Azure Service Bus メッセージングの例外と、例外が発生したときに実行する推奨アクションの一覧を示します。
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/17/2020
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 20d9fc141fa19a5c6d01f33c2a5398ca84497b9f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 37f316af68bc0b20f21eb606e2abc8232f29ce32
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76309967"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759365"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Azure Service Bus のトラブルシューティング ガイド
 この記事では、Service Bus .NET Framework API によって生成される一部の .NET 例外を示し、さらに問題のトラブルシューティングのためのその他のヒントも示します。 

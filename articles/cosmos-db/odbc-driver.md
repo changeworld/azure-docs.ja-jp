@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: e8a982a100655934d4ae3ecd64564cf2da82dbbc
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 8be17f0b624c5c34709fb420adb434b77dbc0d91
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035609"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721083"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>BI 分析ツールと ODBC ドライバーを使用して Azure Cosmos DB に接続する
 
@@ -33,7 +33,7 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
 
 1. お使いの環境用のドライバーをダウンロードします。
 
-    | インストーラー | サポートされているオペレーティング システム| 
+    | Installer | サポートされるオペレーティング システム| 
     |---|---| 
     |[Microsoft Azure Cosmos DB ODBC 64-bit.msi](https://aka.ms/cosmos-odbc-64x64) (64 ビット Windows 用)| Windows 8.1 以降、Windows 8、Windows 7、Windows Server 2012 R2、Windows Server 2012、および Windows Server 2008 R2 の 64 ビット バージョン。| 
     |[Microsoft Azure Cosmos DB ODBC 32x64-bit.msi](https://aka.ms/cosmos-odbc-32x64) (64 ビット上の 32 ビット Windows 用)| Windows 8.1 以降、Windows 8、Windows 7、Windows XP、Windows Vista、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2、Windows Server 2003 の 64 ビット バージョン。| 
@@ -128,7 +128,7 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
 
     たとえば、市区町村の**属性**値を含めて、テーブルにニューヨークとドバイの都市の値の行のみを含めるよう制限する場合は、[属性] ボックスに「市区町村」と入力し、 **[値]** ボックスには「ニューヨーク」と「ドバイ」を入力します。
 
-1. Click **OK**. 
+1. **[OK]** をクリックします。 
 
 1. サンプリングするコンテナーのマッピング定義が完了したら、 **[スキーマ エディター]** ウィンドウで **[サンプル]** をクリックします。
      列ごとに、列の SQL 名、SQL 型、SQL の長さ (該当する場合)、スケール (該当する場合)、有効桁数 (該当する場合)、Null 許容を変更できます。
@@ -245,6 +245,6 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 
     [HY000]: [Microsoft][Azure Cosmos DB] (401) HTTP 401 Authentication Error: {"code":"Unauthorized","message":"The input authorization token can't serve the request. Please check that the expected payload is built as per the protocol, and check the key being used. Server used the following payload to sign: 'get\ndbs\n\nfri, 20 jan 2017 03:43:55 gmt\n\n'\r\nActivityId: 9acb3c0d-cb31-4b78-ac0a-413c8d33e373"}`
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Cosmos DB の詳細については、「[Azure Cosmos DB の概要](introduction.md)」を参照してください。

@@ -3,20 +3,20 @@ title: Hive テーブルを作成して BLOB ストレージからデータを�
 description: Hive クエリを使用して Hive テーブルを作成し、Azure Blob Storage からデータを読み込みます。 Hive テーブルをパーティション分割し、Optimized Row Columnar (ORC) 形式を使用してクエリのパフォーマンスを向上させます。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: af9c072c428c486cab89288db4c9ee1c26513185
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 625d9d5c5ecf095d4acbff625754b2065f184536
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250142"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722528"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive テーブルを作成して Azure Blob Storage からデータを読み込む
 
@@ -25,12 +25,12 @@ ms.locfileid: "68250142"
 ## <a name="prerequisites"></a>前提条件
 この記事では、以下のことを前提としています。
 
-* Azure のストレージ アカウントが作成されている。 手順については、「[Azure ストレージ アカウントについて](../../storage/common/storage-introduction.md)」をご覧ください。
+* Azure のストレージ アカウントが作成されている。 手順については、[Azure ストレージ アカウントについて](../../storage/common/storage-introduction.md)のページを参照してください。
 * HDInsight サービスでカスタマイズされた Hadoop クラスターがプロビジョニングされている。  手順については、[HDInsight でのクラスターの設定](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
 * クラスターへのリモート アクセスを有効にし、ログインして Hadoop コマンド ライン コンソールを開いている。 手順については、[Apache Hadoop クラスターの管理](../../hdinsight/hdinsight-administer-use-portal-linux.md)に関するページを参照してください。
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Azure BLOB ストレージにデータをアップロードする
-[高度な分析のための Azure 仮想マシンのセットアップに関するページ](../../machine-learning/data-science-virtual-machine/overview.md)の指示に従って Azure 仮想マシンを作成した場合、このスクリプト ファイルは仮想マシンの *C:\\Users\\\<ユーザー名\>\\Documents\\Data Science Scripts* ディレクトリにダウンロードされています。 これらの Hive クエリに必要なことは、独自のデータ スキーマと Azure BLOB ストレージの構成を適切なフィールドに接続し、送信できるようにすることだけです。
+[高度な分析のための Azure 仮想マシンのセットアップに関するページ](../../machine-learning/data-science-virtual-machine/overview.md)の指示に従って Azure 仮想マシンを作成した場合、このスクリプト ファイルは仮想マシンの *C:\\Users\\\<ユーザー名\>\\Documents\\Data Science Scripts* ディレクトリにダウンロードされています。 これらの Hive クエリに必要なことは、データ スキーマと Azure BLOB ストレージの構成を適切なフィールドに提供し、送信できるようにすることだけです。
 
 ここでは、Hive テーブルのデータが **圧縮されていない** 表形式であることと、Hadoop クラスターが使用するストレージ アカウントの既定の (または追加の) コンテナーにデータがアップロードされていることを想定しています。
 
@@ -43,15 +43,15 @@ ms.locfileid: "68250142"
 ## <a name="submit"></a>Hive クエリを送信する方法
 Hive クエリは、以下のものを使用して送信できます。
 
-1. [Hadoop クラスターのヘッド ノードで Hadoop コマンド ラインを使用して Hive クエリを送信する](#headnode)
-2. [Hive エディターで Hive クエリを送信する](#hive-editor)
-3. [Azure PowerShell コマンドで Hive クエリを送信する](#ps)
+* [Hadoop クラスターのヘッド ノードで Hadoop コマンド ラインを使用して Hive クエリを送信する](#headnode)
+* [Hive エディターで Hive クエリを送信する](#hive-editor)
+* [Azure PowerShell コマンドで Hive クエリを送信する](#ps)
 
 Hive クエリは SQL に似ています。 SQL を使い慣れている場合は、 [Hive for SQL Users チート シート](https://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf) が役立つことがあります。
 
 Hive クエリの送信時、Hive クエリの出力先を、画面上、ヘッド ノード上のローカル ファイル、または Azure BLOB のどれにするか制御できます。
 
-### <a name="headnode"></a> 1.Hadoop クラスターのヘッドノードで Hadoop コマンド ラインを使用して Hive クエリを送信する
+### <a name="headnode"></a>Hadoop クラスターのヘッド ノードで Hadoop コマンド ラインを使用して Hive クエリを送信する
 Hive クエリが複雑な場合、Hadoop クラスターのヘッド ノードに直接クエリを送信することにより、通常、Hive エディターまたは Azure PowerShell スクリプトを使用して送信するよりも速度が上がります。
 
 Hadoop クラスターのヘッド ノードにログインし、ヘッド ノードのデスクトップで Hadoop コマンド ラインを開き、コマンド `cd %hive_home%\bin`を入力します。
@@ -59,7 +59,7 @@ Hadoop クラスターのヘッド ノードにログインし、ヘッド ノ�
 Hadoop コマンド ラインで Hive クエリを送信する場合、次の 3 つの方法があります。
 
 * 直接
-* .hql ファイルの使用
+* ".hql" ファイルの使用
 * Hive コマンド コンソールで
 
 #### <a name="submit-hive-queries-directly-in-hadoop-command-line"></a>Hadoop コマンド ラインでハイブ クエリを直接送信する
@@ -67,22 +67,22 @@ Hadoop コマンド ラインで Hive クエリを送信する場合、次の 3 
 
 ![Hive クエリを送信するコマンドと Hive クエリからの出力](./media/move-hive-tables/run-hive-queries-1.png)
 
-#### <a name="submit-hive-queries-in-hql-files"></a>.hql ファイルで Hive クエリを送信する
-ハイブ クエリがより複雑で、複数の行が存在する場合、コマンド ラインやハイブ コマンド コンソールでクエリを編集することは実際的ではありません。 別の方法として、Hadoop クラスターのヘッド ノードでテキスト エディターを使用して、ヘッド ノードのローカル ディレクトリの中の .hql ファイルにハイブ クエリを保存します。 次のように `-f` 引数を使用すると、.hql ファイルの Hive クエリを送信できます。
+#### <a name="submit-hive-queries-in-hql-files"></a>".hql" ファイルで Hive クエリを送信する
+ハイブ クエリがより複雑で、複数の行が存在する場合、コマンド ラインやハイブ コマンド コンソールでクエリを編集することは実際的ではありません。 別の方法として、Hadoop クラスターのヘッド ノードでテキスト エディターを使用して、ヘッド ノードのローカル ディレクトリの中の ".hql" ファイルにハイブ クエリを保存します。 次のように `-f` 引数を使用すると、".hql" ファイルの Hive クエリを送信できます。
 
-    hive -f "<path to the .hql file>"
+    hive -f "<path to the '.hql' file>"
 
-![.hql ファイルの Hive クエリ](./media/move-hive-tables/run-hive-queries-3.png)
+![".hql" ファイルでの Hive クエリ](./media/move-hive-tables/run-hive-queries-3.png)
 
 **Hive クエリの進行状況ステータス画面の出力を抑制する**
 
 既定では、Hadoop コマンド ラインで Hive クエリを送信した後に、マップ/縮小ジョブの進行状況が画面に出力されます。 マップ/縮小ジョブの進捗の画面出力を抑制するには、次のように、コマンド ラインで引数 `-S` ("S" は大文字) を使用します。
 
-    hive -S -f "<path to the .hql file>"
+    hive -S -f "<path to the '.hql' file>"
     hive -S -e "<Hive queries>"
 
 #### <a name="submit-hive-queries-in-hive-command-console"></a>Hive コマンド コンソールで Hive クエリを送信する。
-Hadoop コマンド ラインで `hive` コマンドを実行すると、まず Hive コマンド コンソールに入力できるようになります。その後、Hive コマンド コンソールで Hive クエリを送信します。 たとえば次のようになります。 この例では、2 つの赤いボックスは、それぞれ Hive コマンド コンソールに入るために使用するコマンドと、Hive コマンド コンソールで送信された Hive クエリを強調表示しています。 緑色のボックスは、Hive クエリからの出力を強調表示しています。
+Hadoop コマンド ラインで `hive` コマンドを実行すると、まず Hive コマンド コンソールに入力できるようになります。その後、Hive コマンド コンソールで Hive クエリを送信します。 次に例を示します。 この例では、2 つの赤いボックスは、それぞれ Hive コマンド コンソールに入るために使用するコマンドと、Hive コマンド コンソールで送信された Hive クエリを強調表示しています。 緑色のボックスは、Hive クエリからの出力を強調表示しています。
 
 ![Hive コマンド コンソールを開き、コマンドを入力して、Hive クエリの出力を表示する](./media/move-hive-tables/run-hive-queries-2.png)
 
@@ -111,10 +111,10 @@ Azure ストレージ エクスプローラーを使用して Hadoop クラス�
 
 ![Hive クエリの出力が表示されている Azure Storage Explorer](./media/move-hive-tables/output-hive-results-3.png)
 
-### <a name="hive-editor"></a> 2.Hive エディターで Hive クエリを送信する
+### <a name="hive-editor"></a>Hive エディターで Hive クエリを送信する
 *https:\//\<Hadoop クラスター名>.azurehdinsight.net/Home/HiveEditor* の形式の URL を Web ブラウザーに入力することで、クエリ コンソール (Hive エディター) を使用することもできます。 このコンソールにログインする必要があるので、Hadoop クラスターの資格情報が必要になります。
 
-### <a name="ps"></a> 3.Azure PowerShell コマンドで Hive クエリを送信する
+### <a name="ps"></a>Azure PowerShell コマンドで Hive クエリを送信する
 PowerShell を使用して Hive クエリを送信することもできます。 手順については、「 [PowerShell を使用して Hive ジョブを送信する](../../hdinsight/hadoop/apache-hadoop-use-hive-powershell.md)」を参照してください。
 
 ## <a name="create-tables"></a>Hive データベースとテーブルの作成。
@@ -137,7 +137,7 @@ Hive テーブルを作成する Hive クエリを次に示します。
 
 接続する必要があるフィールドと他の構成の説明を次に示します。
 
-* **\<データベース名\>** : 作成するデータベースの名前。 既定のデータベースを使用する場合、 *create database...* クエリは省略してかまいません。
+* **\<データベース名\>** : 作成するデータベースの名前。 既定のデータベースを使用する場合、"*create database...* " クエリは省略してかまいません。
 * **\<テーブル名\>** : 指定したデータベース内に作成するテーブルの名前。 既定のデータベースを使用する場合、テーブルは *\<テーブル名\>* で直接参照でき、\<データベース名\> は不要です。
 * **\<フィールド区切り記号\>** : Hive テーブルにアップロードするデータ ファイル内のフィールドを区切る区切り記号。
 * **\<行区切り記号\>** : データ ファイル内の行を区切る区切り記号。
@@ -174,7 +174,7 @@ Hive テーブルをパーティション分割することに加え、Optimized
     LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<partitioned table name>
         PARTITION (<partitionfieldname>=<partitionfieldvalue>);
 
-パーティション テーブルの照会時には、検索の有効性が大幅に向上するように、`where` 句の**先頭**にパーティション条件を追加することをお勧めします。
+パーティション テーブルの照会時には、`where` 句の**先頭**にパーティション条件を追加することをお勧めします。それにより、検索の有効性が向上します。
 
     select
         field1, field2, ..., fieldN
@@ -225,7 +225,7 @@ ORC 形式で格納されているデータを BLOB ストレージから Hive �
            FROM <database name>.<external textfile table name>
            WHERE <partition variable>=<partition value>;
 
-すべてのデータが *\<データベース名\>.\<ORC テーブル名\>* に挿入された後に、次のクエリを使用して *\<外部テキストファイル テーブル名\>* を削除するのが安全です。
+すべてのデータが *\<データベース名\>.\<ORC テーブル名\>* に挿入された後に、次のクエリを使用して *\<外部テキスト ファイル テーブル名\>* を削除するのが安全です。
 
         DROP TABLE IF EXISTS <database name>.<external textfile table name>;
 

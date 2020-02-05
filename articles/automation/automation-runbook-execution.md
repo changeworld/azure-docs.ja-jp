@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4f9fd3a94cf2b6d6ca077b7363e01085e134babd
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: c97e10d2785b7dc1a438c95dca9be94fcef82f94
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658119"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714848"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Automation での Runbook の実行
 
@@ -71,7 +71,7 @@ else
     }
 ```
 
-### <a name="time-dependant-scripts"></a>時間依存のスクリプト
+### <a name="time-dependent-scripts"></a>時間依存のスクリプト
 
 Runbook の作成時に慎重に検討してください。 前述のように、Runbook は堅牢で、Runbook の再起動または失敗を引き起こす可能性のある一時的なエラーを処理できる方法で作成する必要があります。 Runbook は、失敗した場合には再試行されます。 Runbook が、通常は時間の制約内で実行される場合、実行時間を調べるロジックを Runbook 内に実装し、起動、シャットダウン、スケールアウトなどの操作が特定時間中にのみ実行されるようにする必要があります。
 

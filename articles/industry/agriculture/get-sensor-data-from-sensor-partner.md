@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 745e3f0b6c7bd4e6d984ce2df29b9965d4b8ca21
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: d56504c96c5e039f2563a1bfee577fe9b15e8563
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513739"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715567"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>センサー パートナーからセンサー データを取得する
 
@@ -37,14 +37,12 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
  - クライアント シークレット
  - EventHub 接続文字列
 
-上記の情報は、システム インテグレーターによって提供されます。 デバイスの統合を有効にする際に発生した問題については、システム インテグレーターにお問い合わせください。
-
-または、Azure Cloud Shell から次のスクリプトを実行することで、資格情報を生成することもできます。 次の手順に従います。
+上記の情報を生成するには、次の手順を行います (これらの手順は Azure で実行する必要があるため、FarmBeats がデプロイされている Azure サブスクリプションにアクセスする必要があることに注意してください)。
 
 1. [zip ファイル](https://aka.ms/farmbeatspartnerscriptv2)をダウンロードし、ローカル ドライブに展開します。 ZIP ファイル内には 1 つのファイルがあります。
-2. https://portal.azure.com/ にサインインし、[Azure Active Directory] -> [アプリの登録] に進みます。
+2. https://portal.azure.com/ にサインインし、[Azure Active Directory]、[アプリの登録] の順に進みます。
 
-3. FarmBeats デプロイの一部として作成された アプリの登録］ をクリックします。 それは、FarmBeats データ ハブと同じ名前になります。
+3. FarmBeats デプロイの一部として作成された [アプリの登録] をクリックします。 それは、FarmBeats データ ハブと同じ名前になります。
 
 4. [API の公開] をクリックし、[クライアント アプリケーションの追加] をクリックし、「**04b07795-8ddb-461a-bbee-02f9e1bf7b46**」と入力し、[Authorize Scope]\(スコープの承認\) をオンにします。 これにより、Azure CLI (Cloud Shell) にアクセスして、次の手順を実行することができます。
 
@@ -62,7 +60,7 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
 
 8. ファイルがアップロードされたディレクトリに移動します。 既定では、ファイルはユーザー名の下のホーム ディレクトリにアップロードされます。
 
-9. 次のスクリプトを実行します。 このスクリプトは、[Azure Active Directory] -> [概要] ページから取得できるテナント ID を要求します。
+9. 次のスクリプトを実行します。 このスクリプトは、[Azure Active Directory] の [概要] ページから取得できるテナント ID を要求します。
 
     ```azurepowershell-interactive 
 
@@ -74,13 +72,16 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>生成された資格情報を使用してデバイス データを統合する
 
-前のセクションで生成した資格情報のセットを使用して、FarmBeats にリンクされているデバイス パートナーのポータルに移動します。
-
+これで、前のセクションで生成された次の情報が用意できました。
  - API エンドポイント
  - EventHub 接続文字列
  - クライアント ID
  - クライアント シークレット
  - テナント ID
+ 
+これをご自分のデバイス パートナーに提供することで、FarmBeats をリンクすることができます。 デバイス パートナー ポータルにアクセスして同じことを行うこともできます。 たとえば、Davis Instruments からのデバイスを使用している場合は、次に示すページに進みます。
+
+[Davis Instruments](https://weatherlink.github.io/azure-farmbeats/setup)
 
  デバイス プロバイダーは、正常に統合されたことを確認します。 確認後、Azure FarmBeats 上にすべてのデバイスとセンサーを表示できます。
 

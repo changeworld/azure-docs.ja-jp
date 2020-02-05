@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 437b87a3d684d7751adc89ba77b20ea86b3455e4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: bbe1d651a7d2d2cac1b1aa78b815b2797ad185c5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805996"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717318"
 ---
 # <a name="create-a-custom-voice"></a>カスタム音声を作成する
 
@@ -143,7 +143,7 @@ Custom Voice ポータルを使用して、エンドポイントのオンライ�
 
 カスタム エンドポイントの機能は、テキスト読み上げ要求に使用される標準のエンドポイントと同じです。 詳しくは、[REST API](rest-text-to-speech.md) に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ガイド:音声サンプルを録音する](record-custom-voice-samples.md)
 * [Text-to-Speech API リファレンス](rest-text-to-speech.md)
