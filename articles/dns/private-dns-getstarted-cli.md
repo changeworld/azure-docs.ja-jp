@@ -2,17 +2,17 @@
 title: クイックスタート - Azure CLI を使用して Azure プライベート DNS ゾーンを作成する
 description: このクイックスタートでは、Azure DNS でプライベート DNS ゾーンとレコードを作成してテストします。 これは、Azure CLI を使用して最初のプライベート DNS ゾーンとレコードを作成して管理するためのステップバイステップ ガイドです。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
 ms.date: 10/05/2019
-ms.author: allensu
-ms.openlocfilehash: 3c580eebd19eb2f2028768059140731fa24f4664
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 34a9858ffbec2360a347b8c765d53551fd2d9fc0
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210919"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935423"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure プライベート DNS ゾーンを作成する
 
@@ -210,7 +210,7 @@ MyVM02 についても同じ手順を繰り返します。
 az group delete --name MyAzureResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure DNS Private Zones のシナリオ](private-dns-scenarios.md)

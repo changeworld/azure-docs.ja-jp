@@ -16,12 +16,12 @@ ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3ad689fb57c51d0deb698a723b93e6175bdbb5c
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 933217b2ad86535d45f6674165ee162f263a8cd7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73882893"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712180"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>検疫状態のアプリケーションのプロビジョニング
 
@@ -63,7 +63,7 @@ Azure AD プロビジョニング サービスは、構成の正常性を監視�
 
 - アプリケーションのプロビジョニング設定を調べ、[有効な管理者の資格情報](configure-automatic-user-provisioning-portal.md#configuring-automatic-user-account-provisioning)が入力されていることを確認してください。 Azure AD は、ターゲット アプリケーションとの信頼関係を確立できる必要があります。 有効な資格情報を入力し、アカウントに必要なアクセス許可があることを確認します。
 
-- [プロビジョニング ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)を確認して、検疫の原因となっているエラーを詳しく調査し、解決します。 Azure portal で、 **[Azure Active Directory]** &gt; **[エンタープライズ アプリ]** &gt; **[プロビジョニング ログ (プレビュー)]** ( **[アクティビティ]** セクション内) を順に選択して、プロビジョニング ログにアクセスします。
+- [プロビジョニング ログ](../reports-monitoring/concept-provisioning-logs.md)を確認して、検疫の原因となっているエラーを詳しく調査し、解決します。 Azure portal で、 **[Azure Active Directory]** &gt; **[エンタープライズ アプリ]** &gt; **[プロビジョニング ログ (プレビュー)]** ( **[アクティビティ]** セクション内) を順に選択して、プロビジョニング ログにアクセスします。
 
 問題を解決したら、プロビジョニング ジョブを再開します。 属性マッピングやスコープフィルターなど、アプリケーションのプロビジョニング設定に特定の変更を加えると、自動的にプロビジョニングが再開されます。 アプリケーションの **[プロビジョニング]** ページの進行状況バーは、プロビジョニングが最後に開始された日時を示します。 プロビジョニング ジョブを手動で再起動する必要がある場合は、次のいずれかの方法を使用します。  
 

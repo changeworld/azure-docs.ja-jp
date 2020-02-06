@@ -3,7 +3,7 @@ title: 複数値のトラフィックのルーティングを構成する - Azur
 description: この記事では、トラフィックを A/AAAA エンドポイントにルーティングするように Traffic Manager を構成する方法について説明します。
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: allensu
-ms.openlocfilehash: 3e5e6cb55b86df8a48f96771fb2436afa8acaa18
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: daf7d09916d276130e337f7acea738228ee23707
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74040364"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938778"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Traffic Manager での複数値ルーティング方法の構成
 
@@ -29,7 +29,7 @@ ms.locfileid: "74040364"
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン 
 
 Azure Portal ( https://portal.azure.com ) にサインインします。
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 Traffic Manager プロファイル用のリソース グループを作成します。
 1. Azure portal の左側のウィンドウで、 **[リソース グループ]** を選択します。
 2. **[リソース グループ]** で、ページ上部の **[追加]** を選択します。
@@ -41,11 +41,11 @@ Traffic Manager プロファイル用のリソース グループを作成しま
 1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーク]**  >  **[Traffic Manager プロファイル]**  >  **[作成]** の順に選択します。
 2. **[Traffic Manager プロファイルの作成]** で、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[作成]** を選択します。
     
-    | Setting                 | 値                                              |
+    | 設定                 | Value                                              |
     | ---                     | ---                                                |
-    | 名前                   | この名前は trafficmanager.net ゾーン内で一意である必要があります。結果的に、Traffic Manager プロファイルへのアクセスに使用される、DNS 名.trafficmanager.net になるためです。                                   |
+    | Name                   | この名前は trafficmanager.net ゾーン内で一意である必要があります。結果的に、Traffic Manager プロファイルへのアクセスに使用される、DNS 名.trafficmanager.net になるためです。                                   |
     | ルーティング方法          | **[複数値]** ルーティング方式を選択します。                                       |
-    | Subscription            | サブスクリプションを選択します。                          |
+    | サブスクリプション            | サブスクリプションを選択します。                          |
     | Resource group          | *myResourceGroupTM1* を選択します。 |
     | Location                | これはリソース グループの場所を指定する設定であり、グローバルにデプロイされる Traffic Manager プロファイルには影響しません。                              |
    |        |           | 
@@ -60,10 +60,10 @@ Traffic Manager プロファイル用のリソース グループを作成しま
 2. **[Traffic Manager プロファイル]** の **[設定]** セクションで **[エンドポイント]** をクリックし、 **[追加]** をクリックします。
 3. 次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[OK]** を選択します。
 
-    | Setting                 | 値                                              |
+    | 設定                 | Value                                              |
     | ---                     | ---                                                |
-    | 種類                    | 外部エンドポイント                                   |
-    | 名前           | myEndpoint1                                        |
+    | Type                    | 外部エンドポイント                                   |
+    | Name           | myEndpoint1                                        |
     | 完全修飾ドメイン名 (FQDN) または IP           | この Traffic Manager プロファイルに追加するエンドポイントのパブリック IP アドレスを入力します                         |
     |        |           |
 
@@ -72,7 +72,7 @@ Traffic Manager プロファイル用のリソース グループを作成しま
 
    ![Traffic Manager エンドポイントの追加](./media/traffic-manager-multivalue-routing-method/add-endpoint.png)
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [重み付けによるトラフィック ルーティング方法](traffic-manager-configure-weighted-routing-method.md)について学習します。
 - [優先順位によるルーティング方法](traffic-manager-configure-priority-routing-method.md)について学習します。

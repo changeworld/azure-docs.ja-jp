@@ -7,6 +7,7 @@ ms.reviewer: zhiweiwangmsft
 author: billmath
 manager: daveba
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49b93cb7852692e4dad65fcbd72cd749db1b16fb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: defdf8118f1b07f8d6ddc4d232cda0fc423ef9f6
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60350561"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897255"
 ---
 # <a name="risky-ip-report-public-preview"></a>危険な IP のレポート (パブリック プレビュー)
 AD FS のお客様は、エンド ユーザーが Office 365 などの SaaS アプリケーションにアクセスするための認証サービスを提供する目的で、パスワード認証エンドポイントをインターネットに公開する場合があります。 この場合、悪意のあるアクターが AD FS システムへのログインを試みて、エンド ユーザーのパスワードを推測し、アプリケーションのリソースにアクセスする可能性があります。 Windows Server 2012 R2 の AD FS 以降、これらの種類の攻撃を防止するためのエクストラネット アカウント ロックアウト機能が用意されています。 これよりも古いバージョンを使用している場合は、AD FS システムを Windows Server 2016 にアップグレードすることを強くお勧めします。 <br />
@@ -96,7 +97,7 @@ AD FS のお客様は、エンド ユーザーが Office 365 などの SaaS ア�
 >
 >
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 **レポートにプライベート IP アドレス範囲が表示されるのはなぜですか?**  <br />
 プライベート IP アドレス (<i>10.x.x.x、172.x.x.x、192.168.x.x</i>) と Exchange IP アドレスはフィルター処理され、IP ホワイトリスト内で True とマークされます。 プライベート IP アドレス範囲が表示されている場合は、外部ロード バランサーが要求を Web アプリケーション プロキシ サーバーに渡すときにクライアント IP アドレスを送信していない可能性が高くなっています。
 
@@ -115,6 +116,6 @@ AD FS のお客様は、エンド ユーザーが Office 365 などの SaaS ア�
 全体管理者または[セキュリティ閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader)のアクセス許可が必要です。 アクセスするには、全体管理者に連絡してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
 * [Azure AD Connect Health エージェントのインストール](how-to-connect-health-agent-install.md)
