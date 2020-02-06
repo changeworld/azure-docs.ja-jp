@@ -3,8 +3,8 @@ title: Azure CLI スクリプトの例 - Batch アカウントの作成 - Batch 
 description: このスクリプトは、Batch サービス モードで Azure Batch アカウントを作成し、アカウントのさまざまなプロパティを照会および更新する方法を示します。
 services: batch
 documentationcenter: ''
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -13,13 +13,13 @@ ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
-ms.author: jushiman
-ms.openlocfilehash: 8d19ab24f792253e83656865a5143dc4d587e31d
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: 2a11e3d7b8ba2b9f4a0d0d373367575a779eebc4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029365"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77017090"
 ---
 # <a name="cli-example-create-a-batch-account-in-batch-service-mode"></a>CLI の例:Batch サービス モードでの Batch アカウントの作成
 
@@ -45,7 +45,7 @@ az group delete --name myResourceGroup
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az batch account create](/cli/azure/batch/account#az-batch-account-create) | Batch アカウントを作成します。 |

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: f017b19ef8bd8e4c44d9e2885da6fbaf172808a1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fb4b06eca0d6df6848e2e215d8890569701f7596
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476829"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705617"
 ---
 # <a name="troubleshoot"></a>[トラブルシューティング]
 
@@ -44,6 +44,38 @@ ms.locfileid: "75476829"
    - "*受信メッセージがある*" 場合は、farmbeatssupport@microsoft.com にお問い合わせください。 Datahub と Accelerator のログ、およびキャプチャされたテレメトリを添付してください。
 
 ログのダウンロード方法の詳細については、「[ログを手動で収集する](#collect-logs-manually)」セクションを参照してください。  
+
+### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>センサーから履歴またはストリーミング データを取り込んだ後で、テレメトリ データを表示できない
+
+**現象**:デバイスまたはセンサーがデプロイされており、FarmBeats 上でデバイスまたはセンサーを作成し、EventHub にテレメトリを取り込みましたが、FarmBeats 上でテレメトリ データを取得または表示することができません。
+
+**是正措置**:
+
+1. パートナー登録を確実に正しく完了させます。これを確認するには、ご利用の Datahub Swagger にアクセスし、/Partner API に移動し、Get を実行して、パートナーが登録されているかどうかを確認します。 そうなっていない場合は、[こちらの手順](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats)に従って、パートナーを追加してください。
+2. 次に示す、正しいテレメトリ メッセージ形式を確実に使用します。
+
+```json
+{
+"deviceid": "<id of the Device created>",
+"timestamp": "<timestamp in ISO 8601 format>",
+"version" : "1",
+"sensors": [
+    {
+      "id": "<id of the sensor created>",
+      "sensordata": [
+        {
+          "timestamp": "< timestamp in ISO 8601 format >",
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
+        },
+        {
+          "timestamp": "<timestamp in ISO 8601 format>",
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
+        }
+      ]
+    }
+ ]
+}
+```
 
 ### <a name="dont-have-the-azure-event-hubs-connection-string"></a>Azure Event Hubs の接続文字列がない
 
@@ -193,7 +225,7 @@ ms.locfileid: "75476829"
 [Azure Storage Explorer をインストールしてデプロイします]( https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)。
 
 ### <a name="collect-azure-data-factory-job-logs-in-datahub"></a>Datahub 内の Azure Data Factory ジョブのログを収集する
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[検索]** ボックスで、FarmBeats Datahub リソース グループを探します。
 
     > [!NOTE]
@@ -211,7 +243,7 @@ ms.locfileid: "75476829"
 
 ### <a name="collect-azure-data-factory-job-logs-in-accelerator"></a>Accelerator 内の Azure Data Factory ジョブのログを収集する
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[検索]** ボックスで、FarmBeats Accelerator リソース グループを探します。
 
     > [!NOTE]
@@ -228,7 +260,7 @@ ms.locfileid: "75476829"
 
 ### <a name="collect-datahub-app-service-logs"></a>Datahub の App Service ログを収集する
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[検索]** ボックスで、FarmBeats Datahub リソース グループを探します。
 
     > [!NOTE]
@@ -244,7 +276,7 @@ ms.locfileid: "75476829"
 
 ### <a name="collect-accelerator-app-service-logs"></a>Accelerator の App Service ログを収集する
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[検索]** ボックスで、FarmBeats Accelerator リソース グループを探します。
 
     > [!NOTE]

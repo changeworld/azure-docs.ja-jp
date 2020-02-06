@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 662b2792a2e09603425b1988138326799334f323
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0912316d1c41f46e5dba74b58017f4fd5e8ed529
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973433"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76909169"
 ---
 ### <a name="portal"></a>ポータル
 
@@ -77,6 +77,7 @@ ms.locfileid: "75973433"
 キー コンテナーとディスク暗号化セットの作成と設定が完了したので、暗号化を使用して VM をデプロイできます。
 VM のデプロイ プロセスは標準的なデプロイ プロセスと似ています。唯一の違いは、VM を他のリソースと同じリージョンにデプロイしたうえで、カスタマー マネージド キーを使用する必要があることです。
 
+1. [ディスク暗号化セットのリンク](https://aka.ms/diskencryptionsets)を開きます。
 1. 「**Virtual Machines**」で検索し、 **[+ 追加]** を選択して、VM を作成します。
 1. **[基本]** タブで、ディスク暗号化セットおよび Azure Key Vault と同じリージョンを選択します。
 1. **[基本]** タブで、必要に応じてその他の値を入力します。
@@ -96,6 +97,7 @@ VM のデプロイ プロセスは標準的なデプロイ プロセスと似て
 > [!CAUTION]
 > VM にアタッチされているすべてのディスクでディスク暗号化を有効にするには、VM を停止する必要があります。
 
+1. [ディスク暗号化セットのリンク](https://aka.ms/diskencryptionsets)を開きます。
 1. 使用しているディスク暗号化セットのいずれかと同じリージョンにある VM に移動します。
 1. VM を開き、 **[停止]** を選択します。
 

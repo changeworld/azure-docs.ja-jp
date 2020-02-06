@@ -3,12 +3,12 @@ title: Azure Backup のサポート マトリックス
 description: Azure Backup サービスのサポート設定と制限事項の概要を説明します。
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: c424b905f44d6fd3a80a08ef925df4d0a06dd7d8
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 37347e6febdfc3500c218238606fc96463da631c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705379"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936242"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup のサポート マトリックス
 
@@ -19,6 +19,8 @@ ms.locfileid: "76705379"
 - [Azure 仮想マシン (VM) のバックアップ](backup-support-matrix-iaas.md)のサポート マトリックス
 - [System Center Data Protection Manager (DPM)/Microsoft Azure Backup Server (MABS)](backup-support-matrix-mabs-dpm.md) を使用したバックアップのサポート マトリックス
 - [Microsoft Azure Recovery Services (MARS) エージェント](backup-support-matrix-mars-agent.md)を使用したバックアップのサポート マトリックス
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="vault-support"></a>コンテナーのサポート
 
@@ -41,7 +43,7 @@ Azure Backup では、Recovery Services コンテナーを使用して、バッ�
 
 オンプレミス マシンをバックアップしたい場合に何がサポートされるかを以下に示します。
 
-**マシン** | **バックアップされる項目** | **Location** | **機能**
+**マシン** | **バックアップされる項目** | **地域** | **機能**
 --- | --- | --- | ---
 **MARS エージェントを使用した Windows マシンの直接バックアップ** | ファイル、フォルダー、システム状態 | Recovery Services コンテナーへのバックアップ。 | 1 日に 3 回のバックアップ<br/><br/> アプリ対応のバックアップなし<br/><br/> ファイル、フォルダー、ボリュームの復元
 **MARS エージェントを使用した Linux マシンの直接バックアップ** | バックアップはサポートされていません
@@ -61,7 +63,7 @@ Azure Backup では、Recovery Services コンテナーを使用して、バッ�
 
 Azure VM をバックアップしたい場合に何がサポートされるかを以下に示します。
 
-**マシン** | **バックアップされる項目** | **Location** | **機能**
+**マシン** | **バックアップされる項目** | **地域** | **機能**
 --- | --- | --- | ---
 **VM 拡張機能を使用した Azure VM のバックアップ** | VM 全体 | コンテナーへのバックアップ。 | VM のバックアップを有効にするときにインストールされる拡張機能。<br/><br/> 1 日 1 回のバックアップ。<br/><br/> Windows VM の場合はアプリ対応バックアップ、Linux VM の場合はファイル整合性バックアップ。 Linux マシンでは、カスタム スクリプトを使用して、アプリ整合性を構成できます。<br/><br/> VM またはディスクの復元。<br/><br/> Azure VM は、オンプレミスの場所へはバックアップできません。
 **MARS エージェントを使用する Azure VM のバックアップ** | ファイル、フォルダー、システム状態 | コンテナーへのバックアップ。 | 1 日に 3 回のバックアップ。<br/><br/> VM 全体ではなく特定のファイルまたはフォルダーをバックアップしたい場合は、MARS エージェントを VM 拡張機能と共に実行できます。

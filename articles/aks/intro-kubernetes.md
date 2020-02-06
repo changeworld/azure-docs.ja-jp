@@ -8,22 +8,24 @@ ms.topic: overview
 ms.date: 05/06/2019
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 5515951a9bde596935f4c603ffd9e088f74dee45
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: c98e67d174c3c8b7fc426e1dd2c5ebafd6760969
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67615155"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932604"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
-Azure Kubernetes Service (AKS) を使用すると、マネージド Kubernetes クラスターを Azure 内に簡単にデプロイできます。 AKS では、責任の多くを Azure にオフロードすることで、Kubernetes の管理の複雑さと運用上のオーバーヘッドを軽減します。 ホストされた Kubernetes サービスとして、Azure は正常性監視やメンテナンスなどの重要なタスクを自動的に処理します。 Kubernetes マスターは、Azure によって管理されます。 ユーザーは、エージェント ノードの管理とメンテナンスだけを行います。 マネージド Kubernetes サービスである AKS は無料のため、マスターではなく、クラスター内のエージェント ノードに対してのみ料金を支払います。
+Azure Kubernetes Service (AKS) を使用すると、マネージド Kubernetes クラスターを Azure 内に簡単にデプロイできます。 AKS では、責任の多くを Azure にオフロードすることで、Kubernetes の管理の複雑さと運用上のオーバーヘッドを軽減します。 ホストされた Kubernetes サービスとして、Azure は正常性監視やメンテナンスなどの重要なタスクを自動的に処理します。 Kubernetes マスターは、Azure によって管理されます。 ユーザーは、エージェント ノードの管理と保守のみを行います。 マネージド Kubernetes サービスである AKS は無料のため、マスターではなく、クラスター内のエージェント ノードに対してのみ料金を支払います。
 
 Azure portal では、Azure CLI、または Resource Manager テンプレートや Terraform などのテンプレート駆動型のデプロイ オプションを使用して、AKS クラスターを作成できます。 AKS クラスターをデプロイすると、Kubernetes マスターとすべてのノードが自動的にデプロイされ、構成されます。 デプロイ プロセス中に、高度なネットワーク、Azure Active Directory 統合、監視などの追加機能も構成できます。 現在、AKS で Windows Server コンテナーのサポートはプレビュー段階にあります。
 
 Kubernetes の基礎の詳細については、[AKS における Kubernetes の中心概念][concepts-clusters-workloads]に関するページを参照してください。
 
 開始するには、[Azure portal][aks-portal] で、または [Azure CLI][aks-cli] を使用して、AKS のクイックスタートを完了します。
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="access-security-and-monitoring"></a>アクセス、セキュリティ、および監視
 
@@ -111,7 +113,7 @@ Azure Kubernetes Service (AKS) は、Kubernetes 準拠として CNCF 認定さ�
 
 Azure Kubernetes Service (AKS) は、SOC、ISO、PCI DSS、HIPAA に準拠しています。 詳細については、「[Overview of Microsoft Azure compliance][compliance-doc]」 (Microsoft Azure コンプライアンスの概要) を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 AKS のデプロイと管理の詳細については、Azure CLI のクイックスタートで説明しています。
 

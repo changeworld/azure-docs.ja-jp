@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42d1fde92e9315e8df3f65b2ab91ced74b377c0a
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 70fe718884796ac127be38c375003dd728089be8
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293455"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016036"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure Active Directory 認証 (プレビュー) を使用して Azure 内の Windows 仮想マシンにサインインする
 
@@ -239,9 +239,9 @@ VM が Azure AD 参加プロセスを完了するには、AADLoginForWindows 拡
 
    | 実行するコマンド | 想定される出力 |
    | --- | --- |
-   | curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01" | VM に関する正しい情報 |
-   | curl -H Metadata:true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01" | Azure サブスクリプションに関連付けられている有効なテナント ID |
-   | curl -H Metadata:true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01" | Azure Active Directory によって発行された、この VM に割り当てられているマネージド ID の有効なアクセス トークン |
+   | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/instance?api-version=2017-08-01"` | VM に関する正しい情報 |
+   | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01"` | Azure サブスクリプションに関連付けられている有効なテナント ID |
+   | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01"` | Azure Active Directory によって発行された、この VM に割り当てられているマネージド ID の有効なアクセス トークン |
 
    > [!NOTE]
    > アクセス トークンは、[http://calebb.net/](http://calebb.net/) などのツールを使用してデコードできます。 アクセス トークンの "appid" と VM に割り当てられたマネージド ID が一致していることを確認します。

@@ -8,12 +8,12 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 6c7be7d92cae992e54ca6e9f50dda6342c57856b
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: cb17fe24339ad618229b3456ece15c206f79bdb7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945717"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899951"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault 内のユーザーが管理するキーを使用した Azure Cognitive Search でのコンテンツの保存時の暗号化
 
@@ -26,13 +26,13 @@ ms.locfileid: "75945717"
 キーは、同じ Key Vault に配置する必要はありません。 1つの検索サービスで、暗号化された複数のインデックスや、独自のカスタマー マネージドの暗号化キーで暗号化されてそれぞれ異なる Key Vault に格納されている複数のシノニム マップをホストすることができます。  また、カスタマー マネージドのキーを使用して暗号化されていない同じサービス内に、インデックスとシノニム マップを置くこともできます。 
 
 > [!IMPORTANT] 
-> この機能は、[REST API バージョン 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) および [.NET SDK バージョン 8.0-preview](search-dotnet-sdk-migration-version-9.md)で利用できます。 現在 Azure portal では、カスタマー マネージドの暗号化キーの構成はサポートしていません。
+> この機能は、[REST API バージョン 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) および [.NET SDK バージョン 8.0-preview](search-dotnet-sdk-migration-version-9.md)で利用できます。 現在 Azure portal では、カスタマー マネージドの暗号化キーの構成はサポートしていません。 検索サービスは、2019年1月以降に作成することが必要で、無料 (共有) サービスにはできません。
 
 ## <a name="prerequisites"></a>前提条件
 
 この例では、次のサービスを使用します。 
 
-+ [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 検索サービスは、2019年1月以降に作成することが必要で、無料 (共有) サービスにはできません。
++ [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 
 
 + [Azure Key Vault リソースを作成](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault)するか、サブスクリプションから既存のコンテナーを見つけます。
 

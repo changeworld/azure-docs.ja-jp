@@ -3,23 +3,23 @@ title: Azure IoT Central の UI をカスタマイズする | Microsoft Docs
 description: Azure IoT Central アプリケーションのテーマとヘルプのリンクをカスタマイズする方法
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/26/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 829ea1bcca36dfba2da3e3946b48b7249f69ee62
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3afa86aae3b51ea20610dcbff5211e59fb341650
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72942532"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018433"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>Azure IoT Central の UI をカスタマイズする
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
+この記事では、管理者としてカスタム テーマを適用したり、独自のカスタム ヘルプ リソースを指すようにヘルプのリンクを変更したりして、アプリケーションの UI をカスタマイズする方法について説明します。 
 
-この記事では、管理者としてカスタム テーマを適用したり、独自のカスタム ヘルプ リソースを指すようにヘルプのリンクを変更したりして、アプリケーションの UI をカスタマイズする方法について説明します。
+
 
 次のスクリーンショットは、標準テーマを使用したページを示しています。
 
@@ -41,7 +41,7 @@ ms.locfileid: "72942532"
 
 1 MB 以下で、透明な背景の PNG イメージ。 このロゴは、IoT Central アプリケーションのタイトル バーの左側に表示されます。
 
-ロゴのイメージにアプリケーションの名前が含まれている場合は、アプリケーション名のテキストを非表示にすることができます。 詳細については、「[アプリケーションの管理](./howto-administer.md#change-application-name-and-url)」を参照してください。
+ロゴのイメージにアプリケーションの名前が含まれている場合は、アプリケーション名のテキストを非表示にすることができます。 詳細については、「[アプリケーションの管理](howto-administer.md#change-application-name-and-url)」を参照してください。
 
 ### <a name="browser-icon-favicon"></a>ブラウザー アイコン (favicon)
 
@@ -73,9 +73,9 @@ ms.locfileid: "72942532"
 > [!NOTE]
 > **[ヘルプのカスタマイズ]** ページで、いつでも既定のヘルプのリンクに戻すことができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、IoT Central アプリケーションの UI をカスタマイズする方法について説明しました。推奨される次の手順は以下のとおりです。
 
 - [アプリケーションを管理する](./howto-administer.md)
-- [ダッシュボードにタイルを追加する](./howto-add-tiles-to-your-dashboard.md)
+- [ダッシュボードにタイルを追加する](howto-add-tiles-to-your-dashboard.md)

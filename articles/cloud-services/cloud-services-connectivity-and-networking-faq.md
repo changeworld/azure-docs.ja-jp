@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: 22f7c0ba98390b391a79a121f120b8ab6172cfb9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7caeba0e88f63106eae80f7142b5d65463f8d7a7
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845369"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019402"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の接続とネットワークの問題:よく寄せられる質問 (FAQ)
 
@@ -101,8 +101,8 @@ IIS の URL の書き換えモジュールを使って、クラウド サービ�
 
 クラウド サービスのパブリックに公開された IP アドレス (別名、VIP) が変わらないようにして、いくつかの特定のクライアントで習慣的にホワイトリストに登録できるようにするには、予約済み IP を関連付けることをお勧めします。 それ以外の場合、Azure によって提供される仮想 IP は、デプロイを削除するとサブスクリプションから割り当て解除されます。 VIP スワップ操作を成功させるには、運用スロットとステージング スロットの両方について個々の予約済み IP が必要です。 これがないと、スワップ操作は失敗します。 IP アドレスを予約してクラウド サービスに関連付けるには、次の記事を参照してください。
 
-- [既存のクラウド サービスの IP アドレスを予約する](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
-- [サービス構成ファイルを使用してクラウド サービスに予約済み IP を関連付ける](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
+- [既存のクラウド サービスの IP アドレスを予約する](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#reserve-the-ip-address-of-an-existing-cloud-service)
+- [サービス構成ファイルを使用してクラウド サービスに予約済み IP を関連付ける](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
 お使いのロールに複数のインスタンスがある場合、クラウド サービスに RIP を関連付けることでダウンタイムが発生することはありません。 また、お使いの Azure データセンターの IP 範囲を許可リストに登録することができます。 [Microsoft ダウンロード センター](https://www.microsoft.com/en-us/download/details.aspx?id=41653)で、Azure IP 範囲の一覧を入手できます。
 

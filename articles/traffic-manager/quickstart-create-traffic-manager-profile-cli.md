@@ -2,7 +2,7 @@
 title: 'クイックスタート: アプリケーションの HA のためのプロファイルを作成する - Azure CLI - Azure Traffic Manager'
 description: このクイック スタート記事では、高可用性 Web アプリケーションを構築するための Traffic Manager プロファイルの作成方法について説明します。
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 mnager: twooley
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
-ms.author: allensu
-ms.openlocfilehash: b724a3e469c5dd8f7b4c4f30adef00c58c5c47c5
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.author: rohink
+ms.openlocfilehash: 36ad1c47e115f06aea2017a049cefe36304504bf
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483912"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934836"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Web アプリケーションの高可用性を実現する Traffic Manager プロファイルを作成する
 
@@ -31,7 +31,7 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.28 以降のバージョンを実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 [az group create](https://docs.microsoft.com/cli/azure/group) を使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
@@ -208,7 +208,7 @@ az network traffic-manager profile show \
 3. Traffic Manager プロファイルの DNS 名 (*http://<* relativednsname *>.trafficmanager.net*) をコピーして、新しい Web ブラウザー セッションで Web サイトを表示します。
 4. Web アプリがまだ使用できることを確認します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 完了したら、[az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) を使用してリソース グループ、Web アプリケーション、およびすべての関連リソースを削除します。
 
@@ -219,7 +219,7 @@ az group delete \
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Web アプリケーションの高可用性を実現する Traffic Manager プロファイルを作成しました。 トラフィックのルーティングについて理解を深めるために、引き続き Traffic Manager のチュートリアルをご覧ください。
 

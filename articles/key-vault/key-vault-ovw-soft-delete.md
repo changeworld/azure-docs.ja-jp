@@ -6,12 +6,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/19/2019
-ms.openlocfilehash: 89b7dc639a3140f17a62087c5ba0d05fb6df4d7f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 26bd6c8b31bd16c058c5cb35cab086117b9f8cc5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883138"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845798"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault の論理的な削除の概要
 
@@ -36,13 +36,21 @@ Azure Key Vault は追跡対象のリソースであり、Azure Resource Manager
 
 この機能を使用すると、キー コンテナーまたはキー コンテナー オブジェクトの DELETE 操作は論理的な削除となり、見かけ上はオブジェクトが削除されていても、実際には指定した保持期間 (90 日間) だけリソースが保持されます。 さらに、削除されたオブジェクトを回復する、実質的には削除を元に戻すメカニズムも用意されています。 
 
-論理的な削除は Key Vault のオプションの動作であり、このリリースでは**既定では有効になっていません**。 これは、[CLI](key-vault-soft-delete-cli.md) または [Powershell](key-vault-soft-delete-powershell.md) 使用して有効にできます。
+新しく作成されたキー コンテナーの論理的な削除が既定でオンになるようになりました。 これは、[Azure CLI](key-vault-soft-delete-cli.md) または [Azure Powershell](key-vault-soft-delete-powershell.md) を使用して無効にすることができます。
+
+既定の保有期間は 90 日ですが、Azure portal からアイテム保持ポリシーの期間を 7 から 90 日の値に設定することができます。 保護の削除のアイテム保持ポリシーでは、同じ間隔が使用されます。 
+
+論理的な削除がキー コンテナーに設定されている場合は、無効にすることができず、アイテム保持ポリシーの期間を変更することはできません。 
+
+保有期間が経過するまで、論理的に削除されたキー コンテナーの名前を再利用することはできません。 
 
 ### <a name="purge-protection"></a>消去保護 
 
-消去保護が有効な場合、削除状態のコンテナーまたはオブジェクトは､90 日間の保持期間が経過するまで消去できません｡ これらのコンテナーとオブジェクトはまだ回復可能で、お客様のアイテム保持ポリシーに確実に従うことができます。 
-
 消去保護は Key Vault のオプションの動作であり、**既定で有効になっていません**。 これは、[CLI](key-vault-soft-delete-cli.md#enabling-purge-protection) または [Powershell](key-vault-soft-delete-powershell.md#enabling-purge-protection) 使用して有効にできます。
+
+消去保護が有効な場合、削除状態のコンテナーまたはオブジェクトは、保持期間が経過するまで消去できません｡ 論理的に削除されたこれらのコンテナーとオブジェクトはまだ回復可能で、アイテム保持ポリシーに確実に従うことができます。 
+
+既定の保有期間は 90 日ですが、Azure portal からアイテム保持ポリシーの期間を 7 から 90 日の値に設定することができます。 アイテム保持ポリシーの期間を設定して保存すると、そのコンテナーに対して変更することはできません。 
 
 ### <a name="permitted-purge"></a>許可された消去
 
@@ -82,7 +90,7 @@ Azure Key Vault は追跡対象のリソースであり、Azure Resource Manager
 - 'purge' および 'recover' アクションは通常のキー コンテナー操作と見なされ、課金されます。
 - オブジェクトが HSM キーである場合は、過去 30 日間にキー バージョンが使用されていると、'HSM で保護されたキー' の 1 か月あたり、キー バージョンあたりの課金が適用されます。 その後は、オブジェクトが削除済み状態になり、それに対して操作を実行できないため、課金は適用されません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の 2 つのガイドでは、論理的な削除を使用する場合の主な使用シナリオを紹介しています。
 

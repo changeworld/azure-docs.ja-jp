@@ -3,17 +3,17 @@ title: クイック スタート:DNS ゾーンとレコードの作成 - Azure p
 titleSuffix: Azure DNS
 description: このステップごとのクイック スタート ガイドでは、Azure portal を使用して Azure DNS ゾーンおよびレコードを作成する方法を学びます。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
-ms.author: allensu
-ms.openlocfilehash: cb81b0ec2b5283ba242dd7c2dd549c330e230f0a
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.author: rohink
+ms.openlocfilehash: 26e5386f1c9730f1600e59a002ea7845b82ffe06
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082916"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937129"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure DNS ゾーンおよびレコードを作成する
 
@@ -42,10 +42,10 @@ DNS ゾーンにはドメインの DNS エントリが含まれています。 A
 
 1. **[DNS ゾーンの作成]** ページで、以下の値を入力または選択します。
 
-   - **名前**: このクイック スタートのサンプルでは「*contoso.xyz*」と入力します。 DNS ゾーン名には、Azure DNS サーバーに既に構成されていない任意の値を指定できます。 実際の値は、ドメイン名レジストラーから購入したドメインになります。
+   - **Name**:このクイック スタートのサンプルでは「*contoso.xyz*」と入力します。 DNS ゾーン名には、Azure DNS サーバーに既に構成されていない任意の値を指定できます。 実際の値は、ドメイン名レジストラーから購入したドメインになります。
    - **[リソース グループ]** : **[新規作成]** を選択し、「*MyResourceGroup*」と入力して、 **[OK]** を選択します。 Azure サブスクリプション内で一意となるリソース グループ名を使用してください。 
 
-1. **作成**を選択します。
+1. **作成** を選択します。
 
    ![[DNS ゾーン]](./media/dns-getstarted-portal/openzone650.png)
 
@@ -63,13 +63,13 @@ DNS ゾーン内にドメインの DNS エントリまたはレコードを作�
 
 1. **[レコード セットの追加]** ページで、以下の値を入力または選択します。
 
-   - **名前**: 「*www*」と入力します。 このレコード名は、特定の IP アドレスに解決するホスト名です。
-   - **種類**: **[A]** を選択します。"A" レコードが最もよく使用されますが、他の種類のレコードもあります。たとえば、メール サーバーの場合は "MX"、IP v6 アドレスの場合は "AAAA" です。 
+   - **Name**:「*www*」と入力します。 このレコード名は、特定の IP アドレスに解決するホスト名です。
+   - **[種類]** : **[A]** を選択します。"A" レコードが最もよく使用されますが、他の種類のレコードもあります。たとえば、メール サーバーの場合は "MX"、IP v6 アドレスの場合は "AAAA" です。 
    - **TTL**: 「*1*」と入力します。 DNS 要求の *Time-to-live* は、DNS サーバーおよびクライアントが応答をキャッシュに入れておくことができる時間を指定します。
    - **TTL の単位**: **[時間]** を選択します。 これは、 **[TTL]** 値の既定の時間単位です。 
    - **IP アドレス**: このクイック スタートの例では、「*10.10.10.10*」と入力します。 この値は、レコード名が解決される IP アドレスです。 実際の例では、Web サーバーのパブリック IP アドレスを入力します。
 
-このクイック スタートは簡単なテストを目的としているため、ドメイン名レジストラーで Azure DNS ネーム サーバーを構成する必要はありません。 実際の運用ドメインの場合は、Web サーバーまたはアプリに接続するために、インターネット上のだれかにホスト名を解決してもらう必要があります。 ドメイン名レジストラーにアクセスして、ネーム サーバー レコードを Azure DNS ネーム サーバーで置き換えてもらいます。 詳細については、「[チュートリアル: Azure DNS でドメインをホストする](dns-delegate-domain-azure-dns.md#delegate-the-domain)」を参照してください。
+このクイック スタートは簡単なテストを目的としているため、ドメイン名レジストラーで Azure DNS ネーム サーバーを構成する必要はありません。 実際の運用ドメインの場合は、Web サーバーまたはアプリに接続するために、インターネット上のだれかにホスト名を解決してもらう必要があります。 ドメイン名レジストラーにアクセスして、ネーム サーバー レコードを Azure DNS ネーム サーバーで置き換えてもらいます。 詳細については、「[チュートリアル:Azure DNS でドメインをホストする](dns-delegate-domain-azure-dns.md#delegate-the-domain)」を参照してください。
 
 ## <a name="test-the-name-resolution"></a>名前解決をテストする
 
@@ -89,7 +89,7 @@ DNS ゾーン内にドメインの DNS エントリまたはレコードを作�
    nslookup www.contoso.xyz <name server name>
    ```
 
-   例:
+   次に例を示します。
 
    ```
    nslookup www.contoso.xyz ns1-08.azure-dns.com.
@@ -101,11 +101,11 @@ DNS ゾーン内にドメインの DNS エントリまたはレコードを作�
 
 ホスト名 **www\.contoso.xyz** は、構成したとおり、**10.10.10.10** に名前解決されています。 この結果で、名前解決が正常に機能していることを確認できます。 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このクイック スタートで作成したリソースが必要なくなったら、**MyResourceGroup** リソース グループを削除することで削除できます。 **MyResourceGroup** リソース グループを開き、 **[リソース グループの削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [カスタム ドメインにおける Web アプリの DNS レコードの作成](./dns-web-sites-custom-domain.md)

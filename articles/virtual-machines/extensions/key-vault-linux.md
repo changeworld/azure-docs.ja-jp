@@ -8,16 +8,16 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d6b8cdf43fea63fa4709dd5fc5319bb92ddefc63
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: a31894719863b16cc92f7e5bf4d7c85944c8850e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806975"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721304"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Linux 用の Key Vault 仮想マシン拡張機能
 
-Key Vault VM 拡張機能は、Azure キー コンテナーに保存されている証明書の自動更新を行います。 具体的には、拡張機能では、キー コンテナーに格納されている確認済みの証明書のリストが監視されます。  変更が検出されると、拡張によって取得され、対応する証明書がインストールされます。 現時点では、Key Vault VM 拡張機能は、Linux VM において、Microsoft により公開およびサポートされています。 このドキュメントでは、Linux 用の Key Vault VM 拡張機能でサポートされているプラットフォーム、構成、デプロイ オプションについて詳しく説明します。 
+Key Vault VM 拡張機能では、Azure キー コンテナーに保存されている証明書の自動更新が行われます。 具体的には、拡張機能では、キー コンテナーに格納されている確認済みの証明書のリストが監視されます。  変更が検出されると、拡張によって取得され、対応する証明書がインストールされます。 現時点では、Key Vault VM 拡張機能は、Linux VM において、Microsoft により公開およびサポートされています。 このドキュメントでは、Linux 用の Key Vault VM 拡張機能でサポートされているプラットフォーム、構成、デプロイ オプションについて詳しく説明します。 
 
 ### <a name="operating-system"></a>オペレーティング システム
 
@@ -30,7 +30,7 @@ Key Vault VM 拡張機能では、次の Linux ディストリビューション
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
-次の JSON は、Key Vault VM 拡張機能のスキーマを示しています。 この拡張機能では、保護された設定は必要ありません。すべての設定がセキュリティに影響を与えない情報と見なされます。 この拡張機能には、監視対象のシークレット、ポーリング頻度、および宛先の証明書ストアの一覧が必要です。 具体的には次の処理が行われます。  
+次の JSON は、Key Vault VM 拡張機能のスキーマを示しています。 この拡張機能では、保護された設定は必要ありません。すべての設定がセキュリティに影響を与えない情報と見なされます。 この拡張機能には、監視対象のシークレット、ポーリング頻度、および宛先の証明書ストアの一覧が必要です。 具体的な内容は次のとおりです。  
 ```json
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -67,17 +67,17 @@ Key Vault VM 拡張機能では、次の Linux ディストリビューション
 
 ### <a name="property-values"></a>プロパティ値
 
-| 名前 | 値/例 | データ型 |
+| Name | 値/例 | データ型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | publisher | Microsoft.Azure.KeyVault | string |
-| type | KeyVaultForLinux | string |
-| typeHandlerVersion | 1.0 | int |
+| 型 | KeyVaultForLinux | string |
+| typeHandlerVersion | 1.0 | INT |
 | pollingIntervalInS | 3600 | string |
 | certificateStoreName | MY | string |
-| linkOnRenewal | false | ブール値 |
+| linkOnRenewal | false | boolean |
 | certificateStoreLocation  | LocalMachine | string |
-| requiredInitialSync | true | ブール値 |
+| requiredInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | 文字列配列
 
 
@@ -193,7 +193,7 @@ Azure CLI を使用すると、Key Vault VM 拡張機能を既存の仮想マシ
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
 
-### <a name="troubleshoot"></a>トラブルシューティング
+### <a name="troubleshoot"></a>[トラブルシューティング]
 
 拡張機能のデプロイ状態に関するデータを取得するには、Azure Portal または Azure PowerShell を使用します。 特定の VM での拡張機能のデプロイ状態を確認するには、Azure PowerShell を使用して次のコマンドを実行します。
 

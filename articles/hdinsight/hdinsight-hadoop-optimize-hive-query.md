@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: 33b000d0ca5cdd4af2ed57c5db6e71ae5a1e4c58
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 144d51d08a61526ec0f183a63e1fdf5658136293
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74215839"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030968"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Azure HDInsight での Apache Hive クエリの最適化
 
@@ -29,11 +29,11 @@ HDInsight クラスター内のノードのワーカーの数を増やすこと�
 
 * クラスターの作成時に、Azure portal、Azure PowerShell またはコマンド ライン インターフェイスを使用してワーカー ノードの数を指定できます。  詳細については、[HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。 次のスクリーンショットは、Azure Portal 上に表示されたワーカー ノード構成を示しています。
   
-    ![Azure portal のクラスター サイズ ノード](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration-pricing-hadoop.png "scaleout_1")
+    ![Azure portal のクラスター サイズ ノード](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration.png "scaleout_1")
 
 * 作成後にワーカー ノードの数を編集して、クラスターを再作成せずにスケールアウトすることもできます。
 
-    ![Azure portal のスケール クラスター サイズ](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-scaleout-2.png "scaleout_2")
+    ![Azure portal のスケール クラスター サイズ](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-settings-nodes.png "scaleout_2")
 
 HDInsight のスケーリングについて詳しくは、[HDInsight クラスターのスケーリング](hdinsight-scaling-best-practices.md)に関するページをご覧ください
 
@@ -122,7 +122,7 @@ STORED AS TEXTFILE;
 
 ## <a name="use-the-orcfile-format"></a>ORCFile 形式の使用
 
-Hive は、さまざまなファイル形式をサポートしています。 例:
+Hive は、さまざまなファイル形式をサポートしています。 次に例を示します。
 
 * **テキスト**: 既定のファイル形式で、ほとんどのシナリオで使用できます。
 * **Avro**: 相互運用性シナリオで使用できます。
@@ -148,7 +148,7 @@ PARTITIONED BY(L_SHIPDATE STRING)
 STORED AS ORC;
 ```
 
-次に、データをステージング テーブルから ORC テーブルに挿入します。 例:
+次に、データをステージング テーブルから ORC テーブルに挿入します。 次に例を示します。
 
 ```sql
 INSERT INTO TABLE lineitem_orc
@@ -193,9 +193,9 @@ set hive.vectorized.execution.enabled = true;
 * **結合の最適化:** 結合の効率を向上させユーザー ヒントの必要性を少なくするための Hive のクエリ実行プランの最適化です。 詳しくは、「[Join optimization (結合の最適化)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization)」を参照してください。
 * **Reducer の増加**。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-この記事ではいくつかの一般的な Hive クエリの最適化方法を説明しました。 詳細については、次の記事を参照してください。
+この記事ではいくつかの一般的な Hive クエリの最適化方法を説明しました。 詳細については、以下の記事をお読みください。
 
 * [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)
 * [HDInsight の対話型クエリを使用したフライトの遅延データの分析](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)

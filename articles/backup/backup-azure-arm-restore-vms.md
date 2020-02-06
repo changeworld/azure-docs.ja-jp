@@ -4,12 +4,12 @@ description: Azure Portal を使用して復旧ポイントから Azure 仮想�
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: d0b2e85fa3dfb0168c40c6b8838c7b9890c92ab6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 23e34d65a06f5fbf3ad8ce53311862c680ddebd0
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844009"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77021986"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal で Azure VM データを復元する方法
 
@@ -187,7 +187,7 @@ VM の復元が必要になることがある、一般的なシナリオはい�
 **単一ドメイン内の複数のドメイン コントローラー VM を復元する** | 同じドメイン内の他のドメイン コントローラーにネットワーク経由で到達できる場合は、VM と同様にそのドメイン コントローラーを復元できます。 これがドメイン内の最後のドメイン コントローラーである場合や、分離されたネットワークでの復旧を実行している場合は、[フォレストの復旧](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)を使用します。
 **1 つのフォレスト内の複数のドメインを復元する** | [フォレストの復旧](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)をお勧めします。
 **ベア メタル回復** | Azure VM とオンプレミスのハイパーバイザーの大きな違いは、Azure では VM コンソールが使用できないことです。 コンソールは、ベア メタル回復 (BMR) タイプのバックアップを使用して回復するといった特定のシナリオで必要です。 ただし、コンテナーからの VM の復元が、BMR の代わりとなります。
-**特別なネットワーク構成を持つ VM を復元する** | 特別なネットワーク構成に含まれるものとしては、内部または外部の負荷分散を使用する VM、複数の NIC の使用、または複数の予約済み IP アドレスがあります。 これらの VM は、[ディスクの復元オプション](#restore-disks)を使用して復元します。 このオプションでは、指定されたストレージ アカウントに VHD のコピーを作成した後、構成に応じて、[内部](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)または[外部](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/)のロード バランサー、[複数の NIC](../virtual-machines/windows/multiple-nics.md)、または[複数の予約済み IP アドレス](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)を使用して VM を作成できます。
+**特別なネットワーク構成を持つ VM を復元する** | 特別なネットワーク構成に含まれるものとしては、内部または外部の負荷分散を使用する VM、複数の NIC の使用、または複数の予約済み IP アドレスがあります。 これらの VM は、[ディスクの復元オプション](#restore-disks)を使用して復元します。 このオプションでは、指定されたストレージ アカウントに VHD のコピーを作成した後、構成に応じて、[内部](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)または[外部](/azure/load-balancer/quickstart-create-standard-load-balancer-powershell)のロード バランサー、[複数の NIC](../virtual-machines/windows/multiple-nics.md)、または[複数の予約済み IP アドレス](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)を使用して VM を作成できます。
 **NIC/サブネットでのネットワーク セキュリティ グループ (NSG)** | Azure VM バックアップは、vnet、サブネット、および NIC レベルでの NSG 情報のバックアップと復元をサポートします。
 **ゾーンにピン留めされた VM** | Azure Backup は、ゾーンにピン留めされた VM のバックアップと復元をサポートしています。 [詳細情報](https://azure.microsoft.com/global-infrastructure/availability-zones/)
 
@@ -214,7 +214,7 @@ VM の復元が必要になることがある、一般的なシナリオはい�
 VM を復元した後の注意点がいくつかあります:
 
 - バックアップの構成の間に存在した拡張機能はインストールされますが、有効にはされません。 問題がある場合は、拡張機能を再インストールしてください。
-- バックアップされた VM が静的 IP アドレスを持っていた場合、復元された VM は競合を回避するために動的 IP アドレスを持つことになります。 [復元された VM に静的 IP アドレスを追加する](/previous-versions/azurevirtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)ことができます。
+- バックアップされた VM が静的 IP アドレスを持っていた場合、復元された VM は競合を回避するために動的 IP アドレスを持つことになります。 [復元された VM に静的 IP アドレスを追加する](/previous-versions/azure/virtual-network/virtual-networks-reserved-private-ip#how-to-add-a-static-internal-ip-to-an-existing-vm)ことができます。
 - 復元された VM には可用性セットがありません。 ディスクの復元オプションを使用する場合、提供されているテンプレートまたは PowerShell を使用してディスクから VM を作成するときに[可用性セットを指定する](../virtual-machines/windows/tutorial-availability-sets.md)ことができます。
 - Ubuntu など cloud-init ベースの Linux ディストリビューションを使用している場合、セキュリティ上の理由から、復元後にパスワードがブロックされます。 復元した VM で VMAccess 拡張機能を使用して、[パスワードをリセット](../virtual-machines/linux/reset-password.md)してください。 これらのディストリビューションでは SSH キーを使用することを推奨しているため、復元後にパスワードをリセットする必要はありません。
 - VM でドメイン コントローラーとの関係が破損しているために復元された VM にアクセスできない場合は、次の手順に従って VM を起動します。

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: 8cc097bc7083729a0e99c93376fe46b170760cf4
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: af608dcfbb5d98cf3116de4e14dc12bf6facb97b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327481"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989911"
 ---
 # <a name="animated-character-detection-preview"></a>アニメーション化されたキャラクターの検出 (プレビュー)
 
@@ -81,7 +81,7 @@ Video Indexer 有料アカウントをお持ちの場合は、最初に Custom V
 1. **[Connect Custom Vision Account (PREVIEW)]\(Custom Vision アカウントの接続 (プレビュー)\)** を選択し、 **[試す]** をクリックします。
 1. 必要なフィールドとアクセス トークンを入力し、 **[送信]** をクリックします。 
 
-    Video Indexer アクセス トークンを取得する方法の詳細については、[開発者ポータル](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)にアクセスし、[関連ドキュメント](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api)を参照してください。  
+    Video Indexer アクセス トークンを取得する方法の詳細については、[開発者ポータル](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token?)にアクセスし、[関連ドキュメント](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api)を参照してください。  
 1. 呼び出しから 200 OK 応答が返されると、アカウントは接続されます。
 1. 接続を確認するには、[Video Indexer](https://vi.microsoft.com/) ポータルに移動します。
 1. 右上隅にある **[コンテンツ モデルのカスタマイズ]** ボタンをクリックします。
@@ -212,6 +212,6 @@ Video Indexer 有料アカウントをお持ちの場合は、最初に Custom V
 * ビデオの品質が低い場合、ビデオ内でサイズが小さいキャラクターや遠くに見えるキャラクターは正しく識別されない可能性があります。
 * アニメーション化されたキャラクター セットごとにモデルを使用することをお勧めします (アニメーション化された系列ごと、など)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Video Indexer の概要](video-indexer-overview.md)

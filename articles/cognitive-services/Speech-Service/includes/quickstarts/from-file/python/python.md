@@ -2,19 +2,19 @@
 title: クイック スタート:オーディオ ファイルから音声を認識する、Python - Speech サービス
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: chlandsi
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 01/14/2020
-ms.author: chlandsi
-ms.openlocfilehash: 587a0e83eb6b8c96b44589f7f5701526c23e2aae
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.date: 01/30/2020
+ms.author: dapine
+ms.openlocfilehash: bcf0679d83becfb3c4ae900769c0a42dc1359e5d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76037556"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76909144"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -23,8 +23,8 @@ ms.locfileid: "76037556"
 > [!div class="checklist"]
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
 > * [LUIS アプリケーションを作成し、エンドポイント キーを取得する](../../../../quickstarts/create-luis.md)
-> * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md)
-> * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md)
+> * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
+> * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md?pivots=programming-language-python)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 

@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: e1f614ded0cf5b0154336831e4f82eb60f63a4bd
-  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+  ms.openlocfilehash: 21c810195d7d9a7656aadfacc4dd8f1c73932b27
+  ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/09/2019
-  ms.locfileid: "73889118"
+  ms.lasthandoff: 02/05/2020
+  ms.locfileid: "77021510"
 landingContent:
 - title: ヘルスケア ソリューションを構築する
   linkLists:
@@ -32,13 +32,13 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: デバイス テンプレートを設定する
-      url: ../preview/howto-set-up-template.md
-    - text: IoT プラグ アンド プレイ デバイスを接続する
-      url: ../preview/tutorial-connect-pnp-device.md
+      url: ../core/howto-set-up-template.md
+    - text: IoT プラグ アンド プレイ (プレビュー) デバイスを接続する
+      url: ../core/tutorial-connect-pnp-device.md
   - linkListType: how-to-guide
     links:
     - text: MX Chip IoT DevKit を準備して接続する
-      url: ../preview/howto-connect-devkit.md
+      url: ../core/howto-connect-devkit.md
     - text: その他の IoT クラウドの接続
       url: ../core/howto-build-iotc-device-bridge.md
 - title: 接続を維持する
@@ -46,46 +46,46 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: デバイス グループを使用する
-      url: ../preview/tutorial-use-device-groups.md
+      url: ../core/tutorial-use-device-groups.md
   - linkListType: how-to-guide
     links:
     - text: デバイスを管理する
-      url: ../preview/howto-manage-devices.md
+      url: ../core/howto-manage-devices.md
     - text: ジョブの実行
       url: ../core/howto-run-a-job.md
     - text: デバイス データを分析する
-      url: ../preview/howto-create-analytics.md
+      url: ../core/howto-create-analytics.md
 - title: 変換
   linkLists:
   - linkListType: tutorial
     links:
     - text: 規則を作成する
-      url: ../preview/quick-configure-rules.md
+      url: ../core/quick-configure-rules.md
     - text: テレメトリ ルールを作成する
-      url: ../preview/tutorial-create-telemetry-rules.md
+      url: ../core/tutorial-create-telemetry-rules.md
     - text: Blob Storage へのエクスポート
-      url: ../preview/howto-export-data.md
+      url: ../core/howto-export-data.md
   - linkListType: how-to-guide
     links:
     - text: カスタム規則の作成
-      url: ../preview/howto-create-custom-rules.md
+      url: ../core/howto-create-custom-rules.md
     - text: カスタム分析を作成する
-      url: ../preview/howto-create-custom-analytics.md
+      url: ../core/howto-create-custom-analytics.md
 - title: 管理
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: アプリケーションの管理
-      url: ../preview/howto-administer.md
+      url: ../core/howto-administer.md
     - text: ユーザーとロールを管理する
-      url: ../preview/howto-manage-users-roles.md
+      url: ../core/howto-manage-users-roles.md
     - text: 課金状況の表示
-      url: ../preview/howto-view-bill.md
+      url: ../core/howto-view-bill.md
     - text: アプリケーション UI のカスタマイズ
-      url: ../preview/howto-customize-ui.md
+      url: ../core/howto-customize-ui.md
     - text: 個人用ダッシュボードを構成する
       url: ../core/howto-create-personal-dashboards.md
     - text: ダッシュボード タイルの使用
       url: ../core/howto-add-tiles-to-your-dashboard.md
     - text: アプリケーション テンプレートを使用する
-      url: ../preview/howto-use-app-templates.md
+      url: ../core/howto-use-app-templates.md

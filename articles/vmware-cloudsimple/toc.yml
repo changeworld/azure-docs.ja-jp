@@ -1,9 +1,9 @@
-- name: VMware Solution by CloudSimple
+- name: VMware Solutions (AVS)
   href: /azure/vmware-cloudsimple
   items:
     - name: 概要
       items:
-        - name: VMware Solution by CloudSimple とは
+        - name: VMware Solutions (AVS) とは
           href: cloudsimple-vmware-solutions-overview.md
         - name: 管理の主要な概念
           href: key-concepts.md
@@ -14,9 +14,9 @@
           href: cloudsimple-network-checklist.md
         - name: 初期化と容量のプロビジョニング
           href: quickstart-create-cloudsimple-service.md
-        - name: プライベート クラウド環境の構成
+        - name: AVS プライベート クラウド環境の構成
           href: quickstart-create-private-cloud.md
-        - name: プライベート クラウドでの VMware VM の作成
+        - name: AVS プライベート クラウドでの VMware VM の作成
           href: quickstart-create-private-cloud-vmware-virtual-machine.md
         - name: Azure での VMware VM の使用
           href: quickstart-create-vmware-virtual-machine.md
@@ -26,7 +26,7 @@
           href: cloudsimple-service.md
         - name: Nodes
           href: cloudsimple-node.md
-        - name: プライベート クラウド
+        - name: AVS プライベート クラウド
           href: cloudsimple-private-cloud.md
         - name: 仮想マシン
           href: cloudsimple-virtual-machines.md
@@ -44,7 +44,7 @@
           href: cloudsimple-account.md
         - name: アクティビティ管理
           href: cloudsimple-activity.md
-        - name: プライベート クラウド上の VMware
+        - name: AVS プライベート クラウドの VMware
           href: vmware-components.md
         - name: セキュリティの概要
           href: cloudsimple-security.md
@@ -56,9 +56,9 @@
           href: cloudsimple-faq.md
     - name: チュートリアル
       items:
-        - name: CloudSimple サービスを作成する
+        - name: AVS サービスの作成
           href: create-cloudsimple-service.md
-        - name: CloudSimple ポータルにアクセスする
+        - name: AVS ポータルへのアクセス
           href: access-cloudsimple-portal.md
         - name: オンプレミスのファイアウォールの構成
           href: on-premises-firewall-configuration.md
@@ -70,25 +70,25 @@
               href: create-nodes.md
             - name: ノードを削除する
               href: delete-nodes.md
-        - name: プライベート クラウドのリソースを管理する
+        - name: AVS プライベート クラウドのリソースの管理
           items:
-            - name: プライベート クラウドを作成する
+            - name: AVS プライベート クラウドの作成
               href: create-private-cloud.md
-            - name: プライベート クラウドを管理する
+            - name: AVS プライベート クラウドの管理
               href: manage-private-cloud.md
-            - name: プライベート クラウドを拡張する
+            - name: AVS プライベート クラウドの拡張
               href: expand-private-cloud.md
-            - name: プライベート クラウドを縮小する
+            - name: AVS プライベート クラウドの縮小
               href: shrink-private-cloud.md
             - name: Azure サブスクリプションをマッピングする
               href: azure-subscription-mapping.md
             - name: 権限をエスカレートする
               href: escalate-private-cloud-privileges.md
-            - name: プライベート クラウドを削除する
+            - name: AVS プライベート クラウドの削除
               href: delete-private-cloud.md
-        - name: CloudSimple アクティビティを監視する
+        - name: AVS アクティビティの監視
           href: monitor-activity.md
-        - name: プライベート クラウドのネットワークを設定する
+        - name: AVS プライベート クラウドのネットワークの設定
           items:
             - name: VLAN とサブネットを作成して管理する
               href: create-vlan-subnet.md
@@ -98,35 +98,35 @@
               href: public-ips.md
             - name: VPN 接続を設定する
               href: vpn-gateway.md
-            - name: CloudSimple への仮想ネットワーク接続
+            - name: AVS への仮想ネットワーク接続
               href: virtual-network-connection.md
-        - name: CloudSimple ポータル アカウントを管理する
+        - name: AVS ポータル アカウントの管理
           items:
             - name: アカウントの概要を表示する
               href: account.md
             - name: ユーザーの一覧を表示する
               href: users.md
-        - name: CloudSimple 仮想マシンを設定する
+        - name: AVS 仮想マシンの設定
           items:
-            - name: Azure で CloudSimple VM を作成する
+            - name: Azure での AVS VM の作成
               href: azure-create-vm.md
-            - name: Azure で CloudSimple VM を管理する
+            - name: Azure での AVS VM の管理
               href: azure-manage-vm.md
     - name: 操作方法ガイド
       items:
         - name: 環境のセキュリティ保護
           href: private-cloud-secure.md
-        - name: プライベート クラウドの管理
+        - name: AVS プライベート クラウドの管理
           items:
-            - name: プライベート クラウドの権限のエスカレート
+            - name: AVS プライベート クラウドの特権の昇格
               href: escalate-privileges.md
             - name: ワークロードの DNS と DHCP の設定
               href: dns-dhcp-setup.md
             - name: レイヤー 2 拡張済みネットワークを使用したワークロードの移行
               href: migration-layer-2-vpn.md
-        - name: プライベート クラウド ネットワーク
+        - name: AVS プライベート クラウドのネットワーク
           items:
-            - name: プライベート クラウドへの VPN 接続
+            - name: AVS プライベート クラウドへの VPN 接続
               href: set-up-vpn.md
             - name: ExpressRoute を使用したオンプレミス ネットワーク接続
               href: on-premises-connection.md
@@ -140,15 +140,15 @@
               href: private-cloud-dns-forwarding.md
         - name: VMware プラットフォーム
           items:
-            - name: プライベート クラウドのアクセス許可モデルについて
+            - name: AVS プライベート クラウドの権限モデルについて
               href: learn-private-cloud-permissions.md
             - name: vCenter の ID ソース
               href: set-vcenter-identity.md
             - name: Azure Application Gateway と VMware VM
               href: azure-application-gateway.md
-            - name: vRealize Automation エンドポイントとしてのプライベート クラウドの vCenter サーバーの構成
+            - name: vRealize Automation エンドポイントとしての AVS プライベート クラウドの vCenter サーバーの構成
               href: configure-server-vrealize-automation-endpoint.md
-            - name: プライベート クラウドへのワークロード VM の移行
+            - name: AVS プライベート クラウドへのワークロード VM の移行
               href: migrate-workloads.md
             - name: Azure Data Box を使用した移行
               href: migration-using-azure-data-box.md
@@ -160,19 +160,19 @@
           items:
             - name: ワークロード仮想マシンのバックアップ
               href: backup-workloads-veeam.md
-            - name: Zerto を使用したディザスター リカバリー サイトとしてのプライベート クラウドの構成
+            - name: Zerto を使用して AVS プライベート クラウドをディザスター リカバリー サイトとして構成する
               href: disaster-recovery-zerto.md
-            - name: VMware SRM を使用したディザスター リカバリー サイトとしてのプライベート クラウドの構成
+            - name: VMware SRM を使用して AVS プライベート クラウドをディザスター リカバリー サイトとして構成する
               href: disaster-recovery-site-recovery-manager.md
             - name: VMware Horizon ソリューションのガイド
               href: horizon-guide.md
-            - name: プライベート クラウドの vSAN 暗号化の構成
+            - name: AVS プライベート クラウドの vSAN 暗号化の構成
               href: vsan-encryption.md
-            - name: プライベート クラウドの Oracle RAC 向けの最適化
+            - name: Oracle RAC 向けに AVS プライベート クラウドを最適化する
               href: oracle-real-application-clusters.md
         - name: Azure コア統合
           items:
-            - name: プライベート クラウド vCenter の Azure AD ID ソース
+            - name: AVS プライベート クラウド vCenter の Azure AD ID ソース
               href: azure-ad.md
             - name: ExpressRoute を使用したオンプレミス ネットワーク接続
               href: on-premises-connection.md

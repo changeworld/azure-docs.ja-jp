@@ -2,20 +2,20 @@
 title: Azure Traffic Manager の設定を検証する
 description: この記事では、Traffic Manager 設定を確認し、トラフィック ルーティング方法をテストする方法について説明します。
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
-ms.author: allensu
-ms.openlocfilehash: ad74e5c51d5939218ebb546993d416b3df1cd04b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: 94ab5e550f0053fa19b9b93f1d67690211543325
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023527"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938392"
 ---
 # <a name="verify-traffic-manager-settings"></a>Traffic Manager の設定の検証
 
@@ -33,7 +33,7 @@ DNS 名がプロファイル内のエンドポイントの IP アドレスに解
 
 1. 管理者として、コマンド プロンプトまたは Windows PowerShell プロンプトを開きます。
 2. 「`ipconfig /flushdns`」と入力して、DNS リゾルバー キャッシュをフラッシュします。
-3. 「 `nslookup <your Traffic Manager domain name>`」と入力します。 たとえば、次のコマンドは、プレフィックスが *myapp.contoso* のドメインを確認します。
+3. 「`nslookup <your Traffic Manager domain name>`. たとえば、次のコマンドは、プレフィックスが *myapp.contoso* のドメインを確認します。
 
         nslookup myapp.contoso.trafficmanager.net
 
@@ -66,7 +66,7 @@ DNS 名がプロファイル内のエンドポイントの IP アドレスに解
 
 また、無料の Web ベースの DNS 検索と検出サービスも利用できます。 これらのツールの中には、世界中のさまざまな場所から DNS 名前解決を確認できるものもあります。 たとえば、"DNS lookup" の検索などを実行できます。 Gomez や Keynote のようなサード パーティのサービスを使用して、トラフィックがプロファイルに基づいて予期した通りに振り分けられることを確認できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Traffic Manager のトラフィック ルーティング方法について](traffic-manager-routing-methods.md)
 * [Traffic Manager のパフォーマンスに関する考慮事項](traffic-manager-performance-considerations.md)

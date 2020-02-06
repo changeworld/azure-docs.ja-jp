@@ -3,8 +3,8 @@ title: Azure CLI サンプル スクリプト - Batch アカウントの作成 -
 description: このスクリプトでは、ユーザー サブスクリプション モードで Azure Batch アカウントを作成します。 このアカウントを使うと、サブスクリプションにコンピューティング ノードを割り当てられます。
 services: batch
 documentationcenter: ''
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -13,13 +13,13 @@ ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
-ms.author: jushiman
-ms.openlocfilehash: 38c908e1e490d1b852abc64ba0e3f695307d5341
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: 5cab96c148d52597ee024f1ddb0b683db8d52dd7
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029314"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024519"
 ---
 # <a name="cli-example-create-a-batch-account-in-user-subscription-mode"></a>CLI の例:ユーザー サブスクリプション モードでの Batch アカウントの作成
 
@@ -45,7 +45,7 @@ az group delete --name myResourceGroup
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [az role assignment create](/cli/azure/role) | ユーザー、グループ、またはサービス プリンシパルに対して、新しいロール割り当てを作成します。 |
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |

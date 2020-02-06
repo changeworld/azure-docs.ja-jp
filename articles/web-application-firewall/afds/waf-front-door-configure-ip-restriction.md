@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: 6b5793408545c2a61a30b5d89bc41d35460ed3eb
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 52108d40c53c2470d542bd9c6816453ba2b6ebba
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76119467"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896293"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door-service"></a>Azure Front Door Service 用の Web アプリケーション ファイアウォールで IP 制限規則を構成する
 この記事では、Azure CLI、Azure PowerShell、または Azure Resource Manager テンプレートを使って、Azure Front Door Service 用の Web アプリケーション ファイアウォール (WAF) で IP 制限規則を構成する方法を示します。
@@ -66,12 +66,12 @@ az network front-door waf-policy rule create \
 次に、一致条件を規則に追加します。
 
 ```azurecli
-az network front-door waf-policy rule match-condition add\
+az network front-door waf-policy rule match-condition add \
 --match-variable RemoteAddr \
---operator IPMatch
---values "ip-address-range-1" "ip-address-range-2"
---negate true\
---name IPAllowListRule\
+--operator IPMatch \
+--values "ip-address-range-1" "ip-address-range-2" \
+--negate true \
+--name IPAllowListRule \
   --resource-group <resource-group-name> \
   --policy-name IPAllowPolicyExampleCLI 
   ```
@@ -91,7 +91,7 @@ az network front-door waf-policy rule match-condition add\
 
    ```azurecli
    az network front-door update \
-     --set FrontendEndpoints[0].WebApplicationFirewallPolicyLink.id=/subscriptions/<subscription ID>/resourcegroups/<resource- name>/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/IPAllowPolicyExampleCLI \
+     --set FrontendEndpoints[0].WebApplicationFirewallPolicyLink.id=/subscriptions/<subscription ID>/resourcegroups/resource-group-name/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/IPAllowPolicyExampleCLI \
      --name <frontdoor-name>
      --resource-group <resource-group-name>
    ```

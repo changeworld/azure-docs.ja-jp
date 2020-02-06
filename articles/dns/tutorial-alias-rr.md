@@ -3,17 +3,17 @@ title: チュートリアル:ゾーン内のリソース レコードを参照�
 titleSuffix: Azure DNS
 description: このチュートリアルでは、ゾーン内のリソース レコードを参照する Azure DNS エイリアス レコードを構成する方法を示します。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
-ms.author: allensu
-ms.openlocfilehash: 59ffe9781d97880044da5eedbdf84181bf1b2fa1
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.author: rohink
+ms.openlocfilehash: 2b122a34cfd382a58f7680743d3a1cb1ae598fd1
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082892"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939246"
 ---
 # <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>チュートリアル:ゾーン内のリソース レコードを参照するエイリアス レコードを作成する
 
@@ -62,12 +62,12 @@ Azure DNS 内でドメインをホストする手順については、「[チュ
 3. Azure portal で、**server** A レコードを **10.11.11.11** に変更します。
 4. 数分待ってから、もう一度 nslookup を使用して **test** レコードを検索します。 応答は **10.11.11.11** になります。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアル用に作成したリソースが不要になったら、**server** と **test** のリソース レコードをゾーンから削除してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、ゾーン内のリソース レコードを参照するエイリアス レコードを作成しました。 Azure DNS と Web アプリについて詳しくは、Web アプリのチュートリアルに進んでください。
 

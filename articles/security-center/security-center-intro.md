@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: 378ad4fde94e8bccfbdad9765545675822d202ff
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 759cc3f22d8b57036bad48326ffec1d6fca42696
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558633"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939447"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Security Center とは
 
@@ -43,7 +43,9 @@ Azure Security Center は、3 つの緊急性が高いセキュリティの課�
 
 -   **より迅速にセキュリティ保護**:Security Center では、すべてがクラウドの速度で行われます。 ネイティブに統合されているので、Security Center のデプロイは容易であり、Azure サービスによる自動プロビジョニングと保護が提供されます。
 
-## <a name="architecture"></a>アーキテクチャ
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
+
+## <a name="architecture"></a>Architecture
 
 Security Center はネイティブで Azure の一部なので、Service Fabric、SQL Database、ストレージ アカウントなどの Azure に含まれる PaaS サービスは、デプロイすることなく Security Center で監視および保護されます。
 
@@ -51,7 +53,7 @@ Security Center はネイティブで Azure の一部なので、Service Fabric�
 
 エージェントと Azure から収集されたイベントは、セキュリティ分析エンジンで相互に関連付けられ、調整された推奨事項 (強化タスク) が提供されます。これに従うことで、ワークロードをセキュリティで保護できます。また、脅威検出アラートも提供されます。 このようなアラートはできるだけ早く調査し、ワークロードに対して悪意のある攻撃が行われていないことを確認する必要があります。
 
-Security Center を有効にすると、Security Center に組み込まれたセキュリティ ポリシーが、Security Center カテゴリのビルトインのイニシアティブとして Azure Policy に反映されます。 ビルトインのイニシアティブは、Security Center のすべての登録済みサブスクリプション (Free または Standard レベル) に対して自動的に割り当てられます。 ビルトインのイニシアティブに含まれているのは監査ポリシーだけです。 Azure Policy における Security Center のポリシーの詳細については、「[セキュリティ ポリシーの操作](tutorial-security-policy.md)」を参照してください。
+Security Center を有効にすると、Security Center に組み込まれたセキュリティ ポリシーが、Security Center カテゴリのビルトインのイニシアティブとして Azure Policy に反映されます。 ビルトインのイニシアティブは、Security Center のすべての登録済みサブスクリプション (Free または Standard レベル) に対して自動的に割り当てられます。 組み込みイニシアティブに含まれるのは監査ポリシーだけです。 Azure Policy における Security Center のポリシーの詳細については、「[セキュリティ ポリシーの操作](tutorial-security-policy.md)」を参照してください。
 
 ## <a name="strengthen-security-posture"></a>セキュリティ体制の強化
 
@@ -141,7 +143,7 @@ Security Center で、Azure および Azure リソースとのシームレスで
 
 広範なログ収集: Windows および Linux のログはすべてセキュリティ分析エンジンで活用され、推奨事項とアラートの作成に使用されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Security Center を使用するには、Microsoft Azure のサブスクリプションが必要です。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/free/)にサインアップできます。
 - Security Center の Free 価格レベルは、Azure サブスクリプションがある場合に有効です。 高度なセキュリティ管理と脅威検出の機能を利用するには、Standard 価格レベルにアップグレードする必要があります。 Standard レベルは無料でお試しいただくことができます。 詳しくは、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」ページをご覧ください。

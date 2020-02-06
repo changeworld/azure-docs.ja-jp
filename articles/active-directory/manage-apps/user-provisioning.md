@@ -15,16 +15,16 @@ ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d515731b8da186ef7e44a397d5abf87dfa65e83a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9848e686188288b507a0a74d0f9fa16f8f0e4253
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433783"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841201"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-active-directory"></a>Azure Active Directory でのアプリケーションに対するユーザー プロビジョニングとプロビジョニング解除を自動化する
 
-Azure Active Directory (Azure AD) での**アプリ プロビジョニング**という用語は、ユーザーがアクセスする必要のあるクラウド ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) アプリケーションにおいてユーザーの ID とロールを自動的に作成することを意味します。 自動プロビジョニングには、ユーザー ID の作成に加えて、状態または役割が変化したときのユーザー ID のメンテナンスおよび削除が含まれます。 一般的なシナリオには、[Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial)、[Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial)、[ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial) などのアプリケーションへの Azure AD ユーザーのプロビジョニングが含まれます。
+Azure Active Directory (Azure AD) での**アプリ プロビジョニング**という用語は、ユーザーがアクセスする必要のあるクラウド ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) アプリケーションにおいてユーザーの ID とロールを自動的に作成することを意味します。 自動プロビジョニングには、ユーザー ID の作成に加えて、状態または役割が変化したときのユーザー ID のメンテナンスおよび削除が含まれます。 一般的なシナリオには、[Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md)、[Salesforce](../saas-apps/salesforce-provisioning-tutorial.md)、[ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md) などのアプリケーションへの Azure AD ユーザーのプロビジョニングが含まれます。
 
 ![プロビジョニングの概要図](media/user-provisioning/provisioning-overview.png)
 
@@ -63,11 +63,11 @@ Azure AD は、一般的な多くの SaaS アプリや人事管理システム�
 
    ![Salesforce のロゴ](media/user-provisioning/gallery-app-logos.png)
 
-   プロビジョニングのために新しいアプリケーションを要求したい場合は、[アプリケーションをアプリ ギャラリーと統合するよう要求する](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)ことができます。 ユーザー プロビジョニング要求の場合、アプリケーションには SCIM 準拠のエンドポイントが必要です。 アプリをプラットフォームに迅速にオンボードできるよう、アプリケーションのベンダーに SCIM 標準に準拠するよう要求してください。
+   プロビジョニングのために新しいアプリケーションを要求したい場合は、[アプリケーションをアプリ ギャラリーと統合するよう要求する](../develop/howto-app-gallery-listing.md)ことができます。 ユーザー プロビジョニング要求の場合、アプリケーションには SCIM 準拠のエンドポイントが必要です。 アプリをプラットフォームに迅速にオンボードできるよう、アプリケーションのベンダーに SCIM 標準に準拠するよう要求してください。
 
 * **SCIM 2.0 をサポートするアプリケーション**。 SCIM 2.0 ベースのユーザー管理 API を実装するアプリケーションを汎用的に接続する方法については、「[SCIM エンドポイントの構築とユーザー プロビジョニングの構成](use-scim-to-provision-users-and-groups.md)」を参照してください。
 
-## <a name="what-is-scim"></a>SCIM とは
+## <a name="what-is-system-for-cross-domain-identity-management-scim"></a>System for Cross-domain Identity Management (SCIM) とは
 
 プロビジョニングとプロビジョニング解除の自動化を助けるため、アプリでは独自のユーザー API とグループ API を公開します。 ただし、複数のアプリでユーザーを管理しようとすると、すべてのアプリで同じ単純な操作 (ユーザーの作成や更新、ユーザーのグループへの追加、ユーザーのプロビジョニング解除など) が実行されることがわかります。 ただし、これらの単純な操作のすべてが、異なるエンドポイント パス、異なるユーザー情報指定方法、および情報の各要素を表す異なるスキーマを使用して、少しずつ異なる方法で実装されています。
 
@@ -81,7 +81,7 @@ Azure AD ギャラリーのアプリケーションは、次の 2 つのプロ�
 
 * **手動**プロビジョニングとは、アプリの自動 Azure AD プロビジョニングコネクタがまだないことを意味します。 ユーザー アカウントは手動で作成する必要があります。たとえば、アプリの管理ポータルにユーザーを直接追加したり、ユーザー アカウントの詳細を含むスプレッドシートをアップロードしたりすることでこれを行います。 アプリから提供されるドキュメントを確認するか、アプリの開発者に問い合わせて、どのようなメカニズムが使用できるか判断してください。
 
-* "**自動**" とは、このアプリケーション用の Azure AD プロビジョニング コネクタが開発済みであることを意味します。 そのアプリケーションのプロビジョニングの設定に固有の設定チュートリアルに従う必要があります。 アプリのチュートリアルについては、「[SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)」を参照してください。
+* "**自動**" とは、このアプリケーション用の Azure AD プロビジョニング コネクタが開発済みであることを意味します。 そのアプリケーションのプロビジョニングの設定に固有の設定チュートリアルに従う必要があります。 アプリのチュートリアルについては、「[SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)」を参照してください。
 
 Azure AD ギャラリーでは、自動プロビジョニングをサポートするアプリケーションは、**プロビジョニング** アイコンによって指定されます。 新しいギャラリー プレビュー エクスペリエンスに切り替えてこれらのアイコンを表示します ( **[アプリケーションの追加]** ページの上部にあるバナーで、 **[Click here to try out the new and improved app gallery] (改善された新しいアプリ ギャラリーを試すには、こちらをクリックしてください)** というリンクを選択します)。
 
@@ -91,7 +91,7 @@ Azure AD ギャラリーでは、自動プロビジョニングをサポート�
 
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>アプリケーションへの自動プロビジョニングを設定する方法
 
-ギャラリーに一覧表示される事前統合アプリケーションについては、自動プロビジョニングの設定すに関するステップバイステップのガイダンスが用意されています。 [統合ギャラリー アプリのチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/saas-apps/)を参照してください。 次のビデオでは、SalesForce の自動ユーザー プロビジョニングの設定方法が説明されています。
+ギャラリーに一覧表示される事前統合アプリケーションについては、自動プロビジョニングの設定すに関するステップバイステップのガイダンスが用意されています。 [統合ギャラリー アプリのチュートリアルの一覧](../saas-apps/tutorial-list.md)を参照してください。 次のビデオでは、SalesForce の自動ユーザー プロビジョニングの設定方法が説明されています。
 
 > [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 

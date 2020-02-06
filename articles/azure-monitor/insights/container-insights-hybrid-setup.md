@@ -2,13 +2,13 @@
 title: ハイブリッド Kubernetes クラスターに Azure Monitor for containers を構成する | Microsoft Docs
 description: この記事では、Azure Stack などの環境でホストしている Kubernetes クラスターを監視することを目的として Azure Monitor for containers を構成する方法を説明します。
 ms.topic: conceptual
-ms.date: 12/04/2019
-ms.openlocfilehash: d6218550f4b5a3a59b4addc69b19ff11e282d45a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/24/2020
+ms.openlocfilehash: 7796cc7300f34a7a412495754c083b112ba05041
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977737"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759894"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>ハイブリッド Kubernetes クラスターに Azure Monitor for containers を構成する
 
@@ -39,7 +39,7 @@ Azure Monitor for containers は、Azure Kubernetes Service (AKS) と Azure で�
     |*.blob.core.windows.net |ポート 443 |  
     |*.dc.services.visualstudio.com |ポート 443 |
 
-* コンテナー化されたエージェントがパフォーマンスに関するメトリックを収集できるように、クラスター内のすべてのノードで `cAdvisor port: 10255` を開いておく必要があります。
+* コンテナー化されたエージェントがパフォーマンスに関するメトリックを収集できるように、クラスター内のすべてのノードで Kubelet の `cAdvisor secure port: 10250` または `unsecure port :10255` を開いておく必要があります。 Kubelet の cAdvisor がまだ構成されていない場合は、`secure port: 10250` を構成することをお勧めします。
 
 * コンテナー化されたエージェントがクラスター内の Kubernetes API サービスとやり取りしてインベントリ データを収集するために、コンテナーに `KUBERNETES_SERVICE_HOST` と `KUBERNETES_PORT_443_TCP_PORT` の 2 つの環境変数を指定する必要があります。
 
@@ -290,12 +290,12 @@ HELM チャートを有効にする手順は次のとおりです。
 * OmsAgent ヘルス サービスを実行中
 * Log Analytics ワークスペース ID とコンテナー化されたエージェントで構成されたキーは、Insight が構成されているワークスペースと一致します。
 * すべての Linux ワーカー ノードに `kubernetes.io/role=agent` のラベルがあることを確認して、rs ポッドをスケジュールします。 存在しなければ、追加してください。
-* クラスター内のすべてのノードで `cAdvisor port: 10255` が開かれていることを検証します。
+* クラスター内のすべてのノードで `cAdvisor secure port:10250` または `unsecure port: 10255` が開かれていることを検証します。
 
 Azure PowerShell を使用して実行するには、そのスクリプトを含むフォルダーで、次のコマンドを使用します：
 
 ```powershell
-.\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile>
+.\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile> -clusterContextInKubeconfig <clusterContext>
 ```
 
 ## <a name="next-steps"></a>次のステップ

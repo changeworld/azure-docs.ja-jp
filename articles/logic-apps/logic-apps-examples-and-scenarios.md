@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: ff6136dea8a25a39e045665d61bdd5d93eeb58a5
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 5b72ee02c2bbf811293a2bcdb15590e16e300a02
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792127"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906680"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure Logic Apps の一般的なシナリオ、例、チュートリアル、手順
 
@@ -51,9 +51,9 @@ ms.locfileid: "74792127"
 
 新しいデータまたはイベントに関する通知を受信した後に、トリガーが呼び出され、新しいロジック アプリ ワークフロー インスタンスが作成され、ワークフローのアクションが実行されます。 ワークフロー全体でトリガーのすべてのデータにアクセスできます。 たとえば、"新しいツイートで" トリガーは、実行されているロジック アプリにツイートの内容を渡します。 Azure Logic Apps の使用を開始するには、次のクイックスタート トピックを試してください。
 
-* [クイック スタート:Azure portal で Azure Logic Apps を使用して自動化されたワークフローを初めて作成する](../logic-apps/quickstart-create-first-logic-app-workflow.md)
-* [クイック スタート:Visual Studio を使用することによって Azure Logic Apps で自動化されたタスク、プロセス、およびワークフローを作成する](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
-* [クイック スタート:Visual Studio Code の使用による、自動化されたロジック アプリ ワークフローの作成と管理](../logic-apps/quickstart-create-logic-apps-visual-studio-code.md)
+* [クイック スタート: Azure portal で Azure Logic Apps を使用して自動化されたワークフローを初めて作成する](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* [クイック スタート: Visual Studio を使用することによって Azure Logic Apps で自動化されたタスク、プロセス、およびワークフローを作成する](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
+* [クイック スタート: Visual Studio Code の使用による、自動化されたロジック アプリ ワークフローの作成と管理](../logic-apps/quickstart-create-logic-apps-visual-studio-code.md)
 
 ## <a name="respond-to-triggers-and-extend-actions"></a>トリガーへの応答とアクションの拡張
 
@@ -75,20 +75,20 @@ ms.locfileid: "74792127"
 * [スコープを使用してアクションをグループ化する](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
 * [ワークフローでエラーおよび例外処理を作成する](../logic-apps/logic-apps-exception-handling.md)
 * [ユース ケース:医療関連企業が HL7 FHIR ワークフローのロジック アプリの例外処理を使用する方法](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
-* [既存のロジック アプリで監視、ログ記録、アラートをオンにする](../logic-apps/logic-apps-monitor-your-logic-apps.md)
-* [ロジック アプリの作成時に監視と診断ログ記録をオンにする](../logic-apps/logic-apps-monitor-your-logic-apps-oms.md)
+* [既存のロジック アプリで監視、ログ記録、アラートをオンにする](../logic-apps/monitor-logic-apps.md)
+* [ロジック アプリの作成時に監視と診断ログ記録をオンにする](../logic-apps/monitor-logic-apps-log-analytics.md)
 
 ## <a name="deploy-and-manage-logic-apps"></a>ロジック アプリのデプロイと管理
 
 Visual Studio、Azure DevOps、またはその他のソース管理および自動ビルド ツールを使用して、ロジック アプリを完全に開発してデプロイできます。 リソース テンプレートでワークフローおよび依存接続のデプロイをサポートするために、ロジック アプリでは、Azure リソース デプロイ テンプレートが使用されます。 こうしたテンプレートは、Visual Studio ツールによって自動的に生成され、バージョン管理のためにソース管理機能にチェックインできます。
 
 * [Visual Studio でロジック アプリを作成してデプロイする](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
-* [既存のロジック アプリで監視、ログ記録、アラートをオンにする](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+* [既存のロジック アプリで監視、ログ記録、アラートをオンにする](../logic-apps/monitor-logic-apps.md)
 * [ロジック アプリ デプロイを自動化する](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
-* [サンプル: Azure Logic Apps から Azure Service Bus キューに接続し、Azure DevOps に Azure Pipelines を使用してデプロイする](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [サンプル: Azure Logic Apps から Azure Storage アカウントに接続し、Azure DevOps に Azure Pipelines を使用してデプロイする](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [サンプル: Azure Logic Apps の関数アプリ アクションを設定し、Azure DevOps に Azure Pipelines を使用してデプロイする](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [サンプル: Azure Logic Apps から統合アカウントに接続し、Azure DevOps に Azure Pipelines を使用してデプロイする](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
+* [サンプル:Azure Logic Apps から Azure Service Bus キューに接続し、Azure DevOps に Azure Pipelines を使用してデプロイする](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [サンプル:Azure Logic Apps から Azure Storage アカウントに接続し、Azure DevOps に Azure Pipelines を使用してデプロイする](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [サンプル:Azure Logic Apps の関数アプリ アクションを設定し、Azure DevOps に Azure Pipelines を使用してデプロイする](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [サンプル:Azure Logic Apps から統合アカウントに接続し、Azure DevOps に Azure Pipelines を使用してデプロイする](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
 
 ## <a name="content-types-conversions-and-transformations-within-a-run"></a>実行時のコンテンツ タイプ、変換
 
@@ -118,7 +118,7 @@ Azure Logic Apps [ワークフロー定義言語](https://aka.ms/logicappsdocs)�
 
 他の Azure サービスや Microsoft 製品と共に Azure Logic Apps を使用して、複雑なプロセスを簡素化、整理、自動化、調整することで、俊敏性を高め、コア ビジネスに集中できるようになった[企業の事例](https://aka.ms/logic-apps-customer-stories)をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Logic Apps 用コネクタ](../connectors/apis-list.md)の詳細情報
 * [Azure Logic Apps を使用した B2B エンタープライズ統合シナリオ](../logic-apps/logic-apps-enterprise-integration-overview.md)の詳細情報

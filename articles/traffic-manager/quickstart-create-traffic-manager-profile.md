@@ -2,7 +2,7 @@
 title: 'クイックスタート: アプリケーションの HA のためのプロファイルを作成する - Azure portal - Azure Traffic Manager'
 description: このクイック スタート記事では、高可用性 Web アプリケーションを構築するための Traffic Manager プロファイルの作成方法について説明します。
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 manager: twooley
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
-ms.author: allensu
-ms.openlocfilehash: b2163b76dc3a301359cf3474789c5b473f9e4552
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.author: rohink
+ms.openlocfilehash: 559ed0a134bb6db78d1e89634138b4025e04152b
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483661"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934766"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>クイック スタート:Azure portal を使用した Traffic Manager プロファイルの作成
 
@@ -29,7 +29,7 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure Portal](https://portal.azure.com) にサインインします。
+[Azure portal](https://portal.azure.com) にサインインします。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,15 +63,15 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーク]**  >  **[Traffic Manager プロファイル]** の順に選択します。
 2. **[Traffic Manager プロファイルの作成]** ブレードで、次の設定を入力するか、選択します。
 
-    | Setting | 値 |
+    | 設定 | Value |
     | --------| ----- |
     | Name | Traffic Manager プロファイルの一意の名前を入力します。|
     | ルーティング方法 | **[優先順位]** を選択します。|
     | サブスクリプション | Traffic Manager プロファイルの適用先となるサブスクリプションを選択します。 |
-    | リソース グループ | *myResourceGroupTM1* を選択します。|
+    | Resource group | *myResourceGroupTM1* を選択します。|
     | Location |この設定は、リソース グループの場所を指定するものです。 グローバルにデプロイされる Traffic Manager プロファイルには影響しません。|
 
-3. **作成**を選択します。
+3. **作成** を選択します。
 
 ## <a name="add-traffic-manager-endpoints"></a>Traffic Manager エンドポイントの追加
 
@@ -82,26 +82,26 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 3. **[Traffic Manager プロファイル]** の **[設定]** セクションで、 **[エンドポイント]** を選択し、 **[追加]** を選択します。
 4. 次の設定を入力または選択します。
 
-    | Setting | 値 |
+    | 設定 | Value |
     | ------- | ------|
-    | type | **[Azure エンドポイント]** を選択します。 |
+    | Type | **[Azure エンドポイント]** を選択します。 |
     | Name | 「*myPrimaryEndpoint*」と入力します。 |
     | ターゲット リソースの種類 | **[App Service]** を選択します。 |
     | ターゲット リソース | **[アプリ サービスの選択]**  >  **[米国東部]** を選択します。 |
-    | 優先順位 | **[1]** を選択します。 正常なトラフィックはすべてこのエンドポイントに送られます。 |
+    | Priority | **[1]** を選択します。 正常なトラフィックはすべてこのエンドポイントに送られます。 |
 
     ![Traffic Manager プロファイルにエンドポイントを追加する画面のスクリーンショット。](./media/quickstart-create-traffic-manager-profile/add-traffic-manager-endpoint.png)
 
 5. **[OK]** を選択します。
 6. 2 つ目の Azure リージョンのフェールオーバー エンドポイントを作成するには、次の設定を使用して手順 3. と手順 4. を繰り返します。
 
-    | Setting | 値 |
+    | 設定 | Value |
     | ------- | ------|
-    | type | **[Azure エンドポイント]** を選択します。 |
+    | Type | **[Azure エンドポイント]** を選択します。 |
     | Name | 「*myFailoverEndpoint*」と入力します。 |
     | ターゲット リソースの種類 | **[App Service]** を選択します。 |
     | ターゲット リソース | **[アプリ サービスの選択]**  >  **[西ヨーロッパ]** を選択します。 |
-    | 優先順位 | **[2]** を選択します。 プライマリ エンドポイントが正常でない場合、すべてのトラフィックはこのフェールオーバー エンドポイントに送られます。 |
+    | Priority | **[2]** を選択します。 プライマリ エンドポイントが正常でない場合、すべてのトラフィックはこのフェールオーバー エンドポイントに送られます。 |
 
 7. **[OK]** を選択します。
 
@@ -137,11 +137,11 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 
 プライマリ エンドポイントが使用できないため、フェールオーバー エンドポイントにルーティングされました。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 完了したら、リソース グループ、Web アプリケーション、およびすべての関連リソースを削除します。 これを行うには、ダッシュ ボードから個々 の項目を選択し、各ページの上部にある **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Traffic Manager プロファイルを作成しました。 これにより、ユーザー トラフィックを高可用性 Web アプリケーション用にルーティングすることができます。 トラフィックのルーティングについて理解を深めるために、引き続き Traffic Manager のチュートリアルをご覧ください。
 

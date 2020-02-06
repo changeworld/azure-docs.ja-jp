@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: ddccd02e7157792d942309ae4f74933322f246f9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5c50186692438be5d0922cd329c28e665310e5c2
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225373"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023533"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Azure Load Balancer の分散モードを構成する
 
@@ -59,7 +59,7 @@ Azure Load Balancer の既定の分散モードは、5 タプル ハッシュで
 
 ## <a name="configure-source-ip-affinity-settings"></a>ソース IP アフィニティ設定を構成する
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 分散モードの構成を変更するには、ポータルで負荷分散規則を変更します。
 
@@ -191,8 +191,8 @@ Azure クラシック デプロイ モデルを使用して、既存のデプロ
     x-ms-request-id: 9c7bda3e67c621a6b57096323069f7af
     Date: Thu, 16 Oct 2014 22:49:21 GMT
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure 内部ロード バランサーの概要](load-balancer-internal-overview.md)
-* [インターネットに接続するロード バランサーの構成の開始](load-balancer-get-started-internet-arm-ps.md)
+* [インターネットに接続するロード バランサーの構成の開始](quickstart-create-standard-load-balancer-powershell.md)
 * [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)

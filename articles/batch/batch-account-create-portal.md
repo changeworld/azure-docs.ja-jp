@@ -3,8 +3,8 @@ title: Azure portal でアカウントを作成する - Azure Batch | Microsoft 
 description: Azure ポータルで、クラウド内で大規模な並列ワークロードを実行する Azure Batch アカウントを作成する方法について説明します
 services: batch
 documentationcenter: ''
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: 3fbae545-245f-4c66-aee2-e25d7d5d36db
 ms.service: batch
@@ -12,14 +12,14 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4eb6b0c64fc40dec48dc9103c67e8e4a0730d7e2
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: a0c6fab0c9e26630bd54830044da56dba20564b3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029806"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025898"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Azure Portal で Batch アカウントを作成する
 
@@ -31,7 +31,7 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
-1. [Azure portal][azure_portal] にサインインする
+1. [Azure portal][azure_portal] にサインインします。
 
 1. **[リソースの作成]**  >  **[Compute]**  >  **[Batch サービス]** の順に選択します。
 
@@ -83,7 +83,7 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 
 ユーザー サブスクリプション モードで Batch アカウントを初めて作成する場合は、Batch にサブスクリプションを登録する必要があります (既に実行済みの場合は、次のセクションに移ってください)。
 
-1. [Azure portal][azure_portal] にサインインする
+1. [Azure portal][azure_portal] にサインインします。
 
 1. **[すべてのサービス]**  >  **[サブスクリプション]** の順に選択し、Batch アカウントに使用するサブスクリプションを選択します。
 

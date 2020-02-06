@@ -4,7 +4,7 @@ titleSuffix: Azure Traffic Manager
 description: この記事では、Azure Traffic Manager の "入れ子になったプロファイル" 機能について説明します。
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/22/2018
-ms.author: allensu
-ms.openlocfilehash: a5444c05b59196f53c670a2ae782f2bda5527c54
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 282099cb274c1ea872a0df9c2753a939ef31421f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227753"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938565"
 ---
 # <a name="nested-traffic-manager-profiles"></a>入れ子になった Traffic Manager プロファイル
 
@@ -63,7 +63,7 @@ Traffic Manager は、各サービス エンドポイントの正常性をアク
 > [!NOTE]
 > "優先順位" によるトラフィック ルーティング方法では、単一のエンドポイントにすべてのトラフィックが振り分けられます。 そのため、子プロファイルの MinChildEndpoints を '1' 以外の値に設定してもほとんど意味はありません。
 
-## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>例 3:"パフォーマンス" トラフィック ルーティングにおける優先フェールオーバー リージョン
+## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>例 3: "パフォーマンス" トラフィック ルーティングにおける優先フェールオーバー リージョン
 
 "パフォーマンス" トラフィック ルーティング方式の既定の動作では、エンドポイントが地理的に異なる場所にある場合、エンド ユーザーはネットワーク待ち時間が最も短いという意味で "最も近い" エンドポイントにルーティングされます。
 
@@ -75,7 +75,7 @@ Traffic Manager は、各サービス エンドポイントの正常性をアク
 
 このパターンは、すべてのリージョンで繰り返すことができます。 親プロファイル内の 3 つのエンドポイントすべてを 3 つの子プロファイルに置き換え、それぞれにフェールオーバーの順序を優先順位付けして指定します。
 
-## <a name="example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region"></a>例 4:同じリージョンの複数のエンドポイント間での "パフォーマンス" トラフィック ルーティングの制御
+## <a name="example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region"></a>例 4: 同じリージョンの複数のエンドポイント間での "パフォーマンス" トラフィック ルーティングの制御
 
 特定のリージョンの複数のエンドポイントを含むプロファイルで "パフォーマンス" トラフィック ルーティング方法が使用されているとします。 既定では、そのリージョンに送信されるトラフィックは、そのリージョンの使用可能なすべてのエンドポイントに均等に分散されます。
 
@@ -109,7 +109,7 @@ Traffic Manager プロファイルの監視の設定は、1 つのプロファ�
 
 * [Traffic Manager では、親プロファイルの入れ子になったエンドポイントの正常性をどのように計算するのですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Traffic Manager のプロファイル](traffic-manager-overview.md)の詳細を確認する
 

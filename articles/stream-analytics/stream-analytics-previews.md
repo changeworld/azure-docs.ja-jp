@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/30/2019
-ms.openlocfilehash: 59bb866d7a339608555f0bb802e1716eba5d3255
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 2/1/2020
+ms.openlocfilehash: aaff56ba1de69485d1c3b93bc7ed95ce1a3cbd88
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431589"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983551"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure Stream Analytics のプレビュー機能
 
@@ -52,11 +52,6 @@ Azure にジョブを送信する前に、ローカル コンピューター上�
 ### <a name="visual-studio-code-for-azure-stream-analytics"></a>Azure Stream Analytics 用の Visual Studio Code
 
 Visual Studio Code で Azure Stream Analytics のジョブを作成できます。 [VS Code の使用に関するチュートリアル](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code)をご覧ください。
-
-
-### <a name="anomaly-detection"></a>異常検出
-
-Azure Stream Analytics では、"*スパイク*" と "*ディップ*" の検出、および双方向、ゆっくりした増加、ゆっくりした減少の傾向の検出のサポートを備えた、新しい機械学習モデルが導入されています。 詳細については、「[Azure Stream Analytics での異常検出](stream-analytics-machine-learning-anomaly-detection.md)」を参照してください。
 
 
 ### <a name="integration-with-azure-machine-learning"></a>Azure Machine Learning との統合

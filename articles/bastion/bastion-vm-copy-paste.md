@@ -1,18 +1,18 @@
 ---
-title: 仮想マシンとの間のコピーと貼り付け:Azure Bastion | Microsoft Docs
+title: 仮想マシンとの間のコピーと貼り付け:Azure Bastion
 description: この記事では、Azure Bastion を使用して Azure VM との間でコピーと貼り付けを行う方法を説明します。
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: ed8d52a4932271020dfb2a010392b312fa38703b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0aaf816cdfe7d42fd345eb4f010cf47b1615f462
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73519365"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989537"
 ---
 # <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>仮想マシンとの間のコピーと貼り付け:Azure Bastion
 
@@ -54,6 +54,6 @@ ms.locfileid: "73519365"
 
    ![貼り付け](./media/bastion-vm-manage/local2.png)
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Bastion に関する FAQ](bastion-faq.md) を読む。

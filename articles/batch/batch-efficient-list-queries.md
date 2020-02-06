@@ -3,8 +3,8 @@ title: 効率的なリスト クエリの設計 - Azure Batch | Microsoft Docs
 description: Batch のリソース (プール、ジョブ、タスク、コンピューティング ノードなど) に関する情報を要求する際のクエリにフィルターを適用することでパフォーマンスを高めます。
 services: batch
 documentationcenter: .net
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: 031fefeb-248e-4d5a-9bc2-f07e46ddd30d
 ms.service: batch
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 12/07/2018
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: d853302ebb0961f9e5fda9f5ecc41f3a26351170
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: df923ac479ce5f5a3668c18c616b11348dc6c0b3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027102"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022241"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>効率的に Batch リソースを一覧表示するクエリを作成する
 
@@ -178,7 +178,7 @@ filter、select、および expand 文字列のプロパティ名は、REST API 
 ## <a name="example-construct-a-filter-string"></a>例: filter 文字列の構築
 [ODATADetailLevel.FilterClause][odata_filter] の filter 文字列を構築する場合は、「filter 文字列のマッピング」に示した表を参照して、実行するリスト操作に対応する REST API のドキュメント ページを見つけます。 そのページの最初の複数行の表に、フィルター可能なプロパティとサポートされている演算子が表示されます。 たとえば、終了コードがゼロ以外のタスクをすべて取得する場合は、[ジョブに関連付けられているタスクの一覧表示][rest_list_tasks]に関するページのこの行で、適用可能なプロパティ文字列と許可される演算子を指定します。
 
-| プロパティ | 許可される操作 | 種類 |
+| プロパティ | 許可される操作 | Type |
 |:--- |:--- |:--- |
 | `executionInfo/exitCode` |`eq, ge, gt, le , lt` |`Int` |
 
@@ -189,7 +189,7 @@ filter、select、および expand 文字列のプロパティ名は、REST API 
 ## <a name="example-construct-a-select-string"></a>例: select 文字列の構築
 [ODATADetailLevel.SelectClause][odata_select] を構築する場合は、「select 文字列のマッピング」に示した表を参照して、一覧表示するエンティティのタイプに対応する REST API ページに移動します。 そのページの最初の複数行の表に、選択可能なプロパティとサポートされている演算子が表示されます。 たとえば、リストの各タスクの ID とコマンド ラインのみを取得する場合は、[タスクに関する情報の取得][rest_get_task]に関するページの該当する表でこれらの行を見つけます。
 
-| プロパティ | 種類 | メモ |
+| プロパティ | Type | Notes |
 |:--- |:--- |:--- |
 | `id` |`String` |`The ID of the task.` |
 | `commandLine` |`String` |`The command line of the task.` |

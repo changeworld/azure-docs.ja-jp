@@ -1,6 +1,6 @@
 ---
 title: Azure Synapse Analytics (旧称 SQL DW) アーキテクチャ
-description: Azure Synapse Analytics (旧称 SQL DW) が並列処理 (MPP) と Azure Storage を結合して、高いパフォーマンスとスケーラビリティを実現する方法を説明します。
+description: Azure Synapse Analytics (旧称 SQL DW) が並列処理 (MPP) と Azure Storage を結合して、ハイ パフォーマンスとスケーラビリティを実現する方法を説明します。
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
@@ -10,24 +10,24 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: ea9629c63fcab97ba8ba83cd88592c37ae41818a
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1d808210861d971b2915206e7be0fe9b955616c5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646400"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720318"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure Synapse Analytics (旧称 SQL DW) アーキテクチャ 
 
-Azure Synapse は、エンタープライズ データ ウェアハウスとビッグ データ分析を 1 つにした無制限の分析サービスです。 サーバーレスのオンデマンド リソースまたはプロビジョニング済みのリソースを使用しながら大規模に、各自の条件で自由にデータを照会することができます。 Azure Synapse では、これら 2 つの環境を 1 つにした統合エクスペリエンスを使用して、データの取り込み、準備、管理、提供を行い、BI と機械学習の差し迫ったニーズに対応できます。
+Azure Synapse は、エンタープライズ データ ウェアハウスとビッグ データ分析がまとめられた無制限の分析サービスです。 サーバーレスのオンデマンド リソースまたはプロビジョニング済みのリソースを使用しながら大規模に、各自の条件で自由にデータを照会することができます。 Azure Synapse では、これら 2 つの環境を 1 つにした統合エクスペリエンスを使用して、データの取り込み、準備、管理、提供を行い、BI と機械学習の差し迫ったニーズに対応できます。
 
  Azure Synapse には、次の 4 つのコンポーネントがあります。
-- SQL Analytics : 完全な T-SQL ベースの分析 
+- SQL Analytics:完全な T-SQL ベースの分析 
     - SQL プール (プロビジョニング済み DWU での従量課金) – 一般公開
     - SQL オンデマンド (処理された TB 単位の課金) – (プレビュー)
-- Spark : 緊密に統合された Apache Spark (プレビュー) 
-- データ統合 : ハイブリッド データ統合 (プレビュー)
-- Studio: 統一ユーザー エクスペリエンス  (プレビュー)
+- Spark:緊密に統合された Apache Spark (プレビュー) 
+- データ統合:ハイブリッド データ統合 (プレビュー)
+- Studio: 統一ユーザー エクスペリエンス。  (プレビュー)
 
 > [!VIDEO https://www.youtube.com/embed/PlyQ8yOb8kc]
 
@@ -50,9 +50,9 @@ SQL Analytics では、ノードベースのアーキテクチャを使用しま
 
 ### <a name="azure-storage"></a>Azure Storage
 
-SQL Analytics では、ユーザー データを安全に保つために Azure Storage を使用します。  データは Azure Storage によって保存、管理されるため、ストレージの使用量が別途課金されます。 データ自体は、システムのパフォーマンスの最適化のため、**ディストリビューション**にシャードされます。 どのシャーディング パターンを使用して、テーブルを定義するときにデータを分散するかを選択できます。 次の 2 つのシャーディング パターンがサポートされています。
+SQL Analytics では、ユーザー データを安全に保つために Azure Storage を使用します。  データは Azure Storage によって保存、管理されるため、ストレージの使用量が別途課金されます。 データは、システムのパフォーマンスの最適化のため、**ディストリビューション**にシャード化されます。 どのシャーディング パターンを使用して、テーブルを定義するときにデータを分散するかを選択できます。 次の 2 つのシャーディング パターンがサポートされています。
 
-* Hash
+* ハッシュ インデックス
 * ラウンド ロビン
 * レプリケート
 
@@ -105,43 +105,15 @@ SQL Analytics では、ユーザー データを安全に保つために Azure S
 
 ![レプリケート テーブル](media/sql-data-warehouse-distributed-data/replicated-table.png "レプリケート テーブル") 
 
-## <a name="next-steps"></a>次の手順
-Azure Synapse の概要について学習したので、次はすばやく [SQL プールを作成][create a SQL pool]し、[サンプル データを読み込む][load sample data]方法について学習してください。 Azure に慣れていない場合に新しい用語を調べるには、 [Azure 用語集][Azure glossary] が役立ちます。 または、次の Azure Synapse リソースも確認できます。  
+## <a name="next-steps"></a>次のステップ
+Azure Synapse の概要について学習したので、次はすばやく [SQL プールを作成](./sql-data-warehouse-get-started-provision.md)し、[サンプル データを読み込む](./sql-data-warehouse-load-sample-databases.md)方法について学習してください。 Azure に慣れていない場合に新しい用語を調べるには、 [Azure 用語集](../azure-glossary-cloud-terminology.md) が役立ちます。 または、次の Azure Synapse リソースも確認できます。  
 
-* [顧客の成功事例]
-* [ブログ]
-* [機能に関する要求]
-* [ビデオ]
-* [Customer Advisory Team のブログ]
-* [サポート チケットを作成する]
-* [MSDN フォーラム]
-* [Stack Overflow フォーラム]
-* [Twitter]
+* [顧客の成功事例](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
+* [ブログ](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
+* [機能に関する要求](https://feedback.azure.com/forums/307516-sql-data-warehouse)
+* [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
+* [サポート チケットを作成する](./sql-data-warehouse-get-started-create-support-ticket.md)
+* [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse)
+* [Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-sqldw)
+* [Twitter](https://twitter.com/hashtag/SQLDW)
 
-<!--Image references-->
-[1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
-
-<!--Article references-->
-[サポート チケットを作成する]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[load sample data]: ./sql-data-warehouse-load-sample-databases.md
-[create a SQL pool]: ./sql-data-warehouse-get-started-provision.md
-[Migration documentation]: ./sql-data-warehouse-overview-migrate.md
-[Azure Synapse solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
-[Integrated tools overview]: ./sql-data-warehouse-overview-integrate.md
-[Backup and restore overview]: ./sql-data-warehouse-restore-database-overview.md
-[Azure glossary]: ../azure-glossary-cloud-terminology.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->
-[顧客の成功事例]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
-[ブログ]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
-[Customer Advisory Team のブログ]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
-[機能に関する要求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[MSDN フォーラム]: https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse
-[Stack Overflow フォーラム]: https://stackoverflow.com/questions/tagged/azure-sqldw
-[Twitter]: https://twitter.com/hashtag/SQLDW
-[ビデオ]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
-[SLA for Azure Synapse]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
-[Volume Licensing]: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
-[Service Level Agreements]: https://azure.microsoft.com/support/legal/sla/

@@ -7,6 +7,7 @@ author: curtand
 manager: daveba
 ms.assetid: ''
 ms.service: active-directory
+ms.subservice: pim
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c4963e6563db166566cff41d381295a8a9e576b
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 7a1ec6ddf4f10aa2e03656eb6a3d92ead0d74922
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756360"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896584"
 ---
 # <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>Privileged Identity Management (PIM) で Azure AD のカスタム ロールを割り当てる
 
@@ -75,7 +76,7 @@ Azure Active Directory (Azure AD) のアプリケーション管理で作成で�
 
  ![ロールの割り当てが "対象" または "アクティブ" として表示されているかどうかを確認する](./media/azure-ad-custom-roles-assign/verify-assignments.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure AD のカスタム ロールをアクティブ化する](azure-ad-custom-roles-assign.md)
 - [Azure AD のカスタム ロールの割り当てを削除または更新する](azure-ad-custom-roles-update-remove.md)

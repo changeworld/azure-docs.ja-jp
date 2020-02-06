@@ -2,18 +2,18 @@
 title: 'チュートリアル: 重み付けされたエンドポイントにトラフィックをルーティングする - Azure Traffic Manager'
 description: このチュートリアルの記事では、Traffic Manager を使用して重み付けされたエンドポイントにトラフィックをルーティングする方法について説明します。
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 Customer intent: As an IT Admin, I want to distribute traffic based on the weight assigned to a website endpoint so that I can control the user traffic to a given website.
 ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
-ms.author: allensu
-ms.openlocfilehash: 45ece08599722e04c4e6799fa5c3589cba1fca42
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: a4738b2e36786cd627f53af3e36bd8f1e3fbc375
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037915"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939473"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>チュートリアル:Traffic Manager を使用して重み付けされたエンドポイントを使用してトラフィックのルーティングを制御する
 
@@ -40,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure Portal](https://portal.azure.com) にサインインします。
+[Azure portal](https://portal.azure.com) にサインインします。
 
 ### <a name="create-websites"></a>Web サイトを作成する
 
@@ -137,12 +137,12 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーク]**  >  **[Traffic Manager プロファイル]**  >  **[作成]** の順に選択します。
 2. **[Traffic Manager プロファイルの作成]** ブレードで、次の情報を入力するか、選択します。 その他の設定は既定値のままにして、 **[作成]** を選択します。
 
-    | Setting                 | 値                                              |
+    | 設定                 | Value                                              |
     | ---                     | ---                                                |
     | Name                   | trafficmanager.net ゾーン内で一意の名前を入力します。 これが、Traffic Manager プロファイルにアクセスする際に使用する DNS 名、trafficmanager.net になります。                                   |
     | ルーティング方法          | **[重み付け]** ルーティング方法を選択します。                                       |
     | サブスクリプション            | サブスクリプションを選択します。                          |
-    | リソース グループ          | **[既存のものを使用]** 、 **[myResourceGroupTM1]** の順に選択します。 |
+    | Resource group          | **[既存のものを使用]** 、 **[myResourceGroupTM1]** の順に選択します。 |
     |        |   |
 
     ![Traffic Manager プロファイルの作成](./media/tutorial-traffic-manager-weighted-endpoint-routing/create-traffic-manager-profile.png)
@@ -155,9 +155,9 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 2. **[Traffic Manager プロファイル]** の **[設定]** セクションで、 **[エンドポイント]**  >  **[追加]** の順に選択します。
 3. 次の情報を入力または選択します。 その他の設定は既定値のままにして、 **[OK]** を選択します。
 
-    | Setting                 | 値                                              |
+    | 設定                 | Value                                              |
     | ---                     | ---                                                |
-    | type                    | Azure エンドポイントを入力します。                                   |
+    | Type                    | Azure エンドポイントを入力します。                                   |
     | Name           | 「**myEastUSEndpoint**」と入力します。                                        |
     | ターゲット リソースの種類           | **[パブリック IP アドレス]** を選択します。                          |
     | ターゲット リソース          | パブリック IP アドレスを選択して、同じサブスクリプションでパブリック IP アドレスが割り当てられているリソースの一覧を表示します。 **[リソース]** で、**myIISVMEastUS-ip** という名前のパブリック IP アドレスを選択します。 これは、米国東部内の IIS サーバー VM のパブリック IP アドレスです。|
@@ -205,7 +205,7 @@ Traffic Manager の動作を表示するには、次の手順を完了します�
 
 このチュートリアルで作成したリソース グループは、不要になったら削除してかまいません。 これを行うには、リソース グループ (**ResourceGroupTM1** または **ResourceGroupTM2**) を選択し、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [ユーザーの地理的位置に基づいて特定のエンドポイントにトラフィックをルーティングする](traffic-manager-configure-geographic-routing-method.md)

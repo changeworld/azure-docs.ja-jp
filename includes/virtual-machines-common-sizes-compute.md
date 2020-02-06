@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: dd94f29317e703a68ba1b4a78639f635034d4492
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 16a0fa29c067262f1794528b16abfce662d05605
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75751496"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748951"
 ---
 <!-- F-series, Fs-series* -->
 
@@ -48,7 +48,7 @@ Premium Storage キャッシュ:サポートされています
 - Windows Server 2016 以降
 - Azure 用にチューニングされたカーネル (4.15 カーネル以降) を含む Ubuntu 16.04 LTS 以降
 - SLES 12 SP2 以降
-- Microsoft が提供する LIS パッケージ 4.3.1 (以降) がインストールされた RHEL または CentOS バージョン 6.7 ～ 6.10
+- Microsoft が提供する LIS パッケージ 4.3.1 (以降) がインストールされた RHEL または CentOS バージョン 6.7 から 6.10
 - Microsoft が提供する LIS パッケージ 4.2.1 (以降) がインストールされた RHEL または CentOS バージョン 7.3
 - RHEL または CentOS バージョン 7.6 以降
 - UEK4 以降を含む Oracle Linux

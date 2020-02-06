@@ -4,16 +4,13 @@
   items:
     - name: 認証とは
       href: overview-authentication.md
-- name: クイック スタート
-  items:
-    - name: パスワード リセットを構成する
-      href: quickstart-sspr.md
 - name: チュートリアル
+  expanded: true
   items:
-    - name: 1. アプリケーションの MFA を有効にする
+    - name: セルフサービス パスワード リセットを有効にする
+      href: tutorial-enable-sspr.md
+    - name: アプリケーションの MFA を有効にする
       href: tutorial-mfa-applications.md
-    - name: 2. SSPR パイロットを有効にする
-      href: tutorial-sspr-pilot.md
     - name: SSPR オンプレミス統合を有効にする
       href: tutorial-enable-writeback.md
     - name: Azure Identity Protection を統合する
@@ -65,9 +62,9 @@
       href: concept-resilient-controls.md
 - name: 操作方法ガイド
   items:
-    - name: セルフサービスのパスワード リセット
+    - name: セルフサービス パスワード リセット
       items:
-        - name: セルフサービスのパスワード リセットのデプロイ
+        - name: セルフサービス パスワード リセットのデプロイ
           href: howto-sspr-deployment.md
         - name: 認証データの事前登録
           href: howto-sspr-authenticationdata.md

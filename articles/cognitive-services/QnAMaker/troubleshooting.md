@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/23/2020
+ms.date: 01/28/2020
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 159b00f9417f4a572655f1f93208dbc755012922
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 18d7e02689cc9c5fe9282a6a2456b8b1574ec85e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844855"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901637"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker のトラブルシューティング
 
@@ -39,13 +39,6 @@ QnA Maker サービス エンドポイントは、デバッグ目的で QnA Make
 1. エンドポイントの URL は [概要] セクションで確認できます。
 
     ![QnA Maker のエンドポイント](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-gethostname.png)
-
-
-## <a name="use-the-help-bot-in-the-qna-maker-portal"></a>QnA Maker ポータルでヘルプ ボットを使用する
-
-QnA Maker では、QnA Maker ポータルで役に立つ**ヘルプ** ボットが提供されています。 ヘルプ ボットは、すべての Web ページで利用できます。 ボットでは、QnA Maker を使用して回答が提供されます。ボットには [C# Bot Framework コード プロジェクト](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support)が用意されているので、独自の応答ボットをすばやく稼働させることができます。
-
-![![QnA Maker では、QnA Maker ポータルで役に立つ**ヘルプ** ボットが提供されています。](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png)](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png#lightbox)
 
 ## <a name="manage-the-knowledge-base"></a>ナレッジ ベースの管理
 

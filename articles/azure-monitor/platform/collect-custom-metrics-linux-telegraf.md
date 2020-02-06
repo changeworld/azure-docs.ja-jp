@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: b4cf5dc53c0fe256c9ecab5a844300224b860e44
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 365330aa445bcf8e5b1aec575d5e646d533ceaf7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926742"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901326"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Linux VM のカスタム メトリックを InfluxData Telegraf エージェントを使用して収集する
 
@@ -21,7 +21,7 @@ Azure Monitor を使用すると、アプリケーション テレメトリ、Az
 
 ## <a name="influxdata-telegraf-agent"></a>InfluxData Telegraf エージェント 
 
-[Telegraf](https://docs.influxdata.com/telegraf/v1.7/)は、150 を超えるさまざまなソースからのメトリックの収集を可能にする、プラグイン駆動型エージェントです。 VM 上で実行するワークロードに応じて、メトリックを収集するための特別な入力プラグインを利用するようにエージェントを構成できます。 たとえば、MySQL、NGINX、および Apache があります。 出力プラグインを使用することで、エージェントは、選択した変換先に記述できます。 Telegraf エージェントは Azure Monitor のカスタム メトリック REST API と直接統合されます。 また、Azure Monitor 出力プラグインをサポートします。 プラグインを使用することで、エージェントは、Linux VM でワークロード固有のメトリックを収集し、それらをカスタム メトリックとして Azure Monitor に送信できます。 
+[Telegraf](https://docs.influxdata.com/telegraf/)は、150 を超えるさまざまなソースからのメトリックの収集を可能にする、プラグイン駆動型エージェントです。 VM 上で実行するワークロードに応じて、メトリックを収集するための特別な入力プラグインを利用するようにエージェントを構成できます。 たとえば、MySQL、NGINX、および Apache があります。 出力プラグインを使用することで、エージェントは、選択した変換先に記述できます。 Telegraf エージェントは Azure Monitor のカスタム メトリック REST API と直接統合されます。 また、Azure Monitor 出力プラグインをサポートします。 プラグインを使用することで、エージェントは、Linux VM でワークロード固有のメトリックを収集し、それらをカスタム メトリックとして Azure Monitor に送信できます。 
 
  ![Telegraph エージェントの概要](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
 
@@ -29,7 +29,7 @@ Azure Monitor を使用すると、アプリケーション テレメトリ、Az
 
 このチュートリアルでは、Ubuntu 16.04 LTS オペレーティング システムを実行する Linux VM をデプロイします。 Telegraf エージェントは、ほとんどの Linux オペレーティング システムでサポートされます。 [InfluxData ダウンロード ポータル](https://portal.influxdata.com/downloads)で、Debian パッケージと RPM パッケージの両方と、パッケージ化されていない Linux バイナリを入手できます。 詳細なインストール手順とオプションについては、この[Telegraf インストール ガイド](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/)を参照してください。 
 
-[Azure Portal](https://portal.azure.com) にサインインします。
+[Azure portal](https://portal.azure.com) にサインインします。
 
 新しい Linux VM を作成するには、次の手順を実行します。 
 
@@ -126,11 +126,11 @@ sudo systemctl start telegraf
 
 さらに、このチュートリアルでは、Telegraf エージェントを使用して、エージェントがデプロイされている VM に関するメトリックを出力しました。 Telegraf エージェントは、他のリソースのメトリックのコレクターとフォワーダーとして使用することもできます。 他の Azure リソースのメトリックを出力するようにエージェントを構成する方法については、「[Azure Monitor Custom Metrics Output for Telegraf](https://github.com/influxdata/telegraf/blob/fb704500386214655e2adb53b6eb6b15f7a6c694/plugins/outputs/azure_monitor/README.md)」(Telegraf による Azure Monitor へのカスタム メトリックの出力) を参照してください。  
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする 
 
 必要がなくなったら、リソース グループ、仮想マシン、およびすべての関連リソースを削除できます。 そのためには、仮想マシンのリソース グループを選択し、 **[削除]** を選択します。 削除するリソース グループの名前を確認します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [カスタム メトリック](metrics-custom-overview.md)の詳細を確認します。
 
 

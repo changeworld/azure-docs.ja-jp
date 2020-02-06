@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: mlearned
-ms.openlocfilehash: 6ea1bce6c14d7266b5ce49b94e39d661bfc57717
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 62be78df28d65c2ed16a9f45295edec8c5c360c4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76713317"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901526"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のクラスターで複数のノード プールを作成および管理する
 
@@ -397,7 +397,7 @@ Kubernetes での高度なスケジューラ機能の詳細については、「
 この例では、--node-taints コマンドを使用してお使いの GPU ベースのノードに taint を適用しています。 前の `kubectl get nodes` コマンドからお使いの GPU ベースのノードの名前を指定します。 taint が *key:value*、次いでスケジューリング オプションとして適用されます。 次の例では *sku=gpu* の組み合わせを使用してポッドを定義しています。されない場合、*NoSchedule* 機能を持つことになります。
 
 ```console
-az aks nodepool --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
+az aks nodepool add --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
 ```
 
 次の YAML マニフェストの基本例では、Kubernetes スケジューラが GPU ベースのノードで NGINX ポッドを実行できるように toleration を使用しています。 MNIST データセットに対して Tensorflow ジョブを実行する、より適切な、しかし時間がかかる例については、「[Azure Kubernetes Service (AKS) でコンピューティングを集中的に使用するワークロードに GPU を使用する][gpu-cluster]」を参照してください。

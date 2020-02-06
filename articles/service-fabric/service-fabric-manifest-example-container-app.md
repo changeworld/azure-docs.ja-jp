@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: pepogors
-ms.openlocfilehash: e4050dedeb48b19b6848a95fc904f7f37fb5b04a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5efdbd17db20e69ace33b379ddbb99b2c4a20e69
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75349384"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722562"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>複数コンテナーのアプリケーション マニフェストとサービス マニフェストの例
 複数コンテナーの Service Fabric アプリケーションのアプリケーションとサービス マニフェストの例を次に示します。 これらの例の目的は、利用できる設定とその使用方法を示すことです。 これらのアプリケーションとサービス マニフェストは、[Windows Server 2016 コンテナー サンプル](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) のマニフェストに基づいています。
@@ -342,7 +342,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
  詳細については、「[ContainerHost 要素](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)」を参照してください。
 
 ### <a name="imagename-element"></a>ImageName 要素
-https://hub.docker.com または Azure Container Registry のリポジトリおよびイメージ。 詳細については、「[ImageName 要素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)」を参照してください。
+[https://hub.docker.com](https://hub.docker.com) または Azure Container Registry のリポジトリおよびイメージ。 詳細については、「[ImageName 要素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)」を参照してください。
 
 ### <a name="environmentvariables-element"></a>EnvironmentVariables 要素
 コンテナーまたは exe に環境変数を渡します。  詳細については、「[EnvironmentVariables 要素](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)」を参照してください。
@@ -386,7 +386,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 詳細については、「[ContainerHost 要素](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)」を参照してください。
 
 ### <a name="imagename-element"></a>ImageName 要素
-https://hub.docker.com または Azure Container Registry のリポジトリおよびイメージ。 詳細については、「[ImageName 要素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)」を参照してください。
+[https://hub.docker.com](https://hub.docker.com) または Azure Container Registry のリポジトリおよびイメージ。 詳細については、「[ImageName 要素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)」を参照してください。
 
 ### <a name="commands-element"></a>Commands 要素
 コマンドのコンマ区切りリストをコンテナーに渡します。 詳細については、「[Commands 要素](service-fabric-service-model-schema-elements.md#CommandsElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)」を参照してください。

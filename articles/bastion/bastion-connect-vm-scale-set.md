@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 446784155cf6f72cfaa80523ed3913eacc7e5cfc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4f513aaf113ef4bd6e75e5c4b31e0f0252d45f10
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510376"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988092"
 ---
 # <a name="connect-to-a-virtual-machine-scale-set-using-azure-bastion"></a>Azure Bastion を使用して仮想マシン スケール セットに接続する
 
@@ -38,6 +38,6 @@ ms.locfileid: "73510376"
    ![接続する](./media/bastion-connect-vm-scale-set/4.png)
 5. Bastion を使用したこの仮想マシンへの RDP 接続は、ポート 443 と Bastion サービスを使用して (HTML5 を介して) Azure portal で直接開きます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Bastion に関する FAQ](bastion-faq.md) を読む。

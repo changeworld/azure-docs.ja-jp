@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: overview
-ms.date: 12/16/2019
+ms.date: 02/04/2020
 ms.custom: seodec18
-ms.openlocfilehash: f6f6039be1d8837b4b1fe4eb225289f4cd1642cb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1e4f72300752c93659db4edd4610464dbebf2503
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452472"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77014421"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューとは
 

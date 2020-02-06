@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: a9c45321d12b659febfeb4913d66ea3732813918
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9b9e39776e519a91a4464532e11e85da711087b3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769525"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766248"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions のバインド式のパターン
 
@@ -131,7 +131,19 @@ public static void Run(
 
 ```
 
-また、拡張機能などのファイル名の一部のための式を作成することもできます。 式を使用する方法および BLOB パス文字列内のパターンの詳細については、[ストレージ BLOB バインディングのリファレンス](functions-bindings-storage-blob.md)に関するページを参照してください。
+また、ファイル名の一部のための式を作成することもできます。 次の例の関数は、パターン (`anyname-anyfile.csv`) に一致するファイル名でのみトリガーされます。
+
+```json
+{
+    "name": "myBlob",
+    "type": "blobTrigger",
+    "direction": "in",
+    "path": "testContainerName/{date}-{filetype}.csv",
+    "connection": "OrderStorageConnection"
+}
+```
+
+式を使用する方法および BLOB パス文字列内のパターンの詳細については、[ストレージ BLOB バインディングのリファレンス](functions-bindings-storage-blob.md)に関するページを参照してください。
 
 ## <a name="trigger-metadata"></a>トリガー メタデータ
 

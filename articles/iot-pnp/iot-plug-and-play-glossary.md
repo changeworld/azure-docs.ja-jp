@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: b6516b07f24c40fcb95d47e05b22dd7672c10f2a
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ef5ce9cc1cda7f1ff6b1985771e20cb20123e264
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531203"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025641"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT プラグ アンド プレイ プレビューの用語集
 
@@ -117,7 +117,7 @@ IoT プラグ アンド プレイ デバイスのクライアント アプリケ
 
 ## <a name="device-provisioning-service"></a>Device Provisioning Service
 
-[Azure IoT Central](#azure-iot-central) では、すべてのデバイスの登録と接続の管理に Device Provisioning Service が使用されます。 詳細については、[Azure IoT Central のデバイス接続機能](../iot-central/preview/overview-iot-central-get-connected.md)に関するページを参照してください。 また、Device Provisioning Service を使用すると、お使いの IoT ハブベースの IoT ソリューションへのデバイスの登録と接続を管理することもできます。 詳細については、「[Azure IoT Hub Device Provisioning Service を使用したデバイスのプロビジョニング](../iot-dps/about-iot-dps.md)」を参照してください。
+[Azure IoT Central](#azure-iot-central) では、すべてのデバイスの登録と接続の管理に Device Provisioning Service が使用されます。 詳細については、[Azure IoT Central のデバイス接続機能](../iot-central/core/concepts-get-connected.md)に関するページを参照してください。 また、Device Provisioning Service を使用すると、お使いの IoT ハブベースの IoT ソリューションへのデバイスの登録と接続を管理することもできます。 詳細については、「[Azure IoT Hub Device Provisioning Service を使用したデバイスのプロビジョニング](../iot-dps/about-iot-dps.md)」を参照してください。
 
 ## <a name="device-registration"></a>デバイス登録
 

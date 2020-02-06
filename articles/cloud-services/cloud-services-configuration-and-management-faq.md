@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 50dd6e2387abbf5b24adcee708dd2ff387e33261
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 4ca8c18d448297cc2d2e2249a1dbbe04ecccd092
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845380"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019419"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の構成と管理の問題: よく寄せられる質問 (FAQ)
 
@@ -174,11 +174,11 @@ Windows Azure Diagnostics (WAD) ログ記録は、次のオプションを使用
 
 ### <a name="how-do-i-associate-a-static-ip-address-to-my-cloud-service"></a>私のクラウド サービスに静的 IP アドレスを関連付ける方法を教えてください。
 静的 IP アドレスを設定するには、予約済み IP を作成する必要があります。 この予約済み IP は、新しいクラウド サービスに、または既存のデプロイに関連付けることができます。 詳細については、次のドキュメントをご覧ください。
-* [予約済み IP アドレスを作成する方法](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#manage-reserved-vips)
-* [既存のクラウド サービスの IP アドレスを予約する](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
-* [予約済み IP を新しいクラウド サービスに関連付ける](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-new-cloud-service)
-* [予約済み IP を実行中のデプロイに関連付ける](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-running-deployment)
-* [サービス構成ファイルを使用してクラウド サービスに予約済み IP を関連付ける](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
+* [予約済み IP アドレスを作成する方法](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#manage-reserved-vips)
+* [既存のクラウド サービスの IP アドレスを予約する](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#reserve-the-ip-address-of-an-existing-cloud-service)
+* [予約済み IP を新しいクラウド サービスに関連付ける](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-new-cloud-service)
+* [予約済み IP を実行中のデプロイに関連付ける](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-running-deployment)
+* [サービス構成ファイルを使用してクラウド サービスに予約済み IP を関連付ける](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
 ### <a name="what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides"></a>Azure の基本的な IPS/IDS と DDoS が提供する機能には何がありますか。
 Azure では、脅威に対する防御のため、データセンターの物理サーバーに IPS/IDS を備えています。 それに加えて、お客様は、Web アプリケーション ファイアウォール、ネットワーク ファイアウォール、マルウェア対策、侵入検出/防御システム (IDS/IPS) などのサード パーティ製のセキュリティ ソリューションをデプロイすることができます。 詳細については、「[データと資産を保護し、国際的なセキュリティ基準に準拠](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)」をご覧ください。

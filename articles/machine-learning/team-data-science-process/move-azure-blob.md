@@ -3,20 +3,20 @@ title: Azure Blob Storage との間でのデータの移動 - Team Data Science 
 description: Azure Storage Explorer、AzCopy、Python、および SSIS を使用して、Azure Blob Storage 間でデータを移動します。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d885a7fad6e958507e7d9df34bd2b1fb222c6f86
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: fc58651bcb3b266b981fb953fd7341427d47fb2c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053674"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717571"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage"></a>Azure Blob Storage との間のデータの移動
 
@@ -53,5 +53,5 @@ Team Data Science Process では、さまざまなストレージ環境に取り
 この記事は、Azure サブスクリプション、ストレージ アカウント、そのアカウントに対応するストレージ キーがあることを前提としています。 データのアップロード/ダウンロードを行う前に、Azure Storage のアカウント名とアカウント キーを確認しておく必要があります。
 
 * Azure サブスクリプションを設定するには、 [1 か月間の無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。
-* ストレージ アカウントの作成と、アカウントとキー情報の取得の手順については、「 [Azure ストレージ アカウントについて](../../storage/common/storage-create-storage-account.md)」を参照してください。
+* ストレージ アカウントの作成と、アカウントとキー情報の取得についての手順については、「[Azure ストレージ アカウントについて](../../storage/common/storage-create-storage-account.md)」を参照してください。
 

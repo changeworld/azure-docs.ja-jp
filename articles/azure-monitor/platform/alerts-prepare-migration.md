@@ -1,18 +1,18 @@
 ---
 title: ロジック アプリと Runbook の更新による Azure Monitor クラシック アラートの移行の準備
+author: yanivlavi
 description: 自主的な移行の準備のために、Webhook、ロジック アプリ、および Runbook を変更する方法について説明します。
-author: snehithm
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.author: snmuvva
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 5235db5cab39be6e36bdf145d3edc7c73fe9da54
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 58ba95ff60ddccf909578a673110c870caf57376
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827392"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705566"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>クラシック アラート ルールの移行のためにロジック アプリと Runbook を準備する
 
@@ -45,7 +45,7 @@ ms.locfileid: "68827392"
 |  |クラシック アラート  |新しいメトリック アラート |
 |---------|---------|---------|
 |アラートがアクティブ化または解決されたか    | **status**       | **data.status** |
-|アラートに関するコンテキスト情報     | **コンテキスト**        | **data.context**        |
+|アラートに関するコンテキスト情報     | **context**        | **data.context**        |
 |アラートがアクティブ化または解決された時点のタイム スタンプ     | **context.timestamp**       | **data.context.timestamp**        |
 | アラート ルール ID | **context.id** | **data.context.id** |
 | アラート ルール名 | **context.name** | **data.context.name** |
@@ -163,7 +163,7 @@ else {
 
 上記に含まれていないパートナー統合を使用している場合は、統合が新しいメトリック アラートで動作することを統合のプロバイダーにご確認ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [移行ツールの使用方法](alerts-using-migration-tool.md)
 - [移行ツールの動作の理解](alerts-understand-migration.md)

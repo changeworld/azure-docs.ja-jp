@@ -6,16 +6,16 @@ ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
-ms.date: 12/20/2019
-ms.openlocfilehash: 55efdfe2bb1b37e566654b8041f2cf5ed411cc3f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/21/2020
+ms.openlocfilehash: dff4901f1488406ed1259d1411a6b05b949382cb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977567"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715844"
 ---
-# <a name="collect-azure-activity-log-with-legacy-settings"></a>従来の設定を使用して Azure アクティビティ ログを収集する
-[Azure アクティビティ ログ](platform-logs-overview.md)は、Azure で発生したサブスクリプションレベルのイベントの分析情報を提供する[プラットフォーム ログ](platform-logs-overview.md)です。 最近まで、アクティビティ ログ エントリを[イベント ハブまたはストレージ アカウント](activity-log-export.md)に送信するためのログ プロファイルを作成し、コネクタを使用してこれらを [Log Analytics ワークスペース](activity-log-collect.md)に収集していました。 この記事では、これらの方法の相違点、既存の従来の設定の使用方法、診断設定の準備で従来の設定をクリアする方法について説明します。
+# <a name="update-to-azure-activity-log-collection-and-export"></a>Azure のアクティビティ ログの収集とエクスポートの更新
+[Azure アクティビティ ログ](platform-logs-overview.md)は、Azure で発生したサブスクリプションレベルのイベントの分析情報を提供する[プラットフォーム ログ](platform-logs-overview.md)です。 アクティビティ ログ エントリを[イベント ハブまたはストレージ アカウント](activity-log-export.md)、または [Log Analytics ワークスペース](activity-log-collect.md)に送信するメソッドは、[診断設定](diagnostic-settings.md)を使用するように変更されました。 この記事では、これらの方法の相違点、および診断設定に変更するための準備として、従来の設定をクリアする方法について説明します。
 
 
 ## <a name="differences-between-methods"></a>方法の相違点
@@ -39,14 +39,16 @@ ms.locfileid: "75977567"
 ### <a name="differences-in-data"></a>データの相違点
 診断設定では、アクティビティ ログの収集に使用された前の方法と同じデータが収集されますが、現時、データには次の相違点があります。
 
-次のプロパティが削除されています。
+以下の列が削除されました。 これらの列の代わりは形式が異なるため、これらの列を使用するログ クエリを変更する必要になる場合があります。 スキーマには削除された列が表示される場合がありますが、データは取り込まれません。
 
-- ActivityStatus
-- ActivitySubstatus
-- OperationName
-- ResourceProvider
+| 削除列 | 置換列 |
+|:---|:---|
+| ActivityStatus    | ActivityStatusValue    |
+| ActivitySubstatus | ActivitySubstatusValue |
+| OperationName     | OperationNameValue     |
+| ResourceProvider  | ResourceProviderValue  |
 
-次のプロパティが追加されています。
+次の列が追加されました。
 
 - Authorization_d
 - Claims_d

@@ -2,23 +2,23 @@
 title: Azure Active Directory の新着情報のアーカイブ | Microsoft Docs
 description: このコンテンツ セットの概要セクションにある新着情報リリース ノートには、6 か月間のアクティビティが含まれています。 6 か月後、項目はメイン記事から削除され、このアーカイブ記事に配置されます。
 services: active-directory
-author: eross-msft
+author: msmimart
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/10/2019
-ms.author: lizross
+ms.date: 01/27/2020
+ms.author: mimart
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dc2a8d523b2aabd72348529561f7cfdac1b7a9d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c92305d3b8aae5bbc54df58d414cd9b103945bcb
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422810"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931455"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報のアーカイブ
 
@@ -31,6 +31,263 @@ Azure Active Directory の新着情報のリリース ノートでは、次の�
 - バグの修正
 - 非推奨の機能
 - 変更の計画
+
+---
+
+## <a name="july-2019"></a>2019 年 7 月
+
+### <a name="plan-for-change-application-proxy-service-update-to-support-only-tls-12"></a>変更の計画: アプリケーション プロキシ サービスが、TLS 1.2 のみをサポートするように更新される
+
+**種類:** 変更の計画  
+**サービス カテゴリ:** アプリ プロキシ  
+**製品の機能:** アクセス制御
+
+最強の暗号化を提供できるように、アプリケーション プロキシ サービスのアクセスを TLS 1.2 プロトコルのみに制限する作業が開始される予定です。 この制限は、最初のうちは TLS 1.2 プロトコルを既に利用されているお客様にロールアウトされるため、影響はありません。 TLS 1.0 と TLS 1.1 のプロトコルは、2019 年 8 月 31 日に完全に非推奨になります。 まだ TLS 1.0 および TLS 1.1 を利用されているお客様には、この変更に備えていただけるよう、事前に通知されます。
+
+この変更期間中もアプリケーション プロキシ サービスへの接続を維持するには、クライアントとサーバーおよびブラウザーとサーバーの組み合わせを TLS 1.2 を使用するように更新することをお勧めします。 また、アプリケーション プロキシ サービスから公開されるアプリに従業員がアクセスする際に使用するすべてのクライアント システムを含めることもお勧めします。
+
+詳しくは、「[Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application)」を参照してください。
+
+---
+
+### <a name="plan-for-change-design-updates-are-coming-for-the-application-gallery"></a>変更の計画: アプリケーション ギャラリーのデザインの更新が予定されている
+
+**種類:** 変更の計画  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
+**製品の機能:** SSO
+
+**[アプリケーションの追加]** ブレードの **[ギャラリーから追加する]** 領域のデザインが、新しいユーザー インターフェイスに変更されます。 この変更により、自動プロビジョニング、OpenID Connect、Security Assertion Markup Language (SAML)、パスワード シングル サインオン (SSO) がサポートされているアプリをより簡単に見つけることができるようになります。
+
+---
+
+### <a name="plan-for-change-removal-of-the-mfa-server-ip-address-from-the-office-365-ip-address"></a>変更の計画: Office 365 IP アドレスから MFA サーバーの IP アドレスを削除する
+
+**種類:** 変更の計画  
+**サービス カテゴリ:** MFA  
+**製品の機能:** ID のセキュリティ & 保護
+
+[Office 365 の IP アドレスと URL Web サービス](https://docs.microsoft.com/office365/enterprise/office-365-ip-web-service)から、MFA サーバーの IP アドレスを削除する予定です。 現在これらのページに依存してファイアウォールの設定を更新している場合は、「[Azure Multi-Factor Authentication Server の概要](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy#azure-multi-factor-authentication-server-firewall-requirements)」の「**Azure Multi-Factor Authentication Server ファイアウォールの要件**」セクションに記載されている IP アドレスの一覧も含まれていることを確認する必要があります。
+
+---
+
+### <a name="app-only-tokens-now-require-the-client-app-to-exist-in-the-resource-tenant"></a>アプリ専用トークンで、クライアント アプリがリソース テナントに存在することが必要になった
+
+**種類:** 固定  
+**サービス カテゴリ:** 認証 (ログイン)  
+**製品の機能:** ユーザー認証
+
+2019 年 7 月 26 日に、[クライアント資格情報付与](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)によるアプリ専用トークンの提供方法を変更しました。 以前は、クライアント アプリがテナント内に存在するかどうかに関係なく、アプリでは他のアプリを呼び出すためのトークンを取得できました。 この動作が更新され、シングル テナント リソース (Web API とも呼ばれます) は、リソース テナントに存在するクライアント アプリによってのみ呼び出すことができるようになりました。
+
+ご利用のアプリがリソース テナント内に存在しない場合、`The service principal named <app_name> was not found in the tenant named <tenant_name>. This can happen if the application has not been installed by the administrator of the tenant.` のようなエラー メッセージが表示されます。この問題を解決するには、[管理者の同意エンドポイント](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#using-the-admin-consent-endpoint)または [PowerShell](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell) を使用して、テナント内にクライアント アプリ サービス プリンシパルを作成する必要があります。これにより、テナントではテナント内で動作するアクセス許可がアプリに付与されます。
+
+詳細については、[認証の新機能](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#app-only-tokens-for-single-tenant-applications-are-only-issued-if-the-client-app-exists-in-the-resource-tenant)に関する記事をご覧ください。
+
+> [!NOTE]
+> クライアントと API の間の既存の同意は引き続き必要ありません。 アプリでは、引き続き独自の承認チェックを実行する必要があります。
+
+---
+
+### <a name="new-passwordless-sign-in-to-azure-ad-using-fido2-security-keys"></a>FIDO2 セキュリティ キーを使用した Azure AD への新しいパスワードなしのサインイン
+
+**種類:** 新機能  
+**サービス カテゴリ:** 認証 (ログイン)  
+**製品の機能:** ユーザー認証
+
+Azure AD のお客様は、組織のユーザーとグループに対する FIDO2 セキュリティ キーを管理するためのポリシーを設定できるようになりました。 また、エンド ユーザーは、セキュリティ キーを自分で登録したり、FIDO 対応デバイスを使っているときにキーを使って Web サイト上の Microsoft アカウントにサインインしたり、Azure AD 参加済みの Windows 10 デバイスにサインインしたりできます。
+
+管理者関連の情報の詳細については、[Azure AD へのパスワードなしのサインインを有効にする (プレビュー)](/azure/active-directory/authentication/concept-authentication-passwordless)、エンド ユーザー関連の情報については、[セキュリティ キーを使用するようにセキュリティ情報を設定する (プレビュー)](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-security-key) に関する記事をご覧ください。
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---july-2019"></a>Azure AD アプリ ギャラリーで入手できる新しいフェデレーション アプリ - 2019 年 7 月
+
+**種類:** 新機能  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
+**製品の機能:** サード パーティ統合
+
+2019 年 7 月に、フェデレーションを使用した以下の 18 の新規アプリのサポートが、アプリ ギャラリーに追加されました。
+
+[Ungerboeck Software](https://docs.microsoft.com/azure/active-directory/saas-apps/ungerboeck-software-tutorial)、[Bright Pattern Omnichannel Contact Center](https://docs.microsoft.com/azure/active-directory/saas-apps/bright-pattern-omnichannel-contact-center-tutorial)、[Clever Nelly](https://docs.microsoft.com/azure/active-directory/saas-apps/clever-nelly-tutorial)、[AcquireIO](https://docs.microsoft.com/azure/active-directory/saas-apps/acquireio-tutorial)、[Looop](https://www.looop.co/schedule-a-demo/)、[productboard](https://docs.microsoft.com/azure/active-directory/saas-apps/productboard-tutorial)、[MS Azure SSO Access for Ethidex Compliance Office™](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on#password-based-sso)、[Hype](https://docs.microsoft.com/azure/active-directory/saas-apps/hype-tutorial)、[Abstract](https://docs.microsoft.com/azure/active-directory/saas-apps/abstract-tutorial)、[Ascentis](https://docs.microsoft.com/azure/active-directory/saas-apps/ascentis-tutorial)、[Flipsnack](https://www.flipsnack.com/accounts/sign-in-sso.html)、[Wandera](https://docs.microsoft.com/azure/active-directory/saas-apps/wandera-tutorial)、[TwineSocial](https://twinesocial.com/)、[Kallidus](https://docs.microsoft.com/azure/active-directory/saas-apps/kallidus-tutorial)、[HyperAnna](https://docs.microsoft.com/azure/active-directory/saas-apps/hyperanna-tutorial)、[PharmID WasteWitness](https://www.pharmid.com/)、[i2B Connect](https://www.i2b-online.com/sign-up-to-use-i2b-connect-here-sso-access/)、[JFrog Artifactory](https://docs.microsoft.com/azure/active-directory/saas-apps/jfrog-artifactory-tutorial)
+
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
+
+---
+
+### <a name="automate-user-account-provisioning-for-these-newly-supported-saas-apps"></a>新しくサポートされた SaaS アプリに対するユーザー アカウントのプロビジョニングを自動化する
+
+**種類:** 新機能  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
+**製品の機能:** 監視とレポート
+
+新しく統合された次のアプリでのユーザー アカウントの作成、更新、および削除を自動化できるようになりました。
+
+- [Dialpad](https://docs.microsoft.com/azure/active-directory/saas-apps/dialpad-provisioning-tutorial)
+
+- [Federated Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/federated-directory-provisioning-tutorial)
+
+- [Figma](https://docs.microsoft.com/azure/active-directory/saas-apps/figma-provisioning-tutorial)
+
+- [Leapsome](https://docs.microsoft.com/azure/active-directory/saas-apps/leapsome-provisioning-tutorial)
+
+- [Peakon](https://docs.microsoft.com/azure/active-directory/saas-apps/peakon-provisioning-tutorial)
+
+- [Smartsheet](https://docs.microsoft.com/azure/active-directory/saas-apps/smartsheet-provisioning-tutorial)
+
+自動化されたユーザー アカウント プロビジョニングを使用して組織をより適切にセキュリティ保護する方法の詳細については、[Azure AD による SaaS アプリケーションへのユーザー プロビジョニングの自動化](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)に関するページを参照してください
+
+---
+
+### <a name="new-azure-ad-domain-services-service-tag-for-network-security-group"></a>ネットワーク セキュリティ グループ用の新しい Azure AD Domain Services サービス タグ
+
+**種類:** 新機能  
+**サービス カテゴリ:** Azure AD Domain Services  
+**製品の機能:** Azure AD Domain Services
+
+IP アドレスと範囲の長いリストの管理に苦労している場合は、Azure ネットワークのセキュリティ グループで新しい **AzureActiveDirectoryDomainServices** ネットワーク サービス タグを使うと、Azure AD Domain Services 仮想ネットワーク サブネットへの受信トラフィックをセキュリティで保護するのに役立ちます。
+
+この新しいサービス タグの詳細については、[Azure AD Domain Services 用のネットワーク セキュリティ グループ](../../active-directory-domain-services/network-considerations.md#network-security-groups-and-required-ports)に関する記事をご覧ください。
+
+---
+
+### <a name="new-security-audits-for-azure-ad-domain-services-public-preview"></a>Azure AD Domain Services 用の新しいセキュリティ監査 (プレビュー)
+
+**種類:** 新機能  
+**サービス カテゴリ:** Azure AD Domain Services  
+**製品の機能:** Azure AD Domain Services
+
+Azure AD Domain Services のセキュリティ監査がパブリック プレビューにリリースされたことをお知らせします。 セキュリティ監査では、Azure AD Domain Services ポータルを使用して、Azure Storage、Azure Log Analytics ワークスペース、Azure Event Hub などのターゲット リソースにセキュリティ監査イベントをストリーミングして、認証サービスに関する重要な分析情報が提供されます。
+
+詳細については、[Azure AD ドメイン サービスでセキュリティ監査を有効にする (プレビュー)](https://docs.microsoft.com/azure/active-directory-domain-services/security-audit-events) に関する記事をご覧ください。
+
+---
+
+### <a name="new-authentication-methods-usage--insights-public-preview"></a>新しい認証方法の使用状況と分析情報 (パブリック プレビュー)
+
+**種類:** 新機能  
+**サービス カテゴリ:** セルフサービスによるパスワードのリセット  
+**製品の機能:** 監視とレポート
+
+新しい認証方法の使用状況と分析情報のレポートは、Azure Multi-Factor Authentication やセルフサービス パスワード リセット などの機能が組織内でどのように登録されて使用されているかを理解するのに役立ちます (各機能の登録済みユーザー数、パスワードのリセットでセルフサービス パスワード リセット が使用される頻度、リセットが行われた方法など)。
+
+詳細については、[認証方法の使用状況と分析情報 (プレビュー)](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-methods-usage-insights) に関する記事をご覧ください。
+
+---
+
+### <a name="new-security-reports-are-available-for-all-azure-ad-administrators-public-preview"></a>新しいセキュリティ レポートは、すべての Azure AD 管理者が利用できます (パブリックプレビュー)
+
+**種類:** 新機能  
+**サービス カテゴリ:** Identity Protection  
+**製品の機能:** ID のセキュリティ & 保護
+
+すべての Azure AD 管理者が、**リスクのフラグ付きユーザー** レポートなど、既存のセキュリティ レポートの上部にあるバナーを選択して、**危険なユーザー** レポートや**危険なサインイン** レポートに表示される新しいセキュリティ エクスペリエンスを使い始めることができるようになりました。 時間をかけて、すべてのセキュリティ レポートが以前のバージョンから新しいバージョンに移行され、新しいレポートでは次の追加機能が提供されます。
+
+- 高度なフィルター処理と並べ替え
+
+- ユーザー リスクの無視などの一括操作
+
+- 侵害されたエンティティまたは安全なエンティティの確認
+
+- 次のようなリスクの状態: 危険、無視、修復済み、セキュリティ侵害の確認済み
+
+詳細については、[危険なユーザー レポート](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-users)と[リスクの高いサインイン レポート](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-sign-ins)に関する記事をご覧ください。
+
+---
+
+### <a name="new-security-audits-for-azure-ad-domain-services-public-preview"></a>Azure AD Domain Services 用の新しいセキュリティ監査 (プレビュー)
+
+**種類:** 新機能  
+**サービス カテゴリ:** Azure AD Domain Services  
+**製品の機能:** Azure AD Domain Services
+
+Azure AD Domain Services のセキュリティ監査がパブリック プレビューにリリースされたことをお知らせします。 セキュリティ監査では、Azure AD Domain Services ポータルを使用して、Azure Storage、Azure Log Analytics ワークスペース、Azure Event Hub などのターゲット リソースにセキュリティ監査イベントをストリーミングして、認証サービスに関する重要な分析情報が提供されます。
+
+詳細については、[Azure AD ドメイン サービスでセキュリティ監査を有効にする (プレビュー)](https://docs.microsoft.com/azure/active-directory-domain-services/security-audit-events) に関する記事をご覧ください。
+
+---
+
+### <a name="new-b2b-direct-federation-using-samlws-fed-public-preview"></a>SAML/WS フィードを使用した新しい B2B 直接フェデレーション (パブリック プレビュー)
+
+**種類:** 新機能  
+**サービス カテゴリ:** B2B  
+**製品の機能:** B2B/B2C
+
+直接フェデレーションは、SAML または WS フィード標準をサポートする ID システムを使用すると、IT 管理対象の ID ソリューションが Azure AD ではないパートナーとの連携を容易にするのに役立ちます。 パートナーとの直接フェデレーション関係を設定した後、そのドメインから招待するすべての新しいゲスト ユーザーと、既存の組織アカウントを使って共同作業することができ、ゲストに対するユーザー エクスペリエンスがよりシームレスになります。
+
+詳細については、[ゲスト ユーザーのための AD FS およびサード パーティ プロバイダーとの直接フェデレーション (プレビュー)](https://docs.microsoft.com/azure/active-directory/b2b/direct-federation) に関する記事をご覧ください。
+
+---
+
+### <a name="automate-user-account-provisioning-for-these-newly-supported-saas-apps"></a>新しくサポートされた SaaS アプリに対するユーザー アカウントのプロビジョニングを自動化する
+
+**種類:** 新機能  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
+**製品の機能:** 監視とレポート
+
+新しく統合された次のアプリでのユーザー アカウントの作成、更新、および削除を自動化できるようになりました。
+
+- [Dialpad](https://docs.microsoft.com/azure/active-directory/saas-apps/dialpad-provisioning-tutorial)
+
+- [Federated Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/federated-directory-provisioning-tutorial)
+
+- [Figma](https://docs.microsoft.com/azure/active-directory/saas-apps/figma-provisioning-tutorial)
+
+- [Leapsome](https://docs.microsoft.com/azure/active-directory/saas-apps/leapsome-provisioning-tutorial)
+
+- [Peakon](https://docs.microsoft.com/azure/active-directory/saas-apps/peakon-provisioning-tutorial)
+
+- [Smartsheet](https://docs.microsoft.com/azure/active-directory/saas-apps/smartsheet-provisioning-tutorial)
+
+自動化されたユーザー アカウント プロビジョニングを使用して組織をより適切にセキュリティ保護する方法の詳細については、[Azure AD による SaaS アプリケーションへのユーザー プロビジョニングとプロビジョニング解除の自動化](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)に関するページをご覧ください。
+
+---
+
+### <a name="new-check-for-duplicate-group-names-in-the-azure-ad-portal"></a>Azure AD ポータルでの重複するグループ名の新しい確認
+
+**種類:** 新機能  
+**サービス カテゴリ:** グループ管理  
+**製品の機能:** コラボレーション
+
+Azure AD ポータルからグループ名を作成または更新するときは、リソース内の既存のグループ名を複製しているどうかの確認が行われます。 名前が既に別のグループによって使用されていると判断された場合は、名前を変更するように求められます。
+
+詳細については、[Azure AD ポータルでのグループの管](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context)に関する記事をご覧ください。
+
+---
+
+### <a name="azure-ad-now-supports-static-query-parameters-in-reply-redirect-uris"></a>応答 (リダイレクト) URI での静的クエリ パラメーターの Azure AD による新しいサポート
+
+**種類:** 新機能  
+**サービス カテゴリ:** 認証 (ログイン)  
+**製品の機能:** ユーザー認証
+
+Azure AD アプリでは、OAuth 2.0 要求に対する静的クエリ パラメーター (`https://contoso.com/oauth2?idp=microsoft` など) で応答 (リダイレクト) URI を登録して使用できるようになりました。 静的クエリ パラメーターは、応答 URI の他の部分と同様に、応答 URI に対する文字列照合の対象になります。 URL でデコードされたリダイレクト URI に一致する登録文字列がない場合、要求は拒否されます。 応答 URI が見つかった場合は、静的なクエリ パラメーターを含む文字列全体が、ユーザーをリダイレクトするために使われます。
+
+動的応答 URI はセキュリティ上のリスクがあり、認証要求全体で状態情報を保持するために使用できないため、引き続き許可されません。 この目的には、`state` パラメーターを使います。
+
+現在、Azure portal のアプリ登録画面では、クエリ パラメーターは引き続きブロックされます。 ただし、アプリ マニフェストを手動で編集して、アプリにクエリ パラメーターを追加し、テストすることはできます。 詳細については、[認証の新機能](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#redirect-uris-can-now-contain-query-string-parameters)に関する記事をご覧ください。
+
+---
+
+### <a name="activity-logs-ms-graph-apis-for-azure-ad-are-now-available-through-powershell-cmdlets"></a>PowerShell コマンドレットで使用できるようになった Azure AD のアクティビティログ (MS Graph API)
+
+**種類:** 新機能  
+**サービス カテゴリ:** レポーティング  
+**製品の機能:** 監視とレポート
+
+Azure AD PowerShell モジュールを通じて Azure AD のアクティビティ ログ (監査レポートとサインイン レポート) を利用できるようになったことをお知らせします。 以前は、MS Graph API エンドポイントを使って独自のスクリプトを作成できましたが、その機能が PowerShell コマンドレットに拡張されました。
+
+これらのコマンドレットの使い方の詳細については、[レポート用の Azure AD PowerShell コマンドレット](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-powershell-reporting)に関する記事をご覧ください。
+
+---
+
+### <a name="updated-filter-controls-for-audit-and-sign-in-logs-in-azure-ad"></a>Azure AD での監査ログとサインイン ログに関するフィルター コントロールを更新
+
+**種類:** 変更された機能  
+**サービス カテゴリ:** レポーティング  
+**製品の機能:** 監視とレポート
+
+監査ログ レポートとサインイン ログ レポートが更新され、レポート画面で列として追加しなくても、さまざまなフィルターを適用できるようになりました。 さらに、画面に表示するフィルターの数を決定できるようになりました。 これらの更新すべてが連携して、レポートがいっそう読みやすく、ニーズに合うようになります。
+
+これらの更新の詳細については、[監査ログのフィルター処理](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-audit-logs#filtering-audit-logs)および[サインイン アクティビティのフィルター処理](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins#filter-sign-in-activities)に関する記事をご覧ください。
 
 ---
 
@@ -859,9 +1116,9 @@ Active Directory Domain Services (AD DS) オブジェクトが同期範囲から
 
 |フィールド名|変更箇所|古い値|新しい値|
 |----------|------------|----------|----------|
-|カテゴリ|以前は **[サービス名]** フィールドでした。 現在は **[監査カテゴリ]** フィールドです。 **[サービス名]** は **loggedByService** フィールドに名前が変更されました。|<ul><li>アカウント プロビジョニング</li><li>Core Directory (コア ディレクトリ)</li><li>セルフサービスのパスワード リセット</li></ul>|<ul><li>[ユーザー管理]</li><li>グループ管理</li><li>アプリの管理</li></ul>|
+|カテゴリ|以前は **[サービス名]** フィールドでした。 現在は **[監査カテゴリ]** フィールドです。 **[サービス名]** は **loggedByService** フィールドに名前が変更されました。|<ul><li>アカウント プロビジョニング</li><li>Core Directory (コア ディレクトリ)</li><li>セルフサービス パスワード リセット</li></ul>|<ul><li>[ユーザー管理]</li><li>グループ管理</li><li>アプリの管理</li></ul>|
 |targetResources|**TargetResourceType** を最上位レベルに含みます。|&nbsp;|<ul><li>ポリシー</li><li>アプリ</li><li>User</li><li>Group</li></ul>|
-|loggedByService|監査ログを生成したサービスの名前を提供します。|[Null]|<ul><li>アカウント プロビジョニング</li><li>Core Directory (コア ディレクトリ)</li><li>セルフサービスのパスワード リセット</li></ul>|
+|loggedByService|監査ログを生成したサービスの名前を提供します。|[Null]|<ul><li>アカウント プロビジョニング</li><li>Core Directory (コア ディレクトリ)</li><li>セルフサービス パスワード リセット</li></ul>|
 |結果|監査ログの結果を提供します。 以前は、これは列挙されていましたが、実際の値を示すようになります。|<ul><li>0</li><li>1</li></ul>|<ul><li>Success</li><li>障害</li></ul>|
 
 #### <a name="changed-fields-in-the-sign-in-schema"></a>サインイン スキーマの変更されるフィールド
@@ -907,7 +1164,7 @@ Azure AD 管理者は、Microsoft Authenticator アプリの通知や、任意�
 
 - テキスト メッセージ
 
-Microsoft Authenticator アプリを使用したパスワードのリセットの詳細については、[Azure AD のセルフサービスでのパスワード リセット - モバイル アプリと SSPR (プレビュー)](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks#mobile-app-and-sspr) に関するページを参照してください。
+Microsoft Authenticator アプリを使用したパスワードのリセットの詳細については、[Azure AD のセルフサービス パスワード リセット - モバイル アプリと SSPR (プレビュー)](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks#mobile-app-and-sspr) に関するページを参照してください。
 
 ---
 
@@ -1181,7 +1438,7 @@ Azure portal の **[サインイン]** ページの **[トラブルシューテ�
 
 ---
 
-### <a name="new-support-for-self-service-password-reset-from-the-windows-7881-lock-screen"></a>Windows 7/8/8.1 のロック画面からのセルフ サービスによるパスワード リセットを新たにサポート
+### <a name="new-support-for-self-service-password-reset-from-the-windows-7881-lock-screen"></a>Windows 7/8/8.1 のロック画面からのセルフサービス パスワード リセットを新たにサポート
 
 **種類:** 新機能  
 **サービス カテゴリ:** SSPR  
@@ -1555,7 +1812,7 @@ TOU エンドユーザー UI の同意の文字列を更新しています。
 
 ---
  
-### <a name="converged-security-info-management-for-self-service-password-reset-and-multi-factor-authentication"></a>セルフサービスのパスワード リセットと多要素認証の集中型セキュリティ情報管理
+### <a name="converged-security-info-management-for-self-service-password-reset-and-multi-factor-authentication"></a>セルフサービス パスワード リセットと多要素認証の集中型セキュリティ情報管理
 
 **種類:** 新機能  
 **サービス カテゴリ:** SSPR  
@@ -1575,7 +1832,7 @@ TOU エンドユーザー UI の同意の文字列を更新しています。
 **サービス カテゴリ:** SSPR  
 **製品の機能:** ユーザー認証
 
-この機能を使用すると、パスワードをリセットする際に、Microsoft Authenticator (または他の認証アプリ) からの通知またはコードを使用して、管理者以外のユーザーが本人確認できます。 管理者が、このセルフサービスによるパスワード リセット方法をオンにすると、aka.ms/mfasetup または aka.ms/setupsecurityinfo を通してモバイル アプリを登録したユーザーは、パスワードをリセットする際にモバイル アプリを本人確認の方法として使用できます。
+この機能を使用すると、パスワードをリセットする際に、Microsoft Authenticator (または他の認証アプリ) からの通知またはコードを使用して、管理者以外のユーザーが本人確認できます。 管理者が、このセルフサービス パスワード リセット方法をオンにすると、aka.ms/mfasetup または aka.ms/setupsecurityinfo を通してモバイル アプリを登録したユーザーは、パスワードをリセットする際にモバイル アプリを本人確認の方法として使用できます。
 
 モバイル アプリの通知は、パスワードのリセットに 2 つの認証方法を要求するポリシーの一部としてのみオンに設定できます。
 
@@ -1875,7 +2132,7 @@ Azure AD アクティビティ ログ (サインイン ログと監査ログを�
 **サービス カテゴリ:** その他  
 **製品の機能:** ディレクトリ
  
-Azure Active Directory (Azure AD) のデプロイ方法に関する新しいステップ バイ ステップ ガイド。セルフサービスによるパスワードのリセット (SSPR)、シングル サインオン (SSO)、条件付きアクセス (CA)、アプリ プロキシ、ユーザー プロビジョニング、パススルー認証 (PTA) に対する Active Directory フェデレーション サービス (ADFS)、およびパスワード ハッシュの同期 (PHS) に対する ADFS が含まれます。
+Azure Active Directory (Azure AD) のデプロイ方法に関する新しいステップ バイ ステップ ガイド。セルフサービス パスワード リセット (SSPR)、シングル サインオン (SSO)、条件付きアクセス (CA)、アプリ プロキシ、ユーザー プロビジョニング、パススルー認証 (PTA) に対する Active Directory フェデレーション サービス (ADFS)、およびパスワード ハッシュの同期 (PHS) に対する ADFS が含まれます。
 
 デプロイ ガイドを表示するには、GitHub の [Identity Deployment Guides](https://aka.ms/DeploymentPlans) (ID デプロイ ガイド) リポジトリに移動します。 デプロイ ガイドに関するフィードバックを提出するには、[Deployment Plan Feedback (デプロイ プランに関するフィードバック) フォーム](https://aka.ms/deploymentplanfeedback)を使用してください。 デプロイ ガイドに関する質問がある場合は、[IDGitDeploy](mailto:idgitdeploy@microsoft.com) までお問い合わせください。
 
@@ -2078,13 +2335,13 @@ Azure Active Directory (Azure AD) B2B コラボレーション機能を使用し
 
 ---
 
-### <a name="self-service-password-reset-from-windows-10-lock-screen-for-hybrid-azure-ad-joined-machines"></a>ハイブリッド Azure AD 参加マシンの Windows 10 ロック画面からのセルフ サービスによるパスワードのリセット
+### <a name="self-service-password-reset-from-windows-10-lock-screen-for-hybrid-azure-ad-joined-machines"></a>ハイブリッド Azure AD 参加マシンの Windows 10 ロック画面からのセルフサービス パスワード リセット
 
 **種類:** 変更された機能  
 **サービス カテゴリ:** セルフサービスによるパスワードのリセット  
 **製品の機能:** ユーザー認証
  
-Windows 10 SSPR 機能が更新され、ハイブリッド Azure AD に参加しているマシンがサポートされるようになりました。 この機能は Windows 10 RS4 で利用でき、ユーザーは Windows 10 マシンのロック画面からパスワードをリセットできます。 この機能を利用できるのは、セルフ サービスのパスワード リセットを有効にして登録したユーザーです。
+Windows 10 SSPR 機能が更新され、ハイブリッド Azure AD に参加しているマシンがサポートされるようになりました。 この機能は Windows 10 RS4 で利用でき、ユーザーは Windows 10 マシンのロック画面からパスワードをリセットできます。 この機能を利用できるのは、セルフサービス パスワード リセットを有効にして登録したユーザーです。
 
 詳細については、「[ログイン画面からの Azure AD パスワード リセット](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-windows)」を参照してください。
 
@@ -2812,7 +3069,7 @@ Intune Managed Browser を承認されたアプリとして使用することで
 ### <a name="real-time-password-writeback-client-status"></a>パスワード ライトバック クライアントのリアルタイムの状態
 
 **種類:** 新機能  
-**サービス カテゴリ:** セルフサービスのパスワード リセット  
+**サービス カテゴリ:** セルフサービス パスワード リセット  
 **製品の機能:** ユーザー認証
 
 オンプレミスのパスワード ライトバック クライアントの状態を確認できるようになりました。 このオプションは、[[パスワードのリセット]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset) ページの **[オンプレミスの統合]** セクションで使用できます。 

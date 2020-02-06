@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 86ed494d3a6005ae74ee3f1aa4d5aa53ffc3098e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b538196467ba1d69e679a111ca313f922738b048
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931153"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716025"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider for .NET Core の ILogger ログ
 
@@ -29,7 +29,7 @@ ASP.NET Core では、さまざまな種類の組み込みおよびサードパ�
 
 ApplicationInsightsLoggerProvider によってキャプチャされる ILogger ログには、収集される他のテレメトリと同じ構成が適用されます。 他のテレメトリと同じ TelemetryInitializer と TelemetryProcessor のセットを持ち、同じ TelemetryChannel を使用し、同じ方法で相関およびサンプリングされます。 バージョン 2.7.1 以降を使用する場合は、ILogger ログをキャプチャするために操作は必要ありません。
 
-既定では、(すべてのカテゴリから) "*警告*" 以上の ILogger ログのみが Application Insights に送信されます。 ただし、[フィルターを適用してこの動作を変更する](#control-logging-level)ことができます。 **Program.cs** または **Startup.cs** から ILogger ログをキャプチャするには、追加の手順が必要です。 (「[ASP.NET Core アプリの Startup.cs と Program.cs から ILogger ログをキャプチャする](#capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps)」をご覧ください。)
+既定では、(すべての[カテゴリ](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-3.1#log-category)から) "*警告*" 以上の ILogger ログのみが Application Insights に送信されます。 ただし、[フィルターを適用してこの動作を変更する](#control-logging-level)ことができます。 **Program.cs** または **Startup.cs** から ILogger ログをキャプチャするには、追加の手順が必要です。 (「[ASP.NET Core アプリの Startup.cs と Program.cs から ILogger ログをキャプチャする](#capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps)」をご覧ください。)
 
 以前のバージョンの Microsoft.ApplicationInsights.AspNet SDK を使用している場合、または Application Insights の他の監視を行わずに ApplicationInsightsLoggerProvider だけを使いたい場合は、以下の手順のようにします。
 
@@ -500,7 +500,7 @@ Program.cs と appsettings.json を次のように変更します。
    }
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 各項目の詳細情報
 

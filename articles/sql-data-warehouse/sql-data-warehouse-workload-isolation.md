@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/13/2020
+ms.date: 01/23/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 85987ca1ff7d2dd204d0a501367efffc8277f138
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 86390132be0440b197b680803e5b6032670a7d1c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939929"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721032"
 ---
 # <a name="sql-data-warehouse-workload-group-isolation-preview"></a>SQL Data Warehouse のワークロード グループの分離 (プレビュー)
 
@@ -32,7 +32,7 @@ ms.locfileid: "75939929"
 
 ワークロードの分離とは、リソースがワークロード グループ専用で予約されることを意味します。  ワークロードを分離するには、[CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) 構文で MIN_PERCENTAGE_RESOURCE パラメーターを 0 より大きい値に設定します。  厳格な SLA に従う必要がある継続的な実行ワークロードの場合、分離することでワークロード グループで常にリソースが使用できるようになります。 
 
-ワークロードの分離を構成することで、保証されるコンカレンシーのレベルを暗黙的に定義します。 MIN_PERCENTAGE_RESOURCE を 30% に設定し、REQUEST_MIN_RESOURCE_GRANT_PERCENT を 2% に設定した場合、ワークロード グループではレベル 15 のコンカレンシーが保証されます。  保証されるコンカレンシーを決定するには、次の方法を検討してください。
+ワークロードの分離を構成することで、保証されるコンカレンシーのレベルを暗黙的に定義します。 たとえば、`MIN_PERCENTAGE_RESOURCE` が 30% に設定され、`REQUEST_MIN_RESOURCE_GRANT_PERCENT` が 2% に設定されているワークロード グループは、15 個の同時実行が保証されます。  同時実行のレベルが保証されるのは、リソースの 15～2% のスロットがワークロード グループ内で常に予約されるためです (`REQUEST_*MAX*_RESOURCE_GRANT_PERCENT` がどのように構成されているかは関係ありません)。  `REQUEST_MAX_RESOURCE_GRANT_PERCENT` が `REQUEST_MIN_RESOURCE_GRANT_PERCENT` より大きく、`CAP_PERCENTAGE_RESOURCE` がより大きい場合、`MIN_PERCENTAGE_RESOURCE` 追加のリソースが要求ごとに追加されます。  `REQUEST_MAX_RESOURCE_GRANT_PERCENT` と `REQUEST_MIN_RESOURCE_GRANT_PERCENT` が等しく、`CAP_PERCENTAGE_RESOURCE` が `MIN_PERCENTAGE_RESOURCE`よりも大きい場合は、追加の同時実行が可能です。  保証されるコンカレンシーを決定するには、次の方法を検討してください。
 
 [保証されるコンカレンシー] = [`MIN_PERCENTAGE_RESOURCE`]/[`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
 

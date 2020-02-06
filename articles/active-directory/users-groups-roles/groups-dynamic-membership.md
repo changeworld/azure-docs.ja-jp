@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ff2ff69ca00a9ed9c48ebd6f1704fac0b16d068
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 1df823776208418eae3e465693dd51e108c5a8bb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940991"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841031"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 
@@ -70,7 +70,7 @@ user.department -eq "Sales"
 
 - プロパティ
 - 演算子
-- 値
+- Value
 
 式の中の要素の順序は、構文エラーを回避するために重要です。
 
@@ -370,7 +370,7 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
 > [!NOTE]
 > systemlabels は、Intune では設定できない読み取り専用の属性です。
 >
-> Windows 10 の場合、deviceOSVersion 属性の正しい形式は次のとおりです: (device.deviceOSVersion -eq "10.0 (17763)")。 書式設定は、Get-MsolDevice PowerShell コマンドレットを使用して検証できます。
+> Windows 10 の場合、deviceOSVersion 属性の正しい形式は次のとおりです: (device.deviceOSVersion -eq "10.0.17763")。 書式設定は、Get-MsolDevice PowerShell コマンドレットを使用して検証できます。
 
 次のデバイス属性を使用できます。
 

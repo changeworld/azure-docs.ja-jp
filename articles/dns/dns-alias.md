@@ -2,17 +2,17 @@
 title: エイリアス レコードの概要 - Azure DNS
 description: この記事では、Microsoft Azure DNS でのエイリアス レコードのサポートについて説明します。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 08/09/2019
-ms.author: allensu
-ms.openlocfilehash: da396d3e3db4acd1a9843977b8b3e3d51c33f021
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 085e5fc20a6b5356e012eb2f674fafc00cef828f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212337"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937338"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS エイリアス レコードの概要
 
@@ -73,7 +73,7 @@ Traffic Manager プロファイルの場合と同様に、エイリアス レコ
 > [!NOTE]
 > Akamai から Azure CDN の CDN エンドポイントにゾーンの頂点をポイントすることは、現在サポートされていません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 エイリアス レコードの詳細については、次の記事を参照してください。
 

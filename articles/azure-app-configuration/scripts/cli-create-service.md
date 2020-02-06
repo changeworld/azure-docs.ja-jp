@@ -3,17 +3,17 @@ title: Azure CLI のサンプル スクリプト - Azure App Configuration ス�
 titleSuffix: Azure App Configuration
 description: Azure CLI のサンプル スクリプト - Azure App Configuration ストアの作成
 services: azure-app-configuration
-author: jpconnock
+author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: sample
 ms.date: 01/24/2020
-ms.author: jeconnoc
-ms.openlocfilehash: 44c381da8648fea74059c9110438cfeb4c366116
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.author: lcozzens
+ms.openlocfilehash: 7cc8454ca8dc8d6313e1cf353292adb47b15ef47
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766481"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898722"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Azure App Configuration ストアの作成
 
@@ -68,7 +68,7 @@ echo "$appConfigConnectionString"
 
 このスクリプトでは、次のコマンドを使用して新しいリソース グループと App Configuration ストアを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az appconfig create](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-create) | App Configuration ストア リソースを作成します。 |

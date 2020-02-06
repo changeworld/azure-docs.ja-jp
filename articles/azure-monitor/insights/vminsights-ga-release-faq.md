@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 12/05/2019
-ms.openlocfilehash: 4833b8a1835bd5da3327c73058f170fb0a5738a8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/24/2020
+ms.openlocfilehash: 3877632565c1ca2c9a16681e03f8931a94af0599
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450695"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765756"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Azure Monitor for VMs の一般提供 (GA) についてよく寄せられる質問
 
@@ -20,19 +20,28 @@ ms.locfileid: "75450695"
 
 ## <a name="updates-for-azure-monitor-for-vms"></a>Azure Monitor for VMs 用の更新プログラム
 
-Microsoft では、2020 年 1 月に Azure Monitor for VMs の新しいバージョンをリリースする予定です。 このリリース後に Azure Monitors for VMs を有効にしたお客様は、新しいバージョンを自動的に受信しますが、既に Azure Monitor for VMs を使用している既存のお客様はアップグレードするように求められます。 この FAQ とドキュメントでは、複数のワークスペースとの間で大規模なデプロイを行っている場合に、アップグレードを広範囲に実行するためのガイダンスを提供します。
+新しいバージョンの Azure Monitor for VMs がリリースされました。 Azure Monitors for VMs を有効にしたお客様は、新しいバージョンを自動的に受信しますが、既に Azure Monitor for VMs を使用している既存のお客様はアップグレードするように求められます。 この FAQ とドキュメントでは、複数のワークスペースとの間で大規模なデプロイを行っている場合に、アップグレードを広範囲に実行するためのガイダンスを提供します。
 
-このアップグレードを使用すると、Azure Monitor for VMs のパフォーマンス データは、[コンテナーの Azure Monitor](container-insights-overview.md) と同じ `InsightsMetrics` テーブルに格納され、2 つのデータ セットのクエリを簡単に実行することができます。 また、以前に使用したテーブルには格納できなかったより多様なデータ セットを格納することもできます。 この新しいテーブルを使用するように、パフォーマンス ビューも更新されます。
+このアップグレードを使用すると、Azure Monitor for VMs のパフォーマンス データは、[コンテナーの Azure Monitor](container-insights-overview.md) と同じ *InsightsMetrics* テーブルに格納されるため、2 つのデータ セットのクエリを簡単に実行することができます。 また、以前に使用したテーブルには格納できなかったより多様なデータ セットを格納することもできます。 
 
-接続データ セットのために、新しいデータ型に移行します。 この変更は、2019 年 12 月に実施され、Azure の更新ブログで発表されます。 カスタム ログ テーブルである `ServiceMapComputer_CL` および `ServiceMapProcess_CL` に現在格納されているデータは、`VMComputer` と `VMProcess` という名前の専用のデータ型に移行されます。 専用のデータ型に移行することによって、それらはデータ インジェストにおいて優先され、テーブル スキーマがすべてのお客様にわたって標準化されます。
+数週間以内に、この新しいテーブルを使用するように、パフォーマンス ビューも更新されます。
 
 Microsoft では、既存のお客様にアップグレードをお願いすることで、お客様のワークフローの中断が生じることを認識しています。これが、GA の後ではなく、パブリック プレビュー中の今、アップグレードをお願いする理由です。
 
+
 ## <a name="what-is-changing"></a>何が変わるのですか?
 
-現在、Azure Monitor for VMs のオンボード プロセスを完了したら、監視データを格納するために選択したワークスペース内で Service Map ソリューションを有効にしてから、ご利用の VM から Microsoft が収集するデータに対してパフォーマンス カウンターを構成します。 **VMInsights**  という名前の新しいソリューションがリリースされる予定です。これには、データ収集のための追加機能と、ご利用の Log Analytics ワークスペースにこのデータを格納するための新しい場所が含まれています。
+VMInsights という名前の新しいソリューションがリリースされました。これには、データ収集のための追加機能と、ご利用の Log Analytics ワークスペースにこのデータを格納するための新しい場所が含まれています。 
 
-ご利用の Log Analytics ワークスペースでパフォーマンス カウンターを使用する現在のプロセスでは、`Perf` テーブルにデータが送信されます。 この新しいソリューションでは、コンテナーの Azure Monitor によっても使用される `InsightsMetrics` という名前のテーブルにデータが送信されます。 このテーブル スキーマを使用すると、Perf テーブル形式と互換性のない追加のメトリックとサービス データ セットを格納できます。
+以前は、ワークスペースで ServiceMap ソリューションを有効にし、Log Analytics ワークスペースでパフォーマンス　カウンターを設定して、*Perf* テーブルにデータを送信していました。 この新しいソリューションでは、コンテナーの Azure Monitor によっても使用される *InsightsMetrics* という名前のテーブルにデータが送信されます。 このテーブル スキーマを使用すると、*Perf* テーブル形式と互換性のない追加のメトリックとサービス データ セットを格納できます。
+
+
+## <a name="how-do-i-upgrade"></a>アップグレード方法を教えてください。
+アップグレードが必要な各 VM は、Azure portal の Azure Monitor for VMs の **[はじめに]** タブで確認できます。 1 つの VM をアップグレードすることも、複数選択してアップグレードすることもできます。 PowerShell を使用してアップグレードするには、次のコマンドを使用します。
+
+```PowerShell
+Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-group-name> -WorkspaceName <workspace-name> -IntelligencePackName "VMInsights" -Enabled $True
+```
 
 ## <a name="what-should-i-do-about-the-performance-counters-in-my-workspace-if-i-install-the-vminsights-solution"></a>VMInsights ソリューションをインストールした場合、自分のワークスペース内のパフォーマンス カウンターには何が必要ですか?
 

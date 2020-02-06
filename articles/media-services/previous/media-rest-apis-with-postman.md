@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: f55b3d5767f38c8fba2e79925f6f6e1e390aad2d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 11c9c26e7c0f36e1e3dba732e90a6aef95e6ee14
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74887795"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76694992"
 ---
-# <a name="configure-postman-for-media-services-rest-api-calls"></a>Media Services REST API 呼び出し用の Postman の構成  
+# <a name="configure-postman-for-media-services-v2-rest-api-calls"></a>Media Services v2 REST API 呼び出し用に Postman を構成する  
 
 > [!NOTE]
 > Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
@@ -58,6 +58,6 @@ ms.locfileid: "74887795"
 
     ![ファイルをアップロードする](./media/media-services-rest-upload-files/postman-import-collection.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [資産のアップロード](media-services-rest-upload-files.md)に関する記事を確認します。  

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/24/2019
-ms.openlocfilehash: 80a13e504b7cb075692256d5c813a95c51002ab6
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 02/03/2020
+ms.openlocfilehash: 0921caa19ee86ddf2766642211d8204059550b02
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495123"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990693"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Azure CLI を使用した HDInsight クラスターの作成
 
@@ -44,9 +44,9 @@ Azure CLI。 Azure CLI をインストールしていない場合、手順につ
 
 2. 環境変数を設定します。 この記事での変数の使用は Bash に基づきます。 その他の環境では、若干の調整が必要となります。 クラスターの作成に使用できるパラメーターの完全な一覧については、[az-hdinsight-create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) を参照してください。
 
-    |パラメーター | [説明] |
+    |パラメーター | 説明 |
     |---|---|
-    |`--size`| クラスター内のワーカー ノードの数。 この記事では、`--size` に渡される値として変数 `clusterSizeInNodes` を使用します。 |
+    |`--workernode-count`| クラスター内のワーカー ノードの数。 この記事では、`--workernode-count` に渡される値として変数 `clusterSizeInNodes` を使用します。 |
     |`--version`| HDInsight クラスターのバージョン。 この記事では、`--version` に渡される値として変数 `clusterVersion` を使用します。 関連項目:[サポートされる HDInsight のバージョン](./hdinsight-component-versioning.md#supported-hdinsight-versions)。|
     |`--type`| hadoop、interactivehive、hbase、kafka、storm、spark、rserver、mlservices などの HDInsight クラスターの種類。  この記事では、`--type` に渡される値として変数 `clusterType` を使用します。 関連項目:[クラスターの種類と構成](./hdinsight-hadoop-provision-linux-clusters.md#cluster-types)。|
     |`--component-version`|さまざまな Hadoop コンポーネントのバージョン。バージョンは 'component=version' の形式でスペースで区切られます。 この記事では、`--component-version` に渡される値として変数 `componentVersion` を使用します。 関連項目:[Hadoop コンポーネント](./hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions)。|
@@ -120,12 +120,12 @@ Azure CLI。 Azure CLI をインストールしていない場合、手順につ
         --http-password $httpCredential \
         --http-user admin \
         --location $location \
-        --size $clusterSizeInNodes \
+        --workernode-count $clusterSizeInNodes \
         --ssh-password $sshCredentials \
         --ssh-user sshuser \
         --storage-account $AZURE_STORAGE_ACCOUNT \
         --storage-account-key $AZURE_STORAGE_KEY \
-        --storage-default-container $AZURE_STORAGE_CONTAINER \
+        --storage-container $AZURE_STORAGE_CONTAINER \
         --version $clusterVersion
     ```
 
@@ -172,7 +172,6 @@ Azure CLI を使用して HDInsight クラスターを作成したら、クラ�
 ### <a name="apache-hadoop-clusters"></a>Apache Hadoop クラスター
 
 * [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)
-* [HDInsight での Apache Pig の使用](hadoop/hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Apache HBase クラスター

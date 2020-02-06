@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.author: pafarley
-ms.openlocfilehash: cb5639dcf0e13ea03d34604816b3939085674c2e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2109d25d3962063c711dcab491855d9ebf1cf694
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453318"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901885"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Form Recognizer の新機能
 
@@ -24,9 +24,6 @@ ms.locfileid: "75453318"
 > このドキュメント セットのクイックスタートおよびガイドでは、特に指定がない限り、常に最新バージョンの API が使用されます。
 
 ## <a name="form-recognizer-20-preview"></a>Form Recognizer 2.0 (プレビュー)
-
-> [!IMPORTANT]
-> Form Recognizer 2.0 は現在、`West US 2` および `West Europe` リージョンのサブスクリプションで利用可能です。 お使いのサブスクリプションがこのリージョンにない場合は、1.0 API を使用してください。 カスタム モデルのトレーニングと使用に関するクイックスタートは、v1.0 と v2.0 の両方に利用できます。
 
 ### <a name="new-features"></a>新機能
 

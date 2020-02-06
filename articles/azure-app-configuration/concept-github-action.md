@@ -1,17 +1,17 @@
 ---
 title: Azure App Configuration Sync で GitHub Actions を使用する
 description: 定義されたアクションが GitHub リポジトリで実行されたときに、GitHub Actions を使用して App Configuration インスタンスに対する更新をトリガーします
-author: jpconnock
-ms.author: jeconnoc
+author: lisaguthrie
+ms.author: lcozzens
 ms.date: 01/14/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 1b7586e6321318a3fe4566e8c744c17a1d7ee179
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 269ae5630d1524cb8f89d3af8728892079f6eb5f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310616"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899628"
 ---
 # <a name="sync-your-app-configuration-instance-using-github-actions"></a>GitHub Actions を使用して App Configuration インスタンスを同期する
 Azure App Configuration は、GitHub リポジトリで実行されたアクションによってトリガーされたときに、GitHub Actions を使用して App Configuration インスタンスを更新します。 GitHub ワークフローを利用してアプリ構成を更新し、アプリ コードの更新に使用されているのと同じワークフローにアプリ構成の更新を統合することができます。
@@ -131,7 +131,7 @@ jobs:
 ## <a name="use-max-depth-to-limit-github-action"></a>最大深度を使用して GitHub アクションを制限する
 入れ子になった JSON 属性の既定の動作では、オブジェクト全体がフラット化されます。  次の JSON は、このキーと値のペアを定義しています。
 
-| Key | 値 |
+| Key | Value |
 | --- | --- |
 | Object:Inner:InnerKey | InnerValue |
 
@@ -173,7 +173,7 @@ jobs:
 
 depth を 2 に指定した場合、上記の例では次のキーと値のペアが返されます。
 
-| Key | 値 |
+| Key | Value |
 | --- | --- |
 | Object:Inner | {"InnerKey":"InnerValue"} |
 
@@ -184,7 +184,7 @@ depth を 2 に指定した場合、上記の例では次のキーと値のペ�
 > 入力 ID では大文字と小文字は区別されません。
 
 
-| 入力名 | 必須 | 値 |
+| 入力名 | 必須 | Value |
 |----|----|----|
 | configurationFile | はい | リポジトリ内の構成ファイルへのパス。リポジトリのルートを基準とした相対パスです。  glob パターンがサポートされており、複数のファイルを含めることができます。 |
 | format | はい | 構成ファイルのファイル形式。  有効な形式:JSON、YAML、properties。 |

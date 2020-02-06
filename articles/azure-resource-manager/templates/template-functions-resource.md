@@ -3,12 +3,12 @@ title: テンプレート関数 - リソース
 description: Azure Resource Manager テンプレートで、リソースに関する値を取得するために使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: 9021d7419820a9d321658c2b1fea8edb7e79b9a0
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: b8d0a3e60654c9d3f951c6f288ea904bb4c0d50b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773233"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900634"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのリソース関数
 
@@ -36,7 +36,7 @@ extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ..
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | Required | 種類 | [説明] |
+| パラメーター | Required | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | resourceId |はい |string |拡張リソースが適用されるリソースのリソース ID。 |
 | resourceType |はい |string |リソース プロバイダーの名前空間を含むリソースの種類。 |
@@ -116,7 +116,7 @@ list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | Required | 種類 | [説明] |
+| パラメーター | Required | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | resourceName または resourceIdentifier |はい |string |リソースの一意識別子です。 |
 | apiVersion |はい |string |リソースのランタイム状態の API バージョン。 通常、**yyyy-mm-dd** の形式。 |
@@ -364,7 +364,7 @@ providers(providerNamespace, [resourceType])
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | Required | 種類 | [説明] |
+| パラメーター | Required | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | providerNamespace |はい |string |プロバイダーの名前空間 |
 | resourceType |いいえ |string |指定した名前空間内にあるリソースの種類。 |
@@ -441,7 +441,7 @@ reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | Required | 種類 | [説明] |
+| パラメーター | Required | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | resourceName または resourceIdentifier |はい |string |名前またはリソースの一意の識別子。 現在のテンプレート内のリソースを参照する場合は、パラメーターとしてリソース名のみを指定します。 以前にデプロイされたリソースを参照する場合、またはリソースの名前があいまいな場合は、リソース ID を指定します。 |
 | apiVersion |いいえ |string |指定したリソースの API バージョンです。 同じテンプレート内でリソースがプロビジョニングされない場合に、このパラメーターを追加します。 通常、**yyyy-mm-dd** の形式。 リソースに有効な API のバージョンについては、[テンプレート リファレンス](/azure/templates/)を参照してください。 |
@@ -479,7 +479,7 @@ reference 関数は、以前にデプロイされたリソースまたは現在�
     "tenantId": "[subscription().tenantId]",
     "accessPolicies": [
       {
-        "tenantId": "[reference(reosurceId('Microsoft.Compute/virtualMachines', variables('vmName')), '2019-03-01', 'Full').identity.tenantId]",
+        "tenantId": "[reference(resourceId('Microsoft.Compute/virtualMachines', variables('vmName')), '2019-03-01', 'Full').identity.tenantId]",
         "objectId": "[reference(resourceId('Microsoft.Compute/virtualMachines', variables('vmName')), '2019-03-01', 'Full').identity.principalId]",
         "permissions": {
           "keys": [
@@ -756,7 +756,7 @@ resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | Required | 種類 | [説明] |
+| パラメーター | Required | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |いいえ |文字列 (GUID 形式) |既定値は、現在のサブスクリプションです。 別のサブスクリプション内のリソースを取得する必要がある場合は、この値を指定します。 |
 | resourceGroupName |いいえ |string |既定値は、現在のリソース グループです。 別のリソース グループ内のリソースを取得する必要がある場合は、この値を指定します。 |
@@ -890,7 +890,7 @@ ID を他の形式で取得するには、以下を参照してください。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | 種類 | Value |
+| Name | Type | Value |
 | ---- | ---- | ----- |
 | sameRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
@@ -950,7 +950,7 @@ subscriptionResourceId([subscriptionId], resourceType, resourceName1, [resourceN
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | Required | 種類 | [説明] |
+| パラメーター | Required | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |いいえ |文字列 (GUID 形式) |既定値は、現在のサブスクリプションです。 別のサブスクリプション内のリソースを取得する必要がある場合は、この値を指定します。 |
 | resourceType |はい |string |リソース プロバイダーの名前空間を含むリソースの種類。 |
@@ -1034,7 +1034,7 @@ tenantResourceId(resourceType, resourceName1, [resourceName2], ...)
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | Required | 種類 | [説明] |
+| パラメーター | Required | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | resourceType |はい |string |リソース プロバイダーの名前空間を含むリソースの種類。 |
 | resourceName1 |はい |string |リソースの名前。 |

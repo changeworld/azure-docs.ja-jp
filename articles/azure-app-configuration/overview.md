@@ -1,17 +1,17 @@
 ---
 title: Azure App Configuration とは
 description: Azure App Configuration サービスの概要。
-author: yegu-ms
-ms.author: yegu
+author: lisaguthrie
+ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: overview
 ms.date: 02/24/2019
-ms.openlocfilehash: 40630bbbbcea344fb74d8ad971eb4c808bf0c142
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 22ebfc53405149358b0a2a03cd256a78db5d1910
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495236"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899336"
 ---
 # <a name="what-is-azure-app-configuration"></a>Azure App Configuration とは
 

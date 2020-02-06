@@ -3,21 +3,21 @@ title: チュートリアル:ドメインの頂点名をサポートするため
 titleSuffix: Azure DNS
 description: このチュートリアルでは、Traffic Manager でのドメイン頂点名の使用をサポートするために Azure DNS エイリアス レコードを構成する方法を示します。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
-ms.author: allensu
-ms.openlocfilehash: 3834b782be054611de67b782b7fcd0c46cbf3a19
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.author: rohink
+ms.openlocfilehash: 749e5eae64aa0d33c90ef8694da9a093647b8a8b
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082252"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937933"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>チュートリアル:Traffic Manager で頂点のドメイン名をサポートするエイリアス レコードを構成する 
 
-Azure Traffic Manager プロファイルを参照するためのドメイン名の頂点に対するエイリアス レコードを作成することができます (例: contoso.com)。 サービスのリダイレクトを使用する代わりに、ゾーンから直接 Traffic Manager プロファイルを参照するように Azure DNS を構成できます。 
+Azure Traffic Manager プロファイルを参照するためのドメイン名の頂点に対するエイリアス レコードを作成することができます 一例として contoso.com があります。 サービスのリダイレクトを使用する代わりに、ゾーンから直接 Traffic Manager プロファイルを参照するように Azure DNS を構成できます。 
 
 
 このチュートリアルでは、以下の内容を学習します。
@@ -108,16 +108,16 @@ Traffic Manager プロファイルを指すエイリアス レコードを作成
 
 ## <a name="test-the-alias-record"></a>エイリアス レコードをテストする
 
-1. Web ブラウザーから、ドメイン名の頂点を参照します (例: contoso.com)。 IIS の既定の Web ページが表示されます。 Web ブラウザーを閉じます。
+1. Web ブラウザーから、ドメイン名の頂点を参照します 一例として contoso.com があります。 IIS の既定の Web ページが表示されます。 Web ブラウザーを閉じます。
 2. **Web-01** 仮想マシンをシャットダウンします。 シャットダウンが完了するまで数分待ちます。
 3. 新しい Web ブラウザーを開いて、ドメイン名の頂点を再度参照します。
 4. Traffic Manager が状況を処理して、トラフィックを **Web-02** に転送するため、再び既定の IIS ページが表示されます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルで作成したリソースが不要になったら、**RG-DNS-Alias-TM** リソース グループは削除してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、頂点のドメイン名を使用して Traffic Manager プロファイルを参照するためのエイリアス レコードを作成しました。 Azure DNS と Web アプリについて詳しくは、Web アプリのチュートリアルに進んでください。
 

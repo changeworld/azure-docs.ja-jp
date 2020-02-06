@@ -7,12 +7,12 @@ ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 61fe4af2d40d7252aa2b0dffb373a81162b9f67a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 55f3e42687c90936c33208684b58792b3e2b9f85
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722511"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905797"
 ---
 # <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>IoT プラグ アンド プレイ プレビュー モデリング開発者ガイド
 
@@ -174,7 +174,7 @@ interfaces[1] = deviceInfoInterfaceHandle;
 result = DigitalTwin_DeviceClient_RegisterInterfacesAsync(
     digitalTwinClientHandle, // The handle for the connection to Azure IoT
     "urn:example:Thermostat_T_1000:1",
-    interfaceHandleList, 2,
+    interfaces, 2,
     null, null);
 ```
 

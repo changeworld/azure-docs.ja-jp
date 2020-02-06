@@ -4,12 +4,12 @@ description: Azure Monitor を使用して、Azure Backup ワークロードを�
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 983939a905c6c096f2e8e3007bd40cbbe9088395
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 4ff51080d675c53e53397a070c1f6f1766aa9e85
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611698"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989588"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Azure Monitor を使用した大規模な監視
 
@@ -21,54 +21,6 @@ Azure Backup では、Recovery Services コンテナーに[組み込みの監視
 - Azure で System Center Data Protection Manager などのオンプレミス コンポーネントの情報を表示しようとする場合 (ポータルの [ **[バックアップ ジョブ]** ](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-recovery-services-vault) または [ **[バックアップ アラート]** ](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault) には表示されない)
 
 ## <a name="using-log-analytics-workspace"></a>Log Analytics ワークスペースを使用する
-
-> [!NOTE]
-> Azure VM バックアップ、Azure Backup エージェント、System Center Data Protection Manager、Azure VM の SQL バックアップ、および Azure Files 共有のバックアップのデータは、診断設定によって Log Analytics ワークスペースに送られます。 Microsoft Azure Backup Server (MABS) のサポートはまもなく追加される予定です。
-
-大規模な監視/レポートのためには、2 つの Azure サービスの機能が必要です。 "*診断設定*" では、複数の Azure Resource Manager リソースから別のリソースにデータを送信します。 "*Log Analytics*" では、アクション グループを使用して他の通知チャネルを定義できるカスタム アラートが生成されます。
-
-以下のセクションでは、Log Analytics を使用して Azure Backup の大規模な監視を行う方法を詳しく説明します。
-
-### <a name="configure-diagnostic-settings"></a>診断設定を構成する
-
-Recovery Services コンテナーなどの Azure Resource Manager リソースは、スケジュールされた操作およびユーザーがトリガーした操作に関する情報を診断データとして記録します。
-
-監視セクションで **[診断設定]** を選択し、Recovery Services コンテナーの診断データの送信先を指定します。
-
-![Log Analytics を送信先にした Recovery Services コンテナーの診断設定](media/backup-azure-monitoring-laworkspace/rs-vault-diagnostic-setting.png)
-
-別のサブスクリプションの Log Analytics ワークスペースを送信先にすることができます。 サブスクリプションにまたがるコンテナーを 1 か所で監視するには、複数の Recovery Services コンテナーに対して同じ Log Analytics ワークスペースを選択します。 Azure Backup に関連するすべての情報を Log Analytics ワークスペースに送るには、表示されているトグルの **[AzureDiagnostics]** を選択し、 **[AzureBackupReport]** イベントを選択します。
-
-> [!IMPORTANT]
-> 構成が完了したら、最初のデータ プッシュが終了するまで 24 時間待機する必要があります。 この最初のデータ プッシュの後、この記事の[頻度に関するセクション](#diagnostic-data-update-frequency)で後述するように、すべてのイベントがプッシュされます。
-
-### <a name="deploy-a-solution-to-the-log-analytics-workspace"></a>Log Analytics ワークスペースにソリューションをデプロイする
-
-> [!IMPORTANT]
-> Azure Backup で、LA ベースの監視とレポート用に更新されたマルチビュー [テンプレート](https://azure.microsoft.com/resources/templates/101-backup-la-reporting/)をリリースしました。 [以前のソリューション](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/)を使用していたユーザーは、新しいソリューションをデプロイした後も引き続きそれがワークスペースに表示されることに注意してください。 ただし、前のソリューションでは、いくつかのマイナーなスキーマ変更により、不正確な結果が得られる場合があります。 そのため、ユーザーは新しいテンプレートをデプロイする必要があります。
-
-データが Log Analytics ワークスペース内に入れられたら、データを可視化するために、Log Analytics に [GitHub テンプレートをデプロイ](https://azure.microsoft.com/resources/templates/101-backup-la-reporting/)します。 ワークスペースを正しく識別するために、必ず同じリソース グループ、ワークスペース名、およびワークスペースの場所を指定してください。 次に、このテンプレートをワークスペースにインストールします。
-
-### <a name="view-azure-backup-data-by-using-log-analytics"></a>Log Analytics を使用して Azure Backup データを表示する
-
-- **Azure Monitor**: **[分析情報]** セクションで **[その他]** を選択し、関連するワークスペースを選択します。
-- **Log Analytics ワークスペース**: 関連するワークスペースを選択し、 **[全般]** の **[ワークスペースの概要]** を選択します。
-
-![Log Analytics の監視とレポートのタイル](media/backup-azure-monitoring-laworkspace/la-azurebackup-overview-dashboard.png)
-
-概要タイルのいずれかを選択すると、さらに詳しい情報を表示できます。 表示されるレポートの一部を次に示します。
-
-- ログ バックアップ以外のジョブ
-
-   ![バックアップ ジョブの Log Analytics グラフ](media/backup-azure-monitoring-laworkspace/la-azurebackup-backupjobsnonlog.png)
-
-- Azure リソース バックアップからのアラート
-
-   ![復元ジョブの Log Analytics グラフ](media/backup-azure-monitoring-laworkspace/la-azurebackup-alertsazure.png)
-
-同様に、他のタイルをクリックすると、復元ジョブ、クラウド ストレージ、バックアップ項目、オンプレミス リソース バックアップからのアラート、およびログ バックアップ ジョブに関するレポートを表示できます。
-
-これらのグラフは、テンプレートで提供されています。 必要に応じて、グラフを編集したり、グラフを追加したりできます。
 
 ### <a name="create-alerts-by-using-log-analytics"></a>Log Analytics を使用してアラートを作成する
 
@@ -110,90 +62,65 @@ Azure Monitor では、Log Analytics ワークスペースで独自のアラー�
 - 成功したすべてのバックアップ ジョブ
 
     ````Kusto
-    AzureDiagnostics
-    | where Category == "AzureBackupReport"
-    | where SchemaVersion_s == "V2"
-    | where OperationName == "Job" and JobOperation_s == "Backup"
-    | where JobStatus_s == "Completed"
+    AddonAzureBackupJobs
+| where JobOperation=="Backup"
+| where JobStatus=="Completed"
     ````
 
 - 失敗したすべてのバックアップ ジョブ
 
     ````Kusto
-    AzureDiagnostics
-    | where Category == "AzureBackupReport"
-    | where SchemaVersion_s == "V2"
-    | where OperationName == "Job" and JobOperation_s == "Backup"
-    | where JobStatus_s == "Failed"
+    AddonAzureBackupJobs
+| where JobOperation=="Backup"
+| where JobStatus=="Failed"
     ````
 
 - 成功したすべての Azure VM バックアップ ジョブ
 
     ````Kusto
-    AzureDiagnostics
-    | where Category == "AzureBackupReport"
-    | where SchemaVersion_s == "V2"
-    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
-    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s != "Log" and JobOperationSubType_s != "Recovery point_Log"
-    | join kind=inner
-    (
-        AzureDiagnostics
-        | where Category == "AzureBackupReport"
-        | where OperationName == "BackupItem"
-        | where SchemaVersion_s == "V2"
-        | where BackupItemType_s == "VM" and BackupManagementType_s == "IaaSVM"
-        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
-        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
-    )
-    on BackupItemUniqueId_s
-    | extend Vault= Resource
-    | project-away Resource
+    AddonAzureBackupJobs
+| where JobOperation=="Backup"
+| where JobStatus=="Completed"
+| join kind=inner
+(
+    CoreAzureBackup
+    | where OperationName == "BackupItem"
+    | where BackupItemType=="VM" and BackupManagementType=="IaaSVM"
+    | distinct BackupItemUniqueId, BackupItemFriendlyName
+)
+on BackupItemUniqueId
     ````
 
 - 成功したすべての SQL ログ バックアップ ジョブ
 
     ````Kusto
-    AzureDiagnostics
-    | where Category == "AzureBackupReport"
-    | where SchemaVersion_s == "V2"
-    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
-    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s == "Log"
-    | join kind=inner
-    (
-        AzureDiagnostics
-        | where Category == "AzureBackupReport"
-        | where OperationName == "BackupItem"
-        | where SchemaVersion_s == "V2"
-        | where BackupItemType_s == "SQLDataBase" and BackupManagementType_s == "AzureWorkload"
-        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
-        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
-    )
-    on BackupItemUniqueId_s
-    | extend Vault= Resource
-    | project-away Resource
+    AddonAzureBackupJobs
+| where JobOperation=="Backup" and JobOperationSubType=="Log"
+| where JobStatus=="Completed"
+| join kind=inner
+(
+    CoreAzureBackup
+    | where OperationName == "BackupItem"
+    | where BackupItemType=="SQLDataBase" and BackupManagementType=="AzureWorkload"
+    | distinct BackupItemUniqueId, BackupItemFriendlyName
+)
+on BackupItemUniqueId
     ````
 
 - 成功したすべての Azure Backup エージェント ジョブ
 
     ````Kusto
-    AzureDiagnostics
-    | where Category == "AzureBackupReport"
-    | where SchemaVersion_s == "V2"
-    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
-    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s != "Log" and JobOperationSubType_s != "Recovery point_Log"
-    | join kind=inner
-    (
-        AzureDiagnostics
-        | where Category == "AzureBackupReport"
-        | where OperationName == "BackupItem"
-        | where SchemaVersion_s == "V2"
-        | where BackupItemType_s == "FileFolder" and BackupManagementType_s == "MAB"
-        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
-        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
-    )
-    on BackupItemUniqueId_s
-    | extend Vault= Resource
-    | project-away Resource
+    AddonAzureBackupJobs
+| where JobOperation=="Backup"
+| where JobStatus=="Completed"
+| join kind=inner
+(
+    CoreAzureBackup
+    | where OperationName == "BackupItem"
+    | where BackupItemType=="FileFolder" and BackupManagementType=="MAB"
+    | distinct BackupItemUniqueId, BackupItemFriendlyName
+)
+on BackupItemUniqueId
     ````
 
 ### <a name="diagnostic-data-update-frequency"></a>診断データの更新頻度

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7547608e227ca6b8d57bc1d4384ccdee181d9970
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7b5d74c7c599f31694a68e7582a6447af8471508
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430854"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984950"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>グループの設定を構成するための Azure Active Directory コマンドレット
 
@@ -178,9 +178,9 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
    ```powershell
    $Setting = $template.CreateDirectorySetting()
    ```  
-4. 次に AllowAddGuests 設定を更新します
+4. 次に AllowToAddGuests 設定を更新します
    ```powershell
-   $Setting["AllowAddGuests"] = $False
+   $Setting["AllowToAddGuests"] = $False
    ```  
 5. 次に設定を適用します。
   
@@ -234,7 +234,7 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
    AllowGuestsToAccessGroups     True
    GuestUsageGuidelinesUrl
    GroupCreationAllowedGroupId
-   AllowAddGuests              True
+   AllowToAddGuests              True
    UsageGuidelinesUrl            https://guideline.example.com
    ClassificationList
    EnableGroupCreation           True
@@ -271,7 +271,7 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
 
 4. この設定を必要な値に設定します。
    ```powershell
-   $SettingCopy["AllowAddGuests"]=$False
+   $SettingCopy["AllowToAddGuests"]=$False
    ```
 5. この設定を適用するグループの ID を取得します。
    ```powershell
@@ -297,7 +297,7 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
    ```
 3. 必要に応じて、グループの設定を更新します。たとえば次のようにします。
    ```powershell
-   $Setting["AllowAddGuests"] = $True
+   $Setting["AllowToAddGuests"] = $True
    ```
 4. 次に、この特定のグループに対する設定の ID を取得します。
    ```powershell

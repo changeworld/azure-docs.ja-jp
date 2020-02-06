@@ -5,25 +5,25 @@ description: Azure Machine Learning デザイナーとブースト デシジョ�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: sgilley
 ms.date: 12/25/2019
-ms.openlocfilehash: 88f688608a0ae3d435699362f9326c7c02d494a4
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 701bf186080ef627ef4621e959b281fd58aa4132
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311118"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963370"
 ---
 # <a name="use-boosted-decision-tree-to-predict-churn-with-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーでブースト デシジョン ツリーを使用して顧客離れを予測する
 
-**デザイナー サンプル 5**
+**デザイナー (プレビュー) のサンプル 5**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-コードを 1 行も書くことなく、デザイナーを使用して、複雑な機械学習のパイプラインを構築する方法について説明します。
+コードを 1 行も書くことなく、デザイナー (プレビュー) を使用して、複雑な機械学習のパイプラインを構築する方法について説明します。
 
 このパイプラインでは、顧客関係管理 (CRM) システムの一般的なタスクである顧客離れを予測するために、2 つの **2 クラス ブースト デシジョン ツリー**分類子をトレーニングします。 データ値とラベルは複数のデータ ソースに分割され、顧客情報を匿名化するためにスクランブルがかけられますが、それでもデザイナーを使用してデータ セットを組み合わせ、隠された値を使用してモデルをトレーニングすることができます。
 

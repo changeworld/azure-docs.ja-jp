@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 7dc032d52a8cb3c5c54cf57c7ae7bf697796b5cc
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 2d800dc401b0d85b26a71817a1a70d66539203ae
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910599"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76902128"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>C# を使用して Azure Data Explorer クラスターとデータベースを作成する
 
@@ -97,10 +97,13 @@ Azure Data Explorer は、アプリケーション、Web サイト、IoT デバ�
     var hotCachePeriod = new TimeSpan(3650, 0, 0, 0);
     var softDeletePeriod = new TimeSpan(3650, 0, 0, 0);
     var databaseName = "mykustodatabase";
-    var database = new Database(location: location, softDeletePeriod: softDeletePeriod, hotCachePeriod: hotCachePeriod);
+    var database = new ReadWriteDatabase(location: location, softDeletePeriod: softDeletePeriod, hotCachePeriod: hotCachePeriod);
 
     await kustoManagementClient.Databases.CreateOrUpdateAsync(resourceGroupName, clusterName, databaseName, database);
     ```
+
+        [!NOTE]
+        If you are using C# version 2.0.0 or below, use Database instead of ReadWriteDatabase.
 
    |**設定** | **推奨値** | **フィールドの説明**|
    |---|---|---|
@@ -113,7 +116,7 @@ Azure Data Explorer は、アプリケーション、Web サイト、IoT デバ�
 2. 次のコマンドを実行して、作成したデータベースを確認します。
 
     ```csharp
-    kustoManagementClient.Databases.Get(resourceGroupName, clusterName, databaseName);
+    kustoManagementClient.Databases.Get(resourceGroupName, clusterName, databaseName) as ReadWriteDatabase;
     ```
 
 クラスターとデータベースが作成されました。

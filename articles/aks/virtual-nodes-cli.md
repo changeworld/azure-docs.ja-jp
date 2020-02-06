@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 43ea197c4dc774a4e011cd9fb2b3adcf94866d90
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 423f0866494054702330c8e51fb1ef45e74a0650
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926082"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845702"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Azure CLI を使って仮想ノードを使用する Azure Kubernetes Service (AKS) クラスターを作成して構成する
 
@@ -79,9 +79,9 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0.49 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理グループです。 [az group create][az-group-create] コマンドでリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを場所 *westus* に作成します。
+Azure リソース グループは、Azure リソースが展開され管理される論理グループです。 [az group create][az-group-create] コマンドを使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを場所 *westus* に作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus
@@ -150,7 +150,7 @@ az network vnet show --resource-group myResourceGroup --name myVnet --query id -
 az role assignment create --assignee <appId> --scope <vnetId> --role Contributor
 ```
 
-## <a name="create-an-aks-cluster"></a>AKS クラスターの作成
+## <a name="create-an-aks-cluster"></a>AKS クラスターを作成する
 
 前の手順で作成した AKS サブネット内に、AKS クラスターをデプロイします。 [az network vnet subnet show][az-network-vnet-subnet-show] を使用して、このサブネットの ID を取得します。
 
@@ -174,7 +174,7 @@ az aks create \
     --client-secret <password>
 ```
 
-数分してコマンドが完了すると、このクラスターに関する情報が JSON 形式で表示されます。
+数分後、コマンドが完了すると、クラスターに関する JSON 形式の情報が返されます。
 
 ## <a name="enable-virtual-nodes-addon"></a>仮想ノード アドオンを有効にする
 
@@ -188,7 +188,7 @@ az aks enable-addons \
     --subnet-name myVirtualNodeSubnet
 ```
 
-## <a name="connect-to-the-cluster"></a>クラスターへの接続
+## <a name="connect-to-the-cluster"></a>クラスターに接続する
 
 Kubernetes クラスターに接続するように `kubectl` を構成するには、[az aks get-credentials][az-aks-get-credentials] コマンドを使用します。 この手順では、資格情報をダウンロードし、Kubernetes CLI を構成してそれらの資格情報を使用します。
 
@@ -196,7 +196,7 @@ Kubernetes クラスターに接続するように `kubectl` を構成するに�
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-クラスターへの接続を確認するには、[kubectl get][kubectl-get] コマンドを使用して、クラスター ノードの一覧を返します。
+クラスターへの接続を確認するには、クラスター ノードの一覧を返す [kubectl get][kubectl-get] コマンドを使用します。
 
 ```console
 kubectl get nodes
@@ -319,6 +319,10 @@ az aks disable-addons --resource-group myResourceGroup --name myAKSCluster --add
 
 次に、仮想ネットワークのリソースとリソース グループを削除します。
 
+
+> [!NOTE]
+> ネットワーク プロファイルを削除しようとしているときにエラーが発生した場合は、プラットフォームが自動的に問題を軽減するまで 3～4 日待ってから、削除を再試行します。 ネットワーク プロファイルを直ちに削除する必要がある場合は、Azure Container Instances サービスを参照する[サポート要求を開きます](https://azure.microsoft.com/support/create-ticket/)。
+
 ```azurecli-interactive
 # Change the name of your resource group, cluster and network resources as needed
 RES_GROUP=myResourceGroup
@@ -335,19 +339,13 @@ NETWORK_PROFILE_ID=$(az network profile list --resource-group $NODE_RES_GROUP --
 # Delete the network profile
 az network profile delete --id $NETWORK_PROFILE_ID -y
 
-# Get the service association link (SAL) ID
-SAL_ID=$(az network vnet subnet show --resource-group $RES_GROUP --vnet-name $AKS_VNET --name $AKS_SUBNET --query id --output tsv)/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default
-
-# Delete the default SAL ID for the subnet
-az resource delete --ids $SAL_ID --api-version 2018-07-01
-
 # Delete the subnet delegation to Azure Container Instances
 az network vnet subnet update --resource-group $RES_GROUP --vnet-name $AKS_VNET --name $AKS_SUBNET --remove delegations 0
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-この記事では、ポッドを仮想ノードでスケジュールし、プライベートの内部 IP アドレスを割り当てました。 代わりに、サービスのデプロイを作成して、ロード バランサーまたはイングレス コントローラーを使用してトラフィックを自分のポッドにルーティングすることもできます。 詳細は、[AKS での基本的なイングレス コントローラーの作成][aks-basic-ingress]に関する記事を参照してください｡
+この記事では、ポッドを仮想ノードでスケジュールし、プライベートの内部 IP アドレスを割り当てました。 代わりに、サービスのデプロイを作成して、ロード バランサーまたはイングレス コントローラーを使用してトラフィックを自分のポッドにルーティングすることもできます。 詳細は、[AKS での基本的なイングレス コント ローラーの作成][aks-basic-ingress]を参照してください。
 
 多くの場合、仮想ノードは AKS のスケーリング ソリューションの 1 つのコンポーネントです。 スケーリング ソリューションの詳細については、次の記事を参照してください。
 

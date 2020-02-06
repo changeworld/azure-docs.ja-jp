@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: 3360209e9de54d6011a2a430cd2c1fb54a315c43
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e82c325ad5ad91e6b4503949e6534b054023f1f2
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327598"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990965"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Azure Data Box を使用してオンプレミスの HDFS ストアから Azure Storage に移行する
 
@@ -75,7 +75,7 @@ Data Box デバイスを使用することにより、Hadoop クラスターの�
 
     これらのファイルが存在するかどうかを確認するには、次のコマンドを使用します`ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure`。 `<hadoop_install_dir>` プレースホルダーは、Hadoop をインストールしたディレクトリのパスに置き換えます。 必ず完全修飾パスを使用します。
 
-    次に例を示します。
+    例 :
 
     `azjars=$hadoop_install_dir/share/hadoop/tools/lib/hadoop-azure-2.6.0-cdh5.14.0.jar` `azjars=$azjars,$hadoop_install_dir/share/hadoop/tools/lib/microsoft-windowsazure-storage-sdk-0.6.0.jar`
 
@@ -257,7 +257,7 @@ sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
 
 * `<application-id>` と `<client-secret>` のプレースホルダーは、サービス プリンシパルの作成時に収集したアプリケーション ID とクライアント シークレットに置き換えます。
 
-## <a name="appendix-split-data-across-multiple-data-box-devices"></a>付録:複数の Data Box デバイスにデータを分割する
+## <a name="appendix-split-data-across-multiple-data-box-devices"></a>付録: 複数の Data Box デバイスにデータを分割する
 
 データを Data Box デバイスに移動する前に、ヘルパー スクリプトをダウンロードし、データが Data Box に収まるように編成されていることを確認し、不要なファイルを除外する必要があります。
 
@@ -282,7 +282,7 @@ sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
    sudo apt-get install jq
    ```
 
-3. [Requests](http://docs.python-requests.org/en/master/) python パッケージをインストールします。
+3. [Requests](https://2.python-requests.org/en/master/) python パッケージをインストールします。
 
    ```bash
    
@@ -352,6 +352,6 @@ DistCp ジョブを開始する予定のオンプレミス Hadoop クラスタ�
 .*/hbase/data/WALs.*
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 HDInsight クラスターでの Data Lake Storage Gen2 の動作について学習します。 「[Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)」 (Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する) を参照してください。

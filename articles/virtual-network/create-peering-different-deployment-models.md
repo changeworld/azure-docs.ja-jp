@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 11/15/2018
 ms.author: kumud
 ms.reviewer: anavin
-ms.openlocfilehash: 6c539121914418f5373b333e9493e24f7769fa5b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 61df13e78dc7115d4f4d45ab18b9ffdae107dc96
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978989"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023261"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>仮想ネットワーク ピアリングの作成 - 異なるデプロイメント モデル、同じサブスクリプション
 
@@ -43,7 +43,7 @@ ms.locfileid: "75978989"
 
 ## <a name="create-peering---azure-portal"></a>ピアリングの作成 - Azure Portal
 
-1. [Azure portal](https://portal.azure.com) にサインインする サインインに使用するアカウントには、仮想ネットワーク ピアリングを作成するためのアクセス許可が必要です。 アクセス許可の一覧については、[仮想ネットワークのピアリングのアクセス許可](virtual-network-manage-peering.md#requirements-and-constraints)に関するページをご覧ください。
+1. [Azure portal](https://portal.azure.com) にサインインします。 サインインに使用するアカウントには、仮想ネットワーク ピアリングを作成するためのアクセス許可が必要です。 アクセス許可の一覧については、[仮想ネットワークのピアリングのアクセス許可](virtual-network-manage-peering.md#requirements-and-constraints)に関するページをご覧ください。
 2. **[+ 新規]** 、 **[ネットワーキング]** 、 **[仮想ネットワーク]** の順にクリックします。
 3. **[仮想ネットワークの作成]** ブレードで、次の設定の値を入力するか選択し、 **[作成]** をクリックします。
     - **[名前]** : *myVnet1*
@@ -262,4 +262,4 @@ Azure クラシック CLI と Azure CLI を使用して、次の手順を完了�
 
 - 運用環境で使用する仮想ネットワーク ピアリングを作成する前に、[仮想ネットワーク ピアリングの制約と動作](virtual-network-manage-peering.md#requirements-and-constraints)の要点をしっかりと理解します。
 - [仮想ネットワーク ピアリングのさまざまな設定](virtual-network-manage-peering.md#create-a-peering)について理解を深めます。
-- 仮想ネットワーク ピアリングで[ハブとスポークのネットワーク トポロジを作成](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering)する方法を学習します。
+- 仮想ネットワーク ピアリングで[ハブとスポークのネットワーク トポロジを作成](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering)する方法を学習します。

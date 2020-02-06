@@ -3,21 +3,21 @@ title: Azure Service Fabric CLI- sfctl mesh code-package-log
 description: Azure Service Fabric のコマンド ライン インターフェイスである sfctl について説明します。 指定したコード パッケージのログを取得するためのコマンドの一覧が含まれています。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 78edc9bb36b711f72300942bc9900b0fde7c51d2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f8665e75e4c921a3305c9965601e2ee0825c8995
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646145"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906050"
 ---
 # <a name="sfctl-mesh-code-package-log"></a>sfctl mesh code-package-log
 特定のサービス レプリカの指定されたコード パッケージのコンテナーのログを取得します。
 
 ## <a name="commands"></a>コマンド
 
-|command|[説明]|
+|command|説明|
 | --- | --- |
 | get | コンテナーからログを取得します。 |
 
@@ -28,7 +28,7 @@ ms.locfileid: "75646145"
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --app-name --application-name [必須] | アプリケーションの名前です。 |
 | --code-package-name           [必須] | サービスのコード パッケージの名前。 |
@@ -38,7 +38,7 @@ ms.locfileid: "75646145"
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |

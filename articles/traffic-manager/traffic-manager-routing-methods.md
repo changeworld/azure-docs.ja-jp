@@ -2,20 +2,20 @@
 title: Azure Traffic Manager - トラフィックのルーティング方法
 description: この記事では、Traffic Manager で使用されるさまざまなトラフィック ルーティング方法について説明します。
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
-ms.author: allensu
-ms.openlocfilehash: 824fabf6e694b7148486d6593cf17f741d9e5c9e
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.author: rohink
+ms.openlocfilehash: 4a035506943eeffa2c3fc4fec27c47da4136683b
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483780"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938448"
 ---
 # <a name="traffic-manager-routing-methods"></a>Traffic Manager のルーティング方法
 
@@ -177,7 +177,7 @@ Traffic Manager は DNS クエリの発信元 IP アドレスを読み取り、�
 * [サブネット ルーティング型のプロファイルでエンドポイントが無効になっている場合はどうなりますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Traffic Manager endpoint monitoring](traffic-manager-monitoring.md)
 

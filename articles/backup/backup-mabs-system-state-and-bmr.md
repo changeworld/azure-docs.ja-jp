@@ -3,12 +3,12 @@ title: システムの状態とベア メタル回復の保護
 description: Azure Backup Server を使用して、システム状態をバックアップし、とベア メタル回復 (BMR) 保護を提供します。
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 2940ef5b8c0c2a7d751c46209253d4f4dbe6d13f
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 0e89b149fe8b06bdd70c72aa442f50125c5e3786
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172256"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025505"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Azure Backup Server を使用してシステム状態をバックアップし、ベア メタルに回復する
 
@@ -140,7 +140,7 @@ Backup Server は、Windows Server バックアップを呼び出し、その BM
 
 12. **[オンライン保持ポリシーの指定]** ページで、毎日、毎週、、毎月、毎年のバックアップから作成される復旧ポイントを Azure に保持する方法を選択します。
 
-13. **[オンライン レプリケーションの選択]** ページで、最初の全データ レプリケーションの実行方法を選択します。 ネットワーク経由でのレプリケートまたはオフライン バックアップ (オフライン シード処理) を実行できます。 オフライン バックアップは、Azure Import 機能を使用します。 詳細については、「[Azure Backup でのオフライン バックアップのワークフロー](backup-azure-backup-import-export.md)」を参照してください。
+13. **[オンライン レプリケーションの選択]** ページで、最初の全データ レプリケーションの実行方法を選択します。 ネットワーク経由でのレプリケートまたはオフライン バックアップ (オフライン シード処理) を実行できます。 オフライン バックアップは、Azure Import 機能を使用します。 詳細については、「[Azure Backup でのオフライン バックアップのワークフロー](offline-backup-azure-data-box.md)」を参照してください。
 
 14. **[概要]** ページで、設定を確認します。 **[グループの作成]** を選択した後、データの初期レプリケーションが実行されます。 データのレプリケーションが終了すると、 **[ステータス]** ページで、保護グループの状態は **[OK]** になります。 保護グループの設定に応じてバックアップが実行されます。
 

@@ -2,7 +2,7 @@
 title: チュートリアル - Azure Traffic Manager を使用して Web サイトの応答性を向上させる
 description: このチュートリアル記事では、応答性の高い Web サイトを構築するための Traffic Manager プロファイルの作成方法について説明します。
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 Customer intent: As an IT Admin, I want to route traffic so I can improve website response by choosing the endpoint with lowest latency.
 ms.service: traffic-manager
 ms.devlang: na
@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/23/2018
-ms.author: allensu
-ms.openlocfilehash: 3686e9a7d82f8134b44cd40468c5e430eb2e72f3
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.author: rohink
+ms.openlocfilehash: 9027b1574144e2addbc84fceb16deba9014826fe
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422846"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938407"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>チュートリアル:Traffic Manager を使用して Web サイトの応答性を向上させる
 
@@ -115,7 +115,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
 このセクションでは、VM (*myVMEastUS* と *myVMWestEurope*) を、該当する Azure リージョン (**米国東部**と**西ヨーロッパ**) 内に作成します。 これらの VM は、Web サイトが参照されるときに、Traffic Manager が最も近い IIS サーバーにトラフィックをルーティングすることをテストするために使用します。
 
-1. Azure portal の左上隅から、 **[リソースの作成]**  >  **[コンピューティング]**  >  **[Windows Server 2019 Datacenter]** を選択します。
+1. Azure portal の左上隅で、 **[リソースの作成]**  >  **[Compute]**  >  **[Windows Server 2019 Datacenter]** の順に選択します。
 2. **[仮想マシンの作成]** の **[Basic]** タブに次の値を入力するか選択します。
 
    - **[サブスクリプション]**  >  **[リソース グループ]** : **myResourceGroupTM1** を選択します。
@@ -139,11 +139,11 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーク]**  >  **[Traffic Manager プロファイル]**  >  **[作成]** の順に選択します。
 2. **[Traffic Manager プロファイルの作成]** で、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[作成]** を選択します。
 
-    | Setting                 | 値                                              |
+    | 設定                 | Value                                              |
     | ---                     | ---                                                |
-    | 名前                   | この名前は trafficmanager.net ゾーン内で一意である必要があります。結果的に、Traffic Manager プロファイルへのアクセスに使用される、DNS 名.trafficmanager.net になるためです。                                   |
+    | Name                   | この名前は trafficmanager.net ゾーン内で一意である必要があります。結果的に、Traffic Manager プロファイルへのアクセスに使用される、DNS 名.trafficmanager.net になるためです。                                   |
     | ルーティング方法          | **パフォーマンス**によるルーティング方法を選択します。                                       |
-    | Subscription            | サブスクリプションを選択します。                          |
+    | サブスクリプション            | サブスクリプションを選択します。                          |
     | Resource group          | リソース グループ「*myResourceGroupTM1*」を選択します。 |
     | Location                | **[米国東部]** を選択します。 これはリソース グループの場所を指定する設定であり、グローバルにデプロイされる Traffic Manager プロファイルには影響しません。                              |
     |
@@ -158,10 +158,10 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 2. **[Traffic Manager プロファイル]** の **[設定]** セクションで **[エンドポイント]** をクリックし、 **[追加]** をクリックします。
 3. 次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[OK]** を選択します。
 
-    | Setting                 | 値                                              |
+    | 設定                 | Value                                              |
     | ---                     | ---                                                |
-    | 種類                    | Azure エンドポイント                                   |
-    | 名前           | myEastUSEndpoint                                        |
+    | Type                    | Azure エンドポイント                                   |
+    | Name           | myEastUSEndpoint                                        |
     | ターゲット リソースの種類           | パブリック IP アドレス                          |
     | ターゲット リソース          | **パブリック IP アドレスを選択**して、同じサブスクリプションでパブリック IP アドレスを持つリソースの一覧を表示します。 **[リソース]** で、*myIISVMEastUS-ip* という名前のパブリック IP アドレスを選択します。 これは、米国東部内の IIS サーバー VM のパブリック IP アドレスです。|
     |        |           |
@@ -213,7 +213,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
 不要になったら、リソース グループ (**ResourceGroupTM1** と **ResourceGroupTM2**) を削除します。 これを行うには、リソース グループ (**ResourceGroupTM1** または **ResourceGroupTM2**) を選択し、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [一定のエンドポイントにトラフィックを分散させる](traffic-manager-configure-weighted-routing-method.md)

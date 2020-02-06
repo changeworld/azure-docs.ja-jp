@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
 ms.author: terrylan
-ms.openlocfilehash: a936fb4a0a6eadc2840fc6d642428091a6b0fe9e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 11bf7c0ae05c2e52d59efb32be47ce6bd96fac4f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771276"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937979"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>Azure AD アプリ用のセキュリティで保護されたアプリの開発
 ## <a name="overview"></a>概要
@@ -185,7 +185,7 @@ $gwSubnet = New-AzVirtualNetworkSubnetConfig -Name 'appgwsubnet' -AddressPrefix 
 
 #Assign an address range to be used for the back-end address pool.
 
-$nicSubnet = New-AzVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.0.0/24
+$nicSubnet = New-AzVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.2.0/24
 
 #Create a virtual network with the subnets defined in the preceding steps.
 
@@ -212,7 +212,7 @@ $fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name 'fip01' -PublicIPAdd
 
 #Configure the back-end IP address pool with the IP addresses of the back-end web servers
 
-$pool = New-AzApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 10.0.0.0
+$pool = New-AzApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 10.0.3.11
 
 #Configure the front-end IP port for the public IP endpoint
 
@@ -222,6 +222,7 @@ $fp = New-AzApplicationGatewayFrontendPort -Name 'port01'  -Port 443
 
 $passwd = ConvertTo-SecureString  "P@ssword!1" -AsPlainText -Force 
 $cert = New-AzApplicationGatewaySSLCertificate -Name cert01 -CertificateFile "C:\AAD\Securities\Certificates\sslcert.com.cer" -Password $passwd 
+
 
 #Create the HTTP listener for the application gateway
 

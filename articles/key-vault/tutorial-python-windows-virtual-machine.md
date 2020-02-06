@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 52791719e518f6a6b1a4178d8b9a010f1db14fc4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 4078f2a005dcd324fa9c1d31cdca4b1f8337eecd
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003864"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988381"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>チュートリアル:Python で Windows 仮想マシンを使用して Azure Key Vault を使用する
 
@@ -60,7 +60,7 @@ Azure CLI を使用して Azure にログインするには、次のように入
 az login
 ```
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
@@ -136,7 +136,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssigned
 
 ## <a name="create-and-run-a-sample-python-app"></a>サンプルの Python アプリを作成して実行する
 
-次のセクションに、*Sample.py* という名前のファイルの例があります。 ここでは、HTTP GET 呼び出しを行うために[要求](http://docs.python-requests.org/en/master/)ライブラリが使用されます。
+次のセクションに、*Sample.py* という名前のファイルの例があります。 ここでは、HTTP GET 呼び出しを行うために[要求](https://2.python-requests.org/en/master/)ライブラリが使用されます。
 
 ## <a name="edit-samplepy"></a>Sample.py を編集する
 
@@ -175,11 +175,11 @@ python Sample.py
 
 前出のコードは、Windows 仮想マシンで Azure Key Vault を操作する方法を示しています。 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、仮想マシンとキー コンテナーを削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)

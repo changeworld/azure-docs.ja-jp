@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b91d3bdf2ba4b6b30e7b3d5b748fd90921e2025
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a0b79a27526054f76d9d44e277c401e93214ec3c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841167"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018705"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID をサポートするサービス
 
@@ -107,7 +107,7 @@ Azure Functions のために (それが提供されているリージョンで) 
 
 Azure Logic Apps のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
-- [Azure Portal](/azure/logic-apps/create-managed-service-identity#azure-portal)
+- [Azure Portal](/azure/logic-apps/create-managed-service-identity#enable-system-assigned-identity-in-azure-portal)
 - [Azure Resource Manager テンプレート](/azure/app-service/overview-managed-identity)
 
 ### <a name="azure-data-factory-v2"></a>Azure Data Factory V2

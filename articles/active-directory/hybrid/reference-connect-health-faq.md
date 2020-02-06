@@ -8,6 +8,7 @@ manager: daveba
 editor: curtand
 ms.assetid: f1b851aa-54d7-4cb4-8f5c-60680e2ce866
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec88caafa9a6168860a8e9e2ff9e2abe0cfd0e77
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3e6c490ee9d8b6f7f07f52e70ceb8c7c49d699b6
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62096122"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897029"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health についてよく寄せられる質問
 この記事には、Azure Active Directory (Azure AD) Connect Health に関してよく寄せられる質問 (FAQ) に対する回答が記載されています。 これらの FAQ では、課金モデル、機能、制限、サポートなど、サービスの使用方法に関する質問を取り上げています。
@@ -65,7 +66,7 @@ Azure AD テナントを切り替えるには、現在サインインしてい�
 
 [同期エラー レポート機能](how-to-connect-health-sync.md#object-level-synchronization-error-report)を除いて、Azure AD Connect Health は、Germany Cloud ではサポートされていません。
 
-| ロール | 機能 | German Cloud でサポートされている |
+| ロール | [機能] | German Cloud でサポートされている |
 | ------ | --------------- | --- |
 | Connect Health for Sync | 監視/分析情報/アラート/分析 | いいえ |
 |  | 同期エラー レポート | はい |

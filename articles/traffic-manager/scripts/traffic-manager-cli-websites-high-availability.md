@@ -3,7 +3,7 @@ title: アプリケーションの HA のためのトラフィックのルーテ
 description: Azure CLI スクリプト サンプル - 高可用性アプリケーションのためのトラフィックのルーティング
 services: traffic-manager
 documentationcenter: traffic-manager
-author: asudbring
+author: rohinkoul
 manager: twooley
 editor: tysonn
 tags: azure-infrastructure
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 04/26/2018
-ms.author: allensu
-ms.openlocfilehash: 02807d3773b5d27d59ab6b03a22f7637bae95aca
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.author: rohink
+ms.openlocfilehash: e4912e0e285d41bf2de4cf439788a943251cfae8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006391"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934794"
 ---
 # <a name="route-traffic-for-high-availability-of-applications-using-azure-cli"></a>Azure CLI を使用した高可用性アプリケーションのためのトラフィックのルーティング
 
@@ -48,7 +48,7 @@ az group delete --name myResourceGroup2 --yes
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、Web アプリ、Traffic Manager プロファイル、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan) | App Service プランを作成します。 App Service プランとは、Azure Web アプリ用のサーバー ファームのようなものです。 |
@@ -56,7 +56,7 @@ az group delete --name myResourceGroup2 --yes
 | [az network traffic-manager profile create](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile) | Azure Traffic Manager プロファイルを作成します。 |
 | [az network traffic-manager endpoint create](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint) | Azure Traffic Manager プロファイルにエンドポイントを追加します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

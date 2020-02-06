@@ -7,14 +7,14 @@ ms.author: dpalled
 manager: cshankar
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 12/04/2019
+ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 83462d47af49a02817dcfa05afcd8fdb5e0beab1
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 7bebc9e682f5156fa235b77ff020e502695a28be
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863708"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76981193"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>チュートリアル:Azure Time Series Insights 環境を作成する
 
@@ -61,7 +61,7 @@ Azure IoT Hub は、お使いの Azure クラウドに安全に接続してデ�
 
 1.  **[今すぐ試してみる]** をクリックします。 その後、 **[デバイス シミュレーション ソリューションの作成]** ページで、次の必須パラメーターを入力します。
 
-   パラメーター|[説明]
+   パラメーター|説明
    ---|---
    **デプロイ名** | この一意の値は、新しいリソース グループを作成するために使用されます。 一覧の Azure リソースが作成され、リソース グループに割り当てられます。
    **Azure サブスクリプション** | 前のセクションで Time Series Insights 環境の作成に使用したものと同じサブスクリプションを指定します。
@@ -95,12 +95,12 @@ Azure IoT Hub は、お使いの Azure クラウドに安全に接続してデ�
 
 1. **[Time Series Insights 環境]** ページで、必須パラメーターを入力します。
 
-   パラメーター|[説明]
+   パラメーター|説明
    ---|---
    **環境名** | Time Series Insights 環境の一意の名前を選択します。 その名前は Time Series Insights エクスプローラーと [Query API シリーズ](https://docs.microsoft.com/rest/api/time-series-insights/ga-query)で使用されます。
    **サブスクリプション** | サブスクリプションとは、Azure リソース用のコンテナーです。 Time Series Insights 環境を作成するサブスクリプションを選択します。
    **リソース グループ** | リソース グループとは、Azure リソース用のコンテナーです。 Time Series Insights 環境リソースに既存のリソース グループを選択するか、新しいリソース グループを作成します。
-   **Location** | Time Series Insights 環境のデータ センター リージョンを選択します。 待ち時間の増加を防ぐために、Time Series Insights 環境を他の IoT リソースと同じリージョンに作成します。
+   **地域** | Time Series Insights 環境のデータ センター リージョンを選択します。 待ち時間の増加を防ぐために、Time Series Insights 環境を他の IoT リソースと同じリージョンに作成します。
    **レベル** | 必要なスループットを選択します。 **[S1]** を選択します。
    **[容量]** | 容量は、選択した SKU に関連するイングレス レートとストレージ容量に適用される乗数です。 この容量は、作成後に変更できます。 容量には **1** を選択します。
 
@@ -134,7 +134,7 @@ IoT ハブに加えて、シミュレートされたデバイス テレメトリ
 
 1. **[+ New simulation]\(+ 新しいシミュレーション\)** を選択します。 **[Simulation setup]\(シミュレーションのセットアップ\)** ページの読み込み後、次の必須パラメーターを入力します。
 
-   パラメーター|[説明]
+   パラメーター|説明
    ---|---
    **[Target IoT Hub]\(IoT Hub をターゲットにする\)** | **[Use pre-provisioned IoT Hub]\(事前プロビジョニングされている IoT Hub を使用する\)** を選択します。
    **[デバイス モデル]** | **[Chiller]** を選択します。

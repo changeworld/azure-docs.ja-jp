@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 6cf636e7d7ee35680c1da872b186748c333a81dc
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2da8264b7a1d0ad2ec485f106457cef18f233261
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930000"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843907"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>簡単な手順: Azure 内に Linux VM 用の SSH 公開/秘密キーのペアを作成して使用する
 
@@ -70,13 +70,16 @@ cat ~/.ssh/id_rsa.pub
 ssh-rsa AAAAB3NzaC1yc2EAABADAQABAAACAQC1/KanayNr+Q7ogR5mKnGpKWRBQU7F3Jjhn7utdf7Z2iUFykaYx+MInSnT3XdnBRS8KhC0IP8ptbngIaNOWd6zM8hB6UrcRTlTpwk/SuGMw1Vb40xlEFphBkVEUgBolOoANIEXriAMvlDMZsgvnMFiQ12tD/u14cxy1WNEMAftey/vX3Fgp2vEq4zHXEliY/sFZLJUJzcRUI0MOfHXAuCjg/qyqqbIuTDFyfg8k0JTtyGFEMQhbXKcuP2yGx1uw0ice62LRzr8w0mszftXyMik1PnshRXbmE2xgINYg5xo/ra3mq2imwtOKJpfdtFoMiKhJmSNHBSkK7vFTeYgg0v2cQ2+vL38lcIFX4Oh+QCzvNF/AXoDVlQtVtSqfQxRVG79Zqio5p12gHFktlfV7reCBvVIhyxc2LlYUkrq4DHzkxNY5c9OGSHXSle9YsO3F1J5ip18f6gPq4xFmo6dVoJodZm9N0YMKCkZ4k1qJDESsJBk2ujDPmQQeMjJX3FnDXYYB182ZCGQzXfzlPDC29cWVgDZEXNHuYrOLmJTmYtLZ4WkdUhLLlt5XsdoKWqlWpbegyYtGZgeZNRtOOdN6ybOPJqmYFd2qRtb4sYPniGJDOGhx4VodXAjT09omhQJpE6wlZbRWDvKC55R2d/CSPHJscEiuudb+1SG2uA/oik/WQ== username@domainname
 ```
 
-公開キー ファイルの内容をコピーし、Azure portal または Resource Manager テンプレートに貼り付けて使用する場合は、行末の空白スペースをコピーしないように注意してください。 macOS で公開キーをコピーするには、公開キー ファイルを **pbcopy** にパイプすることができます。 Linux と同様に、**xclip** などのプログラムに公開キー ファイルをパイプすることができます。
+公開キー ファイルの内容をコピーし、Azure portal または Resource Manager テンプレートに貼り付けて使用する場合は、行末の空白スペースをコピーしないように注意してください。 macOS で公開キーをコピーするには、公開キー ファイルを `pbcopy` にパイプすることができます。 Linux と同様に、`xclip` などのプログラムに公開キー ファイルをパイプすることができます。
 
 キー ペアの作成時に別の場所を指定しない限り、Azure 内の Linux VM 上に配置した公開キーは、既定で ~/.ssh/id_rsa.pub に格納されます。 [Azure CLI 2.0](/cli/azure) を使用して既存の公開キーで VM を作成するには、[az vm create](/cli/azure/vm#az-vm-create) コマンドを `--ssh-key-value` オプション付きで使用することで、この公開キーの値または任意で場所を指定します。 次のコマンドで、*VMname*、*RGname*、*keyFile* を独自の値に置き換えます。
 
 ```azurecli
-az vm create --name VMname --resource-group RGname --ssh-key-value @keyFile
+az vm create --name VMname --resource-group RGname --ssh-key-values mysshkey.pub
 ```
+
+VM で複数の SSH キーを使用する場合は、この `--ssh-key-values sshkey-desktop.pub sshkey-laptop.pub` のように、スペース区切りの一覧で入力できます。
+
 
 ## <a name="ssh-into-your-vm"></a>VM への SSH 接続
 
@@ -90,7 +93,7 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 
 VM が Just-In-Time アクセス ポリシーを使用している場合、VM に接続するにはアクセス権を要求する必要があります。 Just-In-Time ポリシーの詳細については、[Just in Time ポリシーを使用した仮想マシン アクセスの管理](../../security-center/security-center-just-in-time.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * SSH キー ペアを操作する詳細については、[SSH キー ペアを作成して管理する詳細な手順](create-ssh-keys-detailed.md)に関するページを参照してください。
 

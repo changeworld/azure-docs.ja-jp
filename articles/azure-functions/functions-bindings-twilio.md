@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c24e8b6098ba33a2e738a7f5f310ae7e65ee516
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1426d6e770cca566c4b77ca4742e2f8a0fbb5465
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925291"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715061"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Azure Functions の Twilio バインド
 
@@ -31,181 +31,11 @@ Twilio バインディングは [Microsoft.Azure.WebJobs.Extensions.Twilio](http
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
-## <a name="example---functions-1x"></a>例 - Functions 1.x
-
-言語固有の例をご覧ください。
-
-* [C#](#c-example)
-* [C# スクリプト (.csx)](#c-script-example)
-* [JavaScript](#javascript-example)
-
-### <a name="c-example"></a>C# の例
-
-次の例は、キュー メッセージによってトリガーされたときにテキスト メッセージを送信する [C# 関数](functions-dotnet-class-library.md)を示しています。
-
-```cs
-[FunctionName("QueueTwilio")]
-[return: TwilioSms(AccountSidSetting = "TwilioAccountSid", AuthTokenSetting = "TwilioAuthToken", From = "+1425XXXXXXX" )]
-public static SMSMessage Run(
-    [QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] JObject order,
-    TraceWriter log)
-{
-    log.Info($"C# Queue trigger function processed: {order}");
-
-    var message = new SMSMessage()
-    {
-        Body = $"Hello {order["name"]}, thanks for your order!",
-        To = order["mobileNumber"].ToString()
-    };
-
-    return message;
-}
-```
-
-この例では、メソッドの戻り値で `TwilioSms` 属性を使用します。 代わりに、`out SMSMessage` パラメーターまたは `ICollector<SMSMessage>` または `IAsyncCollector<SMSMessage>` パラメーターを持つ属性を使用することができます。
-
-### <a name="c-script-example"></a>C# スクリプトの例
-
-次の例は、*function.json* ファイルの Twilio 出力バインドと、そのバインドを使用する [C# スクリプト関数](functions-reference-csharp.md)を示しています。 関数は、`out`パラメーターを使用してテキスト メッセージを送信します。
-
-*function.json* ファイルのバインド データを次に示します。
-
-function.json の例:
-
-```json
-{
-  "type": "twilioSms",
-  "name": "message",
-  "accountSid": "TwilioAccountSid",
-  "authToken": "TwilioAuthToken",
-  "to": "+1704XXXXXXX",
-  "from": "+1425XXXXXXX",
-  "direction": "out",
-  "body": "Azure Functions Testing"
-}
-```
-
-C# スクリプト コードを次に示します。
-
-```cs
-#r "Newtonsoft.Json"
-#r "Twilio.Api"
-
-using System;
-using Newtonsoft.Json;
-using Twilio;
-
-public static void Run(string myQueueItem, out SMSMessage message,  TraceWriter log)
-{
-    log.Info($"C# Queue trigger function processed: {myQueueItem}");
-
-    // In this example the queue item is a JSON string representing an order that contains the name of a 
-    // customer and a mobile number to send text updates to.
-    dynamic order = JsonConvert.DeserializeObject(myQueueItem);
-    string msg = "Hello " + order.name + ", thank you for your order.";
-
-    // Even if you want to use a hard coded message and number in the binding, you must at least 
-    // initialize the SMSMessage variable.
-    message = new SMSMessage();
-
-    // A dynamic message can be set instead of the body in the output binding. In this example, we use 
-    // the order information to personalize a text message to the mobile number provided for
-    // order status updates.
-    message.Body = msg;
-    message.To = order.mobileNumber;
-}
-```
-
-非同期コードで out パラメーターを使用することはできません。 非同期 C# スクリプトのコード例を次に示します。
-
-```cs
-#r "Newtonsoft.Json"
-#r "Twilio.Api"
-
-using System;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Twilio;
-
-public static async Task Run(string myQueueItem, IAsyncCollector<SMSMessage> message,  ILogger log)
-{
-    log.LogInformation($"C# Queue trigger function processed: {myQueueItem}");
-
-    // In this example the queue item is a JSON string representing an order that contains the name of a 
-    // customer and a mobile number to send text updates to.
-    dynamic order = JsonConvert.DeserializeObject(myQueueItem);
-    string msg = "Hello " + order.name + ", thank you for your order.";
-
-    // Even if you want to use a hard coded message and number in the binding, you must at least 
-    // initialize the SMSMessage variable.
-    SMSMessage smsText = new SMSMessage();
-
-    // A dynamic message can be set instead of the body in the output binding. In this example, we use 
-    // the order information to personalize a text message to the mobile number provided for
-    // order status updates.
-    smsText.Body = msg;
-    smsText.To = order.mobileNumber;
-
-    await message.AddAsync(smsText);
-}
-```
-
-### <a name="javascript-example"></a>JavaScript の例
-
-次の例は、*function.json* ファイルの Twilio 出力バインドと、バインドを使用する [JavaScript 関数](functions-reference-node.md)を示しています。
-
-*function.json* ファイルのバインド データを次に示します。
-
-function.json の例:
-
-```json
-{
-  "type": "twilioSms",
-  "name": "message",
-  "accountSid": "TwilioAccountSid",
-  "authToken": "TwilioAuthToken",
-  "to": "+1704XXXXXXX",
-  "from": "+1425XXXXXXX",
-  "direction": "out",
-  "body": "Azure Functions Testing"
-}
-```
-
-JavaScript コードを次に示します。
-
-```javascript
-module.exports = function (context, myQueueItem) {
-    context.log('Node.js queue trigger function processed work item', myQueueItem);
-
-    // In this example the queue item is a JSON string representing an order that contains the name of a 
-    // customer and a mobile number to send text updates to.
-    var msg = "Hello " + myQueueItem.name + ", thank you for your order.";
-
-    // Even if you want to use a hard coded message and number in the binding, you must at least 
-    // initialize the message binding.
-    context.bindings.message = {};
-
-    // A dynamic message can be set instead of the body in the output binding. In this example, we use 
-    // the order information to personalize a text message to the mobile number provided for
-    // order status updates.
-    context.bindings.message = {
-        body : msg,
-        to : myQueueItem.mobileNumber
-    };
-
-    context.done();
-};
-```
+<a id="example"></a>
 
 ## <a name="example---functions-2x-and-higher"></a>例 - Functions 2.x 以降
 
-言語固有の例をご覧ください。
-
-* [2.x+ C#](#2x-c-example)
-* [2.x+ C# スクリプト (.csx)](#2x-c-script-example)
-* [2.x+ JavaScript](#2x-javascript-example)
-
-### <a name="2x-c-example"></a>2.x+ C# の例
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 次の例は、キュー メッセージによってトリガーされたときにテキスト メッセージを送信する [C# 関数](functions-dotnet-class-library.md)を示しています。
 
@@ -240,7 +70,7 @@ namespace TwilioQueueOutput
 
 この例では、メソッドの戻り値で `TwilioSms` 属性を使用します。 代わりに、`out CreateMessageOptions` パラメーターまたは `ICollector<CreateMessageOptions>` または `IAsyncCollector<CreateMessageOptions>` パラメーターを持つ属性を使用することができます。
 
-### <a name="2x-c-script-example"></a>2.x+ C# スクリプトの例
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
 
 次の例は、*function.json* ファイルの Twilio 出力バインドと、そのバインドを使用する [C# スクリプト関数](functions-reference-csharp.md)を示しています。 関数は、`out`パラメーターを使用してテキスト メッセージを送信します。
 
@@ -326,7 +156,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<CreateMessageOp
 }
 ```
 
-### <a name="2x-javascript-example"></a>2.x+ JavaScript の例
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 次の例は、*function.json* ファイルの Twilio 出力バインドと、バインドを使用する [JavaScript 関数](functions-reference-node.md)を示しています。
 
@@ -371,7 +201,93 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-## <a name="attributes"></a>属性
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+次の例では、次の *function.js* で定義されているように、出力バインドを使用して SMS メッセージを送信する方法を示します。
+
+```json
+    {
+      "type": "twilioSms",
+      "name": "twilioMessage",
+      "accountSidSetting": "TwilioAccountSID",
+      "authTokenSetting": "TwilioAuthToken",
+      "from": "+1XXXXXXXXXX",
+      "direction": "out",
+      "body": "Azure Functions Testing"
+    }
+```
+
+シリアル化された JSON オブジェクトを `func.Out` パラメーターに渡して、SMS メッセージを送信できます。
+
+```python
+import logging
+import json
+import azure.functions as func
+
+def main(req: func.HttpRequest, twilioMessage: func.Out[str]) -> func.HttpResponse:
+
+    message = req.params.get('message')
+    to = req.params.get('to')
+
+    value = {
+      "body": message,
+      "to": to
+    }
+
+    twilioMessage.set(json.dumps(value))
+
+    return func.HttpResponse(f"Message sent")
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+次の例では、[TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) 注釈を使用して SMS メッセージを送信する方法を示します。 `to`、`from`、および `body` の値は、プログラムによってオーバーライドされた場合でも、属性定義に必要です。
+
+```java
+package com.function;
+
+import java.util.*;
+import com.microsoft.azure.functions.annotation.*;
+import com.microsoft.azure.functions.*;
+
+public class TwilioOutput {
+
+    @FunctionName("TwilioOutput")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = { HttpMethod.GET, HttpMethod.POST },
+                authLevel = AuthorizationLevel.FUNCTION) HttpRequestMessage<Optional<String>> request,
+            @TwilioSmsOutput(
+                name = "twilioMessage",
+                accountSid = "AzureWebJobsTwilioAccountSID",
+                authToken = "AzureWebJobsTwilioAuthToken",
+                to = "+1XXXXXXXXXX",
+                body = "From Azure Functions",
+                from = "+1XXXXXXXXXX") OutputBinding<String> twilioMessage,
+            final ExecutionContext context) {
+
+        String message = request.getQueryParameters().get("message");
+        String to = request.getQueryParameters().get("to");
+
+        StringBuilder builder = new StringBuilder()
+            .append("{")
+            .append("\"body\": \"%s\",")
+            .append("\"to\": \"%s\"")
+            .append("}");
+
+        final String body = String.format(builder.toString(), message, to);
+
+        twilioMessage.setValue(body);
+
+        return request.createResponseBuilder(HttpStatus.OK).body("Message sent").build();
+    }
+}
+```
+
+---
+
+## <a name="attributes-and-annotations"></a>属性と注釈
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 [C# クラス ライブラリ](functions-dotnet-class-library.md)では、[TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) 属性を使用します。
 
@@ -387,26 +303,44 @@ public static CreateMessageOptions Run(
 }
  ```
 
-完全な例については、「[C# の例](#c-example)」を参照してください。
+完全な例については、「[C# の例](#example)」を参照してください。
+
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+
+属性は、C# スクリプトではサポートされていません。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+属性は、JavaScript ではサポートされていません。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+属性は、Python ではサポートされていません。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+`T` が `int`、`String`、`byte[]`、POJO 型などのネイティブ Java 型である場合は、[`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.outputbinding)パラメーターに [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) 注釈を配置します。
+
+---
 
 ## <a name="configuration"></a>構成
 
 次の表は、*function.json* ファイルと `TwilioSms` 属性で設定したバインド構成のプロパティを説明しています。
 
-| v1 function.json のプロパティ | v2 function.json のプロパティ | 属性のプロパティ |説明|
+| v1 function.json のプロパティ | v2 function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|---------|----------------------|
 |**type**|**type**| `twilioSms` に設定する必要があります。|
 |**direction**|**direction**| `out` に設定する必要があります。|
 |**name**|**name**| Twilio SMS テキスト メッセージの関数コードで使用される変数名です。 |
-|**accountSid**|**accountSidSetting**| **AccountSidSetting**| この値には、TwilioAccountSid など、Twilio Account Sid を保持するアプリ設定の名前を指定する必要があります。 設定されていない場合、既定のアプリの設定名は"AzureWebJobsTwilioAccountSid" です。 |
-|**authToken**|**authTokenSetting**|**AuthTokenSetting**| この値には、TwilioAccountAuthToken など、Twilio 認証トークンを保持するアプリ設定の名前を指定する必要があります。 設定されていない場合、既定のアプリの設定名は"AzureWebJobsTwilioAuthToken" です。 |
+|**accountSid**|**accountSidSetting**| **AccountSidSetting**| この値には、Twilio Account Sid (`TwilioAccountSid`) を保持するアプリ設定の名前を指定する必要があります。 設定されていない場合、既定のアプリの設定名は"AzureWebJobsTwilioAccountSid" です。 |
+|**authToken**|**authTokenSetting**|**AuthTokenSetting**| この値には、Twilio 認証トークン (`TwilioAccountAuthToken`) を保持するアプリ設定の名前を指定する必要があります。 設定されていない場合、既定のアプリの設定名は"AzureWebJobsTwilioAuthToken" です。 |
 |**to**| 該当なし - コード内の指定 | **To**| この値は、SMS テキストの送信先の電話番号に設定されます。|
 |**from**|**from** | **From**| この値は、SMS テキストの送信元の電話番号に設定されます。|
 |**body**|**body** | **本文**| この値は、SMS テキスト メッセージを関数のコードで動的に設定する必要がない場合に、メッセージをハード コーディングするために使用できます。 |  
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 10/01/2019
-ms.openlocfilehash: 5e3cc12351313b8fb1dedf795031202070ac7cf7
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.date: 01/23/2020
+ms.openlocfilehash: fab24d55509ab315775437ca343e35fc90174f63
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558983"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715093"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL Database サービス レベル
 
@@ -32,7 +32,7 @@ Azure SQL Database は、インフラストラクチャに障害が発生した�
 
 次の表は、最新世代 (Gen5) のサービス サービス間の主な違いをまとめたものです。 サービス レベルの特徴は単一データベースとマネージド インスタンスで異なる場合があることにご留意ください。
 
-| | リソースの種類 | 汎用 |  ハイパースケール | Business Critical |
+| | リソースの種類 | General Purpose |  ハイパースケール | Business Critical |
 |:---:|:---:|:---:|:---:|:---:|
 | **最適な用途** | |  予算重視のバランスの取れたコンピューティングおよびストレージ オプションを提供します。 | ほとんどのビジネス ワークロード。 最大 100 TB までのストレージ サイズの自動スケーリング、垂直および水平方向へのなめらかなコンピューティング スケーリング、データベースの高速復元。 | トランザクション レートが高く IO 待ち時間が低い OLTP アプリケーション。 同期的に更新された複数のレプリカを使用して、最高の耐障害性と高速フェールオーバーを提供します。|
 |  **リソースの種類で使用可能:** ||単一データベース/エラスティック プール/マネージド インスタンス | 単一データベース | 単一データベース/エラスティック プール/マネージド インスタンス |
@@ -50,10 +50,10 @@ Azure SQL Database は、インフラストラクチャに障害が発生した�
 | | マネージド インスタンス | [仮想コアあたり 3 MB/秒 (最大 22 MB/秒)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | 該当なし | [仮想コアあたり 4 MB/秒 (最大 48 MB/秒)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
 |**可用性**|All| 99.99% |  [セカンダリ レプリカが 1 つで 99.95%、それ以上のレプリカで 99.99%](sql-database-service-tier-hyperscale-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99.99% <br/> [ゾーン冗長単一データベースで 99.995%](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
 |**バックアップ**|All|RA-GRS、7 ～ 35 日 (既定では 7 日)| RA-GRS、7 日、一定時間で特定の時点に復旧 (PITR) | RA-GRS、7 ～ 35 日 (既定では 7 日) |
-|**インメモリ OLTP** | | 該当なし | 該当なし | 使用可能 |
-|**読み取り専用レプリカ**| | 0  | 0 - 4 | 1 (組み込み、価格に含まれます) |
+|**インメモリ OLTP** | | 該当なし | 該当なし | 利用可能 |
+|**読み取り専用レプリカ**| | 0 組み込み <br> 0 - 4 [geo レプリケーション](sql-database-active-geo-replication.md)を使用 | 0 - 4 組み込み | 1 組み込み、価格に含まれます <br> 0 - 4 [geo レプリケーション](sql-database-active-geo-replication.md)を使用 |
 |**価格/課金** | 単一データベース | [仮想コア、予約ストレージ、バックアップ ストレージ](https://azure.microsoft.com/pricing/details/sql-database/single/)に対して請求されます。 <br/>IOPS に対しては請求されません。 | [レプリカごとの仮想コアと使用されたストレージ](https://azure.microsoft.com/pricing/details/sql-database/single/)に対して請求されます。 <br/>IOPS に対してはまだ請求されません。 | [仮想コア、予約ストレージ、バックアップ ストレージ](https://azure.microsoft.com/pricing/details/sql-database/single/)に対して請求されます。 <br/>IOPS に対しては請求されません。 |
-|| マネージド インスタンス | [仮想コアと予約ストレージとバックアップ](https://azure.microsoft.com/pricing/details/sql-database/managed/)に対して請求されます。 <br/>IOPS に対しては請求されません。<br/>バックアップ ストレージにはこの段階では請求されません。 | 該当なし | [仮想コアと予約ストレージとバックアップ](https://azure.microsoft.com/pricing/details/sql-database/managed/)に対して請求されます。 <br/>IOPS に対しては請求されません。<br/>バックアップ ストレージにはこの段階では請求されません。 | 
+|| マネージド インスタンス | [仮想コアと予約ストレージ](https://azure.microsoft.com/pricing/details/sql-database/managed/)に対して請求されます。 <br/>IOPS に対しては請求されません。<br/>バックアップ ストレージにはこの段階では請求されません。 | 該当なし | [仮想コアと予約ストレージ](https://azure.microsoft.com/pricing/details/sql-database/managed/)に対して請求されます。 <br/>IOPS に対しては請求されません。<br/>バックアップ ストレージにはこの段階では請求されません。 | 
 |**割引モデル**| | [予約インスタンス](sql-database-reserved-capacity.md)<br/>[Azure ハイブリッド特典](sql-database-azure-hybrid-benefit.md) (開発テスト サブスクリプションでは利用不可)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) および [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0023p/) (従量課金制) Dev/Test (開発テスト) サブスクリプション| [Azure ハイブリッド特典](sql-database-azure-hybrid-benefit.md) (開発テスト サブスクリプションでは利用不可)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) および [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0023p/) (従量課金制) Dev/Test (開発テスト) サブスクリプション| [予約インスタンス](sql-database-reserved-capacity.md)<br/>[Azure ハイブリッド特典](sql-database-azure-hybrid-benefit.md) (開発テスト サブスクリプションでは利用不可)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) および [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0023p/) (従量課金制) Dev/Test (開発テスト) サブスクリプション|
 
 詳細については、[単一データベース (仮想コア)](sql-database-vcore-resource-limits-single-databases.md)、[単一データベース プール (仮想コア)](sql-database-dtu-resource-limits-single-databases.md)、[単一データベース (DTU)](sql-database-dtu-resource-limits-single-databases.md)、[単一データベース プール (DTU)](sql-database-dtu-resource-limits-single-databases.md)、[マネージド インスタンス](sql-database-managed-instance-resource-limits.md)に関するページでサービス レベル間の細かな違いを確認してください。
@@ -90,7 +90,7 @@ MDF および LDF ファイルの現在の合計サイズを監視するには�
 - **PITR**:個々のデータベース バックアップは、[読み取りアクセス geo 冗長ストレージ (RA-GRS) ストレージ](../storage/common/storage-designing-ha-apps-with-ragrs.md)に自動的にコピーされます。 ストレージ サイズは、新しいバックアップが作成されるにつれて、動的に増大します。 ストレージは、毎週の完全バックアップ、毎日の差分バックアップ、5 分ごとにコピーされるトランザクション ログ バックアップによって使用されます。 ストレージの使用量は、データベースの変化率とバックアップのリテンション期間に応じて異なります。 リテンション期間は、データベースごとに 7 ～ 35 日の範囲内で別々に構成できます。 データベース サイズの 100% (1 倍) に等しい最小ストレージ量は、追加料金なしで提供されます。 ほとんどのデータベースでは、この容量で十分に 7 日間のバックアップを格納できます。
 - **LTR**:SQL Database には、最大 10 年の完全バックアップの長期保有を構成するオプションが用意されています。 LTR ポリシーを設定した場合、これらのバックアップは、RA-GRS ストレージに自動的に格納されますが、バックアップがコピーされる頻度は制御できます。 さまざまなコンプライアンス要件を満たすために、毎週、毎月、毎年のバックアップに対して異なるリテンション期間を選択することができます。 選択した構成によって、LTR バックアップに使用されるストレージ容量が決まります。 LTR ストレージのコストを見積もるには、LTR 料金計算ツールを使用できます。 詳細については、[SQL Database の長期保存](sql-database-long-term-retention.md)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - General Purpose と Business Critical サービス レベルでの単一データベースにおいて利用できる具体的なコンピューティング サイズとストレージ サイズの詳細については、[単一データベースに対する SQL Database 仮想コア ベースのリソース制限](sql-database-vcore-resource-limits-single-databases.md)に関するページを参照してください。
 - General Purpose と Business Critical サービス レベルでのエラスティック プールにおいて利用できる具体的なコンピューティング サイズとストレージ サイズの詳細については、[エラスティック プールに対する SQL Database 仮想コア ベースのリソース制限](sql-database-vcore-resource-limits-elastic-pools.md)に関するページを参照してください。

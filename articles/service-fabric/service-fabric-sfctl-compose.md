@@ -3,21 +3,21 @@ title: Azure Service Fabric CLI- sfctl compose
 description: Azure Service Fabric のコマンド ライン インターフェイスである sfctl について説明します。 Docker Compose アプリケーションのためのコマンドの一覧が含まれています。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 3a9fa142dd45674e4a3e88745acffef225b80a64
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 1e40ca4e3c5ec8b7566646aa7ef723bd4c9e45a1
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645397"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906136"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
 Docker Compose アプリケーションを作成、削除、および管理します。
 
 ## <a name="commands"></a>コマンド
 
-|command|[説明]|
+|command|説明|
 | --- | --- |
 | 作成 | Service Fabric Compose のデプロイを作成します。 |
 | list | Service Fabric クラスターで作成された Compose デプロイの一覧を取得します。 |
@@ -32,7 +32,7 @@ Service Fabric Compose のデプロイを作成します。
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --deployment-name [必須] | デプロイの名前。 |
 | --file-path       [必須] | ターゲット Docker Compose ファイルへのパス。 |
@@ -43,7 +43,7 @@ Service Fabric Compose のデプロイを作成します。
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
@@ -58,7 +58,7 @@ Service Fabric クラスターで作成されたまたは作成中の Compose �
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --continuation-token | 継続トークンのパラメーターは、次の結果セットを取得するために使用されます。 システムからの結果が 1 つの応答に収まらない場合は、空以外の値を持つ継続トークンが API の応答に含まれます。 この値が次の API 呼び出しに渡されると、API が次の結果セットを返します。 それ以上の結果がない場合は、継続トークンに値が含まれません。 このパラメーターの値を URL にエンコードすることはできません。 |
 | --max-results | ページング クエリの一部として返される結果の最大数。 このパラメーターは、返される結果の数に上限を定義します。 返された結果が、構成で定義したメッセージの最大サイズの制限に収まらない場合は、指定した最大結果数よりも少なくなる場合があります。 このパラメーターがゼロまたは指定されていない場合、ページング クエリには、応答メッセージに収まるできるだけ多くの結果が含まれます。 |
@@ -66,7 +66,7 @@ Service Fabric クラスターで作成されたまたは作成中の Compose �
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
@@ -81,14 +81,14 @@ Service Fabric クラスターで作成されたまたは作成中の Compose �
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --deployment-name [必須] | デプロイの ID。 |
 | --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
@@ -103,14 +103,14 @@ Service Fabric クラスターで作成された、または作成中の、パ�
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --deployment-name [必須] | デプロイの ID。 |
 | --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
@@ -125,7 +125,7 @@ Service Fabric クラスターで、Compose デプロイのアップグレード
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --deployment-name [必須] | デプロイの名前。 |
 | --file-path        [必須] | ターゲット Docker Compose ファイルへのパス。 |
@@ -150,7 +150,7 @@ Service Fabric クラスターで、Compose デプロイのアップグレード
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
@@ -165,14 +165,14 @@ Service Fabric Compose のデプロイのアップグレードをロールバッ
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --deployment-name [必須] | デプロイの ID。 |
 | --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
@@ -187,14 +187,14 @@ Compose デプロイ アップグレードの状態、およびアプリケー�
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --deployment-name [必須] | デプロイの ID。 |
 | --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |

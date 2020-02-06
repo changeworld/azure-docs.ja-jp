@@ -3,19 +3,19 @@ title: Azure portal を使用した Event Hubs 専用クラスターの作成
 description: このクイックスタートでは、Azure portal を使用して Azure Event Hubs クラスターを作成する方法について説明します。
 services: event-hubs
 documentationcenter: ''
-author: xurui203
+author: femila
 manager: ''
 ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 12/20/2019
-ms.author: xurui
-ms.openlocfilehash: dbe34b95652d972a9e75f4ab8f2c208061359ae9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: femila
+ms.openlocfilehash: 7003cc90bdb456eba9cfaebc1e24332d2e4a6251
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437222"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029930"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>クイック スタート:Azure portal を使用して専用の Event Hubs クラスターを作成する 
 Event Hubs クラスターは、最も厳しいストリーミングのニーズを持つお客様にシングルテナント デプロイを提供します。 このサービスでは、99.99% の SLA が保証されており、専用の価格レベルでのみご利用いただけます。 [Event Hubs クラスター](event-hubs-dedicated-overview.md)では、1 秒あたり数百万のイベントを、保証された容量と 1 秒未満の待ち時間でイングレスすることができます。 クラスター内で作成された名前空間とイベント ハブには、標準サービスのすべての機能とそれ以外の機能が含まれますが、イングレスに関する制限はありません。 また、専用サービスには、一般的な [Event Hubs Capture](event-hubs-capture-overview.md) 機能が追加料金なしで含まれているため、[Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) または [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md) に対してデータ ストリームを自動的にバッチおよびログ処理することができます。

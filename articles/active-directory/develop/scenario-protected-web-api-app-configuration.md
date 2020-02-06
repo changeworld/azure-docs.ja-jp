@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: fc74e72c6c2fe3e2b8817e6ffb418928ede08193
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 975117ad5c58bed77002a33f0dc5370d0f1c17e2
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773354"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931461"
 ---
 # <a name="protected-web-api-code-configuration"></a>保護された Web API: コード構成
 
@@ -47,7 +47,7 @@ Web アプリと同じように、ASP.NET と ASP.NET Core の Web API は、そ
 以下は、.NET 用 Microsoft Authentication Library (MSAL.NET) を使用してトークンを取得した後、API を呼び出すクライアントを示す C# コードの例です。
 
 ```csharp
-var scopes = new[] {$"api://.../access_as_user}";
+var scopes = new[] {$"api://.../access_as_user"};
 var result = await app.AcquireToken(scopes)
                       .ExecuteAsync();
 
@@ -153,7 +153,7 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
 
 次の表では、検証コントロールについて説明します。
 
-| 検証コントロール | [説明] |
+| 検証コントロール | 説明 |
 |---------|---------|
 | **ValidateAudience** | トークンが、自分のトークンを確認するアプリケーション用であることを保証します。 |
 | **ValidateIssuer** | トークンが信頼できる STS、つまり自分が信頼する人から発行されたことを保証します。 |

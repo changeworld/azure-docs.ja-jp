@@ -2,17 +2,17 @@
 title: DNS ゾーンとレコードを保護する - Azure DNS
 description: このラーニング パスでは、Microsoft Azure DNS で DNS ゾーンとレコード セットの保護を始めます。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 12/4/2018
-ms.author: allensu
-ms.openlocfilehash: c87f9d51c69c4f4d330862e83e5cc8e8e849a988
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.author: rohink
+ms.openlocfilehash: 549090f04f4969b00dc1c8ee8d5cc70a50523ca8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969019"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983828"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS ゾーンとレコードを保護する方法
 
@@ -205,7 +205,7 @@ Azure DNS ゾーンを削除すると、ゾーン内のレコード セットも
 
 ```azurepowershell
 # Protect against zone delete with CanNotDelete lock on the record set
-New-AzResourceLock -LockLevel CanNotDelete -LockName "<lock name>" -ResourceName "<zone name>/@" -ResourceType" Microsoft.Network/DNSZones/SOA" -ResourceGroupName "<resource group name>"
+New-AzResourceLock -LockLevel CanNotDelete -LockName "<lock name>" -ResourceName "<zone name>/@" -ResourceType "Microsoft.Network/DNSZones/SOA" -ResourceGroupName "<resource group name>"
 ```
 
 意図せずゾーンが削除されることを防ぐもう 1 つの方法として、カスタム ロールを使用し、ゾーンの管理に使われるオペレーター アカウントとサービス アカウントにゾーンの削除アクセス許可が付与されないようにするという方法があります。 ゾーンの削除が必要な場合は、まずゾーンの削除アクセス許可を付与 (誤ったゾーンを削除しないように、ゾーン スコープでのアクセス許可を付与) し、次にゾーンを削除するという、2 段階の削除操作を強制することができます。

@@ -2,14 +2,14 @@
 author: lugoldbemicrosoft
 ms.service: data-explorer
 ms.topic: include
-ms.date: 10/23/2019
+ms.date: 02/03/2020
 ms.author: lugoldbe
-ms.openlocfilehash: 58b9430b11ba65649e38317278d8c69814cb3b0e
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 22af1f413bef0c69eb732f75fa03049140e4c7e3
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74875467"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964303"
 ---
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
 
@@ -74,6 +74,72 @@ ms.locfileid: "74875467"
             "defaultValue": "kustodb",
             "metadata": {
                 "description": "Name of the database to create"
+            }
+        },
+        "clusterPrincipalAssignmentName": {
+            "type": "string",
+            "defaultValue": "clusterPrincipalAssignment1",
+            "metadata": {
+                "description": "Specifies the name of the principal assignment"
+            }
+        },
+        "principalIdForCluster": {
+            "type": "string",
+            "metadata": {
+                "description": "Specifies the principal id. It can be user email, application (client) ID, security group name"
+            }
+        },
+        "roleForClusterPrincipal": {
+            "type": "string",
+            "defaultValue": "AllDatabasesViewer",
+            "metadata": {
+                "description": "Specifies the cluster principal role. It can be 'AllDatabasesAdmin', 'AllDatabasesViewer'"
+            }
+        },
+        "tenantIdForClusterPrincipal": {
+            "type": "string",
+            "metadata": {
+                "description": "Specifies the tenantId of the cluster principal"
+            }
+        },
+        "principalTypeForCluster": {
+            "type": "string",
+            "defaultValue": "App",
+            "metadata": {
+                "description": "Specifies the principal type. It can be 'User', 'App', 'Group'"
+            }
+        },
+        "databasePrincipalAssignmentName": {
+            "type": "string",
+            "defaultValue": "databasePrincipalAssignment1",
+            "metadata": {
+                "description": "Specifies the name of the principal assignment"
+            }
+        },
+        "principalIdForDatabase": {
+            "type": "string",
+            "metadata": {
+                "description": "Specifies the principal id. It can be user email, application (client) ID, security group name"
+            }
+        },
+        "roleForDatabasePrincipal": {
+            "type": "string",
+            "defaultValue": "Admin",
+            "metadata": {
+                "description": "Specifies the database principal role. It can be 'Admin', 'Ingestor', 'Monitor', 'User', 'UnrestrictedViewers', 'Viewer'"
+            }
+        },
+        "tenantIdForDatabasePrincipal": {
+            "type": "string",
+            "metadata": {
+                "description": "Specifies the tenantId of the database principal"
+            }
+        },
+        "principalTypeForDatabase": {
+            "type": "string",
+            "defaultValue": "App",
+            "metadata": {
+                "description": "Specifies the principal type. It can be 'User', 'App', 'Group'"
             }
         },
         "location": {
@@ -155,6 +221,28 @@ ms.locfileid: "74875467"
             "properties": {
                 "softDeletePeriodInDays": 365,
                 "hotCachePeriodInDays": 31
+            }
+        }, {
+            "type": "Microsoft.Kusto/Clusters/principalAssignments",
+            "apiVersion": "2019-11-09",
+            "name": "[concat(parameters('kustoClusterName'), '/', parameters('clusterPrincipalAssignmentName'))]",
+            "dependsOn": ["[resourceId('Microsoft.Kusto/clusters', parameters('kustoClusterName'))]"],
+            "properties": {
+                "principalId": "[parameters('principalIdForCluster')]",
+                "role": "[parameters('roleForClusterPrincipal')]",
+                "tenantId": "[parameters('tenantIdForClusterPrincipal')]",
+                "principalType": "[parameters('principalTypeForCluster')]"
+            }
+        }, {
+            "type": "Microsoft.Kusto/Clusters/Databases/principalAssignments",
+            "apiVersion": "2019-11-09",
+            "name": "[concat(parameters('kustoClusterName'), '/', parameters('kustoDatabaseName'), '/', parameters('databasePrincipalAssignmentName'))]",
+            "dependsOn": ["[resourceId('Microsoft.Kusto/clusters/databases', parameters('kustoClusterName'), parameters('kustoDatabaseName'))]"],
+            "properties": {
+                "principalId": "[parameters('principalIdForDatabase')]",
+                "role": "[parameters('roleForDatabasePrincipal')]",
+                "tenantId": "[parameters('tenantIdForDatabasePrincipal')]",
+                "principalType": "[parameters('principalTypeForDatabase')]"
             }
         }
     ]

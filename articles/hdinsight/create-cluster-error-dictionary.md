@@ -1,19 +1,19 @@
 ---
 title: クラスター エラー ディクショナリを作成する
 description: クラスター エラー ディクショナリを作成する方法について説明します。
-ms.reviewer: hrasheed
 author: karkrish
-ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
-ms.topic: troubleshooting
-ms.date: 11/19/2019
 ms.author: v-todmc
-ms.openlocfilehash: ee9ed5374b12c3130d952770a4be6a759e37339a
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.reviewer: hrasheed
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 11/19/2019
+ms.openlocfilehash: 6e5ed996a0f44bae6c37027bc01f30be85d164f9
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156864"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905488"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: クラスター作成時のエラー
 
@@ -210,7 +210,7 @@ ID の管理に必要なアクセス許可を指定しませんでした。 ユ�
 
 ### <a name="resolution"></a>解決策
 
-[Azure の状態](https://status.azure.com/status)ページで、クラスターのデプロイに影響する可能性がある Azure の停止を確認してください。 停止が発生していない場合は、クラスターのデプロイを再試行してください。
+[Azure の状態](https://status.azure.com)ページで、クラスターのデプロイに影響する可能性がある Azure の停止を確認してください。 停止が発生していない場合は、クラスターのデプロイを再試行してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -5,12 +5,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19674cb024bd9b9c9ea9f510080e30614fad8b60
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f808ff2a88a86df25b555f94257168e2d176e7f8
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433307"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963660"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure Functions のパフォーマンスと信頼性を最適化する
 
@@ -74,7 +74,9 @@ Azure Functions プラットフォームで使用するコンポーネントに�
 
 ### <a name="avoid-sharing-storage-accounts"></a>ストレージ アカウントの共有を回避する
 
-関数アプリを作成する場合は、ストレージ アカウントに関連付ける必要があります。 ストレージ アカウント接続は、[AzureWebJobsStorage アプリケーション設定](./functions-app-settings.md#azurewebjobsstorage)の中で管理されます。 パフォーマンスを最大化するには、関数アプリごとに個別のストレージ アカウントを使用します。 Durable Functions または Event Hub によってトリガーされる関数がある場合には、これは特に重要です。どちらも、大量のストレージ トランザクションを生成します。 アプリケーション ロジックが (Storage SDK を使用して) 直接、あるいは、ストレージ バインドの 1 つを経由して Azure Storage と対話する場合、専用のストレージ アカウントを使用する必要があります。 たとえば、Event Hub によってトリガーされ BLOB ストレージにデータを書き込む関数がある場合、2 つのストレージ アカウントを使用します&mdash;1 つは関数アプリ用、もう 1 つは関数によって格納されている BLOB 用になります。
+関数アプリを作成する場合は、ストレージ アカウントに関連付ける必要があります。 ストレージ アカウント接続は、[AzureWebJobsStorage アプリケーション設定](./functions-app-settings.md#azurewebjobsstorage)の中で管理されます。 
+
+[!INCLUDE [functions-shared-storage](../../includes/functions-shared-storage.md)]
 
 ### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>同じ関数アプリにテスト コードと運用環境のコードを混在させない
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 0d9685f18d4a2995ae2dffa16a39da1ec65b4945
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: ee5863497ce067d2ff056c3fc1c64b00d3004cd8
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771038"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76903923"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>チュートリアル:DMS を使用して PostgreSQL をオンラインで Azure Database for PostgreSQ に移行する
 
@@ -58,7 +58,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
     >
     > Azure Database Migration Service にはインターネット接続がないため、この構成が必要となります。
 
-* 仮想ネットワークのネットワーク セキュリティ グループ (NSG) の規則によって、Azure Database Migration Service への以下のインバウンド通信ポートがブロックされないことを確認します。443、53、9354、445、12000。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)に関する記事を参照してください。
+* 仮想ネットワークのネットワーク セキュリティ グループ (NSG) の規則によって、Azure Database Migration Service への以下のインバウンド通信ポートが確実にブロックされないようにします。443、53、9354、445、12000。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)に関する記事を参照してください。
 * [データベース エンジン アクセスのために Windows ファイアウォール](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)を構成します。
 * Azure Database Migration Service がソース PostgreSQL サーバーにアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 5432 です。
 * ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
@@ -205,7 +205,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 2. 次のコマンドを実行して、DMS のインスタンスをプロビジョニングします。
 
    ```
-   az dms create -l [location] -n <newServiceName> -g <yourResourceGroupName> --sku-name BusinessCritical_4vCores --subnet/subscriptions/{vnet subscription id}/resourceGroups/{vnet resource group}/providers/Microsoft.Network/virtualNetworks/{vnet name}/subnets/{subnet name} –tags tagName1=tagValue1 tagWithNoValue
+   az dms create -l [location] -n <newServiceName> -g <yourResourceGroupName> --sku-name Premium_4vCores --subnet/subscriptions/{vnet subscription id}/resourceGroups/{vnet resource group}/providers/Microsoft.Network/virtualNetworks/{vnet name}/subnets/{subnet name} –tags tagName1=tagValue1 tagWithNoValue
    ```
 
    たとえば、次の設定でサービスを作成するには、下記のコマンドを実行します。
@@ -216,7 +216,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
    * DMS サービス名:PostgresCLI
 
    ```
-   az dms create -l eastus2 -g PostgresDemo -n PostgresCLI --subnet /subscriptions/97181df2-909d-420b-ab93-1bff15acb6b7/resourceGroups/ERNetwork/providers/Microsoft.Network/virtualNetworks/AzureDMS-CORP-USC-VNET-5044/subnets/Subnet-1 --sku-name BusinessCritical_4vCores
+   az dms create -l eastus2 -g PostgresDemo -n PostgresCLI --subnet /subscriptions/97181df2-909d-420b-ab93-1bff15acb6b7/resourceGroups/ERNetwork/providers/Microsoft.Network/virtualNetworks/AzureDMS-CORP-USC-VNET-5044/subnets/Subnet-1 --sku-name Premium_4vCores
    ```
 
    DMS サービスのインスタンスを作成するには、約 10 ～ 12 分かかります。

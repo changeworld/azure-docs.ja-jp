@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 1/10/2020
 ms.author: alzam
-ms.openlocfilehash: b390b5f8b00f61994db820a3af7bce26a3e0a30d
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 90244b9dcf30c2ef01d4e57c9d8e35fa1d71f434
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934888"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985647"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>P2S OpenVPN プロトコル接続用の Azure Active Directory テナントを作成する
 
@@ -154,114 +154,116 @@ P2S 構成には、リモート クライアントを接続するためのパラ
 
    ```powershell
    $aadConfig = New-AzVpnServerConfiguration -ResourceGroupName <ResourceGroup> -Name newAADConfig -VpnProtocol OpenVPN -VpnAuthenticationType AAD -AadTenant $aadTenant -AadIssuer $aadIssuer -AadAudience $aadAudience -Location westcentralus
-> [!NOTE]
-> Do not use the Azure VPN client's application ID in the commands above as it will grant all users access to the VPN gateway. Use the ID of the application(s) you registered.
-
-## <a name="hub"></a>7. Edit hub assignment
-
-1. Navigate to the **Hubs** blade under the virtual WAN.
-2. Select the hub that you want to associate the vpn server configuration to and click the ellipsis (...).
-
-   ![new site](media/virtual-wan-point-to-site-azure-ad/p2s4.jpg)
-3. Click **Edit virtual hub**.
-4. Check the **Include point-to-site gateway** check box and pick the **Gateway scale unit** that you want.
-
-   ![new site](media/virtual-wan-point-to-site-azure-ad/p2s2.jpg)
-5. Enter the **Address pool** from which the VPN clients will be assigned IP addresses.
-6. Click **Confirm**.
-7. The operation will can take up to 30 minutes to complete.
-
-## <a name="device"></a>8. Download VPN profile
-
-Use the VPN profile to configure your clients.
-
-1. On the page for your virtual WAN, click **User VPN configurations**.
-2. At the top of the  page, click **Download user VPN config**.
-3. Once the file has finished creating, you can click the link to download it.
-4. Use the profile file to configure the VPN clients.
-
-4. Extract the downloaded zip file.
-
-5. Browse to the unzipped “AzureVPN” folder.
-
-6. Make a note of the location of the “azurevpnconfig.xml” file. The azurevpnconfig.xml contains the setting for the VPN connection and can be imported directly into the Azure VPN Client application. You can also distribute this file to all the users that need to connect via e-mail or other means. The user will need valid Azure AD credentials to connect successfully.
-## Configure user VPN clients
-
-To connect, you need to download the Azure VPN Client (Preview) and import the VPN client profile that was downloaded in the previous steps on every computer that wants to connect to the VNet.
+   ```
 
 > [!NOTE]
-> Azure AD authentication is supported only for OpenVPN® protocol connections.
+> VPN ゲートウェイへのアクセスがすべてのユーザーに与えられるため、上のコマンドでは Azure VPN クライアントのアプリケーション ID を使用しないでください。 登録したアプリケーションの ID を使用します。
+
+## <a name="hub"></a>7.ハブの割り当てを編集する
+
+1. 仮想 WAN の下にある **[ハブ]** ブレードに移動します。
+2. VPN サーバーの構成を関連付けるハブを選択し、省略記号 (...) をクリックします。
+
+   ![新しいサイト](media/virtual-wan-point-to-site-azure-ad/p2s4.jpg)
+3. **[仮想ハブを編集する]** をクリックします。
+4. **[ポイント対サイト ゲートウェイを含める]** チェック ボックスをオンにし、必要な **[ゲートウェイ スケール ユニット]** を選択します。
+
+   ![新しいサイト](media/virtual-wan-point-to-site-azure-ad/p2s2.jpg)
+5. VPN クライアントの IP アドレスの割り当て元となる **[アドレス プール]** を入力します。
+6. **[Confirm]\(確認\)** をクリックします。
+7. この操作は、完了するまで最大 30 分かかることがあります。
+
+## <a name="device"></a>8.VPN プロファイルをダウンロードする
+
+VPN プロファイルを使用してクライアントを構成します。
+
+1. 仮想 WAN のページで、 **[User VPN configurations]\(ユーザー VPN の構成\)** をクリックします。
+2. ページの上部にある **[Download user VPN config]\(ユーザー VPN 構成をダウンロードする\)** をクリックします。
+3. ファイルの作成が完了したら、リンクをクリックしてファイルをダウンロードできます。
+4. プロファイル ファイルを使用して VPN クライアントを構成します。
+
+4. ダウンロードした zip ファイルを解凍します。
+
+5. 解凍された "AzureVPN" フォルダーを参照します。
+
+6. "azurevpnconfig.xml" ファイルの場所をメモしておきます。 azurevpnconfig.xml には VPN 接続の設定が含まれています。このファイルは Azure VPN クライアント アプリケーションに直接インポートできます。 このファイルは、接続する必要があるすべてのユーザーに、電子メールやその他の方法で配布することもできます。 ユーザーが正常に接続するには、有効な Azure AD 資格情報が必要になります。
+## <a name="configure-user-vpn-clients"></a>ユーザー VPN クライアントを構成する
+
+接続するには、Azure VPN Client (プレビュー) をダウンロードし、前の手順でダウンロードした VPN クライアント プロファイルを、VNet に接続する各コンピューターでインポートします。
+
+> [!NOTE]
+> Azure AD 認証は、OpenVPN® プロトコル接続でのみサポートされています。
 >
 
-#### To download the Azure VPN client
+#### <a name="to-download-the-azure-vpn-client"></a>Azure VPN Client をダウンロードするには
 
-Use this [link](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) to download the Azure VPN Client (Preview).
+この[リンク](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)を使用して、Azure VPN Client (プレビュー) をダウンロードします。
 
-#### <a name="import"></a>To import a client profile
+#### <a name="import"></a>クライアント プロファイルをインポートするには
 
-1. On the page, select **Import**.
+1. ページ上で、 **[インポート]** を選択します。
 
     ![import](./media/virtual-wan-point-to-site-azure-ad/import/import1.jpg)
 
-2. Browse to the profile xml file and select it. With the file selected, select **Open**.
+2. プロファイル xml ファイルを参照し、選択します。 ファイルが選択された状態で、 **[開く]** を選択します。
 
     ![import](./media/virtual-wan-point-to-site-azure-ad/import/import2.jpg)
 
-3. Specify the name of the profile and select **Save**.
+3. プロファイルの名前を指定し、 **[保存]** を選択します。
 
     ![import](./media/virtual-wan-point-to-site-azure-ad/import/import3.jpg)
 
-4. Select **Connect** to connect to the VPN.
+4. **[接続]** を選択して VPN に接続します。
 
     ![import](./media/virtual-wan-point-to-site-azure-ad/import/import4.jpg)
 
-5. Once connected, the icon will turn green and say **Connected**.
+5. 接続されると、アイコンが緑色に変わり、 **[接続済み]** と表示されます。
 
     ![import](./media/virtual-wan-point-to-site-azure-ad/import/import5.jpg)
 
-#### <a name="delete"></a>To delete a client profile
+#### <a name="delete"></a>クライアント プロファイルを削除するには
 
-1. Select the ellipsis (...) next to the client profile that you want to delete. Then, select **Remove**.
+1. 削除するクライアント プロファイルの横にある省略記号 (...) を選択します。 **[削除]** を選択します。
 
     ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete1.jpg)
 
-2. Select **Remove** to delete.
+2. **[削除]** を選択して削除します。
 
     ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete2.jpg)
 
-#### <a name="diagnose"></a>Diagnose connection issues
+#### <a name="diagnose"></a>接続の問題を診断する
 
-1. To diagnose connection issues, you can use the **Diagnose** tool. Select the ellipsis (...) next to the VPN connection that you want to diagnose to reveal the menu. Then select **Diagnose**.
+1. 接続の問題を診断するには、**診断**ツールを使用します。 診断する VPN 接続の横にある省略記号 (...) を選択して、メニューを表示します。 次に、 **[診断]** を選択します。
 
-    ![diagnose](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose1.jpg)
+    ![診断](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose1.jpg)
 
-2. On the **Connection Properties** page, select **Run Diagnosis**.
+2. **[接続プロパティ]** ページで、 **[Run Diagnosis]\(診断の実行\)** を選択します。
 
-    ![diagnose](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose2.jpg)
+    ![診断](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose2.jpg)
 
-3. Sign in with your credentials.
+3. 自分の資格情報でサインインします。
 
-    ![diagnose](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose3.jpg)
+    ![診断](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose3.jpg)
 
-4. View the diagnosis results.
+4. 診断結果を確認します。
 
-    ![diagnose](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose4.jpg)
+    ![診断](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose4.jpg)
 
-## <a name="viewwan"></a>View your virtual WAN
+## <a name="viewwan"></a>仮想 WAN を表示する
 
-1. Navigate to the virtual WAN.
-2. On the Overview page, each point on the map represents a hub. Hover over any point to view the hub health summary.
-3. In the Hubs and connections section, you can view hub status, site, region, VPN connection status, and bytes in and out.
+1. 仮想 WAN に移動します。
+2. [概要] ページのマップ上の各ポイントは、ハブを表します。 任意のポイントにカーソルを置くと、ハブの正常性の概要が表示されます。
+3. ハブと接続のセクションでは、ハブの状態、サイト、リージョン、VPN 接続の状態、および入出力バイト数を表示できます。
 
-## <a name="viewhealth"></a>View your resource health
+## <a name="viewhealth"></a>リソースの正常性を表示する
 
-1. Navigate to your WAN.
-2. On your WAN page, in the **SUPPORT + Troubleshooting** section, click **Health** and view your resource.
+1. WAN に移動します。
+2. WAN のページの **[サポート + トラブルシューティング]** セクションで、 **[正常性]** をクリックしてリソースを表示します。
 
 
-## <a name="cleanup"></a>Clean up resources
+## <a name="cleanup"></a>リソースをクリーンアップする
 
-When you no longer need these resources, you can use [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) to remove the resource group and all of the resources it contains. Replace "myResourceGroup" with the name of your resource group and run the following PowerShell command:
+これらのリソースが不要になったら、[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。 "myResourceGroup" をリソース グループの名前に置き換えて、次の PowerShell コマンドを実行します。
 
 ```azurepowershell-interactive
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force

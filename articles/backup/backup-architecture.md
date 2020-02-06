@@ -3,12 +3,12 @@ title: アーキテクチャの概要
 description: Azure Backup サービスによって使用される、アーキテクチャ、コンポーネント、およびプロセスの概要を示します。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: de532bb02b4ecf5e912a71df404418338325d582
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f311f6d49a776a49080675f3c1ccc28a7a27cb92
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450190"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963939"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup のアーキテクチャとコンポーネント
 
@@ -101,6 +101,23 @@ DPM/MABS ディスクにバックアップしてから、Azure にバックア�
 重複除去されたディスクをバックアップする | | | ![部分的][yellow]<br/><br/> オンプレミスにデプロイされた DPM/MABS サーバーの場合のみ。
 
 ![テーブル キー](./media/backup-architecture/table-key.png)
+
+## <a name="backup-policy-essentials"></a>バックアップ ポリシーの基礎
+
+- バックアップ ポリシーはコンテナーごとに作成されます。
+- バックアップ ポリシーは次のワークロードのバックアップ用に作成できます
+  - Azure VM
+  - Azure VM 内の SQL
+  - Azure ファイル共有
+- ポリシーは、多くのリソースに割り当てることができます。 Azure VM のバックアップ ポリシーを使用して、多くの Azure VM を保護できます。
+- ポリシーは、2 つのコンポーネントで構成されています
+  - スケジュール: いつバックアップを作成するか
+  - 保持期間: 各バックアップをどれだけの期間保持する必要があるか。
+- スケジュールでは、"毎日" または "毎週" の特定の時点として定義できます。
+- 保持期間は、"毎日"、"毎週"、"毎月"、"毎年" のバックアップ ポイントに対して定義できます。
+- "毎週" は週の特定の日、"毎月" は月の特定の日、"毎年" は年の特定の日に、バックアップを行うことを意味します。
+- "毎月"、"毎年" のバックアップ ポイントに対する保持期間は、"長期的な保持" と呼ばれます。
+- コンテナーを作成すると、"既定のポリシー" と呼ばれる Azure VM バックアップに対するポリシーも作成され、Azure VM のバックアップに使用できます。
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>アーキテクチャ:組み込みの Azure VM バックアップ
 
