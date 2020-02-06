@@ -1,14 +1,14 @@
 ---
 title: PCI-DSS v3.2.1 ブループリント サンプルをデプロイする
 description: ブループリント アーティファクトのパラメーターの詳細を含む、Payment Card Industry Data Security Standard v3.2.1 ブループリント サンプルのデプロイ手順。
-ms.date: 06/24/2019
+ms.date: 01/29/2020
 ms.topic: sample
-ms.openlocfilehash: aa641b35f1a7533a13803e7984c83df2f3268de6
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 9df9392430fd0496ffb5e635a6fc3e31ba708208
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546550"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905559"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>PCI-DSS v3.2.1 のブループリント サンプルのデプロイ
 
@@ -99,7 +99,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |SQL サーバーでの監査のデプロイ|ポリシーの割り当て|保持日数|データ保持期間 (日数)。 既定値は 180 ですが、PCI では 365 が必要です。| 
 |SQL サーバーでの監査のデプロイ|ポリシーの割り当て|ストレージ アカウントのリソース グループ名|監査によって、Azure Storage アカウントの監査ログにデータベース イベントが書き込まれます (ストレージ アカウントは、SQL Server が作成された各リージョンに作成され、そのリージョン内のすべてのサーバーによって共有されます)。| 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで PCI-DSS v3.2.1 ブループリント サンプルをデプロイする手順を確認できたので、以下の記事を参照して、概要とコントロール マッピングについて学習してください。
 

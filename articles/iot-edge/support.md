@@ -8,16 +8,16 @@ ms.date: 08/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0d6b5e826720cf51d38b3bc3c2b87d274a2ea816
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 3f1f4efc13e2d11e7111264564a227a484d611d5
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665884"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760098"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge のサポートされるシステム
 
-この記事では、公式またはプレビューの IoT Edge によってサポートされるシステムおよびコンポーネントについて、詳しく説明します。 
+この記事では、公式またはプレビューの IoT Edge によってサポートされるシステムおよびコンポーネントについて、詳しく説明します。
 
 Azure IoT Edge サービスの使用中に問題が発生した場合は、いくつかの方法でサポートを求めることができます。 サポートについては、次のいずれかのチャネルをお試しください。
 
@@ -34,18 +34,20 @@ Azure IoT Edge モジュールはコンテナーとして実装されている�
 <br>
 <center>
 
-![コンテナー ランタイムとしての Moby](./media/support/only-moby-for-production.png)
+![コンテナー ランタイムとしての Moby エンジン](./media/support/only-moby-for-production.png)
 </center>
 
 ## <a name="operating-systems"></a>オペレーティング システム
+
 Azure IoT Edge はコンテナーを実行できるほとんどのオペレーティング システムで実行できます。ただし、それらのすべてのシステムが均等にサポートされているわけではありません。 オペレーティング システムは、ユーザーが受けられるサポートのレベルを表す階層別にグループ化されています。
+
 * レベル 1 のシステムはサポートされています。 レベル 1 のシステムでは、
-    * Microsoft がそのオペレーティング システムに対して自動テストを実施している
-    * Microsoft がそれらのインストール パッケージを提供している
+  * Microsoft がそのオペレーティング システムに対して自動テストを実施している
+  * Microsoft がそれらのインストール パッケージを提供している
 * レベル 2 のシステムは Azure IoT Edge と互換性があり、比較的簡単に使用できます。 レベル 2 のシステムでは、
-    * Microsoft がそのプラットフォームでアドホック テストを実施している、またはパートナーがそのプラットフォーム上で Azure IoT Edge を正常に実行していることを把握している
-    * 他のプラットフォーム用のインストール パッケージがそれらのプラットフォームで機能することがある
-    
+  * Microsoft がそのプラットフォームで非公式なテストを実施している、またはパートナーがそのプラットフォーム上で Azure IoT Edge を正常に実行していることを把握している
+  * 他のプラットフォーム用のインストール パッケージがそれらのプラットフォームで機能することがある
+
 ホスト OS のファミリは、モジュールのコンテナー内で使用されるゲスト OS のファミリと常に一致する必要があります。 つまり、Linux コンテナーは Linux 上でのみ、Windows コンテナーは Windows 上でのみ使用できます。 Windows を使用している場合は、プロセス分離コンテナーのみがサポートされます (Hyper-V 分離コンテナーはサポートされません)。  
 
 <br>
@@ -68,7 +70,6 @@ Azure IoT Edge はコンテナーを実行できるほとんどのオペレー�
 | [Windows Server 2019](https://docs.microsoft.com/windows-server/get-started-19/rel-notes-19) ビルド 17763 | ![Windows Server 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | [Windows Server IoT 2019](https://docs.microsoft.com/windows/iot-core/windows-server) ビルド 17763 | ![Windows Server IoT 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 
-
 上記の Windows オペレーティング システムは、Windows 上で Windows コンテナーを実行するデバイスの要件です。これは、運用環境でサポートされる唯一の構成です。 Windows 用の Azure IoT Edge インストール パッケージを使用すると、Windows 上で Linux コンテナーを使用できます。ただし、この構成は開発およびテスト専用です。 詳細については、「[Windows で IoT Edge を使用し、Linux コンテナーを実行する](how-to-install-iot-edge-windows-with-linux.md)」をご覧ください。
 
 ### <a name="tier-2"></a>レベル 2
@@ -90,13 +91,14 @@ Azure IoT Edge はコンテナーを実行できるほとんどのオペレー�
 | [Yocto](https://www.yoctoproject.org/) | ![Yocto + AMD64](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM64](./media/tutorial-c-module/green-check.png) |
 | Raspbian Buster <sup>1</sup> |  | ![Raspbian Buster + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Raspbian Buster + ARM64](./media/tutorial-c-module/green-check.png) |
 
-<sup>1</sup> Debian 10 システム (Raspian Buster を含む) は、IoT Edge がサポートしていないバージョンの OpenSSL を使用します。 IoT Edge をインストールする前に、次のコマンドを実行して以前のバージョンをインストールしてください。 
+<sup>1</sup> Debian 10 システム (Raspian Buster を含む) は、IoT Edge がサポートしていないバージョンの OpenSSL を使用します。 IoT Edge をインストールする前に、次のコマンドを実行して以前のバージョンをインストールしてください。
 
 ```bash
 sudo apt-get install libssl1.0.2
 ```
 
 ## <a name="virtual-machines"></a>Virtual Machines
+
 Azure IoT Edge は仮想マシンで実行できます。 仮想マシンを IoT Edge デバイスとして使用することは、エッジ インテリジェンスで既存のインフラストラクチャを拡張しようとする場合によく行われます。 ホスト VM OS のファミリは、モジュールのコンテナー内で使用されるゲスト OS のファミリと一致する必要があります。 この要件は、Azure IoT Edge がデバイス上で直接実行されるときと同じです。 Azure IoT Edge は基盤となる仮想化テクノロジに依存しており、Hyper-V や vSphere などのプラットフォームを使用した VM で動作します。
 
 <br>
@@ -106,13 +108,14 @@ Azure IoT Edge は仮想マシンで実行できます。 仮想マシンを IoT
 </center>
 
 ## <a name="minimum-system-requirements"></a>最小システム要件
+
 Azure IoT Edge は、Raspberry Pi3 のような小規模なデバイスから、サーバー グレード ハードウェアまで、幅広いデバイスで快適に動作します。 シナリオに適したハードウェアの選択は、実行するワークロードによって決まります。 デバイスを最終的に決定するまでには複雑なプロセスを要する場合もありますが、従来型のラップトップやデスクトップ上でソリューションのプロトタイプを作成することは簡単に開始できます。
 
-プロトタイプ作成の過程で得られた経験は、最終的なデバイスの選択に役立ちます。 考慮すべき質問としては次のようなものがあります。 
+プロトタイプ作成の過程で得られた経験は、最終的なデバイスの選択に役立ちます。 考慮すべき質問としては次のようなものがあります。
 
 * ワークロード内のモジュールはいくつありますか。
 * モジュールのコンテナーが共有するレイヤーはいくつありますか。
-* モジュールはどの言語で作成されていますか。 
+* モジュールはどの言語で作成されていますか。
 * モジュールで処理されるデータはどのくらいですか。
 * モジュールには、ワークロードを加速するための特殊なハードウェアが必要ですか。
 * ソリューションの望ましいパフォーマンス特性はどのようなものですか。
