@@ -3,12 +3,12 @@ title: MARS エージェントを使用して Windows マシンをバックア�
 description: Azure Backup Microsoft Recovery Services (MARS) エージェントを使用して、Windows マシンをバックアップします。
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.openlocfilehash: c6e5ea1ed1ec9dd922793dfc6834238c431ddc38
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 990929cc95d1c25117873ca39415d33370456b91
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "76290871"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025539"
 ---
 # <a name="back-up-windows-machines-with-the-azure-backup-mars-agent"></a>Azure Backup MARS エージェントを使用して Windows マシンをバックアップする
 
@@ -215,10 +215,10 @@ Azure Backup では、コンテナーのストレージが自動的に処理さ�
         -   月の最後の週の土曜日の午前 0 時と午後 6 時に作成されるバックアップは 12 か月間保持されます。
         -   3 月の最後の週の土曜日に作成されるバックアップは 10 年間保持されます。
 
-    ![保持の例](./media/backup-configure-vault/retention-example.png)
+        ![保持の例](./media/backup-configure-vault/retention-example.png)
 
 
-11. **[初期バックアップの種類の選択]** で、初回のバックアップをネットワーク経由で実行するか、オフライン バックアップを使用するかを決定します (オフライン バックアップの詳細については、この[記事](backup-azure-backup-import-export.md)を参照してください)。 ネットワーク経由で初回のバックアップを実行するには、 **[自動でネットワーク経由]** を選択し、 **[次へ]** をクリックします。
+11. **[初期バックアップの種類の選択]** で、初回のバックアップをネットワーク経由で実行するか、オフライン バックアップを使用するかを決定します (オフライン バックアップの詳細については、この[記事](offline-backup-azure-data-box.md)を参照してください)。 ネットワーク経由で初回のバックアップを実行するには、 **[自動でネットワーク経由]** を選択し、 **[次へ]** をクリックします。
 
     ![初回バックアップの種類](./media/backup-azure-manage-mars/choose-initial-backup-type.png)
 
@@ -245,7 +245,7 @@ Azure Backup では、コンテナーのストレージが自動的に処理さ�
 5. Azure データセンターでは、ディスク データが Azure ストレージ アカウントにコピーされます。
 6. Azure Backup によってストレージ アカウントからコンテナーにデータがコピーされ、増分バックアップがスケジュールされます。
 
-オフライン シード処理の[詳細](backup-azure-backup-import-export.md)をご確認ください。
+オフライン シード処理の[詳細](offline-backup-azure-data-box.md)をご確認ください。
 
 ### <a name="enable-network-throttling"></a>ネットワーク調整の有効化
 

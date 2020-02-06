@@ -4,15 +4,15 @@ description: この記事では、IT Service Management Connector (ITSMC) の概
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: JYOTHIRMAISURI
+author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 83d5b7ffb49a08d02d5dd34ad561ce725ead7e0e
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 68aff01ea541a24be1f8d526fecbb6a9d2c30086
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289137"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990676"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>IT Service Management Connector を使用して Azure を ITSM ツールに接続する
 
@@ -191,7 +191,7 @@ ServiceDeskWorkItemType_s="Incident"
 - 割当先
 - カテゴリ
 - タイトル
-- [説明]
+- 説明
 - 作成日
 - 終了日
 - 解決日
@@ -211,7 +211,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - source
 - 割当先
 - タイトル
-- 種類
+- Type
 - カテゴリ
 - State
 - エスカレーション
@@ -229,7 +229,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - 終了予定日
 - 作業開始日
 - 作業終了日
-- [説明]
+- 説明
 - Computer
 
 ## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow インシデントの出力データ
@@ -248,7 +248,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | AssignedTo_s | 割り当て先  |
 | Category_s | カテゴリ |
 | Title_s|  簡単な説明 |
-| Description_s|  メモ |
+| Description_s|  Notes |
 | CreatedDate_t|  開始済み |
 | ClosedDate_t| closed|
 | ResolvedDate_t|解決済み|
@@ -263,7 +263,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ClosedBy_s | 終了者 |
 | AssignedTo_s | 割り当て先  |
 | Title_s|  簡単な説明 |
-| Type_s|  種類 |
+| Type_s|  Type |
 | Category_s|  カテゴリ |
 | CRState_s|  State|
 | Urgency_s|  緊急度 |
@@ -276,7 +276,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | PlannedEndDate_t  |   終了予定日 |
 | WorkStartDate_t  | 実際の開始日 |
 | WorkEndDate_t | 実際の終了日|
-| Description_s | [説明] |
+| Description_s | 説明 |
 | Computer  | 構成項目 |
 
 
