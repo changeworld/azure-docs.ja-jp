@@ -90,7 +90,7 @@ SSO 管理クラスは、技術プロファイルの `<UseTechnicalProfileForSes
 
 技術プロファイルには 2 つのメタデータ項目があります。
 
-| Item | Default value | 指定できる値 | [説明]
+| Item | Default value | 指定できる値 | 説明
 | --- | --- | --- | --- |
 | IncludeSessionIndex | true | true/false | セッション インデックスを格納する必要があることをプロバイダーに指示します。 |
 | RegisterServiceProviders | true | true/false | アサーションが発行された SAML サービス プロバイダーすべてをプロバイダーが登録する必要があることを示します。 |
