@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/22/2019
-ms.openlocfilehash: 52314f0802acd6a296177d53ee9babb133172761
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5f54605dd5b43236a75fe73aa3b47a4e619530a1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407509"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765803"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights for ASP.NET Core アプリケーション
 
@@ -416,7 +416,7 @@ Application Insights でのカスタム データ レポートについては、
 
 はい。 SDK の機能サポートは、次の例外を除き、すべてのプラットフォームで同じです。
 
-* パフォーマンス カウンターは、Windows でのみサポートされます。
+* [パフォーマンス カウンター](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters)は Windows でのみサポートされているため、この SDK を使って Linux 上の[イベント カウンター](https://docs.microsoft.com/azure/azure-monitor/app/eventcounters)を収集します。 ほとんどのメトリックは同じです。
 * `ServerTelemetryChannel` が既定で有効になっていても、アプリケーションが Linux または MacOS で実行されているときは、ネットワークに問題がある場合に、チャネルによってテレメトリを一時的に保持するためのローカル ストレージ フォルダーが自動的に作成されることはありません。 この制限のため、ネットワークやサーバーに一時的に問題が発生すると、テレメトリが失われます。 この問題を回避するには、チャネル用のローカル フォルダーを構成します。
 
 ```csharp

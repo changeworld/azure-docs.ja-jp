@@ -1,5 +1,5 @@
 ---
-title: Machine Learning service で R を使用してクエリを実行する
+title: Machine Learning Services で R を使用してデータベースを照会する (プレビュー)
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
 description: このトピックでは、Azure SQL Database Machine Learning service で R スクリプトを使用して、Azure SQL データベースに接続し、Transact-SQL ステートメントを使用してデータベースに照会する方法について説明します。
 services: sql-database
@@ -13,64 +13,39 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: a54b538247f81ea3bb0ea70a2af374158bd9e2ff
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7103afc29e4021d950d9a3634b190f4439ecfe8d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826974"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768512"
 ---
 # <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>クイック スタート:Machine Learning service で R を使用して Azure SQL データベースにクエリを実行する (プレビュー)
 
-このクイック スタートでは、Machine Learning Services で [R](https://www.r-project.org/) を使用して Azure SQL データベースに接続し、Transact-SQL ステートメントを使用してデータを照会する方法について説明します。 Machine Learning Services は、データベース内の R スクリプトを実行するために使用される、Azure SQL Database の機能です。 詳細については、「[Azure SQL Database Machine Learning Services と R (プレビュー)](sql-database-machine-learning-services-overview.md)」を参照してください。
+このクイックスタートでは、Machine Learning Services で R を使用して Azure SQL データベースに接続し、T-SQL ステートメントを使用してデータを照会します。
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、以下のものが必要です。
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- [Azure SQL データベース](sql-database-single-database-get-started.md)
+- R が有効な [Machine Learning Services](sql-database-machine-learning-services-overview.md)。 [プレビューにサインアップしてください](sql-database-machine-learning-services-overview.md#signup)。
+- [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
-- Azure SQL データベース。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
+> [!IMPORTANT]
+> この記事のスクリプトは、**Adventure Works** データベースを使用するように記述されています。
 
-<!-- Managed instance is not supported during the preview
-  || Single database | Managed instance |
-  |:--- |:--- |:---|
-  | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
-  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Configure | [Server-level IP firewall rule](sql-database-server-level-firewall-rule.md) | [Connectivity from a VM](sql-database-managed-instance-configure-vm.md) |
-  ||| [Connectivity from on-site](sql-database-managed-instance-configure-p2s.md) |
-  | Load data | Adventure Works loaded per quickstart | [Restore Wide World Importers](sql-database-managed-instance-get-started-restore.md) |
-  ||| Restore or import Adventure Works from [BACPAC](sql-database-import.md) file from [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) |
-  |||
--->
+> [!NOTE]
+> パブリック プレビュー期間中は、Microsoft がお客様のオンボードを行い、既存のデータベースまたは新しいデータベースに対して機械学習を有効にします。ただし、マネージド インスタンスのデプロイ オプションは現在サポートされていません。
 
-  || 単一データベース |
-  |:--- |:--- |
-  | 作成| [ポータル](sql-database-single-database-get-started.md) |
-  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) |
-  | 構成 | [サーバーレベルの IP ファイアウォール規則](sql-database-server-level-firewall-rule.md) |
-  | データを読み込む | クイック スタートごとに読み込まれる Adventure Works |
-  |||
-
-  > [!NOTE]
-  > Azure SQL Database Machine Learning Services と R のプレビュー期間中は、マネージド インスタンスのデプロイ オプションがサポートされません。
-
-<!-- Managed instance is not supported during the preview
-  > [!IMPORTANT]
-  > The scripts in this article are written to use the Adventure Works database. With a managed instance, you must either import the Adventure Works database into an instance database or modify the scripts in this article to use the Wide World Importers database.
--->
-
-- Machine Learning Services (R を含む) が有効になっていること。 パブリック プレビュー期間中は、Microsoft がお客様のオンボードを行い、既存のデータベースまたは新しいデータベースに対して機械学習を有効にします。 「[Sign up for the preview (プレビューにサインアップする)](sql-database-machine-learning-services-overview.md#signup)」の手順に従ってください。
-
-- 最新の [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS)。 他のデータベース管理またはクエリ ツールを使用して R スクリプトを実行することはできますが、このクイック スタートでは、SSMS を使用します。
+Machine Learning Services と R は、データベース内の R スクリプトを実行するために使用される、Azure SQL Database の機能です。 詳細については、[R プロジェクト](https://www.r-project.org/)に関するページを参照してください。
 
 ## <a name="get-sql-server-connection-information"></a>SQL サーバーの接続情報を取得する
 
 Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名またはホスト名、データベース名、およびログイン情報が必要になります。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 2. **[SQL データベース]** または **[SQL マネージド インスタンス]** ページに移動します。
 
@@ -84,7 +59,7 @@ Azure SQL データベースに接続するために必要な接続情報を取�
 
 1. R スクリプト全体を [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) ストアド プロシージャに渡します。
 
-   スクリプトは `@script` 引数で渡します。 `@script` 引数の内容は有効な R コードである必要があります。
+   このスクリプトは、`@script` 引数を通して渡されます。 `@script`引数内のすべては、有効な R コードである必要があります。
    
    >[!IMPORTANT]
    >この例のコードでは、サンプル データ AdventureWorksLT を使用します。これは、データベースの作成時にソースとして選択できます。 データベースに別のデータがある場合は、SELECT クエリで独自のデータベースからのテーブルを使用します。 
@@ -97,7 +72,7 @@ Azure SQL データベースに接続するために必要な接続情報を取�
     ```
 
    > [!NOTE]
-   > なんらかのエラーが発生した場合は、お使いの SQL データベースで Machine Learning Services のパブリック プレビューと R が有効になっていない可能性があります。 前記の「[前提条件](#prerequisites)」をご覧ください。
+   > なんらかのエラーが発生した場合は、お使いの SQL データベースで Machine Learning Services のパブリック プレビューと R が有効になっていない可能性があります。 前述の「[前提条件](#prerequisites)」を参照してください。
 
 ## <a name="run-the-code"></a>コードの実行
 
@@ -105,7 +80,7 @@ Azure SQL データベースに接続するために必要な接続情報を取�
 
 1. 上位 20 カテゴリ/製品の行が **[メッセージ]** ウィンドウに返されることを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [最初の Azure SQL データベースの設計](sql-database-design-first-database.md)
 - [Azure SQL Database の Machine Learning Services と R (プレビュー)](sql-database-machine-learning-services-overview.md)

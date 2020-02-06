@@ -94,21 +94,17 @@
       href: user-help-device-remediation.md
 - name: マイ アプリ ポータルのヘルプ
   items:
-    - name: マイ アプリ ポータルにアクセスして使用する
+    - name: マイ アプリ ポータルにサインインして使用する
       href: my-apps-portal-end-user-access.md
     - name: プロファイルとアカウント情報を更新する
       href: my-apps-portal-end-user-update-profile.md
     - name: グループ情報を更新する
       href: my-apps-portal-end-user-groups.md
+    - name: コレクションを使用してアプリを整理する
+      href: my-applications-portal-workspaces.md
+    - name: アプリのアクセス許可の編集または取り消し
+      href: my-applications-portal-permissions-saved-accounts.md
     - name: 自分のアクセス レビューを実行する
       href: my-apps-portal-end-user-access-reviews.md
     - name: 問題のトラブルシューティング
       href: my-apps-portal-end-user-troubleshoot.md
-- name: マイ アプリ (プレビュー) ポータルのヘルプ
-  items:
-    - name: マイ アプリ ポータルにアクセスして使用する
-      href: my-applications-portal-access.md
-    - name: ワークスペースにアクセスして使用する
-      href: my-applications-portal-workspaces.md
-    - name: アプリのアクセス許可の編集または取り消し
-      href: my-applications-portal-permissions-saved-accounts.md

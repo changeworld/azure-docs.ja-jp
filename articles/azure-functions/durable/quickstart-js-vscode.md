@@ -5,12 +5,12 @@ author: ColbyTresness
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.reviewer: azfuncdf, cotresne
-ms.openlocfilehash: 94ba2830824c4a918e9451a9fc5140d422110370
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b0a1d1a9305f6de2a072ee1ded310d8de174436b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231312"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845713"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>JavaScript で最初の Durable Functions を作成する
 
@@ -38,7 +38,31 @@ ms.locfileid: "74231312"
 
 [!INCLUDE [functions-install-vs-code-extension](../../../includes/functions-install-vs-code-extension.md)]
 
-[!INCLUDE [functions-create-function-app-vs-code](../../../includes/functions-create-function-app-vs-code.md)]
+## <a name="create-an-azure-functions-project"></a>ローカル プロジェクトを作成する 
+
+このセクションでは、Visual Studio Code を使用して、ローカル Azure Functions プロジェクトを作成します。 
+
+1. Visual Studio Code で、F1 キーを押してコマンド パレットを開きます。 コマンド パレットで、`Azure Functions: Create new project...` を検索して選択します。
+
+1. プロジェクト ワークスペースのディレクトリの場所を選択し、 **[選択]** をクリックします。
+
+    > [!NOTE]
+    > これらの手順は、ワークスペースの外部で実行するように設計されています。 ここでは、ワークスペースに含まれるプロジェクト フォルダーは選択しないでください。
+
+1. ご希望の言語に関して、プロンプトに従って次の情報を入力します。
+
+    | Prompt | Value | [説明] |
+    | ------ | ----- | ----------- |
+    | Select a language for your function app project (関数アプリ プロジェクトの言語を選択してください) | JavaScript | ローカル Node.js 関数プロジェクトを作成します。 |
+    | Select a version (バージョンを選択してください) | Azure Functions v2 | このオプションが表示されるのは、Core Tools がまだインストールされていない場合だけです。 その場合、アプリの初回実行時に Core Tools がインストールされます。 |
+    | Select a template for your project's first function (プロジェクトの最初の関数のテンプレートを選択してください) | HTTP トリガー | 新しい関数アプリで HTTP トリガー関数を作成します。 |
+    | Provide a function name (関数名を指定してください) | HttpTrigger | Enter キーを押して既定の名前を使用します。 |
+    | 承認レベル | Function | `function` 承認レベルでは、関数の HTTP エンドポイントを呼び出す際にアクセス キーの指定が必須となります。 これには、セキュリティで保護されていないエンドポイントへのアクセスを難しくする効果があります。 詳細については、「[承認キー](../functions-bindings-http-webhook.md#authorization-keys)」を参照してください。  |
+    | Select how you would like to open your project (プロジェクトを開く方法を選択してください) | Add to workspace (ワークスペースに追加) | 現在のワークスペースに関数アプリを作成します。 |
+
+Azure Functions Core Tools は、必要に応じて Visual Studio Code によりインストールされます。 また、関数アプリ プロジェクトが新しいワークスペースに作成されます。 このプロジェクトには、[host.json](../functions-host-json.md) および [local.settings.json](../functions-run-local.md#local-settings-file) 構成ファイルが含まれています。 さらに、[function.json 定義ファイル](../functions-reference-node.md#folder-structure)と [index.js ファイル](../functions-reference-node.md#exporting-a-function) (関数コードを含む Node.js ファイル) の格納先となる HttpExample フォルダーも作成されます。
+
+また、ルート フォルダーには、package.json ファイルが作成されます。
 
 ## <a name="install-the-durable-functions-npm-package"></a>Durable Functions npm パッケージをインストールする
 
@@ -153,7 +177,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
 2. HTTP 要求のこの新しい URL をブラウザーのアドレス バーに貼り付けます。 以前の発行済みアプリの使用時と同じ状態応答を受け取るはずです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Visual Studio Code を使用して、JavaScript の Durable Functions アプリを作成して発行しました。
 

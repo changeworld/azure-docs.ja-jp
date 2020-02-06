@@ -1,6 +1,6 @@
 ---
 title: AMQP 1.0 での Azure Service Bus と .NET | Microsoft Docs
-description: AMQP で .NET から Azure Service Bus を使用する
+description: この記事では、AMQP (Advanced Messaging Queuing Protocol) を使用して .NET アプリケーションから Azure Service Bus を使用する方法について説明します。
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 82301a17bb461b6d8733d5f046fe791ffbcf3ecb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 536c315077cb74a1dfa8db457f0f0b3725edf7a1
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60749259"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759249"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>AMQP 1.0 で .NET から Service Bus を使用する
 
@@ -49,13 +49,13 @@ AMQP 1.0 は、Service Bus パッケージ バージョン 2.1 以降でサポ�
 
 `Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=Amqp`
 
-ここで、`namespace` と `SAS key` は、Service Bus 名前空間を作成するときに [Azure Portal][Azure portal] から取得します。 詳細については、「[Azure Portal を使用して Service Bus 名前空間を作成する][Create a Service Bus namespace using the Azure portal]」を参照してください。
+`namespace` と `SAS key` は、Service Bus 名前空間を作成するときに、[Azure portal][Azure portal] から取得します。 詳細については、「[Azure portal を使用して Service Bus 名前空間を作成する][Create a Service Bus namespace using the Azure portal]」を参照してください。
 
 AMQP を使用する場合は、接続文字列に `;TransportType=Amqp` を付加します。 この表記により、クライアント ライブラリに対して、AMQP 1.0 を使用して Service Bus に接続するように通知します。
 
 ## <a name="message-serialization"></a>メッセージのシリアル化
 
-既定のプロトコルを使用する場合、.NET クライアント ライブラリの既定のシリアル化の動作として、クライアント ライブラリと Service Bus サービスの間のトランスポートのために [DataContractSerializer][DataContractSerializer] 型を使用して [BrokeredMessage][BrokeredMessage] インスタンスをシリアル化します。 AMQP トランスポート モードの使用時に、クライアント ライブラリは、[ブローカー メッセージ][BrokeredMessage]を AMQP メッセージにシリアル化するために AMQP 型システムを使用します。 このシリアル化によって、別のプラットフォームで実行されている可能性のある受信側アプリケーション (JMS API を使用して Service Bus にアクセスする Java アプリケーションなど) で、メッセージを受信して解釈できるようになります。
+既定のプロトコルを使用する場合、.NET クライアント ライブラリの既定のシリアル化の動作として、クライアント ライブラリと Service Bus サービスの間のトランスポートのために [DataContractSerializer][DataContractSerializer] 型を使用して [BrokeredMessage][BrokeredMessage] インスタンスをシリアル化します。 AMQP トランスポート モードを使用すると、クライアント ライブラリでは、[ブローカー メッセージ][BrokeredMessage]を AMQP メッセージにシリアル化するために、AMQP 型システムが使用されます。 このシリアル化によって、別のプラットフォームで実行されている可能性のある受信側アプリケーション (JMS API を使用して Service Bus にアクセスする Java アプリケーションなど) で、メッセージを受信して解釈できるようになります。
 
 [BrokeredMessage][BrokeredMessage] インスタンスを構築すると、メッセージの本文として機能する .NET オブジェクトをパラメーターとしてコンストラクターに提供できます。 AMQP プリミティブ型にマップできるオブジェクトの場合、本文は AMQP データ型にシリアル化されます。 オブジェクトを AMQP プリミティブ型 (つまり、アプリケーションによって定義されているカスタム型) に直接マップできない場合、オブジェクトは [DataContractSerializer][DataContractSerializer] を使用してシリアル化され、シリアル化されたバイトが AMQP データ メッセージで送信されます。
 
@@ -63,14 +63,14 @@ AMQP を使用する場合は、接続文字列に `;TransportType=Amqp` を付�
 
 | .NET 本文のオブジェクト型 | 対応する AMQP の型 | AMQP 本文セクションの型 |
 | --- | --- | --- |
-| bool |ブール値 |AMQP 値 |
+| [bool] |boolean |AMQP 値 |
 | byte |ubyte |AMQP 値 |
 | ushort |ushort |AMQP 値 |
 | uint |uint |AMQP 値 |
 | ulong |ulong |AMQP 値 |
 | sbyte |byte |AMQP 値 |
 | short |short |AMQP 値 |
-| int |int |AMQP 値 |
+| INT |INT |AMQP 値 |
 | long |long |AMQP 値 |
 | float |float |AMQP 値 |
 | double |double |AMQP 値 |
@@ -78,7 +78,7 @@ AMQP を使用する場合は、接続文字列に `;TransportType=Amqp` を付�
 | char |char |AMQP 値 |
 | DateTime |timestamp |AMQP 値 |
 | Guid |uuid |AMQP 値 |
-| byte[] |バイナリ |AMQP 値 |
+| byte[] |binary |AMQP 値 |
 | string |string |AMQP 値 |
 | System.Collections.IList |list |AMQP 値: コレクションに含まれるアイテムとして指定できるのは、この表で定義されているアイテムのみです。 |
 | System.Array |array |AMQP 値: コレクションに含まれるアイテムとして指定できるのは、この表で定義されているアイテムのみです。 |
@@ -110,9 +110,9 @@ Service Bus .NET API の動作は、AMQP を使用する場合と既定のプロ
 * **[MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)** : リンクに適用する初期のクレジットを制御します。 既定値は 0 です。
 * **[MessagingFactorySettings.AmqpTransportSettings.MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)** : 接続オープン時のネゴシエーションで提供される最大 AMQP フレーム サイズを制御します。 既定値は 65,536 バイトです。
 * **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)** : 転送がバッチ可能である場合、この値でディスポジションを送信する場合の最大遅延が決まります。 既定では、送信側/受信側によって継承されます。 個々の送信側/受信側は、既定値 (20 ミリ秒) をオーバーライドできます。
-* **[MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)** : AMQP 接続を SSL 接続で確立するかどうかを制御します。 既定値は **true** です。
+* **[MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)** : AMQP 接続を SSL 接続で確立するかどうかを制御します。 既定値は **true**です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 さらに詳しい情報については、 次のリンク先を参照してください。
 

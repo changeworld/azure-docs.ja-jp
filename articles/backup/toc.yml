@@ -252,12 +252,18 @@
           href: backup-azure-backup-cloud-as-tape.md
     - name: オフライン バックアップ
       items:
-        - name: オフライン バックアップの構成
+        - name: 概要
+          href: offline-backup-overview.md
+        - name: Azure Data Box を使用したオフライン バックアップ
+          href: offline-backup-azure-data-box.md
+        - name: Import/Export を使用したオフライン バックアップ (MARS)
           href: backup-azure-backup-import-export.md
-        - name: DPM と Azure Backup Server のオフライン バックアップ
+        - name: Import/Export を使用したオフライン バックアップ (DPM/MABS)
           href: backup-azure-backup-server-import-export-.md
     - name: 監視とアラート
       items:
+        - name: バックアップ エクスプローラーの使用
+          href: monitor-azure-backup-with-backup-explorer.md
         - name: Azure ポータルの使用
           href: backup-azure-monitoring-built-in-monitor.md
         - name: Azure Monitor の使用

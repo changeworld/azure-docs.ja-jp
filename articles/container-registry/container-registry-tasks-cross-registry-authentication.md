@@ -2,19 +2,19 @@
 title: ACR タスクからのクロスレジストリ認証
 description: Azure リソースのマネージド ID を使用して、別のプライベート Azure コンテナー レジストリにアクセスできるように、Azure Container Registry タスク (ACR タスク) を構成します
 ms.topic: article
-ms.date: 07/12/2019
-ms.openlocfilehash: 3dc4792f196ab7553f3167983ce34850669fa5bc
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/14/2020
+ms.openlocfilehash: 47b2a50784cf56b089fea0981e5a06d581b8ba3a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456185"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842497"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>ACR タスクでの Azure マネージド ID を使用したクロスレジストリ認証 
 
-[ACR タスク](container-registry-tasks-overview.md)で、[Azure リソースのマネージド ID を有効にする](container-registry-tasks-authentication-managed-identity.md)ことができます。 タスクでその ID を使用して、他の Azure リソースにアクセスできます。このとき、資格情報の指定や管理は不要です。 
+[ACR タスク](container-registry-tasks-overview.md)で、[Azure リソースのマネージド ID を有効にする](container-registry-tasks-authentication-managed-identity.md)ことができます。 その ID をタスクで使用すれば、資格情報を渡したり管理したりしなくても、他の Azure リソースにアクセスすることができます。 
 
-この記事では、タスクの実行のために使用されるレジストリとは異なるレジストリからイメージをプルするタスクでマネージド ID を有効にする方法について説明します。
+この記事では、タスクの実行に使用されるレジストリとは異なるレジストリからイメージをプルするためのタスクでマネージド ID を有効にする方法について説明します。
 
 Azure リソースを作成するために、この記事では Azure CLI バージョン 2.0.68 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
 
@@ -55,16 +55,16 @@ az acr build --image baseimages/node:9-alpine --registry mybaseregistry --file D
 この例の[マルチステップ タスク](container-registry-tasks-multi-step.md)のステップは [YAML ファイル](container-registry-tasks-reference-yaml.md)で定義されています。 ローカル作業ディレクトリに `helloworldtask.yaml` という名前のファイルを作成し､次の内容を貼り付けます。 基本レジストリのサーバー名を使用してビルド ステップで `REGISTRY_NAME` の値を更新します。
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
 # Replace mybaseregistry with the name of your registry containing the base image
-  - build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}}  https://github.com/Azure-Samples/acr-build-helloworld-node.git -f Dockerfile-app --build-arg REGISTRY_NAME=mybaseregistry.azurecr.io
-  - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
+  - build: -t $Registry/hello-world:$ID  https://github.com/Azure-Samples/acr-build-helloworld-node.git -f Dockerfile-app --build-arg REGISTRY_NAME=mybaseregistry.azurecr.io
+  - push: ["$Registry/hello-world:$ID"]
 ```
 
 ビルド ステップでは、[Azure-Samples/acr-build-helloworld-node](https://github.com/Azure-Samples/acr-build-helloworld-node.git) リポジトリ内の `Dockerfile-app` ファイルを使用してイメージをビルドします。 `--build-arg` で基本レジストリを参照して基本イメージをプルします。 ビルドが成功すると、タスクを実行するために使用されるレジストリにイメージがプッシュされます。
 
-## <a name="option-1-create-task-with-user-assigned-identity"></a>オプション 1:ユーザー割り当て ID を使用してタスクを作成する
+## <a name="option-1-create-task-with-user-assigned-identity"></a>オプション 1: ユーザー割り当て ID を使用してタスクを作成する
 
 このセクションの手順では、タスクを作成してユーザー割り当て ID を有効にします。 システム割り当て ID を有効にする場合は、「[オプション 2: システム割り当て ID を使用してタスクを作成する](#option-2-create-task-with-system-assigned-identity)」を参照してください。 
 
@@ -116,12 +116,15 @@ baseregID=$(az acr show --name mybaseregistry --query id --output tsv)
 [az role assignment create][az-role-assignment-create] コマンドを使用して、基本レジストリに対する `acrpull` ロールを ID に割り当てます。 このロールには、レジストリからイメージをプルするためのアクセス許可のみがあります。
 
 ```azurecli
-az role assignment create --assignee $principalID --scope $baseregID --role acrpull
+az role assignment create \
+  --assignee $principalID \
+  --scope $baseregID \
+  --role acrpull
 ```
 
 ## <a name="add-target-registry-credentials-to-task"></a>ターゲット レジストリの資格情報をタスクに追加する
 
-次に、基本レジストリで認証できるようにするために、[az acr task credential add][az-acr-task-credential-add] コマンドを使用して、ID の資格情報をタスクに追加します。 タスクで有効にしたマネージド ID の種類に対応するコマンドを実行します。 ユーザー割り当て ID を有効にした場合は、ID のクライアント ID を指定して `--use-identity` を渡します。 システム割り当て ID を有効にした場合は、`--use-identity [system]` を渡します。
+ここで、[az acr task credential add][az-acr-task-credential-add] コマンドを使用して、基本レジストリで ID の資格情報を使用して認証するためのタスクを有効にします。 タスクで有効にしたマネージド ID の種類に対応するコマンドを実行します。 ユーザー割り当て ID を有効にした場合は、ID のクライアント ID を指定して `--use-identity` を渡します。 システム割り当て ID を有効にした場合は、`--use-identity [system]` を渡します。
 
 ```azurecli
 # Add credentials for user-assigned identity to the task
@@ -210,7 +213,7 @@ az acr repository show-tags --name myregistry --repository hello-world --output 
 cf10
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ACR タスクにおけるマネージド ID の有効化](container-registry-tasks-authentication-managed-identity.md)について学習する。
 * [ACR タスクの YAML 参照](container-registry-tasks-reference-yaml.md)に関するページを参照する

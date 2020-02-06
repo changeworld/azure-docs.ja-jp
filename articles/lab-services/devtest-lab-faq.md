@@ -1,6 +1,6 @@
 ---
 title: Azure DevTest Labs に関する FAQ | Microsoft Docs
-description: Azure DevTest Labs についてよく寄せられる質問の回答を示します。
+description: この記事では、Azure DevTest Labs に関連する、よく寄せられる質問 (FAQ) の一部の回答を示します。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2019
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: afd6ded6dc027e118694078f8b8eeadfe8dd80e4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: de99e9b1e4adceaf08beaf8ad3b5ea114b31a586
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981476"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760523"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs に関する FAQ
 Azure DevTest Labs について特に多く寄せられる質問にお答えします。
@@ -285,7 +285,7 @@ foreach($labVM in $labVMs)
 
 ラボに関連付けられているコピー先ストレージ アカウントを検索するには、次の手順に従います。
 
-1.  [Azure portal](https://portal.azure.com) にサインインする
+1.  [Azure portal](https://portal.azure.com) にサインインします。
 2.  左側のメニューの **[リソース グループ]** を選択します。
 3.  ラボに関連付けられているリソース グループを見つけて選択します。
 4.  **[概要]** で、いずれかのストレージ アカウントを選択します。

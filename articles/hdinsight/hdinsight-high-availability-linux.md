@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 68f4eb4fbad2a571e078cb9aedcfd56c80ffe054
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 8c3e377faef4e18bff01fd7001751d1f1e347b8d
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747864"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030874"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight における Apache Hadoop クラスターの可用性と信頼性
 
@@ -64,7 +64,7 @@ Nimbus ノードは、Apache Storm クラスターで使用できます。 Nimbu
 
 パブリック ゲートウェイ経由のアクセスは、ポート 443 (HTTPS)、22、および 23 に制限されます。
 
-|Port |[説明] |
+|Port |説明 |
 |---|---|
 |443|ヘッド ノードでホストされている Ambari やその他の Web UI または REST API にアクセスするために使用されます。|
 |22|SSH でプライマリ ヘッド ノードまたはエッジ ノードにアクセスするために使用されます。|
@@ -97,7 +97,7 @@ Ambari REST API の使用方法の詳細については、[Apache Ambari REST AP
 
 インターネット経由で直接アクセスできないノードには、次の方法を使用して接続できます。
 
-|方法 |[説明] |
+|Method |説明 |
 |---|---|
 |SSH|SSH を使用してヘッド ノードに接続すると、ヘッド ノードから SSH を使用してクラスター内の他のノードに接続できます。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するドキュメントを参照してください。|
 |SSH トンネル|インターネットに公開されていないノードのいずれかでホストされている Web サービスにアクセスする必要がある場合は、SSH トンネルを使用する必要があります。 詳細については、[HDInsight での SSH トンネリングの使用](hdinsight-linux-ambari-ssh-tunnel.md)に関するドキュメントを参照してください。|
@@ -119,7 +119,7 @@ Ambari ページにアクセスすると、インストールされているサ�
 
 次のアラートは、クラスターの可用性を監視するのに役立ちます。
 
-| アラート名                               | [説明]                                                                                                                                                                                  |
+| アラート名                               | 説明                                                                                                                                                                                  |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | メトリック監視ステータス                    | このアラートは、監視ステータス スクリプトによって算出されるメトリック監視プロセスのステータスを示します。                                                                                   |
 | Ambari エージェントのハートビート                   | サーバーがエージェントとの接続を失った場合、このアラートがトリガーされます。                                                                                                                        |
@@ -270,7 +270,7 @@ Ambari Web UI から、ログ (例: YARN) を表示するサービスを選択�
 
 * **Azure ポータル**:クラスターを作成するときに、クラスターによって使用されるノードのサイズを設定できます。
 
-    ![ノード サイズの選択画面を示しているクラスター作成ウィザードの画像](./media/hdinsight-high-availability-linux/hdinsight-headnodesize.png)
+    ![ノード サイズの選択画面を示しているクラスター作成ウィザードの画像](./media/hdinsight-high-availability-linux/azure-portal-cluster-configuration-pricing-hadoop.png)
 
 * **Azure CLI**:[`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) コマンドを使用している場合は、`--headnode-size`、`--workernode-size`、および `--zookeepernode-size` パラメーターを使用して、ヘッド、ワーカー、および ZooKeeper ノードのサイズを設定できます。
 

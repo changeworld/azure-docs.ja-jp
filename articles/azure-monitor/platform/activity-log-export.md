@@ -5,20 +5,21 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 0e5780561df121d3d5af3a9b754d774cc7d6cf76
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 1c2047fc4b92ecd5776cb835a2f2138c25f5cb65
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969655"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845468"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure アクティビティ ログをストレージまたは Azure Event Hubs にエクスポートする
 
-> [!WARNING]
-> リソース ログの収集方法と同様に、診断設定を使用してアクティビティ ログを Log Analytics ワークスペースに収集できるようになりました。 「[Collect and analyze Azure activity logs in Log Analytics workspace in Azure Monitor (Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する)](diagnostic-settings-legacy.md)」を参照してください。
+> [!IMPORTANT]
+> Azure アクティビティ ログを Azure Storage と Azure Event Hubs に送信する方法が[診断設定](diagnostic-settings.md)に変更されました。 この記事では、非推奨となる予定の従来の方法について説明します。 比較のために、[Azure アクティビティ ログの収集とエクスポート](diagnostic-settings-legacy.md)の更新に関する記事を参照してください。
+
 
 [Azure アクティビティ ログ](platform-logs-overview.md)は、Azure サブスクリプションで発生したサブスクリプションレベルのイベントを分析します。 Azure portal でアクティビティ ログを表示したり、これを Azure Monitor によって収集された他のデータで分析できる Log Analytics ワークスペースにコピーしたりするだけでなく、ログ プロファイルを作成してアクティビティ ログを Azure ストレージ アカウントにアーカイブしたり、これをイベント ハブにストリーミングしたりすることができます。
 
@@ -35,9 +36,10 @@ ms.locfileid: "75969655"
 ### <a name="storage-account"></a>ストレージ アカウント
 アクティビティ ログをアーカイブしていて、まだストレージ アカウントを持っていない場合は、[作成する](../../storage/common/storage-account-create.md)必要があります。 監視データへのアクセスをさらに制御するために他の非監視データが格納されている、既存のストレージ アカウントは使用しないでください。 ただし、ログとメトリックもストレージ アカウントにアーカイブする場合は、中央の場所にすべての監視データを保持するために、同じアカウントを使用することができます。
 
-設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っている限り、ストレージ アカウントは、ログを出力するのと同じサブスクリプションに属している必要はありません。
-> [!NOTE]
->  現在、セキュリティで保護された仮想ネットワークの背後にあるストレージ アカウントにデータをアーカイブすることはできません。
+設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っている限り、ストレージ アカウントは、ログを出力するのと同じサブスクリプションに属している必要はありません。 
+
+> [!TIP]
+> セキュリティで保護されたネットワーク内にあるストレージ アカウントへのアクセスの提供については、「[Azure Storage ファイアウォールおよび仮想ネットワークを構成する](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)」を参照してください。
 
 ### <a name="event-hubs"></a>Event Hubs
 アクティビティ ログをイベント ハブに送信していて、まだイベント ハブを持っていない場合は、[作成する](../../event-hubs/event-hubs-create.md)必要があります。 この Event Hubs 名前空間にアクティビティ ログ イベントをストリーミングしたことがある場合は、そのイベント ハブが再利用されます。
@@ -72,9 +74,14 @@ ms.locfileid: "75969655"
 
 Azure portal の **[イベント ハブにエクスポート]** オプションを使用してログ プロファイルを作成または編集します。
 
-1. Azure portal の **[モニター]** メニューから、 **[イベント ハブにエクスポート]** を選択します。
+1. Azure portal の **[Azure Monitor]** メニューで、 **[アクティビティ ログ]** を選択します。
+3. **[診断設定]** をクリックします。
 
-    ![ポータルの [エクスポート] ボタン](media/activity-log-export/portal-export.png)
+   ![診断設定](media/diagnostic-settings-subscription/diagnostic-settings.png)
+
+4. 従来のエクスペリエンスについては、紫色のバナーをクリックします。
+
+    ![従来のエクスペリエンス](media/diagnostic-settings-subscription/legacy-experience.png)
 
 3. ブレードが表示されたら、次のように指定します。
    * エクスポートするイベントが含まれるリージョン。 アクティビティ ログはグローバルな (リージョン別ではない) ログであり、ほとんどのイベントがリージョンと関連付けられていないため、すべてのリージョンを選択して重要なイベントを確実に見逃さないようにする必要があります。
@@ -111,7 +118,7 @@ Azure portal の **[イベント ハブにエクスポート]** オプション�
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | プロパティ | 必須 | [説明] |
+    | プロパティ | Required | Description |
     | --- | --- | --- |
     | Name |はい |ログ プロファイルの名前。 |
     | StorageAccountId |いいえ |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
@@ -154,7 +161,7 @@ Azure portal の **[イベント ハブにエクスポート]** オプション�
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-    | プロパティ | 必須 | [説明] |
+    | プロパティ | Required | [説明] |
     | --- | --- | --- |
     | name |はい |ログ プロファイルの名前。 |
     | storage-account-id |はい |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: anantr
 ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: d1d822a5e7dadffd6be841e51ac407995adba2ea
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: fb8c2c7e25f94c66c8cc8f7768071d508da8d3b5
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552559"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765672"
 ---
 # <a name="common-alert-schema-definitions"></a>共通アラート スキーマ定義
 
@@ -73,7 +73,7 @@ ms.locfileid: "72552559"
 
 ## <a name="essentials"></a>要点
 
-| フィールド | 説明|
+| フィールド | [説明]|
 |:---|:---|
 | alertId | アラート インスタンスを一意に識別する GUID。 |
 | alertRule | そのアラート インスタンスを生成したアラート ルールの名前。 |
@@ -151,7 +151,7 @@ ms.locfileid: "72552559"
 ### <a name="log-alerts"></a>ログ アラート
 
 > [!NOTE]
-> カスタム JSON ペイロードが定義されているログ アラートの場合、共通スキーマを有効にすると、ペイロード スキーマが後述のものに戻ります。 共通スキーマが有効なアラートには、アラートごとに 256 KB の上限サイズがあります。 アラートのサイズがこのしきい値を超える場合、検索結果はログ アラートのペイロードに埋め込まれません。 `IncludedSearchResults` フラグを調べることによって、これを判断できます。 検索結果が含まれない場合は、[Log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/query/get) と組み合わせて検索クエリを使用する必要があります。 
+> カスタムしたメールの件名、またはカスタム JSON ペイロードが定義されているログ アラートの場合、共通スキーマを有効にすると、メールの件名またはペイロード スキーマが後述のものに戻ります。 共通スキーマが有効なアラートには、アラートごとに 256 KB の上限サイズがあります。 アラートのサイズがこのしきい値を超える場合、検索結果はログ アラートのペイロードに埋め込まれません。 `IncludedSearchResults` フラグを調べることによって、これを判断できます。 検索結果が含まれない場合は、[Log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/query/get) と組み合わせて検索クエリを使用する必要があります。 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
@@ -481,7 +481,7 @@ ms.locfileid: "72552559"
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [共通アラート スキーマ](https://aka.ms/commonAlertSchemaDocs)について学習します。
 - [共通アラート スキーマを利用してすべてのアラートを処理するロジック アプリを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations)について学習します。 

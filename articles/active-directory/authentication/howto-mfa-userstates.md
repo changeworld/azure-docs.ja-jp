@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7fadd974fdc572dddb403c25e90246fd92b1989
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 61d7227c57422cfe2228002750ec29bffa385d44
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763234"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756770"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>ユーザーに 2 段階認証を要求する方法
 
@@ -47,7 +47,7 @@ Azure Multi-factor Authentication のユーザー アカウントには、次の
 | Status | [説明] | 非ブラウザー アプリに影響があるか | ブラウザー アプリに影響があるか | 影響を受ける先進認証 |
 |:---:| --- |:---:|:--:|:--:|
 | 無効 | 新しいユーザーの既定の状態は、Azure MFA に登録されていません。 | いいえ | いいえ | いいえ |
-| 有効 | ユーザーは Azure MFA にサインインできますが、登録されていません。 次回のサインイン時に登録することを求められます。 | いいえ。  これらは登録プロセスが完了するまで機能し続けます。 | はい。 セッションの有効期限が切れると、Azure MFA の登録が必要になります。| はい。 アクセス トークンの有効期限が切れると、Azure MFA の登録が必要になります。 |
+| Enabled | ユーザーは Azure MFA にサインインできますが、登録されていません。 次回のサインイン時に登録することを求められます。 | いいえ。  これらは登録プロセスが完了するまで機能し続けます。 | はい。 セッションの有効期限が切れると、Azure MFA の登録が必要になります。| はい。 アクセス トークンの有効期限が切れると、Azure MFA の登録が必要になります。 |
 | 強制 | ユーザーは、Azure MFA にサインインして Azure MFA に対する登録プロセスを完了しています。 | はい。 アプリはアプリ パスワードを必要とします。 | はい。 ログイン時に Azure MFA が必要です。 | はい。 ログイン時に Azure MFA が必要です。 |
 
 ユーザーの状態は、管理者がユーザーをAzure MFA に登録し、ユーザーが登録プロセスを完了したかどうかを反映します。
@@ -63,8 +63,7 @@ Azure Multi-factor Authentication のユーザー アカウントには、次の
 
 1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
 2. *Azure Active Directory* を検索して選択します。 **[ユーザー]**  >  **[すべてのユーザー]** の順に選択します。
-3. **[Multi-Factor Authentication]** を選択します。
-   ![Select Multi-Factor Authentication](./media/howto-mfa-userstates/selectmfa.png)
+3. **[Multi-Factor Authentication]** を選択します。 このメニュー オプションを表示するには、必要に応じて右にスクロールします。 次のスクリーンショット例を選択すると、完全な Azure portal ウィンドウとメニューの場所が表示されます。[![](media/howto-mfa-userstates/selectmfa-cropped.png "Azure AD の [ユーザー] ウィンドウから [Multi-Factor Authentication] を選択します")](media/howto-mfa-userstates/selectmfa.png#lightbox)
 4. 新しいページが開き、ユーザーの状態が表示されます。
    ![多要素認証のユーザーの状態 - スクリーンショット](./media/howto-mfa-userstates/userstate1.png)
 
@@ -88,7 +87,7 @@ Azure Multi-factor Authentication のユーザー アカウントには、次の
 
 [Azure AD PowerShell](/powershell/azure/overview) を使用してユーザーの状態を変更するには、`$st.State` を変更します。 状態は 3 つあります。
 
-* 有効
+* Enabled
 * 強制
 * 無効  
 

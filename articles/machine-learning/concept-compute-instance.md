@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 6bba4414390efa6e07be6c253fe55f1638d414dc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7f7e0c3eef96970c1820783225a4ff59be8113b3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974103"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769113"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスとは
 
@@ -117,7 +117,7 @@ Azure Machine Learning Studio 内のご利用のワークスペースで、 **[�
 
 次の操作を行うことができます。
 
-* コンピューティング インスタンスを作成する。 名前を指定したり、Azure VM の種類 (GPU を含む) を指定したり、SSH アクセスを有効または無効にしたり、必要に応じて仮想ネットワークの設定を構成することができます。 また、統合ノートブック、Azure portal、Resource Manager テンプレート、または Azure Machine Learning SDK からインスタンスを直接作成することもできます。 コンピューティング インスタンスの作成に適用されるリージョンあたりの専用コア数は、Azure Machine Learning コンピューティング クラスターのクォータと統合され、共有されます。
+* コンピューティング インスタンスを作成する。 名前、GPU を含む Azure VM の種類を指定し (VM の種類は作成後に変更できないことに注意してください)、SSH アクセスを有効または無効にし、必要に応じて仮想ネットワークの設定を構成します。 また、統合ノートブック、Azure portal、Resource Manager テンプレート、または Azure Machine Learning SDK からインスタンスを直接作成することもできます。 コンピューティング インスタンスの作成に適用されるリージョンあたりの専用コア数は、Azure Machine Learning コンピューティング クラスターのクォータと統合され、共有されます。
 * コンピューティング インスタンス タブを更新する
 * コンピューティング インスタンスを開始、停止、再起動する
 * コンピューティング インスタンスを削除する

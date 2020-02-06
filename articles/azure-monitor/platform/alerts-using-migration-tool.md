@@ -1,18 +1,18 @@
 ---
 title: 自主的移行ツールを使用して Azure Monitor のクラシック アラートを移行する
 description: 自主的移行ツールを使用してクラシック アラート ルールを移行する方法について説明します。
-author: snehithm
+author: yanivlavi
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.author: snmuvva
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 0c8aa00d069ae54584d8e828dab35c22048f1876
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: c4ebb2e9572f1dcc9ade548a55fc44d7441e5a79
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295538"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705583"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>自主的移行ツールを使用してクラシック アラート ルールを移行する
 
@@ -53,7 +53,7 @@ Azure portal 内でご利用のクラシック アラート ルールの移行�
 
 1. **[新しいルールに移行]** を選択して移行ランディング ページに移動します。 このページには、ご利用のすべてのサブスクリプションとそれらの移行状態の一覧が表示されます。
 
-    ![移行-ランディング](media/alerts-migration/migration-landing.png "ルールを移行する")
+    ![移行のランディング](media/alerts-migration/migration-landing.png "ルールの移行")
 
     ツールを使用して移行できるサブスクリプションはすべて、 **[移行準備完了]** とマークされます。
 
@@ -64,7 +64,7 @@ Azure portal 内でご利用のクラシック アラート ルールの移行�
 
     結果としてのページには、一度に 1 つのサブスクリプションについて移行されるクラシック アラート ルールの詳細が表示されます。 **[Download the migration details for this subscription]\(このサブスクリプションについて移行の詳細をダウンロードする\)** を選択して、詳細を CSV 形式で取得することもできます。
 
-    ![移行-プレビュー](media/alerts-migration/migration-preview.png "移行をプレビューする")
+    ![移行のプレビュー](media/alerts-migration/migration-preview.png "移行のプレビュー")
 
 1. 移行状態の通知を受け取るメール アドレスを 1 つまたは複数指定します。 移行が完了したとき、またはご自分で何らかのアクションを行っていただく必要がある場合は、電子メールが届きます。
 
@@ -73,7 +73,7 @@ Azure portal 内でご利用のクラシック アラート ルールの移行�
     > [!IMPORTANT]
     > サブスクリプションの移行プロセスを開始したら、そのサブスクリプション用のクラシック アラート ルールを編集することも作成することもできなくなります。 この制限により、新しいルールへの移行中にご利用のクラシック アラート ルールへの変更が失われることはありません。 ご利用のクラシック アラート ルールに変更を加えることはできませんが、移行が完了するまで、それらの実行およびアラートの提供は続行されます。 サブスクリプションの移行が完了したら、クラシック アラート ルールはこれ以上使用できなくなります。
 
-    ![移行-確認](media/alerts-migration/migration-confirm.png "移行の開始を確認する")
+    ![移行の確認](media/alerts-migration/migration-confirm.png "移行の開始の確認")
 
 1. 移行が完了したとき、またはご自分でアクションを行っていただく必要がある場合は、前に指定したアドレスに電子メールが届きます。 ポータル内の移行ランディング ページからも定期的に状態を確認できます。
 
@@ -97,7 +97,7 @@ Azure portal 内でご利用のクラシック アラート ルールの移行�
 
 移行中に直面する可能性がある問題のヘルプについては、[トラブルシューティング ガイド](alerts-understand-migration.md#common-problems-and-remedies)を参照してください。 移行を完了するためにご自分で何らかのアクションを行っていただく必要がある場合は、ツールの設定時に指定した電子メール アドレスに通知されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [移行を準備する](alerts-prepare-migration.md)
 - [移行ツールの動作の理解](alerts-understand-migration.md)

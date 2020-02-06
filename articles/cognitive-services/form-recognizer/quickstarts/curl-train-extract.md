@@ -9,21 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 961a5cc3d8c90007e314f40ba98693d978fe8888
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 0cd7625a8e89365ccb966c0aa847e5b337f33acc
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76771944"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900203"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>クイック スタート:cURL で REST API を使用して Form Recognizer モデルをトレーニングし、フォーム データを抽出する
 
 このクイックスタートでは、cURL で Azure Form Recognizer の REST API を使用してトレーニングし、フォームをスコア付けしてキーと値のペアおよびテーブルを抽出します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-
-> [!IMPORTANT]
-> このクイックスタートでは、Form Recognizer v2.0 API を使用します。 ご利用のサブスクリプションが `West US 2` と `West Europe` のいずれのリージョンにもない場合は、v1.0 の API を使用する必要があります。 その場合は、[v1.0 のクイックスタート](./curl-train-extract-v1.md)に従ってください。
 
 ## <a name="prerequisites"></a>前提条件
 

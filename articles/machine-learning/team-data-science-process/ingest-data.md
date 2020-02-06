@@ -1,34 +1,34 @@
 ---
-title: 分析用の Azure Storage 環境にデータを読み込む - Team Data Science Process
+title: Azure Storage 環境にデータを読み込む - Team Data Science Process
 description: データが格納および処理されるさまざまなターゲット環境にデータを取り込む方法について説明します。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 515decfafe46ad0c1b5b90743688abc26a975903
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: f8eab59d810fb825dbebf80d01d8efd2dd0a9841
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053253"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720539"
 ---
 # <a name="load-data-into-storage-environments-for-analytics"></a>分析用のストレージ環境にデータを読み込む
 
-Team Data Science Process では、さまざまなストレージ環境に取り込まれるデータまたは読み込まれるデータを、プロセスの各段階において最も適切な方法で処理または分析する必要があります。 処理に通常使用されるデータの取り込み先として、Azure Blob Storage、SQL Azure データベース、Azure VM 上の SQL Server、HDInsight (Hadoop)、Azure Machine Learning などがあります。 
+Team Data Science Process では、各ステージで最も適切な方法でデータを取り込んだり読み込んだりする必要があります。 データの取り込み先として、Azure Blob Storage、SQL Azure データベース、Azure VM 上の SQL Server、HDInsight (Hadoop)、Synapse Analytics、Azure Machine Learning などがあります。 
 
 以下の記事では、データが格納および処理されるさまざまなターゲット環境にデータを取り込む方法について説明されています。
 
 * [Azure BLOB Storage](move-azure-blob.md) へ/から
 * [Azure VM 上の SQL Server](move-sql-server-virtual-machine.md) へ
-* [Azure SQL データベース](move-sql-azure.md)へ
+* [Azure SQL Database](move-sql-azure.md) へ
 * [Hive テーブル](move-hive-tables.md)へ
 * [SQL パーティション テーブル](parallel-load-sql-partitioned-tables.md)へ
 * [オンプレミスの SQL Server](move-sql-azure-adf.md) から
 
-分析の目的を達成するためにデータを取り込む必要があるターゲット環境は、技術上およびビジネス上のニーズと、データの最初の保存場所、形式、およびサイズによって決まります。 予測モデルを構築するために必要なさまざまなタスクを実行するために、複数の環境間でデータを移動する必要があるシナリオも珍しくありません。 この一連のタスクには、データ探索、前処理、クリーニング、サンプリング、モデル トレーニングなどが含まれます。
+技術的およびビジネス上のニーズと、ご利用のデータの最初の場所、形式、およびサイズに応じて、最適なデータ取り込みプランが決定されます。 最適なプランにいくつかの手順が含まれることは珍しくありません。 この一連のタスクには、データ探索、前処理、クリーニング、サンプリング、モデル トレーニングなどが含まれます。  Azure Data Factory は、データの移動と変換を調整する場合に推奨される Azure リソースです。

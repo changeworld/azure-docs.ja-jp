@@ -7,12 +7,12 @@ ms.author: evansma
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
-ms.openlocfilehash: 997014263f0d12e7cc16a761152870c2ee63d6ec
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 6ee6b6f325ba58ecaa3c3acb5d5ded173262bafb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979695"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715432"
 ---
 # <a name="payout-reporting"></a>支払いレポート
 
@@ -46,9 +46,9 @@ Azure Marketplace でオファリングを販売する場合は、 **[支払い�
 
 | | クラウド パートナー ポータル | パートナー センター |
 |---------|---------|---------|
-| リンク | https://cloudpartner.azure.com/ | https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory および https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
+| リンク | [https://cloudpartner.azure.com/](https://cloudpartner.azure.com) | [https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory](https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory) および [https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments](https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments) |
 | 「ナビゲーション」 | 分析情報の支払いで提供される支払いレポート | パートナー センターで提供される支払いレポート – [支払い] アイコン |
-| スコープ | <ul> <li>進行中の回収、回収済み、および支払い済みを対象に、品目ごとの取引が表示されます </li> <li>レポート – 発注書が作成された後のすべての品目が表示されます。これには、進行中の回収と進行中の課金、および回収の状態とまだ支払いの対象となっていない品目が含まれます。 </li> </ul> | <ul> <li>対象となる収益と見なされると品目が表示されます。</li> <li>顧客が最初に Microsoft に支払いをすると、ISV に支払いレポートの開始が表示されます。</li> <li>支払いレポートには、進行中の回収と進行中の課金は表示されません。  </li> </ul>  |
+| Scope | <ul> <li>進行中の回収、回収済み、および支払い済みを対象に、品目ごとの取引が表示されます </li> <li>レポート – 発注書が作成された後のすべての品目が表示されます。これには、進行中の回収と進行中の課金、および回収の状態とまだ支払いの対象となっていない品目が含まれます。 </li> </ul> | <ul> <li>対象となる収益と見なされると品目が表示されます。</li> <li>顧客が最初に Microsoft に支払いをすると、ISV に支払いレポートの開始が表示されます。</li> <li>支払いレポートには、進行中の回収と進行中の課金は表示されません。  </li> </ul>  |
 | 支払いの準備ができていない取引 | 進行中の課金 | 次の見積支払: 支払いの状態は未処理の状態です。  |
 | 支払いの状態 |  | 未処理: <br> 収益は支払いの対象となります。 インセンティブ プログラムのプログラム ガイドで定義されているように、冷却期間中はこの状態のままになります。 <br> <br> 近日中: <br> 支払いの前に、支払指図によって生成された保留中の内部レビューが処理されます。 <br> <br> 送信済み: <br> 支払いが銀行に送信されました。 |
 

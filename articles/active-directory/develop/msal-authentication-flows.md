@@ -9,22 +9,22 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/16/2019
+ms.date: 01/30/2020
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: bf241bc15ccdcf9e7d65f277c235f1aa668fcbe0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bc906e1026dcc051ef152ff9fba94525ac700761
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696642"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76962095"
 ---
 # <a name="authentication-flows"></a>認証フロー
 
 この記事では、Microsoft Authentication Library (MSAL) によって提供されるさまざまな認証フローについて説明します。  これらのフローは、さまざまなアプリケーション シナリオで使用できます。
 
-| Flow | [説明] | 使用される場所|  
+| Flow | 説明 | 使用される場所|  
 | ---- | ----------- | ------- | 
 | [対話](#interactive) | ブラウザーまたはポップアップ ウィンドウでユーザーに資格情報を求める対話型プロセスによりトークンを取得します。 | [デスクトップ アプリ](scenario-desktop-overview.md)、[モバイル アプリ](scenario-mobile-overview.md) |
 | [暗黙的な許可](#implicit-grant) | バックエンド サーバーと資格情報をやり取りせずに、アプリはトークンを取得できます。 これにより、アプリは、ユーザーのサインイン、セッションの維持、他の Web API へのトークンの取得を、すべてクライアント JavaScript コード内で実行できます。| [シングル ページ アプリケーション (SPA)](scenario-spa-overview.md) |

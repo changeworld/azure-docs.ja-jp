@@ -2,30 +2,30 @@
 title: Private Zones のシナリオ - Azure DNS
 description: この記事では、Azure DNS Private Zones を使用するための一般的なシナリオについて説明します。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
-ms.author: allensu
-ms.openlocfilehash: 2eb7e9e4df5bdf0f8eb047cc8594bd862245770d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: ab850adb2e9a25778d5f44ba711eb0762fe562c8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210457"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939336"
 ---
 # <a name="azure-dns-private-zones-scenarios"></a>Azure DNS Private Zones のシナリオ
 
 Azure DNS Private Zones は、仮想ネットワーク内での名前解決と仮想ネットワーク間での名前解決を提供します。 この記事では、この機能を使用して実現できる一般的なシナリオについて説明します。
 
-## <a name="scenario-name-resolution-scoped-to-a-single-virtual-network"></a>シナリオ: 1 つの仮想ネットワークをスコープとする名前解決
+## <a name="scenario-name-resolution-scoped-to-a-single-virtual-network"></a>シナリオ:1 つの仮想ネットワークをスコープとする名前解決
 このシナリオでは、仮想マシン (VM) を含む多数の Azure リソースがある Azure 内の仮想ネットワークがあります。 仮想ネットワーク内から特定のドメイン名 (DNS ゾーン) を使用してリソースを解決します。そのためには、名前解決をプライベートで実行し、インターネットからアクセスできないようにする必要があります。 さらに、VNET 内の VM が Azure によって DNS ゾーンに自動的に登録される必要があります。 
 
 このシナリオを図示すると次のようになります。 "A" という名前の仮想ネットワークに、2 つの VM (VNETA-VM1 と VNETA-VM2) が含まれています。 それぞれが、関連付けられたプライベート IP を持っています。 Contoso.com という名前のプライベート ゾーンを作成し、この仮想ネットワークを登録仮想ネットワークとしてリンクすると、Azure DNS によって、図のように 2 つの A のレコードがゾーン内に自動的に作成されます。 これで、VNETA-VM2.contoso.com を解決するための VNETA-VM1 からの DNS クエリは、VNETA-VM2 のプライベート IP を含む DNS 応答を受信します。 さらに、VNETA VM2 から発行された VNETA VM1 (10.0.0.1) のプライベート IP に対する逆引き DNS クエリ (PTR) は、想定どおりに VNETA-VM1 の名前を含む DNS 応答を受信します。 
 
 ![単一仮想ネットワークの解決](./media/private-dns-scenarios/single-vnet-resolution.png)
 
-## <a name="scenario-name-resolution-across-virtual-networks"></a>シナリオ: 仮想ネットワーク間での名前解決
+## <a name="scenario-name-resolution-across-virtual-networks"></a>シナリオ:仮想ネットワーク間での名前解決
 
 このシナリオは、プライベート ゾーンを複数の仮想ネットワークに関連付ける必要がある、もっと一般的なケースです。 このシナリオは、複数のスポーク仮想ネットワークが接続される中央ハブ仮想ネットワークが 1 つある、ハブ アンド スポーク モデルなどのアーキテクチャに適しています。 プライベート ゾーンに中央ハブ仮想ネットワークを登録仮想ネットワークとしてリンクでき、スポーク仮想ネットワークを解決仮想ネットワークとしてリンクできます。 
 
@@ -37,7 +37,7 @@ Azure DNS Private Zones は、仮想ネットワーク内での名前解決と�
 
 ![複数の仮想ネットワークの解決](./media/private-dns-scenarios/multi-vnet-resolution.png)
 
-## <a name="scenario-split-horizon-functionality"></a>シナリオ: 水平分割機能
+## <a name="scenario-split-horizon-functionality"></a>シナリオ:水平分割機能
 
 このシナリオでは、同じ DNS ゾーンのクライアントの存在場所 (Azure 内部またはインターネット上) に応じて、異なる DNS 解決動作を実現するユース ケースがあります。 たとえば、アプリケーションに機能や動作が異なるプライベート バージョンとパブリック バージョンがあるが、両方のバージョンで、同じドメイン名を使用するとします。 このシナリオは、Azure DNS で同じ名前のパブリック DNS ゾーンとプライベート ゾーンを作成することで実現できます。
 
@@ -47,7 +47,7 @@ Azure DNS Private Zones は、仮想ネットワーク内での名前解決と�
 
 ![分割 Brian 解決](./media/private-dns-scenarios/split-brain-resolution.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 プライベート DNS ゾーンの詳細については、「[Using Azure DNS for private domains (プライベート ドメインでの Azure DNS の使用)](private-dns-overview.md)」をご覧ください。
 
 Azure DNS で[プライベート DNS ゾーンを作成する](./private-dns-getstarted-powershell.md)方法を学びます。

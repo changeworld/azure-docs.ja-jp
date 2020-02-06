@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 7d341c7081fef7aee2c33b9a7080d60417ce410d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0e6b87ff34d6555fda50518198f9ae3839aa56e6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895193"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719094"
 ---
 # <a name="build-highly-available-applications-with-zone-redundant-storage-zrs"></a>ゾーン冗長化ストレージ (ZRS) で高可用アプリケーションを構築する
 
@@ -34,6 +34,7 @@ ms.locfileid: "74895193"
 - 西ヨーロッパ
 - フランス中部
 - 東日本
+- 南アフリカ北部
 - 英国南部
 - 米国中部
 - 米国東部
@@ -88,7 +89,7 @@ ZRS に移行するとき、主に 2 つの選択肢があります。
 ライブ マイグレーションでは次の制限に注意してください。
 
 - Microsoft はお客様のライブ マイグレーションの要求に速やかに対応しますが、ライブ マイグレーションがいつ完了するかについての保証はありません。 データを特定の日付までに ZRS に移行する必要がある場合は、手動の移行を実行することをお勧めします。 一般的に、アカウントで保存しているデータが多いほど、データの移行には時間がかかります。 
-- ライブ マイグレーションは、LRS または GRS のレプリケーションを使用するストレージ アカウントについてのみサポートされます。 自分のアカウントが RA-GRS を使用している場合は、続行する前に、まず自分のアカウントのレプリケーションの種類を LRS または GRS のいずれかに変更する必要があります。 この中間の手順により、移行前に RA GRS によって提供される読み取り専用のセカンダリ エンドポイントが削除されます。
+- ライブ マイグレーションは、LRS レプリケーションを使用するストレージ アカウントについてのみサポートされます。 自分のアカウントが GRS または RA-GRS を使用している場合は、続行する前に、まずアカウントのレプリケーションの種類を LRS に変更する必要があります。 この中間ステップでは、GRS/RA-GRS によって提供されるセカンダリ エンドポイントを削除します。
 - アカウントにはデータが含まれている必要があります。
 - 同じリージョン内のデータのみ移行できます。 ソース アカウントとは異なるリージョンにある ZRS アカウントにデータを移行する場合は、手動の移行を実行する必要があります。
 - Standard ストレージ アカウントの種類のみがライブ マイグレーションをサポートします。 Premium ストレージ アカウントは手動で移行する必要があります。
@@ -103,7 +104,7 @@ ZRS に移行するとき、主に 2 つの選択肢があります。
 4. **[Problem]\(問題)** セクションで以下の値を指定します。 
     - **[重大度]** :既定値をそのまま使用します。
     - **[問題の種類]** : **[データ移行]** を選択します。
-    - **[カテゴリ]** : **[Migrate to ZRS]\(ZRS へ移行\)** を選択します。
+    - **カテゴリ**: **[Migrate to ZRS]\(ZRS へ移行\)** を選択します。
     - **[タイトル]** :**ZRS アカウント移行**などのわかりやすいタイトルを入力します。
     - **[詳細]** : **[詳細]** ボックスには、たとえば、\_\_ リージョンで [LRS、GRS] から ZRS に移行するなどの詳細情報を入力します。 
 5. **[次へ]** を選択します。
@@ -130,9 +131,9 @@ ZRS に移行するとき、主に 2 つの選択肢があります。
 
 ZRS は汎用 v2 アカウントにのみ対応しています。そのため、ZRS へのライブ マイグレーションを依頼する前に、必ずアカウントを汎用 v2 にアップグレードしてください。 詳細については、「[Azure ストレージ アカウントの概要](https://docs.microsoft.com/azure/storage/common/storage-account-overview)」と「[汎用 v2 ストレージ アカウントにアップグレードする](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)」を参照してください。
 
-**読み取りアクセス geo 冗長ストレージ (RA-GRS) アカウントを ZRS にライブ マイグレーションするように依頼できますか。**
+**自分の geo 冗長、または読み取りアクセス geo 冗長ストレージ (GRS/RA-GRS) アカウントを ZRS にライブ マイグレーションするように依頼できますか。**
 
-ZRS へのライブ マイグレーションを依頼する前に、アプリケーションとワークロードで読み取り専用セカンダリ エンドポイントにアクセスする必要がないことを確認し、ストレージ アカウントのレプリケーション タイプを geo 冗長ストレージ (GRS) に変更してください。 詳細については、「[レプリケーション戦略の変更](https://docs.microsoft.com/azure/storage/common/storage-redundancy#changing-replication-strategy)」を参照してください。
+ライブ マイグレーションは、LRS レプリケーションを使用するストレージ アカウントについてのみサポートされます。 自分のアカウントが GRS または RA-GRS を使用している場合は、続行する前に、まずアカウントのレプリケーションの種類を LRS に変更する必要があります。 この中間ステップでは、GRS/RA-GRS によって提供されるセカンダリ エンドポイントを削除します。 また、ZRS へのライブ マイグレーションを依頼する前に、アプリケーションまたはワークロードで読み取り専用セカンダリ エンドポイントにアクセスする必要がないことを確認し、ストレージ アカウントのレプリケーションの種類をローカル冗長ストレージ (LRS) に変更してください。 詳細については、「[レプリケーション戦略の変更](https://docs.microsoft.com/azure/storage/common/storage-redundancy#changing-replication-strategy)」を参照してください。
 
 **別のリージョンにある ZRS にストレージ アカウントをライブ マイグレーションするように依頼できますか。**
 
@@ -164,7 +165,7 @@ CLI を利用して ZRS にアップグレードするには、次のコマン�
 az storage account update -g <resource_group> -n <storage_account> --set kind=StorageV2
 ```
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 - [Azure Storage のレプリケーション](storage-redundancy.md)
 - [ローカル冗長ストレージ (LRS):Azure Storage の低コストのデータ冗長性](storage-redundancy-lrs.md)
 - [geo 冗長ストレージ (GRS):Azure Storage のリージョン間レプリケーション](storage-redundancy-grs.md)

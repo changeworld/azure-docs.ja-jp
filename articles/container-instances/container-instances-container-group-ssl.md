@@ -3,22 +3,22 @@ title: コンテナー グループで SSL を有効にする
 description: Azure Container Instances 内で実行されるコンテナー グループに対する、SSL または TLS エンドポイントを作成します
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 7578ad6f8c451694a90dde00b74bf2e8c6c61109
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 541d53a9a9530f7ac80227dbae598b3da2691301
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483482"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773067"
 ---
 # <a name="enable-an-ssl-endpoint-in-a-container-group"></a>コンテナー グループで SSL エンドポイントを有効にする
 
 この記事では、SSL プロバイダーを実行しているアプリケーション コンテナーとサイドカー コンテナーを使用して[コンテナー グループ](container-instances-container-groups.md)を作成する方法について説明します。 コンテナー グループを別の SSL エンドポイントで設定することにより、アプリケーション コードを変更せずにアプリケーションの SSL 接続を有効にすることができます。
 
-2 つのコンテナーで構成されるコンテナー グループを設定します。
+次の 2 つのコンテナーで構成されるコンテナー グループ例を設定します。
 * パブリック Microsoft [aci-helloworld](https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld) イメージを使用してシンプルな Web アプリを実行する、アプリケーション コンテナー。 
 * SSL を使用するよう構成されたパブリック [Nginx](https://hub.docker.com/_/nginx) イメージを実行するサイドカー コンテナー。 
 
-この例ではコンテナー グループにより、Nginx 用のポート 443 のみがそのパブリック IP アドレスで公開されます。 Nginx により HTTPS 要求がコンパニオン Web アプリにルーティングされます。コンパニオン Web アプリはポート 80 で内部的にリッスンします。 他のポートをリッスンするコンテナー アプリの例を適応させることもできます。
+この例ではコンテナー グループにより、Nginx 用のポート 443 のみがそのパブリック IP アドレスで公開されます。 Nginx により HTTPS 要求がコンパニオン Web アプリにルーティングされます。コンパニオン Web アプリはポート 80 で内部的にリッスンします。 他のポートをリッスンするコンテナー アプリの例を適応させることもできます。 コンテナー グループで SSL を有効にするその他の方法については、「[次のステップ](#next-steps)」を参照してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -38,7 +38,7 @@ openssl req -new -newkey rsa:2048 -nodes -keyout ssl.key -out ssl.csr
 
 画面の指示に従って、ID 情報を追加します。 Common Name には、証明書に関連付けられているホスト名を入力します。 パスワードの入力を求めるメッセージが表示されたら、何も入力せず Enter キーを押して、パスワードの追加をスキップします。
 
-次のコマンドを実行して、証明書の要求から自己署名証明書 (.crt file) を作成します。 例:
+次のコマンドを実行して、証明書の要求から自己署名証明書 (.crt file) を作成します。 次に例を示します。
 
 ```console
 openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt
@@ -229,10 +229,16 @@ app-with-ssl  myresourcegroup  Running   mcr.microsoft.com/azuredocs/nginx, aci-
 > この例では証明機関の証明書ではなく、自己署名証明書を使用するため、HTTPS 経由でサイトに接続しようとするとブラウザにセキュリティの警告が表示されます。 これは正しい動作です。
 >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、コンテナー グループ内で実行している Web アプリに SSL 接続できるよう Nginx コンテナーを設定する方法について説明しました。 ポート 80 以外のポートをリッスンするアプリの例を適応させることもできます。 ポート 80 (HTTP) 上のサーバー接続を自動的にリダイレクトして HTTPS を使用するよう、Nginx 構成ファイルを更新することもできます。
 
 この記事ではサイドカー内の Nginx を使用しましたが、[Caddy](https://caddyserver.com/) などの別の SSL プロバイダーを使用することもできます。
 
-コンテナー グループ内で SSL を有効にする別の方法として、[Azure Application Gateway](../application-gateway/overview.md) を使用した [Azure Virtual Network](container-instances-vnet.md) にグループをデプロイするというものもあります。 ゲートウェイは、SSL エンドポイントとして設定できます。 ゲートウェイ上で SSL ターミネーションを有効にするために適応可能な、サンプルの[デプロイ テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet)を参照してください。
+[Azure 仮想ネットワーク](container-instances-vnet.md)にコンテナー グループをデプロイする場合は、次のような他のオプションを使用して、バックエンド コンテナー インスタンスの SSL エンドポイントを有効にすることを検討できます。
+
+* [Azure Functions プロキシ](../azure-functions/functions-proxies.md)
+* [Azure API Management](../api-management/api-management-key-concepts.md)
+* [Azure Application Gateway](../application-gateway/overview.md)
+
+アプリケーション ゲートウェイを使用するには、サンプルの[デプロイ テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet)をご覧ください。

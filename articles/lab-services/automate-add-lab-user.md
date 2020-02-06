@@ -1,6 +1,6 @@
 ---
 title: Azure DevTest Labs でのラボ ユーザーの追加を自動化する | Microsoft Docs
-description: Azure DevTest Labs でのラボへのラボ ユーザーの追加を自動化する方法について学習します。
+description: この記事では、Azure Resource Manager テンプレート、PowerShell、および CLI を使用して、Azure DevTest Labs でのラボへのユーザー追加を自動化する方法について説明します。
 services: devtest-lab,lab-services
 documentationcenter: na
 author: spelluru
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: deec67a2c64a57bbb380b3fd87bf820499e6efed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 70a6359923734c83590d4677bb2c93966c925d14
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980048"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718141"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボへのラボ ユーザーの追加を自動化する
 Azure DevTest Labs によって、Azure portal を使用することにより、セルフサービスの開発テスト環境をすばやく作成できます。 しかし、複数のチームがあり、いくつかの DevTest Labs インスタンスがある場合、作成プロセスの自動化によって時間を節約できます。 [Azure Resource Manager テンプレート](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)では、ラボ、ラボ VM、カスタム イメージ、数式を作成し、自動でユーザーを追加できます。 この記事では、DevTest Labs インスタンスにユーザーを追加することに特に焦点を絞って説明します。
@@ -132,7 +132,7 @@ $userObjectId = (Get-AzureRmADUser -UserPrincipalName ‘email@company.com').Id
 
 [Get-MsolUser](/powershell/module/msonline/get-msoluser?view=azureadps-1.0)、[Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0)、[Get-MsolServicePrincipal](/powershell/module/msonline/get-msolserviceprincipal?view=azureadps-1.0) を含む、Azure Active Directory PowerShell コマンドレットを使用することもできます。
 
-### <a name="scope"></a>スコープ
+### <a name="scope"></a>Scope
 スコープでは、ロールの割り当てを適用する必要があるリソースまたはリソース グループを指定します。 リソースには、スコープは次のフォームに含まれます: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{provider-namespace}/{resource-type}/{resource-name}`。 テンプレートでは、`subscription-id` パーツに入力するための `subscription().subscriptionId` 関数および `resource-group-name` パーツに入力するための `resourceGroup().name` テンプレート関数を使用します。 これらの関数を使用することは、ロールを割り当てるラボが、現在のサブスクリプション、およびテンプレートのデプロイが行われる同じリソース グループに存在する必要があるということを意味します。 最後のパーツ `resource-name` は、ラボの名前です。 この値は、この例ではテンプレート パラメーターによって受け取ります。 
 
 テンプレートのロール スコープ 

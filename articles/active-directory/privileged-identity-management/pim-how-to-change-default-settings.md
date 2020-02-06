@@ -14,12 +14,12 @@ ms.date: 11/13/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e15418524790e2169a6f60b79629f15f1d141ec4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 60a480327efacee2d1eb74353b2d0ef7885a6194
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429643"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024213"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールの設定を構成する
 
@@ -35,93 +35,6 @@ ms.locfileid: "75429643"
     ![Azure AD ロールの新しいバージョン](./media/pim-how-to-add-role-to-user/pim-new-version.png)
 
 Azure AD ロールに対する要求を承認または拒否するには、この記事の手順に従ってください。
-
-# <a name="previous-versiontabprevious"></a>[以前のバージョン](#tab/previous)
-
-## <a name="open-role-settings"></a>ロールの設定を開く
-
-次の手順を実行して、Azure AD ロールの設定を開きます。
-
-1. **[Azure AD Privileged Identity Management]** を開きます。
-
-1. **[Azure AD ロール]** を選択します。
-
-1. **[設定]** を選択します。
-
-    ![Azure AD ロール - 設定](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
-
-1. **[役割]** を選びます。
-
-1. 設定を構成するロールを選択します。
-
-    ![Azure AD ロール - ロールの設定](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-role.png)
-
-    各ロールの設定ページでは、複数の設定を構成できます。 これらの設定の影響を受けるのは、**永続的**な割り当てのユーザーではなく、**有資格**の割り当てのユーザーのみです。
-
-## <a name="activations"></a>アクティブ化
-
-**[アクティブ化]** スライダーを使用して、ロールの有効期限が切れるまでの最大時間 (時間単位) を設定します。 1 ～ 72 時間の範囲の値を指定できます。
-
-## <a name="notifications"></a>通知
-
-**[通知]** スイッチを使用して、ロールがアクティブになったときに管理者がメール通知を受け取るかどうかを指定します。 この通知は、不正なアクティブ化の検出に役立ちます。
-
-**[有効]** に設定すると、通知が送信されます。
-
-- 特権ロール管理者
-- セキュリティ管理者
-- 全体管理者
-
-詳細については、[Privileged Identity Management でのメール通知](pim-email-notifications.md)に関するページを参照してください。
-
-## <a name="incidentrequest-ticket"></a>インシデント/要求チケット
-
-**[インシデント/要求チケット]** スイッチを使用して、管理者候補に対して、ロールのアクティブ化時にチケット番号の入力を要求します。 このプラクティスでは、ロール アクセスの監査をより効果的に行うことができます。
-
-## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
-
-**[多要素認証]** スイッチを使用して、ユーザーに対して、ロールのアクティブ化で MFA を使用した ID 確認を必須とするかどうかを指定します。 ユーザーが自分の ID を確認する必要があるのは、ロールのアクティブ化のたびではなく、セッションごとに 1 回だけです。 MFA を有効化する場合は次の 2 点に留意してください。
-
-- メール アドレス (一般には @outlook.com ですが、例外もあります) の Microsoft アカウントを持つユーザーは、Azure Multi-Factor Authentication に登録できません。 Microsoft アカウントを持つユーザーにロールを割り当てるには、ユーザーを永続的な管理者にするか、そのロールの Multi-Factor Authentication を無効化する必要があります。
-- Azure AD および Office 365 の高い特権ロールでは、Azure Multi-Factor Authentication は無効化できません。 この安全機能は、次のロールの保護に役立ちます。  
-  
-  - Azure Information Protection 管理者
-  - 課金管理者
-  - クラウド アプリケーション管理者
-  - コンプライアンス管理者
-  - 条件付きアクセス管理者
-  - Dynamics 365 管理者
-  - カスタマー ロックボックスのアクセス承認者
-  - ディレクトリ ライター
-  - Exchange 管理者
-  - 全体管理者
-  - Intune 管理者
-  - Power BI 管理者
-  - 特権ロール管理者
-  - セキュリティ管理者
-  - SharePoint 管理者
-  - Skype for Business 管理者
-  - ユーザー管理者
-
-詳細については、[Multi-Factor Authentication と Privileged Identity Management](pim-how-to-require-mfa.md) に関するページを参照してください。
-
-## <a name="require-approval"></a>承認を要求する
-
-ロールのアクティブ化に必要な承認を委任する場合は、次の手順に従います。
-
-1. **[承認を要求する]** スイッチを **[有効]** に設定します。 ウィンドウが展開され、承認者を選択できるオプションが表示されます。
-
-    ![Azure AD ロール - 設定 - 承認を要求する](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
-
-    承認者を指定しない場合、特権ロール管理者は既定の承認者になり、このロールに対するすべてのアクティブ化要求を承認する必要があります。
-
-1. 承認者を追加するには、 **[承認者の選択]** をクリックします。
-
-    ![Azure AD ロール - 設定 - 承認を要求する](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
-
-1. 特権ロール管理者に加えて、1 つまたは複数の承認者を選択し、 **[選択]** をクリックします。 ユーザーまたはグループを選択することができます。 少なくとも 2 人の承認者を追加することをお勧めします。 自分自身を承認者として追加した場合でも、ロールのアクティブ化を自己承認することはできません。 選択した承認者の一覧に選択内容が表示されます。
-
-1. すべてのロール設定を指定したら、 **[保存]** を選択して変更を保存します。
 
 # <a name="new-versiontabnew"></a>[新しいバージョン](#tab/new)
 
@@ -211,6 +124,93 @@ Privileged Identity Management では、2 つの異なるシナリオで、必�
     選択した承認者の一覧に選択内容が表示されます。
 
 1. すべてのロール設定を指定したら、 **[更新]** を選択して変更を保存します。
+
+# <a name="previous-versiontabprevious"></a>[以前のバージョン](#tab/previous)
+
+## <a name="open-role-settings"></a>ロールの設定を開く
+
+次の手順を実行して、Azure AD ロールの設定を開きます。
+
+1. **[Azure AD Privileged Identity Management]** を開きます。
+
+1. **[Azure AD ロール]** を選択します。
+
+1. **[設定]** を選択します。
+
+    ![Azure AD ロール - 設定](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
+
+1. **[役割]** を選びます。
+
+1. 設定を構成するロールを選択します。
+
+    ![Azure AD ロール - ロールの設定](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-role.png)
+
+    各ロールの設定ページでは、複数の設定を構成できます。 これらの設定の影響を受けるのは、**永続的**な割り当てのユーザーではなく、**有資格**の割り当てのユーザーのみです。
+
+## <a name="activations"></a>アクティブ化
+
+**[アクティブ化]** スライダーを使用して、ロールの有効期限が切れるまでの最大時間 (時間単位) を設定します。 1 ～ 72 時間の範囲の値を指定できます。
+
+## <a name="notifications"></a>通知
+
+**[通知]** スイッチを使用して、ロールがアクティブになったときに管理者がメール通知を受け取るかどうかを指定します。 この通知は、不正なアクティブ化の検出に役立ちます。
+
+**[有効]** に設定すると、通知が送信されます。
+
+- 特権ロール管理者
+- セキュリティ管理者
+- 全体管理者
+
+詳細については、[Privileged Identity Management でのメール通知](pim-email-notifications.md)に関するページを参照してください。
+
+## <a name="incidentrequest-ticket"></a>インシデント/要求チケット
+
+**[インシデント/要求チケット]** スイッチを使用して、管理者候補に対して、ロールのアクティブ化時にチケット番号の入力を要求します。 このプラクティスでは、ロール アクセスの監査をより効果的に行うことができます。
+
+## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+
+**[多要素認証]** スイッチを使用して、ユーザーに対して、ロールのアクティブ化で MFA を使用した ID 確認を必須とするかどうかを指定します。 ユーザーが自分の ID を確認する必要があるのは、ロールのアクティブ化のたびではなく、セッションごとに 1 回だけです。 MFA を有効化する場合は次の 2 点に留意してください。
+
+- メール アドレス (一般には @outlook.com ですが、例外もあります) の Microsoft アカウントを持つユーザーは、Azure Multi-Factor Authentication に登録できません。 Microsoft アカウントを持つユーザーにロールを割り当てるには、ユーザーを永続的な管理者にするか、そのロールの Multi-Factor Authentication を無効化する必要があります。
+- Azure AD および Office 365 の高い特権ロールでは、Azure Multi-Factor Authentication は無効化できません。 この安全機能は、次のロールの保護に役立ちます。  
+  
+  - Azure Information Protection 管理者
+  - 課金管理者
+  - クラウド アプリケーション管理者
+  - コンプライアンス管理者
+  - 条件付きアクセス管理者
+  - Dynamics 365 管理者
+  - カスタマー ロックボックスのアクセス承認者
+  - ディレクトリ ライター
+  - Exchange 管理者
+  - 全体管理者
+  - Intune 管理者
+  - Power BI 管理者
+  - 特権ロール管理者
+  - セキュリティ管理者
+  - SharePoint 管理者
+  - Skype for Business 管理者
+  - ユーザー管理者
+
+詳細については、[Multi-Factor Authentication と Privileged Identity Management](pim-how-to-require-mfa.md) に関するページを参照してください。
+
+## <a name="require-approval"></a>承認を要求する
+
+ロールのアクティブ化に必要な承認を委任する場合は、次の手順に従います。
+
+1. **[承認を要求する]** スイッチを **[有効]** に設定します。 ウィンドウが展開され、承認者を選択できるオプションが表示されます。
+
+    ![Azure AD ロール - 設定 - 承認を要求する](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
+
+    承認者を指定しない場合、特権ロール管理者は既定の承認者になり、このロールに対するすべてのアクティブ化要求を承認する必要があります。
+
+1. 承認者を追加するには、 **[承認者の選択]** をクリックします。
+
+    ![Azure AD ロール - 設定 - 承認を要求する](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
+
+1. 特権ロール管理者に加えて、1 つまたは複数の承認者を選択し、 **[選択]** をクリックします。 ユーザーまたはグループを選択することができます。 少なくとも 2 人の承認者を追加することをお勧めします。 自分自身を承認者として追加した場合でも、ロールのアクティブ化を自己承認することはできません。 選択した承認者の一覧に選択内容が表示されます。
+
+1. すべてのロール設定を指定したら、 **[保存]** を選択して変更を保存します。
 
 ---
 

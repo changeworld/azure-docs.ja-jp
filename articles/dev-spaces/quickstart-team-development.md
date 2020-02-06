@@ -1,17 +1,17 @@
 ---
 title: Kubernetes 上でのチーム開発
 services: azure-dev-spaces
-ms.date: 04/25/2019
+ms.date: 01/22/2020
 ms.topic: quickstart
 description: このクイックスタートでは、Azure Dev Spaces でコンテナーとマイクロサービスを使用した Kubernetes チーム開発を行う方法について説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: b84bb67556eda3a453ede5a6fb745d8ae472fb6c
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: d2b31cce6604cef31de6f034566ebd46a4e92750
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290412"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721593"
 ---
 # <a name="quickstart-team-development-on-kubernetes---azure-dev-spaces"></a>クイック スタート:Kubernetes 上でのチーム開発 - Azure Dev Spaces
 
@@ -27,7 +27,7 @@ ms.locfileid: "76290412"
 
 - Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、[無料のアカウント](https://azure.microsoft.com/free)を作成できます。
 - [Azure CLI がインストールされていること](/cli/azure/install-azure-cli?view=azure-cli-latest)。
-- [Helm 2.13 から 2.16 がインストールされていること][helm-installed]。
+- [Helm 3 がインストールされていること][helm-installed]。
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成する
 
@@ -82,39 +82,14 @@ Kubernetes でサンプル アプリケーションを実行するためのコ�
 
 デプロイに使用したツールとは無関係に、アプリケーションがクラスターで実行した後でチーム開発に Azure Dev Spaces を使用できます。
 
-`helm init` および `helm install` コマンドを使用して、クラスター上でサンプル アプリケーションをセットアップしインストールします。
+`helm install` コマンドを使用して、クラスター上でサンプル アプリケーションをセットアップしインストールします。
 
 ```cmd
 cd charts/
-helm init --wait
-helm install -n bikesharing . --dep-up --namespace dev --atomic 
-```
-> [!Note]
-> **RBAC が有効になっているクラスターを使用している場合は**、必ず [Tiller のサービス アカウント](https://helm.sh/docs/using_helm/#role-based-access-control)を構成してください。 そうしなければ、`helm` コマンドは失敗します。
-
-`helm install` コマンドは、完了までに数分かかる場合があります。 コマンドの出力には、完了時にコマンドによってクラスターにデプロイされたすべてのサービスのステータスが表示されます。
-
-```cmd
-$ cd charts/
-$ helm init --wait
-...
-Happy Helming!
-
-$ helm install -n bikesharing . --dep-up --namespace dev --atomic
-
-Hang tight while we grab the latest from your chart repositories...
-...
-NAME               READY  UP-TO-DATE  AVAILABLE  AGE
-bikes              1/1    1           1          4m32s
-bikesharingweb     1/1    1           1          4m32s
-billing            1/1    1           1          4m32s
-gateway            1/1    1           1          4m32s
-reservation        1/1    1           1          4m32s
-reservationengine  1/1    1           1          4m32s
-users              1/1    1           1          4m32s
+helm install bikesharing . --dependency-update --namespace dev --atomic
 ```
 
-サンプル アプリケーションをクラスターにインストールした後で、クラスターで Dev Spaces を有効にして以来、`azds list-uris` コマンドを使用して、現在選択されている *dev* 内のサンプル アプリケーションの URL を表示します。
+`helm install` コマンドは、完了までに数分かかる場合があります。 サンプル アプリケーションをクラスターにインストールした後で、クラスターで Dev Spaces を有効にして以来、`azds list-uris` コマンドを使用して、現在選択されている *dev* 内のサンプル アプリケーションの URL を表示します。
 
 ```cmd
 $ azds list-uris
@@ -235,5 +210,5 @@ Azure Dev Spaces を使用して複数のコンテナーにまたがるより複
 > [!div class="nextstepaction"]
 > [複数のコンテナーの操作とチーム開発](multi-service-nodejs.md)
 
-[helm-installed]: https://v2.helm.sh/docs/using_helm/#installing-helm
+[helm-installed]: https://helm.sh/docs/intro/install/
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

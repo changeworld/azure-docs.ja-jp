@@ -9,12 +9,12 @@ ms.date: 10/03/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: ee2b3a35b6f1817b89541a31d0bde4adf00ade2a
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 19f86b1d8233e05844201e1095c1f79324955cd7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991848"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841831"
 ---
 # <a name="rest-api"></a>REST API
 この記事では、Azure Event Grid on IoT Edge の REST API について説明します
@@ -183,6 +183,7 @@ Event Grid on IoT Edge には、HTTP (ポート 5888) と HTTPS (ポート 4438)
             "eventExpiryInMinutes": 120,
             "maxDeliveryAttempts": 50
         },
+        "persistencePolicy": "true",
         "destination":
         {
             "endpointType": "WebHook",
@@ -686,3 +687,93 @@ SasKey:
 TopicName:
 - Subscription.EventDeliverySchema が EventGridSchema に設定されている場合、このフィールドの値は、クラウド内の Event Grid に転送される前に、それぞれのイベントの [トピック] フィールドに配置されます。
 - Subscription.EventDeliverySchema が CustomEventSchema に設定されている場合、このプロパティは無視され、カスタム イベント ペイロードが受信されたとおりに転送されます。
+
+## <a name="set-up-event-hubs-as-a-destination"></a>宛先として Event Hubs を設定する
+
+イベント ハブに発行するには、`endpointType` を `eventHub` に設定し、以下を指定します。
+
+* connectionString:共有アクセス ポリシーを介して生成された、対象となる特定のイベント ハブの接続文字列。
+
+    >[!NOTE]
+    > 接続文字列はエンティティ固有である必要があります。 名前空間の接続文字列を使用すると機能しません。 エンティティ固有の接続文字列を生成するには、Azure portal で発行する特定のイベント ハブに移動し、 **[Shared access policies]/(共有アクセス ポリシー/)** をクリックして、新しいエンティティ固有の接続文字列を生成します。
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "eventHub",
+              "properties": {
+                "connectionString": "<your-event-hub-connection-string>"
+              }
+            }
+          }
+        }
+    ```
+
+## <a name="set-up-service-bus-queues-as-a-destination"></a>宛先として Service Bus キューを設定する
+
+Service Bus キューに発行するには、`endpointType` を `serviceBusQueue` に設定し、以下を指定します。
+
+* connectionString:共有アクセス ポリシーを介して生成された、対象となる特定の Service Bus キューの接続文字列。
+
+    >[!NOTE]
+    > 接続文字列はエンティティ固有である必要があります。 名前空間の接続文字列を使用すると機能しません。 エンティティ固有の接続文字列を生成するには、Azure portal で発行する特定の Service Bus キューに移動し、 **[Shared access policies]/(共有アクセス ポリシー/)** をクリックして、新しいエンティティ固有の接続文字列を生成します。
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "serviceBusQueue",
+              "properties": {
+                "connectionString": "<your-service-bus-queue-connection-string>"
+              }
+            }
+          }
+        }
+    ```
+
+## <a name="set-up-service-bus-topics-as-a-destination"></a>宛先として Service Bus トピックを設定する
+
+Service Bus トピックに発行するには、`endpointType` を `serviceBusTopic` に設定し、以下を指定します。
+
+* connectionString:共有アクセス ポリシーを介して生成された、対象となる特定の Service Bus トピックの接続文字列。
+
+    >[!NOTE]
+    > 接続文字列はエンティティ固有である必要があります。 名前空間の接続文字列を使用すると機能しません。 エンティティ固有の接続文字列を生成するには、Azure portal で発行する特定の Service Bus トピックに移動し、 **[Shared access policies]/(共有アクセス ポリシー/)** をクリックして、新しいエンティティ固有の接続文字列を生成します。
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "serviceBusTopic",
+              "properties": {
+                "connectionString": "<your-service-bus-topic-connection-string>"
+              }
+            }
+          }
+        }
+    ```
+
+## <a name="set-up-storage-queues-as-a-destination"></a>宛先としてストレージ キューを設定する
+
+ストレージ キューに発行するには、`endpointType` を `storageQueue` に設定し、以下を指定します。
+
+* queueName:発行先のストレージ キューの名前。
+* connectionString:ストレージ キューが存在するストレージ アカウントの接続文字列。
+
+    >[!NOTE]
+    > Event Hubs、Service Bus キュー、および Service Bus トピックとは異なり、ストレージ キューに使用される接続文字列はエンティティ固有ではありません。 その代わり、ストレージ アカウントの接続文字列である必要があります。
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "storageQueue",
+              "properties": {
+                "queueName": "<your-storage-queue-name>",
+                "connectionString": "<your-storage-account-connection-string>"
+              }
+            }
+          }
+        }
+    ```

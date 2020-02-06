@@ -3,26 +3,26 @@ title: Azure DevOps Services でデータ サイエンス コードをテスト�
 description: Azure 上で Team Data Science Process と Azure DevOps Services を使用して UCI 成人収入予測データセットでデータ サイエンス コードをテストします
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 05/19/2018
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
-ms.openlocfilehash: 10692fcb720be819dcf94a8ecbc541983ffc8853
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9612114bb368898ccf31b2c8692869b84544b652
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60336695"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722012"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Team Data Science Process と Azure DevOps Services を使用した Azure でのデータ サイエンス コードのテスト
 この記事では、データ サイエンス ワークフローでコードをテストするうえでの予備的ガイドラインについて取り上げます。 このようなテストにより、データ サイエンティストは、秩序立った効率的な方法で、自分のコードの品質と期待される成果をチェックすることができます。 ここでは、[UCI 成人収入データセットを使用した Team Data Science Process (TDSP) プロジェクト](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome)を用います。以前、コード テストの実行方法を紹介する際に発行したものです。 
 
 ## <a name="introduction-on-code-testing"></a>コード テストの概要
-"単体テスト" は、伝統的なソフトウェア開発手法です。 しかし、データ サイエンスにおいてそれが何を意味し、データ サイエンス ライフサイクルのさまざまなステージで、どのようにコードをテストすべきかが明確でないケースが多くあります。
+"単体テスト" は、伝統的なソフトウェア開発手法です。 しかし、データ サイエンスの場合、"単体テスト" が何を意味し、次のようなデータ サイエンス ライフサイクルのさまざまなステージに対してどのようにコードをテストすべきかが明確でないケースが多くあります。
 
 * データの準備
 * データ品質試験
@@ -114,33 +114,33 @@ ms.locfileid: "60336695"
 
     a. プロジェクト リポジトリで **[ビルドとリリース]** を選択し、 **[+新規]** を選択して新しいビルド プロセスを作成します。
 
-       ![Selections for starting a new build process](./media/code-test/create_new_build.PNG)
+    ![新しいビルド プロセスを開始するための選択](./media/code-test/create_new_build.PNG)
 
     b. 画面の指示に従って、ソース コードの場所、プロジェクト名、リポジトリ、ブランチ情報を選択します。
     
-       ![Source, name, repository, and branch information](./media/code-test/fill_in_build_info.PNG)
+    ![ソース、名前、リポジトリ、ブランチ情報](./media/code-test/fill_in_build_info.PNG)
 
     c. テンプレートを選択します。 Python プロジェクト テンプレートは存在しないので、 **[空のプロセス]** を選択して開始します。 
 
-       ![List of templates and "Empty process" button](./media/code-test/start_empty_process_template.PNG)
+    ![テンプレートのリストおよび [空のプロセス] ボタン](./media/code-test/start_empty_process_template.PNG)
 
-    d. ビルドに名前を付けて、エージェントを選択します。 DSVM を使用してビルド プロセスを実行する場合、ここでは既定値を選択してかまいません。 エージェントの設定の詳細については、「[Build and release agents (ビルド エージェントとリリース エージェント)](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts)」を参照してください。
+    d. ビルドに名前を付けて、エージェントを選択します。 DSVM を使用してビルド プロセスを完了する場合、ここでは既定値を選択できます。 エージェントの設定の詳細については、「[Build and release agents (ビルド エージェントとリリース エージェント)](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts)」を参照してください。
     
-       ![Build and agent selections](./media/code-test/select_agent.PNG)
+    ![ビルドとエージェントの選択](./media/code-test/select_agent.PNG)
 
-    e. 左側のウィンドウで [ **+** ] を選択して、このビルド フェーズのタスクを追加します。 Python スクリプト **test1.py** を実行してすべてのチェックを行うことになるので、このタスクでは、PowerShell コマンドを使用して Python コードを実行します。
+    e. 左側のウィンドウで [ **+** ] を選択して、このビルド フェーズのタスクを追加します。 Python スクリプト **test1.py** を実行してすべてのチェックを完了するので、このタスクでは、PowerShell コマンドを使用して Python コードを実行します。
     
-       !["Add tasks" pane with PowerShell selected](./media/code-test/add_task_powershell.PNG)
+    ![[タスクの追加] ウィンドウで PowerShell を選択したところ](./media/code-test/add_task_powershell.PNG)
 
     f. PowerShell の詳細で、必要な情報を入力します (PowerShell の名前やバージョンなど)。 種類には **[インライン スクリプト]** を選択してください。 
     
-       In the box under **Inline Script**, you can type **python test1.py**. Make sure the environment variable is set up correctly for Python. If you need a different version or kernel of Python, you can explicitly specify the path as shown in the figure: 
+    **[インライン スクリプト]** の下のボックスに、「**python test1.py**」と入力することができます。 Python の環境変数が正しく設定されていることを確認します。 別のバージョンまたは別のカーネルの Python が必要な場合は、そのパスを明示的に指定できます (下図参照)。 
     
-       ![PowerShell details](./media/code-test/powershell_scripts.PNG)
+    ![PowerShell の詳細](./media/code-test/powershell_scripts.PNG)
 
-    g. **[保存してキューに登録]** を選択すれば、ビルド パイプライン プロセスは完了です。
+    g. **[保存してキューに登録]** を選択して、ビルド パイプライン プロセスを完了します。
 
-       !["Save & queue" button](./media/code-test/save_and_queue_build_definition.PNG)
+    ![[保存してキューに登録] ボタン](./media/code-test/save_and_queue_build_definition.PNG)
 
 今後、新たにコミットをコード リポジトリにプッシュするたびに、ビルド プロセスが自動的に開始されます。 (ここではリポジトリとして master を使用していますが、任意のブランチを定義することができます。)エージェント マシンで **test1.py** ファイルが実行され、コードのあらゆる定義が正しく実行されることが確認されます。 
 
@@ -150,11 +150,11 @@ ms.locfileid: "60336695"
 
 ![ビルド成功の Azure DevOps 通知](./media/code-test/vs_online_build_succeed.PNG)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * データ サイエンスのシナリオを想定した単体テストの具体例については、[UCI 収入予測リポジトリ](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome)を参照してください。
 * ここで説明した概要と UCI 収入予測シナリオの例を、独自のデータ サイエンス プロジェクトで実際に行ってみます。
 
-## <a name="references"></a>参照
+## <a name="references"></a>References
 * [Team Data Science Process とは](https://aka.ms/tdsp)
 * [Visual Studio のテスト ツール](https://www.visualstudio.com/vs/features/testing-tools/)
 * [Azure DevOps のテスト リソース](https://www.visualstudio.com/team-services/)

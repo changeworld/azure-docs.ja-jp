@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 56765fa16bc1ea96f1429b72fded38c4385e65ec
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7142e3f9aaa25e7ba327194c04ad6a9b5f4e3ad1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452122"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774473"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>クラスター リソース マネージャーを使用して Service Fabric クラスターを記述する
 Azure Service Fabric のクラスター リソース マネージャー機能には、クラスターを記述するためのメカニズムが複数用意されています。
@@ -472,7 +472,7 @@ Update-ServiceFabricService -Stateful -ServiceName $serviceName -PlacementConstr
 
 2 つ目は、サービスを効率的に実行するために重要な分散と最適化です。 コスト効率またはパフォーマンス重視のサービス プランでは、一部のノードをホット ノードにして他のノードはコールド ノードにするということができません。 ホット ノードは、リソースの競合とパフォーマンスの低下を招きます。 コールド ノードは、リソースの浪費とコストの増加につながります。 
 
-Service Fabric ではリソースが "*メトリック*" として表されます。 メトリックとは、Service Fabric に対して記述する論理または物理リソースです。 たとえば、"WorkQueueDepth"、"MemoryInMb" などがメトリックです。 Service Fabric でノードを制御できる物理リソースの詳細については、「[リソース ガバナンス](service-fabric-resource-governance.md)」を参照してください。 カスタム メトリックの構成と使用の詳細については、[こちらの記事](service-fabric-cluster-resource-manager-metrics.md)を参照してください。
+Service Fabric ではリソースが "*メトリック*" として表されます。 メトリックとは、Service Fabric に対して記述する論理または物理リソースです。 たとえば、"WorkQueueDepth"、"MemoryInMb" などがメトリックです。 Service Fabric でノードを制御できる物理リソースの詳細については、「[リソース ガバナンス](service-fabric-resource-governance.md)」を参照してください。 Cluster Resource Manager によって使用される既定のメトリックについて、またカスタム メトリックを構成する方法については、[こちらの記事](service-fabric-cluster-resource-manager-metrics.md)を参照してください。
 
 メトリックは、配置の制約ともノード プロパティとも異なります。 ノードのプロパティは、ノード自体の静的な記述子です。 メトリックは、ノードが持っているリソースと、ノード上で実行されているときにサービスが消費するリソースを表します。 ノード プロパティは **HasSSD** にすることができるほか、true または false に設定できます。 その SSD の使用可能な容量とサービスによって消費される容量は、"DriveSpaceInMb" などのメトリックになります。 
 

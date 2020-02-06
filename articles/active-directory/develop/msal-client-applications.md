@@ -13,13 +13,12 @@ ms.date: 04/25/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ad2f271ae0eea2e393aad4eb972eff211655b02
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 75ea183a9968c65957bcf2a4d39966d2553db84f
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917099"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696591"
 ---
 # <a name="public-client-and-confidential-client-applications"></a>パブリック クライアント アプリケーションと機密クライアント アプリケーション
 Microsoft Authentication Library (MSAL) には、2 種類のクライアントが定義されています。パブリック クライアントと機密クライアントです。 その 2 種類のクライアントは、認証サーバーを使用してセキュリティを確保した認証を行い、クライアント資格情報の機密性を維持する能力によって区別されます。 これに対し、Azure AD 認証ライブラリ (ADAL) では、"*認証コンテキスト*" (Azure AD への接続) と呼ばれるものが使用されます。
@@ -46,7 +45,7 @@ Microsoft Authentication Library (MSAL) には、2 種類のクライアント�
 
 ADAL を使用したことがある場合はお気付きかもしれませんが、ADAL の認証コンテキストとは異なり、MSAL ではクライアント ID ("*アプリケーション ID*" または "*アプリ ID*" とも呼ばれる) がアプリケーションの構築時に一度渡されます。 アプリがトークンを取得する際にこれが再度渡される必要はありません。 これは、パブリックと機密の両方のクライアント アプリに当てはまります。 機密クライアント アプリのコンストラクターにも、ID プロバイダーと共有するシークレットであるクライアント資格情報が渡されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 内容は次のとおりです。
 - [クライアント アプリケーション構成オプション](msal-client-application-configuration.md)
 - [MSAL.NET を使用したクライアント アプリケーションのインスタンス化](msal-net-initializing-client-applications.md)

@@ -1,6 +1,6 @@
 ---
 title: Azure Service Bus 管理ライブラリ | Microsoft Docs
-description: .NET から Service Bus の名前空間とメッセージング エンティティを管理します。
+description: この記事では、Azure Service Bus 管理ライブラリを使用して、Service Bus の名前空間とエンティティを動的にプロビジョニングする方法について説明します。
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: faf0a5893b7de276b9a411745500daef4d39da6b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: d0e90d9278ede97de04ad8efeaa59d94a4567f66
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816083"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756268"
 ---
 # <a name="service-bus-management-libraries"></a>Service Bus 管理ライブラリ
 
@@ -166,5 +166,5 @@ namespace SBusADApp
 > [!IMPORTANT]
 > 完全な例については、[GitHub 上の .NET 管理サンプル](https://github.com/Azure-Samples/service-bus-dotnet-management/)を参照してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Microsoft.Azure.Management.ServiceBus API リファレンス](/dotnet/api/Microsoft.Azure.Management.ServiceBus)

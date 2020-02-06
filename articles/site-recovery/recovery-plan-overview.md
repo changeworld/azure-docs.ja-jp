@@ -2,25 +2,27 @@
 title: Azure Site Recovery の復旧計画について
 description: Azure Site Recovery の復旧計画について説明します。
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.openlocfilehash: 1dd83be03c5b412708e89058ce7667a2ddfef530
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 01/23/2020
+ms.openlocfilehash: beb92bd62d011ef8aaf304dbb769e7694e6d7e60
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497898"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705855"
 ---
 # <a name="about-recovery-plans"></a>復旧計画について
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) の復旧計画の概要を説明します。
 
-復旧計画は、マシンを復旧グループに収集します。 復旧計画は、フェールオーバー可能な小規模の独立ユニットを作成して体系的な復旧プロセスを定義するために役立ちます。 ユニットは通常、環境内のアプリを示します。
+復旧計画では、フェールオーバーを目的としてマシンを復旧グループに収集します。 復旧計画は、フェールオーバー可能な小規模の独立ユニットを作成して体系的な復旧プロセスを定義するために役立ちます。 ユニットは通常、環境内のアプリを示します。
 
 - 復旧計画はマシンがどのようにフェールオーバーするか、およびフェールオーバー後の起動のシーケンスを定義します。
+- 復旧計画は、Azure へのフェールオーバーに使用されますが、Azure からのフェールバックには使用できません。
 - 最大 100 の保護インスタンスを 1 つの復旧計画に追加できます。
 - 順序、説明、タスクを追加することで計画をカスタマイズできます。
 - 計画を定義した後に、フェールオーバーを実行できます。
 - マシンは、複数の復旧計画で参照できます。その中で、マシンが別の復旧計画を使用してデプロイされている場合、後続の計画ではマシンのデプロイ/起動はスキップされます。
+
 
 
 ### <a name="why-use-a-recovery-plan"></a>復旧計画を使用する理由

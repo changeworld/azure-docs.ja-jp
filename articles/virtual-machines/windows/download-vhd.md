@@ -27,7 +27,7 @@ ms.locfileid: "75940448"
 
 ## <a name="optional-generalize-the-vm"></a>省略可能:VM の汎用化
 
-他の VM を作成するためのイメージ](tutorial-custom-images.md)として VHD を使用したい場合には、Sysprep でオペレーティング システムを一般化する必要があります。 
+他の VM を作成するための[イメージ](tutorial-custom-images.md)として VHD を使用したい場合には、[Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) でオペレーティング システムを一般化する必要があります。 
 
 他の VM を作成するためのイメージとして VHD を使用するには、VM を一般化してください。
 

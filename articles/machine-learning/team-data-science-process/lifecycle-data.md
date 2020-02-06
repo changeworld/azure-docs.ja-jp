@@ -3,20 +3,20 @@ title: Team Data Science Process のデータの取得と理解
 description: データ サイエンス プロジェクトのデータの取得と理解のステージの目標、タスク、成果物
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e29f36897dd52fcb09456768a799209a385d74fe
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3c299e9ec42d63812804b5ff7e50324a2de94200
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60303511"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720505"
 ---
 # <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>Team Data Science Process のデータの取得と理解のステージ
 
@@ -25,7 +25,7 @@ ms.locfileid: "60303511"
    1. **ビジネスの把握**
    2. **データの取得と理解**
    3. **モデリング**
-   4. **Deployment**
+   4. **デプロイ**
    5. **顧客による受け入れ**
 
 TDSP ライフサイクルを視覚化すると、次のようになります。 
@@ -52,12 +52,12 @@ TDSP ライフサイクルを視覚化すると、次のようになります。
 
 TDSP には、データの視覚化と概要レポートの準備に役立つ、[IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) と呼ばれる自動化されたユーティリティが用意されています。 IDEAR でデータを調べることから始めて、コーディングを行わずに対話形式でデータへの理解を深めることをお勧めします。 その後、データの調査と視覚化用のカスタム コードを記述できます。 データのクリーニングに関するガイダンスについては、「[機械学習を強化するためのデータを準備するタスク](prepare-data.md)」を参照してください。  
 
-クレンジング済みデータの品質に満足したら、次の手順は、データに内在するパターンの理解を深めることです。 これにより、ターゲットに適した予測モデルを選択して開発することができます。 ターゲットに対するデータの関連性を表す証拠を探します。 その後、次のモデリング手順に進むための十分なデータがあるかどうかを確認します。 このプロセスも、通常は繰り返し実行されます。 場合によっては、前のステージで最初に特定したデータ セットを強化するために、より正確なデータや関連性の高いデータを持つ新しいデータ ソースを探すことが必要です。 
+クレンジング済みデータの品質に満足したら、次の手順は、データに内在するパターンの理解を深めることです。 このデータ分析により、ターゲットに適した予測モデルを選択して開発することができます。 ターゲットに対するデータの関連性を表す証拠を探します。 その後、次のモデリング手順に進むための十分なデータがあるかどうかを確認します。 このプロセスも、通常は繰り返し実行されます。 場合によっては、前のステージで最初に特定したデータ セットを強化するために、より正確なデータや関連性の高いデータを持つ新しいデータ ソースを探すことが必要です。 
 
 ### <a name="set-up-a-data-pipeline"></a>データ パイプラインを設定する
-最初に行うデータの取り込みとクリーニングに加え、通常は、新しいデータをスコア付けするプロセスやデータを定期的に更新するプロセスを、継続的な学習プロセスの一部として設定する必要があります。 この設定は、データ パイプラインまたはワークフローを設定することで行います。 [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) を使用してパイプラインを設定する方法の例については、[Azure Data Factory を使用したオンプレミスの SQL Server インスタンスから Azure SQL Database へのデータの移動](move-sql-azure-adf.md)に関するトピックを参照してください。 
+最初に行うデータの取り込みとクリーニングに加え、通常は、新しいデータをスコア付けするプロセスやデータを定期的に更新するプロセスを、継続的な学習プロセスの一部として設定する必要があります。 スコア付けは、データ パイプラインまたはワークフローを使用して行うことができます。 [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) を使用してパイプラインを設定する方法の例については、[Azure Data Factory を使用したオンプレミスの SQL Server インスタンスから Azure SQL Database へのデータの移動](move-sql-azure-adf.md)に関するトピックを参照してください。 
 
-このステージでは、データ パイプラインのソリューション アーキテクチャを開発します。 データ サイエンス プロジェクトの次のステージで、パイプラインを並行して開発します。 パイプラインは、ビジネス ニーズとこのソリューションを統合する既存システムの制約に応じて、次のいずれかにすることができます。 
+このステージでは、データ パイプラインのソリューション アーキテクチャを開発します。 データ サイエンス プロジェクトの次のステージで、パイプラインを並行して開発します。 パイプラインは、ビジネス ニーズとこのソリューションを統合する既存システムの制約に応じて、次のオプションのいずれかにすることができます。 
 
    * バッチ ベース
    * ストリーミングまたはリアル タイム 
@@ -70,16 +70,16 @@ TDSP には、データの視覚化と概要レポートの準備に役立つ、
    * **ソリューション アーキテクチャ**: ソリューション アーキテクチャは、モデルの構築後に、新しいデータでのスコア付けや予測の実行に使用されるデータ パイプラインのダイアグラムまたは説明です。 また、新しいデータに基づきモデルを再トレーニングするためのパイプラインも、これに含まれます。 TDSP ディレクトリ構造テンプレートを使用する場合は、[プロジェクト](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project) ディレクトリにドキュメントを格納します。
    * **チェックポイント判定**:特徴エンジニアリングとモデルの構築を本格的に開始する前に、プロジェクトを再評価し、期待される値がそのプロジェクトを続行するために十分であるかどうかを判断できます。 たとえば、先に進む準備ができている、さらに多くのデータを収集する必要がある、質問に回答するためのデータが存在しないためプロジェクトを破棄するといった判断ができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 TDSP のライフサイクルの各ステップへのリンクを次に示します。
 
    1. [ビジネスの把握](lifecycle-business-understanding.md)
    2. [データの取得と理解](lifecycle-data.md)
    3. [モデリング](lifecycle-modeling.md)
-   4. [Deployment](lifecycle-deployment.md)
+   4. [デプロイ](lifecycle-deployment.md)
    5. [顧客による受け入れ](lifecycle-acceptance.md)
 
-特定のシナリオ のプロセスに伴うすべての手順を初めから終わりまで完全に説明するチュートリアルが用意されています。 [例を含むチュートリアル](walkthroughs.md)の記事に、各シナリオが、簡潔な説明とリンク付きで示されています。 これらのチュートリアルは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明しています。 
+特定のシナリオのプロセスでのすべての手順を示す完全なチュートリアルが用意されています。 [例を含むチュートリアル](walkthroughs.md)の記事に、各シナリオが、簡潔な説明とリンク付きで示されています。 これらのチュートリアルは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明しています。 
 
 Azure Machine Learning Studio を使用して TDSP の手順を実行する方法の例については、「[Azure Machine Learning での Team Data Science Process の使用](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle-data)」を参照してください。

@@ -3,21 +3,21 @@ title: Azure Service Fabric CLI- sfctl コンテナー
 description: Azure Service Fabric のコマンド ライン インターフェイスである sfctl について説明します。 コンテナーに対するコマンドの一覧が含まれています。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 316715e65af07176b3dc276d47979a5fa3dc1d6f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 07861e2b67eea67740b341cbea994de978973664
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639141"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906114"
 ---
 # <a name="sfctl-container"></a>sfctl container
 クラスター ノード上でコンテナー関連のコマンドを実行します。
 
 ## <a name="commands"></a>コマンド
 
-|command|[説明]|
+|command|説明|
 | --- | --- |
 | invoke-api | 特定のコード パッケージの Service Fabric ノードにデプロイされているコンテナーでコンテナー API を呼び出します。 |
 | logs | Service Fabric ノードに展開されているコンテナーのコンテナー ログを取得します。 |
@@ -27,7 +27,7 @@ ms.locfileid: "75639141"
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --application-id           [必須] | アプリケーションの ID。 <br><br> これは通常、"fabric\:" URI スキームのないアプリケーションの完全な名前です。 バージョン 6.0 以降では、階層名は "\~" 文字で区切られます。 たとえば、アプリケーション名が "fabric\:/myapp/app1" の場合、アプリケーション ID は、6.0 以降では "myapp\~app1" になり、それより前のバージョンでは "myapp/app1" になります。 |
 | --code-package-instance-id [必須] | サービス ファブリック ノードにデプロイされているコード パッケージ インスタンスを一意に識別する ID。 <br><br> 'service code-package-list' によって取得できます。 |
@@ -42,7 +42,7 @@ ms.locfileid: "75639141"
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
@@ -55,7 +55,7 @@ Service Fabric ノードに展開されているコンテナーのコンテナ�
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --application-id           [必須] | アプリケーションの ID。 <br><br> これは通常、"fabric\:" URI スキームのないアプリケーションの完全な名前です。 バージョン 6.0 以降では、階層名は "\~" 文字で区切られます。 たとえば、アプリケーション名が "fabric\:/myapp/app1" の場合、アプリケーション ID は、6.0 以降では "myapp\~app1" になり、それより前のバージョンでは "myapp/app1" になります。 |
 | --code-package-instance-id [必須] | コード パッケージ インスタンス ID。"service code-package-list" を使用して取得できます。 |
@@ -67,7 +67,7 @@ Service Fabric ノードに展開されているコンテナーのコンテナ�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |

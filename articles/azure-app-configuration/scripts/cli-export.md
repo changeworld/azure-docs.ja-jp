@@ -4,7 +4,7 @@ titleSuffix: Azure App Configuration
 description: Azure App Configuration ストアからのエクスポートを行うサンプル スクリプトについて取り上げます。
 services: azure-app-configuration
 documentationcenter: ''
-author: yegu-ms
+author: lisaguthrie
 manager: balans
 editor: ''
 ms.service: azure-app-configuration
@@ -13,14 +13,14 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: azure-app-configuration
 ms.date: 02/24/2019
-ms.author: yegu
+ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 28066fcea50180189cff7f9af790908c52a4a261
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0cdefaa60c9e7a1aab418042c037ef76b63e7804
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433615"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898669"
 ---
 # <a name="export-from-an-azure-app-configuration-store"></a>Azure App Configuration ストアからのエクスポート
 
@@ -51,7 +51,7 @@ az appconfig kv export --name myTestAppConfigStore --file ~/Export.json
 
 このスクリプトでは、次のコマンドを使用して App Configuration ストアからのエクスポートを実行します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [az appconfig kv export](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-export) | App Configuration ストア リソースからのエクスポートを行います。 |
 

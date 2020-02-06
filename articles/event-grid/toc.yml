@@ -138,6 +138,8 @@
       href: custom-disaster-recovery.md
     - name: エラーをトラブルシューティングする
       href: troubleshoot-errors.md
+    - name: トピックの診断ログを有効にする
+      href: enable-diagnostic-logs-topic.md
 - name: リファレンス
   items:
     - name: Azure CLI

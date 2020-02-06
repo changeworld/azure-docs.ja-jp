@@ -2,34 +2,35 @@
 title: データ サイエンス プロジェクトのためのプラットフォームとツール - Team Data Science Process
 description: Team Data Science Process を標準とする企業が利用できるデータおよび分析リソースを列記し、各リソースについて説明します。
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 97dafe292ff3ed0ef5fa46eb895136e3b32e62c5
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e3297319c67ad2b7c94371356cde49113c7ef737
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978511"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718890"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>データ サイエンス プロジェクトのためのプラットフォームとツール
 
-Microsoft では、クラウド プラットフォームまたはオンプレミス プラットフォーム向けの各種データおよび分析サービスとリソースを提供しています。 これらをデプロイすることで、データ サイエンス プロジェクトを効率的かつスケーラブルに実行できます。 [Team Data Science Process](overview.md) (TDSP) によって、バージョン管理された追跡可能な方法でデータ サイエンス プロジェクトを共同で実装するチーム向けのガイダンスが提供されます。  このプロセスを標準とするデータ サイエンス チームの人員の役割とそれに関連したタスクの概要については、「[Team Data Science Process Roles and tasks (Team Data Science Process での役割とタスク)](roles-tasks.md)」をご覧ください。
+Microsoft では、クラウド プラットフォームまたはオンプレミス プラットフォーム向けの各種分析リソースを提供しています。 これらをデプロイすることで、データ サイエンス プロジェクトを効率的かつスケーラブルに実行できます。 [Team Data Science Process](overview.md) (TDSP) によって、バージョン管理された追跡可能な方法でデータ サイエンス プロジェクトを共同で実装するチーム向けのガイダンスが提供されます。  このプロセスを標準とするデータ サイエンス チームの人員の役割とそれに関連したタスクのアウトラインについては、「[Team Data Science Process Roles and tasks (Team Data Science Process での役割とタスク)](roles-tasks.md)」をご覧ください。
 
-TDSP を使用するデータ サイエンス チームが利用できるデータおよび分析サービスは次のとおりです。
+TDSP を使用するデータ サイエンス チームが利用できる分析リソースは次のとおりです。
 
 - データ サイエンス仮想マシン (Windows および Linux CentOS)
 - HDInsight Spark クラスター
-- SQL Data Warehouse
+- Synapse Analytics
 - Azure Data Lake
 - HDInsight Hive クラスター
 - Azure File Storage
-- SQL Server 2016 R Services
+- SQL Server 2019 R Services および Python Services
+- Azure Databricks
 
 このドキュメントでは、各リソースについて簡単に説明し、TDSP チームが公開しているチュートリアルへのリンクを示します。 これらのチュートリアルは、リソースの使用方法やリソースを使用してインテリジェント アプリケーションの構築を開始する方法の学習に役立ちます。 これらのリソースの詳細については、それぞれの製品ページをご覧ください。 
 
@@ -44,13 +45,13 @@ Microsoft が Windows と Linux の両方で提供するデータ サイエン�
 - Windows 用 Power BI Desktop
 - SQL Server 2016 Developer Edition (Windows )/Postgres (Linux)
 
-これにはさらに、xgboost、mxnet、Vowpal Wabbit などの **ML や AI ツール**が含まれています。
+また、xgboost、mxnet、Vowpal Wabbit などの **ML や AI ツール**も含まれています。
 
 現在、DSVM は、**Windows** オペレーティング システムと **Linux CentOS** オペレーティング システムでご利用いただけます。 実行を計画しているデータ サイエンス プロジェクトのニーズに基づいて、DSVM のサイズ (CPU コアの数とメモリ容量) を選択します。 
 
 Windows エディションの DSVM の詳細については、Azure Marketplace の [Microsoft データ サイエンス仮想マシン](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows)のページをご覧ください。 Linux エディションの DSVM については、[Linux データ サイエンス仮想マシン](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/)のページをご覧ください。
 
-DSVM で一般的なデータ サイエンス タスクを効率的に実行する方法については、「[データ サイエンス仮想マシンでできる 10 のこと](../data-science-virtual-machine/vm-do-ten-things.md)」をご覧ください。
+DSVM で一般的なデータ サイエンス タスクを効率的に実行する方法については、[データ サイエンス仮想マシンでできる 10 のこと](../data-science-virtual-machine/vm-do-ten-things.md)に関する記事をご覧ください
 
 
 ## <a name="azure-hdinsight-spark-clusters"></a>Azure HDInsight Spark クラスター
@@ -94,7 +95,7 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 データ サイエンス プロジェクトで特に役立つのは、プロジェクト データをプロジェクト チームのメンバーと共有する場所として Azure File Storage を作成できることです。 これにより、各メンバーは、Azure File Storage でデータの同じコピーにアクセスできます。 また、この File Storage を使用して、プロジェクトの実行中に生成される機能セットを共有することもできます。 プロジェクトがクライアント エンゲージメントの場合、クライアントが自身の Azure サブスクリプションに Azure File Storage を作成して、プロジェクトのデータや機能をチームのメンバーと共有できます。 これにより、クライアントはプロジェクトのデータ資産を完全に制御できます。 Azure File Storage の詳細については、[Windows での Azure File Storage の使用](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files)に関する記事、および [Linux で Azure File Storage を使用する方法](../../storage/files/storage-how-to-use-files-linux.md)に関する記事をご覧ください。
 
 
-## <a name="sql-server-2016-r-services"></a>SQL Server 2016 R Services
+## <a name="sql-server-2019-r-and-python-services"></a>SQL Server 2019 R Services および Python Services
 
 R Services (データベース内) は、新たな洞察を発見できるインテリジェント アプリケーションを開発、デプロイするためのプラットフォームです。 R コミュニティで提供される多数のパッケージを含め、豊富で強力な R 言語を使用して、SQL Server データを使ったモデルの作成や予測の生成を行うことができます。 R Services (データベース内) では R 言語が SQL Server と統合されるため、常にデータの近くで分析が実行されます。これにより、データの移動に関連するコストやセキュリティ リスクが排除されます。
 
@@ -143,10 +144,10 @@ Linux (CentOS) コンピューターを使用して Git コマンドを実行し
 
    ![[SSH 公開キー] をクリックしてから [+追加] をクリックする](./media/platforms-and-tools/resources-3-add-ssh.png)
 
-1. 先ほどコピーした SSH キーをテキスト ボックスに貼り付け、保存します。
+1. コピーした SSH キーをテキスト ボックスに貼り付け、保存します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 また、 **特定のシナリオ** のプロセスに伴うすべての段階をリハーサル的に最初から最後まで実証することも可能です。 これらは、[サンプル チュートリアル](walkthroughs.md)のトピックで簡単な説明と共にリンク付きで紹介されています。 チュートリアルでは、クラウド、オンプレミスのツール、サービスをワークフローまたはパイプラインに組み込んでインテリジェント アプリケーションを作成する方法を説明しています。 
 

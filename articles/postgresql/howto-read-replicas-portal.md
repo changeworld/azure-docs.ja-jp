@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.openlocfilehash: 5e031354d4695a1d7eb6f199e23e74b796273230
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 01/24/2020
+ms.openlocfilehash: dd79618b8d9f016c92166edb9ecdb0bfb113947e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770222"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768962"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Azure portal から Azure Database for PostgreSQL - 単一サーバーの読み取りレプリカを作成および管理する
 
@@ -27,6 +27,9 @@ ms.locfileid: "74770222"
 1. Azure Portal で、マスターとして使用する既存の Azure Database for PostgreSQL サーバーを選択します。
 
 2. サーバー サイドバーで、 **[設定]** の **[レプリケーション]** を選択します。
+
+> [!NOTE] 
+> **[レプリケーションのサポートを無効にする]** がグレー表示になっている場合は、レプリケーションの設定は既定で既にサーバーに設定されています。 次の手順をスキップして、読み取りレプリカの作成に進むことができます。 
 
 3. **[レプリケーションのサポートを有効にします]** を選択します。 
 
@@ -177,6 +180,6 @@ Azure Portal からサーバーを削除するには、次の手順に従いま�
  
 3. **[集計]** で **[Max] (最大)** を選択します。 
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure Database for PostgreSQL の読み取りレプリカ](concepts-read-replicas.md)について確認してください。
 * [Azure CLI と REST API で読み取りレプリカの作成と管理](howto-read-replicas-cli.md)を行う方法について確認してください。

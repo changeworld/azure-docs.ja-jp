@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/11/2017
-ms.openlocfilehash: e8a1cf0e197841b6af8c65fe00c25aa42dbd0e7a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 68c668561123aee943f54e6fdcbad7c6450957f4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433513"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714457"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Azure Cache for Redis のスケーリング方法
 Azure Cache for Redis には、キャッシュ サイズや機能の選択に柔軟性を持たせるために、さまざまなキャッシュ オファリングが用意されています。 キャッシュを作成した後でご利用のアプリケーションの要件が変わった場合、キャッシュのサイズと価格レベルをスケーリングできます。 この記事では、Azure Portal と、Azure PowerShell や Azure CLI などのツールを使用して、キャッシュをスケーリングする方法を説明します。
@@ -166,7 +166,7 @@ Standard および Premium キャッシュには可用性について 99.9% の 
 
 
 ### <a name="how-long-does-scaling-take"></a>スケーリングにはどのくらいの時間がかかりますか
-スケーリングには約 20 分かかりますが、キャッシュ内のデータ量によって変わります。
+スケーリング時間はキャッシュ内のデータ量によって異なりますが、データ量が多いほど完了するまでにより長い時間がかかります。 スケーリングには約 20 分かかります。 クラスター化されたキャッシュの場合、スケーリングにはシャードあたり約 20 分かかります。
 
 ### <a name="how-can-i-tell-when-scaling-is-complete"></a>スケーリングが完了したことをどのようにして確認できますか
 スケール処理の進捗は Azure Portal で確認できます。 スケーリングが完了すると、キャッシュの状態が **[実行中]** に変わります。
@@ -176,6 +176,3 @@ Standard および Premium キャッシュには可用性について 99.9% の 
 [redis-cache-pricing-tier-blade]: ./media/cache-how-to-scale/redis-cache-pricing-tier-blade.png
 
 [redis-cache-scaling]: ./media/cache-how-to-scale/redis-cache-scaling.png
-
-
-

@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 11/06/2019
-ms.openlocfilehash: d8f0f6c63c584cacfa5c996bd541ce4dfc4bd289
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: ddd81c4788cae7c239678366305fe97c6c08ba99
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763931"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932208"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning"></a>Azure Machine Learning で既存のモデルを使用する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -100,6 +100,7 @@ conda_dep.add_conda_package("scikit-learn")
 # You must list azureml-defaults as a pip dependency
 conda_dep.add_pip_package("azureml-defaults")
 conda_dep.add_pip_package("keras")
+conda_dep.add_pip_package("gensim")
 
 # Adds dependencies to PythonSection of myenv
 myenv.python.conda_dependencies=conda_dep
@@ -136,6 +137,7 @@ dependencies:
 - pip:
     - azureml-defaults
     - keras
+    - gensim
 ```
 
 推論構成の詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。

@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 01/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: c8f123871f1e87a18dadfa82ad6bb27d1c145dc4
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: c3b06289ba6ce98d4307a8255981ecdba069fdfa
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863344"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905395"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Time Series Insights 環境にイベント ハブ イベント ソースを追加する
 
@@ -54,7 +54,7 @@ ms.locfileid: "75863344"
 
 ## <a name="add-a-new-event-source"></a>新しいイベント ソースの追加
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. 既存の Time Series Insights 環境を見つけます。 左のメニューで **[すべてのリソース]** を選択し、自分の Time Series Insights 環境を選択します。
 
@@ -76,7 +76,7 @@ ms.locfileid: "75863344"
 
        [![サブスクリプションとイベント ハブの詳細](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png#lightbox)
 
-       | プロパティ | [説明] |
+       | プロパティ | 説明 |
        | --- | --- |
        | サブスクリプション | 目的のイベント ハブ インスタンスと名前空間が属しているサブスクリプション。 |
        | Event Hub 名前空間 | 目的のイベント ハブ インスタンスが属しているイベント ハブ名前空間。 |
@@ -88,7 +88,7 @@ ms.locfileid: "75863344"
 
        **[イベント ハブ設定を手動で行う]** オプションに必要なプロパティについて次の表で説明します。
  
-       | プロパティ | [説明] |
+       | プロパティ | 説明 |
        | --- | --- |
        | サブスクリプション ID | 目的のイベント ハブ インスタンスと名前空間が属しているサブスクリプション。 |
        | Resource group | 目的のイベント ハブ インスタンスと名前空間が属しているリソース グループ。 |
@@ -99,7 +99,7 @@ ms.locfileid: "75863344"
 
     * どちらのオプションも以下の構成オプションを共有します。
 
-       | プロパティ | [説明] |
+       | プロパティ | 説明 |
        | --- | --- |
        | イベント ハブ コンシューマー グループ | イベント ハブからイベントを読み取るコンシューマー グループ。 お使いのイベント ソース専用のコンシューマー グループを使用することを強くお勧めします。 |
        | イベントのシリアル化の形式 | 現在のところ、JSON が唯一利用できるシリアル化形式です。 イベント メッセージはこの形式にする必要があります。そうでないとデータを読み取ることができません。 |

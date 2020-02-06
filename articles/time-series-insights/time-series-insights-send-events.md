@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/05/2019
+ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 159f79e61b43761db5a65c101928d4e6ac5b4d29
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: b9d64c347881f78e832a39bca8404fdad98cbf17
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861780"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76981108"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>イベント ハブを使用して Time Series Insights 環境にイベントを送信する
 
@@ -73,7 +73,7 @@ Time Series Insights の更新では、インスタンスを使用して、受�
 
     [![主キーの接続文字列の値をコピーする](media/send-events/configure-sample-code-connection-string.png)](media/send-events/configure-sample-code-connection-string.png#lightbox)
 
-1. [https://tsiclientsample.azurewebsites.net/windFarmGen.html](https://tsiclientsample.azurewebsites.net/windFarmGen.html ) にアクセスします。 その URL では、シミュレートされた風力発電デバイスが実行されます。
+1. https://tsiclientsample.azurewebsites.net/windFarmGen.html にアクセスします。 その URL では、シミュレートされた風力発電デバイスが実行されます。
 1. Web ページの **[イベント ハブ接続文字列]** ボックスに、[風力発電の入力フィールド](#push-events-to-windmills-sample)でコピーした接続文字列を貼り付けます。
   
     [![[イベント ハブ接続文字列] ボックスに主キーの接続文字列を貼り付ける](media/send-events/configure-wind-mill-sim.png)](media/send-events/configure-wind-mill-sim.png#lightbox)

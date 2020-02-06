@@ -61,13 +61,13 @@ ms.locfileid: "76119654"
 
 **ContentDefinition** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | [説明] |
+| Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Id | はい | コンテンツ定義の識別子。 この値は、このページの後半の**コンテンツ定義 ID** セクションで指定される値です。 |
 
 **ContentDefinition** 要素には、次の属性が含まれています。
 
-| 要素 | 発生回数 | [説明] |
+| 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | コンテンツ定義用の HTML5 ページの URL を含む文字列。 |
 | RecoveryUri | 0:1 | コンテンツ定義に関連するエラーを表示するための HTML ページの URL を含む文字列。 |
@@ -79,7 +79,7 @@ ms.locfileid: "76119654"
 
 **DataUri** 要素は、ページ識別子を指定するために使用されます。 Azure AD B2C は、ページ識別子を使用して、UI 要素とクライアント側の JavaScript を読み込み開始します。 この値のフォーマットは `urn:com:microsoft:aad:b2c:elements:page-name:version` です。  次の表に、使用できるページ識別子を一覧表示します。
 
-| 値 |   [説明] |
+| 値 |   説明 |
 | ----- | ----------- |
 | `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | 例外またはエラーが発生したときにエラー ページを表示します。 |
 | `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | ユーザーがサインイン時に選択できる ID プロバイダーを一覧表示します。 |
@@ -93,13 +93,13 @@ ms.locfileid: "76119654"
 
 **LocalizedResourcesReferences** 要素には、次の属性が含まれています。
 
-| 要素 | 発生回数 | [説明] |
+| 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1:n | コンテンツ定義のローカライズされたリソース参照の一覧。 |
 
 **LocalizedResourcesReferences** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | [説明] |
+| Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Language | はい | 「RFC 5646 - 言語を識別するタグ」に従ってポリシーでサポートされている言語を含む文字列。 |
 | LocalizedResourcesReferenceId | はい | **LocalizedResources** 要素の識別子。 |
@@ -141,7 +141,7 @@ ms.locfileid: "76119654"
 
 **ContentDefinition** 要素の ID 属性は、コンテンツ定義に関連するページの種類を指定します。 この要素は、カスタム HTML5/CSS テンプレートが適用されるコンテキストを定義します。 次の表は、Identity Experience Framework によって認識される一連のコンテンツ定義 ID と、それらに関連するページの種類を示しています。 任意の ID を使用して独自のコンテンツ定義を作成できます。
 
-| id | 既定のテンプレート | [説明] |
+| id | 既定のテンプレート | 説明 |
 | -- | ---------------- | ----------- |
 | **api.error** | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **エラー ページ** - 例外またはエラーが発生したときにエラーページを表示します。 |
 | **api.idpselections** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **ID プロバイダーの選択ページ** - ユーザーがサインイン時に選択できる ID プロバイダーを一覧表示します。 ID プロバイダーは、通常、エンタープライズ ID プロバイダー、ソーシャル ID プロバイダー (Facebook や Google+ など)、ローカル アカウントのいずれかです。 |

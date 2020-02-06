@@ -1,28 +1,28 @@
 ---
-title: クイック スタート:Standard Load Balancer を作成する - Azure テンプレート
+title: クイック スタート:ロード バランサーを作成する - Azure テンプレート
 titleSuffix: Azure Load Balancer
-description: このクイックスタートでは、Azure Resource Manager テンプレートを使用して Standard ロード バランサーを作成する方法について説明します。
+description: このクイックスタートでは、Azure Resource Manager テンプレートを使用してロード バランサーを作成する方法について説明します。
 services: load-balancer
 documentationcenter: na
 author: asudbring
 manager: twooley
-Customer intent: I want to create a Standard load balancer by using an Azure Resource Manager template so that I can load balance internet traffic to VMs.
+Customer intent: I want to create a load balancer by using an Azure Resource Manager template so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/20/2019
+ms.date: 01/27/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 28c4ca59b20fcdd8ab0249392dc0f13cbabf1a97
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 69503968ece5e68b6e4777d72713565158009949
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970632"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843856"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>クイック スタート:VM の負荷を分散する Standard ロード バランサーを Azure Resource Manager テンプレートを使って作成する
+# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>クイック スタート:VM の負荷を分散するロード バランサーを Azure Resource Manager テンプレートを使って作成する
 
 負荷分散では、着信要求を複数の仮想マシン (VM) に分散させることで、より高いレベルの可用性とスケールを実現します。 このクイックスタートでは、VM を負荷分散する Standard ロード バランサーを作成する Azure Resource Manager テンプレートを展開する方法を説明します。 Resource Manager テンプレートを使用すると、他のデプロイ方法より手順が減ります。
 
@@ -30,9 +30,9 @@ ms.locfileid: "75970632"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="create-a-standard-load-balancer"></a>Standard ロード バランサ―を作成する
+## <a name="create-a-load-balancer"></a>ロード バランサーを作成する
 
-Standard ロード バランサーでサポートされるのは Standard パブリック IP アドレスだけです。 Standard ロード バランサーを作成するときに、Standard ロード バランサーのフロントエンドとして構成されている新しい Standard パブリック IP アドレスも作成する必要があります。
+ロード バランサーとパブリック IP の SKU は一致している必要があります。 Standard Load Balancer を作成するときに、Standard Load Balancer のフロントエンドとして構成されている新しい Standard パブリック IP アドレスも作成する必要があります。 Basic Load Balancer を作成したい場合は、[こちらのテンプレート](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/)を使用してください。 運用環境のワークロードには Standard SKU の使用をお勧めします。
 
 このクイックスタートで使用するテンプレートは、[クイックスタート テンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-load-balancer-standard-create/azuredeploy.json)です。
 
@@ -88,7 +88,7 @@ Azure Load Balancer に関連するテンプレートをさらに探すには、
 
 ## <a name="test-the-load-balancer"></a>ロード バランサーをテストする
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. 左側のウィンドウから **[リソース グループ]** を選択します。
 

@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: f920df20a8dc1cace76f641ce1c71f9b91a30bf4
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 70253e66903916bde05f9e6e55e3c0609cb4a146
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867668"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841116"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>チュートリアル:CLI からのモデルのトレーニングとデプロイ
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -67,8 +67,8 @@ git clone https://github.com/microsoft/MLOps.git
 
 リポジトリには、トレーニング済みのモデルを Web サービスとしてデプロイするために使用される以下のファイルが含まれています。
 
-* `aciDeploymentConfig.yml`:__デプロイ構成__ ファイル。 このファイルでは、モデルに必要なホスティング環境を定義します。
-* `inferenceConfig.yml`:__推論構成__ ファイル。 このファイルでは、モデルを使用してデータをスコア付けするためにサービスによって使用されるソフトウェア環境を定義します。
+* `aciDeploymentConfig.yml`:__デプロイ構成__ファイル。 このファイルでは、モデルに必要なホスティング環境を定義します。
+* `inferenceConfig.yml`:推論構成__ファイル。 このファイルでは、モデルを使用してデータをスコア付けするためにサービスによって使用されるソフトウェア環境を定義します。
 * `score.py`:受信データを受け取り、モデルを使用してスコア付けした後、応答を返す python スクリプト。
 * `scoring-env.yml`:モデルと `score.py` スクリプトの実行に必要な conda の依存関係。
 * `testdata.json`:デプロイ済み Web サービスのテストに使用できるデータ ファイル。
@@ -246,7 +246,7 @@ az ml dataset register -f dataset.json --skip-validation
 > [!IMPORTANT]
 > `id` エントリの値をコピーします。これは次のセクションで使用します。
 
-データセットを記述する JSON ファイルのより包括的なテンプレートを確認するには、次のコマンドを使用します。
+データセット用のより包括的なテンプレートを確認するには、次のコマンドを使用します。
 ```azurecli-interactive
 az ml dataset register --show-template
 ```
@@ -288,7 +288,7 @@ data:
 
 `id` エントリの値を、データセットを登録したときに返された値と一致するように変更します。 この値は、トレーニング中にデータをコンピューティング先に読み込むために使用されます。
 
-この YAML では次の処理が実行されます。
+この YAML では、トレーニング中に次のアクションが行われます。
 
 * トレーニング環境で (データセットの ID に基づいて) データセットをマウントし、マウント ポイントへのパスを `mnist` 環境変数に格納します。
 * `--data-folder` 引数を使用して、トレーニング環境内のデータの場所 (マウント ポイント) をスクリプトに渡します。
@@ -298,7 +298,7 @@ runconfig ファイルには、トレーニングの実行で使用される環�
 > [!TIP]
 > runconfig ファイルは手動で作成することもできますが、この例のファイルは、リポジトリに含まれている `generate-runconfig.py` ファイルを使用して作成されたものです。 このファイルは、登録済みデータセットへの参照を取得し、プログラムによって実行構成を作成して、ファイルに保存します。
 
-実行構成ファイルについて詳しくは、[モデル トレーニング用のコンピューティング ターゲットの設定と使用](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli)に関するページをご覧になるか、こちらの [JSON ファイル](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)を参照して、実行構成の完全なスキーマを確認してください。
+実行構成ファイルについて詳しくは、[モデル トレーニング用のコンピューティング先の設定と使用](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli)に関するページをご覧ください。 完全な JSON リファレンスについては、[runconfigschema.json](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json) を参照してください。
 
 ## <a name="submit-the-training-run"></a>トレーニングの実行の送信
 
@@ -379,7 +379,9 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aci
 
 このコマンドでは、以前に登録したモデルのバージョン 1 を使用して、`myservice` という名前の新しいサービスをデプロイします。
 
-`inferenceConfig.yml` ファイルでは、入力スクリプト (`score.py`) やソフトウェアの依存関係など、推論の実行方法に関する情報が提供されます。 このファイルの構造について詳しくは、「[推論構成スキーマ](reference-azure-machine-learning-cli.md#inference-configuration-schema)」を参照してください。 エントリ スクリプトの詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md#prepare-to-deploy)」を参照してください。
+`inferenceConfig.yml` ファイルでは、推論にモデルを使用する方法に関する情報が提供されます。 たとえば、これはエントリ スクリプト (`score.py`) とソフトウェアの依存関係を参照します。 
+
+このファイルの構造について詳しくは、「[推論構成スキーマ](reference-azure-machine-learning-cli.md#inference-configuration-schema)」を参照してください。 エントリ スクリプトの詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md#prepare-to-deploy)」を参照してください。
 
 `aciDeploymentConfig.yml` は、サービスをホストするために使用されるデプロイ環境を示します。 デプロイ構成は、デプロイに使用するコンピューティング先に固有です。 この例では、Azure Container インスタンスが使用されます。 詳しくは、「[デプロイ構成スキーマ](reference-azure-machine-learning-cli.md#deployment-configuration-schema)」を参照してください。
 

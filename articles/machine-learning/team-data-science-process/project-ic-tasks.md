@@ -2,20 +2,20 @@
 title: Team Data Science Process での個々の共同作成者のタスク
 description: データ サイエンス チーム プロジェクトの個々の共同作成者のタスクについて段階的に詳しく説明します。
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/24/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b64d9669c11f15de5e6bd616ff7a79f59b748363
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: d9942c31b63de77196b8b51b88376cb8ef74b990
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244270"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721253"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Team Data Science Process での個々の共同作成者のタスク
 
@@ -42,7 +42,7 @@ ms.locfileid: "72244270"
 - 該当する場合、チームまたはプロジェクトの共有アセットに対して設定された Azure **ファイル ストレージ**
 - プロジェクト リポジトリとの間でクローン/プッシュを行うための**アクセス許可** 
 
-ローカル コンピューターまたは DSVM でリポジトリをクローンしてその内容を変更したり、Azure ファイル ストレージを DSVM にマウントしたりするには、次のものが必要です。
+ローカル コンピューターまたは DSVM でリポジトリをクローンしてその内容を変更したり、Azure ファイル ストレージを DSVM にマウントしたりするには、次のチェックリストを考慮する必要があります。
 
 - Azure サブスクリプション。
 - コンピューターにインストールされた Git。 DSVM を使用している場合、Git は事前にインストールされています。 それ以外の場合は、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)をご覧ください。
@@ -96,7 +96,7 @@ ms.locfileid: "72244270"
 
 チームまたはプロジェクトが Azure ファイル ストレージでアセットを共有している場合、ローカル コンピューターまたは DSVM にファイル ストレージをマウントします。 「[ローカル コンピューターまたは DSVM に Azure ファイル ストレージをマウントする](team-lead-tasks.md#mount-azure-file-storage-on-your-local-machine-or-dsvm)」の指示に従ってください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Team Data Science Process で定義されている他の役割とタスクの詳細な説明へのリンクを次に示します。
 

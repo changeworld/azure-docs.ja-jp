@@ -1,6 +1,6 @@
 ---
 title: Azure DevTest Labs でのイメージの保存と配布 | Microsoft Docs
-description: Azure DevTest Labs でカスタム イメージ ファクトリを作成する方法について説明します。
+description: この記事では、Azure DevTest Labs で、作成済みの仮想マシン (VM) からカスタム イメージを保存する手順について説明します。
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: feabd055833e5f0d850138af528cce1da82cae49
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e5bc8e5041bfe6d95e3ff1a93bb3338ccead5bb4
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622680"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759433"
 ---
 # <a name="save-custom-images-and-distribute-to-multiple-labs"></a>カスタム イメージを保存して複数のラボに配布する
 この記事では、作成済みの仮想マシン (VM) からカスタム イメージを保存する手順について説明します。 また、これらのカスタム イメージを組織内の他の DevTest Labs に配布する方法についても説明します。
@@ -91,8 +91,8 @@ labs.json 構成ファイルには、2 つの重要な事項があります。
 
 このタスクは、イメージ ファクトリ内のカスタム イメージを取得し、Labs.json ファイルに定義されているすべてのラボにプッシュします。
 
-## <a name="queue-the-build"></a>ビルドをキューに配置
+## <a name="queue-the-build"></a>ビルドをキューに配置する
 配布ビルド タスクが完了したら、すべてが確実に機能するように、新しいビルドをキューに配置します。 ビルドが正常に完了したら、Labs.json 構成ファイルに入力された配布先のラボに、新しいカスタム イメージが表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このシリーズの次の記事では、保持ポリシーとクリーンアップ手順を使用してイメージ ファクトリを更新します。[アイテム保持ポリシーを設定してクリーンアップ スクリプトを実行する](image-factory-set-retention-policy-cleanup.md)

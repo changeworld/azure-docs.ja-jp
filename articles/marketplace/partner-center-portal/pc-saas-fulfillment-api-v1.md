@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
 ROBOTS: NOINDEX
-ms.openlocfilehash: 99dd6db7003e0358ddde2438f6897cd767932227
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f56e9b4f6c3db6fb47452c7478f5a27445955e87
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73816578"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715394"
 ---
 # <a name="saas-fulfillment-apis-version-1-deprecated"></a>SaaS Fulfillment API バージョン 1 (非推奨)
 
@@ -335,8 +335,8 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 | id                 | String        | 操作の ID。                                                                      |
 | status             | 列挙型          | 操作の状態。`In Progress`、`Succeeded`、`Failed` のいずれか。          |
 | resourceLocation   | String        | 作成または変更されたサブスクリプションへのリンク。 これは、POST 操作の更新された状態をクライアントが取得するために役立ちます。 この値は、`Unsubscribe` 操作には設定されません。 |
-| created            | Datetime      | 操作の作成時刻 (UTC)。                                                           |
-| lastModified       | Datetime      | 操作に対する最終更新 (UTC)。                                                      |
+| created            | DateTime      | 操作の作成時刻 (UTC)。                                                           |
+| lastModified       | DateTime      | 操作に対する最終更新 (UTC)。                                                      |
 |  |  |  |
 
 *応答コード*
@@ -406,9 +406,9 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 | offerId                | String        | ユーザーがサブスクライブするオファー ID。         |
 | planId                 | String        | ユーザーがサブスクライブするプラン ID。          |
 | saasSubscriptionName   | String        | SaaS サブスクリプションの名前。                |
-| saasSubscriptionStatus | 列挙型          | 操作の状態。  次のいずれか:  <br/> - `Subscribed`:サブスクリプションがアクティブです。  <br/> - `Pending`:ユーザーがリソースを作成しますが、ISV によってアクティブ化されません。   <br/> - `Unsubscribed`:ユーザーがサブスクライブを解除しました。   <br/> - `Suspended`:ユーザーがサブスクリプションを中断しました。   <br/> - `Deactivated`:Azure サブスクリプションが中断されました。  |
-| created                | Datetime      | サブスクリプション作成のタイムスタンプ値 (UTC)。 |
-| lastModified           | Datetime      | サブスクリプション変更のタイムスタンプ値 (UTC)。 |
+| saasSubscriptionStatus | 列挙型          | 操作の状態。  次のいずれか:  <br/> - `Subscribed`: サブスクリプションがアクティブです。  <br/> - `Pending`: ユーザーがリソースを作成しますが、ISV によってアクティブ化されません。   <br/> - `Unsubscribed`: ユーザーがサブスクライブを解除しました。   <br/> - `Suspended`: ユーザーがサブスクリプションを中断しました。   <br/> - `Deactivated`: Azure サブスクリプションが中断されました。  |
+| created                | DateTime      | サブスクリプション作成のタイムスタンプ値 (UTC)。 |
+| lastModified           | DateTime      | サブスクリプション変更のタイムスタンプ値 (UTC)。 |
 |  |  |  |
 
 *応答コード*
@@ -474,11 +474,11 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 
 | **パラメーター名**     | **データの種類** | **説明**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id                     | string        | Azure の SaaS サブスクリプション リソースの ID    |
-| offerId                | string        | ユーザーがサブスクライブするオファー ID         |
-| planId                 | string        | ユーザーがサブスクライブするプラン ID          |
-| saasSubscriptionName   | string        | SaaS サブスクリプションの名前                |
-| saasSubscriptionStatus | 列挙型          | 操作の状態。  次のいずれか:  <br/> - `Subscribed`:サブスクリプションがアクティブです。  <br/> - `Pending`:ユーザーがリソースを作成しますが、ISV によってアクティブ化されません。   <br/> - `Unsubscribed`:ユーザーがサブスクライブを解除しました。   <br/> - `Suspended`:ユーザーがサブスクリプションを中断しました。   <br/> - `Deactivated`:Azure サブスクリプションが中断されました。  |
+| id                     | String        | Azure の SaaS サブスクリプション リソースの ID    |
+| offerId                | String        | ユーザーがサブスクライブするオファー ID         |
+| planId                 | String        | ユーザーがサブスクライブするプラン ID          |
+| saasSubscriptionName   | String        | SaaS サブスクリプションの名前                |
+| saasSubscriptionStatus | 列挙型          | 操作の状態。  次のいずれか:  <br/> - `Subscribed`: サブスクリプションがアクティブです。  <br/> - `Pending`: ユーザーがリソースを作成しますが、ISV によってアクティブ化されません。   <br/> - `Unsubscribed`: ユーザーがサブスクライブを解除しました。   <br/> - `Suspended`: ユーザーがサブスクリプションを中断しました。   <br/> - `Deactivated`: Azure サブスクリプションが中断されました。  |
 | created                | DateTime      | サブスクリプション作成のタイムスタンプ値 (UTC) |
 | lastModified           | DateTime      | サブスクリプション変更のタイムスタンプ値 (UTC) |
 |  |  |  |
@@ -524,17 +524,17 @@ SaaS の webhook は、SaaS サービスに事前に変更を通知するため�
 
 | **パラメーター名**     | **データの種類** | **説明**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id  | string       | トリガーされた操作の一意の ID。                |
-| activityId   | string        | サービスからの要求を追跡するための一意の文字列値。 これは、任意の調整に使用されます。               |
-| subscriptionId                     | string        | Azure の SaaS サブスクリプション リソースの ID。    |
+| id  | String       | トリガーされた操作の一意の ID。                |
+| activityId   | String        | サービスからの要求を追跡するための一意の文字列値。 これは、任意の調整に使用されます。               |
+| subscriptionId                     | String        | Azure の SaaS サブスクリプション リソースの ID。    |
 | offerId                | String        | ユーザーがサブスクライブするオファー ID。 「更新」アクションでのみ指定されます。        |
-| publisherId                | string        | SaaS オファーのパブリッシャー ID         |
+| publisherId                | String        | SaaS オファーのパブリッシャー ID         |
 | planId                 | String        | ユーザーがサブスクライブするプラン ID。 「更新」アクションでのみ指定されます。          |
-| action                 | string        | この通知をトリガーするアクション。 指定できる値 - Activate (アクティブ化)、Delete (削除)、Suspend (中断)、Reinstate (再開)、Update (更新)          |
-| timeStamp                 | string        | この通知がトリガーされたときのタイムスタンプ値 (UTC)。          |
+| action                 | String        | この通知をトリガーするアクション。 指定できる値 - Activate (アクティブ化)、Delete (削除)、Suspend (中断)、Reinstate (再開)、Update (更新)          |
+| timeStamp                 | String        | この通知がトリガーされたときのタイムスタンプ値 (UTC)。          |
 |  |  |  |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 開発者は、[Cloud パートナー ポータル REST API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) を使用して、ワークロード、オファー、およびパブリッシャー プロファイルの操作をプログラムで取得することもできます。

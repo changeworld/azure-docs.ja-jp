@@ -3,20 +3,20 @@ title: シナリオを特定し分析プロセスを計画する - Team Data Sci
 description: 一連の重要な確認事項を考慮することにより、高度な分析データ処理のためのシナリオとプランを特定します。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ba87461c6c195a6b483538fd94d8be76239b8dc5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b0b811a2b7ed432b7fc5015886b28337ca33424e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647307"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76710313"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>高度な分析データ処理のためのシナリオとプランを特定する方法
 
@@ -79,7 +79,7 @@ ms.locfileid: "75647307"
 
 ### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>どのくらいの量のデータが Azure に移動されますか。
 
-非常に大きいデータセットの場合、特定の環境のストレージ容量を超える可能性があります。 たとえば、次のセクションで、Machine Learning Studio (クラシック) のサイズ制限の説明を参照してください。 このような場合、分析中はデータのサンプルを使用できます。 さまざまな Azure 環境でデータセットをダウンサンプリングする方法の詳細については、 [Team Data Science Process のデータのサンプリング](sample-data.md)に関するページをご覧ください。
+大きいデータセットの場合、特定の環境のストレージ容量を超える可能性があります。 たとえば、次のセクションで、Machine Learning Studio (クラシック) のサイズ制限の説明を参照してください。 このような場合、分析中はデータのサンプルを使用できます。 さまざまな Azure 環境でデータセットをダウンサンプリングする方法の詳細については、 [Team Data Science Process のデータのサンプリング](sample-data.md)に関するページをご覧ください。
 
 ## <a name="data-characteristics-questions-type-format-and-size"></a>データの特性の確認事項: 型、形式、およびサイズ
 

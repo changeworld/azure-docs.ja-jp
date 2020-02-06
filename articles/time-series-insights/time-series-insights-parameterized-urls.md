@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 12/12/2019
+ms.date: 02/04/2020
 ms.custom: seodec18
-ms.openlocfilehash: fd6de7dfe9509e7f99adeed0e5de3e157335e6bf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9dfe499a7d6084a23fd71ab98db472befe71fc04
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452801"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024366"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>パラメーター化 URL を使用してカスタム ビューを共有する
 
@@ -68,7 +68,7 @@ Time Series Insights Explorer では、そのエクスペリエンスのビュ�
 
 `timeSeriesDefinitions=<collection of term objects>` パラメーターは、Time Series Insights ビューに表示される述語項を指定します。
 
-| パラメーター | URL 項目 | [説明] |
+| パラメーター | URL 項目 | 説明 |
 | --- | --- | --- |
 | **name** | `\<string>` | "*期間*" の名前。 |
 | **splitBy** | `\<string>` | "*分割基準*" となる列名。 |
@@ -85,7 +85,7 @@ Time Series Insights Explorer では、そのエクスペリエンスのビュ�
 * `timeBucketUnit=<Unit>&timeBucketSize=<integer>` を使用すると、間隔スライダーを調整して、グラフの集計表示を細かく、または滑らかにできます。  
 * `timezoneOffset=<integer>` パラメーターを使用すると、UTC のオフセットとして表示されるグラフのタイムゾーンを設定できます。
 
-| ペア | [説明] |
+| ペア | 説明 |
 | --- | --- |
 | `multiChartStack=false` | `true` は既定で有効なので、積み重ねるには `false` を渡します。 |
 | `multiChartStack=false&multiChartSameScale=true` | 期間全体で同じ Y 軸のスケールを使用するには、積み重ねを有効にする必要があります。  既定では `false` なので、`true` を渡してこの機能を有効にします。 |

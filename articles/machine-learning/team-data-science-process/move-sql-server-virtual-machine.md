@@ -3,20 +3,20 @@ title: SQL Server 仮想マシンにデータを移動する - Team Data Science
 description: フラット ファイルまたはオンプレミスの SQL Server から Azure VM 上の SQL Server にデータを移動します。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ddc732655c7cfb72c4948f83752440608332915d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b8a01b5f2f5ec64fea014468356408220f9c4f1a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974085"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721372"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Azure 仮想マシン上の SQL Server にデータを移動する
 
@@ -31,7 +31,7 @@ Machine Learning 用に Azure SQL Database にデータを移動するための�
 | <b>フラット ファイル</b> |1.<a href="#insert-tables-bcp">コマンド ライン一括コピー ユーティリティ (BCP) </a><br> 2.<a href="#insert-tables-bulkquery">一括挿入 SQL クエリ </a><br> 3.<a href="#sql-builtin-utilities">SQL Server のグラフィカル組み込みユーティリティ</a> |
 | <b>オンプレミスの SQL Server</b> |1.<a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード</a><br> 2.<a href="#export-flat-file">フラット ファイルへのエクスポート</a><br> 3.<a href="#sql-migration">SQL Database 移行ウィザード </a> <br> 4.<a href="#sql-backup">データベースのバックアップと復元 </a><br> |
 
-このドキュメントでは、SQL Server Management Studio または Visual Studio のデータベース エクスプローラーから SQL コマンドが実行されることを想定していることに注意してください。
+このドキュメントでは、SQL Server Management Studio または Visual Studio のデータベース エクスプローラーから SQL コマンドが実行されることを想定しています。
 
 > [!TIP]
 > 別の方法として、 [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) を使用して、データを Azure の SQL Server VM に移動するパイプラインの作成とスケジュール設定を実行できます。 詳細については、「 [Azure Data Factory を使用してデータをコピーする (コピー アクティビティ)](../../data-factory/copy-activity-overview.md)」を参照してください。
@@ -54,7 +54,7 @@ Machine Learning 用に Azure SQL Database にデータを移動するための�
 3. [SQL Server のグラフィカル組み込みユーティリティ (インポート/エクスポート、SSIS)](#sql-builtin-utilities)
 
 ### <a name="insert-tables-bcp"></a>コマンド ライン一括コピー ユーティリティ (BCP)
-BCP は、SQL Server と一緒にインストールされるコマンド ライン ユーティリティであり、データを移動する最も簡単な方法の 1 つです。 これは、3 つの異なる SQL Server (オンプレミスの SQL Server、SQL Azure、および Azure での SQL Server VM) すべて機能します。
+BCP は、SQL Server と一緒にインストールされるコマンド ライン ユーティリティであり、データを移動する最も簡単な方法の 1 つです。 これは、3 つの異なる SQL Server (オンプレミスの SQL Server、SQL Azure、および Azure での SQL Server VM) のすべてで機能します。
 
 > [!NOTE]
 > **BCP 用のデータの場所**  
@@ -64,21 +64,21 @@ BCP は、SQL Server と一緒にインストールされるコマンド ライ�
 
 1. データベースとテーブルがターゲットの SQL Server データベースで作成されていることを確認します。 以下に、`Create Database` コマンドと `Create Table` コマンドを使用してこれを行う方法の例を示します。
 
-```sql
-CREATE DATABASE <database_name>
-
-CREATE TABLE <tablename>
-(
-    <columnname1> <datatype> <constraint>,
-    <columnname2> <datatype> <constraint>,
-    <columnname3> <datatype> <constraint>
-)
-```
+    ```sql
+    CREATE DATABASE <database_name>
+    
+    CREATE TABLE <tablename>
+    (
+        <columnname1> <datatype> <constraint>,
+        <columnname2> <datatype> <constraint>,
+        <columnname3> <datatype> <constraint>
+    )
+    ```
 
 1. bcp がインストールされているマシンのコマンド ラインから次のコマンドを発行して、テーブルのスキーマを記述するフォーマット ファイルを生成します。
 
     `bcp dbname..tablename format nul -c -x -f exportformatfilename.xml -S servername\sqlinstance -T -t \t -r \n`
-1. 次のように bcp コマンドを使用して、データをデータベースに挿入します。 SQL Server が同じマシン上にインストールされていると想定した場合、これはコマンド ラインから動作します。
+1. bcp コマンドを使用してデータベースにデータを挿入します。これは、SQL Server が同じコンピューターにインストールされている場合には、コマンド ラインから機能します。
 
     `bcp dbname..tablename in datafilename.tsv -f exportformatfilename.xml -S servername\sqlinstancename -U username -P password -b block_size_to_move_in_single_attempt -t \t -r \n`
 
@@ -139,22 +139,22 @@ Set-ExecutionPolicy Restricted #reset the execution policy
 
 1. インポートする前に、データを分析して任意のカスタム オプションを設定し、SQL Server データベースの日付などのすべての特別なフィールドが同じ形式になるようにします。 次に、日付形式を年-月-日 (データに年-月-日形式で日付が含まれている場合) に設定する方法の例を示します。
 
-```sql
-SET DATEFORMAT ymd;
-```
-1. 一括インポート ステートメントを使用してデータをインポートする:
+    ```sql
+    SET DATEFORMAT ymd;
+    ```
+2. 一括インポート ステートメントを使用してデータをインポートする:
 
-```sql
-BULK INSERT <tablename>
-FROM
-'<datafilename>'
-WITH
-(
-    FirstRow = 2,
-    FIELDTERMINATOR = ',', --this should be column separator in your data
-    ROWTERMINATOR = '\n'   --this should be the row separator in your data
-)
-```
+    ```sql
+    BULK INSERT <tablename>
+    FROM
+    '<datafilename>'
+    WITH
+    (
+        FirstRow = 2,
+        FIELDTERMINATOR = ',', --this should be column separator in your data
+        ROWTERMINATOR = '\n'   --this should be the row separator in your data
+    )
+    ```
 
 ### <a name="sql-builtin-utilities"></a>
 SQL Server 統合サービス (SSIS) を使用して、フラット ファイルから Azure の SQL Server VM にデータをインポートすることができます。
@@ -171,7 +171,7 @@ SSIS は 2 つの Studio 環境で使用できます。 詳細については、
 3. [SQL Database 移行ウィザード](#sql-migration)
 4. [データベースのバックアップと復元](#sql-backup)
 
-それぞれの方法について以下で説明します。
+それぞれのオプションについて以下で説明します。
 
 ### <a name="deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard"></a>Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード
 **Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード** は、オンプレミスの SQL Server インスタンスから Azure VM の SQL Server にデータを簡単に移行するためのお勧めの方法です。 詳しい手順や、その他の代替策の詳細については、「[Azure VM の SQL Server へのデータベースの移行](../../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md)」を参照してください。
@@ -203,7 +203,7 @@ SSIS は 2 つの Studio 環境で使用できます。 詳細については、
 SQL Server は以下のものをサポートします。
 
 1. [データベースのバックアップと復元機能](https://msdn.microsoft.com/library/ms187048.aspx) (ローカル ファイルに対するバックアップと復元、または BLOB への BACPAC エクスポート) と[データ層アプリケーション](https://msdn.microsoft.com/library/ee210546.aspx) (BACPAC を使用)。
-2. コピーされたデータベースを使用して Azure で SQL Server VM を直接作成する機能、または既存の SQL Azure データベースにコピーする機能。 詳細については、「 [データベース コピー ウィザードの使用](https://msdn.microsoft.com/library/ms188664.aspx)」を参照してください。
+2. コピーされたデータベースを使用して Azure で SQL Server VM を直接作成する機能、または既存の SQL Azure データベースにコピーする機能。 詳細については、「 [Use the Copy Database Wizard](https://msdn.microsoft.com/library/ms188664.aspx)」を参照してください。
 
 SQL Server Management Studio のデータベースのバックアップ/復元オプションのスクリーンショットを次に示します。
 

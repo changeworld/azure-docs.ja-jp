@@ -2,17 +2,17 @@
 title: チュートリアル:Azure パブリック IP アドレスを参照する Azure DNS エイリアス レコードを作成する
 description: このチュートリアルでは、Azure パブリック IP アドレスを参照する Azure DNS エイリアス レコードを構成する方法を示します。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
-ms.author: allensu
-ms.openlocfilehash: 81dfbe5f46116d263c4a04d6178437a2c8bc1185
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.author: rohink
+ms.openlocfilehash: d601d19a786613f674f7b941becc5e97d84e6fce
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072127"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939275"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>チュートリアル:Azure パブリック IP アドレスを参照するエイリアス レコードを構成する 
 
@@ -84,12 +84,12 @@ Azure DNS 内でドメインをホストする手順については、「[チュ
 
 この手順は成功します。エイリアス レコードを使用して、標準の A レコードではなくパブリック IP アドレス リソースを指したからです。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルで作成したリソースが不要になったら、**RG-DNS-Alias-pip** リソース グループは削除してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、エイリアス レコードを作成し、Azure パブリック IP アドレスを参照しました。 Azure DNS と Web アプリについて詳しくは、Web アプリのチュートリアルに進んでください。
 

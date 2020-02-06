@@ -4,16 +4,16 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 02/21/2019
 ms.author: rgarcia
-ms.openlocfilehash: 72616d5d79b4dbdb8e14463c706c1626eeb50e97
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9bd213b63b69a25fb2530cd8f6659abf5357616a
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67180872"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76694416"
 ---
 ## <a name="set-up-authentication"></a>認証の設定
 
-サービスにアクセスするには、アカウント キー、アクセス トークン、または Azure Active Directory 認証トークンを提供する必要があります。
+サービスにアクセスするには、アカウント キー、アクセス トークン、または Azure Active Directory 認証トークンを提供する必要があります。 この詳細については、[認証の概念に関するページ](/azure/spatial-anchors/concepts/authentication)も参照してください。
 
 ### <a name="account-keys"></a>アカウント キー
 

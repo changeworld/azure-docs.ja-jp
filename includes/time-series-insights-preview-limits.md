@@ -4,17 +4,17 @@ description: インクルード ファイル
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
-ms.date: 12/31/2019
+ms.date: 02/03/2020
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.custom: include file
-ms.openlocfilehash: 90e6e5c8d6d4f10e2d63f80b9c0840854424f5a7
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 8537db1e5703abd8df92a2950455bee556731d08
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75616198"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "77013935"
 ---
 ### <a name="general-availability-and-preview-comparison"></a>一般提供とプレビューの比較
 

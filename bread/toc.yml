@@ -194,19 +194,16 @@
             - name: IoT Central
               tocHref: /azure/iot-central/core/
               topicHref: /azure/iot-central/core/
-            - name: IoT Central (プレビュー機能)
-              tocHref: /azure/iot-central/preview/
-              topicHref: /azure/iot-central/preview/
-            - name: エネルギー産業向けの IoT Central (プレビュー機能)
+            - name: エネルギー産業向けの IoT Central
               tocHref: /azure/iot-central/energy/
               topicHref: /azure/iot-central/energy/
-            - name: 政府機関向けの IoT Central (プレビュー機能)
+            - name: 政府機関向けの IoT Central
               tocHref: /azure/iot-central/government/
               topicHref: /azure/iot-central/government/
-            - name: ヘルスケア業界向けの IoT Central (プレビュー機能)
+            - name: ヘルスケア業界向けの IoT Central
               tocHref: /azure/iot-central/healthcare/
               topicHref: /azure/iot-central/healthcare/
-            - name: 小売業向けの IoT Central (プレビュー機能)
+            - name: 小売業向けの IoT Central
               tocHref: /azure/iot-central/retail/
               topicHref: /azure/iot-central/retail/
         - name: IoT Edge

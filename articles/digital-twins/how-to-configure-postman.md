@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/10/2020
-ms.openlocfilehash: 3d0220f23c8098222b93473dc6c7aa7a4f2dd791
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 42b697babe2bc004663c80e6e2f71f90ba1e5e5b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933439"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765395"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Azure Digital Twins 用に Postman を構成する方法
 
@@ -37,7 +37,7 @@ OAuth 2.0 の暗黙的な許可フローを使用するように Azure Active Di
 
 1. アプリの登録の **[API アクセス許可]** ウィンドウを開きます。 **[アクセス許可の追加]** ボタンを選択します。 **[API アクセス許可の要求]** ウィンドウで、 **[所属する組織で使用している API]** タブを選択し、以下を探します:
     
-    1. `Azure Digital Twins`. **Azure Digital Twins** API を選択します。
+    1. `Azure Digital Twins` **Azure Digital Twins** API を選択します。
 
         [![API または Azure Digital Twins を検索する](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png)](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
 
@@ -79,7 +79,6 @@ OAuth 2.0 の暗黙的な許可フローを使用するように Azure Active Di
 
 Postman をセットアップし、Azure Active Directory トークンを取得するように構成します。 その後、取得したトークンを使用し、Azure Digital Twins に対して認証済みの HTTP 要求を行います。
 
-1. [www.getpostman.com](https://www.getpostman.com/) に移動してアプリをダウンロードします。
 1. **[承認 URL]** が正しいことを検証します。 次のような形式になっている必要があります。
 
     ```plaintext
@@ -88,17 +87,21 @@ Postman をセットアップし、Azure Active Directory トークンを取得�
 
     | Name  | 置換後の文字列 | 例 |
     |---------|---------|---------|
-    | YOUR_AZURE_TENANT | テナントまたは組織の名前 | `microsoft` |
+    | YOUR_AZURE_TENANT | テナントまたは組織の名前。 Azure Active Directory アプリ登録の英数字の**テナント ID** の代わりに、わかりやすい名前を使用します。 | `microsoft` |
 
-1. **[承認] タブ**を選択し、 **[OAuth 2.0]** を選択して **[Get New Access Token]\(新しいアクセス トークンの取得\)** を選択します。
+1. [www.getpostman.com](https://www.getpostman.com/) に移動してアプリをダウンロードします。
 
-    | フィールド  | 値 |
+1. Postman アプリを開き、[new]\(新規\)、[Create new]\(新規作成\) の順にクリックして、[Request]\(要求\) を選択します。 要求名を入力します。 これを保存するコレクションまたはフォルダーを選択し、[保存] をクリックします。 
+
+1. GET 要求を作成します。 **[承認]** タブを選択し、[OAuth 2.0] を選択して **[Get New Access Token]\(新しいアクセス トークンの取得\)** を選択します。
+
+    | フィールド  | Value |
     |---------|---------|
     | 付与タイプ | `Implicit` |
     | コールバック URL | `https://www.getpostman.com/oauth2/callback` |
     | 認証 URL | **ステップ 2** の**承認 URL** を使用します |
     | クライアント ID | 前のセクションで作成または再利用した Azure Active Directory アプリの**アプリケーション ID** を使用します |
-    | スコープ | 空白 |
+    | Scope | 空白 |
     | State | 空白 |
     | クライアント認証 | `Send as Basic Auth header` |
 

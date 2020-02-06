@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b8d4ff3e833dcbe92802845796e3b826735b68ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 39459267919747ed49e9fa3f05746294eaf741dc
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61465645"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906831"
 ---
 # <a name="develop-video-player-applications"></a>ビデオ プレーヤー アプリケーションの開発
 ## <a name="overview"></a>概要
@@ -50,7 +50,7 @@ Microsoft Azure Media Services では、DASH、スムーズ ストリーミン�
 * [HTML5 プレーヤー フレームワークに関するドキュメント](https://playerframework.codeplex.com/wikipage?title=HTML5%20Player&referringTitle=Documentation) 
 * [OSMF 用 Microsoft Smooth Streaming Plugin](https://www.microsoft.com/download/details.aspx?id=36057) 
 * [Licensing Microsoft® Smooth Streaming Client Porting Kit](https://aka.ms/sspk) 
-* [Xbox ビデオ アプリケーションの開発](https://xbox.create.msdn.com/) 
+* [Xbox ビデオ アプリケーションの開発](https://www.xbox.com/en-US/developers) 
 
 ## <a name="advertising"></a>広告
 Azure Media Services では、Windows メディア プラットフォームのプレーヤー フレームワークを通じて広告の挿入がサポートされています。 広告がサポートされるプレーヤー フレームワークは、Windows 8、Silverlight、Windows Phone 8、iOS デバイスで使用できます。 各プレーヤー フレームワークには、プレーヤー アプリケーションの実装方法を示すサンプル コードが含まれています。 メディアには、3 種類の広告を挿入できます。
@@ -71,7 +71,7 @@ Azure Media Services では、Windows メディア プラットフォームの�
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 [DASH.js を使用した HTML5 アプリケーションへの MPEG-DASH アダプティブ ストリーミング ビデオの埋め込み](media-services-embed-mpeg-dash-in-html5.md)
 
 [GitHub dash.js リポジトリ](https://github.com/Dash-Industry-Forum/dash.js)

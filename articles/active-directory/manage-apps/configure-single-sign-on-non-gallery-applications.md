@@ -12,12 +12,12 @@ ms.date: 07/19/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dcc2d6fc252f288f15e2583012798b4d0e9cee6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 709f8083e50391718d34587bd0ea1d847cc41923
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74169437"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841967"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>ギャラリー以外のアプリケーションに SAML ベースのシングル サインオンを構成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "74169437"
 > [!NOTE]
 > ギャラリー アプリを追加しますか? 詳細な設定手順は、[SaaS アプリのチュートリアルの一覧](../saas-apps/tutorial-list.md)で探してください。
 
-"コードの記述なしで" ギャラリー以外のアプリケーションの SAML シングル サインオンを構成するには、サブスクリプションまたは Azure AD Premium を持っており、アプリケーションが SAML 2.0 をサポートしている必要があります。 Azure AD のバージョンの詳細については、[Azure AD の価格](https://azure.microsoft.com/pricing/details/active-directory/)に関するページを参照してください。
+"コードの記述なしで" ギャラリー以外のアプリケーションの SAML シングル サインオンを構成するには、サブスクリプションと Azure AD Premium ライセンスを持っており、アプリケーションが SAML 2.0 をサポートしている必要があります。 Azure AD のバージョンの詳細については、[Azure AD の価格](https://azure.microsoft.com/pricing/details/active-directory/)に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -50,11 +50,11 @@ ms.locfileid: "74169437"
 
 1. 次の設定を入力します。 これらの値は、アプリケーション ベンダーから取得する必要があります。 値を手動で入力するか、メタデータ ファイルをアップロードしてフィールドの値を抽出できます。
 
-    | [基本的な SAML 構成] の設定 | SP-Initiated | idP-Initiated | 説明 |
+    | [基本的な SAML 構成] の設定 | SP-Initiated | idP-Initiated | [説明] |
     |:--|:--|:--|:--|
     | **識別子 (エンティティ ID)** | 一部のアプリでは必須 | 一部のアプリでは必須 | アプリケーションを一意に識別します。 Azure AD から ID が SAML トークンの Audience パラメーターとしてアプリケーションに送信されます。 アプリケーションではこの ID を検証する必要があります。 また、この値はアプリケーションによって提供される SAML メタデータ内に Entity ID として表示されます。 "'https://<subdomain>.contoso.com' *この値は、アプリケーションから送信された **AuthnRequest** (SAML 要求) の **Issuer** 要素として見つけることができます。"* パターンを使用する URL を入力します。 |
-    | **応答 URL** | 必須 | 必須 | アプリケーションが SAML トークンを受け取ることになっている場所を指定します。 応答 URL は Assertion Consumer Service (ACS) URL とも呼ばれています。 追加の応答 URL フィールドを使用して、複数の応答 URL を指定できます。 たとえば複数のサブドメインで、追加の応答 URL が必要となります。 またはテスト目的で、複数の応答 URL (ローカル ホストとパブリック URL) を一度に指定できます。 |
-    | **サインオン URL** | 必須 | 指定しません | この URL をユーザーが開くと、サービス プロバイダーは、ユーザーの認証とサインインを行う Azure AD にそのユーザーをリダイレクトします。 Azure AD はその URL を使用して Office 365 または Azure AD アクセス パネルからアプリケーションを起動します。 何も入力されていない場合、ユーザーが Office 365、Azure AD アクセス パネル、または Azure AD SSO URL からアプリケーションを起動したとき、Azure AD により IdP-Initiated のサインオンが実行されます。|
+    | **応答 URL** | Required | Required | アプリケーションが SAML トークンを受け取ることになっている場所を指定します。 応答 URL は Assertion Consumer Service (ACS) URL とも呼ばれています。 追加の応答 URL フィールドを使用して、複数の応答 URL を指定できます。 たとえば複数のサブドメインで、追加の応答 URL が必要となります。 またはテスト目的で、複数の応答 URL (ローカル ホストとパブリック URL) を一度に指定できます。 |
+    | **サインオン URL** | Required | 指定しません | この URL をユーザーが開くと、サービス プロバイダーは、ユーザーの認証とサインインを行う Azure AD にそのユーザーをリダイレクトします。 Azure AD はその URL を使用して Office 365 または Azure AD アクセス パネルからアプリケーションを起動します。 何も入力されていない場合、ユーザーが Office 365、Azure AD アクセス パネル、または Azure AD SSO URL からアプリケーションを起動したとき、Azure AD により IdP-Initiated のサインオンが実行されます。|
     | **リレー状態** | 省略可能 | 省略可能 | 認証が完了した後にユーザーをリダイレクトする場所をアプリケーションに指示します。 通常、値はアプリケーションで有効な URL です。 ただし、一部のアプリケーションでは、このフィールドを異なる方法で使用します。 詳細については、アプリケーションのベンダーに問い合わせてください。
     | **ログアウト URL** | 省略可能 | 省略可能 | SAML ログアウト応答をアプリケーションに返送するために使用します。
 
@@ -70,11 +70,11 @@ ms.locfileid: "74169437"
 
 2. **[名前識別子の値]** を確認します。 既定値は *user.principalname* です。 アプリケーション内の各ユーザーは、ユーザー識別子によって一意に識別されます。 たとえば、メール アドレスがユーザー名と一意識別子を兼ねている場合、この値を *user.mail* に設定します。
 
-3. **[名前識別子の値]** を変更するには、 **[名前識別子の値]** フィールドの **[編集]** アイコン (鉛筆) を選択します。 必要に応じて、識別子の形式とソースに適切な変更を加えます。 詳細については、「[NameID の編集](https://docs.microsoft.com/azure/active-directory//develop/active-directory-saml-claims-customization#editing-nameid)」を参照してください。 完了したら、変更を保存します。 
+3. **[名前識別子の値]** を変更するには、 **[名前識別子の値]** フィールドの **[編集]** アイコン (鉛筆) を選択します。 必要に応じて、識別子の形式とソースに適切な変更を加えます。 詳細については、「[NameID の編集](../develop/active-directory-saml-claims-customization.md#editing-nameid)」を参照してください。 完了したら、変更を保存します。 
  
 4. グループ要求を構成するには、 **[要求で返されるグループ]** フィールドの **[編集]** アイコンを選択します。 詳細については、[グループ要求の構成](../hybrid/how-to-connect-fed-group-claims.md)に関するページを参照してください。
 
-5. 要求を追加するには、ページの上部にある **[新しいクレームの追加]** を選択します。 **[名前]** を入力し、適切なソースを選択します。 **[属性]** ソースを選択した場合、使用する**ソース属性**を選択する必要があります。 **[翻訳]** ソースを選択した場合、使用する**変換**と**パラメーター 1** を選択する必要があります。 詳細については、「[アプリケーション固有の要求の追加](https://docs.microsoft.com/azure/active-directory//develop/active-directory-saml-claims-customization#adding-application-specific-claims)」を参照してください。 完了したら、変更を保存します。 
+5. 要求を追加するには、ページの上部にある **[新しいクレームの追加]** を選択します。 **[名前]** を入力し、適切なソースを選択します。 **[属性]** ソースを選択した場合、使用する**ソース属性**を選択する必要があります。 **[翻訳]** ソースを選択した場合、使用する**変換**と**パラメーター 1** を選択する必要があります。 詳細については、「[アプリケーション固有の要求の追加](../develop/active-directory-saml-claims-customization.md#adding-application-specific-claims)」を参照してください。 完了したら、変更を保存します。 
 
 6. **[保存]** を選択します。 新しい要求が表に表示されます。
 
@@ -150,7 +150,7 @@ SAML ベースの ID プロバイダーとして Azure AD を使用するよう�
 
 1. 詳細をコピーして **[エラーの説明]** ボックスに貼り付けます。
 
-    ![解決ガイダンスを入手する](media/configure-single-sign-on-portal/error-guidance.png)
+    ![解決ガイダンスを入手する](media/configure-single-sign-on-non-gallery-applications/error-guidance.png)
 
 2. **[解決ガイダンスを入手する]** を選択します。 根本原因と解決ガイダンスが表示されます。  この例では、アプリケーションにユーザーが割り当てられていませんでした。
 
@@ -160,7 +160,7 @@ SAML ベースの ID プロバイダーとして Azure AD を使用するよう�
 
 詳細については、「[Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする](../develop/howto-v1-debug-saml-sso-issues.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [アプリケーションにユーザーまたはグループを割り当てる](methods-for-assigning-users-and-groups.md)
 - [自動ユーザー アカウント プロビジョニングを構成する](configure-automatic-user-provisioning-portal.md)

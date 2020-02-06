@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.openlocfilehash: 6ff7500712f57d7cf2adad1fc73f68a29f3afc20
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 40cd3467c7a4377427bb8db437e1047382933b1c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75412825"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714880"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Premium Azure Cache for Redis のデータ永続化の構成方法
 Azure Cache for Redis には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能など、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 この記事では、Azure Cache for Redis インスタンスで永続化を構成する方法について説明します。
@@ -26,7 +26,13 @@ Azure Cache for Redis では、以下のモデルを使用した Redis 永続化
 * **RDB 永続化** - RDB (Redis データベース) 永続化が構成されている場合、Azure Cache for Redis は、構成可能なバックアップ頻度に基づき Redis バイナリ形式でそのスナップショットをディスクに保持します。 プライマリとレプリカの両方のキャッシュが無効になるような致命的なイベントが発生した場合、最新のスナップショットを使用してキャッシュが再構築されます。 RDB 永続化の[長所](https://redis.io/topics/persistence#rdb-advantages)と[短所](https://redis.io/topics/persistence#rdb-disadvantages)について、詳細をご確認ください。
 * **AOF 永続化** - AOF (追加専用ファイル) 永続化が構成されている場合、Azure Cache for Redis では、すべての書き込み操作をログに保存します。このログは最低でも 1 秒に 1 回、Azure ストレージ アカウントに保存されます。 プライマリとレプリカの両方のキャッシュが無効になるような致命的なイベントが発生した場合、保存されている書き込み操作を使用してキャッシュが再構築されます。 AOF 永続化の[長所](https://redis.io/topics/persistence#aof-advantages)と[短所](https://redis.io/topics/persistence#aof-disadvantages)について、詳細をご確認ください。
 
-永続化は、キャッシュの作成中に **[New Azure Cache for Redis]\(新規 Azure Cache for Redis\)** ブレードから、また既存の Premium キャッシュ用の **[リソース] メニュー**で構成します。
+永続化では、自分が所有して管理している Azure Storage アカウントに Redis データが書き込まれます。 その構成は、キャッシュの作成中に **[New Azure Cache for Redis]\(新規 Azure Cache for Redis\)** ブレードから、および既存の Premium キャッシュ用の **[リソース] メニュー**で行います。
+
+> [!NOTE]
+> 
+> Azure Storage では、データは永続化されるときに自動的に暗号化されます。 暗号化には独自のキーを使用できます。 詳細については、「[Azure Key Vault でのカスタマー マネージド キー](/azure/storage/common/storage-service-encryption?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#customer-managed-keys-with-azure-key-vault)」を参照してください。
+> 
+> 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
@@ -38,7 +44,7 @@ Premium 価格レベルを選択した後、 **[Redis の永続化]** をクリ�
 
 ## <a name="enable-redis-persistence"></a>Redis 永続化の有効化
 
-Redis 永続化は、 **[Redis データ永続化]** ブレードで **[RDB]** または **[AOF]** 永続化のいずれかを選択して有効にします。 新規キャッシュでは、前のセクションで説明したように、このブレードにはキャッシュの作成プロセス中にアクセスします。 既存のキャッシュでは、 **[Redis データ永続化]** ブレードには、キャッシュの **[リソース]** メニューからアクセスします。
+Redis 永続化は、 **[データ永続化]** ブレードで **[RDB]** または **[AOF]** 永続化のいずれかを選択して有効にします。 新規キャッシュでは、前のセクションで説明したように、このブレードにはキャッシュの作成プロセス中にアクセスします。 既存のキャッシュでは、 **[データ永続化]** ブレードには、ご利用のキャッシュの **[リソース]** メニューからアクセスします。
 
 ![Redis の設定][redis-cache-settings]
 
@@ -125,7 +131,7 @@ RDB 永続化の場合も AOF 永続化の場合も、以下のように処理�
 * 小さいサイズにスケーリングしていて、最新のバックアップからのデータをすべて保持するにはサイズが小さいためスペースが足りない場合、キーは復元プロセス中に削除されます。通常は [allkeys-lru](https://redis.io/topics/lru-cache) 削除ポリシーを使用します。
 
 ### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>キャッシュの作成後に RDB バックアップ頻度を変更できますか
-はい、 **[Redis データ永続化]** ブレードで RDB 永続化のバックアップ頻度を変更できます。 手順については、「Redis の永続化を構成する」をご覧ください。
+はい、 **[データ永続化]** ブレードで RDB 永続化のバックアップ頻度を変更できます。 手順については、「Redis の永続化を構成する」をご覧ください。
 
 ### <a name="why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups"></a>RDB バックアップ頻度を 60 分に設定しているのに、バックアップの間隔が 60 分より長くなるのはなぜですか
 RDB 永続化のバックアップ頻度の間隔は、その前のバックアップ プロセスが正常に完了するまでは開始しません。 バックアップ間隔を 60 分に設定し、バックアップ プロセスが正常に完了するのに 15 分かかる場合、次のバックアップは、前回のバックアップの開始時刻から 75 分経つまで開始しません。

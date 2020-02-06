@@ -3,20 +3,20 @@ title: 言語サポート - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: 音声サービスでは、音声翻訳に加え、音声からテキストへの変換とテキストから音声への変換のためのさまざまな言語がサポートされます。 この記事では、サービス機能によってサポートされている言語の包括的な一覧を示します。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.author: erhopf
+ms.date: 01/31/2020
+ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: b5f227deb3385d64160f5a469d76b9763057b160
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 20b99cfffdaa0d942ccd4d954909810342cbfcb8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381054"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935338"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>音声サービスの言語とリージョンのサポート
 
@@ -24,49 +24,58 @@ ms.locfileid: "75381054"
 
 ## <a name="speech-to-text"></a>音声テキスト変換
 
-Microsoft Speech SDK と REST API は、どちらも以下の言語 (ロケール) をサポートしています。 精度を高めるために、"オーディオ + 人間" というラベルが付いたトランスクリプトまたは関連テキスト (文) をアップロードすることにより、言語のサブセットに対してカスタマイズが提供されます。  現在、発音のカスタマイズは `en-US` および `de-DE` でのみ使用できます。 カスタマイズの詳細については、[こちら](how-to-custom-speech.md)を参照してください。
+Microsoft Speech SDK と REST API は、どちらも以下の言語 (ロケール) をサポートしています。 精度を高めるために、"オーディオ + 人間" というラベルが付いたトランスクリプトまたは関連テキスト (文) をアップロードすることにより、言語のサブセットに対してカスタマイズが提供されます。 現在、発音のカスタマイズは `en-US` および `de-DE` でのみ使用できます。 カスタマイズの詳細については、[こちら](how-to-custom-speech.md)を参照してください。
 
- Locale | 言語 | サポートされています | カスタマイズ可能
+<!--
+To get the AM and ML bits:
+https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20models%3A/GetSupportedLocalesForModels
+
+To get pronunciation bits:
+https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
+-->
+
+ Locale | Language | サポートされています | カスタマイズ
 ------|------------|-----------|-------------
-`ar-EG` | アラビア語 (エジプト)、現代標準 | はい | はい
-`ar-SA` | アラビア語 (サウジアラビア) | はい | はい
-`ar-AE` | アラビア語 (UAE) | はい | はい
-`ar-KW` | アラビア語 (クウェート) | はい | はい
-`ar-QA` | アラビア語 (カタール) | はい | はい
-`ca-ES` | カタロニア語 | はい | いいえ
-`da-DK` | デンマーク語 (デンマーク) | はい | いいえ
-`de-DE` | ドイツ語 (ドイツ) | はい | はい
-`en-AU` | 英語 (オーストラリア) | はい | はい
-`en-CA` | 英語 (カナダ) | はい | はい
-`en-GB` | ウェールズ語 (イギリス) | はい | はい
-`en-IN` | 英語 (インド) | はい | はい
-`en-NZ` | 英語 (ニュージーランド) | はい | はい
-`en-US` | 英語 (米国) | はい | はい
-`es-ES` | スペイン語 (スペイン) | はい | はい
-`es-MX` | スペイン語 (メキシコ) | はい | はい
-`fi-FI` | フィンランド語 (フィンランド) | はい | いいえ
-`fr-CA` | フランス語 (カナダ) | はい | はい
-`fr-FR` | フランス語 (フランス) | はい | はい
-`gu-IN` | グジャラート語 (インド) | はい | はい
-`hi-IN` | ヒンディー語 (インド) | はい | はい
-`it-IT` | イタリア語 (イタリア) | はい | はい
-`ja-JP` | 日本語 (日本) | はい | はい
-`ko-KR` | 韓国語 (韓国) | はい | はい
-`mr-IN` | マラーティー語 (インド) | はい | はい
-`nb-NO` | ノルウェー語 (ブークモール) (ノルウェー) | はい | いいえ
-`nl-NL` | オランダ語 (オランダ) | はい | はい
-`pl-PL` | ポーランド語 (ポーランド) | はい | いいえ
-`pt-BR` | ポルトガル語 (ブラジル) | はい | はい
-`pt-PT` | ポルトガル語 (ポルトガル) | はい | はい
-`ru-RU` | ロシア語 (ロシア) | はい | はい
-`sv-SE` | スウェーデン語 (スウェーデン) | はい | いいえ
-`ta-IN` | タミール語 (インド) | はい | はい
-`te-IN` | テルグ語 (インド) | はい | はい
-`zh-CN` | 中国語 (標準、簡体字) | はい | はい
-`zh-HK` | 広東語 (繁体字) | はい | はい
-`zh-TW` | 中国語 (台湾標準中国語) | はい | はい
+`ar-AE` | アラビア語 (UAE) | はい | いいえ
+`ar-BH` | アラビア語 (バーレーン) | はい | 言語モデル
+`ar-EG` | アラビア語 (エジプト)、現代標準 | はい | 言語モデル
+`ar-KW` | アラビア語 (クウェート) | はい | いいえ
+`ar-QA` | アラビア語 (カタール) | はい | いいえ
+`ar-SA` | アラビア語 (サウジアラビア) | はい | いいえ
+`ca-ES` | カタロニア語 | はい | 言語モデル
+`da-DK` | デンマーク語 (デンマーク) | はい | 言語モデル
+`de-DE` | ドイツ語 (ドイツ) | はい | 音響モデル<br>言語モデル<br>発音
+`en-AU` | 英語 (オーストラリア) | はい | 音響モデル<br>言語モデル
+`en-CA` | 英語 (カナダ) | はい | 音響モデル<br>言語モデル
+`en-GB` | ウェールズ語 (イギリス) | はい | 音響モデル<br>言語モデル<br>発音
+`en-IN` | 英語 (インド) | はい | 音響モデル<br>言語モデル
+`en-NZ` | 英語 (ニュージーランド) | はい | 音響モデル<br>言語モデル
+`en-US` | 英語 (米国) | はい | 音響モデル<br>言語モデル<br>発音
+`es-ES` | スペイン語 (スペイン) | はい | 音響モデル<br>言語モデル
+`es-MX` | スペイン語 (メキシコ) | はい | 音響モデル<br>言語モデル
+`fi-FI` | フィンランド語 (フィンランド) | はい | 言語モデル
+`fr-CA` | フランス語 (カナダ) | はい | 音響モデル<br>言語モデル
+`fr-FR` | フランス語 (フランス) | はい | 音響モデル<br>言語モデル<br>発音
+`gu-IN` | グジャラート語 (インド) | はい | 言語モデル
+`hi-IN` | ヒンディー語 (インド) | はい | 音響モデル<br>言語モデル
+`it-IT` | イタリア語 (イタリア) | はい | 音響モデル<br>言語モデル<br>発音
+`ja-JP` | 日本語 (日本) | はい | 言語モデル
+`ko-KR` | 韓国語 (韓国) | はい | 言語モデル
+`mr-IN` | マラーティー語 (インド) | はい | 言語モデル
+`nb-NO` | ノルウェー語 (ブークモール) (ノルウェー) | はい | 言語モデル
+`nl-NL` | オランダ語 (オランダ) | はい | 言語モデル
+`pl-PL` | ポーランド語 (ポーランド) | はい | 言語モデル
+`pt-BR` | ポルトガル語 (ブラジル) | はい | 音響モデル<br>言語モデル<br>発音
+`pt-PT` | ポルトガル語 (ポルトガル) | はい | 言語モデル
+`ru-RU` | ロシア語 (ロシア) | はい | 音響モデル<br>言語モデル
+`sv-SE` | スウェーデン語 (スウェーデン) | はい | 言語モデル
+`ta-IN` | タミール語 (インド) | はい | 言語モデル
+`te-IN` | テルグ語 (インド) | はい | いいえ
 `th-TH` | タイ語 (タイ) | はい | いいえ
-`tr-TR` | トルコ | はい | はい
+`tr-TR` | トルコ語 (トルコ) | はい | いいえ
+`zh-CN` | 中国語 (標準、簡体字) | はい | 音響モデル<br>言語モデル
+`zh-HK` | 広東語 (繁体字) | はい | 言語モデル
+`zh-TW` | 中国語 (台湾標準中国語) | はい | 言語モデル
 
 ## <a name="text-to-speech"></a>テキスト読み上げ
 
@@ -83,7 +92,7 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 
 リージョン別の提供状況の詳細については、[リージョン](regions.md#standard-and-neural-voices)に関するページを参照してください。
 
-Locale | 言語 | 性別 | 完全なサービス名のマッピング | 短い音声名
+Locale | Language | 性別 | 完全なサービス名のマッピング | 短い音声名
 --------|----------|--------|---------|------------
 `de-DE` | ドイツ語 (ドイツ) | Female | "Microsoft Server Speech Text to Speech Voice (de-DE, KatjaNeural)" | "de-DE-KatjaNeural"
 `en-US` | 英語 (米国) | Male | "Microsoft Server Speech Text to Speech Voice (en-US, GuyNeural)" | "en-US-GuyNeural"
@@ -100,9 +109,9 @@ Locale | 言語 | 性別 | 完全なサービス名のマッピング | 短い�
 
 テキストから合成音声への変換用に、45 を超える言語とロケールで 75 を超える標準的な音声が用意されています。 リージョン別の提供状況の詳細については、[リージョン](regions.md#standard-and-neural-voices)に関するページを参照してください。
 
-Locale | 言語 | 性別 | 完全なサービス名のマッピング | 短い名前
+Locale | Language | 性別 | 完全なサービス名のマッピング | 短い名前
 -------|----------|---------|----------|----------
-<sup>&dagger;</sup>`ar-EG` | アラビア語 (エジプト) | Female | "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)" | "ar-EG-Hoda"
+<sup>1</sup>`ar-EG` | アラビア語 (エジプト) | Female | "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)" | "ar-EG-Hoda"
 `ar-SA` | アラビア語 (サウジアラビア) | Male | "Microsoft Server Speech Text to Speech Voice (ar-SA, Naayf)" | "ar-SA-Naayf"
 `bg-BG` | Bulgarian | Male | "Microsoft Server Speech Text to Speech Voice (bg-BG, Ivan)" | "bg-BG-Ivan"
 `ca-ES` | カタルニア語 (スペイン) | Female | "Microsoft Server Speech Text to Speech Voice (ca-ES, HerenaRUS)" | "ca-ES-HerenaRUS"
@@ -172,7 +181,7 @@ Locale | 言語 | 性別 | 完全なサービス名のマッピング | 短い�
 `ta-IN` | タミール語 (インド) | Male | "Microsoft Server Speech Text to Speech Voice (ta-IN, Valluvar)" | "ta-IN-Valluvar"
 `te-IN` | テルグ語 (インド) | Female | "Microsoft Server Speech Text to Speech Voice (te-IN, Chitra)" | "te-IN-Chitra"
 `th-TH` | Thai | Male | "Microsoft Server Speech Text to Speech Voice (th-TH, Pattara)" | "th-TH-Pattara"
-`tr-TR` | Turkish | Female | "Microsoft Server Speech Text to Speech Voice (tr-TR, SedaRUS)" | "tr-TR-SedaRUS"
+`tr-TR` | トルコ語 (トルコ) | Female | "Microsoft Server Speech Text to Speech Voice (tr-TR, SedaRUS)" | "tr-TR-SedaRUS"
 `vi-VN` | ベトナム語 | Male | "Microsoft Server Speech Text to Speech Voice (vi-VN, An)" | "vi-VN-An"
 `zh-CN` | 中国語 (大陸) | Female | "Microsoft Server Speech Text to Speech Voice (zh-CN, HuihuiRUS)" | "zh-CN-HuihuiRUS"
 | | | Female | "Microsoft Server Speech Text to Speech Voice (zh-CN, Yaoyao, Apollo)" | "zh-CN-Yaoyao-Apollo"
@@ -184,7 +193,7 @@ Locale | 言語 | 性別 | 完全なサービス名のマッピング | 短い�
 | | | Female | "Microsoft Server Speech Text to Speech Voice (zh-TW, HanHanRUS)" | "zh-TW-HanHanRUS"
 | | | Male | "Microsoft Server Speech Text to Speech Voice (zh-TW, Zhiwei, Apollo)" | "zh-TW-Zhiwei-Apollo"
 
-&dagger; *ar-EG では現代標準アラビア語 (MSA) をサポートしています。*
+**1** *ar-EG では現代標準アラビア語 (MSA) をサポートしています。*
 
 > [!NOTE]
 > 音声合成要求には、完全なサービス名のマッピングまたは短い音声名のいずれかを使用できます。
@@ -231,8 +240,10 @@ Locale | 言語 | 性別 | 完全なサービス名のマッピング | 短い�
 | ミャオ語      | `mww`          |
 | Hungarian      | `hu`          |
 | インドネシア語      | `id`          |
+| アイルランド語      | `ga`          |
 | Italian      | `it`          |
 | Japanese      | `ja`          |
+| カンナダ語      | `kn`          |
 | スワヒリ語      | `sw`          |
 | クリンゴン語      | `tlh`          |
 | クリンゴン語 (plqaD)      | `tlh-Qaak`          |
@@ -241,11 +252,14 @@ Locale | 言語 | 性別 | 完全なサービス名のマッピング | 短い�
 | Lithuanian      | `lt`          |
 | マダガスカル語      | `mg`          |
 | マレー語      | `ms`          |
+| マラヤーラム語      | `ml`          |
 | マルタ語      | `mt`          |
 | ノルウェー語      | `nb`          |
 | ペルシャ語      | `fa`          |
 | Polish      | `pl`          |
-| Portuguese      | `pt`          |
+| ポルトガル語 (ブラジル)      | `pt-br`          |
+| ポルトガル語 (ポルトガル)      | `pt-pt`          |
+| パンジャーブ語      | `pa`          |
 | オトミ語      | `otq`          |
 | Romanian      | `ro`          |
 | Russian      | `ru`          |

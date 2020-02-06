@@ -2,17 +2,17 @@
 title: ゾーンの頂点で負荷分散された Azure Web アプリをホストする
 description: Azure DNS エイリアス レコードを使用して、ゾーンの頂点で負荷分散された Web アプリをホストします
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 08/10/2019
-ms.author: allensu
-ms.openlocfilehash: a673a74f8f6f919e7ebb7fc3b065ee0742ab3a10
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 8ba96a028d51e6e5503bb4a8e6735b48033c9ba1
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212368"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937362"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>ゾーンの頂点で負荷分散された Azure Web アプリをホストする
 
@@ -34,7 +34,7 @@ Azure DNS 内でドメインをホストする手順については、「[チュ
 
 このチュートリアルで使用するドメインの例は contoso.com ですが、独自のドメイン名を使用してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 この記事で使用するすべてのリソースを保持するリソース グループを作成します。
 
@@ -43,7 +43,7 @@ Azure DNS 内でドメインをホストする手順については、「[チュ
 次の表で示す構成情報を使用して、リソース グループに 2 つの Web App Service プランを作成します。 App Service プランの作成の詳細については、「[Azure で App Service プランを管理する](../app-service/app-service-plan-manage.md)」をご覧ください。
 
 
-|名前  |オペレーティング システム  |Location  |価格レベル  |
+|Name  |オペレーティング システム  |Location  |価格レベル  |
 |---------|---------|---------|---------|
 |ASP-01     |Windows|East US|Dev/Test D1-Shared|
 |ASP-02     |Windows|米国中部|Dev/Test D1-Shared|
@@ -58,7 +58,7 @@ App Service プランごとに 1 つずつ、2 つの Web アプリを作成し�
 4. **作成** を選択します。
 5. 既定値のままにし、次の表を使用して 2 つの Web アプリを構成します。
 
-   |名前<br>(.azurewebsites.net 内で一意になっている必要があります)|リソース グループ |ランタイム スタック|リージョン|App Service プラン/場所
+   |Name<br>(.azurewebsites.net 内で一意になっている必要があります)|リソース グループ |ランタイム スタック|リージョン|App Service プラン/場所
    |---------|---------|-|-|-------|
    |App-01|既存のものを使用します<br>リソース グループを選択します|.NET Core 2.2|East US|ASP-01(D1)|
    |App-02|既存のものを使用します<br>リソース グループを選択します|.NET Core 2.2|米国中部|ASP-02(D1)|
@@ -87,7 +87,7 @@ Traffic Manager プロファイルの作成方法の詳細については、[Web
 3. **[追加]** を選択します。
 4. 次の表を使用して、エンドポイントを構成します。
 
-   |種類  |名前  |ターゲット  |Location  |カスタム ヘッダーの設定|
+   |Type  |Name  |移行先  |Location  |カスタム ヘッダーの設定|
    |---------|---------|---------|---------|---------|
    |外部エンドポイント     |End-01|App-01 について記録した IP アドレス|East US|host:\<App-01 について記録した URL\><br>例: **host:app-01.azurewebsites.net**|
    |外部エンドポイント     |End-02|App-02 について記録した IP アドレス|米国中部|host:\<App-02 について記録した URL\><br>例: **host:app-02.azurewebsites.net**
@@ -104,7 +104,7 @@ Web アプリにカスタム ホスト名を追加すると、ドメインを検
 2. **[レコード セット]** を選択します。
 3. 次の表を使用して、レコード セットを追加します。 値には、前に記録した実際の Web アプリ URL を使用します。
 
-   |名前  |種類  |値|
+   |Name  |Type  |Value|
    |---------|---------|-|
    |@     |TXT|App-01.azurewebsites.net|
 
@@ -132,7 +132,7 @@ Web アプリにカスタム ホスト名を追加すると、ドメインを検
 2. **[レコード セット]** を選択します。
 3. 次の表を使用して、レコード セットを追加します。
 
-   |名前  |種類  |エイリアス レコード セット  |エイリアスの種類  |Azure リソース|
+   |Name  |Type  |エイリアス レコード セット  |エイリアスの種類  |Azure リソース|
    |---------|---------|---------|---------|-----|
    |@     |A|はい|Azure リソース|Traffic Manager - お使いのプロファイル|
 
@@ -152,7 +152,7 @@ Web アプリにカスタム ホスト名を追加すると、ドメインを検
 9. Web ブラウザーを閉じて、数分待ちます。
 10. Web ブラウザーを起動し、ドメインを参照します。 既定の Web アプリ ページが再び表示されるはずです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 エイリアス レコードの詳細については、次の記事を参照してください。
 

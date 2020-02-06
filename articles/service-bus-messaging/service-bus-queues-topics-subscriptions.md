@@ -1,6 +1,6 @@
 ---
 title: Azure Service Bus のメッセージング - キュー、トピック、およびサブスクリプション
-description: Service Bus メッセージング エンティティの概要です。
+description: この記事では、Azure Service Bus メッセージング エンティティ (キュー、トピック、サブスクリプション) の概要について説明します。
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -10,12 +10,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: aschhab
-ms.openlocfilehash: e5ef189f5ce7b0cb53e5070fcc88630c72239503
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 3dc78a22e0e596d812d90fec63475a0b21e9164f
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260725"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759586"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus のキュー、トピック、サブスクリプション
 

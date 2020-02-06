@@ -4,29 +4,29 @@ description: チュートリアル:エッジでの機械学習用のモジュー
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/11/2019
+ms.date: 1/23/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2ea4248ebaedd318e4112e41169f72bc80b1120f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: a36427616691b0a0d400dadb4e35c2f7fbf23b22
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114073"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722292"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>チュートリアル:IoT Edge 上に機械学習用の環境を設定する
 
 > [!NOTE]
-> この記事は、IoT Edge 上での Azure Machine Learning の使用に関するチュートリアルのシリーズの一部です。 この記事に直接アクセスしている場合は、効果を最大限に高めるために、シリーズの[最初の記事](tutorial-machine-learning-edge-01-intro.md)から始めることをお勧めします。
+> この記事は、IoT Edge 上で Azure Machine Learning を使用するためのチュートリアルのシリーズの一部です。 この記事に直接アクセスしている場合は、最適な結果を得るために、シリーズの[最初の記事](tutorial-machine-learning-edge-01-intro.md) から始めることをお勧めします。
 
-IoT Edge におけるエンド ツー エンドの Azure Machine Learning に関するチュートリアルに属するこの記事は、開発およびデプロイ用の環境を準備するのに役立ちます。 最初に、必要なすべてのツールがインストールされた開発用マシンを設定します。 次に、必要なクラウド リソースを Azure に作成します。
+この記事は、開発およびデプロイ用の環境の準備に役立ちます。 最初に、必要なすべてのツールがインストールされた開発用マシンを設定します。 次に、必要なクラウド リソースを Azure に作成します。
 
-## <a name="set-up-a-development-machine"></a>開発用マシンを設定する
+## <a name="set-up-the-development-vm"></a>開発用 VM を設定する
 
 この手順は、通常はクラウド開発者によって実行されます。 一部のソフトウェアはデータ サイエンティストの役にも立ちます。
 
-この記事では、IoT Edge モジュールと IoT デバイスのコーディング、コンパイル、構成、デプロイなど、さまざまな開発者のタスクを実行します。 使いやすくするために、前提条件の多くが既に構成済みになっている Azure 仮想マシンを作成するための PowerShell スクリプトを作成しました。 作成する VM では、[入れ子になった仮想化](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)を処理できる必要があります。このため、マシン サイズとして [Standard_D8s_v3](../virtual-machines/windows/sizes-general.md#dsv3-series-1) が選択されています。
+前提条件の多くが既に構成済みになっている Azure 仮想マシンを作成するための PowerShell スクリプトを作成しました。 作成する VM では、[入れ子になった仮想化](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)を処理できる必要があります。このため、マシン サイズとして [Standard_D8s_v3](../virtual-machines/windows/sizes-general.md#dsv3-series-1) が選択されています。
 
 開発用 VM の設定には次のものが必要です。
 
@@ -50,101 +50,95 @@ IoT Edge におけるエンド ツー エンドの Azure Machine Learning に関
 
 仮想マシンの作成と構成には約 30 分かかります。
 
-### <a name="get-the-script"></a>スクリプトを入手する
+1. [Machine Learning と IoT Edge](https://github.com/Azure-Samples/IoTEdgeAndMlSample) のサンプル リポジトリを自分のローカル コンピューターにクローンまたはダウンロードします。
 
-PowerShell スクリプトを [Machine Learning と IoT Edge](https://github.com/Azure-Samples/IoTEdgeAndMlSample) のサンプル リポジトリから複製またはダウンロードします。
-
-### <a name="create-an-azure-virtual-machine"></a>Azure 仮想マシンを作成する
-
-DevVM ディレクトリには、このチュートリアルを完了するための適切な Azure 仮想マシンの作成に必要なファイルが含まれています。
-
-1. 管理者として PowerShell を開き、コードをダウンロードしたディレクトリに移動します。 ソースのルート ディレクトリは、`<srcdir>` と呼びます。
+1. 管理者として PowerShell を開き、コードのダウンロード先のルート ディレクトリにある **\IoTEdgeAndMlSample\DevVM** ディレクトリに移動します。 ソースのルート ディレクトリは、`srcdir` と呼びます。
 
     ```powershell
-    cd <srcdir>\IoTEdgeAndMlSample\DevVM
+    cd c:\srcdir\IoTEdgeAndMlSample\DevVM
     ```
 
-2. 次のコマンドを実行してスクリプトの実行を許可します。 確認を求められたら、 **[すべてはい]** を選択します。
+   DevVM ディレクトリには、このチュートリアルを完了するための適切な Azure 仮想マシンの作成に必要なファイルが含まれています。
+
+1. 次のコマンドを実行してスクリプトの実行を許可します。 確認を求められたら、 **[すべてはい]** を選択します。
 
     ```powershell
     Set-ExecutionPolicy Bypass -Scope Process
     ```
 
-3. このディレクトリから Create-AzureDevVM.ps1 を実行します。
+1. Create-AzureDevVM.ps1 を実行します。
 
     ```powershell
     .\Create-AzureDevVm.ps1
     ```
 
-    * 入力を求められたら、次の情報を指定します。
-      * **Azure サブスクリプション ID**:サブスクリプション ID。Azure portal で確認できます
-      * **リソース グループ名**: Azure 内にある新規または既存のリソース グループの名前
-      * **[場所]** :仮想マシンの作成先となる Azure の場所を選択します。 westus2 や northeurope などです。 詳しくは、「[Azure の場所](https://azure.microsoft.com/global-infrastructure/locations/)」を参照してください。
-      * **AdminUsername**: 仮想マシン上で作成して使用する管理者アカウントの覚えやすい名前を指定します。
-      * **AdminPassword**: 仮想マシン上の管理者アカウント用のパスワードを設定します。
+    入力を求められたら、次の情報を指定します。
 
-    * Azure PowerShell がインストールされていない場合、スクリプトによって [Azure PowerShell Az モジュール](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.1.0)がインストールされます。
+    * **Azure サブスクリプション ID**:ご利用のサブスクリプション ID です。ポータルの [[Azure サブスクリプション]](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) で確認できます。
+    * **リソース グループ名**: Azure 内にある新規または既存のリソース グループの名前。
+    * **[場所]** :仮想マシンの作成先となる Azure の場所を選択します。 たとえば、"米国西部 2" や "北ヨーロッパ" があります。 詳しくは、「[Azure の場所](https://azure.microsoft.com/global-infrastructure/locations/)」を参照してください。
+    * **[ユーザー名]** : VM の管理者アカウントに覚えやすい名前を付けます。
+    * **パスワード**:VM の管理者アカウントのパスワードを設定します。
 
-    * Azure へのサインインを要求されます。
+   スクリプトが数分間実行され、その間に次のステップが実行されます。
 
-    * スクリプトにより、VM を作成するための情報が確認されます。 `y` キーまたは `Enter` キーを押して続行します。
+    1. [Azure PowerShell Az モジュール](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.1.0)をインストールします。
+    1. Azure にサインインするよう求められます。
+    1. VM を作成するための情報を確認します。 **y** キーまたは **Enter** キーを押して続行します。
+    1. リソース グループがまだ作成されていない場合は、作成します。
+    1. 仮想マシンをデプロイします。
+    1. VM 上で Hyper-V を有効にします。
+    1. 開発に必要なソフトウェアをインストールし、サンプル リポジトリをクローンします。
+    1. VM を再起動します。
+    1. VM に接続するための RDP ファイルをデスクトップ上に作成します。
 
-スクリプトが数分間実行され、その間に次のステップが実行されます。
-
-* リソース グループがまだ作成されていない場合は、作成する
-* 仮想マシンをデプロイする
-* VM 上で Hyper-V を有効にする
-* 開発に必要なソフトウェアをインストールし、サンプル リポジトリを複製する
-* VM を再起動する
-* デスクトップ上に、VM に接続するための RDP ファイルを作成する
+   VM を再起動する際にその名前を入力するよう求められた場合は、スクリプトの出力から名前をコピーできます。 VM 接続用の RDP ファイルのパスも出力で確認できます。
 
 ### <a name="set-auto-shutdown-schedule"></a>自動シャットダウンのスケジュールを設定する
 
-コスト削減に役立つように、VM は自動シャットダウンのスケジュールが 1900 PST に設定された状態で作成されています。 このタイミングは、ご自分の場所やスケジュールに応じて更新しなければならない場合もあります。 シャットダウンのスケジュールを更新するには、次の手順を実施します。
+コスト削減に役立つように、開発用 VM は自動シャットダウンのスケジュールが 1900 PST に設定された状態で作成されています。 この設定は、ご自分の場所とスケジュールに応じて更新が必要な場合があります。 シャットダウンのスケジュールを更新するには、次の手順を実施します。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. Azure portal で、スクリプトによって作成された VM に移動します。
 
-2. 前のセクションで指定したリソース グループ内の仮想マシンに移動します。
+1. 左ペインのメニューの **[操作]** で **[自動シャットダウン]** を選択します。
 
-3. 左側のナビゲーターにある **[自動シャットダウン]** を選択します。
+1. 必要に応じて **[スケジュールされたシャットダウン]** と **[タイム ゾーン]** を調整し、 **[保存]** を選択します。
 
-4. 新しいシャットダウン時刻を **[スケジュールされたシャットダウン]** に入力するか、 **[タイム ゾーン]** を変更してから、 **[保存]** をクリックします。
-
-### <a name="connect-and-configure-development-machine"></a>開発用マシンを接続し、構成する
+## <a name="connect-to-the-development-vm"></a>開発用 VM に接続する
 
 これで VM を作成できたので、次はチュートリアルを完了するうえで必要なソフトウェアをインストールし終える必要があります。
 
-#### <a name="start-a-remote-desktop-session"></a>リモート デスクトップ セッションを開始する
+1. スクリプトによってデスクトップ上に作成された RDP ファイルをダブルクリックします。
 
-1. VM 作成スクリプトによって、デスクトップ上に RDP ファイルが作成されています。
+1. リモート接続の発行元が不明であることを知らせるダイアログが表示されます。 これは問題ないので、 **[接続]** を選択します。
 
-2. **\<Azure VM name\>.rdp** という名前のファイルをダブルクリックします。
+1. VM の作成時に指定した管理者のパスワードを入力し、 **[OK]** をクリックします。
 
-3. リモート接続の発行元が不明であることを知らせるダイアログが表示されます。 **[Don’t ask me again for connections to this computer]\(このコンピューターへの接続について今後確認しない\)** チェック ボックスをオンにして、 **[接続]** を選択します。
+1. VM の証明書を受け入れるように求められます。 **[はい]** を選択します。
 
-4. 入力を求められたら、VM の設定スクリプトの実行時に使用した AdminPassword を入力して、 **[OK]** をクリックします。
-
-5. VM の証明書を受け入れるように求められます。 **[Don’t ask me again for connections to this computer]\(このコンピューターへの接続について今後確認しない\)** を選択して、 **[はい]** を選択します。
-
-#### <a name="install-visual-studio-code-extensions"></a>Visual Studio Code 拡張機能をインストールする
+## <a name="install-visual-studio-code-extensions"></a>Visual Studio Code 拡張機能をインストールする
 
 これで開発用マシンへの接続が完了したので、Visual Studio Code にいくつかの便利な拡張機能を追加して、よりスムーズな開発エクスペリエンスを実現しましょう。
 
-1. PowerShell ウィンドウで、**C:\\source\\IoTEdgeAndMlSample\\DevVM** に移動します。
-
-2. 入力による仮想マシン上でのスクリプトの実行を許可します。
+1. 開発用 VM に接続して PowerShell ウィンドウを開き、**C:\source\IoTEdgeAndMlSample\DevVM** ディレクトリに移動します。 このディレクトリは、VM を作成したスクリプトによって作成されたものです。
 
     ```powershell
-    Set-ExecutionPolicy Bypass -Scope CurrentUser -Force
+    cd C:\source\IoTEdgeAndMlSample\DevVM
     ```
 
-3. スクリプトを実行します。
+1. 次のコマンドを実行してスクリプトの実行を許可します。 確認を求められたら、 **[すべてはい]** を選択します。
+
+    ```powershell
+    Set-ExecutionPolicy Bypass -Scope Process
+    ```
+
+1. Visual Studio Code 拡張機能スクリプトを実行します。
 
     ```powershell
     .\Enable-CodeExtensions.ps1
     ```
 
-4. スクリプトが数分間実行され、VS code 拡張機能がインストールされます。
+1. スクリプトが数分間実行され、VS code 拡張機能がインストールされます。
 
     * Azure IoT Tools
     * Python
@@ -156,19 +150,15 @@ DevVM ディレクトリには、このチュートリアルを完了するた�
 
 これらの手順は、通常はクラウド開発者によって実行されます。
 
-Azure IoT Hub は、あらゆる IoT アプリケーションの中核です。 IoT デバイスとクラウドの間で、セキュリティで保護された通信を処理します。 これは、IoT Edge の機械学習ソリューションを運用する際の主要な調整ポイントです。
+Azure IoT Hub は、IoT デバイスとクラウドとの間の安全な通信を処理する、あらゆる IoT アプリケーションの核です。 これは、IoT Edge の機械学習ソリューションを運用する際の主要な調整ポイントです。
 
-* IoT Hub は、ルートを使用して、IoT デバイスからの受信データを他のダウンストリーム サービスに転送します。 IoT Hub のルートを利用して、デバイス データを Azure Storage に送信します。そこでは、データは Azure Machine Learning によって残存耐用年数 (RUL) 分類器のトレーニングに使用されます。
+* IoT Hub は、ルートを使用して、IoT デバイスからの受信データを他のダウンストリーム サービスに転送します。 ここでは、IoT Hub のルートを利用して、デバイス データを Azure Storage に送信します。 Azure Storage にあるデバイス データは、残存耐用年数 (RUL) 分類器をトレーニングするために Azure Machine Learning によって使用されます。
 
 * この後のチュートリアルで、IoT Hub を使用して Azure IoT Edge デバイスを構成および管理します。
 
-このセクションでは、スクリプトを使用して Azure IoT ハブと Azure Storage アカウントを作成します。 次に、Azure portal を使用して、ハブで受信したデータを Azure Storage Blob コンテナーに転送するルートを構成します。 これらの手順は、完了するまでに約 10 分かかります。
+このセクションでは、スクリプトを使用して Azure IoT ハブと Azure Storage アカウントを作成します。 次に、ハブで受信したデータを Azure Storage コンテナーに転送するルートを Azure portal で構成します。 これらの手順は、完了するまでに約 10 分かかります。
 
-### <a name="create-cloud-resources"></a>クラウド リソースを作成する
-
-1. 開発用マシン上で、PowerShell ウィンドウを開きます。
-
-1. IoTHub ディレクトリに変更します。
+1. 開発用 VM に接続して PowerShell ウィンドウを開き、**IoTHub** ディレクトリに移動します。
 
     ```powershell
     cd C:\source\IoTEdgeAndMlSample\IoTHub
@@ -177,50 +167,50 @@ Azure IoT Hub は、あらゆる IoT アプリケーションの中核です。 
 1. 作成スクリプトを実行します。 サブスクリプション ID、場所、リソース グループには、開発用 VM を作成したときと同じ値を使用します。
 
     ```powershell
-    .\New-HubAndStorage.ps1 -SubscriptionId <subscription id> -Location
-    <location> -ResourceGroupName <resource group>
+    .\New-HubAndStorage.ps1 -SubscriptionId <subscription id> -Location <location> -ResourceGroupName <resource group>
     ```
 
     * Azure へのサインインを要求されます。
-    * スクリプトにより、ハブと Storage アカウントを作成するための情報が確認されます。 `y` キーまたは `Enter` キーを押して続行します。
+    * スクリプトにより、ハブと Storage アカウントを作成するための情報が確認されます。 **y** キーまたは **Enter** キーを押して続行します。
 
-このスクリプトは、実行するのに約 2 分かかります。 完了すると、スクリプトによって、ハブと Storage アカウントの名前が出力されます。
+このスクリプトは、実行するのに約 2 分かかります。 完了すると、スクリプトによって、IoT ハブとストレージ アカウントの名前が出力されます。
 
-### <a name="review-route-to-storage-in-iot-hub"></a>IoT Hub 内での Storage へのルートを確認する
+## <a name="review-route-to-storage-in-iot-hub"></a>IoT Hub 内での Storage へのルートを確認する
 
-前のセクションで実行したスクリプトでは、IoT ハブの作成処理の一環として、カスタム エンドポイントとルートも作成されています。 IoT Hub ルートは、クエリ式とエンドポイントで構成されています。 メッセージが式と一致すると、データはルートに沿って、関連付けられているエンドポイントに送信されます。 エンドポイントにできるのは、イベント ハブ、Service Bus キュー、トピックです。 この場合は、Storage アカウント内の BLOB コンテナーがエンドポイントです。 Azure portal を使用して、スクリプトで作成されたルートを確認してみましょう。
+前のセクションで実行したスクリプトでは、IoT ハブの作成処理の一環として、カスタム エンドポイントとルートも作成されています。 IoT Hub ルートは、クエリ式とエンドポイントで構成されています。 メッセージが式と一致すると、データはルートに沿って、関連付けられているエンドポイントに送信されます。 エンドポイントにできるのは、イベント ハブ、Service Bus キュー、トピックです。 この場合は、ストレージ アカウント内の BLOB コンテナーがエンドポイントです。 Azure portal を使用して、スクリプトで作成されたルートを確認してみましょう。
 
-1. [Azure Portal](https://portal.azure.com)を開きます。
+1. [Azure portal](https://portal.azure.com) を開いて、このチュートリアルで使用しているリソース グループに移動します。
 
-1. 左側のナビゲーターからすべてのサービスを選択し、検索ボックスに「IoT」と入力して、 **[IoT Hub]** を選択します。
+1. リソースの一覧で、スクリプトによって作成された IoT ハブを選択します。 末尾にランダムな文字が付いた名前になります (例: `IotEdgeAndMlHub-jrujej6de6i7w`)。
 
-1. 前の手順で作成した IoT ハブを選択します。
+1. 左ペインのメニューの **[メッセージング]** にある **[メッセージ ルーティング]** を選択します。
 
-1. IoT ハブ側のナビゲーターで、 **[メッセージ ルーティング]** を選択します。
+1. **[メッセージ ルーティング]** ページで **[カスタム エンドポイント]** タブを選択します。
 
-1. [メッセージ ルーティング] ページには、 **[ルート]** と **[カスタム エンドポイント]** という 2 つのタブがあります。 **[カスタム エンドポイント]** タブを選択します。
+1. **[ストレージ]** セクションを展開します。
 
-1. **[Blob ストレージ]** で **[turbofanDeviceStorage]** を選択します。
+   ![カスタム エンドポイントの一覧に turbofandevicestorage があることを確認する](media/tutorial-machine-learning-edge-02-prepare-environment/custom-endpoints.png)
 
-1. このエンドポイントは、前回の手順で作成した、Storage アカウント内の **devicedata** と呼ばれる BLOB コンテナーを指しており、名前が **iotedgeandml\<unique suffix\>** であることに注意してください。
+   カスタム エンドポイントの一覧に **turbofandevicestorage** があることを確認します。 このエンドポイントについて、次の特性に注目してください。
 
-1. また、**BLOB ファイル名の形式**が既定の形式から変更されていることにも注意してください。その代わりに、この部分は名前の最後の要素として配置されています。 この形式は、後のチュートリアルで行う Azure Notebooks でのファイル操作の際、さらに便利です。
-
-1. [エンドポイントの詳細] ブレードを閉じて、 **[メッセージ ルーティング]** ページに戻ります。
+   * **[コンテナー名]** に表示されている `devicedata` という名前で作成した Blob Storage コンテナーを参照します。
+   * **[ファイル名の形式]** に、名前の最後の要素として partition が含まれています。 この形式は、後のチュートリアルで行う Azure Notebooks でのファイル操作の際、さらに便利です。
 
 1. **[ルート]** タブを選択します。
 
 1. **turbofanDeviceDataToStorage** という名前のルートを選択します。
 
-1. そのルートのエンドポイントは **turbofanDeviceStorage** カスタム エンドポイントであることに注意してください。
+1. **[Routes details]\(ルートの詳細\)** ページで、ルートのエンドポイントが **turbofanDeviceStorage** エンドポイントであることに注目してください。
 
-1. **true** に設定されたルーティング クエリを確認します。 これは、すべてのデバイス テレメトリ メッセージがこのルートに一致しており、そのためにすべてのメッセージが **turbofanDeviceStorage** エンドポイントに送信されることを意味します。
+   ![turbofanDeviceDataToStorage ルートの詳細を確認する](media/tutorial-machine-learning-edge-02-prepare-environment/route-details.png)
 
-1. [ルートの詳細] を閉じます。
+1. **ルーティング クエリ**を見ると、**true** に設定されています。 この設定は、すべてのデバイス テレメトリ メッセージがこのルートに一致しており、そのためすべてのメッセージが **turbofanDeviceStorage** エンドポイントに送信されることを意味します。
 
-## <a name="next-steps"></a>次の手順
+1. このページは編集していないので、そのまま閉じます。
 
-この記事では、IoT ハブを作成し、Azure Storage アカウントへのルートを構成しました。 次の記事では、シミュレートされたデバイスのセットから送信されたデータを、その IoT ハブを通じて Storage アカウントに送信します。 後のチュートリアルでは、IoT Edge デバイスおよびモジュールを構成した後、ルートを再確認し、ルーティング クエリについてもう少し詳しく確認します。
+## <a name="next-steps"></a>次のステップ
+
+この記事では、IoT ハブを作成し、Azure Storage アカウントへのルートを構成しました。 次に、シミュレートされたデバイスのセットから IoT ハブを通じてストレージ アカウントにデータを送信します。 後のチュートリアルでは、IoT Edge デバイスおよびモジュールを構成した後、ルートを再確認し、ルーティング クエリについてもう少し詳しく確認します。
 
 IoT Edge での Machine Learning チュートリアルのこの部分で説明されているステップの詳細については、次を参照してください。
 

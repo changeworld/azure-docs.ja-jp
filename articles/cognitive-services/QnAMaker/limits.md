@@ -1,22 +1,14 @@
 ---
 title: 制限と境界 - QnA Maker
-titleSuffix: Azure Cognitive Services
 description: QnA Maker には、ナレッジ ベースとサービスの一部について、メタデータの制限があります。 テストして発行するためには、これらの制限内にナレッジ ベースを維持することが重要です。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/10/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: ddf2cb5730f123038c5dbde7ab07b4022f021ced
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/23/2020
+ms.openlocfilehash: 32e12d9e983795d2fb403a5b6bc304289ece92c2
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381122"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760234"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker ナレッジ ベースの制限と境界
 
@@ -33,6 +25,15 @@ ms.locfileid: "75381122"
  たとえば、レベルに 15 個の許可されたインデックスがある場合、14 個のナレッジ ベースを発行できます (発行されたナレッジ ベースあたり 1 インデックス)。 15 番目のインデックス `testkb` は、作成およびテスト用にすべてのナレッジ ベースで使用されます。
 
 ## <a name="extraction-limits"></a>抽出の制限
+
+### <a name="file-naming-constraints"></a>ファイルの名前付けの制約
+
+ファイル名に次の文字を含めることはできません。
+
+|使用できない文字|
+|--|
+|単一引用符 `'`|
+|二重引用符 `"`|
 
 ### <a name="maximum-file-size"></a>ファイルの最大サイズ
 
@@ -66,10 +67,10 @@ URL ページから QnA を抽出するためにクロールできるディー�
 
 次の表に、メタデータの名前および値に使用できる文字と長さを示します。
 
-|アイテム|使用できる文字|正規表現パターン マッチ|最大文字数|
+|Item|使用できる文字|正規表現パターン マッチ|最大文字数|
 |--|--|--|--|
 |Name|以下の文字を使用可能:<br>英数字<br>`_` (アンダースコア)|`^[a-zA-Z0-9_]+$`|100|
-|値|以下を除くすべての文字を使用可能:<br>`:` (コロン)<br>`|` (縦棒)|`^[^:|]+$`|500|
+|Value|以下を除くすべての文字を使用可能:<br>`:` (コロン)<br>`|` (縦棒)|`^[^:|]+$`|500|
 |||||
 
 ## <a name="knowledge-base-content-limits"></a>ナレッジ ベースのコンテンツの制限

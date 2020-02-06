@@ -174,12 +174,28 @@
               href: manage-cluster-vertical-scaling.md
             - name: クラスターの正常性を確認する
               href: check-cluster-health.md
+            - name: クラスター プリンシパルの追加
+              items:
+                - name: 'C#'
+                  href: cluster-principal-csharp.md
+                - name: Python
+                  href: cluster-principal-python.md
+                - name: Azure Resource Manager テンプレート
+                  href: cluster-principal-resource-manager.md
         - name: データベース
           items:
             - name: フォロワー データベース
               href: follower.md
             - name: データベースのアクセス許可を管理する
               href: manage-database-permissions.md
+            - name: データベース プリンシパルの追加
+              items:
+                - name: 'C#'
+                  href: database-principal-csharp.md
+                - name: Python
+                  href: database-principal-python.md
+                - name: Azure Resource Manager テンプレート
+                  href: database-principal-resource-manager.md
             - name: ポリシー
               items:
                 - name: 'C#'

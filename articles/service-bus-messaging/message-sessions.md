@@ -1,6 +1,6 @@
 ---
 title: Azure Service Bus のメッセージ セッション | Microsoft Docs
-description: セッションで Azure Service Bus メッセージのシーケンスを処理します。
+description: この記事では、セッションを使用して、関連メッセージのバインドなしシーケンスの結合および順序指定処理を有効にする方法を説明します。
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 7264b8e5a536c90d106b3bf4a5e26093744327d6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 0338663046c21adad358e8fddec12a3cc8151c79
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091828"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759331"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>メッセージ セッション: 先入れ先出し (FIFO) 
 
@@ -90,7 +90,7 @@ Service Bus の観点からは、メッセージ セッションの状態は、S
 | セッションは受け入れられ、セッション内のメッセージは (ロックされている場合でも) 完了しておらず、セッションは閉じられています | いいえ |
 | セッションは受け入れられ、メッセージが完了した後、セッションは明示的に閉じられています | N/A (これは標準のフローです。 この場合、メッセージはセッションから削除されます) |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - セッション対応メッセージを処理するために .NET フレームワークを使用する例としては、[Microsoft.Azure.ServiceBus samples](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/Sessions) または [Microsoft.ServiceBus.Messaging samples](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/Sessions) を参照してください。 
 

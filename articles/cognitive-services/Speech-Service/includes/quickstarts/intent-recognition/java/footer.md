@@ -1,21 +1,16 @@
 ---
-title: クイック スタート:音声、意図、エンティティを認識する、Java - Speech サービス
-titleSuffix: Azure Cognitive Services
-description: TBD
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
-ms.author: erhopf
-ms.openlocfilehash: 119462f7102134c2eb66c281b8f0074124275d18
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/27/2020
+ms.author: dapine
+ms.openlocfilehash: f77fd5e9df2fad7bc2d2a18208986fd78805b9db
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75468305"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900350"
 ---
 > [!div class="nextstepaction"]
 > [GitHub で Java のサンプルを詳しく見てみる](https://aka.ms/speech/github-java)

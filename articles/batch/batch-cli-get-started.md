@@ -3,8 +3,8 @@ title: Batch 用の Azure CLI の概要 | Microsoft Docs
 description: Azure Batch サービスのリソースを管理するために使用できる Azure CLI の Batch コマンドの概要を簡単に説明します。
 services: batch
 documentationcenter: ''
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: fcd76587-1827-4bc8-a84d-bba1cd980d85
 ms.service: batch
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 07/24/2018
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d6d625e092618d1190c3dcdf9997b1ce35211d75
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 30f71432ca008b87bddfb253f23ae3cef0ac390d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027282"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020184"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Azure CLI で Batch リソースを管理する
 
@@ -151,7 +151,7 @@ az batch task list --job-id job001
 
 次の表では、Batch サービスでサポートされている OData 句について説明します。
 
-| 句 | [説明] |
+| 句 | 説明 |
 |---|---|
 | `--select-clause [select-clause]` | 各エンティティのプロパティのサブセットを返します。 |
 | `--filter-clause [filter-clause]` | 指定された OData 式に一致するエンティティのみを返します。 |

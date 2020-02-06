@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 12/09/2019
 ms.author: swmachan
-ms.openlocfilehash: 5e19e4247e58135c6a9bb7c6cc327cb566d294df
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0075862e198ce67cc7367efe94d624ad18e6eb3b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978460"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984169"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>チュートリアル:Azure Cognitive Services を使用して Flask アプリを作成する
 
@@ -103,7 +103,7 @@ Flask Web アプリを作成する前に、プロジェクトの作業ディレ�
 
 2. 仮想環境をアクティブ化するコマンドは、プラットフォーム/シェルによって異なります。   
 
-   | プラットフォーム | シェル | command |
+   | プラットフォーム | Shell | command |
    |----------|-------|---------|
    | macOS/Linux | bash/zsh | `source venv/bin/activate` |
    | Windows | Bash | `source venv/Scripts/activate` |
@@ -128,7 +128,7 @@ requests は、HTTP 1.1 要求を送信するためのモジュールとして�
    ```
 
 > [!NOTE]
-> requests の詳細については、「[Requests: HTTP for Humans (Requests: 人のための HTTP)](http://docs.python-requests.org/en/master/)」を参照してください。
+> requests の詳細については、「[Requests: HTTP for Humans (Requests: 人のための HTTP)](https://2.python-requests.org/en/master/)」を参照してください。
 
 ### <a name="install-and-configure-flask"></a>Flask をインストールして構成する
 
@@ -182,7 +182,7 @@ def about():
 
 これらのサンプルは、html ページをレンダリングしてユーザーに表示する方法を示していますが、ルートを使用すれば、ボタンが押されたときに API を呼び出したり、ホームページから離れることなく任意の数のアクションを実行したりすることもできます。 この点は、翻訳、感情分析、音声合成のルートを作成するときに実際に見てみましょう。
 
-### <a name="get-started"></a>作業開始
+### <a name="get-started"></a>はじめに
 
 1. IDE でプロジェクトを開いて、作業ディレクトリのルートに `app.py` という名前のファイルを作成します。 さらに、次のコードを `app.py` にコピーして保存します。
 
@@ -959,7 +959,7 @@ flask run
 
 このプロジェクトのソース コードは、[GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Flask-App-Tutorial) で入手できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Translator Text API のリファレンス](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
 * [Text Analytics API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)

@@ -12,20 +12,19 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 882b4a8bfe951212d2d1fe081d16b25641dfa4d4
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a05db11f48811f5ad6163447fae1dbb4ea31842c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843888"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712444"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Microsoft ID プラットフォーム (v2.0) に更新する理由
 
 新しいアプリケーションを開発する場合、Microsoft ID プラットフォーム (v2.0) エンドポイントと Azure Active Directory (v1.0) エンドポイントの相違点を把握しておくことが重要です。 この記事では、各エンドポイントの主な相違点と、Microsoft ID プラットフォームに関する既存の制限について説明します。
 
 > [!NOTE]
-> Microsoft ID プラットフォームのエンドポイントでは、すべての Azure AD シナリオや機能をサポートしているわけではありません。 Microsoft ID プラットフォームのエンドポイントを使用する必要があるかどうかを判断するには、[MicrosoftID プラットフォームの制限事項](#limitations)に関する記事を参照してください。
+> Microsoft ID プラットフォームのエンドポイントでは、すべての Azure AD シナリオや機能をサポートしているわけではありません。 Microsoft ID プラットフォーム エンドポイントを使用すべきかどうかを判定するには、[Microsoft ID プラットフォームの制限](#limitations)に関するページを参照してください。
 
 ## <a name="who-can-sign-in"></a>サインインできるユーザー
 
@@ -114,7 +113,7 @@ OAuth 2.0、`refresh_tokens`、および `access_tokens` の詳細について�
 Microsoft ID プラットフォーム エンドポイントでは、ペイロードを小さくするため、トークン内の一部の要求のみが既定で発行されます。 Microsoft ID プラットフォーム トークンの既定では提供されない v1.0 トークン内の特定の要求に依存するアプリやサービスがある場合は、[省略可能な要求](active-directory-optional-claims.md)の機能を使用してそのクレームを含めることを検討してください。
 
 > [!IMPORTANT]
-> v1.0 および v2.0 のトークンは、v1.0 と v2.0 のどちらのエンドポイントからでも発行できます。 id_tokens は "*必ず*" その要求元のエンドポイントと一致し、アクセス トークンは "*必ず*"、そのトークンを使用してクライアントが呼び出す Web API で想定された形式と一致します。  そのため、アプリ上で v2.0 エンドポイントを使用して、Microsoft Graph を呼び出すためのトークンを取得する場合は、v1.0 形式のアクセス トークンが想定され、アプリには v1.0 形式でトークンが返されます。  
+> v1.0 および v2.0 のトークンは、v1.0 と v2.0 のどちらのエンドポイントからでも発行できます。 id_tokens は "*必ず*" その要求元のエンドポイントと一致し、アクセス トークンは "*必ず*"、そのトークンを使用してクライアントが呼び出す Web API で想定された形式と一致します。  したがって、アプリで v2.0 エンドポイントを使用して、Microsoft Graph を呼び出すためのトークンを取得する場合、v1.0 形式のアクセス トークンが想定されているため、アプリは v1.0 形式でトークンを受け取ります。  
 
 ## <a name="limitations"></a>制限事項
 

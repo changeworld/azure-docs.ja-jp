@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 04d9ec8cad2404466d2df649df4d5c461768b76f
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 2aaf1d2b377abc0b10b0b14de03d01c7f6fae5b7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693598"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767758"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>チュートリアル:Snowflake を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -56,10 +56,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 Azure AD での自動ユーザー プロビジョニング用に Snowflake を構成する前に、Snowflake 上で SCIM プロビジョニングを有効にする必要があります。
 
-> [!NOTE]
-> 現在、この統合は、Snowflake ではプライベート プレビュー段階です。 Snowflake アカウントでこの機能を有効にしたい場合は、Snowflake の営業担当者にお問い合わせください。
-
-1. Snowflake の管理コンソールにサインインします。 下に示されているクエリを、強調表示されているワークスペースに入力し、 **[実行]** をクリックします。
+1. Snowflake の管理コンソールにサインインします。 下に示されているクエリを、強調表示されているワークシートに入力し、 **[実行]** をクリックします。
 
     ![Snowflake 管理コンソール](media/Snowflake-provisioning-tutorial/image00.png)
 
@@ -102,7 +99,7 @@ Azure AD で自動ユーザー プロビジョニング用に Snowflake を構�
 
 ### <a name="to-configure-automatic-user-provisioning-for-snowflake-in-azure-ad"></a>Azure AD で Snowflake の自動ユーザー プロビジョニングを構成するには、次の操作を実行します。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. [Azure portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -128,7 +125,7 @@ Azure AD で自動ユーザー プロビジョニング用に Snowflake を構�
 
     ![通知用メール](common/provisioning-notification-email.png)
 
-8. **[Save]** をクリックします。
+8. **[保存]** をクリックします。
 
 9. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Snowflake]\(Azure Active Directory ユーザーを Snowflake に同期する\)** を選択します。
 
@@ -152,7 +149,7 @@ Azure AD で自動ユーザー プロビジョニング用に Snowflake を構�
 
     ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
 
-15. **[設定]** セクションの **[スコープ]** で目的の値を選択して、Snowflake にプロビジョニングするユーザーやグループを定義します。
+15. **[設定]** セクションの **[スコープ]** で目的の値を選択して、Snowflake にプロビジョニングするユーザーやグループを定義します。 このオプションが使用できない場合は、[Admin Credentials]\(管理者の資格情報\) の下の必須フィールドを構成し、 **[保存]** をクリックして、ページを更新してください。 
 
     ![プロビジョニングのスコープ](common/provisioning-scope.png)
 
@@ -170,8 +167,8 @@ Azure AD で自動ユーザー プロビジョニング用に Snowflake を構�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)。
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)

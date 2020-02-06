@@ -3,21 +3,21 @@ title: Azure Service Fabric CLI- sfctl mesh secretvalue
 description: Azure Service Fabric のコマンド ライン インターフェイスである sfctl について説明します。 Service Fabric Mesh のシークレット値リソースを取得および削除するためのコマンドの一覧が含まれます。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: a29d32dff9ad51942acb30dd834ad6fbd362ac65
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b2fe3a7995cdd88a8f63d0d865e72e9f161cf9d7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646111"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905963"
 ---
 # <a name="sfctl-mesh-secretvalue"></a>sfctl mesh secretvalue
 メッシュ secretvalue リソースを取得および削除します。
 
 ## <a name="commands"></a>コマンド
 
-|command|[説明]|
+|command|説明|
 | --- | --- |
 | delete | 名前付きシークレット リソースの指定された値を削除します。 |
 | list | 指定されたシークレット リソースのすべての値の名前を一覧表示します。 |
@@ -30,14 +30,14 @@ ms.locfileid: "75646111"
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --secret-name -n [必須] | シークレット リソースの名前。 |
 | --version -v     [必須] | シークレット バージョンの名前。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
@@ -52,13 +52,13 @@ ms.locfileid: "75646111"
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --secret-name -n [必須] | シークレット リソースの名前。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
@@ -71,7 +71,7 @@ ms.locfileid: "75646111"
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --secret-name -n [必須] | シークレット リソースの名前。 |
 | --version -v     [必須] | シークレット バージョンの名前。 |
@@ -79,7 +79,7 @@ ms.locfileid: "75646111"
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |

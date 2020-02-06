@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:Node.js で azure/service-bus キューを使用する方法
-description: クイック スタート:azure/service-bus パッケージを使用して Node.js アプリから Azure の Service Bus キューを使用する方法を学習します。
+title: Node.js で azure/service-bus キューを使用する方法
+description: 新しい @azure/service-bus パッケージを使用して Service Bus キューとの間でメッセージを送受信する Node.js プログラムの記述方法を学習します。
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 9901ccd6bb1abf27bb1141c618d0bfde167b9cc3
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9db359d8331859e3eebf345d91fe5dc6e66c0d4c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721689"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774588"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>クイック スタート:Node.js および azure/service-bus パッケージで Service Bus キューを 使用する方法
 > [!div class="op_multi_selector" title1="プログラミング言語" title2="Node.js パッケージ"]
@@ -129,12 +129,12 @@ Service Bus キューとのやりとりは、[ServiceBusClient](https://docs.mic
 
 お疲れさまでした。 これで、Service Bus キューからメッセージが受信されました。
 
-[CreateReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient#createreceiver-receivemode-) メソッドでは `ReceiveMode` を取り込みます。これは、[ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) および [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations) という値を持つ列挙型です。 メッセージで `complete()`、`abandon()`、`defer()`、または `deadletter()` メソッドのいずれかを使って `PeekLock` モードを使用する場合は、必ず、[メッセージを解決](message-transfers-locks-settlement.md#settling-receive-operations)してください。
+[createReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient#createreceiver-receivemode-) メソッドでは `ReceiveMode` を取り込みます。これは、[ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) および [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations) という値を持つ列挙型です。 メッセージで `complete()`、`abandon()`、`defer()`、または `deadletter()` メソッドのいずれかを使って `PeekLock` モードを使用する場合は、必ず、[メッセージを解決](message-transfers-locks-settlement.md#settling-receive-operations)してください。
 
 > [!NOTE]
 > Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは Service Bus 名前空間に接続し、簡単な方法でメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 詳細については、次のリソースを参照してください。
 - [キュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)
 - [GitHub で Service Bus の Nodejsサンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript)を確認する

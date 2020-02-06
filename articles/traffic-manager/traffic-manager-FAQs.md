@@ -3,20 +3,20 @@ title: Azure Traffic Manager - よくあるご質問
 description: この記事では、Traffic Manager に関してよく寄せられる質問に対する回答を示します。
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
-ms.author: allensu
-ms.openlocfilehash: d7feb0f7c32ab544df2b9de08daaf8cd007318b5
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.author: rohink
+ms.openlocfilehash: bc318aff0dad7d7fdff16df549c013927ef0e799
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045309"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938811"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager についてよく寄せられる質問 (FAQ)
 
@@ -497,7 +497,7 @@ Traffic Manager のネーム サーバーは、各 DNS クエリを処理する�
 
 次の表に、入れ子になったエンドポイントに対する Traffic Manager 正常性チェックの動作を示します。
 
-| 子プロファイル モニターの状態 | 親エンドポイント監視の状態 | メモ |
+| 子プロファイル モニターの状態 | 親エンドポイント監視の状態 | Notes |
 | --- | --- | --- |
 | 無効。 子プロファイルは無効化されています。 |停止済み |親エンドポイントの状態は停止で、無効ではありません。 無効な状態は、親プロファイルでエンドポイントを無効にしたことを示すために予約されています。 |
 | 低下。 1 つ以上の子プロファイル エンドポイントが "低下" 状態です。 |オンライン: 子プロファイルの "オンライン" 状態のエンドポイントの数が MinChildEndpoints の値以上です。<BR>エンドポイントの確認: 子プロファイルの "オンライン" 状態および "エンドポイントの確認" 状態のエンドポイントの数が MinChildEndpoints の値以上です。<BR>低下: それ以外の場合。 |トラフィックは、"エンドポイントの確認" 状態のエンドポイントにルーティングされます。 MinChildEndpoints の設定値が大きすぎると、エンドポイントは常に "低下" 状態になります。 |

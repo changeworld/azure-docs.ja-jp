@@ -1,6 +1,6 @@
 ---
 title: Azure Service Bus プリフェッチ メッセージ | Microsoft Docs
-description: Azure Service Bus メッセージをプリフェッチすることでパフォーマンスを向上します。
+description: Azure Service Bus メッセージをプリフェッチすることでパフォーマンスを向上します。 メッセージは、アプリケーションが要求する前に、ローカルですぐに取得できるようになっています。
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2018
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: c63e6bf66e4832a1a5b0b5e6fc3dfbbf02d1e490
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80717ab940d27e9bf108b3740309bcd7d71668fd
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62125850"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760659"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>Azure Service Bus メッセージのプリフェッチ
 
@@ -54,7 +54,7 @@ ms.locfileid: "62125850"
 
 最大プリフェッチ数とキューまたはサブスクリプションに構成されているロック期間は、ロックのタイムアウトが、プリフェッチ バッファーの最大サイズに 1 メッセージ分を足した累計予想メッセージ処理時間以上になるようにバランスを調整する必要があります。 同時に、ロック タイムアウトは、メッセージが誤って破棄された場合に、再配信される前にロックの有効期限が切れないよう、その最大 [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) を超えない長さである必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。
 

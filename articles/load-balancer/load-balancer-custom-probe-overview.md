@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: c093cea9f8719722cc44c9d6424c06039360e90f
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 5aa75de694d05ce31becc6996aca419dff256a3f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690404"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023550"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer の正常性プローブ
 
@@ -200,7 +200,7 @@ Load Balancer はパス スルー サービスであり (TCP 接続を終了し�
 
 UDP データグラムは、正常なバックエンド エンドポイントに配信されます。
 
-UDP はコネクションレスであり、UDP に追跡されるフロー状態は存在しません。 いずれかのバックエンド エンドポイントの正常性プローブが失敗すると、既存の UDP フローはバックエンド プール内の別の正常なインスタンスに移動できます。
+UDP はコネクションレスであり、UDP に追跡されるフロー状態は存在しません。 いずれかのバックエンド エンドポイントの正常性プローブが失敗すると、既存の UDP フローはバックエンド プール内の別の正常なインスタンスに移動します。
 
 バックエンド プール内のすべてのインスタンスのすべてのプローブが失敗した場合は、Basic および Standard の Load Balancer のすべての既存 UDP フローが終了します。
 
@@ -257,6 +257,6 @@ VM に複数のインターフェイスがある場合は、プローブを受�
 ## <a name="next-steps"></a>次のステップ
 
 - [Standard Load Balancer](load-balancer-standard-overview.md) の詳細を確認する
-- [PowerShell を使用した Resource Manager でのパブリック ロード バランサーの作成の概要](load-balancer-get-started-internet-arm-ps.md)
+- [PowerShell を使用した Resource Manager でのパブリック ロード バランサーの作成の概要](quickstart-create-standard-load-balancer-powershell.md)
 - [正常性プローブ用の REST API](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerprobes/)
 - [Load Balancer の Uservoice](https://aka.ms/lbuservoice) で新しい正常性プローブ機能をリクエストする

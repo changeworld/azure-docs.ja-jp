@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
-ms.date: 01/14/2020
+ms.date: 01/23/2020
 ms.author: diberry
-ms.openlocfilehash: 65611dfb171008deab9d1d6cb15f0470fcbc2753
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 58ee74f7b01738e67f9fddd39eb4eee59cdb65b6
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170420"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774222"
 ---
 Node.js 用 Language Understanding (LUIS) 作成クライアント ライブラリの用途は次のとおりです。
 
@@ -25,7 +25,7 @@ Node.js 用 Language Understanding (LUIS) 作成クライアント ライブラ�
 * アプリをトレーニングして公開する。
 * アプリの削除
 
-[リファレンス ドキュメント](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-authoring) | [作成パッケージ (NPM)](https://www.npmjs.com/package/azure-cognitiveservices-luis-authoring) | [サンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/luis_authoring_quickstart.js)
+[リファレンス ドキュメント](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-authoring) | [作成パッケージ (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)、[ランタイム パッケージ (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime) | [サンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/luis_authoring_quickstart.js)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -125,7 +125,7 @@ Language Understanding (LUIS) 作成クライアントは、認証を経て作�
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
-自分のキーを指定して [CognitiveServicesCredentials]() オブジェクトを作成し、それを自分のエンドポイントと共に使用して [LUISAuthoringClient]() オブジェクトを作成します。
+自分のキーを指定して [CognitiveServicesCredentials](https://docs.microsoft.com/javascript/api/@azure/ms-rest-js/apikeycredentials?view=azure-node-latest) オブジェクトを作成し、それを自分のエンドポイントと共に使用して [LUISAuthoringClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/luisauthoringclient?view=azure-node-latest) オブジェクトを作成します。
 
 [!code-javascript[Create LUIS client object](~/cognitive-services-quickstart-code/javascript/LUIS/luis_authoring_quickstart.js?name=AuthoringCreateClient)]
 

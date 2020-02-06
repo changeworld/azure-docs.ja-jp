@@ -142,6 +142,8 @@
           href: how-to-manage-workspace.md
         - name: Azure CLI の使用
           href: how-to-manage-workspace-cli.md
+        - name: REST の使用
+          href: how-to-manage-rest.md
         - name: Resource Manager テンプレートの使用
           displayName: arm
           href: how-to-create-workspace-template.md
@@ -194,6 +196,9 @@
         - name: ラベル付きのデータセットを作成する
           displayName: 'data, labels, torchvision'
           href: how-to-use-labeled-dataset.md
+        - name: データ インジェスト用 DevOps
+          displayName: 'data, ingestion, devops'
+          href: how-to-cicd-data-ingestion.md
     - name: モデルをトレーニングする
       items:
         - name: デザイナーを使用する
@@ -279,7 +284,7 @@
         - name: トレーニング実行のメトリックを記録する
           href: how-to-track-experiments.md
         - name: MLflow を使用して実験を追跡する
-          displayName: 'log, monitor, metrics'
+          displayName: 'log, monitor, metrics, Databricks'
           href: how-to-use-mlflow.md
         - name: TensorBoard を使用して実行を視覚化する
           displayName: 'log, monitor, metrics'

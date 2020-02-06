@@ -10,13 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 08/12/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f03e92c1bfd86d15bf582487e3e92a3713b63e2
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: c01a7a9c5adb050d98840938260c8486ecdeb199
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619823"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705192"
 ---
 # <a name="set-up-a-mobile-device-as-your-two-factor-verification-method"></a>モバイル デバイスを 2 要素認証方法として設定する
 
@@ -27,7 +26,7 @@ ms.locfileid: "69619823"
 
 ## <a name="set-up-your-mobile-device-to-use-a-text-message-as-your-verification-method"></a>確認方法としてテキスト メッセージを使用するようにモバイル デバイスを設定する
 
-1. **[追加のセキュリティ確認]** ページの **[手順 1: ご希望のご連絡方法をお知らせください]** 領域で、 **[認証用電話]** を選択し、ドロップダウン リストで国またはリージョンを選択した後、モバイル デバイスの電話番号を入力します。
+1. **[追加のセキュリティ確認]** ページの **[手順 1: ご希望のご連絡方法をお知らせください]** 領域で **[認証用電話]** を選択し、ドロップダウン リストからお住まいの国または地域を選択して、モバイル デバイスの電話番号を入力してください。
 
 2. **[方法]** 領域で **[テキスト メッセージでコードを送信する]** を選択してから、 **[次へ]** を選択します。
 
@@ -48,7 +47,7 @@ ms.locfileid: "69619823"
 
 ## <a name="set-up-your-mobile-device-to-receive-a-phone-call"></a>電話で確認コードを受け取るようにモバイル デバイスを設定する
 
-1. **[追加のセキュリティ確認]** ページの **[手順 1: ご希望のご連絡方法をお知らせください]** 領域で、 **[認証用電話]** を選択し、ドロップダウン リストで国またはリージョンを選択した後、モバイル デバイスの電話番号を入力します。
+1. **[追加のセキュリティ確認]** ページの **[手順 1: ご希望のご連絡方法をお知らせください]** 領域で **[認証用電話]** を選択し、ドロップダウン リストからお住まいの国または地域を選択して、モバイル デバイスの電話番号を入力してください。
 
 2. **[方法]** 領域で **[電話で確認コードを受け取る]** を選択してから、 **[次へ]** を選択します。
 
@@ -67,7 +66,7 @@ ms.locfileid: "69619823"
 
 5. **[完了]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 2 要素認証方法を設定した後、方法の追加、設定とアプリ パスワードの管理、サインインを行うことができます。また、2 要素認証に関連する一般的な問題についてサポートを受けることもできます。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 2453b29c5efd768930f534df89d4c62320ed4770
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3bd13a63c3f4fa275f7e4789c184802445519388
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965339"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772593"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Azure Virtual Machines で Premium ファイル共有を使用して SQL Server フェールオーバー クラスター インスタンスを構成する
 
@@ -77,13 +77,15 @@ Filestream は、Premium ファイル共有のフェールオーバー クラス
 
 - Microsoft Azure サブスクリプションが必要です。
 - Azure Virtual Machines 上の Windows ドメイン。
-- Azure の仮想マシンと Active Directory の両方にオブジェクトを作成するためのアクセス許可を持つアカウント。
+- Azure の仮想マシンと Active Directory の両方にオブジェクトを作成するためのアクセス許可を持つドメイン ユーザー アカウント。
+- SQL Server サービスを実行し、ファイル共有をマウントするときに、仮想マシンにログインできるドメイン ユーザー アカウント。  
 - 次のコンポーネント用の十分な IP アドレス空間を持つ Azure 仮想ネットワークとサブネット。
    - 2 つの仮想マシン。
    - フェールオーバー クラスターの IP アドレス。
    - 各 FCI の IP アドレス。
 - Azure ネットワーク上で構成された、ドメイン コントローラーを指す DNS。
-- データ ファイル用のデータベースのストレージ クォータに基づいた [Premium ファイル共有](../../../storage/files/storage-how-to-create-premium-fileshare.md)。
+- データ ファイル用のデータベースのストレージ クォータに基づいて、クラスター化されたドライブとして使用される [Premium ファイル共有](../../../storage/files/storage-how-to-create-premium-fileshare.md)。
+- クラウド監視は Windows 2016 以降でサポートされているため、Windows Server 2012 R2 以前を使用している場合は、ファイル共有監視として使用する別のファイル共有が必要になります。 別の Azure ファイル共有を使用することも、別の仮想マシンでファイル共有を使用することもできます。 別の Azure ファイル共有を使用する場合は、クラスター化されたドライブに使用した Premium ファイル共有と同じプロセスでマウントできます。 
 
 これらの前提条件が整ったら、フェールオーバー クラスターの構築を開始できます。 最初の手順で、仮想マシンを作成します。
 
@@ -180,7 +182,8 @@ Filestream は、Premium ファイル共有のフェールオーバー クラス
 1. クラスターに参加する各 SQL Server VM で、この手順を繰り返します。
 
   > [!IMPORTANT]
-  > バックアップ ファイル用に別のファイル共有を使用して、この共有の IOPS と領域の容量をデータとログ ファイル用に確保することを検討してください。 バックアップ ファイルには、Premium または Standard のいずれのファイル共有も使用できます
+  > - バックアップ ファイル用に別のファイル共有を使用して、この共有の IOPS と領域の容量をデータとログ ファイル用に確保することを検討してください。 バックアップ ファイルには、Premium または Standard のいずれのファイル共有も使用できます
+  > - Windows 2012 R2 以前を使用している場合は、同じ手順に従って、ファイル共有監視として使用するファイル共有をマウントします。 
 
 ## <a name="step-3-configure-the-failover-cluster-with-the-file-share"></a>手順 3:ファイル共有を使用してフェールオーバー クラスターを構成する
 
@@ -189,7 +192,7 @@ Filestream は、Premium ファイル共有のフェールオーバー クラス
 1. Windows Server フェールオーバー クラスタリング機能を追加する。
 1. クラスターを検証する。
 1. フェールオーバー クラスターを作成する。
-1. クラウド監視を作成する。
+1. クラウド監視 (Windows Server 2016 以降の場合) またはファイル共有監視 (Windows Server 2012 R2 以前の場合) を作成します。
 
 
 ### <a name="add-windows-server-failover-clustering"></a>Windows Server フェールオーバー クラスタリングを追加する
@@ -263,9 +266,9 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 ```
 
 
-### <a name="create-a-cloud-witness"></a>クラウド監視を作成する
+### <a name="create-a-cloud-witness-win-2016-"></a>クラウド監視を作成する (Win 2016 以降)
 
-クラウド監視とは、Azure Storage Blob に格納されている、新しい種類のクラスター クォーラム監視です。 これにより、監視共有をホストする別個の VM が不要になります。
+Windows Server 2016 以降を使用している場合は、クラウド監視を作成する必要があります。 クラウド監視とは、Azure Storage Blob に格納されている、新しい種類のクラスター クォーラム監視です。 これにより、監視共有をホストする別個の VM や、別のファイル共有を使用する必要がなくなります。
 
 1. [フェールオーバー クラスターのクラウド監視を作成](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness)します。
 
@@ -273,7 +276,11 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. アクセス キーと、コンテナーの URL を保存します。
 
-1. フェールオーバー クラスターのクォーラム監視を構成します。 「[ユーザー インターフェイスでクォーラム監視を構成する方法](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness)」に関するページを参照してください。
+### <a name="configure-quorum"></a>クォーラムを構成する 
+
+Windows Server 2016 以降では、先ほど作成したクラウド監視を使用するようにクラスターを構成します。 [ユーザー インターフェイスでクォーラム監視を構成する](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness)の手順をすべて実行します。
+
+Windows Server 2012 R2 以前のバージョンの場合は、「[ユーザー インターフェイスでクォーラム監視を構成する](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness)」の同じ手順に従いますが、 **[クォーラム監視の選択]** ページで **[ファイル共有監視を構成する]** オプションを選択します。 ファイル共有監視として割り当てたファイル共有が、別の仮想マシンに構成したものなのか、Azure からマウントしたものなのかを指定します。 
 
 
 ## <a name="step-4-test-cluster-failover"></a>手順 4:クラスターのフェールオーバーをテストする
@@ -296,7 +303,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. **[SQL Server フェールオーバー クラスターの新規インストール]** を選択します。 ウィザードの指示に従って、SQL Server FCI をインストールします。
 
-   FCI データ ディレクトリは、Premium ファイル共有上に存在する必要があります。 共有の完全パスを `\\storageaccountname.file.core.windows.net\filesharename\foldername` の形式で入力します。 ファイル サーバーをデータ ディレクトリとして指定したことを通知する警告が表示されます。 この警告は想定されています。 ファイル共有の保持に使用したアカウントが、SQL Server サービスが潜在的なエラーを回避するために使用しているアカウントであることを確認します。
+   FCI データ ディレクトリは、Premium ファイル共有上に存在する必要があります。 共有の完全パスを `\\storageaccountname.file.core.windows.net\filesharename\foldername` の形式で入力します。 ファイル サーバーをデータ ディレクトリとして指定したことを通知する警告が表示されます。 この警告は想定されています。 ファイル共有を永続化したときに VM への RDP に使用したユーザー アカウントが、潜在的なエラーを回避するために SQL Server サービスで使用されているのと確実に同じアカウントであるようにします。
 
    :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share/use-file-share-as-data-directories.png" alt-text="ファイル共有を SQL データ ディレクトリとして使用する":::
 

@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 05/15/2019
 ms.author: ikbarmen
-ms.openlocfilehash: a9b75c3454c67112b0e00c7ea4b4e8c676ebcc97
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18f2cf3daa281400151ba223e1735e7138d97e8e
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65949476"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990506"
 ---
 # <a name="manage-multiple-tenants"></a>複数のテナントの管理
 
@@ -45,7 +45,7 @@ ms.locfileid: "65949476"
 * テナントごとに複数の Video Indexer (および関連する Media Services) アカウントがあるため、管理が困難になります。
 
 > [!TIP]
-> [Video Indexer 開発者ポータル](https://api-portal.videoindexer.ai/)でシステムの管理者ユーザーを作成し、Authorization API を使用して、関連する[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token)をテナントに提供します。
+> [Video Indexer 開発者ポータル](https://api-portal.videoindexer.ai/)でシステムの管理者ユーザーを作成し、Authorization API を使用して、関連する[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token)をテナントに提供します。
 
 ## <a name="single-video-indexer-account-for-all-users"></a>すべてのユーザーに対して単一の Video Indexer アカウント
 
@@ -77,6 +77,6 @@ ms.locfileid: "65949476"
 * これは、課金を分離できる唯一のオプションです。
 * この統合により、テナントごとの Video Indexer アカウントより管理オーバーヘッドが増加します。 課金の要件がない場合は、この記事で説明した他のオプションのいずれかを使用することをお勧めします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [概要](video-indexer-overview.md)

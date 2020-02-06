@@ -2,17 +2,17 @@
 title: クイックスタート - Azure portal を使用して Azure プライベート DNS ゾーンを作成する
 description: このクイックスタートでは、Azure DNS でプライベート DNS ゾーンとレコードを作成してテストします。 Azure portal を使用して最初のプライベート DNS ゾーンとレコードを作成して管理するためのステップ バイ ステップ ガイドです。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
 ms.date: 10/11/2019
-ms.author: allensu
-ms.openlocfilehash: 48c5684dd491a91b6da212f78c535433ac2aecf7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 8391d92a2e2970378c11c043ca9f5d4f6dc44696
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210748"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939364"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure プライベート DNS ゾーンを作成する
 
@@ -178,7 +178,7 @@ MyVM02 についても同じ手順を繰り返します。
 このクイックスタートで作成したリソースが不要になったときに削除するには、**MyAzureResourceGroup** リソース グループを削除します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure DNS Private Zones のシナリオ](private-dns-scenarios.md)

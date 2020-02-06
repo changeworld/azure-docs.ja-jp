@@ -14,11 +14,11 @@
       href: learn/quick-monitor-azure-resource.md
     - name: 仮想マシンの監視
       items:
-        - name: 収集 - Azure VM
+        - name: Azure VM
           href: learn/quick-collect-azurevm.md
-        - name: 収集 - Linux コンピューター
+        - name: Linux コンピューター
           href: learn/quick-collect-linux-computer.md
-        - name: 収集 - Windows コンピューター
+        - name: Windows コンピューター
           href: learn/quick-collect-windows-computer.md
     - name: アプリケーションの監視
       items:
@@ -439,6 +439,8 @@
               href: app/configuration-with-applicationinsights-config.md
             - name: カスタム データ ソースを関連付ける
               href: app/custom-data-correlation.md
+            - name: Connection strings
+              href: app/sdk-connection-string.md
             - name: 特別なトピック
               items:
                 - name: Web アプリおよびサービスの詳細な診断
@@ -535,23 +537,18 @@
               href: 'faq.md#agents'
             - name: Azure Diagnostics 拡張機能
               items:
-                - name: 概要
-                  href: platform/diagnostics-extension-overview.md
-                - name: ログの収集
-                  href: platform/azure-storage-iis-table.md
                 - name: Windows
+                  displayname: diagnostics extension
                   items:
-                    - name: バージョン履歴
-                      href: platform/diagnostics-extension-schema.md
-                    - name: スキーマ
-                      href: platform/diagnostics-extension-schema-1dot3.md
-                    - name: Azure Storage への送信
-                      href: platform/diagnostics-extension-to-storage.md
-                    - name: Application Insights への送信
-                      href: platform/diagnostics-extension-to-application-insights.md
-                    - name: Event Hubs への送信
-                      href: platform/diagnostics-extension-stream-event-hubs.md
-                    - name: カスタム メトリックとして Azure Monitor に送信する
+                    - name: 概要
+                      href: platform/diagnostics-extension-overview.md
+                    - name: '[インストールと構成]'
+                      items:
+                        - name: PowerShell
+                          href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
+                        - name: Resource Manager テンプレート
+                          href: ../virtual-machines/extensions/diagnostics-template.md?toc=/azure/azure-monitor/toc.json
+                    - name: Azure Monitor メトリックへの送信
                       items:
                         - name: 仮想マシン
                           href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
@@ -561,15 +558,26 @@
                           href: platform/collect-custom-metrics-guestos-vm-classic.md
                         - name: クラウド サービス
                           href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
+                    - name: Event Hubs への送信
+                      href: platform/diagnostics-extension-stream-event-hubs.md
+                    - name: ログへの送信
+                      href: platform/azure-storage-iis-table.md
+                    - name: Azure Storage への送信
+                      href: platform/diagnostics-extension-to-storage.md
+                    - name: Application Insights への送信
+                      href: platform/diagnostics-extension-to-application-insights.md
+                    - name: バージョン履歴
+                      href: platform/diagnostics-extension-schema.md
                     - name: JSON Lines リソース ログの形式
                       href: platform/diagnostic-logs-append-blobs.md
                     - name: トラブルシューティング
                       href: platform/diagnostics-extension-troubleshooting.md
                 - name: Linux
+                  displayname: diagnostics extension
                   items:
-                    - name: VM での使用
-                      href: ../virtual-machines/extensions/diagnostics-linux.md
-                    - name: Telegraf を使用したカスタム メトリック
+                    - name: 概要
+                      href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
+                    - name: Telegraf を使用したメトリックの収集
                       href: platform/collect-custom-metrics-linux-telegraf.md
             - name: Log Analytics エージェント
               items:
@@ -589,6 +597,28 @@
                   href: platform/agent-manage.md
                 - name: エージェントの正常性
                   href: insights/solution-agenthealth.md
+                - name: データ ソース
+                  items:
+                    - name: 概要
+                      href: platform/agent-data-sources.md
+                    - name: Windows イベント
+                      href: platform/data-sources-windows-events.md
+                    - name: カスタム JSON データ
+                      href: platform/data-sources-json.md
+                    - name: CollectD のパフォーマンス データ
+                      href: platform/data-sources-collectd.md
+                    - name: syslog
+                      href: platform/data-sources-syslog.md
+                    - name: パフォーマンス カウンター
+                      href: platform/data-sources-performance-counters.md
+                    - name: Linux アプリケーション パフォーマンス
+                      href: platform/data-sources-linux-applications.md
+                    - name: IIS ログ
+                      href: platform/data-sources-iis-logs.md
+                    - name: カスタム ログ
+                      href: platform/data-sources-custom-logs.md
+                    - name: カスタム フィールド
+                      href: platform/custom-fields.md
             - name: '[トラブルシューティング]'
               items:
                 - name: Log Analytics VM 拡張機能
@@ -600,28 +630,6 @@
                 - name: Log Analytics Linux エージェント
                   displayname: 'troubleshoot, troubleshooting'
                   href: platform/agent-linux-troubleshoot.md
-        - name: エージェントのデータ ソース
-          items:
-            - name: 概要
-              href: platform/agent-data-sources.md
-            - name: Windows イベント
-              href: platform/data-sources-windows-events.md
-            - name: カスタム JSON データ
-              href: platform/data-sources-json.md
-            - name: CollectD のパフォーマンス データ
-              href: platform/data-sources-collectd.md
-            - name: syslog
-              href: platform/data-sources-syslog.md
-            - name: パフォーマンス カウンター
-              href: platform/data-sources-performance-counters.md
-            - name: Linux アプリケーション パフォーマンス
-              href: platform/data-sources-linux-applications.md
-            - name: IIS ログ
-              href: platform/data-sources-iis-logs.md
-            - name: カスタム ログ
-              href: platform/data-sources-custom-logs.md
-            - name: カスタム フィールド
-              href: platform/custom-fields.md
         - name: VM に対する Azure Monitor
           items:
             - name: 概要
@@ -660,14 +668,16 @@
               href: insights/vminsights-dependency-agent-maintenance.md
             - name: 監視を無効にする
               href: insights/vminsights-optout.md
-        - name: 容量とパフォーマンス ソリューション
-          href: insights/capacity-performance.md
-        - name: VMware 分析ソリューション
-          href: insights/vmware.md
-        - name: Wire Data ソリューション
-          href: insights/wire-data.md
-        - name: Service Map ソリューション
-          href: insights/service-map.md
+        - name: ソリューション
+          items:
+            - name: 容量とパフォーマンス ソリューション
+              href: insights/capacity-performance.md
+            - name: VMware 分析ソリューション
+              href: insights/vmware.md
+            - name: Wire Data ソリューション
+              href: insights/wire-data.md
+            - name: Service Map ソリューション
+              href: insights/service-map.md
         - name: コンピューター グループ
           href: platform/computer-groups.md
     - name: コンテナーの監視
@@ -1125,6 +1135,10 @@
   items:
     - name: サービスの制限
       href: service-limits.md
+    - name: 診断拡張機能
+      items:
+        - name: スキーマ
+          href: platform/diagnostics-extension-schema-1dot3.md
     - name: Application Insights
       items:
         - name: 依存関係の自動収集

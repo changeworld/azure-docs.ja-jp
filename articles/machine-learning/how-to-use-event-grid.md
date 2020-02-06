@@ -10,12 +10,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 11/04/2019
-ms.openlocfilehash: 885ddd5c25a36e2b12379ea7639956c1c4ca5437
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 0da5fe56bd56d360cd8052976bdde0cdc910c9a5
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75534675"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904284"
 ---
 # <a name="create-event-driven-machine-learning-workflows-preview"></a>イベント ドリブン Machine Learning ワークフローを作成する (プレビュー)
 
@@ -32,21 +32,6 @@ Event Grid を使用すると、次のような一般的なシナリオが有効
 
 * イベントを作成する Azure Machine Learning ワークスペースへの共同作成者または所有者アクセス。
 * webhook やイベント ハブなどのイベント ハンドラー エンドポイントを選択します。 詳細は、[イベント ハンドラー](https://docs.microsoft.com/azure/event-grid/event-handlers)に関する記事を参照してください｡ 
-
-## <a name="register-resource-providers"></a>リソース プロバイダーを登録する
-
-2019 年 11 月 1 日より前に Azure Event Grid または Machine Learning を使用したことがある場合は、このドキュメントの手順を実行する前に、リソース プロバイダーの再登録が必要になることがあります。 プロバイダーを再登録するには、次の手順を実行します。
-
-1. Azure portal に移動し、 __[サブスクリプション]__ を選択します。 使用するサブスクリプションを選択します。
-1. __[リソース プロバイダー]__ を選択し、__EventGrid__ を検索します。
-1. __[Microsoft EventGrid]__ エントリを選択し、 __[再登録]__ を選択します。
-
-    ![re-register-resource-provider](./media/how-to-use-event-grid/re-register-resource-provider.png)
-
-1. __[MachineLearningServices]__ を検索し、エントリを選択して、 __[再登録]__ を選択します。
-
-> [!TIP]
-> これらの手順を完了するためのアクセス許可がない場合は、サブスクリプション管理者に依頼して実行してください。
 
 ## <a name="configure-machine-learning-events-using-the-azure-portal"></a>Azure portal を使用して Machine Learning イベントを構成する
 

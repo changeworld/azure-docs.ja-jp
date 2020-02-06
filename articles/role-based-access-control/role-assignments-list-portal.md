@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2020
+ms.date: 01/23/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6117f22b24887e913ed2f8d3a43e80335121636d
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 099cf74dd27f39a4289397d5178511125d9ebf6f
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934487"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720722"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Azure RBAC と Azure portal を使用してロールの割り当てを一覧表示する
 
@@ -48,7 +48,7 @@ ms.locfileid: "75934487"
 
 サブスクリプションの[所有者](built-in-roles.md#owner)ロールが割り当てられているユーザーは、サブスクリプション内のすべてを管理できます。 サブスクリプションの所有者を一覧表示するには、次の手順に従います。
 
-1. Azure portal で、 **[すべてのサービス]** 、 **[サブスクリプション]** の順にクリックします。
+1. Azure portal で、 **[すべてのサービス]** 、 **[サブスクリプション]**  の順にクリックします。
 
 1. 所有者を一覧表示するサブスクリプションをクリックします。
 
@@ -62,7 +62,7 @@ ms.locfileid: "75934487"
 
 ## <a name="list-role-assignments-at-a-scope"></a>あるスコープのロールの割り当てを一覧表示する
 
-1. Azure portal で、 **[すべてのサービス]** をクリックしてからスコープを選びます。 たとえば、 **[管理グループ]** 、 **[サブスクリプション]** 、 **[リソース グループ]** 、またはリソースを選択できます。
+1. Azure portal で、 **[すべてのサービス]**  をクリックしてからスコープを選びます。 たとえば、 **[管理グループ]** 、 **[サブスクリプション]** 、 **[リソース グループ]** 、またはリソースを選択できます。
 
 1. 特定のリソースをクリックします。
 
@@ -78,7 +78,7 @@ ms.locfileid: "75934487"
 
 ユーザー、グループ、サービス プリンシパル、またはマネージド ID のアクセス権を一覧表示するには、ロールの割り当てを一覧表示します。 特定のスコープで単独のユーザー、グループ、サービス プリンシパル、またはマネージド ID のロールの割り当てを一覧表示するには、次の手順のようにします。
 
-1. Azure portal で、 **[すべてのサービス]** をクリックしてからスコープを選びます。 たとえば、 **[管理グループ]** 、 **[サブスクリプション]** 、 **[リソース グループ]** 、またはリソースを選択できます。
+1. Azure portal で、 **[すべてのサービス]**  をクリックしてからスコープを選びます。 たとえば、 **[管理グループ]** 、 **[サブスクリプション]** 、 **[リソース グループ]** 、またはリソースを選択できます。
 
 1. 特定のリソースをクリックします。
 
@@ -125,6 +125,16 @@ ms.locfileid: "75934487"
     ![システム割り当てマネージド ID のロールの割り当て](./media/role-assignments-list-portal/azure-resources-user-assigned.png)
 
 1. サブスクリプションを変更するには、 **[サブスクリプション]** の一覧をクリックします。
+
+## <a name="list-number-of-role-assignments"></a>ロールの割り当ての数の一覧
+
+各サブスクリプションには、最大 **2,000** 個のロールの割り当てを保持できます。 **[ロールの割り当て]** タブには、これらの制限の追跡に役立つ、現在のロールの割り当ての数を示すグラフが表示されます。
+
+![アクセス制御 - ロールの割り当ての数のグラフ](./media/role-assignments-list-portal/access-control-role-assignments-chart.png)
+
+最大数に近づいているときにロールの割り当てを追加しようとすると、 **[ロールの割り当ての追加]** ウィンドウに警告が表示されます。 不要になったロールの割り当てを削除したり、個々のユーザーではなくグループにロールを割り当てることで、ロールの割り当ての数を減らすことができます。
+
+![アクセス制御 - ロールの割り当ての追加の警告](./media/role-assignments-list-portal/add-role-assignment-warning.png)
 
 ## <a name="next-steps"></a>次のステップ
 

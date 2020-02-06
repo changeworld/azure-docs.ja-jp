@@ -1,22 +1,22 @@
 ---
 title: Azure での航空宇宙業界向けの予測メンテナンス - Team Data Science Process
-description: 航空宇宙、公益事業、輸送業界における予測メンテナンスのための Microsoft Cortana Intelligence Solution Template のアーキテクチャの図
+description: Microsoft Cortana Intelligence Solution Template の予測メンテナンス アーキテクチャの図 - 航空宇宙、公益事業、輸送業界
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 03/14/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
-ms.openlocfilehash: 057607a67de72fa3607f584772693a31c9448fd6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 888f638182964872bb38dff1c9d6e125473bacc4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60303714"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721797"
 ---
 # <a name="architecture-of-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>航空宇宙業界における予測メンテナンスのための Cortana Intelligence Solution Template のアーキテクチャ
 次の図に、 [予測メンテナンスのための Cortana Intelligence Solution Template](https://gallery.cortanaanalytics.com/SolutionTemplate/Predictive-Maintenance-for-Aerospace-1)のアーキテクチャの概要を示します。

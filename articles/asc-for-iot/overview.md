@@ -1,6 +1,6 @@
 ---
 title: Azure Security Center for IoT とは | Microsoft Docs
-description: Azure Security Center for IoT の機能とサービスについて詳しく学習し、Azure Security Center for IoT がすべての IoT 資産に対して包括的な IoT セキュリティを提供する方法について理解します。
+description: Azure Security Center for IoT の機能とサービスについて詳しく学習し、Azure Security Center for IoT が包括的な IoT セキュリティをどのように実現しているかを理解します。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 1b428af1f1c01a3b1b1429f51d76ebfdeb4c1cc6
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 6a4fc842113218294b3e2ab449e27cfa94c5cfd3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664966"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766519"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Azure Security Center for IoT の概要
 
@@ -48,13 +48,13 @@ Azure Security Center for IoT を使用して、マシン、ネットワーク�
 
 高度な分析と Microsoft Intelligent Security Graph により、巧妙化していくサイバー攻撃に対応します。 組み込みの行動分析と機械学習により、各種攻撃やゼロデイ攻撃を特定します。 攻撃や侵害後のアクティビティがないか、IoT ソリューションを監視します。 対話型のツールと状況に応じた脅威インテリジェンスにより、デバイスの調査と修復を効率化します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この概要では、Azure Security Center for IoT の機能とサービスについて説明しました。 Azure Security Center for IoT のアーキテクチャと前提条件の詳細、および使用を開始する方法については、次の記事を参照してください。
 
 - [アーキテクチャ](architecture.md)
 - [サービスの前提条件](service-prerequisites.md)
-- [使用の開始](getting-started.md)
+- [作業の開始](getting-started.md)
 - [ソリューションを定義する](quickstart-configure-your-solution.md)
 - [Azure Security Center for IoT の FAQ](resources-frequently-asked-questions.md)
 - [Azure Security Center for IoT のアラート](concept-security-alerts.md)

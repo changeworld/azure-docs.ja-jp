@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 60cd9a1454704fae17ccdcf39b9de2745ae4fd2c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 8c1d126f01580574a83850e63945aa7e513eaeda
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121014"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713137"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>API Management でクライアント証明書認証を使用して API を保護する方法
 
@@ -93,7 +93,7 @@ API Management には、クライアント証明書を使用して API (つま�
 
 > [!TIP]
 > この[記事](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672)で説明されているクライアント証明書のデッドロックに関する問題が、要求が凍結する、要求がタイムアウト後に `403 Forbidden` 状態コードになる、`context.Request.Certificate` が `null` である、などのいくつかの形で現れる場合があります。 この問題は通常、コンテンツの長さが約 60KB 以上ある `POST` および `PUT` 要求に影響を与えます。
-> この問題が発生しないようにするには、下に示すように、[カスタム ドメイン] ブレードにある目的のホスト名の [Negotiate client certificate] (クライアント証明書をネゴシエートする) の設定を有効にします。 この機能は、Consumption レベルでは使用できません。
+> この問題が発生しないようにするには、下に示すように、[カスタム ドメイン] ブレードにある目的のホスト名の [Negotiate client certificate]\(クライアント証明書をネゴシエートする\) の設定を有効にします。 この機能は、Consumption レベルでは使用できません。
 
 ![[Negotiate client certificate] (クライアント証明書をネゴシエートする)](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
 

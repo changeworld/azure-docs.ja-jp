@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cb3b10ca67ab283b999e4fff8e3bb79ae3b59745
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 72b3349e0ad4fd86b91a7a02f70b2bcf1efbc271
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950818"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712854"
 ---
 # <a name="string-claims-transformations"></a>文字列要求変換
 
@@ -116,7 +116,7 @@ ms.locfileid: "74950818"
 - 入力要求:
   - **email**: SomeOne@contoso.com
 - 入力パラメーター:
-    - **toCase**:LOWER
+    - **toCase**:[LOWER]
 - 出力要求:
   - **email**: someone@contoso.com
 
@@ -158,8 +158,8 @@ ms.locfileid: "74950818"
 | InputClaim | inputClaim1 | string | 比較する最初の要求の種類。 |
 | InputClaim | inputClaim2 | string | 比較する 2 番目の要求の種類。 |
 | InputParameter | operator | string | 指定できる値: `EQUAL` または `NOT EQUAL`。 |
-| InputParameter | ignoreCase | ブール値 | この比較が比較対象の文字列の大文字と小文字を無視するかどうかを指定します。 |
-| OutputClaim | outputClaim | ブール値 | この要求変換が呼び出された後に生成される ClaimType。 |
+| InputParameter | ignoreCase | boolean | この比較が比較対象の文字列の大文字と小文字を無視するかどうかを指定します。 |
+| OutputClaim | outputClaim | boolean | この要求変換が呼び出された後に生成される ClaimType。 |
 
 この要求変換を使用して、要求が別の要求と等しいかどうかをチェックします。 たとえば、以下の要求変換は **email** 要求の値が **Verified.Email** 要求と等しいかどうかをチェックします。
 
@@ -199,8 +199,8 @@ ms.locfileid: "74950818"
 | InputClaim | inputClaim1 | string | 比較する要求の種類。 |
 | InputParameter | operator | string | 指定できる値: `EQUAL` または `NOT EQUAL`。 |
 | InputParameter | compareTo | string | 文字列比較で、次のいずれかの値です。序数、OrdinalIgnoreCase。 |
-| InputParameter | ignoreCase | ブール値 | この比較が比較対象の文字列の大文字と小文字を無視するかどうかを指定します。 |
-| OutputClaim | outputClaim | ブール値 | この要求変換が呼び出された後に生成される ClaimType。 |
+| InputParameter | ignoreCase | boolean | この比較が比較対象の文字列の大文字と小文字を無視するかどうかを指定します。 |
+| OutputClaim | outputClaim | boolean | この要求変換が呼び出された後に生成される ClaimType。 |
 
 この要求変換を使用して、要求が、指定した値と等しいかどうかをチェックできます。 たとえば、以下の要求変換は **termsOfUseConsentVersion** 要求の値が `v1` と等しいかどうかをチェックします。
 
@@ -238,9 +238,9 @@ ms.locfileid: "74950818"
 | ---- | ----------------------- | --------- | ----- |
 | InputParameter | randomGeneratorType | string | 生成されるランダムな値、`GUID` (グローバル固有 ID) または `INTEGER` (数字) を指定します。 |
 | InputParameter | stringFormat | string | [省略可能] ランダムな値を書式設定します。 |
-| InputParameter | base64 | ブール値 | [省略可能] ランダムな値を base64 に変換します。 文字列形式が適用されている場合、文字列形式の後の値は base64 にエンコードされます。 |
-| InputParameter | maximumNumber | int | [省略可能] `INTEGER` randomGeneratorType のみです。 最大数を指定します。 |
-| InputParameter | seed  | int | [省略可能] `INTEGER` randomGeneratorType のみです。 乱数値のシードを指定します。 注: 同じシードは、同じ乱数のシーケンスを生成します。 |
+| InputParameter | base64 | boolean | [省略可能] ランダムな値を base64 に変換します。 文字列形式が適用されている場合、文字列形式の後の値は base64 にエンコードされます。 |
+| InputParameter | maximumNumber | INT | [省略可能] `INTEGER` randomGeneratorType のみです。 最大数を指定します。 |
+| InputParameter | seed  | INT | [省略可能] `INTEGER` randomGeneratorType のみです。 乱数値のシードを指定します。 注: 同じシードは、同じ乱数のシーケンスを生成します。 |
 | OutputClaim | outputClaim | string | この要求変換が呼び出された後に生成される ClaimTypes。 ランダムな値。 |
 
 次の例はグローバルな一意の ID を生成します。 この要求変換を使用してランダムな UPN (ユーザー プリンシパル名) を作成します。
@@ -379,7 +379,7 @@ ms.locfileid: "74950818"
   <DataType>string</DataType>
   <UserInputType>Paragraph</UserInputType>
   <Restriction>
-    <Enumeration Text="B2C_V1_90001" Value="You cant sign in because you are a minor" />
+    <Enumeration Text="B2C_V1_90001" Value="You cannot sign in because you are a minor" />
     <Enumeration Text="B2C_V1_90002" Value="This action can only be performed by gold members" />
     <Enumeration Text="B2C_V1_90003" Value="You have not been enabled for this operation" />
   </Restriction>
@@ -413,7 +413,7 @@ ms.locfileid: "74950818"
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputParameterId | string | 参照値が含まれる要求 |
 | InputParameter | |string | inputParameters のコレクションです。 |
-| InputParameter | errorOnFailedLookup | ブール値 | 一致参照がない場合にエラーが返されるかどうかを制御します。 |
+| InputParameter | errorOnFailedLookup | boolean | 一致参照がない場合にエラーが返されるかどうかを制御します。 |
 | OutputClaim | inputParameterId | string | この要求変換が呼び出された後に生成される ClaimTypes。 一致する ID の値 |
 
 次の例では、inpuParameters コレクションの 1 つからドメイン名を検索します。 要求変換では、識別子内のドメイン名を検索し、その値 (アプリケーション ID) を返します。
@@ -512,7 +512,7 @@ ms.locfileid: "74950818"
 | InputParameter | stringMatchMsgCode | string | 文字列が等しい場合に設定する 2 番目の値。 |
 | OutputClaim | outputClaim1 | string | 文字列が等しい場合は、この出力要求に `stringMatchMsg` 入力パラメーターの値が含まれます。 |
 | OutputClaim | outputClaim2 | string | 文字列が等しい場合は、この出力要求に `stringMatchMsgCode` 入力パラメーターの値が含まれます。 |
-| OutputClaim | stringCompareResultClaim | ブール値 | 比較の結果の出力要求の種類。これは比較の結果に基づいて、`true` または `false` として設定されます。 |
+| OutputClaim | stringCompareResultClaim | boolean | 比較の結果の出力要求の種類。これは比較の結果に基づいて、`true` または `false` として設定されます。 |
 
 この要求変換を使用して、要求が、指定した値と等しいかどうかをチェックできます。 たとえば、以下の要求変換は **termsOfUseConsentVersion** 要求の値が `v1` と等しいかどうかをチェックします。 等しい場合、値を `v2` に変更します。
 
@@ -559,7 +559,7 @@ ms.locfileid: "74950818"
 | InputParameter | stringComparison | string | 指定できる値: `Ordinal` または `OrdinalIgnoreCase`。 |
 | InputParameter | outputClaimIfMatched | string | 文字列が等しい場合に設定する値。 |
 | OutputClaim | outputClaim | string | 文字列が等しい場合は、この出力要求に `outputClaimIfMatched` 入力パラメーターの値が含まれます。 または、文字列が一致しない場合は null です。 |
-| OutputClaim | stringCompareResultClaim | ブール値 | 比較の結果の出力要求の種類。これは比較の結果に基づいて、`true` または `false` として設定されます。 |
+| OutputClaim | stringCompareResultClaim | boolean | 比較の結果の出力要求の種類。これは比較の結果に基づいて、`true` または `false` として設定されます。 |
 
 たとえば、以下の要求変換は **ageGroup** 要求の値が `Minor` と等しいかどうかをチェックします。 等しい場合は、値を `B2C_V1_90001` に返します。
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8239b25f5ebf94d7368190f3169d0637d9943df1
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: f11258457e60ea3458b0ede1fe00f042041bcb1a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720296"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841252"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>チュートリアル:G Suite を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -30,9 +30,9 @@ ms.locfileid: "75720296"
 
 > [!NOTE]
 > G Suite コネクタは最近、2019 年 10 月に更新されました。 G Suite コネクタに加えられた変更には、次のものがあります。
-- G Suite の追加のユーザーおよびグループ属性に対するサポートが追加されました。 
-- G Suite ターゲットの属性名が、[ここで](https://developers.google.com/admin-sdk/directory)定義されている内容に一致するように更新されました。
-- 既定の属性マッピングが更新されました。
+> - G Suite の追加のユーザーおよびグループ属性に対するサポートが追加されました。 
+> - G Suite ターゲットの属性名が、[ここで](https://developers.google.com/admin-sdk/directory)定義されている内容に一致するように更新されました。
+> - 既定の属性マッピングが更新されました。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -133,7 +133,7 @@ Azure AD で自動ユーザー プロビジョニング用に G Suite を構成�
 
 ### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>Azure AD で G Suite の自動ユーザー プロビジョニングを構成するには:
 
-1. [Azure portal](https://portal.azure.com) にサインインする **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. [Azure portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -209,6 +209,7 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 ## <a name="common-issues"></a>一般的な問題
 * 接続の確立に使用されたアカウントが GSuite の管理者のものではない場合、認可エラーが発生することがあります。 アクセス承認用のアカウントに、ユーザーのプロビジョニングに使用する**すべてのドメイン**に対する管理者権限があることを確認してください。 
+* Azure AD では、GSuite でユーザーを無効にして、アプリケーションにアクセスできないようサポートされていますが、GSuite のユーザーは削除されません。
 
 ## <a name="next-steps"></a>次のステップ
 

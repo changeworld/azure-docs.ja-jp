@@ -14,29 +14,28 @@ ms.workload: identity
 ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5472b424f7d2b44b62e6e4495afaf7bdfbbc8439
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ea18538662dc63876a50f52e9e6a8b3fffb3b35a
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423503"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758872"
 ---
-# <a name="remove-accounts-from-the-cache-on-global-sign-out"></a>グローバル サインアウト時にキャッシュからアカウントを削除する
+# <a name="a-web-app-that-calls-web-apis-remove-accounts-from-the-token-cache-on-global-sign-out"></a>Web API を呼び出す Web アプリ:グローバル サインアウト時にトークン キャッシュからアカウントを削除する
 
-Web アプリにサインインを追加する方法については既に学習しました。 これについては、「[ユーザーをサインインさせる Web アプリ - サインインの追加](scenario-web-app-sign-user-sign-in.md)」でご説明しました。
+[ユーザーをサインインさせる Web アプリ:サインインとサインアウト](scenario-web-app-sign-user-sign-in.md) で、Web アプリにサインインを追加する方法を学びました。
 
-ここで異なるのは、ユーザーがこのアプリケーションから、または任意のアプリケーションからサインアウトしたときに、トークン キャッシュ (ユーザーに関連付けられているトークン) から削除することです。
+サインアウトは、Web API を呼び出す Web アプリでは異なります。 ユーザーがアプリケーションまたは任意のアプリケーションからサインアウトするときに、トークン キャッシュからそのユーザーに関連付けられているトークンを削除する必要があります。
 
-## <a name="intercepting-the-callback-after-sign-out---single-sign-out"></a>サインアウト後にコールバックをインターセプトする - シングル サインアウト
+## <a name="intercept-the-callback-after-single-sign-out"></a>シングル サインアウト後にコールバックをインターセプトする
 
-アプリケーションは、`logout` 後のイベントをインターセプトして、たとえば、サインアウトしたアカウントに関連付けられたトークン キャッシュのエントリをクリアすることができます。Web アプリでは、ユーザーのアクセス トークンがキャッシュに格納されます。 `logout` 後のコールバックをインターセプトすることにより、Web アプリケーションはトークン キャッシュからユーザーを削除することができます。
+サインアウトしたアカウントに関連付けられているトークン キャッシュ エントリをクリアするには、アプリケーションで `logout` 後のイベントを受け取ることができます。 Web アプリは、各ユーザーのアクセス トークンをトークン キャッシュに格納します。 Web アプリケーションは、`logout` 後のコールバックをインターセプトすることにより、キャッシュからユーザーを削除できます。
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-このメカニズムについては、[WebAppServiceCollectionExtensions.cs#L151-L157](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L157) の `AddMsal()` メソッドで示されています
+ASP.NET Core の場合、インターセプトのメカニズムは [WebAppServiceCollectionExtensions.cs#L151-L157](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L157) の `AddMsal()` メソッドに示されています。
 
-アプリケーションに対して登録した**ログアウト URL** を使用して、シングル サインアウトを実装することができます。Microsoft ID プラットフォームの `logout` エンドポイントは、アプリケーションに登録されている **Logout URL** を呼び出します。 この呼び出しは、サインアウトがユーザーの Web アプリから開始された場合、または別の Web アプリやブラウザーから開始された場合に行われます。 詳細については、「[シングル サインアウト](v2-protocols-oidc.md#single-sign-out)」をご覧ください。
+アプリケーションに対して以前登録したログアウト URL を使用して、シングル サインアウトを実装することができます。Microsoft ID プラットフォーム `logout` エンドポイントは、ログアウト URL を呼び出します。 この呼び出しは、サインアウトがユーザーの Web アプリから開始された場合、または別の Web アプリやブラウザーから開始された場合に行われます。 詳細については、「[シングル サインアウト](v2-protocols-oidc.md#single-sign-out)」をご覧ください。
 
 ```csharp
 public static class WebAppServiceCollectionExtensions
@@ -49,10 +48,10 @@ public static class WebAppServiceCollectionExtensions
   {
    // Code omitted here
 
-   // Handling the sign-out: removing the account from MSAL.NET cache
+   // Handling the sign-out: Remove the account from MSAL.NET cache.
    options.Events.OnRedirectToIdentityProviderForSignOut = async context =>
    {
-    // Remove the account from MSAL.NET token cache
+    // Remove the account from MSAL.NET token cache.
     var tokenAcquisition = context.HttpContext.RequestServices.GetRequiredService<ITokenAcquisition>();
     await tokenAcquisition.RemoveAccountAsync(context).ConfigureAwait(false);
    };
@@ -62,19 +61,19 @@ public static class WebAppServiceCollectionExtensions
 }
 ```
 
-RemoveAccountAsync のコードは、[Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288) から入手できます。
+`RemoveAccountAsync` のコードは、[Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288) から入手することができます。
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-ASP.NET のサンプルでは、グローバル サインアウト時にアカウントはキャッシュから削除されません
+ASP.NET のサンプルでは、グローバル サインアウト時にアカウントはキャッシュから削除されません。
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Java のサンプルでは、グローバル サインアウト時にアカウントはキャッシュから削除されません
+Java のサンプルでは、グローバル サインアウト時にアカウントはキャッシュから削除されません。
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Python のサンプルでは、グローバル サインアウト時にアカウントはキャッシュから削除されません
+Python のサンプルでは、グローバル サインアウト時にアカウントはキャッシュから削除されません。
 
 ---
 
@@ -83,21 +82,21 @@ Python のサンプルでは、グローバル サインアウト時にアカウ
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 > [!div class="nextstepaction"]
-> [Webアプリのトークンの取得](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnetcore)
+> [Web アプリのトークンを取得する](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnetcore)
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
 > [!div class="nextstepaction"]
-> [Webアプリのトークンの取得](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnet)
+> [Web アプリのトークンを取得する](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnet)
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [Webアプリのトークンの取得](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=java)
+> [Web アプリのトークンを取得する](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=java)
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [Webアプリのトークンの取得](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=python)
+> [Web アプリのトークンを取得する](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=python)
 
 ---

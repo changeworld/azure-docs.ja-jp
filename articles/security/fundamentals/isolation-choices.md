@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 8fab85b6f1d876cc65ceb44acd60b53c379e59e8
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: c6e74e7992326d2a4b8fe24510742422b005c2e2
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121949"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756162"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure Public Cloud での分離
 Azure を使用すると、共有物理インフラストラクチャでアプリケーションと仮想マシン (VM) を実行できます。 クラウド環境でのアプリケーションの実行を促進する主要な経済的要因の 1 つは、共有リソースのコストを複数の顧客間で分散できることです。 このマルチテナント機能の実施では、さまざまな顧客間で低コストでリソースを多重化することによって効率が向上します。 残念ながら、機密性の高いアプリケーションや VM を実行するために、悪意のあるユーザーが存在する可能性がある物理サーバーやその他のインフラストラクチャ リソースを共有する危険も生じます。
@@ -111,6 +111,9 @@ Microsoft Azure ではクラウドベースのコンピューティング サー
 ### <a name="isolated-virtual-machine-sizes"></a>分離された仮想マシン サイズ
 
 [!INCLUDE [virtual-machines-common-isolation](../../../includes/virtual-machines-common-isolation.md)]
+
+### <a name="dedicated-hosts"></a>専用ホスト
+前のセクションで説明した分離ホストに加えて、Azure には専用ホストも用意されています。 Azure における専用ホストは、1 つ以上の仮想マシンをホストできる、1 つの Azure サブスクリプションに対して専用の物理サーバーを提供するサービスです。 専用サーバーによって、物理サーバー レベルでのハードウェア分離が実現します。 他の VM はホスト上に配置されません。 専用ホストは同じデータセンターに展開され、他の分離されていないホストと同じネットワークおよび基になるストレージ インフラストラクチャを共有します。 詳細については、[Azure 専用ホスト](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)の概要の詳細を参照してください。
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>ルート VM とゲスト VM の間での Hyper-V とルート OS の分離
 Azure のコンピューティング プラットフォームは、コンピューターの仮想化に基づいています。つまり、顧客のすべてのコードは Hyper-V 仮想マシンで実行します。 各 Azure ノード (またはネットワーク エンドポイント) にはハイパーバイザーがあり、ハードウェア上で直接実行して、ノードをいくつものゲスト仮想マシン (VM) に分割します。

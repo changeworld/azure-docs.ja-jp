@@ -9,21 +9,21 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 5fb6cab4bfeea4308873210fb5f9122b37b61dcd
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: c82f1edfc3acd73c1d38425f963aaaf2976a1cc5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100326"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844593"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>チュートリアル:クラウドでイベントを発行してサブスクライブする
 
-この記事では、Event Grid on IoT Edge を使用してイベントを発行およびサブスクライブするために必要なすべての手順について説明します。
+この記事では、Event Grid on IoT Edge を使用してイベントを発行およびサブスクライブするために必要なすべての手順について説明します。 このチュートリアルでは、Azure 関数をイベント ハンドラーとして使用します。 その他の送信先の種類については、「[イベント ハンドラー](event-handlers.md)」を参照してください。
 
 先に進む前に、「[Event Grid の概念](concepts.md)」を参照して、Event Grid のトピックとサブスクリプションがなんであるかを理解してください。
 
 ## <a name="prerequisites"></a>前提条件 
-このチュートリアルを完了するには、以下が必要です。
+このチュートリアルを完了するには、以下が必要になります。
 
 * **Azure サブスクリプション**: まだお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free)を作成してください。 
 * **Azure IoT Hub および IoT Edge デバイス**: まだお持ちでない場合は、[Linux](../../iot-edge/quickstart-linux.md) または [Windows](../../iot-edge/quickstart.md) デバイスのクイック スタートの手順に従ってください。
@@ -77,12 +77,12 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
           }
         }
     ```
-1. 次のコマンドを実行して、トピックを作成します。 HTTP 状態コード 200 OK が返されます。
+1. 次のコマンドを実行して、トピックを作成します。 HTTP 状態コード 200 OK が返される必要があります。
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @topic2.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic2?api-version=2019-01-01-preview
     ```
-1. 次のコマンドを実行して、トピックが正常に作成されたことを確認します。 HTTP 状態コード 200 OK が返されます。
+1. 次のコマンドを実行して、トピックが正常に作成されたことを確認します。 HTTP 状態コード 200 OK が返される必要があります。
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic2?api-version=2019-01-01-preview
@@ -108,6 +108,8 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 
 サブスクライバーは、トピックに発行されたイベントの受信登録ができます。 イベントを受信するには、サブスクライバーは関心のあるトピックに関する Event Grid サブスクリプションを作成する必要があります。
 
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
+
 1. 次の内容を含む subscription2.json を作成します。 ペイロードの詳細については、[API のドキュメント](api.md)を参照してください。
 
     ```json
@@ -125,12 +127,12 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 
    >[!NOTE]
    > **endpointType** によって、サブスクライバーが Webhook であることが指定されます。  **endpointUrl** によって、サブスクライバーがイベントをリッスンしている URL が指定されます。 この URL は、先ほど設定した Azure Functions のサンプルに対応しています。
-2. 次のコマンドを実行して、サブスクリプションを作成します。 HTTP 状態コード 200 OK が返されます。
+2. 次のコマンドを実行して、サブスクリプションを作成します。 HTTP 状態コード 200 OK が返される必要があります。
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @subscription2.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic2/eventSubscriptions/sampleSubscription2?api-version=2019-01-01-preview
     ```
-3. 次のコマンドを実行して、サブスクリプションが正常に作成されたことを確認します。 HTTP 状態コード 200 OK が返されます。
+3. 次のコマンドを実行して、サブスクリプションが正常に作成されたことを確認します。 HTTP 状態コード 200 OK が返される必要があります。
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic2/eventSubscriptions/sampleSubscription2?api-version=2019-01-01-preview
@@ -186,7 +188,7 @@ Azure portal で、関数の **[モニター]** オプションの下に、配�
 
 ## <a name="cleanup-resources"></a>リソースをクリーンアップする
 
-* 次のコマンドを実行して、トピックとそのすべてのサブスクリプションを削除します。
+* 次のコマンドを実行して、トピックとそのすべてのサブスクリプションを削除します
 
     ```sh
     curl -k -H "Content-Type: application/json" -X DELETE https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic2?api-version=2019-01-01-preview
@@ -194,7 +196,7 @@ Azure portal で、関数の **[モニター]** オプションの下に、配�
 
 * Azure portal で、作成した Azure 関数を削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、イベント グリッド トピックとサブスクリプションを作成し、イベントを発行しました。 基本的な手順が理解できたら、次の記事を参照してください。
 
@@ -203,3 +205,4 @@ Azure portal で、関数の **[モニター]** オプションの下に、配�
 * [Linux](persist-state-linux.md) または [Windows](persist-state-windows.md) で Event Grid モジュールの永続化を設定します
 * [ドキュメント](configure-client-auth.md)に従って、クライアント認証を構成します
 * この[チュートリアル](forward-events-event-grid-cloud.md)に従って、クラウド内の Azure Event Grid にイベントを転送します
+* [エッジでのトピックとサブスクリプションの監視](monitor-topics-subscriptions.md)

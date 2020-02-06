@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 9a7599cd71c087201b54c594954a6fff377b3e45
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5205b12a5f9f6acad8755b69d6da2216ffd4d83e
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490784"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760829"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>フィーチャーはアクションとコンテキストに関する情報です。
 
@@ -107,6 +107,7 @@ JSON オブジェクトには、入れ子にした JSON オブジェクトと単
 * Unicode にすることはできません。
 * 名前空間の名前には、コード < 256 での印刷可能な記号の一部を使用できます。 
 * コード < 32 (印刷不可)、32 (スペース)、58 (コロン)、124 (パイプ)、および126 から 140 での記号は使用できません。
+* 先頭にアンダースコア "_" を使用することはできません。使用すると、この機能は無視されます。
 
 ## <a name="how-to-make-feature-sets-more-effective-for-personalizer"></a>Personalizer のためにフィーチャー セットをより効果的にする方法
 
@@ -143,7 +144,7 @@ Artificial Intelligence や、すぐに実行できる Cognitive Services は Pe
 
 人工知能サービスを利用して項目を事前に処理することで、パーソナライズに関連する可能性がある情報を自動的に抽出できます。
 
-例:
+次に例を示します。
 
 * [Video Indexer](https://azure.microsoft.com/services/media-services/video-indexer/) で映画ファイルを実行し、シーンの要素、テキスト、センチメント、その他さまざまな属性を抽出できます。 そのような属性は密度を高くし、元の項目メタデータにはなかった特性を反映できます。 
 * たとえば、画像は物体検出で、顔はセンチメントで実行できます。
@@ -178,7 +179,7 @@ Rank API に送信するアクションは、パーソナライズしようと�
 
 次に例をいくつか示します。
 
-|目的|Action|
+|目的|アクション|
 |--|--|
 |ニュース Web サイトで強調表示する記事をパーソナライズします。|各アクションは潜在的にニュース記事です。|
 |Web サイトでの広告配置を最適化します。|各アクションはレイアウトか広告のレイアウトを作成するルールになります (たとえば、上に小さい画像、右に大きい画像)。|
@@ -319,6 +320,6 @@ JSON オブジェクトには、入れ子にした JSON オブジェクトと単
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [強化学習](concepts-reinforcement-learning.md) 

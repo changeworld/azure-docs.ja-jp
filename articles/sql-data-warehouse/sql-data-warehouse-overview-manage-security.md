@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c51a945bae7cc0b03c219bc041d64f4703baef19
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8e9ab9dddad35708b58d32802452789adf84a19e
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692580"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759467"
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>SQL Data Warehouse でのデータベース保護
 > [!div class="op_single_selector"]
@@ -32,9 +32,11 @@ ms.locfileid: "73692580"
 ## <a name="connection-security"></a>接続のセキュリティ
 接続のセキュリティとは、ファイアウォール ルールと接続の暗号化を使用して、データベースへの接続を制限し、保護する方法のことです。
 
-ファイアウォール ルールはサーバーとデータベースの両方で使用され、明示的にホワイト リストに登録されていない IP アドレスからの接続試行を拒否します。 アプリケーションまたはクライアント コンピューターのパブリック IP アドレスからの接続を許可するには、まず Azure Portal、REST API、または PowerShell を使用して、サーバーレベルのファイアウォール ルールを作成する必要があります。 ベスト プラクティスとして、可能な限りサーバーのファイアウォールにより許可される IP アドレスの範囲を制限する必要があります。  ローカル コンピューターから Azure SQL Data Warehouse にアクセスするには、ネットワークとローカル コンピューターのファイアウォールで、TCP ポート 1433 での送信方向の通信が許可されていることを確認します。  
+ファイアウォール ルールはサーバーとデータベースの両方で使用され、明示的にホワイト リストに登録されていない IP アドレスからの接続試行を拒否します。 アプリケーションまたはクライアント コンピューターのパブリック IP アドレスからの接続を許可するには、まず Azure Portal、REST API、または PowerShell を使用して、サーバーレベルのファイアウォール ルールを作成する必要があります。 
 
-SQL Data Warehouse では、サーバーレベルのファイアウォール規則を使用します。 データベースレベルのファイアウォール規則はサポートされていません。 詳細については、[Azure SQL Database ファイアウォール][Azure SQL Database firewall] に関するページや [sp_set_firewall_rule][sp_set_firewall_rule] に関するページをご覧ください。
+ベスト プラクティスとして、可能な限りサーバーのファイアウォールにより許可される IP アドレスの範囲を制限する必要があります。  ローカル コンピューターから Azure SQL Data Warehouse にアクセスするには、ネットワークとローカル コンピューターのファイアウォールで、TCP ポート 1433 での送信方向の通信が許可されていることを確認します。  
+
+Azure Synapse は、サーバー レベルの IP ファイアウォール規則を使用します。 データベース レベルの IP ファイアウォール規則はサポートされていません。 詳細については、「[Azure SQL Database ファイアウォール規則](../sql-database/sql-database-firewall-configure.md)」を参照してください
 
 SQL Data Warehouse への接続は、既定で暗号化されます。  暗号化を無視するように接続の設定を変更しても、その変更は無視されます。
 
@@ -45,7 +47,7 @@ SQL Data Warehouse への接続は、既定で暗号化されます。  暗号�
 
 ただし、ベスト プラクティスとして、組織のユーザーは別のアカウントを使用して認証する必要があります。 この方法により、アプリケーションに付与されるアクセス許可を制限でき、アプリケーション コードが SQL インジェクション攻撃に対して脆弱な場合に、悪意のあるアクティビティのリスクを軽減できます。 
 
-SQL Server 認証済みユーザーを作成するには、サーバーの **マスター** データベースにサーバー管理ログインを使用して接続し、新しいサーバー ログインを作成します。  また、Azure SQL Data Warehouse ユーザーの master データベースにユーザーを作成することをお勧めします。 マスターでユーザーを作成すると、ユーザーはデータベース名を指定せずに SSMS のようなツールを使用してログインできます。  また、オブジェクト エクスプ ローラーを使用して、SQL Server のすべてのデータベースを表示することもできます。
+SQL Server 認証済みユーザーを作成するには、サーバーの **マスター** データベースにサーバー管理ログインを使用して接続し、新しいサーバー ログインを作成します。  また、マスター データベースの Azure Synapse ユーザーでも、ユーザーを作成することをお勧めします。 マスターでユーザーを作成すると、ユーザーはデータベース名を指定せずに SSMS のようなツールを使用してログインできます。  また、オブジェクト エクスプ ローラーを使用して、SQL Server のすべてのデータベースを表示することもできます。
 
 ```sql
 -- Connect to master database and create a login
@@ -60,10 +62,12 @@ CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-ログインの作成や新しいデータベースの作成などの追加の操作を実行するアクセス許可をユーザーに与えるには、master データベース内の `Loginmanager` ロールと `dbmanager` ロールにユーザーを割り当てます。 これらの追加のロールと SQL Database の認証の詳細については、[Azure SQL Database におけるデータベースとログインの管理][Managing databases and logins in Azure SQL Database]に関する記事をご覧ください。  詳細については、[Azure Active Directory 認証を使用した SQL Data Warehouse への接続][Connecting to SQL Data Warehouse By Using Azure Active Directory Authentication]に関する記事をご覧ください。
+ログインの作成や新しいデータベースの作成などの追加の操作を実行するアクセス許可をユーザーに与えるには、master データベース内の `Loginmanager` ロールと `dbmanager` ロールにユーザーを割り当てます。 
 
-## <a name="authorization"></a>Authorization
-承認とは、Azure SQL Data Warehouse データベース内で実行できる操作を指します。 承認の特権は、ロール メンバーシップとアクセス許可によって指定されます。 ベスト プラクティスとして、必要最低限の特権をユーザーに付与することをお勧めします。 ロールを管理するには、次のストアド プロシージャを使用します。
+これらの追加のロールと SQL Database の認証の詳細については、[Azure SQL Database におけるデータベースとログインの管理](../sql-database/sql-database-manage-logins.md)に関する記事をご覧ください。  Azure Active Directory を使用した接続の詳細については、[Azure Active Directory Authentication を使用した接続](sql-data-warehouse-authentication.md)に関する記事を参照してください。
+
+## <a name="authorization"></a>承認
+承認とは、ユーザーが認証され、接続された後にデータベース内で実行できることを意味します。 承認の特権は、ロール メンバーシップとアクセス許可によって指定されます。 ベスト プラクティスとして、必要最低限の特権をユーザーに付与することをお勧めします。 ロールを管理するには、次のストアド プロシージャを使用します。
 
 ```sql
 EXEC sp_addrolemember 'db_datareader', 'ApplicationUser'; -- allows ApplicationUser to read data
@@ -72,11 +76,11 @@ EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationU
 
 接続しているサーバー管理者のアカウントは db_owner のメンバーであり、データベース内ですべての操作を実行する権限を持ちます。 スキーマのアップグレードやその他の管理操作をデプロイするために、このアカウントを保存します。 アクセス許可が限定された "ApplicationUser" アカウントを使用して、アプリケーションで必要な最小限の特権により、アプリケーションをデータベースに接続します。
 
-ユーザーが Azure SQL Data Warehouse で実行できる操作をさらに制限する方法がいくつかあります。
+ユーザーが データ ウェアハウス内で実行できる操作をさらに制限する方法がいくつかあります。
 
-* 詳細な[アクセス許可][Permissions]により、データベース内の個々の列、テーブル、ビュー、スキーマ、プロシージャ、およびその他のオブジェクトで実行できる操作を制御できます。 詳細なアクセス許可を使用して最大限の制御を行い、必要最小限のアクセス許可を付与します。 
-* db_datareader と db_datawriter 以外の[データベース ロール][Database roles]を使用して、より権限の大きなアプリケーション ユーザー アカウント、またはより権限の小さな管理アカウントを作成できます。 組み込みの固定データベース ロールを使用すると、簡単にアクセス許可を付与できますが、その結果、必要以上のアクセス許可を付与することになる可能性があります。
-* [ストアド プロシージャ][Stored procedures] を使用すると、データベースで実行できるアクションを制限できます。
+* 詳細な[アクセス許可](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine?view=sql-server-ver15)により、データベース内の個々の列、テーブル、ビュー、スキーマ、プロシージャ、およびその他のオブジェクトで実行できる操作を制御できます。 詳細なアクセス許可を使用して最大限の制御を行い、必要最小限のアクセス許可を付与します。 
+* db_datareader と db_datawriter 以外の[データベース ロール](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15)を使用して、より権限の大きなアプリケーション ユーザー アカウント、またはより権限の小さな管理アカウントを作成できます。 組み込みの固定データベース ロールを使用すると、簡単にアクセス許可を付与できますが、その結果、必要以上のアクセス許可を付与することになる可能性があります。
+* [ストアド プロシージャ](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine?redirectedfrom=MSDN&view=sql-server-ver15) を使用すると、データベースで実行できるアクションを制限できます。
 
 次の例では、ユーザー定義スキーマに対する読み取りアクセス許可を付与します。
 ```sql
@@ -84,36 +88,14 @@ EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationU
 GRANT SELECT ON SCHEMA::Test to ApplicationUser
 ```
 
-Azure Portal または Azure Resource Manager API を使用したデータベースと論理サーバーの管理は、ポータル ユーザー アカウントのロールの割り当てによって制御されます。 詳細については、[Azure portal でのロールベースのアクセス制御][Role-based access control in Azure portal]に関する記事をご覧ください。
+Azure Portal または Azure Resource Manager API を使用したデータベースと論理サーバーの管理は、ポータル ユーザー アカウントのロールの割り当てによって制御されます。 詳細については、[Azure portal でのロールベースのアクセス制御](https://azure.microsoft.com/documentation/articles/role-based-access-control-configure)に関する記事をご覧ください。
 
 ## <a name="encryption"></a>暗号化
-Azure SQL Data Warehouse の Transparent Data Encryption (TDE) を使用すると、保存データを暗号化および暗号化解除することにより、悪意のあるアクティビティの脅威から保護できます。  データベースを暗号化すると、アプリケーションに変更を加える必要なく、関連付けられているバックアップとトランザクション ログ ファイルが暗号化されます。 TDE は、データベース暗号化キーと呼ばれる対称キーを使用してデータベース全体のストレージを暗号化します。 
+Transparent Data Encryption (TDE) を使用すると、保存データを暗号化および暗号化解除することにより、悪意のあるアクティビティの脅威から保護できます。 データベースを暗号化すると、アプリケーションに変更を加える必要なく、関連付けられているバックアップとトランザクション ログ ファイルが暗号化されます。 TDE は、データベース暗号化キーと呼ばれる対称キーを使用してデータベース全体のストレージを暗号化します。 
 
-SQL Database では、データベース暗号化キーは組み込まれているサーバー証明書によって保護されます。 組み込みのサーバー証明書は、SQL Database サーバーごとに一意です。 Microsoft は、少なくとも 90 日ごとにこれらの証明書を自動的にローテーションします。 SQL Data Warehouse で使用される暗号化アルゴリズムは AES-256 です。 TDE の一般的な説明については、「 [Transparent Data Encryption (TDE)][Transparent Data Encryption]」を参照してください。
+SQL Database では、データベース暗号化キーは組み込まれているサーバー証明書によって保護されます。 組み込みのサーバー証明書は、SQL Database サーバーごとに一意です。 Microsoft は、少なくとも 90 日ごとにこれらの証明書を自動的に回転します。 使用される暗号化アルゴリズムは、AES-256 です。 TDE の一般的な説明については、「 [Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-ver15)」を参照してください。
 
-データベースは、[Azure portal][Encryption with Portal] または [T-SQL][Encryption with TSQL] を使用して暗号化できます。
+データベースは、[Azure portal](sql-data-warehouse-encryption-tde.md) または [T-SQL](sql-data-warehouse-encryption-tde-tsql.md) を使用して暗号化できます。
 
-## <a name="next-steps"></a>次の手順
-さまざまなプロトコルでの SQL Data Warehouse への接続の詳細と例については、「 [SQL Data Warehouse への接続][Connect to SQL Data Warehouse]」をご覧ください。
-
-<!--Image references-->
-
-<!--Article references-->
-[Connect to SQL Data Warehouse]: ./sql-data-warehouse-connect-overview.md
-[Encryption with Portal]: ./sql-data-warehouse-encryption-tde.md
-[Encryption with TSQL]: ./sql-data-warehouse-encryption-tde-tsql.md
-[Connecting to SQL Data Warehouse By Using Azure Active Directory Authentication]: ./sql-data-warehouse-authentication.md
-
-<!--MSDN references-->
-[Azure SQL Database firewall]: https://msdn.microsoft.com/library/ee621782.aspx
-[sp_set_firewall_rule]: https://msdn.microsoft.com/library/dn270017.aspx
-[sp_set_database_firewall_rule]: https://msdn.microsoft.com/library/dn270010.aspx
-[Database roles]: https://msdn.microsoft.com/library/ms189121.aspx
-[Managing databases and logins in Azure SQL Database]: https://msdn.microsoft.com/library/ee336235.aspx
-[Permissions]: https://msdn.microsoft.com/library/ms191291.aspx
-[Stored procedures]: https://msdn.microsoft.com/library/ms190782.aspx
-[Transparent Data Encryption]: https://msdn.microsoft.com/library/bb934049.aspx
-[Azure portal]: https://portal.azure.com/
-
-<!--Other Web references-->
-[Role-based access control in Azure portal]: https://azure.microsoft.com/documentation/articles/role-based-access-control-configure
+## <a name="next-steps"></a>次のステップ
+さまざまなプロトコルでのウェアハウスへの接続の詳細と例については、[SQL Data Warehouse への接続](sql-data-warehouse-connect-overview.md)に関する記事をご覧ください。

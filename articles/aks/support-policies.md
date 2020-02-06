@@ -5,14 +5,14 @@ services: container-service
 author: jnoller
 ms.service: container-service
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: c018e511bbeed41bc9caf721562349a37ad0e748
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 9a68a0d0a288a27d67a9615385391c06be2b662d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707221"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767380"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes Service のサポート ポリシー
 
@@ -42,6 +42,8 @@ AKS は、完全なマネージド クラスター ソリューションでは�
 
 > [!NOTE]
 > AKS ワーカー ノードは、Azure portal で通常の Azure IaaS リソースとして表示されます。 しかし、これらの仮想マシンは、カスタムの Azure リソース グループ (先頭に MC\\* が付加されている) にデプロイされます。 AKS ワーカー ノードを変更することは可能です。 たとえば、Secure Shell (SSH) を使用して、通常の仮想マシンを変更する方法で AKS ワーカー ノードを変更したり (ただし、基本 OS イメージを変更することはできず、更新時または再起動時に変更が維持されるとは限りません)、AKS ワーカー ノードに他の Azure リソースを割り当てたりすることができます。 ただし、*帯域外の管理やカスタマイズ*を行うと、AKS クラスターがサポートできない状態になる場合あります。 Microsoft サポートが変更を指示しない限り、ワーカー ノードを変更しないでください。
+
+すべてのエージェント ノードの帯域外の割り当て解除など、上記で定義したサポートされていない操作を実行すると、クラスターはサポートされなくなります。 AKS は、30 日以上の延長期間について、サポート ガイドラインを超えて構成されているコントロール プレーンをアーカイブする権利を留保します。 AKS では、クラスターの etcd メタデータのバックアップが保持され、クラスターを簡単に再割り当てすることができます。 この再割り当ては、クラスターをサポートに戻す任意の PUT 操作 (アクティブなエージェント ノードへのアップグレードやスケーリングなど) によって開始できます。
 
 ## <a name="shared-responsibility"></a>Shared responsibility
 
@@ -95,7 +97,7 @@ Microsoft とお客様は、次の場合に、Kubernetes ワーカー ノード�
   * Docker または Moby デーモン
 
 > [!NOTE]
-> ワーカー ノード上でコントロール プレーン コンポーネントが動作不能になった場合、AKS チームにより個々のコンポーネントまたはワーカー ノード全体を再起動する必要が生じることがあります。 こうした再起動操作は自動化されており、これにより一般的な問題の自動修復機能が提供されます。 こうした再起動は、緊急のメンテナンスや停止が生じない限り、クラスターではなく _ノード_ レベルでのみ行われます。
+> ワーカー ノード上でコントロール プレーン コンポーネントが動作不能になった場合、AKS チームにより個々のコンポーネントまたはワーカー ノード全体を再起動する必要が生じることがあります。 こうした再起動操作は自動化されており、これにより一般的な問題の自動修復機能が提供されます。 こうした再起動は、緊急のメンテナンスや停止が生じない限り、クラスターではなく_ノード_ レベルでのみ行われます。
 
 ### <a name="customer-responsibilities-for-aks-worker-nodes"></a>AKS ワーカー ノードに対するお客様の責任
 

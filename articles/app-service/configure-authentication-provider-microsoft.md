@@ -5,24 +5,28 @@ ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
 ms.topic: article
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 12e16cc7e17ae217a334fe25d71672ab2cafa5a8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 95c603d4a10eb0e4d0817e20755c0f9b36baa96f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768437"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842335"
 ---
 # <a name="configure-your-app-service-app-to-use-microsoft-account-login"></a>Microsoft アカウント ログインを使用するように App Service アプリを構成する
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-このトピックでは、認証プロバイダーとして Microsoft アカウントを使用するように Azure App Services を構成する方法を示します。 
+このトピックでは、AAD を使用して個人用の Microsoft アカウント ログインをサポートするように Azure App Service を構成する方法を示します。
+
+> [!NOTE]
+> 個人用の Microsoft アカウントと組織アカウントの両方で AAD ID プロバイダーが使用されます。 現時点では、両方の種類のログインをサポートするように、この ID プロバイダーを構成することはできません。
 
 ## <a name="register-microsoft-account"></a>Microsoft アカウントにアプリを登録する
 
 1. Azure portal で [ **[アプリの登録]** ](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) に移動します。 必要であれば、Microsoft アカウントを使ってサインインします。
 1. **[New registration]\(新規登録\)** を選択し、アプリケーション名を入力します。
-1. **[リダイレクト URI]** で **[Web]** を選択し、「`https://<app-domain-name>/.auth/login/microsoftaccount/callback`」と入力します。 *\<app-domain-name>* をアプリのドメイン名に置き換えます。  たとえば、「 `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback` 」のように入力します。 URL には HTTPS スキームを必ず使用します。
+1. **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)]\(任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント) と、個人用の Microsoft アカウント (Skype、Xbox など)\)** を選択します。
+1. **[リダイレクト URI]** で **[Web]** を選択し、「`https://<app-domain-name>/.auth/login/aad/callback`」と入力します。 *\<app-domain-name>* をアプリのドメイン名に置き換えます。  たとえば、「 `https://contoso.azurewebsites.net/.auth/login/aad/callback` 」のように入力します。 URL には HTTPS スキームを必ず使用します。
 
 1. **[登録]** を選択します。
 1. **アプリケーション (クライアント) ID** をコピーします。 この情報は後で必要になります。
@@ -36,12 +40,12 @@ ms.locfileid: "75768437"
 
 1. [Azure portal] で自分のアプリケーションに移動します。
 1. **[設定]** 、 **[認証/承認]** の順に選択し、 **[App Service 認証]** が **[オン]** になっていることを確認します。
-1. **[認証プロバイダー]** で、 **[Microsoft アカウント]** を選択します。 前に取得したアプリケーション (クライアント) ID とクライアント シークレットを貼り付けます。 アプリケーションに必要な任意のスコープを有効にします。
+1. **[認証プロバイダー]** の下の **[Azure Active Directory]** をクリックします。 **[管理モード]** の下の **[Advanced]\(詳細\)** を選択します。 前に取得したアプリケーション (クライアント) ID とクライアント シークレットを貼り付けます。 **[発行者の URL]** フィールドには **https://login.microsoftonline.com/9188040d-6c67-4c5b-b112-36a304b66dad/v2.0** を使用します。
 1. **[OK]** を選択します。
 
    App Service は認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。 アプリケーション コードでユーザーを承認する必要があります。
 
-1. (省略可能) Microsoft アカウント ユーザーへのアクセスを制限するには、 **[要求が認証されない場合に実行するアクション]** を **[Microsoft アカウントでのログイン]** に設定します。 この機能を設定すると、お使いのアプリでは、すべての要求を認証する必要があります。 また、認証されていない要求はすべて、Microsoft アカウントに認証のためにリダイレクトされます。
+1. (省略可能) Microsoft アカウント ユーザーへのアクセスを制限するには、 **[要求が認証されない場合に実行するアクション]** を **[Azure Active Directory でのログイン]** に設定します。 この機能を設定すると、お使いのアプリでは、すべての要求を認証する必要があります。 また、認証されていない要求はすべて、AAD を使用した認証にリダイレクトされます。 Microsoft アカウント テナントを使用するように **[発行者の URL]** が構成されているため、個人用のアカウントのみが正常に認証されることに注意してください。
 
    > [!CAUTION]
    > この方法でのアクセスの制限は、アプリへのすべての呼び出しに適用されますが、これは、多くのシングルページ アプリケーションのように、一般公開されているホーム ページが与えられているアプリには適切でない場合があります。 このようなアプリケーションの場合は、アプリ自体が手動で認証を開始する、 **[匿名要求を許可する (操作不要)]** が推奨されることがあります。 詳細については、「[認証フロー](overview-authentication-authorization.md#authentication-flow)」をご覧ください。
@@ -50,7 +54,7 @@ ms.locfileid: "75768437"
 
 これで、アプリケーションで認証に Microsoft アカウントを使用する準備ができました。
 
-## <a name="related-content"> </a>次のステップ
+## <a name="related-content"> </a>次の手順
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 

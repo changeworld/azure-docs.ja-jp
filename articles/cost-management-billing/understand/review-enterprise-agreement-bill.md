@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/17/2020
+ms.date: 02/04/2020
 ms.author: banders
-ms.openlocfilehash: 75b6dd1b2d76d12087270e155551402d1bcd4965
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 8e674ec1c2d4c47d3b4e56bd788c963c81ea23e9
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76274024"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016206"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Azure Enterprise Agreement 請求書を理解する
 
@@ -109,7 +109,7 @@ Enterprise Portal の **[レポート]**  >  **[使用状況の要約]** に表�
 
 次のテーブルに、請求書ならびに Enterprise portal 内の**使用状況の要約**に表示される用語および説明を示します。
 
-|請求書の用語|使用状況の要約の用語|[説明]|
+|請求書の用語|使用状況の要約の用語|説明|
 |---|---|---|
 |合計拡張料金|合計使用量|特定の期間中の、クレジット適用前の税抜き使用料金。|
 |コミットメント使用量|コミットメント使用量|その特定の期間中に適用されるクレジット。|

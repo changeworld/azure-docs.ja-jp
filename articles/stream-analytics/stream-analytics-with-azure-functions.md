@@ -2,18 +2,17 @@
 title: チュートリアル - Azure Stream Analytics ジョブで Azure Functions を実行する
 description: このチュートリアルでは、Stream Analytics ジョブへの出力シンクとして Azure Functions を構成する方法を説明します。
 author: mamccrea
+ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 06/05/2019
-ms.author: mamccrea
-ms.reviewer: mamccrea
-ms.openlocfilehash: 84df3edcebb1ca9f14a68125ae9793f004e56c4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/27/2020
+ms.openlocfilehash: 1797654f290d751eb5c1cb65a77aaa7ca7a35aa1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369322"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772888"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>チュートリアル:Azure Stream Analytics ジョブから Azure Functions を実行する 
 
@@ -51,7 +50,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-cache-for-redis"></a>Azure Cache for Redis にデータを書き込むことができる関数を Azure Functions で作成する
 
-1. Functions ドキュメントの[関数アプリの作成](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)に関するセクションを参照してください。 関数アプリと [HTTP によってトリガーされる関数を Azure Functions で作成](../azure-functions/functions-create-first-azure-function.md#create-function) (CSharp 言語を使用して) する方法が説明されています。  
+1. Functions ドキュメントの[関数アプリの作成](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)に関するセクションを参照してください。 このセクションでは、CSharp 言語を使用して、関数アプリと [HTTP によってトリガーされる関数を Azure Functions で作成](../azure-functions/functions-create-first-azure-function.md#create-function)する方法について説明します。  
 
 2. **run.csx** 関数を参照します。 これを以下のコードで更新します **"\<your Azure Cache for Redis connection string goes here (ここに、ご利用の Azure Cache for Redis 接続文字列が入ります)\>"** を前のセクションで取得した Azure Cache for Redis のプライマリ接続文字列に必ず置き換えます。 
 
@@ -187,13 +186,10 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    このコマンドにより、指定したキーの値が出力されるはずです。
 
    ![Azure Cache for Redis 出力のスクリーンショット](./media/stream-analytics-with-azure-functions/image5.png)
-   
-## <a name="error-handling-and-retries"></a>エラー処理と再試行
-Stream Analytics は、Azure Functions へのイベントの送信中にエラーが発生した場合、操作を正常に完了するために再試行します。 ただし、再試行が行われないエラーがいくつかあります。たとえば、次のようなエラーです。
 
- 1. HttpRequestExceptions
- 2. 要求のエンティティが大きすぎます (Http エラー コード 413)
- 3. ApplicationExceptions
+## <a name="error-handling-and-retries"></a>エラー処理と再試行
+
+Azure Functions へのイベントの送信中にエラーが発生した場合、Stream Analytics はほとんどの操作を再試行します。 http エラー 413 (エンティティが大きすぎます) を除き、すべての http 例外は、成功するまで再試行されます。 "エンティティが大きすぎます" エラーは、[再試行またはドロップ ポリシー](stream-analytics-output-error-policy.md)の対象となるデータ エラーとして扱われます。
 
 ## <a name="known-issues"></a>既知の問題
 
@@ -210,7 +206,7 @@ Azure Functions での [HTTP ルーティング](https://docs.microsoft.com/sand
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure 関数を実行する単純な Stream Analytics ジョブを作成しました。Stream Analytics ジョブについてさらに学習するには、次のチュートリアルに進んでください。
+このチュートリアルでは、Azure 関数を実行する単純な Stream Analytics ジョブを作成しました。 Stream Analytics ジョブの詳細については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [Stream Analytics ジョブ内で JavaScript ユーザー定義関数を実行する](stream-analytics-javascript-user-defined-functions.md)

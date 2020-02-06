@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 66e2cb30dcd58b7ad0c6cedbb547f75c8039bc58
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2f99f50ffcccb052526981a712ac5046836a44ae
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824134"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712904"
 ---
 # <a name="run-opc-publisher"></a>OPC Publisher の実行
 
@@ -710,6 +710,6 @@ OPC Publisher は、いくつかの追加の IoT Hub ダイレクト メソッ�
 
 これは、ランダムなデータと異常のあるタグを生成する多数のタグを実装します。 追加のタグ値をシミュレートする必要がある場合は、サンプルを拡張できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、OPC Publisher の実行方法について学習しました。次のステップとして、[OPC Twin](overview-opc-twin.md) と [OPC Vault](overview-opc-vault.md) について学習することをお勧めします。

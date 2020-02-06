@@ -2,7 +2,7 @@
 title: Azure Traffic Manager で診断ログを有効にする
 description: Traffic Manager プロファイルの診断ログを有効にし、その結果作成されるログ ファイルにアクセスする方法について説明します。
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -10,13 +10,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
-ms.author: allensu
-ms.openlocfilehash: b2ebeb41e69b7edfd43c38cc3b828069a1b3401a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohink
+ms.openlocfilehash: 0ed2ecef86795f62aa3fe5798dcd0d07adbaf9cc
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071245"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938669"
 ---
 # <a name="enable-diagnostic-logging-in-azure-traffic-manager"></a>Azure Traffic Manager で診断ログを有効にする
 
@@ -55,7 +55,7 @@ Azure Traffic Manager の診断ログでは、Traffic Manager プロファイル
       Traffic Manager プロファイル リソースに関連付けられているすべてのログ カテゴリが有効と表示されることを確認します。 また、ストレージ アカウントが正しく設定されていることを検証します。
 
 ## <a name="access-log-files"></a>アクセス ログ ファイル
-1. [Azure Portal](https://portal.azure.com) にサインインします。 
+1. [Azure portal](https://portal.azure.com) にサインインします。 
 1. ポータルで Azure ストレージ アカウントに移動します。
 2. お使いの Azure ストレージ アカウントの **[概要]** ページで、 **[サービス]** の **[BLOB]** を選択します。
 3. **[コンテナー]** で **insights-logs-probehealthstatusevents** を選択し、PT1H.json ファイルまで下に移動した後、 **[ダウンロード]** をクリックしてこのログ ファイルのコピーをダウンロードして保存します。
@@ -71,12 +71,12 @@ Azure Monitor を通じて使用可能なすべての診断ログでは、共通
 
 |||||
 |----|----|---|---|
-|**フィールド名**|**フィールドの型**|**定義**|**例**|
-|EndpointName|string|正常性の状態が記録されている Traffic Manager エンドポイントの名前。|*myPrimaryEndpoint*|
-|Status|string|プローブされた Traffic Manager エンドポイントの正常性の状態。 状態は **Up** または **Down** のいずれかです。|**Up**|
+|**フィールド名**|**フィールドの型**|**[定義]**|**例**|
+|EndpointName|String|正常性の状態が記録されている Traffic Manager エンドポイントの名前。|*myPrimaryEndpoint*|
+|Status|String|プローブされた Traffic Manager エンドポイントの正常性の状態。 状態は **Up** または **Down** のいずれかです。|**Up**|
 |||||
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Traffic Manager の監視](traffic-manager-monitoring.md)の詳細を確認する
 

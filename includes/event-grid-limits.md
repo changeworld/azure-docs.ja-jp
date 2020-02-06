@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 890095718833c90a6764d0799d2081b393b1d0bd
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: ee80c04a6365c2cf337c4033a90df8d2993c299d
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887800"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845981"
 ---
 次の制限は、Azure Event Grid システムのトピックとカスタム トピックに適用されます。イベント ドメインには適用*されません*。
 
@@ -23,7 +23,7 @@ ms.locfileid: "72887800"
 | トピックあたりのイベント サブスクリプション数 | 500 |
 | カスタム トピックの発行レート (イングレス) | 5,000 イベント/秒/トピック |
 | 発行要求数 | 1 秒あたり 250 |
-| イベント サイズ | 一般提供 (GA) では 64 KB をサポート。 現在のプレビューでは 1 MB をサポート。 |
+| イベント サイズ | 1 MB (複数の 64 KB イベントとして課金されます) |
 
 次の制限は、イベント ドメインにのみ適用されます。
 

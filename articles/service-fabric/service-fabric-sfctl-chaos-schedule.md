@@ -3,21 +3,21 @@ title: Azure Service Fabric CLI - sfctl chaos schedule
 description: Azure Service Fabric のコマンド ライン インターフェイスである sfctl について説明します。 chaos をスケジュール設定するためのコマンドの一覧が含まれています。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: bff83e1d25d04f91611f5bea6c69dfcd299af04c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 29b365c48e405830e238945f1d94156f477c15b4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639175"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906192"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 chaos のスケジュールを取得および設定します。
 
 ## <a name="commands"></a>コマンド
 
-|command|[説明]|
+|command|説明|
 | --- | --- |
 | get | Chaos をいつどのようにして実行するかを定義する Chaos Schedule を取得します。 |
 | set | Chaos によって使用されるスケジュールを設定します。 |
@@ -29,13 +29,13 @@ Chaos をいつどのようにして実行するかを定義する Chaos Schedul
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
@@ -50,7 +50,7 @@ Chaos は、Chaos Schedule に基づいて実行を自動的にスケジュー�
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --chaos-parameters-dictionary | ジョブによって使用される ChaosParameters への文字列名のマッピングを表す JSON でエンコードされたリスト。 |
 | --expiry-date-utc | Schedule を使用した Chaos のスケジュール設定を停止する日付と時刻。  既定値\: 9999-12-31T23\:59\:59.999Z。 |
@@ -61,7 +61,7 @@ Chaos は、Chaos Schedule に基づいて実行を自動的にスケジュー�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
@@ -71,9 +71,10 @@ Chaos は、Chaos Schedule に基づいて実行を自動的にスケジュー�
 
 ### <a name="examples"></a>例
 
-次のコマンドは、2016-01-01 から 2038-01-01 まで無停止で Chaos を実行するスケジュールを設定します (現在のスケジュールのバージョンは 0 であるものとします)。 Chaos は、その時刻にクラスター上でスケジュールされます。
-
-    sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
+次のコマンドは、2016-01-01 から 2038-01-01 まで無停止で Chaos を実行するスケジュールを設定します (現在のスケジュールのバージョンは 0 であるものとします)。
+Chaos は、その時刻にクラスター上でスケジュールされます。
+```
+sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
     --chaos-parameters-dictionary
     [
     {
@@ -134,6 +135,8 @@ Chaos は、Chaos Schedule に基づいて実行を自動的にスケジュー�
         ]
     }
     ]
+```
+
 
 
 ## <a name="next-steps"></a>次のステップ

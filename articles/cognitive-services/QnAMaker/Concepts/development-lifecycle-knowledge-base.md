@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 01/27/2020
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 1cb5af13bdd309c762337e64ecde8538afc756b0
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: b1978e45a7554358ddd948879143411f89e4c1b2
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73794837"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843407"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>QnA Maker におけるナレッジ ベースのライフサイクル
-QnA Maker は、モデル変更、音声例、公開、エンドポイント クエリからのデータ収集の最適な反復サイクルを学習します。 
+QnA Maker は、モデル変更、音声例、公開、エンドポイント クエリからのデータ収集の最適な反復サイクルを学習します。
 
 ![作成サイクル](../media/qnamaker-concepts-lifecycle/kb-lifecycle.png)
 
@@ -28,14 +28,14 @@ QnA Maker ナレッジ ベース (KB) エンドポイントでは、KB のコン
 
 ## <a name="testing-and-updating-the-knowledge-base"></a>ナレッジ ベースのテストと更新
 
-編集または自動抽出を行ってナレッジ ベースにコンテンツを取り込んだら、テストすることができます。 対話型のテストは、QnA Maker ポータル内で **[テスト]** パネルから実行できます。その際、一般的なユーザー クエリを入力し、正し応答と十分な信頼度スコアによって応答が返されたことを確認します。 
+編集または自動抽出を行ってナレッジ ベースにコンテンツを取り込んだら、テストすることができます。 対話型のテストは、QnA Maker ポータル内で **[テスト]** パネルから実行できます。その際、一般的なユーザー クエリを入力し、正し応答と十分な信頼度スコアによって応答が返されたことを確認します。
 
-* **低い信頼度スコアを修正するには**: 別の質問を追加します。 
-* **クエリから誤って[既定の応答](confidence-score.md#change-default-answer)が返された場合**: 正しい質問に新しい回答を追加します。 
+* **低い信頼度スコアを修正するには**: 別の質問を追加します。
+* **クエリから誤って[既定の応答](../How-to/change-default-answer.md)が返された場合**: 正しい質問に新しい回答を追加します。
 
 結果に満足するまで、このテストと更新の短いループが続きます。 [ナレッジ ベースのテスト](../How-To/test-knowledge-base.md)方法を確認してください。
 
-大規模な KB には、[generateAnswer API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) と、公開されているナレッジ ベースではなく `test` ナレッジ ベースを照会する本文のプロパティ `isTest` を利用して、自動化されたテストを使用します。 
+大規模な KB には、[generateAnswer API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) と、公開されているナレッジ ベースではなく `test` ナレッジ ベースを照会する本文のプロパティ `isTest` を利用して、自動化されたテストを使用します。
 
 ```json
 {
@@ -62,15 +62,29 @@ QnA Maker ナレッジ ベース (KB) エンドポイントでは、KB のコン
 
 分析から学んだ内容に基づいて、適切な[ナレッジ ベースの更新](../How-To/edit-knowledge-base.md)を行います。
 
-## <a name="version-control-of-a-knowledge-base"></a>ナレッジ ベースのバージョン管理
+## <a name="version-control-for-data-in-your-knowledge-base"></a>ナレッジ ベースのデータのバージョン管理
 
-QnA Maker では、バージョン管理は提供されません。 **[設定]** ページからナレッジ ベースをエクスポートして、独自の方法とツールを使用する必要があります。
+データのバージョン管理は、QnA Maker ポータルの **[設定]** ページのインポートおよびエクスポート機能を使用して利用できます。
 
-**[設定]** ページから、ナレッジ ベースの TSV 形式または XLS 形式へのエクスポートを完了します。 
+ナレッジ ベースをバックアップするには、ナレッジ ベースを `.tsv` または `.xls` 形式でエクスポートします。 エクスポートしたら、通常のソース管理チェックの一部としてこのファイルを含めます。
 
-特定のバージョンに戻る必要がある場合は、自分のローカル システムからそのファイルをインポートする必要があります。 **[設定]** ページから、TSV ファイルまたは XLS ファイルをインポートします。 これにより、ナレッジ ベース内の現在の質問と回答が、インポートされたファイルの内容に置き換えられます。   
+特定のバージョンに戻る必要がある場合は、自分のローカル システムからそのファイルをインポートする必要があります。 エクスポートされたナレッジベースは、**常に** **[設定]** ページのインポートを介して使用する必要があります。 ファイルまたは URL ドキュメントのデータ ソースとして使用することはできません。 これにより、ナレッジ ベース内の現在の質問と回答が、インポートされたファイルの内容に置き換えられます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="test-and-production-knowledge-base"></a>テストと運用環境のナレッジ ベース
+ナレッジ ベースは質問と回答セットのリポジトリであり、その作成、管理、および使用は QnA Maker を通して行われます。 各 QnA Maker リソースには、複数のナレッジ ベースを保持できます。
+
+ナレッジ ベースには、"*テスト*" と "*公開*" という 2 つの状態があります。
+
+### <a name="test-knowledge-base"></a>テスト ナレッジ ベース
+
+"*テスト ナレッジ ベース*" は、応答の精度と完全性について編集、保存、テストが現在実行されているバージョンです。 テスト ナレッジ ベースに加えられた変更は、アプリケーションまたはチャット ボットのエンド ユーザーに影響しません。 テスト ナレッジ ベースは HTTP 要求では `test` になります。 `test` のナレッジは、QnA Maker のポータルの対話型 **[テスト]** ペインで使用できます。
+
+### <a name="production-knowledge-base"></a>運用環境のナレッジ ベース
+
+"*公開ナレッジ ベース*" は、チャット ボットまたはアプリケーションで使用されるバージョンです。 ナレッジ ベースを公開するアクションにより、テスト ナレッジ ベースの内容が、ナレッジ ベースの公開バージョン内に配置されます。 公開ナレッジ ベースは、アプリケーションがエンドポイントを介して使用するバージョンであるため、その内容が正確であり、十分にテストされていることを確認してください。 公開ナレッジ ベースは HTTP 要求では `prod` になります。
+
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [信頼度スコア](./confidence-score.md)

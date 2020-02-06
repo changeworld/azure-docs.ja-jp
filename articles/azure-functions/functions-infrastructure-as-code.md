@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8a3d8c8769ff5026ec1dde98f3c4167aac302bf8
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: bb2371fc7732e8fa6fcfea53bf2822fcf3d7d2fa
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292945"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963956"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions の関数アプリのリソース デプロイを自動化
 
@@ -28,8 +28,8 @@ Azure Functions のデプロイは通常、次のリソースで構成されて�
 
 | リソース                                                                           | 要件 | 構文とプロパティの参照                                                         |   |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
-| 関数アプリ                                                                     | 必須    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
-| [Azure Storage](../storage/index.yml) アカウント                                   | 必須    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
+| 関数アプリ                                                                     | Required    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
+| [Azure Storage](../storage/index.yml) アカウント                                   | Required    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
 | [Application Insights](../azure-monitor/app/app-insights-overview.md) コンポーネント | 省略可能    | [Microsoft.Insights/components](/azure/templates/microsoft.insights/components)         |   |
 | [ホスティング プラン](./functions-scale.md)                                             | 省略可能<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
 
@@ -41,7 +41,7 @@ Azure Functions のデプロイは通常、次のリソースで構成されて�
 <a name="storage"></a>
 ### <a name="storage-account"></a>ストレージ アカウント
 
-関数アプリには、Azure ストレージ アカウントが必要です。 必要なのは BLOB、テーブル、キュー、およびファイルをサポートする汎用アカウントです。 詳細については、[Azure Functions ストレージ アカウント要件](functions-create-function-app-portal.md#storage-account-requirements)に関するページをご覧ください。
+関数アプリには、Azure ストレージ アカウントが必要です。 必要なのは BLOB、テーブル、キュー、およびファイルをサポートする汎用アカウントです。 詳細については、[Azure Functions ストレージ アカウント要件](storage-considerations.md#storage-account-requirements)に関するページをご覧ください。
 
 ```json
 {
@@ -137,7 +137,7 @@ Application Insights は、関数アプリを監視するために推奨され�
 
 関数アプリには、次のアプリケーション設定を含める必要があります。
 
-| 設定名                 | [説明]                                                                               | 値の例                        |
+| 設定名                 | 説明                                                                               | 値の例                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | Functions ランタイムが内部キューイングのために使用するストレージ アカウントへの接続文字列 | 「[ストレージ アカウント](#storage)」を参照       |
 | FUNCTIONS_EXTENSION_VERSION  | Azure Functions ランタイムのバージョン                                                | `~2`                                  |

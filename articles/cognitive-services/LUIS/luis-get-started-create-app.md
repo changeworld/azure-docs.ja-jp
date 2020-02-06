@@ -27,13 +27,13 @@ ms.locfileid: "75448097"
 [!INCLUDE [Select authoring resource](./includes/select-authoring-resource.md)]
 
 ## <a name="create-a-new-app"></a>新しいアプリの作成
-アプリケーションは、 **[マイ アプリ]** で作成および管理できます。
+アプリケーションは、 **[My Apps]** で作成および管理できます。
 
-1. LUIS ポータルの [マイ アプリ] 一覧で、 **[+ Create] (+ 作成)** を選択します。
+1. LUIS ポータルの [My Apps] 一覧で、 **[+ Create] (+ 作成)** を選択します。
 
-    ![LUIS ポータルの [マイ アプリ] 一覧で、[+ Create] (+ 作成) を選択します。](./media/create-app-in-portal.png)
+    ![LUIS ポータルの [My Apps] 一覧で、[+ Create] (+ 作成) を選択します。](./media/create-app-in-portal.png)
 
-1. ダイアログ ボックスで、アプリケーションに `Home Automation` という名前を付け、 **[完了]** を選択します。 LUIS によってアプリが作成されます。 説明は省略可能です。作成や予測には使用されません。 LUIS アプリを作成するときには、予測リソースも省略可能です。 運用環境にアプリを公開するときは、アプリが多くの要求を処理できるよう予測のリソースを割り当てる必要があります。
+1. ダイアログ ボックスで、アプリケーションに `Home Automation` という名前を付け、 **[Done]** を選択します。 LUIS によってアプリが作成されます。 説明は省略可能です。作成や予測には使用されません。 LUIS アプリを作成するときには、予測リソースも省略可能です。 運用環境にアプリを公開するときは、アプリが多くの要求を処理できるよう予測のリソースを割り当てる必要があります。
 
     ![ダイアログ ボックスで、アプリケーションに "Home Automation" という名前を付ける](./media/create-new-app-details.png)
 
@@ -46,11 +46,12 @@ ms.locfileid: "75448097"
 
 ![[Prebuilt domains]\(事前構築済みドメイン\) を選択し、[HomeAutomation] を検索します。 [HomeAutomation] カードで、[Add domain]\(ドメインの追加\)](media/luis-quickstart-new-app/home-automation.png)を選択します。
 
+
 ドメインが正常に追加されると、事前構築済みドメインのボックスに、 **[Remove domain]\(ドメインの削除\)** ボタンが表示されます。
 
 ## <a name="intents-and-entities"></a>意図とエンティティ
 
-HomeAutomation ドメインの意図を確認するには、 **[意図]** を選択します。 事前構築済みドメインの意図にはサンプル発話があります。
+HomeAutomation ドメインの意図を確認するには、 **[Intents]** を選択します。 事前構築済みドメインの意図にはサンプル発話があります。
 
 ![HomeAutomation の意図の一覧のスクリーンショット](media/luis-quickstart-new-app/home-automation-intents.png "HomeAutomation の意図の一覧のスクリーンショット")
 
@@ -66,7 +67,7 @@ HomeAutomation ドメインの意図を確認するには、 **[意図]** を選
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="test-your-app"></a>アプリをテストする
-アプリのトレーニング後、そのテストを行うことができます。 **[テスト]** を選択します。 対話型のテスト ウィンドウに `Turn off the lights` などのテスト発話を入力し、Enter キーを押します。
+アプリのトレーニング後、そのテストを行うことができます。 **[Test]** を選択します。 対話型のテスト ウィンドウに `Turn off the lights` などのテスト発話を入力し、Enter キーを押します。
 
 ```
 Turn off the lights
@@ -82,7 +83,7 @@ Turn off the lights
 
 ![検査情報を含むテスト パネルのスクリーンショット](media/luis-quickstart-new-app/test.png)
 
-もう一度 **[テスト]** を選択して、テスト ウィンドウを折りたたみます。
+もう一度 **[Test]** を選択して、テスト ウィンドウを折りたたみます。
 
 <a name="publish-your-app"></a>
 

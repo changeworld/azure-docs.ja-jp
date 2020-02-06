@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: 777fa7caa80371592f93ee6f7458a7669fe6698f
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 433f8fa36f17f7cb145261273586a684658acda5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121360"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985936"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service でのアプリの診断ログの有効化
 ## <a name="overview"></a>概要
@@ -23,7 +23,7 @@ Azure では、組み込みの診断機能により、 [App Service アプリ](o
 >
 >
 
-|種類|プラットフォーム|Location|[説明]|
+|Type|プラットフォーム|Location|説明|
 |-|-|-|-|
 | アプリケーションのログ記録 | Windows、Linux | App Service ファイル システムおよび Azure Storage BLOB | アプリケーションのコードによって生成されたメッセージがログに記録されます。 メッセージは、選択した Web フレームワークによって、またはお使いの言語の標準ログ パターンを使用してアプリケーションのコードから直接、生成できます。 各メッセージには、次のいずれかのカテゴリが割り当てられます: **重大**、**エラー**、**警告**、**情報**、**デバッグ**、**トレース**。 アプリケーションのログ記録を有効にするときに、重大度レベルを設定することにより、ログ記録の詳細さを指定できます。|
 | Web サーバーのログ記録| Windows | App Service ファイル システムまたは Azure Storage BLOB| [W3C 拡張ログ ファイル形式](/windows/desktop/Http/w3c-logging)の生 HTTP 要求データ。 各ログ メッセージには、HTTP メソッド、リソース URI、クライアント IP、クライアント ポート、ユーザー エージェント、応答コードなどのデータが含まれます。 |
@@ -163,7 +163,7 @@ Linux/コンテナー アプリの場合、ZIP ファイルには、Docker ホ�
 
 Windows アプリの場合、ZIP ファイルには、App Service ファイル システムの *D:\Home\LogFiles* ディレクトリの内容が含まれています。 その構造を次に示します。
 
-| ログのタイプ | ディレクトリ | [説明] |
+| ログのタイプ | ディレクトリ | 説明 |
 |-|-|-|
 | **アプリケーション ログ** |*/LogFiles/Application/* | 1 つ以上のテキスト ファイルが含まれます。 ログ メッセージの形式は、使用するログ プロバイダーによって異なります。 |
 | **失敗した要求のトレース** | */LogFiles/W3SVC#########/* | XML ファイルと XSL ファイルが含まれます。 書式設定された XML ファイルをブラウザーで表示できます。 |
@@ -182,13 +182,13 @@ Windows アプリの場合、ZIP ファイルには、App Service ファイル �
 
 次の表は、サポートされるログの種類と説明を示しています。 
 
-| ログのタイプ | Windows のサポート | Linux (Docker) のサポート | [説明] |
+| ログのタイプ | Windows のサポート | Linux (Docker) のサポート | 説明 |
 |-|-|-|
 | AppServiceConsoleLogs | TBA | はい | 標準出力と標準エラー |
 | AppServiceHTTPLogs | はい | はい | Web サーバー ログ |
 | AppServiceEnvironmentPlatformLogs | はい | はい | App Service Environment: スケーリング、構成変更、および状態ログ|
 | AppServiceAuditLogs | はい | はい | FTP および Kudu 経由のログイン アクティビティ |
-| AppServiceFileAuditLogs | TBA | TBA | FTP および Kudu 経由のファイル変更 |
+| AppServiceFileAuditLogs | TBA | はい | FTP および Kudu 経由のファイル変更 |
 | AppServiceAppLogs | TBA | Java SE および Tomcat | アプリケーション ログ |
 
 ## <a name="nextsteps"></a> 次のステップ

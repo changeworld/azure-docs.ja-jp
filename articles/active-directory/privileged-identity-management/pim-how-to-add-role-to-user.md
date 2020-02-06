@@ -13,12 +13,12 @@ ms.subservice: pim
 ms.date: 09/17/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e7dc54eccd7a5f01d8f3dd98144e0c4bf6269a3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e7cbb8c07b75509825795da45d8352140afd0864
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429873"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024230"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールを割り当てる
 
@@ -28,12 +28,94 @@ ms.locfileid: "75429873"
 
 ## <a name="determine-your-version-of-pim"></a>PIM のバージョンを判断する
 
-2019 年 11 月以降、Privileged Identity Management の Azure AD ロール部分は、Azure リソース ロールのエクスペリエンスに一致する新しいバージョンに更新されます。 これによって機能が追加され、[既存の API の変更](azure-ad-roles-features.md#api-changes)があります。 新しいバージョンのロールアウト中、この記事で実行する手順は、現在お使いになっている Privileged Identity Management のバージョンによって異なります。 このセクションの手順に従って、お使いになっている Privileged Identity Management のバージョンを確認してください。 Privileged Identity Management のバージョンを確認したら、この記事に記載されている手順のうち、そのバージョンに一致するものを選択することができます。
+2019 年 11 月以降、Privileged Identity Management の Azure AD ロール部分は、Azure リソース ロールのエクスペリエンスと一致する新しいバージョンに更新されます。 これによって機能が追加され、[既存の API の変更](azure-ad-roles-features.md#api-changes)が行われます。 新しいバージョンのロールアウト中、この記事で実行する手順は、現在お使いになっている Privileged Identity Management のバージョンによって異なります。 このセクションの手順に従って、お使いになっている Privileged Identity Management のバージョンを確認してください。 Privileged Identity Management のバージョンを確認したら、この記事に記載されている手順のうち、そのバージョンに一致するものを選択することができます。
 
 1. [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)のロールであるユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
 1. **[Azure AD Privileged Identity Management]** を開きます。 概要ページの上部にバナーが表示されている場合は、この記事の **[新しいバージョン]** タブの指示に従ってください。 それ以外の場合は、 **[以前のバージョン]** タブの指示に従ってください。
 
     ![Azure AD ロールの新しいバージョン](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+
+# <a name="new-versiontabnew"></a>[新しいバージョン](#tab/new)
+
+## <a name="assign-a-role"></a>ロールの割り当て
+
+ユーザーを Azure AD 管理者ロールの候補にするには、次の手順を実行します。
+
+1. [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)ロールのメンバー ユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
+
+    Privileged Identity Management を管理するためのアクセス権を別の管理者に付与する方法については、「[Privileged Identity Management を管理する他の管理者にアクセス権を付与する](pim-how-to-give-access-to-pim.md)」を参照してください。
+
+1. **[Azure AD Privileged Identity Management]** を開きます。
+
+1. **[Azure AD ロール]** を選択します。
+
+1. **[ロール]** を選択して、Azure AD のアクセス許可のロール一覧を表示します。
+
+    ![Azure AD ロール](./media/pim-how-to-add-role-to-user/roles-list.png)
+
+1. **[メンバーの追加]** を選択して **[新しい割り当て]** ページを開きます。
+
+1. **[ロールを選択]** を選択して [ロールを選択] ページを開きます。
+
+    ![[新しい割り当て] ウィンドウ](./media/pim-how-to-add-role-to-user/select-role.png)
+
+1. 割り当てるロールを選択し、 **[選択]** をクリックします。
+
+    **[メンバーまたはグループの選択]** ページが開きます。
+
+1. ロールに割り当てるメンバーまたはグループを選択し、 **[選択]** を選択します。
+
+    ![[メンバーまたはグループの選択] ウィンドウ](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
+
+    [メンバーシップ設定] ウィンドウが開きます。
+
+1. **[割り当ての種類]** リストで **[対象]** または **[アクティブ]** を選択します。
+
+    ![[メンバーシップ設定] ウィンドウ](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
+
+    Azure リソース向けの Privileged Identity Management には、2 つの明確な割り当ての種類があります。
+
+    - **[対象]** 割り当ての場合、このロールのメンバーは、ロールを使用するにはアクションを実行する必要があります。 要求されるアクションには、多要素認証 (MFA) チェックの実行、業務上の妥当性の指定、指定された承認者に対する承認要求などがあります。
+
+    - **[アクティブ]** 割り当ての場合、ロールを使用するために何らかのアクションを実行することをメンバーに要求しません。 アクティブ割り当てされたメンバーは、ロールによって提供される特権を常に所有します。
+
+1. 割り当てを永続的 (永続的に対象または永続的に割り当て済み) にする必要がある場合は、 **[Permanently]\(永続的\)** チェック ボックスをオンにします。
+
+    ロールの設定によっては、チェック ボックスが表示されない場合や、変更できない場合があります。
+
+1. 特定の割り当て期間を指定するには、チェック ボックスの選択を解除して、開始または終了日時フィールドを変更します。
+
+    ![メンバー シップ設定 - 日付と時刻](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
+
+1. 終わったら、 **[Done]\(完了\)** を選択します。
+
+    ![新しい割り当て - 追加](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
+
+1. 新しいロールの割り当てを作成するには、 **[追加]** を選択します。 状態の通知が表示されます。
+
+    ![新しい割り当て - 通知](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
+
+## <a name="update-or-remove-an-existing-role-assignment"></a>既存のロールの割り当てを更新または削除する
+
+既存のロールの割り当てを更新または削除するには、次の手順を実行します。
+
+1. **[Azure AD Privileged Identity Management]** を開きます。
+
+1. **[Azure リソース]** を選択します。
+
+1. サブスクリプションや管理グループなど、管理するリソースを選択します。
+
+1. [管理] で **[ロール]** を選択して、Azure リソースのロール一覧を表示します。
+
+1. 更新または削除するロールを選択します。
+
+1. **[資格のあるロール]** タブまたは **[アクティブなロール]** タブでロールの割り当てを見つけます。
+
+    ![ロールの割り当ての更新または削除](./media/pim-resource-roles-assign-roles/resources-update-remove.png)
+
+1. **[更新]** または **[削除]** を選択して、ロールの割り当てを更新または削除します。
+
+    ロールの割り当てを延長する方法については、[Privileged Identity Management で Azure リソース ロールを延長または更新する方法](pim-resource-roles-renew-extend.md)に関するページを参照してください。
 
 # <a name="previous-versiontabprevious"></a>[以前のバージョン](#tab/previous)
 
@@ -148,88 +230,6 @@ ms.locfileid: "75429873"
    しばらくすると、MS PIM サービス プリンシパルに、サブスクリプション スコープでユーザー アクセス管理者ロールが割り当てられます。
 
    ![MS-PIM サービス プリンシパルに対するユーザー アクセス管理者ロールの割り当てを示すアクセス制御ページ](./media/pim-how-to-add-role-to-user/ms-pim-user-access-administrator.png)
-
-# <a name="new-versiontabnew"></a>[新しいバージョン](#tab/new)
-
-## <a name="assign-a-role"></a>ロールの割り当て
-
-ユーザーを Azure AD 管理者ロールの候補にするには、次の手順を実行します。
-
-1. [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)ロールのメンバー ユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
-
-    Privileged Identity Management を管理するためのアクセス権を別の管理者に付与する方法については、「[Privileged Identity Management を管理する他の管理者にアクセス権を付与する](pim-how-to-give-access-to-pim.md)」を参照してください。
-
-1. **[Azure AD Privileged Identity Management]** を開きます。
-
-1. **[Azure AD ロール]** を選択します。
-
-1. **[ロール]** を選択して、Azure AD のアクセス許可のロール一覧を表示します。
-
-    ![Azure AD ロール](./media/pim-how-to-add-role-to-user/roles-list.png)
-
-1. **[メンバーの追加]** を選択して **[新しい割り当て]** ページを開きます。
-
-1. **[ロールを選択]** を選択して [ロールを選択] ページを開きます。
-
-    ![[新しい割り当て] ウィンドウ](./media/pim-how-to-add-role-to-user/select-role.png)
-
-1. 割り当てるロールを選択し、 **[選択]** をクリックします。
-
-    **[メンバーまたはグループの選択]** ページが開きます。
-
-1. ロールに割り当てるメンバーまたはグループを選択し、 **[選択]** を選択します。
-
-    ![[メンバーまたはグループの選択] ウィンドウ](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
-
-    [メンバーシップ設定] ウィンドウが開きます。
-
-1. **[割り当ての種類]** リストで **[対象]** または **[アクティブ]** を選択します。
-
-    ![[メンバーシップ設定] ウィンドウ](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
-
-    Azure リソース向けの Privileged Identity Management には、2 つの明確な割り当ての種類があります。
-
-    - **[対象]** 割り当ての場合、このロールのメンバーは、ロールを使用するにはアクションを実行する必要があります。 要求されるアクションには、多要素認証 (MFA) チェックの実行、業務上の妥当性の指定、指定された承認者に対する承認要求などがあります。
-
-    - **[アクティブ]** 割り当ての場合、ロールを使用するために何らかのアクションを実行することをメンバーに要求しません。 アクティブ割り当てされたメンバーは、ロールによって提供される特権を常に所有します。
-
-1. 割り当てを永続的 (永続的に対象または永続的に割り当て済み) にする必要がある場合は、 **[Permanently]\(永続的\)** チェック ボックスをオンにします。
-
-    ロールの設定によっては、チェック ボックスが表示されない場合や、変更できない場合があります。
-
-1. 特定の割り当て期間を指定するには、チェック ボックスの選択を解除して、開始または終了日時フィールドを変更します。
-
-    ![メンバー シップ設定 - 日付と時刻](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
-
-1. 終わったら、 **[Done]\(完了\)** を選択します。
-
-    ![新しい割り当て - 追加](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
-
-1. 新しいロールの割り当てを作成するには、 **[追加]** を選択します。 状態の通知が表示されます。
-
-    ![新しい割り当て - 通知](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
-
-## <a name="update-or-remove-an-existing-role-assignment"></a>既存のロールの割り当てを更新または削除する
-
-既存のロールの割り当てを更新または削除するには、次の手順を実行します。
-
-1. **[Azure AD Privileged Identity Management]** を開きます。
-
-1. **[Azure リソース]** を選択します。
-
-1. サブスクリプションや管理グループなど、管理するリソースを選択します。
-
-1. [管理] で **[ロール]** を選択して、Azure リソースのロール一覧を表示します。
-
-1. 更新または削除するロールを選択します。
-
-1. **[資格のあるロール]** タブまたは **[アクティブなロール]** タブでロールの割り当てを見つけます。
-
-    ![ロールの割り当ての更新または削除](./media/pim-resource-roles-assign-roles/resources-update-remove.png)
-
-1. **[更新]** または **[削除]** を選択して、ロールの割り当てを更新または削除します。
-
-    ロールの割り当てを延長する方法については、[Privileged Identity Management で Azure リソース ロールを延長または更新する方法](pim-resource-roles-renew-extend.md)に関するページを参照してください。
 
  ---
 

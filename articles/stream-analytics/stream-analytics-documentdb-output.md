@@ -6,14 +6,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: cf6b94418516f681bf6c782fe02f3434faa5374e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e58e36b3caa5a5ecd137cb9cb61dad7ddb95ff3a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426271"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986990"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB への Azure Stream Analytics の出力  
 Azure Stream Analytics では、JSON 出力のターゲットを [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) にすることができるため、構造化されていない JSON データに対してデータ アーカイブと待機時間の短いクエリを有効にすることができます。 このドキュメントでは、この構成を実装するためのベスト プラクティスについて説明します。
@@ -97,7 +97,7 @@ Event Hubs でのイベントの受信速度は、取り込むように構成さ
 
 1\.2 を使用することで、Stream Analytics は Azure Cosmos DB で使用可能なスループットの 100 パーセントをより賢く利用することができ、スロットリングまたは速度の制限による再送信はほとんどありません。 これにより、コンテナーで同時に実行されるクエリなどの他のワークロードにも優れたエクスペリエンスが提供されます。 1 秒あたり 1,000 から 10,000 のメッセージに対応するシンクとして Azure Cosmos DB を使用する場合、Stream Analytics でどのようにスケール アウトが行われるのかを確認したい場合は、[この Azure サンプル プロジェクト](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb)を試してください。
 
-Azure Cosmos DB 出力のスループットは、1.0 および 1.1 と同じです。 現在 1.2 は既定値ではないため、Stream Analytics ジョブの[互換性レベルを設定](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)するには、ポータルを使用するか、[Create Stream Analytics Job REST API 呼び出し](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job)を使用します。 Azure Cosmos DB を使用する Stream Analytics では、互換性レベル 1.2 を使用することを "*強くお勧めします*"。
+Azure Cosmos DB 出力のスループットは、1.0 および 1.1 と同じです。 Azure Cosmos DB を使用する Stream Analytics では、互換性レベル 1.2 を使用することを "*強くお勧めします*"。
 
 ## <a name="azure-cosmos-db-settings-for-json-output"></a>JSON 出力の Azure Cosmos DB 設定
 
@@ -105,7 +105,7 @@ Stream Analytics で Azure Cosmos DB を出力として作成すると、情報�
 
 ![Azure Cosmos DB 出力ストリームの情報フィールド](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-1.png)
 
-|フィールド           | [説明]|
+|フィールド           | 説明|
 |-------------   | -------------|
 |出力エイリアス    | ご利用の Stream Analytics クエリ内でこの出力を参照するエイリアス。|
 |サブスクリプション    | Azure サブスクリプション。|

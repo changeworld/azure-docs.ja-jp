@@ -5,19 +5,19 @@ services: active-directory
 author: curtand
 ms.service: active-directory
 ms.topic: include
-ms.date: 05/22/2019
+ms.date: 01/22/2020
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 3f358dedea37eb33c2d2bb26a823d3633560d3a0
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 2e06a6c8dd7eb58769f504db9f96e0303c3e9f4c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73850410"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748943"
 ---
 ここでは、Azure Active Directory (Azure AD) サービスの使用上の制約およびその他のサービスの制限を説明します。
 
-| Category | 制限 |
+| カテゴリ | 制限 |
 | --- | --- |
 | ディレクトリ | 1 人のユーザーは、最大で 500 の Azure AD ディレクトリにゲストまたはメンバーとして属することができます。<br/>1 人のユーザーは、最大で 20 個のディレクトリを作成できます。 |
 | ドメイン | 追加できるマネージド ドメイン名は 900 個以下です。 オンプレミス Active Directory とのフェデレーションをすべてのドメインに設定する場合、各ディレクトリに追加できるドメイン名は 450 個以下です。 |
@@ -25,9 +25,9 @@ ms.locfileid: "73850410"
 | スキーマの拡張機能 |<ul><li>文字列型の拡張の最大文字数は 256 文字です。 </li><li>バイナリ型の拡張は 256 バイトに制限されます。</li><li>1 つの Azure AD リソースに対して書き込める拡張値は、(*すべて*の型と*すべて*のアプリケーションで合計) 100 個のみです。</li><li>文字列型またはバイナリ型の単一値の属性を使用して拡張できるのは、User、Group、TenantDetail、Device、Application、および ServicePrincipal エンティティのみです。</li><li>スキーマ拡張は、Graph API バージョン 1.21 プレビューでのみ使用できます。 拡張を登録するには、アプリケーションに書き込みアクセス権を付与する必要があります。</li></ul> |
 | [アプリケーション] |最大 100 人のユーザーが 1 つのアプリケーションの所有者になれます。 |
 |アプリケーション マニフェスト |アプリケーション マニフェストには、最大で 1200 のエントリを追加できます。 |
-| グループ |<ul><li>最大 100 人のユーザーが 1 つのグループの所有者になれます。</li><li>任意の数の Azure AD リソースが 1 つのグループのメンバーになることができます。</li><li>ユーザーは任意の数のグループのメンバーになることができます。</li><li>Azure AD Connect を使用してオンプレミスの Active Directory から Azure Active Directory に同期できるグループ内のメンバーの数は、50,000 ユーザーに制限されています。</li></ul> |
-| アプリケーション プロキシ | <ul><li>アプリケーション プロキシ アプリケーションごとに 1 秒あたり最大 500 件のトランザクション</li><li>テナントでの 1 秒あたり最大 750 件のトランザクション</li></ul><br/>トランザクションは、単一の http 要求と一意のリソースの応答として定義されます。 スロットルが行われた場合、クライアントでは 429 応答 (要求が多すぎます) を受信します。 |
+| グループ |<ul><li>ユーザーは、Azure AD 組織に最大 250 個のグループを作成できます。</li><li>Azure AD 組織には、最大 5000 個の動的グループを含めることができます。<li>最大 100 人のユーザーが 1 つのグループの所有者になれます。</li><li>任意の数の Azure AD リソースが 1 つのグループのメンバーになることができます。</li><li>ユーザーは任意の数のグループのメンバーになることができます。</li><li>Azure AD Connect を使用してオンプレミスの Active Directory から Azure Active Directory に同期できるグループ内のメンバーの数は、50,000 ユーザーに制限されています。</li><li>Azure AD の入れ子になったグループは、すべてのシナリオにおいてサポートされていません</li></ul><br/> 現時点で、入れ子になったグループでサポートされるシナリオを次に示します。<ul><li> 1 つのグループを別のグループのメンバーとして追加することができるため、グループの入れ子を実現できます。</li><li> グループ メンバーシップ要求 (アプリがトークンでグループ メンバーシップ要求を受信するように構成されている場合は、サインインしているユーザーがメンバーになっている入れ子になったグループが含まれます)</li><li>条件付きアクセス (条件付きアクセス ポリシーをグループにスコープ設定する場合)</li><li>セルフサービスのパスワード リセットへのアクセスの制限</li><li>Azure AD Join とデバイス登録を実行できるユーザーの制限</li></ul><br/>次のシナリオでは、入れ子になったグループはサポートされません。<ul><li> アプリ ロールの割り当て (アプリへのグループの割り当てはサポートされていますが、直接割り当てられたグループ内で入れ子になっているグループにはアクセス権はありません)。アクセス権とプロビジョニングの両方</li><li>グループベースのライセンス (グループのすべてのメンバーにライセンスを自動的に割り当てます)</li><li>Office 365 グループ。</li></ul> |
+| アプリケーション プロキシ | <ul><li>アプリケーション プロキシ アプリケーションごとに 1 秒あたり最大 500 件のトランザクション</li><li>Azure AD 組織に対する 1 秒あたり最大 750 件のトランザクション</li></ul><br/>トランザクションは、単一の http 要求と一意のリソースの応答として定義されます。 スロットルが行われた場合、クライアントでは 429 応答 (要求が多すぎます) を受信します。 |
 | アクセス パネル |<ul><li>各ユーザーのアクセス パネルに表示できるアプリケーション数に制限はありません。 これは、Azure AD Premium または Enterprise Mobility Suite のライセンスが割り当てられているユーザーに適用されます。</li><li>最大で 10 個のアプリ タイルを各ユーザーのアクセス パネルに表示できます。 この制限は、Azure AD Free ライセンス プランのライセンスが割り当てられているユーザーに適用されます。 アプリ タイルの例として、Box、Salesforce、Dropbox が挙げられます。 この制限は、管理者アカウントには適用されません。</li></ul> |
 | Reports | いずれのレポートでも、最大 1,000 行を表示またはダウンロードできます。 それを超えるデータは切り捨てられます。 |
 | 管理単位 | Azure AD リソースは最大 30 個の管理単位のメンバーにすることができます。 |
-| 管理者ロールとアクセス許可 | <ul><li>グループを[所有者](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership)として追加することはできません。</li><li>グループを[ロール](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)に割り当てることはできません。</li><li>管理者以外のすべてのユーザーのすべてのディレクトリ情報へのアクセスを無効にするために、他のユーザーのディレクトリ情報を読み取るユーザーの能力をテナント全体のスイッチの外部に制限することはできません (お勧めできません)。 既定のアクセス許可の詳細については、[ここ](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users)を参照してください。</li><li>管理者ロールのメンバーシップの追加や失効が有効になるには、最大 15 分またはサインアウト/サインインが必要になることがあります。</li></ul> |
+| 管理者ロールとアクセス許可 | <ul><li>グループを[所有者](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership)として追加することはできません。</li><li>グループを[ロール](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)に割り当てることはできません。</li><li>管理者以外のすべてのユーザーがすべてのディレクトリ情報へアクセスできないようにするために、他のユーザーのディレクトリ情報を読み取るユーザーの能力を Azure AD 組織全体での切り替え以外の方法で制限することはできません (推奨されません)。 既定のアクセス許可の詳細については、[ここ](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users)を参照してください。</li><li>管理者ロールのメンバーシップの追加や失効が有効になるには、最大 15 分またはサインアウト/サインインが必要になることがあります。</li></ul> |

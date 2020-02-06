@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f81bcd84dfb07958f3205f779937b8beac74166f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 98054060210f55803d6e2811e1f494fd3ff00e48
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113843"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76838260"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>AI エンリッチメントのシナリオで画像の情報を処理し、抽出する方法
 
@@ -29,7 +29,7 @@ Azure コグニティブ検索では、画像や画像ファイルを操作す�
 
 画像の正規化をオフにすることはできません。 画像を反復処理するスキルでは、正規化された画像が受け付けられます。 インデクサーで画像の正規化を有効にするには、そのインデクサーにスキルセットがアタッチされている必要があります。
 
-| 構成パラメーター | 説明 |
+| 構成パラメーター | [説明] |
 |--------------------|-------------|
 | imageAction   | 見つかった埋め込み画像や画像ファイルに対してアクションを実行しない場合は、"none" に設定します。 <br/>"GenerateNormalizedImages" に設定すると、ドキュメント クラッキングの際、正規化された画像の配列が生成されます。<br/>"generateNormalizedImagePerPage" に設定すると、正規化された画像の配列が生成され、データ ソース内の PDF は、各ページが 1 つの出力画像にレンダリングされます。  PDF 以外のファイルの種類については、機能は "generateNormalizedImages" の場合と同じです。<br/>"none" ではないすべてのオプションについては、画像が *normalized_images* フィールドで公開されます。 <br/>既定値は "none" です。 この構成は、BLOB データ ソースにのみ関連します ("dataToExtract" が "contentAndMetadata" に設定されている場合)。 <br/>特定のドキュメントから最大 1,000 個の画像が抽出されます。 ドキュメントに 1,000 を超える画像がある場合は、最初の 1,000 が抽出され、警告が生成されます。 |
 |  normalizedImageMaxWidth | 生成された正規化画像の最大幅 (ピクセル単位)。 既定値は 2000 です。 許容される最大値は 10000 です。 | 
@@ -60,7 +60,7 @@ ImageAction は、[インデクサー定義](https://docs.microsoft.com/rest/api
 
 *imageAction* を "none" 以外の値に設定すると、新しい *normalized_images* フィールドに画像の配列が格納されます。 各画像は、次のメンバーを含んだ複合型になります。
 
-| 画像のメンバー       | 説明                             |
+| 画像のメンバー       | [説明]                             |
 |--------------------|-----------------------------------------|
 | data               | JPEG 形式の正規化画像を BASE64 でエンコードした文字列。   |
 | width              | 正規化画像の幅 (ピクセル単位)。 |
@@ -213,7 +213,7 @@ OCR ステップは正規化された画像に対して実行されるため、�
         }
 ```
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 + [インデクサーの作成 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 + [画像分析スキル](cognitive-search-skill-image-analysis.md)
 + [OCR スキル](cognitive-search-skill-ocr.md)

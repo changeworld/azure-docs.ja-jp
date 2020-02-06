@@ -3,8 +3,8 @@ title: Visual Studio テンプレートを使用してソリューションを�
 description: Visual Studio プロジェクト テンプレートを使用して、多くのコンピューティング処理を要するワークロードを Azure Batch 上に実装して実行する方法について説明します。
 services: batch
 documentationcenter: .net
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: 5e041ae2-25af-4882-a79e-3aa63c4bfb20
 ms.service: batch
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: a8cbc630be684371d8dc7917870d581c9a072db5
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: a71dbd1b38ff58ccf1eb7a4d50daad5b24922e2f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029585"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022751"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Visual Studio プロジェクト テンプレートを使用して Batch ソリューションをすぐに開始する
 
@@ -190,7 +190,7 @@ Split() の実装コードからは次のデータにアクセスできます。
 
 ジョブ マネージャー テンプレートによって実装されたジョブ マネージャー タスクから返される可能性がある終了コードは次の 3 つです。
 
-| コード | [説明] |
+| コード | 説明 |
 | --- | --- |
 | 0 |ジョブ マネージャーは正常終了しました。 ジョブ スプリッター コードは最後まで実行され、すべてのタスクが Batch ジョブに追加されました。 |
 | 1 |"予期" されていた箇所のプログラム コードで例外が発生してジョブ マネージャー タスクが失敗しました。 この例外は JobManagerException に変換されます。その際、診断情報のほか、可能であればエラーを解決するための推奨情報が出力されます。 |
@@ -368,7 +368,7 @@ Run() の実装コードからは次のデータにアクセスできます。
 
 タスク プロセッサ テンプレートによって実装されたタスク プロセッサ タスクから返される可能性がある終了コードは次の 3 つです。
 
-| コード | [説明] |
+| コード | 説明 |
 | --- | --- |
 | [Process.ExitCode][process_exitcode] |タスク プロセッサは最後まで実行されました。 これは呼び出したプログラムの成功を必ずしも意味しないので注意してください。単に、そのプログラムがタスク プロセッサによって正常に呼び出され、例外が発生することなく後処理が実行されたことを意味するものです。 終了コードの意味は、呼び出したプログラムによって異なります。通常、終了コード 0 は、プログラムが正常に実行されたことを意味し、それ以外の終了コードはプログラムの実行に失敗したことを意味します。 |
 | 1 |"予期" されていた箇所のプログラム コードで例外が発生してタスク プロセッサが失敗しました。 この例外は `TaskProcessorException` に変換されます。その際、診断情報のほか、可能であればエラーを解決するための推奨情報が出力されます。 |

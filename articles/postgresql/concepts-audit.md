@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/14/2019
-ms.openlocfilehash: c0ce1648d7b5f7c25044ed8f66eafcca7b0009f4
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 01/28/2020
+ms.openlocfilehash: 45490e398abd8b5bd3c10adb95b56e1019d2bb94
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747343"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842471"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の監査ログ
 
@@ -65,10 +65,8 @@ pgAudit では、セッションまたはオブジェクトの監査ログを構
 [pgAudit のインストール](#installing-pgaudit)が完了したら、ログ記録を開始するようそのパラメーターを構成できます。 [pgAudit のドキュメント](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings)には、各パラメーターの定義が記載されています。 まずパラメーターをテストし、期待どおりに動作することを確認します。
 
 > [!NOTE]
-> `pgaudit.log_client` を ON に設定すると、ログはファイルに書き込まれるのではなく、クライアント プロセス (psql など) にリダイレクトされます。 通常、この設定は無効のままにしておく必要があります。
-
-> [!NOTE]
-> `pgaudit.log_level` が有効になるのは、`pgaudit.log_client` がオンになっている場合のみです。 また、Azure portal では現在、`pgaudit.log_level` にバグがあります。コンボ ボックスが表示され、複数のレベルを選択できることが示されます。 ただし、選択するレベルは 1 つだけにしてください。 
+> `pgaudit.log_client` を ON に設定すると、ログはファイルに書き込まれるのではなく、クライアント プロセス (psql など) にリダイレクトされます。 通常、この設定は無効のままにしておく必要があります。 <br> <br>
+> `pgaudit.log_level` が有効になるのは、`pgaudit.log_client` がオンになっている場合のみです。
 
 > [!NOTE]
 > Azure Database for PostgreSQL では、pgAudit のドキュメントで説明されているように、`pgaudit.log` を `-` (マイナス) 記号のショートカットを使用して設定することはできません。 必要なステートメント クラス (READ、WRITE など) はすべて、個別に指定する必要があります。
@@ -87,6 +85,22 @@ t=%m u=%u db=%d pid=[%p]:
 ### <a name="getting-started"></a>作業の開始
 すぐに作業を開始するには、`pgaudit.log` を `WRITE` に設定し、ログを開いて出力を確認します。 
 
+## <a name="viewing-audit-logs"></a>監査ログの表示
+.log ファイルを使用している場合、監査ログは、PostgreSQL エラーログと同じファイルに含まれます。 ログ ファイルは、Azure [portal](howto-configure-server-logs-in-portal.md) または [CLI](howto-configure-server-logs-using-cli.md) からダウンロードできます。 
+
+Azure 診断ログを使用している場合、ログへのアクセス方法は、選択したエンドポイントによって異なります。 Azure Storage については、[ストレージ アカウントのログ](../azure-monitor/platform/resource-logs-collect-storage.md)に関する記事を参照してください。 Event Hubs の場合は、[Azure ログのストリーミング](../azure-monitor/platform/resource-logs-stream-event-hubs.md)に関する記事を参照してください。
+
+Azure Monitor ログの場合は、選択したワークスペースにログが送信されます。 Postgres ログでは **AzureDiagnostics** コレクション モードが使用されるため、AzureDiagnostics テーブルからクエリを実行できます。 表内のフィールドについては、以下で説明します。 クエリとアラートの詳細については、[Azure Monitor のログ クエリ](../azure-monitor/log-query/log-query-overview.md)の概要に関する記事を参照してください。
+
+このクエリを使用して作業を開始できます。 クエリに基づいてアラートを構成できます。
+
+過去 1 日の特定のサーバーに関するすべての Postgres ログを検索する
+```
+AzureDiagnostics
+| where LogicalServerName_s == "myservername"
+| where TimeGenerated > ago(1d) 
+| where Message contains "AUDIT:"
+```
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure Database for PostgreSQL でのログ記録について学習する](concepts-server-logs.md)

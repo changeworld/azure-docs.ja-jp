@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 05/01/2019
+ms.date: 01/27/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 15ca4b9fe3c40b7bf49d86464858747642e3cb5a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ab7c8ba64057b4f27e00a2928a65de8eadc78c4b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685389"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768841"
 ---
 # <a name="azure-sql-data-warehouse-workload-classification"></a>Azure SQL Data Warehouse のワークロード分類
 
@@ -36,16 +36,26 @@ ms.locfileid: "73685389"
 
 ## <a name="classification-process"></a>分類プロセス
 
-現在、SQL Data Warehouse での分類は、[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) を使用して、対応するリソース クラスが割り当てられたロールにユーザーを割り当てることで実現されます。 1 つのリソース クラスへのログインを超えて要求を特徴付けることは、この機能によって制限されます。 より高度な分類方法として、[CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql) 構文を利用できるようになりました。  SQL Data Warehouse ユーザーは、この構文を使用して要求に重要度とリソース クラスを割り当てることができます。  
+現在、SQL Data Warehouse での分類は、[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) を使用して、対応するリソース クラスが割り当てられたロールにユーザーを割り当てることで実現されます。 1 つのリソース クラスへのログインを超えて要求を特徴付けることは、この機能によって制限されます。 より高度な分類方法として、[CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql) 構文を利用できるようになりました。  SQL Data Warehouse ユーザーは、この構文で `workload_group` パラメーターを使用して、要求に重要度を割り当て、割り当てるシステム リソース量を指定できます。 
 
 > [!NOTE]
 > 分類は要求単位で評価されます。 1 つのセッション内の複数の要求を別々に分類できます。
 
-## <a name="classification-precedence"></a>分類の優先順位
+## <a name="classification-weighting"></a>分類の重み付け
 
-分類プロセスの一環として、割り当てるリソース クラスを決定するための優先順位が用意されています。 データベース ユーザーに基づく分類は、ロール メンバーシップよりも優先されます。 たとえば、UserA データベース ユーザーを mediumrc リソース クラスにマップする分類子を作成します。 次に、(UserA がそのメンバーである) RoleA データベース ロールを largerc リソース クラスにマップします。 このデータベース ユーザーを mediumrc リソース クラスにマップする分類子は、RoleA データベース ロールを largerc リソース クラスにマップする分類子よりも優先されます。
+分類プロセスの一環として、どのワークロード グループを割り当てるかを判断するために重み付けが用意されています。  重み付けは次のようになります。
 
-ユーザーが複数のロールのメンバーであり、各ロールに異なるリソース クラスが割り当てられている場合、またはユーザーが複数の分類子に一致する場合、このユーザーには最も高いリソース クラスが割り当てられます。  この動作は、既存のリソース クラス割り当て動作と整合します。
+|分類子パラメーター |Weight   |
+|---------------------|---------|
+|MEMBERNAME:USER      |64       |
+|MEMBERNAME:ROLE      |32       |
+|WLM_LABEL            |16       |
+|WLM_CONTEXT          |8        |
+|START_TIME/END_TIME  |4        |
+
+`membername` パラメーターは必須です。  ただし、指定された membername がデータベース ロールではなくデータベース ユーザーである場合、ユーザーの重み付けの方が高くなるため、その分類子が選択されます。
+
+ユーザーがさまざまなリソース クラスが割り当てられた、または複数の分類子が一致する複数のロールのメンバーである場合、そのユーザーには最上位のリソース クラスが割り当てられます。  この動作は、既存のリソース クラス割り当て動作と整合します。
 
 ## <a name="system-classifiers"></a>システム分類子
 
@@ -59,7 +69,7 @@ SELECT * FROM sys.workload_management_workload_classifiers where classifier_id <
 
 自動的に作成されるシステム分類子を利用すると、ワークロード分類に簡単に移行できます。 リソース クラス ロールのマッピングと分類の優先順位を併用すると、重要度を使用して新しい分類子を作成し始めるときに誤分類が起きやすくなります。
 
-次のシナリオで考えてみましょう。
+以下のシナリオについて考えてみます。
 
 - 既存のデータ ウェアハウスで、データベース ユーザー DBAUser に largerc リソース クラス ロールが割り当てられています。 このリソース クラス割り当ては、sp_addrolemember を使用して行われました。
 - データ ウェアハウスのワークロード管理が更新されました。
@@ -80,7 +90,7 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc','staticrc10','staticrc20','st
 sp_droprolemember ‘[Resource Class]’, membername
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 分類子の作成の詳細については、「[CREATE WORKLOAD CLASSIFIER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)」を参照してください。  
 - ワークロード分類子の作成方法については、[ワークロード分類子の作成](quickstart-create-a-workload-classifier-tsql.md)に関するクイック スタートを参照してください。

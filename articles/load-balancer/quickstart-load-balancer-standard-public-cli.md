@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: パブリック Standard Load Balancer を作成する - Azure CLI'
+title: 'クイックスタート: パブリック ロード バランサーを作成する - Azure CLI'
 titleSuffix: Azure Load Balancer
 description: このクイックスタートでは、Azure CLI を使用してパブリック ロード バランサーを作成する方法について説明します
 services: load-balancer
@@ -7,7 +7,7 @@ documentationcenter: na
 author: asudbring
 manager: twooley
 tags: azure-resource-manager
-Customer intent: I want to create a Standard Load balancer so that I can load balance internet traffic to VMs.
+Customer intent: I want to create a Load balancer so that I can load balance internet traffic to VMs.
 ms.assetid: a8bcdd88-f94c-4537-8143-c710eaa86818
 ms.service: load-balancer
 ms.devlang: na
@@ -17,22 +17,22 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 30f2fa7537ed481c25940a2ed67c99c58a7a80ed
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8ef24630d255876c45d9cbc072fc989288f2ac5f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214805"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837257"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>クイック スタート:Azure CLI を使用して VM の負荷を分散する Standard Load Balancer を作成する
 
-このクイック スタートでは、Standard Load Balancer を作成する方法を示します。 ロード バランサーをテストするには、Ubuntu サーバーを実行する 2 つの仮想マシン (VM) をデプロイし、2 つの VM 間で Web アプリの負荷を分散します。
+このクイックスタートでは、パブリック ロード バランサーを作成する方法を示します。 ロード バランサーをテストするには、Ubuntu サーバーを実行する 2 つの仮想マシン (VM) をデプロイし、2 つの VM 間で Web アプリの負荷を分散します。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.28 以降のバージョンを実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 [az group create](https://docs.microsoft.com/cli/azure/group) を使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
@@ -44,15 +44,23 @@ CLI をローカルにインストールして使用する場合、このチュ�
     --location eastus
 ```
 
-## <a name="create-a-public-standard-ip-address"></a>パブリック Standard IP アドレスを作成する
+## <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
 
-インターネット上の Web アプリにアクセスするには、ロード バランサーのパブリック IP アドレスが必要です。 Standard Load Balancer では、Standard パブリック IP アドレスだけがサポートされています。 *myResourceGroupSLB* に *myPublicIP* という Standard パブリック IP アドレスを作成するには、[az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) を使用します。
+インターネット上の Web アプリにアクセスするには、ロード バランサーのパブリック IP アドレスが必要です。 *myResourceGroupSLB* に *myPublicIP* という Standard ゾーン冗長パブリック IP アドレスを作成するには、[az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) を使用します。
 
 ```azurecli-interactive
   az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku standard
 ```
 
-## <a name="create-azure-load-balancer"></a>Azure Load Balancer を作成する
+ゾーンのパブリック IP アドレスをゾーン 1 に作成するには、次のようにします。
+
+```azurecli-interactive
+  az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku standard --zone 1
+```
+
+ Basic パブリック IP を作成するには、```--sku basic``` を使用します。 Basic では、可用性ゾーンはサポートされません。 Microsoft では、運用環境のワークロードに Standard SKU をお勧めします。
+
+## <a name="create-azure-load-balancer"></a>Azure Load Balancer の作成
 
 このセクションでは、ロード バランサーの以下のコンポーネントを作成および構成する方法について説明します。
   - ロード バランサーの着信ネットワーク トラフィックを受け取るフロントエンド IP プール。
@@ -62,7 +70,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ### <a name="create-the-load-balancer"></a>ロード バランサーを作成する
 
-[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) を使用して、**myLoadBalancer** という名前のパブリック Azure Load Balancer を作成します。これには、**myFrontEnd** という名前のフロントエンド プールと、前のステップで作成したパブリック IP アドレス **myPublicIP** に関連付けられている **myBackEndPool** という名前のバックエンド プールを含めます。
+[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) を使用して、**myLoadBalancer** という名前のパブリック Azure Load Balancer を作成します。これには、**myFrontEnd** という名前のフロントエンド プールと、前のステップで作成したパブリック IP アドレス **myPublicIP** に関連付けられている **myBackEndPool** という名前のバックエンド プールを含めます。 Basic パブリック IP を作成するには、```--sku basic``` を使用します。 Microsoft では、運用環境のワークロードに Standard SKU をお勧めします。
 
 ```azurecli-interactive
   az network lb create \
@@ -182,20 +190,11 @@ Standard Load Balancer の場合、バックエンドが扱う VM には、ネ�
 
 ```
 
-
 ## <a name="create-backend-servers"></a>バックエンド サーバーの作成
 
 この例では、ロード バランサーのバックエンド サーバーとして使用する 3 つの仮想マシンを作成します。 ロード バランサーが正常に作成されたことを確認するには、仮想マシンに NGINX もインストールします。
 
-### <a name="create-an-availability-set"></a>可用性セットを作成する
-
-[az vm availabilityset create](/cli/azure/network/nic) を使用して、可用性セットを作成します。
-
- ```azurecli-interactive
-  az vm availability-set create \
-    --resource-group myResourceGroupSLB \
-    --name myAvailabilitySet
-```
+Basic パブリック IP で Basic Load Balancer を作成する場合、仮想マシンの追加先となる可用性セットを、[az vm availabilityset create](/cli/azure/network/nic) を使用して作成する必要があります。 Standard Load Balancer の場合、この追加手順は不要です。 Microsoft では、Standard の使用をお勧めします。
 
 ### <a name="create-three-virtual-machines"></a>仮想マシンを 3 つ作成する
 
@@ -293,16 +292,14 @@ VM がデプロイされるまでに、数分かかる場合があります。
 ``` 
    ![ロード バランサーをテストする](./media/load-balancer-standard-public-cli/running-nodejs-app.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、[az group delete](/cli/azure/group#az-group-delete) コマンドを使用して、リソース グループ、ロード バランサー、およびすべての関連リソースを削除できます。
 
 ```azurecli-interactive 
   az group delete --name myResourceGroupSLB
 ```
-## <a name="next-step"></a>次のステップ
-このクイック スタートでは、Standard Load Balancer を作成し、それに VM をアタッチして、ロード バランサー トラフィック規則と正常性プローブを構成してから、ロード バランサーをテストしました。 Azure Load Balancer についてさらに学習するには、Azure Load Balancer のチュートリアルに進みます。
+## <a name="next-steps"></a>次のステップ
+このクイック スタートでは、Standard Load Balancer を作成し、それに VM をアタッチして、ロード バランサー トラフィック規則と正常性プローブを構成してから、ロード バランサーをテストしました。 Azure Load Balancer についてさらに学習するには、[Azure Load Balancer のチュートリアル](tutorial-load-balancer-standard-public-zone-redundant-portal.md)に進んでください。
 
-> [!div class="nextstepaction"]
-> [Azure Load Balancer のチュートリアル](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
-
+[Load Balancer と可用性ゾーン](load-balancer-standard-availability-zones.md)について理解を深めます。

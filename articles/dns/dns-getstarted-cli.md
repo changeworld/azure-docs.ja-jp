@@ -3,19 +3,19 @@ title: クイック スタート:Azure DNS ゾーンとレコードを作成す�
 titleSuffix: Azure DNS
 description: クイック スタート - Azure DNS で DNS ゾーンとレコードを作成する方法について説明します。 これは、Azure CLI を使用して最初の DNS ゾーンとレコードを作成して管理するためのステップバイステップ ガイドです。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
-ms.author: allensu
-ms.openlocfilehash: 14d47a82ec6b5ec0ede626748216889a6943bfa6
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.author: rohink
+ms.openlocfilehash: e6904c013cf2ed897bdc7c8b32f04fe500fc31d9
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072153"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937193"
 ---
-# <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>クイック スタート: Azure CLI を使用して Azure DNS ゾーンとレコードを作成する
+# <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure DNS ゾーンとレコードを作成する
 
 この記事では、Windows、Mac、Linux で使用できる Azure CLI を使用して、最初の DNS ゾーンとレコードを作成する手順について説明します。 これらの手順は、[Azure portal](dns-getstarted-portal.md) または [Azure PowerShell](dns-getstarted-powershell.md) を使用して実行することもできます。
 
@@ -83,7 +83,7 @@ az network dns record-set list -g MyResourceGroup -z contoso.xyz
    nslookup www.contoso.xyz <name server name>
    ```
 
-   例:
+   次に例を示します。
 
    ```
    nslookup www.contoso.xyz ns1-08.azure-dns.com.
@@ -103,7 +103,7 @@ az network dns record-set list -g MyResourceGroup -z contoso.xyz
 az group delete --name MyResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、Azure CLI を使用して最初の DNS ゾーンとレコードを作成できました。カスタム ドメインで Web アプリのレコードを作成できます。
 

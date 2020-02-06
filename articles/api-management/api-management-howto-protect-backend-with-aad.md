@@ -191,7 +191,7 @@ OAuth 2.0 承認サーバーを設定したので、Developer Console で Azure 
 
 ## <a name="configure-a-jwt-validation-policy-to-pre-authorize-requests"></a>要求を事前承認する JWT 検証ポリシーを構成する
 
-この時点でユーザーが Developer Console から電話をかけようとすると、ユーザーにはログインが求められます。 Developer Console は、ユーザーに代わってアクセス トークンを取得し、API に対して行う要求にトークンを含めます。
+この時点でユーザーが Developer Console から API を呼び出そうとすると、ユーザーにはログインが求められます。 Developer Console は、ユーザーに代わってアクセス トークンを取得し、API に対して行う要求にトークンを含めます。
 
 ただし、誰かがトークンを使用せず、または無効なトークンを使用して API を呼び出すとどうなるでしょうか。 たとえば、API を `Authorization` ヘッダーなしで呼び出してみても、呼び出しは処理されます。 理由は、API Management がこの時点でアクセス トークンを検証していないためです。 `Authorization` ヘッダーはバックエンド API に渡されます。
 

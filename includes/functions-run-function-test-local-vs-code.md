@@ -1,33 +1,32 @@
 ---
-title: インクルード ファイル
-description: インクルード ファイル
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 05/31/2019
+ms.date: 01/12/2020
 ms.author: glenga
-ms.custom: include file
-ms.openlocfilehash: ebcbe7e8af7e01a9b7e75282be4e4f4ceb80b806
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: f4075b8d05c179e8115ff46c9f82751817372491
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76279311"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842218"
 ---
 ## <a name="run-the-function-locally"></a>関数をローカルで実行する
 
-Azure Functions Core Tools を使用すると、ローカルの開発用コンピューター上で Azure Functions プロジェクトを実行できます。
+Visual Studio Code を [Azure Functions Core Tools](../articles/azure-functions/functions-run-local.md) と統合することで、このプロジェクトをローカルの開発用コンピューター上で実行してから、Azure に発行することができます。
 
-1. 関数をテストするには、関数コードにブレークポイントを設定し、F5 キーを押して関数アプリ プロジェクトを開始します。 Core Tools からの出力が**ターミナル** パネルに表示されます。
+1. 関数を呼び出すには、F5 キーを押して関数アプリ プロジェクトを起動します。 Core Tools からの出力が**ターミナル** パネルに表示されます。
+
+1. Azure Functions Core Tools をまだインストールしていない場合は、プロンプトで **[インストール]** を選択します。 Core Tools がインストールされると、アプリが**ターミナル** パネルで起動します。
 
 1. **ターミナル** パネルで、HTTP によってトリガーされる関数の URL エンドポイントをコピーします。 
 
     ![Azure のローカル出力](./media/functions-run-function-test-local-vs-code/functions-vscode-f5.png)
 
-1. HTTP 要求の URL をブラウザーのアドレス バーに貼り付けます。 この URL にクエリ文字列 `?name=<yourname>` を追加して、要求を実行します。 ブレークポイントに到達すると、実行が一時停止されます。
+1. HTTP 要求の URL をブラウザーのアドレス バーに貼り付けます。 この URL にクエリ文字列 `?name=<yourname>` を追加して、GET 要求を実行します。 
 
-1. 実行を続行したときの、GET 要求に対するブラウザーの応答を次に示します。
+1. 応答が返され、ブラウザーに次のように表示されます。
 
     ![ブラウザーでの関数 localhost の応答](./media/functions-run-function-test-local-vs-code/functions-test-local-browser.png)
 
-1. デバッグを停止するには、Shift キーを押しながら F5 キーを押します。
+1. Shift + F5 キーを押して Core Tools を停止し、デバッガーの接続を解除します。

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7e83aa69cb4099885fc45e719c812a6c92299b7a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 161d9d18c914f65b3ab3ef7e44f8cd2f4a1992db
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75359964"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76887728"
 ---
 この記事では、Azure Managed Disks と Azure Premium SSD ディスクについてよく寄せられるいくつかの質問に回答します。
 
@@ -145,28 +145,20 @@ Azure Managed Disks では、現在、ローカル冗長ストレージ マネ�
 
 Premium SSD、Standard SSD、および Standard HDD でスナップショットがサポートされます。 これらの 3 つのディスクの種類では、すべてのディスク サイズでスナップショットがサポートされます (最大 32 TiB のサイズのディスクを含みます)。 Ultra ディスクでは、スナップショットはサポートされません。
 
-### <a name="disk-reservation"></a>ディスク予約
+**Azure ディスク予約とは**
+ディスク予約は、1 年分のディスク ストレージを事前に購入し、総コストを削減するオプションです。 Azure ディスク予約の詳細については、次の記事を参照してください。[Azure Disk に予約割引が適用されるしくみについて](../articles/cost-management-billing/reservations/understand-disk-reservations.md)。
 
-**Azure ディスク予約とは何ですか?**
-ディスク予約は、1 年分のディスク ストレージを事前に購入し、総コストを削減するオプションです。
-
-**Azure ディスク予約にはどのようなオプションがありますか?**
-Azure ディスク予約には、指定された SKU の Premium SSD を P30 (1 TiB) から最大 P80 (32 TiB) まで 1 年間購入するオプションがあります。 ディスク予約を購入するために必要なディスクの最小量に制限はありません。 また、1 回の前払いまたは毎月の支払いを選択できます。 Premium SSD Managed Disks に適用される追加のトランザクション コストはありません。
+**Azure ディスク予約にはどのようなオプションがありますか?** Azure ディスク予約には、指定された SKU の Premium SSD を P30 (1 TiB) から最大 P80 (32 TiB) まで 1 年間購入するオプションがあります。 ディスク予約を購入するために必要なディスクの最小量に制限はありません。 また、1 回の前払いまたは毎月の支払いを選択できます。 Premium SSD Managed Disks に適用される追加のトランザクション コストはありません。 
 
 予約は、容量ではなくディスクの形式で行われます。 つまり、P80 (32 TiB) ディスクを予約すると、1 個の P80 ディスクが取得され、その特定の予約を 2 つの小さな P70 (16 TiB) ディスクに分割することはできません。 もちろん、2 つの個別の P70 (16 TiB) ディスクなど、任意の数のディスクを予約することができます。
 
-**Azure ディスク予約はどのように課金されますか?**
-- Enterprise Agreement (EA) のお客様の場合、Azure ディスク予約の購入には Azure の年額コミットメントが最初に使用されます。 EA のお客様がご自分の年額コミットメントをすべて使用済みの場合でも、ディスク予約は引き続きご購入いただけます。また、この場合の購入については、一括前払いまたは次回の超過分請求で請求されます。
+**Azure ディスク予約はどのように適用されますか?**  
+ディスク予約は、予約済み仮想マシン (VM) インスタンスと似たモデルに従います。 違いは、ディスク予約を異なる SKU に適用することはできませんが、VM インスタンスでは可能である点です。 VM インスタンスの詳細については、「[Azure Reserved VM Instances を使用してコストを削減する](../articles/virtual-machines/linux/prepay-reserved-vm-instances.md)」を参照してください。    
 
-- Azure.com を介して購入したお客様の場合、購入時に、Azure ディスク予約の全額前払い (または毎月の固定支払い) がご登録のクレジット カードに請求されます。
+**Azure ディスク予約を介して購入したデータ ストレージは、複数のリージョンで使用できますか?**     
+Azure ディスク予約は、特定のリージョンと SKU (米国東部 2 の P30 など) 用に購入されるため、こうした構成要素以外では使用できません。 他のリージョンまたは SKU のディスク ストレージのニーズに合わせて、いつでも追加の Azure ディスク予約を購入できます。 
 
-**Azure ディスク予約はどのように適用されますか?**
-ディスク予約は、予約済み仮想マシン (VM) インスタンスと似たモデルに従います。 違いは、ディスク予約を異なる SKU に適用することはできませんが、VM インスタンスでは可能である点です。 VM インスタンスの詳細については、「[Azure Reserved VM Instances を使用してコストを削減する](../articles/virtual-machines/linux/prepay-reserved-vm-instances.md)」を参照してください。 
-
-**Azure ディスク予約を介して購入したデータ ストレージは、複数のリージョンで使用できますか?**
-Azure ディスク予約は、特定のリージョンと SKU (米国東部 2 の P30 など) 用に購入されるため、こうした構成要素以外では使用できません。 他のリージョンまたは SKU のディスク ストレージのニーズに合わせて、いつでも追加の Azure ディスク予約を購入できます。
-
-**Azure ディスク予約の有効期限が切れるとどうなりますか?**
+**Azure ディスク予約の有効期限が切れるとどうなりますか?**    
 有効期限の 30 日前と有効期限当日に通知メールが送信されます。 予約の期限が切れると、デプロイされたディスクは引き続き実行され、最新の[従量課金制料金](https://azure.microsoft.com/pricing/details/managed-disks/)で課金されます。
 
 ## <a name="ultra-disks"></a>Ultra ディスク

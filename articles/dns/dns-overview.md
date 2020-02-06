@@ -1,17 +1,17 @@
 ---
 title: Azure DNS とは
 description: Microsoft Azure の DNS ホスティング サービスの概要です。 Microsoft Azure でドメインをホストします。
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: overview
 ms.date: 3/21/2019
-ms.author: allensu
-ms.openlocfilehash: 6abdc48187950d9605bdc47b1c5d4f00e4e181f0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 1543c0daae7d637730a5f8f9da2305423ba7f84e
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211327"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932400"
 ---
 # <a name="what-is-azure-dns"></a>Azure DNS とは
 
@@ -25,7 +25,7 @@ Azure DNS には、次の機能が含まれています。
 
 Azure DNS 内の DNS ドメインは、DNS ネーム サーバーから成る Azure のグローバル ネットワーク上でホストされます。 Azure DNS には、エニーキャスト ネットワークが使用されています。 各 DNS クエリには、使用できる最も近い DNS サーバーが応答します。これによって、ドメインには高速なパフォーマンスと高可用性が提供されます。
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 
  Azure DNS は、Azure Resource Manager に基づいており、次のような機能が利用できます。
 
@@ -63,7 +63,7 @@ Azure DNS では、エイリアス レコード セットをサポートしま�
 
 詳細については、「[Azure DNS エイリアス レコード](dns-alias.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * DNS ゾーンとレコードについて学びます ([DNS ゾーンとレコードの概要](dns-zones-records.md)に関するページを参照)。
 

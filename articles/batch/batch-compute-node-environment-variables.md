@@ -2,21 +2,21 @@
 title: タスク実行環境変数 - Azure Batch | Microsoft Docs
 description: タスク実行の環境変数に関するガイダンスと Azure Batch 解析のリファレンスです。
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.assetid: ''
 ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 09/12/2019
-ms.author: jushiman
-ms.openlocfilehash: fd3c8ac9e65f7f77be070e1d1d108490e61eb248
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: b6a9e21157884c86577b498671e4cfd0bc6068cd
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027191"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020201"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Azure Batch ランタイム環境変数
 
@@ -44,7 +44,7 @@ Batch での環境変数の使用に関する詳細については、「[タス�
 
 ## <a name="environment-variables"></a>環境変数
 
-| 変数名                     | [説明]                                                              | 可用性 | 例 |
+| 変数名                     | 説明                                                              | 可用性 | 例 |
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | タスクが属する Batch アカウントの名前。                  | すべてのタスク。   | mybatchaccount |
 | AZ_BATCH_ACCOUNT_URL            | Batch アカウントの URL。 | すべてのタスク。 | `https://myaccount.westus.batch.azure.com` |

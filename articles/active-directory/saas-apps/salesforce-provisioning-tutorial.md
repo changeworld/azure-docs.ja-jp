@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32f3c439460ddc61dbf08fc4e8d7b7a000aa20f9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 0ed3307f2802e5372cf007f1df8eee2f26e6a39f
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849175"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714385"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>チュートリアル:Salesforce を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -126,7 +126,7 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
     * Web API アクセスがユーザーに対して有効になっている。
 * Azure AD プロビジョニング サービスでは、ユーザーのプロビジョニング言語、ロケール、およびタイムゾーンがサポートされています。 これらの属性は既定の属性マッピングに含まれていますが、既定のソース属性を保持していません。 既定のソース属性を選択し、そのソース属性が SalesForce で想定されている形式となるようにしてください。 たとえば、英語 (米国) の localeSidKey は、en_US です。 [こちら](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5)に記載されているガイダンスを確認して、適切な localeSidKey 形式を把握してください。 languageLocaleKey の形式は、[こちら](https://help.salesforce.com/articleView?id=faq_getstart_what_languages_does.htm&type=5)に記載されています。 この形式が正しいことを確認するだけでなく、[こちら](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5)に説明されているように、ユーザーに対して言語が有効になっていることを確認することが必要な場合もあります。 
 * **SalesforceLicenseLimitExceeded:** このユーザーが使用できるライセンスがないため、ターゲット アプリケーションでユーザーを作成できませんでした。 ターゲット アプリケーションの追加ライセンスを購入するか、ユーザーの割り当てと属性マッピングの構成を調べて、正しい属性で正しいユーザーが割り当てられていることを確認します。
-* **SalesforceDuplicateUserName:** 別の Salesforce.com テナント内に重複している Salesforce.com の 'Username' があるため、ユーザーをプロビジョニングできません。  Salesforce.com では、'Username' 属性の値は、すべての Salesforce.com テナントにわたって一意である必要があります。  既定では、Azure Active Directory のユーザーの userPrincipalName は、Salesforce.com でのそのユーザーの 'Username' になります。   2 つのオプションがあります。  1 つ目のオプションは、他の Salesforce.com テナントも管理する場合に、その他のテナントの重複する 'Username' を持つユーザーを探して、名前を変更することです。  2 つ目のオプションは、Azure Active Directory ユーザーから、ディレクトリが統合されている Salesforce.com テナントへのアクセス権を削除することです。 次回の同期の試行時に、この操作を再試行します。 
+* **SalesforceDuplicateUserName:** 別の Salesforce.com テナント内に重複している Salesforce.com の 'Username' があるため、ユーザーをプロビジョニングできません。  Salesforce.com では、'Username' 属性の値は、すべての Salesforce.com テナントにわたって一意である必要があります。  既定では、Azure Active Directory のユーザーの userPrincipalName は、Salesforce.com でのそのユーザーの 'Username' になります。   この場合、2 つの選択肢があります。  1 つ目のオプションは、他の Salesforce.com テナントも管理する場合に、その他のテナントの重複する 'Username' を持つユーザーを探して、名前を変更することです。  2 つ目のオプションは、Azure Active Directory ユーザーから、ディレクトリが統合されている Salesforce.com テナントへのアクセス権を削除することです。 次回の同期の試行時に、この操作を再試行します。 
 * **SalesforceRequiredFieldMissing:** Salesforce では、ユーザーを正常に作成または更新するために、特定の属性がユーザーに存在する必要があります。 このユーザーには、必須の属性の 1 つがありません。 Salesforce にプロビジョニングするすべてのユーザーに、email や alias などの属性が設定されていることを確認してください。 [属性ベースのスコープ フィルター](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)を使用して、これらの属性を持たないユーザーを対象外にすることができます。 
 * Salesforce へのプロビジョニング用の既定の属性マッピングには、Azure AD の appRoleAssignments を Salesforce の ProfileName にマップするための SingleAppRoleAssignments 式が含まれています。 属性マッピングでは 1 つのロールのプロビジョニングのみがサポートされているため、ユーザーが Azure AD で複数のアプリ ロールの割り当てを持たないようにしてください。 
 * Salesforce では、メールを変更する前に、その更新を手動で承認する必要があります。 そのため、メールの変更が承認されるまでは、プロビジョニングのログに、ユーザーのメールを更新するエントリが複数表示されることがあります。

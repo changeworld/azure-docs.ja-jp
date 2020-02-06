@@ -5,25 +5,25 @@ description: Azure Machine Learning デザイナーを使用して技術的な�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: b2511feefbe419223f355509ecb435518ce8382e
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 189b36c8d9a7c1d1e247bb2cb34795dc4e3595ce
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311049"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963344"
 ---
 # <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーを使用して自動車価格を予測するために、複数の回帰モデルをトレーニングおよび比較する
 
-**デザイナー サンプル 2**
+**デザイナー (プレビュー) のサンプル 2**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-コードを 1 行も書くことなく、デザイナーを使用して、機械学習のパイプラインを構築する方法について説明します。 このサンプルでは、技術的な特徴に基づいて自動車の価格を予測するために、複数の回帰モデルをトレーニングし、比較します。 ご自身で機械学習の問題に取り組むことができるように、ここではこのパイプラインで行われた選択の理論的な根拠を提示します。
+コードを 1 行も書くことなく、デザイナー (プレビュー) を使用して、機械学習のパイプラインを構築する方法について説明します。 このサンプルでは、技術的な特徴に基づいて自動車の価格を予測するために、複数の回帰モデルをトレーニングし、比較します。 ご自身で機械学習の問題に取り組むことができるように、ここではこのパイプラインで行われた選択の理論的な根拠を提示します。
 
 機械学習を始めたばかりの場合は、このパイプラインの[基本的なバージョン](how-to-designer-sample-regression-automobile-price-basic.md)を参照してください。
 

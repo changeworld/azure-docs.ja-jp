@@ -9,16 +9,18 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 3506399537fe2cb16014ceb3429bce5aeee8cb69
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 39b16c6cfd5b94d412827ed88197edbef2da1453
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100329"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844634"
 ---
 # <a name="persist-state-in-linux"></a>Linux で状態を永続化する
 
-Event Grid モジュールで作成したトピックとサブスクリプションは、既定でコンテナー ファイル システムに格納されます。 作成したメタデータが永続化されていない場合、モジュールを再デプロイするとすべて失われます。 現在、メタデータのみが永続化されます。 イベントはメモリ内に格納されます。 Event Grid モジュールを再デプロイまたは再起動した場合、配信されていないイベントはすべて失われます。
+Event Grid モジュールで作成したトピックとサブスクリプションは、既定でコンテナー ファイル システムに格納されます。 作成したメタデータが永続化されていない場合、モジュールを再デプロイするとすべて失われます。 データを複数のデプロイにわたって保持したり、再起動の前後で保持したりするには、コンテナー ファイル システムの外部にデータを永続化する必要があります。
+
+既定では、メタデータのみが永続化され、イベントはパフォーマンスを向上させるためにメモリ内に格納され続けます。 イベントの永続化も有効にするには、「イベントの永続化」セクションに従ってください。
 
 この記事では、Linux デプロイで永続化を使用して Event Grid モジュールをデプロイする手順について説明します。
 
@@ -61,7 +63,8 @@ Event Grid モジュールで作成したトピックとサブスクリプショ
   ],
   "HostConfig": {
     "Binds": [
-      "egmetadataDbVol:/app/metadataDb"
+      "egmetadataDbVol:/app/metadataDb",
+      "egdataDbVol:/app/eventsDb"
     ],
     "PortBindings": {
       "4438/tcp": [
@@ -74,7 +77,7 @@ Event Grid モジュールで作成したトピックとサブスクリプショ
 }
 ```
 
-または、Docker クライアント コマンドを使用して Docker ボリュームを作成することもできます。 
+ボリュームをマウントする代わりに、ホスト システム上にディレクトリを作成し、そのディレクトリをマウントすることもできます。
 
 ## <a name="persistence-via-host-directory-mount"></a>ホスト ディレクトリ マウントによる永続化
 
@@ -138,7 +141,8 @@ Docker ボリュームの代わりに、ホスト フォルダーをマウント
           ],
           "HostConfig": {
                 "Binds": [
-                  "/myhostdir:/app/metadataDb"
+                  "/myhostdir:/app/metadataDb",
+                  "/myhostdir2:/app/eventsDb"
                 ],
                 "PortBindings": {
                       "4438/tcp": [
@@ -153,3 +157,32 @@ Docker ボリュームの代わりに、ホスト フォルダーをマウント
 
     >[!IMPORTANT]
     >バインド値の 2 番目の部分は変更しないでください。 これはモジュール内の特定の場所を指します。 Linux の Event Grid モジュールでは、これは **/app/metadata** である必要があります。
+
+
+## <a name="persist-events"></a>イベントの永続化
+
+イベントの永続化を有効にするには、前のセクションを使用して、ボリューム マウントまたはホスト ディレクトリ マウントのいずれかを使用して、まずメタデータの永続性を有効にする必要があります。
+
+イベントの永続化に関する重要な注意事項:
+
+* イベントの永続化はイベント サブスクリプションごとに有効になり、ボリュームまたはディレクトリがマウントされるとオプトインされます。
+* イベントの永続化は作成時にイベント サブスクリプションに構成され、イベント サブスクリプションの作成後に変更することはできません。 イベントの永続化を切り替えるには、イベント サブスクリプションを削除してから再作成する必要があります。
+* イベントの永続化は、ほぼ常にメモリ内操作よりも遅くなりますが、速度の違いはドライブの特性に大きく依存します。 速度と信頼性のトレードオフは、すべてのメッセージング システムに内在しますが、一般的に大規模な場合にのみ顕著になります。
+
+イベント サブスクリプションでイベントの永続化を有効にするには、`persistencePolicy` を `true` に設定します。
+
+ ```json
+        {
+          "properties": {
+            "persistencePolicy": {
+              "isPersisted": "true"
+            },
+            "destination": {
+              "endpointType": "WebHook",
+              "properties": {
+                "endpointUrl": "<your-webhook-url>"
+              }
+            }
+          }
+        }
+ ```

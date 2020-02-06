@@ -4,25 +4,21 @@ description: このチュートリアルでは、Azure Portal を使って仮想
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
 Customer intent: I want to connect two virtual networks so that virtual machines in one virtual network can communicate with virtual machines in the other virtual network.
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 08/16/2018
+ms.date: 01/22/2020
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: b32f3762f2546a4d4956bf38c914173657e9d3da
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 65749182bf93e84c8712409cd16bd3a60184c7ca
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499864"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016053"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して仮想ネットワーク ピアリングで仮想ネットワークを接続する
 
@@ -44,26 +40,28 @@ Azure Portal (https://portal.azure.com ) にログインします。
 
 ## <a name="create-virtual-networks"></a>仮想ネットワークを作成する
 
-1. Azure portal メニューまたは **[ホーム]** ページから、 **[リソースの作成]** を選択します。
+1. Azure portal で、 **[リソースの作成]** を選択します。
 2. **[ネットワーク]** を選択してから、 **[仮想ネットワーク]** を選択します。
-3. **[基本]** ページで次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用します。
+3. **[基本]** タブで次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用します。
 
-    |Setting|値|
+    |設定|Value|
     |---|---|
-    |Subscription| サブスクリプションを選択します。|
+    |サブスクリプション| サブスクリプションを選択します。|
     |Resource group| **[新規作成]** を選択し、「*myResourceGroup*と入力します。|
     |リージョン| **[米国東部]** を選択します。|
-    |名前|myVirtualNetwork1|
+    |Name|myVirtualNetwork1|
 
-4. **[IP アドレス]** ページで、 **[アドレス空間]** フィールドに「10.0.0.0/16」と入力します。 下の **[サブネットの追加]** ボタンをクリックし、 **[サブネット名]** に「Subnet1」と入力し、 **[サブネット アドレス範囲]** に「10.0.0.0/24」と入力します。
+4. **[IP アドレス]** タブで、 **[アドレス空間]** フィールドに「10.0.0.0/16」と入力します。 下の **[サブネットの追加]** ボタンをクリックし、 **[サブネット名]** に「*Subnet1*」と入力し、 **[サブネット アドレス範囲]** に「10.0.0.0/24」と入力します。
+5. **[確認および作成]** を選択し、次に **[作成]** を選択します。
    
-5. 次のように値を変更して、手順 1. ～ 3. を繰り返します。
+5. 次のように値を変更して、手順 1 から 5 を繰り返します。
 
-    |Setting|値|
+    |設定|Value|
     |---|---|
-    |名前|myVirtualNetwork2|
+    |Name|myVirtualNetwork2|
     |アドレス空間|10.1.0.0/16|
     |Resource group| **[既存のものを使用]** 、 **[myResourceGroup]** の順に選択します。|
+    |サブネット名 | Subnet2|
     |サブネットのアドレス範囲|10.1.0.0/24|
 
 ## <a name="peer-virtual-networks"></a>仮想ネットワークをピアリングする
@@ -75,10 +73,10 @@ Azure Portal (https://portal.azure.com ) にログインします。
 
 3. 次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[OK]** を選択します。
 
-    |Setting|値|
+    |設定|Value|
     |---|---|
     |myVirtualNetwork1 からリモート仮想ネットワークへのピアリングの名前|myVirtualNetwork1-myVirtualNetwork2 - ページが初めて読み込まれるときは、ここに "remote virtual network" という語句が表示されます。 リモート仮想ネットワークを選択すると、"remote virtual network" という語句がリモート仮想ネットワークの名前に置き換えられます。|
-    |Subscription| サブスクリプションを選択します。|
+    |サブスクリプション| サブスクリプションを選択します。|
     |仮想ネットワーク|myVirtualNetwork2 - *myVirtualNetwork2* 仮想ネットワークを選択するには、 **[仮想ネットワーク]** 、 **[myVirtualNetwork2 (myResourceGroup)]** の順に選択します。 同じリージョンまたは異なるリージョンの仮想ネットワークを選択することができます。|
     |myVirtualNetwork2 から myVirtualNetwork1 へのピアリングの名前|myVirtualNetwork2-myVirtualNetwork1|
 
@@ -96,28 +94,25 @@ Azure Portal (https://portal.azure.com ) にログインします。
 
 ### <a name="create-the-first-vm"></a>最初の VM を作成する
 
-1. Azure portal メニューまたは **[ホーム]** ページから、 **[リソースの作成]** を選択します。
+1. Azure portal で、 **[リソースの作成]** を選択します。
 2. **[コンピューティング]** 、 **[Windows Server 2016 Datacenter]** の順に選択します。 別のオペレーティング システムを選択することもできますが、以降の手順では、 **[Windows Server 2016 Datacenter]** を選択したという前提で説明します。 
 3. **[基本]** について次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[作成]** を選択します。
 
-    |Setting|値|
+    |設定|Value|
     |---|---|
     |Resource group| **[既存のものを使用]** 、 **[myResourceGroup]** の順に選択します。|
-    |名前|myVm1|
+    |Name|myVm1|
     |Location| **[米国東部]** を選択します。|
     |ユーザー名| 任意のユーザー名を入力します。|
-    |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
+    |Password| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
    
 4. **[サイズ]** オプションで VM サイズを選択します。
 5. **[ネットワーキング]** で以下の値を選択します。
 
-    |Setting|値|
+    |設定|Value|
     |---|---|
     |仮想ネットワーク| myVirtualNetwork1 - まだ選択されていない場合は、 **[仮想ネットワーク]** を選択し、 **[myVirtualNetwork1]** を選択します。|
     |Subnet| Subnet1 - まだ選択されていない場合は、 **[サブネット]** を選択し、 **[Subnet1]** を選択します。|
-    
-
-    ![仮想マシンの設定](./media/tutorial-connect-virtual-networks-portal/virtual-machine-settings.png)
    
 6. **[ネットワーク]** を選択します。 **[パブリック受信ポート]** オプションで、 **[選択したポートを許可する]** を選択します。 この下の **[受信ポートを選択]** オプションで、 **[RDP]** を選択します。 
 
@@ -127,9 +122,9 @@ Azure Portal (https://portal.azure.com ) にログインします。
 
 次のように値を変更して、手順 1 から 6 を繰り返します。
 
-|Setting|値|
+|設定|Value|
 |---|---|
-|名前 | myVm2|
+|Name | myVm2|
 |仮想ネットワーク | myVirtualNetwork2|
 
 VM の作成には数分かかります。 両方の VM の作成が完了するまで、以降の手順に進まないでください。
@@ -166,7 +161,7 @@ VM の作成には数分かかります。 両方の VM の作成が完了する
     
 9. *myVm1* と *myVm2* の両方への RDP セッションを切断します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソース グループとそれに含まれるすべてのリソースが不要になったら、それらを削除します。 
 
@@ -174,8 +169,8 @@ VM の作成には数分かかります。 両方の VM の作成が完了する
 2. **[リソース グループの削除]** を選択します。
 3. **[TYPE THE RESOURCE GROUP NAME:]\(リソース グループ名を入力してください:\)** に「*myResourceGroup*」と入力し、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、仮想ネットワーク ピアリングで同じ Azure リージョン内の 2 つのネットワークを接続する方法を説明しました。 異なる[サポートされるリージョン](virtual-network-manage-peering.md#cross-region)内および[異なる Azure サブスクリプション](create-peering-different-subscriptions.md#portal)内の仮想ネットワークをピアリングすることも、ピアリングを使って[ハブとスポーク ネットワーク設計](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering)を作成することもできます。 仮想ネットワーク ピアリングについて詳しくは、[仮想ネットワーク ピアリングの概要](virtual-network-peering-overview.md)および[仮想ネットワーク ピアリングの管理](virtual-network-manage-peering.md)に関するページをご覧ください。
+このチュートリアルでは、仮想ネットワーク ピアリングで同じ Azure リージョン内の 2 つのネットワークを接続する方法を説明しました。 異なる[サポートされるリージョン](virtual-network-manage-peering.md#cross-region)内および[異なる Azure サブスクリプション](create-peering-different-subscriptions.md#portal)内の仮想ネットワークをピアリングすることも、ピアリングを使って[ハブとスポーク ネットワーク設計](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering)を作成することもできます。 仮想ネットワーク ピアリングについて詳しくは、[仮想ネットワーク ピアリングの概要](virtual-network-peering-overview.md)および[仮想ネットワーク ピアリングの管理](virtual-network-manage-peering.md)に関するページをご覧ください。
 
 お使いのコンピューターを VPN 経由で仮想ネットワークに接続し、仮想ネットワーク、またはピアリングされた仮想ネットワークのリソースを操作する方法については、[仮想ネットワークへのコンピューターの接続](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。

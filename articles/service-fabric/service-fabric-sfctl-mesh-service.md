@@ -3,21 +3,21 @@ title: Azure Service Fabric CLI- sfctl mesh service
 description: Azure Service Fabric のコマンド ライン インターフェイスである sfctl について説明します。 アプリケーション リソースに対するサービスの詳細を取得するためのコマンドの一覧が含まれます。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 1ae04d054a254746d59b85f4fe366cebf19e3faf
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 2b9f16062b02d7a1a3403d396643a7989b8976b7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646094"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905928"
 ---
 # <a name="sfctl-mesh-service"></a>sfctl mesh service
 サービスの詳細を取得し、アプリケーション リソースのサービスを一覧表示します。
 
 ## <a name="commands"></a>コマンド
 
-|command|[説明]|
+|command|説明|
 | --- | --- |
 | list | すべてのサービスのリソースを一覧表示します。 |
 | show | 指定した名前のサービスのリソースを取得します。 |
@@ -29,13 +29,13 @@ ms.locfileid: "75646094"
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --app-name --application-name [必須] | アプリケーションの名前です。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
@@ -50,14 +50,14 @@ ms.locfileid: "75646094"
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --app-name --application-name [必須] | アプリケーションの名前です。 |
 | --name -n                     [必須] | サービスの名前。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |

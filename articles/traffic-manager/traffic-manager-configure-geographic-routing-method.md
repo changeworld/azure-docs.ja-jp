@@ -2,7 +2,7 @@
 title: チュートリアル - Azure Traffic Manager を使用した地理的トラフィック ルーティングの構成
 description: このチュートリアルでは、Azure Traffic Manager を使用して地理的トラフィック ルーティング方法を構成する方法について説明します
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
-ms.author: allensu
-ms.openlocfilehash: 9de1f0b0adc4d82b666adcd4bc9b26e31e7750d6
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.author: rohink
+ms.openlocfilehash: 3eb3f354d51833e55f405ed35679f1a5882c057a
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422798"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938787"
 ---
 # <a name="tutorial-configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>チュートリアル:Traffic Manager を使用した地理的トラフィック ルーティング方法の構成
 
@@ -57,7 +57,7 @@ ms.locfileid: "74422798"
 2. **[Overview]** をクリックします。
 3. **[Traffic Manager プロファイル]** に、新しく作成した Traffic Manager プロファイルの DNS 名が表示されます。 これを任意のクライアントで使用して (たとえば、Web ブラウザーを使用して移動します)、ルーティングの種類によって決まる適切なエンドポイントにルーティングすることができます。  地理的ルーティングの場合、Traffic Manager は、受信要求の発信元 IP アドレスを確認して、発信元のリージョンを判断します。 そのリージョンがエンドポイントにマッピングされている場合、トラフィックはそこにルーティングされます。 このリージョンがエンドポイントにマッピングされていない場合、Traffic Manager は NODATA クエリ応答を返します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [地理的トラフィック ルーティング方法](traffic-manager-routing-methods.md#geographic)の詳細を確認します。
 - [Traffic Manager の設定のテスト](traffic-manager-testing-settings.md)方法について学習します。

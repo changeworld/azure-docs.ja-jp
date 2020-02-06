@@ -5,32 +5,32 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 01/28/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d74206ebdf35a8f5b353553cb89e954cb2313611
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 047e722a0e0ade60d1eb93a48e37333fffafd674
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74768539"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836458"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の制限
 次のセクションでは、データベース サービス容量と機能の制限について説明します。 リソース (コンピューティング、メモリ、ストレージ) 層の詳細については、[価格レベル](concepts-pricing-tiers.md)の記事を参照してください。
 
 
 ## <a name="maximum-connections"></a>最大接続数
-価格レベルと仮想コアごとの最大接続数は次のとおりです。 
+価格レベルと仮想コアごとの最大接続数は以下のとおりです。 Azure システムでは、Azure Database for PostgreSQL サーバーを監視する 5 つの接続が必要です。 
 
 |**Pricing Tier**| **仮想コア数**| **最大接続数** | **最大ユーザー接続** |
 |---|---|---|---|
 |Basic| 1| 55 | 50|
 |Basic| 2| 105 | 100|
-|汎用| 2| 150| 145|
-|汎用| 4| 250| 245|
-|汎用| 8| 480| 475|
-|汎用| 16| 950| 945|
-|汎用| 32| 1500| 1495|
-|汎用| 64| 1900| 1895|
+|General Purpose| 2| 150| 145|
+|General Purpose| 4| 250| 245|
+|General Purpose| 8| 480| 475|
+|General Purpose| 16| 950| 945|
+|General Purpose| 32| 1500| 1495|
+|General Purpose| 64| 1900| 1895|
 |メモリ最適化| 2| 300| 295|
 |メモリ最適化| 4| 500| 495|
 |メモリ最適化| 8| 960| 955|
@@ -40,7 +40,10 @@ ms.locfileid: "74768539"
 接続数が制限を超えると、次のエラーが表示される場合があります。
 > FATAL:  sorry, too many clients already
 
-Azure システムでは、Azure Database for PostgreSQL サーバーを監視する 5 つの接続が必要です。 
+> [!IMPORTANT]
+> 最適なエクスペリエンスを得るために、pgBouncer のような接続プーラーを使用して、接続を効率的に管理することをお勧めします。
+
+PostgreSQL 接続はアイドル状態でも、約 10 MB のメモリを占有する可能性があります。 また、新しい接続の作成には時間もかかります。 ほとんどのアプリケーションでは、短時間の接続を多数要求します。これにより、この状況が悪化します。 結果として、実際のワークロードに使用できるリソースが少なくなるため、パフォーマンスが低下します。 アイドル状態の接続を減らして既存の接続を再利用する接続プーラーは、これを回避するのに役立ちます。 詳細については、[ブログ投稿](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717)を参照してください。
 
 ## <a name="functional-limitations"></a>機能制限
 ### <a name="scale-operations"></a>スケール操作
@@ -64,7 +67,7 @@ Azure システムでは、Azure Database for PostgreSQL サーバーを監視�
 ### <a name="utf-8-characters-on-windows"></a>Windows での UTF-8 文字
 - 一部のシナリオにおいて、Windows 上のオープン ソース PostgreSQL では UTF-8 文字が完全にはサポートされません。これは、Azure Database for PostgreSQL に影響するためです。 詳細については、[PostgreSQL アーカイブ内の Bug #15476](https://www.postgresql-archive.org/BUG-15476-Problem-on-show-trgm-with-4-byte-UTF-8-characters-td6056677.html) のスレッドを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [各価格レベルで使用できる内容](concepts-pricing-tiers.md)について理解します
 - [サポートされている PostgreSQL Database バージョン](concepts-supported-versions.md)について学習します
 - [Azure Portal を使用して Azure Database for PostgreSQL でサーバーをバックアップして復元する方法](howto-restore-server-portal.md)を確認します

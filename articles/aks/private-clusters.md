@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 12/10/2019
+ms.date: 1/24/2020
 ms.author: mlearned
-ms.openlocfilehash: 2344e2189d6b0f02e7fed1aab25d32551c1fedcf
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: a477c2011ff3c6cf1987ed80ef5c19c26abc40f0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154343"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713329"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>プライベート Azure Kubernetes Service クラスターを作成する (プレビュー)
 
@@ -128,14 +128,16 @@ API サーバー エンドポイントには、パブリック IP アドレス�
 
 ## <a name="dependencies"></a>依存関係  
 * Private Link サービスは、Standard Azure Load Balancer でのみサポートされています。 Basic Azure Load Balancer はサポートされていません。  
+* カスタム DNS サーバーを使用するには、この IP 168.63.129.16 に転送する DNS を備えた AD サーバーをデプロイします。
 
 ## <a name="limitations"></a>制限事項 
+* Availability Zones は現在サポートされていません
 * [Azure Private Link サービスの制限事項][private-link-service]は、プライベートクラスター、Azure プライベート エンドポイント、および仮想ネットワークサービスエンドポイントに適用されます。これらは現在、同一の仮想ネットワークではサポートされていません。
-* プライベート Azure 仮想ネットワーク内のプライベート Azure Container Instances (ACI) をスピンすることは、プライベート クラスター内の仮想ノードではサポートされていません。
-* プライベートクラスターですぐに使用できる Azure DevOps インテグレーションはサポートされていません。
+* プライベート Azure 仮想ネットワーク内のプライベート Azure Container Instances (ACI) をスピンすることは、プライベート クラスター内の仮想ノードではサポートされていません
+* プライベート クラスターですぐに使用できる Azure DevOps 統合はサポートされていません
 * Azure Container Registry をプライベート AKS で使用できるようにする必要があるカスタマーは、Container Registry 仮想ネットワークをエージェントクラスターの仮想ネットワークとピアリングしてください。
-* Azure Dev Spaces は現在サポートされていません。
-* 既存の AKS クラスターからプライベートクラスターへの変換はサポートされていません。  
+* Azure Dev Spaces は現在サポートされていません
+* 既存の AKS クラスターからプライベートクラスターへの変換はサポートされていません
 * カスタマーのサブネット内でプライベート エンドポイントを削除または変更すると、クラスターが機能しなくなります。 
 * コンテナー用 Azure Monitor の Live Data は現在サポートされていません。
 * *独自の DNS の使用*は現在サポートされていません。

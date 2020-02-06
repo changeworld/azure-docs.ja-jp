@@ -3,22 +3,34 @@ title: クラウド ワークロードの保護に役立つセキュリティ機
 description: Azure Backup のセキュリティ機能を使用してバックアップのセキュリティを強化する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: e4519a342e1be3244b5d4598880e9ad490f50030
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 20cf322dec0827c00b15a62bf4f7695fc4ed0992
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028211"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705498"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Azure Backup を使用したクラウド ワークロードを保護するためのセキュリティ機能
 
-マルウェア、ランサムウェア、侵入などのセキュリティ問題への懸念が高まっています。 これらのセキュリティ問題は、金銭とデータの両方の観点からコストがかかる可能性があります。 このような攻撃から保護するために、Azure Backup では、削除後もバックアップ データを保護するためのセキュリティ機能が提供されるようになりました。 このような機能の 1 つに、論理的な削除があります。 論理的な削除を使用すると、悪意のあるアクターによって VM のバックアップが削除 (またはバックアップ データが誤って削除) された場合でも、バックアップ データは追加で 14 日間保持されるので、データを失うことなくバックアップ項目を回復できます。 バックアップ データが "論理的な削除" 状態にあるこの追加の 14 日間の保持期間中は、お客様にコストは発生しません。 また、Azure では、お使いのデータをさらにセキュリティで保護するために、保存中のすべてのバックアップ データも [Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) を使用して暗号化しています。
+マルウェア、ランサムウェア、侵入などのセキュリティ問題への懸念が高まっています。 これらのセキュリティ問題は、金銭とデータの両方の観点からコストがかかる可能性があります。 このような攻撃から保護するために、Azure Backup では、削除後もバックアップ データを保護するためのセキュリティ機能が提供されるようになりました。
+
+このような機能の 1 つに、論理的な削除があります。 論理的な削除を使用すると、悪意のあるアクターによって VM のバックアップが削除 (またはバックアップ データが誤って削除) された場合でも、バックアップ データは追加で 14 日間保持されるので、データを失うことなくバックアップ項目を回復できます。 バックアップ データが "論理的な削除" 状態にあるこの追加の 14 日間のリテンション期間中は、お客様にコストは発生しません。 また、Azure では、お使いのデータをさらにセキュリティで保護するために、保存中のすべてのバックアップ データも [Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) を使用して暗号化しています。
+
+Azure 仮想マシン用の論理的な削除の保護は一般提供されています。
+
+>[!NOTE]
+>Azure VM での SQL Server の論理的な削除と Azure VM ワークロードでの SAP HANA の論理的な削除が、プレビューで利用できるようになりました。<br>
+>プレビュー用にサインアップするには、AskAzureBackupTeam@microsoft.com 宛てにご連絡ください
+
+## <a name="soft-delete"></a>論理的な削除
+
+### <a name="soft-delete-for-vms"></a>VM の論理的な削除
+
+VM の論理的な削除によって、ご利用の VM のバックアップが意図しない削除から保護されます。 バックアップは、削除された後でも、追加で 14 日間は論理的な削除状態で保持されます。
 
 > [!NOTE]
 > 論理的な削除では、削除されたバックアップ データのみが保護されます。 バックアップせずに VM が削除された場合、論理的な削除機能ではデータは保持されません。 完全な復元性を確保するには、すべてのリソースを Azure Backup で保護する必要があります。
 >
-
-## <a name="soft-delete"></a>論理的な削除
 
 ### <a name="supported-regions"></a>サポートされているリージョン
 

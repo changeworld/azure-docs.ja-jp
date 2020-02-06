@@ -1,6 +1,6 @@
 ---
 title: Azure DevTest Labs でのパブリックな環境の構成と使用 | Microsoft Docs
-description: Azure DevTest Labs でパブリックな環境を構成して使用する方法を説明します。
+description: この記事では、Azure DevTest Labs でパブリックな環境 (Git リポジトリの Azure Resource Manager テンプレート) を構成して使用する方法について説明します。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/13/2018
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 2cd6998c7ac11638ead67fde384bdf4599692781
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 127a6986e04cf90f69b2a8ec70b90b877e534708
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64706033"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721695"
 ---
 # <a name="configure-and-use-public-environments-in-azure-devtest-labs"></a>Azure DevTest Labs でのパブリックな環境の構成と使用
 Azure DevTest Labs には、[Azure Resource Manager テンプレートのパブリック リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/Environments)が装備されています。このテンプレートを使用すると、自分で外部 GitHub ソースに接続しなくても、環境を作成できます。 このリポジトリには、Azure Web Apps、Service Fabric クラスター、開発の SharePoint ファーム環境など、頻繁に使用されるテンプレートが含まれています。 この機能は、作成するすべてのラボに含まれている成果物のパブリック リポジトリに似ています。 環境リポジトリを使用すると、事前に作成されている環境テンプレートに最低限の入力パラメーターを指定して、すばやく作業を開始できます。こうして、ラボ内の PaaS リソースでスムーズに作業を開始できます。 
@@ -46,5 +46,5 @@ Azure DevTest Labs には、[Azure Resource Manager テンプレートのパブ�
 
 ![パブリックな環境のテンプレート](media/devtest-lab-configure-use-public-environments/public-environment-templates.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このリポジトリは、投稿して、頻繁に使用される便利な Resource Manager テンプレートを自分で追加できるオープン ソースのリポジトリです。 リポジトリに対して pull request を送信するだけで、投稿できます。  

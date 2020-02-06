@@ -7,12 +7,12 @@ keywords: azure automation, DSC, powershell, 望ましい状態の構成, 更新
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 3037f96464b0902ca3923bdaea2bddff39c47733
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3359d99d7e20bbced8950171fa34592fd2612500
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421938"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930394"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure Automation の概要
 
@@ -75,6 +75,8 @@ Azure Automation は、インフラストラクチャとアプリケーション
 * **監視** - 問題の原因となっているコンピューターの変更を特定し、修復するか管理システムにエスカレートします。
 * **保護** - セキュリティ警告が発生した場合に VM を検疫します。 ゲスト要件を設定します。
 * **設定** - チーム用のロールベースのアクセス制御を設定します。 未使用のリソースを回収します。
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="pricing-for-automation"></a>Automation の価格
 

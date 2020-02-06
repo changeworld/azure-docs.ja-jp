@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/30/2019
-ms.openlocfilehash: a64912921e5ce8c0dc76fbf2ae0be8fb34bacf1a
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.date: 1/28/2020
+ms.openlocfilehash: 270e9a31c28e7209cfe43ea8307b928ed3257a35
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75553020"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845263"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>.NET カスタム逆シリアライザーを使用して任意の形式の入力を読み取る
 
@@ -80,7 +80,7 @@ ms.locfileid: "75553020"
 
 ## <a name="deserializer-examples"></a>逆シリアライザーの例
 
-このセクションでは、Protobuf と CSV のカスタム逆シリアライザーを記述する方法について説明します。 その他の例については、[GitHub の Azure Stream Analytics](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers) を参照してください。
+このセクションでは、Protobuf と CSV のカスタム逆シリアライザーを記述する方法について説明します。 Event Hubs Capture の AVRO 形式などのその他の例については、[GitHub の Azure Stream Analytics](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers) を参照してください。
 
 ### <a name="protocol-buffer-protobuf-format"></a>プロトコル バッファー (Protobuf) 形式
 

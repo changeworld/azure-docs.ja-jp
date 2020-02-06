@@ -9,6 +9,7 @@ manager: daveba
 editor: ''
 ms.assetid: cf6880e2-af78-4cc9-91bc-b64de4428bbd
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +17,12 @@ ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b6c81343d52f016dc779f9e08176a0d909684c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2233b434fda628dcf812a62f06541fc4b0296aba
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65138621"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897338"
 ---
 # <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>Office 365 証明書利用者信頼の署名ハッシュ アルゴリズムを変更する
 ## <a name="overview"></a>概要
@@ -38,7 +39,7 @@ Active Directory フェデレーション サービス (AD FS) から Microsoft 
 2. AD FS ノードを展開し、 **[証明書利用者信頼]** をクリックします。
 3. Office 365/Azure 証明書利用者信頼を右クリックし、 **[プロパティ]** を選択します。
 4. **[詳細設定]** タブを選択し、セキュア ハッシュ アルゴリズムとして SHA 256 を選択します。
-5. Click **OK**.
+5. **[OK]** をクリックします。
 
 ![SHA256 署名アルゴリズム - MMC](./media/how-to-connect-fed-sha256-guidance/mmc.png)
 

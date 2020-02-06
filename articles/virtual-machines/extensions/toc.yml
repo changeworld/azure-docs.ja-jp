@@ -8,7 +8,7 @@
       href: agent-linux.md
     - name: Windows VM エージェント
       href: agent-windows.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: カスタム スクリプト拡張機能の使用
@@ -20,7 +20,7 @@
       href: features-linux.md
     - name: Windows
       href: features-windows.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: Azure Disk Encryption
       items:
@@ -64,18 +64,26 @@
           href: hpccompute-gpu-linux.md
         - name: Windows
           href: hpccompute-gpu-windows.md
-    - name: Log Analytics
+    - name: Azure Monitor
       items:
-        - name: Linux
-          href: oms-linux.md
-        - name: Windows
-          href: oms-windows.md
-    - name: VM に対する Azure Monitor
-      items:
-        - name: Linux の依存関係エージェント
-          href: agent-dependency-linux.md
-        - name: Windows の依存関係エージェント
-          href: agent-dependency-windows.md
+        - name: 診断拡張機能
+          items:
+            - name: Linux
+              href: diagnostics-linux.md
+            - name: Windows
+              href: ../../azure-monitor/platform/diagnostics-extension-overview.md?toc=/azure/virtual-machines/extensions/toc.json
+        - name: Log Analytics
+          items:
+            - name: Linux
+              href: oms-linux.md
+            - name: Windows
+              href: oms-windows.md
+        - name: VM に対する Azure Monitor
+          items:
+            - name: Linux の依存関係エージェント
+              href: agent-dependency-linux.md
+            - name: Windows の依存関係エージェント
+              href: agent-dependency-windows.md
     - name: PowerShell DSC
       href: dsc-overview.md
       items:
@@ -89,14 +97,6 @@
           href: dsc-template.md
     - name: 仮想マシンへのアクセス
       href: vmaccess.md
-    - name: 仮想マシンの診断
-      items:
-        - name: Linux
-          href: diagnostics-linux.md
-        - name: Windows
-          href: diagnostics-windows.md
-        - name: テンプレートの使用
-          href: diagnostics-template.md
     - name: サードパーティ拡張機能
       items:
         - name: Chef
@@ -123,5 +123,5 @@
       href: update-linux-agent.md
     - name: 拡張機能のエクスポート
       href: export-templates.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       href: troubleshoot.md

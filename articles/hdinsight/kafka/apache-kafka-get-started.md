@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/01/2019
-ms.openlocfilehash: e253d168fadd5aff46e70ba00a4021415c0ea6f7
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 76360ec8de645d926daec0db878906c73d0da948
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242041"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030025"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure HDInsight 内に Apache Kafka クラスターを作成する
 
@@ -35,7 +35,7 @@ SSH クライアント 詳細については、[SSH を使用して HDInsight (A
 
 HDInsight クラスターで Apache Kafka を作成するには、次の手順に従います。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. 左側のメニューから、 **[+ リソースの作成]**  >  **[Analytics]**  >  **[HDInsight]** に移動します。
 
@@ -45,7 +45,7 @@ HDInsight クラスターで Apache Kafka を作成するには、次の手順�
 
     |プロパティ  |説明  |
     |---------|---------|
-    |Subscription    |  Azure サブスクリプションを選択します。 |
+    |サブスクリプション    |  Azure サブスクリプションを選択します。 |
     |Resource group     | リソース グループを作成するか、既存のリソース グループを選択します。  リソース グループとは、Azure コンポーネントのコンテナーです。  この場合、リソース グループには、HDInsight クラスターおよび依存する Azure ストレージ アカウントが含まれています。 |
     |クラスター名   | Hadoop クラスターの名前を入力します。 HDInsight のすべてのクラスターでは同じ DNS 名前空間が共有されるため、この名前は一意である必要があります。 この名前は、文字、数字、ハイフンを含む最大 59 文字で構成できます。 名前の先頭と末尾の文字をハイフンにすることはできません。 |
     |Location    | クラスターを作成する Azure の場所を選択します。  パフォーマンスを向上させるため、お近くの場所を選択してください。 |
@@ -72,7 +72,7 @@ HDInsight クラスターで Apache Kafka を作成するには、次の手順�
     |プライマリ ストレージ アカウント|ドロップダウン リストを使用して既存のストレージ アカウントを選択するか、または **[新規作成]** を選択します。 新しいアカウントの作成時には、名前の長さは 3 から 24 文字とし、数字と小文字のみを使用できます|
     |コンテナー|自動入力されている値を使用します。|
 
-    ![HDInsight Linux の使用。クラスターのストレージの値の指定](./media/apache-kafka-get-started/azure-portal-cluster-storage-blank.png "HDInsight クラスターを作成するためのストレージの値の指定")
+    ![HDInsight Linux の使用。クラスターのストレージの値の指定](./media/apache-kafka-get-started/azure-portal-cluster-storage.png "HDInsight クラスターを作成するためのストレージの値の指定")
 
     **[セキュリティとネットワーク]** タブを選択します。
 
@@ -80,7 +80,7 @@ HDInsight クラスターで Apache Kafka を作成するには、次の手順�
 
    クラスターを仮想ネットワークに接続したい場合は、 **[仮想ネットワーク]** ボックスの一覧からいずれかの仮想ネットワークを選択します。
 
-   ![仮想ネットワークにクラスターを追加する](./media/apache-kafka-get-started/azure-portal-cluster-security-networking-kafka-vn.png)
+   ![仮想ネットワークにクラスターを追加する](./media/apache-kafka-get-started/azure-portal-cluster-security-networking-kafka-vnet.png)
 
     **[Configuration + pricing]\(構成と価格\)** タブを選択します。
 
@@ -98,7 +98,7 @@ HDInsight クラスターで Apache Kafka を作成するには、次の手順�
 
     クラスターの作成には最大で 20 分かかります。
 
-## <a name="connect-to-the-cluster"></a>クラスターへの接続
+## <a name="connect-to-the-cluster"></a>クラスターに接続する
 
 1. Apache Kafka クラスターのプライマリ ヘッド ノードに接続するには、次のコマンドを使用します。 `sshuser` を SSH ユーザー名で置き換えます。 `mykafka` を実際の Apache Kafka クラスターの名前に置き換えます。
 
@@ -284,7 +284,7 @@ Kafka では、トピック内に*レコード*が格納されます。 レコ�
 
 プロデューサーとコンシューマーをプログラムから作成することもできます。 この API の使用例については、[HDInsight における Apache Kafka Producer API と Consumer API](apache-kafka-producer-consumer-api.md) に関するドキュメントを参照してください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このクイックスタートで作成したリソースをクリーンアップするために、リソース グループを削除できます。 リソース グループを削除すると、関連付けられている HDInsight クラスター、およびリソース グループに関連付けられているその他のリソースも削除されます。
 
@@ -299,7 +299,7 @@ Azure Portal を使用してリソース グループを削除するには:
 >
 > HDInsight クラスター上の Apache Kafka を削除すると、Kafka に格納されているすべてのデータが削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Apache Kafka で Apache Spark を使用する](../hdinsight-apache-kafka-spark-structured-streaming.md)

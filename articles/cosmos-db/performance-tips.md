@@ -1,17 +1,17 @@
 ---
 title: .NET 用の Azure Cosmos DB のパフォーマンスに関するヒント
-description: Azure Cosmos データベースのパフォーマンスを向上させるためのクライアント構成オプションについて説明します。
+description: Azure Cosmos データベースのパフォーマンスを向上させるためのクライアント構成オプションについて説明します
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 01/15/2020
 ms.author: sngun
-ms.openlocfilehash: 27f39af480db8c0a044489a2efe6d2e4447b6db1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: eec5ab6cdf4afd63db2e77046bb19436e600ece6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "71261305"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720998"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB と .NET のパフォーマンスに関するヒント
 
@@ -40,7 +40,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
    * 直接モード
 
-     直接モードは、[Microsoft.Azure.Cosmos/.Net V3 SDK](sql-api-sdk-dotnet-standard.md) を使用している場合は既定の接続モードであり、TCP プロトコルと HTTPS プロトコルを介した接続がサポートされます。
+     直接モードは、[Microsoft.Azure.Cosmos/.Net V3 SDK](sql-api-sdk-dotnet-standard.md) を使用している場合は既定の接続モードであり、TCP プロトコルを介した接続がサポートされます。
 
      ゲートウェイ モードを使用している場合、Cosmos DB ではポート 443 が使用され、MongoDB 用の Azure Cosmos DB の API を使用している場合はポート 10250、10255、および 10256 が使用されます。 10250 ポートは geo レプリケーションなしで既定の MongoDB インスタンスにマップされ、10255/10256 ポートは geo レプリケーション機能付きで MongoDB インスタンスにマップされます。 直接モードで TCP を使用する場合は、Azure Cosmos DB が動的 TCP ポートを使用するため、ゲートウェイ ポートに加えてポート範囲 10000 ～ 20000 を開いておく必要があります。 これらのポートが開いていない場合に TCP を使用しようとすると、[503 サービスを利用できません] エラーが表示されます。 次の表は、さまざまな API で使用可能な接続モードと、各 API のサービス ポート ユーザーを示しています。
 
@@ -49,9 +49,9 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
      |Gateway  |   HTTPS    |  すべての SDK    |   SQL (443)、Mongo (10250、10255、10256)、Table (443)、Cassandra (10350)、Graph (443)    |
      |直接    |     TCP    |  .NET SDK    | 10,000 ～ 20,000 の範囲内のポート |
 
-     Azure Cosmos DB は、HTTPS を介したシンプルなオープン RESTful プログラミング モデルを提供します。 さらに、RESTful な通信モデルである効率的な TCP プロトコルも用意されており、.NET クライアント SDK を通じて使用できます。 Direct TCP と HTTPS は、どちらも最初の認証とトラフィックの暗号化で SSL を使用します。 最適なパフォーマンスを実現するために、可能であれば TCP プロトコルを使用します。
+     Azure Cosmos DB は、HTTPS を介したシンプルなオープン RESTful プログラミング モデルを提供します。 さらに、RESTful な通信モデルである効率的な TCP プロトコルも用意されており、.NET クライアント SDK を通じて使用できます。 TCP プロトコルは、最初の認証とトラフィックの暗号化で SSL を使います。 最適なパフォーマンスを実現するために、可能であれば TCP プロトコルを使用します。
 
-     SDK V3 では、CosmosClientOptions の一部として、CosmosClient インスタンスの作成中に接続モードが構成されます。
+     SDK V3 では、CosmosClientOptions の一部として、CosmosClient インスタンスの作成中に接続モードが構成されます。Direct モードが既定値であることに注意してください。
 
      ```csharp
      var serviceEndpoint = new Uri("https://contoso.documents.net");
@@ -59,7 +59,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
      CosmosClient client = new CosmosClient(serviceEndpoint, authKey,
      new CosmosClientOptions
      {
-        ConnectionMode = ConnectionMode.Direct
+        ConnectionMode = ConnectionMode.Gateway // ConnectionMode.Direct is the default
      });
      ```
 
@@ -71,7 +71,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
      DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
      new ConnectionPolicy
      {
-        ConnectionMode = ConnectionMode.Direct,
+        ConnectionMode = ConnectionMode.Direct, //ConnectionMode.Gateway is the default
         ConnectionProtocol = Protocol.Tcp
      });
      ```
@@ -165,7 +165,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
    > [!NOTE] 
    > maxItemCount プロパティは、改ページ位置の自動修正の目的にのみ使用しないでください。 主な用途は、1 ページに返される項目の最大数を減らすことで、クエリのパフォーマンスを向上させることです。  
 
-   また、使用可能な Azure Cosmos DB SDK を使用してページ サイズを設定することもできます。 FeedOptions の [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) プロパティでは、列挙操作で返される項目の最大数を設定できます。 `maxItemCount` が-1 に設定されている場合、ドキュメント サイズに応じて最適な値が SDK によって自動的に見つけられます。 例:
+   また、使用可能な Azure Cosmos DB SDK を使用してページ サイズを設定することもできます。 FeedOptions の [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) プロパティでは、列挙操作で返される項目の最大数を設定できます。 `maxItemCount` が-1 に設定されている場合、ドキュメント サイズに応じて最適な値が SDK によって自動的に見つけられます。 次に例を示します。
     
    ```csharp
     IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
@@ -249,7 +249,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
     特定の操作の要求の使用量 (要求処理コスト) は、ドキュメントのサイズに直接関係します。 サイズの大きいドキュメントの操作は、サイズの小さいドキュメントの操作よりもコストがかかります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 少数のクライアント コンピューターでの高パフォーマンス シナリオで Azure Cosmos DB の評価に使用するサンプル アプリケーションについては、[Azure Cosmos DB のパフォーマンスとスケールのテスト](performance-testing.md)に関するページを参照してください。
 
 また、スケーリングと高パフォーマンスのためのアプリケーションの設計の詳細については、[Azure Cosmos DB でのパーティション分割とスケーリング](partition-data.md)に関するページをご覧ください。

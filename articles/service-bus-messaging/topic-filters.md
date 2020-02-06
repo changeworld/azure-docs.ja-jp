@@ -1,6 +1,6 @@
 ---
 title: Azure Service Bus トピック フィルター | Microsoft Docs
-description: Azure Service Bus トピックのフィルター
+description: この記事では、どのメッセージをトピックから受信するかを、フィルターを指定することによってサブスクライバーが定義する方法について説明します。
 services: service-bus-messaging
 documentationcenter: ''
 author: clemensv
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 01/27/2020
 ms.author: spelluru
-ms.openlocfilehash: 41af53dbfbb5c863007a332445a2f184fcbcbf81
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b8ffbb16763bfe6485ebf2ab770f4537ddbc8569
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60332229"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774490"
 ---
 # <a name="topic-filters-and-actions"></a>トピック フィルターとアクション
 
@@ -52,7 +52,7 @@ SQL フィルター条件を使用すると、プロパティとその値を追�
 
 ルーティングでは、フィルターを使用して、予測可能な方法で複数のトピック サブスクリプションにメッセージを配布しますが、必ずしも排他的ではありません。 トピック フィルターは、[自動転送](service-bus-auto-forwarding.md)機能と組み合わせると、Azure リージョン内にメッセージを配布するための Service Bus 名前空間内での複雑なルーティング グラフの作成に使用することができます。 Azure Functions または Azure Logic Apps を Azure Service Bus 名前空間の間の仲介役として機能させることで、基幹業務アプリケーションに直接統合された複雑なグローバル トポロジを作成できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。
 

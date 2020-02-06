@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 12/30/2019
-ms.openlocfilehash: 38966d537398d2770fba185a59b51956cf2223c3
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.date: 01/23/2020
+ms.openlocfilehash: b0ec82807857be60f30aa777ff5871334383acf7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290344"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715936"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor についてよくあるご質問
 
@@ -95,6 +95,18 @@ Azure Monitor によって収集されたすべてのログ データは、Log A
 
 ### <a name="can-you-move-an-existing-log-analytics-workspace-to-another-azure-subscription"></a>既存の Log Analytics ワークスペースを別の Azure サブスクリプションに移動できますか?
 リソース グループ間またはサブスクリプション間でワークスペースを移動することはできますが、別のリージョンに移動することはできません。 「[Log Analytics ワークスペースを別のサブスクリプションまたはリソース グループに移動する](platform/move-workspace.md)」をご覧ください。
+
+### <a name="why-cant-i-see-query-explorer-and-save-buttons-in-log-analytics"></a>Log Analytics でクエリ エクスプローラーと [保存] ボタンが表示されないのはなぜですか?
+
+**クエリ エクスプローラー**、 **[保存]** および **[新しいアラート ルール]** ボタンは、[クエリ スコープ](log-query/scope.md)が特定のリソースに設定されている場合は使用できません。 アラートを作成し、クエリを保存または読み込むには、Log Analytics のスコープをワークスペースに指定する必要があります。 ワークスペース コンテキストで Log Analytics を開くには、 **[Azure Monitor]** メニューの **[ログ]** を選択します。 最後に使用されたワークスペースが選択されますが、その他のワークスペースを選択することはできます。 「[Azure Monitor Log Analytics のログ クエリのスコープと時間範囲](log-query/scope.md)」を参照してください
+
+### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>エラーが発生する理由:VM から Log Analytics を開くときに、"このサブスクリプションのリソース プロバイダー 'Microsoft.Insights' を登録してこのクエリを有効にしてください" というエラーが表示されるのはなぜですか? 
+多くのリソース プロバイダーは自動的に登録されますが、一部のリソース プロバイダーは手動で登録することが必要な場合があります。 登録の範囲は常にサブスクリプションです。 詳細については、「[リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)」を参照してください。
+
+### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>VM から Log Analytics を開くときに、アクセス権なしというエラー メッセージが表示されるのはなぜですか? 
+VM ログを表示するには、VM ログを格納するワークスペースに対する読み取りアクセス許可が付与される必要があります。 このような場合、管理者が Azure でのアクセス許可を付与する必要があります。
+
+
 
 
 ## <a name="alerts"></a>警告
@@ -180,6 +192,12 @@ WireData
 ### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Azure Monitor エージェントにはファイアウォールに関するどのような要件がありますか?
 ファイアウォールの要件について詳しくは、「[ネットワーク ファイアウォールの要件](platform/log-analytics-agent.md#network-firewall-requirements)」をご覧ください。
 
+
+## <a name="visualizations"></a>視覚化
+
+### <a name="why-cant-i-cant-see-view-designer"></a>ビュー デザイナーを表示できないのはなぜですか?
+
+ビュー デザイナーは、 Log Analytics ワークスペース内で共同作成者以上のアクセス許可が割り当てられているユーザーのみが使用できます。
 
 
 ## <a name="application-insights"></a>Application Insights
@@ -529,7 +547,7 @@ ContainerLog
 
 すべてのコンテナー ログ行について、これらのプロパティの収集を再び有効にします。
 
-クエリの変更を伴うため最初の方法が難しい場合、[データ収集の構成設定](insights/container-insights-agent-config.md)に関するページの説明に従い、エージェントの ConfigMap で ](insights/container-insights-agent-config.md)設定を有効にすることによって、これらのフィールドの収集を再び有効にすることができます。
+クエリの変更を伴うため最初の方法が難しい場合、```log_collection_settings.enrich_container_logs```データ収集の構成設定[に関するページの説明に従い、エージェントの ConfigMap で ](insights/container-insights-agent-config.md)設定を有効にすることによって、これらのフィールドの収集を再び有効にすることができます。
 
 > [!NOTE]
 > 2 番目の方法は、50 を超えるノードを持つ大規模なクラスターでは推奨されません。このエンリッチメントを実行するために、クラスター内のすべてのノードから API サーバー呼び出しが生成されるからです。 この方法を使用すると、収集されるすべてのログ行のデータ サイズも増加します。

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 01/29/2020
 ms.author: victorh
-ms.openlocfilehash: ac8ec9a86c388f41493d60d79a21db28fbf2aa95
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 8b55f31f12ab1057ac2e0f625a0285b6518cc44a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646213"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845776"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall に関する FAQ
 
@@ -54,7 +54,7 @@ Azure Firewall は、ルールとルール コレクションをサポートし�
 
 ## <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Azure Firewall は受信トラフィック フィルター処理をサポートしていますか?
 
-Azure Firewall は受信と送信のフィルター処理をサポートしています。 受信保護は、非 HTTP/S プロトコル用です。 たとえば、RDP、SSH、および FTP プロトコルです。
+Azure Firewall は受信と送信のフィルター処理をサポートしています。 受信保護は、通常、非 HTTP/S プロトコルに使用されます。 たとえば、RDP、SSH、および FTP プロトコルです。 最適な受信 HTTP/S を保護するには、[Azure Application Gateway 上の Azure Web アプリケーション ファイアウォール](../web-application-firewall/ag/ag-overview.md)などの Web アプリケーション ファイアウォールを使用します。
 
 ## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Azure Firewall では、どのログ記録および分析サービスがサポートされていますか?
 

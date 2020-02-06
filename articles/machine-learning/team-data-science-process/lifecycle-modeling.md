@@ -3,20 +3,20 @@ title: Team Data Science Process ライフサイクルのモデリング ステ�
 description: データ サイエンス プロジェクトのモデリング ステージの目標、タスク、成果物
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d72d39a2a59e06954c36473083af2d2b4689a7b6
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 1d3cd61ea3da88c4c5231f22c0e127508591fb8d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538220"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720471"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process ライフサイクルのモデリング ステージ
 
@@ -25,7 +25,7 @@ ms.locfileid: "74538220"
    1. **ビジネスの把握**
    2. **データの取得と理解**
    3. **モデリング**
-   4. **Deployment**
+   4. **デプロイ**
    5. **顧客による受け入れ**
 
 TDSP ライフサイクルを視覚化すると、次のようになります。
@@ -45,7 +45,7 @@ TDSP ライフサイクルを視覚化すると、次のようになります。
   * **モデル トレーニング**:成功のメトリックを比較することで、最も正確に質問に回答できるモデルを見つけます。
   * モデルが**運用環境に適している**かどうかを判断します。
 
-### <a name="feature-engineering"></a>特徴エンジニアリング
+### <a name="feature-engineering"></a>機能エンジニアリング
 特徴エンジニアリングでは、分析に使用する特徴を作成するために、未加工の変数の追加、集計、変換を行います。 何がモデルの推進要因となっているかを把握したい場合、それぞれの特徴の相互関係と、それらの特徴が機械学習アルゴリズムでどのように使用されるかを理解する必要があります。 
 
 このステップでは、特定分野の専門知識とデータの調査ステップから得られた知見とを創造的に組み合わせる必要があります。 特徴エンジニアリングは、関連性の低い変数が増えすぎないように注意しながら、情報量の多い変数を見つけて追加する作業であり、バランス感覚が求められます。 情報量の多い変数は結果の改善に貢献しますが、関連性の低い変数は不要なノイズがモデルに混入する原因となります。 また、これらの特徴は、スコア付け中に取得した新しいデータがあれば、そのデータに対して生成する必要もあります。 その結果、これらの特徴の生成は、スコア付け時に使用できるデータのみに基づいて行われます。 
@@ -74,18 +74,18 @@ Microsoft では、複数のアルゴリズムとパラメーター スイープ
 
    * [特徴セット](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md):モデリング用に作成された特徴は、**データ定義**レポートの **[特徴セット]** セクションに記載されます。 これには、特徴を生成するコードへのポインターと、特徴の生成方法についての説明が含まれます。
    * [モデル レポート](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md):試行した各モデルについて、各実験の詳細を提供する標準のテンプレート ベースのレポートが生成されます。
-   * **チェックポイント判定**:モデルのパフォーマンスが、実稼働システムにデプロイするのに十分かどうかを評価します。 主な考慮事項の一部を以下に示します。
+   * **チェックポイント判定**: モデルが実稼働用として十分に機能するかどうかを評価します。 主な考慮事項の一部を以下に示します。
      * テスト データから判断して、質問に対するモデルの回答に十分な確実性があるか。 
      * 別の方法を試す必要があるか。 追加データを収集する、特徴エンジニアリングをさらに実行する、他のアルゴリズムで実験する必要があるか。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 TDSP のライフサイクルの各ステップへのリンクを次に示します。
 
    1. [ビジネスの把握](lifecycle-business-understanding.md)
    2. [データの取得と理解](lifecycle-data.md)
    3. [モデリング](lifecycle-modeling.md)
-   4. [Deployment](lifecycle-deployment.md)
+   4. [デプロイ](lifecycle-deployment.md)
    5. [顧客による受け入れ](lifecycle-acceptance.md)
 
 特定のシナリオ のプロセスに伴うすべての手順を初めから終わりまで完全に説明するチュートリアルが用意されています。 [例を含むチュートリアル](walkthroughs.md)の記事に、各シナリオが、簡潔な説明とリンク付きで示されています。 これらのチュートリアルは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明しています。 

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5534a46ba99d1536d331b5852ef47588f03d73a4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bf0740bbdd4754aeba43e64f1076a1bea33cffc6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980272"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844423"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure Stream Analytics のクエリのトラブルシューティング
 
@@ -21,21 +21,24 @@ ms.locfileid: "75980272"
 
 ## <a name="query-is-not-producing-expected-output"></a>クエリが予想される出力を生成しない
 1.  ローカルでテストしてエラーを調査します。
-    - **[クエリ]** タブで **[テスト]** を選択します。 ダウンロードしたサンプル データを使用して[クエリをテスト](stream-analytics-test-query.md)します。 すべてのエラーを調査し、修正を試みます。   
-    - また、Visual Studio 用の Stream Analytics ツールを使用して、[ライブ入力でクエリを直接テスト](stream-analytics-live-data-local-testing.md)することもできます。
+    - Azure portal の **[クエリ]** タブで **[テスト]** を選択します。 ダウンロードしたサンプル データを使用して[クエリをテスト](stream-analytics-test-query.md)します。 すべてのエラーを調査し、修正を試みます。   
+    - また、Visual Studio の Azure Stream Analytics ツール、または [Visual Studio Code](visual-studio-code-local-run-live-input.md) を使用して、[クエリをローカルでテスト](stream-analytics-live-data-local-testing.md)することもできます。 
 
-2.  [**Timestamp By**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) を使用する場合は、イベントのタイムスタンプが[ジョブの開始時刻](stream-analytics-out-of-order-and-late-events.md)より後であることを確認します。
+2.  Visual Studio の Azure Stream Analytics ツールで、[ジョブ ダイアグラムを使用して段階を追ってローカルでクエリをデバッグ](debug-locally-using-job-diagram.md)します。 ジョブ ダイアグラムには、入力ソース (イベント ハブ、IoT Hub など) のデータが複数のクエリ ステップを介して、最終的にシンクの出力までどのように流れるかが示されます。 各クエリ ステップは、WITH ステートメントを使用してスクリプトに定義された一時的結果セットにマップされます。 各中間結果セット内の各クエリ ステップのデータとメトリックを表示して、問題の原因を見つけることができます。
+    ![ジョブ ダイアグラムのプレビュー結果](./media/debug-locally-using-job-diagram/preview-result.png)
 
-3.  よくある次のような問題を解消する。
+3.  [**Timestamp By**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) を使用する場合は、イベントのタイムスタンプが[ジョブの開始時刻](stream-analytics-out-of-order-and-late-events.md)より後であることを確認します。
+
+4.  よくある次のような問題を解消する。
     - クエリ内の [**WHERE**](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) 句がイベントをすべて除外してしまっている。この場合、出力が生成されません。
     - [**CAST**](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) 関数が失敗したため、ジョブが失敗する。 型キャスト エラーを回避するには、代わりに [**TRY_CAST**](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics) を使用します。
     - ウィンドウ関数を使用している場合に、ウィンドウ時間が終わっていない。ウィンドウ時間が完了し、クエリの出力が表示されるのを待つ必要があります。
     - イベントのタイムスタンプがジョブの開始時刻よりも前になっている。この状態だと、イベントがドロップされてしまいます。
 
-4.  イベント順序ポリシーが期待どおりに構成されていることを確認します。 **[設定]** に移動し、[ **[イベント順序]** ](stream-analytics-out-of-order-and-late-events.md) を選択します。 このポリシーは、 **[テスト]** ボタンを使用してクエリをテストする場合には適用 "*されません*"。 この結果が、ブラウザーでテストする場合と、運用環境でジョブを実行する場合の相違点の 1 つです。
+5.  イベント順序ポリシーが期待どおりに構成されていることを確認します。 **[設定]** に移動し、[ **[イベント順序]** ](stream-analytics-out-of-order-and-late-events.md) を選択します。 このポリシーは、 **[テスト]** ボタンを使用してクエリをテストする場合には適用 "*されません*"。 この結果が、ブラウザーでテストする場合と、運用環境でジョブを実行する場合の相違点の 1 つです。 
 
-5. 監査ログと診断ログを使用してデバッグする。
-    - [監査ログ](../azure-resource-manager/management/view-activity-logs.md)を使用してフィルター処理を行い、エラーを特定してデバッグします。
+6. 監査ログと診断ログを使用してデバッグする。
+    - [監査ログ](../azure-resource-manager/resource-group-audit.md)を使用してフィルター処理を行い、エラーを特定してデバッグします。
     - [ジョブの診断ログ](stream-analytics-job-diagnostic-logs.md)を使用してエラーを特定し、デバッグします。
 
 ## <a name="job-is-consuming-too-many-streaming-units"></a>ジョブで消費されるストリーミング ユニットが多すぎる

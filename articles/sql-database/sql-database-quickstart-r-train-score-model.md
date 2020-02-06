@@ -13,33 +13,33 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: c1719064de53b79a127146d0ab034f461657cc64
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a54d418f668d8c7292c8332c1b14c4df45e59308
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714897"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768461"
 ---
-# <a name="create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>R で Azure SQL Database Machine Learning Services (プレビュー) を使用して予測モデルを作成およびトレーニングする
+# <a name="quickstart-create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>クイック スタート:R で Azure SQL Database Machine Learning Services (プレビュー) を使用して予測モデルを作成およびトレーニングする
 
-このクイック スタートでは、R を使用して予測モデルを作成してトレーニングし、そのモデルを SQL データベースのテーブルに保存します。その後、そのモデルを使用し、[Azure SQL Database の Machine Learning Services (と R)](sql-database-machine-learning-services-overview.md) のパブリック プレビューを使用して新しいデータから値を予測します。 
-
-このクイック スタートで使用するモデルは、自動車の停止距離を速度に基づいて予測する簡単な回帰モデルです。 R に付属する **cars** データセットが小さくて理解しやすいため、使用することにします。
-
-> [!TIP]
-> R ランタイムには、大小多くのデータセットが付属しています。 R と共にインストールされているデータセットの一覧を取得するには、R のコマンド プロンプトで「`library(help="datasets")`」と入力します。
+このクイックスタートでは、R を使用して予測モデルを作成してトレーニングし、そのモデルをお使いのデータベースのテーブルに保存します。その後、そのモデルを使用し、Azure SQL Database の Machine Learning Services (と R) を使用して新しいデータから値を予測します。
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプションをお持ちでない場合は、始める前に[アカウントを作成](https://azure.microsoft.com/free/)してください。
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- [サーバーレベルのファイアウォール規則](sql-database-server-level-firewall-rule.md)がある [Azure SQL データベース](sql-database-single-database-get-started.md)
+- R が有効な [Machine Learning Services](sql-database-machine-learning-services-overview.md)。 [プレビューにサインアップしてください](sql-database-machine-learning-services-overview.md#signup)。
+- [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
-- 以降の演習のサンプル コードを実行するには、あらかじめ、Machine Learning Services (R を使用) が有効になった Azure SQL データベースを用意しておく必要があります。 パブリック プレビュー期間中は、Microsoft がお客様のオンボードを行い、既存のデータベースまたは新しいデータベースに対して機械学習を有効にします。 「[Sign up for the preview (プレビューにサインアップする)](sql-database-machine-learning-services-overview.md#signup)」の手順に従ってください。
+> [!NOTE]
+> パブリック プレビュー期間中は、Microsoft がお客様のオンボードを行い、既存のデータベースまたは新しいデータベースに対して機械学習を有効にします。
 
-- 最新の [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) をインストールしていることを確認してください。 他のデータベース管理またはクエリ ツールを使用して R スクリプトを実行することはできますが、このクイック スタートでは SSMS を使用します。
+この例では、単純な回帰モデルを使用して、R に含まれる **cars** データセットを使用して、速度に基づいて自動車の停止距離を予測します。
 
-- このクイック スタートでは、サーバーレベルのファイアウォール規則を構成する必要があります。 これを行う方法については、[サーバーレベルのファイアウォール規則の作成](sql-database-server-level-firewall-rule.md)に関するページを参照してください。
+> [!TIP]
+> R ランタイムには多くのデータセットが含まれています。インストールされているデータセットの一覧を取得するには、R コマンド プロンプトから「`library(help="datasets")`」と入力します。
 
 ## <a name="create-and-train-a-predictive-model"></a>予測モデルを作成してトレーニングする
 
@@ -50,7 +50,7 @@ ms.locfileid: "64714897"
 - モデルのトレーニングに使用する入力データを提供します。
 
 > [!TIP]
-> 線形モデルについて復習する必要がある場合は、rxLinMod を使用してモデルを当てはめるプロセスを説明する次のチュートリアルを試してください: 「[Fitting Linear Models (線形モデルの当てはめ)](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)」
+> 線形モデルの最新の情報に更新する必要がある場合は、rxLinMod を使用したモデルの調整プロセスについて説明しているこのチュートリアルをご覧ください。「[Fitting Linear Models (線形モデルの当てはめ)](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)」
 
 以降の手順では、トレーニング データの設定、回帰モデルの作成、トレーニング データを使用したモデルのトレーニングを実行した後、SQL テーブルにそのモデルを保存します。
 
@@ -173,9 +173,9 @@ VALUES (
 
 ![トレーニング済みのモデルと追加の出力](./media/sql-database-quickstart-r-train-score-model/r-train-model-with-additional-output.png)
 
-## <a name="score-new-data-using-the-trained-model"></a>トレーニング済みのモデルを使用して新しいデータをスコア付けする
+## <a name="score-new-data-using-the-trained-model"></a>トレーニング済みのモデルを使用して新しいデータをスコアリングする
 
-"*スコアリング*" は、予測や確率など、トレーニング済みのモデルに取り込まれた新しいデータに基づく値を生成することを意味する言葉として、データ サイエンスの分野で用いられます。 新しいデータに対し、前のセクションで作成したモデルを使用して予測のスコアリングを行います。
+*スコアリング*は、データ サイエンスで使用される用語で、トレーニング済みのモデルに取り込まれた新しいデータに基づいて、予測、確率、またはその他の値を生成することを意味します。 前のセクションで作成したモデルを使用して、新しいデータに対して予測のスコアリングを行います。
 
 元のトレーニング データの速度が毎時 25 マイルまでしかないことにお気付きでしょうか。 これは、元のデータが 1920 年の実験をベースにしているためです。 1920 年代の自動車が仮に 60 mph や 100 mph もの速度で走行した場合、停止距離はどのぐらいになるのでしょうか。 この疑問に答えるために、新たにいくつかの速度値をモデルに指定できます。
 
@@ -244,9 +244,9 @@ VALUES (
 > [!NOTE]
 > このサンプル スクリプトでは、テスト フェーズ中に `str` 関数を追加して、R から返されるデータのスキーマをチェックします。このステートメントは後から削除することができます。
 >
-> R スクリプトで使用される列名は、必ずしもストアド プロシージャの出力に渡されるとは限りません。 ここでは、WITH RESULTS 句で、いくつかの新しい列名を定義しています。
+> R スクリプトで使用される列名は、ストアド プロシージャの出力に必ずしも渡されるとは限りません。 ここでは、WITH RESULTS 句で、いくつかの新しい列名を定義しています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure SQL Database Machine Learning Services と R (プレビュー) の詳細については、次の記事を参照してください。
 

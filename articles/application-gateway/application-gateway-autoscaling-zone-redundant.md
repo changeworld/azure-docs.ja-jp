@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/09/2019
 ms.author: victorh
-ms.openlocfilehash: 66978f313f5cb3881f8befc61289d7de0f4214cb
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 8fe38870f593dd57d8e4dad5601ea404e99c3d10
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668142"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031562"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自動スケーリングとゾーン冗長 Application Gateway v2 
 
@@ -26,7 +26,7 @@ Application Gateway と Web アプリケーション ファイアウォール (W
   ゾーン冗長性は、Azure ゾーンが使用可能な場所でのみ使用できます。 他のリージョンでは、その他のすべての機能がサポートされます。 詳しくは、「[Azure の Availability Zones の概要](../availability-zones/az-overview.md#services-support-by-region)」をご覧ください。
 - **静的 VIP**: Application Gateway v2 SKU では、静的 VIP の種類だけがサポートされます。 これにより、アプリケーション ゲートウェイに関連付けられた VIP は、デプロイのライフサイクルの間は、再起動後であっても変化しません。  v1 には静的 VIP がないため、アプリケーション ゲートウェイを経由して App Services にルーティングするドメイン名の IP アドレスの代わりに、アプリケーション ゲートウェイの URL を使用する必要があります。
 - **ヘッダーの書き換え**: Application Gateway では、HTTP 要求と応答のヘッダーを v2 SKU で追加、削除、更新することができます。 詳しくは、「[Application Gateway で HTTP ヘッダーを書き換える](rewrite-http-headers.md)」をご覧ください
-- **Key Vault の統合 (プレビュー)** : Application Gateway v2 では、HTTPS が有効なリスナーにアタッチされているサーバー証明書用の Key Vault との統合 (パブリック プレビュー段階) がサポートされます。 詳細については、「[Key Vault 証明書での SSL 終了](key-vault-certs.md)」を参照してください。
+- **Key Vault の統合 (プレビュー)** : Application Gateway v2 では、HTTPS が有効なリスナーにアタッチされているサーバー証明書用の Key Vault との統合 (パブリック プレビュー段階) がサポートされます。 詳細については、「[Key Vault 証明書での SSL 終焉](key-vault-certs.md)」を参照してください。
 - **Azure Kubernetes Service のイングレス コントローラー (プレビュー)** : Application Gateway v2 のイングレス コントローラーを使うと、AKS クラスターと呼ばれる Azure Kubernetes Service (AKS) に対するイングレスとして Azure Application Gateway を使用できます。 詳しくは、[ドキュメントのページ](https://azure.github.io/application-gateway-kubernetes-ingress/)をご覧ください。
 - **パフォーマンスの向上**: v2 SKU では、Standard/WAF SKU と比較して、SSL オフロードのパフォーマンスが最大で 5 倍になります。
 - **デプロイと更新の時間の短縮**: v2 SKU では、Standard/WAF SKU と比較して、デプロイと更新の時間が短縮されます。 これには、WAF の構成の変更も含まれます。
@@ -64,7 +64,7 @@ v2 SKU では、価格モデルは従量課金方式であり、インスタン�
 | Standard_v2                                       |    0.20             | 0.0080                          |
 | WAF_v2                                            |    0.36             | 0.0144                          |
 
-価格情報の詳細については、[価格](https://azure.microsoft.com/pricing/details/application-gateway/)に関するページを参照してください。 課金は、2019 年 7 月 1 日に開始される予定です。
+価格情報の詳細については、[価格](https://azure.microsoft.com/pricing/details/application-gateway/)に関するページを参照してください。 
 
 **例 1**
 
@@ -182,9 +182,9 @@ Application Gateway と WAF は、2 つのモードでスケーリングする�
 
 Azure PowerShell スクリプトは PowerShell ギャラリー内で利用でき、v1 Application Gateway/WAF から v2 Autoscaling SKU への移行に役立ちます。 このスクリプトを利用して、v1 ゲートウェイから構成をコピーできます。 トラフィックの移行は引き続き、お客様の責任です。 詳しくは、[v1 から v2 への Azure Application Gateway の移行](migrate-v1-v2.md)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [クイック スタート:Azure Application Gateway による Web トラフィックのルーティング - Azure portal](quick-create-portal.md)
+- [クイック スタート: Azure Application Gateway による Web トラフィックのルーティング - Azure portal](quick-create-portal.md)
 - [Azure PowerShell を使用して、自動スケーリングの予約済み IP アドレスを持つゾーン冗長アプリケーション ゲートウェイを作成します](tutorial-autoscale-ps.md)
 - [Application Gateway](overview.md) の詳細を参照します。
 - [Azure Firewall](../firewall/overview.md) の詳細を参照します。

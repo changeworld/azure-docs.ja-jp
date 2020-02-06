@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 01/28/2020
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 7e98fd089ce8ec1285232840a40bb42ac5b81446
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 18d7e02689cc9c5fe9282a6a2456b8b1574ec85e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795438"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901637"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker のトラブルシューティング
 
@@ -27,7 +27,7 @@ QnA Maker サービスについてきわめて多く寄せられる質問を精�
 ## <a name="how-to-get-the-qnamaker-service-endpoint"></a>QnA Maker サービス エンドポイントを取得する方法
 
 QnA Maker サービス エンドポイントは、デバッグ目的で QnA Maker サポートや UserVoice に問い合わせる場合に役立ちます。 エンドポイントは、次の形式の URL です: https://your-resource-name.azurewebsites.net 。
-    
+
 1. [Azure portal](https://portal.azure.com) で QnA Maker サービス (リソース グループ) に移動します。
 
     ![QnAMaker の Azure リソース グループ (Azure portal)](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
@@ -39,21 +39,14 @@ QnA Maker サービス エンドポイントは、デバッグ目的で QnA Make
 1. エンドポイントの URL は [概要] セクションで確認できます。
 
     ![QnA Maker のエンドポイント](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-gethostname.png)
-    
-
-## <a name="use-the-help-bot-in-the-qna-maker-portal"></a>QnA Maker ポータルでヘルプ ボットを使用する
-
-QnA Maker では、QnA Maker ポータルで役に立つ**ヘルプ** ボットが提供されています。 ヘルプ ボットは、すべての Web ページで利用できます。 ボットでは、QnA Maker を使用して回答が提供されます。ボットには [C# Bot Framework コード プロジェクト](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support)が用意されているので、独自の応答ボットをすばやく稼働させることができます。 
-
-![![QnA Maker では、QnA Maker ポータルで役に立つ**ヘルプ** ボットが提供されています。](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png)](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png#lightbox)
 
 ## <a name="manage-the-knowledge-base"></a>ナレッジ ベースの管理
 
-### <a name="i-accidentally-deleted-a-part-of-my-qna-maker-what-should-i-do"></a>自分の QnA Maker の一部を誤って削除しました。どうしたらいいでしょうか。 
+### <a name="i-accidentally-deleted-a-part-of-my-qna-maker-what-should-i-do"></a>自分の QnA Maker の一部を誤って削除しました。どうしたらいいでしょうか。
 
 Search や Web App など、QnA Maker リソースと一緒に作成される Azure サービスは削除しないでください。 QnA Maker が正常に機能するために必要であり、削除すると QnA Maker が正しく動作しなくなります。
 
-質問と回答のペア、ファイル、URL、カスタムの質問と回答、ナレッジ ベース、Azure リソースを含め、削除はすべて永続的です。 ナレッジ ベースの一部を削除する前に、 **[設定]** ページから確実にナレッジ ベースをエクスポートしてください。 
+質問と回答のペア、ファイル、URL、カスタムの質問と回答、ナレッジ ベース、Azure リソースを含め、削除はすべて永続的です。 ナレッジ ベースの一部を削除する前に、 **[設定]** ページから確実にナレッジ ベースをエクスポートしてください。
 
 ### <a name="why-is-my-urlsfiles-not-extracting-question-answer-pairs"></a>指定した URL/ファイルから質問とその回答のペアが抽出されません。なぜでしょうか。
 
@@ -71,7 +64,7 @@ QnA Maker は、有効な FAQ URL であっても、一部の Q&A (QnA) コン�
 
 共有は、QnA Maker サービス レベルで行われます。つまり、サービス内のすべてのナレッジ ベースが共有されます。 ナレッジ ベースの共同作業の方法については、[こちら](./How-To/collaborate-knowledge-base.md)を参照してください。
 
-### <a name="can-you-share-a-knowledge-base-with-a-contributor-that-is-not-in-the-same-aad-tenant-to-modify-a-knowledge-base"></a>ナレッジ ベースを変更するために、同じ AAD テナントに含まれない共同作成者とナレッジ ベースを共有できますか。 
+### <a name="can-you-share-a-knowledge-base-with-a-contributor-that-is-not-in-the-same-aad-tenant-to-modify-a-knowledge-base"></a>ナレッジ ベースを変更するために、同じ AAD テナントに含まれない共同作成者とナレッジ ベースを共有できますか。
 
 共有は Azure ロールベースのアクセス制御 (RBAC) に基づきます。 Azure で他のユーザーと _任意の_ リソースを共有できる場合、QnA Maker を共有することもできます。
 
@@ -95,17 +88,21 @@ QnA Maker は、有効な FAQ URL であっても、一部の Q&A (QnA) コン�
 
 ### <a name="why-is-my-sharepoint-link-not-getting-extracted"></a>SharePoint リンクが抽出されません。なぜでしょうか?
 
-詳細については、「[Data source locations (データ ソースの場所)](./Concepts/data-sources-supported.md#data-source-locations)」を参照してください。
+詳細については、「[Data source locations (データ ソースの場所)](./Concepts/knowledge-base.md#data-source-locations)」を参照してください。
 
-### <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>ナレッジ ベースに対して行った更新が発行時に反映されません。 なぜでしょうか?
+### <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>ナレッジ ベースに対して行った更新が発行時に反映されません。 表示されない
 
 編集内容を公開するには、テーブルの更新、テスト、設定のいずれであってもすべて保存する必要があります。 編集操作後は、必ず **[Save and train]\(保存してトレーニング\)** ボタンをクリックしてください。
 
 ### <a name="does-the-knowledge-base-support-rich-data-or-multimedia"></a>ナレッジ ベースは、リッチ データやマルチメディアに対応していますか?
 
-ナレッジ ベースは Markdown に対応しています。 ただし、URL からの自動抽出では、HTML から Markdown への変換機能が制限されています。 Markdown の機能をすべて使用するには、テーブル内のコンテンツを直接編集するか、リッチ コンテンツと共にナレッジ ベースをアップロードしてください。
+#### <a name="multimedia-auto-extraction-for-files-and-urls"></a>ファイルと URL のマルチメディア自動抽出
 
-画像やビデオなどのマルチメディアには、現時点では対応していません。
+* URL - HTML から Markdown への変換機能は制限されています。
+* ファイル - サポートされていません
+
+#### <a name="answer-text-in-markdown"></a>マークダウンの回答テキスト
+QnA セットをナレッジ ベースに追加すると、回答のマークダウン テキストを編集して、パブリック URL から使用できるメディアへのリンクを含めることができます。
 
 ### <a name="does-qna-maker-support-non-english-languages"></a>QnA Maker では英語以外の言語もサポートされますか。
 
@@ -115,15 +112,15 @@ QnA Maker は、有効な FAQ URL であっても、一部の Q&A (QnA) コン�
 
 ## <a name="manage-service"></a>サービスの管理
 
-### <a name="when-should-i-restart-my-app-service"></a>いつアプリ サービスを再起動するべきですか。 
+### <a name="when-should-i-restart-my-app-service"></a>いつアプリ サービスを再起動するべきですか。
 
 **[ユーザー設定]** [ページ](https://www.qnamaker.ai/UserSettings)の **[エンドポイント キー]** で、ナレッジ ベースのバージョン値の隣に注意のアイコンが表示されているときは、アプリ サービスを更新してください。
 
 ### <a name="i-deleted-my-existing-search-service-how-can-i-fix-this"></a>既存の検索サービスを削除してしまいました。 どうしたらいいですか。
 
-Azure Cognitive Search インデックスを削除した場合、この操作は最終的なものであり、インデックスを復旧することはできません。 
+Azure Cognitive Search インデックスを削除した場合、この操作は最終的なものであり、インデックスを復旧することはできません。
 
-### <a name="i-deleted-my-testkb-index-in-my-search-service-how-can-i-fix-this"></a>検索サービスの `testkb` インデックスを削除してしまいました。 どうしたらいいですか。 
+### <a name="i-deleted-my-testkb-index-in-my-search-service-how-can-i-fix-this"></a>検索サービスの `testkb` インデックスを削除してしまいました。 どうしたらいいですか。
 
 古いデータを回復することはできません。 新しい QnA Maker リソースを作成し、ナレッジ ベースを再度作成してください。
 
@@ -145,18 +142,18 @@ App Service のディスク領域がいっぱいになっている可能性が�
 
 1. [Azure portal](https://portal.azure.com) で、QnA Maker の App Service を選択し、サービスを停止します。
 1. この App Service で、 **[開発ツール]** 、 **[高度なツール]** 、 **[移動]** の順に選択します。 これで新しいブラウザー ウィンドウが開きます。
-1. **[デバッグ コンソール]** 、 **[CMD]** の順に選択してコマンドライン ツールを開きます。 
+1. **[デバッグ コンソール]** 、 **[CMD]** の順に選択してコマンドライン ツールを開きます。
 1. _site/wwwroot/Data/QnAMaker/_ ディレクトリに移動します。
-1. 名前が `rd` で始まるフォルダーをすべて削除します。 
+1. 名前が `rd` で始まるフォルダーをすべて削除します。
 
     次の項目は**削除しないでください**。
 
     * KbIdToRankerMappings.txt ファイル
     * EndpointSettings.json ファイル
-    * EndpointKeys フォルダー 
+    * EndpointKeys フォルダー
 
 1. App Service を開始します。
-1. ナレッジ ベースにアクセスして動作していることを確認します。 
+1. ナレッジ ベースにアクセスして動作していることを確認します。
 
 
 ## <a name="integrate-with-other-services-including-bots"></a>ボットなどの他のサービスとの統合
@@ -175,13 +172,13 @@ Azure Bot Service でボットを作成するには、[こちら](./Tutorials/cr
 
 * ナレッジ ベース ID。
 * ナレッジ ベースの公開されたエンドポイント カスタム サブドメイン名 (`host` と呼ばれます)。公開後に **[設定]** ページで見つかります。
-* ナレッジ ベースの公開されたエンドポイント キー - 公開後に **[設定]** ページで見つかります。 
+* ナレッジ ベースの公開されたエンドポイント キー - 公開後に **[設定]** ページで見つかります。
 
-この情報を使用して、Azure portal でご利用のボットのアプリ サービスにアクセスします。 **[設定] -> [構成] -> [アプリケーション設定]** で、これらの値を変更します。  
+この情報を使用して、Azure portal でご利用のボットのアプリ サービスにアクセスします。 **[設定] -> [構成] -> [アプリケーション設定]** で、これらの値を変更します。
 
-ナレッジ ベースのエンドポイント キーは、ABS サービスで `QnAAuthkey` としてラベルが付けられます。 
+ナレッジ ベースのエンドポイント キーは、ABS サービスで `QnAAuthkey` としてラベルが付けられます。
 
-### <a name="can-two-or-more-client-applications-share-a-knowledge-base"></a>2 つ以上のクライアント アプリケーションでナレッジ ベースを共有できますか? 
+### <a name="can-two-or-more-client-applications-share-a-knowledge-base"></a>2 つ以上のクライアント アプリケーションでナレッジ ベースを共有できますか?
 
 はい。ナレッジ ベースには、任意の数のクライアントからクエリを実行できます。 ナレッジ ベースからの応答が低速であるか、タイムアウトになっている場合は、ナレッジ ベースに関連付けられているアプリ サービスのサービス レベルをアップグレードすることを検討してください。
 
@@ -194,6 +191,6 @@ Web サイトに QnA Maker サービスを Web チャット コントロール�
 
 ## <a name="data-storage"></a>データ ストレージ
 
-### <a name="what-data-is-stored-and-where-is-it-stored"></a>どのようなデータが、どこに保存されますか。 
+### <a name="what-data-is-stored-and-where-is-it-stored"></a>どのようなデータが、どこに保存されますか。
 
-QnA Maker サービスを作成するときに、Azure リージョンを選択しました。 ナレッジ ベースとログ ファイルが、このリージョンに格納されます。 
+QnA Maker サービスを作成するときに、Azure リージョンを選択しました。 ナレッジ ベースとログ ファイルが、このリージョンに格納されます。

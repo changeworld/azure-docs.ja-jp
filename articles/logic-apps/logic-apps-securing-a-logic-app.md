@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 4f8c20534cdd5abdf5ae97bb097238cf508480c7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 73b8a559eddec51dbc01f1d55f70414360ff2956
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843550"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898436"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps におけるアクセスとデータのセキュリティ保護
 
@@ -45,7 +45,7 @@ Azure Logic Apps におけるアクセスを制御し、データを保護する
 
 次の表で説明するように、各 URL にはクエリ パラメーター `sp`、`sv`、`sig` が含まれています。
 
-| Query parameter (クエリ パラメーター) | [説明] |
+| Query parameter (クエリ パラメーター) | 説明 |
 |-----------------|-------------|
 | `sp` | 使用が許可された HTTP メソッドのアクセス許可を指定します。 |
 | `sv` | 署名の生成に使用する SAS バージョンを指定します。 |
@@ -324,7 +324,7 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
 #### <a name="considerations-when-hiding-inputs-and-outputs"></a>入力と出力を非表示にする際の考慮事項
 
-* トリガーまたはアクションの入力または出力をセキュリティで保護すると、Logic Apps から Azure Log Analytics にそのセキュリティで保護されたデータが送信されません。 また、そのトリガーまたはアクションに[追跡対象プロパティ](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details)を追加して監視することもできません。
+* トリガーまたはアクションの入力または出力をセキュリティで保護すると、Logic Apps から Azure Log Analytics にそのセキュリティで保護されたデータが送信されません。 また、そのトリガーまたはアクションに[追跡対象プロパティ](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data)を追加して監視することもできません。
 
 * セキュリティで保護された出力は、[ワークフロー履歴を処理するための Logic Apps API](https://docs.microsoft.com/rest/api/logic/) から返されません。
 
@@ -437,7 +437,7 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
 この例のテンプレートには、`securestring` 型を使用する、セキュリティで保護されたパラメーターの定義が複数存在します。
 
-| パラメーター名 | [説明] |
+| パラメーター名 | 説明 |
 |----------------|-------------|
 | `TemplatePasswordParam` | パスワードを受け取るテンプレート パラメーター。パスワードはその後、ワークフロー定義の `basicAuthPasswordParam` パラメーターに渡されます。 |
 | `TemplateUsernameParam` | ユーザー名を受け取るテンプレート パラメーター。ユーザー名はその後、ワークフロー定義の `basicAuthUserNameParam` パラメーターに渡されます。 |
@@ -622,7 +622,7 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 
 [[基本]](../active-directory-b2c/secure-rest-api-dotnet-basic-auth.md) オプションを使用できる場合は、次のプロパティ値を指定します。
 
-| プロパティ (デザイナー) | プロパティ (JSON) | Required | Value | [説明] |
+| プロパティ (デザイナー) | プロパティ (JSON) | Required | Value | 説明 |
 |---------------------|-----------------|----------|-------|-------------|
 | **認証** | `type` | はい | Basic | 使用する認証の種類 |
 | **ユーザー名** | `username` | はい | <*user-name*>| ターゲット サービス エンドポイントへのアクセスを認証するためのユーザー名 |
@@ -653,7 +653,7 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 
 [[クライアント証明書]](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) オプションを使用できる場合は、次のプロパティ値を指定します。
 
-| プロパティ (デザイナー) | プロパティ (JSON) | Required | Value | [説明] |
+| プロパティ (デザイナー) | プロパティ (JSON) | Required | Value | 説明 |
 |---------------------|-----------------|----------|-------|-------------|
 | **認証** | `type` | はい | **クライアント証明書** <br>or <br>`ClientCertificate` | Secure Sockets Layer (SSL) クライアント証明書に使用する認証の種類。 自己署名証明書はサポートされていますが、SSL 用の自己署名証明書はサポートされていません。 |
 | **Pfx** | `pfx` | はい | <*encoded-pfx-file-content*> | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ <p><p>PFX ファイルを Base64 でエンコードされた形式に変換するには、次の手順に従って PowerShell を使用します。 <p>1.証明書の内容を変数に保存します。 <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2.`ToBase64String()` 関数を使用して証明書の内容を変換し、その内容をテキスト ファイルに保存します。 <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
@@ -692,7 +692,7 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 
 [[Active Directory OAuth]](../active-directory/develop/about-microsoft-identity-platform.md) オプションを使用できる場合は、次のプロパティ値を指定します。
 
-| プロパティ (デザイナー) | プロパティ (JSON) | Required | Value | [説明] |
+| プロパティ (デザイナー) | プロパティ (JSON) | Required | Value | 説明 |
 |---------------------|-----------------|----------|-------|-------------|
 | **認証** | `type` | はい | **Active Directory OAuth** <br>or <br>`ActiveDirectoryOAuth` | 使用する認証の種類。 現在、Logic Apps では [OAuth 2.0 プロトコル](../active-directory/develop/v2-overview.md)が使用されています。 |
 | **テナント** | `tenant` | はい | <*tenant-ID*> | Azure AD テナントのテナント ID |
@@ -746,7 +746,7 @@ Authorization: OAuth realm="Photos",
 
 Raw 認証をサポートするトリガーまたはアクションでは、次のプロパティ値を指定します。
 
-| プロパティ (デザイナー) | プロパティ (JSON) | Required | Value | [説明] |
+| プロパティ (デザイナー) | プロパティ (JSON) | Required | Value | 説明 |
 |---------------------|-----------------|----------|-------|-------------|
 | **認証** | `type` | はい | Raw | 使用する認証の種類 |
 | **Value** | `value` | はい | <*authorization-header-value*> | 認証に使用する Authorization ヘッダーの値 |
@@ -781,7 +781,7 @@ Raw 認証をサポートするトリガーまたはアクションでは、次�
 
 3. マネージド ID を使用するトリガーまたはアクションで、次のプロパティ値を指定します。
 
-   | プロパティ (デザイナー) | プロパティ (JSON) | Required | Value | [説明] |
+   | プロパティ (デザイナー) | プロパティ (JSON) | Required | Value | 説明 |
    |---------------------|-----------------|----------|-------|-------------|
    | **認証** | `type` | はい | **Managed Identity** <br>or <br>`ManagedServiceIdentity` | 使用する認証の種類 |
    | **対象ユーザー** | `audience` | はい | <*target-resource-ID*> | アクセスするターゲット リソースのリソース ID。 <p>たとえば、`https://storage.azure.com/` では、認証用のアクセス トークンがすべてのストレージ アカウントに対して有効になります。 ただし、特定のストレージ アカウントに対する `https://fabrikamstorageaccount.blob.core.windows.net` など、ルート サービスの URL を指定することもできます。 <p>**注**:このプロパティは、一部のトリガーまたはアクションでは表示されない可能性があります。 このプロパティが表示されるようにするには、トリガーまたはアクションで **[新しいパラメーターの追加]** の一覧を開き、 **[対象ユーザー]** を選択します。 <p><p>**重要**:このターゲット リソース ID が、必要な末尾のスラッシュも含めて、Azure AD で予想される値と正確に一致するようにします。 そのため、すべての Azure Blob Storage アカウントの `https://storage.azure.com/` リソース ID には、末尾のスラッシュが必要です。 ただし、特定のストレージ アカウントのリソース ID については、末尾のスラッシュは必要ありません。 これらのリソース ID を調べるには、「[Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)」をご覧ください。 |
@@ -806,7 +806,7 @@ Raw 認証をサポートするトリガーまたはアクションでは、次�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Logic Apps のデプロイを自動化する](logic-apps-azure-resource-manager-templates-overview.md)  
-* [ロジック アプリを監視する](logic-apps-monitor-your-logic-apps.md)  
-* [ロジック アプリの障害と問題の診断](logic-apps-diagnosing-failures.md)  
-* [ロジック アプリ デプロイを自動化する](logic-apps-azure-resource-manager-templates-overview.md)
+* [Azure Logic Apps のデプロイを自動化する](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)  
+* [ロジック アプリの監視](../logic-apps/monitor-logic-apps-log-analytics.md)  
+* [ロジック アプリの障害と問題の診断](../logic-apps/logic-apps-diagnosing-failures.md)  
+* [ロジック アプリ デプロイを自動化する](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)

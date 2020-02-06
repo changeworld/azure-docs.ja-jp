@@ -2,13 +2,13 @@
 title: コンテナーに対する Azure Monitor エージェントを管理する方法 | Microsoft Docs
 description: この記事では、コンテナーに対する Azure Monitor によって使用されるコンテナー化された Log Analytics エージェントで、最も一般的なメンテナンス タスクを管理する方法について説明します。
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: b1fd9b70865dfb6bb71dadfe76620129e053acbb
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.date: 01/24/2020
+ms.openlocfilehash: 1a1f8d690979a846dbf5041999180221752acc0b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932875"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843958"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>コンテナーに対する Azure Monitor エージェントを管理する方法
 
@@ -16,13 +16,13 @@ ms.locfileid: "75932875"
 
 ## <a name="how-to-upgrade-the-azure-monitor-for-containers-agent"></a>コンテナーに対する Azure Monitor エージェントをアップグレードする方法
 
-コンテナーに対する Azure Monitor では、コンテナー化されたバージョンの Linux 用 Log Analytics エージェント が使用されます。 エージェントの新しいバージョンがリリースされると、Azure Kubernetes Service (AKS) でホストされているマネージド Kubernetes クラスター上のエージェントが自動的にアップグレードされます。  
+コンテナーに対する Azure Monitor では、コンテナー化されたバージョンの Linux 用 Log Analytics エージェント が使用されます。 エージェントの新しいバージョンがリリースされると、Azure Kubernetes Service (AKS) および Azure Red Hat OpenShift でホストされているマネージド Kubernetes クラスター上のエージェントが自動的にアップグレードされます。 [hybrid Kubernetes クラスター](container-insights-hybrid-setup.md)のエージェントは管理されていないため、エージェントを手動でアップグレードする必要があります。
 
-エージェントのアップグレードが失敗した場合のために、この記事では、エージェントを手動でアップグレードするプロセスについて説明します。 リリースされたバージョンを確認するには、[エージェントのリリースのお知らせ](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)を参照してください。   
+AKS でホストされているクラスターのエージェントのアップグレードに失敗している場合、この記事では、エージェントを手動でアップグレードするプロセスについても説明します。 リリースされたバージョンを確認するには、[エージェントのリリースのお知らせ](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)を参照してください。
 
-### <a name="upgrading-agent-on-monitored-kubernetes-cluster"></a>監視対象の Kubernetes クラスター上のエージェントのアップグレード
+### <a name="upgrade-agent-on-monitored-kubernetes-cluster"></a>監視対象の Kubernetes クラスター上でエージェントをアップグレードする
 
-Azure Red Hat OpenShift 以外のクラスター上のエージェントをアップグレードするプロセスは、2 つの簡単な手順で構成されています。 最初の手順は、コンテナーに対する Azure Monitor の監視を Azure CLI を使用して無効にすることです。  [監視の無効化](container-insights-optout.md?#azure-cli)に関する記事の手順に従ってください。 Azure CLI を使用して、ソリューションとワークスペースに格納されている対応するデータに影響を与えることなく、クラスター内のノードからエージェントを削除できます。 
+Azure Red Hat OpenShift 以外のクラスター上のエージェントをアップグレードするプロセスは、2 つの簡単な手順で構成されています。 最初の手順は、コンテナーに対する Azure Monitor の監視を Azure CLI を使用して無効にすることです。 [監視の無効化](container-insights-optout.md?#azure-cli)に関する記事の手順に従ってください。 Azure CLI を使用して、ソリューションとワークスペースに格納されている対応するデータに影響を与えることなく、クラスター内のノードからエージェントを削除できます。 
 
 >[!NOTE]
 >このメンテナンス アクティビティを実行している間、クラスター内のノードによる収集されたデータの転送は行われず、エージェントを削除して新しいバージョンをインストールするまでの間、パフォーマンス ビューにデータは表示されません。 
@@ -52,6 +52,29 @@ Azure Red Hat OpenShift 以外のクラスター上のエージェントをア�
     omi 1.4.2.5
     omsagent 1.6.0-163
     docker-cimprov 1.0.0.31
+
+## <a name="upgrade-agent-on-hybrid-kubernetes-cluster"></a>ハイブリッド Kubernetes クラスター上でエージェントをアップグレードする
+
+オンプレミス、Azure 上の AKS Engine、および Azure Stack でホストされている Kubernetes クラスターでエージェントをアップグレードするプロセスは、次のコマンドを実行して完了できます。
+
+```
+$ helm upgrade --name myrelease-1 \
+--set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<my_prod_cluster> incubator/azuremonitor-containers
+```
+
+Log Analytics ワークスペースが Azure China にある場合には、次のコマンドを実行します。
+
+```
+$ helm upgrade --name myrelease-1 \
+--set omsagent.domain=opinsights.azure.cn,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
+```
+
+Log Analytics ワークスペースが Azure US Government にある場合には、次のコマンドを実行します。
+
+```
+$ helm upgrade --name myrelease-1 \
+--set omsagent.domain=opinsights.azure.us,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
+```
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>コンテナーの環境変数コレクションを無効にする方法
 

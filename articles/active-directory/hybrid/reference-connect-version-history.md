@@ -12,12 +12,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b03833a3e1dd5ee9a3268e19166891243df1b98
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6ba7ba4be103beb494c31a844d1871c22c25b8c6
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422357"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756302"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect:バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
@@ -79,11 +79,13 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 ### <a name="release-status"></a>リリースの状態
 9/28/2019:一部のテナントを対象に自動アップグレード用がリリース。 ダウンロードでは利用できません。
 
-このバージョンでは、前のバージョンから 1.4.18.0 に自動アップグレードされたサーバーの一部で SSPR (パスワード リセットのセルフサービス) とパスワード ライトバックに問題を発生させたバグが修正されました。
+このバージョンでは、前のバージョンから 1.4.18.0 に自動アップグレードされたサーバーの一部で SSPR (セルフサービス パスワード リセット ) とパスワード ライトバックに問題を発生させたバグが修正されました。
 
 ### <a name="fixed-issues"></a>修正された問題
 
-特定の状況下では、バージョン 1.4.18.0 に自動アップグレードされたサーバーで、アップグレードの完了後、パスワード リセットのセルフサービスとパスワード ライトバックを再度有効にできませんでした。 この自動アップグレードでは、その問題が解決され、パスワード リセットのセルフサービスとパスワード ライトバックが再度有効になります。
+特定の状況下では、バージョン 1.4.18.0 に自動アップグレードされたサーバーで、アップグレードの完了後、セルフサービス パスワード リセット とパスワード ライトバックを再度有効にできませんでした。 この自動アップグレードでは、その問題が解決され、セルフサービス パスワード リセット とパスワード ライトバックが再度有効になります。
+
+同期エラーの圧縮ユーティリティにおいて、サロゲート文字が正しく処理されないバグを修正しました。
 
 ## <a name="14180"></a>1.4.18.0
 

@@ -1,12 +1,9 @@
 ---
-title: チュートリアル - Azure portal を使用して VM との間のネットワーク トラフィック フローをログに記録する
-titleSuffix: Azure Network Watcher
-description: このチュートリアルでは、Network Watcher の NSG フロー ログ機能を使用して、VM との間のネットワーク トラフィック フローをログに記録する方法を説明します。
+title: VM への送受信ネットワーク トラフィック フローのログ記録 - チュートリアル - Azure Portal | Microsoft Docs
+description: Network Watcher の NSG フロー ログ機能を使用して、VM への送受信ネットワーク トラフィック フローをログに記録する方法を説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 tags: azure-resource-manager
 Customer intent: I need to log the network traffic to and from a VM so I can analyze it for anomalies.
 ms.assetid: 01606cbf-d70b-40ad-bc1d-f03bb642e0af
@@ -16,16 +13,23 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/30/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 7f4466b6f6de5028db8b62389c9d5ddbdafc9d62
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: c295e6c8ffea564e157545c4662cbe7e1841edae
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280987"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841014"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して仮想マシンへの送受信ネットワーク トラフィックをログに記録する
+
+> [!div class="op_single_selector"]
+> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
+> - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
+> - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
+> - [REST API](network-watcher-nsg-flow-logging-rest.md)
+> - [Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md)
 
 ネットワーク セキュリティ グループ (NSG) により、仮想マシン (VM) への着信トラフィックと 送信トラフィックをフィルターできます。 Network Watcher の NSG フロー ログ機能により、NSG を通過するネットワーク トラフィックをログに記録できます。 このチュートリアルでは、以下の内容を学習します。
 
@@ -44,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 2. **[Compute]** を選択し、 **[Windows Server 2016 Datacenter]** またはいずれかのバージョンの **Ubuntu Server** を選択します。
 3. 次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[OK]** を選択します。
 
-    |設定|値|
+    |設定|Value|
     |---|---|
     |Name|myVm|
     |ユーザー名| 任意のユーザー名を入力します。|
@@ -87,13 +91,16 @@ NSG フローのログ記録には、**Microsoft.Insights** プロバイダー�
 2. **[ストレージ]** 、 **[ストレージ アカウント - Blob、File、Table、Queue]** の順に選択します。
 3. 次の情報を入力するか選択し、それ以外の情報は既定値をそのまま使用して、 **[作成]** を選択します。
 
-    | 設定        | 値                                                        |
+    | 設定        | Value                                                        |
     | ---            | ---   |
     | Name           | 3 ～ 24 文字の長さで、小文字の英数字のみを含めることができ、すべての Azure Storage アカウントで一意である必要があります。                                                               |
     | Location       | **[米国東部]** を選択します。                                           |
     | Resource group | **[既存のものを使用]** 、 **[myResourceGroup]** の順に選択します |
 
-    ストレージ アカウントは、NSG と同じリージョンに存在する必要があります。 ストレージ アカウントの作成には、しばらくかかる場合があります。 ストレージ アカウントが作成されるまで、残りの手順を続行しないでください。     
+    ストレージ アカウントの作成には、しばらくかかる場合があります。 ストレージ アカウントが作成されるまで、残りの手順を続行しないでください。 ストレージ アカウントを作成せずに、既存のものを使う場合は、ストレージ アカウントの **[設定]** の **[ファイアウォールと仮想ネットワーク]** で **[すべてのネットワーク]** (既定値) が選択されているストレージ アカウントを選択してください。 どのような場合でも、ストレージ アカウントは、NSG と同じリージョンに存在する必要があります。
+
+    > [!NOTE]
+    > Microsoft.Insight と Microsoft.Network のプロバイダーは、Azure Storage 向けの信頼された Microsoft サービスとして現在サポートされていますが、NSG フロー ログはまだ完全にオンボードされているわけではありません。 NSG フロー ログの記録を有効にするには、この機能が完全にオンボードされるまで、**すべてのネットワーク**を引き続き選択する必要があります。 
 4. ポータルの左上隅の **[すべてのサービス]** を選択します。 *[フィルター]* ボックスに「**Network Watcher**」と入力します。 検索結果に **[Network Watcher]** が表示されたら、それを選択します。
 5. 次の図に示すように、 **[ログ]** の　 **[NSG フロー ログ]** を選択します。
 
@@ -108,6 +115,7 @@ NSG フローのログ記録には、**Microsoft.Insights** プロバイダー�
 9. 手順 3 で作成したストレージ アカウントを選択します。
    > [!NOTE]
    > 次に該当する場合、NSG フロー ログがストレージ アカウントで正しく機能しません。
+   > * ストレージ アカウントのファイアウォールが有効になっている。
    > * ストレージ アカウントの[階層型名前空間](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)が有効になっている。
 1. ポータルの左上隅の **[すべてのサービス]** を選択します。 *[フィルター]* ボックスに「**Network Watcher**」と入力します。 検索結果に **[Network Watcher]** が表示されたら、それを選択します。
 10. **[リテンション期間 (日数)]** を 5 に設定し、 **[保存]** を選択します。
@@ -120,7 +128,7 @@ NSG フローのログ記録には、**Microsoft.Insights** プロバイダー�
    ![フロー ログをダウンロードする](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
 3. 「[NSG フロー ログの有効化](#enable-nsg-flow-log)」の手順 2 で構成したストレージ アカウントを選択します。
-4. **[Blob service]** で **[コンテナー]** を選択し、 **[insights-logs-networksecuritygroupflowevent]** コンテナーを選択します。
+4. **[Blob service]** で **[BLOB]** を選択し、 **[insights-logs-networksecuritygroupflowevent]** コンテナーを選択します。
 5. 次の図に示すように、コンテナー内のフォルダー階層を PT1H.json ファイルに到達するまで移動します。 ログ ファイルは、次の名前規則に従ってフォルダー階層に書き込まれます。 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 
    ![フローのログ](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
@@ -220,4 +228,4 @@ NSG フローのログ記録には、**Microsoft.Insights** プロバイダー�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、NSG の NSG フローのログ記録を有効にする方法について説明しました。 また、ファイルに記録されたデータをダウンロードし、表示する方法も説明しました。 Json ファイル内の生データは解釈が難しい場合があります。 データを視覚化するため、Network Watcher [トラフィック分析](traffic-analytics.md)、Microsoft [PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md)、およびその他のツールを使用できます。
+このチュートリアルでは、NSG の NSG フローのログ記録を有効にする方法について説明しました。 また、ファイルに記録されたデータをダウンロードし、表示する方法も説明しました。 Json ファイル内の生データは解釈が難しい場合があります。 フロー ログのデータを視覚化する際は、[Azure Traffic Analytics](traffic-analytics.md) や [Microsoft Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md) などのツールを使用できます。 [PowerShell](network-watcher-nsg-flow-logging-powershell.md)、[Azure CLI](network-watcher-nsg-flow-logging-cli.md)、[REST API](network-watcher-nsg-flow-logging-rest.md)、[ARM テンプレート](network-watcher-nsg-flow-logging-azure-resource-manager.md)など、他の方法でも、NSG フロー ログを有効にしてみましょう。

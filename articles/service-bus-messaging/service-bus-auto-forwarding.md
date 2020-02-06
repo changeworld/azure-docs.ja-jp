@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus メッセージング エンティティの自動転送 |Microsoft Docs
-description: Service Bus キューまたはサブスクリプションを別のキューまたはトピックにチェーンする方法。
+title: Azure Service Bus メッセージング エンティティの自動転送
+description: この記事では、Azure Service Bus キューまたはサブスクリプションを別のキューまたはトピックにチェーンする方法について説明します。
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 1d7b76a58a427b687d0dc36d13cfc00f32196853
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 8b8883b579233962de61e7247e6ac1cbcb2a6d80
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390127"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761051"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>自動転送を使用した Service Bus エンティティのチェーン
 
@@ -63,7 +63,7 @@ Service Bus では、メッセージの転送ごとに 1 操作を請求しま�
 
 別のキューまたはトピックにチェーンされているサブスクリプションを作成するには、サブスクリプションの作成者は、転送元エンティティと転送先エンティティの両方に対する**管理**アクセス許可が必要です。 転送元トピックにメッセージを送信する場合は、転送元トピックに対する**送信**アクセス許可のみが必要です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 自動転送についての詳細は、次のリファレンス トピックを参照してください。
 

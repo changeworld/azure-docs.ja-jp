@@ -3,20 +3,20 @@ title: SQL と Python を使用して SQL Server で特徴を作成する - Team
 description: SQL と Python を使用して、Azure 上の SQL Server VM に格納されているデータの特徴を生成します。Team Data Science Process の一部です。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/21/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5aa9a4f0ab536c197f08cb64a5cee8280c23039f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 58fa98005d7d89e84404d99cf4f55e456fd91f21
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982052"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721746"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>SQL と Python を使用して SQL Server のデータの特徴を作成する
 このドキュメントでは、Azure の SQL Server VM に保存されたデータから、アルゴリズムの学習効率を高めることのできる特徴を生成する方法について説明します。 このタスクを実行するには、SQL または Python のようなプログラミング言語を使用できます。 ここでは、両方の方法を説明しています。
@@ -37,9 +37,9 @@ ms.locfileid: "75982052"
 ## <a name="sql-featuregen"></a>SQL を使用した特徴の生成
 このセクションでは SQL を使用して特徴を生成する方法について説明します。  
 
-1. [カウント ベースの特徴の生成](#sql-countfeature)
-2. [ビン分割特徴の生成](#sql-binningfeature)
-3. [1 つの列からの特徴の展開](#sql-featurerollout)
+* [カウント ベースの特徴の生成](#sql-countfeature)
+* [ビン分割特徴の生成](#sql-binningfeature)
+* [1 つの列からの特徴の展開](#sql-featurerollout)
 
 > [!NOTE]
 > 追加の特徴を生成すると、既存のテーブルに列として追加するか、追加の特徴と主キーを持つ新しいテーブルを作成して元のテーブルと結合することができます。
@@ -47,7 +47,7 @@ ms.locfileid: "75982052"
 > 
 
 ### <a name="sql-countfeature"></a>カウント ベースの特徴の生成
-このドキュメントでは、カウント特徴を生成する 2 つの方法を示します。 最初の方法は、条件付きの合計を使用します。2 番目の方法は、Where 句を使用します。 これらを (主キーの列を使用することで) 元のテーブルと結合して、カウント特徴と元のデータを一緒にすることができます。
+このドキュメントでは、カウント特徴を生成する 2 つの方法を示します。 最初の方法は、条件付きの合計を使用します。2 番目の方法は、Where 句を使用します。 これらの新しい機能を (主キーの列を使用することで) 元のテーブルと結合して、カウント特徴と元のデータを一緒にすることができます。
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3>
 
@@ -74,9 +74,9 @@ ms.locfileid: "75982052"
 * 小数第 3 位は、最大 110 m に値します。大規模な農地または施設の構内を識別できます。
 * 小数第 4 位は、最大 11 m に値します。土地の一区画を識別できます。 これは、未修正の GPS ユニットの一般的な支障のない精度と比較できます。
 * 小数第 5 位は、1.1 m に値します。木々を互いに識別することができます。 商用の GPS ユニットにおいて、このレベルの精度は微分補正によってのみ実現できます。
-* 小数第 6 位は、最大 0.11 m に値します。これは、造園設計、道路建設において構造を詳細に配置するために使用できます。 氷河と川の動きを追跡するには十分すぎるはずです。 これは、GPS の微分補正など、GPS を使用した精密な測定で実現できます。
+* 小数第 6 位は、最大 0.11 m に値します。このレベルは、造園設計、道路建設において構造を詳細に配置するために使用できます。 氷河と川の動きを追跡するには十分すぎるはずです。 この目標は、GPS の微分補正など、GPS を使用した精密な測定で実現できます。
 
-位置情報の特徴付けは、地域、位置、および都市の情報に分けて、次のように実行します。 1 回に、 `https://msdn.microsoft.com/library/ff701710.aspx` で使用できる Bing Maps API などの REST エンド ポイントを呼び出して、地域または地区の情報を得ることもできることに注意してください。
+位置情報の特徴付けは、地域、位置、および都市の情報に分けて、次のように実行します。 1 回に、Bing Maps API などの REST エンドポイントを呼び出すこともできます (リージョン/地区情報を取得するには `https://msdn.microsoft.com/library/ff701710.aspx` を参照してください)。
 
     select
         <location_columnname>

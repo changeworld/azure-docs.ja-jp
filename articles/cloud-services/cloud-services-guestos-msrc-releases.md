@@ -10,44 +10,41 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 01/15/2020
+ms.date: 01/24/2020
 ms.author: raiye
-ms.openlocfilehash: 85029b5f819a59ffc4934d245778044a94a18d5e
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 89fd16b6afadee75678b76381739c12a31dc1a07
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122136"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765372"
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
 
 ## <a name="january-2020-guest-os"></a>2020 年 1 月のゲスト OS
 
->[!NOTE]
->1 月のゲスト OS は、現在、自動更新が構成されているクラウド サービス VM にロールアウトされているところです。 ロールアウトが完了すると、このバージョンは Azure portal と構成ファイルを通した手動更新で使用できるようになります。 1 月のゲスト OS には、以下の修正プログラムが含まれています。 この一覧は変更されることがあります。
-
 | 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
 | --- | --- | --- | --- | --- |
-|  Rel 20-01  |  [4532960]  |  Windows セキュリティ  | 2.94 | 2020 年 1 月 14 日 |
-|  Rel 20-01  |  [4534251]  |  Internet Explorer  | 2.94 | 2020 年 1 月 14 日 |
-|  Rel 20-01  |  [4534314]  |  Windows セキュリティ  | 2.94 | 2020 年 1 月 14 日 |
-|  Rel 20-01  |  [4532958]  |  Windows セキュリティ  | 3.81 | 2020 年 1 月 14 日 |
-|  Rel 20-01  |  [4532963]  |  Windows セキュリティ  | 3.81 | 2020 年 1 月 14 日 |
-|  Rel 20-01  |  [4534251]  |  Internet Explorer  | 3.81 | 2020 年 1 月 14 日 |
-|  Rel 20-01  |  [4534288]  |  Windows セキュリティ  | 3.81 | 2020 年 1 月 14 日 |
-|  Rel 20-01  |  [4532961]  |  Windows セキュリティ  | 4.74 | 2020 年 1 月 14 日 |
-|  Rel 20-01  |  [4532962]  |  Windows セキュリティ  | 4.74 | 2020 年 1 月 14 日 |
-|  Rel 20-01  |  [4534251]  |  Internet Explorer  | 4.74 | 2020 年 1 月 14 日 |
-|  Rel 20-01  |  [4534309]  |  Windows セキュリティ  | 4.74 | 2020 年 1 月 14 日 |
-|  Rel 20-01  |  [4494175]  |  マイクロコード v3  | 5.39 | 2019 年 8 月 29 日 |
-|  Rel 20-01  |  [4534271]  |  LCU  | 5.39 | 2020 年 1 月 14 日 |
-|  Rel 20-01  |  [4494174]  |  マイクロコード v4  | 6.15 | 2019 年 8 月 29 日 |
-|  Rel 20-01  |  [4532947]  |  Windows セキュリティ  | 6.15 | 2020 年 1 月 14 日 |
-|  Rel 20-01  |  [4534273]  |  LCU  | 6.15 | 2020 年 1 月 14 日 |
-|  Rel 20-01  |  [4530734]  |  セキュリティ以外  | 2.94 | 2019 年 12 月 10 日 |
-|  Rel 20-01  |  [4530691]  |  セキュリティ以外   | 3.81 | 2019 年 12 月 10 日 |
-|  Rel 20-01  |  [4530702]  |  セキュリティ以外  | 4.74 | 2019 年 12 月 10 日 |
+|  Rel 20-01  |  [4532960]  |  Windows セキュリティ  | [2.94] | 2020 年 1 月 14 日 |
+|  Rel 20-01  |  [4534251]  |  Internet Explorer  | [2.94] | 2020 年 1 月 14 日 |
+|  Rel 20-01  |  [4534314]  |  Windows セキュリティ  | [2.94] | 2020 年 1 月 14 日 |
+|  Rel 20-01  |  [4532958]  |  Windows セキュリティ  | [3.81] | 2020 年 1 月 14 日 |
+|  Rel 20-01  |  [4532963]  |  Windows セキュリティ  | [3.81] | 2020 年 1 月 14 日 |
+|  Rel 20-01  |  [4534251]  |  Internet Explorer  | [3.81] | 2020 年 1 月 14 日 |
+|  Rel 20-01  |  [4534288]  |  Windows セキュリティ  | [3.81] | 2020 年 1 月 14 日 |
+|  Rel 20-01  |  [4532961]  |  Windows セキュリティ  | [4.74] | 2020 年 1 月 14 日 |
+|  Rel 20-01  |  [4532962]  |  Windows セキュリティ  | [4.74] | 2020 年 1 月 14 日 |
+|  Rel 20-01  |  [4534251]  |  Internet Explorer  | [4.74] | 2020 年 1 月 14 日 |
+|  Rel 20-01  |  [4534309]  |  Windows セキュリティ  | [4.74] | 2020 年 1 月 14 日 |
+|  Rel 20-01  |  [4494175]  |  マイクロコード v3  | [5.39] | 2019 年 8 月 29 日 |
+|  Rel 20-01  |  [4534271]  |  LCU  | [5.39] | 2020 年 1 月 14 日 |
+|  Rel 20-01  |  [4494174]  |  マイクロコード v4  | [6.15] | 2019 年 8 月 29 日 |
+|  Rel 20-01  |  [4532947]  |  Windows セキュリティ  | [6.15] | 2020 年 1 月 14 日 |
+|  Rel 20-01  |  [4534273]  |  LCU  | [6.15] | 2020 年 1 月 14 日 |
+|  Rel 20-01  |  [4530734]  |  セキュリティ以外  | [2.94] | 2019 年 12 月 10 日 |
+|  Rel 20-01  |  [4530691]  |  セキュリティ以外   | [3.81] | 2019 年 12 月 10 日 |
+|  Rel 20-01  |  [4530702]  |  セキュリティ以外  | [4.74] | 2019 年 12 月 10 日 |
 
 [4532960]: https://support.microsoft.com/kb/4532960
 [4534251]: https://support.microsoft.com/kb/4534251
@@ -68,6 +65,11 @@ ms.locfileid: "76122136"
 [4530734]: https://support.microsoft.com/kb/4530734
 [4530691]: https://support.microsoft.com/kb/4530691
 [4530702]: https://support.microsoft.com/kb/4530702
+[6.15]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5.39]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4.74]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3.81]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2.94]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
 
 
 ## <a name="december-2019-guest-os"></a>2019 年 12 月のゲスト OS

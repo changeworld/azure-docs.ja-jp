@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: f45859370ae178fb186399fdd2648bf37f0985aa
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: dfc9c045af5347ebd3f15df48d5a5756dd2a9e05
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910902"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844753"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>チュートリアル:Azure Notebooks を使用して電気自動車のルートを案内する (Python)
 
@@ -22,7 +22,7 @@ Azure Maps は、Azure にネイティブに統合された地理空間サービ
 
 Azure Maps REST API シリーズを Python や R などの言語で呼び出して、地理空間データ解析や機械学習のシナリオを実現できます。 Azure Maps に用意された堅牢な[ルート案内 API シリーズ](https://docs.microsoft.com/rest/api/maps/route)のセットを使用することで、ユーザーは、複数のデータ ポイント間のルートを計算できます。 計算は、車両の種類や到達可能な範囲などのさまざまな条件に基づいています。 
 
-このチュートリアルでは、バッテリ残量が低下している電気自動車のドライバーに対して、自動車の場所からの走行時間が最も近い充電スタンドを案内するシナリオを見ていきます。
+このチュートリアルでは、バッテリ残量が低下している電気自動車のドライバーを手助けします。 ドライバーは、自動車の場所からできるだけ近い充電スタンドを探す必要があります。
 
 このチュートリアルでは、次のことについて説明します。
 
@@ -39,7 +39,7 @@ Azure Maps REST API シリーズを Python や R などの言語で呼び出し�
 
 このチュートリアルを完了するには、まず Azure Maps アカウントを作成して、プライマリ キー (サブスクリプション キー) を取得する必要があります。 
 
-Azure Maps アカウントのサブスクリプションを S1 価格レベルで作成するには、[アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)に関するページの手順に従って、S1 価格レベルで Azure Maps アカウントのサブスクリプションを作成します。 
+Azure Maps アカウントのサブスクリプションを作成するには、[アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)に関するセクションの手順に従います。 S1 価格帯の Azure Maps アカウントのサブスクリプションが必要です。 
 
 アカウントの主サブスクリプション キーを取得するには、[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従います。
 
@@ -47,7 +47,7 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
 
 ## <a name="create-an-azure-notebook"></a>Azure ノートブックを作成する
 
-このチュートリアルに沿って作業を進めるには、Azure ノートブック プロジェクトを作成し、Jupyter ノートブック ファイルをダウンロードして、実行する必要があります。 ノートブック ファイルには、本チュートリアルのシナリオを実装する Python コードが含まれています。 Azure ノートブック プロジェクトを作成し、Jupyter ノートブック ドキュメントをそれにアップロードするには、次のようにします。
+このチュートリアルに沿って作業を進めるには、Azure ノートブック プロジェクトを作成し、Jupyter ノートブック ファイルをダウンロードして、実行する必要があります。 ノートブック ファイルには、本チュートリアルのシナリオを実装する Python コードが含まれています。 Azure ノートブック プロジェクトを作成し、Jupyter ノートブック ドキュメントをそれにアップロードするには、次の手順に従います。
 
 1. [Azure Notebooks](https://notebooks.azure.com) に移動してサインインします 詳細については、「[クイック スタート: サインインとユーザー ID の設定](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks)」を参照してください。
 1. パブリック プロファイル ページの上部にある **[マイ プロジェクト]** を選択します。
@@ -64,7 +64,7 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
 
 1. **作成** を選択します。
 
-1. プロジェクトが作成されたら、[Azure Maps の Jupyter ノートブック リポジトリ](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)から [Jupyter ノートブック ドキュメント ファイル](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb)をダウンロードします。 
+1. プロジェクトが作成されたら、[Azure Maps の Jupyter ノートブック リポジトリ](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)からこの [Jupyter ノートブック ドキュメント ファイル](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb)をダウンロードします。
 
 1. **[マイ プロジェクト]** ページのプロジェクト一覧で、自分のプロジェクトを選択し、 **[アップロード]** を選択して Jupyter ノートブック ドキュメント ファイルをアップロードします。 
 
@@ -72,15 +72,15 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
 
 1. お使いのコンピューターからファイルをアップロードし、 **[完了]** を選択します。
 
-1. アップロードが正常に完了すると、プロジェクト ページにファイルが表示されます。 ファイルを選択し、Jupyter ノートブックとして開きます。
+1. アップロードが正常に完了すると、プロジェクト ページにファイルが表示されます。 ファイルをダブルクリックし、Jupyter ノートブックとして開きます。
 
-ノートブック ファイルで実装される機能についての理解を深めるため、ノートブックのコードを一度に 1 セルずつ実行することをお勧めします。 Notebook アプリの上部にある **[実行]** ボタンを選択して、各セルのコードを実行できます。
+ノートブック ファイルで実装される機能についての理解を深めるため、ノートブックのコードを一度に 1 セルずつ実行してください。 Notebook アプリの上部にある **[実行]** ボタンを選択して、各セルのコードを実行できます。
 
   ![[実行] ボタン](./media/tutorial-ev-routing/run.png)
 
 ## <a name="install-project-level-packages"></a>プロジェクト レベルのパッケージをインストールする
 
-ノートブックのコードを実行するには、次のようにして、プロジェクト レベルでパッケージをインストールします。
+ノートブックのコードを実行するには、次の手順に従って、プロジェクト レベルでパッケージをインストールします。
 
 1. [Azure Maps の Jupyter ノートブック リポジトリ](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)から [*requirements.txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) ファイルをダウンロードして、自分のプロジェクトにアップロードします。
 1. プロジェクト ダッシュボードで、 **[Project Settings]\(プロジェクトの設定\)** を選択します。 
@@ -97,7 +97,7 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
 
 必要なモジュールとフレームワークをすべて読み込むには、次のスクリプトを実行します。
 
-```python
+```Python
 import time
 import aiohttp
 import urllib.parse
@@ -106,9 +106,9 @@ from IPython.display import Image, display
 
 ## <a name="request-the-reachable-range-boundary"></a>到達可能範囲の境界線を要求する
 
-このシナリオの配送会社には、電気自動車が何台か導入されています。 日中は、倉庫に戻ることなく電気自動車を再充電しなければなりません。 現在の充電残量が 1 時間分を下回る (つまり、バッテリ残量が低下する) たびに、到達可能範囲内にある充電スタンドを検索して、その範囲の境界情報を取得する必要があります。 
+配送会社には、電気自動車が何台か導入されています。 日中は、倉庫に戻ることなく電気自動車を再充電しなければなりません。 充電残量が 1 時間分を下回るたびに、到達可能範囲内にある充電スタンドを検索します。 つまり、バッテリ残量が低下したら充電スタンドを検索し、 その充電スタンドの範囲に対応する境界情報を取得することになります。 
 
-会社は経済性とスピードのバランスがとれたルートを使いたいと考えているので、要求する routeType は *eco* になります。 次のスクリプトでは、車両の消費モデルのパラメーターを使用して、Azure Maps ルート案内サービスの [Get Route Range API](https://docs.microsoft.com/rest/api/maps/route/getrouterange) を呼び出します。 その後、スクリプトでは、応答が解析されて GeoJSON 形式の polygon オブジェクトが作成されます。これは、自動車の最大到達可能範囲を表します。
+会社は経済性とスピードのバランスがとれたルートを使いたいと考えているので、要求する routeType は *eco* になります。 次のスクリプトでは、Azure Maps ルート案内サービスの [Get Route Range API](https://docs.microsoft.com/rest/api/maps/route/getrouterange) を呼び出します。 車両の消費モデルのパラメーターを使用しています。 その後、スクリプトでは、応答が解析されて GeoJSON 形式の polygon オブジェクトが作成されます。これは、自動車の最大到達可能範囲を表します。
 
 電気自動車の到達可能範囲の境界を特定するには、次のセルのスクリプトを実行します。
 
@@ -173,7 +173,7 @@ for loc in range(len(searchPolyResponse["results"])):
 
 ## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service"></a>Azure Maps Data Service に到達可能範囲と充電ポイントをアップロードする
 
-電気自動車の最大到達可能範囲に対する充電スタンドと境界を、地図上に視覚化する必要があります。 これを行うには、[Data Upload API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) を使用して、境界のデータと充電スタンドのデータを GeoJSON オブジェクトとして Azure Maps Data Service にアップロードします。 
+電気自動車の最大到達可能範囲に対する充電スタンドと境界を、地図上に視覚化する必要があります。 これを行うには、境界のデータと充電スタンドのデータを GeoJSON オブジェクトとして Azure Maps Data Service にアップロードします。 [Data Upload API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) を使用します。 
 
 境界と充電ポイントのデータを Azure Maps Data Service にアップロードするには、次の 2 つのセルを実行します。
 
@@ -239,7 +239,7 @@ poiUdid = getPoiUdid["udid"]
 
 ## <a name="render-the-charging-stations-and-reachable-range-on-a-map"></a>マップ上に充電スタンドと到達可能範囲をレンダリングする
 
-データ サービスにデータをアップロードした後は、次のスクリプトを実行して、Azure Maps の [Get Map Image Service](https://docs.microsoft.com/rest/api/maps/render/getmapimage) を呼び出し、静的マップ画像の上に充電ポイントと最大到達可能範囲の境界をレンダリングします。
+データ サービスにデータをアップロードした後は、[Get Map Image Service](https://docs.microsoft.com/rest/api/maps/render/getmapimage) を呼び出します。 このサービスを使用し、次のスクリプトを実行して、静的マップ画像の上に充電ポイントと最大到達可能範囲の境界をレンダリングします。
 
 ```python
 # Get boundaries for the bounding box.
@@ -281,9 +281,9 @@ display(Image(poiRangeMap))
 
 ## <a name="find-the-optimal-charging-station"></a>最適な充電スタンドを探す
 
-到達可能範囲内にある充電スタンド候補をすべて特定した後は、最も短い時間で到達できるスタンドを調べる必要があります。 
+まず、到達可能範囲内にある充電スタンド候補をすべて特定する必要があります。 その後、最も短い時間で到達できるスタンドを調べる必要があります。 
 
-次のスクリプトで呼び出している Azure Maps の [Matrix Routing API](https://docs.microsoft.com/rest/api/maps/route/postroutematrix) では、指定した自動車の位置に対し、各充電スタンドまでの走行時間と距離が返されます。 次のセルのスクリプトでは、応答が解析されて、時間的に最も近くにある到達可能な充電スタンドの場所が特定されます。
+次のスクリプトでは、Azure Maps の [Matrix Routing API](https://docs.microsoft.com/rest/api/maps/route/postroutematrix) を呼び出しています。 指定した自動車の位置、各充電スタンドまでの走行時間と距離が返されます。 次のセルのスクリプトでは、応答が解析されて、時間的に最も近くにある到達可能な充電スタンドの場所が特定されます。
 
 最も近くにあり最短時間で到達可能な充電スタンドを探すには、次のセルのスクリプトを実行します。
 
@@ -336,7 +336,7 @@ routeData = {
 
 ## <a name="visualize-the-route"></a>ルートを視覚化する
 
-ルートを視覚化するには、まず Azure Maps の [Data Upload API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) を使用して、Azure Maps Data Service にルートのデータを GeoJSON オブジェクトとしてアップロードします。 次に、レンダリング サービス [Get Map Image API](https://docs.microsoft.com/rest/api/maps/render/getmapimage) を呼び出して、マップ上にルートをレンダリングして視覚化します。
+ルートを視覚化するにはまず、Azure Maps Data Service にルートのデータを GeoJSON オブジェクトとしてアップロードします。 そのためには、Azure Maps の [Data Upload API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) を使用します。 次に、レンダリング サービス [Get Map Image API](https://docs.microsoft.com/rest/api/maps/render/getmapimage) を呼び出して、マップ上にルートをレンダリングして視覚化します。
 
 マップ上にルートがレンダリングされた画像を取得するには、次のスクリプトを実行します。
 

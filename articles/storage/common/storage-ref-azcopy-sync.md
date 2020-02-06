@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 6ecba85a859e902922dfa2b7563a3ceb96a9ef4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1bff46c8584934ab8bcffce74763edc8363533d6
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457462"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988245"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -141,13 +141,13 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--exclude-path** string コピーするときにこれらのパスを除外します。 このオプションでは、ワイルドカード文字 (*) はサポートされていません。 相対パスのプレフィックスを確認します (例: myFolder;myFolder/subDirName/file.pdf)。 アカウント トラバーサルと組み合わせて使用する場合、パスにはコンテナー名は含まれません。
 
-**--exclude-pattern** string      名前がパターンの一覧と一致するファイルを除外します。 例: *.jpg;* .pdf;exactName
+**--exclude-pattern** string      名前がパターンの一覧と一致するファイルを除外します。 例: \*.jpg;\*.pdf;exactName
 
 **-h, --help**                sync のヘルプ コンテンツを表示します
 
 **--include-attributes**  string   (Windows のみ) 属性が属性の一覧と一致するファイルのみを含めます。 次に例を示します。A;S;R
 
-**--include-pattern** string      名前がパターンの一覧と一致するファイルをのみを含めます。 例: *.jpg;* .pdf;exactName
+**--include-pattern** string      名前がパターンの一覧と一致するファイルをのみを含めます。 例: \*.jpg;\*.pdf;exactName
 
 **--log-level** string            ログ ファイルのログの詳細度を定義します。使用できるレベルは次のとおりです。INFO(すべての要求と応答)、WARNING(遅い応答)、ERROR(失敗した要求のみ)、および NONE(出力ログなし)。 (既定値は INFO)。 (既定値は "INFO")
 
@@ -157,7 +157,7 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 ## <a name="options-inherited-from-parent-commands"></a>親コマンドから継承されるオプション
 
-|オプション|[説明]|
+|オプション|説明|
 |---|---|
 |--cap-mbps uint32|転送速度の上限を設定します (メガビット/秒)。 瞬間的なスループットは、上限と若干異なる場合があります。 このオプションを 0 に設定した場合や省略した場合、スループットは制限されません。|
 |--output-type string|コマンドの出力形式。 選択肢には、text、json などがあります。 既定値は "text" です。|

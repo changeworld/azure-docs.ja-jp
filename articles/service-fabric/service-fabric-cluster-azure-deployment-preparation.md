@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターのデプロイを計画する
 description: Azure への運用環境 Service Fabric クラスターのデプロイの計画と準備について説明します。
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 69fb97e4e679b3ce5817a51d619799a3384fd753
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32d48f9ffa056d252bdf762304340f245d80fd26
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463322"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834452"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>クラスターのデプロイを計画および準備する
 
@@ -37,9 +37,59 @@ Service Fabric を使用すると、Windows Server または Linux を実行す�
 
 プライマリ ノード タイプの最低 VM 数は、選択した[信頼性レベル][reliability]によって決まります。
 
-[プライマリ ノード タイプ](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance)、[非プライマリ ノード タイプのステートフル ワークロード](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)、[非プライマリ ノード タイプのステートレス ワークロード](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads)に関する最小推奨事項を参照してください。 
+[プライマリ ノード タイプ](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance)、[非プライマリ ノード タイプのステートフル ワークロード](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)、[非プライマリ ノード タイプのステートレス ワークロード](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads)に関する最小推奨事項を参照してください。
 
 最小ノード数を超える数は、このノード タイプで実行するアプリケーション/サービスのレプリカ数に基づいて決定する必要があります。  「[Service Fabric アプリケーションの容量計画](service-fabric-capacity-planning.md)」をご覧いただくと、アプリケーションの実行に必要なリソースを見積もるのに役立ちます。 変化するアプリケーションのワークロードに合わせて調整するために、後でいつでもクラスターをスケールアップまたはスケールダウンできます。 
+
+#### <a name="use-ephemeral-os-disks-for-virtual-machine-scale-sets"></a>仮想マシン スケール セットにエフェメラル OS ディスクを使用する
+
+"*エフェメラル OS ディスク*" は、ローカル仮想マシン (VM) 上に作成されるストレージであり、リモート Azure Storage には保存されません。 エフェメラル OS ディスクは、従来の永続 OS ディスクと比べて、次のような特徴を持っているため、すべての Service Fabric ノードの種類 (プライマリとセカンダリ) で推奨されます。
+
+* OS ディスクへの読み取り/書き込み待機時間が短縮される
+* ノード管理操作を素早くリセット/再イメージ化できる
+* 全体的なコストが削減される (ディスクは無料であり、追加のストレージ コストは発生しません)
+
+エフェメラル OS ディスクは特定の Service Fabric の機能ではなく、Service Fabric ノードの種類にマップされる Azure "*仮想マシン スケール セット*" の機能です。 これらを Service Fabric で使用するには、クラスターの Azure Resource Manager テンプレートで次のものが必要です。
+
+1. ノードの種類で、エフェメラル OS ディスクに対して[サポートされている Azure VM サイズ](../virtual-machines/windows/ephemeral-os-disks.md)が指定されており、その VM サイズに、OS ディスク サイズをサポートするのに十分なキャッシュ サイズが含まれていることを確認します (下記の「*注意*」を参照)。次に例を示します。
+
+    ```xml
+    "vmNodeType1Size": {
+        "type": "string",
+        "defaultValue": "Standard_DS3_v2"
+    ```
+
+    > [!NOTE]
+    > VM 自体の OS ディスク サイズ以上のキャッシュを持つ VM サイズを選択してください。そうしないと、(最初は受け入れられても、) Azure のデプロイでエラーが発生する可能性があります。
+
+2. `2018-06-01` 以降の仮想マシン スケール セットのバージョン (`vmssApiVersion`) を指定してください。
+
+    ```xml
+    "variables": {
+        "vmssApiVersion": "2018-06-01",
+    ```
+
+3. デプロイ テンプレートの [virtual machine scale set]\(仮想マシン スケール セット\) セクションで、`diffDiskSettings` に対して `Local` オプションを指定します。
+
+    ```xml
+    "apiVersion": "[variables('vmssApiVersion')]",
+    "type": "Microsoft.Compute/virtualMachineScaleSets",
+        "virtualMachineProfile": {
+            "storageProfile": {
+                "osDisk": {
+                        "vhdContainers": ["[concat(reference(concat('Microsoft.Storage/storageAccounts/', parameters('vmStorageAccountName')), variables('storageApiVersion')).primaryEndpoints.blob, parameters('vmStorageAccountContainerName'))]"],
+                        "caching": "ReadOnly",
+                        "createOption": "FromImage",
+                        "diffDiskSettings": {
+                            "option": "Local"
+                        },
+                }
+            }
+        }
+    ```
+
+詳細およびその他の構成オプションについては、「[Azure VM のエフェメラル OS ディスク](../virtual-machines/windows/ephemeral-os-disks.md)」を参照してください。 
+
 
 ### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>クラスターの耐久性レベルと信頼性レベルを選択する
 耐久性レベルは、ご利用の VM が、基になる Azure インフラストラクチャに対して持つ特権をシステムに表明する目的で使用します。 プライマリ ノード タイプでは、Service Fabric がこの特権を使って、システム サービスやステートフル サービスのクォーラム要件に影響を及ぼす、VM レベルのインフラストラクチャ要求 (VM の再起動、VM の再イメージ化、VM の移行など) を一時停止させることができます。 非プライマリ ノード タイプの場合も、Service Fabric がこの特権の下で、ステートフル サービスのクォーラム要件に影響を及ぼす、VM レベルのインフラストラクチャ要求 (VM の再起動、VM の再イメージ化、VM の移行など) を一時停止させることができます。  各レベルの利点、およびどのレベルをどの時点で使用するかについての推奨事項については、「[クラスターの耐久性の特徴][durability]」を参照してください。

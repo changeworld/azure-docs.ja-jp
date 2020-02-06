@@ -2,17 +2,17 @@
 title: Azure DNS で DNS レコード セットとレコードを管理する
 description: Azure DNS には、ドメインをホストしている場合に、DNS レコード セットとレコードを管理する機能が用意されています。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 10/6/2018
-ms.author: allensu
-ms.openlocfilehash: 6d0b917c72b1ebb6f1156df269908fb9af3657ed
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 4012b32eb2684126b8dc64b9e86bf35a016e9fba
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211795"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936833"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Azure ポータルを使用した DNS レコードとレコード セットの管理
 
@@ -107,7 +107,7 @@ Azure ポータルを使用して、レコード セットからレコードを�
 
 ゾーンの作成時に自動的に作成される、ゾーンの頂点 (名前は "\@") の SOA および NS レコード セットは削除できません。 ゾーンを削除すると、自動的に削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure DNS の詳細については、「 [Azure DNS の概要](dns-overview.md)」を参照してください。
 * DNS 作成の自動化については、「 [.NET SDK を使用した DNS ゾーンとレコード セットの作成](dns-sdk.md)」を参照してください。

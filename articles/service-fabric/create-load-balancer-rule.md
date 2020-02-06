@@ -3,12 +3,12 @@ title: クラスターの Azure Load Balancer 規則の作成
 description: Azure Service Fabric クラスターのポートを開くように Azure Load Balancer を構成します。
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: 5cc392a74b8cf5ef92be8b5783b5b70289e602af
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f4599b2e0174381ab7df04aeeb33db7e3ee60f26
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351479"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025386"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Service Fabric クラスターのポートを開く
 
@@ -50,7 +50,7 @@ az network lb rule create --backend-port 40000 --frontend-port 39999 --protocol 
 
 Azure CLI コマンドには、いくつかのパラメーターがあります。それらのパラメーターを次の表に示します。
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --------- | ----------- |
 | `--backend-port`  | Service Fabric アプリケーションがリッスンしているポート。 |
 | `--frontend-port` | ロード バランサーが外部接続用に公開するポート。 |
@@ -60,7 +60,7 @@ Azure CLI コマンドには、いくつかのパラメーターがあります�
 
 
 >[!NOTE]
->Azure CLI を使用してロード バランサーを作成する方法の詳細については、[Azure CLI を使用したロード バランサーの作成](../load-balancer/load-balancer-get-started-internet-arm-cli.md)に関するページを参照してください。
+>Azure CLI を使用してロード バランサーを作成する方法の詳細については、[Azure CLI を使用したロード バランサーの作成](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)に関するページを参照してください。
 
 ## <a name="powershell"></a>PowerShell
 
@@ -96,7 +96,7 @@ $lb | Set-AzLoadBalancer
 `New-AzLoadBalancerRuleConfig` コマンドでは、`-FrontendPort` はロード バランサーが外部接続用に公開するポートを表し、`-BackendPort` は Service Fabric アプリがリッスンするポートを表します。
 
 >[!NOTE]
->PowerShell を使用してロード バランサーを作成する方法の詳細については、[PowerShell を使用したロード バランサーの作成](../load-balancer/load-balancer-get-started-internet-arm-ps.md)に関するページを参照してください。
+>PowerShell を使用してロード バランサーを作成する方法の詳細については、[PowerShell を使用したロード バランサーの作成](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

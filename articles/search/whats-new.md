@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: e115316daf3673d9ad854e7ccd6d5256d729b5af
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 24114defe5e78bb7adbd006adc4ddbf8250b3188
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921009"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844974"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Cognitive Search の新機能
 
@@ -21,13 +21,15 @@ ms.locfileid: "75921009"
 
 <a name="new-service-name"></a>
 
-## <a name="new-service-name-for-azure-search"></a>Azure Search の新しいサービス名
+## <a name="new-service-name"></a>新しいサービス名
 
-コア操作での認識スキルと AI 処理の拡張された使用を反映するため、Azure Search の名前が **Azure Cognitive Search** に変更されました。 認知スキルによって新機能が追加されますが、AI の使用は厳密には省略可能です。 AI を使用せずに Azure Cognitive Search を引き続き使用して、クラウドで作成および管理するインデックスにある非公開で、異種の、テキストベースのコンテンツに対して、リッチな、フル テキスト検索ソリューションを構築することができます。 
-
-API バージョン、Nuget パッケージ、名前空間、およびエンドポイントは変更されません。 既存の検索ソリューションは、サービス名の変更の影響を受けません。
+Azure Search は、コア操作での拡張された (ただし、省略可能な) 認知スキルと AI 処理の使用を反映するために、**Azure Cognitive Search** に名前が変更されました。 API のバージョン、NuGet のパッケージ、名前空間、およびエンドポイントは変更されません。 新規および既存の検索ソリューションは、サービス名の変更の影響を受けません。
 
 ## <a name="feature-announcements"></a>機能のお知らせ
+
+### <a name="february-2020"></a>2020 年 2 月
+
++ [PII 検出](cognitive-search-skill-pii-detection.md)は、入力テキストから個人を特定できる情報を抽出する、インデックス作成中に使用される認知スキルです。ユーザーには、さまざまな方法でそれをそのテキストからマスクするためのオプションが提供されます。
 
 ### <a name="january-2020"></a>2020 年 1 月
 
@@ -54,7 +56,7 @@ API バージョン、Nuget パッケージ、名前空間、およびエンド�
 
 + [ドキュメント抽出 (プレビュー)](cognitive-search-skill-document-extraction.md) は、インデックスの作成中に使用されるコグニティブ スキルであり、スキルセット内からファイルのコンテンツを抽出できます。 ドキュメント解析は、これまでスキルセットの実行前にのみ行われていました。 このスキルを追加することで、スキルセットの実行内でこの操作を実行することもできます。
 
-+ [テキスト翻訳 (プレビュー)](cognitive-search-skill-text-translation.md) は、インデックスの作成中に使用されるコグニティブ スキルであり、テキストを評価し、各レコードについて、指定したターゲット言語に翻訳されたテキストを返します。
++ [テキスト翻訳](cognitive-search-skill-text-translation.md)は、インデックスの作成中に使用される認知スキルで、テキストを評価し、各レコードについて、指定したターゲット言語に翻訳されたテキストを返します。
 
 + [Power BI テンプレート](https://github.com/Azure-Samples/cognitive-search-templates/blob/master/README.md)は、Power BI デスクトップのナレッジ ストアで、強化されたコンテンツの視覚化と分析をすぐに開始することができます。 このテンプレートは、[データのインポート ウィザード](knowledge-store-create-portal.md)を使用して作成された Azure テーブルのプロジェクション向けに設計されています。
 

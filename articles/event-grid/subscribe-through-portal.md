@@ -1,18 +1,18 @@
 ---
 title: ポータルを使用した Azure Event Grid サブスクリプション
-description: ポータルから Event Grid サブスクリプションを作成する方法について説明します。
+description: この記事では、Azure portal を使用して、Azure Blob Storage などのサポートされているソースの Event Grid サブスクリプションを作成する方法について説明します。
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: b54bc52a2feaf4646d801265ddb273c2c86158ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3172c92ecae094ab5d978803d2ccac7e6404a5e1
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60823517"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721508"
 ---
 # <a name="subscribe-to-events-through-portal"></a>ポータルを使用したイベントのサブスクライブ
 
@@ -28,11 +28,11 @@ ms.locfileid: "60823517"
 
 1. "**Event Grid サブスクリプション**" を検索して、使用可能なオプションから選択します。
 
-   ![Search](./media/subscribe-through-portal/search.png)
+   ![検索](./media/subscribe-through-portal/search.png)
 
 1. **[+ イベント サブスクリプション]** を選択します。
 
-   ![[サブスクリプションの追加]](./media/subscribe-through-portal/add-subscription.png)
+   ![サブスクリプションを追加する](./media/subscribe-through-portal/add-subscription.png)
 
 1. 作成するサブスクリプションの種類を選択します。 たとえば、ご使用の Azure サブスクリプションのイベントにサブスクライブするには、 **[Azure サブスクリプション]** とターゲット サブスクリプションを選択します。
 
@@ -64,7 +64,7 @@ ms.locfileid: "60823517"
 
 ポータルには、そのソースに関連するイベント サブスクリプションを作成するためのオプションが表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * イベント配信と再試行については、「[Event Grid によるメッセージ配信と再試行](delivery-and-retry.md)」をご覧ください。
 * Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。

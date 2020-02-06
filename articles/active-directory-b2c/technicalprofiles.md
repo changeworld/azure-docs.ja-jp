@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 01/29/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3275e31744faba5b029e5a4619a51420400b9d0a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ad6b84323ac49713506bc61bd0051421e0234a94
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425606"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982281"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -84,7 +84,7 @@ ms.locfileid: "75425606"
 | 要素 | 発生回数 | Description |
 | ------- | ----------- | ----------- |
 | Domain | 0:1 | 技術プロファイルのドメイン名。 たとえば、技術プロファイルで Facebook ID プロバイダーが指定されている場合、ドメイン名は Facebook.com です。 |
-| DisplayName | 0:1 | ユーザーに表示できる技術プロファイルの名前。 |
+| DisplayName | 1:1 | ユーザーに表示できる技術プロファイルの名前。 |
 | Description | 0:1 | ユーザーに表示できる技術プロファイルの説明。 |
 | Protocol | 0:1 | 他の利用者との通信に使用されるプロトコル。 |
 | Metadata | 0:1 | トランザクション中にエンドポイントと通信するためにプロトコルによって利用されるキー/値ペアのコレクション。 |
@@ -99,6 +99,7 @@ ms.locfileid: "75425606"
 | OutputClaimsTransformations | 0:1 | クレーム プロバイダーから要求を受け取った後に実行する必要がある、要求変換に対する定義済みの参照の一覧。 |
 | ValidationTechnicalProfiles | 0:n | 技術プロファイルが検証目的で使用する、他の技術プロファイルへの参照の一覧。 詳細については、「[検証技術プロファイル](validation-technical-profile.md)」を参照してください。|
 | SubjectNamingInfo | 0:1 | サブジェクト名が要求とは別に指定されているトークンのサブジェクト名の生成を制御します。 たとえば、OAuth または SAML です。  |
+| IncludeInSso | 0:1 |  この技術プロファイルを使用する場合、セッションにシングル サインオン (SSO) 動作を適用するか、明示的な対話が必要です。 この要素は、検証技術プロファイル内で使用される SelfAsserted プロファイルでのみ有効です。 指定できる値は `true`(既定値) または`false`です。 |
 | IncludeClaimsFromTechnicalProfile | 0:1 | この技術プロファイルに対するすべての入力要求と出力要求の追加元となる、技術プロファイルの識別子。 参照先の技術プロファイルは、同じポリシー ファイルで定義する必要があります。 |
 | IncludeTechnicalProfile |0:1 | この技術プロファイルに対するすべてのデータの追加元となる、技術プロファイルの識別子。 参照先の技術プロファイルは、同じポリシー ファイル内に存在する必要があります。 |
 | UseTechnicalProfileForSessionManagement | 0:1 | セッション管理に使用される別の技術プロファイル。 |

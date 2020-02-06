@@ -4,7 +4,7 @@ description: 大規模な並列ワークロードと HPC ワークロードに�
 services: batch
 documentationcenter: ''
 author: mscurrell
-manager: gwallace
+manager: evansma
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 01/19/2018
 ms.author: markscu
 ms.custom: mvc
-ms.openlocfilehash: ee61f0f550a09640469914d29bde175028b59142
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7ca2a5e91a0ec0d765e106baca20f135996bc26e
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094320"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022802"
 ---
 # <a name="what-is-azure-batch"></a>Azure Batch とは
 
@@ -63,7 +63,7 @@ Azure Batch では、より高レベルで、ワークロード固有の機能�
 また、Batch ジョブを、[Azure Data Factory](../data-factory/transform-data-using-dotnet-custom-activity.md) などのツールで管理されているより大きな Azure ワークフローの一部として実行して、データを変換することができます。
 
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 Batch の一般的なシナリオでは、3D シーンの画像のレンダリングなどの本質的に並列な作業を、コンピューティング ノードのプール上でスケールアウトします。 このコンピューティング ノードのプールは、レンダリング ジョブに数十、数百、または数千ものコアを提供する "レンダリング ファーム" にすることができます。
 
 次の図は一般的な Batch ワークフローの手順を示しています。クライアント アプリケーションまたはホステッド サービスが Batch を利用し、並列ワークロードを実行します。
@@ -87,7 +87,7 @@ Batch の一般的なシナリオでは、3D シーンの画像のレンダリ�
 
 プール、ノード、ジョブ、タスクの詳細や、Batch アプリケーションを構築するときに使用できる多くの API 機能の詳細については、[開発者向けの Batch 機能の概要](batch-api-basics.md)に関するページを参照してください。 また、最新の [Batch サービスの更新](https://azure.microsoft.com/updates/?product=batch)も参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 以下のクイック スタートのいずれかに従って、実際に Azure Batch を使ってみましょう。
 * [Azure CLI で最初の Batch ジョブを実行する](quick-create-cli.md)

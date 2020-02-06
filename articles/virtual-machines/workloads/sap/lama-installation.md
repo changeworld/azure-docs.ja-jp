@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: ffe68352fed0b9c0df0cdfb971c085d1bb7f18c4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2df0bfe8041216e207193832c8f7ca48967c4e5b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978071"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842437"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Azure 用の SAP LaMa コネクタ
 
@@ -87,7 +87,7 @@ Azure コネクタでは、サービス プリンシパルを使用して Micros
 1. [New registration]\(新規登録\) をクリックします
 1. 名前を入力して [登録] をクリックします
 1. 新しいアプリを選択し、[設定] タブで [証明書とシークレット] をクリックします
-1. 新しいクライアント シークレットを作成し、新しいキーの説明を入力して、[when the secret should exire]\(シークレットの有効期限が切れたとき\) を選択し、[保存] をクリックします
+1. 新しいクライアント シークレットを作成し、新しいキーの説明を入力して、[when the secret should expire]\(シークレットの有効期限が切れたとき\) を選択し、[保存] をクリックします
 1. 値をメモします。 この値は、サービス プリンシパルのパスワードとして使用します
 1. アプリケーション ID をメモします。 この値は、サービス プリンシパルのユーザー名として使用します
 

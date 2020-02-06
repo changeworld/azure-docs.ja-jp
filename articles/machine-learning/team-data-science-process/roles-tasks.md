@@ -2,27 +2,27 @@
 title: Team Data Science Process の役割とタスク
 description: データ サイエンス グループの主要コンポーネント、担当者の役割、および関連するタスクの概要。
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/12/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bbc066f4b01a01a589849ad524b58a9b5d9dfae1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: c1ed731943abf0efdd99ea54d2318fa402835e08
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260648"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720012"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Team Data Science Process の役割とタスク
 
 Team Data Science Process (TDSP) は、構造化された手法で予測分析ソリューションと高度なアプリケーションを効率的に構築する Microsoft 開発のフレームワークです。 この記事では、このプロセスを基本とするデータ サイエンス チームの人員の役割と、それに関連した職務の概要について説明します。
 
-この概要の記事には、データ サイエンス グループ、データ サイエンス チーム、および TDSP プロジェクト全体に TDSP 環境を設定する手順のチュートリアルへのリンクがあります。 このチュートリアルでは、アクセス制御、コードのホストおよび共有、チーム タスクの管理に使用する Azure DevOps Projects、Azure Repos リポジトリ、Azure Boards アジャイル計画ツールの使用方法を詳細に説明しています。
+この概要の記事には、TDSP 環境の設定方法に関するチュートリアルへのリンクがあります。 これらのチュートリアルでは、Azure DevOps Projects、Azure Repos リポジトリ、および Azure Boards の使用について詳しく説明します。  動機となる目標は、概念をモデリングからデプロイまで移行することです。
 
 このチュートリアルでは、Microsoft が TDSP を実装する方法である Azure DevOps を使用しています。 Azure DevOps には、連携を促進する、ロールベースのセキュリティ、作業項目の管理と追跡、コードのホスト、共有、ソース管理が統合されています。 また、このチュートリアルでは、分析デスクトップとしていくつかの人気のあるデータ サイエンス ツールが事前構成され、Microsoft ソフトウェアおよび Azure サービスと統合されている、Azure [Data Science Virtual Machine (DSVM)](https://aka.ms/dsvm) を使用しています。 
 
@@ -125,7 +125,7 @@ Team Data Science Process (TDSP) は、構造化された手法で予測分析�
 
 この Microsoft TDSP チームの[プロジェクト テンプレート リポジトリ](https://github.com/Azure/Azure-TDSP-ProjectTemplate)を使用すると、プロジェクトの実行と連携を促進できます。 このリポジトリには、ご自分独自の TDSP プロジェクトで使用できる標準化されたディレクトリ構造とドキュメント テンプレートがあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Team Data Science Process で定義されている役割とタスクの詳細な説明を確認します。
 

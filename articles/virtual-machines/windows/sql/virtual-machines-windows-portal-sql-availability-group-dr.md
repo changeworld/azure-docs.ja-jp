@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 96b7c3cf59f947d1476ad840ae81695356d869b6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cd27e581aaca241fc15886f9f72546f92391b744
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037552"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772648"
 ---
 # <a name="configure-an-availability-group-on-azure-sql-server-virtual-machines-in-different-regions"></a>さまざまなリージョンに存在する Azure SQL Server 仮想マシンに可用性グループを構成する
 
@@ -93,9 +93,26 @@ ms.locfileid: "74037552"
 
 1. [Windows Server フェールオーバー クラスターに新しい SQL Server を追加します](virtual-machines-windows-portal-sql-availability-group-tutorial.md#addNode)。
 
-1. クラスターに IP アドレス リソースを作成します。
+1. クラスターに IP アドレス リソースを追加します。
 
-   IP アドレス リソースはフェールオーバー クラスター マネージャーで作成できます。 可用性グループ ロールを右クリックし、 **[リソースの追加]** 、 **[その他のリソース]** の順にクリックして、 **[IP アドレス]** をクリックします。
+   IP アドレス リソースはフェールオーバー クラスター マネージャーで作成できます。 クラスターの名前を選択し、 **[クラスター コア リソース]** の下でクラスター名を右クリックして、 **[プロパティ]** を選択します。 
+
+   ![クラスターのプロパティ](./media/virtual-machines-windows-portal-sql-availability-group-dr/cluster-name-properties.png)
+
+   **[プロパティ]** ダイアログ ボックスで、 **[IP アドレス]** の下にある **[追加]** を選択し、リモート ネットワーク領域からクラスター名の IP アドレスを追加します。 **[IP アドレス]** ダイアログ ボックスで **[OK]** を選択し、 **[クラスターのプロパティ]** ダイアログ ボックスでもう一度 **[OK]** を選択して、新しい IP アドレスを保存します。 
+
+   ![クラスター IP を追加する](./media/virtual-machines-windows-portal-sql-availability-group-dr/add-cluster-ip-address.png)
+
+
+1. コア クラスター名の依存関係として IP アドレスを追加します。
+
+   クラスターのプロパティをもう一度開き、 **[依存関係]** タブを選択します。2 つの IP アドレスの OR 依存関係を構成します。 
+
+   ![クラスターのプロパティ](./media/virtual-machines-windows-portal-sql-availability-group-dr/cluster-ip-dependencies.png)
+
+1. クラスター内の可用性グループ ロールに IP アドレス リソースを追加します。 
+
+   フェールオーバー クラスター マネージャーで可用性グループ ロールを右クリックし、 **[リソースの追加]** 、 **[More Resources]\(その他のリソース\)** と選択し、 **[IP アドレス]** を選択します。
 
    ![IP アドレスを作成する](./media/virtual-machines-windows-portal-sql-availability-group-dr/20-add-ip-resource.png)
 
@@ -103,16 +120,6 @@ ms.locfileid: "74037552"
 
    - リモート データ センターからのネットワークを使います。
    - 新しい Azure Load Balancer からの IP アドレスを割り当てます。 
-
-1. SQL Server 構成マネージャーで、新しい SQL Server の [Always On 可用性グループを有効](https://msdn.microsoft.com/library/ff878259.aspx)にします。
-
-1. [新しい SQL Server でファイアウォール ポートを開きます](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall)。
-
-   開く必要があるポート番号は、環境に依存します。 ミラーリング エンドポイントと Azure Load Balancer 正常性プローブのポートを開きます。
-
-1. [新しい SQL Server の可用性グループにレプリカを追加します](https://msdn.microsoft.com/library/hh213239.aspx)。
-
-   リモート Azure リージョンのレプリカについては、手動フェールオーバーでの非同期レプリケーション用に設定します。  
 
 1. リスナー クライアント アクセス ポイント (ネットワーク名) クラスターに対する依存関係として、IP アドレス リソースを追加します。
 
@@ -137,6 +144,17 @@ ms.locfileid: "74037552"
 
    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
    ```
+
+1. SQL Server 構成マネージャーで、新しい SQL Server の [Always On 可用性グループを有効](/sql/database-engine/availability-groups/windows/enable-and-disable-always-on-availability-groups-sql-server)にします。
+
+1. [新しい SQL Server でファイアウォール ポートを開きます](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall)。
+
+   開く必要があるポート番号は、環境に依存します。 ミラーリング エンドポイントと Azure Load Balancer 正常性プローブのポートを開きます。
+
+
+1. [新しい SQL Server の可用性グループにレプリカを追加します](/sql/database-engine/availability-groups/windows/use-the-add-replica-to-availability-group-wizard-sql-server-management-studio)。
+
+   リモート Azure リージョンのレプリカについては、手動フェールオーバーでの非同期レプリケーション用に設定します。  
 
 ## <a name="set-connection-for-multiple-subnets"></a>複数のサブネットに対する接続を設定する
 
@@ -178,9 +196,9 @@ ms.locfileid: "74037552"
 - [可用性グループの計画的な手動フェールオーバーの実行 (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
 - [可用性グループの強制手動フェールオーバーの実行 (SQLServer)](https://msdn.microsoft.com/library/ff877957.aspx)
 
-## <a name="additional-links"></a>その他のリンク
+## <a name="additional-links"></a>追加リンク
 
-* [AlwaysOn 可用性グループ](https://msdn.microsoft.com/library/hh510230.aspx)
+* [Always On 可用性グループ](https://msdn.microsoft.com/library/hh510230.aspx)
 * [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/)
 * [Azure Load Balancer](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer)
 * [Azure の可用性セット](../manage-availability.md)

@@ -5,17 +5,18 @@ services: active-directory
 author: msaburnley
 manager: daveba
 ms.service: active-directory
+ms.subservice: fundamentals
 ms.topic: overview
 ms.date: 07/31/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e0e028be6b4a507ba97f9126c791ee77c764c70
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: c4d32522ef88504b96d262c654dac7c08c292761
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72880510"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897465"
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory とは
 
@@ -50,7 +51,7 @@ Azure AD の実装を強化するために、Azure Active Directory Premium P1 �
 
 - **Azure Active Directory Free。** ユーザーとグループの管理、オンプレミス ディレクトリ同期、基本レポート、クラウド ユーザー向けのセルフサービスのパスワード変更のほか、Azure、Office 365、および多くの一般的な SaaS アプリ全体のシングル サインオンを提供します。
 
-- **Azure Active Directory Premium P1。** P1 では、Free の機能に加えて、ハイブリッド ユーザーがオンプレミスとクラウドの両方のリソースにアクセスすることもできます。 さらに、動的グループ、セルフサービス グループ管理、Microsoft Identity Manager (オンプレミスの ID およびアクセス管理スイート)、オンプレミス ユーザーによるセルフサービスのパスワード リセットを可能にするクラウドの書き戻し機能など、高度な管理機能もサポートしています。
+- **Azure Active Directory Premium P1。** P1 では、Free の機能に加えて、ハイブリッド ユーザーがオンプレミスとクラウドの両方のリソースにアクセスすることもできます。 さらに、動的グループ、セルフサービス グループ管理、Microsoft Identity Manager (オンプレミスの ID およびアクセス管理スイート)、オンプレミス ユーザーによるセルフサービス パスワード リセットを可能にするクラウドの書き戻し機能など、高度な管理機能もサポートしています。
 
 - **Azure Active Directory Premium P2。** P2 では、Free および P1 の機能に加えて、アプリや重要な企業データへのリスクベースの条件付きアクセスを提供するのに役立つ [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md) のほか、管理者と管理者によるリソースへのアクセスを検出、制限、監視するのに役立ち、必要に応じてジャストインタイム アクセスを提供できる [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md) が提供されます。
 
@@ -58,7 +59,7 @@ Azure AD の実装を強化するために、Azure Active Directory Premium P1 �
 
 Azure サブスクリプションの Azure AD への関連付けの詳細については「[方法: Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する](active-directory-how-subscriptions-associated-directory.md)」を、ライセンスのユーザーへの割り当ての詳細については「[方法: Azure Active Directory ライセンスを割り当てる、または削除する](license-users-groups.md)」を参照してください。
 
-## <a name="terminology"></a>用語集
+## <a name="terminology"></a>用語
 
 Azure AD とそのドキュメントをより深く理解するために、次の用語を確認しておくことをお勧めします。
 
@@ -75,7 +76,7 @@ Azure AD とそのドキュメントをより深く理解するために、次�
 |カスタム ドメイン|新しい Azure AD ディレクトリには、必ず domainname.onmicrosoft.com という初期ドメイン名が付けられます。 その初期の名前に加えて、組織のドメイン名をリストに追加することもできます。このドメイン名には、ビジネスを遂行するために使用するユーザー名と、ユーザーが組織のリソースにアクセスするために使用する名前が含まれます。 カスタム ドメイン名を追加すると、alain@contoso.com など、ユーザーになじみのあるユーザー名を作成するのに役立ちます。|
 |アカウント管理者|この従来のサブスクリプション管理者ロールは、概念的にはサブスクリプションの課金の所有者です。 このロールは、[Azure アカウント センター](https://account.azure.com/Subscriptions)にアクセスでき、アカウント内の全サブスクリプションの管理を可能にします。 詳細については、「[従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)」を参照してください。|
 |サービス管理者|この従来のサブスクリプション管理者ロールでは、アクセスを含め、すべての Azure リソースを管理することができます。 このロールは、サブスクリプション スコープで所有者ロールを割り当てられているユーザーと同等のアクセス権を持ちます。 詳細については、「[従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)」を参照してください。|
-|Owner|このロールは、アクセスを含め、すべての Azure リソースを管理するのに役立ちます。 このロールは、Azure リソースへのきめ細かなアクセス管理を提供するロールベース アクセス制御 (RBAC) と呼ばれる新しい認可システムをベースに構築されています。 詳細については、「[従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)」を参照してください。|
+|所有者|このロールは、アクセスを含め、すべての Azure リソースを管理するのに役立ちます。 このロールは、Azure リソースへのきめ細かなアクセス管理を提供するロールベース アクセス制御 (RBAC) と呼ばれる新しい認可システムをベースに構築されています。 詳細については、「[従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)」を参照してください。|
 |Azure AD 全体管理者|この管理者ロールは、Azure AD テナントを作成したユーザーに自動的に割り当てられます。 全体管理者は、Azure AD と Azure AD にフェデレーションされたすべてのサービス (Exchange Online、SharePoint Online、Skype for Business Online など) に対して、すべての管理機能を実行できます。 全体管理者は複数人配置することができますが、管理者ロールをユーザーに割り当てることができるのは全体管理者に限られます (これには他の全体管理者を割り当てることも含まれます)。<br><br>**注**<br>この管理者ロールは、Azure portal では全体管理者と呼ばれますが、Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では**会社の管理者**と呼ばれます。<br><br>さまざまな管理者ロールの詳細については、「[Azure Active Directory での管理者ロールのアクセス許可](../users-groups-roles/directory-assign-admin-roles.md)」を参照してください。|
 |Microsoft アカウント (別称: MSA)|Outlook、OneDrive、Xbox LIVE、Office 365 など、コンシューマー向けの Microsoft 製品とクラウド サービスへのアクセスを提供する個人アカウントです。 お使いの Microsoft アカウントは、Microsoft が運営する Microsoft コンシューマー ID アカウント システムを使用して作成、保存されます。|
 
@@ -83,10 +84,10 @@ Azure AD とそのドキュメントをより深く理解するために、次�
 
 Azure AD ライセンスを選択すると、組織向けの次の機能の一部またはすべてにアクセスできるようになります。
 
-|Category|説明|
+|カテゴリ|説明|
 |-------|-----------|
 |アプリケーション管理|アプリケーション プロキシ、シングル サインオン、マイ アプリ ポータル (別称: アクセス パネル)、サービスとしてのソフトウェア (SaaS) アプリを使用して、クラウドおよびオンプレミスのアプリを管理します。 詳細については、「[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](../manage-apps/application-proxy.md)」および「[アプリケーション管理のドキュメント](../manage-apps/index.yml)」を参照してください。|
-|認証|Azure Active Directory のセルフサービスのパスワード リセット、Multi-Factor Authentication、カスタムの禁止パスワード リスト、スマート ロックアウトを管理します。 詳細については、「[Azure AD Authentication のドキュメント](../authentication/index.yml)」を参照してください。|
+|認証|Azure Active Directory のセルフサービス パスワード リセット、Multi-Factor Authentication、カスタムの禁止パスワード リスト、スマート ロックアウトを管理します。 詳細については、「[Azure AD Authentication のドキュメント](../authentication/index.yml)」を参照してください。|
 |企業間 (B2B)|自社データの管理を続けながら、ゲスト ユーザーと外部パートナーを管理します。 詳細については、「[Azure Active Directory B2B のドキュメント](../b2b/index.yml)」を参照してください。|
 |企業-消費者間 (B2C)|アプリの使用時にユーザーがサインアップおよびサインインする方法や自分のプロファイルを管理する方法をカスタマイズして制御します。 詳細については、「[Azure Active Directory B2C のドキュメント](../../active-directory-b2c/index.yml)」を参照してください。|
 |条件付きアクセス|クラウド アプリへのアクセスを管理します。 詳細については、「[Azure AD の条件付きアクセスのドキュメント](../conditional-access/index.yml)」を参照してください。|
@@ -101,7 +102,7 @@ Azure AD ライセンスを選択すると、組織向けの次の機能の一�
 |Privileged Identity Management (PIM)|組織内でのアクセスを管理、制御、および監視します。 この機能には、Azure AD と Azure のリソースへのアクセスと、その他 Microsoft Online Services (Office 365、Intune など) へのアクセスが含まれます。 詳しくは、[Azure AD Privileged Identity Management](../privileged-identity-management/index.yml) に関するページを参照してください。|
 |レポートと監視|環境におけるセキュリティや使用パターンに関する分析情報を得ることができます。 詳細については、「[Azure Active Directory のレポートと監視](../reports-monitoring/index.yml)」を参照してください。|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Active Directory Premium にサインアップする](active-directory-get-started-premium.md)
 

@@ -1,6 +1,6 @@
 ---
-title: トレーニング用のクラスルーム ラボを使用する - Azure Lab Services| Microsoft Docs
-description: トレーニングの各種シナリオを実現するために Azure DevTest Labs を使用する方法について説明します。
+title: トレーニング用のクラスルーム ラボを使用する - Azure Lab Services
+description: この記事では、Azure DevTest Labs を使用してトレーニング シナリオ用のラボを Azure に作成する方法について説明します。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 4d2ba11181977f1976b5ae933e8b93a92424fa96
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 155806222f9e11fec177487b7147d81054ac06ed
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60695295"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717986"
 ---
 # <a name="use-classroom-labs-for-trainings"></a>トレーニング用のクラスルーム ラボを使用する
 トレーニング用のラボを設定することができます。 Azure Lab Services のクラスルーム ラボでは、各受講者がトレーニングで同じ分離環境を使用する、トレーニング用のラボを作成することができます。 各受講者が必要としている場合にのみトレーニング環境を利用できるようにし、トレーニング環境にトレーニングに必要なリソース (仮想マシンなど) が十分に含まれるようにするポリシーを適用できます。 
@@ -54,5 +54,5 @@ Azure Lab Services を使用する最初の手順は、Azure portal でラボ �
 ## <a name="use-vms-in-the-classroom-lab"></a>クラスルーム ラボで VM を使用する
 学生またはトレーニングの出席者はラボに登録し、VM に接続してコースの演習を行います。 詳細については、[クラスルーム ラボへのアクセス方法](how-to-use-classroom-lab.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 まず、クラスルーム ラボでラボ アカウントを作成します。その場合、「[チュートリアル:Azure Lab Services でラボ アカウントを設定する](tutorial-setup-lab-account.md)」という記事の手順に従います。

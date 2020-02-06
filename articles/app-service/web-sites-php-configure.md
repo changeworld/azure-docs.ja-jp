@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 2d35c31e23da7addcf0b4c341c6925f258d5c232
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: c73fb55e485d0c92d27eac2ac197a81337b9d5e1
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688260"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016801"
 ---
 # <a name="configure-php-in-azure-app-service"></a>Azure App Service での PHP の構成方法
 
@@ -27,27 +27,13 @@ ms.locfileid: "74688260"
 
 PHP 7.0 および PHP 7.2 バージョンも使用できますが、既定では有効になっていません。 PHP バージョンを更新するには、次のいずれかの方法に従います。
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 1. [Azure portal](https://portal.azure.com) で目的のアプリに移動し、 **[構成]** ページにスクロールします。
 
 2. **[構成]** から **[全般設定]** を選択し、新しい PHP バージョンを選択します。
 
 3. **[全般設定]** ブレードの上部にある **[保存]** ボタンをクリックします。
-
-### <a name="azure-powershell-windows"></a>Azure PowerShell (Windows)。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-1. Azure PowerShell を起動し、アカウントにログインします。
-
-        PS C:\> Connect-AzAccount
-2. アプリの PHP バージョンを設定します。
-
-        PS C:\> Set-AzureWebsite -PhpVersion {5.6 | 7.0 | 7.2} -Name {app-name}
-3. PHP バージョンが設定されました。 これらの設定を確認できます。
-
-        PS C:\> Get-AzureWebsite -Name {app-name} | findstr PhpVersion
 
 ### <a name="azure-cli"></a>Azure CLI 
 
@@ -168,7 +154,7 @@ App Service では、既定の PHP ランタイムを使用する代わりに、
 
     ![Azure での Composer 自動化を使用した Git デプロイ](./media/web-sites-php-configure/composer-extension-success.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、 [PHP デベロッパー センター](https://azure.microsoft.com/develop/php/)を参照してください。
 

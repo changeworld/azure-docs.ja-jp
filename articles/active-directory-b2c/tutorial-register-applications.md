@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2a9e4828428a91c1d1b75fb9d1b9004e52988084
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dbb689182a45367061ae129304a98a8ee9962051
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425479"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840113"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C にアプリケーションを登録する
 
-[アプリケーション](active-directory-b2c-apps.md)が Azure Active Directory B2C (Azure AD B2C) と対話できるようにするには、管理しているテナントに登録する必要があります。 このチュートリアルでは、Azure portal を使用して Web アプリケーションを登録する方法を示します。
+[アプリケーション](application-types.md)が Azure Active Directory B2C (Azure AD B2C) と対話できるようにするには、管理しているテナントに登録する必要があります。 このチュートリアルでは、Azure portal を使用して Web アプリケーションを登録する方法を示します。
 
 この記事では、次のことについて説明します。
 
@@ -40,8 +40,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 #### <a name="applicationstabapplications"></a>[アプリケーション](#tab/applications/)
 
-1. [Azure portal](https://portal.azure.com) にサインインする
-1. ポータルツールバーの **[Directory + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントが含まれているディレクトリを選択します。
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. ポータル ツールバーの **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントが含まれているディレクトリを選択します。
 1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリケーション]** を選択し、 **[追加]** を選択します。
 1. アプリケーションの名前を入力します。 たとえば、*webapp1* とします。
@@ -59,8 +59,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
 
-1. [Azure portal](https://portal.azure.com) にサインインする
-1. ポータルツールバーの **[Directory + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントが含まれているディレクトリを選択します。
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. ポータル ツールバーの **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントが含まれているディレクトリを選択します。
 1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリの登録 (プレビュー)]** 、 **[新規登録]** の順に選択します。
 1. アプリケーションの**名前**を入力します。 たとえば、*webapp1* とします。
@@ -88,7 +88,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-client-secret"></a>クライアント シークレットの作成
 
-お客様のアプリケーションでコードをトークンと交換する場合は、アプリケーション シークレットを作成する必要があります。
+お客様のアプリケーションで認証コードをアクセス トークンと交換する場合は、アプリケーション シークレットを作成する必要があります。
 
 #### <a name="applicationstabapplications"></a>[アプリケーション](#tab/applications/)
 

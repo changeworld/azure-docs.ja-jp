@@ -1,14 +1,14 @@
 ---
-title: Blueprints サンプルのインデックス
+title: ブループリント サンプルの一覧
 description: Azure Blueprints を使用して環境、ポリシー、クラウド導入フレームワークの基礎をデプロイするためのコンプライアンスおよび標準サンプルのインデックス。
-ms.date: 12/05/2019
+ms.date: 01/10/2020
 ms.topic: sample
-ms.openlocfilehash: a0be956037f6b1ee5229ecde7b1491f552113866
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fa5f02af6a0e59359d6bc3c2d24515fea535a0fa
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436558"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938307"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints サンプル
 
@@ -21,6 +21,7 @@ ms.locfileid: "75436558"
 | [カナダ連邦の PBMM](./canada-federal-pbmm/index.md) | カナダ連邦の Protected B、Medium Integrity、Medium Availability (PBMM) に準拠するための規定を提供します。 |
 | [CIS Microsoft Azure Foundations Benchmark](./cis-azure-1.1.0/index.md)| CIS Microsoft Azure Foundations Benchmark の推奨事項に準拠する際に役立つ一連のポリシーを提供します。 |
 | [FedRAMP (中)](./fedramp-m/index.md) | FedRAMP (中) への準拠に役立つ一連のポリシーを提供します。 |
+| [FedRAMP High](./fedramp-h/index.md) | FedRAMP High への準拠に役立つ一連のポリシーを提供します。 |
 | [HIPAA HITRUST](./HIPAA-HITRUST/index.md) | HIPAA HITRUST への準拠に役立つ一連のポリシーを提供します。 |
 | [IRS 1075](./irs-1075/index.md) | IRS 1075 に準拠するための規定を提供します。|
 | [ISO 27001](./iso27001/index.md) | ISO 27001 に準拠するための規定を提供します。 |
@@ -37,12 +38,12 @@ ms.locfileid: "75436558"
 
 ![ブループリント サンプルの戦略](../media/blueprint-samples-strategy.png)
 
-CAF 基盤ブループリントと CAF 移行ランディング ゾーン ブループリントは、オンプレミスの資産またはワークロードを Azure に移行させるための既存のクリーンな単一サブスクリプションが顧客側で準備されていることを前提としています
-(上の図の領域 A および B)。  
+CAF 基盤および CAF 移行ランディング ゾーンのブループリントは、オンプレミスの資産とワークロードを Azure に移行するために既存のクリーンな単一サブスクリプションが顧客側で準備されていることを前提としています
+(図の領域 A および B)。  
 
 サンプル ブループリントを繰り返し使ってみて、顧客が適用するカスタマイズのパターンを探すことができます。 金融サービスや eコマースなどの業界に特有のブループリントにあらかじめ取り組むこともできます (領域 B の最上位)。 同様に、複数のサブスクリプション、高可用性、リージョン間リソース、既存のサブスクリプションとリソースに対するコントロールを実装しているお客様など、アーキテクチャに関する複雑な考慮事項を前提としたブループリントの構築も想定しています (領域 C および D)。
 
-コンプライアンス要件が高く、アーキテクチャの複雑性も高い顧客シナリオに対応したサンプル ブループリントをご用意しています (上の図の領域 E)。 上の領域 F は、顧客およびパートナーがサンプル ブループリントをカスタマイズして活用し、独自のニーズに対応する領域を示しています。
+コンプライアンス要件が高く、アーキテクチャの複雑性も高い顧客シナリオに対応したサンプル ブループリントをご用意しています (図の領域 E)。 図の領域 F は、サンプル ブループリントを活用して独自のニーズに合わせてカスタマイズしている顧客およびパートナーが対応する領域を示しています。
 
 ## <a name="next-steps"></a>次のステップ
 

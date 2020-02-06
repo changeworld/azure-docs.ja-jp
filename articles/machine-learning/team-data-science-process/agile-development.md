@@ -2,20 +2,20 @@
 title: データ サイエンス プロジェクトのアジャイル開発 - Team Data Science Process
 description: Team Data Science Process を使用して、プロジェクト チーム内でバージョン コントロールされた体系的、協調的な方法でデータ サイエンス プロジェクトを実行します。
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/05/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 09c5962e62077fbecc9b327320d0bb5b88416ffa
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: c097c14406349d973e905fadb806cc159d9b16d8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260680"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722103"
 ---
 # <a name="agile-development-of-data-science-projects"></a>データ サイエンス プロジェクトのアジャイル開発
 
@@ -43,7 +43,7 @@ TDSP スプリント計画フレームワークには、よく使用される 4 
   
 - **ユーザー ストーリー**: ユーザー ストーリーは、エンドツーエンドで機能を完成させる必要がある作業項目です。 ユーザー ストーリーの例としては以下があります。
   - データを取得する 
-  - データを調査する 
+  - データの探索 
   - 特徴を生成する
   - モデルを構築する
   - モデルの運用化 
@@ -86,7 +86,7 @@ Azure Boards のスプリント計画の詳細については、「[バックロ
    
    **[開発]** セクションの **[リンクの追加]** を選択することで、プロジェクトの Azure Repos コード リポジトリに機能をリンクさせることもできます。 
    
-   機能の編集が完了したら、 **[保存して閉じる]** を選択します。
+   機能を編集したら、 **[保存して閉じる]** を選択します。
    
    ![機能を編集して [保存して閉じる] を選択する](./media/agile-development/3a-add-link-repo.png)
 
@@ -161,7 +161,7 @@ Azure Boards のスプリント計画の詳細については、「[バックロ
    - *ビジネスの把握*
    - *データの取得*
    - *モデリング*
-   - *Deployment*
+   - *デプロイ*
    
 1. **[要件バックログ]** で**ストーリー**から *TDSP Substages* に名前を変更し、新しい作業項目の種類 *TDSP Substage* を追加して、既定の作業項目の種類を **TDSP Substage** に設定します。
    
@@ -208,7 +208,7 @@ Azure Boards のスプリント計画の詳細については、「[バックロ
 ![18](./media/agile-development/18-workitems1.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 「[Git を使用した共同コーディング](collaborative-coding-with-git.md)」では、共有コード開発フレームワークとして Git を使用してデータ サイエンス プロジェクトの共同コード開発を行う方法と、アジャイル プロセスを使って計画された作業にこれらのコーディング アクティビティをリンクする方法について説明しています。
 

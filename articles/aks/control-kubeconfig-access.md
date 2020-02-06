@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 01/28/2020
 ms.author: mlearned
-ms.openlocfilehash: cbc653b86ed83f9d6a7348d39f51dc7cd49c6892
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: d1fdd17b0f6b8ed91d4496f7e9e5a578e53556fe
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67615670"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845234"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Azure のロールベースのアクセス制御を使用して Azure Kubernetes Service (AKS) 内の Kubernetes 構成ファイルに対するアクセス権を定義する
 
@@ -35,20 +35,24 @@ ms.locfileid: "67615670"
 あらかじめ用意されているロールは 2 つあります。
 
 * **Azure Kubernetes Service クラスター管理者ロール**  
-    * *Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action* API 呼び出しにアクセスできます。 この API 呼び出しは、[クラスター管理者の資格情報を一覧表示][api-cluster-admin]するものです。
-    * *clusterAdmin* ロール用の *kubeconfig* をダウンロードできます。
+  * *Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action* API 呼び出しにアクセスできます。 この API 呼び出しは、[クラスター管理者の資格情報を一覧表示][api-cluster-admin]するものです。
+  * *clusterAdmin* ロール用の *kubeconfig* をダウンロードできます。
 * **Azure Kubernetes Service クラスター ユーザー ロール**
-    * *Microsoft.ContainerService/managedClusters/listClusterUserCredential/action* API 呼び出しにアクセスできます。 この API 呼び出しは、[クラスター ユーザーの資格情報を一覧表示][api-cluster-user]するものです。
-    * *clusterUser* ロール用の *kubeconfig* をダウンロードできます。
+  * *Microsoft.ContainerService/managedClusters/listClusterUserCredential/action* API 呼び出しにアクセスできます。 この API 呼び出しは、[クラスター ユーザーの資格情報を一覧表示][api-cluster-user]するものです。
+  * *clusterUser* ロール用の *kubeconfig* をダウンロードできます。
 
 これらの RBAC ロールは、Azure Active Directory (AD) のユーザーまたはグループに適用できます。
+
+> [注意] Azure AD を使用するクラスターでは、*clusterUser* ロールのユーザーには空の *kubeconfig* ファイルがあり、これによってログインを求められます。 ログインすると、ユーザーは、Azure AD のユーザーまたはグループの設定に基づいてアクセスできます。 *clusterAdmin* ロールのユーザーは管理者アクセス権を持ちます。
+>
+> Azure AD を使用していないクラスターは、*clusterAdmin* ロールのみを使用します。
 
 ## <a name="assign-role-permissions-to-a-user-or-group"></a>ロールのアクセス許可をユーザーまたはグループに割り当てる
 
 使用可能なロールのいずれかを割り当てるには、AKS クラスターのリソース ID と、Azure AD ユーザー アカウントまたはグループの ID を取得する必要があります。 次のコマンド例は以下のように機能します。
 
 * [az aks show][az-aks-show] コマンドを使用して、*myResourceGroup* リソース グループに存在する *myAKSCluster* という名前のクラスターのリソース ID を取得する。 必要に応じて、独自のクラスター名とリソース グループ名を指定してください。
-* [az account show][az-account-show] コマンドと [az ad user show][az-ad-user-show] コマンドを使用して、ユーザー ID を取得する。
+* [az account show][az-account-show] と [az ad user show][az-ad-user-show] コマンドを使用してユーザー ID を取得する。
 * 最後に、[az role assignment create][az-role-assignment-create] コマンドを使用してロールを割り当てる。
 
 次の例では、"*Azure Kubernetes Service クラスター管理者ロール*" を個々のユーザー アカウントに割り当てます。
@@ -131,7 +135,7 @@ users:
 az role assignment delete --assignee $ACCOUNT_ID --scope $AKS_CLUSTER
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 AKS クラスターにアクセスする際のセキュリティを強化するために、[Azure Active Directory 認証を統合][aad-integration]します。
 

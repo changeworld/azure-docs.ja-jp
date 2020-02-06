@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.author: diberry
-ms.openlocfilehash: de078399a29af1c7eb2ae3fb237e1550ccaeacfa
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 681f00adde1d440fbb41f2e66652db34d53fbf99
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872300"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843262"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>フォローアップ プロンプトを使用して、複数のターンを含む会話を作成します。
 
@@ -65,7 +65,7 @@ KB を公開した後、 **[Create Bot]\(ボットの作成\)** ボタンを選�
 
 * 階層を示すには、見出しとサブ見出しを使用する。 たとえば、親 QnA を示すために h1、プロンプトとして使用する必要がある QnA を示すために h2 を使用できます。 後続の階層を示すには、小さい見出しサイズを使用する。 スタイル、色、その他のメカニズムを、ドキュメント内の構造を暗黙に示すために使用しないでください。QnA Maker では複数ターンのプロンプトが抽出されることはありません。
 
-* 見出しの最初の文字は大文字にしなくてはなりません。 
+* 見出しの最初の文字は大文字にしなくてはなりません。
 
 * 見出しの末尾に疑問符 `?` を付けないでください。
 
@@ -113,7 +113,7 @@ KB を公開した後、 **[Create Bot]\(ボットの作成\)** ボタンを選�
 1. **Signout** の行の **[応答]** 列で、 **[Add follow-up prompt]\(フォローアップ プロンプトの追加\)** を選択します。
 1. **[Follow-up prompt]\(フォローアップ プロンプト\)** ポップアップ ウィンドウのフィールドに、次の値を入力します。
 
-    |フィールド|値|
+    |フィールド|Value|
     |--|--|
     |表示テキスト|「**Turn off the device**」(デバイスの電源を切る) と入力します。 これは、フォローアップ プロンプトに表示するカスタム テキストです。|
     |Context-only (コンテキストのみ)| このチェック ボックスをオンにします。 応答は、質問がコンテキストを指定する場合にのみ返されます。|
@@ -150,7 +150,7 @@ KB を公開した後、 **[Create Bot]\(ボットの作成\)** ボタンを選�
 1. この質問の **[応答]** 列で **[Add follow-up prompt]\(フォローアップ プロンプトの追加\)** を選択します。
 1. **[Follow-up prompt (PREVIEW)]\(フォローアップ プロンプト (プレビュー)\)** で、次の値を入力して新しいフォローアップ プロンプトを作成します。
 
-    |フィールド|値|
+    |フィールド|Value|
     |--|--|
     |表示テキスト|「*Create a Windows Account*.」(Windows アカウントを作成する。) フォローアップ プロンプトに表示するカスタム テキスト。|
     |Context-only (コンテキストのみ)|このチェック ボックスをオンにします。 この応答は、質問がコンテキストを指定する場合にのみ返されます。|
@@ -368,9 +368,9 @@ JSON 応答で返される[表示テキストと表示の順序](https://docs.mi
 
 ## <a name="export-knowledge-base-for-version-control"></a>バージョン管理用のナレッジ ベースのエクスポート
 
-QnA Maker では、エクスポートされたファイルに複数ターンの会話の手順を含めることによって、QnA Maker ポータルで[バージョン管理をサポートしています](../concepts/development-lifecycle-knowledge-base.md#version-control-of-a-knowledge-base)。
+QnA Maker は、エクスポートされるファイルに複数ターンの会話ステップを含めることにより、バージョン管理をサポートしています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この[対話サンプル](https://aka.ms/qnamakermultiturnsample)のコンテキスト会話について、または[複数ターン会話のための概念的ボット設計](https://docs.microsoft.com/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0)について詳しく学習します。
 

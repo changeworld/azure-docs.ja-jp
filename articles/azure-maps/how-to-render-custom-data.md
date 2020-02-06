@@ -3,18 +3,18 @@ title: ラスター マップ上にカスタム データをレンダリング�
 description: この記事では、Microsoft Azure Maps の静的画像サービスを使用して、ラスター マップ上にカスタム データをレンダリングする方法について説明します。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 07/29/2019
+ms.date: 01/23/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: c052ae1f7bab902dcd22b3cc081907468874b35c
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: f036847a9d46231d65d150cd4e0a76471d1ad612
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911468"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766020"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>ラスター マップ上にカスタム データをレンダリングする
 
@@ -43,7 +43,7 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
 
 1. 要求を格納するコレクションを作成します。 Postman アプリ内で **[新規]** を選択します。 **[新規作成]** ウィンドウで **[コレクション]** を選択します。 コレクションに名前を付け、 **[作成]** ボタンを選択します。 
 
-2. 要求を作成するには、 **[新規]** をもう一度選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 プッシュピンに**要求名**を入力し、前の手順で要求の保存場所として作成したコレクションを選択し、 **[保存]** を選択します。
+2. 要求を作成するには、 **[新規]** をもう一度選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 プッシュピンの **[要求名]** を入力します。 前の手順で要求の保存場所として作成したコレクションを選択し、 **[保存]** を選択します。
     
     ![Postman での要求の作成](./media/how-to-render-custom-data/postman-new.png)
 
@@ -142,7 +142,7 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-5. 状態 URI をコピーし、データのアップロードに使用した Azure Maps アカウントのサブスクリプション キーを値として持つ subscription-key パラメーターを追加します。 状態 URI の形式は次のようになります。
+5. 自分の状態 URI をコピーし、Azure Maps アカウントのサブスクリプション キーの値を使用してサブスクリプション キー パラメーターを追加します。 データのアップロードに使用したものと同じアカウント サブスクリプション キーを使用します。 状態 URI の形式は次のようになります。
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
@@ -156,7 +156,7 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
    }
    ```
 
-7. マップ上にフィーチャーをレンダリングするには、Data Upload API から受け取った `udId` 値を使用します。 これを行うには、前のセクションで作成したコレクションの新しいタブを開きます。 [builder]\(ビルダー\) タブで GET HTTP メソッドを選択し、この URL を入力して GET 要求を行います。
+7. マップ上にフィーチャーをレンダリングするには、Data Upload API から受け取った `udId` 値を使用します。 これを行うには、前のセクションで作成したコレクションの新しいタブを開きます。 [ビルダー] タブで GET HTTP メソッドを選択し、{subscription-key} と {udId} を実際の値に置き換えて、次の URL を入力して GET 要求を行います。
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.96682739257812%2C40.78119135317995&pins=default|la-35+50|ls12|lc003C62|co9B2F15||'Times Square'-73.98516297340393 40.758781646381024|'Central Park'-73.96682739257812 40.78119135317995&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.30||udid-{udId}
@@ -192,7 +192,7 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
 > このセクションの手順には、S1 価格レベルの Azure Maps アカウントが必要です。
 
 
-`sc` スケール スタイル修飾子を使用して、プッシュピンとそのラベルを大きくまたは小さくすることができます。 この修飾子は 0 より大きい値を受け取ります。 1 の値が標準のスケールです。 1 より大きい値にするとピンが大きくなり、1 より小さい値にすると小さくなります。 スタイル修飾子の詳細については、[静的画像サービス パスのパラメーター](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters)に関するページを参照してください。
+ピンの外観を変更するには、スタイル修飾子を追加します。 たとえば、プッシュピンとそのラベルを大きくまたは小さくするには、`sc` "スケール スタイル" 修飾子を使用します。 この修飾子は 0 より大きい値を受け取ります。 1 の値が標準のスケールです。 1 より大きい値にするとピンが大きくなり、1 より小さい値にすると小さくなります。 スタイル修飾子の詳細については、[静的画像サービス パスのパラメーター](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters)に関するページを参照してください。
 
 
 次の手順でカスタム ラベルが付いた円とプッシュピンをレンダリングします。
@@ -206,6 +206,18 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
     応答イメージを次に示します。
 
     ![カスタム プッシュピンが付いた円をレンダリングする](./media/how-to-render-custom-data/circle-custom-pins.png)
+
+2. 前の手順のプッシュピンの色を変更するには、"co" スタイル修飾子を変更します。 `pins=default|la15+50|al0.66|lc003C62|co002D62|` を確認すると、現在の色が CSS で #002D62 として指定されています。 たとえば、#41d42a に変更するとします。 次のように、"co" 指定子の後に新しい色の値を書き込みます (例: `pins=default|la15+50|al0.66|lc003C62|co41D42A|`)。 新しい GET 要求を作成します。
+
+    ```HTTP
+    https://atlas.microsoft.com/map/static/png?api-version=1.0&style=main&layer=basic&zoom=14&height=700&Width=700&center=-122.13230609893799,47.64599069048016&path=lcFF0000|lw2|la0.60|ra1000||-122.13230609893799 47.64599069048016&pins=default|la15+50|al0.66|lc003C62|co41D42A||'Microsoft Corporate Headquarters'-122.14131832122801  47.64690503939462|'Microsoft Visitor Center'-122.136828 47.642224|'Microsoft Conference Center'-122.12552547454833 47.642940335653996|'Microsoft The Commons'-122.13687658309935  47.64452336193245&subscription-key={subscription-key}
+    ```
+
+    ピンの色を変更した後の応答の画像を次に示します。
+
+    ![更新されたプッシュピンで円をレンダリングする](./media/how-to-render-custom-data/circle-updated-pins.png)
+
+同様に、他のスタイル修飾子を変更、追加、および削除することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 

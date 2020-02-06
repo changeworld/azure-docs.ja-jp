@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 322b7656a5e8cb5d0fd0274cc9f09adec2c2c5e1
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3b4b9f782d3306777e853a22ed24fac803da4fb9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514767"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835258"
 ---
 # <a name="security-alerts---a-reference-guide"></a>セキュリティ アラート - リファレンス ガイド
 
@@ -234,7 +234,7 @@ ms.locfileid: "76514767"
 ||||
 
 
-## <a name="alerts-akscluster"></a>AKS クラスター レベルのアラート
+## <a name="alerts-akscluster"></a>コンテナーのアラート - Azure Kubernetes Service クラスター
 
 [詳細な説明と注意](security-center-alerts-compute.md#azure-containers-)
 
@@ -249,7 +249,7 @@ ms.locfileid: "76514767"
 |**PREVIEW - Container with a sensitive volume mount detected (プレビュー - 機密のボリューム マウントを持つコンテナーが検出されました)**|Kubernetes 監査ログ分析によって、機密のボリューム マウントを持つ新しいコンテナーが検出されました。 検出されたボリュームは、機密性の高いファイルまたはフォルダーをノードからコンテナーにマウントする hostPath 型です。 コンテナーが侵害された場合、攻撃者はこのマウントを使用して、ノードにアクセスできます。|特権エスカレーション|
 ||||
 
-## <a name="alerts-containerhost"></a>コンテナー ホスト レベルのアラート
+## <a name="alerts-containerhost"></a>コンテナーのアラート - ホスト レベル
 
 [詳細な説明と注意](security-center-alerts-compute.md#azure-containers-)
 
@@ -304,7 +304,7 @@ ms.locfileid: "76514767"
 ||||
 
 
-## <a name="alerts-azurecosmos"></a>Azure Cosmos DB
+## <a name="alerts-azurecosmos"></a>Azure Cosmos DB のアラート (プレビュー)
 
 [詳細な説明と注意](security-center-alerts-data-services.md#azure-cosmos-db)
 

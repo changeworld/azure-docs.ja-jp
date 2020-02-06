@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/06/2019
-ms.openlocfilehash: 2c015db828bcbfa8b26f519b3a4707b5ec69b8f3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b452cb986e6f662aeb33c2a475f18695ebc75745
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982509"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846081"
 ---
 # <a name="customer-managed-key-disk-encryption"></a>お客様が管理するキー ディスクの暗号化
 
@@ -79,7 +79,7 @@ HDInsight では、Azure Key Vault にのみ対応しています。 自分の�
 
     b. **[プリンシパルの選択]** の下で、作成したユーザー割り当てマネージド ID を選択します。
 
-    ![Azure Key Vault アクセス ポリシーの [プリンシパルの選択] を設定する](./media/disk-encryption/add-key-vault-access-policy-select-principal.png)
+    ![Azure Key Vault アクセス ポリシーの [プリンシパルの選択] を設定する](./media/disk-encryption/azure-portal-add-access-policy.png)
 
     c. **[キーのアクセス許可]** を **[取得]** 、 **[キーの折り返しを解除]** 、 **[キーを折り返す]** に設定します。
 
@@ -100,6 +100,8 @@ HDInsight では、Azure Key Vault にのみ対応しています。 自分の�
 ### <a name="using-the-azure-portal"></a>Azure ポータルの使用
 
 クラスター作成時、キーのバージョンも含む、完全キー URL を指定します。 たとえば、「 `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4` 」のように入力します。 また、クラスターにマネージド ID を割り当て、キー URI を指定する必要があります。
+
+![新しいクラスターを作成する](./media/disk-encryption/create-cluster-portal.png)
 
 ### <a name="using-azure-cli"></a>Azure CLI の使用
 
@@ -162,7 +164,7 @@ Hdinsight は、HDInsight クラスターに関連するマネージド ID を�
 
 "論理的な削除" 対応のキーのみがサポートされているため、キーがキー コンテナー内で回復された場合、クラスターはキーへ再びアクセスできるようになります。 Azure Key Vault キーを回復するには、「[Undo-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval)」または「[az-keyvault-key-recover](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-recover)」に関するページを参照してください。
 
-**どのディスクの種類が暗号化されますか?OS ディスク/リソース ディスクも暗号化されますか?**
+**どのディスクの種類が暗号化されますか。OS ディスク/リソース ディスクも暗号化されますか?**
 
 リソース ディスクとデータ/マネージド ディスクは暗号化されます。 OS ディスクは暗号化されません。
 

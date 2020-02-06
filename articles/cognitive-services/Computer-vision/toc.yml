@@ -5,7 +5,7 @@
   items:
     - name: Computer Vision とは
       href: Home.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: クライアント SDK の使用
       items:
@@ -117,7 +117,7 @@
       href: concept-recognizing-text.md
     - name: 成人向けコンテンツの検出
       href: concept-detecting-adult-content.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: Computer Vision API を呼び出す
       href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
@@ -135,8 +135,6 @@
         - name: Container Instances の使用
           href: deploy-computer-vision-on-container-instances.md
           displayName: 'container instances, container, containers, images'
-    - name: Computer Vision Connected Service の使用
-      href: vs-computer-vision-connected-service.md
     - name: リアルタイムでビデオを分析する
       href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
 - name: リファレンス
@@ -171,7 +169,7 @@
           href: Tutorials/CSharpTutorial.md
         - name: Computer Vision の他のサンプル
           href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision'
-    - name: FAQ
+    - name: よく寄せられる質問
       href: FAQ.md
     - name: カテゴリの分類
       href: Category-Taxonomy.md

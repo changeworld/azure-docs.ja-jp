@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 5350ecdd3b73894e43db3b9f342fc657cf73f224
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 40810b9a9b295f2aa9d56caaf4b51cab7dbbe5bc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76268312"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76887600"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>VM の再起動について - メンテナンスとダウンタイム
 Azure の仮想マシンに影響する可能性のあるシナリオには、計画外のハードウェア メンテナンス、予期しないダウンタイム、および計画メンテナンスの 3 つがあります。
@@ -79,12 +79,13 @@ Get-AzComputeResourceSku | where{$_.ResourceType -eq 'availabilitySets' -and $_.
 az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Location:locationInfo[0].location, MaximumFaultDomainCount:capabilities[0].value}' -o Table
 ```
 
-> 注:特定の状況では、同じ AvailabilitySet の 2 つの VM 部分が同じ FaultDomain を共有している場合があります。 これを確認するには、AvailabilitySet に移動し、[障害ドメイン] 列を確認します。
-> この動作は、VM のデプロイ中に次のシーケンスが発生した場合に確認できます。
+> [!NOTE]
+> 特定の状況では、同じ AvailabilitySet の 2 つの VM が同じ FaultDomain を共有している場合があります。 これを確認するには、可用性セットに移動し、 **[障害ドメイン]** 列を確認します。
+> この動作は、VM のデプロイ中に次のシーケンスで発生する可能性があります。
 > - 最初の VM をデプロイします
 > - 最初の VM を停止/割り当て解除します
 > - 2番目の VM をデプロイします。このような状況では、最初の VM と同じ障害ドメインに 2 番目の VM の OS ディスクが作成される可能性があるため、2 番目の VM も同じ障害ドメインに配置されます。 
-> この問題を回避するために、これらのデプロイの間に VM を停止/割り当て解除しないことをお勧めします。
+> この問題を回避するために、これらのデプロイ間で VM を停止または割り当て解除しないことをお勧めします。
 
 アンマネージド ディスクを持つ VM を使用する計画がある場合は、VM の仮想ハード ディスク (VHD) が[ページ BLOB](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) として格納されているストレージ アカウント用の、以下のベスト プラクティスに従います。
 

@@ -10,13 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 08/12/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1adbb913fc8ec6376f1c5f47708da4fd7df740ff
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 32d58a5536cda5a5a446eee15401dabc0c936304
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619853"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705226"
 ---
 # <a name="set-up-an-office-phone-as-your-two-factor-verification-method"></a>会社電話を 2 要素認証方法として設定する
 
@@ -27,7 +26,7 @@ ms.locfileid: "69619853"
 
 ## <a name="set-up-your-office-phone-number-as-your-verification-method"></a>会社電話の番号を確認方法として設定する
 
-1. **[追加のセキュリティ確認]** ページの **[手順 1: ご希望のご連絡方法をお知らせください]** 領域で、 **[会社電話]** を選択し、ドロップダウン リストで国またはリージョンを選択した後、会社電話の番号を入力し、内線番号があれば、それを入力します。
+1. **[追加のセキュリティ確認]** ページの **[手順 1: ご希望のご連絡方法をお知らせください]** 領域で **[会社電話]** を選択し、ドロップダウン リストからお住まいの国または地域を選択して、会社の電話番号、内線番号 (ある場合) の順に入力してください。
 
     ![[認証用電話] を選択し、[電話で確認コードを受け取る] をオンにした [追加のセキュリティ確認] ページ](media/multi-factor-authentication-verification-methods/multi-factor-authentication-office-phone.png)
 
@@ -44,7 +43,7 @@ ms.locfileid: "69619853"
 
 4. **[完了]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 2 要素認証方法を設定した後、方法の追加、設定とアプリ パスワードの管理、サインインを行うことができます。また、2 要素認証に関連する一般的な問題についてサポートを受けることもできます。
 

@@ -4,7 +4,7 @@ titleSuffix: Azure App Configuration
 description: Azure App Configuration ストアへのインポートを行うサンプル スクリプトについて取り上げます。
 services: azure-app-configuration
 documentationcenter: ''
-author: yegu-ms
+author: lisaguthrie
 manager: balans
 editor: ''
 ms.service: azure-app-configuration
@@ -13,14 +13,14 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: azure-app-configuration
 ms.date: 02/24/2019
-ms.author: yegu
+ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 28c04859f23b3a560166aa62ac903e1204fc5d97
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bb661e6d4497a85cf2ef445fc39774e93a04cc99
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75413285"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899420"
 ---
 # <a name="import-to-an-azure-app-configuration-store"></a>Azure App Configuration ストアへのインポート
 
@@ -51,7 +51,7 @@ az appconfig kv import --name myTestAppConfigStore --source file --path ~/Import
 
 このスクリプトでは、次のコマンドを使用して App Configuration ストアへのインポートを実行します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [az appconfig kv import](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-import) | App Configuration ストア リソースへのインポートを行います。 |
 

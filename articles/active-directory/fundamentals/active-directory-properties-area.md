@@ -5,6 +5,7 @@ services: active-directory
 author: msaburnley
 manager: daveba
 ms.service: active-directory
+ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/17/2018
@@ -12,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a2397662112bda6c6789b25691848344a4e611b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 95f1877ae630919ba7da5a851b5f8291ade2d165
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561819"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897587"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Azure Active Directory を使用して組織のプライバシー情報を追加する
 この記事では、テナント管理者が Azure ポータルから組織の Azure Active Directory (Azure AD) テナントにプライバシー関連の情報を追加する方法を説明します｡
@@ -54,6 +55,6 @@ ms.locfileid: "68561819"
 
 4.  **[保存]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure Active Directory B2B コラボレーションの招待の利用](https://aka.ms/b2bredemption)
 - [Azure Active Directory でユーザーのプロファイル情報を追加または変更する](active-directory-users-profile-azure-portal.md)

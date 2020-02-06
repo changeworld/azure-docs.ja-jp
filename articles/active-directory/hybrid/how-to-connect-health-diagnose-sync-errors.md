@@ -7,6 +7,7 @@ author: zhiweiwangmsft
 manager: maheshu
 editor: billmath
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1fd5f9746299d72ed58a3209013822505b19b56
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 48ed9abf3e088e2581a3dd81b7c89e6b99da3ceb
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702549"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897197"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>重複属性同期エラーを診断して修正する
 
@@ -109,7 +110,7 @@ Azure portal から次の手順を実行して、修正可能な固有のシナ�
 1. 競合しているオブジェクトは、Azure Active Directory に新しく同期されます。 オブジェクトの属性を比較します。  
    - 表示名
    - ユーザー プリンシパル名
-   - オブジェクト ID
+   - Object ID
 2. Azure AD が比較できなかった場合は、指定された **UserPrincipalNames** を持つオブジェクトが Active Directory に存在するかどうかを確認します。 両方見つかった場合は、 **[いいえ]** と回答します。
 
 次の例では、2 つのオブジェクトが同じユーザーである **Joe Johnson** に属しています。
@@ -137,7 +138,7 @@ Azure AD で競合する属性を持つユーザーは、修正プログラム�
 **Updating source anchor to cloud-based user in your tenant is not supported.** (ソース アンカーのテナント内のクラウド ベースのユーザーへの更新は、サポートされていません。)  
 Azure AD のクラウド ベースのユーザーは、ソース アンカーを持つことはできません。 この場合、ソース アンカーの更新はサポートされていません。 オンプレミスから手動で修正する必要があります。 
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 **Q.** **[修正の適用]** の実行が失敗した場合はどうなりますか。  
 **A.** 実行が失敗した場合、Azure AD Connect はエクスポート エラーになっている可能性があります。 次の同期の後に、ポータル ページを更新して再試行してください。既定の同期サイクルは 30 分です。 
 

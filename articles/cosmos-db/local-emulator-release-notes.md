@@ -3,15 +3,15 @@ title: Azure Cosmos Emulator ダウンロードとリリース ノート
 description: さまざまなバージョンの Azure Cosmos エミュレーターのリリース ノートとダウンロード情報を入手します。
 ms.service: cosmos-db
 ms.topic: tutorial
-author: markjbrown
-ms.author: mjbrown
+author: milismsft
+ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: e14ee617aca20fc18226651acfadab6ab2bdd939
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3878f6d01a2adfff2adc6a22aad20a5f83992b8d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445304"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719689"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos Emulator - リリース ノートとダウンロード情報
 
@@ -25,6 +25,10 @@ ms.locfileid: "75445304"
 |**開始するには**|[Azure Cosmos Emulator を使用してローカルで開発する](local-emulator.md)|
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="290"></a>2.9.0
+
+- このリリースでは、整合性を "整合性のあるプレフィックス" に設定してユーザーとアクセス許可の上限を引き上げるオプションが追加されています。
 
 ### <a name="272"></a>2.7.2
 

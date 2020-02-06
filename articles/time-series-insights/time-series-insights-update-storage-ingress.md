@@ -1,8 +1,8 @@
 ---
 title: プレビューのデータ ストレージおよびイングレス - Azure Time Series Insights | Microsoft Docs
 description: Azure Time Series Insights プレビューのデータ ストレージおよびイングレスについて説明します。
-author: deepakpalled
-ms.author: dpalled
+author: lyrana
+ms.author: lyhughes
 manager: cshankar
 ms.workload: big-data
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1deca696ba576849701eb8719de7fbaa7895a26a
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: f00529d00312fd6acb045de698590047f991bec7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861406"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714304"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューのデータ ストレージおよびイングレス
 
@@ -29,41 +29,87 @@ Time Series Insights プレビューでは、データ イングレス ポリシ
 
 ### <a name="ingress-policies"></a>イングレス ポリシー
 
+#### <a name="event-sources"></a>イベント ソース
+
 Time Series Insights プレビューでは、次のイベント ソースがサポートされています。
 
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
 
-Time Series Insights プレビューでは、インスタンスごとに最大で 2 つのイベント ソースがサポートされています。 Azure Time Series Insights では、Azure IoT Hub または Azure Event Hubs を介して送信された JSON がサポートされています。
+Time Series Insights プレビューでは、インスタンスごとに最大で 2 つのイベント ソースがサポートされています。
 
 > [!WARNING] 
 > * プレビュー環境にイベント ソースをアタッチすると、初期の待機時間が長くなることがあります。 
 > イベント ソースの待機時間は、現在 IoT Hub またはイベント ハブにあるイベントの数によって変わります。
-> * 最初にイベント ソース データが取り込まれた後は、待機時間が短くなります。 継続的に待機時間が長い場合は、Azure portal からサポート チケットを提出してお問い合わせください。
+> * 最初にイベント ソース データが取り込まれた後は、待機時間が短くなります。 長い待機時間が継続する場合は、Azure portal からサポート チケットを送信してお問い合わせください。
 
-## <a name="ingress-best-practices"></a>イングレスのベスト プラクティス
+#### <a name="supported-data-format-and-types"></a>サポートされるデータの形式と型
+
+Azure Time Series Insights では、Azure IoT Hub または Azure Event Hubs を介して送信される UTF8 でエンコードされた JSON がサポートされます。 
+
+サポートされるデータ型の一覧を次に示します。
+
+| データ型 | [説明] |
+|-----------|------------------|-------------|
+| [bool]      |   2 つの状態 (true または false) のいずれかを持つデータ型。       |
+| dateTime    |   特定の時点を表します。通常、日時形式で表されます。 DateTimes は ISO 8601 形式である必要があります。      |
+| double    |   倍精度 64 ビットの IEEE 754 浮動小数点
+| string    |   Unicode 文字で構成されるテキスト値。          |
+
+#### <a name="objects-and-arrays"></a>オブジェクトと配列
+
+オブジェクトや配列などの複合型はイベント ペイロードの一部として送信できますが、格納時にはデータのフラット化プロセスが実行されます。 JSON イベントの調整方法と、複合型および入れ子になったオブジェクトのフラット化の詳細については、[イングレスとクエリのための JSON の調整方法](./time-series-insights-update-how-to-shape-events.md)に関するページを参照してください。
+
+
+### <a name="ingress-best-practices"></a>イングレスのベスト プラクティス
 
 次のベスト プラクティスのようにすることをお勧めします。
 
-* Time Series Insights と IoT ハブまたはイベント ハブは、同じリージョンに構成します。 これにより、ネットワークに起因するインジェストの待機時間が短縮されます。
+* ネットワークで発生するインジェストの遅延を減らすために、Time Series Insights と IoT Hub またはイベント ハブは同じリージョンに構成します。
 * 予想されるインジェスト レートを計算し、後で示すサポートされるレート内に収まることを確認することで、スケールのニーズに合うように計画します
 * [イングレスとクエリに対して JSON を整形する方法](./time-series-insights-update-how-to-shape-events.md)に関する記事を読み、Json データを最適化して整形する方法と、プレビューでの現在の制限事項について理解します。
 
 ### <a name="ingress-scale-and-limitations-in-preview"></a>プレビューでのイングレス スケールと制限
 
-既定では、プレビュー環境で、**環境あたり最大で毎秒 1 メガバイト (MB/秒)** のイングレス レートをサポートできます。 お客様は、必要に応じて、最大 **16 MB/秒**のスループットまで、プレビュー環境を拡張できます。
-また、パーティションごとに **0.5 MB/秒**の制限があります。 
-
-パーティションごとの制限は、IoT Hub を使用するお客様に影響します。 具体的に、IoT Hub デバイスとパーティションとの間に関係があるとします。 1 つのゲートウェイ デバイスが独自のデバイス ID と接続文字列を使用してハブにメッセージを転送しているシナリオでは、イベント ペイロードで異なるタイム シリーズ ID が指定されている場合でも、メッセージが 1 つのパーティションに到着すると、0.5 MB/秒の制限に達する危険があります。 
+#### <a name="per-environment-limitations"></a>環境ごとの制限
 
 一般に、イングレス レートの要因としては、組織内のデバイスの数、イベント出力の頻度、各イベントのサイズがあります。
 
 *  **デバイスの数** × **イベント出力の頻度** × **各イベントのサイズ**。
 
-> [!TIP]
-> IoT Hub をイベント ソースとして使用する環境では、使用中または組織内のデバイスの合計ではなく、使用中のハブ接続の数を使用して、インジェスト レートを計算します。
+既定では、Time Series Insights プレビューは、**TSI 環境ごとに**最大 1 MB/秒 (MBps) で受信データを取り込むことができます。 これがお客様の要件を満たさない場合は、Azure portal でサポート チケットを送信することにより、1 つの環境に対して最大 16 MBps をサポートできます。
+ 
+例 1:Contoso Shipping には、1 分につき 3 回イベントを発生させる 100,000 個のデバイスがあります。 1 つのイベントのサイズは 200 バイトです。 それらは、4 つのパーティションを持つイベント ハブを TSI のイベント ソースとして使用しています。
+それらの TSI 環境のインジェスト率は次のようになります。100,000 デバイス * 200 バイト/イベント * (3/60 イベント/秒) = 1 MBps。
+パーティションあたりのインジェスト率は 0.25 MBps です。
+Contoso Shipping のインジェスト率は、プレビュー スケール制限内になります。
+ 
+例 2:Contoso Fleet Analytics には、毎秒 1 つのイベントを発生させる 60,000 個のデバイスがあります。 それらは、IoT Hub 24 パーティション数 4 を TSI イベント ソースとして使用しています。 1 つのイベントのサイズは 200 バイトです。
+環境のインジェスト率は次のようになります。20,000 デバイス * 200 バイト/イベント * 1 イベント/秒 = 4 MBps。
+パーティションあたりの率は 1 MBps です。
+Contoso Fleet Analytics は、このスケールを達成するための専用環境の要求を Azure portal 経由で TSI に送信する必要があります。
 
-スループット ユニット、制限、およびパーティションの詳細については、次を参照してください。
+#### <a name="hub-partitions-and-per-partition-limits"></a>ハブのパーティションとパーティションごとの制限
+
+TSI 環境を計画するときは、TSI に接続するイベント ソースの構成を考慮することが重要です。 Azure IoT Hub と Event Hubs はどちらもパーティションを使用して、イベント処理のための水平スケールを有効にします。  パーティションは、ハブで保持される順序付けされた一連のイベントです。 パーティション数は、IoT Hub または Event Hubs の作成フェーズ中に設定され、変更することはできません。 パーティション数の決定の詳細については、Event Hubs の FAQ の「パーティションはいくつ必要ですか」を参照してください。 IoT Hub を使用する TSI 環境では、通常、ほとんどの IoT Hub には 4 つのパーティションのみが必要です。 TSI 環境用の新しいハブを作成するか、既存のハブを使用するかにかかわらず、パーティションごとのインジェスト率を計算し、それがプレビューの制限内にあるかどうかを判断する必要があります。 TSI プレビューには、現在、0.5 MB/秒の**パーティションごとの**制限があります。 以降の例を参照として使用してください。また、IoT Hub ユーザーの場合は、次の IoT Hub 固有の考慮事項に注意してください。
+
+#### <a name="iot-hub-specific-considerations"></a>IoT Hub 固有の考慮事項
+
+デバイスは IoT Hub に作成されるとパーティションに割り当てられます。このパーティション割り当ては変更されません。 そうすることで、IoT Hub はイベント順序を保証することができます。 ただし、これは、TSI にとって、特定のシナリオではダウンストリーム リーダーとしての意味を持ちます。 複数のデバイスからのメッセージが同じゲートウェイ デバイス ID を使用してハブに転送されると、それらは同じパーティションに到着するため、パーティションごとのスケール制限を超える可能性があります。 
+
+**影響**:1 つのパーティションで、持続してプレビュー制限を超えるインジェスト率が発生している場合は、IoT Hub のデータ保有期間を超える前に TSI リーダーが追いつかない可能性があります。 これにより、データが失われます。
+
+次をお勧めします。 
+
+* ソリューションをデプロイする前に、環境ごとおよびパーティションごとのインジェスト率を計算する
+* IoT Hub のデバイス (とパーティション) を可能な限り負荷分散するようにする
+
+> [!WARNING]
+> IoT Hub をイベント ソースとして使用している環境では、使用中のハブ デバイスの数を使ってインジェスト率を計算し、プレビューでのパーティションあたりの制限が確実に 0.5 MBps 未満になるようにします。
+
+  ![IoT Hub パーティションのダイアグラム](media/concepts-ingress-overview/iot-hub-partiton-diagram.png)
+
+スループット ユニットとパーティションの詳細については、次のリンクを参照してください。
 
 * [IoT Hub のスケール](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling)
 * [イベント ハブのスケール](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
@@ -88,7 +134,7 @@ Time Series Insights プレビューを使うと、コールド ストア デー
 Time Series Insights プレビューでは、最適なクエリ パフォーマンスのために、データのパーティション分割とインデックス付けが行われます。 インデックス付けが済むと、クエリでデータを使用できるようになります。 取り込まれたされるデータの量は、この可用性に影響を与える可能性があります。
 
 > [!IMPORTANT]
-> 予定されている Time Series Insights の一般提供 (GA) リリースでは、データは、イベント ソースから読み取られた後 60 秒以内に利用できるようになります。 プレビュー期間中は、データが利用可能になるまでにさらに時間がかかることがあります。 待機時間が 60 秒を大きく上回る場合は、Azure portal を通じてサポート チケットを送信してください。
+> プレビュー中は、データが利用可能になるまでに最大 60 秒の期間が発生することがあります。 待機時間が 60 秒を大きく上回る場合は、Azure portal を通じてサポート チケットを送信してください。
 
 ## <a name="azure-storage"></a>Azure Storage
 
@@ -106,25 +152,25 @@ Time Series Insights プレビューでは、Time Series Insights クエリに�
 
 パブリック プレビュー中、データは、Azure Storage アカウントに無期限に格納されます。
 
-### <a name="writing-and-editing-time-series-insights-blobs"></a>Time Series Insights BLOB の作成と編集
+#### <a name="writing-and-editing-time-series-insights-blobs"></a>Time Series Insights BLOB の作成と編集
 
 クエリのパフォーマンスとデータの可用性を確保するため、Time Series Insights プレビューによって作成されたすべての BLOB を編集または削除しないでください。
 
-### <a name="accessing-and-exporting-data-from-time-series-insights-preview"></a>Time Series Insights プレビューからのデータのアクセスとエクスポート
+#### <a name="accessing-and-exporting-data-from-time-series-insights-preview"></a>Time Series Insights プレビューからのデータのアクセスとエクスポート
 
 他のサービスと連携して使用するために、Time Series Insights プレビュー エクスプローラーに表示されているデータにアクセスする場合があります。 たとえば、データを使用して、Power BI でレポートを作成したり、Azure Machine Learning Studio で機械学習モデルをトレーニングしたりすることができます。 または、データを使用して、Jupyter ノートブックの変換、視覚化、モデル化を行うことができます。
 
 次の 3 つの一般的な方法でデータにアクセスできます。
 
 * Time Series Insights プレビュー エクスプローラーから。 エクスプローラーからデータを CSV ファイルとしてエクスポートできます。 詳細については、[Time Series Insights プレビュー エクスプローラー](./time-series-insights-update-explorer.md)に関するページを参照してください。
-* Time Series Insights Preview API から。 API エンドポイントには `/getRecorded` でアクセスできます。 この API の詳細については、[Time Series クエリ](./time-series-insights-update-tsq.md)に関するページを参照してください。
+* Get Events クエリを使用して Time Series Insights Preview API から。 この API の詳細については、[Time Series クエリ](./time-series-insights-update-tsq.md)に関するページを参照してください。
 * Azure Storage アカウントから直接。 Time Series Insights プレビューのデータへのアクセスに使用するどのアカウントにも、読み取りアクセス権が必要です。 詳細については、[ストレージ アカウント リソースへのアクセスの管理](../storage/blobs/storage-manage-access-to-resources.md)に関するページを参照してください。
 
-### <a name="data-deletion"></a>データの削除
+#### <a name="data-deletion"></a>データの削除
 
 Time Series Insights プレビューのファイルは削除しないでください。 関連するデータは、Time Series Insights プレビュー内からのみ管理します。
 
-## <a name="parquet-file-format-and-folder-structure"></a>Parquet ファイル形式とフォルダー構造
+### <a name="parquet-file-format-and-folder-structure"></a>Parquet ファイル形式とフォルダー構造
 
 Parquet は、効率的なストレージとパフォーマンスのために設計されている、オープンソースの列指向ファイル形式です。 Time Series Insights プレビューでは、このような理由で Parquet が使用されています。 データは、大規模なクエリのパフォーマンスのために時系列 ID でパーティション分割されます。  
 
@@ -157,6 +203,6 @@ Time Series Insights プレビューのイベントは、次のように、Parqu
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Time Series Insights プレビューのストレージとイングレス](./time-series-insights-update-storage-ingress.md)に関するページをご覧ください。
+- [イングレスとクエリのための JSON の調整方法](./time-series-insights-update-how-to-shape-events.md)に関するページをお読みください。
 
 - 新しい[データ モデリング](./time-series-insights-update-tsm.md)についてご覧ください。

@@ -3,9 +3,7 @@ title: Azure Network Watcher を使用したパケット インスペクショ�
 description: この記事では、Network Watcher を使用して、VM から収集されたディープ パケット インスペクションを実行する方法について説明します
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: 7b907d00-9c35-40f5-a61e-beb7b782276f
 ms.service: network-watcher
 ms.devlang: na
@@ -13,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 7f3fc69bbfd881a26ceb25705852558b66c60153
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: c937a07133dc38d2d9e1e1ef2cc324b4c8bb360e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64716907"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845068"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Azure Network Watcher を使用したパケット インスペクション
 
@@ -41,7 +39,7 @@ Network Watcher のパケット キャプチャ機能を使用すると、Azure 
 
 このシナリオでは、2 つのエンドポイントの間で行われた伝送制御プロトコル (TCP) 会話の初期ラウンドトリップ時間 (RTT) を確認する方法について説明します。
 
-TCP 接続が確立されるとき、接続で送信された最初の 3 つのパケットは、一般に 3 ウェイ ハンドシェイクと呼ばれるパターンに従います。 このハンドシェイクで送信された最初の 2 つのパケット (クライアントからの初期要求とサーバーの応答) を確認することで、この接続が確立されたときの待ち時間を計算できます。 この待ち時間は、ラウンドトリップ時間 (RTT) と呼ばれます。 TCP プロトコルと 3 ウェイ ハンドシェイクの詳細については、次のリソースを参照してください。 [https://login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/](https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip )
+TCP 接続が確立されるとき、接続で送信された最初の 3 つのパケットは、一般に 3 ウェイ ハンドシェイクと呼ばれるパターンに従います。 このハンドシェイクで送信された最初の 2 つのパケット (クライアントからの初期要求とサーバーの応答) を確認することで、この接続が確立されたときの待ち時間を計算できます。 この待ち時間は、ラウンドトリップ時間 (RTT) と呼ばれます。 TCP プロトコルと 3 ウェイ ハンドシェイクの詳細については、次のリソースを参照してください。 [https://github.com/mysqljs/mysql/](https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip )
 
 ### <a name="step-1"></a>手順 1
 
@@ -123,7 +121,7 @@ tcp.port == 111
 
 結果から、すべてのトラフィックが同じサブネットのローカル仮想マシンから送信されていることがわかります。 このトラフィックが発生している理由がまだ明らかでない場合、さらにパケットを検査して、この仮想マシンがポート 111 でこれらの呼び出しを行う理由を特定できます。 この情報に基づいて、適切な処置を取ることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Network Watcher のその他の診断機能については、「[Azure network monitoring overview (Azure のネットワーク監視の概要)](network-watcher-monitoring-overview.md)」を参照してください。
 

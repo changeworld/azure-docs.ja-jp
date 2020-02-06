@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 9f49a9224ed123b76f4d300c27a8dd5822e50ea3
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: eceb4b312476d701ec8ce4eb0ce4886621824b3a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706016"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841593"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3.6 Hive ワークロードを Hive HDInsight 4.0 に移行する
 
@@ -73,13 +73,13 @@ HDInsight 3.6 と HDInsight 4.0 には異なるメタストア スキーマが�
 
 下にある表の値を使用してください。 `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` は、**コピーした** Hive メタストアの適切な値に置き換え、スペースで区切ります。 SQL サーバー名を指定するときに ".database.windows.net" を含めないでください。
 
-|プロパティ | 値 |
+|プロパティ | Value |
 |---|---|
 |スクリプトの種類|- Custom|
-|名前|Hive アップグレード|
+|Name|Hive アップグレード|
 |Bash スクリプト URI|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
-|ノードの種類|ヘッド|
-|parameters|SQLSERVERNAME DATABASENAME USERNAME PASSWORD|
+|ノードの種類|Head|
+|パラメーター|SQLSERVERNAME DATABASENAME USERNAME PASSWORD|
 
 > [!Warning]  
 > HDInsight 3.6 のメタデータ スキーマを HDInsight 4.0 のスキーマに変換するアップグレードを元に戻すことはできません。
@@ -176,14 +176,16 @@ HDInsight 4.0 では、Hive CLI は BeeLine に置き換えられています。
 
 HDInsight 3.6 では、Hive サーバーと対話するための GUI クライアントは Ambari Hive ビューです。 HDInsight 4.0 には Ambari ビューは付属していません。 お客様が Data Analytics Studio (DAS) を使用する方法を提供しています。これは、中核となる HDInsight サービスではありません。 DAS には HDInsight クラスターは標準では付属せず、公式にサポートされているパッケージではありません。 ただし、次のように[スクリプト アクション](../hdinsight-hadoop-customize-cluster-linux.md)を使用して DAS をクラスターにインストールできます。
 
-|プロパティ | 値 |
+|プロパティ | Value |
 |---|---|
 |スクリプトの種類|- Custom|
-|名前|DAS|
+|Name|DAS|
 |Bash スクリプト URI|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
-|ノードの種類|ヘッド|
+|ノードの種類|Head|
 
-5 - 10 分待機してから、URL `https://CLUSTERNAME.azurehdinsight.net/das/` を使用して Data Analytics Studio を起動します。
+10 - 15 分待機してから、URL `https://CLUSTERNAME.azurehdinsight.net/das/` を使用して Data Analytics Studio を起動します。
+
+DAS にアクセスする前に、Ambari UI の更新やすべての Ambari コンポーネントの再起動が必要になる場合があります。
 
 DAS がインストールされた後、クエリ ビューアーで実行したクエリが表示されない場合は、次の手順を実行します。
 
@@ -193,7 +195,7 @@ DAS がインストールされた後、クエリ ビューアーで実行した
     * `tez.history.logging.proto-base-dir`
 3. 両方のヘッドノード上の HDFS、Hive、Tez、DAS を再起動します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [HDInsight 4.0 のお知らせ](../hdinsight-version-release.md)
 * [HDInsight 4.0 の詳細情報](https://azure.microsoft.com/blog/deep-dive-into-azure-hdinsight-4-0/)

@@ -3,7 +3,7 @@ title: チュートリアル - Azure Traffic Manager を使用した優先順位
 description: このチュートリアルでは、Traffic Manager で優先順位によるトラフィック ルーティング方法を構成する方法について説明します
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
-ms.author: allensu
-ms.openlocfilehash: d5d58ec39841274b78ababf9f73f00a262cc37be
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.author: rohink
+ms.openlocfilehash: ca223a19ff7ddeae95878f941f3cf295664e62b4
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420290"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938723"
 ---
 # <a name="tutorial-configure-priority-traffic-routing-method-in-traffic-manager"></a>チュートリアル:Traffic Manager での優先順位によるトラフィック ルーティング方法の構成
 
@@ -41,7 +41,7 @@ Azure Websites では、Web サイトのモードにかかわらず、データ�
 7. エンドポイントの優先順位を変更するには、エンドポイントをクリックし、表示された **[エンドポイント]** ブレードで **[編集]** をクリックして、必要に応じて**優先順位**の値を変更します。 
 8. **[保存]** をクリックして、エンドポイントの設定の変更を保存します。
 9. 構成の変更が完了したら、ページの下部にある **[保存]** をクリックします。
-10. 次の手順で構成の変更をテストします。
+10. 次のように構成の変更をテストします。
     1.  ポータルの検索バーで、Traffic Manager プロファイル名を検索し、表示された結果内で Traffic Manager プロファイルをクリックします。
     2.  **[Traffic Manager プロファイル]** ブレードで、 **[概要]** をクリックします。
     3.  **[Traffic Manager プロファイル]** ブレードに、新しく作成した Traffic Manager プロファイルの DNS 名が表示されます。 これを任意のクライアントで使用して (たとえば、Web ブラウザーを使用して移動します)、ルーティングの種類によって決まる適切なエンドポイントにルーティングすることができます。 この場合、すべての要求が最初のエンドポイントにルーティングされますが、Traffic Manager によって異常状態が検出された場合は、トラフィックが自動的に次のエンドポイントにフェールオーバーされます。
@@ -49,7 +49,7 @@ Azure Websites では、Web サイトのモードにかかわらず、データ�
 
 ![Traffic Manager を使用した優先順位によるトラフィック ルーティング方法の構成][1]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 
 - [重み付けによるトラフィック ルーティング方法](traffic-manager-configure-weighted-routing-method.md)について学習します。

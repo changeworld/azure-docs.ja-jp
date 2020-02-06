@@ -3,20 +3,20 @@ title: Team Data Science Process の特徴選択
 description: 特徴選択の目的について説明し、機械学習のデータ強化プロセスにおけるその役割の例を示します。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/21/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: da5da64538ceaf906388c49963c0d5115e1b5ab9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1127a470a48660ffffa892d24c9f2991ec64c8e6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480221"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716673"
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Team Data Science Process (TDSP) の特徴選択
 この記事では、特徴選択の目的について説明し、機械学習のデータ強化プロセスにおける特徴選択の役割の例を示します。 例は、Azure Machine Learning Studio で描画しています。
@@ -29,10 +29,10 @@ ms.locfileid: "73480221"
 通常、**特徴エンジニアリング**は追加の特徴を生成するために最初に適用され、その後、無関係な特徴、重複した特徴、関連性の高い特徴を排除するために**特徴選択**の手順が実行されます。
 
 ## <a name="filter-features-from-your-data---feature-selection"></a>データから特徴をフィルター処理する - 特徴選択
-特徴選択は、分類や回帰タスクなどの予測モデリング タスク用のトレーニング データセットの構築に一般的に適用されるプロセスです。 目標は、最小限の特徴セットを使用してデータ内の最大量の分散を表すことで、元のデータセットからその次元を削減する特徴のサブセットを選択することです。 この特徴のサブセットは、モデルのトレーニングに使用されます。 特徴選択は、次の 2 つの主な目的を果たします。
+特徴の選択は、分類または回帰タスクに使用できます。 目標は、最小限の特徴セットを使用してデータ内の最大量の分散を表すことで、元のデータセットからその次元を削減する特徴のサブセットを選択することです。 この特徴のサブセットは、モデルのトレーニングに使用されます。 特徴選択は、次の 2 つの主な目的を果たします。
 
 * まず、特徴選択は多くの場合、無関係な特徴、重複した特徴、関連性の高い特徴を排除することで、分類の精度を向上させます。
-* 次に、特徴の数を減らすことで、モデルのトレーニング プロセスの効率を高めます。 効率性は、サポート ベクター マシンなどのトレーニングに費用がかかる学習者にとって特に重要です。
+* 次に、特徴の数を減らすことで、モデルのトレーニング プロセスの効率を高めます。 効率性は、サポート ベクター マシンなどのトレーニングに費用がかかる学習者にとって重要です。
 
 特徴選択は、モデルのトレーニングに使用されるデータセット内の特徴の数を減らそうと努めていますが、"次元削減" とは呼ばれません。 特徴選択メソッドは、データ内の元の特徴のサブセットを変更せずに抽出します。  次元削減メソッドは、元の機能を変換し、さらに変更できるようにエンジニアリングされた特徴を使用します。 次元削減メソッドの例には、主成分分析、正準相関分析、特異値分解が含まれます。
 

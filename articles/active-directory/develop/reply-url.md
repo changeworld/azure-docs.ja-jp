@@ -10,22 +10,27 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 7e289b83daa9c30703d94a7f4c0ff459f96256c0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 1367bf32eea58b828c00ee23a59a32a2fec699ab
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702523"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983097"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>リダイレクト URI および応答 URL に関する制約と制限
 
 リダイレクト URI、または応答 URL は、アプリが正常に承認され、認証コードまたはアクセス トークンが付与されたとき、認証サーバーがユーザーを送信する場所です。 このコードまたはトークンはリダイレクト URI または応答トークンに含まれます。そのため、アプリ登録プロセスの一環として正しい場所を登録することが重要です。
 
+ 応答 URL には、次の制限が適用されます。
+
+    * 応答 URL は、スキーム `https` で始まる必要があります。
+    * 応答 URL では大文字と小文字が区別されます。 大文字と小文字の区別は、実行中のアプリケーションの URL パスの場合と一致している必要があります。 たとえば、ご利用のアプリケーションがそのパス `.../abc/response-oidc` の一部として含まれている場合は、応答 URL 内では `.../ABC/response-oidc` と指定しないでください。 Web ブラウザーでは大文字と小文字を区別を区別するものとしてパスが処理されるため、`.../abc/response-oidc` に関連付けられている cookie は、大文字と小文字が一致しない `.../ABC/response-oidc` URL にリダイレクトされた場合に除外される可能性があります。
+    
 ## <a name="maximum-number-of-redirect-uris"></a>リダイレクト URI の最大数
 
 次の表では、アプリの登録時に追加できるリダイレクト URI の最大数を示しています。
 
-| サインイン中のアカウント | リダイレクト URI の最大数 | [説明] |
+| サインイン中のアカウント | リダイレクト URI の最大数 | 説明 |
 |--------------------------|---------------------------------|-------------|
 | 組織の Azure Active Directory (Azure AD) テナントにある Microsoft の職場または学校アカウント | 256 | アプリケーション マニフェストの `signInAudience` フィールドは *AzureADMyOrg* か *AzureADMultipleOrgs* に設定されています |
 | Microsoft の個人用アカウント、職場用アカウント、学校用アカウント | 100 | アプリケーション マニフェストの `signInAudience` フィールドは *AzureADandPersonalMicrosoftAccount* に設定されています |

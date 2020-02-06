@@ -9,134 +9,132 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: 新しいアプリケーションを作成する
+    - name: 1. 新しいアプリケーションを作成する
       href: quick-deploy-iot-central.md
+    - name: 2. シミュレートされたデバイスの追加
+      href: quick-create-pnp-device.md
+    - name: 3. 規則とアクションを構成する
+      href: quick-configure-rules.md
+    - name: 4. デバイスを監視する
+      href: quick-monitor-devices.md
 - name: チュートリアル
   items:
-    - name: 1 - 新しいデバイスの種類を定義する
-      href: tutorial-define-device-type.md
-    - name: 2 - ルールを構成する
-      href: tutorial-configure-rules.md
-    - name: 3 - オペレーターのビューをカスタマイズする
-      href: tutorial-customize-operator.md
-    - name: 4 - デバイスを監視する
-      href: tutorial-monitor-devices.md
-    - name: 5 - デバイスを追加する
-      href: tutorial-add-device.md
+    - name: 接続する
+      items:
+        - name: プラグ アンド プレイ (プレビュー) デバイスの接続
+          href: tutorial-connect-pnp-device.md
+        - name: ゲートウェイ デバイス テンプレートの作成
+          href: tutorial-define-gateway-device-type.md
+        - name: IoT Edge デバイスの接続
+          href: tutorial-add-edge-as-leaf-device.md
+    - name: 接続を維持する
+      items:
+        - name: デバイス グループを作成する
+          href: tutorial-use-device-groups.md
+    - name: 変換
+      items:
+        - name: 規則を作成する
+          href: tutorial-create-telemetry-rules.md
+        - name: REST API の使用
+          href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
 - name: 概念
   items:
     - name: Architecture
       href: concepts-architecture.md
-    - name: 接続
-      href: concepts-connectivity.md
     - name: アプリケーション テンプレートとは
       href: concepts-app-templates.md
+    - name: 接続する
+      href: concepts-get-connected.md
+    - name: IoT Edge デバイスへの接続
+      href: concepts-iot-edge.md
 - name: 操作方法ガイド
   items:
-    - name: デバイスの接続
+    - name: 接続する
       items:
-        - name: Node.js (汎用) アプリケーションを準備して接続する
-          href: howto-connect-nodejs.md
+        - name: デバイス テンプレートの設定
+          href: howto-set-up-template.md
         - name: MXChip IoT DevKit を準備して接続する
           href: howto-connect-devkit.md
-        - name: Raspberry Pi (Python) を準備して接続する
-          href: howto-connect-raspberry-pi-python.md
-        - name: 'Raspberry Pi (C#) を準備して接続する'
-          href: howto-connect-raspberry-pi-csharp.md
-        - name: Windows IoT Core デバイスを準備して接続する
-          href: howto-connect-windowsiotcore.md
-        - name: SensorTile.box デバイスを準備して接続する
-          href: howto-connect-sensortile.md
-        - name: コマンド ラインを使用してデバイスの接続性を監視する
-          href: howto-use-iotc-explorer.md
-    - name: デバイスを管理する
-      items:
-        - name: デバイス テンプレートを設定する
-          href: howto-set-up-template.md
-        - name: デバイスを管理する
-          href: howto-manage-devices.md
-        - name: ジョブの実行
-          href: howto-run-a-job.md
-        - name: デバイス セットを使用する
-          href: howto-use-device-sets.md
-        - name: デバイス テンプレートをバージョン管理する
-          href: howto-version-device-template.md
-    - name: 監視と分析
-      items:
-        - name: テレメトリ ルールを作成する
-          href: howto-create-telemetry-rules.md
-        - name: イベント ルールを作成する
-          href: howto-create-event-rules.md
-        - name: デバイス データを分析する
-          href: howto-create-analytics.md
-    - name: アクションと機能拡張
-      items:
-        - name: 規則に基づいて複数のアクションをグループ化する
-          href: howto-use-action-groups.md
-        - name: 規則に基づいた Webhook アクションを作成する
-          href: howto-create-webhooks.md
-        - name: Microsoft Flow でワークフローを構築する
-          href: howto-add-microsoft-flow.md
-        - name: Azure Logic Apps でワークフローを構築する
-          href: howto-build-azure-logic-apps.md
-        - name: Azure Functions をトリガーする
-          href: howto-trigger-azure-functions.md
-        - name: データのエクスポート
-          items:
-            - name: Event Hubs と Service Bus へのエクスポート
-              href: howto-export-data-event-hubs-service-bus.md
-            - name: Blob Storage へのエクスポート
-              href: howto-export-data-blob-storage.md
-        - name: カスタム規則の作成
-          href: howto-create-custom-rules.md
-        - name: カスタム分析を作成する
-          href: howto-create-custom-analytics.md
-        - name: Power BI でのデータの視覚化
-          href: howto-connect-powerbi.md
+        - name: RuuviTag デバイスを準備して接続する
+          href: howto-connect-ruuvi.md
+        - name: Rigado Cascade 500 を準備して接続する
+          href: howto-connect-rigado-cascade-500.md
         - name: その他の IoT クラウドの接続
           href: howto-build-iotc-device-bridge.md
+    - name: 接続を維持する
+      items:
+        - name: Azure CLI を使用してデバイスの接続性を監視する
+          href: howto-monitor-devices-azure-cli.md
+        - name: デバイス テンプレートをバージョン管理する
+          href: howto-version-device-template.md
+        - name: デバイスを管理する
+          href: howto-manage-devices.md
+        - name: ルールを構成する
+          href: howto-configure-rules.md
+        - name: デバイス データを分析する
+          href: howto-create-analytics.md
+        - name: ダッシュボードへのタイルの追加
+          href: howto-add-tiles-to-your-dashboard.md
+        - name: Azure IoT Central の個人用ダッシュボードの作成
+          href: howto-create-personal-dashboards.md
+        - name: ジョブの実行
+          href: howto-run-a-job.md
+        - name: デバイス テンプレートをバージョン管理する
+          href: howto-version-device-template.md
+    - name: 変換
+      items:
+        - name: 連続データ エクスポートを構成する
+          href: howto-export-data.md
+        - name: 規則に基づいて Webhook を作成する
+          href: howto-create-webhooks.md
+        - name: 規則に基づいて Azure Monitor アクション グループを接続する
+          href: howto-use-action-groups.md
+        - name: カスタム規則の作成
+          href: howto-create-custom-rules.md
+        - name: Databricks を使用してカスタム分析を作成する
+          href: howto-create-custom-analytics.md
     - name: 管理
       items:
         - name: アプリケーションの管理
-          href: howto-administer.md
-        - name: ユーザーとロールを管理する
-          href: howto-manage-users-roles.md
-        - name: 課金状況の表示
-          href: howto-view-bill.md
-        - name: アプリケーション UI のカスタマイズ
-          href: howto-customize-ui.md
-        - name: イメージの準備とアップロード
-          href: howto-prepare-images.md
-        - name: ダッシュボードへのタイルの追加
-          href: howto-add-tiles-to-your-dashboard.md
-        - name: ダッシュボード タイルの使用
-          href: howto-use-tiles.md
-        - name: アプリケーション テンプレートを使用する
-          href: howto-use-app-templates.md
-        - name: Azure portal からの管理
-          href: howto-manage-iot-central-from-portal.md
-        - name: Azure CLI からの管理
-          href: howto-manage-iot-central-from-cli.md
-        - name: Azure PowerShell からの管理
-          href: howto-manage-iot-central-from-powershell.md
-        - name: CSP としてのアプリケーションの作成と管理
-          href: howto-create-and-manage-applications-csp.md
-    - name: パーソナル化
-      items:
-        - name: Azure IoT Central の個人用ダッシュボードの作成
-          href: howto-create-personal-dashboards.md
-        - name: ユーザー設定の管理
-          href: howto-manage-preferences.md
-        - name: ライブ チャットの切り替え
-          href: howto-show-hide-chat.md
+          items:
+            - name: アプリケーション設定の変更
+              href: howto-administer.md
+            - name: ユーザーとロールを管理する
+              href: howto-manage-users-roles.md
+            - name: 請求書の管理
+              href: howto-view-bill.md
+            - name: アプリケーション UI のカスタマイズ
+              href: howto-customize-ui.md
+            - name: アプリケーションのエクスポート
+              href: howto-use-app-templates.md
+        - name: 他の場所からの管理
+          items:
+            - name: Azure portal からの管理
+              href: howto-manage-iot-central-from-portal.md
+            - name: Azure CLI からの管理
+              href: howto-manage-iot-central-from-cli.md
+            - name: Azure PowerShell からの管理
+              href: howto-manage-iot-central-from-powershell.md
+            - name: CSP ポータルからの管理
+              href: howto-create-and-manage-applications-csp.md
+        - name: アプリケーションのカスタマイズ
+          items:
+            - name: 個人設定の管理
+              href: howto-manage-preferences.md
+            - name: ライブ チャットの切り替え
+              href: howto-show-hide-chat.md
 - name: 関連項目
   items:
-    - name: ソリューション
+    - name: 業界アプリケーション テンプレート
       items:
-        - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-        - name: IoT ソリューション アクセラレータ
-          href: /azure/iot-accelerators
+        - name: 小売
+          href: ../retail/overview-iot-central-retail-pnp.md
+        - name: エネルギー
+          href: ../energy/overview-iot-central-energy.md
+        - name: Government
+          href: ../government/overview-iot-central-government.md
+        - name: 医療
+          href: ../healthcare/overview-iot-central-healthcare.md
     - name: プラットフォーム サービス
       items:
         - name: IoT Hub
@@ -161,6 +159,8 @@
   items:
     - name: サポート オプションとヘルプ オプション
       href: /azure/iot-fundamentals/iot-support-help
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/iotcentral/'
     - name: 顧客データ要求
       href: iot-central-customer-data-requests.md
     - name: サポートされているブラウザー

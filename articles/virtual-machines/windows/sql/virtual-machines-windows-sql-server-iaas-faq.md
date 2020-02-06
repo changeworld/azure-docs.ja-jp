@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 4919c8f303488b583ea4d10dca87dd29bfb52e99
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b73c329c3db54ba78db15ced8e919af4d4a45d7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75374082"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835166"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシン上で実行されている SQL Server についてよく寄せられる質問
 
@@ -82,15 +82,6 @@ ms.locfileid: "75374082"
 
    これには 3 とおりの方法があります。 Enterprise Agreement (EA) のお客様の場合、[ライセンスがサポートされる仮想マシン イメージ](virtual-machines-windows-sql-server-iaas-overview.md#BYOL)の 1 つをプロビジョニングできます。これは、ライセンス持ち込み (BYOL) とも呼ばれます。 [ソフトウェア アシュアランス](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default)をお持ちの場合、既存の従量課金制 (PAYG) イメージで [Azure ハイブリッド特典](virtual-machines-windows-sql-ahb.md)を有効にできます。 あるいは、SQL Server インストール メディアを Windows Server VM にコピーしてから、SQL Server を VM にインストールできます。 自動バックアップや修正プログラムの自動適用などの機能を利用するには、[SQL Server VM を SQL Server VM リソース プロバイダーに登録](virtual-machines-windows-sql-register-with-resource-provider.md)してください。 
 
-1. **スタンバイ/フェールオーバーのみ使用するために作成した Azure VM 上の SQL Server のライセンスに料金を支払う必要がありますか。**
-
-   スタンバイ セカンダリ可用性グループまたはフェールオーバー クラスター化されたインスタンスの無料のパッシブ ライセンスを取得するには、[製品ライセンス条項](https://www.microsoft.com/licensing/product-licensing/products)に関するページに概要が記載されている次の条件をすべて満たす必要があります。
-
-   1. [ライセンス モビリティ](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2)は[ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3)を通して与えられます。 
-   1. パッシブ SQL Server インスタンスでは、クライアントに SQL Server データを提供することや、アクティブな SQL Server ワークロードを実行することがありません。 プライマリ サーバーと同期を取ること、それ以外では、パッシブ データベースをウォーム スタンバイの状態で維持することにのみ使用されます。 アクティブな SQL Server ワークロードを実行しているか、または製品条項で指定されているもの以外の何らかの作業を行っているクライアントへのレポートなどのデータを提供している場合、これは有料のライセンス付与された SQL Server インスタンスである必要があります。 セカンダリ インスタンスでは、データベース整合性チェックまたは CheckDB、完全バックアップ、トランザクション ログ バックアップ、およびリソース使用状況データの監視のアクティビティが許可されます。 また、ディザスター リカバリー テストの短期間、プライマリおよび対応するディザスター リカバリー インスタンスを 90 日ごとに同時に実行することもできます。 
-   1. アクティブ SQL Server ライセンスはソフトウェア アシュアランスの対象となり、パッシブ セカンダリ SQL Server インスタンスが **1 つ**だけ許可され、その計算処理量はライセンスのあるアクティブ サーバーの計算処理量までになります。 
-   1. セカンダリ SQL Server VM は、Azure portal で[ディザスター リカバリー](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure) ライセンスを利用します。
-
 1. **従量課金制のギャラリー イメージから作成した VM を、現在所有している SQL Server ライセンスを使用するように変更できますか。**
 
    はい。 [Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/faq/)を有効にすることによって、従量課金制 (PAYG) のギャラリー イメージをライセンス持ち込み (BYOL) に簡単に切り替えることができます。  詳細については、[SQL Server VM のライセンス モデルを変更する方法](virtual-machines-windows-sql-ahb.md)に関するページを参照してください。 現時点では、この機能は、パブリック クラウドのお客様だけが利用できます。
@@ -98,6 +89,10 @@ ms.locfileid: "75374082"
 1. **ライセンス モデルの切り替えには、SQL Server のダウンタイムが必要ですか。**
 
    いいえ。 [ライセンス モデルの変更](virtual-machines-windows-sql-ahb.md)は、即座に有効になり、VM を再起動する必要はないため、SQL Server のダウンタイムは必要ありません。 ただし、SQL Server VM を SQL Server VM リソース プロバイダーに登録するには、[SQL IaaS 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)が前提条件です。SQL IaaS 拡張機能を_完全_モードでインストールすると、SQL Server サービスが再起動します。 そのため、SQL IaaS 拡張機能をインストールする必要がある場合、機能が制限される_軽量_モードでインストールするか、メンテナンス期間中であれば_完全_モードでインストールしてください。 _軽量_モードでインストールされた SQL IaaS 拡張機能はいつでも_完全_モードにアップグレードできますが、SQL Server サービスを再起動する必要があります。 
+   
+1. **クラシック モデルを使用してデプロイされた SQL Server VM でライセンス モデルを切り替えることはできますか。**
+
+   いいえ。 クラシック VM では、ライセンス モデルの変更はサポートされていません。 VM を Azure Resource Manager モデルに移行し、SQL Server VM リソース プロバイダーに登録できます。 VM が SQL Server VM リソース プロバイダーに登録されたら、VM でライセンス モデルを変更できます。
 
 1. **Azure portal を利用し、同じ VM で複数のインスタンスを管理できますか?**
 
@@ -106,6 +101,32 @@ ms.locfileid: "75374082"
 1. **CSP サブスクリプションで Azure ハイブリッド特典をアクティブ化できますか。**
 
    はい。CSP サブスクリプションで Azure ハイブリッド特典を利用できます。 CSP のお客様は、最初に従量課金イメージをデプロイし、次にライセンス持ち込みに[ライセンス モデルを変更する](virtual-machines-windows-sql-ahb.md)必要があります。
+   
+ 
+1. **スタンバイ/フェールオーバーのみ使用するために作成した Azure VM 上の SQL Server のライセンスに料金を支払う必要がありますか。**
+
+   スタンバイ セカンダリ可用性グループまたはフェールオーバー クラスター化されたインスタンスの無料のパッシブ ライセンスを取得するには、[製品ライセンス条項](https://www.microsoft.com/licensing/product-licensing/products)に関するページに概要が記載されている次の条件をすべて満たす必要があります。
+
+   1. [ライセンス モビリティ](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2)は[ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3)を通して与えられます。 
+   1. パッシブ SQL Server インスタンスでは、クライアントに SQL Server データを提供することや、アクティブな SQL Server ワークロードを実行することがありません。 プライマリ サーバーと同期を取ること、それ以外では、パッシブ データベースをウォーム スタンバイの状態で維持することにのみ使用されます。 アクティブな SQL Server ワークロードを実行しているか、または製品条項で指定されているもの以外の何らかの作業を行っているクライアントへのレポートなどのデータを提供している場合、これは有料のライセンス付与された SQL Server インスタンスである必要があります。 セカンダリ インスタンスでは、データベース整合性チェックまたは CheckDB、完全バックアップ、トランザクション ログ バックアップ、およびリソース使用状況データの監視のアクティビティが許可されます。 また、ディザスター リカバリー テストの短期間、プライマリおよび対応するディザスター リカバリー インスタンスを 90 日ごとに同時に実行することもできます。 
+   1. アクティブ SQL Server ライセンスはソフトウェア アシュアランスの対象となり、パッシブ セカンダリ SQL Server インスタンスが **1 つ**だけ許可され、その計算処理量はライセンスのあるアクティブ サーバーの計算処理量までになります。 
+   1. セカンダリ SQL Server VM は、Azure portal で[ディザスター リカバリー](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure) ライセンスを利用します。
+   
+1. **どのようなものがパッシブ インスタンスと見なされますか?**
+
+   パッシブ SQL Server インスタンスでは、クライアントに SQL Server データを提供することや、アクティブな SQL Server ワークロードを実行することがありません。 プライマリ サーバーと同期を取ること、それ以外では、パッシブ データベースをウォーム スタンバイの状態で維持することにのみ使用されます。 アクティブな SQL Server ワークロードを実行しているか、または製品条項で指定されているもの以外の何らかの作業を行っているクライアントへのレポートなどのデータを提供している場合、これは有料のライセンス付与された SQL Server インスタンスである必要があります。 セカンダリ インスタンスでは、データベース整合性チェックまたは CheckDB、完全バックアップ、トランザクション ログ バックアップ、およびリソース使用状況データの監視のアクティビティが許可されます。 また、ディザスター リカバリー テストの短期間、プライマリおよび対応するディザスター リカバリー インスタンスを 90 日ごとに同時に実行することもできます。
+   
+
+1. **どのようなシナリオでディザスター リカバリー (DR) 特典を利用できますか?**
+
+   [ライセンス ガイド](https://aka.ms/sql2019licenseguide)に、ディザスター リカバリー特典を利用できるシナリオについて記載されています。 詳細については、製品の使用条件を参照し、ライセンスの担当者またはアカウント マネージャーにお問い合わせください。
+
+1. **ディザスター リカバリー (DR) 特典はどのサブスクリプションでサポートされていますか?**
+
+   ソフトウェア アシュアランスと同等のサブスクリプション権限を固定した特典として提供する包括的なプログラムでは、DR 特典がサポートされます。 これには、 オープン バリュー (OV)、オープン バリュー サブスクリプション (OVS)、Enterprise Agreement (EA)、エンタープライズ サブスクリプション契約 (EAS)、およびサーバーおよびクラウド加入契約 (SCE) が含まれますが、これに限定されるものではありません。 詳細については、[製品の使用条件](https://www.microsoft.com/licensing/product-licensing/products)を参照し、ライセンスの担当者またはアカウント マネージャーにお問い合わせください。 
+
+   
+ ## <a name="resource-provider"></a>リソース プロバイダー
 
 1. **新しい SQL Server VM リソース プロバイダーに VM を登録すると、追加のコストがかかりますか?**
 
@@ -127,9 +148,7 @@ ms.locfileid: "75374082"
 
     はい。 独自のメディアから SQL Server をデプロイし、SQL IaaS 拡張機能をインストールした場合は、SQL IaaS 拡張機能によって提供される管理の容易性の利点を得るため、リソース プロバイダーに SQL Server VM を登録できます。 ただし、自己デプロイされた SQL Server VM を従量課金制に変換することはできません。
 
-1. **クラシック モデルを使用してデプロイされた SQL Server VM でライセンス モデルを切り替えることはできますか。**
 
-   いいえ。 クラシック VM では、ライセンス モデルの変更はサポートされていません。 VM を Azure Resource Manager モデルに移行し、SQL Server VM リソース プロバイダーに登録できます。 VM が SQL Server VM リソース プロバイダーに登録されたら、VM でライセンス モデルを変更できます。 
    
 
 
@@ -183,7 +202,7 @@ ms.locfileid: "75374082"
 
 1. **SQL Server フェールオーバー クラスター インスタンス (FCI) は Azure VM でサポートされますか?**
 
-   はい。 [Windows フェールオーバー クラスターを Windows Server 2016 上で作成](virtual-machines-windows-portal-sql-create-failover-cluster.md)し、クラスター ストレージとして Storage Spaces Direct (S2D) を使用できます。 または、[Azure 仮想マシンでの SQL Server の高可用性とディザスター リカバリー](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions)に関する記事の説明に従って、サードパーティのクラスタリング ソリューションまたは記憶域ソリューションを使用できます。
+   はい。 フェールオーバー クラスター インスタンスは、記憶域サブシステムに [Premium ファイル共有 (PFS)](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md) または[記憶域スペース ダイレクト (S2D)](virtual-machines-windows-portal-sql-create-failover-cluster.md) を使用してインストールできます。 Premium ファイル共有は、多くのワークロードのニーズを満たす IOPS とスループット容量を提供します。 IO 集中型ワークロードの場合は、マネージド Premium または Ultra ディスクに基づいて記憶域スペース ダイレクトを使用することを検討してください。 または、[Azure 仮想マシンでの SQL Server の高可用性とディザスター リカバリー](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions)に関する記事の説明に従って、サードパーティのクラスタリング ソリューションまたは記憶域ソリューションを使用できます。
 
    > [!IMPORTANT]
    > 現時点では、Azure 上の SQL Server FCI では_完全な_ [SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)がサポートされていません。 FCI に参加している VM から _完全な_ 拡張機能をアンインストールし、代わりに _軽量_ モードで拡張機能をインストールすることをお勧めします。 この拡張機能では、自動バックアップ、修正プログラムの自動適用、SQL Server のポータル機能の一部などの機能に対応しています。 このような機能は、_完全_ なエージェントのアンインストール後、SQL Server VM では動作しません。

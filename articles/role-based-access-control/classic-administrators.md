@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/26/2019
+ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 40bda408731e90ab4c0c987b981a1c7f16b0de5d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2493e893f9afda0642bd838c94538dd0b984bce5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979333"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720658"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure の従来のサブスクリプション管理者
 
@@ -99,29 +99,11 @@ ms.locfileid: "75979333"
 
 サブスクリプションのサービス管理者を変更できるのは、アカウント管理者のみです。 既定の設定では、Azure サブスクリプションにサインアップした時点では、サービス管理者とアカウント管理者は同じです。 アカウント管理者ロールのユーザーには、Azure portal へのアクセス権が与えられません。 サービス管理者ロールのユーザーには、Azure portal へのフル アクセス権が与えられます。 アカウント管理者とサービス管理者が同じユーザーの場合、サービス管理者を別のユーザーに変更すると、アカウント管理者は Azure portal にアクセスできなくなります。 ただし、アカウント管理者はいつでもアカウント センターを使用して、サービス管理者を自身に戻すことができます。
 
-サービス管理者を変更するには 2 つの方法があります。 **Azure portal** または**アカウント センター**で変更することができます。
-
-### <a name="azure-portal"></a>Azure portal
-
-1. サービス管理者を変更するための制限事項を確認して、使用するシナリオがサポートされていることを確認してください。
-
-1. [Azure Portal](https://portal.azure.com) にアカウント管理者としてサインインします。
-
-1. [[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) を開き、サブスクリプションを選択します。
-
-1. **[プロパティ]** をクリックします。
-
-    ![アカウント管理者を示すスクリーンショット](./media/classic-administrators/account-admin.png)
-
-1. 上部の **[サービス管理者]** をクリックして [サービス管理者] ウィンドウを開きます。
-
-    [サービス管理者] ボタンが無効になっている場合は、アクセス許可がありません。 サービス管理者を変更できるのは、アカウント管理者であるユーザーだけです。
-
-1. 新しいサービス管理者を選択して、 **[保存]** をクリックします。
+**Account Center** でサービス管理者を変更するには、次の手順に従います。
 
 ### <a name="account-center"></a>アカウント センター
 
-1. サービス管理者を変更するための制限事項を確認して、使用するシナリオがサポートされていることを確認してください。
+1. [サービス管理者を変更するための制限事項](#limitations-for-changing-the-service-administrator)を確認して、使用するシナリオがサポートされていることを確認してください。
 
 1. アカウント管理者として [Azure センター](https://account.windowsazure.com/subscriptions)にサインインします。
 
@@ -156,7 +138,7 @@ Microsoft アカウントと Azure AD アカウントの詳細については、
 
 アカウント管理者を表示するには、以下の手順のようにします。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. [[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) を開き、サブスクリプションを選択します。
 

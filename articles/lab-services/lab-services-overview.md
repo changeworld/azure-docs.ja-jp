@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 11/26/2019
+ms.date: 02/03/2020
 ms.author: spelluru
-ms.openlocfilehash: 4258bec3ceacd52f9679f48d8357be558ee0e27f
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: ef296035ee8f0c80b4ee078303639d7aedf5a91d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561629"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986633"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Azure Lab Services の概要
 Azure には、クラウドにラボ環境を設定することができるサービスが 2 つあります。 
@@ -35,9 +35,6 @@ Azure には、クラウドにラボ環境を設定することができるサ�
 - **コストの最適化と分析**。 ラボの所有者は、ラボのスケジュールを設定して、仮想マシンのシャットダウンと起動を自動化できます。 ラボの所有者は、スケジュールを設定してユーザーがラボの仮想マシンにアクセスできる時間帯を指定し、ユーザーまたはラボごとに使用ポリシーを設定してコストを最適化し、ラボの使用状況とアクティビティの傾向を分析することができます。 クラスルーム ラボなどのマネージド ラボの種類の場合は、現在は、コストの最適化と分析のオプションの小さなサブセットを利用できます。
 - **埋め込まれたセキュリティ**。 ラボ所有者は、ラボに対してプライベート仮想ネットワークとサブネットを設定し、共有パブリック IP アドレスを有効にすることができます。 ラボ ユーザーは、ExpressRoute またはサイト間 VPN で構成された仮想ネットワークを使用して、リソースに安全にアクセスできます。 (現在は、DevTest Labs でのみ使用可能)
 - **ワークフローおよびツールへの統合**。 Azure Lab Services では、組織の Web サイトと管理システムにラボを統合することができます。 継続的インテグレーション/継続的配置 (CI/CD) ツール内から、環境を自動的にプロビジョニングできます。 (現在は、DevTest Labs でのみ使用可能)
-
-> [!NOTE]
-> 現在、Azure Lab Services は、Azure Marketplace イメージから作成された VM のみをサポートしています。 ラボ環境でカスタム イメージを使用する場合や他の PaaS リソースを作成する場合は、DevTest Labs を使用してください。 詳細については、[DevTest Labs でのカスタム イメージの作成](devtest-lab-create-custom-image-from-vm-using-portal.md)に関するページおよび [Resource Manager テンプレートを使用したラボ環境の作成](devtest-lab-create-environment-from-arm.md)に関するページを参照してください。
 
 ## <a name="scenarios"></a>シナリオ
 
@@ -107,16 +104,16 @@ Azure Lab Services では、Azure によって管理されるインフラスト�
 ## <a name="managed-lab-types-vs-devtest-labs"></a>マネージド ラボの種類と DevTest Labs
 次の表では、Azure Lab Services によってサポートされている 2 種類のラボを比較します。 
 
-| 機能 | マネージド ラボの種類 | DevTest Labs |
+| [機能] | マネージド ラボの種類 | DevTest Labs |
 | -------- | ----------------- | ---------- |
 | ラボ内の Azure インフラストラクチャの管理 |  サービスによって自動的に管理されます | ユーザーが自分で管理します  |
 | インフラストラクチャの問題に対する組み込みの回復性 | サービスによって自動的に処理されます | ユーザーが自分で管理します  |
 | サブスクリプション管理 | サービスが、サービスの基になっている Microsoft サブスクリプション内のリソースの割り当てを処理します。 スケーリングはサービスによって自動的に処理されます。 | ユーザー自身が自分の Azure サブスクリプション内で管理します。 サブスクリプションの自動スケーリングはありません。 |
-| ラボ内の Azure Resource Manager の展開 | 使用できません。 | 使用可能 |
+| ラボ内の Azure Resource Manager の展開 | 使用不可 | 利用可能 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-次の記事を参照してください。 
+次の記事をご覧ください。 
 
 - [クラスルーム ラボについて](./classroom-labs/classroom-labs-overview.md)
 - [DevTest ラボについて](devtest-lab-overview.md)

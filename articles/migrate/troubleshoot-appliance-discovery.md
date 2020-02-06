@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: d66e792b901742f903dccf7a0e7999db4d02e26a
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 3f3604205d4aedffdda128ec4a6b895786245e56
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289528"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772026"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure Migrate アプライアンスと検出のトラブルシューティング
 
@@ -131,7 +131,7 @@ ms.locfileid: "76289528"
 
 ## <a name="vm-data-not-in-portal"></a>VM データがポータルにない
 
-検出された VM がポータルに表示されない場合は、数分待ってください。 検出されたデータがポータルに表示されるまでには最大で 30 分かかります。 30 分後にデータがない場合は、次のように最新の情報に更新してみてください。
+検出された VM がポータルに表示されないか、VM データが期限切れになっている場合は、数分待ってください。 検出された VM 構成データの変更内容がポータルに表示されるまでには最大で 30 分かかります。 アプリケーション データの変更が表示されるまでに数時間かかる場合もあります。 この時間が経過してもデータがない場合は、次のように最新の情報に更新してみてください
 
 1. **[サーバー]**  >  **[Azure Migrate Server Assessment]\(Azure Migrate Server Assessment\)** で、 **[概要]** を選択します。
 2. **[管理]** の下で、 **[Agent Health]\(エージェントの正常性\)** を選択します。
@@ -166,7 +166,8 @@ Azure Migrate は、Azure Migrate を使用してアプリケーション、ロ�
 9009: "Unable to retrieve the applications installed the server". (サーバーにインストールされているアプリケーションを取得できません。) | サーバーの Windows ユーザー アカウント制御 (UAC) の設定の制限により、インストールされているアプリケーションの検出が妨げられている場合に発生します。 | サーバーで [ユーザーアカウント制御] の設定を探し、サーバーの UAC のレベル設定が下位の 2 つのいずれかになるように構成します。
 9010: "Unable to retrieve the applications installed the server". (サーバーにインストールされているアプリケーションを取得できません。) | 内部エラーの可能性があります。  | 24 時間以内に問題が自動的に解決しない場合は、サポートにお問い合わせください。
 8084: "Unable to discover applications due to VMware error: <Exception from VMware>" (次の VMware エラーのため、アプリケーションを検出できません:) | Azure Migrate アプライアンスは、アプリケーションの検出に VMware API を使用しています。 この問題は、アプリケーションを検出しようとしている時に vCenter Server から例外がスローされた場合に発生することがあります。 VMware からのエラー メッセージは、ポータルに表示されるエラー メッセージに表示されます。 | [VMware ドキュメント](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html)でメッセージを検索し、修正手順に従ってください。 修正できない場合は、Microsoft サポートにお問い合わせください。
-
+9012:"Unable to discover the applications installed on the server" (サーバーにインストールされているアプリケーションを検出できません) | この問題は、内部エラーのために発生します。  | 24 時間以内に問題が自動的に解決しない場合は、サポートにお問い合わせください。
+9013:"Unable to discover the applications installed on the server" (サーバーにインストールされているアプリケーションを検出できません) | VM にログインするたびに、新しい一時プロファイルが作成されます。  | 指定されたゲスト ユーザーに対して一時プロファイルが作成されていないことを確認してください。
 
 
 

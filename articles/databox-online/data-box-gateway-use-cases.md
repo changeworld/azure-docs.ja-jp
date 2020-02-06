@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: alkohli
-ms.openlocfilehash: e9092fb91ad98e6147647717e11d1a64bcff580e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e72113313e27949819db567c550401b1f051473f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754183"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022683"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Azure Data Box Gateway のユース ケース
 
@@ -51,7 +51,7 @@ Data Box Gateway の主な利点の 1 つは、データ サイズに関係な�
     - Azure PowerShell を使用する場合、こちらの[手順](/azure/databox/data-box-how-to-set-data-tier#use-azure-powershell-to-set-the-blob-tier)に従ってデータをアーカイブ層に移動します。
     - Azure ライフサイクル管理を使用する場合、次の手順に従ってデータをアーカイブ層に移動します。
         - アーカイブ層を使用するために、BLOB ライフサイクル管理サービスのプレビューに[登録](/azure/storage/common/storage-lifecycle-management-concepts)します。
-        - 次のポリシーを使用して、[取り込み時にデータをアーカイブ](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-at-ingest)します。
+        - 次のポリシーを使用して、[取り込み時にデータをアーカイブ](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-after-ingest)します。
 - BLOB はアーカイブとしてマークされると、ホット層またはコールド層に移動されない限り、ゲートウェイによって変更できなくなります。 ファイルがローカル ストレージにある場合、ローカル コピーに行われる変更 (削除も含む) はアーカイブ層にアップロードされません。
 - アーカイブ ストレージ内のデータを読み取るには、BLOB 層をホットかクールに変更してリハイドレートする必要があります。 ゲートウェイ上の[共有を更新](data-box-gateway-manage-shares.md#refresh-shares)しても、BLOB はリハイドレートされません。
 
@@ -93,7 +93,7 @@ Data Box Gateway を使用して継続的なインジェストを行うには、
 
     共有が同期されると、ファイルがクライアント上で変更された場合に、Data Box Gateway によって増分変更がアップロードされます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Data Box Gateway のシステム要件](data-box-gateway-system-requirements.md)を確認する。
 - [Data Box Gateway の制限事項](data-box-gateway-limits.md)を理解する。

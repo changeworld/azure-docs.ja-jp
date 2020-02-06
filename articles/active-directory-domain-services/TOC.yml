@@ -79,6 +79,8 @@
           href: delete-aadds.md
         - name: クラシック デプロイから移行する (プレビュー)
           href: migrate-from-classic-vnet.md
+        - name: SKU の変更
+          href: change-sku.md
     - name: Azure AD DS のセキュリティ保護
       items:
         - name: マネージド ドメインをセキュリティで保護します

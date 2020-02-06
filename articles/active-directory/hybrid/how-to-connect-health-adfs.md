@@ -9,6 +9,7 @@ manager: daveba
 editor: curtand
 ms.assetid: dc0e53d8-403e-462a-9543-164eaa7dd8b3
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +18,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92825a9ef84edc30b6b34aa875f8a207c70c8511
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bbd1ad6178e0120bf8414fc424b79254e306d2c2
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60350441"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897283"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Azure AD Connect Health を使用した AD FS の 監視
 次のドキュメントは、Azure AD Connect Health を使用した AD FS インフラストラクチャの監視に固有のドキュメントです。 Azure AD Connect Health での Azure AD Connect (同期) の監視については、「 [Azure AD Connect Health for Sync の使用](how-to-connect-health-sync.md)」を参照してください。また、Azure AD Connect Health での Active Directory Domain Services の監視については、「[AD DS での Azure AD Connect Health の使用](how-to-connect-health-adds.md)」を参照してください。
@@ -109,7 +110,7 @@ Azure AD Connect Health for AD FS では、無効なユーザー名またはパ�
 
 | レポート アイテム | 説明 |
 | --- | --- |
-| ユーザー ID |使用されたユーザー ID を示しています。 この値はユーザーが入力した内容です。ときどき、間違ったユーザー ID が使用されていることがあります。 |
+| User ID |使用されたユーザー ID を示しています。 この値はユーザーが入力した内容です。ときどき、間違ったユーザー ID が使用されていることがあります。 |
 | 失敗した試行の回数 |そのユーザー ID で試行が失敗した回数の合計を示しています。 この表は、失敗した試行の回数が多いものから降順に並べ替えられています。 |
 | 最後の失敗 |最後に失敗したときのタイム スタンプを示しています。 |
 | 最後のエラー IP |直近の無効な要求のクライアント IP アドレスを示します。 この値に複数の IP アドレスが表示されている場合は、転送クライアント IP アドレスとユーザーが最後に試行した要求 IP アドレスが含まれている可能性があります。  |

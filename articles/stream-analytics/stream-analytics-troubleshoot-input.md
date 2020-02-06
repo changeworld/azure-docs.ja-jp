@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 20a161ffc82cb8f74cfcac838856434f83c4e258
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dac3037f82c38980c9ac16685aa7fddac68a2e7b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354278"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720301"
 ---
 # <a name="troubleshoot-input-connections"></a>入力接続のトラブルシューティング
 
@@ -24,11 +24,13 @@ ms.locfileid: "75354278"
 
 2.  入力データを確認します。
 
-    入力データがイベント ハブに送信されていることを確認するために、[Service Bus エクスプローラー](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a)を使用して、Azure イベント ハブに接続します (イベント ハブの入力を使用している場合)。
+    1. 入力データがイベント ハブに送信されていることを確認するために、[Service Bus エクスプローラー](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a)を使用して、Azure イベント ハブに接続します (イベント ハブの入力を使用している場合)。
         
-    各入力の [ **[サンプル データ]** ](stream-analytics-sample-data-input.md) ボタンを使用して、入力のサンプル データをダウンロードします。
+    1. 各入力の [ **[サンプル データ]** ](stream-analytics-sample-data-input.md) ボタンを使用します。 入力のサンプル データをダウンロードします。
         
-    サンプル データを調べて、データの構造 (スキーマおよび[データ型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)) を理解します。
+    1. サンプル データを調べて、データの構造 (スキーマおよび[データ型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)) を理解します。
+
+3.  入力プレビューで時間の範囲を選択していることを確認します。 **[時間範囲の選択]** を選択し、クエリをテストする前にサンプル期間を入力します。
 
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>形式が正しくない入力イベントが原因の逆シリアル化エラー 
 Stream Analytics ジョブの入力ストリームに間違った形式のメッセージが含まれている場合は、逆シリアル化の問題が発生します。 たとえば、間違った形式のメッセ―ジは、JSON オブジェクト内でのかっこや中かっこの不足、または時間フィールドでの不正なタイム スタンプ形式によって発生する可能性があります。 

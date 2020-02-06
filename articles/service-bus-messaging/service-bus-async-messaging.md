@@ -1,6 +1,6 @@
 ---
 title: Service Bus の非同期メッセージング |Microsoft Docs
-description: Azure Service Bus の非同期メッセージングに関する説明です。
+description: Azure Service Bus が、キュー、トピック、およびサブスクリプションを使用して、ストア アンド フォワード メカニズムを通じて非同期をサポートする方法について説明します。
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 50778ae742c1ec66857a6c2fa6250dc3d67e5601
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 554260f403104d815b9b63c576c7ba0a2f3cf1e1
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60531108"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761034"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>非同期メッセージング パターンと高可用性
 
@@ -64,8 +64,8 @@ Azure 内の他のコンポーネントで、サービスの問題が発生す�
 
 このような状況では、クライアント アプリケーションは [System.TimeoutException][System.TimeoutException] または [MessagingException][MessagingException] 例外を生成します。 Service Bus には、自動化されたクライアント再試行ロジックという形で、この問題の軽減策が備わっています。 再試行期間が終了してもメッセージが配信されない場合は、「[故障と障害の扱い][handling outages and disasters]」の記事に記載されている他の方法を試すことができます。
 
-## <a name="next-steps"></a>次の手順
-Service Bus での非同期メッセージングの基本について説明しました。詳しくは、「[故障と障害の扱い][handling outages and disasters]」をご覧ください。
+## <a name="next-steps"></a>次のステップ
+Service Bus での非同期メッセージングの基本について学習しました。詳細については、「[故障と障害の扱い][handling outages and disasters]」をお読みください。
 
 [ServerBusyException]: /dotnet/api/microsoft.servicebus.messaging.serverbusyexception
 [System.TimeoutException]: https://msdn.microsoft.com/library/system.timeoutexception.aspx

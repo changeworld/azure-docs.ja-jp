@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 01/06/2019
+ms.date: 01/27/2019
 ms.author: aahi
-ms.openlocfilehash: a9bfa2a51341bf60f92378f5d96a390bd1d92db1
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 9aa00898c6a567d495ed0c66bcf7bd475067fa0d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732780"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774141"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Text Analytics で名前付きエンティティの認識を使用する方法
 
@@ -23,7 +23,7 @@ Text Analytics API を使用すると、構造化されていないテキスト�
 
 ### <a name="entity-linking"></a>Entity Linking
 
-エンティティ リンク設定は、テキスト内で見つかったエンティティの個性を識別してあいまいさを解消する機能です (例: `Mars` という単語が出現した場合に、それが惑星を指すのか、古代ローマの戦争の神様を指すのかを判定する)。 このプロセスで、テキスト内の認識されたエンティティをリンクするためには、適切な言語のナレッジ ベースが存在している必要があります。 
+エンティティ リンク設定は、テキスト内で見つかったエンティティの個性を識別してあいまいさを解消する機能です (例: `Mars` という単語が出現した場合に、それが惑星を指すのか、古代ローマの戦争の神様を指すのかを判定する)。 このプロセスで、テキスト内の認識されたエンティティをリンクするためには、適切な言語のナレッジ ベースが存在している必要があります。 エンティティ リンクには、このナレッジ ベースとして [Wikipedia](https://www.wikipedia.org/) が使用されます。
 
 
 ### <a name="named-entity-recognition-ner"></a>名前付きエンティティの認識 (NER)
