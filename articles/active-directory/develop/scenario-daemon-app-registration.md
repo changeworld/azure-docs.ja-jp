@@ -44,7 +44,7 @@ ms.locfileid: "76773389"
 ![アプリのアクセス許可と管理者の同意](media/scenario-daemon-app/app-permissions-and-admin-consent.png)
 
 > [!NOTE]
-> 呼び出す Web API では、委任されたアクセス許可ではなく、*アプリケーションのアクセス許可 (アプリ ロール)* を定義する必要があります。 そのような API を公開する方法の詳細については、[保護された Web API: アプリの登録 - デーモン アプリで Web API が呼び出される場合](scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app)に関するページを参照してください。
+> 呼び出す Web API では、委任されたアクセス許可ではなく、*アプリケーションのアクセス許可 (アプリ ロール)* を定義する必要があります。 そのような API を公開する方法の詳細については、[「保護された Web API: アプリの登録」のデーモン アプリで Web API が呼び出される場合](scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app)に関するセクションを参照してください。
 
 デーモン アプリケーションには、Web API を呼び出すアプリケーションに対するテナント管理者の事前同意が必要です。 テナント管理者は、 **[Grant admin consent to *our organization*]\(組織に対して管理者の同意を付与\)** を選択することにより、同じ **[API のアクセス許可]** ページでこの同意を提供します。
 
