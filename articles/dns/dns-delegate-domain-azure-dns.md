@@ -2,17 +2,17 @@
 title: チュートリアル:ドメインとサブドメインをホストする - Azure DNS
 description: この記事では、Azure DNS を構成して DNS ゾーンをホストする方法について説明します。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
-ms.author: allensu
-ms.openlocfilehash: 062a5beaec30d510d37af436e00f4d57785245cd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 8f29a2bbe0eb392927dd111b13e2260111ddd18e
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212190"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937313"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>チュートリアル:Azure DNS でドメインをホストする
 
@@ -47,12 +47,12 @@ Azure DNS 内でホストすることができ、テストに使用できるド�
 1. **[DNS ゾーンの作成]** を選択します。
 1. **[DNS ゾーンの作成]** ページで次の値を入力してから、 **[作成]** を選択します。
 
-   | **設定** | **値** | **詳細** |
+   | **設定** | **Value** | **詳細** |
    |---|---|---|
    |**Name**|[ドメイン名] |購入したドメイン名。 このチュートリアルでは、例として contoso.net を使用します。|
    |**サブスクリプション**|<該当するサブスクリプション>|ゾーンの作成先となるサブスクリプションを選択します。|
    |**リソース グループ**|**[新規作成]** : contosoRG|リソース グループを作成します。 選択したサブスクリプション内で一意となるリソース グループ名を使用してください。<br>リソース グループの場所は、DNS ゾーンには影響しません。 DNS ゾーンの場所は常に "グローバル" であり、それは表示されません。|
-   |**Location**|East US||
+   |**地域**|East US||
 
 ## <a name="retrieve-name-servers"></a>ネーム サーバーの取得
 
@@ -107,13 +107,13 @@ Azure DNS ネーム サーバーを指定する必要はありません。 委�
    default TTL = 300 (5 mins)
    ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 次のチュートリアルに進む場合は、**contosoRG** リソース グループをそのまま保持できます。 それ以外の場合は、**contosoRG** リソース グループを削除してこのチュートリアルで作成したリソースを削除します。
 
 - **contosoRG** リソース グループを選択し、 **[リソース グループの削除]** を選択します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、ドメインの DNS ゾーンを作成し、それを Azure DNS に委任しました。 Azure DNS と Web アプリについて詳しくは、Web アプリのチュートリアルに進んでください。
 

@@ -3,24 +3,24 @@ title: Azure Traffic Manager のパフォーマンスに関する考慮事項 | 
 description: Traffic Manager でのパフォーマンス、および Traffic Manager を使用したときの Web サイトのパフォーマンスをテストする方法について説明します。
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
-ms.author: allensu
-ms.openlocfilehash: 315165677bd3186bb3bdc87ed688c426776569fc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohink
+ms.openlocfilehash: 84367a00643c48e7fe2fb7f907bab64589193b2e
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071050"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938533"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Traffic Manager のパフォーマンスに関する考慮事項
 
-このページでは、Traffic Manager を使用する場合のパフォーマンスに関する考慮事項について説明します。 次のシナリオで考えてみましょう。
+このページでは、Traffic Manager を使用する場合のパフォーマンスに関する考慮事項について説明します。 以下のシナリオについて考えてみます。
 
 WestUS と EastAsia のリージョンに Web サイトのインスタンスがあります。 一方のインスタンスが Traffic Manager のプローブの正常性チェックに失敗しました。 アプリケーションのトラフィックは、正常なリージョンの方へ送信されます。 このフェールオーバーは予期された動作ですが、リージョンに達するまでのトラフィックの伝達距離が長くなるため、待機時間という点でパフォーマンスの問題が発生する可能性があります。
 

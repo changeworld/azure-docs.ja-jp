@@ -2,17 +2,17 @@
 title: トラブルシューティング ガイド - Azure DNS
 description: このラーニング パスでは、Azure DNS に関する一般的な問題のトラブルシューティングを開始します
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 09/20/2019
-ms.author: allensu
-ms.openlocfilehash: b5fedba7b739c07a37f3aabf75ddd8ca465ba73b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: b5e1624bf852256f6e8fb0b616258f932c5a8998
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210931"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939027"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS トラブルシューティング ガイド
 
@@ -89,7 +89,7 @@ SRV レコード名の例 (サービス名が "sip"、プロトコルが "tcp") 
 * [SRV レコード タイプ (Wikipedia)](https://en.wikipedia.org/wiki/SRV_record)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure DNS ゾーンとレコード](dns-zones-records.md)について学習します
 * Azure DNS の使用を開始する場合は、[DNS ゾーンの作成方法](dns-getstarted-create-dnszone-portal.md)と [DNS レコードの作成方法](dns-getstarted-create-recordset-portal.md)について確認してください。

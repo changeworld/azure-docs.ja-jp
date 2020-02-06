@@ -3,18 +3,18 @@ title: Azure CLI を使用した Azure Traffic Manager のサブネットのオ�
 description: この記事では、Traffic Manager サブネットのオーバーライドを使用して、Traffic Manager プロファイルのルーティング方法をオーバーライドし、事前に定義された IP 範囲からエンドポイントへのマッピングを介してエンドユーザーの IP アドレスに基づいてエンドポイントにトラフィックを送信する方法について説明します。
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.topic: article
 ms.service: traffic-manager
 ms.date: 09/18/2019
-ms.author: allensu
-ms.openlocfilehash: d285db22ef92128e025a677ea7f86d623dfe130c
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.author: rohink
+ms.openlocfilehash: 818b692884bd9d31efd08663a582ebcfec2032e9
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351181"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938471"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-cli"></a>Azure CLI を使用した Traffic Manager のサブネットのオーバーライド
 
@@ -79,4 +79,4 @@ az network traffic-manager endpoint update \
 ## <a name="next-steps"></a>次の手順
 Traffic Manager の [トラフィック ルーティング方法](traffic-manager-routing-methods.md)の詳細を確認する。
 
-[サブネット トラフィック ルーティング方法](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method)の詳細を確認する
+[サブネット トラフィックのルーティング方法](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method)の詳細を確認する

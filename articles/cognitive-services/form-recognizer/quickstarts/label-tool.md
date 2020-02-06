@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: f00702326cf6fe2efd8d4abbfce7174815ea0b1d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 158faaba1525e162c40c44179f30f7c3cea83b38
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770290"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025913"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>サンプル ラベル付けツールを使用したラベルによる Form Recognizer モデルのトレーニング
 
@@ -26,7 +26,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このクイック スタートを完了するには、以下が必要です。
 - アクセスが制限された Form Recognizer プレビューへのアクセス。 プレビューへのアクセスを取得するには、[Form Recognizer アクセス要求フォーム](https://aka.ms/FormRecognizerRequestAccess)に記入して送信します。 Form Recognizer リソースを作成するためのリンクが記載されたメールが届きます。
-- Form Recognizer のサンプル ラベル付けツールへのアクセス。 アクセスできるようにするには、[Form Recognizer ラベル付けツール要求フォーム](https://aka.ms/LabelToolRequestAccess)に記入して送信します。 資格情報を取得してプライベート コンテナー レジストリにアクセスする手順が記載されたメールが届きます。 
 - 同じ種類の少なくとも 6 つのフォームのセット。 このデータを使用して、モデルのトレーニングとフォームのテストを行います。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)を使用できます。 Azure Storage アカウントの BLOB ストレージ コンテナーのルートにトレーニング ファイルをアップロードします。
 
 ## <a name="set-up-the-sample-labeling-tool"></a>サンプル ラベル付けツールを設定する
@@ -38,18 +37,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |:--|:--|:--|
     |サンプル ラベル付けツール|2 コア、4 GB メモリ|4 コア、8 GB メモリ|
     
-1. 次に、[Azure コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) が必要です。 まだインストールしていない場合は、お使いのマシンにインストールします。
-1. 次に、コマンド プロンプトで下のコマンドを入力します。 `<username>` と `<password>` の値は、"Form Recognizer へようこそ" メールに記載されています。
-    ```
-    docker login containerpreview.azurecr.io -u <username> -p <password>
-    ```
 1. `docker pull` コマンドを使用して、サンプル ラベル付けツールのコンテナーを取得します。
     ```
-    docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer-custom-supervised-labeltool:latest
+    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
     ```
 1. これで、`docker run` を使用してコンテナーを実行する準備が整いました。
     ```
-    docker run -it -p 3000:80 containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer-custom-supervised-labeltool eula=accept
+    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
     ```
 
    このコマンドを実行すると、Web ブラウザーからサンプル ラベル付けツールを使用できるようになります。 [http://localhost:3000](http://localhost:3000) に移動します。

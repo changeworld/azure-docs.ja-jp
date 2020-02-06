@@ -2,20 +2,20 @@
 title: インターネット ドメインで Traffic Manager が参照されるようにする - Azure Traffic Manager
 description: この記事は、会社のドメイン名で Traffic Manager ドメイン名が参照されるようにするために役立ちます。
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
-ms.author: allensu
-ms.openlocfilehash: eb656e5a8185951d203ed10ed819ff5ef11e8071
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: d56e3fe759d2c9dbee9a8f19a6f1a030565c8e4e
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038063"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938488"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>会社のインターネット ドメインで Azure Traffic Manager ドメインが参照されるようにする
 
@@ -30,7 +30,7 @@ Traffic Manager プロファイルを作成すると、Azure では、そのプ�
 > [!IMPORTANT]
 > *contoso.com*などの第 2 レベル ドメインで、Traffic Manager ドメインを参照させることはできません。 DNS プロトコルの標準では、第 2 レベル ドメイン名の CNAME レコードは許可されません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Traffic Manager のルーティング方法](traffic-manager-routing-methods.md)
 * [Traffic Manager  - プロファイルの無効化、有効化、または削除](disable-enable-or-delete-a-profile.md)

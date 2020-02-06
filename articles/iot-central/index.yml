@@ -10,73 +10,73 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: f43c21d483bbb43bb270a7a70c4de6be1fb90f35
-  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+  ms.openlocfilehash: ab2843a4076e4700b584a1e09c0c58271cf61328
+  ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/09/2019
-  ms.locfileid: "73890756"
+  ms.lasthandoff: 02/05/2020
+  ms.locfileid: "77021255"
 highlightedContent:
   items:
   - title: IoT Central とは
     itemType: overview
-    url: ./preview/overview-iot-central.md
+    url: ./core/overview-iot-central.md
   - title: アプリケーション テンプレートとは
     itemType: concept
     url: ./core/concepts-app-templates.md
   - title: Azure IoT Central のアーキテクチャ
     itemType: architecture
-    url: ./preview/concepts-architecture.md
+    url: ./core/concepts-architecture.md
   - title: 新しいアプリケーションを作成する
     itemType: quickstart
-    url: ./preview/quick-deploy-iot-central.md
+    url: ./core/quick-deploy-iot-central.md
   - title: デバイスの種類を定義してデバイスを追加する
     itemType: tutorial
-    url: ./preview/howto-set-up-template.md
+    url: ./core/howto-set-up-template.md
   - title: デバイスを監視する
     itemType: tutorial
-    url: ./preview/tutorial-create-telemetry-rules.md
+    url: ./core/tutorial-create-telemetry-rules.md
 conceptualContent:
   items:
-  - title: 接続する (プレビュー機能)
+  - title: 接続する
     links:
-    - url: ./preview/howto-set-up-template.md
+    - url: ./core/howto-set-up-template.md
       itemType: how-to-guide
       text: デバイス テンプレートを設定する
-    - url: ./preview/tutorial-connect-pnp-device.md
+    - url: ./core/tutorial-connect-pnp-device.md
       itemType: tutorial
-      text: IoT プラグ アンド プレイ デバイスを接続する
+      text: IoT プラグ アンド プレイ (プレビュー) デバイスを接続する
     footerLink:
-      url: ./preview/index.yml
-      text: 関連項目
-  - title: 接続状態を維持する (プレビュー機能)
+      url: ./core/index.yml
+      text: 詳細情報
+  - title: 接続を維持する
     links:
-    - url: ./preview/tutorial-use-device-groups.md
+    - url: ./core/tutorial-use-device-groups.md
       itemType: how-to-guide
       text: デバイス グループを使用する
-    - url: ./preview/howto-manage-devices.md
+    - url: ./core/howto-manage-devices.md
       itemType: how-to-guide
       text: デバイスを管理する
     - url: ./core/howto-run-a-job.md
       itemType: concept
       text: ジョブの実行方法
-    - url: ./preview/howto-create-analytics.md
+    - url: ./core/howto-create-analytics.md
       itemType: how-to-guide
       text: デバイス データを分析する
     footerLink:
-      url: ./preview/index.yml
-      text: 関連項目
-  - title: 変換する (プレビュー機能)
+      url: ./core/index.yml
+      text: 詳細情報
+  - title: 変換
     links:
-    - url: ./preview/tutorial-create-telemetry-rules.md
+    - url: ./core/tutorial-create-telemetry-rules.md
       itemType: how-to-guide
       text: テレメトリ ルールを作成する
-    - url: ./preview/howto-export-data.md
+    - url: ./core/howto-export-data.md
       itemType: how-to-guide
       text: 連続データ エクスポートを構成する
     footerLink:
-      url: ./preview/index.yml
-      text: 関連項目
+      url: ./core/index.yml
+      text: 詳細情報
 productDirectory:
   title: 業界アプリケーション テンプレートを使用して構築を開始する
   summary: 構築する準備は整いましたか? ソリューション ビルダー用に構築された業界関連のアプリケーション テンプレートを確認してください。

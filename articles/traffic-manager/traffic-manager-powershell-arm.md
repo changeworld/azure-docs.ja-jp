@@ -3,20 +3,20 @@ title: Azure 内で PowerShell を使用して Traffic Manager を管理する
 description: このラーニング パスでは、Traffic Manager で Azure PowerShell の使用を開始します。
 services: traffic-manager
 documentationcenter: na
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
-ms.author: allensu
-ms.openlocfilehash: f8dd01f22dec58c3345798b391c1c37c968d1025
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: 7886764a69eefa68be071a801bea65ae995fbdc3
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038118"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938513"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>PowerShell を使用した Traffic Manager の管理
 
@@ -38,7 +38,7 @@ Azure Traffic Manager は、Traffic Manager プロファイルと呼ばれる設
 
 以下の手順では、Microsoft Azure PowerShell を使用します。 次の記事では、Azure PowerShell をインストールして構成する方法について説明します。
 
-* [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)
+* [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)
 
 この記事の例では、既存のリソース グループがあることを前提としています。 リソース グループを作成するには、次のコマンドを使用します。
 
@@ -61,7 +61,7 @@ $TmProfile = New-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG
 
 | パラメーター | 説明 |
 | --- | --- |
-| 名前 |Traffic Manager プロファイル リソースのリソース名。 同じリソース グループ内のプロファイルには、一意の名前が必要です。 この名前は、DNS クエリに使用される DNS 名とは別のものです。 |
+| Name |Traffic Manager プロファイル リソースのリソース名。 同じリソース グループ内のプロファイルには、一意の名前が必要です。 この名前は、DNS クエリに使用される DNS 名とは別のものです。 |
 | ResourceGroupName |プロファイル リソースを含むリソース グループの名前。 |
 | TrafficRoutingMethod |DNS クエリへの応答で返されるエンドポイントを特定するために使用する、トラフィック ルーティング方法を指定します。 指定できる値は、'Performance'、'Weighted' または 'Priority' です。 |
 | RelativeDnsName |この Traffic Manager プロファイルで提供される DNS 名のホスト名の部分を指定します。 Azure Traffic Manager が使用する DNS ドメイン名とこの値を組み合わせて、プロファイルの完全修飾ドメイン名 (FQDN) が形成されます。 たとえば、'contoso' と値を設定すると 'contoso.trafficmanager.net' になります。 |
@@ -177,7 +177,7 @@ New-AzTrafficManagerEndpoint -Name eu-endpoint -ProfileName MyProfile -ResourceG
 
 ## <a name="adding-nested-endpoints"></a>"入れ子" になったエンドポイントの追加
 
-Traffic Manager プロファイルごとに 1 つのトラフィック ルーティング方法を指定します。 ただし、単一の Traffic Manager プロファイルで提供されるものよりも高度なトラフィック ルーティングが必要になるシナリオもあります。 Traffic Manager プロファイルを入れ子にして、複数のトラフィック ルーティング方法の利点を組み合わせることができます。 入れ子になったプロファイルを使用すると、既定の Traffic Manager の動作はオーバーライドされ、より大規模で複雑なアプリケーション デプロイをサポートできます。 詳細なサンプルについては、「[入れ子になった Traffic Manager プロファイル](traffic-manager-nested-profiles.md)」をご覧ください。
+Traffic Manager プロファイルごとに 1 つのトラフィック ルーティング方法を指定します。 ただし、単一の Traffic Manager プロファイルで提供されるものよりも高度なトラフィック ルーティングが必要になるシナリオもあります。 Traffic Manager プロファイルを入れ子にして、複数のトラフィック ルーティング方法の利点を組み合わせることができます。 入れ子になったプロファイルを使用すると、既定の Traffic Manager の動作をオーバーライドして、より大規模でより複雑なアプリケーションのデプロイに対応することができます。 詳細なサンプルについては、「[入れ子になった Traffic Manager プロファイル](traffic-manager-nested-profiles.md)」をご覧ください。
 
 入れ子になったエンドポイントは、親プロファイルで特定のエンドポイントの種類 "NestedEndpoints" を使って構成します。 入れ子になったエンドポイントを指定する場合は、次のことが当てはまります。
 
@@ -321,7 +321,7 @@ Remove-AzTrafficManagerProfile -TrafficManagerProfile $TmProfile [-Force]
 Get-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG | Remove-AzTrafficManagerProfile [-Force]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Traffic Manager の監視](traffic-manager-monitoring.md)
 

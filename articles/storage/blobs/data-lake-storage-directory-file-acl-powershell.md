@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/24/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 983ae646db5f51f7efaa2ff2569133e20e2d1dbd
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 87ee0a931fd3b72a4acd36ecb600fd333aec21ab
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834962"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031103"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>PowerShell を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する (プレビュー)
 
@@ -271,7 +271,7 @@ Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $file
 ディレクトリとファイルのアクセス許可を取得、設定、更新できます。
 
 > [!NOTE]
-> Azure Active Directory (Azure AD) を使用してコマンドを承認している場合は、セキュリティ プリンシパルに [Storage BLOB データ所有者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)が割り当てられていることを確認してください。 ACL アクセス許可の適用方法とその変更による影響の詳細については、「[Azure Data Lake Store Gen2 のアクセス制御](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)」を参照してください。
+> Azure Active Directory (Azure AD) を使用してコマンドを承認している場合は、セキュリティ プリンシパルに [Storage BLOB データ所有者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)が割り当てられていることを確認してください。 ACL アクセス許可の適用方法とその変更による影響の詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)」を参照してください。
 
 ### <a name="get-directory-and-file-permissions"></a>ディレクトリとファイルのアクセス許可を取得する
 
@@ -410,7 +410,7 @@ $filesystemName = "my-file-system"
 $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rw- 
 $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
 $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "-wx" -InputObject $acl
-Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse | Update-AzDataLakeGen2Item -Acl $acl
+Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse -FetchPermission | Update-AzDataLakeGen2Item -Acl $acl
 ```
 <a id="gen1-gen2-map" />
 
@@ -418,7 +418,7 @@ Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse |
 
 次の表は、Data Lake Storage Gen1 で使用するコマンドレットが、Data Lake Storage Gen2 のコマンドレットにどのように対応するかを示しています。
 
-|Data Lake Storage Gen1 のコマンドレット| Data Lake Storage Gen2 のコマンドレット| メモ |
+|Data Lake Storage Gen1 のコマンドレット| Data Lake Storage Gen2 のコマンドレット| Notes |
 |--------|---------|-----|
 |Get-AzDataLakeStoreChildItem|Get-AzDataLakeGen2ChildItem|既定では、Get-AzDataLakeGen2ChildItem コマンドレットは、最初のレベルの子項目のみを一覧表示します。 -Recurse パラメーターは、子項目を再帰的に一覧表示します。 |
 |Get-AzDataLakeStoreItem<br>Get-AzDataLakeStoreItemAclEntry<br>Get-AzDataLakeStoreItemOwner<br>Get-AzDataLakeStoreItemPermission|Get-AzDataLakeGen2Item|Get-AzDataLakeGen2Item コマンドレットの出力項目には、次のプロパティが含まれます。Acl、Owner、Group、Permission です。|

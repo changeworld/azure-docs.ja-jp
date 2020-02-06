@@ -2,17 +2,17 @@
 title: Azure プライベート DNS とは
 description: この記事では、Microsoft Azure のプライベート DNS ホスティング サービスの概要から始めます。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: overview
 ms.date: 6/12/2019
-ms.author: allensu
-ms.openlocfilehash: 2e457dcccfd89d2dcf94a0cc3728cfee9bb1a611
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 97b266398b3ea46d09b04524dad34922f21b1a95
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210646"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939282"
 ---
 # <a name="what-is-azure-private-dns"></a>Azure プライベート DNS とは
 
@@ -20,7 +20,7 @@ ms.locfileid: "74210646"
 
 Azure プライベート DNS は、信頼性が高くセキュリティで保護された DNS サービスを提供し、カスタムの DNS ソリューションの追加を必要とせずに、仮想ネットワークでドメイン名を管理および解決します。 プライベート DNS ゾーンを使用すると、現在利用可能な Azure で提供される名前ではなく、独自のカスタム ドメイン名を使用できます。 カスタム ドメイン名の使用は、組織のニーズに最適な仮想ネットワーク アーキテクチャを調整するのに役立ちます。 仮想ネットワーク内、および仮想ネットワーク間の、仮想マシン (VM) の名前解決を提供します。 さらに、水平分割ビューでゾーン名を構成できるので、プライベート DNS ゾーンとパブリック DNS ゾーンで名前を共有することもできます。
 
-仮想ネットワークからプライベート DNS ゾーンのレコードを解決するには、仮想ネットワークをゾーンにリンクする必要があります。 リンクされた仮想ネットワークはフル アクセス権を持ち、プライベート ゾーンに公開されているすべての DNS レコードを解決できます。 さらに、仮想ネットワーク リンク上で自動登録を有効にすることもできます。 仮想ネットワーク リンク上で自動登録を有効にすると、その仮想ネットワーク上の仮想マシンの DNS レコードがプライベート ゾーンに登録されます。 また、自動登録を有効にすると、仮想マシンの作成または削除、あるいはその IP アドレスの変更のたびに Azure DNS がそのゾーン レコードを更新します。
+仮想ネットワークからプライベート DNS ゾーンのレコードを解決するには、仮想ネットワークをゾーンにリンクする必要があります。 リンクされた仮想ネットワークはフル アクセス権を持ち、プライベート ゾーンに公開されているすべての DNS レコードを解決できます。 さらに、仮想ネットワーク リンク上で自動登録を有効にすることもできます。 仮想ネットワーク リンク上で自動登録を有効にすると、その仮想ネットワーク上の仮想マシンの DNS レコードがプライベート ゾーンに登録されます。 また、自動登録を有効にすると、仮想マシンの作成または削除、あるいはその IP アドレスの変更を行うたびに、Azure DNS でそのゾーン レコードも更新されます。
 
 ![DNS の概要](./media/private-dns-overview/scenario.png)
 
@@ -68,7 +68,7 @@ Azure DNS には次の制限事項があります。
 
 料金情報については、「[Azure DNS の価格](https://azure.microsoft.com/pricing/details/dns/)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure PowerShell](./private-dns-getstarted-powershell.md) または [Azure CLI](./private-dns-getstarted-cli.md) を使用して Azure DNS のプライベート ゾーンを作成する方法を確認します。
 

@@ -3,7 +3,7 @@ title: Azure DNS での DNS ゾーンの管理 - Azure CLI | Microsoft Docs
 description: Azure CLI を使用して DNS ゾーンを管理できます。 この記事では、Azure DNS で DNS ゾーンを更新、削除、および作成する方法について説明します。
 services: dns
 documentationcenter: na
-author: asudbring
+author: rohinkoul
 manager: timlt
 ms.assetid: 8ab63bc4-5135-4ed8-8c0b-5f0712b9afed
 ms.service: dns
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
-ms.author: allensu
-ms.openlocfilehash: e1a3c401de32beb9757011ac306443334da8b867
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 413c2ab3ee04249c2bb52bf42ca6a31a58fb9082
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211921"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936923"
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>Azure CLI を使用して Azure DNS で DNS ゾーンを管理する方法
 
@@ -74,7 +74,7 @@ Azure DNS Private Zone の機能は、Azure CLI の拡張機能を介して利�
 az extension add --name dns
 ``` 
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 Azure リソース マネージャーでは、すべてのリソース グループの場所を指定する必要があります。 指定した場所は、そのリソース グループ内のリソースの既定の場所として使用されます。 ただし、すべての DNS リソースはグローバルであり、リージョンの違いがないため、リソース グループの場所を選択しても、Azure DNS には影響しません。
 
@@ -86,7 +86,7 @@ az group create --name myresourcegroup --location "West US"
 
 ## <a name="getting-help"></a>ヘルプの表示
 
-Azure DNS に関連するすべての Azure CLI コマンドは `az network dns` で始まります。 `--help` オプション (短縮形 `-h`) を使用すると、各コマンドのヘルプを利用できます。  例:
+Azure DNS に関連するすべての Azure CLI コマンドは `az network dns` で始まります。 `--help` オプション (短縮形 `-h`) を使用すると、各コマンドのヘルプを利用できます。  次に例を示します。
 
 ```azurecli
 az network dns --help
@@ -180,7 +180,7 @@ az network dns zone update --resource-group myresourcegroup --name contoso.com -
 DNS ゾーンは、`az network dns zone delete` を使用して削除できます。 `az network dns zone delete --help` を使用すると、ヘルプが表示されます。
 
 > [!NOTE]
-> DNS ゾーンを削除すると、ゾーン内の DNS レコードもすべて削除されます。 削除操作は元に戻すことができません。 DNS ゾーンを使用している場合、ゾーンを削除すると、ゾーンを使用するサービスは機能しなくなります。
+> DNS ゾーンを削除すると、ゾーン内の DNS レコードもすべて削除されます。 この操作を元に戻すことはできません。 DNS ゾーンを使用している場合、ゾーンを削除すると、ゾーンを使用するサービスは機能しなくなります。
 >
 >ゾーンを誤って削除しないようにするには、「[DNS ゾーンとレコードを保護する](dns-protect-zones-recordsets.md)」をご覧ください。
 
@@ -192,7 +192,7 @@ DNS ゾーンは、`az network dns zone delete` を使用して削除できま�
 az network dns zone delete --resource-group myresourcegroup --name contoso.com
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 DNS ゾーンでレコード セットとレコードを管理する方法については[こちら](dns-getstarted-create-recordset-cli.md)をご覧ください。
 

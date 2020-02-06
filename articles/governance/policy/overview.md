@@ -4,12 +4,12 @@ description: Azure Policy は Azure のサービスであり、Azure 環境で�
 ms.date: 11/25/2019
 ms.topic: overview
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9babfd52071ed7d033761802f696c3b6021287af
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e886f37a8d7f1395b5c831e81e600ecc6e2dd20f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846051"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937832"
 ---
 # <a name="what-is-azure-policy"></a>Azure Policy とは
 
@@ -24,7 +24,7 @@ Azure Policy は、ポリシーの作成、割り当て、管理に使用する 
 > [!IMPORTANT]
 > Azure Policy のコンプライアンス評価が、価格レベルに関係なくすべての割り当てに対して提供されるようになりました。 割り当てにコンプライアンス データが表示されない場合は、サブスクリプションが Microsoft.PolicyInsights リソース プロバイダーに登録されていることを確認してください。
 
-[!INCLUDE [service-provider-management-toolkit](../../../includes/azure-lighthouse-supported-service.md)]
+[!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="how-is-it-different-from-rbac"></a>RBAC との違いは何か。
 

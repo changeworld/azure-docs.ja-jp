@@ -2,17 +2,17 @@
 title: ドメイン名のための DNS ゾーンとレコードを作成する - Azure CLI - Azure DNS
 description: この Azure CLI スクリプトの例では、ドメイン名のための DNS ゾーンとレコードを作成する方法を示しています
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: sample
 ms.date: 09/20/2019
-ms.author: allensu
-ms.openlocfilehash: 8f5dde0a35f31d2c33ab2857659efc88339c2ead
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: b1db9ffb895470dd9224dc020eb82b0bbf6560c1
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210398"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939301"
 ---
 # <a name="azure-cli-script-example-create-a-dns-zone-and-record"></a>Azure CLI スクリプトの例: DNS ゾーンとレコードの作成
 
@@ -38,7 +38,7 @@ az group delete -n myResourceGroup
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、仮想マシン、可用性セット、ロード バランサー、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az network dns zone create](/cli/azure/network/dns/zone#az-network-dns-zone-create) | Azure DNS ゾーンを作成します。 |
@@ -46,7 +46,7 @@ az group delete -n myResourceGroup
 | [az network dns record-set list](/cli/azure/network/dns/record-set) | DNS ゾーン内のすべての *A* レコード セットを一覧表示します。 |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

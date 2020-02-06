@@ -3,17 +3,17 @@ title: 従来の Azure DNS プライベート ゾーンを新しいリソース 
 titleSuffix: Azure DNS
 description: このガイドでは、従来のプライベート DNS ゾーンを最新のリソース モデルに移行する方法の詳細な手順について説明します
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 06/18/2019
-ms.author: allensu
-ms.openlocfilehash: 3beac014ee69120df518e0358a5fdbef5818f7cf
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.author: rohink
+ms.openlocfilehash: d29885104d6f39a17b5bdeb786cda8f56f58d987
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076732"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939362"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>従来の Azure DNS プライベート ゾーンを新しいリソース モデルに移行する
 
@@ -116,7 +116,7 @@ DNS クエリが解決されていないとわかった場合、数分待って�
 
 移行プロセスに関してさらにサポートが必要な場合、または何らかの理由で上記の手順がうまくいかない場合は、サポート チケットを作成してください。 サポート チケットには、PowerShell スクリプトによって生成されたトランスクリプト ファイルを添えてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure PowerShell](./private-dns-getstarted-powershell.md) または [Azure CLI](./private-dns-getstarted-cli.md) を使用して Azure DNS のプライベート ゾーンを作成する方法を確認します。
 

@@ -1,19 +1,19 @@
 ---
 title: Azure IoT ソリューションに接続されている IoT プラグ アンド プレイ プレビュー デバイスとやりとりする | Microsoft Docs
 description: Java を使用して、ご利用の Azure IoT ソリューションに接続されている IoT プラグ アンド プレイ プレビュー デバイスと接続してやり取りします。
-author: baanders
-ms.author: baanders
+author: dominicbetts
+ms.author: dobett
 ms.date: 12/27/2019
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 217dfe125dcacae5d50645275b20421a23169cb9
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 53812e68fe397b81f29869565e0e4a0640a9ef23
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75550878"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964636"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-java"></a>クイック スタート:ご利用のソリューションに接続されている IoT プラグ アンド プレイ プレビュー デバイスとやり取りする (Java)
 

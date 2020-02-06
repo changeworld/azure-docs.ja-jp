@@ -3,20 +3,20 @@ title: Azure Traffic Manager でのエンドポイントの管理 | Microsoft Do
 description: この記事では、Azure Traffic Manager からエンドポイントの追加、削除、有効化、無効化する方法について説明します。
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
-ms.author: allensu
-ms.openlocfilehash: 573a8f7ede29b045053d77194d15707df9e23641
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohink
+ms.openlocfilehash: 2aee4282fe6a66151ea39018f0d6c0db51f2c027
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071079"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939132"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>エンドポイントの追加、削除、有効化、無効化
 
@@ -74,7 +74,7 @@ Traffic Manager プロファイルを構成する個々のエンドポイント�
 5. **[エンドポイント]** ブレードで、 **[削除]** をクリックします。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Traffic Manager プロファイルの管理](traffic-manager-manage-profiles.md)
 * [ルーティング方法の構成](traffic-manager-configure-routing-method.md)

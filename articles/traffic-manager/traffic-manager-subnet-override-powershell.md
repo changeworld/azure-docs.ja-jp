@@ -3,18 +3,18 @@ title: Azure PowerShell を使用した Azure Traffic Manager サブネットの
 description: この記事では、Traffic Manager サブネットのオーバーライドを使用して、Traffic Manager プロファイルのルーティング方法をオーバーライドし、Azure PowerShell を使用して、事前に定義された IP 範囲からエンドポイントへのマッピングを介し、エンドユーザーの IP アドレスに基づいてエンドポイントにトラフィックを送信する方法について説明します。
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.topic: article
 ms.service: traffic-manager
 ms.date: 09/18/2019
-ms.author: allensu
-ms.openlocfilehash: 93362c0e1b359583e30886172f8ccb155c5ffaf4
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.author: rohink
+ms.openlocfilehash: 323093ec78a9486d19496b0ee90e37cb42eea341
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348895"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938418"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-powershell"></a>Azure Powershell を使用した Traffic Manager サブネットのオーバーライド
 
@@ -111,7 +111,7 @@ Traffic Manager サブネットのオーバーライドを作成するには、A
 
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Traffic Manager の [トラフィック ルーティング方法](traffic-manager-routing-methods.md)の詳細を確認する。
 
 [サブネット トラフィックのルーティング方法](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method)の詳細を確認する

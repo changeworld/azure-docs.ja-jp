@@ -1,20 +1,20 @@
 ---
 title: DNS ゾーンとレコードの概要 - Azure DNS
 description: Microsoft Azure DNS での DNS ゾーンとレコードのホスティングに対するサポートの概要
-author: asudbring
+author: rohinkoul
 ms.assetid: be4580d7-aa1b-4b6b-89a3-0991c0cda897
 ms.service: dns
 ms.topic: conceptual
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
-ms.author: allensu
-ms.openlocfilehash: 460a1696497918ba525560507a16b0a321bd0e18
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.author: rohink
+ms.openlocfilehash: 19189af6424960b8e20be686af745b10f2d8578b
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276195"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938843"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS ゾーンとレコードの概要
 
@@ -113,7 +113,7 @@ DNS レコード内の複数の文字列と TXT レコード セット内の複�
 
 Azure DNS では、DNS ゾーン リソースに対して Azure Resource Manager のタグを使用できます。  DNS レコード セットのタグはサポートされませんが、その代わりとして、DNS レコード セットでは、この後説明する 'メタデータ' がサポートされます。
 
-### <a name="metadata"></a>メタデータ
+### <a name="metadata"></a>Metadata
 
 レコード セットのタグの代わりに、Azure DNS では "メタデータ" を使用してレコード セットに注釈を付けることができます。  メタデータを使用すると、タグと同じように、各レコード セットに名前と値のペアを関連付けることができます。  これは、各レコード セットの用途を記録しておきたい場合などに便利です。  タグと異なる点として、メタデータは、Azure の課金内容に関するフィルター ビューを提供するためには使用できず、Azure Resource Manager のポリシーで指定することもできません。
 

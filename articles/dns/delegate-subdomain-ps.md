@@ -2,17 +2,17 @@
 title: サブドメインを委任する - Azure PowerShell - Azure DNS
 description: このラーニング パスでは、Azure PowerShell を使用した Azure DNS サブドメインの委任について説明します。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 2/7/2019
-ms.author: allensu
-ms.openlocfilehash: b6023adb65469dedeeba664a51917306e634146f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 7e019afaae98422b8d5a3c8fa7a5f79e26c6a149
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212500"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937704"
 ---
 # <a name="delegate-an-azure-dns-subdomain-using-azure-powershell"></a>Azure PowerShell を使用して Azure DNS サブドメインを委任する
 
@@ -70,6 +70,6 @@ nslookup を使用して委任をテストします。
 2. コマンド プロンプトに「`nslookup www.engineering.contoso.com.`」と入力します。
 3. アドレス **10.10.10.10** を示す権限のない回答を受け取ります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure でホストされているサービスの逆引き DNS を構成する](dns-reverse-dns-for-azure-services.md)方法について説明します。

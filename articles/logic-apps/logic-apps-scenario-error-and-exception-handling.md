@@ -7,12 +7,12 @@ author: hedidin
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 03ed4731e59280a3879d77ca3fb82f0158313aeb
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 1bb6e28c9dcae01f3233178706d2a24156fa509a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771565"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76902705"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>シナリオ:ロジック アプリの例外処理とエラーのログ記録
 
@@ -481,5 +481,5 @@ Logic Apps 例外管理 API アプリケーションのソース コードは、
 ## <a name="next-steps"></a>次のステップ
 
 * [さらに他のロジック アプリ の例とシナリオを見る](../logic-apps/logic-apps-examples-and-scenarios.md)
-* [ロジック アプリの監視について知る](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+* [ロジック アプリの監視](../logic-apps/monitor-logic-apps.md)
 * [ロジック アプリ デプロイを自動化する](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)

@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 41e93ad19e21ae81843992b1b190d1bd37585c2e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 0f9489cd702eab6038689f6ac710c32427665093
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835087"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031120"
 ---
 # <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Java を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する (プレビュー)
 
@@ -259,8 +259,6 @@ static public void ManageFileACLs(DataLakeFileSystemClient fileSystemClient){
 
 まず、ダウンロードするファイルを表す **DataLakeFileClient** インスタンスを作成します。 **DataLakeFileClient.read** メソッドを使用してファイルを読み取ります。 任意の .NET ファイル処理 API を使用して、ストリームからファイルにバイトを保存します。 
 
-**DataLakeFileClient.flush** メソッドを呼び出して、ダウンロードを確実に完了します。
-
 ```java
 static public void DownloadFile(DataLakeFileSystemClient fileSystemClient)
     throws FileNotFoundException, java.io.IOException{
@@ -278,9 +276,7 @@ static public void DownloadFile(DataLakeFileSystemClient fileSystemClient)
     fileClient.read(targetStream);
 
     targetStream.close();
-
-    fileClient.flush(file.length());
-        
+      
 }
 
 ```

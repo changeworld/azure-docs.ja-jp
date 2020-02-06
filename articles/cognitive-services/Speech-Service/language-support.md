@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/28/2020
+ms.date: 01/31/2020
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 008f0b1b83e8ba856fae2fe40b026dcc645e46ab
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 20b99cfffdaa0d942ccd4d954909810342cbfcb8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845338"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935338"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>音声サービスの言語とリージョンのサポート
 
@@ -240,8 +240,10 @@ Locale | Language | 性別 | 完全なサービス名のマッピング | 短い
 | ミャオ語      | `mww`          |
 | Hungarian      | `hu`          |
 | インドネシア語      | `id`          |
+| アイルランド語      | `ga`          |
 | Italian      | `it`          |
 | Japanese      | `ja`          |
+| カンナダ語      | `kn`          |
 | スワヒリ語      | `sw`          |
 | クリンゴン語      | `tlh`          |
 | クリンゴン語 (plqaD)      | `tlh-Qaak`          |
@@ -250,11 +252,14 @@ Locale | Language | 性別 | 完全なサービス名のマッピング | 短い
 | Lithuanian      | `lt`          |
 | マダガスカル語      | `mg`          |
 | マレー語      | `ms`          |
+| マラヤーラム語      | `ml`          |
 | マルタ語      | `mt`          |
 | ノルウェー語      | `nb`          |
 | ペルシャ語      | `fa`          |
 | Polish      | `pl`          |
-| Portuguese      | `pt`          |
+| ポルトガル語 (ブラジル)      | `pt-br`          |
+| ポルトガル語 (ポルトガル)      | `pt-pt`          |
+| パンジャーブ語      | `pa`          |
 | オトミ語      | `otq`          |
 | Romanian      | `ro`          |
 | Russian      | `ru`          |

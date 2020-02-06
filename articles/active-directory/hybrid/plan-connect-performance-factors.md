@@ -6,30 +6,31 @@ author: billmath
 manager: daveba
 tags: azuread
 ms.service: active-directory
+ms.subservice: hybrid
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a3a57fbe5df690e4dbdba8cbab85e62648bb298
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a5518d516848ba7c006827faa41ff76bbca35d0c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60295376"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897061"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Azure AD Connect のパフォーマンスに影響を及ぼす因子
 
 Azure AD Connect は、Active Directory を Azure AD に同期します。 このサーバーは、ユーザー ID をクラウドに移動する際の重要なコンポーネントです。 Azure AD Connect のパフォーマンスに影響する主な因子は次のとおりです。
 
-| **設計の因子**| **定義** |
+| **設計の因子**| **[定義]** |
 |:-|-|
 | トポロジ| Azure AD Connect がネットワーク上で管理する必要のあるエンドポイントとコンポーネントの配布。 |
 | スケール| ユーザー、グループ、OU など、Azure AD Connect で管理するオブジェクトの数。 |
 | ハードウェア| Azure AD Connect 用のハードウェア (物理または仮想) と、各ハードウェア コンポーネント (CPU、メモリ、ネットワーク、ハード ドライブ構成など) の依存するパフォーマンス能力。 |
 | 構成| Azure AD Connect によるディレクトリと情報の処理方法。 |
-| Load| オブジェクト変更の頻度。 負荷は、1 時間、1 日、または 1 週間の間で変化する可能性があります。 コンポーネントによっては、ピーク時の負荷または平均負荷に合わせた設計が必要な場合があります。 |
+| [読み込み]| オブジェクト変更の頻度。 負荷は、1 時間、1 日、または 1 週間の間で変化する可能性があります。 コンポーネントによっては、ピーク時の負荷または平均負荷に合わせた設計が必要な場合があります。 |
 
 このドキュメントの目的は、Azure AD Connect プロビジョニング エンジンのパフォーマンスに影響を与える因子について説明することです。 大規模な組織や複雑な組織 (10 万を超えるオブジェクトをプロビジョニングする組織) では、ここで説明するパフォーマンスの問題が発生した場合、推奨事項を利用してその Azure AD Connect の実装を最適化することができます。 [Azure AD Connect Health](how-to-connect-health-agent-install.md) などの Azure AD Connect の他のコンポーネントおよびエージェントについては、ここでは説明していません。
 
@@ -95,7 +96,7 @@ Azure AD Connect では、次のステージング領域、規則、およびプ
 > [!NOTE]
 > Active Directory または Azure AD の多くのオブジェクトに一括更新を実施する場合は、慎重な計画が必要です。 一括更新では多数のオブジェクトが変更されるため、インポート時には差分同期プロセスに長時間かかります。 一括更新が同期プロセスに影響を及ぼさない場合でも、インポートに長時間かかる可能性があります。 たとえば、Azure AD の多数のユーザーにライセンスを割り当てると、Azure AD からの長いインポート サイクルが発生しますが、Active Directory の属性は変更されません。
 
-### <a name="synchronization"></a>同期
+### <a name="synchronization"></a>Synchronization
 
 同期プロセスの実行時には、次のパフォーマンス特性があります。
 
@@ -158,10 +159,10 @@ Azure AD では、サービス拒否 (DoS) 攻撃からクラウド サービス
 
 - Azure AD への Azure AD Connect のエクスポート。
 - Azure AD をバックグラウンドでも直接更新する PowerShell スクリプトまたはアプリケーション (動的グループ メンバーシップなど)。
-- MFA または SSPR (セルフ サービスによるパスワードのリセット) の登録など、独自の ID レコードを更新するユーザー。
+- MFA または SSPR (セルフサービス パスワード リセット) の登録など、独自の ID レコードを更新するユーザー。
 - グラフィカル ユーザー インターフェイスでの操作。
 
-Azure AD Connect の同期サイクルが調整制限による影響を確実に受けないようにする、デプロイおよび保守タスクの計画。 たとえば、何千ものユーザー ID を作成する大規模な人材採用の動きがある場合は、それによって動的グループ メンバーシップに対する更新、ライセンスの割り当て、およびセルフ サービスによるパスワード リセットの登録が発生する可能性があります。 これらの書き込みは、数時間または数日に分散させることをお勧めします。
+Azure AD Connect の同期サイクルが調整制限による影響を確実に受けないようにする、デプロイおよび保守タスクの計画。 たとえば、何千ものユーザー ID を作成する大規模な人材採用の動きがある場合は、それによって動的グループ メンバーシップに対する更新、ライセンスの割り当て、およびセルフサービス パスワード リセットの登録が発生する可能性があります。 これらの書き込みは、数時間または数日に分散させることをお勧めします。
 
 ### <a name="sql-database-factors"></a>SQL データベースの因子
 
@@ -188,5 +189,5 @@ Azure AD Connect の実装のパフォーマンスを最適化するためには
 - 差分同期サイクルは 30 分で完了するよう努めてください。 差分同期プロファイルが 30 分で完了しない場合は、完全な差分同期サイクルが含まれるように既定の同期の頻度を変更してください。
 - Azure AD で [Azure AD Connect 同期の正常性](how-to-connect-health-agent-install.md)を監視してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

@@ -3,20 +3,20 @@ title: Azure Service Fabric CLI - sfctl mesh
 description: Azure Service Fabric のコマンド ライン インターフェイス、sfctl について説明します。 Service Fabric Mesh のアプリケーションを管理するためのコマンドの一覧が含まれます。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 608efba614f17932b3bfb7852c16ffbeaca02457
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 40d0f70b0dabdc02434fa662663a2fd105431f0a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646077"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905897"
 ---
 # <a name="sfctl-mesh"></a>sfctl mesh
 Azure Service Fabric Mesh アプリケーションを削除および管理します。
 
 ## <a name="subgroups"></a>サブグループ
-|サブグループ|[説明]|
+|サブグループ|説明|
 | --- | --- |
 | [app](service-fabric-sfctl-mesh-app.md) | アプリケーション リソースを取得および削除します。 |
 | [code-package-log](service-fabric-sfctl-mesh-code-package-log.md) | 特定のサービス レプリカの指定されたコード パッケージのコンテナーのログを取得します。 |

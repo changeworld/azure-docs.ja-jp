@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 8d5377f7ec8de14f3d7d55bc109f6be731991051
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 1fec2778ce8c839c5bac0c1d74085db0f8b283ce
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775262"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76903012"
 ---
 # <a name="virtual-network-service-tags"></a>仮想ネットワーク サービス タグ 
 <a name="network-service-tags"></a>
@@ -43,7 +43,7 @@ ms.locfileid: "76775262"
 | タグ | 目的 | 受信または送信で使用できるか | リージョン別か | Azure Firewall と共に使用できるか |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **ApiManagement** | Azure API Management 専用デプロイのための管理トラフィック。 | 両方 | いいえ | はい |
-| **ApplicationInsightsAvailability** | Application Insights の可用性。 | 両方 | いいえ | いいえ |
+| **ApplicationInsightsAvailability** | Application Insights の可用性。 | 受信 | いいえ | いいえ |
 | **AppService**    | Azure App Service。 このタグは、Web アプリのフロントエンドに対する送信セキュリティ規則で推奨されます。 | 送信 | はい | はい |
 | **AppServiceManagement** | App Service Environment 専用デプロイのための管理トラフィック。 | 両方 | いいえ | はい |
 | **AzureActiveDirectory** | Azure Active Directory。 | 送信 | いいえ | はい |
