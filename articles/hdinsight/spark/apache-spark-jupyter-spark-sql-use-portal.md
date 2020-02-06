@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 09/27/2019
 ms.custom: mvc
-ms.openlocfilehash: 214a88ad8b0f5dd0352004edc125705ad2f04fc7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c2751f30bdea46a30aa12bd458a12d7640cba404
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494146"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029549"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure HDInsight 内に Apache Spark クラスターを作成する
 
-Azure HDInsight に Apache Spark クラスターを作成し、Hive テーブルに対して Spark SQL クエリを実行する方法を説明します。 Apache Spark により、メモリ内処理を使用した、高速のデータ分析とクラスター コンピューティングが可能になります。 HDInsight 上のSpark については、[Azure HDInsight での Apache Spark の概要](apache-spark-overview.md)に関する記事をご覧ください。
+Azure HDInsight に Apache Spark クラスターを作成し、Hive テーブルに対して Spark SQL クエリを実行する方法を説明します。 Apache Spark により、メモリ内処理を使用した、高速のデータ分析とクラスター コンピューティングが可能になります。 HDInsight 上のSpark については、[Azure HDInsight 上の Apache Spark に関する概要](apache-spark-overview.md)をご覧ください。
 
 このクイック スタートでは、Azure portal を使って HDInsight Spark クラスターを作成します。 クラスターは、クラスター記憶域として Azure Storage Blob を使います。 Data Lake Storage Gen2 の使用法の詳細については、「[クイック スタート:HDInsight のクラスターを設定する](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     |プロパティ  |説明  |
     |---------|---------|
-    |Subscription  | ドロップダウンから、このクラスターに使う Azure サブスクリプションを選びます。 このクイックスタートで使うサブスクリプションは **Azure** です。 |
+    |サブスクリプション  | ドロップダウンから、このクラスターに使う Azure サブスクリプションを選びます。 このクイックスタートで使うサブスクリプションは **Azure** です。 |
     |Resource group | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 このクイックスタートで使うリソース グループ名は **myResourceGroup** です。 |
     |クラスター名 | HDInsight Spark クラスターの名前を指定します。 このクイックスタートで使われるクラスターの名前は **myspark2019** です。|
     |Location   | リソース グループの場所を選びます。 テンプレートでは、この場所をクラスターの作成および既定のクラスター ストレージに使用します。 このクイックスタートで使う場所は**米国東部**です。 |
@@ -48,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![HDInsight Spark クラスターの作成の基本構成](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-basics-spark.png "HDInsight での Spark クラスターの作成の基本構成")
 
-    **[次へ:ストレージ >>]** を選択して **[ストレージ]** ページに進みます。
+    **ストレージ >>** を選択して **ストレージ** ページに進みます。
 
 1. **[ストレージ]** で次の値を指定します。
 
@@ -59,7 +59,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |プライマリ ストレージ アカウント|自動入力されている値を使用します。|
     |コンテナー|自動入力されている値を使用します。|
 
-    ![HDInsight Spark クラスターの作成の基本構成](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage-spark.png "HDInsight での Spark クラスターの作成の基本構成")
+    ![HDInsight Spark クラスターの作成の基本構成](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage.png "HDInsight での Spark クラスターの作成の基本構成")
 
     **[Review + create]\(確認と作成\)** を選択して続行します。
 
@@ -123,7 +123,7 @@ SQL (構造化照会言語) は、データ照会とデータ定義のための�
 
 1. ノートブックの **[File]\(ファイル\)** メニューの **[Close and Halt]\(閉じて停止\)** を選びます。 Notebook をシャットダウンすると、クラスターのリソースが解放されます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 HDInsight はデータを Azure Storage または Azure Data Lake Storage に格納するので、クラスターが使われていないときは、クラスターを安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。 「[次のステップ](#next-steps)」で示されているチュートリアルにすぐに取り掛かる場合は、クラスターをそのままにしてもかまいません。
 
@@ -133,7 +133,7 @@ Azure portal に戻り、 **[削除]** を選びます。
 
 リソース グループ名を選び、リソース グループ ページを開いて、 **[リソース グループの削除]** を選ぶこともできます。 リソース グループを削除すると、HDInsight Spark クラスターと既定のストレージ アカウントの両方が削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、HDInsight Spark クラスターを作成し、基本的な Spark SQL クエリを実行する方法を学習しました。 HDInsight Spark クラスターを使用してサンプル データに対話型のクエリを実行する方法については、次のチュートリアルに進みます。
 
