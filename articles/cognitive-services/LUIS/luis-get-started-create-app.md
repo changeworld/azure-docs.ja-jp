@@ -42,9 +42,9 @@ ms.locfileid: "75448097"
 
 ## <a name="add-prebuilt-domain"></a>事前構築済みのドメインの追加
 
-**[事前構築済みドメイン]** を選択し、 **[HomeAutomation]** を検索します。 [HomeAutomation] カードで、 **[ドメインの追加]** を選択します。
+**[Prebuilt domains]** を選択し、 **[HomeAutomation]** を検索します。 [HomeAutomation] カードで、 **[Add domain]** を選択します。
 
-![[事前構築済みドメイン] を選択し、[HomeAutomation] を検索します。 [HomeAutomation] カードで、[ドメインの追加] を選択します。](media/luis-quickstart-new-app/home-automation.png)
+![[Prebuilt domains] を選択し、[HomeAutomation] を検索します。 [HomeAutomation] カードで、[Add domain] を選択します。](media/luis-quickstart-new-app/home-automation.png)
 
 ドメインが正常に追加されると、事前構築済みドメインのボックスに、 **[Remove domain]\(ドメインの削除\)** ボタンが表示されます。
 

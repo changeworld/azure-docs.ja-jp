@@ -4,12 +4,12 @@ description: コンテナー グループを新規または既存の Azure 仮�
 ms.topic: article
 ms.date: 01/06/2020
 ms.author: danlep
-ms.openlocfilehash: 12260dcb43a675414d38cb5067b230832dd2d16b
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 920ad9598f17fbab25218827045a396d953a6531
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887958"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845182"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>コンテナー インスタンスを Azure 仮想ネットワークにデプロイする
 
@@ -33,6 +33,7 @@ Azure 仮想ネットワークにデプロイされたコンテナー グルー�
 
 * コンテナー グループをサブネットにデプロイする場合、サブネットに他の種類のリソースを含めることはできません。 コンテナー グループをデプロイする前に、既存のサブネットから既存のリソースをすべて削除するか、新しいサブネットを作成してください。
 * 仮想ネットワークにデプロイされたコンテナー グループ内で[マネージド ID](container-instances-managed-identity.md) を使用することはできません。
+* 仮想ネットワークにデプロイされているコンテナー グループ内の [liveness probe](container-instances-liveness-probe.md) または [readiness probe](container-instances-readiness-probe.md) を有効にすることはできません。
 * 追加のネットワークリソースの関係で、仮想ネットワークへのコンテナー グループのデプロイは、通常、標準のコンテナー インスタンスのデプロイよりも時間がかかります。
 
 [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
@@ -261,7 +262,7 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 
 
 > [!NOTE]
-> ネットワーク プロファイルを削除しようとしているときにエラーが発生した場合は、プラットフォームが自動的に問題を軽減するまで 2 ～ 3 日待ってから、削除を再試行します。 それでもネットワーク プロファイルの削除に問題が発生する場合には、[サポート リクエストを開いてください](https://azure.microsoft.com/support/create-ticket/)。
+> ネットワーク プロファイルを削除しようとしているときにエラーが発生した場合は、プラットフォームが自動的に問題を軽減するまで 3～4 日待ってから、削除を再試行します。 ネットワーク プロファイルを直ちに削除する必要がある場合は、Azure Container Instances サービスを参照する[サポート要求を開きます](https://azure.microsoft.com/support/create-ticket/)。
 
 現在このフィーチャーでは、先ほど作成したネットワーク リソースを削除するために、いくつかの追加コマンドが必要です。 この記事の前のセクションに示したサンプル コマンドを使って仮想ネットワークとサブネットを作成した場合は、次のスクリプトを使ってそれらのネットワーク リソースを削除できます。
 

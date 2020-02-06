@@ -164,8 +164,6 @@
               href: concepts-data-flow-overview.md
             - name: デバッグ モード
               href: concepts-data-flow-debug-mode.md
-            - name: JSON の処理
-              href: concepts-data-flow-json.md
             - name: スキーマの誤差
               href: concepts-data-flow-schema-drift.md
             - name: 列パターン
