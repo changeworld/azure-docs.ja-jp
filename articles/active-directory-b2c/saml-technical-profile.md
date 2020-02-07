@@ -121,7 +121,7 @@ Protocol 要素の **Name** 属性は `SAML2` に設定する必要がありま�
 
 ## <a name="metadata"></a>Metadata
 
-| Attribute | Required | [説明] |
+| Attribute | Required | 説明 |
 | --------- | -------- | ----------- |
 | PartnerEntity | はい | SAML ID プロバイダーのメタデータの URL です。 ID プロバイダーのメタデータをコピーし、CDATA 要素 `<![CDATA[Your IDP metadata]]>` 内に追加します |
 | WantsSignedRequests | いいえ | 技術プロファイルでは、送信認証要求すべてを署名する必要があるかどうかを示します。 指定できる値: `true` または `false`。 既定値は `true` です。 値を `true` に設定すると、 **SamlMessageSigning** 暗号化キーを指定する必要があり、送信認証要求すべてが署名されます。 値が `false` に設定されている場合、**SigAlg** と **Signature** パラメーター (クエリ文字列または post パラメーター) は要求から省略されます。 このメタデータは、メタデータ **AuthnRequestsSigned** 属性も制御し、これは ID プロバイダーと供給される Azure AD B2C の技術プロファイルのメタデータに出力されます。 技術プロファイル メタデータ内の **WantsSignedRequests** 値が `false` に設定され、ID プロバイダー メタデータ **WantAuthnRequestsSigned** 値が `false` に設定されている、または指定がない場合、Azure AD B2C では要求の署名は行われません。 |
@@ -140,7 +140,7 @@ Protocol 要素の **Name** 属性は `SAML2` に設定する必要がありま�
 
 **CryptographicKeys** 要素には次の属性が存在します。
 
-| Attribute |Required | [説明] |
+| Attribute |Required | 説明 |
 | --------- | ----------- | ----------- |
 | SamlMessageSigning |はい | SAML メッセージを署名するために使用する X509 証明書 (RSA キー セット)。 Azure AD B2C では、このキーを使用して、要求に署名し、ID プロバイダーに送信します。 |
 | SamlAssertionDecryption |はい | SAML メッセージを復号化するために使用する X509 証明書 (RSA キー セット)。 この証明書は、ID プロバイダーによって提供される必要があります。 Azure AD B2C では、この証明書を使用して、ID プロバイダーによって送信されるデータを復号化します。 |
