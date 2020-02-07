@@ -2,8 +2,8 @@
 title: Batch でのコンピューティング集中型 Azure VM の使用
 description: Azure Batch プールで HPC および GPU の仮想マシン サイズを利用する方法。 OS の依存関係について学習し、シナリオ例をいくつか確認してください。
 documentationcenter: ''
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -11,13 +11,13 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/17/2018
-ms.author: jushiman
-ms.openlocfilehash: 1fb490c6db5115edf32ff2562e43cf1084e0a6c8
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: 17cd9db1e86a66630d3b93c8295915933abb1ec2
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026797"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023601"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Batch プールで RDMA または GPU インスタンスを使用する
 
@@ -106,7 +106,7 @@ Windows NC ノードのプールで CUDA アプリケーションを実行する
 3. パッケージを Batch アカウントにアップロードします。 手順については、[アプリケーション パッケージ](batch-application-packages.md)のガイダンスを参照してください。 アプリケーション ID (*GPUDriver* など) とバージョン (*411.82* など) を指定します。
 1. Batch API または Azure portal で、必要な数のノードとスケールを指定して、仮想マシン構成でプールを作成します。 次の表に、開始タスクを使用して NVIDIA GPU ドライバーを自動的にインストールする際の設定の例を示します。
 
-| 設定 | 値 |
+| 設定 | Value |
 | ---- | ----- | 
 | **イメージの種類** | Marketplace (Linux/Windows) |
 | **発行元** | MicrosoftWindowsServer |
@@ -127,7 +127,7 @@ Linux NC ノードのプールで CUDA アプリケーションを実行する�
 4. NC VM をサポートするリージョンに Batch アカウントを作成します。
 5. Batch API または Azure Portal で、[カスタム イメージを使い](batch-sig-images.md)、必要な数のノードとスケールを指定して、プールを作成します。 次の表に、イメージのプール設定の例を示します。
 
-| 設定 | 値 |
+| 設定 | Value |
 | ---- | ---- |
 | **イメージの種類** | カスタム イメージ |
 | **カスタム イメージ** | *イメージの名前* |
@@ -146,7 +146,7 @@ Azure H16r VM ノードのプールで Windows MPI アプリケーションを�
 1. 次の手順に従って、Batch 用の [Shared Image Gallery イメージ](batch-sig-images.md)を作成します。
 1. Batch API または Azure portal で、[Shared Image Gallery を使い](batch-sig-images.md)、必要な数のノードとスケールを指定して、プールを作成します。 次の表に、イメージのプール設定の例を示します。
 
-| 設定 | 値 |
+| 設定 | Value |
 | ---- | ---- |
 | **イメージの種類** | カスタム イメージ |
 | **カスタム イメージ** | *イメージの名前* |
@@ -161,7 +161,7 @@ Linux H シリーズのノードのプールで MPI アプリケーションを�
 
 Batch API または Azure portal で、このイメージを使い、必要な数のノードとスケールを指定して、プールを作成します。 次の表に、プール設定の例を示します。
 
-| 設定 | 値 |
+| 設定 | Value |
 | ---- | ---- |
 | **イメージの種類** | Marketplace (Linux/Windows) |
 | **発行元** | OpenLogic |
