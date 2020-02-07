@@ -44,7 +44,7 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 
 トークンで使用する方法とタイミングを定義する要求のセットがあります。
 
-| 要求セット | [説明] |
+| 要求セット | 説明 |
 |---|---|
 | コア要求セット | ポリシーに関係なく、すべてのトークンに提示されます。 また、この要求は制限付きと見なされ、変更できません。 |
 | 基本要求セット | コア要求セットの他にトークンに対して既定で出力される要求が含まれます。 要求のマッピング ポリシーを使用して基本要求を省略したり変更したりできます。 |
@@ -284,7 +284,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 #### <a name="table-3-valid-id-values-per-source"></a>表 3:ソースごとに有効な ID 値
 
-| source | id | [説明] |
+| source | id | 説明 |
 |-----|-----|-----|
 | User | 姓 | 姓 |
 | User | givenname | 名 |
@@ -358,7 +358,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>表 4:変換方法と想定される入出力
 
-|TransformationMethod|想定される入力|想定される出力|[説明]|
+|TransformationMethod|想定される入力|想定される出力|説明|
 |-----|-----|-----|-----|
 |結合|string1, string2, separator|outputClaim|入力文字列の間に区切り記号を使用して、その文字列を結合します。 例: string1:"foo@bar.com" , string2:"sandbox" , separator:"." の結果は outputClaim:"foo@bar.com.sandbox" になります|
 |ExtractMailPrefix|mail|outputClaim|メール アドレスのローカル部分を抽出します。 例: mail:"foo@bar.com" の結果は outputClaim:"foo" になります。 \@ 記号がない場合、元の入力文字列がそのまま返されます。|
@@ -384,7 +384,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>表 5:SAML NameID のデータ ソースとして許可されている属性
 
-|source|id|[説明]|
+|source|id|説明|
 |-----|-----|-----|
 | User | mail|電子メール アドレス|
 | User | userprincipalname|ユーザー プリンシパル名|
