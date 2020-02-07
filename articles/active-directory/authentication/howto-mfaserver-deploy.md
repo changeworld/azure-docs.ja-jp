@@ -51,7 +51,7 @@ Azure Multi-Factor Authentication Server をダウンロードする前に、負
 
 Azure Multi-factor Authentication に使用しているサーバーが次の要件を満たしていることを確認します。
 
-| Azure Multi-Factor Authentication Server の要件 | [説明] |
+| Azure Multi-Factor Authentication Server の要件 | 説明 |
 |:--- |:--- |
 | ハードウェア |<li>200 MB のハード ディスク容量</li><li>x32 または x64 対応のプロセッサ</li><li>1 GB 以上の RAM</li> |
 | ソフトウェア |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008、SP1、SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003、SP1、SP2</li><li>Windows 10</li><li>Windows 8.1 全エディション</li><li>Windows 8 全エディション</li><li>Windows 7 全エディション</li><li>Windows Vista 全エディション、SP1、SP2</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 以上 (ユーザー ポータルまたは Web サービス SDK をインストールする場合)</li> |
