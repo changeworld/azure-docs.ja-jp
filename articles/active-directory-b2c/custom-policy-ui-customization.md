@@ -172,7 +172,7 @@ git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 
 sample_templates/wingtip フォルダーには、次の HTML ファイルが含まれています。
 
-| HTML5 テンプレート | [説明] |
+| HTML5 テンプレート | 説明 |
 |----------------|-------------|
 | *phonefactor.html* | このファイルは、多要素認証ページのテンプレートとして使用します。 |
 | *resetpassword.html* | このファイルは、パスワードを忘れた場合のページのテンプレートとして使用します。 |
@@ -193,7 +193,7 @@ sample_templates/wingtip フォルダーには、次の HTML ファイルが含�
 
 「サインアップまたはサインイン カスタム ポリシーを変更する」セクションでは、`api.idpselections` のコンテンツ定義を構成しました。 次の表には、Azure AD B2C Identity Experience Framework で検出されるすべてのコンテンツ定義 ID とその説明を示します。
 
-| コンテンツ定義 ID | [説明] |
+| コンテンツ定義 ID | 説明 |
 |-----------------------|-------------|
 | *api.error* | **エラー ページ**。 このページは、例外またはエラーが発生した場合に表示されます。 |
 | *api.idpselections* | **ID プロバイダーの選択ページ**。 このページには、サインイン時にユーザーが選択できる ID プロバイダーの一覧が含まれます。 ID プロバイダーは、エンタープライズ ID プロバイダー、ソーシャル ID プロバイダー (Facebook や Google+ など)、ローカル アカウントのいずれかです。 |
