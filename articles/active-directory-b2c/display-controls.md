@@ -46,14 +46,14 @@ ms.locfileid: "75474701"
 
 **DisplayControl** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | [説明] |
+| Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Id | はい | 表示コントロールに使用される識別子です。 [参照](#referencing-display-controls)できます。 |
 | UserInterfaceControlType | はい | 表示コントロールの種類。 現在サポートされているのは [VerificationControl](display-control-verification.md) です。 |
 
 **DisplayControl** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | [説明] |
+| 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
 | InputClaims | 0:1 | **InputClaims** は、ユーザーから収集される要求の値を事前に設定するために使用されます。 |
 | DisplayClaims | 0:1 | **DisplayClaims** は、ユーザーから収集される要求を表すために使用されます。 |
