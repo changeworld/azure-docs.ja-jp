@@ -6,9 +6,9 @@
       tocHref: /azure/active-directory/saas-apps/
       topicHref: /azure/active-directory/index
       items:
-        - name: アプリケーション管理
+        - name: アプリケーションのプロビジョニング
           tocHref: /azure/active-directory/saas-apps/
-          topicHref: /azure/active-directory/manage-apps/index
+          topicHref: /azure/active-directory/app-provisioning/index
 - name: Azure
   tocHref: /azure/
   topicHref: /azure/index
@@ -17,9 +17,9 @@
       tocHref: /azure/active-directory/fundamentals/
       topicHref: /azure/active-directory/index
       items:
-        - name: アプリケーション管理
+        - name: アプリケーションのプロビジョニング
           tocHref: /azure/active-directory/fundamentals/
-          topicHref: /azure/active-directory/manage-apps/index
+          topicHref: /azure/active-directory/app-provisioning/index
 - name: Azure
   tocHref: /azure/
   topicHref: /azure/index
@@ -28,9 +28,9 @@
       tocHref: /azure/active-directory/reports-monitoring/
       topicHref: /azure/active-directory/index
       items:
-        - name: アプリケーション管理
+        - name: アプリケーションのプロビジョニング
           tocHref: /azure/active-directory/reports-monitoring/
-          topicHref: /azure/active-directory/manage-apps/index
+          topicHref: /azure/active-directory/app-provisioning/index
 - name: Azure
   tocHref: /azure/
   topicHref: /azure/index
@@ -39,9 +39,9 @@
       tocHref: /azure/active-directory/hybrid/
       topicHref: /azure/active-directory/index
       items:
-        - name: アプリケーション管理
+        - name: アプリケーションのプロビジョニング
           tocHref: /azure/active-directory/hybrid/
-          topicHref: /azure/active-directory/manage-apps/index
+          topicHref: /azure/active-directory/app-provisioning/index
 - name: Azure
   tocHref: /azure/
   topicHref: /azure/index
@@ -50,9 +50,9 @@
       tocHref: /azure/active-directory/develop/
       topicHref: /azure/active-directory/index
       items:
-        - name: アプリケーション管理
+        - name: アプリケーションのプロビジョニング
           tocHref: /azure/active-directory/develop/
-          topicHref: /azure/active-directory/manage-apps/index
+          topicHref: /azure/active-directory/app-provisioning/index
 - name: Azure
   tocHref: /azure/
   topicHref: /azure/index
@@ -61,17 +61,6 @@
       tocHref: /azure/active-directory-domain-services/
       topicHref: /azure/active-directory/index
       items:
-        - name: アプリケーション管理
+        - name: アプリケーションのプロビジョニング
           tocHref: /azure/active-directory-domain-services/
-          topicHref: /azure/active-directory/manage-apps/index
-- name: Azure
-  tocHref: /azure/
-  topicHref: /azure/index
-  items:
-    - name: Active Directory
-      tocHref: /azure/app-provisioning/
-      topicHref: /azure/active-directory/index
-      items:
-        - name: アプリケーション管理
-          tocHref: /azure/app-provisioning/
-          topicHref: /azure/active-directory/manage-apps/index
+          topicHref: /azure/active-directory/app-provisioning/index

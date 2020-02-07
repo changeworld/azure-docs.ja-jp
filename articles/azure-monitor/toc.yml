@@ -8,6 +8,8 @@
       href: terminology.md
     - name: よく寄せられる質問
       href: faq.md
+    - name: 新機能
+      href: whats-new.md
 - name: クイックスタート
   items:
     - name: Azure リソースの監視
