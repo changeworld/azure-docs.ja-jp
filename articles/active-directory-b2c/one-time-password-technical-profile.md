@@ -51,7 +51,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 **InputClaims** 要素には、ワンタイム パスワード プロトコル プロバイダーに送信する必要がある要求の一覧が含まれています。 要求の名前を以下に定義されている名前にマップすることもできます。
 
-| ClaimReferenceId | 必須 | [説明] |
+| ClaimReferenceId | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | identifier | はい | 後でコードを確認する必要があるユーザーを識別する識別子。 一般に、電子メール アドレスや電話番号など、コードが配信される宛先の識別子として使用されます。 |
 
@@ -61,7 +61,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 **OutputClaims** 要素には、ワンタイム パスワード プロトコル プロバイダーによって生成される要求の一覧が含まれています。 要求の名前を以下に定義されている名前にマップすることもできます。
 
-| ClaimReferenceId | 必須 | [説明] |
+| ClaimReferenceId | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | otpGenerated | はい | セッションが Azure AD B2C によって管理される、生成されたコード。 |
 
@@ -71,7 +71,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 次の設定を使用して、コードの生成とメンテナンスを構成できます。
 
-| Attribute | 必須 | [説明] |
+| Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | CodeExpirationInSeconds | いいえ | コードの有効期限までの時間 (秒)。 最小値: `60`、最大値: `1200`、既定値: `600`。 |
 | CodeLength | いいえ | コードの長さ。 既定値は `6` です。 |
@@ -116,7 +116,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 **InputClaims** 要素には、ワンタイム パスワード プロトコル プロバイダーに送信する必要がある要求の一覧が含まれています。 要求の名前を以下に定義されている名前にマップすることもできます。
 
-| ClaimReferenceId | 必須 | [説明] |
+| ClaimReferenceId | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | identifier | はい | 以前にコードを生成したユーザーを識別する識別子。 一般に、電子メール アドレスや電話番号など、コードが配信される宛先の識別子として使用されます。 |
 | otpToVerify | はい | ユーザーによって指定された確認コード。 |
@@ -133,7 +133,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 次の設定を使用して、コード確認に失敗したときに表示されるエラー メッセージを構成できます。
 
-| Attribute | 必須 | [説明] |
+| Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | UserMessageIfSessionDoesNotExist | いいえ | コード確認セッションの有効期限が切れた場合にユーザーに表示するメッセージ。 コードの有効期限が切れているか、指定された識別子に対してコードが生成されたことがないかのいずれかです。 |
 | UserMessageIfMaxRetryAttempted | いいえ | 許容される確認の最大試行回数を超えた場合に、ユーザーに表示するメッセージ。 |
