@@ -22,7 +22,7 @@ ms.locfileid: "75549487"
 
 ## <a name="common-troubleshooting-areas"></a>一般的なトラブルシューティング分野
 
-|Name|[説明]|
+|Name|説明|
 |-----|-----|
 |[エージェントに関する問題](#agent-problems)|エージェントが正しくインストールされていること、および Azure Active Directory (Azure AD) と通信していることを確認します。|
 |[オブジェクトの同期に関する問題](#object-synchronization-problems)|プロビジョニング ログを使用して、オブジェクトの同期に関する問題をトラブルシューティングします。|
