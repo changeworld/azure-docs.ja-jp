@@ -68,7 +68,7 @@ Azure Active Directory B2C (Azure AD B2C) では、[OAuth 1.0 プロトコル](h
 
 ## <a name="metadata"></a>Metadata
 
-| Attribute | Required | [説明] |
+| Attribute | Required | 説明 |
 | --------- | -------- | ----------- |
 | client_id | はい | ID プロバイダーのアプリケーション識別子。 |
 | ProviderName | いいえ | ID プロバイダーの名前。 |
@@ -82,7 +82,7 @@ Azure Active Directory B2C (Azure AD B2C) では、[OAuth 1.0 プロトコル](h
 
 **CryptographicKeys** 要素には次の属性が存在します。
 
-| Attribute | Required | [説明] |
+| Attribute | Required | 説明 |
 | --------- | -------- | ----------- |
 | client_secret | はい | ID プロバイダー アプリケーションのクライアント シークレット。   |
 
