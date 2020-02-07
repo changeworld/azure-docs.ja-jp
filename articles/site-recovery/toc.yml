@@ -437,7 +437,7 @@
       href: vmware-azure-disaster-recovery-powershell.md
     - name: PowerShell を使用して Azure への Hyper-V VM のディザスター リカバリーを設定する
       href: hyper-v-azure-powershell-resource-manager.md
-    - name: PowerShell を使用して Azure への Hyper-V VM (VMM あり) のディザスター リカバリーを設定する
+    - name: PowerShell を使用して Hyper-V VM (VMM あり) のディザスター リカバリーを設定する
       href: hyper-v-vmm-powershell-resource-manager.md
     - name: Automation Runbook を復旧計画に追加する
       href: site-recovery-runbook-automation.md

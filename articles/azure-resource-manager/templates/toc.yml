@@ -161,6 +161,8 @@
         - name: デプロイ - REST API
           displayName: deployment
           href: deploy-rest.md
+        - name: GitHub からのデプロイ
+          href: deploy-to-azure-button.md
         - name: what-if のデプロイ
           href: template-deploy-what-if.md
         - name: エラー発生時の再デプロイ
