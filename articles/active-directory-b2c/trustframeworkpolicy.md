@@ -38,7 +38,7 @@ ms.locfileid: "76840181"
 
 **TrustFrameworkPolicy** 要素には、次の属性が含まれています。
 
-| Attribute | Required | [説明] |
+| Attribute | Required | 説明 |
 |---------- | -------- | ----------- |
 | PolicySchemaVersion | はい | ポリシーを実行するために使用されるスキーマ バージョン。 値は `0.3.0.0` である必要があります |
 | TenantObjectId | いいえ | Azure Active Directory B2C (Azure AD B2C) テナントの一意のオブジェクト識別子。 |
@@ -88,7 +88,7 @@ ms.locfileid: "76840181"
 
 **BasePolicy** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | [説明] |
+| 要素 | 発生回数 | 説明 |
 | ------- | ----------- | --------|
 | TenantId | 1:1 | Azure AD B2C テナントの識別子。 |
 | PolicyId | 1:1 | 親ポリシーの識別子。 |
