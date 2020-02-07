@@ -45,7 +45,7 @@ Azure Active Directory B2C (Azure AD B2C) は、各認証フローを処理す�
 
 ## <a name="metadata"></a>Metadata
 
-| Attribute | Required | [説明] |
+| Attribute | Required | 説明 |
 | --------- | -------- | ----------- |
 | issuer_refresh_token_user_identity_claim_type | はい | OAuth2 認証コードと更新トークン内で、ユーザー ID の要求として使用されることになる要求。 既定では、別の SubjectNamingInfo 要求タイプを指定しない限り、`objectId` に設定するようにしてください。 |
 | SendTokenResponseBodyWithJsonNumbers | いいえ | 常に `true` に設定します。 数値が JSON 番号の代わりに文字列として指定されているレガシー形式の場合は、`false` に設定します。 この属性は、文字列などのプロパティを返す以前の実装に依存しているクライアントに必要です。 |
@@ -61,7 +61,7 @@ Azure Active Directory B2C (Azure AD B2C) は、各認証フローを処理す�
 
 CryptographicKeys 要素には次の属性が存在します。
 
-| Attribute | Required | [説明] |
+| Attribute | Required | 説明 |
 | --------- | -------- | ----------- |
 | issuer_secret | はい | JWT トークンを署名するために使用する X509 証明書 (RSA キー セット)。 これは、「[カスタム ポリシー作業の開始](custom-policy-get-started.md)」で構成した `B2C_1A_TokenSigningKeyContainer` キーです。 |
 | issuer_refresh_token_key | はい | 更新トークンを暗号化するために使用する X509 証明書 (RSA キー セット)。 「[カスタム ポリシー作業の開始](custom-policy-get-started.md)」で `B2C_1A_TokenEncryptionKeyContainer` キーを構成しました。 |
