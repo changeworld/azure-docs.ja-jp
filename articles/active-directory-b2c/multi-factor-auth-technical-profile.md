@@ -53,7 +53,7 @@ Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, 
 
 **InputClaims** 要素には、Azure MFA に送信する要求の一覧が含まれます。 要求の名前を、MFA 技術プロファイルで定義されている名前にマップすることもできます。
 
-| ClaimReferenceId | 必須 | [説明] |
+| ClaimReferenceId | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | userPrincipalName | はい | 電話番号を所有しているユーザーの識別子。 |
 | phoneNumber | はい | SMS コードを送信する先の電話番号。 |
@@ -70,7 +70,7 @@ Azure MFA プロトコル プロバイダーでは **OutputClaims** は返され
 
 ### <a name="metadata"></a>メタデータ
 
-| Attribute | 必須 | [説明] |
+| Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Operation | はい | **OneWaySMS** になっている必要があります。  |
 | UserMessageIfInvalidFormat | いいえ | 指定された電話番号が有効な電話番号ではない場合のカスタム エラー メッセージ |
@@ -115,7 +115,7 @@ Azure MFA プロトコル プロバイダーでは **OutputClaims** は返され
 
 **InputClaims** 要素には、Azure MFA に送信する要求の一覧が含まれます。 要求の名前を、MFA 技術プロファイルで定義されている名前にマップすることもできます。
 
-| ClaimReferenceId | 必須 | [説明] |
+| ClaimReferenceId | 必須 | 説明 |
 | --------- | -------- | ----------- | ----------- |
 | phoneNumber| はい | 以前にコードを送信するために使用したのと同じ電話番号。 また、電話検証セッションを探すためにも使用されます。 |
 | verificationCode  | はい | 確認のためにユーザーによって指定された確認コード |
@@ -130,7 +130,7 @@ Azure MFA プロトコル プロバイダーでは **OutputClaims** は返され
 
 ## <a name="metadata"></a>メタデータ
 
-| Attribute | 必須 | [説明] |
+| Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Operation | はい | **Verify** になっている必要があります |
 | UserMessageIfInvalidFormat | いいえ | 指定された電話番号が有効な電話番号ではない場合のカスタム エラー メッセージ |
