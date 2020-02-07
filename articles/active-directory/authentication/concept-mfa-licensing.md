@@ -30,7 +30,7 @@ ms.locfileid: "75979491"
 
 以下の表は、多要素認証のバージョン間の違いについて説明したものです。
 
-| Version | [説明] |
+| Version | 説明 |
 | --- | --- |
 | Free オプション | Azure AD の無料特典を利用しているお客様は、[セキュリティ既定値](../fundamentals/concept-fundamentals-security-defaults.md)を使用して、環境内で多要素認証を有効にすることができます。 |
 | Office 365 の多要素認証 | このバージョンは、Office 365 または Microsoft 365 ポータルから管理されます。 管理者は [2 段階認証を使用して Office 365 リソースを保護](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6)することができます。 このバージョンは、Office 365 サブスクリプションの一部です。 |
