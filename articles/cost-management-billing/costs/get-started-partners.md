@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/16/2020
+ms.date: 01/28/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: aparnag
+ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 10889f6d872510fb53e76ab3722343aa2ee6a5e8
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: fc0401ac200ac55de5d812ddc5162d970b8e6d2a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293914"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76842420"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>パートナー向け Azure Cost Management の利用を開始する
 
@@ -100,9 +100,9 @@ Azure Cost Management には、課金アカウントまたはサブスクリプ�
 
 ### <a name="customer-scope"></a>顧客スコープ
 
-パートナーはスコープを使用して、Microsoft 顧客契約にオンボードされている顧客に関連付けられたコストを管理します。 スコープにより、パートナーは特定の顧客の課税前コストを表示できます。 特定のサブスクリプション、リソース グループ、またはリソースの課税前コストをフィルター処理することもできます。
+パートナーはスコープを使用して、Microsoft 顧客契約にオンボードされている顧客に関連付けられたコストを管理します。 スコープにより、パートナーは特定の顧客の課税前コストを請求通貨で表示できます。 特定のサブスクリプション、リソース グループ、またはリソースの課税前コストをフィルター処理することもできます。
 
-顧客スコープには、現在の CSP オファーに載っている顧客は含まれません。 このスコープには、Microsoft 顧客契約がある顧客のみが含まれます。 現在の CSP オファー顧客のエンタイトルメント コスト (Azure 使用量ではない) は、顧客フィルターを適用したときに課金アカウント スコープと課金プロファイル スコープで確認できます。
+顧客スコープには、現在の CSP オファーに載っている顧客は含まれません。 このスコープには、Microsoft 顧客契約がある顧客のみが含まれます。 現在の CSP オファー顧客のエンタイトルメント コスト (Azure 使用量ではない) は、顧客フィルターを適用したときに課金アカウント スコープと課金プロファイル スコープで確認できます。 このスコープで設定される予算は請求通貨になります。
 
 ## <a name="partner-access-to-billing-scopes-in-cost-management"></a>Cost Management での課金スコープへのパートナー アクセス
 
@@ -189,7 +189,7 @@ RBAC スコープの予約インスタンスの償却ビューおよび実際の
 | productID | 消費または購入によって料金が発生した製品の識別子。 これは、パートナー センターに示されている、productID と SKuID の連結キーです。 | 製品の ID。 |
 | product | 請求書に示されている、消費または購入によって料金が発生した製品の名前。 | カタログ内の製品名。 |
 | serviceFamily | 購入または課金された製品のサービス ファミリが表示されます。 たとえば、Storage や Compute など。 | 該当なし |
-| productOrderID | サブスクリプションが属している資産または Azure プラン名の識別子。 たとえば、Azure Plan など。 | 該当なし |
+| productOrderID | サブスクリプションが属している資産または Azure プラン名の識別子。 たとえば、Azure Plan など。 | CommerceSubscriptionID |
 | productOrderName | サブスクリプションが属している Azure プランの名前。 たとえば、Azure Plan など。 | 該当なし|
 | consumedService | 従来の EA 使用量の詳細で使用される消費済みサービス (レガシ分類)。 | パートナー センターに表示されるサービス。 たとえば、Microsoft.Storage、Microsoft.Compute、microsoft.operationalinsights など。 |
 | meterID | 測定された使用量の測定の ID。 | 使用されたメーターの ID。 |
@@ -197,7 +197,7 @@ RBAC スコープの予約インスタンスの償却ビューおよび実際の
 | meterCategory | 使用量の最上位レベルのサービスを識別します。 | 使用状況の最上位レベルのサービス。 |
 | meterSubCategory | 料金に影響する可能性のある Azure サービスの種類またはサブカテゴリを定義します。 | 料金に影響を与える可能性のある Azure サービスの種類。|
 | meterRegion | データセンターの場所に基づいて価格が設定されるサービスについて、データセンターの場所を示します。 | サービスのデータ センターのリージョンの場所 (該当し、かつ設定されている場合)。 |
-| サブスクリプション ID | Microsoft が生成する、Azure サブスクリプションの一意の識別子。 | 該当なし |
+| サブスクリプション ID | Microsoft が生成する、Azure サブスクリプションの一意の識別子。 | EntitlementID |
 | subscriptionName | Azure サブスクリプションの名前。 | 該当なし |
 | 期間 | プランの有効期間を表示します。 たとえば、予約インスタンスには、予約インスタンスの年間期間の 12 か月が表示されます。 1 回限りの購入または定期的な購入の場合、期間には、SaaS、Azure Marketplace、サポートについて 1 か月が表示されます。 Azure の消費には適用されません。 | 該当なし |
 | publisherType (firstParty、thirdPartyReseller、thirdPartyAgency) | 発行元をファースト パーティ、サード パーティ リセラー、またはサード パーティ機関として識別する発行元の種類。 | 該当なし |

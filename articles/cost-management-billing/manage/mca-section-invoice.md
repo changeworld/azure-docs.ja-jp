@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: c170a6a1a731a648c16e0081e760947256df8a0e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7f3a5232f8c5bfbf3f2e81ba52607406f8a038b4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75985371"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76843890"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>課金アカウントをカスタマイズしてコストを整理する
 
@@ -59,13 +59,13 @@ Azure にサインアップすると、課金プロファイルが課金アカ�
 
 |シナリオ  |構造体  |
 |---------|---------|
-|Contoso は小規模な組織で、単一の月次請求書を必要としていますが、部門 (マーケティングと財務) 別にコストをグループ化しています。  | Contoso の 1 つの課金プロファイルと、マーケティングおよび財務の部門ごとに 1 つの請求書セクション。 |
+|Contoso は小規模な組織で、必要な月次請求書は 1 つだけですが、コストを部署 (マーケティングとエンジニアリング) 別にグループ化する必要があります。  | Contoso の 1 つの課金プロファイルと、マーケティング部とエンジニアリング部門それぞれに 1 つの請求書セクション。 |
 
 ![単純な課金シナリオの情報を示す図](./media/mca-section-invoice/organize-billing-scenario2.png)
 
 |シナリオ  |構造体  |
 |---------|---------|
-|Fabrikam は中規模の組織で、エンジニアリングおよびマーケティング部門に別々の請求書を必要としています。 エンジニアリング部門では、環境 (生産と開発) 別にコストをグループ化することを希望しています。  | マーケティングおよび財務部門ごとに 1 つの課金プロファイル。 マーケティング部門に対して、生産および開発環境ごとに 1 つの請求書セクション。 |
+|Fabrikam は中規模の組織で、エンジニアリングおよびマーケティング部門に別々の請求書を必要としています。 エンジニアリング部門では、環境 (生産と開発) 別にコストをグループ化する必要があります。  | マーケティング部門とエンジニアリング部門それぞれに 1 つの課金プロファイル。 エンジニアリング部門の生産環境と開発環境それぞれに 1 つの請求書セクション。 |
 
 ![単純な課金シナリオの情報を示す図](./media/mca-section-invoice/organize-billing-scenario3.png)
 
@@ -73,7 +73,7 @@ Azure にサインアップすると、課金プロファイルが課金アカ�
 
 請求書セクションを作成するには、**課金プロファイルの所有者**または**課金プロファイルの共同作成者**である必要があります。 詳細については、「[課金プロファイルの請求書セクションを管理する](understand-mca-roles.md#manage-invoice-sections-for-billing-profile)」をご覧ください。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. "**コスト管理 + 請求**" を検索します。
 
@@ -101,7 +101,7 @@ Azure にサインアップすると、課金プロファイルが課金アカ�
 >
 > 追加の課金プロファイルを作成すると、総コストに影響する可能性があります。 詳細については、「[新しい課金プロファイルを追加する場合の考慮事項](#things-to-consider-when-adding-new-billing-profiles)」をご覧ください。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. "**コスト管理 + 請求**" を検索します。
 
@@ -134,7 +134,7 @@ Azure にサインアップすると、課金プロファイルが課金アカ�
 
 ### <a name="link-a-new-subscription"></a>新しいサブスクリプションをリンクする
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. **サブスクリプション**を検索します。
 
@@ -164,7 +164,7 @@ Azure にサインアップすると、課金プロファイルが課金アカ�
 >
 > サブスクリプションと他の製品は、同じ課金プロファイルに属する請求書セクション間でのみ移動できます。 異なる課金プロファイルの請求書セクション間でのサブスクリプションと製品の移動はサポートされていません。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. "**コスト管理 + 請求**" を検索します。
 

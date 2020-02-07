@@ -3,18 +3,18 @@ title: Azure Functions での従量課金プランのコストの見積もり
 description: Azure の従量課金プランで関数アプリを実行するときに発生する可能性があるコストをより正確に見積もる方法について説明します。
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6a68069ab9af54c1c8cfaf6c20727181e48ba1ec
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 0e3177d7c65eb1624441427f123e6f95095bdbbd
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75890315"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963990"
 ---
 # <a name="estimating-consumption-plan-costs"></a>従量課金プランのコストの見積もり
 
 現在、Azure Functions で実行されるアプリのホスティング プランには 3 つの種類があり、各プランには独自の価格モデルがあります。 
 
-| プラン | [説明] |
+| プラン | 説明 |
 | ---- | ----------- |
 | [**従量課金**](functions-scale.md#consumption-plan) | 関数アプリが実行された時間に対してのみ課金されます。 このプランには、サブスクリプションごとの[無料提供][価格ページ]が含まれます。|
 | [**Premium**](functions-scale.md#premium-plan) | 従量課金プランと同じ機能とスケーリング メカニズムが提供されますが、パフォーマンスと VNET アクセスが増強されています。 コストは、お客様が選択した価格レベルに基づきます。 詳細については、「[Azure Functions の Premium プラン](functions-premium-plan.md)」を参照してください。 |
@@ -45,9 +45,9 @@ Durable Functions も従量課金プランで実行できます。 Durable Funct
 
 関数アプリと関連サービスの全体的なコストを見積もるときは、[Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=functions)を使用します。 
 
-| 関連コスト | [説明] |
+| 関連コスト | 説明 |
 | ------------ | ----------- |
-| **ストレージ アカウント** | 各関数アプリには、General Purpose [Azure ストレージ アカウント](../storage/common/storage-introduction.md#types-of-storage-accounts)が関連付けられている必要があり、これは[別途課金](https://azure.microsoft.com/pricing/details/storage/)されます。 このアカウントは、Functions ランタイムによって内部的に使用されますが、ストレージのトリガーとバインドにも使用できます。 ストレージ アカウントを持っていない場合は、関数アプリの作成時に作成されます。 詳しくは、「[ストレージ アカウントの要件](functions-scale.md#storage-account-requirements)」をご覧ください。|
+| **ストレージ アカウント** | 各関数アプリには、General Purpose [Azure ストレージ アカウント](../storage/common/storage-introduction.md#types-of-storage-accounts)が関連付けられている必要があり、これは[別途課金](https://azure.microsoft.com/pricing/details/storage/)されます。 このアカウントは、Functions ランタイムによって内部的に使用されますが、ストレージのトリガーとバインドにも使用できます。 ストレージ アカウントを持っていない場合は、関数アプリの作成時に作成されます。 詳しくは、「[ストレージ アカウントの要件](storage-considerations.md#storage-account-requirements)」をご覧ください。|
 | **Application Insights** | Functions では、関数アプリに高パフォーマンスの監視エクスペリエンスを提供するために、[Application Insights](../azure-monitor/app/app-insights-overview.md) が利用されます。 必須ではありませんが、[Application Insights の統合を有効にする](functions-monitoring.md#enable-application-insights-integration)ことをお勧めします。 テレメトリ データの無料提供が毎月含まれます。 詳しくは、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページをご覧ください。 |
 | **ネットワーク帯域幅** | 同じリージョン内の Azure サービス間のデータ転送に対する支払いはありません。 ただし、別のリージョンまたは Azure の外部への送信データ転送に対するコストが発生する可能性があります。 詳しくは、「[帯域幅の料金詳細](https://azure.microsoft.com/pricing/details/bandwidth/)」をご覧ください。 |
 
@@ -76,7 +76,7 @@ Durable Functions も従量課金プランで実行できます。 Durable Funct
     ![関数アプリ リソースを選択する](media/functions-consumption-costing/select-a-resource.png)
 
       
-    |設定  |推奨値  |[説明]  |
+    |設定  |推奨値  |説明  |
     |---------|---------|---------|
     | サブスクリプション    |  該当するサブスクリプション  | 関数アプリのサブスクリプション。  |
     | Resource group     | 該当するリソース グループ  | 関数アプリが含まれる既存のリソース グループ。   |

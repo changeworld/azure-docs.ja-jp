@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/13/2019
+ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: micflan
+ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 75d414756d8818bd4e29fc0507af73eccf0e0e01
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 156684676758d777231d3b159ba7bc4749b8582a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75986203"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901762"
 ---
 # <a name="understand-cost-management-data"></a>Cost Management のデータを理解する
 
@@ -77,7 +77,7 @@ _<sup>**4**</sup>クレジットベースの前払い制サブスクリプショ
 | **サポート プラン** | Azure Government Developer サポート  | Default_2014-09-01 | MS-AZR-USGOV-0043P |
 
 ## <a name="determine-your-offer-type"></a>オファーの種類を決定する
-サブスクリプションのデータが表示されず、ご利用のサブスクリプションがサポート対象のプランに該当するかどうかわからない場合は、ご利用のサブスクリプションがサポート対象かどうかを検証することができます。 Azure サブスクリプションがサポート対象かどうかを検証するには、[Azure portal](https://portal.azure.com) にサインインします。 次に、左側のメニュー ウィンドウにある **[すべてのサービス]** を選択します。 サービスの一覧で **[サブスクリプション]** を選択します。 [サブスクリプション] の一覧で、検証するサブスクリプションを選択します。 選択したサブスクリプションが [概要] タブに表示され、**プラン**と**プラン ID** を確認できます。 次に例を示します。
+サブスクリプションのデータが表示されず、ご利用のサブスクリプションがサポート対象のプランに該当するかどうかわからない場合は、ご利用のサブスクリプションがサポート対象かどうかを検証することができます。 Azure サブスクリプションがサポート対象かどうかを確認するには、[Azure portal](https://portal.azure.com) にサインインします。 次に、左側のメニュー ウィンドウにある **[すべてのサービス]** を選択します。 サービスの一覧で **[サブスクリプション]** を選択します。 [サブスクリプション] の一覧で、確認するサブスクリプションを選択します。 選択したサブスクリプションが [概要] タブに表示され、**プラン**と**プラン ID** を確認できます。 次に例を示します。
 
 ![プランとプラン ID が表示された、サブスクリプションの [概要] タブの例](./media/understand-cost-mgt-data/offer-and-offer-id.png)
 
@@ -109,6 +109,10 @@ _<sup>**7**</sup> 現時点では、予約購入はエンタープライズ契�
 
 _<sup>**8**</sup> リソース タグは、各サービスから使用状況が送信される際に適用されます。過去の使用状況に対してさかのぼって適用することはできません。_
 
+**無料試用版から従量課金制へのアップグレード**
+
+無料試用版プラン (044P) を PAYG プラン (003P) に変換するお客様は、無料試用版期間中、使用状況を確認することができます。 ただし、変換後は、無料試用版の使用状況を表示できなくなります。 変換後、Cost Management には、PAYG の使用状況とコストのみが表示されます。
+
 ## <a name="rated-usage-data-refresh-schedule"></a>評価済み使用状況データの更新スケジュール
 
 コストと使用状況データは、Azure portal の [コストの管理と請求] および[サポートする API](../index.yml) から利用できます。 コストを確認するときは、次の点に留意してください。
@@ -139,7 +143,7 @@ Cost Management に使用状況データが表示されるタイミングは、�
 
 ## <a name="historical-data-might-not-match-invoice"></a>履歴データが請求書と一致しない場合がある
 
-クレジットベースの前払い制オファーの履歴データは、請求書と一致しない場合があります。 Azure 従量課金制、MSDN、Visual Studio の一部のプランでは、Azure クレジットと前払いを請求書に適用できます。 しかし、Cost Management に示される履歴データは、従量課金による推定請求金額のみに基づきます。 Cost Management の履歴データには、支払いとクレジットは含まれていません。 その結果、以下のオファーに対して示される履歴データが、請求書と完全に一致しない場合があります。
+クレジットベースの前払い制オファーの履歴データは、請求書と一致しない場合があります。 Azure 従量課金制、MSDN、Visual Studio の一部のプランでは、Azure クレジットと前払いを請求書に適用できます。 しかし、Cost Management に示される履歴データは、従量課金による推定請求金額のみに基づきます。 Cost Management の履歴データには、支払いとクレジットは含まれていません。 そのため、以下のオファーに対して示される履歴データが、請求書と完全に一致しない場合があります。
 
 - 学生向け Azure (MS-AZR-0170P)
 - Azure イン オープン プラン (MS-AZR-0111P)

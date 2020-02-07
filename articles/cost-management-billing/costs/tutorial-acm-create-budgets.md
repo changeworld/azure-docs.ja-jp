@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/12/2019
+ms.date: 01/22/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 12735a9575328e404f5723fa305448eb21ca85b2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bb02c4903348a3b8c1d129f02be64109ec0f48eb
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75986215"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76769788"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>チュートリアル:Azure の予算を作成して管理する
 
@@ -87,6 +87,18 @@ Cost Management データに対するアクセス許可の割り当てについ�
 ![コスト分析に表示される予算と支出の例](./media/tutorial-acm-create-budgets/cost-analysis.png)
 
 前の例では、サブスクリプションの予算を作成しました。 しかし、リソース グループに対する予算を作成することもできます。 リソース グループに対する予算を作成する場合は、 **[コストの管理と請求]** &gt; **[サブスクリプション]** に移動してサブスクリプションを選択し、 **[リソース グループ]** を選択してリソース グループを選択し、 **[予算]** を選択して予算を**追加**します。
+
+## <a name="costs-in-budget-evaluations"></a>予算評価におけるコスト
+
+予算コスト評価に予約インスタンスと購入データが含まれるようになりました。 料金が適用される場合は、評価に料金が組み込まれるときにアラートが表示されることがあります。 [Azure portal](https://portal.azure.com) にサインインし、新しいコストを考慮するように予算のしきい値が適切に構成されているかどうか、確認することをお勧めします。 Azure で課金される料金は変更されません。 予算が、より完全なコストのセットに対して評価されるようになりました。 料金が適用されない場合、予算の動作は変わりません。
+
+ファースト パーティの Azure 使用料金に対してのみ予算が評価されるように新しいコストをフィルター処理する場合は、予算に次のフィルターを追加します。
+
+- パブリッシャーの種類: Azure
+- 料金タイプ: 使用法
+
+予算コストの評価は、実際のコストに基づいています。 償却費は含まれていません。 予算で使用できるフィルター オプションの詳細については、「[グループ化とフィルタリングのオプションの概要](quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options)」を参照してください。
+
 
 ## <a name="trigger-an-action-group"></a>アクション グループをトリガーする
 

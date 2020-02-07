@@ -8,14 +8,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/21/2020
+ms.date: 01/24/2020
 ms.author: banders
-ms.openlocfilehash: ea545919436201524a1c77b27e9b187f3b1c3b64
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 5f0c0c50ffd639109fdbb90c76e4ec036a8bc975
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314047"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76773879"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure の予約のセルフサービスによる交換と払戻
 
@@ -29,14 +29,14 @@ Azure の予約は、変化するニーズを満たすために柔軟性を提�
 
 [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) での簡単な 3 つの手順により予約を交換できます。
 
-1. 払い戻したい予約を選択して **[交換]** をクリックします。  
+1. 払い戻したい予約を選択して **[交換]** を選択します。  
     ![返金する予約を示す例の画像](./media/exchange-and-refund-azure-reservations/exchange-refund-return.png)
 2. 購入する VM 製品を選択し、数量を入力します。 新しい購入合計が、返金合計より多くなるようにしてください。 [購入する前に適切なサイズを決定](../../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy)します。  
     ![交換による VM 製品の購入を示す例の画像](./media/exchange-and-refund-azure-reservations/exchange-refund-select-purchase.png)
 3. トランザクションを確認して、完了します。  
     ![交換による VM 製品の購入で返金を完了する例の画像](./media/exchange-and-refund-azure-reservations/exchange-refund-confirm-exchange.png)
 
-予約を払い戻すには、 **[予約の詳細]** に移動し、 **[払戻]** をクリックします。
+予約を払い戻すには、 **[予約の詳細]** に移動し、 **[払戻]** を選択します。
 
 ## <a name="how-transactions-are-processed"></a>トランザクションの処理方法
 
@@ -66,7 +66,7 @@ Azure には、キャンセル、交換、払戻に関して次のポリシー�
 - 交換を処理できるのは、予約の所有者のみです。 [予約を管理できるユーザーを追加または変更する](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)方法を参照してください。
 - 交換は払戻と再購入として処理されます。キャンセルと新しい購入には、異なるトランザクションが作成されます。 日割り計算された予約金額が、交換する予約に払い戻されます。 新しい購入は全額請求されます。 日割り計算された予約金額は、返金される予約の日割り計算された残余値です。
 - 予約を購入するために使用したエンタープライズ契約の有効期限が切れて、新しい契約として更新された場合も、予約を交換または払い戻すことができます。
-- 交換により、サイズ、リージョン、数量、期間などの予約のプロパティを変更できます。
+- 交換により、ファミリ、シリーズ、バージョン、SKU、リージョン、数量、期間などの予約のプロパティを変更できます。
 - 新しい購入合計は、返金額以上でなければなりません。
 - 交換の一部として購入された新しい予約には、交換の時点から開始される新しい期間が適用されます。
 - 交換に対するペナルティや年間制限はありません。
@@ -81,7 +81,7 @@ Azure には、キャンセル、交換、払戻に関して次のポリシー�
 
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>Premium Storage 以外のストレージを Premium Storage と交換する
 
-Premium Storage をサポートしない VM サイズの購入済み予約を、Premium Storage をサポートする対応する VM サイズと交換できます。 たとえば、_F1_ を _F1s_ と交換できます。 交換を行う場合は、[予約の詳細] に移動し、 **[交換]** をクリックします。 交換により、予約済みインスタンスの期間のリセットや、新しいトランザクションの作成が行われることはありません。
+Premium Storage をサポートしない VM サイズの購入済み予約を、Premium Storage をサポートする対応する VM サイズと交換できます。 たとえば、_F1_ を _F1s_ と交換できます。 交換を行う場合は、[予約の詳細] に移動し、 **[交換]** を選択します。 交換により、予約済みインスタンスの期間のリセットや、新しいトランザクションの作成が行われることはありません。
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
