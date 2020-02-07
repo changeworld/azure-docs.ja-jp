@@ -121,7 +121,7 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 
 ## <a name="metadata"></a>Metadata
 
-| Attribute | Required | [説明] |
+| Attribute | Required | 説明 |
 | --------- | -------- | ----------- |
 | ServiceUrl | はい | REST API エンドポイントの URL。 |
 | AuthenticationType | はい | RESTful 要求プロバイダーにより実行されている認証の種類。 指定できる値: `None`、`Basic`、`Bearer`、または `ClientCertificate`。 `None` の値は、REST API が匿名でないことを示します。 `Basic` の値は、REST API が HTTP 基本認証で保護されていることを示します。 Azure AD B2C などの検証されたユーザーのみが API にアクセスできます。 `ClientCertificate` の (推奨) 値は、REST API がクライアント証明書認証を使用してアクセスを制限していることを示します。 Azure AD B2C などの適切な証明書を持つサービスのみが、ご利用の API にアクセスできます。 `Bearer` 値は、REST API ではクライアント OAuth2 ベアラー トークンを使用してアクセスが制限されることを示します。 |
@@ -148,7 +148,7 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 
 認証の種類が `Basic` に設定されている場合、**CryptographicKeys** には次の属性が存在します。
 
-| Attribute | Required | [説明] |
+| Attribute | Required | 説明 |
 | --------- | -------- | ----------- |
 | BasicAuthenticationUsername | はい | 認証に使用されるユーザー名。 |
 | BasicAuthenticationPassword | はい | 認証に使用されるパスワード。 |
@@ -173,7 +173,7 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 
 認証の種類が `ClientCertificate` に設定されている場合、**CryptographicKeys** には次の属性が存在します。
 
-| Attribute | Required | [説明] |
+| Attribute | Required | 説明 |
 | --------- | -------- | ----------- |
 | ClientCertificate | はい | 認証に使用する X509 証明書 (RSA キー セット)。 |
 
@@ -194,7 +194,7 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 
 認証の種類が `Bearer` に設定されている場合、**CryptographicKeys** には次の属性が存在します。
 
-| Attribute | Required | [説明] |
+| Attribute | Required | 説明 |
 | --------- | -------- | ----------- |
 | BearerAuthenticationToken | いいえ | OAuth 2.0 ベアラー トークン。 |
 
@@ -217,7 +217,7 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 
 REST API は、「そのユーザーは CRM システムでは見つかりませんでした」などの、エラー メッセージを返す必要がある場合があります。 エラーが発生した場合、REST API は次の属性を持つ HTTP 409 エラー メッセージ (応答ステータスコードの競合) を返すことになります。
 
-| Attribute | Required | [説明] |
+| Attribute | Required | 説明 |
 | --------- | -------- | ----------- |
 | version | はい | 1.0.0 |
 | status | はい | 409 |
