@@ -51,7 +51,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &nonce=12345
 ```
 
-| パラメーター | Required | [説明] |
+| パラメーター | Required | 説明 |
 | --------- | -------- | ----------- |
 |{tenant}| はい | Azure AD B2C テナントの名前。|
 |{policy}| はい| 実行するユーザー フロー。 Azure AD B2C テナントに作成したユーザー フローの名前を指定します。 例: `b2c_1_sign_in`、`b2c_1_sign_up`、または`b2c_1_edit_profile`。 |
@@ -81,7 +81,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 &state=arbitrary_data_you_sent_earlier
 ```
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --------- | ----------- |
 | access_token | アプリが要求したアクセス トークン。 |
 | token_type | トークン タイプ値。 Azure AD でサポートされるのは Bearer タイプのみです。 |
@@ -100,7 +100,7 @@ error=access_denied
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --------- | ----------- |
 | error | 発生したエラーの種類を分類するために使用されるコード。 |
 | error_description | 認証エラーの根本的な原因を特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -164,7 +164,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &prompt=none
 ```
 
-| パラメーター | 必須 | [説明] |
+| パラメーター | 必須 | 説明 |
 | --- | --- | --- |
 |{tenant}| Required | Azure AD B2C テナントの名前。|
 {policy}| Required| 実行するユーザー フロー。 Azure AD B2C テナントに作成したユーザー フローの名前を指定します。 例: `b2c_1_sign_in`、`b2c_1_sign_up`、または`b2c_1_edit_profile`。 |
@@ -193,7 +193,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 &scope=https%3A%2F%2Fapi.contoso.com%2Ftasks.read
 ```
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | access_token |アプリが要求したトークン。 |
 | token_type |トークンの種類は常にベアラーになります。 |
@@ -210,7 +210,7 @@ error=user_authentication_required
 &error_description=the+request+could+not+be+completed+silently
 ```
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | error |発生したエラーの種類を分類するために使用できるエラー コード文字列。 この文字列はエラーへの対応に利用することもできます。 |
 | error_description |認証エラーの根本的な原因を特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -229,7 +229,7 @@ ID トークンとアクセス トークンは、どちらも短時間で期限�
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 
-| パラメーター | Required | [説明] |
+| パラメーター | Required | 説明 |
 | --------- | -------- | ----------- |
 | {tenant} | はい | Azure AD B2C テナントの名前。 |
 | {policy} | はい | ご利用のアプリケーションからユーザーをサインアウトさせるために使用するユーザー フロー。 |
