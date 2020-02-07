@@ -187,7 +187,7 @@ ms.locfileid: "75425617"
 
 ## <a name="metadata"></a>メタデータ
 
-| Attribute | 必須 | [説明] |
+| Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | setting.showContinueButton | いいえ | [続行する] ボタンが表示されます。 指定できる値は `true`(既定値) または`false`です。 |
 | setting.showCancelButton | いいえ | [キャンセル] ボタンが表示されます。 指定できる値は `true`(既定値) または`false`です。 |
