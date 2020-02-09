@@ -24,9 +24,9 @@ Cognitive Services は、一般的な問題を解決する機械学習機能を�
 
 |サービス カテゴリ|目的|
 |--|--|
-|[決定](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|情報に基づく、効率的な意思決定のためのレコメンデーションを提示するアプリを構築します。|
+|[Decision](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|情報に基づく、効率的な意思決定のためのレコメンデーションを提示するアプリを構築します。|
 |[Language](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|お使いのアプリが、構築済みスクリプトで自然言語を処理し、センチメントを評価し、ユーザーの求めるものを認識する方法を学習できるようにします。|
-|[検索](https://azure.microsoft.com/services/cognitive-services/directory/search/)|お使いのアプリに Bing Search API を組み込み、1 つの API 呼び出しで何十億もの Web ページ、画像、動画、ニュースをくまなく調べる機能を実装します。|
+|[Speech](https://azure.microsoft.com/services/cognitive-services/directory/search/)|お使いのアプリに Bing Search API を組み込み、1 つの API 呼び出しで何十億もの Web ページ、画像、動画、ニュースをくまなく調べる機能を実装します。|
 |[Speech](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|音声をテキストに変換し、テキストを自然な音声に変換します。 ある言語を別の言語に翻訳し、話者の認証と認識を可能にします。|
 |[Vision](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|写真、動画、デジタル インク コンテンツの認識、識別、キャプションの追加、インデックスの作成、モデレートを行います。|
 ||||
