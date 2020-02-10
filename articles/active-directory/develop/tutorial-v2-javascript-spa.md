@@ -45,7 +45,7 @@ ms.locfileid: "76701265"
 
 このガイドでは、次のライブラリを使用します。
 
-|ライブラリ|[説明]|
+|ライブラリ|説明|
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|JavaScript プレビュー用の Microsoft Authentication Library|
 
