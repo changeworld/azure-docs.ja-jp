@@ -34,7 +34,7 @@ ms.locfileid: "76759162"
 
 Microsoft 認証ライブラリ (MSAL) の次のライブラリでは、Web アプリの承認コード フローがサポートされています。
 
-| MSAL ライブラリ | [説明] |
+| MSAL ライブラリ | 説明 |
 |--------------|-------------|
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | .NET Framework プラットフォームと .NET Core プラットフォームのサポート。 ユニバーサル Windows プラットフォーム (UWP)、Xamarin.iOS、Xamarin.Android の各プラットフォームは、パブリック クライアント アプリケーションの構築に使用されるため、サポートされていません。 |
 | ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> MSAL for Python | Python Web アプリケーションのサポート。 |
