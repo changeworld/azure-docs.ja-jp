@@ -43,7 +43,7 @@ ms.locfileid: "76701180"
 
 このガイドでは、次の NuGet パッケージを使用します。
 
-|ライブラリ|[説明]|
+|ライブラリ|説明|
 |---|---|
 |[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library|
 
@@ -399,7 +399,7 @@ Windows 統合認証を、フェデレーション Azure AD ドメインと共�
 
 `AcquireTokenInteractive` または `AcquireTokenSilent` によって取得したトークンに関する以下の基本的な情報も、 **[Token Info]\(トークン情報\)** ボックスに表示されます。
 
-|プロパティ  |Format  |[説明] |
+|プロパティ  |Format  |説明 |
 |---------|---------|---------|
 |`Username` |`user@domain.com` |ユーザーを識別するユーザー名。|
 |`Token Expires` |`DateTime` |トークンの有効期限が切れる日時。 MSAL は、必要に応じてトークンを更新することで、有効期限日を延長します。|
