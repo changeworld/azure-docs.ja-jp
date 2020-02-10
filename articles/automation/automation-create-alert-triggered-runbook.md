@@ -45,7 +45,7 @@ Automation Runbook は、次の 3 つの種類のアラートで使用できま�
 
 この例では、VM からのアラートを使用します。 ペイロードから VM のデータを取得し、その情報を使用して VM を停止します。 接続は、Runbook が実行される Automation アカウントで設定する必要があります。 アラートを使用して Runbook をトリガーする場合は、トリガーされる Runbook でアラートの状態を確認することが重要です。 アラートの状態が変化するたびに Runbook がトリガーされます。 アラートには複数の状態があり、最も一般的な 2 つの状態が `Activated` と `Resolved` です。 Runbook が複数回実行されないように、Runbook ロジックでこの状態を確認します。 この記事の例では、`Activated` アラートのみを検索する方法を示しています。
 
-Runbook は、VM に対する管理アクションを実行するために、**AzureRunAsConnection**[実行アカウント](automation-create-runas-account.md)を使用して Azure を認証します。
+Runbook は、VM に対する管理アクションを実行するために、**AzureRunAsConnection** [実行アカウント](automation-create-runas-account.md)を使用して Azure を認証します。
 
 この例を使用して**Stop-AzureVmInResponsetoVMAlert** と呼ばれる Runbook を作成します。 PowerShell スクリプトは変更して、多くのさまざまなリソースで使用することができます。
 

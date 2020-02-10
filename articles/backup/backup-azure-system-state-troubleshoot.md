@@ -32,7 +32,7 @@ ms.locfileid: "75665039"
 - コンテナーに**サーバーを再登録する**場合は、次のことを行います。 <br>
   - エージェントがサーバーからアンインストールされていることと、ポータルから削除されていることを確認します。 <br>
   - 最初にサーバーの登録に使用したのと同じパスフレーズを使用します <br>
-- オフライン バックアップの場合は、ソース コンピューターとコピー用コンピューターの両方に Azure PowerShell バージョン 3.7.0 がインストールされていることを確認します
+- これがオフライン バックアップの場合は、ソース コンピューターとコピー用コンピューターの両方に Azure PowerShell バージョン 3.7.0 がインストールされていることを確認します
 - [Azure 仮想マシン (VM) 上で Backup エージェントが実行されている場合の考慮事項](https://aka.ms/AB-AA4dwtr)
 
 ### <a name="limitation"></a>制限事項
@@ -52,7 +52,7 @@ Windows Server バックアップがインストールされ、サーバーで�
 Get-WindowsFeature Windows-Server-Backup
  ```
 
-出力で、**Install State** が **available** と表示される場合は、Windows Server バックアップ機能をインストールできるが、サーバーにはインストールされていないことを意味します。 Windows Server バックアップがインストールされていない場合は、以下のいずれかの方法でインストールします。
+出力で、**Install State** が **available** と表示される場合は、Windows Server バックアップ機能をインストールできるが、サーバーにはインストールされていないことを意味します。 ただし、Windows Server バックアップがインストールされていない場合は、以下のいずれかの方法を使用してインストールします。
 
 #### <a name="method-1-install-windows-server-backup-using-powershell"></a>方法 1:PowerShell を使用して Windows Server バックアップをインストールする
 

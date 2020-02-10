@@ -1,5 +1,5 @@
 ---
-title: サービス エンドポイントへのアクセス ポリシーの割り当て
+title: サービス エンドポイントにアクセス ポリシーを割り当てる
 description: ご利用の Service Fabric サービスの HTTP または HTTPS エンドポイントにセキュリティ アクセス ポリシーを割り当てる方法について説明します。
 ms.topic: conceptual
 ms.date: 03/21/2018

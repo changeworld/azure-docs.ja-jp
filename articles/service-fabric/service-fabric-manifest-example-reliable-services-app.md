@@ -1,5 +1,5 @@
 ---
-title: Reliable Services アプリ マニフェストの例
+title: Reliable Services のアプリ マニフェストの例
 description: Reliable Services Service Fabric アプリケーションのアプリケーションとサービス マニフェストの設定を構成する方法について説明します。
 author: peterpogorski
 ms.topic: conceptual

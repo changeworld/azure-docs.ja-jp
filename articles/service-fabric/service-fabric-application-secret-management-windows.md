@@ -13,7 +13,7 @@ ms.lasthandoff: 01/02/2020
 ms.locfileid: "75610184"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-windows-clusters"></a>Windows クラスターでの暗号化証明書の設定とシークレットの暗号化
-この記事では、Windows クラスターでの暗号化証明書の設定と、これを使用してシークレットの暗号化を行う方法について説明します。 Linux クラスターについては、[Linux クラスターでの暗号化証明書の設定とシークレットの暗号化][secret-management-linux-specific-link]を参照してください。
+この記事では、Windows クラスターでの暗号化証明書の設定と、これを使用してシークレットの暗号化を行う方法について説明します。 Linux クラスターについては、「[Linux クラスターでの暗号化証明書の設定とシークレットの暗号化][secret-management-linux-specific-link]」を参照してください。
 
 ここでは、証明書の安全な格納場所として [Azure Key Vault][key-vault-get-started] を使用します。また、Azure の Service Fabric クラスターにインストールされている証明書を取得する方法としても使用します。 Azure にデプロイしない場合は、Service Fabric アプリケーションでのシークレットの管理に Key Vault を使用する必要はありません。 ただし、アプリケーションでのシークレットの " *使用* " はクラウド プラットフォームに依存しないので、クラスターでホストされている任意の場所にアプリケーションをデプロイできます。 
 

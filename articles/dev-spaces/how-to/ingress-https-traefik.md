@@ -41,7 +41,7 @@ NAME                                STATUS   ROLES   AGE    VERSION
 aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
 ```
 
-traefik イングレス コントローラーの Helm チャートを含む[公式の安定版 Helm リポジトリ][helm-stable-repo]を追加します。
+traefik イングレス コントローラーの Helm グラフを含む[公式の安定版 Helm リポジトリ][helm-stable-repo]を追加します。
 
 ```console
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
@@ -162,7 +162,7 @@ http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 
 ## <a name="configure-the-traefik-ingress-controller-to-use-https"></a>HTTPS を使用する traefik イングレス コントローラーの構成
 
-[cert-manager][cert-manager] を使用して、HTTPS を使用するように traefik イングレス コントローラーを構成するときに TLS 証明書の管理を自動化します。 `helm` を使用して、*certmanager* チャートをインストールします。
+[cert-manager][cert-manager] を使用して、HTTPS を使用するように traefik イングレス コントローラーを構成するときに TLS 証明書の管理を自動化します。 `helm` を使用して、*certmanager* グラフをインストールします。
 
 ```console
 kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml --namespace traefik

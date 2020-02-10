@@ -25,9 +25,9 @@ vFXT クラスターはプライベート仮想ネットワーク内にあるた
 1. Web ブラウザーでクラスターのコントロール パネルを読み込む
 
 > [!NOTE]
-> この記事では、クラスター コントローラー、またはクラスターの仮想ネットワーク内にある別の VM にパブリック IP アドレスを設定していることを前提としています。 この記事では、その VM をホストとして使用してクラスターにアクセスする方法について説明します。 vnet アクセスのために VPN または仮想ネットワークの ExpressRoute を使用している場合は、[Avere Control Panel への接続](#connect-to-the-avere-control-panel-in-a-browser)に関するセクションに進んでください。
+> この記事では、クラスター コントローラー、またはクラスターの仮想ネットワーク内にある別の VM にパブリック IP アドレスを設定していることを前提としています。 この記事では、その VM をホストとして使用してクラスターにアクセスする方法について説明します。 仮想ネットワーク アクセスに VPN または ExpressRoute を使用している場合は、[Avere Control Panel への接続](#connect-to-the-avere-control-panel-in-a-browser)に関するセクションに進んでください。
 
-接続する前に、クラスター コントローラーの作成時に使用した SSH 公開キーと秘密キーのペアがローカル コンピューターにインストールされていることを確認します。 ヘルプが必要な場合は、[Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) または [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) の SSH キーのドキュメントをお読みください。 パブリック キーの代わりにパスワードを使用した場合は、接続するときにパスワードの入力を求められます。
+接続する前に、クラスター コントローラーの作成時に使用した SSH 公開キーと秘密キーのペアがローカル コンピューターにインストールされていることを確認します。 ヘルプが必要な場合は、[Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) または [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) の SSH キーのドキュメントをお読みください。 公開キーの代わりにパスワードを使用した場合は、接続するときにパスワードの入力を求められます。
 
 ## <a name="create-an-ssh-tunnel"></a>SSH トンネルを作成する
 

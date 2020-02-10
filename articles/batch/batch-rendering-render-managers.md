@@ -1,6 +1,6 @@
 ---
 title: レンダー マネージャーのサポート - Azure Batch
-description: Azure Batch レンダー マネージャーの統合 一般的なレンダー マネージャーのビルトイン サポートまたはアドオンについて説明します。
+description: Azure Batch レンダー マネージャーの統合を使用します。 一般的なレンダー マネージャーのビルトイン サポートまたはアドオンについて説明します。
 services: batch
 ms.service: batch
 author: mscurrell

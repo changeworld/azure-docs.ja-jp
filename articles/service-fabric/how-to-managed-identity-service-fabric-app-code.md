@@ -1,6 +1,6 @@
 ---
 title: アプリケーションでマネージド ID を使用する
-description: Azure Service Fabric アプリケーション コードでマネージド ID を使用して Azure サービスにアクセスする方法です。 この機能はパブリック プレビュー段階にあります。
+description: Azure Service Fabric アプリケーション コードでマネージド ID を使用して Azure サービスにアクセスする方法。 この機能はパブリック プレビュー段階にあります。
 ms.topic: article
 ms.date: 10/09/2019
 ms.openlocfilehash: 59680ec7911f55c3dc49d8834b410a039aa435dc

@@ -1,6 +1,6 @@
 ---
-title: セルフサービスによるパスワード リセット ポリシー - Azure Active Directory
-description: Azure AD のセルフ サービスによるパスワード リセット ポリシーのオプションの構成
+title: セルフサービス パスワード リセット ポリシー - Azure Active Directory
+description: Azure AD のセルフサービス パスワード リセット ポリシーのオプションの構成
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -62,7 +62,7 @@ ms.locfileid: "75425321"
 1 ゲート ポリシーには、1 つの認証データが必要です。電子メール アドレス*または*電話番号などです。 1 ゲート ポリシーは次のような状況で適用されます。
 
 * 試用版サブスクリプションの最初の 30 日以内である、または
-* Azure AD テナント用にカスタム ドメインが構成されていないため、既定の * *.onmicrosoft.com* を使用している。 既定の * *.onmicrosoft.com* ドメインは、実稼働環境での使用は推奨されないことに注意してください。および
+* Azure AD テナント用にカスタム ドメインが構成されていないため、既定の * *.onmicrosoft.com* を使用している。 既定の * *.onmicrosoft.com* ドメインは、実稼働環境での使用は推奨されないことに注意してください。
 * Azure AD Connect が ID と同期していない
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>すべてのユーザー アカウントに適用される UserPrincipalName ポリシー

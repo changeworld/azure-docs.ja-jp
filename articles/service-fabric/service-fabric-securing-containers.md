@@ -1,5 +1,5 @@
 ---
-title: コンテナーへの証明書のインポート
+title: コンテナーに証明書をインポートする
 description: Service Fabric コンテナー サービスに証明書ファイルをインポートする方法について説明します。
 ms.topic: conceptual
 ms.date: 2/23/2018

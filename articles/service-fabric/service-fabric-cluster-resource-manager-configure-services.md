@@ -1,5 +1,5 @@
 ---
-title: メトリックと配置設定の指定
+title: メトリックと配置設定を指定する
 description: メトリック、配置の制約、およびその他の配置ポリシーを指定することによって Service Fabric サービスを記述する方法について説明します。
 author: masnider
 ms.topic: conceptual

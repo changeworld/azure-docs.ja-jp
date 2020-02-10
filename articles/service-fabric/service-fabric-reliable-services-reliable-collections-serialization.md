@@ -1,6 +1,6 @@
 ---
 title: Reliable Collection オブジェクトのシリアル化
-description: Azure Service Fabric での Reliable Collection オブジェクトのシリアル化について説明します。既定の方法やカスタムのシリアル化を定義する方法などがあります。
+description: Azure Service Fabric で Reliable Collection オブジェクトをシリアル化する規定の方法や、カスタムのシリアル化を定義する方法をなどについて説明します。
 ms.topic: conceptual
 ms.date: 5/8/2017
 ms.openlocfilehash: 666e1bb45a9c75ee143f15a0d871d6ae1408eca9

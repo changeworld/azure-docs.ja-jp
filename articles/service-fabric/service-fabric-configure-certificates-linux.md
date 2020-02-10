@@ -1,5 +1,5 @@
 ---
-title: Linux 上のアプリケーション用の証明書の構成
+title: Linux 上のアプリケーション用の証明書を構成する
 description: Linux クラスター上の Service Fabric ランタイムを使用するアプリ用に証明書を構成します
 ms.topic: conceptual
 ms.date: 09/06/2019

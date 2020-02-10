@@ -29,7 +29,7 @@ ms.locfileid: "75371991"
 
 Azure CLI を使用して Azure AD の資格情報で SAS をセキュリティで保護するには、まず最新バージョンの Azure CLI がインストールされていることを確認します。 Azure CLI のインストールの詳細については、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
-Azure CLI を使用してユーザー委任 SAS を作成するために、バージョン 2.0.78 以降がインストールされていることを確認します。 インストールされているバージョンを確認するには、`az --version` コマンドを使用します。
+Azure CLI を使用してユーザー委任 SAS を作成するには、バージョン 2.0.78 以降がインストールされていることを確認します。 インストールされているバージョンを確認するには、`az --version` コマンドを使用します。
 
 ## <a name="sign-in-with-azure-ad-credentials"></a>Azure AD の資格情報でサインインする
 

@@ -23,7 +23,7 @@ ms.locfileid: "75477089"
 
 ## <a name="symptom"></a>症状
 
-以前のデータ ディスクのデタッチに失敗した仮想マシンを更新しようとすると、このエラー コードが表示されることがあります。
+以前データ ディスクのデタッチに失敗した仮想マシンを更新しようとすると、このエラー コードが表示されることがあります。
 
 ```
 Code=\"AttachDiskWhileBeingDetached\" 
@@ -53,7 +53,7 @@ toBeDetached : False
 
 ### <a name="step-2-set-the-flag-for-failing-disks-to-true"></a>手順 2:障害が発生したディスクのフラグを "true" に設定します。
 
-障害が発生したディスクの配列インデックスを取得し、障害が発生したディスク (**AttachDiskWhileBeingDetached** エラーが発生したディスク) に対して **toBeDetached** フラグを "true" に設定します。 この設定は、仮想マシンからディスクをデタッチすることを意味します。 障害が発生したディスク名は **errorMessage** にあります。
+障害が発生したディスクの配列インデックスを取得し、障害が発生したディスク (**AttachDiskWhileBeingDetached** エラーが発生したディスク) の **toBeDetached** フラグを "true" に設定します。 この設定は、仮想マシンからディスクをデタッチすることを意味します。 障害が発生したディスクの名前は **errorMessage** にあります。
 
 > !注:Get および Put 呼び出しに指定される API バージョンは、2019-03-01 以上である必要があります。
 

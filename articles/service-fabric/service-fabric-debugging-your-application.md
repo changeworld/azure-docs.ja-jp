@@ -1,5 +1,5 @@
 ---
-title: Visual Studio によるアプリケーションのデバッグ
+title: Visual Studio でアプリケーションをデバッグする
 description: Visual Studio とローカル開発クラスターを使用してサービスを開発、デバッグし、サービスの信頼性とパフォーマンスを改善します。
 author: vturecek
 ms.topic: conceptual
