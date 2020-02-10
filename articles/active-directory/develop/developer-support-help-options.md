@@ -47,7 +47,7 @@ Azure Active Directory (Azure AD)、Microsoft ID、または Microsoft Graph API
 
 ## <a name="use-the-development-support-tools"></a>開発サポート ツールを使用する
 
-| ツール  | [説明]  |
+| ツール  | 説明  |
 |---------|---------|
 | [jwt.ms](https://jwt.ms) | ID またはアクセス トークンを貼り付けて、要求の名前と値をデコードする。 |
 | [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)| Microsoft Graph API に対して要求を行って応答を確認できるツール。 |
