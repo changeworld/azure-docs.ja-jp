@@ -38,7 +38,7 @@ Key Vault からシークレットを読み取るには、Key Vault を作成し
 Key Vault 参照の形式は `@Microsoft.KeyVault({referenceString})` です。`{referenceString}` は次のいずれかのオプションで置換されます。
 
 > [!div class="mx-tdBreakAll"]
-> | 参照文字列                                                            | [説明]                                                                                                                                                                                 |
+> | 参照文字列                                                            | 説明                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | SecretUri=_secretUri_                                                       | **SecretUri** は、バージョン (例: https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931 ) を含む、Key Vault におけるシークレットのフル データプレーン URI になります。  |
 > | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | **VaultName** は Key Vault リソースの名前になります。 **SecretName** はターゲット シークレットの名前になります。 **SecretVersion** は使用するシークレットのバージョンになります。 |
