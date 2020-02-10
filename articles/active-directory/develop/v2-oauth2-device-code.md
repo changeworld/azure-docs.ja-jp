@@ -60,7 +60,7 @@ scope=user.read%20openid%20profile
 
 ```
 
-| パラメーター | 条件 | [説明] |
+| パラメーター | 条件 | 説明 |
 | --- | --- | --- |
 | `tenant` | Required | /common、/consumers、または /organizations が可能です。  GUID またはフレンドリ名の形式でアクセス許可を要求するディレクトリ テナントを指定することもできます。  |
 | `client_id` | Required | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた**アプリケーション (クライアント) ID**。 |
@@ -70,7 +70,7 @@ scope=user.read%20openid%20profile
 
 正常な応答は、ユーザーがサインインするために必要な情報が含まれている JSON オブジェクトです。  
 
-| パラメーター | Format | [説明] |
+| パラメーター | Format | 説明 |
 | ---              | --- | --- |
 |`device_code`     | String | クライアントと承認サーバー間のセッションを検証するために使用される長い文字列。 クライアントはこのパラメーターを使用して、承認サーバーにアクセス トークンを要求します。 |
 |`user_code`       | String | ユーザーに表示される短い文字列。セカンダリ デバイス上のセッションを識別するために使用されます。|
@@ -99,7 +99,7 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 ```
 
-| パラメーター | Required | [説明]|
+| パラメーター | Required | 説明|
 | -------- | -------- | ---------- |
 | `tenant`  | Required | 初期要求で使用されているのと同じテナントまたはテナント エイリアス。 | 
 | `grant_type` | Required | `urn:ietf:params:oauth:grant-type:device_code` である必要があります。|
@@ -110,7 +110,7 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 
 デバイス コード フローはポーリング プロトコルなので、クライアントでは、ユーザーが認証を完了する前にエラーが発生することを想定しておく必要があります。  
 
-| エラー | [説明] | クライアント側の処理 |
+| エラー | 説明 | クライアント側の処理 |
 | ------ | ----------- | -------------|
 | `authorization_pending` | ユーザーはまだ認証を完了していませんが、フローを取り消していません。 | 少なくとも `interval` 秒後に要求を繰り返します。 |
 | `authorization_declined` | エンド ユーザーが承認要求を拒否しました。| ポーリングを停止し、未認証の状態に戻します。  |
@@ -132,7 +132,7 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 }
 ```
 
-| パラメーター | Format | [説明] |
+| パラメーター | Format | 説明 |
 | --------- | ------ | ----------- |
 | `token_type` | String| 常に "Bearer" です。 |
 | `scope` | スペース区切りの文字列 | アクセス トークンが返された場合、アクセス トークンが有効なスコープがリストされます。 |
