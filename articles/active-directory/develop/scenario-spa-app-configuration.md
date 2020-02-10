@@ -29,7 +29,7 @@ ms.locfileid: "76701911"
 
 Microsoft ID プラットフォームは、次の Microsoft Authentication Library (MSAL) ライブラリを提供し、業界で推奨されているセキュリティ プラクティスを使用して暗黙的なフローをサポートします。  
 
-| MSAL ライブラリ | [説明] |
+| MSAL ライブラリ | 説明 |
 |--------------|--------------|
 | ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | JavaScript または SPA フレームワーク (Angular、Vue.js、React.js) を使用して構築されたクライアント側 Web アプリで使用するためのプレーンな JavaScript ライブラリ |
 | ![MSAL Angular](media/sample-v2-code/logo_angular.png) <br/> [MSAL Angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | Angular フレームワークで構築されたシングル ページ アプリでの使用を簡素化するためのコア MSAL.js ライブラリのラッパー。 このライブラリはプレビュー段階であり、特定の Angular バージョンおよびブラウザーにおいて[既知の問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/issues?q=is%3Aopen+is%3Aissue+label%3Aangular)があります。 |
