@@ -31,7 +31,7 @@ IoT プラグ アンド プレイ プレビューを使用すると、基礎と�
 
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
-次のコマンドを実行して、ご使用のハブに対する _IoT ハブ接続文字列_を取得します (後で使用するためにメモします)。
+次のコマンドを実行して、ご使用のハブに対する "_IoT ハブ接続文字列_" を取得します (後で使用するためにメモします)。
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
@@ -53,7 +53,7 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
     mvn clean install -DskipTests
     ```
 
-1. _デバイス接続文字列_を構成します。
+1. "_デバイス接続文字列_" を構成します。
 
     ```cmd/sh
     set DIGITAL_TWIN_DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>
@@ -145,7 +145,7 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
             },
     ```
 
-1. _デバイス_ ターミナルにアクセスして、デバイスが更新プログラムを受信済みであることを確認します。
+1. "_デバイス_" ターミナルにアクセスして、デバイスが更新プログラムを受信済みであることを確認します。
 
     ```cmd/sh
     OnPropertyUpdate called: propertyName=brightness, reportedValue=null, desiredVersion=2, desiredValue={"value":"42"}
@@ -211,7 +211,7 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
     The returned PAYLOAD was
     ```
 
-1. _デバイス_ ターミナルにアクセスすると、コマンドが確認済みであることがわかります。
+1. "_デバイス_" ターミナルにアクセスすると、コマンドが確認済みであることがわかります。
 
     ```cmd/sh
     OnCommandReceived called: commandName=blink, requestId=<some ID value>, commandPayload="10"
