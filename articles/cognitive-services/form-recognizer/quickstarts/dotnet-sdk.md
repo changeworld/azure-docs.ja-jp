@@ -18,7 +18,7 @@ ms.locfileid: "75446489"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>クイック スタート:.NET 用 Form Recognizer クライアント ライブラリ
 
-.NET 用 Form Recognizer クライアント ライブラリの使用を開始します。 Form Recognizer は、機械学習テクノロジを使用して、フォーム ドキュメントからキーと値のペアおよびテーブル データを識別して抽出するコグニティブ サービスです。 Form Recognizer は、元のファイル内の関係を含む構造化データを出力します。 以下の手順に従って、SDK パッケージをインストールし、基本タスクのコード例を試してみましょう。
+.NET 用 Form Recognizer クライアント ライブラリの使用を開始します。 Form Recognizer は、機械学習テクノロジを使用して、フォーム ドキュメントからキーと値のペアおよびテーブル データを識別して抽出する Cognitive Services です。 Form Recognizer は、元のファイル内の関係を含む構造化データを出力します。 以下の手順に従って、SDK パッケージをインストールし、基本タスクのコード例を試してみましょう。
 
 .NET 用 Form Recognizer クライアント ライブラリは、次の目的で使用することができます。
 
