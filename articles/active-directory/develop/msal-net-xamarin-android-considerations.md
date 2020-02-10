@@ -141,6 +141,6 @@ var authResult = AcquireTokenInteractive(scopes)
 
 詳細とサンプルについては、次に示すサンプルの readme.md ファイルの「[Android Specific Considerations (Android に固有の考慮事項)](https://github.com/azure-samples/active-directory-xamarin-native-v2#android-specific-considerations)」の段落を参照してください。
 
-| サンプル | プラットフォーム | [説明] |
+| サンプル | プラットフォーム | 説明 |
 | ------ | -------- | ----------- |
 |[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin.iOS、Android、UWP | AADD v2.0 エンドポイント経由で MSA と Azure AD を認証し、結果のトークンで Microsoft Graph にアクセスするための MSAL の使用方法を示す、単純な Xamarin Forms アプリ。 <br>![トポロジ](media/msal-net-xamarin-android-considerations/topology.png) |
