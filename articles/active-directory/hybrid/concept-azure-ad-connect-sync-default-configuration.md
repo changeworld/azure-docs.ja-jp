@@ -148,7 +148,7 @@ SRE は、リソース キット ツールで、Azure AD Connect 同期と共に
 
 同期規則には、[説明]、[スコープ フィルター]、[結合規則]、[変換] という 4 つの構成セクションがあります。
 
-#### <a name="description"></a>[説明]
+#### <a name="description"></a>説明
 最初のセクションでは、名前や説明などの基本的な情報を提供します。
 
 ![Description tab in Sync rule editor](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
