@@ -278,7 +278,7 @@ Web アプリと Web API 用のトークン キャッシュの使用方法の例
 ## <a name="next-steps"></a>次のステップ
 次のサンプルでは、トークン キャッシュのシリアル化を示します。
 
-| サンプル | プラットフォーム | [説明]|
+| サンプル | プラットフォーム | 説明|
 | ------ | -------- | ----------- |
 |[active-directory-dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | デスクトップ (WPF) | Microsoft Graph API を呼び出す Windows デスクトップ .NET (WPF) アプリケーション。 ![トポロジ](media/msal-net-token-cache-serialization/topology.png)|
 |[active-directory-dotnet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | デスクトップ (コンソール) | 特に、[トークン キャッシュの移行](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)で、Azure AD v1.0 アプリケーション (ADAL.NET を使用) から Azure AD v2.0 アプリケーション (集約型のアプリケーションとも呼ばれる。MSAL.NET を使用) への移行を示す一連の Visual Studio ソリューション。|
