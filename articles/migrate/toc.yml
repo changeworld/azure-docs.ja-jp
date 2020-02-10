@@ -14,6 +14,8 @@
           href: common-questions-appliance.md
         - name: 検出、評価、依存関係の視覚化に関する質問
           href: common-questions-discovery-assessment.md
+        - name: サーバーの移行に関する質問
+          href: common-questions-server-migration.md
 - name: チュートリアル
   items:
     - name: VMware VM の評価と移行

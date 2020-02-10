@@ -64,7 +64,7 @@
           href: set-up-customize-master-image.md
         - name: マスター VHD イメージに Office をインストールする
           href: install-office-on-wvd-master-image.md
-    - name: セッション ホストを動的にスケーリングする
+    - name: セッション ホストを自動的にスケーリングする
       href: set-up-scaling-script.md
     - name: フィードをカスタマイズする
       href: customize-feed-for-virtual-desktop-users.md
