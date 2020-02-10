@@ -68,7 +68,7 @@ https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 
 共有シークレットを使用する場合、サービス間のアクセス トークン要求には、次のパラメーターが含まれてます。
 
-| パラメーター |  | [説明] |
+| パラメーター |  | 説明 |
 | --- | --- | --- |
 | `grant_type` | Required | トークン要求の種類。 JWT を使用した要求では、この値は `urn:ietf:params:oauth:grant-type:jwt-bearer` にする必要があります。 |
 | `client_id` | Required | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページで、アプリに割り当てられたアプリケーション (クライアント) ID。 |
@@ -100,7 +100,7 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 
 証明書を含むサービス間のアクセス トークン要求には、次のパラメーターが含まれています。
 
-| パラメーター |  | [説明] |
+| パラメーター |  | 説明 |
 | --- | --- | --- |
 | `grant_type` | Required | トークン要求の種類。 JWT を使用した要求では、この値は `urn:ietf:params:oauth:grant-type:jwt-bearer` にする必要があります。 |
 | `client_id` | Required |  [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページで、アプリに割り当てられたアプリケーション (クライアント) ID。 |
@@ -136,7 +136,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 成功応答は、次のパラメーターを含む JSON OAuth 2.0 応答です。
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | `token_type` | トークン タイプ値を指定します。 Microsoft ID プラットフォームでサポートされる種類は `Bearer` のみです。 ベアラー トークンの詳細については、「[OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)」(OAuth 2.0 承認フレームワーク: ベアラー トークンの使用法 (RFC 6750)) をご覧ください。 |
 | `scope` | トークンで付与されるアクセスのスコープ。 |
