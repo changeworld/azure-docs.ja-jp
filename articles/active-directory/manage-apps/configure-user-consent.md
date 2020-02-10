@@ -106,7 +106,7 @@ Azure AD PowerShell プレビュー モジュール ([AzureADPreview](https://do
 
 4. 設定値を理解します。 アプリがグループのデータにアクセスすることを許可できるユーザーを定義する設定値は、次の 2 つです。
 
-    | 設定       | 種類         | [説明]  |
+    | 設定       | 種類         | 説明  |
     | ------------- | ------------ | ------------ |
     | _EnableGroupSpecificConsent_   | Boolean |  グループ所有者がグループ固有のアクセス許可を付与できるかどうかを示すフラグです。 |
     | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Guid | _EnableGroupSpecificConsent_ が "True" に設定され、この値がグループのオブジェクト ID に設定されている場合、指定されているグループのメンバーは、所有しているグループにグループ固有のアクセス許可を付与する権限を与えられます。 |
