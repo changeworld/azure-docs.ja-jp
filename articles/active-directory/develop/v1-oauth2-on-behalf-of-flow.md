@@ -108,7 +108,7 @@ https://login.microsoftonline.com/<tenant>/oauth2/token
 
 共有シークレットを使用する場合、サービス間のアクセス トークン要求には、次のパラメーターが含まれてます。
 
-| パラメーター |  | [説明] |
+| パラメーター |  | 説明 |
 | --- | --- | --- |
 | grant_type |required | トークン要求の種類。 OBO 要求は JSON Web トークン (JWT) を使用するため、その値は **urn:ietf:params:oauth:grant-type:jwt-bearer** である必要があります。 |
 | assertion |required | 要求で使用されるアクセス トークンの値。 |
@@ -142,7 +142,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 証明書を含むサービス間のアクセス トークン要求には、次のパラメーターが含まれています。
 
-| パラメーター |  | [説明] |
+| パラメーター |  | 説明 |
 | --- | --- | --- |
 | grant_type |required | トークン要求の種類。 OBO 要求は JWT アクセス トークンを使用するため、その値は **urn:ietf:params:oauth:grant-type:jwt-bearer** である必要があります。 |
 | assertion |required | 要求で使用されるトークンの値。 |
@@ -180,7 +180,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 成功応答は、次のパラメーターを含む JSON OAuth 2.0 応答です。
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | token_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは **Bearer**タイプのみです。 ベアラー トークンの詳細については、「[OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)」(OAuth 2.0 承認フレームワーク: ベアラー トークンの使用法 (RFC 6750)) をご覧ください。 |
 | scope |トークンで付与されるアクセスのスコープ。 |
@@ -252,7 +252,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdW
 
 サービス間の SAML アサーション要求には、次のパラメーターが含まれています。
 
-| パラメーター |  | [説明] |
+| パラメーター |  | 説明 |
 | --- | --- | --- |
 | grant_type |required | トークン要求の種類。 JWT を使用する要求の場合、値は **urn:ietf:params:oauth:grant-type:jwt-bearer** である必要があります。 |
 | assertion |required | 要求で使用されるアクセス トークンの値。|
@@ -271,7 +271,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdW
 
 ### <a name="response-with-saml-assertion"></a>SAML アサーションの応答
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | token_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは **Bearer**タイプのみです。 ベアラー トークンの詳細については、「[OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)」(OAuth 2.0 承認フレームワーク: ベアラー トークンの使用法 (RFC 6750)) をご覧ください。 |
 | scope |トークンで付与されるアクセスのスコープ。 |
