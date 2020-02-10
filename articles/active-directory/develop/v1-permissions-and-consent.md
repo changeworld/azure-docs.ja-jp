@@ -60,7 +60,7 @@ Azure AD のアクセス許可には、ユーザー、管理者、またはア�
 > (Get-AzureADServicePrincipal -filter "DisplayName eq 'Microsoft Graph'").AppRoles
 > ```
 
-| プロパティ名 | [説明] | 例 |
+| プロパティ名 | 説明 | 例 |
 | --- | --- | --- |
 | `ID` | このアクセス許可を一意に識別する GUID 値です。 | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca |
 | `IsEnabled` | このアクセス許可が使用可能かどうかを示します。 | true |
