@@ -59,7 +59,7 @@ $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 
 ### <a name="default-health-probe-settings"></a>既定の正常性プローブの設定
 
-| プローブのプロパティ | Value | [説明] |
+| プローブのプロパティ | Value | 説明 |
 | --- | --- | --- |
 | プローブの URL |http://127.0.0.1:\<port\>/ |URL パス |
 | Interval |30 |次の正常性プローブが送信されるまでの秒数です。|
@@ -85,7 +85,7 @@ Application Gateway のすべてのインスタンスは、互いに独立して
 
 カスタム正常性プローブのプロパティの定義を次の表に示します。
 
-| プローブのプロパティ | [説明] |
+| プローブのプロパティ | 説明 |
 | --- | --- |
 | Name |プローブの名前。 この名前は、バックエンドの HTTP 設定でプローブを参照するために使用されます。 |
 | Protocol |プローブを送信するために使用するプロトコル。 プローブでは、バックエンドの HTTP 設定で定義されているプロトコルを使用します |
