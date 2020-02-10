@@ -182,6 +182,6 @@ MSAL.Net では[トークン キャッシュ](/dotnet/api/microsoft.identity.cli
 
 Azure AD B2C アプリケーション用に MSAL.NET を使用して対話形式でトークンを取得する詳細については、次のサンプルで提供されています。
 
-| サンプル | プラットフォーム | [説明]|
+| サンプル | プラットフォーム | 説明|
 |------ | -------- | -----------|
 |[active-directory-b2c-xamarin-native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS、Xamarin Android、UWP | MSAL.NET を使用して Azure AD B2C 経由でユーザーを認証し、結果として得られたトークンで Web API にアクセスする方法を示す簡単な Xamarin Forms アプリ。|
