@@ -31,11 +31,11 @@ Security Center のネットワーク レイヤー分析は、サンプルの [I
 
 ネットワーク構成によっては、Security Center が疑わしいネットワーク アクティビティに対してアラートを生成することを制限する場合があります。 Security Center でネットワーク アラートを生成するには、次のことを確認してください。
 
-- 仮想マシンにパブリック IP アドレスがある (または、パブリック IP アドレスを持つロード バランサー上にある)。
+- 仮想マシンにパブリック IP アドレスがある (または、仮想マシンがパブリック IP アドレスを持つロード バランサー上にある)。
 
 - 仮想マシンのネットワーク エグレス トラフィックが、外部 ID ソリューションによってブロックされていない。
 
-- 不審な通信が発生した時間全体で仮想マシンに同じ IP アドレスが割り当てられている。 これは、管理されたサービスの一部として作成された VM (例: AKS、Databricks) にも適用されます。
+- 不信な通信が発生した時間全体にわたって、仮想マシンに同じ IP アドレスが割り当てられている。 これは、管理サービスの一部として作成された VM (例: AKS、Databricks) にも適用されます。
 
 Azure ネットワーク レイヤー アラートの一覧については、[アラートのリファレンス表](alerts-reference.md#alerts-azurenetlayer)に関するページを参照してください。
 
@@ -44,7 +44,7 @@ Security Center でネットワーク関連のシグナルを使用して脅威�
 
 ## Azure 管理レイヤー (Azure Resource Manager) (プレビュー)<a name ="management-layer"></a>
 
-Azure Resource Manager に基づく Security Center の保護レイヤーは、現在、プレビュー段階です。
+Azure Resource Manager に基づく Security Center の保護レイヤーは、現在プレビュー段階です。
 
 Security Center では、Azure のコントロール プレーンと見なされる Azure Resource Manager イベントを使用することで、追加の保護レイヤーが提供されます。 Security Center では、Azure Resource Manager のレコードを分析することで、Azure サブスクリプション環境での異常な、または害を及ぼす可能性のある操作を検出します。
 
