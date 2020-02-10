@@ -31,6 +31,6 @@ Web API を呼び出すトークンを取得したら、アプリを運用環境
 
 独自の Web API から Web API を呼び出す方法の基本を確認したので、次のチュートリアルをご検討ください。このチュートリアルでは、Web API を呼び出す保護された Web API を構築するために使用されるコードについて説明しています。
 
-| サンプル | プラットフォーム | [説明] |
+| サンプル | プラットフォーム | 説明 |
 |--------|----------|-------------|
 | [active-directory-aspnetcore-webapi-tutorial-v2](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) | ASP.NET Core 2.2 Web API, Desktop (WPF) | ASP.NET Core 2.2 Web API が Microsoft Graph を呼び出します。これは、Microsoft ID プラットフォーム (v2.0) を使用して WPF アプリケーションから呼び出します。 |
