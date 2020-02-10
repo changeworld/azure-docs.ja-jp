@@ -37,7 +37,7 @@ Microsoft Authenticator アプリは次のような複数の方法で使用で�
 
 ## <a name="terminology"></a>用語
 
-| 期間|[説明]|
+| 期間|説明|
 | ----|-----------|
 | 2 要素認証 | わずか 2 種類の認証情報 (パスワードと PIN など) を特に使用しなければならない認証プロセスです。 Microsoft Authenticator アプリでは、標準の 2 要素認証とパスワードなしのサインインの両方がサポートされます。 |
 | Multi-Factor Authentication (MFA) | すべての 2 要素認証は多要素認証です。お客様の組織の要件に基づいて、"*少なくとも*" 2 種類の認証情報を使用することが求められます。 |
@@ -71,7 +71,7 @@ PIN を使用して認証プロセスを完了する場合、代わりにお客�
 
 ## <a name="in-this-section"></a>このセクションの内容
 
-| [アーティクル] | [説明] |
+| [アーティクル] | 説明 |
 | ------ | ------------ |
 | [アプリのダウンロードとインストール](user-help-auth-app-download-install.md) | Android および iOS が実行されている各デバイス用の Microsoft Authenticator アプリの入手場所、入手方法、およびインストール方法について説明します。 |
 | [職場または学校アカウントの追加](user-help-auth-app-add-work-school-account.md) | さまざまな職場または学校アカウントと個人アカウントを Microsoft Authenticator アプリに追加する方法について説明します。 |
