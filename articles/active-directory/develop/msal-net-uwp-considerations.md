@@ -63,7 +63,7 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execu
 ## <a name="next-steps"></a>次のステップ
 詳細は、以下の例に示されています。
 
-サンプル | プラットフォーム | [説明] 
+サンプル | プラットフォーム | 説明 
 |------ | -------- | -----------|
 |[active-directory-dotnet-native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | Azure AD v2.0 エンドポイントで認証されているユーザーの Microsoft Graph にアクセスする、msal.net を使用したユニバーサル Windows プラットフォームのクライアント アプリケーション。 <br>![トポロジ](media/msal-net-uwp-considerations/topology-native-uwp.png)|
 |[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin.iOS、Android、UWP | AAD v 2.0 エンドポイント経由で MSA と Azure AD を認証し、結果のトークンで Microsoft Graph にアクセスするための MSAL の使用方法を示す、単純な Xamarin Forms アプリ。 <br>![トポロジ](media/msal-net-uwp-considerations/topology-xamarin-native.png)|
