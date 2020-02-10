@@ -29,7 +29,7 @@ ms.locfileid: "76702217"
 
 次の Microsoft 認証ライブラリ (MSAL) では、デスクトップ アプリケーションがサポートされています。
 
-  Microsoft Authentication Library | [説明]
+  Microsoft Authentication Library | 説明
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 複数のプラットフォーム (Linux、Windows、macOS など) でのデスクトップ アプリケーションの作成をサポートします。
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | 複数のプラットフォームでのデスクトップ アプリケーションの作成をサポートします。
