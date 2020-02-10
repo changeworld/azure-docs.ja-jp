@@ -32,7 +32,7 @@ API Management には、現在、組み込みロールが 3 つ提供されて�
 
 次の表に、組み込みのロールについての簡単な説明を示します。 これらのロールは Azure ポータルや、Azure [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)、[REST API](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest) などのツールを使用して割り当てることができます。 組み込みロールを割り当てる方法の詳細については、[ロール割り当てを使用した Azure サブスクリプション リソースへのアクセス管理](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)に関するページを参照してください。
 
-| Role          | 読み取りアクセス<sup>[1]</sup> | 書き込みアクセス<sup>[2]</sup> | サービスの作成、削除、スケーリング、VPN、カスタム ドメインの構成 | 以前のパブリッシャー ポータルへのアクセス | [説明]
+| Role          | 読み取りアクセス<sup>[1]</sup> | 書き込みアクセス<sup>[2]</sup> | サービスの作成、削除、スケーリング、VPN、カスタム ドメインの構成 | 以前のパブリッシャー ポータルへのアクセス | 説明
 | ------------- | ---- | ---- | ---- | ---- | ---- 
 | API Management Service Contributor | ✓ | ✓ | ✓ | ✓ | スーパー ユーザー。 API Management のサービスとエンティティ (API やポリシーなど) への完全な CRUD アクセス権がある。 以前のパブリッシャー ポータルにアクセスできる。 |
 | API Management サービス リーダー | ✓ | | || API Management のサービスとエンティティへの読み取り専用アクセスがある。 |
