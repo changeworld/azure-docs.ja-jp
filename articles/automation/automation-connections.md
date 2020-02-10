@@ -35,7 +35,7 @@ Azure Automation では、次の 3 種類の組み込み接続を使用できま
 
 Windows PowerShell で Automation 接続を作成および管理するには、次の表のコマンドレットを使用します。 これらは、Automation Runbook および DSC 構成で使用できる [Azure PowerShell モジュール](/powershell/azure/overview) に付属しています。
 
-|コマンドレット|[説明]|
+|コマンドレット|説明|
 |:---|:---|
 |[Get-AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection)|接続を取得します。 接続のフィールドの値のハッシュ テーブルが含まれます。|
 |[New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection)|新しい接続を作成します。|
@@ -46,7 +46,7 @@ Windows PowerShell で Automation 接続を作成および管理するには、�
 
 次の表のアクティビティは、Runbook または DSC 構成で接続にアクセスするために使用されます。
 
-|Activities|[説明]|
+|Activities|説明|
 |---|---|
 |Get-AutomationConnection | 使用する接続を取得します。 接続のプロパティのハッシュ テーブルを返します。|
 
@@ -58,7 +58,7 @@ Windows PowerShell で Automation 接続を作成および管理するには、�
 
 次の表の関数を使用して、Python2 Runbook の接続にアクセスします。
 
-| Function | [説明] |
+| Function | 説明 |
 |:---|:---|
 | automationassets.get_automation_connection | 接続を取得します。 接続のプロパティでディクショナリを返します。 |
 
