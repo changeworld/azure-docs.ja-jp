@@ -97,7 +97,7 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 
 パラメーターを指定する必要はありません。 既定値が適用されます。
 
-| Name             | 種類  | [説明]  |Default  |
+| Name             | 種類  | 説明  |Default  |
 |------------------|-------|--------------|---------|
 | `Type`           | 列挙型  | 実行する処理の種類です。 この種類は、TMSL の [refresh コマンド](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl)の種類 (full、clearValues、calculate、dataOnly、automatic、defragment) と一致します。 add 型はサポートされていません。      |   automatic      |
 | `CommitMode`     | 列挙型  | オブジェクトがバッチでコミットされるかどうか、または完了する時間のみを決定します。 Mode には default、transactional、partialBatch が含まれています。  |  transactional       |
@@ -112,7 +112,7 @@ CommitMode は partialBatch と同じです。 これは、読み込みに何時
 
 ### <a name="status-values"></a>状態の値
 
-|ステータス値  |[説明]  |
+|ステータス値  |説明  |
 |---------|---------|
 |`notStarted`    |   操作はまだ開始されていません。      |
 |`inProgress`     |   操作は実行中です。      |
