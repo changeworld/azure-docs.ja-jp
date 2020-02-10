@@ -41,7 +41,7 @@ ms.locfileid: "76701332"
 
 このガイドでは、次のライブラリを使用します。
 
-|ライブラリ|[説明]|
+|ライブラリ|説明|
 |---|---|
 |[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|アプリケーションで認証に OpenIDConnect を使用できるようにするためのミドルウェア|
 |[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|アプリケーションで Cookie を使用してユーザー セッションを維持できるようにするためのミドルウェア|
@@ -425,7 +425,7 @@ Visual Studio でアプリケーションをテストするには、F5 キーを
 
 コントローラー ビューを参照した後は、ユーザーの基本プロパティを示す次の表を確認する必要があります。
 
-|プロパティ |Value |[説明] |
+|プロパティ |Value |説明 |
 |---|---|---|
 |**Name** |ユーザーのフルネーム | ユーザーの姓と名
 |**ユーザー名** |user<span>@domain.com</span> | ユーザーの識別に使用されるユーザー名|
