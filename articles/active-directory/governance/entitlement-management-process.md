@@ -33,7 +33,7 @@ ms.locfileid: "75422601"
 
 ![承認プロセスの図](./media/entitlement-management-process/request-process.png)
 
-| State | [説明] |
+| State | 説明 |
 | --- | --- |
 | 送信 | ユーザーが要求を送信します。 |
 | 承認保留中 | アクセス パッケージのポリシーが承認を必要とする場合、要求は承認保留中に移動します。 |
