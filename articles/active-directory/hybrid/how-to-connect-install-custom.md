@@ -37,7 +37,7 @@ Azure AD Connect のインストールを始める前に、必ず [Azure AD Conn
 
 ![必須コンポーネント](./media/how-to-connect-install-custom/requiredcomponents2.png)
 
-| オプションの構成 | [説明] |
+| オプションの構成 | 説明 |
 | --- | --- |
 | 既存の SQL Server を使用する |SQL Server 名とインスタンス名を指定することができます。 使用するデータベース サーバーが既にある場合は、このオプションを選択します。 SQL Server で参照が有効になっていない場合は、 **[インスタンス名]** に、インスタンス名、コンマ、ポート番号の順に入力してください。  次に、Azure AD Connect データベースの名前を指定します。  SQL 権限によって、新しいデータベースが作成されるか、SQL 管理者が事前にデータベースを作成する必要があるかどうかが決まります。  SQL SA 権限がある場合は、[既存のデータベースを使用したインストール方法](how-to-connect-install-existing-database.md)に関するページをご覧ください。  権限 (DBO) が委任されている場合は、「[SQL によって委任された管理者のアクセス許可を使用した Azure AD Connect のインストール](how-to-connect-install-sql-delegation.md)」をご覧ください。 |
 | 既存のサービス アカウントを使用する |既定では、同期サービスで使用する仮想サービス アカウントが Azure AD Connect によって使用されます。 リモート SQL サーバーを使用する場合、または認証が必要なプロキシを使用する場合は、**管理されたサービス アカウント**か、ドメイン内のサービス アカウントとパスワードが必要です。 このような場合は、使用するアカウントを入力します。 サービス アカウントのログインを作成するには、SQL の SA がインストールを実行してください。  「[Azure AD Connect: アカウントとアクセス許可](reference-connect-accounts-permissions.md#adsync-service-account)」を参照してください。 </br></br>最新のビルドでは、SQL 管理者が帯域外でデータベースのプロビジョニングを実行し、データベース所有者権限を持つ Azure AD Connect 管理者がインストールできます。  詳細については、「[Install Azure AD Connect using SQL delegated administrator permissions (SQL によって委任された管理者の権限を使用した Azure AD Connect のインストール)](how-to-connect-install-sql-delegation.md)」を参照してください。|
@@ -48,7 +48,7 @@ Azure AD Connect のインストールを始める前に、必ず [Azure AD Conn
 
 ![User Sign in](./media/how-to-connect-install-custom/usersignin4.png)
 
-| シングル サインオン オプション | [説明] |
+| シングル サインオン オプション | 説明 |
 | --- | --- |
 | パスワード ハッシュの同期 |ユーザーは、オンプレミス ネットワークで使用しているものと同じパスワードで、Office 365 などの Microsoft クラウド サービスにサインインできます。 ユーザーのパスワードはパスワード ハッシュとして Azure AD に同期され、クラウドで認証が行われます。 詳細については、[パスワード ハッシュの同期](how-to-connect-password-hash-synchronization.md)に関するページを参照してください。 |
 |パススルー認証|ユーザーは、オンプレミス ネットワークで使用しているものと同じパスワードで、Office 365 などの Microsoft クラウド サービスにサインインできます。  ユーザー パスワードはオンプレミスの Active Directory ドメイン コントローラーにパススルーされて検証されます。
@@ -79,7 +79,7 @@ Azure AD Connect では、Active Directory ドメイン サービスに接続す
 
 フォレスト名を入力し、 **[ディレクトリの追加]** をクリックすると、ポップアップ ダイアログが表示され、次のオプションの指定が求められます。
 
-| オプション | [説明] |
+| オプション | 説明 |
 | --- | --- |
 | 新しいアカウントを作成します | ディレクトリ同期中に Azure AD Connect が AD フォレストに接続するために必要な AD DS アカウントを Azure AD Connect ウィザードで作成する場合は、このオプションを選択します。 このオプションを選択した場合は、エンタープライズ管理者アカウントのユーザー名とパスワードを入力します。 指定したエンタープライズ管理者アカウントは、Azure AD Connect ウィザードで、必要な AD DS アカウントを作成するために使用されます。 ドメインの部分は NetBios または FQDN の形式で入力できます (FABRIKAM\administrator または fabrikam.com\administrator)。 |
 | 既存のアカウントを使用します | ディレクトリ同期中に Azure AD Connect が Azure AD Connect に接続する際に使用される既存の AD DS アカウントを指定する場合は、このオプションを選択します。 ドメインの部分は NetBios または FQDN の形式で入力できます (FABRIKAM\syncuser または fabrikam.com\syncuser)。 このアカウントには既定の読み取りアクセス許可が必要なだけなので、通常のユーザー アカウントを指定できます。 ただし、シナリオによっては、アクセス許可がさらに必要になることがあります。 詳細については、[Azure AD Connect アカウントとアクセス許可](reference-connect-accounts-permissions.md#create-the-ad-ds-connector-account)に関するページを参照してください。 |
@@ -127,7 +127,7 @@ Azure AD Connect では、Active Directory ドメイン サービスに接続す
 
 ![一意](./media/how-to-connect-install-custom/unique2.png)
 
-| 設定 | [説明] |
+| 設定 | 説明 |
 | --- | --- |
 | [ユーザーはフォレスト全体で 1 回だけ表されます](plan-connect-topologies.md#multiple-forests-single-azure-ad-tenant) |すべてのユーザーは、Azure AD の個々のオブジェクトとして作成されます。 オブジェクトは、メタバースに結合されません。 |
 | [メール属性](plan-connect-topologies.md#multiple-forests-single-azure-ad-tenant) |このオプションは、異なるフォレスト間でメール属性が同じ値である場合に、ユーザーと連絡先を結合します。 連絡先が GALSync を使用して作成されている場合に、このオプションを使用してください。 このオプションを選択した場合、メール属性が設定されていないユーザー オブジェクトは、Azure AD との間で同期されません。 |
@@ -138,7 +138,7 @@ Azure AD Connect では、Active Directory ドメイン サービスに接続す
 #### <a name="select-how-users-should-be-identified-with-azure-ad---source-anchor"></a>Azure AD でのユーザーの識別方法を選択する - ソース アンカー
 sourceAnchor 属性は、ユーザー オブジェクトの有効期間中に変更できない属性です。 オンプレミスのユーザーと Azure AD のユーザーをリンクするプライマリ キーです。
 
-| 設定 | [説明] |
+| 設定 | 説明 |
 | --- | --- |
 | ソース アンカーの管理を Azure に任せる | Azure AD に属性を選択させる場合は、このオプションを選択します。 このオプションを選択すると、Azure AD Connect ウィザードが sourceAnchor 属性選択ロジックを適用します。このロジックについては、「[Azure AD Connect: 設計概念」の「sourceAnchor としての ms-DS-ConsistencyGuid の使用](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)」を参照してください。 どの属性がソース アンカー属性として選択されたかは、カスタム インストールの完了後、ウィザードに表示されます。 |
 | 特有の属性 | sourceAnchor 属性として既存の AD 属性を指定する場合は、このオプションを選択します。 |
@@ -174,7 +174,7 @@ sourceAnchor 属性は、ユーザー オブジェクトの有効期間中に変
 
 
 
-| オプション機能 | [説明] |
+| オプション機能 | 説明 |
 | --- | --- |
 | Exchange ハイブリッドのデプロイ |Exchange ハイブリッド展開機能を利用すると、オンプレミスと Office 365 で Exchange メールボックスが共存できるようになります。 Azure AD Connect により、Azure AD の特定の[属性](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback)セットがオンプレミスのディレクトリに同期されます。 |
 | Exchange メールのパブリック フォルダー | Exchange メールのパブリック フォルダー機能を使用すると、メール対応のパブリック フォルダー オブジェクトをオンプレミスの Active Directory から Azure AD に同期することができます。 |
