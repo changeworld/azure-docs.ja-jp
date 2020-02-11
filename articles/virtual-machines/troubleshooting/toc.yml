@@ -6,6 +6,8 @@
       href: allocation-failure.md
     - name: クラシック デプロイの割り当ての失敗
       href: allocation-failure-classic.md
+    - name: 可用性セット
+      href: virtual-machines-availability-set-supportability.md
 - name: RDP
   href: rdp.md
   items:

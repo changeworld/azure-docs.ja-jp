@@ -10,28 +10,28 @@ metadata:
   author: cynthn
   ms.author: cynthn
   ms.date: 09/09/2019
-  ms.openlocfilehash: cf20801a8c1bf6c7ee9b2a7f62069c15388ffb74
-  ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+  ms.openlocfilehash: 8ff93dc3071a442f28878baa958d3583bc046b44
+  ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/20/2019
-  ms.locfileid: "71173761"
+  ms.lasthandoff: 02/11/2020
+  ms.locfileid: "77115567"
 landingContent:
 - title: 最新の機能
   linkLists:
   - linkListType: whats-new
     links:
-    - text: 専用ホストのプレビュー
+    - text: スポット VM
+      url: spot-vms.md
+    - text: 専用ホスト
       url: dedicated-hosts.md
-    - text: 近接通信配置グループのプレビュー
+    - text: 近接通信配置グループ
       url: proximity-placement-groups.md
-    - text: 一時ディスク
-      url: ephemeral-os-disks.md
-- title: 作業開始
+- title: はじめに
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Azure ポータル
+    - text: Azure portal
       url: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-quick-create-portal
     - text: Azure PowerShell
       url: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-quick-create-powershell
