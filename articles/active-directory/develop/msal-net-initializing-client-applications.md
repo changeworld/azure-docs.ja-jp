@@ -96,7 +96,7 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
 
 パブリック クライアント アプリケーション ビルダーまたは機密の高いクライアント アプリケーション ビルダーに設定できる修飾子は次のとおりです。
 
-|修飾子 | [説明]|
+|修飾子 | 説明|
 |--------- | --------- |
 |`.WithAuthority()` 7 overrides | アプリケーションの既定の機関を Azure AD 機関に設定します。可能な選択肢は、Azure Cloud、対象ユーザー、テナント (テナント ID、またはドメイン名)、または機関 URI を直接提供する、のいずれかです。|
 |`.WithAdfsAuthority(string)` | アプリケーションの既定の機関が ADFS 機関になるように設定します。|
@@ -115,7 +115,7 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
 
 Xamarin.iOS でパブリック クライアント アプリケーション ビルダーに設定できる修飾子は次のとおりです。
 
-|修飾子 | [説明]|
+|修飾子 | 説明|
 |--------- | --------- |
 |`.WithIosKeychainSecurityGroup()` | **Xamarin.iOS のみ**:iOS キー チェーンのセキュリティ グループを設定します (キャッシュの永続化のため)。|
 
@@ -123,7 +123,7 @@ Xamarin.iOS でパブリック クライアント アプリケーション ビ�
 
 機密性の高いクライアント アプリケーション ビルダーに設定できる修飾子は次のとおりです。
 
-|修飾子 | [説明]|
+|修飾子 | 説明|
 |--------- | --------- |
 |`.WithCertificate(X509Certificate2 certificate)` | Azure AD でアプリケーションを識別する証明書を設定します。|
 |`.WithClientSecret(string clientSecret)` | Azure AD でアプリケーションを識別する、クライアント シークレット (アプリ パスワード) を設定します。|

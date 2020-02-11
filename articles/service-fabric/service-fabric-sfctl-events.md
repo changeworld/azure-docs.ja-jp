@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI - sfctl イベント
 description: Service Fabric CLI sfctl イベントのコマンドについて説明します。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 35dfbdb3f8b84e797d35c8d7ec1020509f7e8b57
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 635bddef1a98d6ed2b112662d8c9c44fe65e9e32
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75466055"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906092"
 ---
 # <a name="sfctl-events"></a>sfctl イベント
 イベント ストアからイベントを取得します (EventStore サービスが既にインストールされている場合)。
@@ -19,7 +19,7 @@ EventStore システム サービスを追加するには、6.4 以降を実行�
 
 ## <a name="commands"></a>コマンド
 
-|command|[説明]|
+|command|説明|
 | --- | --- |
 | all-applications-list | すべてのアプリケーション関連のイベントを取得します。 |
 | all-nodes-list | すべてのノード関連のイベントを取得します。 |
@@ -40,7 +40,7 @@ EventStore システム サービスを追加するには、6.4 以降を実行�
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --end-time-utc   [必須] | 参照クエリの終了時刻 (ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 形式)。 |
 | --start-time-utc [必須] | 参照クエリの開始時刻 (ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 形式)。 |
@@ -51,7 +51,7 @@ EventStore システム サービスを追加するには、6.4 以降を実行�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
@@ -66,7 +66,7 @@ EventStore システム サービスを追加するには、6.4 以降を実行�
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --end-time-utc   [必須] | 参照クエリの終了時刻 (ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 形式)。 |
 | --start-time-utc [必須] | 参照クエリの開始時刻 (ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 形式)。 |
@@ -77,7 +77,7 @@ EventStore システム サービスを追加するには、6.4 以降を実行�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
@@ -92,7 +92,7 @@ EventStore システム サービスを追加するには、6.4 以降を実行�
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --end-time-utc   [必須] | 参照クエリの終了時刻 (ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 形式)。 |
 | --start-time-utc [必須] | 参照クエリの開始時刻 (ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 形式)。 |
@@ -103,7 +103,7 @@ EventStore システム サービスを追加するには、6.4 以降を実行�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
@@ -118,7 +118,7 @@ EventStore システム サービスを追加するには、6.4 以降を実行�
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --end-time-utc   [必須] | 参照クエリの終了時刻 (ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 形式)。 |
 | --start-time-utc [必須] | 参照クエリの開始時刻 (ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 形式)。 |
@@ -129,7 +129,7 @@ EventStore システム サービスを追加するには、6.4 以降を実行�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
@@ -144,7 +144,7 @@ EventStore システム サービスを追加するには、6.4 以降を実行�
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --application-id [必須] | アプリケーションの ID。 これは通常、"fabric\:" URI スキームのないアプリケーションの完全な名前です。 バージョン 6.0 以降では、階層名は "\~" 文字で区切られます。 たとえば、アプリケーション名が "fabric\:/myapp/app1" の場合、アプリケーション ID は、6.0 以降では "myapp\~app1" になり、それより前のバージョンでは "myapp/app1" になります。 |
 | --end-time-utc   [必須] | 参照クエリの終了時刻 (ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 形式)。 |
@@ -156,7 +156,7 @@ EventStore システム サービスを追加するには、6.4 以降を実行�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
@@ -171,7 +171,7 @@ EventStore システム サービスを追加するには、6.4 以降を実行�
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --end-time-utc   [必須] | 参照クエリの終了時刻 (ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 形式)。 |
 | --start-time-utc [必須] | 参照クエリの開始時刻 (ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 形式)。 |
@@ -182,7 +182,7 @@ EventStore システム サービスを追加するには、6.4 以降を実行�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
@@ -197,7 +197,7 @@ EventStore システム サービスを追加するには、6.4 以降を実行�
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --end-time-utc   [必須] | 参照クエリの終了時刻 (ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 形式)。 |
 | --node-name    [必須] | ノード名。 |
@@ -209,7 +209,7 @@ EventStore システム サービスを追加するには、6.4 以降を実行�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
@@ -224,7 +224,7 @@ EventStore システム サービスを追加するには、6.4 以降を実行�
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --end-time-utc   [必須] | 参照クエリの終了時刻 (ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 形式)。 |
 | --partition-id   [必須] | パーティションの ID。 |
@@ -236,7 +236,7 @@ EventStore システム サービスを追加するには、6.4 以降を実行�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
@@ -251,7 +251,7 @@ EventStore システム サービスを追加するには、6.4 以降を実行�
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --end-time-utc   [必須] | 参照クエリの終了時刻 (ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 形式)。 |
 | --partition-id   [必須] | パーティションの ID。 |
@@ -263,7 +263,7 @@ EventStore システム サービスを追加するには、6.4 以降を実行�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
@@ -278,7 +278,7 @@ EventStore システム サービスを追加するには、6.4 以降を実行�
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --end-time-utc   [必須] | 参照クエリの終了時刻 (ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 形式)。 |
 | --partition-id   [必須] | パーティションの ID。 |
@@ -291,7 +291,7 @@ EventStore システム サービスを追加するには、6.4 以降を実行�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
@@ -306,7 +306,7 @@ EventStore システム サービスを追加するには、6.4 以降を実行�
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --end-time-utc   [必須] | 参照クエリの終了時刻 (ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 形式)。 |
 | --service-id     [必須] | サービスの ID。 この ID は通常、"fabric\:" URI スキームのないサービスの完全な名前です。 バージョン 6.0 以降では、階層名は "\~" 文字で区切られます。 たとえば、サービス名が "fabric\:/myapp/app1/svc1" の場合、サービス ID は、6.0 以降では "myapp\~app1\~svc1" になり、それより前のバージョンでは "myapp/app1/svc1" になります。 |
@@ -318,7 +318,7 @@ EventStore システム サービスを追加するには、6.4 以降を実行�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |

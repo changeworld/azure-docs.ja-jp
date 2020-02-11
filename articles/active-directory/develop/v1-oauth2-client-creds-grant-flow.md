@@ -56,7 +56,7 @@ https://login.microsoftonline.com/<tenant id>/oauth2/token
 ### <a name="first-case-access-token-request-with-a-shared-secret"></a>最初のケース:共有シークレットを使ったアクセス トークン要求
 共有シークレットを使用する場合、サービス間のアクセス トークン要求には、次のパラメーターが含まれてます。
 
-| パラメーター |  | [説明] |
+| パラメーター |  | 説明 |
 | --- | --- | --- |
 | grant_type |required |要求されている付与の種類を指定します。 クライアント資格情報付与フローでは、値は **client_credentials** である必要があります。 |
 | client_id |required |呼び出し元の Web サービスの Azure AD クライアント ID を指定します。 呼び出し元アプリケーションのクライアント ID を調べるには、[Azure Portal](https://portal.azure.com) で **[Azure Active Directory]** をクリックし、 **[アプリの登録]** をクリックしてからアプリケーションをクリックします。 client_id は "*アプリケーション ID*" です |
@@ -77,7 +77,7 @@ grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&cli
 ### <a name="second-case-access-token-request-with-a-certificate"></a>2 番目のケース:証明書を使ったアクセス トークン要求
 証明書を含むサービス間のアクセス トークン要求には、次のパラメーターが含まれています。
 
-| パラメーター |  | [説明] |
+| パラメーター |  | 説明 |
 | --- | --- | --- |
 | grant_type |required |要求された応答のタイプを指定します。 クライアント資格情報付与フローでは、値は **client_credentials** である必要があります。 |
 | client_id |required |呼び出し元の Web サービスの Azure AD クライアント ID を指定します。 呼び出し元アプリケーションのクライアント ID を調べるには、[Azure Portal](https://portal.azure.com) で **[Azure Active Directory]** をクリックし、 **[アプリの登録]** をクリックしてからアプリケーションをクリックします。 client_id は "*アプリケーション ID*" です |
@@ -102,7 +102,7 @@ resource=https%3A%2F%contoso.onmicrosoft.com%2Ffc7664b4-cdd6-43e1-9365-c2e1c4e1b
 
 成功応答には、JSON OAuth 2.0 応答と共に次のパラメーターが含まれています。
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | access_token |要求されたアクセス トークン。 呼び出し元の Web サービスは、このトークンを使用して受信側の Web サービスに対する認証処理を行うことができます。 |
 | token_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは **Bearer**タイプのみです。 ベアラー トークンの詳細については、「[OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)」(OAuth 2.0 承認フレームワーク: ベアラー トークンの使用法 (RFC 6750)) をご覧ください。 |

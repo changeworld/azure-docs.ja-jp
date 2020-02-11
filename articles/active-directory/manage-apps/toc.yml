@@ -72,6 +72,8 @@
               href: howto-saml-token-encryption.md
             - name: エンドユーザーのポータル
               href: end-user-experiences.md
+    - name: クラウド アプリの可視性と制御
+      href: cloud-app-security.md
     - name: オンプレミス アプリ用のアプリケーション プロキシ
       items:
         - name: アプリケーション プロキシ

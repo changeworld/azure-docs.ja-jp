@@ -137,10 +137,10 @@
               href: /visualstudio/azure/vs-azure-tools-intellitrace-debug-published-cloud-services?toc=/azure/cloud-services/toc.json
         - name: クラウド サービスの割り当てエラー
           href: cloud-services-allocation-failures.md
-        - name: アプリケーションで TLS 1.2 がサポートされていない
-          href: applications-dont-support-TLS-1-2.md
         - name: クラウド サービス ロールがリサイクルされる一般的な原因
           href: cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md
+        - name: アプリケーションで TLS 1.2 がサポートされていない
+          href: applications-dont-support-tls-1-2.md
         - name: ロールに対する既定の一時フォルダーのサイズが小さすぎる
           href: cloud-services-troubleshoot-default-temp-folder-size-too-small-web-worker-role.md
         - name: 一般的なデプロイの問題

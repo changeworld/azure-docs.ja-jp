@@ -73,7 +73,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > 暗黙的フローを使用したサインインをテストするには、<a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize.. をクリックします。</a>サインイン後、ブラウザーは `https://localhost/myapp/` にリダイレクトされ、アドレス バーに `id_token` が含まれた状態になります。
 >
 
-| パラメーター |  | [説明] |
+| パラメーター |  | 説明 |
 | --- | --- | --- |
 | `tenant` | required |要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。 使用できる値は、`common`、`organizations`、`consumers` およびテナント識別子です。 詳細については、 [プロトコルの基礎](active-directory-v2-protocols.md#endpoints)に関するページを参照してください。 |
 | `client_id` | required | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページでアプリに割り当てられたアプリケーション (クライアント) ID。 |
@@ -103,7 +103,7 @@ GET https://localhost/myapp/#
 &state=12345
 ```
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | `access_token` |`response_type` に `token` が含まれる場合に含まれます。 アプリが要求したアクセス トークン。 アクセス トークンはデコードしないようにする必要があります。そうしないと、検証した場合に不透明な文字列として扱われます。 |
 | `token_type` |`response_type` に `token` が含まれる場合に含まれます。 常に `Bearer` になります。 |
@@ -122,7 +122,7 @@ error=access_denied
 &error_description=the+user+canceled+the+authentication
 ```
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | `error` |発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | `error_description` |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -171,7 +171,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 &scope=https%3A%2F%2Fgraph.windows.net%2Fdirectory.read
 ```
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | `access_token` |`response_type` に `token` が含まれる場合に含まれます。 この場合は、Microsoft Graph 用にアプリケーションが要求したアクセス トークンです。 アクセス トークンはデコードしないようにする必要があります。そうしないと、検証した場合に不透明な文字列として扱われます。 |
 | `token_type` | 常に `Bearer` になります。 |
@@ -190,7 +190,7 @@ error=user_authentication_required
 &error_description=the+request+could+not+be+completed+silently
 ```
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | `error` |発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | `error_description` |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -209,7 +209,7 @@ OpenID Connect `end_session_endpoint` を使用すると、アプリから Micro
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redirect_uri=https://localhost/myapp/
 ```
 
-| パラメーター |  | [説明] |
+| パラメーター |  | 説明 |
 | --- | --- | --- |
 | `tenant` |required |要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。 使用できる値は、`common`、`organizations`、`consumers` およびテナント識別子です。 詳細については、 [プロトコルの基礎](active-directory-v2-protocols.md#endpoints)に関するページを参照してください。 |
 | `post_logout_redirect_uri` | 推奨 | ログアウト完了後にユーザーが戻る URL。 この値は、アプリケーションに登録されているリダイレクト URI のいずれかと一致する必要があります。 一致しない場合、Microsoft ID プラットフォーム エンドポイントにより汎用メッセージが表示されます。 |

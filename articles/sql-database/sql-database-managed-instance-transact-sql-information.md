@@ -406,7 +406,7 @@ HDFS または Azure BLOB ストレージ内のファイルを参照する外部
 - スナップショットおよび双方向のレプリケーションの種類がサポートされています。 マージ レプリケーション、ピア ツー ピア レプリケーション、および更新可能サブスクリプションはサポートされていません。
 - [トランザクション レプリケーション](sql-database-managed-instance-transactional-replication.md)はマネージド インスタンスのパブリック プレビューで使用できますが、制約がいくつかあります。
     - すべての種類のレプリケーション参加者 (パブリッシャー、ディストリビューター、プル サブスクライバー、プッシュ サブスクライバー) をマネージド インスタンスに配置できますが、パブリッシャーとディストリビューターは両者ともクラウドに配置するか、または両者ともオンプレミスに配置する必要があります。
-    - マネージド インスタンスは、最新バージョンの SQL Server と通信できます。 詳細については、[サポートされているバージョンのマトリックス](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems)に関するページを参照してください。
+    - マネージド インスタンスは、最新バージョンの SQL Server と通信できます。 詳細については、[バージョンのサポート マトリックス](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems)を参照してください。
     - トランザクション レプリケーションには、いくつかの[追加のネットワーク要件](sql-database-managed-instance-transactional-replication.md#requirements)があります。
 
 トランザクション レプリケーションの構成の詳細については、次に関するチュートリアルを参照してください。
@@ -524,7 +524,7 @@ RESTORE ステートメントについては、[RESTORE ステートメント](/
   - db_ssisoperator
   
 > [!IMPORTANT]
-> 定義済みのロール名、スキーマ名、スキーマ所有者を顧客が変更すると、サービスの通常の動作に影響します。 通常のサービス操作を保証するために、これらに加えられた変更は検出されるとすぐに、または次の最新のサービス更新時に、事前に定義済みの値に戻されます。
+> 定義済みのロール名、スキーマ名、スキーマ所有者を顧客が変更すると、サービスの通常の動作に影響します。 通常のサービス動作を保証するために、これらに加えられた変更は検出されるとすぐに、または次の最新のサービス更新時に、事前に定義済みの値に戻されます。
 
 ### <a name="error-logs"></a>エラー ログ
 
@@ -532,13 +532,13 @@ RESTORE ステートメントについては、[RESTORE ステートメント](/
 
 ## <a name="Issues"></a> 既知の問題
 
-### <a name="sql-agent-roles-need-explicit-execute-permissions-for-non-sysadmin-logins"></a>SQL エージェント ロールには、非 sysadmin ログインに対する明示的な実行権限が必要です
+### <a name="sql-agent-roles-need-explicit-execute-permissions-for-non-sysadmin-logins"></a>SQL エージェント ロールには、sysadmin 以外のログインに対する明示的な EXECUTE 権限が必要です
 
 **日付:** 2019 年 12 月
 
-非 sysadmin のログインが [SQL エージェントの固定データベース ロール](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles)に追加されている場合、これらのログインが動作するために、明示的な実行権限を master ストアド プロシージャに付与する必要があるという問題があります。 この問題が発生した場合は、次のエラーメッセージ「オブジェクトで実行権限が拒否されました <object_name> (Microsoft SQL Server、エラー:229)」が表示されます。
+sysadmin 以外のログインが [SQL Agent の固定データベース ロール](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles)に追加されると、これらのログインを機能させるには、明示的な EXECUTE 権限を Master ストアド プロシージャに付与する必要があるという問題が存在します。 この問題が発生した場合は、次のエラーメッセージ「EXECUTE 権限がオブジェクト <object_name> で拒否されました (Microsoft SQL Server 、エラー:229)」が表示されます。
 
-**回避策**:次の SQL エージェントの固定データベース ロール:SQLAgentUserRole、SQLAgentReaderRole、または SQLAgentOperatorRole のいずれかにログインを追加した後、これらのロールに追加された各ログインに対して次の T-SQL スクリプトを実行して、一覧表示されているストアド プロシージャに明示的に実行権限を付与します。
+**回避策**:次の SQL エージェントの固定データベース ロール:SQLAgentUserRole、SQLAgentReaderRole、または SQLAgentOperatorRole のいずれかにログインを追加した後、これらのロールに追加された各ログインに対して次の T-SQL スクリプトを実行して、一覧表示されているストアド プロシージャに明示的に EXECUTE 権限を付与します。
 
 ```tsql
 USE [master]

@@ -1,5 +1,5 @@
 ---
-title: PowerShell サンプル - アプリケーション プロキシ アプリへのグループの割り当て
+title: PowerShell サンプル - アプリケーション プロキシ アプリにグループを割り当てる
 description: Azure Active Directory (Azure AD) アプリケーション プロキシ アプリケーションにグループを割り当てる PowerShell の例。
 services: active-directory
 author: msmimart
@@ -19,7 +19,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 12/25/2019
 ms.locfileid: "75476021"
 ---
-# <a name="assign-a-group-to-a-specific-azure-ad-application-proxy-application"></a>特定の Azure AD アプリケーション プロキシ アプリケーションへのグループの割り当て
+# <a name="assign-a-group-to-a-specific-azure-ad-application-proxy-application"></a>特定の Azure AD アプリケーション プロキシ アプリケーションにグループを割り当てる
 
 この PowerShell スクリプトの例では、Azure Active Directory (Azure AD) アプリケーション プロキシ アプリケーションに特定のグループを割り当てることができます。
 
@@ -39,7 +39,7 @@ ms.locfileid: "75476021"
 
 | command | メモ |
 |---|---|
-| [New-AzureADGroupAppRoleAssignment](https://docs.microsoft.com/powershell/module/AzureAD/New-azureadgroupapproleassignment?view=azureadps-2.0) | グループをアプリケーション ロールに割り当てます。 |
+| [New-AzureADGroupAppRoleAssignment](https://docs.microsoft.com/powershell/module/AzureAD/New-azureadgroupapproleassignment?view=azureadps-2.0) | アプリケーション ロールにグループを割り当てます。 |
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -38,5 +38,8 @@
     - name: Azure FarmBeats のトラブルシューティング
       href: troubleshoot-azure-farmbeats.md
 - name: リファレンス
-  items: null
-  href: references-for-azure-farmbeats.md
+  items:
+    - name: リファレンス
+      href: references-for-azure-farmbeats.md
+    - name: REST API
+      href: rest-api-in-azure-farmbeats.md

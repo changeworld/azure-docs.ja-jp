@@ -74,7 +74,7 @@ HDInsight クラスターでサービス タグを使い始める最も簡単な
 | フランス | フランス中部| HDInsight.FranceCentral |
 | 英国 | 英国南部 | HDInsight.UKSouth |
 | Azure Government | USDoD 中部   | HDInsight.USDoDCentral |
-| &nbsp; | 米国政府テキサス | HDInsight.USGovTexas |
+| &nbsp; | USGov テキサス | HDInsight.USGovTexas |
 | &nbsp; | USDoD 東部 | HDInsight.USDoDEast |
 
 ### <a name="use-multiple-regional-service-tags"></a>複数のリージョン サービス タグを使用する

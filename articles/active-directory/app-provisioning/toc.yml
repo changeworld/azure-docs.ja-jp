@@ -1,0 +1,107 @@
+- name: アプリケーションと人事のプロビジョニングに関するドキュメント
+  href: index.yml
+- name: 概要
+  expanded: true
+  items:
+    - name: アプリケーションのプロビジョニングとは
+      href: user-provisioning.md
+- name: チュートリアル
+  items:
+    - name: G Suite
+      href: /azure/active-directory/saas-apps/google-apps-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: ServiceNow
+      href: /azure/active-directory/saas-apps/servicenow-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: アマゾン ウェブ サービス (AWS) - ロール プロビジョニング
+      href: '/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-single-sign-ont?context=azure/active-directory/app-provisioning/context/app-provisioning-context'
+    - name: Workday
+      href: /azure/active-directory/saas-apps/workday-inbound-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: SAP SuccessFactors
+      href: /azure/active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: すべての統合ギャラリー アプリ
+      href: /azure/active-directory/saas-apps
+- name: 概念
+  expanded: true
+  items:
+    - name: アプリケーションのプロビジョニングのしくみ
+      href: how-provisioning-works.md
+    - name: アプリケーションのプロビジョニングのデプロイ計画
+      href: plan-auto-user-provisioning.md
+    - name: クラウド HR のプロビジョニングのデプロイ計画
+      href: plan-cloud-hr-provision.md
+- name: 操作方法ガイド
+  expanded: true
+  items:
+    - name: ギャラリー アプリのプロビジョニングを構成する
+      href: configure-automatic-user-provisioning-portal.md
+    - name: 属性マッピングを編集する
+      items:
+        - name: 属性マッピングのカスタマイズ
+          href: customize-application-attributes.md
+        - name: 属性マッピングの式の書き方
+          href: functions-for-customizing-application-data.md
+    - name: ユーザーとグループをスコープに含める、または除外する
+      items:
+        - name: プロビジョニングするユーザーまたはグループの範囲指定
+          href: define-conditional-rules-for-provisioning-user-accounts.md
+        - name: スコープ外のユーザーの削除のスキップ
+          href: skip-out-of-scope-deletions.md
+    - name: プロビジョニングの監視とレポート
+      items:
+        - name: プロビジョニングの状態とパフォーマンスの監視
+          href: application-provisioning-when-will-provisioning-finish-specific-user.md
+        - name: アプリ プロビジョニングのレポート
+          href: check-status-user-account-provisioning.md
+        - name: 構成のエクスポートとインポート
+          href: export-import-provisioning-configuration.md
+    - name: アプリケーションのプロビジョニングのトラブルシューティング
+      items:
+        - name: アプリ プロビジョニングのトラブルシューティング
+          href: application-provisioning-config-problem.md
+        - name: 検疫の状態
+          href: application-provisioning-quarantine-status.md
+        - name: 承認の問題 (管理者の資格情報を保存できない)
+          href: application-provisioning-config-problem-storage-limit.md
+        - name: ユーザーがプロビジョニングされない
+          href: application-provisioning-config-problem-no-users-provisioned.md
+        - name: 間違ったユーザーがプロビジョニングされている
+          href: application-provisioning-config-problem-wrong-users-provisioned.md
+        - name: ソース属性が存在しない
+          href: user-provisioning-sync-attributes-for-mapping.md
+        - name: プロビジョニング ジョブが遅い
+          href: application-provisioning-when-will-provisioning-finish.md
+        - name: プロビジョニング ログ
+          href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: SCIM エンドポイントの構築とプロビジョニングの構成
+      href: use-scim-to-provision-users-and-groups.md
+    - name: MS Graph を使用した構成の自動化
+      href: application-provisioning-configure-api.md
+- name: リファレンス
+  items:
+    - name: プロビジョニング方法の選択
+      href: isv-automatic-provisioning-multi-tenant-apps.md
+    - name: クラウド HR のプロビジョニング
+      items:
+        - name: SuccessFactors 属性のリファレンス
+          href: sap-successfactors-attribute-reference.md
+        - name: Workday 属性のリファレンス
+          href: workday-attribute-reference.md
+    - name: Azure AD Connect プロビジョニング エージェント
+      items:
+        - name: プロビジョニング エージェントのバージョン履歴
+          href: provisioning-agent-release-version-history.md
+- name: リソース
+  items:
+    - name: 開発者向けのサポート オプションとヘルプ オプション
+      href: /azure/active-directory/develop/developer-support-help-options
+    - name: Azure フィードバック フォーラム
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/active-directory'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=active-directory'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

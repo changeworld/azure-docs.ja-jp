@@ -202,7 +202,7 @@ Microsoft のエコシステムにおける高い権限には、*管理者によ
 ```
 
 
-| パラメーター     | 条件     | [説明]                                                                               |
+| パラメーター     | 条件     | 説明                                                                               |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
 | `tenant` | Required | アクセス許可を要求するディレクトリ テナント。 GUID またはフレンドリ名の形式で指定できます。または、例で示すように `common` で総称的に参照できます。 |
 | `client_id` | Required | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた**アプリケーション (クライアント) ID**。 |
@@ -221,7 +221,7 @@ Microsoft のエコシステムにおける高い権限には、*管理者によ
 GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
 ```
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | `tenant` | アプリケーションが要求したアクセス許可を GUID 形式で付与するディレクトリ テナント。 |
 | `state` | 要求に含まれ、かつトークンの応答として返される値。 任意のコンテンツの文字列を指定することができます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的に使用されます。 |
@@ -235,7 +235,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 GET http://localhost/myapp/permissions?error=permission_denied&error_description=The+admin+canceled+the+request
 ```
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | `error` | 発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | `error_description` | エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |

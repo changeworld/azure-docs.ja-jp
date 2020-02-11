@@ -88,7 +88,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &nonce=7362CAEA-9CA5-4B43-9BA3-34D7C303EBA7
 ```
 
-| パラメーター |  | [説明] |
+| パラメーター |  | 説明 |
 | --- | --- | --- |
 | tenant |required |要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。 使用できる値はテナント ID です。たとえば、`8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` または `common` (テナント独立のトークンの場合) です |
 | client_id |required |Azure AD への登録時にアプリに割り当てられたアプリケーション ID。 これは、Azure Portal で確認できます。 **[Azure Active Directory]** 、 **[アプリの登録]** の順にクリックし、アプリケーションを選択して、アプリケーション ページでアプリケーション ID を特定します。 |
@@ -115,7 +115,7 @@ Content-Type: application/x-www-form-urlencoded
 id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 ```
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | id_token |アプリが要求した `id_token` 。 この `id_token` を使用してユーザーの身元を確認し、そのユーザーとのセッションを開始することができます。 |
 | 状態 |要求に含まれ、トークンの応答としても返される値。 [クロスサイト リクエスト フォージェリ攻撃を防ぐ](https://tools.ietf.org/html/rfc6749#section-10.12)ために通常、ランダムに生成された一意の値が使用されます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的にも使用されます。 |
@@ -132,7 +132,7 @@ Content-Type: application/x-www-form-urlencoded
 error=access_denied&error_description=the+user+canceled+the+authentication
 ```
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | error |発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | error_description |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -141,7 +141,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 次の表で、エラー応答の `error` パラメーターで返される可能性のあるさまざまなエラー コードを説明します。
 
-| エラー コード | [説明] | クライアント側の処理 |
+| エラー コード | 説明 | クライアント側の処理 |
 | --- | --- | --- |
 | invalid_request |必要なパラメーターが不足しているなどのプロトコル エラーです。 |要求を修正し再送信します。 これは、開発エラーであり、通常は初期テスト中に発生します。 |
 | unauthorized_client |クライアント アプリケーションは、認証コードの要求を許可されていません。 |これは通常、クライアント アプリケーションが Azure AD に登録されていない、またはユーザーの Azure AD テナントに追加されていないときに発生します。 アプリケーションでは、アプリケーションのインストールと Azure AD への追加を求める指示をユーザーに表示できます。 |
@@ -177,7 +177,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 ```
 
-| パラメーター |  | [説明] |
+| パラメーター |  | 説明 |
 | --- | --- | --- |
 | post_logout_redirect_uri |推奨 |サインアウトの正常終了後にユーザーをリダイレクトする URL。この URL は、アプリ登録ポータルのアプリケーションに対する登録済みリダイレクト URI のいずれかと一致させる必要があります。  *post_logout_redirect_uri* が含まれていない場合、ユーザーに汎用メッセージが表示されます。 |
 
@@ -224,7 +224,7 @@ Content-Type: application/x-www-form-urlencoded
 id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&state=12345
 ```
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | id_token |アプリが要求した `id_token` 。 この `id_token` を使用してユーザーの身元を確認し、そのユーザーとのセッションを開始することができます。 |
 | コード |アプリが要求した authorization_code。 アプリは承認コードを使用して、対象リソースのアクセス トークンを要求します。 承認コードは有効期間が非常に短く、通常 10 分後には期限切れとなります。 |
@@ -242,7 +242,7 @@ Content-Type: application/x-www-form-urlencoded
 error=access_denied&error_description=the+user+canceled+the+authentication
 ```
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | error |発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | error_description |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |

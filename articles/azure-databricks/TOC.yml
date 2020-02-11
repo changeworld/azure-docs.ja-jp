@@ -1087,9 +1087,20 @@
             - name: Azure Data Lake Storage 資格情報のパススルーを有効にする
               href: /azure/databricks/administration-guide/access-control/credential-passthrough
               maintainContext: true
-        - name: ワークスペース ストレージを管理する
-          href: /azure/databricks/administration-guide/workspace-storage/storage
-          maintainContext: true
+        - name: ワークスペースのオブジェクトと動作の管理
+          items:
+            - name: ワークスペースの管理の概要
+              href: /azure/databricks/administration-guide/workspace/index
+              maintainContext: true
+            - name: ワークスペース ストレージを管理する
+              href: /azure/databricks/administration-guide/workspace/storage
+              maintainContext: true
+            - name: ワークスペースのセキュリティ ヘッダーの管理
+              href: /azure/databricks/administration-guide/workspace/security
+              maintainContext: true
+            - name: ノートブックの機能へのアクセスの管理
+              href: /azure/databricks/administration-guide/workspace/notebooks
+              maintainContext: true
         - name: クラスター構成を有効にする
           items:
             - name: クラスター構成の概要
@@ -1609,6 +1620,9 @@
             - name: プラットフォームのリリース ノート
               href: /azure/databricks/release-notes/product/index
               maintainContext: true
+            - name: 2020 年 2 月
+              href: /azure/databricks/release-notes/product/2020/february
+              maintainContext: true
             - name: 2020 年 1 月
               href: /azure/databricks/release-notes/product/2020/january
               maintainContext: true
@@ -1757,9 +1771,6 @@
                 - name: Databricks Runtime 5.2 ML
                   href: /azure/databricks/release-notes/runtime/5.2ml
                   maintainContext: true
-                - name: Databricks Runtime 3.5
-                  href: /azure/databricks/release-notes/runtime/3.5
-                  maintainContext: true
             - name: サポートされていない
               items:
                 - name: サポートされていないランタイム リリース
@@ -1792,6 +1803,9 @@
                 - name: Databricks Runtime 4.0
                   href: /azure/databricks/release-notes/runtime/4.0
                   maintainContext: true
+                - name: Databricks Runtime 3.5 LTS
+                  href: /azure/databricks/release-notes/runtime/3.5
+                  maintainContext: true
                 - name: Databricks Runtime 3.4
                   href: /azure/databricks/release-notes/runtime/3.4
                   maintainContext: true
@@ -1803,6 +1817,9 @@
               maintainContext: true
         - name: リリースの種類
           href: /azure/databricks/release-notes/release-types
+          maintainContext: true
+        - name: Azure Databricks のステータス ページ
+          href: /azure/databricks/status
           maintainContext: true
     - name: R 開発者ガイド
       href: /azure/machine-learning/r-developers-guide

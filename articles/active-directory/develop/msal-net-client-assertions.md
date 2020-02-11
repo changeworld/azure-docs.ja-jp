@@ -50,7 +50,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 Azure AD で想定される要求は次のとおりです。
 
-要求の種類 | Value | [説明]
+要求の種類 | Value | 説明
 ---------- | ---------- | ----------
 aud | https://login.microsoftonline.com/{tenantId}/v2.0 | "aud" (対象ユーザー) 要求では、JWT が意図する受信者 (ここでは Azure AD) を指定します。[RFC 7519、セクション 4.1.3] を参照してください。
 exp | 2019 年 6 月 27 日木曜日 15:04:17 GMT + 0200 (ロマンス夏時間) | "exp" (有効期限) 要求は、JWT の処理を受け入れることができなくなる時刻を指定します。 [RFC 7519、セクション 4.1.4] を参照してください。

@@ -59,7 +59,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 
 ここで、 `{tenant}` は次の 4 つの値のいずれかになります。
 
-| Value | [説明] |
+| Value | 説明 |
 | --- | --- |
 | `common` | 個人の Microsoft アカウントと Azure AD の職場/学校アカウントのどちらでもアプリケーションにサインインできます。 |
 | `organizations` | Azure AD の職場/学校アカウントを持つユーザーのみがアプリケーションにサインインできます。 |

@@ -31,7 +31,7 @@ Azure AD DS セキュリティ監査は、従来の AD DS ドメイン コント
 
 次の監査イベントのカテゴリを利用できます。
 
-| 監査のカテゴリ名 | [説明] |
+| 監査のカテゴリ名 | 説明 |
 |:---|:---|
 | アカウント ログオン|ドメイン コントローラーまたはローカルのセキュリティ アカウント マネージャー (SAM) アカウントのデータの認証に対する試行を監査します。</p>ログオンとログオフ ポリシーの設定、およびイベントは、特定のコンピューターへのアクセスの試行を追跡します。 このカテゴリの設定とイベントは、使用されるアカウントのデータベースに注目します。 このカテゴリには、次のサブカテゴリが含まれます。<ul><li>[資格情報の検証の監査](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-credential-validation)</li><li>[Kerberos 認証サービスの監査](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-authentication-service)</li><li>[Kerberos サービス チケット操作の監査](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-service-ticket-operations)</li><li>[その他のログオン/ログオフ イベントの監査](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li></ul>|
 | アカウント管理|ユーザーおよびコンピューター アカウントとグループの変更を監査します。 このカテゴリには、次のサブカテゴリが含まれます。<ul><li>[アプリケーション グループ管理の監査](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-group-management)</li><li>[コンピューター アカウント管理の監査](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-computer-account-management)</li><li>[配布グループ管理の監査](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-distribution-group-management)</li><li>[その他のアカウント管理の監査](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-account-management-events)</li><li>[セキュリティ グループ管理の監査](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-group-management)</li><li>[ユーザー アカウント管理の監査](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-user-account-management)</li></ul>|

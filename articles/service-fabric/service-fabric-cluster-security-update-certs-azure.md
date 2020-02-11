@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric クラスターでの証明書の管理
+title: Azure Service Fabric クラスターで証明書を管理する
 description: Service Fabric クラスターに対して新しい証明書を追加、証明書をロールオーバー、および証明書を削除する方法について説明します。
 ms.topic: conceptual
 ms.date: 11/13/2018

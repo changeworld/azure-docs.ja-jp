@@ -103,7 +103,7 @@ MSAL 2.x から、複数のアプリケーション間でトークン キャッ�
 
 詳細については、次に示すサンプルの readme.md ファイルの「[iOS Specific Considerations](https://github.com/azure-samples/active-directory-xamarin-native-v2#ios-specific-considerations)」(iOS に固有の考慮事項) の段落を参照してください。
 
-サンプル | プラットフォーム | [説明]
+サンプル | プラットフォーム | 説明
 ------ | -------- | -----------
 [https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin.iOS、Android、UWP | Azure AD V2.0 エンドポイント経由で MSA と Azure AD を認証し、結果のトークンで Microsoft Graph にアクセスするための MSAL の使用方法を示す、単純な Xamarin Forms アプリ。
 

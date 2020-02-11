@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure Dev Spaces のドキュメント
-summary: Azure Dev Spaces では、依存関係を複製したりモックしたりすることなく、Azure Kubernetes Service (AKS) のマイクロサービス アプリケーション全体をテストして反復的に開発できます。 Azure Dev Spaces を使用すると、共有 AKS クラスターでチームとの共同作業を行う際の負担と複雑さを軽減することができます。 また、AKS で直接コンテナーを実行してデバッグできます。
+summary: Azure Dev Spaces は AKS の拡張機能で、使用すると、大規模なアプリケーションのコンテキストで簡単にコードを実行およびデバッグできます。 干渉されることなく、コードをエンドツーエンドでテストしたり、クラスターで実行中のコードのブレークポイントにヒットしたりするほか、チーム メンバー間で開発クラスターを共有することができます。
 metadata:
   title: Azure Dev Spaces のドキュメント
-  description: Azure Dev Spaces では、依存関係を複製したりモックしたりすることなく、Azure Kubernetes Service (AKS) のマイクロサービス アプリケーション全体をテストして反復的に開発できます。 Azure Dev Spaces を使用すると、共有 AKS クラスターでチームとの共同作業を行う際の負担と複雑さを軽減することができます。 また、AKS で直接コンテナーを実行してデバッグできます。
+  description: Azure Dev Spaces は AKS の拡張機能で、使用すると、大規模なアプリケーションのコンテキストで簡単にコードを実行およびデバッグできます。 干渉されることなく、コードをエンドツーエンドでテストしたり、クラスターで実行中のコードのブレークポイントにヒットしたりするほか、チーム メンバー間で開発クラスターを共有することができます。
   services: azure-dev-spaces
   ms.service: azure-dev-spaces
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   ms.author: zarhoads
   manager: gwallace
   ms.date: 09/30/2019
-  ms.openlocfilehash: 96fe99c5eb2ef8600ee9cca1e63f9fc3451919c2
-  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.openlocfilehash: 8871b713806b7c80520d4b52112f84056d20bc26
+  ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/25/2019
-  ms.locfileid: "75438339"
+  ms.lasthandoff: 02/07/2020
+  ms.locfileid: "77057364"
 landingContent:
 - title: Azure Dev Spaces について
   linkLists:

@@ -49,7 +49,7 @@ Microsoft Graph などの API では、特定のリソースへのアクセス�
 
 このガイドでは、次の NuGet パッケージを使用します。
 
-|ライブラリ|[説明]|
+|ライブラリ|説明|
 |---|---|
 |[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library (MSAL.NET)|
 

@@ -25,6 +25,9 @@
         - name: 自動 ML の実験を作成する
           displayName: 'automl, automated, auto ml, portal, ui'
           href: tutorial-first-experiment-automated-ml.md
+        - name: 自動 ML を使用した需要予測 (自転車シェア データ)
+          displayName: 'automl, automated, auto ml, portal, ui'
+          href: tutorial-automated-ml-forecast.md
     - name: Python SDK
       items:
         - name: 初めての ML 実験を作成する

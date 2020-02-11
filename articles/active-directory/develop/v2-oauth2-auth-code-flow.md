@@ -63,7 +63,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > この要求を実行するには、以下のリンクをクリックしてください。 サインイン後、ブラウザーは `https://localhost/myapp/` にリダイレクトされ、アドレス バーに `code` が含まれた状態になります。
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fuser.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
-| パラメーター    | 必須/省略可能 | [説明] |
+| パラメーター    | 必須/省略可能 | 説明 |
 |--------------|-------------|--------------|
 | `tenant`    | required    | 要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。 使用できる値は、`common`、`organizations`、`consumers` およびテナント識別子です。 詳細については、 [プロトコルの基礎](active-directory-v2-protocols.md#endpoints)に関するページを参照してください。  |
 | `client_id`   | required    | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた**アプリケーション (クライアント) ID**。  |
@@ -92,7 +92,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 &state=12345
 ```
 
-| パラメーター | [説明]  |
+| パラメーター | 説明  |
 |-----------|--------------|
 | `code` | アプリが要求した authorization_code。 アプリは承認コードを使用して、対象リソースのアクセス トークンを要求します。 承認コードは有効期間が短く、通常 10 分後には期限切れとなります。 |
 | `state` | 要求に state パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 要求と応答に含まれる状態値が同一であることをアプリ側で確認する必要があります。 |
@@ -107,7 +107,7 @@ error=access_denied
 &error_description=the+user+canceled+the+authentication
 ```
 
-| パラメーター | [説明]  |
+| パラメーター | 説明  |
 |----------|------------------|
 | `error`  | 発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | `error_description` | 認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -116,7 +116,7 @@ error=access_denied
 
 次の表で、エラー応答の `error` パラメーターで返される可能性のあるさまざまなエラー コードを説明します。
 
-| エラー コード  | [説明]    | クライアント側の処理   |
+| エラー コード  | 説明    | クライアント側の処理   |
 |-------------|----------------|-----------------|
 | `invalid_request` | 必要なパラメーターが不足しているなどのプロトコル エラーです。 | 要求を修正し再送信します。 これは、開発エラーであり、通常は初期テスト中に発生します。 |
 | `unauthorized_client` | クライアント アプリケーションは、承認コードの要求を許可されていません。 | 通常、このエラーは、クライアント アプリケーションが Azure AD に登録されていない、またはユーザーの Azure AD テナントに追加されていないときに発生します。 アプリケーションでは、アプリケーションのインストールと Azure AD への追加を求める指示をユーザーに表示できます。 |
@@ -150,7 +150,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > [!TIP]
 > を必ず置き換えてください)。 (`code` を置き換えるのを忘れないでください) [![Postman でこの要求を実行してみる](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
-| パラメーター  | 必須/省略可能 | [説明]     |
+| パラメーター  | 必須/省略可能 | 説明     |
 |------------|-------------------|----------------|
 | `tenant`   | required   | 要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。 使用できる値は、`common`、`organizations`、`consumers` およびテナント識別子です。 詳細については、 [プロトコルの基礎](active-directory-v2-protocols.md#endpoints)に関するページを参照してください。  |
 | `client_id` | required  | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページでアプリに割り当てられたアプリケーション (クライアント) ID。 |
@@ -176,7 +176,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 }
 ```
 
-| パラメーター     | [説明]   |
+| パラメーター     | 説明   |
 |---------------|------------------------------|
 | `access_token`  | 要求されたアクセス トークン。 アプリはこのトークンを使用して、保護されたリソース (Web API など) に対し、本人性を証明することができます。  |
 | `token_type`    | トークン タイプ値を指定します。 Azure AD でサポートされるのは Bearer タイプのみです。 |
@@ -202,7 +202,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 }
 ```
 
-| パラメーター         | [説明]    |
+| パラメーター         | 説明    |
 |-------------------|----------------|
 | `error`       | 発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | `error_description` | 認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -213,7 +213,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 ### <a name="error-codes-for-token-endpoint-errors"></a>トークン エンドポイント エラーのエラー コード
 
-| エラー コード         | [説明]        | クライアント側の処理    |
+| エラー コード         | 説明        | クライアント側の処理    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | 必要なパラメーターが不足しているなどのプロトコル エラーです。 | 要求を修正し再送信します。   |
 | `invalid_grant`    | 承認コードまたは PKCE コード検証機能が無効か、有効期限切れです。 | `/authorize` エンドポイントに対する新しい要求を試し、code_verifier パラメーターが正しいことを確認します。  |
@@ -263,7 +263,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > を必ず置き換えてください)。 (`refresh_token` を置き換えるのを忘れないでください) [![Postman でこの要求を実行してみる](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 > 
 
-| パラメーター     |                | [説明]        |
+| パラメーター     |                | 説明        |
 |---------------|----------------|--------------------|
 | `tenant`        | required     | 要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。 使用できる値は、`common`、`organizations`、`consumers` およびテナント識別子です。 詳細については、 [プロトコルの基礎](active-directory-v2-protocols.md#endpoints)に関するページを参照してください。   |
 | `client_id`     | required    | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた**アプリケーション (クライアント) ID**。 |
@@ -286,7 +286,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
     "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctOD...",
 }
 ```
-| パラメーター     | [説明]         |
+| パラメーター     | 説明         |
 |---------------|-------------------------------------------------------------|
 | `access_token`  | 要求されたアクセス トークン。 アプリはこのトークンを使用して、保護されたリソース (Web API など) に対し、本人性を証明することができます。 |
 | `token_type`    | トークン タイプ値を指定します。 Azure AD でサポートされるのは Bearer タイプのみです。 |
@@ -310,7 +310,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 }
 ```
 
-| パラメーター         | [説明]                                                                                        |
+| パラメーター         | 説明                                                                                        |
 |-------------------|----------------------------------------------------------------------------------------------------|
 | `error`           | 発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | `error_description` | 認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。           |

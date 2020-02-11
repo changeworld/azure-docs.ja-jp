@@ -1,5 +1,5 @@
 ---
-title: Service Fabric Mesh のための Windows 開発環境をセットアップする
+title: Service Fabric Mesh 用の Windows 開発環境を設定する
 description: Windows 開発環境を設定して、Service Fabric Mesh アプリケーションを作成し、Azure Service Fabric Mesh にデプロイします。
 author: dkkapur
 ms.author: dekapur

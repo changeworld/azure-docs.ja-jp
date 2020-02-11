@@ -1,5 +1,5 @@
 ---
-title: .NET でのセキュリティで保護された TLS を有効にする
+title: .NET を使用してセキュリティで保護された TLS を有効にする
 titleSuffix: Azure Storage
 description: Azure Storage 用の .NET クライアント ライブラリを使用して TLS 1.2 を有効にする方法について説明します。
 services: storage

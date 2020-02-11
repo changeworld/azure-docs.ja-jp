@@ -90,7 +90,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
    **要求ヘッダー**
 
-   |要求ヘッダー  |[説明]  |
+   |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。 | 
@@ -185,7 +185,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
    **要求ヘッダー**
 
-   |要求ヘッダー  |[説明]  |
+   |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。 | 
@@ -218,7 +218,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
    **要求ヘッダー**
 
-   |要求ヘッダー  |[説明]  |
+   |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。 |
@@ -252,7 +252,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
    **要求ヘッダー**
 
-   |要求ヘッダー  |[説明]  |
+   |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。 | 
@@ -296,7 +296,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
    **要求ヘッダー**
 
-   |要求ヘッダー  |[説明]  |
+   |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。 | 
@@ -353,7 +353,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
    **要求ヘッダー**
 
-   |要求ヘッダー  |[説明]  |
+   |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。 | 
@@ -440,7 +440,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
    **要求ヘッダー**
 
-   |要求ヘッダー  |[説明]  |
+   |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。 |
@@ -535,7 +535,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
    **要求ヘッダー**
 
-   |要求ヘッダー  |[説明]  |
+   |要求ヘッダー  |説明  |
    |---------|---------|
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。 |   
  
@@ -556,7 +556,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
    **要求ヘッダー**
 
-   |要求ヘッダー  |[説明]  |
+   |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。 | 
@@ -588,7 +588,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
    **要求ヘッダー**
 
-   |要求ヘッダー  |[説明]  |
+   |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。 | 
@@ -624,7 +624,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
    **要求ヘッダー**
 
-   |要求ヘッダー  |[説明]  |
+   |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。 | 
@@ -663,7 +663,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
     **要求ヘッダー**
 
-   |要求ヘッダー  |[説明]  |
+   |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。 | 
@@ -702,7 +702,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
    **要求ヘッダー**
 
-   |要求ヘッダー  |[説明]  |
+   |要求ヘッダー  |説明  |
    |---------|---------|
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。 |
    
@@ -724,7 +724,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
    **要求ヘッダー**
 
-   |要求ヘッダー  |[説明]  |
+   |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。 | 
@@ -756,7 +756,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
    **要求ヘッダー**
 
-   |要求ヘッダー  |[説明]  |
+   |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。 | 
@@ -786,7 +786,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 **要求ヘッダー**
 
-|要求ヘッダー  |[説明]  |
+|要求ヘッダー  |説明  |
 |---------|---------|
 |*Content-Type*     | 必須。 `application/json` を設定します。        |
 |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。 | 
@@ -813,7 +813,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 **要求ヘッダー**
 
-|要求ヘッダー  |[説明]  |
+|要求ヘッダー  |説明  |
 |---------|---------|
 |*Content-Type*     | 必須。 `application/json` を設定します。        |
 |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。 | 

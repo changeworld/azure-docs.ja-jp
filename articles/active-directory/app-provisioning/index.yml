@@ -1,0 +1,67 @@
+### YamlMime:Landing
+title: アプリケーションと人事のプロビジョニングに関するドキュメント
+summary: Azure Active Directory のアプリ プロビジョニングを使用すると、所有するクラウド (SaaS) アプリで自動的にユーザー ID を作成して管理することができます。 Azure AD では、クラウドベースの人事 (HR) アプリケーションでのプロビジョニングも提供します。 クイックスタート、チュートリアル、ガイダンスを使用してクラウドでのアプリと HR のプロビジョニングを管理、デプロイする方法について説明します。
+metadata:
+  title: アプリケーションのプロビジョニングに関するドキュメント
+  description: Azure Active Directory のアプリ プロビジョニングを使用すると、所有するクラウド (SaaS) アプリで自動的にユーザー ID を作成して管理することができます。 Azure AD では、クラウドベースの人事 (HR) アプリケーションでのプロビジョニングも提供します。 クイックスタート、チュートリアル、ガイダンスを使用してクラウドでのアプリと HR のプロビジョニングを管理、デプロイする方法について説明します。
+  ms.service: active-directory
+  ms.subservice: app-mgmt
+  ms.workload: identity
+  ms.topic: landing-page
+  ms.date: 02/06/2020
+  author: msmimart
+  ms.author: mimart
+  manager: celested
+  ms.openlocfilehash: 02d9ee235de798e0c6095e0cbf60c08eabec53cd
+  ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 02/07/2020
+  ms.locfileid: "77065503"
+landingContent:
+- title: ユーザーとグループをクラウド アプリにプロビジョニングする
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: アプリケーションのプロビジョニングとは
+      url: user-provisioning.md
+    - text: プロビジョニングのしくみ
+      url: how-provisioning-works.md
+  - linkListType: tutorial
+    links:
+    - text: SAP Cloud Platform Identity Authentication のプロビジョニング
+      url: /azure/active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - text: Oracle Fusion ERP のプロビジョニング
+      url: /azure/active-directory/saas-apps/oracle-fusion-erp-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - text: Atlassian Cloud のプロビジョニング
+      url: /azure/active-directory/saas-apps/atlassian-cloud-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+  - linkListType: how-to-guide
+    links:
+    - text: ギャラリー アプリを追加しますか? アプリへのプロビジョニングを構成する
+      url: configure-automatic-user-provisioning-portal.md
+    - text: 属性マッピングのカスタマイズ
+      url: customize-application-attributes.md
+    - text: スコープ フィルターの使用
+      url: define-conditional-rules-for-provisioning-user-accounts.md
+- title: プロビジョニングに SCIM を使用してアプリを開発する
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: SCIM を使用したプロビジョニング (ID 標準のブログ)
+      url: https://techcommunity.microsoft.com/t5/identity-standards-blog/provisioning-with-scim-getting-started/ba-p/880010
+  - linkListType: how-to-guide
+    links:
+    - text: アプリを開発する場合に 自動プロビジョニングへの SCIM の使用
+      url: use-scim-to-provision-users-and-groups.md
+- title: クラウド HR のインバウンド プロビジョニングの管理
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: クラウド HR ユーザー プロビジョニングのデプロイ計画
+      url: plan-cloud-hr-provision.md
+  - linkListType: tutorial
+    links:
+    - text: Workday のプロビジョニング
+      url: /azure/active-directory/saas-apps/workday-inbound-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - text: SAP SuccessFactors のプロビジョニング
+      url: /azure/active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context

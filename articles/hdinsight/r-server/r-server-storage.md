@@ -23,7 +23,7 @@ HDInsight 上の ML Services には、分析結果を含んだオブジェクト
 - [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)
 - [Azure File Storage](https://azure.microsoft.com/services/storage/files/)
 
-ご自身の HDInsight クラスターで、複数の Azure ストレージ アカウント (またはコンテナー) にアクセスすることもできます。 Azure File Storage は、エッジ ノード用としての利便性に優れたデータ ストレージです。このストレージを選択した場合、Azure storage ファイル共有を Linux ファイル システムなどにマウントすることができます。 ただし Azure ファイル共有は、サポートされている オペレーティング システム (Windows や Linux など) を使用している任意のシステムでマウントし、使用することができます。
+ご自身の HDInsight クラスターで、複数の Azure ストレージ アカウント (またはコンテナー) にアクセスすることもできます。 Azure File Storage は、エッジ ノード用としての利便性に優れたデータ ストレージ オプションです。このストレージを選択した場合、Azure Storage ファイル共有を Linux ファイル システムなどにマウントすることができます。 ただし Azure ファイル共有は、サポートされている オペレーティング システム (Windows や Linux など) を使用している任意のシステムでマウントし、使用することができます。
 
 HDInsight で Apache Hadoop クラスターを作成するときに、**Azure storage** アカウントまたは **Data Lake Storage** のどちらかを指定します。 そのアカウントの特定のストレージ コンテナーが、作成したクラスターのファイル システム (Hadoop 分散ファイル システムなど) を保持します。 詳しい情報とガイダンスについては、次のドキュメントを参照してください。
 
@@ -124,7 +124,7 @@ HDInsight クラスターに関連付けられている Azure Active Directory (
 
 サービス プリンシパルに名前を付けてパスワードを設定したら、 **[ADLS アクセスを管理する]** をクリックして、サービス プリンシパルをご自身の Data Lake Storage と関連付けます。
 
-また、クラスター作成後に 1 つ以上の Data Lake storage アカウントへのクラスター アクセスを追加することもできます。 そのためには、Data Lake Storage の Azure portal エントリを開き、 **[データ エクスプローラー]、[アクセス]、[追加]** の順に移動します。
+また、クラスター作成後に 1 つ以上の Data Lake ストレージ アカウントへのクラスター アクセスを追加することもできます。 そのためには、Data Lake Storage の Azure portal エントリを開き、 **[データ エクスプローラー]、[アクセス]、[追加]** の順に移動します。
 
 ### <a name="how-to-access-data-lake-storage-gen1-from-ml-services-on-hdinsight"></a>HDInsight で ML Services から Data Lake Storage Gen1 にアクセスする方法
 

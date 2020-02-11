@@ -31,7 +31,7 @@ Azure Active Directory (Azure AD) は、各認証フローを処理する際に�
 ## <a name="claims-in-saml-tokens"></a>SAML トークンの要求
 
 > [!div class="mx-codeBreakAll"]
-> | Name | 同等の JWT 要求 | [説明] | 例 |
+> | Name | 同等の JWT 要求 | 説明 | 例 |
 > | --- | --- | --- | ------------|
 > |対象ユーザー | `aud` |トークンの対象となる受信者。 トークンを受信するアプリケーションは、対象ユーザーの値が正しいことを検証し、異なる対象ユーザー向けのトークンをすべて拒否する必要があります。 | `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>`  |
 > | 認証のインスタント | |認証が行われた日時を記録します。 | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | 

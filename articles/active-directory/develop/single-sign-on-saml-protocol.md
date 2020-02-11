@@ -46,7 +46,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 </samlp:AuthnRequest>
 ```
 
-| パラメーター |  | [説明] |
+| パラメーター |  | 説明 |
 | --- | --- | --- |
 | id | Required | Azure AD はこの属性を使用して、返される応答の `InResponseTo` 属性を設定します。 ID の 1 文字目に数字を使用することはできないので、一般的な方法としては、GUID の文字列表現の前に "id" のような文字列を付加します。 たとえば、 `id6c1c178c166d486687be4aaf5e482730` は有効な ID です。 |
 | Version | Required | このパラメーターは **2.0** に設定する必要があります。 |

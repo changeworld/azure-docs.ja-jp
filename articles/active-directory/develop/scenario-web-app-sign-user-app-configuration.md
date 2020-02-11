@@ -30,7 +30,7 @@ ms.locfileid: "76701605"
 <!-- This section can be in an include for Web App and Web APIs -->
 Web アプリ (および Web API) を保護するために使用されるライブラリは次のとおりです。
 
-| プラットフォーム | ライブラリ | [説明] |
+| プラットフォーム | ライブラリ | 説明 |
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_net.png) | [Identity Model Extensions for .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | ASP.NET および ASP.NET Core によって直接使用される .Net 用 Microsoft ID モデル拡張機能は、.NET Framework と .NET Core の両方で実行される DLL のセットを提案します。 ASP.NET または ASP.NET Core Web アプリから、**TokenValidationParameters** クラスを使用してトークン検証を制御できます (特に、一部のパートナー シナリオで)。 |
 | ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Java Web アプリケーションのサポート |

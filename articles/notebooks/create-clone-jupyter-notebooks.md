@@ -1,6 +1,6 @@
 ---
 title: Jupyter ノートブックを作成および複製する - Azure Notebooks プレビュー
-description: Azure Notebooks プレビュー プロジェクトでは、別のソースから新規作成または複製できるノートブックや関連するファイルのコレクションが管理されます。
+description: Azure Notebooks プレビュー プロジェクトでは、別のソースから新規作成または複製できるノートブックや関連するファイルのコレクションを管理できます。
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.openlocfilehash: b29ff336c09a3bbf05a57c8a3a503b1875b76e54

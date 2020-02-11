@@ -33,7 +33,7 @@ ms.locfileid: "75560526"
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
-## <a name="description"></a>[説明]
+## <a name="description"></a>説明
 
 Microsoft Azure Active Directory アカウントと Atlassian JIRA サーバーを使用して、シングル サインオンを有効にします。 これにより、組織のすべてのユーザーが、Azure AD の資格情報を使用して JIRA アプリケーションにサインインできます。 このプラグインは、フェデレーションに SAML 2.0 を使用します。
 

@@ -19,7 +19,7 @@ ms.locfileid: "76263153"
 
 Azure Databricks の既定のデプロイでは、Databricks によって管理される新しい仮想ネットワークが作成されます。 このクイック スタートでは、その代わりに自分の仮想ネットワーク内に Azure Databricks ワークスペースを作成する方法について説明します。 そのワークスペース内に Apache Spark クラスターも作成します。 
 
-自分の仮想ネットワーク内に Azure Databricks ワークスペースを作成することを選択する理由の詳細については、[お使いの Azure 仮想ネットワークに Azure Databricks をデプロイする (VNet インジェクション)] (/databricks/administration-guide/cloud-configurations/azure/vnet-inject) を参照してください。
+自分の仮想ネットワーク内に Azure Databricks ワークスペースを作成することを選択する理由の詳細については、[お使いの Azure 仮想ネットワークに Azure Databricks をデプロイする (VNet インジェクション)](/databricks/administration-guide/cloud-configurations/azure/vnet-inject) を参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/databricks/)を作成してください。
 

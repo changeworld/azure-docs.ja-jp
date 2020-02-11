@@ -25,7 +25,7 @@ API Management のポリシーは、Azure Portal がその構成を通じて API
 
 それぞれの API Management サービスインスタンスには、サービスインスタンスに対してグローバルなキーと値のペアのコレクションがあり、これは名前付きの値と呼ばれます。 コレクション内の項目の数に制限はありません。 名前付きの値を利用し、すべての API の構成とポリシーを対象に、定数文字列値を管理できます。 各名前付きの値は、次の属性を持つことができます。
 
-| Attribute      | 種類            | [説明]                                                                                                                            |
+| Attribute      | 種類            | 説明                                                                                                                            |
 | -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | `Display name` | string          | ポリシー内の名前付きの値を参照するために使用されます。 1 から 256 文字の文字列。 文字、数字、ドット、ダッシュのみを使用できます。 |
 | `Value`        | string          | 実際の値。 空にしたり、空白のみで構成したりすることはできません。 最大文字数は 4,096 文字です。                                        |
@@ -43,7 +43,7 @@ API Management のポリシーは、Azure Portal がその構成を通じて API
 | 式 | @(DateTime.Now.ToString()) | False  |               |
 
 > [!NOTE]
-> API Management サービス内に格納された名前付きの値ではなく、Azure Key Vault サービスに格納された値を使用できます。こちらが[その例](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20secret%20using%20Managed%20Service%20Identity.policy.xml)です。
+> API Management サービス内に格納された名前付きの値ではなく、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) サービスに格納された値を使用できます。こちらが[その例](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20secret%20using%20Managed%20Service%20Identity.policy.xml)です。
 
 ## <a name="to-add-and-edit-a-named-value"></a>名前付きの値を追加および編集するには
 

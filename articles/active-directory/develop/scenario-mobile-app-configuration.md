@@ -29,7 +29,7 @@ ms.locfileid: "76702115"
 
 モバイル アプリをサポートする Microsoft ライブラリは次のとおりです。
 
-  MSAL ライブラリ | [説明]
+  MSAL ライブラリ | 説明
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | ポータブル アプリケーションを開発するため。 モバイル アプリケーションを構築するために MSAL.NET でサポートされているプラットフォームは、UWP、Xamarin.iOS、Xamarin.Android です。
   ![MSAL.iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL.iOS | Objective-C または Swift でネイティブの iOS アプリケーションを開発するため

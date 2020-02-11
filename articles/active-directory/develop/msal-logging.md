@@ -210,7 +210,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = NO;
 
 iOS および macOS 用の MSAL を使用してログを記録するときにログ レベルを設定するには、次のいずれかの値を使用します。
 
-|Level  |[説明] |
+|Level  |説明 |
 |---------|---------|
 | `MSALLogLevelNothing`| すべてのログ記録を無効にします |
 | `MSALLogLevelError` | 既定のレベルでは、エラーが発生した場合にのみ情報を出力します |
@@ -287,7 +287,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = false
 
 iOS および macOS 用の MSAL を使用してログを記録するときにログ レベルを設定するには、次のいずれかの値を使用します。
 
-|Level  |[説明] |
+|Level  |説明 |
 |---------|---------|
 | `MSALLogLevelNothing`| すべてのログ記録を無効にします |
 | `MSALLogLevelError` | 既定のレベルでは、エラーが発生した場合にのみ情報を出力します |

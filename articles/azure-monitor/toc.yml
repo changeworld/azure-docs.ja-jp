@@ -4,8 +4,6 @@
   items:
     - name: Azure Monitor とは
       href: overview.md
-    - name: 用語の変更
-      href: terminology.md
     - name: よく寄せられる質問
       href: faq.md
     - name: 新機能
@@ -1141,6 +1139,8 @@
       items:
         - name: スキーマ
           href: platform/diagnostics-extension-schema-1dot3.md
+    - name: 用語の変更
+      href: terminology.md
     - name: Application Insights
       items:
         - name: 依存関係の自動収集
