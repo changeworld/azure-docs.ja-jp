@@ -86,4 +86,4 @@ Bot Framework には、次のような Language Understanding に役立つ[い�
 * すべての API と SDK の[リファレンス ドキュメント](https://docs.microsoft.com/azure/index#pivot=sdkstools)
 * [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) と [Azure Bot Service](https://dev.botframework.com/)
 * [LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)
-* [コグニティブ コンテナー](../cognitive-services-container-support.md)
+* [Cognitive コンテナー](../cognitive-services-container-support.md)
