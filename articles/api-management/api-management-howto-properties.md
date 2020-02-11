@@ -43,7 +43,7 @@ API Management のポリシーは、Azure Portal がその構成を通じて API
 | 式 | @(DateTime.Now.ToString()) | False  |               |
 
 > [!NOTE]
-> API Management サービス内に格納された名前付きの値ではなく、Azure Key Vault サービスに格納された値を使用できます。こちらが[その例](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20secret%20using%20Managed%20Service%20Identity.policy.xml)です。
+> API Management サービス内に格納された名前付きの値ではなく、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) サービスに格納された値を使用できます。こちらが[その例](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20secret%20using%20Managed%20Service%20Identity.policy.xml)です。
 
 ## <a name="to-add-and-edit-a-named-value"></a>名前付きの値を追加および編集するには
 
