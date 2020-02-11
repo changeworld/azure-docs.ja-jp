@@ -492,9 +492,9 @@ sql-filter マップには、次のエントリが含まれている必要があ
 |---------|----------------|--------------|--------------------|  
 |correlation-id|string|いいえ||  
 |message-id|string|いいえ||  
-|から|string|いいえ||  
+|to|string|いいえ||  
 |reply-to|string|いいえ||  
-|ラベル●らべる○|string|いいえ||  
+|label|string|いいえ||  
 |session-id|string|いいえ||  
 |reply-to-session-id|string|いいえ||  
 |content-type|string|いいえ||  

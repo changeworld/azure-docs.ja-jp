@@ -255,8 +255,6 @@
         - name: オンプレミス エンコーダーをクラウド エンコーダーと使用するための構成
           href: media-services-live-encoders-overview.md
           items:
-            - name: FMLE エンコーダー
-              href: media-services-configure-fmle-live-encoder.md
             - name: Haivision KB エンコーダー
               href: media-services-configure-kb-live-encoder.md
             - name: NewTek TriCaster エンコーダー
