@@ -51,7 +51,7 @@ NuGet パッケージがダウンロードされ、必要なアセンブリ参�
 
 属性の構成には、Microsoft Azure ポータルのキャッシュ ブレードの値を使用してください。その他の値は適宜構成します。 キャッシュのプロパティにアクセスする方法については、「[Configure Azure Cache for Redis settings (Azure Cache for Redis の設定を構成する)](cache-configure.md#configure-azure-cache-for-redis-settings)」を参照してください。
 
-| Attribute | 種類 | Default | [説明] |
+| Attribute | 種類 | Default | 説明 |
 | --------- | ---- | ------- | ----------- |
 | *host* | string | "localhost" | Redis サーバーの IP アドレスまたはホスト名 |
 | *port* | 正の整数 | 6379 (非 SSL)<br/>6380 (SSL) | Redis サーバー ポート |
