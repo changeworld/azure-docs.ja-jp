@@ -30,7 +30,7 @@ Azure Maps の [GET Geofence](/rest/api/maps/spatial/getgeofence) および [POS
 * `expiredTime` は、ジオフェンシング データの期限切れ日時です。 要求に含まれる `userTime` の値がこの値より後の場合、対応するジオフェンス データは期限切れデータと見なされ、クエリは実行されません。 その場合、このジオフェンス データの geometryId が、ジオフェンス応答内の `expiredGeofenceGeometryId` 配列に格納されます。
 * `validityPeriod` は、ジオフェンスの有効期間のリストです。 要求に含まれる `userTime` の値が有効期間の範囲外の場合、対応するジオフェンス データは無効と見なされ、クエリは実行されません。 このジオフェンス データの geometryId は、ジオフェンス応答内の `invalidPeriodGeofenceGeometryId` 配列に格納されます。 validityPeriod 要素のプロパティを次の表に示します。
 
-| Name | 種類 | 必須  | [説明] |
+| Name | 種類 | 必須  | 説明 |
 | :------------ |:------------: |:---------------:| :-----|
 | startTime | Datetime  | true | 有効期間の開始日時。 |
 | endTime   | Datetime  | true |  有効期間の終了日時。 |
