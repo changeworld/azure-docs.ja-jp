@@ -195,7 +195,7 @@ public void ConfigureServices(IServiceCollection services)
 
 `ApplicationInsightsServiceOptions` の設定の完全な一覧
 
-|設定 | [説明] | Default
+|設定 | 説明 | Default
 |---------------|-------|-------
 |EnableQuickPulseMetricStream | LiveMetrics 機能を有効または無効にします | true
 |EnableAdaptiveSampling | アダプティブ サンプリングを有効または無効にします | true
