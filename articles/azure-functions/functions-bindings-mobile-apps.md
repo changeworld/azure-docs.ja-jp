@@ -134,7 +134,7 @@ module.exports = function (context, myQueueItem) {
 
 次の表は、*function.json* ファイルと `MobileTable` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 | **type**| 該当なし | "mobileTable" に設定する必要があります。|
 | **direction**| 該当なし |"in" に設定する必要があります。|
@@ -292,7 +292,7 @@ public static object Run(
 
 次の表は、*function.json* ファイルと `MobileTable` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 | **type**| 該当なし | "mobileTable" に設定する必要があります。|
 | **direction**| 該当なし |"out" に設定する必要があります。|
