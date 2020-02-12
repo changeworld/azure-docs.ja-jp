@@ -242,7 +242,7 @@ VNet ピアリング (仮想ネットワーク ピアリング) を使用して�
 
 ### <a name="what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers"></a>グローバル VNet ピアリングとロード バランサーに関連する制約は何ですか?
 2 つの異なるリージョンの 2 つの仮想ネットワークがグローバル VNET ピアリングでピアリングされている場合、ロード バランサーのフロント エンド IP 経由で Basic Load Balancer の後にあるリソースに接続することはできません。 Standard Load Balancer の場合、この制限はありません。
-次のリソースでは Basic Load Balancer を利用できます。つまり、グローバル VNET ピアリングで、ロード バランサーのフロント エンド IP 経由でリソースに到達できます。 ただし、許可されている場合、グローバル VNET ピアリングを使用し、プライベート VNet IP 経由で直接、リソースに到達できます。 
+次のリソースでは Basic Load Balancer を利用できます。つまり、グローバル VNET ピアリングで、ロード バランサーのフロント エンド IP 経由でリソースに到達できません。 ただし、許可されている場合、グローバル VNET ピアリングを使用し、プライベート VNet IP 経由で直接、リソースに到達できます。 
 - Basic Load Balancer の背後にある VM
 - Basic Load Balancer を使用する仮想マシン スケール セット 
 - Redis Cache 
