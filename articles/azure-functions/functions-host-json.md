@@ -143,7 +143,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 > [!NOTE]
 > ログ サンプリングが原因で、一部の実行が Application Insights の [モニター] ブレードに表示されない場合があります。 ログ サンプリングを回避するには、`samplingExcludedTypes: "Request"` を `applicationInsights` 値に追加します。
 
-| プロパティ | Default | [説明] |
+| プロパティ | Default | 説明 |
 | --------- | --------- | --------- | 
 | samplingSettings | 該当なし | 「[applicationInsights.samplingSettings](#applicationinsightssamplingsettings)」を参照してください。 |
 | samplingExcludedTypes | null | サンプリングしない型をセミコロンで区切ったリスト。 認識される型は、Dependency、Event、Exception、PageView、Request、Trace です。 指定された型のすべてのインスタンスが転送されます。指定されていない型はサンプリングされます。 |
@@ -157,7 +157,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 
 ### <a name="applicationinsightssamplingsettings"></a>applicationInsights.samplingSettings
 
-|プロパティ | Default | [説明] |
+|プロパティ | Default | 説明 |
 | --------- | --------- | --------- | 
 | isEnabled | true | サンプリングを有効または無効にします。 | 
 | maxTelemetryItemsPerSecond | 20 | 各サーバー ホストで 1 秒あたりにログに記録されるテレメトリ項目の目標数。 アプリを多数のホストで実行する場合、トラフィックの全体的なターゲット レート内に収まるように、この値を削減します。 | 
@@ -171,7 +171,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 
 ### <a name="applicationinsightshttpautocollectionoptions"></a>applicationInsights.httpAutoCollectionOptions
 
-|プロパティ | Default | [説明] |
+|プロパティ | Default | 説明 |
 | --------- | --------- | --------- | 
 | enableHttpTriggerExtendedInfoCollection | true | HTTP トリガーの拡張 HTTP 要求情報 (受信要求の関連付けヘッダー、複数のインストルメンテーション キーのサポート、HTTP メソッド、パス、応答) を有効または無効にします。 |
 | enableW3CDistributedTracing | true | W3C 分散トレース プロトコルのサポートを有効または無効にします (さらに、レガシの相関スキーマをオンにします)。 `enableHttpTriggerExtendedInfoCollection` が true の場合、既定で有効になります。 `enableHttpTriggerExtendedInfoCollection` が false の場合、このフラグは、送信要求にのみ適用され、受信要求には適用されません。 |
@@ -181,7 +181,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 
 スナップショットの詳細については、「[.NET アプリでの例外でのデバッグ スナップショット](/azure/azure-monitor/app/snapshot-debugger)」および「[Application Insights Snapshot Debugger の有効化やスナップショットの表示に関する問題のトラブルシューティング](/azure/azure-monitor/app/snapshot-debugger-troubleshoot)」を参照してください。
 
-|プロパティ | Default | [説明] |
+|プロパティ | Default | 説明 |
 | --------- | --------- | --------- | 
 | agentEndpoint | null | Application Insights スナップショット デバッガー サービスに接続するために使用されるエンドポイント。 null の場合、既定のエンドポイントが使用されます。 |
 | captureSnapshotMemoryWeight | 0.5 | スナップショットを取得するのに十分なメモリがあるかどうかを確認するときに、現在のプロセス メモリのサイズに割り当てられる重み。 予期される値は、0 より大きい真分数 (0 < CaptureSnapshotMemoryWeight < 1) です。 |
@@ -268,7 +268,7 @@ Premium プランの有効な範囲は 1 秒から 60 分で、既定値は 30 �
 }
 ```
 
-|プロパティ  |Default | [説明] |
+|プロパティ  |Default | 説明 |
 |---------|---------|---------| 
 |enabled|true|機能が有効かどうかを指定します。 | 
 |healthCheckInterval|10 秒|定期的なバック グラウンドでの正常性チェックの間隔。 | 
@@ -300,7 +300,7 @@ Application Insights など、関数アプリのログの動作を制御しま�
 }
 ```
 
-|プロパティ  |Default | [説明] |
+|プロパティ  |Default | 説明 |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|どのレベルでファイルのログ記録を有効にするかを定義します。  オプションは、`never`、`always`、`debugOnly` です。 |
 |logLevel|該当なし|アプリ内の関数に対するログ カテゴリのフィルター処理を定義するオブジェクト。 バージョン 2.x 以降のログ カテゴリのフィルター処理は、ASP.NET Core のレイアウトに従います。 この設定により、特定の関数についてログをフィルター処理できます。 詳しくは、ASP.NET Core のドキュメントの「[ログのフィルター処理](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)」をご覧ください。 |
@@ -323,7 +323,7 @@ Application Insights など、関数アプリのログの動作を制御しま�
 }
 ```
 
-|プロパティ  |Default | [説明] |
+|プロパティ  |Default | 説明 |
 |---------|---------|---------| 
 |isEnabled|false|コンソール ログ記録を有効または無効にします。| 
 
@@ -367,7 +367,7 @@ Application Insights など、関数アプリのログの動作を制御しま�
 }
 ```
 
-|プロパティ  |Default | [説明] |
+|プロパティ  |Default | 説明 |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|関数レベルのロックの取得期間。 ロックの自動更新。| 
 |listenerLockPeriod|00:01:00|リスナーのロックの取得期間。| 
