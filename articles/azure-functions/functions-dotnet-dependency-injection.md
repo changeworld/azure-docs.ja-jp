@@ -136,7 +136,7 @@ GitHub の[さまざまなサービスの有効期間のサンプル](https://ak
 
 関数ホストは、多くのサービスを登録します。 次のサービスは、お使いのアプリケーションに依存関係として取り込んでも安全です。
 
-|サービスの種類|有効期間|[説明]|
+|サービスの種類|有効期間|説明|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|シングルトン|実行時の構成|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|シングルトン|ホスト インスタンスの ID を提供する責任がある|
