@@ -54,7 +54,7 @@ Azure Storage キューにメッセージが送信されたときにトリガー
 
     ![ストレージ キューによってトリガーされる関数を構成する。](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal-2.png)
 
-    | 設定 | 推奨値 | [説明] |
+    | 設定 | 推奨値 | 説明 |
     |---|---|---|
     | **Name** | Function App 内で一意 | このキューによってトリガーされる関数の名前。 |
     | **キュー名**   | myqueue-items    | ストレージ アカウント内の接続先のキューの名前。 |
