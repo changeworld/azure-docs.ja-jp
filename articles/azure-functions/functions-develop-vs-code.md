@@ -158,7 +158,7 @@ Visual Studio Code では、便利な一連のプロンプトに従って、func
 
 以下は、新しいストレージ出力バインドを定義するためのプロンプト例です。
 
-| Prompt | Value | [説明] |
+| Prompt | Value | 説明 |
 | -------- | ----- | ----------- |
 | **Select binding direction (バインド方向を選択する)** | `out` | バインドは出力バインドです。 |
 | **Select binding with direction (方向を使用してバインドを選択する)** | `Azure Queue Storage` | バインドは Azure Storage キュー バインドです。 |
@@ -222,7 +222,7 @@ Visual Studio Code から発行するときには、[ZIP デプロイ](functions
 
 1. プロンプトに従って、次の情報を入力します。
 
-    | Prompt | Value | [説明] |
+    | Prompt | Value | 説明 |
     | ------ | ----- | ----------- |
     | Select function app in Azure (Azure で関数アプリを選択する) | \+ Create New Function App in Azure (+ Azure で新しい関数アプリを作成する) | 次のプロンプトで、新しい関数アプリを識別するグローバルに一意の名前を入力し、Enter キーを選択します。 関数アプリ名の有効な文字は、`a-z`、`0-9`、`-` です。 |
     | Select an OS (OS を選択する) | Windows | 関数アプリは Windows で実行されます。 |
@@ -387,7 +387,7 @@ Azure でアプリケーション設定を作成した場合は、次のコマ�
 
 Azure Functions 拡張機能には、Azure の関数アプリと対話するための領域に便利なグラフィカル インターフェイスが用意されています。 同じ機能が、コマンド パレット (F1) のコマンドとしても使用できます。 これらの Azure Functions コマンドを使用できます。
 
-|Azure Functions のコマンド  | [説明]  |
+|Azure Functions のコマンド  | 説明  |
 |---------|---------|
 |**Add New Settings**  |  Azure に新しいアプリケーション設定を作成します。 詳細については、「[アプリケーション設定を発行する](#publish-application-settings)」を参照してください。 また、[この設定をローカル設定にダウンロード](#download-settings-from-azure)する必要がある場合もあります。 |
 | **Configure Deployment Source** | Azure の関数アプリをローカル Git リポジトリに接続します。 詳細については、「[Azure Functions の継続的なデプロイ](functions-continuous-deployment.md)」をご覧ください。 |
