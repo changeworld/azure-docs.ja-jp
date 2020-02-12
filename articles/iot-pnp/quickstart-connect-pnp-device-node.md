@@ -39,7 +39,7 @@ node --version
 
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
-次のコマンドを実行して、ご使用のハブに対する _IoT ハブ接続文字列_を取得します (後で使用するためにメモします)。
+次のコマンドを実行して、ご使用のハブに対する "_IoT ハブ接続文字列_" を取得します (後で使用するためにメモします)。
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
@@ -66,7 +66,7 @@ git clone https://github.com/Azure/azure-iot-sdk-node --recursive -b digitaltwin
     ```cmd/sh
     npm install
     ```
-1. _デバイス接続文字列_を構成します。
+1. "_デバイス接続文字列_" を構成します。
 
     ```cmd/sh
     set DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>
