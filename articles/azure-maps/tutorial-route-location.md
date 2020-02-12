@@ -3,18 +3,18 @@ title: チュートリアル:場所へのルートを検索する |Microsoft Azu
 description: このチュートリアルでは、Microsoft Azure Maps ルート指定サービスを使用して、マップ上の場所 (目的地) へのルートをレンダリングする方法について説明します。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/12/2019
+ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 7f13e5342e880a9ed5e2cb35ebaf558a1641618b
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 3fedb045773cb975d37e2d866862e7863a6232e3
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910848"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989639"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>チュートリアル:Azure Maps を使って目的地へのルートを検索する
 
@@ -27,7 +27,7 @@ ms.locfileid: "75910848"
 
 ## <a name="prerequisites"></a>前提条件
 
-先に進む前に、[アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)に関するページの手順に従って、Azure Maps アカウントのサブスクリプションを S1 価格レベルで 作成します。さらに、[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従って、お使いのアカウントの主キーを取得します。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
+先に進む前に、[アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)手順に従ってください。S1 価格レベルのサブスクリプションが必要です。 [プライマリ キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するセクションの手順に従って、アカウントのプライマリ キーを取得してください。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
 
 <a id="getcoordinates"></a>
 
@@ -139,7 +139,7 @@ ms.locfileid: "75910848"
     });
     ```
     
-    マップの `ready` イベントのハンドラーで、ルートの線および起点と終点を格納するためのデータ ソースが作成されます。 線レイヤーを作成してデータ ソースにアタッチすることで、ルートの線のレンダリング方法を定義します。 ルートの線は、青色でレンダリングされます。線幅は 5 ピクセルで、線の接合箇所と線端には丸みを与えています。 このレイヤーをマップに追加する際に、`'labels'` という値の第 2 パラメーターを渡します。これにより、このレイヤーをマップ ラベルの下にレンダリングするよう指定します。 この結果、ルートの線で道路のラベルが覆い隠されないようになります。 記号レイヤーを作成し、データ ソースにアタッチします。 起点と終点のレンダリング方法は、このレイヤーで指定します。ここでは、各ポイント オブジェクトのプロパティからアイコン画像とテキスト ラベル情報を取得するための式を追加しています。 
+    マップの `ready` イベントのハンドラーで、ルートの線および起点と終点を格納するためのデータ ソースが作成されます。 線レイヤーを作成してデータ ソースにアタッチすることで、ルートの線のレンダリング方法を定義します。 ルートの線は、青色でレンダリングされます。 線幅は 5 ピクセルで、線の接合箇所と線端には丸みを与えています。 このレイヤーをマップに追加する際に、`'labels'` という値の第 2 パラメーターを渡します。これにより、このレイヤーをマップ ラベルの下にレンダリングするよう指定します。 この結果、ルートの線で道路のラベルが覆い隠されないようになります。 記号レイヤーを作成し、データ ソースにアタッチします。 起点と終点のレンダリング方法は、このレイヤーで指定します。 ここでは、各ポイント オブジェクトのプロパティからアイコン画像とテキスト ラベル情報を取得するための式を追加しています。 
     
 2. このチュートリアルでは、Microsoft を起点として設定し、シアトルにあるガソリン スタンドを終点として設定します。 マップの `ready` イベントのハンドラーに、次のコードを追加します。
 
@@ -164,7 +164,7 @@ ms.locfileid: "75910848"
     });
     ```
 
-    このコードは、ルートの起点と終点を表す 2 つの [GeoJSON ポイント オブジェクト](https://en.wikipedia.org/wiki/GeoJSON)を作成し、これらの点をデータソースに追加します。 それぞれの点に、`title` プロパティと `icon` プロパティを追加します。 最後のブロックでは、マップの [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) プロパティを使用して、始点と終点の緯度と経度の情報を使用するカメラ ビューを設定します。
+    このコードは、ルートの起点と終点を表す 2 つの [GeoJSON ポイント オブジェクト](https://en.wikipedia.org/wiki/GeoJSON)を作成し、これらの点をデータソースに追加します。 それぞれの点に、`title` プロパティと `icon` プロパティを追加します。 最後のブロックでは、マップの [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) プロパティを使用して、始点と終点の緯度と経度を使用するカメラ ビューを設定します。
 
 3. **MapRoute.html** ファイルを保存し、ブラウザーを更新します。 マップの中心がシアトルに設定され、起点を示す青色のピンと、終点を示す丸い青色のピンが表示されます。
 
@@ -174,7 +174,7 @@ ms.locfileid: "75910848"
 
 ## <a name="get-directions"></a>道順の取得
 
-ここでは、Azure Maps のルート サービス API を使って、指定した起点から終点までのルートを検索する方法について説明します。 ルート サービスの API では、2 つの場所の間の、*最速*、*最短*、*エコ*、または*スリリング*なルートを計画できます。 また、Azure の広範な履歴トラフィック データベースを使い、任意の日時のルート所要時間を予測することによって、将来のルートを計画することもできます。 詳しくは、「[Get route directions (ルートの道順を取得する)](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)」をご覧ください。 **map ready eventListener 内に**以下の機能をすべて追加し、マップ リソースへのアクセスの準備ができた後で、機能が読み込まれるようにする必要があります。
+ここでは、Azure Maps のルート サービス API の使い方について説明します。 指定した起点から終点までのルートをルート サービス API で検索します。 このサービスには、2 つの場所の間の、"*最速*"、"*最短*"、"*エコ*"、または "*スリリング*" なルートを計画するための API があります。 また、Azure の広範な履歴トラフィック データベースを使うことによって、将来のルートを計画することもできます。 ユーザーは、任意の日時におけるルート所要時間の予測結果を知ることができます。 詳しくは、「[Get route directions (ルートの道順を取得する)](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)」をご覧ください。 **map ready eventListener 内に**以下の機能をすべて追加し、マップ リソースへのアクセスの準備ができた後で、機能が読み込まれるようにする必要があります。
 
 1. GetMap 関数内に、次の JavaScript コードを追加します。
 

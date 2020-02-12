@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 0c1b09fbc425a80fe1f8d075c5a83455167073c3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b9ac15e6909498c38f618a24be6b010dc2774b07
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74029996"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905504"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -41,7 +41,7 @@ ms.locfileid: "74029996"
 - [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
 - [AzCopy の構成、最適化、トラブルシューティング](storage-use-azcopy-configure.md)
 
-## <a name="advanced"></a>詳細
+## <a name="advanced"></a>詳細設定
 
 AzCopy は、ファイルの拡張子またはコンテンツ (拡張子が指定されていない場合) に基づいて、ローカル ディスクからアップロードするときにファイルのコンテンツの種類を自動的に検出します。
 
@@ -191,7 +191,7 @@ SAS トークンを使用して、すべての BLOB コンテナー、ディレ�
 
 **--decompress**                           content-encoding が、ファイルが圧縮されていることを示している場合、ダウンロードするときに自動的に圧縮解除します。 サポートされている content-encoding の値は、"gzip" と "deflate" です。 ファイル拡張子 ".gz"/".gzip" または ".zz" は不要です。ある場合は削除されます。
 
-**--exclude-attributes**  string            (Windows のみ) 属性が属性一覧と一致するファイルを除外します。 例: A;S;R
+**--exclude-attributes**  string            (Windows のみ) 属性が属性一覧と一致するファイルを除外します。 次に例を示します。A;S;R
 
 **--exclude-blob-type** string             必要に応じて、コンテナーまたはアカウントから BLOB をコピーするときに除外する BLOB の種類 (BlockBlob/PageBlob/AppendBlob) を指定します。 このフラグの使用は、Azure 以外のサービスからサービスにデータをコピーする場合には適用されません。 複数の BLOB は ";" で区切る必要があります。
 
@@ -201,11 +201,11 @@ SAS トークンを使用して、すべての BLOB コンテナー、ディレ�
 
 **--follow-symlinks**                      ローカル ファイル システムからアップロードするときにシンボリック リンクに従います。
 
-**--from-to** string                       必要に応じて、コピー元とコピー先の組み合わせを指定します。 次に例を示します。LocalBlob、BlobLocal、LocalBlobFS。
+**--from-to** string                       必要に応じて、コピー元とコピー先の組み合わせを指定します。 たとえば次のようになります。LocalBlob、BlobLocal、LocalBlobFS。
 
 **-h, --help**                                 copy のヘルプ
 
-**--include-attributes**  string            (Windows のみ) 属性が属性一覧と一致するファイルを含めます。 例: A;S;R
+**--include-attributes**  string            (Windows のみ) 属性が属性一覧と一致するファイルを含めます。 次に例を示します。A;S;R
 
 **--include-path** string                  コピーするときにこれらのパスのみを含めます。 このオプションでは、ワイルドカード文字 (*) はサポートされていません。 相対パスのプレフィックスを確認します (例: myFolder;myFolder/subDirName/file.pdf)。
 
@@ -217,7 +217,7 @@ SAS トークンを使用して、すべての BLOB コンテナー、ディレ�
 
 **--no-guess-mime-type**                   AzCopy がファイルの拡張子または内容に基づいてコンテンツ タイプを検出しないようにします。
 
-**--overwrite** string                     このフラグが true に設定されている場合は、コピー先の競合するファイルおよび BLOB を上書きします。 指定できる値は、"true"、"false"、および "prompt" です。 (既定値は "true")
+**--overwrite** string                     このフラグが true に設定されている場合は、コピー先の競合するファイルおよび BLOB を上書きします。 指定できる値は、'true'、'false'、'ifSourceNewer'、および 'prompt' です。 (既定値は "true")
 
 **--page-blob-tier** string                この BLOB 層を使用して Azure Storage にページ BLOB をアップロードします。 (既定値は "None")
 
@@ -241,6 +241,6 @@ SAS トークンを使用して、すべての BLOB コンテナー、ディレ�
 
 **--output-type** string   コマンドの出力形式。 選択肢には、text、json などがあります。 既定値は "text" です。 (既定値は "text")
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [azcopy](storage-ref-azcopy.md)

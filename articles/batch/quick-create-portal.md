@@ -1,20 +1,20 @@
 ---
 title: Azure クイック スタート - Batch ジョブの実行 - ポータル
-description: Azure Portal で Batch ジョブを実行する方法を簡単に説明します。
+description: Azure portal を使用して Batch アカウント、コンピューティング ノードのプール、そのプールで基本的なタスクを実行するジョブを作成する方法を説明します。
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 294d1658559dd426245cf66a47a8791f8b370533
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 8d725834cb2dd86163909b2ae598e61026ae4bb9
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029417"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024111"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>クイック スタート:Azure portal で最初の Batch ジョブを実行する
 
@@ -56,7 +56,7 @@ Batch アカウントが用意できたら、テスト目的で Windows コン�
 
 3. **[オペレーティング システム]** で、次の設定を選択します (他のオプションを見つけることができます)。
   
-   |設定  |値  |
+   |設定  |Value  |
    |---------|---------|
    |**イメージの種類**|Marketplace (Linux/Windows)|
    |**発行元**     |MicrosoftWindowsServer|
@@ -67,7 +67,7 @@ Batch アカウントが用意できたら、テスト目的で Windows コン�
 
 4. 下にスクロールして、 **[ノード サイズ]** と **[スケール]** の設定を入力します。 推奨されるノード サイズは、この簡単な例についてパフォーマンスとコストのバランスが取れています。
   
-   |設定  |値  |
+   |設定  |Value  |
    |---------|---------|
    |**ノード価格レベル**     |Standard_A1|
    |**ターゲットの専用ノード数**     |2|

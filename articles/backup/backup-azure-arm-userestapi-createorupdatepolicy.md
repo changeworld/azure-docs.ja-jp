@@ -4,33 +4,18 @@ description: この記事では、REST API を使用してバックアップ ポ
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: a086fc9c8be22f177d7fb1205e3545ddc52f5c83
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 0718ebc3612f53f1c2cc279096dd92de69bb5ef6
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554884"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963854"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>REST API を使用して Azure Recovery Services バックアップ ポリシーを作成する
 
 Azure Recovery Services コンテナー用のバックアップ ポリシーを作成する手順の概要については、[ポリシー REST API に関するドキュメント](/rest/api/backup/protectionpolicies/createorupdate)をご覧ください。 このドキュメントを Azure VM のバックアップに対するポリシーを作成するためのリファレンスとして使用しましょう。
 
-## <a name="backup-policy-essentials"></a>バックアップ ポリシーの基礎
-
-- バックアップ ポリシーはコンテナーごとに作成されます。
-- バックアップ ポリシーは次のワークロードのバックアップ用に作成できます
-  - Azure VM
-  - Azure VM 内の SQL
-  - Azure ファイル共有
-- ポリシーは、多くのリソースに割り当てることができます。 Azure VM のバックアップ ポリシーを使用して、多くの Azure VM を保護できます。
-- ポリシーは、2 つのコンポーネントで構成されています
-  - スケジュール: いつバックアップを作成するか
-  - 保持期間: 各バックアップをどれだけの期間保持する必要があるか。
-- スケジュールでは、"毎日" または "毎週" の特定の時点として定義できます。
-- 保持期間は、"毎日"、"毎週"、"毎月"、"毎年" のバックアップ ポイントに対して定義できます。
-- "毎週" は週の特定の日、"毎月" は月の特定の日、"毎年" は年の特定の日に、バックアップを行うことを意味します。
-- "毎月"、"毎年" のバックアップ ポイントに対する保持期間は、"長期的な保持" と呼ばれます。
-- コンテナーを作成すると、"既定のポリシー" と呼ばれる Azure VM バックアップに対するポリシーも作成され、Azure VM のバックアップに使用できます。
+## <a name="create-or-update-a-policy"></a>ポリシーを作成または更新する
 
 Azure Backup ポリシーを作成または更新するには、次の *PUT* 操作を使用します。
 
@@ -44,7 +29,7 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 たとえば、Azure VM のバックアップに対するポリシーを作成する場合、要求本文のコンポーネントは次のとおりです。
 
-|名前  |必須  |種類  |説明  |
+|Name  |Required  |Type  |説明  |
 |---------|---------|---------|---------|
 |properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource のプロパティ        |
 |tags     |         | Object        |  リソース タグ       |
@@ -152,9 +137,9 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|名前  |Type  |説明  |
+|Name  |Type  |説明  |
 |---------|---------|---------|
-|200 OK     |    [ProtectionPolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
+|200 OK     |    [ProtectionPolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  [OK]       |
 |202 Accepted     |         |     承認済み    |
 
 ### <a name="example-responses"></a>応答の例
@@ -275,7 +260,7 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 ポリシーを使用して項目が既に保護されている場合、ポリシーでの更新はすべて、そのようなすべての関連する項目に対する[保護の変更](backup-azure-arm-userestapi-backupazurevms.md#changing-the-policy-of-protection)になります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [保護されていない Azure VM の保護を有効にします](backup-azure-arm-userestapi-backupazurevms.md)。
 

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: e305a5634aa0c065342e1873c413039eb734b972
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: a9fb77ea30aa101653d50e7833876dbec6362093
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165883"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930144"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>クイック スタート:.NET 用 Face クライアント ライブラリ
 
@@ -22,7 +22,6 @@ ms.locfileid: "76165883"
 
 .NET 用 Face クライアント ライブラリは、次の目的で使用します。
 
-* [クライアントを認証する](#authenticate-the-client)
 * [画像内の顔を検出する](#detect-faces-in-an-image)
 * [似た顔を探す](#find-similar-faces)
 * [人物グループを作成してトレーニングする](#create-and-train-a-person-group)
@@ -95,7 +94,7 @@ Visual Studio IDE を使用している場合、クライアント ライブラ�
 
 以下のクラスとインターフェイスにより、Face .NET SDK の主要な機能の一部が処理されます。
 
-|Name|[説明]|
+|Name|説明|
 |---|---|
 |[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) | このクラスは、Face サービスを使用するための承認を表し、すべての Face 機能に必要です。 サブスクリプション情報を使用してこれをインスタンス化し、他のクラスのインスタンスを生成するために使用します。 |
 |[FaceOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperations?view=azure-dotnet)|このクラスは、人間の顔に対して実行できる基本的な検出と認識のタスクを処理します。 |
@@ -122,7 +121,7 @@ Visual Studio IDE を使用している場合、クライアント ライブラ�
 > [!NOTE]
 > このクイックスタートでは、`FACE_SUBSCRIPTION_KEY` および `FACE_ENDPOINT` という名前の、Face キーとエンドポイントの[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)してあることを前提としています。
 
-新しいメソッドで、実際のエンドポイントとキーを使用してクライアントをインスタンス化します。 キーを使用して [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) オブジェクトを作成し、それをエンドポイントと共に使用して、[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) オブジェクトを作成します。
+新しいメソッドで、実際のエンドポイントとキーを使用してクライアントをインスタンス化します。 自分のキーを指定して **[ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.apikeyserviceclientcredentials?view=azure-dotnet)** オブジェクトを作成し、それを自分のエンドポイントと共に使用して **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** オブジェクトを作成します。
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_auth)]
 
@@ -140,19 +139,19 @@ Visual Studio IDE を使用している場合、クライアント ライブラ�
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_models)]
 
-最後の検出操作では、[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) オブジェクト、画像の URL、認識モデルを受け取ります。
+最後の検出操作では、 **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** オブジェクト、画像の URL、認識モデルを受け取ります。
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_call)]
 
 ### <a name="get-detected-face-objects"></a>検出された顔オブジェクトを取得する
 
-次のコード ブロックでは、指定された URL にある画像のうち 3 つから `DetectFaceExtract` メソッドで顔を検出し、[DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) オブジェクトのリストをプログラムのメモリに作成します。 抽出する特徴は、[FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) 値のリストで指定します。 
+次のコード ブロックでは、指定された URL にある画像のうち 3 つから `DetectFaceExtract` メソッドで顔を検出し、 **[DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)** オブジェクトのリストをプログラムのメモリに作成します。 抽出する特徴は、 **[FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** 値のリストで指定します。 
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect)]
 
 ### <a name="display-detected-face-data"></a>検出された顔データを表示する
 
-`DetectFaceExtract` メソッドの残りの部分では、検出された各顔の属性データが解析されて出力されます。 各属性は、元の顔検出 API 呼び出しで個別に指定する必要があります ([FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) リストで)。 次のコードではすべての属性が処理されますが、通常、使用する必要があるのは 1 個または数個だけです。
+`DetectFaceExtract` メソッドの残りの部分では、検出された各顔の属性データが解析されて出力されます。 各属性は、元の顔検出 API 呼び出しで個別に指定する必要があります ( **[FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** リストで)。 次のコードではすべての属性が処理されますが、通常、使用する必要があるのは 1 個または数個だけです。
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_parse)]
 

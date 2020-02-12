@@ -3,12 +3,12 @@ title: Azure Functions のアプリケーション設定のリファレンス
 description: Azure Functions のアプリケーション設定または環境変数の参照ドキュメントです。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 87852d940204f574350321e2690b70c9835093d9
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 3853ccbfd492bfaf4a82d62e6d31ab938285ee2e
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921090"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963701"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
@@ -32,14 +32,14 @@ Functions ランタイムのバージョン 2.x 以降では、ランタイム�
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
-ログの保存と、それらをポータルの **[モニター]** タブに表示する、オプションのストレージ アカウントの接続文字列です。 このストレージ アカウントは、blob、キュー、およびテーブルをサポートする汎用的なものである必要があります。 「[ストレージ アカウント](functions-infrastructure-as-code.md#storage-account)」および「[ストレージ アカウントの要件](functions-create-function-app-portal.md#storage-account-requirements)」を参照してください。
+ログの保存と、それらをポータルの **[モニター]** タブに表示する、オプションのストレージ アカウントの接続文字列です。 この設定は、Azure Functions ランタイムのバージョン 1.x を対象とするアプリに対してのみ有効です。 このストレージ アカウントは、blob、キュー、およびテーブルをサポートする汎用的なものである必要があります。 詳しくは、「[ストレージ アカウントの要件](storage-considerations.md#storage-account-requirements)」をご覧ください。
 
 |Key|値の例|
 |---|------------|
-|AzureWebJobsDashboard|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
+|AzureWebJobsDashboard|DefaultEndpointsProtocol=https;AccountName=<name>;AccountKey=<key>|
 
-> [!TIP]
-> パフォーマンスとエクスペリエンスのために、AzureWebJobsDashboard ではなく APPINSIGHTS_INSTRUMENTATIONKEY と App Insights を使用して監視することをお勧めします。
+> [!NOTE]
+> より良いパフォーマンスとエクスペリエンスのために、ランタイムのバージョン 2.x 以降では、`AzureWebJobsDashboard` ではなく APPINSIGHTS_INSTRUMENTATIONKEY と App Insights を使用します。
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
@@ -79,7 +79,7 @@ Functions ランタイムのバージョン 2.x 以降では、ランタイム�
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
-Azure Functions ランタイムは、HTTP によってトリガーされる関数を除くすべての関数で、このストレージ アカウントの接続文字列を使用します。 このストレージ アカウントは、blob、キュー、およびテーブルをサポートする汎用的なものである必要があります。 「[ストレージ アカウント](functions-infrastructure-as-code.md#storage-account)」および「[ストレージ アカウントの要件](functions-create-function-app-portal.md#storage-account-requirements)」を参照してください。
+Azure Functions ランタイムは、HTTP によってトリガーされる関数を除くすべての関数で、このストレージ アカウントの接続文字列を使用します。 このストレージ アカウントは、blob、キュー、およびテーブルをサポートする汎用的なものである必要があります。 「[ストレージ アカウント](functions-infrastructure-as-code.md#storage-account)」および「[ストレージ アカウントの要件](storage-considerations.md#storage-account-requirements)」を参照してください。
 
 |Key|値の例|
 |---|------------|
@@ -189,7 +189,7 @@ Windows で関数アプリを実行するときに使用する Node.js のバー
 
 既定では、Functions プロキシは新しい HTTP 要求を作成するのではなく、同じ Function App 内の関数にプロキシから直接 API 呼び出しを送信するためのショートカットを使用します。 この設定を使用すると、その動作を無効にすることができます。
 
-|Key|値|[説明]|
+|Key|Value|説明|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|ローカル Function App 内の関数を指すバックエンド URL を使用した呼び出しは、関数に直接送信されるのではなく、Function App の HTTP フロント エンドに戻されるようになります|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|これが既定値です。 ローカル Function App 内の関数を指すバックエンド URL を使用した呼び出しは、その関数に直接転送されるようになります|
@@ -199,7 +199,7 @@ Windows で関数アプリを実行するときに使用する Node.js のバー
 
 この設定は、スラッシュがバックエンド URL に挿入されたときに、%2F をルート パラメーターでスラッシュとしてデコードするかどうかを制御します。 
 
-|Key|値|[説明]|
+|Key|Value|説明|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|エンコードされたスラッシュがルート パラメーターに含まれている場合、それらがデコードされます。 `example.com/api%2ftest` は `example.com/api/test` になります。|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|これは既定の動作です。 すべてのルート パラメーターが、変更されることなく渡されます|

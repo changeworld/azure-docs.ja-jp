@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a88f03adab3beaea75ec2fa9a1c6f59b09739025
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 932dfb9624177c299997c4f9f184dc5c973d0fa0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76153144"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899220"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用してジオフェンスを設定する
 
@@ -194,7 +194,7 @@ Postman アプリがインストールされたら、次の手順に従い、Azu
 
 ## <a name="create-an-azure-maps-events-subscription"></a>Azure Maps イベントのサブスクリプションの作成
 
-Azure Maps では、3 種類のイベントがサポートされています。 Azure Maps でサポートされるイベントの種類は、[こちら](https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps で確認できます。 ここでは 2 つのイベント サブスクリプションが必要となります。1 つは enter イベント用、もう 1 つは exit イベントです。
+Azure Maps では、3 種類のイベントがサポートされています。 Azure Maps でサポートされるイベントの種類は、[こちら](https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps)で確認できます。 ここでは 2 つのイベント サブスクリプションが必要となります。1 つは enter イベント用、もう 1 つは exit イベントです。
 
 以下の手順に従って、ジオフェンスの enter イベント用にサブスクリプションを作成します。 ジオフェンスの exit イベントも同様の方法でサブスクライブできます。
 

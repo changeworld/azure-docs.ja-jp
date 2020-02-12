@@ -3,19 +3,21 @@ title: Azure サブスクリプションの制限とクォータ
 description: 一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 この記事では、制限を引き上げる方法と、最大値に関する情報について説明します。
 tags: billing
 ms.topic: conceptual
-ms.date: 01/28/2020
-ms.openlocfilehash: c6661ce6d3e0f62c47b1f234898dbf47de36f3ee
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 01/30/2020
+ms.openlocfilehash: c5714dd30be4d557086667a74fff2ff8117e2a2b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845953"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901425"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 
 このドキュメントでは、最も一般的な Microsoft Azure の制限を一覧表示しています。これはクォータと呼ばれることもあります。 現時点では、すべての Azure サービスをカバーするものではありません。 今後、より多くのサービスをカバーするように一覧を拡大し、更新していく予定です。
 
 Azure の価格の詳細については、[Azure の価格の概要](https://azure.microsoft.com/pricing/)に関するページをご覧ください。 そこでは、[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用してコストを見積もることができます。 [Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows) などの特定のサービスに関する価格詳細ページに移動することもできます。 コスト管理に役立つヒントについては、「[Azure の課金とコスト管理で予想外のコストを防ぐ](../../billing/billing-getting-started.md)」をご覧ください。
+
+リソース名の制限については、 [Azureリソースに関する名前付け規則と制限事項](resource-name-rules.md)を参照してください。
 
 > [!NOTE]
 > 制限を引き上げるまたは既定の制限を超えるクォータが必要な場合は、[オンライン カスタマー サポートに申請 (無料)](../templates/error-resource-quota.md) してください。 次の表に示されている上限の値を超える制限の引き上げはできません。 上限列が存在しない場合、記載されているリソースに調整可能な制限がないことを意味します。
@@ -25,7 +27,7 @@ Azure の価格の詳細については、[Azure の価格の概要](https://azu
 
 ## <a name="limits-and-azure-resource-manager"></a>制限と Azure Resource Manager
 
-複数の Azure リソースを 1 つの Azure リソース グループに結合できるようになりました。 リソース グループを使用すると、グローバルであった制限が、Azure Resource Manager によるリージョン レベルでの管理対象になります。 Azure リソース グループについて詳しくは、「[Azure Resource Manager の概要](overview.md)」をご覧ください。
+複数の Azure リソースを 1 つの Azure リソース グループに結合できます。 リソース グループを使用すると、グローバルであった制限が、Azure Resource Manager によるリージョン レベルでの管理対象になります。 Azure リソース グループについて詳しくは、「[Azure Resource Manager の概要](overview.md)」をご覧ください。
 
 次の制限の一覧で、新しい表には Azure Resource Manager を使用するときの制限の相違が反映されます。 たとえば、「**サブスクリプションの制限**」の表と、「**サブスクリプションの制限 - Azure Resource Manager**」の表があります。 制限が 2 つのシナリオに適用される場合、制限は最初の表でのみ示されています。 特に記載のない限り、制限はすべてのリージョンに適用されます。
 
@@ -484,3 +486,4 @@ SQL Data Warehouse の制限については、[SQL Data Warehouse のリソー�
 * [Azure の制限と増設について](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 * [Azure での仮想マシンとクラウド サービスのサイズ](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure Cloud Services のサイズ](../../cloud-services/cloud-services-sizes-specs.md)
+* [Azure リソースの名前付け規則と制限事項](resource-name-rules.md)

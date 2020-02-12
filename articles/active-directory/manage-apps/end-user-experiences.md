@@ -12,12 +12,12 @@ ms.date: 09/27/2019
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 330f3100858d517666ac14fa8c206b4c06998c4f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 4f9ff446bae0a010b12e84172d5af60c6ca81c0e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274204"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896902"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Azure Active Directory でのアプリケーションのエンド ユーザー エクスペリエンス
 
@@ -36,7 +36,7 @@ Azure Active Directory (Azure AD) には、組織内のエンド ユーザーに
 
 ![Azure AD アクセス パネル ポータルのスクリーンショット](media/what-is-single-sign-on/azure-ad-access-panel.png)
 
-既定では、すべてのアプリケーションが 1 つのページにまとめて表示されます。 しかし、ワークスペースを使用して関連するアプリケーションをグループ化し、別々のタブで表示すれば、アプリケーションが見つけやすくなります。 たとえば、ワークスペースを使用して、特定の担当業務、タスク、プロジェクトなどに関連したアプリケーションの論理グループを作成することができます。 詳細については、[マイ アプリ ワークスペースを使用してユーザー アクセス パネルをカスタマイズする方法 (プレビュー)](access-panel-workspaces.md) に関するページを参照してください。 
+既定では、すべてのアプリケーションが 1 つのページにまとめて表示されます。 しかし、コレクションを使用して関連するアプリケーションをグループ化し、別々のタブで表示すれば、アプリケーションが見つけやすくなります。 たとえば、コレクションを使用して、特定の担当業務、タスク、プロジェクトなどに関連したアプリケーションの論理グループを作成することができます。 詳細については、[マイ アプリ コレクションを使用してユーザー アクセス パネルをカスタマイズする方法](access-panel-collections.md)に関するページを参照してください。 
 
 アクセス パネルは Azure Portal から独立しているため、ユーザーが Azure サブスクリプションまたは Office 365 サブスクリプションを持っている必要はありません。
 
@@ -76,6 +76,6 @@ Azure AD では、パスワードベースのシングル サインオン、リ�
 
 これらのリンクにはアクセス パネルや Office 365 と同じアクセス制御メカニズムが使用され、Azure portal でアプリケーションに割り当てられているユーザーまたはグループのみが正常に認証されます。 ただし、許可されていないユーザーには、アクセスが与えられていないことを示すメッセージと、アクセスが許可されている使用可能なアプリケーションを表示するアクセス パネルを呼び出すためのリンクが示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 「[Azure Active Directory のデプロイ計画](../fundamentals/active-directory-deployment-plans.md)」で、デプロイ計画を確認する

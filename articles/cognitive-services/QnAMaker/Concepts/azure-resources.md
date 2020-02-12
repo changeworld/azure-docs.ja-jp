@@ -3,12 +3,12 @@ title: Azure リソース - QnA Maker
 description: QnA Maker では、それぞれ異なる目的で複数の Azure ソースを使用します。 それらが個別にどのように使用されるかを理解すると、正しい価格レベルを計画して選択し、価格レベルを変更する時期を把握できるようになります。 これらを組み合わせて使用する方法を理解すると、発生した問題を見つけて修正できるようになります。
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 2b3a06122ce6123cd8edcedf5dfbf38c3c12218a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 77aced459c7731a2cac432538cfc66ed9ce83f9d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843504"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76902071"
 ---
 # <a name="azure-resources-for-qna-maker"></a>QnA Maker 用の Azure リソース
 
@@ -111,6 +111,10 @@ QnA Maker リソースで作成された最初のナレッジ ベースは、Cog
 QnA Maker リソースを使うと、オーサリングおよび公開 API だけでなく、実行時に QnA セットの中で自然言語処理 (NLP) ベースの 2 番目の順位のレイヤー (ランカー #2) にアクセスできます。
 
 2 番目の順位では、メタデータとフォローアップ プロンプトを含めることができるインテリジェント フィルターが適用されます。
+
+#### <a name="qna-maker-resource-configuration-settings"></a>QnA Maker リソースの構成設定
+
+[QnA Maker ポータル](https://qnamaker.ai)で新しいナレッジ ベースを作成する場合、リソース レベルで適用される設定は **言語** 設定のみです。 リソースに最初のナレッジ ベースを作成するときに、言語を選択します。 
 
 ### <a name="app-service-and-app-service-plan"></a>App Service と App Service プラン
 

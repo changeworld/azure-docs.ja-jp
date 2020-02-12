@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 5560cb31e31f7cf33ac8ae71d649e88be3dbb6e6
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d5ea3d3420cb598693ccaede7ee10d2f8c4fd839
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112509"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025777"
 ---
 # <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>チュートリアル:ソーラーパネル監視アプリ テンプレートの作成とチュートリアル 
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 このチュートリアルでは、ソーラー パネル監視アプリケーションの作成プロセスについて説明します。これには、シミュレートされたデータを含むサンプル デバイス モデルが含まれます。 このチュートリアルでは、次のことについて説明します。
 
@@ -25,10 +25,10 @@ ms.locfileid: "74112509"
 > [!div class="checklist"]
 > * ソーラー パネル アプリを無料で作成する
 > * アプリケーションのチュートリアル
-> * リソースのクリーンアップ
+> * リソースをクリーンアップする
 
 
-サブスクリプションをお持ちでない場合は、[無料試用版アカウントを作成](https://azure.microsoft.com/free)します。
+サブスクリプションをお持ちでない場合は、[無料試用版アカウントを作成](https://azure.microsoft.com/free)します
 
 ## <a name="prerequisites"></a>前提条件
 - なし
@@ -52,8 +52,9 @@ ms.locfileid: "74112509"
     * **7 日間の無料試用版**:Azure サブスクリプションが既にある場合は、既定の設定をお勧めします。 Azure サブスクリプションをお持ちでない場合は、無料試用版から始めてください。
     * **課金情報**:アプリケーション自体は無料です。 アプリのリソースをプロビジョニングするには、ディレクトリ、Azure サブスクリプション、リージョンの詳細が必要です。
     * ページの下部にある **[作成]** ボタンをクリックすると、アプリが 1 分ほどで作成されます。
-        > [!div class="mx-imgBorder"]
-        > ![[新しいアプリケーション] フォーム](media/tutorial-iot-central-solar-panel/solar-panel-create-app.png)
+        ![[新しいアプリケーション] フォーム](media/tutorial-iot-central-solar-panel/solar-panel-create-app.png)
+        
+        ![[新しいアプリケーション] フォームの課金情報](media/tutorial-iot-central-solar-panel/solar-panel-create-app-billinginfo.png)
 
 
 ### <a name="verify-the-application-and-simulated-data"></a>アプリケーションとシミュレートされたデータを検証する
@@ -95,7 +96,7 @@ Adatum は、ソーラー パネルを監視および管理する架空のエネ
 > ![ソーラー パネル デバイス テンプレート](media/tutorial-iot-central-solar-panel/solar-panel-device-templates.png)
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 このアプリケーションの引き続き使用しない場合は、次の手順でアプリケーションを削除します。
 
 1. 左側のペインで、[管理] タブを開きます。
@@ -105,7 +106,7 @@ Adatum は、ソーラー パネルを監視および管理する架空のエネ
     > ![アプリケーションを削除する](media/tutorial-iot-central-solar-panel/solar-panel-delete-app.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * ソーラー パネル アプリのアーキテクチャの詳細について[概念に関する記事](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-solar-panel-app)を確認します
 * ソーラー パネル アプリケーション テンプレートを無料で作成する: [ソーラー パネル アプリ](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring)
 * IoT Central の詳細について、[IoT Central の概要](https://docs.microsoft.com/azure/iot-central/)を参照する

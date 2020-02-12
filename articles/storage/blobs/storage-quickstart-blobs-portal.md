@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 7336260d7565697b0559419ae502848bcff9424c
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1e5ccc9d427755ea4274e836e81e3e324fffa39d
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892857"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937810"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>クイック スタート:Azure portal を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -45,13 +45,14 @@ Azure Portal で新しいコンテナーにブロック BLOB をアップロー�
 
 1. Azure Portal で、前のセクションで作成したコンテナーに移動します。
 2. コンテナーを選択して、それに含まれている BLOB の一覧を表示します。 このコンテナーは新しいため、BLOB はまだ含まれていません。
-3. **[アップロード]** ボタンを選択して、コンテナーに BLOB をアップロードします。
-4. ローカル ファイル システムを参照して、ブロック BLOB としてアップロードするファイルを見つけて、 **[アップロード]** を選択します。
+3. **[アップロード]** ボタンを選択してアップロード ブレードを開きます。
+4. ローカル ファイル システムを参照して、ブロック BLOB としてアップロードするファイルを見つけます。
      
     ![ローカル ドライブから BLOB をアップロードする方法を示したスクリーン ショット](media/storage-quickstart-blobs-portal/upload-blob.png)
 
-5. **[認証の種類]** を選択します。 既定値は **SAS** です。
-6. この方法で、希望する数の BLOB をアップロードします。 これで新しい BLOB がコンテナー内で一覧表示されていることを確認できます。
+5. 必要に応じて詳細セクションを展開し、他の設定 (認証の種類、アクセス レベル、仮想フォルダーのパスなど) を定義することもできます。
+6. **[アップロード]** ボタンを選択してアップロードをコミットします。
+7. この方法で、希望する数の BLOB をアップロードします。 これで新しい BLOB がコンテナー内で一覧表示されていることを確認できます。
 
 ## <a name="download-a-block-blob"></a>ブロック BLOB をダウンロードする
 
@@ -60,7 +61,7 @@ Azure Portal で新しいコンテナーにブロック BLOB をアップロー�
 1. 前のセクションでアップロードした BLOB の一覧に移動します。 
 2. ダウンロードする BLOB を右クリックし、 **[ダウンロード]** を選択します。 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このクイック スタートで作成したリソースを削除するには、コンテナーを削除します。 コンテナー内のすべての BLOB も削除されます。
 
@@ -71,7 +72,7 @@ Azure Portal で新しいコンテナーにブロック BLOB をアップロー�
 3. **[詳細]** ボタン ( **[...]** ) を選択し、 **[削除]** を選択します。
 4. コンテナーを削除することを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Azure portal を使ってローカル ディスクと Azure Blob Storage との間でファイルを転送する方法について学習しました。 Blob Storage の操作の詳細を学習するには、Blob Storage の操作方法に進みます。
 

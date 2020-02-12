@@ -1,21 +1,21 @@
 ---
 title: Azure クイック スタート - Batch ジョブの実行 - CLI
-description: Azure CLI で Batch ジョブを実行する方法を簡単に説明します。
+description: Azure CLI で Batch ジョブを実行する方法を簡単に説明します。 コマンド ラインやスクリプトで Azure リソースを作成および管理します。
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 900bafd5b27fcb5021e9dae2a6bbc13d4e233a45
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 9106741e18354d39909fa84ce6e9f3a66ccf2014
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029484"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024502"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>クイック スタート:Azure CLI で最初の Batch ジョブを実行する
 

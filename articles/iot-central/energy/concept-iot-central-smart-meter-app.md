@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: cab593990369bb8a4135e82534a2eb409b574e96
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 8f3772c1d65780337c421cfaaa7b70d7ac7186cf
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582762"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024315"
 ---
 # <a name="azure-iot-central---smart-meter-app-architecture"></a>Azure IoT Central - スマート メーター アプリのアーキテクチャ
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 この記事では、スマート メーター監視アプリ テンプレートのアーキテクチャの概要について説明します。 次の図は、IoT Central プラットフォームを使用した Azure 上のスマート メーター アプリに一般的に使用されるアーキテクチャを示しています。
 
@@ -28,7 +28,7 @@ ms.locfileid: "73582762"
 
 ## <a name="smart-meters-and-connectivity"></a>スマート メーターと接続性 
 
-スマート メーターは、すべてのエネルギー アセットの中でも最も重要なデバイスの 1 つです。 これを使ってエネルギー消費データを記録し、監視やその他のユース ケース (請求書や需要応答など) のために公共事業体に伝達できます。 メーターの種類に基づいて、ゲートウェイ、またはその他の中間デバイス (エッジ デバイス、ヘッドエンド システムなど) を介して IoT Central に接続できます。 直接接続できないデバイスを接続するには、IoT Central デバイス ブリッジを構築します。 IoT Central デバイス ブリッジはオープン ソース ソリューションであり、詳細については[こちら](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge)で確認できます。 
+スマート メーターは、すべてのエネルギー アセットの中でも最も重要なデバイスの 1 つです。 これを使ってエネルギー消費データを記録し、監視やその他のユース ケース (請求書や需要応答など) のために公共事業体に伝達できます。 メーターの種類に基づいて、ゲートウェイ、またはその他の中間デバイスや中間システム (エッジ デバイス、ヘッドエンド システムなど) を使用して IoT Central に接続できます。 直接接続できないデバイスを接続するには、IoT Central デバイス ブリッジを構築します。 IoT Central デバイス ブリッジはオープン ソース ソリューションであり、詳細については[こちら](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge)で確認できます。 
 
 
 ## <a name="iot-central-platform"></a>IoT Central プラットフォーム
@@ -39,7 +39,7 @@ Azure IoT Central は、IoT ソリューションの構築を簡素化し、IoT 
 ## <a name="extensibility-options-to-build-with-iot-central"></a>IoT Central を使用して構築する拡張オプション
 IoT Central プラットフォームには、次の 2 つの拡張オプションがあります。継続的データ エクスポート (CDE) と API。 顧客とパートナーは、特定のニーズに合わせてこれらのオプションのいずれかを選択し、ソリューションをカスタマイズすることができます。 たとえば、あるパートナーは Azure Data Lake Storage (ADLS) を使用して CDE を構成しました。 バッチ処理、監査、報告などの目的で、長期的なデータ保持やその他のコールド パス ストレージ シナリオに ADLS が使用されています。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * アーキテクチャについて学習したので、次は[スマート メーター アプリを無料で作成します](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring)
 * IoT Central の詳細については、[IoT Central の概要](https://docs.microsoft.com/azure/iot-central/)に関する記事を参照してください

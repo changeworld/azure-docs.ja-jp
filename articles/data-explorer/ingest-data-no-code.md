@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:コードを 1 行も書かずに Azure Data Explorer に監視データを取り込む
+title: チュートリアル:コードを使わずに監視データを取り込む - Azure Data Explorer
 description: このチュートリアルでは、コードを 1 行も書かずに Azure Data Explorer に監視データを取り込み、そのデータにクエリを実行する方法について説明します。
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: c160f04ef7120a6c90991d8e6ecdf98b2f0d348e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 24e09f6578431e6b7f2a83be13bae59bf2e707de
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836561"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986208"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>チュートリアル:Azure Data Explorer で監視データを取り込んでクエリを実行する 
 
@@ -415,7 +415,7 @@ Azure 診断設定により、ストレージ アカウントまたはイベン�
     |---|---|---|
     | **サブスクリプション** | *該当するサブスクリプション* | イベント ハブに使用する Azure サブスクリプションを選択します。|
     | **リソース グループ** | *test-resource-group* | 新しいリソース グループを作成します。 |
-    | **Location** | ニーズに最も適したリージョンを選択します。 | 他のリソースと同じ場所に、Event Hubs 名前空間を作成します。
+    | **地域** | ニーズに最も適したリージョンを選択します。 | 他のリソースと同じ場所に、Event Hubs 名前空間を作成します。
     | **名前空間名** | *AzureMonitoringData* | 名前空間を識別する一意の名前を選択します。
     | **イベント ハブ名** | *DiagnosticData* | イベント ハブは、固有のスコープ コンテナーを提供する名前空間以下にあります。 |
     | **コンシューマー グループ名** | *adxpipeline* | コンシューマー グループ名を作成します。 コンシューマー グループを使用すると、複数の使用アプリケーションがそれぞれイベント ストリーム ビューを持つことができるようになります。 |

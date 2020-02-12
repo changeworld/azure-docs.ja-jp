@@ -1,33 +1,30 @@
 ---
-title: クイック スタート:Node.js を使用してイベントを送受信する - Azure Event Hubs
-description: クイック スタート:この記事では、Azure Event Hubs からイベントを送信する Node.js アプリケーションを作成するためのチュートリアルを提供します。
+title: Node.js を使用して Azure Event Hubs との間でイベントを送受信する (レガシ)
+description: この記事では、以前の azure/event-hubs バージョン 2 パッケージを使用して、Azure Event Hubs との間でイベントを送受信する Node.js アプリケーションを作成する方法について説明します。
 services: event-hubs
 author: spelluru
-manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
-ms.custom: seodec18
-ms.date: 01/08/2020
+ms.date: 01/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 39087b189c424866fffcc3ea8723c712883f288c
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 9aa2418657c2d3bcab9ef8883e5bd57422ce5e29
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940723"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899894"
 ---
-# <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-nodejs"></a>クイック スタート:Node.js を使用して Azure Event Hubs との間でイベントを送受信する | Microsoft Docs
+# <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-nodejs-azureevent-hubs-version-2"></a>クイック スタート:Node.js を使用して Azure Event Hubs との間でイベントを送受信する (@azure/event-hubs バージョン 2)
 
 Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
 
 このチュートリアルでは、Node.js アプリケーションを作成し、イベント ハブとの間でイベントを送受信する方法について説明します。
 
-> [!IMPORTANT]
-> このクイックスタートでは、Azure Event Hubs JavaScript SDK のバージョン 2 を使用します。 Azure Event Hubs を初めて使用する場合は、JavaScript SDK のバージョン 5 を使用してください。 JavaScript SDK のバージョン 5 を使用するクイックスタートについては、[こちらの記事](get-started-node-send-v2.md)を参照してください。 既存のコードをバージョン 2 からバージョン 5 に移行する必要がある場合は、[移行ガイド](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)をご覧ください。
+> [!WARNING]
+> このクイックスタートでは、Azure Event Hubs JavaScript SDK のバージョン 2 を使用します。 [バージョン 5 の JavaScript SDK](get-started-node-send-v2.md) にコードを[移行](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)することをお勧めします。 
 
-> [!NOTE]
-> このクイック スタートをサンプルとして [GitHub](https://github.com/Azure/azure-event-hubs-node/tree/master/client) からダウンロードし、`EventHubConnectionString` と `EventHubName` の文字列を対象のイベント ハブの値に置き換え、実行します。 または、このチュートリアルの手順に従って独自のものを作成します。
+
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -55,6 +52,9 @@ npm install @azure/event-processor-host
 ## <a name="send-events"></a>送信イベント
 
 このセクションでは、イベント ハブにイベントを送信する Node.js アプリケーションの作成方法を説明します。 
+
+> [!NOTE]
+> このクイック スタートをサンプルとして [GitHub](https://github.com/Azure/azure-event-hubs-node/tree/master/client) からダウンロードし、`EventHubConnectionString` と `EventHubName` の文字列を対象のイベント ハブの値に置き換え、実行します。 または、このチュートリアルの手順に従って独自のものを作成します。
 
 1. [Visual Studio Code](https://code.visualstudio.com) など、お好みのエディターを開きます。 
 2. `send.js` というファイルを作成し、そこに以下のコードを貼り付けます。 次の記事の手順に従って、イベント ハブ名前空間用の接続文字列を取得します。[接続文字列を取得する](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 

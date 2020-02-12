@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7a025835275169b260dfd1f91b65341b5ba02ff
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: da2d598c7bb6d7b06e57dd497d1e2aebf1b63694
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294101"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898891"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>サインイン アクティビティ レポートのエラー コード 
 
@@ -143,6 +143,7 @@ ms.locfileid: "76294101"
 |53002|使用されているアプリケーションが、条件付きアクセスを承認されたアプリケーションではありません。 アクセスするには、ユーザーは承認されたアプリケーションの一覧からアプリを 1 つ選んで使用する必要があります。|
 |53003|条件付きアクセス ポリシーのため、アクセスがブロックされました。|
 |53004|ユーザーは、このコンテンツにアクセスする前に、多要素認証登録プロセスを完了する必要があります。 ユーザーは多要素認証に登録する必要があります。|
+|53032|Azure AD Identity Protection ポリシーにより、アカウントがブロックされました。|
 |65001|アプリケーション X に、アプリケーション Y へのアクセス許可がありません。またはアクセス許可が取り消されました。 または、X という ID でアプリケーションを使用することにユーザーまたは管理者が同意していません。このユーザーとリソースのインタラクティブな承認要求を送信してください。 または、X という ID でアプリケーションを使用することにユーザーまたは管理者が同意していません。リソース Z に対する操作をアプリ Y に代わって行うための承認要求をテナント管理者に送信してください。|
 |65004|ユーザーはアプリへのアクセスの同意を拒否しました。 ユーザーに、再度サインインしてアプリに同意させてください|
 |65005|アプリケーションの必須リソース アクセス リストに、リソースによって検出可能なアプリケーションが含まれていません。または、必須リソース アクセス リストで指定されていないリソースへのアクセスをクライアント アプリケーションが要求したか、Graph サービスから無効な要求が返されたか、リソースが見つかりません。 アプリケーションが SAML をサポートしている場合、間違った識別子 (エンティティ) でアプリケーションを構成している可能性があります。 [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) を参照し、SAML に対して示されている解決策を試してください|

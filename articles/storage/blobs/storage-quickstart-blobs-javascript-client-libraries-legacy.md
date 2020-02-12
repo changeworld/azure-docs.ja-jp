@@ -6,29 +6,29 @@ author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
 ms.author: mhopkins
-ms.date: 08/29/2019
+ms.date: 01/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 7d481b115650c72df95f7516bb3b39411201bf83
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 257af309ebdb9080c3cd60b8b89a2c992ecf5145
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75865103"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906576"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
-# <a name="quickstart-upload-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascripthtml-in-the-browser"></a>クイック スタート:ブラウザーで Azure Storage v10 SDK for JavaScript と HTML を使用して BLOB をアップロード、一覧表示、削除する
+# <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-browser"></a>クイック スタート:ブラウザーで JavaScript v10 SDK を使用して BLOB を管理する
 
-このクイック スタートでは、[Azure Storage SDK V10 for JavaScript - BLOB](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob#readme) ライブラリを使用して、ブラウザー内で実行が完結する JavaScript コードにより BLOB を管理する方法について説明します。 ここで使用されている方法は、必要なセキュリティ対策を使用して BLOB ストレージ アカウントへの保護されたアクセスを確保する方法を示しています。
+このクイックスタートでは、すべてブラウザー内で実行される JavaScript コードを使用して BLOB を管理する方法について説明します。 BLOB は、大量のテキストやバイナリ データ (画像、ドキュメント、ストリーミング メディア、アーカイブ データなど) を保持できるオブジェクトです。 必要なセキュリティ対策を使用して BLOB ストレージ アカウントへの保護されたアクセスを確保します。
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
-
-Azure Storage JavaScript クライアント ライブラリは、ファイル システムからは直接操作できず、Web サーバーからデータの提供を受ける必要があります。 このトピックでは、[Node.js](https://nodejs.org) を使用して基本的なサーバーを起動します。 Node.js をインストールしない場合は、他の任意の方法でローカル Web サーバーを実行してください。
-
-デバッグの手順を実施する場合は、[Visual Studio Code](https://code.visualstudio.com) のほかに、[Debugger for Chrome](vscode:extension/msjsdiag.debugger-for-chrome) 拡張機能と [Debugger for Microsoft Edge](vscode:extension/msjsdiag.debugger-for-edge) 拡張機能のどちらかが必要になります。
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- Azure Storage のアカウント [ストレージ アカウントの作成](../common/storage-account-create.md)。
+- ローカル Web サーバー。 この記事では、[Node.js](https://nodejs.org) を使用して基本的なサーバーを起動します。
+- [Visual Studio Code](https://code.visualstudio.com)。
+- ブラウザー デバッグ用の VS Code 拡張機能 ([Debugger for Chrome](vscode:extension/msjsdiag.debugger-for-chrome)、[Debugger for Microsoft Edge](vscode:extension/msjsdiag.debugger-for-edge) など)。
 
 ## <a name="setting-up-storage-account-cors-rules"></a>ストレージ アカウントの CORS ルールの設定
 
@@ -40,7 +40,7 @@ Azure Portal に戻り、ストレージ アカウントを選択します。 �
 
 次の表は、各 CORS 設定の説明と、ルールを定義するために使用する値を示しています。
 
-|設定  |値  | [説明] |
+|設定  |Value  | 説明 |
 |---------|---------|---------|
 | 許可されるオリジン | * | 許容されるオリジンとして設定されるドメインの、コンマ区切りの一覧を受け入れます。 値を `*` に設定すると、すべてのドメインがストレージ アカウントにアクセスできるようになります。 |
 | 許可される動詞     | delete、get、head、merge、post、options、および put | ストレージ アカウントに対して実行できる HTTP 動詞の一覧です。 このクイック スタートの目的に合わせて、利用可能なすべてのオプションを選択します。 |
@@ -61,7 +61,7 @@ Shared Access Signature (SAS) は、ブラウザーで実行されているコ�
 
 SAS は、Azure Cloud Shell 経由で Azure CLI を利用するか、Azure portal または Azure Storage Explorer を使用して作成できます。 次の表に、CLI で SAS を生成するために値を指定する必要があるパラメーターを示します。
 
-| パラメーター      |[説明]  | プレースホルダー |
+| パラメーター      |説明  | プレースホルダー |
 |----------------|-------------|-------------|
 | *expiry*       | YYYY-MM-DD の形式の、アクセス トークンの有効期限。 このクイック スタートで使用する場合は、翌日の日付を入力します。 | *FUTURE_DATE* |
 | *account-name* | ストレージ アカウント名。 前の手順で控えておいた名前を使用します。 | *YOUR_STORAGE_ACCOUNT_NAME* |
@@ -81,7 +81,7 @@ az storage account generate-sas \
 
 各パラメーターの後の一連の値が、少しわかりにくいかもしれません。 これらのパラメーター値は、各アクセス許可の頭文字です。 次の表は、値が何の頭文字であるかを示しています。
 
-| パラメーター        | 値   | [説明]  |
+| パラメーター        | Value   | 説明  |
 |------------------|---------|---------|
 | *アクセス許可*    | racwdl  | この SAS は、*read (読み取り)* 、*append (追加)* 、*create (作成)* 、*write (書き込み)* 、*delete (削除)* 、および *list (一覧表示)* 機能を許可します。 |
 | *resource-types* | sco     | SAS の影響を受けるリソースは、*service (サービス)* 、*container (コンテナー)* 、および *object (オブジェクト)* です。 |

@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: e7998ea0753ba7ab5d97142c34dc9e333f8b4f5d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d6b2fbe28aae8e8233aaeb75bc9b43a35a9ab588
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034076"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905283"
 ---
 # <a name="azcopy-login"></a>azcopy login
 
@@ -101,6 +101,8 @@ azcopy login --service-principal --certificate-path /path/to/my/cert
 
 |オプション|説明|
 |--|--|
+|--aad-endpoint|利用する Azure Active Directory エンドポイント。 既定値 (https://login.microsoftonline.com) は、パブリック Azure クラウドに適しています。 各国のクラウドで認証するときに、このパラメーターを設定します。 [Azure AD 認証エンドポイント](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints) を参照してください。
+このフラグは、マネージド サービス ID には必要ありません。|
 |--application-id string|ユーザー割り当て ID のアプリケーション ID。 サービス プリンシパル認証に必要です。|
 |--certificate-path string|SPN 認証用の証明書へのパス。 証明書ベースのサービス プリンシパル認証に必要です。|
 |-h, --help|login コマンドのヘルプ コンテンツを表示します。|
@@ -118,6 +120,6 @@ azcopy login --service-principal --certificate-path /path/to/my/cert
 |--cap-mbps uint32|転送速度の上限を設定します (メガビット/秒)。 瞬間的なスループットは、上限と若干異なる場合があります。 このオプションを 0 に設定した場合や省略した場合、スループットは制限されません。|
 |--output-type string|コマンドの出力形式。 選択肢には、text、json などがあります。 既定値は "text" です。|
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [azcopy](storage-ref-azcopy.md)

@@ -3,21 +3,21 @@ title: Azure Service Fabric CLI - sfctl rpm
 description: Azure Service Fabric のコマンド ライン インターフェイスである sfctl について説明します。 修復マネージャー サービスのためのコマンドの一覧が含まれています。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 674970276046034d13801db7c1bb4ab5175385fb
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 1787c0c8a8d5994ce1f1e9e4c55f155bbca6934c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639090"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904951"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 クエリを実行し、修復マネージャー サービスにコマンドを送信します。
 
 ## <a name="commands"></a>コマンド
 
-|command|[説明]|
+|command|説明|
 | --- | --- |
 | approve-force | 指定した修復タスクの承認を強制します。 |
 | delete | 完了した修復タスクを削除します。 |
@@ -30,14 +30,14 @@ ms.locfileid: "75639090"
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --task-id [必須] | 修復タスクの ID。 |
 | --version | 修復タスクの現在のバージョン番号。 0 以外の場合、この値が修復タスクの実際の現行バージョンと一致する場合にのみ要求が成功します。 0 の場合、バージョン チェックは実行されません。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
@@ -52,14 +52,14 @@ ms.locfileid: "75639090"
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --task-id [必須] | 削除する完了した修復タスクの ID。 |
 | --version | 修復タスクの現在のバージョン番号。 0 以外の場合、この値が修復タスクの実際の現行バージョンと一致する場合にのみ要求が成功します。 0 の場合、バージョン チェックは実行されません。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
@@ -74,15 +74,15 @@ ms.locfileid: "75639090"
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --executor-filter | 要求したタスクを一覧に含める必要がある修復 Executor の名前。 |
-| --state-filter | どのタスクの状態を結果リストに含める必要があるかを指定する、次の値の bitwise-OR。 <br> 1 - 作成済み <br>2   - 要求済み  <br>4   - 準備中  <br>8  - 承認済み  <br>16   - 実行中  <br>32   - 復元中  <br>64 - 完了済み |
+| --state-filter | どのタスクの状態を結果リストに含める必要があるかを指定する、次の値の bitwise-OR。 <ul><li>1 - 作成済み</li><li>2 - 要求済み</li><li>4 - 準備中</li><li>8 - 承認済み</li><li>16 - 実行中</li><li>32 - 復元中</li><li>64 - 完了済み</li></ul>
 | --task-id-filter | 照合される修復タスク ID プレフィックス。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |

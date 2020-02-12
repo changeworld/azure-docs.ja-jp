@@ -1,14 +1,14 @@
 ---
 title: Azure の委任されたリソース管理
 description: マネージド サービス オファーにより、サービス プロバイダーは、Azure Marketplace で顧客にリソース管理オファーを販売することができます。
-ms.date: 01/17/2020
+ms.date: 01/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1fc3d95b1becccc014afeb4621d17770a03e38a4
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 15814b1ca3b1b78de521033836e3614d18fd0c71
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263916"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904321"
 ---
 # <a name="azure-delegated-resource-management"></a>Azure の委任されたリソース管理
 
@@ -44,7 +44,7 @@ Azure の委任されたリソース管理を使用すると、承認された�
 
 ## <a name="support-for-azure-delegated-resource-management"></a>Azure の委任されたリソース管理のサポート
 
-Azure の委任されたリソース管理に関するヘルプが必要な場合は、Azure portal でサポート リクエストを開くことができます。 **[問題の種類]** では、 **[技術]** を選択します。 サブスクリプションを選択し、 **[Delegated Resource Management]\(委任されたリソース管理\)** ( **[管理と監視]** の下) を選択します。
+Azure の委任されたリソース管理に関するヘルプが必要な場合は、Azure portal でサポート リクエストを開くことができます。 **[問題の種類]** では、 **[技術]** を選択します。 サブスクリプションを選択し、 **[Lighthouse]** ( **[管理と監視]** の下) を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,20 +8,18 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 299bbfbc50e9ba779898ab0e0e9dec060bf6541d
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 3173fe010106963b9079bf151c92957735253e84
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687571"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898750"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Azure App Service on Linux での SSH のサポート
 
-[Secure Shell (SSH)](https://wikipedia.org/wiki/Secure_Shell) は、一般にコマンド ライン ターミナルから管理コマンドをリモートで実行するために使用されます。 App Service on Linux では、新しい Web アプリのランタイム スタックで使用される各組み込み Docker イメージで、アプリ コンテナーへの SSH をサポートしています。 
+[Secure Shell (SSH)](https://wikipedia.org/wiki/Secure_Shell) は、一般にコマンド ライン ターミナルから管理コマンドをリモートで実行するために使用されます。 Linux の App Service では、アプリコンテナーへの SSH サポートが提供されます。 
 
-![ランタイム スタック](./media/app-service-linux-ssh-support/app-service-linux-runtime-stack.png)
-
-カスタム Docker イメージでは、カスタム イメージ内で SSH サーバーを構成します。
+![Linux App Service SSH](./media/app-service-linux-ssh-support/app-service-linux-ssh.png)
 
 SSH と SFTP を使用して、ローカル開発マシンからコンテナーに直接接続することもできます。
 
@@ -113,7 +111,7 @@ Load average: 0.07 0.04 0.08 4/765 45738
 45738     1 root     Z        0   0%   0   0% [init]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 質問や問題は、[Azure フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)に投稿できます。
 

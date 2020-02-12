@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.openlocfilehash: 10030cf69009c59fa607ad68c3b7ab19c7a22860
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 895b26fc7f35303cbef6c9df543c87ca435c2290
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326725"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984355"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>クイック スタート:Azure Data Explorer クラスターとデータベースを作成する
 
@@ -31,7 +31,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure Portal](https://portal.azure.com/) にサインインします。
+[Azure portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="create-a-cluster"></a>クラスターの作成
 
@@ -51,7 +51,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     **設定** | **推奨値** | **フィールドの説明**
     |---|---|---|
-    | Subscription | 該当するサブスクリプション | クラスターに使用する Azure サブスクリプションを選択します。|
+    | サブスクリプション | 該当するサブスクリプション | クラスターに使用する Azure サブスクリプションを選択します。|
     | Resource group | 該当するリソース グループ | 既存のリソース グループを使用するか、新しいリソース グループを作成します。 |
     | クラスター名 | 一意のクラスター名 | クラスターを識別する一意の名前を選択します。 指定したクラスター名に、ドメイン名 *[region].kusto.windows.net* が付加されます。 名前に使用できるのは、小文字と数字だけです。 4 文字以上 22 文字以内にする必要があります。
     | リージョン | *米国西部*または*米国西部 2* | このクイックスタートでは、*米国西部*または*米国西部 2* (可用性ゾーンを使用している場合) を選択します。 運用システムでは、ニーズに最も適したリージョンを選択します。
@@ -112,7 +112,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     クラスターが再起動された場合、(初回のプロビジョニング同様) 利用できるようになるまでに約 10 分かかります。 データをホット キャッシュに読み込むにはさらに時間がかかります。  
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 他のクイック スタートやチュートリアルを行う場合は、作成したリソースをそのままにします。 それ以外の場合は、コストの発生を回避するためにリソース グループをクリーンアップします。
 
@@ -120,9 +120,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[リソース グループの削除]** を選択して、リソース グループ全体を削除します。 既存のリソース グループを使用している場合は、Data Explorer クラスターだけを選択できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [クイック スタート:イベント ハブから Azure Data Explorer にデータを取り込む](ingest-data-event-hub.md)
+> [クイック スタート: イベント ハブから Azure Data Explorer にデータを取り込む](ingest-data-event-hub.md)
 
 

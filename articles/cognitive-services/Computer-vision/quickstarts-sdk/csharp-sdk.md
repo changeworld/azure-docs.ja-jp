@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: aa162fb47eab84ff26af2256f8fe0ba9896b7cf0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 61e7da2d82262b234d9352c7a1198d121d7f73f9
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448298"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935760"
 ---
 # <a name="quickstart-computer-vision-client-library-for-net"></a>クイック スタート:.NET 用 Computer Vision クライアント ライブラリ
 
@@ -91,7 +91,7 @@ Visual Studio IDE を使用している場合、クライアント ライブラ�
 
 以下のクラスとインターフェイスにより、Computer Vision .NET SDK の主要な機能の一部が処理されます。
 
-|Name|[説明]|
+|Name|説明|
 |---|---|
 | [ComputerVisionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet) | このクラスは、すべての Computer Vision の機能に必要です。 サブスクリプション情報を使用してインスタンス化し、そのインスタンスを使用して、画像に対するほとんどの操作を実行することができます。|
 |[ComputerVisionClientExtensions](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclientextensions?view=azure-dotnet)| このクラスには、**ComputerVisionClient** の追加的なメソッドが含まれています。|
@@ -110,7 +110,7 @@ Visual Studio IDE を使用している場合、クライアント ライブラ�
 > [!NOTE]
 > このクイックスタートでは、`COMPUTER_VISION_SUBSCRIPTION_KEY` および `COMPUTER_VISION_ENDPOINT` という名前の、Computer Vision キーとエンドポイントのそれぞれの [環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) してあることを前提としています。
 
-新しいメソッドで、実際のエンドポイントとキーを使用してクライアントをインスタンス化します。 キーを使用して [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) オブジェクトを作成し、それをエンドポイントと共に使用して、[ComputerVisionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet) オブジェクトを作成します。
+新しいメソッドで、実際のエンドポイントとキーを使用してクライアントをインスタンス化します。 自分のキーを指定して **[ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.apikeyserviceclientcredentials?view=azure-dotnet)** オブジェクトを作成し、それを自分のエンドポイントと共に使用して **[ComputerVisionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet)** オブジェクトを作成します。
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_auth)]
 
@@ -137,7 +137,7 @@ Visual Studio IDE を使用している場合、クライアント ライブラ�
 
 ### <a name="specify-visual-features"></a>視覚的特徴を指定する
 
-画像分析用の新しいメソッドを定義します。 以下のコードは、分析で抽出する視覚的特徴を指定するものです。このコードを追加します。 完全な一覧については、[VisualFeatureTypes](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-dotnet) 列挙型を参照してください。
+画像分析用の新しいメソッドを定義します。 以下のコードは、分析で抽出する視覚的特徴を指定するものです。このコードを追加します。 完全な一覧については、 **[VisualFeatureTypes](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-dotnet)** 列挙型を参照してください。
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_visualfeatures)]
 

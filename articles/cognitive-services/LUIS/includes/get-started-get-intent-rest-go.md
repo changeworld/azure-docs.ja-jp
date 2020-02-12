@@ -6,34 +6,47 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/20/2019
+ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: 5054ee9a23458944257a8010aaab6268d25042a7
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 02cb7738e20df6aba8690c9fe2ee718144bad114
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74414483"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987789"
 ---
 ## <a name="prerequisites"></a>前提条件
 
-* [Go](https://golang.org/) プログラミング言語  
+* [Go](https://golang.org/) プログラミング言語
 * [Visual Studio Code](https://code.visualstudio.com/)
 * パブリック アプリ ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
-## <a name="get-luis-key"></a>LUIS キーを取得する
+## <a name="create-luis-runtime-key-for-predictions"></a>予測の LUIS ランタイム キーを作成する
 
-[!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [**Language Understanding** の作成](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)をクリックします
+1. **ランタイム** キーに必要な設定をすべて入力します。
+
+    |設定|Value|
+    |--|--|
+    |Name|任意の名前 (2 から 64 文字)|
+    |サブスクリプション|適切なサブスクリプションを選択します|
+    |Location|近くにある任意の使用可能な場所を選択します|
+    |価格レベル|`F0` -最小限の価格レベル|
+    |リソース グループ|使用可能なリソース グループを選択します|
+
+1. **[作成]** をクリックして、リソースが作成されるまで待ちます。 作成後、リソース ページに移動します。
+1. 構成された `endpoint` と `key` を収集します。
 
 ## <a name="get-intent-programmatically"></a>プログラムで意図を取得する
 
 Go を使用して、[予測エンドポイント](https://aka.ms/luis-apim-v3-prediction)のクエリを実行し、予測結果を取得します。
 
 1. `predict.go` という名前で新しいファイルを作成します。 次のコードを追加します。
-    
+
     ```go
     package main
-    
+
     /* Do dependencies */
     import (
         "fmt"
@@ -43,65 +56,67 @@ Go を使用して、[予測エンドポイント](https://aka.ms/luis-apim-v3-p
         "log"
     )
     func main() {
-        
+
         // public app
         var appID = "df67dcdb-c37d-46af-88e1-8b97951ca1c2"
-        
+
         // utterance for public app
         var utterance = "turn on all lights"
-        
-        // YOUR-KEY - your starter or prediction key
+
+        // YOUR-KEY - your **Runtime** key
         var endpointKey = "YOUR-KEY"
-        
-        // YOUR-ENDPOINT - example is westus2.api.cognitive.microsoft.com
+
+        // YOUR-ENDPOINT - example is your-resource-name.api.cognitive.microsoft.com
         var endpoint = "YOUR-ENDPOINT"
-    
+
         endpointPrediction(appID, endpointKey, endpoint, utterance)
     }
     func endpointPrediction(appID string, endpointKey string, endpoint string, utterance string) {
-    
+
         var endpointUrl = fmt.Sprintf("https://%s/luis/prediction/v3.0/apps/%s/slots/production/predict?subscription-key=%s&verbose=true&show-all-intents=true&query=%s", endpoint, appID, endpointKey, url.QueryEscape(utterance))
-        
+
         response, err := http.Get(endpointUrl)
-    
+
         if err!=nil {
             // handle error
             fmt.Println("error from Get")
             log.Fatal(err)
         }
-        
+
         response2, err2 := ioutil.ReadAll(response.Body)
-    
+
         if err2!=nil {
             // handle error
             fmt.Println("error from ReadAll")
             log.Fatal(err2)
         }
-    
+
         fmt.Println("response")
         fmt.Println(string(response2))
     }
     ```
 
-1. 次の値を置き換えます。
+1. `YOUR-KEY` と `YOUR-ENDPOINT` の値を、実際の予測の**ランタイム** キーとエンドポイントに置き換えます。
 
-    * `YOUR-KEY` を、ご利用のスターター キーに。
-    * `YOUR-ENDPOINT` を、ご利用のエンドポイントに。 たとえば、「 `westus2.api.cognitive.microsoft.com` 」のように入力します。
+    |Information|目的|
+    |--|--|
+    |`YOUR-KEY`|32 文字の予測の**ランタイム** キー。|
+    |`YOUR-ENDPOINT`| 予測 URL エンドポイント。 たとえば、「 `replace-with-your-resource-name.api.cognitive.microsoft.com` 」のように入力します。|
 
 1. このファイルを作成したのと同じディレクトリからコマンド プロンプトで次のコマンドを入力し、Go ファイルをコンパイルします。
 
     ```console
     go build predict.go
-    ```  
+    ```
 
-1. コマンド プロンプトに次のテキストを入力して、コマンド ラインから Go アプリケーションを実行します。 
+1. コマンド プロンプトに次のテキストを入力して、コマンド ラインから Go アプリケーションを実行します。
 
     ```console
     go run predict.go
     ```
-    
-    コマンド プロンプトから次のような応答が返されます。 
-    
+
+    コマンド プロンプトから次のような応答が返されます。
+
     ```console
     appID has value df67dcdb-c37d-46af-88e1-8b97951ca1c2
     endpointKey has value a7b206911f714e71a1ddae36928a61cc
@@ -155,15 +170,11 @@ Go を使用して、[予測エンドポイント](https://aka.ms/luis-apim-v3-p
     ```
 
 
-## <a name="luis-keys"></a>LUIS キー
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-[!INCLUDE [Use authoring key for endpoint](../includes/starter-key-explanation.md)]
+このクイックスタートを使用して完了したときに、ファイル システムからファイルを削除します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-
-このクイックスタートを使用して完了したときに、ファイル システムからファイルを削除します。 
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [発話の追加とトレーニング](../get-started-get-model-rest-apis.md)

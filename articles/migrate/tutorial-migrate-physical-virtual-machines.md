@@ -1,27 +1,23 @@
 ---
-title: Azure Migrate Server Migration を使用して、オンプレミスの物理マシンまたは仮想マシンを Azure に移行する | Microsoft Docs
-description: この記事では、Azure Migrate Server Migration を使用して、オンプレミスの物理マシンまたは仮想マシンを Azure に移行する方法を説明します。
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
+title: Azure Migrate を使用してマシンを物理サーバーとして Azure に移行する
+description: この記事では、Azure Migrate を使用して、物理マシンを Azure に移行する方法について説明します。
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.author: raynew
+ms.date: 02/03/2020
 ms.custom: MVC
-ms.openlocfilehash: 4a6e33770f93c365d5ccd034803c7c7f247d528a
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 6cdd107cb761aab3a85b73067fd646a36fe97d63
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028802"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989758"
 ---
-# <a name="migrate-physical-or-virtualized-servers-to-azure"></a>物理または仮想サーバーを Azure に移行する 
+# <a name="migrate-machines-as-physical-servers-to-azure"></a>マシンを物理サーバーとして Azure に移行する
 
-この記事では、物理または仮想サーバーを Azure に移行する方法を説明します。 Azure Migrate Server Migration ツールでは、エージェントベースのレプリケーションを使用して、物理および仮想サーバーの移行が可能です。 このツールを使用すると、さまざまなマシンを Azure に移行できます。
+この記事では、Azure Migrate Server Migration ツールを使用して、マシンを物理サーバーとして Azure に移行する方法について説明します。 マシンを物理サーバーとして扱うことによって移行することは、さまざまなシナリオで役立ちます。
 
 - オンプレミスの物理サーバーを移行する。
 - Xen、KVM などのプラットフォームで仮想化された VM を移行する。
-- Hyper-V または VMware VM を移行する。 これは、Azure Migrate Server Migration によって [Hyper-V](tutorial-migrate-hyper-v.md)、[VMware エージェントレス](tutorial-migrate-vmware.md)移行、または [VMware エージェントベース](tutorial-migrate-vmware-agent.md)移行に提供される標準の移行フローを何らかの理由によって使用できない場合に便利です。
+- Hyper-V または VMware VM を移行する (なんらかの理由で、[Hyper-V](tutorial-migrate-hyper-v.md) の標準移行プロセスや [VMware ](server-migrate-overview.md) 移行を使用できない場合)。
 - プライベート クラウドで実行されている VM を移行する。
 - アマゾン ウェブ サービス (AWS) や Google Cloud Platform (GCP) などのパブリック クラウドで実行されている VM を移行する。
 
@@ -175,7 +171,7 @@ Azure Migrate プロジェクトを設定し、それに Azure Migrate Server Mi
 
 ### <a name="download-the-replication-appliance-installer"></a>レプリケーション アプライアンス インストーラーのダウンロード
 
-1. Azure Migrate プロジェクトの **[サーバー]** の * **[Azure Migrate: Server Migration]** で、 **[検出]** をクリックします。
+1. Azure Migrate プロジェクトの **[サーバー]** で、 **[Azure Migrate: Server Migration]** で、 **[検出]** をクリックします。
 
     ![Discover VMs](./media/tutorial-migrate-physical-virtual-machines/migrate-discover.png)
 
@@ -266,8 +262,7 @@ Azure Migrate プロジェクトを設定し、それに Azure Migrate Server Mi
 
 2. **[レプリケート]** で、 **[ソースの設定]**  >  **[マシンは仮想化されていますか?]** で、 **[非仮想化/その他]** を選択します。
 3. **[オンプレミスのアプライアンス]** で、自分が設定した Azure Migrate アプライアンスの名前を選択します。
-4. **[vCenter Server]** で、VM を管理している vCenter サーバー、または VM がホストされている vSphere サーバーの名前を指定します。
-5. **[プロセス サーバー]** で、レプリケーション アプライアンスの名前を選択します。
+4. **[プロセス サーバー]** で、レプリケーション アプライアンスの名前を選択します。
 6. **[ゲストの資格情報]** で、モビリティ サービスのプッシュ インストールに使用される VM 管理アカウントを指定します。 このチュートリアルでは、モビリティ サービスを手動でインストールしているため、任意のダミー アカウントを追加できます。 その後、 **[次へ:仮想マシン]** をクリックします。
 
     ![VM をレプリケートする](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)

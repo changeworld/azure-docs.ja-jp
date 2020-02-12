@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: feab221c24034fe29df420b4f9eb6d84e06a90b5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 11b84877171fae8e788d3298973fd74645b35480
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719338"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901918"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した Azure Cosmos DB と Azure App Service Web Apps のデプロイ
 このチュートリアルでは、Azure Resource Manager テンプレートを使用して、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)、[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) Web アプリ、サンプル Web アプリケーションをデプロイおよび統合する方法について説明します。
@@ -69,7 +69,7 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
    ![テンプレートのデプロイメント UI のスクリーンショット](./media/create-website/TemplateDeployment6.png)
 7. デプロイメントが完了したら、リソース グループ ウィンドウが開きます。
    ![リソース グループ ウィンドウのスクリーンショット](./media/create-website/TemplateDeployment7.png)  
-8. アプリケーションを使用するには、その Web アプリの URL にアクセスします (上の例では URL は http://mydemodocdbwebapp.azurewebsites.net) )。  次のような Web アプリケーションが表示されます。
+8. アプリケーションを使用するには、その Web アプリの URL にアクセスします (上の例では URL は `http://mydemodocdbwebapp.azurewebsites.net`)。  次のような Web アプリケーションが表示されます。
    
    ![Todo アプリケーションのサンプル](./media/create-website/image2.png)
 9. ここで、Web アプリでいくつかのタスクを作成してから、Azure ポータルのリソース グループ ウィンドウに戻ります。 リソースの一覧で Azure Cosmos DB アカウント リソースをクリックし、**データ エクスプローラー**をクリックします。

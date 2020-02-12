@@ -8,29 +8,33 @@ ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 12/02/2019
-ms.openlocfilehash: 5f463434261dd782bb180f55986cc0f05c71cbe9
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 18a61c215f6c10bb399beaa83ec53ad2ebc62970
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770749"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938978"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>クイック スタート:Azure Database for MySQL で Java を使用してデータに接続してクエリを実行する
 
-このクイックスタートでは、Java アプリケーションを使用して Azure Database for MySQL および JDBC ドライバー [MariaDB Connector/J](https://mariadb.com/kb/en/library/mariadb-connector-j/) に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 この記事では、Java を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであるユーザーを想定しています。
+このクイックスタートでは、Java アプリケーションを使用して Azure Database for MySQL および JDBC ドライバー MariaDB Connector/J に接続します。 Mac、Ubuntu Linux、Windows の各プラットフォームから SQL ステートメントを使用して、データベース内のデータを照会、挿入、更新、削除できます。 
+
+このトピックでは、Java を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであるユーザーを想定しています。
 
 ## <a name="prerequisites"></a>前提条件
-1. このクイックスタートでは、次のいずれかのガイドで作成されたリソースを出発点として使用します。
-   - [Azure Portal を使用した Azure Database for MySQL サーバーの作成](./quickstart-create-mysql-server-database-using-azure-portal.md)
-   - [Azure CLI を使用した Azure Database for MySQL サーバーの作成](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
-2. アプリケーションが正常に接続できるよう、ファイアウォールが開き、SSL 設定が調整された状態で Azure Database for MySQL 接続のセキュリティが構成されていることを確認する。
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- Azure Database for MySQL サーバー。 [Azure portal を使用して Azure Database for MySQL サーバーを作成](quickstart-create-mysql-server-database-using-azure-portal.md)するか、[Azure CLI を使用して Azure Database for MySQL サーバーを作成](quickstart-create-mysql-server-database-using-azure-cli.md)してください。
+- アプリケーション用にファイアウォールが開放され、SSL 接続設定が構成された状態で、Azure Database for MySQL 接続のセキュリティが構成されていること。
 
-3. 次のいずれかの方法を使用して、MariaDB Connector/J コネクタを取得します。
+## <a name="obtain-the-mariadb-connector"></a>MariaDB コネクタを取得する
+
+次のいずれかの方法を使用して、[MariaDB Connector/J](https://mariadb.com/kb/en/library/mariadb-connector-j/) コネクタを取得します。
    - Maven パッケージ [mariadb-java-client](https://search.maven.org/search?q=a:mariadb-java-client) を使用して [mariadb-java-client dependency](https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client) をプロジェクトの POM ファイルに含めます。
-   - JDBC ドライバー [MariaDB Connector/J](https://downloads.mariadb.org/connector-java/) をダウンロードし、JDBC jar ファイル (たとえば mariadb-java-client-2.4.3.jar) をアプリケーションのクラス パスに含めます。 クラス パスで問題が発生した場合は、クラス パスの詳細 ([Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html)、[Java SE](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html) など) について環境のドキュメントを参照してください。
+   - JDBC ドライバー [MariaDB Connector/J](https://downloads.mariadb.org/connector-java/) をダウンロードし、JDBC jar ファイル (たとえば mariadb-java-client-2.4.3.jar) をアプリケーションのクラス パスに含めます。 クラス パスの詳細については、ご利用の環境のドキュメントを参照してください ([Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html)、[Java SE](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html) など)。
 
 ## <a name="get-connection-information"></a>接続情報の取得
+
 Azure Database for MySQL に接続するために必要な接続情報を取得します。 完全修飾サーバー名とログイン資格情報が必要です。
 
 1. [Azure Portal](https://portal.azure.com/) にログインします。
@@ -40,6 +44,7 @@ Azure Database for MySQL に接続するために必要な接続情報を取得�
  ![Azure Database for MySQL サーバー名](./media/connect-java/azure-database-mysql-server-name.png)
 
 ## <a name="connect-create-table-and-insert-data"></a>接続、テーブルの作成、データの挿入
+
 接続し、**INSERT** SQL ステートメントが含まれた関数を使用してデータを読み込むには、次のコードを使用します。 [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) メソッドは MySQL への接続に使用されます。 [createStatement()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#creating-a-table-on-a-mariadb-or-mysql-server) メソッドと execute() メソッドは、テーブルの削除と作成に使用されます。 prepareStatement オブジェクトは、パラメーター値をバインドする setString() および setInt() と共に、挿入コマンドの作成に使用されます。 executeUpdate() メソッドは、パラメーターの各セットに対してコマンドを実行して、値を挿入します。 
 
 host、database、user、password の各パラメーターは、独自のサーバーとデータベースの作成時に指定した値に置き換えてください。
@@ -142,6 +147,7 @@ public class CreateTableInsertRows {
 ```
 
 ## <a name="read-data"></a>データの読み取り
+
 **SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) メソッドは MySQL への接続に使用されます。 [createStatement()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#creating-a-table-on-a-mariadb-or-mysql-server) メソッドと executeQuery() メソッドは、接続と SELECT ステートメントの実行に使用されます。 結果は、ResultSet オブジェクトを使用して処理されます。 
 
 host、database、user、password の各パラメーターは、独自のサーバーとデータベースの作成時に指定した値に置き換えてください。
@@ -229,6 +235,7 @@ public class ReadTable {
 ```
 
 ## <a name="update-data"></a>データの更新
+
 **UPDATE** SQL ステートメントを使用してデータを変更するには、次のコードを使用します。 [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) メソッドは MySQL への接続に使用されます。 [prepareStatement()](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) メソッドと executeUpdate() メソッドは、UPDATE ステートメントの準備と実行に使用されます。 
 
 host、database、user、password の各パラメーターは、独自のサーバーとデータベースの作成時に指定した値に置き換えてください。
@@ -311,6 +318,7 @@ public class UpdateTable {
 ```
 
 ## <a name="delete-data"></a>データの削除
+
 **DELETE** SQL ステートメントを使用してデータを削除するには、次のコードを使用します。 [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) メソッドは MySQL への接続に使用されます。  [prepareStatement()](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) メソッドと executeUpdate() メソッドは、delete ステートメントの準備と実行に使用されます。 
 
 host、database、user、password の各パラメーターは、独自のサーバーとデータベースの作成時に指定した値に置き換えてください。
@@ -391,7 +399,7 @@ public class DeleteTable {
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [ダンプと復元を使用した Azure Database for MySQL への MySQL データベースの移行](concepts-migrate-dump-restore.md)

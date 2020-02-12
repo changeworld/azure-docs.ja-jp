@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: fabb2524547bd7837d3644d79f0023311ddccdfc
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 038cfe04193b734bd26ed0ffd4dec5ae9b267c22
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845555"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901278"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Azure Log Analytics ワークスペースの削除と復元
 
@@ -23,7 +23,7 @@ ms.locfileid: "76845555"
 Log Analytics ワークスペースを削除すると、論理的な削除操作が実行されます。削除操作が不注意によるものであれ、意図的なものであれ、14 日以内であればそのデータや接続されているエージェントを含め、ワークスペースを回復させることができます。 論理的な削除期間が終了すると、ワークスペース リソースとそのデータは回復できなくなります。そのデータは完全な削除用のキューに格納され、30 日以内に完全に消去されます。 ワークスペース名は "リリース済み" であり、新しいワークスペースの作成に使用できます。
 
 > [!NOTE]
-> 論理的な削除の動作をオーバーライドして、ご利用のワークスペースを完全に削除する場合は、「[ワークスペースの完全削除](#Permanent workspace delete)」の手順に従います。
+> 論理的な削除の動作をオーバーライドして、ご利用のワークスペースを完全に削除する場合は、「[ワークスペースの完全削除](#permanent-workspace-delete)」の手順に従います。
 
 重要なデータや構成が含まれているとサービスの運用に悪影響が生じるおそれがあるため、ワークスペースを削除する場合は注意が必要です。 エージェントやソリューションなど、Log Analytics にデータを格納する各種 Azure サービスとソースを再確認してください。そうしたサービスとソースの例を次に示します。
 
@@ -63,7 +63,7 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 
 
 > [!IMPORTANT]
-> この操作を元に戻すことはできず、ワークスペースとそのデータは回復できなくなるため、ワークスペースを完全に削除する場合は注意してください。
+> ワークスペースの完全削除操作を行うと元に戻すことができず、ワークスペースとそのデータを復元できないため、注意して使用してください。
 
 現在、ワークスペースの完全削除は REST API を使用して実行できます。
 
@@ -80,6 +80,7 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 > DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview&force=true
 > Authorization: Bearer eyJ0eXAiOiJKV1Qi….
 > ```
+「eyJ0eXAiOiJKV1Qi...」 は 完全な承認トークンを表します。
 
 ## <a name="recover-workspace"></a>ワークスペースを回復させる
 

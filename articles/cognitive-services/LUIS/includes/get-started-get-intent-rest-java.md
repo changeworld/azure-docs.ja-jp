@@ -6,14 +6,14 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/20/2019
+ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: 4e2fb81b19694136896b1dee07c3bd74c63fc01b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 1bd7a2bb6d3393aca397686a2817f1dcd5f89a38
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74414579"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987788"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -21,9 +21,22 @@ ms.locfileid: "74414579"
 * [Visual Studio Code](https://code.visualstudio.com/) または任意の IDE。
 * パブリック アプリ ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
-## <a name="get-luis-key"></a>LUIS キーを取得する
+## <a name="create-luis-runtime-key-for-predictions"></a>予測の LUIS ランタイム キーを作成する
 
-[!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [**Language Understanding** の作成](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)をクリックします
+1. **ランタイム** キーに必要な設定をすべて入力します。
+
+    |設定|Value|
+    |--|--|
+    |Name|任意の名前 (2 から 64 文字)|
+    |サブスクリプション|適切なサブスクリプションを選択します|
+    |Location|近くにある任意の使用可能な場所を選択します|
+    |価格レベル|`F0` -最小限の価格レベル|
+    |リソース グループ|使用可能なリソース グループを選択します|
+
+1. **[作成]** をクリックして、リソースが作成されるまで待ちます。 作成後、リソース ページに移動します。
+1. 構成された `endpoint` と `key` を収集します。
 
 ## <a name="get-intent-programmatically"></a>プログラムで意図を取得する
 
@@ -47,70 +60,72 @@ Java を使用して、[予測エンドポイント](https://aka.ms/luis-apim-v3
     import org.apache.http.client.utils.URIBuilder;
     import org.apache.http.impl.client.HttpClients;
     import org.apache.http.util.EntityUtils;
-    
+
     public class Predict {
-    
-        public static void main(String[] args) 
+
+        public static void main(String[] args)
         {
             HttpClient httpclient = HttpClients.createDefault();
-    
+
             try
             {
-    
+
                 // The ID of a public sample LUIS app that recognizes intents for turning on and off lights
                 String AppId = "df67dcdb-c37d-46af-88e1-8b97951ca1c2";
-                
-                // Add your endpoint key 
+
+                // Add your prediction Runtime key
                 String Key = "YOUR-KEY";
-    
-                // Add your endpoint, example is westus.api.cognitive.microsoft.com
+
+                // Add your endpoint, example is your-resource-name.api.cognitive.microsoft.com
                 String Endpoint = "YOUR-ENDPOINT";
-    
+
                 String Utterance = "turn on all lights";
-    
+
                 // Begin endpoint URL string building
                 URIBuilder endpointURLbuilder = new URIBuilder("https://" + Endpoint + "/luis/prediction/v3.0/apps/" + AppId + "/slots/production/predict?");
-    
+
                 // query string params
                 endpointURLbuilder.setParameter("query", Utterance);
                 endpointURLbuilder.setParameter("subscription-key", Key);
                 endpointURLbuilder.setParameter("show-all-intents", "true");
                 endpointURLbuilder.setParameter("verbose", "true");
-    
+
                 // create URL from string
                 URI endpointURL = endpointURLbuilder.build();
-    
+
                 // create HTTP object from URL
                 HttpGet request = new HttpGet(endpointURL);
-    
+
                 // access LUIS endpoint - analyze text
                 HttpResponse response = httpclient.execute(request);
-    
+
                 // get response
                 HttpEntity entity = response.getEntity();
-    
-    
-                if (entity != null) 
+
+
+                if (entity != null)
                 {
                     System.out.println(EntityUtils.toString(entity));
                 }
             }
-    
+
             catch (Exception e)
             {
                 System.out.println(e.getMessage());
             }
-        }   
-    }    
+        }
+    }
     ```
 
-1. 次の値を置き換えます。
+1. `YOUR-KEY` と `YOUR-ENDPOINT` の値を、実際の予測の**ランタイム** キーとエンドポイントに置き換えます。
 
-    * `YOUR-KEY` (スターター キーを使用)
-    * `YOUR-ENDPOINT` を、ご利用のエンドポイントに。 たとえば、「 `westus2.api.cognitive.microsoft.com` 」のように入力します。
+    |Information|目的|
+    |--|--|
+    |`YOUR-KEY`|32 文字の予測の**ランタイム** キー。|
+    |`YOUR-ENDPOINT`| 予測 URL エンドポイント。 たとえば、「 `replace-with-your-resource-name.api.cognitive.microsoft.com` 」のように入力します。|
 
 
-1. コマンド ラインから Java プログラムをコンパイルします。 
+1. コマンド ラインから Java プログラムをコンパイルします。
 
     ```console
     javac -cp ":lib/*" Predict.java
@@ -128,7 +143,7 @@ Java を使用して、[予測エンドポイント](https://aka.ms/luis-apim-v3
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    読みやすくするために書式設定された JSON 応答: 
+    読みやすくするために書式設定された JSON 応答:
 
     ```JSON
     {
@@ -171,15 +186,11 @@ Java を使用して、[予測エンドポイント](https://aka.ms/luis-apim-v3
     }
     ```
 
-## <a name="luis-keys"></a>LUIS キー
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-[!INCLUDE [Use authoring key for endpoint](../includes/starter-key-explanation.md)]
+このクイックスタートを使用して完了したときに、ファイル システムからファイルを削除します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-
-このクイックスタートを使用して完了したときに、ファイル システムからファイルを削除します。 
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Java を使った発話の追加とトレーニング](../get-started-get-model-rest-apis.md)

@@ -9,8 +9,8 @@
   items:
     - name: セルフサービス パスワード リセットを有効にする
       href: tutorial-enable-sspr.md
-    - name: アプリケーションの MFA を有効にする
-      href: tutorial-mfa-applications.md
+    - name: Azure Multi-Factor Authentication の有効化
+      href: tutorial-enable-azure-mfa.md
     - name: SSPR オンプレミス統合を有効にする
       href: tutorial-enable-writeback.md
     - name: Azure Identity Protection を統合する

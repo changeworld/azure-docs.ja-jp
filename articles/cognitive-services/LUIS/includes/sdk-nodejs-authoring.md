@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 01/23/2020
 ms.author: diberry
-ms.openlocfilehash: 58ee74f7b01738e67f9fddd39eb4eee59cdb65b6
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: e4bba00d6506684a3baf345806bdaa340f6970ca
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774222"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76909194"
 ---
 Node.js 用 Language Understanding (LUIS) 作成クライアント ライブラリの用途は次のとおりです。
 
@@ -189,7 +189,7 @@ LUIS アプリのモデルの中で最も重要なオブジェクトが、意図
 
 ## <a name="delete-a-language-understanding-app"></a>Language Understanding アプリの削除
 
-[app.deleteMethod](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest#deletemethod-string--models-appsdeletemethodoptionalparams-) メソッドを使用して、LUIS アプリを公開します。 これにより現在のアプリが削除されます。
+[app.deleteMethod](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest#deletemethod-string--models-appsdeletemethodoptionalparams-) メソッドを使用して、LUIS アプリを削除します。 これにより現在のアプリが削除されます。
 
 [!code-javascript[Publish LUIS client app](~/cognitive-services-quickstart-code/javascript/LUIS/luis_authoring_quickstart.js?name=AuthoringDeleteApp&highlight=2)]
 

@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 01/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9aace01e2f3d514ee5f4b406f4067e104151e5d6
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 3ea73e2ca20faea30294bc5d5e1788415095c39f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863327"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905373"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>Time Series Insights 環境に IoT Hub イベント ソースを追加する
 
@@ -50,11 +50,11 @@ ms.locfileid: "75863327"
 
 ## <a name="add-a-new-event-source"></a>新しいイベント ソースの追加
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. 左側のメニューで、 **[すべてのリソース]** を選びます。 Time Series Insights 環境を選択します。
 
-1. **[環境トポロジ]** で **[イベント ソース]** を選択し、 **[追加]** を選択します。
+1. **[設定]** で、 **[イベント ソース]** 、 **[追加]** の順に選択します。
 
    [![[イベント ソース] を選択し、[追加] ボタンを選択する](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-add-event-source.png)](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-add-event-source.png#lightbox)
 
@@ -72,7 +72,7 @@ ms.locfileid: "75863327"
 
        [![[New event source] (新しいイベント ソース) ウィンドウ - [Use IoT Hub from available subscriptions] (使用可能なサブスクリプションの Iot Hub を使用する) オプションで設定するプロパティ](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-create-configure-confirm.png)](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-create-configure-confirm.png#lightbox)
 
-       | プロパティ | [説明] |
+       | プロパティ | 説明 |
        | --- | --- |
        | サブスクリプション | 目的の IoT ハブが属しているサブスクリプション。 |
        | IoT Hub 名 | 選択した IoT ハブの名前。 |
@@ -83,7 +83,7 @@ ms.locfileid: "75863327"
 
       次の表に、**IoT Hub 設定を手動で行う**ために必要なプロパティを示します。
 
-       | プロパティ | [説明] |
+       | プロパティ | 説明 |
        | --- | --- |
        | サブスクリプション ID | 目的の IoT ハブが属しているサブスクリプション。 |
        | Resource group | この IoT Hub が作成されたリソース グループ名です。 |
@@ -93,7 +93,7 @@ ms.locfileid: "75863327"
 
     * どちらのオプションも以下の構成オプションを共有します。
 
-       | プロパティ | [説明] |
+       | プロパティ | 説明 |
        | --- | --- |
        | IoT Hub コンシューマー グループ | IoT Hub からイベントを読み取るコンシューマー グループ。 お使いのイベント ソース専用のコンシューマー グループを使用することを強くお勧めします。 |
        | イベントのシリアル化の形式 | 現在のところ、JSON が唯一利用できるシリアル化形式です。 イベント メッセージは、この形式である必要があります。そうでないとデータを読み取ることができません。 |

@@ -1,28 +1,24 @@
 ---
-title: クイック スタート:音声、意図、エンティティを認識する、Python - Speech サービス
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 01/02/2020
+ms.date: 01/27/2020
 ms.topic: include
-ms.author: erhopf
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: f2a46b8a0868aaa1097dd7f1ae738a2a3e06e3b8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9bc514c32d97958d8ab154dc2c5533747f380e86
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772899"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900310"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に、以下の操作を行います。
 
-* 今回初めて Python プロジェクトを作成する場合は、このガイドを使用して<a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md" target="_blank">空のサンプル プロジェクトを作成</a>します。
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">開発環境に対応した Speech SDK をインストールします</a>。
+* 今回初めて Python プロジェクトを作成する場合は、このガイドを使用して<a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md" target="_blank">空のサンプル プロジェクトを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>します。
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">開発環境に対応した Speech SDK をインストールします<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>意図認識用の LUIS アプリを作成する
 
@@ -65,7 +61,7 @@ Speech SDK では、既定で認識される言語が en-us です。ソース�
 
 ## <a name="add-a-languageunderstandingmodel-and-intents"></a>LanguageUnderstandingModel と意図を追加する
 
-`LanguageUnderstandingModel` と意図認識エンジンを関連付け、認識させる意図を追加する必要があります。 ホーム オートメーション用のあらかじめ構築されたドメインの意図を使用します。 
+`LanguageUnderstandingModel` と意図認識エンジンを関連付け、認識させる意図を追加する必要があります。 ホーム オートメーション用のあらかじめ構築されたドメインの意図を使用します。
 
 次のコードを `IntentRecognizer` の下に挿入します。 `"YourLanguageUnderstandingAppId"` は必ずお客様の LUIS app ID で置き換えてください。 
 
@@ -90,7 +86,7 @@ Speech SDK では、既定で認識される言語が en-us です。ソース�
 
 ## <a name="check-your-code"></a>コードを確認する
 
-この時点で、コードは次のようになります。  
+この時点で、コードは次のようになります。
 
 > [!NOTE]
 > このバージョンにはいくつかのコメントを追加してあります。

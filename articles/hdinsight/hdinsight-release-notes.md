@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/24/2020
-ms.openlocfilehash: 9d484afb1d80ee6b110438cc3ddea1d3d67ad999
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 01/29/2020
+ms.openlocfilehash: 091ca4d632d89405d85c66e264aff9867979fcd4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844685"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905234"
 ---
 # <a name="release-notes"></a>リリース ノート
 
@@ -68,31 +68,35 @@ HDInsight は引き続き、クラスターの信頼性とパフォーマンス�
 
 ## <a name="known-issues"></a>既知の問題
 
-2020 年 1 月 24 日の時点で、アクティブな問題が発生しており、Jupyter ノートブックを使用しようとするとエラーが表示される場合があります。 この問題を修正するには、以下の手順を使用してください。 最新の情報が必要な場合、または追加の質問をする場合は、こちらの [MSDN の投稿](https://social.msdn.microsoft.com/Forums/en-us/8c763fb4-79a9-496f-a75c-44a125e934ac/hdinshight-create-not-create-jupyter-notebook?forum=hdinsight)や、こちらの [StackOverflow の投稿](https://stackoverflow.com/questions/59687614/azure-hdinsight-jupyter-notebook-not-working/59831103)もご覧いただけます。 この問題が修正された場合は、このページも更新されます。
+2020 年 1 月 29 日の時点で、アクティブな問題が発生しており、Jupyter ノートブックを使用しようとするとエラーが表示される場合があります。 この問題を修正するには、以下の手順を使用してください。 最新の情報が必要な場合、または追加の質問をする場合は、こちらの [MSDN の投稿](https://social.msdn.microsoft.com/Forums/en-us/8c763fb4-79a9-496f-a75c-44a125e934ac/hdinshight-create-not-create-jupyter-notebook?forum=hdinsight)や、こちらの [StackOverflow の投稿](https://stackoverflow.com/questions/59687614/azure-hdinsight-jupyter-notebook-not-working/59831103)もご覧いただけます。 この問題が修正された場合は、このページも更新されます。
 
 **エラー**
 
-* "ValueError: Cannot convert notebook to v5 because that version doesn't exist" (ValueError: ノートブックを v5 に変換できません。このバージョンが存在しないためです)
+* ValueError:Cannot convert notebook to v5 because that version doesn't exist (ValueError: ノートブックを v5 に変換できません。このバージョンが存在しないためです)
 * "Error loading notebook An unknown error occurred while loading this notebook." (ノートブックの読み込み中のエラー。このノートブックの読み込み中に不明なエラーが発生しました。) "This version can load notebook formats v4 or earlier." (このバージョンでは、v4 以前のノートブック形式を読み込むことができます。)
 
 **原因** 
 
-クラスター上の _version.py ファイルが 4.4.x.## ではなく 5.x.x に更新されました。
+クラスター上の _version.py ファイルが 4.4.x.## ではなく 5.x.x に更新されました。または Ambari を再起動する必要があります。
 
 **ソリューション**
 
 新しい Jupyter ノートブックを作成していて、上記のいずれかのエラーを受け取った場合は、次の手順を実行して問題を修正してください。
 
-1. Web ブラウザーで https://CLUSTERNAME.azurehdinsight.net にアクセスして Ambari を開きます。ここで、CLUSTERNAME はクラスターの名前です。
+1. Web ブラウザーで `https://CLUSTERNAME.azurehdinsight.net` にアクセスして Ambari を開きます。ここで、CLUSTERNAME はクラスターの名前です。
 1. Ambari の左側のメニューで **[Jupyter]** をクリックし、 **[Service Actions]\(サービス アクション\)** で **[Stop]\(停止\)** をクリックします。
 1. Jupyter サービスが実行されているクラスター ヘッドノードに SSH 接続します。
 1. sudo モードでファイル /usr/bin/anaconda/lib/python2.7/site-packages/nbformat/_version.py を開きます。
-1. 既存のエントリに、以下のようなコードが表示されます。 
+1. version_info の値を確認します
+1. version_info の値が以下のように設定されている場合: 
 
     version_info = (5, 0, 3)
 
-    このエントリを以下に変更します。 
+    このエントリを以下のように変更します。 
     
     version_info = (4, 4, 0)
-1. ファイルを保存します。
+
+    ファイルを保存します。 
+
+    version_info が既に (4, 4, 0) に設定されている場合は、Ambari のみを再起動する必要があるため、次の手順に進みます。追加の変更は必要ありません。
 1. Ambari に戻り、 **[Service Actions]\(サービス アクション\)** で **[Restart All]\(すべて再起動\)** をクリックします。

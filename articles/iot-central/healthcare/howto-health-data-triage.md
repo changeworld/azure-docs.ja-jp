@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 40e850bcbd177b15c91e57ec369c6b04963ffb84
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 99b27ec53d955079b5f73986408e698955c0969b
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132285"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77021646"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>チュートリアル:Power BI プロバイダー ダッシュボードを構築する
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-患者の継続的な監視ソリューションを構築するときは、病院看護チームが患者のデータを視覚化するためのダッシュボードを作成することも必要になる場合があります。 このチュートリアルでは、IoT Central の患者の継続的なモニタリング アプリケーション テンプレートから Power BI のリアルタイム ストリーミング ダッシュボードを作成する手順について説明します。
+
+患者の継続的な監視ソリューションを構築するときは、病院看護チームが患者のデータを視覚化するためのダッシュボードも作成できます。 このチュートリアルでは、IoT Central の患者の継続的なモニタリング アプリケーション テンプレートから Power BI のリアルタイム ストリーミング ダッシュボードを作成する方法を説明します。
 
 >[!div class="mx-imgBorder"]
 >![ダッシュボードの GIF](media/dashboard-gif-3.gif)
@@ -51,7 +51,7 @@ ms.locfileid: "74132285"
 * Power BI サービス アカウント。 まだない場合は、[Power BI サービスの無料試用版アカウントを作成する](https://app.powerbi.com/)ことができます。 これまで Power BI を使ったことがない場合は、[Power BI の使用開始](https://docs.microsoft.com/power-bi/service-get-started)に関する記事を参照してください。
 
 ## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>Azure Event Hubs への継続的データ エクスポートをセットアップする
-最初に、Azure IoT Central アプリ テンプレートからサブスクリプションの Azure イベント ハブへの継続的データ エクスポートを設定する必要があります。 これは、[Event Hubs へのエクスポート](https://docs.microsoft.com/azure/iot-central/preview/howto-export-data)に関する Azure IoT Central チュートリアルの手順に従って行うことができます。 このチュートリアルでは、テレメトリ用のエクスポートのみが必要です。
+最初に、Azure IoT Central アプリ テンプレートからサブスクリプションの Azure イベント ハブへの継続的データ エクスポートを設定する必要があります。 これは、[Event Hubs へのエクスポート](https://docs.microsoft.com/azure/iot-central/core/howto-export-data)に関する Azure IoT Central チュートリアルの手順に従って行うことができます。 このチュートリアルでは、テレメトリ用のエクスポートのみが必要です。
 
 ## <a name="create-a-power-bi-streaming-dataset"></a>Power BI ストリーミング データセットを作成する
 
@@ -77,7 +77,7 @@ Power BI でのデータセットのストリーミングについて詳しく�
 ## <a name="connect-your-logic-app-to-azure-event-hubs"></a>ロジック アプリを Azure Event Hubs に接続する
 ロジック アプリを Azure Event Hubs に接続するには、[Azure Event Hubs と Azure Logic Apps でのイベントの送信](https://docs.microsoft.com/azure/connectors/connectors-create-api-azure-event-hubs#add-event-hubs-action)に関するドキュメントに記載されている手順に従ってください。 いくつかの推奨されるパラメーターを次に示します。
 
-|パラメーター|値|
+|パラメーター|Value|
 |---|---|
 |Content type|application/json|
 |Interval|3|
@@ -86,12 +86,12 @@ Power BI でのデータセットのストリーミングについて詳しく�
 このステップの最後では、ロジック アプリ デザイナーは次のようになります。
 
 >[!div class="mx-imgBorder"] 
->![Logic Apps を Event Hubs に接続する](media/eh-logic-app.png)
+>![Event Hubs に接続した Logic Apps](media/eh-logic-app.png)
 
 ## <a name="stream-data-to-power-bi-from-your-logic-app"></a>ロジック アプリから Power BI にデータをストリーミングする
 次のステップでは、イベント ハブからのデータを解析して、前に作成した Power BI データセットにストリーミングします。
 
-1. これを行う前に、デバイスからイベント ハブに送信される JSON ペイロードを理解しておく必要があります。 そのためには、この[サンプル スキーマ](https://docs.microsoft.com/azure/iot-central/preview/howto-export-data#telemetry)を確認し、自分のスキーマに合わせて変更するか、[Service Bus エクスプローラー](https://github.com/paolosalvatori/ServiceBusExplorer)を使用してメッセージを調べます。 患者の継続的なモニタリング アプリケーションを使用している場合、メッセージは次のようになります。
+1. これを行う前に、デバイスからイベント ハブに送信される JSON ペイロードを理解しておく必要があります。 そのためには、この[サンプル スキーマ](https://docs.microsoft.com/azure/iot-central/core/howto-export-data#telemetry)を確認し、自分のスキーマに合わせて変更するか、[Service Bus エクスプローラー](https://github.com/paolosalvatori/ServiceBusExplorer)を使用してメッセージを調べます。 患者の継続的なモニタリング アプリケーションを使用している場合、メッセージは次のようになります。
 
 **Smart Vitals Patch テレメトリ**
 
@@ -123,7 +123,7 @@ Power BI でのデータセットのストリーミングについて詳しく�
 }
 ```
 
-**プロパティ**
+**Properties**
 
 ```json
 {
@@ -141,10 +141,10 @@ Power BI でのデータセットのストリーミングについて詳しく�
 
 2. JSON ペイロードの調査が済んだら、ロジック アプリ デザイナーに戻り、 **[+ 新しいステップ]** を選択します。 **[変数を初期化する]** を探し、次のステップとして追加し、以下のパラメーターを入力します。
 
-    |パラメーター|値|
+    |パラメーター|Value|
     |---|---|
-    |名前|Interface Name|
-    |種類|string|
+    |Name|Interface Name|
+    |Type|String|
 
     **[保存]** をクリックします。 
 
@@ -197,7 +197,7 @@ Power BI でのデータセットのストリーミングについて詳しく�
 
 追加するタイルの種類を選択し、必要に応じてアプリをカスタマイズします。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このアプリケーションを引き続き使用しない場合は、次の手順でリソースを削除します。
 
@@ -205,6 +205,6 @@ Power BI でのデータセットのストリーミングについて詳しく�
 
 2. お使いの IoT Central アプリケーションで、[管理] タブに移動し、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [患者の継続的なモニタリングのアーキテクチャのガイダンス](concept-continuous-patient-monitoring-architecture.md)を確認します。

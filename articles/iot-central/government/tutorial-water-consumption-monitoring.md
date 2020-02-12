@@ -8,27 +8,27 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 0b100e0bebc7c5b26449e396650da5434334075d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 1bad4ab6320e757ac766776a95b8dbe6ebaa3259
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112626"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016427"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-in-iot-central"></a>チュートリアル:IoT Central で水消費量のモニタリング アプリケーションを作成する
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 このチュートリアルでは、Azure IoT Central の水消費量のモニタリング アプリケーション テンプレートから IoT Central の水消費量のモニタリング アプリケーションを作成する方法について説明します。 
 
-このチュートリアルでは、次の方法について説明します。 
+このチュートリアルでは、次の内容を学習します。 
 
 > [!div class="checklist"]
 > * Azure IoT Central の**Water consumption monitoring (水消費量のモニタリング)** テンプレートを使用して、水消費量のモニタリング アプリケーションを作成する
 > * オペレーター ダッシュボードの探索とカスタマイズ 
 > * デバイス テンプレートの探索
-> * シミュレートされたデバイスの探索
-> * ルールの探索と構成
+> * シミュレートされたデバイスを探索する
+> * ルールを探索して構成する
 > * ジョブの構成
 > * ホワイトラベリングを使用してアプリケーション ブランドをカスタマイズする
 
@@ -39,7 +39,7 @@ ms.locfileid: "74112626"
 
 ## <a name="create-water-consumption-monitoring-app-in-iot-central"></a>IoT Central で水消費量のモニタリング アプリを作成する
 
-このセクションでは、Azure IoT Central の**Water consumption monitoring template (水消費量のモニタリング テンプレート)** を使用して、IoT Central で水消費量のモニタリング アプリケーションを作成します。
+このセクションでは、Azure IoT Central の **Water consumption monitoring template (水消費量のモニタリング テンプレート)** を使用して、IoT Central で水消費量のモニタリング アプリケーションを作成します。
 
 新しい Azure IoT Central の水消費量のモニタリング アプリケーションを作成するには:  
 
@@ -60,11 +60,13 @@ ms.locfileid: "74112626"
     * **URL**: IoT Central によって、アプリケーション名に基づいて、URL が自動生成されます。 好みに合わせて URL を更新することができます。 URL は後で変更することもできます。 
     * Azure サブスクリプションをお持ちの場合は、"*ディレクトリ、Azure サブスクリプション、リージョン*" を入力します。 サブスクリプションをお持ちでない場合は、**7 日間の無料試用版**を有効にし、必須の連絡先情報を入力できます。  
 
-    ディレクトリとサブスクリプションの詳細については、[アプリケーションの作成のクイック スタート](../preview/quick-deploy-iot-central.md)に関するページを参照してください。
+    ディレクトリとサブスクリプションの詳細については、[アプリケーションの作成のクイック スタート](../core/quick-deploy-iot-central.md)に関するページを参照してください。
 
 5. ページの下部にある **[作成]** ボタンをクリックします。 
 
     ![Azure IoT Central の [Create Application]\(アプリケーションの作成\) ページ](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring.png)
+
+    ![Azure IoT Central のアプリケーションの作成の課金情報](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring-billinginfo.png)
 
 6. これで、Azure IoT Central の **Water consumption monitoring (水消費量のモニタリング)** テンプレートを使用して、水消費量のモニタリング アプリを作成できました。
 
@@ -93,7 +95,7 @@ ms.locfileid: "74112626"
 
 * **Average water flow KPI tile (平均水流量 KPI タイル)** : たとえば*過去 30 分間の平均*を表示するように KPI タイルが構成されています。 KPI タイルをカスタマイズし、別の種類や時間の範囲に設定できます。
 
-* ダッシュボードの右側に、**Close valve (バルブを閉じる)** 、**Open valve (バルブを開く)** 、**Set valve position (バルブの位置を設定する)** ための *Device Command (デバイス コマンド)* タイルがあります。 コマンドをクリックすると、シミュレートされたデバイス コマンド ページに移動します。 IoT Central で、*コマンド*は*デバイス機能*の種類であり、これについては、このチュートリアルの**デバイス テンプレートのセクション**で後ほど説明します。
+* ダッシュボードの右側に、**Close valve (バルブを閉じる)** 、**Open valve (バルブを開く)** 、**Set valve position (バルブの位置を設定する)** ための *Device Command (デバイス コマンド)* タイルがあります。 コマンドをクリックすると、シミュレートされたデバイスのコマンド ページに移動します。 IoT Central で、"*コマンド*" は "*デバイス機能*" の種類であり、これについては、このチュートリアルの**デバイス テンプレートのセクション**で後ほど説明します。
 
 *  **Water distribution area map (配水区域マップ)** : マップでは Azure Maps が使用されており、Azure IoT Central で直接構成できます。 マップ タイルにデバイスの場所が表示されています。 マップの上にポインターを置いて、マップ上で*ズームイン*、*ズームアウト*、*展開*などのコントロールを試してみてください。 
 
@@ -105,7 +107,7 @@ ms.locfileid: "74112626"
 
 * **Reset alert threshold content tile (アラートしきい値のリセット コンテンツ タイル)** : アクション ページへのリンクを埋め込むアクション コンテンツ タイルへの呼び出しを含めることができます。 この例では、アラートしきい値のリセットによって、アプリケーション **Jobs** に移動し、そこでデバイスのプロパティの更新を実行できます。これについては、このチュートリアルの**ジョブの構成**セクションで後ほど説明します。
 
-* **Property tiles (プロパティ タイル)** : ダッシュボードには、デバイスのプロパティである **Valve operational info (バルブ操作情報)** 、**Flow alert thresholds (水流量アラートしきい値)** 、および **Maintenance info (メンテナンス情報)** が表示されます。  
+* **Property tiles (プロパティ タイル)** : ダッシュボードには、**Valve operational info (バルブ操作情報)** 、**Flow alert thresholds (水流量アラートしきい値)** 、および **Maintenance info (メンテナンス情報)** が表示されます。 
 
 
 ### <a name="customize-dashboard"></a>ダッシュボードのカスタマイズ 
@@ -126,7 +128,7 @@ Azure IoT Central のデバイス テンプレートは、デバイスの機能�
 デバイス テンプレートを表示するには:
 
 1. IoT Central で、アプリケーションの左側のナビゲーション ウィンドウにある **[デバイス テンプレート]** をクリックします。 
-    [デバイス テンプレート] リストに、2 つのデバイス テンプレート **Flow meter (流量計)** と **Smart Valve (スマート バルブ)** が表示されます。
+    [デバイス テンプレート] リストに、2 つのデバイス テンプレート **Flow meter (流量計)** と **Smart Valve (スマート バルブ)** が表示されます
 
    ![デバイス テンプレート](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate.png)
 
@@ -143,10 +145,10 @@ Azure IoT Central のデバイス テンプレートは、デバイスの機能�
 4. 測定単位を更新するか、*最小値*と*最大値*を設定します
 5. すべての変更を**保存**します 
 
-### <a name="add-a-cloud-property"></a>クラウド プロパティの追加 
+### <a name="add-a-cloud-property"></a>クラウド プロパティを追加する 
 1. デバイス テンプレート メニューから **[クラウド プロパティ]** に移動します。
 2. **[+ クラウド プロパティの追加]** をクリックして、新しいクラウド プロパティを追加します。 
-    IoT Central では、デバイスに関連するプロパティを追加できます。 たとえば、クラウドのプロパティは、設置区域、アセット情報、メンテナンス情報などに固有のアラートのしきい値などになります。 
+    IoT Central では、デバイスに関連するプロパティを追加できます。 たとえば、クラウドのプロパティは、設置区域、アセット情報、その他のメンテナンス情報などに固有のアラートのしきい値などになります。 
 3. すべての変更を**保存**します 
  
 ### <a name="views"></a>ビュー 
@@ -155,12 +157,12 @@ Azure IoT Central のデバイス テンプレートは、デバイスの機能�
   ![デバイス テンプレートのビュー](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate-views.png)
 
 ### <a name="publish"></a>発行 
-何らかの変更を行った場合は、必ずデバイス テンプレートを**発行**してください。 
+なんらかの変更を行った場合は、必ずデバイス テンプレートを**発行**してください。 
 
 ### <a name="create-a-new-device-template"></a>新しいデバイス テンプレートの作成 
 - 新しいデバイス テンプレートを作成するには、 **[+ 新規]** を選択し、作成プロセスに従います。 カスタム デバイス テンプレートを最初から作成することも、Azure デバイス カタログからデバイス テンプレートを選択することもできます。 
 
-## <a name="explore-simulated-devices"></a>シミュレートされたデバイスの探索
+## <a name="explore-simulated-devices"></a>シミュレートされたデバイスを探索する
 IoT Central では、シミュレートされたデバイスを作成して、デバイス テンプレートとアプリケーションをテストできます。 **Water consumption monitoring (水消費量のモニタリング)** アプリケーションには、*Flow meter (流量計)* と *Smart Valve (スマート バルブ)* デバイス テンプレートにマップされた、2 つのシミュレートされたデバイスがあります。 
 
 ### <a name="to-view-the-devices"></a>デバイスを表示するには:
@@ -178,10 +180,10 @@ IoT Central では、シミュレートされたデバイスを作成して、�
 > [!NOTE]
 > すべてのタブがデバイス テンプレート ビューから構成されていることに注意してください。
 
-### <a name="add-new-devices"></a>新しいデバイスの追加
+### <a name="add-new-devices"></a>新しいデバイスを追加する
 * 新しいデバイスを追加するには、 **[デバイス]** タブの **[+ 新規]** をクリックします。 
 
-## <a name="explore-and-configure-rules"></a>ルールの探索と構成
+## <a name="explore-and-configure-rules"></a>ルールを探索して構成する
 
 Azure IoT Central では、ルールを作成して、デバイスのテレメトリを自動的に監視し、1 つまたは複数の条件が満たされたときにアクションをトリガーできます。 アクションには、メール通知の送信、または他のサービスにデータを送信する Microsoft Flow アクションや Webhook アクションのトリガーを含めることができます。
 
@@ -239,7 +241,7 @@ IoT Central では、ジョブを使用して、複数のデバイスで、デ�
 2. 最後に、アプリケーションのタイトルで **[設定]** をクリックして、 **[テーマ]** を変更することもできます。 
 
   
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このアプリケーションを引き続き使用しない場合は、次の手順でアプリケーションを削除します。
 
@@ -247,6 +249,6 @@ IoT Central では、ジョブを使用して、複数のデバイスで、デ�
 2. [アプリケーションの設定] を選択し、ページの下部にある [削除] ボタンをクリックします。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [水消費量のモニタリングの概念](./concepts-waterconsumptionmonitoring-architecture.md)の詳細を確認する

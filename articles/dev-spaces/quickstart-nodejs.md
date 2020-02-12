@@ -6,36 +6,29 @@ ms.topic: quickstart
 description: このクイックスタートでは、Azure Dev Spaces と Visual Studio Code を使用し、Azure Kubernetes Service 上で Node.js アプリケーションのデバッグと迅速な反復型開発を行う方法について説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 557e5a541b175f1641142779de23bb83ab212831
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: cd784ed616b2938f4c57bad47045f0d44ad25a69
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290511"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022530"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-nodejs---azure-dev-spaces"></a>クイック スタート:Visual Studio Code と Node.js を使用して Kubernetes 上でデバッグと反復処理を行う - Azure Dev Spaces
 
-このガイドでは、以下の方法について説明します。
-
-- Azure でマネージド Kubernetes クラスターを使用して Azure Dev Spaces をセットアップする。
-- Visual Studio Code を使用して、コンテナー内のコードを繰り返し開発する。
-- Visual Studio Code で開発空間のコードをデバッグする。
-
-Azure Dev Spaces では、次のものを使用してデバッグと反復処理を行うこともできます。
-- [Java と Visual Studio Code](quickstart-java.md)
-- [.NET Core と Visual Studio Code](quickstart-netcore.md)
-- [.NET Core と Visual Studio](quickstart-netcore-visualstudio.md)
+このクイックスタートでは、マネージド Kubernetes クラスターを使用して Azure Dev Spaces を設定し、Visual Studio Code で Node.js アプリを使用して、コンテナー内のコードを反復的に開発およびデバッグします。 Azure Dev Spaces を使用すると、最小限の開発用マシンのセットアップで Azure Kubernetes Service (AKS) 内のアプリケーションのすべてのコンポーネントをデバッグしてテストできます。 
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、[無料のアカウント](https://azure.microsoft.com/free)を作成できます。
-- [Visual Studio Code がインストールされていること](https://code.visualstudio.com/download)。
-- Visual Studio Code 用の [Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) 拡張機能がインストールされていること。
-- [Azure CLI がインストールされていること](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
+- [最新バージョンの Node.js](https://nodejs.org/download/)。
+- [Visual Studio Code](https://code.visualstudio.com/download)。
+- Visual Studio Code 用の [Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) 拡張機能。
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+- [Git](https://www.git-scm.com/downloads).
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成する
 
-[サポートされているリージョン][supported-regions]で AKS クラスターを作成する必要があります。 下記のコマンドを使用すると、*MyResourceGroup* というリソース グループと *MyAKS* という AKS クラスターが作成されます。
+[サポートされているリージョン][supported-regions]で AKS クラスターを作成する必要があります。 次のコマンドを使用すると、*MyResourceGroup* というリソース グループと *MyAKS* という AKS クラスターが作成されます。
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
@@ -44,7 +37,7 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --gen
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>AKS クラスターで Azure Dev Spaces を有効にする
 
-`use-dev-spaces` コマンドを使用して AKS クラスターで Dev Spaces を有効にし、プロンプトに従います。 下記のコマンドを使用すると、*MyResourceGroup* グループ内の *MyAKS* クラスターで Dev Spaces が有効になり、*default* 開発空間が作成されます。
+`use-dev-spaces` コマンドを使用して AKS クラスターで Dev Spaces を有効にし、プロンプトに従います。 次のコマンドを使用すると、*MyResourceGroup* グループ内の *MyAKS* クラスターで Dev Spaces が有効になり、*default* 開発空間が作成されます。
 
 > [!NOTE]
 > この `use-dev-spaces` コマンドでは、Azure Dev Spaces CLI がまだインストールされていない場合にはこれもインストールされます。 Azure Dev Spaces CLI を Azure Cloud Shell にインストールすることはできません。
@@ -79,11 +72,11 @@ git clone https://github.com/Azure/dev-spaces
 
 ## <a name="prepare-the-sample-application-in-visual-studio-code"></a>Visual Studio Code でサンプル アプリケーションを準備する
 
-Visual Studio Code を開き、 *[ファイル]* 、 *[開く]* の順にクリックし、*dev-spaces/samples/nodejs/getting-started/webfrontend* ディレクトリに移動して、 *[開く]* をクリックします。
+Visual Studio Code を開き、 **[ファイル]** 、 **[開く]** の順に選択し、*dev-spaces/samples/nodejs/getting-started/webfrontend* ディレクトリに移動して、 **[開く]** を選択します。
 
 これで、*webfrontend* プロジェクトが Visual Studio Code で開かれました。 アプリケーションをご利用の開発スペースで実行するには、コマンド パレット内の Azure Dev Spaces 拡張機能を使用して Docker および Helm チャート資産を作成します。
 
-Visual Studio Code でコマンド パレットを開くには、 *[表示]* 、 *[コマンド パレット]* の順にクリックします。 「`Azure Dev Spaces`」の入力を開始して、`Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces` をクリックします。
+Visual Studio Code でコマンド パレットを開くには、 **[表示]** 、 **[コマンド パレット]** の順に選択します。 `Azure Dev Spaces` の入力を開始し、 **[Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces]\(Azure Dev Spaces: Azure Dev Spaces の構成ファイルを準備する\)** を選択します。
 
 ![Azure Dev Spaces の構成ファイルを準備する](./media/common/command-palette.png)
 
@@ -98,24 +91,24 @@ Visual Studio Code でコマンド パレットを開くには、 *[表示]* 、
 
 ## <a name="build-and-run-code-in-kubernetes-from-visual-studio-code"></a>Visual Studio Code で Kubernetes のコードをビルドして実行する
 
-左側の *[デバッグ]* アイコンをクリックし、上部の *[Launch Server (AZDS)]\(サーバーの起動 (AZDS)\)* をクリックします。
+左側の **[デバッグ]** アイコンを選択し、上部の **[Launch Server (AZDS)]\(サーバーの起動 (AZDS)\)** を選択します。
 
 ![サーバーの起動](media/get-started-node/debug-configuration-nodejs.png)
 
-このコマンドによって、Azure Dev Spaces のサービスがビルドされ、稼働します。 下部にある *[ターミナル]* ウィンドウに、Azure Dev Spaces が動作しているサービスのビルド出力と URL が表示されます。 "*デバッグ コンソール*" にログの出力が表示されます。
+このコマンドによって、Azure Dev Spaces のサービスがビルドされ、稼働します。 下部にある **[ターミナル]** ウィンドウに、Azure Dev Spaces が動作しているサービスのビルド出力と URL が表示されます。 "**デバッグ コンソール**" にログの出力が表示されます。
 
 > [!Note]
-> "*コマンド パレット*" に Azure Dev Spaces コマンドが表示されない場合は、[Azure Dev Spaces 用 Visual Studio Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)がインストールされていることを確認してください。 また、Visual Studio Code で *dev-spaces/samples/nodejs/getting-started/webfrontend* ディレクトリを開いたことを確認してください。
+> "**コマンド パレット**" に Azure Dev Spaces コマンドが表示されない場合は、[Azure Dev Spaces 用 Visual Studio Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)がインストールされていることを確認してください。 また、Visual Studio Code で *dev-spaces/samples/nodejs/getting-started/webfrontend* ディレクトリを開いたことを確認してください。
 
 パブリック URL を開くと、実行中のサービスを確認できます。
 
-*[デバッグ]* 、 *[デバッグの停止]* の順にクリックして、デバッガーを停止します。
+**[デバッグ]** 、 **[デバッグの停止]** の順に選択して、デバッガーを停止します。
 
 ## <a name="update-code"></a>コードの更新
 
-サービスの更新バージョンをデプロイするには、ご自分のプロジェクトにある任意のファイルを更新して、 *[Launch Server]\(サーバーの起動\)* を再実行します。 次に例を示します。
+サービスの更新バージョンをデプロイするには、ご自分のプロジェクトにある任意のファイルを更新して、 **[Launch Server]\(サーバーの起動\)** を再実行します。 次に例を示します。
 
-1. ご利用のアプリケーションがまだ実行されている場合は、 *[デバッグ]* 、 *[デバッグの停止]* の順にクリックしてそれを停止します。
+1. ご利用のアプリケーションがまだ実行されている場合は、 **[デバッグ]** 、 **[デバッグの停止]** の順に選択してそれを停止します。
 1. [`server.js` の 13 行目](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13)を以下に更新します。
     
     ```javascript
@@ -123,27 +116,27 @@ Visual Studio Code でコマンド パレットを開くには、 *[表示]* 、
     ```
 
 1. 変更を保存します。
-1. *[Launch Server]\(サーバーの起動\)* を再実行します。
+1. **[Launch Server]\(サーバーの起動\)** を再実行します。
 1. 稼働中のご自分のサービスに移動して、変更を確認します。
-1. *[デバッグ]* 、 *[デバッグの停止]* の順にクリックして、ご自分のアプリケーションを停止します。
+1. **[デバッグ]** 、 **[デバッグの停止]** の順に選択して、ご自分のアプリケーションを停止します。
 
 ## <a name="setting-and-using-breakpoints-for-debugging"></a>デバッグ用のブレークポイントを設定して使用する
 
-*[Launch Server (AZDS)]\(サーバーの起動 (AZDS)\)* を使用して、サービスを開始します。
+**[Launch Server (AZDS)]\(サーバーの起動 (AZDS)\)** を使用して、サービスを開始します。
 
-*[表示]* 、 *[エクスプローラー]* の順にクリックして、 *[エクスプローラー]* ビューに戻ります。 `server.js` を開き、13 行目のどこかをクリックして、カーソルをそこに置きます。 ブレークポイントを設定するには、*F9* キーを押すか、 *[デバッグ]* 、 *[ブレークポイントの設定/解除]* の順にクリックします。
+**[表示]** 、 **[エクスプローラー]** の順に選択して、[エクスプローラー] ビューに戻ります。 *server.js* を開き、13 行目のどこかをクリックして、カーソルをそこに置きます。 ブレークポイントを設定するには、**F9** キーを押すか、 **[デバッグ]** 、 **[ブレークポイントの設定/解除]** の順に選択します。
 
-ブラウザーでサービスを開き、メッセージが表示されないことに注目します。 Visual Studio Code に戻って、13 行目が強調表示されていることを確認します。 設定したブレークポイントによって、13 行目でサービスが一時停止されました。 サービスを再開するには、*F5* キーを押すか、 *[デバッグ]* 、 *[続行]* の順にクリックします。 ブラウザーに戻って、メッセージが表示されたことに注目します。
+ブラウザーでサービスを開き、メッセージが表示されないことに注目します。 Visual Studio Code に戻って、13 行目が強調表示されていることを確認します。 設定したブレークポイントによって、13 行目でサービスが一時停止されました。 サービスを再開するには、**F5** キーを押すか、 **[デバッグ]** 、 **[続行]** の順に選択します。 ブラウザーに戻って、メッセージが表示されたことに注目します。
 
 デバッガーがアタッチされた状態で Kubernetes でサービスを稼働している間、デバッグ情報 (呼び出し履歴、ローカル変数、例外情報など) にフル アクセスできます。
 
-`server.js` の 13 行目にカーソルを置いて *F9* キーを押すことで、ブレークポイントを削除します。
+*server.js* の 13 行目にカーソルを置いて **F9** キーを押すことで、ブレークポイントを削除します。
 
-*[デバッグ]* 、 *[デバッグの停止]* の順にクリックして、デバッガーを停止します。
+**[デバッグ]** 、 **[デバッグの停止]** の順に選択して、デバッガーを停止します。
 
 ## <a name="update-code-from-visual-studio-code"></a>Visual Studio Code でコードを更新する
 
-デバッグ モードを *[Attach to a Server (AZDS)]\(サーバーへのアタッチ (AZDS)\)* に変更して、サービスを開始します。
+デバッグ モードを **[Attach to a Server (AZDS)]\(サーバーへのアタッチ (AZDS)\)** に変更して、サービスを開始します。
 
 ![](media/get-started-node/attach-nodejs.png)
 
@@ -151,7 +144,7 @@ Visual Studio Code でコマンド パレットを開くには、 *[表示]* 、
 
 サービスの開始後、ブラウザーを使用してそこに移動し、それを操作します。
 
-サービスが稼働している間に、VS Code に戻って `server.js` の 13 行目を更新します。 次に例を示します。
+サービスが稼働している間に VS Code に戻り、*server.js* の 13 行目を更新します。 次に例を示します。
 ```javascript
     res.send('Hello from webfrontend in Azure while debugging!');
 ```

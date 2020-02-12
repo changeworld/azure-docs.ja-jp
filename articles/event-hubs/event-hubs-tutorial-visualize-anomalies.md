@@ -8,13 +8,13 @@ ms.author: shvija
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
-ms.date: 12/20/2019
-ms.openlocfilehash: 1fc791519fd32b35bdbe3a69caec3c64e3ce3178
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/15/2020
+ms.openlocfilehash: 8fa123772ae380cd000c414c63bdf3908d279751
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437145"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906386"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>チュートリアル:Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する
 
@@ -156,14 +156,14 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 ## <a name="run-app-to-produce-test-event-data"></a>アプリを実行してテスト イベント データを生成する
 
-GitHub の Event Hubs の[サンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet)には、テスト データを生成する [Anomaly Detector アプリ](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/AnomalyDetector)が含まれています。 これは、クレジット カード トランザクションをイベント ハブに書き込むことによってクレジット カードの使用をシミュレートします。異常のタグが付けられるように、複数の場所での同じクレジット カードの複数のトランザクションをときどき書き込みます。 このアプリを実行するには、次の手順を実行します。 
+GitHub の Event Hubs の[サンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet)には、テスト データを生成する Anomaly Detector アプリが含まれています。 これは、クレジット カード トランザクションをイベント ハブに書き込むことによってクレジット カードの使用をシミュレートします。異常のタグが付けられるように、複数の場所での同じクレジット カードの複数のトランザクションをときどき書き込みます。 このアプリを実行するには、次の手順を実行します。 
 
 1. GitHub から [Azure Event Hubs のサンプル](https://github.com/Azure/azure-event-hubs/archive/master.zip)をダウンロードし、ローカルに解凍します。
+2. **\azure-event-hubs-master\samples\DotNet\\** フォルダーに移動します。 
+3. **Azure.Messaging.EventHubs\AnomalyDetector\\** フォルダーに切り替え、**AnomalyDetector.sln** をダブルクリックしてソリューションを Visual Studio で開きます。 
 
-2. \azure-event-hubs-master\samples\DotNet\AnomalyDetector\ フォルダーに移動し、AnomalyDetector.sln をダブルクリックして Visual Studio でソリューションを開きます。 
-
+    以前の Microsoft.Azure.EventHubs パッケージを使用する旧バージョンのサンプルを使用するには、**Microsoft.Azure.EventHubs\AnomalyDetector** フォルダーからソリューションを開きます。 
 3. Program.cs を開き、**Event Hubs connection string** を、スクリプトの実行時に保存した接続文字列に置き換えます。 
-
 4. **Event Hub name** をイベント ハブ名に置き換えます。 F5 キーを押して、アプリケーションを実行します。 イベント ハブにイベントを送信し始め、1,000 件のイベントを送信するまで続けます。 データを取得するためにこのアプリを実行している必要がある場合がいくつかあります。 以降の手順では、そうした場合は適宜明記しています。
 
 ## <a name="set-up-azure-stream-analytics"></a>Azure Stream Analytics を設定する

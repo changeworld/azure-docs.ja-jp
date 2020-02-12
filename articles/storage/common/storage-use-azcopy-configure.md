@@ -4,16 +4,16 @@ description: AzCopy の構成、最適化、トラブルシューティングを
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 01/28/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 6a1dcd2d8734d7701dab6d913beb8af0ad4e35ab
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 00ce40e24a01b765419186a609ecf19ce53c772b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75371396"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905268"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy の構成、最適化、トラブルシューティング
 
@@ -41,6 +41,14 @@ AzCopy v10 のプロキシ設定を構成するには、`https_proxy` 環境変�
 ## <a name="optimize-performance"></a>パフォーマンスを最適化する
 
 パフォーマンスのベンチマークを実行し、コマンドと環境変数を使用して、パフォーマンスとリソース消費の最適なトレードオフを見つけることができます。
+
+このセクションでは、次の最適化タスクを実行する方法について説明します。
+
+> [!div class="checklist"]
+> * ベンチマーク テストを実行する
+> * スループットを最適化する
+> * メモリ使用量を最適化する 
+> * ファイル同期を最適化する
 
 ### <a name="run-benchmark-tests"></a>ベンチマーク テストを実行する
 
@@ -97,6 +105,14 @@ azcopy jobs resume <job-id> --cap-mbps 10
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
 | **MacOS** | `export AZCOPY_BUFFER_GB=<value>` |
+
+### <a name="optimize-file-synchronization"></a>ファイル同期を最適化する
+
+[sync](storage-ref-azcopy-sync.md) コマンドは、転送先のすべてのファイルを識別し、同期操作を開始する前に、ファイル名と最終変更されたタイムスタンプを比較します。 多数のファイルがある場合は、この前処理を排除することでパフォーマンスを向上させることができます。 
+
+これを実現するには、代わりに [azcopy copy](storage-ref-azcopy-copy.md) コマンドを使用して、`--overwrite` フラグを `ifSourceNewer`に設定します。 AzCopy では、アップフロントスキャンと比較を実行せずに、ファイルがコピーされると比較されます。 これにより、比較対象のファイルの数が多い場合にパフォーマンスが低下します。
+
+[azcopy copy](storage-ref-azcopy-copy.md) コマンドは、転送先からファイルを削除しません。そのため、コピー先のファイルがコピー元に存在しなくなったときにファイルを削除する場合は、[azcopy sync](storage-ref-azcopy-sync.md) コマンドを使用し、`--delete-destination` フラグを `true` または `prompt`の値に設定します。 
 
 ## <a name="troubleshoot-issues"></a>問題のトラブルシューティング
 

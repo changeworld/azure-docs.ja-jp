@@ -1,14 +1,14 @@
 ---
 title: クイックスタート - コンテナー イメージをビルドして実行する
-description: Azure Container Registry を使用して、クラウド内でコンテナー イメージをオンデマンドでビルドして実行するタスクを迅速に実行します。
+description: Azure Container Registry を使用して、クラウド内で Docker コンテナー イメージをオンデマンドでビルドして実行するタスクを迅速に実行します。
 ms.topic: quickstart
-ms.date: 04/02/2019
-ms.openlocfilehash: f0b510607a4d0acf12e0b9caa43835c1cfe6a83d
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/31/2020
+ms.openlocfilehash: f08f10dd170acaa8594ad5a47f5ef58e27288b10
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454956"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986276"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>クイック スタート:Azure Container Registry タスクを使用したコンテナー イメージのビルドと実行
 
@@ -22,7 +22,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure Cloud Shell または Azure CLI のローカル インストールを使用して、このクイック スタートを完了できます。 これをローカルで使用する場合は、バージョン 2.0.58 以降をお勧めします。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 コンテナー レジストリがまだない場合は、最初に [az group create][az-group-create] コマンドを使用してリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
@@ -44,7 +44,7 @@ az acr create --resource-group myResourceGroup --name myContainerRegistry008 --s
 
 ## <a name="build-an-image-from-a-dockerfile"></a>Dockerfile からのイメージのビルド
 
-ここでは、Azure Container Registry を使用してイメージをビルドします。 まず、作業ディレクトリを作成してから、次のコンテンツを含む *Dockerfile* という名前の Dockerfile を作成します。 これは、Linux コンテナー イメージをビルドする単純な例ですが、独自の標準的な Dockerfile を作成して他のプラットフォーム用のイメージをビルドできます。
+ここでは、Azure Container Registry を使用してイメージをビルドします。 まず、作業ディレクトリを作成してから、次のコンテンツを含む *Dockerfile* という名前の Dockerfile を作成します。 これは、Linux コンテナー イメージをビルドする単純な例ですが、独自の標準的な Dockerfile を作成して他のプラットフォーム用のイメージをビルドできます。 この記事のコマンド例は、Bash シェル形式で示してあります。
 
 ```bash
 echo FROM hello-world > Dockerfile
@@ -53,7 +53,9 @@ echo FROM hello-world > Dockerfile
 [az acr build][az-acr-build] コマンドを実行してイメージをビルドします。 正常にビルドされると、イメージがレジストリにプッシュされます。 次の例では、`sample/hello-world:v1` イメージをプッシュします。 コマンドの最後にある `.` では、Dockerfile の位置を設定します。この場合は現在のディレクトリです。
 
 ```azurecli-interactive
-az acr build --image sample/hello-world:v1 --registry myContainerRegistry008 --file Dockerfile . 
+az acr build --image sample/hello-world:v1 \
+  --registry myContainerRegistry008 \
+  --file Dockerfile . 
 ```
 
 正常なビルドとプッシュからの出力は次のようになります。
@@ -108,24 +110,18 @@ v1: digest: sha256:92c7f9c92844bbbb5d0a101b22f7c2a7949e40f8ea90c8b3bc396879d95e8
 Run ID: ca8 was successful after 10s
 ```
 
-## <a name="run-the-image"></a>イメージの実行
+## <a name="run-the-image"></a>イメージを実行する
 
-ここでは、ビルドしてレジストリにプッシュしたイメージを迅速に実行します。 コンテナー開発ワークフローでは、これはイメージをデプロイする前の検証手順になる可能性があります。
+ここでは、ビルドしてレジストリにプッシュしたイメージを迅速に実行します。 ここでは、[az acr run][az-acr-run] を使用してコンテナー コマンドを実行します。 コンテナー開発ワークフローでは、これはイメージをデプロイする前の検証手順になる可能性があります。または、[複数のステップの YAML ファイル][container-registry-tasks-multi-step]にコマンドを含めることもできます。 
 
-ローカルの作業ディレクトリに、次の 1 ステップのコンテンツを含む *quickrun.yaml* ファイルを作成します。 *\<acrLoginServer\>* はレジストリのログイン サーバー名に置き換えてください。 ログイン サーバー名は、 *\<registry-name\>.azurecr.io* (すべて小文字) という形式です。たとえば、*mycontainerregistry008.azurecr.io* などです。 この例では、前のセクションで `sample/hello-world:v1` イメージをビルドしてプッシュしたことを想定します。
-
-```yml
-steps:
-  - cmd: <acrLoginServer>/sample/hello-world:v1
-```
-
-この例の `cmd` ステップでは既定の構成のコンテナーを実行しますが、`cmd` では追加の `docker run`パラメーターまたはその他の `docker` コマンドもサポートされます。
-
-次のコマンドを使用してコンテナーを実行します。
+次の例では、`$Registry` を使用して、コマンドの実行場所となるレジストリを指定します。
 
 ```azurecli-interactive
-az acr run --registry myContainerRegistry008 --file quickrun.yaml .
+az acr run --registry myContainerRegistry008 \
+  --cmd '$Registry/sample/hello-world:v1' /dev/null
 ```
+
+この例の `cmd` パラメーターでは既定の構成のコンテナーを実行しますが、`cmd` では追加の `docker run` パラメーターまたはその他の `docker` コマンドもサポートされます。
 
 次のような出力になります。
 
@@ -172,7 +168,7 @@ For more examples and ideas, visit:
 Run ID: cab was successful after 6s
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、[az group delete][az-group-delete] コマンドを使用して、リソース グループ、コンテナー レジストリ、そこに格納されているコンテナー イメージを削除できます。
 
@@ -180,12 +176,12 @@ Run ID: cab was successful after 6s
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、ACR タスクの機能を使用して、Docker コンテナー イメージの迅速なビルド、プッシュ、実行を Azure 内でネイティブに行いました。 ACR タスクを使用してイメージのビルドと更新を自動化する方法を学習するには、Azure Container Registry のチュートリアルに進んでください。
+このクイックスタートでは、ACR タスクの機能を使用して、Docker コンテナー イメージの迅速なビルド、プッシュ、実行を、Docker のローカル インストールなしで、Azure 内でネイティブに行いました。 ACR タスクを使用してイメージのビルドと更新を自動化する方法を学習するには、Azure Container Registry タスクのチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Azure Container Registry のチュートリアル][container-registry-tutorial-quick-task]
+> [Azure Container Registry タスクのチュートリアル][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
@@ -201,10 +197,12 @@ az group delete --name myResourceGroup
 <!-- LINKS - internal -->
 [az-acr-create]: /cli/azure/acr#az-acr-create
 [az-acr-build]: /cli/azure/acr#az-acr-build
+[az-acr-run]: /cli/azure/acr#az-acr-run
 [az-group-create]: /cli/azure/group#az-group-create
 [az-group-delete]: /cli/azure/group#az-group-delete
 [azure-cli]: /cli/azure/install-azure-cli
 [container-registry-tasks-overview]: container-registry-tasks-overview.md
+[container-registry-tasks-multi-step]: container-registry-tasks-multi-step.md
 [container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md
 [container-registry-skus]: container-registry-skus.md
 [azure-cli-install]: /cli/azure/install-azure-cli

@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: tutorial
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: ec6c1ef31b6cf92629be600b3b139bb2e1a0d3ce
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1acc17f9c2fbeb53b992891174866433d14f128d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977252"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986663"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>チュートリアル:Bing Web Search API を使用して単一ページの Web アプリを作成する
 
@@ -105,7 +105,7 @@ function bingSearchOptions(form) {
     // Where option.
     options.push("mkt=" + form.where.value);
     // SafeSearch option.
-    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "off"));
+    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "moderate"));
     // Freshness option.
     if (form.when.value.length) options.push("freshness=" + form.when.value);
     var what = [];
@@ -128,7 +128,7 @@ function bingSearchOptions(form) {
 }
 ```
 
-`SafeSearch` は `strict`、`moderate`、または `off` に設定できます。`moderate` は Bing Web Search の既定の設定です。 このフォームでは、2 つの状態があるチェックボックスを使用します。 このスニペットでは、SafeSearch は `strict` または `off` に設定され、`moderate` は使用されていません。
+`SafeSearch` は `strict`、`moderate`、または `off` に設定できます。`moderate` は Bing Web Search の既定の設定です。 このフォームでは、`strict` と `moderate` という 2 つの状態があるチェック ボックスを使用します。
 
 **[レベル上げ]** チェックボックスがオンの場合、`answerCount` パラメーターがクエリに追加されます。 `answerCount` は `promote` パラメーターを使用する際に必要です。 このスニペットでは、使用できるすべての結果の種類を返す `9` に値が設定されています。
 > [!NOTE]
@@ -464,7 +464,7 @@ cors-proxy-server
 
 サンプル アプリを使用している間はコマンド ウィンドウを開いたままにしておいてください。ウィンドウを閉じるとプロキシが停止します。 検索結果の下にある展開可能な [HTTP ヘッダー] セクションには、`X-MSEdge-ClientID` ヘッダーが表示されるはずです。 これが各要求で同じであることを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Bing Web Search API v7 リファレンス](//docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)

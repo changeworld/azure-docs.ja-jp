@@ -15,12 +15,12 @@ ms.date: 09/27/2019
 ms.author: baselden
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e9b2119964ec2af792e2f2a5b942fde12cf7eab
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 04d8b6c6d40aa81bf56baed59f90417f2147fa56
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512853"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897075"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Azure Active Directory アクセス パネルのデプロイを計画する
 
@@ -227,9 +227,9 @@ SaaS アプリケーションをデプロイおよび構成する方法の詳細
 
 Azure AD SSO に対応した任意のアプリケーションを [マイ アプリ] ランチャーに追加できます。 その他のアプリケーションは "リンク" SSO オプションを使用して追加されます。 既存の Web アプリケーションの URL にリンクするアプリケーション タイルを構成できます。 リンクされた SSO を使用すると、すべてのアプリケーションを Azure AD SSO に移行することなく、[マイ アプリ] ポータルにユーザーを誘導することができます。 ユーザーのエクスペリエンスを損なうことなく、Azure AD SSO が構成されたアプリケーションに段階的に移行できます。
 
-#### <a name="use-my-apps-workspaces-preview"></a>マイ アプリ ワークスペースを使用する (プレビュー)
+#### <a name="use-my-apps-collections"></a>マイ アプリ コレクションを使用する
 
-既定では、すべてのアプリケーションが 1 つのページにまとめて表示されます。 しかし、ワークスペースを使用して関連するアプリケーションをグループ化し、別々のタブで表示すれば、アプリケーションが見つけやすくなります。 たとえば、ワークスペースを使用して、特定の担当業務、タスク、プロジェクトなどに関連したアプリケーションの論理グループを作成することができます。 詳細については、[マイ アプリ ワークスペースを使用してユーザー アクセス パネルをカスタマイズする方法 (プレビュー)](access-panel-workspaces.md) に関するページを参照してください。 
+既定では、すべてのアプリケーションが 1 つのページにまとめて表示されます。 しかし、コレクションを使用して関連するアプリケーションをグループ化し、別々のタブで表示すれば、アプリケーションが見つけやすくなります。 たとえば、コレクションを使用して、特定の担当業務、タスク、プロジェクトなどに関連したアプリケーションの論理グループを作成することができます。 詳細については、[マイ アプリ コレクションを使用してユーザー アクセス パネルをカスタマイズする方法](access-panel-collections.md)に関するページを参照してください。 
 
 #### <a name="plan-whether-to-use-my-apps-or-an-existing-portal"></a>[マイ アプリ] と既存のポータルのどちらを使用するかを計画する
 

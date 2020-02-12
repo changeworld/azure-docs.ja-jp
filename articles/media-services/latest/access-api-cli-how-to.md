@@ -12,12 +12,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: d66b3e1b6ed2c8eef9f5cd21c0657648ad550ebe
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 06ca26ee9a8af7f49aba6a48a1831d30d5886851
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896151"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896330"
 ---
 # <a name="access-azure-media-services-api-with-the-azure-cli"></a>Azure CLI で Azure Media Services API にアクセスする
  
@@ -28,7 +28,8 @@ Azure AD サービス プリンシパル認証を使用して Azure Media Servic
 * REST Media Services のリソース URI
 * Azure AD アプリケーションの値: クライアント ID とクライアント シークレット
 
-詳細については、「[Media Services v3 API にアクセスする](media-services-apis-overview.md#accessing-the-azure-media-services-api)」を参照してください。
+> [!IMPORTANT]
+> 詳細については、[Media Services v3 API にアクセスする](media-services-apis-overview.md#accessing-the-azure-media-services-api)を参照してください。
 
 この記事では、Azure CLI を使用して、Azure AD アプリケーションとサービス プリンシパルを作成し、Azure Media Services リソースにアクセスするために必要な値を取得する方法について説明します。
 
@@ -42,7 +43,7 @@ Media Services アカウント名、ストレージ名、およびリソース�
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [メディア占有ユニットのスケーリング - CLI](media-reserved-units-cli-how-to.md)
 - [Media Services アカウントを作成する - CLI](create-account-cli-how-to.md) 
@@ -57,7 +58,7 @@ Media Services アカウント名、ストレージ名、およびリソース�
 - [フィルター - CLI](filters-dynamic-manifest-cli-howto.md)
 - [Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 コンテンツのストリーミング元のストリーミング エンドポイントは、実行中状態である必要があります。 次の CLI は、既定のストリーミング エンドポイントを開始します:
 

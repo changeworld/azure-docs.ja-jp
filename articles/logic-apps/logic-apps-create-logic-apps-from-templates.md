@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
-ms.openlocfilehash: 58c0ff8cf8a579e2b97ebbe195f47e4baef4621a
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: aac0060527af7b7d880f971e7608be3fa44a2d15
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666824"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905115"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>事前作成済みテンプレートを使用したロジック アプリ ワークフローの作成
 
@@ -21,7 +21,7 @@ ms.locfileid: "75666824"
 
 テンプレートのカテゴリを次に示します。
 
-| テンプレートの種類 | [説明] | 
+| テンプレートの種類 | 説明 | 
 | ------------- | ----------- | 
 | エンタープライズ クラウド テンプレート | Azure Blob、Dynamics CRM、Salesforce、Box の統合用であり、エンタープライズ クラウドのニーズに応じた他のコネクタを含みます。 たとえば、ビジネスの潜在顧客の整理や、企業のファイル データのバックアップに、これらのテンプレートを使用することができます。 | 
 | 個人的生産性テンプレート | 毎日のアラームを設定し、重要な作業項目を To Do リストに変換し、長期間のタスクを 1 人のユーザーの承認手順に自動化することで、個人の生産性を向上させます。 | 
@@ -44,13 +44,13 @@ Azure サブスクリプションがない場合は、始める前に[無料の 
 
    ![ロジック アプリの詳細を指定する](./media/logic-apps-create-logic-apps-from-templates/logic-app-settings.png)
 
-   | 設定 | 値 | [説明] | 
+   | 設定 | Value | 説明 | 
    | ------- | ----- | ----------- | 
    | **Name** | <*ロジック アプリ名*> | 一意のロジック アプリ名を指定します。 | 
    | **サブスクリプション** | <*Azure サブスクリプション名*> | 使用する Azure サブスクリプションを選択します。 | 
    | **リソース グループ** | <*Azure リソース グループ名*> | このロジック アプリ用の [Azure リソース グループ](../azure-resource-manager/management/overview.md)を作成するか選択し、このアプリに関連するすべてのリソースを整理します。 | 
-   | **Location** | <*Azure データセンターのリージョン*> | ロジック アプリをデプロイするデータセンターのリージョンを選びます (たとえば米国西部)。 | 
-   | **Log Analytics** | **[オフ]** (既定値) または **[オン]** | [Azure Monitor ログ](../log-analytics/log-analytics-overview.md)を通じてロジック アプリの[診断ログ](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app)を有効にします。 Log Analytics ワークスペースが既にあることが要件です。 | 
+   | **地域** | <*Azure データセンターのリージョン*> | ロジック アプリをデプロイするデータセンターのリージョンを選びます (たとえば米国西部)。 | 
+   | **Log Analytics** | **[オフ]** (既定値) または **[オン]** | [Azure Monitor ログ](../log-analytics/log-analytics-overview.md)を通じてロジック アプリの[診断ログ](../logic-apps/monitor-logic-apps-log-analytics.md)を設定します。 Log Analytics ワークスペースが既にあることが要件です。 | 
    |||| 
 
 4. 準備ができたら、 **[ダッシュボードにピン留めする]** を選択します。 そうすることで、ロジック アプリがデプロイ後に Azure ダッシュボードに自動的に表示され、開かれます。 **[作成]** を選択します。

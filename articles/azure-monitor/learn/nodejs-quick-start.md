@@ -1,5 +1,5 @@
 ---
-title: クイックスタート - Azure Monitor Application Insights を使用して Node.js を監視する
+title: クイック スタート:Azure Monitor Application Insights を使用して Node.js を監視する
 description: Azure Monitor Application Insights で監視する Node.js Web アプリを迅速にセットアップする手順を説明します
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,38 +8,31 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 1f42dd50ee70d42b5209e186b8af63c820a9a85e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a6d6d70336badeaa86c9982dfa977ea389ed5402
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398777"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963531"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>クイック スタート:Azure Application Insights で Node.js Web アプリケーションの監視を開始する
 
-このクイック スタートでは、バージョン 0.22 の Application Insights SDK for Node.js を既存の Node.js Web アプリケーションに追加する方法を説明します。
+このクイックスタートでは、バージョン 0.22 の Application Insights SDK for Node.js を既存の Node.js Web アプリケーションに追加します。
 
 Azure Application Insights を使うと、Web アプリケーションの可用性、パフォーマンス、利用状況を簡単に監視できます。 アプリケーションのエラーを、ユーザーからの報告を待つことなく、迅速に特定して診断することもできます。 バージョン 0.20 以降の SDK リリースでは、MongoDB、MySQL、Redis を含む一般的なサードパーティ製パッケージを監視できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、以下が必要です。
-
-- Azure サブスクリプションと既存の Node.js Web アプリケーションが必要です。
-
-Node.js Web アプリケーションがない場合は、[Node.js Web アプリを作成するためのクイックスタート](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs)に従って作成できます。
-
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
-
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
-
-[Azure portal](https://portal.azure.com/) にサインインする
+* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+* 正常に機能する Node.js アプリケーション。
 
 ## <a name="enable-application-insights"></a>Application Insights を有効にする
 
 Application Insights は、オンプレミスとクラウドのどちらで実行されているかに関係なく、インターネットに接続された任意のアプリケーションからテレメトリ データを収集できます。 このデータの表示を開始するには、次の手順を実行します。
 
-1. **[リソースの作成]**  >  **[開発者ツール]**  >  **[Application Insights]** の順に選択します。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
+
+2. **[リソースの作成]**  >  **[開発者ツール]**  >  **[Application Insights]** の順に選択します。
 
    ![Azure Application Insights リソースを追加する](./media/nodejs-quick-start/azure-app-insights-create-resource.png)
 
@@ -48,15 +41,15 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
    構成ページが表示されたら、次の表を使用して入力フィールドに入力します。 
 
-    | 設定        | 値           | [説明]  |
+    | 設定        | Value           | 説明  |
    | ------------- |:-------------|:-----|
-   | **Name**      | グローバルに一意の値 | 監視しているアプリを識別する名前 |
-   | **リソース グループ**     | myResourceGroup      | App Insights データをホストする新しいリソース グループの名前。 新しいリソース グループを作成するか、既存のリソース グループを使用することができます。 |
-   | **Location** | East US | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
+   | **Name**      | グローバルに一意の値 | 監視しているアプリを識別する名前。 |
+   | **リソース グループ**     | myResourceGroup      | AppInsights データをホストする新しいリソース グループの名前。 新しいリソース グループを作成するか、既存のリソース グループを使用することができます。 |
+   | **地域** | East US | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
 
-2. **作成** を選択します。
+3. **作成** を選択します。
 
-## <a name="configure-app-insights-sdk"></a>App Insights SDK を構成する
+## <a name="configure-appinsights-sdk"></a>AppInsights SDK を構成する
 
 1. **[概要]** を選択し、アプリケーションの**インストルメンテーション キー**をコピーします。
 
@@ -68,7 +61,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
    npm install applicationinsights --save
    ```
 
-3. アプリの最初の .js ファイルを編集し、スクリプトの最上部の下に 2 つの行を追加します。 [Node.js のクイック スタート アプリ](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs)を使用している場合は、index.js ファイルを変更します。 &lt;instrumentation_key&gt; をアプリケーションのインストルメンテーション キーに置き換えます。 
+3. アプリの最初の *.js* ファイルを編集し、スクリプトの最上部の下に 2 つの行を追加します。 [Node.js のクイックスタート アプリ](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs)を使用している場合は、*index.js* ファイルを変更します。 `<instrumentation_key>` をアプリケーションのインストルメンテーション キーに置き換えます。 
 
    ```JavaScript
    const appInsights = require('applicationinsights');
@@ -90,7 +83,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
    ![Application Insights のアプリケーション マップ](./media/nodejs-quick-start/azure-app-insights-application-map.png)
 
-3. **[アプリ分析]** アイコン ![[アプリケーション マップ] アイコン](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png) **[Analytics 内のビュー]** を選択します。  これにより、Application Insights で収集されたすべてのデータを分析するための豊富なクエリ言語を備えた **Application Insights 分析**が開きます。 この場合は、要求の数をグラフとして描画するクエリが生成されます。 自分でクエリを作成して他のデータを分析することができます。
+3. **[アプリ分析]** アイコン ![[アプリケーション マップ] アイコン](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png) **[Analytics 内のビュー]** を選択します。  この操作により、Application Insights で収集されたすべてのデータを分析するための豊富なクエリ言語を備えた **Application Insights 分析**が開きます。 この場合は、要求の数をグラフとして描画するクエリが生成されます。 自分でクエリを作成して他のデータを分析することができます。
 
    ![Application Insights Analytics のグラフ](./media/nodejs-quick-start/azure-app-insights-analytics-queries.png)
 
@@ -124,7 +117,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
    ![Application Insights サーバーのメトリックのグラフ](./media/nodejs-quick-start/azure-app-insights-server-metrics.png)
 
-Node.js の監視に関する詳細については、[App Insights Node.js の追加ドキュメント](../../azure-monitor/app/nodejs.md)を参照してください。
+Node.js の監視に関する詳細については、[AppInsights Node.js の追加ドキュメント](../../azure-monitor/app/nodejs.md)を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

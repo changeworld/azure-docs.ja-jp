@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c61ab2279592c93fa22c1bb5102c868f3e13e473
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 4ddc2622a67979f989c030d615c402387e7762d5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289886"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983488"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と GitHub の統合
 
@@ -221,5 +221,3 @@ GitHub で Azure AD SSO を構成してテストするには、次の構成要�
 - [Azure AD で GitHub を試す](https://aad.portal.azure.com/)
 
 - [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [高度な可視性と制御によって GitHub を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

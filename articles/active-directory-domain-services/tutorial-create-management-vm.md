@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: d8a5f4756f3a6799c7f1b08973e0a84603cb4571
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 73402420bdfee7fecbd7901deefe7f4314a76d51
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703649"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931595"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメインを構成および管理するための管理 VM を作成する
 
@@ -40,14 +40,14 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 * ご利用のサブスクリプションに関連付けられた Azure Active Directory テナント (オンプレミス ディレクトリまたはクラウド専用ディレクトリと同期されていること)。
     * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
 * Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
-    * 必要であれば、1 つ目のチュートリアルで [Azure Active Directory Domain Services インスタンスを作成して構成][create-azure-ad-ds-instance]します。
+    * 必要に応じて、1 つ目のチュートリアルを参照し、[Azure Active Directory Domain Services インスタンスの作成と構成][create-azure-ad-ds-instance]を行ってください。
 * Azure AD DS のマネージド ドメインに参加している Windows Server VM。
-    * 必要であれば、前のチュートリアルで [Windows Server VM を作成し、マネージド ドメインに参加][create-join-windows-vm]させます。
+    * 必要に応じて、前のチュートリアルを参照し、[Windows Server VM を作成してマネージド ドメインに参加][create-join-windows-vm]させてください。
 * Azure AD テナントの *Azure AD DC administrators* グループのメンバーであるユーザー アカウント。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-このチュートリアルでは、Azure portal を使用して管理 VM の作成と構成を行います。 最初に、[Azure portal](https://portal.azure.com) にサインインしてください。
+このチュートリアルでは、Azure portal を使用して管理 VM の作成と構成を行います。 最初に、[Azure portal](https://portal.azure.com) にサインインします。
 
 ## <a name="available-administrative-tasks-in-azure-ad-ds"></a>Azure AD DS で利用できる管理タスク
 
@@ -88,7 +88,7 @@ Azure AD DS のマネージド ドメインはロックダウンされており�
 
     ![Azure portal で Windows 仮想マシンに接続する](./media/tutorial-create-management-vm/connect-vm.png)
 
-    [Azure Bastion ホスト (現在プレビュー段階) を作成、使用][azure-bastion]して、Azure portal から SSL 経由のアクセスのみを許可することもできます。
+    [Azure Bastion ホスト (現在プレビュー段階) を作成、使用][azure-bastion]して、SSL を介した Azure portal 経由のアクセスのみを許可することもできます。
 
 1. *[RDP ファイルのダウンロード]* オプションを選択します。 この RDP ファイルを Web ブラウザーで保存します。
 1. VM に接続するには、ダウンロードした RDP ファイルを開きます。 メッセージが表示されたら、 **[Connect]** を選択します。
@@ -141,7 +141,7 @@ Active Directory 管理センターの一般的な操作 (ユーザー アカウ
 
 Azure AD DS のマネージド ドメインにおける一般的な操作については、管理ツールの一部としてインストールされる "*Windows PowerShell 用 Active Directory モジュール*" を使用して管理することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB で JavaScript 統合クエリ API を操作する
+title: Azure Cosmos DB ストアド プロシージャとトリガーで JavaScript 統合クエリ API を操作する
 description: この記事では、Azure Cosmos DB でストアド プロシージャとトリガーを作成するための JavaScript 言語統合クエリ API の概念について説明します。
 author: markjbrown
 ms.service: cosmos-db
@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 8396608cdbc5638a3640f94c94b44ad7c5f52a73
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7b7ad470b3330224e80a7160fc1a37bb5ee1cde8
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445324"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901826"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Azure Cosmos DB の JavaScript クエリ API
 
-Azure Cosmos DB の SQL API を使用してクエリを発行することに加えて、[Cosmos DB のサーバー側の SDK](https://azure.github.io/azure-cosmosdb-js-server/) を使用すると、JavaScript インターフェイスを使用して最適化されたクエリを実行できます。 この JavaScript インターフェイスの使用では、SQL 言語を意識する必要はありません。 JavaScript クエリ API では、述語関数を一連の関数呼び出しに渡すことでクエリをプログラムで構築できます。構文は ECMAScript5 のアレイ ビルトインや Lodash のような人気の JavaScript ライブラリでおなじみのものです。 クエリは JavaScript ランタイムによって解析され、Azure Cosmos DB のインデックスを使用して効率的に実行されます。
+Azure Cosmos DB の SQL API を使用してクエリを発行することに加えて、[Cosmos DB のサーバー側の SDK](https://azure.github.io/azure-cosmosdb-js-server/) を使用すると、JavaScript インターフェイスを使用して Cosmos DB ストアド プロシージャやトリガーで最適化されたクエリを実行できます。 この JavaScript インターフェイスの使用では、SQL 言語を意識する必要はありません。 JavaScript クエリ API では、述語関数を一連の関数呼び出しに渡すことでクエリをプログラムで構築できます。構文は ECMAScript5 のアレイ ビルトインや Lodash のような人気の JavaScript ライブラリでおなじみのものです。 クエリは JavaScript ランタイムによって解析され、Azure Cosmos DB のインデックスを使用して効率的に実行されます。
 
 ## <a name="supported-javascript-functions"></a>サポートされている JavaScript 関数
 

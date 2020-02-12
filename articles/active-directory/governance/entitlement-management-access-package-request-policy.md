@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 649a4a50766d26f73584dae4481652c8007b2e9e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 493ba6396a7ceb11b917fbda5dd6c37c070f2fee
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174664"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897617"
 ---
 # <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージの要求と承認の設定を変更する
 
@@ -42,6 +42,9 @@ ms.locfileid: "73174664"
 | ディレクトリのユーザーだけでなくディレクトリ外のユーザーもアクセス パッケージを要求できるようにしたい | 複数 |
 | 一部のユーザーに対して異なる承認設定を指定したい | 複数 |
 | アクセス パッケージの割り当てに有効期限があるユーザーと、アクセス権を自分で延長できるユーザーを分けたい | 複数 |
+
+複数のポリシーが適用されるときに使用される優先度ロジックについては、[複数のポリシー](entitlement-management-troubleshoot.md#multiple-policies
+)を参照してください。
 
 ### <a name="open-an-existing-policy-of-request-and-approval-settings"></a>要求と承認の設定の既存ポリシーを開く
 
@@ -91,7 +94,7 @@ ms.locfileid: "73174664"
 
 ポリシーを編集する場合は、 **[更新]** をクリックします。 新しいポリシーを追加する場合は、 **[作成]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Change lifecycle settings for an access package](entitlement-management-access-package-lifecycle-policy.md) (アクセス パッケージのライフサイクル設定を変更する)
 - [View requests for an access package](entitlement-management-access-package-requests.md) (アクセス パッケージの要求を表示する)

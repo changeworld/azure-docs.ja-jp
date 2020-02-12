@@ -10,14 +10,14 @@ ms.workload: identity
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: ajburnle
-ms.custom: it-pro, seodec18
+ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ef577f5d086b22779392cd6d8b5d43a340f7329
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: de205beaf9800c2061cc41343b4153bd0e2b5dc7
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423095"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024604"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>クイック スタート:Azure Active Directory で新しいテナントを作成する
 Azure Active Directory (Azure AD) ポータルを使用して、組織の新しいテナントの作成など、すべての管理タスクを実行できます。 
@@ -31,7 +31,7 @@ Azure portal にサインインすると、組織の新しいテナントを作�
 
 ### <a name="to-create-a-new-tenant"></a>新しいテナントを作成するには
 
-1. 全体管理者アカウントを使用して、組織の [Azure portal](https://portal.azure.com/) にサインインします。
+1. 組織の [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. Azure portal メニューから **[リソースの作成]** を選択します。  
 
@@ -58,6 +58,7 @@ Azure portal にサインインすると、組織の新しいテナントを作�
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 このアプリケーションを引き続き使用しない場合は、次の手順を使用してテナントを削除することができます。
 
+- Azure portal で **[ディレクトリ + サブスクリプション]** フィルターを使用して、削除するディレクトリにサインインしていることを確認し、必要に応じてターゲット ディレクトリに切り替えます。
 - **[Azure Active Directory]** を選択し、 **[Contoso - 概要]** ページで **[ディレクトリの削除]** を選択します。
 
     テナントとその関連情報は削除されます。

@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 02/08/2018
 ms.author: kumud
 ms.custom: include file
-ms.openlocfilehash: 4b419bd8c19cffaf84582cb4fa9e46592746da3f
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 4219df03f74f737c5f2435f9bc0842189dc1fd49
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75752311"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76909192"
 ---
 | | Standard SKU | Basic SKU |
 | --- | --- | --- |
-| バックエンド プールのサイズ | 最大 1,000 インスタンスをサポート。 | 最大 100 インスタンスをサポート。 |
+| バックエンド プールのサイズ | 最大 1,000 インスタンスをサポート。 | 最大 300 インスタンスをサポート。 |
 | バックエンド プール エンドポイント | 仮想マシン、可用性セット、仮想マシン スケール セットの組み合わせを含む、単一の仮想ネットワーク内の任意の仮想マシン。 | 単一の可用性セットまたは仮想マシン スケール セット内の仮想マシン。 |
 | [正常性プローブ](../articles/load-balancer/load-balancer-custom-probe-overview.md#types) | TCP、HTTP、HTTPS | TCP、HTTP |
 | [正常性プローブ ダウン動作](../articles/load-balancer/load-balancer-custom-probe-overview.md#probedown) | インスタンス プローブがダウンし、__かつ__ すべてのプローブがダウンしても TCP 接続は存続。 | インスタンス プローブがダウンしても TCP 接続は存続。 すべてのプローブがダウンした場合、すべての TCP 接続は終了。 |

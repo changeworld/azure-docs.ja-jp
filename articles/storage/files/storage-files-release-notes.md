@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 67f04b3873da020853c2523f6acc8c7dc7dcdedc
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d0e830aaca4f952f75c220b4f482ce831883b058
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749607"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905574"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure File Sync エージェントのリリース ノート
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -35,9 +35,9 @@ Azure File Sync エージェントでサポートされるバージョンは次�
 | 2019 年 6 月の更新プログラム ロールアップ - [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 2019 年 6 月 13 日 | サポートされています |
 | 2019 年 5 月の更新プログラム ロールアップ - [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 2019 年 5 月 7 日 | サポートされています |
 | V6 リリース - [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 2019 年 4 月 21 日 | サポートされています |
-| 2019 年 4 月の更新プログラム ロールアップ - [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 2019 年 4 月 4 日 | サポートされています |
-| 2019 年 3 月の更新プログラム ロールアップ - [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 2019 年 3 月 7 日 | サポートされています |
-| V5 リリース - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 2019 年 2 月 12 日 | サポートされています |
+| 2019 年 4 月の更新プログラム ロールアップ - [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 2019 年 4 月 4 日 | サポートされています - エージェント バージョンは 2020 年 2 月 12 日に有効期限が切れます |
+| 2019 年 3 月の更新プログラム ロールアップ - [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 2019 年 3 月 7 日 | サポートされています - エージェント バージョンは 2020 年 2 月 12 日に有効期限が切れます |
+| V5 リリース - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 2019 年 2 月 12 日 | サポートされています - エージェント バージョンは 2020 年 2 月 12 日に有効期限が切れます |
 | V4 リリース | 4.0.1.0 ～ 4.3.0.0 | 該当なし | サポートされていません - エージェント バージョンは 2019 年 11 月 6 日に有効期限が切れました |
 | V3 リリース | 3.1.0.0 - 3.4.0.0 | 該当なし | サポートされていません - エージェント バージョンは 2019 年 8 月 19 日に有効期限が切れました |
 | GA 前のエージェント | 1.1.0.0 - 3.0.13.0 | 該当なし | サポートされていません - エージェント バージョンは 2018 年 10 月 1 日に有効期限が切れました |

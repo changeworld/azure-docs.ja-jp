@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 7014882e7da9eb7ab7df65cd20403982a46018a3
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d738868e0e4ca7599f4aaf8d6e09d22f26a8db92
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112614"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016376"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>チュートリアル:Azure IoT Central で水質のモニタリング アプリケーションを作成する
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 このチュートリアルでは、Azure IoT Central で水質のモニタリング アプリケーションを作成する手順を説明します。 Azure IoT Central の**水質のモニタリング** アプリケーション テンプレートからアプリケーションを作成します。
 
@@ -63,6 +63,8 @@ ms.locfileid: "74112614"
 1. ページの左下にある **[作成]** ボタンを選択します。
 
     ![Azure IoT Central の [新規アプリケーション] ページ](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1.png)
+
+    ![Azure IoT Central の [新規アプリケーション] の課金情報](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1-billinginfo.png)
 
 これで、Azure IoT Central の**水質のモニタリング** テンプレートを使用して、水質のモニタリング アプリケーションが作成されました。
 
@@ -243,7 +245,7 @@ Azure IoT Central のジョブを使用すると、デバイスに対する、�
 
 1. **[画像の選択]** ボタンを使用して、アプリケーション イメージとしてアップロードするイメージを選択します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 アプリケーションを引き続き使用しない場合は、次の手順でアプリケーションを削除します。
 
@@ -252,6 +254,6 @@ Azure IoT Central のジョブを使用すると、デバイスに対する、�
 
     ![アプリケーションを削除する](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-application-settings-delete-app1.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [水質のモニタリングの概念](./concepts-waterqualitymonitoring-architecture.md)について。

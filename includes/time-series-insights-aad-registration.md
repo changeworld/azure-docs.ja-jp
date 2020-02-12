@@ -8,13 +8,13 @@ ms.service: time-series-insights
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.date: 12/06/2019
-ms.openlocfilehash: 4d32980e825f12c76b5c8bf8df0673fa82065751
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/03/2020
+ms.openlocfilehash: 5be6e7937a6e1f710b8e2576a9058963413fb6c2
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460436"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984589"
 ---
 1. [Azure portal](https://ms.portal.azure.com/) で、 **[Azure Active Directory]**  >  **[アプリの登録]**  >  **[新規登録]** を選択します。
 
@@ -34,18 +34,30 @@ ms.locfileid: "75460436"
 
 1. **[認証]** ブレードで、重要な認証構成設定を指定します。 
 
+    1. **[+ プラットフォームを追加]** を選択して、 **[リダイレクト URI]** を追加し、 **[アクセス トークン]** を構成します。
+
+    1. **[はい]** または **[いいえ]** を選択して、アプリが**パブリック クライアント**であるかどうかを指定します。
+
+    1. サポートされているアカウントとテナントを確認します。
+
+    [![暗黙的な許可を構成する](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
+
+1. 適切なプラットフォームを選択したら、ユーザー インターフェイスの右側のサイド パネルで **[リダイレクト URI]** と **[アクセス トークン]** を構成します。
+
     1. **[リダイレクト URI]** は、認証要求で指定されたアドレスと一致する必要があります。
 
-        * ローカル開発環境でホストされているアプリでは、 **[パブリック クライアント (モバイルとデスクトップ)]** を選択します。 **[既定のクライアントの種類]** が [はい] に設定されていることを確認します。
-        * Azure App Service でホストされているシングル ページ アプリでは、 **[Web]** を選択します。
+        * ローカル開発環境でホストされているアプリでは、 **[パブリック クライアント (モバイルとデスクトップ)]** を選択します。 **[パブリック クライアント]** は必ず **[はい]** に設定してください。
+        * Azure App Service でホストされているシングルページ アプリでは、 **[Web]** を選択します。
+
+    1. **[ログアウト URL]** が適切かどうかを確認します。
 
     1. **[アクセス トークン]** または **[ID トークン]** をオンにすることによって、暗黙的な許可のフローを有効にします。
 
-   [![リダイレクト URI を作成して暗黙的な許可を構成する](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
+    [![リダイレクト URI を作成する](media/time-series-insights-aad-registration/active-directory-auth-redirect-uri.png)](media/time-series-insights-aad-registration/active-directory-auth-redirect-uri.png#lightbox)
 
-   **[保存]** をクリックします。
+    **[構成]** 、 **[保存]** の順にクリックします。
 
-1. **[証明書とシークレット]** を選択し、 **[新しいクライアント シークレット]** を選択して、クライアントがその ID を証明する際に使用できるアプリケーション パスワードを作成します。
+1. **[証明書とシークレット]** を選択し、 **[新しいクライアント シークレット]** を選択して、クライアント アプリがその ID を証明する際に使用できるアプリケーション パスワードを作成します。
 
    [![新しいクライアント シークレットを生成する](media/time-series-insights-aad-registration/active-directory-application-keys-save.png)](media/time-series-insights-aad-registration/active-directory-application-keys-save.png#lightbox)
 

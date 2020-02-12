@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 02/03/2020
 ms.author: aahi
-ms.openlocfilehash: 7c8485a5521709452217fb4ab1832b6a42cce9ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fb989825ed27cc83c14c36e6394e37ae2db2c12a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75382465"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988262"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>チュートリアル:シングルページ Video Search アプリ
 Bing Video Search API を使うと、Web を検索して、検索クエリに関連するビデオの結果を取得できます。 このチュートリアルでは、Bing Search API を使用して検索結果をページに表示する単一ページの Web アプリケーションを構築します。 このアプリケーションには、HTML、CSS、JavaScript のコンポーネントが含まれます。
@@ -100,7 +100,7 @@ HTML の `<form>` タグの `onsubmit` は、`bingWebSearch` 関数を呼び出�
 
 この HTML のフォームには、次の名前の付いた要素が含まれます。
 
-|要素|[説明]|
+|要素|説明|
 |-|-|
 | `where` | 検索で使用される市場 (場所と言語) を選択するドロップダウン メニュー。 |
 | `query` | 検索語句を入力するテキスト フィールド。 |
@@ -120,7 +120,7 @@ function bingSearchOptions(form) {
 
     var options = [];
     options.push("mkt=" + form.where.value);
-    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "off"));
+    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "moderate"));
 
     if (form.when.value.length) options.push("freshness=" + form.when.value);
     var what = [];
@@ -138,7 +138,7 @@ function bingSearchOptions(form) {
 }
 ```
 
-たとえば、実際の API 呼び出し内の `SafeSearch` パラメーターは、`strict`、`moderate`、`off` のいずれかにできます。既定値は `moderate` です。 ただし、フォームでは、2 つの状態しかないチェック ボックスを使用します。 JavaScript コードにより、この設定が `strict` または `off` のいずれかに変換されます (`moderate` は使用しません)。
+たとえば、実際の API 呼び出し内の `SafeSearch` パラメーターは、`strict` と `moderate` のどちらかにできます。既定値は `moderate` です。
 
 ## <a name="performing-the-request"></a>要求の実行
 クエリ、オプションの文字列、および API キーを指定すると、`BingWebSearch` 関数は `XMLHttpRequest` オブジェクトを使用して Bing Search エンドポイントに要求を送信します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
@@ -308,7 +308,7 @@ function renderSearchResults(results) {
 
 Bing News Search API は、関連する結果を最大で 4 種類返します。これらの各結果は、それ自体の最上位のオブジェクトに含まれます。 これらは次のとおりです。
 
-|関係|[説明]|
+|関係|説明|
 |-|-|
 |`pivotSuggestions`|元の検索の軸語を別のものに置き換えるクエリです。 たとえば、"赤い花" を検索した場合、"赤" が軸語で、"黄色い花" が候補になる可能性があります。|
 |`queryExpansions`|複数の条件を追加することで、元の検索を絞り込むクエリです。 たとえば、"Microsoft Surface" を検索した場合、クエリが "Microsoft Surface Pro" に拡張される場合があります。|
@@ -332,7 +332,7 @@ searchItemRenderers = {
 ```
 レンダラー関数では、次のパラメーターを受け取ることができます。
 
-|パラメーター|[説明]|
+|パラメーター|説明|
 |-|-|
 |`item`| 項目のプロパティ (URL とその説明など) を含む JavaScript オブジェクト。|
 |`index`| コレクション内の結果項目のインデックス。|

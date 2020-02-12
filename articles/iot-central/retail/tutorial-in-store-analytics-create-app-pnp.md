@@ -11,16 +11,16 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 145aa87841c6334f7fa12535103b5e97db9c6918
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 6b89b667855d827acfb7c181da014cd0d0b4bfc4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702023"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022105"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>チュートリアル:Azure IoT Central でストア内分析アプリケーションを作成する
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 チュートリアルでは、Azure IoT Central のストア内分析アプリケーションを作成する方法をソリューション ビルダーに説明します。 サンプル アプリケーションは小売店用です。 これは、利用状況と環境条件を監視して適応するという一般的なビジネス ニーズに対するソリューションです。
 
@@ -64,7 +64,7 @@ ms.locfileid: "74702023"
 
 1. **[小売]** を選択します。  小売ページに、いくつかの小売アプリケーション テンプレートが表示されます。
 
-プレビュー機能を使用する新しいストア内分析チェックアウト アプリケーションを作成するには:  
+新しいストア内分析チェックアウト アプリケーションを作成するには:  
 
 1. **In-store analytics - checkout** アプリケーション テンプレートを選択します。 このテンプレートには、RuuviTag センサーを除き、チュートリアルで使用するすべてのデバイス用のデバイス テンプレートが含まれています。 テンプレートには、チェックアウトと環境の条件、およびデバイスの状態を監視するためのオペレーター ダッシュボードも用意されています。 
 
@@ -75,13 +75,16 @@ ms.locfileid: "74702023"
 
 1. Azure サブスクリプションをお持ちの場合は、"*ディレクトリ、Azure サブスクリプション、リージョン*" を入力します。 サブスクリプションをお持ちでない場合は、**7 日間の無料試用版**を有効にし、必須の連絡先情報を入力できます。  
 
-    ディレクトリとサブスクリプションの詳細については、[アプリケーションの作成のクイック スタート](../preview/quick-deploy-iot-central.md)に関するページを参照してください。
+    ディレクトリとサブスクリプションの詳細については、[アプリケーションの作成のクイック スタート](../core/quick-deploy-iot-central.md)に関するページを参照してください。
 
 1. **作成** を選択します。
 
     ![Azure IoT Central の [Create Application]\(アプリケーションの作成\) ページ](./media/tutorial-in-store-analytics-create-app-pnp/preview-application-template.png)
 
+    ![Azure IoT Central のアプリケーションの作成の課金情報](./media/tutorial-in-store-analytics-create-app-pnp/preview-application-template-billinginfo.png)
+
 ## <a name="customize-application-settings"></a>アプリケーションの設定をカスタマイズする
+
 ビルダーとして、いくつかの設定を変更して、アプリケーションでのユーザー エクスペリエンスをカスタマイズできます。 このセクションでは、定義済みのアプリケーション テーマを選択します。 必要に応じて、カスタム テーマを作成し、アプリケーション イメージを更新する方法も学習します。 カスタム テーマを使用すると、アプリケーション ブラウザーの色、ブラウザーのアイコン、およびマストヘッドに表示されるアプリケーション ロゴを設定できます。
 
 定義済みのアプリケーション テーマを選択するには:
@@ -143,7 +146,7 @@ RuuviTag デバイス テンプレートをアプリケーションに追加す�
 
 1. Azure IoT デバイス カタログ内で **RuuviTag** センサー デバイス テンプレートを探して選択します。 
 
-1. **[次へ:カスタマイズ]** を選択します。
+1. **カスタマイズ** を選択します。
 
     ![Azure IoT Central RuuviTag センサー デバイス テンプレート](./media/tutorial-in-store-analytics-create-app-pnp/ruuvitag-device-template.png)
 
@@ -160,7 +163,7 @@ RuuviTag デバイス テンプレートをアプリケーションに追加す�
 
 第 3 に、カスタム ビューを作成することでデバイス テンプレートをカスタマイズします。 ビューでは、デバイスのメトリックや正常性など、デバイスのテレメトリとメタデータをオペレーターが視覚化する手段が提供されます。
 
-ここでは、最初の 2 つの方法を使用して、RuuviTag センサー用のデバイス テンプレートをカスタマイズします。 センサーのビューの作成について詳しくは、「[シミュレートされたデバイスを IoT Central アプリケーションに追加する](../preview/quick-create-pnp-device.md)」のクイックスタートを参照してください。
+ここでは、最初の 2 つの方法を使用して、RuuviTag センサー用のデバイス テンプレートをカスタマイズします。 センサーのビューの作成について詳しくは、「[シミュレートされたデバイスを IoT Central アプリケーションに追加する](../core/quick-create-pnp-device.md)」のクイックスタートを参照してください。
 
 RuuviTag デバイス テンプレートの組み込みインターフェイスをカスタマイズするには:
 
@@ -227,8 +230,8 @@ RuuviTag デバイス テンプレートの組み込みインターフェイス�
 
 次の 2 つの記事の手順を完了して、実際の Rigado ゲートウェイと RuuviTag センサーを接続します。 完了したら、このチュートリアルに戻ります。 このチュートリアルではデバイス テンプレートを既に作成しているため、次の一連の指示でもう一度作成する必要はありません。
 
-- Rigado ゲートウェイを接続するには、[Azure IoT Central アプリケーションへの Rigado Cascade 500 の接続](../preview/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)に関する記事を参照してください。
-- RuuviTag センサーを接続するには、「[Azure IoT Central アプリケーションへの RuuviTag センサーの接続](../preview/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)」を参照してください。 必要に応じて、これらの指示に従って 2 つのシミュレートされたセンサーを作成することもできます。
+- Rigado ゲートウェイを接続するには、[Azure IoT Central アプリケーションへの Rigado Cascade 500 の接続](../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)に関する記事を参照してください。
+- RuuviTag センサーを接続するには、「[Azure IoT Central アプリケーションへの RuuviTag センサーの接続](../core/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)」を参照してください。 必要に応じて、これらの指示に従って 2 つのシミュレートされたセンサーを作成することもできます。
 
 ## <a name="add-rules-and-actions"></a>ルールとアクションの追加
 Azure IoT Central アプリケーション内でセンサーを使用して状態を監視することの一環として、特定の条件が満たされたときにアクションを実行するルールを作成できます。 ルールはデバイス テンプレートと 1 つまたは複数のデバイスに関連付けられており、デバイスのテレメトリまたはイベントに基づいて満たす必要がある条件が含まれています。 また、ルールには 1 つ以上のアクションが関連付けられています。 アクションには、メール通知の送信、または他のサービスにデータを送信するための Webhook アクションのトリガーが含まれる場合があります。 **In-store analytics - checkout** アプリケーション テンプレートには、アプリケーションのデバイス用の定義済みルールがいくつか含まれています。
@@ -273,7 +276,7 @@ Azure IoT Central アプリケーション内でセンサーを使用して状�
 
     数分以内に、指定したメール アカウントでメールの受信が開始します。 湿度レベルが条件の値を超えたことがセンサーで示されるたびに、アプリケーションによってメールが送信されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、以下の内容を学習しました。
 
 * Azure IoT Central の **In-store analytics - checkout** テンプレートを使用して小売店アプリケーションを作成する

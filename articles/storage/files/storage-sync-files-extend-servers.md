@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f71a27ea4da6bce5832287e948e0731672280196
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: e3154b9635da889ed7f0484fc04c565c27e9241b
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699499"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031511"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>チュートリアル:Azure File Sync を使用して Windows ファイル サーバーを拡張する
 
@@ -32,7 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure Portal](https://portal.azure.com) にサインインします。
+[Azure portal](https://portal.azure.com) にサインインします。
 
 ## <a name="prepare-your-environment"></a>環境を準備する
 
@@ -136,7 +136,7 @@ Azure ストレージ アカウントをデプロイした後、ファイル共�
 
 Windows Server 2016 Datacenter サーバーで、[Internet Explorer セキュリティ強化の構成] を無効にします。 この手順は、初回のサーバー登録でのみ必要です。 サーバーの登録後に再び有効にできます。
 
-Windows Server 2016 Datacenter VM で、サーバー マネージャーが自動的に開かれます。  サーバー マネージャーが既定で開かれない場合は、エクスプローラーでそれを検索します。
+Windows Server 2016 Datacenter VM で、サーバー マネージャーが自動的に開かれます。  サーバー マネージャーが既定で開かれない場合は、[スタート] メニューでそれを検索します。
 
 1. **サーバー マネージャー**で **[ローカル サーバー]** を選択します。
 
@@ -159,7 +159,7 @@ Windows Server 2016 Datacenter VM で、サーバー マネージャーが自動
     ![データ ディスク](media/storage-sync-files-extend-servers/your-disk.png)
 
 1. **Msft Virtual Disk** という名前の 1 GB のディスクを右クリックし、 **[新しいボリューム]** を選択します。
-1. ウィザードを終了します。 既定の設定を使用し、割り当てられたドライブ文字をメモします。
+1. ウィザードを完了します。 既定の設定を使用し、割り当てられたドライブ文字をメモします。
 1. **作成** を選択します。
 1. **[閉じる]** を選択します。
 
@@ -217,12 +217,12 @@ Azure File Sync をデプロイするには、最初に、お客様が選択し�
 
    開いたウィンドウに、次の情報を入力します。
 
-   | 値 | 説明 |
+   | Value | 説明 |
    | ----- | ----- |
    | **Name** | ストレージ同期サービスの (サブスクリプションごとに) 一意の名前。<br><br>このチュートリアルでは _afssyncservice02_ を使用します。 |
    | **サブスクリプション** | お客様がこのチュートリアルに使用する Azure サブスクリプション。 |
    | **リソース グループ** | ストレージ同期サービスを含むリソース グループ。<br><br>このチュートリアルでは、_afsresgroup101918_ を使用します。 |
-   | **Location** | East US |
+   | **地域** | East US |
 
 1. 完了したら、 **[作成]** を選択して、**ストレージ同期サービス**をデプロイします。
 1. **[通知]** タブ、 **[リソースに移動]** の順に選択します。
@@ -263,7 +263,7 @@ Azure File Sync エージェントをインストールした後、サーバー�
 
    | | |
    | ----- | ----- |
-   | 値 | 説明 |
+   | Value | 説明 |
    | **Azure サブスクリプション** | このチュートリアルのストレージ同期サービスが含まれているサブスクリプション。 |
    | **リソース グループ** | ストレージ同期サービスを含むリソース グループ。 このチュートリアルでは、_afsresgroup101918_ を使用します。 |
    | **ストレージ同期サービス** | ストレージ同期サービスの名前。 このチュートリアルでは _afssyncservice02_ を使用します。 |
@@ -282,7 +282,7 @@ Azure File Sync エージェントをインストールした後、サーバー�
 
 1. 次の情報を入力して、同期グループとクラウド エンドポイントを作成します。
 
-   | 値 | 説明 |
+   | Value | 説明 |
    | ----- | ----- |
    | **同期グループ名** | この名前は、ストレージ同期サービス内で一意である必要がありますが、理にかなった任意の名前を指定できます。 このチュートリアルでは *afssyncgroup* を使用します。|
    | **サブスクリプション** | このチュートリアルのストレージ同期サービスをデプロイしたサブスクリプション。 |
@@ -305,9 +305,9 @@ Azure File Sync エージェントをインストールした後、サーバー�
 
    | | |
    | ----- | ----- |
-   | 値 | 説明 |
+   | Value | 説明 |
    | **登録済みサーバー** | お客様が作成したサーバーの名前。 このチュートリアルでは *afsvm101918* を使用します。 |
-   | **パス** | お客様が作成したドライブへの Windows Server パス。 このチュートリアルでは、*f:\filestosync* を使用します。 |
+   | **[パス]** | お客様が作成したドライブへの Windows Server パス。 このチュートリアルでは、*f:\filestosync* を使用します。 |
    | **クラウドの階層化** | このチュートリアルでは、無効のままにします。 |
    | **ボリュームの空き領域** | このチュートリアルでは空白のままにします。 |
 
@@ -317,11 +317,11 @@ Azure ファイル共有と Windows Server でファイルが同期されるよ�
 
 ![Azure Storage が正常に同期された](media/storage-sync-files-extend-servers/files-synced-in-azurestorage.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure File Sync を使用して Windows サーバーのストレージ容量を拡張するための基本的な手順を説明しました。Azure File Sync のデプロイ計画の全体像については、次を参照してください。
 

@@ -1,27 +1,27 @@
 ---
-title: マイ アプリ (プレビュー) ポータルからアプリケーションのアクセス許可を管理する - Azure Active Directory | Microsoft Docs
-description: マイ アプリ (プレビュー) ポータルから自分の組織のクラウドベースのアプリに対するアプリケーションのアクセス許可を管理する方法について学習します。
+title: マイ アプリ ポータルからアプリケーションのアクセス許可を管理する - Azure Active Directory | Microsoft Docs
+description: マイ アプリ ポータルから自分の組織のクラウドベース アプリに対するアプリケーション アクセス許可を管理する方法について学習します。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: kasimpso
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 10/30/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 36abbee0bf25550425f4e476e6a4e7b75df815a6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bac33386371b13950163727497cabd0f262df135
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705056"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022411"
 ---
-# <a name="edit-or-revoke-application-permissions-in-the-my-apps-preview-portal"></a>マイ アプリ (プレビュー) ポータルでのアプリケーションのアクセス許可の編集または取り消し
+# <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>マイ アプリ ポータルでのアプリケーションのアクセス許可の編集または取り消し
 
-**マイ アプリ** (プレビュー) ポータルで組織のアプリケーションを使用する場合、多くの場合、アクセス許可を付与し、アカウント情報を保存します。 データをセキュリティで保護し続けるには、アクセス許可を確認したり取り消したり、保存されているアカウントの資格情報をクリアしたりする必要がある場合があります。 アクセス許可またはアカウントを削除すると、一部のアプリ機能が無効になる可能性があります。 アクセス許可またはアカウントを削除した後に問題が発生した場合は、組織のヘルプデスクにサポートを依頼してください。
+**マイ アプリ** ポータルで組織のアプリケーションを使用する場合、多くの場合、アクセス許可を付与し、アカウント情報を保存します。 データをセキュリティで保護し続けるには、アクセス許可を確認したり取り消したり、保存されているアカウントの資格情報をクリアしたりする必要がある場合があります。 アクセス許可またはアカウントを削除すると、一部のアプリ機能が無効になる可能性があります。 アクセス許可またはアカウントを削除した後に問題が発生した場合は、組織のヘルプデスクにサポートを依頼してください。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
@@ -46,11 +46,11 @@ ms.locfileid: "76705056"
 
 アプリのアクセス許可と保存されたアカウントを **マイ アプリ** ポータルで管理した後、次のことを行うことができます。
 
-- 自分のアプリを、組織が作成して提供しているさまざまなカテゴリに整理できます。 詳細については、「[マイ アプリ (プレビュー) ポータルでのワークスペースへのアクセスおよび使用](my-applications-portal-workspaces.md)」を参照してください。
+- 自分のアプリを、組織が作成して提供しているさまざまなカテゴリに整理できます。 詳細については、[マイ アプリ ポータル内のコレクションへのアクセスと使用](my-applications-portal-workspaces.md)に関する記事を参照してください。
 
 ## <a name="related-articles"></a>関連記事
 
-- [自分のプロファイルとアカウント情報の更新](my-account-portal-overview.md)。 **マイ プロファイル** (プレビュー) ポータルに表示される自分の個人情報を更新する方法について説明します。
+- [自分のプロファイルとアカウント情報の更新](my-account-portal-overview.md)。 **マイ プロファイル** ポータルに表示される自分の個人情報を更新する方法について説明します。
 
 - [所属組織の管理](my-account-portal-organizations-page.md)。 **マイ プロファイル** ポータルの **[組織]** ページで、自分の組織に関連した情報を表示して管理する方法について説明します。
 

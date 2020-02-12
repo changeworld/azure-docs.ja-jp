@@ -9,18 +9,18 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 728c5dcbf94e030e860a222add6498824c66930d
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 6c2514bd078cc3feee4bd2802cf314079b824311
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615391"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022122"
 ---
 # <a name="in-store-analytics-architecture"></a>ストア内の分析のアーキテクチャ
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-ストア内の分析ソリューションを使うと、小売店環境内でさまざまな条件を監視できます。 これらのソリューションは、IoT Central のいずれかのアプリケーション テンプレートと以下のアーキテクチャ ガイダンスを利用して構築できます。
+
+ストア内の分析ソリューションを使うと、小売店環境内でさまざまな条件を監視できます。 これらのソリューションは、IoT Central のいずれかのアプリケーション テンプレートと以下のアーキテクチャ ガイダンスを使用して構築できます。
 
 
 ![Azure IoT Central のストアの分析](./media/architecture/store-analytics-architecture-frame.png)
@@ -35,7 +35,7 @@ ms.locfileid: "73615391"
 
 ## <a name="condition-monitoring-sensors"></a>状況監視センサー
 
-IoT ソリューションは、小売店環境内から意味のある信号をキャプチャするセンサーのセットから始まります。 これは、上のアーキテクチャ図の左端にあるさまざまなセンサーによって反映されています。
+IoT ソリューションは、小売店環境内から意味のある信号をキャプチャするセンサーのセットから始まります。 これは、上のアーキテクチャ図の左端にあるさまざまな種類のセンサーによって反映されています。
 
 ## <a name="gateway-devices"></a>ゲートウェイ デバイス
 
@@ -43,7 +43,7 @@ IoT ソリューションは、小売店環境内から意味のある信号を�
 
 ## <a name="iot-central-application"></a>IoT Central アプリケーション
 
-Azure IoT Central アプリケーションにより、小売店環境内のさまざまな IoT センサーやゲートウェイ デバイスからデータが取り込まれて、意味のある分析情報のセットが生成されます。
+Azure IoT Central アプリケーションにより、小売店環境内のさまざまな種類の IoT センサーやゲートウェイ デバイスからデータが取り込まれて、意味のある分析情報のセットが生成されます。
 
 また、Azure IoT Central では、ストアオ ペレーターがインフラストラクチャ デバイスをリモートで監視および管理できるように、カスタマイズされたエクスペリエンスが提供されます。
 
@@ -51,8 +51,8 @@ Azure IoT Central アプリケーションにより、小売店環境内のさ�
 ソリューション内の Azure IoT Central アプリケーションは、一連の Azure PaaS (サービスとしてのプラットフォーム) サービスに対して、未加工または集計済みの分析情報をエクスポートするように構成できます。これらのサービスでは、データの操作を実行し、分析情報を補強してから、ビジネス アプリケーションに渡すことができます。 
 
 ## <a name="business-application"></a>ビジネス アプリケーション
-IoT データを使用して、小売り環境内に展開されたさまざまなビジネス アプリケーションを強化することができます。 小売店のマネージャーまたはスタッフ メンバーは、これらのアプリケーションを利用して、ビジネス分析情報を視覚化し、意味のあるアクションをリアルタイムで実行できます。 小売りチーム向けのリアルタイム Power BI ダッシュボードを作成する方法については、[こちらのチュートリアル](./tutorial-in-store-analytics-create-app-pnp.md)を参照してください。
+IoT データを使用して、小売り環境内に展開されたさまざまな種類のビジネス アプリケーションを強化することができます。 小売店のマネージャーまたはスタッフ メンバーは、これらのアプリケーションを使用して、ビジネス分析情報を視覚化し、意味のあるアクションをリアルタイムで実行できます。 小売りチーム向けのリアルタイム Power BI ダッシュボードを作成する方法については、[こちらのチュートリアル](./tutorial-in-store-analytics-create-app-pnp.md)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [ストア内の分析 - チェックアウト](https://aka.ms/checkouttemplate)および[ストア内の分析 - 条件の監視](https://aka.ms/conditiontemplate)アプリケーション テンプレートの使用を始めます。 
-* ストア内の分析アプリケーション テンプレートの 1 つを利用してソリューションを構築する方法が説明されている[エンド ツー エンドのチュートリアル](https://aka.ms/storeanalytics-tutorial)を調べます。
+* ストア内の分析アプリケーション テンプレートの 1 つを使用してソリューションを構築する方法が説明されている[エンド ツー エンドのチュートリアル](https://aka.ms/storeanalytics-tutorial)を調べます。
