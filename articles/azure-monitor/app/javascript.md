@@ -100,7 +100,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>構成
 ほとんどの構成フィールドは、既定値を false にできるように指定されています。 `instrumentationKey`以外のすべてのフィールドは省略可能です。
 
-| Name | Default | [説明] |
+| Name | Default | 説明 |
 |------|---------|-------------|
 | instrumentationKey | null | **必須**<br>Azure portal で入手したインストルメンテーション キー |
 | accountId | null | 省略可能なアカウント ID (アプリによってユーザーがアカウントにグループ化される場合)。 スペース、コンマ、セミコロン、等号、または縦棒は使用できません。 |
