@@ -117,7 +117,7 @@ Microsoft Azure Germany の詳細については、「[Microsoft Azure Germany](
 ### <a name="properties-used-for-azure-cache-for-redis-powershell"></a>Azure Cache for Redis 用の PowerShell で使用されるプロパティ
 次の表は、Azure PowerShell を使用して Azure Cache for Redis インスタンスを作成し、管理するときに一般的に使用されるパラメーターのプロパティと説明を示しています。
 
-| パラメーター | [説明] | Default |
+| パラメーター | 説明 | Default |
 | --- | --- | --- |
 | Name |キャッシュの名前 | |
 | Location |キャッシュの場所 | |
@@ -134,7 +134,7 @@ Microsoft Azure Germany の詳細については、「[Microsoft Azure Germany](
 | KeyType |アクセス キーを更新するときに再生成するアクセス キーを指定します。 有効な値は次のとおりです。Primary、Secondary | |
 
 ### <a name="redisconfiguration-properties"></a>RedisConfiguration プロパティ
-| プロパティ | [説明] | 価格レベル |
+| プロパティ | 説明 | 価格レベル |
 | --- | --- | --- |
 | rdb-backup-enabled |[Redis データ永続化](cache-how-to-premium-persistence.md) が有効かどうか。 |Premium のみ |
 | rdb-storage-connection-string |[Redis データ永続化](cache-how-to-premium-persistence.md) |Premium のみ |
