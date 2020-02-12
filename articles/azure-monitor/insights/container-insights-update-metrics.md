@@ -20,7 +20,7 @@ ms.locfileid: "76715908"
 
 この機能の一部として、次のメトリックが有効にされています。
 
-| メトリック名前空間 | メトリック | [説明] |
+| メトリック名前空間 | メトリック | 説明 |
 |------------------|--------|-------------|
 | insights.container/nodes | cpuUsageMillicores、cpuUsagePercentage、memoryRssBytes、memoryRssPercentage、memoryWorkingSetBytes、memoryWorkingSetPercentage、nodesCount | これらは、*ノード* メトリックであり、*ホスト*をディメンションとして含みます。また、<br> *ホスト* ディメンションの値として、ノードの名前も含みます。 |
 | insights.container/pods | podCount | これらは、*ポッド* メトリックであり、ControllerName、Kubernetes 名前空間、名前、フェーズをディメンションとして含みます。 |
