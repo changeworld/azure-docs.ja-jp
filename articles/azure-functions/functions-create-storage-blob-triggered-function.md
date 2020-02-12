@@ -53,7 +53,7 @@ Azure Blob Storage でファイルをアップロードしたり、更新した�
 
     ![Blob Storage でトリガーされる関数を作成します。](./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal-2.png)
 
-    | 設定 | 推奨値 | [説明] |
+    | 設定 | 推奨値 | 説明 |
     |---|---|---|
     | **Name** | Function App 内で一意 | この BLOB によってトリガーされる関数の名前。 |
     | **[パス]**   | samples-workitems/{name}    | 監視されている Blob Storage ストレージ内の位置。 Blob のファイル名は、_name_ パラメーターとしてバインディングで渡されます。  |
