@@ -48,7 +48,7 @@ Azure Functions テンプレートでは、Azure の関数アプリに発行で�
 
     ![Visual Studio の [新しい Azure Functions アプリケーションの作成] ダイアログ](./media/durable-functions-create-first-csharp/functions-vs-new-function.png)
 
-    | 設定      | 推奨値  | [説明]                      |
+    | 設定      | 推奨値  | 説明                      |
     | ------------ |  ------- |----------------------------------------- |
     | **Version** | Azure Functions 2.0 <br />(.NET Core) | .NET Core をサポートする Azure Functions のバージョン 2.0 ランタイムを使用する関数プロジェクトを作成します。 Azure Functions 1.0 では、.NET Framework がサポートされています。 詳細については、「[Azure Functions ランタイム バージョンをターゲットにする方法](../functions-versions.md)」をご覧ください。   |
     | **テンプレート** | Empty | 空の関数アプリを作成します。 |
@@ -75,7 +75,7 @@ Azure Functions テンプレートでは、Azure の関数アプリに発行で�
 
 新しい永続関数がアプリに追加されます。  新しい .cs ファイルを開いて内容を表示します。 この永続関数は、次のメソッドを使用した単純な関数チェーンの例です。  
 
-| 方法 | FunctionName | [説明] |
+| 方法 | FunctionName | 説明 |
 | -----  | ------------ | ----------- |
 | **`RunOrchestrator`** | `<file-name>` | 持続的オーケストレーションを管理します。 このケースでは、オーケストレーションが起動し、一覧が作成され、3 つの関数呼び出しの結果が一覧に追加されます。  3 つの関数呼び出しが完了すると、一覧が返されます。 |
 | **`SayHello`** | `<file-name>_Hello` | 関数から hello が返されます。 これが、オーケストレーションされるビジネス ロジックを含む関数です。 |
