@@ -243,7 +243,7 @@ public void run( ExecutionContext context) {
 
 次の表は、*function.json* ファイルと `WarmupTrigger` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 | **type** | 該当なし| 必須 - `warmupTrigger` に設定する必要があります。 |
 | **direction** | 該当なし| 必須 - `in` に設定する必要があります。 |
