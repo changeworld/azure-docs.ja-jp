@@ -26,7 +26,7 @@ Windows および Linux VM の Update Management によって収集されるレ�
 
 コンピューターで必要な更新プログラムを表す `RequiredUpdate` の種類のレコードが作成されます。 これらのレコードは、次の表に示したプロパティを持ちます。
 
-| プロパティ | [説明] | 
+| プロパティ | 説明 | 
 |----------|-------------|
 | Computer | レポート コンピューターの完全修飾ドメイン名。 |
 | KBID | Windows Update のサポート技術情報の記事 ID。 |
@@ -47,7 +47,7 @@ Windows および Linux VM の Update Management によって収集されるレ�
 
 `Update` という種類のレコードが作成されます。これは、使用可能な更新プログラムと、コンピューターでのそのインストール状態を表します。 これらのレコードは、次の表に示したプロパティを持ちます。
 
-| プロパティ | [説明] | 
+| プロパティ | 説明 | 
 |----------|-------------|
 | ApprovalSource | Windows オペレーティング システムにのみ適用されます。 値は "*Microsoft Update*" です。 |
 | Approved | "*True*" または "*False*" |
@@ -84,7 +84,7 @@ Windows および Linux VM の Update Management によって収集されるレ�
 
 コンピューター上の更新エージェントの詳細を提供する `UpdateAgent` の種類のレコードが作成されます。 これらのレコードは、次の表に示したプロパティを持ちます。
 
-| プロパティ | [説明] | 
+| プロパティ | 説明 | 
 |----------|-------------|
 | AgeofOldestMissingRequiredUpdate | | 
 | AutomaticUpdateEnabled | | 
@@ -105,7 +105,7 @@ Windows および Linux VM の Update Management によって収集されるレ�
 
 コンピューターごとにスケジュールされたデプロイの更新プログラムのデプロイの状態を提供する、`UpdateRunProgress` の種類のレコードが作成されます。 これらのレコードは、次の表に示したプロパティを持ちます。
 
-| プロパティ | [説明] | 
+| プロパティ | 説明 | 
 |----------|-------------|
 | Computer | レポート コンピューターの完全修飾ドメイン名。 |
 | ComputerEnvironment | "*Azure*" または "*Non-Azure*"。 | 
@@ -137,7 +137,7 @@ Windows および Linux VM の Update Management によって収集されるレ�
 
 コンピューターごとの更新の概要を提供する `UpdateSummary` の種類のレコードが作成されます。 これらのレコードは、次の表に示したプロパティを持ちます。
 
-| プロパティ | [説明] | 
+| プロパティ | 説明 | 
 |----------|-------------|
 | Computer | レポート コンピューターの完全修飾ドメイン名。 |
 | ComputerEnvironment | "*Azure*" または "*Non-Azure*"。 | 
