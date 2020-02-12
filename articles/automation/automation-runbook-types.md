@@ -16,7 +16,7 @@ ms.locfileid: "75420907"
 
 Azure Automation がサポートする数種類の Runbook について次の表で簡単に説明します。  その後のセクションでは、使用するときの考慮事項など、各種類に関して詳しく説明します。
 
-| 種類 | [説明] |
+| 種類 | 説明 |
 |:--- |:--- |
 | [グラフィカル](#graphical-runbooks)|Windows PowerShell に基づいており、Azure ポータルのグラフィカル エディターで完全に作成および編集されます。 |
 | [グラフィカル PowerShell ワークフロー](#graphical-runbooks)|Windows PowerShell ワークフローに基づいており、Azure ポータルのグラフィカル エディターで完全に作成および編集されます。 |
