@@ -355,7 +355,7 @@ SDK では、上記の説明のとおり、テレメトリが自動的に収集�
 
 `ApplicationInsightsServiceOptions` でよく使用される設定
 
-|設定 | [説明] | Default
+|設定 | 説明 | Default
 |---------------|-------|-------
 |EnableQuickPulseMetricStream | LiveMetrics 機能を有効または無効にします | true
 |EnableAdaptiveSampling | アダプティブ サンプリングを有効または無効にします | true
