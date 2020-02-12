@@ -40,7 +40,7 @@ Monitor の Capacity and Performance ソリューションを使用すると、H
 
 次の表は、このソリューションの接続先としてサポートされているソースとその説明です。
 
-| 接続先ソース | サポート | [説明] |
+| 接続先ソース | サポート | 説明 |
 |---|---|---|
 | [Windows エージェント](../../azure-monitor/platform/agent-windows.md) | はい | このソリューションでは、Windows エージェントから容量とパフォーマンスに関するデータ情報を収集します。 |
 | [Linux エージェント](../../azure-monitor/learn/quick-collect-linux-computer.md) | いいえ    | このソリューションでは、直接の Linux エージェントから容量とパフォーマンスに関するデータ情報を収集することはありません。|
@@ -118,7 +118,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 以下の表は、容量とパフォーマンスに関してこのソリューションで収集および計算されるデータを取得するためのログ検索のサンプルを示したものです。
 
 
-| クエリ | [説明] |
+| クエリ | 説明 |
 |:--- |:--- |
 | ホストのメモリ構成の一括表示 | Perf &#124; where ObjectName == "Capacity and Performance" and CounterName == "Host Assigned Memory MB" &#124; summarize MB = avg(CounterValue) by InstanceName |
 | VM のメモリ構成の一括表示 | Perf &#124; where ObjectName == "Capacity and Performance" and CounterName == "VM Assigned Memory MB" &#124; summarize MB = avg(CounterValue) by InstanceName |
