@@ -51,7 +51,7 @@ ms.locfileid: "76845713"
 
 1. ご希望の言語に関して、プロンプトに従って次の情報を入力します。
 
-    | Prompt | Value | [説明] |
+    | Prompt | Value | 説明 |
     | ------ | ----- | ----------- |
     | Select a language for your function app project (関数アプリ プロジェクトの言語を選択してください) | JavaScript | ローカル Node.js 関数プロジェクトを作成します。 |
     | Select a version (バージョンを選択してください) | Azure Functions v2 | このオプションが表示されるのは、Core Tools がまだインストールされていない場合だけです。 その場合、アプリの初回実行時に Core Tools がインストールされます。 |
