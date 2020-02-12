@@ -205,7 +205,7 @@ module.exports = function (context, req) {
 
 次の表は、*function.json* ファイルと `Token` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**name**| 該当なし |必須 - 認証トークンの関数コードで使用される変数名。 「[コードから認証トークンの入力バインドを使用する](#token-input-code)」をご覧ください。|
 |**type**| 該当なし |必須 - `token` に設定する必要があります。|
@@ -340,7 +340,7 @@ module.exports = function (context, req) {
 
 次の表は、*function.json* ファイルと `Excel` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**name**| 該当なし |必須 - Excel テーブルの関数コードで使用される変数名。 「[コードから Excel テーブルの入力バインドを使用する](#excel-input-code)」をご覧ください。|
 |**type**| 該当なし |必須 - `excel` に設定する必要があります。|
@@ -502,7 +502,7 @@ module.exports = function (context, req) {
 
 次の表は、*function.json* ファイルと `Excel` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**name**| 該当なし |必須 - 認証トークンの関数コードで使用される変数名。 「[コードから Excel テーブルの出力バインドを使用する](#excel-output-code)」をご覧ください。|
 |**type**| 該当なし |必須 - `excel` に設定する必要があります。|
@@ -648,7 +648,7 @@ module.exports = function (context, req) {
 
 次の表は、*function.json* ファイルと `OneDrive` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**name**| 該当なし |必須 - ファイルの関数コードで使用される変数名。 「[コードから OneDrive ファイルの入力バインドを使用する](#onedrive-input-code)」をご覧ください。|
 |**type**| 該当なし |必須 - `onedrive` に設定する必要があります。|
@@ -796,7 +796,7 @@ module.exports = function (context, req) {
 
 次の表は、*function.json* ファイルと `OneDrive` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**name**| 該当なし |必須 - ファイルの関数コードで使用される変数名。 「[コードから OneDrive ファイルの出力バインドを使用する](#onedrive-output-code)」をご覧ください。|
 |**type**| 該当なし |必須 - `onedrive` に設定する必要があります。|
@@ -947,7 +947,7 @@ module.exports = function (context, req) {
 
 次の表は、*function.json* ファイルと `Outlook` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**name**| 該当なし |必須 - メール メッセージの関数コードで使用される変数名。 「[コードから Outlook メッセージの出力バインドを使用する](#outlook-output-code)」をご覧ください。|
 |**type**| 該当なし |必須 - `outlook` に設定する必要があります。|
@@ -1090,7 +1090,7 @@ module.exports = function (context) {
 
 次の表は、*function.json* ファイルと `GraphWebhookTrigger` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**name**| 該当なし |必須 - メール メッセージの関数コードで使用される変数名。 「[コードから Outlook メッセージの出力バインドを使用する](#outlook-output-code)」をご覧ください。|
 |**type**| 該当なし |必須 - `graphWebhook` に設定する必要があります。|
@@ -1242,7 +1242,7 @@ module.exports = function (context, req) {
 
 次の表は、*function.json* ファイルと `GraphWebhookSubscription` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**name**| 該当なし |必須 - メール メッセージの関数コードで使用される変数名。 「[コードから Outlook メッセージの出力バインドを使用する](#outlook-output-code)」をご覧ください。|
 |**type**| 該当なし |必須 - `graphWebhookSubscription` に設定する必要があります。|
@@ -1383,7 +1383,7 @@ module.exports = function (context, req) {
 
 次の表は、*function.json* ファイルと `GraphWebhookSubscription` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**name**| 該当なし |必須 - メール メッセージの関数コードで使用される変数名。 「[コードから Outlook メッセージの出力バインドを使用する](#outlook-output-code)」をご覧ください。|
 |**type**| 該当なし |必須 - `graphWebhookSubscription` に設定する必要があります。|
