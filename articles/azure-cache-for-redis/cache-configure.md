@@ -386,7 +386,7 @@ Azure Cache for Redis の監視と診断の詳細については、「[Azure Cac
 >
 >
 
-| 設定 | 既定値 | [説明] |
+| 設定 | 既定値 | 説明 |
 | --- | --- | --- |
 | `databases` |16 |データベースの既定の数は 16 ですが、価格レベルに基づいてさまざまな数を構成できます。<sup>1</sup> 既定のデータベースは DB 0 です。`dbid` が `0` ～ `databases - 1` の間の数値である `connection.GetDatabase(dbid)` を使用して、接続ごとに異なるデータベースを選択できます。 |
 | `maxclients` |価格レベルによって異なります。<sup>2</sup> |この値は、同時に接続が許可されているクライアントの最大数です。 制限に達すると、Redis はすべての新しい接続を終了し、"max number of clients reached" エラーを返します。 |
