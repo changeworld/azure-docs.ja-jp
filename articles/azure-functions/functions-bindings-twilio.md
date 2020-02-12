@@ -327,7 +327,7 @@ public static CreateMessageOptions Run(
 
 次の表は、*function.json* ファイルと `TwilioSms` 属性で設定したバインド構成のプロパティを説明しています。
 
-| v1 function.json のプロパティ | v2 function.json のプロパティ | 属性のプロパティ |[説明]|
+| v1 function.json のプロパティ | v2 function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|---------|----------------------|
 |**type**|**type**| `twilioSms` に設定する必要があります。|
 |**direction**|**direction**| `out` に設定する必要があります。|
