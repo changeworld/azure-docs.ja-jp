@@ -51,7 +51,7 @@ Cognitive Services API は、個々のリソースとして Azure で使用で�
 
     ![Cognitive リソースを作成するページ](media/functions-twitter-email/01-create-text-analytics.png)
 
-    | 設定      |  推奨値   | [説明]                                        |
+    | 設定      |  推奨値   | 説明                                        |
     | --- | --- | --- |
     | **Name** | MyCognitiveServicesAccnt | 一意のアカウント名を選択します。 |
     | **Location** | 米国西部 | お近くの場所を使用します。 |
@@ -137,7 +137,7 @@ Cognitive Services API は、個々のリソースとして Azure で使用で�
 
     ![Azure Portal でロジック アプリを作成する](./media/functions-twitter-email/08-logic-app-create.png)
 
-    | 設定      |  推奨値   | [説明]                                        |
+    | 設定      |  推奨値   | 説明                                        |
     | ----------------- | ------------ | ------------- |
     | **Name** | TweetSentiment | アプリの適切な名前を選択します。 |
     | **リソース グループ** | myResourceGroup | 以前と同じ既存のリソース グループを選択します。 |
@@ -161,7 +161,7 @@ Cognitive Services API は、個々のリソースとして Azure で使用で�
 
     ![Twitter コネクタの設定](media/functions-twitter-email/10-tweet-settings.png)
 
-    | 設定      |  推奨値   | [説明]                                        |
+    | 設定      |  推奨値   | 説明                                        |
     | ----------------- | ------------ | ------------- |
     | **[検索テキスト]** | #Azure | 選択した間隔で新しいツイートが十分に投稿される程度に一般的なハッシュタグを使用します。 Free レベルを使用している状態で、使用頻度の高すぎるハッシュタグを使用すると、Cognitive Services API でのトランザクションのクォータがすぐに上限に達してしまう場合があります。 |
     | **間隔** | 15 | 頻度の単位での、Twitter に対する要求間の間隔です。 |
@@ -232,7 +232,7 @@ Cognitive Services API は、個々のリソースとして Azure で使用で�
 
     ![[電子メールの送信] アクション用に電子メールを構成する](media/functions-twitter-email/21-configure-email.png)
     
-| 設定      |  推奨値   | [説明]  |
+| 設定      |  推奨値   | 説明  |
 | ----------------- | ------------ | ------------- |
 | **To** | メール アドレスを入力します。 | 通知を受け取る電子メール アドレス。 |
 | **[件名]** | "ネガティブなツイートの感情を検出しました"  | 電子メール通知の件名。  |
