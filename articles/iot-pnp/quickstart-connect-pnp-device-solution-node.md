@@ -35,7 +35,7 @@ node --version
 
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
-次のコマンドを実行して、ご使用のハブに対する _IoT ハブ接続文字列_を取得します (後で使用するためにメモします)。
+次のコマンドを実行して、ご使用のハブに対する "_IoT ハブ接続文字列_" を取得します (後で使用するためにメモします)。
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
@@ -57,7 +57,7 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
     npm install
     ```
 
-1. _デバイス接続文字列_を構成します。
+1. "_デバイス接続文字列_" を構成します。
 
     ```cmd/sh
     set DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>
@@ -156,7 +156,7 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
     }
     ```
 
-1. _デバイス_ ターミナルにアクセスして、デバイスが更新プログラムを受信済みであることを確認します。
+1. "_デバイス_" ターミナルにアクセスして、デバイスが更新プログラムを受信済みであることを確認します。
 
     ```cmd/sh
     Received an update for brightness: 42
@@ -226,7 +226,7 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
     }
     ```
 
-1. _デバイス_ ターミナルにアクセスすると、コマンドが確認済みであることがわかります。
+1. "_デバイス_" ターミナルにアクセスすると、コマンドが確認済みであることがわかります。
 
     ```cmd/sh
     received command: blink for interfaceInstance: environmentalSensor
