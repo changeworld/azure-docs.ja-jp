@@ -581,8 +581,6 @@
               href: disks-benchmarks.md
         - name: アタッチされていないディスクの検出
           href: find-unattached-disks.md
-        - name: File Storage を使用する
-          href: ../../storage/files/storage-files-quick-create-use-windows.md
         - name: ディスクに関する FAQ
           href: faq-for-disks.md
     - name: ネットワークの管理
