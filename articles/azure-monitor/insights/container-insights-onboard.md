@@ -69,7 +69,7 @@ Azure Monitor for containers では、以下が公式にサポートされてい
 
 次の表の情報は、Azure China のプロキシとファイアウォールの構成情報をまとめたものです。
 
-|エージェントのリソース|Port |[説明] | 
+|エージェントのリソース|Port |説明 | 
 |--------------|------|-------------|
 | *.ods.opinsights.azure.cn | 443 | データ インジェスト |
 | *.oms.opinsights.azure.cn | 443 | OMS のオンボード |
@@ -79,7 +79,7 @@ Azure Monitor for containers では、以下が公式にサポートされてい
 
 次の表の情報は、Azure US Government のプロキシとファイアウォールの構成情報をまとめたものです。
 
-|エージェントのリソース|Port |[説明] | 
+|エージェントのリソース|Port |説明 | 
 |--------------|------|-------------|
 | *.ods.opinsights.azure.us | 443 | データ インジェスト |
 | *.oms.opinsights.azure.us | 443 | OMS のオンボード |
@@ -103,7 +103,7 @@ Azure Monitor for containers では、以下が公式にサポートされてい
 
 以下の表で説明されている次の方法のいずれかを使用して、コンテナーの Azure Monitor を有効にします。
 
-| デプロイの状態 | 方法 | [説明] |
+| デプロイの状態 | 方法 | 説明 |
 |------------------|--------|-------------|
 | 新しい Kubernetes クラスター | [Azure CLI を使用して AKS クラスターを作成](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| Azure CLI を使用して作成する新しい AKS クラスターの監視を有効にできます。 |
 | | [Terraform を使用して AKS クラスターを作成](container-insights-enable-new-cluster.md#enable-using-terraform)| オープンソースのツールである Terraform を使用して作成する新しい AKS クラスターの監視を有効にできます。 |
