@@ -3,7 +3,7 @@ title: Language Understanding (LUIS) のドキュメント
 summary: Language Understanding を使用して、アプリケーションが人の発言の意図を認識できるようにする方法について説明します。
 metadata:
   ms.topic: landing-page
-  ms.date: 11/22/2019
+  ms.date: 02/11/2020
   ms.author: nitinme
   author: nitinme
   ms.service: cognitive-services
@@ -12,12 +12,12 @@ metadata:
   title: Language Understanding (LUIS) のドキュメント
   titleSuffix: Azure Cognitive Services
   description: Language Understanding (LUIS) サービスを使用すると、アプリケーションが人の発言の意図を認識できるようになります。 LUIS には機械学習が使用されており、開発者は、自然言語でユーザー入力を受け取ってその意味を正確に抽出できるアプリケーションを構築できます。
-  ms.openlocfilehash: f45461b49b51d6d25464ffa7d2084b1bbb1f9e0e
-  ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+  ms.openlocfilehash: 1d9b17bcf6817d3c94d191d54be26ce0ff1f14c2
+  ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/17/2020
-  ms.locfileid: "76169657"
+  ms.lasthandoff: 02/11/2020
+  ms.locfileid: "77137350"
 landingContent:
 - title: Language Understanding (LUIS) について
   linkLists:
@@ -39,8 +39,8 @@ landingContent:
       url: whats-new.md
   - linkListType: video
     links:
-    - text: AI Roadshow:LUIS
-      url: https://azure.microsoft.com/resources/videos/whats-new-with-language-understanding-service-luis
+    - text: Ignite 2019:LUIS を使用した高度な自然言語理解 (NLU) モデル
+      url: https://www.youtube.com/watch?v=JdJEV2jV0_Y
 - title: 意図、エンティティ、機能を作成する
   linkLists:
   - linkListType: concept

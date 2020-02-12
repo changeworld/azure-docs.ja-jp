@@ -42,9 +42,9 @@
       href: openvpn-azure-ad-tenant.md
     - name: ユーザー VPN の Multi-Factor Authentication (MFA) を有効にする
       href: openvpn-azure-ad-mfa.md
-    - name: ユーザー VPN 用に Azure AD 認証を構成する (プレビュー)
+    - name: ユーザー VPN 用に Azure AD 認証を構成する
       href: virtual-wan-point-to-site-azure-ad.md
-    - name: ユーザー VPN 用にマルチアプリケーション Azure AD 認証を構成する (プレビュー)
+    - name: ユーザー VPN 用にマルチアプリケーション Azure AD 認証を構成する
       href: openvpn-azure-ad-tenant-multi-app.md
     - name: 自動化を構成する (Virtual WAN パートナー)
       href: virtual-wan-configure-automation-providers.md
