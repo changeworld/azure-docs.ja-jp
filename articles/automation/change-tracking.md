@@ -101,7 +101,7 @@ FIM が既に有効になっていて、完全な Change Tracking ソリュー�
 2. **[変更の追跡]** ページで、 **[Linux ファイル]** を選択し、 **[+ 追加]** をクリックして、追跡する新しいファイルを追加します。
 3. **[変更履歴用の Linux ファイルを追加する]** で、追跡するファイルまたはディレクトリの情報を入力し、 **[保存]** をクリックします。
 
-|プロパティ  |[説明]  |
+|プロパティ  |説明  |
 |---------|---------|
 |Enabled     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
@@ -124,7 +124,7 @@ FIM が既に有効になっていて、完全な Change Tracking ソリュー�
 2. **[Change Tracking]\(変更の追跡\)** ページで、 **[Windows ファイル]** を選択し、 **[+ 追加]** をクリックして、追跡する新しいファイルを追加します。
 3. **[変更履歴用の Windows ファイルを追加する]** で、追跡するファイルの情報を入力し、 **[保存]** をクリックします。
 
-|プロパティ  |[説明]  |
+|プロパティ  |説明  |
 |---------|---------|
 |Enabled     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
@@ -156,7 +156,7 @@ FIM が既に有効になっていて、完全な Change Tracking ソリュー�
 2. **[Change Tracking]\(変更の追跡\)** ページで、 **[Windows レジストリ]** を選択し、 **[+ 追加]** をクリックして、追跡する新しいレジストリ キーを追加します。
 3. **[変更履歴用の Windows レジストリを追加する]** で、追跡するキーの情報を入力し、 **[保存]** をクリックします。
 
-|プロパティ  |[説明]  |
+|プロパティ  |説明  |
 |---------|---------|
 |Enabled     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するレジストリ キーのフレンドリ名。        |
@@ -280,7 +280,7 @@ Change Tracking には次のアドレスが明示的に必要です。 このア
 
 次の表は、このソリューションによって収集された変更レコードを探すログ検索の例です。
 
-|クエリ  |[説明]  |
+|クエリ  |説明  |
 |---------|---------|
 |ConfigurationData<br>&#124; where   ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"<br>&#124; where SvcState == "Stopped"<br>&#124; summarize arg_max(TimeGenerated, *) by SoftwareName, Computer         | Windows サービスの最新のインベントリ レコードで、自動に設定されたが、停止中として報告されたものを表示します<br>結果はその SoftwareName と Computer の最新のレコードに限定されます      |
 |ConfigurationChange<br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Removed"<br>&#124; order by TimeGenerated desc|削除されたソフトウェアの変更レコードを表示します|
@@ -309,7 +309,7 @@ Change Tracking と Inventory の重要な機能は、構成の状態と、ハ�
 
 Hosts ファイルへの変更に関するアラートは、Change Tracking や Inventory のデータに関するアラートの 1 つの適切な利用ですが、以下のセクションでクエリの例と共に定義されているケースを含み、アラートにはその他多くのシナリオがあります。
 
-|クエリ  |[説明]  |
+|クエリ  |説明  |
 |---------|---------|
 |ConfigurationChange <br>&#124; where ConfigChangeType == "Files" and FileSystemPath contains " c:\\windows\\system32\\drivers\\"|システムの重要なファイルに対する変更を追跡するのに役立ちます|
 |ConfigurationChange <br>&#124; where FieldsChanged contains "FileContentChecksum" and FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"|キー構成ファイルに対する変更を追跡するのに役立ちます|
