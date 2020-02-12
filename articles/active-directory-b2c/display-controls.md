@@ -60,7 +60,7 @@ ms.locfileid: "75474701"
 | OutputClaims | 0:1 | **OutputClaims** は、この **DisplayControl** のために一時的に保存されるクレームを表すために使用されます。 |
 | アクション | 0:1 | **Actions** は、フロントエンドで発生しているユーザー アクションに対して呼び出す検証技術プロファイルを一覧表示するために使用されます。 |
 
-### <a name="input-claims"></a>入力要求
+### <a name="input-claims"></a>入力クレーム
 
 表示コントロールでは、**InputClaims** 要素を使用して、ユーザーから収集するクレームの値をページ上に事前入力できます。 この表示コントロールを参照するセルフアサート技術プロファイルでは、どのような **InputClaimsTransformations** でも定義することができます。
 
@@ -86,7 +86,7 @@ ms.locfileid: "75474701"
 <DisplayClaim ClaimTypeReferenceId="otpCode" ControlClaimType="VerificationCode" Required="true" />
 ```
 
-### <a name="output-claims"></a>出力要求
+### <a name="output-claims"></a>出力クレーム
 
 表示コントロールの**クレーム出力**は、次のオーケストレーション ステップには送信されません。 これらは、現在の表示コントロール セッションに対してのみ一時的に保存されます。 これらの一時的なクレームは、同じ表示コントロールの異なるアクション間で共有できます。
 
