@@ -574,7 +574,7 @@ trackTrace(message: string, properties?: {[string]:string}, severityLevel?: Seve
 
 メソッドの出入りなどの診断イベントをログに記録します。
 
- パラメーター | [説明]
+ パラメーター | 説明
 ---|---
 `message` | 診断データ。 名前よりはるかに長くなることがあります。
 `properties` | 文字列と文字列のマップ:ポータルで、[例外のフィルター](https://azure.microsoft.com/documentation/articles/app-insights-api-custom-events-metrics/#properties)に使用される追加のデータ。 既定値は空です。
