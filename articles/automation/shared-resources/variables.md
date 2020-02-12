@@ -51,7 +51,7 @@ Automation で使用できる変数の型の一覧を次に示します。
 
 AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作成および管理するには、次の表のコマンドレットを使用します。 これらのコマンドレットは、Automation Runbook と DSC 構成に使用できる [AzureRM.Automation モジュール](/powershell/azure/overview)に付属しています。
 
-| コマンドレット | [説明] |
+| コマンドレット | 説明 |
 |:---|:---|
 |[Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable)|既存の変数の値を取得します。|
 |[New-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable)|新しい変数を作成し、その値を設定します。|
@@ -62,7 +62,7 @@ AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作�
 
 Runbook および DSC 構成内の変数にアクセスするために、次の表のアクティビティが使用されます。 Get-AzureRmAutomationVariable コマンドレットと Get-AutomationVariable コマンドレットの違いは、このドキュメントの冒頭で明確に説明されています。
 
-| Activities | [説明] |
+| Activities | 説明 |
 |:---|:---|
 |Get-AutomationVariable|既存の変数の値を取得します。|
 |Set-AutomationVariable|既存の変数の値を設定します。|
@@ -72,7 +72,7 @@ Runbook および DSC 構成内の変数にアクセスするために、次の�
 
 次の表の関数を使用して、Python2 Runbook の変数にアクセスしてそれを取得します。
 
-|Python2 関数|[説明]|
+|Python2 関数|説明|
 |:---|:---|
 |automationassets.get_automation_variable|既存の変数の値を取得します。 |
 |automationassets.set_automation_variable|既存の変数の値を設定します。 |
