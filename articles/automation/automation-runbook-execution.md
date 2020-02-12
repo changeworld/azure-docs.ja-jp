@@ -197,7 +197,7 @@ Azure サンドボックスで実行される Runbook ジョブには、デバ�
 
 次の表には、ジョブが取り得るさまざまな状態を説明します。 PowerShell には、終了するエラーと終了しないエラーという、2 種類のエラーがあります。 終了するエラーは、発生した場合に Runbook の状態を **[失敗]** に設定します。 終了しないエラーの場合、エラー発生後もスクリプトを継続できます。 終了しないエラーの例では、実在しないパスで `Get-ChildItem` コマンドレットを使用しています。 PowerShell では、パスが存在しないことを確認して、エラーをスローし、次のフォルダーへと処理を継続します。 このエラーでは、Runbook の状態を **[失敗]** に設定せず、 **[完了]** とマークすることが可能です。 終了しないエラー時に Runbook を強制的に停止するには、コマンドレットで `-ErrorAction Stop` を使用できます。
 
-| Status | [説明] |
+| Status | 説明 |
 |:--- |:--- |
 | [完了] |ジョブは正常に完了しました。 |
 | 失敗 |[グラフィカル Runbook と PowerShell Workflow Runbook](automation-runbook-types.md)では、Runbook のコンパイルが失敗しました。 [PowerShell スクリプト Runbook](automation-runbook-types.md) では、Runbook の開始に失敗したか、ジョブで例外が発生しました。 |
