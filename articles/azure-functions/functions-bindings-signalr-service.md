@@ -1009,7 +1009,7 @@ public SignalRGroupAction removeFromGroup(
 
 次の表は、*function.json* ファイルと `SignalRConnectionInfo` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**type**| 該当なし | `signalRConnectionInfo` に設定する必要があります。|
 |**direction**| 該当なし | `in` に設定する必要があります。|
@@ -1022,7 +1022,7 @@ public SignalRGroupAction removeFromGroup(
 
 次の表は、*function.json* ファイルと `SignalR` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**type**| 該当なし | `signalR` に設定する必要があります。|
 |**direction**| 該当なし | `out` に設定する必要があります。|
