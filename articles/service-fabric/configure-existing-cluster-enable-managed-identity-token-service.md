@@ -1,28 +1,30 @@
 ---
-title: Azure Service Fabric - 既存の Azure Service Fabric クラスターを構成してマネージド ID のサポートを有効にする
-description: この記事では、既存の Azure Service Fabric クラスターを構成してマネージド ID のサポートを有効にする方法について説明します
+title: 既存の Service Fabric クラスターでマネージド ID のサポートを構成する
+description: 既存の Azure Service Fabric クラスターでマネージド ID のサポートを有効にする方法を次に示します
 ms.topic: article
 ms.date: 12/09/2019
-ms.openlocfilehash: 13b8b38a206b0dae0877263a5cda56a134d4788d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: sfrev
+ms.openlocfilehash: cb6e4ab00afd80cba41881e46296f7046a905919
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351604"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934945"
 ---
-# <a name="configure-an-existing-azure-service-fabric-cluster-to-enable-managed-identity-support-preview"></a>既存の Azure Service Fabric クラスターを構成してマネージド ID のサポートを有効にする (プレビュー)
-Azure Service Fabric アプリケーションのマネージド ID 機能にアクセスするには、まずクラスターで**マネージド ID トークン サービス**を有効にする必要があります。 このサービスは、マネージド ID を使用して Service Fabric アプリケーションの認証を実行し、アクセス トークンを代理で取得します。 サービスが有効になると、Service Fabric Explorer の左側のウィンドウの **[システム]** セクションに表示され、**fabric:/System/ManagedIdentityTokenService** という名前で実行されます。
+# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster-preview"></a>既存の Service Fabric クラスターでマネージド ID のサポートを構成する (プレビュー)
+
+Service Fabric アプリケーションで [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用するには、まずクラスターで "*マネージド ID トークン サービス*" を有効にします。 このサービスは、マネージド ID を使用して Service Fabric アプリケーションの認証を実行し、アクセス トークンを代理で取得します。 サービスが有効になると、Service Fabric Explorer の左側のウィンドウの **[システム]** セクションに表示され、**fabric:/System/ManagedIdentityTokenService** という名前で実行されます。
 
 > [!NOTE]
 > **マネージド ID トークン サービス**を有効にするには、Service Fabric ランタイム バージョン 6.5.658.9590 以降が必要です。  
-> 
+>
 > クラスターの Service Fabric バージョンを調べるには、Azure portal からクラスター リソースを開き、 **[Essentials]\(基本\)** セクションで **[Service Fabric バージョン]** プロパティを確認します。
-> 
+>
 > クラスターが **[手動]** アップグレード モードの場合、最初に 6.5.658.9590 以降にアップグレードする必要があります。
 
+## <a name="enable-managed-identity-token-service-in-an-existing-cluster"></a>既存のクラスターで "*マネージド ID トークン サービス*" を有効にする
 
-## <a name="enable-the-managed-identity-token-service-in-an-existing-cluster"></a>既存のクラスターでマネージド ID トークン サービスを有効にする
-既存のクラスターで Managed Identity Token Service を有効にするには、2 つの変更を指定してクラスターのアップグレードを開始する必要があります。具体的には、Managed Identity Token Service を有効化し、各ノードの再起動を要求します。 これを行うには、Azure Resource Manager テンプレートに次の 2 つのスニペットを追加します。
+既存のクラスターでマネージド ID トークン サービスを有効にするには、2 つの変更を指定してクラスターのアップグレードを開始する必要があります。(1) マネージド ID トークン サービスを有効化し、(2) 各ノードの再起動を要求します。 まず、クラスターの Azure Resource Manager テンプレートに次のスニペットを追加します。
 
 ```json
 "fabricSettings": [

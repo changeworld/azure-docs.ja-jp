@@ -1,21 +1,21 @@
 ---
 title: Long Audio API (プレビュー) - 音声サービス
 titleSuffix: Azure Cognitive Services
-description: ''
+description: 長い形式のテキスト読み上げ (オーディオ ブックなど) の非同期合成のために Long Audio API がどのように設計されているか説明します。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/26/2019
-ms.author: erhopf
-ms.openlocfilehash: ff8cdf78d923394caf36610534eb5dcc7de571a4
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.date: 01/30/2020
+ms.author: dapine
+ms.openlocfilehash: 033103e10971be2f6c220ccdb2c3586c7dc2ef05
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562546"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900254"
 ---
 # <a name="long-audio-api-preview"></a>Long Audio API (プレビュー)
 
@@ -79,7 +79,7 @@ Long Audio API のその他の利点は次のとおりです。
 
 Long Audio API を正常に実行できるように作られたクイック スタートがあります。 以下の表は、Long Audio API のクイック スタートを言語別に整理して示したものです。
 
-* [クイック スタート:Python](https://aka.ms/long-audio-python)
+* [クイック スタート: Python](https://aka.ms/long-audio-python)
 
 ## <a name="sample-code"></a>サンプル コード
 Long Audio API のサンプル コードは、GitHub で入手できます。
