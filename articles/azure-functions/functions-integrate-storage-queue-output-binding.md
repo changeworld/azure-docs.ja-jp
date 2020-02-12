@@ -48,7 +48,7 @@ Azure Functions では、入力および出力バインディングによって�
 
     ![Azure Portal 内の関数に Queue Storage の出力バインディングを追加します。](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding-2.png)
 
-    | 設定      |  推奨値   | [説明]                              |
+    | 設定      |  推奨値   | 説明                              |
     | ------------ |  ------- | -------------------------------------------------- |
     | **メッセージ パラメーター名** | outputQueueItem | 出力バインディング パラメーターの名前。 | 
     | **ストレージ アカウント接続** | AzureWebJobsStorage | Function App によって既に使用されているストレージ アカウント接続を使用するか、新しく作成できます。  |
