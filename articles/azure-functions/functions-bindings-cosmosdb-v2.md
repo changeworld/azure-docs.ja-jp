@@ -252,7 +252,7 @@ Java コードを次に示します。
 
 次の表は、*function.json* ファイルと `CosmosDBTrigger` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**type** | 該当なし | `cosmosDBTrigger` に設定する必要があります。 |
 |**direction** | 該当なし | `in` に設定する必要があります。 このパラメーターは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
@@ -1697,7 +1697,7 @@ public class DocsFromRouteSqlQuery {
 
 次の表は、*function.json* ファイルと `CosmosDB` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**type**     | 該当なし | `cosmosDB` に設定する必要があります。        |
 |**direction**     | 該当なし | `in` に設定する必要があります。         |
@@ -2282,7 +2282,7 @@ public String cosmosDbQueryById(
 
 次の表は、*function.json* ファイルと `CosmosDB` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**type**     | 該当なし | `cosmosDB` に設定する必要があります。        |
 |**direction**     | 該当なし | `out` に設定する必要があります。         |
@@ -2330,7 +2330,7 @@ public String cosmosDbQueryById(
 }
 ```
 
-|プロパティ  |Default | [説明] |
+|プロパティ  |Default | 説明 |
 |---------|---------|---------|
 |GatewayMode|Gateway|Azure Cosmos DB サービスに接続する際に関数で使用される接続モード。 オプションは `Direct` と `Gateway` です|
 |Protocol|Https|Azure Cosmos DB サービスに接続する際に関数で使用される接続プロトコル。  両方のモードの説明については[こちら](../cosmos-db/performance-tips.md#networking)を参照してください|
