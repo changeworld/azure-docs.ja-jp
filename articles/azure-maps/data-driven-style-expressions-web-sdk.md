@@ -41,7 +41,7 @@ ms.locfileid: "75911774"
 
 Azure Maps Web SDK では、単独で、または他の式と組み合わせて使用できる、さまざまな種類の式がサポートされています。
 
-| 式の種類 | [説明] |
+| 式の種類 | 説明 |
 |---------------------|-------------|
 | [集計式](#aggregate-expression) | データのセットに対して処理され、`DataSource` の `clusterProperties` オプションと共に使用できる計算を定義する式です。 |
 | [ブール式](#boolean-expressions) | ブール式により、ブール値の比較を評価するためにブール演算子式のセットが提供されます。 |
@@ -81,7 +81,7 @@ Azure Maps Web SDK では、単独で、または他の式と組み合わせて�
 
 データ式では、機能内のプロパティ データへのアクセスを提供します。 
 
-| 式 | の戻り値の型 : | [説明] |
+| 式 | の戻り値の型 : | 説明 |
 |------------|-------------|-------------|
 | `['at', number, array]` | object | 配列から項目を取得します。 |
 | `['geometry-type']` | string | 機能の geometry 型: Point、MultiPoint、LineString、MultiLineString、Polygon、MultiPolygon を取得します。 |
@@ -139,7 +139,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 数式では、式のフレームワーク内でデータ ドリブンの計算を実行する数学演算子を提供します。
 
-| 式 | の戻り値の型 : | [説明] |
+| 式 | の戻り値の型 : | 説明 |
 |------------|-------------|-------------|
 | `['+', number, number, …]` | number | 指定された数値の合計が計算されます。 |
 | `['-', number]` | number | 0 から、指定された数値が減算されます。 |
@@ -194,7 +194,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 値を比較する際に、比較は厳密に型指定されます。 異なる型の値は、常に等しくないと見なされます。 解析時に型が異なるとがわかった場合は、無効と見なされ、解析エラーが生成されます。 
 
-| 式 | の戻り値の型 : | [説明] |
+| 式 | の戻り値の型 : | 説明 |
 |------------|-------------|-------------|
 | `['! ', boolean]` | boolean | 論理否定。 入力が `false` の場合は `true` が返され、入力が `true` の場合は `false` が返されます。 |
 | `['!= ', value, value]` | boolean | 入力値が等しくない場合は `true` が返され、それ以外の場合は `false` が返されます。 |
@@ -397,7 +397,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 型式では、文字列、数値、ブール値などのさまざまなデータ型をテストおよび変換するためのツールを提供します。
 
-| 式 | の戻り値の型 : | [説明] |
+| 式 | の戻り値の型 : | 説明 |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | array \| object | リテラル配列またはオブジェクト値が返されます。 配列またはオブジェクトが式として評価されないようにするには、この式を使用します。 この操作は、式で配列またはオブジェクトを返さなければならない場合に必要となります。 |
 | `['image', string]` | string | 指定されたイメージ ID がマップ イメージ スプライトに読み込まれているかどうかを確認します。 そうである場合は、ID が返されます。それ以外の場合は、null 値が返されます。 |
@@ -433,7 +433,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 色の式を使用すると、色の値の作成と操作が容易になります。
 
-| 式 | の戻り値の型 : | [説明] |
+| 式 | の戻り値の型 : | 説明 |
 |------------|-------------|-------------|
 | `['rgb', number, number, number]` | color | `0` から `255` の範囲でなければならない *red*、*green*、*blue* コンポーネント、およびアルファ コンポーネント `1` から、色の値を作成します。 いずれかのコンポーネントが範囲外である場合、式はエラーとなります。 |
 | `['rgba', number, number, number, number]` | color | `0` から `255` の範囲でなければならない *red*、*green*、*blue* コンポーネント、および `0` から `1` の範囲内のアルファ コンポーネントから、色の値を作成します。 いずれかのコンポーネントが範囲外である場合、式はエラーとなります。 |
@@ -461,7 +461,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 文字列演算子式では、連結や大文字と小文字の変換など、文字列の変換操作を実行します。 
 
-| 式 | の戻り値の型 : | [説明] |
+| 式 | の戻り値の型 : | 説明 |
 |------------|-------------|-------------|
 | `['concat', string, string, …]` | string | 複数の文字列を連結します。 各値は文字列である必要があります。 必要に応じて、`to-string` 型式を使用して、他の型の値を文字列に変換します。 |
 | `['downcase', string]` | string | 指定された文字列を小文字に変換します。 |
@@ -821,7 +821,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 変数バインド式では、計算結果を変数に格納して、格納された値を再計算することなく、式内の別の場所で繰り返し参照できるようにします。 これは、多くの計算を含む式で便利な最適化です。
 
-| 式 | の戻り値の型 : | [説明] |
+| 式 | の戻り値の型 : | 説明 |
 |--------------|---------------|--------------|
 | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;'let',<br/>&nbsp;&nbsp;&nbsp;&nbsp;name1: string,<br/>&nbsp;&nbsp;&nbsp;&nbsp;value1: any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;name2: string,<br/>&nbsp;&nbsp;&nbsp;&nbsp;value2: any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | 結果を返す子式内に、`var` 式で使用する変数として 1 つまたは複数の値を格納します。 |
 | `['var', name: string]` | any | `let` 式を使用して作成された変数を参照します。 |
