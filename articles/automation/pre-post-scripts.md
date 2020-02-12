@@ -68,7 +68,7 @@ Runbook が事前または事後スクリプトとして使用されるように
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext プロパティ
 
-|プロパティ  |[説明]  |
+|プロパティ  |説明  |
 |---------|---------|
 |SoftwareUpdateConfigurationName     | ソフトウェア更新構成の名前。        |
 |SoftwareUpdateConfigurationRunId     | 実行の一意の ID。        |
