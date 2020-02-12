@@ -48,7 +48,7 @@ Azure Functions を使用して、定義したスケジュールに基づいて�
 
     ![タイマーによってトリガーされる関数を Azure Portal で作成する。](./media/functions-create-scheduled-function/functions-create-timer-trigger-2.png)
 
-    | 設定 | 推奨値 | [説明] |
+    | 設定 | 推奨値 | 説明 |
     |---|---|---|
     | **Name** | Default | タイマーによってトリガーされる関数の名前を定義します。 |
     | **[スケジュール]** | 0 \*/1 \* \* \* \* | 関数を毎分実行するようにスケジュールする 6 つのフィールドの [CRON 式](functions-bindings-timer.md#ncrontab-expressions)。 |
