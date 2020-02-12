@@ -40,7 +40,7 @@ Data Lake Storage Gen2 のコンテンツにインデックスを作成するに
 
 [REST API バージョン 2019-05-06-Preview](search-api-preview.md)を使用して、Data Lake Storage Gen2 のコンテンツとメタデータのインデックスを作成できます。 現時点で、ポータルまたは .NET SDK はサポートされていません。
 
-Data Lake Storage Gen2 でのコンテンツのインデックス作成は、Azure Blob Storage でのコンテンツのインデックス作成と同じです。 そのため、Data Lake Storage Gen2 のデータソース、インデックス、およびインデクサーを設定する方法を理解するには、「[Azure Blob Storage 内ドキュメントのインデックスを Azure コグニティブ検索で作成する方法](search-howto-indexing-azure-blob-storage.md)」を参照してください。 Blob Storage の記事では、サポートされているドキュメント形式、抽出される Blob メタデータ プロパティ、増分インデックス作成などに関する情報も提供されています。 この情報は、Data Lake Storage Gen2 についても同じです。
+Data Lake Storage Gen2 でのコンテンツのインデックス作成は、Azure Blob Storage でのコンテンツのインデックス作成と同じです。 そのため、Data Lake Storage Gen2 のデータソース、インデックス、およびインデクサーを設定する方法を理解するには、「[Azure Blob Storage 内ドキュメントのインデックスを Azure Cognitive Search で作成する方法](search-howto-indexing-azure-blob-storage.md)」を参照してください。 Blob Storage の記事では、サポートされているドキュメント形式、抽出される Blob メタデータ プロパティ、増分インデックス作成などに関する情報も提供されています。 この情報は、Data Lake Storage Gen2 についても同じです。
 
 ## <a name="access-control"></a>アクセス制御
 
