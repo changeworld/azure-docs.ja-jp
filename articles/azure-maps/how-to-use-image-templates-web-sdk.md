@@ -108,7 +108,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 アプリケーションで同じアイコンと異なるアイコンを使用する場合、またはさらに画像テンプレートを追加するモジュールを作成する場合、`atlas` 名前空間上で次の静的関数を使用して、Azure Maps Web SDK からこれらのアイコンを簡単に追加および取得できます。
 
-| Name | 戻り値の型 | [説明] | 
+| Name | 戻り値の型 | 説明 | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | カスタム SVG 画像テンプレートを atlas 名前空間に追加します。 |
 |  `getImageTemplate(templateName: string, scale?: number)`| string | 名前を指定して SVG テンプレートを取得します。 |
@@ -116,7 +116,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 SVG 画像テンプレートでは、次のプレースホルダー値がサポートされています。
 
-| プレースホルダー | [説明] |
+| プレースホルダー | 説明 |
 |-|-|
 | `{color}` | 第一の色。 | 
 | `{secondaryColor}` | 補色。 | 
