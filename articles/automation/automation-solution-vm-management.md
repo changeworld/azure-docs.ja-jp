@@ -243,7 +243,7 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
 
 すべての親 Runbook に _WhatIf_ パラメーターが含まれます。 これが **True** に設定されている場合、_WhatIf_ では、_WhatIf_ パラメーターなしで実行するときの Runbook の正確な動作の詳細な記述がサポートされ、正しい VM が対象となっていることが検証されます。 _WhatIf_ パラメーターが **False** に設定されている場合、Runbook は定義されているアクションのみを実行します。
 
-|Runbook | パラメーター | [説明]|
+|Runbook | パラメーター | 説明|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | 親 Runbook から呼び出されます。 この Runbook は、AutoStop シナリオでリソースごとにアラートを作成します。|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: True または False  | 対象となるサブスクリプションまたはリソース グループ内の VM 上で、Azure アラート ルールを作成または更新します。 <br> VMList: VM のコンマ区切りリストです。 _vm1, vm2, vm3_ など。<br> *WhatIf* は Runbook ロジックを実行せずに検証します。|
@@ -258,7 +258,7 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
 
 次の表は、Automation アカウント内に作成される変数の一覧です。 **External** プレフィックスが付いた変数のみを変更するようにしてください。 **Internal** プレフィックスが付いた変数を変更すると、望ましくない効果がもたらされます。
 
-|変数 | [説明]|
+|変数 | 説明|
 |---------|------------|
 |External_AutoStop_Condition | アラートをトリガーする前の条件を構成するのに必要な条件演算子。 指定できる値は、**GreaterThan**、**GreaterThanOrEqual**、**LessThan**、および **LessThanOrEqual** です。|
 |External_AutoStop_Description | CPU の割合がしきい値を超えた場合に VM を停止するアラート。|
@@ -283,7 +283,7 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
 
 すべてのスケジュールを有効にすることはお勧めしません。アクションのスケジュール間で重複が生じる可能性があるためです。 実行する必要がある最適化を特定し、それに応じて変更することをお勧めします。 詳細については、概要セクションのシナリオ例をご覧ください。
 
-|スケジュール名 | 頻度 | [説明]|
+|スケジュール名 | 頻度 | 説明|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | 8 時間ごと | 8 時間ごとに AutoStop_CreateAlert_Parent Runbook を実行します。Runbook は Azure Automation 変数の External_Start_ResourceGroupNames、External_Stop_ResourceGroupNames、および External_ExcludeVMNames の VM ベースの値を停止します。 または、VMList パラメーターを使用して VM のコンマ区切りリストを指定できます。|
 |Scheduled_StopVM | ユーザー定義、毎日 | _Stop_ パラメーターを持つ Scheduled_Parent Runbook を毎日指定された時刻に実行します。 アセット変数によって定義されたルールを満たす VM すべてを自動的に停止します。 関連するスケジュール (**Scheduled-StartVM**) を有効にしてください。|
@@ -297,7 +297,7 @@ Automation により、ジョブ ログとジョブ ストリームの 2 種類�
 
 ### <a name="job-logs"></a>ジョブ ログ
 
-|プロパティ | [説明]|
+|プロパティ | 説明|
 |----------|----------|
 |Caller |  操作を開始したユーザー。 スケジュールされたジョブのシステムまたは電子メール アドレスが記録されます。|
 |カテゴリ | データの種類の分類。 Automation の場合、値は JobLogs です。|
@@ -318,7 +318,7 @@ Automation により、ジョブ ログとジョブ ストリームの 2 種類�
 
 ### <a name="job-streams"></a>ジョブ ストリーム
 
-|プロパティ | [説明]|
+|プロパティ | 説明|
 |----------|----------|
 |Caller |  操作を開始したユーザー。 スケジュールされたジョブのシステムまたは電子メール アドレスが記録されます。|
 |カテゴリ | データの種類の分類。 Automation の場合、値は JobStreams です。|
@@ -341,7 +341,7 @@ Automation により、ジョブ ログとジョブ ストリームの 2 種類�
 
 以下の表は、このソリューションによって収集されたジョブ レコードを探すログ検索の例です。
 
-|クエリ | [説明]|
+|クエリ | 説明|
 |----------|----------|
 |正常に終了した Runbook ScheduledStartStop_Parent のジョブを検索する | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 |正常に終了した Runbook SequencedStartStop_Parent のジョブを検索する | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
