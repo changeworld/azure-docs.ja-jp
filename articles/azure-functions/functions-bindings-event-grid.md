@@ -336,7 +336,7 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 
 次の表は、*function.json* ファイルで設定したバインド構成のプロパティを説明しています。 `EventGridTrigger` 属性で設定するコンストラクター パラメーターまたはプロパティはありません。
 
-|function.json のプロパティ |[説明]|
+|function.json のプロパティ |説明|
 |---------|---------|
 | **type** | 必須 - `eventGridTrigger` に設定する必要があります。 |
 | **direction** | 必須 - `in` に設定する必要があります。 |
