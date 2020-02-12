@@ -160,7 +160,7 @@ Azure Cache for Redis の価格は[ここ](https://azure.microsoft.com/pricing/d
 | クラウド   | Redis の DNS サフィックス            |
 |---------|---------------------------------|
 | パブリック  | *.redis.cache.windows.net       |
-| 米国政府  | *. redis.cache.usgovcloudapi.net |
+| US Gov  | *. redis.cache.usgovcloudapi.net |
 | ドイツ | *.redis.cache.cloudapi.de       |
 | 中国   | *.redis.cache.chinacloudapi.cn  |
 

@@ -52,7 +52,7 @@ ms.locfileid: "74113635"
 
 - ASCII フォールディング。 検索語句に含まれる ö や ê などの付加記号を正規化するための標準 ASCII フォールディング フィルターを追加します。  
 
-  このページでは、サポートされているアナライザー、トークナイザー、トークン フィルター、文字フィルターの一覧を示します。 また、インデックスの定義に対する変更の説明と使用例も示されています。 Azure Cognitive Search の実装に利用されている基礎技術の背景については、[解析パッケージの概要 (Lucene)](https://lucene.apache.org/core/6_0_0/core/org/apache/lucene/codecs/lucene60/package-summary.html) のページを参照してください。 アナライザーの構成の例については、[Azure Cognitive Search でのアナライザーの追加](search-analyzers.md#examples)に関するセクションをご覧ください。
+  このページでは、サポートされているアナライザー、トークナイザー、トークン フィルター、文字フィルターの一覧を示します。 また、インデックスの定義に対する変更の説明と使用例も示されています。 Azure コグニティブ検索の実装に利用されている基礎技術の背景については、[解析パッケージの概要 (Lucene)](https://lucene.apache.org/core/6_0_0/core/org/apache/lucene/codecs/lucene60/package-summary.html) のページを参照してください。 アナライザーの構成の例については、[Azure コグニティブ検索でのアナライザーの追加](search-analyzers.md#examples)に関するセクションをご覧ください。
 
 ## <a name="validation-rules"></a>検証規則  
  アナライザー、トークナイザー、トークン フィルター、文字フィルターの名前は一意でなければならず、事前定義済みのアナライザー、トークナイザー、トークン フィルター、文字フィルターと同じにすることはできません。 既に使用されている名前については、「[プロパティ リファレンス](#PropertyReference)」をご覧ください。
@@ -383,6 +383,6 @@ analyzer_type は、カスタマイズ可能なアナライザーに対しての
 
 
 ## <a name="see-also"></a>関連項目  
- [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/)   
- [Azure Cognitive Search でのアナライザーの例](search-analyzers.md#examples)    
+ [Azure コグニティブ検索 REST API](https://docs.microsoft.com/rest/api/searchservice/)   
+ [Azure コグニティブ検索でのアナライザーの例](search-analyzers.md#examples)    
  [インデックスの作成 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  

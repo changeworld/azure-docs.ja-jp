@@ -1,0 +1,191 @@
+- name: 開発者のための Azure Active Directory
+  href: index.yml
+- name: 概要
+  href: v1-overview.md
+- name: サンプル
+  href: sample-v1-code.md
+- name: 概念
+  items:
+    - name: v2.0 に更新する理由
+      href: azure-ad-endpoint-comparison.md
+    - name: アプリケーションの種類
+      items:
+        - name: アプリケーションの種類
+          href: app-types.md
+        - name: シングルページ アプリ
+          href: single-page-application.md
+        - name: Web アプリ
+          href: web-app.md
+        - name: Web API
+          href: web-api.md
+        - name: モバイルおよびデスクトップ アプリ
+          href: native-app.md
+        - name: デーモンまたはサーバー アプリケーション
+          href: service-to-service.md
+    - name: 認証
+      items:
+        - name: 認証の基本
+          href: v1-authentication-scenarios.md
+        - name: OAuth 2.0 と OpenID Connect プロトコル
+          items:
+            - name: OpenID Connect
+              href: v1-protocols-openid-connect-code.md
+            - name: OAuth 2.0 の暗黙的な許可のフロー
+              href: v1-oauth2-implicit-grant-flow.md
+            - name: OAuth 2.0 認証コード付与
+              href: v1-protocols-oauth-code.md
+            - name: OAuth 2.0 の On-Behalf-Of フロー
+              href: v1-oauth2-on-behalf-of-flow.md
+            - name: OAuth 2.0 クライアント資格情報の付与
+              href: v1-oauth2-client-creds-grant-flow.md
+        - name: SAML 2.0 プロトコル
+          items:
+            - name: シングル サインオン
+              href: ../develop/single-sign-on-saml-protocol.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: サインアウト
+              href: ../develop/single-sign-out-saml-protocol.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: Azure AD で SAML プロトコルを使用する方法
+              href: ../develop/active-directory-saml-protocol-reference.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: WS-Federation
+          items:
+            - name: フェデレーション メタデータ
+              href: azure-ad-federation-metadata.md
+        - name: 署名キーのロールオーバー
+          href: ../develop/active-directory-signing-key-rollover.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: ID トークン
+          href: ../develop/id-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: アクセス トークン
+          href: ../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: 証明書の資格情報
+          href: ../develop/active-directory-certificate-credentials.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: SAML トークン
+          href: ../develop/reference-saml-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: アプリケーションの構成
+      items:
+        - name: アプリケーションとサービス プリンシパル
+          href: ../develop/app-objects-and-service-principals.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: アプリを Azure AD に追加する方法と理由
+          href: ../develop/active-directory-how-applications-are-added.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: 単一テナント アプリとマルチテナント アプリ
+          href: ../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: アクセス許可と同意
+      displayName: Scopes
+      items:
+        - name: アクセス許可と同意の種類
+          href: v1-permissions-consent.md
+        - name: 同意フレームワーク
+          href: ../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: アプリケーションの同意エクスペリエンス
+          href: ../develop/application-consent-experience.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: 条件付きアクセス
+      href: conditional-access-dev-guide.md
+    - name: 各国のクラウド
+      href: ../develop/authentication-national-cloud.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+- name: 操作方法ガイド
+  items:
+    - name: 認証
+      items:
+        - name: Configure single sign-on
+          displayName: SSO
+          items:
+            - name: Android での SSO の有効化
+              href: howto-v1-enable-sso-android.md
+            - name: iOS での SSO の有効化
+              href: howto-v1-enable-sso-ios.md
+            - name: SAML ベースの SSO のデバッグ
+              href: howto-v1-debug-saml-sso-issues.md
+        - name: 要求の構成
+          items:
+            - name: ロール要求の構成
+              href: ../develop/active-directory-enterprise-app-role-management.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: 要求のカスタマイズ - ポータル
+              href: ../develop/active-directory-saml-claims-customization.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: 要求のカスタマイズ - PowerShell
+              href: ../develop/active-directory-claims-mapping.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: 省略可能な要求の構成
+              href: ../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: トークンの有効期間の構成
+              href: ../develop/active-directory-configurable-token-lifetimes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: ADAL のエラー処理のベスト プラクティス
+          href: active-directory-devhowto-adal-error-handling.md
+    - name: アプリケーションの構成
+      items:
+        - name: シングルテナント アプリをマルチテナント アプリに変換する
+          href: ../develop/howto-convert-app-to-be-multi-tenant.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: サービス プリンシパルの作成
+          items:
+            - name: Azure PowerShell の使用
+              href: ../develop/howto-authenticate-service-principal-powershell.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: Azure Portal の使用
+              href: ../develop/howto-create-service-principal-portal.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: ご利用のアプリを特定のユーザー セットに制限する
+          href: ../develop/howto-restrict-your-app-to-a-set-of-users.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: ご利用のアプリケーションにアプリ ロールを追加する
+          href: ../develop/howto-add-app-roles-in-azure-ad-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: ブランド化ガイドライン
+          href: ../develop/howto-add-branding-in-azure-ad-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: サービス利用規約とプライバシーに関する声明
+          href: ../develop/howto-add-terms-of-service-privacy-statement.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Visual Studio を使用する
+      items:
+        - name: Active Directory 接続済みサービスの使用
+          href: ../develop/vs-active-directory-add-connected-service.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: .NET MVC プロジェクトの作業開始
+          href: ../develop/vs-active-directory-dotnet-getting-started.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: .NET MVC プロジェクトの変更点
+          href: ../develop/vs-active-directory-dotnet-what-happened.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: WebAPI プロジェクトの作業開始
+          href: ../develop/vs-active-directory-webapi-getting-started.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: WebAPI プロジェクトの変更点
+          href: ../develop/vs-active-directory-webapi-what-happened.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: 認証検出時のエラー
+          href: ../develop/vs-active-directory-error.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: アプリを市場に導入する
+      items:
+        - name: App Source に公開する
+          href: howto-get-appsource-certified.md
+        - name: Azure AD アプリ ギャラリーに公開する
+          href: howto-app-gallery-listing.md
+        - name: Office 365 販売者ダッシュボードに公開する
+          href: 'https://docs.microsoft.com/office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store'
+    - name: Azure Access Control Service
+      displayName: ACS
+      items:
+        - name: Azure Access Control Service からの移行
+          href: active-directory-acs-migration.md
+        - name: 無効化された Access Control Service 名前空間を再アクティブ化する
+          href: howto-reactivate-disabled-acs-namespaces.md
+    - name: Azure AD Graph API を使用する
+      href: ../develop/active-directory-graph-api-quickstart.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: 開発者向け AD FS
+      href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers'
+- name: References
+  items:
+    - name: 認証ライブラリ
+      displayName: ADAL
+      href: active-directory-authentication-libraries.md
+    - name: Azure AD Graph API
+      href: ../develop/active-directory-graph-api.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: アプリケーション マニフェスト
+      href: ../develop/reference-app-manifest.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: 認証と承認エラー コード
+      href: ../develop/reference-aadsts-error-codes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: 重大な変更
+      href: ../develop/reference-breaking-changes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+- name: リソース
+  items:
+    - name: 用語集
+      href: ../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Azure AD BLOG
+      href: 'https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory'
+    - name: Microsoft の ID プラットフォーム開発者ブログ
+      href: 'https://developer.microsoft.com/identity/blogs/'
+    - name: '"Microsoft アカウントでのサインイン" を試してみる'
+      href: 'https://azure.microsoft.com/develop/identity/signin/'
+    - name: ヘルプの表示
+      displayName: 'support, help options'
+      href: ../develop/developer-support-help-options.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Azure リソースのマネージド ID
+      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'

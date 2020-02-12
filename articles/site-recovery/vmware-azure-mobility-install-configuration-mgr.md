@@ -5,21 +5,21 @@ author: Rajeswari-Mamilla
 ms.topic: how-to
 ms.date: 12/22/2019
 ms.author: ramamill
-ms.openlocfilehash: 50f8b5b4412e02692bf2b5d57b7f0dee27c2a25a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 235b96cfd2da0c097bc576c63f5bd1c8ed224781
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842701"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896014"
 ---
 # <a name="automate-mobility-service-installation"></a>モビリティ サービスのインストールを自動化する
 
-この記事では、[Azure Site Recovery](site-recovery-overview.md) でモビリティ サービス エージェントのインストールと更新を自動化する方法について説明します。
+この記事では、[Azure Site Recovery](site-recovery-overview.md)で Mobility Service エージェントのインストールと更新を自動化する方法について説明します。
 
-オンプレミス VMware VM と物理サーバーのディザスター リカバリー用の Site Recovery を Azure にデプロイする場合、レプリケートする各マシンにモビリティ サービス エージェントをインストールします。 このモビリティ サービスによって、マシン上のデータ書き込みが取り込まれ、レプリケーションのために Site Recovery プロセス サーバーに転送されます。 モビリティ サービスは、次のようないくつかの方法でデプロイできます。
+オンプレミスの VMware VM と物理サーバーのディザスター リカバリーのために Site Recovery を Azure に展開する場合、複製する各マシンに Mobility Service エージェントをインストールします。 モビリティサービスは、マシン上のデータ書き込みをキャプチャし、複製のために Site Recovery プロセスサーバーに転送します。 Mobility Service はいくつかの方法で展開できます。
 
-- **プッシュ インストール**:Azure portal でマシンのレプリケーションを有効にする場合に、Site Recovery によってモビリティ サービス エージェントをインストールします。
-- **手動インストール**:各マシンにモビリティ サービスを手動でインストールします。 プッシュ インストールと手動インストールの[詳細情報](vmware-physical-mobility-service-overview.md)を参照してください。
+- **プッシュ インストール**:Azure portal でマシンのレプリケーションを有効にするときに、Site Recovery に Mobility Service エージェントをインストールさせます。
+- **手動インストール**:各マシンに Mobility Service を手動でインストールします。 プッシュ インストールと手動インストールの[詳細情報](vmware-physical-mobility-service-overview.md)を参照してください。
 - **自動デプロイ**:Microsoft Endpoint Configuration Manager などのソフトウェア デプロイ ツールや、Intigua JetPatch などのサード パーティ ツールなどで、インストールを自動化します。
 
 インストールと更新を自動化することで、以下の場合の解決策が得られます。
@@ -28,76 +28,76 @@ ms.locfileid: "76842701"
 - 会社のポリシーで、パスワードを定期的に変更することが求められている。 プッシュ インストール用のパスワードを指定する必要がある。
 - セキュリティ ポリシーで、特定のマシンにファイアウォール例外を追加することが許可されていない。
 - ホスティング サービス プロバイダーとしてサービスを提供しており、Site Recovery を使用したプッシュ インストールに必要な顧客のマシン資格情報を提供したくない。
-- エージェントのインストールを多数のサーバーに同時にスケーリングする必要がある。
+- エージェントのインストールを多数のサーバーに同時にスケーリングする必要があります。
 - 計画メンテナンスの期間中にインストールとアップグレードをスケジュールしたい。
-
-
 
 ## <a name="prerequisites"></a>前提条件
 
-インストールを自動化するには、次のものが必要です。
+インストールを自動化するには、次のアイテムが必要です。
 
-- [Configuration Manager](https://docs.microsoft.com/configmgr/) や [JetPatch](https://jetpatch.com/microsoft-azure-site-recovery/) などの、デプロイ済みのソフトウェア インストール ソリューション。 
--  [Azure](tutorial-prepare-azure.md) と[オンプレミス](vmware-azure-tutorial-prepare-on-premises.md)で、VMware のディザスター リカバリー用、または[物理サーバー](physical-azure-disaster-recovery.md)のディザスター リカバリー用のデプロイの前提条件が満たされている。 ディザスター リカバリーの[サポート要件](vmware-physical-azure-support-matrix.md)も確認する必要があります。
+- [Configuration Manager](/configmgr/) や [JetPatch](https://jetpatch.com/microsoft-azure-site-recovery/) などの、デプロイ済みのソフトウェア インストール ソリューション。
+- [Azure](tutorial-prepare-azure.md) と[オンプレミス](vmware-azure-tutorial-prepare-on-premises.md)で、VMware のディザスター リカバリー用、または[物理サーバー](physical-azure-disaster-recovery.md)のディザスター リカバリー用のデプロイの前提条件が満たされている。 ディザスター リカバリーのための[サポート要件](vmware-physical-azure-support-matrix.md)を確認してください。
 
 ## <a name="prepare-for-automated-deployment"></a>自動デプロイを準備する
 
-次の表に、モビリティ サービスのデプロイを自動化するためのツールとプロセスをまとめています。
+次の表に、Mobility Service のデプロイを自動化するためのツールとプロセスをまとめます。
 
 **ツール** | **詳細** | **手順**
 --- | --- | ---
-**構成マネージャー** | 1.上記の[前提条件](#prerequisites)が満たされていることを確認します。 <br/><br/>2.ソース環境をセットアップ (OVF テンプレートを使用して Site Recovery 構成サーバーを VMware VM としてデプロイするための OVA ファイルのダウンロードなど) して、ディザスター リカバリーをデプロイします。<br/><br/> 2.構成サーバーを Site Recovery サービスに登録し、ターゲット Azure 環境を設定して、レプリケーション ポリシーを構成します。<br/><br/> 3.モビリティ サービスの自動デプロイのために、構成サーバーのパスフレーズとモビリティ サービスのインストール ファイルを含むネットワーク共有を作成します。<br/><br/> 4.インストールまたは更新を含む Configuration Manager パッケージを作成し、モビリティ サービスのデプロイを準備します。<br/><br/> 5.その後、モビリティ サービスがインストールされているマシンに対して Azure へのレプリケーションを有効にできます。 | [Configuration Manager を使用して自動化する](#automate-with-configuration-manager)。
-**JetPatch** | 1.上記の[前提条件](#prerequisites)が満たされていることを確認します。 <br/><br/> 2.ソース環境をセットアップ (OVF テンプレートを使用して Azure Site Recovery 用の JetPatch Agent Manager を Site Recovery 環境にダウンロードしてデプロイするなど) して、ディザスター リカバリーをデプロイします。<br/><br/> 2.構成サーバーを Site Recovery に登録し、ターゲット Azure 環境を設定して、レプリケーション ポリシーを構成します。<br/><br/> 3.自動デプロイのために、JetPatch Agent Manager の構成を初期化して完了します。<br/><br/> 4.JetPatch では、モビリティ サービス エージェントのデプロイとアップグレードを自動化する Site Recovery ポリシーを作成できます。 <br/><br/> 5.その後、モビリティ サービスがインストールされているマシンに対して Azure へのレプリケーションを有効にできます。 | [JetPatch Agent Manager を使用して自動化します](https://jetpatch.com/microsoft-azure-site-recovery-deployment-guide/)。<br/><br/> JetPatch で[エージェントのインストールをトラブルシューティングします](https://kc.jetpatch.com/hc/articles/360035981812)。
+**構成マネージャー** | 1.上記の[前提条件](#prerequisites)が満たされていることを確認します。 <br/><br/> 2.ソース環境をセットアップ (OVF テンプレートを使用して Site Recovery 構成サーバーを VMware VM としてデプロイするための OVA ファイルのダウンロードなど) して、ディザスター リカバリーをデプロイします。<br/><br/> 3.構成サーバーを Site Recovery サービスに登録し、ターゲット Azure 環境を設定して、レプリケーション ポリシーを構成します。<br/><br/> 4.モビリティサービスの自動デプロイでは、構成サーバーのパスフレーズとモビリティサービスのインストールファイルを含むネットワーク共有を作成します。<br/><br/> 5.インストールまたは更新を含む Configuration Manager パッケージを作成し、Mobility サービスのデプロイの準備を行います。<br/><br/> 6.その後、Mobility Service がインストールされているマシンの Azure へのレプリケーションを有効にできます。 | [Configuration Manager で自動化](#automate-with-configuration-manager)
+**JetPatch** | 1.上記の[前提条件](#prerequisites)が満たされていることを確認します。 <br/><br/> 2.ソース環境をセットアップ (OVF テンプレートを使用して Azure Site Recovery 用の JetPatch Agent Manager を Site Recovery 環境にダウンロードしてデプロイするなど) して、ディザスター リカバリーをデプロイします。<br/><br/> 3.構成サーバーを Site Recovery に登録し、ターゲット Azure 環境を設定して、レプリケーション ポリシーを構成します。<br/><br/> 4.自動デプロイのために、JetPatch Agent Manager の構成を初期化して完了します。<br/><br/> 5.JetPatch では、サイト回復ポリシーを作成して、Mobility サービスエージェントのデプロイとアップグレードを自動化できます。 <br/><br/> 6.その後、Mobility Service がインストールされているマシンの Azure へのレプリケーションを有効にできます。 | [JetPatch Agent Manager による自動化](https://jetpatch.com/microsoft-azure-site-recovery-deployment-guide/)<br/><br/> [JetPatch でのエージェントインストールのトラブルシューティング](https://kc.jetpatch.com/hc/articles/360035981812)
 
 ## <a name="automate-with-configuration-manager"></a>Configuration Manager を使用して自動化する
 
 ### <a name="prepare-the-installation-files"></a>インストール ファイルを準備する
 
 1. 前提条件を満たしていることを確認します。
-2. 構成サーバーを実行しているマシンからアクセスできる、セキュリティで保護されたネットワーク ファイル共有 (SMB 共有) を作成します。
-3. Configuration Manager で、モビリティ サービスをインストールまたは更新する[サーバーを分類](https://docs.microsoft.com/sccm/core/clients/manage/collections/automatically-categorize-devices-into-collections)します。 1 つのコレクションにはすべての Windows サーバーを含め、もう 1 つにはすべての Linux サーバーを含めてください。 
-5. ネットワーク共有で、次のフォルダーを作成します。
+1. 構成サーバーを実行しているマシンからアクセスできる、セキュリティで保護されたネットワーク ファイル共有 (SMB 共有) を作成します。
+1. Configuration Manager で、モビリティサービスをインストールまたは更新する[サーバーをカテゴリー化します](/sccm/core/clients/manage/collections/automatically-categorize-devices-into-collections)。 1 つのコレクションにはすべての Windows サーバが含まれ、もう 1 つのコレクションにはすべての Linux サーバが含まれます。
+1. ネットワーク共有で、次のフォルダーを作成します。
 
-    - Windows マシンにインストールする場合は、フォルダー **MobSvcWindows** を作成します。
-    - Linux マシンにインストールする場合は、フォルダー **MobSvcLinux** を作成します。
+   - Windows マシンにインストールする場合は、_MobSvcWindows_という名前のフォルダーを作成してください。
+   - Linux マシンにインストールする場合は、_MobSvcLinux_という名前のフォルダーを作成します。
 
-6. 構成サーバー マシンにサインインします。
-7. マシンで管理者のコマンド プロンプトを開きます。
-8. このコマンドを実行して、パスフレーズ ファイルを生成します。
+1. 構成サーバー マシンにサインインします。
+1. 構成サーバーマシンで、管理コマンド プロンプトを開きます。
+1. パスフレーズファイルを生成するには、次のコマンドを実行します。
 
-    ```
+    ```Console
     cd %ProgramData%\ASR\home\svsystems\bin
     genpassphrase.exe -v > MobSvc.passphrase
     ```
-9. MobSvc.passphrase ファイルを Windows フォルダーと Linux フォルダーにコピーします。
-10. このコマンドを実行して、インストール ファイルを含むフォルダーを参照します。
 
-    ```
+1. _MobSvc をコピーします。パスフレーズ_ファイルをWindows フォルダと Linux フォルダにコピーします。
+1. インストールファイルを含むフォルダを参照するには、次のコマンドを実行します。
+
+    ```Console
     cd %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository
     ```
 
-11. これらのインストール ファイルをネットワーク共有にコピーします。
+1. これらのインストール ファイルをネットワーク共有にコピーします。
 
-    - **MobSvcWindows** に **Microsoft-ASR_UA_version_Windows_GA_date_Release.exe** をコピーします
-    - **MobSvcLinux** に次のものをコピーします。
-        - Microsoft-ASR_UA*RHEL6-64*release.tar.gz
-        - Microsoft-ASR_UA*RHEL7-64*release.tar.gz
-        - Microsoft-ASR_UA*SLES11-SP3-64*release.tar.gz
-        - Microsoft-ASR_UA*SLES11-SP4-64*release.tar.gz
-        - Microsoft-ASR_UA*OL6-64*release.tar.gz
-        - Microsoft-ASR_UA*UBUNTU-14.04-64*release.tar.gz
-      
-12. 次の手順で説明するように、Windows または Linux フォルダーにコードをコピーします。 次のことが前提となっています。
-    - 構成サーバーの IP アドレスは 192.168.3.121 である。
-    - セキュリティで保護されたネットワーク ファイル共有は **\\\ContosoSecureFS\MobilityServiceInstallers** である。
+   - Windows の場合、_Microsoft-ASR_UA_version_Windows_GA_date_Release.exe_を_MobSvcWindows_にコピーします。
+   - Linux の場合、次のファイルを_MobSvcLinux_にコピーします。
+     - _Microsoft-ASR_UARHEL6-64release.tar.gz_
+     - _Microsoft-ASR_UARHEL7-64release.tar.gz_
+     - _Microsoft-ASR_UASLES11-SP3-64release.tar.gz_
+     - _Microsoft-ASR_UASLES11-SP4-64release.tar.gz_
+     - _Microsoft-ASR_UAOL6-64release.tar.gz_
+     - _Microsoft-ASR_UAUBUNTU-14.04-64release.tar.gz_
+
+1. 次の手順で説明するように、コードを Windows または Linux フォルダーにコピーします。 次のことが前提となっています。
+
+   - 構成サーバーの IP アドレスは`192.168.3.121`です。
+   - 安全なネットワークファイル共有は`\\ContosoSecureFS\MobilityServiceInstallers`です。
 
 ### <a name="copy-code-to-the-windows-folder"></a>Windows フォルダーにコードをコピーする
 
 次のコードをコピーします。
 
-- それを **install.bat** として **MobSvcWindows** フォルダーに保存します。
-- このスクリプトの [CSIP] プレース ホルダーを、お使いの構成サーバーの IP アドレスの実際の値に置き換えてください。
-- このスクリプトでは、モビリティ サービス エージェントの新規インストールと、インストール済みエージェントへの更新がサポートされます。
+- _MobSvcWindows_フォルダーにコードを_install.bat_ として保存します。
+- このスクリプトの`[CSIP]`プレースホルダーを、構成サーバーのIPアドレスの実際の値に置き換えます。
+- このスクリプトは、Mobility Service エージェントの新規インストールと、すでにインストールされているエージェントの更新をサポートしています。
 
 ```DOS
 Time /t >> C:\Temp\logfile.log
@@ -192,16 +192,15 @@ IF NOT %ERRORLEVEL% EQU 0 (
 
 :ENDSCRIPT
     echo "End of script." >> C:\Temp\logfile.log
-
-
 ```
+
 ### <a name="copy-code-to-the-linux-folder"></a>Linux フォルダーにコードをコピーする
 
 次のコードをコピーします。
 
-- それを **install_linux sh** として **MobSvcLinux** フォルダーに保存します。
-- このスクリプトの [CSIP] プレース ホルダーを、お使いの構成サーバーの IP アドレスの実際の値に置き換えてください。
-- このスクリプトでは、モビリティ サービス エージェントの新規インストールと、インストール済みエージェントへの更新がサポートされます。
+- _MobSvcLinux_フォルダーにコードを_install_linux.sh_として保存します。
+- このスクリプトの`[CSIP]`プレースホルダーを、構成サーバーのIPアドレスの実際の値に置き換えます。
+- このスクリプトは、Mobility Service エージェントの新規インストールと、すでにインストールされているエージェントの更新をサポートしています。
 
 ```Bash
 #!/usr/bin/env bash
@@ -337,22 +336,21 @@ cd /tmp
 
 ```
 
-
 ### <a name="create-a-package"></a>パッケージを作成する
 
-1. Configuration Manager コンソールにサインインし、 **[ソフトウェア ライブラリ]**  >  **[アプリケーションの管理]**  >  **[パッケージ]** と移動します。
-2. **[パッケージ]** を右クリックして **[パッケージの作成]** に進みます。
-3. 名前、説明、製造元、言語、バージョンなど、パッケージの詳細を指定します。
-4. **[このパッケージはソース ファイルを含む]** を選択します。
-5. **[参照]** をクリックし、関連するインストーラー (MobSvcWindows または MobSvcLinux) が含まれているネットワーク共有とフォルダーを選択して、 **[次へ]** をクリックします。
+1. Configuration Manager コンソールにサインインし、**ソフトウェアライブラリ** > **アプリケーション管理** > **パッケージ**に移動します。
+1. **[パッケージ]** を右クリックして **[パッケージの作成]** に進みます。
+1. 名前、説明、製造元、言語、バージョンなど、パッケージの詳細を指定します。
+1. **[このパッケージはソース ファイルを含む]** を選択します。
+1. **参照**をクリックし、関連するインストーラー（ _MobSvcWindows_または_MobSvcLinux_）を含むネットワーク共有とフォルダーを選択します。 次に、 **[次へ]** を選択します。
 
    ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package.png)
 
-7. **[作成するプログラムの種類の選択]** ページで、 **[標準プログラム]**  >  **[次へ]** を選択します。
+1. **[作成するプログラムの種類の選択]** ページで、 **[標準プログラム]**  >  **[次へ]** を選択します。
 
    ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
 
-8. **[この標準プログラムに関する情報の指定]** ページで、次の値を指定します。
+1. **[この標準プログラムに関する情報の指定]** ページで、次の値を指定します。
 
     **パラメーター** | **Windows の値** | **Linux の値**
     --- | --- | ---
@@ -363,44 +361,44 @@ cd /tmp
 
    ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
 
-9. **[Specify the requirements for this standard program]\(この標準プログラムの要件の指定\)** で、次のことを行います。
+1. **この標準プログラムの要件を指定**で、次のタスクを実行します。
 
-    - Windows マシンの場合は、 **[指定したプラットフォームだけで実行可能]** を選択します。 次に、[サポートされている Windows オペレーティング システム](vmware-physical-azure-support-matrix.md#replicated-machines)を選択します。 続けて、 **[次へ]** をクリックします。
-    - Linux マシンでは、 **[任意のプラットフォームで実行可能]** を選択します。 続けて、 **[次へ]** をクリックします。
-   
-10. ウィザードを終了します。
+   - Windows マシンの場合は、 **[指定したプラットフォームだけで実行可能]** を選択します。 次に、[サポートされているWindowsオペレーティングシステム](vmware-physical-azure-support-matrix.md#replicated-machines)を選択し、**次へ**を選択します。
+   - Linux マシンでは、 **[任意のプラットフォームで実行可能]** を選択します。 **[次へ]** を選択します。
 
-
+1. ウィザードを終了します。
 
 ### <a name="deploy-the-package"></a>パッケージをデプロイする
 
-1. Configuration Manager コンソールで、パッケージを右クリックして **[コンテンツの配布]** に進みます。
+1. Configuration Manager コンソールで、パッケージを右クリックし、**コンテンツの配布**を選択します。
+
    ![Configuration Manager コンソールのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
-2. パッケージのコピー先とする配布ポイントを選択します。 [詳細については、こちらを参照してください](https://docs.microsoft.com/sccm/core/servers/deploy/configure/install-and-configure-distribution-points)。
-3. ウィザードを完了します。 指定した配布ポイントへのパッケージのレプリケートが開始されます。
-4. パッケージの配布が完了したら、パッケージを右クリックして **[展開]** に進みます。
+
+1. パッケージのコピー先とする配布ポイントを選択します。 [詳細については、こちらを参照してください](/sccm/core/servers/deploy/configure/install-and-configure-distribution-points)。
+1. ウィザードを完了します。 指定した配布ポイントへのパッケージのレプリケートが開始されます。
+1. パッケージの配布が完了したら、パッケージを右クリックして **[展開]** に進みます。
+
    ![Configuration Manager コンソールのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
-5. 以前に作成した Windows または Linux デバイスのコレクションを選択します。
-6. **[コンテンツの配布先の指定]** ページで **[配布ポイント]** を選択します。
-7. **[このソフトウェアの展開を制御する設定の指定]** ページで、 **[目的]** を **[必須]** に設定します。
+
+1. 以前に作成した Windows または Linux デバイスのコレクションを選択します。
+1. **[コンテンツの配布先の指定]** ページで **[配布ポイント]** を選択します。
+1. **[このソフトウェアの展開を制御する設定の指定]** ページで、 **[目的]** を **[必須]** に設定します。
 
    ![ソフトウェアの展開ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-deploy-select-purpose.png)
 
-8. **[この展開のスケジュールを指定します]** でスケジュールを設定します。 [詳細については、こちらを参照してください](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications#bkmk_deploy-sched)。
+1. **[この展開のスケジュールを指定します]** でスケジュールを設定します。 [詳細については、こちらを参照してください](/sccm/apps/deploy-use/deploy-applications#bkmk_deploy-sched)。
 
-    - モビリティ サービスは、指定したスケジュールに従ってインストールされます。 
-    - 不要な再起動を避けるためには、月次のメンテナンス期間中またはソフトウェアの更新期間中にパッケージのインストールをスケジュールします。
-9. **[配布ポイント]** ページで、設定を構成し、ウィザードを完了します。
-10. Configuration Manager コンソールでデプロイの進行状況を監視します。 **[監視]** 、 >  **[展開]** 、 >  *[対象のパッケージ名]* と移動します。
+   - モビリティサービスは、指定したスケジュールに従ってインストールされます。
+   - 不要な再起動を避けるためには、月次のメンテナンス期間中またはソフトウェアの更新期間中にパッケージのインストールをスケジュールします。
 
+1. **[配布ポイント]** ページで、設定を構成し、ウィザードを完了します。
+1. Configuration Manager コンソールでデプロイの進行状況を監視します。 **監視** > **展開** >  _\<パッケージ名\>_ に移動します。
 
+### <a name="uninstall-the-mobility-service"></a>モビリティサービスをアンインストールする
 
+Configuration Manager パッケージを作成して、Mobility Service をアンインストールできます。 たとえば、次のスクリプトはモビリティサービスをアンインストールします。
 
-
-### <a name="uninstall-the-mobility-service"></a>Mobility Service をアンインストールする
-Configuration Manager パッケージを作成して Mobility Service をアンインストールできます。 これを行うには、次のスクリプトを実行します。
-
-```
+```DOS
 Time /t >> C:\logfile.log
 REM ==================================================
 REM ==== Check if Mob Svc is already installed =======
@@ -418,8 +416,8 @@ IF  %ERRORLEVEL% EQU 1 (GOTO :INSTALL) ELSE GOTO :UNINSTALL
                 echo "Uninstall" >> C:\logfile.log
                 MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
 :ENDSCRIPT
-
 ```
 
 ## <a name="next-steps"></a>次のステップ
-次に、VM の[保護を有効にします](vmware-azure-enable-replication.md)。
+
+VM の[レプリケーションを有効にします](vmware-azure-enable-replication.md)。

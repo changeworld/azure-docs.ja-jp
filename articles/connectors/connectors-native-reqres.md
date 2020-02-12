@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: klam, logicappspm
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 01/14/2020
 tags: connectors
-ms.openlocfilehash: 822a6d1cd812ead8e677a66a9b1e47ebdbcf8aea
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 0949e50c5a4993dfbcc83b41ef01d2cea82350a8
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030150"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900265"
 ---
 # <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して、HTTPS 呼び出しを受信して応答する
 
@@ -23,7 +23,9 @@ ms.locfileid: "76030150"
 * 別のロジック アプリからの HTTPS 呼び出しを受信して応答する。
 
 > [!NOTE]
-> 要求トリガーでは、着信呼び出しに対してトランスポート層セキュリティ (TLS) 1.2 "*のみ*" がサポートされます。 発信呼び出しでは、引き続き TLS 1.0、1.1、1.2 がサポートされます。 SSL ハンドシェイク エラーが発生する場合は、TLS 1.2 を使用していることを確認してください。 着信呼び出しの場合、サポートされている暗号スイートは次のとおりです。
+> 要求トリガーでは、着信呼び出しに対してトランスポート層セキュリティ (TLS) 1.2 "*のみ*" がサポートされます。 発信呼び出しでは、引き続き TLS 1.0、1.1、1.2 がサポートされます。 詳細については、[TLS 1.0 の問題の解決](https://docs.microsoft.com/security/solving-tls1-problem) を参照してください。
+>
+> SSL ハンドシェイク エラーが発生する場合は、TLS 1.2 を使用していることを確認してください。 着信呼び出しの場合、サポートされている暗号スイートは次のとおりです。
 >
 > * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 > * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
@@ -46,7 +48,7 @@ ms.locfileid: "76030150"
 
 この組み込みトリガーでは、受信 HTTPS 要求*のみ*を受け取ることができる、手動で呼び出し可能な HTTPS エンドポイントが作成されます。 このイベントが発生すると、トリガーが起動してロジック アプリが実行されます。 トリガーの基になる JSON 定義と、このトリガーの呼び出し方法の詳細については、[Request タイプのトリガー](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)に関するページ、および「[Azure Logic Apps で HTTP エンドポイントを使用してワークフローを呼び出すか、トリガーするか、または入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」を参照してください。
 
-1. [Azure portal](https://portal.azure.com) にサインインする 空のロジック アプリを作成します。
+1. [Azure portal](https://portal.azure.com) にサインインします。 空のロジック アプリを作成します。
 
 1. ロジック アプリ デザイナーが開いたら、検索ボックスに、ご自分のフィルターとして「HTTP 要求」と入力します。 トリガーの一覧から、 **[HTTP 要求の受信時]** トリガーを選択します。これは、ロジック アプリ ワークフローでの最初のステップです。
 
@@ -56,7 +58,7 @@ ms.locfileid: "76030150"
 
    ![Request トリガー](./media/connectors-native-reqres/request-trigger.png)
 
-   | プロパティ名 | JSON プロパティ名 | 必須 | [説明] |
+   | プロパティ名 | JSON プロパティ名 | Required | 説明 |
    |---------------|--------------------|----------|-------------|
    | **HTTP POST の URL** | {なし} | はい | ロジック アプリを保存したら生成され、ご自分のロジック アプリの呼び出しに使用されるエンドポイント URL |
    | **要求本文の JSON スキーマ** | `schema` | いいえ | 受信要求本文内のプロパティと値を記述する JSON スキーマ |
@@ -155,7 +157,7 @@ ms.locfileid: "76030150"
 
 1. 追加のプロパティを指定するには、 **[新しいパラメーターの追加]** リストを開き、追加するパラメーターを選択します。
 
-   | プロパティ名 | JSON プロパティ名 | 必須 | [説明] |
+   | プロパティ名 | JSON プロパティ名 | Required | 説明 |
    |---------------|--------------------|----------|-------------|
    | **方法** | `method` | いいえ | ロジック アプリを呼び出すために受信要求で使用する必要があるメソッド |
    | **相対パス** | `relativePath` | いいえ | ロジック アプリのエンドポイント URL で受け入れ可能なパラメーターの相対パス |
@@ -187,7 +189,7 @@ ms.locfileid: "76030150"
 
 Request トリガーからの出力の詳細を次に示します。
 
-| JSON プロパティ名 | データ型 | [説明] |
+| JSON プロパティ名 | データ型 | 説明 |
 |--------------------|-----------|-------------|
 | `headers` | Object | 要求のヘッダーを記述する JSON オブジェクト |
 | `body` | Object | 要求の本文のコンテンツを記述する JSON オブジェクト |
@@ -229,7 +231,7 @@ Response アクションを使用すると、受信 HTTPS 要求に対してペ�
 
    Response アクション内に設定できるプロパティの詳細を次に示します。 
 
-   | プロパティ名 | JSON プロパティ名 | 必須 | [説明] |
+   | プロパティ名 | JSON プロパティ名 | Required | 説明 |
    |---------------|--------------------|----------|-------------|
    | **状態コード** | `statusCode` | はい | 応答で返される状態コード |
    | **ヘッダー** | `headers` | いいえ | 応答に含める 1 つまたは複数のヘッダーを記述する JSON オブジェクト |

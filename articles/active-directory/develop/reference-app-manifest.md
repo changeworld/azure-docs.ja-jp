@@ -47,7 +47,7 @@ Azure portal で、あるいは [REST API](https://docs.microsoft.com/previous-v
 > [!NOTE]
 > **[説明]** の後に **[値の例]** 列が表示されない場合は、ご利用のブラウザー ウィンドウを最大化し、 **[値の例]** 列が表示されるまでスクロール/スワイプします。
 
-| Key  | 値の型 | 説明  | 値の例 |
+| Key  | 値の型 | [説明]  | 値の例 |
 |---------|---------|---------|---------|
 | `accessTokenAcceptedVersion` | Null 許容の Int32 | リソースで想定されているアクセス トークンのバージョンを指定します。 このパラメーターを使うと、アクセス トークンを要求するために使用されたエンドポイントまたはクライアントとは関係なく、生成される JWT のバージョンと形式を変更できます。<br/><br/>使用されるエンドポイント (v1.0 または v2.0) はクライアントによって選択され、id_token のバージョンにのみ影響します。 リソースでは、サポートされるアクセス トークンの形式を明示的に示すように、`accesstokenAcceptedVersion` を構成する必要があります。<br/><br/>`accesstokenAcceptedVersion` に指定できる値は、1、2、または null です。 値が null の場合、このパラメーターの既定値は 1 であり、v1.0 のエンドポイントに対応します。 <br/><br/>`signInAudience` が `AzureADandPersonalMicrosoftAccount` の場合は、値は `2` である必要があります。  | `2` |
 | `addIns` | コレクション | 使用するサービスが特定のコンテキストでアプリの呼び出しに使用できるカスタム動作を定義します。 たとえば、ファイル ストリームをレンダリングできるアプリケーションでは、その "FileHandler" 機能の addIns プロパティを設定できます。 このパラメーターを使うと、Office 365 などのサービスで、ユーザーが作業中のドキュメントのコンテキストでアプリケーションを呼び出すことができます。 | <code>{<br>&nbsp;&nbsp;&nbsp;"id":"968A844F-7A47-430C-9163-07AE7C31D407"<br>&nbsp;&nbsp;&nbsp;"type": "FileHandler",<br>&nbsp;&nbsp;&nbsp;"properties": [<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"key": "version", "value": "2" }<br>&nbsp;&nbsp;&nbsp;]<br>}</code>|
