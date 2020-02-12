@@ -30,7 +30,7 @@ Azure Event Grid は、パブリッシュ - サブスクライブ モデルを�
 
 Event Grid は、[イベント サブスクリプション](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions)を使って、イベント メッセージをサブスクライバーにルーティングします。 Azure Maps アカウントから出力されるイベントの種類は次のとおりです。 
 
-| イベントの種類 | [説明] |
+| イベントの種類 | 説明 |
 | ---------- | ----------- |
 | Microsoft.Maps.GeofenceEntered | 受信した座標が指定されたジオフェンスの外部から内部に移動したときに発生します |
 | Microsoft.Maps.GeofenceExited | 受信した座標が指定されたジオフェンスの内部から外部に移動したときに発生します |
