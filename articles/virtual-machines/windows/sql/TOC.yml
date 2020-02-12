@@ -6,7 +6,7 @@
       href: ../../../sql-database/sql-database-paas-vs-sql-server-iaas.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsql%2ftoc.json&bc=%2fazure%2fvirtual-machines%2fwindows%2fsql%2fbreadcrumb%2ftoc.json
     - name: ドキュメントの変更
       href: virtual-machines-windows-sql-server-iaas-release-notes.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: SQL VM の作成 - ポータル
       href: quickstart-sql-vm-create-portal.md
@@ -44,7 +44,7 @@
           href: virtual-machines-windows-sql-server-2008-eos-extend-support.md
         - name: VM への接続
           href: virtual-machines-windows-sql-connect.md
-        - name: ストレージの構成
+        - name: 記憶域を構成する
           href: virtual-machines-windows-sql-server-storage-configuration.md
         - name: 管理タスクの自動化
           items:
@@ -54,7 +54,7 @@
               href: virtual-machines-windows-sql-automated-patching.md
             - name: Azure Key Vault 統合の構成
               href: virtual-machines-windows-ps-sql-keyvault.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: SQL VM の作成
       items:
@@ -69,12 +69,12 @@
           href: virtual-machines-windows-sql-register-with-resource-provider.md
         - name: 複数の VM の一括登録
           href: virtual-machines-windows-sql-bulk-register-with-resource-provider.md
-    - name: 管理
+    - name: 管理する
       items:
         - name: ライセンス モデル
           displayName: 'ahb, ahub, payg, change, modify, update'
           href: virtual-machines-windows-sql-ahb.md
-        - name: エディション
+        - name: Edition
           displayName: 'change, modify, update'
           href: virtual-machines-windows-sql-change-edition.md
         - name: バックアップと復元用の Azure Storage
@@ -97,6 +97,8 @@
               href: virtual-machines-windows-sql-availability-group-quickstart-template.md
             - name: 複数のリージョン
               href: virtual-machines-windows-portal-sql-availability-group-dr.md
+            - name: ドメイン非依存 (ワークグループ)
+              href: virtual-machines-windows-sql-workgroup-availability-group.md
             - name: 手動で構成
               items:
                 - name: 前提条件
@@ -127,7 +129,7 @@
       href: /rest/api/
 - name: リソース
   items:
-    - name: FAQ
+    - name: よく寄せられる質問
       href: virtual-machines-windows-sql-server-iaas-faq.md
     - name: 価格
       href: virtual-machines-windows-sql-server-pricing-guidance.md
@@ -135,7 +137,7 @@
       href: 'https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt'
     - name: SQL Server Management Studio (SSMS)
       href: 'https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms'
-    - name: SQL Server Tools
+    - name: SQL Server のツール
       href: 'https://docs.microsoft.com/sql/tools/overview-sql-tools'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=compute'

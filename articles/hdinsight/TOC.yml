@@ -346,6 +346,8 @@
               href: ./spark/apache-azure-spark-history-server.md
             - name: IO キャッシュによるキャッシュを有効にする
               href: ./spark/apache-spark-improve-performance-iocache.md
+            - name: Jar 依存関係の管理
+              href: ./spark/manage-jar-dependency.md
             - name: Apache Spark での Notebook の使用
               items:
                 - name: ローカルの Jupyter Notebook を使用する

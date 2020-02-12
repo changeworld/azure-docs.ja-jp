@@ -35,118 +35,91 @@
       href: policy-samples.md
 - name: 概念
   items:
-    - name: セキュリティ グループ
-      href: security-overview.md
-    - name: ルーティング
-      href: virtual-networks-udr-overview.md
-    - name: サービス タグ
-      href: service-tags-overview.md
-    - name: サービス エンドポイント
-      href: virtual-network-service-endpoints-overview.md
-    - name: サービス エンドポイント ポリシー
-      href: virtual-network-service-endpoint-policies-overview.md
-    - name: ピアリング
-      href: virtual-network-peering-overview.md
-    - name: 仮想ネットワーク TAP
-      href: virtual-network-tap-overview.md
-    - name: Azure サービス用の仮想ネットワーク
-      href: virtual-network-for-azure-services.md
-    - name: コンテナー ネットワーク
-      href: container-networking-overview.md
-    - name: Kubernetes ネットワーク ポリシー
-      href: kubernetes-network-policies.md
     - name: ビジネス継続性
       href: virtual-network-disaster-recovery-guidance.md
-    - name: IP アドレス指定
-      href: virtual-network-ip-addresses-overview-arm.md
-    - name: パブリック IP プレフィックス
-      href: public-ip-address-prefix.md
-    - name: Azure VNet の IPv6
-      href: ipv6-overview.md
-    - name: パブリック IPv6 アドレスのプレフィックス
-      href: ipv6-public-ip-address-prefix.md
-    - name: DDoS 保護
-      href: ddos-protection-overview.md
-    - name: サブネットの拡張
-      href: subnet-extension.md
-    - name: サブネットの委任
-      href: subnet-delegation-overview.md
-    - name: バックエンド接続の相互運用性
+    - name: 接続
       items:
-        - name: 前書きとテスト セットアップ
-          href: ../networking/connectivty-interoperability-preface.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-        - name: テスト セットアップの構成
-          href: ../networking/connectivty-interoperability-configuration.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-        - name: コントロール プレーンの分析
-          href: ../networking/connectivty-interoperability-control-plane.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-        - name: データ プレーンの分析
-          href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-    - name: ネットワーク間接続
-      href: ../expressroute/cross-network-connectivity.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+        - name: バックエンド接続の相互運用性
+          items:
+            - name: 前書きとテスト セットアップ
+              href: ../networking/connectivty-interoperability-preface.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+            - name: テスト セットアップの構成
+              href: ../networking/connectivty-interoperability-configuration.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+            - name: コントロール プレーンの分析
+              href: ../networking/connectivty-interoperability-control-plane.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+            - name: データ プレーンの分析
+              href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+        - name: コンテナー ネットワーク
+          href: container-networking-overview.md
+        - name: ネットワーク間接続
+          href: ../expressroute/cross-network-connectivity.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+        - name: ピアリング
+          href: virtual-network-peering-overview.md
+        - name: Azure サービス用の仮想ネットワーク
+          href: virtual-network-for-azure-services.md
+    - name: IP サービス
+      items:
+        - name: IP アドレス指定
+          href: virtual-network-ip-addresses-overview-arm.md
+        - name: パブリック IP プレフィックス
+          href: public-ip-address-prefix.md
+        - name: Azure VNet の IPv6
+          href: ipv6-overview.md
+        - name: パブリック IPv6 アドレスのプレフィックス
+          href: ipv6-public-ip-address-prefix.md
+    - name: Security
+      items:
+        - name: DDoS 保護
+          href: ddos-protection-overview.md
+        - name: Kubernetes ネットワーク ポリシー
+          href: kubernetes-network-policies.md
+        - name: ルーティング
+          href: virtual-networks-udr-overview.md
+        - name: セキュリティ グループ
+          href: security-overview.md
+        - name: サービス タグ
+          href: service-tags-overview.md
+        - name: サービス エンドポイント
+          href: virtual-network-service-endpoints-overview.md
+        - name: サービス エンドポイント ポリシー
+          href: virtual-network-service-endpoint-policies-overview.md
+        - name: 仮想ネットワーク TAP
+          href: virtual-network-tap-overview.md
+    - name: サブネット
+      items:
+        - name: サブネットの拡張
+          href: subnet-extension.md
+        - name: サブネットの委任
+          href: subnet-delegation-overview.md
     - name: 従来のデプロイ
       href: 'https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-network-ip-addresses-overview-classic'
 - name: 操作方法ガイド
   items:
-    - name: プラン
+    - name: 計画と構成
       items:
         - name: 仮想ネットワーク
           href: virtual-network-vnet-plan-design-arm.md
-        - name: Azure VM の TCP/IP パフォーマンス チューニング
-          href: virtual-network-tcpip-performance-tuning.md
-    - name: 配置
+        - name: VM とクラウド サービスの名前解決
+          href: virtual-networks-name-resolution-for-vms-and-role-instances.md
+        - name: 独自の DNS サーバーでの動的 DNS の使用
+          href: virtual-networks-name-resolution-ddns.md
+        - name: ネットワーク スループットの最適化
+          href: virtual-network-optimize-network-bandwidth.md
+        - name: ホスト名を表示および変更する
+          href: virtual-networks-viewing-and-modifying-hostnames.md
+        - name: ログ
+          href: virtual-network-nsg-manage-log.md
+    - name: 接続
       items:
-        - name: VNet の IPv6
-          items:
-            - name: Basic Public Load Balancer
-              items:
-                - name: Azure PowerShell
-                  href: virtual-network-ipv4-ipv6-dual-stack-powershell.md
-                - name: Azure CLI
-                  href: virtual-network-ipv4-ipv6-dual-stack-cli.md
-                - name: Resource Manager テンプレート
-                  href: ipv6-configure-template-json.md
-            - name: IPv6 を IPv4 アプリケーションに追加する
-              items:
-                - name: Azure PowerShell
-                  href: ipv6-add-to-existing-vnet-powershell.md
-                - name: Azure CLI
-                  href: ipv6-add-to-existing-vnet-cli.md
-            - name: Standard Public Load Balancer
-              items:
-                - name: Azure PowerShell
-                  href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
-                - name: Azure CLI
-                  href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
-                - name: Resource Manager テンプレート
-                  href: ipv6-configure-standard-load-balancer-template-json.md
-            - name: Standard Internal Load Balancer
-              href: ipv6-dual-stack-standard-internal-load-balancer-powershell.md
-            - name: 仮想マシン スケール セットと IPv6
-              href: ipv6-virtual-machine-scale-set.md
-        - name: ネットワーク セキュリティ グループ
-          items:
-            - name: Azure PowerShell
-              href: tutorial-filter-network-traffic-powershell.md
-            - name: Azure CLI
-              href: tutorial-filter-network-traffic-cli.md
-        - name: ルート テーブル
-          items:
-            - name: Azure PowerShell
-              href: tutorial-create-route-table-powershell.md
-            - name: Azure CLI
-              href: tutorial-create-route-table-cli.md
-            - name: Ansible
-              href: /azure/ansible/ansible-create-configure-route-table
-              maintainContext: true
-        - name: サービス エンドポイント
-          items:
-            - name: Azure PowerShell
-              href: tutorial-restrict-network-access-to-resources-powershell.md
-            - name: Azure CLI
-              href: tutorial-restrict-network-access-to-resources-cli.md
-        - name: サービス エンドポイント ポリシー - ポータル
-          href: virtual-network-service-endpoint-policies-portal.md
-        - name: 仮想ネットワーク ピアリング
+        - name: NIC の管理
+          href: virtual-network-network-interface.md
+        - name: 仮想ネットワークの管理
+          href: manage-virtual-network.md
+        - name: サブネットの管理
+          href: virtual-network-manage-subnet.md
+        - name: サブネットの委任の管理
+          href: manage-subnet-delegation.md
+        - name: VNET ピアリングの作成
           items:
             - name: 同じデプロイメント モデル - 同じサブスクリプション
               items:
@@ -160,59 +133,8 @@
               href: create-peering-different-deployment-models.md
             - name: 異なるデプロイ モデル - 異なるサブスクリプション
               href: create-peering-different-deployment-models-subscriptions.md
-        - name: 仮想ネットワーク TAP
-          items:
-            - name: Azure CLI
-              href: tutorial-tap-virtual-network-cli.md
-        - name: コンテナー ネットワーク
-          href: deploy-container-networking.md
-        - name: 仮想マシン
-          items:
-            - name: VM の作成 - 静的パブリック IP アドレス
-              items:
-                - name: Azure portal
-                  href: virtual-network-deploy-static-pip-arm-portal.md
-                - name: Azure PowerShell
-                  href: virtual-network-deploy-static-pip-arm-ps.md
-                - name: Azure CLI
-                  href: virtual-network-deploy-static-pip-arm-cli.md
-            - name: 既存の VM へのパブリック IP アドレスの追加
-              href: associate-public-ip-address-vm.md
-            - name: VM からのパブリック IP アドレスの切り離し
-              href: remove-public-ip-address-vm.md
-            - name: VM の作成 - 静的プライベート IP アドレス
-              items:
-                - name: Azure portal
-                  href: virtual-networks-static-private-ip-arm-pportal.md
-                - name: Azure PowerShell
-                  href: virtual-networks-static-private-ip-arm-ps.md
-                - name: Azure CLI
-                  href: virtual-networks-static-private-ip-arm-cli.md
-            - name: VM の作成 - 複数のネットワーク インターフェイス
-              items:
-                - name: Azure PowerShell
-                  href: ../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-                - name: Azure CLI
-                  href: ../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-            - name: VM の作成 - 複数の IP アドレス
-              items:
-                - name: Azure portal
-                  href: virtual-network-multiple-ip-addresses-portal.md
-                - name: Azure PowerShell
-                  href: virtual-network-multiple-ip-addresses-powershell.md
-                - name: Azure CLI
-                  href: virtual-network-multiple-ip-addresses-cli.md
-            - name: VM の作成 - 高速ネットワーク
-              items:
-                - name: Azure PowerShell
-                  href: create-vm-accelerated-networking-powershell.md
-                - name: Azure CLI
-                  href: create-vm-accelerated-networking-cli.md
-                  items:
-                    - name: セットアップ DPDK
-                      href: setup-dpdk.md
-            - name: 仮想マシンのネットワーク スループット
-              href: virtual-machine-network-throughput.md
+        - name: VNET ピアリングの管理
+          href: virtual-network-manage-peering.md
         - name: 接続のシナリオ
           items:
             - name: 仮想ネットワークから仮想ネットワークに
@@ -225,58 +147,140 @@
               href: ../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json
             - name: 高可用性ハイブリッド ネットワーク アーキテクチャ
               href: ../guidance/guidance-hybrid-network-expressroute-vpn-failover.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+        - name: 仮想ネットワーク TAP を構成する
+          href: tutorial-tap-virtual-network-cli.md
+        - name: コンテナー ネットワークのデプロイ
+          href: deploy-container-networking.md
+    - name: IP サービス
+      items:
+        - name: VNet の IPv6
+          items:
+            - name: IPv6 を IPv4 アプリケーションに追加する
+              items:
+                - name: Azure PowerShell
+                  href: ipv6-add-to-existing-vnet-powershell.md
+                - name: Azure CLI
+                  href: ipv6-add-to-existing-vnet-cli.md
+            - name: Basic Public Load Balancer
+              items:
+                - name: Azure PowerShell
+                  href: virtual-network-ipv4-ipv6-dual-stack-powershell.md
+                - name: Azure CLI
+                  href: virtual-network-ipv4-ipv6-dual-stack-cli.md
+                - name: Resource Manager テンプレート
+                  href: ipv6-configure-template-json.md
+            - name: Standard Public Load Balancer
+              items:
+                - name: Azure PowerShell
+                  href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
+                - name: Azure CLI
+                  href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
+                - name: Resource Manager テンプレート
+                  href: ipv6-configure-standard-load-balancer-template-json.md
+            - name: Standard Internal Load Balancer
+              href: ipv6-dual-stack-standard-internal-load-balancer-powershell.md
+            - name: 仮想マシン スケール セットと IPv6
+              href: ipv6-virtual-machine-scale-set.md
+            - name: パブリック IPv6 アドレスのプレフィックス
+              href: ipv6-reserve-public-ip-address-prefix.md
+        - name: IP アドレス指定
+          items:
+            - name: パブリック IP アドレスの管理
+              href: virtual-network-public-ip-address.md
+            - name: パブリック IP プレフィックスの管理
+              href: manage-public-ip-address-prefix.md
+            - name: IP アドレスの追加または NIC からの削除
+              href: virtual-network-network-interface-addresses.md
+    - name: Security
+      items:
+        - name: DDoS 保護の管理
+          href: manage-ddos-protection.md
+        - name: ネットワーク セキュリティ グループの管理
+          href: manage-network-security-group.md
+        - name: DDoS Protection Standard へのパートナーのオンボード
+          href: ddos-protection-partner-onboarding.md
+        - name: ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング
+          items:
+            - name: Azure PowerShell
+              href: tutorial-filter-network-traffic-powershell.md
+            - name: Azure CLI
+              href: tutorial-filter-network-traffic-cli.md
+        - name: NVA を使用したトラフィックのルーティング
+          items:
+            - name: Azure PowerShell
+              href: tutorial-create-route-table-powershell.md
+            - name: Azure CLI
+              href: tutorial-create-route-table-cli.md
+            - name: Ansible
+              href: /azure/ansible/ansible-create-configure-route-table
+              maintainContext: true
+        - name: ルート テーブルの管理
+          href: manage-route-table.md
+        - name: サービス エンドポイントの使用
+          items:
+            - name: Azure PowerShell
+              href: tutorial-restrict-network-access-to-resources-powershell.md
+            - name: Azure CLI
+              href: tutorial-restrict-network-access-to-resources-cli.md
+        - name: サービス エンドポイント ポリシーの作成 - ポータル
+          href: virtual-network-service-endpoint-policies-portal.md
         - name: セキュリティのシナリオ
           items:
             - name: 仮想アプライアンスでネットワークをセキュリティで保護する
               href: virtual-network-scenario-udr-gw-nva.md
             - name: Azure とインターネットの間の DMZ
               href: ../guidance/guidance-iaas-ra-secure-vnet-dmz.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-    - name: '[構成]'
+    - name: VM ネットワーク
       items:
-        - name: VM とクラウド サービスの名前解決
-          href: virtual-networks-name-resolution-for-vms-and-role-instances.md
-        - name: 独自の DNS サーバーでの動的 DNS の使用
-          href: virtual-networks-name-resolution-ddns.md
-        - name: ネットワーク スループットの最適化
-          href: virtual-network-optimize-network-bandwidth.md
-        - name: ホスト名を表示および変更する
-          href: virtual-networks-viewing-and-modifying-hostnames.md
-    - name: 管理する
-      items:
-        - name: 仮想ネットワーク
-          href: manage-virtual-network.md
+        - name: VM の作成 - 静的パブリック IP
           items:
-            - name: サブネット
-              href: virtual-network-manage-subnet.md
-            - name: サブネットの委任
-              href: manage-subnet-delegation.md
-            - name: ピアリング
-              href: virtual-network-manage-peering.md
-            - name: DDoS 保護
-              href: manage-ddos-protection.md
-            - name: DDoS Protection Standard へのパートナーのオンボード
-              href: ddos-protection-partner-onboarding.md
-        - name: ネットワーク セキュリティ グループ
-          href: manage-network-security-group.md
+            - name: Azure portal
+              href: virtual-network-deploy-static-pip-arm-portal.md
+            - name: Azure PowerShell
+              href: virtual-network-deploy-static-pip-arm-ps.md
+            - name: Azure CLI
+              href: virtual-network-deploy-static-pip-arm-cli.md
+            - name: 既存の VM へのパブリック IP アドレスの追加
+              href: associate-public-ip-address-vm.md
+            - name: VM からのパブリック IP アドレスの切り離し
+              href: remove-public-ip-address-vm.md
+        - name: VM の作成 - 静的プライベート IP
           items:
-            - name: ログ
-              href: virtual-network-nsg-manage-log.md
-        - name: ルート テーブル
-          href: manage-route-table.md
-        - name: 仮想マシンのネットワーク
+            - name: Azure portal
+              href: virtual-networks-static-private-ip-arm-pportal.md
+            - name: Azure PowerShell
+              href: virtual-networks-static-private-ip-arm-ps.md
+            - name: Azure CLI
+              href: virtual-networks-static-private-ip-arm-cli.md
+        - name: VM の作成 - 複数の IP
           items:
-            - name: ネットワーク インターフェイスの作成または削除
-              href: virtual-network-network-interface.md
+            - name: Azure portal
+              href: virtual-network-multiple-ip-addresses-portal.md
+            - name: Azure PowerShell
+              href: virtual-network-multiple-ip-addresses-powershell.md
+            - name: Azure CLI
+              href: virtual-network-multiple-ip-addresses-cli.md
             - name: ネットワーク インターフェイスの追加または削除
               href: virtual-network-network-interface-vm.md
-            - name: IP アドレスの追加または削除
-              href: virtual-network-network-interface-addresses.md
-        - name: パブリック IP アドレス
-          href: virtual-network-public-ip-address.md
-        - name: パブリック IP プレフィックス
-          href: manage-public-ip-address-prefix.md
-        - name: パブリック IPv6 アドレスのプレフィックス
-          href: ipv6-reserve-public-ip-address-prefix.md
+            - name: VM の作成 - 複数の NIC
+              items:
+                - name: Azure PowerShell
+                  href: ../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+                - name: Azure CLI
+                  href: ../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+        - name: VM の作成 - 高速ネットワーク
+          items:
+            - name: Azure PowerShell
+              href: create-vm-accelerated-networking-powershell.md
+            - name: Azure CLI
+              href: create-vm-accelerated-networking-cli.md
+              items:
+                - name: セットアップ DPDK
+                  href: setup-dpdk.md
+        - name: Azure VM の TCP/IP パフォーマンス チューニング
+          href: virtual-network-tcpip-performance-tuning.md
+        - name: 仮想マシンのネットワーク スループット
+          href: virtual-machine-network-throughput.md
     - name: リージョン間で移動する
       items:
         - name: ネットワーク セキュリティ グループ - ポータル
@@ -291,34 +295,6 @@
           href: move-across-regions-publicip-portal.md
         - name: パブリック IP - PowerShell
           href: move-across-regions-publicip-powershell.md
-    - name: '[トラブルシューティング]'
-      items:
-        - name: 仮想ネットワーク ピアリングの問題をトラブルシューティングする
-          href: virtual-network-troubleshoot-peering-issues.md
-        - name: VNet または VPN 接続の構成および検証
-          href: virtual-network-configure-vnet-connections.md
-        - name: ネットワーク セキュリティ グループ
-          href: diagnose-network-traffic-filter-problem.md
-        - name: ルート
-          href: diagnose-network-routing-problem.md
-        - name: スループットのテスト
-          href: virtual-network-bandwidth-testing.md
-        - name: VM ネットワークの待ち時間のテスト
-          href: virtual-network-test-latency.md
-        - name: 仮想ネットワークを削除できない
-          href: virtual-network-troubleshoot-cannot-delete-vnet.md
-        - name: VM 間の接続に関する問題
-          href: virtual-network-troubleshoot-connectivity-problem-between-vms.md
-        - name: SMTP バナー チェック用の PTR の構成
-          href: create-ptr-for-smtp-service.md
-        - name: 仮想アプライアンスに関するトラブルシューティングのチェックリスト
-          href: virtual-network-troubleshoot-nva.md
-        - name: 送信 SMTP 接続のトラブルシューティング
-          href: troubleshoot-outbound-smtp-connectivity.md
-        - name: IP アドレス 168.63.129.16 について
-          href: what-is-ip-address-168-63-129-16.md
-        - name: Azure VM の接続に関する問題のトラブルシューティング
-          href: troubleshoot-vm-connectivity.md
     - name: 従来のデプロイ
       href: 'https://docs.microsoft.com/previous-versions/azure/virtual-network/create-virtual-network-classic'
 - name: リファレンス

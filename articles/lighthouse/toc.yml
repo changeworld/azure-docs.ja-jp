@@ -7,7 +7,7 @@
       href: overview.md
 - name: サンプル
   items:
-    - name: Index
+    - name: インデックス
       displayName: 'template, sample'
       href: ./samples/index.md
 - name: 概念
@@ -33,7 +33,7 @@
     - name: エンタープライズ シナリオにおける Azure Lighthouse
       displayName: 'corporation, IT, consolidate'
       href: ./concepts/enterprise.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: Azure の委任されたリソース管理に顧客をオンボードする
       displayName: resource management
@@ -44,6 +44,9 @@
     - name: 顧客を表示し、管理する
       displayName: my customers
       href: ./how-to/view-manage-customers.md
+    - name: Azure Monitor ログの大規模な使用
+      displayName: 'log, analytics, analyze, activity'
+      href: ./how-to/monitor-at-scale.md
     - name: Azure Policy の統合
       items:
         - name: 大規模なポリシーのデプロイ

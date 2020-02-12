@@ -494,6 +494,8 @@
           href: javascript-query-api.md
     - name: Azure Cosmos DB コストの最適化
       items:
+        - name: コストの計画と管理
+          href: plan-manage-costs.md
         - name: 価格モデル
           href: how-pricing-works.md
         - name: 総保有コスト (TCO)

@@ -320,26 +320,45 @@
         - name: FileStore
           href: /azure/databricks/data/filestore
           maintainContext: true
-    - name: ビジネス インテリジェンス ツール
+    - name: 統合
       items:
-        - name: BI ツールを接続する
-          href: /azure/databricks/bi/jdbc-odbc-bi
+        - name: 統合の概要
+          href: /azure/databricks/integrations/index
           maintainContext: true
-        - name: Tableau
-          href: /azure/databricks/bi/tableau
-          maintainContext: true
-        - name: Power BI
-          href: /azure/databricks/bi/power-bi
-          maintainContext: true
-        - name: Alteryx
-          href: /azure/databricks/bi/alteryx
-          maintainContext: true
-        - name: Looker
-          href: /azure/databricks/bi/looker
-          maintainContext: true
-        - name: SQL Workbench/J
-          href: /azure/databricks/bi/workbenchj
-          maintainContext: true
+        - name: ビジネス インテリジェンス ツール
+          items:
+            - name: BI ツールを接続する
+              href: /azure/databricks/bi/jdbc-odbc-bi
+              maintainContext: true
+            - name: Tableau
+              href: /azure/databricks/bi/tableau
+              maintainContext: true
+            - name: Power BI
+              href: /azure/databricks/bi/power-bi
+              maintainContext: true
+            - name: Alteryx
+              href: /azure/databricks/bi/alteryx
+              maintainContext: true
+            - name: Looker
+              href: /azure/databricks/bi/looker
+              maintainContext: true
+            - name: SQL Workbench/J
+              href: /azure/databricks/bi/workbenchj
+              maintainContext: true
+        - name: パートナー データ統合
+          items:
+            - name: パートナー統合の概要
+              href: /azure/databricks/integrations/ingestion/index
+            - name: Qlik の統合
+              href: /azure/databricks/integrations/ingestion/qlik
+            - name: Fivetran の統合
+              href: /azure/databricks/integrations/ingestion/fivetran
+            - name: InfoWorks の統合
+              href: /azure/databricks/integrations/ingestion/infoworks
+            - name: StreamSets の統合
+              href: /azure/databricks/integrations/ingestion/streamsets
+            - name: Syncsort の統合
+              href: /azure/databricks/integrations/ingestion/syncsort
     - name: Delta Lake
       items:
         - name: Delta Lake の概要
@@ -1818,9 +1837,9 @@
         - name: リリースの種類
           href: /azure/databricks/release-notes/release-types
           maintainContext: true
-        - name: Azure Databricks のステータス ページ
-          href: /azure/databricks/status
-          maintainContext: true
+    - name: Azure Databricks のステータス ページ
+      href: /azure/databricks/status
+      maintainContext: true
     - name: R 開発者ガイド
       href: /azure/machine-learning/r-developers-guide
     - name: Azure のロードマップ

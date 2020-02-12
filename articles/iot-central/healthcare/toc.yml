@@ -114,3 +114,5 @@
       href: 'https://docs.microsoft.com/azure/healthcare-apis/'
     - name: セキュリティ保護されたヘルス ソリューションの設計
       href: 'https://docs.microsoft.com/azure/security/fundamentals/health-care-solution'
+    - name: Azure IoT Central (レガシ テンプレート)
+      href: 'https://docs.microsoft.com/previous-versions/azure/iot-central/core/overview-iot-central'
