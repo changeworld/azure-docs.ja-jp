@@ -127,7 +127,7 @@ dep ensure -add https://github.com/Azure/azure-sdk-for-go/tree/master/services/c
 
 ### <a name="create-a-go-application"></a>Go アプリケーションを作成する
 
-次に、`sample-app.go` という名前の **src** ディレクトリにファイルを作成します。
+次に、**src** ディレクトリに `sample-app.go` という名前のファイルを作成します。
 
 ```bash
 cd src
@@ -147,7 +147,7 @@ touch sample-app.go
 |Name|説明|
 |---|---|
 |[BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#BaseClient) | このクラスは、Face サービスを使用するための承認を表し、すべての Face 機能に必要です。 サブスクリプション情報を使用してこれをインスタンス化し、他のクラスのインスタンスを生成するために使用します。 |
-|[クライアント](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client)|このクラスは、人間の顔に対して実行できる基本的な検出と認識のタスクを処理します。 |
+|[Client](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client)|このクラスは、人間の顔に対して実行できる基本的な検出と認識のタスクを処理します。 |
 |[DetectedFace](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#DetectedFace)|このクラスは、画像内の 1 つの顔から検出されたすべてのデータを表します。 これを使用して、顔に関する詳細情報を取得できます。|
 |[ListClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#ListClient)|このクラスは、クラウドに格納された **FaceList** コンストラクトを管理します。これには、さまざまな顔のセットが格納されます。 |
 |[PersonGroupPersonClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupPersonClient)| このクラスは、クラウドに格納された **Person** コンストラクトを管理します。これには、1 人の人物に属している顔のセットが格納されます。|
