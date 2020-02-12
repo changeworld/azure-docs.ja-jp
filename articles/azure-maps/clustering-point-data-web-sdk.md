@@ -48,7 +48,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 `DataSource` クラスには、クラスタリングに関連する以下のメソッドもあります。
 
-| 方法 | の戻り値の型 : | [説明] |
+| 方法 | の戻り値の型 : | 説明 |
 |--------|-------------|-------------|
 | getClusterChildren(clusterId: number) | Promise&lt;Array&lt;Feature&lt;Geometry, any&gt; \| Shape&gt;&gt; | 次のズーム レベルで指定されたクラスターの子を取得します。 これらの子はシェイプとサブクラスターの組み合わせの場合があります。 サブクラスターは ClusteredProperties と一致するプロパティを持つフィーチャーになります。 |
 | getClusterExpansionZoom(clusterId: number) | Promise&lt;number&gt; | クラスターが拡大し始めるか、または分解するズーム レベルを計算します。 |
@@ -88,7 +88,7 @@ Azure Maps による<a href='https://codepen.io/azuremaps/pen/VRJrgO/'>クラス
 
 クラスター化されたデータ ポイントを含むレイヤーでマウス イベントが発生すると、クラスター化されたデータ ポイントが GeoJSON ポイント フィーチャー オブジェクトとしてイベントに返されます。 このポイント フィーチャーには次のプロパティがあります。
 
-| プロパティ名             | 種類    | [説明]   |
+| プロパティ名             | 種類    | 説明   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | フィーチャーがクラスターを表すかどうかを示します。 |
 | `cluster_id`              | string  | DataSource の `getClusterExpansionZoom`、`getClusterChildren`、および `getClusterLeaves` メソッドで使用できるクラスターの一意な ID。 |
