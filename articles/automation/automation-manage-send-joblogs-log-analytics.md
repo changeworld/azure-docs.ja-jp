@@ -85,7 +85,7 @@ Azure Automation の診断から、Azure Monitor ログに 2 種類のレコー�
 
 ### <a name="job-logs"></a>ジョブ ログ
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | TimeGenerated |Runbook ジョブが実行された日付と時刻。 |
 | RunbookName_s |Runbook の名前。 |
@@ -107,7 +107,7 @@ Azure Automation の診断から、Azure Monitor ログに 2 種類のレコー�
 
 
 ### <a name="job-streams"></a>ジョブ ストリーム
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | TimeGenerated |Runbook ジョブが実行された日付と時刻。 |
 | RunbookName_s |Runbook の名前。 |
