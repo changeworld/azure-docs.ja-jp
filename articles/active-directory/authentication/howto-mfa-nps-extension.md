@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4da2e3696dd1fad1dcce81831385f1e21891f97
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 43f355f22774477466d2965cef02adcc4ec4f497
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712531"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76908855"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合
 
@@ -192,6 +192,23 @@ NPS 拡張機能を展開して使用する前に、2 段階認証を実行す�
 
 > [!NOTE]
 > PowerShell スクリプトを使用して証明書を生成するのではなく独自の証明書を使用する場合は、NPS 名前付け規則に合わせてください。 サブジェクト名は **CN=\<TenantID\>,OU=Microsoft NPS Extension** にする必要があります。 
+
+### <a name="microsoft-azure-government-additional-steps"></a>Microsoft Azure Government の追加手順
+
+Azure Government クラウドを使用しているお客様については、各 NPS サーバーで次の追加の構成手順を実行する必要があります。
+
+1. NPS サーバーで**レジストリ エディター**を開きます。
+1. `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa` に移動します。 次のキーの値を設定します。
+
+    | レジストリ キー       | Value |
+    |--------------------|-----------------------------------|
+    | AZURE_MFA_HOSTNAME | adnotifications.windowsazure.us   |
+    | STS_URL            | https://login.microsoftonline.us/ |
+
+1. 前の 2 つの手順を繰り返して、各 NPS サーバーのレジストリ キーの値を設定します。
+1. NPS サーバーごとに NPS サービスを再起動します。
+
+    影響を最小限に抑えるには、各 NPS サーバーを 1 つずつ NLB ローテーションから外し、すべての接続がドレインされるのを待ちます。
 
 ### <a name="certificate-rollover"></a>証明書のロールオーバー
 

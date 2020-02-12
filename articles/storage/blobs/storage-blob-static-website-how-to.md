@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 05/28/2019
-ms.openlocfilehash: d5b8121c7888903f3e4552a21a6ddc175ecc5176
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4214c4eb9fbe1d3e39d1ee16289f30b893b94653
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489086"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906607"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Azure Storage で静的 Web サイトをホストする
 
@@ -24,7 +24,7 @@ Azure Storage GPv2 アカウントのコンテナーから静的コンテンツ 
 
 ## <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 
-ステップ バイ ステップのチュートリアルについては、「[チュートリアル: Host a static website on Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host)」 (チュートリアル: Blob Storage で静的な Web サイトをホストする) を完了します。
+詳しいチュートリアルについては、「[チュートリアル: Host a static website on Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host)」 (チュートリアル: Blob Storage で静的な Web サイトをホストする) を完了します。
 
 静的 Web サイトのホスティングを有効にした後は、Web サイトのパブリック URL を使用して、ブラウザーから自分のサイトのページを表示できます。
 
@@ -219,12 +219,7 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
 
    ![Azure Storage 静的 Web サイトのメトリック: GetWebContent](./media/storage-blob-static-website/storage-blob-static-website-metrics-getwebcontent.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [Azure Storage での静的な Web サイトのホスティング](storage-blob-static-website.md)
-* [Azure CDN を使用して HTTPS 経由でカスタム ドメイン付きの BLOB にアクセスする](storage-https-custom-domain-cdn.md)
-* [BLOB または Web エンドポイントのカスタム ドメイン名の構成](storage-custom-domain-name.md)
-* [Azure Functions](/azure/azure-functions/functions-overview)
-* [Azure App Service](/azure/app-service/overview)
-* [最初のサーバーレス Web アプリを作成する](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
-* [チュートリアル:Azure DNS でドメインをホストする](../../dns/dns-delegate-domain-azure-dns.md)
+* 静的な Web サイトでカスタム ドメインを構成する方法を学習します。 「[カスタム ドメインを Azure Blob Storage エンドポイントにマップする](storage-custom-domain-name.md)」を確認します。
+

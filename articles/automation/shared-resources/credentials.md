@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: shared-capabilities
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/12/2019
+ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 582645919825c308fce4fe3211fa601955aaf37d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 767c1fddbc3d1f46d4341a70c990c2b57ad40e54
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850178"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930410"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Azure Automation での資格情報資産
 
@@ -25,27 +25,16 @@ Automation 資格情報資産は、ユーザー名とパスワードなどのセ
 > [!NOTE]
 > Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。 これらの資産は、各 Automation アカウント用に生成された一意のキーを使って暗号化され、Azure Automation に保存されます。 このキーは Key Vault に格納されます。 セキュリティで保護された資産を保存する前に、キーが Key Vault から読み込まれ、資産の暗号化に使われます。
 
-## <a name="azure-classic-powershell-cmdlets"></a>Azure クラシック PowerShell コマンドレット
+## <a name="azure-powershell-az-cmdlets"></a>Azure PowerShell Az コマンドレット
 
-Windows PowerShell で Automation 資格情報資産を作成および管理するには、次の表のコマンドレットを使用します。  これらは、Automation Runbook および DSC 構成で使用できる [Azure PowerShell モジュール](/powershell/azure/overview) に付属しています。
-
-| コマンドレット | 説明 |
-|:--- |:--- |
-| [Get-AzureAutomationCredential](/powershell/module/servicemanagement/azure/get-azureautomationcredential) |資格情報資産に関する情報を取得します。 **Get-AutomationPSCredential** アクティビティから取得できるのは、資格情報自体のみです。 |
-| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential) |新しい Automation 資格情報を作成します。 |
-| [Remove-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential) |Automation 資格情報を削除します。 |
-| [Set-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential) |既存の Automation 資格情報のプロパティを設定します。 |
-
-## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell コマンドレット
-
-AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作成および管理するには、次の表のコマンドレットを使用します。  これらのコマンドレットは、Automation Runbook と DSC 構成に使用できる [AzureRM.Automation モジュール](/powershell/azure/overview)に付属しています。
+Azure PowerShell Az モジュールの場合、Windows PowerShell で Automation 資格情報資産を作成および管理するには、次の表のコマンドレットを使用します。 これらのコマンドレットは、Automation Runbook と DSC 構成に使用できる [AzureAz.Automation モジュール](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)に付属しています。
 
 | コマンドレット | 説明 |
 |:--- |:--- |
-| [Get-AzureRmAutomationCredential](/powershell/module/azurerm.automation/get-azurermautomationcredential) |資格情報資産に関する情報を取得します。 これにより、PSCredential オブジェクトは返されません。  |
-| [New-AzureRmAutomationCredential](/powershell/module/azurerm.automation/new-azurermautomationcredential) |新しい Automation 資格情報を作成します。 |
-| [Remove-AzureRmAutomationCredential](/powershell/module/azurerm.automation/remove-azurermautomationcredential) |Automation 資格情報を削除します。 |
-| [Set-AzureRmAutomationCredential](/powershell/module/azurerm.automation/set-azurermautomationcredential) |既存の Automation 資格情報のプロパティを設定します。 |
+| [Get-AzAutomationCredential](/powershell/module/az.automation/get-azautomationcredential?view=azps-3.3.0) |資格情報資産に関する情報を取得します。 これにより、PSCredential オブジェクトは返されません。  |
+| [New-AzAutomationCredential](/powershell/module/az.automation/new-azautomationcredential?view=azps-3.3.0) |新しい Automation 資格情報を作成します。 |
+| [Remove-AzAutomationCredential](/powershell/module/az.automation/remove-azautomationcredential?view=azps-3.3.0) |Automation 資格情報を削除します。 |
+| [Set-AzAutomationCredential](/powershell/module/az.automation/set-azautomationcredential?view=azps-3.3.0) |既存の Automation 資格情報のプロパティを設定します。 |
 
 ## <a name="activities"></a>Activities
 
@@ -74,8 +63,8 @@ AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作�
 ### <a name="to-create-a-new-credential-asset-with-the-azure-portal"></a>Azure ポータルで新しい資格情報資産を作成するには
 
 1. Automation アカウントから、 **[共有リソース]** の下の **[資格証明]** を選択します。
-1. **[+ 資格情報の追加]** をクリックします。
-1. フォームに入力し、 **[作成]** をクリックして新しい資格情報を保存します。
+1. **[資格情報の追加]** を選択します。
+1. フォームに入力し、 **[作成]** を選択して新しい資格情報を保存します。
 
 > [!NOTE]
 > 多要素認証を使用するユーザー アカウントは、Azure Automation での使用がサポートされていません。
@@ -96,7 +85,7 @@ New-AzureAutomationCredential -AutomationAccountName "MyAutomationAccount" -Name
 Runbook または DSC 構成で資格情報資産を取得するには、**Get-AutomationPSCredential** アクティビティを使用します。 このアクティビティが返す [PSCredential オブジェクト](/dotnet/api/system.management.automation.pscredential)を、PSCredential パラメーターを必要とするアクティビティまたはコマンドレットで使用できます。 また、資格情報オブジェクトのプロパティを取得して個別に使用することもできます。 オブジェクトにはユーザー名と安全なパスワードのプロパティがあります。または、**GetNetworkCredential** メソッドを使用して、安全ではないバージョンのパスワードを提供する [NetworkCredential](/dotnet/api/system.net.networkcredential) オブジェクトを取得することもできます。
 
 > [!NOTE]
-> **Get-AzureRmAutomationCredential** では、認証に使用できる **PSCredential** は返されません。 資格情報に関する情報が提供されるだけです。 Runbook で資格情報を使用する必要がある場合は、**Get-AutomationPSCredential** を使用して **PSCredential** オブジェクトを取得する必要があります。
+> **Get-AzAutomationCredential** では、認証に使用できる **PSCredential** は返されません。 資格情報に関する情報が提供されるだけです。 Runbook で資格情報を使用する必要がある場合は、**Get-AutomationPSCredential** を使用して **PSCredential** オブジェクトを取得する必要があります。
 
 ### <a name="textual-runbook-sample"></a>テキストの Runbook のサンプル
 
@@ -109,7 +98,7 @@ $securePassword = $myCredential.Password
 $password = $myCredential.GetNetworkCredential().Password
 ```
 
-資格情報を使用して [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) で Azure を認証することもできます。 ほとんどの環境下で、[アカウントとして実行](../manage-runas-account.md) を使用して、それを [Get-AutomationConnection](../automation-connections.md) で取得する必要があります。
+資格情報を使用して [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.3.0) で Azure を認証することもできます。 ほとんどの環境下で、[[実行アカウント]](../manage-runas-account.md) を使用して、それを [Get-AzAutomationConnection](../automation-connections.md) で取得する必要があります。
 
 ```azurepowershell
 $myCred = Get-AutomationPSCredential -Name 'MyCredential'
@@ -128,7 +117,7 @@ Connect-AzureRmAccount -Credential $myPsCred
 
 ![キャンバスに資格情報を追加する](../media/credentials/credential-add-canvas.png)
 
-次の図は、グラフィカルな Runbook で資格情報を使用する例を示したものです。  この例では、「 [Authenticate Runbooks with Azure AD User account (Azure AD ユーザー アカウントでの Runbook の認証)](../automation-create-aduser-account.md)」で説明されているように、Runbook 用の認証を Azure リソースに提供するために使用されています。  最初のアクティビティは、Azure サブスクリプションへのアクセス権を持つ資格情報を取得します。  その後、 **Add-AzureAccount** アクティビティはこの資格情報を使用して、その後にあるすべてのアクティビティに認証を提供します。  [Get-AutomationPSCredential](../automation-graphical-authoring-intro.md#links-and-workflow) は 1 つのオブジェクトを受け取るので、ここでは **パイプライン リンク** を使用します。  
+次の図は、グラフィカルな Runbook で資格情報を使用する例を示したものです。 この例では、「 [Authenticate Runbooks with Azure AD User account (Azure AD ユーザー アカウントでの Runbook の認証)](../automation-create-aduser-account.md)」で説明されているように、Runbook 用の認証を Azure リソースに提供するために使用されています。 最初のアクティビティは、Azure サブスクリプションへのアクセス権を持つ資格情報を取得します。 その後、**Connect-AzureRmAccount** アクティビティはこの資格情報を使用して、その後にあるすべてのアクティビティに認証情報を提供します。 [Get-AutomationPSCredential](../automation-graphical-authoring-intro.md#links-and-workflow) は 1 つのオブジェクトを受け取るので、ここでは **パイプライン リンク** を使用します。  
 
 ![キャンバスに資格情報を追加する](../media/credentials/get-credential.png)
 
@@ -150,7 +139,7 @@ print cred["username"]
 print cred["password"]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * グラフィカル作成でのリンクの詳細については、「 [グラフィカル作成でのリンク](../automation-graphical-authoring-intro.md#links-and-workflow)
 * Automation のさまざまな認証方法を理解するには、「 [Azure Automation のセキュリティ](../automation-security-overview.md)

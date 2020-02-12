@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 6a9385a49e85806464e8f9ccf11d9232fae42435
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 933f0c52cf0d65c7dca480971589c0d0f2ebabf0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461120"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906786"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure にアップロードする Windows VHD または VHDX を準備する
 
@@ -33,6 +33,22 @@ Azure VM のサポート ポリシーについては、「[Microsoft Azure 仮�
 > この記事の手順は以下に適用されます。
 >1. Windows Server (64 ビット版) 2008 R2 以降の Windows Server オペレーティング システム。 Azure での 32 ビットのオペレーティング システムの実行については、「[Azure 仮想マシンでの 32 ビット オペレーティング システムのサポート](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines)」を参照してください。
 >2. Azure Site Recovery や Azure Migrate など、何らかのディザスター リカバリー ツールをワークロードの移行に使用する場合でも、移行前にゲスト OS でこのプロセスを実行してイメージを準備する必要があります。
+
+## <a name="system-file-checker-sfc-command"></a>システム ファイル チェッカー (SFC) コマンド
+
+### <a name="run-windows-system-file-checker-utility-run-sfc-scannow-on-os-prior-to-generalization-step-of-creating-customer-os-image"></a>カスタム OS イメージを作成するための一般化手順の前に、Windows システム ファイル チェッカー ユーティリティ (sfc/scannow を実行) を OS で実行します
+
+システム ファイル チェッカー (SFC) コマンドは、Windows システム ファイルの確認と置換に使用します。
+
+SFC コマンドを実行するには、次のようにします。
+
+1. 管理者特権のコマンド プロンプトを管理者として開きます。
+1. 「`sfc /scannow`」と入力し、**Enter** キーを押します。
+
+    ![システム ファイル チェッカー](media/prepare-for-upload-vhd-image/system-file-checker.png)
+
+
+SFC スキャンが完了したら、Windows 更新プログラムをインストールし、コンピューターを再起動します。
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-and-to-vhd"></a>仮想ディスクを容量固定および VHD に変換する
 
@@ -219,7 +235,7 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
 
 9. VM がドメインの一部になる場合は、次のポリシーをチェックして、前の設定が元に戻されていないことを確認します。 
     
-    | 目標                                     | ポリシー                                                                                                                                                       | 値                                                                                    |
+    | 目標                                     | ポリシー                                                                                                                                                       | Value                                                                                    |
     |------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
     | RDP が有効になっている                           | [コンピューターの構成]\[ポリシー]\[Windows の設定]\[管理用テンプレート]\[コンポーネント]\[リモート デスクトップ サービス]\[リモート デスクトップ セッション ホスト]\[接続]         | ユーザーがリモート デスクトップを使用してリモートで接続できるようにする                                  |
     | NLA グループ ポリシー                         | [設定]\[管理用テンプレート]\[コンポーネント]\[リモート デスクトップ サービス]\[リモート デスクトップ セッション ホスト]\[セキュリティ]                                                    | NLA を使ってリモート アクセスにユーザー認証を要求する |
@@ -253,7 +269,7 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
    ``` 
 5. VM がドメインの一部になる場合は、次の Azure AD ポリシーをチェックして、前の設定が元に戻されていないことを確認します。 
 
-    | 目標                                 | ポリシー                                                                                                                                                  | 値                                   |
+    | 目標                                 | ポリシー                                                                                                                                                  | Value                                   |
     |--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
     | Windows ファイアウォール プロファイルを有効にする | [コンピューターの構成]\[ポリシー]\[Windows の設定]\[管理用テンプレート]\[ネットワーク]\[ネットワーク接続]\[Windows ファイアウォール]\[ドメイン プロファイル]\[Windows ファイアウォール]   | すべてのネットワーク接続を保護する         |
     | RDP を有効にする                           | [コンピューターの構成]\[ポリシー]\[Windows の設定]\[管理用テンプレート]\[ネットワーク]\[ネットワーク接続]\[Windows ファイアウォール]\[ドメイン プロファイル]\[Windows ファイアウォール]   | 着信リモート デスクトップの例外を許可する |

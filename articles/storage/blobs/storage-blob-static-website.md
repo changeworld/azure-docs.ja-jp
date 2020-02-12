@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: 8dc5599e681d9aee84f884cd4990163a2481d386
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: a35239354d23f75361d5577d6b7efc8254943147
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708164"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906599"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure Storage での静的 Web サイト ホスティング
 
@@ -81,22 +81,16 @@ ms.locfileid: "75708164"
 
 しかし、プライマリ BLOB サービス エンドポイント `https://contosoblobaccount.blob.core.windows.net/$web/index.html` へのパブリック アクセスは、プライベートからパブリックに変更されます。 ユーザーはこれらの 2 つのエンドポイントのいずれかを使用して、このファイルを開けるようになりました。
 
-## <a name="content-delivery-network-cdn-and-secure-socket-layer-ssl-support"></a>コンテンツ配信ネットワーク (CDN) と Secure Sockets Layer (SSL) のサポート
+## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>カスタム ドメインを静的 Web サイトの URL にマップする
 
-静的な Web サイトのファイルをカスタム ドメインおよび HTTPS 経由で使用できるようにするには、「[Azure CDN を使用して HTTPS 経由でカスタム ドメイン付きの BLOB にアクセスする](storage-https-custom-domain-cdn.md)」を参照してください。 このプロセスの一環として、CDN がプライマリ *BLOB サービス* エンドポイントではなく、プライマリ*静的 Web サイト*エンドポイントを指すようにする必要があります。 CDN 構成がすぐに実行されないため、コンテンツが表示されるまで数分待たなければならない場合があります。
+静的 Web サイトをカスタム ドメイン経由で利用できるようにすることができます。 
 
-静的 Web サイトを更新するときは、CDN エンドポイントを消去して、CDN エッジ サーバー上のキャッシュされたコンテンツを必ず消去してください。 詳細については、「[Azure CDN エンドポイントの消去](../../cdn/cdn-purge-endpoint.md)」を参照してください。
+カスタム ドメインの HTTP アクセスは、Azure Storage でネイティブにサポートされているため、簡単に有効にすることができます。 HTTPS を有効にするには、Azure CDN を使用する必要があります。これは、Azure Storage がカスタム ドメインを使用した HTTPS をまだネイティブにサポートしていないためです。 手順を追ったガイダンスについては、「[カスタム ドメインを Azure Blob Storage エンドポイントにマップする](storage-custom-domain-name.md)」を参照してください。
 
-> [!NOTE]
-> HTTPS は、アカウントの Web エンドポイント経由でネイティブにサポートされるため、Web エンドポイントには HTTP 経由と HTTPS 経由の両方でアクセスできます。 ただし、ストレージ アカウントが HTTPS 経由での安全な転送を必要とするように構成されている場合、ユーザーは HTTPS エンドポイントを使用する必要があります。 詳細については、「[Azure Storage で安全な転送が必要](../common/storage-require-secure-transfer.md)」を参照してください。
->
-> 現時点では、カスタム ドメインを HTTPS 経由で使用するには Azure CDN の使用が必要です。
+ストレージ アカウントが HTTPS 経由での[安全な転送を必要とする](../common/storage-require-secure-transfer.md)ように構成されている場合、ユーザーは HTTPS エンドポイントを使用する必要があります。 
 
-## <a name="custom-domain-names"></a>カスタム ドメイン名
-
-静的 Web サイトをカスタム ドメイン経由で利用できるようにすることができます。 詳細については、「[Azure Storage アカウントのカスタム ドメイン名の構成](storage-custom-domain-name.md)」をご覧ください。
-
-Azure でのドメインのホスティングについて詳しくは、「[Azure DNS でドメインをホストする](../../dns/dns-delegate-domain-azure-dns.md)」を参照してください。
+> [!TIP]
+> Azure でドメインをホストすることを検討してください。 詳しくは、「[Azure DNS でドメインをホストする](../../dns/dns-delegate-domain-azure-dns.md)」を参照してください。
 
 ## <a name="pricing"></a>価格
 
@@ -111,8 +105,7 @@ Azure でのドメインのホスティングについて詳しくは、「[Azur
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Storage で静的 Web サイトをホストする](storage-blob-static-website-how-to.md)
-* [Azure CDN を使用して HTTPS 経由でカスタム ドメイン付きの BLOB にアクセスする](storage-https-custom-domain-cdn.md)
-* [BLOB または Web エンドポイントのカスタム ドメイン名の構成](storage-custom-domain-name.md)
+* [カスタム ドメインを Azure Blob Storage エンドポイントにマップする](storage-custom-domain-name.md)
 * [Azure Functions](/azure/azure-functions/functions-overview)
 * [Azure App Service](/azure/app-service/overview)
 * [最初のサーバーレス Web アプリを作成する](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)

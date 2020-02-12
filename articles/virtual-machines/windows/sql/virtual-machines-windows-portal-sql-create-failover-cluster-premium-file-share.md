@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 3bd13a63c3f4fa275f7e4789c184802445519388
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 57dc7bb98bf4c2f733be0f2c94e17481a429be6d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772593"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906788"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Azure Virtual Machines で Premium ファイル共有を使用して SQL Server フェールオーバー クラスター インスタンスを構成する
 
@@ -153,7 +153,7 @@ Filestream は、Premium ファイル共有のフェールオーバー クラス
 
    各仮想マシンで、Windows ファイアウォールの次のポートを開きます。
 
-   | 目的 | TCP ポート | メモ
+   | 目的 | TCP ポート | Notes
    | ------ | ------ | ------
    | SQL Server | 1433 | SQL Server の既定のインスタンスの通常のポートです。 ギャラリーからイメージを使用した場合、このポートが自動的に開きます。
    | 正常性プローブ | 59999 | 開いている任意の TCP ポートです。 後の手順で、このポートを使用するようにロード バランサーの[正常性プローブ](#probe)とクラスターを構成します。
@@ -185,7 +185,7 @@ Filestream は、Premium ファイル共有のフェールオーバー クラス
   > - バックアップ ファイル用に別のファイル共有を使用して、この共有の IOPS と領域の容量をデータとログ ファイル用に確保することを検討してください。 バックアップ ファイルには、Premium または Standard のいずれのファイル共有も使用できます
   > - Windows 2012 R2 以前を使用している場合は、同じ手順に従って、ファイル共有監視として使用するファイル共有をマウントします。 
 
-## <a name="step-3-configure-the-failover-cluster-with-the-file-share"></a>手順 3:ファイル共有を使用してフェールオーバー クラスターを構成する
+## <a name="step-3-configure-the-failover-cluster"></a>手順 3:フェールオーバー クラスターを構成する
 
 次の手順では、フェールオーバー クラスターを構成します。 この手順では、次のサブ手順を完了します。
 

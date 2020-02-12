@@ -3,21 +3,21 @@ title: Azure Service Fabric CLI - sfctl is
 description: Azure Service Fabric のコマンド ライン インターフェイスである sfctl について説明します。 インフラストラクチャを管理するためのコマンドの一覧が含まれています。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: c3c98e8da0c2a5449296a0fd108977ec0633f83d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: a64aaca97c9df61d795c82d64e6048d6f9ae032f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639124"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906084"
 ---
 # <a name="sfctl-is"></a>sfctl is
 クエリを実行し、インフラストラクチャ サービスにコマンドを送信します。
 
 ## <a name="commands"></a>コマンド
 
-|command|[説明]|
+|command|説明|
 | --- | --- |
 | command | 特定の Infrastructure Service インスタンスで管理コマンドを呼び出します。 |
 | query | 特定の Infrastructure Service インスタンスで読み取り専用クエリを呼び出します。 |
@@ -29,7 +29,7 @@ ms.locfileid: "75639124"
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --command [必須] | 呼び出されるコマンドのテキスト。 コマンドの内容は、インフラストラクチャに固有です。 |
 | --service-id | Infrastructure Service の ID。 <br><br> これは "fabric\:" URI スキームのない Infrastructure Service の完全な名前です。 このパラメーターは、実行している Infrastructure Service のインスタンスを複数持つクラスターにのみ必要です。 |
@@ -37,7 +37,7 @@ ms.locfileid: "75639124"
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
@@ -52,7 +52,7 @@ ms.locfileid: "75639124"
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --command [必須] | 呼び出されるコマンドのテキスト。 コマンドの内容は、インフラストラクチャに固有です。 |
 | --service-id | Infrastructure Service の ID。 <br><br> これは "fabric\:" URI スキームのない Infrastructure Service の完全な名前です。 このパラメーターは、実行している Infrastructure Service のインスタンスを複数持つクラスターにのみ必要です。 |
@@ -60,7 +60,7 @@ ms.locfileid: "75639124"
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |

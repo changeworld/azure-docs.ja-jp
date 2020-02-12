@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
-ms.openlocfilehash: 21314d3c80832c14538130ce373ccf6d2dd19f18
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965945"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906700"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Azure Logic Apps におけるエラーと例外の処理
 
@@ -27,7 +27,7 @@ ms.locfileid: "75965945"
 
 再試行ポリシーの種類を次に示します。
 
-| 種類 | [説明] |
+| Type | 説明 |
 |------|-------------|
 | **[Default]** | このポリシーは、"*指数関数的に増加*" する間隔で、最大 4 回の再試行を送信します。間隔の増加係数は 7.5 秒で、下限と上限はそれぞれ 5 秒と 45 秒になります。 |
 | **指数間隔**  | このポリシーは、指数関数的に増加する範囲から選択されるランダムな間隔を待ち時間として、次の要求を送信します。 |
@@ -69,7 +69,7 @@ ms.locfileid: "75965945"
 
 *必須*
 
-| 値 | 種類 | [説明] |
+| Value | Type | 説明 |
 |-------|------|-------------|
 | <*retry-policy-type*> | String | 使用する再試行ポリシーの種類: `default`、`none`、`fixed`、または `exponential` |
 | <*retry-interval*> | String | 再試行間隔。この値には [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)を使用する必要があります。 既定の最小間隔は `PT5S` で、最大間隔は `PT1D` です。 指数の間隔ポリシーを使用するとき、最小と最大にさまざまな値を指定できます。 |
@@ -78,7 +78,7 @@ ms.locfileid: "75965945"
 
 *省略可能*
 
-| 値 | 種類 | [説明] |
+| Value | Type | 説明 |
 |-------|------|-------------|
 | <*minimum-interval*> | String | 指数間隔ポリシーに関して、ランダムに選択される間隔の最小値です ([ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations))。 |
 | <*maximum-interval*> | String | 指数間隔ポリシーに関して、ランダムに選択される間隔の最大値です ([ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations))。 |
@@ -360,9 +360,9 @@ ms.locfileid: "75965945"
 
 この記事の前出の式を使用することで、さまざまな例外処理パターンを実行できます。 フィルターで抽出したエラーの配列全体を、スコープ外の単一の例外処理アクションに渡して実行してもかまいません。その場合、`For_each` は不要です。 前述した `\@result()` の応答には、他にも便利なプロパティがあるので、それらを含めることもできます。
 
-## <a name="azure-diagnostics-and-metrics"></a>Azure Diagnostics とメトリック
+## <a name="set-up-azure-monitor-logs"></a>Azure Monitor ログを設定する
 
-ここで取り上げたパターンは、発生したエラーや例外を実行中に処理するうえで、きわめて効果的な方法です。しかし実行そのものとは切り離して、エラーを特定し、対応することもできます。 [Azure Diagnostics](../logic-apps/logic-apps-monitor-your-logic-apps.md) を使用すると、ワークフローで発生したあらゆるイベントを、実行とアクションのすべての状態を含めて、簡単に Azure Storage アカウントや [Azure Event Hubs](../event-hubs/event-hubs-about.md) で作成されたイベント ハブに送信できます。
+ここで取り上げたパターンは、発生したエラーや例外を実行中に処理するうえで、きわめて効果的な方法です。しかし実行そのものとは切り離して、エラーを特定し、対応することもできます。 [Azure Monitor](../azure-monitor/overview.md) を使用すると、すべての実行とアクションの状態を含む、すべてのワークフロー イベントを [Log Analytics ワークスペース](../azure-monitor/platform/data-platform-logs.md)、[Azure ストレージ アカウント](../storage/blobs/storage-blobs-overview.md)、または [Azure Event Hubs](../event-hubs/event-hubs-about.md) に簡単に送信できます。
 
 ログやメトリックを監視したり、それらを好きな監視ツールに発行したりすることによって、実行の状態を評価することができます。 その中の一つの方法として、すべてのイベントを Event Hubs を介して [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) にストリーミングすることが考えられます。 Stream Analytics では、診断ログから得られる異常、平均値、またはエラーに基づいて適宜必要なクエリを記述できます。 Stream Analytics を使用して、キュー、トピック、SQL、Azure Cosmos DB、Power BI などのその他のデータ ソースに情報を送信できます。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a51bb91a63f032f87da59fe95f5e3282cbaa0bea
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b77d6fe03a051c019519f195d55cdeb00fb9afb2
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771617"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906273"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 
@@ -201,49 +201,14 @@ GRS が有効なストレージ アカウントでは、すべてのデータが
 
 ### <a name="regional-availability"></a>リージョン別の提供状況
 
-Standard ファイル共有は、すべてのリージョンで 5 TiB まで利用できます。 一部のリージョンでは、100 TiB の上限まで利用できます。これらのリージョンについては次の表を参照してください。
+100 TiB の容量制限がある Standard ファイル共有は、すべての Azure リージョンでグローバルに使用可能です。
 
-|リージョン |サポートされる冗長性 |
-|-------|---------|
-|オーストラリア中部    |LRS     |
-|オーストラリア中部 2    |LRS     |
-|オーストラリア東部 |LRS     |
-|オーストラリア南東部|LRS |
-|ブラジル南部    |LRS     |
-|カナダ中部  |LRS     |
-|カナダ東部     |LRS     |
-|インド中部  |LRS     |
-|米国中部*   |LRS、ZRS    |
-|東アジア      |LRS     |
-|米国東部*        |LRS、ZRS|
-|米国東部 2*      |LRS、ZRS     |
-|フランス中部 |LRS、ZRS|
-|フランス南部   |LRS     |
-|東日本     |LRS     |
-|西日本     |LRS     |
-|韓国中部  |LRS     |
-|韓国南部    |LRS     |
-|米国中北部 |LRS   |
-|北ヨーロッパ   |LRS     |
-|インド南部    |LRS     |
-|米国中南部 |LRS     |
-|東南アジア |LRS、ZRS|
-|スイス北部    |LRS     |
-|スイス西部    |LRS     |
-|アラブ首長国連邦中部    |LRS     |
-|アラブ首長国連邦北部    |LRS     |
-|英国北部   |LRS、ZRS    |
-|英国南部    |LRS     |
-|英国西部    |LRS     |
-|米国中西部|LRS     |
-|西ヨーロッパ*    |LRS、ZRS|
-|インド西部   |LRS     |
-|米国西部        |LRS     |
-|米国西部 2      |LRS、ZRS|
+- LRS:南アフリカ北部と南アフリカ西部を除くすべてのリージョン。
+   - 各国のクラウド (政府、ドイツ、中国) は、PowerShell と Azure コマンド ライン インターフェイス (CLI) を介してサポートされます。 ポータルのサポートはありません。 
+   - 米国東部、米国東部 2、西ヨーロッパ:すべての新しいアカウントがサポートされます。 少数の既存アカウントが、アップグレード プロセスを完了していません。 [大きなファイル共有を有効にする](storage-files-how-to-create-large-file-share.md)ことで、既存のストレージ アカウントのアップグレード プロセスが完了したかどうかを確認することができます。
 
-\* 新しいアカウントでサポートされていますが、すべての既存のアカウントのアップグレード プロセスが完了しているわけではありません。 [大きなファイル共有を有効にする](storage-files-how-to-create-large-file-share.md)ことで、既存のストレージ アカウントのアップグレード プロセスが完了したかどうかを確認することができます。
-
-この[アンケート](https://aka.ms/azurefilesatscalesurvey)にご記入ください。新しいリージョンと機能に優先順位を付けるために役立ちます。
+- ZRS:東日本、北ヨーロッパ、南アフリカ北部を除くすべてのリージョン。
+- GRS/GZRS:サポートされていません。
 
 ### <a name="enable-and-create-larger-file-shares"></a>より大きなファイル共有を有効にして作成する
 

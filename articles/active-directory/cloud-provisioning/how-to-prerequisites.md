@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 019c2f8a13a80de395803ca1782e578c049a7923
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 51e5c58d29f01cadcc3ea2e8ec48ae67e58c4180
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549348"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76909042"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect クラウド プロビジョニングの前提条件
 この記事では、ID ソリューションとして Azure Active Directory (Azure AD) クラウド プロビジョニングを選択して使用する方法に関するガイダンスを示します。
@@ -29,6 +29,9 @@ Azure AD Connect クラウド プロビジョニングを使用するには、�
 - Azure AD テナントの全体管理者アカウント
 - Windows 2012 R2 以降を搭載した、プロビジョニング エージェント用のオンプレミス サーバー
 - オンプレミスのファイアウォールの構成
+
+>[!NOTE]
+>現在、プロビジョニング エージェントは、英語の言語サーバーにのみインストールできます。 英語以外のサーバーに英語の言語パックをインストールすることは有効な回避策ではなく、エージェントのインストールが失敗します。 
 
 ここからは、これらの前提条件に関する詳細な手順について説明します。
 
@@ -60,7 +63,7 @@ Azure によってポート 443 がリッスンされていて、エージェン
 
 https://aadap-portcheck.connectorporttest.msappproxy.net/ 
 
-このテストでは、ポート 443 を介してエージェントと Azure との通信が可能であることを確認します。 ブラウザーを開き、エージェントがインストールされているサーバーから上記の URL に移動します。
+このテストでは、ポート 443 を介してエージェントと Azure との通信が可能であることを確認します。 ブラウザーを開き、エージェントがインストールされているサーバーから前の URL に移動します。
 
 ![ポートの到達可能性の確認](media/how-to-install/verify2.png)
 

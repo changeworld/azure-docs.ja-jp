@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/12/2019
+ms.date: 01/30/2020
 ms.author: akjosh
-ms.openlocfilehash: 072e30baa4ebb976a662019e5213f7eb26808a93
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 604be42ec74f75e3aa9c790092ed83aee4ad25e1
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969960"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76907012"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>Windows 用の Azure Monitor 仮想マシン拡張機能
 
@@ -38,12 +38,13 @@ Azure Monitor ログでは、クラウドとオンプレミスの資産全体に
 
 | Log Analytics Windows Agent バンドルのバージョン | Azure Monitor Windows VM 拡張機能のバージョン | リリース日 | リリース ノート |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
+| 10.20.18018 | 1.0.18018 | 2019 年 10 月 | <ul><li> 軽微なバグの修正と安定性の改善 </li></ul> |
 | 10.20.18011 | 1.0.18011 | 2019 年 7 月 | <ul><li> 軽微なバグの修正と安定性の改善 </li><li> MaxExpressionDepth を 10000 に引き上げ </li></ul> |
 | 10.20.18001 | 1.0.18001 | 2019 年 6 月 | <ul><li> 軽微なバグの修正と安定性の改善 </li><li> プロキシ接続時に既定の資格情報を無効にする機能を追加 (WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH のサポート) </li></ul>|
 | 10.19.13515 | 1.0.13515 | 2019 年 3 月 | <ul><li>軽微な安定化の修正 </li></ul> |
-| 10.19.10006 | 該当なし | 2018 年 12 月 | <ul><li> 軽微な安定化の修正 </li></ul> | 
-| 8.0.11136 | 該当なし | 2018 年 9 月 |  <ul><li> VM の移動時にリソース ID の変更を検出するサポートを追加しました </li><li> 非拡張インストールを使用するときにリソース ID を報告するためのサポートを追加しました </li></ul>| 
-| 8.0.11103 | 該当なし |  2018 年 4 月 | |
+| 10.19.10006 | 300 | 2018 年 12 月 | <ul><li> 軽微な安定化の修正 </li></ul> | 
+| 8.0.11136 | 300 | 2018 年 9 月 |  <ul><li> VM の移動時にリソース ID の変更を検出するサポートを追加しました </li><li> 非拡張インストールを使用するときにリソース ID を報告するためのサポートを追加しました </li></ul>| 
+| 8.0.11103 | 300 |  2018 年 4 月 | |
 | 8.0.11081 | 1.0.11081 | 2017 年 11 月 | | 
 | 8.0.11072 | 1.0.11072 | 2017 年 9 月 | |
 | 8.0.11049 | 1.0.11049 | 2017 年 2 月 | |

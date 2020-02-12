@@ -3,38 +3,26 @@ title: クイック スタート:Java 用 Azure Blob Storage クライアント 
 description: オブジェクト (BLOB) ストレージ内にストレージ アカウントとコンテナーを作成します。 その後、Java 用の Azure Storage クライアント ライブラリ v8 を使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 10/05/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: a6c4380e44d705e551bc96746a809c57aa02ac5b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 373875aee836485bb994d81e0945cec3a9b088eb
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825383"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906494"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v8-for-java"></a>クイック スタート:Java 用 Azure Blob Storage クライアント ライブラリ v8
+# <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>クイック スタート:Java v8 SDK で BLOB を管理する
 
-Java 用 Azure Blob Storage クライアント ライブラリ v8 を使用してみましょう。 Azure Blob Storage は、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。 Blob Storage は、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。
-
-Java 用 Azure Blob Storage クライアント ライブラリを使用すると、以下のことができます。
-
-* コンテナーを作成する
-* コンテナーに対するアクセス許可を設定する
-* Azure Storage 内に BLOB を作成する
-* ローカル コンピューターに BLOB をダウンロードする
-* コンテナー内のすべての BLOB を一覧表示する
-* コンテナーを削除する
+このクイックスタートでは、Java を使用して BLOB を管理する方法について説明します。 BLOB は、大量のテキストやバイナリ データ (画像、ドキュメント、ストリーミング メディア、アーカイブ データなど) を保持できるオブジェクトです。 BLOB のアップロード、ダウンロード、および一覧表示を行います。 また、コンテナーの作成、アクセス許可の設定、および削除も行います。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-* Azure Storage アカウント - [ストレージ アカウントを作成する](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* Maven が統合された IDE。
-* または、Maven をインストールして、コマンド ラインから使用するように構成する。
-
-このガイドでは、"Eclipse IDE for Java Developers" 構成の [Eclipse](https://www.eclipse.org/downloads/) を使用します。
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- Azure Storage のアカウント [ストレージ アカウントの作成](../common/storage-account-create.md)。
+- Maven が統合された IDE。 このガイドでは、"Eclipse IDE for Java Developers" 構成の [Eclipse](https://www.eclipse.org/downloads/) を使用します。
 
 ## <a name="download-the-sample-application"></a>サンプル アプリケーションのダウンロード
 
@@ -89,7 +77,7 @@ Deleting the source, and downloaded files
   >[!NOTE]
   >[Azure Storage Explorer](https://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) などのツールを使って、Blob Storage のファイルを表示することもできます。 Microsoft Azure Storage Explorer は無料のクロスプラットフォーム ツールであり、ストレージ アカウントの情報にアクセスできます。
 
-ファイルを確認した後、**Enter** キーを押してデモを終了し、テスト ファイルを削除します。 サンプルの機能がわかったら、**AzureApp.java** ファイルを開いてコードを確認します。
+ファイルを確認した後、**Enter** キーを押してデモを完了し、テスト ファイルを削除します。 サンプルの機能がわかったら、**AzureApp.java** ファイルを開いてコードを確認します。
 
 ## <a name="understand-the-sample-code"></a>サンプル コードを理解する
 
@@ -183,7 +171,7 @@ downloadedFile = new File(sourceFile.getParentFile(), "downloadedFile.txt");
 blob.downloadToFile(downloadedFile.getAbsolutePath());
 ```
 
-### <a name="clean-up-resources"></a>リソースのクリーンアップ
+### <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 アップロードした BLOB が不要になった場合は、[CloudBlobContainer.DeleteIfExists](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.deleteifexists) を使ってコンテナー全体を削除できます。 このメソッドで、コンテナー内のファイルも削除されます。
 
@@ -204,7 +192,7 @@ if(sourceFile != null)
 sourceFile.deleteOnExit();
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Java を使ってローカル ディスクと Azure Blob Storage との間でファイルを転送する方法について学習しました。 Java の使用方法の詳細については、GitHub のソース コード リポジトリを参照してください。
 

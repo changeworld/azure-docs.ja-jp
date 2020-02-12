@@ -7,12 +7,12 @@ ms.date: 01/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 9183805e2817459ac2c408648981b6989edf4e62
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 4ac2c1266933716697a658b1ba88efd8c2f05d34
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760013"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905763"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>プレビュー:Azure Image Builder テンプレートを作成する 
 
@@ -317,6 +317,8 @@ OS のサポート: Windows
 - **restartCheckCommand** - 再起動が成功したかどうかを確認するコマンド (省略可能)。 
 - **restartTimeout** - 大きさと単位の文字列として指定された再起動のタイムアウト。 たとえば、`5m` (5 分) や `2h` (2 時間) などです。 既定値は "5m" です
 
+### <a name="linux-restart"></a>Linux の再起動  
+Linux 再起動カスタマイザーはありませんが、ドライバーまたは再起動が必要なコンポーネントをインストールする場合、それらをインストールし、シェル カスタマイザーを使用して再起動を呼び出すことができます。ビルド VM の SSH タイムアウトは 20 分です。
 
 ### <a name="powershell-customizer"></a>PowerShell カスタマイザー 
 シェル カスタマイザーでは PowerShell スクリプトとインライン コマンドの実行がサポートされており、スクリプトは IB がアクセスできるようにパブリックにアクセス可能である必要があります。

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 01/30/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d14e6f98f49f112c8b20abec573b48c3b12705db
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f171d9d71d3e6f8fa57671578502675442293793
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841235"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76908942"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 内のユーザー インターフェイスをカスタマイズする
 
@@ -31,6 +31,9 @@ Azure Active Directory B2C (Azure AD B2C) に表示されるユーザー イン�
 [ユーザー フロー](user-flow-overview.md)を使用する場合は、組み込みの *ページ レイアウト テンプレート*を使用するか、独自の HTML と CSS を使用して、ユーザー フロー ページの外観を変更できます。 これらの各方法については、後で説明します。
 
 ユーザー フローの UI カスタマイズを構成するには、[Azure portal](tutorial-customize-ui.md) を使用します。
+
+> [!TIP]
+> ユーザー フロー ページのバナー ロゴ、背景画像、背景色のみを変更する場合は、この記事の後半で説明する [[会社のブランド (プレビュー)]](#company-branding-preview) 機能を試します。
 
 ### <a name="custom-policies"></a>カスタム ポリシー
 
@@ -149,6 +152,60 @@ Azure AD B2C では、[クロス オリジン リソース共有 (CORS)](https:/
 | 統合されたサインアップまたはサインイン | 顧客のサインアップとサインインの両方を処理します。顧客は、Facebook や Google などのソーシャル ID プロバイダーを使用することも、ローカル アカウントを使用することもできます。 |
 | 多要素認証 | 顧客がサインアップやサインインをするときに、電話番号を (文字や音声を使用して) 確認できます。 |
 | エラー | エラー情報を顧客に提供します。 |
+
+## <a name="company-branding-preview"></a>会社のブランド (プレビュー)
+
+Azure Active Directory [[会社のブランド]](../active-directory/fundamentals/customize-branding.md) 機能を使用して、バナー ロゴ、背景画像、背景色でユーザー フロー ページをカスタマイズできます。
+
+ユーザー フロー ページをカスタマイズするには、まず Azure Active Directory で会社のブランドを構成し、次に Azure AD B2C のユーザー フローのページ レイアウトでこれを有効にします。
+
+[!INCLUDE [preview note](../../includes/active-directory-b2c-public-preview.md)]
+
+### <a name="configure-company-branding"></a>会社のブランドの構成
+
+まず、 **[会社のブランド]** でバナー ロゴ、背景画像、および背景色を設定します。
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
+1. **[管理]** から **[会社のブランド]** を選択します。
+1. 「[組織の Azure Active Directory のサインイン ページにブランドを追加する](../active-directory/fundamentals/customize-branding.md)」の手順に従います。
+
+Azure AD B2C で会社のブランドを構成する際は、次の点に注意してください。
+
+* 現在、Azure AD B2C の会社のブランドは、**背景画像**、**バナー ロゴ**、**背景色**のカスタマイズに制限されています。 **[詳細設定]** などの会社のブランド ペインのその他のプロパティは*サポートされていません*。
+* ユーザー フロー ページでは、背景画像が読み込まれる前に背景色が表示されます。 よりスムーズな読み込みエクスペリエンスのため、背景画像の色とほぼ同じ背景色を選択することをお勧めします。
+* バナー ロゴは、ユーザーがサインアップ ユーザー フローを開始するときに、ユーザーに送信された確認メールに表示されます。
+
+### <a name="enable-branding-in-user-flow-pages"></a>ユーザー フロー ページでのブランド化の有効化
+
+会社のブランドを構成したら、それをユーザー フローで有効にします。
+
+1. Azure portal の左側のメニューで、 **[Azure AD B2C]** を選択します。
+1. **[ポリシー]** で **[ユーザー フロー (ポリシー)]** を選択します。
+1. 会社のブランド化を有効にするユーザー フローを選択します。 会社のブランドは、*サインイン v1* および *プロファイル編集 v1* のユーザー フロー タイプでは**サポートされていません**。
+1. **[カスタマイズ]** で、 **[ページ レイアウト]** を選択して、ブランド化するレイアウトを選択します。 たとえば、 **[統合されたサインアップまたはサインイン ページ]** を選択します。
+1. **[ページ レイアウト バージョン (プレビュー)]** では、バージョン **1.2.0** 以上を選択します。
+1. **[保存]** を選択します。
+
+ユーザー フローのすべてのページをブランド化する場合は、ユーザー フローのページ レイアウトごとにページ レイアウト バージョンを設定します。
+
+![Azure portal での Azure AD B2C のページ レイアウトの選択](media/customize-ui-overview/portal-02-page-layout-select.png)
+
+この注釈付きの例では、オーシャン ブルー テンプレートを使用する *[サインアップとサインイン]* ユーザー フロー ページのカスタム バナー ロゴと背景画像を示します。
+
+![Azure AD B2C によって提供されるブランド化されたサインアップ/サインイン ページ](media/customize-ui-overview/template-ocean-blue-branded.png)
+
+### <a name="use-company-branding-assets-in-custom-html"></a>カスタム HTML で会社のブランド資産を使用する
+
+カスタム HTML で会社のブランド資産を使用するには、`<div id="api">` タグの外側に次のタグを追加します。
+
+```HTML
+<img data-tenant-branding-background="true" />
+<img data-tenant-branding-logo="true" alt="Company Logo" />
+```
+
+画像ソースが背景画像とバナー ロゴの画像に置き換えられます。 「[カスタム HTML および CSS の概要](#get-started-with-custom-html-and-css)」セクションで説明されているように、CSS クラスを使用して、ページのアセットのスタイルを設定し、配置します。
 
 ## <a name="localize-content"></a>コンテンツのローカライズ
 

@@ -5,15 +5,15 @@ services: automation
 ms.service: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 12/03/2019
+ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 65759b32889f9a99b0322823bb8a4924788e8c09
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e300bc0f29808215673407d21b65fe329e50ad45
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786471"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930439"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Azure Automation でモジュールを管理する
 
@@ -42,7 +42,7 @@ $moduleVersion = <ModuleVersion>
 New-AzAutomationModule -AutomationAccountName <AutomationAccountName> -ResourceGroupName <ResourceGroupName> -Name $moduleName -ContentLinkUri "https://www.powershellgallery.com/api/v2/package/$moduleName/$moduleVersion"
 ```
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 Azure portal で、Automation アカウントに移動し、 **[共有リソース]** の下で **[モジュール]** を選択します。 **[+ モジュールの追加]** をクリックします。 モジュールを含んだ **.zip** ファイルを選択して、 **[OK]** をクリックしてプロセスのインポートを開始します。
 
@@ -62,9 +62,9 @@ Automation アカウントから直接、PowerShell ギャラリーからモジ�
 
 モジュールに問題がある、またはモジュールの以前のバージョンにロールバックする必要がある場合は、そのモジュールを Automation アカウントから削除できます。 Automation アカウントを作成するときにインポートされた[既定のモジュール](#default-modules)の元のバージョンを削除することはできません。 削除したいモジュールが、インストールされている[既定のモジュール](#default-modules)の 1 つの新しいバージョンの場合、そのモジュールは Automation アカウント作成時にインストールされたバージョンにロールバックされます。 それ以外の場合、Automation アカウントから削除したモジュールはすべて削除されます。
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
-Azure portal で、Automation アカウントに移動し、 **[共有リソース]** の下で **[モジュール]** を選択します。 削除するモジュールを選択します。 **[モジュール]** ページで、 **[削除]** をクリックします。 このモジュールが[既定のモジュール](#default-modules)のうちの 1 つである場合、そのモジュールは Automation アカウントが作成されたときに存在していたバージョンにロールバックされます。
+Azure portal で、Automation アカウントに移動し、 **[共有リソース]** の下で **[モジュール]** を選択します。 削除するモジュールを選択します。 **[モジュール]** ページで、 **[削除]** を選択します。 このモジュールが[既定のモジュール](#default-modules)のうちの 1 つである場合、そのモジュールは Automation アカウントが作成されたときに存在していたバージョンにロールバックされます。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -79,10 +79,10 @@ Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automa
 以下に、すべての Automation アカウントにインポートされる内部 `Orchestrator.AssetManagement.Cmdlets` モジュール内のコマンドレットの一覧を示します。 これらのコマンドレットは、Runbook および DSC 構成でアクセスでき、Automation アカウント内のアセットを操作できるようにします。 さらに、内部コマンドレットは、暗号化された **[変数]** 値、 **[資格情報]** 、および暗号化された **[接続]** フィールドからシークレットを取得できるようにします。 Azure PowerShell コマンドレットはこれらのシークレットを取得できません。 これらのコマンドレットでは、それを使用するとき (実行アカウントを使用して Azure に対して認証するときなど) に Azure に暗黙的に接続する必要はありません。
 
 >[!NOTE]
->これらの内部コマンドレットは、Hybrid Runbook Worker では使用できません。Azure で実行されている Runbook からのみアクセスできます。 コンピューター上で直接、または環境内のリソースに対して実行される Runbook の場合、対応する [AzureRM.Automation](https://docs.microsoft.com/powershell/module/AzureRM.Automation/?view=azurermps-6.13.0) または [Az モジュール](../az-modules.md)を使用します。 
+>これらの内部コマンドレットは、Hybrid Runbook Worker で使用できます。Linux Hybrid Runbook Worker では使用できません。 コンピューター上で直接、または環境内のリソースに対して実行される Runbook の場合、対応する [AzureRM.Automation](https://docs.microsoft.com/powershell/module/AzureRM.Automation/?view=azurermps-6.13.0) または [Az モジュール](../az-modules.md)を使用します。 
 >
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |Get-AutomationCertificate|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
 |Get-AutomationConnection|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |
@@ -279,6 +279,6 @@ myModule
 | xPowerShellExecutionPolicy | 1.1.0.0 |
 | xRemoteDesktopAdmin | 1.1.0.0 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * PowerShell モジュールの作成の詳細については、「 [Writing a Windows PowerShell Module (Windows PowerShell モジュールの作成)](/powershell/scripting/developer/windows-powershell)

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 01/28/2020
+ms.date: 01/30/2020
 ms.author: helohr
-ms.openlocfilehash: e525976edee08097d75605ea1921d0552ed02785
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b7c7c21f14eddf29c3dda1f420d7748a4c23e53d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841065"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906870"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows Virtual Desktop のパートナー統合
 
@@ -38,6 +38,14 @@ Citrix は、堅牢なエンタープライズ ツールで、ユーザー密度
 
 - [Horizon Cloud on Microsoft Azure のテクニカル プレビューに登録する。](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html)
 - [パートナーの Web サイトにアクセスする。](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html)
+
+## <a name="10zig"></a>10ZiG
+
+![10ZiG ロゴ](./media/partners/10zig.png)
+
+最先端のシン クライアントおよびゼロ クライアント ハードウェアとソフトウェアを提供する 10ZiG Technology は、長年にわたる Microsoft のパートナー、そして Microsoft Azure と Windows Virtual Desktop の専属パートナーです。 10ZiG Windows 10 IoT ベースのシン クライアントは、すべての Windows Virtual Desktop マルチ ユーザー向けの強力で信頼性の高い、手頃な価格のエンドポイントです。 10ZiG Manager ソフトウェアでは、ライセンス数の制限および追加コストなしで、優れた管理とデプロイを実行できます。 10ZiG Tech チーム、Advance Warranty プログラム、および簡単なデモは、クラウドにおけるワンストップ Windows Virtual Desktop マルチセッション サポート ソリューションです。
+
+シン クライアントおよびゼロ クライアントのエンドポイント デバイス、および仮想デスクトップ用の管理ソフトウェアにおける 10ZiG の世界市場のリーダーシップは、これらのデバイスとソフトウェアがお客様のお役に立てていることから実証されています。 このシン クライアントハードウェアには慎重に考案された特典が付属しており、顧客のニーズに基づいてお客様が適切なクライアント デバイスを確実に入手できるように設計されています。 10ZiG は、Windows ベースおよび Linux ベースのクライアントを使用して、お客様環境に合わせてデバイスをカスタマイズします。これにより、クラウドの内外の両方で仮想デスクトップで最高のパフォーマンスが得られます。
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -133,6 +141,14 @@ Liquidware Essentials により、Azure へのユーザー環境の移行を合�
 - [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1)
 - [パートナーの Web サイトにアクセスする。](https://www.liquidware.com/solutions/solutions-platform/microsoft)
 
+## <a name="liquit"></a>Liquit
+
+![Liquit ロゴ](./media/partners/liquit.png)
+
+Liquit アプリケーションの集計および配信ソフトウェアを使用すると、企業やサービス プロバイダーは、顧客のアプリケーションが存在する場所に関係なく、すべてのワークスペースのバックエンド (Citrix、VMWare、Windows Virtual Desktop、RDP、およびレガシ) に接続して結合してカスタマイズされた一貫性のあるカスタマー エクスペリエンスを提供できます。 顧客がスマート アイコンを発行すると、Liquit では、顧客の所在地、デバイス、およびプロファイルの権限に基づいて、アプリケーションをどこで開始するかを決定します。
+
+Liquit は、認定された統合パートナーとして、完全な置き換え (rip-and-replace) による遅延なしでクラウドへの移行を加速させるのに役立ちます。 Windows Virtual Desktop は容易に既存の環境に接続し、ワークスペースを作成して、デスクトップを配信できます。 その後、古いプラットフォームから移行し、ユーザーが気付くことなくバックエンドで変更を加えることができます。 一貫したエンドユーザー エクスペリエンスと柔軟なインフラストラクチャを提供するとともに、場所に関係なくアプリケーションの制御を維持します。
+
 ## <a name="login-vsi"></a>Login VSI
 
 ![Login VSI ロゴ](./media/partners/loginvsi.png)
@@ -202,6 +218,16 @@ RDPSoft は、強力で安価な監視、管理、およびレポートのソリ
 RDPSoft の Remote Desktop Commander ソリューションにより、Windows Virtual Desktop の管理機能が強化されます。 Premium Management 機能を利用すると、リモート アシスタンス、ユーザー セッション、プロセス管理を実現することで、デスク スタッフをサポートするための Windows Virtual Desktop 管理タスクの委任が簡略化されます。 同時に、Remote Desktop Commander Suite は、ユーザーごとのパフォーマンスと負荷、ユーザーのアクティビティと監査、Windows Virtual Desktop の接続品質 (待機時間と帯域幅)、ライセンス、およびセキュリティに関する豊富なメトリックを、確認用の中央の Azure SQL データベース インスタンス内に収集します。 RDPSoft を使用すれば、豊富な履歴レポートと包括的なダッシュボードをクリックするだけで済みます。
 
 - [パートナーの Web サイトにアクセスする](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
+
+## <a name="sepago"></a>sepago
+
+![sepago ロゴ](./media/partners/sepago.png)
+
+sepago は、ケルン在住の 4 人の仲間によって 2002 年に設立されました。 現在、sepago は sepagist の数を着実に伸ばしている IT 管理コンサルタントで、ケルン、ミュンヘン、およびハンブルクのドイツ各地で営業しています。 sepago は、アプリケーションの自動プロビジョニング、仮想化、クラウド ソリューション、および IT セキュリティの専門家集団です。 sepago は、デジタル変革が進行中の中規模および大規模企業をサポートするとともに、ユーザーが安全かつ効率的に作業できるようにします。
+
+sepago のイノベーションおよび開発ラボでは、ビッグ データと AI テクノロジを使用してスマート ソリューションを構築しています。 これらのソリューションは、Windows Virtual Desktop などのパートナー製品のビジネス、ユーザー エクスペリエンス、および管理の向上に焦点を当てています。
+
+- [パートナーの Web サイトにアクセスする](https://www.sepago.de/wvd-value-add-tools/)
 
 ## <a name="thinprint"></a>ThinPrint
 

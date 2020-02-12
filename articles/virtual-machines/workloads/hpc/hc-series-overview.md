@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
-ms.openlocfilehash: 6cdb539846104f70dabf684925685fb062fea8af
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: a4cd74c9c85ee7413cde9f0fb4cf3ffb54c9b3d0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797553"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906749"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>HC シリーズの仮想マシンの概要
 
@@ -41,7 +41,7 @@ Intel Xeon Platinum、Gold、および Silver の CPU は、CPU ソケット内�
 
 | ハードウェア仕様          | HC シリーズ VM                     |
 |----------------------------------|----------------------------------|
-| コア                            | 40 (HT 無効)                 |
+| コア                            | 44 (HT 無効)                 |
 | CPU                              | Intel Xeon Platinum 8168*        |
 | CPU 周波数 (非 AVX)          | 3.7 GHz (シングル コア)、2.7-3.4 GHz (すべてのコア) |
 | メモリ                           | 8 GB/コア (合計 352)            |
@@ -53,7 +53,7 @@ Intel Xeon Platinum、Gold、および Silver の CPU は、CPU ソケット内�
 
 | ソフトウェア仕様     | HC シリーズ VM          |
 |-----------------------------|-----------------------|
-| 最大 MPI ジョブ サイズ            | 4400 コア (100 仮想マシン スケール セット) 8800 コア (200 仮想マシン スケール セット) |
+| 最大 MPI ジョブ サイズ            | 13200 コア (1 つの VMSS に 300 台の VM、singlePlacementGroup=true) |
 | MPI のサポート                 | MVAPICH2、OpenMPI、MPICH、Platform MPI、Intel MPI  |
 | その他のフレームワーク       | Unified Communication X、libfabric、PGAS |
 | Azure Storage のサポート       | Standard + Premium (最大 4 ディスク) |
@@ -61,7 +61,7 @@ Intel Xeon Platinum、Gold、および Silver の CPU は、CPU ソケット内�
 | Azure CycleCloud のサポート    | はい                         |
 | Azure Batch のサポート         | はい                         |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure での [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) および [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc) の HPC VM サイズの詳細を確認する。
 

@@ -1,107 +1,89 @@
 ---
-title: Azure MFA のバージョンと従量制の料金プラン - Azure Active Directory
-description: Multi-Factor Authentication クライアント、各種認証方法、利用可能なバージョンに関する情報。
+title: Azure Multi-Factor Authentication のバージョンと従量課金プラン
+description: Azure Multi-factor Authentication クライアントと、使用可能なさまざまな方法およびバージョンについて説明します。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 01/24/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1528bffc613d2e8ab2c0150095d90791b649198a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b0d37b0cd042e6e11f8b2029b51c589c96154065
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979491"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76909093"
 ---
-# <a name="how-to-get-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の入手方法
+# <a name="features-and-licenses-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の機能とライセンス
 
-2 段階認証は、アカウントを保護するための標準的な手段として組織全体で導入するのが理想的です。 リソースへの特権アクセスが認められているアカウントでは、この機能が特に重要となります。 このような理由から、Microsoft は Office 365 と Azure Active Directory (Azure AD) の管理者に、無償で基本的な 2 段階認証の機能を提供しています。 管理者向けの機能をアップグレードしたり、2 段階認証を他のユーザーに拡張したりといった希望がある場合には、いくつかの方法で Azure Multi-Factor Authentication を購入できます。
+組織内のユーザー アカウントを保護するには、多要素認証を使用する必要があります。 リソースへの特権アクセスが認められているアカウントでは、この機能が特に重要となります。 Office 365 および Azure Active Directory (Azure AD) の管理者は、追加料金なしで基本的な多要素認証機能を利用できます。 管理者向けの機能をアップグレードしたり、多要素認証を他のユーザーに拡張したりといった希望がある場合には、いくつかの方法で Azure Multi-Factor Authentication を購入できます。
 
 > [!IMPORTANT]
-> この記事は、Azure Multi-Factor Authentication を購入するための各種の方法についてわかりやすく説明することを主眼としています。 具体的な料金と課金の詳細については、必ず「[Multi-Factor Authentication の価格](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)」を参照してください。
->
+> この記事では、Azure Multi-Factor Authentication のライセンスを取得して使用するさまざまな方法について詳しく説明します。 価格と課金の詳細については、「[Azure Multi-Factor Authentication の価格に関するページ](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)」を参照してください。
 
 ## <a name="available-versions-of-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の使用可能なバージョン
 
-以下の表は、多要素認証のバージョン間の違いについて説明したものです。
+Azure Multi-Factor Authentication は、組織のニーズに応じて、いくつかの異なる方法で使用し、ライセンスを取得することができます。 現在お使いの Azure AD、Office 365、EMS、Microsoft 365 のライセンスによっては、Azure Multi-Factor Authentication を使用する権利を既に持っている場合があります。 次の表では、Azure Multi-Factor Authentication を入手するさまざまな方法と、それぞれの機能およびユース ケースについて詳しく説明します。
 
-| Version | 説明 |
+| 次のユーザーの場合 | 機能とユース ケース |
 | --- | --- |
-| Free オプション | Azure AD の無料特典を利用しているお客様は、[セキュリティ既定値](../fundamentals/concept-fundamentals-security-defaults.md)を使用して、環境内で多要素認証を有効にすることができます。 |
-| Office 365 の多要素認証 | このバージョンは、Office 365 または Microsoft 365 ポータルから管理されます。 管理者は [2 段階認証を使用して Office 365 リソースを保護](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6)することができます。 このバージョンは、Office 365 サブスクリプションの一部です。 |
-| Azure AD 管理者用の Multi-Factor Authentication | Azure AD テナントの Azure AD グローバル管理者ロールを割り当てられているユーザーは、追加費用なしで 2 段階認証を適用できます。 |
-| Azure Multi-Factor Authentication | "完全" バージョンとも呼ばれる Azure Multi-Factor Authentication は、最も豊富な機能を備えています。 [Azure Portal](https://portal.azure.com) を介した追加の構成オプション、高度なレポート、および一連のオンプレミスおよびクラウド アプリケーションのサポートを提供します。 Azure Multi-Factor Authentication は、[Azure Active Directory Premium](https://www.microsoft.com/cloud-platform/azure-active-directory-features) および [Microsoft 365 Business](https://www.microsoft.com/microsoft-365/business) の機能です。 |
-
-> [!NOTE]
-> 2018 年 9 月 1 日以降、新しいお客様は、スタンドアロン オファーとして Azure Multi-Factor Authentication を購入できなくなります。 多要素認証は、今後も Azure AD Premium または Microsoft 365 Business ライセンスの一機能としてご利用いただけます。
+| EMS または Microsoft 365 E3 および E5 | EMS E3 または Microsoft 365 E3 (EMS および Office 365 を含む) には、Azure AD Premium P1 が含まれています。 EMS E5 または Microsoft 365 E5 には、Azure AD Premium P2 が含まれています。 次のセクションに記載されている同じ条件付きアクセス機能を使用して、ユーザーに多要素認証を提供できます。 |
+| Azure AD Premium P1 | [Azure AD 条件付きアクセス](../conditional-access/overview.md)を使用して、ビジネス要件に合わせて特定のシナリオやイベントの際に多要素認証をユーザーに求めることができます。 |
+| Azure AD Premium P2 | 最も強力なセキュリティのポジションと、向上したユーザー エクスペリエンスを提供します。 [リスク ベースの条件付きアクセス](../conditional-access/howto-conditional-access-policy-risk.md)を Azure AD Premium P1 の機能に追加することで、ユーザーのパターンに適応し、多要素認証の回数を最小限に抑えます。 |
+| Office Premium、E3、または E5 | Azure Multi-Factor Authentication は、すべてのユーザーの、すべてのサインイン イベントに対して有効にするか無効にするかのどちらかとなります。 ユーザーのサブセットに対してのみ、もしくは特定のシナリオでのみ多要素認証を有効にすることはできません。 管理は Office 365 ポータルを介して行われます。 ユーザー エクスペリエンスを向上させるには、Azure AD Premium P1 または P2 にアップグレードし、条件付きアクセスを使用します。 詳細については、[多要素認証を使用した Office 365 リソースのセキュリティ保護](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6)に関するページを参照してください。 |
+| Azure AD Free | [セキュリティの既定値群](../fundamentals/concept-fundamentals-security-defaults.md)を使用して、認証要求が送信されるたびに、すべてのユーザーに対して多要素認証を有効にすることができます。 有効となるユーザーまたはシナリオをきめ細かく制御することはできませんが、追加のセキュリティ措置を提供することはできます。<br /> すべてのユーザーの多要素認証を有効にするセキュリティの既定値群が使用されていない場合でも、*Azure AD 全体管理者*ロールに割り当てられたユーザーは、多要素認証を使用するように構成できます。 Free レベルのこの機能により、重要な管理者アカウントが多要素認証によって保護されます。 |
 
 ## <a name="feature-comparison-of-versions"></a>バージョンごとの機能の比較
 
-次の表に、さまざまなバージョンの Azure Multi-Factor Authentication で使用できる機能の一覧を示します。
+次の表に、さまざまなバージョンの Azure Multi-Factor Authentication で使用できる機能の一覧を示します。 ユーザー認証のセキュリティ保護に必要なものを詳しく検討し、その要件を満たす方法を決定します。 たとえば、Azure AD Free は Azure Multi-Factor Authentication を提供するセキュリティの既定値群を提供しますが、認証プロンプトに使用できるのはモバイル認証アプリだけであり、電話や SMS は使用できません。 モバイル認証アプリがユーザーの個人のデバイスにインストールされていることを保証できない場合、この方法は制約を受けるかもしれません。
 
-> [!NOTE]
-> この比較表では、各バージョンの Multi-Factor Authentication に含まれる機能について説明します。 完全な Azure Multi-Factor Authentication サービスを使用している場合、[クラウドの MFA とオンプレミスの MFA](concept-mfa-whichversion.md) のどちらを使用するかによって、一部の機能を利用できない可能性があります。
->
-
-| 機能 | Office 365 の多要素認証 | Azure AD 管理者用の Multi-Factor Authentication | Azure Multi-Factor Authentication | セキュリティの既定値 |
+| 機能 | Azure AD Free - セキュリティの既定値群 | Azure AD Free - Azure AD 全体管理者 | Office Premium、E3、または E5 | Azure AD Premium P1 または P2 |
 | --- |:---:|:---:|:---:|:---:|
-| MFA で Azure AD 管理者アカウントを保護する |● |● (Azure AD グローバル管理者アカウントの場合のみ) |● |● |
-| モバイル アプリを 2 番目の要素にする |● |● |● |● |
-| 音声通話を 2 番目の要素にする |● |● |● |   |
-| SMS を 2 番目の要素にする |● |● |● |   |
-| MFA をサポートしていないクライアントのアプリ パスワード |● |● |● |   |
-| 検証方法の管理制御 |● |● |● |   |
-| MFA で管理者以外のアカウントを保護する |● | |● |● |
-| PIN モード | | |● |   |
-| 不正アクセスのアラート | | |● |   |
-| MFA レポート | | |● |   |
-| ワンタイム バイパス | | |● |   |
-| 音声通話のカスタムあいさつ文 | | |● |   |
-| 音声通話のカスタム発信元 ID | | |● |   |
-| 信頼できる IP | | |● |   |
-| 信頼済みデバイスの MFA の記憶 |● |● |● |   |
-| オンプレミス アプリケーション用の MFA | | |● |   |
+| MFA で Azure AD 管理者アカウントを保護する | ● | ● (*Azure AD 全体管理者*アカウントの場合のみ) | ● | ● |
+| モバイル アプリを 2 番目の要素にする | ● | ● | ● | ● |
+| 音声通話を 2 番目の要素にする | | ● | ● | ● |
+| SMS を 2 番目の要素にする | | ● | ● | ● |
+| 検証方法の管理制御 | | ● | ● | ● |
+| 不正アクセスのアラート | | | | ● |
+| MFA レポート | | | | ● |
+| 音声通話のカスタムあいさつ文 | | | | ● |
+| 音声通話のカスタム発信元 ID | | | | ● |
+| 信頼できる IP | | | | ● |
+| 信頼済みデバイスの MFA の記憶 | | ● | ● | ● |
+| オンプレミス アプリケーション用の MFA | | | | ● |
 
 > [!IMPORTANT]
-> 2019 年 3 月以降、無料/試用版の Azure AD テナントの MFA および SSPR ユーザーは、音声通話オプションを利用できなくなります。 この変更は、SMS メッセージには影響しません。 有料の Azure AD テナントのユーザーは、引き続き音声通話を利用できます。 この変更は、無料/試用版の Azure AD テナントにのみ影響します。
+> 2019 年 3 月の時点で、Azure AD Free / 試用版のテナントでは、Azure Multi-Factor Authentication と Azure セルフサービス パスワード リセットのユーザーは電話オプションを利用できなくなりました。 この変更は、SMS メッセージには影響しません。 電話は、Azure AD Premium P1 か P2 のテナントの、またはそれを使用するユーザー、もしくは Office Premium、E3、または E5 のユーザーは継続して利用可能です。
 
-## <a name="how-to-turn-on-azure-multi-factor-authentication-for-azure-ad-administrators"></a>Azure AD 管理者用の Azure Multi-Factor Authentication を有効にする方法
+## <a name="purchase-and-enable-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication を購入して有効にする
 
-Azure AD テナントのグローバル管理者ロールを割り当てられているユーザーは、追加費用なしで、その Azure AD グローバル管理者アカウントに 2 段階認証を適用できます。 Microsoft アカウントを使用している場合は、Microsoft アカウントのサポート記事「[2 段階認証について](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification)」に記載されているガイダンスを使用して多要素認証を登録できます。 Microsoft アカウントを使用していない場合は、「[ユーザーまたはグループに 2 段階認証を要求する方法](howto-mfa-userstates.md)」の記事に記載されているガイダンスを使用して、グローバル管理者に対して多要素認証を有効にします。
+Azure Multi-Factor Authentication を使用するには、資格のある Azure AD のレベルに登録するか、ご購入ください。 Azure AD には、Free、Office 365 アプリ エディション (Office 365 Premium E3、または E5 の顧客向け)、Premium P1、Premium P2 の 4 つのエディションが用意されています。
 
-## <a name="how-to-purchase-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の購入方法
+Free エディションは、Azure サブスクリプションに含まれます。 セキュリティの既定値群を使用する方法、または *Azure AD 全体管理者*ロールでアカウントを保護する方法についての情報は、[下記のセクション](#azure-ad-free-tier)を参照してください。
 
-Azure Active Directory Premium などの Azure Multi-Factor Authentication が含まれるライセンス、または Azure AD Premium または条件付きアクセスが含まれるライセンス バンドルを購入して、Azure Active Directory 内のユーザーに割り当てます。
+Azure AD Premium エディションは、Microsoft の担当者、[Open Volume License プログラム](https://www.microsoft.com/licensing/licensing-programs/open-license.aspx)、および [Cloud Solution Providers プログラム](https://go.microsoft.com/fwlink/?LinkId=614968&clcid=0x409)から入手できます。 Azure および Office 365 サブスクライバーは Azure Active Directory Premium P1 および P2 をオンラインで購入することもできます。 [サインイン](https://portal.office.com/Commerce/Catalog.aspx)して購入します。
 
-### <a name="consumption-based-licensing"></a>使用量ベースのライセンス
+> [!IMPORTANT]
+> 2018 年 9 月 1 日以降、新規のお客様は、使用量ベースのライセンスを利用できません。 使用量ベースのモデルを使用している既存のお客様は、有効になっているユーザー単位、または認証単位での請求を継続してご利用いただけます。
 
-2018 年 9 月 1 日以降、新規のお客様は、使用量ベースのライセンスを利用できません。
+必要な Azure AD レベルを購入した後、[Azure Multi-Factor Authentication を計画してデプロイします](howto-mfa-getstarted.md)。
 
-2018 年 9 月 1 日以降、新しい認証プロバイダーを作成できなくなります。 既存の認証プロバイダーは引き続き使用および更新できます。 多要素認証認証は、今後も Azure AD Premium ライセンスで利用できます。
+### <a name="azure-ad-free-tier"></a>Azure AD Free レベル
 
-Azure Multi-Factor Authentication プロバイダーには次の 2 つの使用モデルがあり、どちらも Azure サブスクリプションを通じて請求されます。
+Azure AD Free テナントのすべてのユーザーは、セキュリティの既定値群を使用して Azure Multi-Factor Authentication を使用できます。 これらのセキュリティの既定値群により、すべてのユーザーがサインインするたびに Azure Multi-Factor Authentication が有効になります。 モバイル認証アプリは、Azure AD Free のセキュリティの既定値群を使用する場合に Azure Multi-Factor Authentication で使用できる、唯一の方法です。
 
-1. **有効化されたユーザーごと** - 定期的な認証が必要な一定数の従業員に対して、2 段階認証を有効にしたい企業向けです。 ユーザーごとの課金は、Azure AD テナント内や Azure MFA サーバー内で MFA が有効になっているユーザーの数に基づくモデルです。 Azure AD と Azure MFA サーバーの両方でユーザーの MFA が有効になっており、なおかつドメインの同期 (Azure AD Connect) が有効になっている場合、ユーザー数の多い方がカウントとして採用されます。 ドメインの同期が有効になっていない場合は、Azure AD と Azure MFA サーバーとで、MFA が適用されている全ユーザーの合計がカウントされます。 課金額は日割り計算され、毎日 Commerce システムに報告されます。
+* [Azure AD のセキュリティの既定値群についての詳細情報を確認する](../fundamentals/concept-fundamentals-security-defaults.md)
+* [Azure AD Free ユーザーのセキュリティの既定値群を有効にする](../fundamentals/concept-fundamentals-security-defaults.md#enabling-security-defaults)
 
-   > [!NOTE]
-   > 課金例 1: MFA が有効になっているユーザーが今日の時点で 5,000 人いるとします。 この人数が MFA システムによって 31 で除算され、その日のユーザー数として 161.29 が報告されます。 翌日さらに 15 ユーザーについて MFA を有効にした場合、その日のユーザー数が 161.77 として報告されます。 課金サイクルの最後には、Azure サブスクリプションに対して課金されるユーザーの総数が約 5,000 ユーザーになります。
-   >
-   > 課金例 2: ライセンスを持つユーザーと持たないユーザーとが混在している場合、その不足分は、ユーザーごとの Azure MFA プロバイダーによって埋め合わせすることになります。 テナントにある Enterprise Mobility + Security のライセンス数が 4,500 であるとき、5,000 ユーザーに対して MFA を有効にしたとします。 Azure サブスクリプションには 500 ユーザー分の料金が課金されます。料金は日割り計算され、16.13 ユーザーとして毎日報告されます。
-   >
+すべてのユーザーおよびすべてのサインイン イベントに対して Azure Multi-Factor Authentication を有効にしない場合、代わりに *Azure AD 全体管理者*ロールを持つユーザー アカウントのみを保護することを選択できます。 この方法では、重要な管理者アカウントに対して追加の認証プロンプトが表示されます。 使用しているアカウントの種類に応じて、次のいずれかの方法で Azure Multi-Factor Authentication を有効にします。
 
-1. **認証ごと** - 頻繁に認証する必要がない大規模グループのユーザーに対して、2 段階認証を有効にしたい企業向けです。 認証が成功したかどうかに関係なく、2 段階認証要求の件数に基づいて請求額が決定されます。 この請求額は、Azure の使用量明細書に 10 認証単位で記載され、毎日報告されます。
-
-   > [!NOTE]
-   > 課金例 3: 今日、Azure MFA サービスに 2 段階認証要求が 3,105 件送信されたとします。 Azure サブスクリプションには、310.5 認証単位分が課金されます。
-   >
-
-使用量ベースの構成に関しては、ライセンスを所有しているかどうかに関係なく別途料金が発生することに注意してください。 "認証ごと" の Azure MFA プロバイダーをセットアップした場合、2 段階認証の要求者であるユーザーがライセンスを所有しているかどうかに関係なく、要求ごとに課金されます。 "ユーザーごと" の Azure MFA プロバイダーを、Azure AD テナントにリンクされていないドメインでセットアップした場合、Azure AD 上におけるライセンスの有無に関係なく、2 段階認証が有効にされているユーザーごとに料金が発生します。
+* Microsoft アカウントを使用している場合は、[多要素認証に登録](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification)します。
+* Microsoft アカウントを使用していない場合は、[Azure AD のユーザーまたはグループの多要素認証を有効にします](howto-mfa-userstates.md)。
 
 ## <a name="next-steps"></a>次のステップ
 
-- 価格の詳細については、[Azure MFA の価格](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)に関するページをご覧ください。
+コストの詳細については、[Azure Multi-Factor Authentication の価格](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)に関するページを参照してください。

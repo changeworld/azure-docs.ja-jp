@@ -1,23 +1,23 @@
 ---
 title: Azure Service Fabric CLI - sfctl プロパティ
-description: Azure Service Fabric のコマンド ライン インターフェイスである sfctl について説明します。 プロパティのストーリーおよびクエリを実行するためのコマンドの一覧が含まれています。
+description: Azure Service Fabric のコマンド ライン インターフェイスである sfctl について説明します。 プロパティを格納およびクエリするためのコマンドの一覧が含まれています。
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: d9129f07db9f3499b51707965d10426dbc3d3c12
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: a9bd75e0b7f8bfceb50a71ca83b60ff1e7b45508
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639107"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905834"
 ---
 # <a name="sfctl-property"></a>sfctl property
 Service Fabric の名前でプロパティを格納およびクエリします。
 
 ## <a name="commands"></a>コマンド
 
-|command|[説明]|
+|command|説明|
 | --- | --- |
 | delete | 指定した Service Fabric プロパティを削除します。 |
 | get | 指定した Service Fabric プロパティを取得します。 |
@@ -31,7 +31,7 @@ Service Fabric の名前でプロパティを格納およびクエリします�
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --name-id       [必須] | "fabric\:" URI スキームを除いた Service Fabric の名前。 |
 | --property-name [必須] | 取得するプロパティの名前を指定します。 |
@@ -39,7 +39,7 @@ Service Fabric の名前でプロパティを格納およびクエリします�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
@@ -54,7 +54,7 @@ Service Fabric の名前でプロパティを格納およびクエリします�
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --name-id       [必須] | "fabric\:" URI スキームを除いた Service Fabric の名前。 |
 | --property-name [必須] | 取得するプロパティの名前を指定します。 |
@@ -62,7 +62,7 @@ Service Fabric の名前でプロパティを格納およびクエリします�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
@@ -77,7 +77,7 @@ Service Fabric 名には、カスタム情報を格納している 1 つまた�
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --name-id [必須] | "fabric\:" URI スキームを除いた Service Fabric の名前。 |
 | --continuation-token | 継続トークンのパラメーターは、次の結果セットを取得するために使用されます。 システムからの結果が 1 つの応答に収まらない場合は、空以外の値を持つ継続トークンが API の応答に含まれます。 この値が次の API 呼び出しに渡されると、API が次の結果セットを返します。 それ以上の結果がない場合は、継続トークンに値が含まれません。 このパラメーターの値を URL にエンコードすることはできません。 |
@@ -86,7 +86,7 @@ Service Fabric 名には、カスタム情報を格納している 1 つまた�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
@@ -101,17 +101,17 @@ Service Fabric プロパティを作成または更新します。
 
 ### <a name="arguments"></a>引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --name-id       [必須] | "fabric\:" URI スキームを除いた Service Fabric の名前。 |
 | --property-name [必須] | Service Fabric プロパティの名前。 |
-| --value         [必須] | Service Fabric プロパティの値を記述します。 これは、JSON 文字列です。 <br><br> JSON 文字列には、データの "Kind" とデータの "Value" の 2 つのフィールドがあります。 "Kind" の値は、JSON 文字列に出現する最初の項目でなければならず、指定できる値は "Binary"、"Int64"、"Double"、"String"、"Guid" です。 値は、特定の型にシリアル化可能である必要があります。 "Kind" と "Data" の値はどちらも、文字列として指定する必要があります。 |
+| --value         [必須] | Service Fabric プロパティの値を記述します。 これは、JSON 文字列です。 <br><br> JSON 文字列には、データの "Kind" と、データの "Data" として入力される値の 2 つのフィールドがあります。 "Kind" の値は、JSON 文字列に出現する最初の項目でなければならず、指定できる値は "Binary"、"Int64"、"Double"、"String"、"Guid" です。 値は、特定の型にシリアル化可能である必要があります。 "Kind" と "Data" の値はどちらも、文字列として指定する必要があります。 |
 | --custom-id-type | プロパティのカスタム型 ID。 このプロパティを使用して、ユーザーはプロパティの値の型にタグを付けることができます。 |
 | --timeout -t | 既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|[説明]|
+|引数|説明|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |

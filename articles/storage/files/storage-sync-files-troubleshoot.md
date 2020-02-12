@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 527d0a602b9da1f2d4f21890e896eba9a951494b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 887c10097187f193f55c6e301be3e739a16d6bf7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842718"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906909"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -1102,7 +1102,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 | 0x80c83007 | -2134364153 | ECS_E_STORAGE_ERROR | Azure Storage の問題が発生したため、ファイルを階層化できませんでした。 | エラーが解決しない場合は、サポート リクエストを開いてください。 |
 | 0x800703e3 | -2147023901 | ERROR_OPERATION_ABORTED | ファイルは同時に呼び戻しされたため、階層化できませんでした。 | 必要なアクションはありません。 このファイルは、呼び戻しが完了し、ファイルが使用中でなくなると階層化されます。 |
 | 0x80c80264 | -2134375836 | ECS_E_GHOSTING_FILE_NOT_SYNCED | ファイルは Azure ファイル共有と同期されていないため、階層化できませんでした。 | 必要なアクションはありません。 ファイルは、Azure ファイル共有と同期されると階層化されます。 |
-| 0x80070001 | -2147942401 | ERROR_INVALID_FUNCTION | クラウドの階層化フィルター ドライバー (storagesync.sys) が実行されていないため、ファイルを階層化できませんでした。 | この問題を解決するには、管理者特権でコマンド プロンプトを開き、次のコマンドを実行します: fltmc load storagesync <br>fltmc コマンドの実行時に storagesync フィルター ドライバーの読み込みが失敗した場合は、Azure File Sync エージェントをアンインストールし、サーバーを再起動して、Azure File Sync エージェントを再インストールします。 |
+| 0x80070001 | -2147942401 | ERROR_INVALID_FUNCTION | クラウドの階層化フィルター ドライバー (storagesync.sys) が実行されていないため、ファイルを階層化できませんでした。 | この問題を解決するには、管理者特権でコマンド プロンプトを開き、次のコマンドを実行します: `fltmc load storagesync`<br>fltmc コマンドの実行時に storagesync フィルター ドライバーの読み込みが失敗した場合は、Azure File Sync エージェントをアンインストールし、サーバーを再起動して、Azure File Sync エージェントを再インストールします。 |
 | 0x80070070 | -2147024784 | ERROR_DISK_FULL | サーバー エンドポイントが配置されているボリュームのディスク領域が不足しているため、ファイルを階層化できませんでした。 | この問題を解決するには、サーバー エンドポイントが配置されているボリューム上で、少なくとも 100 MB のディスク領域を解放します。 |
 | 0x80070490 | -2147023728 | ERROR_NOT_FOUND | ファイルは Azure ファイル共有と同期されていないため、階層化できませんでした。 | 必要なアクションはありません。 ファイルは、Azure ファイル共有と同期されると階層化されます。 |
 | 0x80c80262 | -2134375838 | ECS_E_GHOSTING_UNSUPPORTED_RP | ファイルはサポートされていない再解析ポイントであるため、階層化できませんでした。 | ファイルがデータ重複除去の再解析ポイントである場合は、[計画ガイド](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#data-deduplication)の手順に従って、データ重複除去のサポートを有効にします。 データ重複除去以外の再解析ポイントを含むファイルはサポートされておらず、階層化されません。  |
