@@ -307,7 +307,7 @@ Service Bus トピックにメッセージが追加されたときに、Java 関
 
 次の表は、*function.json* ファイルと `ServiceBusTrigger` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**type** | 該当なし | "serviceBusTrigger" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction** | 該当なし | "in" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
@@ -375,7 +375,7 @@ Functions ランタイムは、メッセージを [PeekLock モード](../servic
 
 Service Bus トリガーには、いくつかの[メタデータ プロパティ](./functions-bindings-expressions-patterns.md#trigger-metadata)があります。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらは [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) クラスのプロパティです。
 
-|プロパティ|種類|[説明]|
+|プロパティ|種類|説明|
 |--------|----|-----------|
 |`DeliveryCount`|`Int32`|配信回数。|
 |`DeadLetterSource`|`string`|配信不能のソース。|
@@ -658,7 +658,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 
 次の表は、*function.json* ファイルと `ServiceBus` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**type** | 該当なし | "serviceBus" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction** | 該当なし | "out" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
@@ -760,7 +760,7 @@ C# 関数を使用する場合:
 }
 ```
 
-|プロパティ  |Default | [説明] |
+|プロパティ  |Default | 説明 |
 |---------|---------|---------|
 |maxAutoRenewDuration|00:05:00|メッセージ ロックが自動的に更新される最大間隔。|
 |autoComplete|true|トリガーがメッセージをすぐに完了としてマークする (オートコンプリート) か、complete を呼び出すために関数が正常に終了するまで待機するか。|
