@@ -2,17 +2,17 @@
 title: Azure Migrate レプリケーション アプライアンス
 description: エージェントベースの VMWare の移行のための Azure Migrate レプリケーション アプライアンスについて説明します。
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: 574877c6a0a5ade068cff08041b29d2465430ed1
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.date: 01/30/2020
+ms.openlocfilehash: 4521fce6310b319d155a2f0c418cd934be7e2cb8
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029047"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901559"
 ---
 # <a name="replication-appliance"></a>レプリケーション アプライアンス
 
-この記事では、エージェントベースの移行を使用して VMware VM、物理マシン、およびプライベート/パブリック クラウドの VM を Azure に移行するときに [Azure Migrate:Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) ツールで使用されるレプリケーション アプライアンスについて説明します。 
+この記事では、エージェントベースの移行を使用して、VMware VM、物理マシン、プライベート/パブリック クラウドの VM を Azure に移行する場合に、[Azure Migrate: Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) によって使用されるレプリケーション アプライアンスについて説明します。 
 
 
 ## <a name="overview"></a>概要

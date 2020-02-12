@@ -7,16 +7,16 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: e5be2490ebf756c030e6a53b226f91c49c7bccaf
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 25dd4810cf8cccab8bcbf211da4f6abbcd147056
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605583"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020031"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>チュートリアル:Azure Marketplace を使用してホスト プールを作成する
 
-ホスト プールは、Windows Virtual Desktop テナント環境内にある同一の仮想マシンをコレクションとしてまとめたものです。 各ホスト プールには、物理デスクトップの場合と同じようにユーザーが利用できるアプリ グループを含めることができます。
+ホスト プールは、Windows Virtual Desktop テナント環境内にある 1 つまたは複数の同一の仮想マシンをコレクションとしてまとめたものです。 各ホスト プールには、物理デスクトップの場合と同じようにユーザーが利用できるアプリ グループを含めることができます。
 
 このチュートリアルでは、Microsoft Azure Marketplace オファリングを使用して Windows Virtual Desktop テナント内にホスト プールを作成する方法を説明します。 具体的なタスクは次のとおりです。
 
@@ -26,7 +26,7 @@ ms.locfileid: "73605583"
 > * Active Directory ドメインに VM を参加させる。
 > * Windows Virtual Desktop に VM を登録する。
 
-作業を開始する前に、PowerShell セッションで使用する [Windows Virtual Desktop PowerShell モジュールをダウンロードしてインポート](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)します (まだの場合のみ)。 その後、次のコマンドレットを実行して、アカウントにサインインします。
+作業を開始する前に、PowerShell セッションで使用する [Windows Virtual Desktop PowerShell モジュールをダウンロードしてインポート](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)します (まだの場合のみ)。 その後、次のコマンドレットを実行して、ご自分のアカウントにサインインします。
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
@@ -34,7 +34,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure Portal](https://portal.azure.com) にサインインします。
+[Azure portal](https://portal.azure.com) にサインインします。
 
 ## <a name="run-the-azure-marketplace-offering-to-provision-a-new-host-pool"></a>新しいホスト プールをプロビジョニングするための Azure Marketplace オファリングを実行する
 
@@ -55,7 +55,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 3. Azure Marketplace オファリングが完成したら、Windows Virtual Desktop クライアントにサインインし、デスクトップにアクセスできるユーザーをコンマ区切りリストにして入力します。 たとえば、user1@contoso.com と user2@contoso.com に対してアクセス権を割り当てる場合、「user1@contoso.com,user2@contoso.com」と入力します。
 4. **[新規作成]** を選択して、新しいリソース グループの名前を指定します。
 5. **[場所]** には、Active Directory サーバーに接続している仮想ネットワークと同じ場所を選択します。
-6. **[OK]** を選択します。
+6. **[次へ :Configure virtual machines >]\(仮想マシンの構成\)** を選択します。
 
 >[!IMPORTANT]
 >純粋な Azure Active Directory Domain Services と Azure Active Directory ソリューションを使用している場合は、ドメイン参加および資格情報のエラーを防ぐために、必ず Azure Active Directory Domain Services と同じリージョンにホスト プールをデプロイしてください。
@@ -66,7 +66,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 1. 既定値をそのまま使うか、VM の数とサイズをカスタマイズします。
 2. 仮想マシンの名前のプレフィックスを入力します。 たとえば、"prefix" という名前を入力する場合であれば、仮想マシンの名前は "prefix-0"、"prefix-1" などのようになります。
-3. **[OK]** を選択します。
+3. **[次へ :Virtual machine settings]\(仮想マシンの設定\)** を選択します。
 
 ### <a name="virtual-machine-settings"></a>仮想マシンの設定
 
@@ -80,7 +80,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 1. **[イメージ ソース]** で、ソースを選択し、その探し方と格納方法に関する適切な情報を入力します。 マネージド ディスクを使用しない場合には、.vhd ファイルが含まれるストレージ アカウントを選択します。
 2. Active Directory ドメインに VM を参加させるドメイン アカウントのユーザー プリンシパル名とパスワードを入力します。 このユーザー名とパスワードは、仮想マシン上にローカル アカウントとして作成されます。 このローカル アカウントは、後でリセットできます。
 3. Active Directory サーバーに接続している仮想ネットワークを選択し、仮想マシンをホストするサブネットを選択します。
-4. **[OK]** を選択します。
+4. **Windows Virtual Desktop information\(Windows Virtual Desktop 情報\)** を選択します。
 
 ### <a name="windows-virtual-desktop-tenant-information"></a>Windows Virtual Desktop のテナント情報
 
@@ -90,15 +90,14 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 2. **[Windows Virtual Desktop tenant name]\(Windows Virtual Desktop テナント名\)** に、このホスト プールの作成先となるテナントの名前を入力します。
 3. Windows Virtual Desktop テナントの RDS 所有者としての認証に使用する資格情報の種類を指定します。 「[PowerShell を使用してサービス プリンシパルとロールの割り当てを作成するチュートリアル](./create-service-principal-role-powershell.md)」を完了したら、 **[サービス プリンシパル]** を選択します。 **[Azure AD tenant ID]\(Azure AD テナント ID\)** が表示されたら、サービス プリンシパルを含む Azure Active Directory インスタンスの ID を入力します。
 4. テナント管理者アカウントの資格情報を入力します。 パスワード資格情報が設定されているサービス プリンシパルのみサポートされます。
-5. **[OK]** を選択します。
+5. **[次へ :確認と作成]** をクリックします。
 
 ## <a name="complete-setup-and-create-the-virtual-machine"></a>仮想マシンの設定と作成を完了する
 
 最後の 2 つのブレードで必要な操作は次のとおりです。
 
-1. **[概要]** ブレードで、設定情報を確認します。 変更がある場合には、次に進む前に該当するブレードに戻ります。 情報が正しければ、 **[OK]** をクリックします。
-2. **[購入]** ブレードで、Azure Marketplace からの購入に関する追加情報を確認します。
-3. **[作成]** を選択し、ホスト プールをデプロイします。
+1. **[確認と作成]** ブレードで、設定情報を確認します。 変更がある場合には、次に進む前に該当するブレードに戻ります。 情報が正しければ、 **[OK]** をクリックします。
+2. **[作成]** を選択し、ホスト プールをデプロイします。
 
 このプロセスは、作成しようとしている VM の数に応じて 30 分以上かかることもあります。
 
@@ -130,9 +129,9 @@ Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -Use
 - [Windows Virtual Desktop Web クライアント](connect-web.md)
 
 >[!IMPORTANT]
->Azure で Windows Virtual Desktop 環境のセキュリティを保護できるようにするには、ご利用の VM 上の受信ポート 3389 を開かないことをお勧めします。 Windows Virtual Desktop では、ユーザーがホスト プールの VM にアクセスするために、受信ポート 3389 を開く必要はありません。 トラブルシューティングの目的でポート 3389 を開く必要がある場合、[Just-In-Time VM アクセス](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)を使用することをお勧めします。
+>Azure で Windows Virtual Desktop 環境のセキュリティを保護できるようにするには、ご利用の VM 上の受信ポート 3389 を開かないことをお勧めします。 Windows Virtual Desktop では、ユーザーがホスト プールの VM にアクセスするために、受信ポート 3389 を開く必要はありません。 トラブルシューティングの目的でポート 3389 を開く必要がある場合は、[Just-In-Time VM アクセス](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)を使用することをお勧めします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ホスト プールを作成し、そのデスクトップにアクセスするユーザーを割り当てたので、ホスト プールに RemoteApp プログラムを設定できるようになりました。 Windows Virtual Desktop でアプリを管理する方法について詳しくは、次のチュートリアルをご覧ください。
 

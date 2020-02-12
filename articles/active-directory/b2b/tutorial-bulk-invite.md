@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 493c60e8148b666ba1f514d303229b7a11c2e43e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c78d2a8b4ccc51bc7afaef82a6c0dd609acdcab9
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425039"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76908838"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>チュートリアル:Azure AD B2B コラボレーション ユーザーを一括で招待する (プレビュー)
 
@@ -27,6 +27,7 @@ ms.locfileid: "75425039"
 
 > [!NOTE]
 > 2019 年 12 月 22 日の時点では、一括招待ユーザー (プレビュー) 機能は一時的に無効になっています。
+> 現在、この機能が再び有効になる日付は未定です。 
 
 Azure Active Directory (Azure AD) B2B コラボレーションを使用して外部パートナーと協力する場合は、複数のゲスト ユーザーを組織に同時に招待できます。 このチュートリアルでは、Azure portal を使用して、外部ユーザーに招待状を一括送信する方法について説明します。 具体的には、以下を実行します。
 

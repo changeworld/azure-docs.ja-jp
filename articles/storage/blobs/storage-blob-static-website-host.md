@@ -5,23 +5,23 @@ author: normesta
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
-ms.date: 10/22/2019
+ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: cd3db902d713910de5a8199df85089d62569f9d7
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 97679ec48ee9120005118b6cacaf37e45657db08
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757561"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906619"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
 # <a name="tutorial-host-a-static-website-on-blob-storage"></a>チュートリアル:Blob Storage で静的な Web サイトをホストする
 
-このチュートリアルは、シリーズの第 1 部です。 ここでは、静的な Web サイトを構築し、Azure Storage にデプロイする方法を学習します。 終了すると、ユーザーがパブリックにアクセスできる静的な Web サイトが用意できます。 
+このチュートリアルでは、静的な Web サイトを構築し、Azure Storage にデプロイする方法を学習します。 終了すると、ユーザーがパブリックにアクセスできる静的な Web サイトが用意できます。 
 
-シリーズの第 1 部で学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * 静的な Web サイト ホスティングを構成する
@@ -57,7 +57,7 @@ Visual Studio Code をインストールした後、Azure Storage プレビュ�
 1. **[有効]** を選択して、ストレージ アカウントに対して静的な Web サイト ホスティングを有効にします。
 1. **[インデックス ドキュメント名]** フィールドで、*index.html* の既定のインデックス ページを指定します。 既定のインデックス ページは、ユーザーが静的な Web サイトのルートに移動したときに表示されます。  
 1. **[エラー ドキュメントのパス]** フィールドで、*404.html* の既定のエラー ページを指定します。 既定のエラー ページは、ユーザーが静的な Web サイトに存在しないページに移動しようとしたときに表示されます。
-1. **[Save]** をクリックします。 これで、Azure ポータルで静的な Web サイトのエンドポイントが表示されるようになります。 
+1. **[保存]** をクリックします。 これで、Azure ポータルで静的な Web サイトのエンドポイントが表示されるようになります。 
 
     ![ストレージ アカウントに対して静的な Web サイト ホスティングを有効にする](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
@@ -97,11 +97,11 @@ Visual Studio Code をインストールした後、Azure Storage プレビュ�
 
 チュートリアルは正常に完了し、静的な Web サイトが Azure にデプロイされました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルの第 1 部では、静的な Web サイト ホスティングのために Azure Storage アカウントを構成する方法と、静的な Web サイトを作成して Azure エンドポイントにデプロイする方法を学習しました。
+このチュートリアルでは、静的な Web サイト ホスティングのために Azure Storage アカウントを構成する方法と、静的な Web サイトを作成して Azure エンドポイントにデプロイする方法を学習しました。
 
-次は、Azure CDN を使用し、静的な Web サイト用に SSL を使ってカスタム ドメインを構成する第 2 部に進みます。
+次は、静的な Web サイトでカスタム ドメインを構成する方法を学習しましょう。
 
 > [!div class="nextstepaction"]
-> [Azure CDN を使用し、静的な Web サイトに対して SSL を使ってカスタム ドメインを有効にする](storage-blob-static-website-custom-domain.md)
+> [カスタム ドメインを Azure Blob Storage エンドポイントにマップする](storage-custom-domain-name.md)

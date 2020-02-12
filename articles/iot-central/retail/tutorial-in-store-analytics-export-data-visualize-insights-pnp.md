@@ -11,20 +11,20 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: b85dd8d899a7e5d7d9f9d41ad7e2872249ee29c5
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 9dcb185ab8375d46c75a12e6adaeeae2358c13ac
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702009"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022088"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>チュートリアル:Azure IoT Central からデータをエクスポートし、Power BI で分析情報を視覚化する
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 前の 2 つのチュートリアルでは、**ストア内の分析 - チェックアウト** アプリケーション テンプレートを使用して、IoT Central アプリケーションを作成し、カスタマイズしました。 このチュートリアルでは、デバイスから収集されたテレメトリをエクスポートするように、IoT Central アプリケーションを構成します。 その後、Power BI を使用して、店のマネージャーがテレメトリから得られた分析情報を視覚化するためのカスタム ダッシュボードを作成します。
 
-このチュートリアルでは、以下の内容を学習します。
+このチュートリアルでは、次の内容を学習します。
 > [!div class="checklist"]
 > * テレメトリをイベント ハブにエクスポートするように IoT Central アプリケーションを構成します。
 > * Logic Apps を使用して、イベント ハブから Power BI ストリーミング データセットにデータを送信します。
@@ -38,11 +38,11 @@ ms.locfileid: "74702009"
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 * Power BI アカウント Power BI アカウントを持っていない場合は、始める前に[無料の Power BI Pro 試用版](https://app.powerbi.com/signupredirect?pbi_source=web)にサインアップしてください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 イベント ハブとロジック アプリを作成する前に、リソース グループを作成して管理する必要があります。 そのリソース グループは、**ストア内の分析 - チェックアウト** IoT Central アプリケーションと同じ場所に存在する必要があります。 リソース グループを作成するには:
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左側のナビゲーションで、 **[リソース グループ]** を選択します。 その後、 **[追加]** を選択します。
 1. **[サブスクリプション]** で、IoT Central アプリケーションの作成に使用した Azure サブスクリプションの名前を選択します。
 1. **[リソース グループ]** の名前として、「_retail-store-analysis_」と入力します。
@@ -66,7 +66,7 @@ ms.locfileid: "74702009"
     * **retail-store-analysis** リソース グループを選択します。
     * IoT Central アプリケーションに使用したものと同じ場所を選択します。
     * **作成** を選択します。 システムによってリソースが完全にプロビジョニングされるまで、数分間待たなければならない場合があります。
-1. ポータルで、**retail-store-analysis** リソース グループに移動します。 デプロイが完了するのを待機します。 場合によっては、 **[最新の情報に更新]** を選択してデプロイの状態を更新する必要があります。 また、 **[通知]** で、イベント ハブ名前空間の作成の状態を確認することもできます。
+1. ポータルで、**retail-store-analysis** リソース グループに移動します。 デプロイが完了するまで待ちます。 場合によっては、 **[最新の情報に更新]** を選択してデプロイの状態を更新する必要があります。 また、 **[通知]** で、イベント ハブ名前空間の作成の状態を確認することもできます。
 1. **retail-store-analysis** リソース グループで、 **[Event Hubs 名前空間]** を選択します。 ポータルで **Event Hubs 名前空間**のホーム ページが表示されます。
 
 **Event Hubs 名前空間**が作成されたので、IoT Central アプリケーションで使用する**イベント ハブ**を作成できます。
@@ -438,9 +438,9 @@ Power BI ではストリーミング データにフィルターを適用でき�
 
 2 つの環境センサーの気温と湿度を示す 4 つの折れ線グラフ タイルを追加します。 次の表の情報を使用して、タイルを作成します。 各タイルを追加するには、まず **[...] (その他のオプション) > [タイル]** を選択します。 **[カスタム ストリーミング データ]** を選択し、 **[次へ]** を選択します。
 
-| Setting | グラフ 1 | グラフ 2 | グラフ 3 | グラフ 4 |
+| 設定 | グラフ 1 | グラフ 2 | グラフ 3 | グラフ 4 |
 | ------- | -------- | -------- | -------- | -------- |
-| Dataset | Zone 1 sensor | Zone 1 sensor | Zone 2 sensor | Zone 2 sensor |
+| データセット | Zone 1 sensor | Zone 1 sensor | Zone 2 sensor | Zone 2 sensor |
 | 視覚化の種類 | 折れ線グラフ | 折れ線グラフ | 折れ線グラフ | 折れ線グラフ |
 | 軸 | Timestamp | Timestamp | Timestamp | Timestamp |
 | 値 | 気温 | 湿度 | 気温 | 湿度 |
@@ -456,9 +456,9 @@ Power BI ではストリーミング データにフィルターを適用でき�
 
 2 つの環境センサーから最新の気温と湿度の値を表示する 4 つのカード タイルを追加します。 次の表の情報を使用して、タイルを作成します。 各タイルを追加するには、まず **[...] (その他のオプション) > [タイル]** を選択します。 **[カスタム ストリーミング データ]** を選択し、 **[次へ]** を選択します。
 
-| Setting | カード 1 | カード 2 | カード 3 | カード 4 |
+| 設定 | カード 1 | カード 2 | カード 3 | カード 4 |
 | ------- | ------- | ------- | ------- | ------- |
-| Dataset | Zone 1 sensor | Zone 1 sensor | Zone 2 sensor | Zone 2 sensor |
+| データセット | Zone 1 sensor | Zone 1 sensor | Zone 2 sensor | Zone 2 sensor |
 | 視覚化の種類 | Card | Card | Card | Card |
 | フィールド | 気温 | 湿度 | 気温 | 湿度 |
 | タイトル | 気温 (F) | 湿度 (%) | 気温 (F) | 湿度 (%) |
@@ -472,12 +472,12 @@ Power BI ではストリーミング データにフィルターを適用でき�
 
 店の 2 つのレジでの待ち行列の長さと待ち時間を表示する 4 つのカード タイルを追加します。 次の表の情報を使用して、タイルを作成します。 各タイルを追加するには、まず **[...] (その他のオプション) > [タイル]** を選択します。 **[カスタム ストリーミング データ]** を選択し、 **[次へ]** を選択します。
 
-| Setting | カード 1 | カード 2 | カード 3 | カード 4 |
+| 設定 | カード 1 | カード 2 | カード 3 | カード 4 |
 | ------- | ------- | ------- | ------- | ------- |
-| Dataset | Occupancy sensor | Occupancy sensor | Occupancy sensor | Occupancy sensor |
+| データセット | Occupancy sensor | Occupancy sensor | Occupancy sensor | Occupancy sensor |
 | 視覚化の種類 | 集合縦棒グラフ | 集合縦棒グラフ | ゲージ | ゲージ |
 | 軸    | Timestamp | Timestamp | 該当なし | 該当なし |
-| 値 | Dwell Time 1 | Dwell Time 2 | Queue Length 1 | Queue Length 2 |
+| Value | Dwell Time 1 | Dwell Time 2 | Queue Length 1 | Queue Length 2 |
 | Time window (時間枠) | 約 60 分 | 約 60 分 |  該当なし | 該当なし |
 | タイトル | 待ち時間 | 待ち時間 | キューの長さ | キューの長さ |
 | サブタイトル | レジ 1 | レジ 2 | レジ 1 | レジ 2 |
@@ -490,7 +490,7 @@ Power BI ではストリーミング データにフィルターを適用でき�
 
 ![Power BI ダッシュボード](./media/tutorial-in-store-analytics-visualize-insights-pnp/pbi-dashboard-graphics.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 IoT Central アプリケーションが完成したら、アプリケーションにサインインし、 **[管理]** セクションの **[アプリケーションの設定]** ページに移動して、アプリケーションを削除できます。
 

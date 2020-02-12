@@ -8,26 +8,26 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: a73f4d75811a384eb822d1f8594a22506509d560
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 9e954e9c1a7efa43a19849b1c5b40284ec84eeed
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112542"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016002"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>チュートリアル:スマート メーター監視アプリ テンプレートを作成して操作する 
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 このチュートリアルでは、スマート メーター監視アプリケーションの作成プロセスについて説明します。これには、シミュレートされたデータを含むサンプル デバイス モデルが含まれます。 このチュートリアルでは、次のことについて説明します。
 
 > [!div class="checklist"]
 > * スマート メーター アプリを無料で作成する
 > * アプリケーションのチュートリアル
-> * リソースのクリーンアップ
+> * リソースをクリーンアップする
 
 
-サブスクリプションをお持ちでない場合は、[無料試用版アカウントを作成](https://azure.microsoft.com/free)します。
+サブスクリプションをお持ちでない場合は、[無料試用版アカウントを作成](https://azure.microsoft.com/free)します
 
 ## <a name="prerequisites"></a>前提条件
 - なし
@@ -50,9 +50,11 @@ ms.locfileid: "74112542"
     * **URL**: IoT Central URL を選択すると、プラットフォームによってその一意性が検証されます。
     * **7 日間の無料試用版**:Azure サブスクリプションが既にある場合は、既定の設定をお勧めします。 Azure サブスクリプションをお持ちでない場合は、無料試用版から始めてください。
     * **課金情報**:アプリケーション自体は無料です。 アプリのリソースをプロビジョニングするには、ディレクトリ、Azure サブスクリプション、リージョンの詳細が必要です。
-    * ページの下部にある **[作成]** ボタンをクリックすると、アプリが 1 分ほどで作成されます。     
-        > [!div class="mx-imgBorder"]
-        > ![[新しいアプリケーション] フォーム](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app.png)
+    * ページの下部にある **[作成]** ボタンをクリックすると、アプリが 1 分ほどで作成されます。
+
+        ![[新しいアプリケーション] フォーム](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app.png)
+
+        ![[新しいアプリケーション] フォームの課金情報](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app-billinginfo.png)
 
 
 ### <a name="verify-the-application-and-simulated-data"></a>アプリケーションとシミュレートされたデータを検証する
@@ -93,7 +95,7 @@ Adatum は、スマート メーターを監視および管理する架空のエ
 > ![スマート メーター デバイス テンプレート](media/tutorial-iot-central-smart-meter/smart-meter-device-template.png)
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 このアプリケーションの引き続き使用しない場合は、次の手順でアプリケーションを削除します。
 
 1. 左側のペインで、[管理] タブを開きます。
@@ -103,7 +105,7 @@ Adatum は、スマート メーターを監視および管理する架空のエ
     > ![アプリケーションを削除する](media/tutorial-iot-central-smart-meter/smart-meter-delete-app.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * スマート メーター アプリのアーキテクチャの詳細については[概念](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-smart-meter-app)に関する記事を参照してください。
 * スマート メーター アプリケーション テンプレートを無料で作成する: [スマート メーター アプリ](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring)
 * IoT Central の詳細について、[IoT Central の概要](https://docs.microsoft.com/azure/iot-central/)を参照する

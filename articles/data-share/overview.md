@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.openlocfilehash: d1665ef3e845491f116174cf1914c38e7cf5c691
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: d1bfad64175ad5b29e4ec158ebe8d8e982b8b100
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660802"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964449"
 ---
 # <a name="what-is-azure-data-share"></a>Azure Data Share とは
 
@@ -37,7 +37,7 @@ Azure Data Share のもう 1 つのユース ケースは、データ コンソ�
 
 ## <a name="how-it-works"></a>しくみ
 
-Azure Data Share は、現在、スナップショット ベースの共有とインプレース共有 (制限付きプレビュー) を提供しています。 
+Azure Data Share は、現在、スナップショットベースの共有とインプレース共有を提供しています。 
 
 スナップショット ベースの共有では、データはデータ プロバイダーの Azure サブスクリプションからデータ コンシューマーの Azure サブスクリプションに移動されます。 データ プロバイダーは、データ共有をプロビジョニングして、受信者をデータ共有に招待します。 データ コンシューマーは、メールでデータ共有への招待を受け取ります。 データ コンシューマーは、招待を受け入れると、共有されたデータの完全なスナップショットをトリガーできます。 このデータは、データ コンシューマーのストレージ アカウントに送られます。 データ コンシューマーは、共有されているデータの増分更新を定期的に受け取って、常にデータの最新バージョンを保持できます。 
 
@@ -47,7 +47,7 @@ Azure Data Share は、現在、スナップショット ベースの共有と�
 
 データ コンシューマーは、データ共有を受け入れると、自分で選択したデータ ストアでデータを受け取ることができます。 たとえば、データ プロバイダーが Azure Blob Storage を使ってデータを共有している場合、データ コンシューマーは Azure Data Lake Store でこのデータを受け取ることができます。 同様に、データ プロバイダーが Azure SQL Data Warehouse からのデータを共有する場合、データ コンシューマーは、データを Azure Data Lake Store、Azure SQL Database、または Azure SQL Data Warehouse に受信するかどうかを選択できます。 SQL ベースのソースから共有する場合、データ コンシューマーは、parquet または csv でデータを受信するかどうかを選択することもできます。 
 
-インプレース共有は現在、Azure Data Explorer 向けの制限付きプレビューの段階です。 データ プロバイダーは、データが置かれている場所でデータを共有でき、シンボリック リンクを介したデータの移動はありません。 Azure Data Explorer のインプレース共有の制限付きプレビューには、[こちら](https://aka.ms/azuredatasharepreviewsignup)からサインアップしてください。 
+インプレース共有では、データ プロバイダーがデータをコピーすることなく、データが置かれている場所でデータを共有できます。 招待フローを通じて共有関係が確立されると、データ プロバイダーのソース データ ストアとデータのコンシューマーのターゲット データ ストアとの間でシンボリック リンクが作成されます。 データ コンシューマーは、その独自のデータ ストアを使用してリアルタイムにデータを読み取り、照会することができます。 ソース データ ストアに対する変更は、データ コンシューマーに対して即座に提供されます。 インプレース共有は現在、Azure Data Explorer 向けのプレビューの段階です。
 
 ## <a name="key-capabilities"></a>主な機能
 
@@ -56,6 +56,8 @@ Azure Data Share は、現在、スナップショット ベースの共有と�
 * [サポートされているデータ ストア](supported-data-stores.md)の一覧からのデータを、組織の外部の顧客やパートナーと共有します
 
 * データを誰と共有しているかを追跡します
+
+* スナップショット共有かインプレース共有かの選択
 
 * どのくらいの頻度でデータ コンシューマーがデータの更新を受け取るか
 
@@ -69,13 +71,13 @@ Azure Data Share は、現在、スナップショット ベースの共有と�
 
 * Azure Data Share の招待を承諾または拒否します
 
-* 組織から共有されている Data Share の完全または増分スナップショットをトリガーします
-
-* Data Share をサブスクライブし、増分スナップショット コピーによってデータの最新のコピーを受け取ります
-
 * 自分と共有されているデータを、[サポートされているデータ ストア](supported-data-stores.md)に受け入れます。
 
-上記のすべての主要機能は、Azure または REST API によってサポートされます。 REST API での Azure Data Share の使用に関して詳しくは、リファレンス ドキュメントをご覧ください。 
+* 組織から共有されている Data Share の完全または増分スナップショットをトリガーします
+
+* データ共有をサブスクライブし、増分スナップショットによってデータの最新のコピーを受け取ります
+
+上記のすべての主要機能は、Azure portal または REST API によってサポートされます。 REST API での Azure Data Share の使用に関して詳しくは、リファレンス ドキュメントをご覧ください。 
 
 ## <a name="security"></a>Security
 
@@ -88,9 +90,9 @@ Azure Data Share では、Azure Active Directory での自動 ID 管理用に、
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
-Azure Data Share を利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=data-share/)」ページで Azure Data Share を検索してください。 
+Azure Data Share を利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=data-share)」ページで Azure Data Share を検索してください。 
 
-Azure Data Share 自体にはデータは保存されません。 データは、共有されている基礎のデータ ストアに格納されます。 たとえば、データ プロデューサーが米国西部にある Azure Data Lake Store アカウントにデータを格納した場合は、それがデータの格納場所です。 西ヨーロッパにある Azure Storage アカウントでデータを共有している場合は、データは西ヨーロッパにある Azure Storage アカウントに直接転送されます。 
+Azure Data Share 自体にはデータのコピーは保存されません。 データは、共有されている基礎のデータ ストアに格納されます。 たとえば、データ プロデューサーが米国西部にある Azure Data Lake Store アカウントにデータを格納した場合は、それがデータの格納場所です。 西ヨーロッパにある Azure Storage アカウントで、スナップショットを介してデータを共有している場合は、通常、データは西ヨーロッパにある Azure Storage アカウントに直接転送されます。
 
 サービスを利用するために、Azure Data Share サービスが自分のリージョンで使用できる必要はありません。 たとえば、Azure Data Share をまだ利用できないリージョンにある Azure Storage アカウントにデータが格納されている場合でも、サービスを利用してデータを共有できます。 
 

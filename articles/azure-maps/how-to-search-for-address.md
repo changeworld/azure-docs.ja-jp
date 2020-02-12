@@ -1,6 +1,6 @@
 ---
 title: Azure Maps Search Service を使用して場所を検索する | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps Search Service を使用して場所を検索する方法について説明します。
+description: この記事では、Microsoft Azure Maps Search Service を使用してジオコーディングとリバース ジオコーディングのために場所を検索する方法について説明します。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 01/15/2020
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 20a2c18875096680cd1eba7601e88965fcbcc568
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 3b5da7eab9cff5c5e051fc4d5ab7ff582a95c20d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715357"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899233"
 ---
-# <a name="using-azure-maps-search-services-for-geocoding-and-reverse-geocoding"></a>ジオコーディングと逆ジオコーディングに Azure Maps Search サービスを使用する
+# <a name="search-for-a-location-using-azure-maps-search-services"></a>Azure Maps Search Service を使用して場所を検索する
 
 Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) は、開発者が住所、場所、名前またはカテゴリ別の事業の一覧、およびその他の地理情報を検索できるように設計された RESTful API のセットです。 サービスでは、従来のジオコーディングをサポートするだけでなく、緯度と経度に基づいて住所や交差点の逆ジオコーディングを行うこともできます。 検索で返された緯度と経度の値は、[Route](https://docs.microsoft.com/rest/api/maps/route) サービスや [Weather](https://docs.microsoft.com/rest/api/maps/weather) サービスなどの他の Azure Maps サービスでパラメーターとして使用できます。
 
-それでは次の方法を学習しましょう。
+この記事では、次のことについて説明します。
 
 * [住所検索 API]( https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) を使用して、住所 (ジオコード アドレスの場所) の緯度と経度の座標を要求する
 * [あいまい検索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) を使用して、住所または目的地 (POI) を検索する
@@ -79,7 +79,7 @@ Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) は
 
 **typeahead** フラグは、部分的な入力値としてクエリを処理して、予測値の配列を返すよう、住所検索の API に指示します。
 
-## <a name="search-for-an-address-using-fuzzy-search-api"></a>あいまい検索 API を使用して住所を検索する
+## <a name="using-fuzzy-search-api"></a>あいまい検索 API の使用
 
 検索クエリでユーザーの入力内容がわからない場合は、Azure Maps の[あいまい検索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) を使用することをお勧めします。 この API は、目的地 (POI) 検索とジオコーディングを正規の "一行検索" で組み合わせています。 たとえば、この API では、任意のアドレスまたは POI のトークンの組み合わせの入力を処理できます。 また、コンテキストの位置 (緯度/経度 のペア) で重み付けされたり、座標と半径によって完全に制約を受けたりする場合があります。あるいは、地理的偏向のアンカー ポイントなしで、より汎用的に API を実行することもできます。
 
@@ -136,49 +136,12 @@ Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) は
     | lat | 47.620525 |
     | lon | -122.349274 |
 
-## <a name="search-for-address-properties-and-coordinates"></a>住所のプロパティと座標の検索
 
-検索アドレス API には、完全な番地を渡すか、部分的な番地を渡すことができます。 いずれにせよ、詳しい住所プロパティが含まれる応答が返されます。 詳しい住所プロパティとは、高度、緯度、地方自治体、下位区分の位置値のような値です。
+## <a name="search-for-a-street-address-using-reverse-address-search"></a>住所の逆引き検索を使用した所在地住所の検索
 
-1. Postman で、 **[新しい要求]**  |  **[GET request\(GET 要求\)]** をクリックして、「**Address Search**」 (住所検索) という名前を付けます。
-2. [Builder]\(ビルダー\) タブで、**GET** HTTP メソッドを選択し、API エンドポイントの要求 URL を入力して、承認プロトコルを選択します (存在する場合)。
+Azure Maps の[Get Search Address Reverse API]( https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) により座標 (例:37.786505、-122.3862) を人間が理解しやすい住所に変換します。 多くの場合、これは、デバイスまたはアセットから GPS フィードを受信し、座標が配置されているアドレスを知る必要があるアプリケーションをトラッキングする場合に必要です。
+リバース ジオコーディングする座標セットがある場合は、[Post Search Address Batch API](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressreversebatch) を使用して、クエリのバッチを単一の API 呼び出しで送信できます。
 
-    ![住所検索](./media/how-to-search-for-address/address_search_url.png)
-  
-    | パラメーター | 推奨値 |
-    |---------------|------------------------------------------------|
-    | HTTP メソッド | GET |
-    | 要求 URL | [https://atlas.microsoft.com/search/address/json?](https://atlas.microsoft.com/search/address/json?) |
-    | 承認 | No Auth |
-
-3. **[パラメーター]** をクリックして、要求 URL のクエリまたはパスのパラメーターとして使用する次のキーと値のペアを入力します。
-  
-    ![住所検索](./media/how-to-search-for-address/address_search_params.png)
-  
-    | Key | Value |
-    |------------------|-------------------------|
-    | api-version | 1.0 |
-    | subscription-key | \<Azure Maps キー\> |
-    | query | 400 Broad St, Seattle, WA 98109 |
-  
-4. **[送信]** をクリックして、応答の本体を確認します。
-  
-    ここでは、完全な住所のクエリを指定したので、応答の本体には単一の結果を受信します。
-  
-5. [パラメーター] では、クエリ文字列を次の値に編集します。
-    ```plaintext
-        400 Broad, Seattle
-    ```
-
-6. 次のキー/値のペアを **Params** セクションに追加し、 **[送信]** をクリックします。
-
-    | Key | Value |
-    |-----|------------|
-    | typeahead | true |
-
-    **typeahead** フラグは、部分的な入力値としてクエリを処理して、予測値の配列を返すよう、住所検索の API に指示します。
-
-## <a name="make-a-reverse-address-search"></a>住所の逆引き検索を行う
 
 1. Postman で、 **[新しい要求]**  |  **[GET request\(GET 要求\)]** をクリックして、「**Reverse Address Search**」 (住所の逆引き検索) という名前を付けます。
 
@@ -265,3 +228,4 @@ Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) は
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Maps Search サービス](https://docs.microsoft.com/rest/api/maps/search) API ドキュメントを確認する。
+- [ベスト プラクティス](https://docs.microsoft.com/azure/azure-maps/how-to-use-best-practices-for-search)を確認します。

@@ -5,33 +5,29 @@ author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 40037252ddf8e505ae7fe734813d598e7de96336
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 910b582cb40b9f8aff6a553621b4677d6b019826
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834232"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963888"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>"Functions Runtime に到達できない" 問題のトラブルシューティング方法
 
-
-## <a name="error-text"></a>エラー テキスト
-この記事は、Functions ポータルで次のエラーが表示された場合のトラブルシューティングを行うことを目的としています。
+この記事は、Azure portal に表示されるときの "Functions ランタイムに到達できません" というエラー メッセージのトラブルシューティングを目的としています。 このエラーが発生すると、ポータルに次のエラー文字列が表示されます。
 
 `Error: Azure Functions Runtime is unreachable. Click here for details on storage configuration`
 
-### <a name="summary"></a>まとめ
-この問題は、Azure Functions Runtime が起動できない場合に発生します。 このエラーが発生する最も一般的な理由は、関数アプリでそのストレージ アカウントへのアクセスが失われていることです。 ストレージ アカウントの要件について詳しくは、[こちら](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)をご覧ください。
+これは、Azure Functions ランタイムが起動できない場合に発生します。 このエラーが発生する最も一般的な理由は、関数アプリでそのストレージ アカウントへのアクセスが失われていることです。 詳しくは、「[ストレージ アカウントの要件](storage-considerations.md#storage-account-requirements)」をご覧ください。
 
-### <a name="troubleshooting"></a>トラブルシューティング
-最も一般的な次の 4 つのエラー ケースについて、各ケースの識別方法および解決方法を説明します。
+この記事の残りの部分では、各ケースを特定して解決する方法など、このエラーの次の原因をトラブルシューティングする際に役立ちます。
 
-1. ストレージ アカウントが削除された
-1. ストレージ アカウントのアプリケーション設定が削除された
-1. ストレージ アカウントの資格情報が無効
-1. ストレージ アカウントにアクセスできない
-1. 日ごとの実行クォータがいっぱいになった
-1. アプリがファイアウォールの内側にある
++ [ストレージ アカウントが削除された](#storage-account-deleted)
++ [ストレージ アカウントのアプリケーション設定が削除された](#storage-account-application-settings-deleted)
++ [ストレージ アカウントの資格情報が無効](#storage-account-credentials-invalid)
++ [ストレージ アカウントにアクセスできない](#storage-account-inaccessible)
++ [日ごとの実行クォータを超過した](#daily-execution-quota-full)
++ [アプリがファイアウォールの内側にある](#app-is-behind-a-firewall)
 
 
 ## <a name="storage-account-deleted"></a>ストレージ アカウントが削除された
@@ -50,7 +46,7 @@ Azure portal でご自分のストレージ アカウントを検索し、まだ
 
 ### <a name="required-application-settings"></a>必須のアプリケーションの設定
 
-* 必須
+* Required
     * [`AzureWebJobsStorage`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
 * 従量課金プラン (Functions) には必須
     * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
@@ -60,9 +56,9 @@ Azure portal でご自分のストレージ アカウントを検索し、まだ
 
 ### <a name="guidance"></a>ガイダンス
 
-* これらの設定のいずれに対しても、"スロット設定" をチェックしないでください。 デプロイ スロットをスワップすると、関数が中断されます。
+* これらの設定のいずれに対しても、"スロット設定" をオンにしないでください。 デプロイ スロットをスワップすると、関数アプリが中断されます。
 * 自動デプロイの一環としてこれらの設定を変更しないようにしてください。
-* これらの設定は、作成時に指定して有効にする必要があります。 これらの設定が含まれない自動デプロイでは、アプリが機能しなくなります。後から設定を追加しても機能しません。
+* これらの設定は、作成時に指定して有効にする必要があります。 これらの設定が含まれない自動デプロイでは、関数アプリが実行されなくなります。後から設定を追加しても実行されません。
 
 ## <a name="storage-account-credentials-invalid"></a>ストレージ アカウントの資格情報が無効
 
@@ -70,36 +66,31 @@ Azure portal でご自分のストレージ アカウントを検索し、まだ
 
 ## <a name="storage-account-inaccessible"></a>ストレージ アカウントにアクセスできない
 
-Function App は、ストレージ アカウントにアクセスできる必要があります。 ストレージ アカウントへの Functions のアクセスをブロックする一般的な問題は次のとおりです。
+関数アプリは、ストレージ アカウントにアクセスできる必要があります。 ストレージ アカウントへの Functions のアクセスをブロックする一般的な問題は次のとおりです。
 
-* ストレージ アカウント間のトラフィックを許可するため、正しいネットワーク規則なしで Function App が App Service Environment にデプロイされた
-* ストレージ アカウントのファイアウォールが有効になっていて、Functions 間のトラフィックを許可するように構成されていない ストレージ アカウントのファイアウォール構成については、[こちら](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)をご覧ください。
++ ストレージ アカウント間のトラフィックを許可するため、正しいネットワーク規則なしで関数アプリが App Service Environment (ASE) にデプロイされた。
+
++ ストレージ アカウントのファイアウォールが有効になっていて、Functions 間のトラフィックを許可するように構成されていない。 詳細については、[「Azure Storage ファイアウォールおよび仮想ネットワークを構成する」](../storage/common/storage-network-security.md)を参照してください。
 
 ## <a name="daily-execution-quota-full"></a>日ごとの実行クォータがいっぱいになった
 
-日ごとの実行クォータが構成されている場合、Function App は一時的に無効になり、多くのポータル コントロールが使用できなくなります。 
+日ごとの実行クォータが構成されている場合、関数アプリは一時的に無効になり、これにより、多くのポータル コントロールが使用できなくなります。 
 
-* 確認するには、ポータルで [プラットフォーム機能]> [Function App の設定] を開きます。 クォータを超過している場合は、次のメッセージが表示されます。
-    * `The Function App has reached daily usage quota and has been stopped until the next 24 hours time frame.`
-* 問題を解決するには、クォータを削除し、アプリを再起動します。
++ [Azure portal](https://portal.azure.com) で検証するには、関数アプリで **[プラットフォーム機能]**  >  **[関数アプリの設定]** を開きます。 設定した**日ごとの使用量クォータ**を超えている場合は、次のメッセージが表示されます。
+
+    `The function app has reached daily usage quota and has been stopped until the next 24 hours time frame.`
+
++ この問題を解決するには、日ごとのクォータを削除するか増やし、アプリを再起動します。 それ以外の場合、アプリの実行は次の日までブロックされます。
 
 ## <a name="app-is-behind-a-firewall"></a>アプリがファイアウォールの内側にある
 
 関数アプリが[内部で負荷分散された App Service Environment](../app-service/environment/create-ilb-ase.md) 内でホストされ、受信インターネット トラフィックをブロックするように構成されている場合、またはインターネット アクセスをブロックするように構成されている[受信 IP 制限](functions-networking-options.md#inbound-ip-restrictions)がある場合は、Functions Runtime に到達できません。 Azure portal は、実行中のアプリに対して直接呼び出しを行い、関数の一覧を取得します。また、KUDU エンドポイントに対して HTTP 呼び出しを行います。 プラットフォーム レベルの設定は、[`Platform Features`] タブでも使用できます。
 
-* ASE の構成を確認するには、ASE が存在するサブネットの NSG に移動し、アプリケーションにアクセスしているコンピューターのパブリック IP からのトラフィックを許可する受信規則を検証します。 また、アプリを実行している仮想ネットワーク、または仮想ネットワークで実行されている仮想マシンから、ポータルを使用することもできます。 [受信規則の構成の詳細については、こちらを参照してください](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups)
+ASE の構成を確認するには、ASE が存在するサブネットの NSG に移動し、アプリケーションにアクセスしているコンピューターのパブリック IP からのトラフィックを許可する受信規則を検証します。 また、アプリを実行している仮想ネットワーク、または仮想ネットワークで実行されている仮想マシンから、ポータルを使用することもできます。 [受信規則の構成の詳細については、こちらを参照してください](../app-service/environment/network-info.md#network-security-groups)
 
 ## <a name="next-steps"></a>次の手順
 
-Function App が戻り、機能するようになったので、クイック スタートと開発者用リファレンスを参照して、もう一度起動して実行しましょう。
+関数アプリの監視についての詳細情報:
 
-* [初めての Azure 関数の作成](functions-create-first-azure-function.md)  
-  Azure Functions のクイック スタートですぐに最初の関数を作成します。 
-* [Azure Functions 開発者向けリファレンス](functions-reference.md)  
-  Azure Functions ランタイムに関する詳細な技術情報と、関数のコーディングやトリガーおよびバインドの定義に関するリファレンスを提供します。
-* [Azure Functions のテスト](functions-test-a-function.md)  
-  関数をテストするための各種ツールと手法について説明します。
-* [Azure Functions のスケーリング方法](functions-scale.md)  
-  Azure Functions で利用できるサービス プラン (従量課金ホスティング プランを含む) と、適切なプランを選択する方法について説明します。 
-* [Azure App Service とは](../app-service/overview.md)  
-  Azure Functions では、デプロイ、環境変数、診断などの主要な機能に Azure App Service を活用しています。 
+> [!div class="nextstepaction"]
+> [Azure Functions を監視する](functions-monitoring.md)

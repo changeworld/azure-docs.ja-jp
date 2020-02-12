@@ -12,16 +12,24 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 07/16/2019
+ms.date: 01/10/2020
 ms.author: shvija
-ms.openlocfilehash: 312800482405530d57ce7b0b1e77b91c2ad069ce
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 7533c2a4d5ef2bb3e6f66e116d3ff3937ddd77b3
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772157"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899973"
 ---
 # <a name="event-processor-host"></a>イベント プロセッサ ホスト
+> [!NOTE]
+> この記事は、以前のバージョンの Azure Event Hubs SDK に適用されます。 新しいバージョンの SDK にコードを移行する方法については、以下の移行ガイドを参照してください。 
+> - [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MIGRATIONGUIDE.md)
+> - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)
+> - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)
+> - [Java Script](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)
+>
+> また、[アプリケーションの複数のインスタンス間でのパーティション負荷のバランスを取る](event-processor-balance-partition-load.md)も参照してください。
 
 Azure Event Hubs は、数百万件のイベントを低コストでストリーム配信するために使用できる、強力なテレメトリ インジェスト サービスです。 この記事では、チェックポイント処理、リース処理、および並列イベント リーダーの管理を簡素化するインテリジェントなコンシューマー エージェントである "*イベント プロセッサ ホスト*" (EPH) を使用して、取り込まれたイベントを使用する方法について説明します。  
 
@@ -190,7 +198,7 @@ EventProcessorHost のインスタンスでイベント プロセッサ クラ�
 > エポックを使用するアプリケーションや、エラーを回避するためにエポックを使用しないアプリケーションには、異なるコンシューマー グループを使用することをお勧めします。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 イベント プロセッサ ホストについて学習した後は、Event Hubs の詳細について次の記事を参照してください。
 

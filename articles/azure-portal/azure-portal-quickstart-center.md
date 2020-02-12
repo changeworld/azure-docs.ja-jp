@@ -1,20 +1,20 @@
 ---
-title: Azure Portal の概要 | Microsoft Docs
+title: Azure クイックスタート センターの概要
 description: Azure クイックスタート センターのガイド付きエクスペリエンスを使用して、Azure の使用を開始します。 セットアップ、移行、およびイノベーションについて説明します。
 services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: mblythe
-ms.date: 09/13/2019
+ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 624be4cca4fd274fdc5d2b2c374b87b3e0974888
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 21dd43b5179d0752699bb56b51a2c08976aa037b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310533"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900692"
 ---
 # <a name="get-started-with-the-azure-quickstart-center"></a>Azure クイックスタート センターの概要
 
@@ -33,8 +33,10 @@ Azure クイックスタート センターには、使用を開始するため�
 ## <a name="how-to-use-azure-quickstart-center"></a>Azure クイックスタート センターを使用する方法
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-2. サイドバーの上部から **[すべてのサービス]** を選択します。
-1. **[全般]**  >  **[クイックスタート センター]** の順に選択します。 星のアイコンを選択して、**お気に入り**に保存します。
+
+1. Azure portal メニューから **[すべてのサービス]** を選択します。
+
+1. **[全般]**  >  **[クイックスタート センター]** の順に選択します。
 
 Azure クイックスタート センターでできることの詳細については、次のビデオをご覧ください。
 > [!VIDEO https://www.youtube.com/embed/0bSA7RXrbAg]

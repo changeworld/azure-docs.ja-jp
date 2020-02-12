@@ -1,30 +1,29 @@
 ---
-title: Java を使用して Azure Event Hubs との間でデータを送信する
-description: この記事では、Azure Event Hubs にイベントを送信する Java アプリケーションの作成に関するチュートリアルを提供します。
+title: Java を使用して Azure Event Hubs との間でイベントを送受信する (レガシ)
+description: この記事では、以前の azure-eventhubs パッケージを使用して、Azure Event Hubs との間でイベントを送受信する Java アプリケーションを作成する方法について説明します。
 services: event-hubs
-author: ShubhaVijayasarathy
-manager: timlt
+author: spelluru
 ms.service: event-hubs
 ms.workload: core
-ms.topic: article
-ms.custom: seodec18, seo-java-august2019, seo-java-september2019
-ms.date: 04/15/2019
-ms.author: shvija
-ms.openlocfilehash: be9919950f24dbee7fb8a3f901767c298105bf53
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.topic: quickstart
+ms.date: 01/15/2020
+ms.author: spelluru
+ms.openlocfilehash: a2cce90b5aa28dac6ff945ac48f70bfd319683b9
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72325468"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029896"
 ---
-# <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs"></a>Java を使用して Azure Event Hubs との間でイベントを送受信する
+# <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Java を使用して Azure Event Hubs との間でイベントを送受信する (azure-eventhubs)
 
 このチュートリアルでは、Java アプリケーションを作成し、Azure Event Hubs との間でイベントを送受信する方法について説明します。
 
 Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、Event Hubs の概要と Event Hubs の機能に関するページを参照してください。
 
-> [!NOTE]
-> このクイック スタートをサンプルとして [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend) からダウンロードし、`EventHubConnectionString` と `EventHubName` の文字列を対象のイベント ハブの値に置き換え、実行します。 または、このチュートリアルの手順に従って独自のものを作成します。
+> [!WARNING]
+> このクイックスタートでは、以前の **azure-eventhubs** パッケージと **azure-eventhubs-eph** パッケージを使用します。 最新の [azure-messaging-eventhubs](get-started-java-send-v2.md) パッケージを使用するには、コードを[移行](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)することをお勧めします。 
+
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,6 +35,9 @@ Azure Event Hubs はビッグ データ ストリーミング プラットフォ
 
 ## <a name="send-events"></a>送信イベント 
 このセクションでは、イベント ハブにイベントを送信する Java アプリケーションの作成方法を説明します。 
+
+> [!NOTE]
+> このクイック スタートをサンプルとして [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend) からダウンロードし、`EventHubConnectionString` と `EventHubName` の文字列を対象のイベント ハブの値に置き換え、実行します。 または、このチュートリアルの手順に従って独自のものを作成します。
 
 ### <a name="add-reference-to-azure-event-hubs-library"></a>Azure Event Hubs ライブラリへの参照を追加する
 
@@ -140,7 +142,7 @@ ConnectionStringBuilder クラスを使用して、Event Hubs クライアント
 
 お疲れさまでした。 メッセージをイベント ハブに送信しました。
 
-### <a name="appendix-how-messages-are-routed-to-eventhub-partitions"></a>付録:EventHub パーティションへのメッセージのルーティング動作
+### <a name="appendix-how-messages-are-routed-to-eventhub-partitions"></a>付録: EventHub パーティションへのメッセージのルーティング動作
 
 コンシューマーがメッセージを取得するためには、あらかじめパブリッシャーがそのメッセージをパーティションに発行する必要があります。 com.microsoft.azure.eventhubs.EventHubClient オブジェクトの sendSync() メソッドを使ってイベント ハブに同期的にメッセージを発行するとき、パーティション キーが指定されているかどうかに応じて、そのメッセージは特定のパーティションに送信されるか、または利用可能なすべてのパーティションにラウンド ロビン方式で分散されます。
 
@@ -421,7 +423,7 @@ eventHubClient.sendSync(sendEvent, partitionKey);
 com.microsoft.azure.eventprocessorhost.EventProcessorHost クラスには、EventProcessorHost のチェックポイント マネージャーをオーバーライドする際に使用できる 2 つのコンストラクターがあります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次の記事を参照してください。 
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)

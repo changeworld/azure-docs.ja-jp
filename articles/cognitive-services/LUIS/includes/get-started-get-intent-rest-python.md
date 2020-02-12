@@ -6,14 +6,14 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/20/2019
+ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: 37249cc560d4493c34dd4be6139de03f9c152a08
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 23ac98f91c989c9bedb6b91e6a7ce26dc164ac5a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74414519"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987785"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -21,9 +21,22 @@ ms.locfileid: "74414519"
 * [Visual Studio Code](https://code.visualstudio.com/)
 * パブリック アプリ ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
-## <a name="get-luis-key"></a>LUIS キーを取得する
+## <a name="create-luis-runtime-key-for-predictions"></a>予測の LUIS ランタイム キーを作成する
 
-[!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [**Language Understanding** の作成](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)をクリックします
+1. **ランタイム** キーに必要な設定をすべて入力します。
+
+    |設定|Value|
+    |--|--|
+    |Name|任意の名前 (2 から 64 文字)|
+    |サブスクリプション|適切なサブスクリプションを選択します|
+    |Location|近くにある任意の使用可能な場所を選択します|
+    |価格レベル|`F0` -最小限の価格レベル|
+    |リソース グループ|使用可能なリソース グループを選択します|
+
+1. **[作成]** をクリックして、リソースが作成されるまで待ちます。 作成後、リソース ページに移動します。
+1. 構成された `endpoint` と `key` を収集します。
 
 ## <a name="get-intent-from-the-prediction-endpoint"></a>予測エンドポイントから意図を取得する
 
@@ -34,17 +47,17 @@ Python を使用して、[予測エンドポイント](https://aka.ms/luis-apim-
     ```python
     ########### Python 3.6 #############
     import requests
-    
+
     try:
-    
-        key = 'YOUR-KEY'
-        endpoint = 'YOUR-ENDPOINT' # such as 'westus2.api.cognitive.microsoft.com' 
+
+        key = 'YOUR-KEY' # your Runtime key
+        endpoint = 'YOUR-ENDPOINT' # such as 'your-resource-name.api.cognitive.microsoft.com'
         appId = 'df67dcdb-c37d-46af-88e1-8b97951ca1c2'
         utterance = 'turn on all lights'
-    
+
         headers = {
         }
-    
+
         params ={
             'query': utterance,
             'timezoneOffset': '0',
@@ -54,18 +67,20 @@ Python を使用して、[予測エンドポイント](https://aka.ms/luis-apim-
             'staging': 'false',
             'subscription-key': key
         }
-    
+
         r = requests.get(f'https://{endpoint}/luis/prediction/v3.0/apps/{appId}/slots/production/predict',headers=headers, params=params)
         print(r.json())
-    
+
     except Exception as e:
         print(f'{e}')
     ```
 
-1. 次の値を置き換えます。
+1. `YOUR-KEY` と `YOUR-ENDPOINT` の値を、実際の予測の**ランタイム** キーとエンドポイントに置き換えます。
 
-    * `YOUR-KEY` を、ご利用のスターター キーに。
-    * `YOUR-ENDPOINT` を、ご利用のエンドポイントに。 たとえば、「 `westus2.api.cognitive.microsoft.com` 」のように入力します。
+    |Information|目的|
+    |--|--|
+    |`YOUR-KEY`|32 文字の予測の**ランタイム** キー。|
+    |`YOUR-ENDPOINT`| 予測 URL エンドポイント。 たとえば、「 `replace-with-your-resource-name.api.cognitive.microsoft.com` 」のように入力します。|
 
 1. `requests` 依存関係をインストールします。 これは、HTTP 要求を行うために使用されます。
 
@@ -77,7 +92,7 @@ Python を使用して、[予測エンドポイント](https://aka.ms/luis-apim-
 
     ```console
     python predict.py
-    ``` 
+    ```
 
 1. JSON として返される予測応答を確認します。
 
@@ -85,7 +100,7 @@ Python を使用して、[予測エンドポイント](https://aka.ms/luis-apim-
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    読みやすくするために書式設定された JSON 応答を次に示します。 
+    読みやすくするために書式設定された JSON 応答を次に示します。
 
     ```JSON
     {
@@ -128,15 +143,11 @@ Python を使用して、[予測エンドポイント](https://aka.ms/luis-apim-
     }
     ```
 
-## <a name="luis-keys"></a>LUIS キー
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-[!INCLUDE [Use authoring key for endpoint](../includes/starter-key-explanation.md)]
+このクイックスタートを使用して完了したときに、ファイル システムからファイルを削除します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-
-このクイックスタートを使用して完了したときに、ファイル システムからファイルを削除します。 
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [発話の追加とトレーニング](../get-started-get-model-rest-apis.md)

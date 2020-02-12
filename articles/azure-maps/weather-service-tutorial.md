@@ -3,22 +3,22 @@ title: チュートリアル:Azure Notebooks (Python) を使用して天気予�
 description: このチュートリアルでは、Azure Notebooks (Python) を使用して、Microsoft Azure Maps Weather Service の天気予報データにセンサー データを結合する方法について説明します。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 12/09/2019
+ms.date: 01/29/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 1a1493033717b18bef5d80b28d06004c901ffb29
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 6d49a305a9b2e02d9e9d743ff8f076f453a08fcb
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910789"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989622"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>チュートリアル:Azure Notebooks (Python) を使用して天気予報データにセンサー データを結合する
 
-風力は、気候変動への対策として化石燃料に代わるエネルギー源です。 風というのはもともと一定のものではないため、風力のオペレーターは ML (機械学習) モデルを作成して、電力需要を満たす風力発電能力を予測し、送電網の安定性を確保する必要があります。 このチュートリアルでは、センサーの場所と気象測定値を含んだデモ データ セットに Azure Maps の天気予報データを結合する方法について取り上げます。 天気予報データを要求するには、Azure Maps Weather Service を呼び出します。
+風力は、気候変動への対策として化石燃料に代わるエネルギー源です。 風はもともと一定のものではないため、風力のオペレーターは機械学習 (ML) モデルを作成して、風力発電能力を予測する必要があります。 電力需要を満たし、送電網の安定性を確保するためには、この予測が必要となります。 このチュートリアルでは、気象測定値のデモ データに Azure Maps の天気予報データを結合する方法について取り上げます。 天気予報データを要求するには、Azure Maps Weather Service を呼び出します。
 
 このチュートリアルでは、次のことについて説明します。
 
@@ -51,15 +51,16 @@ Azure Notebooks の概要と基本的な使用方法については、「[Azure 
 必要なモジュールとフレームワークをすべて読み込むには、次のスクリプトを実行します。
 
 ```python
-import aiohttp
 import pandas as pd
 import datetime
 from IPython.display import Image, display
+!pip install aiohttp
+import aiohttp
 ```
 
 ## <a name="import-weather-data"></a>気象データをインポートする
 
-このチュートリアルのために、ここでは、4 つの異なる風力タービンに設置されたセンサーからの気象データの測定値を利用します。 サンプル データは、各タービンに近接する気象データ センターから収集された 30 日間分の気象データ測定値から成ります。 デモ データには、気温、風速、風向の各データの測定値が含まれています。 デモ データは、[こちら](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data/data)からダウンロードできます。 次のスクリプトでは、デモ データを Azure Notebook にインポートします。
+このチュートリアルのために、ここでは、4 つの異なる風力タービンに設置されたセンサーからの気象データの測定値を利用します。 サンプル データは、30 日間分の気象データ測定値から成ります。 これらの測定値は各タービンに近接する気象データ センターから収集されています。 デモ データには、気温、風速、風向の各データの測定値が含まれています。 デモ データは、[こちら](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data/data)からダウンロードできます。 次のスクリプトでは、デモ データを Azure Notebook にインポートします。
 
 ```python
 df = pd.read_csv("./data/weather_dataset_demo.csv")
@@ -67,7 +68,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>毎日の予報データを要求する
 
-この例のシナリオでは、センサーの設置場所ごとの毎日の予報を要求します。 以下のスクリプトでは、Azure Maps Weather Service の [Daily Forecast API](https://aka.ms/AzureMapsWeatherDailyForecast) を呼び出して、現在の日付から 15 日間の日単位の天気予報を、それぞれの風力タービンについて取得します。
+このシナリオでは、センサーの設置場所ごとの毎日の予報を要求します。 以下のスクリプトでは、Azure Maps Weather Service の [Daily Forecast API](https://aka.ms/AzureMapsWeatherDailyForecast) を呼び出して、現在の日付から 15 日間の日単位の天気予報を、それぞれの風力タービンについて取得します。
 
 
 ```python
@@ -128,7 +129,7 @@ display(Image(poi_range_map))
 ![タービンの場所](./media/weather-service-tutorial/location-map.png)
 
 
-デモ データを予測データで強化するために、ここでは気象データ センターのステーション ID に基づいて、予測データとデモ データをグループ化します。
+ここでは気象データ センターのステーション ID に基づいて、予測データとデモ データをグループ化します。 グループ化によって、デモ データを予測データで強化します。 
 
 ```python
 # Group forecasted data for all locations
@@ -156,7 +157,7 @@ grouped_weather_data.get_group(station_ids[0]).reset_index()
 
 ## <a name="plot-forecast-data"></a>予測データをプロットする
 
-今後 15 日間に風速と風向がどのように変化するかを見るために、それぞれの日付の予測値をプロットします。
+それぞれの日付の予測値をプロットします。 このプロットによって、今後 15 日間に風速と風向がどのように変化するかを見ることができます。
 
 ```python
 # Plot wind speed
@@ -175,7 +176,7 @@ windsPlot.set_xlabel("Date")
 windsPlot.set_ylabel("Wind direction")
 ```
 
-次のグラフは、風速 (左側のグラフ) と風向 (右側のグラフ) の変化についての予測データを、データが要求された日から 15 日間にわたって視覚化したものです。
+以下のグラフは、予測データを視覚化したものです。 風速の変化については、左側のグラフを参照してください。 風向の変化については、右側のグラフを参照してください。 このデータは、データが要求された日を起点とするその後 15 日間の予測です。
 
 <center>
 
@@ -184,7 +185,7 @@ windsPlot.set_ylabel("Wind direction")
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Maps の REST API を呼び出して天気予報データを取得し、そのデータをグラフで視覚化する方法について説明しました。
+このチュートリアルでは、Azure Maps の REST API を呼び出して天気予報データを取得する方法について説明しました。 そのデータをグラフで視覚化する方法についても説明しました。
 
 Azure Maps の REST API を Azure Notebooks 内で呼び出す方法については、[Azure Notebooks を使用した電気自動車のルート案内](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing)に関するページを参照してください。
 

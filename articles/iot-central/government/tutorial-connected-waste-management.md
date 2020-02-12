@@ -7,27 +7,28 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 38da444779a56f39d4119f3797ddb5bd2f31aeae
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 6b8458ce41a1bdacddc4102e8282bbc638d4c01c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112645"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016495"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>チュートリアル:IoT Central で接続された廃棄物管理アプリケーションを作成する
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 このチュートリアルでは、Azure IoT Central の **Connected waste management (接続された廃棄物管理)** アプリケーション テンプレートから、IoT Central の接続された廃棄物管理アプリケーションを作成する方法について説明します。 
 
-このチュートリアルでは、次の方法について説明します。 
+このチュートリアルでは、次の内容を学習します。 
 
 > [!div class="checklist"]
+
 > * Azure IoT Central の **Connected waste management (接続された廃棄物管理)** テンプレートを使用して、接続された廃棄物管理アプリケーションを作成する
 > * オペレーター ダッシュボードの探索とカスタマイズ 
 > * 接続された廃棄物処理デバイス テンプレートの探索
-> * シミュレートされたデバイスの探索
-> * ルールの探索と構成
+> * シミュレートされたデバイスを探索する
+> * ルールを探索して構成する
 > * ジョブの構成
 > * ホワイトラベリングを使用してアプリケーション ブランドをカスタマイズする
 
@@ -59,12 +60,15 @@ ms.locfileid: "74112645"
     * **URL** - 必要に応じて、目的の URL を選択できます。 URL は後で変更することもできます。 
     * Azure サブスクリプションをお持ちの場合は、"*ディレクトリ、Azure サブスクリプション、リージョン*" を入力します。 サブスクリプションをお持ちでない場合は、**7 日間の無料試用版**を有効にし、必須の連絡先情報を入力できます。  
 
-    ディレクトリとサブスクリプションの詳細については、[アプリケーションの作成のクイック スタート](../preview/quick-deploy-iot-central.md)に関するページを参照してください。
+    ディレクトリとサブスクリプションの詳細については、[アプリケーションの作成のクイック スタート](../core/quick-deploy-iot-central.md)に関するページを参照してください。
 
 5. ページの下部にある **[作成]** ボタンをクリックします。 
 
     ![Azure IoT Central の [Create Connected Waste Application]\(接続された廃棄物アプリケーションの作成\) ページ](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement.png)
+    
+    ![Azure IoT Central の接続されたアプリケーションの作成の課金情報](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement-billinginfo.png)
 
+ 
 6. これで、Azure IoT Central の **Connected waste management template (接続された廃棄物管理テンプレート)** を使用して、接続された廃棄物管理アプリを作成しました。 
 
 お疲れさまでした。 新しく作成されたアプリケーションには、事前構成された次のものが付属しています。
@@ -131,7 +135,7 @@ Azure IoT Central のデバイス テンプレートは、デバイスの機能�
 
 2. [デバイス テンプレート] リストに、 **[Connected Waste Bin]\(接続された廃棄物処理\)** が表示されます。 名前をクリックして開きます。
 
-3. デバイス テンプレートの機能を理解します。 それに、*充填レベル*、*臭気メーター*、*重量*、*場所*などのセンサーが定義されているのを確認できます。
+3. デバイス テンプレートの機能を理解します。 "*充填レベル*"、"*臭気メーター*"、"*重量*"、"*場所*" などのセンサーが定義されているのを確認できます。
 
    ![デバイス テンプレート](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 
@@ -146,10 +150,10 @@ Azure IoT Central のデバイス テンプレートは、デバイスの機能�
 4. 測定単位を更新するか、*最小値*と*最大値*を設定することもできます
 5. すべての変更を**保存**します 
 
-### <a name="add-a-cloud-property"></a>クラウド プロパティの追加 
+### <a name="add-a-cloud-property"></a>クラウド プロパティを追加する 
 
 1. デバイス テンプレート メニューから **[クラウド プロパティ]** に移動します。
-2. **[+ クラウド プロパティの追加]** をクリックして、新しいクラウド プロパティを追加します。 IoT Central では、デバイスに関連していますが、デバイスから送信されることを期待しないプロパティを追加できます。 たとえば、クラウドのプロパティは、設置区域、アセット情報、メンテナンス情報などに固有のアラートのしきい値などになります。 
+2. **[+ クラウド プロパティの追加]** をクリックして、新しいクラウド プロパティを追加します。 IoT Central では、デバイスに関連していますが、デバイスから送信されることを期待しないプロパティを追加できます。 たとえば、クラウドのプロパティは、設置区域、アセット情報、メンテナンス情報、その他の情報などに固有のアラートのしきい値などになります。 
 3. すべての変更を**保存**します 
  
 ### <a name="views"></a>ビュー 
@@ -165,7 +169,7 @@ Azure IoT Central のデバイス テンプレートは、デバイスの機能�
 
 * 新しいデバイス テンプレートを作成するには、 **[+ 新規]** を選択し、作成プロセスに従います。 カスタム デバイス テンプレートを最初から作成することも、Azure デバイス カタログからデバイス テンプレートを選択することもできます。 
 
-## <a name="explore-simulated-devices"></a>シミュレートされたデバイスの探索
+## <a name="explore-simulated-devices"></a>シミュレートされたデバイスを探索する
 
 IoT Central では、シミュレートされたデバイスを作成して、デバイス テンプレートとアプリケーションをテストできます。 
 
@@ -187,11 +191,11 @@ IoT Central では、シミュレートされたデバイスを作成して、�
 > [!NOTE]
 > すべてのタブが**デバイス テンプレート ビュー**から構成されていることに注意してください。
 
-### <a name="add-new-devices"></a>新しいデバイスの追加
+### <a name="add-new-devices"></a>新しいデバイスを追加する
 
 * 新しいデバイスを追加するには、 **[デバイス]** タブの **[+ 新規]** をクリックします。 
 
-## <a name="explore-and-configure-rules"></a>ルールの探索と構成
+## <a name="explore-and-configure-rules"></a>ルールを探索して構成する
 
 Azure IoT Central では、ルールを作成して、デバイスのテレメトリを自動的に監視し、1 つまたは複数の条件が満たされたときにアクションをトリガーできます。 アクションには、メール通知の送信、または他のサービスにデータを送信する Microsoft Flow アクションや Webhook アクションのトリガーを含めることができます。
 
@@ -254,7 +258,7 @@ IoT Central では、ジョブを使用して、複数のデバイスで、デ�
 7. 最後に、アプリケーションのタイトルで **[設定]** をクリックして、 **[テーマ]** を変更することもできます。
 
   
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このアプリケーションを引き続き使用しない場合は、次の手順でアプリケーションを削除します。
 
@@ -263,6 +267,6 @@ IoT Central では、ジョブを使用して、複数のデバイスで、デ�
 
   
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [接続された廃棄物管理の概念](./concepts-connectedwastemanagement-architecture.md)の詳細を確認する

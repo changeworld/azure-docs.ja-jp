@@ -14,15 +14,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 09/17/2019
+ms.date: 02/03/2020
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: c17f1094e562960e851204b40281f5b04c1d40ce
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 559050d11b6b85a9842c679b94e0e5b2fd5dd0f8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186071"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987715"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure Media Services v3 の概要
 
@@ -32,6 +32,14 @@ Media Services v3 SDK は [Media Services v3 OpenAPI の仕様 (Swagger)](https:
 
 > [!NOTE]
 > 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされている [SDK](media-services-apis-overview.md#sdks) のいずれかを使用してください。
+
+## <a name="compliance-privacy-and-security"></a>コンプライアンス、プライバシー、セキュリティ
+ 
+重要な注意事項として、Azure Media Services の使用に適用されるすべての法律に従う必要があります。また、他の人の権利を犯したり、他の人に害を及ぼしたりする可能性のある方法で Azure Media Services またはその他の Azure サービスを使用することはできません。 
+
+Media Services にビデオまたは画像 (生体認証データを含む) をアップロードして処理したり保管したりする前に、(1) ビデオまたは画像に対する適切な権限をすべて持っていること、また、(2) 生体認証データの使用と Media Services への保管に関して、ビデオに映っている個人から適切なすべての同意を得ることが必要となります。 
+
+コンプライアンスとプライバシーについての情報や、Azure Media Services 内のデータを Microsoft がどのように保護し、セキュリティを確保するかの情報については、Azure [セキュリティ センター](https://www.microsoft.com/trust-center/?rtc=1)を参照してください。 Microsoft のプライバシー義務とデータの取り扱いについては、Microsoft の[プライバシー ステートメント](https://privacy.microsoft.com/PrivacyStatement)、[オンライン サービス条件](https://www.microsoft.com/licensing/product-licensing/products) ("OST")、および[データ処理の補遺](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA") に関するページをご確認ください。 顧客データの保持と削除についての情報は、DPA でご覧いただけます。 Azure Media Services を使用することによって、OST、DPA およびプライバシー ステートメントに従うことに同意したものと見なされます。
 
 ## <a name="what-can-i-do-with-media-services"></a>Media Services の機能
 
@@ -58,7 +66,7 @@ Media Services v3 を使用して、コンテンツのエンコードとパッ�
 
 [Azure Media Services v3 クライアント SDK](media-services-apis-overview.md#sdks) を使用して開発を始めます。
 
-### <a name="quickstarts"></a>クイック スタート  
+### <a name="quickstarts"></a>クイックスタート  
 
 このクイック スタートでは、新しいお客様が Media Services を簡単に試すことができるよう、基礎について 1 日で説明します。
 
@@ -70,7 +78,7 @@ Media Services v3 を使用して、コンテンツのエンコードとパッ�
 
 このチュートリアルでは、Media Services でよく行われるタスクについて、シナリオベースで手順を示します。
 
-* [リモート ファイルのエンコードとビデオのストリーム配信 - REST](stream-files-tutorial-with-rest.md)
+* [リモート ファイルのエンコードとビデオのストリーミング – REST](stream-files-tutorial-with-rest.md)
 * [アップロードされたファイルのエンコードとビデオのストリーム配信 - .NET](stream-files-tutorial-with-api.md)
 * [ライブ ストリーム配信 - .NET](stream-live-tutorial-with-api.md)
 * [ビデオの分析 - .NET](analyze-videos-tutorial-with-api.md)
@@ -80,7 +88,7 @@ Media Services v3 を使用して、コンテンツのエンコードとパッ�
 
 [このサンプル ブラウザー](https://docs.microsoft.com/samples/browse/?products=azure-media-services)を使用して、Azure Media Services のコード サンプルを参照します。
 
-### <a name="how-to-guides"></a>ハウツー ガイド
+### <a name="how-to-guides"></a>操作方法ガイド
 
 タスクの完了方法を示すコード サンプルを含むハウツー ガイド。 このセクションでは、多くの例を見つけることができます。 いくつかを次に示します。
 
@@ -91,11 +99,11 @@ Media Services v3 を使用して、コンテンツのエンコードとパッ�
 * [マルチ DRM を使用した動的な暗号化 - .NET](protect-with-drm.md) 
 * [カスタム変換を使用してエンコードする方法 - CLI](custom-preset-cli-howto.md)
 
-## <a name="ask-questions-give-feedback-get-updates"></a>質問する。フィードバックする。最新情報を入手する
+## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
 
 「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [基本的な概念を理解する](concepts-overview.md)
 

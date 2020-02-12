@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: 8749f7dee2ceeb09e37cc97d4e5bfe76c52e2da6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 64c5d80b5a2660164b21e71f06e847d5b11e40da
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438740"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964425"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>チュートリアル:Azure Data Share を使用したデータの共有  
 
@@ -22,7 +22,7 @@ ms.locfileid: "75438740"
 > [!div class="checklist"]
 > * データ共有を作成する。
 > * データ共有にデータセットを追加する。
-> * データ共有の同期スケジュールを有効にする。 
+> * データ共有のスナップショット スケジュールを有効にする。 
 > * データ共有に受信者を追加する。 
 
 ## <a name="prerequisites"></a>前提条件
@@ -33,29 +33,40 @@ ms.locfileid: "75438740"
 ### <a name="share-from-a-storage-account"></a>ストレージ アカウントからの共有:
 
 * Azure Storage アカウント: まだお持ちでない場合は、[Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)を作成できます。
-* ストレージ アカウントにロールの割り当てを追加する権限。これは、*Microsoft.Authorization/role assignments/write* 権限に含まれています。 この権限は、所有者ロール内に存在します。 
+* ストレージ アカウントに書き込む権限。これは、*Microsoft.Storage/storageAccounts/write* に含まれています。 この権限は、投稿者ロール内に存在します。
+* ストレージ アカウントにロールの割り当てを追加する権限。これは、*Microsoft.Authorization/role assignments/write* に含まれています。 この権限は、所有者ロール内に存在します。 
+
 
 ### <a name="share-from-a-sql-based-source"></a>SQL ベースのソースからの共有:
 
-* 共有するテーブルとビューを含む Azure SQL Database または Azure SQL Data Warehouse。
+* 共有するテーブルとビューを含む Azure SQL Database または Azure Synapse Analytics (旧称 Azure SQL Data Warehouse)。
+* SQL サーバー上のデータベースに書き込む権限。これは、*Microsoft.Sql/servers/databases/write* に含まれています。 この権限は、投稿者ロール内に存在します。
 * データ共有からデータ ウェアハウスにアクセスするためのアクセス許可。 この操作を行うには、以下の手順を実行します。 
-    1. 自分自身をサーバーの Azure Active Directory 管理者として設定します。
+    1. 自分自身を SQL サーバーの Azure Active Directory 管理者として設定します。
     1. Azure Active Directory を使用して Azure SQL Database/Data Warehouse に接続します。
-    1. クエリ エディター (プレビュー) を使用して次のスクリプトを実行し、Data Share MSI を db_owner として追加します。 SQL Server 認証ではなく Active Directory を使用して接続する必要があります。 
+    1. クエリ エディター (プレビュー) を使用して次のスクリプトを実行し、Data Share リソースのマネージド ID を db_datareader として追加します。 SQL Server 認証ではなく Active Directory を使用して接続する必要があります。 
     
-```sql
-    create user <share_acct_name> from external provider;     
-    exec sp_addrolemember db_owner, <share_acct_name>; 
-```                   
-*<share_acc_name>* は、Data Share アカウントの名前であることに注意してください。 Data Share アカウントをまだ作成していない場合は、後でこの前提条件に戻ってくることが可能です。  
+        ```sql
+        create user "<share_acct_name>" from external provider;     
+        exec sp_addrolemember db_datareader, "<share_acct_name>"; 
+        ```                   
+       *<share_acc_name>* は、Data Share リソースの名前であることに注意してください。 Data Share リソースをまだ作成していない場合は、後でこの前提条件に戻ってくることが可能です。  
 
-* [`db_owner` アクセスを保持する Azure SQL Database ユーザー](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#non-administrator-users)。共有するテーブル/ビューに移動して選択します。 
+* 共有するテーブルまたはビューに移動して選択するための "db_datareader" アクセス権を持つ Azure SQL Database ユーザー。 
 
-* クライアント IP SQL Server のファイアウォール アクセス:この操作を行うには、以下の手順を実行します。1. *ファイアウォールと仮想ネットワーク*に移動します 1. Azure サービスへのアクセスを許可するには、**オン** トグルをクリックします。 
+* クライアント IP SQL Server のファイアウォール アクセス。 この操作を行うには、以下の手順を実行します。 
+    1. Azure portal の SQL サーバーで、 *[ファイアウォールと仮想ネットワーク]* に移動します。
+    1. Azure サービスへのアクセスを許可するには、**オン** トグルをクリックします。
+    1. **[+ クライアント IP の追加]** をクリックし、 **[保存]** をクリックします。 クライアントの IP アドレスは変わることがあります。 IP 範囲を追加することもできます。 
+
+### <a name="share-from-azure-data-explorer"></a>Azure Data Explorer からの共有
+* 共有したいデータベースを含んだ Azure Data Explorer クラスター。
+* Azure Data Explorer クラスターに書き込む権限。これは、*Microsoft.Kusto/clusters/write* に含まれています。 この権限は、投稿者ロール内に存在します。
+* Azure Data Explorer クラスターにロールの割り当てを追加する権限。これは、*Microsoft.Authorization/role assignments/write* に含まれています。 この権限は、所有者ロール内に存在します。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure portal](https://portal.azure.com/) にサインインする
+[Azure portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="create-a-data-share-account"></a>Data Share アカウントを作成する
 
@@ -91,7 +102,7 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 
 1. **作成** を選択します。   
 
-1. ご自分のデータ共有の詳細を入力します。 名前、共有の内容の説明、使用条件 (省略可能) を指定します。 
+1. ご自分のデータ共有の詳細を入力します。 名前、共有の種類、共有の内容の説明、利用規約 (省略可能) を指定します。 
 
     ![EnterShareDetails](./media/enter-share-details.png "共有の詳細を入力する") 
 
@@ -101,7 +112,7 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 
     ![データセット](./media/datasets.png "データセット")
 
-1. 追加するデータセットの種類を選択します。 Azure SQL Database または Azure SQL Datawarehouse から共有する場合は、いくつかの SQL 資格情報を入力するように求められます。 前提条件の中で作成したユーザーを使用して、認証します。
+1. 追加するデータセットの種類を選択します。 前の手順で選択した共有の種類 (スナップショットまたはインプレース) によって異なる種類のデータセット一覧が表示されます。 Azure SQL Database または Azure SQL Data Warehouse から共有する場合は、いくつかの SQL 資格情報を入力するように求められます。 前提条件の中で作成したユーザーを使用して、認証します。
 
     ![AddDatasets](./media/add-datasets.png "データセットを追加する")    
 
@@ -115,7 +126,7 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 
 1. **[続行]** を選択します
 
-1. データ コンシューマーがデータの増分更新を取得できるようにする場合は、スナップショットのスケジュールを有効にします。 
+1. スナップショット共有タイプを選択した場合は、データの更新をデータ コンシューマーに提供するスナップショット スケジュールを構成できます。 
 
     ![EnableSnapshots](./media/enable-snapshots.png "スナップショットを有効化する") 
 

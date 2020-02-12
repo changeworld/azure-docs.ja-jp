@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b83f634e9f5954e7a465761b117b6ee32f843aa2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 47806fe9c5c97c1f5a9c26d4ca38fb46bdf4057c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425095"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931399"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>既存の同期済み AD フォレストに対してクラウド プロビジョニングのパイロットを実施する 
 
@@ -68,7 +68,8 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 
     **[名前]:** 規則にわかりやすい名前を付けます<br>
     **説明:** わかりやすい説明を追加します<br> 
-     **[Connected System]\(接続先システム\):** カスタム同期規則の作成対象となる AD コネクタを選択します<br>
+    
+    **[Connected System]\(接続先システム\):** カスタム同期規則の作成対象となる AD コネクタを選択します<br>
     **[Connected System Object Type]\(接続先システム オブジェクトの種類\):** User<br>
     **[Metaverse Object Type]\(メタバース オブジェクトの種類\):** Person<br>
     **[リンクの種類]:** 結合<br>
@@ -78,7 +79,7 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
  
  4. **[Scoping filter]\(スコープ フィルター\)** ページで、パイロットのベースとなる OU またはセキュリティ グループを入力します。  OU でフィルター処理するには、識別名の OU 部分を追加します。 この規則は、その OU に属しているすべてのユーザーに適用されます。  したがって、DN の末尾が "OU=CPUsers,DC=contoso,DC=com" である場合は、次のフィルターを追加することになります。  続けて、 **[次へ]** をクリックします。 
 
-    |ルール|Attribute|演算子|値|
+    |ルール|Attribute|演算子|Value|
     |-----|----|----|-----|
     |スコープ OU|DN|ENDSWITH|OU の識別名。|
     |スコープ グループ||ISMEMBEROF|セキュリティ グループの識別名。|

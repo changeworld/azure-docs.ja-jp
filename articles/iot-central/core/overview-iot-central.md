@@ -1,111 +1,206 @@
 ---
 title: Azure IoT Central とは | Microsoft Docs
-description: Azure IoT Central は、IoT ソリューションの作成を簡単にする IoT アプリケーション プラットフォームです。 この記事では、Azure IoT Central の機能について概要を紹介します。
+description: Azure IoT Central は、IoT ソリューションの作成を簡素化し、IoT の管理、運用、開発の負担とコストを削減するのに役立つ IoT アプリケーション プラットフォームです。 この記事では、Azure IoT Central の機能について概要を紹介します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/26/2019
+ms.date: 12/10/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: a1aa2f12f62a95ac14750c821079df2bac46e8ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a16ed6ac942dd4a9fa521cc813a92e6767a98328
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434966"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024128"
 ---
-<!---
-Purpose of an Overview article: 
-1. To give a TECHNICAL overview of a service/product: What is it? Why should I use it? It's a "learn" topic that describes key benefits and our competitive advantage. It's not a "do" topic.
-2. To help audiences who are new to service but who may be familiar with related concepts. 
-3. To compare the service to another service/product that has some similar functionality, ex. SQL Database / SQL Data Warehouse, if appropriate. This info can be in a short list or table. 
--->
-
 # <a name="what-is-azure-iot-central"></a>Azure IoT Central とは
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
+IoT Central は、エンタープライズ レベルの IoT ソリューションの開発、管理、および保守の負担とコストを削減する IoT アプリケーション プラットフォームです。 IoT Central を使用して構築することを選択すると、複雑で絶えず進化する IoT インフラストラクチャをただ維持し、更新するだけでなく、IoT データによってビジネスを変革することに時間、予算、エネルギーを集中させる機会が得られます。
 
-IoT Central は、エンタープライズ レベルの IoT ソリューションの開発、管理、および保守に関連する負担とコストを削減する IoT アプリ プラットフォームです。 Azure IoT Central を使用して構築することを選択すると、複雑で絶えず進化する IoT インフラストラクチャをただ維持し、更新するだけでなく、IoT データによってビジネスを変革することに時間、予算、エネルギーを集中させる機会が得られます。
+Web UI では、デバイスの状態を監視し、ルールを作成し、ライフ サイクル全体を通して何百万ものデバイスとそのデータを管理することができます。 さらに、IoT インテリジェンスを基幹業務アプリケーションまで拡張することで、デバイスの分析情報に従って行動できるようになります。
 
-使いやすいインターフェイスにより、簡単にデバイスの状態を監視し、ルールを作成し、ライフ サイクル全体を通して何百万ものデバイスとそのデータを管理することができます。 さらに、IoT インテリジェンスを基幹業務アプリケーションまで拡張することで、デバイスの分析情報に従って行動できるようになります。
-
-この記事では、Azure IoT Central の要点を取り上げます。
+この記事では、IoT Central に関して以下の概要を説明します。
 
 - プロジェクトに関連する代表的なペルソナ。
 - アプリケーションを作成する方法。
 - デバイスをアプリケーションに接続する方法。
 - アプリケーションを管理する方法。
+- IoT Central での Azure IoT Edge 機能。
+- Azure IoT Edge ランタイム搭載デバイスをアプリケーションに接続する方法。
+
+## <a name="known-issues"></a>既知の問題
+
+- 継続的データ エクスポートで Avro 形式がサポートされていない (互換性がない)。
+- GeoJSON は現在サポートされていない。
+- マップ タイルは現在サポートされていない。
+- ジョブでは複合型がサポートされていない。
+- 配列スキーマの種類はサポートされていない。
+- C デバイス SDK と Node.js のデバイス SDK、サービス SDK のみがサポートされている。
+- 米国とヨーロッパの場所でのみ使用可能です。
+- デバイス機能モデルには、すべてのインターフェイスが同じファイル内にインラインで定義されている必要があります。
 
 ## <a name="personas"></a>ペルソナ
 
-この Azure IoT Central ドキュメントでは、Azure IoT Central アプリケーションと対話する 4 種類のペルソナについて言及しています。
+この IoT Central ドキュメントでは、IoT Central アプリケーションと対話する 4 種類のペルソナに言及しています。
 
-- "_ビルダー_": アプリケーションに接続するデバイスの種類を定義したり、オペレーター向けにアプリケーションをカスタマイズしたりする役割を担います。
+- "_ソリューション ビルダー_": アプリケーションに接続するデバイスの種類を定義したり、オペレーター向けにアプリケーションをカスタマイズしたりする役割を担います。
 - "_オペレーター_": アプリケーションに接続されたデバイスを管理します。
-- "_管理者_":アプリケーション内での[ユーザー ロールとアクセス許可](howto-administer.md)の管理などのタスクを担当します。
-- "_デバイス開発者_": アプリケーションに接続されたデバイス上で実行するコードを作成します。
+- "_管理者_": 管理タスクを担います (アプリケーション内での[ユーザー ロールとアクセス許可](howto-administer.md)の管理など)。
+- "_デバイス開発者_": アプリケーションに接続されるデバイスまたは IoT Edge モジュールで実行するコードを作成します。
 
-## <a name="create-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションの作成
+## <a name="create-your-iot-central-application"></a>IoT Central アプリケーションを作成する
 
-クラウドでホストされる自社のカスタム IoT ソリューションは、ビルダーが Azure IoT Central を使用して作成します。 通常、カスタム IoT ソリューションは次の要素から成ります。
+クラウドでホストされる自社のカスタム IoT ソリューションは、ソリューション ビルダーが IoT Central を使用して作成します。 通常、カスタム IoT ソリューションは次の要素から成ります。
 
 - クラウドベースのアプリケーション。このアプリケーションによってデバイスからテレメトリを受信し、それらのデバイスの管理が可能となります。
 - カスタム コードを実行する複数のデバイス。これらのデバイスが、クラウドベースのアプリケーションに接続されます。
 
-新しい Azure IoT Central アプリケーションは、ブラウザーからすばやくデプロイし、具体的な要件に合わせてカスタマイズすることができます。 ビルダーは、自社アプリケーションに接続するデバイス用に、Web ベースのツールを使って "_デバイス テンプレート_" を作成します。 デバイス テンプレートは、特定の種類のデバイスについて、その特性と動作を定義するブループリントです。次に示したのは、その例です。
+新しい IoT Central アプリケーションは、ブラウザーからすばやくデプロイし、具体的な要件に合わせてカスタマイズすることができます。 汎用の "_アプリケーション テンプレート_"、または[小売業](../retail/overview-iot-central-retail-pnp.md)、[エネルギー](../energy/overview-iot-central-energy.md)、[政府機関](../government/overview-iot-central-government.md)、[医療](../healthcare/overview-iot-central-healthcare.md)の各業界にフォーカスしたアプリケーション テンプレートのいずれかを使用して開始できます。
+
+ソリューション ビルダーは、自社アプリケーションに接続するデバイス用に、Web ベースのツールを使って "_デバイス テンプレート_" を作成します。 デバイス テンプレートは、特定の種類のデバイスについて、その特性と動作を定義するブループリントです。次に示したのは、その例です。
 
 - 送信するテレメトリ。
 - オペレーターによる変更が可能なビジネス プロパティ。
 - デバイスによって設定され、かつアプリケーションでは読み取り専用となるデバイス プロパティ。
-- アプリケーションが反応するしきい値。
-- デバイスの動作を決める設定。
+- オペレーターが設定する、デバイスの動作を決めるプロパティ。
 
-デバイス テンプレートとアプリケーションは、Azure IoT Central から自動的に生成されるシミュレーション データを使って、すぐにテストすることができます。
+このデバイス テンプレートには、次のものが含まれています。
 
-また、ビルダーは、日常的にアプリケーションを使うオペレーター向けに、Azure IoT Central アプリケーションの UI をカスタマイズすることもできます。 ビルダーが行うことのできるカスタマイズの例を次に示します。
+- "_デバイス機能モデル_": デバイスから送信されるテレメトリやデバイスからレポートされるプロパティなど、デバイスが実装する必要がある機能を記述します
+- クラウド プロパティ: これらはデバイスには格納されません。
+- カスタマイズ、ダッシュボード、およびフォーム: ご利用の IoT Central アプリケーションの一部を成します。
+
+
+### <a name="pricing"></a>価格
+
+7 日間の無料試用版を使用して IoT Central アプリケーションを作成することも、標準の料金プランを使用することもできます。
+
+- "*無料*" のプランを使用して作成したアプリケーションは 7 日間無料で、最大 5 台のデバイスがサポートされます。 期限切れになるまでは、いつでも標準の料金プランを使用するように変換できます。
+- "*標準*" のプランを使用して作成したアプリケーションは、デバイス単位で課金されます。**Standard 1** または **Standard 2** 料金プランから選択でき、どちらも最初の 2 つのデバイスが無料となります。 無料および標準の料金プランの詳細については、[Azure IoT Central の価格に関するページ](https://azure.microsoft.com/pricing/details/iot-central/)を参照してください。
+
+### <a name="create-device-templates"></a>デバイス テンプレートを作成する
+
+[IoT プラグ アンド プレイ (プレビュー)](../../iot-pnp/overview-iot-plug-and-play.md) を使用すると、埋め込みデバイス コードを記述せずに、IoT Central でデバイスを統合できます。 IoT プラグ アンド プレイ (プレビュー) の中核となるのは、デバイスの機能を記述するデバイス機能モデル スキーマです。 IoT Central アプリケーション内のデバイス テンプレートでは、これらの IoT プラグ アンド プレイ (プレビュー) デバイス機能モデルを使用しています。
+
+ソリューション ビルダーには、デバイス テンプレート作成のためのオプションがいくつか用意されています。
+
+- [Azure Certified for IoT デバイス カタログ](https://aka.ms/iotdevcat)からデバイス機能モデルをインポートし、次に、IoT Central アプリケーションで必要とされるクラウド プロパティ、カスタマイズ、およびダッシュボードを追加します。
+- IoT Central でデバイス テンプレートを設計してから、そのデバイス機能モデルをデバイス コードに実装します。
+- Visual Studio Code を使用してデバイス機能モデルを作成し、モデルをリポジトリに発行します。 モデルからデバイス コードを実装し、デバイスを IoT Central アプリケーションに接続します。 IoT Central によって、リポジトリからデバイス機能モデルが検索され、シンプルなデバイス テンプレートが自動的に作成されます。
+- Visual Studio Code を使用してデバイス機能モデルを作成します。 ご利用のデバイス コードをモデルから実装します。 ご利用の IoT Central アプリケーションにデバイス機能モデルを手動でインポートしてから、IoT Central アプリケーションに必要なクラウド プロパティ、カスタマイズ、およびダッシュボードを追加します。
+
+ソリューション ビルダーは、IoT Central を使用して、デバイス テンプレートを検証するためのテスト デバイス用コードを生成できます。
+
+### <a name="customize-the-ui"></a>UI のカスタマイズ
+
+ソリューション ビルダーは、アプリケーションの使用を日常的に担当するオペレーターに向けて、IoT Central アプリケーションの UI をカスタマイズすることもできます。 ソリューション ビルダーが行うことのできるカスタマイズの例を次に示します。
 
 - プロパティと設定のレイアウトをデバイス テンプレートで定義する。
 - オペレーターによる分析情報の検出と問題の解決を迅速化するカスタム ダッシュボードを構成する。
 - 接続されているデバイスから時系列データを探すカスタム分析を構成する。
 
+## <a name="pricing"></a>価格
+
+7 日間の無料試用版を使用して IoT Central アプリケーションを作成することも、標準の料金プランを使用することもできます。
+
+- "*無料*" のプランを使用して作成したアプリケーションは 7 日間無料で、最大 5 台のデバイスがサポートされます。 期限切れになるまでは、いつでも標準の料金プランを使用するように変換できます。
+- "*標準*" のプランを使用して作成したアプリケーションは、デバイス単位で課金されます。**Standard 1** または **Standard 2** 料金プランから選択でき、どちらも最初の 2 つのデバイスが無料となります。 [IoT Central の価格](https://aka.ms/iotcentral-pricing) についての詳細をご覧ください。
+
 ## <a name="connect-your-devices"></a>デバイスの接続
 
-アプリケーションに接続できるデバイスの種類がビルダーによって定義されたら、そのデバイス上で実行するコードをデバイス開発者が作成します。 デバイス開発者は、Microsoft のオープンソース [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) を使用してデバイス コードを作成します。 Azure IoT Central アプリケーションに自社のデバイスを接続するというお客様のニーズを満たすために、これらの SDK は多様な言語、プラットフォーム、プロトコルに対応しています。 これらの SDK を利用することで、次のようなデバイス機能が容易に実装できます。
+Azure IoT Central では、すべてのデバイスの登録と接続の管理に [Azure IoT Hub Device Provisioning Service (DPS)](../../iot-dps/about-iot-dps.md) が使用されます。
 
-- 安全な接続を作成する。
-- テレメトリを送信する。
-- ステータスを報告する。
-- 構成の更新を受信する。
+DPS を使用すると、次のことが可能になります。
 
-詳細については、ブログ記事「[Benefits of using the Azure IoT SDKs, and pitfalls to avoid if you don't (Azure IoT SDK を使う利点と使わなかった場合に回避すべきリスク)](https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/)」を参照してください。
+- IoT Central で、大量のデバイスのオンボーディングと接続をサポートできます。
+- デバイスの資格情報を生成し、デバイスをオフラインで構成できます。IoT Central UI を通じてデバイスを登録する必要はありません。
+- Shared Access Signature を使用してデバイスを接続できます。
+- 業界標準の X.509 証明書を使用してデバイス接続できます。
+- 独自のデバイス ID を使用して、IoT Central にデバイスを登録できます。 独自のデバイス ID を使用して、既存のバックオフィス システムとの統合を簡略化できます。
+- 1 つの一貫した方法で IoT Central にデバイスを接続できます。
 
-## <a name="manage-your-application"></a>アプリケーションの管理
+詳細については、「[Azure IoT Central に接続する](./concepts-get-connected.md)」を参照してください。
 
-Azure IoT Central アプリケーションは、完全に Microsoft によってホストされるため、アプリケーションの管理オーバーヘッドが軽減されます。
+### <a name="azure-iot-edge-devices"></a>Azure IoT Edge デバイス
 
-Azure IoT Central ソリューションのデバイスは、オペレーターが Azure IoT Central アプリケーションを使用して管理します。 オペレーターは、次のようなタスクを実行します。
+[Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) を使用して作成されたデバイスと同様に、[Azure IoT Edge デバイス](../../iot-edge/about-iot-edge.md)を IoT Central アプリケーションに接続することもできます。 Azure IoT Edge を使用すると、IoT Central によって管理されている IoT デバイスで、クラウド インテリジェンスやカスタム ロジックを直接実行できます。 IoT Edge ランタイムによって以下が可能となります。
+
+- デバイスにワークロードをインストールし、更新する。
+- デバイス上の Azure IoT Edge のセキュリティ標準を維持する。
+- IoT Edge モジュールの実行状態を絶えず確保する。
+- モジュールの正常性をクラウドにレポートしてリモート監視を可能にする。
+- ダウンストリームのリーフ デバイスと IoT Edge デバイス間、IoT Edge デバイス上のモジュール間、IoT Edge デバイスとクラウド間の通信を管理する。
+
+詳細については、[Azure IoT Edge デバイスと IoT Central](concepts-architecture.md#azure-iot-edge-devices) に関するページを参照してください。
+
+## <a name="stay-connected"></a>接続を維持する
+
+IoT Central アプリケーションは、Microsoft によって完全にホストされるため、アプリケーションの管理オーバーヘッドが軽減されます。
+
+IoT Central ソリューションのデバイスは、オペレーターが IoT Central アプリケーションを使用して管理します。 オペレーターは、次のようなタスクを実行します。
 
 - アプリケーションに接続されたデバイスを監視する。
 - デバイスの問題をトラブルシューティングして修復する。
 - 新しいデバイスをプロビジョニングする。
 
-ビルダーは、接続デバイスからのデータ ストリーミングに対して作用するカスタム ルールやカスタム アクションを定義できます。 それらのルールをオペレーターがデバイス レベルで有効または無効にすることで、アプリケーション内のタスクを制御したり自動化したりすることができます。
+ソリューション ビルダーは、接続デバイスからのデータ ストリーミングに対して作用するカスタム ルールやカスタム アクションを定義できます。 それらのルールをオペレーターがデバイス レベルで有効または無効にすることで、アプリケーション内のタスクを制御したり自動化したりすることができます。
 
 アプリケーションへのアクセスは、管理者が[ユーザー ロールとアクセス許可](howto-administer.md)を使って管理します。
 
+IoT ソリューションを大規模に運用するには、デバイス管理に対するアプローチが構造化されていることが重要です。 デバイスをクラウドに接続するだけでは十分ではありません。デバイスを常に正常な接続状態に保つ必要があります。 オペレーターは、次の IoT Central 機能を使用することで、アプリケーション ライフ サイクル全体を通じてデバイスを管理できます。
+
+### <a name="dashboards"></a>ダッシュボード 
+
+組み込みの[ダッシュボード](./howto-set-up-template.md#generate-default-views)は、デバイスの正常性とテレメトリを監視するための、カスタマイズ可能な UI を備えています。 [アプリケーション テンプレート](howto-use-app-templates.md)のあらかじめ構築されたダッシュボードを利用して開始するか、オペレーターのニーズに合わせた独自のダッシュボードを作成します。 ダッシュボードは、アプリケーション内のすべてのユーザーと共有することも、非公開に保つこともできます。
+
+### <a name="rules-and-actions"></a>ルールとアクション 
+
+デバイスの状態とテレメトリに基づいて[カスタム規則](tutorial-create-telemetry-rules.md)を作成することで、注意を要するデバイスを迅速に特定します。 適切なユーザーに通知するアクションを構成し、適切なタイミングで是正措置が講じられるようにします。
+
+### <a name="jobs"></a>ジョブ 
+
+[ジョブ](howto-run-a-job.md)を使用すると、プロパティを設定したりコマンドを呼び出したりして、デバイスに単独または一括の更新を実行できます。 
+
+### <a name="user-roles-and-permissions"></a>ユーザーのロールとアクセス許可
+
+[ロールとアクセス許可](howto-manage-users-roles.md)を使用すると、管理者はユーザーのエクスペリエンスを調整できます。 管理者は、Web UI を使用してロールを作成し、アクセス許可を割り当てます。
+
+## <a name="transform-your-iot-data"></a>IoT データを変換する
+
+IoT Central ではアプリケーション プラットフォームとして、IoT データを、アクションにつながる結果をもたらすビジネス分析情報に変換できます。 IoT Central を基幹業務アプリケーションに統合する方法の例としては、[規則](./tutorial-create-telemetry-rules.md)、[データのエクスポート](./howto-export-data.md)、[パブリック REST API](https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/) があります。
+
+![IoT Central で IoT データを変換する方法](media/overview-iot-central/transform.png)
+
+### <a name="monitor-device-health-and-operations-using-rules"></a>規則を使用してデバイスの正常性と運用状況を監視する
+
+接続中のデバイスからデータが送信されている場合、規則を使用すると、問題が発生しているデバイスやエラー メッセージを送信しているデバイスを特定して、最小限のダウンタイムでそれらのデバイスを修正することができます。 IoT Central アプリケーションで規則を作成してデバイスからのテレメトリを監視し、メトリックがしきい値を超えたときやデバイスから特定のメッセージが送信されてきたときに、オペレーターにアラートを発します。 規則に応じたメール アクションや Webhook によって、適切なユーザーと適切なダウンストリーム システムに通知を行います。
+
+### <a name="run-custom-analytics-and-processing-on-your-exported-data"></a>エクスポートされたデータに対してカスタムの分析と処理を実行する
+
+カスタムの分析パイプラインを構築してデバイスからのテレメトリを処理し、結果を格納することにより、工場現場における機械の効率性の傾向を判断したり、将来の電力使用量を予測したりするなど、ビジネス分析情報を生成できます。 IoT Central アプリケーションでデータのエクスポートを構成して、テレメトリ、デバイス プロパティの変更、デバイス テンプレートの変更を他のサービスにエクスポートします。このサービスでは、任意のツールを使用してデータを分析、保存、および視覚化することができます。
+
+### <a name="build-custom-iot-solutions-and-integrations-with-the-rest-apis"></a>REST API を使用してカスタムの IoT ソリューションと統合を構築する
+
+次のような IoT ソリューションを構築します。
+
+- デバイスをリモートで設定および制御できるモバイル コンパニオン アプリ。
+- 既存の基幹業務アプリケーションが IoT デバイスやデータと対話できるようにするカスタム統合。
+- デバイスのモデル化、オンボード、管理、およびデータ アクセスを行うためのデバイス管理アプリケーション。
+
+## <a name="quotas"></a>Quotas (クォータ)
+
+各 Azure サブスクリプションには既定のクォータが設けられており、IoT ソリューションの範囲に影響する可能性があります。 現在、IoT Central では、サブスクリプションでデプロイできるアプリケーションの数が 10 に制限されています。 この制限を引き上げる必要がある場合は、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
+
 ## <a name="next-steps"></a>次のステップ
 
-これで Azure IoT Central の概要は終了です。推奨される次の手順は以下のとおりです。
+これで IoT Central の概要を把握できました。推奨される次の手順は以下のとおりです。
 
 - [IoT ソリューションを作成するための Azure のテクノロジとサービス](../../iot-fundamentals/iot-services-and-technologies.md)を把握する。
 - [Azure IoT Central の UI](overview-iot-central-tour.md) に慣れる。
 - 実際に [Azure IoT Central アプリケーションを作成](quick-deploy-iot-central.md)してみる。
-- 一連のチュートリアルに従って、以下の作業方法を確認する。
-  - [ビルダーとしてデバイス テンプレートを作成する](tutorial-define-device-type.md)
-  - [ビルダーとして、ソリューションを自動化するためのルールを追加する](tutorial-configure-rules.md)
-  - [ビルダーとして、オペレーター向けにアプリケーションをカスタマイズする](tutorial-customize-operator.md)
-  - [オペレーターとしてデバイスを監視する](tutorial-monitor-devices.md)
-  - [オペレーターとして、実デバイスをソリューションに追加する](tutorial-add-device.md)
-  - [デバイス開発者として、デバイス向けのコードを作成する](tutorial-add-device.md#prepare-the-client-code)
+- [IoT プラグ アンド プレイ (プレビュー)](../../iot-pnp/overview-iot-plug-and-play.md)の詳細を確認する。
+- [Azure IoT Edge デバイスを接続する](./tutorial-add-edge-as-leaf-device.md)方法について学習する。
+- [Azure IoT のテクノロジとサービス](../../iot-fundamentals/iot-services-and-technologies.md)の詳細を確認する。

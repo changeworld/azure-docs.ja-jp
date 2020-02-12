@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83e5790a036a93c947a79bc2848e7be6febf30b6
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 1aa2d58a40c623cc451ca30aaa9d75a4a6b3d4c0
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122036"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983879"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-azure-ad-saml-toolkit"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Azure AD SAML Toolkit の統合
 
@@ -29,7 +29,7 @@ ms.locfileid: "71122036"
 
 * Azure AD SAML Toolkit にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Azure AD SAML Toolkit に自動的にサインインするように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -76,17 +76,17 @@ Azure AD SAML Toolkit に対する Azure AD SSO を構成してテストする�
 
 1. [Azure portal](https://portal.azure.com/) の **Azure AD SAML Toolkit** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。 設定は、SAML Toolkit の SAML 構成ページを使用して取得できます。 
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 1. **[基本的な SAML 構成]** ページで、次のフィールドの値を入力します。
 
-    a. **[サインオン URL]** ボックスに URL として「`https://samltoolkit.azurewebsites.net/`」と入力します。
+    a. **[サインオン URL]** ボックスに URL として「`https://samltoolkit.azurewebsites.net/SAML/Login/<3digitnumber>`」と入力します。
 
     b. **[識別子 (エンティティ ID)]** ボックスに、`https://samltoolkit.azurewebsites.net` という URL を入力します。
 
-    c. **[応答 URL]** ボックスに、`https://samltoolkit.azurewebsites.net/SAML/Consume` という URL を入力します。
+    c. **[応答 URL]** ボックスに、`https://samltoolkit.azurewebsites.net/SAML/Consume/<3digitnumber>` という URL を入力します。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (未加工)]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 

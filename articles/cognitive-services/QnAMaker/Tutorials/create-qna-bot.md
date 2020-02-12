@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 12/11/2019
+ms.date: 01/28/2020
 ms.author: diberry
-ms.openlocfilehash: 0ddce3e4112dfb14309878927493abb3cb6b451a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a9afef07af1332910cc9e25f9d66db5930df3bd4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447364"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901658"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>チュートリアル:Azure Bot Service v4 を使用して QnA ボットを作成する
 
@@ -41,13 +41,13 @@ ms.locfileid: "75447364"
 
 1. QnA Maker ポータルで、**発行**ページに進み、ご自分のナレッジ ベースを発行します。 **[ボットを作成する]** を選択します。
 
-    ![QnA Maker ポータルで発行ページに進み、ご自分のナレッジ ベースを発行します。 [Create bot]\(ボットの作成\) を選択します。](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png)
+    [![QnA Maker ポータルで発行ページに進み、ご自分のナレッジ ベースを発行します。[Create bot]\(ボットの作成\) を選択します。](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png)](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png#lightbox)
 
     Azure portal が開き、ボットの作成構成が表示されます。
 
 1.  ボットを作成するための設定を入力します。
 
-    |設定|値|目的|
+    |設定|Value|目的|
     |--|--|--|
     |ボット ハンドル|`qna-maker-central-us-bot`|これは、ボット用の Azure リソース名です。|
     |サブスクリプション|目的を参照。|QnA Maker リソースを作成するために使用したのと同じサブスクリプションを選択します。|
@@ -101,8 +101,6 @@ ms.locfileid: "75447364"
 
 ## <a name="related-to-qna-maker-bots"></a>QnA Maker ボット関連
 
-* [ボットのサンプル](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support)として、QnA Maker ポータルで使用されている QnA Maker ヘルプ ボットを利用できます。
-    ![QnA Maker ヘルプ ボットのアイコンは赤色のロボット](../media/qnamaker-tutorials-create-bot/answer-bot-icon.PNG)
 * [Healthcare ボット](https://docs.microsoft.com/HealthBot/qna_model_howto)は、その[言語モデル](https://docs.microsoft.com/HealthBot/qna_model_howto)の 1 つとして QnA Maker を使用します。
 
 

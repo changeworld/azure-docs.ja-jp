@@ -1,37 +1,36 @@
 ---
-title: Visual Studio のテンプレート デプロイ スクリプトを Az Powershell を使用するように更新する
-description: Visual Studio テンプレート デプロイ スクリプトを AzureRM から Az Powershell に更新する
+title: Visual Studio のテンプレート デプロイ スクリプトを Az PowerShell を使用するように更新する
+description: Visual Studio テンプレート デプロイ スクリプトを AzureRM から Az PowerShell に更新する
 author: cweining
-ms.topic: quickstart
-ms.date: 09/27/2019
+ms.topic: conceptual
+ms.date: 01/31/2020
 ms.author: cweining
-ms.openlocfilehash: c34cde5593b48c301826be3dd2641dc2490ee88d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 357e0289f3237ed32b0801280316225ba5530282
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75455476"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963871"
 ---
-# <a name="updating-the-visual-studio-template-deployment-script-to-use-az-powershell"></a>Visual Studio テンプレート デプロイ スクリプトを Az Powershell を使用するように更新する
+# <a name="update-visual-studio-template-deployment-script-to-use-az-powershell-module"></a>Visual Studio テンプレート デプロイ スクリプトを Az PowerShell モジュールを使用するように更新する
 
-Visual Studio 16.4 では、テンプレート デプロイ スクリプトでの Az Powershell の使用がサポートされています。 Visual Studio は Az Powershell をインストールせず、リソース グループ プロジェクト内のデプロイ スクリプトを自動的に更新することもありません。 より新しい Az Powershell を使用するには、以下の 4 つの操作を行う必要があります。
-1. AzureRM powershell をアンインストールする
-1. Az Powershell をインストールする
-1. Visual Studio 16.4 に更新する
+Visual Studio 16.4 では、テンプレート デプロイ スクリプトでの Az PowerShell モジュールの使用がサポートされています。 ただし、Visual Studio では、そのモジュールは自動的にインストールされません。 Az モジュールを使用するには、次の 4 つの手順を実行する必要があります。
+
+1. [AzureRM モジュールのアンインストール](/powershell/azure/uninstall-az-ps#uninstall-the-azurerm-module)
+1. [Azure モジュールのインストール](/powershell/azure/install-az-ps)
+1. Visual Studio を 16.4 に更新する
 1. プロジェクト内のデプロイ スクリプトを更新する
 
-## <a name="uninstall-azurerm-powershell"></a>AzureRM powershell をアンインストールする
-この[手順](https://docs.microsoft.com/powershell/azure/uninstall-az-ps?view=azps-2.7.0#uninstall-the-azurerm-module)に従って、AzureRM Powershell をアンインストールしてください。
-
-## <a name="install-az-powershell"></a>Az Powershell をインストールする
-この[手順](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.7.0)に従って、Az Powershell をインストールしてください。
-
 ## <a name="update-visual-studio-to-164"></a>Visual Studio を 16.4 に更新する
-Visual Studio 16.4 が使用可能になったら、これに更新します。 アップグレード中に、Azure Powershell コンポーネントがオンになっていないことを確認してください。 ギャラリーを通じて Az Powershell をインストールしたため、Visual Studio と共にインストールされる Powershell の AzureRM バージョンは必要ありません。
 
-既に 16.4 にアップグレードしていて、Azure Powershell コンポーネントがオンになっていた場合は、Visual Studio インストーラーを実行し、Azure ワークロードまたは個々のコンポーネント ページで Azure Powershell コンポーネントをオフにすることにより、アンインストールできます。
+Visual Studio のインストールをバージョン 16.4 以降に更新します。 アップグレード中に、Azure PowerShell コンポーネントがオンになっていないことを確認してください。 Az モジュールをギャラリーからインストールしたため、AzureRM モジュールを再インストールする必要はありません。
+
+既に 16.4 にアップグレードして Azure PowerShell コンポーネントがオンになっている場合は、Visual Studio インストーラーを実行してアンインストールすることができます。 Azure ワークロードまたは個々のコンポーネント ページで Azure PowerShell コンポーネントを選択しないでください。
 
 ## <a name="update-the-deployment-script-in-your-project"></a>プロジェクト内のデプロイ スクリプトを更新する
-デプロイ スクリプトで出現するすべての文字列 "AzureRm" を "Az" に置き換えます。 変更を確認するために、この [gist](https://gist.github.com/cweining/d2da2479418ea403499c4306dcf4f619) でリビジョンを参照できます。 Az Powershell へのスクリプトのアップグレードの詳細については、この[ドキュメント](https://docs.microsoft.com/powershell/azure/migrate-from-azurerm-to-az?view=azps-2.5.0)を参照してください。
 
+デプロイ スクリプトで出現するすべての文字列 "AzureRm" を "Az" に置き換えます。 変更を確認するために、この [gist](https://gist.github.com/cweining/d2da2479418ea403499c4306dcf4f619) でリビジョンを参照できます。 スクリプトを Az モジュールにアップグレードする方法の詳細については、「[AzureRM から Az への Azure PowerShell の移行](/powershell/azure/migrate-from-azurerm-to-az)」を参照してください。
 
+## <a name="next-steps"></a>次のステップ
+
+Visual Studio プロジェクトの使用の詳細については、[Visual Studio での Azure リソース グループ プロジェクトの作成とデプロイ](create-visual-studio-deployment-project.md)に関する記事を参照してください。

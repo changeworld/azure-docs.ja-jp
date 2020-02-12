@@ -7,18 +7,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 01/15/2020
 ms.author: iainfou
-ms.openlocfilehash: ef203eec1398e9f23fb162845b9d570316083ecf
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 8905f2a0a306ec4c9c6e19479c6adb96a6ed39ca
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703686"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931267"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>チュートリアル:Azure Active Directory Domain Services インスタンスを作成して構成する
 
-Azure Active Directory Domain Services (Azure AD DS) は、Windows Server Active Directory と完全に互換性のあるマネージド ドメイン サービス (ドメイン参加、グループ ポリシー、LDAP、Kerberos 認証、NTLM 認証など) を提供します。 ドメイン コントローラーのデプロイ、管理、パッチの適用を自分で行わなくても、これらのドメイン サービスを使用することができます。 Azure AD DS は、既存の Azure AD テナントと統合されます。 この統合により、ユーザーは、各自の会社の資格情報を使用してサインインすることができます。また管理者は、既存のグループとユーザー アカウントを使用してリソースへのアクセスをセキュリティで保護することができます。
+Azure Active Directory Domain Services (Azure AD DS) では、Windows Server Active Directory と完全に互換性のあるマネージド ドメイン サービス (ドメイン参加、グループ ポリシー、LDAP、Kerberos 認証、NTLM 認証など) が提供されます。 ドメイン コントローラーのデプロイ、管理、パッチの適用を自分で行わなくても、これらのドメイン サービスを使用することができます。 Azure AD DS は、既存の Azure AD テナントと統合されます。 この統合により、ユーザーは、各自の会社の資格情報を使用してサインインすることができます。また管理者は、既存のグループとユーザー アカウントを使用してリソースへのアクセスをセキュリティで保護することができます。
 
 ネットワークと同期に関して既定の構成オプションを使用してマネージド ドメインを作成するか、[それらの設定を手動で定義][tutorial-create-instance-advanced]することができます。 このチュートリアルでは、Azure portal を使用し、既定のオプションを使用して Azure AD DS インスタンスを作成、構成する方法について説明します。
 
@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 * Azure AD DS を有効にするには、Azure AD テナントに "*全体管理者*" 特権が必要です。
 * 必要な Azure AD DS リソースを作成するためには、ご利用の Azure サブスクリプションに "*共同作成者*" 特権が必要です。
 
-Azure AD DS では必須ではありませんが、Azure AD テナントには、[SSPR (Self-Service Password Reset: パスワード リセットのセルフサービス) を構成][configure-sspr]することをお勧めします。 SSPR がなくても、ユーザーは自分のパスワードを変更できます。しかし、ユーザーがパスワードを紛失してしまってリセットする必要が生じた場合には SSPR が役立ちます。
+Azure AD DS では必須ではありませんが、Azure AD テナントには、[SSPR (Self-Service Password Reset: セルフサービス パスワード リセット ) を構成][configure-sspr]することをお勧めします。 SSPR がなくても、ユーザーは自分のパスワードを変更できます。しかし、ユーザーがパスワードを紛失してしまってリセットする必要が生じた場合には SSPR が役立ちます。
 
 > [!IMPORTANT]
 > Azure AD DS マネージド ドメインを作成した後は、そのインスタンスを別のリソース グループ、仮想ネットワーク、サブスクリプションなどに移動することはできません。Azure AD DS インスタンスをデプロイするときに、最適なサブスクリプション、リソース グループ、リージョン、および仮想ネットワークを慎重に選択してください。
@@ -55,7 +55,7 @@ Azure AD DS では必須ではありませんが、Azure AD テナントには�
 
 **[Azure AD Domain Services の有効化]** ウィザードを起動するには、次の手順を実行します。
 
-1. Azure portal メニューまたは **[ホーム]** ページで、 **[リソースの作成]** を選択します。
+1. Azure portal メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。
 1. 検索バーに「*Domain Services*」と入力し、検索候補から *[Azure AD Domain Services]* を選択します。
 1. [Azure AD Domain Services] ページで **[作成]** を選択します。 **[Azure AD Domain Services の有効化]** ウィザードが起動します。
 1. マネージド ドメインを作成する Azure **サブスクリプション**を選択します。
@@ -93,6 +93,9 @@ Azure portal の *[基本]* ウィンドウのフィールドに必要事項を�
 
     Azure AD DS を複数のゾーンに分散するために、ご自身で構成するものは何もありません。 Azure プラットフォームでは、ゾーンへのリソース分散が自動的に処理されます。 詳細情報および利用可能なリージョンについては、「[Azure の Availability Zones の概要][availability-zones]」を参照してください。
 
+1. パフォーマンス、バックアップ頻度、作成できるフォレストの信頼の最大数は、**SKU** によって決まります。 マネージド ドメインの作成後、ビジネス上の需要や要件に変化が生じた場合は SKU を変更できます。 詳細については、[Azure AD DS SKU の概念][concepts-sku]に関するセクションを参照してください。
+
+    このチュートリアルでは、*Standard* SKU を選択します。
 1. "*フォレスト*" は、Active Directory Domain Services が 1 つまたは複数のドメインをグループ化するために使用する論理上の構成体です。 既定では、Azure AD DS のマネージド ドメインが "*ユーザー*" フォレストとして作成されます。 このタイプのフォレストでは、オンプレミスの AD DS 環境で作成されたユーザー アカウントも含め、Azure AD 内のすべてのオブジェクトが同期されます。 "*リソース*" フォレストでは、Azure AD に直接作成されたユーザーとグループだけが同期されます。 リソース フォレストは現在プレビュー段階です。 リソース フォレストを使用する理由や、オンプレミスの AD DS ドメインを使用してフォレストの信頼を作成する方法など、"*リソース*" フォレストの詳細については、[Azure AD DS リソース フォレストの概要][resource-forests]に関するページを参照してください。
 
     このチュートリアルでは、"*ユーザー*" フォレストを作成します。
@@ -105,7 +108,7 @@ Azure AD DS のマネージド ドメインをすばやく作成するには、 
 * IP アドレス範囲 *10.0.1.0/24* を使用して、*aadds-subnet* という名前のサブネットを作成します。
 * Azure AD の "*すべて*" のユーザーを Azure AD DS のマネージド ドメインに同期させます。
 
-1. **[確認および作成]** を選択して、これらの既定の構成オプションをそのまま使用します。
+**[確認および作成]** を選択して、これらの既定の構成オプションをそのまま使用します。
 
 ## <a name="deploy-the-managed-domain"></a>マネージド ドメインをデプロイする
 
@@ -156,7 +159,7 @@ Azure AD に作成されたユーザー アカウントがクラウド専用の�
 
 クラウド専用ユーザー アカウントの場合、ユーザーは Azure AD DS を使用する前に各自のパスワードを変更する必要があります。 このパスワード変更プロセスによって、Kerberos 認証と NTLM 認証に使用されるパスワード ハッシュが Azure AD に生成されて保存されます。 テナント内のユーザーのうち、Azure AD DS を使用する必要がある全ユーザーのパスワードを期限切れにして、次回のサインイン時にパスワードの変更を強制するか、または、各自のパスワードを手動で変更するようユーザーに指示してください。 このチュートリアルでは、ユーザー パスワードを手動で変更しましょう。
 
-ユーザーが自分のパスワードをリセットできるように、あらかじめ Azure AD テナントを[パスワード リセットのセルフサービス用に構成][configure-sspr]しておく必要があります。
+ユーザーが自分のパスワードをリセットできるように、あらかじめ Azure AD テナントを[セルフサービス パスワード リセット 用に構成][configure-sspr]しておく必要があります。
 
 クラウド専用ユーザーのパスワードを変更するには、ユーザーが次の手順を実行する必要があります。
 
@@ -171,7 +174,7 @@ Azure AD に作成されたユーザー アカウントがクラウド専用の�
 
 パスワードの変更後、Azure AD DS で新しいパスワードを使用したり、マネージド ドメインに参加しているコンピューターに正常にサインインしたりできるようになるまでには数分かかります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 
@@ -200,6 +203,7 @@ VM をドメインに参加させて、Azure AD DS のマネージド ドメイ�
 [skus]: overview.md
 [resource-forests]: concepts-resource-forest.md
 [availability-zones]: ../availability-zones/az-overview.md
+[concepts-sku]: administration-concepts.md#azure-ad-ds-skus
 
 <!-- EXTERNAL LINKS -->
 [naming-prefix]: /windows-server/identity/ad-ds/plan/selecting-the-forest-root-domain#selecting-a-prefix

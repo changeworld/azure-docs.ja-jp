@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 0e841b1f386d45ddb4af8598855d8e739750307e
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 1f6f282406c6813b2b126c300f21bda21e8f9464
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910739"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988976"
 ---
 # <a name="migrate-from-google-maps-to-azure-maps"></a>Google マップから Azure Maps に移行する
 
@@ -22,11 +22,11 @@ ms.locfileid: "75910739"
 
 ## <a name="azure-maps-platform-overview"></a>Azure Maps プラットフォームの概要
 
-Azure Maps には、あらゆる業界の開発者向けに、Web アプリケーションやモバイル アプリケーションに地理的コンテキストを提供するための、定期的に更新されるマップ データが搭載された強力な地理空間機能が用意されています。 Azure Maps には、マップ、検索、ルート指定、交通情報、タイム ゾーン、位置情報、ジオフェンシング、マップ データ、天気、モビリティ、空間演算に対応する、Azure One API に準拠した一連の REST API があります。Web SDK と Android SDK の両方が付属しており、開発が簡単かつ柔軟になるほか、複数のプラットフォーム間での移植が可能になります。
+Azure Maps には、あらゆる業界の開発者向けに、Web アプリケーションやモバイル アプリケーションに地理的コンテキストを提供するための、定期的に更新されるマップ データが搭載された強力な地理空間機能が用意されています。 Azure Maps は、Azure One API に準拠した REST API のセットです。 それらの REST API は、マップ、検索、ルート指定、トラフィック、タイム ゾーン、位置情報、ジオフェンシング、マップ データ、天気、モビリティ、空間演算を提供します。 演算は、Web と Android の両方の SDK によって実現されているため、開発が簡単になり、柔軟性が高く、複数のプラットフォーム間で移植性が確保されます。
 
 ## <a name="high-level-platform-comparison"></a>プラットフォームのおおまかな比較
 
-次の表では、Google Maps 機能と、それらの機能に相当する Azure Maps でのサポートのおおまかな一覧を示します。 この一覧には、アクセシビリティ、ジオフェンシング API、等時線、空間操作、直接マップ タイル アクセス、一括サービス、データ カバレッジの比較 (画像のカバレッジ) などのその他の Azure Maps 機能は含まれていません。
+次の表は、Google Maps の機能とそれに対応する Azure Maps の機能の大まかな一覧です。 この一覧に Azure Maps のすべての機能が網羅されているわけではありません。 Azure Maps には、他にもアクセシビリティ、ジオフェンシング API、等時線、空間演算、直接マップ タイル アクセス、バッチ サービス、データ カバレッジの比較 (画像のカバレッジ) などの機能があります。
 
 | Google Maps 機能         | Azure Maps のサポート                     |
 |-----------------------------|:--------------------------------------:|
@@ -56,7 +56,7 @@ Google Maps では、基本的なキーベースの認証が提供されます�
 Google Maps から Azure Maps に移行する場合は、ライセンスに関して次の点を考慮する必要があります。
 
 - Azure Maps では、読み込まれたマップ タイルの数に基づいて対話型マップの使用量に対して料金が請求されます。一方、Google Maps では、マップ コントロールの読み込みに対して料金が請求されます。 対話型 Azure Maps SDK では、開発者のコストを削減するために、マップ タイルが自動的にキャッシュされます。 マップ タイルが 15 個読み込まれるごとに、1 個の Azure Maps トランザクションが生成されます。 対話型 Azure Maps SDK では、512 ピクセルのタイルが使用され、平均してページ ビューあたり 1 個またはそれより少ないトランザクションが生成されます。
-- 多くの場合、Google Maps Web サービスの静的なマップ イメージを Azure Maps Web SDK に置き換える方が、はるかにコスト効率に優れています。これにはマップ タイルが使用され、ユーザーがマップのパンやズームを行わない限り、多くの場合はマップの読み込みごとに 1 回よりはるかに少ないトランザクションしか生成されないからです。 Azure Maps Web SDK には、パンとズームを無効にするオプションがあります。 また、Azure Maps Web SDK には、静的なマップ Web サービスよりも非常に多くの視覚化オプションが用意されています。
+- 多くの場合、Google Maps Web サービスの静的マップ画像は Azure Maps Web SDK に置き換えた方が、ずっとコスト効果に優れています。 Azure Maps Web SDK では、マップタイルを使用します。ユーザーがマップをパンしたりズームしたりしない限り、多くの場合、マップの読み込みごとにトランザクションのごく一部のみが生成されます。 Azure Maps Web SDK には、パンとズームを無効にするオプションがあります。 また、Azure Maps Web SDK には、静的なマップ Web サービスよりも非常に多くの視覚化オプションが用意されています。
 - Azure Maps を使用すると、データをそのプラットフォームから Azure に格納できます。 また、[使用条件](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46)に従って、最大 6 か月間キャッシュすることもできます。
 
 Azure Maps のいくつかの関連リソースを次に示します。

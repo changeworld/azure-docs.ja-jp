@@ -11,18 +11,17 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: f9624f516d5f38f1db02c6a103c40d01f8dc26ca
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: fea3440dd7c017b85d6fffa2ec0fe5d26cd98b97
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702684"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022173"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>チュートリアル:Azure IoT Central でのオペレーター ダッシュボードのカスタマイズと、デバイスの管理
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-このチュートリアルでは、作成者向けに、Azure IoT Central のストア内分析アプリケーションでオペレーター ダッシュボードをカスタマイズする方法について説明します。 アプリケーションのオペレーターは、カスタマイズされたダッシュボードを使用して、アプリケーションを実行し、接続されているデバイスを管理できます。
+このチュートリアルでは、ビルダーとして、Azure IoT Central のストア内分析アプリケーションでオペレーター ダッシュボードをカスタマイズする方法を学習します。 アプリケーションのオペレーターは、カスタマイズされたダッシュボードを使用して、アプリケーションを実行し、接続されているデバイスを管理できます。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
@@ -35,12 +34,12 @@ ms.locfileid: "74702684"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを始める前に、作成者は最初のチュートリアルを完了して、Azure IoT Central ストア内分析アプリケーションを作成し、デバイスを追加する必要があります。
+ビルダーは、Azure IoT Central ストア内分析アプリケーションを作成してデバイスを追加する手順が記載された、次のチュートリアルを完了する必要があります。
 
 * [Azure IoT Central でストア内分析アプリケーションを作成する](./tutorial-in-store-analytics-create-app-pnp.md) (必須)
 
 ## <a name="change-the-dashboard-name"></a>ダッシュボード名を変更する
-オペレーター ダッシュボードをカスタマイズするには、アプリケーションの既定のダッシュボードを編集します。 必要に応じて、新しい追加のダッシュボードを作成することもできます。 アプリケーションでダッシュボードをカスタマイズするための最初の手順は、名前を変更することです。
+オペレーター ダッシュボードをカスタマイズするには、アプリケーションの既定のダッシュボードを編集する必要があります。 また、新しい追加のダッシュボードを作成することもできます。 アプリケーションでダッシュボードをカスタマイズするための最初の手順は、名前を変更することです。
 
 1. [Azure IoT Central のアプリケーション マネージャー](https://aka.ms/iotcentral) Web サイトに移動します。
 
@@ -54,7 +53,7 @@ ms.locfileid: "74702684"
 
 1. **[ダッシュボード名]** にダッシュボードのフレンドリ名を入力します。 このチュートリアルでは Contoso という架空の会社名を使用します。サンプルのダッシュボード名は *Contoso dashboard* です。 
 
-1. **[保存]** を選択します。 これにより、変更内容がダッシュボードに保存され、編集モードが無効になります。
+1. **[保存]** を選択します。 変更内容がダッシュボードに保存され、編集モードが無効になります。
 
     ![Azure IoT Central のダッシュボード名の変更](./media/tutorial-in-store-analytics-customize-dashboard-pnp/dashboard-change-name.png)
 
@@ -247,7 +246,7 @@ RuuviTag センサーの環境データを表示するためのタイルを追�
 
 1. 必要に応じて、 **[Reboot]\(再起動\)** タイルを選択して、ゲートウェイで再起動コマンドを実行します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、以下の内容を学習しました。
 
 * ダッシュボード名を変更する

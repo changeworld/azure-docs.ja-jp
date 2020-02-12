@@ -13,23 +13,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 01/08/2020
+ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: e81871e27c04f8a43f678110d7f44cc9c3be149c
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: c6c27a269abfd6fbf29ec7bbb0980d764abaa242
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940757"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904504"
 ---
-# <a name="quickstart-event-hubs-capture-walkthrough-python"></a>クイック スタート:Event Hubs Capture チュートリアル:Python
+# <a name="quickstart-event-hubs-capture-walkthrough-python-azure-eventhub-version-1"></a>クイック スタート:Event Hubs Capture チュートリアル:Python (azure-eventhub バージョン 1)
 
 Capture は Azure Event Hubs の機能です。 Capture を使用すると、任意の Azure Blob Storage アカウントに、イベント ハブ内のストリーミング データを自動的に配布できます。 この機能により、リアルタイムのストリーミング データを容易にバッチ処理することができます。 この記事では、Event Hubs Capture を Python で使用する方法について説明します。 Event Hubs Capture の詳細については、「[Azure Event Hubs で Azure Blob Storage または Azure Data Lake Storage にイベントをキャプチャする][Overview of Event Hubs Capture]」を参照してください。
 
 このチュートリアルでは、[Azure Python SDK](https://azure.microsoft.com/develop/python/) を使用して、Capture の機能を示します。 "*sender.py*" プログラムでは、シミュレートされた環境のテレメトリが JSON 形式で Event Hubs に送信されます。 イベント ハブで Capture 機能が使用され、このデータが数回に分けて Blob Storage に書き込まれます。 "*capturereader.py*" アプリでは、これらの BLOB を読み取り、各デバイスに追加ファイルを作成して、各デバイスの " *.csv*" ファイルにデータを書き込みます。
 
-> [!IMPORTANT]
-> このクイックスタートでは、Azure Event Hubs Python SDK のバージョン 1 を使用します。 Azure Event Hubs を初めて使用する場合は、Python SDK のバージョン 5 を使用してください。 Python SDK のバージョン 5 を使用するクイックスタートについては、[こちらの記事](get-started-capture-python-v2.md)を参照してください。 既存のコードをバージョン 1 からバージョン 5 に移行する必要がある場合は、[移行ガイド](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)をご覧ください。
+> [!WARNING]
+> このクイックスタートでは、Azure Event Hubs Python SDK のバージョン 1 を使用します。 [バージョン 5 の Python SDK](get-started-capture-python-v2.md) にコードを[移行](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)することをお勧めします。
 
 このチュートリアルでは次を行います。 
 
@@ -57,7 +57,7 @@ Capture は Azure Event Hubs の機能です。 Capture を使用すると、任
 
 キャプチャに使用するストレージ アカウントとコンテナーを作成します。 
 
-1. [Azure portal][Azure portal] にサインインする
+1. [Azure portal][Azure portal] にサインインします。
 2. 左側のナビゲーションで、 **[ストレージ アカウント]** を選択し、 **[ストレージ アカウント]** 画面で **[追加]** を選択します。
 3. ストレージ アカウントの作成画面で、サブスクリプションとリソース グループを選択し、ストレージ アカウントに名前を付けます。 他の選択は既定のままにしておくことができます。 **[確認および作成]** を選択し、設定を確認してから、 **[作成]** を選択します。 
    

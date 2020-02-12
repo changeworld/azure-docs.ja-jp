@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: 9c24f54fe846459187488b0a65b2582914e25e2a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f2acb89597ef877543a2c4cc46f395aede41034b
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499342"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964500"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>チュートリアル:Azure Data Share を使用したデータの受け入れと受信  
 
@@ -30,96 +30,108 @@ ms.locfileid: "73499342"
 
 * Azure サブスクリプション:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 * Data Share の招待:" **<yourdataprovider@domain.com>** からの Azure Data Share の招待" という件名の Microsoft Azure からの招待。
+* Microsoft.DataShare リソースプロバイダーを登録します。 「[Azure Data Share のトラブルシューティング](data-share-troubleshoot.md)」に記載されている指示に従って、データ共有リソースプロバイダーを登録します。
 
 ### <a name="receive-data-into-a-storage-account"></a>ストレージ アカウントへのデータの受信: 
 
 * Azure Storage アカウント: [Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)をまだお持ちでない場合は、作成できます。 
-* ストレージ アカウントにロールの割り当てを追加する権限。これは、*Microsoft.Authorization/role assignments/write* 権限に含まれています。 この権限は、所有者ロール内に存在します。 
-* Microsoft.DataShare のリソースプロバイダーの登録。 この手順の詳細については、[Azure リソースプロバイダー](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)のドキュメントを参照してください。 
-
-> [!IMPORTANT]
-> Azure Data Share を受け入れて受信するには、まず Microsoft.DataShare リソース プロバイダーを登録し、データを受け入れるストレージ アカウントの所有者になる必要があります。 「[Azure Data Share のトラブルシューティング](data-share-troubleshoot.md)」に記載されている指示に従って、データ共有リソース プロバイダーを登録し、自分自身をストレージ アカウントの所有者として追加します。 
+* ストレージ アカウントに書き込む権限。これは、*Microsoft.Storage/storageAccounts/write* に含まれています。 この権限は、投稿者ロール内に存在します。 
+* ストレージ アカウントにロールの割り当てを追加する権限。これは、*Microsoft.Authorization/role assignments/write* に含まれています。 この権限は、所有者ロール内に存在します。  
 
 ### <a name="receive-data-into-a-sql-based-source"></a>SQL ベースのソースへのデータの受信:
 
-* データ共有 MSI が Azure SQL Database または Azure SQL Data Warehouse にアクセスするためのアクセス許可。 この操作を行うには、以下の手順を実行します。 
-    1. 自分自身をサーバーの Azure Active Directory 管理者として設定します。
+* SQL サーバー上のデータベースに書き込む権限。これは、*Microsoft.Sql/servers/databases/write* に含まれています。 この権限は、投稿者ロール内に存在します。 
+* データ共有リソースのマネージド ID が Azure SQL Database または Azure SQL Data Warehouse にアクセスするためのアクセス許可。 この操作を行うには、以下の手順を実行します。 
+    1. 自分自身を SQL サーバーの Azure Active Directory 管理者として設定します。
     1. Azure Active Directory を使用して Azure SQL Database/Data Warehouse に接続します。
-    1. クエリ エディター (プレビュー) を使用して次のスクリプトを実行し、Data Share MSI を db_owner として追加します。 SQL Server 認証ではなく Active Directory を使用して接続する必要があります。 
+    1. クエリ エディター (プレビュー) を使用して次のスクリプトを実行し、Data Share のマネージド ID を "db_datareader、db_datawriter、db_ddladmin" として追加します。 SQL Server 認証ではなく Active Directory を使用して接続する必要があります。 
 
-```sql
-    create user <share_acct_name> from external provider;     
-    exec sp_addrolemember db_owner, <share_acct_name>; 
-```      
-*< share_acc_name >* は、Data Share アカウントの名前であることに注意してください。 Data Share アカウントをまだ作成していない場合は、後でこの前提条件に戻ってくることが可能です。         
+        ```sql
+        create user "<share_acc_name>" from external provider; 
+        exec sp_addrolemember db_datareader, "<share_acc_name>"; 
+        exec sp_addrolemember db_datawriter, "<share_acc_name>"; 
+        exec sp_addrolemember db_ddladmin, "<share_acc_name>";
+        ```      
+        *<share_acc_name>* は、Data Share リソースの名前であることに注意してください。 Data Share リソースをまだ作成していない場合は、後でこの前提条件に戻ってくることが可能です。         
 
-* クライアント IP SQL Server のファイアウォール アクセス:この操作を行うには、以下の手順を実行します。1. *ファイアウォールと仮想ネットワーク*に移動します 1. Azure サービスへのアクセスを許可するには、**オン** トグルをクリックします。 
+* クライアント IP SQL Server のファイアウォール アクセス。 この操作を行うには、以下の手順を実行します。 
+    1. Azure portal の SQL サーバーで、 *[ファイアウォールと仮想ネットワーク]* に移動します。
+    1. Azure サービスへのアクセスを許可するには、**オン** トグルをクリックします。
+    1. **[+ クライアント IP の追加]** をクリックし、 **[保存]** をクリックします。 クライアントの IP アドレスは変わることがあります。 次回 Azure portal から SQL データを共有するときにも、このプロセスを繰り返すことが必要になる場合もあります。 IP 範囲を追加することもできます。 
 
-これらの前提条件が完了すると、SQL Server にデータを受信する準備ができます。
+
+### <a name="receive-data-into-an-azure-data-explorer-cluster"></a>Azure Data Explorer クラスターへのデータの受信: 
+
+* データ プロバイダーの Data Explorer クラスターと同じ Azure データ センター内の Azure Data Explorer クラスター: まだお持ちでない場合は、[Azure Data Explorer クラスター](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal)を作成できます。 データ プロバイダーのクラスターの Azure データ センターがわからない場合は、後でこの手順の中でクラスターを作成できます。
+* Azure Data Explorer クラスターに書き込む権限。これは、*Microsoft.Kusto/clusters/write* に含まれています。 この権限は、投稿者ロール内に存在します。 
+* Azure Data Explorer クラスターにロールの割り当てを追加する権限。これは、*Microsoft.Authorization/role assignments/write* に含まれています。 この権限は、所有者ロール内に存在します。 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure Portal](https://portal.azure.com/) にサインインします。
+[Azure portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="open-invitation"></a>招待を開く
 
-自分の受信トレイでデータ プロバイダーからの招待を確認します。 招待は Microsoft Azure からで、件名は " **<yourdataprovider@domain.com> からの Azure Data Share の招待**" になっています。 複数の招待がある場合は、正しい共有を確実に受け入れるため、共有名をメモしておきます。 
+1. 自分の受信トレイでデータ プロバイダーからの招待を確認します。 招待は Microsoft Azure からで、件名は " **<yourdataprovider@domain.com> からの Azure Data Share の招待**" になっています。 複数の招待がある場合は、正しい共有を確実に受け入れるため、共有名をメモしておきます。 
 
-**[招待を表示]** を選択して、Azure で招待を確認します。 これにより [Received Share]\(受信した共有\) ビューに移動します。
+1. **[招待を表示]** を選択して、Azure で招待を確認します。 これにより [Received Share]\(受信した共有\) ビューに移動します。
 
-![招待](./media/invitations.png "招待の一覧") 
+   ![招待](./media/invitations.png "招待の一覧") 
 
-表示する共有を選択します。 
+1. 表示する共有を選択します。 
 
 ## <a name="accept-invitation"></a>招待を受け入れる
-**[使用条件]** を含む、すべてのフィールドを確認してください。 使用条件に同意する場合は、同意を示すボックスをオンにする必要があります。 
+1. **[使用条件]** を含む、すべてのフィールドを確認してください。 使用条件に同意する場合は、同意を示すボックスをオンにする必要があります。 
 
-![使用条件](./media/terms-of-use.png "使用条件") 
+   ![使用条件](./media/terms-of-use.png "使用条件") 
 
-*[Target Data Share Account]\(ターゲット データ共有アカウント\)* の下で、ご自分のデータ共有のデプロイ先となるサブスクリプションとリソース グループを選択します。 
+1. *[Target Data Share Account]\(ターゲット データ共有アカウント\)* の下で、ご自分のデータ共有のデプロイ先となるサブスクリプションとリソース グループを選択します。 
 
-**[Data Share Account]\(データ共有アカウント\)** フィールドには、既存のデータ共有アカウントがない場合には、 **[新規作成]** を選択します。 それ以外の場合は、自分のデータ共有を受け入れる既存のデータ共有アカウントを選択します。 
+   **[Data Share Account]\(データ共有アカウント\)** フィールドには、既存のデータ共有アカウントがない場合には、 **[新規作成]** を選択します。 それ以外の場合は、自分のデータ共有を受け入れる既存のデータ共有アカウントを選択します。 
 
-*[Received Share Name]\(受信した共有名\)* フィールドは、データの指定で指定された既定のままにしておくことも、受信した共有のために新しい名前を指定することもできます。 
+   **[Received Share Name]\(受信した共有名\)** フィールドは、データの指定で指定された既定のままにしておくことも、受信した共有のために新しい名前を指定することもできます。 
 
-![ターゲット データ共有アカウント](./media/target-data-share.png "ターゲット データ共有アカウント") 
+   ![ターゲット データ共有アカウント](./media/target-data-share.png "ターゲット データ共有アカウント") 
 
-使用条件に同意して共有の場所を指定したら、 *[Accept and Configure]\(受け入れと構成\)* を選択します。 このオプションを選択すると、共有サブスクリプションが作成され、次の画面でデータのコピー先のターゲット ストレージ アカウントを選択するように求められます。 
+1. 利用規約に同意して共有の場所を指定したら、 *[Accept and configure]\(受け入れと構成\)* を選択します。 共有サブスクリプションが作成されます。
 
-![受け入れオプション](./media/accept-options.png "受け入れオプション") 
+   スナップショットベースの共有では、次の画面で、データのコピー先のターゲット ストレージ アカウントを選択するように求められます。 
 
-今すぐ招待を受け入れて、後でストレージを構成する場合は、 *[Accept and Configure later]\(受け入れて後で構成する\)* を選択します。 このオプションを使用すると、後でターゲット ストレージ アカウントを構成できます。 後でストレージの構成を続行するには、データ共有の構成を再開する方法の詳しい手順について、[ストレージ アカウントの構成方法](how-to-configure-mapping.md)のページを参照してください。 
+   ![受け入れオプション](./media/accept-options.png "受け入れオプション") 
 
-招待を受け入れたくない場合は、 *[拒否]* を選択します。 
+   今すぐ招待を受け入れて、後でターゲット データ ストアを構成する場合は、 *[Accept and configure later]\(受け入れて後で構成する\)* を選択します。 後でストレージの構成を続行する場合、データ共有の構成を再開する詳しい手順については、[データセット マッピングの構成](how-to-configure-mapping.md)に関するページを参照してください。 
 
-## <a name="configure-storage"></a>ストレージの構成
-*[Target Storage Settings]\(ターゲット ストレージ設定\)* の下で、自分のデータの受信先となるサブスクリプション、リソース グループ、ストレージ アカウントを選択します。 
+   インプレース共有の場合、データ共有の構成を再開する詳しい手順については、[データセット マッピングの構成](how-to-configure-mapping.md)に関するページを参照してください。 
 
-![ターゲット ストレージ設定](./media/target-storage-settings.png "ターゲット ストレージ") 
+   招待を受け入れたくない場合は、 *[拒否]* を選択します。 
 
-自分のデータの定期的な更新を受信するには、スナップショットの設定が有効になっていることを確認します。 スナップショットの設定スケジュールは、ご利用のデータ プロバイダーでそれがデータ共有内に含まれている場合にのみ表示されることに注意してください。 
+## <a name="configure-storage"></a>記憶域を構成する
+1. *[Target Storage Settings]\(ターゲット ストレージ設定\)* の下で、自分のデータの受信先となるサブスクリプション、リソース グループ、ストレージ アカウントを選択します。 
 
-![スナップショット設定](./media/snapshot-settings.png "スナップショット設定") 
+   ![ターゲット ストレージ設定](./media/target-storage-settings.png "ターゲット ストレージ") 
 
-*[保存]* を選択します。 
+1. 自分のデータの定期的な更新を受信するには、スナップショットの設定が有効になっていることを確認します。 スナップショットの設定スケジュールは、ご利用のデータ プロバイダーでそれがデータ共有内に含まれている場合にのみ表示されることに注意してください。 
+
+   ![スナップショット設定](./media/snapshot-settings.png "スナップショット設定") 
+
+1. *[保存]* を選択します。 
 
 > [!IMPORTANT]
-> SQL ベースのデータを受信しており、そのデータを SQL ベースのソースに受信したいと考える場合、SQL Server をデータセットの宛先として構成する方法について、[データセットのマッピングを構成する](how-to-configure-mapping.md)方法ガイドを参照してください。 
+> SQL ベースのデータを受信しており、そのデータを SQL ベースのソースに受信したいと考える場合、SQL Server をデータセットの宛先として構成する方法について、[データセットのマッピングを構成する](how-to-configure-mapping.md)攻略ガイドを参照してください。 
 
 ## <a name="trigger-a-snapshot"></a>スナップショットをトリガーする
+これらの手順は、スナップショットベースの共有にのみ適用されます。
 
-スナップショットをトリガーするには、[Received Share]\(受信した共有\)、[詳細] タブの順に選択し、 **[Trigger snapshot]\(スナップショットのトリガー\)** を選択します。 これで、データの完全なスナップショットまたは増分スナップショットをトリガーすることができます。 データ プロバイダーから初めてデータを受信する場合は、完全なコピーを選択します。 
+1. スナップショットをトリガーするには、[Received Share]\(受信した共有\)、[詳細] タブの順に選択し、 **[Trigger snapshot]\(スナップショットのトリガー\)** を選択します。 これで、データの完全なスナップショットまたは増分スナップショットをトリガーすることができます。 データ プロバイダーから初めてデータを受信する場合は、完全なコピーを選択します。 
 
-![スナップショットのトリガー](./media/trigger-snapshot.png "スナップショットのトリガー") 
+   ![スナップショットのトリガー](./media/trigger-snapshot.png "スナップショットのトリガー") 
 
-最終実行状態が*成功*の場合、ストレージ アカウント開いて受信したデータを表示します。 
+1. 最終実行状態が "*成功*" の場合、ターゲット データ ストアに移動して、受信したデータを表示します。 **[データセット]** を選択して、ターゲット パスのリンクをクリックしてください。 
 
-どのストレージ アカウントを使用したかを確認するには、 **[データセット]** を選択します。 
-
-![コンシューマー データセット](./media/consumer-datasets.png "コンシューマー データセットのマッピング") 
+   ![コンシューマー データセット](./media/consumer-datasets.png "コンシューマー データセットのマッピング") 
 
 ## <a name="view-history"></a>履歴を表示する
 スナップショットの履歴を表示するには、[Received Share]\(受信した共有\)、[履歴] の順に移動します。 ここには、過去 60 日間に生成されたすべてのスナップショットの履歴があります。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure Data Share の受け入れ方法と受信方法について学習しました。 Azure Data Share の概念についてさらに詳しく学習するには、[概念:Azure Data Share の用語集](terminology.md)に進んでください。

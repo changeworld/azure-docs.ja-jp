@@ -7,14 +7,14 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 01/23/2020
+ms.date: 02/03/2020
 ms.custom: include file
-ms.openlocfilehash: a1576e4a97af5de0b936c662de636aae542a19b5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: cfe3eb4c0ac1378b7c519b3b34094945612d8508
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76748924"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029075"
 ---
 >[!NOTE]
 >このセクションでは、[Azure AD アプリの登録](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)手順について説明します。
@@ -27,24 +27,40 @@ ms.locfileid: "76748924"
 
     [![新規登録ボタンを選択する](./media/digital-twins-permissions/aad-app-register.png)](./media/digital-twins-permissions/aad-app-register.png#lightbox)
 
-1. **[名前]** ボックスに、このアプリ登録の表示名を入力します。 **[リダイレクト URI (省略可能)]** セクションで、左側のドロップダウン メニューから **[パブリック クライアント/ネイティブ (モバイルとデスクトップ)]** を選択し、右側のテキストボックスに「`https://microsoft.com`」と入力します。 **[登録]** を選択します。
+1. **[名前]** ボックスに、このアプリ登録の表示名を入力します。 
+
+    1. **[リダイレクト URI (省略可能)]** セクションのテキスト ボックスに「`https://microsoft.com`」と入力します。     
+
+    1. Azure Active Directory アプリでどのアカウントとテナントがサポートされるかを確認します。
+
+    1. **[登録]** を選択します。
 
     [![登録されたアプリ](./media/digital-twins-permissions/aad-app-reg-create.png)](./media/digital-twins-permissions/aad-app-reg-create.png#lightbox)
 
-1. [アプリが**パブリック クライアント**として登録されている](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration)ことを確認するには、アプリ登録のための **[認証]** ウィンドウを開き、そのウィンドウ内を下へスクロールします。 **[既定のクライアントの種類]** セクションで、 **[アプリケーションは、パブリック クライアントとして扱います]** に対して **[はい]** を選択し、 **[保存]** をクリックします。
+1. **[認証]** ブレードで、重要な認証構成設定を指定します。 
+
+    1. **[+ プラットフォームを追加]** を選択して、 **[リダイレクト URI]** を追加し、 **[アクセス トークン]** を構成します。
+
+    1. アプリが**パブリック クライアント**であることを指定するには、 **[はい]** を選択します。
+
+    1. Azure Active Directory アプリでどのアカウントとテナントがサポートされるかを確認します。
+
+    [![パブリック クライアントの構成設定](./media/digital-twins-permissions/aad-configure-public-client.png)](./media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
+
+1. 適切なプラットフォームを選択したら、ユーザー インターフェイスの右側のサイド パネルで **[リダイレクト URI]** と **[アクセス トークン]** を構成します。
 
     1. **[リダイレクト URI]** は、認証要求で指定されたアドレスと一致する必要があります。
 
-        * ローカル開発環境でホストされているアプリでは、 **[パブリック クライアント (モバイルとデスクトップ)]** を選択します。 **[既定のクライアントの種類]** が [はい] に設定されていることを確認します。
-        * Azure App Service でホストされているシングル ページ アプリでは、 **[Web]** を選択します。
+        * ローカル開発環境でホストされているアプリでは、 **[パブリック クライアント (モバイルとデスクトップ)]** を選択します。 **[パブリック クライアント]** は必ず **[はい]** に設定してください。
+        * Azure App Service でホストされているシングルページ アプリでは、 **[Web]** を選択します。
 
-        **[パブリック クライアント (モバイルとデスクトップ)]** を選択し、「`http://localhost:8080/`」と入力します。
+    1. **[ログアウト URL]** が適切かどうかを確認します。
 
-        [![リダイレクト URI を構成する](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png)](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png#lightbox)
+    1. **[アクセス トークン]** または **[ID トークン]** をオンにすることによって、暗黙的な許可のフローを有効にします。
+                
+    [![リダイレクト URI を構成する](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png)](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png#lightbox)
 
-    1. **[アクセス トークン]** チェック ボックスをオンにし、リソースの **Manifest** JSON の **oauth2AllowImplicitFlow** 設定を `true` に構成します。
-
-        [![パブリック クライアントの構成設定](./media/digital-twins-permissions/aad-configure-public-client.png)](./media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
+    **[構成]** 、 **[保存]** の順にクリックします。
 
 1.  登録済みアプリの **[概要]** ペインを開き、次のエンティティの値を一時ファイルにコピーします。 これらの値は、以下のセクションでサンプル アプリケーションを構成する際に使用します。
 

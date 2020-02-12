@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc3c4a943f24ba1f987aa1daf513b9e05ada65a7
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: e2067bea25dae05c496c81929ae65d00565bf4f1
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310001"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020762"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect に関する FAQ
 
@@ -31,6 +31,10 @@ Azure Active Directory (Azure AD) Connect クラウド プロビジョニング�
 **Q:パスワード ハッシュ同期が初回実行時にエラーになります。なぜですか?**
 
 これは予期されることです。 このエラーは、ユーザー オブジェクトが Azure AD に存在しないことが原因で発生します。 ユーザーが Azure AD にプロビジョニングされると、パスワード ハッシュはその後の実行でプロビジョニングされます。 何度か実行されるのを待ってから、パスワード ハッシュ同期のエラーが発生しないことを確認してください。
+
+**Q:Active Directory インスタンスに、クラウドのプロビジョニングでサポートされていない属性 (ディレクトリ拡張機能など) がある場合はどうなりますか。**
+
+クラウド プロビジョニングが実行され、サポートされている属性がプロビジョニングされます。 サポートされていない属性は、Azure AD にプロビジョニングされません。 Active Directory でディレクトリ拡張機能を確認し、これらの属性を Azure AD に持ち込む必要がないことを確認してください。 必要な属性がある場合は、Azure AD Connect 同期を使用するか、必要な情報をサポートされている属性の 1 つ (たとえば、拡張属性 1 から 15) に移動することを検討してください。
 
 **Q:Azure AD Connect 同期とクラウド プロビジョニングの違いは何ですか?**
 

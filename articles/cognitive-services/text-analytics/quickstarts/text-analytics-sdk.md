@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:Text Analytics クライアント ライブラリ v3 | Microsoft Docs
 titleSuffix: Azure Cognitive Services
-description: このクイックスタートでは、Azure Cognitive Services の Text Analytics API を使用して言語を検出します。
+description: このクイックスタートを使用して、アプリケーションを Azure Cognitive Services の Text Analytics API に接続してみましょう。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,46 +10,79 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 01/23/2020
 ms.author: aahi
-zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: 89680ad61296cd225bb87d2d6b46259586304da2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+zone_pivot_groups: programming-languages-text-analytics
+ms.openlocfilehash: 87cf5f226a8b2d1efcc0ee967d84f6e0002cb03d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774097"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987909"
 ---
-# <a name="quickstart-use-the-text-analytics-client-library-v3"></a>クイック スタート:Text Analytics クライアント ライブラリ v3 を使用する
+# <a name="quickstart-use-the-text-analytics-client-library"></a>クイック スタート:Text Analytics クライアント ライブラリを使用する
 
 Text Analytics クライアント ライブラリの概要を紹介します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。
 
-Text Analytics クライアント ライブラリ バージョン `3.0-preview` を使用して、次のことを実行します。
+Text Analytics クライアント ライブラリを使って次のことを実行します。
 
-* 感情分析 (パブリック プレビュー)
+* センチメント分析
 * 言語検出
-* 名前付きエンティティの認識 (パブリック プレビュー)
+* エンティティの認識
 * キー フレーズの抽出
 
 ::: zone pivot="programming-language-csharp"
 
-[!INCLUDE [C# quickstart](../includes/quickstarts/v3/csharp.md)]
+> [!IMPORTANT]
+> * Text Analytics API の最新のプレビュー バージョンは `3.0-preview` です。これには、強化された[感情分析](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)および[名前付きエンティティの認識 (NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) のパブリック プレビューが含まれています。 最新の安定バージョンは `2.1` です。
+>    * 必ず、使用するバージョンの手順にのみ従ってください。
+> * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 運用環境のシナリオでは、パフォーマンスとスケーラビリティを確保するために、バッチ処理された非同期メソッドを使用することをお勧めします。 以下のリファレンス ドキュメントを参照してください。
+
+[!INCLUDE [C# quickstart](../includes/quickstarts/csharp-sdk.md)]
 
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
 
-[!INCLUDE [Python quickstart](../includes/quickstarts/v3/python-sdk.md)]
+> [!IMPORTANT]
+> * Text Analytics API の最新のプレビュー バージョンは `3.0-preview` です。これには、強化された[感情分析](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)および[名前付きエンティティの認識 (NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) のパブリック プレビューが含まれています。 最新の安定バージョンは `2.1` です。
+>    * 必ず、使用するバージョンの手順にのみ従ってください。
+> * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 運用環境のシナリオでは、パフォーマンスとスケーラビリティを確保するために、バッチ処理された非同期メソッドを使用することをお勧めします。 以下のリファレンス ドキュメントを参照してください。 
+
+[!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
 
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
 
-[!INCLUDE [Java quickstart](../includes/quickstarts/v3/java-sdk.md)]
+> [!IMPORTANT]
+> * このクイックスタートは、Text Analytics クライアント ライブラリのバージョン `3.0-preview` 専用です。これには、強化された[感情分析](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)および[名前付きエンティティの認識 (NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) のパブリック プレビューが含まれています。
+>    * 必ず、使用するバージョンの手順にのみ従ってください。
+> * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 運用環境のシナリオでは、パフォーマンスとスケーラビリティを確保するために、バッチ処理された非同期メソッドを使用することをお勧めします。 以下のリファレンス ドキュメントを参照してください。
+
+[!INCLUDE [Java quickstart](../includes/quickstarts/java-sdk.md)]
 
 ::: zone-end
 
-::: zone pivot="programming-language-nodejs"
+::: zone pivot="programming-language-javascript"
 
-[!INCLUDE [NodeJS quickstart](../includes/quickstarts/v3/nodejs-sdk.md)]
+> [!IMPORTANT]
+> * Text Analytics API の最新のプレビュー バージョンは `3.0-preview` です。これには、強化された[感情分析](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)および[名前付きエンティティの認識 (NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) のパブリック プレビューが含まれています。 最新の安定バージョンは `2.1` です。
+>    * 必ず、使用するバージョンの手順にのみ従ってください。
+> * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 運用環境のシナリオでは、パフォーマンスとスケーラビリティを確保するために、バッチ処理された非同期メソッドを使用することをお勧めします。 以下のリファレンス ドキュメントを参照してください。
+
+[!INCLUDE [NodeJS quickstart](../includes/quickstarts/nodejs-sdk.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-other"
+
+## <a name="additional-language-support"></a>言語サポートの追加
+
+このタブをクリックした場合、お気に入りのプログラミング言語でクイックスタートが表示されないことがあります。 別途クイックスタートを用意していますので、ご安心ください。 この表を使用して、お使いのプログラミング言語に適したサンプルを見つけます。
+
+| Language | 利用可能なバージョン | 
+|----------|------------------------|
+| Ruby     | [バージョン 2.1](ruby-sdk.md)          | 
+| Go       | [バージョン 2.1](go-sdk.md)          | 
 
 ::: zone-end
 

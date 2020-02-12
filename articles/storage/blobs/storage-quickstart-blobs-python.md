@@ -3,41 +3,33 @@ title: クイック スタート:Azure Blob Storage ライブラリ v12 - Python
 description: このクイックスタートでは、Python 用 Azure Blob Storage クライアント ライブラリ バージョン 12 を使用して、BLOB (オブジェクト) ストレージ内にコンテナーと BLOB を作成する方法について説明します。 次に、ローカル コンピューターに BLOB をダウンロードする方法と、コンテナー内のすべての BLOB を一覧表示する方法について説明します。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: faa73874d7e662eb23e85d46ecaf21a11d10ce73
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 03f298b49e6a1eba84e8adf5ca6039df0bfe1abd
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443748"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906414"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-for-python"></a>クイック スタート:Python 用 Azure Blob Storage クライアント ライブラリ v12
+# <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>クイック スタート:Python v12 SDK で BLOB を管理する
 
-Python 用 Azure Blob Storage クライアント ライブラリ v12 を使用してみましょう。 Azure Blob Storage は、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。 Blob Storage は、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。
-
-> [!NOTE]
-> 以前の SDK バージョンを使ってみるには、「[クイックスタート: Python 用 Azure Blob Storage クライアント ライブラリ](storage-quickstart-blobs-python-legacy.md)」を参照してください。
-
-Azure Blob Storage クライアント ライブラリを使用すると、以下のことができます。
-
-* コンテナーを作成する
-* Azure Storage へ BLOB をアップロードする
-* コンテナー内のすべての BLOB を一覧表示する
-* ローカル コンピューターに BLOB をダウンロードする
-* コンテナーを削除する
+このクイックスタートでは、Python を使用して BLOB を管理する方法について説明します。 BLOB は、大量のテキストやバイナリ データ (画像、ドキュメント、ストリーミング メディア、アーカイブ データなど) を保持できるオブジェクトです。 ここでは、BLOB のアップロード、ダウンロード、一覧表示のほか、コンテナーの作成と削除を行います。
 
 [API のリファレンスのドキュメント](/python/api/azure-storage-blob) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob) | [パッケージ (Python Package Index)](https://pypi.org/project/azure-storage-blob/) | [サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
 
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
-
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-* Azure Storage アカウント - [ストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* [オペレーティング システムには Python](https://www.python.org/downloads/) - 2.7、3.5 以上
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- Azure Storage のアカウント [ストレージ アカウントの作成](../common/storage-account-create.md)。
+- [Python](https://www.python.org/downloads/) 2.7、3.5 以降
+
+> [!NOTE]
+> 以前の SDK バージョンを使ってみるには、「[クイックスタート: Python v2.1 SDK で BLOB を管理する](storage-quickstart-blobs-python-legacy.md)」を参照してください。
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="setting-up"></a>設定
 
@@ -81,7 +73,7 @@ pip install azure-storage-blob
 
 1. コード エディターで新しいテキスト ファイルを開きます
 1. `import` ステートメントを追加します
-1. 極めて基本的な例外処理を含め、プログラムの構造を作成します
+1. 基本的な例外処理を含め、プログラムの構造を作成します
 
     コードは次のとおりです。
 
@@ -234,7 +226,7 @@ with open(download_file_path, "wb") as download_file:
 
 次のコードでは、[delete_container](/python/api/azure-storage-blob/azure.storage.blob.containerclient#delete-container---kwargs-) メソッドを使用して、コンテナー全体を削除することによって、アプリが作成したリソースがクリーンアップされます。 必要に応じてローカル ファイルを削除することもできます。
 
-アプリでは、BLOB、コンテナー、およびローカル ファイルを削除する前に、`input()` を呼び出すことで、ユーザーの入力を一時停止します。 このとき、リソースが削除される前に、実際に正しく作成されたことを確認できます。
+アプリでは、BLOB、コンテナー、およびローカル ファイルを削除する前に、`input()` を呼び出すことで、ユーザーの入力を一時停止します。 このとき、リソースが削除される前に、正しく作成されたことを確認できます。
 
 `try` ブロックの末尾に、次のコードを追加します。
 

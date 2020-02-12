@@ -8,23 +8,23 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: cf8cfc5fe75ff5364f812af034d772c7aadd891c
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 92eb4157abb55b7056952d1fb064c7c7d7500335
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027471"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77021698"
 ---
 # <a name="continuous-patient-monitoring-architecture"></a>患者の継続的なモニタリングのアーキテクチャ
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-継続的な患者のモニタリング ソリューションを構築するには、提供されているアプリ テンプレートを利用し、以下に説明するアーキテクチャをガイダンスとして使用します。
+
+継続的な患者のモニタリング ソリューションを構築するには、提供されているアプリ テンプレートを使用し、以下に説明するアーキテクチャをガイダンスとして使用します。
 
 >[!div class="mx-imgBorder"] 
 >![CPM アーキテクチャ](media/cpm-architecture.png)
 
-1. Bluetooth Low Energy (BLE) を介して通信する医療機器
+1. Bluetooth Low Energy (BLE) を使用して通信する医療機器
 1. 携帯電話ゲートウェイが BLE データを受信して IoT Central に送信
 1. 患者の健康データを Azure API for FHIR&reg; に継続的にエクスポート
 1. 相互運用可能なデータに基づく機械学習
@@ -34,7 +34,7 @@ ms.locfileid: "73027471"
 このセクションでは、アーキテクチャ図の各部について詳しく説明します。
 
 ### <a name="ble-medical-devices"></a>BLE 医療機器
-医療の IoT スペースで使用される多くの医療ウェアラブルは、Bluetooth Low Energy デバイスです。つまり、クラウドと直接通信することができず、ゲートウェイを通過する必要があります。 このアーキテクチャでは、このゲートウェイとして携帯電話アプリケーションを使用することをお勧めします。
+医療の IoT スペースで使用される多くの医療ウェアラブルは、Bluetooth Low Energy デバイスです。 クラウドと直接通信することができず、ゲートウェイを通過する必要があります。 このアーキテクチャでは、このゲートウェイとして携帯電話アプリケーションを使用することをお勧めします。
 
 ### <a name="mobile-phone-gateway"></a>携帯電話ゲートウェイ
 携帯電話アプリケーションの主な機能は、医療機器から BLE データを取り込み、それを Azure IoT Central に伝達することです。 さらに、アプリは、機器のセットアップとプロビジョニングのフローを通じて患者をガイドしたり、個人の健康データのビューを表示したりするのに役立ちます。 他のソリューションでは、病院の部屋にいる場合、同じ通信フローを実現するためにタブレット ゲートウェイまたは静的ゲートウェイを使用できます。
@@ -43,10 +43,10 @@ ms.locfileid: "73027471"
 Azure IoT Central は HIPAA 準拠で、HITRUST&reg; 認定を受けていますが、患者の健康に関連するデータを Azure API for FHIR に送信することもできます。 [Azure API for FHIR](../../healthcare-apis/overview.md) は、医療上の健康データ向けのフル マネージドで標準ベースに準拠した API です。このデータを使用すると、健康データを使用した新しいエンゲージメント システムを作成できます。 これを使用すると、FHIR API を通して迅速にデータを交換できます。クラウド上でマネージドの サービスとしてのプラットフォーム (PaaS) オファリングによってサポートされます。 IoT Central の継続的なデータ エクスポート機能を使用すると、Azure API for FHIR にデータを送信できます。
 
 ### <a name="machine-learning"></a>機械学習
-データを集計して FHIR 形式に変換した後は、機械学習モデルを構築して洞察を強化し、医療チームにとってより賢明な意思決定を可能にすることができます。 機械学習モデルの構築、トレーニング、デプロイには、さまざまなサービスを使用できます。 Azure の機械学習サービスの使用方法の詳細については、[機械学習のドキュメント](../../machine-learning/index.yml)を参照してください。
+データを集計して FHIR 形式に変換した後は、機械学習モデルを構築して洞察を強化し、医療チームにとってより賢明な意思決定を可能にすることができます。 機械学習モデルの構築、トレーニング、デプロイには、さまざまな種類のサービスを使用できます。 Azure の機械学習サービスの使用方法の詳細については、[機械学習のドキュメント](../../machine-learning/index.yml)を参照してください。
 
 ### <a name="provider-dashboard"></a>プロバイダー ダッシュボード
-Azure API for FHIR にあるデータを使用して、患者の詳細情報ダッシュボードを作成したり、直接 EMR に統合して医療チームが患者の状態を視覚化するのをサポートしたりすることができます。 医療チームは、このダッシュボードを使用して、サポートが必要な患者に対してアクションを実行したり、早い段階で悪化の兆候を発見したりできます。 Power BI リアルタイム プロバイダー ダッシュボードを構築する方法については、[ハウツーガイド](howto-health-data-triage.md)を参照してください。
+Azure API for FHIR にあるデータを使用して、患者の詳細情報ダッシュボードを作成したり、直接 EMR に統合して医療チームが患者の状態を視覚化するのをサポートしたりすることができます。 医療チームは、このダッシュボードを使用して、サポートが必要な患者の世話をしたり、早い段階で悪化の兆候を発見したりできます。 Power BI リアルタイム プロバイダー ダッシュボードを構築する方法については、[ハウツーガイド](howto-health-data-triage.md)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [患者の継続的なモニタリング アプリケーション テンプレートのデプロイ方法の説明](tutorial-continuous-patient-monitoring.md)

@@ -6,37 +6,30 @@ ms.topic: quickstart
 description: このクイックスタートでは、Azure Dev Spaces と Visual Studio Code を使用し、Azure Kubernetes Service 上で Java アプリケーションのデバッグと迅速な反復型開発を行う方法について説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Java, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: a814516eb002eadb19100182d1917fd4aaa0cec6
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 8ceb48bf60438442b63fab698091fdb5064793af
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293574"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025199"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-java---azure-dev-spaces"></a>クイック スタート:Visual Studio Code と Java を使用して Kubernetes 上でデバッグと反復処理を行う - Azure Dev Spaces
 
-このガイドでは、以下の方法について説明します。
-
-- Azure でマネージド Kubernetes クラスターを使用して Azure Dev Spaces をセットアップする。
-- Visual Studio Code を使用して、コンテナー内のコードを繰り返し開発する。
-- Visual Studio Code で開発空間のコードをデバッグする。
-
-Azure Dev Spaces では、次のものを使用してデバッグと反復処理を行うこともできます。
-- [Node.js と Visual Studio Code](quickstart-nodejs.md)
-- [.NET Core と Visual Studio Code](quickstart-netcore.md)
-- [.NET Core と Visual Studio](quickstart-netcore-visualstudio.md)
+このクイックスタートでは、マネージド Kubernetes クラスターを使用して Azure Dev Spaces を設定し、Visual Studio Code で Java アプリを使用して、コンテナー内のコードを反復的に開発およびデバッグします。 Azure Dev Spaces を使用すると、最小限の開発用マシンのセットアップで Azure Kubernetes Service (AKS) 内のアプリケーションのすべてのコンポーネントをデバッグしてテストできます。 
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション。 アカウントがない場合は、[無料アカウントを作成する](https://azure.microsoft.com/free)ことができます。
-- [Visual Studio Code がインストールされていること](https://code.visualstudio.com/download)。
-- Visual Studio Code 用の [Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) 拡張機能と [Java Debugger for Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debugger-azds) 拡張機能がインストールされていること。
-- [Azure CLI がインストールされていること](/cli/azure/install-azure-cli?view=azure-cli-latest)。
-- [Maven がインストールされ構成されていること](https://maven.apache.org)。
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
+- [Java Development Kit (JDK) 1.8.0 以降](https://aka.ms/azure-jdks)。
+- [Maven 3.5.0 以降](https://maven.apache.org/download.cgi)。
+- [Visual Studio Code](https://code.visualstudio.com/download)。
+- Visual Studio Code 用の [Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) 拡張機能と [Java Debugger for Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debugger-azds) 拡張機能。
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+- [Git](https://www.git-scm.com/downloads).
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成する
 
-[サポートされているリージョン][supported-regions]で AKS クラスターを作成する必要があります。 下記のコマンドを使用すると、*MyResourceGroup* というリソース グループと *MyAKS* という AKS クラスターが作成されます。
+[サポートされているリージョン][supported-regions]で AKS クラスターを作成する必要があります。 次のコマンドを使用すると、*MyResourceGroup* というリソース グループと *MyAKS* という AKS クラスターが作成されます。
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
@@ -45,13 +38,14 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --gen
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>AKS クラスターで Azure Dev Spaces を有効にする
 
-`use-dev-spaces` コマンドを使用して AKS クラスターで Dev Spaces を有効にし、プロンプトに従います。 下記のコマンドを使用すると、*MyResourceGroup* グループ内の *MyAKS* クラスターで Dev Spaces が有効になり、*default* 開発空間が作成されます。
+`use-dev-spaces` コマンドを使用して AKS クラスターで Dev Spaces を有効にし、プロンプトに従います。 次のコマンドを使用すると、*MyResourceGroup* グループ内の *MyAKS* クラスターで Dev Spaces が有効になり、*default* 開発空間が作成されます。
 
 > [!NOTE]
 > この `use-dev-spaces` コマンドでは、Azure Dev Spaces CLI がまだインストールされていない場合にはこれもインストールされます。 Azure Dev Spaces CLI を Azure Cloud Shell にインストールすることはできません。
 
 ```cmd
 $ az aks use-dev-spaces -g MyResourceGroup -n MyAKS
+
 
 'An Azure Dev Spaces Controller' will be created that targets resource 'MyAKS' in resource group 'MyResourceGroup'. Continue? (y/N): y
 
@@ -80,11 +74,11 @@ git clone https://github.com/Azure/dev-spaces
 
 ## <a name="prepare-the-sample-application-in-visual-studio-code"></a>Visual Studio Code でサンプル アプリケーションを準備する
 
-Visual Studio Code を開き、 *[ファイル]* 、 *[開く]* の順にクリックし、*dev-spaces/samples/java/getting-started/webfrontend* ディレクトリに移動して、 *[開く]* をクリックします。
+Visual Studio Code を開き、 **[ファイル]** 、 **[開く]** の順に選択し、*dev-spaces/samples/java/getting-started/webfrontend* ディレクトリに移動して、 **[開く]** を選択します。
 
 これで、*webfrontend* プロジェクトが Visual Studio Code で開かれました。 アプリケーションをご利用の開発スペースで実行するには、コマンド パレット内の Azure Dev Spaces 拡張機能を使用して Docker および Helm チャート資産を作成します。
 
-Visual Studio Code でコマンド パレットを開くには、 *[表示]* 、 *[コマンド パレット]* の順にクリックします。 「`Azure Dev Spaces`」の入力を開始して、`Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces` をクリックします。
+Visual Studio Code でコマンド パレットを開くには、 **[表示]** 、 **[コマンド パレット]** の順に選択します。 `Azure Dev Spaces` の入力を開始し、 **[Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces]\(Azure Dev Spaces: Azure Dev Spaces の構成ファイルを準備する\)** を選択します。
 
 ![Azure Dev Spaces の構成ファイルを準備する](./media/common/command-palette.png)
 
@@ -101,26 +95,26 @@ Visual Studio Code でコマンド パレットを開くには、 *[表示]* 、
 > [!TIP]
 > プロジェクトの [Dockerfile と Helm チャート](how-dev-spaces-works.md#prepare-your-code)は、対象のコードをビルドして実行するために Azure Dev Spaces によって使用されますが、プロジェクトのビルドおよび実行方法を変更する場合は、これらのファイルを変更することができます。
 
-## <a name="build-and-run-code-in-kubernetes-from-visual-studio"></a>Visual Studio で Kubernetes のコードをビルドして実行する
+## <a name="build-and-run-code-in-kubernetes-from-visual-studio-code"></a>Visual Studio Code で Kubernetes のコードをビルドして実行する
 
-左側の *[デバッグ]* アイコンをクリックし、上部の *[Launch Java Program (AZDS)]\(Java プログラムの起動 (AZDS)\)* をクリックします。
+左側の **[デバッグ]** アイコンを選択し、上部の **[Launch Java Program (AZDS)]\(Java プログラムの起動 (AZDS)\)** を選択します。
 
 ![Java プログラムの起動](media/get-started-java/debug-configuration.png)
 
-このコマンドによって、Azure Dev Spaces のサービスがビルドされ、稼働します。 下部にある *[ターミナル]* ウィンドウに、Azure Dev Spaces が動作しているサービスのビルド出力と URL が表示されます。 "*デバッグ コンソール*" にログの出力が表示されます。
+このコマンドによって、Azure Dev Spaces のサービスがビルドされ、稼働します。 下部にある **[ターミナル]** ウィンドウに、Azure Dev Spaces が動作しているサービスのビルド出力と URL が表示されます。 "**デバッグ コンソール**" にログの出力が表示されます。
 
 > [!Note]
-> "*コマンド パレット*" に Azure Dev Spaces コマンドが表示されない場合は、[Azure Dev Spaces 用 Visual Studio Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)がインストールされていることを確認してください。 また、Visual Studio Code で *dev-spaces/samples/java/getting-started/webfrontend* ディレクトリを開いたことを確認してください。
+> "**コマンド パレット**" に Azure Dev Spaces コマンドが表示されない場合は、[Azure Dev Spaces 用 Visual Studio Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)がインストールされていることを確認してください。 また、Visual Studio Code で *dev-spaces/samples/java/getting-started/webfrontend* ディレクトリを開いたことを確認してください。
 
 パブリック URL を開くと、実行中のサービスを確認できます。
 
-*[デバッグ]* 、 *[デバッグの停止]* の順にクリックして、デバッガーを停止します。
+**[デバッグ]** 、 **[デバッグの停止]** の順に選択して、デバッガーを停止します。
 
 ## <a name="update-code"></a>コードの更新
 
-サービスの更新バージョンをデプロイするには、ご自分のプロジェクトにある任意のファイルを更新して、 *[Launch Java Program (AZDS)]\(Java プログラムの起動 (AZDS)\)* を再実行します。 次に例を示します。
+サービスの更新バージョンをデプロイするには、ご自分のプロジェクトにある任意のファイルを更新して、 **[Launch Java Program (AZDS)]\(Java プログラムの起動 (AZDS)\)** を再実行します。 次に例を示します。
 
-1. ご利用のアプリケーションがまだ実行されている場合は、 *[デバッグ]* 、 *[デバッグの停止]* の順にクリックしてそれを停止します。
+1. ご利用のアプリケーションがまだ実行されている場合は、 **[デバッグ]** 、 **[デバッグの停止]** の順に選択してそれを停止します。
 1. [`src/main/java/com/ms/sample/webfrontend/Application.java` の 19 行目](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19)を以下に更新します。
     
     ```java
@@ -128,30 +122,30 @@ Visual Studio Code でコマンド パレットを開くには、 *[表示]* 、
     ```
 
 1. 変更を保存します。
-1. *[Launch Java Program (AZDS)]\(Java プログラムの起動 (AZDS)\)* を再実行します。
+1. **[Launch Java Program (AZDS)]\(Java プログラムの起動 (AZDS)\)** を再実行します。
 1. 稼働中のご自分のサービスに移動して、変更を確認します。
-1. *[デバッグ]* 、 *[デバッグの停止]* の順にクリックして、ご自分のアプリケーションを停止します。
+1. **[デバッグ]** 、 **[デバッグの停止]** の順に選択して、ご自分のアプリケーションを停止します。
 
 ## <a name="setting-and-using-breakpoints-for-debugging"></a>デバッグ用のブレークポイントを設定して使用する
 
-*[Launch Java Program (AZDS)]\(Java プログラムの起動 (AZDS)\)* を使用して、サービスを開始します。 また、これによりサービスがデバッグ モードで実行されます。
+**[Launch Java Program (AZDS)]\(Java プログラムの起動 (AZDS)\)** を使用して、サービスを開始します。 また、これによりサービスがデバッグ モードで実行されます。
 
-*[表示]* 、 *[エクスプローラー]* の順にクリックして、 *[エクスプローラー]* ビューに戻ります。 `src/main/java/com/ms/sample/webfrontend/Application.java` を開き、19 行目のどこかをクリックして、カーソルをそこに置きます。 ブレークポイントを設定するには、*F9* キーを押すか、 *[デバッグ]* 、 *[ブレークポイントの設定/解除]* の順にクリックします。
+**[表示]** 、 **[エクスプローラー]** の順に選択して、 **[エクスプローラー]** ビューに戻ります。 *src/main/java/com/ms/sample/webfrontend/Application.java* を開き、19 行目のどこかをクリックして、カーソルをそこに置きます。 ブレークポイントを設定するには、**F9** キーを押すか、 **[デバッグ]** 、 **[ブレークポイントの設定/解除]** の順に選択します。
 
-ブラウザーでサービスを開き、メッセージが表示されないことに注目します。 Visual Studio Code に戻って、19 行目が強調表示されていることを確認します。 設定したブレークポイントによって、19 行目でサービスが一時停止されました。 サービスを再開するには、*F5* キーを押すか、 *[デバッグ]* 、 *[続行]* の順にクリックします。 ブラウザーに戻って、メッセージが表示されたことに注目します。
+ブラウザーでサービスを開き、メッセージが表示されないことに注目します。 Visual Studio Code に戻って、19 行目が強調表示されていることを確認します。 設定したブレークポイントによって、19 行目でサービスが一時停止されました。 サービスを再開するには、**F5** キーを押すか、 **[デバッグ]** 、 **[続行]** の順に選択します。 ブラウザーに戻って、メッセージが表示されたことに注目します。
 
 デバッガーがアタッチされた状態で Kubernetes でサービスを稼働している間、デバッグ情報 (呼び出し履歴、ローカル変数、例外情報など) にフル アクセスできます。
 
-`src/main/java/com/ms/sample/webfrontend/Application.java` の 19 行目にカーソルを置いて *F9* キーを押すことで、ブレークポイントを削除します。
+*src/main/java/com/ms/sample/webfrontend/Application.java* の 19 行目にカーソルを置き、**F9** キーを押すことで、ブレークポイントを削除します。
 
 ## <a name="update-code-from-visual-studio-code"></a>Visual Studio Code でコードを更新する
 
-デバッグ モードでサービスが稼働している間に、`src/main/java/com/ms/sample/webfrontend/Application.java` の 19 行目を更新します。 次に例を示します。
+デバッグ モードでサービスが稼働している間に、*src/main/java/com/ms/sample/webfrontend/Application.java* の 19 行目を更新します。 次に例を示します。
 ```java
 return "Hello from webfrontend in Azure while debugging!";
 ```
 
-ファイルを保存します。 *[デバッグ]* 、 *[デバッグの再起動]* の順にクリックします。または、 *[デバッグ] ツール バー*で、 *[デバッグの再起動]* ボタンをクリックします。
+ファイルを保存します。 **[デバッグ]** 、 **[デバッグの再起動]** の順に選択します。または、 **[デバッグ] ツール バー**で、 **[デバッグの再起動]** ボタンを選択します。
 
 ![デバッグの更新](media/common/debug-action-refresh.png)
 

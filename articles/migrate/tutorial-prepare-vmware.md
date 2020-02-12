@@ -1,18 +1,15 @@
 ---
 title: Azure Migrate を使用した評価と移行に向けて VMware VM を準備する
 description: Azure Migrate を使用した評価と移行に向けて VMware VM を準備する方法について説明します。
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
-ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 4dec76140f61c433561ccfea07b833d9821acfc5
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: f00d5ba4841427098b0ab79ad1930e357008b6e0
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028913"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030797"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>評価および Azure への移行のために VMware VM を準備する
 
@@ -41,8 +38,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 **タスク** | **アクセス許可**
 --- | ---
 **Azure Migrate プロジェクトの作成** | Azure アカウントには、プロジェクトを作成するためのアクセス許可が必要です。
-**Azure Migrate アプライアンスを登録する** | Azure Migrate では、軽量の Azure Migrate アプライアンスを使用して、Azure Migrate Server Assessment で VMware VM を評価し、Azure Migrate Server Migration で VMware VM の[エージェントレス移行](server-migrate-overview.md)を実行します。 このアプライアンスでは VM が検出され、VM のメタデータとパフォーマンス データが Azure Migrate に送信されます。<br/><br/>登録時に、Azure Migrate によって、アプライアンスを一意に識別する 2 つの Azure Active Directory (Azure AD) アプリが作成され、これらのアプリを作成するためのアクセス許可が必要です。<br/> - 1 つ目のアプリは、Azure Migrate サービス エンドポイントと通信します。<br/> - 2 つ目のアプリでは、登録時に作成された Azure キー コンテナーにアクセスし、Azure AD アプリ情報とアプライアンス構成設定を格納します。
+**Azure Migrate アプライアンスを登録する** | Azure Migrate では、軽量の Azure Migrate アプライアンスを使用して、Azure Migrate Server Assessment で VMware VM を評価し、Azure Migrate Server Migration で VMware VM の[エージェントレス移行](server-migrate-overview.md)を実行します。 このアプライアンスでは VM が検出され、VM のメタデータとパフォーマンス データが Azure Migrate に送信されます。<br/><br/>アプライアンスの登録時に、リソースプロバイダー (Microsoft.OffAzure、Microsoft.Migrate、および Microsoft.KeyVault) が、アプライアンスで選択したサブスクリプションに登録されます。 リソース プロバイダーの登録によって、サブスクリプションがリソース プロバイダーと連携するように構成されます。 リソースプロバイダーを登録するには、サブスクリプションの共同作成者または所有者のロールが必要です。<br/><br/> オンボードの一環として、Azure Migrate では 2 つの Azure Active Directory (Azure AD) アプリが作成されます。<br/> - 最初のアプリは、アプライアンスで実行されているエージェントと Azure で実行されているそれぞれのサービスとの間の通信 (認証と承認) に使用されます。 このアプリには、任意のリソースに対して ARM 呼び出しや RBAC アクセスを行うための特権はありません。<br/> - 2 番目のアプリは、エージェントレス移行の目的でユーザーのサブスクリプション内に作成されたキー コンテナーにアクセスするためにのみ使用されます。 アプライアンスから検出が開始されると、(顧客のテナント内で作成された) Azure キー コンテナーで RBAC アクセスが可能になります。
 **キー コンテナーの作成** | Azure Migrate Server Migration を使用して VMware VM を移行するために、Azure Migrate によってキー コンテナーが作成され、ご自分のサブスクリプションのレプリケーション ストレージ アカウントへのアクセス キーが管理されます。 コンテナーを作成するには、Azure Migrate プロジェクトが存在しているリソース グループに対するロールの割り当てアクセス許可が必要です。
+
+
+
+
 
 
 ### <a name="assign-permissions-to-create-project"></a>プロジェクトを作成するためのアクセス許可を割り当てる
@@ -80,9 +81,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 テナントおよびグローバル管理者は、アプリケーション開発者ロールをアカウントに割り当てることができます。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
 
-### <a name="assign-role-assignment-permissions"></a>ロール割り当てのアクセス許可の割り当て
+### <a name="assign-permissions-to-create-a-key-vault"></a>キー コンテナーを作成するためのアクセス許可を割り当てる
 
-Azure Migrate でキー コンテナーを作成できるようにするには、次のようにロールの割り当てのアクセス許可を割り当てます。
+Azure Migrate でキー コンテナーを作成できるようにするには、次のようにアクセス許可を割り当てます。
 
 1. Azure portal で、リソース グループの **[アクセス制御 (IAM)]** を選択します。
 2. **[アクセスの確認]** で関連するアカウントを探し、それをクリックしてアクセス許可を表示します。

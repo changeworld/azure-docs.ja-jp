@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 3e51db98403b507c1c34ee455cfe218ea52c529b
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: ea4abada259c929f387b1477c127824ac6269319
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760574"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939159"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストに Azure Cosmos Emulator を使用する
 
@@ -419,23 +419,7 @@ cd $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount
 
     https://<emulator endpoint provided in response>/_explorer/index.html
 
-Linux docker コンテナーで実行されている .NET クライアント アプリケーションがあり、ホスト コンピューター上で Azure Cosmos Emulator を実行している場合、エミュレーターから Azure Cosmos アカウントに接続することはできません。 アプリがホスト コンピューター上で実行されていないため、エミュレーターのエンドポイントに一致する、Linux コンテナーに登録されている証明書を追加することはできません。 
-
-この回避策として、次の .Net コード サンプルに示すように `HttpClientHandler` インスタンスを渡すことによって、クライアント アプリケーションからサーバーの SSL 証明書の検証を無効にすることができます。 この回避策は、`Microsoft.Azure.DocumentDB` Nuget パッケージを使用している場合にのみ適用されます。これは `Microsoft.Azure.Cosmos` Nuget パッケージではサポートされていません。
- 
- ```csharp
-var httpHandler = new HttpClientHandler()
-{
-    ServerCertificateCustomValidationCallback = (req,cert,chain,errors) => true
-};
- 
-using (DocumentClient client = new DocumentClient(new Uri(strEndpoint), strKey, httpHandler))
-{
-    RunDatabaseDemo(client).GetAwaiter().GetResult();
-}
-```
-
-SSL 証明書の検証を無効にするだけでなく、`/allownetworkaccess` オプションを使用してエミュレーターを起動し、エミュレーターのエンドポイントが `host.docker.internal` DNS ではなくホスト IP アドレスからアクセスできることが重要です。
+Linux Docker コンテナーで実行されている .NET クライアント アプリケーションがあり、ホスト マシン上で Azure Cosmos エミュレーターを実行している場合は、以下のセクションの Linux に関する説明に従って、Linux Docker コンテナーに証明書をインポートしてください。
 
 ## Mac または Linux 上での実行<a id="mac"></a>
 
@@ -447,47 +431,59 @@ Windows VM 内で以下のコマンドを実行して、IPv4 アドレスをメ�
 ipconfig.exe
 ```
 
-アプリケーション内で、`ipconfig.exe` によって返される IPv4 アドレスを使用するには、DocumentClient オブジェクトの URI を変更する必要があります。 次の手順では、DocumentClient オブジェクトを構築するときに、CA 検証を回避します。 このためには、HttpClientHandler を、ServerCertificateCustomValidationCallback のその独自の実装を持つ DocumentClient コンストラクターに指定する必要があります。
+アプリケーション内で、エンドポイントとして使用される URI を変更する必要があります。`localhost` ではなく、`ipconfig.exe` から返される IPv4 アドレスを使用するようにしてください。
 
-下は必要なコードの例です。
-
-```csharp
-using System;
-using Microsoft.Azure.Documents;
-using Microsoft.Azure.Documents.Client;
-using System.Net.Http;
-
-namespace emulator
-{
-    class Program
-    {
-        static async void Main(string[] args)
-        {
-            string strEndpoint = "https://10.135.16.197:8081/";  //IPv4 address from ipconfig.exe
-            string strKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
-
-            //Work around the CA validation
-            var httpHandler = new HttpClientHandler()
-            {
-                ServerCertificateCustomValidationCallback = (req,cert,chain,errors) => true
-            };
-
-            //Pass http handler to document client
-            using (DocumentClient client = new DocumentClient(new Uri(strEndpoint), strKey, httpHandler))
-            {
-                Database database = await client.CreateDatabaseIfNotExistsAsync(new Database { Id = "myDatabase" });
-                Console.WriteLine($"Created Database: id - {database.Id} and selfLink - {database.SelfLink}");
-            }
-        }
-    }
-}
-```
-
-最後に、Windows VM 内から、次のオプションを使用してコマンド ラインから Cosmos エミュレーターを起動します。
+次に、Windows VM 内から、次のオプションを使用してコマンド ラインから Cosmos エミュレーターを起動します。
 
 ```cmd
 Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
 ```
+
+最後に、エミュレーターの CA 証明書を Linux または Mac 環境にインポートする必要があります。
+
+### <a name="linux"></a>Linux
+
+Linux 環境では、.NET が OpenSSL を使用して検証を行います。
+
+1. [証明書を PFX 形式でエクスポート](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate)します (PFX は、秘密キーをエクスポートするよう選択すると利用できます)。 
+
+1. PFX ファイルを Linux 環境にコピーします。
+
+1. PFX ファイルを CRT ファイルに変換します。
+
+   ```bash
+   openssl pkcs12 -in YourPFX.pfx -clcerts -nokeys -out YourCTR.crt
+   ```
+
+1. ご利用の Linux ディストリビューションの、カスタム証明書が格納されているフォルダーに CRT ファイルをコピーします。 一般に、Debian ディストリビューションでは `/usr/local/share/ca-certificates/` に格納されます。
+
+   ```bash
+   cp YourCTR.crt /usr/local/share/ca-certificates/
+   ```
+
+1. CA 証明書を更新します。これによって `/etc/ssl/certs/` フォルダーが更新されます。
+
+   ```bash
+   update-ca-certificates
+   ```
+
+### <a name="mac-os"></a>Mac OS
+
+Mac 環境では、次の手順に従います。
+
+1. [証明書を PFX 形式でエクスポート](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate)します (PFX は、秘密キーをエクスポートするよう選択すると利用できます)。
+
+1. PFX ファイルを Mac 環境にコピーします。
+
+1. *Keychain Access* アプリケーションを開いて PFX ファイルをインポートします。
+
+1. 証明書の一覧を開き、`localhost` という名前の証明書を特定します。
+
+1. その特定の項目のコンテキスト メニューを開いて *[項目の取得]* を選択し、 *[信頼]*  >  *[この証明書を使用するとき]* オプションの *[常に信頼]* を選択します。 
+
+   ![その特定の項目のコンテキスト メニューを開いて [項目の取得] を選択し、[信頼] の [この証明書を使用するとき] オプションで [常に信頼] を選択する](./media/local-emulator/mac-trust-certificate.png)
+
+以上の手順に従った後、ご利用の環境は、`/AllowNetworkAccess` によって公開された IP アドレスに接続する際、エミュレーターによって使用された証明書を信頼するようになります。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

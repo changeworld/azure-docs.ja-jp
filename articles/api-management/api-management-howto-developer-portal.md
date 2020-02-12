@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 81daada7a62da86772d4657a1a8aaff91f27b673
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 4dd026377d5824853dd713a59a86ed742990bade
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045585"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898833"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management 開発者ポータルの概要
 
@@ -213,6 +213,18 @@ New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM N
 API Management サービスが VNet 内にある場合は、VNet 接続に関する前出の質問を参照してください。
 
 カスタム ドメインに割り当てられているがブラウザーで信頼されていない SSL 証明書が原因で呼び出しが失敗する場合もあります。 軽減策として、管理エンドポイントのカスタム ドメインを削除することができます。API Management は、信頼できる証明書を使用して既定のエンドポイントにフォールバックします。
+
+### <a name="whats-the-browser-support-for-the-portal"></a>ポータルのブラウザー サポートとは何ですか？
+
+| Browser                     | サポートされています       |
+|-----------------------------|-----------------|
+| Apple Safari                | 可<sup>1</sup> |
+| Google Chrome               | 可<sup>1</sup> |
+| Microsoft Edge              | 可<sup>1</sup> |
+| Microsoft Internet Explorer | いいえ              |
+| Mozilla Firefox             | 可<sup>1</sup> |
+
+ <small><sup>1</sup> 2 つの最新の生産バージョンでサポートされています。</small>
 
 ## <a name="next-steps"></a>次のステップ
 

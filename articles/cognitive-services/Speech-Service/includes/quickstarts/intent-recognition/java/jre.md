@@ -1,28 +1,24 @@
 ---
-title: クイック スタート:音声、意図、エンティティを認識する、Java - Speech サービス
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 01/02/2020
+ms.date: 01/27/2020
 ms.topic: include
-ms.author: erhopf
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: c5d70bba32df5940d929482e37317d40bd496676
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: a6bf8bb558e82fefbbe6ff306f628a4b449a4e83
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76761462"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900333"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に、以下の操作を行います。
 
-* 今回初めて Java (JRE) プロジェクトを作成する場合は、このガイドを使用して<a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=jre" target="_blank">空のサンプル プロジェクトを作成</a>します。
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=jre" target="_blank">開発環境に対応した Speech SDK をインストールします</a>。
+* 今回初めて Java (JRE) プロジェクトを作成する場合は、このガイドを使用して<a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=jre" target="_blank">空のサンプル プロジェクトを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>します。
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=jre" target="_blank">開発環境に対応した Speech SDK をインストールします<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>意図認識用の LUIS アプリを作成する
 
@@ -96,7 +92,7 @@ Speech SDK では、既定で認識される言語が en-us です。ソース�
 
 ## <a name="check-your-code"></a>コードを確認する
 
-この時点で、コードは次のようになります。  
+この時点で、コードは次のようになります。
 
 > [!NOTE]
 > このバージョンにはいくつかのコメントを追加してあります。
@@ -105,7 +101,7 @@ Speech SDK では、既定で認識される言語が en-us です。ソース�
 
 ## <a name="build-and-run-your-app"></a>アプリをビルドして実行する
 
-F11 キーを押すか、 **[Run]**  >  **[Debug]** の順に選択します。
+<kbd>F11</kbd> キーを押すか、 **[Run]**  >  **[Debug]** の順に選択します。
 その後 15 秒間、マイクからの音声入力が認識され、コンソール ウィンドウにログが記録されます。
 
 ## <a name="next-steps"></a>次のステップ

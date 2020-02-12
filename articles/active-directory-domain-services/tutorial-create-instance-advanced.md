@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 46764fdae89d5af4c9dedf4037d07dc48d1cda83
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5e969ed4f525d0b3d17339b9f9a6111ad81b0125
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703676"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931636"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>チュートリアル:詳細構成オプションを使用して Azure Active Directory Domain Services インスタンスを作成、構成する
 
@@ -43,20 +43,20 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 * Azure AD DS を有効にするには、Azure AD テナントに "*全体管理者*" 特権が必要です。
 * 必要な Azure AD DS リソースを作成するためには、ご利用の Azure サブスクリプションに "*共同作成者*" 特権が必要です。
 
-Azure AD DS では必須ではありませんが、Azure AD テナントには、[SSPR (Self-Service Password Reset: パスワード リセットのセルフサービス) を構成][configure-sspr]することをお勧めします。 SSPR がなくても、ユーザーは自分のパスワードを変更できます。しかし、ユーザーがパスワードを紛失してしまってリセットする必要が生じた場合には SSPR が役立ちます。
+Azure AD DS では必須ではありませんが、Azure AD テナントには、[SSPR (Self-Service Password Reset: セルフサービス パスワード リセット ) を構成][configure-sspr]することをお勧めします。 SSPR がなくても、ユーザーは自分のパスワードを変更できます。しかし、ユーザーがパスワードを紛失してしまってリセットする必要が生じた場合には SSPR が役立ちます。
 
 > [!IMPORTANT]
 > Azure AD DS マネージド ドメインを作成した後は、そのインスタンスを別のリソース グループ、仮想ネットワーク、サブスクリプションなどに移動することはできません。Azure AD DS インスタンスをデプロイするときに、最適なサブスクリプション、リソース グループ、リージョン、および仮想ネットワークを慎重に選択してください。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-このチュートリアルでは、Azure portal を使用して Azure AD DS インスタンスの作成と構成を行います。 最初に、[Azure portal](https://portal.azure.com) にサインインしてください。
+このチュートリアルでは、Azure portal を使用して Azure AD DS インスタンスの作成と構成を行います。 最初に、[Azure portal](https://portal.azure.com) にサインインします。
 
 ## <a name="create-an-instance-and-configure-basic-settings"></a>インスタンスを作成して基本的な設定を構成する
 
 **[Azure AD Domain Services の有効化]** ウィザードを起動するには、次の手順を実行します。
 
-1. Azure portal メニューまたは **[ホーム]** ページで、 **[リソースの作成]** を選択します。
+1. Azure portal メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。
 1. 検索バーに「*Domain Services*」と入力し、検索候補から *[Azure AD Domain Services]* を選択します。
 1. [Azure AD Domain Services] ページで **[作成]** を選択します。 **[Azure AD Domain Services の有効化]** ウィザードが起動します。
 1. マネージド ドメインを作成する Azure **サブスクリプション**を選択します。
@@ -94,6 +94,9 @@ Azure portal の *[基本]* ウィンドウのフィールドに必要事項を�
 
     Azure AD DS を複数のゾーンに分散するために、ご自身で構成するものは何もありません。 Azure プラットフォームでは、ゾーンへのリソース分散が自動的に処理されます。 詳細情報および利用可能なリージョンについては、「[Azure の Availability Zones の概要][availability-zones]」を参照してください。
 
+1. パフォーマンス、バックアップ頻度、作成できるフォレストの信頼の最大数は、**SKU** によって決まります。 マネージド ドメインの作成後、ビジネス上の需要や要件に変化が生じた場合は SKU を変更できます。 詳細については、[Azure AD DS SKU の概念][concepts-sku]に関するセクションを参照してください。
+
+    このチュートリアルでは、*Standard* SKU を選択します。
 1. "*フォレスト*" は、Active Directory Domain Services が 1 つまたは複数のドメインをグループ化するために使用する論理上の構成体です。 既定では、Azure AD DS のマネージド ドメインが "*ユーザー*" フォレストとして作成されます。 このタイプのフォレストでは、オンプレミスの AD DS 環境で作成されたユーザー アカウントも含め、Azure AD 内のすべてのオブジェクトが同期されます。 "*リソース*" フォレストでは、Azure AD に直接作成されたユーザーとグループだけが同期されます。 リソース フォレストは現在プレビュー段階です。 リソース フォレストを使用する理由や、オンプレミスの AD DS ドメインを使用してフォレストの信頼を作成する方法など、"*リソース*" フォレストの詳細については、[Azure AD DS リソース フォレストの概要][resource-forests]に関するページを参照してください。
 
     このチュートリアルでは、"*ユーザー*" フォレストを作成します。
@@ -102,9 +105,9 @@ Azure portal の *[基本]* ウィンドウのフィールドに必要事項を�
 
 1. 追加のオプションを手動で構成するには、 **[Next - Networking]\(次へ - ネットワーク\)** を選択します。 それ以外の場合は、 **[確認および作成]** を選択して既定の構成オプションをそのまま使用し、「[マネージド ドメインのデプロイ](#deploy-the-managed-domain)」セクションに進みます。 この作成オプションを選択した場合は、次の既定値が構成されます。
 
-* IP アドレス範囲 *10.0.1.0/24* を使用する *aadds-vnet* という名前の仮想ネットワークを作成します。
-* IP アドレス範囲 *10.0.1.0/24* を使用して、*aadds-subnet* という名前のサブネットを作成します。
-* Azure AD の "*すべて*" のユーザーを Azure AD DS のマネージド ドメインに同期させます。
+    * IP アドレス範囲 *10.0.1.0/24* を使用する *aadds-vnet* という名前の仮想ネットワークを作成します。
+    * IP アドレス範囲 *10.0.1.0/24* を使用して、*aadds-subnet* という名前のサブネットを作成します。
+    * Azure AD の "*すべて*" のユーザーを Azure AD DS のマネージド ドメインに同期させます。
 
 ## <a name="create-and-configure-the-virtual-network"></a>仮想ネットワークを作成して構成する
 
@@ -125,7 +128,7 @@ Azure portal の *[基本]* ウィンドウのフィールドに必要事項を�
     1. 仮想ネットワークを作成するように選択した場合は、仮想ネットワークの名前 (例: *myVnet*) を入力し、アドレスの範囲 (例: *10.0.1.0/24*) を指定します。
     1. わかりやすい名前 (例: *DomainServices*) で専用サブネットを作成します。 アドレス範囲 (例: *10.0.1.0/24*) を指定します。
 
-    ![Azure AD Domain Services で使用する仮想ネットワークとサブネットを作成する](./media/tutorial-create-instance-advanced/create-vnet.png)
+    [![](./media/tutorial-create-instance-advanced/create-vnet.png "Create a virtual network and subnet for use with Azure AD Domain Services")](./media/tutorial-create-instance-advanced/create-vnet-expanded.png#lightbox)
 
     必ずプライベート IP アドレスの範囲内にあるアドレスの範囲を選んでください。 ご自身が所有していないパブリック アドレス空間内の IP アドレス範囲を指定すると、Azure AD DS 内でエラーが発生します。
 
@@ -206,7 +209,7 @@ Azure AD に作成されたユーザー アカウントがクラウド専用の�
 
 クラウド専用ユーザー アカウントの場合、ユーザーは Azure AD DS を使用する前に各自のパスワードを変更する必要があります。 このパスワード変更プロセスによって、Kerberos 認証と NTLM 認証に使用されるパスワード ハッシュが Azure AD に生成されて保存されます。 テナント内のユーザーのうち、Azure AD DS を使用する必要がある全ユーザーのパスワードを期限切れにして、次回のサインイン時にパスワードの変更を強制するか、または、各自のパスワードを手動で変更するようユーザーに指示してください。 このチュートリアルでは、ユーザー パスワードを手動で変更しましょう。
 
-ユーザーが自分のパスワードをリセットできるように、あらかじめ Azure AD テナントを[パスワード リセットのセルフサービス用に構成][configure-sspr]しておく必要があります。
+ユーザーが自分のパスワードをリセットできるように、あらかじめ Azure AD テナントを[セルフサービス パスワード リセット 用に構成][configure-sspr]しておく必要があります。
 
 クラウド専用ユーザーのパスワードを変更するには、ユーザーが次の手順を実行する必要があります。
 
@@ -221,7 +224,7 @@ Azure AD に作成されたユーザー アカウントがクラウド専用の�
 
 パスワードの変更後、Azure AD DS で新しいパスワードを使用したり、マネージド ドメインに参加しているコンピューターに正常にサインインしたりできるようになるまでには数分かかります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 
@@ -248,5 +251,6 @@ Azure AD に作成されたユーザー アカウントがクラウド専用の�
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
 [resource-forests]: concepts-resource-forest.md
 [availability-zones]: ../availability-zones/az-overview.md
+[concepts-sku]: administration-concepts.md#azure-ad-ds-skus
 
 <!-- EXTERNAL LINKS -->

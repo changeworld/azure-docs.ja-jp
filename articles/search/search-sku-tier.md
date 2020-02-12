@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: 772f6f51fb98b3a9adbd1efe6571842c667e8e8e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/30/2020
+ms.openlocfilehash: 35dbd064a09a96dae58e1b15a6d8889bda45ee0d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427026"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899838"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Cognitive Search の価格レベルの選択
 
@@ -21,15 +21,20 @@ Azure Cognitive Search サービスを作成すると、サービスの有効期
 
 ほとんどのお客様は、サービスを評価できるように、Free レベルから始めます。 評価後には、開発および運用環境用のデプロイのために上位レベルのいずれかに 2 つ目のサービスを作成するのが一般的です。
 
-一般に、Free レベルを含むすべてのレベルで機能パリティが提供されますが、ワークロードが大きいほど、より高いレベルが必要になる可能性があります。 たとえば、[AI エンリッチメント](cognitive-search-concept-intro.md)には、データセットのサイズが小さい場合を除いて Free サービスではタイムアウトになってしまう、実行時間の長いスキルがあります。
+## <a name="feature-availability-by-tier"></a>階層による機能の使用の可否
 
-> [!NOTE] 
-> 機能パリティの例外は[インデクサー](search-indexer-overview.md)で、これは S3 HD では利用できません。
->
+ほとんどすべての機能は Free を含むすべての階層で利用できますが、十分な容量を提供しない限り、リソースを集中的に使用する機能やワークフローは適切に機能しない可能性があります。 たとえば、[AI エンリッチメント](cognitive-search-concept-intro.md)には、データセットのサイズが小さい場合を除いて Free サービスではタイムアウトになってしまう、実行時間の長いスキルがあります。
 
-## <a name="available-tiers"></a>使用可能なレベル
+次の表では、階層に関連する機能の制約について説明します。
 
-レベルは (機能ではなく) サービスをホストしているハードウェアの特性を反映していて、以下によって差別化されています。
+| 機能 | 制限事項 |
+|---------|-------------|
+| [インデクサー](search-indexer-overview.md) | インデクサーは S3 HD では使用できません。 |
+| [顧客が管理する暗号化キー](search-security-manage-encryption-keys.md) | Free レベルでは使用できません。 |
+
+## <a name="tiers-skus"></a>レベル (SKU)
+
+レベルは次の方法で区別されます。
 
 + 作成できるインデックスとインデクサーの数
 + パーティション (物理ストレージ) のサイズと速度
@@ -76,7 +81,7 @@ Azure Cognitive Search 上に構築されたソリューションでは、次の
 
 [AI エンリッチメント](cognitive-search-concept-intro.md)の場合は、従量課金制の処理について、Azure Cognitive Search と同じリージョンの S0 価格レベルで、[有料の Azure Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)ように計画することをお勧めします。 Cognitive Services のアタッチには、関連する固定コストはありません。 課金の対象となるのは、必要な処理の分だけです。
 
-| 操作 | 課金への影響 |
+| Operation | 課金への影響 |
 |-----------|----------------|
 | ドキュメント解析、テキスト抽出 | 無料 |
 | ドキュメント解析、画像抽出 | ドキュメントから抽出された画像の数に基づいて課金されます。 **インデクサー構成**で、[imageAction](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters) は、画像抽出をトリガーするパラメーターです。 **imageAction** が "none" (既定値) に設定されている場合、画像の抽出に対して課金されません。 画像抽出のレートは、Azure Cognitive Search の[価格の詳細](https://azure.microsoft.com/pricing/details/search/)に関するページに記載されています。|
@@ -97,9 +102,9 @@ SU は、サービスによって使用される "*レプリカ*" と "*パー�
 
 ほとんどのお客様は、総容量の一部だけをオンラインにし、残りを取っておきます。 課金については、オンラインにするパーティションとレプリカの数 (SU 式を使用して計算) によって、時間単位で支払う金額が決まります。
 
-## <a name="how-to-manage-and-reduce-costs"></a>コストを管理および削減する方法
+## <a name="how-to-manage-costs"></a>コストを管理する方法
 
-次の提案に加えて、[課金とコスト管理](https://docs.microsoft.com/azure/billing/billing-getting-started)に関するページも参照してください。
+次の推奨事項は、コストを最小限に抑えるのに役立ちます。
 
 - 帯域幅の料金を最小限に抑えるかなくすために、すべてのリソースを同一のリージョンか可能な限り少ないリージョンに作成します。
 
@@ -109,7 +114,11 @@ SU は、サービスによって使用される "*レプリカ*" と "*パー�
 
 - インデックス作成などのリソースを大量に消費する操作に対してはスケールアップし、通常のクエリ ワークロードに対して再調整してスケールダウンします。 Azure Cognitive Search の最小構成 (1 つのパーティションと 1 つのレプリカで構成された 1 つの SU) から開始し、ユーザー アクティビティを監視して、容量の増加に対するニーズを示す使用パターンを特定します。 予測可能なパターンがある場合は、スケールをアクティビティと同期できることがあります (これを自動化するにはコードを記述する必要があります)。
 
-課金を抑えるために検索サービスをシャットダウンすることはできません。 専用リソースは常に動作し、サービスの有効期間中、お客様専用として割り当てられています。 サービス自体に関して、課金を抑える唯一の方法は、レプリカとパーティションを、まだ許容可能なパフォーマンスと [SLA コンプライアンス](https://azure.microsoft.com/support/legal/sla/search/v1_0/)を提供する低いレベルに下げるか、より低いレベルでサービスを作成することです (S1 の時間あたりの料金は S2 または S3 の料金よりも低くなります)。 負荷予測の下限でサービスをプロビジョニングすると仮定した場合、サービスが拡大したら、2 番目に高いレベルのサービスを作成し、その 2 番目のサービスでインデックスを再構築してから、最初のサービスを削除することができます。
+また、支出に関連する組み込みツールと機能については、[課金とコスト管理](https://docs.microsoft.com/azure/billing/billing-getting-started) に関するページを参照してください。
+
+検索サービスを一時的にシャットダウンすることはできません。 専用リソースは常に動作し、サービスの有効期間中、お客様専用として割り当てられています。 サービスの削除は永続的なものであり、関連付けられているデータも削除されます。
+
+サービス自体に関して、課金を抑える唯一の方法は、レプリカとパーティションを、まだ許容可能なパフォーマンスと [SLA コンプライアンス](https://azure.microsoft.com/support/legal/sla/search/v1_0/)を提供する低いレベルに下げるか、より低いレベルでサービスを作成することです (S1 の時間あたりの料金は S2 または S3 の料金よりも低くなります)。 負荷予測の下限でサービスをプロビジョニングすると仮定した場合、サービスが拡大したら、2 番目に高いレベルのサービスを作成し、その 2 番目のサービスでインデックスを再構築してから、最初のサービスを削除することができます。
 
 ## <a name="how-to-evaluate-capacity-requirements"></a>容量の要件を評価する方法
 

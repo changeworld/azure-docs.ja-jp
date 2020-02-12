@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 12c2f1bd2a3185d26eae02b5cd756392b5b87c16
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: e7717cdeec33a32f926cb5ef4c1f6d28c25f9d93
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533292"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989088"
 ---
 ## <a name="create-a-self-hosted-integration-runtime"></a>自己ホスト型統合ランタイムを作成する
 
@@ -83,7 +83,8 @@ ms.locfileid: "72533292"
 
 5. 次の手順でマシンにインストールするセルフホステッド統合ランタイムを登録するために使用するいずれかのキーをコピーします (二重引用符は除外します)。  
 
-## <a name="install-the-integration-runtime"></a>統合ランタイムのインストール
+## <a name="install-the-integration-runtime-tool"></a>統合ランタイム ツールをインストールする
+
 1. 既にマシンに統合ランタイムがインストールされている場合は、 **[プログラムの追加と削除]** を使用してそれをアンインストールします。 
 
 2. セルフホステッド統合ランタイムをローカルの Windows マシンに[ダウンロード](https://www.microsoft.com/download/details.aspx?id=39717)します。 インストールを実行します。
@@ -135,5 +136,4 @@ ms.locfileid: "72533292"
     h. 統合ランタイムから SQL Server に接続できることを確認するために、 **[テスト]** を選択します。 接続が成功すると、緑色のチェック マークが表示されます。 接続が失敗した場合は、エラー メッセージが表示されます。 問題を修正し、統合ランタイムから SQL Server に接続できるようにします。    
 
     > [!NOTE]
-    > 認証の種類、サーバー、データベース、ユーザー、およびパスワードの値をメモしておきます。 このチュートリアルの後の方で使用します。 
-    
+    > 認証の種類、サーバー、データベース、ユーザー、およびパスワードの値をメモしておきます。 このチュートリアルの後の方で使用します。

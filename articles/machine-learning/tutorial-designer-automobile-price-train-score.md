@@ -8,18 +8,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 639a61cddde27b0d989e5a3dd4c599c353182a73
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 01/30/2020
+ms.openlocfilehash: de9ed700363bd6578ac49f0add0c48dc33356692
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720178"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982605"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>チュートリアル:デザイナーを使用して自動車の価格を予測する (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-この 2 部構成のチュートリアルでは、Azure Machine Learning のデザイナーを使用して、自動車の価格を予測する予測分析ソリューションを開発およびデプロイする方法について説明します。
+この 2 部構成のチュートリアルでは、Azure Machine Learning のデザイナーを使用して、自動車の価格を予測する機械学習モデルをトレーニングおよびデプロイする方法について説明します。 このデザイナーはドラッグ アンド ドロップ式のツールであり、コードを 1 行も書くことなく機械学習モデルを作成できます。
 
 チュートリアルのパート 1 で学習する内容は次のとおりです。
 
@@ -45,13 +45,15 @@ Azure Machine Learning パイプラインを作成するには、Azure Machine L
 
 ### <a name="create-a-new-workspace"></a>新しいワークスペースを作成する
 
+デザイナーを使用するためには、まず Azure Machine Learning ワークスペースが必要です。 ワークスペースは、Azure Machine Learning の最上位のリソースで、Azure Machine Learning で作成するすべての成果物を操作するための一元的な場所を提供します。
+
 Azure Machine Learning ワークスペース (Enterprise Edition) がある場合は、[次のセクションに進みます](#create-the-pipeline)。
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
 
 ### <a name="create-the-pipeline"></a>パイプラインを作成する
 
-1. [ml.azure.com](https://ml.azure.com) にサインインし、使用するワークスペースを選択します。
+1. <a href="https://ml.azure.com?tabs=jre" target="_blank">ml.azure.com</a> にサインインし、使用するワークスペースを選択します。
 
 1. **[デザイナー]** を選択します。
 
@@ -60,6 +62,30 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 1. **[Easy-to-use prebuilt modules]\(あらかじめ構築された使いやすいモジュール\)** を選択します。
 
 1. キャンバスの上部にある既定のパイプライン名 **Pipeline-Created-on** を選択します。 この名前を *Automobile price prediction* (自動車価格の予測) に変更します。 名前は一意でなくてもかまいません。
+
+## <a name="set-the-default-compute-target"></a>既定のコンピューティング先を設定する
+
+パイプラインは、ワークスペースにアタッチされたコンピューティング リソースであるコンピューティング先で実行されます。 コンピューティング先を作成した後、それを将来の実行のために再利用できます。
+
+パイプライン全体の**既定のコンピューティング先**を設定できます。この設定により、既定で同じコンピューティング先を使用するようすべてのモジュールに伝えられます。 ただしコンピューティング先は、モジュールごとに自分で指定することができます。
+
+1. キャンバス上部の、パイプライン名の横に表示される ![歯車アイコンのスクリーンショット](./media/tutorial-designer-automobile-price-train-score/gear-icon.png) (**歯車アイコン**) を選択して **[設定]** ペインを開きます。
+
+1. キャンバスの右側にある **[設定]** ペインで、 **[コンピューティング先を選択]** を選択します。
+
+    使用できるコンピューティング先が既にある場合は、それを選択してこのパイプラインを実行できます。
+
+    > [!NOTE]
+    > デザイナーは、Azure Machine Learning コンピューティング先でのみ実験を実行できます。 その他のコンピューティング先は表示されません。
+
+1. コンピューティング リソースの名前を入力します。
+
+1. **[保存]** を選択します。
+
+    > [!NOTE]
+    > コンピューティング リソースを作成するには約 5 分かかります。 リソースの作成後は、それを再利用できるため、今後の実行では、この待機時間をスキップできます。
+    >
+    > コンピューティング リソースは、コストを節約するために、アイドル状態のときは 0 ノードに自動スケーリングされます。 しばらくしてからそれを再度使用すると、スケールアップして元に戻すときに約 5 分の待機時間が発生することがあります。
 
 ## <a name="import-data"></a>データのインポート
 
@@ -77,7 +103,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 1. **Automobile price data (Raw)** モジュールを選択します。
 
-1. キャンバスの右側にある [プロパティ] ウィンドウで **[出力]** を選択します。
+1. キャンバスの右側にある [モジュールの詳細] ペインで **[出力]** を選択します。
 
 1. グラフ アイコンを選択してデータを視覚化します。
 
@@ -95,7 +121,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 モデルをトレーニングする際は、欠損データに対処する必要があります。 このデータセットでは、**normalized-losses** 列に多数の欠損値が存在するので、その列全体をモデルから除外します。
 
-1. パレットの上部にある検索ボックスに「**Select**」と入力し、 **[Select Columns in Dataset]\(データセットの列を選択する\)** モジュールを見つけます。
+1. キャンバスの左側にあるモジュール パレットで **[データ変換]** セクションを展開し、 **[Select Columns in Dataset]\(データセットの列を選択する\)** モジュールを見つけます。
 
 1. **[Select Columns in Dataset]\(データセットの列を選択する\)** モジュールをキャンバスにドラッグします。 データセット モジュールの下のモジュールを削除します。
 
@@ -109,7 +135,9 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 1. **Select Columns in Dataset (データセットの列を選択する)** モジュールを選択します。
 
-1. キャンバスの右側にあるプロパティ ペインで **[すべての列]** を選択します。
+1. キャンバスの右側にある [モジュールの詳細] ペインで **[列の編集]** を選択します。
+
+1. **[Include]\(対象\)** の横にある **[列名]** ボックスの一覧を展開し、 **[すべての列]** を選択します。
 
 1. **[+]** を選択し、新しいルールを追加します。
 
@@ -123,7 +151,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 1. **Select Columns in Dataset (データセットの列を選択する)** モジュールを選択します。 
 
-1. プロパティ ペインで **[コメント]** ボックスを選択し、「*Exclude normalized losses*」と入力します。
+1. キャンバスの右側にある [モジュールの詳細] ペインで **[コメント]** ボックスを選択し、「*Exclude normalized losses*」と入力します。
 
     コメントがグラフに表示されることで、パイプラインが整理しやすくなります。
 
@@ -134,13 +162,15 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 > [!TIP]
 > デザイナーでは、欠損値を入力データから取り除くことが、ほとんどのモジュールを使用するための前提条件となっています。
 
-1. 検索ボックスに「**Clean**」と入力して、 **[Clean Missing Data]\(見つからないデータのクリーンアップ\)** モジュールを見つけます。
+1. キャンバスの左側にあるモジュール パレットで **[データ変換]** セクションを展開し、 **[Clean Missing Data]\(見つからないデータのクリーンアップ\)** モジュールを見つけます。
 
 1. **[Clean Missing Data]\(見つからないデータのクリーンアップ\)** モジュールをパイプライン キャンバスにドラッグします。 それを **[Select Columns in Dataset]\(データセットの列を選択する\)** モジュールに接続します。 
 
-1. [プロパティ] ウィンドウで、 **[Cleaning mode]\(整理モード\)** の **[Remove entire row]\(行全体を削除\)** を選択します。
+1. **[Clean Missing Data]\(見つからないデータのクリーンアップ\)** モジュールを選択します。
 
-1. [プロパティ] ウィンドウの **[コメント]** ボックスに「*Remove missing value rows.* 」と入力します。 
+1. キャンバスの右側にある [モジュールの詳細] ペインで、 **[Cleaning mode]\(クリーニング モード\)** の **[Remove entire row]\(行全体を削除\)** を選択します。
+
+1. キャンバスの右側にある [モジュールの詳細] ペインで **[コメント]** ボックスを選択し、「*Remove missing value rows*」と入力します。 
 
     これでパイプラインは次のようになっているはずです。
     
@@ -156,26 +186,28 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 データの分割は、機械学習における一般的なタスクです。 ここでは、データを 2 つの独立したデータセットに分割します。 一方のデータセットでモデルをトレーニングし、もう一方のデータセットでモデルの精度をテストします。
 
-1. 検索ボックスに「**split data**」と入力して、 **[Split Data]\(データの分割\)** モジュールを見つけます。 **[Clean Missing Data]\(見つからないデータのクリーンアップ\)** モジュールの左側のポートを **[Split Data]\(データの分割\)** モジュールに接続します。
+1. モジュール パレットで **[データ変換]** セクションを展開し、 **[Split Data]\(データの分割\)** モジュールを見つけます。
+
+1. **[Split Data]\(データの分割\)** モジュールをパイプライン キャンバスにドラッグします。
+
+1. **[Clean Missing Data]\(見つからないデータのクリーンアップ\)** モジュールの左側のポートを **[Split Data]\(データの分割\)** モジュールに接続します。
 
     > [!IMPORTANT]
     > **[Split Data]\(データの分割\)** には必ず、 **[Clean Missing Data]\(見つからないデータのクリーンアップ\)** の左側の出力ポートを接続してください。 クリーンアップされたデータは、左側のポートに格納されます。 右側のポートには、破棄されたデータが格納されます。
 
 1. **[Split Data]\(データの分割\)** モジュールを選択します。
 
-1. [プロパティ] ウィンドウで、 **[Fraction of rows in the first output dataset]\(最初の出力データセット内の行の割合\)** を 0.7 に設定します。
+1. キャンバスの右側にある [モジュールの詳細] ペインで、 **[Fraction of rows in the first output dataset]\(最初の出力データセット内の行の割合\)** を 0.7 に設定します。
 
     このオプションによって、データの 70% をモデルのトレーニング、30% をテストに分割します。 70% のデータセットには、左側の出力ポートからアクセスできます。 残りのデータには、右側の出力ポートからアクセスできます。
 
-1. [プロパティ] ウィンドウの **[コメント]** ボックスに「*Split the dataset into training set (0.7) and test set (0.3)* 」と入力します。
+1. キャンバスの右側にある [モジュールの詳細] ペインで **[コメント]** ボックスを選択し、「*Split the dataset into training set (0.7) and test set (0.3)* 」と入力します。
 
 ### <a name="train-the-model"></a>モデルをトレーニングする
 
 価格が含まれたデータセットを指定して、モデルをトレーニングします。 トレーニング データによって提示された価格と特徴との間の関係を説明するモデルがアルゴリズムによって構築されます。
 
-1. 学習アルゴリズムを選択するには、モジュール パレットの検索ボックスをオフにします。
-
-1. **[Machine Learning Algorithms]\(機械学習アルゴリズム\)** を展開します。
+1. モジュール パレットで **[Machine Learning Algorithms]\(機械学習アルゴリズム\)** を展開します。
     
     このオプションによって、学習アルゴリズムの初期化に使用できるモジュールのカテゴリが複数表示されます。
 
@@ -192,9 +224,11 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
     ![Train Model (モデルのトレーニング) モジュールの正しい構成を示すスクリーンショット。 Linear Regression (線形回帰) モジュールが、Train Model (モデルのトレーニング) モジュールの左側のポートに接続され、Split Data (データの分割) モジュールが、Train Model (モデルのトレーニング) モジュールの右側のポートに接続されています。](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
 
+1. モジュール パレットで **[Module training]\(モジュールのトレーニング\)** セクションを展開し、 **[Train Model]\(モデルのトレーニング\)** モジュールをキャンバスにドラッグします。
+
 1. **Train Model** (モデルのトレーニング) モジュールを選択します。
 
-1. [プロパティ] ウィンドウで **[列の編集]** セレクターを選択します。
+1. キャンバスの右側にある [モジュールの詳細] ペインで **[列の編集]** セレクターを選択します。
 
 1. **[Label column]\(ラベル列\)** ダイアログ ボックスのドロップダウン メニューを展開して **[列名]** を選択します。 
 
@@ -204,7 +238,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
     ![[Train Model]\(モデルのトレーニング\) モジュールを追加した後のパイプラインの正しい構成を示すスクリーンショット。](./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png)
 
-## <a name="score-a-machine-learning-model"></a>機械学習モデルにスコア付けする
+### <a name="add-the-score-model-module"></a>[Score Model]\(モデルのスコア付け\) モジュールを追加する
 
 データの 70% を使用してモデルをトレーニングした後で、残りの 30% にスコアを付け、モデルの精度を確認します。
 
@@ -212,7 +246,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 1. **Train Model** (モデルのトレーニング) モジュールの出力を、**Score Model** (モデルのスコア付け) の左側の入力ポートに接続します。 **Split Data** (データの分割) モジュールのテスト データの出力 (右側のポート) を、**Score Model** (モデルのスコア付け) の右側の入力ポートに接続します。
 
-## <a name="evaluate-a-machine-learning-model"></a>機械学習モデルを評価する
+### <a name="add-the-evaluate-model-module"></a>モデルの評価モジュールを追加する
 
 モデルがどの程度の精度でテスト データセットにスコア付けしたかを、 **[Evaluate Model]\(モデルの評価\)** モジュールを使用して評価します。
 
@@ -226,7 +260,20 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 ## <a name="run-the-pipeline"></a>パイプラインを実行する
 
-[!INCLUDE [aml-ui-create-training-compute](../../includes/aml-ui-create-training-compute.md)]
+パイプラインの設定がすべて完了したら、パイプラインの実行を送信することができます。
+
+1. キャンバス上部の **[実行]** を選択します。
+
+1. **[パイプライン実行のセットアップ]** ダイアログ ボックスで、 **[実験]** の **[+ 新しい実験]** を選択します。
+
+    > [!NOTE]
+    > 実験グループの同様のパイプラインは同時に実行されます。 パイプラインを複数回実行する場合は、一連の実行に対して同じ実験を選択できます。
+
+    1. **[実験名]** にわかりやすい名前を入力します。
+
+    1. **[実行]** を選択します。
+    
+    実行の状態と詳細は、キャンバスの右上で確認できます。
 
 ### <a name="view-scored-labels"></a>スコア付けラベルを確認する
 
@@ -234,7 +281,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 1. **[Score Model]\(モデルのスコア付け\)** モジュールを選択して、その出力を表示します。
 
-1. プロパティ ペインで **[出力]** を選択し、グラフ アイコン (![可視化アイコン](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png)) を選択すると、結果が表示されます。
+1. キャンバスの右側にある [モジュールの詳細] ペインで、 **[出力]** 、![視覚化アイコン](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) (グラフ アイコン) の順に選択して結果を表示します。
 
     ここでは、予測された価格と、データのテストによる実際の価格を確認できます。
 
@@ -246,7 +293,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 1. **[Evaluate Model]\(モデルの評価\)** モジュールを選択して、その出力を表示します。
 
-1. プロパティ ペインで **[出力]** を選択し、グラフ アイコン (![可視化アイコン](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png)) を選択すると、結果が表示されます。
+1. キャンバスの右側にある [モジュールの詳細] ペインで、 **[出力]** 、![視覚化アイコン](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) (グラフ アイコン) の順に選択して結果を表示します。
 
 作成したモデルに対して、以下の統計値が表示されます。
 
@@ -260,16 +307,11 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
+続けてチュートリアルのパート 2 ([モデルのデプロイ](tutorial-designer-automobile-price-deploy.md)) を行う場合は、このセクションはスキップしてください。
+
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
 ## <a name="next-steps"></a>次のステップ
-
-このチュートリアルのパート 1 では、以下のタスクを完了しました。
-
-* パイプラインを作成する
-* データを準備する
-* モデルをトレーニングする
-* モデルにスコアを付け、評価する
 
 パート 2 では、モデルをリアルタイム エンドポイントとしてデプロイする方法を学習します。
 

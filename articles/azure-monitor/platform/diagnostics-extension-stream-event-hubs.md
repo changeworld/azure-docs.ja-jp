@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: 433d53e09fce6d3f6b2010956da91c4b7cf91d49
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 111fab880887b54b2415d433bda2368c951381bd
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770171"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901220"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Event Hubs を利用してホット パスの Azure Diagnostics データをストリーム配信する
 Azure Diagnostics では柔軟な方法でクラウド サービスの仮想マシン (VM) からメトリックとログを収集し、その結果を Azure Storage に転送できます。 2016 年 3 月 (SDK 2.9) の期間から、診断をカスタムのデータ ソースに送信し、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) を利用してホット パス データを数秒で転送できるようになりました。
@@ -201,7 +201,7 @@ Event Hubs シンクは、 **.wadcfgx** 構成ファイルの *PrivateConfig* �
 ## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>Cloud Services アプリケーションと診断構成をデプロイして更新する
 Visual Studio には、アプリケーションと Event Hubs シンク構成をデプロイするための最も簡単な方法が用意されています。 構成ファイルを表示して編集するには、Visual Studio で *.wadcfgx* ファイルを開き、編集して保存します。 ファイルのパスは、 **[Cloud Service Project (クラウド サービス プロジェクト)]**  >  **[ロール]**  >  **[(ロール名)]**  > **diagnostics.wadcfgx** です。  
 
-現時点では、Visual Studio、Visual Studio Team System、MSBuild に基づき **/t:publish target** を使用するすべてのコマンドまたはスクリプトにおいて、すべてのデプロイとデプロイ更新アクションのパッケージ化プロセスに *.wadcfgx* が含まれます。 さらに、デプロイと更新では、VM 上で適切な Azure Diagnostics エージェント拡張機能を使用してファイルを Azure にデプロイします。
+現時点では、Visual Studio、Visual Studio Team System においてすべてのデプロイとデプロイ更新アクション、および MSBuild に基づき `/t:publish` ターゲットを使用するすべてのコマンドまたはスクリプトには、パッケージ化プロセスに *.wadcfgx* が含まれます。 さらに、デプロイと更新では、VM 上で適切な Azure Diagnostics エージェント拡張機能を使用してファイルを Azure にデプロイします。
 
 アプリケーションと Azure Diagnostics 構成をデプロイすると、直後にイベント ハブのダッシュボードにアクティビティが表示されます。 これは、選択したリスナー クライアントまたは分析ツールでホットパス データを表示できるようになったことを示します。  
 
@@ -215,13 +215,72 @@ Visual Studio には、アプリケーションと Event Hubs シンク構成を
 >
 
 ## <a name="view-hot-path-data"></a>ホット パス データの表示
-先に説明したように、Event Hubs データのリッスンと処理にはさまざまな使用例があります。
+先に説明したように、Event Hubs データのリッスンと処理にはさまざまな使用例があります。 1 つの簡単な手法は、イベント ハブをリッスンして出力ストリームを表示する、テスト用の簡単なコンソール アプリケーションを作成することです。 
 
-1 つの簡単な手法は、イベント ハブをリッスンして出力ストリームを表示する、テスト用の簡単なコンソール アプリケーションを作成することです。 コンソール アプリケーションに次のコードを配置します。コードの詳細については、「[Event Hubs の使用](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)」をご覧ください。  
+#### <a name="net-sdk-latest-500-or-latertablatest"></a>[.NET SDK 最新 (5.0.0 以降)](#tab/latest)
+コンソール アプリケーションに次のコードを配置します。コードの詳細については、「[Event Hubs の使用](../../event-hubs/get-started-dotnet-standard-send-v2.md)」をご覧ください。
 
-コンソール アプリケーションには [Event Processor Host NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/)を含める必要があることにご注意ください。  
+```csharp
+using System;
+using System.Text;
+using System.Threading.Tasks;
+using Azure.Storage.Blobs;
+using Azure.Messaging.EventHubs;
+using Azure.Messaging.EventHubs.Processor;
+namespace Receiver1204
+{
+    class Program
+    {
+        private static readonly string ehubNamespaceConnectionString = "EVENT HUBS NAMESPACE CONNECTION STRING";
+        private static readonly string eventHubName = "EVENT HUB NAME";
+        private static readonly string blobStorageConnectionString = "AZURE STORAGE CONNECTION STRING";
+        private static readonly string blobContainerName = "BLOB CONTAINER NAME";
 
-**Main** 関数内の山かっこで囲まれた値を、リソースの値で必ず置換してください。   
+        static async Task Main()
+        {
+            // Read from the default consumer group: $Default
+            string consumerGroup = EventHubConsumerClient.DefaultConsumerGroupName;
+
+            // Create a blob container client that the event processor will use 
+            BlobContainerClient storageClient = new BlobContainerClient(blobStorageConnectionString, blobContainerName);
+
+            // Create an event processor client to process events in the event hub
+            EventProcessorClientOptions options = new EventProcessorClientOptions { }
+            EventProcessorClient processor = new EventProcessorClient(storageClient, consumerGroup, ehubNamespaceConnectionString, eventHubName);
+
+            // Register handlers for processing events and handling errors
+            processor.ProcessEventAsync += ProcessEventHandler;
+            processor.ProcessErrorAsync += ProcessErrorHandler;
+
+            // Start the processing
+            await processor.StartProcessingAsync();
+
+            // Wait for 10 seconds for the events to be processed
+            await Task.Delay(TimeSpan.FromSeconds(10));
+
+            // Stop the processing
+            await processor.StopProcessingAsync();
+        }
+
+        static Task ProcessEventHandler(ProcessEventArgs eventArgs)
+        {
+            Console.WriteLine("\tRecevied event: {0}", Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray()));
+            return Task.CompletedTask;
+        }
+
+        static Task ProcessErrorHandler(ProcessErrorEventArgs eventArgs)
+        {
+            Console.WriteLine($"\tPartition '{ eventArgs.PartitionId}': an unhandled exception was encountered. This was not expected to happen.");
+            Console.WriteLine(eventArgs.Exception.Message);
+            return Task.CompletedTask;
+        }
+    }
+}
+```
+
+#### <a name="net-sdk-legacy-410-or-earliertablegacy"></a>[.NET SDK レガシ (4.1.0 以前)](#tab/legacy)
+
+コンソール アプリケーションに次のコードを配置します。コードの詳細については、「[Event Hubs の使用](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)」をご覧ください。 コンソール アプリケーションには [EventProcessor Host Nuget パッケージ](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/)を含める必要があるということにご注意ください。 **Main** 関数内の山かっこで囲まれた値を、リソースの値で必ず置換してください。   
 
 ```csharp
 //Console application code for EventHub test client
@@ -303,6 +362,7 @@ namespace EventHubListener
     }
 }
 ```
+---
 
 ## <a name="troubleshoot-event-hubs-sinks"></a>Event Hubs シンクのトラブルシューティング
 * イベント ハブに受信または送信イベント アクティビティが正常に表示されない。

@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: banders
-ms.openlocfilehash: cf9bb7f3b9661d5957ad569fce7112fe16659761
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 89ae15bb82db1e9e06ac2cb52146137161dac47d
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75986875"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031341"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>月払いで予約を購入する
 
@@ -25,10 +25,15 @@ ms.locfileid: "75986875"
 
 - 仮想マシン
 - Azure Storage
-- SQL Database
+- SQL データベース
 - SQL Data Warehouse
 - Cosmos DB
 - App Service 登録料
+- マネージド ディスク
+- Azure Data Explorer
+- Azure Database for MariaDB、Azure Database for MySQL、および Azure Database for PostgreSQL
+- Azure VMware Solution by CloudSimple
+
 
 予約の購入は [Azure portal](https://portal.azure.com/?Microsoft_Azure_Reservations_EnableMultiCart=true&amp;paymentPlan=true#blade/Microsoft_Azure_Reservations/CreateBlade) で行います。
 

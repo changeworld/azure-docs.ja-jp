@@ -7,13 +7,13 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 12/30/2019
-ms.openlocfilehash: cffd94459e3a18567f2ff2f6b8fca35598cb5eed
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.date: 01/29/2020
+ms.openlocfilehash: b75b760704511627c74301ae3fff82c24a262e17
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563465"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904893"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Cognitive Search のナレッジ ストアを作成する
 
@@ -81,7 +81,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 このウィザードの手順では、コグニティブ スキルのエンリッチメントを含んだスキルセットを作成します。 ソース データは、複数の言語での顧客レビューで構成されています。 このデータ セットに関連するスキルには、キー フレーズ抽出、センチメント検出、テキスト翻訳などがあります。 これらのエンリッチメントは、後の手順でナレッジ ストアに Azure テーブルとして "投影" されます。
 
 1. **[Cognitive Services をアタッチする]** を展開します。 既定では **[無料 (制限付きのエンリッチメント)]** が選択されます。 この無料リソースで許容されるトランザクションは 1 日あたり最大 20 件です。HotelReviews-Free.csv のレコード数は 19 件なので、このリソースを使用することができます。
-1. **[Add cognitive skills]\(コグニティブ スキルを追加する\)** を展開します。
+1. **[エンリッチメントの追加]** を展開します。
 1. **[スキルセット名]** に「`hotel-reviews-ss`」と入力します。
 1. **[ソース データ] フィールド**には **reviews_text** を選択します。
 1. **[エンリッチメントの粒度レベル]** で **[ページ (5,000 文字チャンク)]** を選択します。
@@ -93,11 +93,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
       ![スキルセットを作成する](media/knowledge-store-create-portal/hotel-reviews-ss.png "スキルセットを作成する")
 
 1. **[ナレッジ ストアにエンリッチメントを保存する]** を展開します。
-1. 前の手順で保存した**ストレージ アカウントの接続文字列**を入力します。
 1. 次の **Azure テーブル プロジェクション**を選択します。
     + **ドキュメント**
     + **ページ**
     + **キー フレーズ**
+1. 前の手順で保存した**ストレージ アカウントの接続文字列**を入力します。
 
     ![ナレッジ ストアを構成する](media/knowledge-store-create-portal/hotel-reviews-ks.png "ナレッジ ストアを構成する")
 

@@ -7,18 +7,18 @@ ms.date: 10/23/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a862a221f9fe2db5448473bddcca2a9932716e0e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 159691ee101e586419d2fd8df314947af28219dd
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464085"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016512"
 ---
 # <a name="building-government-solutions-with-azure-iot-central"></a>Azure IoT Central を使用した政府機関ソリューションの構築
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Azure IoT Central アプリケーション テンプレートを活用してスマート シティ ソリューションを構築する。 まず、**水質のモニタリング**、**水消費量のモニタリング**、**接続された廃棄物管理**を使用します。
+
+Azure IoT Central アプリケーション テンプレートを使用してスマート シティ ソリューションを構築します。 まず、**水質のモニタリング**、**水消費量のモニタリング**、**接続された廃棄物管理**を使用します。
 
 ## <a name="what-is-water-quality-monitoring-application-template"></a>水質のモニタリング アプリケーション テンプレートとは   
 
@@ -73,7 +73,7 @@ Azure IoT Central アプリケーション テンプレートを活用してス�
 [接続された廃棄物管理アプリケーションのチュートリアル](./tutorial-connected-waste-management.md)をご覧ください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * IoT Central で政府アプリケーション テンプレートを無料でお試しください[アプリを作成する](https://apps.azureiotcentral.com/build/government)
 * [水質のモニタリングの概念](./concepts-waterqualitymonitoring-architecture.md)について

@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/16/2020
 ms.author: glenga
-ms.openlocfilehash: c54145cf48912d3911a39e681d85cb6907be8e52
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 916aa2552e5dd004ec767df98ce7c78f7320efd0
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842318"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964130"
 ---
 ## <a name="run-the-function-locally"></a>関数をローカルで実行する
 
@@ -28,11 +28,17 @@ Azure Functions プロジェクトをローカルで実行してデバッグす�
     Hello PowerShell
     ```
 
-    ブラウザーから GET 要求を実行することもできます。
+    ブラウザーから次の URL で GET 要求を実行することもできます。
 
-    クエリ パラメーターとして、または本文で `name` パラメーターを渡さずに HttpTrigger エンドポイントを呼び出すと、関数は [HttpStatusCode]::BadRequest エラーを返します。 run.ps1 でコードを確認すると、このエラーが仕様によって発生することがわかります。
+    <http://localhost:7071/api/HttpExample?name=PowerShell>
 
-1. デバッグを停止するには、Shift キーを押しながら F5 キーを押します。
+    クエリ パラメーターとして、または本文で `name` パラメーターを渡さずに HttpTrigger エンドポイントを呼び出すと、関数は `BadRequest` エラーを返します。 run.ps1 でコードを確認すると、このエラーが仕様によって発生することがわかります。
+
+1. 要求に関する情報が **[ターミナル]** パネルに表示されます。
+
+    ![[ターミナル] パネルでの関数の実行](./media/functions-run-function-test-local-vs-code-ps/function-execution-terminal.png)
+
+1. デバッグを停止するには、Ctrl キーを押しながら C キーを押して Core Tools を停止します。
 
 関数がローカル コンピューター上で正常に動作することを確認したら、プロジェクトを Azure に発行します。
 

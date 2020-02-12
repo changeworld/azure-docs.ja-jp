@@ -3,41 +3,33 @@ title: クイック スタート:Azure Blob Storage ライブラリ v12 - JavaSc
 description: このクイックスタートでは、JavaScript 用 Azure Blob Storage クライアント ライブラリ バージョン 12 を使用して、BLOB (オブジェクト) ストレージ内にコンテナーと BLOB を作成する方法について説明します。 次に、ローカル コンピューターに BLOB をダウンロードする方法と、コンテナー内のすべての BLOB を一覧表示する方法について説明します。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/19/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: c8473bff3b6e7d2079bb202befc23e1ada3791eb
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: eabfefbf28b54e4a0a025698f8da48518e7df9bf
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970264"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906450"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-for-javascript"></a>クイック スタート:JavaScript 用 Azure Blob Storage クライアント ライブラリ v12
+# <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>クイック スタート:Node.js の JavaScript v12 SDK を使用して BLOB を管理する
 
-JavaScript 用 Azure Blob Storage クライアント ライブラリ v12 を使用してみましょう。 Azure Blob Storage は、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。 Blob Storage は、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。
-
-> [!NOTE]
-> 以前の SDK バージョンを使ってみるには、「[クイックスタート: JavaScript 用 Azure Blob Storage クライアント ライブラリ](storage-quickstart-blobs-nodejs-legacy.md)」を参照してください。
-
-JavaScript 用 Azure Blob Storage クライアント ライブラリ v12 を使用すると、以下のことができます。
-
-* コンテナーを作成する
-* Azure Storage へ BLOB をアップロードする
-* コンテナー内のすべての BLOB を一覧表示する
-* ローカル コンピューターに BLOB をダウンロードする
-* コンテナーを削除する
+このクイックスタートでは、Node.js を使用して BLOB を管理する方法について説明します。 BLOB は、大量のテキストやバイナリ データ (画像、ドキュメント、ストリーミング メディア、アーカイブ データなど) を保持できるオブジェクトです。 ここでは、BLOB のアップロード、ダウンロード、一覧表示のほか、コンテナーの作成と削除を行います。
 
 [API のリファレンスのドキュメント](/javascript/api/@azure/storage-blob) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob) | [パッケージ (Node Package Manager)](https://www.npmjs.com/package/@azure/storage-blob) | [サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)
 
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
-
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-* Azure Storage アカウント - [ストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* 使用するオペレーティング システム用の最新の [Node.js](https://nodejs.org/en/download/)。
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- Azure Storage のアカウント [ストレージ アカウントの作成](../common/storage-account-create.md)。
+- [Node.js](https://nodejs.org/en/download/)。
+
+> [!NOTE]
+> 以前の SDK バージョンを使ってみるには、「[クイックスタート: Node.js で JavaScript v10 SDK を使用して BLOB を管理する](storage-quickstart-blobs-nodejs-legacy.md)」を参照してください。
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="setting-up"></a>設定
 
@@ -96,7 +88,7 @@ npm install
 
 1. コード エディターで別の新しいテキスト ファイルを開く
 1. `require` の呼び出しを追加して Azure および Node.js モジュールを読み込む
-1. 極めて基本的な例外処理を含め、プログラムの構造を作成します
+1. 基本的な例外処理を含め、プログラムの構造を作成します
 
     コードは次のとおりです。
 
@@ -314,7 +306,7 @@ Done
 
 このクイックスタートでは、JavaScript を使用して BLOB をアップロード、ダウンロード、および一覧表示する方法について説明しました。
 
-チュートリアル、サンプル、クイック スタートなどのドキュメントについては、次のページを参照してください。
+チュートリアル、サンプル、クイックスタートなどのドキュメントについては、次のページを参照してください。
 
 > [!div class="nextstepaction"]
 > [Azure for JavaScript のドキュメント](/azure/javascript/)

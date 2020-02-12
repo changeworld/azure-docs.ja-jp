@@ -1,28 +1,24 @@
 ---
-title: クイック スタート:音声、意図、エンティティを認識する、C# - Speech サービス
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 01/02/2020
+ms.date: 01/27/2020
 ms.topic: include
-ms.author: erhopf
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: e2cb4f81e3de5e22bae3029e42ec2f67dae55424
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 353e849332aa04d26774cda22508b6f1c269df7e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76761418"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900323"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に、以下の操作を行います。
 
-* 今回初めて C# プロジェクトを作成する場合は、このガイドを使用して<a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=dotnet" target="_blank">空のサンプル プロジェクトを作成</a>します。
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=dotnet" target="_blank">開発環境に対応した Speech SDK をインストールします</a>。
+* 今回初めて C# プロジェクトを作成する場合は、このガイドを使用して<a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=dotnet" target="_blank">空のサンプル プロジェクトを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>します。
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=dotnet" target="_blank">開発環境に対応した Speech SDK をインストールします<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>意図認識用の LUIS アプリを作成する
 
@@ -92,7 +88,7 @@ using ステートメント内の `RecognizeOnceAsync()` の下に、このコ�
 
 ## <a name="check-your-code"></a>コードを確認する
 
-この時点で、コードは次のようになります。  
+この時点で、コードは次のようになります。
 
 > [!NOTE]
 > このバージョンにはいくつかのコメントを追加してあります。
@@ -104,7 +100,7 @@ using ステートメント内の `RecognizeOnceAsync()` の下に、このコ�
 これで、アプリをビルドし、Speech サービスを使用して音声認識をテストする準備ができました。
 
 1. **コードをコンパイルする** - Visual Studio のメニュー バーで、 **[ビルド]**  >  **[ソリューションのビルド]** の順に選択します。
-2. **アプリを起動する** - メニュー バーから **[デバッグ]**  >  **[デバッグの開始]** の順に選択するか、**F5** キーを押します。
+2. **アプリを起動する** - メニュー バーから **[デバッグ]**  >  **[デバッグの開始]** の順に選択するか、<kbd>F5</kbd> キーを押します。
 3. **認識を開始する** - 英語で語句を読み上げるように求められます。 音声が Speech Service に送信され、テキストとして文字起こしされて、コンソールに表示されます。
 
 ## <a name="next-steps"></a>次のステップ

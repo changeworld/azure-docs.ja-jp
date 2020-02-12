@@ -4,15 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 9623398e51260d88df3d8fd88e3affaf7f906a64
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 254fe3602bdb6a05f3a3225035460b88ebd3e23f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76159598"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987358"
 ---
-Text Analytics API は、次のいずれかの方法で使い始めることができます。
-
+アプリケーションを接続するには、Text Analytics リソースのキーとエンドポイントが必要です。 これらは、次のいずれかのリソースを作成することによって取得します。
 
 * <a href="https://azure.microsoft.com/try/cognitive-services/my-apis/?api=text-analytics" title="試用版 Text Analytics リソースを作成する" target="_blank">試用版リソースを作成する<span class="docon docon-navigate-external x-hidden-focus"></span></a>
     * Azure サブスクリプションは不要です。 
