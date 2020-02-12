@@ -20,7 +20,7 @@ ms.locfileid: "75908937"
 
 これらは、オープンソースのコミュニティ主導型イニシアチブであり、Azure Maps チームによって作成および管理されていますが、標準の製品またはサービス オファリングには含まれていません。 Azure Maps によって作成された広く使用されているオープンソース プロジェクトとサンプルのいくつかを、次の一覧に示します。
 
-| プロジェクト名 | [説明] |
+| プロジェクト名 | 説明 |
 |-|-|
 | [Azure Maps のコード サンプル](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Web ベースのアプリで Azure Maps を使用するためのコード サンプルのコレクション。 |
 | [Azure Maps Gov Cloud のコード サンプル](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Azure Government Cloud 経由で Azure Maps を使用するためのコード サンプルのコレクション。 |
