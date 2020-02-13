@@ -2,14 +2,14 @@
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/26/2018
-ms.author: cynthn
-ms.openlocfilehash: e590c07c3969865d573838352a8a778caa1cc799
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 02/06/2020
+ms.author: tanmaygore
+ms.openlocfilehash: 3632e12f5e58f8cadefb1e666cf4014026e24358
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75901730"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057017"
 ---
 この記事では、Azure クラシック デプロイ モデルから Azure Resource Manager スタックへの IaaS リソースの移行中に発生する一般的なエラーと軽減策を一覧で示しています。
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5034aaaee335bbd87e7ea42b448e4e8fbf6aacca
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 11fdaa0d547e588daa9d264c2393606705554a17
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274560"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157272"
 ---
 # <a name="storage-account-overview"></a>ストレージ アカウントの概要
 
@@ -115,11 +115,9 @@ Azure Storage では、使用パターンに基づいて、ブロック BLOB デ
 > [!IMPORTANT]
 > 既存のストレージ アカウントまたは BLOB のアクセス レベルを変更すると、追加料金が発生する場合があります。 詳しくは、「[ストレージ アカウントの課金](#storage-account-billing)」セクションをご覧ください。
 
-## <a name="replication"></a>レプリケーション
+## <a name="redundancy"></a>冗長性
 
 [!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
-
-ストレージのレプリケーションの詳細については、「[Azure Storage のレプリケーション](storage-redundancy.md)」を参照してください。
 
 ## <a name="encryption"></a>暗号化
 

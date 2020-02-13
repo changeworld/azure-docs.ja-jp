@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 04/26/2019
-ms.openlocfilehash: 6dbe61c47a7323e2dec599d2f3c77453aa6f8d82
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 02/01/2020
+ms.openlocfilehash: aa7197dc631ea281bd5616b572f4ca01aeb9d45c
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973528"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964772"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>仮想コアと DTU の購入モデルから選択する
 
@@ -29,7 +29,7 @@ Azure SQL Database を利用すると、パフォーマンスとコストのニ�
 
 - [Azure SQL Database](sql-database-technical-overview.md) の[単一データベース](sql-database-single-databases-manage.md)と[エラスティック プール](sql-database-elastic-pool.md) デプロイ オプションでは、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)の両方が提供されます。
 - Azure SQL Database にある[マネージド インスタンス](sql-database-managed-instance.md) デプロイ オプションでは、[仮想コア ベースの購入モデル](sql-database-service-tiers-vcore.md)のみが提供されます。
-- [仮想コア ベースの購入モデル](sql-database-service-tiers-vcore.md)を使用している単一のデータベースには、[Hyperscale サービス レベル](sql-database-service-tier-hyperscale.md)を利用できます。
+- [仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)を使用している単一のデータベースには、[Hyperscale サービス レベル](sql-database-service-tier-hyperscale.md)を利用できます。
 
 次の表とグラフでは、仮想コア ベースと DTU ベースの購入モデルを比較対照しています。
 
@@ -47,9 +47,9 @@ Azure SQL Database を利用すると、パフォーマンスとコストのニ�
 
 プロビジョニングされたコンピューティング レベルのコンピューティング コストには、アプリケーションに対してプロビジョニングされたコンピューティング能力の合計が反映されています。
 
-Business Critical サービス レベルでは、少なくとも 3 つのレプリカが自動的に割り当てられます。 コンピューティング リソースのこの追加割り当てを反映するために、仮想コアベースの購入モデルの価格は、General Purpose サービス レベルより Business Critical サービス レベルの方が約 2.7 倍高くなっています。 同様に、Business Critical サービス レベルでは GB あたりのストレージ価格も高く、SSD ストレージの高 I/O と低待機時間が反映されています。
+Business Critical サービス レベルでは、少なくとも 3 つのレプリカが自動的に割り当てられます。 コンピューティング リソースのこの追加割り当てを反映するために、仮想コアベースの購入モデルの価格は、General Purpose サービス レベルより Business Critical サービス レベルの方が約 2.7 倍高くなっています。 同様に、Business Critical サービス レベルでは GB あたりのストレージ価格も高く、SSD ストレージの高い IO 上限と低待機時間が反映されています。
 
-Business Critical サービス レベルと General Purpose サービス レベルでは標準のストレージを使用していることから、バックアップ ストレージのコストはどちらのレベルでも同じになります。
+Business Critical サービス レベルと General Purpose サービス レベルでは、どちらのレベルでもバックアップ用に標準のストレージが使用されているため、バックアップ ストレージのコストは同じになります。
 
 ### <a name="serverless-compute-costs"></a>サーバーレス コンピューティング コスト
 
@@ -67,7 +67,7 @@ Business Critical サービス レベルと General Purpose サービス レベ�
 
 仮想コア (vCore) は論理 CPU を表し、ハードウェアの世代とハードウェアの物理特性 (コア数、メモリ、ストレージ サイズなど) を選択できるオプションを提供します。 仮想コア ベースの購入モデルでは、個々のリソース使用量において柔軟性、管理性、透明性が実現されており、オンプレミスのワークロード要件をクラウドに容易に移行する方法を提供しています。 このモデルでは、ワークロードの必要性に基づいて、コンピューティング、メモリ、ストレージのリソースを選択できます。
 
-仮想コア ベースの購入モデルでは、[単一データベース](sql-database-single-database-scale.md)、[エラスティック プール](sql-database-elastic-pool.md)、および[マネージド インスタンス](sql-database-managed-instance.md)について、[General Purpose](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) および [Business Critical](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) のいずれかのサービス レベルを選択できます。 単一データベースの場合は、[ハイパースケール サービス レベル](sql-database-service-tier-hyperscale.md)も選択できます。
+仮想コアベースの購入モデルでは、[単一データベース](sql-database-single-database-scale.md)、[エラスティック プール](sql-database-elastic-pool.md)、および[マネージド インスタンス](sql-database-managed-instance.md)について、[General Purpose](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) および [Business Critical](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) のいずれかのサービス レベルを選択できます。 単一データベースの場合は、[Hyperscale サービス レベル](sql-database-service-tier-hyperscale.md)も選択できます。
 
 仮想コア ベースの購入モデルでは、コンピューティングとストレージのリソースを個別に選択し、オンプレミスのパフォーマンスと一致させて、価格を最適化できます。 仮想コア ベースの購入モデルでは、以下に対して支払いを行います。
 
@@ -83,8 +83,8 @@ Business Critical サービス レベルと General Purpose サービス レベ�
 
 DTU ベースの購入モデルから仮想コア ベースの購入モデルに変換するには、次の原則を使用してコンピューティング サイズを選択します。
 
-- Standard レベルでは 100 DTU ごとに、General Purpose サービス レベルに少なくとも 1 つの仮想コアを必要とします。
-- Premium レベルでは 125 DTU ごとに、Business Critical サービス レベルに少なくとも 1 つの仮想コアを必要とします。
+- Standard レベルでの 100 DTU ごとに、General Purpose サービス レベルでは少なくとも 1 つの仮想コアが必要です。
+- Premium レベルでの 125 DTU ごとに、Business Critical サービス レベルでは少なくとも 1 つの仮想コアが必要です。
 
 ## <a name="dtu-based-purchasing-model"></a>DTU ベースの購入モデル
 
@@ -102,7 +102,7 @@ DTU ベースの購入モデルでは、[単一データベース](sql-database-
 
 ![境界ボックス](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
-各種のコンピューティング サイズとサービス レベルの Azure SQL データベースに割り当てられるリソースの相対量を理解するためには、DTU は最も役立ちます。 例:
+各種のコンピューティング サイズとサービス レベルの Azure SQL データベースに割り当てられるリソースの相対量を理解するためには、DTU は最も役立ちます。 次に例を示します。
 
 - データベースのコンピューティング サイズを引き上げて DTU を 2 倍にするのは、そのデータベースに利用できるリソース セットを 2 倍にすることと同等です。
 - DTU が 1750 になっている Premium サービス レベルの P11 データベースは、DTU が 5 になっている Basic サービス レベルのデータベースと比べて、350 倍の DTU の処理能力を提供します。  
@@ -125,7 +125,19 @@ DTU ベースの購入モデルでは、[単一データベース](sql-database-
 
 ### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>ワークロードで必要とされる DTU の数を決定する
 
-既存のオンプレミスのワークロードや、SQL Server 仮想マシンのワークロードを Azure SQL Database に移行することを検討している場合には、[DTU Calculator](https://dtucalculator.azurewebsites.net/) を使用すると、必要な DTU のおおよその数がわかります。 既存の Azure SQL Database ワークロードについては、[クエリ パフォーマンスの分析情報](sql-database-query-performance.md)を使用してデータベース リソースの消費量 (DTU) を把握し、ワークロードを最適化するための詳細な分析情報が得られます。 [sys.dm_db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) 動的管理ビュー (DMV) を使用して、過去 1 時間のリソース消費量を表示できます。 [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) カタログ ビューは、過去 14 日間のリソース消費量を表示しますが、データの精度がやや低く、5 分間の平均となります。
+既存のオンプレミスのワークロードや、SQL Server 仮想マシンのワークロードを Azure SQL Database に移行することを検討している場合には、[DTU Calculator](https://dtucalculator.azurewebsites.net/) を使用すると、必要な DTU のおおよその数がわかります。 既存の Azure SQL Database ワークロードについては、[クエリ パフォーマンスの分析情報](sql-database-query-performance.md)を使用してデータベース リソースの消費量 (DTU) を把握し、ワークロードを最適化するための詳細な分析情報が得られます。 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 動的管理ビュー (DMV) を使用して、過去 1 時間のリソース消費量を表示できます。 [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) カタログ ビューは、過去 14 日間のリソース消費量を表示しますが、データの精度がやや低く、5 分間の平均となります。
+
+### <a name="determine-dtu-utilization"></a>DTU 使用率を決定する
+
+データベースまたはエラスティック プールの DTU/eDTU 上限に対する相対的な DTU/eDTU の平均使用率を決定するには、次の式を使用します。
+
+`avg_dtu_percent = MAX(avg_cpu_percent, avg_data_io_percent, avg_log_write_percent)`
+
+この式に入力する値は、[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)、[sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)、および [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) DMV から取得できます。 つまり、データベースまたはエラスティック プールの DTU/eDTU 上限に対する DTU/eDTU の使用率を決定するには、特定の時点での `avg_cpu_percent`、`avg_data_io_percent`、および `avg_log_write_percent` から、最大の割合値を選びます。
+
+> [!NOTE]
+> データベースの DTU 上限は、そのデータベースで使用できる CPU、読み取り、書き込み、およびメモリによって決まります。 ただし、SQL Server データベース エンジンでは、通常、パフォーマンス向上のためにそのデータ キャッシュ用に利用できるすべてのメモリが使用されるため、`avg_memory_usage_percent` の値は、現在のデータベースの負荷に関係なく、通常は 100% 近くになります。 そのため、メモリが DTU 上限に間接的に影響する場合でも、DTU 使用率の式では使用されません。
+>
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>リソースのエラスティック プールを使うとメリットがあるワークロード
 
@@ -135,13 +147,13 @@ DTU ベースの購入モデルでは、[単一データベース](sql-database-
 
 ### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-service-tier-to-a-vcore-based-service-tier"></a>DTU ベースのサービス レベルから仮想コア ベースのサービス レベルに変換するには、アプリケーションをオフラインにする必要がありますか。
 
-No. アプリケーションをオフラインにする必要はありません。 新しいサービス レベルでは、Standard と Premium のサービス レベル間でデータベースを切り替える既存のプロセスとほぼ同じ、シンプルなオンラインの変換方法を提供しています。 この変換は、Azure portal、PowerShell、Azure CLI、T-SQL、または REST API を使用して開始できます。 [単一データベースの管理](sql-database-single-database-scale.md)および[エラスティック プールの管理](sql-database-elastic-pool.md)に関するページをご覧ください。
+いいえ。 アプリケーションをオフラインにする必要はありません。 新しいサービス レベルでは、Standard と Premium のサービス レベル間でデータベースを切り替える既存のプロセスとほぼ同じ、シンプルなオンラインの変換方法を提供しています。 この変換は、Azure portal、PowerShell、Azure CLI、T-SQL、または REST API を使用して開始できます。 [単一データベースの管理](sql-database-single-database-scale.md)および[エラスティック プールの管理](sql-database-elastic-pool.md)に関するページをご覧ください。
 
 ### <a name="can-i-convert-a-database-from-a-service-tier-in-the-vcore-based-purchasing-model-to-a-service-tier-in-the-dtu-based-purchasing-model"></a>仮想コア ベース購入モデルでのサービス レベルから DTU ベース購入モデルでのサービス レベルへ、データベースを変換することはできますか。
 
 はい。お使いのデータベースは、Azure portal、PowerShell、Azure CLI、T-SQL、または REST API を使用して、サポートされている任意のパフォーマンス目標に簡単に変換できます。 [単一データベースの管理](sql-database-single-database-scale.md)および[エラスティック プールの管理](sql-database-elastic-pool.md)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 仮想コア ベースの購入モデルについて詳しくは、[仮想コア ベースの購入モデル](sql-database-service-tiers-vcore.md)に関するページを参照してください。
 - DTU ベースの購入モデルについて詳しくは、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)に関するページを参照してください。

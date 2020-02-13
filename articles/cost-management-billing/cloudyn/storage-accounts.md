@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: secdec18
-ms.openlocfilehash: aa5fc1dddec6931b5eff1e34cf6c12b218bdf2fd
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: ec6c68d209f867ab3547e855f3cf754bc27d53c5
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769955"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117627"
 ---
 # <a name="configure-storage-accounts-for-cloudyn"></a>Cloudyn 用にストレージ アカウントを構成する
 
@@ -34,12 +34,12 @@ AWS Simple Storage Service (S3) バケットを持っていない場合は、作
 
 Cloudyn で使用するための Azure ストレージの構成は簡単です。 ストレージ アカウントに関する詳細情報を収集し、Cloudyn ポータルにコピーします。
 
-1. Azure Portal ( https://portal.azure.com ) にサインインします。
+1. Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 2. **[すべてのサービス]** をクリックし、 **[ストレージ アカウント]** を選択して、使用するストレージ アカウントまでスクロールしたら、そのアカウントを選択します。
 3. [ストレージ アカウント] ページの **[設定]** で **[アクセス キー]** をクリックします。
 4. [key1] の**ストレージ アカウント名**と**接続文字列**をコピーします。  
    ![ストレージ アカウント名と接続文字列をコピーする](./media/storage-accounts/azure-storage-access-keys.png)  
-5. Azure portal から Cloudyn ポータルを開くか、 https://azure.cloudyn.com に移動してサインインします。
+5. Azure portal から Cloudyn ポータルを開くか、[https://azure.cloudyn.com](https://azure.cloudyn.com) に移動してサインインします。
 6. 歯車記号をクリックし、 **[Reports Storage Management]\(レポートのストレージ管理\)** を選択します。
 7. **[新規追加 +]** をクリックし、Microsoft Azure が選択されていることを確認します。 使用する Azure ストレージ アカウント名を **[名前]** ボックスに貼り付けます。 使用する**接続文字列**を対応するボックスに貼り付けます。 コンテナー名を入力し、 **[保存]** をクリックします。  
    ![[Add a new report storage]\(新しいレポート ストレージの追加\) ボックスに Azure Storage アカウントの名前と接続文字列を貼り付ける](./media/storage-accounts/azure-cloudyn-storage.png)
@@ -147,7 +147,7 @@ Cloudyn のロールまたはユーザーには、バケットに対する PutOb
 
 ### <a name="add-aws-report-storage-to-cloudyn"></a>AWS レポート ストレージを Cloudyn に追加する
 
-1. Azure portal から Cloudyn ポータルを開くか、 https://azure.cloudyn.com に移動してサインインします。
+1. Azure portal から Cloudyn ポータルを開くか、[https://azure.cloudyn.com](https://azure.cloudyn.com) に移動してサインインします。
 2. 歯車記号をクリックし、 **[Reports Storage Management]\(レポートのストレージ管理\)** を選択します。
 3. **[新規追加 +]** をクリックし、AWS が選択されていることを確認します。
 4. アカウントとストレージ バケットを選択します。 AWS ストレージ バケットの名前は自動的に設定されます。  

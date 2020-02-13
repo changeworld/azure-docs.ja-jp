@@ -36,7 +36,7 @@ ms.locfileid: "74113635"
 
  [フルテキスト検索エンジン](search-lucene-query-architecture.md)の役割を簡単に説明すると、クエリと取得を効率的に行えるようにドキュメントを処理して格納することです。 大まかに言えば、ドキュメントから重要な単語を抽出して、インデックスに配置し、インデックスを使用して指定されたクエリの単語に一致するドキュメントを検索します。 ドキュメントと検索クエリから単語を抽出するプロセスを、"*字句解析*" と呼びます。 字句解析を実行するコンポーネントは、"*アナライザー*" と呼ばれます。
 
- Azure Cognitive Search では、[アナライザー](#AnalyzerTable)の表で示されている定義済みの言語に依存しないアナライザー、または[言語アナライザー &#40;Azure Cognitive Search サービス REST API&#41;](index-add-language-analyzers.md) に列記されている言語固有のアナライザーから、選択できます。 また、独自のカスタム アナライザーを定義することもできます。  
+ Azure コグニティブ検索では、[アナライザー](#AnalyzerTable)の表で示されている定義済みの言語に依存しないアナライザー、または[言語アナライザー &#40;Azure コグニティブ検索サービス REST API&#41;](index-add-language-analyzers.md) に列記されている言語固有のアナライザーから、選択できます。 また、独自のカスタム アナライザーを定義することもできます。  
 
  カスタム アナライザーを使用すると、テキストをインデックス付け可能で検索可能なトークンに変換するプロセスを制御できます。 それは、定義済みの 1 つのトークナイザー、1 つ以上のトークン フィルター、1 つ以上の文字フィルターで構成されるユーザー定義の構成です。 トークナイザーではテキストがトークンに分割され、トークン フィルターではトークナイザーによって生成されたトークンが変更されます。 文字フィルターは、トークナイザーによって処理される前に、入力テキストを準備するために適用されます。 たとえば、文字フィルターを使用して、特定の文字や記号を置き換えることができます。
 
@@ -52,7 +52,7 @@ ms.locfileid: "74113635"
 
 - ASCII フォールディング。 検索語句に含まれる ö や ê などの付加記号を正規化するための標準 ASCII フォールディング フィルターを追加します。  
 
-  このページでは、サポートされているアナライザー、トークナイザー、トークン フィルター、文字フィルターの一覧を示します。 また、インデックスの定義に対する変更の説明と使用例も示されています。 Azure コグニティブ検索の実装に利用されている基礎技術の背景については、[解析パッケージの概要 (Lucene)](https://lucene.apache.org/core/6_0_0/core/org/apache/lucene/codecs/lucene60/package-summary.html) のページを参照してください。 アナライザーの構成の例については、[Azure コグニティブ検索でのアナライザーの追加](search-analyzers.md#examples)に関するセクションをご覧ください。
+  このページでは、サポートされているアナライザー、トークナイザー、トークン フィルター、文字フィルターの一覧を示します。 また、インデックスの定義に対する変更の説明と使用例も示されています。 Azure Cognitive Search の実装に利用されている基礎技術の背景については、[解析パッケージの概要 (Lucene)](https://lucene.apache.org/core/6_0_0/core/org/apache/lucene/codecs/lucene60/package-summary.html) のページを参照してください。 アナライザーの構成の例については、[Azure Cognitive Search でのアナライザーの追加](search-analyzers.md#examples)に関するセクションをご覧ください。
 
 ## <a name="validation-rules"></a>検証規則  
  アナライザー、トークナイザー、トークン フィルター、文字フィルターの名前は一意でなければならず、事前定義済みのアナライザー、トークナイザー、トークン フィルター、文字フィルターと同じにすることはできません。 既に使用されている名前については、「[プロパティ リファレンス](#PropertyReference)」をご覧ください。
@@ -383,6 +383,6 @@ analyzer_type は、カスタマイズ可能なアナライザーに対しての
 
 
 ## <a name="see-also"></a>関連項目  
- [Azure コグニティブ検索 REST API](https://docs.microsoft.com/rest/api/searchservice/)   
- [Azure コグニティブ検索でのアナライザーの例](search-analyzers.md#examples)    
- [インデックスの作成 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
+ [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/)   
+ [Azure Cognitive Search でのアナライザーの例](search-analyzers.md#examples)    
+ [インデックスの作成 &#40;Azure コグニティブ検索 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  

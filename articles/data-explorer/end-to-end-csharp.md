@@ -6,13 +6,13 @@ ms.author: lugoldbe
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 10/23/2019
-ms.openlocfilehash: e22621083a44555cb3eda615c610f673cd841ec1
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 02/03/2020
+ms.openlocfilehash: 0711484c4fff24c5dcd3c18effce596a92bc30c3
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581850"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964517"
 ---
 # <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-c"></a>C# による Azure Data Explorer へのエンドツーエンドの BLOB の取り込み
 
@@ -41,11 +41,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [data-explorer-e2e-event-grid-resource-template](../../includes/data-explorer-e2e-event-grid-resource-template.md)]
 
-## <a name="code-example"></a>コード例 
+## <a name="code-example"></a>コードの例 
 
 次のコード例は、Azure Data Explorer へのデータ インジェストが実行されることになる段階ごとのプロセスを示しています。 
 
-最初にリソース グループを作成します。 ストレージ アカウントとコンテナー、イベント ハブ、Azure Data Explorer クラスターとデータベースなどの Azure リソースも作成します。 次に、Azure Data Explorer データベースで、テーブルと列のマッピングと一緒に Azure Event Grid サブスクリプションを作成します。 最後に、データ接続を作成し、新しいストレージ アカウントからデータを取り込むよう Azure Data Explorer を構成します。 
+最初にリソース グループを作成します。 ストレージ アカウントとコンテナー、イベント ハブ、Azure Data Explorer クラスターとデータベースなどの Azure リソースも作成し、プリンシパルを追加します。 次に、Azure Data Explorer データベースで、テーブルと列のマッピングと一緒に Azure Event Grid サブスクリプションを作成します。 最後に、データ接続を作成し、新しいストレージ アカウントからデータを取り込むよう Azure Data Explorer を構成します。 
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -69,6 +69,16 @@ string kustoTableName = "Events";
 string kustoColumnMappingName = "Events_CSV_Mapping";
 string kustoDataConnectionName = deploymentName + "kustoeventgridconnection";
 
+//principals
+string principalIdForCluster = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
+string roleForClusterPrincipal = "AllDatabasesAdmin";
+string tenantIdForClusterPrincipal = tenantId;
+string principalTypeForCluster = "App";
+string principalIdForDatabase = "xxxxxxxx@xxxxxxxx.com";//User Email
+string roleForDatabasePrincipal = "Admin";
+string tenantIdForDatabasePrincipal = tenantId;
+string principalTypeForDatabase = "User";
+
 var serviceCreds = await ApplicationTokenProvider.LoginSilentAsync(tenantId, clientId, clientSecret);
 var resourceManagementClient = new ResourceManagementClient(serviceCreds);
 Console.WriteLine("Step 1: Create a new resource group in your Azure subscription to manage all the resources for using Azure Data Explorer.");
@@ -77,8 +87,23 @@ await resourceManagementClient.ResourceGroups.CreateOrUpdateAsync(resourceGroupN
     new ResourceGroup() { Location = locationSmallCase });
 
 Console.WriteLine(
-    "Step 2: Create a Blob Storage, a container in the Storage account, an Event Hub, an Azure Data Explorer cluster, and database by using an Azure Resource Manager template.");
-var parameters = $"{{\"eventHubNamespaceName\":{{\"value\":\"{eventHubNamespaceName}\"}},\"eventHubName\":{{\"value\":\"{eventHubName}\"}},\"storageAccountName\":{{\"value\":\"{storageAccountName}\"}},\"containerName\":{{\"value\":\"{storageContainerName}\"}},\"kustoClusterName\":{{\"value\":\"{kustoClusterName}\"}},\"kustoDatabaseName\":{{\"value\":\"{kustoDatabaseName}\"}}}}";
+    "Step 2: Create a Blob Storage, a container in the Storage account, an Event Hub, an Azure Data Explorer cluster, database, and add principals by using an Azure Resource Manager template.");
+var parameters = new Dictionary<string, Dictionary<string, object>>();
+parameters["eventHubNamespaceName"] = new Dictionary<string, object>(capacity: 1) {{"value", eventHubNamespaceName}};
+parameters["eventHubName"] = new Dictionary<string, object>(capacity: 1) {{"value", eventHubName }};
+parameters["storageAccountName"] = new Dictionary<string, object>(capacity: 1) {{"value", storageAccountName }};
+parameters["containerName"] = new Dictionary<string, object>(capacity: 1) {{"value", storageContainerName }};
+parameters["kustoClusterName"] = new Dictionary<string, object>(capacity: 1) {{"value", kustoClusterName }};
+parameters["kustoDatabaseName"] = new Dictionary<string, object>(capacity: 1) {{"value", kustoDatabaseName }};
+parameters["principalIdForCluster"] = new Dictionary<string, object>(capacity: 1) {{"value", principalIdForCluster }};
+parameters["roleForClusterPrincipal"] = new Dictionary<string, object>(capacity: 1) {{"value", roleForClusterPrincipal }};
+parameters["tenantIdForClusterPrincipal"] = new Dictionary<string, object>(capacity: 1) {{"value", tenantIdForClusterPrincipal }};
+parameters["principalTypeForCluster"] = new Dictionary<string, object>(capacity: 1) {{"value", principalTypeForCluster }};
+parameters["principalIdForDatabase"] = new Dictionary<string, object>(capacity: 1) {{"value", principalIdForDatabase }};
+parameters["roleForDatabasePrincipal"] = new Dictionary<string, object>(capacity: 1) {{"value", roleForDatabasePrincipal }};
+parameters["tenantIdForDatabasePrincipal"] = new Dictionary<string, object>(capacity: 1) {{"value", tenantIdForDatabasePrincipal }};
+parameters["principalTypeForDatabase"] = new Dictionary<string, object>(capacity: 1) {{"value", principalTypeForDatabase }};
+            
 string template = File.ReadAllText(azureResourceTemplatePath, Encoding.UTF8);
 await resourceManagementClient.Deployments.CreateOrUpdateAsync(resourceGroupName, deploymentName,
     new Deployment(new DeploymentProperties(DeploymentMode.Incremental, template: template,
@@ -199,7 +224,7 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
     }
     ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソース グループを削除し、リソースをクリーンアップするには、次のコマンドを実行します。
 
@@ -207,7 +232,7 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 await resourceManagementClient.ResourceGroups.DeleteAsync(resourceGroupName);
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 *  クラスターとデータベースを作成するその他の方法については、[Azure Data Explorer クラスターとデータベースの作成](create-cluster-database-csharp.md)に関するページを参照してください。
 * 取り込み方法の詳細については、[Azure Data Explorer でのデータ インジェスト](ingest-data-overview.md)に関するページを参照してください。

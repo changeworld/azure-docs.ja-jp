@@ -2,19 +2,19 @@
 title: クイック スタート:REST API を使用して Postman で検索インデックスを作成する
 titleSuffix: Azure Cognitive Search
 description: この REST API クイックスタートでは、Postman、サンプル データ、および定義を使用して Azure Cognitive Search REST API を呼び出す方法について説明します。
-author: HeidiSteen
+author: tchristiani
 manager: nitinme
-ms.author: heidist
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-ms.date: 11/04/2019
-ms.openlocfilehash: 9014a83596a3eee71f43d12a73188c1c43b832af
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 02/10/2020
+ms.openlocfilehash: c502886aac9d13f7a470a9b83f1fc12334913beb
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406956"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121636"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>クイック スタート:REST API を使用して Postman で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
 
-1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理者キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
+1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
 ![HTTP エンドポイントとアクセス キーを取得する](media/search-get-started-postman/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
 
@@ -288,7 +288,7 @@ URL に `/stats` を追加すると、インデックスの情報が返されま
 
 API バージョンの構文が異なる点に注目してください。 この要求では、`?` を使用して API バージョンを付加しています。 `?` により、URL パスとクエリ文字列を区切り、& により、クエリ文字列内の各 "名前=値" ペアを区切ります。 このクエリのクエリ文字列では、API バージョンは最初で唯一の項目です。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
 
@@ -296,7 +296,7 @@ API バージョンの構文が異なる点に注目してください。 この
 
 無料サービスを使っている場合は、3 つのインデックス、インデクサー、およびデータソースに制限されることに注意してください。 ポータルで個別の項目を削除して、制限を超えないようにすることができます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで主要タスクを実行する方法がわかったため、インデクサーや[認知検索パイプラインの設定](cognitive-search-tutorial-blob.md)など、より高度な機能のための追加の REST API 呼び出しに進むことができます。 次のステップについては、以下のリンクをお勧めします。
 

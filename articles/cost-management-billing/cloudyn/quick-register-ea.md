@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: seodec18
 ms.service: cost-management-billing
 ms.reviewer: benshy
-ms.openlocfilehash: dcb4a04ced1d36a6d0717b9a65150faacc702cc5
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e6431d1fa73106267730db721060906e43c456d2
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769966"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117753"
 ---
 # <a name="register-an-azure-enterprise-agreement-and-view-cost-data"></a>Azure エンタープライズ契約を登録してコスト データを表示する
 
@@ -24,7 +24,7 @@ Azure Cost Management には Cloudyn と同様の機能があります。 Azure 
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-- Azure Portal ( https://portal.azure.com ) にサインインします。
+- Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
 ## <a name="register-with-cloudyn"></a>Cloudyn に登録する
 

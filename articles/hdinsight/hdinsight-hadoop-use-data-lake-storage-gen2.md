@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/03/2020
-ms.openlocfilehash: 6ed0742a214b001ab773e33e851abfb94495984b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: aeb86823ddb25bbe0340630b55360806faef59e9
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767672"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186878"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する
 
@@ -36,7 +36,7 @@ Data Lake Storage Gen2 を使用したクラスター作成オプションの詳
 
 ユーザー割り当てマネージド ID をまだお持ちでない場合には、作成します。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左上の **[リソースの作成]** をクリックします。
 1. 検索ボックスに「**ユーザー割り当て**」と入力し **[ユーザー割り当てマネージド ID]** をクリックします。
 1. **Create** をクリックしてください。
@@ -51,13 +51,13 @@ Azure HDInsight でマネージド ID がどのように機能するかに関す
 
 Azure Data Lake Storage Gen2 ストレージ アカウントを作成します。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左上の **[リソースの作成]** をクリックします。
 1. 検索ボックスに「**ストレージ**」と入力し、 **[ストレージ アカウント]** をクリックします。
 1. **Create** をクリックしてください。
 1. **[ストレージ アカウントの作成]** 画面で次を実行します。
     1. 正しいサブスクリプションとリソース グループを選択します。
-    1. ご自分の Data Lake Storage Gen2 アカウントの名前を入力します。 ストレージ アカウントの命名規則の詳細については、「[Azure リソースの名前付け規則](/azure/architecture/best-practices/resource-naming#storage)」を参照してください。
+    1. ご自分の Data Lake Storage Gen2 アカウントの名前を入力します。 ストレージ アカウントの命名規則の詳細については、「[Azure リソースの名前付け規則](/azure/azure-resource-manager/management/resource-name-rules#microsoftstorage)」を参照してください。
     1. **[詳細]** タブをクリックします。
     1. **[Data Lake Storage Gen2]** の下の **[階層構造の名前空間]** の横の **[有効]** をクリックします。
     1. **[Review + create]\(レビュー + 作成\)** をクリックします。
@@ -102,7 +102,7 @@ Azure Data Lake Storage Gen2 ストレージ アカウントを作成します�
 
 [サンプルのテンプレート ファイルをダウンロード](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json)して、[サンプルのパラメーター ファイルをダウンロード](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json)できます。 このテンプレートと以下の Azure CLI のコード スニペットを使用する前に、次のプレース ホルダーを正しい値に置き換えます。
 
-| プレースホルダー | [説明] |
+| プレースホルダー | 説明 |
 |---|---|
 | `<SUBSCRIPTION_ID>` | Azure サブスクリプションの ID です |
 | `<RESOURCEGROUPNAME>` | 新しいクラスターとストレージ アカウントを作成するリソース グループです。 |

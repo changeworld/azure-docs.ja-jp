@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: fa8013722376a4864ba955783dbde1f73c0d9e8a
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: af5399a6e1a76a6020448b2e91d76a1d2e1f0ed8
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163111"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186948"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開発者向けファースト ステップ ガイド
 
@@ -60,7 +60,7 @@ Web アプリ、モバイル アプリ バックエンド、および API アプ
 
 App Service は DevOps を念頭に置いて設計されています。 発行と継続的インテグレーションのデプロイのためのさまざまなツールがサポートされています。 これらのツールには、GitHub Webhook、Jenkins、Azure DevOps、TeamCity などが含まれます。
 
-[オンライン移行ツール](https://www.migratetoazure.net/)を使用して、既存のアプリケーションを App Service に移行することができます。
+[オンライン移行ツール](https://appmigration.microsoft.com/)を使用して、既存のアプリケーションを App Service に移行することができます。
 
 > **いつ使用するか**: App Service を使用するのは、既存の Web アプリケーションを Azure に移行する場合、および Web アプリ用にフル マネージドのホスティング プラットフォームが必要な場合です。 また、モバイル クライアントをサポートする必要がある場合、またはアプリと共に REST API を公開する必要がある場合にも App Service を使用できます。
 >

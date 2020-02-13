@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 93c0b3e27156655acee24d424cd890b48bb8e4e7
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 78455c90bab694b77a5e4a56d0b40518867d8d8c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064990"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188360"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer"></a>IoT Hub から Azure Data Explorer にデータを取り込む 
 
@@ -83,7 +83,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
     | IoT Hub | IoT Hub 名 |
     | 共有アクセス ポリシー | 共有アクセス ポリシーの名前。 読み取りアクセス許可が必要 |
     | コンシューマー グループ |  IoT Hub の組み込みのエンドポイントに定義されているコンシューマー グループ |
-    | イベント システム プロパティ | [IoT Hub イベントのシステム プロパティ](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages)。 システム プロパティを追加する場合は、テーブル スキーマと[マッピング](/azure/kusto/management/mappings)を[作成](/azure/kusto/management/tables#create-table)または[更新](/azure/kusto/management/tables#alter-table-and-alter-merge-table)して、選択したプロパティを含めます。 | | | 
+    | イベント システム プロパティ | [IoT Hub イベントのシステム プロパティ](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages)。 システム プロパティを追加する場合は、テーブル スキーマと[マッピング](/azure/kusto/management/mappings)を[作成](/azure/kusto/management/create-table-command)または[更新](/azure/kusto/management/alter-table-command)して、選択したプロパティを含めます。 | | | 
 
     > [!NOTE]
     > [手動フェールオーバー](/azure/iot-hub/iot-hub-ha-dr#manual-failover)が発生した場合は、データ接続を再作成する必要があります。

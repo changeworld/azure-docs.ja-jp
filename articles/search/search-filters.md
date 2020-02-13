@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f4ce3cd0db20f76aa6169f15254cf36ee64151a5
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 03333e853a2ab7606ebe60cc3f68bcb5facfbdb4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406745"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191011"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Azure Cognitive Search のフィルター 
 
@@ -51,7 +51,7 @@ ms.locfileid: "74406745"
 
 + `$select` パラメーターは、結果セットに含めるフィールドを指定するために使用できます。効果的に応答をトリミングしてから、呼び出し元アプリケーションに送信することができます。 このパラメーターでクエリが絞り込まれたり、ドキュメント コレクションが減ったりすることはありませんが、応答の量を小さくする場合、このパラメーターの使用を検討します。 
 
-各パラメーターの詳細については、[「Search Documents」(ドキュメントの検索) > 「Request」(要求) > 「Query parameters」(クエリ パラメーター)](https://docs.microsoft.com/rest/api/searchservice/search-documents#request) を参照してください。
+各パラメーターの詳細については、[「Search Documents」(ドキュメントの検索) > 「Request」(要求) > 「Query parameters」(クエリ パラメーター)](/rest/api/searchservice/search-documents#query-parameters) を参照してください。
 
 
 ## <a name="how-filters-are-executed"></a>フィルターの実行方法
@@ -156,7 +156,7 @@ REST API では、フィルター可能の設定は単純型フィールドの�
 
 ### <a name="approaches-for-filtering-on-text"></a>テキストをフィルター処理するためのアプローチ
 
-| アプローチ | 説明 | いつ使用するか |
+| アプローチ | 説明 | 使用する場合 |
 |----------|-------------|-------------|
 | [`search.in`](search-query-odata-search-in-function.md) | 区切られた文字列のリストに対してフィールドを照合する関数です。 | [セキュリティ フィルター](search-security-trimming-for-azure-search.md)や、多数の未加工テキスト値を文字列フィールドと照合する必要があるフィルターに推奨されます。 **search.in** 関数は、速度を重視して設計されているため、`eq` と `or` を使用して各文字列とフィールドを明示的に比較するよりもはるかに高速です。 | 
 | [`search.ismatch`](search-query-odata-full-text-search-functions.md) | フルテキスト検索操作と、厳格なブール型フィルター操作を同じフィルター式に混在させることができる関数です。 | 1 つの要求で複数の検索フィルターを組み合わせる場合は、**search.ismatch** (または、このスコア付けバージョンである **search.ismatchscoring**) を使用します。 また、*contains* フィルターに使用して、大きな文字列内の一部の文字列をフィルターすることができます。 |
@@ -168,7 +168,7 @@ REST API では、フィルター可能の設定は単純型フィールドの�
 
 数値フィールド (価格、サイズ、SKU、ID) を含むドキュメントで、フィールドが `retrievable` とマークされている場合、検索結果にはそれらの値が表示されます。 ここで大事な点は、フルテキスト検索は数値フィールドの種類には適用できないということです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 まずポータルの **Search エクスプローラー**で、 **$filter** パラメーターを使用したクエリを送信します。 [real-estate-sample インデックス](search-get-started-portal.md)では、検索バーに次のフィルターされたクエリを貼り付けると、興味深い結果になります。
 
@@ -195,7 +195,7 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 
 その他の例については、[「OData Filter Expression Syntax」(OData フィルター式の構文) > 「Examples」(例)](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples) を参照してください。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 + [Azure Cognitive Search でのフルテキスト検索のしくみ](search-lucene-query-architecture.md)
 + [Search Documents REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)

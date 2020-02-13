@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 171f06ad238f862adbd7071ee10d81133d7a6855
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 808a17fcf303c6eb72f11f5379fa172302dc782a
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022139"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77059856"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Azure IoT Central を使用した小売ソリューションの構築
 
@@ -160,7 +160,7 @@ IoT 対応カメラを活用したソリューションでは、デジタル フ
 > [!div class="mx-imgBorder"]
 > ![マイクロフルフィルメント センター](./media/overview-iot-central-retail/MFC-Dashboard.png)
 
-詳細については、[マイクロフルフィルメント センター アプリケーション テンプレートのデプロイと説明](./tutorial-iot-central-smart-inventory-management-pnp.md)に関するページを参照してください。
+詳細については、[マイクロフルフィルメント センター アプリケーション テンプレートのデプロイと説明](./tutorial-micro-fulfillment-center-pnp.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -170,5 +170,5 @@ IoT 対応カメラを活用したソリューションでは、デジタル フ
 * [コネクテッド ロジスティクス アプリケーション テンプレートをデプロイして調べる](./tutorial-iot-central-connected-logistics-pnp.md)。
 * [デジタル流通センター アプリケーション テンプレートをデプロイして調べる](./tutorial-iot-central-digital-distribution-center-pnp.md)。
 * [スマート インベントリの管理アプリケーション テンプレートをデプロイして調べる](./tutorial-iot-central-smart-inventory-management-pnp.md)。
-* [マイクロフルフィルメント センター アプリケーション テンプレートをデプロイして調べる](./tutorial-iot-central-smart-inventory-management-pnp.md)。
+* [マイクロフルフィルメント センター アプリケーション テンプレートをデプロイして調べる](./tutorial-micro-fulfillment-center-pnp.md)。
 * [IoT Central の概要](../preview/overview-iot-central.md)に関するページで、IoT Central の詳細について確認する。

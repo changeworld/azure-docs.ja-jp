@@ -12,18 +12,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/14/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 2e94c48188d0eed22b338d0d7238c0d27a5d1862
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 457f1008b75fe0605c0d2934f2de09937fac8d21
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74781915"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162448"
 ---
 # <a name="deploy-spot-vms-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用してスポット VM をデプロイする
 
-[スポット VM](spot-vms.md) を使うと、非常に低コストで未使用の容量を利用できます。 Azure で容量の回復が必要になると常に、Azure インフラストラクチャはスポット VM を排除します。 したがって、スポット VM は、バッチ処理ジョブ、開発/テスト環境、大規模なコンピューティング ワークロードなど、中断してもかまわないワークロードに最適です。
+[スポット VM](spot-vms.md) を使うと、非常に低コストで未使用の容量を利用できます。 Azure で容量の回復が必要になると常に、Azure インフラストラクチャはスポット VM を削除します。 したがって、スポット VM は、バッチ処理ジョブ、開発/テスト環境、大規模なコンピューティング ワークロードなど、中断してもかまわないワークロードに最適です。
 
 スポット VM の価格は、リージョンと SKU に基づいて変化します。 詳細については、[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) と [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) の VM 価格を参照してください。 
 
@@ -33,7 +33,7 @@ VM に対して、1 時間あたりに支払うことができる最大価格を
 > スポット インスタンスは現在、パブリック プレビューの段階にあります。
 > このプレビュー バージョンは運用環境のワークロードにはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 >
-> パブリック プレビューの初期段階では、スポット インスタンスに固定価格が設定されているため、価格ベースの削除は行われません。
+
 
 
 ## <a name="use-a-template"></a>テンプレートの使用 
@@ -48,9 +48,6 @@ VM に対して、1 時間あたりに支払うことができる最大価格を
                 }
 ```
 
-
-> [!IMPORTANT]
-> パブリック プレビューの初期段階では、最大価格を設定できますが、これは無視されます。 スポット VM は固定価格であるため、価格ベースの削除は行われません。
 
 
 ここでは、スポット VM のプロパティを追加したサンプル テンプレートを示します。 リソース名を実際の名前に置き換えて、`<password>` を VM 上のローカル管理者アカウントのパスワードに置き換えます。
@@ -190,7 +187,7 @@ VM に対して、1 時間あたりに支払うことができる最大価格を
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure PowerShell](../windows/spot-powershell.md) または [Azure CLI](spot-cli.md) を使って、スポット VM を作成することもできます。
 

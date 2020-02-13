@@ -1,18 +1,19 @@
 ---
-title: Azure Virtual WAN のグローバル トランジット ネットワーク アーキテクチャ | Microsoft Docs
+title: アーキテクチャ:グローバル転送ネットワーク アーキテクチャ
+titleSuffix: Azure Virtual WAN
 description: Virtual WAN のグローバル トランジット ネットワーク アーキテクチャについて説明します
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: article
-ms.date: 10/18/2019
+ms.date: 02/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9b736e897278c4656df83c30388efc812ac6193d
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 17d0e678008c76da32f20562aa795e83e49c80e4
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607364"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064973"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>グローバル トランジット ネットワーク アーキテクチャと Virtual WAN
 
@@ -137,7 +138,7 @@ VNet 対インターネットまたはサードパーティのセキュリティ
 ### <a name="branch-to-internet-or-third-party-security-service-j"></a>ブランチ対インターネットまたはサードパーティ セキュリティ サービス (i)
 ブランチ対インターネットまたはサードパーティのセキュリティ保護付きトランジットを使うと、ブランチを、Virtual WAN ハブ内の Azure Firewall を介して、インターネットまたはサポートされているサードパーティのセキュリティ サービスに接続できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Virtual WAN を使って接続を作成し、VWAN ハブに Azure Firewall を展開します。
 

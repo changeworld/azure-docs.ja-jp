@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 0635be14937a3688792f65208dcb9d482b9e6d44
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 110e935671ab1d640b2ff3dc26c203b262e999fe
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74781851"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163094"
 ---
 # <a name="preview-deploy-spot-vms-using-the-azure-cli"></a>プレビュー:Azure CLI を使用してスポット VM をデプロイする
 
@@ -35,7 +35,7 @@ Azure CLI を使用してスポットで VM を作成するプロセスは、[�
 > スポット インスタンスは現在、パブリック プレビューの段階にあります。
 > このプレビュー バージョンは運用環境のワークロードにはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 >
-> パブリック プレビューの初期段階では、スポット インスタンスに固定価格が設定されているため、価格ベースの削除は行われません。
+
 
 
 ## <a name="install-azure-cli"></a>Azure CLI のインストール
@@ -73,7 +73,7 @@ az vm list \
    --output table
 ```
 
-**次のステップ**
+**次の手順**
 
 [Azure PowerShell](../windows/spot-powershell.md) または[テンプレート](spot-template.md)を使って、スポット VM を作成することもできます。
 

@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: ca24cbdd9541456cbaa3f384587fee17d47f5ca2
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: ddcc7fcc14c7958e8c0d012c2395ad2b6c422f4f
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864113"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157909"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>VNet 間の接続の構成 (クラシック)
 
@@ -33,7 +33,7 @@ ms.locfileid: "75864113"
 
 ![VNet 間接続の図](./media/vpn-gateway-howto-vnet-vnet-portal-classic/v2vclassic.png)
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="about-vnet-to-vnet-connections"></a>VNet 間接続の概要
 

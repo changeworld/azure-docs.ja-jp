@@ -2,21 +2,21 @@
 title: Azure での Microsoft Partner Agreement の請求書を理解する
 description: Azure での Microsoft Partner Agreement の請求書を読み取って理解する方法を説明します
 author: bandersmsft
-manager: jureid
+manager: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/22/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: 7555fc490804a847e61a46f194e77c62f0a985d9
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: fcebe02d62beba1e48759c0298a18b26f3a61cbf
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75984967"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133306"
 ---
 # <a name="terms-in-your-microsoft-partner-agreement-invoice"></a>Microsoft Partner Agreement の請求書の用語
 
@@ -36,7 +36,7 @@ ms.locfileid: "75984967"
 
 <!-- add screenshot -->
 
-| 期間 | [説明] |
+| 期間 | 説明 |
 | --- | --- |
 | 販売先 |請求先アカウントのプロパティに含まれる、法人の住所|
 | 請求先 |課金プロファイルのプロパティに含まれる、請求書を受け取る課金プロファイルの請求先住所|
@@ -52,7 +52,7 @@ ms.locfileid: "75984967"
 
 <!-- add screenshot -->
 
-| 期間 | [説明] |
+| 期間 | 説明 |
 | --- | --- |
 | Charges|この課金プロファイルに対する前回の請求期間以降の Microsoft の料金の合計額 |
 | 謝辞 |払い戻しで受け取ったクレジット |

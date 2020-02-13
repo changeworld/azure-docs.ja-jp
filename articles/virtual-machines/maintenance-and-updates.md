@@ -1,22 +1,18 @@
 ---
-title: Azure での VM のメンテナンスと更新 | Microsoft Docs
+title: メンテナンスと更新
 description: Azure で実行されている仮想マシンのメンテナンスと更新の概要。
-services: virtual-machines
-documentationcenter: ''
 author: shants123
-editor: ''
-tags: azure-resource-manager,azure-service-management
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: shants
-ms.openlocfilehash: 45dba8de8ef735bdb9df102ac367e6a1653bf481
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: eaf7616b3bd69828829342b4dca9247c009d3475
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807087"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121850"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Azure での仮想マシンのメンテナンス
 
@@ -101,6 +97,6 @@ Azure VM にワークロードをデプロイするとき、*可用性セット*
 
 各インフラストラクチャの更新は、1 つのリージョン内でゾーンごとにロールアウトされます。 ただし、ゾーン 1 でデプロイを行っているときに、ゾーン 2 で別のデプロイを同時に実行できます。 デプロイはすべてシリアル化されているわけではありません。 ただし、リスクを軽減するために、1 つのデプロイでは一度に 1 つのゾーンのみロールアウトされます。
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 
 計画メンテナンスを管理するために、[Azure CLI](maintenance-notifications-cli.md)、[Azure PowerShell](maintenance-notifications-powershell.md)、または[ポータル](maintenance-notifications-portal.md)を使用できます。 

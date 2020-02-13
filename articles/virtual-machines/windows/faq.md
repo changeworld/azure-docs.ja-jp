@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 0ebf4049827a4abd9cfcb2eda354d0c796cbdbdb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 64aeaf412bc8af242a9d3184a3c1f0fa0ee4809e
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039183"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161768"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Windows Virtual Machines についてのよく寄せられる質問
 この記事では、Resource Manager デプロイ モデルを使用して Azure で作成された Windows 仮想マシンについてよく寄せられる質問に回答します。 このトピックの Linux バージョンについては、「[Linux 仮想マシンについてのよく寄せられる質問](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
@@ -53,7 +53,7 @@ Hyper-V に慣れている場合は、VMConnect と同様のツールを検討�
 ページ ファイルを移動してドライブ文字を再割り当てすることでドライブ文字を変更することができますが、正しい順序で手順を実行するよう注意する必要があります。 手順については、「 [Windows 一時ディスクのドライブ文字を変更する方法](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
 
 ## <a name="can-i-add-an-existing-vm-to-an-availability-set"></a>既存の VM を可用性セットに追加できますか。
-No. VM を可用性セットの一部にする場合は、VM を作成するときにセットに追加する必要があります。 作成後に VM を可用性セットに追加する方法は現在ありません。
+いいえ。 VM を可用性セットの一部にする場合は、VM を作成するときにセットに追加する必要があります。 作成後に VM を可用性セットに追加する方法は現在ありません。
 
 ## <a name="can-i-upload-a-virtual-machine-to-azure"></a>仮想マシンを Azure にアップロードすることができますか。
 はい。 手順については、[オンプレミス VM を Azure に移行する](on-prem-to-azure.md)方法に関するページを参照してください。

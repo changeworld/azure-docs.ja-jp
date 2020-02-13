@@ -8,12 +8,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 4efa60a48a540efdd835b106afa5872057ae3d53
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 14aa1018aec2a9dc22c3b059b4aa46bff2bb554a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74046418"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77050056"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>Application Gateway で Web アプリケーション ファイアウォール v2 のカスタム規則を作成して使用する
 
@@ -161,10 +161,10 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
         "action": "Allow",
         "matchConditions": [
           {
-            "matchVariable": "RequestHeaders",
-            "operator": "User-Agent",
+            "matchVariable": "RemoteAddr",
+            "operator": "GeoMatch",
             "matchValues": [
-              "evilbot"
+              "US"
             ]
           }
         ]
@@ -229,7 +229,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
 
 ## <a name="example-4"></a>例 4
 
-この例では、User-Agent *evilbot* と、範囲 192.168.5.0/24 内のトラフィックをブロックしたいとします。 これを行うには、2 つの個別の一致条件を作成し、両方を同じ規則に配置します。 これにより、User-Agent ヘッダー内の *evilbot* **および**範囲 192.168.5.0/24 からの IP アドレスの両方が一致した場合、要求がブロックされることが保証されます。
+この例では、User-Agent *evilbot* と、範囲 192.168.5.0/24 内のトラフィックをブロックしたいとします。 これを行うには、2 つの個別の一致条件を作成し、両方を同じ規則に配置します。 これにより、User-Agent ヘッダー内の *evilbot***および**範囲 192.168.5.0/24 からの IP アドレスの両方が一致した場合、要求がブロックされることが保証されます。
 
 ロジック: p **かつ** q
 
@@ -543,7 +543,7 @@ $rule3 = New-AzApplicationGatewayFirewallCustomRule `
   }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 カスタム規則を作成したら、WAF ログを表示する方法を学習できます。 詳細については、[Application Gateway の診断](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging)に関するトピックを参照してください。
 

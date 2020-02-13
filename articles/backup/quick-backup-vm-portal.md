@@ -4,14 +4,14 @@ description: このクイック スタートでは、Azure portal を使用し�
 ms.reviewer: saurse
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 07/17/2018
+ms.date: 02/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 430a560f3ae8e9abc6c5e7a34c24d9d2f262fd79
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4bff53516447408486a6e40f2f7059ebc811aaa4
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171999"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057177"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Azure で仮想マシンをバックアップする
 
@@ -21,7 +21,7 @@ Azure ポータルで Azure のバックアップを作成できます。 この
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure Portal](https://portal.azure.com) にサインインします。
+[Azure portal](https://portal.azure.com) にサインインします。
 
 ## <a name="select-a-vm-to-back-up"></a>バックアップする VM を選択する
 
@@ -50,7 +50,7 @@ Recovery Services コンテナーが作成されるまでしばらく待ちま�
 
 ## <a name="start-a-backup-job"></a>バックアップ ジョブを開始する
 
-バックアップは、既定のポリシーによってスケジュールされた時刻にジョブが実行されるまで待たずに今すぐ開始できます。 この初回のバックアップ ジョブによって、完全な復元ポイントが作成されます。 初回のバックアップ後のバックアップ ジョブでは、増分復元ポイントが作成されます。 増分復元ポイントでは、前回のバックアップ以降に行われた変更のみが転送されるため、保存効率と時間効率が向上します。
+バックアップは、既定のポリシーによってスケジュールされた時刻にジョブが実行されるまで待たずに今すぐ開始できます。 この初回のバックアップ ジョブによって、完全な復元ポイントが作成されます。 初回のバックアップ後のバックアップ ジョブでは、増分復元ポイントが作成されます。 増分復元ポイントでは、前回のバックアップ以降に行われた変更のみを転送対象とすることで、高い保存効率と時間効率を実現します。
 
 1. 目的の VM の **[バックアップ]** ウィンドウで、 **[今すぐバックアップ]** を選択します。
 
@@ -70,7 +70,7 @@ VM のデータを復元する方法を説明するバックアップ チュー�
 
 1. 目的の VM の **[バックアップ]** オプションを選択します。
 
-2. **[...More]\(...その他\)** を選択して他のオプションを表示し、 **[バックアップの停止]** を選択します。
+2. **[...さらに表示]** を選択して他のオプションを表示し、 **[バックアップの停止]** を選択します。
 
     ![Azure ポータルから VM のバックアップを停止する](./media/quick-backup-vm-portal/stop-backup.png)
 
@@ -86,7 +86,7 @@ VM のデータを復元する方法を説明するバックアップ チュー�
 
     ![Azure ポータルでリソース グループを削除する](./media/quick-backup-vm-portal/delete-resource-group.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Recovery Services コンテナーを作成し、VM の保護を有効にし、最初の復元ポイントを作成しました。 Azure Backup と Recovery Services についてさらに学ぶには、次のチュートリアルに進んでください。
 

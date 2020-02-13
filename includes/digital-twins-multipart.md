@@ -7,14 +7,14 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 12/12/2019
+ms.date: 02/07/2020
 ms.custom: include file
-ms.openlocfilehash: 6fa21d78d766ee8e541d6d60f64628b55a84fe41
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0e7cb7e4aaa9862a2b4af51593c29793ea54dd14
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75468220"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77111238"
 ---
 > [!NOTE]
 > マルチパート要求には、一般的に次の 3 つの情報が必要です。

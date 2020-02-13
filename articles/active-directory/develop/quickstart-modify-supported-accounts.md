@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 59c1b7dbb4c47b6963cd4bbcfdeb1b2b9a2d3bb6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 56771658380e0a5b946c3acc70df98a262561b5c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704121"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160691"
 ---
 # <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>クイック スタート:アプリケーションによってサポートされるアカウントを変更する
 
@@ -63,7 +63,7 @@ Microsoft ID プラットフォームにアプリケーションを登録する�
 
 シングル ページ アプリケーション (SPA) は、ブラウザー上で実行される JavaScript ヘビーなフロント エンドを使用して通常構成されています。これがアプリケーションの Web API バックエンドを呼び出してビジネス ロジックを実行します。 Azure AD でホストされている SPA では、Azure AD によるユーザー認証と、アプリケーションの JavaScript クライアントによるバックエンド Web API の呼び出しを保護するためのトークンの取得に、OAuth 2.0 Implicit Grant を使用します。
 
-この認証プロトコルはほかにも、ユーザーが同意した後、クライアントとアプリケーション用に構成されている他の Web API リソースとの間に発生する呼び出しを保護するトークンを取得するときにも利用できます。 暗黙的な認可付与の詳細と、それが自身のアプリケーションのシナリオに適しているかどうかの判断に役立つ情報は、Azure AD [v1.0](v1-oauth2-implicit-grant-flow.md) および [v2.0](v2-oauth2-implicit-grant-flow.md) における OAuth 2.0 の暗黙的な許可フローを参照してください。
+この認証プロトコルはほかにも、ユーザーが同意した後、クライアントとアプリケーション用に構成されている他の Web API リソースとの間に発生する呼び出しを保護するトークンを取得するときにも利用できます。 暗黙的な認可付与の詳細と、それが自身のアプリケーションのシナリオに適しているかどうかの判断に役立つ情報は、Azure AD [v1.0](../azuread-dev/v1-oauth2-implicit-grant-flow.md) および [v2.0](v2-oauth2-implicit-grant-flow.md) における OAuth 2.0 の暗黙的な許可フローを参照してください。
 
 既定では、アプリケーションに対して OAuth 2.0 の暗黙的な許可が無効になっています。 実際のアプリケーションで OAuth 2.0 の暗黙的な許可を有効にするには、以下の手順に従ってください。
 

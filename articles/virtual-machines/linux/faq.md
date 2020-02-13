@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 107f2376df7eb767953b32b3447937e24869894c
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: fa1d870effc92f63fb661119214fc635eae95672
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036163"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162465"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Linux 仮想マシンについてのよく寄せられる質問
 この記事では、Resource Manager デプロイ モデルを使用して Azure で作成された Linux 仮想マシンについてよく寄せられる質問に回答します。 このトピックの Windows バージョンについては、「[Windows Virtual Machines についてのよく寄せられる質問](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。

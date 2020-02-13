@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 53fd02856a805f8bb5d7261cc9e6e32861b2b4fd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 84e60b0a942bad94d8e36eb20b5be8e3f55af80a
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426987"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190941"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-cognitive-search"></a>Azure Cognitive Search で検索トラフィックの分析を実装する
 
@@ -106,7 +106,7 @@ Azure Cognitive Search サービスの[ポータル](https://portal.azure.com) �
 **SearchServiceName**: (文字列) 検索サービス名 **SearchId**: (GUID) 検索クエリの一意の識別子 (検索応答で提供) **IndexName**: (文字列) 照会する検索サービス インデックス **QueryTerms**: (文字列) ユーザーが入力した検索語句 **ResultCount**: (int) 返されたドキュメントの数 (検索応答で提供) **ScoringProfile**: (文字列) 使用するスコアリング プロファイルの名前 (存在する場合)。
 
 > [!NOTE]
-> 検索クエリに $count=true を追加して、ユーザーによって生成されたクエリのカウントを要求します。 詳細については、[こちら](https://docs.microsoft.com/rest/api/searchservice/search-documents#request)をご覧ください。
+> 検索クエリに $count=true を追加して、ユーザーによって生成されたクエリのカウントを要求します。 詳細については、[こちら](/rest/api/searchservice/search-documents#counttrue--false)をご覧ください。
 >
 
 > [!NOTE]

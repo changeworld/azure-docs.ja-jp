@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/11/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 0f15a6a277020d593465fa0aa78fc434413c4545
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 8f256749c363e2900fe62bda557f7cb4caa72e3e
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76909203"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77179064"
 ---
 GPU 最適化済み VM サイズは、1 つまたは複数の NVIDIA GPU を備えた、特殊な用途に特化した仮想マシンです。 これらのサイズは、コンピューティング処理やグラフィック処理の負荷が高い視覚化ワークロードを意図して設計されています。 この記事では、GPU、vCPU、データ ディスク、NIC の数と種類についての情報を提供します。 このグループ内の各サイズのストレージのスループットおよびネットワーク帯域幅も含まれています。
 
@@ -175,9 +175,9 @@ NVv3 インスタンス内の各 GPU には GRID ライセンスが付属して�
 
 | Size | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | GPU | GPU メモリ: GiB | 最大データ ディスク数 | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数 | 仮想ワークステーション | 仮想アプリケーション | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_NV12s_v3 |12 |112 |336 | 1 | 8 | 12 | 20000/200 | 4 | 1 | 25 |
-| Standard_NV24s_v3 |24 |224 |672 | 2 | 16 | 24 | 40000/400 | 8 | 2 | 50 |
-| Standard_NV48s_v3 |48 |448 |1344 | 4 | 32 | 32 | 80000/800 | 8 | 4 | 100 |
+| Standard_NV12s_v3 |12 |112 |736 | 1 | 8 | 12 | 20000/200 | 4 | 1 | 25 |
+| Standard_NV24s_v3 |24 |224 |1474 | 2 | 16 | 24 | 40000/400 | 8 | 2 | 50 |
+| Standard_NV48s_v3 |48 |448 |2948 | 4 | 32 | 32 | 80000/800 | 8 | 4 | 100 |
 
 1 GPU = M60 カードの 2 分の 1 相当。
 

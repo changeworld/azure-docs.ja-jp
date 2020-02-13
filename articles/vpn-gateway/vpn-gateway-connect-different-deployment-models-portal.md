@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: c26c4c47cb17acf88bc545af3a1fc979138d56b1
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 5e64cb2db2bd16a881334779a1c6f1ef19296da2
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951736"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152025"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>ポータルを使って異なるデプロイ モデルの仮想ネットワークを接続する
 
@@ -30,7 +30,7 @@ ms.locfileid: "74951736"
 
 ### <a name="before"></a>開始する前に
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 * 次の手順では、両方の VNet が既に作成されていることを前提にしています。 この記事を演習として使用しており、VNet がない場合は、手順内のリンクを使用して作成できます。
 * これらの VNet のアドレス範囲が互いに重複しておらず、ゲートウェイの接続先になる可能性のある他の接続の範囲と重複していないことを確認します。
@@ -100,7 +100,7 @@ VPN Gateway と共に VNet を既に使用している場合、そのゲート�
 
 1. **[すべてのリソース]** に移動し、リスト内で **ClassicVNet** を見つけます。
 2. メニューの **[設定]** セクションで **[ゲートウェイ]** をクリックし、バナーをクリックしてゲートウェイを作成します。
-  ![VPN ゲートウェイの構成](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "CVPN ゲートウェイの構成")
+  ![VPN ゲートウェイの構成](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "VPN ゲートウェイの構成")
 3. **[新しい VPN 接続]** ページの **[接続の種類]** で、 **[サイト対サイト]** を選びます。
 4. **[ローカル サイト]** で、 **[必要な設定の構成]** をクリックします。 これにより、 **[ローカル サイト]** ページが開きます。
 5. **[ローカル サイト]** ページで、Resource Manager の VNet を参照するための名前を作成します。 たとえば、「RMVNetLocal」などにします。
@@ -260,7 +260,7 @@ Select-AzureSubscription -SubscriptionName "Name of subscription"
 
 Azure Portal で VNet を作成するときには、Azure で使用される完全名は Azure Portal に表示されません。 たとえば、Azure Portal に "ClassicVNet" という名前で表示されている VNet が、ネットワーク構成ファイルではそれよりもかなり長い名前である可能性があります。 名前は次のように表示されます。'Group ClassicRG ClassicVNet' 次の手順では、ネットワーク構成ファイルをダウンロードして、値を表示します。
 
-コンピューターにディレクトリを作成し、ネットワーク構成ファイルをそのディレクトリにエクスポートします。 この例では、ネットワーク構成ファイルは C:\AzureNet にエクスポートされます。
+コンピューターにディレクトリを作成し、ネットワーク構成ファイルをそのディレクトリにエクスポートします。 次の例では、ネットワーク構成ファイルは C:\AzureNet にエクスポートされます。
 
 ```powershell
 Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
@@ -271,7 +271,7 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 - VNet 名は **VirtualNetworkSite name =** と示されています
 - サイト名は **LocalNetworkSite name=** と示されています
 
-### <a name="3-create-the-connection"></a>手順 3.接続の作成
+### <a name="3-create-the-connection"></a>3.接続の作成
 
 共有キーを設定し、クラシック VNet から Resource Manager VNet への接続を作成します。 ポータルを使用して共有キーを設定することはできません。 次の手順を実行するときは、クラシック バージョンの PowerShell コマンドレットを使用してログインします。 それには、**Add-azureaccount** を使用します。 それ以外の場合は、"-AzureVNetGatewayKey" を設定できません。
 

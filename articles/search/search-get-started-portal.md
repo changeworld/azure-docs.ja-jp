@@ -2,25 +2,25 @@
 title: Azure portal で検索インデックスを作成する
 titleSuffix: Azure Cognitive Search
 description: このポータル クイックスタートでは、データ インポート ウィザードを使用して、初めての検索インデックスを Azure Cognitive Search に作成して読み込み、クエリを実行する方法について説明します。
-author: HeidiSteen
+author: tchristiani
 manager: nitinme
-ms.author: heidist
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: 2ae0e5b53d735b95ce1c3d2f9275456e41319242
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.date: 02/10/2020
+ms.openlocfilehash: 6a3bbdae0d3fa898621c1c805388252beb891ecf
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900998"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121679"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
 > * [ポータル](search-get-started-portal.md)
 > * [C#](search-get-started-dotnet.md)
 > * [Java](search-get-started-java.md)
-> * [Node.JS](search-get-started-nodejs.md)
+> * [Node.js](search-get-started-nodejs.md)
 > * [PowerShell](search-get-started-powershell.md)
 > * [Postman](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
@@ -258,7 +258,7 @@ Azure portal の **Search エクスプローラー**を使って、フィルタ�
 
 ポータル上で、インデックス、インデクサー、データ ソースを検索する方法も学びました。 今後、新しいデータ ソースを扱うときにも、ポータルから、ごくわずかな労力で、その定義やフィールド コレクションを簡単に調べることができるでしょう。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
 
@@ -266,7 +266,7 @@ Azure portal の **Search エクスプローラー**を使って、フィルタ�
 
 無料サービスを使っている場合は、3 つのインデックス、インデクサー、およびデータソースに制限されることに注意してください。 ポータルで個別の項目を削除して、制限を超えないようにすることができます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ポータルのウィザードを使用して、ブラウザーで動作するすぐに使用できる Web アプリを生成します。 このウィザードを、先ほど作成した小さなインデックスで試すか、またはいずれかのビルトイン サンプル データ セットを使用して充実した検索環境を実現することができます。
 

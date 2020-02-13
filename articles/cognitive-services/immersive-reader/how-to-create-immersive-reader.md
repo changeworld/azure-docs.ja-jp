@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: a2a404a03c06dde59edc88436afdc9dba3d74797
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 187989153ae32704df8a7ff061e19fe35206e0e8
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170164"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162516"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>イマーシブ リーダー リソースを作成して Azure Active Directory 認証を構成する
 
@@ -108,6 +108,10 @@ ms.locfileid: "76170164"
             }
             Write-Host "New service principal created successfully"
         }
+
+        # Sleep for 5 seconds to allow the new service principal to propagate
+        Write-Host "Sleeping for 5 seconds"
+        Start-Sleep -Seconds 5
 
         Write-Host "Granting service principal access to the newly created Immersive Reader resource"
         $accessResult = az role assignment create --assignee $principalId --scope $resourceId --role "Cognitive Services User"

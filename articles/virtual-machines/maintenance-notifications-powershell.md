@@ -1,22 +1,18 @@
 ---
 title: PowerShell を使用して Azure VM のメンテナンス通知を取得する
 description: Azure で実行されている仮想マシンのメンテナンス通知を表示し、PowerShell を使用してセルフサービス メンテナンスを開始します。
-services: virtual-machines
-documentationcenter: ''
 author: shants123
-editor: ''
-tags: azure-service-management,azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: f136fc3001e6ae224e264a59ceba66ed61ead865
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: c23a06c502bd43b52cb35220b711084c7c8c1c7a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534931"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121844"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>PowerShell を使用した計画メンテナンスの処理
 
@@ -33,7 +29,7 @@ Get-AzVM -ResourceGroupName myResourceGroup -Name myVM -Status
 
 MaintenanceRedeployStatus では、次のプロパティが返されます。 
 
-| 値 | 説明   |
+| Value | 説明   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | この時点で VM に対してメンテナンスを開始できるかどうかを示します。 |
 | PreMaintenanceWindowStartTime         | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の始まりです。 |
@@ -102,6 +98,6 @@ Get-AzureVM -ServiceName <Service name> -Name <VM name>
 Restart-AzureVM -InitiateMaintenance -ServiceName <service name> -Name <VM name>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure CLI](maintenance-notifications-cli.md) または[ポータル](maintenance-notifications-portal.md)を使用して計画メンテナンスを処理することもできます。

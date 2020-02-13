@@ -9,12 +9,12 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 657cded5e16897f9581bbcf365bacc2d2f1a821a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2edd62825de08becf22f2f953a63a7f89f55e0a6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754358"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190994"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Azure Cognitive Search で複合データ型をモデル化する方法
 
@@ -125,7 +125,7 @@ Azure portal の**データのインポート** ウィザードで読み込む�
 
 ## <a name="filter-facet-and-sort-complex-fields"></a>複合フィールドのフィルター処理、ファセット、並べ替え
 
-検索のフィルター処理とフィールド検索に使用されるものと同じ [OData パス構文](query-odata-filter-orderby-syntax.md)を、検索要求内のフィールドのファセット、並べ替え、および選択にも使用できます。 複合型の場合、sortable または facetable とマークできるサブフィールド管理する規則が適用されます。 これらの規則について詳しくは、[Create Index API reference (Create Index API リファレンス)](https://docs.microsoft.com/rest/api/searchservice/create-index#request) に関する記事をご覧ください。
+検索のフィルター処理とフィールド検索に使用されるものと同じ [OData パス構文](query-odata-filter-orderby-syntax.md)を、検索要求内のフィールドのファセット、並べ替え、および選択にも使用できます。 複合型の場合、sortable または facetable とマークできるサブフィールド管理する規則が適用されます。 これらの規則について詳しくは、[Create Index API reference (Create Index API リファレンス)](/rest/api/searchservice/create-index) に関する記事をご覧ください。
 
 ### <a name="faceting-sub-fields"></a>サブフィールドのファセット
 
@@ -149,7 +149,7 @@ Azure portal の**データのインポート** ウィザードで読み込む�
 
     $filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)
 
-最上位レベルの単純フィールドと同様に、複合フィールド内の単純サブフィールドは、インデックス定義で **filterable** 属性が `true` に設定されている場合にのみ、フィルターに含めることができます。 詳しくは、[Create Index API リファレンス](https://docs.microsoft.com/rest/api/searchservice/create-index#request) に関する記事をご覧ください。
+最上位レベルの単純フィールドと同様に、複合フィールド内の単純サブフィールドは、インデックス定義で **filterable** 属性が `true` に設定されている場合にのみ、フィルターに含めることができます。 詳しくは、[Create Index API リファレンス](/rest/api/searchservice/create-index) に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

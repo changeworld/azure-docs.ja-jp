@@ -2,21 +2,21 @@
 title: Microsoft 顧客契約の価格シートの用語 - Azure
 description: Microsoft 顧客契約の使用量と請求書を確認して理解する方法について説明します。
 author: bandersmsft
-manager: jureid
+manager: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: 44ead1d376bf8b57134380db90733ed48deda14e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 46d0f259d30f9864c371f8bd3dd01f593004c808
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75986423"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133584"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-price-sheet"></a>Microsoft 顧客契約の価格シートの用語
 

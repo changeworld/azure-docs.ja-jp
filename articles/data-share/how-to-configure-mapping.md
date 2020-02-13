@@ -6,16 +6,16 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 754977788c5f6e5e574500552f670ba9083cf683
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1ff432c2073536448c8194ebe537c8bf8cf00663
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490624"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964245"
 ---
 # <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share"></a>Azure Data Share で受信した共有のデータセットのマッピングを構成する方法
 
-この記事では、Azure Data Share で受信した共有のデータセットのマッピングを構成する方法について説明します。 データ共有への招待を承諾し、[Accept and Configure later] (承諾して後で構成する) を選択した場合、これを行うことができます。 データの共有先を変更する必要がある場合、またはデータを SQL Server 内に受信する場合は、データセットのマッピングを構成できます。 
+この記事では、Azure Data Share で受信した共有のデータセットのマッピングを構成する方法について説明します。 データ共有への招待を受け入れて [Accept and configure later]\(受け入れて後で構成する\) を選択した場合、またはデータがインプレースで共有される場合は、これを行うことができます。 データの共有先を変更する必要がある場合、またはデータを SQL Server 内に受信する場合は、データセットのマッピングを構成できます。 
 
 ## <a name="navigate-to-a-received-data-share"></a>受信したデータ共有に移動する
 
@@ -27,9 +27,9 @@ Azure Data Share サービスで、受信した共有に移動し、 **[詳細]*
 
 ![ターゲットへのマップ](./media/dataset-map-target.png "ターゲットへのマップ") 
 
-## <a name="select-a-new-destination-store"></a>新しいターゲット先ストアを選択する
+## <a name="select-a-new-target-store"></a>新しいターゲット ストアを選択する
 
-データを配置するターゲットのデータ型を選択します。 既にマッピングされているストレージ アカウントに存在するデータが、新しいターゲットに自動的に移動されることはありません。
+データを配置するターゲットのデータ型を選択します。 スナップショット ベースの共有の場合、以前にマップされたストレージ アカウント内に既に存在しているデータが、新しいターゲット ストアに自動的に移動されることはありません。 インプレース共有の場合は、指定された場所にあるデータ ストアを選択します。 この場所は、データ プロバイダーのソース データ ストアが配置されている Azure データ センターです。
 
 ![ターゲット ストレージ アカウント](./media/dataset-map-target-sql.png "ターゲット ストレージ") 
 
@@ -39,7 +39,7 @@ Azure Data Share サービスで、受信した共有に移動し、 **[詳細]*
 
 ![形式の選択](./media/sql-file-formats.png "SQL ファイルの形式")
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 データの共有を始める方法については、[データの共有](share-your-data.md)に関するチュートリアルをご覧ください。
 

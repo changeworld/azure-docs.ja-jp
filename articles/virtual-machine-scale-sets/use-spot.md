@@ -6,14 +6,14 @@ tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: a7afb80276147c1562a5963a3ae9a319a8b73264
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 37e914fe6bafe9587be525faf3e01c897cdd8230
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544788"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162686"
 ---
 # <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>プレビュー:仮想マシン スケール セット用の Azure スポット VM 
 
@@ -25,7 +25,6 @@ ms.locfileid: "76544788"
 > スポット インスタンスは現在、パブリック プレビューの段階にあります。
 > このプレビュー バージョンは運用環境のワークロードにはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 >
-> パブリック プレビューの初期段階では、スポット インスタンスに固定価格が設定されているため、価格ベースの削除は行われません。
 
 ## <a name="pricing"></a>価格
 

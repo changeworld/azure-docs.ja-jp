@@ -4,17 +4,17 @@ description: Azure Storage では、クラウドに永続化される前にデ�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 01/10/2020
+ms.date: 02/05/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: abb9325510b52672027338314e02466f2d28e701
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 86d6a63601036abdde4ee7ae73114566d749feca
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942203"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77082835"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>保存データに対する Azure Storage 暗号化
 
@@ -142,7 +142,7 @@ Azure Storage は、クライアントが要求と共に送信する暗号化キ
 
 REST 呼び出しの場合、クライアントは次のヘッダーを使用して、要求の暗号化キー情報を BLOB ストレージに安全に渡すことができます。
 
-|要求ヘッダー | [説明] |
+|要求ヘッダー | 説明 |
 |---------------|-------------|
 |`x-ms-encryption-key` |書き込み要求と読み取り要求の両方に必要です。 Base64 でエンコードされた AES-256 暗号化キー値です。 |
 |`x-ms-encryption-key-sha256`| 書き込み要求と読み取り要求の両方に必要です。 暗号化キーの Base64 でエンコードされた SHA256 です。 |

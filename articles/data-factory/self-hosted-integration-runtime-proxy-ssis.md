@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 12/23/2019
-ms.openlocfilehash: 8754b2ef9727b5526cc9bcf756085f2f05f6a398
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 48d4df5684c84e195810439912dd610f5af364d4
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552102"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964483"
 ---
 # <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>セルフホステッド IR を ADF で Azure-SSIS IR のプロキシとして構成する
 
@@ -69,6 +69,40 @@ ms.locfileid: "75552102"
    1. **[続行]** をクリックします。
 
    ![セルフホステッド IR の詳細設定](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-shir.png)
+
+また、PowerShell を使用し、セルフホステッド IR をプロキシとして使用して新規または既存の Azure-SSIS IR を構成することもできます。
+
+```powershell
+$ResourceGroupName = "[your Azure resource group name]"
+$DataFactoryName = "[your data factory name]"
+$AzureSSISName = "[your Azure-SSIS IR name]"
+# Self-hosted integration runtime info - This can be configured as a proxy for on-premises data access 
+$DataProxyIntegrationRuntimeName = "" # OPTIONAL to configure a proxy for on-premises data access 
+$DataProxyStagingLinkedServiceName = "" # OPTIONAL to configure a proxy for on-premises data access 
+$DataProxyStagingPath = "" # OPTIONAL to configure a proxy for on-premises data access 
+
+# Add self-hosted integration runtime parameters if you configure a proxy for on-premises data accesss
+if(![string]::IsNullOrEmpty($DataProxyIntegrationRuntimeName) -and ![string]::IsNullOrEmpty($DataProxyStagingLinkedServiceName))
+{
+    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
+        -DataFactoryName $DataFactoryName `
+        -Name $AzureSSISName `
+        -DataProxyIntegrationRuntimeName $DataProxyIntegrationRuntimeName `
+        -DataProxyStagingLinkedServiceName $DataProxyStagingLinkedServiceName
+
+    if(![string]::IsNullOrEmpty($DataProxyStagingPath))
+    {
+        Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
+            -DataFactoryName $DataFactoryName `
+            -Name $AzureSSISName `
+            -DataProxyStagingPath $DataProxyStagingPath
+    }
+}
+Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
+    -DataFactoryName $DataFactoryName `
+    -Name $AzureSSISName `
+    -Force
+```
 
 ## <a name="enable-ssis-packages-to-connect-by-proxy"></a>SSIS パッケージのプロキシでの接続を有効にする
 

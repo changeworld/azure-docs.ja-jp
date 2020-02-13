@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 16689982156743f5dc4e2ed09a0f9bc097a51b9b
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 6e1b162d17e2369b579fc1210c57e0409b0546bc
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903033"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148472"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>P2S RADIUS 認証用の VPN クライアント構成ファイルを作成およびインストールする
 
@@ -38,7 +38,6 @@ P2S RADIUS 認証の構成ワークフローは次のとおりです。
 
 この記事のセクションを使用するには、最初に使用する認証の種類 (ユーザー名/パスワード、証明書、またはその他の認証の種類) を決定します。 各セクションに、Windows、Mac OS X、Linux 向けの手順があります (現時点では、利用できる手順は限られています)。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="adeap"></a>ユーザー名/パスワード認証
 

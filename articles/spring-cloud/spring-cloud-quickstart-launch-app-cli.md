@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: 44b2f39cb1467e3459ee326bf81381830510d6b6
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: adb5b64456de743142ffb464ebb2c5e9f8dc8f86
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278943"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190771"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Java Spring アプリケーションを起動する
 
@@ -59,7 +59,7 @@ az extension add --name spring-cloud
     ```azurecli
         az login
         az account list -o table
-        az account set --subscription
+        az account set --subscription <Name or ID of subscription from the last step>
     ```
 
 2. Azure Spring Cloud サービスの名前を準備します。  名前の長さは 4 文字から 32 文字で、小文字、数字、およびハイフンのみを使用できます。  サービス名の最初の文字は英字でなければならず、最後の文字は英字または数字でなければなりません。
@@ -94,7 +94,7 @@ az extension add --name spring-cloud
 次のように、プロジェクトの git リポジトリの場所で、構成サーバーを更新します。
 
 ```git
-az spring-cloud config-server git set -n <your-service-name> --uri https://github.com/Azure-Samples/piggymetrics --label config
+az spring-cloud config-server git set -n <your-service-name> --uri https://github.com/Azure-Samples/piggymetrics-config
 ```
 
 > [!div class="nextstepaction"]

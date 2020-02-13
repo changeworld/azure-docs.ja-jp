@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/19/2019
+ms.date: 02/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6fd8d6187c86306840c33b3aaf334e71086b20a1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a62c2460698408f6a2bfa51c6638bdeaf88bb31f
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452740"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083526"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>タイム シリーズ ID の選択に関するベスト プラクティス
 

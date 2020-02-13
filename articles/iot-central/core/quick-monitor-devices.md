@@ -3,18 +3,18 @@ title: クイックスタート - Azure IoT Central でデバイスを監視す�
 description: オペレーターとして Azure IoT Central アプリケーションを使用して、デバイスを監視する方法について説明します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: e5185d78b0ffc17e861f49d294af65ddcd200d07
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e56b733a567c706c2a15f2c30ed93a47c244db11
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026165"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168730"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices"></a>クイック スタート:Azure IoT Central を使用してデバイスを監視する
 
@@ -41,8 +41,6 @@ Azure IoT Central では、デバイスに関する通知を電子メール メ�
 ## <a name="investigate-an-issue"></a>問題の調査
 
 オペレーターは、 **[概要]** 、 **[詳細]** 、および **[コマンド]** の各ページでデバイスに関する情報を確認できます。 ビルダーは、オペレーターがデバイス情報を編集したりデバイス プロパティを設定したりできるように、 **[デバイスの管理]** ビューを作成しました。
-
-**[概要]** ビューを選択すると、デバイスに関する情報が表示されます。
 
 ダッシュボードのグラフには、デバイスの温度のプロットが表示されます。 デバイスの温度が高すぎると判断したとしましょう。
 

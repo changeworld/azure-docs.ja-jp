@@ -2,23 +2,22 @@
 title: クイック スタート:PowerShell を使用したイベント ハブの作成 - Azure Event Hubs
 description: このクイック スタートでは、Azure PowerShell を使用してイベント ハブを作成したうえで、.NET Standard SDK を使用してイベントの送受信を行う方法について説明します。
 services: event-hubs
-author: ShubhaVijayasarathy
-manager: timlt
+author: spelluru
 editor: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 11/05/2019
-ms.author: shvija
-ms.openlocfilehash: 2a88fe340037c31a71cb34181682095f31400c36
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.author: spelluru
+ms.openlocfilehash: 89ec1957e75fa45eef6c7939a77e5cc1b3cf7806
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720598"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162125"
 ---
-# <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>クイック スタート: Azure PowerShell を使用したイベント ハブの作成
+# <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用したイベント ハブの作成
 
 Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
 
@@ -38,7 +37,7 @@ Azure Event Hubs はビッグ データ ストリーミング プラットフォ
 
 ローカルで PowerShell を使用している場合、このクイック スタートを完了するには、最新バージョンの PowerShell を実行する必要があります。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストールと構成](https://docs.microsoft.com/powershell/azure/install-az-ps)に関するページを参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 リソース グループは Azure リソースの論理的なコレクションであり、イベント ハブを作成するにはリソース グループが必要です。 
 
@@ -67,15 +66,14 @@ New-AzEventHub -ResourceGroupName myResourceGroup -NamespaceName namespace_name 
 
 お疲れさまでした。 Azure PowerShell を使用して Event Hubs 名前空間を作成し、その名前空間内にイベント ハブを作成しました。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Event Hubs 名前空間を作成し、サンプル アプリケーションを使用してイベント ハブからイベントを送受信しました。 イベント ハブとの間でイベントを送信または受信するためのステップ バイ ステップの手順については、以下の**イベントの送受信**のチュートリアルを参照してください。 
 
-- [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
-- [.NET Framework](event-hubs-dotnet-framework-getstarted-send.md)
-- [Java](event-hubs-java-get-started-send.md)
-- [Python](event-hubs-python-get-started-send.md)
-- [Node.JS](event-hubs-node-get-started-send.md)
+- [.NET Core](get-started-dotnet-standard-send-v2.md)
+- [Java](get-started-java-send-v2.md)
+- [Python](get-started-python-send-v2.md)
+- [JavaScript](get-started-java-send-v2.md)
 - [Go](event-hubs-go-get-started-send.md)
 - [C (送信のみ)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (受信のみ)](event-hubs-storm-getstarted-receive.md)

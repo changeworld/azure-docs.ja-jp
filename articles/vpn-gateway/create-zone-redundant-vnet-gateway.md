@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 04/26/2019
+ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 250ced13696d6ec34e7c434b26a2917a3c55e91d
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: d8c6b68a38d4b60cf7a3194e6a5ded8804cc416f
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834645"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150172"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Azure Availability Zones にゾーン冗長仮想ネットワーク ゲートウェイを作成する
 
@@ -21,27 +21,11 @@ Azure Availability Zones に、VPN ゲートウェイと ExpressRoute ゲート�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-お使いのコンピューターにローカルにインストールされている PowerShell か、Azure Cloud Shell のいずれかを使用できます。 PowerShell をローカルにインストールして使用する場合、この機能には最新バージョンの PowerShell モジュールが必要です。
-
-[!INCLUDE [Cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
-
-### <a name="to-use-powershell-locally"></a>PowerShell をローカルで使用するには
-
-Cloud Shell を使用するのではなくコンピューターで PowerShell をローカルに使用する場合は、PowerShell モジュール 1.0.0 以降をインストールする必要があります。 インストールされている PowerShell のバージョンを確認するには、次のコマンドを使用します。
-
-```azurepowershell
-Get-Module Az -ListAvailable | Select-Object -Property Name,Version,Path
-```
-
-アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。
-
-[!INCLUDE [PowerShell login](../../includes/vpn-gateway-ps-login-include.md)]
+[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ## <a name="variables"></a>1.変数を宣言する
 
-この例の手順で使用する値は以下のとおりです。 さらに、一部の例では、手順で宣言された変数を使用します。 実際の環境でこれらの手順を使用するときは、必ずこれらの値を実際の値で置き換えてください。 場所を指定するときは、指定するリージョンがサポートされていることを確認してください。 詳細については、[FAQ](#faq) をご覧ください。
+使用する変数を宣言します。 次のサンプルを使用し、必要に応じて独自の値で置き換えます。 演習中の任意の時点で PowerShell/Cloud Shell セッションを閉じた場合は、値をもう一度コピーして貼り付けるだけで、変数を再宣言します。 場所を指定するときは、指定するリージョンがサポートされていることを確認してください。 詳細については、[FAQ](#faq) をご覧ください。
 
 ```azurepowershell-interactive
 $RG1         = "TestRG1"

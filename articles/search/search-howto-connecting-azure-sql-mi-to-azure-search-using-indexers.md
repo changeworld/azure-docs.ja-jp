@@ -8,12 +8,12 @@ ms.author: victliu
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0f91775e0175b4b4af9b57fa96e389c3a2a22564
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 65e483fd772e20daa73b465ea17dfa6ecde42233
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863123"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964891"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>Azure Cognitive Search インデクサーから SQL マネージド インスタンスへの接続を構成する
 
@@ -35,11 +35,14 @@ ms.locfileid: "75863123"
    ![NSG インバウンド セキュリティ規則](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/nsg-rule.png "NSG インバウンド セキュリティ規則")
 
 > [!NOTE]
-> 現在の規則 (`public_endpoint_inbound`) を 2 つの規則に置き換えることによって、マネージ SQL インスタンスへの受信アクセスの制限をより厳しく選択できます。
+> インデクサーでは、データを読み取るために、パブリック エンドポイントを使用して SQL マネージド インスタンスを構成することが引き続き必要となります。
+> ただし、現在の規則 (`public_endpoint_inbound`) を次の 2 つの規則に置き換えることによって、そのパブリック エンドポイントへの受信アクセスを制限することもできます。
 >
-> * `AzureCognitiveSearch` [サービスタグ](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) ("SOURCE" = `AzureCognitiveSearch`) からの受信アクセスを許可する
+> * `AzureCognitiveSearch` [サービス タグ](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) ("SOURCE" = `AzureCognitiveSearch`、"NAME" = `cognitive_search_inbound`) からの受信アクセスを許可する
 >
-> * 検索サービスの IP アドレスからの受信アクセスを許可します。これは、完全修飾ドメイン名 (`<your-search-service-name>.search.windows.net` など) を ping することで取得できます。 ("SOURCE" = `IP address`)
+> * 検索サービスの IP アドレスからの受信アクセスを許可します。これは、完全修飾ドメイン名 (`<your-search-service-name>.search.windows.net` など) を ping することで取得できます。 ("SOURCE" = `IP address`、"NAME" = `search_service_inbound`)
+>
+> これらの 2 つの規則それぞれについて、"PORT" = `3342`、"PROTOCOL" = `TCP`、"DESTINATION" = `Any`、"ACTION" = `Allow` と設定します
 
 ## <a name="get-public-endpoint-connection-string"></a>パブリック エンドポイントの接続文字列を取得する
 **パブリック エンドポイント**の接続文字列 (ポート 1433 ではなく、ポート 3342) を使用していることを確認します。

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: cd10bd2a04bfb2a3e3316d86e64a98c75c12e36d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: aa7ddb75017a532b436b9a5cfc71d1a7c2832cb6
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76530913"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77179112"
 ---
 この記事では、Azure の IaaS 仮想マシン (VM) とディスクのバックアップおよびディザスター リカバリー (DR) を計画する方法について説明します。 このドキュメントでは、マネージド ディスクと非管理対象ディスクの両方について説明しています。
 
@@ -103,7 +103,7 @@ IaaS アプリケーション データの問題も別の可能性として存�
 アンマネージド ディスクについては、IaaS ディスクの場合はローカル冗長ストレージ タイプを使用できますが、Recovery Services コンテナーの場合は、Azure Backup を geo 冗長ストレージ オプションで有効にしてください。
 
 > [!NOTE]
-> 非管理対象ディスクに対して [geo 冗長ストレージ](../articles/storage/common/storage-redundancy-grs.md)または[読み取りアクセス geo 冗長ストレージ](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) オプションを使用する場合は、バックアップと DR の整合性スナップショットが必要です。 [Azure Backup](https://azure.microsoft.com/services/backup/) または[整合性スナップショット](#alternative-solution-consistent-snapshots)を使用します。
+> 非管理対象ディスクに対して [geo 冗長ストレージ](../articles/storage/common/storage-redundancy-grs.md)または[読み取りアクセス geo 冗長ストレージ](../articles/storage/common/storage-redundancy.md) オプションを使用する場合は、バックアップと DR の整合性スナップショットが必要です。 [Azure Backup](https://azure.microsoft.com/services/backup/) または[整合性スナップショット](#alternative-solution-consistent-snapshots)を使用します。
 
  DR に使用可能なソリューションの概要を次の表に示します。
 
@@ -113,7 +113,7 @@ IaaS アプリケーション データの問題も別の可能性として存�
 | マネージド ディスク | ローカル ([ローカル冗長ストレージ](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | 非管理対象ローカル冗長ストレージ ディスク | ローカル ([ローカル冗長ストレージ](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | 非管理対象 geo 冗長ストレージ ディスク | リージョン間 ([geo 冗長ストレージ](../articles/storage/common/storage-redundancy-grs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[整合性スナップショット](#alternative-solution-consistent-snapshots) |
-| 非管理対象読み取りアクセス geo 冗長ストレージ ディスク | リージョン間 ([読み取りアクセス geo 冗長ストレージ](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[整合性スナップショット](#alternative-solution-consistent-snapshots) |
+| 非管理対象読み取りアクセス geo 冗長ストレージ ディスク | リージョン間 ([読み取りアクセス geo 冗長ストレージ](../articles/storage/common/storage-redundancy.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[整合性スナップショット](#alternative-solution-consistent-snapshots) |
 
 高可用性は、可用性セット内のマネージド ディスクを Azure Backup と共に使用することで最もよく対応できます。 非管理対象ディスクを使用する場合は、DR 用 Azure Backup を使用できます。 Azure Backup を使用できない場合、後のセクションで説明するように、[整合性スナップショット](#alternative-solution-consistent-snapshots)を利用することがバックアップと DR の代替ソリューションとなります。
 

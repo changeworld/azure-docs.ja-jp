@@ -4,17 +4,17 @@ description: インクルード ファイル
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
-ms.date: 02/03/2020
+ms.date: 02/07/2020
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.custom: include file
-ms.openlocfilehash: 8537db1e5703abd8df92a2950455bee556731d08
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 7bc6938523a6d66a2bc20b37c659568fc5ca494d
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "77013935"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77123154"
 ---
 ### <a name="general-availability-and-preview-comparison"></a>一般提供とプレビューの比較
 
@@ -50,7 +50,7 @@ Time Series Insights のプロパティ制限は、GA の上限である 800 個
 * [イベント ハブ ソースを追加する](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)方法を学習します。
 * [IoT ハブ ソース](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)を構成します。
 
-既定では、[プレビュー環境](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress)で、**環境あたり最大で毎秒 1 メガバイト (MB/秒)** のイングレス レートをサポートできます。 お客様は、必要に応じて、最大 **16 MB/秒**のスループットまで、プレビュー環境を拡張できます。 また、パーティションごとに **0.5 MB/秒**の制限があります。 
+既定では、[プレビュー環境](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress#ingress-scale-and-preview-limitations)で、**環境あたり最大で毎秒 1 メガバイト (MB/秒)** のイングレス レートをサポートできます。 お客様は、必要に応じて、最大 **16 MB/秒**のスループットまで、プレビュー環境を拡張できます。 また、パーティションごとに **0.5 MB/秒**の制限があります。 
 
 ### <a name="api-limits"></a>API の制限
 

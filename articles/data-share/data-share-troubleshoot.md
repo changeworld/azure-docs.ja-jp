@@ -7,12 +7,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.openlocfilehash: 6ad612d56b25da9e092070198e321e7fca8ad96b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 901f2b56bc045dc9a9837dd18b2e6ce7169aa3b9
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490567"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964228"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Azure Data Share での一般的な問題のトラブルシューティング 
 
@@ -24,53 +24,72 @@ ms.locfileid: "73490567"
 
 ![招待なし](media/no-invites.png)
 
-上のエラーはサービスに関する既知の問題であり、現在対処中です。 回避策としては、次の手順のようにします。 
+この原因としては、次の理由が考えられます。
 
-1. Azure portal で、 **[サブスクリプション]** に移動します。
-1. Azure Data Share に使っているサブスクリプションを選択します
-1. **[リソース プロバイダー]** をクリックします
-1. Microsoft.DataShare を検索します
-1. **[登録]** をクリックします。
+* **Azure Data Share サービスが、Azure テナントの Azure サブスクリプションのリソース プロバイダーとして登録されていません。** この問題は、Azure テナントに Data Share リソースがない場合に発生します。 Azure Data Share リソースを作成すると、Azure サブスクリプションにリソース プロバイダーが自動的に登録されます。 また、次の手順に従って、Data Share サービスを手動で登録することもできます。 これらの手順を完了するには、Azure 共同作成者ロールを持っている必要があります。
 
-これらの手順を完了するには、[Azure 共同作成者 RBAC ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)を持っている必要があります。 
+    1. Azure portal で、 **[サブスクリプション]** に移動します。
+    1. Azure Data Share リソースの作成に使用するサブスクリプションを選択します
+    1. **[リソース プロバイダー]** をクリックします
+    1. 「**Microsoft.DataShare**」を検索します
+    1. **[登録]** をクリックします。 
 
-それでもデータ共有の招待が表示されない場合は、データ プロバイダーに問い合わせて、招待がメール エイリアス "*ではなく*" Azure ログイン用メール アドレスに送信されていることを確認します。 
+    これらの手順を完了するには、[Azure 共同作成者 RBAC ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)を持っている必要があります。 
 
-> [!IMPORTANT]
-> 既に Azure Data Share の招待を承諾した後で、ストレージを構成する前にサービスを終了した場合は、[データセットのマッピングの構成](how-to-configure-mapping.md)に関するハウツー ガイドで詳しく説明されている手順に従って、受け取ったデータ共有の構成を完了し、データの受信を開始する方法を学習してください。 
+* **Azure ログイン用メールではなくメール エイリアスに招待が送信されています。** Azure Data Share サービスを登録している、または Azure テナントに既に Data Share リソースを作成しているにもかかわらず、まだ招待が表示されない場合、その原因として、プロバイダーが受信者として Azure ログイン用メール アドレスではなくメール エイリアスを入力した可能性があります。 データ プロバイダーに問い合わせて、招待がメール エイリアスではなく Azure ログイン用メール アドレスに送信されていることを確認してください。
 
-## <a name="error-when-creating-or-receiving-a-new-data-share"></a>新しいデータ共有を作成または受信するときのエラー
+* **招待が既に承諾されています。** メールに記載されているリンクを使用すると、Azure portal の [データ共有への招待] ページに移動します。このページには保留中の招待のみが表示されます。 その招待を既に承諾している場合は、[データ共有への招待] ページに表示されなくなります。 招待を承諾した Data Share リソースに進み、受信した共有を表示して、ターゲットの Azure Data Explorer クラスター設定を構成します。
 
-"エラー: Operation returned an invalid status code 'BadRequest'" (操作で、無効な状態コード 'BadRequest' が返されました)
+## <a name="error-when-creating-or-receiving-a-new-share"></a>新しい共有を作成または受信するときのエラー
 
-"エラー: AuthorizationFailed"
+"データセットを追加できませんでした"
 
-"エラー: role assignment to storage account" (ストレージ アカウントへのロールの割り当て)
+"データセットのマップに失敗しました"
 
-![アクセス許可エラー](media/error-write-privilege.png)
+"データ共有リソース x に対して y へのアクセスを許可できません"
 
-新しいデータ共有を作成するとき、または新しいデータ共有を受け取ったときに、上のいずれかのエラーが発生する場合は、ストレージ アカウントに対する十分なアクセス許可がないためです。 必要なアクセス許可は *Microsoft.Authorization/role assignments/write* です。これは、ストレージ所有者ロールに存在しており、カスタム ロールに割り当てることもできます。 自分で作成したストレージ アカウントの場合でも、自分がそのストレージ アカウントの所有者に自動的になることはありません。 次の手順に従って、自分自身にストレージ アカウントの所有者を許可します。 または、このアクセス権を持つカスタム ロールを作成し、それに自分自身を追加することもできます。  
+"x に対する適切なアクセス許可がありません"
 
-1. Azure portal でストレージ アカウントに移動します
-1. **[アクセス制御 (IAM)]** を選択します
-1. **[追加]** をクリックします。
-1. 自分自身を所有者として追加します。
+"選択された 1 つ以上のリソースに対する書き込みアクセス許可を Azure Data Share アカウントに追加できませんでした"
+
+新しい共有の作成時、またはデータセットのマップ時に上記のエラーのいずれかが発生した場合、その原因としては、Azure データ ストアに対するアクセス許可が不足していることが考えられます。 必要なアクセス許可については、[ロールと要件](concepts-roles-permissions.md)に関する記事をご覧ください。 
+
+Azure データ ストアからデータを共有または受信するためには、書き込みアクセス許可が必要です。これは通常、共同作成者ロールにあります。 
+
+初めて Azure データ ストアからデータを共有または受信する場合は、"*Microsoft.Authorization/ロールの割り当て/書き込み*" のアクセス許可も必要です。これは通常、所有者ロールにあります。 自分で Azure データ ストア リソースを作成した場合でも、自動的に自分がそのリソースの所有者になることはありません。 適切なアクセス許可を使用すると、Azure Data Share サービスによって、データ共有リソースのマネージド ID に、データ ストアへのアクセス権が自動的に付与されます。 このプロセスは、有効になるまでに数分かかる場合があります。 この遅延のためにエラーが発生する場合は、数分後にもう一度やり直してください。
+
+SQL ベースの共有には、追加のアクセス許可が必要です。 詳細については、「SQL ベースの共有のトラブルシューティング」をご覧ください。
 
 ## <a name="troubleshooting-sql-based-sharing"></a>SQL ベースの共有のトラブルシューティング
 
-"Error: x datasets were not added because you do not have the required permissions to share." (共有するために必要なアクセス許可がないため、x 個のデータセットが追加されませんでした。)
+"ユーザー x は SQL データベースに存在しません"
 
-SQL ベースのソースからデータセットを追加するときにこのエラーが発生する場合は、SQL Server で Azure Data Share MSI のユーザーを作成しなかったことが原因である可能性があります。  この問題を解決するには、次のスクリプトを実行します。
+SQL ベースのソースからデータセットを追加するときにこのエラーが発生する場合は、SQL Server で Azure Data Share マネージド ID のユーザーを作成しなかったことが原因である可能性があります。  この問題を解決するには、次のスクリプトを実行します。
 
 ```sql
-    create user <share_acct_name> from external provider;     
-    exec sp_addrolemember db_owner, <share_acct_name>; 
+    create user "<share_acct_name>" from external provider; 
+    exec sp_addrolemember db_datareader, "<share_acct_name>";
 ```      
-*<share_acc_name>* は、Data Share アカウントの名前であることに注意してください。 Data Share アカウントをまだ作成していない場合は、後でこの前提条件に戻ってくることが可能です。         
+SQL ベースのターゲットにデータセットをマップするときにこのエラーが発生する場合は、SQL Server で Azure Data Share マネージド ID のユーザーを作成しなかったことが原因である可能性があります。  この問題を解決するには、次のスクリプトを実行します。
 
-[データの共有](share-your-data.md)チュートリアルに記載されているすべての前提条件に従っていることを確認してください。
+```sql
+    create user "<share_acc_name>" from external provider; 
+    exec sp_addrolemember db_datareader, "<share_acc_name>"; 
+    exec sp_addrolemember db_datawriter, "<share_acc_name>"; 
+    exec sp_addrolemember db_ddladmin, "<share_acc_name>";
+```
+*<share_acc_name>* は、ご自分の Data Share リソースの名前であることに注意してください。      
 
-## <a name="next-steps"></a>次の手順
+[データの共有](share-your-data.md)および[データの受け入れと受信](subscribe-to-data-share.md)に関するチュートリアルに記載されているすべての前提条件に従っていることを確認してください。
 
-データの共有を始める方法については、[データの共有](share-your-data.md)に関するチュートリアルをご覧ください。
+## <a name="snapshot-failed"></a>スナップショットの失敗
+スナップショットは、さまざまな理由により失敗する可能性があります。 詳細なエラー メッセージを確認するには、スナップショットの開始時刻をクリックした後、各データセットの状態をクリックします。 
+
+エラー メッセージがアクセス許可に関連している場合は、Data Share サービスに必要なアクセス許可があることを確認します。 詳細については、[ロールと要件](concepts-roles-permissions.md)に関する記事をご覧ください。 初めてスナップショットを取得する場合は、Azure データ ストアへのアクセス権が Data Share リソースに付与されるまでに数分かかることがあります。 数分待ってからもう一度やり直してください。
+
+## <a name="next-steps"></a>次のステップ
+
+データの共有を始める方法については、[データの共有](share-your-data.md)に関するチュートリアルをご覧ください。 
+
+データを受信する方法については、[データの受け入れと受信](subscribe-to-data-share.md)に関するチュートリアルをご覧ください。
 

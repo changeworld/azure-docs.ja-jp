@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 4f9804ed0e7d6c83a4f6fc732f836fcecce1c2e7
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: cc152460be777c30d79f783b9acfa846a4c73a72
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74548335"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188020"
 ---
 # <a name="streaming-ingestion-preview"></a>ストリーミング インジェスト (プレビュー)
 
@@ -23,7 +23,7 @@ ms.locfileid: "74548335"
 > [!NOTE]
 > ストリーミング インジェストでは、次の機能はサポートされていません。
 > * [データベース カーソル](/azure/kusto/management/databasecursor)。
-> * [データ マッピング](/azure/kusto/management/mappings)。 [事前に作成された](/azure/kusto/management/tables#create-ingestion-mapping)データ マッピングのみがサポートされています。 
+> * [データ マッピング](/azure/kusto/management/mappings)。 [事前に作成された](/azure/kusto/management/create-ingestion-mapping-command)データ マッピングのみがサポートされています。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -78,6 +78,6 @@ ms.locfileid: "74548335"
 * テーブルとインジェスト マッピングの作成や変更など、スキーマの更新には、ストリーミング インジェスト サービスに最大 5 分かかることがあります。
 * クラスターでストリーミング インジェストを有効にすると、データがストリーミング経由で取り込まれていない場合でも、インジェスト データをストリーミングするためにクラスター マシンのローカル SSD ディスクの一部を使用して、ホット キャッシュに使用できるストレージを減らします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Data Explorer でデータのクエリを実行する](web-query-data.md)

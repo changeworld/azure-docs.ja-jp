@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 1c11539460f1ef65f8cea3d36f1a017661133355
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 1dc0eec6178420976181b05a059e9f8b4859ec2a
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833954"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152008"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>異なるデプロイ モデルの仮想ネットワークを PowerShell を使用して接続する
 
@@ -166,7 +166,7 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
 
 ## <a name="creatermgw"></a>セクション 2 - RM VNet ゲートウェイを構成する
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 前提条件では、既に RM VNet を作成済みであると仮定しています。 この手順では、RM VNet の VPN ゲートウェイを作成します。 クラシック VNet のゲートウェイのパブリック IP アドレスを取得するまで、手順を開始しないでください。 
 

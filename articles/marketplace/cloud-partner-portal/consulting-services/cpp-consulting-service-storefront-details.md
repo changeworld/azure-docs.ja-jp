@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 3d741361cdeb25d6fc063f95da7bc301178f31fc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 557cfeb66301650e932e5ce271080e9fc8a256d6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818079"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191164"
 ---
 # <a name="storefront-details-tab"></a>[ネットショップの詳細] タブ
 
@@ -71,7 +71,7 @@ ms.locfileid: "73818079"
 
 メール アドレスや電話番号は、オファーの説明に含めないでください。 オファーには **[Contact Me]\(お問い合わせ\)** ボタンが含まれています。このボタンをクリックすると、リードが、オファーで識別されているリード管理ターゲットにアップロードされます。
 
-オファーの説明は Markdown 形式で入力します。 Markdown や HTML の書式設定に慣れていない場合は、「[ドキュメントを記述するための Markdown の使用方法](https://docs.microsoft.com/contribute/how-to-write-use-markdown)」を参照してください。
+オファーの説明は Markdown 形式で入力します。 Markdown や HTML の書式設定に慣れていない場合は、「[ドキュメントを記述するための Markdown の使用方法](/contribute/markdown-reference)」を参照してください。
 
 これらの形式を使用すると、お客様がオファーを読みやすくなります。
 
@@ -207,6 +207,6 @@ AppSource に発行するには、主要製品として **Dynamics 365**、**Pow
 オファー、その成果物、会社の詳細情報を示す画像を最大 5 つアップロードします。 たとえば、マーケティング パンフレットのスニペット、プレゼンテーションからの関連スライド、会社の勢いや得意分野を示す画像などです。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、[コンサルティング サービス オファーを公開する](./cpp-consulting-service-publish-offer.md)準備ができました。

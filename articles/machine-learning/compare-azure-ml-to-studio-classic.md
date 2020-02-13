@@ -8,11 +8,11 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 10/29/2019
-ms.openlocfilehash: 064786de1f25c3d185984534b9a8fc61602826ee
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: a3122a3ae1687369b87d193efc693b3b7c659aac
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 02/10/2020
 ms.locfileid: "76311463"
 ---
 # <a name="how-azure-machine-learning-differs-from-machine-learning-studio-classic"></a>Azure Machine Learning と Machine Learning Studio (クラシック) の違い
@@ -24,20 +24,20 @@ ms.locfileid: "76311463"
 
 ## <a name="about-azure-machine-learning"></a>Azure Machine Learning について
 
-一方、[Azure Machine Learning](overview-what-is-azure-ml.md) には、デザイナーと呼ばれる Web インターフェイスと、複数の SDK および CLI が**両方**用意されており、すぐにデータを準備し、機械学習モデルのトレーニングとデプロイを行うことができます。 また、Azure Machine Learning では、スケール、複数のフレームワークのサポート、高度な ML 機能 (自動機械学習、パイプライン サポートなど) を利用できます。
+一方、[Azure Machine Learning](overview-what-is-azure-ml.md) には、デザイナー (プレビュー) と呼ばれる Web インターフェイスと、複数の SDK および CLI が**両方**用意されており、すぐにデータを準備し、機械学習モデルのトレーニングとデプロイを行うことができます。 また、Azure Machine Learning では、スケール、複数のフレームワークのサポート、高度な ML 機能 (自動機械学習、パイプライン サポートなど) を利用できます。
 
 Azure Machine Learning デザイナーでは、Studio (クラシック) と同様のドラッグ アンド ドロップ操作を利用できます。 ただし、Studio (クラシック) の専用コンピューティング プラットフォームとは異なり、デザイナーではユーザー独自のコンピューティング リソースが使用されています。また、スケーラブルで、Azure Machine Learning に完全に統合されています。  
 
 > [!TIP]
-> Machine Learning Studio (クラシック) を現在使用しているか評価しているお客様は、[Azure Machine Learning デザイナー](https://docs.microsoft.com/azure/machine-learning/concept-designer) (プレビュー) をぜひお試しください。これは、ドラッグ アンド ドロップ ML モジュールが備わっているのに __加え__、スケーラビリティ、バージョン コントロール、エンタープライズ セキュリティも保証されます。
-
+> Machine Learning Studio (クラシック) を現在使用しているか評価しているお客様は、[Azure Machine Learning デザイナー](https://docs.microsoft.com/azure/machine-learning/concept-designer) (プレビュー) をぜひお試しください。これは、ドラッグ アンド ドロップ ML モジュールが備わっているのに__加え__、スケーラビリティ、バージョン コントロール、エンタープライズ セキュリティも保証されます。
 
 ## <a name="comparison-azure-machine-learning-vs-machine-learning-studio-classic"></a>比較:Azure Machine Learning と Machine Learning Studio (クラシック)
 
 以下で簡単に比較します。
 
 ||  Azure Machine Learning デザイナー|Studio (クラシック) |
-|---| --- | --- | 
+|---| --- | --- |
+||デザイナーはプレビュー段階で、Azure Machine Learning は GA です|一般提供 (GA) | 
 |ドラッグ アンド ドロップ インターフェイス| はい | はい|
 |実験| コンピューティング先に合わせてスケーリング|スケーリング (10 GB のトレーニング データの上限) | 
 |インターフェイスのモジュール| [多数の人気のあるモジュール](algorithm-module-reference/module-reference.md) | 多数 |

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ede43e3ed939083e7b5ff94899d12f6f4795a880
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: d3ee211298598d78f423d88fd4df1c58ed4bfa29
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941494"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157450"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>クライアント アプリケーションからの要求を承認するために Azure AD からトークンを取得する
 
@@ -202,7 +202,7 @@ public async Task<IActionResult> Blob()
 }
 ```
 
-同意は、保護されたリソースにアプリケーションが代理でアクセスする認証を、ユーザーが許可するプロセスです。 Microsoft ID プラットフォーム 2.0 では増分同意がサポートされています。これは、セキュリティ プリンシパルで最初は最小限のアクセス許可のセットを要求し、必要に応じて時間の経過と共にアクセス許可を追加できることを意味します。 コードがアクセス トークンを要求する場合、特定の時点でアプリが必要とするアクセス許可のスコープを、`scope` パラメーターに指定します。 増分同意の詳細については、「[Microsoft ID プラットフォーム (v2.0) に更新する理由](../../active-directory/develop/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)」の「**増分および動的な同意**」セクションをご覧ください。
+同意は、保護されたリソースにアプリケーションが代理でアクセスする認証を、ユーザーが許可するプロセスです。 Microsoft ID プラットフォーム 2.0 では増分同意がサポートされています。これは、セキュリティ プリンシパルで最初は最小限のアクセス許可のセットを要求し、必要に応じて時間の経過と共にアクセス許可を追加できることを意味します。 コードがアクセス トークンを要求する場合、特定の時点でアプリが必要とするアクセス許可のスコープを、`scope` パラメーターに指定します。 増分同意の詳細については、「[Microsoft ID プラットフォーム (v2.0) に更新する理由](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)」の「**増分および動的な同意**」セクションをご覧ください。
 
 次のメソッドは、増分同意を要求する認証プロパティを作成します。
 

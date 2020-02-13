@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5f646b4cef782b569910bdf881208c9984194589
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 1e3692920c35a6965a23c0305aeeebfc80505d85
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931120"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190927"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサーの一般的な問題のトラブルシューティング
 
@@ -112,6 +112,6 @@ api-key: [admin key]
 
 * ドキュメントがインデックス付けされていません。 インデクサーの実行が成功したかどうかポータルで確認します。
 * インデクサーの実行後にドキュメントが更新されませんでした。 インデクサーが[スケジュール](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-schedule)設定されている場合は、いずれ再実行されて、ドキュメントを処理します。
-* データ ソースに指定されている[クエリ](https://docs.microsoft.com/rest/api/searchservice/create-data-source#request-body-syntax)によって、ドキュメントが除外されています。 インデクサーは、データ ソースに含まれないドキュメントにインデックス付けすることはできません。
+* データ ソースに指定されている[クエリ](/rest/api/searchservice/create-data-source)によって、ドキュメントが除外されています。 インデクサーは、データ ソースに含まれないドキュメントにインデックス付けすることはできません。
 * [フィールド マッピング](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings)または [AI エンリッチメント](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro)によってドキュメントが変更され、予期していたドキュメントとは違って見えます。
 * [Lookup Document API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) を使用してドキュメントを検索します。

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/05/2019
-ms.openlocfilehash: 0628d5c07d7258cc4d68727c364e65bd81c78e8e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6394d7149bd4e80f0a17a59a6259eedf4c806fd4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388992"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188176"
 ---
 # <a name="azure-devops-task-for-azure-data-explorer"></a>Azure Data Explorer の Azure DevOps タスク
 
@@ -42,7 +42,7 @@ Git リポジトリでサンプル フォルダー (*Functions*、*Policies*、*
 ![フォルダーを作成します。](media/devops/create-folders.png)
 
 > [!TIP]
-> 独自のワークフローを作成するとき、コードをべき等にすることをお勧めします。 たとえば、[.create テーブル](/azure/kusto/management/tables#create-table)の代わりに [.create-merge テーブル](/azure/kusto/management/tables#create-merge-tables)を使用し、[.create](/azure/kusto/management/functions#create-function) 関数の代わりに [.create-or-alter](/azure/kusto/management/functions#create-or-alter-function) 関数を使用します。
+> 独自のワークフローを作成するとき、コードをべき等にすることをお勧めします。 たとえば、[.create テーブル](/azure/kusto/management/create-table-command)の代わりに [.create-merge テーブル](/azure/kusto/management/create-table-command#create-merge-table)を使用し、[.create](/azure/kusto/management/functions#create-function) 関数の代わりに [.create-or-alter](/azure/kusto/management/functions#create-or-alter-function) 関数を使用します。
 
 ## <a name="create-a-release-pipeline"></a>リリース パイプラインを作成する
 
@@ -93,9 +93,9 @@ Git リポジトリでサンプル フォルダー (*Functions*、*Policies*、*
 
 1. **[Add Azure Data Explorer service connection]\(Azure Data Explorer サービス接続の追加\)** ウィンドウで次の情報を入力します。
 
-    |Setting  |推奨値  |
+    |設定  |推奨値  |
     |---------|---------|
-    |**接続名**     |    このサービス エンドポイントを識別する名前を入力します     |
+    |**[接続名]**     |    このサービス エンドポイントを識別する名前を入力します     |
     |**クラスター URL**    |    値は、Azure portal の Azure Data Explorer クラスターの概要セクションにあります | 
     |**サービス プリンシパル ID**    |    AAD アプリ ID (前提条件として作成されています) を入力します     |
     |**サービス プリンシパル アプリのキー**     |    AAD アプリ キー (前提条件として作成されています) を入力します    |

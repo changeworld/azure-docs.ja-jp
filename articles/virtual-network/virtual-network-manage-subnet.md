@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: kumud
-ms.openlocfilehash: e8717d10f61dfd50b9cdfa20a91203a5842d4c7d
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: de80094c3fd2df7d2f8b32d1e968e9bebea847a1
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185376"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064344"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>仮想ネットワーク サブネットの追加、変更、削除
 
@@ -49,11 +49,12 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
    - **[ネットワーク セキュリティ グループ]** : 0 個か 1 個の既存のネットワーク セキュリティ グループをサブネットに関連付けることで、そのサブネットの受信および送信ネットワーク トラフィックをフィルター処理できます。 ネットワーク セキュリティ グループは、仮想ネットワークと同じサブスクリプションと場所に存在する必要があります。 [ネットワーク セキュリティ グループ](security-overview.md)と[ネットワーク セキュリティ グループを作成する方法](tutorial-filter-network-traffic.md)に関するページを参照してください。
    - **[ルート テーブル]** :0 個または 1 個の既存のルート テーブルをサブネットに関連付けることで、他のネットワークへのネットワーク トラフィック ルーティングを制御できます。 ルート テーブルは、仮想ネットワークと同じサブスクリプションと場所に存在する必要があります。 [Azure のルーティング](virtual-networks-udr-overview.md)と[ルート テーブルを作成する方法](tutorial-create-route-table-portal.md)に関するページを参照してください。
    - **[サービス エンドポイント]:** サブネットは、そのサブネットに対して 0 個または複数のサービス エンドポイントを有効にできます。 サービスのサービス エンドポイントを有効にするには、サービス エンドポイントを有効にするサービス (複数可) を **[サービス]** 一覧から選択します。 エンドポイントには､自動的に場所が構成されます。 既定では､仮想ネットワークのリージョンに対してサービス エンドポイントが構成されます｡ Azure Storage の場合、リージョン フェールオーバーのシナリオに対応するため、エンドポイントは [Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions)に自動的に構成されます。
-   - **[サブネットの委任]:** 1 つのサブスクリプションに対して 0 または複数の委任を有効にすることができます。 サブネット委任では、サービスのデプロイ時に一意の ID を利用してサブネットにサービス固有のリソースを作成するための明示的なアクセス許可がサービスに与えられます。 サービスに委任するには、 **[サービス]** 一覧から委任先となるサービスを選択します。
-
+   
        サービス エンドポイントを削除するには、サービス エンドポイントを削除するサービスを選択解除します。 サービス エンドポイントおよび､そうしたエンドポイントを有効にできるサービスについては､[仮想ネットワーク サービス エンドポイントの概要](virtual-network-service-endpoints-overview.md)を参照してください｡ サービスのサービス エンドポイントを有効にしたら、そのサービスで作成されたリソースのサブネットへのネットワーク アクセスも有効にする必要があります。 たとえば、*Microsoft.Storage* のサービス エンドポイントを有効にする場合は、ネットワーク アクセスを許可するすべての Azure ストレージ アカウントへのネットワーク アクセスも有効にする必要があります。 サービス エンドポイントが有効になっているサブネットへのネットワーク アクセスを有効にする方法の詳細については、サービス エンドポイントを有効にした個々のサービスのドキュメントを参照してください。
 
      サブネットに対してサービス エンドポイントが有効にされていることを検証するには､サブネット上の任意のネットワーク インターフェイスの[有効なルート](diagnose-network-routing-problem.md)を表示します｡ エンドポイントが構成されている場合は､そのサービスのアドレス プレフィックスと､**VirtualNetworkServiceEndpoint** の nextHopType からなる*既定* のルートが表示されます｡ ルーティングについては､[ルーティングの概要](virtual-networks-udr-overview.md)を参照してください｡
+   - **[サブネットの委任]:** 1 つのサブスクリプションに対して 0 または複数の委任を有効にすることができます。 サブネット委任では、サービスのデプロイ時に一意の ID を利用してサブネットにサービス固有のリソースを作成するための明示的なアクセス許可がサービスに与えられます。 サービスに委任するには、 **[サービス]** 一覧から委任先となるサービスを選択します。
+
 6. 選択した仮想ネットワークにサブネットを追加するには、 **[OK]** を選択します。
 
 **コマンド**
@@ -99,7 +100,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 
 サブネットでタスクを実行するには、[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または次の表に記載されている適切なアクションを割り当てられている[カスタム](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ロールにアカウントが割り当てられている必要があります。
 
-|Action                                                                   |   名前                                       |
+|アクション                                                                   |   Name                                       |
 |-----------------------------------------------------------------------  |   -----------------------------------------  |
 |Microsoft.Network/virtualNetworks/subnets/read                           |   仮想ネットワークのサブネットを読み取る              |
 |Microsoft.Network/virtualNetworks/subnets/write                          |   仮想ネットワークのサブネットを作成または更新する  |
@@ -108,7 +109,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 |Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action  |   サブネットに対してサービス エンドツーエンドを有効にする     |
 |Microsoft.Network/virtualNetworks/subnets/virtualMachines/read           |   サブネット上の仮想マシンを取得する       |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [PowerShell](powershell-samples.md) または [Azure CLI](cli-samples.md) のサンプル スクリプト、または Azure [Resource Manager テンプレート](template-samples.md)を使って仮想ネットワークを作成する
-- [Azure ポリシー](policy-samples.md)を作成して仮想ネットワークに適用する
+- [Azure ポリシー](policy-samples.md)を作成して仮想ネットワークに適用します

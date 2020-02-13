@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
-ms.date: 8/30/2019
+ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 20bc22661f9faad1b289dbbe7200f4f83c097f0e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 779bb88d15ea6c52f4399f17223b89916e22653d
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451238"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153861"
 ---
 # <a name="azure-serial-console"></a>Azure シリアル コンソール
 
@@ -38,7 +38,7 @@ VM または仮想マシン スケール セット インスタンスのシリ�
 - シリアル コンソールにアクセスする Azure アカウントには、VM および[ブート診断](boot-diagnostics.md)ストレージ アカウントの両方に、[仮想マシン共同作成者ロール](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)が必要です
 
 > [!NOTE]
-> - クラシック デプロイはサポートされていません。 VM または仮想マシン スケール セット インスタンスは、Azure Resource Manager デプロイ モデルを使用する必要があります。
+> クラシック デプロイはサポートされていません。 VM または仮想マシン スケール セット インスタンスは、Azure Resource Manager デプロイ モデルを使用する必要があります。
 
 ## <a name="get-started-with-the-serial-console"></a>シリアル コンソールの概要
 VM および仮想マシン スケール セット用のシリアル コンソールには、Azure portal を使用してのみアクセスできます。

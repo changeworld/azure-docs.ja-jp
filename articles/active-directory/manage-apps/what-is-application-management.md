@@ -12,16 +12,16 @@ ms.date: 06/05/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d1ebb4b094ab5c03343486e7af6624273288453
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 7ca73fac06649f801461e53130a67aa9ec0ad0d0
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68421205"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063324"
 ---
 # <a name="application-management-with-azure-active-directory"></a>Azure Active Directory によるアプリケーションの管理
 
-Azure Active Directory (Azure AD) は、クラウドおよびオンプレミスのアプリのために単一の ID システムを提供することで、アプリケーションを管理する方法を簡素化します。 サービスとしてのソフトウェア (SaaS) アプリケーション、オンプレミス アプリケーション、および基幹業務アプリ (LOB) を Azure AD に追加できます。 その後ユーザーは 1 回サインインすることで、Office 365 や他の Microsoft のビジネス アプリケーションとともに、これらのアプリケーションに安全かつシームレスにアクセスできます。 [ユーザー プロビジョニングを自動化する](user-provisioning.md)ことで、管理コストを削減できます。 多要素認証と条件付きアクセス ポリシーを使用して、安全なアプリケーション アクセスを提供することもできます。
+Azure Active Directory (Azure AD) は、クラウドおよびオンプレミスのアプリのために単一の ID システムを提供することで、アプリケーションを管理する方法を簡素化します。 サービスとしてのソフトウェア (SaaS) アプリケーション、オンプレミス アプリケーション、および基幹業務アプリ (LOB) を Azure AD に追加できます。 その後ユーザーは 1 回サインインすることで、Office 365 や他の Microsoft のビジネス アプリケーションとともに、これらのアプリケーションに安全かつシームレスにアクセスできます。 [ユーザー プロビジョニングを自動化する](../app-provisioning/user-provisioning.md)ことで、管理コストを削減できます。 多要素認証と条件付きアクセス ポリシーを使用して、安全なアプリケーション アクセスを提供することもできます。
 
 ![Azure AD を通じてフェデレーションされているアプリを示す図](media/what-is-application-management/app-management-overview.png)
 
@@ -59,7 +59,7 @@ Azure AD では、セキュリティ情報とイベント管理 (SIEM) ツール
 
 Azure AD に移行することで、コストを節約し、オンプレミス インフラストラクチャの管理における負担を除去できます。 また、Azure AD はアプリケーションにセルフ サービス アクセスを提供し、管理者とユーザーの両者が時間を節約できます。 シングル サインオンにより、アプリケーション固有のパスワードはなくなります。 この 1 回限りのサインオンにより、アプリケーションのパスワード リセットと、パスワードの取得時の生産性低下に関連するコストを削減できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [アプリケーション プロキシとは](what-is-application-proxy.md)
-- [クイック スタート:Azure AD テナントにギャラリー アプリケーションを追加する](add-application-portal.md)
+- [クイック スタート: Azure AD テナントにギャラリー アプリケーションを追加する](add-application-portal.md)

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 12/20/2019
 ms.author: femila
-ms.openlocfilehash: 7003cc90bdb456eba9cfaebc1e24332d2e4a6251
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 5b1574eaac8771043e09500225b65e4835c8e627
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029930"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157484"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>クイック スタート:Azure portal を使用して専用の Event Hubs クラスターを作成する 
 Event Hubs クラスターは、最も厳しいストリーミングのニーズを持つお客様にシングルテナント デプロイを提供します。 このサービスでは、99.99% の SLA が保証されており、専用の価格レベルでのみご利用いただけます。 [Event Hubs クラスター](event-hubs-dedicated-overview.md)では、1 秒あたり数百万のイベントを、保証された容量と 1 秒未満の待ち時間でイングレスすることができます。 クラスター内で作成された名前空間とイベント ハブには、標準サービスのすべての機能とそれ以外の機能が含まれますが、イングレスに関する制限はありません。 また、専用サービスには、一般的な [Event Hubs Capture](event-hubs-capture-overview.md) 機能が追加料金なしで含まれているため、[Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) または [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md) に対してデータ ストリームを自動的にバッチおよびログ処理することができます。
@@ -106,6 +106,10 @@ Azure portal を使用して自分のリソース グループにクラスター
 ## <a name="next-steps"></a>次のステップ
 この記事では、Event Hubs クラスターを作成しました。 イベント ハブに対するイベントの送受信、および Azure ストレージまたは Azure Data Lake Store へのイベントのキャプチャの詳細な手順については、次のチュートリアルをご覧ください。
 
-- [.NET Core でイベントを送受信する](event-hubs-dotnet-standard-getstarted-send.md)
+- イベントの送受信 
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)
 - [Azure portal を使用して Event Hubs Capture を有効にする](event-hubs-capture-enable-through-portal.md)
 - [Apache Kafka 用の Azure Event Hubs を使用する](event-hubs-for-kafka-ecosystem-overview.md)

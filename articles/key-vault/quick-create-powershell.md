@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2d33d04bfaaccf3e7bcaefc7eec98b04a5ffc2e8
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 1e2c4db66046b09b354753b7aaee617095bba552
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73901449"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77151447"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>クイック スタート:PowerShell を使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -33,7 +33,7 @@ PowerShell をローカルにインストールして使用する場合、この
 Login-AzAccount
 ```
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
@@ -58,7 +58,7 @@ New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' 
 このコマンドレットの出力では、新しく作成したキー コンテナーのプロパティが示されます。 次の 2 つのプロパティをメモしておきます。
 
 * **Vault Name**:この例では、これは **Contoso-Vault2** です。 この名前を他の Key Vault コマンドレットに使用できます。
-* **Vault URI (コンテナー URI)** :この例では、これは https://contosokeyvault.vault.azure.net/ です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
+* **Vault URI (コンテナー URI)** :この例では、これは https://Contoso-Vault2.vault.azure.net/ です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
 
 資格情報コンテナーを作成した後は、使用している Azure アカウントのみが、この新しいコンテナーで任意の操作を実行することが許可されます。
 
@@ -77,18 +77,18 @@ $secretvalue = ConvertTo-SecureString 'hVFkk965BuUv' -AsPlainText -Force
 その後、次の PowerShell コマンドを入力して、Key Vault に **ExamplePassword** というシークレットを作成します。その値は、**hVFkk965BuUv** にします。
 
 ```azurepowershell-interactive
-$secret = Set-AzKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'ExamplePassword' -SecretValue $secretvalue
+$secret = Set-AzKeyVaultSecret -VaultName 'Contoso-Vault2' -Name 'ExamplePassword' -SecretValue $secretvalue
 ```
 
 シークレットに格納されている値をプレーンテキストとして表示するには:
 
 ```azurepowershell-interactive
-(Get-AzKeyVaultSecret -vaultName "Contosokeyvault" -name "ExamplePassword").SecretValueText
+(Get-AzKeyVaultSecret -vaultName "Contoso-Vault2" -name "ExamplePassword").SecretValueText
 ```
 
 これで、キー コンテナーを作成し、シークレットを格納した後、取得しました。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
  このコレクションの他のクイックスタートとチュートリアルは、このクイックスタートに基づいています。 他のクイック スタートおよびチュートリアルを引き続き実行する場合は、これらのリソースをそのまま残しておくことをお勧めします。
 
@@ -98,7 +98,7 @@ $secret = Set-AzKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'ExamplePasswo
 Remove-AzResourceGroup -Name ContosoResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Key Vault を作成してシークレットを格納しました。 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
 

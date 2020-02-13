@@ -8,18 +8,18 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/01/2018
 ms.author: cherylmc
-ms.openlocfilehash: c0b32bfba61f1c6f3f00c5189f611d84069dd9da
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: fc35654403bbe1375d4188476b11fd0453f74345
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779673"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153147"
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Azure Resource Manager デプロイ モデルを使用した強制トンネリングの構成
 
 強制トンネリングを使用すると、検査および監査のために、サイト間の VPN トンネルを介して、インターネットへのすべてのトラフィックをオンプレミスの場所に戻すようにリダイレクトする (つまり、"強制する") ことができます。 これは、ほとんどの企業 IT ポリシーの重要なセキュリティ要件です。 強制トンネリングを使用しない場合、Azure の VM からインターネットへのトラフィックは、トラフィックを検査または監査できるオプションを使用せずに、常に Azure ネットワーク インフラストラクチャからインターネットへ直接トラバースします。 認証されていないインターネット アクセスは、情報の漏えいまたは他の種類のセキュリティ侵害を招く可能性があります。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)] 
 
@@ -71,7 +71,7 @@ Azure Resource Manager PowerShell コマンドレットの最新版をインス�
 
 ### <a name="to-log-in"></a>ログインするには
 
-[!INCLUDE [To log in](../../includes/vpn-gateway-ps-login-include.md)]
+[!INCLUDE [To log in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
 
 ## <a name="configure-forced-tunneling"></a>強制トンネリングについて
 

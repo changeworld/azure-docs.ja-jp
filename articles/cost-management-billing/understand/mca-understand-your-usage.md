@@ -2,21 +2,21 @@
 title: Microsoft 顧客契約の Azure の利用状況と料金ファイルに関する用語
 description: 課金プロファイルの Azure の利用状況と料金を含む CSV のセクションを読んで理解する方法について説明します。
 author: bandersmsft
-manager: jureid
+manager: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: b48cc5d5a36a382909adb250dd76b4f5783a4340
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 009a69baa68ed4a826d6a78c0df5d19d34bff006
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75985323"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134576"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約のAzure の利用状況と料金ファイルに関する用語
 
@@ -65,7 +65,7 @@ EA のお客様であれば、Azure 課金プロファイルの利用状況を�
 
 Azure の利用状況と料金ファイルには、次の用語が出現します。
 
-期間 | [説明]
+期間 | 説明
 --- | ---
 invoiceld | PDF 請求書に記載されている一意のドキュメント ID
 previousInvoiceId | この明細項目が払い戻しの場合、元の請求書への参照

@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c2c8483948deae41edbe3922dc77361ba2c58a94
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 40511aac29182dafbe01408960376589198ceb64
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099862"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77151923"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>ディザスター リカバリーのフェールオーバー手順
 
@@ -34,12 +34,12 @@ DR サイトにフェールオーバーするときは、2 つのケースを考
 >[!NOTE]
 >以下の手順は、DR ユニットを表す HANA L インスタンス ユニットに対して実行する必要があります。 
  
-レプリケートされた最新のストレージ スナップショットに復元するには、[SAP HANA on Azure 用の Microsoft スナップショット ツールに関するページ](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf)の「Perform full DR failover - azure_hana_dr_failover (フル DR フェールオーバーの実行 - azure_hana_dr_failover)」の手順に従います。 
+レプリケートされた最新のストレージ スナップショットに復元するには、[SAP HANA on Azure 用の Microsoft スナップショット ツールに関するページ](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf)の「Perform full DR failover - azure_hana_dr_failover (フル DR フェールオーバーの実行 - azure_hana_dr_failover)」の手順に従います。 
 
 複数の SAP HANA インスタンスをフェールオーバーする場合は、azure_hana_dr_failover コマンドを複数回実行する必要があります。 要求されたら、フェールオーバーして復元する SAP HANA の SID を入力します。 
 
 
-実際のレプリケーション リレーションシップに影響を与えずに、DR フェールオーバーをテストすることもできます。 テスト フェールオーバーを実行するには、[SAP HANA on Azure 用の Microsoft スナップショット ツールに関するページ](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf)の「Perform a test DR failover - azure_hana_test_dr_failover (テスト DR フェールオーバーの実行 - azure_hana_test_dr_failover)」の手順に従います。 
+実際のレプリケーション リレーションシップに影響を与えずに、DR フェールオーバーをテストすることもできます。 テスト フェールオーバーを実行するには、[SAP HANA on Azure 用の Microsoft スナップショット ツールに関するページ](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf)の「Perform a test DR failover - azure_hana_test_dr_failover (テスト DR フェールオーバーの実行 - azure_hana_test_dr_failover)」の手順に従います。 
 
 >[!IMPORTANT]
 >**フェールオーバー テスト**のプロセスによって DR サイト内に作成したインスタンス上では、運用トランザクションは実行 "*しないでください*"。 azure_hana_test_dr_failover コマンドでは、プライマリ サイトへのリレーションシップを持たない一連のボリュームが作成されます。 そのため、プライマリ サイトに同期することは*できません*。 
@@ -60,7 +60,7 @@ DR サイトにフェールオーバーするときは、2 つのケースを考
 
    オペレーション チーム側では、次の手順が発生します。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 運用ボリュームからディザスター リカバリー ボリュームへのスナップショットのレプリケーションが停止されます。 ディザスター リカバリー手順を実行することが必要になった理由が運用サイトの障害の場合、既にこの中断が発生している可能性があります。
+   a. 運用ボリュームからディザスター リカバリー ボリュームへのスナップショットのレプリケーションが停止されます。 ディザスター リカバリー手順を実行することが必要になった理由が運用サイトの障害の場合、既にこの中断が発生している可能性があります。
    
    b. お客様が選択したストレージ スナップショット名またはバックアップ ID が指定されたスナップショットが、ディザスター リカバリー ボリュームで復元されます。
    
@@ -117,8 +117,8 @@ DR サイトから実稼働サイトにフェールバックすることがで�
 
 ストレージ レプリケーションの進行状況の状態を監視するには、`azure_hana_replication_status` スクリプトを実行します。 このコマンドを正常に機能させるには、ディザスター リカバリーの場所で実行されているユニットからコマンドを実行する必要があります。 このコマンドは、レプリケーションがアクティブであるかどうかにかかわらず機能します。 ディザスター リカバリーの場所でテナントの各 HANA L インスタンス ユニットに対してコマンドを実行できます。 これを使用して、ブート ボリュームの詳細情報を取得することはできません。 
 
-コマンドとその出力の詳細については、[SAP HANA on Azure 用の Microsoft スナップショット ツールに関するページ](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf)の「Get DR replication status - azure_hana_replication_status (DR レプリケーション状態の取得 - azure_hana_replication_status)」を参照してください。
+コマンドとその出力の詳細については、[SAP HANA on Azure 用の Microsoft スナップショット ツールに関するページ](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf)の「Get DR replication status - azure_hana_replication_status (DR レプリケーション状態の取得 - azure_hana_replication_status)」を参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [HANA 側からの監視とトラブルシューティングに関するページ](hana-monitor-troubleshoot.md)を参照してください。

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: e3ea11f4faad204756f9e1296b5190e1f81a5cc0
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 2a7d10f41e343f21e16b10f4bf7c79670824ec2c
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772792"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115906"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>PowerShell で管理ツールをデプロイする
 
@@ -109,7 +109,7 @@ Web アプリの作成後に、Azure AD アプリケーションにリダイレ�
 ```powershell
 $webApp = Get-AzWebApp -ResourceGroupName $resourceGroupName -Name $appName
 $redirectUri = "https://" + $webApp.DefaultHostName + "/"
-Get-AzureADApplication | where { $_.AppId -match $servicePrincipalCredentials.UserName } | Set-AzureADApplication -ReplyUrls $redirectUri  
+Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCredentials.UserName } | Set-AzureADApplication -ReplyUrls $redirectUri  
 ```
 
 これでリダイレクト URI が追加できました。次に、管理ツールが API バックエンドサービスとインタラクトできるように API URL を更新する必要があります。

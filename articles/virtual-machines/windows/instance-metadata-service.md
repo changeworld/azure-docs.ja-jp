@@ -11,15 +11,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/25/2019
+ms.date: 01/31/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 8849029f59ee4eef3baa43a6027022598e12d102
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 25b61b7e21e70c1cd4d27f88a0f5ce965c01c5a5
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045887"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964653"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
@@ -448,7 +448,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 
 次の API は、メタデータ エンドポイントを介して使用できます。
 
-Data | [説明] | 導入されたバージョン
+Data | 説明 | 導入されたバージョン
 -----|-------------|-----------------------
 attested | 「[構成証明済みデータ](#attested-data)」をご覧ください | 2018-10-01
 identity | Azure リソースのマネージド ID。 「[アクセス トークンの取得](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)」を参照してください | 2018-02-01
@@ -462,7 +462,7 @@ scheduledevents | [スケジュールされたイベント](scheduled-events.md)
 > [!NOTE]
 > 次のカテゴリは、メタデータ エンドポイントを通じて、インスタンス/コンピューティングを介してアクセスされます。
 
-Data | [説明] | 導入されたバージョン
+Data | 説明 | 導入されたバージョン
 -----|-------------|-----------------------
 azEnvironment | VM が実行されている Azure 環境 | 2018-10-01
 customData | この機能は現在無効になっており、使用可能になると、このドキュメントは更新されます | 2019-02-01
@@ -495,7 +495,7 @@ vmSize | [VM サイズ](sizes.md) | 2017-04-02
 > [!NOTE]
 > 次のカテゴリは、メタデータ エンドポイント経由で、インスタンス/ネットワーク/インターフェイスを介してアクセスされます。
 
-Data | [説明] | 導入されたバージョン
+Data | 説明 | 導入されたバージョン
 -----|-------------|-----------------------
 ipv4/privateIpAddress | VM のローカル IPv4 アドレス | 2017-04-02
 ipv4/publicIpAddress | VM のパブリック IPv4 アドレス | 2017-04-02
@@ -542,7 +542,7 @@ signature BLOB は、ドキュメントの [pkcs7](https://aka.ms/pkcs7) で署�
 
 インスタンス メタデータは、Windows で Powershell ユーティリティ `curl` を使用して取得できます。
 
- ```bash
+ ```powershell
 curl -H @{'Metadata'='true'} "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890" | select -ExpandProperty Content
 ```
 
@@ -818,7 +818,7 @@ Verification successful
 }
 ```
 
-Data | [説明]
+Data | 説明
 -----|------------
 nonce | 要求でのユーザー提供の省略可能な文字列。 要求で nonce が提供されなかった場合は、現在の UTC タイムスタンプが返されます
 プラン | VM の Azure Marketplace イメージの[プラン](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)には、名前、製品、および発行元が含まれています
@@ -911,7 +911,7 @@ VM のストレージ プロファイルは、イメージ参照、OS ディス�
 
 イメージ参照オブジェクトには、OS イメージに関する次の情報が含まれています。
 
-Data    | [説明]
+Data    | 説明
 --------|-----------------
 id      | Resource ID
 offer   | プラットフォームまたは marketplace イメージのオファー
@@ -921,7 +921,7 @@ version | プラットフォームまたは marketplace イメージのバージ
 
 OS ディスク オブジェクトには、VM によって使用される OS ディスクに関する次の情報が含まれています。
 
-Data    | [説明]
+Data    | 説明
 --------|-----------------
 caching | キャッシュの要件
 createOption | VM が作成された方法に関する情報
@@ -936,7 +936,7 @@ writeAcceleratorEnabled | ディスクで writeAccelerator が有効になって
 
 データ ディスク アレイには、VM に接続されているデータ ディスクの一覧が含まれています。 各データ ディスク オブジェクトには、次の情報が含まれています。
 
-Data    | [説明]
+Data    | 説明
 --------|-----------------
 caching | キャッシュの要件
 createOption | VM が作成された方法に関する情報
@@ -1021,7 +1021,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/storageP
 
 ### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>VM 内でさまざまな言語を使用してメタデータ サービスを呼び出す例 
 
-言語 | 例
+Language | 例
 ---------|----------------
 Ruby     | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
 Go  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
@@ -1055,7 +1055,7 @@ Puppet | https://github.com/keirans/azuremetadata
 8. このサービスのサポートを受けるにはどうすればよいですか。
    * サービスのサポートを受けるには、時間がかかる再試行の後もメタデータの応答を取得できない VM を管理する Azure portal でサポート問題を作成します。
 9. サービスの呼び出しの要求がタイムアウトになりました。
-   * メタデータの呼び出しは、VM のネットワーク カードに割り当てられたプライマリ IP アドレスから行う必要があります。また、ルートを変更した場合は、ネットワーク カードからのアドレス 169.254.0.0/16 用のルートが必要です。
+   * メタデータの呼び出しは、VM のプライマリ ネットワーク カードに割り当てられたプライマリ IP アドレスから行う必要があります。また、ルートを変更した場合は、ネットワーク カードからのアドレス 169.254.0.0/16 用のルートが必要です。
 10. 仮想マシン スケール セットでタグを更新しましたが、VM とは異なり、インスタンスにタグが表示されません。
     * 現時点では、スケール セットのタグは、再起動/再イメージ化/インスタンスに対するディスクの変更の際に VM に対してのみ表示されます。
 

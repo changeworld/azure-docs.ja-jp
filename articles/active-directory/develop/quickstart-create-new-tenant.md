@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 02/05/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
-ms.custom: fasttrack-edit
-ms.openlocfilehash: e4a4e9d8d1d100fe2e8c35053cea31c55b0f030d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.custom: aaddev, identityplatformtop40, fasttrack-edit
+ms.openlocfilehash: 74747e1bc5247e2a95a180b7361eafe8ca795bc2
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023159"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160708"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>クイック スタート:テナントを設定する
 

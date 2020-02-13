@@ -3,17 +3,17 @@ title: クイック スタート:ポータルで Search サービスを作成す
 titleSuffix: Azure Cognitive Search
 description: このポータル クイックスタートでは、Azure portal 内で Azure Cognitive Search リソースを設定する方法を説明します。 リソース グループ、リージョン、および SKU または価格レベルを選択します。
 manager: nitinme
-author: HeidiSteen
-ms.author: heidist
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: ec794f66866f9773f8b7c0fc57b644d8a13d697a
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 02/10/2020
+ms.openlocfilehash: bd4798ba4faa1808ecafb6d09eee09ba734c293d
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534560"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121708"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>クイック スタート:ポータルで Azure Cognitive Search サービスを作成する
 
@@ -33,7 +33,7 @@ PowerShell をお好みですか? Azure Resource Manager [サービス テンプ
 
 ## <a name="find-azure-cognitive-search"></a>Azure Cognitive Search を検索する
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. 左上隅のプラス記号 ([+ リソースの作成]) をクリックします。
 3. 検索バーを使用して "Azure Cognitive Search" を検索するか、 **[Web]**  >  **[Azure Cognitive Search]** を選択してリソースに移動します。
 
@@ -151,9 +151,9 @@ Azure サービスの 1 つである Azure Cognitive Search は、世界中の�
 
 高可用性のために 2 番目のサービスを作成する必要はありません。 クエリの高可用性は、同じサービスで 2 つ以上のレプリカを使用することにより実現されます。 レプリカの更新はシーケンシャルです。つまり、サービスの更新が展開されているとき、少なくとも 1 つのレプリカが動作しています。アップタイムについて詳しくは、「[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/search/v1_0/)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 サービスのプロビジョニングが完了した後、ポータル内で最初のインデックスの作成に進むことができます。
 
 > [!div class="nextstepaction"]
-> [クイック スタート:ポータルで Azure Cognitive Search インデックスを作成する](search-get-started-portal.md)
+> [クイック スタート: ポータルで Azure Cognitive Search インデックスを作成する](search-get-started-portal.md)

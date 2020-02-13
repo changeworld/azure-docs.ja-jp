@@ -9,12 +9,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: yushwang
-ms.openlocfilehash: 4bce6a05938af9b8726b1b52ccb65d22d7492cfe
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: f905e27f48a0bf9181625bbba07549a13d9420cb
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778449"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162138"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>S2S VPN 接続用の VPN デバイス構成スクリプトをダウンロードする
 
@@ -78,7 +78,7 @@ Azure VPN ゲートウェイ、ローカル ネットワーク ゲートウェ�
 
 ## <a name="download-the-configuration-script-using-azure-powershell"></a>Azure PowerShell を使用して構成スクリプトをダウンロードする
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 次の例で示すように、Azure PowerShell を使って構成スクリプトをダウンロードすることもできます。
 

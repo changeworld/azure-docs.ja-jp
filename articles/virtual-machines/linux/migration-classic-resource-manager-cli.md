@@ -3,8 +3,8 @@ title: Azure CLI を使用して Resource Manager に VM を移行する
 description: この記事では、Azure CLI を使用した、プラットフォームでサポートされているクラシックから Azure Resource Manager へのリソースの移行について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: singhkays
-manager: gwallace
+author: tanmaygore
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: d6f5a877-05b6-4127-a545-3f5bede4e479
@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 03/30/2017
-ms.author: kasing
-ms.openlocfilehash: 1ebb1ee5056d3b1e6e85bea43473de5918ddba5c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 02/06/2020
+ms.author: tagore
+ms.openlocfilehash: 43be6947b464a18cc29edc5a578fd8879b70bacf
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645176"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153181"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Azure CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する
 以下の手順では、Azure コマンド ライン インターフェイス (CLI) コマンドを使用して、サービスとしてのインフラストラクチャ (IaaS) のリソースをクラシック デプロイ モデルから Azure Resource Manager デプロイ モデルに移行する方法を説明します。 この記事では、[Azure クラシック CLI](../../cli-install-nodejs.md) が必要です。 Azure CLI は、Azure Resource Manager リソースにのみ適用されるため、この移行には使用できません。
@@ -84,7 +84,7 @@ ms.locfileid: "75645176"
 azure config mode arm
 ```
 
-Azure Resource Manager での現在の vCPU 数は、次の CLI コマンドを使用して確認できます。 vCPU クォータの詳細については、「[制限と Azure Resource Manager](../../azure-resource-manager/management/azure-subscription-service-limits.md#limits-and-azure-resource-manager)」を参照してください。
+Azure Resource Manager での現在の vCPU 数は、次の CLI コマンドを使用して確認できます。 vCPU クォータの詳細については、「[制限と Azure Resource Manager](../../azure-resource-manager/management/azure-subscription-service-limits.md#managing-limits)」を参照してください。
 
 ```
 azure vm list-usage -l "<Your VNET or Deployment's Azure region"

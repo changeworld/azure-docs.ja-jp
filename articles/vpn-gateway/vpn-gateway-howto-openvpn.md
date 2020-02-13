@@ -7,18 +7,18 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: 02514285570b764c6f7392b789f2ff7b427bb3a6
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 7505420cc31fe751ecc0c114a89fea0734cbc6cf
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863759"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162409"
 ---
 # <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway"></a>Azure ポイント対サイト VPN Gateway 用に OpenVPN を構成する
 
 この記事では、Azure VPN Gateway で **OpenVPN® プロトコル**を構成する方法について説明します。 この記事では、稼働中のポイント対サイト環境が既にあることを前提としています。 ない場合は、手順 1 の指示に従ってポイント対サイト VPN を作成します。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="vnet"></a>1.ポイント対サイト VPN を作成する
 

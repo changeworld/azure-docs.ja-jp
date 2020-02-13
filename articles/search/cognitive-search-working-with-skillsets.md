@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0637e160454897af774c3bac48fc02866cb71835
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 8b45840215092281c7fbc8d499e26b095b374dd6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760795"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191025"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Azure Cognitive Search でのスキルセットの概念と構成
 
@@ -47,7 +47,7 @@ ms.locfileid: "76760795"
 |SQL|/document/{column1}<br>/document/{column2}<br>...|該当なし |
 |Cosmos DB|/document/{key1}<br>/document/{key2}<br>...|該当なし|
 
- 実行されたスキルによって、強化ツリーに新しいノードが追加されます。 これらの新しいノードは、ダウンストリームのスキル、ナレッジ ストアへの射影、またはインデックス フィールドへのマッピングに対する入力として使用できます。 強化は変更できません。作成されたノードを編集することはできません。 スキルセットや強化ツリーの複雑さが増しても、強化ツリー内のすべてのノードをインデックスやナレッジ ストアにする必要はありません。 強化のサブセットのみを選択して、インデックスまたはナレッジ ストアに保存することができます。
+ 実行されたスキルによって、強化ツリーに新しいノードが追加されます。 これらの新しいノードは、ダウンストリームのスキル、ナレッジ ストアへの射影、またはインデックス フィールドへのマッピングに対する入力として使用できます。 強化は変更できません。作成されたノードを編集することはできません。 スキルセットや強化ツリーの複雑さが増しても、強化ツリー内のすべてのノードをインデックスやナレッジ ストアにする必要はありません。 
 
 強化のサブセットのみを選択して、インデックスまたはナレッジ ストアに保存することができます。
 このドキュメントの残りの部分では、[ホテル レビューの例](https://docs.microsoft.com/azure/search/knowledge-store-connect-powerbi)を使用しますが、他のすべてのデータ ソースからのドキュメントの強化に同じ概念が適用されます。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 1c3fc4ebaffe2347a9c46b626b94042d1c9cfe11
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: df4ec6ddbba029eb29d2440717697968f8c79302
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77032173"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191062"
 ---
 # <a name="troubleshoot-private-endpoint-connectivity-problems"></a>プライベート エンドポイント接続に関する問題のトラブルシューティング
 
@@ -100,7 +100,7 @@ Azure プライベート エンドポイントは、Private Link サービスに
        ![NSG アウトバウンド規則](./media/private-endpoint-tsg/nsg-outbound-rules.png)
 
 5. 接続の結果が検証されている場合は、接続の問題は、アプリケーション層でのシークレット、トークン、パスワードなどの他の側面に関連している可能性があります。
-   - この場合、プライベート エンドポイントに関連付けられている Private Link リソースの構成を確認してください。 [Private Link トラブルシューティング ガイド](https://docs.microsoft.com/azure/private-link/private-link-connectivity-troubleshooting)を参照してください。 
+   - この場合、プライベート エンドポイントに関連付けられている Private Link リソースの構成を確認してください。 [Private Link トラブルシューティング ガイド](troubleshoot-private-link-connectivity.md)を参照してください。 
 
 6. 問題が解決されず、接続の問題がまだ存在する場合は、[Azure サポート](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) チームにお問い合わせください。 
 
@@ -108,4 +108,4 @@ Azure プライベート エンドポイントは、Private Link サービスに
 
  * [更新されたサブネットにプライベート エンドポイントを作成する (Azure portal)](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)
 
- * [Private Link トラブルシューティング ガイド](https://docs.microsoft.com/azure/private-link/private-link-connectivity-troubleshooting)
+ * [Private Link トラブルシューティング ガイド](troubleshoot-private-link-connectivity.md)

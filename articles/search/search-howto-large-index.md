@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: b4b6c57b08de07cae431f015c8d8f53cdf3a50a4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4ad5e961e390b60784355ff3bc72aca4a2f73e11
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460728"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190954"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Azure Cognitive Search で大容量のデータ セットのインデックスを作成する方法
 
@@ -55,7 +55,7 @@ ms.locfileid: "75460728"
 
 スケジュール機能付きインデックスは、特定の間隔で始動する設計になっており、通常は、ジョブが完了し、次回のスケジュール間隔で再開されます。 ただし、間隔内で処理が完了しない場合、インデクサーは (時間不足のため) 停止します。 処理がどこで停止したかがシステムに記録されており、次の間隔では、前回停止した個所から処理が再開されます。 
 
-実際には、インデックスの読み込みに数日かかる場合、24 時間スケジュールでインデクサーを配置できます。 次の 24 時間サイクルでインデックス作成が再開すると、前回正常だったと認識されたドキュメントから再開されます。 このようにして、インデクサーは、すべての未処理ドキュメントが処理されるまで、ドキュメントのバックログに従って数日にわたり処理を続けます。 この方法の詳細については、[Azure Blob Storage での大容量のデータセットのインデックス作成](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)に関するページを参照してください。 一般的なスケジュール設定の詳細については、[インデクサーの作成 (REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer#request-syntax) に関するページ、または [Azure Cognitive Search のインデクサーのスケジュールを設定する方法](search-howto-schedule-indexers.md)に関する記事を参照してください。
+実際には、インデックスの読み込みに数日かかる場合、24 時間スケジュールでインデクサーを配置できます。 次の 24 時間サイクルでインデックス作成が再開すると、前回正常だったと認識されたドキュメントから再開されます。 このようにして、インデクサーは、すべての未処理ドキュメントが処理されるまで、ドキュメントのバックログに従って数日にわたり処理を続けます。 この方法の詳細については、[Azure Blob Storage での大容量のデータセットのインデックス作成](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)に関するページを参照してください。 一般的なスケジュール設定の詳細については、[インデクサーの作成 (REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) に関するページ、または [Azure Cognitive Search のインデクサーのスケジュールを設定する方法](search-howto-schedule-indexers.md)に関する記事を参照してください。
 
 <a name="parallel-indexing"></a>
 

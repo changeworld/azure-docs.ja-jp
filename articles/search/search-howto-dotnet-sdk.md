@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 54fcd1fb936b5dd41715798408b604106a24bcf9
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: b31a4e40c1e9095499faf265673ab4213ad6bde0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112596"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190987"
 ---
 # <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>.NET アプリケーションから Azure Cognitive Search を使用する方法
 
@@ -462,7 +462,7 @@ public partial class Hotel
 > 
 > 
 
-次に注目すべき点は、各プロパティが `IsFilterable`、`IsSearchable`、`Key`、`Analyzer` などの属性で装飾されていることです。 これらの属性は、[Azure Cognitive Search インデックス内の対応するフィールド属性](https://docs.microsoft.com/rest/api/searchservice/create-index#request)に直接マップされます。 `FieldBuilder` クラスは、これらのプロパティを使用してインデックスのフィールド定義を構築します。
+次に注目すべき点は、各プロパティが `IsFilterable`、`IsSearchable`、`Key`、`Analyzer` などの属性で装飾されていることです。 これらの属性は、[Azure Cognitive Search インデックス内の対応するフィールド属性](/rest/api/searchservice/create-index)に直接マップされます。 `FieldBuilder` クラスは、これらのプロパティを使用してインデックスのフィールド定義を構築します。
 
 `Hotel` クラスに関する 3 番目の重要な点は、パブリック プロパティのデータ型です。 これらのプロパティの .NET 型は、インデックス定義でそれらと同等のフィールド型にマップします。 たとえば、`Category` 文字列プロパティは、`Edm.String` 型の `category` フィールドにマップします。 `bool?`、`Edm.Boolean`、`DateTimeOffset?`、`Edm.DateTimeOffset` などの間にも、同じような型のマッピングがあります。 型のマッピングの具体的なルールについては、[Azure Cognitive Search .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get)で `Documents.Get` メソッドを参照してください。 `FieldBuilder` クラスは、このマッピングに自動的に対処しますが、シリアル化の問題のトラブルシューティングを行う必要がある場合に、マッピングを理解しておくと役立ちます。
 
@@ -678,7 +678,7 @@ results = indexClient.Documents.Search<Hotel>("motel", parameters);
 WriteDocuments(results);
 ```
 
-この例では、検索可能なあらゆるフィールドで "motel" という単語のインデックス全体を検索し、`Select` パラメーターによって指定されるとおり、ホテル名だけを返します。 結果は次のとおりです。
+この例では、検索可能なあらゆるフィールドで "motel" という単語のインデックス全体を検索し、`Select` パラメーターによって指定されるとおり、ホテル名だけを返します。 結果は次のようになります。
 
     Name: Secret Point Motel
 
@@ -727,7 +727,7 @@ WriteDocuments(results);
 
 この例でも、OData 構文を使用して `OrderBy` パラメーターに `lastRenovationDate desc` を指定しています。 また、上位 2 つのドキュメントだけを取得できるように、`Top` を 2 に設定しています。 前と同様に、`Select` を設定して返す必要があるフィールドを指定します。
 
-結果は次のとおりです。
+結果は次のようになります。
 
     Name: Fancy Stay        Last renovated on: 6/27/2010 12:00:00 AM +00:00
     Name: Roach Motel       Last renovated on: 4/28/1982 12:00:00 AM +00:00
@@ -752,7 +752,7 @@ WriteDocuments(results);
 
 チュートリアルはここまでですが、ここで止めないでください。 **次のステップでは、Azure Cognitive Search をさらに学習するための他のリソースを提供します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) と [REST API](https://docs.microsoft.com/rest/api/searchservice/) のリファレンスを参照してください。
 * [名前付け規則](https://docs.microsoft.com/rest/api/searchservice/Naming-rules) で、さまざまなオブジェクトに名前を付けるときの規則を学習してください。
 * Azure Cognitive Search で[サポートされるデータ型](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)を確認してください。

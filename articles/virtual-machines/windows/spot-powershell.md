@@ -1,20 +1,20 @@
 ---
 title: PowerShell を使用した Azure スポット VM のデプロイ
-description: Azure PowerShell を使用してスポット VM をデプロイし、コストを節約する方法について学びます
+description: Azure PowerShell を使用してスポット VM をデプロイし、コストを節約する方法について学びます。
 services: virtual-machines-windows
 author: cynthn
 manager: gwallace
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 10/14/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 8752522e4b5a7b91778d6eb2cd8e4ba3bac95da0
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 17186d1d7b50ea872dc47eca8c2c4491787d2a38
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74781891"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158946"
 ---
 # <a name="preview-deploy-spot-vms-using-azure-powershell"></a>プレビュー:Azure PowerShell を使用してスポット VM をデプロイする
 
@@ -29,7 +29,7 @@ VM に対して、1 時間あたりに支払うことができる最大価格を
 > スポット インスタンスは現在、パブリック プレビューの段階にあります。
 > このプレビュー バージョンは運用環境のワークロードにはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 >
-> パブリック プレビューの初期段階では、スポット インスタンスに固定価格が設定されているため、価格ベースの削除は行われません。
+
 
 
 ## <a name="create-the-vm"></a>VM の作成
@@ -37,9 +37,6 @@ VM に対して、1 時間あたりに支払うことができる最大価格を
 構成を作成するための [New-AzVmConfig](/powershell/module/az.compute/new-azvmconfig) を使用してスポット VM を作成します。 `-Priority Spot` を追加し、`-MaxPrice` を次のいずれかに設定します。
 - `-1`。この場合、VM は価格に基づいて削除されません。
 - 最大 5 桁の金額 (ドル)。 たとえば、`-MaxPrice .98765` は、スポット VM の価格が 1 時間あたり $0.98765 になると VM の割り当てが解除されることを意味します。
-
-> [!IMPORTANT]
-> パブリック プレビューの初期段階では、最大価格を設定できますが、これは無視されます。 スポット VM は固定価格であるため、価格ベースの削除は行われません。
 
 
 この例では、価格に基づいて割り当てを解除されないスポット VM を作成します (Azure で容量の回復が必要な場合のみ)。
@@ -82,7 +79,7 @@ Get-AzVM -ResourceGroupName $resourceGroup | `
    Select-Object Name,@{Name="maxPrice"; Expression={$_.BillingProfile.MaxPrice}}
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure CLI](../linux/spot-cli.md) か[テンプレート](../linux/spot-template.md)を使用してスポット VM を作成することもできます。
 

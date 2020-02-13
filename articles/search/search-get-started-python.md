@@ -2,19 +2,19 @@
 title: クイック スタート:REST API を使用して Python で検索インデックスを作成する
 titleSuffix: Azure Cognitive Search
 description: Python、Jupyter Notebook、Azure Cognitive Search REST API を使用して、インデックスを作成し、データを読み込み、クエリを実行する方法について説明します。
-author: heidisteen
+author: tchristiani
 manager: nitinme
-ms.author: heidist
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-ms.date: 11/04/2019
-ms.openlocfilehash: c663fae47de1e161314aa3bf2fdb9966ae80d3c6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 02/10/2020
+ms.openlocfilehash: 15a3801a7ea99d6d799bcd8adf340b03f36bc196
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792259"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121624"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>クイック スタート:Jupyter Notebook を使用して Python で Azure Cognitive Search インデックスを作成する
 
@@ -44,7 +44,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
 
-1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理者キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
+1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
 ![HTTP エンドポイントとアクセス キーを取得する](media/search-get-started-postman/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
 
@@ -305,9 +305,9 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 無料サービスを使っている場合は、3 つのインデックス、インデクサー、およびデータソースに制限されることに注意してください。 ポータルで個別の項目を削除して、制限を超えないようにすることができます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 簡単にするために、このクイック スタートでは Hotels インデックスの短縮バージョンが使用されています。 完全なバージョンを作成して、より興味深いクエリを試してみることもできます。 完全バージョンと全部で 50 のドキュメントを取得するには、 **[データのインポート]** ウィザードを実行して、組み込みのサンプル データ ソースから *hotels-sample* を選択します。
 
 > [!div class="nextstepaction"]
-> [クイック スタート:Azure portal でインデックスを作成する](search-get-started-portal.md)
+> [クイック スタート: Azure portal でインデックスを作成する](search-get-started-portal.md)

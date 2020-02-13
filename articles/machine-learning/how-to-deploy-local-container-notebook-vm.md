@@ -10,20 +10,16 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 10/25/2019
-ms.openlocfilehash: c07e880ea9b3c382d3c6ecde51dfe8f4ab5c24fc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 28d176289a0b6cfe659f390feb441158c57f6533
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988432"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169933"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Azure Machine Learning コンピューティング インスタンスへのモデルのデプロイ
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
-
-> [!NOTE]
-> コンピューティング インスタンス (プレビュー) は、**米国中北部**、**米国東部 2**、**北ヨーロッパ**、または**英国南部**リージョンのワークスペースでのみ使用できます。他のリージョンは近日中にサポートされる予定です。
->ワークスペースが他のリージョンにある場合は、代わりに [Notebook VM](concept-compute-instance.md#notebookvm) を引き続き作成して使用することができます。  この記事の手順を使用して、コンピューティング インスタンスまたはノートブック VM のいずれかにモデルをデプロイできます。
 
 Azure Machine Learning を使用して Azure Machine Learning コンピューティング インスタンス にモデルを Web サービスとしてデプロイする方法を説明します。 次のいずれかの条件に当てはまる場合はコンピューティング インスタンスを使用します。
 

@@ -7,17 +7,17 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: yushwang
-ms.openlocfilehash: 733add5aa86ebd7faaaab78bb301ba9469433fdd
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: b914afaa6725920078da309981bcda5bb765e155
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778024"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148334"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>パートナー VPN デバイス構成の概要
 この記事では、オンプレミスの VPN デバイスを Azure VPN ゲートウェイに接続するための構成の概要について説明します。 サンプルの Azure 仮想ネットワークと VPN ゲートウェイの設定を使って、同じパラメーターで異なるオンプレミス VPN デバイス構成に接続する方法を紹介します。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="device-requirements"></a>デバイスの要件
 Azure VPN ゲートウェイは、標準の IPsec/IKE プロトコル スイートをサイト間 (S2S) VPN トンネルに使います。 Azure VPN ゲートウェイで使用される IPsec/IKE パラメーターと暗号アルゴリズムの一覧については、[VPN デバイス](vpn-gateway-about-vpn-devices.md)に関するページを参照してください。 [暗号化の要件](vpn-gateway-about-compliance-crypto.md)に関する記事の説明に従って、特定の接続を対象に、暗号アルゴリズムとキーの強度を具体的に指定することもできます。

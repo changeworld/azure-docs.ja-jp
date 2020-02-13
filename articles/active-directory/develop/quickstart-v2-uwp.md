@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 5ebc1e6df85a521ef7a03bfce8e062fc0fbf734b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 86401e0a827d1941b2d183d8c17371ba915c81ae
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703288"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063698"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>クイック スタート:ユニバーサル Windows プラットフォーム (UWP) アプリケーションから Microsoft Graph API を呼び出す
 
@@ -103,7 +103,7 @@ Windows マシンでクイックスタートを試すには:
 MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) は、ユーザーをサインインし、セキュリティ トークンを要求するために使用されるライブラリです。 セキュリティ トークンは、Microsoft ID プラットフォームによって保護されている API にアクセスするために使用されます。 MSAL は、Visual Studio の "*パッケージ マネージャー コンソール*" で次のコマンドを実行してインストールできます。
 
 ```powershell
-Install-Package Microsoft.Identity.Client -IncludePrerelease
+Install-Package Microsoft.Identity.Client
 ```
 
 ### <a name="msal-initialization"></a>MSAL の初期化
@@ -119,6 +119,7 @@ using Microsoft.Identity.Client;
 ```csharp
 public static IPublicClientApplication PublicClientApp;
 PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
+                                                .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
                                                     .Build();
 ```
 

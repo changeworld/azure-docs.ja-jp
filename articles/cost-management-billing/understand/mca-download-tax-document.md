@@ -2,22 +2,22 @@
 title: Azure の請求書の税務書類を表示する
 description: 課金プロファイルに対する税金受領書を表示してダウンロードする方法について説明します。
 author: bandersmsft
-manager: jureid
+manager: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 02/10/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: ad2388e0e24b76d38a53ff2439deb6dccc8277d5
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 4c578b4eec8aa66681ba2dfa5154836999676611
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75985339"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77135013"
 ---
 # <a name="view-and-download-tax-documents-for-your-azure-invoice"></a>Azure の請求書の税務書類を表示してダウンロードする
 

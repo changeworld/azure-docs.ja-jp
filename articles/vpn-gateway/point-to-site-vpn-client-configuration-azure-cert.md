@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9342a70e539c4a2717fe45426c26595285172681
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 18a9578cc454ea5259b9564d64dcd4308ee5ef87
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045776"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148982"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>ネイティブ Azure 証明書認証の P2S 構成のための VPN クライアント構成ファイルを作成およびインストールする
 
@@ -46,7 +46,6 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
 
 ### <a name="zipps"></a>PowerShell を使用してファイルを生成する
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 1. VPN クライアント構成ファイルを生成する際、"-AuthenticationMethod" の値は "EapTls" です。 次のコマンドを使用して、VPN クライアント構成ファイルを生成します。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: ef7e29351717daf91981f844f1d911a404cf9402
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: e45d5393833973889b28a95ec86b89593a091f99
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646882"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121805"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)
 
@@ -230,7 +230,7 @@ Vnet は、他の VNet から、および Azure インフラストラクチャ�
 はい。 次のツールを使用できます。
 - Azure Portal。[Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) および[クラシック](virtual-networks-create-vnet-classic-pportal.md) デプロイメント モデルを使用して VNet をデプロイするために使用します。
 - PowerShell。[Resource Manager](/powershell/module/az.network) および[クラシック](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) デプロイメント モデルを使用してデプロイされた VNet を管理するために使用します。
-- Azure コマンド ライン インターフェイス (CLI)。[Resource Manager](/cli/azure/network/vnet) デプロイメント モデルおよび[クラシック](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) デプロイメント モデルを使用してデプロイされた VNet をデプロイおよび管理するために使用します。  
+- Azure コマンド ライン インターフェイス (CLI)。[Resource Manager](/cli/azure/network/vnet) デプロイメント モデルおよび[クラシック](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-resources) デプロイメント モデルを使用してデプロイされた VNet をデプロイおよび管理するために使用します。  
 
 ## <a name="vnet-peering"></a>VNET ピアリング
 

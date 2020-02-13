@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 3f0f3528a59c721fe6926dd4c8c5039b680e1588
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 3917101ee7ac151cf624e5be0f51ccf01c8cb1cc
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025760"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161887"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する
 
@@ -33,7 +33,7 @@ ms.locfileid: "77025760"
 
 ## <a name="requirements"></a>必要条件
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 このドキュメントの例では、次のリソースを作成する必要があります。
 

@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: d56b83c8bd9a71ac30112f9e77a97ed8ab61a137
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: cd90ae2b751a97c18dc8b6be4b8eb565a17df7a2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825967"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191126"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure Marketplace および AppSource 向けコンサルティング サービス
 Azure Marketplace および AppSource のコンサルティング サービスは、お客様とサービスを結ぶという目標を Microsoft パートナーに提供し、Azure の使用と業務目標を支援して拡張します。 
@@ -76,8 +76,8 @@ Microsoft Azure に基づくコンサルティング サービスおよびマネ
 |---------|----------|----------|----------|
 |オーストラリア |フランス  |     メキシコ          |スペイン       |
 |ベルギー   |ドイツ |     オランダ     |スウェーデン       |
-|カナダ    |インド   |     ニュージーランド     |イギリス  |
-|デンマーク   |イタリア   |     ノルウェー          |米国 |
+|Canada    |インド   |     ニュージーランド     |イギリス  |
+|デンマーク   |イタリア   |     ノルウェー          |United States |
 |フィンランド   |日本   |     ポーランド          
 
 
@@ -138,7 +138,7 @@ Azure Marketplace および AppSource へのコンサルティングサービス
 
 タイトル フィールドは 50 文字以内に制限されており、プランの期間とサービスの種類を送信して、検索エンジンを最大限に最適化する必要があります。 次の形式にする必要があります。名前: 期間の種類
 
-次に例を示します。
+例 :
 
 
 |サンプル タイトル  |正しい形式  |
@@ -151,7 +151,7 @@ Azure Marketplace および AppSource へのコンサルティングサービス
 
 プラン説明およびプラン概要を確認するにあたり、チームは次の基準を適用します。
 
-|プランの種類  |必須 |推奨  |
+|プランの種類  |Required |推奨  |
 |---------|---------|---------|
 |**評価**    |   数日間あるいは数週間の評価のための詳細な議題を含め、お客様が期待できる成果物について明確にします      |    プラン概要を検索エンジン最適化の上位キーワードで最適化します     |
 |**簡単な説明**    |   お客様が期待できる成果物について明確にします。 ブリーフィングは、直接対面して提供する必要があることを忘れないでください。 バーチャルサービスを提供する予定であれば、違うプランの種類を選択してください    |  プラン概要を検索エンジン最適化の上位キーワードで最適化します       |
@@ -159,7 +159,7 @@ Azure Marketplace および AppSource へのコンサルティングサービス
 |**概念実証**    |    お客様が契約の結果として期待できる、エンジニアリングの変化、技術的成果物、その他の成果物について明確にします     | プラン概要を検索エンジン最適化の上位キーワードで最適化します        |
 |**ワークショップ**    |   選択されたプランの期間に応じて、日ごと、週ごと、月ごとの詳細な議題を含めます。 ワークショップでの学習の目標やその他の成果を明確にします     |   プラン概要を検索エンジン最適化の上位キーワードで最適化します      |
 
-Cloud パートナー ポータルでは、[Markdown](https://docs.microsoft.com/contribute/how-to-write-use-markdown) を使ってリスティングの書式を追加することができます。 Markdown とは、リスティングに統一感をもたせるのに便利な軽量マークアップ言語です。 
+Cloud パートナー ポータルでは、[Markdown](/contribute/markdown-reference) を使ってリスティングの書式を追加することができます。 Markdown とは、リスティングに統一感をもたせるのに便利な軽量マークアップ言語です。 
 
 **サンプルの Markdown ノート**
 * コピー ブロックの最初と最後に * を追加します。斜体にする場合、スペースは入れません (例: *content*)
@@ -171,7 +171,7 @@ Cloud パートナー ポータルでは、[Markdown](https://docs.microsoft.com
 * \* プランの概要を斜体にします
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 まだ行っていない場合は、 
 

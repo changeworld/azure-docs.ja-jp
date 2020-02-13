@@ -7,17 +7,17 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: ba8031db3c99b3062f5f552e02c39170ccfd850b
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 78147a96d6d9e92c2602b6a83cbed743cf2abf37
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75860409"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152042"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>PowerShell を使用して Azure VPN Gateway で BGP を構成する方法
 この記事では、Resource Manager デプロイ モデルと PowerShell を使用して、クロスプレミスのサイト間 (S2S) VPN 接続および VNet 間接続上で BGP を有効にする手順について説明します。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="about-bgp"></a>BGP について
 BGP は、2 つ以上のネットワーク間でルーティングと到達可能性の情報を交換するためにインターネット上で広く使用されている標準のルーティング プロトコルです。 Azure VPN ゲートウェイとオンプレミスの VPN デバイス (BGP ピアまたは BGP 近隣ノードと呼ばれる) が BGP を使用して "ルート" を交換します。これによって、関連するゲートウェイまたはルーターの可用性と、BGP のプレフィックスが到達できる可能性に関する情報が両方のゲートウェイに伝達されます。 また、BGP では、BGP ゲートウェイが特定の BGP ピアから学習したルートを他のすべての BGP ピアに伝達することで、複数のネットワークでトランジット ルーティングを行うこともできます。

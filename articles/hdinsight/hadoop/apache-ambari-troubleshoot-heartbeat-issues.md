@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 09/11/2019
-ms.openlocfilehash: ae5cfcfcd394aab644b35ac66aafa213dc49dd42
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: ae05a0d0866c38c2414bacb638fa90936bb6dc15
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895380"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964619"
 ---
 # <a name="apache-ambari-heartbeat-issues-in-azure-hdinsight"></a>Azure HDInsight での Apache Ambari のハートビートの問題
 
@@ -82,6 +82,21 @@ Ambari エージェントが開始されていません。これにより、一�
     ```
 
     フェールオーバー コントローラー サービスが実行されていない場合は、問題によって、HDInsight エージェントがフェールオーバー コントローラーを起動できないことが原因の可能性があります。 `/var/log/hdinsight-agent/hdinsight-agent.out` ファイルから HDInsight エージェントのログを確認してください。
+
+## <a name="scenario-heartbeat-lost-for-ambari"></a>シナリオ:Ambari のハートビートが失われた
+
+### <a name="issue"></a>問題
+
+Ambari のハートビート エージェントが失われました。
+
+### <a name="cause"></a>原因
+
+OMS ログで CPU 使用率が高くなっています。
+
+### <a name="resolution"></a>解決策
+
+* [Disable-AzHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightoperationsmanagementsuite?view=azps-2.8.0) PowerShell モジュールを使用して、OMS のログ記録を無効にします。 
+* `mdsd.warn` ログ ファイルを削除します
 
 ---
 

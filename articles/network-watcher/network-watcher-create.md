@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: b091c501fb565fb267c40f686dc037e41f3c90ee
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 77812a3765a027152c957f6dbb7c9b3811a2278f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845125"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191187"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Azure Network Watcher のインスタンスの作成
 
@@ -132,5 +132,3 @@ Remove-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup Networ
 * [セキュリティ グループ ビュー](network-watcher-security-group-view-overview.md)
 * [NSG フロー ログの記録](network-watcher-nsg-flow-logging-overview.md)
 * [Virtual Network Gateway のトラブルシューティング](network-watcher-troubleshoot-overview.md)
-
-Network Watcher インスタンスが作成されたら、仮想マシン内でのパケット キャプチャを有効にすることができます。 方法については、[アラートでトリガーされるパケット キャプチャの作成](network-watcher-alert-triggered-packet-capture.md)に関する記事をご覧ください

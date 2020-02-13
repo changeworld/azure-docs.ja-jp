@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47806fe9c5c97c1f5a9c26d4ca38fb46bdf4057c
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: f47f55252c6274360f200a4bce0ed0b739e3d8a3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931399"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166567"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>既存の同期済み AD フォレストに対してクラウド プロビジョニングのパイロットを実施する 
 
@@ -67,8 +67,7 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
  3. **[説明]** ページで次のように入力し、 **[次へ]** をクリックします。
 
     **[名前]:** 規則にわかりやすい名前を付けます<br>
-    **説明:** わかりやすい説明を追加します<br> 
-    
+    **説明:** わかりやすい説明を追加します<br>
     **[Connected System]\(接続先システム\):** カスタム同期規則の作成対象となる AD コネクタを選択します<br>
     **[Connected System Object Type]\(接続先システム オブジェクトの種類\):** User<br>
     **[Metaverse Object Type]\(メタバース オブジェクトの種類\):** Person<br>

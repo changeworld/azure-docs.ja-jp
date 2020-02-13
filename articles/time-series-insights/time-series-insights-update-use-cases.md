@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 85b724a62f778620264ae308aa316e046a0e9f59
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 50ac2a728750c6b01dfc57fa7e20df25c856395a
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896075"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087380"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights プレビューのユース ケース
 

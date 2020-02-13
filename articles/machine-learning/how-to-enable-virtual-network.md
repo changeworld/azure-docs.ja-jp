@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: 3dfdbc56456ea67c830d0e1e9785b9d0032bf2cc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fd358801b5fe84aac754b5a975234688a707e544
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988221"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169960"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure Virtual Network 内で Azure ML の実験と推論のジョブを安全に実行する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -124,10 +124,6 @@ Azure Machine Learning では、ワークスペースに関連付けられてい
 <a id="amlcompute"></a>
 
 ## <a name="compute-instance"></a>Machine Learning コンピューティングを使用する
-
-> [!NOTE]
-> 現在、コンピューティング インスタンス (プレビュー) は、**米国中北部**または**英国南部**リージョンのワークスペースでのみ使用できます。他のリージョンは近日中にサポートされる予定です。
-> これらのリージョンの 1 つを使用して、仮想ネットワークに追加できるコンピューティング インスタンスを作成します。
 
 仮想ネットワーク内で Azure Machine Learning コンピューティング インスタンスまたはコンピューティング クラスターを使用するには、次のネットワーク要件を満たす必要があります。
 

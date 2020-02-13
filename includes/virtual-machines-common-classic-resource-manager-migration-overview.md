@@ -2,18 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: virtual-machines
-author: singhkays
+author: tanmaygore
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/25/2019
-ms.author: kasing
+ms.date: 02/06/2020
+ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: 0ffbbe5505c9316f362ebbc41d311f97408f1b17
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: aa03560160795e33a5d26a88d421894c6e20c61f
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76887774"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77088977"
 ---
 この記事では、サービスとしてのインフラストラクチャ (IaaS) のリソースをクラシック デプロイ モデルから Resource Manager デプロイ モデルに移行する方法と、サブスクライブ内で共存する 2 つのデプロイ モデルから仮想ネットワークのサイト間ゲートウェイを使用してリソースに接続する方法の詳細を説明します。 [Azure Resource Manager の機能と利点](../articles/azure-resource-manager/management/overview.md)の詳細を参照してください。 
 
@@ -27,7 +27,6 @@ Resource Manager では、テンプレートを使用して複雑なアプリケ
 
 * Virtual Machines
 * 可用性セット
-* Cloud Services と Virtual Machines
 * ストレージ アカウント
 * 仮想ネットワーク
 * VPN ゲートウェイ

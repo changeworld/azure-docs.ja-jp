@@ -7,18 +7,18 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: 97db6af7233a8cc0e1feac75734225815282131a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: dec088ed751856957735867f740dc951c3b8f2ac
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896166"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162074"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>PowerShell を使って複数のオンプレミス ポリシー ベース VPN デバイスに VPN ゲートウェイを接続する
 
 この記事は、S2S VPN 接続のカスタム IPsec/IKE ポリシーを利用して、複数のオンプレミス ポリシー ベース VPN デバイスに接続するように Azure ルート ベース VPN ゲートウェイを構成するのに役立ちます。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="about"></a>ポリシー ベースおよびルート ベースの VPN ゲートウェイについて
 

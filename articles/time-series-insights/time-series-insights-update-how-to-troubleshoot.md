@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 02/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1fc3aa6caa6266d2cd42e4783e8e39d5cc92c220
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: a306707f0ed47fba8fd854d820554bc1bd80e8bc
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861576"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110270"
 ---
 # <a name="diagnose-and-troubleshoot-a-preview-environment"></a>プレビュー環境の診断とトラブルシューティング
 

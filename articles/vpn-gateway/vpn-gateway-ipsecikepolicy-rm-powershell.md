@@ -8,18 +8,18 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: 8ed32ccedcd6cc4ffd159069399c0417842325d8
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: eaca48fc354f1cf37635e9729b04eaaaa882ba1c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514920"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161904"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>S2S VPN または VNet-to-VNet 接続の IPsec/IKE ポリシーを構成する
 
 この記事では、Resource Manager デプロイ モデルと PowerShell を使用して、サイト間の VPN または VNet 間の接続の IPsec/IKE ポリシーを作成する手順について説明します。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="about"></a>Azure VPN ゲートウェイの IPsec/IKE ポリシーのパラメーターについて
 IPsec/IKE 標準プロトコルは、幅広い暗号アルゴリズムをさまざまな組み合わせでサポートしています。 このプロトコルがクロスプレミスと VNet-to-VNet 接続でコンプライアンスまたはセキュリティ要件を満たすためにどのように役立つかについては、「[About cryptographic requirements and Azure VPN gateways](vpn-gateway-about-compliance-crypto.md)」(暗号化要件と Azure VPN Gateway について) を参照してください。

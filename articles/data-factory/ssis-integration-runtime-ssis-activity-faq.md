@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: c0aa33cce8dc163722557b1ef868cf0de8bea8fe
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1c2db107302e4851641ef430db61ec9b29ee151f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928729"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187471"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>SSIS 統合ランタイムでのパッケージ実行のトラブルシューティング
 
@@ -136,15 +136,15 @@ SSIS 統合ランタイムで多数のパッケージが並列に実行されて
 
 Azure-SSIS 統合ランタイムがセルフホステッド統合ランタイムで構成されていることを確認します。 詳細については、「[セルフホステッド IR を ADF で Azure-SSIS IR のプロキシとして構成する](self-hosted-integration-runtime-proxy-ssis.md)」を参照してください。
 
-### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2010-errormessage-the-self-hosted-integration-runtime--is-offline"></a>エラー メッセージ:"Staging task status:失敗。 Staging task error:ErrorCode:2010, ErrorMessage:The Self-hosted Integration Runtime ... is offline (ステージング タスクの状態: 失敗。ステージング タスクのエラー: ErrorCode: 2010、ErrorMessage: セルフホステッド統合ランタイム ... はオフラインです)"
+### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2010-errormessage-the-self-hosted-integration-runtime--is-offline"></a>エラー メッセージ:"Staging task status:失敗。 Staging task error:エラー コード:2010, ErrorMessage:The Self-hosted Integration Runtime ... is offline (ステージング タスクの状態: 失敗。ステージング タスクのエラー: ErrorCode: 2010、ErrorMessage: セルフホステッド統合ランタイム ... はオフラインです)"
 
 セルフホステッド統合ランタイムがインストールおよび開始されていることを確認します。 詳細については、「[セルフホステッド統合ランタイムを作成して構成する](create-self-hosted-integration-runtime.md)」を参照してください。
 
-### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-the-requested-ole-db-provider--is-not-registered-if-the-64-bit-driver-is-not-installed-run-the-package-in-32-bit-mode"></a>エラー メッセージ:"Staging task error:ErrorCode:2906, ErrorMessage:Package execution failed., Output: {"OperationErrorMessages":"エラー: The requested OLE DB provider ... is not registered. If the 64-bit driver is not installed, run the package in 32-bit mode... (ステージング タスクのエラー: ErrorCode: 2906、ErrorMessage: パッケージの実行が失敗しました。出力: {"OperationErrorMessages": "エラー: 要求された OLE DB プロバイダー ... は登録されていません。64 ビット ドライバーがインストールされていない場合は、32 ビット モードでパッケージを実行してください…)"
+### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-the-requested-ole-db-provider--is-not-registered-if-the-64-bit-driver-is-not-installed-run-the-package-in-32-bit-mode"></a>エラー メッセージ:"Staging task error:エラー コード:2906, ErrorMessage:Package execution failed., Output: {"OperationErrorMessages":"エラー: The requested OLE DB provider ... is not registered. If the 64-bit driver is not installed, run the package in 32-bit mode... (ステージング タスクのエラー: ErrorCode: 2906、ErrorMessage: パッケージの実行が失敗しました。出力: {"OperationErrorMessages": "エラー: 要求された OLE DB プロバイダー ... は登録されていません。64 ビット ドライバーがインストールされていない場合は、32 ビット モードでパッケージを実行してください…)"
 
-パッケージ内の OLE DB コネクタによって使用される対応するプロバイダーが、セルフホステッド統合ランタイム マシンに適切にインストールされていることを確認します。 詳細については、「[セルフホステッド IR を ADF で Azure-SSIS IR のプロキシとして構成する](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir)」を参照してください。
+パッケージ内の OLE DB コネクタによって使用される対応するプロバイダーが、セルフホステッド統合ランタイム マシンに適切にインストールされていることを確認します。 詳細については、「[セルフホステッド IR を ADF で Azure-SSIS IR のプロキシとして構成する](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir)」を参照してください。
 
-### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>エラー メッセージ:"Staging task error:ErrorCode:2906, ErrorMessage:Package execution failed., Output: {"OperationErrorMessages":"エラー: System.IO.FileLoadException:Could not load file or assembly 'Microsoft.WindowsAzure.Storage, Version=..., Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference.'... (ステージング タスクのエラー: ErrorCode: 2906、ErrorMessage: パッケージの実行が失敗しました。出力: {"OperationErrorMessages": "エラー: System.IO.FileLoadException: ファイルまたはアセンブリ 'Microsoft.WindowsAzure.Storage, Version=..., Culture=neutral, PublicKeyToken=31bf3856ad364e35'、またはその依存関係の 1 つが読み込めませんでした。見つかったアセンブリのマニフェスト定義がアセンブリ参照と一致しません。'...)"
+### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>エラー メッセージ:"Staging task error:エラー コード:2906, ErrorMessage:Package execution failed., Output: {"OperationErrorMessages":"エラー: System.IO.FileLoadException:Could not load file or assembly 'Microsoft.WindowsAzure.Storage, Version=..., Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference.'... (ステージング タスクのエラー: ErrorCode: 2906、ErrorMessage: パッケージの実行が失敗しました。出力: {"OperationErrorMessages": "エラー: System.IO.FileLoadException: ファイルまたはアセンブリ 'Microsoft.WindowsAzure.Storage, Version=..., Culture=neutral, PublicKeyToken=31bf3856ad364e35'、またはその依存関係の 1 つが読み込めませんでした。見つかったアセンブリのマニフェスト定義がアセンブリ参照と一致しません。'...)"
 
 考えられる原因の 1 つは、セルフホステッド統合ランタイムがインストールされていないか、適切にアップグレードされていないことです。 最新のセルフホステッド統合ランタイムをダウンロードして再インストールすることをお勧めします。 詳細については、「[セルフホステッド統合ランタイムを作成して構成する](create-self-hosted-integration-runtime.md#installation-best-practices)」を参照してください。
 
@@ -155,9 +155,9 @@ Azure-SSIS 統合ランタイムがセルフホステッド統合ランタイム
   * 実行ログは、[SSMS レポート](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports)または SSIS パッケージ実行アクティビティで指定したログ フォルダー内にあります。
   * 別の方法として、vNet を使用してオンプレミスのデータにアクセスすることもできます。 詳細については、「[Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる](join-azure-ssis-integration-runtime-virtual-network.md)」を参照してください。
 
-### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>エラー メッセージ:"Staging task status:失敗。 Staging task error:ErrorCode:2906, ErrorMessage:Package execution failed., Output: {"OperationErrorMessages":"SSIS Executor exit code: -1.\n", "LogLocation": "...\\SSISTelemetry\\ExecutionLog\\...", "effectiveIntegrationRuntime": "...", "executionDuration": ..., "durationInQueue": { "integrationRuntimeQueue": ... }} (ステージング タスクの状態: 失敗。ステージング タスクのエラー: ErrorCode: 2906、ErrorMessage: パッケージの実行が失敗しました。出力: {"OperationErrorMessages": "SSIS 実行プログラムの終了コード: -1.\n", "LogLocation": "...\SSISTelemetry\ExecutionLog\...", "effectiveIntegrationRuntime": "...", "executionDuration": ..., "durationInQueue": { "integrationRuntimeQueue": ... }})"
+### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>エラー メッセージ:"Staging task status:失敗。 Staging task error:エラー コード:2906, ErrorMessage:Package execution failed., Output: {"OperationErrorMessages":"SSIS Executor exit code: -1.\n", "LogLocation": "...\\SSISTelemetry\\ExecutionLog\\...", "effectiveIntegrationRuntime": "...", "executionDuration": ..., "durationInQueue": { "integrationRuntimeQueue": ... }} (ステージング タスクの状態: 失敗。ステージング タスクのエラー: ErrorCode: 2906、ErrorMessage: パッケージの実行が失敗しました。出力: {"OperationErrorMessages": "SSIS 実行プログラムの終了コード: -1.\n", "LogLocation": "...\SSISTelemetry\ExecutionLog\...", "effectiveIntegrationRuntime": "...", "executionDuration": ..., "durationInQueue": { "integrationRuntimeQueue": ... }})"
 
-Visual C++ ランタイムがセルフホステッド統合ランタイム マシンにインストールされていることを確認します。 詳細については、「[セルフホステッド IR を ADF で Azure-SSIS IR のプロキシとして構成する](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir)」を参照してください。
+Visual C++ ランタイムがセルフホステッド統合ランタイム マシンにインストールされていることを確認します。 詳細については、「[セルフホステッド IR を ADF で Azure-SSIS IR のプロキシとして構成する](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir)」を参照してください。
 
 ### <a name="multiple-package-executions-are-triggered-unexpectedly"></a>複数のパッケージの実行が予期せずにトリガーされた
 
