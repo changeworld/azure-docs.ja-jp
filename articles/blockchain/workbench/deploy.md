@@ -58,7 +58,7 @@ Azure Blockchain Workbench では、Azure AD 構成とアプリケーション�
 
     ![Azure Blockchain Workbench を作成する](media/deploy/blockchain-workbench-settings-basic.png)
 
-    | 設定 | [説明]  |
+    | 設定 | 説明  |
     |---------|--------------|
     | Resource prefix (リソース プレフィックス) | この展開の短い一意識別子です。 この値は、リソースの名前付けのベースとして使われます。 |
     | VM ユーザー名 | このユーザー名は、すべての仮想マシン (VM) の管理者として使われます。 |
@@ -81,7 +81,7 @@ Azure Blockchain Workbench では、Azure AD 構成とアプリケーション�
 
     ![新しいブロック チェーン ネットワークの詳細設定](media/deploy/advanced-blockchain-settings-new.png)
 
-    | 設定 | [説明]  |
+    | 設定 | 説明  |
     |---------|--------------|
     | Azure Blockchain Service pricing tier (Azure Blockchain Service の価格レベル) | Blockchain Workbench に使用される Azure Blockchain Service のレベル **[Basic]** または **[Standard]** を選択します。 |
     | Azure Active Directory の設定 | **[後で追加]** を選択します。</br>注:[Azure AD の事前構成](#azure-ad-configuration)を選択した場合、または再デプロイしている場合は、 *[今すぐ追加]* を選択します。 |
@@ -100,7 +100,7 @@ Azure Blockchain Workbench では、Azure AD 構成とアプリケーション�
 
      ![既存のブロック チェーン ネットワークの詳細設定](media/deploy/advanced-blockchain-settings-existing.png)
 
-     | 設定 | [説明]  |
+     | 設定 | 説明  |
      |---------|--------------|
      | Ethereum RPC エンドポイント | 既存の PoA ブロックチェーン ネットワークの RPC エンドポイントを提供します。 エンドポイントは https:// または http:// で始まり、ポート番号で終わります。 たとえば、`http<s>://<network-url>:<port>` のように指定します。 |
      | Azure Active Directory の設定 | **[後で追加]** を選択します。</br>注:[Azure AD の事前構成](#azure-ad-configuration)を選択した場合、または再デプロイしている場合は、 *[今すぐ追加]* を選択します。 |
