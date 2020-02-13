@@ -85,7 +85,7 @@ ms.locfileid: "75364307"
 }
 ```
 
-| Section | 要素名 | [説明] |
+| Section | 要素名 | 説明 |
 | --- | --- | --- |
 | 設定 | id | 自動スケール設定のリソース ID。 自動スケール設定は、Azure Resource Manager リソースです。 |
 | 設定 | name | 自動スケール設定の名前。 |
