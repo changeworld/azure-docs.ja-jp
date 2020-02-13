@@ -54,7 +54,7 @@ Azure カスタム プロバイダーの例を次に示します。
 }
 ```
 
-プロパティ | 必須 | [説明]
+プロパティ | 必須 | 説明
 ---|---|---
 name | はい | エンドポイント定義の名前。 リソースのオンボードの場合、名前は "associations" である必要があります。
 routingType | はい | エンドポイントとのコントラクトの種類を決定します。 リソースのオンボードの場合、有効な **routingTypes** は "Proxy,Cache,Extension" および "Webhook,Cache,Extension" です。
@@ -76,7 +76,7 @@ Azure カスタム プロバイダーの関連付けの例:
 }
 ```
 
-プロパティ | 必須 | [説明]
+プロパティ | 必須 | 説明
 ---|---|---
 targetResourceId | はい | Microsoft.CustomProviders/resourceProviders または Microsoft.Solutions/applications のリソース ID。
 
