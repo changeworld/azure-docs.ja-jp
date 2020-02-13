@@ -49,7 +49,7 @@ Azure アプリケーションの各種データ階層とそれぞれで利用�
 
 Azure Monitor で監視データをイベント ハブにルーティングすると、外部の SIEM や監視ツールに簡単に統合することができます。 Azure Monitor とツールの統合例としては、次のものがあります。
 
-| ツール | Azure でホスト | [説明] |
+| ツール | Azure でホスト | 説明 |
 |:---|:---| :---|
 |  IBM QRadar | いいえ | Microsoft Azure DSM および Microsoft Azure Event Hub Protocol は、[IBM サポート Web](https://www.ibm.com/support) サイトからダウンロードすることができます。 Azure との統合の詳細については、「[QRadar DSM の構成](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)」を参照してください。 |
 | Splunk | いいえ | [Splunk 向けの Azure Monitor アドオン](https://splunkbase.splunk.com/app/3534/)が、Splunkbase でオープンソース プロジェクトとして公開されています。 ドキュメントは、「[Splunk 向けの Azure Monitor アドオン](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)」でご覧いただけいます。<br><br> プロキシの使用時や Splunk Cloud での実行時など、アドオンをご自分の Splunk インスタンスにインストールできない場合は、イベント ハブの新着メッセージによりトリガーされる [Splunk 向け Azure 関数](https://github.com/Microsoft/AzureFunctionforSplunkVS)を使用して、Splunk HTTP イベント コレクターにこれらのイベントを転送できます。 |
