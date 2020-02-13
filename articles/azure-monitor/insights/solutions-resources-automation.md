@@ -69,7 +69,7 @@ Azure Automation のリソースはすべて、[Automation アカウント](../.
 
 次の表では、Runbook のプロパティについて説明します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | runbookType |Runbook のタイプを指定します。 <br><br> Script - PowerShell スクリプト <br>PowerShell - PowerShell ワークフロー <br> GraphPowerShell - グラフィカル PowerShell スクリプト Runbook <br> GraphPowerShellWorkflow - グラフィカル PowerShell ワークフロー Runbook |
 | logProgress |Runbook の[進捗状況レコード](../../automation/automation-runbook-output-and-messages.md)を生成するかどうかを指定します。 |
@@ -105,7 +105,7 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 次の表では、Automation ジョブのプロパティについて説明します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | runbook |起動する Runbook の名前を指定する単一の name エンティティです。 |
 | parameters |Runbook に必要な各パラメーター値のエンティティです。 |
@@ -136,7 +136,7 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 次の表では、証明書リソースのプロパティについて説明します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | base64Value |証明書の Base 64 値です。 |
 | thumbprint |証明書の拇印です。 |
@@ -163,7 +163,7 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 次の表では、資格情報リソースのプロパティについて説明します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | userName |資格情報のユーザー名です。 |
 | パスワード |資格情報のパスワードです。 |
@@ -191,7 +191,7 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 次の表では、スケジュール リソースのプロパティについて説明します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | description |スケジュールの説明です (省略可能)。 |
 | startTime |スケジュールの開始時刻を DateTime オブジェクトとして指定します。 有効な DateTime に変更可能な文字列を指定することもできます。 |
@@ -234,7 +234,7 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 次の表では、ジョブ スケジュールのプロパティについて説明します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | schedule name |スケジュールの名前を指定する単一の **name** エンティティです。 |
 | runbook name  |Runbook の名前を指定する単一の **name** エンティティです。  |
@@ -261,7 +261,7 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 次の表では、変数リソースのプロパティについて説明します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | description | 変数の説明です (省略可能)。 |
 | isEncrypted | 変数を暗号化するかどうかを指定します。 |
@@ -273,7 +273,7 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 変数の初期値を設定する場合、正しいデータ型として構成する必要があります。  次の表では、使用可能なさまざまなデータ型とその構文を示します。  JSON の値は常に引用符で囲まれ、特殊文字は引用符で囲まれているものと想定されていることに注意してください。  たとえば、文字列値は文字列を囲む (エスケープ文字 (\\) を使った) 引用符で指定され、数値は 1 組の引用符で指定されます。
 
-| データ型 | [説明] | 例 | 結果 |
+| データ型 | 説明 | 例 | 結果 |
 |:--|:--|:--|:--|
 | string   | 値を 2 組の引用符で囲みます。  | "\"Hello world\"" | "Hello world" |
 | numeric  | 数値を 1 組の引用符で囲みます。| "64" | 64 |
@@ -301,7 +301,7 @@ Runbook で使用する[グローバル モジュール](../../automation/automa
 
 次の表では、モジュール リソースのプロパティについて説明します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | contentLink |モジュールのコンテンツを指定します。 <br><br>uri - モジュールのコンテンツへの URI です。  PowerShell Runbook およびスクリプト Runbook の場合は .ps1 ファイル、Graph Runbook の場合はエクスポート済みのグラフィカル Runbook ファイルになります。  <br> version - 追跡対象のモジュールのバージョンです。 |
 
