@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: a14f3f6c17423dd9a86cbafe477fb8148932d43c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 27874e5731bd6fb9821e7aeda9333adbdbb79099
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863531"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023295"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure Digital Twins Swagger リファレンス ドキュメント
 
@@ -95,9 +95,9 @@ Swagger が提供する強力な機能の 1 つは、ドキュメントの UI �
 > [!NOTE]
 > * Azure Digital Twins リソースを作成したユーザー プリンシパルにはスペース管理者ロールが割り当てられ、他のユーザーに対して追加のロール割り当てを作成できます。 このようなユーザーとそのロールには、API の呼び出しを許可することができます。
 
-1. [こちらのクイックスタート](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad)の手順を実行して、Azure AD アプリケーションを作成し、構成します。 または、既存のアプリの登録を再利用することもできます。
+1. [こちらのクイックスタート](quickstart-view-occupancy-dotnet.md#set-permissions-for-your-app)の手順を実行して、Azure Active Directory アプリケーションを作成し、構成します。 または、既存のアプリの登録を再利用することもできます。
 
-1. 次の**リダイレクト URL** を Azure AD アプリ登録に追加します。
+1. 次の**リダイレクト URI** を Azure Active Directory アプリ登録に追加します。
 
     [![AAD に Swagger リダイレクト URL を登録する](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png)](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png#lightbox)
 
@@ -108,7 +108,9 @@ Swagger が提供する強力な機能の 1 つは、ドキュメントの UI �
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | ポータルで見つかった Management REST API ドキュメントの URL  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
-1. Azure AD アプリの**クライアント ID** をコピーします。
+1. **[暗黙の付与]** 、 **[アクセス トークン]** チェック ボックスの順に選択し、OAuth 2.0 の暗黙的な許可のフローを使用できるようにします。 **[構成]** 、 **[保存]** の順に選択します。
+
+1. Azure Active Directory アプリの **[クライアント ID]** をコピーします。
 
 Azure Active Directory の登録を完了した後:
 

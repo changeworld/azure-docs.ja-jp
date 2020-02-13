@@ -4,13 +4,13 @@
   items:
     - name: Azure 上の Ansible について
       href: ./ansible-overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: Ansible ソリューション テンプレートを CentOS にデプロイする
       href: ./ansible-deploy-solution-template.md
     - name: Ansible を Linux 仮想マシンにインストールする
-      href: /azure/virtual-machines/linux/ansible-install-configure
+      href: ./ansible-install-configure.md
       maintainContext: true
     - name: Cloud Shell でプレイブックを実行する
       href: ./ansible-run-playbook-in-cloudshell.md
@@ -18,10 +18,10 @@
       expanded: true
       items:
         - name: Linux 仮想マシンを構成する
-          href: /azure/virtual-machines/linux/ansible-create-vm
+          href: ./ansible-create-vm.md
           maintainContext: true
         - name: Linux 仮想マシンを管理する
-          href: /azure/virtual-machines/linux/ansible-manage-linux-vm
+          href: ./ansible-manage-linux-vm.md
           maintainContext: true
 - name: チュートリアル
   items:
@@ -59,7 +59,7 @@
           href: ./ansible-service-bus-queue-configure.md
         - name: トピックの構成
           href: ./ansible-service-bus-topic-configure.md
-    - name: Database
+    - name: データベース
       items:
         - name: Azure Database for MySQL の構成
           href: ./ansible-create-configure-mysql.md
@@ -77,9 +77,9 @@
           href: ansible-vm-create-from-shared-generalized-image.md
     - name: 仮想マシン スケール セット
       items:
-        - name: 構成
+        - name: '[構成]'
           href: ./ansible-create-configure-vmss.md
-        - name: デプロイ
+        - name: 配置
           href: ./ansible-deploy-app-vmss.md
         - name: 自動スケール
           href: ./ansible-auto-scale-vmss.md

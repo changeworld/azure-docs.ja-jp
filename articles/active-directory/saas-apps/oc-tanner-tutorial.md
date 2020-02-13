@@ -25,7 +25,7 @@ ms.locfileid: "76983998"
 
 このチュートリアルの目的は、O.C. Tanner - AppreciateHub と Azure Active Directory (Azure AD) を統合する方法を示すことです。 O.C. Tanner - AppreciateHub を Azure AD に統合すると、次のことができます。
 
-* O.C. にアクセスできるユーザーを Azure AD で制御できます。 Tanner - AppreciateHub で Britta Simon というユーザーを作成することです。
+* O.C. Tanner - AppreciateHub にアクセスできるユーザーを Azure AD で制御できます。 Tanner - AppreciateHub で Britta Simon というユーザーを作成することです。
 * ユーザーが自分の Azure AD アカウントを使用して O.C. Tanner - AppreciateHub に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
@@ -57,9 +57,9 @@ Azure AD への O.C. Tanner - AppreciateHub の統合を構成するには、ギ
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**O.C.Tanner - AppreciateHub**」と入力します。
 1. 結果のパネルから **[O.C.Tanner - AppreciateHub]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-oc-tanner---appreciatehub"></a>O.C. の Azure AD シングル サインオンの構成とテスト Azure AD で制御できます。
+## <a name="configure-and-test-azure-ad-single-sign-on-for-oc-tanner---appreciatehub"></a>O.C. Tanner - AppreciateHub の Azure AD シングル サインオンの構成とテスト Azure AD で制御できます。
 
-**B.Simon** というテスト ユーザーを使用して、O.C. Tanner - AppreciateHub に対する Azure AD SSO を構成してテストします。 SSO が機能するために、Azure AD ユーザーと O.C. の関連ユーザーとの間にリンク関係を確立する必要があります。 Tanner - AppreciateHub で Britta Simon というユーザーを作成することです。
+**B.Simon** というテスト ユーザーを使用して、O.C. Tanner - AppreciateHub に対する Azure AD SSO を構成してテストします。 SSO が機能するために、Azure AD ユーザーと O.C. Tanner - AppreciateHub の関連ユーザーとの間にリンク関係を確立する必要があります。 Tanner - AppreciateHub で Britta Simon というユーザーを作成することです。
 
 O.C. Tanner - AppreciateHub に対する Azure AD SSO を構成してテストするには、次の構成要素を完了します。
 
@@ -110,7 +110,7 @@ O.C. Tanner - AppreciateHub に対する Azure AD SSO を構成してテスト�
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、B.Simon に O.C. へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。 Tanner - AppreciateHub で Britta Simon というユーザーを作成することです。
+このセクションでは、B.Simon に O.C. Tanner - AppreciateHub へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。 Tanner - AppreciateHub で Britta Simon というユーザーを作成することです。
 
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[O.C. Tanner - AppreciateHub]** を選択します。

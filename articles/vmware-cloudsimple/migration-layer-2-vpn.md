@@ -1,6 +1,6 @@
 ---
-title: CloudSimple による Azure VMware ソリューション - オンプレミスのレイヤー 2 ネットワークをプライベート クラウドに拡張する
-description: CloudSimple プライベート クラウドの NSX-T とオンプレミスのスタンドアロン NSX Edge クライアントの間にレイヤー 2 VPN を設定する方法について説明します
+title: Azure VMware Solutions (AVS) - オンプレミスのレイヤー 2 ネットワークを AVS プライベート クラウドに拡張する
+description: AVS プライベート クラウド上の NSX-T とオンプレミスのスタンドアロン NSX Edge クライアントの間にレイヤー 2 VPN を設定する方法について説明します
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/19/2019
@@ -8,29 +8,29 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2ddfa9611143d5c3f823539e018c8afc885c6a46
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 975ffcd7142aac24363c2235db3742c155c1007b
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232379"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019827"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>レイヤー 2 拡張済みネットワークを使用したワークロードの移行
 
-このガイドでは、レイヤー 2 VPN (L2VPN) を使用して、レイヤー 2 ネットワークをオンプレミス環境から CloudSimple プライベート クラウドに拡張する方法について説明します。 このソリューションでは、オンプレミスの VMware 環境で実行されているワークロードを、ワークロードの IP を再設定せずに、同じサブネットのアドレス空間内の Azure のプライベート クラウドに移行できます。
+このガイドでは、レイヤー 2 VPN (L2VPN) を使用して、レイヤー 2 ネットワークをオンプレミス環境から AVS プライベート クラウドに拡張する方法について説明します。 このソリューションでは、オンプレミスの VMware 環境で実行されているワークロードを、ワークロードの IP を再設定せずに、同じサブネットのアドレス空間内の Azure の AVS プライベート クラウドに移行できます。
 
 レイヤー 2 ネットワークの L2VPN ベースの拡張は、オンプレミスの VMware 環境に NSX ベースのネットワークがあってもなくても機能できます。 オンプレミスのワークロード用の NSX ベースのネットワークがない場合は、スタンドアロンの NSX Edge Services Gateway を使用できます。
 
 > [!NOTE]
-> このガイドでは、オンプレミスとプライベート クラウドのデータセンターがサイト間 VPN を介して接続されているシナリオについて説明します。
+> このガイドでは、オンプレミスと AVS プライベート クラウドのデータセンターがサイト間 VPN を介して接続されているシナリオについて説明します。
 
 ## <a name="deployment-scenario"></a>デプロイ シナリオ
 
-L2VPN を使用してオンプレミス ネットワークを拡張するには、L2VPN サーバー (宛先の NSX-T Tier0 ルーター) と L2VPN クライアント (ソースのスタンドアロン クライアント) を構成する必要があります。  
+L2VPN を使用してオンプレミス ネットワークを拡張するには、L2VPN サーバー (宛先の NSX-T Tier0 ルーター) と L2VPN クライアント (ソースのスタンドアロン クライアント) を構成する必要があります。 
 
-このデプロイ シナリオでは、プライベート クラウドはサイト間 VPN トンネルを介してオンプレミス環境に接続されます。これにより、オンプレミスの管理および vMotion のサブネットが、プライベート クラウドの管理および vMotion のサブネットと通信できるようになります。 この準備は、Cross vCenter vMotion (xVC-vMotion) に必要です。 NSX-T Tier0 ルーターは、プライベート クラウドに L2VPN サーバーとしてデプロイされます。
+このデプロイ シナリオでは、AVS プライベート クラウドはサイト間 VPN トンネルを介してオンプレミス環境に接続されます。これにより、オンプレミスの管理および vMotion のサブネットが、AVS プライベート クラウドの管理および vMotion のサブネットと通信できるようになります。 この準備は、Cross vCenter vMotion (xVC-vMotion) に必要です。 NSX-T Tier0 ルーターは、AVS プライベート クラウドに L2VPN サーバーとしてデプロイされます。
 
-スタンドアロンの NSX Edge は、オンプレミス環境に L2VPN クライアントとしてデプロイされ、その後、L2VPN サーバーとペアになります。 GRE トンネル エンドポイントが各側に作成され、オンプレミスのレイヤー 2 ネットワークをプライベート クラウドに "拡張" するように構成されます。 次の図でこの構成を示します。
+スタンドアロンの NSX Edge は、オンプレミス環境に L2VPN クライアントとしてデプロイされ、その後、L2VPN サーバーとペアになります。 GRE トンネル エンドポイントが各側に作成され、オンプレミスのレイヤー 2 ネットワークを AVS プライベート クラウドに "拡張" するように構成されます。 次の図でこの構成を示します。
 
 ![デプロイ シナリオ](media/l2vpn-deployment-scenario.png)
 
@@ -42,18 +42,18 @@ L2 VPN を使用した移行の詳細については、VMware ドキュメント
 
 * オンプレミスの vSphere のバージョンが 6.7U1 以降または 6.5P03 以降である。
 * オンプレミスの vSphere のライセンスは、Enterprise Plus レベル (vSphere Distributed Switch の場合) である。
-* プライベート クラウドに拡張されるワークロード レイヤー 2 ネットワークを特定する。
+* AVS プライベート クラウドに拡張されるワークロード レイヤー 2 ネットワークを特定する。
 * L2VPN クライアント アプライアンスをデプロイするためにオンプレミス環境でレイヤー 2 ネットワークを特定する。
-* [プライベート クラウドが既に作成されている](create-private-cloud.md)。
-* スタンドアロンの NSX-T Edge アプライアンスのバージョンが、プライベート クラウド環境で使用されている NSX-T Manager のバージョン (NSX-T 2.3.0) と互換性がある。
+* [AVS プライベート クラウドが既に作成されている](create-private-cloud.md)。
+* スタンドアロンの NSX-T Edge アプライアンスのバージョンが、AVS プライベート クラウド環境で使用されている NSX-T Manager のバージョン (NSX-T 2.3.0) と互換性がある。
 * 偽装転送を有効にして、オンプレミスの vCenter にトランク ポート グループが作成されている。
 * NSX-T スタンドアロン クライアントのアップリンク IP アドレスに使用するためのパブリック IP アドレスが予約済みであり、2 つのアドレス間の変換のために 1 対 1 の NAT が用意されている。
-* az.cloudsimple.io ドメインがプライベート クラウドの DNS サーバーを参照するように、オンプレミスの DNS サーバーで DNS 転送が設定されている。
+* az.AVS.io ドメインが AVS プライベート クラウドの DNS サーバーを参照するように、オンプレミスの DNS サーバーで DNS 転送が設定されている。
 * VMotion が 2 つのサイト間で機能するために、RTT 待機時間は 150 ミリ秒以下である必要がある。
 
 ## <a name="limitations-and-considerations"></a>制限と考慮事項
 
-次の表に、サポートされている vSphere のバージョンとネットワーク アダプターの種類を示します。  
+次の表に、サポートされている vSphere のバージョンとネットワーク アダプターの種類を示します。 
 
 | vSphere のバージョン | ソース vSwitch の種類 | 仮想 NIC ドライバー | ターゲット vSwitch の種類 | サポート対象かどうか |
 ------------ | ------------- | ------------ | ------------- | ------------- 
@@ -64,7 +64,7 @@ L2 VPN を使用した移行の詳細については、VMware ドキュメント
 
 VMware NSX-T 2.3 リリース時点:
 
-* L2VPN 経由でオンプレミスに拡張されているプライベート クラウド側の論理スイッチを同時にルーティングすることはできません。 拡張された論理スイッチを論理ルーターに接続することはできません。
+* L2VPN 経由でオンプレミスに拡張されている AVS プライベート クラウド側の論理スイッチを同時にルーティングすることはできません。 拡張された論理スイッチを論理ルーターに接続することはできません。
 * L2VPN とルートベースの IPSEC VPN は、API 呼び出しを使用してのみ構成できます。
 
 詳細については、VMware ドキュメントの「[仮想プライベート ネットワーク](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58.html#GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58__section_44B4972B5F12453B90625D98F86D5704)」を参照してください。
@@ -73,7 +73,7 @@ VMware NSX-T 2.3 リリース時点:
 
 ### <a name="on-premises-network-where-the-standalone-esg-l2-vpn-client-is-deployed"></a>スタンドアロンの ESG (L2 VPN クライアント) がデプロイされているオンプレミス ネットワーク
 
-| **項目** | **値** |
+| **項目** | **Value** |
 |------------|-----------------|
 | ネットワーク名 | MGMT_NET_VLAN469 |
 | VLAN | 469 |
@@ -83,23 +83,23 @@ VMware NSX-T 2.3 リリース時点:
 
 ### <a name="on-premises-network-to-be-stretched"></a>拡張されるオンプレミス ネットワーク
 
-| **項目** | **値** |
+| **項目** | **Value** |
 |------------|-----------------|
 | VLAN | 472 |
 | CIDR| 10.250.3.0/24 |
 
-### <a name="private-cloud-ip-schema-for-nsx-t-tier0-router-l2-vpn-serve"></a>NSX-T Tier0 ルーターのプライベート クラウド IP スキーマ (L2 VPN サーバー)
+### <a name="avs-private-cloud-ip-schema-for-nsx-t-tier0-router-l2-vpn-serve"></a>NSX-T Tier0 ルーターの AVS プライベート クラウド IP スキーマ (L2 VPN サーバー)
 
-| **項目** | **値** |
+| **項目** | **Value** |
 |------------|-----------------|
 | ループバック インターフェイス | 192.168.254.254/32 |
 | トンネル インターフェイス | 5.5.5.1/29 |
 | 論理スイッチ (拡張済み) | Stretch_LS |
 | ループバック インターフェイス (NAT IP アドレス) | 104.40.21.81 |
 
-### <a name="private-cloud-network-to-be-mapped-to-the-stretched-network"></a>拡張されたネットワークにマップされるプライベート クラウド ネットワーク
+### <a name="avs-private-cloud-network-to-be-mapped-to-the-stretched-network"></a>拡張されたネットワークにマップされる AVS プライベート クラウド ネットワーク
 
-| **項目** | **値** |
+| **項目** | **Value** |
 |------------|-----------------|
 | VLAN | 712 |
 | CIDR| 10.200.15.0/24 |
@@ -116,7 +116,7 @@ VMware NSX-T 2.3 リリース時点:
 
     ![管理 IP をメモする](media/l2vpn-fetch02.png)
 
-3. Edge VM の管理 IP アドレスへの SSH セッションを開きます。 ユーザー名 **admin** とパスワード **CloudSimple 123!** を使用して ```get logical-router``` コマンドを実行します。
+3. Edge VM の管理 IP アドレスへの SSH セッションを開きます。 ユーザー名 **admin** とパスワード **AVS 123!** を使用して ```get logical-router``` コマンドを実行します。
 
     ![論理ルーターの出力を取得する](media/l2vpn-fetch03.png)
 
@@ -126,7 +126,7 @@ VMware NSX-T 2.3 リリース時点:
 
     ![論理スイッチを作成する](media/l2vpn-fetch04.png)
 
-6. リンク ローカル IP アドレス、あるいはオンプレミスまたはプライベート クラウドからの重複していないサブネットを使用して、Tier1 ルーターにダミー スイッチを接続します。 VMware ドキュメントの「[Tier-1 論理ルーターにダウンリンク ポートを追加する](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-E7EA867C-604C-4224-B61D-2A8EF41CB7A6.html)」を参照してください。
+6. リンク ローカル IP アドレス、あるいはオンプレミスまたは AVS プライベート クラウドからの重複していないサブネットを使用して、Tier1 ルーターにダミー スイッチを接続します。 VMware ドキュメントの「[Tier-1 論理ルーターにダウンリンク ポートを追加する](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-E7EA867C-604C-4224-B61D-2A8EF41CB7A6.html)」を参照してください。
 
     ![ダミー スイッチを接続する](media/l2vpn-fetch05.png)
 
@@ -148,7 +148,7 @@ NSX-T Tier0 ルーターとスタンドアロンの NSX Edge クライアント�
 
 ### <a name="allow-udp-5004500-for-ipsec"></a>IPsec で UDP 500/4500 を許可する
 
-1. CloudSimple ポータルで、NSX-T Tier0 ループバック インターフェイスの[パブリック IP アドレスを作成](public-ips.md)します。
+1. AVS ポータルで、NSX-T Tier0 ループバック インターフェイスの[パブリック IP アドレスを作成](public-ips.md)します。
 
 2. UDP 500/4500 受信トラフィックを許可するステートフル ルールを使用して[ファイアウォール テーブルを作成](firewall.md)し、そのファイアウォール テーブルを NSX-T HostTransport サブネットに接続します。
 
@@ -163,7 +163,7 @@ NSX-T Tier0 ルーターとスタンドアロンの NSX Edge クライアント�
 
     ![IP プレフィックス リストを作成する](media/l2vpn-routing-security02.png)
 
-4. NSX-T Manager にサインインし、 **[Networking]\(ネットワーク\)**  >  **[Routing]\(ルーティング\)**  >  **[Routers]\(ルーター\)**  >  **[Provider-LR]\(プロバイダー LR\)**  >  **[Routing]\(ルーティング\)**  >  **[BGP]**  >  **[Neighbors]\(近隣ノード\)** の順に選択します。 最初の近隣ノードを選択します。 **[Edit]\(編集\)**  >  **[Address Families]\(アドレス ファミリ\)** の順にクリックします。 IPv4 ファミリの場合は、 **[Out Filter]\(出力フィルター\)** 列を編集し、作成した IP プレフィックス リストを選択します。 **[Save]** をクリックします。 2 番目の近隣ノードに対してこの手順を繰り返します。
+4. NSX-T Manager にサインインし、 **[Networking]\(ネットワーク\)**  >  **[Routing]\(ルーティング\)**  >  **[Routers]\(ルーター\)**  >  **[Provider-LR]\(プロバイダー LR\)**  >  **[Routing]\(ルーティング\)**  >  **[BGP]**  >  **[Neighbors]\(近隣ノード\)** の順に選択します。 最初の近隣ノードを選択します。 **[Edit]\(編集\)**  >  **[Address Families]\(アドレス ファミリ\)** の順にクリックします。 IPv4 ファミリの場合は、 **[Out Filter]\(出力フィルター\)** 列を編集し、作成した IP プレフィックス リストを選択します。 **[保存]** をクリックします。 2 番目の近隣ノードに対してこの手順を繰り返します。
 
     ![IP プレフィックス リストをアタッチする 1](media/l2vpn-routing-security03.png) ![IP プレフィックス リストをアタッチする 2](media/l2vpn-routing-security04.png)
 
@@ -173,9 +173,9 @@ NSX-T Tier0 ルーターとスタンドアロンの NSX Edge クライアント�
 
 ## <a name="configure-a-route-based-vpn-on-the-nsx-t-tier0-router"></a>NSX-T Tier0 ルーターでルートベースの VPN を構成する
 
-次のテンプレートを使用して、NSX-T Tier0 ルーターでルートベースの VPN を構成するためのすべての詳細情報を入力します。 後続の POST 呼び出しでは、各 POST 呼び出しの UUID が必要です。 L2VPN のループバック インターフェイスとトンネル インターフェイスの IP アドレスは一意である必要があり、オンプレミスまたはプライベート クラウドのネットワークと重複することはできません。
+次のテンプレートを使用して、NSX-T Tier0 ルーターでルートベースの VPN を構成するためのすべての詳細情報を入力します。 後続の POST 呼び出しでは、各 POST 呼び出しの UUID が必要です。 L2VPN のループバック インターフェイスとトンネル インターフェイスの IP アドレスは一意である必要があり、オンプレミスまたは AVS プライベート クラウドのネットワークと重複することはできません。
 
-L2VPN に使用されるループバック インターフェイスとトンネル インターフェイスに対して選択される IP アドレスは一意である必要があり、オンプレミスまたはプライベート クラウドのネットワークと重複することはできません。 ループバック インターフェイス ネットワークは、常に /32 である必要があります。
+L2VPN に使用されるループバック インターフェイスとトンネル インターフェイスに対して選択される IP アドレスは一意である必要があり、オンプレミスまたは AVS プライベート クラウドのネットワークと重複することはできません。 ループバック インターフェイス ネットワークは、常に /32 である必要があります。
 
 ```
 Loopback interface ip : 192.168.254.254/32
@@ -422,7 +422,7 @@ GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes
 
 ## <a name="deploy-the-nsx-t-standalone-client-on-premises"></a>NSX-T スタンドアロン クライアント (オンプレミス) をデプロイする
 
-デプロイする前に、オンプレミスのファイアウォール規則で、以前に NSX-T T0 ルーターのループバック インターフェイス用に予約されていた CloudSimple のパブリック IP アドレスとの間の UDP 500/4500 の送受信トラフィックが許可されていることを確認します。 
+デプロイする前に、オンプレミスのファイアウォール規則で、以前に NSX-T T0 ルーターのループバック インターフェイス用に予約されていた AVS のパブリック IP アドレスとの間の UDP 500/4500 の送受信トラフィックが許可されていることを確認します。 
 
 1. [スタンドアロンの NSX Edge クライアント OVF をダウンロード](https://my.vmware.com/group/vmware/details?productId=673&rPId=33945&downloadGroup=NSX-T-230)し、ダウンロードしたバンドルからフォルダーにファイルを抽出します。
 
@@ -430,7 +430,7 @@ GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes
 
 2. 抽出したすべてのファイルが含まれているフォルダーにアクセスします。 すべての vmdk (大きいアプライアンス サイズ用の NSX-l2t-client-large.mf と NSX-l2t-client-large.ovf、または特大のアプライアンス サイズ用の NSX-l2t-client-Xlarge.mf と NSX-l2t-client-Xlarge.ovf) を選択します。 **[次へ]** をクリックします。
 
-    ![テンプレートを選択する](media/l2vpn-deploy-client02.png) ![テンプレートを選択する](media/l2vpn-deploy-client03.png)
+    ![テンプレートの選択](media/l2vpn-deploy-client02.png) ![テンプレートの選択](media/l2vpn-deploy-client03.png)
 
 3. NSX-T スタンドアロン クライアントの名前を入力し、 **[次へ]** をクリックします。
 
@@ -448,14 +448,14 @@ GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes
 
     L2T を展開します。
 
-    * **[Peer Address]\(ピア アドレス)** 。 NSX-T Tier0 ループバック インターフェイス用に Azure CloudSimple ポータルで予約されている IP アドレスを入力します。
+    * **[Peer Address]\(ピア アドレス)** 。 NSX-T Tier0 Loopback インターフェイス用に Azure AVS ポータルで予約されている IP アドレスを入力します。
     * **[Peer Code]\(ピア コード\)** 。 L2VPN サーバー デプロイの最後の手順で取得したピア コードを貼り付けます。
     * **[Sub Interfaces VLAN (Tunnel ID)]\(サブインターフェイス VLAN (トンネル ID)\)** 。 拡張する VLAN ID を入力します。 かっこ () に、以前に構成したトンネル ID を入力します。
 
     アップリンク インターフェイスを展開します。
 
     * **[DNS IP Address]\(DNS IP アドレス\)** 。 オンプレミスの DNS IP アドレスを入力します。
-    * **[Default Gateway]\(既定のゲートウェイ\)** 。  このクライアントの既定のゲートウェイとして機能する VLAN の既定のゲートウェイを入力します。
+    * **[Default Gateway]\(既定のゲートウェイ\)** 。 このクライアントの既定のゲートウェイとして機能する VLAN の既定のゲートウェイを入力します。
     * **[IP Address]\(IP アドレス\)** 。 スタンドアロン クライアントのアップリンク IP アドレスを入力します。
     * **[Prefix Length]\(プレフィックス長\)** 。 アップリンク VLAN/サブネットのプレフィックス長を入力します。
     * **[CLI admin/enable/root User Password]\(CLI の admin/enable/root の各ユーザーのパスワード\)** 。 admin/enable/root のアカウントのパスワードを設定します。

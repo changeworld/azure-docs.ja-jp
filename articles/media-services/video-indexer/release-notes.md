@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 01/07/2020
 ms.author: juliako
-ms.openlocfilehash: 88effd58e807d39e5915aa41425ecf2e8ca8e3cc
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: f1387273f9736fea70682177d5d48dc2f141bbad
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832306"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933859"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer リリース ノート
 
@@ -29,6 +29,24 @@ ms.locfileid: "75832306"
 * 既知の問題
 * バグの修正
 * 非推奨の機能
+
+## <a name="january-2020"></a>2020 年 1 月
+ 
+### <a name="custom-language-support-for-additional-languages"></a>追加言語に対するカスタム言語サポート
+
+Video Indexer で、`ar-SY`、`en-UK`、および `en-AU` のカスタム言語モデルがサポートされるようになりました (API のみ)。
+ 
+### <a name="delete-account-timeframe-action-update"></a>アカウント削除アクションのタイムフレームの更新
+
+アカウント削除アクションで、48 時間ではなく 90 日以内にアカウントが削除されるようになりました。
+ 
+### <a name="new-video-indexer-github-repository"></a>新しい Video Indexer GitHub リポジトリ
+
+さまざまなプロジェクトを含む新しい Video Indexer GitHub、ファースト ステップ ガイド、およびコード サンプルを使用できるようになりました。 https://github.com/Azure-Samples/media-services-video-indexer
+ 
+### <a name="swagger-update"></a>Swagger の更新
+
+Video Indexer で、**認証**と**操作**が単一の[Video Indexer OpenAPI 仕様 (swagger)](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson) に統合されました。 開発者は、[Video Indexer 開発者ポータル](https://api-portal.videoindexer.ai/)で API を見つけることができます。
 
 ## <a name="december-2019"></a>2019 年 12 月
 

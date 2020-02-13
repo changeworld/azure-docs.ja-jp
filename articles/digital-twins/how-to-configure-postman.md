@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/10/2020
-ms.openlocfilehash: 42b697babe2bc004663c80e6e2f71f90ba1e5e5b
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/03/2020
+ms.openlocfilehash: 377639d7a88478308709743ab842db71028686ed
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765395"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023312"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Azure Digital Twins 用に Postman を構成する方法
 
@@ -33,45 +33,15 @@ ms.locfileid: "76765395"
 
 ## <a name="configure-azure-active-directory-to-use-the-oauth-20-implicit-grant-flow"></a>OAuth 2.0 の暗黙的な許可フローを使用するように Azure Active Directory を構成する
 
-OAuth 2.0 の暗黙的な許可フローを使用するように Azure Active Directory アプリを構成します。
-
-1. アプリの登録の **[API アクセス許可]** ウィンドウを開きます。 **[アクセス許可の追加]** ボタンを選択します。 **[API アクセス許可の要求]** ウィンドウで、 **[所属する組織で使用している API]** タブを選択し、以下を探します:
-    
-    1. `Azure Digital Twins` **Azure Digital Twins** API を選択します。
-
-        [![API または Azure Digital Twins を検索する](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png)](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
-
-    1. または、`Azure Smart Spaces Service` を検索します。 **Azure Smart Spaces Service** API を選択します。
-
-        [![Azure Smart Spaces の API を検索する](../../includes/media/digital-twins-permissions/aad-app-search-api.png)](../../includes/media/digital-twins-permissions/aad-app-search-api.png#lightbox)
-
-    > [!IMPORTANT]
-    > 表示される Azure AD API の名前と ID は、テナントによって異なります。
-    > * テスト テナントと顧客アカウントでは、`Azure Digital Twins` を検索する必要があります。
-    > * 他の Microsoft アカウントでは、`Azure Smart Spaces Service` を検索する必要があります。
-
-1. 選択された API は、同じ **[API アクセス許可の要求]** ウィンドウに **Azure Digital Twins** と表示されます。 **[Read (1)]\(読み取り (1)\)** ドロップ ダウンを選択し、 **[Read.Write]** チェック ボックスをオンにします。 **[アクセス許可の追加]** ボタンを選択します
-
-    [![Azure Digital Twins の API アクセス許可を追加する](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
-
-1. 組織の設定によっては、この API への管理者アクセスを許可するために追加の手順を実行する必要があります。 詳細については、管理者にお問い合わせください。 管理者アクセスが承認されると、 **[API アクセス許可]** ウィンドウの **[管理者の同意が必要]** 列に API の次のような内容が表示されます。
-
-    [![管理者の同意の承認を構成する](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
-
-1. 2 番目の **[リダイレクト URI]** を `https://www.getpostman.com/oauth2/callback` に構成します。
+1. [こちらのクイックスタート](quickstart-view-occupancy-dotnet.md#set-permissions-for-your-app)の手順を実行して、Azure Active Directory アプリケーションを作成し、構成します。 または、既存のアプリの登録を再利用することもできます。
 
     [![新しい Postman リダイレクト URI を構成する](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
 
-1. [アプリが**パブリック クライアント**として登録されている](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration)ことを確認するには、アプリ登録のための **[認証]** ウィンドウを開き、そのウィンドウ内を下へスクロールします。 **[既定のクライアントの種類]** セクションで、 **[アプリケーションは、パブリック クライアントとして扱います]** に対して **[はい]** を選択し、 **[保存]** をクリックします。
+1. 次に、**リダイレクト URI** を `https://www.getpostman.com/oauth2/callback` に追加します。
 
-    Manifest.json 内の **oauth2AllowImplicitFlow** 設定を有効にするには、 **[アクセス トークン]** をオンにします。
+1. **[暗黙の付与]** 、 **[アクセス トークン]** チェック ボックスの順に選択し、OAuth 2.0 の暗黙的な許可のフローを使用できるようにします。 **[構成]** 、 **[保存]** の順に選択します。
 
-    [![パブリック クライアントの構成設定](../../includes/media/digital-twins-permissions/aad-configure-public-client.png)](../../includes/media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
-
-1. Azure Active Directory アプリの**アプリケーション ID** をコピーして保管します。 これは後述する手順で使用されます。
-
-   [![Azure Active Directory のアプリケーション ID](../../includes/media/digital-twins-permissions/aad-app-reg-app-id.png)](../../includes/media//digital-twins-permissions/aad-app-reg-app-id.png#lightbox)
-
+1. Azure Active Directory アプリの **[クライアント ID]** をコピーします。
 
 ## <a name="obtain-an-oauth-20-token"></a>OAuth 2.0 トークンを取得する
 
@@ -91,15 +61,13 @@ Postman をセットアップし、Azure Active Directory トークンを取得�
 
 1. [www.getpostman.com](https://www.getpostman.com/) に移動してアプリをダウンロードします。
 
-1. Postman アプリを開き、[new]\(新規\)、[Create new]\(新規作成\) の順にクリックして、[Request]\(要求\) を選択します。 要求名を入力します。 これを保存するコレクションまたはフォルダーを選択し、[保存] をクリックします。 
-
 1. GET 要求を作成します。 **[承認]** タブを選択し、[OAuth 2.0] を選択して **[Get New Access Token]\(新しいアクセス トークンの取得\)** を選択します。
 
     | フィールド  | Value |
     |---------|---------|
     | 付与タイプ | `Implicit` |
     | コールバック URL | `https://www.getpostman.com/oauth2/callback` |
-    | 認証 URL | **ステップ 2** の**承認 URL** を使用します |
+    | 認証 URL | **ステップ 1** の**承認 URL** を使用します |
     | クライアント ID | 前のセクションで作成または再利用した Azure Active Directory アプリの**アプリケーション ID** を使用します |
     | Scope | 空白 |
     | State | 空白 |

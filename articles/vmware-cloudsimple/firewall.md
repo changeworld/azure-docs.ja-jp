@@ -1,6 +1,6 @@
 ---
-title: CloudSimple による Azure VMware ソリューション - ファイアウォールのテーブルとルールの設定
-description: プライベート クラウド ファイアウォールのテーブルとルールを設定し、サブネットと VLAN でトラフィックを制限する方法について説明します。
+title: Azure VMware Solutions (AVS) - ファイアウォールのテーブルとルールを設定する
+description: AVS プライベート クラウド ファイアウォールのテーブルとルールを設定し、サブネットと VLAN でトラフィックを制限する方法について説明します。
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,14 +8,14 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 411b4bb74c21a445f4001c949e1c7811af212453
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: d133f4d0ac8cc8b70060563ad07da35e9fdf2d37
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606449"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025284"
 ---
-# <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>プライベート クラウドのファイアウォールのテーブルとルールの設定
+# <a name="set-up-firewall-tables-and-rules-for-avs-private-clouds"></a>AVS プライベート クラウドのファイアウォールのテーブルとルールの設定
 
 ファイアウォールのテーブルと関連ルールにより、特定のサブネットと VLAN に適用するトラフィックに制限を指定できます。
 
@@ -24,7 +24,7 @@ ms.locfileid: "73606449"
 
 ## <a name="add-a-new-firewall-table"></a>新しいファイアウォール テーブルを追加する
 
-1. [CloudSimple ポータルにアクセスし](access-cloudsimple-portal.md)、サイド メニューの **[ネットワーク]** を選択します。
+1. [AVS ポータルにアクセス](access-cloudsimple-portal.md)し、サイド メニューの **[ネットワーク]** を選択します。
 2. **[Firewall Tables]\(ファイアウォール テーブル\)** を選択します。
 3. **[Create firewall table]\(ファイアウォール テーブルの作成\)** を選択します。
 
@@ -51,7 +51,7 @@ ms.locfileid: "73606449"
 2. ルールを次のように設定します。
     * **名前**。 ルールに名前を付けます。
     * **優先順位**。 ルールに優先順位を割り当てます。 番号が小さいルールが先に実行されます。
-    * **トラフィックの種類**。 ルールをプライベート クラウド、インターネット、VPN トラフィック (ステートレス) 用にするか、パブリック IP アドレス (ステートフル) 用にするかを指定します。
+    * **トラフィックの種類**。 ルールを AVS プライベート クラウド、インターネット、または VPN トラフィック (ステートレス) 用にするか、あるいはパブリック IP アドレス (ステートフル) 用にするかを指定します。
     * **プロトコル**。 ルールの対象となるプロトコル (TCP、UDP、任意のプロトコル) を選択します。
     * **方向**。 ルールが受信トラフィック用か、送信トラフィック用かを選択します。 受信と送信のトラフィック別にルールを定義する必要があります。
     * **アクション**。 ルールに一致する場合に取るアクションを選択します (許可または拒否)。
@@ -75,5 +75,5 @@ ms.locfileid: "73606449"
 1. **[ネットワーク]** の **[Firewall Tables]\(ファイアウォール テーブル\)** ページで、ファイアウォール テーブルを選択します。
 2. **[Attached VLANs/Subnet]\(接続済み VLAN/サブネット\)** タブを開きます。
 3. **[Attached VLANs/Subnet]\(接続済み VLAN/サブネット\)** をクリックします。
-4. プライベート クラウドと VLAN を選択します。 関連付けられているサブネット名と CIDR ブロックが表示されます。
+4. AVS プライベート クラウドと VLAN を選択します。 関連付けられているサブネット名と CIDR ブロックが表示されます。
 5. **[送信]** をクリックします。
