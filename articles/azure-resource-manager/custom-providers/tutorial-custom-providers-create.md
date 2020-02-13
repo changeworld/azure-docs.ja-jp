@@ -31,7 +31,7 @@ ms.locfileid: "75648739"
 }
 ```
 
-プロパティ | 必須 | [説明]
+プロパティ | 必須 | 説明
 ---|---|---
 **name** | はい | エンドポイント定義の名前。 この名前は、次の場所の対応する API を通じて公開されます: /subscriptions/<サブスクリプション ID>/resourceGroups/<リソース グループ名>/providers/Microsoft.CustomProviders<br>/resourceProviders/<リソース プロバイダー名>/<エンドポイント定義名>
 **routingType** | いいえ | エンドポイントのコントラクトの種類。 この値が指定されなかった場合は、"Proxy" が既定値となります。
@@ -123,7 +123,7 @@ az resource invoke-action --action myCustomAction \
                             }'
 ```
 
-パラメーター | 必須 | [説明]
+パラメーター | 必須 | 説明
 ---|---|---
 *action* | はい | カスタム プロバイダーに定義されているアクションの名前
 *ids* | はい | カスタム プロバイダーのリソース ID
@@ -156,7 +156,7 @@ az resource create --is-full-object \
                     }'
 ```
 
-パラメーター | 必須 | [説明]
+パラメーター | 必須 | 説明
 ---|---|---
 *is-full-object* | はい | properties オブジェクトに、場所、タグ、SKU、プランなどの他のオプションが含まれるかどうかを示します。
 *id* | はい | カスタム リソースのリソース ID。 この ID は、カスタム プロバイダーのリソース ID の拡張情報です。
@@ -168,7 +168,7 @@ az resource create --is-full-object \
 az resource delete --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/myCustomProvider/myCustomResources/myTestResourceName1
 ```
 
-パラメーター | 必須 | [説明]
+パラメーター | 必須 | 説明
 ---|---|---
 *id* | はい | カスタム リソースのリソース ID。 この ID は、カスタム プロバイダーのリソース ID の拡張情報です。
 
@@ -178,7 +178,7 @@ az resource delete --id /subscriptions/{subscriptionId}/resourceGroups/{resource
 az resource show --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/myCustomProvider/myCustomResources/myTestResourceName1
 ```
 
-パラメーター | 必須 | [説明]
+パラメーター | 必須 | 説明
 ---|---|---
 *id* | はい | カスタム リソースのリソース ID。 この ID は、カスタム プロバイダーのリソース ID の拡張情報です。
 
@@ -204,7 +204,7 @@ az resource show --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGr
 }
 ```
 
-パラメーター | 必須 | [説明]
+パラメーター | 必須 | 説明
 ---|---|---
 *resourceTypeName* | はい | カスタム プロバイダーに定義されている **resourceTypes** プロパティの `name` 値。
 *resourceProviderName* | はい | カスタム プロバイダーのインスタンス名。
