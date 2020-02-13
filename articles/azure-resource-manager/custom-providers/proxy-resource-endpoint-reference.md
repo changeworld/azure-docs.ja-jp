@@ -65,7 +65,7 @@ ms.locfileid: "75649199"
 
 パラメーター リファレンス:
 
-プロパティ | サンプル | [説明]
+プロパティ | サンプル | 説明
 ---|---|---
 name | '{myCustomResourceName}' | カスタム リソースの名前。
 型 | 'Microsoft.CustomProviders/resourceProviders/{resourceTypeName}' | リソースの種類の名前空間。
