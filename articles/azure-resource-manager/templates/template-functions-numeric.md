@@ -36,7 +36,7 @@ ms.locfileid: "75476205"
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | [説明] |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- | 
 |operand1 |はい |INT |加算する最初の整数。 |
 |operand2 |はい |INT |加算する 2 つ目の整数。 |
@@ -107,7 +107,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | [説明] |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | loopName | いいえ | string | 反復処理の取得対象となるループの名前。 |
 | offset |いいえ |INT |0 から始まる反復値に追加する整数。 |
@@ -153,7 +153,7 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | [説明] |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |はい |INT |除算される整数。 |
 | operand2 |はい |INT |除算に使用される整数。 0 にすることはできません。 |
@@ -224,7 +224,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | [説明] |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |文字列または整数 |浮動小数点数に変換する値。 |
 
@@ -258,7 +258,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | [説明] |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |はい |文字列または整数 |整数に変換する値。 |
 
@@ -318,7 +318,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | [説明] |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数の配列、または整数のコンマ区切りリスト |最大値を取得するコレクション。 |
 
@@ -382,7 +382,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | [説明] |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数の配列、または整数のコンマ区切りリスト |最小値を取得するコレクション。 |
 
@@ -446,7 +446,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | [説明] |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |はい |INT |除算される整数。 |
 | operand2 |はい |INT |除算に使用される整数。0 にすることはできません。 |
@@ -516,7 +516,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | [説明] |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |はい |INT |乗算する最初の整数。 |
 | operand2 |はい |INT |乗算する 2 つ目の整数。 |
@@ -587,7 +587,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | [説明] |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |はい |INT |減算される整数。 |
 | operand2 |はい |INT |減算する整数。 |
