@@ -55,7 +55,7 @@ ms.locfileid: "75449114"
 
 以下の表に、`ServiceConfiguration` 要素の属性を示します。 すべての属性値は、文字列型です。
 
-| Attribute | [説明] |
+| Attribute | 説明 |
 | --------- | ----------- |
 |serviceName|必須。 クラウド サービスの名前。 ここで与えられた名前は、サービス定義ファイルで指定された名前と一致する必要があります。|
 |osFamily|省略可能。 クラウド サービスのロール インスタンスで実行されるゲスト OS を指定します。 サポートされるゲスト OS のリリース版については、「[Azure ゲスト OS リリースと SDK の互換性対応表](cloud-services-guestos-update-matrix.md)」をご覧ください。<br /><br /> `osFamily` 値を含めず、特定のゲスト OS バージョンについて `osVersion` 属性を設定していない場合、既定値 1 が使用されます。|
