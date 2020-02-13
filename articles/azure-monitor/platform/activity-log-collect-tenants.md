@@ -125,7 +125,7 @@ Log Analytics ワークスペースが同一の Azure サブスクリプショ�
 
     ![ロジック アプリを作成する](media/collect-activity-logs-subscriptions/create-logic-app.png)
 
-   |設定 | [説明]  |
+   |設定 | 説明  |
    |:---|:---|
    | Name           | ロジック アプリの一意の名前。 |
    | サブスクリプション   | ロジック アプリを含める Azure サブスクリプションを選択します。 |
@@ -300,7 +300,7 @@ Event Hub からの出力には、レコードの配列を持つ JSON ペイロ�
 
     ![データ送信アクションの構成](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-configuration.png)
 
-   |設定        | 値           | [説明]  |
+   |設定        | 値           | 説明  |
    |---------------|---------------------------|--------------|
    |[JSON Request body]\(JSON 要求本文\)  | **Compose** アクションの**出力** | Compose アクションの本文からレコードを取得します。 |
    | [カスタム ログの名前] | AzureActivity | インポートされたデータを保持するために Log Analytics ワークスペース内に作成するカスタム ログ テーブルの名前。 |
