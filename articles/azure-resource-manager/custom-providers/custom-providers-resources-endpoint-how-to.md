@@ -102,7 +102,7 @@ az resource create --is-full-object \
                     }'
 ```
 
-パラメーター | 必須 | [説明]
+パラメーター | 必須 | 説明
 ---|---|---
 is-full-object | *はい* | properties オブジェクトに、場所、タグ、SKU、プランなどの他のオプションが含まれることを示します。
 id | *はい* | カスタム リソースのリソース ID。 これは **ResourceProvider** から存在するはずです
@@ -114,7 +114,7 @@ Azure のカスタム リソースを削除します。
 az resource delete --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/{resourceTypeName}/{customResourceName}
 ```
 
-パラメーター | 必須 | [説明]
+パラメーター | 必須 | 説明
 ---|---|---
 id | *はい* | カスタム リソースのリソース ID。 これは **ResourceProvider** から存在するはずです。
 
@@ -124,7 +124,7 @@ Azure のカスタム リソースを取得します。
 az resource show --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/{resourceTypeName}/{customResourceName}
 ```
 
-パラメーター | 必須 | [説明]
+パラメーター | 必須 | 説明
 ---|---|---
 id | *はい* | カスタム リソースのリソース ID。 これは **ResourceProvider** から存在するはずです
 
@@ -174,7 +174,7 @@ Azure Resource Manager テンプレートは、`id`、`name`、および `type` 
 }
 ```
 
-パラメーター | 必須 | [説明]
+パラメーター | 必須 | 説明
 ---|---|---
 resourceTypeName | *はい* | カスタム プロバイダーで定義されている **resourceType** の**名前**。
 resourceProviderName | *はい* | カスタム リソース プロバイダーのインスタンス名。
