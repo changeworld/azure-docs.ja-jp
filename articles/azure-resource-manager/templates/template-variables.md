@@ -85,7 +85,7 @@ Resource Manager は、デプロイ操作を開始する前に変数を解決し
 
 次の例は、変数を使用するためのシナリオを示しています。
 
-|Template  |[説明]  |
+|Template  |説明  |
 |---------|---------|
 | [変数の定義](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | さまざまな種類の変数を例示します。 このテンプレートではリソースをデプロイしません。 変数の値を作成して、その値を返します。 |
 | [構成変数](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | 構成の値を定義する変数の用法を例示します。 このテンプレートではリソースをデプロイしません。 変数の値を作成して、その値を返します。 |
