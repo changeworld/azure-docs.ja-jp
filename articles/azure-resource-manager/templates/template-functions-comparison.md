@@ -29,7 +29,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | [説明] |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数、文字列、配列、オブジェクト |等しいかどうかを確認する 1 番目の値。 |
 | arg2 |はい |整数、文字列、配列、オブジェクト |等しいかどうかを確認する 2 番目の値。 |
@@ -185,7 +185,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | [説明] |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数または文字列 |大きいかどうかを比較する 1 番目の値。 |
 | arg2 |はい |整数または文字列 |大きいかどうかを比較する 2 番目の値。 |
@@ -261,7 +261,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | [説明] |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数または文字列 |以上かどうかを比較する 1 番目の値。 |
 | arg2 |はい |整数または文字列 |以上かどうかを比較する 2 番目の値。 |
@@ -337,7 +337,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | [説明] |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数または文字列 |小さいかどうかを比較する 1 番目の値。 |
 | arg2 |はい |整数または文字列 |小さいかどうかを比較する 2 番目の値。 |
@@ -413,7 +413,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | [説明] |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数または文字列 |以下かどうかを比較する 1 番目の値。 |
 | arg2 |はい |整数または文字列 |以下かどうかを比較する 2 番目の値。 |
