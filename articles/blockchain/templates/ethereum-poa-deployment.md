@@ -84,7 +84,7 @@ ID ストアは、生成された Ethereum ID を安全に保持するために�
 
 ![基本](./media/ethereum-poa-deployment/basic-blade.png)
 
-パラメーター | [説明] | 値の例
+パラメーター | 説明 | 値の例
 ----------|-------------|--------------
 Create a new network or join existing network?\(新しいネットワークの作成または既存のネットワークへの参加\) | 新しいコンソーシアム ネットワークを作成することも、既存のコンソーシアム ネットワークに参加することもできます。 既存のネットワークに参加するには、追加のパラメーターが必要です。 | 新規作成
 電子メール アドレス | デプロイの完了時に、デプロイに関する情報を含む電子メール通知が送信されます。 | 有効な電子メール アドレス
@@ -103,7 +103,7 @@ Location | リソース グループの Azure リージョン。 | 米国西部 
 
 ![[Deployment regions]\(デプロイ リージョン\)](./media/ethereum-poa-deployment/deployment-regions.png)
 
-パラメーター | [説明] | 値の例
+パラメーター | 説明 | 値の例
 ----------|-------------|--------------
 Number of region(s) (リージョン数)|コンソーシアム ネットワークをデプロイするリージョンの数| 2
 First region (リージョン 1) | コンソーシアム ネットワークをデプロイする 1 つ目のリージョン | 米国西部 2
@@ -117,7 +117,7 @@ Second region (リージョン 2) | コンソーシアム ネットワークを�
 
 ![Network size and performance (ネットワークのサイズとパフォーマンス)](./media/ethereum-poa-deployment/network-size-and-performance.png)
 
-パラメーター | [説明] | 値の例
+パラメーター | 説明 | 値の例
 ----------|-------------|--------------
 Number of load balanced validator nodes (負荷分散型バリデータ ノードの数) | ネットワークの一部としてプロビジョニングする検証ノードの数。 | 2
 Validator node storage performance (バリデーター ノード ストレージのパフォーマンス) | デプロイされる各検証ノードのマネージド ディスクの種類。 価格の詳細については、[ストレージの価格](https://azure.microsoft.com/pricing/details/managed-disks/)に関するページをご覧ください。 | Standard SSD
@@ -139,7 +139,7 @@ F16s|Premium SSD|high|high|low
 
 ![Ethereum settings (Ethereum の設定)](./media/ethereum-poa-deployment/ethereum-settings.png)
 
-パラメーター | [説明] | 値の例
+パラメーター | 説明 | 値の例
 ----------|-------------|--------------
 Consortium Member ID (コンソーシアム メンバー ID) | コンソーシアム ネットワークに参加する各メンバーに関連付けられている ID。 競合を回避するように IP アドレス空間を構成するために使用されます。 プライベート ネットワークの場合、メンバー ID は同じネットワーク内のさまざまな組織間で一意である必要があります。  同じ組織が複数のリージョンにデプロイする場合でも、一意のメンバー ID が必要です。 競合が発生しないように他の参加メンバーと共有する必要があるため、このパラメーターの値を書き留めておきます。 有効な範囲は 0 から 255 です。 | 0
 ネットワーク ID | デプロイされているコンソーシアム Ethereum ネットワークのネットワーク ID。 各 Ethereum ネットワークには独自のネットワーク ID があり、1 はパブリック ネットワークの ID を示します。 有効な範囲は 5 から 999,999,999 です。 | 10101010
@@ -158,7 +158,7 @@ Transaction Permission Contract\(トランザクションのアクセス許可�
 
 ![Azure Monitor](./media/ethereum-poa-deployment/azure-monitor.png)
 
-パラメーター | [説明] | 値の例
+パラメーター | 説明 | 値の例
 ----------|-------------|--------------
 監視 | 監視を有効にするオプション | [有効化]
 既存の Azure Monitor ログへの接続 | 新しい Azure Monitor ログ インスタンスを作成するか、既存のインスタンスに参加するオプション | 新規作成
