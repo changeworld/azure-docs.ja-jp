@@ -18,7 +18,7 @@ ms.locfileid: "75474629"
 
 要求では、次の認証ヘッダー値があります。
 
-| ヘッダー名 | [説明] | 値の例 |
+| ヘッダー名 | 説明 | 値の例 |
 | ----------- | ----------- | ------------ |
 | 承認 | プライマリ トークン | Bearer &lt;primary-token&gt; |
 | x-ms-authorization-auxiliary | 補助トークン | Bearer &lt;auxiliary-token1&gt;、EncryptedBearer &lt;auxiliary-token2&gt;、Bearer &lt;auxiliary-token3&gt; |
