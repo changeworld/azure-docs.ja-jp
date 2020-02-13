@@ -195,7 +195,7 @@ Log Analytics エージェントは、ポート 25224 でローカル クライ�
 ## <a name="syslog-record-properties"></a>Syslog レコードのプロパティ
 Syslog レコードの型は **Syslog** になり、次の表に示すプロパティがあります。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | Computer |イベントが収集されたコンピューター。 |
 | Facility |メッセージを生成したシステムの部分を定義します。 |
@@ -209,7 +209,7 @@ Syslog レコードの型は **Syslog** になり、次の表に示すプロパ�
 ## <a name="log-queries-with-syslog-records"></a>Syslog レコードのログ クエリ
 次の表は、Syslog レコードを取得するログ クエリのさまざまな例をまとめたものです。
 
-| クエリ | [説明] |
+| クエリ | 説明 |
 |:--- |:--- |
 | syslog |すべての Syslog です。 |
 | Syslog &#124; where SeverityLevel == "error" |重大度がエラーであるすべての Syslog レコードです。 |
