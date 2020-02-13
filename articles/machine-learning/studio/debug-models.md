@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/14/2017
-ms.openlocfilehash: 494141cc580d80ff1d025228406d53f9788b5d97
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 6c672e57c0c1c0b62b79afbacec3f842770e3d61
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837750"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169245"
 ---
 # <a name="debug-your-model-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) でモデルをデバッグする
 
@@ -29,7 +29,7 @@ ms.locfileid: "73837750"
 
 ## <a name="train-model-module-produces-an-error"></a>[モデルのトレーニング] モジュールがエラーを生成する
 
-![Image1](./media/debug-models/train_model-1.png)
+![image1](./media/debug-models/train_model-1.png)
 
 [[モデルのトレーニング]][train-model] モジュールでは、次の 2 つを入力する必要があります。
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: ddcf5a1df31b4b36e25b2522ada21deab19fe032
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 8fd5a063683d09cb94b45205426871d880119cc2
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159877"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138028"
 ---
 # <a name="securing-paas-deployments"></a>PaaS デプロイをセキュリティで保護する
 
@@ -36,7 +36,7 @@ ms.locfileid: "73159877"
 ## <a name="cloud-security-advantages"></a>クラウド セキュリティの利点
 お客様と Microsoft との[責任の分担](shared-responsibility.md)を理解することが重要です。 オンプレミスでは、お客様はスタック全体を所有しますが、クラウドに移行すると、責任の一部は Microsoft に移譲されます。
 
-[クラウド内に存在することには、セキュリティ上の利点](shared-responsibility.md#cloud security advantages)があります。 オンプレミス環境では、組織は責任を果たしきれず、セキュリティに投資できるリソースが限られていることが多いため、攻撃者がすべての階層で脆弱性を悪用できる環境が生まれています。
+[クラウド内に存在することには、セキュリティ上の利点](shared-responsibility.md#cloud-security-advantages)があります。 オンプレミス環境では、組織は責任を果たしきれず、セキュリティに投資できるリソースが限られていることが多いため、攻撃者がすべての階層で脆弱性を悪用できる環境が生まれています。
 
 組織は、プロバイダーの提供するクラウドベースのセキュリティ機能とクラウド インテリジェンスを利用して、脅威の検出と応答時間を向上させることができます。  クラウド プロバイダーに責任をシフトすることで、セキュリティの適用範囲を広げることができるため、これまでセキュリティに費やしてきたリソースと予算を、事業のその他の優先事項に割り当てることができます。
 
@@ -105,7 +105,7 @@ Microsoft [セキュリティ開発ライフ サイクル (Security Development 
 | 否認 | 否認防止 | Azure の[監視と診断](/azure/architecture/best-practices/monitoring)を有効にする。 |
 | 情報漏えい | 機密情報 | [サービス証明書](/rest/api/appservice/certificates)を使用して保存データを暗号化する。 |
 | Denial of service (サービス拒否) | 可用性 | 潜在的なサービス拒否状態のパフォーマンス メトリックを監視する。 接続のフィルターを実装する。 |
-| 特権の昇格 | Authorization | [Privileged Identity Management](/azure/active-directory/privileged-identity-management/subscription-requirements) を使用する。 |
+| 権限の昇格 | 承認 | [Privileged Identity Management](/azure/active-directory/privileged-identity-management/subscription-requirements) を使用する。 |
 
 ## <a name="develop-on-azure-app-service"></a>Azure App Service での開発
 PaaS である [Azure App Service](/azure/app-service/overview) を使用すると、任意のプラットフォームまたはデバイスを対象とした Web アプリとモバイル アプリを作成し、クラウドやオンプレミスにあるあらゆる場所のデータにアクセスできます。 App Service には、以前は Azure Websites および Azure Mobile Services として個別に提供されていた Web 機能とモバイル機能が含まれています。 さらに、ビジネス プロセスの自動化やクラウド API のホストに利用できる新しい機能も備えています。 単一の統合サービスである App Service により、Web、モバイル、および統合シナリオで豊富な機能セットを利用できます。
@@ -150,12 +150,12 @@ Application Insights には、収集されたデータを操作するための�
 ファジー テストは、形式が正しくないの入力データを、このデータを解析して使用するプログラム インターフェイス (エントリ ポイント) に提供することで、プログラム エラー (コード エラー) を見つける方法です。 「[Microsoft Security Risk Detection](https://www.microsoft.com/en-us/security-risk-detection/)」 (Microsoft のセキュリティ リスク検出) はクラウド ベースのツールであり、これを使用することで、ご自分のソフトウェアを Azure にデプロイする前に、バグやその他のセキュリティの脆弱性を探すことができます。 このツールは、ソフトウェアをデプロイする前に脆弱性を捕捉できるように設計されているため、ソフトウェアのリリース後にバグの修正、クラッシュの処理、攻撃への対応を行わなくても済みます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、Azure PaaS デプロイのセキュリティ上の利点およびクラウド アプリケーションのセキュリティのベスト プラクティスに重点を置いてきました。 次に、特定の Azure サービスを使用して PaaS の Web ソリューションとモバイル ソリューションをセキュリティ保護するための推奨されるプラクティスについて説明します。 まず、Azure App Service、Azure SQL Database、Azure SQL Data Warehouse、および Azure Storage から始めましょう。 他の Azure サービスの推奨されるプラクティスに関する記事が公開されると、次の一覧にリンクが提供されます。
 
 - [Azure App Service](paas-applications-using-app-services.md)
 - [Azure SQL Database と Azure SQL Data Warehouse](paas-applications-using-sql.md)
-- [Azure Storage](paas-applications-using-storage.md)
+- [Azure ストレージ](paas-applications-using-storage.md)
 - Azure Cache for Redis
 - Azure Service Bus
 - Web アプリケーション ファイアウォール

@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 283b4004f34372104eb083496400772884f5965e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 633c3ffc8e266087c88116a15c43469727a9a50d
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420381"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133642"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>エラスティック ジョブの作成、構成、および管理
 
@@ -57,7 +57,7 @@ ms.locfileid: "74420381"
 
 ![エラスティック ジョブの資格情報](media/elastic-jobs-overview/job-credentials.png)
 
-## <a name="security-best-practices"></a>セキュリティのベスト プラクティス
+## <a name="security-best-practices"></a>セキュリティの運用方法
 
 エラスティック ジョブを使用する際のベスト プラクティスをいくつか紹介します。
 
@@ -88,7 +88,7 @@ SQL エラスティック プール内のデータベースにジョブを実行
 
 
 ```sql
-IF NOT EXIST (some_object)
+IF NOT EXISTS (some_object)
     -- Create the object
     -- If it exists, drop the object before recreating it.
 ```
@@ -97,7 +97,7 @@ IF NOT EXIST (some_object)
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [PowerShell を使用したエラスティック ジョブの作成と管理](elastic-jobs-powershell.md)
 - [Transact-SQL を使用したエラスティック ジョブの作成と管理](elastic-jobs-tsql.md)

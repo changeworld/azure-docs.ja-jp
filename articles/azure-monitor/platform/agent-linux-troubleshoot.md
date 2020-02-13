@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 35c050a17219b80348857494ad41f834d3a60c85
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b7036b305b4b1041fced3be68024be29d49a4990
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397297"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086856"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 
 
@@ -398,7 +398,7 @@ omsagent.log で `[error]: unexpected error error_class=Errno::EADDRINUSE error=
   1. omsadmin.sh コマンド ラインの[指示](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)を使用して再オンボードします。
   2. Azure portal の **[詳細設定]** で、設定 **[Apply the following configuration to my Linux Servers]\(次の構成を Linux サーバーに適用する\)** が有効になっていることを確認します。  
 
-2. コマンド `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'` を実行して、`omsconfig` エージェントが Azure Monitor と通信できることを確認します。  このコマンドは、エージェントがサービスから受け取った構成を返します。この構成には、Syslog 設定、Linux のパフォーマンス カウンター、カスタム ログなどが含まれています。 このコマンドが失敗する場合は、`sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py` コマンドを実行します。 このコマンドは、omsconfig エージェントに強制的に Azure Monitor と通信して最新の構成を取得させます。
+2. コマンド `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'` を実行して、`omsconfig` エージェントが Azure Monitor と通信できることを確認します。  このコマンドは、エージェントがサービスから受け取った構成を返します。この構成には、Syslog 設定、Linux のパフォーマンス カウンター、カスタム ログなどが含まれています。 このコマンドが失敗する場合は、`sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py'` コマンドを実行します。 このコマンドは、omsconfig エージェントに強制的に Azure Monitor と通信して最新の構成を取得させます。
 
 **背景:** 特権ユーザー `root` として実行される Linux 用 Log Analytics エージェントの代わりに、エージェントは `omsagent` ユーザーとして実行されます。 ほとんどの場合、特定のファイルを読み取るためには、明示的なアクセス許可をユーザーに付与する必要があります。 `omsagent` ユーザーにアクセス許可を付与するには、次のコマンドを実行します。
 

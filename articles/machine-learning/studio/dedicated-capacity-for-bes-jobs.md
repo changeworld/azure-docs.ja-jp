@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio (classic) | Microsoft Docs'
 ms.date: 04/19/2017
-ms.openlocfilehash: ad3ae99b04d5386172c9598f35cbe7d64fddcd36
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0bb4157ff77ef57f377ba0c6a08bfe8529f663f4
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837706"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169273"
 ---
 # <a name="azure-batch-service-for-azure-machine-learning-studio-classic-jobs"></a>Azure Machine Learning Studio (クラシック) ジョブ用の Azure Batch サービス
 
@@ -111,4 +111,4 @@ Batch プール処理は、常時課金対象サービスで、Resource Manager 
 
 | **Batch プール処理を使用する状況**    | **クラシック バッチ処理を使用する状況**  |
 |---|---|
-|多数のジョブを実行する必要がある<br>または<br/>ジョブがすぐに実行される必要がある<br/>または<br/>保証されたスループットが必要である (たとえば、所定の時間枠でたくさんのジョブを実行し、ニーズに合わせてコンピューティング リソースをスケールアウトする必要がある)    | 少数のジョブを実行する<br/>と<br/> ジョブがすぐに実行される必要がない |
+|多数のジョブを実行する必要がある<br>または<br/>ジョブがすぐに実行される必要がある<br/>または<br/>保証されたスループットが必要である (たとえば、所定の時間枠でたくさんのジョブを実行し、ニーズに合わせてコンピューティング リソースをスケールアウトする必要がある)    | 少数のジョブを実行する<br/>And<br/> ジョブがすぐに実行される必要がない |

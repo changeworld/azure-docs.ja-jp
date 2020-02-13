@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 9fdbf3888b4302946fe20259a333842caa122836
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f27d398af723a54443f531c05a503a5f2fbe13f6
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76717775"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064837"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Azure Database Migration Service の使用に関する FAQ。
 
@@ -46,7 +46,7 @@ Azure Database Migration Service は、オフライン移行およびオンラ�
 > Azure Database Migration Service を使用してオンライン移行を実行するには、Premium 価格レベルに基づいてインスタンスを作成する必要があります。 詳しくは、Azure Database Migration Service の[価格](https://azure.microsoft.com/pricing/details/database-migration/)に関するページをご覧ください。
 
 **Q.Azure Database Migration Service は、他の Microsoft データベース移行ツール (Database Migration Assistant (DMA)、SQL Server Migration Assistant (SSMA) など) とどのような点が違いますか。**
-Azure Database Migration Service は、Microsoft Azure への大規模なデータベース移行に適しています。 Azure Database Migration Service と他の Microsoft データベース移行ツールとの比較や、さまざまなシナリオでサービスを使用する際の推奨事項については、ブログ投稿の「[Differentiating Microsoft’s Database Migration Tools and Services (Microsoft の各データベース移行ツールおよびサービスの差異)](https://blogs.msdn.microsoft.com/datamigration/2017/10/13/differentiating-microsofts-database-migration-tools-and-services/)」を参照してください。
+Azure Database Migration Service は、Microsoft Azure への大規模なデータベース移行に適しています。 Azure Database Migration Service と他の Microsoft データベース移行ツールとの比較や、さまざまなシナリオでサービスを使用する際の推奨事項については、ブログ投稿の「[Differentiating Microsoft’s Database Migration Tools and Services (Microsoft の各データベース移行ツールおよびサービスの差異)](https://techcommunity.microsoft.com/t5/microsoft-data-migration/differentiating-microsoft-s-database-migration-tools-and/ba-p/368529)」を参照してください。
 
 **Q.Azure Database Migration Service と Azure Migrate サービスはどのような点が違いますか。**
 Azure Migrate は、オンプレミスの仮想マシンから Azure IaaS への移行を支援します。 このサービスは、移行の適合性を評価し、パフォーマンスに基づくサイズを評価して、オンプレミスの仮想マシンを Azure で実行するためのコストを見積もることができます。 Azure Migrate は、オンプレミスの VM ベースのワークロードを Azure IaaS VM にリフトアンドシフト移行する場合に便利です。 ただし、Azure Database Migration Service とは異なり、Azure Migrate は、Azure PaaS リレーショナル データベース プラットフォーム (Azure SQL Database、Azure SQL Database Managed Instance など) 用に特化したデータベース移行サービスではありません。

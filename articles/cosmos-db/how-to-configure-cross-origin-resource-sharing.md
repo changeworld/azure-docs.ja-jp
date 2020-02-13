@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: dech
-ms.openlocfilehash: 2823ae22c8128f52ae67cf283a9a619a03abd719
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 7a487cb10965a379a0a418efaa061be88c5d10dd
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580669"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77082979"
 ---
 # <a name="configure-cross-origin-resource-sharing-cors"></a>クロスオリジン リソース共有 (CORS) の構成
 
@@ -41,23 +41,21 @@ Resource Manager テンプレートを使用して CORS を有効にするには
 
 ```json
 {
-    {
-      "type": "Microsoft.DocumentDB/databaseAccounts",
-      "name": "[variables('accountName')]",
-      "apiVersion": "2019-08-01",
-      "location": "[parameters('location')]",
-      "kind": "GlobalDocumentDB",
-      "properties": {
-        "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
-        "locations": "[variables('locations')]",
-        "databaseAccountOfferType": "Standard",
-        "cors": [
-                    {
-                        "allowedOrigins": "*"
-                    }
-                ]
-        }
-    }
+  "type": "Microsoft.DocumentDB/databaseAccounts",
+  "name": "[variables('accountName')]",
+  "apiVersion": "2019-08-01",
+  "location": "[parameters('location')]",
+  "kind": "GlobalDocumentDB",
+  "properties": {
+    "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
+    "locations": "[variables('locations')]",
+    "databaseAccountOfferType": "Standard",
+    "cors": [
+      {
+        "allowedOrigins": "*"
+      }
+    ]
+  }
 }
 ```
 
@@ -85,7 +83,7 @@ module.exports = {
 こちらの[コード サンプル](https://github.com/christopheranderson/cosmos-browser-sample)では、TypeScript と Webpack を Azure Cosmos DB JavaScript SDK ライブラリと共に使用して、新しい項目の作成時にリアルタイムで更新を送信する Todo アプリを構築しています。
 ベスト プラクティスとして、ブラウザーから Azure Cosmos DB と通信するために、主キーを使用することはしないでください。 代わりに、リソース トークンを使用して通信を行ってください。 リソース トークンについて詳しくは、「[Azure Cosmos DB のデータへのアクセスのセキュリティ保護](secure-access-to-data.md#resource-tokens)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Cosmos アカウントを保護するその他の方法については、次の記事をご覧ください。
 

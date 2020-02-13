@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 161c6816bbef31142c576f52fd122d9dd8af7883
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: e7aa19c1d189eb19237ea85aae1ad2441d7e98b9
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546658"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163196"
 ---
 # <a name="import-data-module"></a>データのインポート モジュール
 
@@ -42,7 +42,7 @@ ms.locfileid: "76546658"
 
 必要なデータを定義し、ソースに接続すると、 **[データのインポート](./import-data.md)** では、列に含まれる値に基づいて各列のデータ型が推測され、デザイナー パイプラインにデータが読み込まれます。 **データのインポート**からは、あらゆるデザイナー パイプラインで使用できるデータセットが出力されます。
 
-ソース データが変更された場合、[データのインポート](./import-data.md)を再実行することでデータセットを更新し、新しいデータを追加できます。 ただし、パイプラインを実行するたびにソースから再び読み込むことを望まない場合は、 **[Use cached results]\(キャッシュされた結果を使用する\)** オプションを TRUE に設定します。 このオプションを選択すると、このモジュールでは、同じソースと同じ入力オプションでパイプラインが前に実行されているかどうかが確認されます。 前の実行が見つかった場合、ソースからデータを再読み込みせず、キャッシュのデータが使用されます。
+ソース データが変更された場合、[データのインポート](./import-data.md)を再実行することでデータセットを更新し、新しいデータを追加できます。
 
 ## <a name="how-to-configure-import-data"></a>データのインポートを構成する方法
 
@@ -60,11 +60,7 @@ ms.locfileid: "76546658"
 
     ![インポートするデータのプレビュー](media/module/import-data.png)
 
-1. 後続の実行で再利用する目的でデータセットをキャッシュする場合、 **[Use cached results]\(キャッシュされた結果を使用する\)** オプションを選択します。
 
-    モジュール パラメーターに他の変更がなければ、パイプラインでは、モジュールの初回実行時にのみデータが読み込まれ、その後はキャッシュしたデータセットが使用されます。
-
-    パイプラインを実行するたびにデータを再読み込みする場合、このオプションの選択を解除してください。
 
 1. パイプラインを実行します。
 

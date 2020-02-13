@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 4e2a76e40206e1562d565571dbe22e5d9d0e930e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 3e414e40cb92f5c7e8c2e1d083419d57e06a0995
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834164"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161921"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service と Azure Functions でマネージド ID を使用する方法
 
@@ -270,7 +270,7 @@ App Service と Azure Functions には、トークンを取得するための簡
 > |resource|受信側の Web サービスのアプリケーション ID URI。|
 > |token_type|トークン タイプ値を指定します。 Azure AD でサポートされるのは Bearer タイプのみです。 ベアラー トークンの詳細については、「[OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)」(OAuth 2.0 承認フレームワーク: ベアラー トークンの使用法 (RFC 6750)) をご覧ください。|
 
-この応答は、[AAD のサービス間アクセス トークン要求に対する応答](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response)と同じです。
+この応答は、[AAD のサービス間アクセス トークン要求に対する応答](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md#get-a-token)と同じです。
 
 > [!NOTE]
 > 環境変数はプロセスが初めて開始されるときに設定されます。そのため、アプリケーションのマネージド ID を有効にした後、場合によってはアプリケーションを再起動するか、アプリケーションのコードを再デプロイしないと `MSI_ENDPOINT` と `MSI_SECRET` をコードで利用できません。

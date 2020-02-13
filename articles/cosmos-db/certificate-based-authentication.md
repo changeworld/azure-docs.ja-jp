@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: 9e9dd529edea23b27de2e3841079244558d6689a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: acdf268874b1dc1c24116ba36e2b4233a2702a5f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442098"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064497"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Azure AD ID で Azure Cosmos DB アカウントのキーにアクセスするための証明書ベースの認証
 
@@ -55,7 +55,6 @@ ms.locfileid: "75442098"
 1. 管理者権限を使用して Windows PowerShell ISE を開きます。 まだ行っていない場合は、AZ PowerShell モジュールをインストールし、サブスクリプションに接続します。 複数のサブスクリプションを持っている場合は、次のコマンドに示すように、現在のサブスクリプションのコンテキストを設定できます。
 
    ```powershell
-
    Install-Module -Name Az -AllowClobber
    Connect-AzAccount
 

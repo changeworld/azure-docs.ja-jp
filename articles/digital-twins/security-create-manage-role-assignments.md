@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 02/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7eeaadc80a97a96e6effdfc9e5cc76c201998f3f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1c83ca0abfd17db873bec62f0a0d052703862a45
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438056"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110408"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Azure Digital Twins 内でのロールの割り当ての作成と管理
 
@@ -36,7 +36,7 @@ Azure Digital Twins は、ロールベースのアクセス制御 ([RBAC](./secu
 
 次の表は、各属性を示しています。
 
-| Attribute | Name | 必須 | 種類 | [説明] |
+| Attribute | Name | Required | Type | 説明 |
 | --- | --- | --- | --- | --- |
 | roleId | ロール定義識別子 | はい | String | 必要なロールの割り当ての一意 ID。 ロールの定義とその識別子は、システム API のクエリを実行するか次の表を確認して見つけます。 |
 | objectId | オブジェクト識別子 | はい | String | Azure Active Directory ID、サービス プリンシパル オブジェクト ID、またはドメイン名。 ロールの割り当ての割り当て先。 ロールの割り当ては、関連付けられている型に従って書式設定する必要があります。 `DomainName` objectIdType の場合、objectId は `“@”` 文字で始まる必要があります。 |
@@ -94,7 +94,7 @@ Get-AzADServicePrincipal -ApplicationId <ApplicationId>
 
 **管理者**ロールを持つユーザーは、URL に認証済みの HTTP POST 要求を実行することによってユーザーにスペース管理者ロールを割り当てることができます。
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 
@@ -116,7 +116,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments
 
 すべての利用可能なロール (ロールの定義) を一覧表示するには、認証済みの HTTP GET 要求を実行します。
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/system/roles
 ```
 
@@ -157,7 +157,7 @@ YOUR_MANAGEMENT_API_URL/system/roles
 
 特定のロールの割り当てを確認するには、認証済みの HTTP GET 要求を実行します。
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH&accessType=YOUR_ACCESS_TYPE&resourceType=YOUR_RESOURCE_TYPE
 ```
 
@@ -174,11 +174,11 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 
 1 つのパスに対するすべてのロールの割り当てを取得するには、認証済みの HTTP GET 要求を実行します。
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ```
 
-| 値 | 置換後の文字列 |
+| Value | 置換後の文字列 |
 | --- | --- |
 | YOUR_PATH | スペースへの完全パス |
 
@@ -200,7 +200,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 
 受信者からアクセス許可を取り消すには、認証済みの HTTP DELETE 要求を実行してロールの割り当てを削除します。
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
 ```
 
@@ -214,7 +214,7 @@ DELETE 要求が成功すると、204 応答状態が返されます。 ロー�
 
 ロールの割り当てを作成するには、URL に対して認証済みの HTTP POST 要求を実行します。
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 4dd026377d5824853dd713a59a86ed742990bade
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a206ef6eb529fc396ec4ecb82d468c19f9e54b8a
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898833"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108242"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management 開発者ポータルの概要
 
@@ -39,7 +39,7 @@ ms.locfileid: "76898833"
 開発者ポータルは 2 つの方法で構築できます。
 
 - **マネージド バージョン** - API Management インスタンスに組み込まれたポータルを編集およびカスタマイズします。URL `<your-api-management-instance-name>.developer.azure-api.net` からアクセスできます。 マネージド ポータルにアクセスしてカスタマイズする方法については、[こちらのドキュメント記事](api-management-howto-developer-portal-customize.md)を参照してください。
-- **セルフホステッド バージョン** - API Management インスタンスの外部にポータルをデプロイし、自らホスティングします。 このアプローチを使用すると、ポータルのコードベースを編集したり、提供されているコア機能を拡張したりできます。 また、自分でポータルを最新バージョンにアップグレードする必要もあります。 詳細および手順については、[ポータルのソース コードを含む GitHub リポジトリ][1]と[ウィジェットの実装に関するチュートリアル][4]を参照してください。 [マネージド バージョンのチュートリアル](api-management-howto-developer-portal-customize.md)では、ポータルの管理パネルについて説明します。これは、セルフホステッド バージョンでも取り上げられています。
+- **セルフホステッド バージョン** - API Management インスタンスの外部にポータルをデプロイし、自らホスティングします。 このアプローチを使用すると、ポータルのコードベースを編集したり、提供されているコア機能を拡張したりできます。 また、自分でポータルを最新バージョンにアップグレードする必要もあります。 詳細および手順については、[ポータルのソース コードを含む GitHub リポジトリ][1]と[ウィジェットの実装に関するチュートリアル][3]を参照してください。 [マネージド バージョンのチュートリアル](api-management-howto-developer-portal-customize.md)では、ポータルの管理パネルについて説明します。これは、セルフホステッド バージョンでも取り上げられています。
 
 ## <a name="portal-architectural-concepts"></a>ポータルのアーキテクチャの概念
 
@@ -104,7 +104,7 @@ ms.locfileid: "76898833"
 
 ### <a name="functionality-i-need-isnt-supported-in-the-portal"></a>必要な機能がポータルでサポートされていない
 
-セルフホステッド バージョンを使用し、[独自のウィジェットを実装します][4]。
+セルフホステッド バージョンを使用し、[独自のウィジェットを実装します][3]。
 
 ### <a name="how-can-i-automate-portal-deployments"></a>ポータルのデプロイを自動化するにはどうすればよいですか。
 
@@ -232,14 +232,12 @@ API Management サービスが VNet 内にある場合は、VNet 接続に関す
 
 - [マネージド開発者ポータルへのアクセスとカスタマイズ](api-management-howto-developer-portal-customize.md)
 - [ポータルのセルフホステッド バージョンの設定][2]
-- [独自のウィジェットの実装][4]
+- [独自のウィジェットの実装][3]
 
 その他のリソースを参照します:
 
 - [ソース コードがある GitHub リポジトリ][1]
-- [プロジェクトのパブリック ロードマップ][3]
 
 [1]: https://aka.ms/apimdevportal
 [2]: https://github.com/Azure/api-management-developer-portal/wiki
-[3]: https://github.com/Azure/api-management-developer-portal/projects
-[4]: https://aka.ms/apimdevportal/extend
+[3]: https://aka.ms/apimdevportal/extend

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e0505960a413308283c4e67e33ec495eedd3b092
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 568a21cee5b50a8914c603976f5951d0235dbff7
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827720"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157178"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure Event Hubs の機能と用語
 
@@ -49,7 +49,7 @@ AMQP または HTTPS のどちらを使用するかは、使用シナリオに�
 
 ![Event Hubs](./media/event-hubs-features/partition_keys.png)
 
-Event Hubs によって、1 つのパーティション キー値を共有するすべてのイベントが、正しい順序で同じパーティションに確実に配信されます。 パーティション キーと発行元ポリシーを併用する場合は、発行元の ID とパーティション キーの値が一致する必要があります。 一致しないと、エラーが発生します。
+Event Hubs によって、1 つのパーティション キー値を共有するすべてのイベントが、正しい順序で同じパーティションに確実に配信されます。 パーティション キーと発行元ポリシーを併用する場合は、発行元の ID とパーティション キーの値が一致する必要があります。 そうでない場合、エラーが発生します。
 
 ### <a name="publisher-policy"></a>発行元ポリシー
 
@@ -65,7 +65,7 @@ Event Hubs では、 *発行元ポリシー*を介してイベント プロデ�
 
 [Event Hubs Capture](event-hubs-capture-overview.md) では、Event Hubs のストリーミング データを自動でキャプチャし、任意の BLOB ストレージ アカウントまたは Azure Data Lake Service アカウントのいずれかに保存することができます。 Azure Portal から Capture を有効にし、キャプチャを実行する最小サイズと時間枠を指定できます。 Event Hubs Capture を使用すると、キャプチャされたデータを格納するための独自の Azure Blob Storage アカウントとコンテナーまたは Azure Data Lake Service アカウントを指定することができます。 キャプチャされたデータは、Apache Avro 形式で書き込まれます。
 
-## <a name="partitions"></a>パーティション
+## <a name="partitions"></a>[メジャー グループ]
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
 
@@ -124,21 +124,24 @@ Event Hubs の発行/サブスクライブのメカニズムは、"*コンシュ
 イベント データ:
 * Offset
 * Sequence number
-* 本文
+* Body
 * ユーザー プロパティ
 * システム プロパティ
 
 ユーザーはオフセットを管理する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Event Hubs の詳細については、次のリンクを参照してください。
 
-* [Event Hubs のチュートリアル][Event Hubs tutorial]を開始する
+- Event Hubs の使用
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)
 * [Event Hubs のプログラミング ガイド](event-hubs-programming-guide.md)
 * [Event Hubs における可用性と一貫性](event-hubs-availability-and-consistency.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)
 * [Event Hubs サンプル][]
 
-[Event Hubs tutorial]: event-hubs-dotnet-standard-getstarted-send.md
 [Event Hubs サンプル]: https://github.com/Azure/azure-event-hubs/tree/master/samples

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 32eb8e71cfb978fac5b4d6d05af4da4fdc9f67b5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 0d220d1d88d9d761d9f0eba6187abefb372681be
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715524"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131894"
 ---
 # <a name="ingest-historical-telemetry-data"></a>過去のテレメトリ データの取り込み
 
@@ -87,7 +87,7 @@ Azure FarmBeats インスタンスへのパートナー統合を有効にする�
 |  ProductCode                    |  デバイスの製品コード、モデル名、またはモデル番号。 例: EnviroMonitor#6800。  |
 |            Port          |     ポートの名前と種類 (デジタルまたはアナログ)。
 |     Name                 |  リソースを識別するための名前。 たとえば、モデル名または製品名。
-      [説明]     | そのモデルについてのわかりやすい説明を入力します。
+      説明     | そのモデルについてのわかりやすい説明を入力します。
 |    Properties          |    製造元から提供されるその他のプロパティ。   |
 |    **[デバイス]**             |                      |
 |   DeviceModelId     |     関連付けられているデバイス モデルの ID  |
@@ -96,7 +96,7 @@ Azure FarmBeats インスタンスへのパートナー統合を有効にする�
 |  Location            |  デバイスの緯度 (-90 から +90)、経度 (-180 から 180)、海抜 (メートル単位)。   
 |ParentDeviceId       |    このデバイスが接続されている親デバイスの ID。 たとえば、ゲートウェイに接続されているノードがあります。 ノードは parentDeviceId というゲートウェイを備えています。  |
 |    Name            | リソースを識別するための名前。 デバイス パートナーは、パートナー側のデバイス名と一致する名前を送信する必要があります。 パートナー デバイス名がユーザー定義である場合、同じユーザー定義名を FarmBeats に反映させる必要があります。|
-|     [説明]       |      わかりやすい説明を入力します。 |
+|     説明       |      わかりやすい説明を入力します。 |
 |     Properties    |  製造元から提供されるその他のプロパティ。
 |     **SensorModel**        |          |
 |       Type (analog、digital)          |      センサーの種類 (アナログまたはデジタル)。       |
@@ -108,7 +108,7 @@ Azure FarmBeats インスタンスへのパートナー統合を有効にする�
 |        SensorMeasures > Unit              | センサーのテレメトリ データの単位。 システムで定義された単位は、NoUnit、Celsius、Fahrenheit、Kelvin、Rankine、Pascal、Mercury、PSI、MilliMeter、CentiMeter、Meter、Inch、Feet、Mile、KiloMeter、MilesPerHour、MilesPerSecond、KMPerHour、KMPerSecond、MetersPerHour、MetersPerSecond、Degree、WattsPerSquareMeter、KiloWattsPerSquareMeter、MilliWattsPerSquareCentiMeter、MilliJoulesPerSquareCentiMeter、VolumetricWaterContent、Percentage、PartsPerMillion、MicroMol、MicroMolesPerLiter、SiemensPerSquareMeterPerMole、MilliSiemensPerCentiMeter、Centibar、DeciSiemensPerMeter、KiloPascal、VolumetricIonContent、Liter、MilliLiter、Seconds、UnixTimestamp、MicroMolPerMeterSquaredPerSecond、InchesPerHour です。さらに追加する場合は、/ExtendedType API を参照してください。|
 |    SensorMeasures > AggregationType    |  値は、none、average、maximum、minimum、または StandardDeviation を指定できます。  |
 |          Name            | リソースを識別する名前。 たとえば、モデル名または製品名。  |
-|    [説明]        | そのモデルについてのわかりやすい説明を入力します。  |
+|    説明        | そのモデルについてのわかりやすい説明を入力します。  |
 |   Properties       |  製造元から提供されるその他のプロパティ。  |
 |    **センサー**      |          |
 | HardwareId          |   製造元によって設定された、センサーの一意の ID。 |
@@ -117,7 +117,7 @@ Azure FarmBeats インスタンスへのパートナー統合を有効にする�
 |   Port > Name        |  センサーが接続されている、デバイス上のポートの名前と種類。 これは、デバイス モデルで定義されているのと同じ名前にする必要があります。 |
 |    DeviceID  |    センサーが接続されているデバイスの ID。     |
 | Name            |   リソースを識別する名前 たとえば、センサー名または製品名と、モデル番号または製品コード。|
-|    [説明]      | わかりやすい説明を入力します。 |
+|    説明      | わかりやすい説明を入力します。 |
 |    Properties        |製造元から提供されるその他のプロパティ。 |
 
 オブジェクトの詳細については、[Swagger](https://aka.ms/FarmBeatsDatahubSwagger) を参照してください。
@@ -388,7 +388,7 @@ write_client.stop()
 
 ### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>センサーから履歴またはストリーミング データを取り込んだ後で、テレメトリ データを表示できない
 
-**現象**: デバイスまたはセンサーがデプロイされており、FarmBeats 上でデバイスまたはセンサーを作成し、EventHub にテレメトリを取り込みましたが、FarmBeats 上でテレメトリ データを取得または表示することができません。
+**現象**:デバイスまたはセンサーがデプロイされており、FarmBeats 上でデバイスまたはセンサーを作成し、EventHub にテレメトリを取り込みましたが、FarmBeats 上でテレメトリ データを取得または表示することができません。
 
 **是正措置**:
 
@@ -422,4 +422,4 @@ write_client.stop()
 
 ## <a name="next-steps"></a>次のステップ
 
-REST API ベースの統合の詳細については、「[REST API](references-for-azure-farmbeats.md#rest-api)」を参照してください。
+REST API ベースの統合の詳細については、「[REST API](rest-api-in-azure-farmbeats.md)」を参照してください。

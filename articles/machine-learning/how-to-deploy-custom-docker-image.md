@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 5d828ab59f790bab1003f0ad73fc7be1b77410bb
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 05a466d52d89fa021235c10e7187900c350b5e50
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044891"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086936"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>カスタム Docker ベース イメージを使用してモデルをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -48,7 +48,7 @@ Azure Machine Learning には既定の Docker ベース イメージが用意さ
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * [Azure Machine Learning 用 CLI 拡張機能](reference-azure-machine-learning-cli.md)。
 * インターネット上でアクセスできる [Azure Container Registry](/azure/container-registry) またはその他の Docker レジストリ。
-* このドキュメントの手順は、モデルのデプロイの一部として __推論構成__ オブジェクトの作成と使用に慣れていることを前提としています。 詳細については、[デプロイ先と方法](how-to-deploy-and-where.md#prepare-to-deploy)に関するページの「デプロイを準備する」セクションを参照してください。
+* このドキュメントの手順は、モデルのデプロイの一部として __推論構成__ オブジェクトの作成と使用に慣れていることを前提としています。 詳細については、[デプロイ先と方法](how-to-deploy-and-where.md#prepare-deployment-artifacts)に関するページの「デプロイを準備する」セクションを参照してください。
 
 ## <a name="create-a-custom-base-image"></a>カスタム ベース イメージを作成する
 
@@ -181,7 +181,7 @@ Azure Container Registry に既存のイメージをアップロードする詳�
 
 Microsoft は、一般公開されているリポジトリにいくつかの docker イメージを提供しており、このセクションの手順で使用できます。
 
-| Image | [説明] |
+| Image | 説明 |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Azure Machine Learning の基本イメージ |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | CPU 推論用の ONNX Runtime が含まれています |

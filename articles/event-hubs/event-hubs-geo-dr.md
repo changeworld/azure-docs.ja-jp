@@ -14,12 +14,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: cf36c233df9f8aaf76333b0add8b1ffce869156b
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 40db6e9f429569bc19641aa5f0f371f287db7b18
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773248"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158028"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs - geo ディザスター リカバリー 
 
@@ -48,14 +48,14 @@ geo ディザスター リカバリー機能は、[Standard SKU と専用 SKU](h
 
 -  *プライマリ/セカンダリ名前空間*: エイリアスに対応する名前空間です。 プライマリ名前空間が "アクティブ" となり、メッセージを受け取ります (既存の名前空間の場合もあれば、新しい名前空間の場合もあります)。 セカンダリ名前空間は "パッシブ" で、メッセージを受け取りません。 両者間のメタデータは同期しているため、どちらでもアプリケーション コードや接続文字列を変更せずにメッセージをシームレスに受信できます。 確実にアクティブな名前空間にだけメッセージを送信するためには、エイリアスを使用する必要があります。 
 
--  *メタデータ*: 名前空間に関連付けられているサービスのエンティティ (イベント ハブ、コンシューマー グループなど) とそのプロパティです。 自動的にレプリケートされるのはエンティティとその設定だけであることに注意してください。 メッセージやイベントはレプリケートされません。 
+-  *Metadata*:名前空間に関連付けられているサービスのエンティティ (イベント ハブ、コンシューマー グループなど) とそのプロパティです。 自動的にレプリケートされるのはエンティティとその設定だけであることに注意してください。 メッセージやイベントはレプリケートされません。 
 
--  *フェールオーバー*: セカンダリの名前空間をアクティブ化するプロセスです。
+-  *フェールオーバー*:セカンダリの名前空間をアクティブ化するプロセスです。
 
 ## <a name="supported-namespace-pairs"></a>サポートされている名前空間のペア
 プライマリ名前空間とセカンダリ名前空間の次の組み合わせがサポートされています。  
 
-| プライマリ名前空間 | セカンダリ名前空間 | サポート対象 | 
+| プライマリ名前空間 | セカンダリ名前空間 | サポートされています | 
 | ----------------- | -------------------- | ---------- |
 | Standard | Standard | はい | 
 | Standard | 専用 | はい | 
@@ -135,14 +135,18 @@ Azure Portal を使用して、新しい名前空間でのみ Availability Zones
 
 ![3][]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [GitHub のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient)で、geo ペアリングを作成してディザスター リカバリー シナリオのフェールオーバーを開始する簡単なワークフローの手順について説明します。
 * [REST API リファレンス](/rest/api/eventhub/disasterrecoveryconfigs)で、geo ディザスター リカバリーの構成を実行するための API について説明します。
 
 Event Hubs の詳細については、次のリンクを参照してください。
 
-* [Event Hubs のチュートリアル](event-hubs-dotnet-standard-getstarted-send.md)を開始する
+- Event Hubs の使用
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)
 * [Event Hubs を使用するサンプル アプリケーション](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 

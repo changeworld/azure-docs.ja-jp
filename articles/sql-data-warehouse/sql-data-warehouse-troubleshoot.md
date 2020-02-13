@@ -11,12 +11,12 @@ ms.date: 11/25/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ce57c48e568e840f3a651a5530f3fba6c0be60b7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 4eec340a04b9cdbc85a2c8712a11d31132766206
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721049"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153368"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のトラブルシューティング
 この記事では、一般的なトラブルシューティングの質問を示します。
@@ -53,7 +53,7 @@ ms.locfileid: "76721049"
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | メッセージ 40847:サーバーが許容データベース トランザクション単位クォータ 45000 を超えることになるため、操作を実行できませんでした。 | 作成しようとしているデータベースの [DWU](what-is-a-data-warehouse-unit-dwu-cdwu.md) を減らすか、[クォータの引き上げを要求](sql-data-warehouse-get-started-create-support-ticket.md)してください。 |
 | 領域使用率の調査                              | システムの領域使用率の詳細については、 [テーブルのサイズ]( ../sql-data-warehouse/sql-data-warehouse-tables-overview.md#table-size-queries) に関するトピックをご覧ください。 |
-| テーブルの管理に関するヘルプ                                    | テーブルの管理については、[テーブルの概要][概要]に関する記事を参照してください。  この記事には、[テーブルのデータ型](sql-data-warehouse-tables-data-types.md)、[テーブルの分散](sql-data-warehouse-tables-distribute.md)、[テーブルのインデックス作成](sql-data-warehouse-tables-index.md)、[テーブルのパーティション分割](sql-data-warehouse-tables-partition.md)、[テーブルの統計の管理](sql-data-warehouse-tables-statistics.md)、[一時テーブル](sql-data-warehouse-tables-temporary.md)などのより詳細なトピックへのリンクも含まれています。 |
+| テーブルの管理に関するヘルプ                                    | テーブルの管理については、[テーブルの概要](../sql-data-warehouse/sql-data-warehouse-tables-overview.md)に関する記事をご覧ください。  この記事には、[テーブルのデータ型](sql-data-warehouse-tables-data-types.md)、[テーブルの分散](sql-data-warehouse-tables-distribute.md)、[テーブルのインデックス作成](sql-data-warehouse-tables-index.md)、[テーブルのパーティション分割](sql-data-warehouse-tables-partition.md)、[テーブルの統計の管理](sql-data-warehouse-tables-statistics.md)、[一時テーブル](sql-data-warehouse-tables-temporary.md)などのより詳細なトピックへのリンクも含まれています。 |
 | Azure portal で、透過的なデータ暗号化 (TDE) の進行状況バーが更新されない | [powershell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) を使用すると、TDE の状態を表示できます。 |
 
 

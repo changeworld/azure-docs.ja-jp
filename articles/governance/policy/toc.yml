@@ -37,218 +37,30 @@
 - name: サンプル
   items:
     - name: インデックス
-      displayName: 'list, examples'
+      displayName: 'list, builtins'
       href: ./samples/index.md
-    - name: 全般
+    - name: 組み込みのポリシー
+      href: ./samples/built-in-policies.md
+    - name: 組み込みのイニシアティブ
+      href: ./samples/built-in-initiatives.md
+    - name: 使用パターン
       items:
-        - name: 名前を付ける
-          items:
-            - name: 複数の名前パターンを許可する
-              displayName: 'deny, indexed'
-              href: samples/allow-multiple-name-patterns.md
-            - name: 類似パターンを要求する
-              displayName: 'deny, indexed'
-              href: samples/enforce-like-pattern.md
-            - name: 一致パターンを要求する
-              displayName: 'deny, indexed'
-              href: samples/enforce-match-pattern.md
-            - name: タグ一致パターンを要求する
-              displayName: 'deny, all'
-              href: samples/enforce-tag-match-pattern.md
-        - name: Tags
-          items:
-            - name: タグとその既定値の適用
-              displayName: 'append, builtin, concat'
-              href: samples/apply-tag-default-value.md
-            - name: 課金タグ ポリシーのイニシアティブ
-              href: samples/billing-tags-policy-initiative.md
-            - name: タグとその値を強制
-              displayName: 'deny, concat, builtin'
-              href: samples/enforce-tag-value.md
-            - name: リソース グループへのタグと値の強制
-              displayName: 'deny, concat'
-              href: samples/enforce-tag-on-resource-groups.md
-        - name: 場所
-          items:
-            - name: 許可される場所
-              displayName: 'deny, builtin, location'
-              href: samples/allowed-locations.md
-        - name: リソースの種類
-          items:
-            - name: 許可されるリソースの種類
-              displayName: 'deny, builtin, resourceTypes'
-              href: samples/allowed-resource-types.md
-            - name: 許可されないリソースの種類
-              displayName: 'deny, builtin, resourceTypes'
-              href: samples/not-allowed-resource-types.md
-    - name: Compute
-      items:
-        - name: 仮想マシン
-          items:
-            - name: リソース グループのカスタム VM イメージの許可
-              displayName: 'deny, concat, ExistingResourceGroups'
-              href: samples/allow-custom-vm-image.md
-            - name: ストレージ アカウントおよび仮想マシンに対して許可されている SKU
-              displayName: 'initiative, vmSKUs, storageSKUs'
-              href: samples/allowed-skus-storage.md
-            - name: 承認された VM イメージ
-              displayName: deny
-              href: samples/allowed-custom-images.md
-            - name: 拡張機能が存在しない場合の監査
-              displayName: auditIfNotExists
-              href: samples/audit-extension-not-exist.md
-            - name: 許可されていない VM 拡張機能
-              displayName: deny
-              href: samples/not-allowed-vm-extension.md
-        - name: 仮想マシン スケール セット
-          items:
-            - name: VM がマネージド ディスクを使用していない場合の監査
-              displayName: audit
-              href: samples/create-vm-managed-disk.md
-            - name: マネージド ディスクを使用して VM を作成する
-              displayName: deny
-              href: samples/use-managed-disk-vm.md
-            - name: Azure Hybrid Use Benefit の拒否
-              displayName: deny
-              href: samples/deny-hybrid-use.md
-            - name: 特定の VM プラットフォーム イメージのみの許可
-              displayName: deny
-              href: samples/allow-certain-vm-image.md
-    - name: Data Lake
-      items:
-        - name: Data Lake Store での暗号化の適用
-          displayName: deny
-          href: samples/enforce-data-lake-store-encryption.md
-    - name: ゲスト構成
-      items:
-        - name: Linux 上にインストールされていないアプリケーションの監査
-          displayName: 'audit, vm'
-          href: samples/guest-configuration-applications-installed-linux.md
-    - name: キー コンテナー
-      items:
-        - name: 仮想ネットワーク エンドポイントがないコンテナーの監査
-          displayName: 'audit, KeyVault, indexed'
-          href: samples/keyvault-no-vnet-rules.md
-    - name: 監視
-      items:
-        - name: 診断設定の監査
-          displayName: 'auditIfNotExists, resourceTypes'
-          href: samples/audit-diagnostic-setting.md
-    - name: ネットワーク
-      items:
-        - name: ネットワーク インターフェイス
-          items:
-            - name: すべての NIC 上の NSG X
-              displayName: deny
-              href: samples/nsg-on-nic.md
-            - name: VM ネットワーク インターフェイスでの承認されたサブネットの使用
-              displayName: deny
-              href: samples/use-approved-subnet-vm-nics.md
-            - name: VM ネットワーク インターフェイスでの承認された vNet の使用
-              displayName: 'deny, concat'
-              href: samples/use-approved-vnet-vm-nics.md
-        - name: 仮想ネットワーク
-          items:
-            - name: 許可されているアプリケーション ゲートウェイ SKU
-              displayName: deny
-              href: samples/allowed-app-gateway-sku.md
-            - name: 許可されている vNet ゲートウェイの SKU
-              displayName: deny
-              href: samples/allowed-vnet-gateway-sku.md
-            - name: 許可されているロード バランサーの SKU
-              displayName: deny
-              href: samples/allowed-load-balancer-skus.md
-            - name: ER ネットワークへのネットワーク ピアリングがない
-              displayName: 'deny, all, concat, ExistingResourceGroups'
-              href: samples/no-peering-express-route-network.md
-            - name: ユーザー定義ルート テーブルがない
-              displayName: 'deny, all'
-              href: samples/no-user-defined-route-table.md
-            - name: すべてのサブネット上の NSG X
-              displayName: 'deny, all'
-              href: samples/nsg-on-subnet.md
-            - name: VM ネットワーク インターフェイスでの承認されたサブネットの使用
-              displayName: deny
-              href: samples/use-approved-subnet-vm-nics.md
-            - name: VM ネットワーク インターフェイスでの承認された vNet の使用
-              displayName: deny
-              href: samples/use-approved-vnet-vm-nics.md
-        - name: ネットワーク セキュリティ グループ
-          items:
-            - name: すべての NIC 上の NSG X
-              displayName: deny
-              href: samples/nsg-on-nic.md
-            - name: すべてのサブネット上の NSG X
-              displayName: 'deny, all'
-              href: samples/nsg-on-subnet.md
-        - name: ExpressRoute
-          items:
-            - name: 許可された ExpressRoute の帯域幅
-              displayName: deny
-              href: samples/allowed-express-route-bandwidth.md
-            - name: 許可された ExpressRoute の SKU
-              displayName: deny
-              href: samples/allowed-express-route-skus.md
-            - name: 許可されている ExpressRoute ピアリングの場所
-              displayName: 'deny, Location'
-              href: samples/allowed-express-route-peering.md
-        - name: Network Watcher
-          items:
-            - name: リージョンで Network Watcher が有効になっていない場合の監査
-              displayName: 'auditIfNotExists, Location'
-              href: samples/network-watcher-not-enabled.md
-        - name: アプリケーション ゲートウェイ
-          items:
-            - name: 許可されているアプリケーション ゲートウェイ SKU
-              displayName: deny
-              href: samples/allowed-app-gateway-sku.md
-    - name: SQL
-      items:
-        - name: SQL Server
-          items:
-            - name: Azure Active Directory 管理者不在時の監査
-              displayName: auditIfNotExists
-              href: samples/audit-no-aad-admin.md
-            - name: サーバー レベルの脅威検出設定の監査
-              displayName: auditIfNotExists
-              href: samples/audit-sql-server-threat-detection-setting.md
-            - name: SQL Server の監査設定の監査
-              displayName: 'auditIfNotExists, builtin'
-              href: samples/sql-server-audit.md
-            - name: SQL Server レベルの監査設定の監査
-              displayName: auditIfNotExists
-              href: samples/audit-sql-server-audit-setting.md
-        - name: SQL データベース
-          items:
-            - name: 許可されている SQL DB の SKU
-              displayName: deny
-              href: samples/allowed-sql-db-skus.md
-            - name: SQL DB レベルの脅威検出設定の監査
-              displayName: auditIfNotExists
-              href: samples/audit-db-threat-detection-setting.md
-            - name: SQL DB の暗号化の監査
-              displayName: 'auditIfNotExists, disabled, indexed, builtin'
-              href: samples/sql-database-encryption-audit.md
-            - name: SQL DB レベルの監査設定の監査
-              displayName: auditIfNotExists
-              href: samples/audit-sql-db-audit-setting.md
-    - name: ストレージ
-      items:
-        - name: ストレージ アカウントと VM に対して許可された SKU
-          displayName: 'initiative, vmSKUs, storageSKUs'
-          href: samples/allowed-skus-storage.md
-        - name: 許可されるストレージ アカウントの SKU
-          displayName: 'deny, builtin, storageSKUs'
-          href: samples/allowed-storage-account-skus.md
-        - name: ストレージ アカウントのクール アクセス層の拒否
-          displayName: 'deny, all'
-          href: samples/deny-cool-access-tiering.md
-        - name: ストレージ アカウントのみに対する HTTPS トラフィックの確認
-          displayName: 'deny, all'
-          href: samples/ensure-https-storage-account.md
-        - name: ストレージ ファイルの暗号化の確認
-          displayName: 'deny, all'
-          href: samples/ensure-storage-file-encryption.md
+        - name: 論理演算子
+          href: ./samples/pattern-logical-operators.md
+        - name: フィールド
+          href: ./samples/pattern-fields.md
+        - name: パラメーター
+          href: ./samples/pattern-parameters.md
+        - name: 効果の詳細
+          href: ./samples/pattern-effect-details.md
+        - name: 値の演算子
+          href: ./samples/pattern-value-operator.md
+        - name: count 演算子
+          href: ./samples/pattern-count-operator.md
+        - name: イニシアティブへのグループ化
+          href: ./samples/pattern-group-with-initiative.md
+        - name: リソースのデプロイ
+          href: ./samples/pattern-deploy-resources.md
 - name: 概念
   items:
     - name: Azure Policy の定義の構造

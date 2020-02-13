@@ -32,7 +32,7 @@
           href: get-started-java-send-v2.md
         - name: Python (azure-eventhub バージョン 5)
           href: get-started-python-send-v2.md
-        - name: Node.js (azure/event-hubs バージョン 5)
+        - name: JavaScript (azure/event-hubs バージョン 5)
           href: get-started-node-send-v2.md
         - name: Go
           href: event-hubs-go-get-started-send.md
@@ -40,14 +40,28 @@
           href: event-hubs-c-getstarted-send.md
         - name: Apache Storm (受信のみ)
           href: event-hubs-storm-getstarted-receive.md
+    - name: イベントの送受信 (古いバージョン/パッケージ)
+      items:
+        - name: .NET Core (Microsoft.Azure.EventHubs)
+          href: event-hubs-dotnet-standard-getstarted-send.md
+        - name: Java (azure-eventhubs)
+          href: event-hubs-java-get-started-send.md
+        - name: Python (azure-eventhub バージョン 1)
+          href: event-hubs-python-get-started-send.md
+        - name: JavaScript (azure/event-hubs バージョン 2)
+          href: event-hubs-node-get-started-send.md
+        - name: .NET Framework (Microsoft.Azure.EventHubs)
+          href: event-hubs-dotnet-framework-getstarted-send.md
     - name: イベントのキャプチャ
       items:
         - name: Azure portal を使用した Event Hubs Capture の有効化
           href: event-hubs-capture-enable-through-portal.md
         - name: Resource Manager テンプレートを使用した Event Hubs Capture の有効化
           href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
-        - name: Python を使用して Event Hubs データをキャプチャする (azure-eventhub バージョン 5)
+        - name: Python を使用してキャプチャ データを読み取る (azure-eventhub バージョン 5)
           href: get-started-capture-python-v2.md
+        - name: Python を使用してキャプチャ データを読み取る (azure-eventhub バージョン 1)
+          href: event-hubs-capture-python.md
     - name: Apache Kafka 用 Event Hubs へのストリーム配信
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md
     - name: 専用クラスターを作成する
@@ -126,20 +140,6 @@
               href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/README.md'
             - name: .NET (Microsoft.Azure.EventHubs)
               href: event-hubs-programming-guide.md
-        - name: Python を使用してキャプチャ データを読み取る (azure-eventhub バージョン 1)
-          href: event-hubs-capture-python.md
-        - name: イベントの送受信 (古いバージョン/パッケージ)
-          items:
-            - name: .NET Core (Microsoft.Azure.EventHubs)
-              href: event-hubs-dotnet-standard-getstarted-send.md
-            - name: Java (azure-eventhubs)
-              href: event-hubs-java-get-started-send.md
-            - name: Python (azure-eventhub バージョン 1)
-              href: event-hubs-python-get-started-send.md
-            - name: Node.js (azure/event-hubs バージョン 2)
-              href: event-hubs-node-get-started-send.md
-            - name: .NET Framework (Microsoft.Azure.EventHubs)
-              href: event-hubs-dotnet-framework-getstarted-send.md
     - name: データを処理する
       items:
         - name: Azure Stream Analytics を使用したデータの処理
@@ -234,7 +234,7 @@
               href: /python/api/azure-eventhub/?view=azure-python
         - name: 管理ライブラリ
           href: /python/api/overview/azure/event-hub?view=azure-python
-    - name: Node.js
+    - name: JavaScript
       items:
         - name: azure/eventhubs バージョン 2 からバージョン 5 への移行
           href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md'

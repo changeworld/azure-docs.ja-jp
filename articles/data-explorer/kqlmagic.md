@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: ba21ec6ba82ac4984d3c51fc46f88de2cd56b2b2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 83902ea5a3e73603311a0c469126ed603d0ebd16
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933692"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064871"
 ---
 # <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>Jupyter Notebook と Kqlmagic 拡張機能を使用して、Azure Data Explorer 内のデータを分析します。
 
@@ -168,9 +168,9 @@ df.head(10)
     ```
 
 > [!TIP]
-> 使用可能なすべての構成についての情報を受け取るには、`%config KQLmagic` を使用します。 接続の問題や不適切なクエリなどの Kusto エラーのトラブルシューティングとキャプチャを行うには、`%config Kqlmagic.short_errors=False`を使用します
+> 使用可能なすべての構成についての情報を受け取るには、`%config Kqlmagic` を使用します。 接続の問題や不適切なクエリなどの Kusto エラーのトラブルシューティングとキャプチャを行うには、`%config Kqlmagic.short_errors=False`を使用します
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 help コマンドを実行して、サポートされるすべての機能が含まれている次のサンプル ノートブックを調べます。
 - [Azure Data Explorer に対して KQL magic を使ってみる](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStart.ipynb) 

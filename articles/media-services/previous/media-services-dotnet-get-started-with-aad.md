@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: ecb704253597bf4eb5672fe924a0dafc4c1b3fd1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b53fca292630ef988ee1357ea50adc4d7b7e9be5
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64726525"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162881"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>.NET で Azure AD Authentication を使用して Azure Media Services API にアクセスする
 
@@ -48,7 +48,7 @@ Azure AD Authentication を使用して Azure Media Services API に接続する
 
 たとえば、Azure AD オーソリティ、Media Services リソース URI、またはネイティブ Azure AD アプリケーションの詳細を指定する必要はありません。 これらは、Azure AD アクセス トークンのプロバイダー クラスで構成済みの既知の値です。 
 
-Azure Media Service .NET SDK を使用しない場合は、[Azure AD Authentication Library](../../active-directory/develop/active-directory-authentication-libraries.md) を使用することをお勧めします。 Azure AD Authentication Library で使用する必要があるパラメーターの値を取得する場合は、[Azure Portal を使用した Azure AD Authentication 設定へのアクセス](media-services-portal-get-started-with-aad.md)に関するページを参照してください。
+Azure Media Service .NET SDK を使用しない場合は、[Azure AD Authentication Library](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) を使用することをお勧めします。 Azure AD Authentication Library で使用する必要があるパラメーターの値を取得する場合は、[Azure Portal を使用した Azure AD Authentication 設定へのアクセス](media-services-portal-get-started-with-aad.md)に関するページを参照してください。
 
 **AzureAdTokenProvider** の既定の実装を、ユーザー独自の実装に置き換えることもできます。
 
@@ -189,6 +189,6 @@ Media Services に対するプログラミングを開始するには、サー�
         }
     }
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [アカウントへのファイルのアップロード](media-services-dotnet-upload-files.md)を開始します。

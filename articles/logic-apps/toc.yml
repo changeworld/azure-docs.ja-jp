@@ -135,7 +135,7 @@
           href: logic-apps-enterprise-integration-certificates.md
         - name: アーティファクト メタデータ
           href: logic-apps-enterprise-integration-metadata.md
-        - name: B2B メッセージの受信
+        - name: B2B メッセージの送受信
           href: logic-apps-enterprise-integration-b2b.md
         - name: AS2 メッセージの交換
           href: logic-apps-enterprise-integration-as2.md

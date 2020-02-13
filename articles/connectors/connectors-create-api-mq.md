@@ -3,18 +3,18 @@ title: IBM MQ サーバーへの接続
 description: Azure またはオンプレミスの IBM MQ サーバーと Azure Logic Apps を使用して、メッセージを送信および取得します
 services: logic-apps
 ms.suite: integration
-author: valrobb
-ms.author: valthom
-ms.reviewer: chrishou, logicappspm
+author: ChristopherHouser
+ms.author: chrishou
+ms.reviewer: valthom, logicappspm
 ms.topic: article
 ms.date: 06/19/2019
 tags: connectors
-ms.openlocfilehash: ef9e91b526055ece58ce283572deb98cff951653
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 489f53a4f4c1c0d5bd782f42a9daf73217234793
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789579"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118050"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Azure Logic Apps からの IBM MQ サーバーへの接続
 
@@ -136,6 +136,6 @@ IBM MQ コネクタには以下のアクションが含まれていますが、�
 
 コネクタの OpenAPI (以前の Swagger) の説明に記載されているアクションおよび制限に関する技術的な詳細については、[コネクタのリファレンス ページ](/connectors/mq/)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

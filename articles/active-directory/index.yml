@@ -12,12 +12,12 @@ metadata:
   ms.author: mtillman
   manager: daveba
   ms.date: 07/27/2019
-  ms.openlocfilehash: d212a7223eea2ccbaaddeb9c45db85e13c7ff9c8
-  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.openlocfilehash: 1ce670f2783eb12db307eac42974667dd809de9d
+  ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/25/2019
-  ms.locfileid: "75443459"
+  ms.lasthandoff: 02/12/2020
+  ms.locfileid: "77159303"
 highlightedContent:
   items:
   - title: Azure AD とは
@@ -54,6 +54,20 @@ conceptualContent:
     footerLink:
       url: ./manage-apps/index.yml
       text: 詳細情報
+  - title: アプリケーションと HR のプロビジョニング
+    links:
+    - url: ./app-provisioning/user-provisioning.md
+      itemType: overview
+      text: アプリケーションのプロビジョニングとは
+    - url: ./app-provisioning/how-provisioning-works.md
+      itemType: concept
+      text: アプリケーションのプロビジョニングのしくみ
+    - url: ./app-provisioning/plan-cloud-hr-provision.md
+      itemType: how-to-guide
+      text: クラウド HR のプロビジョニングのデプロイ計画
+    footerLink:
+      url: ./app-provisioning/index.yml
+      text: 詳細情報
   - title: 認証
     links:
     - url: ./authentication/concept-mfa-howitworks.md
@@ -61,7 +75,7 @@ conceptualContent:
       text: '動作のしくみ: Azure MFA'
     - url: ./authentication/concept-sspr-howitworks.md
       itemType: concept
-      text: Azure AD のセルフ サービスによるパスワードのリセット
+      text: Azure AD のセルフサービス パスワード リセット
     - url: ./authentication/concept-password-ban-bad.md
       itemType: concept
       text: Azure AD のパスワード保護

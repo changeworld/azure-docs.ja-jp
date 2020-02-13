@@ -14,12 +14,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 01/10/2020
 ms.author: shvija
-ms.openlocfilehash: 7533c2a4d5ef2bb3e6f66e116d3ff3937ddd77b3
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 414179d62970315a7575be0411bf1cb152349fdc
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899973"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162295"
 ---
 # <a name="event-processor-host"></a>イベント プロセッサ ホスト
 > [!NOTE]
@@ -202,7 +202,11 @@ EventProcessorHost のインスタンスでイベント プロセッサ クラ�
 
 イベント プロセッサ ホストについて学習した後は、Event Hubs の詳細について次の記事を参照してください。
 
-* [Event Hubs のチュートリアル](event-hubs-dotnet-standard-getstarted-send.md)を開始する
+- Event Hubs の使用
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)
 * [Event Hubs のプログラミング ガイド](event-hubs-programming-guide.md)
 * [Event Hubs における可用性と一貫性](event-hubs-availability-and-consistency.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)

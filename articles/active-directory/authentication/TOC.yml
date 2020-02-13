@@ -64,7 +64,7 @@
   items:
     - name: セルフサービス パスワード リセット
       items:
-        - name: セルフサービス パスワード リセットのデプロイ
+        - name: デプロイ ガイド
           href: howto-sspr-deployment.md
         - name: 認証データの事前登録
           href: howto-sspr-authenticationdata.md
@@ -74,7 +74,7 @@
           href: howto-sspr-windows.md
     - name: クラウドベースの MFA
       items:
-        - name: クラウドベースの MFA のデプロイ
+        - name: デプロイ ガイド
           href: howto-mfa-getstarted.md
         - name: ユーザーごとの MFA
           href: howto-mfa-userstates.md

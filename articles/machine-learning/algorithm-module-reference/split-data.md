@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: b707971f0b150bce63b4dd0ffa4e55dc3b3d6bac
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 3e831e58b47d53e2924956cab13568c69bc1432e
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313961"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153742"
 ---
 # <a name="split-data-module"></a>Split Data (データの分割) モジュール
 
-この記事では Azure Machine Learning デザイナー内のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 このモジュールを使用して、データセットを 2 つの異なるセットに分割します。
 

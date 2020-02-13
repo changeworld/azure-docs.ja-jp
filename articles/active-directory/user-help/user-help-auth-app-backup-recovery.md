@@ -2,21 +2,21 @@
 title: Microsoft Authenticator アプリを使用してアカウントをバックアップおよび復旧する - Azure AD
 description: Microsoft Authenticator アプリを使用して、バックアップされたアカウント資格情報をバックアップおよび復旧する方法について説明します。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.subservice: user-help
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 8d4c3d76a1ff7c3fcedbb4d2c22a699f4a2e77d0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d1b28000a14ec0825435742efe238e713f116ba7
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704784"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063936"
 ---
 # <a name="backup-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを使用してアカウント資格情報をバックアップおよび復旧する
 

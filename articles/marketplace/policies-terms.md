@@ -6,14 +6,14 @@ author: MaggiePucciEvans
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 12/28/2019
+ms.date: 02/07/2020
 ms.author: evansma
-ms.openlocfilehash: 191362f0e19cec71cd1c9114000e8a4e7c4e07e8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f4c82a780a4cbe5de5c421c6a8b8dda09bfc74df
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980416"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048889"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>商業マーケットプレースのポリシーと利用規約
 

@@ -907,22 +907,6 @@
           href: platform/rest-api-walkthrough.md
     - name: データの視覚化
       items:
-        - name: ビュー
-          items:
-            - name: ビュー デザイナー
-              href: platform/view-designer.md
-            - name: タイルのリファレンス
-              href: platform/view-designer-tiles.md
-            - name: 視覚化パーツのリファレンス
-              href: platform/view-designer-parts.md
-            - name: フィルター
-              href: platform/view-designer-filters.md
-        - name: Power BI
-          items:
-            - name: ログ データをエクスポートする
-              href: platform/powerbi.md
-            - name: アプリケーション データをエクスポートする
-              href: app/export-power-bi.md
         - name: Workbooks
           items:
             - name: 概要
@@ -949,6 +933,36 @@
                       href: platform/workbooks-time.md
                     - name: テキスト パラメーター
                       href: platform/workbooks-text.md
+        - name: ビュー
+          items:
+            - name: ビューからブックへの変換
+              items:
+                - name: 変換の概要
+                  href: platform/view-designer-conversion-overview.md
+                - name: 変換オプション
+                  href: platform/view-designer-conversion-options.md
+                - name: 概要とアクセス
+                  href: platform/view-designer-conversion-access.md
+                - name: 一般的なタスク
+                  href: platform/view-designer-conversion-tasks.md
+                - name: タイルの変換
+                  href: platform/view-designer-conversion-tiles.md
+                - name: 例
+                  href: platform/view-designer-conversion-examples.md
+            - name: ビュー デザイナー
+              href: platform/view-designer.md
+            - name: タイルのリファレンス
+              href: platform/view-designer-tiles.md
+            - name: 視覚化パーツのリファレンス
+              href: platform/view-designer-parts.md
+            - name: フィルター
+              href: platform/view-designer-filters.md
+        - name: Power BI
+          items:
+            - name: ログ データをエクスポートする
+              href: platform/powerbi.md
+            - name: アプリケーション データをエクスポートする
+              href: app/export-power-bi.md
         - name: ダッシュボード
           items:
             - name: ログ データを使用したダッシュボード

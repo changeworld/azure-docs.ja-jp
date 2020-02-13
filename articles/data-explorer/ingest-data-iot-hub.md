@@ -7,14 +7,14 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 1052ef799949550ddaf492b8aa5b77ab9526d092
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 93c0b3e27156655acee24d424cd890b48bb8e4e7
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780285"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064990"
 ---
-# <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>IoT Hub から Azure Data Explorer にデータを取り込む (プレビュー)
+# <a name="ingest-data-from-iot-hub-into-azure-data-explorer"></a>IoT Hub から Azure Data Explorer にデータを取り込む 
 
 > [!div class="op_single_selector"]
 > * [ポータル](ingest-data-iot-hub.md)

@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: c83bfc4a3ec8d1163669f28dfde64c63e7c6ff89
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 11f5bd7f01e142273509ae59ddc19a2557464bde
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775070"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152314"
 ---
 # <a name="export-data-module"></a>データのエクスポート モジュール
 

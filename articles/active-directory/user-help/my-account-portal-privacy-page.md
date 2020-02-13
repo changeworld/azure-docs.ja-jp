@@ -2,7 +2,7 @@
 title: マイ アカウント ポータルでプライバシー関連の情報を表示する - Azure AD
 description: マイ アカウント ポータルの [プライバシー] ページからのお客様のプライバシー関連の情報が組織でどのように使用されるかについて説明します。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: jpettere
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.author: lizross
-ms.openlocfilehash: 232a17a21c7172bbf5056ae990679d87600ee6a0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 94187cc7c0c3500a86d47a5f244457ee020581a3
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705090"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062440"
 ---
 # <a name="view-how-your-organization-uses-your-privacy-related-data"></a>組織でのプライバシー関連データの使用方法を表示します。
 

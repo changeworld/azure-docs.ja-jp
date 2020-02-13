@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e0a4eed020728bea5de196eebe438947ae509e4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 48df954f680c6774b0aa189453615156f4f0b4a8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515660"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063273"
 ---
 # <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>チュートリアル:Salesforce Sandbox を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -78,15 +78,15 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 1. Salesforce Sandbox のセキュリティ トークンを取得するには、新しいタブを開き、同じ Salesforce Sandbox の管理者アカウントにサインインします。 ページの右上にある自分の名前をクリックし、 **[Settings]\(設定\)** をクリックします。
 
-     ![Enable automatic user provisioning](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "Enable automatic user provisioning")
+     ![自動ユーザー プロビジョニングの有効化](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "自動ユーザー プロビジョニングの有効化")
 
 1. 左側のナビゲーション ウィンドウで **[私の個人情報]** をクリックして関連するセクションを展開し、 **[私のセキュリティ トークンのリセット]** をクリックします。
   
-    ![Enable automatic user provisioning](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "Enable automatic user provisioning")
+    ![自動ユーザー プロビジョニングの有効化](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "自動ユーザー プロビジョニングの有効化")
 
 1. **[セキュリティ トークンのリセット]** ページで、 **[セキュリティ トークンのリセット]** ボタンをクリックします。
 
-    ![Enable automatic user provisioning](./media/salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "Enable automatic user provisioning")
+    ![自動ユーザー プロビジョニングの有効化](./media/salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "自動ユーザー プロビジョニングの有効化")
 
 1. この管理アカウントに関連付けられている電子メールの受信トレイを確認します。 新しいセキュリティ トークンが記載された Salesforce Sandbox.com からの電子メールを探します。
 
@@ -108,7 +108,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 これで、[ユーザーとグループ] セクションで Salesforce Sandbox に割り当てたユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ ログを取得できます。このログには、プロビジョニング サービスによって Salesforce Sandbox アプリに対して実行されたすべてのアクションが記載されています。
 
-Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
+Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

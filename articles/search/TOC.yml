@@ -271,6 +271,8 @@
               href: knowledge-store-view-storage-explorer.md
             - name: Power BI を使用した接続
               href: knowledge-store-connect-power-bi.md
+            - name: プロジェクションの例
+              href: knowledge-store-projections-examples.md
     - name: ドキュメントにクエリを実行する
       items:
         - name: クエリの種類と構成

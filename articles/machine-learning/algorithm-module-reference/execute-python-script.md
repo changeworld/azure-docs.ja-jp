@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: a28b77a25971128b9474f18d860f6204c3433c73
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 1d82261d4b5c1a66498c33610670d7a38acbb197
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312296"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152331"
 ---
 # <a name="execute-python-script-module"></a>Python スクリプトの実行モジュール
 
-この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 Python コードを実行するには、このモジュールを使用します。 Python のアーキテクチャと設計原則の詳細については、[次の記事](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts)を参照してください。
 

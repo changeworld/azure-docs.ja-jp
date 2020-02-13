@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 67fe048c5afb07c65dcddc797e3a1d8461b1893f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: fa8013722376a4864ba955783dbde1f73c0d9e8a
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965954"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163111"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開発者向けファースト ステップ ガイド
 
@@ -171,7 +171,7 @@ Azure には、アプリケーションでコンテナーを使用する方法�
 
   > **いつ使用するか**: SSO エクスペリエンスを提供する場合、Graph ベースのデータを使用する場合、またはドメインベースのユーザーを認証する場合。
   >
-  > **作業開始**: 詳細については、「[開発者のための Azure Active Directory](../../active-directory/develop/v1-overview.md)」を参照してください。
+  > **作業開始**: 詳細については、「[開発者のための Azure Active Directory](../../active-directory/develop/v2-overview.md)」を参照してください。
 
 - **App Service 認証**:App Service を選択してアプリをホストする場合、Azure AD の組み込みの認証サポートと共に、ソーシャル ID プロバイダー (Facebook、Google、Microsoft、Twitter など) も利用できます。
 

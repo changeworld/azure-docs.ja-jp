@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
-ms.openlocfilehash: b0fec44a59bd70c6f1d0236861d93e81aaba033c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 68f42aa13288c2416257f3ba6c0b6072c1572977
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969447"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162992"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Azure Media Services のアクセス制御を使用したコンテンツ保護システムの設計 
 
@@ -215,10 +215,10 @@ DRM サブシステムに含まれる可能性のあるコンポーネントは�
 
     | **DRM** | **ブラウザー** | **権利のあるユーザーの結果** | **権利のないユーザーの結果** |
     | --- | --- | --- | --- |
-    | **PlayReady** |Windows 10 の Microsoft Edge または Internet Explorer 11 |合格 |不合格 |
-    | **Widevine** |Chrome、Firefox、Opera |合格 |不合格 |
-    | **FairPlay** |macOS 上の Safari      |合格 |不合格 |
-    | **AES-128** |最新のブラウザー  |合格 |不合格 |
+    | **PlayReady** |Windows 10 の Microsoft Edge または Internet Explorer 11 |合格 |失敗 |
+    | **Widevine** |Chrome、Firefox、Opera |合格 |失敗 |
+    | **FairPlay** |macOS 上の Safari      |合格 |失敗 |
+    | **AES-128** |最新のブラウザー  |合格 |失敗 |
 
 ASP.NET MVC プレーヤー アプリ用に Azure AD をセットアップする方法については、「[Azure Media Services OWIN MVC ベースのアプリを Azure Active Directory と統合し、JWT 要求に基づいてコンテンツ キーの配信を制限する](http://gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)」をご覧ください。
 
@@ -226,7 +226,7 @@ ASP.NET MVC プレーヤー アプリ用に Azure AD をセットアップする
 
 Azure AD に関する情報:
 
-* 開発者向けの情報については、「[開発者のための Azure Active Directory](../../active-directory/develop/v1-overview.md)」をご覧ください。
+* 開発者向けの情報については、「[開発者のための Azure Active Directory](../../active-directory/azuread-dev/v1-overview.md)」をご覧ください。
 * 管理者向けの情報については、「[Azure AD ディレクトリの管理](../../active-directory/fundamentals/active-directory-administer.md)」をご覧ください。
 
 ### <a name="some-issues-in-implementation"></a>実装での問題
@@ -313,9 +313,9 @@ Azure AD が JWT を生成した後、プレイヤーが検証のために Media
 キーはいつでもロールオーバーされる可能性があるため、フェデレーション メタデータ ドキュメントでは常に複数の有効な公開キーを使用できます。 Media Services のライセンス配信は、ドキュメントで指定されているどのキーでも使うことができます。 これは、1 つのキーがすぐにロールされて別のキーに置き換えられる可能性があるためです。
 
 ### <a name="where-is-the-access-token"></a>アクセス トークンの場所
-Web アプリが API アプリを呼び出す場合の認証フローは次のようになります (「[アプリケーション ID と OAuth 2.0 クライアント資格情報付与](../../active-directory/develop/web-api.md)」を参照)。
+Web アプリが API アプリを呼び出す場合の認証フローは次のようになります (「[アプリケーション ID と OAuth 2.0 クライアント資格情報付与](../../active-directory/azuread-dev/web-api.md)」を参照)。
 
-* ユーザーが Web アプリケーションで Azure AD にサインインします。 詳しくは、「[Web ブラウザー対 Web アプリケーション](../../active-directory/develop/web-app.md)」をご覧ください。
+* ユーザーが Web アプリケーションで Azure AD にサインインします。 詳しくは、「[Web ブラウザー対 Web アプリケーション](../../active-directory/azuread-dev/web-app.md)」をご覧ください。
 * Azure AD 認証エンドポイントは、承認コードを付けてクライアント アプリケーションにユーザー エージェントをリダイレクトします。 ユーザー エージェントは、クライアント アプリケーションのリダイレクト URI に承認コードを返します。
 * Web アプリケーションは、Web API に対して認証し、目的のリソースを取得できるように、アクセス トークンを取得する必要があります。 Web アプリケーションは、Azure AD のトークン エンドポイントに要求を送信して、資格情報、クライアント ID、Web API のアプリケーション ID の URI を提供します。 Web アプリケーションは、承認コードを示してユーザーが同意したことを証明します。
 * Azure AD がアプリケーションを認証し、Web API の呼び出しに使う JWT アクセス トークンを返します。
@@ -398,7 +398,7 @@ Azure AD によって発行された JWT は、ポインター リソースへ�
 
 Azure AD は Microsoft アカウント ドメインを信頼するので、次のどのドメインのアカウントでもカスタム Azure AD テナントに追加し、そのアカウントを使ってサインインできます。
 
-| **ドメイン名** | **ドメイン** |
+| **ドメイン名** | **[ドメイン]** |
 | --- | --- |
 | **カスタム Azure AD テナント ドメイン** |somename.onmicrosoft.com |
 | **企業ドメイン** |microsoft.com |
@@ -472,7 +472,7 @@ Widevine では、保護されたビデオのスクリーン キャプチャが�
 
 ## <a name="additional-notes"></a>その他のメモ
 
-* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. のサービス使用条件とプライバシー ポリシーが適用されます。
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

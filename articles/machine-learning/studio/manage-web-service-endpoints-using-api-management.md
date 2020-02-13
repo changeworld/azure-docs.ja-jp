@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 084f3a1ecc7e44dc404d63a75b4561f8d5cb57cb
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d0e9fff56949125c5fa797e0e4ef7e1183448dd0
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839806"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168584"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>API Management を使用して Azure Machine Learning Studio (クラシック) Web サービスを管理する
 ## <a name="overview"></a>概要
@@ -35,7 +35,7 @@ Azure API Management は、ユーザー アクセス、使用帯域幅の調整�
 
 Azure Machine Learning Web サービスは、API Management インスタンスを使って管理できます。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[+ リソースの作成]** を選択します。
 3. 検索ボックスに「API management」と入力して "API Management" リソースを選択します。
 4. **Create** をクリックしてください。
@@ -66,7 +66,7 @@ API を作成するには、次の手順に従います。
 4. **Web API URL サフィックス**を入力します。 ユーザーがサービス インスタンスに要求を送信する際に使用する URL 末尾の構成要素になります (この例では "azureml-demo" を使用します)。
 5. **[Web API URL scheme]\(Web API の URL スキーム\)** に **[HTTPS]** を選択します。
 6. **[製品]** として **[スターター]** を選択します。
-7. **[Save]** をクリックします。
+7. **[保存]** をクリックします。
 
 
 ## <a name="add-the-operations"></a>操作の追加
@@ -103,7 +103,7 @@ API を作成するには、次の手順に従います。
 3. **[URL テンプレート]** に「`/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}`」と入力します。
 4. **[表示名]** を入力します (この例では "BES Submit" を使用します)。
 5. 左側の **[応答]**  >  **[追加]** をクリックし、 **[200 OK]** を選択します。
-6. **[Save]** をクリックします。
+6. **[保存]** をクリックします。
 
 ### <a name="start-a-batch-execution-job"></a>バッチ実行ジョブを送信する
 
@@ -112,7 +112,7 @@ API を作成するには、次の手順に従います。
 3. **[HTTP 動詞]** に「`/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}`」と入力します。
 4. **[表示名]** を入力します (この例では "BES Start" を使用します)。
 6. 左側の **[応答]**  >  **[追加]** をクリックし、 **[200 OK]** を選択します。
-7. **[Save]** をクリックします。
+7. **[保存]** をクリックします。
 
 ### <a name="get-the-status-or-result-of-a-batch-execution-job"></a>バッチ実行ジョブの状態または結果を取得する
 
@@ -121,7 +121,7 @@ API を作成するには、次の手順に従います。
 3. **[URL テンプレート]** に「`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`」と入力します。
 4. **[表示名]** を入力します (この例では "BES Status" を使用します)。
 6. 左側の **[応答]**  >  **[追加]** をクリックし、 **[200 OK]** を選択します。
-7. **[Save]** をクリックします。
+7. **[保存]** をクリックします。
 
 ### <a name="delete-a-batch-execution-job"></a>バッチ実行ジョブの削除
 
@@ -130,7 +130,7 @@ API を作成するには、次の手順に従います。
 3. **[URL テンプレート]** に「`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`」と入力します。
 4. **[表示名]** を入力します (この例では "BES Delete" を使用します)。
 5. 左側の **[応答]**  >  **[追加]** をクリックし、 **[200 OK]** を選択します。
-6. **[Save]** をクリックします。
+6. **[保存]** をクリックします。
 
 ## <a name="call-an-operation-from-the-developer-portal"></a>開発者ポータルから操作を呼び出す
 
@@ -156,7 +156,7 @@ API を作成するには、次の手順に従います。
 
    ![azureml-demo-api](./media/manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
 
-5. **[Send]** をクリックします。
+5. **[送信]** をクリックします。
 
    ![[Send]](./media/manage-web-service-endpoints-using-api-management/send.png)
 
@@ -166,7 +166,7 @@ API を作成するには、次の手順に従います。
 
 ## <a name="appendix-a---creating-and-testing-a-simple-azureml-web-service"></a>付録 A - シンプルな AzureML Web サービスを作成しテストする
 ### <a name="creating-the-experiment"></a>実験の作成
-シンプルな AzureML 実験を作成し、Web サービスとしてデプロイする手順を次に示します。 Web サービスは、任意のテキストの列を入力として取得し、整数として表される機能のセットを返します。 例:
+シンプルな AzureML 実験を作成し、Web サービスとしてデプロイする手順を次に示します。 Web サービスは、任意のテキストの列を入力として取得し、整数として表される機能のセットを返します。 次に例を示します。
 
 | Text | ハッシュされたテキスト |
 | --- | --- |

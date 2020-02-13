@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 8db1d782b6f92637ad929ba863a8d24c81280577
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 61c3dde49d4cd298fb3a0f19dc1d8c00e54977af
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548426"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152348"
 ---
 # <a name="enter-data-manually-module"></a>データの手動入力モジュール
 

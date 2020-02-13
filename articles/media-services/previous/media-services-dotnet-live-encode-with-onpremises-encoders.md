@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: bc7c8a059e1e17b7b280a7061206b10ed6c530aa
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 11c6da0b79f169b250dc0178f76dcd885ce91668
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "69015838"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162890"
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>.NET を使用してオンプレミス エンコーダーでライブ ストリーミングを実行する方法
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ ms.locfileid: "69015838"
 * Media Services アカウント。 Media Services アカウントを作成するには、[Media Services アカウントを作成する方法](media-services-portal-create-account.md)に関するページを参照してください。
 * コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態であることを確認してください。 
 * 開発環境の設定。 詳細については、「 [環境を設定する](media-services-set-up-computer.md)」を参照してください。
-* Web カメラ。 たとえば、 [Telestream Wirecast エンコーダー](https://www.telestream.net/wirecast/overview.htm)。
+* Web カメラ。 たとえば、 [Telestream Wirecast エンコーダー](media-services-configure-wirecast-live-encoder.md)。
 
 次の記事の確認をお勧めします。
 
@@ -399,7 +399,7 @@ namespace AMSLiveTest
 }
 ```
 
-## <a name="next-step"></a>次のステップ
+## <a name="next-step"></a>次の手順
 Media Services のラーニング パスを確認します。
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

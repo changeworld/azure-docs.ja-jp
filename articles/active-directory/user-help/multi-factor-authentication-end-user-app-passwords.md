@@ -2,7 +2,7 @@
 title: アプリ パスワードを管理する方法 - Azure Active Directory | Microsoft Docs
 description: アプリ パスワードの詳細と、2 段階認証に関連した用途について学習します。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: richagi
 ms.assetid: 345b757b-5a2b-48eb-953f-d363313be9e5
@@ -11,14 +11,14 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 08/13/2019
-ms.author: lizross
+ms.author: curtand
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 74d443cc87a71950a31732db48e94ea3b5ced7ba
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 5f81181ac3107307a352cdbcd0b5cc4a555deacb
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705311"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062627"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>2 段階認証のアプリ パスワードを管理する
 
