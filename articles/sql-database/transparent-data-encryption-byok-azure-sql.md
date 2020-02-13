@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 11/19/2019
-ms.openlocfilehash: 4f1fe1ea031cd7831ffb24ee4302d6834a8d9976
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/03/2019
+ms.openlocfilehash: 305af8e8acd7e7a54fae8c831d36bee0aad4ad6b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981882"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990982"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>カスタマー マネージド キーを使用した Azure SQL Transparent Data Encryption
 
@@ -124,7 +124,7 @@ Transparent Data Encryption がカスタマー マネージド キーを使用�
 
 - キーのアクセスが 8 時間以内に復元された場合、データベースは次の 1 時間以内に自動回復します。
 
-- キーのアクセスが 8 時間を超えて復元された場合は、自動回復は不可能で、データベースのサイズによっては、データベースの復旧にかなりの時間がかかることがあり、サポート チケットを開く必要があります。 データベースがオンラインに戻ると、以前に構成されたサーバーレベルの設定 ([フェールオーバー グループ](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group) 構成、ポイントインタイム リストア履歴、タグなど) が失われます。 そのため、8 時間以内にキー アクセスの潜在的な問題を特定して対処できるようにする通知システムを実装することをお勧めします。
+- 8 時間を超えてからキーのアクセスが復元された場合、自動回復は不可能です。データベースの復旧にはポータルで追加の手順を踏む必要があり、データベースのサイズによってはかなりの時間がかかることがあります。 データベースがオンラインに戻ると、以前に構成されたサーバーレベルの設定 ([フェールオーバー グループ](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)構成、ポイントインタイム リストア履歴、タグなど) が**失われます**。 そのため、8 時間以内にキー アクセスの潜在的な問題を特定して対処できるようにする通知システムを実装することをお勧めします。
 
 ### <a name="accidental-tde-protector-access-revocation"></a>TDE 保護機能アクセスの誤失効
 

@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: 7a438a52ab69810ecf49319c148f817da974ea61
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 128b15bd5b3ba3c3ac891719bf5c3ec8e5137cce
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440214"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023516"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>マッピング データ フローのソース変換 
 
@@ -44,6 +44,8 @@ Azure Data Factory は、[90 を超えるネイティブ コネクタ](connector
 
 ![[Source Settings] タブ](media/data-flow/source1.png "[Source Settings] タブ")
 
+**テスト接続:** ソース データセットで使用されているリンクされたサービスにデータ フローの Spark サービスが正常に接続できるかどうかをテストします。 この機能を有効にするにはデバッグ モードをオンにする必要があります。
+
 **スキーマの誤差:** [スキーマの誤差](concepts-data-flow-schema-drift.md)は、データ フロー内の柔軟なスキーマをネイティブに処理するデータ ファクトリの機能であり、列の変更を明示的に定義する必要はありません。
 
 * ソース列が頻繁に変更される場合は、 **[Allow schema drift]\(スキーマの誤差を許可\)** チェック ボックスをオンにします。 この設定により、すべての受信ソース フィールドが変換を通してシンクに流れることができます。
@@ -69,13 +71,17 @@ Azure Data Factory は、[90 を超えるネイティブ コネクタ](connector
 
 ![プロジェクション タブでの設定](media/data-flow/source3.png "Projection")
 
-テキスト ファイルが定義済みのスキーマを含まない場合は、Data Factory がデータ型をサンプリングして推論するように、 **[Detect data type]** を選択します。 **[Define default format]\(既定の形式の定義\)** を選択して、既定のデータ形式を自動検出します。 
+テキスト ファイルが定義済みのスキーマを含まない場合は、Data Factory がデータ型をサンプリングして推論するように、 **[Detect data type]** を選択します。 **[Define default format]\(既定の形式の定義\)** を選択して、既定のデータ形式を自動検出します。
+
+**スキーマをリセットする**と、参照されているデータベースにある定義にプロジェクションがリセットされます。
 
 列のデータ型は、下流の派生列変換で変更できます。 選択変換を使用して、列の名前を変更します。
 
 ### <a name="import-schema"></a>Import schema
 
-Avro や CosmosDB のように、複雑なデータ構造をサポートするデータセットの場合は、データセットにスキーマ定義が存在している必要はありません。 そのようなタイプのソースについては、 **[プロジェクション]** タブの **[スキーマのインポート]** ボタンをクリックすることができます。
+**[プロジェクション]** タブの **[スキーマのインポート]** ボタンでは、アクティブなデバッグ クラスターを使用し、スキーマ プロジェクションを作成できます。 あらゆるソースの種類で利用できますが、スキーマをここでインポートすると、データセットに定義されているプロジェクションがオーバーライドされます。 データセット オブジェクトは変更されません。
+
+これは、複雑なデータ構造をサポートし、スキーマ定義を必要としない Avro や CosmosDB のようなデータセットで便利です。
 
 ## <a name="optimize-the-source-transformation"></a>ソース変換を最適化する
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 589d8219681304242585c9fed33a4e3d364909ec
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: fbb6170aa54c286a5a2d8353c1dd951859fdf8a0
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978903"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024587"
 ---
 # <a name="what-are-security-defaults"></a>セキュリティ デフォルトとは
 
@@ -94,6 +94,8 @@ Azure Resource Manager にアクセスして構成を更新しようとするユ
 テナントでセキュリティ デフォルトを有効にすると、Azure portal、Azure PowerShell、または Azure CLI にアクセスしようとしているユーザーがいずれも、追加の認証を完了しなければならなくなります。 このポリシーは、Azure Resource Manager にアクセスしようとしているユーザーであれば、管理者であるかユーザーであるかに関係なく全員に適用されます。 
 
 ユーザーが Multi-Factor Authentication に登録していない場合、そのユーザーが操作を続行するには、Microsoft Authenticator アプリを使用してユーザー登録を行う必要があります。 Multi-Factor Authentication に登録するための 14 日の期間は提供されません。
+
+2017 年より前の Exchange Online テナントでは、先進認証が既定で無効になっています。 これらのテナントを通じて認証を行うときにログイン ループの可能性を回避するために、[先進認証を有効にする](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online)必要があります。
 
 > [!NOTE]
 > Azure AD Connect の同期アカウントはセキュリティ既定値から除外されるため、Multi-Factor Authentication の登録または実行を求められることはありません。 組織は、このアカウントを他の目的で使用しないでください。

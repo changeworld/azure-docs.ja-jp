@@ -4,12 +4,12 @@ description: Azure Migrate サービスに対するサポートの設定およ�
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.author: raynew
-ms.openlocfilehash: 5c29b80f30b024d34ec4e8f65e51b59fc70e8f93
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5c3adecf62f9bd15c820baf116dbc01e5d3542fa
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846551"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77014013"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate のサポート マトリックス
 
@@ -66,8 +66,8 @@ Azure Migrate が Azure で機能するためには、マシンの評価と移�
 **タスク** | **アクセス許可** | **詳細**
 --- | --- | ---
 Azure Migrate プロジェクトの作成 | Azure アカウントには、プロジェクトを作成するためのアクセス許可が必要です。 | [VMware](tutorial-prepare-vmware.md#assign-permissions-to-create-project)、[Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-create-project)、または[物理サーバー](tutorial-prepare-physical.md#assign-permissions-to-create-project)の設定。
-Azure Migrate アプライアンスの登録 | Azure Migrate は、軽量の [Azure Migrate アプライアンス](migrate-appliance.md)を使用して Azure Migrate Server Assessment で VMware VM を評価し、Azure Migrate Server Migration で VMware VM の[エージェントレス移行](server-migrate-overview.md)を実行します。 このアプライアンスでは VM が検出され、VM のメタデータとパフォーマンス データが Azure Migrate に送信されます。<br/><br/> 登録時に、Azure Migrate によって、アプライアンスを一意に識別する 2 つの Azure Active Directory (Azure AD) アプリが作成され、これらのアプリを作成するためのアクセス許可が必要です。<br/><br/> - 1 つ目のアプリは、Azure Migrate サービス エンドポイントと通信します。<br/><br/> - 2 つ目のアプリでは、登録時に作成された Azure キー コンテナーにアクセスし、Azure AD アプリ情報とアプライアンス構成設定を格納します。 | [VMware](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance)、[Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-register-the-appliance)、または[物理サーバー](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance)の設定。
-VMware エージェントレス移行用のキー コンテナーの作成 | エージェントレス Azure Migrate Server Migration を使用して VMware VM を移行するために、Azure Migrate は、サブスクリプション内のレプリケーション ストレージ アカウントへのアクセス キーを管理するためのキー コンテナーを作成します。 コンテナーを作成するには、Azure Migrate プロジェクトが存在するリソース グループに、アクセス許可 (所有者、共同作成者、およびユーザー アクセス管理者) を設定する必要があります。 | アクセス許可の[設定](tutorial-prepare-vmware.md#assign-role-assignment-permissions)。
+Azure Migrate アプライアンスの登録| Azure Migrate では、軽量の [Azure Migrate アプライアンス](migrate-appliance.md)を使用して Azure Migrate Server Assessment でマシンが評価され、Azure Migrate Server Migration で VMware VM の[エージェントレス移行](server-migrate-overview.md)が実行されます。 このアプライアンスではマシンが検出され、メタデータとパフォーマンス データが Azure Migrate に送信されます。<br/><br/> 登録時に登録プロバイダー (Microsoft.OffAzure、Microsoft.Migrate、および Microsoft.KeyVault) が、アプライアンスで選択されたサブスクリプションに登録され、その結果、サブスクリプションがリソース プロバイダーで動作するようになります。 登録するには、サブスクリプションに対する共同作成者または所有者のアクセス権が必要です。<br/><br/> **VMware** - オンボード中、Azure Migrate では 2 つの Azure Active Directory (Azure AD) アプリが作成されます。 最初のアプリによって、アプライアンス エージェントと Azure Migrate サービスとの間の通信が行われます。 このアプリには、Azure リソース管理を呼び出すためのアクセス許可も、リソースに対する RBAC アクセス権もありません。 2 番目のアプリでは、エージェントレスの VMware 移行専用のユーザー サブスクリプションで作成された Azure Key Vault へのアクセスが行われます。 エージェントレスの移行では、ご利用のサブスクリプションのレプリケーション ストレージ アカウントへのアクセス キーを管理するためのキー コンテナーが Azure Migrate によって作成されます。 アプライアンスから検出が開始されると、(カスタマー テナント内の) Azure Key Vault で RBAC アクセスが可能になります。<br/><br/> **Hyper-V** - オンボード中。 Azure Migrate によって Azure AD アプリが 1 つ作成されます。 このアプリによって、アプライアンス エージェントと Azure Migrate サービスとの間の通信が行われます。 このアプリには、Azure リソース管理を呼び出すためのアクセス許可も、リソースに対する RBAC アクセス権もありません。 | [VMware](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance)、[Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-register-the-appliance)、または[物理サーバー](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance)の設定。
+VMware エージェントレス移行用のキー コンテナーの作成 | エージェントレス Azure Migrate Server Migration を使用して VMware VM を移行するために、Azure Migrate は、サブスクリプション内のレプリケーション ストレージ アカウントへのアクセス キーを管理するためのキー コンテナーを作成します。 コンテナーを作成するには、Azure Migrate プロジェクトが存在するリソース グループに、アクセス許可 (所有者、共同作成者、およびユーザー アクセス管理者) を設定する必要があります。 | アクセス許可の[設定](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault)。
 
 ## <a name="supported-geographies"></a>サポートされている地域
 
@@ -75,7 +75,7 @@ Azure Migrate プロジェクトは、いくつかの地域で作成できます
 
 **地理的な場所** | **メタデータ ストレージの場所**
 --- | ---
-Azure Government | 米国政府バージニア州
+Azure Government | US Gov バージニア州
 アジア太平洋 | 東アジアまたは東南アジア
 オーストラリア | オーストラリア東部またはオーストラリア南東部
 ブラジル | ブラジル南部

@@ -3,18 +3,18 @@ title: SQL Server を Azure に DPM ワークロードとしてバックアッ�
 description: Azure Backup サービスを使用した SQL Server データベースのバックアップの概要
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: b5709eb845d07e3638e0c100c857e5538e293317
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: ea55081d6f3b58c6c64c16e64c7a9d0f673ec196
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173262"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025403"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server を Azure に DPM ワークロードとしてバックアップする
 
 この記事では、Azure Backup を使用して SQL Server データベースのバックアップを構成する手順について説明します。
 
-SQL Server データベースを Azure にバックアップするには、Azure アカウントが必要です。 アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+SQL Server データベースを Azure にバックアップするには、Azure アカウントが必要です。 アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
 
 SQL Server データベースの Azure へのバックアップと Azure からの回復の管理には、次の 3 つの手順が含まれます。
 
@@ -53,7 +53,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
    >
    >
 
-8. **[次へ]** をクリックします
+8. **[次へ]** をクリックします。
 
     DPM は、使用可能なストレージ領域全体と考えられるディスク領域使用率を表示します。
 
@@ -103,7 +103,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 14. **[次へ]** をクリックし、初期バックアップのコピーを Azure に転送するための適切なオプションを選択します。 **[自動 (ネットワーク経由)]** または **[オフライン バックアップ]** を選択できます。
 
     * **[自動 (ネットワーク経由)]** の場合は、バックアップ用に選択されたスケジュールに従って、バックアップ データが Azure に転送されます。
-    * **[オフライン バックアップ]** のしくみについては、「 [Azure Backup でのオフライン バックアップのワークフロー](backup-azure-backup-import-export.md)」を参照してください。
+    * **[オフライン バックアップ]** のしくみについては、「[オフライン バックアップの概要](offline-backup-overview.md)」を参照してください。
 
     初期バックアップのコピーを Azure に転送するための適切な転送メカニズムを選択し、 **[次へ]** をクリックします。
 15. **[概要]** 画面でポリシーの詳細を確認したら、 **[グループの作成]** をクリックしてワークフローを完了します。 **[閉じる]** をクリックして、[監視] ワークスペースでジョブの進行状況を監視できます。
@@ -151,6 +151,6 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 
     回復が完了すると、復元されたデータベースはアプリケーション コンシステントになります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Backup FAQ](backup-azure-backup-faq.md)

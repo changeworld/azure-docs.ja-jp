@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/23/2019
+ms.date: 02/02/2020
 ms.author: juliako
-ms.openlocfilehash: a942277b5616f3e8220e7fc0fd00f7d660d76d3e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: aee4390d9b892eddbd7dc59887f5268e4c35d3f7
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892704"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989792"
 ---
 # <a name="what-is-video-indexer"></a>Video Indexer とは
 
@@ -26,6 +26,10 @@ Video Indexer で分析情報の抽出を開始するには、アカウントを
 次の図はイラストであり、バックエンドで Video Indexer がどのように機能するかについての技術的な説明ではありません。
 
 ![Azure Media Services Video Indexer フローの図](./media/video-indexer-overview/model-chart.png)
+
+## <a name="compliance-privacy-and-security"></a>コンプライアンス、プライバシー、セキュリティ
+ 
+重要な注意事項として、Video Indexer の使用に適用されるすべての法律に従う必要があります。また、他の人の権利を犯したり、他の人に害を及ぼしたりする可能性のある方法で Video Indexer またはその他の Azure サービスを使用することはできません。 生体認証データなどのビデオを Video Indexer サービスにアップロードして処理と保管を行う前に、ビデオに写っている個人から適切なすべての同意を得ることを含め、適切な権限をすべて持っている必要があります。 Video Indexer のコンプライアンス、プライバシー、セキュリティについては、Microsoft の [Cognitive Services の条項](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)に関するページを参照してください。 Microsoft のプライバシー義務とデータの取り扱いについては、Microsoft の[プライバシー ステートメント](https://privacy.microsoft.com/PrivacyStatement)、[オンライン サービス条件](https://www.microsoft.com/licensing/product-licensing/products) ("OST")、および[データ処理の補遺](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA") に関するページをご確認ください。 データの保持、削除、破棄などのその他のプライバシー情報は、OST および[こちら](faq.md)で確認できます。 Video Indexer を使用すると、Cognitive Services の条項、OST、DPA、およびプライバシー ステートメントに従うことに同意したものと見なされます。
 
 ## <a name="what-can-i-do-with-video-indexer"></a>Video Indexer を使って何ができますか?
 
@@ -38,7 +42,7 @@ Video Indexer の分析情報は、次のような多くのシナリオに適用
 * *コンテンツ モデレーション*: テキストとビジュアルのコンテンツ モデレーション モデルを使用して、不適切なコンテンツからユーザーの安全を維持し、公開したコンテンツが組織の値と一致することを検証します。 コンテンツに関して、特定のビデオを自動的にブロックしたり、ユーザーに通知したりすることができます。
 * *推奨事項*:ビデオの分析情報は、ユーザーに関連のあるビデオ モーメントを強調表示することで、ユーザー エンゲージメントを向上させるために使用できます。 各ビデオに追加のメタデータをタグ付けすることで、ユーザーに最も関連性の高いビデオをお勧めし、ニーズに合うビデオの部分を強調表示することができます。
 
-## <a name="features"></a>機能
+## <a name="features"></a>[機能]
 
 次の一覧は、Video Indexer のビデオとオーディオ モデルを使用して、ビデオから取得できる分析情報を示しています。
 
@@ -103,7 +107,7 @@ Video Indexer の機能には、次の 3 つの方法でアクセスできます
 
 Web サイトを使用している場合は、分析情報がメタデータとして追加され、ポータルに表示されます。 API を使用している場合、分析情報は JSON ファイルとして入手できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、Video Indexer の使用を開始する準備ができました。 詳細については、次の記事を参照してください。
 

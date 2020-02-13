@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ef73abdd6bfdadd0078c30ad1b0145cdae41722
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 69b8cbdba018b9d03dca67573b1f4fe6efa546b6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767605"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024043"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect クラウド プロビジョニングとは
 Azure AD Connect クラウド プロビジョニングは、ユーザー、グループ、および連絡先を Azure AD に同期するためのハイブリッド ID の 目標を満たすために設計された新しい Microsoft エージェントです。  これは Azure AD Connect sync と共に使用することができ、次のような利点があります。
@@ -46,6 +46,8 @@ Azure AD Connect クラウドプロビジョニングでは、Microsoft Online S
 | Contact オブジェクトのサポート |● |● |
 | デバイスオブジェクトのサポート |● | |
 | 属性フローの基本的なカスタマイズを許可する |● |● |
+| Exchange Online 属性の同期 |● |● |
+| 拡張属性 1 から 15 の同期 |● |● |
 | ユーザー定義 AD 属性の同期 (ディレクトリ拡張機能) |● | |
 | パスワード ハッシュ同期のサポート |●|●|
 | パススルー認証のサポート |●||
@@ -60,7 +62,7 @@ Azure AD Connect クラウドプロビジョニングでは、Microsoft Online S
 | 属性フローの高度なカスタマイズの許可 |● | |
 | 書き戻しのサポート (パスワード、デバイス、グループ) |● | |
 | Azure AD Domain Services のサポート|● | |
-| Exchange ハイブリッドの構成 |● | |
+| [Exchange ハイブリッドの書き戻し](../hybrid/reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) |● | |
 | AD ドメインあたり 5 万を超えるオブジェクトのサポート |● | |
 
 ## <a name="next-steps"></a>次のステップ 

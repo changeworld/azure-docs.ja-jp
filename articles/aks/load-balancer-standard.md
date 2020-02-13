@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 9633975f53b3e398537067b17a870f621d9a7435
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 03daafd383810a5e6cf086ca8e546981b06fa6eb
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045047"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025709"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Standard SKU ロード バランサーを使用する
 
@@ -26,7 +26,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0.74 以降を実行していることが要件となります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
+CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0.81 以降を実行していることが要件となります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -162,9 +162,14 @@ az aks create \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
 ```
 
-## <a name="show-the-outbound-rule-for-your-load-balancer"></a>ロード バランサーのアウトバウンド規則を表示する
+## <a name="configure-outbound-ports-and-idle-timeout"></a>送信ポートとアイドル タイムアウトを構成する
 
-ロード バランサーで作成されたアウトバウンド規則を表示するには、[az network lb outbound-rule list][az-network-lb-outbound-rule-list] を使用して、AKS クラスターのノード リソース グループを指定します。
+> [!WARNING]
+> 次のセクションは、大規模なネットワークの高度なシナリオや、既定の構成での SNAT 不足の問題を対象としています。 正常なクラスターを維持するには、*AllocatedOutboundPorts* または *IdleTimeoutInMinutes* を既定値から変更する前に、VM と IP アドレスの使用可能なクォータの正確なインベントリが必要です。
+> 
+> *AllocatedOutboundPorts* や *IdleTimeoutInMinutes* の値を変更すると、ロード バランサーに対するアウトバウンド規則の動作が大きく変化する可能性があります。 これらの値を更新する前に、「[Load Balancer のアウトバウンド規則][azure-lb-outbound-rules-overview]」、「[Load Balancer のアウトバウンド規則][azure-lb-outbound-rules]」、および「[Azure の Outbound connections][azure-lb-outbound-connections]」を確認し、変更の影響を完全に理解してください。
+
+送信用に割り当てられたポートとアイドル タイムアウトは、[SNAT][azure-lb-outbound-connections] に使用されます。 既定の *Standard* SKU ロード バランサーでは、[送信ポートの数はバックエンドのプール サイズに基づいて自動的に割り当て][azure-lb-outbound-preallocatedports]られ、各ポートのアイドル タイムアウトは 30 分に設定されます。 これらの値を確認するには、[az network lb outbound-rule list][az-network-lb-outbound-rule-list] を使用して、ロード バランサーのアウトバウンド規則を表示します。
 
 ```azurecli-interactive
 NODE_RG=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
@@ -179,7 +184,46 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 0                         True              30                      aksOutboundRule  All         Succeeded            MC_myResourceGroup_myAKSCluster_eastus  
 ```
 
-この出力例では、*AllocatedOutboundPorts* は 0 です。 この *AllocatedOutboundPorts* の値は、バックエンド プール サイズに基づいて SNAT ポートの割り当てが自動割り当てに戻ることを意味します。 詳細については、[Load Balancer のアウトバウンド規則][azure-lb-outbound-rules]に関するページと「[Azure のアウトバウンド接続][azure-lb-outbound-connections]」を参照してください。
+出力例では、*AllocatedOutboundPorts* と *IdleTimeoutInMinutes* の既定値が示されています。 *AllocatedOutboundPorts* の値が 0 の場合、送信ポートの数はバックエンドのプール サイズに基づいて自動的に割り当てられます。 たとえば、クラスターのノード数が 50 以下の場合、各ノードには 1,024 個のポートが割り当てられます。
+
+上記の既定の構成では SNAT が不足すると思われる場合は、*allocatedOutboundPorts* または *IdleTimeoutInMinutes* の設定を変更することを検討してください。 IP アドレスを追加するごとに 64,000 個のポートをさらに割り当てることができますが、Azure Standard Load Balancer では、IP アドレスを追加しても、ノードあたりのポート数が自動的に増えることはありません。 これらの値は、*load-balancer-outbound-ports* および *load-balancer-idle-timeout* パラメーターを設定することによって変更できます。 次に例を示します。
+
+```azurecli-interactive
+az aks update \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-outbound-ports 0 \
+    --load-balancer-idle-timeout 30
+```
+
+> [!IMPORTANT]
+> 接続またはスケーリングの問題を回避するために *allocatedOutboundPorts* をカスタマイズする前に、[必要なクォータを計算する][calculate-required-quota]必要があります。 *allocatedOutboundPorts* に指定する値は、8 の倍数である必要もあります。
+
+クラスターを作成するときに *load-balancer-outbound-ports* および *load-balancer-idle-timeout* パラメーターを使用することもできますが、*load-balancer-managed-outbound-ip-count*、*load-balancer-outbound-ips*、または *load-balancer-outbound-ip-prefixes* のいずれかも指定する必要があります。  次に例を示します。
+
+```azurecli-interactive
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --vm-set-type VirtualMachineScaleSets \
+    --node-count 1 \
+    --load-balancer-sku standard \
+    --generate-ssh-keys \
+    --load-balancer-managed-outbound-ip-count 2 \
+    --load-balancer-outbound-ports 0 \
+    --load-balancer-idle-timeout 30
+```
+
+*load-balancer-outbound-ports* および *load-balancer-idle-timeout* パラメーターをその既定値から変更すると、ロード バランサー プロファイルの動作に影響するので、クラスター全体が影響を受けます。
+
+### <a name="required-quota-for-customizing-allocatedoutboundports"></a>allocatedOutboundPorts をカスタマイズするために必要なクォータ
+ノードの VM の数と、割り当てられる必要がある送信ポートの数に基づいて、十分な送信 IP 容量が必要です。 送信 IP 容量が十分であることを確認するには、次の式を使用します。 
+ 
+*outboundIPs* \* 64,000 \> *nodeVMs* \* *desiredAllocatedOutboundPorts*
+ 
+たとえば、*nodeVMs* が 3 で、*desiredAllocatedOutboundPorts* が 50,000 の場合、必要な *outboundIPs* は 3 以上です。 必要最低限の量より多くの送信 IP 容量を組み込むことをお勧めします。 また、送信 IP 容量を計算するときは、クラスター オートスケーラーと、ノード プールのアップグレードの可能性を考慮する必要があります。 クラスター オートスケーラーについては、現在のノード数と最大ノード数を確認し、高い方の値を使用します。 アップグレードについては、アップグレードが可能なすべてのノード プールに対して追加のノード VM を考慮します。
+ 
+*IdleTimeoutInMinutes* を既定の 30 分とは異なる値に設定する場合は、ワークロードで送信接続が必要な時間を考慮します。 また、AKS の外部で使用される *Standard* SKU ロード バランサーの既定のタイムアウト値が 4 分であることを考慮します。 特定の AKS ワークロードをより正確に反映するように *IdleTimeoutInMinutes* の値を設定すると、使用されなくなった接続と関連付けられることによる SNAT の枯渇を減らすのに役立ちます。
 
 ## <a name="restrict-access-to-specific-ip-ranges"></a>特定の IP 範囲へのアクセスを制限
 
@@ -239,9 +283,12 @@ spec:
 [azure-lb-comparison]: ../load-balancer/concepts-limitations.md#skus
 [azure-lb-outbound-rules]: ../load-balancer/load-balancer-outbound-rules-overview.md#snatports
 [azure-lb-outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md#snat
+[azure-lb-outbound-preallocatedports]: ../load-balancer/load-balancer-outbound-connections.md#preallocatedports
+[azure-lb-outbound-rules-overview]: ../load-balancer/load-balancer-outbound-rules-overview.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [internal-lb-yaml]: internal-lb.md#create-an-internal-load-balancer
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [use-kubenet]: configure-kubenet.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[calculate-required-quota]: #required-quota-for-customizing-allocatedoutboundports

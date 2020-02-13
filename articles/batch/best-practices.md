@@ -1,18 +1,18 @@
 ---
 title: ベスト プラクティス - Azure Batch
 description: Azure Batch ソリューションを開発するためのベスト プラクティスと役立つヒントについて説明します。
-author: ju-shim
-ms.author: jushiman
+author: LauraBrenner
+ms.author: labrenne
 ms.date: 11/22/2019
 ms.service: batch
 ms.topic: article
-manager: gwallace
-ms.openlocfilehash: 20fc7844054fc7e05f56105e69ad6bd8a4272ed8
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+manager: evansma
+ms.openlocfilehash: 16fb2786f180b1e28b76d9246d599a871278d00d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026148"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022734"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch のベスト プラクティス
 
@@ -152,3 +152,15 @@ Batch プールでは、Azure のダウンタイム イベントが発生する�
 ### <a name="security-isolation"></a>セキュリティ分離
 
 分離のために、シナリオでジョブを相互に分離する必要がある場合は、それらのジョブを別々のプールに配置して分離する必要があります。 プールは、Batch のセキュリティ分離の境界であり、既定では、2つのプールは表示されないか、相互に通信できません。 分離の手段として、別個の Batch アカウントを使用しないでください。
+
+## <a name="moving"></a>移動
+
+### <a name="move-batch-account-across-regions"></a>リージョン間で Batch アカウントを移動する 
+
+既存の Batch アカウントをリージョン間で移動することが必要になるさまざまなシナリオがあります。 たとえば、ディザスター リカバリー計画の一部として、別のリージョンに移動することが必要な場合があります。
+
+Azure Batch アカウントをリージョン間で移動することはできません。 ただし、Azure Resource Manager テンプレートを使用して、Batch アカウントの既存の構成をエクスポートすることはできます。  その後、Batch アカウントをテンプレートにエクスポートすることで別のリージョンにリソースをステージし、移動先リージョンに合わせてパラメーターを変更してから、新しいリージョンにテンプレートをデプロイできます。 テンプレートを新しいリージョンにアップロードした後、証明書、ジョブ スケジュール、アプリケーション パッケージを再作成する必要があります。 変更をコミットして、Batch アカウントの移動を完了するには、元の Batch アカウントまたはリソース グループを忘れずに削除してください。  
+
+Resource Manager とテンプレートの詳細については、「[クイック スタート: Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)」を参照してください。
+
+

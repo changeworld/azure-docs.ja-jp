@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 0e49a5c8edd074c71d5972ee8d9c2e81f9c512ea
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 40c5f612b5b1571bb3d39f452d64a7005701f7c1
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453963"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023805"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Azure IoT Central アプリケーションを CSP ポータルから作成して管理する
 
@@ -23,25 +23,29 @@ CSP として、[Microsoft パートナー センター](https://partnercenter.m
 
 最初に、Microsoft パートナー ポータルのアカウントにサインインし、Azure IoT Central アプリケーションを作成する顧客を選択します。 左側のナビゲーションから顧客のサービス管理に移動します。
 
-![Microsoft パートナー センターのお客様が見る画面](media/howto-create-application-csp/image1.png)
+![Microsoft パートナー センターのお客様が見る画面](media/howto-create-and-manage-applications-csp/image1.png)
 
 Azure IoT Central は、管理に使用できるサービスとして表示されます。 ページの Azure IoT Central リンクを選択して新しいアプリケーションを作成するか、この顧客の既存のアプリケーションを管理します。
 
-![管理できる Azure IoT Central](media/howto-create-application-csp/image2.png)
+![管理できる Azure IoT Central](media/howto-create-and-manage-applications-csp/image2.png)
 
 Azure IoT Central の [Application Manager]\(アプリケーション マネージャー\) ページに移動します。 Azure IoT Central では、ユーザーが Microsoft パートナー センターから来て、その特定の顧客を管理することになったというコンテキストが維持されます。 これは、[Application Manager]\(アプリケーション マネージャー\) ページのヘッダーで確認できます。 ここから、この顧客が管理するために前に作成した既存のアプリケーションに移動することも、この顧客のために新しいアプリケーションを作成することもできます。
 
-![CSP のマネージャーの作成](media/howto-create-application-csp/image3.png)
+![CSP のマネージャーの作成](media/howto-create-and-manage-applications-csp/image3.png)
 
 Azure IoT Central アプリケーションを作成するには、左側のメニューの **[Build]\(ビルド\)** を選択します。 いずれかの業界テンプレートを選択するか、 **[レガシ アプリケーション]** を選択して最初からアプリケーションを作成します。 これによって、[Application Creation]\(アプリケーションの作成\) ページが読み込まれます。 このページのすべてのフィールドに入力してから、 **[作成]** を選択する必要があります。 詳しくは、以下の各フィールドを参照してください。
 
-![CSP 用のアプリケーションの作成ページ](media/howto-create-application-csp/image4.png)
+![CSP 用のアプリケーションの作成ページ](media/howto-create-and-manage-applications-csp/image4.png)
 
-![CSP 用のアプリケーションの作成ページ](media/howto-create-application-csp/image4-1.png)
+![CSP 用のアプリケーションの作成ページ](media/howto-create-and-manage-applications-csp/image4-1.png)
 
-## <a name="payment-plan"></a>支払プラン
+![CSP 課金情報用のアプリケーションの作成ページ](media/howto-create-and-manage-applications-csp/image4-2.png)
 
-CSP として作成できるのは、従量課金制のアプリケーションのみです。 Azure IoT Central を顧客に示すために、個別に試用版アプリケーションを作成できます。 試用版および従量課金制のアプリケーションについては、[IoT Central の価格に関するページ](https://azure.microsoft.com/pricing/details/iot-central/)を参照してください。
+## <a name="pricing-plan"></a>料金プラン
+
+CSP として標準の料金プランが使用されているアプリケーションのみを作成できます。 Azure IoT Central を顧客に示すために、無料の料金プランが使用されるアプリケーションを別途作成できます。 無料と標準の料金プランについては、[Azure IoT Central の価格に関するページ](https://azure.microsoft.com/pricing/details/iot-central/)で確認できます。
+
+CSP として標準の料金プランが使用されているアプリケーションのみを作成できます。 Azure IoT Central を顧客に示すために、無料の料金プランが使用されるアプリケーションを別途作成できます。 無料と標準の料金プランについては、[Azure IoT Central の価格に関するページ](https://azure.microsoft.com/pricing/details/iot-central/)で確認できます。
 
 ## <a name="application-name"></a>アプリケーション名
 
@@ -73,9 +77,6 @@ Azure サブスクリプションがない場合は、Microsoft パートナー 
 
 Azure IoT Central アプリケーションを作成するリージョンまたは[地理的な場所](https://azure.microsoft.com/global-infrastructure/geographies/)を選択します。 通常、最適なパフォーマンスを得るには、デバイスに物理的に最も近いリージョンを選択する必要があります。
 
-> [!NOTE]
-> 現在、プレビュー アプリケーション テンプレートは、**ヨーロッパ**と**米国**のリージョンでのみ利用できます。
-
 詳細については、「[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)」と「[Azure の地域](https://azure.microsoft.com/global-infrastructure/geographies/)」を参照してください。
 
 Azure IoT Central を使用できるリージョンは、[[リージョン別の利用可能な製品]](https://azure.microsoft.com/global-infrastructure/services/?products=iot-central) ページで確認できます。
@@ -85,11 +86,7 @@ Azure IoT Central を使用できるリージョンは、[[リージョン別の
 
 ## <a name="application-template"></a>アプリケーション テンプレート
 
-新しい Azure IoT Central アプリケーションには、以下のアプリケーション テンプレートを選択できます。
-
-| アプリケーション テンプレート | [説明] |
-| -------------------- | ----------- |
-| レガシ アプリケーション   | 独自のデバイス テンプレートおよびデバイスにデータを入力するための空のアプリケーションを作成します。 |
+アプリケーションに使用するアプリケーション テンプレートを選択します。
 
 
 ## <a name="next-steps"></a>次のステップ

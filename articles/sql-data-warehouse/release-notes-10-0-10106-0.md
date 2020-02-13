@@ -11,12 +11,12 @@ ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6d51213402f852daee8fe4a6b5dbbd473afda659
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 3170ca428b0b06f3d76bfd6037f75f345a2a466a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122459"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989673"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL Data Warehouse リリース ノート
 
@@ -38,6 +38,7 @@ ms.locfileid: "76122459"
 | --- | --- |
 |**ワークロード管理ポータル メトリック (プレビュー)**|10 月にプレビューでリリースされた[ワークロードの分離](/azure/sql-data-warehouse/sql-data-warehouse-workload-isolation)により、ユーザーは独自の[ワークロード グループ](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)を作成してシステム リソースを効率的に管理し、ビジネス SLA を確実に満たすことができます。  Azure Synapse Analytics の全体的な[ワークロード管理](/azure/sql-data-warehouse/sql-data-warehouse-workload-management)拡張機能の一部として、新しい[ワークロード管理の監視メトリック](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor)が使用できるようになりました。</br> </br> ワークロードの監視では、次のメトリックを使用してより多くの分析情報を得ることができるようになりました。 </br> - 有効な上限リソース割合  </br> - 有効な最小リソース割合 </br> - ワークロード グループのアクティブなクエリ </br> - 最大リソース割合別のワークロード グループの割り当て </br> - システム割合別のワークロード グループの割り当て </br> - ワークロード グループのクエリのタイムアウト </br> - ワークロード グループのキューに登録されたクエリ </br></br> これらのメトリックを使用して、[ワークロード グループのボトルネック](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#workload-group-bottleneck)または[使用率が低いワークロードの分離](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#underutilized-workload-isolation)で構成されているワークロード グループを特定します。  これらのメトリックは、ワークロード グループ別の分割を可能にする Azure Portal で使用できます。  お気に入りのグラフをフィルター処理してダッシュボードにピン留めすることで、分析情報にすばやくアクセスできます。|
 |**ポータル監視メトリック**| クエリ全体の利用状況を監視するために、次のメトリックがポータルに追加されました。 </br> - アクティブなクエリ </br> - キューに置かれたクエリ </br> </br>これらのメトリックについては、既存のメトリックと共に[リソース使用率とクエリ アクティビティの監視に関するドキュメント](/azure/sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity)に詳しく記載されています。|
+|**製品名**|2020 年 6 月までに、SELECT @@VERSION によって返される製品名は、Microsoft Azure SQL Data Warehouse から Azure Synapse Analytics に変更されます。 スケジュールについては、リリース ノートで公開します。 この変更は、使用しているアプリケーション コード内の SELECT @@VERSION の結果から製品名を解析する顧客に関連しています。 製品のブランド変更が原因でアプリケーション コードが変更されるのを回避するには、次のコマンドを使用して、データベースの製品名とバージョンを SERVERPROPERTY に照会してください。 </br> DW バージョン番号 XX.X.XXXXX.X (製品名なし) を返すには、次のコマンドを使用します。SELECT SERVERPROPERTY('ProductVersion') </br> エンジンのエディションを返すには、次のコマンドを使用します。これによって、Azure Synapse Analytics (旧称 SQL Data Warehouse) の 6 が返されます。SELECT SERVERPROPERTY('EngineEdition')|
 
 ## <a name="october-2019"></a>2019 年 10 月
 
@@ -156,7 +157,7 @@ ms.locfileid: "76122459"
 ## <a name="more-information"></a>詳細情報
 
 - [ブログ - Azure SQL Data Warehouse](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
-- [Customer Advisory Team のブログ](https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/)
+- [Customer Advisory Team のブログ](https://docs.microsoft.com/archive/blogs/sqlcat/)
 - [顧客の成功事例](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
 - [Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)

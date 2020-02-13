@@ -16,12 +16,12 @@ ms.date: 08/02/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9277e35fceb382fbccd009e5bbfe63ce57b8361
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 1f365a8325fc027d8770287208f91d164166fcbc
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305172"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024332"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>ハイブリッド ID で必要なポートとプロトコル
 次のドキュメントは、ハイブリッド ID ソリューションを実装するために必要なポートとプロトコルに関するテクニカル リファレンスです。 次の図を使用して、対応する表を参照してください。
@@ -35,21 +35,21 @@ ms.locfileid: "70305172"
 | --- | --- | --- |
 | DNS |53 (TCP/UDP) |送信先フォレストでの DNS 参照です。 |
 | Kerberos |88 (TCP/UDP) |AD フォレストに対する Kerberos 認証です。 |
-| MS-RPC |135 (TCP/UDP) |Azure AD Connect ウィザードを AD フォレストにバインドするときの初期構成中に使用され、パスワードの同期中にも使用されます。 |
+| MS-RPC |135 (TCP) |Azure AD Connect ウィザードを AD フォレストにバインドするときの初期構成中に使用され、パスワードの同期中にも使用されます。 |
 | LDAP |389 (TCP/UDP) |AD からのデータのインポートに使用されます。 データは Kerberos の署名およびシールによって暗号化されます。 |
-| SMB | 445 (TCP/UDP) |AD フォレストにコンピューター アカウントを作成するためにシームレス SSO によって使用されます。 |
+| SMB | 445 (TCP) |AD フォレストにコンピューター アカウントを作成するためにシームレス SSO によって使用されます。 |
 | LDAP/SSL |636 (TCP/UDP) |AD からのデータのインポートに使用されます。 データ転送は署名されて暗号化されます。 SSL を使用する場合にのみ使用されます。 |
-| RPC |49152- 65535 (ランダム ハイ RPC ポート)(TCP/UDP) |Azure AD Connect を AD フォレストにバインドするときの初期構成中と、パスワードの同期中に使用されます。 詳細については、[KB929851](https://support.microsoft.com/kb/929851)、[KB832017](https://support.microsoft.com/kb/832017)、[KB224196](https://support.microsoft.com/kb/224196) を参照してください。 |
-|WinRM  | 5985 (TCP/UDP) |Azure AD Connect ウィザードで gMSA を使用して AD FS をインストールする場合にのみ使用します|
-|AD DS Web サービス | 9389 (TCP/UDP) |Azure AD Connect ウィザードで gMSA を使用して AD FS をインストールする場合にのみ使用します |
+| RPC |49152 から 65535 (ランダムな高い数値の RPC ポート)(TCP) |Azure AD Connect を AD フォレストにバインドするときの初期構成中と、パスワードの同期中に使用されます。 詳細については、[KB929851](https://support.microsoft.com/kb/929851)、[KB832017](https://support.microsoft.com/kb/832017)、[KB224196](https://support.microsoft.com/kb/224196) を参照してください。 |
+|WinRM  | 5985 (TCP) |Azure AD Connect ウィザードで gMSA を使用して AD FS をインストールする場合にのみ使用します|
+|AD DS Web サービス | 9389 (TCP) |Azure AD Connect ウィザードで gMSA を使用して AD FS をインストールする場合にのみ使用します |
 
 ## <a name="table-2---azure-ad-connect-and-azure-ad"></a>表 2 - Azure AD Connect と Azure AD
 この表は、Azure AD Connect サーバーと Azure AD 間の通信に必要なポートとプロトコルについて説明しています。
 
 | Protocol | Port | 説明 |
 | --- | --- | --- |
-| HTTP |80 (TCP/UDP) |SSL 証明書を検証するための CRL (証明書失効リスト) をダウンロードするために使用されます。 |
-| HTTPS |443 (TCP/UDP) |Azure AD と同期するために使用されます。 |
+| HTTP |80 (TCP) |SSL 証明書を検証するための CRL (証明書失効リスト) をダウンロードするために使用されます。 |
+| HTTPS |443(TCP) |Azure AD と同期するために使用されます。 |
 
 ファイアウォールで開く必要のある URL と IP アドレスの一覧については、「 [Office 365 URL および IP アドレス範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」を参照してください。
 
@@ -58,8 +58,8 @@ ms.locfileid: "70305172"
 
 | Protocol | Port | 説明 |
 | --- | --- | --- |
-| HTTP |80 (TCP/UDP) |SSL 証明書を検証するための CRL (証明書失効リスト) をダウンロードするために使用されます。 |
-| HTTPS |443 (TCP/UDP) |Azure AD と同期するために使用されます。 |
+| HTTP |80 (TCP) |SSL 証明書を検証するための CRL (証明書失効リスト) をダウンロードするために使用されます。 |
+| HTTPS |443(TCP) |Azure AD と同期するために使用されます。 |
 | WinRM |5985 |WinRM リスナー |
 
 ## <a name="table-4---wap-and-federation-servers"></a>表 4 - WAP とフェデレーション サーバー
@@ -67,14 +67,14 @@ ms.locfileid: "70305172"
 
 | Protocol | Port | 説明 |
 | --- | --- | --- |
-| HTTPS |443 (TCP/UDP) |認証で使用されます。 |
+| HTTPS |443(TCP) |認証で使用されます。 |
 
 ## <a name="table-5---wap-and-users"></a>表 5 - WAP とユーザー
 この表は、ユーザーと WAP サーバー間の通信に必要なポートとプロトコルについて説明しています。
 
 | Protocol | Port | 説明 |
 | --- | --- | --- |
-| HTTPS |443 (TCP/UDP) |デバイスの認証で使用されます。 |
+| HTTPS |443(TCP) |デバイスの認証で使用されます。 |
 | TCP |49443 (TCP) |証明書の認証で使用されます。 |
 
 ## <a name="table-6a--6b---pass-through-authentication-with-single-sign-on-sso-and-password-hash-sync-with-single-sign-on-sso"></a>表 6a および 6b - シングル サインオン (SSO) でのパススルー認証およびシングル サインオン (SSO) でのパスワード ハッシュ同期

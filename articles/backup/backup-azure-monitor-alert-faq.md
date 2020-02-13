@@ -4,50 +4,49 @@ description: この記事では、Azure Backup の監視アラートと Azure Ba
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 9cf7bf49d29b5faa9811a591b45179fe83c1d483
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: f5be97458ba658f315c31ae34e540842b64e3ec4
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172924"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989571"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure Backup の監視アラート - FAQ
 
-この記事では、Azure の監視アラートに関する一般的な質問への回答を示します。
+この記事では Azure Backup の監視とレポートに関してよく寄せられる質問への回答を示します。
 
 ## <a name="configure-azure-backup-reports"></a>Azure Backup のレポートを構成する
 
-### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-storage-account"></a>レポート データがストレージ アカウントへの流入を開始したかどうかはどのように確認できますか?
+### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-log-analytics-la-workspace"></a>Log Analytics (LA) ワークスペースへのレポート データの流入が開始されたかどうかを確認するにはどうすればよいですか?
 
-構成したストレージ アカウントに移動し、コンテナーを選択します。 コンテナーに insights-logs-azurebackupreport のエントリーがある場合は、レポート データのフローが既に開始されています。
+構成した LA ワークスペースに移動し、 **[ログ]** メニュー項目に移動して、[query CoreAzureBackup | take 1]\(CoreAzureBackup に対するクエリ | テイク 1\) を実行します。 返されるレコードがある場合は、ワークスペースへのデータの流入が開始されたことを意味します。 最初のデータ プッシュには最大 24 時間かかる場合があります。
 
-### <a name="what-is-the-frequency-of-data-push-to-a-storage-account-and-the-azure-backup-content-pack-in-power-bi"></a>Power BI でのストレージ アカウントと Azure Backup コンテンツ パックへのデータ プッシュの頻度はどれくらいですか?
+### <a name="what-is-the-frequency-of-data-push-to-an-la-workspace"></a>LA ワークスペースへのデータプッシュの頻度はどのくらいですか?
 
-  初日のユーザーの場合は、ストレージ アカウントにデータをプッシュするまでに約 24 時間かかります。 この初期のプッシュが完了した後、データは次の図に示されている頻度で更新されます。
+コンテナーの診断データは少し遅れて Log Analytics ワークスペースに送られます。 すべてのイベントは、Recovery Services コンテナーからプッシュされてから 20 分から 30 分後に Log Analytics ワークスペースに到着します。 ここでは、その遅れの詳細について説明します。
 
-* **ジョブ**、**アラート**、**バックアップ項目**、**コンテナー**、**保護されているサーバー**、および**ポリシー**に関連したデータは、それがログに記録された時点で顧客のストレージ アカウントにプッシュされます。
+* すべてのソリューションについて、バックアップ サービスの組み込みアラートは、作成されるとすぐにプッシュされます。 そのため、通常は 20 分から 30 分後に Log Analytics ワークスペースに表示されます。
+* すべてのソリューションについて、オンデマンド バックアップ ジョブと復元ジョブは、終了するとすぐにプッシュされます。
+* すべてのソリューション (SQL バックアップ以外) について、スケジュール済みバックアップ ジョブは、終了するとすぐにプッシュされます。
+* SQL バックアップでは、15 分ごとにログ バックアップを行うことができるため、完了したすべてのスケジュール済みバックアップ ジョブの情報は、ログも含めて 6 時間ごとにバッチ処理されてプッシュされます。
+* すべてのソリューションにわたって、バックアップ項目、ポリシー、復旧ポイント、ストレージなどのその他の情報は、少なくとも 1 日 1 回プッシュされます。
+* バックアップ構成を変更すると (ポリシーの変更や編集など)、関連するすべてのバックアップ情報のプッシュがトリガーされます。
 
-* **ストレージ**に関連したデータは、24 時間ごとに顧客のストレージ アカウントにプッシュされます。
+### <a name="how-long-can-i-retain-reporting-data"></a>レポート データを保持できる期間はどのくらいですか?
 
-    ![Azure Backup のレポートのデータ プッシュ頻度](./media/backup-azure-configure-reports/reports-data-refresh-cycle.png)
+LA ワークスペースを作成した後は、最大 2 年間データを保持することを選択できます。 既定では、LA ワークスペースにはデータが 31 日間保持されます。
 
-* Power BI では、[1 日 1 回のスケジュールされた更新](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/#what-can-be-refreshed)が行われます。 Power BI でコンテンツ パックのデータを手動で更新することもできます。
+### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-la-workspace"></a>LA ワークスペースを構成した後は、自分のデータがすべてレポートに表示されますか?
 
-### <a name="how-long-can-i-retain-reports"></a>レポートはどれだけの期間保持できますか?
-
-ストレージ アカウントを構成するとき、ストレージ アカウント内のレポート データの保有期間を選択できます。 「[レポート用のストレージ アカウントを構成する](backup-azure-configure-reports.md#configure-storage-account-for-reports)」セクションの手順 6. に従います。 また、[Excel でレポートを分析し](https://powerbi.microsoft.com/documentation/powerbi-service-analyze-in-excel/)、必要に応じてより長い保有期間にわたってレポートを保存することもできます。
-
-### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-storage-account"></a>ストレージ アカウントを構成した後は、すべてのデータがレポートに表示されますか?
-
- ストレージ アカウントを構成した後に生成されたすべてのデータがストレージ アカウントにプッシュされ、レポートで使用できます。 進行中のジョブはレポートにプッシュされません。 そのジョブは、完了するか、または失敗した後にレポートに送信されます。
-
-### <a name="if-i-already-configured-the-storage-account-to-view-reports-can-i-change-the-configuration-to-use-another-storage-account"></a>レポートを表示するためのストレージ アカウントを既に構成している場合は、別のストレージ アカウントを使用するように構成を変更できますか?
-
-はい、別のストレージ アカウントをポイントするように構成を変更できます。 Azure Backup コンテンツ パックに接続するときに、新しく構成されたストレージ アカウントを使用します。 また、別のストレージ アカウントが構成された後、新しいデータはこのストレージ アカウントに流入します。 以前の (構成を変更する前の) データは、引き続き前のストレージ アカウント内に残ります。
+ 診断設定を構成した後に生成されたデータはすべて、LA ワークスペースにプッシュされ、レポートで使用できます。 進行中のジョブはレポートにプッシュされません。 ジョブは終了または失敗した後に、レポートに送信されます。
 
 ### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>コンテナーおよびサブスクリプションにまたがるレポートを表示できますか?
 
-はい、複数のコンテナーに対して同じストレージ アカウントを構成して、複数のコンテナーにわたるレポートを表示できます。 また、複数のサブスクリプションの複数のコンテナーに対して同じストレージ アカウントを構成することもできます。 その後、Power BI で Azure Backup コンテンツ パックに接続するときに、このストレージ アカウントを使用してレポートを表示できます。 選択されるストレージ アカウントは、Recovery Services コンテナーと同じリージョンに存在する必要があります。
+はい。コンテナーおよびサブスクリプションにまたがって、さらにリージョンにまたがってレポートを表示できます。 ご利用のデータは、単一の LA ワークスペースまたは LA ワークスペースのグループに存在する場合があります。
+
+### <a name="can-i-view-reports-across-tenants"></a>テナントにまたがってレポートを表示できますか?
+
+お客様が、ご自分の顧客のサブスクリプションまたは LA ワークスペースへの委任アクセス権を持つ [Azure Lighthouse](https://azure.microsoft.com/services/azure-lighthouse/) ユーザーである場合、バックアップ レポートを使用して、ご利用のすべてのテナントにわたってデータを表示することができます。
 
 ### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Azure バックアップ エージェント ジョブの状態がポータルに反映されるまでに、どれくらいの時間がかかりますか。
 
@@ -83,7 +82,7 @@ Azure portal に Azure バックアップ エージェント ジョブの状態�
 * ジョブが取り消された
 * 元のバックアップ ジョブが進行中のために、2 番目のバックアップ ジョブが失敗した
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 その他のよく寄せられる質問をお読みください。
 

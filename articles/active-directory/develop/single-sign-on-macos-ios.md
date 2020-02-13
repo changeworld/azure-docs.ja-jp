@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/28/2019
+ms.date: 02/03/2020
 ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: ecc55c0d41f552d2c29fe5c964a7c40ab9e382ba
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bfc656911abf3349e03543e6bb668db977422738
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701384"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022632"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>方法:macOS と iOS で SSO を構成する
 
@@ -71,7 +71,9 @@ Microsoft ID プラットフォームがトークンを共有できるアプリ�
 
 Microsoft ID プラットフォームがアプリにそれぞれ同じアプリケーション ID を使用するように伝える場合、**リダイレクト URI** を使用します。 各アプリケーションには、オンボード ポータルで、複数のリダイレクト URI を登録することができます。 スイートの各アプリは、異なるリダイレクト URI を持ちます。 次に例を示します。
 
-App1 のリダイレクト URI: `msauth.com.contoso.mytestapp1://auth` App2 のリダイレクト URI: `msauth.com.contoso.mytestapp2://auth` App3 のリダイレクト URI: `msauth.com.contoso.mytestapp3://auth`
+App1 のリダイレクト URI: `msauth.com.contoso.mytestapp1://auth`  
+App2 のリダイレクト URI: `msauth.com.contoso.mytestapp2://auth`  
+App3 のリダイレクト URI: `msauth.com.contoso.mytestapp3://auth`  
 
 > [!IMPORTANT]
 > リダイレクト URI の形式は、MSAL がサポートする形式と互換性がある必要があります。これについては「[MSAL リダイレクト URI 形式の要件](redirect-uris-ios.md#msal-redirect-uri-format-requirements)」に記載されています。
@@ -96,6 +98,18 @@ App1 のリダイレクト URI: `msauth.com.contoso.mytestapp1://auth` App2 の�
 </plist>
 ```
 
+#### <a name="add-a-new-keychain-group"></a>新しいキーチェーン グループを追加する
+
+新しいキーチェーン グループをプロジェクトの **[機能]** に追加します。 キーチェーン グループは、次のようになります。
+* iOS の場合: `com.microsoft.adalcache` 
+* macOS の場合: `com.microsoft.identity.universalstorage`
+
+![キーチェーンの例](media/single-sign-on-macos-ios/keychain-example.png)
+
+詳細については、[キーチェーン グループ](howto-v2-keychain-objc.md)に関する記事をご覧ください。
+
+## <a name="configure-the-application-object"></a>アプリケーション オブジェクトの構成
+
 各アプリケーションでキーチェーンのエンタイトルメントを有効にし、SSO を使用する準備ができたら、次の例のように、キーチェーン アクセス グループを使用して `MSALPublicClientApplication` を構成します。
 
 Objective-C:
@@ -113,16 +127,14 @@ Swift:
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "<my-client-id>")
 config.cacheConfig.keychainSharingGroup = "my.keychain.group"
-        
+
 do {
-    let application = try MSALPublicClientApplication(configuration: config)
-  // continue on with application          
+   let application = try MSALPublicClientApplication(configuration: config)
+  // continue on with application
 } catch let error as NSError {
   // handle error here
-}       
+}
 ```
-
-
 
 > [!WARNING]
 > 複数のアプリケーション間でキーチェーンを共有すると、どのアプリケーションでもユーザーを削除できます。さらに、アプリケーション全体のすべてのトークンを削除することもできてしまいます。
@@ -206,7 +218,7 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
         MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: sourceApp)
     }
 ```
-    
+
 ## <a name="next-steps"></a>次のステップ
 
 [認証フローとアプリケーションのシナリオ](authentication-flows-app-scenarios.md)の詳細を確認します

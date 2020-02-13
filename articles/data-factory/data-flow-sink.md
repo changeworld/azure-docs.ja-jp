@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: 1c65a456270cdca345504c07b927a7ef7e1f725b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b631c068d1a444691345e054219208c4c8b0b8c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440289"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020048"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>マッピング データ フローでのシンク変換
 
@@ -52,6 +52,12 @@ Azure Data Factory は、[90 を超えるネイティブ コネクタ](connector
 シンクの **[マッピング]** タブ内では、Select 変換とほぼ同様に、受信列が書き込まれるかどうかを決定できます。 既定では、誤差のある列を含め、すべての入力列がマップされます。 これは、**自動マッピング**と呼ばれます。
 
 自動マッピングを無効にすると、固定列ベースのマッピングまたはルールベースのマッピングのいずれかを追加するオプションを利用できます。 ルールベースのマッピングでは、パターン マッチングを使用した式を作成でき、固定マッピングでは、論理列名と物理列名がマップされます。 ルールベースのマッピングの詳細については、[マッピング データ フローの列パターン](concepts-data-flow-column-pattern.md#rule-based-mapping-in-select-and-sink)に関する記事を参照してください。
+
+## <a name="custom-sink-ordering"></a>カスタム シンクの順序付け
+
+既定では、データが複数のシンクに書き込まれる順序は決まっていません。 変換ロジックは完了しており、シンクの順序は実行ごとに異なる場合があるので、実行エンジンではデータは並列に書き込まれます。 シンクの順序を正確に指定するには、データフローの全般タブで **[Custom sink ordering]\(カスタム シンクの順序付け\)** を有効にします。 有効にすると、シンクは昇順で連続して書き込まれます。
+
+![カスタム シンクの順序付け](media/data-flow/custom-sink-ordering.png "カスタム シンクの順序付け")
 
 ## <a name="data-preview-in-sink"></a>シンクでのデータのプレビュー
 

@@ -1,6 +1,6 @@
 ---
-title: CloudSimple による Azure VMware ソリューション-CloudSimple プライベート クラウド用の負荷分散ソリューションを選択する
-description: プライベート クラウドにアプリケーションをデプロイするときの負荷分散のオプションについて説明します
+title: Azure VMware Solutions (AVS) - AVS プライベート クラウド用の負荷分散ソリューションを選択する
+description: AVS プライベート クラウドにアプリケーションをデプロイするときの負荷分散のオプションについて説明します
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6c98b699b1d3aba15ce69c519d35d7ce3e90d123
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 405bc9d95b8d82e2181e2fb828d6bcc00c8c4639
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045735"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77014880"
 ---
-# <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>CloudSimple プライベート クラウドの負荷分散ソリューションを選択する
+# <a name="choose-a-load-balancing-solution-for-avs-private-clouds"></a>AVS プライベート クラウド用の負荷分散ソリューションを選択する
 
-CloudSimple プライベート クラウドにアプリケーションをデプロイするときに、いずれかの負荷分散オプションを選択できます。
+AVS プライベート クラウドにアプリケーションをデプロイするときに、負荷分散用のいくつかのオプションの中から任意のものを選択できます。
 
-CloudSimple プライベート クラウドで仮想またはソフトウェアベースのロード バランサーを選択できます。または、Azure サブスクリプションで実行されている Azure L7 ロード バランサーを使用して、CloudSimple プライベート クラウドで実行されている Web 層の VM のフロントエンド処理を実行させることもできます。 ここでは、いくつかのオプションについて説明します。
+AVS プライベート クラウドで仮想またはソフトウェアベースのロード バランサーを選択できます。また、Azure サブスクリプションで実行されている Azure L7 ロード バランサーを使用して、AVS プライベート クラウドで実行されている Web 層の VM のフロントエンド処理を実行させることもできます。 ここでは、いくつかのオプションについて説明します。
 
 ## <a name="virtual-load-balancers"></a>仮想ロード バランサー
 
@@ -29,13 +29,13 @@ vCenter インターフェイスを使用して、仮想ロード バランサ�
 
 ## <a name="azure-l7-load-balancer"></a>Azure L7 ロード バランサー
 
-プライベート クラウドで実行されているアプリケーションの L7 ロード バランサーとして Azure Application Gateway を使用する場合、ロード バランサー ソフトウェアを管理する必要はありません。 ロード バランサー ソフトウェアは Azure によって管理されます。 プライベート クラウド内のすべての Web 層の VM では、プライベート IP アドレスが使用され、名前を解決するための追加の NAT 規則やパブリック IP アドレスは必要ありません。 Web 層の VM は、待機時間が短く、高帯域幅のプライベート接続を介して Azure Application Gateway と通信します。
+AVS プライベート クラウドで実行されているアプリケーションの L7 ロード バランサーとして Azure Application Gateway を使用する場合、ロード バランサー ソフトウェアを管理する必要はありません。 ロード バランサー ソフトウェアは Azure によって管理されます。 AVS プライベート クラウド内のすべての Web 層の VM では、プライベート IP アドレスが使用され、名前を解決するための追加の NAT 規則もパブリック IP アドレスも必要ありません。 Web 層の VM は、待機時間が短く、高帯域幅のプライベート接続を介して Azure Application Gateway と通信します。
 
 このソリューションを構成する方法の詳細については、Azure Application Gateway を L7 ロードバランサーとして使用する方法に関するソリューション ガイドを参照してください。
 
 ## <a name="azure-internal-load-balancer"></a>Azure 内部ロード バランサー
 
-Web フロントエンド層が Azure サブスクリプションの Azure vNet 内で実行され、アプリケーションの DB 層が CloudSimple プライベート クラウドの VMware VM で実行されているハイブリッド デプロイでアプリケーションを実行することを選択する場合は、トラフィックの管理のために、DB 層 VM の前で Azure 内部ロード バランサー (L4 ロード バランサー) を使用できます。
+Web フロントエンド層が Azure サブスクリプションの Azure vNet 内で実行され、アプリケーションの DB 層が AVS プライベート クラウドの VMware VM で実行されているハイブリッド デプロイでアプリケーションを実行することを選択する場合は、トラフィックの管理のために、DB 層 VM の前で Azure 内部ロード バランサー (L4 ロード バランサー) を使用できます。
 
 詳細については、Azure の[内部ロード バランサー](../load-balancer/concepts-limitations.md#internalloadbalancer)に関するドキュメントを参照してください。
 

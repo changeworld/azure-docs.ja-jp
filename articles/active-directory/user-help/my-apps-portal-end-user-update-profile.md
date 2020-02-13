@@ -2,31 +2,38 @@
 title: マイ アプリ ポータルからプロファイルとアカウント情報を更新する - Azure AD
 description: パスワードの変更、パスワードのリセットの有効化、セキュリティ検証方法の更新、組織の利用規約ステートメントの表示、職場または学校アカウントを使用してサインインしたあらゆる場所からのサインアウトなど、プロファイルと職場または学校のアカウント情報を更新する方法について説明します。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/21/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 787a0b38cecd76c58017e6dff3da1607ac283d23
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a6bcfa7fc58d47e64bff0838ff698bc59eda4e70
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704869"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022281"
 ---
-# <a name="update-your-profile-and-work-or-school-account-information-on-the-my-apps-portal"></a>マイ アプリ ポータルでプロファイルと職場または学校アカウント情報を更新する
+# <a name="update-your-profile-and-account-information-on-the-my-apps-portal"></a>マイ アプリ ポータルでプロファイルとアカウントの情報を更新する
 
-Web ベースの**マイ アプリ** ポータルでは、職場または学校アカウントを使用して、社内にあるクラウドベースのアプリを表示して起動したり、一部のプロフィール情報とアカウント情報を更新したり、**グループ**情報を確認したり、アプリとグループの**アクセス レビュー**を実行したりすることができます。 **マイ アプリ** ポータルにアクセスできない場合は、ヘルプデスクに連絡してアクセス許可を得る必要があります。
+職場または学校アカウントを Web ベースの**マイ アプリ** ポータルで使用して、次のことができます 
+
+- 組織のクラウドベースのアプリの多くを表示して開始する
+- プロファイルとアカウントの一部の情報を更新する
+- **グループ**の情報を表示する
+- アプリとグループについての**アクセス レビュー**を実行する 
+
+**マイ アプリ** ポータルにアクセスできない場合は、ヘルプデスクに連絡してアクセス許可を得る必要があります。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
->[!Important]
->このコンテンツはユーザーを対象としています。 管理者の方は、「[アプリケーション管理のドキュメント](https://docs.microsoft.com/azure/active-directory/manage-apps)」で、クラウドベースのアプリの設定と管理の方法を詳しくご覧いただけます。
+> [!Important]
+> このコンテンツは、**マイ アプリ**のユーザーを対象としています。 管理者の方は、「[アプリケーション管理のドキュメント](https://docs.microsoft.com/azure/active-directory/manage-apps)」で、クラウドベースのアプリの設定と管理の方法を詳しくご覧いただけます。
 
 ## <a name="view-your-organization-related-profile-information"></a>組織関連のプロファイル情報を表示する
 

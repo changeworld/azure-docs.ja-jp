@@ -3,23 +3,21 @@ title: Azure IoT Central でルールに対する Webhook を作成する | Micr
 description: Azure IoT Central でルールが作動したときに他のアプリケーションに自動的に通知する Webhook を作成します。
 author: viv-liu
 ms.author: viviali
-ms.date: 06/16/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: peterpr
-ms.openlocfilehash: 5c2bef7f3eb8d6f8d6d78755d839a33556259b65
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+manager: corywink
+ms.openlocfilehash: db4e48a7bff9127810b051a9ab63bbe9d78cf6da
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72942556"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022428"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Azure IoT Central でルールに対する Webhook アクションを作成する
 
 *このトピックはビルダーおよび管理者向けです。*
-
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
 
 Webhook を使用すると、IoT Central アプリを他のアプリケーションやサービスに接続して、リモート監視や通知を行うことができます。 IoT Central アプリ内でルールがトリガーされるたびに、Webhook は、接続されている他のアプリケーションやサービスに対して自動的に通知を行います。 ルールがトリガーされるたびに、IoT Central アプリから他のアプリケーションの HTTP エンドポイントに POST 要求が送信されます。 ペイロードには、デバイスの詳細とルールのトリガーの詳細が含まれます。
 
@@ -31,7 +29,7 @@ Webhook を使用すると、IoT Central アプリを他のアプリケーショ
 
 1. 新しい RequestBin を作成し、**Bin URL** をコピーします。
 
-1. [テレメトリ ルール](howto-create-telemetry-rules.md)または[イベント ルール](howto-create-event-rules.md)を作成します。 ルールを保存し、新しいアクションを追加します。
+1. [テレメトリ ルール](tutorial-create-telemetry-rules.md)を作成します。 ルールを保存し、新しいアクションを追加します。
 
     ![Webhook の作成画面](media/howto-create-webhooks/webhookcreate.png)
 
@@ -43,50 +41,39 @@ Webhook を使用すると、IoT Central アプリを他のアプリケーショ
 
 ## <a name="payload"></a>ペイロード
 
-ルールがトリガーされると、測定値、デバイス、ルール、アプリケーションの詳細に関する JSON ペイロードを含んだ HTTP POST 要求がコールバック URL に対して行われます。 テレメトリ ルールの場合、このペイロードは次のような内容になります。
+ルールがトリガーされると、テレメトリ、デバイス、ルール、アプリケーションの詳細に関する JSON ペイロードを含む HTTP POST 要求が、コールバック URL に対して行われます。 ペイロードは次のようになります。
 
 ```json
 {
-    "id": "ID",
-    "timestamp": "date-time",
-    "device" : {
-        "id":"ID",
-        "name":  "Refrigerator1",
-        "simulated" : true,
-        "deviceId": "deviceID",
-        "deviceTemplate":{
-            "id": "ID",
-            "version":"1.0.0"
-        },
-        "properties":{
-            "device":{
-                "firmwareversion":"1.0"
-            },
-            "cloud":{
-                "location":"One Microsoft Way"
-            }
-        },
-        "measurements":{
-            "telemetry":{
-                "temperature":20,
-                "pressure":10
-            }
-        }
-
-    },
+    "id": "<id>",
+    "displayName": "Webhook 1",
+    "timestamp": "2019-10-24T18:27:13.538Z",
     "rule": {
-        "id": "ID",
-        "name": "High temperature alert",
-        "enabled": true,
-        "deviceTemplate": {
-            "id":"GUID",
-            "version":"1.0.0"
-        }
+        "id": "<id>",
+        "displayName": "High temp alert",
+        "enabled": true
     },
+    "device": {
+        "id": "mx1",
+        "displayName": "MXChip IoT DevKit - mx1",
+        "instanceOf": "<device-template-id>",
+        "simulated": true,
+        "provisioned": true,
+        "approved": true
+    },
+    "data": [{
+        "@id": "<id>",
+        "@type": ["Telemetry"],
+        "name": "temperature",
+        "displayName": "Temperature",
+        "value": 66.27310467496761,
+        "interfaceInstanceName": "sensors"
+    }],
     "application": {
-        "id": "ID",
-        "name": "Contoso app",
-        "subdomain":"contoso-app"
+        "id": "<id>",
+        "displayName": "x - Store Analytics Checkout---PnP",
+        "subdomain": "<subdomain>",
+        "host": "<host>"
     }
 }
 ```
@@ -97,6 +84,6 @@ Webhook を使用すると、IoT Central アプリを他のアプリケーショ
 
 この機能を改良する方法についてアイデアがありましたら、[UserVoice フォーラム](https://feedback.azure.com/forums/911455-azure-iot-central)でご提案ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Webhook を設定して使用する方法がわかったら、[Microsoft Flow でワークフローを構築する方法](howto-add-microsoft-flow.md)について詳しく調べることをお勧めします。
+Webhook を設定して使用する方法がわかったら、[Azure Monitor のアクション グループの構成](howto-use-action-groups.md)について調べることをお勧めします。

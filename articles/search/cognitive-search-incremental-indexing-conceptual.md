@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 285b3608bc57d88ca2e81ed14355923436ed9d8d
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 09003c26ead9108d07ae339fcf64235c246474a4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028516"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024145"
 ---
 # <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure Cognitive Search のインクリメンタル エンリッチメントとキャッシュの概要
 
@@ -26,7 +26,7 @@ ms.locfileid: "76028516"
 
 インクリメンタル エンリッチメントでは、エンリッチメント パイプラインにキャッシュが追加されます。 インデクサーは、ドキュメント解析から得られた結果に加え、ドキュメントごとの各スキルの出力をキャッシュします。 スキルセットが更新されたときには、変更済み (またはダウンストリーム) のスキルのみが再実行されます。 更新された結果がキャッシュに書き込まれ、検索インデックスまたはナレッジ ストア内のドキュメントが更新されます。
 
-物理的には、キャッシュはご使用の Azure Storage アカウントの BLOB コンテナーに格納されます。 インデクサー キャッシュには、Search サービス内のすべてのインデックスが同じストレージ アカウントを共有できます。 それぞれのインデクサーには、使用しているコンテナーに対する一意かつ不変のキャッシュ識別子が割り当てられます。
+物理的には、キャッシュはご使用の Azure Storage アカウントの BLOB コンテナーに格納されます。 キャッシュでは、更新処理の内部レコードにテーブル ストレージも使用されます。 インデクサー キャッシュには、Search サービス内のすべてのインデックスが同じストレージ アカウントを共有できます。 それぞれのインデクサーには、使用しているコンテナーに対する一意かつ不変のキャッシュ識別子が割り当てられます。
 
 ## <a name="cache-configuration"></a>キャッシュの構成
 
@@ -97,7 +97,7 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 
 キャッシュの目的は不必要な処理を回避することにあります。ここで、インデクサーによって検出されない変更 (たとえば、カスタム スキルなどの外部コード内の変更) をスキルに加えるケースを考えてみましょう。
 
-この場合は、[スキルのリセット](preview-api-resetskills.md)を使用して、特定のスキル (そのスキルの出力に依存するダウンストリームのスキルも含まれます) を強制的に再処理することができます。 この API は、無効にして再処理用にマークする必要があるスキルのリストが含まれた POST 要求を受け取ります。 スキルのリセット後、インデクサーを実行してパイプラインを起動します。
+この場合は、[スキルのリセット](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills)を使用して、特定のスキル (そのスキルの出力に依存するダウンストリームのスキルも含まれます) を強制的に再処理することができます。 この API は、無効にして再処理用にマークする必要があるスキルのリストが含まれた POST 要求を受け取ります。 スキルのリセット後、インデクサーを実行してパイプラインを起動します。
 
 ## <a name="change-detection"></a>変更検出
 
@@ -136,39 +136,27 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 * ドキュメントの再プロジェクションを伴う変更がナレッジ ストアのプロジェクションに生じた。
 * インデックスに対するドキュメントの再プロジェクションを伴う変更が、インデクサーの出力フィールドのマッピングに生じた。
 
-## <a name="api-reference-content-for-incremental-enrichment"></a>インクリメンタル エンリッチメントに関する API リファレンス コンテンツ
+## <a name="api-reference"></a>API リファレンス
 
-REST `api-version=2019-05-06-Preview` は、インデクサー、スキルセット、およびデータ ソースへの追加を含む、インクリメンタル エンリッチメントのための API を提供します。 [公式リファレンス ドキュメント](https://docs.microsoft.com/rest/api/searchservice/)では、一般提供されている API を対象にしていて、プレビュー機能については説明していません。 次のセクションでは、影響を受ける API のリファレンス コンテンツを提供します。
+REST API バージョン `2019-05-06-Preview` では、インデクサー、スキルセット、データ ソースの追加のプロパティを使用して、インクリメンタル エンリッチメントが提供されます。 API の呼び出し方法の詳細については、リファレンス ドキュメントに加えて、[インクリメンタル エンリッチメント用のキャッシュの構成](search-howto-incremental-index.md)に関するページを参照してください。
 
-使用法に関する情報と例については、[インクリメンタル エンリッチメントのためのキャッシュの構成](search-howto-incremental-index.md)に関するページを参照してください。
++ [インデクサーの作成 (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer) 
 
-### <a name="indexers"></a>インデクサー
++ [インデクサーの更新 (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-indexer) 
 
-[インデクサーの作成](https://docs.microsoft.com/rest/api/searchservice/create-indexer)および[インデクサーの更新](https://docs.microsoft.com/rest/api/searchservice/update-indexer)では、キャッシュに関連した新しいプロパティを公開しています。
++ [スキルセットの更新 (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) (要求での新しい URI パラメーター)
 
-+ `StorageAccountConnectionString`:中間の結果をキャッシュするために使用されるストレージ アカウントへの接続文字列。
++ [スキルのリセット (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills)
 
-+ `EnableReprocessing`:既定では `true` に設定されます。`false` に設定した場合でも、ドキュメントは引き続きキャッシュに書き込まれますが、そのキャッシュ データに基づいて既存のドキュメントが再処理されることはありません。
++ データベースのインデクサー (Azure SQL、Cosmos DB)。 一部のインデクサーでは、クエリを使用してデータを取得します。 データを取得するクエリ用に、[データ ソースの更新](https://docs.microsoft.com/rest/api/searchservice/update-data-source)では、要求の新しいパラメーター **ignoreResetRequirement** がサポートされています。更新アクションによってキャッシュが無効にされないようにするには、これを `true` に設定する必要があります。 
 
-+ `ID` (読み取り専用): `ID` は、このインデクサーのキャッシュとして使用される `annotationCache` ストレージ アカウント内のコンテナーの識別子です。 このインデクサーに固有のキャッシュであり、インデクサーが削除されて同じ名前で再作成されると、`ID` が再び生成されます。 `ID` を設定することはできません。常にサービスによって生成されます。
-
-### <a name="skillsets"></a>スキルセット
-
-+ [スキルセットの更新](https://docs.microsoft.com/rest/api/searchservice/update-skillset)では、要求の新しいパラメーターがサポートされています: `disableCacheReprocessingChangeDetection`。現在のアクションに基づいて既存のドキュメントが更新されないようにするには、これを `true` に設定する必要があります。
-
-+ [スキルのリセット](preview-api-resetskills.md)は、スキルセットを無効にするために使用される新しい操作です。
-
-### <a name="datasources"></a>データソース
-
-+ 一部のインデクサーでは、クエリを使用してデータを取得します。 データを取得するクエリ用に、[データ ソースの更新](https://docs.microsoft.com/rest/api/searchservice/update-data-source)では、要求の新しいパラメーターがサポートされています: `ignoreResetRequirement`。更新アクションによってキャッシュが無効にされないようにするには、これを `true` に設定する必要があります。
-
-`ignoreResetRequirement` は慎重に使用してください。容易には検出できない不整合が意図せずデータに生じることがあります。
+  **ignoreResetRequirement** は慎重に使用してください。容易には検出できない不整合が意図せずデータに生じることがあります。
 
 ## <a name="next-steps"></a>次のステップ
 
-インクリメンタル エンリッチメントは、変更の追跡をスキルセットと AI エンリッチメントに拡張する強力な機能です。 スキルセットの進化に伴い、インクリメンタル エンリッチメントによって、ドキュメントの最終的な整合性を確保しながら最小限の作業が実行されます。
+インクリメンタル エンリッチメントは、変更の追跡をスキルセットと AI エンリッチメントに拡張する強力な機能です。 インクリメンタル エンリッチメントを使用すると、スキルセットの設計を反復処理する際に、既存の処理済みコンテンツを再利用できます。
 
-既存のインデクサーにキャッシュを追加して開始するか、新しいインデクサーを定義するときにキャッシュを追加します。
+次のステップとして、既存のインデクサーのキャッシュを有効にするか、新しいインデクサーを定義するときにキャッシュを追加します。
 
 > [!div class="nextstepaction"]
 > [インクリメンタル エンリッチメントのためのキャッシュの構成](search-howto-incremental-index.md)

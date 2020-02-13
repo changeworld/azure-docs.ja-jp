@@ -4,18 +4,18 @@ description: Azure portal を使用して Azure HPC Cache を管理および更�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 1/08/2020
+ms.date: 1/29/2020
 ms.author: rohogue
-ms.openlocfilehash: a166a904b2e63419efd5803fd54be1d1b59836fb
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 9ad6348e15c8a25f721a89be7eab3e17c58ae17c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867080"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988873"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>Azure portal からキャッシュを管理する
 
-Azure portal のキャッシュの概要ページには、お使いのキャッシュに関して、プロジェクトの詳細、キャッシュの状態、基本的な統計が表示されます。 また、キャッシュの削除、長期ストレージへのデータのフラッシュ、ソフトウェア更新を行うためのコントロールが用意されています。
+Azure portal のキャッシュの概要ページには、お使いのキャッシュに関して、プロジェクトの詳細、キャッシュの状態、基本的な統計が表示されます。 キャッシュの停止または開始、キャッシュの削除、長期ストレージへのデータのフラッシュ、ソフトウェア更新を行うためのコントロールも用意されています。
 
 概要ページを開くには、Azure portal でお使いのキャッシュのリソースを選択します。 たとえば、 **[すべてのリソース]** ページを読み込んで、キャッシュ名をクリックします。
 
@@ -23,12 +23,29 @@ Azure portal のキャッシュの概要ページには、お使いのキャッ�
 
 ページの上部のボタンは、キャッシュを管理する助けになります。
 
+* **[開始]** と [ **[停止]** ](#stop-the-cache) - キャッシュ操作を中断します
 * [ **[フラッシュ]** ](#flush-cached-data) - 変更されたデータをストレージ ターゲットに書き込みます
 * [ **[フラッシュ]** ](#upgrade-cache-software) - キャッシュ ソフトウェアを更新します
 * **[最新の情報に更新]** - 概要ページを再読み込みします
 * [ **[削除]** ](#delete-the-cache) - キャッシュを完全に破棄します
 
 これらのオプションの詳細については、以下をご覧ください。
+
+## <a name="stop-the-cache"></a>キャッシュを停止する
+
+キャッシュを停止して、アクティブでない期間中のコストを削減することができます。 キャッシュが停止している間はアップタイムに対して課金されませんが、キャッシュの割り当て済みディスク ストレージに対しては課金されます。 (詳細については、[価格](https://aka.ms/hpc-cache-pricing)のページを参照してください。)
+
+停止したキャッシュはクライアント要求に応答しません。 キャッシュを停止する前に、クライアントのマウントを解除する必要があります。
+
+**[停止]** ボタンで、アクティブなキャッシュが中断されます。 **[停止]** ボタンは、キャッシュの状態が **[正常]** または **[低下]** の場合に使用できます。
+
+![[停止] が強調表示された上部のボタンと、'続行しますか?' とたずねている停止アクションのポップアップ メッセージのスクリーンショット [はい] (既定) および [いいえ] ボタンで '続行しますか?' とたずねているポップアップ メッセージのスクリーンショット](media/stop-cache.png)
+
+[はい] をクリックしてキャッシュの停止を確認すると、キャッシュの内容がストレージ ターゲットに自動的にフラッシュされます。 この処理には時間がかかることがありますが、データの一貫性が確保されます。 最後に、キャッシュの状態が **[Stopped]\(停止\)** に変わります。
+
+停止しているキャッシュを再アクティブ化するには、 **[開始]** ボタンをクリックします。 確認は必要ありません。
+
+![[開始] が強調表示されている上部のボタンのスクリーンショット](media/start-cache.png)
 
 ## <a name="flush-cached-data"></a>キャッシュ データをフラッシュする
 
@@ -68,13 +85,14 @@ Azure portal のキャッシュの概要ページには、お使いのキャッ�
 > [!NOTE]
 > Azure HPC Cache は、キャッシュを削除する前に、変更されたデータをキャッシュからバックエンド ストレージ システムに自動的に書き込みません。
 >
-> キャッシュ内のすべてのデータが長期ストレージに書き込まれるようにするには、次の手順を実行します。
+> キャッシュ内のすべてのデータが長期ストレージに書き込まれるようにするには、[キャッシュを停止](#stop-the-cache)してから、削除します。 [削除] ボタンをクリックする前に、ステータス **[Stopped]\(停止\)** が表示されていることを確認します。
+<!--... written to long-term storage, follow this procedure:
 >
-> 1. ストレージ ターゲット ページの [削除] ボタンを使用して、Azure HPC Cache から各ストレージ ターゲットを[削除](hpc-cache-edit-storage.md#remove-a-storage-target)します。 ターゲットを削除する前に、システムは、変更されたデータをキャッシュからバックエンド ストレージ システムに自動的に書き込みます。
-> 1. ストレージ ターゲットが完全に削除されるまで待ちます。 キャッシュから書き込むデータが大量にある場合、このプロセスには 1 時間以上かかることがあります。 この処理が完了すると、削除操作が正常に完了したことを示すポータル通知が表示され、ストレージ ターゲットは一覧に表示されなくなります。
-> 1. 影響を受けるすべてのストレージ ターゲットが削除された後は、キャッシュを削除しても安全です。
+> 1. [Remove](hpc-cache-edit-storage.md#remove-a-storage-target) each storage target from the Azure HPC Cache by using the delete button on the Storage targets page. The system automatically writes any changed data from the cache to the back-end storage system before removing the target.
+> 1. Wait for the storage target to be completely removed. The process can take an hour or longer if there is a lot of data to write from the cache. When it is done, a portal notification says that the delete operation was successful, and the storage target disappears from the list.
+> 1. After all affected storage targets have been deleted, it is safe to delete the cache.
 >
-> あるいは、[フラッシュ](#flush-cached-data) オプションを使用して、キャッシュされたデータを保存することもできます。ただし、フラッシュの完了後、キャッシュ インスタンスが破棄される前に、クライアントが変更をキャッシュに書き込んだ場合、作業が失われるわずかな危険性があります。
+> Alternatively, you can use the [flush](#flush-cached-data) option to save cached data, but there is a small risk of losing work if a client writes a change to the cache after the flush completes but before the cache instance is destroyed.-->
 
 ## <a name="cache-metrics-and-monitoring"></a>キャッシュのメトリックと監視
 

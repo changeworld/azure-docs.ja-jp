@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 5af73e166f3caa4997851ae4b17d8377550bf40a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: db1e2d09c1a75401a8ca24859e9b2d5da9f54b72
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961546"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024281"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell のトラブルシューティングと制限事項
 
@@ -36,8 +36,8 @@ Azure Cloud Shell に関する問題のトラブルシューティングを行�
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>ロック ダウンされたネットワーク環境で Cloud Shell を無効にする
 
-- **[詳細]** :管理者によっては、ユーザーが Cloud Shell にアクセスできないようにしたほうが望ましいと判断する場合があります。 Cloud Shell では、`ux.console.azure.com` ドメインへのアクセスが使用されますが、このアクセスは拒否される場合があり、その場合は、Cloud Shell のエントリ ポイントへのアクセスがすべて停止されます (portal.azure.com、shell.azure.com、Visual Studio Code Azure Account 拡張機能、docs.microsoft.com を含む)。
-- **解決方法**:環境のネットワーク設定を通じて、`ux.console.azure.com` へのアクセスを制限します。 Cloud Shell アイコンはその後も portal.azure.com に表示されますが、サービスに正常に接続することはできなくなります。
+- **[詳細]** :管理者によっては、ユーザーが Cloud Shell にアクセスできないようにしたほうが望ましいと判断する場合があります。 Cloud Shell では、`ux.console.azure.com` ドメインへのアクセスが使用されますが、このアクセスは拒否される場合があり、その場合は、Cloud Shell のエントリ ポイントへのアクセスがすべて停止されます (portal.azure.com、shell.azure.com、Visual Studio Code Azure Account 拡張機能、docs.microsoft.com を含む)。 米国政府のクラウドでは、エントリポイントは `ux.console.azure.us` であり、対応する shell.azure.us はありません。
+- **解決方法**:ご利用の環境のネットワーク設定を通じて、`ux.console.azure.com` または `ux.console.azure.us` へのアクセスを制限します。 Cloud Shell アイコンはその後も Azure portal に表示されますが、サービスに正常に接続することはできなくなります。
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>ストレージ ダイアログ - エラー: 403 RequestDisallowedByPolicy
 
@@ -163,7 +163,7 @@ Azure Cloud Shell は、ユーザーの個人データを慎重に取り扱い�
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-### <a name="export"></a>エクスポート
+### <a name="export"></a>[エクスポート]
 選択されたシェル、フォント サイズ、フォントの種類など、Cloud Shell によって保存されるユーザー設定を**エクスポート**するには、次のコマンドを実行します。
 
 1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
-ms.openlocfilehash: f3c2b1aa8f41b382bea96b33108d23bf09850c78
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 82ae0cab2d3dd7c65371e7a5bfec506e484fcdd2
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984763"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169783"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースとは
 
@@ -77,10 +77,6 @@ ms.locfileid: "76984763"
 | Enterprise Edition へのアップグレード    | **&check;** | **&check;**  | |     |
 | コンピューティング リソースを作成して管理する    | **&check;**   | **&check;** | **&check;** |  **&check;**   |
 | ノートブック VM を作成する |   | **&check;** | |     |
-
-> [!NOTE]
-> コンピューティング インスタンスは、**米国中北部**、**米国東部 2**、**北ヨーロッパ**、または**英国南部**リージョンのワークスペースでのみ使用できます。他のリージョンは近日中にサポートされる予定です。
->ワークスペースが他のリージョンにある場合は、代わりに [Notebook VM](concept-compute-instance.md#notebookvm) を引き続き作成して使用することができます。
 
 ## <a name='create-workspace'></a> ワークスペースを作成する
 

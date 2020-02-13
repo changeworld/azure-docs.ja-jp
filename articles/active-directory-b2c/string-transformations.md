@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/04/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 72b3349e0ad4fd86b91a7a02f70b2bcf1efbc271
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 774d3325cff98ef01dc0b2e8d5c1db38e449d1b5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712854"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982759"
 ---
 # <a name="string-claims-transformations"></a>文字列要求変換
 
@@ -28,7 +28,7 @@ ms.locfileid: "76712854"
 
 2 つの要求を比較し、それらが指定された比較 inputClaim1、inputClaim2 および stringComparison によれば等しくない場合は、例外をスローします。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | string | 比較する最初の要求の種類。 |
 | InputClaim | inputClaim2 | string | 比較する 2 番目の要求の種類。 |
@@ -89,7 +89,7 @@ ms.locfileid: "76712854"
 
 指定された要求の大文字または小文字を演算子に従って変更します。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | string | 変更する ClaimType。 |
 | InputParameter | toCase | string | 次のいずれかの値を指定できます。`LOWER` または `UPPER`。 |
@@ -124,7 +124,7 @@ ms.locfileid: "76712854"
 
 ポリシーで指定された入力パラメーターから文字列要求を作成します。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 |----- | ----------------------- | --------- | ----- |
 | InputParameter | value | string | 設定する文字列 |
 | OutputClaim | createdClaim | string | この要求変換が呼び出された後に生成される ClaimType は、入力パラメーターに指定された値で呼び出されています。 |
@@ -153,7 +153,7 @@ ms.locfileid: "76712854"
 
 文字列要求が相互に等しいかどうかを確認します。 結果は、`true` または `false` の値を含む新しい ClaimType ブール値です。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | string | 比較する最初の要求の種類。 |
 | InputClaim | inputClaim2 | string | 比較する 2 番目の要求の種類。 |
@@ -194,7 +194,7 @@ ms.locfileid: "76712854"
 
 要求の値が入力パラメーターの値と等しいかどうかを確認します。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | string | 比較する要求の種類。 |
 | InputParameter | operator | string | 指定できる値: `EQUAL` または `NOT EQUAL`。 |
@@ -234,7 +234,7 @@ ms.locfileid: "76712854"
 
 乱数ジェネレーターを使用してランダムな文字列を作成します。 乱数ジェネレーターの種類が `integer` の場合、必要に応じてシード パラメーターと最大数を指定できます。 省略可能な文字列形式パラメーターを使用して、出力を書式設定できます。省略可能な base64 パラメーターは、出力が base64 でエンコードされた randomGeneratorType [guid, integer] outputClaim (文字列) であるかどうかを指定します。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputParameter | randomGeneratorType | string | 生成されるランダムな値、`GUID` (グローバル固有 ID) または `INTEGER` (数字) を指定します。 |
 | InputParameter | stringFormat | string | [省略可能] ランダムな値を書式設定します。 |
@@ -293,7 +293,7 @@ ms.locfileid: "76712854"
 
 指定された書式設定文字列に従って要求の書式を設定します。 この変換では､C# の `String.Format` メソッドを使用します。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim |string |文字列形式 {0} パラメーターとして機能する ClaimType。 |
 | InputParameter | stringFormat | string | {0} パラメーターを含む文字列の形式。 |
@@ -328,7 +328,7 @@ ms.locfileid: "76712854"
 
 指定された書式設定文字列に従って、2 つの要求の書式を設定します。 この変換は C# **String.Format** メソッドを使用します。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim |string | 文字列形式 {0} パラメーターとして機能する ClaimType。 |
 | InputClaim | inputClaim | string | 文字列形式 {1} パラメーターとして機能する ClaimType。 |
@@ -366,7 +366,7 @@ ms.locfileid: "76712854"
 
 要求 **Restriction** コレクションからの項目の検索。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | mapFromClaim | string | **Restriction** コレクションがある **restrictionValueClaim** 要求から検索するテキストを含む要求。  |
 | OutputClaim | restrictionValueClaim | string | **Restriction** コレクションが含まれる要求。 要求変換が呼び出された後には、この要求の値には、選択した項目の値が含まれます。 |
@@ -409,7 +409,7 @@ ms.locfileid: "76712854"
 
 別の要求の値に基づいて、値の一覧から要求の値を検索します。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputParameterId | string | 参照値が含まれる要求 |
 | InputParameter | |string | inputParameters のコレクションです。 |
@@ -451,7 +451,7 @@ ms.locfileid: "76712854"
 
 特定の要求の値を消去します。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | OutputClaim | claim_to_null | string | 値が NULL になる要求。 |
 
@@ -474,7 +474,7 @@ ms.locfileid: "76712854"
 
 電子メール アドレスのドメイン部分を取得します。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | emailAddress | string | 電子メール アドレスが含まれている ClaimType。 |
 | OutputClaim | domain | string | この要求変換が呼び出された後に生成される ClaimType - ドメイン。 |
@@ -499,11 +499,52 @@ ms.locfileid: "76712854"
 - 出力要求:
     - **domain**: outlook.com
 
+## <a name="setclaimsifregexmatch"></a>SetClaimsIfRegexMatch
+
+文字列の要求の `claimToMatch` と `matchTo` の入力パラメーターが等しいことをチェックし、出力要求を `outputClaimIfMatched` 入力パラメーターにある値で設定します。同時に結果の出力要求を比較します。これは比較の結果に基づいて `true` または `false` として設定されます。
+
+| Item | TransformationClaimType | データ型 | Notes |
+| ---- | ----------------------- | --------- | ----- |
+| inputClaim | claimToMatch | string | 比較する要求の種類。 |
+| InputParameter | matchTo | string | 照合する正規表現。 |
+| InputParameter | outputClaimIfMatched | string | 文字列が等しい場合に設定する値。 |
+| OutputClaim | outputClaim | string | 正規表現が一致する場合は、この出力要求に `outputClaimIfMatched` 入力パラメーターの値が含まれます。 一致するものがない場合は null になります。 |
+| OutputClaim | regexCompareResultClaim | boolean | 正規表現で結果の出力要求の種類が照合されます。これは照合の結果に基づいて、`true` または `false` として設定されます。 |
+
+たとえば、電話番号の正規表現パターンに基づいて、指定された電話番号が有効かどうかをチェックします。  
+
+```XML
+<ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="setClaimsIfRegexMatch">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="phone" TransformationClaimType="claimToMatch" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="matchTo" DataType="string" Value="^[0-9]{4,16}$" />
+    <InputParameter Id="outputClaimIfMatched" DataType="string" Value="isPhone" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="validationResult" TransformationClaimType="outputClaim" />
+    <OutputClaim ClaimTypeReferenceId="isPhoneBoolean" TransformationClaimType="regexCompareResultClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>例
+
+- 入力要求:
+    - **claimToMatch**:"64854114520"
+- 入力パラメーター:
+    - **matchTo**: "^[0-9]{4,16}$"
+    - **outputClaimIfMatched**:  "isPhone"
+- 出力要求:
+    - **outputClaim**: "isPhone"
+    - **regexCompareResultClaim**: true
+
 ## <a name="setclaimsifstringsareequal"></a>SetClaimsIfStringsAreEqual
 
 文字列の要求と `matchTo` 入力パラメーターが等しいことをチェックし、出力要求を `stringMatchMsg` および `stringMatchMsgCode` 入力パラメーターにある値で設定します。同時に結果の出力要求を比較します。これは比較の結果に基づいて `true` または `false` として設定されます。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | string | 比較する要求の種類。 |
 | InputParameter | matchTo | string | `inputClaim` と比較する文字列。 |
@@ -552,7 +593,7 @@ ms.locfileid: "76712854"
 
 文字列の要求と `matchTo` 入力パラメーターが等しいことをチェックし、出力要求を `outputClaimIfMatched` 入力パラメーターにある値で設定します。同時に結果の出力要求を比較します。これは比較の結果に基づいて `true` または `false` として設定されます。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | claimToMatch | string | 比較する要求の種類。 |
 | InputParameter | matchTo | string | inputClaim と比較する文字列。 |
@@ -592,3 +633,188 @@ ms.locfileid: "76712854"
     - **isMinorResponseCode**:B2C_V1_90001
     - **isMinor**: true
 
+
+## <a name="stringcontains"></a>StringContains
+
+指定した substring が入力要求内に出現しているかどうかが確認されます。 結果は、`true` または `false` の値を含む新しい ClaimType ブール値です。 値パラメーターがこの文字列内に存在する場合は `true`、それ以外の場合は `false`。
+
+| Item | TransformationClaimType | データ型 | Notes |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | string | 検索する要求の種類。 |
+|InputParameter|contains|string|検索対象の値。|
+|InputParameter|ignoreCase|string|この比較で比較対象の文字列の大文字と小文字を無視するかどうかを指定します。|
+| OutputClaim | outputClaim | string | この ClaimsTransformation が呼び出された後に生成される ClaimType。 入力要求内で substring が出現した場合のブール値インジケーター。 |
+
+この要求変換は、文字列要求の種類に substring が含まれているかどうかをチェックする場合に使用します。 次の例では、`roles` 文字列要求の種類に **admin** の値が含まれているかどうかをチェックしています。
+
+```XML
+<ClaimsTransformation Id="CheckIsAdmin" TransformationMethod="StringContains"> 
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
+  </InputClaims>
+  <InputParameters>
+    <InputParameter  Id="contains" DataType="string" Value="admin"/>
+    <InputParameter  Id="ignoreCase" DataType="string" Value="true"/>
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="isAdmin" TransformationClaimType="outputClaim"/>
+  </OutputClaims>         
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>例
+
+- 入力要求:
+    - **inputClaim**:"Admin, Approver, Editor"
+- 入力パラメーター:
+    - **contains**: "admin,"
+    - **ignoreCase**: true
+- 出力要求:
+    - **outputClaim**: true 
+
+## <a name="stringsubstring"></a>StringSubstring
+
+指定した位置にある文字から始まる文字列要求の種類の一部が抽出され、指定した文字数が返されます。
+
+| Item | TransformationClaimType | データ型 | Notes |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | string | 文字列を含む要求の種類。 |
+| InputParameter | startIndex | INT | このインスタンス内の substring の 0 から始まる開始文字位置。 |
+| InputParameter | length | INT | substring の文字数。 |
+| OutputClaim | outputClaim | boolean | このインスタンスの startIndex から始まる長さの substring と等価な文字列。startIndex がこのインスタンスの長さと等しく、length がゼロの場合は空になります。 |
+
+たとえば、電話番号の国のプレフィックスを取得します。  
+
+
+```XML
+<ClaimsTransformation Id="GetPhonePrefix" TransformationMethod="StringSubstring">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="inputClaim" />
+  </InputClaims>
+<InputParameters>
+  <InputParameter Id="startIndex" DataType="int" Value="0" />
+  <InputParameter Id="length" DataType="int" Value="2" />
+</InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="phonePrefix" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+### <a name="example"></a>例
+
+- 入力要求:
+    - **inputClaim**: "+1644114520"
+- 入力パラメーター:
+    - **startIndex**: 0
+    - **length**: 2
+- 出力要求:
+    - **outputClaim**: "+1"
+
+## <a name="stringreplace"></a>StringReplace
+
+要求の種類の文字列で指定した値が検索され、新しい要求の種類の文字列が返されます。ここでは、現在の文字列内の指定した文字列のすべての出現箇所が、別の指定した文字列に置き換えられます。
+
+| Item | TransformationClaimType | データ型 | Notes |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | string | 文字列を含む要求の種類。 |
+| InputParameter | oldValue | string | 検索対象の文字列。 |
+| InputParameter | newValue | string | 出現するすべての `oldValue` を置換する文字列 |
+| OutputClaim | outputClaim | boolean | oldValue のすべてのインスタンスが newValue で置き換えられることを除いて、現在の文字列と等価な文字列。 oldValue が現在のインスタンス内に見つからない場合、メソッドにより現在のインスタンスが変更せずに返されます。 |
+
+たとえば、電話番号の `-` 文字が削除されて正規化されます  
+
+
+```XML
+<ClaimsTransformation Id="NormalizePhoneNumber" TransformationMethod="StringReplace">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="inputClaim" />
+  </InputClaims>
+<InputParameters>
+  <InputParameter Id="oldValue" DataType="string" Value="-" />
+  <InputParameter Id="newValue" DataType="string" Value="" />
+</InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+### <a name="example"></a>例
+
+- 入力要求:
+    - **inputClaim**: "+164-411-452-054"
+- 入力パラメーター:
+    - **oldValue**: "-"
+    - **length**:  ""
+- 出力要求:
+    - **outputClaim**: "+164411452054"
+
+## <a name="stringjoin"></a>StringJoin
+
+指定した文字列コレクションの要求の種類の要素を連結します。各要素またはメンバーの間には、指定した区切り記号が使用されます。
+
+| Item | TransformationClaimType | データ型 | Notes |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | stringCollection | 連結する文字列を格納しているコレクション。 |
+| InputParameter | delimiter | string | 区切り記号として使用する文字列 (コンマ `,` など)。 |
+| OutputClaim | outputClaim | string | `inputClaim` 文字列コレクションのメンバーからなる、`delimiter` 入力パラメーターで区切られた文字列。 |
+  
+次の例では、ユーザー ロールの文字列コレクションが取得され、それがコンマ区切り文字列に変換されています。 このメソッドを使用して、Azure AD ユーザー アカウントに文字列コレクションを格納することができます。 後でディレクトリからアカウントを読み取るときに、`StringSplit` を使用してコンマ区切り文字列を文字列コレクションに戻します。
+
+```XML
+<ClaimsTransformation Id="ConvertRolesStringCollectionToCommaDelimiterString" TransformationMethod="StringJoin">
+  <InputClaims>
+   <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter DataType="string" Id="delimiter" Value="," />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="rolesCommaDelimiterConverted" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>例
+
+- 入力要求:
+  - **inputClaim**: [ "Admin", "Author", "Reader" ]
+- 入力パラメーター:
+  - **delimiter**: ","
+- 出力要求:
+  - **outputClaim**:"Admin,Author,Reader"
+
+
+## <a name="stringsplit"></a>StringSplit
+
+指定された文字列の要素で区切られた、このインスタンスの substring を格納する文字列配列が返されます。
+
+| Item | TransformationClaimType | データ型 | Notes |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | string | 分割する substring を含む文字列要求の種類。 |
+| InputParameter | delimiter | string | 区切り記号として使用する文字列 (コンマ `,` など)。 |
+| OutputClaim | outputClaim | stringCollection | `delimiter` 入力パラメーターで区切られた文字列の要素に substring を格納する文字列コレクション。 |
+  
+次の例では、ユーザー ロールのコンマ区切り文字列が取得され、それが文字列コレクションに変換されています。
+
+```XML
+<ClaimsTransformation Id="ConvertRolesToStringCollection" TransformationMethod="StringSplit">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="rolesCommaDelimiter" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <InputParameters>
+  <InputParameter DataType="string" Id="delimiter" Value="," />
+    </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="roles" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>例
+
+- 入力要求:
+  - **inputClaim**:"Admin,Author,Reader"
+- 入力パラメーター:
+  - **delimiter**: ","
+- 出力要求:
+  - **outputClaim**: [ "Admin", "Author", "Reader" ]

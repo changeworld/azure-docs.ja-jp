@@ -1,22 +1,22 @@
 ---
-title: テンプレートを使用してジョブをエンドツーエンドで実行する - Azure Batch | Microsoft Docs
-description: テンプレート ファイルと Azure CLI を使用して、Batch のプール、ジョブ、タスクを作成します。
+title: テンプレートを使用してジョブをエンドツーエンドで実行する - Azure Batch
+description: CLI コマンドのみで、プールの作成、入力データのアップロード、ジョブと関連するタスクの作成、結果の出力データのダウンロードを行うことができます。
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.assetid: ''
 ms.service: batch
 ms.topic: article
 ms.workload: big-compute
 ms.date: 12/07/2018
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 2612986491268651222e51646e75cdecc95dc40c
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: c7459c4dc700f034feafbf133b831a52b9233d11
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029739"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020167"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Batch CLI テンプレートとファイル転送を使用する
 

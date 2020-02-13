@@ -1,17 +1,17 @@
 ---
 title: GitHub のアクションと Azure Kubernetes Service
 services: azure-dev-spaces
-ms.date: 11/04/2019
+ms.date: 02/04/2020
 ms.topic: conceptual
 description: GitHub アクションと Azure Dev Spaces を使用して、Azure Kubernetes Service で直接プル要求からの変更を確認およびテストする
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, GitHub アクション, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 7d96726e829154847744d9aec07a9cb0938f75de
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 35050d0c9d1e6062866747dc8544d03574a8d8fe
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771123"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026100"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub のアクションと Azure Kubernetes Service (プレビュー)
 
@@ -58,14 +58,13 @@ az ad sp create-for-rbac --sdk-auth --skip-assignment
 
 JSON 出力は、後の手順で使用されるため保存します。
 
-
-[az aks show][az-aks-show] を使用して、AKS クラスターの *id* を表示します。
+[az aks show][az-aks-show] を使用して、AKS クラスターの *ID* を表示します。
 
 ```cmd
 az aks show -g MyResourceGroup -n MyAKS  --query id
 ```
 
-[az acr show][az-acr-show] を使用して、ACR クラスターの *id* を表示します。
+[az acr show][az-acr-show] を使用して、ACR の *ID* を表示します。
 
 ```cmd
 az acr show --name <acrName> --query id
@@ -93,7 +92,6 @@ az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 1. *CLUSTER_NAME*: AKS クラスターの名前。この例では *MyAKS* です。
 1. *CONTAINER_REGISTRY*: ACR 用の *loginServer*。
 1. *HOST*: 開発空間用のホスト。 *<MASTER_SPACE>.<APP_NAME>.<HOST_SUFFIX>* の形式となります。この例では、*dev.bikesharingweb.fedcab0987.eus.azds.io* です。
-1. *HOST_SUFFIX*: 開発空間用のホストのサフィックス。この例では *fedcab0987.eus.azds.io* です。
 1. *IMAGE_PULL_SECRET*: 使用するシークレットの名前。*demo-secret* などです。
 1. *MASTER_SPACE*: 親の開発空間の名前。この例では *dev* です。
 1. *REGISTRY_USERNAME*: サービス プリンシパル作成の JSON 出力に含まれる *clientId* です。
@@ -101,6 +99,8 @@ az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 
 > [!NOTE]
 > これらのシークレットはすべて GitHub アクションによって使用され、[.github/workflows/bikes.yml][github-action-yaml] 内で構成されます。
+
+PR をマージした後にマスター スペースを更新する場合は、必要に応じて *GATEWAY_HOST* シークレットを追加します。その形式は *<MASTER_SPACE>.gateway.<HOST_SUFFIX>* で、この例では *dev.gateway.fedcab0987.eus.azds.io* となります。 変更をフォークのマスター ブランチにマージすると、別のアクションが実行され、マスター開発空間でアプリケーション全体がリビルドされ、実行されます。 この例では、マスター空間は *dev* です。 このアクションは [.github/workflows/bikesharing.yml][github-action-bikesharing-yaml] 内で構成されています。
 
 ## <a name="create-a-new-branch-for-code-changes"></a>コード変更用の新しいブランチを作成する
 

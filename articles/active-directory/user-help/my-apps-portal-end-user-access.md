@@ -2,31 +2,38 @@
 title: マイ アプリ ポータルでアプリを検索して使用する - Azure AD
 description: マイ アプリ ポータルを見つける方法と、組織のクラウドベース アプリへのアクセス方法について説明します。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/21/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: c15580481c153a58122db593f678998be485b57d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a5dae30c8b8f43602581b39005389211da83cb9e
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705005"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022307"
 ---
-# <a name="locate-and-use-your-organizations-cloud-based-apps-on-the-my-apps-portal"></a>マイ アプリ ポータルで組織のクラウドベース アプリを検索して使用する
+# <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>マイ アプリ ポータルからアプリにサインインして開始する
 
-Web ベースの**マイ アプリ** ポータルでは、職場または学校アカウントを使用して、社内にあるクラウドベースのアプリを表示して起動したり、一部のプロフィール情報とアカウント情報を更新したり、**グループ**情報を確認したり、アプリとグループの**アクセス レビュー**を実行したりすることができます。 **マイ アプリ** ポータルにアクセスできない場合は、ヘルプデスクに連絡してアクセス許可を得る必要があります。
+職場または学校アカウントを Web ベースの**マイ アプリ** ポータルで使用して、次のことができます。
+
+- 組織のクラウドベースのアプリの多くを表示して開始する
+- プロファイルとアカウントの情報を更新する
+- **グループ**の情報を表示する
+- アプリとグループについての**アクセス レビュー**を実行する
+
+**マイ アプリ** ポータルにアクセスできない場合は、ヘルプデスクに連絡してアクセス許可を得てください。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
->[!Important]
->このコンテンツはユーザーを対象としています。 管理者の方は、「[アプリケーション管理のドキュメント](https://docs.microsoft.com/azure/active-directory/manage-apps)」で、クラウドベースのアプリの設定と管理の方法を詳しくご覧いただけます。
+> [!Important]
+> このコンテンツは、マイ アプリのユーザーを対象としています。 管理者の方は、「[アプリケーション管理のドキュメント](https://docs.microsoft.com/azure/active-directory/manage-apps)」で、クラウドベースのアプリの設定と管理の方法を詳しくご覧いただけます。
 
 ## <a name="supported-browsers"></a>サポートされているブラウザー
 
@@ -66,7 +73,8 @@ Web ベースの**マイ アプリ** ポータルでは、職場または学校�
 
 アイコンは**アドレス** バーの右側に追加され、サインインして拡張機能をカスタマイズできます。
 
-#### <a name="to-change-your-my-apps-portal-using-the-extension"></a>拡張機能を使用してマイ アプリ ポータルを変更するには
+## <a name="to-change-your-my-apps-portal-using-the-extension"></a>拡張機能を使用してマイ アプリ ポータルを変更するには
+
 **[最近の使用]** セクションに表示するアプリの数を選択し、組織の内部 URL がリダイレクトできるようにするかどうかを決定できます。
 
 1. **アドレス** バーの右側にある新しい**アプリによるセキュリティで保護されたサインイン拡張機能**アイコン![拡張機能アイコン](media/my-apps-portal/my-apps-portal-extension-icon.png)を選択し、続いて **[開始するにはサインインしてください]** を選択します。
@@ -78,22 +86,24 @@ Web ベースの**マイ アプリ** ポータルでは、職場または学校�
     ![拡張機能の [設定] ページ、使用可能なカスタマイズを表示](media/my-apps-portal/my-apps-portal-extension-settings-page.png)
 
 ## <a name="access-and-use-the-my-apps-portal-by-device"></a>デバイスごとにマイ アプリ ポータルにアクセスして使用する
+
 Intune で管理されるブラウザーから、または iOS または Android モバイル デバイスからコンピューター上のマイ アプリ ポータルにアクセスして使用できます。
 
 ![マイ アプリ ポータルの [アプリ] ページ](media/my-apps-portal/my-apps-portal-apps-page.png)
 
 ### <a name="access-and-use-the-my-apps-portal-on-your-computer"></a>コンピューター上のマイ アプリ ポータルにアクセスして使用する
+
 組織のクラウドベースのアプリにアクセスして使用するアクセス許可がある場合、**マイ アプリ** ポータルを通じてそれらに到達できます。
 
-1. 職場または学校のアカウントにサインインします。
+1. ご自分のコンピューター上でご自分の職場または学校アカウントにサインインします。
 
-2. Web ブラウザーを開いて https://myapps.microsoft.com に移動するか、組織から与えられたリンクを使用します。 たとえば、 https://myapps.microsoft.com/contoso.com など、組織のカスタマイズされたページに転送されることがあります。
+2. サポートされている Web ブラウザーで、 https://myapps.microsoft.com を開いて移動するか、組織から提供されている `https://myapps.microsoft.com/contoso.com` などのカスタマイズされたページへのリンクを使用します。
 
-    **[アプリ]** ページが表示され、組織が所有し、お客様が利用できるクラウドベースのアプリがすべて示されます。
+    **[アプリ]** ページが表示され、組織が所有していて、ユーザーが使用できるクラウドベースのアプリがすべて示されます。
 
 3. **[アプリ]** ページから、使用開始するアプリを選択します。
 
-    アプリの新しいページが開きます。このページでサインインしたり (必要な場合)、アプリを使用し始められます。
+    アプリの新しいページが開き、(必要に応じて) サインインしたり、アプリを使用開始できます。
 
 ### <a name="access-and-use-the-my-apps-portal-on-an-intune-managed-browser"></a>Intune Managed Browser でマイ アプリ ポータルにアクセスして使用する
 
@@ -101,27 +111,27 @@ iOS および Android デバイスで Intune Managed Browser から組織のア�
 
 1. モバイル デバイス上では、[Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) および [Google Play ストア](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser)から Intune Managed Browser アプリをダウンロードしインストールします。
 
-2. Intune Managed Browser アプリを開いて、 https://myapps.microsoft.com に移動するか、組織から提供されたリンクを使用します。 たとえば、 https://myapps.microsoft.com/contoso.com など、組織のカスタマイズされたページに転送されることがあります。
+2. Intune Managed Browser アプリを開き、 https://myapps.microsoft.com に移動するか、組織から提供されている https://myapps.microsoft.com/contoso.com などのカスタマイズされたページへのリンクを使用します。
 
     **[アプリ]** ページが表示され、組織が所有し、お客様が利用できるクラウドベースのアプリがすべて示されます。
 
 3. **[アプリ]** ページから、使用開始するアプリを選択します。
 
-    アプリの新しいページが開きます。このページでサインインしたり (必要な場合)、アプリを使用し始められます。
+    アプリの新しいページが開き、(必要に応じて) サインインしたり、アプリを使用開始できます。
 
 ### <a name="access-and-use-the-my-apps-portal-on-an-ios-device"></a>iOS デバイス上のマイ アプリ ポータルにアクセスして使用する
 
-iOS バージョン 7 以降を実行している iPhone または iPad デバイスから **マイ アプリ** ポータルを表示および使用します。 [マイ アプリ モバイル アプリ](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8)をインストールして、iOS デバイス上の組織のアプリにアクセスすることもできます。 
+iOS バージョン 7 以降を実行している iPhone または iPad デバイスから **マイ アプリ** ポータルを表示および使用します。 [マイ アプリ モバイル アプリ](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8)をインストールして、iOS デバイス上の組織のアプリにアクセスすることもできます。
 
 1. モバイル デバイスでは、Safari などの Web ブラウザー アプリを起動します。
 
-2. https://myapps.microsoft.com に移動するか、組織から与えられたリンクを使用します。 たとえば、 https://myapps.microsoft.com/contoso.com など、組織のカスタマイズされたページに転送されることがあります。
+2. https://myapps.microsoft.com に移動するか、組織から提供されている https://myapps.microsoft.com/contoso.com などのカスタマイズされたページへのリンクを使用します。
 
-    **[アプリ]** ページが表示され、組織が所有し、お客様が利用できるクラウドベースのアプリがすべて示されます。
+    **[アプリ]** ページが表示され、組織が所有していて、ユーザーが使用できるクラウドベースのアプリがすべて示されます。
 
 3. **[アプリ]** ページから、使用開始するアプリを選択します。
 
-    アプリの新しいページが開きます。このページでサインインしたり (必要な場合)、アプリを使用し始められます。
+    アプリの新しいページが開き、(必要に応じて) サインインしたり、アプリを使用開始できます。
 
 ### <a name="access-and-use-the-my-apps-portal-on-an-android-device"></a>Android デバイス上のマイ アプリ ポータルにアクセスして使用する
 
@@ -129,29 +139,51 @@ Android デバイス上の**マイ アプリ** ポータルを表示して使用
 
 1. モバイル デバイスでは、Google Chrome などの Web ブラウザー アプリを起動します。
 
-2. https://myapps.microsoft.com に移動するか、組織から与えられたリンクを使用します。 たとえば、 https://myapps.microsoft.com/contoso.com など、組織のカスタマイズされたページに転送されることがあります。
+2. https://myapps.microsoft.com に移動するか、組織から提供されている https://myapps.microsoft.com/contoso.com などのカスタマイズされたページへのリンクを使用します。
 
     **[アプリ]** ページが表示され、組織が所有し、お客様が利用できるクラウドベースのアプリがすべて示されます。
 
 3. **[アプリ]** ページから、使用開始するアプリを選択します。
 
-    アプリの新しいページが開きます。このページでサインインしたり (必要な場合)、アプリを使用し始められます。
+    アプリの新しいページが開き、(必要に応じて) サインインしたり、アプリを使用開始できます。
 
 ## <a name="add-a-new-app-to-the-my-apps-portal"></a>マイ アプリ ポータルに新しいアプリを追加する
 
 管理者からアクセス許可が与えられている場合は、新しいアプリを **[アプリ]** ページに追加できます。
 
-1. **[アプリ]** ページから **[アプリの追加]** を選択します。
+1. **[アプリ]** ページで、次のいずれかの操作を行います。
+    - 元のマイ アプリのエクスペリエンスを使用している場合は、示されているように **[アプリの追加]** を選択します。
 
-    **[アプリの追加]** ページが表示されます。
+      ![[アプリの追加] ページ、マイ アプリ ポータル内](media/my-apps-portal/my-apps-portal-add-apps-page.png)
 
-    ![[アプリの追加] ページ、マイ アプリ ポータル内](media/my-apps-portal/my-apps-portal-add-apps-page.png)
+    - 更新されたマイ アプリのエクスペリエンスを使用している場合は、 **[Add self-service apps]\(セルフサービス アプリの追加\)** を選択します。
+
+       ![myapplications.microsoft.com のマイ アプリ ポータルのアプリの追加ページ](media/my-apps-portal/my-apps-portal-add-app-link.png)
 
 2. 指定されたリストから追加するアプリを選択し、 **[追加]** を選択します。
 
 3. アプリは、**アプリ** ページ上のリストに追加されます。
 
-    アプリの中には、追加される前に管理者の承認が必要なものがあります。 このような状況では、アプリは、管理者が承認するまで、**アプリ** ページに追加されません。
+    アプリの中には、追加される前に管理者の承認が必要なものがあります。 その場合、アプリは、管理者が承認するまで、 **[アプリ]** ページに追加されません。
+
+## <a name="start-a-cloud-based-app"></a>クラウドベースのアプリを起動する
+
+**マイ アプリ** ポータルからは、使用可能な任意のクラウドベースのアプリを起動することができます。 表示されるアプリは、使用するアクセス許可があるアプリのみです。
+
+- **[アプリ]** ページから、使用開始するアプリを選択します。
+
+    アプリの新しいページが開き、(必要に応じて) サインインしたり、アプリを使用開始できます。
+
+## <a name="activities-in-the-my-apps-portal"></a>マイ アプリ ポータルでのアクティビティ
+
+**マイ アプリ** ポータルを開いたら、次の操作を実行できます。
+
+- 自分のアプリを、組織が作成して提供しているさまざまなカテゴリに整理できます。 詳細については、[マイ アプリ ポータル内のコレクションへのアクセスと使用](my-applications-portal-workspaces.md)に関する記事を参照してください。
+
+- アプリケーションに付与されたアクセス許可を確認し、更新し、取り消します。 詳細については、「[マイ アプリ ポータルでのアプリケーションのアクセス許可の編集または取り消し](my-applications-portal-permissions-saved-accounts.md)」を参照してください。
+
+>[!Note]
+>使用可能なコレクションまたはカテゴリが表示されない場合は、管理者が設定していないか、共有されているものがないことを意味します。 共有コレクションを表示するための追加のサポートやアクセス許可については、組織のヘルプデスクに問い合わせてください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/11/2019
-ms.openlocfilehash: 52bec8bba7bb3ddf545e3bd1866775f0964c6ad3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 6e9e1d54599ab88092638762ccd7974e44c82cbf
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893132"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025811"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Cosmos DB (SQL API) のデータをコピーおよび変換する
 
@@ -58,7 +58,7 @@ Data Factory は、Azure Cosmos DB に書き込むときに最適なパフォー
 
 Azure Cosmos DB (SQL API) のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | Required |
 |:--- |:--- |:--- |
 | 型 | **type** プロパティは **CosmosDb** に設定する必要があります。 | はい |
 | connectionString |Azure Cosmos DB データベースに接続するために必要な情報を指定します。<br />**注**:後の例で示すように、接続文字列でデータベース情報を指定する必要があります。 <br/> アカウント キーを Azure Key Vault に格納して、接続文字列から `accountKey` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 |はい |
@@ -114,7 +114,7 @@ Azure Cosmos DB (SQL API) のリンクされたサービスでは、次のプロ
 
 Azure Cosmos DB (SQL API) データセットでは、次のプロパティがサポートされます。 
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | Required |
 |:--- |:--- |:--- |
 | 型 | データセットの **type** プロパティは、**CosmosDbSqlApiCollection** に設定する必要があります. |はい |
 | collectionName |Azure Cosmos DB ドキュメント コレクションの名前です。 |はい |
@@ -150,7 +150,7 @@ Azure Cosmos DB (SQL API) からデータをコピーするには、コピー �
 
 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | Required |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの **type** プロパティを **CosmosDbSqlApiSource** に設定する必要があります。 |はい |
 | query |データを読み取る Azure Cosmos DB クエリを指定します。<br/><br/>例:<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |いいえ <br/><br/>指定しないと、SQL ステートメント `select <columns defined in structure> from mycollection` が実行されます |
@@ -202,7 +202,7 @@ Azure Cosmos DB (SQL API) にデータをコピーするには、コピー ア�
 
 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | Required |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのシンクの **type** プロパティは **CosmosDbSqlApiSink** に設定する必要があります。 |はい |
 | writeBehavior |Azure Cosmos DB にデータを書き込む方法を示します。 使用可能な値は、**Insert**、**Upsert** です。<br/><br/>**upsert** の動作は、同じ ID を持つドキュメントが既に存在する場合に、そのドキュメントを置き換えることです。それ以外の場合はドキュメントを挿入します。<br /><br />**注**:元のドキュメントまたは列のマッピングで ID が指定されていない場合、Data Factory によってドキュメントの ID が自動的に生成されます。 つまり、**upsert** が期待どおりに動作するには、ドキュメントに ID があることを確認する必要があります。 |いいえ<br />(既定値は **insert** です) |
@@ -268,6 +268,18 @@ Azure Cosmos DB に固有の設定は、ソース変換の **[Source Options]\(�
 **スループット**: このデータ フローの各実行について、CosmosDB コレクションの読み取り操作時に適用したい RU 数に対するオプションの値を設定します。 最小は 400 です。
 
 **Preferred regions (優先リージョン):** このプロセスの優先読み取りリージョンを選択します。
+
+#### <a name="json-settings"></a>JSON 設定
+
+**1 つのドキュメント:** ADF でファイル全体を 1 つの JSON ドキュメントとして扱う場合は、このオプションを選択します。
+
+**引用符で囲まれていない列名:** JSON の列名が引用符で囲まれていない場合は、このオプションを選択します。
+
+**コメントあり:** JSON ドキュメントのデータにコメントが含まれている場合は、このオプションを使用します。
+
+**一重引用符付き:** ドキュメント内の列と値が一重引用符で囲まれている場合は、このオプションを選択する必要があります。
+
+**円記号によるエスケープ:** バックスラッシュを使用して JSON 内の文字をエスケープする場合は、このオプションを選択します。
 
 ### <a name="sink-transformation"></a>シンク変換
 

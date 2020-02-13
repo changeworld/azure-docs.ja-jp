@@ -1,22 +1,22 @@
 ---
-title: Azure Batch プール作成イベント | Microsoft Docs
-description: Batch のプール作成イベントのリファレンスです。
+title: Azure Batch プール作成イベント
+description: プールが作成されると生成される Batch プール作成イベントのリファレンスです。 ログの内容はプールに関する一般的な情報です。
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.assetid: ''
 ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: jushiman
-ms.openlocfilehash: b804d828d276c39febf7fdd9347bce04a062676a
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: dea025b274278aa5fed2900c95b4a274541ffef9
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026753"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022191"
 ---
 # <a name="pool-create-event"></a>プール作成イベント
 
@@ -57,7 +57,7 @@ ms.locfileid: "76026753"
 }
 ```
 
-|要素|種類|メモ|
+|要素|Type|Notes|
 |-------------|----------|-----------|
 |`id`|String|プールの ID。|
 |`displayName`|String|プールの表示名。|
@@ -77,14 +77,14 @@ ms.locfileid: "76026753"
 
 ###  <a name="bk_csconf"></a> cloudServiceConfiguration
 
-|要素名|種類|メモ|
+|要素名|Type|Notes|
 |------------------|----------|-----------|
 |`osFamily`|String|プール内の仮想マシンにインストールする Azure ゲスト OS ファミリ。<br /><br /> 次のいずれかの値になります。<br /><br /> **2** – OS ファミリ 2、Windows Server 2008 R2 SP1 に相当。<br /><br /> **3** – OS ファミリ 3、Windows Server 2012 に相当。<br /><br /> **4** – OS ファミリ 4、Windows Server 2012 R2 に相当。<br /><br /> 詳細については、[Azure ゲスト OS リリース](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases)を参照してください。|
 |`targetOSVersion`|String|プール内の仮想マシンにインストールされる Azure ゲスト OS バージョン。<br /><br /> 既定値は **\*** で、規定ファミリの最新オペレーティング システムのバージョンを指定します。<br /><br /> その他の許可値については、[Azure ゲスト OS リリース](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases)を参照してください。|
 
 ###  <a name="bk_vmconf"></a>VirtualMachineConfiguration
 
-|要素名|種類|メモ|
+|要素名|Type|Notes|
 |------------------|----------|-----------|
 |[`imageReference`](#bk_imgref)|複合型|使用するプラットフォームまたは Marketplace イメージに関する情報を指定します。|
 |`nodeAgentId`|String|コンピューティング ノードでプロビジョニングされているバッチ ノード エージェントの SKU。|
@@ -92,7 +92,7 @@ ms.locfileid: "76026753"
 
 ###  <a name="bk_imgref"></a>imageReference
 
-|要素名|種類|メモ|
+|要素名|Type|Notes|
 |------------------|----------|-----------|
 |`publisher`|String|イメージの発行元。|
 |`offer`|String|イメージのプラン。|
@@ -101,12 +101,12 @@ ms.locfileid: "76026753"
 
 ###  <a name="bk_winconf"></a>windowsConfiguration
 
-|要素名|種類|メモ|
+|要素名|Type|Notes|
 |------------------|----------|-----------|
 |`enableAutomaticUpdates`|Boolean|仮想マシンの自動更新が有効になっているかどうかを示しています。 このプロパティが指定されていない場合は、既定値が正規の値となります。|
 
 ###  <a name="bk_netconf"></a>NetworkConfiguration
 
-|要素名|種類|メモ|
+|要素名|Type|Notes|
 |------------------|--------------|----------|
 |`subnetId`|String|プールのコンピューティング ノードが作成される、サブネットのリソース識別子を指定します。|

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: a35cf935d990dbb61f440d2592d59d21f33a2ae8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6507c2a2d1100d480c879c73861c02e477d38416
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037240"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026134"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 のアクセス制御
 
@@ -33,7 +33,7 @@ RBAC では、ロールの割り当てを使用して、"*セキュリティ プ
 
 RBAC のロール割り当ての使用は、アクセス許可を制御する強力なメカニズムですが、ACL と比較すると、非常にきめの粗いメカニズムです。 RBAC の最小粒度は、コンテナー レベルで、これは ACL よりも高い優先順位で評価されます。 したがって、セキュリティ プリンシパルにコンテナーのスコープでロールを割り当てた場合、ACL の割り当てに関係なく、そのセキュリティ プリンシパルには、そのコンテナー内の "すべて" のディレクトリとファイルに対してそのロールに関連付けられている承認レベルが適用されます。
 
-[組み込みロール](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)またはカスタム ロールを通じて、セキュリティ プリンシパルに RBAC データのアクセス許可が付与されると、要求の承認時に、これらのアクセス許可がまず評価されます。 要求された操作がセキュリティ プリンシパルの RBAC の割り当てによって承認されている場合は、承認はすぐに解決され、追加の ACL チェックは実行されません。 または、セキュリティ プリンシパルに RBAC の割り当てがない場合、または要求の操作が割り当てられたアクセス許可と一致しない場合は、セキュリティ プリンシパルが要求された操作を実行することを承認されているかどうかを判断するため、ACL チェックが実行されます。
+[組み込みロール](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)またはカスタム ロールを通じて、セキュリティ プリンシパルに RBAC データのアクセス許可が付与されると、要求の承認時に、これらのアクセス許可がまず評価されます。 要求された操作がセキュリティ プリンシパルの RBAC の割り当てによって承認されている場合は、承認はすぐに解決され、追加の ACL チェックは実行されません。 また、セキュリティ プリンシパルに RBAC 割り当てがない場合、または要求の操作が割り当てられたアクセス許可と一致しない場合、ACL チェックが実行され、要求された操作を実行する権限がセキュリティ プリンシパルに付与されているかどうかが判断されます。
 
 > [!NOTE]
 > セキュリティ プリンシパルにストレージ BLOB データ所有者の組み込みロールが割り当てられている場合、そのセキュリティ プリンシパルは "*スーパー ユーザー*" と見なされ、すべての変更操作 (ディレクトリやファイルの所有権の設定や、自分が所有者ではないディレクトリやファイルへの ACL の設定など) へのフル アクセス権が付与されます。 スーパー ユーザーのアクセス権は、リソースの所有者を変更するために承認された唯一の方法です。
@@ -58,10 +58,15 @@ SAS トークンには、トークンの一部として許可されるアクセ�
 
 ファイルおよびディレクトリ レベルのアクセス許可を設定するには、次のいずれかの記事をご覧ください。
 
-|使うツール:    |参照する記事:    |
+|||
 |--------|-----------|
-|Azure ストレージ エクスプローラー    |[Azure Data Lake Storage Gen2 で Azure Storage Explorer を使用してファイルとディレクトリ レベルのアクセス許可を設定する](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)|
-|REST API    |[Path - Update (パス - 更新)](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
+|Azure ストレージ エクスプローラー |[Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-explorer.md#managing-access)|
+|.NET |[.NET を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-directory-file-acl-dotnet.md)|
+|Java|[Java を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-directory-file-acl-java.md)|
+|Python|[Python を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-directory-file-acl-python.md)|
+|PowerShell|[PowerShell を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-directory-file-acl-powershell.md)|
+|Azure CLI|[Azure CLI を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-directory-file-acl-cli.md)|
+|REST API |[Path - Update (パス - 更新)](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
 > セキュリティ プリンシパルが "*サービス*" プリンシパルである場合は、関連するアプリ登録のオブジェクト ID ではなく、サービス プリンシパルのオブジェクト ID を使うことが重要です。 サービス プリンシパルのオブジェクト ID を取得するには、Azure CLI を開き、`az ad sp show --id <Your App ID> --query objectId` コマンドを使います。 `<Your App ID>` プレースホルダーは、アプリ登録のアプリ ID に置き換えます。
@@ -83,7 +88,7 @@ SAS トークンには、トークンの一部として許可されるアクセ�
 
 コンテナー オブジェクトに対するアクセス許可は、**読み取り**、**書き込み**、**実行**であり、次の表に示すように、ファイルとディレクトリに対して使用できます。
 
-|            |    ファイル     |   Directory |
+|            |    ファイル     |   ディレクトリ |
 |------------|-------------|----------|
 | **読み取り (R)** | ファイルの内容を読み取ることができる | ディレクトリの内容を一覧表示するには、**読み取り**と**実行**が必要です。 |
 | **書き込み (W)** | ファイルへの書き込みまたは追加を実行できる | ディレクトリに子項目を作成するには、**書き込み**と**実行**が必要です。 |
@@ -100,7 +105,7 @@ SAS トークンには、トークンの一部として許可されるアクセ�
 |--------------|------------|------------------------|
 | 7            | `RWX`        | 読み取り + 書き込み + 実行 |
 | 5            | `R-X`        | 読み取り + 実行         |
-| 4            | `R--`        | 読み取り                   |
+| 4            | `R--`        | Read                   |
 | 0            | `---`        | アクセス許可なし         |
 
 #### <a name="permissions-inheritance"></a>アクセス許可の継承
@@ -269,7 +274,7 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>ACL のサポートを有効にする必要はありますか
 
-No. 階層型名前空間 (HNS) 機能がオンになっている限り、ストレージ アカウントの ACL によるアクセス制御は有効です。
+いいえ。 階層型名前空間 (HNS) 機能がオンになっている限り、ストレージ アカウントの ACL によるアクセス制御は有効です。
 
 HNS がオフになっている場合、Azure RBAC の承認規則が引き続き適用されます。
 
@@ -335,6 +340,6 @@ ACL は継承されません。 ただし、親ディレクトリの下に作成
 * [Ubuntu での POSIX ACL](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [ACL using access control lists on Linux (Linux でのアクセス制御リストを使用した ACL)](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [Azure Data Lake Storage Gen2 の概要](../blobs/data-lake-storage-introduction.md)

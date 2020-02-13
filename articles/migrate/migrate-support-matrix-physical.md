@@ -3,12 +3,12 @@ title: Azure Migrate での物理サーバーの評価のサポート
 description: Azure Migrate での物理サーバーの評価のサポートについて説明します。
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 489f95bbbbeb261b56f1a3a86da44f5fcce0adf5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f2698d0ff046147599a8c5c791a0980a54090932
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846576"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990336"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>物理サーバーの評価のサポート マトリックス 
 
@@ -38,7 +38,7 @@ ms.locfileid: "76846576"
 | **サポート**                | **詳細**               
 | :-------------------       | :------------------- |
 | **物理サーバーの展開**       | 物理サーバーは、スタンドアロンにすることも、クラスターにデプロイすることもできます。 |
-| **アクセス許可**           | **Windows:** 検出に含めるすべての Windows サーバー上にローカル ユーザー アカウントを設定します。 ユーザー アカウントは、これらのグループ (リモート デスクトップ ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザー) に追加する必要があります。 <br/> **Linux:** 検出する Linux サーバーのルート アカウントが必要です。 |
+| **アクセス許可**           | **Windows:** 検出に含めるすべての Windows サーバー上にローカルまたはドメイン ユーザー アカウントを設定します。 ユーザー アカウントは、これらのグループ (リモート デスクトップ ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザー) に追加する必要があります。 <br/> **Linux:** 検出する Linux サーバーのルート アカウントが必要です。 |
 | **オペレーティング システム** | 次を除くすべての [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) および [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) オペレーティング システムがサポートされています。<br/> Windows Server 2003 <br/> SUSE Linux|
 
 
@@ -69,7 +69,7 @@ Azure Migrate では、[Azure Migrate アプライアンス](migrate-appliance.m
 **サービス マップ** | エージェントベースの依存関係の視覚化では、[Azure Monitor ログ[で ](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map)Service Map](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) ソリューションが使用されます。<br/><br/> デプロイするには、新規または既存の Log Analytics ワークスペースを Azure Migrate プロジェクトに関連付けます。
 **Log Analytics ワークスペース** | このワークスペースは、Azure Migrate プロジェクトと同じサブスクリプションに含まれている必要があります。<br/><br/> Azure Migrate では、米国東部、東南アジア、および西ヨーロッパの各リージョンにあるワークスペースがサポートされます。<br/><br/>  ワークスペースは、[Service Map がサポートされている](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#prerequisites)リージョンに存在する必要があります。<br/><br/> Azure Migrate プロジェクトのワークスペースは、追加後に変更できません。
 **料金** | Service Map ソリューションでは、(Log Analytics ワークスペースを Azure Migrate プロジェクトに関連付けた日から) 最初の 180 日間は料金が発生しません。<br/><br/> 180 日が経過すると、Log Analytics の標準の料金が適用されます。<br/><br/> この関連付けられた Log Analytics ワークスペース内で Service Map 以外のソリューションを使用すると、標準の Log Analytics 料金が発生します。<br/><br/> Azure Migrate プロジェクトを削除しても、ワークスペースが一緒に削除されることはありません。 プロジェクトの削除後、Service Map は無料にならず、Log Analytics ワークスペースの有料レベルに応じて各ノードの料金が請求されます。
-**[エージェント]** | エージェントベースの依存関係の視覚化では、分析する各マシンに 2 つのエージェントをインストールする必要があります。<br/><br/> - [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)<br/><br/> - [依存関係エージェント](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent)。 
+**[エージェント]** | エージェントベースの依存関係の視覚化では、分析する各マシンに 2 つのエージェントをインストールする必要があります。<br/><br/> - [Microsoft Monitoring agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)<br/><br/> - [依存関係エージェント](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent)。 
 **インターネット接続** | マシンがインターネットに接続されていない場合は、それらに Log Analytics ゲートウェイをインストールする必要があります。
 
 ## <a name="next-steps"></a>次のステップ

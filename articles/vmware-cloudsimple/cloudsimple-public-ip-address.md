@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solution by CloudSimple - パブリック IP アドレス
-description: Azure VMware Solution by CloudSimple のパブリック IP アドレスとその利点について説明します
+title: Azure VMware Solutions (AVS) - パブリック IP アドレス
+description: Azure VMware Solutions (AVS) のパブリック IP アドレスとその利点について説明します
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 147ab6b5ace4493e1a0b303c320cb2e81d829b29
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 2cb9d0e33da4447760ae0be216c1dd9868c498bd
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877677"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024978"
 ---
-# <a name="cloudsimple-public-ip-address-overview"></a>CloudSimple のパブリック IP アドレスの概要
+# <a name="avs-public-ip-address-overview"></a>AVS のパブリック IP アドレスの概要
 
-パブリック IP アドレスによって、インターネット リソースで、プライベート クラウド リソースのプライベート IP アドレスへの受信方向の通信を行うことができます。 プライベート IP アドレスは、プライベート クラウド vCenter 上の仮想マシンまたはソフトウェア ロード バランサーです。 パブリック IP アドレスを使用して、プライベート クラウドで実行されているサービスをインターネットに公開できます。
+インターネット リソースは、パブリック IP アドレスにより、プライベート IP アドレスの AVS プライベート クラウド リソースとインバウンド通信できます。 プライベート IP アドレスとは、お使いの AVS プライベート クラウド vCenter 上の仮想マシンまたはソフトウェア ロード バランサーです。 パブリック IP アドレスにより、お使いの AVS プライベート クラウドで実行されているサービスをインターネットに公開できます。
 
 パブリック IP アドレスは、割り当てを解除するまで、そのプライベート IP アドレス専用になります。 1 つのパブリック IP アドレスは、1 つのプライベート IP アドレスにのみ割り当てることができます。
 
@@ -31,6 +31,6 @@ ms.locfileid: "69877677"
 * トラフィックの常時監視と一般的なネットワーク レベル攻撃のリアルタイム軽減。 これらの防御は、Microsoft Online Services によって使われるものと同じ防御です。
 * Azure グローバル ネットワークのスケール全体。 ネットワークを使って、リージョン間で攻撃トラフィックを分散および軽減できます。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [パブリック IP アドレスを割り当てる](public-ips.md)方法を確認する

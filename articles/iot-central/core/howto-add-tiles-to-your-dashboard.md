@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: b13349ae4293f6377429e9dc72b6c2cb43f92348
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 35965f238ed5b7768dd174788453838c917adb32
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435126"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023227"
 ---
 # <a name="configure-the-application-dashboard"></a>アプリケーション ダッシュボードの構成
 
@@ -48,7 +48,6 @@ ms.locfileid: "75435126"
 > [!div class="mx-imgBorder"]
 > ![タイルの設定とプロパティが表示された [ダッシュボード] タブ](media/howto-add-tiles-to-your-dashboard/settings-and-properties.png)
 
-
 ## <a name="edit-tiles"></a>タイルを編集する
 
 ダッシュボードのタイルを編集するには、まずページの左上にある **[編集]** をクリックし、ダッシュボードとそのすべてのタイルを編集モードで開きます。 
@@ -70,7 +69,7 @@ ms.locfileid: "75435126"
 
 次の表は、Azure IoT Central におけるタイルの用法をまとめたものです。
  
-| タイル | ダッシュボード | [説明]
+| タイル | ダッシュボード | 説明
 | ----------- | ------- | ------- |
 | コンテンツ | アプリケーション ダッシュボードとデバイス セット ダッシュボード |マークダウン サポート タイルとは、見出しと説明テキストを表示する、クリック可能なタイルです。 このタイルをリンク タイルとして使用して、アプリケーションに関係のある URL にユーザーが移動できるようにすることもできます。|
 | Image | アプリケーション ダッシュボードとデバイス セット ダッシュボード |画像タイルは、カスタム画像を表示するタイルで、クリック可能にすることもできます。 画像タイルを使用すると、ダッシュボードにグラフィックを追加できます。さらに、アプリケーションに関係のある URL にユーザーが移動できるようにすることもできます。|
@@ -87,4 +86,4 @@ ms.locfileid: "75435126"
 
 ## <a name="next-steps"></a>次のステップ
 
-これで、Azure IoT Central の既定のアプリケーション ダッシュボードを構成する方法を習得したので、[画像を準備してアップロードする方法を学習](howto-prepare-images.md)できます。
+これで、Azure IoT Central の既定のアプリケーション ダッシュボードを構成する方法を習得したので、[個人用ダッシュボードを作成する方法を学習](howto-create-personal-dashboards.md)できます。

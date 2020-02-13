@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
-ms.openlocfilehash: 56e02d5723fefe45f5df15a4889a35fc55d8da3b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 176cd9b0bf72a123bc644ebc27ee0e091aa54e97
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842386"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024621"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Azure における IP アドレスの種類と割り当て方法
 
@@ -33,7 +33,7 @@ Azure リソースには、他の Azure リソース、オンプレミス ネッ
 > Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)です。  この記事では、Resource Manager デプロイ モデルの使用方法について取り上げていますが、最新のデプロイでは、[クラシック デプロイ モデル](virtual-network-ip-addresses-overview-classic.md)ではなくこのモデルをお勧めします。
 > 
 
-クラシック デプロイ モデルの知識がある場合は、[クラシックと Resource Manager での IP アドレス指定の相違点](/previous-versions/azure/virtual-network-ip-addresses-overview-classic.md#differences-between-resource-manager-and-classic-deployments)に関するページを確認してください。
+クラシック デプロイ モデルの知識がある場合は、[クラシックと Resource Manager での IP アドレス指定の相違点](/previous-versions/azure/virtual-network/virtual-network-ip-addresses-overview-classic#differences-between-resource-manager-and-classic-deployments)に関するページを確認してください。
 
 ## <a name="public-ip-addresses"></a>パブリック IP アドレス
 
@@ -75,7 +75,7 @@ Standard SKU のパブリック IP アドレスは次のとおりです。
 - 必ず静的割り当て方法を使用してください。
 - インバウンドから発生するフローの調整可能なアイドル タイムアウトとして4分から30 分 (既定値は 4 分) が、またアウトバウンドから発生するフローの固定アイドル タイムアウトとして 4 分が割り当てられます。
 - 既定でセキュリティ保護され、受信トラフィックに対して閉じられています。 [ネットワーク セキュリティ グループ](security-overview.md#network-security-groups)で、許可された受信トラフィックを明示的なホワイト リストに登録する必要があります。
-- ネットワーク インターフェイス、Standard パブリック ロード バランサー、アプリケーション ゲートウェイ、VPN ゲートウェイに割り当てられます。 Standard Load Balancer の詳細については、[Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に関するページを参照してください。
+- ネットワーク インターフェイス、Standard パブリック ロード バランサー、またはアプリケーション ゲートウェイに割り当てられます。 Standard Load Balancer の詳細については、[Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に関するページを参照してください。
 - 既定ではゾーン冗長ですが、必要に応じてゾーンのパブリック IP にすることができます (ゾーンのパブリック IP アドレスとして作成でき、特定の可用性ゾーンで保証できます)。 可用性ゾーンに関する詳細については、[可用性ゾーンの概要](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページと「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
  
 > [!NOTE]

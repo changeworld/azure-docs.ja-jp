@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c40993df8033b9dbc49c81e8db2f9f01c6de37d9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0aca5019f4f7fca47195fb8fb821b1af1ae9ec77
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424916"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024247"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>条件付きアクセス:レガシ認証をブロックする
 
@@ -32,7 +32,7 @@ ms.locfileid: "75424916"
 1. ポリシーに名前を付けます。 ポリシーの名前に対する意味のある標準を組織で作成することをお勧めします。
 1. **[割り当て]** で、 **[ユーザーとグループ]** を選択します。
    1. **[Include]\(含める\)** で、 **[すべてのユーザー]** を選択します。
-   1. **[Exclude]\(除外\)** で、 **[ユーザーとグループ]** を選択し、今後もレガシ認証を使用できる必要があるアカウントをすべて選択します。 
+   1. **[Exclude]\(除外\)** で、 **[ユーザーとグループ]** を選択し、今後もレガシ認証を使用できる必要があるアカウントをすべて選択します。 自分がロックアウトされないように、少なくとも 1 つのアカウントを除外する必要があります。アカウントを 1 つも除外しない場合、このポリシーを作成することはできません。
    1. **[完了]** を選択します。
 1. **[クラウド アプリまたはアクション]** で **[すべてのクラウド アプリ]** を選択します。
    1. **[完了]** を選択します。
@@ -48,6 +48,6 @@ ms.locfileid: "75424916"
 
 [Conditional Access common policies](concept-conditional-access-policy-common.md) (条件付きアクセスの一般的なポリシー)
 
-[条件付きアクセスのレポート専用モードを使用した影響の判断](howto-conditional-access-report-only.md)
+[条件付きアクセスのレポート専用モードを使用した影響を判断する](howto-conditional-access-report-only.md)
 
 [Simulate sign in behavior using the Conditional Access What If tool](troubleshoot-conditional-access-what-if.md) (条件付きアクセスの What If ツールを使用したサインイン動作のシミュレート)

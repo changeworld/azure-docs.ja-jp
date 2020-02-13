@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/29/2019
 ms.author: absha
-ms.openlocfilehash: a8882a810d18d06b33d6382bd8bd86ffe75b39d8
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 695507b0d6997870dbea392e73e4f4470248d26c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766810"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985885"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway のメトリック
 
@@ -94,7 +94,7 @@ Application Gateway に関しては、次のメトリックを利用できます
 
 - **現在の接続数**
 
-   Application Gateway で確立された現在の接続の数
+   クライアントから Application Gateway に対してアクティブになっているコンカレント接続の合計数
 
 - **失敗した要求**
 

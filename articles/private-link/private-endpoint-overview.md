@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: cd06d4cbf62078c2c7a5def4a0032ddce97d67f0
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: cbb5882950636e281d311bf0536acf5b92cf11ea
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842454"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018603"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure プライベート エンドポイントとは
 
@@ -22,7 +22,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
  プライベート エンドポイントでは、次のプロパティを指定します。 
 
 
-|プロパティ  |[説明] |
+|プロパティ  |説明 |
 |---------|---------|
 |Name    |    リソース グループ内の一意の名前。      |
 |Subnet    |  仮想ネットワークからデプロイしてプライベート IP アドレスを割り当てるサブネット。 サブネットの要件については、この記事の「制限事項」セクションを参照してください。         |
@@ -61,6 +61,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 |**Azure Database for PostgreSQL- シングルサーバー** | Microsoft.DBforPostgreSQL/servers   | postgresqlServer |
 |**Azure Database for MySQL** | Microsoft.DBforMySQL/servers    | mysqlServer |
 |**Azure Database for MariaDB** | Microsoft.DBforMariaDB/servers    | mariadbServer |
+|**Azure Key Vault** | Microsoft.KeyVault/vaults    | コンテナー |
  
 ## <a name="network-security-of-private-endpoints"></a>プライベート エンドポイントのネットワーク セキュリティ 
 Azure サービスでプライベート エンドポイントを使用する場合、トラフィックは特定のプライベート リンク リソースに対してセキュリティで保護されます。 プラットフォームによってアクセス制御が実行され、指定されたプライベート リンク リソースのみに到達するネットワーク接続が検証されます。 同じ Azure サービス内の追加のリソースにアクセスするには、追加のプライベート エンドポイントが必要です。 
@@ -118,6 +119,7 @@ Azure サービスについては、次の表に示すように、推奨され�
 |Azure Database for PostgreSQL - シングルサーバー (Microsoft DBforPostgreSQL/servers)|postgresqlServer|privatelink.postgres.database.azure.com|
 |Azure Database for MySQL (Microsoft.DBforMySQL/servers)|mysqlServer|privatelink.mysql.database.azure.com|
 |Azure Database for MariaDB (Microsoft.DBforMariaDB/servers)|mariadbServer|privatelink.mariadb.database.azure.com|
+|Azure Key Vault (Microsoft.KeyVault/vaults)|コンテナー|privatelink.vaultcore.azure.net|
  
 提案されたドメイン名に解決をリダイレクトするために、Azure によってパブリック DNS に正規名の DNS レコード (CNAME) が作成されます。 この解決は、プライベート エンドポイントのプライベート IP アドレスでオーバーライドすることができます。 
  
@@ -128,11 +130,9 @@ Azure サービスについては、次の表に示すように、推奨され�
 次の表に、プライベート エンドポイントを使用する場合の既知の制限事項を一覧で示します。 
 
 
-|制限事項 |[説明] |対応策  |
+|制限事項 |説明 |対応策  |
 |---------|---------|---------|
-|ネットワーク セキュリティ グループ (NSG) 規則とユーザー定義のルーツは、プライベート エンドポイントには適用されない    |NSG は、プライベート エンドポイントではサポートされません。 プライベート エンドポイントを含むサブネットに NSG を関連付けることはできますが、プライベート エンドポイントによって処理されるトラフィックに対して規則は有効ではありません。 サブネットにプライベート エンドポイントをデプロイするには、[ネットワーク ポリシーの適用を無効にする](disable-private-endpoint-network-policy.md)必要があります。 NSG は、同じサブネット上にホストされている他のワークロードにも適用されます。 クライアント サブネット上のルートは /32 プレフィックスを使用するため、既定のルーティング動作を変更するには同様の UDR が必要です  | ソース クライアントにおけるアウトバウンド トラフィックに対して NSG 規則を使用して、トラフィックを制御します。 /32 プレフィックスを持つ個々のルートをデプロイして、プライベート エンドポイント ルートをオーバーライドする        |
-|  プライベート エンドポイントのみを使用するピアリングされた仮想ネットワークはサポートされない   |   他のワークロードがないピアリングされた仮想ネットワーク上のプライベート エンドポイントに接続することはサポートされていません       | ピアリングされた仮想ネットワークに単一の VM をデプロイして接続を有効にします |
-|専用ワークロードはプライベート エンドポイントにアクセスできない    |   自分の仮想ネットワークにデプロイされた次のサービスは、プライベート エンドポイントを使用してプライベート リンク リソースにアクセスすることはできません。<br>App Service プラン</br>Azure Container Instances</br>Azure NetApp Files</br>Azure の専用 HSM<br>       |   プレビュー期間中は軽減策はありません。       |
+|ネットワーク セキュリティ グループ (NSG) 規則とユーザー定義のルーツは、プライベート エンドポイントには適用されない    |NSG は、プライベート エンドポイントではサポートされません。 プライベート エンドポイントを含むサブネットに NSG を関連付けることはできますが、プライベート エンドポイントによって処理されるトラフィックに対して規則は有効ではありません。 サブネットにプライベート エンドポイントをデプロイするには、[ネットワーク ポリシーの適用を無効にする](disable-private-endpoint-network-policy.md)必要があります。 NSG は、同じサブネット上にホストされている他のワークロードにも適用されます。 クライアント サブネット上のルートは /32 プレフィックスを使用するため、既定のルーティング動作を変更するには同様の UDR が必要です  | ソース クライアントにおけるアウトバウンド トラフィックに対して NSG 規則を使用して、トラフィックを制御します。 /32 プレフィックスを持つ個々のルートをデプロイして、プライベート エンドポイント ルートをオーバーライドします。 送信接続の NSG フロー ログと監視情報は引き続きサポートされており、使用することができます        |
 
 
 ## <a name="next-steps"></a>次のステップ

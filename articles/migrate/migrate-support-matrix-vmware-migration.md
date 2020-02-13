@@ -3,12 +3,12 @@ title: Azure Migrate での VMware 移行のサポート
 description: Azure Migrate での VMware VM 移行のサポートについて説明します。
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: e33811563063c0f8eb94b9927d07596d51cd45e4
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: e5a2f40611f6b358a8b5ff1dfb99cadebae4fab6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030926"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77013996"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 移行のサポートマトリックス
 
@@ -123,7 +123,15 @@ Azure Migrate ハブで提供されている OVA テンプレートを使用し�
 
 - VMware の[レプリケーション アプライアンスの要件](migrate-replication-appliance.md#appliance-requirements)を確認してください。
 - アプライアンスに MySQL がインストールされている必要があります。 [インストール オプション](migrate-replication-appliance.md#mysql-installation)を確認してください。
-- レプリケーション アプライアンスがアクセスする必要のある [URL](migrate-replication-appliance.md#url-access) を確認してください。
+- レプリケーション アプライアンスがアクセスする必要のある [URL](migrate-replication-appliance.md#url-access) および[ポート](migrate-replication-appliance.md#port-access)を確認してください。
+
+## <a name="agent-based-ports"></a>エージェントベースのポート
+
+**[デバイス]** | **[接続]**
+--- | ---
+VM | VM 上で実行される Mobility Service は、レプリケーション管理のために、インバウンド ポート HTTPS 443 でオンプレミスのレプリケーション アプライアンス (構成サーバー) と通信します。<br/><br/> VM は、受信ポート HTTPS 9443 でレプリケーション データを (構成サーバー マシン上で実行されている) プロセス サーバーに送信します。 このポートは変更可能です。
+レプリケーション アプライアンス | レプリケーション アプライアンスは、アウトバウンド ポート HTTPS 443 経由で Azure によるレプリケーションを調整します。
+プロセス サーバー | プロセス サーバーは、レプリケーション データを受信し、データを最適化して暗号化し、アウトバウンド ポート 443 経由で Azure ストレージに送信します。<br/> 既定では、プロセス サーバーはレプリケーション アプライアンスで実行されます。
 
 ## <a name="azure-vm-requirements"></a>Azure VM の要件
 

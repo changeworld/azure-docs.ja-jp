@@ -4,12 +4,12 @@ description: MARS エージェントでサポートされるバックアップ �
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d558a19b3025ab1400e873f97b0ce5e5a860c75a
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 348980b840b814c09ce46627f286489d4caa9f8f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902855"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023958"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントについて
 
@@ -58,8 +58,7 @@ MARS エージェントでは、次の復元シナリオがサポートされて
 ### <a name="additional-scenarios"></a>その他のシナリオ
 -   **Azure 仮想マシン内の特定のファイルやフォルダーをバックアップ**:Azure 仮想マシン (VM) をバックアップする主な方法は、VM 上で Azure Backup 拡張機能を使用することです。 この拡張機能は、VM 全体をバックアップします。 VM 内の特定のファイルやフォルダーをバックアップする場合は、Azure VM に MARS エージェントをインストールできます。 詳細については、「[アーキテクチャ:組み込みの Azure VM バックアップ](https://docs.microsoft.com/azure/backup/backup-architecture#architecture-built-in-azure-vm-backup)」を参照してください。
 
--   **オフライン シード処理**:通常、Azure へのデータの初回完全バックアップでは大量のデータが転送されるため、より広いネットワーク帯域幅が必要になります。 後続のバックアップでは、差分または増分のデータ量のみが転送されます。 Azure Backup では、初回バックアップが圧縮されます。 *オフライン シード処理*プロセスによって、Azure Backup ではディスクを使用して、圧縮済みの初回バックアップ データをオフラインで Azure にアップロードすることができます。 詳細については、「[DPM と Azure Backup Server のオフライン バックアップのワークフロー](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export-)」を参照してください。
-
+-   **オフライン シード処理**:通常、Azure へのデータの初回完全バックアップでは大量のデータが転送されるため、より広いネットワーク帯域幅が必要になります。 後続のバックアップでは、差分または増分のデータ量のみが転送されます。 Azure Backup では、初回バックアップが圧縮されます。 *オフライン シード処理*プロセスによって、Azure Backup ではディスクを使用して、圧縮済みの初回バックアップ データをオフラインで Azure にアップロードすることができます。 詳細については、「[Azure Data Box を使用した Azure Backup オフライン バックアップ](offline-backup-azure-data-box.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 [MARS エージェントのサポート マトリックス](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)

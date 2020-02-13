@@ -14,12 +14,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18510bd7ace6ca87278b5bf68f79b372251ac0e1
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: b0259a8d9fcb4c9c513ab2c31103c9a8488e90ae
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807819"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025743"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>アプリケーション プロキシを使用したシングル サインオン用のパスワードの保管
 
@@ -34,6 +34,8 @@ Azure Active Directory アプリケーション プロキシを使用してオ�
 1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
 1. **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** を選択します。
 1. 一覧から、SSO を設定するアプリを選択します。  
+1. **[アプリケーション プロキシ]** を選択します。 
+1. **[Pre Authentication type]\(事前認証の種類\)** を **[パススルー]** に変更し、 **[保存]** を選択します。 後で種類を **[Azure Active Directory]** に再び切り替えることができます。 
 1. **[シングル サインオン]** を選択します。
 
    ![アプリの [概要] ページで、[シングル サインオン] を選択します](./media/application-proxy-configure-single-sign-on-password-vaulting/select-sso.png)
@@ -44,6 +46,17 @@ Azure Active Directory アプリケーション プロキシを使用してオ�
    ![パスワード ベースのサインオンの選択と URL の入力](./media/application-proxy-configure-single-sign-on-password-vaulting/password-sso.png)
 
 1. **[保存]** を選択します。
+1. **[アプリケーション プロキシ]** を選択します。 
+1. **[Pre Authentication type]\(事前認証の種類\)** を **[Azure Active Directory]** に変更し、 **[保存]** を選択します。 
+1. **[Users and Groups]** を選択します。
+1. アプリケーションにユーザーを割り当てるには、 **[ユーザーの追加]** を選択します。 
+1. ユーザーの資格情報を事前に定義する場合は、ユーザー名の前にあるボックスをオンにし、 **[資格情報の更新]** を選択します。
+1. **[Azure Active Directory]**  >  **[アプリの登録]**  >  **[すべてのアプリケーション]** を選択します。
+1. 一覧から、[Password SSO]\(パスワード SSO\) を使用して構成したアプリを選択します。
+1. **[ブランド]** を選択します。 
+1. [Password SSO]\(パスワード SSO\) ページで **[サインオン URL]** を使用して **[ホームページ URL]** を更新し、 **[保存]** を選択します。  
+
+
 
 <!-- Need to repro?
 7. The page should tell you that a sign-in form was successfully detected at the provided URL. If it doesn't, select **Configure [your app name] Password Single Sign-on Settings** and choose **Manually detect sign-in fields**. Follow the instructions to point out where the sign-in credentials go. 
@@ -51,9 +64,9 @@ Azure Active Directory アプリケーション プロキシを使用してオ�
 
 ## <a name="test-your-app"></a>アプリをテストする
 
-アプリケーションへのリモート アクセス用に構成した外部 URL に移動します。 そのアプリの資格情報 (または設定したアクセス権を持つテスト アカウントの資格情報) でサインインします。 正常にサインインした場合は、アプリを終了すると、資格情報をもう一度入力しなくても前の場所に戻ることができます。
+[マイ アプリ] ポータルに移動します。 自分の資格情報 (または設定したアクセス権を持つテスト アカウントの資格情報) でサインインします。 正常にサインインしたら、アプリのアイコンをクリックします。 これにより、マイ アプリのセキュリティで保護されたサインイン ブラウザー拡張機能のインストールがトリガーされる場合があります。 ユーザーが資格情報を事前に定義している場合、アプリへの認証は自動的に行われます。それ以外の場合は、最初にユーザー名またはパスワードを指定する必要があります。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [シングル サインオン](what-is-single-sign-on.md)を実装するための他の方法を参照します。
 - [Azure AD アプリケーション プロキシを使用したアプリへのリモート アクセス時のセキュリティに関する注意事項](application-proxy-security.md)を確認します。

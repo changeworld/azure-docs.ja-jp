@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/31/2019
-ms.openlocfilehash: 40660c0397f8b7fd7c370e2e0f697cae26b9bb48
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 01/28/2020
+ms.openlocfilehash: 194bc7983019a616d534a4146f86fff59f9719dc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927150"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990523"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイム
 Integration Runtime (IR) は、異なるネットワーク環境間で以下のデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。
@@ -42,7 +42,7 @@ IR の種類 | パブリック ネットワーク | プライベート ネット
 ------- | -------------- | ---------------
 Azure | Data Flow<br/>データの移動<br/>アクティビティのディスパッチ | &nbsp;
 セルフホステッド | データの移動<br/>アクティビティのディスパッチ | データの移動<br/>アクティビティのディスパッチ
-Azure-SSIS | SSIS パッケージの実行 | SSIS パッケージの実行
+Azure-SSIS | SSIS パッケージ実行 | SSIS パッケージ実行
 
 次の図は、さまざまな統合ランタイムを組み合わせて使用し、優れたデータ統合機能やネットワークのサポートを提供する方法を示しています。
 
@@ -104,7 +104,7 @@ Azure-SSIS IR は、SSIS パッケージ実行専用の、Azure VM のフル マ
 Azure-SSIS ランタイムの詳細については、次の記事をご覧ください。 
 
 - [チュートリアル: SSIS パッケージを Azure にデプロイする](tutorial-create-azure-ssis-runtime-portal.md): この記事では、Azure-SSIS IR を作成し、Azure SQL データベースを使って SSIS カタログをホストする手順が説明されています。 
-- [方法:Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md)。 この記事では、チュートリアルを基に、Azure SQL Database Managed Instance の使い方と、IR を仮想ネットワークに参加させる方法が説明されています。 
+- [方法: Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md)。 この記事では、チュートリアルを基に、Azure SQL Database Managed Instance の使い方と、IR を仮想ネットワークに参加させる方法が説明されています。 
 - [Azure-SSIS IR を監視する](monitor-integration-runtime.md#azure-ssis-integration-runtime): この記事では、Azure-SSIS IR に関する情報を取得する方法と、返された情報での状態が説明されています。 
 - [Azure-SSIS IR を管理する](manage-azure-ssis-integration-runtime.md): この記事では、Azure-SSIS IR を停止、開始、削除する方法が説明されています。 また、IR にノードを追加することで Azure-SSIS IR をスケールアウトする方法も説明されています。 
 - [仮想ネットワークへの Azure-SSIS IR の参加](join-azure-ssis-integration-runtime-virtual-network.md): この記事では、Azure 仮想ネットワークへの Azure-SSIS IR の参加に関する概念情報が説明されています。 Azure-SSIS IR が仮想ネットワークに参加できるように Azure Portal を使用して仮想ネットワークを構成する手順も説明されています。 
@@ -141,9 +141,9 @@ Azure IR の特定の場所を設定することができます。その場合�
 ### <a name="azure-ssis-ir-location"></a>Azure-SSIS IR の場所
 抽出、変換、読み込み (ETL) ワークフローで高いパフォーマンスを実現するには、Azure-SSIS IR の正しい場所を選択することが重要です。
 
-- Azure-SSIS IR の場所をデータ ファクトリの場所と同じにする必要はありませんが、SSISDB がホストされる独自の Azure SQL Database/Managed Instance サーバーの場所と同じにする必要があります。 こうすると、Azure-SSIS 統合ランタイムから SSISDB に簡単にアクセスでき、複数の場所の間で過剰なトラフィックが生じません。
-- SSISDB をホストする既存の Azure SQL Database/Managed Instance サーバーがなく、オンプレミスのデータ ソース/移動先がある場合、オンプレミスのネットワークに接続している仮想ネットワークの同じ場所に新しい Azure SQL Database/Managed Instance サーバーを作成する必要があります。  この場合、新しい Azure SQL Database/Managed Instance サーバーを使用し、この仮想ネットワークを参加させ、すべて同一の場所で Azure-SSIS IR を作成することができるため、異なる場所との間でデータの移動を効果的に最小限にすることができます。
-- SSISDB をホストする既存の Azure SQL Database/Managed Instance サーバーの場所と、オンプレミスのネットワークに接続している仮想ネットワークの場所が違う場合は、まず、既存の Azure SQL Database/Managed Instance サーバーを使用して Azure-SSIS IR を作成し、同じ場所の別の仮想ネットワークを参加させます。次に、異なる場所の間の仮想ネットワーク間接続を構成します。
+- Azure-SSIS IR の場所をデータ ファクトリの場所と同じにする必要はありませんが、SSISDB がホストされる独自の Azure SQL Database または Managed Instance サーバーの場所と同じにする必要があります。 こうすると、Azure-SSIS 統合ランタイムから SSISDB に簡単にアクセスでき、複数の場所の間で過剰なトラフィックが生じません。
+- SSISDB をホストする既存の Azure SQL Database または Managed Instance サーバーがなく、オンプレミスのデータ ソースまたは移動先がある場合、オンプレミスのネットワークに接続している仮想ネットワークの同じ場所に新しい Azure SQL Database または Managed Instance サーバーを作成する必要があります。  この場合、新しい Azure SQL Database または Managed Instance サーバーを使用し、この仮想ネットワークを参加させ、すべて同一の場所で Azure-SSIS IR を作成することができるため、異なる場所との間でデータの移動を効果的に最小限にすることができます。
+- SSISDB をホストする既存の Azure SQL Database または Managed Instance サーバーの場所と、オンプレミスのネットワークに接続している仮想ネットワークの場所が違う場合は、まず、既存の Azure SQL Database または Managed Instance サーバーを使用して Azure-SSIS IR を作成し、同じ場所の別の仮想ネットワークを参加させます。次に、異なる場所の間の仮想ネットワーク間接続を構成します。
 
 次の図は、Data Factory とその統合ランタイムの場所の設定を示しています。
 
@@ -163,16 +163,16 @@ Azure IR の特定の場所を設定することができます。その場合�
 
 Lookup および GetMetadata アクティビティは、データ ストアのリンクされたサービスに関連付けられている統合ランタイム上で実行されます。
 
-### <a name="transformation-activity"></a>変換アクティビティ
+### <a name="external-transformation-activity"></a>外部変換アクティビティ
 
-各変換アクティビティには、ターゲット コンピューティングのリンクされたサービスがあり、これは統合ランタイムに向けられています。 この統合ランタイム インスタンスから、変換アクティビティがディスパッチされます。
+外部のコンピューティング エンジンを活用する外部変換アクティビティにはそれぞれ、ターゲット コンピューティングのリンクされたサービスがあり、これは統合ランタイムに向けられています。 この統合ランタイム インスタンスによって、手動コーディングされたその外部変換アクティビティのディスパッチ元が判断されます。
 
 ### <a name="data-flow-activity"></a>Data Flow アクティビティ
 
-Data Flow アクティビティは、それに関連付けられている統合ランタイムで実行されます。 
+Data Flow アクティビティは、それに関連付けられている Azure 統合ランタイムで実行されます。 Data Flow で活用される Spark コンピューティングは Azure 統合ランタイムのデータ フロー プロパティによって決定され、ADF によって完全管理されます。
 
-## <a name="next-steps"></a>次の手順
-次の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+次の記事をご覧ください。
 
 - [Azure Integration Runtime の作成](create-azure-integration-runtime.md)
 - [Create self-hosted integration runtime (セルフホステッド統合ランタイムの作成)](create-self-hosted-integration-runtime.md)

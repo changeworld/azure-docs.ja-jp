@@ -3,12 +3,12 @@ title: ポリシー定義の構造の詳細
 description: ポリシー定義を使用し、組織の Azure リソースの規則を確立する方法について説明します。
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: 909d8e69e02b55ee6e45515b0d9c316a549e1332
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7502c1c9a2e125052abf71e50273fbd9bab15cd1
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972848"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989877"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -176,6 +176,9 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 **displayName** と **description** を使用して、ポリシー定義を識別し、定義が使用される際のコンテキストを指定します。 **displayName** の最大長は _128_ 文字で、**description** の最大長は _512_ 文字です。
 
+> [!NOTE]
+> ポリシー定義の作成または更新時、JSON の範囲外のプロパティにより **ID**、**型**、**名前**が定義され、JSON ファイルでは不要となります。 SDK 経由でポリシー定義を取得すると、JSON の一部として **ID**、**型**、**名前**プロパティが返されますが、いずれもポリシー定義に関連する読み取り専用情報となります。
+
 ## <a name="policy-rule"></a>ポリシー規則
 
 ポリシー規則は、**If** と **Then** ブロックで構成されています。 **If** ブロックでは、いつポリシーが適用されるかを指定する、1 つ以上の条件を定義します。 これらの条件に論理演算子を適用して、ポリシーのシナリオを細かく定義することができます。
@@ -248,8 +251,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 **like** 条件と **notLike** 条件を使用する場合は、値にワイルドカード (`*`) を指定できます。
 値に複数のワイルドカード (`*`) を指定することはできません。
 
-**match** 条件と **notMatch** 条件を使用する場合は、任意の数字と一致する `#`、任意の文字と一致する `?`、すべての文字と一致する `.` のほか、一致させる具体的な文字を指定することができます。
-**match** と **notMatch** は、大文字と小文字が区別されます。 大文字と小文字が区別されない代替手段は、**matchInsensitively** と **notMatchInsensitively** で使用できます。 例については、「[複数の名前パターンを許可する](../samples/allow-multiple-name-patterns.md)」を参照してください。
+**match** 条件と **notMatch** 条件を使用する場合は、任意の数字と一致する `#`、任意の文字と一致する `?`、すべての文字と一致する `.` のほか、一致させる具体的な文字を指定することができます。 **match** と **notMatch** では大文字と小文字が区別されますが、_stringValue_ を評価するその他すべての条件では大文字と小文字が区別されません。 大文字と小文字が区別されない代替手段は、**matchInsensitively** と **notMatchInsensitively** で使用できます。 例については、「[複数の名前パターンを許可する](../samples/allow-multiple-name-patterns.md)」を参照してください。
 
 ### <a name="fields"></a>フィールド
 
@@ -308,7 +310,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 }
 ```
 
-### <a name="value"></a>値
+### <a name="value"></a>Value
 
 条件は、**value** を使用して形成することもできます。 **value** では、[パラメーター](#parameters)、[サポートされるテンプレート関数](#policy-functions)、またはリテラルに対する条件をチェックします。
 **value** は、サポートされる任意の[条件](#conditions)と組み合わせられます。
@@ -396,7 +398,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 ### <a name="count"></a>Count
 
-条件式を満たすリソース ペイロード内の配列のメンバー数をカウントする条件は、**count** 式を使用して作成することができます。 通常のシナリオでは、条件を満たす配列メンバーの数が、"at least one of" (少なくとも 1 つ)、"exactly one of" (1 つだけ)、"all of" (すべて)、"none of" (ない) のそれぞれに該当するかどうかを確認します。 **count** は、条件式に対して各配列メンバーを評価して、_true_ である結果を合計し、条件演算子と比較します。
+条件式を満たすリソース ペイロード内の配列のメンバー数をカウントする条件は、**count** 式を使用して作成することができます。 通常のシナリオでは、条件を満たす配列メンバーの数が、"at least one of" (少なくとも 1 つ)、"exactly one of" (1 つだけ)、"all of" (すべて)、"none of" (ない) のそれぞれに該当するかどうかを確認します。 **count** では、ある条件式の各 [\[\*\] alias](#understanding-the--alias) 配列メンバーを評価して _true_ の結果を合計し、式の演算子と比較します。
 
 **count** 式の構造は次の通りです。
 
@@ -760,10 +762,7 @@ Azure Policy では、次の種類の効果をサポートしています。
                 }
             }
         ]
-    },
-    "id": "/subscriptions/<subscription-id>/providers/Microsoft.Authorization/policySetDefinitions/billingTagsPolicy",
-    "type": "Microsoft.Authorization/policySetDefinitions",
-    "name": "billingTagsPolicy"
+    }
 }
 ```
 

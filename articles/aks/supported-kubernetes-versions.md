@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: saudas
-ms.openlocfilehash: bba4196547bda3d3ddcf3344032de5b9286639a0
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 8c144fb0c9818e21c2ca5bd61525067b485531bb
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996750"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026117"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でサポートされている Kubernetes のバージョン
 
@@ -96,7 +96,7 @@ New Supported Version List
 * 新しい**マイナー** バージョンの Kubernetes の場合
   * すべてのユーザーには、新しいバージョンと削除される予定のバージョンが公的に通知されます。
   * 新しい修正プログラムのバージョンがリリースされると、同時に最も古い修正プログラムのリリースが削除されます。
-  * お客様は、公示日から **60 日間**の間に、サポートされているマイナー バージョンのリリースにアップグレードすることができます。
+  * お客様は、公示日から **30 日**の間に、サポートされているマイナー バージョンのリリースにアップグレードすることができます。
 * 新しい**修正プログラム**のバージョンの Kubernetes の場合
   * すべてのユーザーには、リリースされている修正プログラムの新しいバージョンが通知され、最新の修正プログラムのリリースにアップグレードするよう通知されます。
   * ユーザーは、**30 日間**の間に、サポートされている新しい修正プログラム リリースにアップグレードすることができます。 ユーザーは、**30 日間** の間に、最も古いものが削除される前にサポートされている修正プログラムのリリースにアップグレードすることができます。
@@ -135,11 +135,11 @@ AKS は既定で N-1 を選択し、既定で既知の安定した、修正プ�
 az aks get-versions --location eastus --output table
 ```
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
 **顧客がサポートされていないマイナー バージョンの Kubernetes クラスターをアップグレードするとどうなりますか。**
 
-*n-3* バージョンを使用している場合は、サポート外であり、アップグレードするよう求められます。 バージョン n-3 から n-2 へのアップグレードに成功した場合は、サポート ポリシーの対象になります。 例:
+*n-3* バージョンを使用している場合は、サポート外であり、アップグレードするよう求められます。 バージョン n-3 から n-2 へのアップグレードに成功した場合は、サポート ポリシーの対象になります。 次に例を示します。
 
 - サポートされている最も古い AKS のバージョンが *1.13.a* で、使用しているバージョンが *1.12.b* またはそれ以前の場合は、サポート対象外です。
 - *1.12.b* から *1.13.a* 以降へのアップグレードが成功すると、サポート ポリシー対象に戻ります。
@@ -162,7 +162,7 @@ AKS でサポートされていないマイナー バージョンの場合、ス
 
 コントロール プレーンは、すべてのノード プールのバージョンの期間内になければなりません。 コントロール プレーンまたはノード プールのアップグレードの詳細については、[ノード プールのアップグレード](use-multiple-node-pools.md#upgrade-a-cluster-control-plane-with-multiple-node-pools)に関するドキュメントを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 クラスターをアップグレードする方法の詳細については、「[Azure Kubernetes Service (AKS) クラスターのアップグレード][aks-upgrade]」をご覧ください。
 

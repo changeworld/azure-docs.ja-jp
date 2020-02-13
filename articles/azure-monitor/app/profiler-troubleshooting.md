@@ -8,14 +8,19 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: a9817205a419e2b61af66dba16d09620e2c1dec9
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 2bac317d6a3a5c6895a3cea4dae22694b603cabf
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310868"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024026"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Application Insights Profiler の有効化または表示に関する問題のトラブルシューティング
+
+## <a name="active-issues"></a>アクティブな懸案事項
+
+* ASP.NET Core 3.x アプリケーションのプロファイリングは、まだサポートされていません。
+  * Profiler をオンにする必要がある場合は、回避策として [ASP.NET Core 用の Application Insights Profiler](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore) を使用することができます。 プロファイラーには Linux 用のラベルが付けられますが、Windows 上の .NET Core 3.0 以降のアプリケーションでも動作します。 詳細については、「[サポートされているバージョン](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore#supported-versions)」を参照してください。
 
 ## <a id="troubleshooting"></a>一般的なトラブルシューティング
 
@@ -66,7 +71,7 @@ Profiler を正常に動作させるためには:
 * Web アプリで Application Insights が有効になっている必要があります。
 * Web アプリには、次のアプリ設定が必要です。
 
-    |アプリ設定    | 値    |
+    |アプリ設定    | Value    |
     |---------------|----------|
     |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights リソースの iKey    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
@@ -98,7 +103,7 @@ Profiler を構成すると、Web アプリの設定に対して更新が行わ�
 1. **[Always On]** を**オン**に設定します。
 1. 次のアプリ設定を作成します。
 
-    |アプリ設定    | 値    |
+    |アプリ設定    | Value    |
     |---------------|----------|
     |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights リソースの iKey    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |

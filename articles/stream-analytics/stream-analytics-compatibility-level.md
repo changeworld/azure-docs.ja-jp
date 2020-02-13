@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.openlocfilehash: 888c1f0bb38a5317cc27790ea47917c182d49593
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 02/03/2020
+ms.openlocfilehash: e1eb852b7cf7aea887dea429e19b0a3b1ac5805a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925633"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989860"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブの互換性レベル
 
@@ -27,7 +27,7 @@ Azure Stream Analytics では現在、次の 3 つの互換性レベルがサポ
 
 * 1.0 - 以前の動作
 * 1.1 - 既定の動作
-* 1.2 (プレビュー) - 評価中の最新の改善による最新の動作
+* 1.2 - 最近の改善による最新の動作
 
 元の互換性レベル 1.0 は、数年前の Azure Stream Analytics の一般公開時に導入されました。
 
@@ -47,9 +47,9 @@ Azure portal でジョブの互換性レベルを更新するには:
 
 ![Azure portal の Stream Analytics の互換性レベル](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
 
-互換性レベルを更新すると、T-SQL コンパイラが、選択された互換性レベルに対応する構文を使用してジョブを検証します。
+互換性レベルを更新すると、T コンパイラが、選択された互換性レベルに対応する構文を使用してジョブを検証します。
 
-## <a name="compatibility-level-12-preview"></a>互換性レベル 1.2 (プレビュー)
+## <a name="compatibility-level-12"></a>互換性レベル 1.2
 
 互換性レベル 1.2 では、以下の大きな変更が導入されました。
 
@@ -119,11 +119,11 @@ Azure Stream Analytics では、地理空間参照データのインデックス
 
 ### <a name="service-bus-xml-format"></a>Service Bus XML 形式
 
-**1.0 レベル:** Azure Stream Analytics が DataContractSerializer を使用していたため、メッセージのコンテンツに XML タグが含まれていました。 例:
+**1.0 レベル:** Azure Stream Analytics が DataContractSerializer を使用していたため、メッセージのコンテンツに XML タグが含まれていました。 次に例を示します。
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 
-**1.1 レベル:** メッセージのコンテンツにはストリームが直接含まれていて、追加のタグは含まれていません。 次に例を示します。`{ "SensorId":"1", "Temperature":64}`
+**1.1 レベル:** メッセージのコンテンツにはストリームが直接含まれていて、追加のタグは含まれていません。 例: `{ "SensorId":"1", "Temperature":64}`
 
 ### <a name="persisting-case-sensitivity-for-field-names"></a>フィールド名の大文字と小文字の区別の保持
 
@@ -146,7 +146,7 @@ Azure Stream Analytics では、地理空間参照データのインデックス
 
 **1.1 レベル:** 日付/時刻/ゾーン情報を持つ文字列値を DateTime 型に自動的にアップキャストすることはなくなりました。 そのため、タイムゾーン情報は保持されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Stream Analytics の入力をトラブルシューティングする](stream-analytics-troubleshoot-input.md)
 * [Stream Analytics のリソース正常性](stream-analytics-resource-health.md)

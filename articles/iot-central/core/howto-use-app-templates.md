@@ -1,25 +1,49 @@
 ---
-title: Azure IoT Central のアプリケーション テンプレートを使用する | Microsoft Docs
-description: オペレーターとして、Azure IoT Central アプリケーションでデバイス セットを使用する方法。
+title: Azure IoT Central アプリケーションをエクスポートする | Microsoft Docs
+description: ソリューション マネージャーとして、アプリケーション テンプレートをエクスポートして再利用できるようにしたい場合。
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/30/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: d682c49aa833b9e11dbbddc5e9f6afd52cbb6e84
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b5c8f7fd1c87ce279a8edd39aacb332b8aef28be
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72942312"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023448"
 ---
-# <a name="use-application-templates"></a>アプリケーション テンプレートを使用する
+# <a name="export-your-application"></a>アプリケーションのエクスポート
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
 
-この記事では、ソリューション マネージャーとして、アプリケーション テンプレートを作成および使用する方法について説明します。
+
+この記事では、ソリューション マネージャーとして IoT Central アプリケーションをエクスポートして再利用できるようにする方法について説明します。
+
+2 つのオプションがあります。
+
+- アプリケーションの 1 つの複製を作成することが必要なだけの場合は、アプリケーションのコピーを作成できます。
+- 複数のコピーを作成する予定がある場合は、アプリケーションからアプリケーション テンプレートを作成できます。
+
+## <a name="copy-your-application"></a>アプリケーションをコピーする
+
+デバイス インスタンス、デバイス データ履歴、およびユーザー データ以外の任意のアプリケーションのコピーを作成できます。 このコピーでは標準の料金プランが使用され、課金されます。 無料の料金プランが使用されるアプリケーションをアプリケーションをコピーして作成することはできません。
+
+**[コピー]** を選択します。 ダイアログ ボックスに、新しいアプリケーションの詳細を入力します。 **[コピー]** を選択して、続行することを確認します。 このフォームのフィールドの詳細については、[アプリケーションの作成](quick-deploy-iot-central.md)に関するクイックスタートを参照してください。
+
+![[Application Settings] (アプリケーション設定) ページ](media/howto-use-app-templates/appcopy2.png)
+
+アプリのコピー操作が成功したら、リンクを使用して新しいアプリケーションに移動できます。
+
+![[Application Settings] (アプリケーション設定) ページ](media/howto-use-app-templates/appcopy3a.png)
+
+アプリケーションをコピーすると、ルールやメール アクションの定義もコピーされます。 Flow や Logic Apps などの一部のアクションは、ルール ID を介して特定のルールに関連付けられています。 ルールが別のアプリケーションにコピーされると、そのルールに独自のルール ID が設定されます。 この場合、ユーザーは新しいアクションを作成してから、新しいルールを関連付ける必要があります。 一般には、ルールとアクションを調べ、それらが新しいアプリで最新の状態になっていることを確認することをお勧めします。
+
+> [!WARNING]
+> 特定のデバイスに関する情報を表示するタイルがダッシュボードに含まれている場合、それらのタイルに、新しいアプリケーションで**要求されたリソースが見つからなかった**ことが表示されます。 デバイスに関する情報が新しいアプリケーションに表示されるように、これらのタイルを再構成する必要があります。
+
+## <a name="create-an-application-template"></a>アプリケーション テンプレートを作成する
 
 Azure IoT Central アプリケーションを作成する場合、組み込みのサンプル テンプレートを選択できます。 既存の IoT Central アプリケーションから、独自のアプリケーション テンプレートを作成することもできます。 その後、新しいアプリケーションの作成時に、独自のアプリケーション テンプレートを使用できます。
 
@@ -42,8 +66,6 @@ Azure IoT Central アプリケーションを作成する場合、組み込み�
 
 アプリケーション テンプレートから作成されたすべてのアプリケーションに手動でこれらの項目を追加します。
 
-## <a name="create-an-application-template"></a>アプリケーション テンプレートを作成する
-
 既存の IoT Central アプリケーションからアプリケーション テンプレートを作成するには、次の手順に従います。
 
 1. アプリケーションの **[管理]** セクションに移動します。
@@ -53,15 +75,15 @@ Azure IoT Central アプリケーションを作成する場合、組み込み�
 
 ![アプリケーション テンプレートを作成する](media/howto-use-app-templates/create-template.png)
 
-## <a name="use-an-application-template"></a>アプリケーション テンプレートを使用する
+### <a name="use-an-application-template"></a>アプリケーション テンプレートを使用する
 
 アプリケーション テンプレートを使用して新しい IoT Central アプリケーションを作成するには、あらかじめ作成された**共有可能リンク**が必要になります。 ブラウザーのアドレス バーに**共有可能リンク**を貼り付けます。 **[アプリケーションの作成]** ページが、カスタム アプリケーション テンプレートが選択された状態で表示されます。
 
 ![テンプレートからアプリケーションを作成する](media/howto-use-app-templates/create-app.png)
 
-支払プランを選択して、フォーム上の他のフィールドを入力します。 次に、 **[作成]** を選択して、アプリケーション テンプレートから新しい IoT Central アプリケーションを作成します。
+料金プランを選択し、フォーム上の他のフィールドを入力します。 次に、 **[作成]** を選択して、アプリケーション テンプレートから新しい IoT Central アプリケーションを作成します。
 
-## <a name="manage-application-templates"></a>アプリケーション テンプレートを管理する
+### <a name="manage-application-templates"></a>アプリケーション テンプレートを管理する
 
 **[Application Template Export]\(アプリケーション テンプレートのエクスポート\)** ページで、アプリケーション テンプレートの削除や更新が行えます。
 
@@ -69,6 +91,6 @@ Azure IoT Central アプリケーションを作成する場合、組み込み�
 
 アプリケーション テンプレートを更新するには、 **[Application Template Export]\(アプリケーション テンプレートのエクスポート\)** ページでテンプレート名や説明を変更します。 その後、 **[エクスポート]** を再度選択します。 このアクションにより、新しい**共有可能リンク**が生成され、以前に作成した**共有可能リンク**の URL が無効になります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、アプリケーション テンプレートの使用方法を学習しました。推奨される次の手順は、[Azure portal で IoT Central を管理する](howto-manage-iot-central-from-portal.md)方法を学習することです。

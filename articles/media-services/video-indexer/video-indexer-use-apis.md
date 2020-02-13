@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: 4da437fecf0529194d72b2d403302ff81055ec0f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 8b6d160f71bfe8b2e5c447296d511b54ce6542c8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892687"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989775"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>チュートリアル:Video Indexer API の使用
 
@@ -86,7 +86,7 @@ Operations API の各呼び出しは、呼び出しの承認スコープと一�
 
 * **Video Indexer 開発者ポータル**を使用して、プログラムからアカウント ID を取得します。
 
-    [Get accounts](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Accounts?) API を使用します。
+    [Get account](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Account?) API を使用します。
 
     > [!TIP]
     > `generateAccessTokens=true` を定義することで、アカウントのアクセス トークンを生成できます。
@@ -109,7 +109,7 @@ Operations API の各呼び出しは、呼び出しの承認スコープと一�
 
 - 指定されたビデオのビデオ分析情報を取得する API を呼び出すと、応答コンテンツとして詳細な JSON 出力を取得できます。 [返される JSON の詳細については、こちらのトピックを参照してください](video-indexer-output-json-v2.md)。
 
-## <a name="code-sample"></a>サンプル コード
+## <a name="code-sample"></a>コード サンプル
 
 次の C# コード スニペットは、すべての Video Indexer API の使用方法を示しています。
 
@@ -207,11 +207,13 @@ Debug.WriteLine(playerWidgetLink);
 
 ```
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [Video Indexer の概要](video-indexer-overview.md)
 - [リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[出力 JSON の詳細を調べる](video-indexer-output-json-v2.md)
+- [出力 JSON の詳細を調べる](video-indexer-output-json-v2.md)
+- こちらの[サンプル コード](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/API)をご覧ください。動画のアップロードとインデックス作成という重要な作業が説明されます。 このコードからは、API の基本機能の使い方がよくわかります。 必ずインライン コメントを読み、ベスト プラクティスに関する助言を確認してください。
+

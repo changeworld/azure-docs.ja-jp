@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 207f5180db8a589ed4a68741ac18180370d21788
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 934a4fdf7cabb89c4b98c7800252cb24d4e23abf
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833887"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "77013907"
 ---
 ## <a name="limitations"></a>制限事項
 
 - 仮想マシン スケール セットは、現在、専用ホストではサポートされていません。
-- 次の VM シリーズがサポートされています。DSv3 と ESv3。 
+- 次の VM シリーズがサポートされています。DSv3、ESv3、Fsv2。 
 
 ## <a name="benefits"></a>メリット 
 
@@ -73,7 +73,7 @@ Azure で VM を作成するときに、VM に使用する専用ホストを選�
 **メンテナンス管理**により、お客様は、専用ホストでスケジュールされた通常のプラットフォーム更新をスキップし、35 日のローリングウィンドウ内で選択した時点で適用することができます。
 
 > [!NOTE]
->  メンテナンス管理は現在、限定プレビュー段階であり、オンボード プロセスが必要です。 このプレビューに申し込むには、[候補調査](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u)を送信してください。
+>  メンテナンス コントロールは、現在パブリック プレビューの段階です。 詳細については、**メンテナンス コントロールと [CLI](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) または [PowerShell](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-powershell?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) を使用した更新プログラムの制御**に関するページを参照してください。
 
 ## <a name="capacity-considerations"></a>容量に関する考慮事項
 
@@ -115,7 +115,7 @@ Dedicated Host は、次のホスト SKU\types をサポートします: DSv3_Ty
 
 Azure では、ホストの正常性状態が監視および管理されます。 ホストのクエリを実行すると、次の状態が返されます。
 
-| 正常性の状態   | [説明]       |
+| 正常性の状態   | 説明       |
 |----------|----------------|
 | 使用可能なホスト     | ホストに既知の問題はありません。   |
 | 調査対象のホスト  | ホストには調査中の問題がいくつかあります。 これは、識別された問題のスコープと根本原因を Azure で特定するために必要な移行状態です。 ホストで実行されている仮想マシンが影響を受ける可能性があります。 |

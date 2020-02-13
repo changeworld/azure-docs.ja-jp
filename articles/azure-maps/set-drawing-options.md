@@ -3,21 +3,21 @@ title: 描画ツール モジュール | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps Web SDK を使用して描画オプションデータを設定する方法について説明します。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 09/04/2019
+ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 2f23d4d7962fc4a01ac2f9d20dc834bcd2f08be5
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 6c64820cdfa03e833bfd2fbad3ba7489170b14e5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910582"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988925"
 ---
 # <a name="use-the-drawing-tools-module"></a>描画ツール モジュールを使用する
 
-Azure Maps の Web SDK は、*描画ツール モジュール*を提供しています。 このモジュールを使用すると、マウスやタッチ スクリーンなどの入力デバイスを使用して、マップ上で簡単に図形の描画や編集ができます。 このモジュールのコア クラスは[描画マネージャー](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-)であり、マップ上で図形を描画したり編集したりするために必要なすべての機能を提供します。 描画マネージャーは、直接使用することも、カスタム ツールバーの UI と統合することもできます。また、組み込みの[描画ツールバー](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest) クラスを使用することもできます。 
+Azure Maps の Web SDK は、*描画ツール モジュール*を提供しています。 このモジュールを使用すると、マウスやタッチ スクリーンなどの入力デバイスを使用して、マップ上で簡単に図形の描画や編集ができます。 このモジュールのコア クラスは、[描画マネージャー](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-)です。 描画マネージャーにより、マップ上で図形を描画したり編集したりするために必要なすべての機能が提供されます。 これは直接使用することができ、カスタム ツール バーの UI に統合されています。 組み込みの[描画ツール バー](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest) クラスを使用することもできます。 
 
 ## <a name="loading-the-drawing-tools-module-in-a-webpage"></a>Web ページへの描画ツール モジュールの読み込み
 
@@ -30,7 +30,7 @@ Azure Maps の Web SDK は、*描画ツール モジュール*を提供してい
         <script src="https://atlas.microsoft.com/sdk/javascript/drawing/0.1/atlas-drawing.min.js"></script>
         ```
 
-    - または、[azure-maps-drawing-tools](https://www.npmjs.com/package/azure-maps-drawing-tools) npm パッケージを使用して、Azure Maps Web SDK ソース コード用の描画ツール モジュールをローカルに読み込み、アプリを使用してそれをホストします。 このパッケージには TypeScript 定義も含まれています。 次のコマンドを実行します。
+    - または、[azure-maps-drawing-tools](https://www.npmjs.com/package/azure-maps-drawing-tools) npm パッケージを使用して、Azure Maps Web SDK ソース コード用の描画ツール モジュールをローカルに読み込み、アプリを使用してそれをホストできます。 このパッケージには TypeScript 定義も含まれています。 次のコマンドを実行します。
     
         > **npm install azure-maps-drawing-tools**
     
@@ -43,7 +43,7 @@ Azure Maps の Web SDK は、*描画ツール モジュール*を提供してい
 
 ## <a name="use-the-drawing-manager-directly"></a>描画マネージャーを直接使用する
 
-描画ツール モジュールがアプリケーションに読み込まれたので、[描画マネージャー](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-)を使用して、マップ内の描画機能と編集機能を有効にすることができます。 インスタンス化の間に描画マネージャーのオプションを指定することも、`drawingManager.setOptions()` 関数を使用することもできます。
+描画ツール モジュールがアプリケーションに読み込まれたら、[描画マネージャー](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-)を使用して、描画機能と編集機能を有効にすることができます。 インスタンス化の間に描画マネージャーのオプションを指定することも、`drawingManager.setOptions()` 関数を使用することもできます。
 
 ### <a name="set-the-drawing-mode"></a>描画モードを設定する
 
@@ -83,7 +83,7 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 });
 ```
 
-次に示すのは、マウスの左ボタンを押したままドラッグすることでマップ上に自由に多角形を描画できる機能を実装するコード サンプルです。 
+ このコード サンプルでは、マップに多角形を描画する機能を実装します。 マウスの左ボタンを押したまま、自由にドラッグするだけです。
 
 <br/>
 

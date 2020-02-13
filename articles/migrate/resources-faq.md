@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: snehaa
-ms.openlocfilehash: d06e75ec900faa17ed4441c20a52d8da60ee4d97
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: a9d008406e59c66a8b742194e2e2d388c778ac9e
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289460"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989350"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: 一般的な質問
 
@@ -62,14 +62,14 @@ Server Assessment は移行計画ツールです。 Site Recovery Deployment Pla
 - 各ツールには、Azure Migrate に接続するためのオプションがあります。 ツールの指示とドキュメントに従って、ツールを Azure Migrate に接続します。
 Azure とその他のツール全体にわたって、Azure Migrate プロジェクト内から移行の過程を一元的に追跡します。
 
-### <a name="how-do-i-delete-a-project"></a>プロジェクトを削除する方法を教えてください。
+## <a name="how-do-i-delete-a-project"></a>プロジェクトを削除する方法を教えてください。
 
 プロジェクトを削除する[方法](how-to-delete-project.md)を確認してください。 
 
 
+## <a name="do-machines-retain-domain-identity-after-migration"></a>移行後、マシンによってドメイン ID は保持されますか?
 
-
-
+ドメイン サービスが [Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/) に統合されていると仮定すると、ドメイン メンバーシップとドメイン内のマシン ID は移行後も保持されます。 
 
 ## <a name="next-steps"></a>次のステップ
 [Azure Migrate の概要](migrate-services-overview.md)を確認します。

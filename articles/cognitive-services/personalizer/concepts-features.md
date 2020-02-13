@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 5205b12a5f9f6acad8755b69d6da2216ffd4d83e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 408501232891a7971d03c89acc647d9ed19609b3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760829"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026151"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>フィーチャーはアクションとコンテキストに関する情報です。
 
@@ -132,6 +132,8 @@ JSON オブジェクトには、入れ子にした JSON オブジェクトと単
 編集してもっと大きくしたり、密度を高くしたり、低くしたりすることでフィーチャーセットを改善できます。
 
 たとえば、タイムスタンプを秒まで下げると、フィーチャーが非常にまばらになります。 これは "朝"、"真昼"、"午後" などに時間帯を分類することで高密度にする (効率的にする) ことができます。
+
+位置情報では、通常、より広範な分類を作成することによってメリットが得られます。 たとえば、緯度:47.67402° N、経度:122.12154 ° W の座標は正確すぎ、モデルは、緯度と経度を明確なディメンションとして学習するように強制されます。 位置情報に基づいて個人用に設定する場合は、より大きなセクターに位置情報をグループ化すると便利です。 そのための簡単な方法として、緯度と経度の数値に対して適切な丸め精度を選択し、緯度と経度を 1 つの文字列にすることで、それらを "区分" へと結合します。 たとえば、幅約数キロメートルのリージョン内の緯度: 47.67402 ° N、経度:122.12154 ° W は、"34.3, 12.1" と表すことができます。
 
 
 #### <a name="expand-feature-sets-with-extrapolated-information"></a>推定した情報でフィーチャーセットを拡大する

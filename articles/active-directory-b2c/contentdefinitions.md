@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1ce564767fe9664604687d8cbaced58507e6b8b3
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 50e17fae88f16d7579997b3b356638777ec3163a
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76119654"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77014285"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -61,7 +61,7 @@ ms.locfileid: "76119654"
 
 **ContentDefinition** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| Attribute | Required | Description |
 | --------- | -------- | ----------- |
 | Id | はい | コンテンツ定義の識別子。 この値は、このページの後半の**コンテンツ定義 ID** セクションで指定される値です。 |
 
@@ -79,7 +79,7 @@ ms.locfileid: "76119654"
 
 **DataUri** 要素は、ページ識別子を指定するために使用されます。 Azure AD B2C は、ページ識別子を使用して、UI 要素とクライアント側の JavaScript を読み込み開始します。 この値のフォーマットは `urn:com:microsoft:aad:b2c:elements:page-name:version` です。  次の表に、使用できるページ識別子を一覧表示します。
 
-| 値 |   説明 |
+| Value |   説明 |
 | ----- | ----------- |
 | `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | 例外またはエラーが発生したときにエラー ページを表示します。 |
 | `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | ユーザーがサインイン時に選択できる ID プロバイダーを一覧表示します。 |
@@ -99,7 +99,7 @@ ms.locfileid: "76119654"
 
 **LocalizedResourcesReferences** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| Attribute | Required | 説明 |
 | --------- | -------- | ----------- |
 | Language | はい | 「RFC 5646 - 言語を識別するタグ」に従ってポリシーでサポートされている言語を含む文字列。 |
 | LocalizedResourcesReferenceId | はい | **LocalizedResources** 要素の識別子。 |
@@ -146,11 +146,11 @@ ms.locfileid: "76119654"
 | **api.error** | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **エラー ページ** - 例外またはエラーが発生したときにエラーページを表示します。 |
 | **api.idpselections** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **ID プロバイダーの選択ページ** - ユーザーがサインイン時に選択できる ID プロバイダーを一覧表示します。 ID プロバイダーは、通常、エンタープライズ ID プロバイダー、ソーシャル ID プロバイダー (Facebook や Google+ など)、ローカル アカウントのいずれかです。 |
 | **api.idpselections.signup** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **サインアップのための ID プロバイダーの選択** - ユーザーがサインアップ時に選択できる ID プロバイダーを一覧表示します。 ID プロバイダーは、通常、エンタープライズ ID プロバイダー、ソーシャル ID プロバイダー (Facebook や Google+ など)、ローカル アカウントのいずれかです。 |
-| **api.localaccountpasswordreset** | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **パスワードを忘れた場合のページ** - パスワードのリセットを開始するためにユーザーが入力する必要があるフォームを表示します。 |
-| **api.localaccountsignin** | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **ローカル アカウントのサインイン ページ** - 電子メール アドレスまたはユーザー名に基づいたローカル アカウントでサインインするためのフォームを表示します。 このフォームには、テキスト入力ボックスとパスワード入力ボックスを含めることができます。 |
-| **api.localaccountsignup** | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **ローカル アカウントのサインアップ ページ** - 電子メール アドレスまたはユーザー名に基づいたローカル アカウントでサインアップするためのフォームを表示します。 このフォームには、テキスト入力ボックス、パスワード入力ボックス、ラジオ ボタン、単一選択ドロップダウン ボックス、複数選択チェック ボックスなど、さまざまな入力コントロールを含めることができます。 |
+| **api.localaccountpasswordreset** | [selfasserted.cshtml](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **パスワードを忘れた場合のページ** - パスワードのリセットを開始するためにユーザーが入力する必要があるフォームを表示します。 |
+| **api.localaccountsignin** | [selfasserted.cshtml](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **ローカル アカウントのサインイン ページ** - 電子メール アドレスまたはユーザー名に基づいたローカル アカウントでサインインするためのフォームを表示します。 このフォームには、テキスト入力ボックスとパスワード入力ボックスを含めることができます。 |
+| **api.localaccountsignup** | [selfasserted.cshtml](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **ローカル アカウントのサインアップ ページ** - 電子メール アドレスまたはユーザー名に基づいたローカル アカウントでサインアップするためのフォームを表示します。 このフォームには、テキスト入力ボックス、パスワード入力ボックス、ラジオ ボタン、単一選択ドロップダウン ボックス、複数選択チェック ボックスなど、さまざまな入力コントロールを含めることができます。 |
 | **api.phonefactor** | [multifactor-1.0.0.cshtml](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **多要素認証ページ** - サインアップ中またはサインイン中にテキストまたは音声を使用して電話番号を確認します。 |
-| **api.selfasserted** | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **ソーシャル アカウントのサインアップ ページ** - ソーシャル ID プロバイダーの既存のアカウントを使用してサインアップするときに、ユーザーが入力する必要があるフォームを表示します。 このページは、パスワード入力フィールドを除いて、上記のソーシャル アカウントのサインアップ ページに似ています。 |
-| **api.selfasserted.profileupdate** | [updateprofile.html](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **プロファイルの更新ページ** - ユーザーがプロファイルを更新するためにアクセスできるフォームを表示します。 このページは、パスワード入力フィールドを除いて、ソーシャル アカウントのサインアップ ページに似ています。 |
-| **api.signuporsignin** | [unified.html](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **統合されたサインアップ ページまたはサインイン ページ** - ユーザーのサインアップおよびサインイン プロセスを処理します。 ユーザーは、エンタープライズ ID プロバイダー、ソーシャル ID プロバイダー (Facebook や Google+ など)、ローカル アカウントのいずれかを使用できます。 |
+| **api.selfasserted** | [selfasserted.cshtml](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **ソーシャル アカウントのサインアップ ページ** - ソーシャル ID プロバイダーの既存のアカウントを使用してサインアップするときに、ユーザーが入力する必要があるフォームを表示します。 このページは、パスワード入力フィールドを除いて、上記のソーシャル アカウントのサインアップ ページに似ています。 |
+| **api.selfasserted.profileupdate** | [updateprofile.cshtml](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **プロファイルの更新ページ** - ユーザーがプロファイルを更新するためにアクセスできるフォームを表示します。 このページは、パスワード入力フィールドを除いて、ソーシャル アカウントのサインアップ ページに似ています。 |
+| **api.signuporsignin** | [unified.cshtml](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **統合されたサインアップ ページまたはサインイン ページ** - ユーザーのサインアップおよびサインイン プロセスを処理します。 ユーザーは、エンタープライズ ID プロバイダー、ソーシャル ID プロバイダー (Facebook や Google+ など)、ローカル アカウントのいずれかを使用できます。 |
 

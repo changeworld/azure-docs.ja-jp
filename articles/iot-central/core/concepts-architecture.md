@@ -3,21 +3,21 @@ title: Azure IoT Central でのアーキテクチャの概念 | Microsoft Docs
 description: この記事では、Azure IoT Central のアーキテクチャに関連する主要な概念を紹介します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/31/2019
+ms.date: 11/27/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 25b0ec1b86a59b944cdb895bd536da32a1f8595b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 12ad231d81b6c134ebb8d4902b3f95c978e9622d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884507"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77014523"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central のアーキテクチャ
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
+
 
 この記事では、Microsoft Azure IoT Central のアーキテクチャの概要について説明します。
 
@@ -32,7 +32,69 @@ ms.locfileid: "73884507"
 
 Azure IoT Central では、デバイスがアプリケーションと交換できるデータはデバイス テンプレートで指定されます。 デバイス テンプレートの詳細については、「[メタデータ管理](#metadata-management)」を参照してください。
 
-Azure IoT Central アプリケーションへのデバイスの接続方法の詳細については、[デバイス接続](concepts-connectivity.md)に関するページを参照してください。
+Azure IoT Central アプリケーションへのデバイスの接続方法の詳細については、[デバイス接続](concepts-get-connected.md)に関するページを参照してください。
+
+## <a name="azure-iot-edge-devices"></a>Azure IoT Edge デバイス
+
+[Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) を使用して作成されたデバイスと同様に、[Azure IoT Edge デバイス](../../iot-edge/about-iot-edge.md)を IoT Central アプリケーションに接続することもできます。 IoT Edge を使用すると、IoT Central によって管理されている IoT デバイスで、クラウド インテリジェンスやカスタム ロジックを直接実行できます。 IoT Edge ランタイムによって以下が可能となります。
+
+- デバイスにワークロードをインストールし、更新する。
+- デバイス上の IoT Edge のセキュリティ標準を維持する。
+- IoT Edge モジュールの実行状態を絶えず確保する。
+- モジュールの正常性をクラウドにレポートしてリモート監視を可能にする。
+- ダウンストリームのリーフ デバイスと IoT Edge デバイス間、IoT Edge デバイス上のモジュール間、IoT Edge デバイスとクラウド間の通信を管理する。
+
+![Azure IoT Central と Azure IoT Edge](./media/concepts-architecture/iotedge.png)
+
+IoT Central により、IoT Edge デバイスで次の機能を使用できるようになります。
+
+- 次のような IoT Edge デバイスの機能を記述するデバイス テンプレート。
+  - 配置マニフェストのアップロード機能。これは、デバイスのマニフェストを管理するのに役立ちます。
+  - IoT Edge デバイスで実行されるモジュール。
+  - 各モジュールが送信するテレメトリ。
+  - 各モジュールによって報告されるプロパティ。
+  - 各モジュールが応答するコマンド。
+  - IoT Edge ゲートウェイ デバイス機能モデルとダウンストリーム デバイス機能モデル間の関係。
+  - IoT Edge デバイスに格納されていないクラウド プロパティ。
+  - カスタマイズ、ダッシュボード、およびフォーム: ご利用の IoT Central アプリケーションの一部を成します。
+
+  詳細については、記事「[Azure IoT Edge デバイスを Azure IoT Central アプリケーションに接続する](./concepts-iot-edge.md)」を参照してください。
+
+- Azure IoT のデバイス プロビジョニング サービスを使用して大規模に IoT Edge デバイスをプロビジョニングする機能
+- ルールとアクション。
+- カスタム ダッシュボードと分析。
+- IoT Edge デバイスからのテレメトリの連続データ エクスポート。
+
+### <a name="iot-edge-device-types"></a>IoT Edge デバイスの種類
+
+IoT Central は、IoT Edge デバイスの種類を次のように分類します。
+
+- リーフ デバイス。 IoT Edge デバイスはダウンストリームのリーフ デバイスを持つことができますが、それらのデバイスは IoT Central にはプロビジョニングされません。
+- ダウンストリーム デバイスがあるゲートウェイ デバイス。 ゲートウェイ デバイスとダウンストリーム デバイスは、どちらも IoT Central にプロビジョニングされます
+
+![IoT Central と IoT Edge の概要](./media/concepts-architecture/gatewayedge.png)
+
+### <a name="iot-edge-patterns"></a>IoT Edge のパターン
+
+IoT Central は、次の IoT Edge デバイス パターンをサポートしています。
+
+#### <a name="iot-edge-as-leaf-device"></a>リーフ デバイスとしての IoT Edge
+
+![リーフ デバイスとしての IoT Edge](./media/concepts-architecture/edgeasleafdevice.png)
+
+IoT Edge デバイスは、IoT Central にプロビジョニングされ、ダウンストリーム デバイスとそれらのテレメトリは、IoT Edge デバイスからのものとして表されます。 IoT Edge デバイスに接続されているダウンストリーム デバイスは、IoT Central にはプロビジョニングされません。
+
+#### <a name="iot-edge-gateway-device-connected-to-downstream-devices-with-identity"></a>ID を使用してダウンストリーム デバイスに接続されている IoT Edge ゲートウェイ デバイス
+
+![IoT Edge とダウンストリーム デバイス ID](./media/concepts-architecture/edgewithdownstreamdeviceidentity.png)
+
+IoT Edge デバイスは、IoT Edge デバイスに接続されているダウンストリーム デバイスと共に IoT Central にプロビジョニングされます。 ゲートウェイ経由でダウンストリーム デバイスをプロビジョニングするためのランタイム サポートは、現在サポートされていません。
+
+#### <a name="iot-edge-gateway-device-connected-to-downstream-devices-with-identity-provided-by-the-iot-edge-gateway"></a>IoT Edge ゲートウェイによって提供される ID を使用してダウンストリーム デバイスに接続されている IoT Edge ゲートウェイ デバイス
+
+![ID を使用しない IoT Edge とダウンストリーム デバイス](./media/concepts-architecture/edgewithoutdownstreamdeviceidentity.png)
+
+IoT Edge デバイスは、IoT Edge デバイスに接続されているダウンストリーム デバイスと共に IoT Central にプロビジョニングされます。 ダウンストリーム デバイスに ID を提供するゲートウェイのランタイム サポートおよびダウンストリーム デバイスのプロビジョニングは、現在サポートされていません。 独自の ID 変換モジュールを使用すると、IoT Central はこのパターンをサポートできます。
 
 ## <a name="cloud-gateway"></a>クラウド ゲートウェイ
 
@@ -44,7 +106,7 @@ Azure IoT Central は、デバイス接続を可能にするクラウド ゲー�
 
 IoT Hub の詳細については、[Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) に関するページを参照してください。
 
-Azure IoT Central でのデバイス接続の詳細については、[デバイス接続](concepts-connectivity.md)に関するページを参照してください。
+Azure IoT Central でのデバイス接続の詳細については、[デバイス接続](concepts-get-connected.md)に関するページを参照してください。
 
 ## <a name="data-stores"></a>データ ストア
 
@@ -63,27 +125,26 @@ Azure IoT Central は、デバイスから送信された測定データのた�
 
 ## <a name="rules-and-actions"></a>ルールとアクション
 
-[ルールとアクション](howto-create-telemetry-rules.md)は、アプリケーション内のタスクを自動化するために緊密に連携します。 開発者は、定義されたしきい値を超える温度などのデバイス テレメトリに基づいてルールを定義できます。 Azure IoT Central は、ストリーム プロセッサを使用して、ルールの条件がいつ満たされるかを判定します。 ルールの条件が満たされると、開発者によって定義されたアクションがトリガーされます。 たとえば、アクションは、デバイス内の温度が高すぎることをエンジニアに通知するために電子メールを送信できます。
+[ルールとアクション](tutorial-create-telemetry-rules.md)は、アプリケーション内のタスクを自動化するために緊密に連携します。 開発者は、定義されたしきい値を超える温度などのデバイス テレメトリに基づいてルールを定義できます。 Azure IoT Central は、ストリーム プロセッサを使用して、ルールの条件がいつ満たされるかを判定します。 ルールの条件が満たされると、開発者によって定義されたアクションがトリガーされます。 たとえば、アクションは、デバイス内の温度が高すぎることをエンジニアに通知するために電子メールを送信できます。
 
 ## <a name="metadata-management"></a>メタデータ管理
 
 Azure IoT Central アプリケーションでは、デバイス テンプレートによって各種のデバイスの動作や機能が定義されます。 たとえば、冷蔵庫デバイス テンプレートは、冷蔵庫がアプリケーションに送信するテレメトリを指定します。
 
-![テンプレートのアーキテクチャ](media/concepts-architecture/template_architecture.png)
+![テンプレートのアーキテクチャ](media/concepts-architecture/template-architecture.png)
 
-デバイス テンプレートでは、次のことが可能です。
+IoT Central アプリケーションのデバイス テンプレートには、次のものが含まれます。
 
-- **[Measurements] (測定)** は、デバイスがアプリケーションに送信するテレメトリを指定します。
-- **[設定]** は、オペレーターが設定できる構成を指定します。
-- **[プロパティ]** は、オペレーターが設定できるメタデータを指定します。
-- **[ルール]** は、デバイスから送信されたデータに基づいてアプリケーションの動作を自動化します。
-- **[ダッシュボード]** は、アプリケーション内のデバイスのカスタマイズ可能なビューです。
+- **デバイス機能モデル**では、デバイスの機能 (送信するテレメトリ、デバイスの状態を定義するプロパティ、デバイスが応答するコマンドなど) を指定します。 デバイスの機能は、1つ以上のインターフェイスに編成されています。 デバイス機能モデルの詳細については、[IoT プラグ アンド プレイ (プレビュー)](../../iot-pnp/overview-iot-plug-and-play.md) に関するドキュメントを参照してください。
+- **クラウド プロパティ**では、IoT Central がデバイス用に格納するプロパティを指定します。 これらのプロパティは IoT Central にのみ格納され、デバイスに送信されることはありません。
+- **ビュー**では、オペレーターがデバイスを監視および管理できるように、ビルダーが作成するダッシュボードとフォームを指定します。
+- **カスタマイズ**により、ビルダーはデバイス機能モデルの定義の一部をオーバーライドして、IoT Central アプリケーションに対する関連性を高めることができます。
 
 アプリケーションには、各デバイス テンプレートに基づいて 1 つ以上のシミュレートされた実デバイスを割り当てることができます。
 
 ## <a name="data-export"></a>データのエクスポート
 
-Azure IoT Central アプリケーションでは、自分の Azure イベント ハブ、Azure Service Bus、Azure Blob Storage インスタンスに[データを継続的にエクスポート](howto-export-data-event-hubs-service-bus.md)できます。 IoT Central では、測定、デバイス、デバイス テンプレートをエクスポートできます。
+Azure IoT Central アプリケーションでは、独自の Azure Event Hubs と Azure Service Bus のインスタンスに[データを継続的にエクスポート](howto-export-data.md)できます。 また、データをご自分の Azure BLOB ストレージ アカウントに定期的にエクスポートすることもできます。 IoT Central では、測定、デバイス、デバイス テンプレートをエクスポートできます。
 
 ## <a name="batch-device-updates"></a>デバイスの一括更新
 
@@ -91,9 +152,9 @@ Azure IoT Central アプリケーションでは、接続されたデバイス�
 
 ## <a name="role-based-access-control-rbac"></a>ロール ベースのアクセス制御 (RBAC)
 
-管理者は、事前に定義されたロールを使用して Azure IoT Central アプリケーションに対する[アクセス ルールを定義できます](howto-administer.md)。 管理者は、ユーザーがアプリケーションのどの領域にアクセスできるかを決定するロールにユーザーを割り当てることができます。
+事前定義済みロールの 1 つを使用して、あるいはカスタム ロールを作成することで、Azure IoT Central アプリケーションの[アクセス ルールを管理者は定義できます](howto-manage-users-roles.md)。 ユーザーにアクセスが許可されるアプリケーションの領域とユーザーが実行できるアクションがロールにより決定されます。
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 
 Azure IoT Central 内のセキュリティ機能には、次のものがあります。
 
@@ -109,6 +170,6 @@ UI シェルは、最新の、応答性に優れた、HTML5 ブラウザー ベ�
 
 オペレーターは、パーソナライズされたアプリケーション ダッシュボードを作成できます。 別のデータを表示する複数のダッシュボードを持っておいて切り替えることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-ここでは、Azure IoT Central のアーキテクチャについて学習しました。推奨される次の手順は、Azure IoT Central での[デバイス接続](concepts-connectivity.md)の学習です。
+ここでは、Azure IoT Central のアーキテクチャについて学習しました。推奨される次の手順は、Azure IoT Central での[デバイス接続](concepts-get-connected.md)の学習です。

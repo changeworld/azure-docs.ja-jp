@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:VMware CloudSimple サービスを作成する
-titleSuffix: Azure VMware Solution by CloudSimple
-description: CloudSimple サービスの作成方法、ノードの購入方法、ノードの予約法について説明します。
+title: Azure VMware Solutions (AVS) のクイックスタート - サービスの作成
+description: AVS サービスの作成方法、ノードの購入方法、ノードの予約方法について説明します
+titleSuffix: Azure VMware Solutions (AVS)
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/16/2019
@@ -9,51 +9,51 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8ca8c5cacd2b1a1a7b4f70615831d2901510045e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e7eb414e51ca38f524ab83bfb51f80f771524287
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452376"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024434"
 ---
-# <a name="quickstart---create-azure-vmware-solution-by-cloudsimple-service"></a>クイック スタート - CloudSimple サービスによる Azure VMware ソリューションの作成
+# <a name="quickstart---create-azure-vmware-solutions-avs-service"></a>クイックスタート - Azure VMware Solutions (AVS) の作成
 
-始めに、Azure ポータルで CloudSimple によって Azure VMware ソリューションを作成します。
+開始するには、Azure portal で Azure VMware Solutions (AVS) を作成します。
 
-## <a name="vmware-solution-by-cloudsimple---service-overview"></a>CloudSimple による VMware ソリューション - サービス概要
+## <a name="vmware-solutions-avs---service-overview"></a>VMware Solutions (AVS) - サービスの概要
 
-Azure VMware Solution by CloudSimple は、CloudSimple サービスを通じて利用できます。  このサービスを作成すると、ノードをプロビジョニングしたり、ノードを予約したり、プライベート クラウドを作成したりできます。  CloudSimple サービスが使用可能な各 Azure 領域に、CloudSimple サービスを追加します。  このサービスでは、Azure VMware Solution by CloudSimple のエッジ ネットワークが定義されます。  このエッジ ネットワークは、VPN、ExpressRoute、およびプライベート クラウドへのインターネット接続性などのサービスに使用されます。
+Azure VMware Solution by AVS は、AVS サービスを通じて利用できます。 このサービスを作成すると、ノードをプロビジョニングしたり、ノードを予約したり、AVS プライベート クラウドを作成したりすることができます。 AVS サービスを利用できる各 Azure リージョンに、AVS サービスを追加します。 このサービスでは、Azure VMware Solution by AVS のエッジ ネットワークが定義されます。 このエッジ ネットワークは、VPN、ExpressRoute、AVS プライベート クラウドへのインターネット接続を含むサービスに使用されます。
 
-CloudSimple サービスを追加するには、ゲートウェイ サブネットを作成する必要があります。 ゲートウェイ サブネットはエッジ ネットワークを作成するときに使用し、/28 CIDR ブロックを必要とします。 ゲートウェイ サブネットのアドレス空間は一意である必要があります。 これは、オンプレミス ネットワークのアドレス空間や Azure の仮想ネットワーク アドレス空間と重複できません。
+AVS サービスを追加するには、ゲートウェイ サブネットを作成する必要があります。 ゲートウェイ サブネットはエッジ ネットワークを作成するときに使用し、/28 CIDR ブロックを必要とします。 ゲートウェイ サブネットのアドレス空間は一意である必要があります。 これは、オンプレミス ネットワークのアドレス空間や Azure の仮想ネットワーク アドレス空間と重複できません。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-ゲートウェイ サブネットに /28 CIDR ブロックを割り当てます。  CloudSimple サービスごとに、その作成先のリージョンに固有のゲートウェイ サブネットが必要となります。 ゲートウェイ サブネットは、CloudSimple エッジ ネットワーク サービスによって Azure VMware ソリューションで使用され、/28 CIDR ブロックが必要です。 ゲートウェイ サブネットのアドレス空間は一意である必要があります。 CloudSimple 環境と通信するネットワークと重複しないようにしてください。  CloudSimple と通信するネットワークとしては、オンプレミスのネットワークや Azure Virtual Network があります。
+ゲートウェイ サブネットに /28 CIDR ブロックを割り当てます。 AVS サービスごとに、その作成先のリージョンに固有のゲートウェイ サブネットが必要となります。 ゲートウェイ サブネットは、Azure VMware Solution by AVS エッジ ネットワーク サービスで使用され、/28 CIDR ブロックが必要です。 ゲートウェイ サブネットのアドレス空間は一意である必要があります。 AVS 環境と通信するネットワークと重複しないようにしてください。 AVS と通信するネットワークには、オンプレミスのネットワークや Azure Virtual Networks があります。
 
 [ネットワークの前提条件](cloudsimple-network-checklist.md)を確認してください。 
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
 ## <a name="create-the-service"></a>サービスの作成
 
 1. **[すべてのサービス]** を選択します。
-2. **CloudSimple サービス**を検索します。
+2. **AVS サービス**を検索します。
 
-    ![CloudSimple サービスを検索します。](media/create-cloudsimple-service-search.png)
+    ![AVS サービスの検索](media/create-cloudsimple-service-search.png)
 
-3. **CloudSimple サービス**を選択します。
+3. **[AVS Services]\(AVS サービス\)** を選択します。
 4. 新しいサービスを作成するには、**Add** (追加) をクリックします。
 
-    ![CloudSimple サービスを追加します。](media/create-cloudsimple-service-add.png)
+    ![AVS サービスの追加](media/create-cloudsimple-service-add.png)
 
-5. CloudSimple サービスを作成するサブスクリプションを選択します。
+5. AVS サービスを作成するサブスクリプションを選択します。
 6. サービスのリソース グループを選択します。 リソース グループを新規に追加するには、 **[Create New]** (新規作成) をクリックします。
 7. サービスを識別する名前を入力します。
-8. サービス ゲートウェイの CIDR を入力します。 オンプレミス サブネット、オンプレミス サブネット、Azure サブネット、または計画上の CloudSimple サブネットと重複しないサブネットを/28 サブネットに指定します。 サービスを作成した後は、CIDR を変更できません。
+8. サービス ゲートウェイの CIDR を入力します。 オンプレミス サブネット、Azure サブネット、計画された AVS サブネットのいずれとも重複しない /28 サブネットを指定します。 サービスを作成した後は、CIDR を変更できません。
 
-    ![CloudSimple サービスの作成](media/create-cloudsimple-service.png)
+    ![AVS サービスの作成](media/create-cloudsimple-service.png)
 
 9. **[OK]** をクリックします。
 
@@ -61,19 +61,19 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ## <a name="provision-nodes"></a>ノードをプロビジョニングする
 
-CloudSimple プライベート クラウド環境に従量課金制の容量をセットアップするには、まず、Azure portal 内のノードをプロビジョニングします。
+AVS プライベート クラウド環境に従量課金制の容量を設定するには、まず、Azure portal 内のノードをプロビジョニングします。
 
 1. **[すべてのサービス]** を選択します。
-2. **CloudSimple ノード** を検索します。
+2. **AVS ノード**を検索します。
 
-    ![CloudSimple ノードを検索します。](media/create-cloudsimple-node-search.png)
+    ![AVS ノードの検索](media/create-cloudsimple-node-search.png)
 
-3. **CloudSimple ノード** を選択します。
+3. **[AVS Nodes]\(AVS ノード\)** を選択します。
 4. **[追加]** をクリックして、ノードを作成します。
 
-    ![CloudSimple ノードを追加します。](media/create-cloudsimple-node-add.png)
+    ![AVS ノードの追加](media/create-cloudsimple-node-add.png)
 
-5. CloudSimple ノードをプロビジョニングするサブスクリプションを選択します。
+5. AVS ノードをプロビジョニングするサブスクリプションを選択します。
 6. ノードのリソース グループを選択します。 リソース グループを新規に追加するには、 **[Create New]** (新規作成) をクリックします。
 7. ノードを識別するためにプレフィックスを入力します。
 8. ノード リソースの場所を選択します。
@@ -86,5 +86,5 @@ CloudSimple プライベート クラウド環境に従量課金制の容量を�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [プライベート クラウドを作成し、環境を構成します。](quickstart-create-private-cloud.md)
-* [CloudSimple サービス](https://docs.azure.cloudsimple.com/cloudsimple-service)について説明します。
+* [AVS プライベート クラウドを作成して環境を構成する](quickstart-create-private-cloud.md)
+* [AVS サービス](https://docs.azure.cloudsimple.com/cloudsimple-service)について詳しく確認する

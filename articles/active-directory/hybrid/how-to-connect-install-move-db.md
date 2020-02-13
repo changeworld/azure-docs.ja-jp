@@ -11,12 +11,12 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ae0e87fddabee9f42cbb5506dce4cd7a5f4f082
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 742bc307c90ad58b83b7d4c92f9546b87c163c3b
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64918850"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019283"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Azure AD Connect データベースを SQL Server Express から SQL Server に移動する 
 
@@ -31,12 +31,12 @@ ms.locfileid: "64918850"
 次の手順を使用して、Azure AD Connect データベースをリモート SQL Server に移動します。
 
 1. Azure AD Connect サーバーで **[サービス]** に移動し、**Microsoft Azure AD Sync** サービスを停止します。
-2. **%Program Files%\Microsoft Azure AD Sync/Data/** フォルダーを見つけて、**ADSync.mdf** ファイルと **ADSync_log.ldf** ファイルをリモート SQL Server にコピーします。
+2. **%ProgramFiles%\Microsoft Azure AD Sync\Data** フォルダーを見つけて、**ADSync.mdf** ファイルと **ADSync_log.ldf** ファイルをリモート SQL Server にコピーします。
 3. Azure AD Connect サーバーで **Microsoft Azure AD Sync** サービスを再起動します。
 4. [コントロール パネル] -- [プログラム] -- [プログラムと機能] に移動して、Azure AD Connect をアンインストールします。  Microsoft Azure AD Connect を選択し、上部の [アンインストール] をクリックします。
 5. リモート SQL サーバーで、SQL Server Management Studio を開きます。
 6. [データベース] を右クリックし、[Attach]\(アタッチ\) を選択します。
-7. **[Attach Databases]\(データベースのアタッチ\)** 画面で、 **[追加]** をクリックし、ADSync.mdf ファイルに移動します。  Click **OK**.
+7. **[Attach Databases]\(データベースのアタッチ\)** 画面で、 **[追加]** をクリックし、ADSync.mdf ファイルに移動します。  **[OK]** をクリックします。
    ![データベースのアタッチ](media/how-to-connect-install-move-db/move2.png)
 
 8. データベースがアタッチされたら、Azure AD Connect サーバーに戻り、Azure AD Connect をインストールします。
@@ -46,11 +46,11 @@ ms.locfileid: "64918850"
     ![PowerShell](./media/how-to-connect-install-move-db/db2.png)
 11. [Azure AD Connect へようこそ] 画面が表示されます。 ライセンス条項とプライバシーに関する声明に同意したら、 **[続行]** をクリックします。
     ![ようこそ](./media/how-to-connect-install-move-db/db3.png)
-12. **[必須コンポーネントのインストール]** 画面で **[既存の SQL Server を使用する]** オプションをオンにします。 ADSync データベースをホストしている SQL サーバーの名前を指定します。 ADSync データベースのホストに使用されている SQL エンジン インスタンスが SQL サーバーで既定のインスタンスではない場合、SQL エンジン インスタンス名を指定する必要があります。 さらに、SQL の参照が有効ではない場合、SQL エンジン インスタンスのポート番号も指定する必要があります。 例:         
+12. **[必須コンポーネントのインストール]** 画面で **[既存の SQL Server を使用する]** オプションをオンにします。 ADSync データベースをホストしている SQL サーバーの名前を指定します。 ADSync データベースのホストに使用されている SQL エンジン インスタンスが SQL サーバーで既定のインスタンスではない場合、SQL エンジン インスタンス名を指定する必要があります。 さらに、SQL の参照が有効ではない場合、SQL エンジン インスタンスのポート番号も指定する必要があります。 次に例を示します。         
     ![ようこそ](./media/how-to-connect-install-move-db/db4.png)           
 
 13. **[Azure AD に接続]** 画面で、Azure AD ディレクトリのグローバル管理者の資格情報を指定する必要があります。 既定の onmicrosoft.com ドメインでアカウントを使用することをお勧めします。 このアカウントは、Azure AD のサービス アカウントを作成するためにのみ使用され、ウィザードが完了した後は使用されません。
-    ![接続](./media/how-to-connect-install-move-db/db5.png)
+    ![のインスタンスに接続するときには、](./media/how-to-connect-install-move-db/db5.png)
  
 14. **[ディレクトリの接続]** 画面では、ディレクトリ同期に構成されている既存の AD フォレストは、赤色の×アイコンで表示されます。 オンプレミスの AD フォレストの変更を同期するには、AD DS アカウントが必要です。 Azure AD Connect ウィザードでは、ADSync データベースに格納されている AD DS アカウントの資格情報を取得できません。これは、資格情報が暗号化され、復号には前の Azure AD Connect サーバーが必要なためです。 **[資格情報の変更]** をクリックして、AD フォレストの AD DS アカウントを指定します。
     ![Directories](./media/how-to-connect-install-move-db/db6.png)
@@ -70,7 +70,7 @@ ms.locfileid: "64918850"
  
 18. インストールが完了すると、Azure AD Connect サーバーがステージング モードで自動的に有効になります。 ステージング モードを無効にする前に、予期しない変更に備えてサーバー構成と保留中のエクスポートを確認することをお勧めします。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。
 - [既存の ADSync データベースを使用して Azure AD Connect をインストールする](how-to-connect-install-existing-database.md)

@@ -6,13 +6,13 @@ ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 71dc37fc000b2f195478e06f7e755fa8df926444
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 472fe621fc7a95317f143ef96a1d7f8b5adfe581
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688287"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016971"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>アプリを Azure 仮想ネットワークに統合する
 このドキュメントでは、Azure App Service の仮想ネットワーク統合機能と、それを [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) のアプリで設定する方法について説明します。 [Azure Virtual Network][VNETOverview] (VNet) を使用すると、多くの Azure リソースをインターネットでルーティングできないネットワークに配置できます。  
@@ -31,7 +31,7 @@ VNet 統合機能には、次の 2 つの形式があります。
 
 アプリが同時に使用できる VNet 統合機能の形式は 1 つだけです。 そのため、どちらの機能を使用すべきかが問題になります。 これらはどちらも多くの目的に使用できます。 ただし、明確な差別化要素を次に示します。
 
-| 問題点  | 解決策 | 
+| 問題  | 解決策 | 
 |----------|----------|
 | 同じリージョン内の RFC 1918 アドレス (10.0.0.0/8、172.16.0.0/12、192.168.0.0/16) に到達する必要がある | リージョン Vnet 統合 |
 | クラシック VNet または別のリージョン内の VNet にあるリソースに到達する必要がある | ゲートウェイが必要な Vnet 統合 |
@@ -74,7 +74,7 @@ Vnet 統合がアプリと同じリージョン内の VNet で使用される場
 * RFC 1918 の範囲にあるアドレスにのみ到達できます。 これらは、10.0.0.0/8、172.16.0.0/12、192.168.0.0/16 アドレス ブロック内のアドレスです。
 * グローバル ピアリング接続にまたがるリソースには到達できません。
 * アプリから VNet に来るトラフィックに関するルートは設定できません。
-* この機能は、PremiumV2 の App Service プランをサポートする新しい App Service スケール ユニットからのみ使用できます。
+* この機能は、PremiumV2 の App Service プランをサポートする新しい App Service スケール ユニットからのみ使用できます。 これは、アプリを PremiumV2 SKU で実行しなければならないということではなく、単に PremiumV2 オプションを使用できる App Service プランでアプリを実行する必要があるということに注意してください (これは、この VNet 統合機能も使用可能な新しいスケール ユニットであることを意味します)。
 * 統合サブネットは、1 つの App Service プランでしか使用できません。
 * この機能は、App Service Environment にある Isolated プランのアプリでは使用できません。
 * この機能では、Resource Manager VNet 内に 32 個以上のアドレスを含む /27 である未使用のサブネットが必要です。
@@ -127,7 +127,7 @@ Vnet 統合が有効になっても、アプリは引き続き、通常と同じ
 
 このテクノロジが動作する方法の性質のために、Vnet 統合で使用されるトラフィックは Network Watcher や NSG フロー ログには表示されません。  
 
-## <a name="gateway-required-vnet-integration"></a>ゲートウェイが必要な Vnet 統合 
+## <a name="gateway-required-vnet-integration"></a>ゲートウェイが必要な VNet 統合 
 
 ゲートウェイが必要な Vnet 統合機能の特徴は次のとおりです。
 
@@ -143,7 +143,7 @@ Vnet 統合が有効になっても、アプリは引き続き、通常と同じ
 * ExpressRoute を越えてのリソースへのアクセス 
 * サービス エンドポイントを越えてのリソースへのアクセス 
 
-### <a name="getting-started"></a>使用の開始
+### <a name="getting-started"></a>作業の開始
 
 ここでは、Web アプリを仮想ネットワークに接続する前に考慮する必要がある点について説明します。
 

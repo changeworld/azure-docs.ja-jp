@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: fe0aa662234166249433634ccb45d1931d176319
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4adb38148acc0c18ac73709efbe7628ca9497897
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910483"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988959"
 ---
 # <a name="set-map-style-using-azure-maps-android-sdk"></a>Azure Maps Android SDK を使用したマップ スタイルの設定
 
@@ -59,7 +59,7 @@ ms.locfileid: "75910483"
 
 ## <a name="set-map-style-in-the-activity-class"></a>アクティビティ クラスでのマップ スタイルの設定
 
-マップ スタイルはアクティビティ クラスで設定できます。 次のコード スニペットを **onCreate()** method of your `MainActivity.java` クラスにコピーします。 これによりマップ スタイルは **satellite_road_labels** に設定されます。
+マップ スタイルはアクティビティ クラスで設定できます。 次のコード スニペットを **onCreate()** method of your `MainActivity.java` クラスにコピーします。 このコードによりマップ スタイルは **satellite_road_labels** に設定されます。
 
 ```Java
 mapControl.onReady(map -> {

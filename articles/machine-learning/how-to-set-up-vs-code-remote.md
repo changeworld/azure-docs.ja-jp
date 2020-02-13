@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.author: jmartens
 author: j-martens
 ms.date: 12/09/2019
-ms.openlocfilehash: 27243f47df7da22ab4adda088bdf631c1030dd6c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f5607c5d41a028a20a4658a67a7ce487a75f0d7c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845187"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990353"
 ---
 # <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>VS Code Remote を使用して Azure Machine Learning コンピューティング インスタンス上で対話形式でデバッグする
 
 この記事では、VS Code から**自分のコードを対話形式でデバッグ**できるように、Azure Machine Learning コンピューティング インスタンスに対して Visual Studio Code Remote を設定する方法について説明します。 
 
 > [!NOTE]
-> コンピューティング インスタンスは、**米国中北部**、** 米国東部 2**、**北ヨーロッパ**、または**英国南部**のワークスペースにのみ使用できます。
+> コンピューティング インスタンスは、**米国中北部**、**米国東部 2**、**北ヨーロッパ**、または**英国南部**リージョンのワークスペースでのみ使用できます。他のリージョンは近日中にサポートされる予定です。
 
 + [Azure Machine Learning コンピューティング インスタンス](concept-compute-instance.md)は、データ サイエンティスト向けのクラウドベースのフルマネージド ワークステーションであり、IT 管理者用の管理およびエンタープライズ対応機能を備えています。 
 
@@ -89,7 +89,7 @@ Host azmlci1
 
 ここでは、フィールドに関する詳細の一部を説明します。 
 
-|フィールド|[説明]|
+|フィールド|説明|
 |----|---------|
 |Host|コンピューティング インスタンスの短縮形として何でも好きなものを使用できます |
 |HostName|これはコンピューティング インスタンスの IP アドレスです。 |

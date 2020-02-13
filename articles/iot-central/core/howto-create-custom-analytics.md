@@ -3,24 +3,24 @@ title: カスタム分析を使用して Azure IoT Central を拡張する |Micr
 description: ソリューション開発者は、カスタムの分析と視覚化を実行するために IoT Central アプリケーションを構成します。 このソリューションでは、Azure Databricks を使用します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/23/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 5c22e29e51d9f2fc58720c555b8ad3b03d791db6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7e5e8331509e99a7e556105ff1ea8ca2d0b285e7
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435029"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023839"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Azure Databricks を使用したカスタム分析で Azure IoT Central を拡張する
 
 この攻略ガイドでは、ソリューション開発者が、カスタムの分析と視覚化を使用して IoT Central アプリケーションを拡張する方法を説明します。 この例では、[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) ワークスペースを使用して、IoT Central のテレメトリ ストリームを分析したり、[ボックス プロット](https://wikipedia.org/wiki/Box_plot)などの視覚化を生成したりします。
 
-この攻略ガイドでは、既に[組み込みの分析ツール](howto-create-analytics.md)を使用して実行できることを超えて IoT Central を拡張する方法を示します。
+この攻略ガイドでは、既に[組み込みの分析ツール](./howto-create-custom-analytics.md)を使用して実行できることを超えて IoT Central を拡張する方法を示します。
 
 この攻略ガイドでは、以下の方法について説明します。
 
@@ -37,17 +37,19 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [Azure IoT Central アプリケーション マネージャー](https://aka.ms/iotcentral) Web サイト上で、次の設定を使用して IoT Central アプリケーションを作成します。
 
-| 設定 | 値 |
+| 設定 | Value |
 | ------- | ----- |
-| 支払プラン | 従量課金制 |
-| アプリケーション テンプレート | レガシ アプリケーション |
+| 料金プラン | Standard |
+| アプリケーション テンプレート | ストア内分析 – 条件監視 |
 | アプリケーション名 | 既定値を受け入れるか、独自の名前を選択します |
 | URL | 既定値を受け入れるか、独自の一意の URL プレフィックスを選択します |
 | ディレクトリ | Azure Active Directory テナント |
 | Azure サブスクリプション | お使いの Azure サブスクリプション |
-| リージョン | United States |
+| リージョン | 最も近いリージョン |
 
 この記事の例とスクリーンショットでは、**米国**リージョンを使用します。 近くの場所を選択して、必ずすべてのリソースを同じリージョン内に作成してください。
+
+このアプリケーション テンプレートには、テレメトリを送信する 2 つのシミュレートされたサーモスタット デバイスが含まれます。
 
 ### <a name="resource-group"></a>Resource group
 
@@ -57,7 +59,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 以下の設定を使用して、[Azure portal で Event Hubs 名前空間を作成](https://portal.azure.com/#create/Microsoft.EventHub)します。
 
-| 設定 | 値 |
+| 設定 | Value |
 | ------- | ----- |
 | Name    | 名前空間名を選択します |
 | Pricing tier | Basic |
@@ -70,7 +72,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 以下の設定を使用して、[Azure portal で Azure Databricks サービスを作成](https://portal.azure.com/#create/Microsoft.Databricks)します。
 
-| 設定 | 値 |
+| 設定 | Value |
 | ------- | ----- |
 | ワークスペース名    | ワークスペース名を選択します |
 | サブスクリプション | 該当するサブスクリプション |
@@ -101,20 +103,20 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [Azure IoT Central アプリケーション マネージャー](https://aka.ms/iotcentral) Web サイト上で、Contoso テンプレートから作成した IoT Central アプリケーションに移動します。 このセクションでは、シミュレートされたデバイスからイベント ハブにテレメトリをストリーム配信するようにアプリケーションを構成します。 エクスポートを構成するには、次の手順に従います。
 
-1. **[継続的データ エクスポート]** ページに移動し、 **[+ 新規]** を選択してから、 **[Azure Event Hubs]** を選択します。
+1. **[データのエクスポート]** ページに移動し、 **[+ 新規]** を選択してから、 **[Azure Event Hubs]** を選択します。
 1. 以下の設定を使用してエクスポートを構成してから、 **[保存]** を選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | 表示名 | Event Hubs へのエクスポート |
-    | 有効 | On |
+    | Enabled | On |
     | Event Hubs 名前空間 | Event Hubs 名前空間の名前 |
     | イベント ハブ | centralexport |
     | 測定 | On |
     | デバイス | Off |
     | デバイス テンプレート | Off |
 
-![継続的データ エクスポート構成](media/howto-create-custom-analytics/cde-configuration.png)
+![データ エクスポートの構成](media/howto-create-custom-analytics/cde-configuration.png)
 
 エクスポートの状態が **[実行中]** になるまで待ってから、続行します。
 
@@ -128,11 +130,11 @@ Azure portal で、Azure Databricks サービスに移動し、 **[ワークス�
 
 次の表の情報を使用して、クラスターを作成します。
 
-| 設定 | 値 |
+| 設定 | Value |
 | ------- | ----- |
 | クラスター名 | centralanalysis |
 | クラスター モード | Standard |
-| Databricks Runtime のバージョン | 5.3 (Scala 2.11、Spark 2.4.0) |
+| Databricks Runtime のバージョン | 5.5 LTS (Scala 2.11、Spark 2.4.3) |
 | Python バージョン | 3 |
 | 自動スケールの有効化 | いいえ |
 | 終了するまでの非アクティブ状態の長さ (分) | 30 |
@@ -229,4 +231,4 @@ IoT Central テレメトリを分析および視覚化するための Python コ
 * *継続的データ エクスポート*を使用してテレメトリをストリーム配信します。
 * Azure Databricks 環境を作成してテレメトリ データを分析およびプロットします。
 
-カスタム分析を作成する方法がわかったので、次は [Azure IoT Central データを Power BI ダッシュボードに視覚化する](howto-connect-powerbi.md)方法を学習することをお勧めします。
+カスタム分析の作成方法がわかったところで、次は[アプリケーションの管理](howto-administer.md)方法の習得に進むことをお勧めします。

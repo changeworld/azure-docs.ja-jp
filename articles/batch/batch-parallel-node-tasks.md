@@ -1,10 +1,10 @@
 ---
-title: タスクの並列実行によるコンピューティング リソースの効率的な使用 - Azure Batch | Microsoft Docs
+title: タスクを並列実行し、コンピューティング リソースを最適化する - Azure Batch
 description: Azure Batch プール内の各ノードで同時実行タスクを実行し、使用するコンピューティング ノードの数を減らすことで、効率を高めて、コストを削減します。
 services: batch
 documentationcenter: .net
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: 538a067c-1f6e-44eb-a92b-8d51c33d3e1a
 ms.service: batch
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/17/2019
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2a47cbbf11117197d6d00d532fb0321d284c56b7
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 5465771cb97ef9d8d5c451a6bafc61c4621d3c4b
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026814"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023635"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>タスクの同時実行による Batch コンピューティング ノードの使用率の最大化 
 

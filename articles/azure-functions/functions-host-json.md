@@ -3,18 +3,18 @@ title: Azure Functions 2.x の host.json のリファレンス
 description: Azure Functions の v2 ランタイムの host.json ファイルのリファレンス ドキュメント。
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 782998e49b9af3bf4d2ae5a561faaca399c6809f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3ad3682e301eb98d48372c3955c6ff049422c517
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978807"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024672"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 以降の host.json のリファレンス 
 
 > [!div class="op_single_selector" title1="使用している Azure Functions ランタイムのバージョンを選択します。 "]
 > * [Version 1](functions-host-json-v1.md)
-> * [Version 2](functions-host-json.md)
+> * [バージョン 2 以降](functions-host-json.md)
 
 *host.json* メタデータ ファイルには、関数アプリのすべての関数に影響するグローバル構成オプションが含まれています。 この記事では、Azure Functions ランタイムのバージョン 2.x 移行で使用できる設定を一覧表示しています。  
 
@@ -27,7 +27,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 
 ## <a name="sample-hostjson-file"></a>サンプル host.json ファイル
 
-次のサンプルの *host.json* ファイルには、使用可能なすべてのオプションが指定されています (内部でのみ使用するオプションは除く)。
+バージョン 2.x 以降用の次のサンプルの *host.json* ファイルには、使用可能なすべてのオプションが指定されています (内部でのみ使用するオプションは除く)。
 
 ```json
 {
@@ -74,10 +74,10 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
               "samplingPercentageDecreaseTimeout" : "00:00:01",
               "minSamplingPercentage": 0.1,
               "maxSamplingPercentage": 0.1,
-              "movingAverageRatio": 1.0
+              "movingAverageRatio": 1.0,
+              "excludedTypes" : "Dependency;Event",
+              "includedTypes" : "PageView;Trace"
             },
-            "samplingExcludedTypes" : "Dependency;Event",
-            "samplingIncludedTypes" : "PageView;Trace",
             "enableLiveMetrics": true,
             "enableDependencyTracking": true,
             "enablePerformanceCountersCollection": true,            
@@ -145,15 +145,15 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 
 | プロパティ | Default | 説明 |
 | --------- | --------- | --------- | 
-| samplingSettings | 該当なし | 「[applicationInsights.samplingSettings](#applicationinsightssamplingsettings)」を参照してください。 |
+| samplingSettings | 300 | 「[applicationInsights.samplingSettings](#applicationinsightssamplingsettings)」を参照してください。 |
 | samplingExcludedTypes | null | サンプリングしない型をセミコロンで区切ったリスト。 認識される型は、Dependency、Event、Exception、PageView、Request、Trace です。 指定された型のすべてのインスタンスが転送されます。指定されていない型はサンプリングされます。 |
 | samplingIncludedTypes | null | サンプリングする型をセミコロンで区切ったリスト。空のリストはすべての型を意味します。 `samplingExcludedTypes` にリストされた型は、ここにリストされた型をオーバーライドします。 認識される型は、Dependency、Event、Exception、PageView、Request、Trace です。 指定された型のすべてのインスタンスが転送されます。指定されていない型はサンプリングされます。 |
 | enableLiveMetrics | true | ライブ メトリックの収集を有効にします。 |
 | enableDependencyTracking | true | 依存関係の追跡を有効にします。 |
 | enablePerformanceCountersCollection | true | Kudu パフォーマンス カウンターの収集を有効にします。 |
 | liveMetricsInitializationDelay | 00:00:15 | 内部使用専用です。 |
-| httpAutoCollectionOptions | 該当なし | 「[applicationInsights.httpAutoCollectionOptions](#applicationinsightshttpautocollectionoptions)」を参照してください。 |
-| snapshotConfiguration | 該当なし | 「[applicationInsights.snapshotConfiguration](#applicationinsightssnapshotconfiguration)」を参照してください。 |
+| httpAutoCollectionOptions | 300 | 「[applicationInsights.httpAutoCollectionOptions](#applicationinsightshttpautocollectionoptions)」を参照してください。 |
+| snapshotConfiguration | 300 | 「[applicationInsights.snapshotConfiguration](#applicationinsightssnapshotconfiguration)」を参照してください。 |
 
 ### <a name="applicationinsightssamplingsettings"></a>applicationInsights.samplingSettings
 
@@ -303,9 +303,9 @@ Application Insights など、関数アプリのログの動作を制御しま�
 |プロパティ  |Default | 説明 |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|どのレベルでファイルのログ記録を有効にするかを定義します。  オプションは、`never`、`always`、`debugOnly` です。 |
-|logLevel|該当なし|アプリ内の関数に対するログ カテゴリのフィルター処理を定義するオブジェクト。 バージョン 2.x 以降のログ カテゴリのフィルター処理は、ASP.NET Core のレイアウトに従います。 この設定により、特定の関数についてログをフィルター処理できます。 詳しくは、ASP.NET Core のドキュメントの「[ログのフィルター処理](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)」をご覧ください。 |
-|console|該当なし| [console](#console) ログ記録の設定。 |
-|applicationInsights|該当なし| [applicationInsights](#applicationinsights) の設定。 |
+|logLevel|300|アプリ内の関数に対するログ カテゴリのフィルター処理を定義するオブジェクト。 バージョン 2.x 以降のログ カテゴリのフィルター処理は、ASP.NET Core のレイアウトに従います。 この設定により、特定の関数についてログをフィルター処理できます。 詳しくは、ASP.NET Core のドキュメントの「[ログのフィルター処理](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)」をご覧ください。 |
+|console|300| [console](#console) ログ記録の設定。 |
+|applicationInsights|300| [applicationInsights](#applicationinsights) の設定。 |
 
 ## <a name="console"></a>console
 
@@ -373,11 +373,11 @@ Application Insights など、関数アプリのログの動作を制御しま�
 |listenerLockPeriod|00:01:00|リスナーのロックの取得期間。| 
 |listenerLockRecoveryPollingInterval|00:01:00|スタートアップ時にリスナーのロックを獲得できなかった場合に、リスナーのロックの回復に使用される時間間隔。| 
 |lockAcquisitionTimeout|00:01:00|ランタイムがロックの獲得を試行する最長時間。| 
-|lockAcquisitionPollingInterval|該当なし|ロックの獲得の試行間隔。| 
+|lockAcquisitionPollingInterval|300|ロックの獲得の試行間隔。| 
 
 ## <a name="version"></a>version
 
-v2 ランタイムを対象とする関数アプリでは、バージョン文字列 `"version": "2.0"` が必要です。
+この値は、host. json のスキーマ バージョンを示します。 v2 ランタイム、またはそれ以降のバージョンを対象とする関数アプリでは、バージョン文字列 `"version": "2.0"` が必要です。 v2 と v3 間での host.json スキーマの変更はありません。
 
 ## <a name="watchdirectories"></a>watchDirectories
 

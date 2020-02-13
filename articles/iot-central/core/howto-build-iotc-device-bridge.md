@@ -8,12 +8,12 @@ ms.author: viviali
 ms.date: 07/09/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: c98574bc3447482429d7a028c6b47197e08e2e38
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b79020b4da08eeade0af885b4a6ca9f01c81c526
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72942824"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023210"
 ---
 # <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>IoT Central デバイス ブリッジを構築して他の IoT クラウドを IoT Central に接続する
 
@@ -22,7 +22,7 @@ ms.locfileid: "72942824"
 IoT Central デバイス ブリッジは、Sigfox、Particle、The Things Network などの他のクラウドを IoT Central アプリに接続するオープン ソース ソリューションです。 Sigfox の LPWAN (Low-Power-Wide Area Network: 低消費電力広域通信網) に接続された資産追跡デバイスや Particle Device Cloud の大気監視デバイス、TTN の土壌水分監視デバイスなど、どのようなデバイスを使用している場合でも、IoT Central デバイス ブリッジを使用して、IoT Central のパワーを直接利用できます。 デバイス ブリッジでは、IoT Central アプリを通じて他のクラウドに送信されるデバイスのデータを転送 るすることによって、他の IoT クラウドを IoT Central に接続します。 IoT Central アプリでは、データに対する規則の作成と分析の実行、Microsoft Flow と Azure Logic Apps でのワークフローの作成、データのエクスポートなどを実行できます。 GitHub から [IoT Central デバイス ブリッジ](https://aka.ms/iotcentralgithubdevicebridge)を取得してください。
 
 ## <a name="what-is-it-and-how-does-it-work"></a>その概要とそのしくみ
-IoT Central デバイス ブリッジは、GitHub のオープン ソース ソリューションです。 カスタム Azure Resource Manager テンプレートといくつかの Azure リソースを Azure サブスクリプションにデプロイする [Deploy to Azure (Azure へのデプロイ)] ボタンが用意されています。 リソースには次のものがあります。
+IoT Central デバイス ブリッジは、GitHub のオープン ソース ソリューションです。 カスタム Azure Resource Manager テンプレートといくつかの Azure リソースを Azure サブスクリプションにデプロイする [Deploy to Azure]\(Azure へのデプロイ\) ボタンが用意されています。 リソースには次のものがあります。
 -   Azure 関数アプリ
 -   Azure Storage アカウント
 -   従量課金プラン
@@ -41,7 +41,7 @@ IoT Central アプリで、転送されたメッセージ内のデバイス ID �
 ## <a name="pricing"></a>価格
 Azure リソースは Azure サブスクリプションで提供されます。 価格に関する詳細については、[README ファイル](https://aka.ms/iotcentralgithubdevicebridge)をお読みください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ここでは、IoT Central デバイス ブリッジを構築する方法について説明しました。推奨される次の手順は以下のとおりです。
 
 > [!div class="nextstepaction"]

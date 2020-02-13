@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 3f3604205d4aedffdda128ec4a6b895786245e56
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: e8d0f446442db6eeb0aec38efcc69bdf09c9b56f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772026"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990710"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure Migrate アプライアンスと検出のトラブルシューティング
 
@@ -39,14 +39,7 @@ ms.locfileid: "76772026"
 これは、アプライアンス マシンがプロキシの内側にある場合に発生する可能性があります。
 
 - プロキシに承認資格情報が必要な場合は、それを提供します。
-- URL ベースのファイアウォール プロキシを使用して送信接続を制御している場合は、以下の URL を許可リストに追加します。
-
-    - [VMware 評価のための URL](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
-    - [Hyper-V 評価のための URL](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)
-    - [VMware のエージェントレスの移行のための URL](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
-    - [VMware のエージェント ベースの移行のための URL](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
-    - [Hyper-V の移行のための URL](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)
-
+- URL ベースのファイアウォール プロキシを使用して送信接続を制御している場合は、[以下の URL](migrate-appliance.md#url-access) を許可リストに追加します。
 - インターネットへの接続にインターセプト プロキシを使用している場合は、[こちらの手順](https://docs.microsoft.com/azure/migrate/concepts-collector)を使用して、プロキシの証明書をアプライアンス VM にインポートします。
 
 ##  <a name="datetime-synchronization-error"></a>日付と時刻の同期エラー

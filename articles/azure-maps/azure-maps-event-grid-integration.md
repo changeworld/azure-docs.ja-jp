@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9a946d189706c9c789ab884670d13b0b3e7fcb0c
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: a89983a9ae45f21deb7a823de049373b4ff9b935
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911808"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989061"
 ---
 # <a name="react-to-azure-maps-events-by-using-event-grid"></a>Event Grid を使用して Azure Maps イベントに反応する 
 
-他のサービスにイベント通知を送信して、ダウンストリームのプロセスをトリガーできるように、Azure Maps は Azure Event Grid と統合します。 この記事では、信頼性が高く、スケーラブルで、安全な方法により、重大なイベントに対応できるよう、Azure Maps のイベントをリッスンするようにビジネス アプリケーションを構成する方法を説明します。 たとえば、デバイスがジオフェンスに入るたびに、データベースの更新、チケットの作成、メール通知の配信などの複数のアクションを実行するアプリケーションを構築します。
+Azure Maps は Azure Event Grid と統合されているため、ユーザーは他のサービスにイベント通知を送信して、ダウンストリームのプロセスをトリガーすることができます。 この記事の目的は、ご利用のビジネス アプリケーションを構成して Azure Maps イベントをリッスンできるようにすることです。 このサービスを使用すると、信頼性が高く、スケーラブルで安全な方法で重要なイベントに対応することができます。 たとえば、ユーザーは、デバイスがジオフェンスに入るたびに、データベースの更新、チケットの作成、電子メール通知の配信を実行するアプリケーションを構築できます。
 
-Azure Event Grid は、パブリッシュ - サブスクライブ モデルを使用する、フル マネージドのイベント ルーティング サービスです。 Event Grid は、[Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) や [Azure Logic Apps](https://docs.microsoft.com/azure/azure-functions/functions-overview) などの Azure s サービスの組み込みサポートを備えており、webhook を使って Azure 以外のサービスにイベント アラートを配信できます。 Event Grid がサポートするイベント ハンドラーの完全な一覧については、「[Azure Event Grid の概要](https://docs.microsoft.com/azure/event-grid/overview)」をご覧ください。
+Azure Event Grid は、発行 - サブスクライブ モデルを使用する、フル マネージドのイベント ルーティング サービスです。 Event Grid には、[Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) や [Azure Logic Apps](https://docs.microsoft.com/azure/azure-functions/functions-overview) のような Azure サービスのサポートが組み込まれています。 また、Webhook を使用することで、Azure 以外のサービスにイベント アラートを配信することもできます。 Event Grid がサポートするイベント ハンドラーの完全な一覧については、「[Azure Event Grid の概要](https://docs.microsoft.com/azure/event-grid/overview)」をご覧ください。
 
 
 ![Azure Event Grid の機能モデル](./media/azure-maps-event-grid-integration/azure-event-grid-functional-model.png)
@@ -38,7 +38,7 @@ Event Grid は、[イベント サブスクリプション](https://docs.microso
 
 ## <a name="event-schema"></a>イベント スキーマ
 
-次の例では、GeofenceResult のスキーマを示します
+次の例では、GeofenceResult のスキーマを示します。
 
 ```JSON
 {   

@@ -14,14 +14,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: alsin
-ms.openlocfilehash: 911d86dd7cb03479d9bde49d8fce0f7861e32e27
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: afda502bcd89423ecdd008c0297c85dd8a5b61fb
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980137"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989843"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Azure での Red Hat Enterprise Linux のサブスクリプション持ち込み Gold Image
+
 Red Hat Enterprise Linux (RHEL) イメージは、従量課金制 (PAYG) またはサブスクリプション持ち込み (Red Hat Gold Image) モデルを使用して Azure で利用できます。 このドキュメントでは、Azure の Red Hat Gold Image イメージの概要について説明します。
 
 ## <a name="important-points-to-consider"></a>考慮すべき重要な点
@@ -170,25 +171,41 @@ Cloud Access を有効にする手順が完了すると、Red Hat によって R
     New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
+## <a name="encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images"></a>Red Hat Enterprise Linux のサブスクリプションの持ち込み Gold イメージの暗号化
+
+Red Hat Enterprise Linux のサブスクリプションの持ち込み Gold イメージは [Azure Disk Encryption](../../linux/disk-encryption-overview.md) を利用したセキュリティで保護できます。 ただし、暗号化を有効にする前にサブスクリプションを登録する**必要があります**。  RHEL BYOS Gold イメージの登録の詳細は Red Hat サイトにあります。 「[How to register and subscribe a system to the Red Hat Customer Portal using Red Hat Subscription-Manager](https://access.redhat.com/solutions/253273)」(Red Hat Subscription-Manager を使用し、Red Hat Customer Portal にシステムを登録し、サブスクライブする方法) を参照してください。アクティブな Red Hat サブスクリプションをお持ちの場合は、「[Creating Red Hat Customer Portal Activation Keys](https://access.redhat.com/articles/1378093)」(Red Hat Customer Portal アクティベーション キーを作成する) も参照してください。
+
+[Red Hat カスタム イメージ](/linux/redhat-create-upload-vhd)では、Azure Disk Encryption はサポートされていません。 追加の ADE の要件と前提条件については、[Linux VM 向けの Azure Disk Encryption](../../linux/disk-encryption-overview.md#additional-vm-requirements) に関するページに記載されています。
+
+Azure Disk Encryption の適用手順は「[Linux VM での Azure Disk Encryption シナリオ](../../linux/disk-encryption-linux.md)」や関連記事をご覧ください。  
+
 ## <a name="additional-information"></a>関連情報
-- このプランで有効になっていないサブスクリプションで VM をプロビジョニングしようとすると、次のエラーが表示されます。サブスクリプションを有効にするには、Microsoft または Red Hat に連絡する必要があります。
+
+- このプランで有効になっていないサブスクリプションで VM をプロビジョニングしようとすると、次のエラーが表示されます。
+
     ```
     "Offer with PublisherId: redhat, OfferId: rhel-byos, PlanId: rhel-lvm75 is private and can not be purchased by subscriptionId: GUID"
     ```
+    
+    この場合、Microsoft か Red Hat にお問い合わせいただき、サブスクリプションを有効にしてください。
 
-- RHEL BYOS イメージからスナップショットを作成し、かつ、[共有イメージ ギャラリー](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries)でイメージを発行する場合は、スナップショットの元のソースに一致するプラン情報を指定する必要があります。 たとえば、コマンドは次のようになります (最終行の plan パラメーターに注意してください)。
+- RHEL BYOS イメージのスナップショットを変更し、そのカスタム イメージを [Shared Image Gallery](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries) に公開する場合、スナップショットの元のソースに一致するプラン情報を指定する必要があります。 たとえば、コマンドは次のようになります。
+
     ```azurecli
     az vm create –image \
     "/subscriptions/GUID/resourceGroups/GroupName/providers/Microsoft.Compute/galleries/GalleryName/images/ImageName/versions/1.0.0" \
     -g AnotherGroupName --location EastUS2 -n VMName \
     --plan-publisher redhat --plan-product rhel-byos --plan-name rhel-lvm75
     ```
+    上の最後の行にある plan パラメーターに注意してください。
 
-- RHEL BYOS イメージから VM をプロビジョニングするために Automation を使用している場合は、上に示したような plan パラメーターを指定する必要があります。 たとえば、Terraform を使用している場合は、[plan ブロック](https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html#plan)にプラン情報を指定します。
+    [Azure Disk Encryption](#encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images) はカスタム イメージではサポートされていません。
+
+- RHEL BYOS イメージから VM をプロビジョニングするために Automation を使用している場合、上に示したような plan パラメーターを指定する必要があります。 たとえば、Terraform を使用している場合は、[plan ブロック](https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html#plan)にプラン情報を指定します。
 
 ## <a name="next-steps"></a>次のステップ
-* Cloud Access のステップバイステップ ガイドとプログラムの詳細については、[Red Hat Cloud Access のドキュメント](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)を参照してください。
-* [Azure Red Hat Update Infrastructure](./redhat-rhui.md) の詳細を参照してください。
-* Azure でのすべての Red Hat イメージの詳細については、[ドキュメントのページ](./redhat-images.md)を参照してください。
-* すべてのバージョンの RHEL に対する Red Hat のサポート ポリシーに関する情報は、「[Red Hat Enterprise Linux Life Cycle \(Red Hat Enterprise Linux のライフ サイクル\)](https://access.redhat.com/support/policy/updates/errata)」ページに記載されています。
-* RHEL Gold Image に関するその他のドキュメントについては、[Red Hat のドキュメント](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure)を参照してください。
+- Cloud Access のステップバイステップ ガイドとプログラムの詳細については、[Red Hat Cloud Access のドキュメント](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)を参照してください。
+- [Azure Red Hat Update Infrastructure](./redhat-rhui.md) の詳細を参照してください。
+- Azure でのすべての Red Hat イメージの詳細については、[ドキュメントのページ](./redhat-images.md)を参照してください。
+- すべてのバージョンの RHEL に対する Red Hat のサポート ポリシーに関する情報は、「[Red Hat Enterprise Linux Life Cycle \(Red Hat Enterprise Linux のライフ サイクル\)](https://access.redhat.com/support/policy/updates/errata)」ページに記載されています。
+- RHEL Gold Image に関するその他のドキュメントについては、[Red Hat のドキュメント](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure)を参照してください。

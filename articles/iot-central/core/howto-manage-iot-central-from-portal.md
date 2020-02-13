@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 10/02/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 60c1109d0f540c8301cc536c2079537dca5115f4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 90bccf76b4c98c732cb926bb4252654d20478412
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435026"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018977"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Azure portal で IoT Central を管理する
 
@@ -41,16 +41,10 @@ ms.locfileid: "75435026"
 
 フォームのすべてのフィールドに入力します。 このフォームは、[Azure IoT Central のアプリケーション マネージャー](https://aka.ms/iotcentral) Web サイト上でアプリケーションを作成するために入力するフォームに似ています。 詳細については、クイックスタートの「[Azure IoT Central アプリケーションの作成](quick-deploy-iot-central.md)」をご覧ください。
 
-一般公開されている機能を持つ IoT Central アプリケーションを作成するには、**レガシ アプリケーション**をアプリケーション テンプレートとして選択します。他のすべてのアプリケーション テンプレートでは、パブリック プレビュー機能が使用されます。
-
 ![IoT Central フォームを作成する](media/howto-manage-iot-central-from-portal/image6a.png)
 
-"**場所**" は、アプリケーションを作成する[地域](https://azure.microsoft.com/global-infrastructure/geographies/)です。 通常、最適なパフォーマンスを得るには、ご利用のデバイスに物理的に最も近い場所を選択する必要があります。 現在、Azure IoT Central は、**米国**、**オーストラリア**、**アジア太平洋**、または**ヨーロッパ**で使用できます。  いったん場所を選択すると、後でアプリケーションを別の場所に移動することはできません。
+**場所**は、アプリケーションを作成する[地域](https://azure.microsoft.com/global-infrastructure/geographies/)です。 通常、最適なパフォーマンスを得るには、ご利用のデバイスに物理的に最も近い場所を選択する必要があります。 現在、Azure IoT Central は、**米国**、**オーストラリア**、**アジア太平洋**、または**ヨーロッパ**で使用できます。  いったん場所を選択すると、後でアプリケーションを別の場所に移動することはできません。
 
-> [!NOTE]
-> 現在、プレビュー アプリケーション テンプレートは、**ヨーロッパ**と**米国**のリージョンでのみ利用できます。
-
-![管理ポータル: IoT Central リソースの作成](media/howto-manage-iot-central-from-portal/image1a.png)  
 
 すべてのフィールドに値を入力したら、 **[作成]** を選択します。
 
@@ -59,7 +53,7 @@ ms.locfileid: "75435026"
 Azure IoT Central アプリケーションが既にある場合は、Azure portal でそれを削除したり、別のサブスクリプションまたはリソース グループに移動したりできます。
 
 > [!NOTE]
-> 試用版アプリケーションは、サブスクリプションに関連付けられていないため、Azure portal には表示されません。
+> 無料価格プランで作成されたアプリケーションは、サブスクリプションに関連付けられていないため、Azure portal には表示されません。
 
 開始するには、左側のメイン ウィンドウの **[すべてのリソース]** を選択します。 検索ボックスにアプリケーションの名前を入力し、リソースの一覧でそれを見つけます。 次に、管理する IoT Central アプリケーションを選択します。
 

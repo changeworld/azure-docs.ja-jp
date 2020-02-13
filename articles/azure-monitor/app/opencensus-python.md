@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 87c0b62cec0b61bfc52ec31233ca7c1f947fdd98
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 091cf26a0c18aba0925ad23e61950f8622f6080b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846136"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989520"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Python アプリケーション用に Azure Monitor をセットアップする (プレビュー)
 
@@ -42,7 +42,7 @@ Azure Monitor は、[OpenCensus](https://opencensus.io) との統合により、
    | ------------- |:-------------|:-----|
    | **Name**      | グローバルに一意の値 | 監視しているアプリを識別する名前。 |
    | **リソース グループ**     | myResourceGroup      | Application Insights データをホストする新しいリソース グループの名前 |
-   | **Location** | East US | お近くの場所か、アプリがホストされている場所の近く |
+   | **地域** | East US | お近くの場所か、アプリがホストされている場所の近く |
 
 1. **作成** を選択します。
 
@@ -336,9 +336,9 @@ SDK では 3 つの Azure Monitor エクスポーターを使用して、さま�
         main()
     ```
 
-6. ログにカスタム ディメンションを追加することもできます。 これらは、Azure Monitor に `customDimensions` のキーと値のペアとして表示されます。
+6. また、*extra* キーワード引数内の自分のログ メッセージに、custom_dimensions フィールドを使用してカスタム プロパティを追加することもできます。 これらは、Azure Monitor に `customDimensions` のキーと値のペアとして表示されます。
 > [!NOTE]
-> この機能を使用するには、ディクショナリを引数としてログに渡す必要があります。その他のデータ構造は無視されます。 文字列の書式設定を維持するには、それらをディクショナリに格納し、引数として渡します。
+> この機能が動作するためには、custom_dimensions フィールドにディクショナリを渡す必要があります。 他の型の引数を渡すと、それらはロガーによって無視されます。
 
     ```python
     import logging
@@ -350,7 +350,17 @@ SDK では 3 つの Azure Monitor エクスポーターを使用して、さま�
     logger.addHandler(AzureLogHandler(
         connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
     )
-    logger.warning('action', {'key-1': 'value-1', 'key-2': 'value2'})
+
+    properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
+
+    # Use properties in logging statements
+    logger.warning('action', extra=properties)
+
+    # Use properties in exception logs
+    try:
+        result = 1 / 0  # generate a ZeroDivisionError
+    except Exception:
+    logger.exception('Captured an exception.', extra=properties)
     ```
 
 7. トレース コンテキスト データを使用してログを強化する方法の詳細については、OpenCensus Python [ログの統合](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation)に関するページを参照してください。

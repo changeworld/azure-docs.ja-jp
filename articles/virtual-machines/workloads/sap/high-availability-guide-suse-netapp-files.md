@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/10/2020
+ms.date: 02/03/2020
 ms.author: radeltch
-ms.openlocfilehash: c2d6e3e42c581c255f207af4a5008e2d09c50a7d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 1a413ce55604ef8b5c3219e8de466fcc23d41bac
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887123"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990943"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性
 
@@ -341,7 +341,7 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
    </code></pre>
 
    > [!NOTE]
-   > クラスター ノードのホスト名でダッシュは使用しないでください。 そうしないと、クラスターは機能しません。 これは既知の制限であり、SUSE は修正に取り組んでいます。 修正は、sap-suse-cloud-connector パッケージの修正プログラムとしてリリースされます。
+   > ホスト名にダッシュを使用する場合の既知の問題は、パッケージ **sap-suse-cluster-connector** のバージョン **3.1.1** で修正されています。 ホスト名にダッシュが付いたクラスター ノードを使用している場合は、必ずバージョン 3.1.1 以降のパッケージ sap-suse-cluster-connector を使用してください。 そうしないと、クラスターは機能しません。 
 
    SAP SUSE クラスター コネクタの新しいバージョンをインストールしたことを確認します。 古いものの名前は sap_suse_cluster_connector であり、新しいものの名前は **sap-suse-cluster-connector**です。
 

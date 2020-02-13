@@ -9,12 +9,12 @@ ms.author: mbullwin
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e30c4812ad11d7b39197062da30c90b2d8b1649b
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 9fda3bb0188a2030572ee686ff5a942aca61ea36
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281072"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989979"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights におけるサンプリング
 
@@ -347,12 +347,13 @@ Java SDK では、既定ではどのサンプリングも有効になってい�
 
 ### <a name="configuring-fixed-rate-sampling-for-opencensus-python-applications"></a>OpenCensus Python アプリケーション用の固定レート サンプリングの構成
 
-1. 最新の [OpenCensus Azure Monitor エクスポーター](../../azure-monitor/app/opencensus-python.md)を使用してアプリケーションをインストルメント化します。
+最新の [OpenCensus Azure Monitor エクスポーター](../../azure-monitor/app/opencensus-python.md)を使用してアプリケーションをインストルメント化します。
 
 > [!NOTE]
-> 固定レート サンプリングは、トレース エクスポーターを使用した場合にのみ使用できます。 つまり、受信要求と送信要求のみが、サンプリングを構成できるテレメトリの種類です。
+> メトリック エクスポーターには固定レート サンプリングを利用できません。 つまり、カスタム メトリックは、サンプリングを構成できない唯一のテレメトリということになります。 メトリック エクスポーターからは、それが追跡するあらゆるテレメトリが送信されます。
 
-2. `Tracer` 構成の一部として `sampler` を指定できます。 明示的なサンプラーが指定されていない場合は、既定で `ProbabilitySampler` が使用されます。 `ProbabilitySampler` では、既定で 1/10,000 のレートが使用されます。これは、10,000 の要求のうちの 1 つが Application Insights に送信されることを意味します。 サンプリング レートを指定する場合は、以下を参照してください。
+#### <a name="fixed-rate-sampling-for-tracing"></a>追跡の固定レート サンプリング ####
+`Tracer` 構成の一部として `sampler` を指定できます。 明示的なサンプラーが指定されていない場合は、既定で `ProbabilitySampler` が使用されます。 `ProbabilitySampler` では、既定で 1/10,000 のレートが使用されます。これは、10,000 の要求のうちの 1 つが Application Insights に送信されることを意味します。 サンプリング レートを指定する場合は、以下を参照してください。
 
 サンプリング レートを指定する場合は、サンプリング レートが 0.0 から 1.0 の範囲であるサンプラーを `Tracer` に指定していることを確認します。 サンプリング レート 1.0 は 100% を表します。つまり、すべての要求は Application Insights にテレメトリとして送信されます。
 
@@ -362,6 +363,16 @@ tracer = Tracer(
         instrumentation_key='00000000-0000-0000-0000-000000000000',
     ),
     sampler=ProbabilitySampler(1.0),
+)
+```
+
+#### <a name="fixed-rate-sampling-for-logs"></a>ログの固定レート サンプリング ####
+オプションの引数 `logging_sampling_rate` を変更することで、`AzureLogHandler` の固定レート サンプリングを構成できます。 引数を指定しない場合、1.0 のサンプリング レートが使用されます。 サンプリング レート 1.0 は 100% を表します。つまり、すべての要求は Application Insights にテレメトリとして送信されます。
+
+```python
+exporter = metrics_exporter.new_metrics_exporter(
+    instrumentation_key='00000000-0000-0000-0000-000000000000',
+    logging_sampling_rate=0.5,
 )
 ```
 
@@ -531,7 +542,7 @@ union requests,dependencies,pageViews,browserTimings,exceptions,traces
 
 *常に確認したい頻度の低いイベントがあります。サンプリング モジュールを使わずに確認するにはどうすればよいですか。*
 
-* これを実現する最善の方法は、次に示すように、保持したいテレメトリ項目で `SamplingPercentage` を 100 に設定するカスタムの [TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) を記述することです。 初期化子はテレメトリ プロセッサ (サンプリングを含む) の前に実行されることが保証されるため、これにより、すべてのサンプリング手法ではサンプリングに関する考慮事項からこの項目が確実に無視されます。
+* これを実現する最善の方法は、次に示すように、保持したいテレメトリ項目で `SamplingPercentage` を 100 に設定するカスタムの [TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) を記述することです。 初期化子はテレメトリ プロセッサ (サンプリングを含む) の前に実行されることが保証されるため、これにより、すべてのサンプリング手法ではサンプリングに関する考慮事項からこの項目が確実に無視されます。 ASP.NET SDK、ASP.NET Core SDK、JavaScript SDK、Java SDK では、カスタムのテレメトリ初期化子が利用できます。 たとえば、ASP.NET SDK を使用してテレメトリ初期化子を構成できます。
 
     ```csharp
     public class MyTelemetryInitializer : ITelemetryInitializer

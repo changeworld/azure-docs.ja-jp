@@ -1,21 +1,21 @@
 ---
-title: コンテナー ワークロード - Azure Batch | Microsoft Docs
-description: Azure Batch で コンテナー イメージからアプリケーションを実行する方法について説明します。
+title: コンテナー ワークロード - Azure Batch
+description: Azure Batch でコンテナー イメージからアプリを実行し、スケーリングする方法について説明します。 コンテナー タスクの実行をサポートするコンピューティング ノードのプールを作成します。
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.topic: article
 ms.workload: na
 ms.date: 08/09/2019
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 097ab13ad64477274e756d8e8e93e3614dd1a4e8
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 9e61cab2782abfc808020f627a6dc4efd0e502c1
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029725"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023737"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Azure Batch で コンテナー アプリケーションを実行する
 

@@ -4,12 +4,12 @@ description: Azure Backup サービスを使用して Azure VM のバックア�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 3c4c4341286b7ee4f382192d291e08c83ff64994
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: dd4e9dc199048b3faf3da0cadfdf60bdcb26c5bc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172973"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989690"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure Backup サービスで Azure VM のバックアップを管理する
 
@@ -30,7 +30,7 @@ Azure portal では、Recovery Services コンテナーのダッシュボード�
 
 コンテナー ダッシュボードに VM を表示するには、次の手順を実行します。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. [ハブ] メニューで、 **[参照]** を選択します。 リソース ボックスに「 **Recovery Services**」と入力します。 入力すると、入力内容に基づいて、一覧がフィルター処理されます。 **[Recovery Services コンテナー]** を選択します。
 
     ![Recovery Services コンテナーを作成する](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
@@ -38,32 +38,32 @@ Azure portal では、Recovery Services コンテナーのダッシュボード�
 3. 使いやすいように、コンテナーを右クリックして、 **[ダッシュボードにピン留めする]** を選択します。
 4. コンテナー ダッシュボードを開きます。
 
-    ![コンテナー ダッシュボードと設定ブレードを開く](./media/backup-azure-manage-vms/full-view-rs-vault.png)
+    ![コンテナー ダッシュボードと [設定] ウィンドウを開く](./media/backup-azure-manage-vms/full-view-rs-vault.png)
 
 5. **[バックアップ項目]** タイルで、 **[Azure Virtual Machines]** を選択します。
 
     ![[バックアップ項目] タイルを開く](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-6. **[バックアップ項目]** ブレードでは、保護されている VM の一覧を表示できます。 この例では、コンテナーは 1 つの仮想マシン、demobackup を保護します。  
+6. **[バックアップ項目]** ウィンドウでは、保護されている VM の一覧を表示できます。 この例では、コンテナーは 1 つの仮想マシン、demobackup を保護します。  
 
-    ![[バックアップ項目] ブレードを表示する](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
+    ![[バックアップ項目] ウィンドウを表示する](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
 7. コンテナー項目のダッシュボードでは、バックアップ ポリシーの変更、オンデマンド バックアップの実行、VM の保護の停止と再開、バックアップ データの削除、復旧ポイントの表示、復元の実行を行います。
 
-    ![バックアップ項目のダッシュボードと [設定] ブレード](./media/backup-azure-manage-vms/item-dashboard-settings.png)
+    ![[バックアップ項目] ダッシュボードと [設定] ウィンドウ](./media/backup-azure-manage-vms/item-dashboard-settings.png)
 
 ## <a name="manage-backup-policy-for-a-vm"></a>VM のバックアップ ポリシーを管理する
 
 バックアップ ポリシーを管理するには、次の手順を実行します。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。 コンテナー ダッシュボードを開きます。
+1. [Azure portal](https://portal.azure.com/) にサインインします。 コンテナー ダッシュボードを開きます。
 2. **[バックアップ項目]** タイルで、 **[Azure Virtual Machines]** を選択します。
 
     ![[バックアップ項目] タイルを開く](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-3. **[バックアップ項目]** ブレードでは、保護されている VM と、最新の復元ポイントの時点の最後のバックアップの状態の一覧を表示できます。
+3. **[バックアップ項目]** ウィンドウでは、保護されている VM と、最新の復元ポイントの時点の最後のバックアップの状態の一覧を表示できます。
 
-    ![[バックアップ項目] ブレードを表示する](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
+    ![[バックアップ項目] ウィンドウを表示する](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
 4. コンテナー項目のダッシュボードでは、バックアップ ポリシーを選択できます。
 
@@ -85,8 +85,8 @@ Azure portal では、Recovery Services コンテナーのダッシュボード�
 
     ![[今すぐバックアップ] オプション](./media/backup-azure-manage-vms/backup-now-button.png)
 
-2. **[バックアップの管理の種類]** で、 **[Azure Virtual Machine]** を選択します。 **[バックアップ項目 (Azure Virtual Machin)]** ブレードが表示されます。
-3. VM を選択し、 **[今すぐバックアップ]** を選択してオンデマンド バックアップを作成します。 **[今すぐバックアップ]** ブレードが表示されます。
+2. **[バックアップの管理の種類]** で、 **[Azure Virtual Machine]** を選択します。 **[バックアップ項目 (Azure 仮想マシン)]** ウィンドウが表示されます。
+3. VM を選択し、 **[今すぐバックアップ]** を選択してオンデマンド バックアップを作成します。 **[今すぐバックアップ]** ウィンドウが表示されます。
 4. **[バックアップの保持]** フィールドに、バックアップが保持される日付を指定します。
 
     ![[今すぐバックアップ] のカレンダー](./media/backup-azure-manage-vms/backup-now-check.png)
@@ -128,7 +128,7 @@ VM の保護を停止するには、次の 2 つの方法があります。
 
 ## <a name="resume-protection-of-a-vm"></a>VM の保護を再開する
 
-VM の保護を停止する際に[保護を停止してバックアップ データを保持する](#stop-protection-and-retain-backup-data)オプションを選択した場合は、**バックアップの再開**を使用できます。 このオプションは、[保護を停止してバックアップ データを削除する](#stop-protection-and-delete-backup-data)オプション、または[バックアップ データを削除する](#delete-backup-data)を選択した場合は使用できません。
+VM の保護を停止する際に [[保護を停止してバックアップ データを保持する]](#stop-protection-and-retain-backup-data) オプションを選択した場合は、**バックアップの再開**を使用できます。 このオプションは、[保護を停止してバックアップ データを削除する](#stop-protection-and-delete-backup-data)オプション、または[バックアップ データを削除する](#delete-backup-data)を選択した場合は使用できません。
 
 VM の保護を再開するには、次の手順を実行します。
 
@@ -158,6 +158,8 @@ VM のバックアップ データを削除する方法は 2 つあります。
 
   * 項目のバックアップ データを削除するには、 **[削除]** を選択します。 バックアップ データが削除されたことを示す通知メッセージが表示されます。
 
+ご利用のデータを保護するために、Azure Backup には論理的な削除機能が含まれています。 論理的な削除では、VM のバックアップ (すべての回復ポイント) が削除された後でも、バックアップ データは 14 日間保持されます。 詳細については、[論理的な削除に関するドキュメント](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud)を参照してください。
+
   > [!NOTE]
   > バックアップ データを削除すると、関連付けられている復旧ポイントもすべて削除されます。 特定の復旧ポイントを選択して削除することはできません。
 
@@ -167,7 +169,7 @@ VM のバックアップ データを削除する方法は 2 つあります。
 * ユーザーによって設定されたバックアップおよびアイテム保持ポリシーに準拠しているシステムでは、これらのバックアップ項目はアクティブなままになります。 これらの Azure VM のバックアップ データは、アイテム保持ポリシーに従って保持されます。 期限切れの復旧ポイント (最後の復旧ポイントを除く) は、バックアップ ポリシーで設定されている保持期間の範囲に従ってクリーニングされます。
 * 最後の復旧ポイントは無期限に保持され、ユーザーは該当するバックアップ価格に従って課金されるので、削除リソースのバックアップ項目/データが不要になった場合は、追加コストを回避するため、プライマリ データ ソースが存在しなくなったバックアップ項目を削除することをお勧めします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [VM の設定から Azure VM をバックアップする](backup-azure-vms-first-look-arm.md)方法を確認します。
 * [VM を復元する](backup-azure-arm-restore-vms.md)方法を確認します。

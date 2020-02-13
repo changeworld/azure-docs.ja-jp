@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 630a018c25ac8663fd369c1256e376b8039182c9
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 77b95806c2040e7950e1133fcc4c7bc5e0e2ab53
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910798"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989605"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure Maps の天気の対象範囲
 
@@ -179,7 +179,6 @@ Azure Maps の情報と精度は、すべての国と地域に対して同じレ
 | アフガニスタン                       | ✓ |   |  ✓| 
 | アメリカ領サモア                    | ✓ |   |  ✓| 
 | オーストラリア                         | ✓ | ✓ |  ✓| 
-| アゼルバイジャン                        | ✓ |   |  ✓| 
 | バングラデシュ                        | ✓ |   |  ✓| 
 | ブータン                            | ✓ |   |  ✓| 
 | イギリス領インド洋地域    | ✓ |   |  ✓| 
@@ -247,7 +246,8 @@ Azure Maps の情報と精度は、すべての国と地域に対して同じレ
 | アルバニア                | ✓ |   |  ✓| 
 | アンドラ                | ✓ |   |  ✓| 
 | アルメニア                | ✓ |   |  ✓| 
-| オーストリア                | ✓ | ✓ |  ✓| 
+| オーストリア                | ✓ | ✓ |  ✓|
+| アゼルバイジャン             | ✓ |   |  ✓| 
 | ベラルーシ                | ✓ |   |  ✓| 
 | ベルギー                | ✓ | ✓ |  ✓| 
 | ボスニア・ヘルツェゴビナ | ✓ | ✓ |  ✓| 

@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: c731dae02e9013fc436d6f30d8c8b2ab384968a0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a95b59c6cc0d486c1d4b10f39d0d272dd4b34f54
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453990"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018994"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Azure PowerShell から IoT Central を管理する
 
@@ -57,34 +57,28 @@ New-AzResourceGroup -ResourceGroupName "MyIoTCentralResourceGroup" `
 # Create an IoT Central application
 New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
   -Name "myiotcentralapp" -Subdomain "mysubdomain" `
-  -Sku "S1" -Template "iotc-demo@1.0.0" `
+  -Sku "ST1" -Template "iotc-demo@1.0.0" `
   -DisplayName "My Custom Display Name"
 ```
 
-このスクリプトでは、まずアプリケーション用に米国東部の場所にリソース グループを作成します。 次の表は、**New-AzIotCentralApp** コマンドで使用されるパラメーターの説明です。
+このスクリプトでは、まずアプリケーション用に米国東部リージョンにリソース グループを作成します。 次の表は、**New-AzIotCentralApp** コマンドで使用されるパラメーターの説明です。
 
-|パラメーター         |[説明] |
+|パラメーター         |説明 |
 |------------------|------------|
 |ResourceGroupName |そのアプリケーションを含むリソース グループ。 サブスクリプションにこのリソース グループが既に存在している必要があります。 |
-|Location |既定で、このコマンドレットにはリソース グループの場所が使用されます。 現時点では、IoT Central アプリケーションは、**米国**、**オーストラリア**、**アジア太平洋**、または **ヨーロッパ** の場所で作成できます。  |
+|Location |既定で、このコマンドレットにはリソース グループの場所が使用されます。 現在、IoT Central アプリケーションは、**米国東部**、**米国西部**、**北ヨーロッパ**、または**西ヨーロッパ**のリージョン、あるいは**オーストラリア**または**アジア太平洋**の地域で作成できます。  |
 |Name              |Azure portal 内のアプリケーションの名前。 |
 |Subdomain         |アプリケーションの URL のサブドメイン。 この例では、アプリケーションの URL は https://mysubdomain.azureiotcentral.com です。 |
-|Sku               |現在使用できる値は **S1** (Standard レベル) のみです。 「[Azure IoT Central の価格](https://azure.microsoft.com/pricing/details/iot-central/)」を参照してください。 |
+|Sku               |現在、**ST1** または **ST2** のいずれかを使用できます。 「[Azure IoT Central の価格](https://azure.microsoft.com/pricing/details/iot-central/)」を参照してください。 |
 |Template          | 使用するアプリケーション テンプレート。 詳細については、後の表を参照してください。 |
 |DisplayName       |UI に表示されるアプリケーションの名前。 |
 
-**一般公開されている機能を備えたアプリケーション テンプレート**
+**アプリケーション テンプレート**
 
-| テンプレート名            | [説明] |
+| テンプレート名            | 説明 |
 | ------------------------ | ----------- |
 | iotc-default@1.0.0       | 独自のデバイス テンプレートおよびデバイスにデータを入力するための空のアプリケーションを作成します。
-
-
-**パブリック プレビュー機能を備えたアプリケーション テンプレート**
-
-| テンプレート名            | [説明] |
-| ------------------------ | ----------- |
-| iotc-pnp-preview@1.0.0   | 独自のデバイス テンプレートとデバイスにデータを入力するための空のプラグ アンド プレイ プレビュー アプリケーションを作成します。 |
+| iotc-pnp-preview@1.0.0   | 独自のデバイス テンプレートとデバイスにデータを入力するための空のプラグ アンド プレイ (プレビュー) アプリケーションを作成します。 |
 | iotc-condition@1.0.0     | ストア内分析 (条件監視テンプレート) を含むアプリケーションを作成します。 このテンプレートを使用して、ストア環境に接続して監視します。 |
 | iotc-consumption@1.0.0   | 水消費量監視テンプレートを含むアプリケーションを作成します。 このテンプレートを使用して、水流の監視と制御を行います。 |
 | iotc-distribution@1.0.0  | デジタル配布テンプレートを含むアプリケーションを作成します。 このテンプレートを使用して、主要な資産と作業をデジタル化することで、倉庫からの出荷の効率を向上させます。 |
@@ -96,9 +90,6 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
 | iotc-quality@1.0.0       | 水質監視テンプレートを含むアプリケーションを作成します。 このテンプレートを使用して、水質をデジタルに監視します。|
 | iotc-store@1.0.0         | ストア内分析 (チェックアウト テンプレート) を備えたアプリケーションを作成します。 このテンプレートを使用して、ストア内のチェックアウト フローの監視と管理を行います。 |
 | iotc-waste@1.0.0         | 接続された廃棄物管理テンプレートを含むアプリケーションを作成します。 このテンプレートを使用して、ゴミ箱を監視し、現場作業員を派遣します。 |
-
-> [!NOTE]
-> 現在、プレビュー アプリケーション テンプレートは、**ヨーロッパ**と**米国**のリージョンでのみ利用できます。
 
 ## <a name="view-your-iot-central-applications"></a>IoT Central アプリケーションの表示
 

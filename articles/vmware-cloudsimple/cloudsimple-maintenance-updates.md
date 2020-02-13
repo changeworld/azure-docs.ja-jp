@@ -1,7 +1,7 @@
 ---
-title: CloudSimple のメンテナンスと更新
-titleSuffix: Azure VMware Solution by CloudSimple
-description: 計画したメンテナンスと更新のための CloudSimple サービス プロセスについて説明します
+title: Azure VMware Solutions (AVS) - AVS のメンテナンスと更新
+description: 予定メンテナンスと更新用の AVS サービス プロセスについて説明します
+titleSuffix: Azure VMware Solutions (AVS)
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -9,16 +9,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 826fae1123b355a4143118b53ba649f0939acaf7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bf5937183fc20579ecd21aca8543a0a78d4b9ff3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372825"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025029"
 ---
-# <a name="cloudsimple-maintenance-and-updates"></a>CloudSimple のメンテナンスと更新
+# <a name="avs-maintenance-and-updates"></a>AVS のメンテナンスと更新
 
-プライベート クラウド環境は、単一障害点がないように設計されます。
+AVS プライベート クラウド環境は、単一障害点がないように設計されます。
 
 * ESXi クラスターは vSphere の高可用性 (HA) で構成されます。 クラスターのサイズは、回復性のために予備のノードが少なくとも 1 つ使用するように設定されます。
 * vSAN によって冗長プライマリ ストレージが与えられます。これには、単一障害に対する保護を提供するため、ノードが少なくとも 3 つ必要になります。 vSAN は、大規模なクラスターの回復性を上げるように構成できます。
@@ -26,14 +26,14 @@ ms.locfileid: "75372825"
 * ESXi ホストには、冗長性のあるファンと NIC があります。
 * TOR スイッチとスパイン スイッチは、回復性を確保するよう、HA ペアで構成されます。
 
-CloudSimple は次の VM のアップタイムと可用性を継続的に監視し、可用性 SLA を提供します。
+AVS は次の VM のアップタイムと可用性を継続的に監視し、可用性 SLA を提供します。
 
 * ESXi ホスト
 * vCenter
 * PSC
 * NSX Manager
 
-CloudSimple は次の不具合も継続的に監視します。
+AVS は次の不具合も継続的に監視します。
 
 * ハード ディスク
 * 物理 NIC ポート
@@ -45,7 +45,7 @@ CloudSimple は次の不具合も継続的に監視します。
 
 ディスクまたはノードが故障した場合、影響が出た VMware クラスターに新しいノードが自動的に追加され、正常な状態にすぐに戻されます。
 
-CloudSimple は、プライベート クラウドにある次の VMware 要素のバックアップ、メンテナンス、および更新を実行します。
+AVS は、AVS プライベート クラウドにある次の VMware 要素のバックアップ、メンテナンス、および更新を実行します。
 
 * ESXi
 * vCenter プラットフォーム サービス
@@ -55,7 +55,7 @@ CloudSimple は、プライベート クラウドにある次の VMware 要素�
 
 ## <a name="back-up-and-restore"></a>バックアップと復元
 
-CloudSimple バックアップの内容:
+AVS のバックアップには、次が含まれます。
 
 * vCenter、PSC、DVS ルールの夜間増分バックアップ。
 * アプリケーション層のコンポーネントをバックアップするための vCenter ネイティブ API。
@@ -66,15 +66,15 @@ CloudSimple バックアップの内容:
 
 ## <a name="maintenance"></a>メンテナンス
 
-CloudSimple では、数種類の計画メンテナンスが行われます。
+AVS では、数種類の計画メンテナンスが行われます。
 
 ### <a name="backendinternal-maintenance"></a>バックエンド/内部のメンテナンス
 
-このメンテナンスには通常、物理資産の再構成またはソフトウェア パッチのインストールが含まれます。 修理中の資産の通常利用には影響を与えません。 各物理ラックの冗長 NIC の使用により、通常のネットワーク トラフィックとプライベート クラウドの運用には影響が出ません。 メンテナンス期間中、冗長帯域幅を全部使用することを組織が予想している場合にのみ、パフォーマンスに影響が出るかもしれません。
+このメンテナンスには通常、物理資産の再構成またはソフトウェア パッチのインストールが含まれます。 修理中の資産の通常利用には影響を与えません。 各物理ラックに冗長 NIC があるため、通常のネットワーク トラフィックと AVS プライベート クラウドの運用には影響が出ません。 メンテナンス期間中、冗長帯域幅を全部使用することを組織が予想している場合にのみ、パフォーマンスに影響が出るかもしれません。
 
-### <a name="cloudsimple-portal-maintenance"></a>CloudSimple ポータル メンテナンス
+### <a name="avs-portal-maintenance"></a>AVS ポータル メンテナンス
 
-CloudSimple のコントロール レベルまたはインフラストラクチャが更新されるとき、一部の限られたサービス ダウンタイムが要求されます。 現在のところ、メンテナンス間隔は月 1 回の頻度にできます。 頻度は時間の経過と共に下がると予想されます。 CloudSimple はポータル メンテナンスの通知を行い、間隔を可能な限り短くします。 ポータル メンテナンスの期間中、次のサービスは影響なしで作動し続けます。
+AVS のコントロール プレーンまたはインフラストラクチャの更新時には、いくらかの制限付きのサービス ダウンタイムが必要です。 現在のところ、メンテナンス間隔は月 1 回の頻度にできます。 頻度は時間の経過と共に下がると予想されます。 AVS はポータルのメンテナンスの通知を行い、期間を可能な限り短くします。 ポータル メンテナンスの期間中、次のサービスは影響なしで作動し続けます。
 
 * VMware 管理プレーンとアプリケーション
 * vCenter アクセス
@@ -83,7 +83,7 @@ CloudSimple のコントロール レベルまたはインフラストラクチ�
 
 ### <a name="vmware-infrastructure-maintenance"></a>VMware インフラストラクチャのメンテナンス
 
-VMware インフラストラクチャの構成変更が必要になることがあります。  現在のところ、この間隔は 1-2 か月に 1 回ですが、頻度は時間の経過と共に下がると予想されます。 この種類のメンテナンスは通常、CloudSimple サービスの通常利用を中断することなく実行できます。 VMware メンテナンスの期間中、次のサービスは影響なしで作動し続けます。
+VMware インフラストラクチャの構成変更が必要になることがあります。 現在のところ、この間隔は 1-2 か月に 1 回ですが、頻度は時間の経過と共に下がると予想されます。 この種類のメンテナンスは通常、AVS サービスの通常利用を中断することなく実行できます。 VMware メンテナンスの期間中、次のサービスは影響なしで作動し続けます。
 
 * VMware 管理プレーンとアプリケーション
 * vCenter アクセス
@@ -92,7 +92,7 @@ VMware インフラストラクチャの構成変更が必要になることが�
 
 ## <a name="updates-and-upgrades"></a>更新とアップグレード
 
-CloudSimple は、プライベート クラウド内の VMware ソフトウェア (ESXi、vCenter、PSC、NSX) のライフサイクル管理を担います。
+AVS は、AVS プライベート クラウド内の VMware ソフトウェア (ESXi、vCenter、PSC、NSX) のライフサイクル管理を担います。
 
 ソフトウェア更新の内容:
 
@@ -100,9 +100,9 @@ CloudSimple は、プライベート クラウド内の VMware ソフトウェ�
 * **[Updates]** (更新)。 VMware スタック コンポーネントのマイナー バージョン変更。
 * **アップグレード**。 VMware スタック コンポーネントのメジャー バージョン変更。
 
-CloudSimple は、VMware から重要なセキュリティ パッチが利用できるようになると、直後にそれをテストします。 SLA に基づき、CloudSimple では 1 週間以内にプライベート クラウド環境にセキュリティ パッチがロールアウトされます。
+AVS は、VMware から重要なセキュリティ パッチが利用できるようになると、直ちにそれをテストします。 AVS は 1 週間以内に SLA に基づきプライベート クラウド環境にそのセキュリティ パッチをロールアウトします。
 
-CloudSimple は、VMware ソフトウェア コンポーネントに四半期ごとのメンテナンス更新を提供します。 新しいメジャー バージョンの VMware ソフトウェアが利用できるようになると、CloudSimple は顧客と連携し、アップグレードに適したメンテナンス期間を調整します。
+AVS は、VMware ソフトウェア コンポーネントのメンテナンス更新を四半期ごとに提供します。 VMware ソフトウェアの新しいメジャー バージョンが利用可能になると、AVS は顧客と連携し、アップグレードのためのメンテナンス期間を調整します。
 
 ## <a name="next-steps"></a>次のステップ
 

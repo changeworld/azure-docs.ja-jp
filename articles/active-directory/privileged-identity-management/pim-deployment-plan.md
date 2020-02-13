@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 02/04/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eef096322c8a8cfbf1618447529d46f6fbfd13b1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b8c77b3454026aa309d979bd938674e7c3ae7b6a
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021850"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025998"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management (PIM) をデプロイする
 
@@ -99,7 +99,7 @@ Privileged Identity Management を使用するには、お客様のディレク�
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>利害関係者:Azure AD ロール用の Privileged Identity Management
 
-| 名前 | Role | Action |
+| Name | Role | アクション |
 | --- | --- | --- |
 | 名前とメール | **ID アーキテクトまたは Azure グローバル管理者**<br/>この変更をどのように組織内の主要な ID 管理インフラストラクチャに合わせるかを定義する責任がある、ID 管理チームの代表。 | SO/R/I |
 | 名前とメール | **サービス所有者 / ライン マネージャー**<br/>サービスまたはサービス グループの IT 所有者の代表。 主に決定を下し、チームの Privileged Identity Management のロールアウトを支援します。 | SO/R/I |
@@ -109,7 +109,7 @@ Privileged Identity Management を使用するには、お客様のディレク�
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-resource-roles"></a>利害関係者:Azure リソース ロール用の Privileged Identity Management
 
-| 名前 | Role | Action |
+| Name | Role | アクション |
 | --- | --- | --- |
 | 名前とメール | **サブスクリプション / リソース所有者**<br/>Privileged Identity Management をデプロイする必要がある各サブスクリプションまたはリソースの IT 所有者の代表 | SO/R/I |
 | 名前とメール | **セキュリティ所有者**<br/>計画が組織のセキュリティ要件を満たしていることをサインオフできるセキュリティ チームの代表。 | SO/R |
@@ -120,7 +120,7 @@ Privileged Identity Management を使用するには、お客様のディレク�
 
 計画プロセスの一環として、まず、Privileged Identity Management に同意し、「[Privileged Identity Management の使用を開始する](pim-getting-started.md)」の記事に従って、Privileged Identity Management を有効にする必要があります。 Privileged Identity Management を有効にすると、特にデプロイに役立つように設計されているいくつかの機能にアクセスできます。
 
-Azure リソース用の Privileged Identity Management をデプロイするのが目的の場合は、[Privileged Identity Management で管理する Azure リソースの検出](pim-resource-roles-discover-resources.md)に関する記事に従う必要があります。 各リソース、リソース グループ、およびサブスクリプションの所有者のみが、Privileged Identity Management 内でこれらを検出できます。 Azure リソース用に Privileged Identity Management をデプロイしようとしているグローバル管理者である場合、[すべての Azure サブスクリプションを管理するためにアクセス権を昇格](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)し、検出のためにディレクトリのすべての Azure リソースへのアクセス権を自分自身に与えることができます。 しかし、Privileged Identity Management でリソースを管理する前に、各サブスクリプション所有者から承認を得ることをお勧めします。
+Azure リソース用の Privileged Identity Management をデプロイするのが目的の場合は、[Privileged Identity Management で管理する Azure リソースの検出](pim-resource-roles-discover-resources.md)に関する記事に従う必要があります。 サブスクリプションと管理グループの所有者だけが、これらのリソースを検出して Privileged Identity Management にオンボードできます。 オンボードが完了すると、管理グループ、サブスクリプション、リソース グループ、リソースなど、すべてのレベルの所有者が PIM 機能を利用できるようになります。 Azure リソース用に Privileged Identity Management をデプロイしようとしているグローバル管理者である場合、[すべての Azure サブスクリプションを管理するためにアクセス権を昇格](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)し、検出のためにディレクトリのすべての Azure リソースへのアクセス権を自分自身に与えることができます。 しかし、Privileged Identity Management でリソースを管理する前に、各サブスクリプション所有者から承認を得ることをお勧めします。
 
 ### <a name="enforce-principle-of-least-privilege"></a>最小特権の原則を適用する
 
@@ -198,7 +198,7 @@ Privileged Identity Management で保護するロールを選択することは�
 > [!TIP]
 > :heavy_check_mark:**Microsoft のお勧め**: Privileged Identity Management を使用してゲスト ユーザーが割り当てられているすべてのロールを管理し、侵害されたゲスト ユーザー アカウントに関するリスクを減らします。
 
-ディレクトリ閲覧者、メッセージ センター閲覧者、セキュリティ閲覧者などの閲覧者ロールは、書き込みアクセス許可がないため、他のロールに比べ、それほど重要ではないと思われる場合があります。 しかし、一部の顧客はこれらのロールも保護します。これは、これらのアカウントへのアクセス権を得た攻撃者が、個人を特定できる情報 (PII) などの機密データを読み取れる可能性があるためです。 組織内の閲覧者ロールを Privileged Identity Management を使用して管理する必要があるかどうかを判断するときに、このことを考慮する必要があります。
+ディレクトリ閲覧者、メッセージ センター閲覧者、セキュリティ閲覧者などの閲覧者ロールは、書き込みアクセス許可がないため、他のロールに比べ、それほど重要ではないと思われる場合があります。 しかし、一部の顧客はこれらのロールも保護します。これは、これらのアカウントへのアクセス権を得た攻撃者が、個人データなどの機密データを読み取れる可能性があるためです。 組織内の閲覧者ロールを Privileged Identity Management を使用して管理する必要があるかどうかを判断するときに、このことを考慮する必要があります。
 
 #### <a name="azure-resource-roles"></a>Azure リソース ロール
 
@@ -240,7 +240,7 @@ Privileged Identity Management ソリューションを実装する前に、組�
 
 #### <a name="privileged-identity-management-settings-for-azure-ad-roles"></a>Azure AD ロール用の Privileged Identity Management 設定
 
-| Role | Require MFA (MFA が必須) | 通知 | インシデント チケット | 承認を要求する | 承認者 | アクティブ化期間 | 永続的な管理者 |
+| Role | Require MFA (MFA が必須) | Notification | インシデント チケット | 承認を要求する | 承認者 | アクティブ化期間 | 永続的な管理者 |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | グローバル管理者 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | その他のグローバル管理者 | 1 時間 | 緊急アクセス アカウント |
 | Exchange 管理者 | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | なし | 2 時間 | なし |
@@ -248,19 +248,19 @@ Privileged Identity Management ソリューションを実装する前に、組�
 
 #### <a name="privileged-identity-management-settings-for-azure-resource-roles"></a>Azure リソース ロール用の Privileged Identity Management 設定
 
-| Role | Require MFA (MFA が必須) | 通知 | 承認を要求する | 承認者 | アクティブ化期間 | アクティブな管理者 | アクティブな有効期限 | 有資格の有効期限 |
+| Role | Require MFA (MFA が必須) | Notification | 承認を要求する | 承認者 | アクティブ化期間 | アクティブな管理者 | アクティブな有効期限 | 有資格の有効期限 |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| 重要なサブスクリプションの所有者 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | サブスクリプションのその他の所有者 | 1 時間 | なし | 該当なし | 3 か月 |
-| それほど重要ではないサブスクリプションのユーザー アクセス管理者 | :heavy_check_mark: | :heavy_check_mark: | :x: | なし | 1 時間 | なし | 該当なし | 3 か月 |
-| Virtual Machine Contributor | :x: | :heavy_check_mark: | :x: | なし | 3 時間 | なし | 該当なし | 6 か月 |
+| 重要なサブスクリプションの所有者 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | サブスクリプションのその他の所有者 | 1 時間 | なし | 300 | 3 か月 |
+| それほど重要ではないサブスクリプションのユーザー アクセス管理者 | :heavy_check_mark: | :heavy_check_mark: | :x: | なし | 1 時間 | なし | 300 | 3 か月 |
+| Virtual Machine Contributor | :x: | :heavy_check_mark: | :x: | なし | 3 時間 | なし | 300 | 6 か月 |
 
 次の表で各設定について説明します。
 
-| Setting | 説明 |
+| 設定 | 説明 |
 | --- | --- |
 | Role | 設定を定義するロールの名前。 |
 | Require MFA (MFA が必須) | ロールをアクティブ化する前に、資格のあるユーザーが MFA を実行する必要があるかどうか。<br/><br/> :heavy_check_mark:**Microsoft のお勧め**: 特にゲスト ユーザーが割り当てられているロールの場合、すべての管理者ロールに対して MFA を適用します。 |
-| 通知 | true に設定すると、組織内のグローバル管理者、特権ロール管理者、およびセキュリティ管理者は、資格のあるユーザーがロールをアクティブ化したときに、メール通知を受け取ります。<br/><br/>**注:** 一部の組織ではその管理者アカウントにメール アドレスが関連付けられていません。これらのメール通知を取得するには、管理者がこれらのメールを受け取るように、代替メール アドレスを設定する必要があります。 |
+| Notification | true に設定すると、組織内のグローバル管理者、特権ロール管理者、およびセキュリティ管理者は、資格のあるユーザーがロールをアクティブ化したときに、メール通知を受け取ります。<br/><br/>**注:** 一部の組織ではその管理者アカウントにメール アドレスが関連付けられていません。これらのメール通知を取得するには、管理者がこれらのメールを受け取るように、代替メール アドレスを設定する必要があります。 |
 | インシデント チケット | 資格のあるユーザーがロールをアクティブ化するときに、インシデント チケット番号を記録する必要があるかどうか。 この設定は、組織で内部インシデント番号を使用して各アクティブ化を特定し、不要なアクティブ化を軽減するのに役立ちます。<br/><br/> :heavy_check_mark:**Microsoft のお勧め**: 内部システムに Privileged Identity Management を関連付けるために、インシデント チケット番号を活用します。 これは、アクティブ化のコンテキストを必要とする承認者に特に役立ちます。 |
 | 承認を要求する | 資格のあるユーザーが、ロールをアクティブ化するために承認を得る必要があるかどうか。<br/><br/> :heavy_check_mark:**Microsoft のお勧め**: 最も多くのアクセス許可を持つロールに対して承認を設定します。 すべての Privileged Identity Management 顧客の使用パターンに基づき、グローバル管理者、ユーザー管理者、Exchange 管理者、セキュリティ管理者、およびパスワード管理者は承認が設定される最も一般的なロールです。 |
 | 承認者 | 資格のあるロールをアクティブ化するために承認が必要な場合、要求を承認する必要がある人をリストします。 既定では、Privileged Identity Management により、特権ロール管理者であるすべてのユーザーが承認者として設定されます。永続的であるか、有資格であるかは関係ありません。<br/><br/>**注:** ユーザーが Azure AD ロールの対象であり、さらにロールの承認者である場合、自身を承認することはできません。<br/><br/> :heavy_check_mark:**Microsoft のお勧め**: グローバル管理者ではなく、特定のロールとそのアクセスの多いユーザーについて最も知識が豊富な人を承認者として選びます。 |
@@ -350,7 +350,7 @@ Privileged Identity Management が運用環境で必要に応じて機能しな�
 
 #### <a name="azure-ad-roles"></a>Azure AD ロール
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 1. **[Azure AD Privileged Identity Management]** を開きます。
 1. **[Azure AD ロール]** 、 **[ロール]** の順にクリックします。
 1. 構成した各ロールについて、資格のある割り当てを持つすべてのユーザーに対する省略記号 ( **...** ) をクリックします。
@@ -358,7 +358,7 @@ Privileged Identity Management が運用環境で必要に応じて機能しな�
 
 #### <a name="azure-resource-roles"></a>Azure リソース ロール
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 1. **[Azure AD Privileged Identity Management]** を開きます。
 1. **[Azure リソース]** をクリックしてから、ロールバックするサブスクリプションまたはリソースをクリックします。
 1. **[ロール]** をクリックします。
@@ -373,7 +373,7 @@ Privileged Identity Management が運用環境で必要に応じて機能しな�
 
 テナントの保護を強化するには、Privileged Identity Management の組み込みアラート機能を利用する必要があります。 詳細については、[セキュリティ アラート](pim-how-to-configure-security-alerts.md#security-alerts)に関するページを参照してください。 これらのアラートには、管理者が特権ロールを使用していない、ロールが Privileged Identity Management 外で割り当てられている、ロールのアクティブ化の頻度が高すぎるなどがあります。 組織を完全に保護するには、定期的にアラート リストを確認し、問題を修正する必要があります。 アラートは、次のようにして表示および修正できます。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 1. **[Azure AD Privileged Identity Management]** を開きます。
 1. **[Azure AD ロール]** 、 **[アラート]** の順にクリックします。
 

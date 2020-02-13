@@ -2,22 +2,22 @@
 title: マイ アプリ ポータルでグループ情報を更新する - Azure AD
 description: 所有するグループの表示、新しいグループの作成、既にメンバーであるグループの表示、まだ所属していないグループへの参加など、グループ関連の情報を表示および更新する方法について説明します。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/21/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: de7fa1952b2e23276a9f088f5840e54675b44d01
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 00639462fce4e67561b8e50609264d4423872c82
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704954"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022298"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>マイ アプリ ポータルでグループ情報を更新する
 
@@ -36,7 +36,7 @@ Web ベースの**マイ アプリ** ポータルでは、職場または学校�
 
 - **グループ所有者として**。 詳細を表示、新しいグループを作成、メンバーを追加または削除、またはグループを削除する。
 
-### <a name="to-view-your-groups-information"></a>グループ情報を表示するには
+### <a name="to-view-your-groups-information"></a>グループの情報を表示するには
 
 1. 職場または学校のアカウントにサインインします。
 
@@ -98,8 +98,6 @@ Web ベースの**マイ アプリ** ポータルでは、職場または学校�
 
 グループを作成した後、既存の任意の情報の更新を含め、その詳細を編集できます。
 
-### <a name="to-edit-your-details"></a>詳細を編集するには
-
 1. **[グループ]** ページから編集するグループを選択し、続いて *&lt;group_name&gt;* ページで **[詳細の編集]** を選択します。
 
     **[詳細の編集]** ボックスが表示され、グループを最初に作成したときに追加した情報を更新することができます。
@@ -108,9 +106,7 @@ Web ベースの**マイ アプリ** ポータルでは、職場または学校�
 
 ## <a name="add-or-remove-a-member"></a>メンバーを追加または削除する
 
-自身のいずれかのグループのメンバーを追加または削除できます。
-
-### <a name="to-add-or-remove-a-member"></a>メンバーを追加または削除するには
+自分が所有しているグループのメンバーを追加または削除できます。
 
 1. メンバーを追加するグループを選択し、続いて *&lt;group_name&gt;* ページで **+** を選択します。
 
@@ -130,8 +126,6 @@ Web ベースの**マイ アプリ** ポータルでは、職場または学校�
 
 組織で許可されると、Office 365 グループを更新して有効期限の日付を拡張できます。
 
-### <a name="to-renew-a-group"></a>グループを更新するには
-
 1. 更新する Office 365 グループを選択し、 **[Renew group]** (グループの更新) を選択します。
 
     ![Office 365 グループを更新し有効期限の日付を延長します。](media/my-apps-portal/my-apps-portal-renew-group-link.png)
@@ -144,8 +138,6 @@ Web ベースの**マイ アプリ** ポータルでは、職場または学校�
 
 自身のどのグループでもいつでも削除できます。 ただし、グループを誤って削除した場合は、もう一度グループを作成し、メンバーを追加する必要があります。
 
-### <a name="to-delete-the-group"></a>グループを削除するには
-
 1. 完全に削除するグループを選択し、続いて *&lt;group_name&gt;* ページで **[グループの削除]** を選択します。
 
     ![[グループの削除] リンクが強調表示された <Group_name> ページ](media/my-apps-portal/my-apps-portal-delete-group-link.png)
@@ -156,9 +148,7 @@ Web ベースの**マイ アプリ** ポータルでは、職場または学校�
 
 ## <a name="join-an-existing-group"></a>既存のグループに参加する
 
-**[グループ]** ページから、既存のグループに参加できます。
-
-### <a name="to-join-or-leave-a-group"></a>グループに参加または脱退するには
+**[グループ]** ページで、既存のグループに参加したり、グループから脱退したりできます。
 
 1. **[グループ]** ページで、 **[参加しているグループ]** 領域から **[グループへの参加]** を選択します。
 
@@ -172,7 +162,7 @@ Web ベースの**マイ アプリ** ポータルでは、職場または学校�
 
 3. 誤ってグループに参加した場合や、参加している必要がなくなった場合は、 **[グループへの参加]** ページからグループ名を選択して、 **[グループから脱退]** を選択できます。
 
-    ![[グループへの参加] ページ、[グループから脱退] ボタンが強調表示](media/my-apps-portal/my-apps-portal-leave-group-link.png)    
+    ![[グループへの参加] ページ、[グループから脱退] ボタンが強調表示](media/my-apps-portal/my-apps-portal-leave-group-link.png)
 
 ## <a name="next-steps"></a>次のステップ
 

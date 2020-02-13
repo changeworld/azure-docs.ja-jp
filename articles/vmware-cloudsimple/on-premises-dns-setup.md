@@ -1,6 +1,6 @@
 ---
-title: CloudSimple による Azure VMware ソリューション - CloudSimple プライベート クラウド用の DNS を構成する
-description: オンプレミスのワークステーションから、CloudSimple プライベート クラウド上の vCenter サーバーにアクセスするための DNS 名前解決を設定する方法について説明します
+title: Azure VMware Solutions (AVS) - AVS プライベート クラウド用に DNS を構成する
+description: オンプレミスのワークステーションから、AVS プライベート クラウド上の vCenter サーバーにアクセスするための DNS 名前解決を設定する方法について説明する
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -8,34 +8,34 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c2d69d21eb46d502a45c9df1dfaaa947d26ef7c4
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: eadedcea7e6010cf93d118b3781630053609d29f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74108804"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019606"
 ---
-# <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>オンプレミスのワークステーションからのプライベート クラウドの vCenter にアクセスするための名前解決用に DNS を構成する
+# <a name="configure-dns-for-name-resolution-for-avs-private-cloud-vcenter-access-from-on-premises-workstations"></a>オンプレミスのワークステーションから AVS プライベート クラウド上の vCenter にアクセスできるように名前解決に DNS を構成する
 
-オンプレミスのワークステーションから CloudSimple プライベート クラウド上の vCenter サーバーにアクセスするには、IP アドレスだけでなくホスト名でも vCenter サーバーのアドレスを指定できるよう、DNS アドレス解決を構成する必要があります。
+オンプレミスのワークステーションから AVS プライベート クラウド上の vCenter サーバーにアクセスするには、IP アドレスだけでなくホスト名でも vCenter サーバーのアドレスを指定できるよう、DNS アドレス解決を構成する必要があります。
 
-## <a name="obtain-the-ip-address-of-the-dns-server-for-your-private-cloud"></a>プライベート クラウドの DNS サーバーの IP アドレスを取得する
+## <a name="obtain-the-ip-address-of-the-dns-server-for-your-avs-private-cloud"></a>AVS プライベート クラウドの DNS サーバーの IP アドレスを取得する
 
-1. [CloudSimple ポータル](access-cloudsimple-portal.md)にサインインします。
+1. [AVS ポータル](access-cloudsimple-portal.md)にサインインします。
 
-2. **[リソース]**  >  **[プライベート クラウド]** に移動し、接続先のプライベート クラウドを選択します。
+2. **[リソース]**  >  **[AVS プライベート クラウド]** に移動し、接続先の AVS プライベート クラウドを選択します。
 
-3. プライベート クラウドの **[Summary]\(概要\)** ページの **[Basic Info]\(基本情報\)** で、プライベート クラウドの DNS サーバーの IP アドレスをコピーします。
+3. AVS プライベート クラウドの **[Summary]\(概要\)** ページの **[基本情報]** で、AVS プライベート クラウドの DNS サーバーの IP アドレスをコピーします。
 
-    ![プライベート クラウドの DNS サーバー](media/private-cloud-dns-server.png)
+    ![AVS プライベート クラウドの DNS サーバー](media/private-cloud-dns-server.png)
 
 
 DNS の構成には、次のどちらかのオプションを使用します。
 
-* [*.cloudsimple.io に対応するゾーンを DNS サーバー上に作成する](#create-a-zone-on-a-microsoft-windows-dns-server)
-* [条件付きフォワーダーをオンプレミスの DNS サーバー上に作成して *.cloudsimple.io を解決する](#create-a-conditional-forwarder)
+* [*.AVS.io に対応するゾーンを DNS サーバー上に作成する](#create-a-zone-on-a-microsoft-windows-dns-server)
+* [条件付きフォワーダーをオンプレミスの DNS サーバー上に作成して *.AVS.io を解決する](#create-a-conditional-forwarder)
 
-## <a name="create-a-zone-on-the-dns-server-for-cloudsimpleio"></a>*.cloudsimple.io に対応するゾーンを DNS サーバー上に作成する
+## <a name="create-a-zone-on-the-dns-server-for-avsio"></a>*.AVS.io に対応するゾーンを DNS サーバー上に作成する
 
 スタブ ゾーンとしてゾーンをセットアップし、名前解決のためにプライベート クラウド上の DNS サーバーをポイントすることができます。 ここでは、BIND DNS サーバーまたは Microsoft Windows DNS サーバーの使用に関する情報を提供します。
 
@@ -71,14 +71,14 @@ zone "az.cloudsimple.io"
 5. ゾーン名を入力して **[次へ]** をクリックします。
 
     ![新しいゾーン](media/DNS05.png)
-6. CloudSimple ポータルから取得した、プライベート クラウドの DNS サーバーの IP アドレスを入力します。
+6. AVS ポータルから取得した、AVS プライベート クラウドの DNS サーバーの IP アドレスを入力します。
 
     ![新しいゾーン](media/DNS06.png)
 7. 必要に応じて **[次へ]** をクリックして、ウィザードのセットアップを完了します。
 
 ## <a name="create-a-conditional-forwarder"></a>条件付きフォワーダーの作成
 
-条件付きフォワーダーは、すべての DNS 名前解決要求を指定されたサーバーに転送します。 このセットアップでは、*.cloudsimple.io への要求は、プライベート クラウド上に位置する DNS サーバーに転送されます。 次の例は、さまざまな種類の DNS サーバー上でフォワーダーを設定する方法を示しています。
+条件付きフォワーダーは、すべての DNS 名前解決要求を指定されたサーバーに転送します。 このセットアップでは、*.AVS.io への要求は、AVS プライベート クラウド上に位置する DNS サーバーに転送されます。 次の例は、さまざまな種類の DNS サーバー上でフォワーダーを設定する方法を示しています。
 
 ### <a name="create-a-conditional-forwarder-on-a-bind-dns-server"></a>BIND DNS サーバー上に条件付きフォワーダーを作成する
 
@@ -99,4 +99,4 @@ zone "az.cloudsimple.io" {
 2. **[条件付きフォワーダー]** を右クリックし、新しい条件付きフォワーダーを追加するためのオプションを選択します。
 
     ![条件付きフォワーダー 1 の Windows DNS](media/DNS08.png)
-3. プライベート クラウド内の DNS サーバーの DNS ドメインと IP アドレスを入力して **[OK]** をクリックします。
+3. AVS プライベート クラウド内の DNS サーバーの DNS ドメインと IP アドレスを入力して **[OK]** をクリックします。

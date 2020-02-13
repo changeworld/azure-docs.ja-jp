@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: 50b751d8e4e1a69a34e6421884f8b99c3eeb5924
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c556b71acf814203a67317039dafeede5f7b65a6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895974"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016750"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway に関する FAQ
 
@@ -69,13 +69,14 @@ VPN ゲートウェイは仮想ネットワーク ゲートウェイの一種で
 ルート ベースのゲートウェイは、ルート ベースの VPN を実装したものです。 ルート ベースの VPN は、「ルート」を使用して、IP 転送やルーティング テーブルを使用してパケットを対応するトンネル インターフェイスに直接送信します。 その後、トンネル インターフェイスではトンネルの内部または外部でパケットを暗号化または復号します。 ルート ベースの VPN に向けたポリシーまたはトラフィック セレクターは任意の環境間 (またはワイルドカード) として構成されます。
 
 ### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>ポリシー ベースの VPN ゲートウェイをルート ベースに更新できますか。
+
 いいえ。 Azure Vnet ゲートウェイのタイプをポリシー ベースからルート ベース (またはその逆) に変更することはできません。 ゲートウェイを削除して再作成する必要があります。この処理には約 60 分かかります。 ゲートウェイの IP アドレスは保存されず、事前共有キー (PSK) も保持されません。
 1. 削除するゲートウェイに関連付けられているすべての接続を削除します。
 1. ゲートウェイを削除します。
-1. [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
-1. [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-1. [Azure PowerShell - クラシック](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-1. [目的のタイプの新しいゲートウェイを作成し、VPN 設定を完了します](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)
+   - [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+   - [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
+   - [Azure PowerShell - クラシック](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+1. [必要な種類の新しいゲートウェイを作成し、VPN のセットアップを完了します](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)。
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>'GatewaySubnet' は必要ですか。
 
@@ -89,11 +90,15 @@ VPN ゲートウェイは仮想ネットワーク ゲートウェイの一種で
 
 ### <a name="can-i-get-my-vpn-gateway-ip-address-before-i-create-it"></a>ゲートウェイを作成する前に VPN ゲートウェイの IP アドレスを取得できますか。
 
-いいえ。 IP アドレスを取得する前にゲートウェイを作成する必要があります。 VPN ゲートウェイを削除してもう一度作成すると、IP アドレスは変更されます。
+ゾーン冗長とゾーン ゲートウェイ (名前に _AZ_ が入っているゲートウェイ SKU) は、どちらも _Standard SKU_ の Azure のパブリック IP リソースに依存しています。 Azure の Standard SKU のパブリック IP リソースでは、静的な割り当て方法を使用する必要があります。 そのため、使用する Standard SKU のパブリック IP リソースを作成するとすぐに、VPN ゲートウェイ用のパブリック IP アドレスが作成されます。
+
+ゾーン冗長および非ゾーン ゲートウェイ (名前に _AZ_ が入って_いない_ゲートウェイ SKU) の場合、VPN ゲートウェイの IP アドレスを作成する前に取得することはできません。 IP アドレスが変更されるのは、VPN ゲートウェイを削除してもう一度作成した場合だけです。
 
 ### <a name="can-i-request-a-static-public-ip-address-for-my-vpn-gateway"></a>VPN Gateway に静的なパブリック IP アドレスを指定することはできますか。
 
-いいえ。 サポートされるのは、動的な IP アドレスの割り当てのみです。 もっとも、VPN ゲートウェイに割り当てられた IP アドレスが後から変わることは基本的にありません。 VPN ゲートウェイの IP アドレスが変更されるのは、ゲートウェイが削除され、再度作成されたときのみです。 VPN Gateway のパブリック IP アドレスは、VPN Gateway のサイズ変更、リセット、その他の内部メンテナンス/アップグレードの際には変更されません。 
+前述のとおり、ゾーン冗長とゾーン ゲートウェイ (名前に _AZ_ が入っているゲートウェイ SKU) は、どちらも _Standard SKU_ の Azure のパブリック IP リソースに依存しています。 Azure の Standard SKU のパブリック IP リソースでは、静的な割り当て方法を使用する必要があります。
+
+ゾーン冗長および非ゾーン ゲートウェイ (名前に _AZ_ が入って_いない_ゲートウェイ SKU) の場合、動的 IP アドレスの割り当てのみがサポートされます。 ただし、これは IP アドレスがご使用の VPN ゲートウェイに割り当てられた後に変更されるという意味ではありません。 VPN ゲートウェイの IP アドレスが変更されるのは、ゲートウェイが削除されてから、再度作成された場合だけです。 VPN ゲートウェイのパブリック IP アドレスは、VPN ゲートウェイのサイズ変更、リセット、またはその他の内部メンテナンスまたはアップグレードを完了しても変更されません。
 
 ### <a name="how-does-my-vpn-tunnel-get-authenticated"></a>VPN トンネルの認証を取得する方法を教えてください。
 

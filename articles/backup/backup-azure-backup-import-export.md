@@ -4,12 +4,12 @@ description: Azure Backup の Azure Import/Export サービスを使用してネ
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 47d4c4fb63c2aa0e2944456048b06070e235f012
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 162d129eaea83ef6623daaa063e8a088c021e25d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997362"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022615"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure Backup でのオフライン バックアップのワークフロー
 
@@ -75,6 +75,15 @@ Azure Backup の次の機能またはワークロードは、オフライン バ
 
     ![Import screen](./media/backup-azure-backup-import-export/offlinebackup_inputs.png)
 
+2. **[Transfer using my own disks]\(独自のディスクを使用して転送\)** オプションを選択します。
+
+    >[!NOTE]
+    >初期バックアップ データをオフラインで転送する場合は、Azure Data Box オプションを使用することをお勧めします。 このオプションは、Microsoft 独自のセキュリティで保護された改ざん防止機能を備えている Azure Data Box デバイスを提供することにより、Azure と互換性のある独自のディスクを調達するために必要な労力を省きます。MARS エージェントにより、Azure Data Box デバイスにバックアップ データを直接書き込むことができます。
+
+3. **[次へ]** をクリックし、十分に注意して入力します。
+
+    ![ディスクの詳細を入力する](./media/backup-azure-backup-import-export/your-disk-details.png)
+
    この画面では、次の内容を入力します。
 
     * **ステージングの場所**:初回バックアップ コピーが書き込まれる一時的なストレージの場所。 ステージング場所には、ネットワーク共有またはローカル コンピューター上の場所を使用できます。 コピー用コンピューターとソース コンピューターが異なる場合は、ステージング場所の完全なネットワーク パスを指定することをお勧めします。
@@ -85,15 +94,15 @@ Azure Backup の次の機能またはワークロードは、オフライン バ
   
    画面で情報を入力し、 **[次へ]** をクリックします。 ディスクの準備に必要な情報であるため、指定した "*ステージング場所*" と "*Azure インポート ジョブ名*" を保存します。
 
-2. メッセージ表示されたら、Azure サブスクリプションにサインインします。 Azure Backup が Azure Active Directory アプリケーションを作成し、Azure インポート サービスへのアクセスに必要なアクセス許可を提供できるようにするため、サインインする必要があります。
+4. メッセージ表示されたら、Azure サブスクリプションにサインインします。 Azure Backup が Azure Active Directory アプリケーションを作成し、Azure インポート サービスへのアクセスに必要なアクセス許可を提供できるようにするため、サインインする必要があります。
 
-    ![今すぐバックアップ](./media/backup-azure-backup-import-export/azurelogin.png)
+    ![今すぐバックアップ](./media/backup-azure-backup-import-export/azure-login.png)
 
-3. ワークフローを完了し、Azure Backup エージェント コンソールで **[今すぐバックアップ]** をクリックします。
+5. ワークフローを完了し、Azure Backup エージェント コンソールで **[今すぐバックアップ]** をクリックします。
 
     ![今すぐバックアップ](./media/backup-azure-backup-import-export/backupnow.png)
 
-4. ウィザードの [確認] ページで、 **[バックアップ]** をクリックします。 初期バックアップが、セットアップの一部としてステージング領域に書き込まれます。
+6. ウィザードの [確認] ページで、 **[バックアップ]** をクリックします。 初期バックアップが、セットアップの一部としてステージング領域に書き込まれます。
 
    ![バックアップの準備ができたことを確認する](./media/backup-azure-backup-import-export/backupnow-confirmation.png)
 
@@ -203,7 +212,6 @@ Azure portal で **[インポート/エクスポート ジョブ]** ページに
 
 初回バックアップが完了したら、Azure ストレージ コンテナーにインポートしたデータおよびステージングの場所にあるバックアップ データ を安全に削除することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Import/Export ワークフローについて質問がある場合は、「 [Microsoft Azure Import/Export サービスを使用した Blob Storage へのデータの転送](../storage/common/storage-import-export-service.md)」を参照してください。
-
