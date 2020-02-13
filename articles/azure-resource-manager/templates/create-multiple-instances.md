@@ -521,7 +521,7 @@ copy 要素は配列であるため、リソースの複数のプロパティを
 
 次の例は、リソースまたはプロパティの複数のインスタンスを作成するための一般的なシナリオを示しています。
 
-|Template  |[説明]  |
+|Template  |説明  |
 |---------|---------|
 |[Copy storage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |名前にインデックス番号を含む複数のストレージ アカウントをデプロイします。 |
 |[Serial copy storage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |複数のストレージ アカウントを一度に 1 つずつデプロイします。 名前にはインデックス番号が含まれます。 |
