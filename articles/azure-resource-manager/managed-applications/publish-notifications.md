@@ -176,7 +176,7 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 
 ```
 
-パラメーター | [説明]
+パラメーター | 説明
 ---|---
 eventType | 通知をトリガーしたイベントの種類。 (例: PUT、PATCH、DELETE)。
 applicationId | 通知がトリガーされたマネージド アプリケーションの完全修飾リソース識別子。
