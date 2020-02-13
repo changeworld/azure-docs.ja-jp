@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 43dec74b75b5c2e2844f89655e17c31d62a9df1b
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 94fafd8b0411c1c7a4032769eec0eb5818844648
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774174"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118145"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>REST API と Python でラベルを使用して Form Recognizer モデルをトレーニングする
 
@@ -25,7 +25,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="prerequisites"></a>前提条件
 
 このクイック スタートを完了するには、以下が必要です。
-- アクセスが制限された Form Recognizer プレビューへのアクセス。 プレビューへのアクセスを取得するには、[Form Recognizer アクセス要求](https://aka.ms/FormRecognizerRequestAccess)フォームに記入して送信します。
 - インストールされている [Python](https://www.python.org/downloads/) (サンプルをローカルで実行する場合)。
 - 同じ種類の少なくとも 6 つのフォームのセット。 このデータを使用して、モデルのトレーニングとフォームのテストを行います。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)を使用できます。 Azure Storage アカウントの BLOB ストレージ コンテナーのルートにトレーニング ファイルをアップロードします。
 

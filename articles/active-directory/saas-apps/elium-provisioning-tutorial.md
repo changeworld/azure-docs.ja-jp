@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: a4ddcf27869ea7484f98329d14d01bfad83af219
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: a3e1c936d46e0d9b0ad3b98dafeda7df0b4a23db
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709530"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058471"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>チュートリアル:Elium を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、Elium にユーザーまたはグループを自動的にプロビジョニングまたはプロビジョニング解除するように、Elium と Azure Active Directory (Azure AD) を構成する方法について説明します。
 
 > [!NOTE]
-> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービス上に構築されるコネクタについて説明します。 このサービスが実行する内容やしくみについての重要な情報と、よく寄せられる質問については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。
+> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービス上に構築されるコネクタについて説明します。 このサービスが実行する内容やしくみについての重要な情報と、よく寄せられる質問については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。
 >
 > このコネクタは、現在プレビューの段階です。 プレビュー段階の Azure 機能の一般的な使用条件については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
@@ -120,7 +120,7 @@ Azure AD で Elium の自動ユーザー プロビジョニングを構成する
 
     ![通知用メール](common/provisioning-notification-email.png)
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 1. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Elium]\(Azure Active Directory ユーザーを Elium に同期する\)** を選択します。
 
@@ -130,7 +130,7 @@ Azure AD で Elium の自動ユーザー プロビジョニングを構成する
 
     ![Azure AD と Elium の間の属性マッピング](media/Elium-provisioning-tutorial/userattribute.png)
 
-1. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の手順を参照してください。
+1. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の手順を参照してください。
 
 1. Elium に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
@@ -144,15 +144,15 @@ Azure AD で Elium の自動ユーザー プロビジョニングを構成する
 
     ![プロビジョニング構成の [保存] ボタン](common/provisioning-configuration-save.png)
 
-この操作により、 **[設定]** セクションの **[スコープ]** で定義したすべてのユーザーとグループの初期同期が開始されます。 この初期同期プロセスは、以降の同期よりも時間がかかります。 プロビジョニングに必要な時間の詳細については、「[ユーザーをプロビジョニングするにはどのくらいの時間がかかりますか](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)」を参照してください。
+この操作により、 **[設定]** セクションの **[スコープ]** で定義したすべてのユーザーとグループの初期同期が開始されます。 この初期同期プロセスは、以降の同期よりも時間がかかります。 プロビジョニングに必要な時間の詳細については、「[ユーザーをプロビジョニングするにはどのくらいの時間がかかりますか](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)」を参照してください。
 
-**[現在の状態]** セクションを使用して進行状況を監視し、リンクをクリックしてプロビジョニング アクティビティ レポートを取得します。 プロビジョニング アクティビティ レポートには、Azure AD プロビジョニング サービスによって Elium で実行されたすべてのアクションが記述されます。 詳細については、「[ユーザー プロビジョニングの状態を確認する](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)」を参照してください。 Azure AD プロビジョニング ログを読むには、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」を参照してください。
+**[現在の状態]** セクションを使用して進行状況を監視し、リンクをクリックしてプロビジョニング アクティビティ レポートを取得します。 プロビジョニング アクティビティ レポートには、Azure AD プロビジョニング サービスによって Elium で実行されたすべてのアクションが記述されます。 詳細については、「[ユーザー プロビジョニングの状態を確認する](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)」を参照してください。 Azure AD プロビジョニング ログを読むには、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)。
+* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)。
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)
+* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)

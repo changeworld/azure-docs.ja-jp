@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
 ms.date: 01/15/2020
-ms.openlocfilehash: 8fa123772ae380cd000c414c63bdf3908d279751
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f71d8e9f88dad32818ed25d4a0719a1528656f96
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906386"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163179"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>チュートリアル:Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する
 
@@ -384,6 +384,6 @@ Remove-AzResourceGroup -Name $resourceGroup
 次の記事に進み、Azure Event Hubs について詳しく学習してください。
 
 > [!div class="nextstepaction"]
-> [.NET Standard で Azure Event Hubs へのメッセージ送信を開始する](event-hubs-dotnet-standard-getstarted-send.md)
+> [.NET Standard で Azure Event Hubs へのメッセージ送信を開始する](get-started-dotnet-standard-send-v2.md)
 
 [無料アカウントを作成]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/14/2020
 ms.author: dapine
-ms.openlocfilehash: edb6846974dc58af04ba800c0aa32e3ecc5d4b9a
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 68392bfdb80236a1cf82261332d3bf3b4d09e02b
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76309045"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156133"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -75,6 +75,8 @@ namespace HelloWorld
 > Speech SDK では、既定で認識される言語が en-us です。ソース言語の選択については、「[音声テキスト変換のソース言語を指定する](../../../../how-to-specify-source-language.md)」を参照してください。
 
 ```csharp
+// Replace with your own subscription key and service region (e.g., "westus", use the one of SpeechSDKParameters
+// from here: https://aka.ms/speech/sdkregion).
 var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 

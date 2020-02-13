@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: f72b2b85fcaae4e0a21e4bbe2f3af79359ca2fa6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: f1e0bf44515aab18019b19b4f0a6f84183e5aac3
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701911"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160085"
 ---
 # <a name="single-page-application-code-configuration"></a>シングルページ アプリケーション：コード構成
 
@@ -38,7 +38,7 @@ Microsoft ID プラットフォームは、次の Microsoft Authentication Libra
 
 MSAL ライブラリでは、ライブラリの初期化中にアプリケーションの登録情報が構成として渡されます。
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 // Configuration object constructed.
@@ -52,9 +52,10 @@ const config = {
 // create UserAgentApplication instance
 const userAgentApplication = new UserAgentApplication(config);
 ```
+
 構成可能なオプションの詳細については、[MSAL.js を使用したアプリケーションの初期化](msal-js-initializing-client-applications.md)に関する記事を参照してください。
 
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 ```javascript
 //In app.module.ts
@@ -68,6 +69,8 @@ import { MsalModule } from '@azure/msal-angular';
 
   export class AppModule { }
 ```
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 

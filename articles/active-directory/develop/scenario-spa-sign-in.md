@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/06/2019
+ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 8124aea96ab00e7f09782531702dcb5cfa4ccdf2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: eb75aa53051e7e3c424ffe131cda61324fe86b1a
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701826"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159966"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>シングルページ アプリケーション：サインインとサインアウト
 
@@ -47,7 +47,7 @@ ms.locfileid: "76701826"
 
 ## <a name="sign-in-with-a-pop-up-window"></a>ポップアップ ウィンドウを使用してサインインする
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const loginRequest = {
@@ -63,7 +63,7 @@ userAgentApplication.loginPopup(loginRequest).then(function (loginResponse) {
 });
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 MSAL Angular ラッパーを使用すると、ルート定義に `MsalGuard` を追加するだけで、ご利用のアプリケーション内の特定のルートを保護することができます。 このガードにより、そのルートにアクセスすると、サインインのためのメソッドが呼び出されます。
 
@@ -89,10 +89,11 @@ MSAL Angular ラッパーを使用すると、ルート定義に `MsalGuard` を
             })]
          })
 ```
+---
 
 ## <a name="sign-in-with-redirect"></a>リダイレクトを使用してサインインする
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 リダイレクトメソッドは、メインアプリから離れるため、Promise　を返しません。 返されたトークンを処理し、これにアクセスするには、リダイレクト メソッドを呼び出す前に成功とエラーのコールバックを登録する必要があります。
 
@@ -110,12 +111,14 @@ const loginRequest = {
 userAgentApplication.loginRedirect(loginRequest);
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 このコードは、ポップアップウィンドウを使用したサインインに関するセクションで説明したものと同じです。 既定のフローはリダイレクトです。
 
 > [!NOTE]
 > ID トークンには同意されたスコープは含まれず、認証されたユーザーのみが示されます。 同意されたスコープは、次の手順で取得するアクセス トークンで返されます。
+
+---
 
 ## <a name="sign-out"></a>サインアウト
 
@@ -123,7 +126,7 @@ MSAL ライブラリには、`logout` メソッドが用意されています。
 
 `postLogoutRedirectUri` を設定することで、サインアウト後に、リダイレクトされる URI を構成することができます。 この URI は、アプリケーションの登録のログアウト URI として登録する必要もあります。
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const config = {
@@ -140,7 +143,7 @@ userAgentApplication.logout();
 
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 ```javascript
 //In app.module.ts
@@ -154,6 +157,8 @@ userAgentApplication.logout();
 // In app.component.ts
 this.authService.logout();
 ```
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 49c86f3e6c654ecbfcd07809f42a1b038ca3f8ab
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 578abae5b206b31674b00b9d27ef34174b93759f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911120"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988585"
 ---
 # <a name="create-a-map"></a>マップを作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "75911120"
 
 ## <a name="loading-a-map"></a>マップを読み込む
 
-マップを読み込むには、[Map クラス](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)の新しいインスタンスを作成します。 マップを初期化するときに、マップをレンダリングするための DIV 要素 ID と、マップの読み込み時に使用するオプションのセットが渡されます。 `atlas` 名前空間で既定の認証情報が指定されていない場合は、マップの読み込み時にマップ オプションでこの情報を指定する必要があります。 マップでは、パフォーマンス向上のために複数のリソースが非同期的に読み込まれます。 そのため、マップ インスタンス作成後に、`ready` または `load` イベントをマップにアタッチし、マップと対話する追加のコードをそのイベント ハンドラーに追加します。 `ready` イベントは、プログラムで対話するのに十分なリソースがマップに読み込まれるとすぐに発生します。 `load` イベントは、初期マップ ビューの読み込みが完全に完了した後で発生します。 
+マップを読み込むには、[Map クラス](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)の新しいインスタンスを作成します。 マップを初期化するときに、マップをレンダリングするための DIV 要素 ID を渡し、マップの読み込み時に使用するオプションのセットを渡します。 `atlas` 名前空間で既定の認証情報が指定されていない場合は、マップの読み込み時にマップ オプションでこの情報を指定する必要があります。 マップでは、パフォーマンス向上のために複数のリソースが非同期的に読み込まれます。 そのため、マップ インスタンス作成後に、`ready` または `load` イベントをマップにアタッチし、マップと対話する追加のコードをイベント ハンドラーに追加します。 `ready` イベントは、プログラムで対話するのに十分なリソースがマップに読み込まれるとすぐに発生します。 `load` イベントは、初期マップ ビューの読み込みが完全に完了した後で発生します。 
 
 <br/>
 
@@ -31,11 +31,11 @@ ms.locfileid: "75911120"
 </iframe>
 
 > [!TIP]
-> 同じページに複数のマップを読み込むことができ、各マップで使用されている認証と言語の設定は同じでも異なっていてもかまいません。
+> 同じページに複数のマップを読み込むことができます。 同じページにある複数のマップでは、認証と言語の設定は同じでも異なっていてもかまいません。
 
 ## <a name="show-a-single-copy-of-the-world"></a>世界の 1 つのコピーを表示する
 
-ワイド画面でマップをズームアウトすると、世界の複数のコピーが水平方向に表示されます。 これはほとんどのシナリオに適していますが、一部のアプリケーションでは、世界の 1 つのコピーのみを表示する方がよい場合があります。 これは、マップの `renderWorldCopies` オプションを `false` に設定することによって行うことができます。
+ワイド画面でマップをズームアウトすると、世界の複数のコピーが水平方向に表示されます。 このオプションは一部のシナリオには適していますが、他のアプリケーションでは、世界の 1 つのコピーを表示する方が適しています。 この動作は、マップの `renderWorldCopies` オプションを `false` に設定することで実装されます。
 
 <br/>
 
@@ -45,13 +45,13 @@ ms.locfileid: "75911120"
 
 ## <a name="controlling-the-map-camera"></a>マップ カメラの制御
 
-カメラを使用してマップの表示領域を設定する方法が 2 つあります。 マップを読み込むときに中心やズームなどのカメラ オプションを設定するか、またはマップが読み込まれた後でいつでも `setCamera` オプションを呼び出して、マップ ビューをプログラムで更新することができます。  
+マップのカメラを使用してマップの表示領域を設定する方法が 2 つあります。 マップの読み込み時にカメラのオプションを設定できます。 または、マップが読み込まれた後の任意の時点で `setCamera` オプションを呼び出して、プログラムによってマップ ビューを更新できます。  
 
 <a id="setCameraOptions"></a>
 
 ### <a name="set-the-camera"></a>カメラの設定
 
-次のコードでは、[Map オブジェクト](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)が作成され、中心とズームのオプションが設定されます。 中央やズーム レベルなどのマップのプロパティは、[CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions) の一部です。
+次のコードでは、[Map オブジェクト](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)が作成され、中心とズームのオプションが設定されます。 中心やズーム レベルなどのマップのプロパティは、[CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions) の一部です。
 
 <br/>
 
@@ -71,7 +71,7 @@ ms.locfileid: "75911120"
 
 ### <a name="animate-map-view"></a>マップ ビューをアニメーション化する
 
-次のコードでは、最初のコード ブロックでマップが作成され、マップ スタイル、中心、ズームの値が設定されます。 2 番目のコード ブロックでは、アニメーション ボタンのクリック イベント ハンドラーが作成されます。 このボタンがクリックされると、setCamera 関数が呼び出され、[CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions) と [AnimationOptions](/javascript/api/azure-maps-control/atlas.animationoptions) にはランダムな値が指定されます。
+次のコードでは、最初のコード ブロックでマップが作成され、中心とズームのマップ スタイルが設定されます。 2 番目のコード ブロックでは、アニメーション ボタンのクリック イベント ハンドラーが作成されます。 このボタンがクリックされると、`setCamera` 関数が呼び出され、[CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions) と [AnimationOptions](/javascript/api/azure-maps-control/atlas.animationoptions) にはランダムな値が指定されます。
 
 <br/>
 
@@ -80,7 +80,7 @@ ms.locfileid: "75911120"
 
 ## <a name="try-out-the-code"></a>コードを実行する
 
-前述のサンプル コードをご覧ください。 左側の **[JS] タブ**で JavaScript コードを編集し、右側の **[結果] タブ**でマップ ビューの変更を確認することができます。 **[Edit on CodePen]\(CodePen で編集\)** ボタンをクリックして CodePen のコードを編集することもできます。
+コード サンプルをご覧ください。 **[JS] タブ**内で JavaScript コードを編集し、 **[結果] タブ**でマップ ビューの変更を確認することができます。また、右上隅にある **[Edit on CodePen]\(CodePen で編集\)** をクリックして、CodePen でコードを変更することもできます。
 
 <a id="relatedReference"></a>
 

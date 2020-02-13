@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/29/2019
-ms.openlocfilehash: b4550f55d160a77c2fb149dd509ca1cfad784f79
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: ba8a76cd4d3804bcb062ae0554e3fe7002804ed2
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513458"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031682"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights でのデータの収集、保持、保存
 
@@ -175,7 +175,18 @@ services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {
 
 フォルダー プレフィックス `appInsights-node` は、[Sender.ts](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384) にある静的変数 `Sender.TEMPDIR_PREFIX` のランタイム値を変更することによって上書きできます。
 
+### <a name="opencensus-python"></a>OpenCensus Python
 
+既定では、OpenCensus Python SDK は現在のユーザー フォルダー `%username%/.opencensus/.azure/` を使用します。 このフォルダーにアクセスするためのアクセス許可は、現在のユーザーと管理者に制限されています。 (ここにある[実装](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/storage.py)を参照してください。)永続化されたデータを含むフォルダーは、テレメトリを生成した Python ファイルの名前が付けられます。
+
+使用しているエクスポーターのコンストラクターで `storage_path` パラメーターを渡すことによって、ストレージ ファイルの場所を変更できます。
+
+```python
+AzureLogHandler(
+  connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000',
+  storage_path='<your-path-here>',
+)
+```
 
 ## <a name="how-do-i-send-data-to-application-insights-using-tls-12"></a>TLS 1.2 を使用して Application Insight にデータを送信するにはどうすればよいですか。
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: 555596ba1040fcbd5c9131869fd275d749e0d734
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 0930bbcfff41a667f08f5dfc5744c16476ddd8a1
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934021"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031452"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>スクリプト アクションを使用して Azure HDInsight クラスターをカスタマイズする
 
@@ -146,9 +146,9 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
 
 | Name | スクリプト |
 | --- | --- |
-| Azure Storage アカウントの追加 |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. 「[HDInsight にストレージ アカウントを追加する](hdinsight-hadoop-add-storage.md)」をご覧ください。 |
-| Hue のインストール |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. 「[HDInsight Hadoop クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)」をご覧ください。 |
-| Hive ライブラリの事前読み込み |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`. 「[HDInsight クラスターを作成するときにカスタム Apache Hive ライブラリを追加する](hdinsight-hadoop-add-hive-libraries.md)」をご覧ください。 |
+| Azure Storage アカウントの追加 |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh` 「[HDInsight にストレージ アカウントを追加する](hdinsight-hadoop-add-storage.md)」をご覧ください。 |
+| Hue のインストール |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh` 「[HDInsight Hadoop クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)」をご覧ください。 |
+| Hive ライブラリの事前読み込み |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh` 「[HDInsight クラスターを作成するときにカスタム Apache Hive ライブラリを追加する](hdinsight-hadoop-add-hive-libraries.md)」をご覧ください。 |
 
 ## <a name="use-a-script-action-during-cluster-creation"></a>クラスターの作成時にスクリプト アクションを使用する
 
@@ -156,9 +156,9 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-azure-portal"></a>クラスターの作成時に Azure Portal からスクリプト アクションを使用する
 
-1. 「[Azure portal を使用して HDInsight で Linux ベースのクラスターを作成する](hdinsight-hadoop-create-linux-clusters-portal.md)」で説明されているように、クラスターの作成を開始します。 クラスターを作成している間に、手順 6 の **[スクリプト操作]** ページが表示されます。 **[オプション]**  >  **[+ 新規で送信]** に移動します。
+1. 「[Azure portal を使用して HDInsight で Linux ベースのクラスターを作成する](hdinsight-hadoop-create-linux-clusters-portal.md)」で説明されているように、クラスターの作成を開始します。 **[構成と価格]** タブで、 **[+ スクリプト アクションの追加]** を選択します。
 
-    ![Azure portal クラスター スクリプト操作](./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-classic-script-action.png)
+    ![Azure portal クラスター スクリプト操作](./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-configuration-scriptaction.png)
 
 1. __[スクリプトの選択]__ エントリで、事前に作成されたスクリプトを選択します。 カスタム スクリプトを使用するには、 __[カスタム]__ を選択します。 次に、スクリプトの __[名前]__ と __[バッシュ スクリプト URI]__ を指定します。
 
@@ -166,7 +166,7 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
 
     スクリプト形式の要素を次の表に示します。
 
-    | プロパティ | 値 |
+    | プロパティ | Value |
     | --- | --- |
     | スクリプトの選択 | 独自のスクリプトを使用するには、 __[カスタム]__ を選択します。 それ以外の場合は、用意されているスクリプトのいずれかを選択します。 |
     | Name |スクリプト アクションの名前を指定します。 |
@@ -180,9 +180,9 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
 
     ![HDInsight の複数のスクリプト アクション](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png)
 
-    スクリプトの追加が完了したら、 __[選択]__ ボタンを選択し、 __[次へ]__ ボタンを選択して、 __[クラスターの概要]__ セクションに進みます。
+    スクリプトの追加が完了したら、 **[構成と価格]** タブに戻ります。
 
-1. クラスターを作成するには、 __[クラスターの概要__] セクションで、 __[作成]__ を選択します。
+1. 残りのクラスター作成手順は、通常どおりに行います。
 
 ### <a name="use-a-script-action-from-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートからスクリプト アクションを使用する
 
@@ -246,7 +246,7 @@ HDInsight .NET SDK では、.NET アプリケーションから HDInsight を簡
 
     スクリプト形式の要素を次の表に示します。
 
-    | プロパティ | 値 |
+    | プロパティ | Value |
     | --- | --- |
     | スクリプトの選択 | 独自のスクリプトを使用するには、 __[カスタム]__ を選択します。 それ以外の場合、提供されているスクリプトを選択します。 |
     | Name |スクリプト アクションの名前を指定します。 |
@@ -327,7 +327,7 @@ HDInsight .NET SDK では、.NET アプリケーションから HDInsight を簡
 
 ### <a name="the-azure-portal"></a>Azure ポータル
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. 左側のメニューで、 **[すべてのサービス]**  >  **[分析]**  >  **[HDInsight クラスター]** に移動します。
 

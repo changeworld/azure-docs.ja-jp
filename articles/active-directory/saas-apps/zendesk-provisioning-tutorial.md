@@ -16,19 +16,19 @@ ms.topic: article
 ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f9d819533b97a126a324ab867b7185fd6415847
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a480119ee88521b920be88669f6d80e3754d24d3
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851978"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062748"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>チュートリアル:Zendesk を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、Zendesk に対するユーザーとグループのプロビジョニングとプロビジョニング解除を自動的に実行するように Azure AD を構成するために、Zendesk と Azure Active Directory (Azure AD) で実行する手順を示します。
 
 > [!NOTE]
-> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービス上に構築されるコネクタについて説明します。 このサービスで実行されること、しくみ、およびよく寄せられるについては、「[Azure Active Directory によるサービスとしてのソフトウェア (SaaS) アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。
+> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービス上に構築されるコネクタについて説明します。 このサービスで実行されること、しくみ、およびよく寄せられるについては、「[Azure Active Directory によるサービスとしてのソフトウェア (SaaS) アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -83,7 +83,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="configure-automatic-user-provisioning-for-zendesk-in-azure-ad"></a>Azure AD で Zendesk の自動ユーザー プロビジョニングを構成する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]**  >  **[Zendesk]** の順に選択します。
+1. [Azure portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]**  >  **[Zendesk]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -101,7 +101,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 5. **[管理者資格情報]** セクションに、Zendesk アカウントの管理ユーザー名、シークレット トークン、ドメインを入力します。 これらの値の例を次に示します。
 
-   * **[管理ユーザー名]** ボックスに、Zendesk テナントの管理者アカウントのユーザー名を入力します。 例: admin@contoso.com。
+   * **[管理ユーザー名]** ボックスに、Zendesk テナントの管理者アカウントのユーザー名を入力します。 たとえば admin@contoso.com です。
 
    * **[シークレット トークン]** ボックスに、手順 6 で説明されているシークレット トークンを入力します。
 
@@ -139,7 +139,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Zendesk の一致するグループ属性](./media/zendesk-provisioning-tutorial/ZenDesk13.png)
 
-14. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の手順を参照してください。
+14. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の手順を参照してください。
 
 15. Zendesk に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
@@ -157,7 +157,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 **[同期の詳細]** セクションを使用して進行状況を監視し、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。 このレポートには、Azure AD プロビジョニング サービスによって Zendesk で実行されたすべてのアクションが記述されます。
 
-Azure AD プロビジョニング ログの見方について詳しくは、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」を参照してください。
+Azure AD プロビジョニング ログの見方について詳しくは、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」を参照してください。
 
 ## <a name="connector-limitations"></a>コネクタの制限事項
 
@@ -167,12 +167,12 @@ Azure AD プロビジョニング ログの見方について詳しくは、「[
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)
+* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/zendesk-tutorial/tutorial_general_01.png

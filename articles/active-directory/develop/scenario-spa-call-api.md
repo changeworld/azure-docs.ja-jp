@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 05/06/2019
 ms.author: ryanwi
 ms.custom: aaddev
-ms.openlocfilehash: f3cafb4d2df4d1944f583a99ca2014f3841827d0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: ccece6c840033913ec6d96b446dcb98c4befb32f
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701860"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160000"
 ---
 # <a name="single-page-application-call-a-web-api"></a>シングルページ アプリケーション：Web API を呼び出す
 
@@ -27,7 +27,7 @@ Web API を呼び出す前に、`acquireTokenSilent` メソッドを呼び出し
 
 ## <a name="call-a-web-api"></a>Web API を呼び出す
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 取得したアクセス トークンを HTTP 要求のベアラーとして使用して、Microsoft Graph API などの任意の Web API を呼び出します。 次に例を示します。
 
@@ -47,9 +47,11 @@ Web API を呼び出す前に、`acquireTokenSilent` メソッドを呼び出し
         }
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 MSAL Angular ラッパーを使用すると、自動的にアクセス トークンをサイレントに取得して API への HTTP 要求にそれを添付するために HTTP インターセプターを利用できます。 詳細については、[API を呼び出すためのトークンの取得](scenario-spa-acquire-token.md)に関するページを参照してください。
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 

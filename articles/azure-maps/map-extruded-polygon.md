@@ -9,21 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 36914240caf3c1321dfa0102bd87cb29173f8b1d
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: f01e07ea2bbfd0f6b3b0cc19dd219d71984a0d45
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911065"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988568"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map"></a>マップに多角形浮き出しレイヤーを追加する
 
-この記事では、多角形浮き出しレイヤーを使用し、フィーチャー ジオメトリ `Polygon` および `MultiPolygon` の領域がマップ上で浮き出るようにレンダリングする方法を紹介します。 Azure Maps の Web SDK では、[拡張 GeoJSON スキーマ](extend-geojson.md#circle)で定義されている円のジオメトリの作成もサポートしています。 これらの円は、マップ上にレンダリングされるときに多角形に変換されます。 [atlas.Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) クラスでラップされている場合は、すべてのフィーチャー ジオメトリも簡単に更新することができます。
-
+この記事では、多角形浮き出しレイヤーを使用して、フィーチャー ジオメトリ `Polygon` および `MultiPolygon` の領域が浮き出るようにレンダリングする方法を紹介します。 Azure Maps の Web SDK では、[拡張 GeoJSON スキーマ](extend-geojson.md#circle)で定義されている円のジオメトリのレンダリングをサポートしています。 これらの円は、マップ上にレンダリングされるときに多角形に変換できます。 [atlas.Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) クラスでラップされている場合は、すべてのフィーチャー ジオメトリを簡単に更新することができます。
 
 ## <a name="use-a-polygon-extrusion-layer"></a>多角形浮き出しレイヤーを使用する
 
-[多角形浮き出しレイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer?view=azure-maps-typescript-latest)がデータ ソースに接続されており、マップ上に読み込まれると、フィーチャー `Polygon` および `MultiPolygon` の領域が浮き出してレンダリングされます。 多角形浮き出しレイヤーの `height` プロパティと `base` プロパティにより、地面からの基本距離と浮き出し形状の高さが**メートル**で定義されます。 次のコードでは、多角形を作成してそれをデータ ソースに追加し、PolygonExtrusionLayer クラスを利用してレンダリングする方法を確認できます。
+[多角形浮き出しレイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer?view=azure-maps-typescript-latest)をデータ ソースに接続します。 その後、マップに読み込まれます。 多角形浮き出しレイヤーでは、`Polygon` および `MultiPolygon` のフィーチャーの領域が浮き出るようにレンダリングされます。 多角形浮き出しレイヤーの `height` プロパティと `base` プロパティにより、地面からの基本距離と浮き出し形状の高さが**メートル**で定義されます。 次のコードでは、多角形を作成してそれをデータ ソースに追加し、PolygonExtrusionLayer クラスを利用してレンダリングする方法を確認できます。
 
 > [!Note]
 > 多角形浮き出しレイヤーに定義されている `base` 値は、`height` 以下にする必要があります。
@@ -34,9 +33,9 @@ ms.locfileid: "75911065"
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/wvvBpvE'>Extruded polygon</a>」Pen を参照してください。</iframe>
 
 
-## <a name="add-data-driven-multipolygons"></a>データ ドリブン マルチポリゴンを追加する
+## <a name="add-data-driven-polygons"></a>データ ドリブン ポリゴンを追加する
 
-多角形浮き出しレイヤーを利用して階級区分図をレンダリングできます。その際、その `height` プロパティと `fillColor` プロパティをフィーチャー ジオメトリ `Polygon` および `MultiPolygon` の統計変数の測定値に比例するように設定します。 次のコード サンプルからは、州別の人口密度測定値を基準とする、米国の浮き出し階級区分図を確認できます。
+階級区分図は、多角形浮き出しレイヤーを使用してレンダリングできます。 浮き出しレイヤーの `height` および `fillColor` プロパティを、`Polygon` および `MultiPolygon` フィーチャー ジオメトリの統計変数の測定値に設定します。 次のコード サンプルからは、州別の人口密度測定値を基準とする、米国の浮き出し階級区分図を確認できます。
 
 <br/>
 
@@ -62,7 +61,7 @@ Azure Maps は、[ここ](https://docs.microsoft.com/azure/azure-maps/extend-geo
 } 
 ```
 
-Azure Maps Web SDK では、このようなフィーチャー `Point` が内部的に `Polygon` に変換され、次のコード サンプルで示すように、多角形浮き出しレイヤーを使用してマップ上にレンダリングできます。
+Azure Maps Web SDK では、このような `Point` フィーチャーが内部的に `Polygon` フィーチャーに変換されます。 このような `Point` フィーチャーは、次のコード サンプルで示すように、多角形浮き出しレイヤーを使用してマップ上にレンダリングできます。
 
 <br/>
 

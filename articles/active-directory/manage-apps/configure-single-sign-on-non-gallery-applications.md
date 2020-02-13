@@ -12,12 +12,12 @@ ms.date: 07/19/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 709f8083e50391718d34587bd0ea1d847cc41923
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ad27ad5e34d9f44fe7d7be80e05e33dd6fb5e7b1
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841967"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159065"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>ギャラリー以外のアプリケーションに SAML ベースのシングル サインオンを構成する
 
@@ -158,9 +158,9 @@ SAML ベースの ID プロバイダーとして Azure AD を使用するよう�
 
 4. 成功するまでテストを再実行します。
 
-詳細については、「[Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする](../develop/howto-v1-debug-saml-sso-issues.md)」を参照してください。
+詳細については、「[Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする](../azuread-dev/howto-v1-debug-saml-sso-issues.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 - [アプリケーションにユーザーまたはグループを割り当てる](methods-for-assigning-users-and-groups.md)
-- [自動ユーザー アカウント プロビジョニングを構成する](configure-automatic-user-provisioning-portal.md)
+- [自動ユーザー アカウント プロビジョニングを構成する](../app-provisioning/configure-automatic-user-provisioning-portal.md)

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: ca1b9854b118d359167873313f1fcb11bfecee52
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: d74a7906157eed33487a5f88082701da1b2269dc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911006"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988551"
 ---
 # <a name="get-shape-data"></a>図形データを取得する
 
-この記事では、[描画マネージャー](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#getsource--)の **drawingManager.getSource()** 関数を使用して、マップ上に描画された図形データを取得する方法について説明します。 さまざまなシナリオで、描画された図形の geojson データを抽出し、他の場所で使用することが必要になる場合があります。  
+この記事では、マップに描画された図形のデータを取得する方法について説明します。 [描画マネージャー](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#getsource--)内で **drawingManager.getSource()** 関数を使用します。 描画された図形の geojson データを抽出し、他の場所で使用することが必要になるさまざまなシナリオがあります。  
 
 
 ## <a name="get-data-from-drawn-shape"></a>描画された図形からデータを取得する

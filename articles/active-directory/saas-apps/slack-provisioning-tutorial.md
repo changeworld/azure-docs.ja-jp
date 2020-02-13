@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cd8e483d6c189e311fdb1925ad0f2effc2affe1
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: cdc912c2df435f9b7e591d7c5475e126e6b0aeb7
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849150"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062831"
 ---
-# <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>チュートリアル: Slack を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>チュートリアル:Slack を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、Azure AD から Slack にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するうえで Slack と Azure AD で実行する必要がある手順について説明します。
 
@@ -78,7 +78,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 8. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、下のチェック ボックスをオンにします。
 
-9. **[Save]** をクリックします。
+9. **[保存]** をクリックします。
 
 10. [マッピング] セクションの **[Synchronize Azure Active Directory Users to Slack (Azure Active Directory ユーザーを Slack に同期する)]** を選択します。
 
@@ -86,7 +86,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 12. Slack に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
-13. **[Save]** をクリックします。
+13. **[保存]** をクリックします。
 
 これで、[ユーザーとグループ] セクションで Slack に割り当てたユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかることに注意してください。後続の同期は、サービスが実行されている限り約 10 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、プロビジョニング サービスによって Slack アプリに対して実行されたすべてのアクションが記載されています。
 
@@ -102,11 +102,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 3. **[属性マッピング]** セクションで、Azure AD から Slack に同期するグループ属性を確認します。 **[Matching (照合)]** プロパティとして選択されている属性は、更新処理で Slack のグループとの照合に使用されることに注意してください。 
 
-4. **[Save]** をクリックします。
+4. **[保存]** をクリックします。
 
 これで、 **[ユーザーとグループ]** セクションで Slack に割り当てられたグループ オブジェクトが、Azure AD から Slack に完全に同期されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ ログを取得できます。このログには、プロビジョニング サービスによって Slack アプリに対して実行されたすべてのアクションが記載されています。
 
-Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
+Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」をご覧ください。
 
 ## <a name="connector-limitations"></a>コネクタの制限事項
 
@@ -126,5 +126,5 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)

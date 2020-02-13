@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 0cd7625a8e89365ccb966c0aa847e5b337f33acc
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 32756187852de0834afc1dc034d3f7419f0c8087
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76900203"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118398"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>クイック スタート:cURL で REST API を使用して Form Recognizer モデルをトレーニングし、フォーム データを抽出する
 
@@ -25,7 +25,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="prerequisites"></a>前提条件
 
 このクイック スタートを完了するには、以下が必要です。
-- アクセスが制限された Form Recognizer プレビューへのアクセス。 プレビューへのアクセスを取得するには、[Form Recognizer アクセス要求](https://aka.ms/FormRecognizerRequestAccess)フォームに記入して送信します。
 - インストールされた [cURL](https://curl.haxx.se/windows/)。
 - 同じ種類の少なくとも 6 つのフォームのセット。 そのうちの 5 つを使用してモデルをトレーニングした後、6 つ目のフォームでそれをテストします。 使用するフォームはファイルの種類が異なってもかまいませんが、ドキュメントの種類は同じである必要があります。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)を使用できます。 Azure Storage アカウントの BLOB ストレージ コンテナーのルートにトレーニング ファイルをアップロードします。 テスト ファイルは別個のフォルダーに置くことができます。
 

@@ -2,22 +2,22 @@
 title: 承認エージェントとそれらを有効にする方法 | Azure
 description: Microsoft Authentication Library (MSAL) によって Android アプリで使用できるさまざまな承認エージェントと、それらを有効にする方法について説明します。
 services: active-directory
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/05/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: shoatman, brianmel, hahamil
 ms.custom: aaddev
-ms.openlocfilehash: c2d0c8a877ba856aa7a93bfc960c44b63cbe8f9c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 4f1b3fc5b60069cfa47d437e4341ded141204418
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698001"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085337"
 ---
 # <a name="authorization-agents-android"></a>承認エージェント (Android)
 

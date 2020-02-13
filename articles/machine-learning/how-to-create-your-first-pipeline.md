@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 01ab09383a29db38d2ce8c7c513bed76aafcc44a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b50fcea6f1a479ac295a3a6832d1ab828e01ea3d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845943"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986395"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure Machine Learning SDK で機械学習パイプラインを作成して管理する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * [開発環境を構成](how-to-configure-environment.md)して Azure Machine Learning SDK をインストールするか、SDK が既にインストールされている [Azure Machine Learning コンピューティング インスタンス (プレビュー)](concept-compute-instance.md) を使用します。
 
 > [!NOTE]
-> コンピューティング インスタンスは、**米国中北部**、**米国東部 2**、**北ヨーロッパ**、または**英国南部**のワークスペースにのみ使用できます。
+> コンピューティング インスタンスは、**米国中北部**、**米国東部 2**、**北ヨーロッパ**、または**英国南部**リージョンのワークスペースでのみ使用できます。他のリージョンは近日中にサポートされる予定です。
 >ワークスペースが他のリージョンにある場合は、代わりに [Notebook VM](concept-compute-instance.md#notebookvm) を引き続き作成して使用することができます。 
 
 まず、ワークスペースをアタッチします。

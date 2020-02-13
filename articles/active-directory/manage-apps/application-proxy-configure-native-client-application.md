@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cbee6bfcca3ddb356abe9dceab2fca07c152b07
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 3d2a2bb9dd543da7455a276075a829ef06032edb
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961810"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159286"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする方法
 
@@ -31,7 +31,7 @@ Azure Active Directory (Azure AD) アプリケーション プロキシは、Web
 
 ![エンド ユーザー、Azure AD、発行済みアプリケーション間の関係](./media/application-proxy-configure-native-client-application/richclientflow.png)
 
-ネイティブ アプリケーションを発行するには、認証の処理が行われ、多数のクライアント環境がサポートされている、Azure AD Authentication Library を使います。 アプリケーション プロキシは、 [ネイティブ アプリケーションから Web API のシナリオ](../develop/native-app.md)に適しています。
+ネイティブ アプリケーションを発行するには、認証の処理が行われ、多数のクライアント環境がサポートされている、Azure AD Authentication Library を使います。 アプリケーション プロキシは、 [ネイティブ アプリケーションから Web API のシナリオ](../azuread-dev/native-app.md)に適しています。
 
 この記事では、アプリケーション プロキシと Azure AD Authentication Library を使用してネイティブ アプリケーションを発行するための 4 つの手順を説明します。
 
@@ -60,7 +60,7 @@ Azure Active Directory (Azure AD) アプリケーション プロキシは、Web
 1. **[リダイレクト URI]** という見出しで、 **[パブリック クライアント (モバイルとデスクトップ)]** を選択し、アプリケーションのリダイレクト URI を入力します。
 1. **Microsoft プラットフォームのポリシー**を選択して読んだ後、 **[登録]** を選択します。 新しいアプリケーション登録の概要ページが作成されて、表示されます。
 
-新しいアプリ登録の作成について詳しくは、[Azure Active Directory とのアプリケーションの統合](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)に関する記事をご覧ください。
+新しいアプリ登録の作成について詳しくは、[Azure Active Directory とのアプリケーションの統合](../develop/quickstart-register-app.md)に関する記事をご覧ください。
 
 ## <a name="step-3-grant-access-to-your-proxy-application"></a>手順 3:プロキシ アプリケーションへのアクセスを許可する
 
@@ -103,8 +103,8 @@ HttpResponseMessage response = await httpClient.GetAsync("< Proxy App API Url >"
 
 これらのパラメーターで ADAL を編集した後は、会社のネットワークの外部のユーザーであっても、ネイティブ クライアント アプリケーションに対して認証を行うことができるようになります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-ネイティブ アプリケーション フローの詳細については、[Azure Active Directory でのネイティブ アプリ](../develop/native-app.md)に関する記事をご覧ください。
+ネイティブ アプリケーション フローの詳細については、[Azure Active Directory でのネイティブ アプリ](../azuread-dev/native-app.md)に関する記事をご覧ください。
 
 [Azure Active Directory でのアプリケーションへのシングル サインオン](what-is-single-sign-on.md#choosing-a-single-sign-on-method)のセットアップについて確認してください。

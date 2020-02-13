@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: pafarley
-ms.openlocfilehash: ea716caf575fce1197c12f3cb3cea8348c7a04c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 476763e1cb354edb8cdc4cbbae0d3aa7017faa16
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451003"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118749"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>クイック スタート:Python で Form Recognizer の REST API を使用してテキストとレイアウト情報を抽出する
 
@@ -25,7 +25,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="prerequisites"></a>前提条件
 
 このクイック スタートを完了するには、以下が必要です。
-- アクセスが制限された Form Recognizer プレビューへのアクセス。 プレビューへのアクセスを取得するには、[Form Recognizer アクセス要求](https://aka.ms/FormRecognizerRequestAccess)フォームに記入して送信します。
 - インストールされている [Python](https://www.python.org/downloads/) (サンプルをローカルで実行する場合)。
 - フォーム ドキュメント。 [サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)から、このクイックスタート用の画像をダウンロードします。
 

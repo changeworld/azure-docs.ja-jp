@@ -3,12 +3,12 @@ title: コンテナー用 Azure Monitor のライブ データ (プレビュー)
 description: この記事では、コンテナー用 Azure Monitor で kubectl を使用せずに、コンテナーのログ (stdout/stderr) とイベントのリアルタイム ビューを設定する方法について説明します。
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 5a3d020132e3c93eab7fec46d1ffe45d00b5ed43
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1ca52384e5ce657e4fedeb42e3304449a2d6be11
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404697"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030686"
 ---
 # <a name="how-to-setup-the-live-data-preview-feature"></a>ライブ データ (プレビュー) 機能を設定する方法
 
@@ -101,7 +101,7 @@ Azure portal が信頼されたリダイレクト URL として承認ページ�
 Kubernetes での高度なセキュリティ設定の詳細については、[Kubernetes のドキュメント](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)をご覧ください。 
 
 >[!NOTE]
->新しい RBAC 対応クラスターを作成する場合は、「[Azure Active Directory と Azure Kubernetes Service を統合する](../../aks/azure-ad-integration.md)」を参照し、手順に従って Azure AD 認証を構成してください。 クライアント アプリケーションを作成する手順の該当するセクションの注で、コンテナー用 Azure Monitor 用に作成する必要がある 2 つのリダイレクト URL が強調されています。 
+>新しい RBAC 対応クラスターを作成する場合は、「[Azure Active Directory と Azure Kubernetes Service を統合する](../../aks/azure-ad-integration.md)」を参照し、手順に従って Azure AD 認証を構成してください。 クライアント アプリケーションを作成する手順の該当するセクションの注で、コンテナー用 Azure Monitor 用に作成する必要がある、以下の手順 3 で指定するものと一致する 2 つのリダイレクト URL が強調されています。
 
 ### <a name="client-registration-reconfiguration"></a>クライアント登録の再構成
 

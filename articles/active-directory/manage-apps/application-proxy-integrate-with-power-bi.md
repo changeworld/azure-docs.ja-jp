@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9faa1fffde5553168c8b76ea40cebc001c1e27b2
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: bc96c94152b39cc70cfc4553690faaa5b9cb8d20
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275524"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111575"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用して Power BI Mobile へのリモート アクセスを有効にする
 
@@ -73,7 +73,7 @@ KCD を構成するには、コネクタ コンピューターごとに以下の
 4. 委任設定を **[指定されたサービスへの委任でのみこのコンピューターを信頼する]** に設定します。 **[任意の認証プロトコルを使う]** を選択します。
 5. **[追加]** を選択し、 **[ユーザーまたはコンピューター]** を選択します。
 6. Reporting Services に使用しているサービス アカウントを入力します。 これは、Reporting Services の構成内で SPN を追加したアカウントです。
-7. Click **OK**. 変更を保存するために、もう一度 **[OK]** をクリックします。
+7. **[OK]** をクリックします。 変更を保存するために、もう一度 **[OK]** をクリックします。
 
 詳細については、「[アプリケーション プロキシを使ったアプリへのシングル サインオンの Kerberos の制約付き委任](application-proxy-configure-single-sign-on-with-kcd.md)」を参照してください。
 
@@ -139,9 +139,6 @@ Power BI モバイル アプリがレポート サービスに接続してアク
 
 ## <a name="step-5-configure-intune-policy-for-managed-devices-optional"></a>手順 5:マネージド デバイスの Intune ポリシーを構成する (省略可能)
 
-> [!NOTE]
-> この機能は現在、iOS 上でのみ使用できます。
-
 Microsoft Intune を使用して、会社の従業員が使用するクライアント アプリを管理できます。 Intune では、データの暗号化や追加のアクセス要件などの機能を使用できます。 Intune を使用したアプリ管理の詳細については、Intune App の管理に関する記事を参照してください。 Power BI Mobile アプリケーションが Intune ポリシーと連携できるようにするには、次の手順を実行します。
 
 1. **[Azure Active Directory]** 、 **[アプリの登録]** の順に移動します。
@@ -157,7 +154,7 @@ Microsoft Intune を使用して、会社の従業員が使用するクライア
 
 レポートの読み込みが数分以上試行された後にアプリケーションからエラー ページが返された場合、タイムアウト設定の変更が必要になることがあります。 既定では、アプリケーション プロキシは、要求に応答するまでに最大 85 秒かかるアプリケーションをサポートします。 この設定を 180 秒に延長するには、アプリケーションの [アプリ プロキシ] 設定ページでバックエンドのタイムアウト を **[Long]\(長い\)** に設定します。 高速で信頼性の高いレポートを作成する方法のヒントについては、[Power BI レポートのベスト プラクティス](https://docs.microsoft.com/power-bi/power-bi-reports-performance)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにします](application-proxy-configure-native-client-application.md)。
 - [Power BI Mobile アプリでオンプレミスのレポート サーバー レポートと KPI を表示します](https://docs.microsoft.com/power-bi/consumer/mobile/mobile-app-ssrs-kpis-mobile-on-premises-reports)

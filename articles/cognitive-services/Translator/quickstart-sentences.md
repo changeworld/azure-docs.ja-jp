@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 505e16711281ba12c9c134799e7fb00db995f9fa
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ab7d2ccccf7f309c59c5b8ad4ac26350030760cf
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975722"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118788"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length"></a>クイック スタート:Translator Text API を使用して文の長さを調べる
 
@@ -54,7 +54,7 @@ ms.locfileid: "74975722"
 
 ::: zone-end
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [テキストを翻訳する](quickstart-translate.md)
 * [テキストを表記変換する](quickstart-transliterate.md)

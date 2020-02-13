@@ -3,17 +3,17 @@ title: 結果の並べ替えに関する C# チュートリアル
 titleSuffix: Azure Cognitive Search
 description: このチュートリアルでは、検索結果を並び替える方法について説明します。 これは、プライマリ プロパティ、セカンダリ プロパティで並び替える前のホテル プロジェクトに基づいて作成されており、引き上げ基準を追加するためのスコアリング プロファイルが含まれています。
 manager: nitinme
-author: PeterTurcan
-ms.author: v-pettur
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 9230e555f9ea56ca4cda3fcabe1f9719e36a8f62
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/10/2020
+ms.openlocfilehash: 812085a5a4b3e8d1233f19c947d2fd5e433f6ab7
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112671"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121552"
 ---
 # <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C# のチュートリアル: 結果の並べ替え - Azure Cognitive Search
 
@@ -32,7 +32,7 @@ ms.locfileid: "74112671"
 
 このチュートリアルを完了するには、以下を実行する必要があります。
 
-無限スクロール バージョンの「[C# のチュートリアル: 検索結果のページング - Azure Cognitive Search](tutorial-csharp-paging.md)」プロジェクトを稼働させます。 このプロジェクトは、独自のバージョンのものでも、GitHub の「[Create first app (初めてのアプリを作成する)](https://github.com/Azure-Samples/azure-search-dotnet-samples)」からインストールしたものでも構いません。
+無限スクロール バージョンの「[C# のチュートリアル: 検索結果のページング - Azure Cognitive Search](tutorial-csharp-paging.md)」プロジェクトを稼働させます。 このプロジェクトは、独自のバージョンのものでも、GitHub の「[Create first app (初めてのアプリを作成する)](https://github.com/Azure-Samples/azure-search-dotnet-samples)」サンプルを開きます。
 
 ## <a name="order-results-based-on-one-property"></a>1 つのプロパティに基づいて結果を並べ替える
 
@@ -114,7 +114,7 @@ ms.locfileid: "74112671"
     ```
 
     >[!Tip]
-    >通常、ブラウザーは css ファイルをキャッシュしますが、これによって古い css ファイルが使用され、編集が無視される可能性があります。 これを回避するための良い方法は、バージョン パラメーターを持つクエリ文字列をリンクに追加することです。 例:
+    >通常、ブラウザーは css ファイルをキャッシュしますが、これによって古い css ファイルが使用され、編集が無視される可能性があります。 これを回避するための良い方法は、バージョン パラメーターを持つクエリ文字列をリンクに追加することです。 次に例を示します。
     >
     >```html
     >   <link rel="stylesheet" href="~/css/hotels.css?v1.1" />
@@ -970,7 +970,7 @@ ms.locfileid: "74112671"
 * 当然ながら、(ある地点からの距離のように) 昇順で並べ替える結果もあれば、(宿泊客の評価のように) 降順で並べ替える結果もあります。
 * スコアリング プロファイルは、データ セットに対して数値での比較が利用できない、またはそれによって適切な結果が得られない場合に定義できます。 個々の結果にスコアを付けると、結果をインテリジェントに並べ替えて表示するために役立ちます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この一連の C# チュートリアルを完了しました。Azure Cognitive Search API に関する貴重な知識が得られたことでしょう。
 

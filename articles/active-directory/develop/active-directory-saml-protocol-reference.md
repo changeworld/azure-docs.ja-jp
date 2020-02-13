@@ -13,12 +13,12 @@ ms.date: 10/05/2018
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 372eac63b2ab9ea7dea540a088d61a5144886686
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: dc7771f29fb5d00aedfe5162a98f5f0c14544a7b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698596"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161173"
 ---
 # <a name="how-azure-ad-uses-the-saml-protocol"></a>Azure AD で SAML プロトコルを使用する方法
 
@@ -36,4 +36,4 @@ Azure Active Directory は、テナント固有および共通 (テナント独�
 
 * テナント独立のエンドポイントは、`https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml` にあります。 このエンドポイント アドレスの **common** は、テナントのドメイン名または ID の代わりに表示されます。
 
-Azure AD で発行されるフェデレーション メタデータ ドキュメントについては、「[フェデレーション メタデータ](azure-ad-federation-metadata.md)」を参照してください。
+Azure AD で発行されるフェデレーション メタデータ ドキュメントについては、「[フェデレーション メタデータ](../azuread-dev/azure-ad-federation-metadata.md)」を参照してください。

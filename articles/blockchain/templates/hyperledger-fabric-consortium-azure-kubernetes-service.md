@@ -4,12 +4,12 @@ description: Azure Kubernetes Service に Hyperledger Fabric コンソーシア�
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: v-umha
-ms.openlocfilehash: 59e13b671f68c29271227d481b41562256d66fd6
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 5aed420295fd17cf4e7b26c86e8b84c4687e6545
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289647"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029913"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 上の Hyperledger Fabric コンソーシアム
 
@@ -143,7 +143,6 @@ SWITCH_TO_AKS_CLUSTER() { az aks get-credentials --resource-group $1 --name $2 -
 ORDERER_AKS_SUBSCRIPTION=<ordererAKSClusterSubscriptionID>
 ORDERER_AKS_RESOURCE_GROUP=<ordererAKSClusterResourceGroup>
 ORDERER_AKS_NAME=<ordererAKSClusterName>
-ORDERER_DNS_ZONE=
 ORDERER_DNS_ZONE=$(az aks show --resource-group $ORDERER_AKS_RESOURCE_GROUP --name $ORDERER_AKS_NAME --subscription $ORDERER_AKS_SUBSCRIPTION -o json | jq .addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName | tr -d '"')
 ORDERER_END_POINT="orderer1.$ORDERER_DNS_ZONE:443"
 CHANNEL_NAME=<channelName>
@@ -466,7 +465,7 @@ npm run queryCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL -f <que
 
 ```
 
-`<queryFunction>` と `<queryFuncArgs>` で、クエリ関数名とコンマ区切りの引数リストを渡します。 ここでも、`fabcar` チェーンコードを参照すると、ワールド状態のすべての自動車のクエリを実行するために、`<queryFunction>` を `"queryAllCars"` に設定し、`<queryArgs>' to ` を "" に設定しています。
+`<queryFunction>` と `<queryFuncArgs>` で、クエリ関数名とコンマ区切りの引数リストを渡します。 ここでも、`fabcar` チェーンコードを参照すると、ワールド状態のすべての自動車のクエリを実行するために、`<queryFunction>` を `"queryAllCars"` に設定し、`<queryArgs>` を `""` に設定しています。
 
 コマンドに渡す引数の詳細については、コマンドのヘルプを参照してください
 

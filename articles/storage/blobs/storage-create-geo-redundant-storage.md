@@ -6,23 +6,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 12/04/2019
+ms.date: 02/10/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 55846c76f2c3ef1c5d884af39af85db3abe38aad
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0eabd918b5f8f52049792ceb28ef8055945d6475
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892908"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162176"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>チュートリアル:Blob Storage を使用して高可用性アプリケーションを作成する
 
 このチュートリアルは、シリーズの第 1 部です。 ここでは、Azure でアプリケーション データを高可用にする方法について学習します。
 
-このチュートリアルを完了すると、BLOB を[読み取りアクセス geo 冗長ストレージ](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) ストレージ アカウントにアップロードし、取得するコンソール アプリケーションが作成されます。
+このチュートリアルを完了すると、BLOB を[読み取りアクセス geo 冗長ストレージ](../common/storage-redundancy.md) (RA-GRS) ストレージ アカウントにアップロードし、取得するコンソール アプリケーションが作成されます。
 
 RA-GRS は、プライマリ リージョンからセカンダリ リージョンにトランザクションをレプリケートすることによって機能します。 このレプリケーション プロセスにより、セカンダリ リージョンのデータの結果整合性が保証されます。 アプリケーションでは、[サーキット ブレーカー](/azure/architecture/patterns/circuit-breaker) パターンを使用して、接続先のエンドポイントを判断し、障害と復旧がシミュレートされたときに自動的にエンドポイント間を切り替えます。
 
@@ -50,7 +50,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * [Python](https://www.python.org/downloads/) のインストール
 * [Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python) をダウンロードしてインストールします。
 
-# <a name="nodejstabnodejs"></a>[Node.JS](#tab/nodejs)
+# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
 * [Node.js](https://nodejs.org) をインストールします。
 
@@ -58,7 +58,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure Portal](https://portal.azure.com/) にサインインします。
+[Azure portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
@@ -71,7 +71,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 3. **[おすすめ]** の下にある **[ストレージ アカウント - Blob、File、Table、Queue]** を選択します。
 4. 下図のように、ストレージ アカウント フォームに次の情報を入力し、 **[作成]** を選択します。
 
-   | Setting       | 推奨値 | Description |
+   | 設定       | 推奨値 | 説明 |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Name** | mystorageaccount | ストレージ アカウント用の一意の値 |
    | **デプロイ モデル** | リソース マネージャー  | Resource Manager には最新の機能が含まれています。|
@@ -80,7 +80,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    | **レプリケーション**| 読み取りアクセス geo 冗長ストレージ (RA-GRS) | サンプルが動作するには、この設定が必要です。 |
    |**サブスクリプション** | 該当するサブスクリプション |サブスクリプションの詳細については、[サブスクリプション](https://account.azure.com/Subscriptions)に関するページを参照してください。 |
    |**ResourceGroup** | myResourceGroup |有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |
-   |**Location** | East US | 場所を選択します。 |
+   |**場所** | East US | 場所を選択します。 |
 
 ![ストレージ アカウントの作成](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 
@@ -102,7 +102,7 @@ git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-patter
 git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
-# <a name="nodejstabnodejs"></a>[Node.JS](#tab/nodejs)
+# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
 [サンプル プロジェクトをダウンロード](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs)して、ファイルを解凍します。 [git](https://git-scm.com/) を使って、アプリケーションのコピーを開発環境にダウンロードすることもできます。 サンプル プロジェクトには基本的な Node.js アプリケーションが含まれています。
 
@@ -152,7 +152,7 @@ setx accountname "<youraccountname>"
 setx accountkey "<youraccountkey>"
 ```
 
-# <a name="nodejstabnodejs"></a>[Node.JS](#tab/nodejs)
+# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
 このサンプルを実行するには、実際のストレージ アカウントの資格情報を `.env.example` ファイルに追加し、その名前を `.env` に変更する必要があります。
 
@@ -191,7 +191,7 @@ Visual Studio で **F5** キーを押すか **[スタート]** を選択して�
 
 ダウンロードの前に、サービス オブジェクトの [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) と [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) 関数が定義されています。 これらの関数に定義されているイベント ハンドラーが、ダウンロードが正常に完了したとき、またはダウンロードが失敗して再試行する場合に呼び出されます。
 
-# <a name="nodejstabnodejs"></a>[Node.JS](#tab/nodejs)
+# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
 サンプルを実行するには、コマンド プロンプトを開いてサンプル フォルダーに移動し、「`node index.js`」と入力します。
 
@@ -316,7 +316,7 @@ def response_callback(response):
             secondary_read_count = 0
 ```
 
-### <a name="nodejstabnodejs"></a>[Node.JS](#tab/nodejs)
+### <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
 Node.js V10 SDK では、コールバック ハンドラーは不要です。 代わりにこのサンプルでは、再試行オプションとセカンダリ エンドポイントを含むパイプラインを作成しています。 これによりアプリケーションは、プライマリ パイプラインで必要なデータに到達できなかった場合でも、自動的にセカンダリ パイプラインに切り替えることができます。
 
@@ -341,7 +341,7 @@ const pipeline = StorageURL.newPipeline(sharedKeyCredential, {
 
 ---
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 シリーズの第 1 部では、RA-GRS ストレージ アカウントでアプリケーションを高可用にする方法について学習しました。
 

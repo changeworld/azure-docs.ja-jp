@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
-ms.openlocfilehash: 837d62784a56ad0f17471cca5a660819d4a83e12
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9ca2ea6a45bdf37f15f2ab4fd9c685f11f6d7f64
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926756"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031494"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>パイプライン アクティビティでの Azure Key Vault シークレットの使用
 
@@ -47,11 +47,11 @@ ms.locfileid: "74926756"
 
 4. データ ファクトリ パイプラインで、新しい Web アクティビティを追加し、次のように構成します。  
 
-    |プロパティ  |値  |
+    |プロパティ  |Value  |
     |---------|---------|
     |セキュリティで保護された出力     |True         |
     |URL     |[自分のシークレットの URI 値]?api-version=7.0         |
-    |方法     |GET         |
+    |Method     |GET         |
     |認証     |MSI         |
     |リソース        |https://vault.azure.net       |
 
@@ -63,10 +63,10 @@ ms.locfileid: "74926756"
     > [!CAUTION]
     > シークレット値がプレーンテキストでログに記録されないようにするには、[セキュリティで保護された出力] オプションを true に設定します。  この値を使用するその他のアクティビティでは、[セキュリティで保護された入力] オプションが true に設定されている必要があります。
 
-5. この値を別のアクティビティで使用するには、コード式 **@activity("web").output.value)** を使用します。
+5. この値を別のアクティビティで使用するには、コード式 **@activity("web").output.value** を使用します。
 
     ![コード式](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Key Vault を使用して、データ ストアおよび計算のための資格情報を格納する方法については、「[Azure Key Vault への資格情報の格納](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)」を参照してください

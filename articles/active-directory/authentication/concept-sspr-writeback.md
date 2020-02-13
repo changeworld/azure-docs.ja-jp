@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70d3e17a007e8cfa7eed299659d4cff114f72158
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c92048d2fce4a098da1e707ec8f7d75479d563f1
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023125"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161581"
 ---
 # <a name="what-is-password-writeback"></a>パスワード ライトバックとは
 
@@ -29,7 +29,7 @@ ms.locfileid: "77023125"
 * [パススルー認証](../hybrid/how-to-connect-pta.md)
 
 > [!WARNING]
-> [Azure Access Control Service (ACS) が 2018 年 11 月 7 日に廃止される](../develop/active-directory-acs-migration.md)と、パスワード ライトバックは Azure AD Connect バージョン 1.0.8641.0 以前を使用している顧客には機能しなくなります。 Azure AD Connect バージョン 1.0.8641.0 以前では、パスワード ライトバックは ACS に依存しているため、この時点でこの機能を許可することはなくなります。
+> [Azure Access Control Service (ACS) が 2018 年 11 月 7 日に廃止される](../azuread-dev/active-directory-acs-migration.md)と、パスワード ライトバックは Azure AD Connect バージョン 1.0.8641.0 以前を使用している顧客には機能しなくなります。 Azure AD Connect バージョン 1.0.8641.0 以前では、パスワード ライトバックは ACS に依存しているため、この時点でこの機能を許可することはなくなります。
 >
 > 稼働中に中断しないように、Azure AD Connect の前のバージョンからより新しいバージョンにアップグレードします。「[Azure AD Connect: 旧バージョンから最新バージョンにアップグレードする](../hybrid/how-to-upgrade-previous-version.md)」の記事を参照してください。
 >

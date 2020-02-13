@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: b5c323bf3d5ff55c2c30961003e8c456cbe39c82
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4577f611287a27366b1168e07565861c16fe0e38
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823659"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987024"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Elastic Database ツールの概要
 
@@ -81,17 +81,17 @@ JAR ファイルをビルドし、サンプル プロジェクトを始めるに
 
 サンプルをダウンロードして実行するには、次の手順を実行します。 
 
-1. [Elastic DB Tools for Azure SQL - Getting Started のサンプル](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-a80d8dc6)を MSDN からダウンロードします。 任意の場所にサンプルを解凍します。
+1. [Elastic DB Tools for Azure SQL - Getting Started のサンプル](https://github.com/Azure/elastic-db-tools)をダウンロードします。 任意の場所にサンプルを解凍します。
 
 2. *ElasticScaleStarterKit.sln* ソリューションを *C#* ディレクトリから開いてプロジェクトを作成します。
 
 3. サンプル プロジェクトのソリューションで、*app.config* ファイルを開きます。 ファイルの指示に従って、使う Azure SQL Database サーバーの名前とサインイン情報 (ユーザー名とパスワード) を追加します。
 
-4. アプリケーションをビルドし、実行します。 メッセージが表示されたら、Visual Studio によるソリューションの NuGet パッケージの復元を有効にします。 これにより、Elastic Database クライアント ライブラリの最新版が NuGet からダウンロードされます。
+4. アプリケーションをビルドして実行します。 メッセージが表示されたら、Visual Studio によるソリューションの NuGet パッケージの復元を有効にします。 これにより、Elastic Database クライアント ライブラリの最新版が NuGet からダウンロードされます。
 
 5. クライアント ライブラリの機能をより深く知るには、さまざまなオプションを試してみてください。 アプリケーションで実行されたステップはコンソールに出力されるので、動作していたコードをじっくりと検討することができます。
    
-    ![進捗状況][4]
+    ![進行状況][4]
 
 お疲れさまでした。 これで、SQL Database で Elastic Database ツールを使って、最初のシャーディング アプリケーションを適切にビルドし、実行できました。 Visual Studio または SQL Server Management Studio を使用して SQL Database に接続し、サンプルで作成したシャードの内容を簡単に確認してください。 新しいサンプル シャード データベースと、シャード マップ マネージャー データベースがサンプルで作成されていることがわかります。
 
@@ -122,15 +122,15 @@ Elastic Database ツール ライブラリは無料です。 Elastic Database �
 
 料金情報については、「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Elastic Database ツールについて詳しくは、以下の記事をご覧ください。
 
 * コード サンプル 
-  * Elastic Database ツール ([.NET](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE)、[Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
+  * Elastic Database ツール ([.NET](https://github.com/Azure/elastic-db-tools)、[Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
   * [Azure SQL 用 Elastic Database ツール - Entity Framework の統合](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
   * [スクリプト センターのシャードの弾力性](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
-* ブログ:[Elastic Scale の発表](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)
+* ブログ: [Elastic Scale の発表](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)
 * チャンネル 9:[Elastic Scale の概要に関するビデオ](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
 * ディスカッション フォーラム:[Azure SQL Database フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
 * パフォーマンスを測定するには:[シャード マップ マネージャーのパフォーマンス カウンター](sql-database-elastic-database-client-library.md)

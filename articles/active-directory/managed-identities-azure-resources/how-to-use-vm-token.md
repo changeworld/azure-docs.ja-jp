@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 443f1eb1576f2d6eb28d0de16f37e37912b707b9
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 9ac0f4d5c10cf128b6161163a81cc171bcafbd36
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547351"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158997"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Azure VM 上で Azure リソースのマネージド ID を使用してアクセス トークンを取得する方法 
 
@@ -38,14 +38,14 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 
 > [!IMPORTANT]
-> - この記事のすべてのサンプル コード/スクリプトは、Azure リソースのマネージド ID を使用する仮想マシン上でクライアントが実行されていることを前提としています。 お使いの VM にリモート接続するには、Azure portal で仮想マシンへの "接続" 機能を使用します。 VM で Azure リソースのマネージド ID を有効にする方法の詳細については、「[Configure managed identities for Azure resources on a VM using the Azure portal](qs-configure-portal-windows-vm.md)」(Azure portal を使用して VM 上で Azure リソースのマネージド ID を構成する)、または関連する記事 (PowerShell、CLI、テンプレート、または Azure SDK を使用) のいずれかを参照してください。 
+> - この記事のすべてのサンプル コード/スクリプトは、Azure リソースのマネージド ID を使用する仮想マシン上でクライアントが実行されていることを前提としています。 お使いの VM にリモート接続するには、Azure portal で仮想マシンへの "接続" 機能を使用します。 VM で Azure リソースのマネージド ID を有効にする方法の詳細については、「[Azure Portal を使用して VM 上に Azure リソースのマネージド ID を構成する](qs-configure-portal-windows-vm.md)」、または関連する記事 (PowerShell、CLI、テンプレート、または Azure SDK の使用) のいずれかを参照してください。 
 
 > [!IMPORTANT]
 > - Azure リソースのマネージド ID のセキュリティ境界は、使用されているリソースです。 仮想マシン上で実行されるすべてのコード/スクリプトは、そこで使用できる任意のマネージド ID のトークンを要求して取得できます。 
 
 ## <a name="overview"></a>概要
 
-クライアント アプリケーションは、特定のリソースにアクセスするために、Azure リソースの[アプリ専用アクセス トークン](../develop/developer-glossary.md#access-token)に対してマネージド ID を要求できます。 トークンは、[Azure リソース サービス プリンシパルのマネージド ID に基づいています](overview.md#how-does-the-managed-identities-for-azure-resources-work)。 そのため、独自のサービス プリンシパルでアクセス トークンを取得するために、クライアントそのものを登録する必要がありません。 トークンは、[クライアント資格情報を必要とするサービス間の呼び出し](../develop/v1-oauth2-client-creds-grant-flow.md)のベアラー トークンとしての使用に適しています。
+クライアント アプリケーションは、特定のリソースにアクセスするために、Azure リソースの[アプリ専用アクセス トークン](../develop/developer-glossary.md#access-token)に対してマネージド ID を要求できます。 トークンは、[Azure リソース サービス プリンシパルのマネージド ID に基づいています](overview.md#how-does-the-managed-identities-for-azure-resources-work)。 そのため、独自のサービス プリンシパルでアクセス トークンを取得するために、クライアントそのものを登録する必要がありません。 トークンは、[クライアント資格情報を必要とするサービス間の呼び出し](../develop/v2-oauth2-client-creds-grant-flow.md)のベアラー トークンとしての使用に適しています。
 
 |  |  |
 | -------------- | -------------------- |
@@ -371,7 +371,7 @@ Azure リソース エンドポイントのマネージド ID は、HTTP 応答�
 
 このセクションでは、想定されるエラー応答について説明します。 "200 OK" の状態は成功応答であり、access_token 要素内の応答本文の JSON にアクセス トークンが含まれています。
 
-| status code | Error | エラーの説明 | 解決策 |
+| status code | エラー | エラーの説明 | 解決策 |
 | ----------- | ----- | ----------------- | -------- |
 | 400 Bad Request | invalid_resource | AADSTS50001: *\<URI\>* という名前のアプリケーションが *\<TENANT-ID\>* という名前のテナントに見つかりませんでした。 このエラーは、アプリケーションがテナントの管理者によってインストールされていない場合や、アプリケーションがテナント内のいずれのユーザーによっても同意されていない場合に発生することがあります。 間違ったテナントに認証要求を送信した可能性があります。\ | (Linux のみ) |
 | 400 Bad Request | bad_request_102 | 必要なメタデータ ヘッダーが指定されていません | 要求で `Metadata` 要求ヘッダー フィールドが見つからないか、形式が正しくありません。 値は `true` として指定し、すべて小文字にする必要があります。 例については、上記の「REST」セクションの「要求のサンプル」を参照してください。|
@@ -391,7 +391,7 @@ Azure リソース エンドポイントのマネージド ID は、HTTP 応答�
 
 再試行については、次の方法をお勧めします。 
 
-| **再試行戦略** | **設定** | **値** | **動作のしくみ** |
+| **再試行戦略** | **[設定]** | **値** | **動作のしくみ** |
 | --- | --- | --- | --- |
 |ExponentialBackoff |再試行回数<br />最小バックオフ<br />最大バックオフ<br />差分バックオフ<br />最初の高速再試行 |5<br />0 秒<br />60 秒<br />2 秒<br />false |試行 1 - 0 秒の遅延<br />試行 2 - 最大 2 秒の遅延<br />試行 3 - 最大 6 秒の遅延<br />試行 4 - 最大 14 秒の遅延<br />試行 5 - 最大 30 秒の遅延 |
 
@@ -400,7 +400,7 @@ Azure リソース エンドポイントのマネージド ID は、HTTP 応答�
 Azure AD をサポートするリソースで、Azure リソースのマネージド ID をテスト済みのリソースとそれぞれのリソース ID の一覧については、「[Azure AD 認証をサポートしている Azure サービス](services-support-msi.md)」を参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure VM 上で Azure リソースのマネージド ID を有効にするには、「[Configure managed identities for Azure resources on a VM using the Azure portal](qs-configure-portal-windows-vm.md)」 (Azure portal を使用して VM 上で Azure リソースのマネージド ID を構成する) を参照してください。
 

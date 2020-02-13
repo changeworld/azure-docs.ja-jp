@@ -3,22 +3,22 @@ title: クライアント アプリケーションの構成 (MSAL) | Azure
 titleSuffix: Microsoft identity platform
 description: Microsoft Authentication Library (MSAL) を使用したパブリック クライアント アプリケーションと機密クライアント アプリケーションの構成オプションについて説明します。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/27/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 5388dc101dbc4e06ce26f12bfd40645455e8dae8
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 0262d22ae00456ce06cb8efbf995f1a093b20043
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696484"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085011"
 ---
 # <a name="application-configuration-options"></a>アプリケーション構成オプション
 

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
-ms.openlocfilehash: 290b0073ea6736141bca035f82f7aa37bdf364ef
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d5d48a2fc7aca184cf8b6e7761584a8800ca5151
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701928"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160068"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>シングルページ アプリケーション：API を呼び出すトークンを取得する
 
@@ -42,7 +42,7 @@ Azure AD へのサイレント トークン要求は、Azure AD セッション�
 
 ## <a name="acquire-a-token-with-a-pop-up-window"></a>ポップアップ ウィンドウを使用してトークンを取得する
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 次のコードでは、前に説明したパターンと、ポップアップ エクスペリエンスのメソッドを組み合わせています。
 
@@ -69,7 +69,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 });
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 MSAL Angular ラッパーを使用すると、自動的にアクセス トークンをサイレントに取得して API への HTTP 要求にそれを添付する HTTP インターセプターが提供されます。
 
@@ -111,9 +111,11 @@ ngOnDestroy() {
 
 あるいは、コア MSAL.js ライブラリ内に記述されているように、取得トークン メソッドを使用してトークンを明示的に取得することができます。
 
+---
+
 ## <a name="acquire-a-token-with-a-redirect"></a>リダイレクトを使用してトークンを取得する
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 次のパターンは前述したとおりですが、トークンを対話形式で取得するリダイレクト メソッドを使用して示しています。 前述のようにリダイレクト コールバックを登録する必要があります。
 
@@ -142,6 +144,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 ```
 
 ## <a name="request-optional-claims"></a>省略可能な要求を要請する
+
 次の目的で省略可能な要求を使用できます。
 
 - アプリケーションのトークンに省略可能な要求を含める。
@@ -150,7 +153,6 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 
 `IdToken` で省略可能な要求を要請するには、`AuthenticationParameters.ts` クラスの `claimsRequest` フィールドに文字列化された要求オブジェクトを送信します。
 
-### <a name="javascript"></a>JavaScript
 ```javascript
 "optionalClaims":  
    {
@@ -168,12 +170,14 @@ var request = {
 
 myMSALObj.acquireTokenPopup(request);
 ```
+
 詳細については、[省略可能な要求](active-directory-optional-claims.md)に関するページを参照してください。
 
-
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 このコードは前述と同じです。
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 

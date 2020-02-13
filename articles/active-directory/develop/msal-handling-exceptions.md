@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/22/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7f903ca541582dfa0f3980bb65a3fef3c4b774a7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 018d0c3bc009f6063de75b9a479be650b2c06e7c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916776"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160846"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>MSAL の例外とエラーを処理する
 
@@ -55,7 +55,7 @@ Microsoft Authentication Library (MSAL) での例外は、エンド ユーザー
 | [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) |AADSTS90010: 付与タイプが */common* または */consumers* エンドポイントでサポートされていません。 */organizations* またはテナント固有のエンドポイントを使用してください。 */common* を使用しました。| Azure AD からのメッセージで説明されているように、機関はテナントを持っている必要があり、それ以外の場合は */organizations* です。|
 | [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) | AADSTS70002: 要求本文には、次のパラメーターが含まれる必要があります: `client_secret or client_assertion`。| この例外は、アプリケーションが Azure AD でパブリック クライアント アプリケーションとして登録されていなかった場合にスローされる可能性があります。 Azure portal でアプリケーションのマニフェストを編集し、`allowPublicClient` を `true` に設定します。 |
 | [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)| `unknown_user Message`:ログインしているユーザーを識別できませんでした| ライブラリで現在 Windows にログインしているユーザーのクエリを実行できなかったか、またはこのユーザーは AD または AAD に参加していません (ワークプレースに参加しているユーザーはサポートされません)。 軽減策 1: UWP で、アプリケーションに次の機能があることを確認します: エンタープライズ認証、プライベート ネットワーク (クライアントとサーバー)、ユーザー アカウント情報。 軽減策 2: 独自のロジックを実装してユーザー名をフェッチし (たとえば、john@contoso.com)、ユーザー名を受け取る `AcquireTokenByIntegratedWindowsAuth` フォームを使用します。|
-| [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)|integrated_windows_auth_not_supported_managed_user| このメソッドは、Active Directory (AD) で公開されているプロトコルに依存します。 ユーザーが AD サポートなしに Azure Active Directory で作成された場合 ("マネージド" ユーザー)、このメソッドは失敗します。 AD で作成されて AAD によってサポートされているユーザーは ("フェデレーション" ユーザー)、この非対話型メソッドの認証を利用できます。 軽減策: 対話型認証を使用します。|
+| [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)|integrated_windows_auth_not_supported_managed_user| このメソッドは、Active Directory (AD) で公開されているプロトコルに依存します。 ユーザーが AD サポートなしに Azure Active Directory で作成された場合 ("マネージド" ユーザー)、このメソッドは失敗します。 AD で作成されて AAD によってサポートされているユーザーは ("フェデレーション" ユーザー)、この非対話型メソッドの認証を利用できます。 軽減策:対話型認証を使用します。|
 
 ### `MsalUiRequiredException`
 
@@ -142,7 +142,7 @@ catch (MsalUiRequiredException ex) when (ex.ErrorCode == MsalError.InvalidGrantE
 
 MSAL.js には、さまざまな種類の一般的エラーを抽象化して分類するエラー オブジェクトが用意されています。 エラーを適切に処理するため、エラー メッセージなど、エラーの特定の詳細にアクセスするためのインターフェイスも提供されています。
 
-### <a name="error-object"></a>Error オブジェクト
+### <a name="error-object"></a>エラー オブジェクト
 
 ```javascript
 export class AuthError extends Error {
@@ -506,7 +506,7 @@ MSAL で生成されたエラーはすべて、`MSALErrorDomain` ドメインと
 
 ## <a name="conditional-access-and-claims-challenges"></a>条件付きアクセスとクレーム チャレンジ
 
-トークンをサイレントで取得するとき、アクセスしようとしている API で MFA ポリシーなどの[条件付きアクセス クレーム チャレンジ](conditional-access-dev-guide.md)が必要な場合、ご利用のアプリケーションはエラーを受け取ることがあります。
+トークンをサイレントで取得するとき、アクセスしようとしている API で MFA ポリシーなどの[条件付きアクセス クレーム チャレンジ](../azuread-dev/conditional-access-dev-guide.md)が必要な場合、ご利用のアプリケーションはエラーを受け取ることがあります。
 
 このエラーを処理するパターンは、MSAL を使用して対話形式でトークンを取得することです。 対話形式でトークンを取得すると、ユーザーにメッセージが表示され、ユーザーは必要な条件付きアクセス ポリシーを満たす機会を与えられます。
 
@@ -520,7 +520,7 @@ MSAL.NET の条件付きアクセスを必要とする API を呼び出すとき
 
 ### <a name="javascript"></a>JavaScript
 
-MSAL.js を使用してトークンをサイレントで取得するとき (`acquireTokenSilent` を使用)、アクセスしようとしている API で MFA ポリシーなどの[条件付きアクセス クレーム チャレンジ](conditional-access-dev-guide.md)が必要な場合、アプリケーションはエラーを受け取ることがあります。
+MSAL.js を使用してトークンをサイレントで取得するとき (`acquireTokenSilent` を使用)、アクセスしようとしている API で MFA ポリシーなどの[条件付きアクセス クレーム チャレンジ](../azuread-dev/conditional-access-dev-guide.md)が必要な場合、アプリケーションはエラーを受け取ることがあります。
 
 このエラーを処理するパターンは、次の例のように、`acquireTokenPopup` や `acquireTokenRedirect` など、MSAL.js でトークンを取得する対話型の呼び出しを行うことです。
 

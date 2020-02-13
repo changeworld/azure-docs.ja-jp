@@ -3,12 +3,12 @@ title: Azure Migrate での Hyper-V の移行のサポート
 description: Azure Migrate を使用した Hyper-V の移行のサポートについて説明します。
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 96bf423f25911d0befbfd420ac2fb01ba6c8fb65
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 4ca946597417ccde0e00c8bf09c70207bc4f85b9
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030938"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031648"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Hyper-V の移行のサポート マトリックス
 
@@ -36,7 +36,7 @@ ms.locfileid: "76030938"
 | **オペレーティング システム** | Azure でサポートされているすべての [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) および [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) オペレーティング システム。 |
 | **アクセス許可**           | 評価する各 Hyper-V VM に対する管理者のアクセス許可が必要です。 |
 | **統合サービス**       | オペレーティング システム情報をキャプチャするには、評価する VM で [Hyper-V 統合サービス](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services)が実行されている必要があります。 |
-| **Azure に必要な変更** | 一部の VM は、Azure で実行できるように変更が必要な場合があります。 次のオペレーティング システムでは、これらの変更が Azure Migrate によって自動的に行われます。<br/> - Red Hat Enterprise Linux 6.5+、7.0+<br/> - CentOS 6.5+、7.0+</br> - SUSE Linux Enterprise Server 12 SP1+<br/> - Ubuntu 14.04LTS、16.04LTS、18.04LTS<br/> - Debian 7、8<br/><br/> その他のオペレーティング システムについては、移行前に手動で調整する必要があります。 関連する記事には、その手順が記載されています。 |
+| **Azure に必要な変更** | 一部の VM は、Azure で実行できるように変更が必要な場合があります。 移行の前に手動で調整する必要があります。 関連する記事には、その手順が記載されています。 |
 | **Linux ブート**                 | /boot が専用パーティションに存在する場合は、OS ディスク上に存在する必要があり、複数のディスクに分散していてはいけません。<br/> /boot がルート (/) パーティションに含まれている場合は、"/" パーティションは OS ディスク上に存在する必要があり、他のディスクにまたがっていてはいけません。 |
 | **UEFI ブート**                  | Azure 内の移行された VM は、自動的に BIOS ブート VM に変換されます。 VM では、Windows Server 2012 以降のみが実行されている必要があります。 OS ディスクには最大 5 つのパーティションが必要であり、OS ディスクのサイズは 300 GB 未満にする必要があります。
   |
@@ -59,7 +59,7 @@ Azure にレプリケートされたオンプレミス VM はすべて、この�
 
 **コンポーネント** | **必要条件** | **詳細**
 --- | --- | ---
-ゲスト オペレーティング システム | 移行でサポートされている VMware VM オペレーティン グシステムを検証します。<br/> サポートされているオペレーティング システム上で実行されているすべてのワークロードを移行できます。 | サポートされていない場合、確認は失敗します。
+ゲスト オペレーティング システム | 移行のためにサポートされている VMware VM オペレーティン グシステムを検証します。<br/> サポートされているオペレーティング システム上で実行されているすべてのワークロードを移行できます。 | サポートされていない場合、確認は失敗します。
 ゲスト オペレーティング システムのアーキテクチャ | 64 ビット。 | サポートされていない場合、確認は失敗します。
 オペレーティング システムのディスク サイズ | 最大 2,048 GB。 | サポートされていない場合、確認は失敗します。
 オペレーティング システムのディスク数 | 1 | サポートされていない場合、確認は失敗します。

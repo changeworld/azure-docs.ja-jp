@@ -15,12 +15,12 @@ ms.date: 04/04/2019
 ms.author: mimart
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 416e72f7e9e8622f044f7bb6430fbb36010b164e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: de60dc5095ce4ab4d0219a388c445b08f544e1f9
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67701971"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159031"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Azure Active Directory でのフェデレーション シングル サインオンの証明書の管理
 
@@ -111,4 +111,4 @@ aadnotification@microsoft.com から通知メールを受け取ります。 メ�
 - [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](../saas-apps/tutorial-list.md)
 - [Azure Active Directory によるアプリケーションの管理](what-is-application-management.md)
 - [Azure Active Directory でのアプリケーションへのシングル サインオン](what-is-single-sign-on.md)
-- [Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする](../develop/howto-v1-debug-saml-sso-issues.md)
+- [Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする](../azuread-dev/howto-v1-debug-saml-sso-issues.md)

@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 10152087b45a4048f30f382b237017efbbb63787
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 65006b8357db44c3e1b8f8d9e819615b5dd9db6e
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769882"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031750"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook のエラーをトラブルシューティングする
 
@@ -29,7 +29,7 @@ Azure Automation で Runbook を実行しているときにエラーが発生し
 
 2. Runbook の[エラー ストリーム](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages#runbook-output)に特定のメッセージがないか**調査**し、それらを以下のエラーと比較します
 
-3. **ノードと Automation ワークスペースに必要なモジュールがあることを確認する:** ご使用の Runbook でなんらかのモジュールをインポートする場合は、「[モジュールをインポートする](../shared-resources/modules.md#import-modules)」に記載された手順に従い、それらのモジュールを Automation アカウントに取り込む必要があります。 [Azure Automation の Azure モジュールを更新する方法](..//automation-update-azure-modules.md)に関するページの手順に従ってモジュールを最新バージョンに更新してください。 トラブルシューティングの詳細については、[モジュールのトラブルシューティング](shared-resources.md#modules)に関するページを参照してください。
+3. **ノードと Automation ワークスペースに必要なモジュールがあることを確認する:** ご使用の Runbook でなんらかのモジュールをインポートする場合は、「[モジュールをインポートする](../shared-resources/modules.md#import-modules)」に記載された手順に従い、それらのモジュールを Automation アカウントで使用できるようにする必要があります。 [Azure Automation の Azure モジュールを更新する方法](..//automation-update-azure-modules.md)に関するページの手順に従って、モジュールを最新バージョンに更新してください。 トラブルシューティングの詳細については、[モジュールのトラブルシューティング](shared-resources.md#modules)に関するページを参照してください。
 
 Runbook が中断されたか、予期せず失敗した場合:
 
@@ -49,7 +49,7 @@ Run Login-AzureRMAccount to login.
 
 ### <a name="cause"></a>原因
 
-このエラーは、RunAs アカウントを使用していないとき、または RunAs アカウントの有効期限が切れたときに発生することがあります。 「[Azure Automation の実行アカウントを管理する](https://docs.microsoft.com/azure/automation/manage-runas-account)」を参照してください。
+このエラーは、実行アカウントを使用していないとき、または実行アカウントの有効期限が切れたときに発生することがあります。 「[Azure Automation の実行アカウントを管理する](https://docs.microsoft.com/azure/automation/manage-runas-account)」を参照してください。
 
 このエラーには、次の 2 つの主要な原因があります。
 
@@ -62,7 +62,7 @@ Run Login-AzureRMAccount to login.
 
 別のサブスクリプションのリソースにアクセスしようとしている場合は、次の手順に従ってアクセス許可を構成できます。
 
-1. Automation アカウントの実行アカウントにアクセスし、アプリケーション ID とサムプリントをコピーします。
+1. Automation の実行アカウントにアクセスし、アプリケーション ID とサムプリントをコピーします。
   ![アプリケーション ID とサムプリントをコピーする](../media/troubleshoot-runbooks/collect-app-id.png)
 1. Automation アカウントがホストされていないサブスクリプションの Access Control に移動し、新しいロールの割り当てを追加します。
   ![アクセス制御](../media/troubleshoot-runbooks/access-control.png)
@@ -142,7 +142,7 @@ Azure アカウントに多要素認証を設定している場合、Azure に�
 
 ### <a name="resolution"></a>解決策
 
-Azure クラシック デプロイ モデルのコマンドレットで証明書を使用する方法については、[証明書を作成し、追加して Azure サービスを管理する](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)方法に関するページを参照してください。 Azure Resource Manager コマンドレットでサービス プリンシパルを使用する方法については、[Azure ポータルでサービス プリンシパルを作成する](../../active-directory/develop/howto-create-service-principal-portal.md)方法に関する記事と [Azure Resource Manager でサービス プリンシパルを認証する](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)方法に関する記事を参照してください。
+Azure クラシック デプロイ モデルのコマンドレットで証明書を使用する方法については、[証明書を作成および追加して Azure サービスを管理する](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)方法に関するページを参照してください。 Azure Resource Manager コマンドレットでサービス プリンシパルを使用する方法については、[Azure portal でサービス プリンシパルを作成する](../../active-directory/develop/howto-create-service-principal-portal.md)方法に関する記事と [Azure Resource Manager でサービス プリンシパルを認証する](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)方法に関する記事を参照してください。
 
 ## <a name="get-serializationsettings"></a>シナリオ:ジョブ ストリームで get_SerializationSettings メソッドについてのエラーが表示される
 
@@ -168,7 +168,7 @@ At line:16 char:1
 
 ### <a name="resolution"></a>解決策
 
-Az と AzureRM のコマンドレットは同じ Runbook にインポートして使用できません。Azure Automation での Az のサポートに関する詳細については、[Azure Automation での Az モジュールのサポート](../az-modules.md)に関するページを参照してください。
+Az および AzureRM コマンドレットは、同じ Runbook にインポートして使用することはできません。 Azure Automation での Az コマンドレットの詳細については、「[Azure Automation での Az モジュールのサポート](../az-modules.md)」を参照してください。
 
 ## <a name="task-was-cancelled"></a>シナリオ:Runbook がエラーで失敗:タスクはキャンセルされました
 
@@ -208,7 +208,7 @@ Runbook が、実行中に正しいコンテキストを使用していません
 # Ensures that any credentials apply only to the execution of this runbook
 Disable-AzureRmContextAutosave –Scope Process
 
-# Connect to Azure with RunAs account
+# Connect to Azure with Run As account
 $ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
 
 Add-AzureRmAccount `
@@ -243,10 +243,10 @@ The term 'Connect-AzureRmAccount' is not recognized as the name of a cmdlet, fun
 
 ### <a name="cause"></a>原因
 
-このエラーは、次のいずれかの理由により発生する可能性があります。
+このエラーが発生する理由としては次のことが考えられます。
 
-* コマンドレットを含むモジュールが、Automation アカウントにインポートされていない
-* コマンドレットを含むモジュールはインポートされているが、最新ではない
+* コマンドレットを含むモジュールが、Automation アカウントにインポートされていない。
+* コマンドレットを含むモジュールはインポートされているが、最新ではない。
 
 ### <a name="resolution"></a>解決策
 
@@ -256,11 +256,11 @@ The term 'Connect-AzureRmAccount' is not recognized as the name of a cmdlet, fun
 
 個別のモジュールの場合、Automation アカウントにモジュールがインポートされていることを確認します。
 
-## <a name="job-attempted-3-times"></a>シナリオ:Runbook ジョブの開始を 3 回試行したが、開始できない
+## <a name="job-attempted-3-times"></a>シナリオ:Runbook ジョブの開始を 3 回試行したが、開始できなかった
 
 ### <a name="issue"></a>問題
 
-Runbook がエラーで失敗します。
+Runbook が次のエラーで失敗します。
 
 ```error
 The job was tried three times but it failed
@@ -270,29 +270,27 @@ The job was tried three times but it failed
 
 このエラーは、次のいずれかの問題のために発生します。
 
-* メモリの制限。 サンドボックスに割り当てられるメモリの制限については、[Automation サービスの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)に関するセクションを参照してください。 400 MB を超えるメモリを使用すると、ジョブが失敗することがあります。
+* メモリの制限。 400 MB を超えるメモリを使用すると、ジョブが失敗する可能性があります。 サンドボックスに割り当てられるメモリの制限については、[Automation サービスの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)に関するセクションを参照してください。 
 
-* ネットワーク ソケット。 「[Automation サービスの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)」の説明のように、Azure サンド ボックスの同時ネットワーク ソケット数は 1,000 に制限されています。
+* ネットワーク ソケット。 Azure サンドボックスの同時ネットワーク ソケット数は 1000 に制限されています。 [Automation サービスの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)に関するセクションを参照してください。
 
-* モジュールに互換性がない。 このエラーは、モジュールの依存関係が正しくない場合に発生することがあります。この場合は通常、「Command not found (コマンドが見つかりません)」または「Cannot bind parameter (パラメーターをバインドできません)」というメッセージが Runbook から返されます。
+* モジュールに互換性がない。 モジュールの依存関係が正しくない可能性があります。 この場合は通常、"コマンドが見つかりません" または "パラメーターをバインドできません" というメッセージが Runbook から返されます。
 
-* Runbook で、Azure サンドボックス内で実行されている Runbook 内の実行可能ファイルまたはサブプロセスを呼び出そうとしました。 このシナリオは Azure サンドボックスではサポートされていません。
+* サンドボックスでは Active Directory による認証が行われない。 Runbook で、Azure サンドボックス内で実行されている実行可能ファイルまたはサブプロセスを呼び出そうとしました。 Azure Active Directory 認証ライブラリ (ADAL) を使用して Azure AD で認証するように Runbook を構成することはサポートされていません。
 
-* Runbook により、例外データの出力ストリームへの書き込みが過剰に試行されました。
+* 例外データが多すぎる。 Runbook により、例外データの出力ストリームへの書き込みが過剰に試行されました。
 
 ### <a name="resolution"></a>解決策
 
-次の解決策のいずれでもこの問題は解決されます。
+* メモリの制限、ネットワーク ソケット。 メモリの制限内で問題を解決するために推奨される方法としては、複数の Runbook 間でワークロードを分割する、メモリ内のデータの処理量を減らす、Runbook からの不要な出力を書き込まない、PowerShell Workflow Runbook に書き込むチェックポイントの数を検討する、などがあります。 `$myVar.clear` などの clear メソッドを使用して変数をクリアし、`[GC]::Collect` を使用してガベージ コレクションをすぐに実行します。 これにより、実行時の Runbook のメモリ専有領域が小さくなります。
 
-* メモリの制限内で問題を解決するために推奨される方法としては、複数の Runbook 間でワークロードを分割する、メモリ内のデータと同量のデータを処理しない、Runbook からの不要な出力を書き込まない、PowerShell Workflow Runbook に書き込むチェックポイントの数を検討する、などがあります。 `$myVar.clear()` などの clear メソッドを使用して変数をクリアし、`[GC]::Collect()` を使用してガベージ コレクションをすぐに実行できます。 これにより、実行時の Runbook のメモリ専有領域が小さくなります。
+* モジュールに互換性がない。 「[Azure Automation の Azure PowerShell モジュールを更新する方法](../automation-update-azure-modules.md)」の手順に従って Azure モジュールを更新します。
 
-* 「[Azure Automation の Azure PowerShell モジュールを更新する方法](../automation-update-azure-modules.md)」の手順に従って Azure モジュールを更新します。
+* サンドボックスでは ADAL による認証が行われない。 Runbook で Azure AD に対する認証を行うときは、Automation アカウントで Azure AD モジュールが使用可能になっていることを確認します。 Runbook によって自動化されるタスクを実行するために必要なアクセス許可を、必ず実行アカウントに付与してください。
 
-* 別の解決策は、[Hybrid Runbook Worker](../automation-hrw-run-runbooks.md) で Runbook を実行することです。 ハイブリッド worker には、Azure サンドボックスのようなメモリとネットワークの制限はありません。
+  Azure サンドボックスで実行されている実行可能ファイルまたはサブプロセスを Runbook で呼び出すことができない場合は、[Hybrid Runbook Worker](../automation-hrw-run-runbooks.md) で Runbook を使用します。 ハイブリッド worker には、Azure サンドボックスに存在するようなメモリとネットワークの制限はありません。
 
-* Runbook 内のプロセス (.exe や subprocess.call など) を呼び出す必要がある場合は、[Hybrid Runbook Worker](../automation-hrw-run-runbooks.md) で Runbook を実行する必要があります。
-
-* ジョブ出力ストリームでは 1 MB の制限があります。 実行可能ファイルまたはサブプロセスへの呼び出しを try/catch ブロックで必ず囲みます。 例外がスローされる場合は、その例外から Automation 変数にメッセージを書き込みます。 これにより、ジョブ出力ストリームに書き込まれなくなります。
+* 例外データが多すぎる。 ジョブ出力ストリームでは 1 MB の制限があります。 Runbook では必ず、実行可能ファイルまたはサブプロセスへの呼び出しを try/catch ブロックで囲んでください。 操作で例外がスローされる場合は、コードによってその例外から Automation 変数にメッセージを書き込みます。 この手法により、メッセージがジョブ出力ストリームに書き込まれなくなります。
 
 ## <a name="sign-in-failed"></a>シナリオ:Azure アカウントにサインインできない
 
@@ -353,7 +351,7 @@ No certificate was found in the certificate store with thumbprint
    }
    ```
 
-## <a name="child-runbook-object"></a>オブジェクト参照がオブジェクトのインスタンスに設定されていない
+## <a name="child-runbook-object"></a>シナリオ:オブジェクト参照がオブジェクト インスタンスに設定されていない
 
 ### <a name="issue"></a>問題
 
@@ -365,11 +363,11 @@ Object reference not set to an instance of an object
 
 ### <a name="cause"></a>原因
 
-既知の問題として、出力ストリームにオブジェクトが含まれている場合、[Start-AzureRmAutomationRunbook](/powershell/module/AzureRM.Automation/Start-AzureRmAutomationRunbook) では出力ストリームを正しく処理できません。
+既知の問題として、出力ストリームにオブジェクトが含まれている場合、Start-AzureRmAutomationRunbook では出力ストリームを正しく処理できません。
 
 ### <a name="resolution"></a>解決策
 
-この問題を解決するには、代わりにポーリング ロジックを実装し、[Get-AzureRmAutomationJobOutput](/powershell/module/azurerm.automation/get-azurermautomationjoboutput) コマンドレットを使用してその出力を取得することをお勧めします。 このロジックのサンプルは、次の例で定義されています。
+この問題を解決するには、ポーリング ロジックを実装し、[Get-AzureRmAutomationJobOutput](/powershell/module/azurerm.automation/get-azurermautomationjoboutput) コマンドレットを使用してその出力を取得することをお勧めします。 このロジックのサンプルは、次の例で定義されています。
 
 ```powershell
 $automationAccountName = "ContosoAutomationAccount"
@@ -417,7 +415,7 @@ Runbook が PowerShell ワークフローの場合、ワークフローが中断
 * オブジェクト全体を渡すのではなく、複雑なオブジェクトから、必要な名前または値を渡します。
 * PowerShell ワークフロー Runbook ではなく PowerShell Runbook を使用します。
 
-## <a name="quota-exceeded"></a>シナリオ:割り当てられたクォータを超えているために Runbook ジョブが失敗した
+## <a name="quota-exceeded"></a>シナリオ:割り当てられたクォータを超えているために Runbook ジョブが失敗する
 
 ### <a name="issue"></a>問題
 
@@ -437,7 +435,7 @@ The quota for the monthly total job run time has been reached for this subscript
 
 1. Azure サブスクリプションにサインインします。
 2. アップグレードする Automation アカウントを選択します。
-3. **[設定]**  >  **[価格]** の順にクリックします。
+3. **[設定]** 、 **[料金]** の順にクリックします。
 4. ページ下部にある **[有効]** をクリックして、アカウントを **Basic** レベルにアップグレードします。
 
 ## <a name="cmdlet-not-recognized"></a>シナリオ:Runbook の実行時にコマンドレットが認識されない
@@ -477,13 +475,13 @@ The job was evicted and subsequently reached a Stopped state. The job cannot con
 
 ### <a name="cause"></a>原因
 
-Runbook が、Azure サンドボックスの fair share によって許可されている 3 時間の制限を超えて実行しました。
+Runbook が、Azure サンドボックスのフェア シェアによって許可されている 3 時間の制限を超えて実行されました。
 
 ### <a name="resolution"></a>解決策
 
 推奨される解決策の 1 つは、[Hybrid Runbook Worker](../automation-hrw-run-runbooks.md) で Runbook を実行することです。
 
-Hybrid Worker には、Azure サンドボックスのような [fair share](../automation-runbook-execution.md#fair-share) による 3 時間の Runbook 制限はありません。 予期しないローカル インフラストラクチャの問題が発生した場合の再起動動作をサポートするには、Hybrid Runbook Worker 上で実行される Runbook を開発する必要があります。
+ハイブリッド worker には、Azure サンドボックスに存在するような[フェア シェア](../automation-runbook-execution.md#fair-share)による 3 時間の Runbook 制限はありません。 予期しないローカル インフラストラクチャの問題が発生した場合の再起動動作をサポートするには、Hybrid Runbook Worker 上で実行される Runbook を開発する必要があります。
 
 もう 1 つのオプションは、[子 Runbook](../automation-child-runbooks.md) を作成して Runbook を最適化することです。 複数のリソースに対して同じ機能を実行する Runbook の場合は (複数のデータベースに対するデータベース操作など)、その機能を子 Runbook に移動することができます。 これらの各子 Runbook は別々のプロセスで並列に実行されます。 この動作によって、親 Runbook の完了までにかかる合計時間は減ります。
 
@@ -511,7 +509,7 @@ Azure Automation Runbook の Webhook を呼び出そうとすると、次のエ�
 
 Webhook が無効な場合は、Azure portal から Webhook を再度有効にすることができます。 Webhook の期限が切れたら、Webhook を削除して再作成する必要があります。 Webhook がまだ期限切れでない場合にのみ、[Webhook を更新](../automation-webhooks.md#renew-webhook)できます。
 
-## <a name="429"></a>シナリオ:429:The request rate is currently too large. Please try again (現在、要求レートが大きすぎます。もう一度実行してください)
+## <a name="429"></a>シナリオ:429:The request rate is currently too large (現在、要求レートが大きすぎます)
 
 ### <a name="issue"></a>問題
 
@@ -544,7 +542,7 @@ Exception was thrown - Cannot invoke method. Method invocation is supported only
 
 ### <a name="cause"></a>原因
 
-Azure で実行された Runbook で PowerShell ジョブを開始すると、このエラーが発生することがあります。 この動作が発生するのは、Azure サンドボックスで実行された Runbook が[完全言語モード](/powershell/module/microsoft.powershell.core/about/about_language_modes)で実行されないことがあるためです。
+Azure で実行された Runbook で PowerShell ジョブを開始すると、このエラーが発生することがあります。 この動作が発生する理由は、Azure サンドボックスで実行された Runbook が[完全言語モード](/powershell/module/microsoft.powershell.core/about/about_language_modes)で実行されない場合があることです。
 
 ### <a name="resolution"></a>解決策
 
@@ -554,6 +552,22 @@ Azure で実行された Runbook で PowerShell ジョブを開始すると、�
 * お使いの Runbook でこのエラー メッセージが表示された場合、それを Hybrid Runbook Worker で実行する
 
 この動作や、Azure Automation Runbook の他の動作の詳細については、「[Runbook の動作](../automation-runbook-execution.md#runbook-behavior)」を参照してください。
+
+## <a name="scenario-linux-hybrid-runbook-worker-receives-a-prompt-for-a-password-when-signing-a-runbook"></a>シナリオ:Linux Hybrid Runbook Worker で、Runbook に署名するときにパスワードの入力が求められる
+
+### <a name="issue"></a>問題
+
+Linux Hybrid Runbook Worker で **sudo** コマンドを実行すると、パスワードの入力を求める想定外のプロンプトが表示されます。
+
+### <a name="cause"></a>原因
+
+Linux 用 Log Analytics エージェントの nxautomationuser アカウントが sudoers ファイルで正しく構成されていません。 Hybrid Runbook Worker では、Linux Runbook Worker で Runbook に署名できるように、アカウントのアクセス許可やその他のデータが適切に構成されている必要があります。
+
+### <a name="resolution"></a>解決策
+
+* マシン上で、Hybrid Runbook Worker に GnuPG (GPG) の実行可能ファイルがあることを確認します。
+
+* sudoers ファイル内の nxautomationuser アカウントの構成を確認します。 「[Hybrid Runbook Worker での Runbook の実行](../automation-hrw-run-runbooks.md)」を参照してください
 
 ## <a name="other"></a>問題が上記の一覧にない
 
@@ -565,12 +579,12 @@ Azure Automation ではなく Hybrid Worker を使用してジョブを実行し
 
 ## <a name="runbook-fails-with-no-permission-or-some-variation"></a>Runbook が "アクセス許可なし"、または類似した問題によって失敗する
 
-RunAs アカウントの Azure リソースに対するアクセス許可が、お使いの現在のアカウントと同じでない可能性があります。 ご自身の RunAs アカウントに、お使いのスクリプトで使用されている[リソースにアクセスするためのアクセス許可がある](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)ことを確認します。
+実行アカウントの Azure リソースに対するアクセス許可が、お使いの現在のアカウントと同じでない可能性があります。 ご自身の実行アカウントに、お使いのスクリプトで使用されている[リソースにアクセスするためのアクセス許可がある](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)ことを確認してください。
 
 ## <a name="runbooks-were-working-but-suddenly-stopped"></a>以前は動作していた Runbook が突然停止した
 
-* 以前は動作していた Runbook が停止した場合は、[RunAs アカウントの有効期限が切れていないことを確認](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal)します。
-* Webhook を使用して Runbook を開始する場合は、[Webhook の有効期限が切れていないことを確認](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook)します。
+* 以前は動作していた Runbook が停止した場合は、[実行アカウント](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal)の有効期限が切れていないことを確認します。
+* Webhook を使用して Runbook を開始している場合は、[Webhook](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook) の有効期限が切れていないことを確認します。
 
 ## <a name="issues-passing-parameters-into-webhooks"></a>パラメーターを Webhook に渡すときに問題が発生する
 
@@ -584,13 +598,13 @@ Az モジュールと AzureRM モジュールを同じ Automation アカウン�
 
 [Runbook の実行](https://docs.microsoft.com/azure/automation/automation-runbook-execution#runbook-behavior)に関するガイダンスに従って、Runbook での同時実行ジョブ、リソースの複数回の作成、またはその他のタイミングに依存するロジックに関する問題を回避してください。
 
-## <a name="runbook-fails-with-the-errors-no-permission-forbidden-403-or-some-variation"></a>Runbook がエラーで失敗: アクセス許可なし、禁止、403、または類似のエラー
+## <a name="runbook-fails-with-the-error-no-permission-forbidden-403-or-some-variation"></a>Runbook が、アクセス許可なし、禁止 (403)、または類似したエラーによって失敗する
 
-RunAs アカウントの Azure リソースに対するアクセス許可が、お使いの現在のアカウントと同じでない可能性があります。 ご自身の RunAs アカウントに、お使いのスクリプトで使用されている[リソースにアクセスするためのアクセス許可がある](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)ことを確認します。
+実行アカウントの Azure リソースに対するアクセス許可が、お使いの現在のアカウントと同じでない可能性があります。 ご自身の実行アカウントに、お使いのスクリプトで使用されている[リソースにアクセスするためのアクセス許可がある](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)ことを確認してください。
 
 ## <a name="runbooks-were-working-but-suddenly-stopped"></a>以前は動作していた Runbook が突然停止した
 
-* 以前は動作していた Runbook が停止した場合は、RunAs アカウントの[有効期限が切れていないこと](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal)を確認します。
+* 以前は動作していた Runbook が停止した場合は、実行アカウントの有効期限が切れていないことを確認します。 [証明書の更新](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal)に関するセクションを参照してください。
 * Webhook を使用して Runbook を開始している場合は、Webhook の[有効期限が切れていないこと](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook)を確認してください。
 
 ## <a name="passing-parameters-into-webhooks"></a>パラメーターをスクリプトに渡す
@@ -599,15 +613,15 @@ RunAs アカウントの Azure リソースに対するアクセス許可が、�
 
 ## <a name="using-az-modules"></a>Az モジュールの使用
 
-Az モジュールと AzureRM モジュールを同じ Automation アカウントで使用することはできません。 詳細については、[Runbook の Az モジュール](https://docs.microsoft.com/azure/automation/az-modules)に関するページを参照してください。
+Az モジュールと AzureRM モジュールを同じ Automation アカウントで使用することはできません。 [Runbook 内の Az モジュール](https://docs.microsoft.com/azure/automation/az-modules)に関するページを参照してください。
 
 ## <a name="using-self-signed-certificates"></a>自己署名証明書の使用
 
-自己署名証明書を使用するには、「[新しい証明書の作成](https://docs.microsoft.com/azure/automation/shared-resources/certificates#creating-a-new-certificate)」のガイドに従う必要があります。
+自己署名証明書を使用するには、「[新しい証明書の作成](https://docs.microsoft.com/azure/automation/shared-resources/certificates#creating-a-new-certificate)」を参照してください。
 
 ## <a name="recommended-documents"></a>推奨されるドキュメント
 
-* [Azure Automation での Runbook の開始](https://docs.microsoft.com/azure/automation/automation-starting-a-runbook)
+* [Azure Automation での Runbook を開始する](https://docs.microsoft.com/azure/automation/automation-starting-a-runbook)
 * [Azure Automation での Runbook の実行](https://docs.microsoft.com/azure/automation/automation-runbook-execution)
 
 ## <a name="next-steps"></a>次のステップ

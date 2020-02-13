@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 9d00024351c18789e26120cc2af006b9aac4232d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 518d86fff04a23f1c1e63c44c53485b99f30637d
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767842"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057840"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>チュートリアル:Harness を構成し、自動ユーザー プロビジョニングに対応させる
 
 この記事では、Azure Active Directory (Azure AD) を構成して、ユーザーまたはグループを Harness に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 
 > [!NOTE]
-> この記事では、Azure AD ユーザー プロビジョニング サービス上に構築されるコネクタについて説明します。 このサービスについての重要な情報とよく寄せられる質問への回答については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。
+> この記事では、Azure AD ユーザー プロビジョニング サービス上に構築されるコネクタについて説明します。 このサービスについての重要な情報とよく寄せられる質問への回答については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。
 >
 > このコネクタは、現在プレビューの段階です。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
@@ -156,7 +156,7 @@ Azure AD で Harness の自動ユーザー プロビジョニングを構成す�
 
     ![Harness のグループの [属性マッピング] ウィンドウ](media/harness-provisioning-tutorial/groupattributes.png)
 
-1. スコープ フィルターを構成するには、「[スコープ フィルターを使用した属性ベースのアプリケーション プロビジョニング](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)」を参照します。
+1. スコープ フィルターを構成するには、「[スコープ フィルターを使用した属性ベースのアプリケーション プロビジョニング](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)」を参照します。
 
 1. **[設定]** セクションで、Harness に対する Azure AD プロビジョニング サービスを有効にするために、 **[プロビジョニング状態]** スイッチを **[オン]** に切り替えます。
 
@@ -172,13 +172,13 @@ Azure AD で Harness の自動ユーザー プロビジョニングを構成す�
 
 この操作により、プロビジョニングするユーザーまたはグループの初期同期が開始されます。 初期同期は、以降の同期よりも実行に時間がかかります。 同期は、Azure AD プロビジョニング サービスが実行されている限り、約 40 分ごとに発生します。 進行状況を監視するには、 **[同期の詳細]** セクションに移動します。 また、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Harness に対して実行されたすべてのアクションが記載されています。
 
-Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
+Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>次のステップ
 
-* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)
+* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)

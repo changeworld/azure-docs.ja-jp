@@ -17,12 +17,12 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ROBOTS: NOINDEX
-ms.openlocfilehash: 87818066a656aa4bcd6f45f1835ca1512a674a9e
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: ed2a1b1f4eaf665e893026c8b3bbc77ddad5c98e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712312"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063579"
 ---
 # <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションへのユーザー プロビジョニングを構成する方法
 
@@ -40,9 +40,9 @@ Azure Portal では、左側のナビゲーション ウィンドウのエンタ
 
 ## <a name="configuring-an-application-for-automatic-provisioning"></a>自動プロビジョニング用にアプリケーションを構成する
 
-"*自動*" とは、このアプリケーション用の Azure AD プロビジョニング コネクタが開発済みであることを意味します。 Azure AD プロビジョニング サービスとそのしくみの詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](user-provisioning.md)」を参照してください。
+"*自動*" とは、このアプリケーション用の Azure AD プロビジョニング コネクタが開発済みであることを意味します。 Azure AD プロビジョニング サービスとそのしくみの詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。
 
-特定のユーザーとグループをアプリケーションにプロビジョニングする方法の詳細については、[エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](configure-automatic-user-provisioning-portal.md)に関するページを参照してください。
+特定のユーザーとグループをアプリケーションにプロビジョニングする方法の詳細については、[エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)に関するページを参照してください。
 
 自動プロビジョニングを有効にし、構成するために実際に必要な手順は、アプリケーションによって異なります。
 
@@ -54,5 +54,5 @@ Azure Portal では、左側のナビゲーション ウィンドウのエンタ
 プロビジョニングを設定するときに考慮すべき重要なことは、どのユーザー (またはグループ) プロパティが Azure AD からアプリケーションに提供されるかを定義する属性マッピングとワークフローを確認して構成することです。 これには、2 つのシステム間でユーザーまたはグループを一意に識別して照合するために使用される "照合プロパティ" の設定も含まれます。 属性マッピングの詳細については、*次の手順*のリンクを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-[Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ](customize-application-attributes.md)
+[Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ](../app-provisioning/customize-application-attributes.md)
 

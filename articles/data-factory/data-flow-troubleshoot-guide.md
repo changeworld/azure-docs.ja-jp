@@ -7,114 +7,64 @@ author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.custom: seo-lt-2019
-ms.date: 12/19/2019
-ms.openlocfilehash: 06746cfc3b39a242c16a6b4f4c95b3c212a9abd5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/04/2020
+ms.openlocfilehash: 901868da8ed859a846a507557d383db760f297c9
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443947"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029522"
 ---
-# <a name="troubleshoot-azure-data-factory-data-flows"></a>Azure Data Factory データ フローのトラブルシューティング
+# <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Azure Data Factory でのデータ フローのトラブルシューティング
 
 この記事では、Azure Data Factory のデータ フローの一般的なトラブルシューティング方法について説明します。
 
 ## <a name="common-errors-and-messages"></a>一般的なエラーとメッセージ
 
-### <a name="error-message-df-sys-01-shadeddatabricksorgapachehadoopfsazureazureexception-commicrosoftazurestoragestorageexception-the-specified-container-does-not-exist"></a>エラー メッセージ:DF-SYS-01: shaded.databricks.org.apache.hadoop.fs.azure.AzureException: com.microsoft.azure.storage.StorageException:指定されたコンテナーが存在しません。
-
-- **現象**:コンテナーが存在しないため、データ プレビュー、デバッグ、パイプライン データ フローの実行が失敗する
-
+### <a name="error-code-df-executor-sourceinvalidpayload"></a>エラー コード:DF-Executor-SourceInvalidPayload
+- **メッセージ**:コンテナーが存在しないため、データ プレビュー、デバッグ、パイプライン データ フローの実行が失敗しました
 - **原因**:ストレージに存在しないコンテナーがデータセットに含まれている場合
+- **推奨事項**:データセットで参照されているコンテナーが存在するかアクセス可能であることを確認してください。
 
-- **解決方法**:データセットで参照しているコンテナーが存在することを確認する
+### <a name="error-code-df-executor-systemimplicitcartesian"></a>エラー コード:DF-Executor-SystemImplicitCartesian
 
-### <a name="error-message-df-sys-01-javalangassertionerror-assertion-failed-conflicting-directory-structures-detected-suspicious-paths"></a>エラー メッセージ:DF-SYS-01: java.lang.AssertionError: アサーションに失敗しました:ディレクトリ構造の競合が検出されました。 疑わしいパス
+- **メッセージ**:INNER join では暗黙的なデカルト積はサポートされていません。代わりに CROSS JOIN を使用してください。 結合で使用される列は、行に対して一意のキーを作成する必要があります。
+- **原因**:論理プラン間の INNER join では暗黙的なデカルト積はサポートされていません。 結合で使用される列が一意のキーを作成する場合
+- **推奨事項**:非等値ベースの結合では、CROSS JOIN を選択する必要があります。
 
-- **現象**:Parquet ファイルでソースを変換するときにワイルドカードを使用した場合
+### <a name="error-code-df-executor-systeminvalidjson"></a>エラー コード:DF-Executor-SystemInvalidJson
 
-- **原因**:ワイルドカード構文が正しくないか、無効になっている
+- **メッセージ**:JSON 解析エラー、サポートされていないエンコードまたは複数行が存在します
+- **原因**:JSON ファイルで、次のような問題が発生している可能性があります。サポートされていないエンコード、バイトの破損、または入れ子になった多数の行での単一ドキュメントとしての JSON ソースの使用
+- **推奨事項**:JSON ファイルのエンコードがサポートされているかどうか確認します。 JSON データセットを使用しているソース変換で [JSON 設定] を展開し、[単一のドキュメント] をオンにします。
+ 
+### <a name="error-code-df-executor-broadcasttimeout"></a>エラー コード:DF-Executor-BroadcastTimeout
 
-- **解決方法**:ソース変換オプションで使用しているワイルドカード構文を確認する
+- **メッセージ**:ブロードキャスト結合のタイムアウトエラーが発生しました。ブロードキャスト ストリームが、デバッグ実行では 60 秒以内に、ジョブ実行では 300 秒以内にデータを生成することを確認してください
+- **原因**:ブロードキャストの既定のタイムアウトは、デバッグ実行では 60 秒、ジョブ実行では 300 秒です。 ブロードキャスト用に選択されたストリームは、この制限内にデータを生成するには大きすぎると思われます。
+- **推奨事項**:処理に 60 秒を超える時間を要する可能性がある大規模なデータ ストリームのブロードキャストは避けてください。 代わりに、ブロードキャストするための小さいストリームを選択してください。 通常、大規模な SQL/DW テーブルとソース ファイルは適切な候補ではありません。
 
-### <a name="error-message-df-src-002-container-container-name-is-required"></a>エラー メッセージ:DF-SRC-002: 'コンテナー' (コンテナー名) が必須です
+### <a name="error-code-df-executor-conversion"></a>エラー コード:DF-Executor-Conversion
 
-- **現象**:コンテナーが存在しないため、データ プレビュー、デバッグ、パイプライン データ フローの実行が失敗する
+- **メッセージ**:無効な文字が原因で、日付または時刻への変換に失敗しました
+- **原因**:データの形式が正しくありません
+- **推奨事項**:正しいデータ型を使用してください
 
-- **原因**:ストレージに存在しないコンテナーがデータセットに含まれている場合
+### <a name="error-code-df-executor-invalidcolumn"></a>エラー コード:DF-Executor-InvalidColumn
 
-- **解決方法**:データセットで参照しているコンテナーが存在することを確認する
-
-### <a name="error-message-df-uni-001-primarykeyvalue-has-incompatible-types-integertype-and-stringtype"></a>エラー メッセージ:DF-UNI-001:PrimaryKeyValue の IntegerType 型と StringType 型に互換性がありません
-
-- **現象**:コンテナーが存在しないため、データ プレビュー、デバッグ、パイプライン データ フローの実行が失敗する
-
-- **原因**:データベース シンクに間違った主キー型を挿入すると発生する
-
-- **解決方法**:データ フローの主キーに使用している列を派生列でキャストし、ターゲット データベースのデータ型に合わせる
-
-### <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-the-tcpip-connection-to-the-host-xxxxxdatabasewindowsnet-port-1433-has-failed-error-xxxxdatabasewindowsnet-verify-the-connection-properties-make-sure-that-an-instance-of-sql-server-is-running-on-the-host-and-accepting-tcpip-connections-at-the-port-make-sure-that-tcp-connections-to-the-port-are-not-blocked-by-a-firewall"></a>エラー メッセージ:DF-SYS-01: com.microsoft.sqlserver.jdbc.SQLServerException:ホスト xxxxx.database.windows.net ポート 1433 に TCP/IP 接続できませんでした。 エラー: "xxxx.database.windows.net。 接続プロパティを確認してください。 SQL Server のインスタンスがホストで実行されており、ポートで TCP/IP 接続を受け入れることを確認してください。 ポートへの TCP 接続がファイアウォールでブロックされていないことを確認してください。"
-
-- **現象**:データベース ソースまたはシンクでデータをプレビューできず、パイプラインを実行できない
-
-- **原因**:データベースがファイアウォールで保護されている
-
-- **解決方法**:データベースに対してファイアウォール アクセスを開く
-
-### <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-there-is-already-an-object-named-xxxxxx-in-the-database"></a>エラー メッセージ:DF-SYS-01: com.microsoft.sqlserver.jdbc.SQLServerException:データベースに 'xxxxxx' という名前のオブジェクトが既に存在します。
-
-- **現象**:シンクでテーブルを作成できない
-
-- **原因**:ソースまたはデータセットで定義されているものと同じ名前を持つテーブル名がターゲット データベースに既に存在する
-
-- **解決方法**:これから作成するテーブルの名前を変更する
-
-### <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-string-or-binary-data-would-be-truncated"></a>エラー メッセージ:DF-SYS-01: com.microsoft.sqlserver.jdbc.SQLServerException:文字列データまたはバイナリ データが切り捨てられます。 
-
-- **現象**:SQL シンクにデータを書き込む場合、パイプラインの実行時にデータ フローが失敗し、切り捨てエラーが発生する可能性がある
-
-- **原因**:データ フローのフィールドのマップ先となっている SQL データベースの列に、値を格納できるだけの十分な幅がなく、SQL ドライバーがこのエラーをスローした
-
-- **解決方法**:派生列で ```left()``` を使用して文字列型の列のデータの長さを減らすか、["エラー行" のパターン](how-to-data-flow-error-rows.md)を実装する
-
-### <a name="error-message-since-spark-23-the-queries-from-raw-jsoncsv-files-are-disallowed-when-the-referenced-columns-only-include-the-internal-corrupt-record-column"></a>エラー メッセージ:Spark 2.3 以降では、参照先の列が内部破損レコード列のみの場合に未加工の JSON ファイルや CSV ファイルからのクエリが許可されません。 
-
-- **現象**:JSON ソースからの読み取りが失敗する
-
-- **原因**:JSON ソースで 1 つのドキュメントが入れ子になった多数の行に分かれている場合に、その JSON ソースを対象として読み取りを実行すると、新しいドキュメントがどこから始まっており、前のドキュメントがどこで終わっているかを ADF (Spark 経由) が特定できません。
-
-- **解決方法**:JSON データセットを使用しているソース変換で [JSON 設定] を展開し、[単一のドキュメント] をオンにします。
-
-### <a name="error-message-duplicate-columns-found-in-join"></a>エラー メッセージ:結合の中に重複する列が見つかりました
-
-- **現象**:結合変換により、左辺と右辺の両方から、重複する列名を含む列が生成されました
-
-- **原因**:結合される予定のストリームに、共通の列名があります
-
-- **解決方法**:結合の後に Select 変換を追加し、入力と出力の両方に対して [重複する列の削除] を選択します。
-
-### <a name="error-message-possible-cartesian-product"></a>エラー メッセージ:発生する可能性のあるデカルト積
-
-- **現象**:結合または参照変換により、データフローの実行時に発生する可能性のあるデカルト積が検出されました
-
-- **原因**:クロス結合を使用するように ADF を明示的に指示していない場合、データフローが失敗することがあります
-
-- **解決方法**:カスタム クロス結合を使用して参照または結合変換を結合に変更し、式エディターで参照または結合条件を入力します。 完全なデカルト積を明示的に作成する場合は、結合の前に2つの独立したストリームの派生列変換を使用して、一致する合成キーを作成します。 たとえば、 ```SyntheticKey``` を呼び出した各ストリームの派生列に新しい列を作成し、それをに ```1``` を設定します。 次に、カスタム結合式として ```a.SyntheticKey == b.SyntheticKey``` を使用します。
-
-> [!NOTE]
-> カスタム クロス結合では、左右のリレーションシップの各側に少なくとも 1 つの列が含まれていることを確認してください。 各側の列ではなく、静的な値を使用してクロス結合を実行すると、データセット全体が完全にスキャンされるため、データフローのパフォーマンスが低下します。
+- **メッセージ**:クエリに列名を指定する必要があります。SQL 関数を使用している場合は別名を設定してください
+- **原因**:列名が指定されていませんでした
+- **推奨事項**:min()/max() などの SQL 関数を使用している場合は、別名を設定してください。
 
 ## <a name="general-troubleshooting-guidance"></a>一般的なトラブルシューティング ガイダンス
 
 1. データセット接続の状態を確認します。 ソース/シンクの変換ごとに、使用している各データベースのリンクされたサービスにアクセスし、接続をテストします。
-2. データ フロー デザイナーからファイルとテーブルの接続の状態を確認します。 デバッグをオンに切り替え、ソース変換のデータ プレビューをクリックし、データにアクセスできることを確認します。
-3. データ プレビューに問題がなければ、パイプライン デザイナーに進み、パイプライン アクティビティにデータ フローを配置します。 エンドツーエンド テストとしてパイプラインをデバッグします。
+1. データ フロー デザイナーからファイルとテーブルの接続の状態を確認します。 デバッグをオンに切り替え、ソース変換のデータ プレビューをクリックし、データにアクセスできることを確認します。
+1. データ プレビューに問題がなければ、パイプライン デザイナーに進み、パイプライン アクティビティにデータ フローを配置します。 エンドツーエンド テストとしてパイプラインをデバッグします。
 
 ## <a name="next-steps"></a>次のステップ
 
 トラブルシューティングのその他のヘルプについては、次のリソースを参照してください。
-
 *  [Data Factory ブログ](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory の機能のリクエスト](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure のビデオ](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)

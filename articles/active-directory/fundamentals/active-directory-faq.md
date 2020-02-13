@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c1ee5e849d8004f828a2d92d728ad7925fc05c4
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 6eb0b5e37843413667e51112f52e6a69534e3425
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693950"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063630"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Azure Active Directory についてよくあるご質問
 Azure Active Directory (Azure AD) は、包括的なサービスとしての ID (IDaaS) ソリューションです。その範囲は ID、アクセス管理、セキュリティのあらゆる面に及びます。
@@ -102,7 +102,7 @@ Azure AD 有料サービス (Enterprise Mobility + Security など) は、エン
 
 ---
 ## <a name="password-management"></a>パスワード管理
-**Q:パスワード同期を使わずに Azure AD パスワード ライトバックを使用することはできますか?(このシナリオでは、クラウドにパスワードを保存せずに、パスワード ライトバックで Azure AD のセルフサービスによるパスワードのリセット (SSPR) を使用できますか?)**
+**Q:パスワード同期を使わずに Azure AD パスワード ライトバックを使用することはできますか?(このシナリオでは、クラウドにパスワードを保存せずに、パスワード ライトバックで Azure AD のセルフサービス パスワード リセット (SSPR) を使用できますか?)**
 
 **A:** ライトバックを有効にするために、Active Directory パスワードを Azure AD に同期する必要はありません。 フェデレーション環境では、Azure AD シングル サインオン (SSO) は、ユーザーの認証のためにオンプレミスのディレクトリを利用します。 このシナリオでは、オンプレミスのパスワードを Azure AD で追跡する必要はありません。
 
@@ -122,7 +122,7 @@ Azure AD 有料サービス (Enterprise Mobility + Security など) は、エン
 ---
 **Q:パスワードを変更しようとしているときに既存の Office 365/Azure AD パスワードを忘れた場合は、どうすればよいですか?**
 
-**A:** このような状況では、いくつかの選択肢があります。  セルフサービスによるパスワードのリセット (SSPR) が使用可能な場合は、それを使用してください。  SSPR が動作するかどうかは、その構成方法によって決まります。  詳細については、「[パスワード リセット ポータルのしくみ](../authentication/howto-sspr-deployment.md)」を参照してください。
+**A:** このような状況では、いくつかの選択肢があります。  セルフサービス パスワード リセット (SSPR) が使用可能な場合は、それを使用してください。  SSPR が動作するかどうかは、その構成方法によって決まります。  詳細については、「[パスワード リセット ポータルのしくみ](../authentication/howto-sspr-deployment.md)」を参照してください。
 
 Office 365 ユーザーの場合は、「[ユーザー パスワードの再設定](https://support.office.com/article/Admins-Reset-user-passwords-7A5D073B-7FAE-4AA5-8F96-9ECD041ABA9C?ui=en-US&rs=en-US&ad=US)」で説明されている手順を使用して、パスワードをリセットできます。
 
@@ -133,7 +133,7 @@ Azure AD アカウントの場合、管理者は、次のいずれかの方法�
 
 
 ---
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 **Q:何回か試行が失敗した後、アカウントはロックされますか。または、より高度な戦略はありますか?**
 
 アカウントは、より高度な戦略によってロックされます。  これは、使用の IP と入力したパスワードに基づいています。 また、ロックアウト期間は、攻撃されている可能性に応じて長くなります。  
@@ -162,7 +162,7 @@ Azure AD アカウントの場合、管理者は、次のいずれかの方法�
 詳細については、次を参照してください。
 
 * [Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
-* [SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする](../manage-apps/use-scim-to-provision-users-and-groups.md)
+* [SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 
 ---
 **Q:ユーザーが Azure AD を使用してアプリケーションにサインインする場合、どのような方法がありますか?**
@@ -206,7 +206,7 @@ Azure AD アカウントの場合、管理者は、次のいずれかの方法�
 
 **A:** Azure AD を使用すると、多くの一般的なクラウド SaaS アプリでユーザー ID の作成、保守、削除を自動化できます。
 
-詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。
+詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。
 
 ---
 **Q:Azure AD で Secure LDAP 接続を設定できますか?**

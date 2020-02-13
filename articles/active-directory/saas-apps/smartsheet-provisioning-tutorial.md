@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2019
 ms.author: jeedes
-ms.openlocfilehash: f0ca2dfa90e1312db664962e7ffbe6b3f4dd96e1
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 9fbdf8a1c4b1881fc6dfd9d7b95a4103761e9ce7
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670933"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063205"
 ---
 # <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Smartsheet を構成する
 
 このチュートリアルの目的は、Azure AD が自動的にユーザーまたはグループを Smartsheet にプロビジョニングまたは Smartsheet からプロビジョニング解除するように構成するために、Smartsheet と Azure Active Directory (Azure AD) で実行される手順を示すことです。
 
 > [!NOTE]
-> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。
+> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。
 >
 > 現在、このコネクタはパブリック プレビュー段階にあります。 プレビュー機能を使用するための一般的な Microsoft Azure 使用条件の詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
@@ -87,7 +87,7 @@ Azure AD での自動ユーザー プロビジョニング用に Smartsheet を�
 
     ![Smartsheet のインストール](media/smartsheet-provisioning-tutorial/Smartsheet06.png)
 
-7. API アクセス トークンの名前を定義します。 Click **OK**.
+7. API アクセス トークンの名前を定義します。 **[OK]** をクリックします。
 
     ![Smartsheet のインストール](media/smartsheet-provisioning-tutorial/Smartsheet07.png)
 
@@ -123,7 +123,7 @@ Azure AD で自動ユーザー プロビジョニング用に Smartsheet を構�
 
     ![Smartsheet OIDC のログイン](media/smartsheet-provisioning-tutorial/smartsheet-OIDC-login.png)
 
-7. 認証に成功したら、同意ページの同意プロンプトを受け入れます。 アプリケーションはお客様のテナントに自動的に追加され、Smartsheet アカウントにリダイレクトされます。
+7. 認証に成功した後、同意ページの同意プロンプトを受け入れます。 アプリケーションはお客様のテナントに自動的に追加され、Smartsheet アカウントにリダイレクトされます。
 
     ![Smartsheet OIDC の同意](media/smartsheet-provisioning-tutorial/smartsheet-OIDC-consent.png)
 
@@ -133,7 +133,7 @@ Azure AD で自動ユーザー プロビジョニング用に Smartsheet を構�
 
 ### <a name="to-configure-automatic-user-provisioning-for-smartsheet-in-azure-ad"></a>Azure AD で Smartsheet の自動ユーザー プロビジョニングを構成するには:
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. [Azure portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -157,7 +157,7 @@ Azure AD で自動ユーザー プロビジョニング用に Smartsheet を構�
 
     ![通知用メール](common/provisioning-notification-email.png)
 
-7. **[Save]** をクリックします。
+7. **[保存]** をクリックします。
 
 8. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Smartsheet]\(Azure Active Directory ユーザーを Smartsheet に同期する\)** を選択します。
 
@@ -167,7 +167,7 @@ Azure AD で自動ユーザー プロビジョニング用に Smartsheet を構�
 
     ![Smartsheet のユーザー属性](media/smartsheet-provisioning-tutorial/smartsheet-user-attributes.png)
 
-10. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
+10. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
 11. Smartsheet に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
 
@@ -183,7 +183,7 @@ Azure AD で自動ユーザー プロビジョニング用に Smartsheet を構�
 
 これにより、 **[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Smartsheet に対して実行されたすべてのアクションが記載されています。
 
-Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
+Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」をご覧ください。
 
 ## <a name="connector-limitations"></a>コネクタの制限事項
 
@@ -191,9 +191,9 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)
+* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)

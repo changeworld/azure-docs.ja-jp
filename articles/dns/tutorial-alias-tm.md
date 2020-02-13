@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
-ms.openlocfilehash: 749e5eae64aa0d33c90ef8694da9a093647b8a8b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 4bdfc950cc1277809811dc2c548a57cc2138a8e4
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76937933"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149951"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>チュートリアル:Traffic Manager で頂点のドメイン名をサポートするエイリアス レコードを構成する 
 
@@ -40,7 +40,7 @@ Azure DNS にドメインをホストする手順については、「[チュー
 
 ## <a name="create-the-network-infrastructure"></a>ネットワーク インフラストラクチャを作成する
 まず、Web サーバーを配置する仮想ネットワークとサブネットを作成します。
-1. Azure Portal ( https://portal.azure.com ) にサインインします。
+1. Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 2. ポータルの左上にある **[リソースの作成]** を選択します。 検索ボックスに「*resource group*」と入力し、**RG-DNS-Alias-TM** という名前のリソース グループを作成します。
 3. **[+ リソースの作成]**  >  **[ネットワーク]**  >  **[仮想ネットワーク]** の順に選択します。
 4. **VNet-Servers** という名前の仮想ネットワークを作成します。 それを **RG-DNS-Alias-TM** リソース グループに配置し、サブネットに **SN-Web** という名前を付けます。

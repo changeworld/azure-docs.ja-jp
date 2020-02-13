@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e972228923654ca73063aad370d087e550138dbf
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: fb396429c95dbed090283752c5a0d9ff5cc176af
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76043373"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148200"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>条件付きアクセス:管理者に対して MFA を必須にする
 
@@ -24,14 +24,14 @@ ms.locfileid: "76043373"
 
 Microsoft では、少なくとも以下のロールに対して MFA を必須にすることを推奨しています。
 
-* 全体管理者
-* SharePoint 管理者
-* Exchange 管理者
+* 課金管理者
 * 条件付きアクセス管理者
-* セキュリティ管理者
+* Exchange 管理者
+* 全体管理者
 * ヘルプデスク (パスワード) 管理者
 * パスワード管理者
-* 課金管理者
+* セキュリティ管理者
+* SharePoint 管理者
 * ユーザー管理者
 
 組織では、ニーズに応じてロールを含めるか除外するかを選択できます。
@@ -55,14 +55,14 @@ Microsoft では、少なくとも以下のロールに対して MFA を必須�
 1. ポリシーに名前を付けます。 ポリシーの名前に対する意味のある標準を組織で作成することをお勧めします。
 1. **[割り当て]** で、 **[ユーザーとグループ]** を選択します。
    1. **[Include]\(含める\)** で、 **[Directory roles (preview)]\(ディレクトリ ロール (プレビュー)\)** を選択し、少なくとも以下のロールを選択します。
-      * 全体管理者
-      * SharePoint 管理者
-      * Exchange 管理者
+      * 課金管理者
       * 条件付きアクセス管理者
-      * セキュリティ管理者
+      * Exchange 管理者
+      * 全体管理者
       * ヘルプデスク管理者
       * パスワード管理者
-      * 課金管理者
+      * セキュリティ管理者
+      * SharePoint 管理者
       * ユーザー管理者
    1. **[除外]** で、 **[ユーザーとグループ]** を選択し、組織の緊急アクセス用または非常用アカウントを選択します。 
    1. **[完了]** を選択します。
@@ -75,6 +75,6 @@ Microsoft では、少なくとも以下のロールに対して MFA を必須�
 
 [Conditional Access common policies](concept-conditional-access-policy-common.md) (条件付きアクセスの一般的なポリシー)
 
-[条件付きアクセスのレポート専用モードを使用した影響の判断](howto-conditional-access-report-only.md)
+[条件付きアクセスのレポート専用モードを使用した影響を判断する](howto-conditional-access-report-only.md)
 
 [Simulate sign in behavior using the Conditional Access What If tool](troubleshoot-conditional-access-what-if.md) (条件付きアクセスの What If ツールを使用したサインイン動作のシミュレート)

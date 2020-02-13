@@ -3,22 +3,22 @@ title: Web ブラウザーを使用する (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: .NET 用 Microsoft 認証ライブラリ (MSAL.NET) で Xamarin Android を使用する場合の固有の考慮事項について説明します。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: b0b0ac05e54619af0b1dd4a68918a89681f845bd
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: ed1f47ae99f6346a932d0fe94be7586dc25a672f
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695077"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084601"
 ---
 # <a name="using-web-browsers-msalnet"></a>Web ブラウザーを使用する (MSAL.NET)
 

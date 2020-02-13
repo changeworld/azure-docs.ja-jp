@@ -3,22 +3,22 @@ title: MSAL.NET での AD FS のサポート | Azure
 titleSuffix: Microsoft identity platform
 description: .NET 用 Microsoft Authentication Library (MSAL.NET) での Active Directory フェデレーション サービス (AD FS) サポートについて説明します。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 6e40a03e70fa04855037165462761c56f13acc58
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 15af18177cea217612a4d5276d130abe02d339f4
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695621"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160762"
 ---
 # <a name="active-directory-federation-services-support-in-msalnet"></a>MSAL.NET での Active Directory フェデレーション サービスのサポート
 Windows Server で Active Directory フェデレーション サービス (AD FS) を使用して、自分が開発しているアプリケーションに OpenID Connect と OAuth 2.0 ベースの認証と承認を追加できます。 その後、これらのアプリケーションで、AD FS に対して直接ユーザーを認証することができます。 詳細については、「[開発者向けの AD FS のシナリオ](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios)」をご覧ください。
@@ -54,7 +54,7 @@ MSAL.NET では、Open ID Connect に準拠し、PKCE とスコープを認識�
 - AD FS 16。これには PKCE のサポートがなく、依然としてスコープではなくリソースが使用されているためです。
 - AD FS v2。これは OIDC に準拠していません。
 
- AD FS 2016 への直接接続が必要なシナリオをサポートする必要がある場合は、最新バージョンの [Azure Active Directory 認証ライブラリ](active-directory-authentication-libraries.md#microsoft-supported-client-libraries)を使用してください。 オンプレミス システムを AD FS 2019 にアップグレードすると、MSAL.NET を使用できるようになります。
+ AD FS 2016 への直接接続が必要なシナリオをサポートする必要がある場合は、最新バージョンの [Azure Active Directory 認証ライブラリ](../azuread-dev/active-directory-authentication-libraries.md#microsoft-supported-client-libraries)を使用してください。 オンプレミス システムを AD FS 2019 にアップグレードすると、MSAL.NET を使用できるようになります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/23/2018
 ms.author: rohink
-ms.openlocfilehash: 9027b1574144e2addbc84fceb16deba9014826fe
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: f7778b60a5e84f5d8900b8e37bfa655a7915d403
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938407"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136397"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>チュートリアル:Traffic Manager を使用して Web サイトの応答性を向上させる
 
@@ -43,7 +43,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ( https://portal.azure.com ) にサインインします。
+Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
 ### <a name="create-websites"></a>Web サイトを作成する
 

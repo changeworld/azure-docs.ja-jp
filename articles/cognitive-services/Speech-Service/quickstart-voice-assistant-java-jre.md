@@ -3,19 +3,19 @@ title: クイック スタート:Java 用カスタム音声アシスタント (W
 titleSuffix: Azure Cognitive Services
 description: このクイックスタートでは、Cognitive Services Speech SDK を Java コンソール アプリケーションで使用する方法を学習します。 クライアント アプリケーションを、Direct Line Speech チャネルを使用するように構成されている作成済みの Bot Framework ボットに接続して、音声アシスタント エクスペリエンスを有効にする方法を学習します。
 services: cognitive-services
-author: bidishac
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/05/2019
-ms.author: bidishac
-ms.openlocfilehash: 29f6596408a825a571682d14aceca01fa8108515
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 45719eebb9cd74b0a5c4278e87b90978dcc3790f
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815863"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119669"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-java-preview"></a>クイック スタート:Speech SDK と Java を使用して音声アシスタントを作成する (プレビュー)
 
@@ -467,14 +467,14 @@ F11 キーを押すか、 **[Run]\(実行\)**  >  **[Debug]\(デバッグ\)** �
 
 ![認識が成功した後のコンソール出力のスクリーンショット](media/sdk/qs-java-jre-08-console-output.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 オーディオ ファイルから音声を読み取る方法など、追加のサンプルは GitHub で入手できます。
 
 > [!div class="nextstepaction"]
 > [基本ボットの作成とデプロイ](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [音声アシスタントについて](voice-assistants.md)
 - [Speech サービスのサブスクリプション キーを無料で取得する](get-started.md)

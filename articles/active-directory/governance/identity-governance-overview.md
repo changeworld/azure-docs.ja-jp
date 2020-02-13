@@ -16,12 +16,12 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c90052d1d75ba65a8e0b0e7a2cd26a279019a82d
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: bd319dd6a83a392f6df26d07a58be22a9c8bdb61
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173155"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063681"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Azure AD Identity Governance とは
 
@@ -58,7 +58,7 @@ Identity Governance により、組織は、*生産性* (従業員が組織に�
 
 通常、IT 部門は、アクセス承認の決定を管理職意思決定者に委任します。  さらに、ユーザー自身が IT 部門に関与していることがあります。  たとえば、ヨーロッパで会社のマーケティング アプリケーションで顧客の機密データにアクセスするユーザーは、会社のポリシーを把握している必要があります。 ゲスト ユーザーは、招待されている組織のデータの処理要件を理解していない可能性があります。
 
-組織では、[動的グループ](../users-groups-roles/groups-dynamic-membership.md)などのテクノロジを [SaaS アプリ](../saas-apps/tutorial-list.md)または [SCIM と統合されたアプリ](../manage-apps/use-scim-to-provision-users-and-groups.md)と組み合わせて使用して、アクセスのライフサイクル プロセスを自動化することができます。  また、組織では、[オンプレミス アプリケーションへのアクセス権を持つゲスト ユーザー](../b2b/hybrid-cloud-to-on-premises.md)を制御することもできます。  それにより、[Azure AD アクセス レビュー](access-reviews-overview.md)を定期的に利用して、これらのアクセス権を定期的にレビューすることができます。   また、[Azure AD エンタイトルメント管理](entitlement-management-overview.md)を使用することで、グループとチームのメンバーシップ、アプリケーション ロール、SharePoint Online ロールのパッケージ全体で、ユーザーによるアクセス要求の方法を定義することができます。
+組織では、[動的グループ](../users-groups-roles/groups-dynamic-membership.md)などのテクノロジを [SaaS アプリ](../saas-apps/tutorial-list.md)または [SCIM と統合されたアプリ](../app-provisioning/use-scim-to-provision-users-and-groups.md)と組み合わせて使用して、アクセスのライフサイクル プロセスを自動化することができます。  また、組織では、[オンプレミス アプリケーションへのアクセス権を持つゲスト ユーザー](../b2b/hybrid-cloud-to-on-premises.md)を制御することもできます。  それにより、[Azure AD アクセス レビュー](access-reviews-overview.md)を定期的に利用して、これらのアクセス権を定期的にレビューすることができます。   また、[Azure AD エンタイトルメント管理](entitlement-management-overview.md)を使用することで、グループとチームのメンバーシップ、アプリケーション ロール、SharePoint Online ロールのパッケージ全体で、ユーザーによるアクセス要求の方法を定義することができます。
 
 ユーザーがアプリケーションにアクセスしようとすると、Azure AD は[条件付きアクセス](/azure/active-directory/conditional-access/)ポリシーを適用します。 条件付きアクセス ポリシーには、たとえば、[使用条件](../conditional-access/terms-of-use.md)を表示することと、[ユーザーがそれらの条件に確実に同意した](../conditional-access/require-tou.md)後でアプリケーションにアクセスできるようになることを含めることができます。
 
@@ -70,7 +70,7 @@ Identity Governance により、組織は、*生産性* (従業員が組織に�
 
 [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) により、Azure AD、Azure、およびその他の Microsoft オンライン サービスの全体で、リソースに対するアクセス権のセキュリティ保護に合わせた管理を追加することができます。  多要素認証と条件付きアクセスに加え、ジャストイン タイム アクセスと、Azure AD PIM によって提供されるロール変更の通知機能は、会社のリソース (ディレクトリ、Office 365、および Azure リソース ロール) のセキュリティ保護に役立つガバナンス コントロールの包括的なセットを提供します。 他の形式のアクセスと同様、組織では、アクセス レビューを使用して、管理者ロールに属するすべてのユーザーの定期的なアクセス再認定を構成することができます。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 エンタイトルメント管理やアクセス レビューの使用を開始したり、利用規約を確認したりするには、Azure portal の **Identity Governance** の [Getting started]\(作業の開始\) タブを確認します。
 
@@ -95,7 +95,7 @@ Identity Governance で管理タスクを実行するには、最小特権ロー
 |Privileged Identity Management | 特権ロール管理者 |
 | 使用条件 | セキュリティ管理者または条件付きアクセス管理者 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure AD エンタイトルメント管理とは](entitlement-management-overview.md)
 - [Azure AD アクセス レビューとは](access-reviews-overview.md)

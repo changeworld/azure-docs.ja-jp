@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/26/2019
+ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: fccb9dfe88d39849fb87bdce4b81ac9ee22fada5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e3d8821fc36a9ba570893ec861b949921d9fabf5
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430695"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029947"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法
 
@@ -55,7 +55,7 @@ Azure Resource Manager を使用してリソースに実行するすべてのタ
 
 ### <a name="create-an-azure-active-directory-application"></a>Azure Active Directory アプリケーションを作成する
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. API Management サービス インスタンスを含むサブスクリプションを使用して、**Azure Active Directory** の **[アプリの登録]** タブ (Azure Active Directory > [登録の管理/アプリの登録]) に移動します。
 
     > [!NOTE]
@@ -72,11 +72,10 @@ Azure Resource Manager を使用してリソースに実行するすべてのタ
 
 ### <a name="add-an-application"></a>アプリケーションを追加する
 
-1. アプリケーションが作成されたら、 **[設定]** をクリックします。
-2. **[必要なアクセス許可]** をクリックします。
-3. **[+ 追加]** をクリックします。
-4. **[API を選択します]** を選択します。
-5. **[Windows** **Azure Service Management API]** を選択します。
+1. アプリケーションが作成されたら、 **[API のアクセス許可]** をクリックします。
+2. **[+アクセス許可の追加]** をクリックします。
+4. **[Select Microsoft APIs]\(Microsoft API を選択する\)** を押します。
+5. **[Azure Service Management]\(Azure サービス管理\)** を選択します。
 6. **[選択]** を選択します。
 
     ![Add permissions](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
@@ -173,14 +172,17 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 バックアップ要求を行う際には、次の制約があることに注意してください。
 
 -   要求の本文に指定された**コンテナー**は、**存在する必要があります**。
--   バックアップの進行中は、**サービス管理に変更を加えることは避けてください** (SKU のアップグレードやダウングレード、ドメイン名の変更など)。
+-   バックアップの進行中は、**サービスでの管理の変更は避けてください** (SKU のアップグレードやダウングレード、ドメイン名の変更など)。
 -   バックアップの復元は、作成されたときから **30 日間だけ保証されます**。
 -   分析レポートの生成に使用される**使用状況データ**は、バックアップに**含まれません**。 [Azure API Management REST API][azure api management rest api] を使用して、分析レポートを保管用に定期的に取り出します。
 -   さらに、バックアップ データの一部ではない項目として、カスタム ドメインの SSL 証明書および顧客によってアップロードされたすべての中間証明書またはルート証明書、開発者ポータルのコンテンツ、および仮想ネットワーク統合設定があります。
 -   サービス バックアップを実行する頻度は、復旧ポイントの目標に影響を与えます。 その頻度を最小限に抑えるため、定期的なバックアップを実装すると共に、API Management サービスに対して変更を行った後のオンデマンドのバックアップを実行することをお勧めします。
 -   バックアップ処理の進行中にサービス構成 (API、ポリシー、開発者ポータルの外観など) に対して行われた**変更**は、**バックアップ対象から除外され、その結果失われる可能性があります**。
--   コントロール プレーンから Azure Storage アカウントへのアクセスを**許可**します。 顧客は、自分のバックアップ用のストレージ アカウントで次の一連の受信 IP を開く必要があります。 
-    > 13.84.189.17/32、13.85.22.63/32、23.96.224.175/32、23.101.166.38/32、52.162.110.80/32、104.214.19.224/32、13.64.39.16/32、40.81.47.216/32、51.145.179.78/32、52.142.95.35/32、40.90.185.46/32、20.40.125.155/32
+-   コントロール プレーンから Azure Storage アカウントへのアクセスを**許可**します。 お客様は、バックアップ用のストレージ アカウントで [Azure API Management コントロール プレーンの IP アドレス][control-plane-ip-address] セットを開く必要があります。 
+
+> [!NOTE]
+> ストレージ アカウントでファイアウォールを有効にしていて、同じリージョン内の API Management サービスからバックアップ/復元を実行しようとしている場合、これは機能しません。Azure Storage に対する要求は、同じリージョンにデプロイされた Compute からパブリック IP に SNAT されないためです。
+
 ### <a name="step2"> </a>API Management サービスの復元
 
 以前に作成されたバックアップから API Management サービスを復元するには、次の HTTP 要求を行います。
@@ -241,3 +243,4 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 [api-management-aad-resources]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-aad-resources.png
 [api-management-arm-token]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-arm-token.png
 [api-management-endpoint]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-endpoint.png
+[control-plane-ip-address]: api-management-using-with-vnet.md#control-plane-ips

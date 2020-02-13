@@ -1,21 +1,21 @@
 ---
 title: チュートリアル:Apache Kafka Producer と Consumer API - Azure HDInsight
 description: HDInsight 上の Kafka で Apache Kafka Producer および Consumer API を使用する方法を説明します。 このチュートリアルでは、これらの API を Java アプリケーションから HDInsight 上の Kafka で使用する方法を学習します。
-author: dhgoelmsft
-ms.author: dhgoel
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 10/08/2019
-ms.openlocfilehash: ad810ac2f8751554aaf0afcd2b15e1da83f38fe1
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 65fc3259b0bc5fce61ccd1ceb8df30f1bba49b19
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242015"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161717"
 ---
-# <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>チュートリアル: Apache Kafka Producer および Consumer API の使用
+# <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>チュートリアル:Apache Kafka Producer および Consumer API の使用
 
 HDInsight 上の Kafka で Apache Kafka Producer および Consumer API を使用する方法を説明します。
 
@@ -220,7 +220,7 @@ tmux new-session 'java -jar kafka-producer-consumer.jar consumer myTest $KAFKABR
 
 Kafka に格納されたレコードは、受信した順番でパーティション内に格納されます。 *パーティション内*のレコードの順次配信順を実現するには、コンシューマー インスタンスの数がパーティションの数と同じコンシューマー グループを作成します。 *トピック内*のレコードの順次配信を実現するには、コンシューマー インスタンスが 1 つのみのコンシューマー グループを作成します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルで作成したリソースをクリーンアップするために、リソース グループを削除することができます。 リソース グループを削除すると、関連付けられている HDInsight クラスター、およびリソース グループに関連付けられているその他のリソースも削除されます。
 
@@ -230,7 +230,7 @@ Azure Portal を使用してリソース グループを削除するには:
 2. 削除するリソース グループを見つけて、一覧の右側にある __[詳細]__ ボタン ([...]) を右クリックします。
 3. __[リソース グループの削除]__ を選択し、確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このドキュメントでは、HDInsight 上の Kafka で Apache Kafka Producer および Consumer API を使用する方法について説明しました。 次の各ドキュメントを参考に、Kafka の使用の詳細を確認してください。
 

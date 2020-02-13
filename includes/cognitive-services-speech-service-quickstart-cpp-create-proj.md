@@ -2,16 +2,16 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/21/2019
+ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 942636a6ff6dcfe74a04a66d67a4490224b4538e
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2f9e02af0652108fe10e4b73e7bb43c48451ca77
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391693"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77123131"
 ---
-C++ デスクトップ開発用の Visual Studio プロジェクトを作成するためには、Visual Studio 開発オプションの設定、プロジェクトの作成、ターゲット アーキテクチャの選択、Speech SDK のインストールが必要となります。 
+C++ デスクトップ開発用の Visual Studio プロジェクトを作成するためには、Visual Studio 開発オプションの設定、プロジェクトの作成、ターゲット アーキテクチャの選択、Speech SDK のインストールが必要となります。
 
 ### <a name="set-up-visual-studio-development-options"></a>Visual Studio の開発オプションを設定する
 
@@ -19,7 +19,7 @@ C++ デスクトップ開発用の Visual Studio プロジェクトを作成す�
 
 1. Visual Studio 2019 を開いて**スタート** ウィンドウを表示します。
 
-   ![スタート ウィンドウ - Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-start-window.png) 
+   ![スタート ウィンドウ - Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-start-window.png)
 
 1. **[コードなしで続行]** を選択して Visual Studio IDE に移動します。
 
@@ -77,4 +77,4 @@ C++ デスクトップ開発用の Visual Studio プロジェクトを作成す�
 
 1. **[変更のプレビュー]** ダイアログ ボックスで **[OK]** を選択します。
 
-1. **[ライセンスへの同意]** ダイアログ ボックスでライセンスを確認し、 **[同意する]** を選択します。 パッケージのインストールが開始されます。インストールが完了すると、"`Successfully installed 'Microsoft.CognitiveServices.Speech 1.7.0' to helloworld`" と同様のメッセージが **[出力]** ウィンドウに表示されます。 
+1. **[ライセンスへの同意]** ダイアログ ボックスでライセンスを確認し、 **[同意する]** を選択します。 パッケージのインストールが開始されます。インストールが完了すると、"`Successfully installed 'Microsoft.CognitiveServices.Speech 1.9.0' to helloworld`" と同様のメッセージが **[出力]** ウィンドウに表示されます。

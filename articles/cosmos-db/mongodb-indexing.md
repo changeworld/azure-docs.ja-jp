@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: e51e96c0c553bcf37284878cab11f3ec592ddd05
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c8879884cf3d882e6a6b441244ed139072bedeeb
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72753389"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029471"
 ---
 # <a name="indexing-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API を使用するインデックス作成
 
@@ -32,6 +32,89 @@ Azure Cosmos DB の MongoDB 用 API では、Cosmos DB の自動インデック�
 真の複合インデックスは、3.6 ワイヤ プロトコルを使用するアカウントでサポートされます。 次のコマンドは、フィールド 'a' と 'b' に関する複合インデックスを作成します。`db.coll.createIndex({a:1,b:1})`
 
 複合インデックスを使用すると、次のように、複数のフィールドに関して直ちに効率的に並べ替えできます。`db.coll.find().sort({a:1,b:1})`
+
+### <a name="track-the-index-progress"></a>インデックスの進行状況を追跡する
+
+MongoDB アカウント用の Azure Cosmos DB の API 3.6 バージョンでは、データベース インスタンスでのインデックス作成の進行状況を追跡する `currentOp()` コマンドがサポートされます。 このコマンドでは、データベース インスタンスで進行中の操作に関する情報を含むドキュメントが返されます。 `currentOp` コマンドは、ネイティブ MongoDB では進行中のすべての操作の追跡に使用されます。それに対し、Azure Cosmos DB の MongoDB 用 API では、このコマンドはインデックス操作の追跡のみがサポートされます。
+
+以下に、`currentOp` コマンドを使用してインデックス作成の進行状況を追跡する方法を示す例をいくつか紹介します。
+
+• コレクションに対するインデックスの進行状況を取得します。
+
+   ```shell
+   db.currentOp({"command.createIndexes": <collectionName>, "command.$db": <databaseName>})
+   ```
+
+•データベース内のすべてのコレクションに対するインデックスの進行状況を取得します。
+
+  ```shell
+  db.currentOp({"command.$db": <databaseName>})
+  ```
+
+• Azure Cosmos アカウント内のすべてのデータベースとコレクションに対するインデックスの進行状況を取得します。
+
+  ```shell
+  db.currentOp({"command.createIndexes": { $exists : true } })
+  ```
+
+インデックスの進行状況の詳細には、現在のインデックス操作の進行状況のパーセンテージが含まれます。 次の例では、インデックスの進行状況のさまざまな段階での出力ドキュメントの形式を示します。
+
+1. インデックス作成が 60% 完了した "foo" コレクションと "bar" データベースでのインデックス操作では、出力ドキュメントは次のようになります。 `Inprog[0].progress.total` は、目標の完了率として 100 を示しています。
+
+   ```json
+   {
+        "inprog" : [
+        {
+                ………………...
+                "command" : {
+                        "createIndexes" : foo
+                        "indexes" :[ ],
+                        "$db" : bar
+                },
+                "msg" : "Index Build (background) Index Build (background): 60 %",
+                "progress" : {
+                        "done" : 60,
+                        "total" : 100
+                },
+                …………..…..
+        }
+        ],
+        "ok" : 1
+   }
+   ```
+
+2. "foo" コレクションと "bar" データベースで開始されたばかりのインデックス操作の場合、出力ドキュメントの進行状況は、測定可能なレベルに到達するまで 0% と表示されることがあります。
+
+   ```json
+   {
+        "inprog" : [
+        {
+                ………………...
+                "command" : {
+                        "createIndexes" : foo
+                        "indexes" :[ ],
+                        "$db" : bar
+                },
+                "msg" : "Index Build (background) Index Build (background): 0 %",
+                "progress" : {
+                        "done" : 0,
+                        "total" : 100
+                },
+                …………..…..
+        }
+        ],
+       "ok" : 1
+   }
+   ```
+
+3. 進行中のインデックス操作が完了すると、出力ドキュメントには空の inprog 操作が表示されます。
+
+   ```json
+   {
+      "inprog" : [],
+      "ok" : 1
+   }
+   ```
 
 ## <a name="indexing-for-version-32"></a>バージョン 3.2 用のインデックス作成
 
@@ -116,7 +199,7 @@ globaldb:PRIMARY> db.coll.createIndex({"_ts":1}, {expireAfterSeconds: 10})
 
 現在、一意なインデックスを作成できるのは、コレクションにドキュメントが含まれていないときに限られます。 広く使われている MongoDB 移行ツールはいずれも、データのインポート後に一意なインデックスを作成しようと試みます。 この問題を回避するために、移行ツールに任せるのではなく、ユーザーが対応するコレクションと一意のインデックスを手動で作成することをお勧めします (```mongorestore``` の場合、この動作は、コマンド ラインで `--noIndexRestore` フラグを使用することによって実現されます)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Cosmos DB のインデックス作成](../cosmos-db/index-policy.md)
 * [Time to Live を使用して Azure Cosmos DB のデータの有効期限が自動的に切れるようにする](../cosmos-db/time-to-live.md)

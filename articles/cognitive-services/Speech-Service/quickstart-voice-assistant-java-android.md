@@ -3,19 +3,19 @@ title: クイック スタート:カスタム音声アシスタント、Java (An
 titleSuffix: Azure Cognitive Services
 description: Speech SDK を使用して Android 上で Java を使用して音声アシスタント アプリケーションを作成する方法について説明します
 services: cognitive-services
-author: trrwilson
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/09/2019
-ms.author: travisw
-ms.openlocfilehash: 70031513d6f120e539e80d6befad4bf9320fb9c4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: d4f84bad6139210dcff3d3f3726d8b7a17d92a5b
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975960"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119730"
 ---
 # <a name="quickstart-create-a-voice-assistant-in-java-on-android-by-using-the-speech-sdk"></a>クイック スタート:Speech SDK を使用して Android 上で Java を使用して音声アシスタントを作成する
 
@@ -278,12 +278,12 @@ ms.locfileid: "74975960"
 
 ![Android アプリケーションのスクリーンショット](media/sdk/qs-java-android-assistant-completed-turn.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [基本ボットの作成とデプロイ](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 - [音声アシスタントについて](voice-assistants.md)
 - [Speech サービスのサブスクリプション キーを無料で取得する](get-started.md)
 - [カスタム キーワード](speech-devices-sdk-create-kws.md)

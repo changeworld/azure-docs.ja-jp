@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 07ef3858cc6a514ed60a9d25046dc4ff9566fa31
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 33b3f9292a2fd185ea5487c0111dc294a6f163cf
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546352"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030814"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
@@ -23,6 +23,25 @@ ms.locfileid: "76546352"
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
 
+## <a name="2020-02-04"></a>2020-02-04
+
+### <a name="azure-machine-learning-sdk-for-python-v110rc0"></a>Azure Machine Learning SDK for Python v1.1.0rc0
+
++ **バグの修正と機能強化**
+  + **azureml-automl-runtime**
+    + 特性付けの速度が向上しました。
+    + スコアリング中の頻度チェックを修正しました。現在、予測タスクでは、トレーニングとテストのセット間で頻度が厳密に同一である必要はありません。
+  + **azureml-core**
+    + ユーザーは、Web サービス用のキーを再生成するときに、認証キーの値を指定できるようになりました。
+  + **azureml-interpret**
+    + azureml-interpret が interpret-community 0.5.0 に依存するように更新されました
+  + **azureml-pipeline-core**
+    + 引数リストを変更しても PythonScriptStep の結果が誤って再利用される可能性のあるバグを修正しました
+  + **azureml-pipeline-steps**
+    + PythonScriptStep 入力としてのデータセットのドキュメント例を追加しました
+  + **azureml-contrib-pipeline-steps**
+    + ParallelRunConfig で渡されたパラメーターが、パイプライン パラメーターを渡すことによって上書きできるようになりました。 サポートされる新しいパイプライン パラメーターは、aml_mini_batch_size、aml_error_threshold、aml_logging_level、aml_run_invocation_timeout (aml_node_count と aml_process_count_per_node は以前のリリースに既に含まれています) です。
+  
 ## <a name="2020-01-21"></a>2020-01-21
 
 ### <a name="azure-machine-learning-sdk-for-python-v1085"></a>Azure Machine Learning SDK for Python v1.0.85
@@ -236,7 +255,7 @@ ms.locfileid: "76546352"
 
 Studio から、次の Web ベースの作成ツールにアクセスします。
 
-| Web ベースのツール | [説明] | Edition |
+| Web ベースのツール | 説明 | Edition |
 |-|-|-|
 | ノートブック VM (プレビュー) | 完全に管理されたクラウドベースのワークステーション | Basic および Enterprise |
 | [自動化された機械学習](tutorial-first-experiment-automated-ml.md) (プレビュー) | 機械学習モデルの開発に向けた、コードを使用しないエクスペリエンス | Enterprise |
@@ -1236,7 +1255,7 @@ Azure Machine Learning SDK for Python v1.0.30 がリリースされました。
 
 ### <a name="azure-machine-learning-data-prep-sdk-v112"></a>Azure Machine Learning Data Prep SDK v1.1.2
 
-注:Data Prep Python SDK では、`numpy` および `pandas` パッケージがインストールされなくなります。 [更新されたインストール手順](https://aka.ms/aml-data-prep-installation)に関するページを参照してください。
+注:Data Prep Python SDK では、`numpy` および `pandas` パッケージがインストールされなくなります。 [更新されたインストール手順](https://github.com/Microsoft/AMLDataPrepDocs)に関するページを参照してください。
 
 + **新機能**
   + ピボット変換を使用できるようになりました。

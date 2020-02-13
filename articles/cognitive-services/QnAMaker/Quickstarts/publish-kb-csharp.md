@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: a6ad8156b5ab6370bb089c97d620bae0ccff82eb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 33cc4caa8b5901177699368e2f31908951910a6f
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381462"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109575"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>クイック スタート:C# を使用して QnA Maker のナレッジ ベースを公開する
 
@@ -73,7 +73,7 @@ Program.cs の先頭にある 1つの using ステートメントを次の行に
 
 ## <a name="next-steps"></a>次のステップ
 
-ナレッジ ベースが公開された後、[回答を生成するためのエンドポイント URL](../Tutorials/create-publish-answer.md#generating-an-answer) が必要になります。
+ナレッジ ベースが公開された後、[回答を生成するためのエンドポイント URL](./get-answer-from-knowledge-base-csharp.md) が必要になります。
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API リファレンス](https://go.microsoft.com/fwlink/?linkid=2092179)

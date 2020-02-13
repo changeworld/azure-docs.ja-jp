@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ed3307f2802e5372cf007f1df8eee2f26e6a39f
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 5b8038896a11b65e835ce71f5fc34e85723cc91a
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714385"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77060523"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>チュートリアル:Salesforce を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -117,7 +117,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 これで、[ユーザーとグループ] セクションで Salesforce に割り当てたユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかることに注意してください。後続の同期は、サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ ログを取得できます。このログには、プロビジョニング サービスによって Salesforce アプリに対して実行されたすべてのアクションが記載されています。
 
-Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
+Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」をご覧ください。
 
 ## <a name="common-issues"></a>一般的な問題
 * Salesforce へのアクセスの承認で問題が発生している場合は、次のことを確認してください。

@@ -13,12 +13,12 @@ ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
 ROBOTS: NOINDEX
-ms.openlocfilehash: c5e8ed4a78fccce4f3a5c631a99a8729114e5722
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: a415ac749d0d322bc2f71f64d4bec6e32ad1f12e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422606"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063494"
 ---
 # <a name="how-to-configure-saml-based-single-sign-on"></a>SAML ベースのシングル サインオンを構成する方法
 
@@ -37,8 +37,8 @@ Azure AD のエンタープライズ アプリケーションにアプリを追�
     | [基本的な SAML 構成] の設定 | SP-Initiated | idP-Initiated | 説明 |
     |:--|:--|:--|:--|
     | 識別子 (エンティティ ID) | 一部のアプリでは必須 | 一部のアプリでは必須 | シングル サインオンの構成対象となるアプリケーションを一意に識別します。 Azure AD から ID が SAML トークンの Audience パラメーターとしてアプリケーションに送信されます。 アプリケーションではこの ID を検証する必要があります。 また、この値はアプリケーションによって提供される SAML メタデータ内に Entity ID として表示されます。 "*この値は、アプリケーションから送信された **AuthnRequest** (SAML 要求) の **Issuer** 要素として見つけることができます。* " |
-    | [応答 URL] | 省略可能 | 必須 | アプリケーションが SAML トークンを受け取ることになっている場所を指定します。 応答 URL は Assertion Consumer Service (ACS) URL とも呼ばれています。 |
-    | [サインオン URL] | 必須 | 指定しません | この URL をユーザーが開くと、サービス プロバイダーは、ユーザーの認証とサインインを行う Azure AD にそのユーザーをリダイレクトします。 Azure AD はその URL を使用して Office 365 または Azure AD アクセス パネルからアプリケーションを起動します。 空白の場合、Azure AD では、ユーザーがアプリケーションを起動したときにシングル サインオンを開始する際、ID プロバイダーが利用されます。|
+    | [応答 URL] | 省略可能 | Required | アプリケーションが SAML トークンを受け取ることになっている場所を指定します。 応答 URL は Assertion Consumer Service (ACS) URL とも呼ばれています。 |
+    | [サインオン URL] | Required | 指定しません | この URL をユーザーが開くと、サービス プロバイダーは、ユーザーの認証とサインインを行う Azure AD にそのユーザーをリダイレクトします。 Azure AD はその URL を使用して Office 365 または Azure AD アクセス パネルからアプリケーションを起動します。 空白の場合、Azure AD では、ユーザーがアプリケーションを起動したときにシングル サインオンを開始する際、ID プロバイダーが利用されます。|
     | リレー状態 | 省略可能 | 省略可能 | 認証が完了した後にユーザーをリダイレクトする場所をアプリケーションに指示します。 通常、値はアプリケーションで有効な URL です。 ただし、一部のアプリケーションでは、このフィールドを異なる方法で使用します。 詳細については、アプリケーションのベンダーに問い合わせてください。
     | ログアウト URL | 省略可能 | 省略可能 | SAML ログアウト応答をアプリケーションに返送するために使用します。
 
@@ -118,7 +118,7 @@ Azure AD では、アプリケーションに送信する SAML トークンの�
 
 1. アプリケーションのシングル サインオン設定を開きます。 
 2. **[<applicationName> でシングル サインオンを検証]** セクションまでスクロールします。 このチュートリアルでは、このセクションは **[GitHub-test のセットアップ]** となります。
-3. **[テスト]** を選択します。 テストのオプションが表示されます。
+3. **[Test]** を選択します。 テストのオプションが表示されます。
 4. **[現在のユーザーとしてサインイン]** を選択します。 
 
 サインオンに成功した場合は、SAML アプリケーションにユーザーとグループを割り当てることができます。
@@ -132,7 +132,7 @@ Azure AD では、アプリケーションに送信する SAML トークンの�
 1. 解決ガイダンスを読み、可能であれば問題を解決します。
 1. 成功するまでテストを再実行します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [アプリケーションにユーザーまたはグループを割り当てる](methods-for-assigning-users-and-groups.md)
-- [自動ユーザー アカウント プロビジョニングを構成する](configure-automatic-user-provisioning-portal.md)
+- [自動ユーザー アカウント プロビジョニングを構成する](../app-provisioning/configure-automatic-user-provisioning-portal.md)

@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 01/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f11258457e60ea3458b0ede1fe00f042041bcb1a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 969a2fb5444ae8ece2aa302c04a5bbb85dcca917
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841252"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057721"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>チュートリアル:G Suite を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルの目的は、ユーザーまたはグループ、あるいはその両方を G Suite に自動的にプロビジョニングしたり、プロビジョニング解除したりするように Azure AD を構成するために G Suite と Azure Active Directory (Azure AD) で実行される手順を示すことです。
 
 > [!NOTE]
-> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。
+> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。
 
 > [!NOTE]
 > G Suite コネクタは最近、2019 年 10 月に更新されました。 G Suite コネクタに加えられた変更には、次のものがあります。
@@ -181,7 +181,7 @@ Azure AD で自動ユーザー プロビジョニング用に G Suite を構成�
 
     ![G Suite のグループ属性](media/google-apps-provisioning-tutorial/groupattributes.png)
 
-1. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
+1. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
 1. G Suite で Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
 
@@ -200,11 +200,11 @@ Azure AD で自動ユーザー プロビジョニング用に G Suite を構成�
 > [!NOTE]
 > ユーザーが Azure AD ユーザーのメール アドレスを使用する既存の個人/コンシューマー アカウントを既に持っている場合は、何らかの問題が発生する可能性がありますが、ディレクトリ同期を実行する前に Google の転送ツールを使用して解決できます。
 
-Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
+Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="common-issues"></a>一般的な問題
@@ -213,7 +213,7 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)
+* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 169f1b78cf8e67fb1d5934532077dfa99bd210a1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 475f0deb3b9da863a8e7b84abb7ebef54c9cb201
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975739"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118835"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages"></a>クイック スタート:Translator Text API を使用してサポートされている言語の一覧を取得する
 
@@ -52,7 +52,7 @@ ms.locfileid: "74975739"
 
 ::: zone-end
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [テキストを翻訳する](quickstart-translate.md)
 * [テキストを表記変換する](quickstart-transliterate.md)

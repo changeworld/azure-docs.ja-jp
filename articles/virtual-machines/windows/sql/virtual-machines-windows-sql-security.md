@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6b2f9853c2699b69a0c9be13e6925a4b30f358f7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f5ea0ddff38532b119d8d984f2dabd6d898b44a5
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102022"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031358"
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Azure Virtual Machines における SQL Server のセキュリティに関する考慮事項
 
@@ -56,6 +56,10 @@ SQL Server 仮想マシンを作成するときに、マシンと SQL Server へ
 クラシック デプロイ モデルでエンドポイントを使用している場合、使用しない仮想マシンのエンドポイントは削除します。 エンドポイントで ACL を使用する手順については、「 [エンドポイントの ACL の管理](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint)」を参照してください。 これは、Resource Manager を使用する VM には必要ありません。
 
 最後に、Azure の仮想マシンの SQL Server データベース エンジンのインスタンスで、暗号化された接続オプションを有効にすることを検討してください。 署名付き証明書で SQL Server インスタンスを構成します。 詳細については、「[データベース エンジンへの暗号化接続の有効化](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)」および「[接続文字列の構文](https://msdn.microsoft.com/library/ms254500.aspx)」をご覧ください。
+
+## <a name="encryption"></a>暗号化
+
+マネージド ディスクでは、サーバー側暗号化と Azure Disk Encryption が提供されます。 [サーバー側暗号化](/azure/virtual-machines/windows/disk-encryption)では、保管データの暗号化を提供し、データを保護して組織のセキュリティおよびコンプライアンス要件を満たします。 [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) では、Bitlocker または DM-Crypt テクノロジを使用し、Azure Key Vault と統合して OS とデータ ディスクの両方を暗号化します。 
 
 ## <a name="use-a-non-default-port"></a>既定以外のポートの使用
 
@@ -93,9 +97,14 @@ SQL Server が既定以外のポートをリッスンしている場合は、接
 
   - **SA** ログインを使用する必要がある場合は、プロビジョニング後にログインを有効にし、新しい強力なパスワードを割り当てます。
 
-## <a name="follow-on-premises-best-practices"></a>オンプレミスのベスト プラクティスに従う
+## <a name="additional-best-practices"></a>その他のベスト プラクティス
 
-このトピックで説明している方法に加えて、該当する場合は、従来のオンプレミスのセキュリティの方法を確認して実装することお勧めします。 詳細については、「[SQL Server インストールにおけるセキュリティの考慮事項](https://docs.microsoft.com/sql/sql-server/install/security-considerations-for-a-sql-server-installation)」を参照してください。
+このトピックで説明している手法に加えて、従来のオンプレミスのセキュリティ手法でのセキュリティ ベスト プラクティスと仮想マシンのセキュリティ ベスト プラクティスの両方を確認して実装することをお勧めします。 
+
+オンプレミスのセキュリティ手法の詳細については、「[SQL Server インストールにおけるセキュリティの考慮事](/sql/sql-server/install/security-considerations-for-a-sql-server-installation)」および[セキュリティ センター](/sql/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database)に関するページを参照してください。 
+
+仮想マシンのセキュリティの詳細については、[仮想マシンのセキュリティの概要](/azure/security/fundamentals/virtual-machines-overview)に関するページを参照してください。
+
 
 ## <a name="next-steps"></a>次の手順
 
