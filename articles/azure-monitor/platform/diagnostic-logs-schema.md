@@ -25,7 +25,7 @@ ms.locfileid: "76120147"
 
 ## <a name="top-level-resource-logs-schema"></a>リソース ログの上位スキーマ
 
-| Name | 必須/省略可能 | [説明] |
+| Name | 必須/省略可能 | 説明 |
 |---|---|---|
 | time | 必須 | イベントのタイムスタンプ (UTC)。 |
 | resourceId | 必須 | イベントを出力したリソースのリソース ID。 テナント サービスの場合、形式は /tenants/tenant-id/providers/provider-name です。 |
