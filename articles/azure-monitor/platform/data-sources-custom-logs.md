@@ -75,7 +75,7 @@ Azure Monitor のカスタム ログ データ ソースでは、Windows コン�
 
 次の表は、異なるログ ファイルを指定する有効なパターンの例をまとめたものです。
 
-| [説明] | Path |
+| 説明 | Path |
 |:--- |:--- |
 | Windows エージェントの *C:\Logs* にあり、拡張子が .txt のすべてのファイル |C:\Logs\\\*.txt |
 | Windows エージェントの *C:\Logs* にあり、名前が log で始まり、拡張子が .txt のすべてのファイル |C:\Logs\log\*.txt |
@@ -118,7 +118,7 @@ Azure Monitor は約 5 分おきに各カスタム ログから新しいエン�
 ## <a name="custom-log-record-properties"></a>カスタム ログ レコードのプロパティ
 カスタム ログ レコードには、種類、ユーザーが指定するログ名、次の表にあるプロパティが与えられます。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | TimeGenerated |Azure Monitor がレコードを収集した日付と時刻。  ログが時間基準の区切り記号を使用する場合、これはエントリから収集された時間になります。 |
 | SourceSystem |レコードが収集されたエージェントの種類。 <br> OpsManager – Windows エージェント、直接接続または System Center Operations Manager <br> Linux – すべての Linux エージェント |
