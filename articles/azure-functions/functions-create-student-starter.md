@@ -43,7 +43,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com>) にサイン�
 
     <img src="./media/functions-create-student-starter/Function-create-start.png" width="315">
 
-    | 設定      | 推奨値  | [説明]                                        |
+    | 設定      | 推奨値  | 説明                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **アプリ名** | グローバルに一意の名前 | 新しい Function App を識別する名前。 有効な文字は、`a-z`、`0-9`、および `-` です。  | 
     | **サブスクリプション** | 該当するサブスクリプション | この新しい Function App が作成されるサブスクリプション。 | 
