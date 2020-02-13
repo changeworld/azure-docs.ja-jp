@@ -41,7 +41,7 @@ Visual Studio では、インフラストラクチャとコードを Azure に�
 
     [Web アプリ] テンプレートを選択したため、次のファイルが表示されます。
 
-   | ファイル名 | [説明] |
+   | ファイル名 | 説明 |
    | --- | --- |
    | Deploy-AzureResourceGroup.ps1 |Azure Resource Manager にデプロイするために PowerShell コマンドを実行する PowerShell スクリプト。 Visual Studio では、この PowerShell スクリプトを使用してテンプレートをデプロイします。 |
    | WebSite.json |Azure にデプロイするインフラストラクチャと、デプロイ中に指定できるパラメーターを定義した Resource Manager テンプレートです。 Resource Manager によってリソースが正しい順序でデプロイされるように、リソース間の依存性も定義されます。 |
