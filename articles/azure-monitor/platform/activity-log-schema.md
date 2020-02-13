@@ -112,7 +112,7 @@ ms.locfileid: "75749469"
 ```
 
 ### <a name="property-descriptions"></a>プロパティの説明
-| 要素名 | [説明] |
+| 要素名 | 説明 |
 | --- | --- |
 | authorization |イベントの RBAC プロパティの BLOB。 通常は、"action"、"role"、"scope" の各プロパティが含まれます。 |
 | caller |操作、UPN 要求、または可用性に基づく SPN 要求を実行したユーザーの電子メール アドレス。 |
@@ -259,7 +259,7 @@ ms.locfileid: "75749469"
 ```
 
 ### <a name="property-descriptions"></a>プロパティの説明
-| 要素名 | [説明] |
+| 要素名 | 説明 |
 | --- | --- |
 | channels | 常に "Admin, Operation" |
 | correlationId | 文字列形式の GUID。 |
@@ -352,7 +352,7 @@ ms.locfileid: "75749469"
 ```
 
 ### <a name="property-descriptions"></a>プロパティの説明
-| 要素名 | [説明] |
+| 要素名 | 説明 |
 | --- | --- |
 | caller | 常に Microsoft.Insights/alertRules |
 | channels | 常に "Admin, Operation" |
@@ -378,7 +378,7 @@ ms.locfileid: "75749469"
 アラート イベントのソースに応じて、プロパティ フィールドには異なる値が格納されます。 アラート イベントの一般的なプロバイダーは、アクティビティ ログ アラートとメトリック アラートの 2 つです。
 
 #### <a name="properties-for-activity-log-alerts"></a>アクティビティ ログ アラートのプロパティ
-| 要素名 | [説明] |
+| 要素名 | 説明 |
 | --- | --- |
 | properties.subscriptionId | このアクティビティ ログ アラート ルールがアクティブになった原因であるアクティビティ ログ イベントのサブスクリプション ID。 |
 | properties.eventDataId | このアクティビティ ログ アラート ルールがアクティブになった原因であるアクティビティ ログ イベントのイベント データ ID。 |
@@ -389,7 +389,7 @@ ms.locfileid: "75749469"
 | properties.status | このアクティビティ ログ アラート ルールがアクティブになった原因であるアクティビティ ログ イベントの状態。|
 
 #### <a name="properties-for-metric-alerts"></a>メトリック アラートのプロパティ
-| 要素名 | [説明] |
+| 要素名 | 説明 |
 | --- | --- |
 | properties.RuleUri | メトリック アラート ルール自体のリソース ID。 |
 | properties.RuleName | メトリック アラート ルールの名前。 |
@@ -462,7 +462,7 @@ ms.locfileid: "75749469"
 ```
 
 ### <a name="property-descriptions"></a>プロパティの説明
-| 要素名 | [説明] |
+| 要素名 | 説明 |
 | --- | --- |
 | caller | 常に Microsoft.Insights/autoscaleSettings |
 | channels | 常に "Admin, Operation" |
@@ -552,7 +552,7 @@ ms.locfileid: "75749469"
 ```
 
 ### <a name="property-descriptions"></a>プロパティの説明
-| 要素名 | [説明] |
+| 要素名 | 説明 |
 | --- | --- |
 | channels | 常に "Operation" |
 | correlationId | 文字列形式の GUID。 |
@@ -633,7 +633,7 @@ ms.locfileid: "75749469"
 
 ```
 ### <a name="property-descriptions"></a>プロパティの説明
-| 要素名 | [説明] |
+| 要素名 | 説明 |
 | --- | --- |
 | channels | 常に "Operation" |
 | correlationId | 文字列形式の GUID。 |
@@ -743,7 +743,7 @@ ms.locfileid: "75749469"
 
 ### <a name="policy-event-property-descriptions"></a>Policy イベントのプロパティの説明
 
-| 要素名 | [説明] |
+| 要素名 | 説明 |
 | --- | --- |
 | authorization | イベントの RBAC プロパティの配列。 新しいリソースの場合、これは、評価をトリガーした要求のアクションとスコープです。 既存のリソースの場合、アクションは "Microsoft.Resources/checkPolicyCompliance/read" です。 |
 | caller | 新しいリソースの場合は、デプロイを開始した ID。 既存のリソースの場合は、Microsoft Azure Policy Insights RP の GUID。 |
