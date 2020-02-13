@@ -39,7 +39,7 @@ System Center Operations Manager 管理グループが Log Analytics ワーク�
 ### <a name="supported-agents"></a>サポートされているエージェント
 次の表は、このソリューションの接続先としてサポートされているソースとその説明です。
 
-| 接続先ソース | サポートされています | [説明] |
+| 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
 | Windows エージェント | はい | ハートビート イベントは、直接の Windows エージェントから収集されます。|
 | System Center Operations Manager 管理グループ | はい | ハートビート イベントは、管理グループに対して報告を行うエージェントから 60 秒ごとに収集されて、Azure Monitor に転送されます。 Operations Manager エージェントから Azure Monitor への直接接続は必要ありません。 ハートビート イベント データは管理グループから Log Analytics ワークスペースに転送されます。|
@@ -49,7 +49,7 @@ Log Analytics ワークスペースに Agent Health ソリューションを追�
 
 **[Agent Health]** タイルをクリックすると、 **[Agent Health]** ダッシュボードが開きます。  ダッシュボードには、次の表に示した列が存在します。 それぞれの列には、特定の時間の範囲について、その列の基準に該当するイベント数の上位 10 件が表示されます。 ログ検索を実行してイベント全件を取得するには、各列の右下にある **[すべて表示]** を選択するか、列ヘッダーをクリックします。
 
-| 列 | [説明] |
+| 列 | 説明 |
 |--------|-------------|
 | Agent count over time (時間の経過に伴うエージェント数) | 7 日間にわたるエージェント数の傾向。Linux エージェントと Windows エージェントの両方が対象となります。|
 | Count of unresponsive agents (応答しないエージェントの数) | 過去 24 時間ハートビートを送信していないエージェントの一覧。|
@@ -68,7 +68,7 @@ Log Analytics ワークスペースに Agent Health ソリューションを追�
 ### <a name="heartbeat-records"></a>ハートビート レコード
 **Heartbeat** という種類のレコードが作成されます。  これらのレコードは、次の表に示したプロパティを持ちます。  
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | `Type` | *Heartbeat*|
 | `Category` | *Direct Agent*、*SCOM Agent*、*SCOM Management Server* のいずれかの値になります。|
@@ -91,7 +91,7 @@ Operations Manager 管理サーバーに対して報告を行う各エージェ�
 ## <a name="sample-log-searches"></a>サンプル ログ検索
 次の表は、このソリューションによって収集されたレコードを探すログ検索の例です。
 
-| クエリ | [説明] |
+| クエリ | 説明 |
 |:---|:---|
 | Heartbeat &#124; distinct Computer |エージェントの総数 |
 | Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |直近 24 時間応答がなかったエージェントの数 |
