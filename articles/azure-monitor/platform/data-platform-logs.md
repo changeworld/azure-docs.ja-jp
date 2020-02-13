@@ -76,14 +76,14 @@ Azure Monitor は、Azure 内とオンプレミス リソースからの両方�
 
 ### <a name="azure-tenant-and-subscription"></a>Azure テナントとサブスクリプション
 
-| Data | [説明] |
+| Data | 説明 |
 |:---|:---|
 | Azure Active Directory 監査ログ | 各ディレクトリの診断設定によって構成されます。 「[Azure AD ログを Azure Monitor ログと統合する](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)」をご覧ください。  |
 | アクティビティ ログ | 既定では個別に格納され、ほぼリアルタイムのアラートに使用できます。 Log Analytics ワークスペースに書き込むには、Activity Log Analytics ソリューションをインストールします。 「[Log Analytics での Azure アクティビティ ログの収集と分析](activity-log-collect.md)」をご覧ください。 |
 
 ### <a name="azure-resources"></a>Azure リソース
 
-| Data | [説明] |
+| Data | 説明 |
 |:---|:---|
 | リソース診断 | Log Analytics ワークスペースへのメトリックなど、診断データを書き込むための診断設定を構成します。 [Azure リソース ログの Log Analytics へのストリーミング](resource-logs-collect-storage.md)に関するページを参照してください。 |
 | 監視ソリューション | 監視ソリューションにより収集されたデータが Log Analytics ワークスペースに書き込まれます。 ソリューションの一覧については、「[Azure での管理ソリューションのデータ収集の詳細](../insights/solutions-inventory.md)」をご覧ください。 ソリューションのインストールと使用について詳しくは、「[Azure Monitor での監視ソリューション](../insights/solutions.md)」をご覧ください。 |
@@ -92,7 +92,7 @@ Azure Monitor は、Azure 内とオンプレミス リソースからの両方�
 
 ### <a name="virtual-machines"></a>Virtual Machines
 
-| Data | [説明] |
+| Data | 説明 |
 |:---|:---|
 |  エージェントのデータ ソース | [Windows](agent-windows.md) と [Linux](../learn/quick-collect-linux-computer.md) のエージェントから収集されるデータ ソースには、イベント、パフォーマンス データ、カスタム ログが含まれます。 データ ソースの一覧と構成の詳細については、「[Azure Monitor のエージェント データ ソース](data-sources.md)」をご覧ください。 |
 | 監視ソリューション | 監視ソリューションによりエージェントから収集されたデータが Log Analytics ワークスペースに書き込まれます。 ソリューションの一覧については、「[Azure での管理ソリューションのデータ収集の詳細](../insights/solutions-inventory.md)」をご覧ください。 ソリューションのインストールと使用について詳しくは、「[Azure Monitor での監視ソリューション](../insights/solutions.md)」をご覧ください。 |
@@ -101,7 +101,7 @@ Azure Monitor は、Azure 内とオンプレミス リソースからの両方�
 
 ### <a name="applications"></a>[アプリケーション]
 
-| Data | [説明] |
+| Data | 説明 |
 |:---|:---|
 | 要求と例外 | アプリケーションの要求と例外に関する詳細なデータは、_requests_、_pageViews_、_exceptions_ の各テーブルにあります。 [外部コンポーネント](../app/asp-net-dependencies.md)の呼び出しは、_dependencies_ テーブルにあります。 |
 | 使用状況とパフォーマンス | アプリケーションのパフォーマンスは、_requests_、_browserTimings_、_performanceCounters_ の各テーブルで入手できます。 [カスタム メトリック](../app/api-custom-events-metrics.md#trackevent)のデータは、_customMetrics_ テーブルにあります。|
@@ -110,21 +110,21 @@ Azure Monitor は、Azure 内とオンプレミス リソースからの両方�
 
 ### <a name="insights"></a>洞察
 
-| Data | [説明] |
+| Data | 説明 |
 |:---|:---|
 | コンテナーに対する Azure Monitor | [Azure Monitor for containers](../insights/container-insights-overview.md) によって収集されたインベントリとパフォーマンス データです。 テーブルの一覧については、「[コンテナーのデータ収集の詳細](../insights/container-insights-log-search.md#container-records)」をご覧ください。 |
 | VM に対する Azure Monitor | [Azure Monitor for VMs](../insights/vminsights-overview.md) によって収集されたマップとパフォーマンス データです。 このデータのクエリについて詳しくは、「[VM 用 Azure Monitor からログを照会する方法](../insights/vminsights-log-search.md)」をご覧ください。 |
 
 ### <a name="custom"></a>Custom 
 
-| Data | [説明] |
+| Data | 説明 |
 |:---|:---|
 | REST API | 任意の REST クライアントから Log Analytics ワークスペースにデータを書き込みます。 詳しくは、「[HTTP データ コレクター API を使用した Azure Monitor へのログ データの送信](data-collector-api.md)」をご覧ください。
 | ロジック アプリ | **Azure Log Analytics データ コレクター** アクションでロジック アプリ ワークフローから Log Analytics ワークスペースに任意のデータを書き込みます。 |
 
 ### <a name="security"></a>Security
 
-| Data | [説明] |
+| Data | 説明 |
 |:---|:---|
 | Azure Security Center | [Azure Security Center](/azure/security-center/) には、Log Analytics ワークスペースで収集されたデータが格納され、他のログ データと共に分析できます。 ワークスペースの構成について詳しくは、「[Azure Security Center でのデータ収集](../../security-center/security-center-enable-data-collection.md)」をご覧ください。 |
 | Azure Sentinel | [Azure Sentinel](/azure/sentinel/) には、データ ソースから Log Analytics ワークスペースへのデータが格納されます。 「[データ ソースの接続](/azure/sentinel/connect-data-sources)」のページを参照してください。  |
