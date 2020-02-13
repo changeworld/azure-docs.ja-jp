@@ -19,7 +19,7 @@ ms.locfileid: "75365191"
 
 ## <a name="sql-to-azure-monitor"></a>SQL から Azure Monitor へ
 
-[説明]                             |SQL クエリ                                                                                          |Azure Monitor ログ クエリ
+説明                             |SQL クエリ                                                                                          |Azure Monitor ログ クエリ
 ----------------------------------------|---------------------------------------------------------------------------------------------------|----------------------------------------
 テーブルからすべてのデータを選択する            |`SELECT * FROM dependencies`                                                                       |<code>dependencies</code>
 テーブルから特定の列を選択する    |`SELECT name, resultCode FROM dependencies`                                                        |<code>dependencies <br>&#124; project name, resultCode</code>
