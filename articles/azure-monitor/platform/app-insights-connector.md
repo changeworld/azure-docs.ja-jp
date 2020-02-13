@@ -43,7 +43,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 他のほとんどの Log Analytics ソリューションとは異なり、Application Insights Connector 用のデータはエージェントによって収集されません。 ソリューションで使用されるデータはすべて、Azure から直接収集されます。
 
-| 接続先ソース | サポートされています | [説明] |
+| 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
 | [Windows エージェント](../../azure-monitor/platform/agent-windows.md) | いいえ | ソリューションでは、Windows エージェントの情報は収集しません。 |
 | [Linux エージェント](../../azure-monitor/learn/quick-collect-linux-computer.md) | いいえ | ソリューションでは、Linux エージェントの情報は収集しません。 |
@@ -175,7 +175,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="generic-fields"></a>一般的なフィールド
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | 種類 | ApplicationInsights |
 | ClientIP |   |
@@ -201,7 +201,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="availability-specific-fields"></a>可用性に固有のフィールド
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | TelemetryType | 可用性 |
 | AvailabilityTestName | Web テストの名前 |
@@ -243,7 +243,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="request-specific-fields"></a>要求に固有のフィールド
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | 種類 | ApplicationInsights |
 | TelemetryType | Request |
