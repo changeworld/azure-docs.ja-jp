@@ -152,7 +152,7 @@ Resource Manager は、デプロイ操作を開始する前にパラメーター
 
 次の例は、パラメーターを使用するためのシナリオを示しています。
 
-|Template  |[説明]  |
+|Template  |説明  |
 |---------|---------|
 |[既定値のための関数を含むパラメーター](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | パラメーターの既定値を定義する際のテンプレート関数の使用方法を説明します。 このテンプレートではリソースをデプロイしません。 パラメーターの値を作成して、その値を返します。 |
 |[パラメーター オブジェクト](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | パラメーターのオブジェクトの使用方法を示します。 このテンプレートではリソースをデプロイしません。 パラメーターの値を作成して、その値を返します。 |
