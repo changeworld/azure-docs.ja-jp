@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: ce1e7d3b3b9908d5c4608f6ab62e9b743f80c0b0
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: b5640100067ec62a1a0813e5d5fc808f19f5a97d
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838012"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169019"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Machine Learning Studio (クラシック) モデルが実験から Web サービスになるまでの過程
 Azure Machine Learning Studio (クラシック) によって提供される対話形式のキャンバスで、予測分析モデルを表す "***実験***" を開発、実行、テスト、反復処理できます。 以下に対応する、多様なモジュールが用意されています。
@@ -104,7 +104,7 @@ Machine Learning Studio (クラシック) を使用して予測 Web サービス
 
 別の機械学習アルゴリズムを選択する、別のトレーニング方法を試行するなど、元の予測実験を変更するには、前に説明したモデルの再トレーニングの 2 つ目の手順を実行する必要があります。トレーニング実験を開き、 **[名前を付けて保存]** をクリックしてコピーを作成したうえで、新たにモデルを開発し、予測実験を作成して Web サービスをデプロイします。 これにより、元の予測実験と関係のない新しい Web サービスが作成されます。どちらか一方を実行するか、両方を実行し続けるかを決定できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 開発および実験のプロセスの詳細については、次の記事をご覧ください。
 
 * 実験の変換 - [Azure Machine Learning Studio (クラシック) でのデプロイのためにモデルを準備する方法](convert-training-experiment-to-scoring-experiment.md)

@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: c07ae779334c97b28803d77d2ce4a1b5b7962b48
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: e26ae7ded47a235ecf1829946c1cc79af9a0fb8c
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314421"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152399"
 ---
 # <a name="create-python-model"></a>Python モデルの作成
 
-この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 **Python モデルの作成**モジュールを使用して Python スクリプトから未トレーニング モデルを作成する方法について説明します。 Azure Machine Learning デザイナー環境の Python パッケージに含まれる任意の学習器を基にしたモデルを作成できます。 
 

@@ -8,7 +8,7 @@
       items:
         - name: Container Registry について
           href: container-registry-intro.md
-    - name: クイック スタート
+    - name: クイックスタート
       expanded: true
       items:
         - name: コンテナー レジストリの作成 - CLI
@@ -47,7 +47,7 @@
           href: container-registry-geo-replication.md
         - name: レジストリのベスト プラクティス
           href: container-registry-best-practices.md
-    - name: ハウツー ガイド
+    - name: 操作方法ガイド
       expanded: false
       items:
         - name: レジストリの操作
@@ -84,12 +84,14 @@
               items:
                 - name: 認証の概要
                   href: container-registry-authentication.md
-                - name: サービス プリンシパルの認証
+                - name: サービス プリンシパルでの認証
                   href: container-registry-auth-service-principal.md
-                - name: マネージド ID の認証
+                - name: マネージド ID による認証
                   href: container-registry-authentication-managed-identity.md
                 - name: Azure Container Instances からの認証
                   href: container-registry-auth-aci.md
+                - name: プル シークレットによる Kubernetes からの認証
+                  href: container-registry-auth-kubernetes.md
                 - name: Azure Kubernetes Service (AKS) からの認証
                   href: ../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
             - name: ロールベースのアクセス制御
@@ -109,19 +111,19 @@
               href: ../aks/tutorial-kubernetes-prepare-app.md
             - name: Service Fabric
               href: ../service-fabric/service-fabric-tutorial-create-container-images.md
-        - name: 監視
+        - name: モニター
           expanded: false
           items:
             - name: 診断と監査ログ (プレビュー)
               href: container-registry-diagnostics-audit-logs.md
-        - name: トラブルシューティング
+        - name: '[トラブルシューティング]'
           expanded: false
           items:
             - name: 一般的な問題の検出
               href: container-registry-check-health.md
-            - name: FAQ
+            - name: よく寄せられる質問
               href: container-registry-faq.md
-- name: タスク
+- name: 処理手順
   expanded: true
   items:
     - name: 概要
@@ -129,7 +131,7 @@
       items:
         - name: ACR タスクについて
           href: container-registry-tasks-overview.md
-    - name: クイック スタート
+    - name: クイックスタート
       expanded: true
       items:
         - name: イメージのビルド、プッシュ、実行 - CLI
@@ -158,7 +160,7 @@
       items:
         - name: 複数ステップのタスク
           href: container-registry-tasks-multi-step.md
-    - name: ハウツー ガイド
+    - name: 操作方法ガイド
       expanded: false
       items:
         - name: マネージド ID を使用してセキュリティ保護されたリソースにアクセスする

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: a1ed1eccd7a10d78cd503559469654e5562cde0c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5d29598b0962fc42c855e7a26917a34269c30ddb
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67615856"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158064"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアクセスと ID オプション
 
@@ -48,7 +48,7 @@ AKS クラスターでの Azure AD 認証では、OAuth 2.0 プロトコル上�
 
 ユーザーが実行できるアクションの詳細なフィルタ処理を行うには、Kubernetes ではロールベースのアクセス制御 (RBAC) を使用します。 この制御メカニズムを使用して、ユーザーまたはユーザー グループに対して、リソースの作成または変更、実行中のアプリケーション ワークロードのログの表示などの操作を行うアクセス許可を割り当てることができます。 これらのアクセス許可は、付与するスコープを単一の名前空間にすることも、AKS クラスター全体にすることもできます。 Kubernetes の RBAC では、アクセス許可を定義する "*ロール*" を作成し、それらのロールを "*ロールのバインド*" を使用してユーザーに割り当てます。
 
-詳細については、[RBAC 認可の使用][kubernetes-rbac]に関する記事を参照してください。
+詳細については、[RBAC 承認の使用][kubernetes-rbac]に関するページを参照してください。
 
 ### <a name="azure-role-based-access-controls-rbac"></a>Azure のロールベースのアクセス制御
 リソースへのアクセスを制御するために追加された 1 つのメカニズムが、Azure のロールベースのアクセス制御 (RBAC) です。 Kubernetes の RBAC は、AKS クラスター内のリソースに対して機能するように設計され、Azure の RBAC は、Azure サブスクリプション内のリソースに対して機能するように設計されています。 Azure の RBAC では、適用されるアクセス許可の概要を説明する*ロール定義*を作成します。 その後、ユーザーまたはグループに特定の "*スコープ*" (個々のリソース、リソース グループ、またはサブスクリプション) で有効なロール定義が割り当てられます。
@@ -71,7 +71,7 @@ ClusterRole は、リソースへのアクセス許可を付与するのと同�
 
 ClusterRoleBinding は、ユーザーにロールをバインドするのと同じように機能しますが、特定の名前空間ではなく、クラスター全体のリソースに適用できます。 このアプローチでは、管理者またはサポートエンジニアに対して、AKS クラスター内のすべてのリソースへのアクセス許可を付与できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure AD と Kubernetes の RBAC の使用を開始するには、[Azure Active Directory と AKS の統合][aks-aad]に関する記事を参照してください。
 
@@ -91,7 +91,7 @@ Kubernetes と AKS の中心概念の追加情報については、次の記事�
 [kubernetes-rbac]: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
 
 <!-- LINKS - Internal -->
-[openid-connect]: ../active-directory/develop/v1-protocols-openid-connect-code.md
+[openid-connect]: ../active-directory/develop/v2-protocols-oidc.md
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [azure-rbac]: ../role-based-access-control/overview.md
 [aks-aad]: azure-ad-integration-cli.md

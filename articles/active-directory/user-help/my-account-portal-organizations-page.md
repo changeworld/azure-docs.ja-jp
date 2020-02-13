@@ -2,7 +2,7 @@
 title: マイ アカウント ポータルから組織を管理する - Azure AD
 description: マイ アカウント ポータルの [組織] ページから、ご利用の職場または学校アカウントに接続されている組織を表示および脱退する方法。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: jpettere
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.author: lizross
-ms.openlocfilehash: e8bea2c8eed210278b52b7ce6095a77c41fdd6ab
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: fbaca387dd8062f50bb7555c7be6e7f65ce346bf
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705141"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062474"
 ---
 # <a name="manage-your-connected-organizations-from-the-organizations-page"></a>[組織] ページから接続済み組織を管理する
 

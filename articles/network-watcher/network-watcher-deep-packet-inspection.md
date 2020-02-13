@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: c937a07133dc38d2d9e1e1ef2cc324b4c8bb360e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7d32043ca73e9cf810b3eab5e65cb4b42b599d18
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845068"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152926"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Azure Network Watcher を使用したパケット インスペクション
 
@@ -39,7 +39,7 @@ Network Watcher のパケット キャプチャ機能を使用すると、Azure 
 
 このシナリオでは、2 つのエンドポイントの間で行われた伝送制御プロトコル (TCP) 会話の初期ラウンドトリップ時間 (RTT) を確認する方法について説明します。
 
-TCP 接続が確立されるとき、接続で送信された最初の 3 つのパケットは、一般に 3 ウェイ ハンドシェイクと呼ばれるパターンに従います。 このハンドシェイクで送信された最初の 2 つのパケット (クライアントからの初期要求とサーバーの応答) を確認することで、この接続が確立されたときの待ち時間を計算できます。 この待ち時間は、ラウンドトリップ時間 (RTT) と呼ばれます。 TCP プロトコルと 3 ウェイ ハンドシェイクの詳細については、次のリソースを参照してください。 [https://github.com/mysqljs/mysql/](https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip )
+TCP 接続が確立されるとき、接続で送信された最初の 3 つのパケットは、一般に 3 ウェイ ハンドシェイクと呼ばれるパターンに従います。 このハンドシェイクで送信された最初の 2 つのパケット (クライアントからの初期要求とサーバーの応答) を確認することで、この接続が確立されたときの待ち時間を計算できます。 この待ち時間は、ラウンドトリップ時間 (RTT) と呼ばれます。 TCP プロトコルと 3 ウェイ ハンドシェイクの詳細については、次のリソースを参照してください。 [https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip](https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip)
 
 ### <a name="step-1"></a>手順 1
 

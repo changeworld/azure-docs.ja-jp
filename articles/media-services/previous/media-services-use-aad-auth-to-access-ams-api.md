@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: d80a58f1886ecc1ca2a735881fc5822f2fc0c53b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8b38b38789edfd5a0a30fdd589849bfa345eaac9
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60826143"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157858"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Azure AD 認証を使用した Azure Media Services API へのアクセス  
 
@@ -46,7 +46,7 @@ Azure Media REST 要求を成功させるには、呼び出すユーザーに、
  
 Azure Media Services で Azure AD 認証を使用する場合、次の 2 つの認証オプションがあります。
 
-- **ユーザー認証**。 Media Services リソースを操作するアプリを使用しているユーザーが認証を受けます。 ユーザーは最初に、対話型アプリケーションからユーザー資格情報の入力を求められます。 たとえば、承認済みユーザーがエンコード ジョブまたはライブ ストリーミングを監視するために使用する管理コンソール アプリなどです。 
+- **ユーザー認証**。 Media Services リソースを操作するアプリを使用しているユーザーが認証を受けます。 ユーザーは最初に、対話型アプリケーションからユーザー資格情報の入力を求められます。 例として、承認済みユーザーがエンコード ジョブまたはライブ ストリーミングを監視するために使用する管理コンソール アプリがあります。 
 - **サービス プリンシパル認証**。 サービスが認証を受けます。 この認証方法がよく使用されるアプリケーションは、デーモン サービス、中間層サービス、またはスケジュールされたジョブを実行するアプリです。 たとえば、Web アプリ、関数アプリ、ロジック アプリ、API、マイクロサービスなどです。
 
 ### <a name="user-authentication"></a>ユーザー認証 
@@ -76,7 +76,7 @@ Azure Media Services で Azure AD 認証を使用する場合、次の 2 つの�
 
    * Azure AD テナント エンドポイント。
 
-       テナント情報は、Azure Portal から取得できます。 右上隅のサインインしているユーザーの名前にカーソルを合わせます。
+       テナント情報は Azure Portal から取得できます。 右上隅のサインインしているユーザーの名前にカーソルを合わせます。
    * Media Services リソース URI。 
 
        この URI は、同じ Azure 環境 内の Media Services アカウントの URI と同じです (例: https://rest.media.azure.net) 。
@@ -95,7 +95,7 @@ Azure Media Services で Azure AD 認証を使用する場合、次の 2 つの�
 
 Media Services .NET クライアント SDK で Azure AD 認証を使用して REST 要求のやり取りを行う方法については、[.NET で Azure AD 認証を使用して Media Services API にアクセスする方法](media-services-dotnet-get-started-with-aad.md)に関するページを参照してください。 
 
-Media Services .NET クライアント SDK を使用していない場合、手順 2. で説明されているパラメーターを使用して、Azure AD アクセス トークン要求を手動で作成する必要があります。 詳細については、[Azure AD Authentication Library を使用して Azure AD トークンを取得する方法](../../active-directory/develop/active-directory-authentication-libraries.md)に関するページを参照してください。
+Media Services .NET クライアント SDK を使用していない場合、手順 2. で説明されているパラメーターを使用して、Azure AD アクセス トークン要求を手動で作成する必要があります。 詳細については、[Azure AD Authentication Library を使用して Azure AD トークンを取得する方法](../../active-directory/azuread-dev/active-directory-authentication-libraries.md)に関するページを参照してください。
 
 ### <a name="service-principal-authentication"></a>サービス プリンシパルの認証
 
@@ -118,7 +118,7 @@ Azure AD アプリケーションを作成した後、次の設定の値を取�
 
    * Azure AD テナント エンドポイント。
 
-       テナント情報は、Azure Portal から取得できます。 右上隅のサインインしているユーザーの名前にカーソルを合わせます。
+       テナント情報は Azure Portal から取得できます。 右上隅のサインインしているユーザーの名前にカーソルを合わせます。
    * Media Services リソース URI。 
 
        この URI は、同じ Azure 環境 内の Media Services アカウントの URI と同じです (例: https://rest.media.azure.net) 。
@@ -137,7 +137,7 @@ Azure AD アプリケーションを作成した後、次の設定の値を取�
 
 Media Services .NET クライアント SDK で Azure AD 認証を使用して REST 要求のやり取りを行う方法については、「[Use Azure AD authentication to access Azure Media Services API with .NET (.NET で Azure AD 認証を使用して Azure Media Services API にアクセスする方法)](media-services-dotnet-get-started-with-aad.md)」を参照してください。 
 
-Media Services .NET クライアント SDK を使用していない場合、手順 1. で説明されているパラメーターを使用して、Azure AD トークン要求を手動で作成する必要があります。 詳細については、[Azure AD Authentication Library を使用して Azure AD トークンを取得する方法](../../active-directory/develop/active-directory-authentication-libraries.md)に関するページを参照してください。
+Media Services .NET クライアント SDK を使用していない場合、手順 1. で説明されているパラメーターを使用して、Azure AD トークン要求を手動で作成する必要があります。 詳細については、[Azure AD Authentication Library を使用して Azure AD トークンを取得する方法](../../active-directory/azuread-dev/active-directory-authentication-libraries.md)に関するページを参照してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -153,7 +153,7 @@ Media Services .NET クライアント SDK を使用していない場合、手�
 - [Azure AD でのアプリケーションの追加、更新、または削除](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)
 - [PowerShell を使用したロールベースのアクセス制御の構成と管理](../../role-based-access-control/role-assignments-powershell.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Portal を使って [Azure AD 認証にアクセスし、Azure Media Services API を利用する](media-services-portal-get-started-with-aad.md)。
 * [.NET で Azure AD 認証を使用して Azure Media Services API にアクセスする](media-services-dotnet-get-started-with-aad.md)。

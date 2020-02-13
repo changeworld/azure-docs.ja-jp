@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: b7962f42b4244121a67b88ef3bf789ce40f7b1e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4428187c985c1004c88f2ac20b0e5811803cce2a
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64719624"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162771"
 ---
 # <a name="get-started-with-azure-ad-authentication-by-using-the-azure-portal"></a>Azure ポータルで Azure AD 認証を開始する
 
@@ -35,7 +35,7 @@ Azure ポータルを使用して Azure Active Directory (Azure AD) 認証にア
 
 Azure Media Services で Azure AD 認証を使用する場合、次の 2 つの認証オプションがあります。
 
-- **ユーザー認証**。 Media Services リソースを操作するアプリを使用しているユーザーが認証を受けます。 ユーザーは最初に対話型アプリケーションから資格情報の入力を求められます。 例として、承認済みユーザーがエンコード ジョブまたはライブ ストリーミングを監視するために使用する管理コンソール アプリがあります。 
+- **ユーザー認証**。 Media Services リソースを操作するアプリを使用しているユーザーが認証を受けます。 ユーザーは最初にその操作アプリケーションから資格情報の入力を求められます。 例として、承認済みユーザーがエンコード ジョブまたはライブ ストリーミングを監視するために使用する管理コンソール アプリがあります。 
 - **サービス プリンシパル認証**。 サービスが認証を受けます。 この認証方法がよく使用されるアプリケーションは、デーモン サービス、中間層サービス、またはスケジュールされたジョブを実行するアプリ (Web アプリ、関数アプリ、ロジック アプリ、API、マイクロサービス) です。
 
 > [!IMPORTANT]
@@ -64,9 +64,9 @@ Azure Media Services で Azure AD 認証を使用する場合、次の 2 つの�
 
 Media Services Microsoft .NET SDK を使用して Media Services API に接続する場合、必要な値は SDK の一部として入手できます。 詳細については、「[.NET で Azure AD 認証を使用して Azure Media Services API にアクセスする](media-services-dotnet-get-started-with-aad.md)」を参照してください。
 
-Media Services .NET クライアント SDK を使用しない場合は、前述のパラメーターを使用して、Azure AD トークン要求を手動で作成する必要があります。 詳細については、[Azure AD Authentication Library を使用して Azure AD トークンを取得する方法](../../active-directory/develop/active-directory-authentication-libraries.md)に関するページを参照してください。
+Media Services .NET クライアント SDK を使用しない場合は、前述のパラメーターを使用して、Azure AD トークン要求を手動で作成する必要があります。 詳細については、[Azure AD Authentication Library を使用して Azure AD トークンを取得する方法](../../active-directory/azuread-dev/active-directory-authentication-libraries.md)に関するページを参照してください。
 
-## <a name="service-principal-authentication"></a>サービス プリンシパル認証
+## <a name="service-principal-authentication"></a>サービス プリンシパルの認証
 
 サービス プリンシパル オプションを指定して Media Services API に接続するには、中間層アプリ (Web API または Web アプリケーション) から、以下のパラメーターを使用して Azure AD トークンを要求する必要があります。  
 
@@ -90,7 +90,7 @@ Azure AD アプリを作成または選択した後、クライアント シー�
 
 Media Services .NET SDK を使用して Media Services API に接続する場合は、「[.NET で Azure AD 認証を使用して Azure Media Services API にアクセスする](media-services-dotnet-get-started-with-aad.md)」を参照してください。
 
-Media Services .NET クライアント SDK を使用しない場合は、前述のパラメーターを使用して、Azure AD トークン要求を手動で作成する必要があります。 詳細については、[Azure AD Authentication Library を使用して Azure AD トークンを取得する方法](../../active-directory/develop/active-directory-authentication-libraries.md)に関するページを参照してください。
+Media Services .NET クライアント SDK を使用しない場合は、前述のパラメーターを使用して、Azure AD トークン要求を手動で作成する必要があります。 詳細については、[Azure AD Authentication Library を使用して Azure AD トークンを取得する方法](../../active-directory/azuread-dev/active-directory-authentication-libraries.md)に関するページを参照してください。
 
 ### <a name="get-the-client-id-and-client-secret"></a>クライアント ID とクライアント シークレットを取得する
 
@@ -112,6 +112,6 @@ Azure AD アプリケーションを選択して、アプリケーションと�
 
 ![[アプリケーションの管理] ページ](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started05.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [アカウントへのファイルのアップロード](media-services-portal-upload-files.md)を開始します。

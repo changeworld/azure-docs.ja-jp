@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: 4f64ac9b276c71a037f96766b38a2574b89441c8
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: cae128505c61e7c640819041c6ffdae10a4947e7
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312228"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152280"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>テキストからの N gram 特徴抽出モジュール リファレンス
 
-この記事では Azure Machine Learning デザイナーのモジュールについて説明します。 テキストからの N-gram 特徴抽出モジュールを使用して、非構造化テキスト データの "*特徴を抽出*" します。 
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。 テキストからの N-gram 特徴抽出モジュールを使用して、非構造化テキスト データの "*特徴を抽出*" します。 
 
 ## <a name="configuration-of-the-extract-n-gram-features-from-text-module"></a>テキストからの N-gram 特徴抽出モジュールの構成
 

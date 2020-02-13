@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 27838aae1d829598bed44a6c16f7a1d38a95b727
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: c06d1268abe8afdeb03668131c3c61cfbafa44cd
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314098"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138172"
 ---
 # <a name="score-model-module"></a>スコア モデル モジュール
 
-この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 トレーニングされた分類または回帰モデルを使用して予測を生成するには、このモデルを使用します。
 
@@ -44,7 +44,7 @@ ms.locfileid: "76314098"
 
 - 分類モデルの場合、[モデルのスコア付け](./score-model.md)は、クラスの予測値および予測値の確率を出力します。
 - 回帰モデルの場合、[モデルのスコア付け](./score-model.md)は予測される数値のみを生成します。
-- 画像分類モデルの場合、スコアは画像内のオブジェクトのクラス、または特定の特徴が検出されたかどうかを示すブール値です。
+
 
 ## <a name="publish-scores-as-a-web-service"></a>Web サービスとしてスコアを公開する
 

@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: 95938b979a90766c7e50f2560cf72266e287bfb5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2d5bd8ea1cd8ce643e0bef8ae319d53a574ad2b4
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454693"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168525"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>さまざまなデータ ソースから Azure Machine Learning Studio (クラシック) にトレーニング データをインポートする
 
@@ -156,7 +156,7 @@ Studio (クラシック) の実験でオンライン データ ソースにア�
 ### <a name="supported-online-data-sources"></a>サポートされるオンライン データ ソース
 Azure Machine Learning Studio (クラシック) の **Import Data** モジュールでは、次のデータ ソースがサポートされています。
 
-| Data Source | [説明] | パラメーター |
+| Data Source | 説明 | パラメーター |
 | --- | --- | --- |
 | HTTP を使用する Web URL |コンマ区切り (CSV)、タブ区切り (TSV)、ARFF (Attribute-Relation File Format)、サポート ベクター マシン (SVM-Light) の各形式のデータを HTTP を使用する任意の Web URL から読み取ります。 |<b>URL</b>: サイトの URL とファイル名、拡張子を含むファイルの完全名を指定します。 <br/><br/><b>Data format</b>:サポートされているデータ形式: CSV、TSV、ARFF、または SVM-light のいずれかを指定します。 データにヘッダー行がある場合、その行が列名の割り当てに使用されます。 |
 | Hadoop/HDFS |Hadoop の分散ストレージからデータを読み取ります。 必要なデータは、HiveQL という SQL に似たクエリ言語で指定します。 Studio (クラシック) にデータを追加する前に、HiveQL を使用してデータを集計したり、データのフィルタリングを実行したりすることもできます。 |<b>Hive データベース クエリ</b>: データを生成するために使用する Hive クエリを指定します。<br/><br/><b>HCatalog サーバー URI</b>: *&lt;your cluster name&gt;.azurehdinsight.net* 形式でクラスターの名前を指定します。<br/><br/><b>Hadoop ユーザーのアカウント名</b>:クラスターをプロビジョニングするために使用する Hadoop ユーザー アカウント名を指定します。<br/><br/><b>Hadoop ユーザー アカウントのパスワード</b>: クラスターをプロビジョニングするために使用する資格情報を指定します。 詳細については、[HDInsight での Hadoop クラスターの作成](/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)に関する記事をご覧ください。<br/><br/><b>出力データの場所</b>:データを Hadoop 分散ファイル システム (HDFS) に保存するか、Azure に保存するかを指定します。 <br/><ul>出力データを HDFS に保存する場合、HDFS サーバーの URI を指定します (必ず、HTTPS:// プレフィックスなしの HDInsight クラスター名を使用してください)。 <br/><br/>出力データを Azure に保存する場合は、Azure ストレージ アカウント名、ストレージ アクセス キー、ストレージ コンテナー名を指定する必要があります。</ul> |

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: 6fe7dfaccc3cf1c3fbe4a9ea42578c56f910ea36
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 71afbf09d563a43469689132dfce071b40d694b6
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435767"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162669"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行
 
@@ -33,7 +33,7 @@ Azure Storage は、geo レプリケーションすることが可能です。 g
 
 次の形式の 1 つを使用して、Azure Storage に格納されているデータにアクセスできます。
 
-|データ アクセス形式 |[説明] |
+|データ アクセス形式 |説明 |
 |---|---|
 |`wasb:///`|暗号化されていない通信を使用して既定のストレージにアクセスします。|
 |`wasbs:///`|暗号化された通信を使用して既定のストレージにアクセスします。|
@@ -155,7 +155,7 @@ HDInsight には、既定の状態で、クラスターに関連付けられた 
 
 1. [SASToken.py](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature/blob/master/Python/SASToken.py) ファイルを開き、次の値を変更します。
 
-    |トークンのプロパティ|[説明]|
+    |トークンのプロパティ|説明|
     |---|---|
     |policy_name|作成する保存済みのポリシーに使用する名前。|
     |storage_account_name|ご利用のストレージ アカウントの名前。|
@@ -198,7 +198,7 @@ Azure Storage に書き込まれるすべてのデータは、 [Storage Service
 - [ローカル冗長ストレージ (LRS)](../../storage/common/storage-redundancy-lrs.md)
 - [ゾーン冗長ストレージ (ZRS)](../../storage/common/storage-redundancy-zrs.md)
 - [geo 冗長ストレージ (GRS)](../../storage/common/storage-redundancy-grs.md)
-- [読み取りアクセス geo 冗長ストレージ (RA-GRS)](../../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)
+- [読み取りアクセス geo 冗長ストレージ (RA-GRS)](../../storage/common/storage-redundancy.md)
 
 Azure Data Lake Storage はローカル冗長ストレージ (LRS) を提供しますが、ディザスター リカバリー計画のニーズに合った頻度で、別のリージョン内の別の Data Lake Storage アカウントに重要なデータをコピーする必要もあります。  [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)、 [DistCp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html)、[Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)、 [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) など、データをコピーするさまざまな方法があります。 また、誤って削除されないように、Data Lake Storage アカウントのアクセス ポリシーを適用することをお勧めします。
 

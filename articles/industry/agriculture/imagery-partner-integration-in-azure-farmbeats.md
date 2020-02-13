@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 0c03394c48c936f9faef85e9f4933893aaa67090
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 62e5b363f8008380a61e24c0549573a30ecaeb73
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475737"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131867"
 ---
 # <a name="imagery-partner-integration"></a>画像パートナーの統合
 
@@ -492,4 +492,4 @@ API の応答:
 
 ## <a name="next-steps"></a>次のステップ
 
-REST API ベースの統合の詳細については、「[REST API](references-for-azure-farmbeats.md#rest-api)」を参照してください。
+REST API ベースの統合の詳細については、「[REST API](rest-api-in-azure-farmbeats.md)」を参照してください。

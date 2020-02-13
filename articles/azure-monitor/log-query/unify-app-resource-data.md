@@ -6,13 +6,13 @@ ms.author: bwren
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/19/2019
-ms.openlocfilehash: 07dd4c96ba51b1ac1e0cb2807c9e26df87a6daa7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/02/2020
+ms.openlocfilehash: ce58aae3b1db1f0f338d353025d4f277aeb6944f
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364970"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137498"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Azure Monitor で複数の Application Insights リソースを統合する 
 この記事では、非推奨になった Application Insights Connector を引き継ぐものとして、お使いのすべての Application Insights のログ データのクエリと表示を 1 か所で行う方法について説明します。Azure サブスクリプションは違っていてもかまいません。 1 回のクエリに含めることができる Application Insights リソースの数は 100 個に制限されています。
@@ -20,12 +20,7 @@ ms.locfileid: "75364970"
 ## <a name="recommended-approach-to-query-multiple-application-insights-resources"></a>複数の Application Insights リソースに対してクエリを実行するための推奨される方法 
 複数の Application Insights リソースを 1 つのクエリの中に指定するのは面倒であり、管理が難しくなる可能性があります。 代わりに、関数を活用して、クエリのロジックとアプリケーションのスコープを分離できます。  
 
-次の例で、複数の Application Insights リソースを監視し、失敗した要求の数をアプリケーション名別に視覚化する方法を示します。 開始する前に、Application Insights リソースに接続されているワークスペースで次のクエリを実行して、接続されているアプリケーションの一覧を取得してください。 
-
-```
-ApplicationInsights
-| summarize by ApplicationName
-```
+次の例で、複数の Application Insights リソースを監視し、失敗した要求の数をアプリケーション名別に視覚化する方法を示します。
 
 union 演算子とアプリケーションの一覧を使用して関数を作成した後、クエリを *applicationsScoping* というエイリアスの関数としてワークスペースに保存します。 
 
@@ -61,32 +56,8 @@ applicationsScoping
 
 ![クロスクエリの結果の例](media/unify-app-resource-data/app-insights-query-results.png)
 
-## <a name="query-across-application-insights-resources-and-workspace-data"></a>Application Insights リソースとワークスペース データ間のクエリ 
-Connector を停止しているときに、Application Insights のデータ保有期間 (90 日間) によって切り取られた期間のクエリを実行する必要がある場合は、ワークスペースと Application Insights リソースに対して中間期間の[クロスリソース クエリ](../../azure-monitor/log-query/cross-workspace-query.md)を実行する必要があります。 これは、前述の新しい Application Insights のデータ保有期間でアプリケーション データが蓄積されるまで必要です。 Application Insights とワークスペースではスキーマが異なるため、クエリではいくつかの操作が必要です。 このセクションで後述する、スキーマの相違点を強調している表を参照してください。 
-
 >[!NOTE]
 >ログ アラートでの[リソース間のクエリ](../log-query/cross-workspace-query.md)は、新しい [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) でサポートされています。 [従来の Log Alerts API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) から切り替えていない場合、Azure Monitor では既定で、[従来の Log Analytics Alert API](../platform/api-alerts.md) を使用して Azure portal から新しいログ アラート ルールが作成されます。 切り替えた後は、Azure portal での新しいアラート ルールに対して新しい API が既定になり、リソース間のクエリのログ アラート ルールを作成できます。 切り替えを行わなくても、[scheduledQueryRules API 用の ARM テンプレート](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)を使用することで、[リソース間のクエリ](../log-query/cross-workspace-query.md)のログ アラート ルールを作成できます。ただし、このアラート ルールは、[scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) では管理できますが、Azure portal では管理できません。
-
-たとえば、Connector が 2018 年 11 月 1 日に動作を停止しているときに、Application Insights リソースとワークスペース内のアプリケーション データのログのクエリを実行する場合、そのクエリは次の例のようになります。
-
-```
-applicationsScoping //this brings data from Application Insights resources 
-| where timestamp between (datetime("2018-11-01") .. now()) 
-| where success == 'False' 
-| where duration > 1000 
-| union ( 
-    ApplicationInsights //this is Application Insights data in Log Analytics workspace 
-    | where TimeGenerated < (datetime("2018-12-01") 
-    | where RequestSuccess == 'False' 
-    | where RequestDuration > 1000 
-    | extend duration = RequestDuration //align to Application Insights schema 
-    | extend timestamp = TimeGenerated //align to Application Insights schema 
-    | extend name = RequestName //align to Application Insights schema 
-    | extend resultCode = ResponseCode //align to Application Insights schema 
-    | project-away RequestDuration , RequestName , ResponseCode , TimeGenerated 
-) 
-| project timestamp , duration , name , resultCode 
-```
 
 ## <a name="application-insights-and-log-analytics-workspace-schema-differences"></a>Application Insights と Log Analytics ワークスペースのスキーマの相違点
 次の表に、Log Analytics と Application Insights のスキーマの違いを示します。  
@@ -117,7 +88,7 @@ applicationsScoping //this brings data from Application Insights resources
 | ExceptionCount | itemCount | 
 | ExceptionHandledAt | handledAt |
 | ExceptionMessage | message | 
-| ExceptionType | 型 |
+| ExceptionType | type |
 | OperationID | operation_id |
 | OperationName | operation_Name | 
 | OS | client_OS | 
@@ -135,7 +106,7 @@ applicationsScoping //this brings data from Application Insights resources
 | RoleInstance | cloud_RoleInstance |
 | SessionId | session_Id | 
 | SourceSystem | operation_SyntheticSource |
-| TelemetryTYpe | 型 |
+| TelemetryTYpe | type |
 | URL | url |
 | UserAccountId | user_AccountId |
 

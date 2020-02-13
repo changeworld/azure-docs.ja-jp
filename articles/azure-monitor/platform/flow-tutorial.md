@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/29/2017
-ms.openlocfilehash: 3c1df04e96aff55ae5b9f7130b1593638e3ea1b3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a6097d38d3335be356ca75f5a9d0eadeed414b03
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75395081"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166944"
 ---
 # <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>Microsoft Flow のコネクタを使用して Azure Monitor ログのプロセスを自動化する
 [Microsoft Flow](https://ms.flow.microsoft.com) を使用すると、各種サービス用の何百ものアクションを使用して自動化されたワークフローを作成できます。 あるアクションの出力は別のアクションへの入力として使用できます。これにより、さまざまなサービス間の統合を作成できます。  Microsoft Flow 用の Azure Log Analytics コネクタを使用すると、Azure Monitor の Log Analytics ワークスペースから、ログ クエリによって取得されるデータを含むワークフローを構築できます。
@@ -77,6 +77,5 @@ ms.locfileid: "75395081"
 
 - [Azure Monitor のログ クエリ](../log-query/log-query-overview.md)についての詳細を見る。
 - [Microsoft Flow](https://ms.flow.microsoft.com)についての詳細を見る
-
 
 

@@ -16,12 +16,12 @@ ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 12a20abb4014712f26e5827bcd1d3c822e8b25a1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 68aa62ad34f8db531d439a581ef024862da0f90c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750718"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162312"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Azure イベント ハブの診断ログを設定する
 
@@ -71,7 +71,7 @@ Event Hubs では、2 つのカテゴリの診断ログをキャプチャしま�
 
 アーカイブ ログの JSON 文字列には、次の表に示す要素が含まれます。
 
-Name | [説明]
+Name | 説明
 ------- | -------
 TaskName | 失敗したタスクの説明。
 ActivityId | 内部 ID。追跡目的で使用されます。
@@ -109,7 +109,7 @@ category | ArchiveLogs
 
 操作ログの JSON 文字列には、次の表に示す要素が含まれます。
 
-Name | [説明]
+Name | 説明
 ------- | -------
 ActivityId | 内部 ID。追跡目的で使用されます。
 EventName | 操作の名前。  
@@ -139,6 +139,10 @@ Example:
 ```
 
 ## <a name="next-steps"></a>次のステップ
-* [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
-* [Event Hubs API 概要](event-hubs-api-overview.md)
-* [Event Hubs の使用](event-hubs-dotnet-standard-getstarted-send.md)
+- [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
+- [Event Hubs API 概要](event-hubs-api-overview.md)
+- Event Hubs の使用
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)

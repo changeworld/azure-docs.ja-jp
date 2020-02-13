@@ -10,14 +10,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/11/2019
+ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ff86c25de006495e3536f2ff907e1cf40a216f8e
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 89e3bf95a6b048e5e97cfb151ef9302b70eac1c9
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927861"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048566"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Azure Dedicated HSM のデプロイ アーキテクチャ
 
@@ -32,10 +32,13 @@ HSM は、Microsoft のデータ センター全体に分散され、高可用�
 * East US
 * 米国東部 2
 * 米国西部
-* 米国西部 2
 * 米国中南部
 * 東南アジア
 * 東アジア
+* インド中部
+* インド南部
+* 東日本
+* 西日本
 * 北ヨーロッパ
 * 西ヨーロッパ
 * 英国南部
@@ -60,7 +63,7 @@ HSM デバイスの場所として最適なのは、暗号化操作を実行す�
 
 通常、専用 HSM デバイスは、キーの保管操作と取得操作を実行する必要のあるアプリケーションを支援する手段としてデプロイされます。 専用 HSM デバイスには、アプリケーションの個別サポートを目的として 10 個のパーティションがあります。 デバイスの場所は、このサービスを使用する必要があるすべてのアプリケーションを俯瞰して検討してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 デプロイ アーキテクチャが決まれば、そのアーキテクチャを実装する大半の構成作業は Gemalto によって提供されます。 これには、デバイス構成やアプリケーション統合のシナリオが含まれます。 詳細については、[Gemalto のカスタマー サポート](https://supportportal.gemalto.com/csm/) ポータルを使用して、管理ガイドと構成ガイドをダウンロードしてください。 Microsoft パートナー サイトには、さまざまな統合ガイドがあります。
 デバイスのプロビジョニングや、アプリケーションの設計とデプロイの前に、高可用性やセキュリティなど、サービスのすべての主要概念を十分に理解しておくことをお勧めします。
@@ -70,4 +73,4 @@ HSM デバイスの場所として最適なのは、暗号化操作を実行す�
 * [物理的なセキュリティ](physical-security.md)
 * [ネットワーク](networking.md)
 * [サポート可能性](supportability.md)
-* [監視](monitoring.md)
+* [Monitoring](monitoring.md)

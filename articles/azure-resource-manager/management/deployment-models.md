@@ -2,13 +2,13 @@
 title: Resource Manager デプロイとクラシック デプロイ
 description: Resource Manager デプロイ モデルとクラシック (あるいはサービス管理) デプロイ モデルの違いについて説明します。
 ms.topic: conceptual
-ms.date: 08/22/2019
-ms.openlocfilehash: 4d7f17dace81198724a62dcc665c8c31acbcf6de
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.date: 02/06/2020
+ms.openlocfilehash: 85691d562f2b58cdced3264de11f3dd29a7ca168
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76168848"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064514"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について
 
@@ -99,7 +99,7 @@ Resource Manager で作成したリソースだけがタグに対応していま
 
 次の表では、Compute、Network、Storage のリソース プロバイダーの相互作用の変化について説明します。
 
-| アイテム | クラシック | リソース マネージャー |
+| Item | クラシック | リソース マネージャー |
 | --- | --- | --- |
 | 仮想マシン用クラウド サービス |クラウド サービスは、プラットフォームに基づく可用性と負荷分散を必要とする仮想マシンを保持するためのコンテナーです。 |新しいモデルを使用して仮想マシンを作成するためのオブジェクトとしてのクラウド サービスは不要となりました。 |
 | 仮想ネットワーク |仮想ネットワークは仮想マシンでは省略可能です。 使用すると、仮想ネットワークは Resource Manager でデプロイできなくなります。 |仮想マシンには、Resource Manager でデプロイされた仮想ネットワークが必要です。 |

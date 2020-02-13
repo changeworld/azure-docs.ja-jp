@@ -2,7 +2,7 @@
 title: 職場または学校アカウントのパスワードを変更する - Azure AD
 description: マイ アカウント ポータルの [パスワードの変更] ページで職場または学校アカウントのパスワードを変更する方法について説明します。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: jpettere
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.author: lizross
-ms.openlocfilehash: f92df704047e1d36e69e40ce5299b8d01e48e9eb
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 06e5abe04ed1ec75dcbf1b216bfaab1a7458ce72
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705175"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064055"
 ---
 # <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>[パスワードの変更] ページで、職場または学校のアカウントのパスワードを変更します。
 

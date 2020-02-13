@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a9e55edcb7c107a3dfa91f61aaa1fea64bc62f21
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 71b437f57f9d9e6e18af88d6413269cac6f66c47
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76851058"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161666"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C:Azure AD Graph API を使用する
 
@@ -26,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) テナントには、数千または�
 B2C テナントでは、主に 2 つのモードで Graph API と通信します。
 
 * **対話型**の一度だけ実行されるタスクでは、タスクの実行時に B2C テナントの管理者アカウントとして実行する必要があります。 このモードでは、Graph API を呼び出す前に管理者が資格情報でサインインする必要があります。
-* **自動化**された継続的なタスクでは、必要な権限を付与した何らかの種類のサービス アカウントを使用し、管理タスクを実行する必要があります。 Azure AD では、アプリケーションを登録して、Azure AD に認証することでそれを実行できます。 その際、 *OAuth 2.0 クライアント資格情報付与* を利用する [アプリケーション ID](../active-directory/develop/service-to-service.md)を使用します。 この場合、アプリケーションはユーザーとしてではなくアプリケーション自体として Graph API を呼び出します。
+* **自動化**された継続的なタスクでは、必要な権限を付与した何らかの種類のサービス アカウントを使用し、管理タスクを実行する必要があります。 Azure AD では、アプリケーションを登録して、Azure AD に認証することでそれを実行できます。 その際、 *OAuth 2.0 クライアント資格情報付与* を利用する [アプリケーション ID](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)を使用します。 この場合、アプリケーションはユーザーとしてではなくアプリケーション自体として Graph API を呼び出します。
 
 この記事では、自動化された事例を実行する方法を示します。 ユーザーの CRUD (作成、読み取り、更新、削除) 操作を実行する .NET 4.5 `B2CGraphClient` を構築します。 クライアントにはさまざまなメソッドを呼び出すことができる Windows コマンド ライン インターフェイス (CLI) を与えます。 しかし、コードは、非対話型の自動化された方法で動作するように記述されます。
 
@@ -61,7 +61,7 @@ B2C テナントで Azure AD Graph API を使用するには、Azure Active Dire
 アプリケーションでユーザーの削除またはパスワードの更新を実行できるようにする場合、*ユーザー管理者*ロールを付与する必要はありません。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ポータル ツールバーの **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントが含まれているディレクトリを選択します。
+1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. **[管理]** で **[ロールと管理者]** を選択します。
 1. **[ユーザー管理者]** ロールを選択します。
@@ -73,7 +73,7 @@ B2C テナントで Azure AD Graph API を使用するには、Azure Active Dire
 
 ## <a name="get-the-sample-code"></a>サンプル コードの取得
 
-このコード サンプルは、[Active Directory Authentication Library (ADAL)](../active-directory/develop/active-directory-authentication-libraries.md) を使用して Azure AD Graph API と対話する .NET コンソール アプリケーションです。 このコードは、API を呼び出して、Azure AD B2C テナント内のユーザーをプログラムで管理する方法を示しています。
+このコード サンプルは、[Active Directory Authentication Library (ADAL)](../active-directory/azuread-dev/active-directory-authentication-libraries.md) を使用して Azure AD Graph API と対話する .NET コンソール アプリケーションです。 このコードは、API を呼び出して、Azure AD B2C テナント内のユーザーをプログラムで管理する方法を示しています。
 
 [サンプル アーカイブ (\*.zip) をダウンロード](https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet/archive/master.zip)するか、GitHub リポジトリを複製することができます。
 

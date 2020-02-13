@@ -1,23 +1,23 @@
 ### YamlMime:Landing
 title: Azure Active Directory 認証のドキュメント
-summary: Azure Active Directory のセルフサービスのパスワード リセット、Multi-Factor Authentication、カスタム禁止パスワード リスト、スマート ロックアウトの管理と展開を行う方法について説明します。
+summary: Azure Active Directory のセルフサービス パスワード リセット、Multi-Factor Authentication、カスタム禁止パスワード リスト、スマート ロックアウトの管理と展開を行う方法について説明します。
 metadata:
   title: Azure Active Directory 認証のドキュメント
-  description: Azure Active Directory のセルフサービスのパスワード リセット、Multi-Factor Authentication、カスタム禁止パスワード リスト、スマート ロックアウトの管理と展開を行う方法について説明します。
+  description: Azure Active Directory のセルフサービス パスワード リセット、Multi-Factor Authentication、カスタム禁止パスワード リスト、スマート ロックアウトの管理と展開を行う方法について説明します。
   services: active-directory
   ms.service: active-directory
   ms.subservice: authentication
   ms.topic: landing-page
   author: iainfoulds
   ms.author: iainfou
-  ms.date: 08/20/2019
+  ms.date: 02/11/2020
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 01e1fe5ed73275078fc37dbec9a0857a8c4a8619
-  ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+  ms.openlocfilehash: 3c431b81c0da54045e9b9b020de5275912b394c6
+  ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/05/2019
-  ms.locfileid: "74847153"
+  ms.lasthandoff: 02/12/2020
+  ms.locfileid: "77166411"
 landingContent:
 - title: 認証について
   linkLists:
@@ -31,24 +31,24 @@ landingContent:
       url: concept-registration-mfa-sspr-combined.md
     - text: パスワードレスとは
       url: concept-authentication-passwordless.md
-- title: セルフサービスのパスワード リセットのデプロイ
+- title: セルフサービス パスワード リセットのデプロイ
   linkLists:
   - linkListType: concept
     links:
-    - text: パスワード リセットのセルフサービスのしくみ
+    - text: セルフサービス パスワード リセット のしくみ
       url: concept-sspr-howitworks.md
     - text: パスワードの書き戻し
       url: concept-sspr-writeback.md
-  - linkListType: quickstart
+  - linkListType: tutorial
     links:
-    - text: パスワード リセットのセルフサービスに関するクイックスタート
-      url: quickstart-sspr.md
+    - text: セルフサービス パスワード リセットを有効にする
+      url: tutorial-enable-sspr.md
+    - text: オンプレミスへのパスワード ライトバックを有効にする
+      url: tutorial-enable-writeback.md
   - linkListType: deploy
     links:
-    - text: Azure AD のパスワード リセットのセルフサービスをデプロイする
+    - text: セルフサービス パスワード リセットのデプロイ ガイド
       url: howto-sspr-deployment.md
-    - text: パスワード ライトバックの有効化
-      url: howto-sspr-writeback.md
     - text: Windows のログイン画面からパスワードをリセットできるようにする
       url: howto-sspr-windows.md
 - title: Azure Multi-Factor Authentication の有効化
@@ -59,13 +59,13 @@ landingContent:
       url: concept-mfa-howitworks.md
   - linkListType: tutorial
     links:
-    - text: 特定のアプリケーションに対して Azure MFA をパイロット運用する
-      url: tutorial-mfa-applications.md
-    - text: リスク検出を使用して多要素認証とパスワード変更をトリガーする
+    - text: Azure Multi-Factor Authentication の有効化
+      url: tutorial-enable-azure-mfa.md
+    - text: リスクベースの Azure Multi-Factor Authentication を有効にする
       url: tutorial-risk-based-sspr-mfa.md
   - linkListType: deploy
     links:
-    - text: Azure Multi-Factor Authentication をデプロイする
+    - text: Azure Multi-Factor Authentication のデプロイ ガイド
       url: howto-mfa-getstarted.md
     - text: NPS 拡張機能を使用してオンプレミス アプリケーションを統合する
       url: howto-mfa-nps-extension.md

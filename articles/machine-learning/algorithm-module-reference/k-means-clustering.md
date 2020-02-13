@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 000db771f27c7063aee120f06e13eec3575c8ef5
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 6e2fa96584570e5837c4367c8be4701b7398fb0f
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546641"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152212"
 ---
 # <a name="module-k-means-clustering"></a>モジュール:K-Means クラスタリング
 

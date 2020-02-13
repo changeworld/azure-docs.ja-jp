@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/19/2019
+ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 96aa463441c9e0f21e2ef1aa27c566b94e1e5f4f
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 22d1b6e2344256b52cfdbc48720a680a770a4216
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257885"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132162"
 ---
 # <a name="troubleshoot-secure-ldap-connectivity-issues-to-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services のマネージド ドメインに対する Secure LDAP の接続に関する問題のトラブルシューティング
 
@@ -39,7 +39,7 @@ Secure LDAP を使用した Azure AD DS マネージド ドメインへの接続
 * 外部接続の場合、ネットワーク セキュリティ グループに、インターネットから TCP ポート 636 へのトラフィックを許可する規則が含まれている必要があります。
     * 仮想ネットワークに直接接続するリソースから Secure LDAP を使用して Azure AD DS マネージド ドメインには接続できるが、外部接続ができない場合は、[Secure LDAP トラフィックを許可するネットワーク セキュリティ グループ規則を作成][ldaps-nsg]してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 まだ問題が解決しない場合は、さらなるトラブルシューティングの支援を求めて、[Azure サポート リクエストを開いて][azure-support]ください。
 

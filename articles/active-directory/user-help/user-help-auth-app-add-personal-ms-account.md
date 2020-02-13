@@ -2,21 +2,21 @@
 title: 個人用の Microsoft アカウントを Microsoft 認証アプリに追加する - Azure AD
 description: 2 要素検証を使用するときに、ID を確認するために、Microsoft Authenticator アプリに Outlook.com や Xbox LIVE などの個人用の Microsoft アカウントを追加します。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 8945f7a49f4c04b3265cb79c88c9acb287c50d10
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 289c00e28fd82b78b321732628ff85d22c64cabf
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704750"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062304"
 ---
 # <a name="add-personal-microsoft-accounts-to-the-microsoft-authenticator-app"></a>個人の Microsoft アカウントを Microsoft Authenticator アプリに追加する
 

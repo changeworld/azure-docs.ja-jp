@@ -1,5 +1,5 @@
 ---
-title: Azure リソースの拒否割り当ての概要 | Microsoft Docs
+title: Azure リソースの拒否割り当ての概要
 description: Azure リソースに対するロールベースのアクセス制御 (RBAC) の拒否割り当てについて説明します。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 2c663b587d2e9ee278fc774c2841899b060ccbcf
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7ab811635ca50c3a28ecd8bdf6d0f18fad4c384f
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479362"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137372"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>Azure リソースの拒否割り当ての概要
 
@@ -54,15 +54,15 @@ ms.locfileid: "74479362"
  拒否割り当てには、以下のプロパティがあります。
 
 > [!div class="mx-tableFixed"]
-> | プロパティ | 必須 | 種類 | 説明 |
+> | プロパティ | Required | Type | 説明 |
 > | --- | --- | --- | --- |
-> | `DenyAssignmentName` | はい | string | 拒否割り当ての表示名。 名前は、指定のスコープで一意である必要があります。 |
-> | `Description` | いいえ | string | 拒否割り当ての説明。 |
+> | `DenyAssignmentName` | はい | String | 拒否割り当ての表示名。 名前は、指定のスコープで一意である必要があります。 |
+> | `Description` | いいえ | String | 拒否割り当ての説明。 |
 > | `Permissions.Actions` | 少なくとも 1 つの Actions または DataActions | String[] | 拒否割り当てによってアクセスがブロックされる管理操作を指定する文字列の配列。 |
 > | `Permissions.NotActions` | いいえ | String[] | 拒否割り当てから除外される管理操作を指定する文字列の配列。 |
 > | `Permissions.DataActions` | 少なくとも 1 つの Actions または DataActions | String[] | 拒否割り当てによってアクセスがブロックされるデータ操作を指定する文字列の配列。 |
 > | `Permissions.NotDataActions` | いいえ | String[] | 拒否割り当てから除外されるデータ操作を指定する文字列の配列。 |
-> | `Scope` | いいえ | string | 拒否割り当てが適用されるスコープを指定する文字列。 |
+> | `Scope` | いいえ | String | 拒否割り当てが適用されるスコープを指定する文字列。 |
 > | `DoNotApplyToChildScopes` | いいえ | Boolean | 拒否割り当てが子スコープに適用されるかどうかを指定します。 既定値は false です。 |
 > | `Principals[i].Id` | はい | String[] | 拒否割り当てが適用される Azure AD プリンシパル オブジェクト ID (ユーザー、グループ、サービス プリンシパル、またはマネージド ID) の配列。 すべてのプリンシパルを表すために空の GUID `00000000-0000-0000-0000-000000000000` に設定されます。 |
 > | `Principals[i].Type` | いいえ | String[] | Principals[i].Id によって表されるオブジェクトの種類の配列。すべてのプリンシパルを表すために `SystemDefined` に設定されます。 |
@@ -85,9 +85,9 @@ Principals              : {
 All Principals は `ExcludePrincipals` と組み合わせて、一部のユーザー以外のすべてのプリンシパルを拒否することができます。 All Principals には次の制約があります。
 
 - `Principals` でのみ使用することができ、`ExcludePrincipals` では使用できません。
-- `Principals[i].Type` は `SystemDefined` に設定する必要があります。
+- `Principals[i].Type` が `SystemDefined` に設定されていること。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure portal を使用して Azure リソースの拒否割り当てを一覧表示する](deny-assignments-portal.md)
 * [Azure リソースのロール定義の概要](role-definitions.md)

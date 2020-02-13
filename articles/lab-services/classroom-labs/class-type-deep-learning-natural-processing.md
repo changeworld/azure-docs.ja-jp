@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 0aa30c114153521258842fc5f1e9150053b766f4
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 21a11863bd2bc9882d4336f5c5d2bf1d7b7f49da
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332295"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133763"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Azure Lab Services を使用した自然言語処理でのディープ ラーニングに重点を置いたラボを設定する
 この記事では、Azure Lab Services を使用した自然言語処理 (NLP) でのディープ ラーニングに重点を置いたラボを設定する方法について説明します。 自然言語処理 (NLP) は、コンピューターで翻訳、音声認識、その他の言語認識機能を実行できるようにする、人工知能 (AI) の一種です。  
@@ -32,7 +32,7 @@ NLP の授業を受けている学生は、Linux 仮想マシン (VM) を使用�
 
 | ラボ アカウントの設定 | Instructions |
 | ----------- | ------------ |  
-| マーケットプレースの画像 | ラボ アカウント内で Data Science Virtual Machine for Linux (Ubuntu) イメージを使用できるようにします。  その手順については、次の記事を参照してください。「[ラボ作成者が利用できる Marketplace イメージを指定する](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators)」。 | 
+| マーケットプレースの画像 | ラボ アカウント内で Data Science Virtual Machine for Linux (Ubuntu) イメージを使用できるようにします。  その手順については、次の記事を参照してください。「[ラボ作成者が利用できる Marketplace イメージを指定する](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators)」。 | 
 
 [このチュートリアル](tutorial-setup-classroom-lab.md)に従って、新しいラボを作成し、次の設定を適用します。
 
@@ -54,7 +54,7 @@ Data Science Virtual Machine for Linux イメージには、この種類のク�
 ## <a name="conclusion"></a>まとめ
 この記事では、自然言語処理クラスのラボを作成する手順について説明しました。 他のディープ ラーニング クラスにも同様のセットアップを使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次の手順は、どのラボの設定でも同じです。
 
 - [ユーザーの追加](tutorial-setup-classroom-lab.md#add-users-to-the-lab)

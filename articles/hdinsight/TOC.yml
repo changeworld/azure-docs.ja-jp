@@ -372,6 +372,8 @@
                   href: ./spark/apache-spark-run-machine-learning-automl.md
         - name: '[トラブルシューティング]'
           items:
+            - name: Jupyter ノートブックを作成できない
+              href: ./spark/troubleshoot-jupyter-notebook-convert.md
             - name: OutOfMemoryError 例外
               href: ./spark/apache-spark-troubleshoot-outofmemory.md
             - name: Apache Spark ジョブが失敗する - NoClassDefFoundError
@@ -396,6 +398,8 @@
               href: ./spark/apache-spark-troubleshoot-event-log-requestbodytoolarge.md
             - name: Apache Spark ジョブのデバッグ
               href: ./spark/apache-spark-job-debugging.md
+            - name: WASB ファイル操作のデバッグ
+              href: ./spark/troubleshoot-debug-wasb.md
             - name: IntelliJ を使用した Apache Spark ジョブのデバッグ
               href: ./spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md
             - name: Apache Spark のトラブルシューティング
@@ -523,6 +527,8 @@
               href: ./hadoop/troubleshoot-port-conflict.md
             - name: Key Vault にアクセスできない
               href: ./hadoop/troubleshoot-lost-key-vault-access.md
+            - name: WASBS ストレージの例外
+              href: ./hadoop/troubleshoot-wasbs-storage-exception.md
 - name: Apache Kafka
   items:
     - name: 概要

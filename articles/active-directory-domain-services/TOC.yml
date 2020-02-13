@@ -77,7 +77,7 @@
           href: notifications.md
         - name: マネージド ドメインを削除する
           href: delete-aadds.md
-        - name: クラシック デプロイから移行する (プレビュー)
+        - name: クラシック デプロイから移行する
           href: migrate-from-classic-vnet.md
         - name: SKU の変更
           href: change-sku.md

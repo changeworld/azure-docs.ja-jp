@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 14fe7fff85c7aecd3f98843794f5057cf26fc88d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: f3cb583a3594b14266249ef80f8c49633c1df1de
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548443"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152195"
 ---
 # <a name="linear-regression-module"></a>Linear Regression (線形回帰) モジュール
 この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
