@@ -43,7 +43,7 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 'GET' 操作に対する正常な応答は次のようになります。
 
-|Name  |種類  |[説明]  |
+|Name  |種類  |説明  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | [OK]        |
 
@@ -83,7 +83,7 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 
 詳細については、[REST API のドキュメント](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body)を参照してください
 
-|Name  |必須  |種類  |[説明]  |
+|Name  |必須  |種類  |説明  |
 |---------|---------|---------|---------|
 |eTag     |         |   String      |  省略可能な eTag       |
 |location     |  true       |String         |   リソースの場所      |
@@ -107,7 +107,7 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 
 'PATCH' 操作に対する正常な応答は次のようになります。
 
-|Name  |種類  |[説明]  |
+|Name  |種類  |説明  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | [OK]        |
 
