@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: e8d0f446442db6eeb0aec38efcc69bdf09c9b56f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 37da62a4eb0f934133d6486872ba319138299614
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990710"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048702"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure Migrate アプライアンスと検出のトラブルシューティング
 
@@ -139,7 +139,7 @@ VM を削除してもまだポータルに表示されている場合は、30 �
 
 Azure Migrate は、Azure Migrate を使用してアプリケーション、ロール、および機能の検出をサポートします。Server Assessment を使用して作成する方法について説明します。 現在、アプリ検出は VMware でのみサポートされています。 アプリ検出を設定するための要件と手順についての[詳細をご覧ください](how-to-discover-applications.md)。
 
-一般的なアプリ検出エラーを表にまとめています。
+一般的なアプリ検出エラーを表にまとめています。 
 
 **Error** | **原因** | **操作**
 --- | --- | --- | ---

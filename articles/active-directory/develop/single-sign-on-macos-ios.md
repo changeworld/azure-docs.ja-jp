@@ -4,7 +4,7 @@ titleSuffix: Microsoft identity platform
 description: macOS と iOS でシングル サインオン (SSO) を構成する方法について説明します。
 services: active-directory
 documentationcenter: dev-center-name
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -14,15 +14,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/03/2020
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: bfc656911abf3349e03543e6bb668db977422738
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 91a55520b37c549c8f1d94ba6cf08ecd24db85b5
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022632"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085531"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>方法:macOS と iOS で SSO を構成する
 

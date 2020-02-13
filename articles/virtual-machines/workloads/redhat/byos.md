@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 1/14/2020
+ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: afda502bcd89423ecdd008c0297c85dd8a5b61fb
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: a54e1c9cbc9a80139d71a89f86ac51ecf5ce9902
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989843"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190499"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Azure での Red Hat Enterprise Linux のサブスクリプション持ち込み Gold Image
 
@@ -175,9 +175,9 @@ Cloud Access を有効にする手順が完了すると、Red Hat によって R
 
 Red Hat Enterprise Linux のサブスクリプションの持ち込み Gold イメージは [Azure Disk Encryption](../../linux/disk-encryption-overview.md) を利用したセキュリティで保護できます。 ただし、暗号化を有効にする前にサブスクリプションを登録する**必要があります**。  RHEL BYOS Gold イメージの登録の詳細は Red Hat サイトにあります。 「[How to register and subscribe a system to the Red Hat Customer Portal using Red Hat Subscription-Manager](https://access.redhat.com/solutions/253273)」(Red Hat Subscription-Manager を使用し、Red Hat Customer Portal にシステムを登録し、サブスクライブする方法) を参照してください。アクティブな Red Hat サブスクリプションをお持ちの場合は、「[Creating Red Hat Customer Portal Activation Keys](https://access.redhat.com/articles/1378093)」(Red Hat Customer Portal アクティベーション キーを作成する) も参照してください。
 
-[Red Hat カスタム イメージ](/linux/redhat-create-upload-vhd)では、Azure Disk Encryption はサポートされていません。 追加の ADE の要件と前提条件については、[Linux VM 向けの Azure Disk Encryption](../../linux/disk-encryption-overview.md#additional-vm-requirements) に関するページに記載されています。
+[Red Hat カスタム イメージ](../../linux/redhat-create-upload-vhd.md)では、Azure Disk Encryption はサポートされていません。 追加の ADE の要件と前提条件については、[Linux VM 向けの Azure Disk Encryption](../../linux/disk-encryption-overview.md#additional-vm-requirements) に関するページに記載されています。
 
-Azure Disk Encryption の適用手順は「[Linux VM での Azure Disk Encryption シナリオ](../../linux/disk-encryption-linux.md)」や関連記事をご覧ください。  
+Azure Disk Encryption の適用手順は「[Linux VM での Azure Disk Encryption シナリオ](../../linux/disk-encryption-linux.md)」や関連記事をご覧ください。
 
 ## <a name="additional-information"></a>関連情報
 
@@ -186,7 +186,7 @@ Azure Disk Encryption の適用手順は「[Linux VM での Azure Disk Encryptio
     ```
     "Offer with PublisherId: redhat, OfferId: rhel-byos, PlanId: rhel-lvm75 is private and can not be purchased by subscriptionId: GUID"
     ```
-    
+
     この場合、Microsoft か Red Hat にお問い合わせいただき、サブスクリプションを有効にしてください。
 
 - RHEL BYOS イメージのスナップショットを変更し、そのカスタム イメージを [Shared Image Gallery](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries) に公開する場合、スナップショットの元のソースに一致するプラン情報を指定する必要があります。 たとえば、コマンドは次のようになります。
