@@ -53,7 +53,7 @@ Azure カスタム リソース プロバイダーは、Azure とエンドポイ
 }
 ```
 
-プロパティ | 必須 | [説明]
+プロパティ | 必須 | 説明
 ---|---|---
 name | *はい* | エンドポイント定義の名前。 Azure では、この名前は '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/<br>resourceProviders/{resourceProviderName}/{endpointDefinitionName}' の下にあるその API によって公開されます。
 routingType | *いいえ* | **エンドポイント**で契約の種類を決定します。 指定しないと、既定で "Proxy" になります。
@@ -82,7 +82,7 @@ routingType | *いいえ* | **エンドポイント**で契約の種類を決定
 
 上記のサンプル用の Azure に追加される API:
 
-HttpMethod | サンプル URI | [説明]
+HttpMethod | サンプル URI | 説明
 ---|---|---
 PUT | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}?api-version=2018-09-01-preview | 新しいリソースを作成するための Azure REST API の呼び出しです。
 DELETE | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}?api-version=2018-09-01-preview | 既存のリソースを削除するための Azure REST API の呼び出しです。
@@ -112,7 +112,7 @@ GET | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>pro
 
 上記のサンプル用の Azure に追加される API:
 
-HttpMethod | サンプル URI | [説明]
+HttpMethod | サンプル URI | 説明
 ---|---|---
 POST | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomAction?api-version=2018-09-01-preview | アクションをアクティブ化するための Azure REST API の呼び出しです。
 
