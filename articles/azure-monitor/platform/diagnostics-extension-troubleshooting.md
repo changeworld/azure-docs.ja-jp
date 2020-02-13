@@ -229,7 +229,7 @@ ETW イベントを保持する Azure Storage 内のテーブルの名前には�
 ### <a name="azure-diagnostics-plugin-exit-codes"></a>Azure Diagnostics プラグインの終了コード
 プラグインにより、次の終了コードが返されます。
 
-| 終了コード | [説明] |
+| 終了コード | 説明 |
 | --- | --- |
 | 0 |正常終了しました。 |
 | -1 |一般的なエラー。 |
