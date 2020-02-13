@@ -161,7 +161,7 @@ Azure portal の **[イベント ハブにエクスポート]** オプション�
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-    | プロパティ | Required | [説明] |
+    | プロパティ | Required | 説明 |
     | --- | --- | --- |
     | name |はい |ログ プロファイルの名前。 |
     | storage-account-id |はい |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
