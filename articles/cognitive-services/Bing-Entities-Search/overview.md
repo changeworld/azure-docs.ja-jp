@@ -21,7 +21,7 @@ ms.locfileid: "75384521"
 
 Bing Entity Search API は、Bing に検索クエリを送信して、エンティティと場所を含む検索結果を取得します。 場所の結果には、レストラン、ホテルやその他の地元企業が含まれます。 クエリで地元企業の名前を指定、またはビジネスの種類 (近くのレストランなど) を要求すると、Bing は場所を返します。 クエリで有名な人や場所 (観光名所、州、国/地域など)、またはものを指定すると、Bing はエンティティを返します。
 
-|機能  |[説明]  |
+|機能  |説明  |
 |---------|---------|
 |[リアルタイムの検索候補](concepts/search-for-entities.md#suggest-search-terms-with-the-bing-autosuggest-api)     | ユーザーが入力するときにドロップダウン リストとして表示される検索候補を提供します。       | 
 | [エンティティのあいまいさ排除](concepts/search-for-entities.md#the-bing-entity-search-api-response)  | 可能性のある複数の意味を使用し、クエリに対して複数のエンティティを取得します。 |
