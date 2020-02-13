@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 60ff148e044df81e64b54fc48c1cb6f67aee14df
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 2af20a1ddf4239b7eec6cceabf2ff9711959c128
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275655"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189095"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(非推奨) Azure Container Service DC/OS クラスターで Vamp を使用してマイクロサービスをカナリア リリースする
 
@@ -127,7 +127,7 @@ Elasticsearch が**実行中**として報告されたら、Vamp DC/OS ユニバ
 
 Vamp が稼働状態になったので、ブループリントからサービスをデプロイします。 
 
-最も単純な形式では、[Vamp ブループリント](https://vamp.io/documentation/using-vamp/blueprints/)は、デプロイするエンドポイント (ゲートウェイ)、クラスター、およびサービスを説明します。 Vamp はクラスターを使用して、カナリア リリースまたは A/B テスト用に同じサービスのさまざまなバリアントを論理グループにグループ化します。  
+最も単純な形式では、[Vamp ブループリント](https://docs.vamp.io/how-vamp-works/vamp-and-kubernetes#vamp-deployments)は、デプロイするエンドポイント (ゲートウェイ)、クラスター、およびサービスを説明します。 Vamp はクラスターを使用して、カナリア リリースまたは A/B テスト用に同じサービスのさまざまなバリアントを論理グループにグループ化します。  
 
 このシナリオでは、[**sava**](https://github.com/magneticio/sava) と呼ばれるサンプルのモノリシック アプリケーション (バージョン 1.0) を使用します。 モノリシックは、Docker コンテナーにパッケージ化されます。このコンテナーは magneticio/sava:1.0.0 の下のDocker Hub にあります。 通常、アプリケーションはポート 8080 で実行されますが、ここではポート 9050 に公開します。 シンプルなブループリントを使用して、Vamp を使ってアプリをデプロイします。
 
@@ -287,9 +287,9 @@ Vamp は**条件**を使用して、ゲートウェイのルート間のトラ�
 
 ## <a name="next-steps"></a>次のステップ
 
-* Vamp アクションの管理について詳しくは、「[Vamp REST API](https://vamp.io/documentation/api/api-reference/)」を参照してください。
+* Vamp アクションの管理について詳しくは、「[Vamp REST API](https://docs.vamp.io/how-vamp-works/events-and-metrics#events)」を参照してください。
 
-* Node.js で Vamp 自動スクリプトを構築し、[Vamp ワークフロー](https://vamp.io/documentation/using-vamp/v1.0.0/workflows/#create-a-workflow)として実行します。
+* Node.js で Vamp 自動スクリプトを構築し、[Vamp ワークフロー](https://docs.vamp.io/how-vamp-works/concepts-and-components#workflows)として実行します。
 
-* その他の [VAMP チュートリアル](https://vamp.io/documentation/tutorials/)もご覧ください。
+* その他の [VAMP チュートリアル](https://docs.vamp.io/tutorials/)もご覧ください。
 

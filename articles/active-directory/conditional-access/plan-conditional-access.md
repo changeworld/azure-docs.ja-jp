@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 894530aa9624af18f2f33a061d5cde683e9f01be
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 266fa2403ef96e808a0c1f1eb46b4f7065c06252
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72880268"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185902"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>方法:Azure Active Directory の条件付きアクセスの展開を計画する
 
@@ -53,7 +53,7 @@ Azure Active Directory の条件付きアクセスを使用すると、クラウ
 |以下のアクセスの試行が行われた場合:<br>- クラウド アプリに対する *<br>- ユーザーおよびグループによる*<br>以下を使用する:<br>- 条件 1 (たとえば、会社のネットワーク外)<br>- 条件 2 (たとえば、デバイスのプラットフォーム)|次の条件でアクセスを付与する (AND):<br>- 要件 1 (たとえば、MFA)<br>- 要件 2 (たとえば、デバイス コンプライアンス)|
 |以下のアクセスの試行が行われた場合:<br>- クラウド アプリに対する *<br>- ユーザーおよびグループによる*<br>以下を使用する:<br>- 条件 1 (たとえば、会社のネットワーク外)<br>- 条件 2 (たとえば、デバイスのプラットフォーム)|次の条件でアクセスを付与する (OR):<br>- 要件 1 (たとえば、MFA)<br>- 要件 2 (たとえば、デバイス コンプライアンス)|
 
-少なくとも「**これが発生した場合**」では、クラウド アプリへのアクセスを試行する (**何を**) プリンシパル (**だれが**) を定義します。 必要に応じて、アクセス試行の実行**方法**も含めることができます。 条件付きアクセスでは、だれが、何を、どのように行うかを定義する要素を条件と呼びます。 詳細については、「[Azure Active Directory 条件付きアクセスの条件の概要](conditions.md)」をご覧ください。 
+少なくとも「**これが発生した場合**」では、クラウド アプリへのアクセスを試行する (**何を**) プリンシパル (**だれが**) を定義します。 必要に応じて、アクセス試行の実行**方法**も含めることができます。 条件付きアクセスでは、だれが、何を、どのように行うかを定義する要素を条件と呼びます。 詳細については、「[Azure Active Directory 条件付きアクセスの条件の概要](concept-conditional-access-conditions.md)」をご覧ください。 
 
 「**これを実行する**」では、アクセス条件に対するポリシーの応答を定義します。 応答では、多要素認証 (MFA) などの追加要件を使用してアクセスをブロックまたは許可します。 詳細な概要については、「[Azure Active Directory 条件付きアクセスによるアクセス制御の概要](controls.md)」をご覧ください。  
 
@@ -116,7 +116,7 @@ MFA を必要とする一般的なユースケースはアクセスです。
 
 条件付きアクセス ポリシーを使用すると、侵害された可能性がある ID からのサインインに対する自動応答を実装できます。 アカウントが侵害された可能性は、リスク レベルの形で表現されます。 ID 保護によって計算される 2 つのリスク レベルがあります。サインイン リスクとユーザー リスクです。 サインイン リスクへの応答を実装するには、2 つの選択肢があります。
 
-- 条件付きアクセス ポリシーの[サインイン リスク条件](conditions.md#sign-in-risk)
+- 条件付きアクセス ポリシーの[サインイン リスク条件](concept-conditional-access-conditions.md#sign-in-risk)
 - ID 保護内の[サインイン リスク ポリシー](../identity-protection/howto-sign-in-risk-policy.md) 
 
 条件としてサインイン リスクに対処する方法は、カスタマイズ オプションが多いため、推奨されます。
@@ -231,6 +231,6 @@ Azure AD では、レガシ認証を含め、最も広く使用されている�
 
 1. **ポリシーを削除する** - ポリシーが不要になった場合は削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 使用できる情報の概要については、「[Azure AD の条件付きアクセスのドキュメント](index.yml)」を参照してください。

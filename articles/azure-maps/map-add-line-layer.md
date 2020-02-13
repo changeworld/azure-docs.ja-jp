@@ -9,21 +9,21 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5b59bdc06d455c7bd0ec9cf889f5cfa382948467
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 8503b12be628fe7d5651221c9d0379bee3e292bd
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911182"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933477"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>マップに線レイヤーを追加する
 
-線レイヤーを使用すると、マップ上にパスまたはルートとして `LineString` および `MultiLineString` フィーチャーをレンダリングできます。 また、線レイヤーを使用して、`Polygon` および `MultiPolygon` フィーチャーのアウトラインをレンダリングすることもできます。 データ ソースは、表示するデータを提供するために線レイヤーに接続されています。 
+線レイヤーを使用すると、マップ上にパスまたはルートとして `LineString` および `MultiLineString` フィーチャーをレンダリングできます。 また、線レイヤーを使用して、`Polygon` および `MultiPolygon` フィーチャーのアウトラインをレンダリングすることもできます。 データ ソースは、レンダリングするデータを提供するために線レイヤーに接続されます。 
 
 > [!TIP]
 > 線レイヤーの既定では、データ ソース内の多角形と線の座標がレンダリングされます。 LineString フィーチャーのみがレンダリングされるようにレイヤーを制限するには、レイヤーの `filter` プロパティを `['==', ['geometry-type'], 'LineString']` に設定します。または、MultiLineString フィーチャーも含める場合は、`['any', ['==', ['geometry-type'], 'LineString'], ['==', ['geometry-type'], 'MultiLineString']]` に設定します。
 
-次のコードは、線を作成し、それをデータ ソースに追加し、[LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) クラスを使用して線レイヤーでレンダリングする方法を示しています。
+次のコードは、線の作成方法を示しています。 データ ソースに線を追加した後、[LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) クラスを使用して、線レイヤーで描画します。
 
 ```javascript
 //Create a data source and add it to the map.
@@ -51,7 +51,7 @@ map.layers.add(new atlas.layer.LineLayer(dataSource, null, {
 
 ## <a name="add-symbols-along-a-line"></a>線に沿ってシンボルを追加する
 
-このサンプルでは、マップ上の線に沿って矢印アイコンを追加する方法を示します。 シンボル レイヤーを使用する場合は、"placement" オプションを "line" に設定します。これにより、シンボルが線に沿ってレンダリングされ、アイコンが回転します (0 度 = 右)。
+このサンプルでは、マップ上の線に沿って矢印アイコンを追加する方法を示します。 シンボル レイヤーを使用する場合は、"placement" オプションを "line" に設定します。 このオプションを選択すると、線に沿って記号がレンダリングされ、アイコンが回転します (0 度 = 右)。
 
 <br/>
 
@@ -66,7 +66,7 @@ map.layers.add(new atlas.layer.LineLayer(dataSource, null, {
 
 ## <a name="add-a-stroke-gradient-to-a-line"></a>ストロークのグラデーションを線に追加する
 
-線に 1 つのストローク色を適用できるだけでなく、線を色のグラデーションで塗りつぶして 1 つの線分から次の線分への遷移を示すこともできます。 たとえば、線のグラデーションを使用して、時間と距離の変化やオブジェクトを接続した線のさまざまな温度を表すことができます。 線にこのフィーチャーを適用するためには、データ ソースで `lineMetrics` オプションが true に設定されている必要があります。それにより、色のグラデーションを線の `strokeColor` オプションに渡すことができます。 ストロークのグラデーション式は、計算済みのメトリックを式に公開する `['line-progress']` データ式を参照する必要があります。
+線に 1 つのストロークの色を適用できます。 さらに、線を色のグラデーションで塗りつぶして、1 つの線分から次の線分への遷移を示すこともできます。 たとえば、線のグラデーションを使用して、時間と距離の変化やオブジェクトを接続した線のさまざまな温度を表すことができます。 線にこのフィーチャーを適用するためには、データ ソースで `lineMetrics` オプションが true に設定されている必要があります。それにより、色のグラデーションを線の `strokeColor` オプションに渡すことができます。 ストロークのグラデーション式は、計算済みのメトリックを式に公開する `['line-progress']` データ式を参照する必要があります。
 
 <br/>
 
@@ -76,7 +76,7 @@ map.layers.add(new atlas.layer.LineLayer(dataSource, null, {
 
 ## <a name="customize-a-line-layer"></a>線レイヤーをカスタマイズする
 
-線レイヤーにはいくつかのスタイル オプションがあります。 次のツールでそれらをお試しください。
+線レイヤーには、さまざまなスタイル オプションがあります。 次のツールでそれらをお試しください。
 
 <br/>
 

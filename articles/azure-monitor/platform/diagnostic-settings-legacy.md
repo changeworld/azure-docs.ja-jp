@@ -6,13 +6,13 @@ ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
-ms.date: 01/21/2020
-ms.openlocfilehash: dff4901f1488406ed1259d1411a6b05b949382cb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/04/2020
+ms.openlocfilehash: fcdcef5d63163b24fe5de0f547dc2dde00cd674f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715844"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016257"
 ---
 # <a name="update-to-azure-activity-log-collection-and-export"></a>Azure のアクティビティ ログの収集とエクスポートの更新
 [Azure アクティビティ ログ](platform-logs-overview.md)は、Azure で発生したサブスクリプションレベルのイベントの分析情報を提供する[プラットフォーム ログ](platform-logs-overview.md)です。 アクティビティ ログ エントリを[イベント ハブまたはストレージ アカウント](activity-log-export.md)、または [Log Analytics ワークスペース](activity-log-collect.md)に送信するメソッドは、[診断設定](diagnostic-settings.md)を使用するように変更されました。 この記事では、これらの方法の相違点、および診断設定に変更するための準備として、従来の設定をクリアする方法について説明します。
@@ -53,6 +53,9 @@ ms.locfileid: "76715844"
 - Authorization_d
 - Claims_d
 - Properties_d
+
+> [!IMPORTANT]
+> 場合によっては、これらの列の値がすべて大文字になることがあります。 これらの列を含むクエリがある場合は、[=~ 演算子](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators)を使用して、大文字と小文字を区別しない比較を実行する必要があります。
 
 ## <a name="work-with-legacy-settings"></a>従来の設定を使用する
 診断設定に置き換えることを選択しない場合、アクティビティ ログを収集するための従来の設定は引き続き機能します。 サブスクリプションのログ プロファイルを管理するには、次の方法を使用します。

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 161d9d18c914f65b3ab3ef7e44f8cd2f4a1992db
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 39bcaac2ca94eedebd991a1c4e93f324ef651888
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76887728"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76961437"
 ---
 この記事では、Azure Managed Disks と Azure Premium SSD ディスクについてよく寄せられるいくつかの質問に回答します。
 
@@ -429,7 +429,7 @@ P4 (32 GiB) および P6 (64 GiB) ディスク サイズは、アンマネージ
 
 **Azure Backup と Azure Site Recovery サービスでサポートされている最大ディスク サイズはどれくらいですか?**
 
-Azure Backup と Azure Site Recovery サービスでサポートされている最大ディスク サイズは、4 TiB です。 最大 32 TiB の大容量ディスクに対するサポートは、まだ利用できません。
+Azure Backup でサポートされる最大のディスク サイズは、32 TiB (暗号化されたディスクの場合は 4 TiB) です。 Azure Site Recovery によってサポートされる最大のディスク サイズは 8 TiB です。 Azure Site Recovery では、最大 32 TiB の大きなディスクのサポートをまだ利用できません。
 
 **大容量ディスク サイズ (> 4 TiB) の Standard SSD と Standard HDD ディスクで最適化されたディスク IOPS と帯域幅を実現するために推奨される VM サイズはどれくらいですか?**
 

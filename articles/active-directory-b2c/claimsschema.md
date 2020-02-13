@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 03/02/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1e72e100bcb3d06403af1514dea13de59c623310
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 3c3bb0cb6726326cda7ede46ba09fa6d17c2ba2c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76713078"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983046"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -50,8 +50,8 @@ ms.locfileid: "76713078"
 
 | 要素 | 発生回数 | Description |
 | ------- | ----------- | ----------- |
-| DisplayName | 0:1 | さまざまな画面上のユーザーに表示されるタイトル。 値を[ローカライズ](localization.md)することができます。 |
-| DataType | 0:1 | 要求の種類です。 ブール値、date、dateTime、int、long、文字列、stringCollection、alternativeSecurityIdCollection のデータ型を使用する ことができます。 |
+| DisplayName | 1:1 | さまざまな画面上のユーザーに表示されるタイトル。 値を[ローカライズ](localization.md)することができます。 |
+| DataType | 1:1 | 要求の種類です。 boolean、date、dateTime、int、long、string、stringCollection のデータ型を使用することができます。 プリミティブ データ型は、C# 変数データ型に相当するものを表します。 stringCollection は、文字列のコレクションを表します。 詳細については、[C# の型と変数](https://docs.microsoft.com/dotnet/csharp/tour-of-csharp/types-and-variables)に関するページを参照してください。 date は ISO 8601 規則に準拠します。 |
 | DefaultPartnerClaimTypes | 0:1 | パートナーの既定要求は、指定されたプロトコルに使用する種類です。 **InputClaim**または**OutputClaim** 要素で指定されている**PartnerClaimType**内の値を上書きすることができます。 この要素を使用すると、プロトコルの既定の名前を指定できます。  |
 | Mask | 0:1 | 要求を表示するときに適用できる、文字をマスクするのに使用されるオプショナルな文字列。 たとえば、電話番号 324-232-4343 をXXX-XXX-4343 としてマスクすることができます。 |
 | UserHelpText | 0:1 | 要求の目的を理解するのにユーザーに役立つ種類の説明。 値を[ローカライズ](localization.md)することができます。 |
@@ -65,7 +65,7 @@ PredicateValidationReference| 0:1 | **PredicateValidationsInput**要素への参
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| Protocol | 0:n | プロトコルとその既定のパートナー要求種類の名前一覧。 |
+| Protocol | 1:n | プロトコルとその既定のパートナー要求種類の名前一覧。 |
 
 **Protocol** 要素には、次の属性が含まれています。
 

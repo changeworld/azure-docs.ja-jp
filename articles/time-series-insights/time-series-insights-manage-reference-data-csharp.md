@@ -9,20 +9,33 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/27/2020
+ms.date: 01/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2bdd11c3b53b650e636d53942fcb94142de556b2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: cf5f89197798f95dced5bfd8817f1df050297048
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772822"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76962001"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>C# を使用して Azure Time Series Insights 環境の GA 参照データを管理する
 
 この記事では、C#、[MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)、Azure Active Directory を組み合わせ、Azure Time Series Insights GA [参照データ管理 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) にプログラミングによる API 要求を行う方法について説明します。
 
-## <a name="prerequisites"></a>前提条件
+> [!TIP]
+> [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) で GA C# コード サンプルを確認します。
+
+## <a name="summary"></a>まとめ
+
+次のサンプル コードでは、以下の機能が示されます。
+
+* [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication** を使用し、アクセス トークンを取得する。
+* GA [参照データ管理 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) に対する一連の CREATE、READ、UPDATE、DELETE 操作。
+* [一般的なエラー コード](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling)など、一般的な応答コード。
+    
+    参照データ管理 API では、各項目が個別に処理されます。ある項目にエラーが発生したために別の項目も正常に完了できなくなることはありません。 たとえば、要求に 100 個の項目が含まれるとき、1 個の項目にエラーがあった場合、99 個の項目は書き込まれ、1 個の項目が却下されます。
+
+## <a name="prerequisites-and-setup"></a>前提条件と設定
 
 サンプル コードをコンパイルして実行する前に、次の手順を実行します。
 
@@ -31,7 +44,7 @@ ms.locfileid: "76772822"
 
 1. 自分の環境内で[参照データ セットを作成します](time-series-insights-add-reference-data-set.md)。 次の参照データ スキームを使用します。
 
-   | キー名 | 種類 |
+   | キー名 | Type |
    | --- | --- |
    | uuid | String | 
 
@@ -42,9 +55,6 @@ ms.locfileid: "76772822"
 1. 各 **#PLACEHOLDER#** を該当する環境識別子に置換し、下のサンプル コードを編集します。
 
 1. プロジェクトのルート ディレクトリ内で `dotnet run` を実行します。 サインインを求められたら、ご自分のユーザー プロファイルを使用して Azure にサインインします。 
-
-> [!TIP]
-> * [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) でその他の GA C# コードを確認します。
 
 ## <a name="project-dependencies"></a>プロジェクト依存関係
 
@@ -296,16 +306,6 @@ namespace CsharpTsiMsalGaSample
     }
 }
 ```
-
-## <a name="summary"></a>まとめ
-
-上のサンプル コードでは、次の機能が示されます。
-
-* [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication** を使用し、アクセス トークンを取得する。
-* GA [参照データ管理 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) に対する一連の CREATE、READ、UPDATE、DELETE 操作。
-* [一般的なエラー コード](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling)など、一般的な応答コード。
-    
-    参照データ管理 API では、各項目が個別に処理されます。ある項目にエラーが発生したために別の項目も正常に完了できなくなることはありません。 たとえば、要求に 100 個の項目が含まれるとき、1 個の項目にエラーがあった場合、99 個の項目は書き込まれ、1 個の項目が却下されます。
 
 ## <a name="next-steps"></a>次のステップ
 

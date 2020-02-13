@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 79bafb331cb7ad38ea7cad9e510b22886b647764
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 45d210725f7f09663b126528479655d7f4d9c19f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911146"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933354"
 ---
 # <a name="add-a-popup-to-the-map"></a>マップにポップアップを追加する
 
@@ -22,7 +22,7 @@ ms.locfileid: "75911146"
 
 ## <a name="understand-the-code"></a>コードの理解
 
-次のコードでは、シンボル レイヤーを使用して、`name` プロパティと `description` プロパティを持つポイント フィーチャーをマップに追加します。 [Popup クラス](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)のインスタンスが作成されますが、表示されません。 マウス イベントがシンボル レイヤーに追加され、シンボル マーカーをマウスでポイントし、ポイントを外すと、ポップアップを開く操作と閉じる操作がトリガーされます。 マーカー シンボルをマウスでポイントすると、ポップアップの `position` プロパティがマーカーの位置に応じて更新され、マウスでポイントされているポイント フィーチャーの `name` および `description` プロパティをラップする一部の HTML 応じて `content` オプションが更新されます。 次に、その `open` 関数を使用してマップにポップアップが表示されます。
+次のコードでは、シンボル レイヤーを使用して、`name` プロパティと `description` プロパティを持つポイント フィーチャーをマップに追加します。 [Popup クラス](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)のインスタンスが作成されますが、表示されません。 ポップアップのオープンとクローズをトリガーするためのマウス イベントがシンボル レイヤーに追加されます。 マーカー シンボルをマウスでポイントすると、ポップアップの `position` プロパティがマーカーの位置に応じて更新され、マウスでポイントされているポイント フィーチャーの `name` プロパティと `description` プロパティをラップしている HTML に応じて `content` オプションが更新されます。 次に、その `open` 関数を使用してマップにポップアップが表示されます。
 
 ```javascript
 //Define an HTML template for a custom popup content laypout.
@@ -85,7 +85,7 @@ map.events.add('mouseleave', symbolLayer, function (){
 
 ## <a name="reusing-a-popup-with-multiple-points"></a>複数のポイントでポップアップを再利用する
 
-多数のポイントがあり、一度に 1 つのポップアップのみを表示する場合は、ポイント フィーチャーごとにポップアップを作成するのではなく、ポップアップを 1 つ作成して再利用することをお勧めします。 ポップアップを再利用することで、アプリケーションによって作成される DOM 要素数が大幅に削減され、パフォーマンスが向上します。 次のサンプルでは、3 ポイント フィーチャーを作成します。 そのいずれかをクリックすると、そのポイント フィーチャーのコンテンツを含むポップアップが表示されます。
+多数のポイントがあり、一度に 1 つのポップアップのみを表示する場合、最善の方法は、ポップアップを 1 つ作成して再利用することです。 ポップアップを再利用することで、アプリケーションによって作成される DOM 要素数が大幅に削減され、パフォーマンスが向上します。 次のサンプルでは、3 ポイント フィーチャーを作成します。 そのいずれかをクリックすると、そのポイント フィーチャーのコンテンツを含むポップアップが表示されます。
 
 <br/>
 
@@ -94,7 +94,7 @@ map.events.add('mouseleave', symbolLayer, function (){
 
 ## <a name="customizing-a-popup"></a>ポップアップのカスタマイズ
 
-既定で、ポップアップの背景は白であり、下部にポインターの矢印、右上にある [閉じる] ボタンがあります。 次のサンプルでは、ポップアップの `fillColor` オプションを使用して背景色を黒に変更します。 `shoCloseButton` オプションを false に設定すると、[閉じる] ボタンが削除されます。 ポップアップの HTML コンテンツでは、黒の背景に適切に表示されるように、ポップアップの端から 10 ピクセルが埋め込まれ、テキストが白く表示されます。  
+既定で、ポップアップの背景は白であり、下部にポインターの矢印、右上にある [閉じる] ボタンがあります。 次のサンプルでは、ポップアップの `fillColor` オプションを使用して背景色を黒に変更します。 `CloseButton` オプションを false に設定すると、[閉じる] ボタンが削除されます。 ポップアップの HTML コンテンツでは、ポップアップの端から 10 ピクセルのスペースが使用されます。 テキストは白で表示されるため、黒の背景に適切に表示されます。  
 
 <br/>
 
@@ -104,7 +104,7 @@ map.events.add('mouseleave', symbolLayer, function (){
 
 ## <a name="popup-events"></a>ポップアップ イベント
 
-ポップアップは、開く、閉じる、ドラッグすることができます。 popup クラスは、開発者がこれらのアクションに応答するイベントを提供します。 次のサンプルでは、ポップアップを開く、閉じる、またはドラッグするときに発生するイベントを強調表示しています。 
+ポップアップは、開く、閉じる、ドラッグすることができます。 popup クラスには、開発者がこれらのイベントに応答するために役立つイベントが用意されています。 次の例では、ユーザーがポップアップを開いたり、閉じたり、ドラッグしたりしたときに発生するイベントが強調されています。 
 
 <br/>
 

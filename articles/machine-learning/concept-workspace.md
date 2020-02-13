@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
-ms.openlocfilehash: d013fc257bc03d7961a4f2d5ae52d0fde12c83bb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f3c2b1aa8f41b382bea96b33108d23bf09850c78
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844077"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984763"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースとは
 
@@ -79,7 +79,7 @@ ms.locfileid: "76844077"
 | ノートブック VM を作成する |   | **&check;** | |     |
 
 > [!NOTE]
-> コンピューティング インスタンスは、**米国中北部**、** 米国東部 2**、**北ヨーロッパ**、または**英国南部**のワークスペースにのみ使用できます。
+> コンピューティング インスタンスは、**米国中北部**、**米国東部 2**、**北ヨーロッパ**、または**英国南部**リージョンのワークスペースでのみ使用できます。他のリージョンは近日中にサポートされる予定です。
 >ワークスペースが他のリージョンにある場合は、代わりに [Notebook VM](concept-compute-instance.md#notebookvm) を引き続き作成して使用することができます。
 
 ## <a name='create-workspace'></a> ワークスペースを作成する
@@ -92,6 +92,9 @@ ms.locfileid: "76844077"
 * Python スクリプトまたは Jupiter Notebook からオンザフライでワークスペースを作成するには、[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) を使用します。
 * 会社のセキュリティ標準に沿って作成を自動化またはカスタマイズするには、[Azure Resource Manager テンプレート](how-to-create-workspace-template.md)または [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) を使用します。
 * Visual Studio Code で作業する場合は、[VS Code 拡張機能](tutorial-setup-vscode-extension.md)を使用します。
+
+> [!NOTE]
+> ワークスペース名では、大文字と小文字は区別されません。
 
 ## <a name="upgrade"></a> Enterprise Edition へのアップグレード
 

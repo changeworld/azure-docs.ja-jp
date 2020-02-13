@@ -13,12 +13,12 @@ ms.date: 10/10/2018
 ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: d29168f154c80eb2c66d0316f773375325ded67f
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 2484de4e554d16ba049d206981a44654ede28a3f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062185"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190022"
 ---
 # <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>"ここからアクセスすることはできません" というエラー メッセージに対して可能性のある修正方法
 
@@ -29,7 +29,7 @@ ms.locfileid: "77062185"
 
 ![ブラウザーのサポートに関連するエラー メッセージ](media/user-help-device-remediation/browser-version.png)
 
-この問題を解決するには、オペレーティング システムに基づいて、サポートされているブラウザーをインストールして実行する必要があります。 Windows 10 を使用している場合、サポートされているブラウザーには、Microsoft Edge、Internet Explorer、および Google Chrome が含まれます。 別のオペレーティング システムを使用している場合は、[サポートされているブラウザー](../conditional-access/technical-reference.md#supported-browsers)から完全な一覧を確認できます。
+この問題を解決するには、オペレーティング システムに基づいて、サポートされているブラウザーをインストールして実行する必要があります。 Windows 10 を使用している場合、サポートされているブラウザーには、Microsoft Edge、Internet Explorer、および Google Chrome が含まれます。 別のオペレーティング システムを使用している場合は、[サポートされているブラウザー](../conditional-access/concept-conditional-access-conditions.md#supported-browsers)から完全な一覧を確認できます。
 
 ## <a name="make-sure-youre-using-a-supported-operating-system"></a>サポートされているオペレーティング システムを使用しているかどうかを確認する
 サポートされているオペレーティング システムのバージョンを実行しているかどうかを確認します。これには以下のバージョンが含まれます。

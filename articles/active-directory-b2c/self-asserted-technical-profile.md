@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/04/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b82001b8bceac620dec9f1fe6ef47f4aa81b1011
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b6c70e1a5c7e5b81157c09a794ff75e276a20d1f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425617"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982740"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C のカスタム ポリシーでセルフ アサート技術プロファイルを定義します。
 
@@ -185,19 +185,20 @@ ms.locfileid: "75425617"
 
 ビジネス ロジックで REST API の技術プロファイルを呼び出したり、入力要求を上書きします。または企業の基幹業務アプリケーションをさらに統合することによってユーザー データを充実することができます。 詳細については、[検証技術プロファイル](validation-technical-profile.md)を参照してください
 
-## <a name="metadata"></a>メタデータ
+## <a name="metadata"></a>Metadata
 
-| Attribute | 必須 | 説明 |
+| Attribute | Required | 説明 |
 | --------- | -------- | ----------- |
-| setting.showContinueButton | いいえ | [続行する] ボタンが表示されます。 指定できる値は `true`(既定値) または`false`です。 |
-| setting.showCancelButton | いいえ | [キャンセル] ボタンが表示されます。 指定できる値は `true`(既定値) または`false`です。 |
 | setting.operatingMode | いいえ | サインイン ページのために、このプロパティは、入力検証とエラー メッセージなど [ユーザー名] フィールドの動作を制御します。 期待される値は`Username`または`Email`です。 |
+| AllowGenerationOfClaimsWithNullValues| いいえ| null 値を含む要求を生成することを許可します。 たとえば、ユーザーがチェックボックスをオンにしていない場合などです。|
 | ContentDefinitionReferenceId | はい | [コンテンツ定義](contentdefinitions.md)の識別子は、この技術プロファイルに関連付けられています。 |
 | EnforceEmailVerification | いいえ | サインアップまたはプロファイルの編集のために、電子メールの検証を強制します。 指定できる値は `true`(既定値) または`false`です。 |
-| setting.showSignupLink | いいえ | サインアップ ボタンが表示されます。 指定できる値は `true`(既定値) または`false`です。 |
 | setting.retryLimit | いいえ | ユーザーが検証技術プロファイルに対してチェックされたデータを提供しようとする回数を制御します。 たとえば、ユーザーは既に存在するアカウントでサインアップしようとし、制限に達するまで試行し続けます。
 | SignUpTarget | いいえ | サインアップ対象交換識別子。 ユーザーがサインアップ ボタンをクリックすると、Azure AD B2C は、指定された交換識別子を実行します。 |
-
+| setting.showCancelButton | いいえ | [キャンセル] ボタンが表示されます。 指定できる値は `true`(既定値) または`false`です。 |
+| setting.showContinueButton | いいえ | [続行する] ボタンが表示されます。 指定できる値は `true`(既定値) または`false`です。 |
+| setting.showSignupLink | いいえ | サインアップ ボタンが表示されます。 指定できる値は `true`(既定値) または`false`です。 |
+| setting.forgotPasswordLinkLocation| いいえ| パスワードを忘れた場合のリンクを表示します。 使用可能な値: `AfterInput` (既定) ではリンクがページ下部に表示される、`None` ではパスワードを忘れた場合のリンクが削除される。| 
 ## <a name="cryptographic-keys"></a>暗号化キー
 
 **CryptographicKeys** 要素は使用されません。

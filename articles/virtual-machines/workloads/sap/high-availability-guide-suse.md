@@ -3,8 +3,8 @@ title: SUSE Linux Enterprise Server for SAP Applications 上の SAP NetWeaver �
 description: SUSE Linux Enterprise Server for SAP Applications 上の SAP NetWeaver の高可用性ガイド
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/07/2019
-ms.author: sedusch
-ms.openlocfilehash: d08f17bd22188f3d969261d8626d47a9e0faf08e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.date: 02/03/2020
+ms.author: radeltch
+ms.openlocfilehash: 77a26d229ddc4ce5f35fde3db010e3b7c146a563
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839607"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985519"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性
 
@@ -258,7 +258,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
          * ASCS ERS のポート 33**02**、5**02**13、5**02**14、5**02**16 と TCP に対して上記の手順を繰り返します
 
 > [!Note]
-> パブリック IP アドレスのない VM が、内部 (パブリック IP アドレスがない) Standard の Azure Load Balancer のバックエンド プール内に配置されている場合、パブリック エンドポイントへのルーティングを許可するように追加の構成が実行されない限り、送信インターネット接続はありません。 送信接続を実現する方法の詳細については、「[SAP 高可用性シナリオで Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)」を参照してください。  
+> パブリック IP アドレスのない VM が、内部 (パブリック IP アドレスがない) Standard の Azure Load Balancer のバックエンド プール内に配置されている場合、パブリック エンドポイントへのルーティングを許可するように追加の構成が実行されない限り、送信インターネット接続はありません。 送信接続を実現する方法の詳細については、「[SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)」を参照してください。  
 
 > [!IMPORTANT]
 > Azure Load Balancer の背後に配置された Azure VM では TCP タイムスタンプを有効にしないでください。 TCP タイムスタンプを有効にすると正常性プローブが失敗することになります。 パラメーター **net.ipv4.tcp_timestamps** は **0** に設定します。 詳しくは、「[Load Balancer の正常性プローブ](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)」を参照してください。
@@ -277,7 +277,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
    </code></pre>
 
    > [!NOTE]
-   > クラスター ノードのホスト名でダッシュは使用しないでください。 そうしないと、クラスターは機能しません。 これは既知の制限であり、SUSE は修正に取り組んでいます。 修正は、sap-suse-cloud-connector パッケージの修正プログラムとしてリリースされます。
+   > ホスト名にダッシュを使用する場合の既知の問題は、パッケージ **sap-suse-cluster-connector** のバージョン **3.1.1** で修正されています。 ホスト名にダッシュが付いたクラスター ノードを使用している場合は、必ずバージョン 3.1.1 以降のパッケージ sap-suse-cluster-connector を使用してください。 そうしないと、クラスターは機能しません。 
 
    SAP SUSE クラスター コネクタの新しいバージョンをインストールしたことを確認します。 古いものの名前は sap_suse_cluster_connector であり、新しいものの名前は **sap-suse-cluster-connector**です。
 
@@ -808,7 +808,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
    hdbuserstore SET DEFAULT <b>nw1-db:30313@HN1</b> <b>SAPABAP1</b> <b>&lt;password of ABAP schema&gt;</b>
    </code></pre>
 
-## <a name="test-the-cluster-setup"></a>クラスターのセットアップをテストする
+## <a name="test-the-cluster-setup"></a>クラスターの設定をテストする
 
 次のテストは、SUSE のベスト プラクティス ガイドに記載されているテスト ケースのコピーです。 作業を容易にするためにここにコピーされています。 常にベスト プラクティス ガイドを読んで、追加されている可能性があるすべての追加テストを実行してください。
 
@@ -1243,10 +1243,10 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [SAP のための Azure Virtual Machines の計画と実装][planning-guide]
 * [SAP のための Azure Virtual Machines のデプロイ][deployment-guide]
 * [SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]
 * SAP HANA on Azure (L インスタンス) の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、「[Azure での SAP HANA (L インスタンス) の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md)」を参照してください。
-* Azure VM 上の SAP HANA の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、[Azure Virtual Machines (VM) 上の SAP HANA の高可用性][sap-hana-ha]に関するページを参照してください。
+* Azure VM 上の SAP HANA の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、「[Azure Virtual Machines (VM) 上の SAP HANA の高可用性][sap-hana-ha]」を参照してください。

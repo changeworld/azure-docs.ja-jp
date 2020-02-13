@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: d90739fbdc862d67dc2ce0f1dfdf5af5f4089a44
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 45dcd2374fc5be40f86d403f8daccf4a6f1d6997
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899673"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189440"
 ---
-# <a name="application-insights-agent-api-set-applicationinsightsmonitoringconfig"></a>Application Insights Agent API: Set-ApplicationInsightsMonitoringConfig
+# <a name="application-insights-agent-api-set-applicationinsightsmonitoringconfig"></a>Application Insights エージェント API:Set-ApplicationInsightsMonitoringConfig
 
 このドキュメントでは、[Az.ApplicationMonitor PowerShell モジュール](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)のメンバーであるコマンドレットについて説明します。
 
@@ -46,16 +46,14 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 - 読みやすくするためにスペースが追加されます。
 
 ```powershell
-PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap 
-    @(@{MachineFilter='.*';AppFilter='WebAppExclude'},
-      @{MachineFilter='.*';AppFilter='WebAppOne';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx1'},
-      @{MachineFilter='.*';AppFilter='WebAppTwo';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx2'},
-      @{MachineFilter='.*';AppFilter='.*';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxdefault'})
-
+Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap `
+       @(@{MachineFilter='.*';AppFilter='WebAppExclude'},
+          @{MachineFilter='.*';AppFilter='WebAppOne';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx1'}},
+          @{MachineFilter='.*';AppFilter='WebAppTwo';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx2'}},
+          @{MachineFilter='.*';AppFilter='.*';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxdefault'}})
 ```
 
-
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>パラメーター
 
 ### <a name="-instrumentationkey"></a>-InstrumentationKey
 **必須。** このパラメーターを使用して、ターゲット コンピューター上のすべてのアプリによって使用される単一のインストルメンテーション キーを指定します。
@@ -114,7 +112,7 @@ VERBOSE: Config File Path:
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applicationInsights.ikey.config
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
   テレメトリの表示:
  - パフォーマンスと使用状況を監視するための[メトリックを探索](../../azure-monitor/app/metrics-explorer.md)します。
@@ -127,7 +125,7 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applica
 - Web ページ コードからの例外を参照してトレースの呼び出しを有効にするために、[Web クライアント テレメトリ](../../azure-monitor/app/javascript.md)を追加します。
 - トレースとログの呼び出しを挿入できるように、[Application Insights SDK をコードに追加](../../azure-monitor/app/asp-net.md)します。
  
- Application Insights Agent をさらに活用する:
+ Application Insights エージェントをさらに活用する:
  - Application Insights エージェントのトラブルシューティングを行う場合は、[こちらのガイド](status-monitor-v2-troubleshoot.md)を使用してください。
  - 設定が正しく記録されたことを確認するために[構成を取得](status-monitor-v2-api-get-config.md)します。
  - 監視を検査するために[状態を取得](status-monitor-v2-api-get-status.md)します。

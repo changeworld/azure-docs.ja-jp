@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 0351f4fe65745242da58d3c3fb2f9fbe5c722d06
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 893e1c3a58f4a62a1e0e9b734cc156b3d75d8779
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677453"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933062"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>テレメトリ コンテキスト:Application Insights データ モデル
 
@@ -96,7 +96,7 @@ ms.locfileid: "72677453"
 
 ## <a name="account-id"></a>アカウント ID
 
-マルチテナント アプリケーションでは、これはユーザーが操作しているアカウント ID またはアカウント名です。 例には、Azure ポータルのサブスクリプション ID やブログ プラットフォームのブログ名などがあります。
+マルチテナント アプリケーションでは、これはユーザーが操作しているアカウント ID またはアカウント名です。 例には、Azure portal のサブスクリプション ID やブログ プラットフォームのブログ名などがあります。
 
 最大長:1024
 
@@ -129,7 +129,7 @@ SDK バージョン。 詳細については、「 https://github.com/Microsoft/
 最大長:256
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [テレメトリの拡張とフィルター処理](../../azure-monitor/app/api-filtering-sampling.md)を行う方法を確認します。
 - Application Insights の型とデータ モデルについては、[データ モデル](data-model.md)に関するページを参照してください。

@@ -13,16 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 63706a3cdd34e5656f881c8668d8b88d9ac2e9ff
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ca9b70bd71a618f8e3d5f4fe9504ba66a9f14c6f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843924"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935477"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Azure Load Balancer のトラブルシューティング
 
-このページには、Azure Load Balancer についてよく寄せられる質問のトラブルシューティング情報が示されています。 Load Balancer の接続が利用できない場合の最も一般的な症状を次に示します。 
+このページには、Basic および Standard Azure Load Balancer についてよく寄せられる質問のトラブルシューティング情報が示されています。 Standard Load Balancer について詳しくは、[Standard Load Balancer の概要](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics)に関するページをご覧ください。
+
+Load Balancer の接続が利用できない場合の最も一般的な症状を次に示します。 
+
 - Load Balancer の背後にある VM が正常性プローブに応答しない 
 - Load Balancer の背後にある VM が構成済みポートのトラフィックに応答しない
 
@@ -124,6 +127,10 @@ Load Balancer のバックエンド VM でホストされているアプリケ�
 内部 Load Blancer が VNet 内で構成され、参加しているバックエンド VM の 1 つが内部 Load Balancer フロントエンドにアクセスしようとしている場合は、エラーが発生し、アクセス元の VM にフローがマップされます。 このシナリオはサポートされません。 詳しくは、「[制限事項](concepts-limitations.md#limitations)」をご覧ください。
 
 **解決策**: このシナリオをブロック解除するには、プロキシの使用などいくつかの方法があります。 Application Gateway または他のサードパーティ製プロキシ (nginx や haproxy など) を評価してください。 Application Gateway の詳細については、「[Application Gateway の概要](../application-gateway/application-gateway-introduction.md)」を参照してください
+
+## <a name="symptom-cannot-change-backend-port-for-existing-lb-rule-of-a-load-balancer-which-has-vm-scale-set-deployed-in-the-backend-pool"></a>症状:バックエンド プールにデプロイされる VM スケール セットがあるロード バランサーの既存の LB ルールのバックエンド ポートを変更できません。 
+### <a name="cause--the-backend-port-cannot-be-modified-for-a-load-balancing-rule-thats-used-by-a-health-probe-for-load-balancer-referenced-by-vm-scale-set"></a>原因:VM スケール セットによって参照されるロード バランサーに対する正常性プローブによって使用される負荷分散規則のバックエンド ポートを変更できません。
+**解決作:** ポートを変更するには、VM スケール セットを更新し、ポートを更新してから正常性プローブを再度構成することで、正常性プローブを削除できます。
 
 ## <a name="additional-network-captures"></a>その他のネットワーク キャプチャ
 サポート ケースを開く場合は、迅速に解決できるように次の情報を収集します。 1 つのバックエンド VM を選択して、次のテストを実行してください。

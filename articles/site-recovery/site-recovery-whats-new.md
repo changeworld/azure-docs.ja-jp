@@ -2,13 +2,13 @@
 title: Azure Site Recovery の最新情報
 description: Azure Site Recovery サービスの新機能と最新の更新プログラムの概要について説明します。
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: 4a9feff3b0bc98b5d9853268d033e60de55ea5ea
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.date: 01/31/2020
+ms.openlocfilehash: d6aa04586c9c087a736c7e1b10b8c21328a63cab
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76024828"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934935"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery の最新情報
 
@@ -24,17 +24,29 @@ Site Recovery コンポーネントでは、N-4 バージョン (N は最新リ�
 
 **アップデート** |  **統合セットアップ** | **構成サーバー ova** | **モビリティ サービス エージェント** | **Site Recovery プロバイダー** | **Recovery Services エージェント**
 --- | --- | --- | --- | --- | ---
-[ロールアップ 43](https://support.microsoft.com/help/4531426/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
+[ロールアップ 43](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
 [ロールアップ 42](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
 [ロールアップ 41](https://support.microsoft.com/help/4528026/) | 9.29.5367.1 | 5.1.5000.0 | 9.29.5367.1 | 5.1.5000.0 | 2.0.9165.0
 [ロールアップ 40](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [ロールアップ 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
 
-        
+
 
 更新プログラムのインストールとサポートの詳細については、[こちら](service-updates-how-to.md)を参照してください。
 
 ## <a name="updates-january-2020"></a>更新プログラム (2020 年 1 月)
+
+### <a name="update-rollup-44"></a>更新プログラム ロールアップ 44
+[更新プログラム ロールアップ 44](https://support.microsoft.com/help/4538187/update-rollup-44-for-azure-site-recovery) では、以下の更新が提供されます。
+
+**アップデート** | **詳細**
+--- | ---
+**問題の修正/改善点** | Site Recovery のエージェントとプロバイダーに対する多数の更新 (詳細はロールアップを参照)。
+
+### <a name="azure-vmware-disaster-recovery"></a>Azure VMware のディザスター リカバリー
+
+Azure 仮想マシンで、お客様が管理するキーを使用した保存時の暗号化が可能な VM がサポートされるようになりました。 [詳細については、こちらを参照してください](azure-to-azure-how-to-enable-replication-cmk-disks.md)。
+
 
 ### <a name="update-rollup-43"></a>更新プログラム ロールアップ 43
 
@@ -58,7 +70,7 @@ Site Recovery コンポーネントでは、N-4 バージョン (N は最新リ�
 **問題の修正/改善点** | さまざまな修正プログラムと機能強化 (詳細はロールアップを参照)
 
 
-## <a name="azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリー
+### <a name="azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリー
 
 Azure VM ディザスター リカバリーの新機能をまとめて表に示します。
 
@@ -153,7 +165,7 @@ Azure VM ディザスター リカバリーの新機能をまとめて表に示�
 
 **機能** | **詳細**
 --- | ---
-新しいプロセス サーバー アラート | 新しいプロセス サーバー アラートを追加しました。 [詳細については、こちらを参照してください](vmware-physical-azure-monitor-process-server.md)。 
+新しいプロセス サーバー アラート | 新しいプロセス サーバー アラートを追加しました。 [詳細については、こちらを参照してください](vmware-physical-azure-monitor-process-server.md)。
 
 ### <a name="hyper-v-disaster-recovery"></a>Hyper-V のディザスター リカバリー
 
@@ -183,7 +195,7 @@ Azure VM ディザスター リカバリーの新機能をまとめて表に示�
 **機能** | **詳細**
 --- | ---
 **Azure AD を使用しない暗号化** | Windows を実行しているマネージド ディスクへの Azure VM レプリケーションで、Azure AD アプリを使用しない暗号化がサポートされるようになりました。
-**フェールオーバー用のネットワーク リソース** | 別のリージョンにフェールオーバーするときに、ネットワーク リソースの設定 (NSG、負荷分散、パブリック IP アドレス) を VM に接続できるようになりました。 
+**フェールオーバー用のネットワーク リソース** | 別のリージョンにフェールオーバーするときに、ネットワーク リソースの設定 (NSG、負荷分散、パブリック IP アドレス) を VM に接続できるようになりました。
 
 ## <a name="updates-july-2019"></a>更新 (2019 年 7 月)
 
@@ -255,7 +267,7 @@ Site Recovery では、キャッシュ ストレージまたはターゲット �
 
 **機能** | **詳細**
 --- | ---
-**プロセス サーバーの監視** | オンプレミスの VMware VM と物理サーバーのディザスター リカバリーについて、強化されたサーバー正常性レポートおよびアラート機能により、プロセス サーバーの問題を監視してトラブルシューティングします。 [詳細については、こちらを参照してください](vmware-physical-azure-monitor-process-server.md)。 
+**プロセス サーバーの監視** | オンプレミスの VMware VM と物理サーバーのディザスター リカバリーについて、強化されたサーバー正常性レポートおよびアラート機能により、プロセス サーバーの問題を監視してトラブルシューティングします。 [詳細については、こちらを参照してください](vmware-physical-azure-monitor-process-server.md)。
 
 
 
@@ -284,7 +296,7 @@ Site Recovery では、キャッシュ ストレージまたはターゲット �
 
 ## <a name="updates-february-2019"></a>更新プログラム (2019 年 2 月)
 
-### <a name="update-rollup-34"></a>更新プログラム ロールアップ 34 
+### <a name="update-rollup-34"></a>更新プログラム ロールアップ 34
 
 [更新プログラム ロールアップ 34](https://support.microsoft.com/help/4490016/update-rollup-34-for-azure-site-recovery) は次の更新プログラムを提供します。
 
@@ -294,7 +306,7 @@ Site Recovery では、キャッシュ ストレージまたはターゲット �
 **問題の修正/改善点** | さまざまな修正と改善点 (詳細はロールアップを参照)。
 
 
-### <a name="update-rollup-33"></a>更新プログラム ロールアップ 33 
+### <a name="update-rollup-33"></a>更新プログラム ロールアップ 33
 
 [更新プログラム ロールアップ 33](https://support.microsoft.com/help/4489582/update-rollup-33-for-azure-site-recovery) は次の更新プログラムを提供します。
 
@@ -304,17 +316,19 @@ Site Recovery では、キャッシュ ストレージまたはターゲット �
 **問題の修正/改善点** | さまざまな修正と改善点 (詳細はロールアップを参照)。
 
 
-### <a name="azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリー 
+### <a name="azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリー
+
 今月追加された機能は、表にまとめられています。
 
 **機能** | **詳細**
 --- | ---
-**ネットワーク マッピング** | Azure VM ディザスター リカバリーで、レプリケーションを有効にすると、利用可能な任意のターゲット ネットワークを使用できるようになりました。 
+**ネットワーク マッピング** | Azure VM ディザスター リカバリーで、レプリケーションを有効にすると、利用可能な任意のターゲット ネットワークを使用できるようになりました。
 **Standard SSD** | [Standard SSD ディスク](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd)を使用して Azure VM のディザスター リカバリーを設定できるようになりました。
 **記憶域スペース ダイレクト** | Azure VM アプリで実行されるアプリのディザスター リカバリーを、高可用性を実現するために[記憶域スペース ダイレクト](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview)を使用して設定できるようになりました。  Site Recovery と共に記憶域スペース ダイレクト (S2D) を使用することで、Azure VM ワークロードを包括的に保護することができます。 S2D では、Azure でゲスト クラスターをホストすることができます。 これは特に、SAP ASCS レイヤー、SQL Server、スケールアウト ファイル サーバーなど、重要なアプリケーションを VM でホストするときに便利です。
 
 
 ### <a name="vmwarephysical-server-disaster-recovery"></a>VMware/物理サーバーのディザスター リカバリー
+
 今月追加された機能は、表にまとめられています。
 
 **機能** | **詳細**
@@ -332,7 +346,7 @@ Site Recovery では、キャッシュ ストレージまたはターゲット �
 
 [詳細については、こちらを参照してください](azure-vm-disaster-recovery-with-accelerated-networking.md)。
 
-### <a name="update-rollup-32"></a>更新プログラム ロールアップ 32 
+### <a name="update-rollup-32"></a>更新プログラム ロールアップ 32
 
 [更新プログラム ロールアップ 32](https://support.microsoft.com/help/4485985/update-rollup-32-for-azure-site-recovery) では、次の更新プログラムが提供されます。
 
@@ -353,13 +367,13 @@ Site Recovery では、キャッシュ ストレージまたはターゲット �
 ### <a name="vmware-vmsphysical-servers-disaster-recovery"></a>VMware VM/物理サーバーのディザスター リカバリー
 
 今月追加された機能は、表にまとめられています。
- 
+
 **機能** | **詳細**
 --- | ---
 **Linux のサポート** | Redhat Enterprise Linux 7.6、RedHat Workstation 6/7、Oracle Linux 6.10、および Oracle Linux 7.6 と、Ubuntu、Debian、SUSE 用の新しいカーネル バージョンに対するサポートが追加されました。
 
 
-### <a name="update-rollup-31"></a>更新プログラム ロールアップ 31 
+### <a name="update-rollup-31"></a>更新プログラム ロールアップ 31
 
 [更新プログラム ロールアップ 31](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery) は次の更新プログラムを提供します。
 
@@ -368,8 +382,10 @@ Site Recovery では、キャッシュ ストレージまたはターゲット �
 **プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)。
 **問題の修正/改善点** | さまざまな修正と改善点 (詳細はロールアップを参照)。
 
-### <a name="vmware-vmsphysical-servers-replication"></a>VMware VM/物理サーバーのレプリケーション 
+### <a name="vmware-vmsphysical-servers-replication"></a>VMware VM/物理サーバーのレプリケーション
+
 今月追加された機能は、表にまとめられています。
+
 **機能** | **詳細**
 --- | ---
 **Linux のサポート** |  Red Hat 互換カーネルを使用する Oracle Linux 6.8、Oracle Linux 6.9、および Oracle Linux 7.0 と、Unbreakable Enterprise Kernel (UEK) リリース 5 に対するサポートが追加されました。
@@ -380,6 +396,7 @@ Site Recovery では、キャッシュ ストレージまたはターゲット �
 **UEFI のサポート** | Azure VM は UEFI というブートの種類をサポートしていません。 UEFI が設定されたオンプレミスの物理サーバーを、Site Recovery を使用して Azure に移行できるようになりました。 Site Recovery は、移行の前にブートの種類を BIOS に変換することにより、このようなサーバーを移行します。 Site Recovery では、以前は、VM の場合のみこの変換をサポートしていました。 現在は、Windows Server 2012 移行を実行する物理サーバーもサポートされています。
 
 ### <a name="azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリー
+
 今月追加された機能は、表にまとめられています。
 
 **機能** | **詳細**
@@ -411,7 +428,7 @@ Azure VM のディザスター リカバリーでは、VM のライセンス コ
 
 ## <a name="updates-october-2018"></a>更新プログラム (2018 年 10 月)
 
-### <a name="update-rollup-30"></a>更新プログラム ロールアップ 30 
+### <a name="update-rollup-30"></a>更新プログラム ロールアップ 30
 
 [更新プログラム ロールアップ 30](https://support.microsoft.com/help/4468181/azure-site-recovery-update-rollup-30) は次の更新プログラムを提供します。
 
@@ -431,7 +448,7 @@ Azure VM のディザスター リカバリーでは、VM のライセンス コ
 **ファイアウォールが有効なストレージ (PowerShell)** | [ファイアウォールが有効なストレージ アカウント](https://docs.microsoft.com/azure/storage/common/storage-network-security)のサポートが追加されました。<br/><br/> ファイアウォールが有効なストレージ アカウント上のアンマネージド ディスクを持つ Azure VM を、ディザスター リカバリーのために別の Azure リージョンにレプリケートできます。<br/><br/> ファイアウォールが有効なストレージ アカウントを、アンマネージド ディスクのターゲット ストレージ アカウントとして使用できます。<br/><br/> PowerShell のみの使用がサポートされるようになりました。
 
 
-### <a name="update-rollup-29"></a>更新プログラム ロールアップ 29 
+### <a name="update-rollup-29"></a>更新プログラム ロールアップ 29
 
 [更新プログラム ロールアップ 29](https://support.microsoft.com/help/4466466/update-rollup-29-for-azure-site-recovery) は次の更新プログラムを提供します。
 
@@ -443,7 +460,7 @@ Azure VM のディザスター リカバリーでは、VM のライセンス コ
 
 ## <a name="updates-august-2018"></a>更新プログラム (2018 年 8 月)
 
-### <a name="update-rollup-28"></a>更新プログラム ロールアップ 28 
+### <a name="update-rollup-28"></a>更新プログラム ロールアップ 28
 
 [更新プログラム ロールアップ 28](https://support.microsoft.com/help/4460079/update-rollup-28-for-azure-site-recovery) は次の更新プログラムを提供します。
 
@@ -452,7 +469,7 @@ Azure VM のディザスター リカバリーでは、VM のライセンス コ
 **プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)。
 **問題の修正/改善点** | さまざまな修正と改善点 (詳細はロールアップを参照)。
 
-### <a name="azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリー 
+### <a name="azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリー
 今月追加された機能は、表にまとめられています。
 
 **機能** | **詳細**
@@ -461,12 +478,12 @@ Azure VM のディザスター リカバリーでは、VM のライセンス コ
 **クラウドのサポート** | ドイツのクラウドで Azure VM のディザスター リカバリーがサポートされるようになりました。
 **サブスクリプション間のディザスター リカバリー** | 同じ Azure Active Directory テナント内の異なるサブスクリプションで、別のリージョンに Azure VM をレプリケートすることがサポートされるようになりました。 [詳細については、こちらを参照してください](https://aka.ms/cross-sub-blog)。
 
-### <a name="vmware-vmphysical-server-disaster-recovery"></a>VMware VM/物理サーバーのディザスター リカバリー 
+### <a name="vmware-vmphysical-server-disaster-recovery"></a>VMware VM/物理サーバーのディザスター リカバリー
 今月追加された機能は、表にまとめられています。
 
 **機能** | **詳細**
 --- | ---
-**Linux のサポート** | RedHat Enterprise Linux 6.10、CentOS 6.10 のサポートが追加されました。<br/><br/> レガシ BIOS 互換モードで GUID パーティション テーブル (GPT) のパーティション スタイルを使用する Linux ベースの VM がサポートされるようになりました。 詳細については、[Azure VM の FAQ](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks) を確認してください。 
+**Linux のサポート** | RedHat Enterprise Linux 6.10、CentOS 6.10 のサポートが追加されました。<br/><br/> レガシ BIOS 互換モードで GUID パーティション テーブル (GPT) のパーティション スタイルを使用する Linux ベースの VM がサポートされるようになりました。 詳細については、[Azure VM の FAQ](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks) を確認してください。
 **移行後の VM のディザスター リカバリー** | Azure に移行されたオンプレミスの VMware VM のセカンダリ リージョンへのディザスター リカバリーの有効化がサポートされます。レプリケーションを有効にする前に VM でモビリティ サービスをアンインストールする必要はありません。
 **Windows Server 2008** | Windows Server 2008 R2/2008 64 ビット版および 32 ビット版を実行するマシンの移行がサポートされるようになりました。<br/><br/> 移行のみ (レプリケーションとフェールオーバー)。 フェールバックはサポートされていません。
 
@@ -481,7 +498,7 @@ Azure VM のディザスター リカバリーでは、VM のライセンス コ
 **プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)。
 **問題の修正/改善点** | さまざまな修正と改善点 (詳細はロールアップを参照)。
 
-### <a name="azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリー 
+### <a name="azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリー
 
 今月追加された機能は、表にまとめられています。
 
@@ -489,7 +506,7 @@ Azure VM のディザスター リカバリーでは、VM のライセンス コ
 --- | ---
 **Linux のサポート** | Red Hat Enterprise Linux 7.5 のサポートが追加されました。
 
-### <a name="vmware-vmphysical-server-disaster-recovery"></a>VMware VM/物理サーバーのディザスター リカバリー 
+### <a name="vmware-vmphysical-server-disaster-recovery"></a>VMware VM/物理サーバーのディザスター リカバリー
 
 今月追加された機能は、表にまとめられています。
 

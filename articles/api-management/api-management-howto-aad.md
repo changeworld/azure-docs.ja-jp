@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 131621e05d7800e59ce3bbdec5c11c1da9facf11
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: df640f11e8a0e8af22c96a662a602e0de508715c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442793"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985052"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Azure API Management で Azure Active Directory を使用して開発者アカウントを承認する
 
@@ -33,7 +33,7 @@ ms.locfileid: "75442793"
 
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Azure AD を使用して開発者アカウントを承認する
 
-1. [Azure portal](https://portal.azure.com) にサインインする 
+1. [Azure portal](https://portal.azure.com) にサインインします。 
 2. 選択 ![矢印](./media/api-management-howto-aad/arrow.png)。
 3. 検索ボックスに、「**api**」と入力します。
 4. **[API Management サービス]** を選択します。
@@ -53,10 +53,10 @@ ms.locfileid: "75442793"
 12. **[管理]** の **[アプリの登録]** を選択します。
 13. **[新規登録]** を選択します。 **[アプリケーションの登録]** ページで、次のように値を設定します。
     
-* **[名前]** をわかりやすい名前に設定します。 例: *developer-portal*
-* **[サポートされているアカウントの種類]** を **[この組織のディレクトリ内のアカウントのみ]** に設定します。 
-* **[リダイレクト URI]** を手順 9 で取得した値に設定します。 
-* **[登録]** を選択します。 
+    * **[名前]** をわかりやすい名前に設定します。 例: *developer-portal*
+    * **[サポートされているアカウントの種類]** を **[この組織のディレクトリ内のアカウントのみ]** に設定します。 
+    * **[リダイレクト URI]** を手順 9 で取得した値に設定します。 
+    * **[登録]** を選択します。 
 
 14.  アプリケーションが登録されたら、 **[概要]** ページから **[アプリケーション (クライアント) ID]** をコピーします。 
 15. API Management インスタンスに戻ります。 **[ID プロバイダーの追加]** ウィンドウで、 **[クライアント ID]** ボックスに **[アプリケーション (クライアント) ID]** の値を貼り付けます。
@@ -71,10 +71,10 @@ ms.locfileid: "75442793"
 
 19. **[ID プロバイダーの追加]** ウィンドウには、 **[許可されているテナント]** テキスト ボックスもあります。 ここには、API Management サービス インスタンスの API へのアクセスを許可する Azure AD インスタンスのドメインを指定します。 複数のドメインを指定する場合は、改行文字、スペース、またはコンマで区切ります。
 
-> [!NOTE]
-> **[許可されているテナント]** セクションには、複数のドメインを指定できます。 アプリケーションが登録されている元のドメインとは別のドメインからユーザーがサインインするには、別のドメインの全体管理者がアプリケーションにディレクトリ データへのアクセス許可を付与する必要があります。 アクセス許可を付与するために、全体管理者は次の操作を行う必要があります。a. `https://<URL of your developer portal>/aadadminconsent` に移動します (例: https://contoso.portal.azure-api.net/aadadminconsent) 。
-> b. アクセスを許可する Azure AD テナントのドメイン名を入力します。
-> c. **[Submit]\(送信\)** をクリックします。 
+    > [!NOTE]
+    > **[許可されているテナント]** セクションには、複数のドメインを指定できます。 アプリケーションが登録されている元のドメインとは別のドメインからユーザーがサインインするには、別のドメインの全体管理者がアプリケーションにディレクトリ データへのアクセス許可を付与する必要があります。 アクセス許可を付与するために、全体管理者は次の操作を行う必要があります。a. `https://<URL of your developer portal>/aadadminconsent` に移動します (例: https://contoso.portal.azure-api.net/aadadminconsent) 。
+    > b. アクセスを許可する Azure AD テナントのドメイン名を入力します。
+    > c. **[Submit]\(送信\)** をクリックします。 
 
 20.  必要な構成を指定したら、 **[追加]** を選択します。
 
@@ -95,7 +95,7 @@ Azure AD テナント内のユーザーのアクセスを有効にした後、AP
 
 1. **[グループ]** タブを選択します。
 2. **[AAD グループの追加]** ボタンを選択します。
-   ![[AAD グループの追加] ボタン](./media/api-management-howto-aad/api-management-with-aad008.png)
+    ![[AAD グループの追加] ボタン](./media/api-management-howto-aad/api-management-with-aad008.png)
 3. 追加するグループを選択します。
 4. **[選択]** ボタンを押します。
 
@@ -105,11 +105,11 @@ Azure AD テナント内のユーザーのアクセスを有効にした後、AP
 
 ## <a name="a-idlog_in_to_dev_portal-developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"/> 開発者ポータル - Azure AD アカウント認証の追加
 
-開発者ポータルでは、**OAuth ボタン** ウィジェットで AAD を使用してサインインできます。 このウィジェットは、既定の開発者ポータル コンテンツのサインイン ページに既に含まれています。
-
-![AAD ボタン ウィジェット](./media/api-management-howto-aad/portal-oauth-widget.png)
+開発者ポータルでは、AAD によるサインインは、 **[サインイン] ボタン:OAuth** ウィジェットを利用して行うことができます。 このウィジェットは、既定の開発者ポータル コンテンツのサインイン ページに既に含まれています。
 
 新しいユーザーが AAD を使用してサインインするたびに新しいアカウントが自動的に作成されますが、サインアップ ページに同じウィジェットを追加することを検討できます。
+
+**サインアップ フォーム:OAuth** ウィジェットでは、OAuth によるサインアップに使用されるフォームが示されます。
 
 > [!IMPORTANT]
 > AAD の変更を有効にするには、[ポータルを再発行](api-management-howto-developer-portal-customize.md#publish)する必要があります。

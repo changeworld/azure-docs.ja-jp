@@ -1,5 +1,5 @@
 ---
-title: Azure Data Explorer での時系列の異常検出と予測
+title: 時系列の異常検出と予測 - Azure Data Explorer
 description: Azure Data Explorer を使用して異常検出と予測のために時系列データを分析する方法について説明します。
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: 0e06569a3a6948836201b333501bf2de0416d4ca
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 4a7463d6149a921a4a29b43eaebb78a01543323a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766040"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985827"
 ---
 # <a name="anomaly-detection-and-forecasting-in-azure-data-explorer"></a>Azure Data Explorer での異常検出と予測
 
@@ -129,6 +129,6 @@ demo_make_series2
 
 このドキュメントでは、時系列の異常検出および予測を行うための Azure Data Explorer ネイティブ関数について詳しく説明しています。 元の各時系列は異常検出または予測を目的として季節、傾向、残余の各コンポーネントに分解されます。 これらの機能は、障害検出、予測メンテナンス、需要と負荷の予測などのリアルタイムに近い監視シナリオで使用することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Data Explorer の[機械学習機能](/azure/data-explorer/machine-learning-clustering)について学習します。

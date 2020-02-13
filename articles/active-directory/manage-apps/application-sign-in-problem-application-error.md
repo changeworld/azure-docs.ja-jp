@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23e6a3d0b533dccc3c3111382b014907d5c026ab
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 9b8d20b31e96973a492355f0515d0532deea0ac9
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612660"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185495"
 ---
 # <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>ユーザーがサインインした後、アプリのページにエラー メッセージが表示される
 
@@ -72,7 +72,7 @@ Azure AD 応答で送信される属性を Azure AD の構成に追加するに�
 
 SAML 応答にロールなどの属性が不足しているために、アプリへのサインインが失敗します。 または、アプリが **NameID** (ユーザー識別子) 属性に別の形式または値を期待しているため、失敗します。
 
-アプリケーション内のユーザーを作成、管理、削除するために [Azure AD 自動ユーザー プロビジョニング](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)を使用している場合は、ユーザーが SaaS アプリにプロビジョニングされていることを確認してください。 詳細については、「[Azure AD ギャラリー アプリケーションにユーザーがプロビジョニングされない](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-no-users-provisioned)」を参照してください。
+アプリケーション内のユーザーを作成、管理、削除するために [Azure AD 自動ユーザー プロビジョニング](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)を使用している場合は、ユーザーが SaaS アプリにプロビジョニングされていることを確認してください。 詳細については、「[Azure AD ギャラリー アプリケーションにユーザーがプロビジョニングされない](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md)」を参照してください。
 
 ## <a name="add-an-attribute-to-the-azure-ad-app-configuration"></a>Azure AD アプリの構成に属性を追加する
 
@@ -163,5 +163,5 @@ Azure AD によってデジタル署名される SAML トークンの部分を�
 
    次回ユーザーがアプリにサインインするときに、Azure AD は SHA-1 アルゴリズムを使用して SAML トークンに署名します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure AD のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging)。

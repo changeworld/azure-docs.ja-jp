@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターの設定を変更する
 description: この記事では、カスタマイズ可能な Fabric の設定と Fabric アップグレード ポリシーについて説明します。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: ba98d4d30d14cb3a1981652fc0b86354923a8851
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f42cfd1b41ab463c3c3042987b5d0a0b3b00f67e
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772127"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986191"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする
 この記事では、カスタマイズできる Service Fabric クラスターのさまざまなファブリック設定について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。 詳細については、[Azure クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)に関するページを参照してください。 スタンドアロン クラスターでは、*ClusterConfig.json* ファイルを更新し、クラスターで構成のアップグレードを実行することによって設定をカスタマイズします。 詳細については、[スタンドアロン クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)に関するページを参照してください。
@@ -89,6 +89,7 @@ ms.locfileid: "75772127"
 |TargetReplicaSetSize |int、既定値は 7 |禁止|ClusterManager の TargetReplicaSetSize。 |
 |UpgradeHealthCheckInterval |秒単位。既定値は 60 |動的|監視対象アプリケーションをアップグレードしているときに、正常性状態をチェックする頻度 |
 |UpgradeStatusPollInterval |秒単位。既定値は 60 |動的|アプリケーションのアップグレード状態をポーリングする頻度。 この値により、GetApplicationUpgradeProgress 呼び出しの更新レートが決まります |
+|CompleteClientRequest | ブール値、既定値は false |動的| CM によって受け入れられた場合は、クライアント要求を完了します。 |
 
 ## <a name="common"></a>共通
 
@@ -388,7 +389,7 @@ ms.locfileid: "75772127"
 
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
-|有効 |ブール値、既定値は false |静的|ImageStoreService の Enabled フラグ。 既定値: false |
+|Enabled |ブール値、既定値は false |静的|ImageStoreService の Enabled フラグ。 既定値: false |
 |MinReplicaSetSize | int、既定値は 3 |静的|ImageStoreService の MinReplicaSetSize。 |
 |PlacementConstraints | string、既定値は "" |静的| ImageStoreService の PlacementConstraints。 |
 |QuorumLossWaitDuration | 時間 (秒単位)、既定値は MaxValue |静的| timespan を秒単位で指定します。 ImageStoreService の QuorumLossWaitDuration。 |
@@ -568,6 +569,8 @@ ms.locfileid: "75772127"
 |ValidatePlacementConstraint | ブール値、既定値は true |動的| サービスの ServiceDescription が更新されたときに、サービスの PlacementConstraint 式を検証するかどうかを指定します。 |
 |ValidatePrimaryPlacementConstraintOnPromote| ブール値、既定値は TRUE |動的|フェイルオーバー時にプライマリ設定について、サービスの PlacementConstraint 式が評価されるかどうかを指定します。 |
 |VerboseHealthReportLimit | int、既定値は 20 | 動的|レプリカが未配置の状態になった回数がここで定義した回数に達すると、正常性の警告が報告されます (詳細な正常性レポートが有効になっている場合)。 |
+|NodeLoadsOperationalTracingEnabled | ブール値、既定値は true |動的|イベント ストア内でノード読み込みの操作上の構造トレースを有効にする構成。 |
+|NodeLoadsOperationalTracingInterval | TimeSpan、既定値は Common::TimeSpan::FromSeconds(20) | 動的|timespan を秒単位で指定します。 各サービス ドメインでのイベント ストアへのノード読み込みをトレースする間隔。 |
 
 ## <a name="reconfigurationagent"></a>ReconfigurationAgent
 
@@ -828,7 +831,7 @@ ms.locfileid: "75772127"
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |ContainerNetworkName|string、既定値は ""| 静的 |コンテナー ネットワークを設定するときに使用するネットワーク名。|
-|ContainerNetworkSetup|ブール値、既定値は FALSE| 静的 |コンテナー ネットワークを設定するかどうか。|
+|ContainerNetworkSetup|ブール値。既定値は FALSE (Linux)、既定値は TRUE (Windows)| 静的 |コンテナー ネットワークを設定するかどうか。|
 |FabricDataRoot |String | 禁止 |Service Fabric のデータ ルート ディレクトリ。 Azure の場合、既定値は d:\svcfab です。 |
 |FabricLogRoot |String | 禁止 |Service Fabric のログ ルート ディレクトリ。 このディレクトリには、SF のログとトレースが配置されます。 |
 |NodesToBeRemoved|string、既定値は ""| 動的 |構成のアップグレードの一環として削除する必要があるノード (スタンドアロンのデプロイのみ)。|

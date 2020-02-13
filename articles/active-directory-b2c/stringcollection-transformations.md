@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fbbd7b4bdddf2b58e66cb1203414b5a63eec2f27
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8f91db91eff3320691a5979d9453bf515ccd59a2
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951005"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982298"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection 要求変換
 
@@ -28,7 +28,7 @@ ms.locfileid: "74951005"
 
 新しい stringCollection 要求に文字列要求を追加します。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | item | string | 出力要求に追加される ClaimType。 |
 | InputClaim | collection | stringCollection | （省略可能）これを指定すると、要求変換によってこのコレクションから項目がコピーされ、出力コレクション要求の最後に項目が追加されます。 |
@@ -62,7 +62,7 @@ ms.locfileid: "74951005"
 
 新しい stringCollection 要求に文字列パラメーターを追加します。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | collection | stringCollection | （省略可能）これを指定すると、要求変換によってこのコレクションから項目がコピーされ、出力コレクション要求の最後に項目が追加されます。 |
 | InputParameter | item | string | 出力要求に追加される値。 |
@@ -97,7 +97,7 @@ ms.locfileid: "74951005"
 
 指定された文字列コレクションから最初の項目を取得します。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | collection | stringCollection | 項目を取得する要求変換で使用される ClaimTypes。 |
 | OutputClaim | extractedItem | string | この ClaimsTransformation が呼び出された後に生成される ClaimTypes。 コレクション内の最初の項目 |
@@ -121,4 +121,42 @@ ms.locfileid: "74951005"
   - **collection**: ["someone@outlook.com", "someone@contoso.com"]
 - 出力要求:
   - **extractedItem**: "someone@outlook.com"
+
+
+## <a name="stringcollectioncontains"></a>StringCollectionContains
+
+StringCollection 要求の種類に要素が含まれているかどうかをチェックします
+
+| Item | TransformationClaimType | データ型 | Notes |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | stringCollection | 検索する要求の種類。 |
+|InputParameter|item|string|検索する値。|
+|InputParameter|ignoreCase|string|この比較が比較対象の文字列の大文字と小文字を無視するかどうかを指定します。|
+| OutputClaim | outputClaim | boolean | この ClaimsTransformation が呼び出された後に生成される ClaimType。 コレクションにこのような文字列が含まれているかどうかを示すブール値のインジケーター |
+
+次の例では、`roles` stringCollection 要求の種類に **admin** の値が含まれているかどうかをチェックしています。
+
+```XML
+<ClaimsTransformation Id="IsAdmin" TransformationMethod="StringCollectionContains">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
+  </InputClaims>
+  <InputParameters>
+    <InputParameter  Id="item" DataType="string" Value="Admin"/>
+    <InputParameter  Id="ignoreCase" DataType="string" Value="true"/>
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="isAdmin" TransformationClaimType="outputClaim"/>
+  </OutputClaims>         
+</ClaimsTransformation>
+```
+
+- 入力要求:
+    - **inputClaim**: ["reader", "author", "admin"]
+- 入力パラメーター:
+    - **項目**:"Admin"
+    - **ignoreCase**: "true"
+- 出力要求:
+    - **outputClaim**: "true"
+
 

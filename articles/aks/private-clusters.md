@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 1/24/2020
 ms.author: mlearned
-ms.openlocfilehash: a477c2011ff3c6cf1987ed80ef5c19c26abc40f0
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 934dfdb43d6d2e4ccc346b728f0ac4f5febea327
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76713329"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932591"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>プライベート Azure Kubernetes Service クラスターを作成する (プレビュー)
 
@@ -131,7 +131,7 @@ API サーバー エンドポイントには、パブリック IP アドレス�
 * カスタム DNS サーバーを使用するには、この IP 168.63.129.16 に転送する DNS を備えた AD サーバーをデプロイします。
 
 ## <a name="limitations"></a>制限事項 
-* Availability Zones は現在サポートされていません
+* 現在、Availability Zones は米国東部 2 と米国西部 2 のリージョンでのみサポートされています。
 * [Azure Private Link サービスの制限事項][private-link-service]は、プライベートクラスター、Azure プライベート エンドポイント、および仮想ネットワークサービスエンドポイントに適用されます。これらは現在、同一の仮想ネットワークではサポートされていません。
 * プライベート Azure 仮想ネットワーク内のプライベート Azure Container Instances (ACI) をスピンすることは、プライベート クラスター内の仮想ノードではサポートされていません
 * プライベート クラスターですぐに使用できる Azure DevOps 統合はサポートされていません

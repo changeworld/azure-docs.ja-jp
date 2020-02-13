@@ -1,20 +1,18 @@
 ---
 title: PowerShell を使用した Azure 仮想マシンのメンテナンス コントロール
 description: メンテナンス コントロールと PowerShell を使用して Azure VM にメンテナンスを適用するタイミングを制御する方法について学びます。
-services: virtual-machines-linux
 author: cynthn
 ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: fc9cebd24b67e2991e89384e93479beafa889a7a
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 58bdbdfcb82806dfa0b2779967bddf1242a8b702
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964857"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115707"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-azure-powershell"></a>プレビュー:メンテナンス コントロールと Azure PowerShell による更新をコントロールする
 

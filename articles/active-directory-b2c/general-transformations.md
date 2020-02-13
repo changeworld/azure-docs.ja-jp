@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/27/2019
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 639277177bf63e659e5b0ea804eca5e20f956831
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 98d9730168764f0ba683a246f9ac224c13d3bf31
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74948886"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982808"
 ---
 # <a name="general-claims-transformations"></a>一般要求変換
 
@@ -24,14 +24,43 @@ ms.locfileid: "74948886"
 
 この記事では、Azure Active Directory B2C (Azure AD B2C) の Identity Experience Framework スキーマの一般的な要求変換の使用例を示します。 詳細については、「[ClaimsTransformations](claimstransformations.md)」を参照してください。
 
+## <a name="copyclaim"></a>CopyClaim
+
+要求の値を別の要求へコピーします。 どちらの要求も、同じ型から派生している必要があります。
+
+| Item | TransformationClaimType | データ型 | Notes |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | string、int | コピーする要求の種類。 |
+| OutputClaim | outputClaim | string、int | この ClaimsTransformation が呼び出された後に生成される ClaimType。 |
+
+この要求変換を使用して、文字列または数値の要求から別の要求に値をコピーします。 次の例では、externalEmail 要求の値を電子メール要求にコピーします。
+
+```XML
+<ClaimsTransformation Id="CopyEmailAddress" TransformationMethod="CopyClaim"> 
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="externalEmail" TransformationClaimType="inputClaim"/>
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="email" TransformationClaimType="outputClaim"/>
+  </OutputClaims>         
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>例
+
+- 入力要求:
+    - **inputClaim**: bob@contoso.com
+- 出力要求:
+    - **outputClaim**: bob@contoso.com 
+
 ## <a name="doesclaimexist"></a>DoesClaimExist
 
 **inputClaim** が存在するかどうかを確認し、**outputClaim** を true または false に適切に設定します。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim |Any | 存在を確認する必要のある入力要求。 |
-| OutputClaim | outputClaim | ブール値 | この ClaimsTransformation が呼び出された後に生成される ClaimType。 |
+| OutputClaim | outputClaim | boolean | この ClaimsTransformation が呼び出された後に生成される ClaimType。 |
 
 この要求変換を使用して、要求が存在するかどうか、または何らかの値が含まれているかどうかをチェックします。 戻り値はブール値であり、それによって、要求が存在するかどうかが示されます。 次の例では、電子メール アドレスが存在するかどうかを確認します。
 
@@ -53,11 +82,11 @@ ms.locfileid: "74948886"
 - 出力要求:
   - **outputClaim**: true
 
-## <a name="hash"></a>Hash
+## <a name="hash"></a>ハッシュ インデックス
 
 salt と secret を使用して、提供されたプレーン テキストをハッシュします。 使用されるハッシュ アルゴリズムは SHA-256 です。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | plaintext | string | 暗号化される入力要求。 |
 | InputClaim | salt | string | salt パラメーター。 `CreateRandomString` 要求変換を使用して、ランダムな値を作成できます。 |

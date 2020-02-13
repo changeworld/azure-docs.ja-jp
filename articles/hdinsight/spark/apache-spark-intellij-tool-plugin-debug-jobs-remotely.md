@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: 76603642b90bd4d3926e10ce1c5a3c38391362cf
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 393356bd8604f6e7622acd778817681aad31f1f9
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749768"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935019"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Azure Toolkit for IntelliJ を使用して HDInsight 上で VPN を介して Apache Spark アプリケーションをリモートでデバッグする
 
@@ -35,7 +35,7 @@ SSH を使用して [Apache Spark](https://spark.apache.org/) アプリケーシ
 * **IntelliJ IDEA**。 この記事では、バージョン 2017.1 を使用します。 [JetBrains Web サイト](https://www.jetbrains.com/idea/download/)からインストールできます。
 * **Azure Toolkit for IntelliJ のHDInsight ツール**。 IntelliJ 用の HDInsight ツールは、Azure Toolkit for IntelliJ に付属しています。 Azure Toolkit をインストールする手順については、[Azure Toolkit for IntelliJ のインストール](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation)に関するページをご覧ください。
 * **IntelliJ IDEA から Azure サブスクリプションにサインインします**。 「[Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する](apache-spark-intellij-tool-plugin.md)」の手順に従います。
-* **例外の回避策**。 リモート デバッグを行うために Windows コンピューター上で Spark Scala アプリケーションを実行しているときに、例外が発生する場合があります。 この例外は [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) に説明があり、Windows に WinUtils.exe ファイルがないことが原因で発生します。 このエラーを回避するには、[実行可能ファイルをダウンロード](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)して、**C:\WinUtils\bin** のような場所に保存する必要があります。 **HADOOP_HOME** 環境変数を追加し、この変数の値を **C\WinUtils** に設定します。
+* **例外の回避策**。 リモート デバッグを行うために Windows コンピューター上で Spark Scala アプリケーションを実行しているときに、例外が発生する場合があります。 この例外は [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) に説明があり、Windows に WinUtils.exe ファイルがないことが原因で発生します。 このエラーを回避するには、[Winutils.exe](https://github.com/steveloughran/winutils) を **C:\WinUtils\bin** などの場所にダウンロードする必要があります。 **HADOOP_HOME** 環境変数を追加し、この変数の値を **C\WinUtils** に設定します。
 
 ## <a name="step-1-create-an-azure-virtual-network"></a>手順 1:Azure の仮想ネットワークを作成する
 

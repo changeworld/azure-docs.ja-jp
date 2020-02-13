@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 6bf391f22843991bf224539b82037c0e29251e7b
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: fdc98991134e0857d24575d22962a52e43266cbe
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260955"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939238"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Azure Blob Storage のライフサイクルを管理する
 
@@ -226,13 +226,13 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 
 ポリシーはルールのコレクションです。
 
-| パラメーター名 | パラメーターのタイプ | メモ |
+| パラメーター名 | パラメーターのタイプ | Notes |
 |----------------|----------------|-------|
 | `rules`        | ルール オブジェクトの配列 | ポリシーには少なくとも 1 つのルールが必要です。 ポリシーでは最大 100 のルールを定義できます。|
 
 ポリシー内の各ルールには、次のいくつかのパラメーターがあります。
 
-| パラメーター名 | パラメーターのタイプ | メモ | 必須 |
+| パラメーター名 | パラメーターのタイプ | Notes | Required |
 |----------------|----------------|-------|----------|
 | `name`         | String |ルール名には最大 256 の英数字を含めることができます。 ルール名は大文字と小文字が区別されます。  名前は、ポリシー内で一意にする必要があります。 | True |
 | `enabled`      | Boolean | ルールを一時的に無効にすることを許可する省略可能なブール値。 設定されていない場合、既定値は true です。 | False | 
@@ -289,7 +289,7 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 
 フィルターには次のものが含まれます。
 
-| フィルター名 | フィルターの種類 | メモ | 必須 |
+| フィルター名 | フィルターの種類 | Notes | 必須 |
 |-------------|-------------|-------|-------------|
 | blobTypes   | 定義済みの列挙型の値の配列。 | 現在のリリースでは `blockBlob` をサポートしています。 | はい |
 | prefixMatch | プレフィックスを照合する文字列の配列。 各ルールで最大 10 個のプレフィックスを定義できます。 プレフィックス文字列はコンテナー名で始まる必要があります。 たとえば、`https://myaccount.blob.core.windows.net/container1/foo/...` の下にあるすべての BLOB をルールに一致させたい場合、prefixMatch は `container1/foo` です。 | prefixMatch を定義していない場合、ルールはストレージ アカウント内のすべての BLOB に適用されます。  | いいえ |
@@ -311,7 +311,7 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 
 実行条件は、古さに基づいています。 ベース BLOB では、最終変更時刻を使用して古さが追跡されます。BLOB スナップショットでは、スナップショットの作成時刻を使用して古さが追跡されます。
 
-| アクションの実行条件             | 条件値                          | [説明]                             |
+| アクションの実行条件             | 条件値                          | 説明                             |
 |----------------------------------|------------------------------------------|-----------------------------------------|
 | daysAfterModificationGreaterThan | 古さを日数で示す整数値 | ベース BLOB のアクションの条件     |
 | daysAfterCreationGreaterThan     | 古さを日数で示す整数値 | BLOB スナップショットのアクションの条件 |
@@ -348,9 +348,9 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 }
 ```
 
-### <a name="archive-data-at-ingest"></a>取り込み時にデータをアーカイブする
+### <a name="archive-data-after-ingest"></a>取り込み後にデータをアーカイブする
 
-また、クラウド内でアイドル状態のままとなり、格納されてからはほとんどアクセスされないデータもあります。 次のライフサイクル ポリシーは、取り込まれたデータをアーカイブするように構成されています。 この例では、コンテナー `archivecontainer` 内のストレージ アカウントのブロック BLOB をアーカイブ層に移行します。 この移行は、最終変更時刻の 0 日後に BLOB を処理することによって実現されます。
+また、クラウド内でアイドル状態のままとなり、格納されてからはほとんどアクセスされないデータもあります。 次のライフサイクル ポリシーは、取り込み直後にデータをアーカイブするように構成されます。 この例では、コンテナー `archivecontainer` 内のストレージ アカウントのブロック BLOB をアーカイブ層に移行します。 この移行は、最終変更時刻の 0 日後に BLOB を処理することによって実現されます。
 
 > [!NOTE] 
 > より効率的な方法として、BLOB をアーカイブ層に直接アップロードすることをお勧めします。 [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) または [PutBlockList](https://docs.microsoft.com/rest/api/storageservices/put-block-list) の x-ms-acess-tier ヘッダーを REST バージョン 2018-11-09 以降または最新の BLOB ストレージ クライアント ライブラリと使用できます。 

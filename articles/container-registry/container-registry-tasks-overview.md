@@ -3,12 +3,12 @@ title: ACR タスクの概要
 description: クラウド内でのコンテナー イメージの安全で自動化されたビルド、管理、修正プログラム適用を提供する、Azure Container Registry の機能スイートである ACR タスクの概要。
 ms.topic: article
 ms.date: 09/05/2019
-ms.openlocfilehash: 96997f963f0bcb319d5318e2dd88a6e1e21fb36b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f8ab3c3bd259f83a61d0b030a49e158ccd6e2a69
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74840767"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938874"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>ACR タスクでコンテナー イメージのビルドとメンテナンスを自動化する
 
@@ -58,13 +58,13 @@ ACR タスクでは、Git リポジトリをタスクのコンテキストとし
 
 | トリガー | 既定で有効 |
 | ------- | ------------------ |
-| コミット | はい |
+| Commit | はい |
 | プル要求 | いいえ |
 
 ソース コード更新トリガーを構成するには、公開または非公開 GitHub または Azure DevOps リポジトリに Webhook を設定するアクセス トークン (PAT) をタスクに与える必要があります。
 
 > [!NOTE]
-> 現在、GitHub Enterprise リポジトリにおけるコミットやプル要求トリガーは、Azure Container Registry (ACR) タスクではサポートされていません。
+> 現在、GitHub Enterprise リポジトリにおける commit や pull request トリガーは、ACR タスクではサポートされません。
 
 ソース コードのコミット時にビルドをトリガーする方法については、[Azure Container Registry タスクを使用してコンテナー イメージのビルドを自動化する](container-registry-tutorial-build-task.md)ことに関する ACR タスクの 2 つ目のチュートリアルを参照してください。
 
@@ -122,6 +122,7 @@ OS とフレームワークの修正プログラムの適用については、[A
 | GitHub master ブランチ | 公開または非公開 GitHub リポジトリのマスター（または他のデフォルト）ブランチ内のファイル。  | `https://github.com/gituser/myapp-repo.git` |
 | GitHub ブランチ | 公開または非公開 GitHub リポジトリの特定のブランチ。| `https://github.com/gituser/myapp-repo.git#mybranch` |
 | GitHub のサブフォルダー | 公開または非公開 GitHub リポジトリのサブフォルダー内のファイル。 例では、ブランチとサブフォルダーの指定の組み合わせが示されています。 | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| GitHub コミット | 公開または非公開 GitHub リポジトリの特定のコミット。 例では、コミット ハッシュ (SHA) とサブフォルダーの指定の組み合わせが示されています。 | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
 | Azure DevOps サブフォルダー | 公開または非公開 Azure リポジトリのサブフォルダー内のファイル。 例では、ブランチとサブフォルダーの指定の組み合わせが示されています。 | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | リモート tarball | リモート Web サーバー上の圧縮されたアーカイブ内のファイル。 | `http://remoteserver/myapp.tar.gz` |
 
@@ -132,7 +133,7 @@ OS とフレームワークの修正プログラムの適用については、[A
 
 既定では、ACR タスクによって Linux OS と amd64 アーキテクチャ用のイメージが構築されます。 他のアーキテクチャ用の Windows イメージまたは Linux イメージを構築するための `--platform` タグを指定します。 OS と、必要に応じて OS/アーキテクチャ形式 (`--platform Linux/arm` など) でサポートされているアーキテクチャを指定します。 ARM アーキテクチャの場合は、必要に応じて、次のように OS/アーキテクチャ/バリアント形式でバリアントを指定します (例: `--platform Linux/arm64/v8`)。
 
-| OS | アーキテクチャ|
+| OS | Architecture|
 | --- | ------- | 
 | Linux | amd64<br/>arm<br/>arm64<br/>386 |
 | Windows | amd64 |
@@ -147,7 +148,7 @@ OS とフレームワークの修正プログラムの適用については、[A
 az acr task update-run --registry myregistry --run-id cf11 --no-archive false
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 クラウドでコンテナー イメージのビルドと保守管理を自動化する準備ができたら、[ACR タスクのチュートリアル シリーズ](container-registry-tutorial-quick-task.md)をご覧ください。
 

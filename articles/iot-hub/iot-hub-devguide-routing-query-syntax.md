@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 859b15954f64f8b481f6b86c04fc28b542599f02
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 04db62f402c25dd4a04281047f684dc23d41a502
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890496"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934632"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub メッセージ ルーティングのクエリ構文
 
@@ -50,7 +50,7 @@ IoT ハブでは、各種プロトコルにおける相互運用性を確保す�
 
 システム プロパティは、メッセージのコンテンツとソースを特定するのに役立ちます。 
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | contentType | string | ユーザーはメッセージのコンテンツの種類を指定します。 メッセージ本文に基づいてクエリを実行するには、この値を application/json に設定する必要があります。 |
 | contentEncoding | string | ユーザーはメッセージのエンコードの種類を指定します。 contentType が application/json に設定されている場合に使用できる値は、UTF-8、UTF-16、UTF-32 です。 |
@@ -62,11 +62,11 @@ IoT ハブでは、各種プロトコルにおける相互運用性を確保す�
 
 ### <a name="application-properties"></a>Application properties
 
-アプリケーション プロパティは、メッセージに追加できるユーザー定義の文字列です。 これらのフィールドは省略できます。  
+アプリケーション プロパティは、メッセージに追加できるユーザー定義の文字列です。 これらのフィールドは省略可能です。  
 
 ### <a name="query-expressions"></a>クエリ式
 
-メッセージ システム プロパティに基づくクエリには、前に `$` 記号を付ける必要があります。 アプリケーション プロパティに基づくクエリは、それらの名前を使用してアクセスされるので、前に `$` 記号を付ける必要がありません。 アプリケーション プロパティ名の先頭に `$` がある場合は、IoT Hub によってそのアプリケーション プロパティ名がシステム プロパティ内で検索されますが、見つからないため、アプリケーション プロパティ内が検索されることになります。 例: 
+メッセージ システム プロパティに基づくクエリには、前に `$` 記号を付ける必要があります。 アプリケーション プロパティに基づくクエリは、それらの名前を使用してアクセスされるので、前に `$` 記号を付ける必要がありません。 アプリケーション プロパティ名の先頭に `$` がある場合は、IoT Hub によってそのアプリケーション プロパティ名がシステム プロパティ内で検索されますが、見つからないため、アプリケーション プロパティ内が検索されることになります。 次に例を示します。 
 
 システム プロパティ contentEncoding に基づいてクエリを実行するには 
 
@@ -163,7 +163,7 @@ $body.Weather.Temperature = 50 AND processingPath = 'hot'
 
 ## <a name="message-routing-query-based-on-device-twin"></a>デバイス ツインに基づいたメッセージ ルーティング クエリ 
 
-メッセージ ルーティングでは、JSON オブジェクトである[デバイス ツイン](iot-hub-devguide-device-twins.md)のタグとプロパティに基づいてクエリを実行できます。 モジュール ツインでのクエリ実行はサポートされていません。 デバイス ツインのタグとプロパティのサンプルを以下に示します。
+メッセージ ルーティングでは、JSON オブジェクトである[デバイス ツイン](iot-hub-devguide-device-twins.md)のタグとプロパティに基づいてクエリを実行できます。 モジュール ツインでのクエリ実行もサポートされています。 デバイス ツインのタグとプロパティのサンプルを以下に示します。
 
 ```JSON
 {
@@ -196,7 +196,7 @@ $body.Weather.Temperature = 50 AND processingPath = 'hot'
 
 ### <a name="query-expressions"></a>クエリ式
 
-メッセージ本文に基づくクエリには、前に `$twin` を付ける必要があります。 さらにクエリ式では、ツインのタグまたはプロパティの参照を、本文の参照、メッセージ システム プロパティの参照、メッセージ アプリケーション プロパティの参照と組み合わせることもできます。 クエリでは大文字と小文字が区別されないため、タグとプロパティには一意の名前を使用することをお勧めします。 また、`twin`、`$twin`、`body`、`$body` をプロパティ名として使用することも避けてください。 たとえば、以下はすべて有効なクエリ式です。 
+メッセージ本文に基づくクエリには、前に `$twin` を付ける必要があります。 さらにクエリ式では、ツインのタグまたはプロパティの参照を、本文の参照、メッセージ システム プロパティの参照、メッセージ アプリケーション プロパティの参照と組み合わせることもできます。 クエリでは大文字と小文字が区別されないため、タグとプロパティには一意の名前を使用することをお勧めします。 これは、デバイス ツインとモジュール ツインの両方に適用されます。 また、`twin`、`$twin`、`body`、`$body` をプロパティ名として使用することも避けてください。 たとえば、以下はすべて有効なクエリ式です。 
 
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'
@@ -210,7 +210,7 @@ $body.Weather.Temperature = 50 AND $twin.properties.desired.telemetryConfig.send
 $twin.tags.deploymentLocation.floor = 1 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)について確認する。
 * [メッセージ ルーティングのチュートリアル](tutorial-routing.md)を試す。

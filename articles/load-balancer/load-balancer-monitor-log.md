@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: allensu
-ms.openlocfilehash: 7ed58201fa7aa1e608cba6d64ac95740cf9a60dc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0a21af683d9fa7849d3e96c545983c9f40a8d4c6
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965917"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935330"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>パブリック Basic ロード バランサーの Azure Monitor ログ
 
@@ -38,7 +38,7 @@ Azure の各種ログを使用して、Basic Load Balancer の管理やトラブ
 
 アクティビティ ログは、Resource Manager のすべてのリソースで自動的に有効になります。 イベント ログと正常性プローブ ログでデータの収集を開始するには、これらのログを有効にします。 ログ記録を有効にするには、次の手順に従います。
 
-[Azure portal](https://portal.azure.com) にサインインする ロード バランサーをまだ作成していない場合は、先に進む前に [ロード バランサーを作成](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) します。
+[Azure portal](https://portal.azure.com) にサインインします。 ロード バランサーをまだ作成していない場合は、先に進む前に [ロード バランサーを作成](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) します。
 
 1. ポータルで、 **[リソース グループ]** をクリックします。
 2. ロード バランサーがある **\<resource-group-name>** を選択します。
@@ -156,11 +156,11 @@ JSON 形式の出力で *eventname* プロパティを見ると、ロード バ�
 
 JSON 形式の出力でプロパティ フィールドを見れば、プローブの正常性状態の基本的な情報がわかります。 *dipDownCount* プロパティは、プローブの応答の失敗によりネットワーク トラフィックを受信していないバックエンド上のインスタンスの合計数を示します。
 
-### <a name="view-and-analyze-the-audit-log"></a>監査ログの表示と分析
+### <a name="view-and-analyze-the-activity-log"></a>アクティビティ ログの表示と分析
 
-次のいずれかの方法を使用して、監査ログのデータを表示および分析できます。
+次のいずれかの方法を使用して、アクティビティ ログのデータを表示および分析できます。
 
-* **Azure Tools:** Azure PowerShell、Azure コマンド ライン インターフェイス (CLI)、Azure REST API、または Azure portal を使用して、監査ログから情報を取得します。 それぞれの方法の詳細な手順については、「 [リソース マネージャーの監査操作](../azure-resource-manager/management/view-activity-logs.md) 」を参照してください。
+* **Azure Tools:** Azure PowerShell、Azure コマンド ライン インターフェイス (CLI)、Azure REST API、または Azure portal を使用して、アクティビティ ログから情報を取得します。 それぞれの方法の詳細な手順については、「 [リソース マネージャーの監査操作](../azure-resource-manager/management/view-activity-logs.md) 」を参照してください。
 * **Power BI:** [Power BI](https:// .microsoft.com/pricing) アカウントをまだ所有していない場合は、無料で試すことができます。 [Power BI 用 Azure 監査ログ コンテンツ パック](https:// .microsoft.com/documentation/ -content-pack-azure-audit-logs)を使用すると、構成済みのダッシュボードでデータを分析できます。また、要件に合わせてビューをカスタマイズすることもできます。
 
 ### <a name="view-and-analyze-the-health-probe-and-event-log"></a>正常性プローブ ログとイベント ログの表示と分析

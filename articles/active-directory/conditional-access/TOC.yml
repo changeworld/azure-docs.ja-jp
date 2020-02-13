@@ -19,20 +19,30 @@
       href: concept-conditional-access-policy-common.md
     - name: 条件付きアクセス ポリシーのコンポーネント
       href: concept-conditional-access-policies.md
-    - name: クラウド アプリとアクション
-      href: concept-conditional-access-cloud-apps.md
-    - name: 条件
-      href: conditions.md
-    - name: 場所の条件
-      href: location-condition.md
-    - name: コントロール
-      href: controls.md
+    - name: 代入
+      items:
+        - name: ユーザーとグループ
+          href: concept-conditional-access-users-groups.md
+        - name: クラウド アプリまたはアクション
+          href: concept-conditional-access-cloud-apps.md
+        - name: 条件
+          href: concept-conditional-access-conditions.md
+    - name: アクセス制御
+      items:
+        - name: Grant
+          href: concept-conditional-access-grant.md
+        - name: Session
+          href: concept-conditional-access-session.md
     - name: レポート専用モード
       href: concept-conditional-access-report-only.md
     - name: サービスの依存関係
       href: service-dependencies.md
+    - name: 場所の条件
+      href: location-condition.md
     - name: What if ツール
       href: what-if-tool.md
+    - name: コントロール
+      href: controls.md
     - name: クラシック ポリシーの移行
       href: policy-migration.md
     - name: ベースライン保護ポリシー
@@ -84,10 +94,6 @@
       items:
         - name: What If ツールを使用したトラブルシューティング
           href: troubleshoot-conditional-access-what-if.md
-- name: リファレンス
-  items:
-    - name: テクニカル リファレンス
-      href: technical-reference.md
 - name: リソース
   items:
     - name: Azure フィードバック フォーラム

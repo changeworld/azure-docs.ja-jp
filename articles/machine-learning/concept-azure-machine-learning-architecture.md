@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8e1f144fdf94df445fb64b9b489cba1e9998f381
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5f5522201534a54f5d132257553469eed5addab3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845620"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169868"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning のしくみ:アーキテクチャと概念
 
@@ -84,9 +84,6 @@ Azure Machine Learning 用のこれらのツールを使用します。
 
 ### <a name="compute-instance"></a>コンピューティング インスタンス (プレビュー)
 
-> [!NOTE]
-> コンピューティング インスタンスは、**米国中北部**、** 米国東部 2**、**北ヨーロッパ**、または**英国南部**のワークスペースにのみ使用できます。
->ワークスペースが他のリージョンにある場合は、代わりに [Notebook VM](concept-compute-instance.md#notebookvm) を引き続き作成して使用することができます。 
 
 **Azure Machine Learning コンピューティング インスタンス** (旧称 Notebook VM) は、機械学習用にインストールされた複数のツールと環境を含む、フル マネージドのクラウドベースのワークステーションです。 コンピューティング インスタンスは、トレーニング ジョブと推論ジョブのコンピューティング ターゲットとして使用できます。 大規模なタスクの場合、マルチノード スケーリング機能を備える [Azure Machine Learning コンピューティング クラスター](how-to-set-up-training-targets.md#amlcompute)は、コンピューティング ターゲットの選択肢として適しています。
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5846934a8ad8455ca375b4bc54fc46d45aba1cd
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: aeb2e98ad9bbd35f3ec507e36e958c5ce6ad2198
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379975"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185878"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>What If ツールを使用した条件付きアクセスのトラブルシューティング
 
@@ -30,7 +30,7 @@ ms.locfileid: "74379975"
 
 **What If** ツールは、特定のユーザーに適用されるポリシーをすばやく判断する方法も提供します。 この情報は、たとえば問題をトラブルシューティングする必要がある場合に使用できます。    
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 
 **条件付きアクセスの What If ツール**では、シミュレートするサインイン シナリオの設定を最初に構成する必要があります。 これらの設定には、以下が含まれます。
 
@@ -72,11 +72,11 @@ IP アドレスは、[場所の条件](location-condition.md)を模倣するた�
 
 ### <a name="device-platforms"></a>デバイス プラットフォーム
 
-この設定は、[デバイス プラットフォームの条件](conditions.md#device-platforms)を模倣し、 **[すべてのプラットフォーム (サポート対象外を含む)]** に相当します。 
+この設定は、[デバイス プラットフォームの条件](concept-conditional-access-conditions.md#device-platforms)を模倣し、 **[すべてのプラットフォーム (サポート対象外を含む)]** に相当します。 
 
 ### <a name="client-apps"></a>クライアント アプリ
 
-この設定は、[クライアント アプリの条件](conditions.md#client-apps)を模倣します。
+この設定は、[クライアント アプリの条件](concept-conditional-access-conditions.md#client-apps-preview)を模倣します。
 既定では、この設定は、 **[ブラウザー]** または **[モバイル アプリとデスクトップ クライアント]** のどちらかが選択されているか両方が選択されているすべてのポリシーを評価します。 **[Exchange ActiveSync (EAS)]** を適用するポリシーも検出されます。 以下を選択することで、この設定を絞り込むことができます。
 
 - 少なくとも  **[ブラウザー]** が選択されているすべてのポリシーのみを評価するには **[ブラウザー]** を選択。 
@@ -84,7 +84,7 @@ IP アドレスは、[場所の条件](location-condition.md)を模倣するた�
 
 ### <a name="sign-in-risk"></a>サインイン リスク
 
-この設定は、[サインイン リスクの条件](conditions.md#sign-in-risk)を模倣します。   
+この設定は、[サインイン リスクの条件](concept-conditional-access-conditions.md#sign-in-risk)を模倣します。   
 
 ## <a name="evaluation"></a>評価 
 
@@ -102,7 +102,7 @@ IP アドレスは、[場所の条件](location-condition.md)を模倣するた�
 
 ユーザーに適用されないポリシーの一覧では、これらのポリシーが適用されない理由も確認できます。 表示されている各ポリシーの理由は、満たされていない最初の条件を表します。 ポリシーは、これ以上評価されないために無効なポリシーであるという理由で、適用されない場合があります。   
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 条件付きアクセス ポリシーの構成方法を把握するには、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](app-based-mfa.md)」を参照してください。
 - 環境に適用する条件付きアクセス ポリシーを構成する準備ができたら、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)」を参照してください。 

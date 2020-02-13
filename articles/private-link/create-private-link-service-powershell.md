@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: c4395628ac31dd69a4978f7f68ecc24ca1e15cfb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 225ae9d07cc6df2fa809e250083ee6007ab2f945
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453117"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932077"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Azure PowerShell を使用してプライベート リンク サービスを作成する
 この記事では、Azure PowerShell を使用して Azure でプライベート リンク サービスを作成する方法について説明します。
@@ -109,7 +109,7 @@ $privateLinkService = New-AzPrivateLinkService `
 $pls = Get-AzPrivateLinkService -Name $plsName -ResourceGroupName $rgName 
 ```
 
-この段階で、プライベート リンク サービスが正常に作成され、トラフィックを受信する準備が整いました。 上の例では、PowerShell を使用したプライベート リンク サービスの作成を示すことのみを目的としていることに注意してください。  ロード バランサーのバックエンド プールまたはバックエンド プール上のアプリケーションは、トラフィックをリッスンするようには構成されていません。 エンド ツー エンドのトラフィック フローを確認する場合は、お使いの Standard Load Balancer の背後にアプリケーションを構成することを強くお勧めします。 
+この段階で、プライベート リンク サービスが正常に作成され、トラフィックを受信する準備が整いました。 上の例では、PowerShell を使用したプライベート リンク サービスの作成を示すことのみを目的としていることに注意してください。  ロード バランサーのバックエンド プールまたはバックエンド プール上のアプリケーションは、トラフィックをリッスンするようには構成されていません。 エンド ツー エンドのトラフィック フローを確認する予定なら、お使いの Standard Load Balancer の背後にアプリケーションを構成することを強くお勧めします。 
 
 次に、PowerShell を使用して、異なる VNet のプライベート エンドポイントにこのサービスをマップする方法について説明します。 ここでも、例は、プライベート エンドポイントの作成と上記で作成したプライベート リンク サービスへの接続のみを示しています。 シナリオを構築するために、仮想ネットワークに仮想マシンを作成して、プライベート エンドポイントに対してトラフィックを送受信できます。 
 

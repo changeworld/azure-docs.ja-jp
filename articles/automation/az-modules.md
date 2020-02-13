@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8c832982a5525b0296155197d89684932cebaa95
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfbf54c19aef00cbda886a4531797cda7ef3a191
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418839"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986106"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Azure Automation での Az モジュールのサポート
 
@@ -18,7 +18,7 @@ Azure Automation では、Runbook で [Azure Powershell の Az モジュール](
 
 ## <a name="considerations"></a>考慮事項
 
-Azure Automation で Az モジュールを使用するときは、考慮することが多くあります。 Runbook とモジュールは、Automation アカウントの上位レベルのソリューションで使用できます。 Runbook を編集したり、モジュールをアップグレードしたりすると、Runbook で問題が発生する可能性があります。 新しい `Az` モジュールをインポートする前に、別の Automation アカウントですべての Runbook とソリューションを十分にテストする必要があります。 モジュールを変更すると、[起動/停止](automation-solution-vm-management.md)ソリューションに悪影響を及ぼす可能性があります。 ソリューションが含まれる Automation アカウントでは、モジュールと Runbook を変更しないことをお勧めします。 この動作は、Az モジュールに固有のものではありません。 Automation アカウントで何らかの変更を行うときは、この動作を考慮する必要があります。
+Azure Automation で Az モジュールを使用するときは、考慮することが多くあります。 Runbook とモジュールは、Automation アカウントの上位レベルのソリューションで使用できます。 Runbook を編集したり、モジュールをアップグレードしたりすると、Runbook で問題が発生する可能性があります。 新しい `Az` モジュールをインポートする前に、別の Automation アカウントですべての Runbook とソリューションを十分にテストする必要があります。 モジュールを変更すると、[起動/停止](automation-solution-vm-management.md)ソリューションに悪影響を及ぼす可能性があります。 ソリューションが含まれる Automation アカウントでは、モジュールと Runbook の変更はお勧めしません。 この動作は、Az モジュールに固有のものではありません。 Automation アカウントで何らかの変更を行うときは、この動作を考慮する必要があります。
 
 Automation アカウントに `Az` モジュールをインポートしても、Runbook で使用される PowerShell セッションにモジュールが自動的にインポートされることはありません。 モジュールは、次の状況で PowerShell セッションにインポートされます。
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 342ec46aabafec975d780aa03fe75d7e3cf50497
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2ad8894078a15bf37a5383cdff3721f4bf7be910
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424964"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186224"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスによるアクセス制御の概要
 
@@ -85,18 +85,18 @@ ms.locfileid: "75424964"
 従業員は個人的な作業と業務上の作業のどちらにもモバイル デバイスを使用します。このため、会社のデータにアクセスするデバイスが自社で管理しているかどうかにかかわらず、会社のデータを保護できる必要があります。
 [Intune のアプリ保護ポリシー](https://docs.microsoft.com/intune/app-protection-policy)を使うと、使用しているモバイル デバイス管理 (MDM) ソリューションを問わず、会社のデータを守ることができます。
 
-承認されたクライアント アプリを使用する方法では、クラウド アプリにアクセスしようとするクライアント アプリに対して [Intune のアプリ保護ポリシー](https://docs.microsoft.com/intune/app-protection-policy) のサポートを要求できます。 たとえば、Exchange Online に対するアクセスを Outlook アプリのみに制限することができます。 承認されたクライアント アプリを要求する条件付きアクセス ポリシーは、[アプリベースの条件付きアクセス ポリシー](app-based-conditional-access.md)とも呼ばれます。 サポートされている承認されたクライアント アプリの一覧は、[承認されたクライアント アプリの要件](technical-reference.md#approved-client-app-requirement)に関するセクションを参照してください。
+承認されたクライアント アプリを使用する方法では、クラウド アプリにアクセスしようとするクライアント アプリに対して [Intune のアプリ保護ポリシー](https://docs.microsoft.com/intune/app-protection-policy) のサポートを要求できます。 たとえば、Exchange Online に対するアクセスを Outlook アプリのみに制限することができます。 承認されたクライアント アプリを要求する条件付きアクセス ポリシーは、[アプリベースの条件付きアクセス ポリシー](app-based-conditional-access.md)とも呼ばれます。 サポートされている承認されたクライアント アプリの一覧は、[承認されたクライアント アプリの要件](concept-conditional-access-grant.md#require-approved-client-app)に関するセクションを参照してください。
 
 ### <a name="app-protection-policy-preview"></a>アプリ保護ポリシー (プレビュー)
 
 従業員は個人的な作業と業務上の作業のどちらにもモバイル デバイスを使用します。このため、会社のデータにアクセスするデバイスが自社で管理しているかどうかにかかわらず、会社のデータを保護できる必要があります。
 [Intune のアプリ保護ポリシー](https://docs.microsoft.com/intune/app-protection-policy)を使うと、使用しているモバイル デバイス管理 (MDM) ソリューションを問わず、会社のデータを守ることができます。
 
-アプリ保護ポリシーによって、[Intune アプリ保護ポリシー](https://docs.microsoft.com/intune/app-protection-policy)を受け取ったことを Azure AD に報告したクライアント アプリケーションにアクセスを制限できます。 たとえば、Exchange Online に対するアクセスを、Intune のアプリ保護ポリシーがある Outlook アプリのみに制限することができます。 アプリ保護ポリシーを必要とする条件付きアクセス ポリシーは、[アプリ保護ベースの条件付きアクセス ポリシー](app-protection-based-conditional-access.md)とも呼ばれます。 
+アプリ保護ポリシーによって、[Intune アプリ保護ポリシー](https://docs.microsoft.com/intune/app-protection-policy)を受け取ったことを Azure AD に報告したクライアント アプリケーションにアクセスを制限できます。 たとえば、Exchange Online に対するアクセスを、Intune のアプリ保護ポリシーがある Outlook アプリのみに制限することができます。 アプリ保護ポリシーを必要とする条件付きアクセス ポリシーは、[アプリ保護ベースの条件付きアクセス ポリシー](concept-conditional-access-session.md#application-enforced-restrictions)とも呼ばれます。 
 
 アプリケーションをポリシー保護とマークするには、その前にデバイスを Azure AD に登録する必要があります。
 
-サポートされているポリシー保護されたクライアント アプリの一覧については、[アプリの保護ポリシーの要件](technical-reference.md#app-protection-policy-requirement)に関するセクションを参照してください。
+サポートされているポリシー保護されたクライアント アプリの一覧については、[アプリの保護ポリシーの要件](concept-conditional-access-session.md#application-enforced-restrictions)に関するセクションを参照してください。
 
 ### <a name="terms-of-use"></a>使用条件
 

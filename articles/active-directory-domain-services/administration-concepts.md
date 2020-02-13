@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/08/2019
+ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: f239bab48e732755361fe734fdc24b37d3823c63
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 682935fa2324b8de4992ab2f90c7f71e05c4f8ac
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481021"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931562"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services でのユーザー アカウント、パスワード、および管理の管理の概念
 
@@ -74,7 +74,37 @@ Azure AD DS の "*リソース*" フォレストでは、ユーザーは自身�
 
 Azure AD DS 内のフォレストの種類の詳細については、[リソース フォレストとは何か][concepts-forest]および[フォレストの信頼が Azure AD DS で機能する方法][concepts-trust]に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="azure-ad-ds-skus"></a>Azure AD DS SKU
+
+Azure AD DS では、使用可能なパフォーマンスと機能は SKU に基づいています。 マネージド ドメインを作成するときに SKU を選択する必要があり、マネージド ドメインのデプロイ後にビジネス要件が変更されたときに SKU を切り替えることができます。 次の表に、使用可能な SKU とそれらの違いを示します。
+
+| SKU 名   | オブジェクトの最大数 | バックアップ頻度 | 送信フォレストの信頼の最大数 |
+|------------|----------------------|------------------|----|
+| Standard   | 無制限            | 7 日ごと     | 0  |
+| Enterprise | 無制限            | 3 日ごと     | 5  |
+| Premium    | 無制限            | 毎日            | 10 |
+
+これらの Azure AD DS SKU の前は、Azure AD DS マネージド ドメイン内のオブジェクト (ユーザーアカウントとコンピューターアカウント) の数に基づく課金モデルが使用されていました。 ドメイン ドメイン内のオブジェクトの数に基づいて変化する価格設定はもう存在しません。
+
+詳細については、「[Azure AD DS の価格][pricing]」ページをご覧ください。
+
+### <a name="managed-domain-performance"></a>マネージド ドメインのパフォーマンス
+
+ドメインのパフォーマンスは、アプリケーションに対する認証の実装方法によって異なります。 追加のコンピューティング リソースにより、クエリの応答時間が短縮され、同期操作にかかる時間が短縮される場合があります。 SKU レベルが増加すると、マネージド ドメインで使用できるコンピューティング リソースが増加します。 アプリケーションのパフォーマンスを監視し、必要なリソースを計画してください。
+
+ビジネスまたはアプリケーションの需要が変化し、Azure AD DS マネージド ドメイン用の追加のコンピューティング パワーが必要な場合は、別の SKU に切り替えることができます。
+
+### <a name="backup-frequency"></a>バックアップ頻度
+
+バックアップの頻度によって、マネージド ドメインのスナップショットが取得される頻度が決まります。 バックアップは、Azure プラットフォームによって管理される自動化されたプロセスです。 マネージド ドメインに問題が発生した場合は、Azure サポートによるバックアップからの復元の支援を受けることができます。 同期は Azure AD "*から*" 一方向で行われるため、Azure AD DS マネージド ドメインで問題が発生しても Azure AD またはオンプレミスの AD DS 環境や機能には影響しません。
+
+SKU レベルが増加するにつれて、それらのバックアップ スナップショットの頻度が増加します。 ビジネス要件と目標復旧時点 (RPO) を確認して、マネージド ドメインで必要なバックアップの頻度を決定します。 ビジネス要件やアプリケーション要件が変更され、頻繁にバックアップが必要になった場合は、別の SKU に切り替えることができます。
+
+### <a name="outbound-forests"></a>送信フォレスト
+
+前のセクションでは、Azure AD DS マネージド ドメインからオンプレミスの AD DS 環境 への一方向の送信フォレストの信頼 (現在プレビュー段階) について詳しく説明しています。 Azure AD DS マネージド ドメインのために作成できるフォレストの信頼の最大数は、SKU によって決まります。 ビジネスとアプリケーションの要件を確認して、実際に必要な信頼の数を決定し、適切な Azure AD DS SKU を選択します。 ここでも、ビジネス要件が変更され、追加のフォレストの信頼を作成する必要がある場合は、別の SKU に切り替えることができます。
+
+## <a name="next-steps"></a>次のステップ
 
 まず初めに、[Azure AD DS マネージド ドメインを作成しましょう][create-instance]。
 
@@ -87,3 +117,6 @@ Azure AD DS 内のフォレストの種類の詳細については、[リソー�
 [tutorial-create-instance-advanced]: tutorial-create-instance-advanced.md
 [concepts-forest]: concepts-resource-forest.md
 [concepts-trust]: concepts-forest-trust.md
+
+<!-- EXTERNAL LINKS -->
+[pricing]: https://azure.microsoft.com/pricing/details/active-directory-ds/

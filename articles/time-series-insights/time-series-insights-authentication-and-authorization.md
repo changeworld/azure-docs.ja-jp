@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/09/2019
+ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 960eb9b48a158358a076202db0d435feb918a6c8
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: ff5f7a80e2dcedb1795bae14ee9140c2842303a5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863480"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984590"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API の認証と承認
 
@@ -93,7 +93,7 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
 
    1. トークンは、アプリケーションが Time Series Insights API を呼び出すときに、`Authorization` ヘッダーで渡すことができます。
 
-* また、開発者は MSAL を使用して認証を選択することができます。 詳細については、[MSAL への移行](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration) に関するページを参照してください。 
+* また、開発者は MSAL を使用して認証を選択することができます。 詳細については、[MSAL への移行](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration)に関するページを確認し、「[C# を使用して Azure Time Series Insights 環境の GA 参照データを管理する](time-series-insights-manage-reference-data-csharp.md)」の記事を参照してください。 
 
 ## <a name="common-headers-and-parameters"></a>一般的なヘッダーとパラメーター
 
@@ -113,7 +113,7 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
 
 必要な要求ヘッダーを以下に示します。
 
-| 必要な要求ヘッダー | [説明] |
+| 必要な要求ヘッダー | 説明 |
 | --- | --- |
 | 承認 | Time Series Insights で認証するには、有効な OAuth 2.0 ベアラートークンを **Authorization** ヘッダーに渡す必要があります。 | 
 
@@ -124,7 +124,7 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
 
 省略可能な要求ヘッダーを以下に示します。
 
-| 省略可能な要求ヘッダー | [説明] |
+| 省略可能な要求ヘッダー | 説明 |
 | --- | --- |
 | Content-type | `application/json` のみがサポートされています。 |
 | x-ms-client-request-id | クライアント要求 ID。 サービスでは、この値です。 これにより、サービスでは、サービス間の操作を追跡できるようになります。 |
@@ -133,7 +133,7 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
 
 省略可能ですが、推奨される応答ヘッダーを以下に示します。
 
-| 応答ヘッダー | [説明] |
+| 応答ヘッダー | 説明 |
 | --- | --- |
 | Content-type | サポートされるのは `application/json` のみです。 |
 | x-ms-request-id | サーバーで生成された要求 ID。 要求の調査についての Microsoft への問い合わせに使用できます。 |
@@ -154,7 +154,7 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
 
 省略可能な URL クエリ文字列パラメーターには、HTTP 要求の実行時間のタイムアウト設定が含まれます。
 
-| 省略可能なクエリパラメーター | [説明] | Version |
+| 省略可能なクエリパラメーター | 説明 | Version |
 | --- |  --- | --- |
 | `timeout=<timeout>` | HTTP 要求実行のサーバー側のタイムアウト。 [環境イベントの取得](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) API と[環境集計の取得](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) API にのみ適用できます。 タイムアウト値は、`"PT20S"` など、ISO 8601 の期間の形式で指定され、その範囲は `1-30 s` である必要があります。 既定値は `30 s` です。 | GA |
 | `storeType=<storeType>` | ウォームストアが有効になっているプレビュー環境では、`WarmStore` または `ColdStore`のいずれかでクエリを実行できます。 クエリ内のこのパラメーターは、クエリを実行する必要があるストアを定義します。 定義されていない場合は、コールドストアでクエリが実行されます。 ウォームストアに対してクエリを実行するには、**storeType** を `WarmStore`に設定する必要があります。 定義されていない場合は、コールドストアに対してクエリが実行されます。 | プレビュー |

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5a15b3b9e51772d8c7e5312968fecb180069e2a7
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4cc3b1789ef2f7ef44e5421cbacb5a93c2a0a1ff
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911244"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933603"
 ---
 # <a name="add-html-markers-to-the-map"></a>マップに HTML マーカーを追加する
 
@@ -33,7 +33,7 @@ ms.locfileid: "75911244"
 次のコードでは、HTML マーカーを作成し、color プロパティを "DodgerBlue" に、text プロパティを "10" に設定しています。 ポップアップがマーカーにアタッチされ、ポップアップの表示を切り替えるために `click` イベントが使用されます。
 
 ```javascript
-//Create a HTML marker and add it to the map.
+//Create an HTML marker and add it to the map.
 var marker = new atlas.HtmlMarker({
     color: 'DodgerBlue',
     text: '10',

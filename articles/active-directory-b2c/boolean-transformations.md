@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dcebcc3e2021938f3fd3bde236ef08e4f26b8a97
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: f0d6d74271cc4ff0be4a653b389cc70ad5c56ef9
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949893"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983080"
 ---
 # <a name="boolean-claims-transformations"></a>ブール値要求変換
 
@@ -28,11 +28,11 @@ ms.locfileid: "74949893"
 
 2 つのブール値 inputClaims の AND 演算を実行し、演算の結果で outputClaim を設定します。
 
-| Item  | TransformationClaimType  | データ型  | メモ |
+| Item  | TransformationClaimType  | データ型  | Notes |
 |-------| ------------------------ | ---------- | ----- |
-| InputClaim | inputClaim1 | ブール値 | 評価する最初の ClaimType。 |
-| InputClaim | inputClaim2  | ブール値 | 評価する 2 つ目の ClaimType。 |
-|OutputClaim | outputClaim | ブール値 | この claims transformation が呼び出された後に生成される ClaimType (true または false)。 |
+| InputClaim | inputClaim1 | boolean | 評価する最初の ClaimType。 |
+| InputClaim | inputClaim2  | boolean | 評価する 2 つ目の ClaimType。 |
+|OutputClaim | outputClaim | boolean | この claims transformation が呼び出された後に生成される ClaimType (true または false)。 |
 
 次の要求変換は、2 つのブール値 ClaimTypes (`isEmailNotExist` および `isSocialAccount`) を AND 演算する方法が示されています。 両方の入力要求の値が `true` である場合、出力要求 `presentEmailSelfAsserted` は `true` に設定されます。 ソーシャル アカウントの電子メールが空の場合、オーケストレーションのステップで、事前条件を使用してセルフアサート ページをプリセットできます。
 
@@ -61,10 +61,10 @@ ms.locfileid: "74949893"
 
 2 つの要求のブール値が等しいことをチェックし、等しくない場合は例外をスローします。
 
-| Item | TransformationClaimType  | データ型  | メモ |
+| Item | TransformationClaimType  | データ型  | Notes |
 | ---- | ------------------------ | ---------- | ----- |
-| inputClaim | inputClaim | ブール値 | アサートされる ClaimType。 |
-| InputParameter |valueToCompareTo | ブール値 | 比較される値 (true または false)。 |
+| inputClaim | inputClaim | boolean | アサートされる ClaimType。 |
+| InputParameter |valueToCompareTo | boolean | 比較される値 (true または false)。 |
 
 **AssertBooleanClaimIsEqualToValue** 要求変換は、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって呼び出される[検証技術プロファイル](validation-technical-profile.md)から常に実行する必要があります。 **UserMessageIfClaimsTransformationBooleanValueIsNotEqual** セルフアサート技術プロファイル メタデータにより、技術プロファイルによってユーザーに表示されるエラー メッセージが制御されます。
 
@@ -114,14 +114,52 @@ ms.locfileid: "74949893"
     - **valueToCompareTo**: true
 - 結果:エラーがスローされます
 
+## <a name="comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue
+
+要求のブール値が `true` または `false` と等しいことを確認して、圧縮の結果を返します。 
+
+| Item | TransformationClaimType  | データ型  | Notes |
+| ---- | ------------------------ | ---------- | ----- |
+| inputClaim | inputClaim | boolean | アサートされる ClaimType。 |
+| InputParameter |valueToCompareTo | boolean | 比較される値 (true または false)。 |
+| OutputClaim | inputClaim | boolean | この ClaimsTransformation が呼び出された後に生成される ClaimType。 |
+
+
+次の要求変換は、`true` 値でブール値 ClaimType の値をチェックする方法を示しています。 `IsAgeOver21Years` ClaimType の値が `true` と等しい場合、要求変換では `true` を返します。それ以外の場合は `false` を返します。
+
+```XML
+<ClaimsTransformation Id="AssertAccountEnabled" TransformationMethod="CompareBooleanClaimToValue">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="IsAgeOver21Years" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="valueToCompareTo" DataType="boolean" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+      <OutputClaim  ClaimTypeReferenceId="accountEnabled" TransformationClaimType="compareResult"/>
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>例
+
+- 入力要求:
+    - **inputClaim**: false
+- 入力パラメーター:
+    - **valueToCompareTo**: true
+- 出力要求:
+    - **compareResult**: false 
+
+
+
 ## <a name="notclaims"></a>NotClaims
 
 ブール値 inputClaim の NOT 演算を実行し、演算の結果で outputClaim を設定します。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim | ブール値 | 演算処理される要求。 |
-| OutputClaim | outputClaim | ブール値 | この claims transformation が呼び出された後に生成される ClaimType (true または false)。 |
+| InputClaim | inputClaim | boolean | 演算処理される要求。 |
+| OutputClaim | outputClaim | boolean | この claims transformation が呼び出された後に生成される ClaimType (true または false)。 |
 
 この要求変換を使用して、要求に対して論理否定を実行します。
 
@@ -146,11 +184,11 @@ ms.locfileid: "74949893"
 
 2 つのブール値 inputClaims の OR を計算し、演算の結果で outputClaim を設定します。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim1 | ブール値 | 評価する最初の ClaimType。 |
-| InputClaim | inputClaim2 | ブール値 | 評価する 2 つ目の ClaimType。 |
-| OutputClaim | outputClaim | ブール値 | この ClaimsTransformation が呼び出された後に生成される ClaimType (true または false)。 |
+| InputClaim | inputClaim1 | boolean | 評価する最初の ClaimType。 |
+| InputClaim | inputClaim2 | boolean | 評価する 2 つ目の ClaimType。 |
+| OutputClaim | outputClaim | boolean | この ClaimsTransformation が呼び出された後に生成される ClaimType (true または false)。 |
 
 次の要求変換は、2 つのブール値 ClaimTypes を `Or` 演算する方法が示されています。 いずれかの要求の値が `true` である場合、オーケストレーション ステップで、事前条件を使用してセルフアサート ページをプリセットできます。
 
@@ -174,4 +212,3 @@ ms.locfileid: "74949893"
     - **inputClaim2**: false
 - 出力要求:
     - **outputClaim**: true
-

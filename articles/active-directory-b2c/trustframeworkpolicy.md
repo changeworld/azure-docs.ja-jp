@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 01/31/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5737a53d3eca0da440f178f9fd34adf5e968dd62
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b49c873112358db4fec2992ef3d2d61161e8b373
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840181"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982417"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -45,7 +45,7 @@ ms.locfileid: "76840181"
 | TenantId | はい | このポリシーが属するテナントの一意の識別子。 |
 | PolicyId | はい | ポリシーの一意識別子。 この識別子には、プレフィックスとして *B2C_1A_* を付ける必要があります。 |
 | PublicPolicyUri | はい | ポリシーの URI。テナント ID とポリシー ID の組み合わせです。 |
-| DeploymentMode | いいえ | 指定できる値: `Production`、`Debugging`、または `Development`。 `Production` は既定値です。 このプロパティを使用して、ポリシーをデバッグします。 詳細については、「[ログの収集](troubleshoot-with-application-insights.md)」を参照してください。 |
+| DeploymentMode | いいえ | 指定できる値: `Production` または `Development`。 `Production` は既定値です。 このプロパティを使用して、ポリシーをデバッグします。 詳細については、「[ログの収集](troubleshoot-with-application-insights.md)」を参照してください。 |
 | UserJourneyRecorderEndpoint | いいえ | **DeploymentMode** が `Development` に設定されているときに使用されるエンドポイント。 値は `urn:journeyrecorder:applicationinsights` である必要があります。 詳細については、「[ログの収集](troubleshoot-with-application-insights.md)」を参照してください。 |
 
 

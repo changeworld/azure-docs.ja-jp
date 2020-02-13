@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf8a2cf6c50e05a0fecff387f2e125c50931b95f
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: bf7e4837aaf65b0df28ea4a07fb485948309bc7c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608722"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185575"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Azure AD のエンタイトルメント管理で外部ユーザーのアクセスを管理する
 
@@ -91,7 +91,7 @@ Azure AD のエンタイトルメント管理では、[Azure AD 企業間 (B2B)]
 
 ### <a name="review-your-conditional-access-policies"></a>条件付きアクセス ポリシーを確認する
 
-- 新しいゲスト ユーザーが満たすことができない条件付きアクセス ポリシーから、ゲストを除外するようにしてください。これにより、これらのユーザーはディレクトリにサインインできなくなります。 たとえば、ゲストに登録済みのデバイスがなく、既知の場所にも登録されておらず、多要素認証 (MFA) に再登録したくない場合、条件付きアクセス ポリシーにこれらの要件を追加すると、ゲストのエンタイトルメント管理の使用がブロックされます。 詳細については、「[Azure Active Directory 条件付きアクセスの条件の概要](../conditional-access/conditions.md)」をご覧ください。
+- 新しいゲスト ユーザーが満たすことができない条件付きアクセス ポリシーから、ゲストを除外するようにしてください。これにより、これらのユーザーはディレクトリにサインインできなくなります。 たとえば、ゲストに登録済みのデバイスがなく、既知の場所にも登録されておらず、多要素認証 (MFA) に再登録したくない場合、条件付きアクセス ポリシーにこれらの要件を追加すると、ゲストのエンタイトルメント管理の使用がブロックされます。 詳細については、「[Azure Active Directory 条件付きアクセスの条件の概要](../conditional-access/concept-conditional-access-conditions.md)」をご覧ください。
 
     ![Azure AD 条件付きアクセス ポリシーの除外設定](./media/entitlement-management-external-users/conditional-access-exclude.png)
 

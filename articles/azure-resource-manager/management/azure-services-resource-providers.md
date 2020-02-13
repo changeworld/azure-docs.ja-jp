@@ -3,12 +3,12 @@ title: Azure サービス別のリソース プロバイダー
 description: Azure Resource Manager のすべてのリソース プロバイダー名前空間を一覧表示し、その名前空間の Azure サービスを示します。
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: cdf56c5c84f8837538c2f59b34c3bcf4265d78cb
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 64c1d3c6f30a4f817abbea5001852df3eeeb9327
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644309"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109354"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure サービスのリソース プロバイダー
 
@@ -32,7 +32,7 @@ ms.locfileid: "75644309"
 | Microsoft.AzureActiveDirectory | [Azure Active Directory B2C](../../active-directory-b2c/index.yml) |
 | Microsoft.AzureStack | core |
 | Microsoft.Batch | [Batch](../../batch/index.yml) |
-| Microsoft.Billing | [Billing](/azure/billing/) |
+| Microsoft.Billing | [Cost Management と Billing](/azure/billing/) |
 | Microsoft.BingMaps | [Bing Maps](https://docs.microsoft.com/BingMaps/#pivot=main&panel=BingMapsAPI) |
 | Microsoft.Blockchain | [Azure Blockchain サービス](/azure/blockchain/workbench/) |
 | Microsoft.Blueprint | [Azure Blueprints](/azure/governance/blueprints/) |
@@ -124,7 +124,7 @@ ms.locfileid: "75644309"
 | Microsoft.RecoveryServices | [Site Recovery](../../site-recovery/index.yml) |
 | Microsoft.Relay | [Azure Relay](../../service-bus-relay/relay-what-is-it.md) |
 | Microsoft.ResourceGraph | [Azure Resource Graph](/azure/governance/resource-graph/) |
-| Microsoft.ResourceHealth | core |
+| Microsoft.ResourceHealth | [Azure Service Health](../../service-health/index.yml)|
 | Microsoft.Resources | [Azure Resource Manager](../index.yml) |
 | Microsoft.SaaS | core |
 | Microsoft.Scheduler | [Scheduler](/azure/scheduler/) |
@@ -150,7 +150,7 @@ ms.locfileid: "75644309"
 | Microsoft.TimeSeriesInsights | [Time Series Insights](../../time-series-insights/index.yml) |
 | Microsoft.VirtualMachineImages | [Azure Image Builder](../../virtual-machines/linux/image-builder-overview.md) |
 | microsoft.visualstudio | [Azure DevOps](/azure/devops/?view=azure-devops) |
-| Microsoft.VMwareCloudSimple | [CloudSimple による Azure VMware ソリューション](/azure/vmware-cloudsimple/) |
+| Microsoft.VMwareCloudSimple | [Azure VMware Solution by CloudSimple](/azure/vmware-cloudsimple/) |
 | Microsoft.Web | [App Service](../../app-service/index.yml)<br />[関数](../../azure-functions/index.yml) |
 | Microsoft.WindowsIoT | [Windows 10 IoT Core Services](https://docs.microsoft.com/windows-hardware/manufacture/iot/iotcoreservicesoverview) |
 | Microsoft.WorkloadMonitor | [Azure Monitor](../../azure-monitor/index.yml) |

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 3cc03ba1670299f1ea43a1fde666c2917eaf6b9d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 8cff61d547e75b186869b3ab4d57c5eb12e6e2f5
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770460"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935460"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Azure で適切な MySQL サーバー オプションを選択する
 
@@ -36,7 +36,7 @@ Azure では、MySQL サーバーのワークロードをホスト型仮想マ�
 | サービス レベル アグリーメント (SLA)                | 99.99% の可用性の SLA を提供| 同じ可用性セットに 2 つ以上のインスタンスがある場合、最大 99.95% の可用性。<br/><br/>Premium Storage を使用した単一インスタンス VM の場合、99.9% の可用性。<br/><br/>複数の可用性セット内の複数のインスタンスで Availability Zones を使用した場合、99.99%。<br/><br/>「[Virtual Machines の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)」を参照してください。 |
 | オペレーティング システムの修正プログラムの適用        | 自動  | お客様が管理 |
 | MySQL の修正プログラムの適用     | 自動  | お客様が管理 |
-| 高可用性 | 高可用性 (HA) モデルは、ノード レベルの中断が発生した場合の組み込みのフェールオーバー メカニズムに基づいています。 このような場合、このサービスは自動的に新しいインスタンスを作成し、このインスタンスにストレージを接続します。 | お客様が高可用性の設計、実装、テスト、保守を行います。 機能には、Always On フェールオーバー クラスタリング、Always On グループ レプリケーション、ログ配布、またはトランザクション レプリケーションが含まれることがあります。|
+| 高可用性 | 高可用性 (HA) モデルは、ノード レベルの中断が発生した場合の組み込みのフェールオーバー メカニズムに基づいています。 このような場合、このサービスは自動的に新しいインスタンスを作成し、このインスタンスにストレージを接続します。 | お客様が高可用性の設計、実装、テスト、保守を行います。 機能には、クラスタリング、レプリケーションなどが含まれます。|
 | ゾーン冗長性 | 以下は現在サポートされていません | Azure VM は、さまざまな可用性ゾーンで実行するように設定できます。 オンプレミス ソリューションの場合、お客様は独自のセカンダリ データ センターを作成、管理、および保守する必要があります。|
 | ハイブリッド シナリオ | [データイン レプリケーション](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication)では、外部の MySQL サーバーから Azure Database for MySQL サービスにデータを同期できます。 外部サーバーとして、オンプレミス、仮想マシン、または他のクラウド プロバイダーによってホストされるデータベース サービスを使用できます。<br/><br/> [読み取りレプリカ](https://docs.microsoft.com/azure/mysql/concepts-read-replicas)機能を使用すると、Azure Database for MySQL マスター サーバーから、最大 5 台の読み取り専用レプリカ サーバーにデータをレプリケートできます。 レプリカは、同じ Azure リージョン内に存在するか、複数のリージョンにまたがっています。 読み取り専用レプリカは、binlog レプリケーション テクノロジを使用して非同期的に更新されます。| お客様が管理
 | バックアップと復元 | [サーバーのバックアップ](https://docs.microsoft.com/azure/mysql/concepts-backup#backups)を自動的に作成し、ローカル冗長または geo 冗長のいずれかであるユーザー構成ストレージに保存します。 このサービスでは、完全バックアップ、差分バックアップ、およびトランザクション ログ バックアップが作成されます。 | お客様が管理 |
@@ -85,7 +85,7 @@ Azure Database for MySQL は、あらゆる種類のノード レベルの中断
   - インデックスのチューニング
   - クエリのチューニング
   - 監査
-  - セキュリティ
+  - Security
 
   また、別のデータ センターに高可用性を構成するために必要な構成や管理は、最小限で済むか、まったく行わないで済みます。
 
@@ -93,13 +93,13 @@ Azure Database for MySQL は、あらゆる種類のノード レベルの中断
 
 ### <a name="time-to-move-to-azure"></a>Azure へ移行するタイミング
 
-* Azure Database for MySQL は、開発者の生産性と新しいソリューションの製品化に要する時間の短縮が重要な場合において、クラウド用に設計されたアプリケーションに最適なソリューションです。 このサービスは、DBA のようなプログラムによる機能を備えることで、基になるオペレーティング システムとデータベースを管理する必要性が減少するため、クラウドの設計者と開発者に最適です。
+* Azure Database for MySQL は、開発者の生産性と新しいソリューションの製品化に要する時間の短縮が重要な場合において、クラウド用に設計されたアプリケーションに最適なソリューションです。 このサービスは、DBA のようなプログラムによる機能を備えることで、基になるオペレーティング システムとデータベースを管理する必要性が減少するため、クラウドの設計者と開発者に適しています。
 
 * 新しいオンプレミス ハードウェアの取得にかかる時間とコストを回避したい場合、Azure VM 上の MySQL は、MySQL データベースを必要とするアプリケーションや、Windows または Linux 上の MySQL 機能にアクセスする必要があるアプリケーションに適したソリューションです。 このソリューションは、既存のオンプレミス アプリケーションとデータベースを Azure にそのまま移行する場合、Azure Database for MySQL が適さない場合にも適しています。
 
   プレゼンテーション層、アプリケーション層、データ層を変更する必要がないため、既存のソリューションを再設計する時間と予算が節約されます。 その代わりに、すべてのソリューションを Azure に移行することと、Azure プラットフォームで必要となる可能性のあるパフォーマンス最適化に取り組むことに集中できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 「[Azure Database for MySQL の価格](https://azure.microsoft.com/pricing/details/MySQL/)」をご確認ください。
 * [初めてのサーバーを作成](https://review.docs.microsoft.com/azure/MySQL/quickstart-create-MySQL-server-database-using-azure-portal)してみましょう。

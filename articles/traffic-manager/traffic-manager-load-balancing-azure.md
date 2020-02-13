@@ -3,7 +3,7 @@ title: Azure で負荷分散サービスを使用する | Microsoft Docs
 description: このチュートリアルでは、Azure の負荷分散ポートフォリオであるTraffic Manager、Application Gateway、Load Balancer を使用したシナリオの作成方法を説明します。
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
-ms.author: allensu
-ms.openlocfilehash: 4a7f8fd45b1e496ba3f0208d523ac569a24e9e7c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: b77248813463f51d4bd2c5186e421aec43ffaf52
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227785"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939220"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Azure で負荷分散サービスを使用する
 
@@ -30,7 +30,7 @@ Microsoft Azure では、ネットワーク トラフィックの分散や負荷
 概念レベルでは、これらの各サービスは、負荷分散の階層において個別の役割を果たします。
 
 * **Traffic Manager** には、グローバルな DNS グローバル負荷分散機能が備わっています。 これは受信 DNS 要求を調べ、ユーザーが選択したルーティング ポリシーに従って、正常なエンドポイントを使用して応答できます。 ルーティング方法のオプションは次のとおりです。
-  * 待機時間の点で最も近いエンドポイントに要求元を送信するパフォーマンスによるルーティング。
+  * 待機時間の点で最も近いエンドポイントに要求元を送信するパフォーマンスのルーティング。
   * すべてのトラフィックを 1 つのエンドポイントに送信し、その他のエンドポイントはすべてバックアップとする優先順位によるルーティング。
   * 各エンドポイントに割り当てた重み付けに基づいてトラフィックを分散する、重み付けラウンド ロビンによるルーティング。
   * ユーザーの地理的な場所に基づいてアプリケーション エンドポイントにトラフィックを分散する地理ベースのルーティング。
@@ -88,10 +88,10 @@ Traffic Manager、Application Gateway、ロード バランサーを使用する
    * **インスタンス数**:インスタンスの数。2 ～ 10 の値。
    * **[リソース グループ]** :Application Gateway を保持するリソース グループ。 既存のリソース グループまたは新しいリソース グループを使用できます。
    * **[場所]** :Application Gateway のリージョン。リソース グループと同じ場所にします。 仮想ネットワークとパブリック IP はゲートウェイと同じ場所に存在する必要があるため、この場所は重要です。
-3. Click **OK**.
+3. **[OK]** をクリックします。
 4. Application Gateway の仮想ネットワーク、サブネット、フロントエンド IP、およびリスナーの構成を定義します。 このシナリオでは、フロント エンド IP アドレスは **[パブリック]** に設定されているため、後で Traffic Manager プロファイルにエンドポイントとして追加できます。
 5. 次のいずれかのオプションでリスナーを構成します。
-    * HTTP を使用する場合は、構成する必要はありません。 Click **OK**.
+    * HTTP を使用する場合は、構成する必要はありません。 **[OK]** をクリックします。
     * HTTPS を使用する場合は、さらに構成が必要になります。 [Application Gateway の作成](../application-gateway/application-gateway-create-gateway-portal.md)に関するページの手順 9.以降を参照してください。 構成が完了したら、 **[OK]** をクリックします。
 
 #### <a name="configure-url-routing-for-application-gateways"></a>Application Gateway の URL ルーティングを構成する
@@ -142,7 +142,7 @@ Traffic Manager、Application Gateway、ロード バランサーを使用する
 
 3. 次の情報を入力してエンドポイントを作成します。
 
-   * **[タイプ]** :負荷分散するエンドポイントの種類を選択します。 このシナリオでは、 **[Azure エンドポイント]** を選択します。以前構成した Application Gateway のインスタンスに接続するためです。
+   * **[種類]** :負荷分散するエンドポイントの種類を選択します。 このシナリオでは、 **[Azure エンドポイント]** を選択します。以前構成した Application Gateway のインスタンスに接続するためです。
    * **Name**:エンドポイントの名前を入力します。
    * **ターゲット リソースの種類**: **[パブリック IP アドレス]** を選択し、 **[ターゲット リソース]** で、前に構成した Application Gateway のパブリック IP を選択します。
 
@@ -207,7 +207,7 @@ Traffic Manager、Application Gateway、ロード バランサーを使用する
 
 ![ロード バランサー [フロントエンド IP プール] ナビゲーション ウィンドウ](./media/traffic-manager-load-balancing-azure/s5-ilb-frontend-ippool.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Traffic Manager の概要](traffic-manager-overview.md)
 * [Application Gateway の概要](../application-gateway/application-gateway-introduction.md)

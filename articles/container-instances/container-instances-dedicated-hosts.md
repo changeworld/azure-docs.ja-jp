@@ -1,15 +1,16 @@
 ---
-title: 専用ホストへのデプロイ
-description: 専用ホストを使用してワークロードの真のホスト レベルの分離を実現する
+title: 専用ホストにデプロイする
+description: 専用ホストを使用して、Azure Container Instances ワークロードに対して真のホストレベルの分離を実現します
 ms.topic: article
-ms.date: 01/10/2020
-ms.author: danlep
-ms.openlocfilehash: 619a39f4d08a4308cb0f566bc50860e9562bf9e4
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.date: 01/17/2020
+author: dkkapur
+ms.author: dekapur
+ms.openlocfilehash: adad0ddfc78530b3a3a7c139d9a95ec4790c8053
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903552"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934145"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>専用ホストへのデプロイ
 
@@ -17,22 +18,49 @@ ms.locfileid: "75903552"
 
 Dedicated SKU は、物理サーバーの観点からワークロードの分離を必要とするコンテナー ワークロードに適しています。
 
-## <a name="using-the-dedicated-sku"></a>Dedicated SKU の使用
+## <a name="prerequisites"></a>前提条件
+
+* Dedicated SKU を使用するサブスクリプションに対する既定の制限は 0 です。 この SKU を運用コンテナーのデプロイに使用する場合は、専用の上限を上げるための [Azure サポート リクエスト][azure-support]を作成してください。
+
+## <a name="use-the-dedicated-sku"></a>Dedicated SKU を使用する
 
 > [!IMPORTANT]
-> Dedicated SKU の使用は、現在ロールアウトされている最新の API バージョン (2019-12-01) でのみ使用できます。デプロイ テンプレートでこの API バージョンを指定してください。 さらに、Dedicated SKU を使用するサブスクリプションに対する既定の制限は 0 です。 この SKU を運用コンテナーのデプロイに使用する場合は、[Azure サポート要求][azure-support]を作成してください。
+> Dedicated SKU の使用は、現在ロールアウトされている最新の API バージョン (2019-12-01) でのみ使用できます。デプロイ テンプレートでこの API バージョンを指定してください。
+>
 
-API バージョン 2019-12-01 から、デプロイ テンプレートのコンテナー グループのプロパティのセクションには、ACI のデプロイに必要な "SKU" プロパティが存在します。 現在、このプロパティは、ACI 用の Azure Resource Manager デプロイ テンプレートの一部として使用できます。 ACI リソースのデプロイの詳細については、「[チュートリアル: Resource Manager テンプレートを使用してマルチコンテナー グループをデプロイする](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)」にあるテンプレートで学習できます。 
+API バージョン 2019-12-01 以降、デプロイ テンプレートのコンテナー グループのプロパティのセクションに、ACI のデプロイに必要な `sku` プロパティが存在します。 現在、このプロパティは、ACI 用の Azure Resource Manager デプロイ テンプレートの一部として使用できます。 テンプレートを使用した ACI リソースのデプロイについて詳しくは、「[チュートリアル: Resource Manager テンプレートを使用してマルチコンテナー グループをデプロイする](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)」をご覧ください。 
 
-SKU プロパティは、次の値のいずれかになります。
-* Standard - ACI の標準のデプロイ選択。これにより、引き続きハイパーバイザー レベルのセキュリティが保証されます。 
-* Dedicated - コンテナー グループの専用物理ホストによるワークロード レベルの分離に使用されます。
+`sku` プロパティの値は、次のいずれかが可能です。
+* `Standard` - ACI の標準的なデプロイのための選択肢。ハイパーバイザー レベルのセキュリティが引き続き保証されます。 
+* `Dedicated` - コンテナー グループ専用の物理ホストによるワークロード レベルの分離に使用されます。
 
 ## <a name="modify-your-json-deployment-template"></a>JSON デプロイ テンプレートを変更する
 
-コンテナー グループ リソースが指定されているデプロイ テンプレートで、`"apiVersion": "2019-12-01",` を確認します。 コンテナー グループ リソースのプロパティ セクションで、`"sku": "Dedicated",` を設定します。
+デプロイ テンプレートで、次のプロパティを変更または追加します。
+* `resources` の下で、`apiVersion` を `2012-12-01` に設定します。
+* コンテナー グループのプロパティの下に、`Dedicated` プロパティと値 `sku` を追加します。
 
 Dedicated SKU を使用するコンテナー グループ デプロイ テンプレートのリソース セクションのスニペットの例を次に示します。
+
+```json
+[...]
+"resources": [
+    {
+        "name": "[parameters('containerGroupName')]",
+        "type": "Microsoft.ContainerInstance/containerGroups",
+        "apiVersion": "2019-12-01",
+        "location": "[resourceGroup().location]",    
+        "properties": {
+            "sku": "Dedicated",
+            "containers": {
+                [...]
+            }
+        }
+    }
+]
+```
+
+次に示すのは、単一のコンテナー インスタンスを実行中のサンプル コンテナー グループをデプロイする完全なテンプレートです。
 
 ```json
 {
@@ -91,9 +119,8 @@ Dedicated SKU を使用するコンテナー グループ デプロイ テンプ
                     ],
                     "type": "Public"
                 },
-                "osType": "Linux",
+                "osType": "Linux"
             },
-            "location": "eastus2euap",
             "tags": {}
         }
     ]
@@ -116,7 +143,7 @@ az group create --name myResourceGroup --location eastus
 az group deployment create --resource-group myResourceGroup --template-file deployment-template.json
 ```
 
-数秒以内に、Azure から最初の応答を受信します。 デプロイが完了すると、ACI サービスによって保持されているそのデプロイに関連したデータはすべて、指定したキーで暗号化されます。
+数秒以内に、Azure から最初の応答を受信します。 専用ホストで正常なデプロイが実行されます。
 
 <!-- LINKS - Internal -->
 [az-group-create]: /cli/azure/group#az-group-create

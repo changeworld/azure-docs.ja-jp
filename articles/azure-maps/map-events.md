@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 742cb76f491e76db6dc9ec415c6718066b46f137
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 06fdb9733ad9c173c88936e5502214b58f5d10ee
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911075"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985919"
 ---
 # <a name="interact-with-the-map"></a>マップの操作
 
-この記事では、[マップ クラス イベント](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events)のプロパティを使用して、マップ上とマップの別のレイヤー上のイベントを強調表示する方法を説明します。 マップ クラス イベント プロパティを使用して、HTML マーカーの操作時にイベントを強調表示する方法も説明します。
+この記事では、[マップ イベント クラス](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events)の使用方法を示します。 プロパティでは、マップ上とマップの異なるレイヤー上のイベントを強調表示します。 また、HTML マーカーを操作すると、イベントを強調表示することもできます。
 
 ## <a name="interact-with-the-map"></a>マップの操作
 
-以下のマップを使用し、右側で強調表示されている対応するマウス イベントを確認します。 **[JS]** タブをクリックすると、JavaScript コードを表示し編集できます。 **[Edit on CodePen]** \(CodePen の編集\) ボタンをクリックしても、CodePen のコードを編集できます。
+以下のマップを使用し、右側で強調表示されている対応するマウス イベントを確認します。 **[JS]** タブをクリックすると、JavaScript コードを表示し編集できます。 また、 **[Edit on CodePen]\(CodePen の編集\)** をクリックして、CodePen 上のコードを編集することもできます。
 
 <br/>
 
@@ -31,7 +31,7 @@ ms.locfileid: "75911075"
 
 ## <a name="interact-with-map-layers"></a>マップの連動
 
-以下のコードでは、シンボル レイヤーの操作時に起動されるイベントの名前を強調表示します。 シンボル、バブル、線、および多角形レイヤーではすべて、同じ一連のイベントがサポートされます。 ヒート マップとタイル レイヤーでは、これらのイベントのいずれもサポートされていません。
+次のコードでは、シンボル レイヤーを操作する際に起動されるイベントを強調表示します。 シンボル、バブル、線、および多角形レイヤーではすべて、同じ一連のイベントがサポートされます。 ヒート マップとタイル レイヤーでは、これらのどのイベントもサポートされていません。
 
 <br/>
 

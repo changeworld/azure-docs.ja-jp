@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/26/2019
-ms.openlocfilehash: ea60faf5b5689fa674095201d3db18422d3e0f1b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 1e13c7ef8eae81ef2a12a8761b0596f6329f94dc
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980497"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937905"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Azure HDInsight のクラスター作成に失敗する問題のトラブルシューティング
 
@@ -64,7 +64,7 @@ Express Route または独自のカスタム DNS サーバーを使用してい�
 
 ## <a name="resources-locks"></a>リソース ロック  
 
-[ご利用の仮想ネットワークとリソース グループがロック](../../azure-resource-manager/management/lock-resources.md)されていないことを確認します。  
+[ご利用の仮想ネットワークとリソース グループがロック](../../azure-resource-manager/management/lock-resources.md)されていないことを確認します。 リソース グループがロックされている場合、クラスターを作成または削除することはできません。 
 
 ## <a name="unsupported-component-versions"></a>コンポーネントのバージョンがサポート対象外
 
@@ -78,7 +78,7 @@ Express Route または独自のカスタム DNS サーバーを使用してい�
 
 ## <a name="service-outages"></a>サービスの停止
 
-[Azure の状態](https://status.azure.com/status)をチェックし、潜在的な障害またはサービスの問題がないか調べてください。
+[Azure の状態](https://status.azure.com)をチェックし、潜在的な障害またはサービスの問題がないか調べてください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -11,12 +11,12 @@ ms.date: 01/13/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 66edde9591d4491fa630772f99372f9901319b2f
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 287ad5467f9f3aac7eb8c9d7c19ea15c380c6879
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940592"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935408"
 ---
 # <a name="what-is-workload-management"></a>ワークロード管理とは
 
@@ -31,7 +31,7 @@ ms.locfileid: "75940592"
 - データ ウェアハウスからのデータのエクスポート
 
 データ ウェアハウスのパフォーマンス容量は、[データ ウェアハウス ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)によって決まります。
-- すべてのパフォーマンス プロファイルに割り当てられたリソースを確認するには、[メモリとコンカレンシーの制限]\(memory-concurrency-limits.md) に関するページを参照してください。
+- すべてのパフォーマンス プロファイルに割り当てられたリソースを確認するには、「[メモリと同時実行の制限](memory-concurrency-limits.md)」を参照してください。
 - 容量を調整するには、[スケールアップまたはスケールダウン](quickstart-scale-compute-portal.md)してください。
 
 

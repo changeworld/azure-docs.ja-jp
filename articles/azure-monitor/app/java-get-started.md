@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights を使用した Java Web アプリの分析
+title: クイック スタート:Azure Application Insights を使用した Java Web アプリの分析
 description: 'Application Insights を使用した Java Web アプリのアプリケーション パフォーマンス監視 '
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,39 +7,40 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: 0686cea590ca26096b443dba21b05dc3335c7add
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: abc16f8e1fdc6b81634b926eeb287e5d03efdc40
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927253"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963684"
 ---
-# <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web プロジェクトで Application Insights を使う
+# <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>クイック スタート:Java Web プロジェクトで Application Insights を使う
 
-[Application Insights](https://azure.microsoft.com/services/application-insights/) は、ライブ アプリケーションのパフォーマンスと使用状況を把握するのに役立つ、Web 開発者向けの拡張可能な分析サービスです。 [要求の自動的なインストルメント化、依存関係の追跡、パフォーマンス カウンターの収集](auto-collect-dependencies.md#java)、パフォーマンスの問題と例外の診断、ユーザーがアプリで行っていることを追跡するための[コードの作成][api]に使用します。 
+このクイックスタートでは、Application Insights を使用して、要求のインストルメント化、依存関係の追跡、およびパフォーマンス カウンターの収集を自動的に行い、パフォーマンスの問題と例外を診断し、ユーザーによるアプリの操作内容を追跡するコードを作成します。
 
-![概要サンプル データのスクリーンショット](./media/java-get-started/overview-graphs.png)
+Application Insights は、ライブ アプリケーションのパフォーマンスと使用状況を把握するのに役立つ、Web 開発者向けの拡張可能な分析サービスです。 Application Insights は、Linux、Unix、Windows で動作する Java アプリをサポートします。
 
-Application Insights は、Linux、Unix、Windows で動作する Java アプリをサポートします。
+## <a name="prerequisites"></a>前提条件
 
-必要なもの:
+* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+* 機能している Java アプリケーション。
 
-* Java 7 以降
-* [Microsoft Azure](https://azure.microsoft.com/) サブスクリプション。
+## <a name="get-an-application-insights-instrumentation-key"></a>Application Insights のインストルメンテーション キーを取得する
 
-## <a name="1-get-an-application-insights-instrumentation-key"></a>1.Application Insights のインストルメンテーション キーを取得する
-1. [Microsoft Azure ポータル](https://portal.azure.com)にサインインします。
-2. Application Insights リソースを作成します。 アプリケーションの種類を [Java Web アプリケーション] に設定します。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
+2. Azure portal で、Application Insights のリソースを作成します。 アプリケーションの種類を [Java Web アプリケーション] に設定します。
 
 3. 新しいリソースのインストルメンテーション キーを見つけます。 このキーは、後でコード プロジェクトに貼り付けます。
 
     ![新しいリソース概要で、[プロパティ] をクリックし、インストルメンテーション キーをコピーします](./media/java-get-started/instrumentation-key-001.png)
 
-## <a name="2-add-the-application-insights-sdk-for-java-to-your-project"></a>2.Application Insights SDK for Java をプロジェクトに追加する
-*プロジェクトに適した方法を選択してください。*
+## <a name="add-the-application-insights-sdk-for-java-to-your-project"></a>Application Insights SDK for Java をプロジェクトに追加する
 
-#### <a name="if-youre-using-maven-a-namemaven-setup-"></a>Maven を使用している場合: <a name="maven-setup" />
-プロジェクトが既に Maven を使用してビルドする設定になっている場合は、pom.xml ファイルに次のコードをマージします。
+*プロジェクトの種類を選択します。*
+
+# <a name="maventabmaven"></a>[Maven](#tab/maven)
+
+プロジェクトが既に Maven を使用してビルドする設定になっている場合は、*pom.xml* ファイルに次のコードをマージします。
 
 次に、バイナリがダウンロードされるように、プロジェクトの依存関係を更新します。
 
@@ -55,8 +56,9 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
     </dependencies>
 ```
 
-#### <a name="if-youre-using-gradle-a-namegradle-setup-"></a>Gradle を使用している場合: <a name="gradle-setup" />
-プロジェクトが既に Gradle を使用してビルドする設定になっている場合は、build.gradle ファイルに次のコードをマージします。
+# <a name="gradletabgradle"></a>[Gradle](#tab/gradle)
+
+プロジェクトが既に Gradle を使用してビルドする設定になっている場合は、*build.gradle* ファイルに次のコードをマージします。
 
 次に、バイナリがダウンロードされるように、プロジェクトの依存関係を更新します。
 
@@ -68,10 +70,13 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
     }
 ```
 
-#### <a name="otherwise-if-you-are-manually-managing-dependencies-"></a>それ以外で、依存関係を手動で管理している場合:
+# <a name="other-typestabother"></a>[その他の型](#tab/other)
+
 [最新バージョン](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)をダウンロードし、必要なファイルをプロジェクトにコピーして、以前のバージョンを置き換えます。
 
-### <a name="questions"></a>疑問がある場合...
+---
+
+### <a name="questions"></a>疑問がある場合
 * *`-web-auto`、`-web`、および `-core` コンポーネントの関係はどのようなものですか。*
   * `applicationinsights-web-auto` は、実行時に Application Insights サーブレット フィルターを自動的に登録することによって、HTTP サーブレットの要求数と応答時間を追跡するメトリックを提供します。
   * `applicationinsights-web` も HTTP サーブレットの要求数と応答時間を追跡するメトリックを提供しますが、アプリケーションでの Application Insights サーブレット フィルターの手動の登録が必要です。
@@ -83,10 +88,10 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
   * 依存関係を手動で管理している場合:
     * 最新の [Application Insights SDK for Java](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) をダウンロードして、古いものと置き換えます。 変更は [SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)に記載されます。
 
-## <a name="3-add-an-applicationinsightsxml-file"></a>3.ApplicationInsights.xml ファイルを追加する
-ApplicationInsights.xml をプロジェクトのリソース フォルダーに追加するか、プロジェクトのデプロイメント クラス パスに追加されていることを確認します。 次の XML をファイルにコピーします。
+## <a name="add-an-applicationinsightsxml-file"></a>*ApplicationInsights.xml* ファイルを追加する
+*ApplicationInsights.xml* をプロジェクトのリソース フォルダーに追加するか、プロジェクトのデプロイメント クラス パスに追加されていることを確認します。 次の XML をファイルにコピーします。
 
-インストルメンテーション キーについては、Azure ポータルで入手したキーを使用してください。
+インストルメンテーション キーを Azure portal から受け取ったものに置き換えます。
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -115,18 +120,18 @@ ApplicationInsights.xml をプロジェクトのリソース フォルダーに�
 </ApplicationInsights>
 ```
 
-必要に応じて、構成ファイルをアプリケーションがアクセスできる任意の場所に置くことができます。  システム プロパティ `-Dapplicationinsights.configurationDirectory` は、ApplicationInsights.xml があるディレクトリを指定します。 たとえば、`E:\myconfigs\appinsights\ApplicationInsights.xml` にある構成ファイルは、プロパティ `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"` を使用して構成されます。
+必要に応じて、構成ファイルをアプリケーションがアクセスできる任意の場所に置くことができます。  システム プロパティ `-Dapplicationinsights.configurationDirectory` に、*ApplicationInsights.xml* があるディレクトリを指定します。 たとえば、`E:\myconfigs\appinsights\ApplicationInsights.xml` にある構成ファイルは、プロパティ `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"` を使用して構成されます。
 
 * インストルメンテーション キーは、テレメトリのすべての項目と共に送信されます。インストルメンテーション キーを受け取った Application Insights は、リソース内にこのキーを表示します。
 * HTTP 要求コンポーネントはオプションです。 このコンポーネントは、要求と応答時間に関するテレメトリをポータルに自動的に送信します。
-* イベントの関連付けは、HTTP 要求コンポーネントに対する追加の操作です。 この操作では、サーバーで受信した各要求に識別子を割り当てた後、この識別子をテレメトリのすべての項目に "Operation.Id" プロパティとして追加します。 これにより、 [診断検索][diagnostic]でフィルターを設定して、テレメトリを各要求に関連付けることができます。
+* イベントの関連付けは、HTTP 要求コンポーネントに対する追加の操作です。 サーバーによって受信された各要求に識別子が割り当てられます。 次に、この識別子をプロパティとして (プロパティ 'Operation.Id' として) テレメトリのすべての項目に追加します。 これにより、 [診断検索][diagnostic]でフィルターを設定して、テレメトリを各要求に関連付けることができます。
 
 ### <a name="alternative-ways-to-set-the-instrumentation-key"></a>インストルメンテーション キーの他の設定方法
 Application Insights SDK は、次の順序でキーを探します。
 
 1. システム プロパティ: -DAPPINSIGHTS_INSTRUMENTATIONKEY=your_ikey
 2. 環境変数:APPINSIGHTS_INSTRUMENTATIONKEY
-3. 構成ファイル:ApplicationInsights.xml
+3. 構成ファイル:*ApplicationInsights.xml*
 
 これは [コードで設定する](../../azure-monitor/app/api-custom-events-metrics.md#ikey)こともできます。
 
@@ -139,14 +144,14 @@ Application Insights SDK は、次の順序でキーを探します。
     }
 ```
 
-## <a name="4-add-agent"></a>4.エージェントを追加する
+## <a name="add-agent"></a>エージェントを追加する
 
 [Java エージェントをインストール](java-agent.md)して、送信 HTTP 呼び出し、JDBC クエリ、アプリケーションのログ記録、およびより適切な操作の名前付けをキャプチャします。
 
-## <a name="5-run-your-application"></a>5.アプリケーションを実行する
+## <a name="run-your-application"></a>アプリケーションを実行する
 開発用コンピューターでデバッグ モードで実行するか、サーバーに発行します。
 
-## <a name="6-view-your-telemetry-in-application-insights"></a>6.Application Insights でのテレメトリを表示する
+## <a name="view-your-telemetry-in-application-insights"></a>Application Insights でのテレメトリを表示する
 [Microsoft Azure ポータル](https://portal.azure.com)の Application Insights リソースに戻ります。
 
 HTTP 要求データが概要ブレードに表示されます (表示されない場合は、数秒待ってから [最新の情報に更新] をクリックします)。
@@ -191,7 +196,7 @@ HTTP 要求データが概要ブレードに表示されます (表示されな�
 
 ## <a name="azure-app-service-config-spring-boot"></a>Azure App Service の構成 (Spring Boot)
 
-Windows で動作する Spring Boot アプリでは、 Azure App Services での追加構成の実行を必要とします。 **web.config** を変更して次を追加します。
+Windows で動作する Spring Boot アプリでは、 Azure App Services での追加構成の実行を必要とします。 **web.config** を変更し、次の構成を追加します。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -230,7 +235,7 @@ Application Insights Java SDK では、[W3C 分散トレース](https://w3c.gith
 ![プロセス プライベート バイトが選択されているメトリック ペインのスクリーンショット](./media/java-get-started/011-perf-counters.png)
 
 ### <a name="customize-performance-counter-collection"></a>パフォーマンス カウンター コレクションをカスタマイズする
-パフォーマンス カウンターの標準セットのコレクションを無効にするには、ApplicationInsights.xml ファイルのルート ノードの下に次のコードを追加します。
+パフォーマンス カウンターの標準セットのコレクションを無効にするには、*ApplicationInsights.xml* ファイルのルート ノードの下に次のコードを追加します。
 
 ```XML
     <PerformanceCounters>
@@ -300,7 +305,7 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 ## <a name="questions-problems"></a>疑問がある場合 問題が発生した場合
 [Java のトラブルシューティング](java-troubleshoot.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [依存関係の呼び出しを監視する](java-agent.md)
 * [Unix パフォーマンス カウンターを監視する](java-collectd.md)
 * [Web ページに監視機能](javascript.md)を追加して、ページの読み込み時間、AJAX 呼び出し、ブラウザーの例外を監視する

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f4f625999ff9cbdad6aeefb662e39a6b30a1881
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 7ab2dc71f39164988e0d229fc994548a00447986
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291534"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185632"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-contractsafe-saml2-sso"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ContractSafe Saml2 SSO の統合
 
@@ -85,7 +85,7 @@ ContractSafe Saml2 SSO で Azure AD SSO を構成してテストするには、�
     b. **[応答 URL]** ボックスに、`https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/` という形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 この値を取得するには、[ContractSafe Saml2 SSO クライアント サポート チーム](mailto:donne@contractsafe.com)にお問い合わせください。 また、Azure portal の **[基本的な SAML 構成]** セクションに示されている形式を参照することもできます。
+    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 この値を取得するには、[ContractSafe Saml2 SSO クライアント サポート チーム](mailto:support@contractsafe.com)にお問い合わせください。 また、Azure portal の **[基本的な SAML 構成]** セクションに示されている形式を参照することもできます。
 
 1. ContractSafe Saml2 SSO では、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
@@ -138,11 +138,11 @@ ContractSafe Saml2 SSO で Azure AD SSO を構成してテストするには、�
 
 ## <a name="configure-contractsafe-saml2-sso"></a>ContractSafe Saml2 SSO の構成
 
-**ContractSafe Saml2 SSO** 側で SSO を構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [ContractSafe Saml2 SSO サポート チーム](mailto:donne@contractsafe.com)に送信する必要があります。 サポート チームの下で、SAML SSO 接続が両方の側で適切に設定されます。
+**ContractSafe Saml2 SSO** 側で SSO を構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [ContractSafe Saml2 SSO サポート チーム](mailto:support@contractsafe.com)に送信する必要があります。 サポート チームの下で、SAML SSO 接続が両方の側で適切に設定されます。
 
 ## <a name="create-a-contractsafe-saml2-sso-test-user"></a>ContractSafe Saml2 SSO のテスト ユーザーの作成
 
-ContractSafe Saml2 SSO で B.Simon というユーザーを作成します。 [ContractSafe Saml2 SSO サポートチーム](mailto:donne@contractsafe.com)と連携して、ContractSafe Saml2 SSO プラットフォームにユーザーを追加します。 SSO を使用する前に、ユーザーを作成し、有効化する必要があります。
+ContractSafe Saml2 SSO で B.Simon というユーザーを作成します。 [ContractSafe Saml2 SSO サポートチーム](mailto:support@contractsafe.com)と連携して、ContractSafe Saml2 SSO プラットフォームにユーザーを追加します。 SSO を使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト
 

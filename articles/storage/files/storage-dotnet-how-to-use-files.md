@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: dfb1d71a02ae3bf06a5f2d8a93bcb3ac83433a86
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 361ee5179b20d9488bb477a4e3c9fc0f0e6f266e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460364"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190659"
 ---
 # <a name="develop-for-azure-files-with-net"></a>.NET を使用して Azure Files 用に開発する
 
@@ -36,10 +36,10 @@ Azure Files の詳細については、「[Azure Files とは](storage-files-int
 
 Azure Files は、クライアント アプリケーションに対して、2 つの幅広いアプローチを提供します。それは、サーバー メッセージ ブロック (SMB) と REST です。 .NET 内では、これらのアプローチは `System.IO` および `WindowsAzure.Storage` API によって抽象化されています。
 
-API | 使用する場合 | メモ
+API | 使用する場合 | Notes
 ----|-------------|------
 [System.IO](https://docs.microsoft.com/dotnet/api/system.io) | アプリケーションが次のような場合。 <ul><li>SMB を使用してファイルの読み取り/書き込みをする必要がある</li><li>ポート 445 経由で Azure Files アカウントにアクセスするデバイスで実行している</li><li>ファイル共有のどの管理設定も管理する必要がない</li></ul> | SMB 経由の Azure Files によるファイル I/O の実装は、通常、ネットワーク ファイル共有またはローカル ストレージ デバイスでの I/O と同じです。 ファイル I/O など、.NET のさまざまな機能の概要については、「[コンソール アプリケーション](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter)」のチュートリアルを参照してください。
-[Microsoft.Azure.Storage.File](https://docs.microsoft.com/dotnet/api/overview/azure/storage#client-library) | アプリケーションが次のような場合。 <ul><li>ファイアウォールや ISP の制約のため、ポート 445 で SMB を使用して Azure Files にアクセスできない</li><li>ファイル共有のクォータを設定したり共有アクセス署名を作成したりする管理機能を必要としている</li></ul> | この記事では、SMB の代わりに REST を使用するファイル I/O のため、およびファイル共有の管理のために、`Microsoft.Azure.Storage.File` を使用する方法について説明します。
+[Microsoft.Azure.Storage.File](/dotnet/api/overview/azure/storage?view=azure-dotnet#version-11x) | アプリケーションが次のような場合。 <ul><li>ファイアウォールや ISP の制約のため、ポート 445 で SMB を使用して Azure Files にアクセスできない</li><li>ファイル共有のクォータを設定したり共有アクセス署名を作成したりする管理機能を必要としている</li></ul> | この記事では、SMB の代わりに REST を使用するファイル I/O のため、およびファイル共有の管理のために、`Microsoft.Azure.Storage.File` を使用する方法について説明します。
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>コンソール アプリケーションの作成とアセンブリの取得
 

@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB での WHERE 句
 description: Azure Cosmos DB の SQL WHERE 句について説明します
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.author: mjbrown
-ms.openlocfilehash: cd5643d8be06afcd43c5bfe38d6f5e9caa6f906e
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.date: 02/03/2020
+ms.author: tisande
+ms.openlocfilehash: 31653b598f0f3a79bf7f9c09231b1d111f167a16
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326637"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982231"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での WHERE 句
 
@@ -71,10 +71,10 @@ WHERE <filter_condition>
 |**演算子の種類**  | **値** |
 |---------|---------|
 |算術 | +、-、*、/、% |
-|ビット    | \|、&、^、<<、>>、>>> (0 埋め右シフト) |
+|ビット演算子    | \|、&、^、<<、>>、>>> (0 埋め右シフト) |
 |論理    | AND、OR、NOT      |
 |比較 | =, !=, &lt;, &gt;, &lt;=, &gt;=, <> |
-|string     |  \|\| (連結) |
+|String     |  \|\| (連結) |
 
 次のクエリでは、2 項演算子を使用しています。
 
@@ -104,10 +104,10 @@ WHERE <filter_condition>
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-クエリでプロパティ参照を使用することもできます。 たとえば、`SELECT * FROM Families f WHERE f.isRegistered` は、値が `true` 値と等しい `isRegistered` プロパティを含む JSON 項目を返します。 `false`、`null`、`Undefined`、`<number>`、`<string>`、`<object>`、または `<array>` などの他の値は、項目を結果から除外します。 
+クエリでプロパティ参照を使用することもできます。 たとえば、`SELECT * FROM Families f WHERE f.isRegistered` は、値が `true` 値と等しい `isRegistered` プロパティを含む JSON 項目を返します。 `false`、`null`、`Undefined`、`<number>`、`<string>`、`<object>`、または `<array>` などの他の値は、項目を結果から除外します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [使用の開始](sql-query-getting-started.md)
-- [Azure Cosmos DB .NET のサンプル](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [作業の開始](sql-query-getting-started.md)
+- [IN キーワード](sql-query-keywords.md#in)
 - [FROM 句](sql-query-from.md)

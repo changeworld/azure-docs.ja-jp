@@ -2,14 +2,15 @@
 title: デプロイ データの暗号化
 description: コンテナー インスタンス リソースに永続化されたデータの暗号化と、カスタマー マネージド キーでデータを暗号化する方法について説明します
 ms.topic: article
-ms.date: 01/10/2020
-ms.author: danlep
-ms.openlocfilehash: 146effd7f1a7ad1ddd94886d1a79e2914bd1c94b
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.date: 01/17/2020
+author: dkkapur
+ms.author: dekapur
+ms.openlocfilehash: 14a51ce103d831bcf1dfd52c892102f72531a4c8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903692"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934317"
 ---
 # <a name="encrypt-deployment-data"></a>デプロイ データの暗号化
 
@@ -88,14 +89,17 @@ ACI サービスによるキーへのアクセスを許可するための、新�
 > カスタマー マネージド キーによるデプロイ データの暗号化は、現在ロールアウト中の最新の API バージョン (2019-12-01) で使用できます。デプロイ テンプレートでこの API バージョンを指定してください。 これに関して何か問題がある場合は、Azure サポートにご連絡ください。
 
 キー コンテナーのキーとアクセス ポリシーを設定した後は、次のプロパティを ACI のデプロイ テンプレートに追加します。 テンプレートを使用した ACI リソースのデプロイについて詳しくは、「[チュートリアル: Resource Manager テンプレートを使用してマルチコンテナー グループをデプロイする](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)」をご覧ください。 
+* `resources` の下で、`apiVersion` を `2012-12-01` に設定します。
+* デプロイ テンプレートのコンテナー グループ プロパティ セクションに、次の値を含む `encryptionProperties` を追加します。
+  * `vaultBaseUrl`: お使いのキー コンテナーの DNS 名。ポータルのキー コンテナー リソースの概要ブレードで確認できます。
+  * `keyName`: 前に生成したキーの名前。
+  * `keyVersion`: スキーマの現在のバージョン。 これは、キー自体をクリックして確認できます (キー コンテナー リソースの [設定] セクションの [キー] の下)
+* コンテナー グループのプロパティの下に、`Standard` プロパティと値 `sku` を追加します。 API version 2019-12-01 では `sku` プロパティは必須です。
 
-具体的には、デプロイ テンプレートのコンテナー グループ プロパティ セクションに、次の値を含む "encryptionProperties" を追加します。
-* vaultBaseUrl: キー コンテナーの DNS 名。ポータルのキー コンテナー リソースの概要ブレードで確認できます
-* keyName: 前に生成したキーの名前
-* keyVersion: キーの現在のバージョン。 これは、キー自体をクリックして確認できます (キー コンテナー リソースの [設定] セクションの [キー] の下)
-
+次のテンプレート スニペットは、デプロイ データを暗号化するための追加のプロパティを示しています。
 
 ```json
+[...]
 "resources": [
     {
         "name": "[parameters('containerGroupName')]",
@@ -108,12 +112,107 @@ ACI サービスによるキーへのアクセスを許可するための、新�
                 "keyName": "acikey",
                 "keyVersion": "xxxxxxxxxxxxxxxx"
             },
+            "sku": "Standard",
             "containers": {
                 [...]
             }
         }
     }
 ]
+```
+
+次に示すのは、「[チュートリアル: Resource Manager テンプレートを使用してマルチコンテナー グループをデプロイする](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)」をご覧ください。 
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "containerGroupName": {
+      "type": "string",
+      "defaultValue": "myContainerGroup",
+      "metadata": {
+        "description": "Container Group name."
+      }
+    }
+  },
+  "variables": {
+    "container1name": "aci-tutorial-app",
+    "container1image": "mcr.microsoft.com/azuredocs/aci-helloworld:latest",
+    "container2name": "aci-tutorial-sidecar",
+    "container2image": "mcr.microsoft.com/azuredocs/aci-tutorial-sidecar"
+  },
+  "resources": [
+    {
+      "name": "[parameters('containerGroupName')]",
+      "type": "Microsoft.ContainerInstance/containerGroups",
+      "apiVersion": "2019-12-01",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "encryptionProperties": {
+            "vaultBaseUrl": "https://example.vault.azure.net",
+            "keyName": "acikey",
+            "keyVersion": "xxxxxxxxxxxxxxxx"
+        },
+        "sku": "Standard",  
+        "containers": [
+          {
+            "name": "[variables('container1name')]",
+            "properties": {
+              "image": "[variables('container1image')]",
+              "resources": {
+                "requests": {
+                  "cpu": 1,
+                  "memoryInGb": 1.5
+                }
+              },
+              "ports": [
+                {
+                  "port": 80
+                },
+                {
+                  "port": 8080
+                }
+              ]
+            }
+          },
+          {
+            "name": "[variables('container2name')]",
+            "properties": {
+              "image": "[variables('container2image')]",
+              "resources": {
+                "requests": {
+                  "cpu": 1,
+                  "memoryInGb": 1.5
+                }
+              }
+            }
+          }
+        ],
+        "osType": "Linux",
+        "ipAddress": {
+          "type": "Public",
+          "ports": [
+            {
+              "protocol": "tcp",
+              "port": "80"
+            },
+            {
+                "protocol": "tcp",
+                "port": "8080"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "containerIPv4Address": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.ContainerInstance/containerGroups/', parameters('containerGroupName'))).ipAddress.ip]"
+    }
+  }
+}
 ```
 
 ### <a name="deploy-your-resources"></a>リソースをデプロイする

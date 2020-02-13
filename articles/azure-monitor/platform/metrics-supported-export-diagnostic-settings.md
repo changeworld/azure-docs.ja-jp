@@ -8,12 +8,12 @@ ms.date: 05/20/2019
 author: rboucher
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 5d38786d3c7b852d3a9b65cd366eed68ebbb01e3
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: dcf5276393400be864e738d89bc5713f5aac242b
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152954"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963480"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>診断設定を使用してエクスポート可能な Azure Monitor プラットフォーム メトリック
 
@@ -24,6 +24,19 @@ Azure Monitor には、構成なしの[プラットフォーム メトリック]
 2. [メトリック REST API](https://docs.microsoft.com/rest/api/monitor/metrics/list) を使用します。
 
 Azure Monitor バックエンドの複雑さにより、すべてのメトリックが診断設定を使用してエクスポート可能であるとは限りません。 次の表に、診断設定を使用したエクスポートが可能か不可能かに関する一覧を示します。
+
+表には次の列が含まれています。 
+- 診断設定を使用したエクスポートが可能か? 
+- ResourceType 
+- メトリック 
+- MetricDisplayName
+- ユニット 
+- AggregationType
+
+
+> [!NOTE]
+> 以下の表には、下部に水平スクロール バーが表示されることがあります。 見つからない情報がある場合は、スクロール バーを左端から右端まで動かして確認してください。  
+
 
 診断設定を使用したエクスポートが可能か? | ResourceType | メトリック | MetricDisplayName | ユニット | AggregationType
 |----|-----|------|----|----|-----|

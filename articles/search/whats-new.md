@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 24114defe5e78bb7adbd006adc4ddbf8250b3188
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 01/30/2020
+ms.openlocfilehash: d0e0e8a5aa3a3e43997e3f9512525be9f51d2018
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844974"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934861"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Cognitive Search の新機能
 
@@ -29,13 +29,15 @@ Azure Search は、コア操作での拡張された (ただし、省略可能�
 
 ### <a name="february-2020"></a>2020 年 2 月
 
-+ [PII 検出](cognitive-search-skill-pii-detection.md)は、入力テキストから個人を特定できる情報を抽出する、インデックス作成中に使用される認知スキルです。ユーザーには、さまざまな方法でそれをそのテキストからマスクするためのオプションが提供されます。
++ [PII 検出 (プレビュー)](cognitive-search-skill-pii-detection.md) は、入力テキストから個人を特定できる情報を抽出する認知スキルであり、インデックス作成中に使用されます。入力テキストから個人を特定できる情報をさまざまな方法でマスクするためのオプションがあります。
+
++ [カスタム エンティティの参照 (プレビュー)](cognitive-search-skill-custom-entity-lookup.md ) では、ユーザーが定義したカスタムの単語と語句のリストからテキストが検索されます。 このリストを使用して、エンティティが一致するすべての文書がラベル付けされます。 このスキルは、ある程度のあいまい一致もサポートしており、類似しているが完全一致ではない一致を見つけるために適用できます。 
 
 ### <a name="january-2020"></a>2020 年 1 月
 
 + [カスタマー マネージド暗号化キー](search-security-manage-encryption-keys.md)が一般提供されるようになりました。 REST を使用している場合は、`api-version=2019-05-06` を使用して機能にアクセスできます。 マネージ コードの場合は、機能はプレビューではなくなりましたが、正しいパッケージはまだ [.NET SDK バージョン 8.0-preview](search-dotnet-sdk-migration-version-9.md) です。 
 
-+ 検索サービスへのプライベート アクセスは、次の 2 つのメカニズムで利用できます。
++ 検索サービスへのプライベート アクセスは、次の 2 つのメカニズムで利用できます (どちらも現在プレビュー段階です)。
 
   + Management REST API `api-version=2019-10-01-Preview` を使用してサービスを作成することにより、特定の IP アドレスにアクセスを制限できます。 プレビュー API の [CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate) には、新しい **IpRule** および **NetworkRuleSet** プロパティがあります。 このプレビュー機能は、特定のリージョンで使用できます。 詳しくは、「[Management REST API の使用方法](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)」をご覧ください。
 

@@ -13,12 +13,12 @@ ms.author: mimart
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c92305d3b8aae5bbc54df58d414cd9b103945bcb
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: a4e2e25189b35f7d17ef42536aa7cd86ac92ec82
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931455"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185861"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報のアーカイブ
 
@@ -2331,7 +2331,7 @@ Azure Active Directory (Azure AD) B2B コラボレーション機能を使用し
 
 その結果、これまではアプリの初期同期に多くの日数を要したり、完了に至らなかったりした多くのお客様が、わずか数分または数時間でこれを完了できるようになりました。
 
-詳細については、「[プロビジョニング中の動作](https://docs.microsoft.com/azure/active-directory/manage-apps/how-provisioning-works)」を参照してください。
+詳細については、「[プロビジョニング中の動作](/azure//active-directory/app-provisioning/how-provisioning-works)」を参照してください。
 
 ---
 

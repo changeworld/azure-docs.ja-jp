@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/23/2019
-ms.openlocfilehash: 36e665f889ece48661a859e1a9a44f23aec08c37
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 67660e3e98f5a12236798d74cc61f71616e6751d
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75548881"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934761"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Azure Toolkit for IntelliJ を使用して HDInsight クラスター上で SSH により Apache Spark アプリケーションをデバッグする
 
@@ -25,7 +25,7 @@ ms.locfileid: "75548881"
 
 * Windows ユーザーの場合:Windows コンピューターでローカルの Spark Scala アプリケーションを実行中に、[SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) で説明されている例外が発生する場合があります。 この例外は、Windows 上に WinUtils.exe がないことが原因で発生します。
 
-    このエラーを回避するには、[実行可能ファイルをダウンロード](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)して、**C:\WinUtils\bin** などの場所に保存します。 次に、環境変数 **HADOOP_HOME** を追加し、この変数の値を **C:\WinUtils** に設定します。
+    このエラーを回避するには、[Winutils.exe](https://github.com/steveloughran/winutils) をダウンロードして、**C:\WinUtils\bin** などの場所に保存します。 次に、環境変数 **HADOOP_HOME** を追加し、この変数の値を **C:\WinUtils** に設定します。
 
 * [IntelliJ IDEA](https://www.jetbrains.com/idea/download/#section=windows) (Community エディションは無料です。)
 
@@ -54,7 +54,7 @@ ms.locfileid: "75548881"
 
 1. 次の **[新しいプロジェクト]** ウィンドウで、次の情報を指定します。
 
-    |プロパティ |[説明] |
+    |プロパティ |説明 |
     |---|---|
     |プロジェクト名|名前を入力します。 このチュートリアルは `myApp` を使用します。|
     |プロジェクトの場所|プロジェクトを保存する任意の場所を入力します。|

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0088cced84da08828d02d3a0f83846babf286b71
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 462d820824ad6c53ad4b93ad5c88c66128619467
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911279"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933665"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>マップにバブル レイヤーを追加する
 
@@ -25,7 +25,7 @@ ms.locfileid: "75911279"
 
 ## <a name="add-a-bubble-layer"></a>バブル レイヤーを追加する
 
-次のコードでは、ポイントの配列をデータ ソースに読み込み、[バブル レイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)に接続します。 バブル レイヤーには、各バブルの 5 ピクセルの半径、白の塗りつぶしの色、青のストロークの色、6 ピクセルのストロークの幅をレンダリングするオプションがあります。 
+次のコードでは、ポイントの配列がデータ ソースに読み込まれます。 次に、データ ポイントが[バブル レイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)に接続されます。 バブル レイヤーには、各バブルを 5 ピクセルの半径、白の塗りつぶしの色、青のストロークの色、6 ピクセルのストロークの幅でレンダリングするオプションがあります。 
 
 ```javascript
 //Add point locations.

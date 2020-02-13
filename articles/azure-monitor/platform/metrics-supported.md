@@ -8,16 +8,16 @@ ms.topic: reference
 ms.date: 12/18/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 475e91957ab94538d07112ba808edd7c7d08f59e
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: e67cd8c85d9ba85e32ef7aece402f97ab24243e5
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310783"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963446"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 
-Azure Monitor では、複数の方法を使用してメトリックを操作できます。たとえば、ポータルでメトリックをグラフ化したり、REST API でアクセスしたり、PowerShell や CLI を使ってクエリを実行したりできます。 ここで示しているのは、Azure Monitor のメトリック パイプラインで現在利用できるメトリックの一覧です。 他のメトリックについては、ポータルや従来の API で使用できる場合があります。 以下の一覧には、統合された Azure Monitor メトリック パイプラインで使うことができるメトリックのみが含まれます。 これらのメトリックを照会してアクセスするには、[2018-01-01 バージョンの API](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) を使ってください。
+Azure Monitor では、複数の方法を使用してメトリックを操作できます。たとえば、ポータルでメトリックをグラフ化したり、REST API でアクセスしたり、PowerShell や CLI を使ってクエリを実行したりできます。 ここで示しているのは、Azure Monitor のメトリック パイプラインで現在利用できるメトリックの一覧です。 他のメトリックについては、ポータルや従来の API で使用できる場合があります。 以下の一覧には、統合された Azure Monitor メトリック パイプラインで使うことができるメトリックのみが含まれます。 メトリックは名前空間別にまとめられます。 サービスとそれらに属する名前空間の一覧については、「[Azure サービスのリソース プロバイダー](../../azure-resource-manager/management/azure-services-resource-providers.md)」を参照してください。 プログラムを使ってこれらのメトリックのクエリを実行し、アクセスするには、[2018-01-01 API バージョン](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)を使用してください。
 
 > [!NOTE]
 > 診断設定を使用した多ディメンション メトリックの送信は現在サポートされていません。 ディメンションを含むメトリックは、ディメンション値間で集計され、フラット化された単一ディメンションのメトリックとしてエクスポートされます。
@@ -28,10 +28,9 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 
 
-
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |qpu_metric|QPU|Count|Average|QPU. 範囲は S1 で 0 ～ 100、S2 で 0 ～ 200、S4 で 0 ～ 400|ServerResourceType|
 |memory_metric|メモリ|バイト|Average|メモリ。 範囲は S1 で 0 ～ 25 GB、S2 で 0 ～ 50 GB、S4 で 0 ～ 100 GB|ServerResourceType|
@@ -84,7 +83,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |TotalRequests|ゲートウェイ要求の合計 (非推奨)|Count|合計|ゲートウェイ要求の数 - 代わりに、GatewayResponseCodeCategory ディメンションで多次元要求メトリックを使用します|Location、Hostname|
 |SuccessfulRequests|成功したゲートウェイ要求 (非推奨)|Count|合計|成功したゲートウェイ要求の数 - 代わりに、GatewayResponseCodeCategory ディメンションで多次元要求メトリックを使用します|Location、Hostname|
@@ -107,7 +106,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftappconfigurationconfigurationstores"></a>Microsoft.AppConfiguration/configurationStores
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |HttpIncomingRequestCount|HttpIncomingRequestCount|Count|Count|受信 http 要求の合計数。|なし|
 |FailedHttpRequestCount|FailedHttpRequestCount|Count|Count|失敗した http 要求。|なし|
@@ -116,7 +115,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftappplatformspring"></a>Microsoft.AppPlatform/Spring
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |SystemCpuUsagePercentage|システム CPU 使用率 (%)|Percent|Average|システム全体の最近の CPU 使用率|AppName、Pod|
 |AppCpuUsagePercentage|アプリの CPU 使用率 (%)|Percent|Average|アプリ JVM の CPU 使用率 (%)|AppName、Pod|
@@ -146,7 +145,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft.Automation/automationAccounts
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |TotalJob|合計ジョブ数|Count|合計|ジョブの合計数|Runbook、Status|
 |TotalUpdateDeploymentRuns|更新プログラムのデプロイの合計実行回数|Count|合計|ソフトウェア更新プログラムのデプロイの実行回数の合計|SoftwareUpdateConfigurationName、Status|
@@ -155,7 +154,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |CoreCount|Dedicated Core Count (専用コアの数)|Count|合計|Batch アカウントの専用コアの合計数|なし|
 |TotalNodeCount|Dedicated Node Count (専用ノードの数)|Count|合計|Batch アカウントの専用ノードの合計数|なし|
@@ -192,7 +191,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/workspaces
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |送信されたジョブ|送信されたジョブ|Count|合計|送信されたジョブの数|Scenario、ClusterName|
 |ジョブが完了しました|完了したジョブ|Count|合計|完了したジョブの数|Scenario、ClusterName、ResultType|
@@ -212,7 +211,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft.Blockchain/blockchainMembers
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |CpuUsagePercentageInDouble|CPU 使用率 (%)|Percent|最大値|CPU 使用率 (%)|Node|
 |MemoryUsage|メモリ使用量|バイト|Average|メモリ使用量|Node|
@@ -234,7 +233,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftcacheredis"></a>Microsoft.Cache/redis
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |connectedclients|接続されているクライアント数|Count|最大値||ShardId|
 |totalcommandsprocessed|合計処理数|Count|合計||ShardId|
@@ -421,14 +420,14 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft.Cdn/cdnwebapplicationfirewallpolicies
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |WebApplicationFirewallRequestCount|Web アプリケーション ファイアウォール要求の数|Count|合計|Web アプリケーション ファイアウォールによって処理されるクライアント要求の数|PolicyName、RuleName、Action|
 
 
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.ClassicCompute/virtualMachines
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |Percentage CPU|Percentage CPU|Percent|Average|仮想マシンで現在使用されている、割り当てられたコンピューティング ユニットの割合。|なし|
 |Network In|Network In|バイト|合計|すべてのネットワーク インターフェイスで仮想マシンが受信したバイト数 (受信トラフィック)。|なし|
@@ -441,7 +440,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftclassiccomputedomainnamesslotsroles"></a>Microsoft.ClassicCompute/domainNames/slots/roles
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |Percentage CPU|Percentage CPU|Percent|Average|仮想マシンで現在使用されている、割り当てられたコンピューティング ユニットの割合。|RoleInstanceId|
 |Network In|Network In|バイト|合計|すべてのネットワーク インターフェイスで仮想マシンが受信したバイト数 (受信トラフィック)。|RoleInstanceId|
@@ -455,7 +454,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftclassicstoragestorageaccounts"></a>Microsoft.ClassicStorage/storageAccounts
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |UsedCapacity|Used capacity (使用済み容量)|バイト|Average|アカウントの使用済み容量|なし|
 |トランザクション|トランザクション|Count|合計|ストレージ サービスまたは指定された API 操作に対して行われた要求の数。 この数には、成功した要求と失敗した要求およびエラーが発生した要求が含まれます。 別の種類の応答の数には ResponseType ディメンションを使います。|ResponseType、GeoType、ApiName、Authentication|
@@ -467,7 +466,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftclassicstoragestorageaccountsblobservices"></a>Microsoft.ClassicStorage/storageAccounts/blobServices
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |BlobCapacity|Blob Capacity (BLOB 容量)|バイト|Average|ストレージ アカウントの Blob service によって使われているストレージの量 (バイト単位)。|BlobType、Tier|
 |BlobCount|Blob Count (BLOB 数)|Count|Average|ストレージ アカウントの Blob service 内の BLOB の数。|BlobType、Tier|
@@ -482,7 +481,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftclassicstoragestorageaccountstableservices"></a>Microsoft.ClassicStorage/storageAccounts/tableServices
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |TableCapacity|Table Capacity (テーブル容量)|バイト|Average|ストレージ アカウントの Table service によって使われているストレージの量 (バイト単位)。|なし|
 |TableCount|Table Count (テーブル数)|Count|Average|ストレージ アカウントの Table service 内のテーブルの数。|なし|
@@ -496,7 +495,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftclassicstoragestorageaccountsfileservices"></a>Microsoft.ClassicStorage/storageAccounts/fileServices
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |FileCapacity|File Capacity (ファイル容量)|バイト|Average|ストレージ アカウントの File サービスによって使われているストレージの量 (バイト単位)。|FileShare|
 |FileCount|File Count (ファイル数)|Count|Average|ストレージ アカウントの File サービス内のファイルの数。|FileShare|
@@ -513,7 +512,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftclassicstoragestorageaccountsqueueservices"></a>Microsoft.ClassicStorage/storageAccounts/queueServices
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |QueueCapacity|Queue Capacity (キュー容量)|バイト|Average|ストレージ アカウントの Queue サービスによって使われているストレージの量 (バイト単位)。|なし|
 |QueueCount|Queue Count (キュー数)|Count|Average|ストレージ アカウントの Queue サービス内のキューの数。|なし|
@@ -528,7 +527,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.CognitiveServices/accounts
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |TotalCalls|合計呼び出し数|Count|合計|呼び出しの合計数。|ApiName、OperationName、Region|
 |SuccessfulCalls|成功した呼び出し|Count|合計|成功した呼び出しの数。|ApiName、OperationName、Region|
@@ -547,7 +546,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |Percentage CPU|Percentage CPU|Percent|Average|仮想マシンで現在使用されている、割り当てられたコンピューティング ユニットの割合|なし|
 |Network In|課金対象のネットワーク受信 (非推奨)|バイト|合計|仮想マシンがすべてのネットワーク インターフェイスから受信した課金対象バイト数 (受信トラフィック) (非推奨)|なし|
@@ -592,7 +591,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |Percentage CPU|Percentage CPU|Percent|Average|仮想マシンで現在使用されている、割り当てられたコンピューティング ユニットの割合|VMName|
 |Network In|課金対象のネットワーク受信 (非推奨)|バイト|合計|仮想マシンがすべてのネットワーク インターフェイスから受信した課金対象バイト数 (受信トラフィック) (非推奨)|VMName|
@@ -637,7 +636,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftcomputevirtualmachinescalesetsvirtualmachines"></a>Microsoft.Compute/virtualMachineScaleSets/virtualMachines
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |Percentage CPU|Percentage CPU|Percent|Average|仮想マシンで現在使用されている、割り当てられたコンピューティング ユニットの割合|なし|
 |Network In|課金対象のネットワーク受信 (非推奨)|バイト|合計|仮想マシンがすべてのネットワーク インターフェイスから受信した課金対象バイト数 (受信トラフィック) (非推奨)|なし|
@@ -681,7 +680,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftcontainerinstancecontainergroups"></a>Microsoft.ContainerInstance/containerGroups
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |CpuUsage|CPU 使用率|Count|Average|すべてのコアの CPU 使用率 (ミリコア単位)。|containerName|
 |MemoryUsage|メモリ使用量|バイト|Average|合計メモリ使用量 (バイト単位)。|containerName|
@@ -690,7 +689,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft.ContainerRegistry/registries
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |TotalPullCount|プルの合計数|Count|Average|イメージのプルの合計数|なし|
 |SuccessfulPullCount|成功したプルの数|Count|Average|成功したイメージ プルの数|なし|
@@ -701,7 +700,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft.ContainerService/managedClusters
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |kube_node_status_allocatable_cpu_cores|マネージド クラスターで使用可能な CPU コアの合計数|Count|Average|マネージド クラスターで使用可能な CPU コアの合計数|なし|
 |kube_node_status_allocatable_memory_bytes|マネージド クラスターで使用可能なメモリの合計量|バイト|Average|マネージド クラスターで使用可能なメモリの合計量|なし|
@@ -713,14 +712,14 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft.CustomProviders/resourceproviders
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |SuccessfullRequests|成功した要求|Count|合計|カスタム プロバイダーによる正常に完了した要求|HttpMethod、CallPath、StatusCode|
 |FailedRequests|失敗した要求|Count|合計|カスタム リソース プロバイダーの使用可能なログを取得します|HttpMethod、CallPath、StatusCode|
 
 ## <a name="microsoftdataboxedgedataboxedgedevices"></a>Microsoft.DataBoxEdge/dataBoxEdgeDevices
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |NICReadThroughput|読み取りスループット (ネットワーク)|BytesPerSecond|Average|ゲートウェイのすべてのボリュームに対するレポート期間におけるデバイスでのネットワーク インターフェイスの読み取りスループット。|InstanceName|
 |NICWriteThroughput|書き込みスループット (ネットワーク)|BytesPerSecond|Average|ゲートウェイのすべてのボリュームに対するレポート期間におけるデバイスでのネットワーク インターフェイスの書き込みスループット。|InstanceName|
@@ -738,7 +737,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftdatafactorydatafactories"></a>Microsoft.DataFactory/datafactories
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |FailedRuns|失敗した実行|Count|合計||pipelineName、activityName|
 |SuccessfulRuns|成功した実行|Count|合計||pipelineName、activityName|
@@ -746,7 +745,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft.DataFactory/factories
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |PipelineFailedRuns|失敗したパイプライン実行回数のメトリック|Count|合計||FailureType、Name|
 |PipelineSucceededRuns|成功したパイプライン実行回数のメトリック|Count|合計||FailureType、Name|
@@ -769,7 +768,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.DataLakeAnalytics/accounts
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |JobEndedSuccess|Successful Jobs (成功したジョブ)|Count|合計|成功したジョブの数。|なし|
 |JobEndedFailure|Failed Jobs (失敗したジョブ)|Count|合計|失敗したジョブの数。|なし|
@@ -781,7 +780,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.DataLakeStore/accounts
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |TotalStorage|保存量の合計|バイト|最大値|アカウントに保存されたデータの総量。|なし|
 |DataWritten|データ書き込み量|バイト|合計|アカウントに書き込まれたデータの総量。|なし|
@@ -792,7 +791,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |cpu_percent|CPU 使用率|Percent|Average|CPU 使用率|なし|
 |memory_percent|メモリの割合|Percent|Average|メモリの割合|なし|
@@ -813,7 +812,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |cpu_percent|CPU 使用率|Percent|Average|CPU 使用率|なし|
 |memory_percent|メモリの割合|Percent|Average|メモリの割合|なし|
@@ -834,7 +833,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |cpu_percent|CPU 使用率|Percent|Average|CPU 使用率|なし|
 |memory_percent|メモリの割合|Percent|Average|メモリの割合|なし|
@@ -856,7 +855,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>Microsoft.DBforPostgreSQL/serversv2
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |cpu_percent|CPU 使用率|Percent|Average|CPU 使用率|なし|
 |memory_percent|メモリの割合|Percent|Average|メモリの割合|なし|
@@ -873,7 +872,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.Devices/IotHubs
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |d2c.telemetry.ingress.allProtocol|テレメトリ メッセージ送信試行|Count|合計|IoT Hub への送信が試行された Device to Cloud テレメトリ メッセージの数|なし|
 |d2c.telemetry.ingress.success|送信済みテレメトリ メッセージ|Count|合計|IoT Hub に正常に送信された Device to Cloud テレメトリ メッセージの数|なし|
@@ -944,7 +943,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft.Devices/provisioningServices
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |RegistrationAttempts|Registration attempts (登録試行回数)|Count|合計|試行されたデバイス登録の回数|ProvisioningServiceName、IotHubName、Status|
 |DeviceAssignments|Devices assigned (割り当て済みデバイス数)|Count|合計|IoT Hub に割り当てられているデバイスの数|ProvisioningServiceName、IotHubName|
@@ -953,7 +952,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |AddRegion|追加されたリージョン|Count|Count|追加されたリージョン|リージョン|
 |AvailableStorage|使用可能なストレージ|バイト|合計|5 分単位の細分性で報告された使用可能なストレージの合計|CollectionName、DatabaseName、Region|
@@ -989,7 +988,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftenterpriseknowledgegraphservices"></a>Microsoft.EnterpriseKnowledgeGraph/services
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |TransactionCount|トランザクション数|Count|Count|トランザクションの合計数|TransactionCount|
 |SuccessCount|成功数|Count|Count|成功したトランザクション数|SuccessCount|
@@ -998,7 +997,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsofteventgriddomains"></a>Microsoft.EventGrid/domains
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |PublishSuccessCount|発行されたイベント|Count|合計|このトピックに発行されたイベントの合計数|トピック|
 |PublishFailCount|発行失敗イベント|Count|合計|このトピックに発行できなかったイベントの合計|Topic、ErrorType、Error|
@@ -1012,7 +1011,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsofteventgridtopics"></a>Microsoft.EventGrid/topics
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |PublishSuccessCount|発行されたイベント|Count|合計|このトピックに発行されたイベントの合計数|なし|
 |PublishFailCount|発行失敗イベント|Count|合計|このトピックに発行できなかったイベントの合計|ErrorType、Error|
@@ -1027,7 +1026,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsofteventgrideventsubscriptions"></a>Microsoft.EventGrid/eventSubscriptions
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |MatchedEventCount|一致するイベント|Count|合計|このイベント サブスクリプションに一致するイベントの合計|なし|
 |DeliveryAttemptFailCount|配信できなかったイベント|Count|合計|このイベント サブスクリプションに配信できなかったイベントの合計|Error、ErrorType|
@@ -1038,7 +1037,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsofteventgridextensiontopics"></a>Microsoft.EventGrid/extensionTopics
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |PublishSuccessCount|発行されたイベント|Count|合計|このトピックに発行されたイベントの合計数|なし|
 |PublishFailCount|発行失敗イベント|Count|合計|このトピックに発行できなかったイベントの合計|ErrorType、Error|
@@ -1049,7 +1048,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft.EventHub/namespaces
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |SuccessfulRequests|成功した要求|Count|合計|Microsoft.EventHub の成功した要求数。|EntityName、OperationResult|
 |ServerErrors|サーバー エラー。|Count|合計|Microsoft.EventHub のサーバー エラー数。|EntityName、OperationResult|
@@ -1088,7 +1087,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsofteventhubclusters"></a>Microsoft.EventHub/clusters
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |SuccessfulRequests|成功した要求|Count|合計|Microsoft.EventHub の成功した要求数。|OperationResult|
 |ServerErrors|サーバー エラー。|Count|合計|Microsoft.EventHub のサーバー エラー数。|OperationResult|
@@ -1112,7 +1111,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsofthdinsightclusters"></a>Microsoft.HDInsight/clusters
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |GatewayRequests|ゲートウェイ要求数|Count|合計|ゲートウェイ要求の数|HttpStatus|
 |CategorizedGatewayRequests|カテゴリ別のゲートウェイ要求数|Count|合計|カテゴリ別のゲートウェイ要求の数 (1xx/2xx/3xx/4xx/5xx)|HttpStatus|
@@ -1121,7 +1120,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftinsightsautoscalesettings"></a>Microsoft.Insights/AutoscaleSettings
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |ObservedMetricValue|実際のメトリック値|Count|Average|実行時に自動スケールによって計算された値|MetricTriggerSource|
 |MetricThreshold|メトリックのしきい値|Count|Average|自動スケールの実行時に構成されていた自動スケールのしきい値。|MetricTriggerRule|
@@ -1133,7 +1132,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft.Insights/Components
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |availabilityResults/availabilityPercentage|可用性|Percent|Average|正常に完了した可用性テストの割合|availabilityResult/name、availabilityResult/location|
 |availabilityResults/count|可用性テスト|Count|Count|可用性テストの数|availabilityResult/name、availabilityResult/location、availabilityResult/success|
@@ -1170,7 +1169,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |ServiceApiHit|サービス API ヒット数の合計|Count|Count|サービス API ヒット数の合計|ActivityType、ActivityName|
 |ServiceApiLatency|サービス API の全体的な待機時間|ミリ秒|Average|サービス API 要求の全体的な待機時間|ActivityType、ActivityName、StatusCode、StatusCodeClass|
@@ -1180,7 +1179,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftkustoclusters"></a>Microsoft.Kusto/Clusters
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |CacheUtilization|キャッシュ使用率|Percent|Average|クラスター スコープ内の使用率レベル|なし|
 |QueryDuration|クエリ実行時間|ミリ秒|Average|クエリの実行時間 (秒単位)|QueryStatus|
@@ -1208,7 +1207,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/workflows
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |RunsStarted|開始した実行|Count|合計|開始したワークフロー実行の数。|なし|
 |RunsCompleted|完了した実行|Count|合計|完了したワークフロー実行の数。|なし|
@@ -1252,7 +1251,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftlogicintegrationserviceenvironments"></a>Microsoft.Logic/integrationServiceEnvironments
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |RunsStarted|開始した実行|Count|合計|開始したワークフロー実行の数。|なし|
 |RunsCompleted|完了した実行|Count|合計|完了したワークフロー実行の数。|なし|
@@ -1289,7 +1288,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft.MachineLearningServices/workspaces
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |完了した実行数|完了した実行数|Count|合計|このワークスペースに対して正常に完了した実行の数|Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
 |開始した実行数|開始した実行数|Count|合計|このワークスペースに対して開始された実行数|Scenario、RunType、PublishedPipelineId、ComputeType、PipelineStepType|
@@ -1318,14 +1317,14 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftmapsaccounts"></a>Microsoft.Maps/accounts
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |使用法|使用法|Count|Count|API 呼び出しの数|ApiCategory、ApiName、ResultType、ResponseCode|
 |可用性|可用性|Percent|Average|API の可用性|ApiCategory、ApiName|
 
 ## <a name="microsoftmediamediaservicesstreamingendpoints"></a>Microsoft.Media/mediaservices/streamingEndpoints
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |エグレス|エグレス|バイト|合計|エグレス データの量 (バイト単位)。|OutputFormat|
 |SuccessE2ELatency|成功したエンド ツー エンドの待機時間|ミリ秒|Average|成功した要求の平均待機時間 (ミリ秒単位)。|OutputFormat|
@@ -1334,7 +1333,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft.Media/mediaservices
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |AssetQuota|アセットのクォータ|Count|Average|現在のメディア サービス アカウントで許可されている資産の数|なし|
 |AssetCount|アセット数|Count|Average|現在のメディア サービス アカウントに既に作成されている資産の数|なし|
@@ -1348,7 +1347,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftnetappnetappaccountscapacitypoolsvolumes"></a>Microsoft.NetApp/netAppAccounts/capacityPools/volumes
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |AverageReadLatency|読み取りの平均待機時間|MilliSeconds|Average|操作ごとの読み取りの平均待機時間 (ミリ秒単位)|なし|
 |AverageWriteLatency|書き込みの平均待機時間|MilliSeconds|Average|操作ごとの書き込みの平均待機時間 (ミリ秒単位)|なし|
@@ -1359,14 +1358,14 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftnetappnetappaccountscapacitypools"></a>Microsoft.NetApp/netAppAccounts/capacityPools
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |VolumePoolAllocatedUsed|ボリューム プールの使用済みの割り当て|バイト|Average|プールの使用済みの割り当てサイズ|なし|
 |VolumePoolTotalLogicalSize|ボリューム プールの論理サイズの合計|バイト|Average|プールに属するすべてのボリュームの論理サイズの合計|なし|
 
 ## <a name="microsoftnetworknetworkinterfaces"></a>Microsoft.Network/networkInterfaces
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |BytesSentRate|送信バイト数|バイト|合計|ネットワーク インターフェイスが送信したバイト数|なし|
 |BytesReceivedRate|受信バイト数|バイト|合計|ネットワーク インターフェイスが受信したバイト数|なし|
@@ -1375,7 +1374,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft.Network/loadBalancers
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |VipAvailability|データ パスの可用性|Count|Average|期間あたりの Load Balancer データ パスの可用性平均|FrontendIPAddress、FrontendPort|
 |DipAvailability|正常性プローブの状態|Count|Average|期間あたりの Load Balancer 正常性プローブの状態平均|ProtocolType、BackendPort、FrontendIPAddress、FrontendPort、BackendIPAddress|
@@ -1389,7 +1388,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftnetworkdnszones"></a>Microsoft.Network/dnszones
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |QueryVolume|クエリ数|Count|合計|DNS ゾーンで処理されたクエリの数|なし|
 |RecordSetCount|レコード セット数|Count|最大値|DNS ゾーンのレコード セットの数|なし|
@@ -1398,7 +1397,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft.Network/publicIPAddresses
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |PacketsInDDoS|DDoS 受信パケット数|CountPerSecond|最大値|DDoS 受信パケット数|なし|
 |PacketsDroppedDDoS|DDoS 受信パケット破棄数|CountPerSecond|最大値|DDoS 受信パケット破棄数|なし|
@@ -1431,7 +1430,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft.Network/virtualNetworks
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |PingMeshAverageRoundtripMs|VM への Ping のラウンド トリップ時間|MilliSeconds|Average|宛先 VM に送信された Ping のラウンド トリップ時間|SourceCustomerAddress、DestinationCustomerAddress|
 |PingMeshProbesFailedPercent|VM への Ping の失敗|Percent|Average|宛先 VM の送信された Ping の総数に対する失敗した Ping の数の割合 (%)|SourceCustomerAddress、DestinationCustomerAddress|
@@ -1439,7 +1438,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft.Network/azurefirewalls
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |ApplicationRuleHit|アプリケーション規則のヒット数|Count|合計|アプリケーション規則がヒットした回数|Status、Reason、Protocol|
 |NetworkRuleHit|ネットワーク規則のヒット数|Count|合計|ネットワーク規則がヒットした回数|Status、Reason、Protocol|
@@ -1450,7 +1449,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationGateways
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |スループット|スループット|BytesPerSecond|Average|Application Gateway が処理した 1 秒あたりのバイト数|なし|
 |UnhealthyHostCount|異常なホストの数|Count|Average|異常なバックエンド ホストの数|BackendSettingsPool|
@@ -1478,7 +1477,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.Network/virtualNetworkGateways
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |AverageBandwidth|ゲートウェイの S2S 帯域幅|BytesPerSecond|Average|1 秒あたりのゲートウェイのサイト対サイト帯域幅の平均 (バイト単位)|なし|
 |P2SBandwidth|ゲートウェイの P2S 帯域幅|BytesPerSecond|Average|1 秒あたりのゲートウェイのポイント対サイト帯域幅の平均 (バイト単位)|なし|
@@ -1494,7 +1493,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftnetworkexpressrouteports"></a>Microsoft.Network/expressRoutePorts
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |RxLightLevel|RxLightLevel|Count|Average|DBM の Rx ライト レベル|Link、Lane|
 |TxLightLevel|TxLightLevel|Count|Average|DBM の Tx ライト レベル|Link、Lane|
@@ -1505,7 +1504,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.Network/expressRouteCircuits
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |BitsInPerSecond (受信ビット数/秒)|BitsInPerSecond (受信ビット数/秒)|CountPerSecond|Average|1 秒あたりの Azure へのイングレス ビット数|PeeringType|
 |BitsOutPerSecond (送信ビット数/秒)|BitsOutPerSecond (送信ビット数/秒)|CountPerSecond|Average|1 秒あたりの Azure からのエグレス ビット数|PeeringType|
@@ -1518,28 +1517,28 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftnetworkexpressroutecircuitspeerings"></a>Microsoft.Network/expressRouteCircuits/peerings
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |BitsInPerSecond (受信ビット数/秒)|BitsInPerSecond (受信ビット数/秒)|CountPerSecond|Average|1 秒あたりの Azure へのイングレス ビット数|なし|
 |BitsOutPerSecond (送信ビット数/秒)|BitsOutPerSecond (送信ビット数/秒)|CountPerSecond|Average|1 秒あたりの Azure からのエグレス ビット数|なし|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft.Network/connections
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |BitsInPerSecond (受信ビット数/秒)|BitsInPerSecond (受信ビット数/秒)|CountPerSecond|Average|1 秒あたりの Azure へのイングレス ビット数|なし|
 |BitsOutPerSecond (送信ビット数/秒)|BitsOutPerSecond (送信ビット数/秒)|CountPerSecond|Average|1 秒あたりの Azure からのエグレス ビット数|なし|
 
 ## <a name="microsoftnetworkexpressroutegateways"></a>Microsoft.Network/expressRouteGateways
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |ErGatewayConnectionBitsInPerSecond|BitsInPerSecond (受信ビット数/秒)|CountPerSecond|Average|1 秒あたりの Azure へのイングレス ビット数|ConnectionName|
 |ErGatewayConnectionBitsOutPerSecond|BitsOutPerSecond (送信ビット数/秒)|CountPerSecond|Average|1 秒あたりの Azure からのエグレス ビット数|ConnectionName|
 
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft.Network/trafficManagerProfiles
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |QpsByEndpoint|Queries by Endpoint Returned (エンドポイント別の返されたクエリ数)|Count|合計|指定された期間内に Traffic Manager エンドポイントが返された回数|EndpointName|
 |ProbeAgentCurrentEndpointStateByProfileResourceId|Endpoint Status by Endpoint (エンドポイント別のエンドポイント状態)|Count|最大値|エンドポイントのプローブの状態が "有効" の場合は 1、それ以外の場合は 0。|EndpointName|
@@ -1548,7 +1547,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftnetworknetworkwatchersconnectionmonitors"></a>Microsoft.Network/networkWatchers/connectionMonitors
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |ProbesFailedPercent|失敗したプローブの割合|Percent|Average|失敗した接続監視プローブの割合|なし|
 |AverageRoundtripMs|Avg.ラウンド トリップ時間 (ミリ秒)|MilliSeconds|Average|ソースと接続先の間で送信された接続監視プローブのネットワークの平均ラウンド トリップ時間 (ミリ秒)|なし|
@@ -1558,7 +1557,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft.Network/frontdoors
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |RequestCount|要求数|Count|合計|HTTP/S プロキシによって処理されるクライアント要求の数|HttpStatus、HttpStatusGroup、ClientRegion、ClientCountry|
 |RequestSize|要求サイズ|バイト|合計|HTTP/S プロキシにクライアントからの要求として送信されたバイトの数|HttpStatus、HttpStatusGroup、ClientRegion、ClientCountry|
@@ -1573,7 +1572,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft.NotificationHubs/Namespaces/NotificationHubs
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |registration.all|登録操作|Count|合計|成功した登録操作の数 (作成、更新、クエリ、および削除)。 |なし|
 |registration.create|登録作成操作|Count|合計|成功した登録作成の数。|なし|
@@ -1640,7 +1639,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.OperationalInsights/workspaces
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |Average_% Free Inodes|% Free Inodes|Count|Average|Average_% Free Inodes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
 |Average_% Free Space|% Free Space|Count|Average|Average_% Free Space|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
@@ -1716,13 +1715,13 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftpeeringpeeringservices"></a>Microsoft.Peering/peeringServices
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |PrefixLatency|プレフィックスの待機時間|ミリ秒|Average|プレフィックスの待機時間の中央値|PrefixName|
 
 ## <a name="microsoftpeeringpeerings"></a>Microsoft.Peering/peerings
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |SessionAvailabilityV4|セッション可用性 V4|Percent|Average|V4 セッションの可用性|ConnectionId|
 |SessionAvailabilityV6|セッションの可用性 V6|Percent|Average|V6 セッションの可用性|ConnectionId|
@@ -1731,7 +1730,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |QueryDuration|クエリ実行時間|ミリ秒|Average|最後の間隔における DAX クエリの実行時間|ディメンションなし|
 |QueryPoolJobQueueLength|スレッド:クエリ プール ジョブ キューの長さ|Count|Average|クエリ スレッド プールのキューに登録されているジョブの数。|ディメンションなし|
@@ -1743,7 +1742,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft.Relay/namespaces
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |ListenerConnections-Success|ListenerConnections-Success|Count|合計|Microsoft.Relay の正常な ListenerConnections.|EntityName、OperationResult|
 |ListenerConnections-ClientError|ListenerConnections-ClientError|Count|合計|Microsoft.Relay の ListenerConnections での ClientError.|EntityName、OperationResult|
@@ -1762,7 +1761,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |SearchLatency|検索の待機時間|Seconds|Average|検索サービスの平均検索待機時間|なし|
 |SearchQueriesPerSecond|1 秒あたりの検索クエリ数|CountPerSecond|Average|検索サービスの 1 秒あたりの検索クエリ数|なし|
@@ -1771,7 +1770,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |SuccessfulRequests|成功した要求|Count|合計|名前空間の成功した要求の総数|EntityName、OperationResult|
 |ServerErrors|サーバー エラー。|Count|合計|Microsoft.ServiceBus のサーバー エラー数。|EntityName、OperationResult|
@@ -1796,7 +1795,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftservicefabricmeshapplications"></a>Microsoft.ServiceFabricMesh/applications
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |AllocatedCpu|AllocatedCpu|Count|Average|このコンテナーに割り当てられた CPU (ミリコア単位)|ApplicationName、ServiceName、CodePackageName、ServiceReplicaName|
 |AllocatedMemory|AllocatedMemory|バイト|Average|このコンテナーに割り当てられたメモリ (MB 単位)|ApplicationName、ServiceName、CodePackageName、ServiceReplicaName|
@@ -1812,7 +1811,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft.SignalRService/SignalR
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |ConnectionCount|Connection Count (接続数)|Count|最大値|ユーザー接続の量。|エンドポイント|
 |MessageCount|メッセージ数|Count|合計|メッセージの総量。|なし|
@@ -1827,7 +1826,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/databases
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |cpu_percent|CPU の割合|Percent|Average|CPU の割合|なし|
 |physical_data_read_percent|データ IO の割合|Percent|Average|データ IO の割合|なし|
@@ -1851,8 +1850,8 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |dwu_used|使用済み DWU|Count|最大値|使用された DWU。 データ ウェアハウスにのみ適用されます。|なし|
 |cache_hit_percent|キャッシュ ヒットの割合|Percent|最大値|キャッシュ ヒットの割合。 データ ウェアハウスにのみ適用されます。|なし|
 |cache_used_percent|使用されたキャッシュの割合|Percent|最大値|使用されたキャッシュの割合。 データ ウェアハウスにのみ適用されます。|なし|
-|sqlserver_process_core_percent|SQL Server プロセス コアの割合|Percent|最大値|SQL DB プロセスに対する CPU 使用率 (%)。 データ ウェアハウスには適用されません。|なし|
-|sqlserver_process_memory_percent|SQL Server プロセス メモリの割合|Percent|最大値|SQL DB プロセスに対するメモリ使用率 (%)。 データ ウェアハウスには適用されません。|なし|
+|sqlserver_process_core_percent|SQL Server プロセス コアの割合|Percent|最大値|オペレーティング システムによって測定された SQL Server プロセスの CPU 使用率 (%)。 現在、サーバーレス データベースでのみ使用できます。|なし|
+|sqlserver_process_memory_percent|SQL Server プロセス メモリの割合|Percent|最大値|オペレーティング システムによって測定された SQL Server プロセスのメモリ使用率 (%)。 現在、サーバーレス データベースでのみ使用できます。|なし|
 |tempdb_data_size|Tempdb データ ファイル サイズ (KB)|Count|最大値|Tempdb データ ファイル サイズ (KB)。 データ ウェアハウスには適用されません。|なし|
 |tempdb_log_size|Tempdb ログ ファイル サイズ (KB)|Count|最大値|Tempdb ログ ファイル サイズ (KB)。 データ ウェアハウスには適用されません。|なし|
 |tempdb_log_used_percent|Tempdb ログ使用率|Percent|最大値|Tempdb ログ使用率。 データ ウェアハウスには適用されません。|なし|
@@ -1869,7 +1868,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |cpu_percent|CPU の割合|Percent|Average|CPU の割合|なし|
 |database_cpu_percent|CPU の割合|Percent|Average|CPU の割合|DatabaseResourceId|
@@ -1906,7 +1905,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftsqlservers"></a>Microsoft.Sql/servers
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |dtu_consumption_percent|DTU の割合|Percent|Average|DTU の割合|ElasticPoolResourceId|
 |database_dtu_consumption_percent|DTU の割合|Percent|Average|DTU の割合|DatabaseResourceId、ElasticPoolResourceId|
@@ -1916,7 +1915,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |virtual_core_count|仮想コア数|Count|Average|仮想コア数|なし|
 |avg_cpu_percent|平均 CPU の割合|Percent|Average|平均 CPU の割合|なし|
@@ -1930,7 +1929,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |UsedCapacity|Used capacity (使用済み容量)|バイト|Average|アカウントの使用済み容量|なし|
 |トランザクション|トランザクション|Count|合計|ストレージ サービスまたは指定された API 操作に対して行われた要求の数。 この数には、成功した要求と失敗した要求およびエラーが発生した要求が含まれます。 別の種類の応答の数には ResponseType ディメンションを使います。|ResponseType、GeoType、ApiName、Authentication|
@@ -1942,7 +1941,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft.Storage/storageAccounts/blobServices
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |BlobCapacity|Blob Capacity (BLOB 容量)|バイト|Average|ストレージ アカウントの Blob service によって使われているストレージの量 (バイト単位)。|BlobType、Tier|
 |BlobCount|Blob Count (BLOB 数)|Count|Average|ストレージ アカウントの Blob service 内の BLOB の数。|BlobType、Tier|
@@ -1957,7 +1956,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft.Storage/storageAccounts/tableServices
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |TableCapacity|Table Capacity (テーブル容量)|バイト|Average|ストレージ アカウントの Table service によって使われているストレージの量 (バイト単位)。|なし|
 |TableCount|Table Count (テーブル数)|Count|Average|ストレージ アカウントの Table service 内のテーブルの数。|なし|
@@ -1971,7 +1970,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft.Storage/storageAccounts/fileServices
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |FileCapacity|File Capacity (ファイル容量)|バイト|Average|ストレージ アカウントの File サービスによって使われているストレージの量 (バイト単位)。|FileShare|
 |FileCount|File Count (ファイル数)|Count|Average|ストレージ アカウントの File サービス内のファイルの数。|FileShare|
@@ -1988,7 +1987,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft.Storage/storageAccounts/queueServices
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |QueueCapacity|Queue Capacity (キュー容量)|バイト|Average|ストレージ アカウントの Queue サービスによって使われているストレージの量 (バイト単位)。|なし|
 |QueueCount|Queue Count (キュー数)|Count|Average|ストレージ アカウントの Queue サービス内のキューの数。|なし|
@@ -2006,7 +2005,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftstoragecachecaches"></a>Microsoft.StorageCache/caches
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |ClientIOPS|クライアント IOPS の合計|Count|Average|キャッシュによって処理された、クライアント ファイル操作の速度。|なし|
 |ClientLatency|クライアントの平均待機時間|ミリ秒|Average|ストレージ キャッシュに対するクライアント ファイル操作の平均待機時間。|なし|
@@ -2034,7 +2033,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftstoragesyncstoragesyncservices"></a>microsoft.storagesync/storageSyncServices
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |ServerSyncSessionResult|同期セッションの結果|Count|Average|サーバー エンドポイントがクラウド エンドポイントとの同期セッションを正常に完了するたびに 1 の値をログ記録するメトリック|SyncGroupName、ServerEndpointName、SyncDirection|
 |StorageSyncSyncSessionAppliedFilesCount|同期されたファイル数|Count|合計|同期したファイルの数|SyncGroupName、ServerEndpointName、SyncDirection|
@@ -2048,7 +2047,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftstoragesyncstoragesyncservicessyncgroups"></a>microsoft.storagesync/storageSyncServices/syncGroups
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |SyncGroupSyncSessionAppliedFilesCount|同期されたファイル数|Count|合計|同期したファイルの数|SyncGroupName、ServerEndpointName、SyncDirection|
 |SyncGroupSyncSessionPerItemErrorsCount|ファイルが同期していない|Count|合計|同期に失敗したファイルの数|SyncGroupName、ServerEndpointName、SyncDirection|
@@ -2056,7 +2055,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftstoragesyncstoragesyncservicessyncgroupsserverendpoints"></a>microsoft.storagesync/storageSyncServices/syncGroups/serverEndpoints
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |ServerEndpointSyncSessionAppliedFilesCount|同期されたファイル数|Count|合計|同期したファイルの数|ServerEndpointName、SyncDirection|
 |ServerEndpointSyncSessionPerItemErrorsCount|ファイルが同期していない|Count|合計|同期に失敗したファイルの数|ServerEndpointName、SyncDirection|
@@ -2064,7 +2063,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftstoragesyncstoragesyncservicesregisteredservers"></a>microsoft.storagesync/storageSyncServices/registeredServers
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |ServerHeartbeat|サーバーのオンライン状態|Count|最大値|クラウド エンドポイントとのハートビートを正常に記録するたびに 1 の値をログ記録するメトリック|ServerResourceId、ServerName|
 |ServerRecallIOTotalSizeBytes|クラウドを使った階層化の呼び戻し|バイト|合計|サーバーに呼び戻されたデータの合計サイズ|ServerResourceId、ServerName|
@@ -2073,7 +2072,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |ResourceUtilization|SU % 使用率|Percent|最大値|SU % 使用率|LogicalName、PartitionId|
 |InputEvents|入力イベント|Count|合計|入力イベント|LogicalName、PartitionId|
@@ -2094,7 +2093,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsofttimeseriesinsightsenvironments"></a>Microsoft.TimeSeriesInsights/environments
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |IngressReceivedMessages|Ingress Received Messages (受信メッセージの受信)|Count|合計|すべてのイベント ハブまたは IoT ハブ イベント ソースから読み取られたメッセージの数|なし|
 |IngressReceivedInvalidMessages|Ingress Received Invalid Messages (無効な受信メッセージの受信)|Count|合計|すべてのイベント ハブまたは IoT ハブ イベント ソースから読み取られた無効なメッセージの数|なし|
@@ -2108,7 +2107,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsofttimeseriesinsightsenvironmentseventsources"></a>Microsoft.TimeSeriesInsights/environments/eventsources
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |IngressReceivedMessages|Ingress Received Messages (受信メッセージの受信)|Count|合計|イベント ソースから読み取られたメッセージの数|なし|
 |IngressReceivedInvalidMessages|Ingress Received Invalid Messages (無効な受信メッセージの受信)|Count|合計|イベント ソースから読み取られた無効なメッセージの数|なし|
@@ -2122,7 +2121,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftvmwarecloudsimplevirtualmachines"></a>Microsoft.VMwareCloudSimple/virtualMachines
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |DiskReadBytesPerSecond|Disk Read Bytes/Sec|BytesPerSecond|Average|サンプル期間にわたる読み取り操作による平均ディスク スループット。|なし|
 |DiskWriteBytesPerSecond|Disk Write Bytes/Sec|BytesPerSecond|Average|サンプル期間にわたる書き込み操作による平均ディスク スループット。|なし|
@@ -2155,7 +2154,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftwebserverfarms"></a>Microsoft.Web/serverfarms
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |CpuPercentage|CPU の割合|Percent|Average|CPU の割合|インスタンス|
 |MemoryPercentage|メモリの割合|Percent|Average|メモリの割合|インスタンス|
@@ -2175,7 +2174,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftwebsites-excluding-functions"></a>Microsoft.Web/sites (関数を除く)
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |CpuTime|CPU 時間|Seconds|合計|CPU 時間|インスタンス|
 |Requests|Requests|Count|合計|Requests|インスタンス|
@@ -2215,7 +2214,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftwebsites-functions"></a>Microsoft.Web/sites (関数)
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |BytesReceived|受信データ|バイト|合計|受信データ|インスタンス|
 |BytesSent|送信データ|バイト|合計|送信データ|インスタンス|
@@ -2244,7 +2243,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft.Web/sites/slots
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |CpuTime|CPU 時間|Seconds|合計|CPU 時間|インスタンス|
 |Requests|Requests|Count|合計|Requests|インスタンス|
@@ -2287,7 +2286,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftwebhostingenvironmentsmultirolepools"></a>Microsoft.Web/hostingEnvironments/multiRolePools
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |Requests|Requests|Count|合計|Requests|インスタンス|
 |BytesReceived|受信データ|バイト|合計|受信データ|インスタンス|
@@ -2314,7 +2313,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="microsoftwebhostingenvironmentsworkerpools"></a>Microsoft.Web/hostingEnvironments/workerPools
 
-|メトリック|メトリックの表示名|ユニット|集計の種類|[説明]|Dimensions|
+|メトリック|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |WorkersTotal|worker の合計数|Count|Average|worker の合計数|なし|
 |WorkersAvailable|利用可能な worker の数|Count|Average|利用可能な worker の数|なし|

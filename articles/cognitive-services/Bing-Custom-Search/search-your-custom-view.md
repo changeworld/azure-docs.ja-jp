@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
-ms.date: 05/09/2019
-ms.author: maheshb
-ms.openlocfilehash: f04bfc306a89c7bb6caf3f928f5fdfec66358649
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.date: 02/03/2020
+ms.author: aahi
+ms.openlocfilehash: f00ffee47e3eb6366d632d8b6ee9beb01f048442
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072739"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983114"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>ポータルから Bing Custom Search インスタンスを呼び出す
 
@@ -42,7 +42,7 @@ Bing Custom Search [ポータル](https://customsearch.ai)にサインインし�
 
 |パラメーター  |説明  |
 |---------|---------|
-|Safe Search     | 成人向けコンテンツの Web ページをフィルター処理するために使用されるフィルター。 Web、Image、Video、および Hosted UI エンドポイントに対してのみ使用できます。        |
+|Safe Search     | 成人向けコンテンツの Web ページをフィルター処理するために使用されるフィルター。 Web、Image、Video、および Hosted UI エンドポイントに対してのみ使用できます。 Bing Custom Video Search では、`moderate` および `strict` の 2 つの値のみがサポートされます。        |
 |ユーザー インターフェイスの言語    | ユーザー インターフェイス文字列に使用する言語。 たとえば、Hosted UI でイメージおよびビデオを有効にした場合、 **[イメージ]** タブおよび **[ビデオ]** タブでは指定した言語が使用されます。        |
 |Count     | 応答で返される検索結果の数。 Web、Image、および Video エンドポイントに対してのみ使用できます。         |
 |Offset    | 結果を返す前にスキップする検索の数です。 Web、Image、および Video エンドポイントに対してのみ使用できます。        |
@@ -53,7 +53,7 @@ Bing Custom Search [ポータル](https://customsearch.ai)にサインインし�
 
 新しいインスタンスを作成しなくても、Bing Custom Search インスタンスに関連付けられているサブスクリプションを変更することができます。 API 呼び出しが新しいサブスクリプションに対して送信および課金されるようにするには、Azure portal で新しい Bing Custom Search リソースを作成します。 API 要求で、新しいサブスクリプション キーをインスタンスのカスタム構成 ID と共に使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [C# を使用してカスタム ビューを呼び出す](./call-endpoint-csharp.md)
 - [Java を使用してカスタム ビューを呼び出す](./call-endpoint-java.md)

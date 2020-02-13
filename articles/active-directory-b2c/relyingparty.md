@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/25/2019
+ms.date: 02/02/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: caa7cbed7c56b63bcbf5ad8f287ab6cf32575c15
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7659c8187f7f4763b51b09362c94dad9554ed1c0
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840300"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982842"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -126,6 +126,8 @@ ms.locfileid: "76840300"
 | --------- | -------- | ----------- |
 | Scope | はい | シングル サインオン動作の範囲です。 指定できる値: `Suppressed`、`Tenant`、`Application`、または `Policy`。 `Suppressed` の値は、動作が抑制されることを示します。 たとえば、シングル サインオン セッションの場合、ユーザーのセッションは維持されず、ユーザーは常に ID プロバイダーを選択するように求められます。 `TrustFramework` 値では、信頼フレームワークのすべてのポリシーに動作が適用されることを示します。 たとえば、信頼フレームワークの 2 つのポリシー体験間を移動するユーザーは ID プロバイダーの選択を求められません。 `Tenant` 値では、テナントのすべてのポリシーに動作が適用されることを示します。 たとえば、テナントの 2 つのポリシー体験間を移動するユーザーは ID プロバイダーの選択を求められません。 `Application` 値では、要求を行うアプリケーションのすべてのポリシーに動作が適用されることを示します。 たとえば、アプリケーションの 2 つのポリシー体験間を移動するユーザーは ID プロバイダーの選択を求められません。 `Policy` の値は、動作がポリシーに適用されるだけであることを示します。 たとえば、信頼フレームワークの 2 つのポリシー体験間を移動するユーザーは、ポリシー間を切り替える場合に ID プロバイダーの選択を求められます。 |
 | KeepAliveInDays | はい | ユーザーのサインイン状態の継続期間を制御します。 値を 0 に設定すると、KMSI 機能がオフになります。 詳細については、[サインインしたままにする](custom-policy-keep-me-signed-in.md)方法に関するページを参照してください。 |
+|EnforceIdTokenHintOnLogout| いいえ|  クライアントでのエンド ユーザーの現在の認証済みセッションに関するヒントとして、事前に発行された ID トークンをログアウト エンドポイントに強制的に渡します。 指定できる値は `false`(既定値) または`true`です。 詳細については、[OpenID Connect による Web サインイン](openid-connect.md)に関する記事を参照してください。  |
+
 
 ## <a name="journeyinsights"></a>JourneyInsights
 
@@ -176,12 +178,12 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 
 | 要素 | 発生回数 | Description |
 | ------- | ----------- | ----------- |
-| DisplayName | 0:1 | ユーザーに表示される技術プロファイルの名前を含む文字列。 |
-| Description | 0:1 | ユーザーに表示される技術プロファイルの説明を含む文字列。 |
+| DisplayName | 1:1 | 技術プロファイルの名前を含む文字列。 |
+| 説明 | 0:1 | 技術プロファイルの説明を含む文字列。 |
 | Protocol | 1:1 | フェデレーションに使用されるプロトコル。 |
 | Metadata | 0:1 | プロトコルによって使用されるキーと値のペアの*項目*のコレクション。これによってトランザクション中に証明書利用者と他のコミュニティ参加者との間の対話を構成するようにエンドポイントとやりとりされます。 |
-| OutputClaims | 0:1 | 技術プロファイルの出力として実行される要求の種類の一覧。 これらの各要素には、**ClaimsSchema** セクションに、またはポリシー ファイルが継承したポリシー内に既に定義されている **ClaimType** への参照が含まれています。 |
-| SubjectNamingInfo | 0:1 | トークンで使用されているサブジェクト名。 |
+| OutputClaims | 1:1 | 技術プロファイルの出力として実行される要求の種類の一覧。 これらの各要素には、**ClaimsSchema** セクションに、またはポリシー ファイルが継承したポリシー内に既に定義されている **ClaimType** への参照が含まれています。 |
+| SubjectNamingInfo | 1:1 | トークンで使用されているサブジェクト名。 |
 
 **プロトコル** 要素には、次の属性が含まれています。
 

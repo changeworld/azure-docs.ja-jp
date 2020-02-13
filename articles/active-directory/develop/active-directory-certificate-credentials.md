@@ -14,12 +14,12 @@ ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 15fa6b9c7b9c84cd17b67c53dd65acd54ea63910
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 7b42676fa387914bc4825e2850b3d2f032827a79
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699225"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76962120"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft ID プラットフォーム アプリケーションの認証証明書資格情報
 
@@ -130,6 +130,6 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ## <a name="code-sample"></a>コード サンプル
 
 > [!NOTE]
-> 証明書のハッシュを使用し、それを Base64 文字列に変換することによって、X5T ヘッダーを計算する必要があります。 C# では、次のようになります。`System.Convert.ToBase64String(cert.GetCertHash());`
+> X5T ヘッダーを計算するには、証明書のハッシュを使用してベース 64 文字列に変換する必要があります。 これを C# で実行する場合のコードは `System.Convert.ToBase64String(cert.GetCertHash());` です
 
 [証明書を使用したデーモン アプリでの Microsoft ID プラットフォームの認証](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)に関する記事のコード サンプルに、アプリケーションが独自の資格情報を認証でどのように使用するかが示されています。 それは、`New-SelfSignedCertificate` Powershell コマンドを使用した[自己証明書の作成](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate)方法も示しています。 [アプリ作成スクリプト](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md)を利用して、証明書の作成やサムプリントの計算などを実行することもできます。

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 7f7e0c3eef96970c1820783225a4ff59be8113b3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: f6d2da49e2659cfa69d25e3fe71351547706fd42
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76769113"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984848"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスとは
 
@@ -27,7 +27,7 @@ Azure Machine Learning コンピューティング インスタンス (プレビ
 通常、コンピューティング インスタンスは開発環境として使用されます。  また、開発時やテスト時におけるトレーニングや推論のコンピューティング ターゲットとして使用することもできます。  大規模なタスクの場合、マルチノード スケーリング機能を備える [Azure Machine Learning コンピューティング クラスター](how-to-set-up-training-targets.md#amlcompute)は、コンピューティング ターゲットの選択肢として適しています。
 
 > [!NOTE]
-> 現在、コンピューティング インスタンスは、**米国中北部**または**英国南部**リージョンのワークスペースでのみ使用できます。他のリージョンは近日中にサポートされる予定です。
+> コンピューティング インスタンスは現在、**米国中北部**、**米国東部 2**、**北ヨーロッパ**、または**英国南部**リージョンのワークスペースでのみ使用できます。他のリージョンは近日中にサポートされる予定です。
 >ワークスペースが他のリージョンにある場合は、代わりに [Notebook VM](concept-compute-instance.md#notebookvm) を引き続き作成して使用することができます。 
 
 ## <a name="why-use-a-compute-instance"></a>コンピューティング インスタンスを使用する理由

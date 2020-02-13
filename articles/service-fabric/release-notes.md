@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 36586f93425c6583dd3be497da9f7a018ebd4c9d
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 73624df3cb7b04c3c442a6654f1388017482b2ba
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75526738"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935453"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric のリリース
 
@@ -51,9 +51,12 @@ Azure Service Fabric 7.0 の提供開始 Azure portal または Azure Resource M
 
 さらに、このリリースには、バグ修正、サポート、信頼性とパフォーマンスの強化などの他の新機能が含まれています。 すべての変更点の一覧については、[リリース ノート](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_70.md)を参照してください。
 
+### <a name="service-fabric-70-releases"></a>Service Fabric 7.0 のリリース
+
 | リリース日 | Release | 詳細情報 |
 |---|---|---|
 | 2019 年 11 月 18 日 | [Azure Service Fabric 7.0](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Service-Fabric-7-0-Release/ba-p/1015482)  | [リリース ノート](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_70.md)|
+| 2020 年 1 月 30 日 | [Azure Service Fabric 7.0 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-second-refresh-release/ba-p/1137690)  | [リリース ノート](https://github.com/Azure/service-fabric/blob/master/release_notes/Service-Fabric-70CU2-releasenotes.md)|
 
 
 ### <a name="service-fabric-65"></a>Service Fabric 6.5

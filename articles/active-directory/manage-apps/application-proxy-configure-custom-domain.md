@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 189b8666adde0eedcb451655657a4a82dc5e4fec
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 6f1656d730d55d4c5ab7fb963e49a8057ad88c9f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062525"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185534"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシでカスタム ドメインを構成する
 
@@ -142,7 +142,7 @@ Azure Active Directory アプリケーション プロキシ経由でアプリ�
 
 証明書の期限が切れると、別の証明書をアップロードするよう指示する警告が表示されます。 証明書が取り消された場合は、ユーザーがそのアプリにアクセスすると、セキュリティの警告が表示されることがあります。 アプリの証明書を更新するには、アプリの **[アプリケーション プロキシ]** ページに移動し、 **[証明書]** を選択して新しい証明書をアップロードします。 古い証明書が他のアプリによって使用されていない場合、その証明書は自動的に削除されます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Azure AD 認証を使用して発行されたアプリに対する[シングル サインオンを有効にする](application-proxy-configure-single-sign-on-with-kcd.md)。
-* 発行されたアプリに対する[条件付きアクセスを有効にする](../conditional-access/technical-reference.md#cloud-apps-assignments)。
+* 発行されたアプリに対する[条件付きアクセスを有効にする](../conditional-access/overview.md)。
 

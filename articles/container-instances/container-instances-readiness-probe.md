@@ -2,13 +2,13 @@
 title: コンテナー インスタンスに readiness probe を設定する
 description: probe を構成して、Azure Container Instances のコンテナーの準備ができたときのみ要求を受信するようにする方法について説明します。
 ms.topic: article
-ms.date: 10/17/2019
-ms.openlocfilehash: 5ebbcdeee231e3e67abd6758485a12984137997e
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 01/30/2020
+ms.openlocfilehash: 64bb4a3e429ce820835abbf8e235600e592f7868
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533557"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935679"
 ---
 # <a name="configure-readiness-probes"></a>readiness probe の構成
 
@@ -18,9 +18,12 @@ ms.locfileid: "74533557"
 
 Azure Container Instances は、[liveness probe](container-instances-liveness-probe.md) もサポートしています。これを構成すると、異常なコンテナーが自動的に再起動されます。
 
+> [!NOTE]
+> 現時点では、仮想ネットワークにデプロイされたコンテナー グループ内で readiness probe を使用することはできません。
+
 ## <a name="yaml-configuration"></a>YAML の構成
 
-例として、readiness probe を含む次のスニペットを使用して `readiness-probe.yaml` ファイルを作成します。 このファイルは、小規模な Web アプリを実行するコンテナーで構成される、コンテナー グループを定義します。 アプリは、パブリックの `mcr.microsoft.com/azuredocs/aci-helloworld` イメージからデプロイされます。 このコンテナー アプリは、[Azure CLI を使用して Azure でコンテナー インスタンスをデプロイする](container-instances-quickstart.md)などのクイックスタートでも示されています。
+例として、readiness probe を含む次のスニペットを使用して `readiness-probe.yaml` ファイルを作成します。 このファイルは、小規模な Web アプリを実行するコンテナーで構成される、コンテナー グループを定義します。 アプリは、パブリックの `mcr.microsoft.com/azuredocs/aci-helloworld` イメージからデプロイされます。 このコンテナー アプリは、「[Azure CLI を使用してコンテナー インスタンスを Azure にデプロイする](container-instances-quickstart.md)」やその他のクイックスタートにも示されています。
 
 ```yaml
 apiVersion: 2018-10-01
@@ -60,7 +63,9 @@ type: Microsoft.ContainerInstance/containerGroups
 
 ### <a name="start-command"></a>コマンドを開始する
 
-YAML ファイルには、コンテナーの開始時に実行される開始コマンドが含まれています。これは、文字列の配列を受け取る `command` プロパティによって定義されます。 このコマンドは、Web アプリが実行されているがコンテナーの準備ができていない時間をシミュレートします。 まず、シェル セッションを開始し、`node` コマンドを実行して Web アプリを起動します。 また、240 秒間スリープするコマンドを開始します。その後、`/tmp` ディレクトリ内に `ready` という名前のファイルを作成します。
+デプロイには、コンテナーの初回の実行開始時に実行される開始コマンドを定義する `command` プロパティが含まれています。 このプロパティは、文字列の配列を受け入れます。 このコマンドは、Web アプリが実行されているがコンテナーの準備ができていない時間をシミュレートします。 
+
+まず、シェル セッションを開始し、`node` コマンドを実行して Web アプリを起動します。 また、240 秒間スリープするコマンドを開始します。その後、`/tmp` ディレクトリ内に `ready` という名前のファイルを作成します。
 
 ```console
 node /usr/src/app/index.js & (sleep 240; touch /tmp/ready); wait
@@ -133,7 +138,7 @@ index.html.1                       100%[========================================
 > readiness probe は、コンテナー グループの有効期間中は継続して実行されます。 readiness コマンドが後になって失敗した場合、コンテナーに再度アクセスできなくなります。 
 > 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 readiness probe は、依存するコンテナーで構成される複数コンテナー グループを必要とするシナリオで役に立ちます。 複数コンテナーのシナリオの詳細については、「[Azure Container Instances でのコンテナー グループ](container-instances-container-groups.md)」を参照してください。
 

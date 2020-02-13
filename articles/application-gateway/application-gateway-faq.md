@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 14fe8780bb7919d942da186698275d5199f4586e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f2f2e02cdb5698d7569e5be177d54ca4dcb0ae02
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770086"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086541"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -68,7 +68,9 @@ Application Gateway は、お客様の仮想ネットワーク専用のデプロ
 
 ### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>キープアライブ タイムアウトと TCP アイドル タイムアウトの設定はどのようになっていますか?
 
- Application Gateway v1 SKU では、キープアライブ タイムアウトは 120 秒です。 v2 SKU のキープアライブ タイムアウトは 75 秒です。 TCP アイドル タイムアウトは、Application Gateway のフロントエンド仮想 IP (VIP) では既定値の 4 分となっています。
+*キープアライブ タイムアウト*では、固定接続が再利用されるか、または閉じられる前に、クライアントによってその接続上で別の HTTP 要求が送信されるまでの Application Gateway の待機時間が制御されます。 *TCP アイドル タイムアウト*では、アクティビティがない場合に TCP 接続が開いた状態になる時間の長さが制御されます。 
+
+Application Gateway v1 SKU での*キープアライブ タイムアウト*は 120 秒であり、v2 SKU では 75 秒です。 *TCP アイドル タイムアウト*は、Application Gateway の v1 および v2 SKU 両方のフロントエンド仮想 IP (VIP) 上で既定値の 4 分となっています。 
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>アプリケーション ゲートウェイの有効期間内に IP や DNS 名が変わることはありますか?
 
@@ -132,7 +134,7 @@ Traffic Manager を使用すると、異なるデータ センターにある複
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>インスタンスを中断せずにサイズを中から大に変更できますか?
 
-はい。 Azure では、インスタンスを更新ドメインと障害ドメインに分散させ、全インスタンスで同時に障害が発生することがないようにしています。 Application Gateway は、同じゲートウェイの複数のインスタンスを追加して負荷を共有することによるスケーリングをサポートします。
+はい。
 
 ## <a name="configuration"></a>構成
 
@@ -276,7 +278,7 @@ Application Gateway は、認証証明書を 100 件までサポートしてい�
 
 ### <a name="does-application-gateway-natively-integrate-with-azure-key-vault"></a>Application Gateway は Azure Key Vault とネイティブに統合されていますか?
 
-はい、Application Gateway v2 SKU では、Key Vault をサポートします。 詳細については、「[Key Vault 証明書での SSL 終了](key-vault-certs.md)」を参照してください。
+はい、Application Gateway v2 SKU では、Key Vault をサポートします。 詳細については、「[Key Vault 証明書での SSL 終焉](key-vault-certs.md)」を参照してください。
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>.com と .net のサイトの HTTPS リスナーはどのように構成するのでしょうか? 
 

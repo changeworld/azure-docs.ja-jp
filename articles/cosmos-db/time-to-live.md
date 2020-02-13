@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.reviewer: sngun
-ms.openlocfilehash: c504e2f574970142942945de5a0a9fb409bb166b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5407c38f33d167ff5114cd55878e3470e7248d71
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498303"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188714"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Azure Cosmos DB の Time to Live (TTL) 
 
@@ -44,9 +44,7 @@ Time to Live 値は秒数で設定され、項目が最後に変更された時�
 
 * TTL がコンテナーに設定されていない場合、そのコンテナー内の項目の Time to Live は無効になります。 
 
-* コンテナーの TTL が -1 に設定されている場合、そのコンテナー内にある Time to Live が n に設定されている項目は n 秒後に期限切れになり、その他の項目は期限切れになりません。 
-
-TTL に基づいた項目の削除は無料です。 TTL 期限切れの結果として項目が削除されても追加コストは発生しません (つまり追加の RU は消費されません)。
+* コンテナーの TTL が -1 に設定されている場合、そのコンテナー内にある Time to Live が n に設定されている項目は n 秒後に期限切れになり、その他の項目は期限切れになりません。
 
 ## <a name="examples"></a>例
 
@@ -84,7 +82,7 @@ TTL に基づいた項目の削除は無料です。 TTL 期限切れの結果�
 |ttl = -1   |TTL は有効です。 項目は無期限に設定されます。|
 |ttl = 2000 |TTL は有効です。 項目は、2000 秒後に期限切れになります。|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Time to Live を構成する方法について次の記事をご覧ください。
 

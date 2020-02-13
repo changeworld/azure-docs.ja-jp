@@ -17,16 +17,14 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 567df85fa634570b0ac04fe6da906776a74c0550
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 64d8481200359b4a4421e3f3c99e4fc5a32ef23f
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76833348"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159543"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 Microsoft ID プラットフォームと統合するアプリケーションは、データにアクセスする方法をユーザーと管理者が制御できるようにする承認モデルに従います。 この承認モデルの実装が Microsoft ID プラットフォーム エンドポイントで更新されて、アプリが Microsoft ID プラットフォームとやり取りする方法が変わりました。 この記事では、スコープ、アクセス許可、同意など、この承認モデルの基本的な概念について説明します。
 
@@ -204,7 +202,7 @@ Microsoft のエコシステムにおける高い権限には、*管理者によ
 
 | パラメーター     | 条件     | 説明                                                                               |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
-| `tenant` | Required | アクセス許可を要求するディレクトリ テナント。 GUID またはフレンドリ名の形式で指定できます。または、例で示すように `common` で総称的に参照できます。 |
+| `tenant` | Required | アクセス許可を要求するディレクトリ テナント。 GUID またはフレンドリ名の形式で指定できます。または、例に示すように、組織によって総称的に参照できます。 'Common' は使用しないでください。個人のアカウントは、テナントのコンテキスト以外で管理者の同意を提供することはできません。 テナントを管理する個人用アカウントとの最善の互換性を確保するには、可能であればテナント ID を使用します。 |
 | `client_id` | Required | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた**アプリケーション (クライアント) ID**。 |
 | `redirect_uri` | Required |処理するアプリの応答の送信先となるリダイレクト URI。 アプリケーション登録ポータルで登録したリダイレクト URI のいずれかと完全に一致させる必要があります。 |
 | `state` | 推奨 | 要求に含まれ、かつトークンの応答として返される値。 任意のコンテンツの文字列を指定することができます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的に使用します。 |

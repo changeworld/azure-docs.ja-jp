@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 01/23/2020
-ms.openlocfilehash: fab24d55509ab315775437ca343e35fc90174f63
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 01/30/2020
+ms.openlocfilehash: 09cc9e1475616700aa77cdf92fd7ca808cd4290c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715093"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937836"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL Database サービス レベル
 
@@ -53,7 +53,7 @@ Azure SQL Database は、インフラストラクチャに障害が発生した�
 |**インメモリ OLTP** | | 該当なし | 該当なし | 利用可能 |
 |**読み取り専用レプリカ**| | 0 組み込み <br> 0 - 4 [geo レプリケーション](sql-database-active-geo-replication.md)を使用 | 0 - 4 組み込み | 1 組み込み、価格に含まれます <br> 0 - 4 [geo レプリケーション](sql-database-active-geo-replication.md)を使用 |
 |**価格/課金** | 単一データベース | [仮想コア、予約ストレージ、バックアップ ストレージ](https://azure.microsoft.com/pricing/details/sql-database/single/)に対して請求されます。 <br/>IOPS に対しては請求されません。 | [レプリカごとの仮想コアと使用されたストレージ](https://azure.microsoft.com/pricing/details/sql-database/single/)に対して請求されます。 <br/>IOPS に対してはまだ請求されません。 | [仮想コア、予約ストレージ、バックアップ ストレージ](https://azure.microsoft.com/pricing/details/sql-database/single/)に対して請求されます。 <br/>IOPS に対しては請求されません。 |
-|| マネージド インスタンス | [仮想コアと予約ストレージ](https://azure.microsoft.com/pricing/details/sql-database/managed/)に対して請求されます。 <br/>IOPS に対しては請求されません。<br/>バックアップ ストレージにはこの段階では請求されません。 | 該当なし | [仮想コアと予約ストレージ](https://azure.microsoft.com/pricing/details/sql-database/managed/)に対して請求されます。 <br/>IOPS に対しては請求されません。<br/>バックアップ ストレージにはこの段階では請求されません。 | 
+|| マネージド インスタンス | [仮想コア、予約ストレージ、バックアップ ストレージ](https://azure.microsoft.com/pricing/details/sql-database/managed/)に対して請求されます。 <br/>IOPS に対しては請求されません。| 該当なし | [仮想コア、予約ストレージ、バックアップ ストレージ](https://azure.microsoft.com/pricing/details/sql-database/managed/)に対して請求されます。 <br/>IOPS に対しては請求されません。| 
 |**割引モデル**| | [予約インスタンス](sql-database-reserved-capacity.md)<br/>[Azure ハイブリッド特典](sql-database-azure-hybrid-benefit.md) (開発テスト サブスクリプションでは利用不可)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) および [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0023p/) (従量課金制) Dev/Test (開発テスト) サブスクリプション| [Azure ハイブリッド特典](sql-database-azure-hybrid-benefit.md) (開発テスト サブスクリプションでは利用不可)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) および [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0023p/) (従量課金制) Dev/Test (開発テスト) サブスクリプション| [予約インスタンス](sql-database-reserved-capacity.md)<br/>[Azure ハイブリッド特典](sql-database-azure-hybrid-benefit.md) (開発テスト サブスクリプションでは利用不可)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) および [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0023p/) (従量課金制) Dev/Test (開発テスト) サブスクリプション|
 
 詳細については、[単一データベース (仮想コア)](sql-database-vcore-resource-limits-single-databases.md)、[単一データベース プール (仮想コア)](sql-database-dtu-resource-limits-single-databases.md)、[単一データベース (DTU)](sql-database-dtu-resource-limits-single-databases.md)、[単一データベース プール (DTU)](sql-database-dtu-resource-limits-single-databases.md)、[マネージド インスタンス](sql-database-managed-instance-resource-limits.md)に関するページでサービス レベル間の細かな違いを確認してください。

@@ -3,17 +3,17 @@ title: 認証の管理 | Microsoft Azure Maps
 description: Azure portal を使用して、Microsoft Azure Maps での認証を管理できます。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 01/16/2020
+ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 1f7f128898089292a8ccd92686af5d68fe328f3c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: f856aebe5e3acaca142e460d18ec8c6498b18787
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766205"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989306"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Azure Maps での認証の管理
 
@@ -21,40 +21,40 @@ Azure Maps アカウントを作成した後、Azure Active Directory (Azure AD)
 
 ## <a name="view-authentication-details"></a>認証の詳細を表示する
 
-Azure Maps アカウントの作成後、プライマリ キーおよびセカンダリ キーが生成されます。 サブスクリプション キーとして主キーを使用します。この名前は同じ意味で使用されることがあります。 セカンダリ キーは、キー変更のローリングなどのシナリオで使用できます。 どちらの方法でも、Azure Maps を呼び出すにはキーが必要です。 このプロセスは[共有キー認証](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication#shared-key-authentication)と呼ばれます。 共有キーと Azure AD 認証の詳細については、「[Azure Maps による認証](https://aka.ms/amauth)」を参照してください。
+Azure Maps アカウントの作成後、プライマリ キーおよびセカンダリ キーが生成されます。 [共有キー認証](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication#shared-key-authentication)を使用して Azure Maps を呼び出す場合は、プライマリ キーをサブスクリプション キーとして使用することをお勧めします。 セカンダリ キーは、キー変更のローリングなどのシナリオで使用できます。 詳細については、「[Azure Maps による認証](https://aka.ms/amauth)」を参照してください。
 
 認証の詳細は、Azure portal で確認できます。 自分のアカウントにアクセスして、 **[設定]** メニューで **[認証]** を選択します。
 
 ![認証の詳細](./media/how-to-manage-authentication/how-to-view-auth.png)
 
 
-## <a name="set-up-azure-ad-app-registration"></a>Azure AD アプリの登録を設定する
+## <a name="configure-azure-ad-app-registration"></a>Azure AD アプリの登録を構成する
 
-Azure Maps アカウントを作成したら、Azure AD テナントと Azure Maps リソース間のリンクを確立する必要があります。
-
-1. ポータル メニューの **[Azure Active Directory]** を選択します。 登録の名前を指定します。 **[アプリの登録]** をクリックしてから、 **[新規登録]** をクリックします。 **[リダイレクト URI]** ボックスで、Web アプリのホームページを指定します。 たとえば、「 https://localhost/ 」のように入力します。 登録済みのアプリが既にある場合は、手順 2 に進みます。
+1. Azure portal 上の Azure サービスの一覧から、 **[Azure Active Directory]** を選択します。  **[アプリの登録]** を選択し、 **[新規登録]** をクリックします。  次に、 **[名前]** を入力し、 **[Support account type]\(サポートされるアカウントの種類\)** を選択して、 **[登録]** を選択します。  登録済みのアプリが既にある場合は、手順 2 に進みます。 
 
     ![アプリの登録](./media/how-to-manage-authentication/app-registration.png)
 
     ![アプリの登録の詳細](./media/how-to-manage-authentication/app-create.png)
 
-2. 委任された API アクセス許可を Azure Maps に割り当てるには、 **[アプリの登録]** の下にあるアプリケーションに移動して **[API のアクセス許可]** を選択します。 **[アクセス許可の追加]** を選択します。 **[API を選択する]** で「**Azure Maps**」を検索して選択します。
+2. 委任された API アクセス許可を Azure Maps に割り当てるには、 **[アプリの登録]** の下にあるアプリケーションに移動します。 次に、 **[API のアクセス許可]** を選択してから、 **[アクセス許可の追加]** を選択します。 **[所属する組織で使用している API]** 下で、「**Azure Maps**」を検索して選択します。
 
     ![アプリの API アクセス許可](./media/how-to-manage-authentication/app-permissions.png)
 
-3. **[アクセス許可を選択]** を選択し、 **[ユーザーの権限借用]** のチェックボックスをオンにして、下部にある **[選択]** ボタンをクリックします。
+3. **[Access Azure Maps]\(Azure Maps へのアクセス\)** のチェックをオンにしてから、 **[アクセス許可の追加]** をクリックします。
 
     ![アプリの API アクセス許可の選択](./media/how-to-manage-authentication/select-app-permissions.png)
 
-4. 使用する認証方法に応じて、手順 a または b を完了します。
+4. 使用する認証方法に応じて、手順 a または b を完了します。 
 
-    1. アプリケーションで Azure Maps Web SDK とユーザー トークン認証を使用する場合は、アプリの登録の [マニフェスト] セクションで `oauth2AllowImplicitFlow` を true に設定し、これを有効にします。
+    1. お使いのアプリケーション上で Azure Maps Web SDK によるユーザートークン認証を使用する場合は、`oauth2AllowImplicitFlow` を有効にします。 `oauth2AllowImplicitFlow` を有効にするには、アプリ登録のマニフェスト セクション内で [true] に設定します。 
     
        ![アプリ マニフェスト](./media/how-to-manage-authentication/app-manifest.png)
 
-    2. アプリケーションでサーバー/アプリケーション認証を使用する場合は、アプリの登録の **[証明書とシークレット]** ブレードに移動し、パスワードを作成するか、公開キー証明書をアプリの登録にアップロードします。 パスワードを作成する場合は、後で使用できるように安全に保管してください。 Azure AD からトークンを取得するには、このパスワードを使用します。
+    2. アプリケーションでサーバー/アプリケーション認証を使用する場合は、アプリの登録ページの **[証明書とシークレット]** ブレードに移動し、 **[New client secret]\(新しいクライアント シークレット\)** をクリックしてパスワードを作成するか、公開キー証明書をアプリの登録にアップロードします。 パスワードを作成する場合は、 **[追加]** をクリックしてから、後のためにパスワードをコピーして安全に保管します。 Azure AD からトークンを取得するには、このパスワードを使用します。
 
        ![アプリ キー](./media/how-to-manage-authentication/app-keys.png)
+
+       ![キーの追加](./media/how-to-manage-authentication/add-key.png)
 
 
 ## <a name="grant-role-based-access-control-rbac-to-azure-maps"></a>ロールベースのアクセス制御 (RBAC) を Azure Maps に付与する

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect find a Virtual WAN partner
-ms.openlocfilehash: 44ce62f957dbdd71a41962ae7257cbc6e048e03c
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: b7a3d443b64943c097a51eeae4be6253a0466e18
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953321"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933713"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtual WAN パートナーと仮想ハブの場所
 
@@ -40,13 +40,13 @@ Azure Virtual WAN に接続するデバイスには、接続の自動化が組�
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-次のパートナーが近い将来のロードマップに追加されることが予定されています。Arista、Aruba HPE、Cisco Systems、F5 Networks、Open Systems、VMware Velocloud。
+次のパートナーが近い将来のロードマップに追加されることが予定されています。Arista、Aruba HPE、Cisco Systems、F5 Networks、Open Systems、Oracle Talari、SharpLink、および VMWare Velocloud。
 
 ## <a name="locations"></a>場所
 
 [!INCLUDE [regions](../../includes/virtual-wan-regions-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Virtual WAN の詳細については、[Virtual WAN FAQ](virtual-wan-faq.md) を参照してください。
 

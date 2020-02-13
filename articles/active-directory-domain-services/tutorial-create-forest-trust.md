@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: bd0ec46d224e68f92b5d042826633d1efc7c336e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3637a11724c1f0bab049077c5abbd817e168bd44
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425428"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931231"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>チュートリアル:Azure Active Directory Domain Services (プレビュー) で、オンプレミスのドメインへの送信フォレストの信頼を作成する
 
@@ -45,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
     * 必要であれば、[Azure Active Directory Domain Services インスタンスを作成して構成][create-azure-ad-ds-instance-advanced]してください。
     
     > [!IMPORTANT]
-    > 必ず*リソース* フォレストを使用して Azure AD DS マネージド ドメインを作成してください。 既定のオプションでは、*ユーザー* フォレストが作成されます。 オンプレミスの AD DS 環境への信頼を作成できるのは、リソース フォレストだけです。
+    > 必ず*リソース* フォレストを使用して Azure AD DS マネージド ドメインを作成してください。 既定のオプションでは、*ユーザー* フォレストが作成されます。 オンプレミスの AD DS 環境への信頼を作成できるのは、リソース フォレストだけです。 また、マネージド ドメインに対して *Enterprise* SKU を少なくとも使用する必要があります。 必要に応じて、[Azure AD DS マネージド ドメインの SKU を変更][howto-change-sku]します。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -220,3 +220,4 @@ Azure AD DS 内のフォレストの種類に関する概念的な詳細につ�
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance-advanced]: tutorial-create-instance-advanced.md
+[howto-change-sku]: change-sku.md

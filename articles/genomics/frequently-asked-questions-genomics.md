@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
-ms.openlocfilehash: 4a2b66f95467e7f6cb99f632548351f827e259c3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e8806bc4f761214e6740a22093b7e18030fdf881
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476432"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986038"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics:一般的な質問
 
@@ -24,6 +24,8 @@ ms.locfileid: "73476432"
 ## <a name="how-do-i-run-gatk4-workflows-on-microsoft-genomics"></a>Microsoft Genomics で GATK4 ワークフローを実行する方法
 Microsoft Genomics サービスの config.txt ファイルで、process_name を `gatk4` に指定します。 通常の課金レートで課金されることに注意してください。
 
+## <a name="how-do-i-enable-output-compression"></a>出力の圧縮を有効にするには、どうすればよいですか。
+出力の圧縮にオプションの引数を使用して、出力 vcf または gvcf を圧縮することができます。 これは、`.gz` (bgzip output) および `.tbi` (tabix output) ファイルを生成するために、vcf または gvcf 出力に対して `-bgzip` の後に`-tabix` を実行することと同等です。 `bgzip` では vcf または gvcf ファイルを圧縮し、`tabix` では圧縮されたファイル用のインデックスを作成します。 引数はブール値であり、vcf 出力の場合は既定で `false` に設定され、gcvf 出力の場合は既定で `true` に設定されます。 コマンド ライン上で使用するには、`-bz` または `--bgzip-output` を `true` (bgzip および tabix を実行) または `false` として指定します。 この引数を config.txt ファイル内で使用するには、ファイルに `bgzip_output: true` または `bgzip_output: false` を追加します。
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>Microsoft Genomics の SLA はどうなっていますか。
 マイクロソフトは、ワークフロー API 要求を受信するために 99.9% の時間において Microsoft Genomics サービスを利用できることを保証します。 詳細については、[SLA](https://azure.microsoft.com/support/legal/sla/genomics/v1_0/) のページを参照してください。
@@ -82,7 +84,7 @@ msgen は、次の形式の構成ファイルを認識します。
   |`-k/--access-key KEY`            | *access_key:KEY*              |      
   |`-pa/--process-args R=B37m1`     | *process_args:R-b37m1*        |  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のリソースを使用して、Microsoft Genomics の使用を開始します。
 - Microsoft Genomics サービス経由で最初のワークフローを実行して使用を開始します。 [Microsoft Genomics サービス経由でワークフローを実行する](quickstart-run-genomics-workflow-portal.md)
