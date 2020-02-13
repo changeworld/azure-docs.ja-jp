@@ -331,7 +331,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 要求本文のパラメーター:
 
-パラメーター | 必須 | [説明]
+パラメーター | 必須 | 説明
 ---|---|---
 authorizationAudience | *いいえ* | ターゲット リソースのアプリ ID URI。 発行されたトークンの `aud` (対象ユーザー) 要求でもあります。 既定値は "https://management.azure.com/" です
 userAssignedIdentities | *いいえ* | トークンを取得するためのユーザー割り当て済みマネージド ID のリスト。 指定しない場合、`listTokens` はシステム割り当てマネージド ID のトークンを返します。
@@ -360,7 +360,7 @@ Content-Type: application/json
 
 応答では、`value` プロパティの下にトークンの配列が含まれます。
 
-パラメーター | [説明]
+パラメーター | 説明
 ---|---
 access_token | 要求されたアクセス トークン。
 expires_in | アクセス トークンの残り有効秒数。
