@@ -166,7 +166,7 @@ Azure Monitor for VMs のマップ機能では、Microsoft Dependency Agent か�
 
 次の表では、ハイブリッド環境でマップ機能がサポートしている接続先ソースについて説明します。
 
-| 接続先ソース | サポートされています | [説明] |
+| 接続先ソース | サポートされています | 説明 |
 |:--|:--|:--|
 | Windows エージェント | はい | Windows エージェントには、[Windows の Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)の他に、Dependency Agent が必要です。 詳細については、[サポートされているオペレーティング システム](#supported-operating-systems)のセクションを参照してください。 |
 | Linux エージェント | はい | Linux エージェントには、[Linux の Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)の他に、Dependency Agent が必要です。 詳細については、[サポートされているオペレーティング システム](#supported-operating-systems)のセクションを参照してください。 |
@@ -189,7 +189,7 @@ Log Analytics ワークスペースへのアクセスを制御する方法の詳
 
 この表で説明されているいずれかの方法で、Azure Monitor for VMs を有効にします。
 
-| デプロイの状態 | 方法 | [説明] |
+| デプロイの状態 | 方法 | 説明 |
 |------------------|--------|-------------|
 | 単一の Azure VM または仮想マシン スケール セット | [VM から有効にする](vminsights-enable-single-vm.md) | 単一の Azure VM を有効にするには、VM または仮想マシン スケール セットから直接 **Insights (プレビュー)** を選択します。 |
 | 複数の Azure VM または仮想マシン スケール セット | [Azure Policy を介して有効にする](vminsights-enable-at-scale-policy.md) | Azure Policy と使用可能なポリシー定義を使用すると、複数の Azure VM を有効にできます。 |
