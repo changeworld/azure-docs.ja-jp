@@ -130,7 +130,7 @@ az resource invoke-action --action {actionName} \
                             }'
 ```
 
-パラメーター | 必須 | [説明]
+パラメーター | 必須 | 説明
 ---|---|---
 action | *はい* | **ResourceProvider** で定義されているアクションの名前。
 ids | *はい* | **ResourceProvider** のリソース ID。
@@ -184,7 +184,7 @@ request-body | *いいえ* | **エンドポイント**に送信される要求�
 }
 ```
 
-パラメーター | 必須 | [説明]
+パラメーター | 必須 | 説明
 ---|---|---
 resourceIdentifier | *はい* | **ResourceProvider** のリソース ID。
 apiVersion | *はい* | リソースのランタイムの API バージョン。 常に "2018-09-01-preview" に設定する必要があります。
