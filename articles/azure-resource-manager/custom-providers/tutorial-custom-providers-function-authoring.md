@@ -43,7 +43,7 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 
 この例の `x-ms-customproviders-requestpath` ヘッダーに基づいて、次の表に示すように、ストレージの *partitionKey* パラメーターと *rowKey* パラメーターを作成できます。
 
-パラメーター | Template | [説明]
+パラメーター | Template | 説明
 ---|---|---
 *partitionKey* | `{subscriptionId}:{resourceGroupName}:{resourceProviderName}` | *partitionKey* パラメーターは、データをどのようにパーティション分割するかを指定します。 通常、データは、カスタム プロバイダーのインスタンスごとにパーティション分割されます。
 *rowKey* | `{myResourceType}:{myResourceName}` | *rowKey* パラメーターは、データに個々の識別子を指定します。 通常、識別子はリソースの名前です。
@@ -134,7 +134,7 @@ public static async Task<HttpResponseMessage> CreateCustomResource(HttpRequestMe
 
 **CreateCustomResource** メソッドは、受信要求を更新して、Azure 固有のフィールドである **id**、**name**、**type** を追加します。 これらのフィールドは、Azure 全体のサービスによって使われる最上位レベルのプロパティです。 カスタム プロバイダーは、これらを通じて、Azure Policy、Azure Resource Manager テンプレート、Azure アクティビティ ログなど、他のサービスと相互運用できるようになります。
 
-プロパティ | 例 | [説明]
+プロパティ | 例 | 説明
 ---|---|---
 **name** | {myCustomResourceName} | カスタム リソースの名前
 **type** | Microsoft.CustomProviders/resourceProviders/{resourceTypeName} | リソースの種類の名前空間
