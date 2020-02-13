@@ -24,7 +24,7 @@ ms.locfileid: "76765717"
 
 Insights は、特定のアプリケーションやサービスを監視するためのカスタマイズされたエクスペリエンスを提供します。 ログとメトリックの両方を収集して分析します。
 
-| 分析情報 | [説明] |
+| 分析情報 | 説明 |
 |:---|:---|
 | [Application Insights](app/app-insights-overview.md) | 任意のプラットフォームでライブ Web アプリケーションを監視するための拡張可能なアプリケーション パフォーマンス管理 (APM) サービス。 |
 | [Azure Monitor for Containers](insights/container-insights-overview.md) | Azure Kubernetes Service (AKS) でホストされている Azure Container Instances またはマネージド Kubernetes クラスターにデプロイされたコンテナー ワークロードのパフォーマンスを監視します。 |
@@ -38,7 +38,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 
 ソリューションは、特定のアプリケーションまたはサービス用にカスタマイズされたログ クエリとビューに基づいています。 それらはログの収集と分析のみを行い、時間の経過とともに非推奨となり、Insights が優先されます。
 
-| 解決策 | [説明] |
+| 解決策 | 説明 |
 |:---|:---|
 | [Agent Health](insights/solution-agenthealth.md) | Log Analytics エージェントの正常性と構成を分析します。 |
 | [アラートの管理](platform/alert-management-solution.md) | System Center Operations Manager、Nagios、または Zabbix から収集されたアラートを分析します。 |
@@ -173,7 +173,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 ## <a name="product-integrations"></a>製品の統合
 次の表のサービスとソリューションは、Azure Monitor によって収集された他のログ データを使用して分析できるように、データを Log Analytics ワークスペースに格納します。
 
-| 製品/サービス | [説明] |
+| 製品/サービス | 説明 |
 |:---|:---|
 | [Azure Automation](/azure/automation/) | Windows および Linux のコンピューターでオペレーティング システムの更新を管理し、変更を追跡します。 [Change Tracking](../automation/change-tracking.md) と [Update Management](../automation/automation-update-management.md) に関する記事を参照してください。 |
 | [Azure Information Protection ](https://docs.microsoft.com/azure/information-protection/) | ドキュメントと電子メールを分類し、必要に応じて保護します。 「[Azure Information Protection の中央レポート機能](https://docs.microsoft.com/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports)」を参照してください。 |
@@ -195,7 +195,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 ## <a name="other-solutions"></a>その他のソリューション
 さまざまなアプリケーションやサービスを監視するためにその他のソリューションを使用することもできますが、アクティブな開発は停止しており、すべてのリージョンで使用できるとは限りません。 それらは、Azure Log Analytics データ インジェストのサービス レベル アグリーメントによってカバーされます。
 
-| 解決策 | [説明] |
+| 解決策 | 説明 |
 |:---|:---|
 | [Active Directory Assessment](insights/ad-assessment.md) | Active Directory 環境のリスクと正常性を評価します。 |
 | [Active Directory Replication Status](insights/ad-replication-status.md) | レプリケーションの失敗について Active Directory 環境を定期的に監視します。 |
@@ -210,7 +210,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 
 ## <a name="third-party-integration"></a>サード パーティの統合
 
-| 解決策 | [説明] |
+| 解決策 | 説明 |
 |:---|:---|
 | [ITSM](platform/itsmc-overview.md) | IT Service Management Connector (ITSMC) を使用すると、サポートされている IT Service Management (ITSM) 製品/サービスと Azure を接続できます。  |
 
