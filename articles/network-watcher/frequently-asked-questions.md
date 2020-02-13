@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: 1cc3664ff8472a6b5a73fa89588611f59ac27e6a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: de644e49d998ad260532078de5c93c482cbc6fbc
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720270"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029493"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Azure Network Watcher に関してよく寄せられる質問 (FAQ)
 [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) サービスは、Azure 仮想ネットワーク内のリソースの監視、診断、メトリックの表示、ログの有効化または無効化を行うツール スイートを提供します。 この記事では、そのサービスに関する一般的な質問への回答を示します。
@@ -54,17 +54,29 @@ Network Watcher のコンポーネントと各コンポーネントの価格に�
 ### <a name="which-regions-is-network-watcher-supportedavailable-in"></a>Network Watcher がサポートされている/利用できるリージョンはどれですか?
 [Azure サービスの利用可能性のページ](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher)で、最新のリージョン別の利用可能性を確認できます。
 
-### <a name="what-are-resource-limits-on-network-watcher"></a>Network Watcher でのリソース制限とは何ですか?
-すべての制限については、[サービス制限の](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits)に関するページを参照してください。  
+### <a name="which-permissions-are-needed-to-use-network-watcher"></a>Network Watcher を使用するために必要なアクセス許可は何ですか?
+[Network Watcher を使用するために必要な RBAC アクセス許可](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)に関する記事にある一覧を参照してください。 リソースをデプロイするために、NetworkWatcherRG (下記参照) に対する共同作成者のアクセス許可が必要です。
 
-### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>リージョンごとに Network Watcher の 1 つのインスタンスしか許可されないのはなぜですか?
-機能が動作するためには、Network Watcher は 1 つのサブスクリプションに対して一度だけ有効にされる必要があります。これはサービスの上限ではありません。
+### <a name="how-do-i-enable-network-watcher"></a>Network Watcher を有効化する方法
+Network Watcher サービスは、すべてのサブスクリプションで[自動的に有効になります](https://azure.microsoft.com/updates/azure-network-watcher-will-be-enabled-by-default-for-subscriptions-containing-virtual-networks/)。
+
+### <a name="what-is-the-network-watcher-deployment-model"></a>Network Watcher デプロイ モデルは何ですか?
+Network Watcher の親リソースは、各リージョンで一意のインスタンスを使用してデプロイされます。 名前付け形式: NetworkWatcher_RegionName。 例:NetworkWatcher_centralus は、"米国中部" リージョンの Network Watcher リソースです。
+
+### <a name="what-is-the-networkwatcherrg"></a>NetworkWatcherRG とは何ですか?
+Network Watcher リソースは、自動的に作成される非表示の **NetworkWatcherRG** リソース グループに配置されます。 たとえば、NSG フロー ログ リソースは Network Watcher の子リソースであり、NetworkWatcherRG で有効になっています。
 
 ### <a name="why-do-i-need-to-install-the-network-watcher-extension"></a>Network Watcher 拡張機能をインストールする必要があるのはなぜですか? 
 Network Watcher 拡張機能は、VM からトラフィックを生成またはインターセプトする必要があるすべての機能に必要です。 
 
 ### <a name="which-features-require-the-network-watcher-extension"></a>Network Watcher 拡張機能が必要なのはどの機能ですか?
-パケット キャプチャ、接続のトラブルシューティング、および接続モニターのみ Network Watcher 拡張機能が必要です。
+パケット キャプチャ、接続のトラブルシューティング、接続モニターの機能では、Network Watcher 拡張機能が必要です。
+
+### <a name="what-are-resource-limits-on-network-watcher"></a>Network Watcher でのリソース制限とは何ですか?
+すべての制限については、[サービス制限の](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits)に関するページを参照してください。  
+
+### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>リージョンごとに Network Watcher の 1 つのインスタンスしか許可されないのはなぜですか?
+機能が動作するためには、Network Watcher は 1 つのサブスクリプションに対して一度だけ有効にされる必要があります。これはサービスの上限ではありません。
 
 ## <a name="nsg-flow-logs"></a>NSG フロー ログ
 

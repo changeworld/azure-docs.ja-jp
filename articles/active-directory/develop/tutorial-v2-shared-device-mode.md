@@ -3,7 +3,7 @@ title: MSAL Android での共有デバイス モードの使用 | Azure
 description: Android デバイスを共有モードで実行できるように準備し、現場作業員向けアプリを実行する方法について説明します。
 services: active-directory
 documentationcenter: dev-center-name
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -15,12 +15,12 @@ ms.date: 1/15/2020
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 98882ad115ff977cfd8222c6055a436855f50c04
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bf7e6bb22ce89d6be3f79efad1f1a3679e8780e7
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701248"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086068"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>チュートリアル:Android アプリケーションで共有デバイス モードを使用する
 

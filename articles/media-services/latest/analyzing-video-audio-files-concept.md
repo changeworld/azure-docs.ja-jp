@@ -10,14 +10,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 09/21/2019
+ms.date: 01/30/2020
 ms.author: juliako
-ms.openlocfilehash: 23d546d6adcdb91b4ef4702b81fe77536fe9f3d3
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 1d28fc37b98493322b9e201ac899b7911dd1d705
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186272"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988347"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Azure Media Services を使用してビデオ ファイルとオーディオ ファイルを分析する
 
@@ -27,6 +27,10 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 > [!NOTE]
 > ビデオ アナライザーまたはオーディオ アナライザーのプリセットを使用する場合は、Azure portal を使用して、10 個の S3 メディア占有ユニットを備えるようアカウントを設定します。 詳細については、[メディア処理のスケーリング](media-reserved-units-cli-how-to.md)に関するページを参照してください。
+
+## <a name="compliance-privacy-and-security"></a>コンプライアンス、プライバシー、セキュリティ
+
+重要な注意事項として、Video Indexer の使用に適用されるすべての法律に従う必要があります。また、他の人の権利を犯したり、他の人に害を及ぼしたりする可能性のある方法で Video Indexer またはその他の Azure サービスを使用することはできません。 生体認証データなどのビデオを Video Indexer サービスにアップロードして処理と保管を行う前に、ビデオに写っている個人から適切なすべての同意を得ることを含め、適切な権限をすべて持っている必要があります。 Video Indexer のコンプライアンス、プライバシー、セキュリティについては、Microsoft の [Cognitive Services の条項](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)に関するページを参照してください。 Microsoft のプライバシー義務とデータの取り扱いについては、Microsoft の[プライバシー ステートメント](https://privacy.microsoft.com/PrivacyStatement)、[オンライン サービス条件](https://www.microsoft.com/licensing/product-licensing/products) ("OST")、および[データ処理の補遺](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA") に関するページをご確認ください。 データの保持、削除、破棄などのその他のプライバシー情報は、OST および[こちら](../video-indexer/faq.md)で確認できます。 Video Indexer を使用すると、Cognitive Services の条項、OST、DPA、およびプライバシー ステートメントに従うことに同意したものと見なされます。
 
 ## <a name="built-in-presets"></a>組み込みのプリセット
 
@@ -63,7 +67,7 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 ### <a name="transcript"></a>transcript
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |id|行 ID。|
 |text|トランスクリプトそのもの。|
@@ -101,7 +105,7 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 ### <a name="ocr"></a>ocr
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |id|OCR 行 ID。|
 |text|OCR テキスト。|
@@ -144,10 +148,10 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 ### <a name="faces"></a>faces
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |id|顔 ID。|
-|名前|顔の名前。 "Unknown #0"、識別された著名人、または顧客のトレーニング担当者になることができます。|
+|name|顔の名前。 "Unknown #0"、識別された著名人、または顧客のトレーニング担当者になることができます。|
 |confidence|顔認識の信頼度。|
 |description|著名人の説明 |
 |thumbnailId|その顔のサムネイルの ID|
@@ -189,7 +193,7 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 ### <a name="shots"></a>shots
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |id|スナップショット ID。|
 |keyFrames|ショット内のキー フレームの一覧 (各キー フレームに ID とインスタンスの時間範囲の一覧があります)。 キー フレームのインスタンスには、keyFrame のサムネイル ID 付きサムネイル フィードがあります。|
@@ -244,9 +248,9 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
   ]
 ```
 
-### <a name="statistics"></a>statistics
+### <a name="statistics"></a>統計
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |CorrespondenceCount|ビデオ内の通知の数|
 |WordCount|話者あたり単語の数|
@@ -259,7 +263,7 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 センチメントは、sentimentType フィールド (肯定/中立/否定) によって集計されます。 例: 0-0.1、0.1-0.2。
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |id|センチメント ID。|
 |averageScore |センチメントの種類 (肯定/中立/否定) が同じすべてのインスタンスのすべてのスコアの平均値。|
@@ -294,10 +298,10 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 ### <a name="labels"></a>labels
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |id|ラベル ID。|
-|名前|ラベル名 (例: "Computer"、"TV")。|
+|name|ラベル名 (例: "Computer"、"TV")。|
 |language|ラベル名の言語 (翻訳時)。 BCP-47|
 |instances|このラベルが出現する時間範囲の一覧 (1 つのラベルが複数回出現する可能性があります)。 各インスタンスに confidence フィールドがあります。 |
 
@@ -352,7 +356,7 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 ### <a name="keywords"></a>keywords
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |id|キーワード ID。|
 |text|キーワードのテキスト。|
@@ -403,7 +407,7 @@ visualContentModeration ブロックには、Video Indexer で成人向けコン
 
 成人向けまたはわいせつなコンテンツを含むことが検出されたビデオでは、秘密ビューしか利用できない場合があります。 ユーザーは、コンテンツの人間によるレビューの要求を送信できます。この場合、`IsAdult` 属性に、人間によるレビューの結果が含まれます。
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |id|ビジュアル コンテンツ モデレーションの ID|
 |adultScore|(コンテンツ モデレーターからの) 成人スコア|
@@ -436,6 +440,6 @@ visualContentModeration ブロックには、Video Indexer で成人向けコン
 }
 ] 
 ```
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[チュートリアル: Azure Media Services でビデオを分析する](analyze-videos-tutorial-with-api.md)
+[チュートリアル:Azure Media Services でビデオを分析する](analyze-videos-tutorial-with-api.md)

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5450ada04a1af44a3fff0402b30540e899cc4dd5
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 0b1ab7b2c233eb1e6e231b0ae7935b6c24363948
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911044"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988534"
 ---
 # <a name="get-information-from-a-coordinate"></a>座標から情報を取得する
 
@@ -27,17 +27,17 @@ ms.locfileid: "75911044"
 <iframe height='500' scrolling='no' title='座標から情報を取得する (サービス モジュール)' src='//codepen.io/azuremaps/embed/ejEYMZ/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上で、Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による<a href='https://codepen.io/azuremaps/pen/ejEYMZ/'>座標から情報を取得する (サービス モジュール)</a> ペンを表示します。
 </iframe>
 
-上記のコードでは、最初のコード ブロックでマップ オブジェクトが構築され、アクセス トークンを使用するための認証メカニズムが設定されます。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。
+上記のコードでは、最初のブロックでマップ オブジェクトが構築され、アクセス トークンを使用するための認証メカニズムが設定されます。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。
 
-アクセス トークンを使用して Azure Maps に対する HTTP 要求を認証するために、2 ブロック目のコードで `TokenCredential` が作成されます。 その後、`TokenCredential` が `atlas.service.MapsURL.newPipeline()` に渡され、[パイプライン](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) インスタンスが作成されます。 `searchURL` は、Azure Maps の [Search](https://docs.microsoft.com/rest/api/maps/search) 操作の URL を表します。
+アクセス トークンを使用して Azure Maps に対する HTTP 要求を認証するために、2 番目のコード ブロックで `TokenCredential` が作成されます。 その後、`TokenCredential` が `atlas.service.MapsURL.newPipeline()` に渡され、[パイプライン](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) インスタンスが作成されます。 `searchURL` は、Azure Maps の [Search](https://docs.microsoft.com/rest/api/maps/search) 操作の URL を表します。
 
 3 番目のコード ブロックでは、マウス カーソルのスタイルがポインターに更新されて、[popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open) オブジェクトが作成されます。 手順については、[マップへのポップアップの追加](./map-add-popup.md)に関する記事を参照してください。
 
-4 番目のコード ブロックでは、マウス クリックの[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)が追加されます。 トリガーされると、クリックされたポイントの座標を使用して検索クエリが作成されます。 次に、サービスのモジュールの [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-iot-typescript-latest#searchaddressreverse-aborter--geojson-position--searchaddressreverseoptions-) メソッドを使用して、座標のアドレスについて [Get Search Address Reverse API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) に対するクエリが実行されます。 次に、`geojson.getFeatures()` メソッドを使用して応答から GeoJSON フィーチャー コレクションが抽出されます。
+4 番目のコード ブロックでは、マウス クリックの[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)が追加されます。 トリガーされると、クリックされたポイントの座標を使用して検索クエリが作成されます。 次に、[getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-iot-typescript-latest#searchaddressreverse-aborter--geojson-position--searchaddressreverseoptions-) メソッドを使用して、座標のアドレスについて [Get Search Address Reverse API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) に対するクエリが実行されます。 次に、応答から、`geojson.getFeatures()` メソッドを使用してGeoJSON フィーチャー コレクションが抽出されます。
 
 5 番目のコード ブロックでは、クリックされた座標位置の応答アドレスを表示する HTML ポップアップ コンテンツが設定されます。
 
-座標情報を取得する前にマップの読み込みが完全に行われるように、カーソル、ポップアップ オブジェクト、およびクリック イベントの変更はすべてマップの[ロード イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)で作成されます。
+座標情報を取得する前にマップが完全に読み込まれるように、カーソルの変更、popup オブジェクト、およびクリック イベントはすべてマップの[ロード イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)で作成されます。
 
 ## <a name="make-a-reverse-search-request-via-fetch-api"></a>Fetch API　を使用して逆方向の検索要求を行う
 
@@ -48,11 +48,11 @@ ms.locfileid: "75911044"
 
 上記のコードでは、最初のコード ブロックでマップ オブジェクトが構築され、アクセス トークンを使用するための認証メカニズムが設定されます。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。
 
-2 つ目のコード ブロックでは、マウス カーソルのスタイルがポインターと [popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open) オブジェクトに更新されます。 手順については、[マップへのポップアップの追加](./map-add-popup.md)に関する記事を参照してください。
+2 番目のコード ブロックでは、マウス カーソルのスタイルがポインターに更新されます。 これによって [popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open) オブジェクトがインスタンス化されます。 手順については、[マップへのポップアップの追加](./map-add-popup.md)に関する記事を参照してください。
 
-3 つ目のコード ブロックでは、マウス クリック用のイベント リスナーが追加されます。 マウスをクリックすると、[Fetch API](https://fetch.spec.whatwg.org/) を使用して、クリックした座標アドレスを見つけるために [Azure Maps Reverse Address Search API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) に対してクエリが実行されます。 適切に応答するために、ポップアップ クラスの [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) 関数を使用して、クリックされた場所の住所を収集し、ポップアップのコンテンツと位置が定義されます。
+3 つ目のコード ブロックでは、マウス クリック用のイベント リスナーが追加されます。 マウスをクリックすると、[Fetch API](https://fetch.spec.whatwg.org/) を使用して、クリックした座標アドレスを見つけるために [Azure Maps Reverse Address Search API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) に対してクエリが実行されます。 応答が成功すると、クリックされた場所のアドレスが収集されます。 これにより、popup クラスの [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) 関数を使用して、ポップアップのコンテンツと位置が定義されます。
 
-座標情報を取得する前にマップの読み込みが完全に行われるように、カーソル、ポップアップ オブジェクト、およびクリック イベントの変更はすべてマップの[ロード イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)で作成されます。
+座標情報を取得する前にマップが完全に読み込まれるように、カーソルの変更、popup オブジェクト、およびクリック イベントはすべてマップの[ロード イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)で作成されます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 01/10/2020
-ms.openlocfilehash: bf07a165b6ea933719eb06b6625a91033030a120
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 16e4a7e2f06d2630c970f8daa4428e7a184a79df
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895416"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163043"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>チュートリアル:Azure Digital Twins プレビューをデプロイし、空間グラフを構成する
 
@@ -52,7 +52,7 @@ Azure Digital Twins サービスを使用して、建物内の物理的なエリ
 
 ## <a name="grant-permissions-to-your-app"></a>アプリにアクセス許可を付与する
 
-Digital Twins では、[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) を使用してサービスに対する[読み取り/書き込みアクセス](../active-directory/develop/v1-permissions-and-consent.md)を制御します。 お客様の Digital Twins インスタンスに接続する必要のあるアプリケーションは、Azure AD に登録しなければなりません。 このセクションの手順では、サンプル アプリを登録する方法を示します。
+Digital Twins では、[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) を使用してサービスに対する[読み取り/書き込みアクセス](../active-directory/develop/v2-permissions-and-consent.md)を制御します。 お客様の Digital Twins インスタンスに接続する必要のあるアプリケーションは、Azure AD に登録しなければなりません。 このセクションの手順では、サンプル アプリを登録する方法を示します。
 
 既にアプリの登録がある場合は、それをサンプルに再利用することができます。 ただし、このセクションを参照して、アプリの登録が適切に構成されていることを確認してください。
 

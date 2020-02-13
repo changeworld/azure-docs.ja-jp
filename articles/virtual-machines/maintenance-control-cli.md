@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: cynthn
-ms.openlocfilehash: 6172b5da60037051517a43b1b3b8b91b50ab2aac
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 13e4923bc5d49843710c9df4523992f541f1d343
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895902"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988024"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-the-azure-cli"></a>プレビュー:メンテナンス コントロールと Azure CLI を使用して更新を制御する
 
@@ -31,13 +31,13 @@ ms.locfileid: "75895902"
 > [!IMPORTANT]
 > メンテナンス コントロールは、現在パブリック プレビューの段階です。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-> 
+>
 
 ## <a name="limitations"></a>制限事項
 
 - VM は、[専用ホスト](./linux/dedicated-hosts.md)上にあるか、[分離された VM サイズ](./linux/isolation.md)を使用して作成される必要があります。
 - 35 日後に、更新プログラムが自動的に適用されます。
-- ユーザーは、**リソース所有者**のアクセス権を持っている必要があります。
+- ユーザーは、**リソース共同作成者**のアクセス権を持っている必要があります。
 
 
 ## <a name="install-the-maintenance-extension"></a>メンテナンス拡張機能をインストールする
@@ -151,6 +151,23 @@ az maintenance assignment list \
 
 `az maintenance update list` を使用すると、保留中の更新プログラムがあるかどうかを確認できます。 --subscription が、その VM を含むサブスクリプションの ID になるように更新します。
 
+更新プログラムが存在しない場合、コマンドは "`Resource not found...StatusCode: 404`" というテキストを含むエラー メッセージを返します。
+
+更新プログラムがある場合は、保留中の更新プログラムが複数あるときでも、1 つだけ返されます。 以下に示すように、この更新プログラムのデータはオブジェクトで返されます。
+
+```text
+[
+  {
+    "impactDurationInSec": 9,
+    "impactType": "Freeze",
+    "maintenanceScope": "Host",
+    "notBefore": "2020-03-03T07:23:04.905538+00:00",
+    "resourceId": "/subscriptions/9120c5ff-e78e-4bd0-b29f-75c19cadd078/resourcegroups/DemoRG/providers/Microsoft.Compute/hostGroups/demoHostGroup/hosts/myHost",
+    "status": "Pending"
+  }
+]
+  ```
+
 ### <a name="isolated-vm"></a>分離された VM
 
 分離された VM の保留中の更新プログラムを確認します。 この例では、読みやすくするために出力を表形式で表示しています。
@@ -182,7 +199,7 @@ az maintenance update list \
 
 ## <a name="apply-updates"></a>更新プログラムの適用
 
-`az maintenance apply update` を使用して、保留中の更新プログラムを適用します。
+`az maintenance apply update` を使用して、保留中の更新プログラムを適用します。 成功すると、このコマンドは更新プログラムの詳細を含む JSON を返します。
 
 ### <a name="isolated-vm"></a>分離された VM
 
@@ -191,7 +208,7 @@ az maintenance update list \
 ```azurecli-interactive
 az maintenance applyupdate create \
    --subscription 1111abcd-1a11-1a2b-1a12-123456789abc \
-   -g myMaintenanceRG\
+   --resource-group myMaintenanceRG \
    --resource-name myVM \
    --resource-type virtualMachines \
    --provider-name Microsoft.Compute
@@ -205,7 +222,7 @@ az maintenance applyupdate create \
 ```azurecli-interactive
 az maintenance applyupdate create \
    --subscription 1111abcd-1a11-1a2b-1a12-123456789abc \
-   -g myHostResourceGroup \
+   --resource-group myHostResourceGroup \
    --resource-name myHost \
    --resource-type hosts \
    --provider-name Microsoft.Compute \
@@ -217,9 +234,9 @@ az maintenance applyupdate create \
 
 `az maintenance applyupdate get` を使用すると、更新プログラムの進行状況を確認できます。 
 
-### <a name="isolated-vm"></a>分離された VM
+更新プログラムの名前に `default` を使用して、最後の更新プログラムの結果を確認したり、`az maintenance applyupdate create` を実行したときに返された更新プログラムの名前で `myUpdateName` を置き換えたりすることができます。
 
-`myUpdateName` は、`az maintenance applyupdate create` を実行したときに返された更新プログラムの名前に置き換えます。
+### <a name="isolated-vm"></a>分離された VM
 
 ```azurecli-interactive
 az maintenance applyupdate get \
@@ -227,7 +244,7 @@ az maintenance applyupdate get \
    --resource-name myVM \
    --resource-type virtualMachines \
    --provider-name Microsoft.Compute \
-   --apply-update-name myUpdateName 
+   --apply-update-name default 
 ```
 
 ### <a name="dedicated-host"></a>専用ホスト
@@ -241,7 +258,7 @@ az maintenance applyupdate get \
    --provider-name Microsoft.Compute \
    --resource-parent-name myHostGroup \ 
    --resource-parent-type hostGroups \
-   --apply-update-name default \
+   --apply-update-name myUpdateName \
    --query "{LastUpdate:lastUpdateTime, Name:name, ResourceGroup:resourceGroup, Status:status}" \
    --output table
 ```

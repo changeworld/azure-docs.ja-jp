@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d191abafbaad123ed47f8eaae6cdd4e48478da7a
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 563bda275b73f76b042b5e57a9909ca78c504bb3
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422640"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063528"
 ---
 # <a name="configure-password-single-sign-on"></a>パスワード シングル サインオンの構成
 
@@ -92,7 +92,7 @@ Azure AD による解析の試行が失敗した場合、サインオンを手�
 > [!NOTE]
 > アプリケーションの **[構成]** タブにある **[ロゴのアップロード]** ボタンを使用して、アプリケーションのタイル ロゴをアップロードできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [アプリケーションにユーザーまたはグループを割り当てる](methods-for-assigning-users-and-groups.md)
-- [自動ユーザー アカウント プロビジョニングを構成する](configure-automatic-user-provisioning-portal.md)
+- [自動ユーザー アカウント プロビジョニングを構成する](../app-provisioning/configure-automatic-user-provisioning-portal.md)

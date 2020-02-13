@@ -14,32 +14,32 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: 2ae951896e9c97826264990dc33b9a1930b0eec2
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 09501a80d6ddcbbc9fa6cc08e36f47beb13d1663
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530053"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063224"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning-preview"></a>チュートリアル:SAP SuccessFactors から Azure AD へのユーザー プロビジョニングの構成 (プレビュー)
-このチュートリアルでは、SuccessFactors Employee Central から Azure Active Directory に社員データをプロビジョニングするために必要な手順と、SuccessFactors にメール アドレスを書き戻すオプションについて説明します。 この統合は、パブリック プレビュー中であり、SuccessFactors Employee Central から [70 を超えるユーザー属性](../manage-apps/sap-successfactors-attribute-reference.md)を取得することをサポートしています。 
+このチュートリアルでは、SuccessFactors Employee Central から Azure Active Directory に社員データをプロビジョニングするために必要な手順と、SuccessFactors にメール アドレスを書き戻すオプションについて説明します。 この統合は、パブリック プレビュー中であり、SuccessFactors Employee Central から [70 を超えるユーザー属性](../app-provisioning/sap-successfactors-attribute-reference.md)を取得することをサポートしています。 
 
 >[!NOTE]
 >このチュートリアルは、SuccessFactors からプロビジョニングするユーザーがオンプレミスの AD アカウントを必要としないクラウド専用のユーザーである場合に使用してください。 ユーザーがオンプレミスの AD アカウントのみを必要とするか、AD と Azure AD アカウントの両方を必要とする場合は、[SAP SuccessFactors から Active Directory へのユーザー プロビジョニングの構成](sap-successfactors-inbound-provisioning-tutorial.md#overview)に関するページのチュートリアルを参照してください。 
 
 ## <a name="overview"></a>概要
 
-[Azure Active Directory のユーザー プロビジョニング サービス](../manage-apps/user-provisioning.md)は、ユーザーの ID ライフ サイクルを管理するために [SuccessFactors Employee Central](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html) と統合されています。 
+[Azure Active Directory のユーザー プロビジョニング サービス](../app-provisioning/user-provisioning.md)は、ユーザーの ID ライフ サイクルを管理するために [SuccessFactors Employee Central](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html) と統合されています。 
 
 Azure AD のユーザー プロビジョニング サービスでサポートされている SuccessFactors ユーザー プロビジョニング ワークフローは、次の人事管理および ID ライフサイクル管理シナリオを自動化します。
 
-* **新しい従業員の雇用** - SuccessFactors に新しい従業員が追加されると、Azure Active Directory、および必要に応じて Office 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../manage-apps/user-provisioning.md)でユーザー アカウントが自動的に作成され、メール アドレスが SuccessFactors に書き戻されます。
+* **新しい従業員の雇用** - SuccessFactors に新しい従業員が追加されると、Azure Active Directory、および必要に応じて Office 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../app-provisioning/user-provisioning.md)でユーザー アカウントが自動的に作成され、メール アドレスが SuccessFactors に書き戻されます。
 
-* **従業員の属性とプロファイルの更新** - SuccessFactors で従業員レコード (名前、職名、マネージャなど) が更新されると、Azure Active Directory、および必要に応じて Office 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../manage-apps/user-provisioning.md)でユーザー アカウントが自動的に更新されます。
+* **従業員の属性とプロファイルの更新** - SuccessFactors で従業員レコード (名前、職名、マネージャなど) が更新されると、Azure Active Directory、および必要に応じて Office 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../app-provisioning/user-provisioning.md)でユーザー アカウントが自動的に更新されます。
 
-* **従業員の退職** - SuccessFactors で従業員が退職状態になると、Azure Active Directory、および必要に応じて Office 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../manage-apps/user-provisioning.md)でユーザー アカウントが自動的に無効になります。
+* **従業員の退職** - SuccessFactors で従業員が退職状態になると、Azure Active Directory、および必要に応じて Office 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../app-provisioning/user-provisioning.md)でユーザー アカウントが自動的に無効になります。
 
-* **従業員の再雇用** - SuccessFactors で従業員が再雇用されると、Azure Active Directory、および必要に応じて Office 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../manage-apps/user-provisioning.md)に以前のアカウントが (設定に応じて) 自動的に再アクティブ化または再プロビジョニングされます。
+* **従業員の再雇用** - SuccessFactors で従業員が再雇用されると、Azure Active Directory、および必要に応じて Office 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../app-provisioning/user-provisioning.md)に以前のアカウントが (設定に応じて) 自動的に再アクティブ化または再プロビジョニングされます。
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>このユーザー プロビジョニング ソリューションが最適な場合
 
@@ -79,7 +79,7 @@ SuccessFactors から Azure AD へのクラウド人事駆動型のユーザー 
 * 属性の変換 
 * スコープ フィルター
 
-これらのトピックに関する包括的なガイドラインについては、[クラウド人事デプロイ計画](../manage-apps/plan-cloud-hr-provision.md)に関するページを参照してください。 
+これらのトピックに関する包括的なガイドラインについては、[クラウド人事デプロイ計画](../app-provisioning/plan-cloud-hr-provision.md)に関するページを参照してください。 
 
 ## <a name="configuring-successfactors-for-the-integration"></a>統合のための SuccessFactors の構成
 
@@ -211,14 +211,14 @@ SuccessFactors 管理チームまたは実装パートナーと協力して、OD
    > 初めてプロビジョニング アプリを構成するときは、属性マッピングと式をテストして検証し、目的の結果が得られていることを確認する必要があります。 Microsoft は、SuccessFactors の少数のテスト ユーザーを使用してマッピングをテストするために **[ソース オブジェクト スコープ]** の下のスコープ フィルターを使用することをお勧めします。 マッピングが機能していることを確認したら、フィルターを削除するか、徐々に拡張してより多くのユーザーを含めることができます。
 
    > [!CAUTION] 
-   > プロビジョニング エンジンの既定の動作では、スコープ外に出るユーザーが無効化または削除されます。 これはご使用の SuccessFactors と Azure AD の統合には望ましくない場合があります。 この既定の動作をオーバーライドするには、「[スコープ外に出るユーザー アカウントの削除をスキップする](../manage-apps/skip-out-of-scope-deletions.md)」の記事を参照してください。
+   > プロビジョニング エンジンの既定の動作では、スコープ外に出るユーザーが無効化または削除されます。 これはご使用の SuccessFactors と Azure AD の統合には望ましくない場合があります。 この既定の動作をオーバーライドするには、「[スコープ外に出るユーザー アカウントの削除をスキップする](../app-provisioning/skip-out-of-scope-deletions.md)」の記事を参照してください。
   
 1. **[対象オブジェクトのアクション]** フィールドでは、Active Directory 上で実行されるアクションをグローバルにフィルター処理できます。 **作成**と**更新**が最も一般的です。
 
 1. **[属性マッピング]** セクションでは、個別の SuccessFactors 属性を Active Directory の属性にマッピングする方法を定義できます。
 
   >[!NOTE]
-  >アプリケーションでサポートされている SuccessFactors 属性の完全な一覧については、[SuccessFactors 属性のリファレンス](../manage-apps/sap-successfactors-attribute-reference.md)に関するページを参照してください。
+  >アプリケーションでサポートされている SuccessFactors 属性の完全な一覧については、[SuccessFactors 属性のリファレンス](../app-provisioning/sap-successfactors-attribute-reference.md)に関するページを参照してください。
 
 
 1. 既存の属性マッピングをクリックして更新するか、または画面の下部にある **[新しいマッピングの追加]** をクリックして、新しいマッピングを追加します。 個々の属性マッピングは、次のプロパティをサポートしています。
@@ -229,7 +229,7 @@ SuccessFactors 管理チームまたは実装パートナーと協力して、OD
 
          * **定数** - 静的な定数文字列の値を AD 属性に書き込みます
 
-         * **式** - 1 つ以上の SuccessFactors 属性に基づいて、AD 属性にカスタム値を書き込むことができます。 [詳細については、式に関するこの記事を参照してください](../manage-apps/functions-for-customizing-application-data.md)。
+         * **式** - 1 つ以上の SuccessFactors 属性に基づいて、AD 属性にカスタム値を書き込むことができます。 [詳細については、式に関するこの記事を参照してください](../app-provisioning/functions-for-customizing-application-data.md)。
 
       * **ソース属性** - SuccessFactors のユーザー属性
 
@@ -274,11 +274,11 @@ SuccessFactors プロビジョニング アプリの構成が完了すると、A
 
 ## <a name="next-steps"></a>次のステップ
 
-* [受信プロビジョニングのサポートされている SuccessFactors 属性に関する詳細情報](../manage-apps/sap-successfactors-attribute-reference.md)
+* [受信プロビジョニングのサポートされている SuccessFactors 属性に関する詳細情報](../app-provisioning/sap-successfactors-attribute-reference.md)
 * [SuccessFactors へのメール書き戻しを構成する方法](sap-successfactors-writeback-tutorial.md)
-* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)
+* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)
 * [SuccessFactors と Azure Active Directory Domain Services の間でシングル サインオンを構成する方法を学習する](successfactors-tutorial.md)
 * [他の SaaS アプリケーションを Azure Active Directory と統合する方法](tutorial-list.md)
-* [プロビジョニング構成をエクスポートおよびインポートする方法を学習する](../manage-apps/export-import-provisioning-configuration.md)
+* [プロビジョニング構成をエクスポートおよびインポートする方法を学習する](../app-provisioning/export-import-provisioning-configuration.md)
 
 

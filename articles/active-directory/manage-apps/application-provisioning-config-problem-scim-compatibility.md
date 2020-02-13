@@ -16,18 +16,18 @@ ms.date: 12/03/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6da171db6535100342342571a5c1f6468abd0fc
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: b0cae5458a9b9456d26363802ee9b06aaa842e72
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712352"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063596"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD ユーザー プロビジョニング サービスの SCIM 2.0 プロトコルへのコンプライアンスに関する既知の問題と解決策
 
 Azure Active Directory (Azure AD) では、[Cross-Domain Identity Management (SCIM) 2.0 プロトコル仕様](https://tools.ietf.org/html/draft-ietf-scim-api-19)のインターフェイスを持つ Web サービスによってアクセスされる任意のアプリケーションまたはシステムに、ユーザーやグループを自動的にプロビジョニングできます。 
 
-Azure AD による SCIM 2.0 プロトコルのサポートについては、「[System for Cross-Domain Identity Management (SCIM) を使用して Azure Active Directory からユーザーとグループをアプリケーションに自動的にプロビジョニングする](use-scim-to-provision-users-and-groups.md)」を参照してください。この記事では、Azure AD から、SCIM 2.0 をサポートするアプリケーションに、ユーザーとグループを自動的にプロビジョニングするために実装するプロトコルの特定の部分がリストされています。
+Azure AD による SCIM 2.0 プロトコルのサポートについては、「[System for Cross-Domain Identity Management (SCIM) を使用して Azure Active Directory からユーザーとグループをアプリケーションに自動的にプロビジョニングする](../app-provisioning/use-scim-to-provision-users-and-groups.md)」を参照してください。この記事では、Azure AD から、SCIM 2.0 をサポートするアプリケーションに、ユーザーとグループを自動的にプロビジョニングするために実装するプロトコルの特定の部分がリストされています。
 
 この記事では、Azure AD ユーザー プロビジョニング サービスの SCIM 2.0 プロトコルへの準拠に関する現在および過去の問題と、これらの問題を回避する方法について説明されています。
 
@@ -113,5 +113,5 @@ Azure AD による SCIM 2.0 プロトコルのサポートについては、「[
 
 
 ## <a name="next-steps"></a>次のステップ
-[SaaS アプリケーションへのプロビジョニングとプロビジョニング解除の詳細](user-provisioning.md)
+[SaaS アプリケーションへのプロビジョニングとプロビジョニング解除の詳細](../app-provisioning/user-provisioning.md)
 

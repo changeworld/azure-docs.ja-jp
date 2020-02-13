@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/23/2020
-ms.openlocfilehash: b0ec82807857be60f30aa777ff5871334383acf7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 9f377f93ab8fef2c1ad713da6fcd6c6f14107c3f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715936"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986820"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor についてよくあるご質問
 
@@ -326,6 +326,11 @@ Web クライアントの IP アドレス (IPv4 または IPv6) の検索に [Ge
 
 ### <a name="data"></a>ポータルでのデータ保持期間はどのくらいですか? セキュリティで保護されていますか?
 [データの保持とプライバシー][data]に関するページをご覧ください。
+
+### <a name="what-happens-to-application-insights-telemetry-when-a-server-or-device-loses-connection-with-azure"></a>サーバーまたはデバイスが Azure との接続を失った場合、Application insights のテレメトリはどうなりますか?
+
+Web SDK を含むすべての SDK には、"信頼できるトランスポート" または "堅牢なトランスポート" が含まれています。 サーバーまたはデバイスが Azure との接続を失った場合、テレメトリは[ローカルにファイル システム](https://docs.microsoft.com/azure/azure-monitor/app/data-retention-privacy#does-the-sdk-create-temporary-local-storage) (サーバー SDK) に、または HTML5 セッション ストレージ (Web SDK) に格納されます。 SDK は、インジェスト サービスが "古い" と見なすまで (ログの場合は 48 時間、メトリックの場合は 30 分)、このテレメトリの送信を定期的に再試行します。 古いテレメトリは削除されます。 ローカル ストレージがいっぱいになった場合など、場合によっては再試行は行われません。
+
 
 ### <a name="could-personal-data-be-sent-in-the-telemetry"></a>テレメトリで個人データが送信されることはありますか?
 

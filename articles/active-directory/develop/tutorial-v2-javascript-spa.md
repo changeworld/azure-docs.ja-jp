@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 33e1037a0fe261f9fb0d06a9ebb0b3b323fe8d5f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 5657a2d2c348b371f81aed74c92e52b5199cdc61
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701265"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159882"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>ユーザーをサインインして、JavaScript シングルページ アプリケーション (SPA) から Microsoft Graph API を呼び出す
 
@@ -50,8 +50,8 @@ ms.locfileid: "76701265"
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|JavaScript プレビュー用の Microsoft Authentication Library|
 
 > [!NOTE]
-> *msal.js* は、Microsoft ID プラットフォーム エンドポイントを対象とします。これにより、個人用アカウントと職場または学校アカウントでサインインして、トークンを取得することができます。 Microsoft ID プラットフォーム エンドポイントには[いくつかの制限](azure-ad-endpoint-comparison.md#limitations)があります。
-> v1.0 のエンドポイントと v2.0 のエンドポイントの相違点を理解するには、[エンドポイントの比較ガイド](azure-ad-endpoint-comparison.md)を参照してください。
+> *msal.js* は、Microsoft ID プラットフォーム エンドポイントを対象とします。これにより、個人用アカウントと職場または学校アカウントでサインインして、トークンを取得することができます。 Microsoft ID プラットフォーム エンドポイントには[いくつかの制限](../azuread-dev/azure-ad-endpoint-comparison.md#limitations)があります。
+> v1.0 のエンドポイントと v2.0 のエンドポイントの相違点を理解するには、[エンドポイントの比較ガイド](../azuread-dev/azure-ad-endpoint-comparison.md)を参照してください。
 
 <!--end-collapse-->
 

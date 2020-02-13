@@ -3,17 +3,17 @@ title: 最初のアプリを作成する C# チュートリアル
 titleSuffix: Azure Cognitive Search
 description: 最初の C# 検索アプリを作成する手順について説明します。 このチュートリアルでは、GitHub で公開されている動作するアプリへのリンクと、ゼロからアプリを構築する完全なプロセスの両方を提供します。 Azure Cognitive Search の重要なコンポーネントについて説明します。
 manager: nitinme
-author: PeterTurcan
-ms.author: v-pettur
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: fc3d9d52ca6eb3d35138323908c73eb0d09cf519
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/10/2020
+ms.openlocfilehash: 2b4f67fc448d98239947fd764d4926f1d590c5e2
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112237"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121592"
 ---
 # <a name="c-tutorial-create-your-first-app---azure-cognitive-search"></a>C# のチュートリアル: 最初のアプリを作成する - Azure Cognitive Search
 
@@ -547,7 +547,7 @@ Azure Cognitive Search の呼び出しは、**RunQueryAsync** メソッド内に
 * 非同期呼び出しを使用すると、コントローラーはわずかに複雑になります。しかし、高品質なアプリを開発する場合は、非同期呼び出しを使用するのがベスト プラクティスです。
 * このアプリでは、**searchParameters** に設定された内容に応じて、簡単なテキスト検索を実行しました。 ただし、この 1 つのクラスには、高度な検索を行うことができる多数のメンバーを追加できます。 このアプリを大幅に強化するために、大規模な追加作業は必要ありません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Cognitive Search を使用して最適なユーザー エクスペリエンスを提供するためには、さらに機能を追加する必要があります。中でも重要なのが、ページング (ページ番号または無限スクロールを使用) やオートコンプリート/入力候補の機能です。 高度な検索パラメーター (たとえば、特定の地点から指定した半径内にあるホテルの検索や、検索結果の並び替え) についても、検討する必要があります。
 

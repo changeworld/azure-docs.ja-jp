@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 9a6fa62384615f60da88bb41da8ad3538d34e62a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: b330b6176ba9cadc85fad81876caf2583021d503
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754096"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988636"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Azure Cognitive Search のナレッジ ストアの概要
 
@@ -133,147 +133,11 @@ AI エンリッチメント パイプラインで何を生成できるかを確�
 
 ## <a name="api-reference"></a>API リファレンス
 
-このセクションは、[スキルセットの作成 (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-skillset) に関するリファレンス ドキュメントの 1 つのバージョンであり、`knowledgeStore` 定義を含むように変更されています。 
+REST API バージョン `2019-05-06-Preview` では、スキルセットの追加の定義を通じてナレッジ ストアが提供されています。 このリファレンスに加えて、[Postman を使用したナレッジ ストアの作成](knowledge-store-create-rest.md)に関する記事を参照し、API の呼び出し方法の詳細をご確認ください。
 
-### <a name="example---knowledgestore-embedded-in-a-skillset"></a>例 - スキルセットに埋め込まれた knowledgeStore
++ スキルセットを作成する [(api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-skillset) 
++ [スキルセットを更新する (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) 
 
-次の例は、スキルセット定義の最下部にある `knowledgeStore` を示しています。 
-
-* 要求を作成するには、**POST** または **PUT** を使用します。
-* ナレッジ ストアの機能にアクセスするには、REST API の `api-version=2019-05-06-Preview` バージョンを使用します。 
-
-```http
-POST https://[servicename].search.windows.net/skillsets?api-version=2019-05-06-Preview
-api-key: [admin key]
-Content-Type: application/json
-```
-
-要求の本文は、`knowledgeStore` を含むスキルセットを定義する JSON ドキュメントです。
-
-```json
-{
-  "name": "my-skillset-name",
-  "description": "Extract organization entities and generate a positive-negative sentiment score from each document.",
-  "skills":
-  [
-    {
-      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
-      "categories": [ "Organization" ],
-      "defaultLanguageCode": "en",
-      "inputs": [
-        {
-          "name": "text",
-          "source": "/document/content"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "organizations",
-          "targetName": "organizations"
-        }
-      ]
-    },
-    {
-      "@odata.type": "#Microsoft.Skills.Text.SentimentSkill",
-      "inputs": [
-        {
-          "name": "text",
-          "source": "/document/content"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "score",
-          "targetName": "mySentiment"
-        }
-      ]
-    },
-  ],
-  "cognitiveServices": 
-    {
-    "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey",
-    "description": "mycogsvcs resource in West US 2",
-    "key": "<YOUR-COGNITIVE-SERVICES-KEY>"
-    },
-    "knowledgeStore": { 
-        "storageConnectionString": "<YOUR-AZURE-STORAGE-ACCOUNT-CONNECTION-STRING>", 
-        "projections": [ 
-            { 
-                "tables": [  
-                { "tableName": "Organizations", "generatedKeyName": "OrganizationId", "source": "/document/organizations*"}, 
-                { "tableName": "Sentiment", "generatedKeyName": "SentimentId", "source": "/document/mySentiment"}
-                ], 
-                "objects": [ ], 
-                "files": [  ]       
-            }    
-        ]     
-    } 
-}
-```
-
-### <a name="request-body-syntax"></a>要求本文の構文  
-
-次の JSON では、`knowledgeStore` を指定します。これは、`indexer` (示されていません) によって呼び出される[`skillset`](https://docs.microsoft.com/rest/api/searchservice/create-skillset)の一部です。 既に AI エンリッチメントに慣れている場合、エンリッチメントされた各ドキュメントの構成がスキルセットによって決まります。 スキルセットには、少なくとも 1 つのスキルが含まれている必要があります。データ構造を調整する場合、その筆頭に挙げられるのは Shaper スキルです。
-
-要求ペイロードを構築するための構文は次のとおりです。
-
-```json
-{   
-    "name" : "Required for POST, optional for PUT requests which sets the name on the URI",  
-    "description" : "Optional. Anything you want, or null",  
-    "skills" : "Required. An array of skills. Each skill has an odata.type, name, input and output parameters",
-    "cognitiveServices": "A key to Cognitive Services, used for billing.",
-    "knowledgeStore": { 
-        "storageConnectionString": "<YOUR-AZURE-STORAGE-ACCOUNT-CONNECTION-STRING>", 
-        "projections": [ 
-            { 
-                "tables": [ 
-                    { "tableName": "<NAME>", "generatedKeyName": "<FIELD-NAME>", "source": "<DOCUMENT-PATH>" },
-                    { "tableName": "<NAME>", "generatedKeyName": "<FIELD-NAME>", "source": "<DOCUMENT-PATH>" },
-                    . . .
-                ], 
-                "objects": [ 
-                    {
-                    "storageContainer": "<BLOB-CONTAINER-NAME>", 
-                    "source": "<DOCUMENT-PATH>", 
-                    }
-                ], 
-                "files": [ 
-                    {
-                    "storageContainer": "<BLOB-CONTAINER-NAME>",
-                    "source": "/document/normalized_images/*"
-                    }
-                ]  
-            },
-            {
-                "tables": [ ],
-                "objects": [ ],
-                "files":  [ ]
-            }  
-        ]     
-    } 
-}
-```
-
-`knowledgeStore` には 2 つのプロパティがあります。Azure Storage アカウントへの `storageConnectionString` と、物理ストレージを定義する `projections` です。 任意のストレージ アカウントを使用できますが、同じリージョン内のサービスを使用するとコスト効率が良くなります。
-
-`projections` コレクションにはプロジェクション オブジェクトが含まれます。 個々のプロジェクション オブジェクトには `tables`、`objects`、`files` (それぞれ 1 つ) が必要であり、これらは指定されるか null のどちらかです。 上記の構文は 2 つのオブジェクトを示しています。1 つは完全に指定され、もう 1 つは完全に null です。 プロジェクション オブジェクト内では、ストレージに表現された後は、データ間のリレーションシップ (検出された場合) はすべて保持されます。 
-
-分離および特定のシナリオ (たとえば、探索に使用されるデータ構造と、データ サイエンス ワークロードに必要なデータ構造) をサポートするために必要な数のプロジェクション オブジェクトを作成します。 オブジェクト内で `source` と `storageContainer` または `table` を異なる値に設定することによって、特定のシナリオのための分離とカスタマイズを実現できます。 詳細と例については、[ナレッジ ストアでのプロジェクションの操作](knowledge-store-projection-overview.md)に関する記事を参照してください。
-
-|プロパティ      | 適用対象 | [説明]|  
-|--------------|------------|------------|  
-|`storageConnectionString`| `knowledgeStore` | 必須。 形式: `DefaultEndpointsProtocol=https;AccountName=<ACCOUNT-NAME>;AccountKey=<ACCOUNT-KEY>;EndpointSuffix=core.windows.net`|  
-|`projections`| `knowledgeStore` | 必須。 `tables`、`objects`、`files` とそれぞれのプロパティで構成されるプロパティ オブジェクトのコレクション。 未使用のプロジェクションは null に設定できます。|  
-|`source`| すべてのプロジェクション| プロジェクションのルートとなる強化ツリーのノードのパス。 このノードは、スキルセット内の任意のスキルの出力です。 パスは `/document/` で始まり、エンリッチメントされたドキュメントを表しますが、`/document/content/` に、またはドキュメント ツリー内のノードに拡張できます。 例: `/document/countries/*` (すべての国)、または `/document/countries/*/states/*` (すべての国のすべての州)。 ドキュメント パスの詳細については、[スキルセットの概念と構成](cognitive-search-working-with-skillsets.md)に関する記事を参照してください。|
-|`tableName`| `tables`| Azure Table Storage に作成するテーブル。 |
-|`storageContainer`| `objects`, `files`| Azure Blob Storage に作成するコンテナーの名前。 |
-|`generatedKeyName`| `tables`| テーブルに作成される列。ドキュメントを一意に識別します。 エンリッチメント パイプラインは、生成された値でこの列を設定します。|
-
-
-### <a name="response"></a>Response  
-
- 要求が成功した場合は、状態コード "201 Created" が表示されます。 既定では、応答本文には作成されたスキルセット定義の JSON が含まれます。 このスキルセットを参照するインデクサーを呼び出すまで、ナレッジ ストアは作成されないことに注意してください。
 
 ## <a name="next-steps"></a>次のステップ
 

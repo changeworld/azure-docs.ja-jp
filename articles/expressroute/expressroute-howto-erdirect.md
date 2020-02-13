@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: jaredro
-ms.openlocfilehash: c5cb8366465d5983823184c87eb54fad6aaffbd0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 2722a852b1119ef619bc414bce5cb3a8ff6f8f00
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705923"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031614"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>ExpressRoute Direct を構成する方法
 
@@ -27,7 +27,13 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
 
    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
    ```
-2. ExpressRoute Direct がサポートされるすべての場所を一覧表示します。
+   
+2. Expressrouteportslocation および expressrouteport API にアクセスするには、Microsoft.Network へのサブスクリプションを再登録してください。
+
+   ```powershell
+   Register-AzResourceProvider -ProviderNameSpace "Microsoft.Network"
+   ```   
+3. ExpressRoute Direct がサポートされるすべての場所を一覧表示します。
   
    ```powershell
    Get-AzExpressRoutePortsLocation
@@ -60,7 +66,7 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
    Contact             : support@equinix.com
    AvailableBandwidths : []
    ```
-3. 上記で表示された場所に使用可能な帯域幅があるかどうか確認します。
+4. 上記で表示された場所に使用可能な帯域幅があるかどうか確認します。
 
    ```powershell
    Get-AzExpressRoutePortsLocation -LocationName "Equinix-San-Jose-SV1"
@@ -82,7 +88,7 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
                           }
                         ]
    ```
-4. 上記で選択した場所に基づいて ExpressRoute Direct リソースを作成します。
+5. 上記で選択した場所に基づいて ExpressRoute Direct リソースを作成します。
 
    ExpressRoute Direct では、QinQ と Dot1Q 両方のカプセル化がサポートされます。 QinQ を選択した場合、各 ExpressRoute 回線に S-Tag が動的に割り当てられ、ExpressRoute Direct リソース全体で一意になります。 回線上の各 C-Tag はその回線で一意である必要がありますが、ExpressRoute Direct 全体ではありません。  
 

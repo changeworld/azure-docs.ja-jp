@@ -3,17 +3,17 @@ title: 検索結果のページングに関する C# チュートリアル
 titleSuffix: Azure Cognitive Search
 description: このチュートリアルでは、検索結果のページングについて説明します。 これは、最初、次、前、最後、および番号付きボタンでページングする既存のホテル プロジェクトに基づいて作成されています。 2 番目のページング システムでは、垂直スクロール バーをその下限に移動することによってトリガーされる無限スクロールを使用します。
 manager: nitinme
-author: PeterTurcan
-ms.author: v-pettur
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 04f8229a86fbd8fbd5404997926412e760e74973
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/10/2020
+ms.openlocfilehash: 9abfeb54be6e22885b8e973034a6d89df8272146
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113769"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121526"
 ---
 # <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>C# のチュートリアル: 検索結果のページング - Azure Cognitive Search
 
@@ -28,7 +28,7 @@ ms.locfileid: "74113769"
 
 このチュートリアルを完了するには、以下を実行する必要があります。
 
-「[C# チュートリアル: 初めてのアプリを作成する - Azure Cognitive Search](tutorial-csharp-create-first-app.md)」プロジェクトを稼働させます。 このプロジェクトは、独自のバージョンのものでも、GitHub の「[Create first app (初めてのアプリを作成する)](https://github.com/Azure-Samples/azure-search-dotnet-samples)」からインストールしたものでもかまいません。
+「[C# チュートリアル: 初めてのアプリを作成する - Azure Cognitive Search](tutorial-csharp-create-first-app.md)」プロジェクトを稼働させます。 このプロジェクトは、独自のバージョンのものでも、GitHub の「[Create first app (初めてのアプリを作成する)](https://github.com/Azure-Samples/azure-search-dotnet-samples)」サンプルを開きます。
 
 ## <a name="extend-your-app-with-numbered-paging"></a>番号付きのページングでアプリを拡張する
 
@@ -392,7 +392,7 @@ ms.locfileid: "74113769"
 
 ここで重要な点は、表示されているページは置き換えられず、新しい結果が追加されることです。 ユーザーは、常に検索の最初の結果にスクロールで戻ることができます。
 
-無限スクロールを実装するには、ページ番号のスクロール要素を追加した時点より前からプロジェクトを始めましょう。 そのため、必要ならば、GitHub から基本的な検索ページのコピーをもう 1 つ作成します。「[Create first app (初めてのアプリを作成する)](https://github.com/Azure-Samples/azure-search-dotnet-samples)」からインストールしたものでもかまいません。
+無限スクロールを実装するには、ページ番号のスクロール要素を追加した時点より前からプロジェクトを始めましょう。 そのため、必要ならば、GitHub から基本的な検索ページのコピーをもう 1 つ作成します。「[Create first app (初めてのアプリを作成する)](https://github.com/Azure-Samples/azure-search-dotnet-samples)」サンプルを開きます。
 
 ### <a name="add-paging-fields-to-the-model"></a>モデルにページング フィールドを追加する
 
@@ -586,7 +586,7 @@ ms.locfileid: "74113769"
 
 ## <a name="takeaways"></a>重要なポイント
 
-このプロジェクトの重要なポイントを考えてみてください。
+このプロジェクトの重要なポイントを示します。
 
 * 番号付きページングは、結果の順序がやや恣意的な検索に適しています。つまり、ユーザーが関心を持つものが、後の方のページにありそうな場合です。
 * 無限スクロールは、結果の順序が特に重要な場合に適しています。 たとえば、行き先の都市の中心からの距離に基づいて結果が並べ替えられるような場合です。
@@ -596,7 +596,7 @@ ms.locfileid: "74113769"
 * 一時ストレージは 1 回の呼び出しの間のみ保持され、後の呼び出しのときまで保持するには、再設定する必要があります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ページングは、インターネット検索の基礎です。 ページングについて十分に理解したら、次のステップは、検索の入力候補表示を追加して、さらにユーザー エクスペリエンスを向上させることです。
 

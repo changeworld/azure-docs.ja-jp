@@ -1,6 +1,6 @@
 ---
-title: セルフサービスによるパスワード リセットについての FAQ - Azure Active Directory
-description: Azure AD セルフサービスのパスワード リセットについてよく寄せられる質問
+title: セルフサービス パスワード リセットについての FAQ - Azure Active Directory
+description: Azure AD セルフサービス パスワード リセットについてよく寄せられる質問
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 790a948611c6cfa336964397282a38d2b9c00e11
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 9e1cc9dde6bb2b6ae47affaed4c557f3746a681b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848784"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061456"
 ---
 # <a name="password-management-frequently-asked-questions"></a>パスワード管理に関するよく寄せられる質問 (FAQ)
 
 パスワードのリセットについてのあらゆる問題に関するよくあるご質問 (FAQ) を次に示します。
 
-ここで解決できない Azure Active Directory (Azure AD) やセルフサービスによるパスワードのリセット (SSPR) に関する一般的な質問がある場合は、[Azure AD フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WindowsAzureAD)でコミュニティに支援を求めることができます。 コミュニティのメンバーには、エンジニア、製品マネージャー、MVP、IT プロフェッショナルなどが含まれます。
+ここで解決できない Azure Active Directory (Azure AD) やセルフサービス パスワード リセット (SSPR) に関する一般的な質問がある場合は、[Azure AD フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WindowsAzureAD)でコミュニティに支援を求めることができます。 コミュニティのメンバーには、エンジニア、製品マネージャー、MVP、IT プロフェッショナルなどが含まれます。
 
 この FAQ は、次のセクションに分かれています。
 
@@ -41,12 +41,12 @@ ms.locfileid: "74848784"
   >
 * **Q:グループに対してパスワード リセットを有効にし、その後全員に対してパスワード リセットを有効にする場合、ユーザーは再登録する必要がありますか。**
 
-  > **A:** No. 認証データを設定したユーザーは、再登録する必要はありません。
+  > **A:** いいえ。 認証データを設定したユーザーは、再登録する必要はありません。
   >
   >
 * **Q:ユーザーの代わりにパスワード リセット データを定義することはできますか。**
 
-  > **A:** はい。これは Azure AD Connect、PowerShell、[Azure portal](https://portal.azure.com)、または [Microsoft 365 管理センター](https://admin.microsoft.com)で実行できます。 詳しくは、[Azure AD のセルフサービスによるパスワードのリセットで使われるデータ](howto-sspr-authenticationdata.md)に関するページをご覧ください。
+  > **A:** はい。これは Azure AD Connect、PowerShell、[Azure portal](https://portal.azure.com)、または [Microsoft 365 管理センター](https://admin.microsoft.com)で実行できます。 詳しくは、[Azure AD のセルフサービス パスワード リセット で使われるデータ](howto-sspr-authenticationdata.md)に関するページをご覧ください。
   >
   >
 * **Q:オンプレミスからセキュリティの質問のデータを同期できますか。**
@@ -61,7 +61,7 @@ ms.locfileid: "74848784"
   >
 * **Q:ユーザーがパスワード リセットを使用するには、そのユーザーが事前に登録されている必要がありますか。**
 
-  > **A:** No. ユーザーに代わって必要な認証情報を定義している場合は、ユーザー が登録を行う必要はありません。 適切に書式設定されたデータがディレクトリ内の該当フィールドに格納されている限り、パスワード リセットは正常に動作します。
+  > **A:** いいえ。 ユーザーに代わって必要な認証情報を定義している場合は、ユーザー が登録を行う必要はありません。 適切に書式設定されたデータがディレクトリ内の該当フィールドに格納されている限り、パスワード リセットは正常に動作します。
   >
   >
 * **Q:ユーザーの代わりに [認証用電話]、[認証用電子メール]、または [代替の認証用電話] フィールドを同期または設定できますか。**
@@ -80,7 +80,7 @@ ms.locfileid: "74848784"
   >
   >
 
-## <a name="password-reset"></a>パスワード リセット
+## <a name="password-reset"></a>パスワードのリセット
 
 * **Q:ユーザーが短期間に何回もパスワードのリセットを試みることは禁止されていますか。**
 
@@ -114,7 +114,7 @@ ms.locfileid: "74848784"
   >
 * **Q:パスワードをリセットするためにアクセスする場所を、どのようにユーザーに案内すればよいですか。**
 
-  > **A:** [SSPR のデプロイ](howto-sspr-deployment.md#communications-plan)に関する記事に記載されている提案をいくつか試します。
+  > **A:** [SSPR のデプロイ](howto-sspr-deployment.md#plan-communications)に関する記事に記載されている提案をいくつか試します。
   >
   >
 * **Q:モバイル デバイスでこのページを使用できますか。**
@@ -159,7 +159,7 @@ ms.locfileid: "74848784"
   >
 * **Q:ユーザーが同じセキュリティの質問を 2 回以上登録することはできますか。**
 
-  > **A:** No. ユーザーは、特定の質問を登録した後、同じ質問を再度登録することはできません。
+  > **A:** いいえ。 ユーザーは、特定の質問を登録した後、同じ質問を再度登録することはできません。
   >
   >
 * **Q:登録用とリセット用のセキュリティの質問について個数の下限を設定できますか。**
@@ -277,16 +277,16 @@ ms.locfileid: "74848784"
   >
   >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [SSPR のロールアウトを正常に完了する方法](howto-sspr-deployment.md)
 * [パスワードのリセットまたは変更](../user-help/active-directory-passwords-update-your-own-password.md)
-* [セルフサービスのパスワード リセットのための登録](../user-help/active-directory-passwords-reset-register.md)
+* [セルフサービス パスワード リセットのための登録](../user-help/active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](concept-sspr-licensing.md)
-* [SSPR が使用するデータと、ユーザー用に設定するデータ。](howto-sspr-authenticationdata.md)
+* [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
 * [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR のポリシー オプション](concept-sspr-policy.md)
 * [パスワード ライトバックの概要とその必要性](howto-sspr-writeback.md)
 * [SSPR でアクティビティをレポートする方法](howto-sspr-reporting.md)
 * [SSPR のすべてのオプションとその意味](concept-sspr-howitworks.md)
-* [不具合が発生していると思われるSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)
+* [不具合が発生していると思われるSSPR のトラブルシューティング方法](active-directory-passwords-troubleshoot.md)

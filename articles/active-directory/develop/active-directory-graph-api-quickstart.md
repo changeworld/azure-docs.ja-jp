@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: ryanwi
 ms.reviewer: sureshja
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f32d9832f0bad81ca29ab7553d956b593531d1bd
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 9fd5fa943468924c289587285fe7986a73c21dba
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698936"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161343"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>方法:Azure AD Graph API を使用する
 
@@ -81,7 +81,7 @@ Azure AD Graph Explorer の次の機能と制限事項に注意してくださ�
 
 次の例では、Fiddler Web Debugger を使用して、Azure AD ディレクトリに新しいセキュリティ グループ 'MyTestGroup' を作成します。
 
-**アクセス トークンを取得する**:Azure AD Graph にアクセスするには、クライアントの Azure AD に対する認証が成功している必要があります。 詳細については、[Azure AD の認証シナリオ](v1-authentication-scenarios.md)に関するページを参照してください。
+**アクセス トークンを取得する**:Azure AD Graph にアクセスするには、クライアントの Azure AD に対する認証が成功している必要があります。 詳細については、[Azure AD の認証シナリオ](authentication-scenarios.md)に関するページを参照してください。
 
 **クエリを構成して実行する**:次の手順を実行します。
 

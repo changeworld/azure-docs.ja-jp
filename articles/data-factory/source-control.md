@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/09/2019
-ms.openlocfilehash: fc38dce3deaa601c9ed36f60439a08bb89cc7630
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 1cc5932eca520b0bbc0c592b54d36ea8b5942b08
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646899"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031631"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory のソース管理
 
@@ -70,7 +70,7 @@ Azure Data Factory UX 作成キャンバスで、 **[Data Factory]** ドロッ�
 
 構成ウィンドウに次の Azure Repos コード リポジトリの設定が表示されます。
 
-| 設定 | [説明] | 値 |
+| 設定 | 説明 | Value |
 |:--- |:--- |:--- |
 | **リポジトリの種類** | Azure Repos コード リポジトリの種類。<br/> | Azure DevOps Git または GitHub |
 | **Azure Active Directory** | Azure AD テナントの名前。 | `<your tenant name>` |
@@ -157,7 +157,7 @@ Azure Data Factory UX 作成キャンバスで、 **[Data Factory]** ドロッ�
 
 - Data Factory ビジュアル作成ツールと GitHub の統合は、一般的に利用できるバージョンの Data Factory でのみ機能します。
 
-- 1 つの GitHub ブランチからは、リソースの種類ごとに最大 1,000 のエンティティ (パイプライン、データセットなど) をフェッチできます。 この制限に達した場合は、リソースを個別のファクトリに分割することをお勧めします。
+- 1 つの GitHub ブランチからは、リソースの種類ごとに最大 1,000 のエンティティ (パイプライン、データセットなど) をフェッチできます。 この制限に達した場合は、リソースを個別のファクトリに分割することをお勧めします。 Azure DevOps Git にはこのような制限はありません。
 
 ## <a name="switch-to-a-different-git-repo"></a>別の Git リポジトリに切り替える
 
@@ -249,8 +249,13 @@ Data Factory のリンクされたサービスのすべての接続文字列ま�
 
 1. 現在の Git リポジトリを削除します
 1. 同じ設定で Git を再構成しますが、 **[Import existing Data Factory resources to repository]\(既存の Data Factory リソースをリポジトリにインポートする\)** がオンになっていることを確認し、 **[New branch]\(新しいブランチ\)** を選択します
-1. コラボレーション ブランチからすべてのリソースを削除します
 1. 変更をコラボレーション ブランチにマージするプル要求を作成します 
+
+以下に、古い発行ブランチが発生する可能性がある状況の例をいくつか示します。
+- ユーザーに複数のブランチがある。 ユーザーが 1 つの機能ブランチで、AKV 関連ではないリンクされたサービスを削除し (非 AKV のリンクされた サービスは、Git にあるかどうかに関係なく、直ちに発行されます)、機能ブランチをコラボレーション ブランチにマージしませんでした。
+- ユーザーが SDK または PowerShell を使用してデータ ファクトリを変更した
+- ユーザーがすべてのリソースを新しいブランチに移動し、初めて発行を試みた。 リンクされたサービスは、リソースをインポートするときに手動で作成する必要があります。
+- ユーザーが、非 AKV のリンクされた サービスまたは Integration Runtime JSON を手動でアップロードする。 それらは、データセット、リンクされたサービス、パイプラインなどの別のリソースからそのリソースを参照します。 UX を使用して作成された非 AKV のリンクされた サービスは、資格情報を暗号化する必要があるため、直ちに発行されます。 そのリンクされたサービスを参照しているデータセットをアップロードして発行しようとすると、git 環境に存在するために UX はそれを許可します。 これは、データ ファクトリ サービスに存在しないため、発行時に拒否されます。
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 機能に関するコメントを送信するには、またはツールの問題について Microsoft に通知するには、 **[フィードバック]** を選択します。

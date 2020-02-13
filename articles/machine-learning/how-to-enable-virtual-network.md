@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: 53644066276aa8e9fb57b4802142bca3fe4b342f
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 3dfdbc56456ea67c830d0e1e9785b9d0032bf2cc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760855"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988221"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure Virtual Network 内で Azure ML の実験と推論のジョブを安全に実行する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -136,7 +136,7 @@ Azure Machine Learning では、ワークスペースに関連付けられてい
 > * コンピューティング インスタンスまたはクラスターに指定されたサブネットには、対象となる VM 数に対応できるように十分な未割り当て IP アドレスが必要です。 サブネットに十分な未割り当て IP アドレスがない場合、コンピューティング クラスターは部分的に割り当てられます。
 > * 仮想ネットワークのサブスクリプションまたはリソース グループに対するセキュリティ ポリシーまたはロックで、仮想ネットワークを管理するためのアクセス許可が制限されているかどうかを確認します。 トラフィックを制限することで仮想ネットワークをセキュリティで保護する予定の場合は、コンピューティング サービス用にいくつかのポートを開いたままにしてください。 詳細については、「[必須ポート](#mlcports)」のセクションをご覧ください。
 > * 複数のコンピューティング インスタンスまたはクラスターを 1 つの仮想ネットワークに配置する場合は、1 つ以上のリソースのクォータの増加を要求することが必要になる場合があります。
-> * 仮想ネットワークでワークスペースの Azure Storage アカウントもセキュリティで保護される場合、それらは Azure Machine Learning コンピューティング インスタンスまたはクラスターと同じ仮想ネットワークに存在する必要があります。 同じ仮想ネットワーク内にコンピューティング インスタンスを作成する場合は、仮想ネットワークからストレージ アカウントをデタッチし、仮想ネットワーク内にコンピューティング インスタンスを作成してから、ストレージ アカウントを仮想ネットワークに接続し直す必要があります。
+> * 仮想ネットワークでワークスペースの Azure Storage アカウントもセキュリティで保護される場合、それらは Azure Machine Learning コンピューティング インスタンスまたはクラスターと同じ仮想ネットワークに存在する必要があります。 
 
 Azure Machine Learning コンピューティング インスタンスまたはクラスターにより、仮想ネットワークが含まれているリソース グループに追加のネットワーク リソースが自動的に割り当てられます。 サービスにより、各コンピューティング インスタンスまたはクラスターについて次のリソースが割り当てられます。
 
@@ -180,8 +180,8 @@ Azure portal 内での NSG 規則の構成は、次の画像に示したとお�
 - NSG 規則を使用して、アウトバウンドのインターネット接続を拒否します。
 
 - __コンピューティング インスタンス__または__コンピューティング クラスター__の場合は、次の項目への送信トラフィックを制限します。
-   - Azure Storage (__Storage__ の__サービス タグ__を使用)
-   - Azure Container Registry (__AzureContainerRegistry__ の__サービス タグ__を使用)
+   - Azure Storage (__Storage.RegionName__ の__サービス タグ__を使用)。 ここで、`{RegionName}` は Azure リージョンの名前です。
+   - Azure Container Registry (__AzureContainerRegistry.RegionName__ の__サービス タグ__を使用)。 ここで、`{RegionName}` は Azure リージョンの名前です。
    - Azure Machine Learning (__AzureMachineLearning__ の __サービス タグ__ を使用)
    
 - __コンピューティング インスタンス__については、次の項目も追加します。

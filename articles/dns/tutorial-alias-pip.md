@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
-ms.openlocfilehash: d601d19a786613f674f7b941becc5e97d84e6fce
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d4517314742f3ec8e9968d20745ffb697d96f324
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939275"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149934"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>チュートリアル:Azure パブリック IP アドレスを参照するエイリアス レコードを構成する 
 
@@ -36,7 +36,7 @@ Azure DNS 内でドメインをホストする手順については、「[チュ
 
 ## <a name="create-the-network-infrastructure"></a>ネットワーク インフラストラクチャを作成する
 まず、Web サーバーを配置する仮想ネットワークとサブネットを作成します。
-1. Azure Portal ( https://portal.azure.com ) にサインインします。
+1. Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 2. ポータルの左上にある **[リソースの作成]** を選択します。 検索ボックスに「*resource group*」と入力し、**RG-DNS-Alias-pip** という名前のリソース グループを作成します。
 3. **[+ リソースの作成]**  >  **[ネットワーク]**  >  **[仮想ネットワーク]** の順に選択します。
 4. **VNet-Server** という名前の仮想ネットワークを作成します。 それを **RG-DNS-Alias-pip** リソース グループに配置し、サブネットに **SN-Web** という名前を付けます。

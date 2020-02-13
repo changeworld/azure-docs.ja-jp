@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: 68bbe22a4a6f7697c2bfab291412aae85efc32e9
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 9643e1f77be400a89a8dfaecdc2f7e1205a1938b
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916999"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031316"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight にサードパーティ製 Apache Hadoop アプリケーションをインストールする
 
@@ -51,7 +51,7 @@ HDInsight アプリケーションは、ユーザーが HDInsight クラスタ�
 
 **HDInsight アプリケーションをインストールする**
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 左側のメニューで、 **[すべてのサービス]**  >  **[分析]**  >  **[HDInsight クラスター]** に移動します。
 3. リストから HDInsight クラスターを選択します。  HDInsight クラスターがない場合は、最初に作成する必要があります。  「 [クラスターの作成](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)」を参照してください。
 4. **[設定]** カテゴリで、 **[アプリケーション]** を選択します。 メイン ウィンドウに、インストールされているアプリケーションの一覧が表示されます。 
@@ -65,14 +65,17 @@ HDInsight アプリケーションは、ユーザーが HDInsight クラスタ�
 インストールの状態はポータル通知で確認できます (ポータル上部のベル アイコンを選択)。 アプリケーションのインストール後、[インストール済みアプリ] 一覧にアプリケーションが表示されます。
 
 ## <a name="install-applications-during-cluster-creation"></a>クラスター作成時のアプリケーションのインストール
-クラスターの作成時に HDInsight アプリケーションをインストールすることもできます。 このプロセスでは、クラスターが作成されて実行状態になった後に HDInsight アプリケーションがインストールされます。 クラスターの作成時に Azure portal を使用してアプリケーションをインストールするには、既定の **[簡易作成]** オプションの代わりに **[カスタム]** オプションを使用します。
+
+クラスターの作成時に HDInsight アプリケーションをインストールすることもできます。 このプロセスでは、クラスターが作成されて実行状態になった後に HDInsight アプリケーションがインストールされます。 Azure portal を使用してクラスターの作成中にアプリケーションをインストールするには、 **[構成と価格]** タブで **[+ アプリケーションの追加]** を選択します。
+
+![Azure portal のクラスター構成アプリケーション](./media/hdinsight-apps-install-applications/azure-portal-cluster-configuration-applications.png)
 
 ## <a name="list-installed-hdinsight-apps-and-properties"></a>インストール済み HDInsight アプリとプロパティの一覧表示
 ポータルには、クラスターのインストール済み HDInsight アプリケーションのほか、インストール済みの各アプリケーションのプロパティが一覧で表示されます。
 
 **HDInsight アプリケーションを一覧表示し、プロパティを表示する**
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 左側のメニューで、 **[すべてのサービス]**  >  **[分析]**  >  **[HDInsight クラスター]** に移動します。
 3. リストから HDInsight クラスターを選択します。
 4. **[設定]** カテゴリで、 **[アプリケーション]** を選択します。 メイン ウィンドウに、インストールされているアプリケーションの一覧が表示されます。 
@@ -95,10 +98,10 @@ HTTP と SSH を使用してエッジ ノードに接続できます。 エン�
 
 HTTP エンドポイント資格情報は、HDInsight クラスター向けに構成した HTTP ユーザーの資格情報です。また、SSH エンドポイント資格情報は、HDInsight クラスター向けに構成した SSH 資格情報です。
 
-## <a name="troubleshoot"></a>トラブルシューティング
+## <a name="troubleshoot"></a>[トラブルシューティング]
 「 [インストールのトラブルシューティング](hdinsight-apps-install-custom-applications.md#troubleshoot-the-installation)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [カスタム HDInsight アプリケーションをインストールする](hdinsight-apps-install-custom-applications.md): 未発行の HDInsight アプリケーションを HDInsight にデプロイする方法について確認します。
 * [HDInsight アプリケーションを発行する](hdinsight-apps-publish-applications.md):カスタム HDInsight アプリケーションを Azure Marketplace に発行する方法について確認します。
 * [MSDN:HDInsight アプリケーションをインストールする](https://msdn.microsoft.com/library/mt706515.aspx):HDInsight アプリケーションを定義する方法を確認します。

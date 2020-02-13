@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 77d952666be12d7dea780b3aa8f094cf5f70f2d3
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: bae47e2f5cd473893d97678977030643cc9949fe
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911123"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988619"
 ---
 # <a name="add-a-polygon-layer-to-the-map"></a>マップに多角形レイヤーを追加する
 
-この記事では、多角形レイヤーを使用してマップ上に `Polygon` および `MultiPolygon` フィーチャー ジオメトリの領域をレンダリングする方法を示します。 Azure Maps の Web SDK では、[拡張 GeoJSON スキーマ](extend-geojson.md#circle)で定義されている円のジオメトリの作成もサポートしています。 これらの円は、マップ上にレンダリングされるときに多角形に変換されます。 [atlas.Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) クラスでラップされている場合は、すべてのフィーチャー ジオメトリも簡単に更新することができます。
+この記事では、多角形レイヤーを使用してマップ上に `Polygon` および `MultiPolygon` フィーチャー ジオメトリの領域をレンダリングする方法を示します。 Azure Maps の Web SDK では、[拡張 GeoJSON スキーマ](extend-geojson.md#circle)で定義されている円のジオメトリの作成もサポートしています。 これらの円は、マップ上にレンダリングされるときに多角形に変換されます。 [atlas.Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) クラスでラップされている場合は、すべてのフィーチャー ジオメトリを簡単に更新できます。
 
 ## <a name="use-a-polygon-layer"></a>多角形レイヤーを使用する 
 
-多角形レイヤーがデータ ソースに接続されていると、マップに読み込まれるときに、`Polygon` および `MultiPolygon` フィーチャーの領域がレンダリングされます。 次のコードでは、多角形を作成し、データ ソースに追加し、[PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) クラスを使用して多角形レイヤーでレンダリングする方法が示されています。
+多角形レイヤーがデータ ソースに接続されていると、マップに読み込まれるときに、`Polygon` および `MultiPolygon` フィーチャーを含む領域がレンダリングされます。 多角形を作成し、データ ソースに追加し、[PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) クラスを使用して多角形レイヤーでレンダリングします。
 
 ```javascript
 //Create a data source and add it to the map.
@@ -47,7 +47,7 @@ map.layers.add(new atlas.layer.PolygonLayer(dataSource, null,{
 }));
 ```
 
-上記の機能の完全な実行コード サンプルを以下に示します。
+上記のコードの完全な実行サンプルを以下に示します。
 
 <br/>
 
@@ -56,14 +56,14 @@ map.layers.add(new atlas.layer.PolygonLayer(dataSource, null,{
 
 ## <a name="use-a-polygon-and-line-layer-together"></a>多角形と線レイヤーを同時に使用する
 
-線レイヤーを使用して、多角形のアウトラインをレンダリングすることができます。 次のコード サンプルでは、前の例のようにポリゴンがレンダリングされますが、今度はデータ ソースに接続された 2 番目のレイヤーとして線レイヤーが追加されます。  
+線レイヤーを使用して、多角形のアウトラインをレンダリングします。 次のコード サンプルでは、前の例のように多角形がレンダリングされますが、今度は線レイヤーが追加されます。 この線レイヤーは、データ ソースに接続される 2 番目のレイヤーです。  
 
 <iframe height='500' scrolling='no' title='多角形と多角形を追加する線レイヤー' src='//codepen.io/azuremaps/embed/aRyEPy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/aRyEPy/'>Polygon and line layer to add polygon</a>」Pen を表示します。
 </iframe>
 
 ## <a name="fill-a-polygon-with-a-pattern"></a>多角形をパターンで塗りつぶす
 
-多角形を色で塗りつぶすだけでなく、イメージのパターンを使用することもできます。 イメージのパターンをマップ イメージのスプライト リソースに読み込んでから、このイメージを多角形レイヤーの `fillPattern` プロパティで参照します。
+多角形を色で塗りつぶすだけでなく、イメージのパターンを使用して多角形を塗りつぶすこともできます。 イメージのパターンをマップ イメージのスプライト リソースに読み込んでから、このイメージを多角形レイヤーの `fillPattern` プロパティで参照します。
 
 <br/>
 
@@ -88,7 +88,7 @@ Polygon レイヤーにはごくわずかのスタイル オプションしか�
 
 ## <a name="add-a-circle-to-the-map"></a>マップに円を追加する
 
-Azure Maps は、[ここ](extend-geojson.md#circle)に示されている円の定義を提供する、GeoJSON スキーマの拡張バージョンを使用してします。 値 `"Circle"` の `subType` プロパティとメートル単位の半径を表す数値を含む `radius` プロパティを含む `Point` フィーチャーを作成することで、円をマップ上にレンダリングすることができます。 次に例を示します。
+Azure Maps は、[ここ](extend-geojson.md#circle)に示されている円の定義を提供する、GeoJSON スキーマの拡張バージョンを使用しています。 `Point` フィーチャーを作成すると、マップ上に円がレンダリングされます。 この `Point` には、値が `"Circle"` の `subType` プロパティと、メートル単位で半径を表す数値が指定された `radius` プロパティがあります。 
 
 ```javascript
 {
@@ -104,7 +104,7 @@ Azure Maps は、[ここ](extend-geojson.md#circle)に示されている円の�
 }  
 ```
 
-Azure Maps Web SDK では、これらの `Point` フィーチャーが内部的に `Polygon` に変換され、次のコード サンプルで示すように多角形レイヤーと線レイヤーを使用してマップ上にレンダリングすることができます。
+Azure Maps Web SDK では、このような `Point` フィーチャーが `Polygon` フィーチャーに変換されます。 次に、これらのフィーチャーは、次のコード サンプルで示すように、多角形レイヤーと線レイヤーを使用してマップ上にレンダリングされます。
 
 <br/>
 
@@ -113,7 +113,7 @@ Azure Maps Web SDK では、これらの `Point` フィーチャーが内部的�
 
 ## <a name="make-a-geometry-easy-to-update"></a>ジオメトリを簡単に更新する
 
-`Shape` クラスは [Geometry](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest) または [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) をラップしているため、更新や管理が簡単です。 ジオメトリと一連のプロパティを渡すか、または次のコードで示すようにフィーチャーを渡すことによって、図形を作成することができます。
+`Shape` クラスは [Geometry](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest) または [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) をラップしているため、これらのフィーチャーの更新や管理が簡単です。 図形変数をインスタンス化するには、図形コンストラクターにジオメトリまたはプロパティのセットを渡します。
 
 ```javascript
 //Creating a shape by passing in a geometry and a object containing properties.
@@ -123,7 +123,7 @@ var shape1 = new atlas.Shape(new atlas.data.Point[0,0], { myProperty: 1 });
 var shape2 = new atlas.Shape(new atlas.data.Feature(new atlas.data.Point[0,0], { myProperty: 1 });
 ```
 
-次のコード サンプルでは、円の GeoJSON オブジェクトを図形クラスでラップし、スライダーを使用してその半径プロパティを簡単に更新する方法が示されています。 図形で半径の値が変化すると、円のレンダリングがマップ上で自動的に更新されます。
+次のコード サンプルでは、円の GeoJSON オブジェクトを図形クラスでラップする方法が示されています。 図形で半径の値が変化すると、マップ上で自動的に円がレンダリングされます。
 
 <br/>
 

@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6656361fd4634c46cd5216b57eb8465536319f09
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: bd5a5f100dbe09c3b82f58183a118ee3bf455f70
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062818"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063613"
 ---
 # <a name="add-an-unlisted-non-gallery-application-to-your-azure-ad-organization"></a>一覧にない (ギャラリー以外の) アプリケーションを Azure AD 組織に追加する
 
@@ -25,7 +25,7 @@ ms.locfileid: "73062818"
 
 - [Security Assertion Markup Language (SAML) 2.0](https://wikipedia.org/wiki/SAML_2.0) ID プロバイダーをサポートする任意のアプリケーションのセルフサービス統合 (SP または IdP によって開始)
 - [パスワードベースの SSO](what-is-single-sign-on.md#password-based-sso)
-- [ユーザー プロビジョニング用の System for Cross-Domain Identity Management (SCIM) プロトコル](use-scim-to-provision-users-and-groups.md)を使用するアプリケーションのセルフサービス接続
+- [ユーザー プロビジョニング用の System for Cross-Domain Identity Management (SCIM) プロトコル](../app-provisioning/use-scim-to-provision-users-and-groups.md)を使用するアプリケーションのセルフサービス接続
 - [Office 365 アプリ ランチャー](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/)または [Azure AD アクセス パネル](what-is-single-sign-on.md#linked-sign-on)での任意のアプリケーションへのリンクの追加機能
 
 この記事では、コードを作成せずに Azure portal で**エンタープライズ アプリケーション**にギャラリー以外のアプリケーションを追加する方法について説明します。 カスタム アプリケーションと Azure AD を統合する方法に関する開発者向けガイダンスをお探しの場合は、[Azure AD の認証シナリオ](../develop/authentication-scenarios.md)に関するページを参照してください。 [OpenId Connect/OAuth](../develop/active-directory-v2-protocols.md) などの最新のプロトコルを使用してユーザーを認証するアプリを開発した場合は、それを Azure portal の[アプリの登録](../develop/quickstart-register-app.md)エクスペリエンスを使用して Microsoft ID プラットフォームに登録できます。
@@ -74,27 +74,27 @@ ms.locfileid: "73062818"
        |---|---|---|---|---|
        | ユーザーのサインインが有効になっていますか? | ユーザーの割り当てが必要ですか? | ユーザーに表示しますか? | 割り当てられているユーザーはサインインできますか? | 割り当てられているユーザーにアプリケーションが表示されますか?* |
        | はい | はい | はい | はい | はい  |
-       | はい | はい | ×  | はい | ×   |
-       | はい | ×  | はい | はい | はい  |
-       | はい | ×  | ×  | はい | ×   |
-       | ×  | はい | はい | ×  | ×   |
-       | ×  | はい | ×  | ×  | ×   |
-       | ×  | ×  | はい | ×  | ×   |
-       | ×  | ×  | ×  | ×  | ×   |
+       | はい | はい | いいえ  | はい | いいえ   |
+       | はい | いいえ  | はい | はい | はい  |
+       | はい | いいえ  | いいえ  | はい | いいえ   |
+       | いいえ  | はい | はい | いいえ  | いいえ   |
+       | いいえ  | はい | いいえ  | いいえ  | いいえ   |
+       | いいえ  | いいえ  | はい | いいえ  | いいえ   |
+       | いいえ  | いいえ  | いいえ  | いいえ  | いいえ   |
 
       **割り当てられていない**ユーザーの動作:
 
        | アプリケーション プロパティの設定 | | | 割り当てられていないユーザーのエクスペリエンス | |
        |---|---|---|---|---|
        | ユーザーのサインインが有効になっていますか? | ユーザーの割り当てが必要ですか? | ユーザーに表示しますか? | 割り当てられていないユーザーはサインインできますか? | 割り当てられていないユーザーにアプリケーションが表示されますか?* |
-       | はい | はい | はい | ×  | ×   |
-       | はい | はい | ×  | ×  | ×   |
-       | はい | ×  | はい | はい | ×   |
-       | はい | ×  | ×  | はい | ×   |
-       | ×  | はい | はい | ×  | ×   |
-       | ×  | はい | ×  | ×  | ×   |
-       | ×  | ×  | はい | ×  | ×   |
-       | ×  | ×  | ×  | ×  | ×   |
+       | はい | はい | はい | いいえ  | いいえ   |
+       | はい | はい | いいえ  | いいえ  | いいえ   |
+       | はい | いいえ  | はい | はい | いいえ   |
+       | はい | いいえ  | いいえ  | はい | いいえ   |
+       | いいえ  | はい | はい | いいえ  | いいえ   |
+       | いいえ  | はい | いいえ  | いいえ  | いいえ   |
+       | いいえ  | いいえ  | はい | いいえ  | いいえ   |
+       | いいえ  | いいえ  | いいえ  | いいえ  | いいえ   |
 
      \* ユーザーのアクセス パネルと Office 365 アプリ ランチャーにアプリケーションが表示されますか?
 
@@ -104,7 +104,7 @@ ms.locfileid: "73062818"
 
 4. 完了したら、 **[保存]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure AD 組織にアプリケーションを追加したので、使用する[シングル サインオン方法を選択](what-is-single-sign-on.md#choosing-a-single-sign-on-method)し、次の該当する記事を参照します。
 

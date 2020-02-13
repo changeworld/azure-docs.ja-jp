@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/13/2019
+ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: 26a353251bd85a30ab26c86f3d6b363b0a84e074
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 59839df1e67c5ea7f18df373ad0530a2ea740209
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889542"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030899"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management で仮想ネットワークを使用する方法
 Azure Virtual Network (VNET) を使用すると、任意の Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 これらのネットワークは、さまざまな VPN テクノロジを使用して、オンプレミスのネットワークに接続できます。 Azure Virtual Network の詳細については、まず[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関する記事を参照してください。
@@ -138,7 +138,7 @@ API Management サービスを Virtual Network にデプロイするときに発
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Azure Public      | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`East US 2` が eastus2.warm.ingestion.msftcloudes.com である `azure region`.warm.ingestion.msftcloudes.com</li></ul> |
     | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
-    | Azure 中国       | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
+    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
 
 + **SMTP リレー**:SMTP リレー用の送信ネットワーク接続。`smtpi-co1.msn.com`、`smtpi-ch1.msn.com`、`smtpi-db3.msn.com`、`smtpi-sin.msn.com`、`ies.global.microsoft.com` の各ホストで解決されます。
 
@@ -150,13 +150,7 @@ API Management サービスを Virtual Network にデプロイするときに発
 
   * API Management サービスがデプロイされているサブネット上でサービス エンドポイントを有効にします。 Azure SQL、Azure Storage、Azure EventHub、Azure ServiceBus の[サービス エンドポイント][ServiceEndpoints]を有効にする必要があります。 これらのサービスに対して、API Management の委任されたサブネットからエンドポイントを直接有効にすると、サービス トラフィックの最適なルーティングを提供する Microsoft Azure バックボーン ネットワークを使用できるようになります。 トンネリングが強制された API Management でサービス エンドポイントを使用すると、上記の Azure サービス のトラフィックが強制的にトンネリングされることはありません。 API Management サービスの他の 依存関係トラフィックは強制的にトンネリングされ、失われることはありません。依存関係トラフィックが失われた場合、API Management サービスが適切に機能しなくなります。
     
-  * インターネットから API Management サービスの管理エンドポイントへのすべてのコントロール プレーン トラフィックは、API Management によってホストされている受信 IP の特定のセットを使用してルーティングされます。 トラフィックが強制的にトンネリングされると、応答がこれらの受信送信元 IP に対称的にマップされなくなります。 この制限を克服するには、次のユーザー定義ルート ([UDR][UDRs]) を追加し、これらのホスト ルートの宛先を "Internet" に設定することによってトラフィックを Azure に誘導する必要があります。 コントロール プレーン トラフィックの受信 IP のセットは次のとおりです。
-    
-     | Azure 環境 | 管理 IP アドレス                                                                                                                                                                                                                                                                                                                                                              |
-    |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Azure Public      | 13.84.189.17/32、13.85.22.63/32、23.96.224.175/32、23.101.166.38/32、52.162.110.80/32、104.214.19.224/32、52.159.16.255/32、40.82.157.167/32、51.137.136.0/32、40.81.185.8/32、40.81.47.216/32、51.145.56.125/32、40.81.89.24/32、52.224.186.99/32、51.145.179.78/32、52.140.238.179/32、40.66.60.111/32、52.139.80.117/32、20.46.144.85/32、191.233.24.179/32、40.90.185.46/32、102.133.130.197/32、52.139.20.34/32、40.80.232.185/32、13.71.49.1/32、13.64.39.16/32、20.40.160.107/32、20.37.52.67/32、20.44.33.246/32、13.86.102.66/32、20.40.125.155/32、51.143.127.203/32、52.253.225.124/32、52.253.159.160/32、20.188.77.119/32、20.44.72.3/32、52.142.95.35/32、52.139.152.27/32、20.39.80.2/32、51.107.96.8/32、20.39.99.81/32、20.37.81.41/32、51.107.0.91/32、102.133.0.79/32、51.116.96.0/32、51.116.0.0/32 |
-    | Azure Government  | 52.127.42.160/32、52.127.34.192/32 |
-    | Azure 中国       | 139.217.51.16/32、139.217.171.176/32 |
+  * インターネットから API Management サービスの管理エンドポイントへのすべてのコントロール プレーン トラフィックは、API Management によってホストされている受信 IP の特定のセットを使用してルーティングされます。 トラフィックが強制的にトンネリングされると、応答がこれらの受信送信元 IP に対称的にマップされなくなります。 この制限を克服するには、次のユーザー定義ルート ([UDR][UDRs]) を追加し、これらのホスト ルートの宛先を "Internet" に設定することによってトラフィックを Azure に誘導する必要があります。 コントロール プレーン トラフィックの受信 IP セットは、「[コントロール プレーンの IP アドレス](#control-plane-ips)」に記載されています
 
   * 強制的にトンネリングされる、API Management サービスの他の依存関係については、ホスト名を解決し、エンドポイントに到達するための方法が必要です。 次のような方法があります。
       - メトリックと正常性の監視
@@ -182,7 +176,7 @@ Azure は、各サブネット内で一部の IP アドレスを予約し、こ�
 
 Azure VNET インフラストラクチャによって使用される IP アドレスに加えて、サブネットの各 API Management インスタンスは、Premium SKU のユニットごとに 2 つの IP アドレス、または Developer SKU 用に 1 つの IP アドレスを使用します。 各インスタンスによって、外部ロード バランサー用の IP アドレスが別途予約されています。 内部 VNET に展開する場合は、内部ロード バランサー用に追加の IP アドレスが必要です。
 
-前述の計算によると、API Management で展開できるサブネットの最小サイズは /29 で、3 つの IP アドレスが提供されます。
+前述の計算によると、API Management で展開できるサブネットの最小サイズは /29 で、3 つの使用可能な IP アドレスが提供されます。
 
 ## <a name="routing"> </a>ルーティング
 + 負荷分散されたパブリック IP アドレス (VIP) は、すべてのサービス エンドポイントへのアクセスを提供するために予約されます。
@@ -196,12 +190,76 @@ Azure VNET インフラストラクチャによって使用される IP アド�
 * 内部仮想ネットワーク モードで構成された複数リージョンの API Management デプロイでは、ルーティングを設定するユーザーが分散負荷の管理を担当します。デプロイでは、ユーザーが、ルーティングを担当するように、複数のリージョンの負荷分散の管理を担当します。
 * 別のリージョン内にあるグローバルにピアリングされた VNET 内のリソースから、内部モードの API Management サービスへの接続は、プラットフォームの制限により機能しません。 詳しくは、[ある仮想ネットワーク内のリソースは、ピアリングされた仮想ネットワークの Azure 内部ロード バランサーと通信できない](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)ことに関するページをご覧ください。
 
+## <a name="control-plane-ips"> </a>コントロール プレーンの IP アドレス
+
+IP アドレスは **Azure 環境**ごとに分かれています。 受信要求を許可する場合、**グローバル**とマークされたIP アドレスを、**リージョン**ごとの IP アドレスとともにホワイトリストに登録する必要があります。
+
+| **Azure 環境**|   **[リージョン]**|  **IP アドレス (IP address)**|
+|-----------------|-------------------------|---------------|
+| Azure Public| 米国中南部 (グローバル)| 104.214.19.224|
+| Azure Public| 米国中北部 (グローバル)| 52.162.110.80|
+| Azure Public| 米国中西部| 52.253.135.58|
+| Azure Public| 韓国中部| 40.82.157.167|
+| Azure Public| 英国西部| 51.137.136.0|
+| Azure Public| 西日本| 40.81.185.8|
+| Azure Public| 米国中北部| 40.81.47.216|
+| Azure Public| 英国南部| 51.145.56.125|
+| Azure Public| インド西部| 40.81.89.24|
+| Azure Public| East US| 52.224.186.99|
+| Azure Public| 西ヨーロッパ| 51.145.179.78|
+| Azure Public| 東日本| 52.140.238.179|
+| Azure Public| フランス中部| 40.66.60.111|
+| Azure Public| カナダ東部| 52.139.80.117|
+| Azure Public| アラブ首長国連邦北部| 20.46.144.85|
+| Azure Public| ブラジル南部| 191.233.24.179|
+| Azure Public| 東南アジア| 40.90.185.46|
+| Azure Public| 南アフリカ北部| 102.133.130.197|
+| Azure Public| カナダ中部| 52.139.20.34|
+| Azure Public| 韓国南部| 40.80.232.185|
+| Azure Public| インド中部| 13.71.49.1|
+| Azure Public| 米国西部| 13.64.39.16|
+| Azure Public| オーストラリア南東部| 20.40.160.107|
+| Azure Public| オーストラリア中部| 20.37.52.67|
+| Azure Public| インド南部| 20.44.33.246|
+| Azure Public| 米国中部| 13.86.102.66|
+| Azure Public| オーストラリア東部| 20.40.125.155|
+| Azure Public| 米国西部 2| 51.143.127.203|
+| Azure Public| 米国東部 2 EUAP| 52.253.229.253|
+| Azure Public| 米国中部 EUAP| 52.253.159.160|
+| Azure Public| 米国中南部| 20.188.77.119|
+| Azure Public| 米国東部 2| 20.44.72.3|
+| Azure Public| 北ヨーロッパ| 52.142.95.35|
+| Azure Public| 東アジア| 52.139.152.27|
+| Azure Public| フランス南部| 20.39.80.2|
+| Azure Public| スイス西部| 51.107.96.8|
+| Azure Public| オーストラリア中部 2| 20.39.99.81|
+| Azure Public| アラブ首長国連邦中部| 20.37.81.41|
+| Azure Public| スイス北部| 51.107.0.91|
+| Azure Public| 南アフリカ西部| 102.133.0.79|
+| Azure Public| ドイツ中西部| 51.116.96.0|
+| Azure Public| ドイツ北部| 51.116.0.0|
+| Azure Public| ノルウェー東部| 51.120.2.185|
+| Azure Public| ノルウェー西部| 51.120.130.134|
+| Azure China 21Vianet| 中国北部 (グローバル)| 139.217.51.16|
+| Azure China 21Vianet| 中国東部 (グローバル)| 139.217.171.176|
+| Azure China 21Vianet| 中国北部| 40.125.137.220|
+| Azure China 21Vianet| 中国東部| 40.126.120.30|
+| Azure China 21Vianet| 中国北部 2| 40.73.41.178|
+| Azure China 21Vianet| 中国東部 2| 40.73.104.4|
+| Azure Government| USGov バージニア州 (グローバル)| 52.127.42.160|
+| Azure Government| USGov テキサス州 (グローバル)| 52.127.34.192|
+| Azure Government| USGov バージニア州| 52.227.222.92|
+| Azure Government| USGov アイオワ州| 13.73.72.21|
+| Azure Government| USGov アリゾナ| 52.244.32.39|
+| Azure Government| USGov テキサス| 52.243.154.118|
+| Azure Government| USDoD 中部| 52.182.32.132|
+| Azure Government| USDoD 東部| 52.181.32.192|
 
 ## <a name="related-content"> </a>関連コンテンツ
 * [VPN Gateway を使用して Virtual Network をバックエンドに接続する](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)
 * [異なるデプロイ モデルの Virtual Network を PowerShell を使用して接続する](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [Azure API Management で API Inspector を使用して呼び出しをトレースする方法](api-management-howto-api-inspector.md)
-* [仮想ネットワークに関する FAQ](../virtual-network/virtual-networks-faq.md)
+* [Virtual Network についてよく寄せられる質問](../virtual-network/virtual-networks-faq.md)
 * [サービス タグ](../virtual-network/security-overview.md#service-tags)
 
 [api-management-using-vnet-menu]: ./media/api-management-using-with-vnet/api-management-menu-vnet.png
