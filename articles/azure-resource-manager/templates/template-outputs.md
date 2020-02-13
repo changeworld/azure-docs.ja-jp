@@ -92,7 +92,7 @@ az group deployment show \
 
 次の例は、出力を使用するためのシナリオを示しています。
 
-|Template  |[説明]  |
+|Template  |説明  |
 |---------|---------|
 |[Copy variables](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | 複合変数を作成し、それらの値を出力します。 リソースはデプロイしません。 |
 |[パブリック IP アドレス](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | パブリック IP アドレスを作成し、リソース ID を出力します。 |
