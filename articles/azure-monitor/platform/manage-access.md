@@ -132,7 +132,7 @@ Azure には、Log Analytics ワークスペース用に、次の 2 つの組み
 
 Log Analytics 閲覧者ロールには、次の Azure アクションが含まれています。
 
-| 種類    | 権限 | [説明] |
+| 種類    | 権限 | 説明 |
 | ------- | ---------- | ----------- |
 | アクション | `*/read`   | すべての Azure リソースとリソース構成を表示する機能。 次のものを表示できます。 <br> 仮想マシン拡張機能の状態 <br> リソースに対する Azure Diagnostics の構成 <br> すべてのリソースのすべてのプロパティと設定。 <br> ワークスペースの場合、ワークスペース設定の読み取りとデータへのクエリ実行について、制限なしの完全なアクセスが許可されます。 上の詳細なオプションを参照してください。 |
 | アクション | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | 非推奨です。ユーザーに割り当てる必要はありません。 |
@@ -160,7 +160,7 @@ Log Analytics 閲覧者ロールには、次の Azure アクションが含ま�
 
 Log Analytics 共同作成者ロールには、次の Azure アクションが含まれています。
 
-| 権限 | [説明] |
+| 権限 | 説明 |
 | ---------- | ----------- |
 | `*/read`     | すべてのリソースとリソース構成を表示する機能。 次のものを表示できます。 <br> 仮想マシン拡張機能の状態 <br> リソースに対する Azure Diagnostics の構成 <br> すべてのリソースのすべてのプロパティと設定。 <br> ワークスペースの場合、ワークスペース設定の読み取りとデータへのクエリ実行について、制限なしの完全なアクセスが許可されます。 上の詳細なオプションを参照してください。 |
 | `Microsoft.Automation/automationAccounts/*` | Runbook の追加と編集など、Azure Automation アカウントを作成および構成する機能 |
@@ -187,7 +187,7 @@ Log Analytics 共同作成者ロールには、次の Azure アクションが�
 
 ユーザーがリソースコンテキストのアクセスを使用するワークスペースのログを照会するときは、リソースに対する次のアクセス許可を持っています。
 
-| 権限 | [説明] |
+| 権限 | 説明 |
 | ---------- | ----------- |
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>例 :<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | リソースのすべてのログ データを表示可能。  |
 | `Microsoft.Insights/diagnosticSettings/write` | 診断設定を構成し、このリソースに設定を許可する機能。 |
