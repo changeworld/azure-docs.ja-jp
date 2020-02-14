@@ -43,7 +43,7 @@ Authorization: Bearer
 
 次のヘッダーは必須です｡ 
 
-|要求ヘッダー|[説明]|  
+|要求ヘッダー|説明|  
 |--------------------|-----------------|  
 |*Content-Type:*| 必須。 `application/json` を設定します。 |  
 |*Authorization:*| 必須。 有効な `Bearer` トークンを設定します。 |
