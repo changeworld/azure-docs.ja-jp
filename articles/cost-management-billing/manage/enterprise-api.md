@@ -54,7 +54,7 @@ Reporting API を使用すると、Enterprise Azure の顧客はプログラム�
 
 
 ## <a name="api-response-codes"></a>API 応答コード   
-|応答の状態コード|Message|[説明]|
+|応答の状態コード|Message|説明|
 |-|-|-|
 |200| [OK]|エラーなし|
 |401| 権限がありません| API キーが検出されない、正しくない、有効期限が切れている、など|
