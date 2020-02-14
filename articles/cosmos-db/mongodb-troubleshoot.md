@@ -22,7 +22,7 @@ Azure Cosmos DB の MongoDB 用 API は、MongoDB のワイヤ プロトコル�
 
 ## <a name="common-errors-and-solutions"></a>一般的なエラーと解決
 
-| エラー               | コード  | [説明]  | 解決策  |
+| エラー               | コード  | 説明  | 解決策  |
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | 使用された要求ユニットの合計数が、コレクションのプロビジョニング済みの要求ユニット レートを超えたために調整されました。 | Azure portal からコンテナーまたはコンテナーのセットに割り当てられているスループットをスケーリングすることを検討してください。または、操作を再試行できます。 |
 | ExceededMemoryLimit | 16501 | マルチテナント サービスとしての操作が、クライアントのメモリ配分を超えました。 | より制限の厳しいクエリ条件によって操作のスコープを減らすか、[Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) からサポートに連絡してください。 例: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
