@@ -49,7 +49,7 @@ Cognitive Services リソースは [Microsoft Azure](https://azure.microsoft.com
 
 Azure Cognitive Services のコンテナーでは次の Docker コンテナー セットが提供され、各コンテナーには Azure Cognitive Services のサービスの機能のサブセットが含まれます。
 
-| サービス | サポートされている価格レベル | コンテナー | [説明] |
+| サービス | サポートされている価格レベル | コンテナー | 説明 |
 |---------|----------|----------|-------------|
 |[Anomaly Detector][ad-containers] |F0、S0|**Anomaly-Detector** |Anomaly Detector API では、機械学習を利用することで、時系列データを監視し、その中の異常を検出できます。<br>[アクセスの要求](https://aka.ms/adcontainer)|
 |[Computer Vision][cv-containers] |F0、S1|**読み取り** |レシート、ポスター、名刺など、さまざまな表面や背景を持ついろいろなオブジェクトのイメージから、印刷されたテキストを抽出します。 "読み取り" コンテナーでは、画像内の "*手書きテキスト*" も検出され、PDF/TIFF/複数ページのサポートが提供されます。<br/><br/>**重要:** 読み取りコンテナーは現在のところ、英語でのみ機能します。|
