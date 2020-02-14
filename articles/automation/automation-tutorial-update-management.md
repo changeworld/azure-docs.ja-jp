@@ -90,7 +90,7 @@ Update Management が有効になると、 **[更新の管理]** ウィンドウ
 
 **[条件の追加]** をクリックして、お客様の更新プログラムの展開に適したシグナルを選択します。 次の表は、更新プログラムの展開に使用できる 2 つのシグナルの詳細を示しています。
 
-|シグナル名|Dimensions|[説明]|
+|シグナル名|Dimensions|説明|
 |---|---|---|
 |**Total Update Deployment Runs (更新プログラムの展開の合計実行回数)**|- Update Deployment Name (更新プログラムの展開の名前)</br>- Status (状態)|このシグナルは、更新プログラムの展開の全体的な状態を通知するために使用されます。|
 |**Total Update Deployment Machine Runs (更新プログラムの展開マシンの合計実行回数)**|- Update Deployment Name (更新プログラムの展開の名前)</br>- Status (状態)</br>- Target Computer (ターゲット コンピューター)</br>- Update Deployment Run ID (更新プログラムの展開の実行 ID)|このシグナルは、特定のマシンを対象とした更新プログラムの展開の状態を通知するために使用されます。|
