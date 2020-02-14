@@ -76,7 +76,7 @@ sudo apt-get install libssl1.0.2 libasound2
 
 * C++: [.tar パッケージ](https://aka.ms/csspeech/linuxbinary)として SDK をダウンロードし、ファイルを任意のディレクトリにアンパックします。 SDK のフォルダー構造を次の表に示します。
 
-  |Path|[説明]|
+  |Path|説明|
   |-|-|
   |`license.md`|ライセンス|
   |`ThirdPartyNotices.md`|サード パーティに関する通知|
