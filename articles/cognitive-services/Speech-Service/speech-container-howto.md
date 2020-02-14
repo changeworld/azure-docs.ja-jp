@@ -273,7 +273,7 @@ ApiKey={API_KEY}
 
 次の表は、さまざまな `docker run` パラメーターとその説明をまとめたものです。
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 |---------|---------|
 | `{VOLUME_MOUNT}` | ホスト コンピューターの[ボリューム マウント](https://docs.docker.com/storage/volumes/)。docker では、これを利用し、カスタム モデルを保持します。 たとえば、*C:\CustomSpeech* では、*C ドライブ*がホスト マシンに置かれます。 |
 | `{MODEL_ID}` | Custom Speech ポータルの **[トレーニング]** ページの Custom Speech **モデル ID**。 |
@@ -335,7 +335,7 @@ docker run コマンドの `ModelId` パラメーターの引数として使用�
 
 次の表は、さまざまな `docker run` パラメーターとその説明をまとめたものです。
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 |---------|---------|
 | `{VOLUME_MOUNT}` | ホスト コンピューターの[ボリューム マウント](https://docs.docker.com/storage/volumes/)。docker では、これを利用し、カスタム モデルを保持します。 たとえば、*C:\CustomSpeech* では、*C ドライブ*がホスト マシンに置かれます。 |
 | `{MODEL_ID}` | カスタム音声ポータルの **[トレーニング]** ページの Custom Speech **モデル ID**。 |
