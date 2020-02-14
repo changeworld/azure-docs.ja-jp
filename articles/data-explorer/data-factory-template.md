@@ -53,7 +53,7 @@ ADXTableName varchar(255)
 
 各コード要素について次の表で説明します。
 
-|プロパティ  |[説明]  | 例
+|プロパティ  |説明  | 例
 |---------|---------| ---------|
 |PartitionId   |  コピー順序 | 1  |  
 |SourceQuery   |  パイプライン ランタイム中にコピーされるデータを示すクエリ | <br>`select * from table where lastmodifiedtime  LastModifytime >= ''2015-01-01 00:00:00''>` </br>    
