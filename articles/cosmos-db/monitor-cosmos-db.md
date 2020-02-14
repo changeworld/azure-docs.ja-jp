@@ -60,7 +60,7 @@ Azure Cosmos DB は、メトリックを操作するためのカスタム エク
 ## <a name="analyzing-log-data"></a>ログ データの分析
 Azure Monitor のログのデータはテーブルに格納され、各テーブルには独自の一意のプロパティ セットがあります。 Azure Cosmos DB は、次のテーブルにデータを格納します。
 
-| テーブル | [説明] |
+| テーブル | 説明 |
 |:---|:---|
 | AzureDiagnostics | リソース ログを格納するために複数のサービスによって使用される共通テーブル。 Azure Cosmos DB のリソース ログは `MICROSOFT.DOCUMENTDB` で識別できます。   |
 | AzureActivity    | アクティビティ ログのすべてのレコードを格納する共通テーブル。 
