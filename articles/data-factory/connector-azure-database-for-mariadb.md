@@ -43,7 +43,7 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 Azure Database for MariaDB のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティは、次のように設定する必要があります:**AzureMariaDB** | はい |
 | connectionString | Azure Database for MariaDB に接続するための接続文字列。 Azure portal で、お使いの Azure Database for MariaDB から [接続文字列] に移動すると、ADO.NET の接続文字列のところに記載されています。 <br/> パスワードを Azure Key Vault に格納して、接続文字列から `pwd` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 | はい |
@@ -99,7 +99,7 @@ Azure Database for MariaDB のリンクされたサービスでは、次のプ�
 
 Azure Database for MariaDB からのデータのコピーでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | データセットの type プロパティは、次のように設定する必要があります:**AzureMariaDBTable** | はい |
 | tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
@@ -129,7 +129,7 @@ Azure Database for MariaDB からのデータのコピーでは、次のプロ�
 
 Azure Database for MariaDB からデータをコピーするために、コピー アクティビティの **source** セクションでは次のプロパティがサポートされています。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**AzureMariaDBSource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
