@@ -89,7 +89,7 @@ git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Face-Windo
 
 1. ナビゲーション ウィンドウの **[Select a scenario]\(シナリオの選択\)** で、サンプル アプリに現在含まれるシナリオのいずれかを選択します。  
 
-   | シナリオ | [説明] |
+   | シナリオ | 説明 |
    |----------|-------------|
    |Analyze Image (画像を分析する) | [Analyze Image (画像の分析)](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) 操作を使用して、ローカルまたはリモートの画像を分析します。 分析のための視覚的な特徴と言語を選択して、画像と結果の両方を表示できます。  |
    |Analyze Image with Domain Model (ドメイン モデルで画像を分析する) | [List Domain Specific Models (ドメイン固有モデルの一覧表示)](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd) 操作を使用して選択できるドメイン モデルの一覧を表示し、[Recognize Domain Specific Content (ドメイン固有コンテンツの認識)](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) 操作を使用して、選択したドメイン モデルを使用してローカルまたはリモートの画像を分析します。 分析用の言語を選択することもできます。 |
