@@ -45,7 +45,7 @@ Authorization: Bearer
 
 次のヘッダーは必須です｡
 
-|要求ヘッダー|[説明]|
+|要求ヘッダー|説明|
 |--------------------|-----------------|
 |*Content-Type:*|必須。 `application/json` を設定します。|
 |*Authorization:*|必須。 有効な `Bearer` [アクセス トークン](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)を設定します。 |
@@ -81,7 +81,7 @@ Authorization: Bearer
 
 **value** の各項目は、サービスの使用状況に案する詳細を表します。
 
-|Response プロパティ|[説明]|
+|Response プロパティ|説明|
 |----------------|----------|
 |**subscriptionGuid** | サブスクリプションのグローバルに一意の ID。 |
 |**startDate** | 使用開始の日付。 |
