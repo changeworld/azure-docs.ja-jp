@@ -45,7 +45,7 @@ Azure Cosmos DB の MongoDB 用 API コネクタを使用して次のことが�
 
 Azure Cosmos DB の MongoDB 用 API のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | **type** プロパティは **CosmosDbMongoDbApi** に設定する必要があります。 | はい |
 | connectionString |Azure Cosmos DB の MongoDB 用 API 用の接続文字列を指定します。 これは、Azure portal、Cosmos DB ブレード、プライマリまたはセカンダリの接続文字列の順に移動して確認できます。パターンは次のとおりです。`mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb` <br/><br />パスワードを Azure Key Vault に格納して、接続文字列から  `password`  構成をプルすることもできます。 詳細については、「 [Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md) 」を参照してください。|はい |
@@ -75,7 +75,7 @@ Azure Cosmos DB の MongoDB 用 API のリンクされたサービスでは、�
 
 データセットの定義に使用できるセクションとプロパティの完全な一覧については、「[データセットとリンクされたサービス](concepts-datasets-linked-services.md)」を参照してください。 Azure Cosmos DB の MongoDB 用 API データセットでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | データセットの **type** プロパティは、**CosmosDbMongoDbApiCollection** に設定する必要があります。 |はい |
 | collectionName |Azure Cosmos DB コレクションの名前。 |はい |
@@ -109,7 +109,7 @@ Azure Cosmos DB の MongoDB 用 API のリンクされたサービスでは、�
 
 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの **type** プロパティは **CosmosDbMongoDbApiSource** に設定する必要があります。 |はい |
 | filter | クエリ演算子を使用して選択フィルターを指定します。 コレクション内のすべてのドキュメントを返すには、このパラメーターを省略するか、空のドキュメント ({}) を渡します。 | いいえ |
@@ -164,7 +164,7 @@ Azure Cosmos DB の MongoDB 用 API のリンクされたサービスでは、�
 
 コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのシンクの **type** プロパティは **CosmosDbMongoDbApiSink** に設定する必要があります。 |はい |
 | writeBehavior |Azure Cosmos DB にデータを書き込む方法を示します。 使用可能な値は、**Insert**、**Upsert** です。<br/><br/>**upsert** の動作は、同じ `_id` を持つドキュメントが既に存在する場合、そのドキュメントを置き換えます。それ以外の場合は、ドキュメントを挿入します。<br /><br />**注**:元のドキュメントまたは列のマッピングで `_id` が指定されていない場合、Data Factory によってドキュメントの `_id` が自動的に生成されます。 つまり、**upsert** が期待どおりに動作するには、ドキュメントに ID があることを確認する必要があります。 |いいえ<br />(既定値は **insert** です) |
