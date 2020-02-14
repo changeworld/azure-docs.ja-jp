@@ -102,7 +102,7 @@ Azure Data Explorer Spark コネクタでは、[Azure AD アプリケーショ�
 
 最も簡単で一般的な認証方法。 この方法は Azure Data Explorer Spark コネクタを使用するときにお勧めです。
 
-|Properties  |[説明]  |
+|Properties  |説明  |
 |---------|---------|
 |**KUSTO_AAD_CLIENT_ID**     |   Azure AD アプリケーション (クライアント) ID。      |
 |**KUSTO_AAD_AUTHORITY_ID**     |  Azure AD 認証機関。 Azure AD Directory (テナント) ID。        |
