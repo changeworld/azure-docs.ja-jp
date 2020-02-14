@@ -128,7 +128,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 
 このリポジトリにある GraphBulkExecutor サンプルには、次のファイルが付属しています。
 
-ファイル|[説明]
+ファイル|説明
 ---|---
 `App.config`|ここには、アプリケーションとデータベースに固有のパラメーターが指定されます。 出力先のデータベースとコレクションに接続するには、あらかじめこのファイルを編集しておく必要があります。
 `Program.cs`| このファイルには、`DocumentClient` コレクションの作成、クリーンアップの処理、Bulk Executor 要求の送信に必要なロジックが格納されています。
@@ -136,7 +136,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 
 `App.config` ファイルで指定できる構成値は次のとおりです。
 
-設定|[説明]
+設定|説明
 ---|---
 `EndPointUrl`|Azure Cosmos DB Gremlin API データベース アカウントの [概要] ブレードに表示される **.NET SDK エンドポイント**です。 `https://your-graph-database-account.documents.azure.com:443/` という形式が使用されます。
 `AuthorizationKey`|Azure Cosmos DB アカウントに表示されるプライマリ キーまたはセカンダリ キーです。 詳細については、[Azure Cosmos DB データへのアクセスのセキュリティ保護](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#master-keys)に関するページを参照してください。
