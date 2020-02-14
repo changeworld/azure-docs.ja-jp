@@ -45,7 +45,7 @@ Azure Data Factory では、接続を可能にする組み込みのドライバ�
 
 Azure Database for PostgreSQL のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティは、次のように設定する必要があります:**AzurePostgreSql** | はい |
 | connectionString | Azure Database for PostgreSQL に接続するための ODBC 接続文字列。<br/>パスワードを Azure Key Vault に格納して、接続文字列から `password` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。 | はい |
@@ -53,7 +53,7 @@ Azure Database for PostgreSQL のリンクされたサービスでは、次の�
 
 一般的な接続文字列は `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>` です。 ケースごとにさらに多くのプロパティを設定できます。それらのプロパティを次に示します。
 
-| プロパティ | [説明] | オプション | 必須 |
+| プロパティ | 説明 | オプション | 必須 |
 |:--- |:--- |:--- |:--- |
 | EncryptionMethod (EM)| ドライバーとデータベース サーバー間で送信されるデータを暗号化するためにドライバーが使用するメソッド。 たとえば、`EncryptionMethod=<0/1/6>;` のように入力します。| 0 (暗号化なし) **(既定)** /1 (SSL)/6 (RequestSSL) | いいえ |
 | ValidateServerCertificate (VSC) | SSL 暗号化が有効 (Encryption Method=1) になっているときに、データベース サーバーによって送信される証明書をドライバーが検証するかどうかを決定します。 たとえば、`ValidateServerCertificate=<0/1>;` のように入力します。| 0 (無効) **(既定)** / 1 (有効) | いいえ |
@@ -102,7 +102,7 @@ Azure Database for PostgreSQL のリンクされたサービスでは、次の�
 
 Azure Database for PostgreSQL からデータをコピーするには、データセットの type プロパティを **AzurePostgreSqlTable** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | データセットの type プロパティは、**AzurePostgreSqlTable** に設定する必要があります | はい |
 | tableName | テーブルの名前 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
@@ -131,7 +131,7 @@ Azure Database for PostgreSQL からデータをコピーするには、デー�
 
 Azure Database for PostgreSQL からデータをコピーするには、コピー アクティビティのソースの種類を **AzurePostgreSqlSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティは **AzurePostgreSqlSource** に設定する必要があります | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 例: `"SELECT * FROM MyTable"` | いいえ (データセットの tableName プロパティが指定されている場合) |
@@ -172,7 +172,7 @@ Azure Database for PostgreSQL からデータをコピーするには、コピ�
 
 データを Azure Database for PostgreSQL にコピーするために、コピー アクティビティの **sink** セクションでは以下のプロパティがサポートされています。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのシンクの type プロパティは **AzurePostgreSQLSink** に設定する必要があります | はい |
 | preCopyScript | コピー アクティビティの毎回の実行で、データを Azure Database for PostgreSQL に書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 | いいえ |
