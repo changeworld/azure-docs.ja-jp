@@ -203,7 +203,7 @@ New-AzApplyUpdate `
    -ProviderName Microsoft.Compute
 ```
 
-## <a name="check-update-status"></a>更新プログの状態の確認
+## <a name="check-update-status"></a>更新プログラムの状態の確認
 更新プログラムの状態を確認するには、[Get-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate) を使用します。 次に示すコマンドは、`-ApplyUpdateName` パラメーターに `default` を使用して、最新の更新プログラムの状態を表示します。 更新プログラムの名前を置き換えて ([New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) コマンドによって返されます)、特定の更新プログラムの状態を取得できます。
 
 ```text

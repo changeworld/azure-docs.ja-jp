@@ -7,6 +7,7 @@
     - name: Microsoft ID プラットフォームの進化
       href: about-microsoft-identity-platform.md
 - name: クイックスタート
+  expanded: true
   items:
     - name: テナントを設定する
       href: quickstart-create-new-tenant.md
@@ -90,6 +91,7 @@
 - name: サンプル
   href: sample-v2-code.md
 - name: 概念
+  expanded: true
   items:
     - name: 認証の基本
       href: authentication-scenarios.md

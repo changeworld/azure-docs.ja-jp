@@ -43,7 +43,7 @@ DNS 転送を機能させるには、この接続でファイアウォール ポ
 
 プライベート クラウドからオンプレミスへの DNS 転送を有効にするには、[サポート リクエスト](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を送信し、次の情報を提供します。
 
-* [問題の種類]\:**テクニカル**
+* 問題の種類:**テクニカル**
 * サブスクリプション:**CloudSimple サービスがデプロイされるサブスクリプション**
 * サービス:**VMware Solution by CloudSimple**
 * 問題の種類:**アドバイザリまたは操作方法...**
