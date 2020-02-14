@@ -45,7 +45,7 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 Azure Database for MySQL のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティは、次のように設定する必要があります:**AzureMySql** | はい |
 | connectionString | Azure Database for MySQL インスタンスに接続するために必要な情報を指定します。 <br/> パスワードを Azure Key Vault に格納して、接続文字列から `password` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 | はい |
@@ -53,7 +53,7 @@ Azure Database for MySQL のリンクされたサービスでは、次のプロ�
 
 一般的な接続文字列は `Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>` です。 ケースごとにさらに多くのプロパティを設定できます。
 
-| プロパティ | [説明] | オプション | 必須 |
+| プロパティ | 説明 | オプション | 必須 |
 |:--- |:--- |:--- |:--- |
 | SSLMode | このオプションは、MySQL を接続するときに、ドライバーで SSL 暗号化と検証を使用するかどうかを指定します。 例: `SSLMode=<0/1/2/3/4>`| DISABLED (0) / PREFERRED (1) **(既定)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | いいえ |
 | UseSystemTrustStore | このオプションは、システムの信頼ストアと指定した PEM ファイルのどちらの CA 証明書を使用するかを指定します。 例: `UseSystemTrustStore=<0/1>;`| Enabled (1) / Disabled (0) **(既定)** | いいえ |
@@ -108,7 +108,7 @@ Azure Database for MySQL のリンクされたサービスでは、次のプロ�
 
 Azure Database for MySQL からデータをコピーするには、データセットの type プロパティを **AzureMySqlTable** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | データセットの type プロパティは、次のように設定する必要があります:**AzureMySqlTable** | はい |
 | tableName | MySQL データベースのテーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
@@ -139,7 +139,7 @@ Azure Database for MySQL からデータをコピーするには、データセ�
 
 Azure Database for MySQL からデータをコピーするために、コピー アクティビティの **source** セクションでは次のプロパティがサポートされています。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**AzureMySqlSource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
@@ -181,7 +181,7 @@ Azure Database for MySQL からデータをコピーするために、コピー 
 
 データを Azure Database for MySQL にコピーするために、コピー アクティビティの **sink** セクションでは次のプロパティがサポートされています。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのシンクの type プロパティは、次のように設定する必要があります: **AzureMySqlSink** | はい |
 | preCopyScript | コピー アクティビティの毎回の実行で、データを Azure Database for MySQL に書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 | いいえ |
