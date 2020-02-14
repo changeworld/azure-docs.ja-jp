@@ -66,7 +66,7 @@ Azure Data Explorer は、アプリケーション、Web サイト、IoT デバ�
 
 ログの JSON 文字列には、次の表に示す要素が含まれます。
 
-|Name               |[説明]
+|Name               |説明
 |---                |---
 |time               |レポートされた時刻
 |resourceId         |Azure Resource Manager リソース ID
@@ -100,7 +100,7 @@ Azure Data Explorer は、アプリケーション、Web サイト、IoT デバ�
 ```
 **成功した操作の診断ログのプロパティ**
 
-|Name               |[説明]
+|Name               |説明
 |---                |---
 |succeededOn        |インジェストの完了時刻
 |operationId        |Azure Data Explorer インジェスト操作 ID
@@ -141,7 +141,7 @@ Azure Data Explorer は、アプリケーション、Web サイト、IoT デバ�
 
 **失敗した操作の診断ログのプロパティ**
 
-|Name               |[説明]
+|Name               |説明
 |---                |---
 |failedOn           |インジェストの完了時刻
 |operationId        |Azure Data Explorer インジェスト操作 ID
