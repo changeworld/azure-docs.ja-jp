@@ -12,12 +12,12 @@ metadata:
   ms.author: mtillman
   manager: daveba
   ms.date: 07/27/2019
-  ms.openlocfilehash: 1ce670f2783eb12db307eac42974667dd809de9d
-  ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+  ms.openlocfilehash: e11e0edf214d3362784285cc24ee209855383119
+  ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
   ms.translationtype: HT
   ms.contentlocale: ja-JP
   ms.lasthandoff: 02/12/2020
-  ms.locfileid: "77159303"
+  ms.locfileid: "77166162"
 highlightedContent:
   items:
   - title: Azure AD とは
@@ -70,15 +70,15 @@ conceptualContent:
       text: 詳細情報
   - title: 認証
     links:
-    - url: ./authentication/concept-mfa-howitworks.md
+    - url: ./authentication/overview-authentication.md
       itemType: concept
-      text: '動作のしくみ: Azure MFA'
-    - url: ./authentication/concept-sspr-howitworks.md
-      itemType: concept
-      text: Azure AD のセルフサービス パスワード リセット
-    - url: ./authentication/concept-password-ban-bad.md
-      itemType: concept
-      text: Azure AD のパスワード保護
+      text: Azure AD Authentication の概要
+    - url: ./authentication/tutorial-enable-sspr.md
+      itemType: tutorial
+      text: セルフサービス パスワード リセットを有効にする
+    - url: ./authentication/tutorial-enable-azure-mfa.md
+      itemType: tutorial
+      text: Azure Multi-Factor Authentication の有効化
     footerLink:
       url: ./authentication/index.yml
       text: 詳細情報

@@ -87,7 +87,7 @@
           href: logic-apps-handle-large-messages.md
         - name: セキュリティで保護
           items:
-            - name: ロジック アプリをセキュリティで保護する
+            - name: ロジック アプリのセキュリティを強化する
               href: logic-apps-securing-a-logic-app.md
             - name: マネージド ID による認証
               href: create-managed-service-identity.md
@@ -97,7 +97,7 @@
           items:
             - name: ロジック アプリ用のカスタム API を作成する
               href: logic-apps-create-api-app.md
-            - name: カスタム API の呼び出しをセキュリティで保護する
+            - name: カスタム API の呼び出しのセキュリティを強化する
               href: logic-apps-custom-api-authentication.md
             - name: カスタム API をデプロイして呼び出す
               href: logic-apps-custom-api-host-deploy-call.md

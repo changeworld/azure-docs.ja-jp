@@ -21,7 +21,11 @@
 - name: 概念
   items:
     - name: 場所とパートナー
-      href: virtual-wan-locations-partners.md
+      items:
+        - name: ハブの場所とパートナー
+          href: virtual-wan-locations-partners.md
+        - name: パートナー向けの自動化ガイドライン
+          href: virtual-wan-configure-automation-providers.md
     - name: IPsec ポリシー
       href: virtual-wan-ipsec.md
 - name: 操作方法ガイド
@@ -46,8 +50,6 @@
       href: virtual-wan-point-to-site-azure-ad.md
     - name: ユーザー VPN 用にマルチアプリケーション Azure AD 認証を構成する
       href: openvpn-azure-ad-tenant-multi-app.md
-    - name: 自動化を構成する (Virtual WAN パートナー)
-      href: virtual-wan-configure-automation-providers.md
     - name: グローバルおよびハブベースの VPN プロファイルのダウンロード
       href: global-hub-profile.md
     - name: ルーティングを構成する

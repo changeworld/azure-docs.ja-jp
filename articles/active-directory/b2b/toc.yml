@@ -23,8 +23,6 @@
           href: b2b-tutorial-require-mfa.md
     - name: サンプル
       items:
-        - name: セルフサービス サインアップ ポータルのサンプル
-          href: self-service-portal.md
         - name: コードと Azure PowerShell のサンプル
           href: code-samples.md
     - name: 概念
@@ -50,6 +48,8 @@
           href: conditional-access.md
         - name: ハイブリッド組織向けの B2B
           href: hybrid-organizations.md
+        - name: セルフサービス サインアップ
+          href: self-service-portal.md
         - name: 現在の制限
           href: current-limitations.md
     - name: 操作方法ガイド

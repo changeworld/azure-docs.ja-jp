@@ -160,6 +160,8 @@
           href: disk-scalability-targets.md
         - name: ディスクのバックアップとディザスター リカバリー
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: 共有ディスク
+          href: disks-shared.md
         - name: エフェメラル OS ディスク
           href: ephemeral-os-disks.md
     - name: ネットワーク
@@ -553,6 +555,8 @@
         - name: テンプレートによるディスクのデプロイ
           displayName: 'Azure Resource Manager, ARM'
           href: using-managed-disks-template-deployments.md
+        - name: 共有ディスクを有効にする
+          href: disks-shared-enable.md
         - name: ディスクに VHD をアップロードする - CLI
           href: disks-upload-vhd-to-managed-disk-cli.md
         - name: ディスクのサイズの変更
