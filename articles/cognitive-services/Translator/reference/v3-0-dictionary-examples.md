@@ -33,7 +33,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
 
 クエリ文字列に渡される要求パラメーターを次に示します。
 
-| クエリ パラメーター | [説明] |
+| クエリ パラメーター | 説明 |
 | --------- | ----------- |
 | api-version <img width=200/> | "**必須のパラメーター**"。<br/>クライアントによって要求される API のバージョン。 値は `3.0` とする必要があります。 |
 | from | "**必須のパラメーター**"。<br/>入力テキストの言語を指定します。 ソース言語は、`dictionary` スコープに含まれている[サポートされている言語](./v3-0-languages.md)のいずれかとする必要があります。 |
@@ -41,7 +41,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
 
 要求ヘッダーには次のものがあります。
 
-| ヘッダー  | [説明] |
+| ヘッダー  | 説明 |
 | ------ | ----------- |
 | 認証ヘッダー <img width=200/>  | "**必須の要求ヘッダー**" です。<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">認証に使用できるオプション</a>に関するページをご覧ください。 |
 | Content-Type | "**必須の要求ヘッダー**" です。<br/>ペイロードのコンテンツ タイプを指定します。 次のいずれかの値になります。`application/json` |
