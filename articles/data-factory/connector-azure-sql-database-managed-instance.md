@@ -60,7 +60,7 @@ Azure SQL Database Managed Instance のプライベート エンドポイント�
 
 Azure SQL Database Managed Instance のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティを **AzureSqlMI** に設定する必要があります。 | はい |
 | connectionString |このプロパティは、SQL 認証を使用してマネージド インスタンスに接続するために必要な **connectionString** 情報を指定します。 詳細については、次の例を参照してください。 <br/>既定のポートは 1433 です。 パブリック エンドポイントを持つ Azure SQL Database Managed Instance を使用している場合は、ポート 3342 を明示的に指定します。<br> また、Azure Key Vault にパスワードを格納することもできます。 それが SQL 認証である場合は、接続文字列から `password` 構成を取得します。 詳細については、この表の後にある JSON の例および「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。 |はい |
@@ -229,7 +229,7 @@ Azure SQL Database Managed Instance のリンクされたサービスでは、�
 
 Azure SQL Database Managed Instance をコピー元またはコピー先にしたデータ コピーについては、次のプロパティがサポートされています。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | データセットの type プロパティを **AzureSqlMITable** に設定する必要があります。 | はい |
 | schema | スキーマの名前。 |ソースの場合はいいえ、シンクの場合ははい  |
@@ -265,7 +265,7 @@ Azure SQL Database Managed Instance をコピー元またはコピー先にし�
 
 Azure SQL Database Managed Instance からデータをコピーするために、コピー アクティビティ ソース セクションでは次のプロパティがサポートされています。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティを **SqlMISource** に設定する必要があります。 | はい |
 | sqlReaderQuery |このプロパティは、カスタム SQL クエリを使用してデータを読み取ります。 たとえば `select * from MyTable` です。 |いいえ |
@@ -371,7 +371,7 @@ GO
 
 データを Azure SQL Database Managed Instance にコピーするために、コピー アクティビティ シンク セクションで次のプロパティがサポートされています。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのシンクの type プロパティは、**SqlMISink** に設定する必要があります。 | はい |
 | writeBatchSize |SQL テーブルに挿入する "*バッチあたりの*" 行数。<br/>使用可能な値は、行数の場合整数です。 既定では、Azure Data Factory により行のサイズに基づいて適切なバッチ サイズが動的に決定されます。  |いいえ |
