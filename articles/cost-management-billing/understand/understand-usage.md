@@ -40,7 +40,7 @@ Marketplace 注文 (外部サービスとしても知られています) につ�
 次の表に、Azure の利用状況と請求金額ファイルの最新バージョンで使用されている重要な用語について説明します。
 一覧では、従量課金制 (PAYG)、Enterprise Agreement (EA)、および Microsoft 顧客契約 (MCA) アカウントについて取り上げています。
 
-期間 | アカウントの種類 | [説明]
+期間 | アカウントの種類 | 説明
 --- | --- | ---
 AccountName | EA、PAYG | EA 登録アカウントまたは PAYG 課金アカウントの表示名。
 AccountOwnerId<sup>1</sup> | EA、PAYG | EA 登録アカウントまたは PAYG 課金アカウントの一意識別子。
