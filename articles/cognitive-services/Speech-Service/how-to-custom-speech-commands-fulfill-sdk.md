@@ -49,7 +49,7 @@ ms.locfileid: "76156507"
    > [!div class="mx-imgBorder"]
    > ![アクティビティの送信の完了規則](media/custom-speech-commands/fulfill-sdk-completion-rule.png)
 
-   | 設定 | 推奨値 | [説明] |
+   | 設定 | 推奨値 | 説明 |
    | ------- | --------------- | ----------- |
    | 規則の名前 | UpdateDeviceState | ルールの目的を説明する名前 |
    | 条件 | 必須のパラメーター - `OnOff` および `SubjectDevice` | ルールを実行できるタイミングを決定する条件 |
