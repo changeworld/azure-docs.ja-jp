@@ -3,14 +3,14 @@ title: UI 定義要素を作成する
 description: Azure Portal の UI 定義を作成するときに使う要素について説明します。
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 11/11/2019
+ms.date: 02/06/2020
 ms.author: tomfitz
-ms.openlocfilehash: 0ceb8f5762bb6bc987757845426a0f2b380264f1
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 12bf5d131001d95a3f4327f95c24125dbf3fb510
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75649263"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086711"
 ---
 # <a name="createuidefinition-elements"></a>CreateUiDefinition の要素
 
@@ -33,7 +33,7 @@ ms.locfileid: "75649263"
 }
 ```
 
-| プロパティ | 必須 | 説明 |
+| プロパティ | Required | 説明 |
 | -------- | -------- | ----------- |
 | name | はい | 要素の特定のインスタンスを参照するための内部的な識別子。 要素名が最もよく使用されるのは `outputs` で、指定した要素の出力値がテンプレートのパラメーターにマッピングされます。 これを使って要素の出力値を別の要素の `defaultValue` にバインドすることもできます。 |
 | type | はい | レンダリングする要素の UI コントロール。 サポートされる型の一覧については、「[要素](#elements)」を参照してください。 |
@@ -60,6 +60,7 @@ ms.locfileid: "75649263"
 - [Microsoft.Compute.CredentialsCombo](microsoft-compute-credentialscombo.md)
 - [Microsoft.Compute.SizeSelector](microsoft-compute-sizeselector.md)
 - [Microsoft.Compute.UserNameTextBox](microsoft-compute-usernametextbox.md)
+- [Microsoft.managedidentity を選択します](microsoft-managedidentity-identityselector.md)
 - [Microsoft.Network.PublicIpAddressCombo](microsoft-network-publicipaddresscombo.md)
 - [Microsoft.Network.VirtualNetworkCombo](microsoft-network-virtualnetworkcombo.md)
 - [Microsoft.Storage.MultiStorageAccountCombo](microsoft-storage-multistorageaccountcombo.md)

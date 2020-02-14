@@ -116,13 +116,7 @@
               href: source-control-integration.md
               displayName: 'github, vsts, azure devops, personal access token'
             - name: ソース管理の統合 - レガシ
-              href: automation-source-control-integration-legacy.md
-              displayname: github
-            - name: GitHub Enterprise によるソース管理の統合
-              href: automation-scenario-source-control-integration-with-github-ent.md
-              displayName: 'CI, runbooks'
-            - name: Azure DevOps によるソース管理の統合
-              href: automation-scenario-source-control-integration-with-VSTS.md
+              href: source-control-integration-legacy.md
     - name: '[トラブルシューティング]'
       items:
         - name: Microsoft Azure Automation のケースを開くときに収集するデータ

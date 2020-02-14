@@ -132,7 +132,16 @@
           displayName: 'linked templates, nested templates'
           href: linked-templates.md
         - name: 複数のインスタンスの作成
-          href: create-multiple-instances.md
+          items:
+            - name: リソース
+              displayName: 'iteration,copy'
+              href: copy-resources.md
+            - name: Properties
+              displayName: 'iteration,copy'
+              href: copy-properties.md
+            - name: '変数:'
+              displayName: 'iteration,copy'
+              href: copy-variables.md
         - name: サブスクリプション レベルのリソース
           href: deploy-to-subscription.md
         - name: 管理グループ レベルのリソース
