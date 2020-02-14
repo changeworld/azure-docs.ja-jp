@@ -41,7 +41,7 @@ Authorization: Bearer
 
 次のヘッダーは必須です｡ 
 
-|要求ヘッダー|[説明]|  
+|要求ヘッダー|説明|  
 |--------------------|-----------------|  
 |*Content-Type:*|必須。 `application/json` を設定します。|  
 |*Authorization:*|必須。 有効な `Bearer` [API キー](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)に設定します。 |  
@@ -94,7 +94,7 @@ Authorization: Bearer
 
 次のヘッダーは必須です｡ 
 
-|要求ヘッダー|[説明]|  
+|要求ヘッダー|説明|  
 |--------------------|-----------------|  
 |*Content-Type:*|必須。 `application/json` を設定します。|  
 |*Authorization:*|必須。 有効な `Bearer` [API キー](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)に設定します。 |  
@@ -150,7 +150,7 @@ Authorization: Bearer
 
 次のヘッダーは必須です｡ 
 
-|要求ヘッダー|[説明]|  
+|要求ヘッダー|説明|  
 |--------------------|-----------------|  
 |*Content-Type:*|必須。 `application/json` を設定します。|  
 |*Authorization:*|必須。 有効な `Bearer` [API キー](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)に設定します。 |  
