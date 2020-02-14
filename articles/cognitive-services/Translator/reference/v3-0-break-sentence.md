@@ -33,7 +33,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 クエリ文字列に渡される要求パラメーターを次に示します。
 
-| クエリ パラメーター | [説明] |
+| クエリ パラメーター | 説明 |
 | -------| ----------- |
 | api-version <img width=200/>   | "**必須のクエリ パラメーター**" です。<br/>クライアントによって要求される API のバージョン。 値は `3.0` とする必要があります。 |
 | language | "**省略可能なクエリ パラメーター**" です。<br/>入力テキストの言語を示す言語タグ。 コードを指定しないと、言語の自動検出が適用されます。 |
@@ -41,7 +41,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 要求ヘッダーには次のものがあります。
 
-| ヘッダー | [説明] |
+| ヘッダー | 説明 |
 | ------- | ----------- |
 | 認証ヘッダー <img width=200/>  | "**必須の要求ヘッダー**" です。<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">認証に使用できるオプション</a>に関するページをご覧ください。 |
 | Content-Type | "**必須の要求ヘッダー**" です。<br/>ペイロードのコンテンツ タイプを指定します。 次のいずれかの値になります。`application/json` |
@@ -97,7 +97,7 @@ JSON 応答の例を次に示します。
 
 <table width="100%">
   <th width="20%">ヘッダー</th>
-  <th>[説明]</th>
+  <th>説明</th>
   <tr>
     <td>X-RequestId</td>
     <td>要求を識別するためにサービスによって生成される値。 トラブルシューティングの目的で使用されます。</td>
@@ -110,7 +110,7 @@ JSON 応答の例を次に示します。
 
 <table width="100%">
   <th width="20%">状態コード</th>
-  <th>[説明]</th>
+  <th>説明</th>
   <tr>
     <td>200</td>
     <td>正常終了しました。</td>
