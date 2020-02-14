@@ -88,7 +88,7 @@ ACI サービスによるキーへのアクセスを許可するための、新�
 > [!IMPORTANT]
 > カスタマー マネージド キーによるデプロイ データの暗号化は、現在ロールアウト中の最新の API バージョン (2019-12-01) で使用できます。デプロイ テンプレートでこの API バージョンを指定してください。 これに関して何か問題がある場合は、Azure サポートにご連絡ください。
 
-キー コンテナーのキーとアクセス ポリシーを設定した後は、次のプロパティを ACI のデプロイ テンプレートに追加します。 テンプレートを使用した ACI リソースのデプロイについて詳しくは、「[チュートリアル: Resource Manager テンプレートを使用してマルチコンテナー グループをデプロイする](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)」をご覧ください。 
+キー コンテナーのキーとアクセス ポリシーを設定した後は、次のプロパティを ACI のデプロイ テンプレートに追加します。 テンプレートを使用した ACI リソースのデプロイについて詳しくは、「[チュートリアル: Resource Manager テンプレートを使用してマルチコンテナー グループをデプロイする](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)」のテンプレートを編集した完全なテンプレートです。 
 * `resources` の下で、`apiVersion` を `2012-12-01` に設定します。
 * デプロイ テンプレートのコンテナー グループ プロパティ セクションに、次の値を含む `encryptionProperties` を追加します。
   * `vaultBaseUrl`: お使いのキー コンテナーの DNS 名。ポータルのキー コンテナー リソースの概要ブレードで確認できます。
@@ -121,7 +121,7 @@ ACI サービスによるキーへのアクセスを許可するための、新�
 ]
 ```
 
-次に示すのは、「[チュートリアル: Resource Manager テンプレートを使用してマルチコンテナー グループをデプロイする](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)」をご覧ください。 
+次に示すのは、「[チュートリアル: Resource Manager テンプレートを使用してマルチコンテナー グループをデプロイする](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)」のテンプレートを編集した完全なテンプレートです。 
 
 ```json
 {
