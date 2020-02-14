@@ -59,7 +59,7 @@ Dynamics AX から、サポートされている任意のシンク データ ス
 
 Dynamics AX のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | **type** プロパティを **DynamicsAX** に設定する必要があります。 |はい |
 | url | Dynamics AX (または Dynamics 365 Finance および Operations) インスタンスの OData エンドポイント。 |はい |
@@ -103,7 +103,7 @@ Dynamics AX のリンクされたサービスでは、次のプロパティが�
 
 Dynamics AX からデータをコピーするには、データセットの **type** プロパティを **DynamicsAXResource** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | データセットの **type** プロパティは、**DynamicsAXResource** に設定する必要があります。 | はい |
 | path | Dynamics AX OData エンティティのパス。 | はい |
@@ -137,7 +137,7 @@ Dynamics AX からデータをコピーするには、データセットの **ty
 
 Dynamics AX からデータをコピーするは、コピー アクティビティの **source** の種類を **DynamicsAXSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの **type** プロパティは **DynamicsAXSource** に設定する必要があります | はい |
 | query | データをフィルター処理するための OData クエリ オプション。 例: `"?$select=Name,Description&$top=5"`.<br/><br/>**注**:コネクタは、次の結合された URL からデータをコピーします。`[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]` 詳細については、[OData の URL コンポーネント](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)に関するページを参照してください。 | いいえ |
