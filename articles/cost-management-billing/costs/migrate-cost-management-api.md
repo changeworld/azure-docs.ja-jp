@@ -428,7 +428,7 @@ EA の登録スコープでは、API の応答およびプロパティは同じ�
 
 [Azure Resource Manager Price Sheet API](/rest/api/consumption/pricesheet) の以前のプロパティと新しい同じプロパティは、次の表に示されています。
 
-| 古い Azure Resource Manager Price Sheet API プロパティ  | 新しい Microsoft 顧客契約 Price Sheet API プロパティ   | [説明] |
+| 古い Azure Resource Manager Price Sheet API プロパティ  | 新しい Microsoft 顧客契約 Price Sheet API プロパティ   | 説明 |
 | --- | --- | --- |
 | 測定 ID | _meterId_ | メーターの一意の識別子。 meterID と同じです。 |
 | Meter name | meterName | メーターの名前。 メーターは、Azure サービスのデプロイ可能なリソースを表します。 |
@@ -457,7 +457,7 @@ Microsoft 顧客契約の一部である Azure 従量課金サービスの価格
 
 次のフィールドは、Microsoft 顧客契約 Price Sheet API で使用されなくなったか、同じフィールドがあります。
 
-|廃止されたフィールド| [説明]|
+|廃止されたフィールド| 説明|
 |---|---|
 | billingPeriodId | 適用不可。 MCA の InvoiceId に対応しています。 |
 | offerID | 適用不可。 MCA の productOrderName に対応しています。 |
