@@ -313,14 +313,20 @@
           href: search-pagination-page-layout.md
         - name: 関連性のチューニング (スコアリング プロファイル)
           href: index-add-scoring-profiles.md
-    - name: 管理および監視
+    - name: サービスの管理
       items:
-        - name: ポータルの管理
+        - name: ポータル
           href: search-manage.md
-        - name: PowerShell の管理
+        - name: PowerShell
           href: search-manage-powershell.md
-        - name: Monitor アクティビティとログ記録
+    - name: 監視とログ記録
+      items:
+        - name: 基礎
           href: search-monitor-usage.md
+        - name: クエリ アクティビティの監視
+          href: search-monitor-queries.md
+        - name: 診断ログ
+          href: search-monitor-logs.md
         - name: 検索トラフィックの分析
           href: search-traffic-analytics.md
     - name: '[トラブルシューティング]'

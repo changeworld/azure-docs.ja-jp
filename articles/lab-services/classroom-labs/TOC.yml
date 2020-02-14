@@ -52,6 +52,8 @@
           href: how-to-manage-lab-accounts.md
         - name: ラボ アカウントを構成する
           href: how-to-configure-lab-accounts.md
+        - name: ラボ作成者にラボの場所の選択を許可する
+          href: allow-lab-creator-pick-lab-location.md
         - name: ピア仮想ネットワークにラボを接続する
           href: how-to-connect-peer-virtual-network.md
         - name: 共有イメージ ギャラリーをアタッチまたはデタッチする
