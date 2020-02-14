@@ -70,7 +70,7 @@ ms.locfileid: "75660411"
 
 <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">SoX <span class="docon docon-navigate-external x-hidden-focus"></span></a> を使用して、オーディオのプロパティを確認したり、既存のオーディオを適切な形式に変換したりします。 SoX のコマンドラインから、これらのアクティビティ各々を実行する方法の例を、次にいくつか示します:
 
-| アクティビティ | [説明] | SoX コマンド |
+| アクティビティ | 説明 | SoX コマンド |
 |----------|-------------|-------------|
 | オーディオ形式の確認 | このコマンドを使用して確認<br>オーディオ ファイル形式。 | `sox --i <filename>` |
 | オーディオの形式の変換 | このコマンドを使用して変換<br>オーディオファイルは、シングルチャネル、16 ビット、16 KHz です。 | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
