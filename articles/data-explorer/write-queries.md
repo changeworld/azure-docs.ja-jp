@@ -110,7 +110,7 @@ StormEvents
 | project StartTime, EndTime, State, EventType, DamageProperty, EpisodeNarrative
 ```
 
-### <a name="where"></a>各値の説明:
+### <a name="where"></a>where
 
 [**where**](https://docs.microsoft.com/azure/kusto/query/whereoperator):述語の条件を満たす行のサブセットにテーブルをフィルター処理します。
 
