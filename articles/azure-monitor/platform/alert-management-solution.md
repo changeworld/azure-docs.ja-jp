@@ -83,7 +83,7 @@ Log Analytics ワークスペースに Alert Management ソリューションを
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| `Type` |*アラート:* |
+| `Type` |*Alert* |
 | `SourceSystem` |*OpsManager* |
 | `AlertContext` |アラートが生成されるきっかけとなったデータ項目の詳細 (XML 形式)。 |
 | `AlertDescription` |アラートの詳しい説明。 |
