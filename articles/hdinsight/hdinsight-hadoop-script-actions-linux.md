@@ -235,7 +235,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 次のヘルパーがスクリプトで使用できます。
 
-| ヘルパーの使用 | [説明] |
+| ヘルパーの使用 | 説明 |
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |元の URI から指定されたファイルのパスに、ファイルをダウンロードします。 既定では、既存のファイルは上書きされません。 |
 | `untar_file TARFILE DESTDIR` |tar ファイルを (`-xf`を使用して) インストール先ディレクトリに抽出します。 |
