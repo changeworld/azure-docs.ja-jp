@@ -52,7 +52,7 @@ ms.locfileid: "75644794"
 
 ## <a name="type-properties"></a>型のプロパティ
 
-プロパティ | [説明] | 使用できる値 | 必須
+プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
 dataflow | 実行されているデータ フローへの参照 | DataFlowReference | はい
 integrationRuntime | データ フローが実行されているコンピューティング環境です。 指定されていない場合は、自動解決 Azure 統合ランタイムが使用されます。 | IntegrationRuntimeReference | いいえ
