@@ -236,7 +236,7 @@ Azure AD B2C では、以下の言語がサポートされています。 ユー
 | マレー語                 | ms            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | ノルウェー語 - ブークモール      | nb            | ![はい](./media/user-flow-language-customization/yes.png) | ![いいえ](./media/user-flow-language-customization/no.png) |
 | Dutch                 | nl            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
-| ノルウェー語             | いいえ            | ![いいえ](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| ノルウェー語             | no            | ![いいえ](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | パンジャーブ語               | pa            | ![はい](./media/user-flow-language-customization/yes.png) | ![いいえ](./media/user-flow-language-customization/no.png) |
 | Polish                | pl            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | ポルトガル語 - ブラジル   | pt-br         | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
