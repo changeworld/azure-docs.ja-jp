@@ -29,7 +29,7 @@ Azure Front Door Service を使用すると、次の方法でリソースを監�
 
 メトリックとは、ポータルでパフォーマンス カウンターを表示できるようにする特定の Azure リソース用の機能です。 利用可能な Front Door メトリックは次のとおりです。
 
-| メトリック | メトリックの表示名 | ユニット | Dimensions | [説明] |
+| メトリック | メトリックの表示名 | ユニット | Dimensions | 説明 |
 | --- | --- | --- | --- | --- |
 | RequestCount | 要求数 | Count | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Front Door によって処理されるクライアント要求の数。  |
 | RequestSize | 要求サイズ | バイト | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Front Door にクライアントからの要求として送信されたバイト数。 |
@@ -73,7 +73,7 @@ Front Door Service の診断ログを構成するには:
 
 現在、Front Door Service は診断ログ (1 時間ごとにバッチ処理) を提供しています。 診断ログでは、次のスキーマを使用した各エントリが個々の API 要求に提供されます。
 
-| プロパティ  | [説明] |
+| プロパティ  | 説明 |
 | ------------- | ------------- |
 | ClientIp | 要求を行ったクライアントの IP アドレス。 |
 | ClientPort | 要求を行ったクライアントの IP アドレス。 |
