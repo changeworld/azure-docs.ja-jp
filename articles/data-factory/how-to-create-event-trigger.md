@@ -93,7 +93,7 @@ ms.locfileid: "75443934"
 > [!IMPORTANT]
 > 以下の例に示すように、コンテナーとフォルダー、コンテナーとファイル、またはコンテナー、フォルダー、およびファイルを指定するたびに、パスの `/blobs/` セグメントを含める必要があります。 **blobPathBeginsWith** の場合、Azure Data Factory UI は、トリガー JSON のフォルダーとコンテナー名の間に自動的に `/blobs/` を追加します。
 
-| プロパティ | 例 | [説明] |
+| プロパティ | 例 | 説明 |
 |---|---|---|
 | **次で始まる BLOB パス** | `/containername/` | コンテナー内の任意の BLOB のイベントを受信します。 |
 | **次で始まる BLOB パス** | `/containername/blobs/foldername/` | `containername`コンテナーおよび `foldername` フォルダー内の任意の BLOB のイベントを受信します。 |
