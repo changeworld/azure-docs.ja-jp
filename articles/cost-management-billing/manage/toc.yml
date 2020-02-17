@@ -119,12 +119,22 @@
       href: ../../azure-portal/supportability/how-to-create-azure-support-request.md
 - name: サンプル
   items:
-    - name: Invoice API のコード サンプル
-      href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
-    - name: Usage API のコード サンプル
-      href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
-    - name: RateCard API のコード サンプル
-      href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
+    - name: REST API
+      items:
+        - name: エンタープライズのコストの確認
+          href: review-enterprise-billing.md
+        - name: サブスクリプションの用途の確認
+          href: review-subscription-billing.md
+        - name: リソース使用状況の確認
+          href: review-service-usage-api.md
+    - name: .NET のサンプル
+      items:
+        - name: Invoice API のコード サンプル
+          href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
+        - name: Usage API のコード サンプル
+          href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
+        - name: RateCard API のコード サンプル
+          href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
 - name: リファレンス
   items:
     - name: 課金自動化のシナリオ
