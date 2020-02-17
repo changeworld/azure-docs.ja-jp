@@ -49,7 +49,7 @@ AdlCopy ツールを操作するには、次の構文を使用します。
 
 構文のパラメーターを次に示します。
 
-| オプション | [説明] |
+| オプション | 説明 |
 | --- | --- |
 | source |Azure Storage Blob のソース データの場所を指定します。 ソースには、BLOB コンテナー、BLOB、または別の Data Lake Storage Gen1 アカウントを指定できます。 |
 | Dest |コピー先の Data Lake Storage Gen1 を指定します。 |
