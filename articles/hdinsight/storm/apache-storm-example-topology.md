@@ -19,7 +19,7 @@ ms.locfileid: "75530665"
 
 HDInsight 上の [Apache Storm](https://storm.apache.org/) で使用するために Microsoft によって作成および管理されている例の一覧を次に示します。 これらの例には、基本的な C# および Java トポロジの作成から、Event Hubs、Cosmos DB、SQL Database、HDInsight 上の [Apache HBase](https://hbase.apache.org/)、Azure Storage などの Azure サービスの使用までの、さまざまなトピックが含まれています。 また一部の例には、Azure 以外のテクノロジや、さらには SignalR や Socket.IO などのマイクロソフト以外のテクノロジを使用する方法についても示されています。
 
-| [説明] | 対象 | 言語/フレームワーク |
+| 説明 | 対象 | 言語/フレームワーク |
 |:--- |:--- |:--- |
 | [Apache Storm から Azure Data Lake Storage への書き込み](apache-storm-write-data-lake-store.md) |Azure Data Lake Storage への書き込み |Java |
 | [Event Hub のスパウトとボルトのソース](https://github.com/apache/storm/tree/master/external/storm-eventhubs) |Event Hub のスパウトとボルトのソース |Java |
