@@ -27,7 +27,7 @@ ms.locfileid: "76844481"
 
 これらのイベントは、クライアントが BLOB REST API を呼び出して BLOB を作成、置換、または削除するときにトリガーされます。
 
- |イベント名 |[説明]|
+ |イベント名 |説明|
  |----------|-----------|
  |**Microsoft.Storage.BlobCreated** |BLOB が作成または置換されたときにトリガーされます。 <br>具体的には、クライアントが BLOB REST API で使用可能な `PutBlob`、`PutBlockList`、または `CopyBlob` 操作を使用した場合に、このイベントがトリガーされます。   |
  |**Microsoft.Storage.BlobDeleted** |BLOB が削除されたときにトリガーされます。 <br>具体的には、クライアントが BLOB REST API で使用可能な `DeleteBlob` 操作を呼び出した場合に、このイベントがトリガーされます。 |
@@ -39,7 +39,7 @@ ms.locfileid: "76844481"
 
 ストレージ アカウントの階層型名前空間を有効にした状態でクライアントが Azure Data Lake Storage Gen2 REST API を呼び出すと、これらのイベントがトリガーされます。
 
-|イベント名|[説明]|
+|イベント名|説明|
 |----------|-----------|
 |**Microsoft.Storage.BlobCreated** | BLOB が作成または置換されたときにトリガーされます。 <br>具体的には、クライアントが Azure Data Lake Storage Gen2 REST API で使用可能な `CreateFile` および `FlushWithClose` 操作を使用した場合に、このイベントがトリガーされます。 |
 |**Microsoft.Storage.BlobDeleted** |BLOB が削除されたときにトリガーされます。 <br>具体的には、クライアントが Azure Data Lake Storage Gen2 REST API で使用可能な `DeleteFile` 操作を呼び出した場合に、このイベントもトリガーされます。 |
@@ -292,7 +292,7 @@ BLOB ストレージ アカウントに階層型名前空間がある場合、�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | topic | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | subject | string | 発行元が定義したイベントの対象のパス。 |
@@ -305,7 +305,7 @@ BLOB ストレージ アカウントに階層型名前空間がある場合、�
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | api | string | イベントのトリガーとなった操作。 |
 | clientRequestId | string | ストレージ API 操作に対するクライアントで提供された要求 ID です。 この ID は、ログの "client-request-id" フィールドを使って Azure Storage 診断ログに関連付けるために使うことができ、クライアント要求で "x-ms-client-request-id" ヘッダーを使って提供できます。 「[Storage Analytics のログの形式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)」をご覧ください。 |
