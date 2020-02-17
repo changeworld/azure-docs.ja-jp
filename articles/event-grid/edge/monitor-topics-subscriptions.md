@@ -48,7 +48,7 @@ Edge の Event Grid では、トピックおよびイベント サブスクリ�
 
 ### <a name="topic-metrics"></a>トピックのメトリック
 
-| メトリック | [説明] |
+| メトリック | 説明 |
 | ------ | ----------- |
 | EventsReceived | トピックに発行されたイベントの数
 | UnmatchedEvents | トピックに発行されたイベントのうち、イベント サブスクリプションと一致せずにドロップされた数
@@ -60,7 +60,7 @@ Edge の Event Grid では、トピックおよびイベント サブスクリ�
 
 ### <a name="event-subscription-metrics"></a>イベント サブスクリプションのメトリック
 
-| メトリック | [説明] |
+| メトリック | 説明 |
 | ------ | ----------- |
 | deliverySuccessCounts | 構成されたエンドポイントに正常に配信されたイベントの数
 | deliveryFailureCounts | 構成されたエンドポイントへのイベント配信の試行が失敗した回数
