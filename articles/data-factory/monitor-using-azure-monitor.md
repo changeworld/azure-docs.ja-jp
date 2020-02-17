@@ -112,7 +112,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | 種類 | 説明 |
 | --- | --- | --- |
 | **storageAccountId** |String | 診断ログを送信するストレージ アカウントのリソース ID。 |
 | **serviceBusRuleId** |String | 診断ログのストリーミングのために Event Hubs を作成するサービス バス名前空間のサービス バス ルール ID。 ルール ID の形式は、`{service bus resource ID}/authorizationrules/{key name}` です。|
@@ -287,7 +287,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| プロパティ | 種類 | [説明] | 例 |
+| プロパティ | 種類 | 説明 | 例 |
 | --- | --- | --- | --- |
 | **Level** |String | 診断ログのレベル。 アクティビティ実行ログの場合は、プロパティ値を 4 に設定します。 | `4` |
 | **correlationId** |String | 特定の要求を追跡するための一意の ID。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -333,7 +333,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| プロパティ | 種類 | [説明] | 例 |
+| プロパティ | 種類 | 説明 | 例 |
 | --- | --- | --- | --- |
 | **Level** |String | 診断ログのレベル。 アクティビティ実行ログの場合は、プロパティ値を 4 に設定します。 | `4` |
 | **correlationId** |String | 特定の要求を追跡するための一意の ID。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -377,7 +377,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 ```
 
-| プロパティ | 種類 | [説明] | 例 |
+| プロパティ | 種類 | 説明 | 例 |
 | --- | --- | --- | --- |
 | **Level** |String | 診断ログのレベル。 アクティビティ実行ログの場合は、プロパティ値を 4 に設定します。 | `4` |
 | **correlationId** |String | 特定の要求を追跡するための一意の ID。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
