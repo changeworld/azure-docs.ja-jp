@@ -177,7 +177,7 @@ JSON プロパティの詳細については、[Azure SQL のリンクされた�
 
 次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | 型 | データは Azure Blob Storage に存在するため、type プロパティを **AzureBlob** に設定しています。 |
 | linkedServiceName | 前に作成した **AzureStorageLinkedService** を参照します。 |
@@ -220,7 +220,7 @@ JSON プロパティの詳細については、[Azure SQL のリンクされた�
 ```
 次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | 型 | type プロパティを **AzureSqlTable** に設定します。これは、データを Azure SQL データベースのテーブルにコピーするためです。 |
 | linkedServiceName | 前に作成した **AzureSqlLinkedService** を参照します。 |
