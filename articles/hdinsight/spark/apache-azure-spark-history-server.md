@@ -97,7 +97,7 @@ Spark History Server は、完了して実行中の Spark アプリケーショ�
    ![[Spark アプリケーションとジョブ グラフ] ページのヒートマップ。](./media/apache-azure-spark-history-server/sparkui-graph-heatmap.png)
 
 
-    |Color |[説明] |
+    |Color |説明 |
     |---|---|
     |[緑]|ジョブは正常に完了しました。|
     |オレンジ|タスクは失敗しましたが、これはジョブの最終結果には影響しません。 このようなタスクには、後で成功する可能性がある重複するインスタンスまたは再試行インスタンスがあります。|
