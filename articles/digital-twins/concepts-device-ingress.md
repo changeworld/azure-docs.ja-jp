@@ -67,7 +67,7 @@ YOUR_MANAGEMENT_API_URL/devices?HardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=Con
 
  **Message** のペイロードの内容はサイズが最大 256 KB の任意のデータです。 [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) 型のプロパティに必要ないくつかの要件があります。 システムによってサポートされる必須および省略可能なプロパティを表に示します。
 
-| プロパティ名 | 値 | 必須 | [説明] |
+| プロパティ名 | 値 | 必須 | 説明 |
 |---|---|---|---|
 | **DigitalTwins-Telemetry** | 1.0 | はい | システムに対してメッセージを示す定数値。 |
 | **DigitalTwins-SensorHardwareId** | `string(72)` | はい | **Message** を送信しているセンサーの一意識別子。 この値は、それを処理するシステムでのオブジェクトの **HardwareId** プロパティと一致する必要があります。 たとえば、「 `00FF0643BE88-CO2` 」のように入力します。 |
