@@ -307,7 +307,7 @@ sudo service bind9 status
 
 必須の引数:
 
-|Name|[説明]|
+|Name|説明|
 |----|-----------|
 |-s, --src-cluster | ソース HBase クラスターの DNS 名を指定します。 例: -s hbsrccluster, --src-cluster=hbsrccluster |
 |-d, --dst-cluster | デスティネーション (レプリカ) HBase クラスターの DNS 名を指定します。 例: -s dsthbcluster, --src-cluster=dsthbcluster |
@@ -316,7 +316,7 @@ sudo service bind9 status
 
 省略可能な引数:
 
-|Name|[説明]|
+|Name|説明|
 |----|-----------|
 |-su, --src-ambari-user | ソース HBase クラスターでの Ambari の管理ユーザー名を指定します。 既定値は **admin** です。 |
 |-du, --dst-ambari-user | デスティネーション HBase クラスターでの Ambari の管理者ユーザー名を指定します。 既定値は **admin** です。 |
