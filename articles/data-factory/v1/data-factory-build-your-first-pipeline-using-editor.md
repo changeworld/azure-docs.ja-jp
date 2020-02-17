@@ -147,7 +147,7 @@ ms.locfileid: "75439008"
 
     次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-   | プロパティ | [説明] |
+   | プロパティ | 説明 |
    |:--- |:--- |
    | clusterSize |HDInsight クラスターのサイズを指定します。 |
    | timeToLive | 削除されるまでの HDInsight クラスターのアイドル時間を指定します。 |
@@ -208,7 +208,7 @@ ms.locfileid: "75439008"
     ```
     次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-   | プロパティ | 入れ子先 | [説明] |
+   | プロパティ | 入れ子先 | 説明 |
    |:--- |:--- |:--- |
    | 型 | properties |データは BLOB ストレージに存在するため、type プロパティを **AzureBlob** に設定しています。 |
    | linkedServiceName | format |前に作成した AzureStorageLinkedService を参照します。 |
@@ -435,7 +435,7 @@ ms.locfileid: "75439008"
 この記事では、オンデマンド HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。 コピー アクティビティを使用して BLOB ストレージから SQL データベースにデータをコピーする方法については、[Blob Storage から SQL Database にデータをコピーする方法のチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
 ## <a name="see-also"></a>参照
-| トピック | [説明] |
+| トピック | 説明 |
 |:--- |:--- |
 | [パイプライン](data-factory-create-pipelines.md) |この記事は、Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法について理解するのに役立ちます。 |
 | [データセット](data-factory-create-datasets.md) |この記事は、Data Factory のデータセットについて理解するのに役立ちます。 |
