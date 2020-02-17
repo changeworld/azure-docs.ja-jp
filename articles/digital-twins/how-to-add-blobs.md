@@ -51,7 +51,7 @@ JSON BLOB のメタデータは、次のモデルに準拠しています。
   }
 ```
 
-| Attribute | 種類 | [説明] |
+| Attribute | 種類 | 説明 |
 | --- | --- | --- |
 | **parentId** | String | BLOB を (スペース、デバイス、またはユーザー) と関連付ける親エンティティ |
 | **name** |String | BLOB のわかりやすい名前 |
@@ -106,7 +106,7 @@ Swagger のドキュメントでは、これらのモデル スキーマが詳�
 }
 ```
 
-| Attribute | 種類 | [説明] |
+| Attribute | 種類 | 説明 |
 | --- | --- | --- |
 | **id** | String | BLOB の一意識別子 |
 | **name** |String | BLOB のわかりやすい名前 |
