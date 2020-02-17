@@ -83,7 +83,7 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDIn
 
 手順については、「[Hive ODBC データ ソースの作成](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)」をご覧ください。  
 
- | プロパティ  |[説明] |
+ | プロパティ  |説明 |
  | --- | --- |
  | データ ソース名 | データ ソースに名前を付けます。 |
  | Host | CLUSTERNAME.azurehdinsight.net を入力します。 たとえば、「myHDICluster.azurehdinsight.net」と入力します。 |
