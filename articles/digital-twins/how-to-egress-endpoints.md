@@ -47,7 +47,7 @@ Azure Digital Twins の*エンドポイント*は、ユーザーの Azure サブ
 }
 ```
 
-| Attribute | 種類 | [説明] |
+| Attribute | 種類 | 説明 |
 | --- | --- | --- |
 | id | string | イベントの一意識別子。 |
 | subject | string | 発行元が定義したイベントの対象のパス。 |
