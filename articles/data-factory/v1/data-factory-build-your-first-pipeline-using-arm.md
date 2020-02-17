@@ -49,7 +49,7 @@ ms.locfileid: "75439032"
 
 ## <a name="in-this-tutorial"></a>このチュートリアルの内容
 
-| Entity | [説明] |
+| Entity | 説明 |
 | --- | --- |
 | Azure Storage のリンクされたサービス |Azure Storage アカウントをデータ ファクトリにリンクします。 Azure ストレージ アカウントには、このサンプルのパイプラインの入力データと出力データが保持されます。 |
 | HDInsight のオンデマンドのリンクされたサービス |オンデマンド HDInsight クラスターをデータ ファクトリにリンクします。 クラスターは、データ処理のために自動的に作成され、処理が終了すると削除されます。 |
@@ -619,7 +619,7 @@ New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutori
 
 ## <a name="see-also"></a>参照
 
-| トピック | [説明] |
+| トピック | 説明 |
 |:--- |:--- |
 | [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法を説明します。 |
 | [データセット](data-factory-create-datasets.md) |この記事では、Azure Data Factory のデータセットについて説明します。 |
