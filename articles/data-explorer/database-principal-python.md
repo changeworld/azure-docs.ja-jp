@@ -90,9 +90,9 @@ poller = kusto_management_client.database_principal_assignments.create_or_update
 | database_name | *mykustodatabase* | データベースの名前。|
 | principal_assignment_name | *databasePrincipalAssignment1* | データベース プリンシパル リソースの名前。|
 | principal_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | プリンシパル ID。ユーザーの電子メール、アプリケーション ID、またはセキュリティ グループ名を指定できます。|
-| ロール (role) | *管理者* | データベース プリンシパルのロール。'Admin'、'Ingestor'、'Monitor'、'User'、'UnrestrictedViewers'、'Viewer' を指定できます。|
+| role | *Admin* | データベース プリンシパルのロール。'Admin'、'Ingestor'、'Monitor'、'User'、'UnrestrictedViewers'、'Viewer' を指定できます。|
 | tenant_id_for_principal | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | プリンシパルのテナント ID。|
-| principal_type | *アプリ* | プリンシパルの種類。'User'、'App'、または 'Group' を指定できます。|
+| principal_type | *App* | プリンシパルの種類。'User'、'App'、または 'Group' を指定できます。|
 
 ## <a name="next-steps"></a>次のステップ
 

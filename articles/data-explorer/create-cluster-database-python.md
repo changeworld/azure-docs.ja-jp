@@ -82,7 +82,7 @@ pip install azure-mgmt-kusto
    |---|---|---|
    | cluster_name | *mykustocluster* | クラスターの任意の名前。|
    | sku_name | *Standard_D13_v2* | クラスターに使用される SKU。 |
-   | レベル | *Standard* | SKU レベル。 |
+   | tier | *Standard* | SKU レベル。 |
    | capacity | *number* | クラスターのインスタンスの数。 |
    | resource_group_name | *testrg* | クラスターが作成されるリソース グループの名前。 |
 

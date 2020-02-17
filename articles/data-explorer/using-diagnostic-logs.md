@@ -104,8 +104,8 @@ Azure Data Explorer は、アプリケーション、Web サイト、IoT デバ�
 |---                |---
 |succeededOn        |インジェストの完了時刻
 |operationId        |Azure Data Explorer インジェスト操作 ID
-|[データベース]           |ターゲット データベースの名前
-|テーブル              |ターゲット テーブルの名前
+|database           |ターゲット データベースの名前
+|table              |ターゲット テーブルの名前
 |ingestionSourceId  |インジェスト データ ソースの ID
 |ingestionSourcePath|インジェスト データ ソースまたは BLOB URI のパス
 |rootActivityId     |アクティビティ ID
@@ -145,12 +145,12 @@ Azure Data Explorer は、アプリケーション、Web サイト、IoT デバ�
 |---                |---
 |failedOn           |インジェストの完了時刻
 |operationId        |Azure Data Explorer インジェスト操作 ID
-|[データベース]           |ターゲット データベースの名前
-|テーブル              |ターゲット テーブルの名前
+|database           |ターゲット データベースの名前
+|table              |ターゲット テーブルの名前
 |ingestionSourceId  |インジェスト データ ソースの ID
 |ingestionSourcePath|インジェスト データ ソースまたは BLOB URI のパス
 |rootActivityId     |アクティビティ ID
-|詳細            |エラーとエラーメッセージの詳しい説明
+|details            |エラーとエラーメッセージの詳しい説明
 |errorCode          |エラー コード 
 |failureStatus      |`Permanent` または `Transient`。 一時的なエラーは、再試行することで成功する可能性があります。
 |originatesFromUpdatePolicy|エラーが更新ポリシーによって発生した場合は True です

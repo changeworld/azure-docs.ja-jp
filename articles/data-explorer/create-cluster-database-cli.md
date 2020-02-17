@@ -60,7 +60,7 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
 
    |**設定** | **推奨値** | **フィールドの説明**|
    |---|---|---|
-   | 名前 | *azureclitest* | クラスターの任意の名前。|
+   | name | *azureclitest* | クラスターの任意の名前。|
    | sku | *D13_v2* | クラスターに使用される SKU。 |
    | resource-group | *testrg* | クラスターが作成されるリソース グループの名前。 |
 
@@ -85,7 +85,7 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
    |**設定** | **推奨値** | **フィールドの説明**|
    |---|---|---|
    | cluster-name | *azureclitest* | データベースの作成先となるクラスターの名前。|
-   | 名前 | *clidatabase* | データベースの名前。|
+   | name | *clidatabase* | データベースの名前。|
    | resource-group | *testrg* | クラスターが作成されるリソース グループの名前。 |
    | soft-delete-period | *P365D* | データをクエリに使用できるようにしておく時間を示します。 詳細については、[アイテム保持ポリシー](/azure/kusto/concepts/retentionpolicy)に関するページを参照してください。 |
    | hot-cache-period | *P31D* | データをキャッシュに保持する時間を示します。 詳細については、[キャッシュ ポリシー](/azure/kusto/concepts/cachepolicy)に関するページを参照してください。 |

@@ -88,9 +88,9 @@ poller = kusto_management_client.cluster_principal_assignments.create_or_update(
 | cluster_name | *mykustocluster* | ご利用のクラスターの名前。|
 | principal_assignment_name | *clusterPrincipalAssignment1* | クラスター プリンシパル リソースの名前。|
 | principal_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | プリンシパル ID。ユーザーの電子メール、アプリケーション ID、またはセキュリティ グループ名を指定できます。|
-| ロール (role) | *AllDatabasesAdmin* | クラスター プリンシパルのロール。'AllDatabasesAdmin' または 'AllDatabasesViewer' を指定できます。|
+| role | *AllDatabasesAdmin* | クラスター プリンシパルのロール。'AllDatabasesAdmin' または 'AllDatabasesViewer' を指定できます。|
 | tenant_id_for_principal | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | プリンシパルのテナント ID。|
-| principal_type | *アプリ* | プリンシパルの種類。'User'、'App'、または 'Group' を指定できます。|
+| principal_type | *App* | プリンシパルの種類。'User'、'App'、または 'Group' を指定できます。|
 
 ## <a name="next-steps"></a>次のステップ
 
