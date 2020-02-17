@@ -34,7 +34,7 @@ Linux ベースの HDInsight クラスターでは、22、23、443 の 3 つの�
 
 HDInsight クラスター内のすべてのノードは Azure Virtual Network 内に配置されており、インターネットから直接アクセスすることはできません。 パブリック ゲートウェイにより、すべての HDInsight クラスターの種類に共通する次のポートへのインターネット アクセスが提供されます。
 
-| サービス | Port | Protocol | [説明] |
+| サービス | Port | Protocol | 説明 |
 | --- | --- | --- | --- |
 | sshd |22 |SSH |プライマリ ヘッドノードの sshd にクライアントを接続します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。 |
 | sshd |22 |SSH |エッジ ノードの sshd にクライアントを接続します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。 |
@@ -47,7 +47,7 @@ HDInsight クラスター内のすべてのノードは Azure Virtual Network �
 
 次のポートは、特定のクラスターの種類で使用できます。
 
-| サービス | Port | Protocol | クラスターの種類 | [説明] |
+| サービス | Port | Protocol | クラスターの種類 | 説明 |
 | --- | --- | --- | --- | --- |
 | Stargate |443 |HTTPS |hbase |HBase REST API。 [Apache HBase の使用開始](hbase/apache-hbase-tutorial-get-started-linux.md)に関するページをご覧ください |
 | Livy |443 |HTTPS |Spark |Spark REST API。 [Apache Livy を使用したリモートからの Apache Spark ジョブの送信](spark/apache-spark-livy-rest-interface.md)に関するページをご覧ください |
@@ -85,7 +85,7 @@ HDInsight クラスター内のすべてのノードは Azure Virtual Network �
 
 ### <a name="hdfs-ports"></a>HDFS ポート
 
-| サービス | Nodes | Port | Protocol | [説明] |
+| サービス | Nodes | Port | Protocol | 説明 |
 | --- | --- | --- | --- | --- |
 | NameNode Web UI |ヘッド ノード |30070 |HTTPS |状態を表示する Web UI |
 | NameNode メタデータ サービス |ヘッド ノード |8020 |IPC |ファイル システム メタデータ |
@@ -96,7 +96,7 @@ HDInsight クラスター内のすべてのノードは Azure Virtual Network �
 
 ### <a name="yarn-ports"></a>YARN ポート
 
-| サービス | Nodes | Port | Protocol | [説明] |
+| サービス | Nodes | Port | Protocol | 説明 |
 | --- | --- | --- | --- | --- |
 | Resource Manager Web UI |ヘッド ノード |8088 |HTTP |Resource Manager の Web UI |
 | Resource Manager Web UI |ヘッド ノード |8090 |HTTPS |Resource Manager の Web UI |
@@ -110,20 +110,20 @@ HDInsight クラスター内のすべてのノードは Azure Virtual Network �
 
 ### <a name="hive-ports"></a>Hive ポート
 
-| サービス | Nodes | Port | Protocol | [説明] |
+| サービス | Nodes | Port | Protocol | 説明 |
 | --- | --- | --- | --- | --- |
 | HiveServer2 |ヘッド ノード |10001 |Thrift |Hive に接続するためのサービス (Thrift/JDBC) |
 | Hive メタストア |ヘッド ノード |9083 |Thrift |Hive メタデータに接続するためのサービス (Thrift/JDBC) |
 
 ### <a name="webhcat-ports"></a>WebHCat ポート
 
-| サービス | Nodes | Port | Protocol | [説明] |
+| サービス | Nodes | Port | Protocol | 説明 |
 | --- | --- | --- | --- | --- |
 | WebHCat サーバー |ヘッド ノード |30111 |HTTP |HCatalog および他の Hadoop サービス上の Web API |
 
 ### <a name="mapreduce-ports"></a>MapReduce ポート
 
-| サービス | Nodes | Port | Protocol | [説明] |
+| サービス | Nodes | Port | Protocol | 説明 |
 | --- | --- | --- | --- | --- |
 | JobHistory |ヘッド ノード |19888 |HTTP |MapReduce JobHistory Web UI |
 | JobHistory |ヘッド ノード |10020 |&nbsp; |MapReduce JobHistory サーバー |
@@ -131,21 +131,21 @@ HDInsight クラスター内のすべてのノードは Azure Virtual Network �
 
 ### <a name="oozie"></a>Oozie
 
-| サービス | Nodes | Port | Protocol | [説明] |
+| サービス | Nodes | Port | Protocol | 説明 |
 | --- | --- | --- | --- | --- |
 | Oozie サーバー |ヘッド ノード |11000 |HTTP |Oozie サービスの URL |
 | Oozie サーバー |ヘッド ノード |11001 |HTTP |Oozie 管理用ポート |
 
 ### <a name="ambari-metrics"></a>Ambari メトリック
 
-| サービス | Nodes | Port | Protocol | [説明] |
+| サービス | Nodes | Port | Protocol | 説明 |
 | --- | --- | --- | --- | --- |
 | TimeLine (アプリケーション履歴) |ヘッド ノード |6188 |HTTP |Timeline サービス Web UI |
 | TimeLine (アプリケーション履歴) |ヘッド ノード |30200 |RPC |Timeline サービス Web UI |
 
 ### <a name="hbase-ports"></a>HBase ポート
 
-| サービス | Nodes | Port | Protocol | [説明] |
+| サービス | Nodes | Port | Protocol | 説明 |
 | --- | --- | --- | --- | --- |
 | HMaster |ヘッド ノード |16000 |&nbsp; |&nbsp; |
 | HMaster 情報 Web UI |ヘッド ノード |16010 |HTTP |HBase Master Web UI のポート |
@@ -154,7 +154,7 @@ HDInsight クラスター内のすべてのノードは Azure Virtual Network �
 
 ### <a name="kafka-ports"></a>Kafka ポート
 
-| サービス | Nodes | Port | Protocol | [説明] |
+| サービス | Nodes | Port | Protocol | 説明 |
 | --- | --- | --- | --- | --- |
 | ブローカー |ワーカー ノード |9092 |[Kafka Wire Protocol](https://kafka.apache.org/protocol.html) |クライアント通信に使用 |
 | &nbsp; |Zookeeper ノード |2181 |&nbsp; |クライアントが ZooKeeper への接続に使用するポート |
@@ -162,7 +162,7 @@ HDInsight クラスター内のすべてのノードは Azure Virtual Network �
 
 ### <a name="spark-ports"></a>Spark ポート
 
-| サービス | Nodes | Port | Protocol | URL パス | [説明] |
+| サービス | Nodes | Port | Protocol | URL パス | 説明 |
 | --- | --- | --- | --- | --- | --- |
 | Spark Thrift サーバー |ヘッド ノード |10002 |Thrift | &nbsp; | Spark SQL に接続するためのサービス (Thrift/JDBC) |
 | Livy サーバー | ヘッド ノード | 8998 | HTTP | &nbsp; | ステートメント、ジョブ、およびアプリケーションを実行するためのサービス |
