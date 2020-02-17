@@ -119,7 +119,7 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
 
     次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-    プロパティ | [説明]
+    プロパティ | 説明
     -------- | ----------- 
     ClusterSize | HDInsight Hadoop クラスターのサイズを指定します。
     TimeToLive | 削除されるまでの HDInsight クラスターのアイドル時間を指定します。
@@ -168,7 +168,7 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
 
     次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-    プロパティ | [説明] |
+    プロパティ | 説明 |
     -------- | ----------- |
     型 |データは Azure Blob Storage に存在するため、type プロパティを **AzureBlob** に設定しています。
     linkedServiceName | 前に作成した AzureStorageLinkedService1 を参照します。
@@ -563,7 +563,7 @@ Azure Data Factory のエンティティを VS で発行するときに、その
 
 ## <a name="see-also"></a>参照
 
-| トピック | [説明] |
+| トピック | 説明 |
 |:--- |:--- |
 | [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにデータ主導ワークフローを作成する方法を説明します。 |
 | [データセット](data-factory-create-datasets.md) |この記事では、Azure Data Factory のデータセットについて説明します。 |
