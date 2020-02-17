@@ -1,7 +1,7 @@
 ---
 title: カスタム スキルのインターフェイス定義
 titleSuffix: Azure Cognitive Search
-description: Azure コグニティブ検索の AI エンリッチメント パイプラインでの、web-api カスタム スキル用カスタム データ抽出インターフェイス。
+description: Azure Cognitive Search の AI エンリッチメント パイプラインでの、web-api カスタム スキル用カスタム データ抽出インターフェイス。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -15,9 +15,9 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 01/16/2020
 ms.locfileid: "76045045"
 ---
-# <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>Azure コグニティブ検索エンリッチメント パイプラインにカスタム スキルを追加する方法
+# <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>Azure Cognitive Search エンリッチメント パイプラインにカスタム スキルを追加する方法
 
-Azure コグニティブ検索の[エンリッチメント パイプライン](cognitive-search-concept-intro.md)は、[組み込みのコグニティブ スキル](cognitive-search-predefined-skills.md)と、個人的に作成してパイプラインに追加する[カスタム スキル](cognitive-search-custom-skill-web-api.md)から組み立てることができます。 この記事では、AI エンリッチメント パイプラインに含めることができるようにインターフェイスを公開するカスタム スキルの作成方法について説明します。 
+Azure Cognitive Search の[エンリッチメント パイプライン](cognitive-search-concept-intro.md)は、[組み込みのコグニティブ スキル](cognitive-search-predefined-skills.md)と、個人的に作成してパイプラインに追加する[カスタム スキル](cognitive-search-custom-skill-web-api.md)から組み立てることができます。 この記事では、AI エンリッチメント パイプラインに含めることができるようにインターフェイスを公開するカスタム スキルの作成方法について説明します。 
 
 カスタム スキルを構築すると、コンテンツに固有の変換を挿入することができます。 カスタム スキルは独立して実行され、必要なすべてのエンリッチメント ステップが適用されます。 たとえば、フィールド固有のカスタム エンティティを定義して、ビジネスおよび財務の契約やドキュメントを区別するためのカスタム分類モデルを作成したり、音声認識スキルを追加して、関連するコンテンツのオーディオ ファイルを細かく調べたりすることができます。 手順の例については、[例: AI エンリッチメント用のカスタム スキルを作成する](cognitive-search-create-custom-skill-example.md)を参照してください。
 
