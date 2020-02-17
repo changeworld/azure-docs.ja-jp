@@ -54,7 +54,7 @@ OData ストアから、サポートされている任意のシンク データ 
 
 OData のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | **type** プロパティは **OData** に設定する必要があります。 |はい |
 | url | OData サービスのルート URL。 |はい |
@@ -203,7 +203,7 @@ OData のリンクされたサービスでは、次のプロパティがサポ�
 
 OData からデータをコピーするには、データセットの **type** プロパティを **ODataResource** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | データセットの **type** プロパティは **ODataResource** に設定する必要があります。 | はい |
 | path | OData リソースへのパス。 | はい |
@@ -239,7 +239,7 @@ OData からデータをコピーするには、データセットの **type** �
 
 OData からデータをコピーする場合、コピー アクティビティの **source** セクションで次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの **type** プロパティは **ODataSource** に設定する必要があります。 | はい |
 | query | データをフィルター処理するための OData クエリ オプション。 例: `"$select=Name,Description&$top=5"`.<br/><br/>**注**:OData コネクタは、次の結合された URL からデータをコピーします。`[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]` 詳細については、[OData の URL コンポーネント](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)に関するページを参照してください。 | いいえ |
