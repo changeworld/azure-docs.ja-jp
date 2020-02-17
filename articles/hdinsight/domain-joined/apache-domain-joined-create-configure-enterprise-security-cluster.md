@@ -156,7 +156,7 @@ Active Directory テナント管理者を作成します。
 
     **[ID]**
 
-    |プロパティ |[説明] |
+    |プロパティ |説明 |
     |---|---|
     |ユーザー名|テキスト ボックスに「`fabrikamazureadmin`」と入力します。 [ドメイン名] ドロップダウン リストから、[`hdifabrikam.com`] を選択します。|
     |Name| 「`fabrikamazureadmin`」と入力します。|
