@@ -71,7 +71,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 重要なプロパティを次に示します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | -- | -- |
 | AutoCommit | Phoenix トランザクションに対して `autoCommit` が有効かどうかを示すブール値です。 |
 | ReadOnly | 接続が読み取り専用かどうかを示すブール値です。 |
@@ -82,7 +82,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 `TransactionIsolation` の値を次に示します。
 
-| 分離値 | [説明] |
+| 分離値 | 説明 |
 | -- | -- |
 | 0 | トランザクションはサポートされていません。 |
 | 1 | ダーティ リード、反復不能読み取り、およびファントム読み取りが発生する可能性があります。 |
