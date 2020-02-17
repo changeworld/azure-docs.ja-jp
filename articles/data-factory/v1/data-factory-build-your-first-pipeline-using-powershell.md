@@ -158,7 +158,7 @@ ms.locfileid: "75438991"
     ```
     次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-   | プロパティ | [説明] |
+   | プロパティ | 説明 |
    |:--- |:--- |
    | clusterSize |HDInsight クラスターのサイズを指定します。 |
    | timeToLive |削除されるまでの HDInsight クラスターのアイドル時間を指定します。 |
@@ -212,7 +212,7 @@ ms.locfileid: "75438991"
 
     次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-   | プロパティ | [説明] |
+   | プロパティ | 説明 |
    |:--- |:--- |
    | 型 |データは Azure Blob Storage に存在するため、type プロパティを AzureBlob に設定しています。 |
    | linkedServiceName |前に作成した StorageLinkedService を参照します。 |
@@ -413,7 +413,7 @@ ms.locfileid: "75438991"
 
 ## <a name="see-also"></a>参照
 
-| トピック | [説明] |
+| トピック | 説明 |
 |:--- |:--- |
 | [Data Factory コマンドレット リファレンス](/powershell/module/az.datafactory) |Data Factory コマンドレットに関する包括的なドキュメントです。 |
 | [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法を説明します。 |
