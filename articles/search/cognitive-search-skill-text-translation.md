@@ -1,7 +1,7 @@
 ---
 title: テキスト翻訳コグニティブ スキル
 titleSuffix: Azure Cognitive Search
-description: テキストが評価され、レコードごとに、Azure コグニティブ検索の AI エンリッチメント パイプラインで、指定した対象言語に翻訳されたテキストが返されます。
+description: テキストが評価され、レコードごとに、Azure Cognitive Search の AI エンリッチメント パイプラインで、指定した対象言語に翻訳されたテキストが返されます。
 manager: nitinme
 author: careyjmac
 ms.author: chalton
@@ -21,12 +21,12 @@ ms.locfileid: "75460762"
 
 この機能は、ドキュメント全体が 1 つの言語ではないことが予想される場合に役に立ち、そのような場合、翻訳して検索用のインデックスを作成する前に、テキストを 1 つの言語に正規化することができます。  また、同じテキストのコピーを複数の言語で使用できるようにしたいローカライズのユース ケースにも役立ちます。
 
-[Translator Text API v3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) は、リージョン対応の Cognitive Services ではないため、使用する Azure コグニティブ検索またはアタッチされた Cognitive Services リソースと同じリージョンにデータが保持される保証はありません。
+[Translator Text API v3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) は、リージョン対応の Cognitive Services ではないため、使用する Azure Cognitive Search またはアタッチされた Cognitive Services リソースと同じリージョンにデータが保持される保証はありません。
 
 > [!NOTE]
-> 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure コグニティブ検索のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
+> 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure Cognitive Search のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
 >
-> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure コグニティブ検索の価格](https://go.microsoft.com/fwlink/?linkid=2042400)に関するページで説明されています。
+> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Cognitive Search の価格](https://go.microsoft.com/fwlink/?linkid=2042400)に関するページで説明されています。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.TranslationSkill
@@ -38,7 +38,7 @@ Microsoft.Skills.Text.TranslationSkill
 
 パラメーターの大文字と小文字は区別されます。
 
-| 入力                | [説明] |
+| 入力                | 説明 |
 |---------------------|-------------|
 | defaultToLanguageCode | (必須) 翻訳後の言語が明示的に指定されていないドキュメントに対する翻訳後の言語のコード。 <br/> [サポートされる言語の完全な一覧](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)を参照してください。 |
 | defaultFromLanguageCode | (省略可能) 翻訳前の言語が明示的に指定されていないドキュメントに対する翻訳前の言語のコード。  defaultFromLanguageCode が指定されていない場合は、Translator Text API によって提供される自動言語検出を使用して、翻訳前の言語が決定されます。 <br/> [サポートされる言語の完全な一覧](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)を参照してください。 |
@@ -46,7 +46,7 @@ Microsoft.Skills.Text.TranslationSkill
 
 ## <a name="skill-inputs"></a>スキルの入力
 
-| 入力名     | [説明] |
+| 入力名     | 説明 |
 |--------------------|-------------|
 | text | 翻訳対象のテキスト。|
 | toLanguageCode    | テキストの翻訳後の言語を示す文字列。 この入力を指定しない場合、defaultToLanguageCode を使ってテキストが翻訳されます。 <br/>[サポートされる言語の完全な一覧](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)を参照|
@@ -54,7 +54,7 @@ Microsoft.Skills.Text.TranslationSkill
 
 ## <a name="skill-outputs"></a>スキルの出力
 
-| 出力名    | [説明] |
+| 出力名    | 説明 |
 |--------------------|-------------|
 | translatedText | translatedFromLanguageCode から translatedToLanguageCode へのテキスト翻訳の文字列の結果。|
 | translatedToLanguageCode  | テキストが翻訳された後の言語コードを示す文字列。 複数の言語に翻訳していて、どのテキストがどの言語であるかを追跡できるようにしたい場合に便利です。|
