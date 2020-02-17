@@ -33,7 +33,7 @@ Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実
 
 リモート HDInsight クラスターで MapReduce ジョブを実行するときに次のコマンドレットを使用します。
 
-|コマンドレット | [説明] |
+|コマンドレット | 説明 |
 |---|---|
 |Connect-AzAccount|Azure サブスクリプションに対して Azure PowerShell を認証します。|
 |New-AzHDInsightMapReduceJobDefinition|指定された MapReduce 情報を使用して、新しい "*ジョブ定義*" を作成します。|
