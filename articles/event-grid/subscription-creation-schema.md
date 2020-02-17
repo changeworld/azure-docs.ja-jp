@@ -32,21 +32,21 @@ PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Micro
  
 ## <a name="event-subscription-properties"></a>イベント サブスクリプションのプロパティ
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | destination | object | エンドポイントを定義するオブジェクト。 |
 | filter | object | イベントの種類をフィルター処理するための省略可能なフィールド。 |
 
 ### <a name="destination-object"></a>対象オブジェクト
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | endpointType | string | サブスクリプションのエンドポイントの種類 (webhook/HTTP、イベント ハブ、またはキュー)。 | 
 | endpointUrl | string | このイベント サブスクリプションのイベントの送信先 URL。 | 
 
 ### <a name="filter-object"></a>フィルター オブジェクト
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | includedEventTypes | array | イベント メッセージのイベントの種類がこれらのイベントの種類名のいずれかと完全に一致した場合に、適合します。 イベント名がイベント ソースに対して登録済みのイベントの種類名と一致しない場合は、エラーを発生させます。 既定では、すべてのイベントの種類と一致します。 |
 | subjectBeginsWith | string | イベント メッセージの件名フィールドに対する、プレフィックス一致のフィルター。 既定値または空の文字列はすべて一致します。 | 
