@@ -33,7 +33,7 @@ HDInsight 上の Apache Hadoop に含まれている MapReduce サンプルを�
 
 次のサンプルがこのアーカイブに含まれています。
 
-|サンプル |[説明] |
+|サンプル |説明 |
 |---|---|
 |aggregatewordcount|入力ファイル内の単語をカウントします。|
 |aggregatewordhist|入力ファイル内の単語のヒストグラムを計算します。|
