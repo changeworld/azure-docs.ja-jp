@@ -84,7 +84,7 @@ ms.locfileid: "75981725"
 | Ubuntu | [SQL Server 2017 Web Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonUbuntuServer1604LTS)<br/>[SQL Server 2017 Standard Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonUbuntuServer1604LTS)<br/>[SQL Server 2017 Enterprise Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseonUbuntuServer1604LTS) |
 
 > [!IMPORTANT]
-> ポータルで SQL Server 仮想マシンを作成するとき、 **[サイズの選択]** ウィンドウには見積もりコストが表示されます。 この見積もりに含まれるのは、VM を実行するためのコンピューティング コストと、OS (Windows または他社製 Linx オペレーティング システム) のライセンス コストのみであることに注意してください。
+> ポータルで SQL Server 仮想マシンを作成するとき、 **[サイズの選択]** ウィンドウには見積もりコストが表示されます。 この見積もりに含まれるのは、VM を実行するためのコンピューティング コストと、OS (Windows または他社製 Linux オペレーティング システム) のライセンス コストのみであることに注意してください。
 >
 > ![VM サイズを選択するブレード](./media/virtual-machines-windows-sql-server-pricing-guidance/sql-vm-choose-size-pricing-estimate.png)
 >
@@ -111,7 +111,7 @@ ms.locfileid: "75981725"
 
 BYOL を SQL Server VM で利用するには、SQL Server Standard または Enterprise と[ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default.aspx#tab=1) のライセンス (ボリューム ライセンス プログラムの必須オプション、他の製品では必要に応じて購入可能) が必要です。 ボリューム ライセンス プログラムで提供される料金レベルは、契約のタイプ、SQL Server の数やコミットメントによってさまざまです。 ただし、経験則として、継続的な運用環境のワークロードに自分のライセンスを持ち込むメリットは次のとおりです。
 
-| BYOL のメリット | [説明] |
+| BYOL のメリット | 説明 |
 |-----|-----|
 | **コスト削減** | [Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)により、最大 55% の節約を実現できます。 詳細については、「[Azure での SQL Server 仮想マシンのライセンス モデルを変更する](virtual-machines-windows-sql-ahb.md)」を参照してください。 |
 | **無料のパッシブ セカンダリ レプリカ** | 自分のライセンスを持ち込むもう 1 つのメリットは、高可用性を実現するために SQL Server 1 つにつき [1 つのパッシブ セカンダリ レプリカの無料ライセンス](https://azure.microsoft.com/pricing/licensing-faq/)を得られることです。 これによって、高可用性 SQL Server デプロイ (Always On 可用性グループの使用など) のライセンス コストを半減できます。 パッシブ セカンダリを実行する権限は、フェールオーバー サーバーのソフトウェア アシュアランス特典で提供されます。 |
