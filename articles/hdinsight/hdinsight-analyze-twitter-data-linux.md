@@ -37,7 +37,7 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
    | フィールド | 値 |
    |--- |--- |
    | Name |MyHDInsightApp |
-   | [説明] |MyHDInsightApp |
+   | 説明 |MyHDInsightApp |
    | Web サイト |`https://www.myhdinsightapp.com` |
 
 4. **[Yes, I agree]** を選択して、 **[Create your Twitter application]** を選択します。
