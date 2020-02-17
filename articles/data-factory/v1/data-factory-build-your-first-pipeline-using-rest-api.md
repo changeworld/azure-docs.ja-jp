@@ -120,7 +120,7 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
 
 次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | clusterSize |HDInsight クラスターのサイズ。 |
 | timeToLive |削除されるまでの HDInsight クラスターのアイドル時間を指定します。 |
@@ -166,7 +166,7 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
 
 次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | 型 |データは Azure Blob Storage に存在するため、type プロパティを AzureBlob に設定しています。 |
 | linkedServiceName |前に作成した StorageLinkedService を参照します。 |
@@ -487,7 +487,7 @@ Azure ポータルを使用して、スライスを監視し、問題のトラ�
 この記事では、オンデマンド Azure HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。 コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、[Azure BLOB から Azure SQL にデータをコピーする方法のチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
 ## <a name="see-also"></a>参照
-| トピック | [説明] |
+| トピック | 説明 |
 |:--- |:--- |
 | [Data Factory REST API リファレンス](/rest/api/datafactory/) |Data Factory コマンドレットに関する包括的なドキュメントです。 |
 | [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法を説明します。 |
