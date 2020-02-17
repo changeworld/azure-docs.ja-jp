@@ -105,9 +105,9 @@
           href: search-sku-tier.md
         - name: サービスの制限
           href: search-limits-quotas-capacity.md
-        - name: パーティションとレプリカのスケーリング
+        - name: 容量の調整
           href: search-capacity-planning.md
-        - name: デプロイ戦略とベスト プラクティス
+        - name: パフォーマンスのためのスケール
           href: search-performance-optimization.md
         - name: マルチテナント アーキテクチャ
           href: search-modeling-multitenant-saas-applications.md

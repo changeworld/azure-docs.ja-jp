@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 41410d4e534d0940050521ecc86e8a384566f439
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 486f90d82af729a3dbfd836239d2d19ebdf44819
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972697"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191418"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概要:Azure Resource Manager テンプレートを使用して Azure Logic Apps のデプロイを自動化する
 
@@ -61,7 +61,7 @@ Resource Manager テンプレートの詳細については、次のトピック
 
 ロジック アプリ テンプレートでは、主に次のテンプレート オブジェクトを使用します。
 
-| Attribute | [説明] |
+| Attribute | 説明 |
 |-----------|-------------|
 | `parameters` | Azure でデプロイするリソースを作成およびカスタマイズするときに使用する値を受け取る[テンプレート パラメーター](../azure-resource-manager/templates/template-syntax.md#parameters)を宣言します。 たとえば、これらのパラメーターは、ロジック アプリの名前と場所、接続、およびデプロイに必要なその他のリソースの値を受け取ります。 これらのパラメーターの値は、このトピックで後述する[パラメーター ファイル](#template-parameter-files)に格納することができます。 一般的な詳細については、[Resource Manager テンプレートの構造と構文のパラメーター](../azure-resource-manager/templates/template-syntax.md#parameters)に関する記事をご覧ください。 |
 | `resources` | ロジック アプリ、接続、Azure ストレージ アカウントなど、作成または更新して Azure リソース グループにデプロイする[リソース](../azure-resource-manager/templates/template-syntax.md#resources)を定義します。 一般的な詳細については、[Resource Manager テンプレートの構造と構文のリソース](../azure-resource-manager/templates/template-syntax.md#resources)に関する記事をご覧ください。 |
@@ -145,10 +145,10 @@ Resource Manager テンプレートの詳細については、次のトピック
 
 ユーザー名、パスワード、シークレットのような機密性の高いまたはセキュリティ保護が必要な値を扱うパラメーターを除き、これらのパラメーターにはすべて `defaultValue` 属性が含まれます。ただし、場合によっては、既定値が空の値になることもあります。 これらのテンプレート パラメーターに使用されるデプロイの値は、このトピックで後述するサンプルの[パラメーター ファイル](#template-parameter-files)によって提供されます。
 
-テンプレート パラメーターをセキュリティで保護する方法については、次のトピックをご覧ください。
+テンプレート パラメーターのセキュリティ保護の詳細については、次のトピックを参照してください。
 
 * [テンプレート パラメーターに関するセキュリティの推奨事項](../azure-resource-manager/templates/template-best-practices.md#parameters)
-* [テンプレート パラメーターをセキュリティで保護する](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
+* [テンプレート パラメーターのセキュリティを強化する](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 * [Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](../azure-resource-manager/templates/key-vault-parameter.md)
 
 その他のテンプレート オブジェクトは、多くの場合、テンプレート パラメーターを参照することで、テンプレート パラメーターを通じて渡される値を使用できるようになります。次に例を示します。
@@ -171,7 +171,7 @@ Resource Manager テンプレートの詳細については、次のトピック
 
   * [テンプレート パラメーターに関するセキュリティの推奨事項](../azure-resource-manager/templates/template-best-practices.md#parameters)
 
-  * [テンプレート パラメーターをセキュリティで保護する](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
+  * [テンプレート パラメーターのセキュリティを強化する](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 
   * [Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](../azure-resource-manager/templates/key-vault-parameter.md)
 
@@ -319,7 +319,7 @@ Resource Manager テンプレートの詳細については、次のトピック
 
 ロジック アプリのリソース定義に固有の属性は次のとおりです。
 
-| Attribute | 必須 | 種類 | [説明] |
+| Attribute | Required | Type | 説明 |
 |-----------|----------|------|-------------|
 | `state` | はい | String | デプロイ時のロジック アプリの状態。`Enabled` はロジック アプリがアクティブな状態であることを意味し、`Disabled` はロジック アプリが非アクティブな状態であることを意味します。 たとえば、ロジック アプリをアクティブにする準備ができておらず、ドラフト バージョンをデプロイする必要がある場合は、`Disabled` オプションを使用できます。 |
 | `integrationAccount` | いいえ | Object | 企業間 (B2B) のシナリオで成果物を格納する統合アカウントをロジック アプリで使用している場合、このオブジェクトには、統合アカウントの ID を指定する `id` 属性が含まれます。 |
@@ -936,7 +936,7 @@ Azure Blob Storage 接続のアカウント名とアクセス キーを指定す
 }
 ```
 
-| Attribute | [説明] |
+| Attribute | 説明 |
 |-----------|-------------|
 | `token:clientId` | サービス プリンシパルに関連付けられているアプリケーションまたはクライアントの ID |
 | `token:clientSecret` | サービス プリンシパルに関連付けられているキー値 |
