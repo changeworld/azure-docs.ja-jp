@@ -33,7 +33,7 @@ Azure portal には、出発点として既定のダッシュボードが用意�
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-1. Azure portal メニューから、 **[ダッシュボード]** を選択します。 既定のビューがダッシュボードに既に設定されています。
+1. Azure portal メニューから、 **[ダッシュボード]** を選択します。 ダッシュボードには既に既定のビューが設定されているかも知れません。
 
     ![ダッシュボードを開く](./media/azure-portal-dashboards/portal-menu-dashboard.png)
 
@@ -72,7 +72,7 @@ Azure portal には、出発点として既定のダッシュボードが用意�
 ![ピン アイコンが含まれたページのコマンド バーのスクリーンショット](./media/azure-portal-dashboards/dashboard-pin-blade.png)
 
 > [!TIP]
-> 複数の組織を操作する場合は、リソースが属する組織を明確に示すために、 **[組織 ID]** タイルをダッシュボードに追加します。
+> 複数の組織で作業する場合は、リソースが属する組織を明確に示すために、 **[組織 ID]** タイルをダッシュボードに追加します。
 >
 >
 
@@ -86,7 +86,7 @@ Azure portal には、出発点として既定のダッシュボードが用意�
 
     ![タイル サイズ メニューが表示されたダッシュボードのスクリーンショット](./media/azure-portal-dashboards/dashboard-tile-resize.png)
 
-1. タイルを選択し、グリッド上の新しい場所にドラッグしてダッシュボードを編集します。
+1. タイルを選択し、グリッド上の新しい場所にドラッグしてダッシュボードを整えます。
 
 ### <a name="additional-tile-configuration"></a>タイルの追加構成
 

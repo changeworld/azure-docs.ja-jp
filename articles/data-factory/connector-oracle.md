@@ -66,10 +66,10 @@ Oracle データベースから、サポートされている任意のシンク 
 
 Oracle のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティは **Oracle** に設定する必要があります。 | はい |
-| connectionString | Oracle Database インスタンスに接続するために必要な情報を指定します。 <br/>パスワードを Azure Key Vault に格納して、接続文字列から `password` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。 <br><br>**サポートされる接続の種類**:**Oracle SID** または **Oracle サービス名**を使用してデータベースを識別できます。<br>- SID を使用する場合: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>- サービス名を使用する場合: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;`<br>Oracle ネイティブ接続オプションの詳細については、Oracle サーバー上の [TNSNAMES.ORA](http://www.orafaq.com/wiki/Tnsnames.ora) にエントリを追加することを選択できます。また ADF Oracle のリンクされたサービスでは、Oracle サービス名の接続の種類を使用することを選択して、対応するサービス名を構成できます。 | はい |
+| connectionString | Oracle Database インスタンスに接続するために必要な情報を指定します。 <br/>パスワードを Azure Key Vault に格納して、`password` 構成を接続文字列から取り出すこともできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。 <br><br>**サポートされる接続の種類**:**Oracle SID** または **Oracle サービス名**を使用してデータベースを識別できます。<br>- SID を使用する場合: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>- サービス名を使用する場合: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;`<br>Oracle ネイティブ接続オプションの詳細については、Oracle サーバー上の [TNSNAMES.ORA](http://www.orafaq.com/wiki/Tnsnames.ora) にエントリを追加することを選択できます。また ADF Oracle のリンクされたサービスでは、Oracle サービス名の接続の種類を使用することを選択して、対応するサービス名を構成できます。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
 >[!TIP]
@@ -77,7 +77,7 @@ Oracle のリンクされたサービスでは、次のプロパティがサポ�
 
 接続文字列には他にも、ケースに応じてさまざまな接続プロパティを設定できます。それらのプロパティを次に示します。
 
-| プロパティ | 説明 | 使用できる値 |
+| プロパティ | [説明] | 使用できる値 |
 |:--- |:--- |:--- |
 | ArraySize |1 回のネットワーク ラウンド トリップでコネクタがフェッチできるバイト数。 例: `ArraySize=‭10485760‬`。<br/><br/>値を大きくすると、ネットワーク経由でデータをフェッチする回数が減り、スループットが向上します。 値を小さくすると、サーバーがデータを転送する際の待ち時間がわずかにあるため、応答時間が長くなります。 | 1 から 4294967296 (4 GB) の整数。 既定値は `60000` です。 この値が 1 である場合、バイト数は定義されません。ちょうど 1 行分のデータの領域を割り当てることを意味します。 |
 
@@ -107,7 +107,7 @@ Oracle の接続で暗号化を有効にするには、2 つのオプション�
         -----END CERTIFICATE-----
         ```
     
-    2.  `keystore` または `truststore` をビルドします。 次のコマンドでは、PKCS-12 形式のパスワード含まれる、または含まれない、`truststore` ファイルが作成されます。
+    2.  `keystore` または `truststore` をビルドします。 次のコマンドは、パスワード付きかパスワードなしで、PKCS-12 形式の `truststore` ファイルを作成します。
 
         ```
         openssl pkcs12 -in [Path to the file created in the previous step] -out [Path and name of TrustStore] -passout pass:[Keystore PWD] -nokeys -export
@@ -171,7 +171,7 @@ Oracle の接続で暗号化を有効にするには、2 つのオプション�
 
 Oracle をコピー元またはコピー先としてデータをコピーするには、データセットの type プロパティを `OracleTable` に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | 型 | データセットの type プロパティは `OracleTable` に設定する必要があります。 | はい |
 | schema | スキーマの名前。 |ソースの場合はいいえ、シンクの場合ははい  |
@@ -208,9 +208,9 @@ Oracle をコピー元またはコピー先としてデータをコピーする�
 >[!TIP]
 >データ パーティション分割を使用して、Oracle からデータを効率的に読み込む方法の詳細については、「[Oracle からの並列コピー](#parallel-copy-from-oracle)」を参照してください。
 
-Oracle からデータをコピーするは、コピー アクティビティのソースの種類を `OracleSource` に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
+Oracle からデータをコピーするには、コピー アクティビティのソースの種類を `OracleSource` に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティは `OracleSource` に設定する必要があります。 | はい |
 | oracleReaderQuery | カスタム SQL クエリを使用してデータを読み取ります。 たとえば `"SELECT * FROM MyTable"` です。<br>パーティション分割された読み込みを有効にするときは、クエリ内で対応する組み込みのパーティション パラメーターをすべてフックする必要があります。 例については、「[Oracle からの並列コピー](#parallel-copy-from-oracle)」セクションを参照してください。 | いいえ |
@@ -257,7 +257,7 @@ Oracle からデータをコピーするは、コピー アクティビティの
 
 Oracle にデータをコピーするには、コピー アクティビティのシンクの種類を `OracleSink` に設定します。 コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのシンクの type プロパティは、`OracleSink` に設定する必要があります。 | はい |
 | writeBatchSize | バッファー サイズが `writeBatchSize` に達したら、SQL テーブルにデータを挿入します。<br/>使用可能な値: 整数 (行数)。 |いいえ (既定値は 10,000) |
@@ -307,8 +307,8 @@ Data Factory の Oracle コネクタは、Oracle からデータを並列コピ�
 
 | シナリオ                                                     | 推奨設定                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 物理パーティションに分割された大きなテーブル全体から読み込む。          | **パーティション オプション**: テーブルの物理パーティション。 <br><br/>実行中に、Data Factory によって物理パーティションが自動的に検出され、パーティションごとにデータがコピーされます。 |
-| 物理パーティションがなく、データ パーティション分割用の整数列がある大きなテーブル全体から読み込む。 | **パーティション オプション**: 動的範囲パーティション。<br>**パーティション列**: データのパーティション分割に使用される列を指定します。 指定されていない場合は、主キー列が使用されます。 |
+| 物理パーティションに分割された大きなテーブルから全体を読み込む。          | **パーティション オプション**: テーブルの物理パーティション。 <br><br/>実行中に、Data Factory によって物理パーティションが自動的に検出され、パーティションごとにデータがコピーされます。 |
+| 物理パーティションがなく、データ パーティション分割用の整数列がある大きなテーブルから全体を読み込む。 | **パーティション オプション**: 動的範囲パーティション。<br>**パーティション列**: データのパーティション分割に使用される列を指定します。 指定されていない場合は、主キー列が使用されます。 |
 | カスタム クエリを使用して大量のデータを読み込む (物理パーティションがある場合)。 | **パーティション オプション**: テーブルの物理パーティション。<br>**クエリ**: `SELECT * FROM <TABLENAME> PARTITION("?AdfTabularPartitionName") WHERE <your_additional_where_clause>`<br>**パーティション名**: データのコピー元のパーティション名を指定します。 指定されていない場合は、Oracle データセットで指定したテーブルの物理パーティションが Data Factory によって自動検出されます。<br><br>実行中に、Data Factory によって `?AdfTabularPartitionName` が実際のパーティション名に置き換えられ、Oracle に送信されます。 |
 | カスタム クエリを使用して大量のデータを読み込む (物理パーティションがなく、データ パーティション分割用の整数列がある場合)。 | **パーティション オプション**: 動的範囲パーティション。<br>**クエリ**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`<br>**パーティション列**: データのパーティション分割に使用される列を指定します。 整数データ型の列に対してパーティション分割を実行できます。<br>**パーティションの上限**と**パーティションの下限**: パーティション列に対してフィルター処理を実行して、下限から上限までの範囲内のデータのみを取得する場合に指定します。<br><br>実行中に、Data Factory によって `?AdfRangePartitionColumnName`、`?AdfRangePartitionUpbound`、`?AdfRangePartitionLowbound` が各パーティションの実際の列名および値の範囲に置き換えられ、Oracle に送信されます。 <br>たとえば、パーティション列 "ID" で下限が 1、上限が 80 に設定され、並列コピーが 4 に設定されている場合、Data Factory は 4 つのパーティションでデータを取得します。 これらの ID の範囲はそれぞれ [1, 20]、[21, 40]、[41, 60]、[61, 80] です。 |
 
