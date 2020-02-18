@@ -1,7 +1,7 @@
 ---
 title: REST API のバージョンをアップグレードする
 titleSuffix: Azure Cognitive Search
-description: API バージョンの違いを確認し、既存のコードを最新の Azure コグニティブ検索サービス REST API バージョンに移行するために必要なアクションについて学習します。
+description: API バージョンの違いを確認し、既存のコードを最新の Azure Cognitive Search サービス REST API バージョンに移行するために必要なアクションについて学習します。
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -15,7 +15,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 11/15/2019
 ms.locfileid: "74112160"
 ---
-# <a name="upgrade-to-the-latest-azure-cognitive-search-service-rest-api-version"></a>最新の Azure コグニティブ検索サービス REST API バージョンへのアップグレード
+# <a name="upgrade-to-the-latest-azure-cognitive-search-service-rest-api-version"></a>最新の Azure Cognitive Search サービス REST API バージョンへのアップグレード
 
 [Search REST API](https://docs.microsoft.com/rest/api/searchservice/) の以前のバージョンを使用している場合、この記事が、一般公開された最新の API バージョン 2019-05-06 を使用するように、アプリケーションをアップグレードするのに役立ちます。
 
