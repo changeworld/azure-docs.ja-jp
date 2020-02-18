@@ -51,7 +51,7 @@ Azure の [IaaS](https://azure.microsoft.com/overview/what-is-iaas/) (サービ�
 
 <table>
 <thead>
-    <tr><th>種類</th><th>[説明]</th><th>使用目的:</th></tr>
+    <tr><th>種類</th><th>説明</th><th>使用目的:</th></tr>
 </thead>
 <tbody>
 <tr><td>Azure Files
