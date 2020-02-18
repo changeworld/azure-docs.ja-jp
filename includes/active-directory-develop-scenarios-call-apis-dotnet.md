@@ -44,7 +44,7 @@ MSAL.NET では、`IAccount` インターフェイスでアカウントの概念
 
 `AccountId` クラスでは、次の表のプロパティで、特定のテナントのアカウントを識別します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |----------|-------------|
 | `TenantId` | GUID (アカウントが存在するテナントの ID) の文字列表現。 |
 | `ObjectId` | GUID (テナント内でアカウントを所有するユーザーの ID) の文字列表現。 |
@@ -52,7 +52,7 @@ MSAL.NET では、`IAccount` インターフェイスでアカウントの概念
 
 `IAccount` インターフェイスは 1 つのアカウントに関する情報を表します。 同じユーザーが異なるテナントに存在することができます。つまり、1 人のユーザーが複数のアカウントを持つことができます。 そのメンバーは、次の表のとおりです。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |----------|-------------|
 | `Username` | UserPrincipalName (UPN) 形式の表示可能な値の文字列 (例: john.doe@contoso.com)。 null にすることができない HomeAccountId と HomeAccountId.Identifier とは異なり、この文字列は null にできます。 このプロパティは、MSAL.NET の以前のバージョンの `IUser` の `DisplayableId` プロパティを置き換えます。 |
 | `Environment` | このアカウントの ID プロバイダーを含む文字列 (例: `login.microsoftonline.com`)。 `IdentityProvider` には、クラウド環境に加えテナントに関する情報もありますが、それを除き、このプロパティは、`IUser` の `IdentityProvider` プロパティと置き換えることができます。 ここでは値はホストのみです。 |
