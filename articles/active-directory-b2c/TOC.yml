@@ -101,7 +101,7 @@
               href: user-flow-self-service-password-reset.md
         - name: UX のカスタマイズ
           items:
-            - name: ユーザー インターフェイスのカスタマイズ
+            - name: UI のカスタマイズ
               href: customize-ui-overview.md
             - name: JavaScript とページ レイアウト
               href: user-flow-javascript-overview.md
@@ -177,8 +177,6 @@
             - name: UI のカスタマイズ
               href: custom-policy-ui-customization.md
               displayName: 'ux, input, cors, html, css'
-            - name: UI の動的なカスタマイズ
-              href: custom-policy-ui-customization-dynamic.md
             - name: カスタム メール
               href: custom-email.md
               displayName: verification
