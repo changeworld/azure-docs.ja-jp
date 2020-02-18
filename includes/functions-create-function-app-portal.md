@@ -25,7 +25,7 @@ ms.locfileid: "76020834"
 
     ![基本](./media/functions-create-function-app-portal/function-app-create-basics.png)
 
-    | 設定      | 推奨値  | [説明] |
+    | 設定      | 推奨値  | 説明 |
     | ------------ | ---------------- | ----------- |
     | **サブスクリプション** | 該当するサブスクリプション | この新しい Function App が作成されるサブスクリプション。 |
     | **[リソース グループ](../articles/azure-resource-manager/management/overview.md)** |  *myResourceGroup* | Function App を作成するための新しいリソース グループの名前。 |
@@ -40,7 +40,7 @@ ms.locfileid: "76020834"
 
     ![Hosting](./media/functions-create-function-app-portal/function-app-create-hosting.png)
 
-    | 設定      | 推奨値  | [説明] |
+    | 設定      | 推奨値  | 説明 |
     | ------------ | ---------------- | ----------- |
     | **[ストレージ アカウント](../articles/storage/common/storage-account-create.md)** |  グローバルに一意の名前 |  関数アプリで使用されるストレージ アカウントを作成します。 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。 既存のアカウントを使用することもできますが、[ストレージ アカウントの要件](../articles/azure-functions/functions-scale.md#storage-account-requirements)を満たしている必要があります。 |
     |**オペレーティング システム**| 優先オペレーティング システム | オペレーティング システムは、ランタイム スタックの選択に基づいてあらかじめ選択されますが、必要に応じて設定を変更できます。 |
@@ -52,7 +52,7 @@ ms.locfileid: "76020834"
 
     ![監視](./media/functions-create-function-app-portal/function-app-create-monitoring.png)
 
-    | 設定      | 推奨値  | [説明] |
+    | 設定      | 推奨値  | 説明 |
     | ------------ | ---------------- | ----------- |
     | **[Application Insights](../articles/azure-functions/functions-monitoring.md)** | Default | 最も近いサポートされているリージョン内に同じ*アプリ名*の Application Insights リソースを作成します。 この設定を展開することによって、 **[新しいリソース名]** を変更するか、またはデータを格納する [Azure 地理的環境](https://azure.microsoft.com/global-infrastructure/geographies/)内の別の **[場所]** を選択することができます。 |
 
