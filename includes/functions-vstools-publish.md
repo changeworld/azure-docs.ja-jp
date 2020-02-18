@@ -21,7 +21,7 @@ ms.locfileid: "76020979"
 
     ![発行先の選択](./media/functions-vstools-publish/functions-visual-studio-publish-profile.png)
 
-    | オプション      | [説明]                                |
+    | オプション      | 説明                                |
     | ------------ |  -------------------------------------------------- |
     | **Azure Functions 従量課金プラン** |   [従量課金プラン](../articles/azure-functions/functions-scale.md#consumption-plan)で実行される関数アプリにプロジェクトを発行する場合は、関数アプリの実行に対してのみ課金されます。 他のホスティング プランでは、コストが高くなります。 詳細については、「[Azure Functions のスケールとホスティング](../articles/azure-functions/functions-scale.md)」を参照してください。 | 
     | **新規作成** | 新しい関数アプリと関連リソースが、Azure に作成されます。 **[既存のものを選択]** を選択すると、Azure の既存の関数アプリ内のすべてのファイルがローカル プロジェクトのファイルによって上書きされます。 このオプションは、既存の関数アプリへの更新を再発行する場合にのみ使用します。 |
@@ -34,7 +34,7 @@ ms.locfileid: "76020979"
 
     ![[App Service の作成] ダイアログ](./media/functions-vstools-publish/functions-visual-studio-publish.png)
 
-    | 設定      | 推奨値  | [説明]                                |
+    | 設定      | 推奨値  | 説明                                |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Name** | グローバルに一意の名前 | 新しい関数アプリを一意に識別する名前。 有効な文字は、`a-z`、`0-9`、および `-` です。 |
     | **サブスクリプション** | サブスクリプションの選択 | 使用する Azure サブスクリプション。 |

@@ -308,7 +308,7 @@ REST からのデータ コピーについては、次のプロパティがサ�
 
 改ページ位置の自動修正規則で**サポートされるキー**:
 
-| キー | 説明 |
+| Key | 説明 |
 |:--- |:--- |
 | AbsoluteUrl | 次の要求を発行する URL を示します。 これは、**絶対 URL と相対 URL のどちらか**です。 |
 | QueryParameters.*request_query_parameter* または QueryParameters['request_query_parameter'] | "request_query_parameter" は、次の HTTP 要求 URL 内で 1 つのクエリ パラメーター名を参照するユーザー定義です。 |

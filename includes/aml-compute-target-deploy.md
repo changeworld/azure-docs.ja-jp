@@ -16,7 +16,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 01/16/2020
 ms.locfileid: "76122587"
 ---
-| コンピューティング ターゲット | 使用目的 | GPU のサポート | FPGA のサポート | [説明] |
+| コンピューティング ターゲット | 使用目的 | GPU のサポート | FPGA のサポート | 説明 |
 | ----- | ----- | ----- | ----- | ----- |
 | [ローカル &nbsp;Web&nbsp; サービス](../articles/machine-learning/how-to-deploy-and-where.md#local) | テスト/デバッグ | &nbsp; | &nbsp; | 制限付きのテストとトラブルシューティングに使用。 ハードウェア アクセラレーションは、ローカル システムでのライブラリの使用に依存します。
 | [Azure Machine Learning コンピューティング インスタンス&nbsp;Web&nbsp;サービス](../articles/machine-learning/how-to-deploy-and-where.md#notebookvm) | テスト/デバッグ | &nbsp; | &nbsp; | 制限付きのテストとトラブルシューティングに使用。

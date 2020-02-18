@@ -89,7 +89,7 @@ ms.locfileid: "76279342"
 
 タスク ハブの名前は、先頭文字をアルファベットとする必要があります。また、使用できるのはアルファベットと数値だけです。 指定しない場合、関数アプリの既定のタスク ハブ名は **DurableFunctionsHub** です。 詳細については、[タスク ハブ](../articles/azure-functions/durable-functions-task-hubs.md)に関するページをご覧ください。
 
-|プロパティ  |Default | [説明] |
+|プロパティ  |Default | 説明 |
 |---------|---------|---------|
 |hubName|DurableFunctionsHub|代替[タスク ハブ](../articles/azure-functions/durable-functions-task-hubs.md)名を使用すると、複数の Durable Functions アプリケーションが同じストレージ バックエンドを使用している場合でも、これらのアプリケーションを互いに分離できます。|
 |controlQueueBatchSize|32|コントロール キューから一度にプルするメッセージの数。|

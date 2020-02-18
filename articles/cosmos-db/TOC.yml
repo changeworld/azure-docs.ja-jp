@@ -176,6 +176,9 @@
         - name: Keywords
           displayName: 'keywords, distinct, between, in, top'
           href: sql-query-keywords.md
+        - name: 定数
+          displayName: 'object, number,array'
+          href: sql-query-constants.md
         - name: オペレーター
           displayName: 'operators, operator, logical operators, equality, comparison'
           href: sql-query-operators.md
@@ -582,8 +585,7 @@
             - name: Change Feed
               href: cassandra-change-feed.md
             - name: Spring Data の格納と管理
-              href: /java/azure/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db
-              maintainContext: true
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
             - name: Cassandra と Spark
               items:
                 - name: はじめに
@@ -658,8 +660,7 @@
                   href: tutorial-develop-mongodb-react.md
             - name: 2 - データの移行
               displayName: import
-              href: /azure/dms/tutorial-mongodb-cosmos-db
-              maintainContext: true
+              href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: 3 - データのクエリ
               href: tutorial-query-mongodb.md
             - name: 4 - データのグローバル分散
@@ -690,8 +691,7 @@
             - name: データのインデックス作成を管理する
               href: mongodb-indexing.md
             - name: Spring Data の格納と管理
-              href: /java/azure/spring-framework/configure-spring-data-mongodb-with-cosmos-db
-              maintainContext: true
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
             - name: MongoDB 拡張コマンド
               href: mongodb-custom-commands.md
               displayName: custom commands
@@ -755,8 +755,7 @@
             - name: グラフ データの視覚化
               href: graph-visualization.md
             - name: Spring Data の格納と管理
-              href: /java/azure/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db
-              maintainContext: true
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
             - name: Resource Manager テンプレートを使用して管理する
               href: manage-gremlin-with-resource-manager.md
             - name: PowerShell を使用して管理する
@@ -951,8 +950,7 @@
         - name: Azure Databricks の Spark コネクタ
           href: spark-connector.md
         - name: Apache Kafka と Cosmos DB を使用したストリーミング
-          href: /azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb
-          maintainContext: true
+          href: ../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
     - name: 組み込み Jupyter ノートブック
       items:
         - name: ノートブックの有効化
@@ -976,8 +974,7 @@
         - name: プライベート エンドポイントからアクセスを構成する
           href: how-to-configure-private-endpoints.md
         - name: Cosmos DB アカウントに非公開で接続する
-          href: /azure/private-link/create-private-endpoint-cosmosdb-portal
-          maintainContext: true
+          href: ../private-link/create-private-endpoint-cosmosdb-portal.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: クロス オリジン リソース共有 (CORS) の構成
           href: how-to-configure-cross-origin-resource-sharing.md
         - name: Key Vault を使用して Azure Cosmos キーをセキュリティ保護する
@@ -999,12 +996,11 @@
         - name: 診断ログを使用して監視する
           href: cosmosdb-monitor-resource-logs.md
         - name: Azure Monitor for Cosmos (プレビュー)
-          href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json
+          href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Cosmos DB アカウントからメトリックを表示する
           href: use-metrics.md
         - name: Logic Apps を使用したアプリケーション ログ記録
-          href: /azure/logic-apps/logic-apps-scenario-error-and-exception-handling
-          maintainContext: true
+          href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: 監視データのリファレンス
           href: monitor-cosmos-db-reference.md
     - name: ローカルでの開発
@@ -1032,29 +1028,23 @@
         - name: Azure App Service
           href: create-website.md
         - name: Azure Cognitive Search インデクサー
-          href: /azure/search/search-howto-index-cosmosdb
-          maintainContext: true
+          href: ../search/search-howto-index-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Azure Functions
           items:
             - name: サーバーレス コンピューティング
               href: serverless-computing-database.md
             - name: Azure Functions のバインド
-              href: /azure/azure-functions/functions-bindings-cosmosdb
-              maintainContext: true
+              href: ../azure-functions/functions-bindings-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Azure Data Factory
-          href: /azure/data-factory/connector-azure-cosmos-db
-          maintainContext: true
+          href: ../data-factory/connector-azure-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Azure Stream Analytics
-          href: '/azure/stream-analytics/stream-analytics-define-outputs#azure-cosmos-db'
-          maintainContext: true
+          href: ../stream-analytics/stream-analytics-documentdb-output.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Azure Event Hubs と Azure Storage
           href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
         - name: Spring Boot Starter の使用
-          href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
-          maintainContext: true
+          href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
         - name: Spring Data の開発者ガイド
-          href: /java/azure/spring-framework/how-to-guides-spring-data-cosmosdb
-          maintainContext: true
+          href: 'https://docs.microsoft.com/azure/java/spring-framework/how-to-guides-spring-data-cosmosdb?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
         - name: ODBC ドライバー
           href: odbc-driver.md
     - name: Cosmos DB にデータを移行する
