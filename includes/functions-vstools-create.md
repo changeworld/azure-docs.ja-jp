@@ -30,7 +30,7 @@ Visual Studio の Azure Functions プロジェクト テンプレートでは、
     + **[ストレージ アカウント]** : **ストレージ エミュレーター**
     + **承認レベル**: **Anonymous** 
 
-    | オプション      | 推奨値  | [説明]                      |
+    | オプション      | 推奨値  | 説明                      |
     | ------------ |  ------- |----------------------------------------- |
     | **Functions ランタイム** | **Azure Functions 2.x <br />(.NET Core)** | この設定で、.NET Core をサポートする Azure Functions のバージョン 2.x ランタイムを使用する関数プロジェクトが作成されます。 Azure Functions 1.x では、.NET Framework がサポートされます。 詳細については、[Azure Functions ランタイム バージョンをターゲットにする方法](../articles/azure-functions/functions-versions.md)に関するページを参照してください。   |
     | **関数テンプレート** | **HTTP トリガー** | この設定で、HTTP 要求によってトリガーされる関数が作成されます。 |
