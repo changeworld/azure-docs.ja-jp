@@ -27,7 +27,7 @@ ms.locfileid: "76279274"
 }
 ```
 
-|プロパティ  |Default | [説明] |
+|プロパティ  |Default | 説明 |
 |---------|---------|---------| 
 |isEnabled|true|サンプリングを有効または無効にします。| 
 |maxTelemetryItemsPerSecond|5|サンプリングが開始されるしきい値。| 
