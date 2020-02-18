@@ -13,7 +13,7 @@ ms.locfileid: "76845153"
 ---
 `inferenceconfig.json` ドキュメント内のエントリは、[InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) クラスのパラメーターにマップされます。 次の表は、JSON ドキュメントのエントリとメソッド用パラメーターの間のマッピングについてまとめたものです。
 
-| JSON エンティティ | メソッド パラメーター | [説明] |
+| JSON エンティティ | メソッド パラメーター | 説明 |
 | ----- | ----- | ----- |
 | `entryScript` | `entry_script` | イメージに対して実行するコードを含むローカル ファイルのパス。 |
 | `runtime` | `runtime` | 省略可能。 イメージに使用するランタイム。 サポートされているランタイムは `spark-py` と `python` です。 `environment` が設定されている場合、このエントリは無視されます。 |
