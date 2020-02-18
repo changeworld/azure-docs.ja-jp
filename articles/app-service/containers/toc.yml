@@ -43,8 +43,6 @@
           href: tutorial-python-postgresql-app.md
         - name: Java と Spring データ
           href: tutorial-java-spring-cosmosdb.md
-        - name: Java Enterprise と Postgres
-          href: tutorial-java-enterprise-postgresql-app.md
     - name: 複数コンテナー アプリ
       href: tutorial-multi-container-app.md
     - name: ACR からのコンテナーの実行
