@@ -75,7 +75,7 @@ Device Provisioning Service では、サービスの認証にセキュリティ 
 
 考えられる値を次に示します。
 
-| 値 | [説明] |
+| 値 | 説明 |
 | --- | --- |
 | {signature} |HMAC-SHA256 署名文字列 (形式: `{URL-encoded-resourceURI} + "\n" + expiry`)。 **重要**:キーは base64 からデコードされ、HMAC-SHA256 計算を実行するためのキーとして使用されます。|
 | {expiry} |1970 年 1 月 1 日の 00 時 00 分 00 秒 UTC からのエポック秒で表される UTF8 文字列。 |
