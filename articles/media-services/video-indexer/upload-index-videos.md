@@ -93,7 +93,7 @@ Video Indexer で使用できるファイル形式の一覧については、「
 - インデックス状態の変更: 
     - プロパティ:    
     
-        |Name|[説明]|
+        |Name|説明|
         |---|---|
         |id|ビデオ ID|
         |状態|ビデオの状態|  
@@ -101,7 +101,7 @@ Video Indexer で使用できるファイル形式の一覧については、「
 - ビデオで特定された人物:
   - Properties
     
-      |Name|[説明]|
+      |Name|説明|
       |---|---|
       |id| ビデオ ID|
       |faceId|ビデオ インデックスに表示される顔 ID|
@@ -344,7 +344,7 @@ public class AccountContractSlim
 
 アップロード操作によって返される場合がある状態コードを次の表に示します。
 
-|status code|ErrorType (応答本体内)|[説明]|
+|status code|ErrorType (応答本体内)|説明|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|指定されたアカウントで既に同じビデオの処理が進行中です。|
 |400|VIDEO_ALREADY_FAILED|指定されたアカウントで 2 時間以内に同じビデオの処理に失敗しました。 API クライアントは、ビデオを再アップロードする前に少なくとも 2 時間待つ必要があります。|
