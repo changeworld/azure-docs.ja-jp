@@ -42,7 +42,7 @@ Media Services では、次のリソースの監視メトリックがサポー�
 
 次のアカウント メトリックを監視できます。
 
-|メトリックの名前|Display name|[説明]|
+|メトリックの名前|Display name|説明|
 |---|---|---|
 |AssetCount|アセット数|アカウント内のアセットです。|
 |AssetQuota|アセットのクォータ|アカウント内のアセットのクォータです。|
@@ -60,7 +60,7 @@ Media Services では、次のリソースの監視メトリックがサポー�
 
 次の Media Services [ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints) メトリックがサポートされています。
 
-|メトリックの名前|Display name|[説明]|
+|メトリックの名前|Display name|説明|
 |---|---|---|
 |Requests|Requests|ストリーミング エンドポイントで処理された HTTP 要求の合計数を提供します。|
 |エグレス|エグレス|エグレス バイト数の合計。 ストリーミング エンドポイントによってストリーミングされるバイト数など。|
@@ -92,7 +92,7 @@ Media Services では、次の診断ログがサポートされています。
 
 ### <a name="key-delivery"></a>キー配信
 
-|Name|[説明]|
+|Name|説明|
 |---|---|
 |キー配信サービス要求|キー配信サービス要求の情報を表示するログ。 詳細については、[スキーマ](media-services-diagnostic-logs-schema.md)に関するページを参照してください。|
 
