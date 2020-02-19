@@ -83,7 +83,7 @@ ms.locfileid: "75894897"
 
 自動化されたすべての機械学習実験において、アルゴリズムが十分に実行されるよう、自動的にデータの規模が調整され、正規化されます。  モデル トレーニングの間、次のいずれかのスケーリング手法または正規化手法が各モデルに適用されます。
 
-|スケーリング&nbsp;&&nbsp;正規化| [説明] |
+|スケーリング&nbsp;&&nbsp;正規化| 説明 |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | 中間を取り除き、単位差異に合わせてスケールを変更することで特徴を正規化します  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | その列の最小と最大で各特徴のスケールを変更することで特徴を変換します  |
@@ -193,7 +193,7 @@ ms.locfileid: "75894897"
 
 さらに、自動 ML を実行すると、次のグラフが自動的に生成されます。これは、モデルの分類の正確性を把握し、偏ったデータの影響を受ける可能性のあるモデルを特定するのに役立ちます。
 
-グラフ| [説明]
+グラフ| 説明
 ---|---
 [混同行列](how-to-understand-automated-ml.md#confusion-matrix)| 適切に分類されたラベルをデータの実際のラベルと比較して評価します。 
 [精度/再現率](how-to-understand-automated-ml.md#precision-recall-chart)| 適切なラベルの比率を、検出されたデータのラベル インスタンスの比率と比較して評価します 
@@ -215,7 +215,7 @@ Azure Machine Learning では、自動化された ML を使用して Python モ
 
 自動化された ML は次のような他の Microsoft ソリューションでも利用できます。
 
-|統合|[説明]|
+|統合|説明|
 |------------|-----------|
 |[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Visual Studio および Visual Studio Code と ML.NET 自動 ML を使用した .NET アプリでの自動モデル選択およびトレーニング (プレビュー)。|
 |[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|並列にしてある HDInsight クラスターの Spark で自動化された ML トレーニング ジョブをスケールアウトします。|
