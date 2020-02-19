@@ -3,17 +3,17 @@ title: クイックスタート - シミュレートされたデバイスを Azu
 description: このクイックスタートでは、デバイス テンプレートを作成し、IoT Central アプリケーションにシミュレートされたデバイスを追加する方法を紹介します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/10/2019
+ms.date: 02/12/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: cb8f0c806435a6c623d14e50263844db7aac61bb
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 489bf81388c1bb889756d54957e791282054f0f7
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026185"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169596"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>クイック スタート:IoT Central アプリケーションにシミュレートされたデバイスを追加する
 
@@ -48,7 +48,7 @@ IoT Central アプリケーションにデバイス機能モデルを追加す�
 
 次の手順では、デバイス カタログを使用して、**MXChip IoT DevKit** デバイスの機能モデルをインポートする方法について説明します。 これらのデバイスは、温度などのテレメトリをアプリケーションに送信します。
 
-1. 新しいデバイス テンプレートを追加するために、 **[デバイス テンプレート]** ページで **+** を選択します。
+1. 新しいデバイス テンプレートを追加するには、 **[デバイス テンプレート]** ページで **+** を選択します。
 
 1. **[テンプレートの種類の選択]** ページで、 **[MXChip IoT DevKit]** タイルが表示されるまで下にスクロールします。
 

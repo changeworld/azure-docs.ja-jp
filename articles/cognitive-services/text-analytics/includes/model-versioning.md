@@ -7,19 +7,22 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/25/2019
+ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: 29850cb9cb40eae0829b5d8c2b58b5f9518f18d5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 4cd8d0901ce23fb227bb6919dee18f5aa3d063ed
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021127"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77089087"
 ---
-Text Analytics API のバージョン 3 では、データに使用する Text Analytics モデルを選択できます。 要求でモデルのバージョンを選択するには、省略可能な `model-version` パラメーターを使用します。 このパラメーターが指定されていない場合、API の既定値は最新の安定したモデルのバージョンである `latest` になります。
+Text Analytics API のバージョン 3 では、お使いのデータに対する最新のモデル バージョンを選択できます。 要求で必要なモデルのバージョンを選択するには、省略可能な `model-version` パラメーターを使用します。 このパラメーターが指定されていない場合、API の既定値は最新の安定したバージョンである `latest` になります。 どの要求でも最新のモデルバージョンを使用できますが、バージョンごとに更新される機能は一部だけです。 次の表では、各モデル バージョンで更新された機能について説明します。
 
-使用可能なモデル バージョン:
-* `2019-10-01` (`latest`)
+| モデル バージョン           | 更新された機能         | 次のための最新バージョン:           |
+|-------------------------|--------------------------|--------------------------|
+| `2020-02-01`            | エンティティの認識                      | エンティティの認識                      |
+| `2019-10-01`            | エンティティ認識、センチメント分析  | 言語検出、キー フレーズ抽出、センチメント分析|
+
 
 v3 エンドポイントからの各応答には、使用されたモデルのバージョンを指定する `model-version` フィールドが含まれています。
 
@@ -30,3 +33,4 @@ v3 エンドポイントからの各応答には、使用されたモデルの�
     "model-version": "2019-10-01"
 }
 ```
+これらのモデル バージョンの更新の詳細については、[新機能](../whats-new.md)に関する記事を参照してください。

@@ -16,30 +16,31 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: cb4e27aeada4f1b5f9e06279382327dcc51cc7dc
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: b912dfe3fb6461a925977192a6631ecac1357d35
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899597"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049839"
 ---
 # <a name="create-a-cicd-pipeline-for-python-with-azure-devops-projects"></a>Azure DevOps Projects を使用して Python 用の CI/CD パイプラインを作成する
 
-Azure DevOps Projects は、Azure リソースを作成して、Python アプリ用の継続的インテグレーション (CI) および継続的デリバリー (CD) のパイプラインを設定する、簡単なエクスペリエンスを提供します。  
+このクイックスタートでは、Azure DevOps Projects の簡素化されたエクスペリエンスを使用して、Azure Pipelines 内に Python アプリ用の継続的インテグレーション (CI) および継続的デリバリー (CD) のパイプラインを設定します。 Azure DevOps Projects では、アプリの開発、デプロイ、監視に必要なすべてのものが設定されます。 
 
-Azure サブスクリプションをお持ちでない場合は、[Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) を通じて無料で取得できます。
+## <a name="prerequisites"></a>前提条件
+
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
+- [Azure DevOps](https://azure.microsoft.com/services/devops/) のアカウントと組織。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
- DevOps Projects によって、Azure Pipelines に CI/CD パイプラインが作成されます。  無料の新しい Azure DevOps 組織を作成するか、既存の組織を使用できます。 DevOps Projects では、選択した Azure サブスクリプションに Azure リソースも作成されます。
+DevOps Projects によって、Azure Pipelines に CI/CD パイプラインが作成されます。 新しい Azure DevOps 組織を作成するか、既存の組織を使用できます。 DevOps Projects では、選択した Azure サブスクリプションに Azure リソースも作成されます。
 
-1. [Microsoft Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインし、左側のペインで **[リソースの作成]** を選択します。 
 
-2. 左のウィンドウで **[リソースの作成]** アイコンを選択し、**DevOps Projects** を検索します。  
+   ![Azure portal で Azure リソースを作成する](_img/azure-devops-project-python/fullbrowser.png)
 
-3. **作成** を選択します。
-
-    ![継続的デリバリーの構成の開始](_img/azure-devops-project-python/fullbrowser.png)
+1. **[DevOps Projects]** を検索して選択し、 **[作成]** を選択します。
 
 ## <a name="select-a-sample-application-and-azure-service"></a>サンプル アプリケーションと Azure サービスを選択する
 
@@ -138,11 +139,11 @@ Web App for Containers が既定のデプロイ ターゲットです。 前に�
 1. **[ログ]** を選択します。   
 ログには、デプロイ プロセスに関する有用な情報が含まれます。 それらは、デプロイ中もデプロイ後も表示されます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Azure App Service とその関連リソースが必要なくなったら、削除してかまいません。 DevOps Projects ダッシュボードで**削除**機能を使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 CI/CD プロセスを構成したときに、ビルドとリリース パイプラインが自動的に作成されました。 チームのニーズを満たすようにこれらのビルドおよびリリース パイプラインを変更できます。 CI/CD パイプラインの詳細については、以下を参照してください。
 

@@ -2,22 +2,22 @@
 title: Microsoft Azure の請求書の支払い | Microsoft Docs
 description: Azure portal での請求書の支払い方法について説明します。
 keywords: 請求, 支払い期限を過ぎている, 残高, 今支払う,
-author: jureid
-manager: jureid
+author: banders
+manager: judupont
 tags: billing, past due, pay now, bill, invoice, pay
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: d486fe72a43465832ca13ac1a62a7f0a9aeaa65e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 214382693d942152d82b7ae5e487969b8ebaeaff
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75984955"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188117"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Microsoft Azure の請求書の支払い方法
 
@@ -35,21 +35,12 @@ Azure portal で請求書の支払いを行うには、課金プロファイル�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. **[コストの管理と請求]** で検索します。
-1. **[概要]** ブレードで、 *[概要]* タブをクリックします。
-
-    ![[概要] タブを示すスクリーンショット](./media/pay-bill/billing-account-overview.png)
-
-1. 支払い期限が来ている請求書または支払い期限を過ぎた請求書がある場合、合計請求額が表示されます。
-1. 青い **[今支払う]** ボタンをクリックします。
-
-    ![[今支払う] ボタンを示すスクリーンショット](./media/pay-bill/paynow-button-overview.png)
-
-1. 新しいブレードで **[支払い方法の選択]** をクリックして、既存のクレジット カードを選択するか、新しいカードを追加します。<!-- screenshot of select payment method link -->
+1. 左側のメニューの [課金] から **[請求書]** を選択します。
+1. 請求書の支払い期限来ている場合や支払い期限が過ぎた場合、その請求書に青色の **[今支払う]** リンクが表示されます。 **[今支払う]** を選択します。
+1. 新しいブレードで **[支払い方法の選択]** をクリックして、既存のクレジット カードを選択するか、新しいカードを追加します。
 1. 支払い方法を選択したら、 **[今支払う]** をクリックします。
 
 請求書ブレードで請求書の状態が支払済みに更新されます。
-
-<!-- pay now from invoice blade -->
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft 顧客契約にアクセスできるかどうかを確認する
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]

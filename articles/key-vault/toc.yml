@@ -112,6 +112,14 @@
           href: managed-identity.md
         - name: アクセス制御ポリシーを使用する
           href: key-vault-group-permissions-for-apps.md
+        - name: HSM で保護されたキーをインポートする
+          items:
+            - name: 概要
+              href: key-vault-hsm-protected-keys.md
+            - name: HSM で保護されたキーを Key Vault にインポートする (プレビュー)
+              href: hsm-protected-keys-vendor-agnostic-byok.md
+            - name: HSM で保護されたキーを Key Vault にインポートする (レガシ)
+              href: hsm-protected-keys-legacy.md
     - name: Event Grid を使用したキー コンテナー通知のルーティング
       href: event-grid-tutorial.md
     - name: Event Grid と Logic Apps を使用した通知の受信
@@ -170,8 +178,6 @@
       items:
         - name: 開発者ガイド
           href: key-vault-developers-guide.md
-        - name: HSM で保護されたキー
-          href: key-vault-hsm-protected-keys.md
         - name: .NET 2.0 への移行
           href: key-vault-dotnet2api-release-notes.md
         - name: Web アプリのシークレットの保存

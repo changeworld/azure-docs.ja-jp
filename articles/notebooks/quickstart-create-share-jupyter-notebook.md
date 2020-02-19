@@ -3,28 +3,31 @@ title: Azure Notebooks プレビューで Jupyter ノートブックを作成し
 description: Azure Notebooks プレビューで Jupyter ノートブックをすばやく作成して実行した後、そのノートブックを他のユーザーと共有します。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 7b983d927bfd789cddb8d00675294cefc9f55e08
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d3310444fa28240b8fb1344199514a9601a2c615
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647086"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064446"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>クイック スタート:Azure Notebooks プレビューでノートブックを作成して共有する
 
-このクイックスタートでは、Azure Notebooks で Jupyter ノートブックをすばやく作成、実行した後、そのノートブックを他のユーザーと共有する方法を学習します。
+このクイックスタートでは、Azure Notebooks で Jupyter ノートブックを作成、実行した後、そのノートブックを他のユーザーと共有します。 Jupyter では、Markdown テキスト、実行可能コード、永続データ、グラフィックス、視覚エフェクトを 1 つの共有可能なキャンバス (ノートブック) に簡単に組み合わせることができます。 Azure Notebooks は、インストールせずにクラウド上で Jupyter ノートブックを作成、実行するための無料でホストされているサービスです。
 
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+## <a name="prerequisites"></a>前提条件
+[なし] :
 
 ## <a name="create-a-new-project-and-notebook"></a>新しいプロジェクトとノートブックを作成する
 
-1. [Azure Notebooks サイト (https://notebooks.azure.com)](https://notebooks.azure.com) に移動してサインインします。 (詳しくは、「[Quickstart - Sign in to Azure Notebooks](quickstart-sign-in-azure-notebooks.md)」(クイック スタート - Azure Notebook にサインインする) をご覧ください)。
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+1. [Azure Notebooks サイト (https://notebooks.azure.com)](https://notebooks.azure.com) に移動してサインインします。 詳しくは、[クイック スタート - Azure Notebooks にサインインする](quickstart-sign-in-azure-notebooks.md)に関する記事を参照してください。
 
 1. パブリック プロファイル ページから、ページの上部にある **[マイ プロジェクト]** を選択します。
 
     ![ブラウザー ウィンドウの上部にある [マイ プロジェクト] リンク](media/quickstarts/my-projects-link.png)
 
-1. **[マイ プロジェクト]** ページで、 **[+ 新しいプロジェクト]** (キーボード ショートカット: N) を選択します。ブラウザー ウィンドウが狭い場合、ボタンに **[+]** だけが表示されることがあります。
+1. **[マイ プロジェクト]** ページで **[+ 新しいプロジェクト]** を選択します (キーボード ショートカット: N)。 ブラウザー ウィンドウが狭い場合、ボタンに **[+]** だけが表示されることがあります。
 
     ![[マイ プロジェクト] ページの [新しいプロジェクト] コマンド](media/quickstarts/new-project-command.png)
 
@@ -102,4 +105,4 @@ ms.locfileid: "75647086"
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [チュートリアル: 線形回帰を行う Jupyter ノートブックを作成して実行する](tutorial-create-run-jupyter-notebook.md)
+> [チュートリアル:線形回帰を行う Jupyter ノートブックを作成して実行する](tutorial-create-run-jupyter-notebook.md)

@@ -1,7 +1,7 @@
 ---
-title: チュートリアル:R を使用した初めての ML モデル
+title: チュートリアル:R のロジスティック回帰モデル
 titleSuffix: Azure Machine Learning
-description: このチュートリアルでは、Azure Machine Learning の基本的な設計パターンを学習し、R パッケージ azuremlsdk と caret を使用してロジスティック回帰モデルをトレーニングし、交通事故での死亡の可能性を予測します。
+description: このチュートリアルでは、R パッケージ azuremlsdk と caret を使用してロジスティック回帰モデルを作成し、自動車事故での死亡の可能性を予測します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,27 +9,28 @@ ms.topic: tutorial
 ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
-ms.date: 11/04/2019
-ms.openlocfilehash: 7ea02fa4544b478e6b041e0b9c342bccdfe6c48c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 02/07/2020
+ms.openlocfilehash: 37f2f98e594f558a9cd3c3e5994bf17a71ff1899
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532455"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191244"
 ---
-# <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>チュートリアル:Azure Machine Learning を使って R で初めてのモデルをトレーニングしてデプロイする
+# <a name="tutorial-create-a-logistic-regression-model-in-r-with-azure-machine-learning"></a>チュートリアル:Azure Machine Learning を使用して R でロジスティック回帰モデルを作成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-このチュートリアルでは、Azure Machine Learning の基本的な設計パターンを学習します。  **caret** モデルをトレーニングしてデプロイし、交通事故での死亡の可能性を予測します。 このチュートリアルを完了すると、より複雑な実験およびワークフローの開発にスケールアップするための、R SDK の実用的な知識が得られます。
+このチュートリアルでは、R と Azure Machine Learning を使用して、自動車事故における死亡の可能性を予測するロジスティック回帰モデルを作成します。 このチュートリアルを完了すると、より複雑な実験およびワークフローの開発にスケールアップするための、Azure Machine Learning R SDK の実用的な知識が得られます。
 
-このチュートリアルでは、以下のタスクについて学習します。
-
+このチュートリアルでは、以下のタスクを実行します。
 > [!div class="checklist"]
-> * ワークスペースを接続する
+> * Azure Machine Learning ワークスペースの作成
+> * このチュートリアルの実行に必要なファイルが含まれたノートブック フォルダーをワークスペースにクローンする
+> * ワークスペースから RStudio を開く
 > * データを読み込み、トレーニングを準備する
 > * データをデータストアにアップロードして、リモート トレーニングに使用できるようにする
-> * コンピューティング リソースを作成する
-> * caret モデルをトレーニングして、死亡の可能性を予測する
+> * モデルをリモートでトレーニングするためのコンピューティング リソースを作成する
+> * `caret` モデルをトレーニングして死亡する確率を予測する
 > * 予測エンドポイントをデプロイする
 > * R からのモデルをテストする
 
@@ -66,13 +67,11 @@ Azure Machine Learning Studio で、次の実験の設定を完了し、ステ�
 
 1. バージョン番号が付いたフォルダーを開きます。  この番号は、R SDK の現在のリリースを表します。
 
-1. **vignettes** フォルダーを開きます。
-
-1. **train-and-deploy-to-aci** フォルダーの右側にある **[...]** を選択し、 **[複製]** を選択します。
+1. **vignettes** フォルダーの右側にある **[...]** を選択し、 **[クローン]** を選択します。
 
     ![フォルダーを複製する](media/tutorial-1st-r-experiment/clone-folder.png)
 
-1. フォルダーの一覧には、ワークスペースにアクセスする各ユーザーが表示されます。  フォルダーを選択して、そこに **train-and-deploy-to-aci** フォルダーを複製します。
+1. フォルダーの一覧には、ワークスペースにアクセスする各ユーザーが表示されます。  自分のフォルダーを選択して **vignettes** フォルダーをそこにクローンします。
 
 ## <a name="a-nameopenopen-rstudio"></a><a name="open">RStudio を開く
 
@@ -84,10 +83,11 @@ Azure Machine Learning Studio で、次の実験の設定を完了し、ステ�
 
 1. コンピューティングが実行されたら、**RStudio** リンクを使用して RStudio を開きます。
 
-1. RStudio では、**train-and--deploy-to-aci** フォルダーは、右下の **Files** セクションの **Users** から数レベル下にあります。  **train-and-deploy-to-aci** フォルダーを選択して、このチュートリアルで必要なファイルを見つけます。
+1. RStudio では、*vignettes* フォルダーは、右下の **Files** セクションの *Users* から数レベル下にあります。  *vignettes* にある *train-and-deploy-to-aci* フォルダーを選択して、このチュートリアルで必要なファイルを見つけます。
 
 > [!Important]
-> 以降この記事には、**train-and-deploy-to-aci.Rmd** ファイルと同じ内容が記載されています。 RMarkdown の使用経験がある場合は、そのファイルのコードを自由に使用できます。  また、そこから、またはこの記事から、コード スニペットをコピーして R スクリプトまたはコマンド ラインに貼り付けることもできます。  
+> 以降この記事には、*train-and-deploy-to-aci.Rmd* ファイルと同じ内容が記載されています。 RMarkdown の使用経験がある場合は、そのファイルのコードを自由に使用できます。  また、そこから、またはこの記事から、コード スニペットをコピーして R スクリプトまたはコマンド ラインに貼り付けることもできます。  
+
 
 ## <a name="set-up-your-development-environment"></a>開発環境を設定する
 このチュートリアルで開発作業を行うためのセットアップには、次のアクションが含まれています。
@@ -102,12 +102,6 @@ Azure Machine Learning Studio で、次の実験の設定を完了し、ステ�
 
 ```R
 library(azuremlsdk)
-```
-
-このチュートリアルでは、[**DAAG** パッケージ](https://cran.r-project.org/package=DAAG)のデータを使用します。 パッケージをインストールしていない場合は、インストールします。
-
-```R
-install.packages("DAAG")
 ```
 
 トレーニング スクリプトとスコアリング スクリプト (`accidents.R` と `accident_predict.R`) には、いくつかの追加の依存関係があります。 これらのスクリプトをローカルで実行する予定の場合は、それらの必要なパッケージがあることも確認します。
@@ -147,15 +141,21 @@ wait_for_provisioning_completion(compute_target)
 ```
 
 ## <a name="prepare-data-for-training"></a>トレーニング用のデータを準備する
-このチュートリアルでは、**DAAG** パッケージのデータを使用します。 このデータセットには、米国での 25,000 を超える交通事故のデータと、死亡の可能性の予測に使用できる変数が含まれています。 まず、データを R にインポートし、分析のために新しいデータフレーム `accidents` に変換して、`Rdata` ファイルにエクスポートします。
+このチュートリアルでは、[米国運輸省道路交通安全局](https://cdan.nhtsa.gov/tsftables/tsfar.htm)のデータを使用します ([Mary C. Meyer 氏および Tremika Finney 氏による提供](https://www.stat.colostate.edu/~meyer/airbags.htm))。
+このデータセットには、米国での 25,000 を超える交通事故のデータと、死亡の可能性の予測に使用できる変数が含まれています。 まず、データを R にインポートし、分析のために新しいデータフレーム `accidents` に変換して、`Rdata` ファイルにエクスポートします。
 
 ```R
-library(DAAG)
-data(nassCDS)
-
+nassCDS <- read.csv("nassCDS.csv", 
+                     colClasses=c("factor","numeric","factor",
+                                  "factor","factor","numeric",
+                                  "factor","numeric","numeric",
+                                  "numeric","character","character",
+                                  "numeric","numeric","character"))
 accidents <- na.omit(nassCDS[,c("dead","dvcat","seatbelt","frontal","sex","ageOFocc","yearVeh","airbag","occRole")])
 accidents$frontal <- factor(accidents$frontal, labels=c("notfrontal","frontal"))
 accidents$occRole <- factor(accidents$occRole)
+accidents$dvcat <- ordered(accidents$dvcat, 
+                          levels=c("1-9km/h","10-24","25-39","40-54","55+"))
 
 saveRDS(accidents, file="accidents.Rd")
 ```
@@ -394,5 +394,6 @@ delete_compute(compute)
 
 ## <a name="next-steps"></a>次のステップ
 
-これで R での初めての Azure Machine Learning 実験を完了したので、[Azure Machine Learning SDK for R](https://azure.github.io/azureml-sdk-for-r/index.html) の詳細について確認します。
+* これで R での初めての Azure Machine Learning 実験を完了したので、[Azure Machine Learning SDK for R](https://azure.github.io/azureml-sdk-for-r/index.html) の詳細について確認します。
 
+* 他の *vignettes* フォルダーの例から Azure Machine Learning と R について学習します。

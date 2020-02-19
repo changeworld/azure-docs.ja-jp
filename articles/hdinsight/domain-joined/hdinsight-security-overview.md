@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: overview
 ms.date: 09/23/2019
-ms.openlocfilehash: 7fadb17476c2a071de767573994bb1120b476cdf
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 0e7b2db188ef6ee7d6b80ba5da4010112008ad70
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053736"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122112"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight のエンタープライズ セキュリティの概要
 
@@ -38,7 +38,7 @@ HDInsight の [Enterprise セキュリティ パッケージ](apache-domain-join
 
 この設定により、企業の従業員は、ドメイン資格情報を使用してクラスター ノードにサインインできます。 また、ドメイン資格情報を使用して、クラスターと対話する他の承認済みエンドポイント (Apache Ambari Views、ODBC、JDBC、PowerShell、REST API など) で認証することもできます。 
 
-### <a name="authorization"></a>Authorization
+### <a name="authorization"></a>承認
 
 ほとんどの企業では、すべての従業員がすべてのエンタープライズ リソースにはアクセスできないようにするベスト プラクティスに従っています。 同様に、管理者はクラスター リソースのロールベースのアクセス制御ポリシーを定義できます。 これは、ESP クラスターでのみ使用できます。
 
@@ -74,24 +74,24 @@ Azure のコンプライアンス認証は、独立したサードパーティ�
 
 | セキュリティ領域 | 使用可能なソリューション | 責任者 |
 |---|---|---|
-| データ アクセス セキュリティ | Azure Data Lake Storage Gen1 および Gen2 対象の[アクセス制御リスト ACL](../../storage/blobs/data-lake-storage-access-control.md) を構成する  | 顧客 |
-|  | ストレージ アカウントで [[安全な転送が必須]](../../storage/common/storage-require-secure-transfer.md) プロパティを有効にします。 | 顧客 |
-|  | [Azure Storage ファイアウォール](../../storage/common/storage-network-security.md)および仮想ネットワークを構成する | 顧客 |
-|  | Cosmos DB と [Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) 用に [Azure 仮想ネットワーク サービス エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を構成する | 顧客 |
-|  | 転送中のデータに対して [TLS 暗号化](../../storage/common/storage-security-tls.md)が有効になっていることを確認する。 | 顧客 |
-|  | Azure Storage 暗号化用に[顧客管理のキー](../../storage/common/storage-encryption-keys-portal.md)を構成する | 顧客 |
-| アプリケーションとミドルウェアのセキュリティ | AAD-DS と統合して[認証を構成する](apache-domain-joined-configure-using-azure-adds.md) | 顧客 |
-|  | [Apache Ranger 認証](apache-domain-joined-run-hive.md)ポリシーを構成する | 顧客 |
-|  | [Azure Monitor ログ](../hdinsight-hadoop-oms-log-analytics-tutorial.md)を使用する | 顧客 |
-| オペレーティング システムのセキュリティ | 最新の安全な基本イメージを使用してクラスターを作成する | 顧客 |
-|  | [OS の修正プログラム](../hdinsight-os-patching.md)が定期的に適用されるようにする | 顧客 |
+| データ アクセス セキュリティ | Azure Data Lake Storage Gen1 および Gen2 対象の[アクセス制御リスト ACL](../../storage/blobs/data-lake-storage-access-control.md) を構成する  | Customer |
+|  | ストレージ アカウントで [[安全な転送が必須]](../../storage/common/storage-require-secure-transfer.md) プロパティを有効にします。 | Customer |
+|  | [Azure Storage ファイアウォール](../../storage/common/storage-network-security.md)および仮想ネットワークを構成する | Customer |
+|  | Cosmos DB と [Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) 用に [Azure 仮想ネットワーク サービス エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を構成する | Customer |
+|  | 転送中のデータに対して [TLS 暗号化](../../storage/common/storage-security-tls.md)が有効になっていることを確認する。 | Customer |
+|  | Azure Storage 暗号化用に[顧客管理のキー](../../storage/common/storage-encryption-keys-portal.md)を構成する | Customer |
+| アプリケーションとミドルウェアのセキュリティ | AAD-DS と統合して[認証を構成する](apache-domain-joined-configure-using-azure-adds.md) | Customer |
+|  | [Apache Ranger 認証](apache-domain-joined-run-hive.md)ポリシーを構成する | Customer |
+|  | [Azure Monitor ログ](../hdinsight-hadoop-oms-log-analytics-tutorial.md)を使用する | Customer |
+| オペレーティング システムのセキュリティ | 最新の安全な基本イメージを使用してクラスターを作成する | Customer |
+|  | [OS の修正プログラム](../hdinsight-os-patching.md)が定期的に適用されるようにする | Customer |
 | ネットワークのセキュリティ | [仮想ネットワーク](../hdinsight-plan-virtual-network-deployment.md)を構成する |
-|  | [ネットワーク セキュリティ グループ (NSG) の受信規則](../hdinsight-plan-virtual-network-deployment.md#networktraffic)を構成する | 顧客 |
-|  | ファイアウォールを使用して[送信トラフィックの制限](../hdinsight-restrict-outbound-traffic.md)を構成する (プレビュー) | 顧客 |
+|  | [ネットワーク セキュリティ グループ (NSG) の受信規則](../hdinsight-plan-virtual-network-deployment.md#networktraffic)を構成する | Customer |
+|  | ファイアウォールを使用して[送信トラフィックの制限](../hdinsight-restrict-outbound-traffic.md)を構成する | Customer |
 | 仮想化インフラストラクチャ | 該当なし | HDInsight (クラウド プロバイダー) |
 | 物理インフラのセキュリティ | 該当なし | HDInsight (クラウド プロバイダー) |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ESP を使用する HDInsight クラスターを計画する](apache-domain-joined-architecture.md)
 * [ESP を使用する HDInsight クラスターを構成する](apache-domain-joined-configure.md)

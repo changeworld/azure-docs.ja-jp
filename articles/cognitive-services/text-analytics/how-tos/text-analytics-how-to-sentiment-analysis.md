@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 12/17/2019
+ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 214c071e0d01908e2d46c932fcf87906de834102
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 84ef01b5e7fc3f628b1cdf7a1f13175604ebcdd4
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644683"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137958"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>方法:Text Analytics API を使用してセンチメントを検出する
 
@@ -50,14 +50,7 @@ Text Analytics API には、2 つのバージョンの感情分析 (v2 と v3) �
 | センチメント ラベル付け                        |                       | X                     |
 | モデルのバージョン管理                   |                       | X                     |
 
-#### <a name="version-2tabversion-2"></a>[Version 2](#tab/version-2)
-
-### <a name="sentiment-scoring"></a>センチメント スコアリング
-
-センチメント アナライザーでは、テキストが主に正または負に分類されます。 0 ～ 1 の範囲のスコアが割り当てられます。 0\.5 に近い値は、中立または不確定です。 0\.5 のスコアは、中立性を示します。 文字列の感情分析をすることができない場合、またはセンチメントがない場合、スコアは必ず正確に 0.5 になります。 たとえば、英語の言語コードでスペイン語の文字列を渡した場合、スコアは 0.5 になります。
-
-
-#### <a name="version-3-public-previewtabversion-3"></a>[バージョン 3 (パブリック プレビュー)](#tab/version-3)
+#### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
 
 ### <a name="sentiment-scoring"></a>センチメント スコアリング
 
@@ -85,6 +78,13 @@ Text Analytics API には、2 つのバージョンの感情分析 (v2 と v3) �
 
 このバージョンの感情分析を呼び出す C# アプリケーションの例については、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/SentimentV3.cs) をご覧ください。
 
+
+#### <a name="version-21"></a>[バージョン 2.1](#tab/version-2)
+
+### <a name="sentiment-scoring"></a>センチメント スコアリング
+
+センチメント アナライザーでは、テキストが主に正または負に分類されます。 0 ～ 1 の範囲のスコアが割り当てられます。 0\.5 に近い値は、中立または不確定です。 0\.5 のスコアは、中立性を示します。 文字列の感情分析をすることができない場合、またはセンチメントがない場合、スコアは必ず正確に 0.5 になります。 たとえば、英語の言語コードでスペイン語の文字列を渡した場合、スコアは 0.5 になります。
+
 ---
 
 ## <a name="sending-a-rest-api-request"></a>REST API 要求の送信 
@@ -101,27 +101,28 @@ JSON ドキュメントは、次の形式である必要があります: ID、�
 
 POST 要求を作成します。 次のリファレンス リンクにある [Postman](text-analytics-how-to-call-api.md) または **API テスト コンソール**を使用して、簡単に要求を構造化し、送信することができます。 
 
-#### <a name="version-2tabversion-2"></a>[Version 2](#tab/version-2)
-
-[感情分析 v2 のリファレンス](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
-
-#### <a name="version-3-public-previewtabversion-3"></a>[バージョン 3 (パブリック プレビュー)](#tab/version-3)
+#### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
 
 [感情分析 v3 のリファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)
+
+#### <a name="version-21"></a>[バージョン 2.1](#tab/version-2)
+
+[感情分析 v2 のリファレンス](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
 
 ---
 
 Azure 上の Text Analytics リソースまたはインスタンス化された [Text Analytics コンテナー](text-analytics-how-to-install-containers.md)を使用して、感情分析用の HTTPS エンドポイントを設定します。 使用するバージョンの正しい URL を指定する必要があります。 次に例を示します。
-    
-[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
 
-#### <a name="version-2tabversion-2"></a>[Version 2](#tab/version-2)
+> [!NOTE]
+> Azure portal で Text Analytics リソースのキーとエンドポイントを確認できます。 それらは、リソースの**クイック スタート** ページの**リソース管理**の下にあります。 
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
-
-#### <a name="version-3-public-previewtabversion-3"></a>[バージョン 3 (パブリック プレビュー)](#tab/version-3)
+#### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/sentiment`
+
+#### <a name="version-21"></a>[バージョン 2.1](#tab/version-2)
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
 
 ---
 
@@ -161,26 +162,7 @@ Text Analytics API はステートレスです。 データはアカウントに
 
 出力はすぐに返されます。 JSON を受け入れるアプリケーションに結果をストリーミングすることも、出力をローカル システム上のファイルに保存することもできます。 次に、データの並べ替え、検索、および操作に使用できるアプリケーション内に出力をインポートします。
 
-#### <a name="version-2tabversion-2"></a>[Version 2](#tab/version-2)
-
-### <a name="sentiment-analysis-v2-example-response"></a>感情分析 v2 の応答の例
-
-感情分析 v2 からの応答には、送信された各ドキュメントのセンチメント スコアが記載されています。
-
-```json
-{
-  "documents": [{
-    "id": "1",
-    "score": 0.98690706491470337
-  }, {
-    "id": "2",
-    "score": 0.95202046632766724
-  }],
-  "errors": []
-}
-```
-
-#### <a name="version-3-public-previewtabversion-3"></a>[バージョン 3 (パブリック プレビュー)](#tab/version-3)
+#### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
 
 ### <a name="sentiment-analysis-v3-example-response"></a>感情分析 v3 の応答の例
 
@@ -255,6 +237,26 @@ Text Analytics API はステートレスです。 データはアカウントに
     "errors": []
 }
 ```
+
+#### <a name="version-21"></a>[バージョン 2.1](#tab/version-2)
+
+### <a name="sentiment-analysis-v2-example-response"></a>感情分析 v2 の応答の例
+
+感情分析 v2 からの応答には、送信された各ドキュメントのセンチメント スコアが記載されています。
+
+```json
+{
+  "documents": [{
+    "id": "1",
+    "score": 0.98690706491470337
+  }, {
+    "id": "2",
+    "score": 0.95202046632766724
+  }],
+  "errors": []
+}
+```
+
 ---
 
 ## <a name="summary"></a>まとめ

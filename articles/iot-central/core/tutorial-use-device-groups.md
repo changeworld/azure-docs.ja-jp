@@ -3,21 +3,19 @@ title: Azure IoT Central アプリケーションでデバイス グループを
 description: オペレーターとして、デバイス グループを使用して Azure IoT Central アプリケーションでデバイスからのテレメトリを分析する方法について説明します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: 4fd05631e7f54b6258978f70fdd5dfb9705f989b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 758ac037fcd224d02f62239b3408b41b50390147
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026475"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167204"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry"></a>チュートリアル:デバイス グループを使用してデバイス テレメトリを分析する
-
-
 
 この記事では、オペレーターとしてデバイス グループを使用して Azure IoT Central アプリケーションでデバイス テレメトリを分析する方法について説明します。
 
@@ -31,15 +29,15 @@ ms.locfileid: "77026475"
 
 ## <a name="prerequisites"></a>前提条件
 
-作業を開始する前に、「[Azure IoT Central アプリケーションを作成する](./quick-deploy-iot-central.md)」と「[シミュレートされたデバイスを IoT Central アプリケーションに追加する](./quick-create-pnp-device.md)」のクイックスタートを完了して、作業に使用する**環境センサー** デバイス テンプレートを作成する必要があります。
+作業を開始する前に、「[Azure IoT Central アプリケーションを作成する](./quick-deploy-iot-central.md)」と「[シミュレートされたデバイスを IoT Central アプリケーションに追加する](./quick-create-pnp-device.md)」のクイックスタートを完了して、作業に使用する **MXChip IoT DevKit** デバイス テンプレートを作成する必要があります。
 
 ## <a name="create-simulated-devices"></a>シミュレートされたデバイスを作成する
 
-デバイス グループを作成する前に、このチュートリアルで使用する**環境センサー** デバイス テンプレートから、少なくとも 5 つのシミュレートされたデバイスを追加します。
+デバイス グループを作成する前に、このチュートリアルで使用する **MXChip IoT DevKit** デバイス テンプレートから、少なくとも 5 つのシミュレートされたデバイスを追加します。
 
-![5 つのシミュレートされた環境センサー デバイス](./media/tutorial-use-device-groups/simulated-devices.png)
+![シミュレートされた 5 つのセンサー デバイス](./media/tutorial-use-device-groups/simulated-devices.png)
 
-4 つの環境センサー デバイスについては、 **[Environmental Sensor properties]\(環境センサーのプロパティ\)** ビューを使用して、顧客名を **Contoso** に設定します。
+シミュレートされたセンサー デバイスの 4 つには、 **[デバイスの管理]** ビューを使用して、顧客名を「*Contoso*」に設定します。
 
 ![顧客名を Contoso に設定する](./media/tutorial-use-device-groups/customer-name.png)
 
@@ -47,19 +45,19 @@ ms.locfileid: "77026475"
 
 デバイス グループを作成するには、次の手順を実行します。
 
-1. 左側のウィンドウで **[Device Groups]\(デバイス グループ\)** を選択します。
+1. 左側のペインで **[デバイス グループ]** を選択します。
 
-1. **[+新規]** を選択します。
+1. **[+]** を選択します。
 
     ![新しいデバイス グループ](media/tutorial-use-device-groups/image1.png)
 
-1. デバイス グループに "**Contoso デバイス**" のような名前を付けます。 説明を追加することもできます。 デバイス グループに含めることができるのは、1 つのデバイス テンプレートのデバイスだけです。 このグループに使用する**環境センサー** デバイス テンプレートを選択します。
+1. デバイス グループに「*Contoso デバイス*」と名前を付けます。 説明を追加することもできます。 デバイス グループに含めることができるのは、1 つのデバイス テンプレートのデバイスだけです。 このグループに使用する **MXChip IoT DevKit** デバイス テンプレートを選択します。
 
-1. **[Customer Name]\(顧客名\)** プロパティを選択し、 **[Equals]\(次の値と等しい\)** 比較演算子、および値として **[Contoso]** を選択して、デバイス グループの **Contoso** に属するデバイスを識別するためのクエリを作成します。 デバイス グループに配置する**すべての**条件を満たす複数のクエリとデバイスを追加できます。 作成したデバイス グループには、アプリケーションにアクセスできるすべてのユーザーがアクセスできるため、だれでもデバイス グループを表示、変更、または削除できます。
+1. **Contoso** に属するデバイスのみを含むようにデバイス グループをカスタマイズするには、 **[+ フィルター]** を選択します。 **[顧客名]** プロパティ、 **[等しい]** 比較演算子、値として **[Contoso]** を選択します。 デバイス グループに設定されている**すべて**のフィルター条件を満たす複数のフィルターとデバイスを追加できます。 作成したデバイス グループには、アプリケーションにアクセスできるすべてのユーザーがアクセスできるため、だれでもデバイス グループを表示、変更、または削除できます。
 
     ![デバイス グループのクエリ](media/tutorial-use-device-groups/image2.png)
 
-    > [!NOTE]
+    > [!TIP]
     > デバイス グループは動的なクエリです。 デバイスの一覧を表示するたびに、一覧内のデバイスが異なることがあります。 一覧は、現在クエリの条件を満たしているデバイスによって異なります。
 
 1. **[保存]** を選択します。

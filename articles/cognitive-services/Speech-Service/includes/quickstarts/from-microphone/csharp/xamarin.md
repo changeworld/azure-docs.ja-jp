@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 66391f7b9282781902723b0153a5797a5f7ae82b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3f315f29eab107c9e0e145bd25db71a8cb8b2ace
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75467796"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156303"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -48,13 +48,13 @@ ms.locfileid: "75467796"
 1. ソース ファイルの `OnRecognitionButtonClicked` ハンドラーから `YourSubscriptionKey` という文字列を見つけて、ご利用のサブスクリプション キーに置き換えます。
 
 
-1. `OnRecognitionButtonClicked` ハンドラーから `YourServiceRegion` という文字列を見つけて、ご利用のサブスクリプションに関連付けられている[リージョン](~/articles/cognitive-services/Speech-Service/regions.md)に置き換えます。 たとえば、無料試用版サブスクリプションの場合は `westus` を使用します。
+1. `OnRecognitionButtonClicked` ハンドラーから `YourServiceregion` という文字列を見つけて、自分のサブスクリプションに関連付けられている[リージョン](https://aka.ms/speech/sdkregion)の "Speech SDK パラメーター" で置き換えます。 たとえば、無料試用版サブスクリプションの場合は `westus` を使用します。
 
 1. 次に、異なるプラットフォーム プロジェクト (UWP、Android、iOS など) からマイクへのアクセス許可を照会するための [Xamarin サービス](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/)を作成する必要があります。 これを行うには、helloworld プロジェクトの下に *Services* という名前の新しいフォルダーを追加し、その下に新しい C# ソース ファイルを作成します。 *Services* フォルダーを右クリックし、 **[追加]**  >  **[新しい項目]**  >  **[コード ファイル]** の順に選択します。 ファイルの名前を `IMicrophoneService.cs` に変更し、次のスニペットのすべてのコードをそのファイルに配置します。
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld/Services/IMicrophoneService.cs)]
 
-#### <a name="androidtabx-android"></a>[Android](#tab/x-android)
+#### <a name="android"></a>[Android](#tab/x-android)
 ## <a name="add-sample-code-for-the-helloworldandroid-project"></a>`helloworld.Android` プロジェクトのサンプル コードを追加する
 
 ここで、アプリケーションの Android 固有の部分を定義した C# コードを追加します。
@@ -75,7 +75,7 @@ ms.locfileid: "75467796"
    <uses-permission android:name="android.permission.RECORD_AUDIO" />
    ```
    
-#### <a name="iostabios"></a>[iOS](#tab/ios)
+#### <a name="ios"></a>[iOS](#tab/ios)
 ## <a name="add-sample-code-for-the-helloworldios-project"></a>`helloworld.iOS` プロジェクトのサンプル コードを追加する
 
 ここで、アプリケーションの iOS 固有の部分を定義した C# コードを追加します。 さらに、helloworld.iOS プロジェクトに Apple デバイス固有の構成を作成します。
@@ -100,7 +100,7 @@ ms.locfileid: "75467796"
 
 1. Windows PC 上でビルドする場合は、 **[ツール]**  >  **[iOS]**  >  **[Mac とペアリング]** で、ビルド用に Mac デバイスとの接続を確立します。 Visual Studio で表示されるウィザードの指示に従って、Mac デバイスとの接続を有効にします。
 
-#### <a name="uwptabhelloworlduwp"></a>[UWP](#tab/helloworlduwp)
+#### <a name="uwp"></a>[UWP](#tab/helloworlduwp)
 ## <a name="add-sample-code-for-the-helloworlduwp-project"></a>`helloworld.UWP` プロジェクトのサンプル コードを追加する
 
 ## <a name="add-sample-code-for-the-helloworlduwp-project"></a>helloworld.UWP プロジェクトのサンプル コードを追加する

@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 11/04/2019
-ms.openlocfilehash: c38347a03ddc0ef5f6c1bd3118696062db9a8254
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 02/10/2020
+ms.openlocfilehash: aa90655ecb14abe38ec8fdfc6c18e7d292abbef3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532425"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116541"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>チュートリアル:最初の ML モデルをトレーニングする
 
@@ -35,7 +35,7 @@ ms.locfileid: "75532425"
 
 唯一の前提条件は、このチュートリアルのパート 1 に従って[環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)ことです。
 
-チュートリアルのこのパートでは、パート 1 の最後で開いたサンプル Jupyter ノートブック `tutorials/tutorial-1st-experiment-sdk-train.ipynb` のコードを実行します。 この記事では、ノートブック内の同じコードについて説明します。
+チュートリアルのこのパートでは、パート 1 の最後で開いたサンプル Jupyter ノートブック *tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb* のコードを実行します。 この記事では、ノートブック内の同じコードについて説明します。
 
 ## <a name="open-the-notebook"></a>ノートブックを開く
 
@@ -45,7 +45,7 @@ ms.locfileid: "75532425"
 
 
 > [!Warning]
-> Jupyter インターフェイスで "*新しい*" ノートブックを作成**しないでください**。 ノートブック `tutorials/tutorial-1st-experiment-sdk-train.ipynb` には、このチュートリアルに必要な**すべてのコードとデータ**が含まれています。
+> Jupyter インターフェイスで "*新しい*" ノートブックを作成**しないでください**。 ノートブック *tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb* には、このチュートリアルに**必要なすべてのコードとデータ**が含まれています。
 
 ## <a name="connect-workspace-and-create-experiment"></a>ワークスペースを接続し、実験を作成する
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
-ms.openlocfilehash: d097894c841d91d344b5958e7f5e1c10249f8b6e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e564660b502a950021ba4e4754ff5c210dfd477f
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904877"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77082872"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service を使用したデバイスのプロビジョニング
 Microsoft Azure には、すべての IoT ソリューションのニーズに合う豊富な統合されたパブリック クラウド サービス セットがあります。 IoT Hub Device Provisioning Service (DPS) は、IoT Hub のヘルパー サービスです。適切な IoT Hub へのゼロタッチの Just-In-Time プロビジョニングを人間の介入を必要とせずに行うことができます。 DPS を使用すると、膨大な数のデバイスを、安全かつスケーラブルな方法でプロビジョニングすることができます。
@@ -80,8 +80,10 @@ DPS は多くの機能を備えているため、デバイスのプロビジョ�
 * **登録一覧**。任意の時点で登録できるデバイスまたはデバイス グループの完全なレコードが含まれます。 登録一覧には、デバイスが登録されたときのデバイスの望ましい構成に関する情報が含まれています。いつでも更新することができます。
 * **複数の割り当てポリシー**。実際のシナリオに合わせて DPS がデバイスを IoT ハブに割り当てる方法を制御できます。最短待ち時間、均等に重み付けされた分布 (既定)、および登録リストによる静的な構成。 待ち時間は [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance) と同じ方法を使用して決定されます。
 * **監視および診断ログ**。すべての機能が正常に動作していることを確認できます。
-* **マルチハブのサポート**。DPS で実行時にデバイスを IoT Hub に遅延バインドできます。 DPS は、複数の Azure サブスクリプションにわたってハブと対話できます。
+* **マルチハブのサポート**。DPS でデバイスを複数の IoT ハブに割り当てることができます。 DPS は、複数の Azure サブスクリプションにわたってハブと対話できます。
 * **リージョン間のサポート**。DPS でデバイスを他のリージョンの IoT ハブに割り当てることができます。
+* **保存データの暗号化**。DPS 内のデータは、利用可能な最強のブロック暗号の 1 つである 256 ビット AES 暗号化を使って透過的に暗号化および暗号化解除され、FIPS 140-2 に準拠しています。
+
 
 デバイスのプロビジョニングに関係する概念と機能の詳細については、[デバイスの概念](concepts-device.md)、[サービスの概念](concepts-service.md)、[セキュリティの概念](concepts-security.md)に関する記事を参照してください。
 

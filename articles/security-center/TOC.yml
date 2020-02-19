@@ -87,6 +87,8 @@
           href: built-in-vulnerability-assessment.md
         - name: 外部スキャナーの使用
           href: partner-vulnerability-assessment.md
+    - name: コンテナーの監視
+      href: monitor-container-security.md
     - name: Microsoft Defender ATP を使用したサーバーの保護
       href: security-center-wdatp.md
     - name: Azure VM 上の SQL 向けの Advanced Data Security の使用

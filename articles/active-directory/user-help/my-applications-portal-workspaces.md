@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 02/03/2020
+ms.date: 02/06/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 49c5566454a93307dedd150a3508b33dbd7506e6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 1abcd22621d427244f9b0533aaea46cbf1f356ad
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022360"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064038"
 ---
 # <a name="use-collections-in-the-my-apps-portal"></a>マイ アプリ ポータルでコレクションを使用する
 
-ワークスペースとは、**マイ アプリ** ポータルに表示されるさまざまなアプリ ビューです。 たとえば、部門の職務またはユーザー ロール別に、アプリをコレクションにグループ化できます。 使用可能なコレクションまたはカテゴリが表示されない場合は、管理者が設定していないか、共有していないことを意味します。 共有コレクションを表示するための追加のサポートやアクセス許可については、組織のヘルプデスクに問い合わせてください。
+コレクションとは、**マイ アプリ** ポータルに表示されるさまざまなアプリ ビューです。 たとえば、部門の職務またはユーザー ロール別に、アプリをコレクションにグループ化できます。 使用可能なコレクションまたはカテゴリが表示されない場合は、管理者が設定していないか、共有していないことを意味します。 共有コレクションを表示するための追加のサポートやアクセス許可については、組織のヘルプデスクに問い合わせてください。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 

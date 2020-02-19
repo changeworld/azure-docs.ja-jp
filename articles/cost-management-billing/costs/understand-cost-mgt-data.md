@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/29/2020
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 156684676758d777231d3b159ba7bc4749b8582a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a514dc07da3e4fd5928614099eb86ecef311bbb1
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901762"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188529"
 ---
 # <a name="understand-cost-management-data"></a>Cost Management のデータを理解する
 
@@ -85,8 +85,6 @@ _<sup>**4**</sup>クレジットベースの前払い制サブスクリプショ
 
 Cost Management に含まれるデータと含まれないデータを次の表に示します。 すべてのコストは、請求書が生成されるまで推定されます。 示されているコストには、無料クレジットおよびプリペイド クレジットは含まれません。
 
-**コストと使用状況データ**
-
 | **含まれる** | **含まれない** |
 | --- | --- |
 | Azure サービスの使用状況<sup>5</sup>        | サポート料金 - 詳細については、[請求書の用語の説明](../understand/understand-invoice.md)に関する記事を参照してください。 |
@@ -101,13 +99,42 @@ _<sup>**6**</sup> マーケットプレースでの購入は、現時点では�
 
 _<sup>**7**</sup> 現時点では、予約購入はエンタープライズ契約 (EA) アカウントでのみご利用いただけます。_
 
-**Metadata**
+## <a name="how-tags-are-used-in-cost-and-usage-data"></a>コストと使用状況のデータでのタグの使用方法
 
-| **含まれる** | **含まれない** |
-| --- | --- |
-| リソース タグ<sup>8</sup> | リソース グループのタグ |
+Azure Cost Management は、個々のサービスによって送信される各使用状況レコードの一部としてタグを受け取ります。 これらのタグには、次の制約が適用されます。
 
-_<sup>**8**</sup> リソース タグは、各サービスから使用状況が送信される際に適用されます。過去の使用状況に対してさかのぼって適用することはできません。_
+- タグはリソースに直接適用される必要があり、親リソース グループから暗黙的に継承されることはありません。
+- リソース タグは、リソース グループにデプロイされたリソースでのみサポートされます。
+- デプロイされたリソースの中には、タグをサポートしていないものや、使用状況データにタグが含まれていないものもあります。「[Azure リソースでのタグのサポート](../../azure-resource-manager/tag-support.md)」を参照してください。
+- リソース タグは、タグの適用時に使用状況データにのみ含まれます。タグは履歴データには適用されません。
+- リソース タグは、データが更新された後に Cost Management でのみ使用できます。「[使用状況データの更新頻度は一定ではない](#usage-data-update-frequency-varies)」を参照してください。
+- リソース タグは、リソースがアクティブまたは実行中であり、使用状況レコードが生成されている場合 (たとえば、VM が割り当て解除されていない場合) に Cost Management でのみ使用できます。
+- タグを管理するには、各リソースに対する共同作成者のアクセス権が必要です。
+- タグ ポリシーを管理するには、管理グループ、サブスクリプション、またはリソース グループに対する所有者またはポリシーの共同作成者のアクセス権が必要です。
+    
+Cost Management に特定のタグが表示されない場合は、次の点を考慮してください。
+
+- タグがリソースに直接適用されたか。
+- タグが 24 時間以上前に適用されたか。 「[使用状況データの更新頻度は一定ではない](#usage-data-update-frequency-varies)」を参照してください
+- リソースの種類でタグがサポートされているか。 2019 年 12 月 1 日の時点で、次のリソースの種類では、使用状況データのタグはサポートされていません。 サポート対象の完全な一覧については、「[Azure リソースでのタグのサポート](../../azure-resource-manager/tag-support.md)」を参照してください。
+    - Azure Active Directory B2C ディレクトリ
+    - Azure ファイアウォール
+    - Azure NetApp Files
+    - Data Factory
+    - Databricks
+    - ロード バランサー
+    - Network Watcher
+    - Notification Hubs
+    - Service Bus
+    - Time Series Insights
+    - VPN Gateway
+    
+タグを使用するためのいくつかのヒントを次に示します。
+
+- 事前に計画してタグ付け方法を定義し、組織、アプリケーション、環境ごとなどにコストを分割します。
+- Azure Policy を使用して、リソース グループのタグを個々のリソースにコピーし、タグ付け方法を適用します。
+- Tags API を Query または UsageDetails と共に使用して、現在のタグに基づいてすべてのコストを取得します。
+
 
 **無料試用版から従量課金制へのアップグレード**
 
@@ -152,6 +179,6 @@ Cost Management に使用状況データが表示されるタイミングは、�
 - MSDN (MS-AZR-0062P)
 - Visual Studio (MS-AZR-0029P、MS-AZR-0059P、MS-AZR-0060P、MS-AZR-0063P、MS-AZR-0064P)
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - Cost Management の最初のクイック スタートをまだ完了していない場合は、[コスト分析の開始](../../cost-management/quick-acm-cost-analysis.md)に関する記事をご覧ください。

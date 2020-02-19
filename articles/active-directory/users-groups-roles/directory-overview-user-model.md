@@ -14,12 +14,12 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a647f4a5f051ec89bb82b6e7f89dcb677c95371
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a3cc2de5a2f297e8133011905ff2961b44476d6b
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027737"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046339"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>大規模組織のユーザー、グループ、ライセンス、ロール
 
@@ -31,7 +31,7 @@ ms.locfileid: "74027737"
 
 ## <a name="assign-users-to-groups"></a>ユーザーをグループに割り当てる
 
-Azure AD のグループを使うと、ライセンスを多数のユーザーに割り当てたり、デプロイされているエンタープライズ アプリへのユーザー アクセス権を割り当てたりすることができます。 Azure AD でグループを使用して管理者ロールを割り当てたり、外部のリソース (SaaS アプリケーション、SharePoint サイトなど) へのアクセス権を付与したりすることが可能です。
+Azure AD のグループを使うと、ライセンスを多数のユーザーに割り当てたり、デプロイされているエンタープライズ アプリへのユーザー アクセス権を割り当てたりすることができます。 Azure AD でグループを使用して、全体管理者を除くすべての管理者ロールを割り当てたり、外部のリソース (SaaS アプリケーション、SharePoint サイトなど) へのアクセス権を付与したりすることが可能です。
 
 また、柔軟性を高めたり、グループ メンバーシップの管理作業を軽減したりするために、Azure AD の[動的グループ](groups-create-rule.md)を使用して、グループのメンバーシップを自動的に拡大、縮小することもできます。 1 つ以上の動的グループのメンバーになっている一意のユーザーには、それぞれ Azure AD Premium P1 ライセンスが必要です。
 
@@ -70,7 +70,7 @@ Azure AD を使用すると、[Azure AD テナントにデプロイされたエ�
 * アプリの Azure AD プロビジョニング サービスを開始、停止したり、プロビジョニング キャッシュをクリアしたり、サービスを再開したりする
 * **プロビジョニング アクティビティ レポート** (Azure AD とアプリの間で作成、更新、削除されたすべてのユーザーとグループのログを確認できる) および**プロビジョニング エラー レポート** (より詳細なエラー メッセージを確認できる) を確認する
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure AD 管理者としてまだ日が浅い方は、[Azure Active Directory の基礎](https://docs.microsoft.com/azure/active-directory/fundamentals/index)に関するドキュメントで基本的な事柄をマスターしてください。
 

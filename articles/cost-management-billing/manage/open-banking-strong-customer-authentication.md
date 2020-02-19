@@ -2,21 +2,21 @@
 title: Azure のお客様向けのオープン バンキング (PSD2) と強力なカスタマー認証 (SCA)
 description: この記事では、一部の Azure 購入で多要素認証が必要な理由と、認証を完了する方法について説明します。
 author: bandersmsft
-manager: jureid
+manager: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: aff5e1e707980c9a63988c22653fa5fba0fc236b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5f9c5f861e238bf38451863fb2d39cbb8af93225
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75986903"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133559"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>Azure のお客様向けのオープン バンキング (PSD2) と強力なカスタマー認証 (SCA)
 
@@ -53,14 +53,13 @@ ms.locfileid: "75986903"
 
 ### <a name="settle-outstanding-charges-for-marketplace-and-reservation-purchases"></a>Marketplace および予約の購入の未払い料金を決済する
 
-Marketplace および予約の購入は、Azure サービスとは別に課金されます。 ご利用の銀行によって Marketplace または予約の料金が拒否された場合、Azure portal ではご利用の請求書の状態が **[期限経過]** と表示されます。 Marketplace および予約の請求書の状態を確認するには、次の手順を行います。
+Marketplace および予約の購入は、Azure サービスとは別に課金されます。 ご利用の銀行によって Marketplace または予約の料金が拒否された場合、請求書は期限経過となり、Azure portal に **[今支払う]** オプションが表示されます。 期限が経過した Marketplace および予約の請求書の支払いを行うには、次の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com/) にアカウント管理者としてサインインします。
 2. **[コストの管理と請求]** で検索します。
 3. [課金] で、 **[請求書]** を選択します。
-4. 右側にある **[Azure Marketplace と Reservations]** タブをクリックします。
-5. 対応するサブスクリプションを選択します。
-6. [請求書] グリッドで、状態列を確認します。 請求書が **[期限]** または **[期限経過]** になっている場合は、 **[今支払う]** をクリックします。 プロセス中に多要素認証を完了するように求められます。
+5. サブスクリプションのドロップダウン フィルターで、Marketplace または予約の購入に関連付けられているサブスクリプションを選択します。
+6. 請求書のグリッドで、[type]\(種類\) 列を確認します。 種類が **[Azure Marketplace and Reservations]\(Azure Marketplace および予約\)** の場合、請求書の期限日であるか期限が過ぎていると、 **[今支払う]** リンクが表示されます。 **[今支払う]** が表示されない場合、請求書は既に支払い済みです。 [今支払う] の実行中に多要素認証を完了するように求められます。
 
 ## <a name="next-steps"></a>次のステップ
 - Azure の請求額を支払う必要がある場合は、「[支払期限を過ぎた Azure サブスクリプション未払い額の支払い](resolve-past-due-balance.md)」を参照してください。

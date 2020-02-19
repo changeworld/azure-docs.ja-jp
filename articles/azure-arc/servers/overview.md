@@ -7,15 +7,14 @@ ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
 keywords: azure automation, DSC, powershell, 望ましい状態の構成, 更新管理, 変更追跡, インベントリ, Runbook, Python, グラフィカル, ハイブリッド
-ms.date: 01/29/2020
-ms.custom: mvc
+ms.date: 02/12/2020
 ms.topic: overview
-ms.openlocfilehash: b0f1d235391c4c4e3804a6dccc8174e946035b6a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 33681d5c9e296d7c292dabbd64560e3d95c45af2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899198"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190324"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Azure Arc for servers (プレビュー) とは
 
@@ -42,6 +41,8 @@ Azure Arc for servers (プレビュー) では、特定のリージョンのみ�
 - 西ヨーロッパ
 - WestAsia
 
+ほとんどの場合、インストール スクリプトを作成するときに選択する場所は、マシンの場所に最も近い Azure リージョンにする必要があります。 保存データは、指定したリージョンを含む Azure geography 内に格納されます。データ所在地に関する要件がある場合は、これがリージョンの選択に影響する可能性もあります。 マシンが接続されている Azure リージョンが障害の影響を受ける場合、接続されたマシンは影響を受けませんが、Azure を使用した管理操作を完了できない可能性があります。 リージョンの障害が発生した場合の回復力のために、地理的に冗長なサービスを提供する複数の場所がある場合は、各場所のマシンを別の Azure リージョンに接続することをお勧めします。
+
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
@@ -55,9 +56,15 @@ Azure Connected Machine エージェントでは、次のバージョンの Wind
 >このプレビュー リリースの Windows 用 Connected Machine エージェントでサポートされるのは、英語を使用するように構成された Windows Server だけです。
 >
 
+### <a name="required-permissions"></a>必要なアクセス許可
+
+- マシンをオンボードするには、**Azure Connected Machine のオンボード** ロールのメンバーである必要があります。
+
+- マシンの読み取り、変更、再オンボード、および削除を行うには、**Azure Connected Machine のリソース管理者** ロールのメンバーである必要があります。 
+
 ### <a name="azure-subscription-and-service-limits"></a>Azure サブスクリプションとサービスの制限
 
-Azure Arc for servers (プレビュー) を使用してマシンを構成する前に、Azure Resource Manager の[サブスクリプションの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)と[リソース グループの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)を確認して、接続するマシンの数を計画する必要があります。
+Azure Arc for servers (プレビュー) を使用してマシンを構成する前に、Azure Resource Manager の[サブスクリプションの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)と[リソース グループの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)を確認して、接続するマシンの数を計画する必要があります。
 
 ### <a name="networking-configuration"></a>ネットワーク構成
 
@@ -129,10 +136,10 @@ Windows および Linux 用の Azure Connected Machine Agent パッケージは�
 
 | Method | 説明 |
 |--------|-------------|
-| 対話型 | [Azure portal からマシンを接続する方法](quickstart-onboard-portal.md)に関するページの手順に従って、1 台のマシンまたは少数のマシンにエージェントを手動でインストールします。<br> Azure portal からスクリプトを生成し、マシン上で実行することによって、エージェントのインストールおよび構成手順を自動化することができます。|
-| 大規模 | [サービス プリンシパルを使用したマシンの接続](quickstart-onboard-powershell.md)に関するページに従って、複数のマシン用にエージェントをインストールして構成します。<br> この方法では、非対話形式でマシンを接続するためのサービス プリンシパルが作成されます。|
+| 対話型 | [Azure portal からマシンを接続する方法](onboard-portal.md)に関するページの手順に従って、1 台のマシンまたは少数のマシンにエージェントを手動でインストールします。<br> Azure portal からスクリプトを生成し、マシン上で実行することによって、エージェントのインストールおよび構成手順を自動化することができます。|
+| 大規模 | [サービス プリンシパルを使用したマシンの接続](onboard-service-principal.md)に関するページに従って、複数のマシン用にエージェントをインストールして構成します。<br> この方法では、非対話形式でマシンを接続するためのサービス プリンシパルが作成されます。|
 
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure Arc for servers (プレビュー) の評価を始めるには、「[Azure portal からハイブリッド マシンを Azure に接続する](quickstart-onboard-portal.md)」に従ってください。 
+- Azure Arc for servers (プレビュー) の評価を始めるには、「[Azure portal からハイブリッド マシンを Azure に接続する](onboard-portal.md)」に従ってください。 

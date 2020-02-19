@@ -1,5 +1,5 @@
 ---
-title: Azure SignalR Service サーバーレス クイック スタート - JavaScript
+title: JavaScript を使って Azure Functions と SignalR Service を使用するチャット ルームを作成する
 description: Azure SignalR Service と Azure Functions を使ってチャット ルームを作成する方法について説明します。
 author: sffamily
 ms.service: signalr
@@ -7,28 +7,29 @@ ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: zhshang
-ms.openlocfilehash: eadeb0f0203868c2a1a37190fdd46e47bf26e8f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2726d5da2613be4ae2065246543d206cf814f353
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450257"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083183"
 ---
-# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-javascript"></a>クイック スタート:JavaScript を使って Azure Functions と SignalR Service を使用してチャット ルームを作成する
+# <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>クイック スタート:JavaScript を使って Azure Functions と SignalR Service を使用するチャット ルームを作成する
 
-Azure SignalR Service を使用すると、アプリケーションにリアルタイム機能を簡単に追加できます。 Azure Functions は、インフラストラクチャを管理することなくコードを実行できるサーバーレス プラットフォームです。 このクイック スタートでは、SignalR Service および Functions を使用して、サーバーレスかつリアルタイムのチャット アプリケーションを構築する方法を説明します。
+Azure SignalR Service を使用すると、アプリケーションに対してリアルタイム機能を簡単に追加できます。Azure Functions は、インフラストラクチャを管理することなくコードを実行できるサーバーレス プラットフォームです。 このクイック スタートでは、JavaScript で SignalR Service および Functions を使用して、サーバーレスかつリアルタイムのチャット アプリケーションを作成します。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートは、macOS、Windows、または Linux で実行できます。
+- コード エディター ([Visual Studio Code](https://code.visualstudio.com/) など)。
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) バージョン 2.以上。 Azure 関数アプリをローカルに実行する際に使用します。
+- [Node.js](https://nodejs.org/en/download/) (バージョン 10.x)
 
-[Visual Studio Code](https://code.visualstudio.com/) などのコード エディターがインストールされていることを確認してください。
+   > [!NOTE]
+   > サンプルは、他のバージョンの Node.js でも動作するはずです。詳細については、[Azure Functions ランタイム バージョンのドキュメント](../azure-functions/functions-versions.md#languages)を参照してください。
 
-Azure Function アプリをローカルで実行するために、[Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) (バージョン 2 以降) をインストールします。
-
-このクイックスタートでは [Node.js](https://nodejs.org/en/download/) 10.x を使用していますが、他のバージョンでもおそらく問題ありません。 サポートされる Node.js バージョンの詳細については、[Azure Functions ランタイム バージョンのドキュメント](../azure-functions/functions-versions.md#languages)を参照してください。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+> [!NOTE]
+> このクイック スタートは、macOS、Windows、または Linux で実行できます。
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 

@@ -1,6 +1,6 @@
 ---
-title: Node.js を使用して Azure Event Hubs との間でイベントを送受信する (レガシ)
-description: この記事では、以前の azure/event-hubs バージョン 2 パッケージを使用して、Azure Event Hubs との間でイベントを送受信する Node.js アプリケーションを作成する方法について説明します。
+title: JavaScript を使用して Azure Event Hubs との間でイベントを送受信する (レガシ)
+description: この記事では、以前の azure/event-hubs バージョン 2 パッケージを使用して、Azure Event Hubs との間でイベントを送受信する JavaScript アプリケーションを作成する方法について説明します。
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -8,29 +8,27 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 01/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 9aa2418657c2d3bcab9ef8883e5bd57422ce5e29
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 0a4b76bd1febca864cab6060fbdbd96dd0061cff
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899894"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162618"
 ---
-# <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-nodejs-azureevent-hubs-version-2"></a>クイック スタート:Node.js を使用して Azure Event Hubs との間でイベントを送受信する (@azure/event-hubs バージョン 2)
-
-Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
-
-このチュートリアルでは、Node.js アプリケーションを作成し、イベント ハブとの間でイベントを送受信する方法について説明します。
+# <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-javascript-azureevent-hubs-version-2"></a>クイック スタート:JavaScript を使用して Azure Event Hubs との間でイベントを送受信する (@azure/event-hubs バージョン 2)
+このクイックスタートでは、azure/event-hubs バージョン 2 JavaScript パッケージを使用して、イベント ハブとの間でイベントを送受信する JavaScript アプリケーションを作成する方法を示します。 
 
 > [!WARNING]
-> このクイックスタートでは、Azure Event Hubs JavaScript SDK のバージョン 2 を使用します。 [バージョン 5 の JavaScript SDK](get-started-node-send-v2.md) にコードを[移行](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)することをお勧めします。 
-
+> このクイックスタートでは、以前の azure/event-hubs バージョン 2 パッケージを使用します。 最新パッケージの**バージョン 5** を使用するクイックスタートについては、[azure/event-hubs バージョン 5 を使用したイベントの送受信](get-started-node-send-v2.md)に関するページを参照してください。 古いパッケージではなく新しいパッケージを使用するようにアプリケーションを移行するには、[azure/event-hubs バージョン 1 からバージョン 5 への移行ガイド](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)に関するページを参照してください。 
 
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、次の前提条件を用意しておく必要があります。
+Azure Event Hubs を初めて使用する場合は、このクイックスタートを行う前に[イベント ハブの概要](event-hubs-about.md)に関するページを参照してください。 
 
-- アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成してください。
+このクイック スタートを完了するには、次の前提条件を用意しておく必要があります。
+
+- **Microsoft Azure サブスクリプション**。 Azure Event Hubs を含む Azure サービスを使用するには、サブスクリプションが必要です。  既存の Microsoft Azure アカウントをお持ちでない場合は、[アカウントを作成する](https://azure.microsoft.com)際に、[無料試用版](https://azure.microsoft.com/free/)にサインアップするか、MSDN サブスクライバー特典を利用できます。
 - Node.js バージョン 8.x 以降。 [https://nodejs.org](https://nodejs.org) から最新の LTS バージョンをダウンロードします。
 - Visual Studio Code (推奨) または他の任意の IDE
 - **Event Hubs 名前空間とイベント ハブを作成する**。 最初の手順では、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順を実行した後、このチュートリアルに示されている手順を続けます。 その後、次の記事の手順に従って、イベント ハブ名前空間用の接続文字列を取得します。[接続文字列を取得する](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 このチュートリアルの中で、その接続文字列が後で必要になります。
@@ -51,7 +49,7 @@ npm install @azure/event-processor-host
 
 ## <a name="send-events"></a>送信イベント
 
-このセクションでは、イベント ハブにイベントを送信する Node.js アプリケーションの作成方法を説明します。 
+このセクションでは、イベント ハブにイベントを送信する JavaScript アプリケーションの作成方法を説明します。 
 
 > [!NOTE]
 > このクイック スタートをサンプルとして [GitHub](https://github.com/Azure/azure-event-hubs-node/tree/master/client) からダウンロードし、`EventHubConnectionString` と `EventHubName` の文字列を対象のイベント ハブの値に置き換え、実行します。 または、このチュートリアルの手順に従って独自のものを作成します。
@@ -93,7 +91,7 @@ npm install @azure/event-processor-host
 
 ## <a name="receive-events"></a>受信イベント
 
-このセクションでは、イベント ハブにある既定のコンシューマー グループの 1 つのパーティションからイベントを受信する Node.js アプリケーションを作成する方法を示します。 
+このセクションでは、イベント ハブにある既定のコンシューマー グループの 1 つのパーティションからイベントを受信する JavaScript アプリケーションを作成する方法を示します。 
 
 1. [Visual Studio Code](https://code.visualstudio.com) など、お好みのエディターを開きます。 
 2. `receive.js` というファイルを作成し、そこに以下のコードを貼り付けます。
@@ -136,7 +134,7 @@ npm install @azure/event-processor-host
 
 ## <a name="receive-events-using-event-processor-host"></a>イベント プロセッサ ホストを使用してイベントを受信する
 
-このセクションでは、Node.js アプリケーション内で Azure [EventProcessorHost](event-hubs-event-processor-host.md) を使用して、イベント ハブからイベントを受信する方法を示します。 EventProcessorHost (EPH) を使用すると、イベント ハブの顧客グループのすべてのパーティションで受信者を作成することで、イベント ハブからイベントを効率的に受信できます。 これにより、Azure Storage Blob 内で定期的に受信したメッセージのメタデータがチェックポイントに設定されます。 この手法によって、後で前回終了したところからメッセージを継続して受信しやすくなります。
+このセクションでは、JavaScript アプリケーション内で Azure [EventProcessorHost](event-hubs-event-processor-host.md) を使用して、イベント ハブからイベントを受信する方法を示します。 EventProcessorHost (EPH) を使用すると、イベント ハブの顧客グループのすべてのパーティションで受信者を作成することで、イベント ハブからイベントを効率的に受信できます。 これにより、Azure Storage Blob 内で定期的に受信したメッセージのメタデータがチェックポイントに設定されます。 この手法によって、後で前回終了したところからメッセージを継続して受信しやすくなります。
 
 1. [Visual Studio Code](https://code.visualstudio.com) など、お好みのエディターを開きます。 
 2. `receiveAll.js` というファイルを作成し、そこに以下のコードを貼り付けます。
@@ -195,4 +193,4 @@ npm install @azure/event-processor-host
 - [EventProcessorHost](event-hubs-event-processor-host.md)
 - [Azure Event Hubs の機能と用語](event-hubs-features.md)
 - [Event Hubs の FAQ](event-hubs-faq.md)
-- GitHub 上で [Event Hubs](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples) および[イベント プロセッサ ホスト](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-processor-host/samples)用の他の Node.js サンプルを確認してください。
+- GitHub 上で [Event Hubs](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples) および[イベント プロセッサ ホスト](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-processor-host/samples)用の他の JavaScript サンプルを確認してください

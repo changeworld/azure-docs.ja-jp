@@ -1,61 +1,55 @@
 ---
 title: クイック スタート:ナレッジ ベースの作成、トレーニング、発行 - QnA Maker
-titleSuffix: Azure Cognitive Services
-description: このクイックスタートでは、よくあるご質問や製品マニュアルなど、独自のコンテンツから QnA Maker のナレッジ ベース (KB) を作成する方法について説明します。 この例では、BitLocker キー回復に関する質問に答えるよくあるご質問の単純な Web ページから QnA Maker ナレッジ ベースを作成します。
-author: diberry
-manager: nitinme
-services: cognitive-services
-ms.service: cognitive-services
-ms.subservice: qna-maker
+description: QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マニュアルなど、独自のコンテンツから作成できます。 この記事には、単純な FAQ Web ページから QnA Maker ナレッジ ベースを作成して、QnA Maker に関する質問に答える例が含まれています。
 ms.topic: quickstart
-ms.date: 01/29/2020
-ms.author: diberry
-ms.openlocfilehash: a3bdc118be96630ebcf3bf63a2948976dc9b4261
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/08/2020
+ms.openlocfilehash: a4c4d9b2e8f4b816510fb35a75b3c9b8b2afa5e2
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901679"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108733"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>クイック スタート:QnA Maker ナレッジ ベースの作成、トレーニング、発行
 
-QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マニュアルなど、独自のコンテンツから作成できます。 この記事には、単純な FAQ Web ページから QnA Maker ナレッジ ベースを作成して、BitLocker キーの回復に関する質問に答える例が含まれています。
+QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マニュアルなど、独自のコンテンツから作成できます。 この記事には、単純な FAQ Web ページから QnA Maker ナレッジ ベースを作成して、QnA Maker に関する質問に答える例が含まれています。
 
-おしゃべりのパーソナリティを含めて、ユーザーを引き付けるナレッジにします。
-
-[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
-
-## <a name="prerequisite"></a>前提条件
+## <a name="prerequisites"></a>前提条件
 
 > [!div class="checklist"]
 > * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+> * Azure portal で作成された QnA Maker [リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)。 リソースを作成するしたに選択した Azure Active Directory ID、サブスクリプション、QnA リソース名を覚えておいてください。
 
-## <a name="create-a-new-qna-maker-knowledge-base"></a>新しい QnA Maker ナレッジ ベースを作成する
+## <a name="create-your-first-qna-maker-knowledge-base"></a>最初の QnA Maker ナレッジ ベースを作成する
 
 1. ご自分の Azure の資格情報を使用して [QnAMaker.ai](https://QnAMaker.ai) ポータルにサインインします。
 
 1. QnA Maker ポータルで、 **[Create a knowledge base]\(ナレッジ ベースの作成\)** を選択します。
 
-1. **[Create]\(作成\)** ページで **[Create a QnA service]\(QnA サービスの作成)** を選択します。 サブスクリプションで QnA Maker サービスを設定するため、[Azure portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) にリダイレクトされます。
+1. QnA Maker リソースが既にある場合は、 **[Create]\(作成\)** ページで、 **[Step 1]\(手順 1\)** をスキップします。
 
-1. Azure portal でリソースを作成します。 リソースを作成するときに選択した Azure Active Directory ID、サブスクリプション、QnA リソース名を覚えておいてください。
-1. QnA Maker ポータルに戻ります。ポータルで Web ページを最新の情報に更新し、ナレッジ ベースの作成に進んでください。 既存のテナント、サブスクリプション、新しいリソースを選択します。 言語を選択します。 これが、この QnA Maker サービスのすべてのナレッジ ベースで使用される言語になります。
+    リソースをまだ作成していない場合は、 **[Create a QnA service]\(QnA サービスの作成\)** を選択します。 サブスクリプションで QnA Maker サービスを設定するため、[Azure portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) にリダイレクトされます。 リソースを作成するしたに選択した Azure Active Directory ID、サブスクリプション、QnA リソース名を覚えておいてください。
+
+    Azure portal でリソースの作成が完了したら、QnA Maker ポータルに戻り、ブラウザー ページを最新の状態に更新して、 **[Step 2]\(手順 2\)** を続けます。
+
+1. **[Step 3]\(手順 3\)** で、Active Directory、サブスクリプション、サービス (リソース)、およびサービスで作成されたすべてのナレッジ ベースの言語を選択します。
 
    ![QnA Maker サービス ナレッジ ベースの選択のスクリーン ショット](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 
-1. ナレッジ ベースに **My Sample QnA KB** という名前を付けます。
+1. **[Step 3]\(手順 3\)** で、自分のナレッジ ベースに **My Sample QnA KB** という名前を付けます。
 
-1. 次の URL でサンプルの Word 文書を追加します。
+1. **[Step 4]\(手順 4\)** で、次の表を使用して設定を構成します。
 
-    `https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`
+    |設定|Value|
+    |--|--|
+    |**[Enable multi-turn extraction from URLs, .pdf or .docx files]\(URL、.pdf、または .docx ファイルからの複数ターンの抽出を有効にする\)**|オン|
+    |**Default answer text (既定の回答テキスト)**| `Quickstart - default answer not found.`|
+    |**+ Add URL (+ URL の追加)**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
+    |**Chit-chat (おしゃべり)**|**[Professional]\(専門家\)** を選択します|
 
-1. [`+ Add URL`] を選択します。
+1. **[Step 5]\(手順 5\)** で、 **[Create your KB]\(KB の作成\)** を選択します。
 
-1. " **_プロ_" のおしゃべり**を KB に追加します。
-
-1. **[Create your KB]\(KB の作成\)** を選択します。
-
-    抽出プロセスでは、ドキュメントを読み取って質問と回答を識別します。これには数分かかります。
+    抽出プロセスでは、ドキュメントを読み取って質問と回答を識別します。これにはしばらくかかります。
 
     QnA Maker がナレッジ ベースを正常に作成すると、 **[Knowledge base]\(ナレッジ ベース\)** ページが開きます。 このページで、ナレッジ ベースの内容を編集することができます。
 
@@ -78,7 +72,7 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
 
 ## <a name="save-and-train"></a>保存してトレーニング
 
-右上の **[Save and train]\(保存してトレーニング\)** を選択し、編集内容を保存して QnA Maker のモデルをトレーニングします。 保存しないと、編集した内容は保持されません。
+右上の **[Save and train]\(保存してトレーニング\)** を選択し、編集内容を保存して QnA Maker をトレーニングします。 保存しないと、編集した内容は保持されません。
 
 ## <a name="test-the-knowledge-base"></a>ナレッジ ベースをテストする
 
@@ -145,13 +139,16 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
 
 ナレッジ ベースの発行後、ボットを作成し、テストしました。
 
-コードを記述したりコンテンツを整理したりする必要はなく、作業は数分で終えています。
+コードを記述したりコンテンツを整理したりする必要はなく、作業は数分で終了しました。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Azure portal で、QnA Maker および Bot Framework のリソースをクリーンアップします。
+次のクイックスタートに進まない場合は、Azure portal で QnA Maker と Bot フレームワークのリソースを削除します。
 
 ## <a name="next-steps"></a>次のステップ
+
+> [!div class="nextstepaction"]
+> [メタデータによる質問の追加](add-question-metadata-portal.md)
 
 詳細:
 
@@ -159,5 +156,4 @@ Azure portal で、QnA Maker および Bot Framework のリソースをクリー
 * QnA Maker の[データ ソース](../concepts/knowledge-base.md)。
 * [ボット リソースの構成設定](../tutorials/create-qna-bot.md)。
 
-> [!div class="nextstepaction"]
-> [メタデータによる質問の追加](add-question-metadata-portal.md)
+

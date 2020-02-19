@@ -16,30 +16,31 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 monikerRange: vsts
-ms.openlocfilehash: 49514022dc00afcd07002c7a3278c18a606e5ad5
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 1a276770887bee39972ba8630fb13f52bcbe802d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203745"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049978"
 ---
 # <a name="quickstart-set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-projects"></a>クイック スタート:Azure DevOps Projects を使用して Java アプリ用の CI/CD パイプラインを設定する
 
-このクイックスタートの記事では、Azure DevOps Projects の簡素化されたエクスペリエンスを使用して、Azure Pipelines 内に Java アプリ用の継続的インテグレーション (CI) および継続的デリバリー (CD) のパイプラインを設定します。 また、Azure DevOps Projects を使用して、他の Azure リソースを作成することもできます。  
+このクイックスタートでは、Azure DevOps Projects の簡素化されたエクスペリエンスを使用して、Azure Pipelines 内に Java アプリ用の継続的インテグレーション (CI) および継続的デリバリー (CD) のパイプラインを設定します。 Azure DevOps Projects では、アプリの開発、デプロイ、監視に必要なすべてのものが設定されます。 
 
-Azure サブスクリプションをお持ちでない場合は、[Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) を通じて無料で取得できます。
+## <a name="prerequisites"></a>前提条件
+
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
+- [Azure DevOps](https://azure.microsoft.com/services/devops/) のアカウントと組織。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-  DevOps Projects によって、Azure Pipelines に CI/CD パイプラインが作成されます。 新しい Azure DevOps 組織を作成するか、既存の組織を使用できます。 DevOps Projects では、選択した Azure サブスクリプションに Azure リソースも作成されます。
+DevOps Projects によって、Azure Pipelines に CI/CD パイプラインが作成されます。 新しい Azure DevOps 組織を作成するか、既存の組織を使用できます。 DevOps Projects では、選択した Azure サブスクリプションに Azure リソースも作成されます。
 
-1. [Microsoft Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインし、左側のペインで **[リソースの作成]** を選択します。 
 
-1. 左のウィンドウで **[リソースの作成]** を選択し、**DevOps Projects** を検索します。  
+   ![Azure portal で Azure リソースを作成する](_img/azure-devops-project-java/continuous-delivery-configuration-full-browser.png)
 
-2. **作成** を選択します。
-
-    ![DevOps Projects で Azure リソースを作成する](_img/azure-devops-project-java/continuous-delivery-configuration-full-browser.png)
+1. **[DevOps Projects]** を検索して選択し、 **[作成]** を選択します。
 
 ## <a name="select-a-sample-application-and-azure-service"></a>サンプル アプリケーションと Azure サービスを選択する
 
@@ -53,18 +54,17 @@ Java のサンプルでは、複数のアプリケーション フレームワ�
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Azure DevOps と Azure サブスクリプションを構成する 
 
 1. 新しい Azure DevOps 組織を作成するか、既存の組織を選択します。 
-
-    a. プロジェクトの名前を選択します。 
-
-    b. Azure サブスクリプションと場所を選択し、アプリケーションの名前を選択して、 **[完了]** を選択します。  
-    数分後、DevOps Projects ダッシュボードが Azure portal に表示されます。 サンプル アプリケーションが Azure DevOps 組織内のリポジトリに設定され、ビルドが実行され、アプリケーションが Azure にデプロイされます。 このダッシュボードでは、コード リポジトリ、CI/CD パイプライン、および Azure のアプリケーションが可視化されます。
-    
-
+   
+   1. プロジェクトの名前を選択します。 
+   
+   1. Azure サブスクリプションと場所を選択し、アプリケーションの名前を選択して、 **[完了]** を選択します。  
+   数分後、DevOps Projects ダッシュボードが Azure portal に表示されます。 サンプル アプリケーションが Azure DevOps 組織内のリポジトリに設定され、ビルドが実行され、アプリケーションが Azure にデプロイされます。 このダッシュボードでは、コード リポジトリ、CI/CD パイプライン、および Azure のアプリケーションが可視化されます。
+   
 2. **[参照]** を選択すると、実行中のアプリケーションが表示されます。
+   
+   ![Azure portal でアプリケーション ダッシュボードを表示する](_img/azure-devops-project-java/azure-devops-application-dashboard.png) 
 
-    ![Azure portal でアプリケーション ダッシュボードを表示する](_img/azure-devops-project-java/azure-devops-application-dashboard.png) 
-    
-   DevOps Projects によって、CI ビルドおよびリリース トリガーが自動的に構成されました。  Web サイトに最新の作業を自動的にデプロイする CI/CD プロセスを使用して、Java アプリに対してチームで共同作業を行う準備ができました。
+DevOps Projects によって、CI ビルドおよびリリース トリガーが自動的に構成されました。  Web サイトに最新の作業を自動的にデプロイする CI/CD プロセスを使用して、Java アプリに対してチームで共同作業を行う準備ができました。
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>コードの変更をコミットし、CI/CD を実行する
 
@@ -141,11 +141,11 @@ DevOps Projects によって、Azure Repos または GitHub に Git リポジト
 1. **[ログ]** を選択します。  
 ログには、デプロイ プロセスに関する有用な情報が含まれます。 これらは、デプロイ中とデプロイ後の両方に表示できます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Azure App Service とその他の関連リソースが必要なくなったら、削除してかまいません。 DevOps Projects ダッシュボードで**削除**機能を使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 CI/CD プロセスを構成したときに、ビルドとリリース パイプラインが自動的に作成されました。 チームのニーズを満たすようにこれらのビルドおよびリリース パイプラインを変更できます。 CI/CD パイプラインの詳細については、以下を参照してください。
 

@@ -3,8 +3,8 @@ title: PowerShell を使用した Resource Manager への移行
 description: この記事では、Azure PowerShell コマンドを使用して、プラットフォームでサポートされている、仮想マシン (VM)、仮想ネットワーク、ストレージ アカウントなどの IaaS リソースをクラシックから Azure Resource Manager (ARM) へ移行する方法について説明します
 services: virtual-machines-windows
 documentationcenter: ''
-author: singhkays
-manager: gwallace
+author: tanmaygore
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 2b3dff9b-2e99-4556-acc5-d75ef234af9c
@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 03/30/2017
-ms.author: kasing
-ms.openlocfilehash: 4ee5f06a7256a2092cfed923cf40c6b74254c4a1
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 02/06/2020
+ms.author: tagore
+ms.openlocfilehash: 109bffe7b5ab9bb322c4ddb2f7b8ec4ac87a54cc
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647562"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168332"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する
 以下の手順では、Azure PowerShell コマンドを使用して、サービスとしてのインフラストラクチャ (IaaS) のリソースをクラシック デプロイ モデルから Azure Resource Manager デプロイ モデルに移行する方法を説明します。
@@ -53,12 +53,10 @@ Azure PowerShell をインストールするための主なオプションは 2 
 
 インストール指示については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
 
-<br>
-
 ## <a name="step-3-ensure-that-youre-an-administrator-for-the-subscription"></a>手順 3:サブスクリプションの管理者であることを確認する
 この移行を実行するには、[Azure portal](https://portal.azure.com) で自分をサブスクリプションの共同管理者として追加する必要があります。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[ハブ]** メニューで、 **[サブスクリプション]** を選択します。 表示されない場合は、 **[すべてのサービス]** を選択します。
 3. 適切なサブスクリプションのエントリを探し、 **[自分のロール]** フィールドを確認します。 共同管理者の場合、この値は _[アカウント管理者]_ です。
 
@@ -104,6 +102,14 @@ Resource Manager モデルの自分のアカウントにサインインします
 
 RegistrationState が `Registered` であることを確認してから続行してください。
 
+クラシック デプロイ モデルに切り替える前に、現在のデプロイまたは仮想ネットワークの Azure リージョンに Azure Resource Manager 仮想マシンの十分な vCPU があることを確認します。 Azure Resource Manager での現在の vCPU 数は、次の PowerShell コマンドを使用して確認できます。 vCPU クォータの詳細については、「[制限と Azure Resource Manager](../../azure-resource-manager/management/azure-subscription-service-limits.md#managing-limits)」を参照してください。
+
+この例は、**米国西部**リージョンでの可用性をチェックします。 例のリージョン名を対象のリージョン名に置き換えてください。
+
+```powershell
+    Get-AzVMUsage -Location "West US"
+```
+
 ここで、クラシック デプロイ モデルの自分のアカウントにサインインします。
 
 ```powershell
@@ -122,27 +128,17 @@ RegistrationState が `Registered` であることを確認してから続行し
     Select-AzureSubscription –SubscriptionName "My Azure Subscription"
 ```
 
-<br>
 
-## <a name="step-5-have-enough-resource-manager-vm-vcpus"></a>手順 5:十分な数の Resource Manager VM vCPU を準備する
-現在のデプロイまたは仮想ネットワークの Azure リージョンで Azure Resource Manager 仮想マシンの vCPU 数が十分にあることを確認します。 Azure Resource Manager での現在の vCPU 数は、次の PowerShell コマンドを使用して確認できます。 vCPU クォータの詳細については、「[制限と Azure Resource Manager](../../azure-resource-manager/management/azure-subscription-service-limits.md#limits-and-azure-resource-manager)」を参照してください。
-
-この例は、**米国西部**リージョンでの可用性をチェックします。 例のリージョン名を対象のリージョン名に置き換えてください。
-
-```powershell
-Get-AzVMUsage -Location "West US"
-```
-
-## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>手順 6:IaaS リソースを移行するコマンドを実行する
-* [クラウド サービス内 (仮想ネットワーク内ではなく) で VM を移行する](#step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
-* [仮想ネットワーク内で VM を移行する](#step-61-option-2---migrate-virtual-machines-in-a-virtual-network)
-* [ストレージ アカウントを移行する](#step-62-migrate-a-storage-account)
+## <a name="step-5-run-commands-to-migrate-your-iaas-resources"></a>手順 5:IaaS リソースを移行するコマンドを実行する
+* [クラウド サービス内 (仮想ネットワーク内ではなく) で VM を移行する](#step-51-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
+* [仮想ネットワーク内で VM を移行する](#step-51-option-2---migrate-virtual-machines-in-a-virtual-network)
+* [ストレージ アカウントを移行する](#step-52-migrate-a-storage-account)
 
 > [!NOTE]
 > ここで説明するすべての操作がべき等です。 サポートされていない機能や構成エラー以外の問題が発生した場合は、準備、中止、またはコミット操作を再試行することをお勧めします。 これによりプラットフォームでアクションが再試行されます。
 
 
-### <a name="step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>手順 6.1:オプション 1 - クラウド サービス内 (仮想ネットワーク外) で仮想マシンを移行する
+### <a name="step-51-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>手順 5.1:オプション 1 - クラウド サービス内 (仮想ネットワーク外) で仮想マシンを移行する
 次のコマンドを使用して、クラウド サービスの一覧を取得します。 移行するクラウド サービスを選択します。 クラウド サービスの VM が仮想ネットワーク内にある場合、または Web ロールか worker ロールを持つ場合は、コマンドではエラー メッセージが返されます。
 
 ```powershell
@@ -223,7 +219,7 @@ PowerShell または Azure ポータルを使用して、準備したリソー�
     Move-AzureService -Commit -ServiceName $serviceName -DeploymentName $deploymentName
 ```
 
-### <a name="step-61-option-2---migrate-virtual-machines-in-a-virtual-network"></a>手順 6.1:オプション 2 - 仮想ネットワーク内の仮想マシンを移行する
+### <a name="step-51-option-2---migrate-virtual-machines-in-a-virtual-network"></a>手順 5.1:オプション 2 - 仮想ネットワーク内の仮想マシンを移行する
 
 仮想ネットワーク内の仮想マシンを移行するには、その仮想ネットワークを移行します。 仮想マシンは、仮想ネットワークとともに自動的に移行されます。 移行する仮想ネットワークを選択します。
 > [!NOTE]
@@ -266,7 +262,7 @@ Azure PowerShell または Azure Portal のどちらかを使用して、準備�
     Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
 ```
 
-### <a name="step-62-migrate-a-storage-account"></a>手順 6.2:ストレージ アカウントを移行する
+### <a name="step-52-migrate-a-storage-account"></a>手順 5.2:ストレージ アカウントを移行する
 仮想マシンの移行が完了したら、ストレージ アカウントを移行する前に、次の前提条件チェックを行います。
 
 > [!NOTE]

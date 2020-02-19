@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - RBAC と Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する
+title: 'チュートリアル:RBAC と Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する '
 description: このチュートリアルでは、Azure portal でロールベースのアクセス制御 (RBAC) を使用して、Azure リソースへのアクセス権をユーザーに付与する方法について説明します。
 services: role-based-access-control
 documentationCenter: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/22/2019
 ms.author: rolyon
-ms.openlocfilehash: f4dd3995df2a068824c4aa6bccca5606d250a165
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 6281c9a1818a3b46ac4f7a62f8ae76668db56887
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419649"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138085"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>チュートリアル:RBAC と Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する
 
-[ロールベースのアクセス制御 (RBAC)](overview.md) は、Azure のリソースに対するアクセス権を管理するための手法です。 このチュートリアルでは、ユーザーに対してリソース グループ内で仮想マシンを作成および管理するアクセス許可を付与します。
+[ロールベースのアクセス制御 (RBAC)](overview.md) は、Azure のリソースに対するアクセスを管理するための手法です。 このチュートリアルでは、ユーザーに対してリソース グループ内で仮想マシンを作成および管理するアクセス許可を付与します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure Portal ( https://portal.azure.com ) にサインインします。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 1. ナビゲーション リストで、 **[リソース グループ]** をクリックします。
 
@@ -96,7 +96,7 @@ RBAC では、アクセス権を削除するにはロールの割り当てを削
 
    ![ロールの割り当ての削除メッセージ](./media/quickstart-assign-role-user-portal/remove-role-assignment.png)
 
-1. 表示されるロールの割り当ての削除メッセージで、 **[はい]** をクリックします。
+1. ロールの割り当ての削除メッセージが表示されたら、 **[はい]** をクリックします。
 
 ## <a name="clean-up"></a>クリーンアップ
 
@@ -112,7 +112,7 @@ RBAC では、アクセス権を削除するにはロールの割り当てを削
 
 1. **[削除する]** をクリックしてリソース グループを削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [チュートリアル:RBAC と Azure PowerShell を使用して Azure リソースへのアクセス権をユーザーに付与する](tutorial-role-assignments-user-powershell.md)

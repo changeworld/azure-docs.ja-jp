@@ -5,13 +5,13 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 01/14/2020
-ms.openlocfilehash: dee8c919b815c6f22b171f58be9fc6a38167056a
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.date: 02/06/2020
+ms.openlocfilehash: 00b51c14a24b525d98e9634a4f416177364228cb
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030021"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069590"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>マッピング データ フローのビデオ チュートリアル
 
@@ -42,6 +42,8 @@ ms.locfileid: "76030021"
 [Derived Column transformation (派生列変換)](https://www.youtube.com/watch?v=FFCbU4ujCiY)
 
 [Join transformation (結合変換)](https://www.youtube.com/watch?v=zukwayEXRtg)
+
+[自己結合パターン](https://www.youtube.com/watch?v=Dx1kANfnvmk&feature=youtu.be&hd=1)
 
 [参照変換](https://www.youtube.com/watch?v=9U-0VPU2ZPU)
 
@@ -130,3 +132,7 @@ ms.locfileid: "76030021"
 [Logical Models vs. Physical Models (論理モデルと物理モデル)](http://youtu.be/K5tgzLjEE9Q)
 
 [Detect source data changes (ソース データの変更の検出)](http://youtu.be/CaxIlI7oXfI?hd=1)
+
+## <a name="data-flow-expressions"></a>データ フローの式
+
+[日付と時刻の式](https://www.youtube.com/watch?v=uboyCZ25r_E&feature=youtu.be&hd=1)

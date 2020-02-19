@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c173d0e17166911e28fea3d1c5820879d17af4a8
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 1a8832234978a2c8b2db25d88b5dd6c211b634b7
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381116"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186449"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>方法:条件付きアクセスを使用してクラウド アプリへのアクセスに承認されたクライアント アプリを要求する 
 
@@ -36,7 +36,7 @@ Azure Active Directory の条件付きアクセスを使用すると、クラウ
 
 ![条件付きアクセス](./media/app-based-conditional-access/05.png)
 
-承認されたクライアント アプリの一覧は、[承認されたクライアント アプリの要件](technical-reference.md#approved-client-app-requirement)に関するセクションを参照してください。
+承認されたクライアント アプリの一覧は、[承認されたクライアント アプリの要件](concept-conditional-access-grant.md)に関するセクションを参照してください。
 
 アプリベースの条件付きアクセス ポリシーを[デバイス ベースの条件付きアクセス ポリシー](require-managed-devices.md)などの他のポリシーと組み合わせることで、個人のデバイスと会社のデバイスの両方で柔軟にデータを保護することができます。
 
@@ -44,7 +44,7 @@ Azure Active Directory の条件付きアクセスを使用すると、クラウ
 
 このトピックは、次の事項を熟知していることを前提としています。
 
-- [承認されたクライアント アプリの要件](technical-reference.md#approved-client-app-requirement)に関するテクニカル リファレンス。
+- [承認されたクライアント アプリの要件](concept-conditional-access-grant.md)。
 - [Azure Active Directory の条件付きアクセス](overview.md)の基本的な概念。
 - [条件付きアクセス ポリシーの構成](app-based-mfa.md)方法。
 - [条件付きアクセス ポリシーの移行](best-practices.md#policy-migration)。
@@ -61,7 +61,7 @@ Azure Active Directory の条件付きアクセスを使用すると、クラウ
 
 このシナリオでは、ユーザーを次のように想定しています。
 
-- iOS または Android でネイティブ メール アプリケーションを使用して Exchange に接続する電子メールを作成する
+- iOS または Android でネイティブ メール アプリケーションを使用して電子メールを作成して Exchange に接続する
 - Outlook アプリを使用したアクセスのみを利用できることを示す電子メールを受信する
 - リンクを使用してアプリケーションをダウンロードする
 - Outlook アプリケーションを開き、Azure AD 資格情報を使用してサインインする
@@ -262,7 +262,7 @@ Azure Active Directory の条件付きアクセスを使用すると、クラウ
 
 詳細については、「[Microsoft Intune でアプリとデータを保護する](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 条件付きアクセス ポリシーの構成方法を把握するには、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](app-based-mfa.md)」を参照してください。
 

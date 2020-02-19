@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/17/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 6e8c0e1c7fef884844b8aaae9dc4c7e3eaa220a2
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 5672334ab42ab474d862ae4c9649b94b58bb6af4
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274549"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157273"
 ---
 Azure Storage では、数種類のストレージ アカウントが提供されています。 各種類は異なる機能をサポートし、独自の価格モデルがあります。 アプリケーションに最適な種類を判断するために、ストレージ アカウントを作成する前にこれらの違いを検討してください。 ストレージ アカウントには、次の種類があります。
 
@@ -39,7 +39,7 @@ Azure Storage では、数種類のストレージ アカウントが提供さ�
 
 <div id="archive"><sup>3</sup> アーカイブ 層は、個々の BLOB のレベルでのみ利用でき、ストレージ アカウント レベルでは利用できません。 ブロック BLOB と追加 BLOB のみをアーカイブできます。 詳細については、「<a href="https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers">Azure BLOB ストレージ: ホット ストレージ層、クール ストレージ層、アーカイブ ストレージ層</a>」をご覧ください。</div>
 
-<div id="zone-redundant-storage"><sup>4</sup> ゾーン冗長ストレージ (ZRS) および geo ゾーン冗長ストレージ (GZRS/RA-GZRS) (プレビュー) は、特定のリージョンの Standard 汎用 V2、BlockBlobStorage、および FileStorage アカウントでのみ使用できます。 ZRS に関する詳細については、「<a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs">ゾーン冗長ストレージ (ZRS): 高可用 Azure Storage アプリケーション</a>」をご覧ください。 GZRS/RA-GZRS の詳細については、<a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy-gzrs">高可用性と最大限の持続性のための geo ゾーン冗長ストレージ (プレビュー)</a> に関する記事を参照してください。 レプリケーション オプションの詳細については、「<a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy">Azure Storage のレプリケーション</a>」を参照してください。</div>
+<div id="zone-redundant-storage"><sup>4</sup> ゾーン冗長ストレージ (ZRS) および geo ゾーン冗長ストレージ (GZRS と RA-GZRS) (プレビュー) は、特定のリージョンの Standard 汎用 V2、BlockBlobStorage、および FileStorage アカウントでのみ使用できます。 Azure Storage の冗長オプションの詳細については、「<a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy">Azure Storage の冗長性</a>」を参照してください。</div>
 
 <div id="premium-performance">汎用 v2 および汎用 V1 アカウント用の <sup>5</sup> Premium パフォーマンスは、ディスクとページ BLOB でのみ使用できます。 ブロックまたは BLOB の追加用の Premium パフォーマンスは、BlockBlobStorage アカウントでのみ使用できます。 ファイル用の Premium パフォーマンスは、FileStorage アカウントでのみ使用できます。</div>
 

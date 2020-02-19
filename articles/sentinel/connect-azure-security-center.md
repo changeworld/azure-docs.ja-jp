@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 8d8f960d8cf1310ec0a380e75bdaa714408e2cac
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 4c75d1870ca3b966acdd658c91c0af8fd7465bfb
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563668"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190873"
 ---
 # <a name="connect-data-from-azure-security-center"></a>Azure Security Center からデータを接続する
 
@@ -26,11 +26,10 @@ Azure Sentinel では、[Azure Security Center](../security-center/security-cent
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure Security Center からアラートをエクスポートする場合は、そのログをストリーミングするサブスクリプションの共同作成者である必要があります。
+- Azure Security Center からアラートをエクスポートするには、ストリーミングするログのサブスクリプションで Security Reader ロールが必要になります。
 
 - サブスクリプションで実行されている[Azure Security Center Standard レベル](../security-center/security-center-pricing.md)を所有している必要があります。 ない場合は、[サブスクリプションを Standard にアップグレード](https://azure.microsoft.com/pricing/details/security-center/)してください。
 
-- 接続する各サブスクリプションのグローバル管理者またはセキュリティ管理者のアクセス許可を持つユーザーでログインする必要があります。
 
 
 ## <a name="connect-to-azure-security-center"></a>Azure Security Center に接続する

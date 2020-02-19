@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Azure CLI を使用して Azure リソースのカスタム ロールを作成する
+title: チュートリアル:Azure CLI を使用して Azure リソースのカスタム ロールを作成する
 description: このチュートリアルで、Azure CLI を使用して Azure リソースのカスタム ロールを作成してみましょう。
 services: active-directory
 documentationCenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: 29b0bea851466b5173711441a5a7927c796c9926
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: f1a6e72e1444a26b675379d9948217a7773c4a1c
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419602"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138264"
 ---
 # <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure リソースのカスタム ロールを作成する
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、以下が必要です。
+このチュートリアルを完了するには、次の要件があります。
 
 - [所有者](built-in-roles.md#owner)や[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)など、カスタム ロールを作成するためのアクセス許可
 - [Azure Cloud Shell](../cloud-shell/overview.md) または [Azure CLI](/cli/azure/install-azure-cli)
@@ -266,7 +266,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     az role definition delete --name "Reader Support Tickets"
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure CLI を使用して Azure リソースのカスタム ロールを作成する](custom-roles-cli.md)

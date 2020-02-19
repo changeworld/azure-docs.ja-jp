@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 6fd9166168a5b21900aa49d42a1dd5b81039dbcd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c2a26f2f40e0312fbfa0962e69ddfd0cfdabad5f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428760"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191293"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>クイック スタート:Azure Logic Apps を使用して初めてのワークフローを作成する - Azure portal
 
@@ -42,12 +42,12 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![新しいロジック アプリの詳細を入力する](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
-   | プロパティ | 値 | [説明] |
+   | プロパティ | Value | 説明 |
    |----------|-------|-------------|
    | **Name** | <*ロジック アプリ名*> | ロジック アプリの名前。文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、およびピリオド (`.`) のみを含めることができます。 この例では、"My-First-Logic-App" を使用します。 |
    | **サブスクリプション** | <*Azure サブスクリプション名*> | お使いの Azure サブスクリプション名 |
    | **リソース グループ** | <*Azure-resource-group-name*> | 関連するリソースの整理に使用する[Azure リソース グループ](../azure-resource-manager/management/overview.md)の名前。 この例では、"My-First-LA-RG" を使用します。 |
-   | **Location** | <*Azure-region*> | ロジック アプリの情報の保存先となるリージョン。 この例では "米国西部" を使用します。 |
+   | **場所** | <*Azure-region*> | ロジック アプリの情報の保存先となるリージョン。 この例では "米国西部" を使用します。 |
    | **Log Analytics** | Off | 診断ログの場合は、この設定を**オフ**のままにしてください。 |
    ||||
 
@@ -77,7 +77,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![RSS フィード、頻度、および間隔を指定してトリガーを設定する](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-settings.png)
 
-   | プロパティ | 値 | [説明] |
+   | プロパティ | Value | 説明 |
    |----------|-------|-------------|
    | **RSS フィードの URL** | `http://feeds.reuters.com/reuters/topNews` | 監視する RSS フィードのリンク |
    | **間隔** | 1 | チェックの間隔 (単位数) |
@@ -116,7 +116,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 1. 選択した電子メール コネクタによって ID の認証を求められた場合は、その手順を完了して、ロジック アプリと電子メール サービス間の接続を作成します。
 
    > [!NOTE]
-   > 今回の例では、手動で ID を認証します。 ただし、認証を必要とするコネクタは、それらがサポートしている認証の種類によって異なります。 また、認証の処理方法を設定するオプションも用意されています。 たとえば、デプロイに Azure Resource Manager テンプレートを使用する場合、接続情報など、頻繁または簡単に変更される入力をパラメーター化して、セキュリティで保護することができます。 詳細については、以下のトピックを参照してください。
+   > 今回の例では、手動で ID を認証します。 ただし、認証を必要とするコネクタは、それらがサポートしている認証の種類によって異なります。 また、認証の処理方法を設定するオプションも用意されています。 たとえば、デプロイに Azure Resource Manager テンプレートを使用する場合、接続情報など、頻繁または簡単に変更される入力をパラメーター化してセキュリティを向上させることができます。 詳細については、以下のトピックを参照してください。
    >
    > * [デプロイ用のテンプレート パラメーター](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)
    > * [OAuth 接続を承認する](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)
@@ -147,7 +147,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
       ![メール本文の内容のプロパティを選択する](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-body.png)
 
-      | プロパティ | [説明] |
+      | プロパティ | 説明 |
       |----------|-------------|
       | **フィード タイトル** | 項目のタイトル |
       | **フィードの公開日付** | 項目の公開日時 |

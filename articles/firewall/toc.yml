@@ -35,8 +35,14 @@
       href: rule-processing.md
     - name: サービス タグ
       href: service-tags.md
+    - name: IP グループ
+      href: ip-groups.md
+    - name: 強制トンネリング
+      href: forced-tunneling.md
     - name: コンプライアンス認定
       href: compliance-certifications.md
+    - name: 中央管理
+      href: central-management.md
 - name: 操作方法ガイド
   items:
     - name: Azure PowerShell を使用したデプロイ
@@ -55,6 +61,10 @@
       href: integrate-lb.md
     - name: SQL FQDN を使用したアプリケーション規則
       href: sql-fqdn-filtering.md
+    - name: SNAT プライベート範囲
+      href: snat-private-range.md
+    - name: IP グループの作成
+      href: create-ip-group.md
 - name: リファレンス
   items:
     - name: Azure CLI

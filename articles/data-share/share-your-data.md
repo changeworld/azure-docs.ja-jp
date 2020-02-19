@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: 64c5d80b5a2660164b21e71f06e847d5b11e40da
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: a8265680f74b2d5679d1ebfbb2873dd096f498a3
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964425"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083051"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>チュートリアル:Azure Data Share を使用したデータの共有  
 
@@ -29,6 +29,7 @@ ms.locfileid: "76964425"
 
 * Azure サブスクリプション:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 * 受信者の Azure ログイン用メール アドレス (メール エイリアスは無効です)。
+* Data Share リソースの作成用とは異なる Azure サブスクリプションにソース Azure データ ストアが存在する場合、Azure データ ストアがあるサブスクリプションで [Microsoft.DataShare リソースプロバイダー](concepts-roles-permissions.md#resource-provider-registration)を登録してください。 
 
 ### <a name="share-from-a-storage-account"></a>ストレージ アカウントからの共有:
 
@@ -57,7 +58,7 @@ ms.locfileid: "76964425"
 * クライアント IP SQL Server のファイアウォール アクセス。 この操作を行うには、以下の手順を実行します。 
     1. Azure portal の SQL サーバーで、 *[ファイアウォールと仮想ネットワーク]* に移動します。
     1. Azure サービスへのアクセスを許可するには、**オン** トグルをクリックします。
-    1. **[+ クライアント IP の追加]** をクリックし、 **[保存]** をクリックします。 クライアントの IP アドレスは変わることがあります。 IP 範囲を追加することもできます。 
+    1. **[+ クライアント IP の追加]** をクリックし、 **[保存]** をクリックします。 クライアントの IP アドレスは変わることがあります。 次回 Azure portal から SQL データを共有するときにも、このプロセスを繰り返すことが必要になる場合もあります。 IP 範囲を追加することもできます。 
 
 ### <a name="share-from-azure-data-explorer"></a>Azure Data Explorer からの共有
 * 共有したいデータベースを含んだ Azure Data Explorer クラスター。

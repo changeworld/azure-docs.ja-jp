@@ -3,18 +3,18 @@ title: クイックスタート - Azure IoT Central でルールとアクショ�
 description: このクイックスタートでは、作成者として Azure IoT Central アプリケーションでテレメトリベースのルールとアクションを構成する方法について説明します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: a63e77fb3c50d4387c27912336d65f9f84d2d5c9
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 4bbf571d6b73a6f43c1c3b1ce261da6963a74183
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026245"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169521"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>クイック スタート:Azure IoT Central でデバイスのルールとアクションを構成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "77026245"
 
 1. ルール名として「**Environmental temperature**」と入力します。
 
-1. **[ターゲット デバイス]** セクションで、デバイス テンプレートとして **[MXChip IoT DevKit]** を選択します。 このオプションは、デバイス テンプレートの種類によってルールが適用されるデバイスをフィルター処理します。 **[+ フィルター]** を選択して、さらにフィルター条件を追加できます。
+1. **[ターゲット デバイス]** セクションで、デバイス テンプレートとして **[MXChip IoT DevKit]** を選択します。 このオプションは、デバイス テンプレートの種類によってルールが適用されるデバイスをフィルター処理します。 **[+ フィルター]** を選択することで、さらにフィルター条件を追加できます。
 
 1. **[条件]** セクションで、ルールをトリガーする条件を定義します。 次の情報を使用して、温度テレメトリに基づいて条件を定義します。
 

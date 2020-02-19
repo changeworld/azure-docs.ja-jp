@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 11/13/2019
+ms.date: 02/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 3b33015b3a69372f6783d59b28a111ec279dd860
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 9ac70252ce7c818ccbdecfd996b9970f011aa967
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048472"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77056344"
 ---
 # <a name="about-azure-virtual-wan"></a>Azure Virtual WAN の概要
 
@@ -37,6 +37,13 @@ Azure Virtual WAN は、サイト間 VPN、ユーザー VPN (ポイント対サ�
 
 仮想 WAN をアップグレードする手順については、「[Virtual WAN を Basic から Standard にアップグレードする](upgrade-virtual-wan.md)」をご覧ください。
 
+## <a name="architecture"></a>アーキテクチャ
+
+仮想 WAN のアーキテクチャと Virtual WAN への移行方法については、次の記事を参照してください。
+
+* [仮想 WAN のアーキテクチャ](migrate-from-hub-spoke-topology.md)
+* [グローバル転送ネットワーク アーキテクチャ](virtual-wan-global-transit-network-architecture.md)
+
 ## <a name="resources"></a>Virtual WAN リソース
 
 エンドツーエンドの仮想 WAN を構成するには、次のリソースを作成します。
@@ -57,7 +64,7 @@ Azure Virtual WAN は、サイト間 VPN、ユーザー VPN (ポイント対サ�
 
   * **サイト:** このリソースは、サイト間接続にのみ使用されます。 サイト リソースは **vpnsite** です。 これは、オンプレミスの VPN デバイスとその設定を表します。 Virtual WAN パートナーと連携することで、この情報を Azure に自動的にエクスポートする組み込みのソリューションが得られます。
 
-## <a name="connectivity"></a>接続
+## <a name="connectivity"></a>接続の種類
 
 Virtual WAN では、次の種類の接続を使用できます。サイト間 VPN、ユーザー VPN (ポイント対サイト)、および ExpressRoute です。
 
@@ -94,6 +101,6 @@ ExpressRoute を使用すると、プライベート接続を介してオンプ�
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Virtual WAN を使用してサイト間接続を作成する](virtual-wan-site-to-site-portal.md)

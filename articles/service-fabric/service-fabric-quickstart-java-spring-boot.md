@@ -6,73 +6,56 @@ ms.topic: quickstart
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: c12cd53b55cac48aae3d69506204c9d107e34aa6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: eb96989b4a2731e78471b848d690b48352408d1c
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464387"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121489"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>クイック スタート:Azure Service Fabric 上に Java Spring Boot アプリをデプロイする
 
-このクイックスタートでは、Java Spring Boot アプリケーションを Azure Service Fabric にデプロイする方法について説明します。 Azure Service Fabric は、マイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。 
-
-このクイックスタートでは、Spring の Web サイトからの [Getting Started](https://spring.io/guides/gs/spring-boot/) サンプルを使用します。 このクイックスタートでは、使い慣れたコマンド ライン ツールを使用し、Azure Service Fabric アプリケーションとして Spring Boot サンプルをデプロイする方法を説明します。 クイックスタートを完了すると、Spring Boot の Getting Started サンプルが Azure Service Fabric 上で動作します。
-
-![Spring Boot Service Fabric サンプル](./media/service-fabric-quickstart-java-spring-boot/spring-boot-service-fabric-sample.png)
-
-このクイックスタートでは、次の方法について説明します。
-
-* Spring Boot アプリケーションを Service Fabric にデプロイする
-* アプリケーションをローカル クラスターにデプロイする
-* 複数のノードにアプリケーションをスケールアウトする
-* 可用性に影響を与えることなくサービスのフェールオーバーを実行する
+このクイックスタートでは、Linux または MacOS で使い慣れたコマンドライン ツールを使用して、Java Spring Boot アプリケーションを Azure Service Fabric にデプロイします。 Azure Service Fabric は、マイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。 
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、以下が必要です。
+#### <a name="linux"></a>[Linux](#tab/linux)
 
-1. Service Fabric SDK および Service Fabric コマンド ライン インターフェイス (CLI) をインストールする
+- [Java 環境](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development)と [Yeoman](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-yeoman-generators-for-containers-and-guest-executables)
+- [Service Fabric SDK および Service Fabric コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
+- [Git](https://git-scm.com/downloads)
 
-    a. [Mac](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli#cli-mac)
-    
-    b. [Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
+#### <a name="macos"></a>[MacOS](#tab/macos)
 
-1. [Git をインストールする](https://git-scm.com/)
-1. Yeoman のインストール
+- [Java 環境と Yeoman](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
+- [Service Fabric SDK および Service Fabric コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli#cli-mac)
+- [Git](https://git-scm.com/downloads)
 
-    a. [Mac](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
-
-    b. [Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-yeoman-generators-for-containers-and-guest-executables)
-1. Java 環境を設定する
-
-    a. [Mac](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
-    
-    b.  [Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development)
+--- 
 
 ## <a name="download-the-sample"></a>サンプルのダウンロード
 
-ターミナル ウィンドウで次のコマンドを実行して、Spring Boot の Getting Started サンプル アプリをローカル コンピューターに複製します。
+ターミナル ウィンドウで次のコマンドを実行して、Spring Boot の [Getting Started](https://github.com/spring-guides/gs-spring-boot) サンプル アプリをローカル コンピューターに複製します。
 
 ```bash
 git clone https://github.com/spring-guides/gs-spring-boot.git
 ```
 
 ## <a name="build-the-spring-boot-application"></a>Spring Boot アプリケーションの構築 
-1. `gs-spring-boot/complete` ディレクトリ内で、次のコマンドを実行してアプリケーションをビルドします。 
+*gs-spring-boot/complete* ディレクトリ内で、次のコマンドを実行してアプリケーションをビルドします。 
 
-    ```bash
-    ./gradlew build
-    ``` 
+```bash
+./gradlew build
+``` 
 
 ## <a name="package-the-spring-boot-application"></a>Spring Boot アプリケーションのパッケージ作成 
-1. 複製の `gs-spring-boot` ディレクトリ内で `yo azuresfguest` コマンドを実行します。 
+1. 複製の *gs-spring-boot* ディレクトリ内で `yo azuresfguest` コマンドを実行します。 
 
 1. 各プロンプトで次の情報を入力します。
 
     ![Spring Boot の Yeoman エントリ](./media/service-fabric-quickstart-java-spring-boot/yeoman-entries-spring-boot.png)
 
-1. `SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/code` フォルダーで、`entryPoint.sh` という名前のファイルを作成します。 `entryPoint.sh` ファイルに次のテキストを追加します。 
+1. *SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/code* フォルダーで、*entryPoint.sh* という名前のファイルを作成します。*entryPoint.sh* ファイルに次のコードを追加します。 
 
     ```bash
     #!/bin/bash
@@ -91,7 +74,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
        </Resources>
     ```
 
-    これで、**ServiceManifest.xml** は次のようになります。 
+    これで、*ServiceManifest.xml* は次のようになります。 
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -136,17 +119,17 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     docker run --name sftestcluster -d -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 -p 8080:8080 mysfcluster
     ```
 
-    ローカル クラスターの起動には、一定の時間がかかります。 クラスターが完全に起動されたことを確認するには、 **http://localhost:19080** で Service Fabric Explorer にアクセスします。 5 つの正常なノードは、ローカル クラスターが起動され、実行されていることを示します。 
+    ローカル クラスターの起動には、一定の時間がかかります。 クラスターが完全に起動されたことを確認するには、`http://localhost:19080` で Service Fabric Explorer にアクセスします。 5 つの正常なノードは、ローカル クラスターが起動され、実行されていることを示します。 
     
     ![Service Fabric Explorer が正常なノードを表示する](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-healthy-nodes.png)
 
-1. `gs-spring-boot/SpringServiceFabric` フォルダーを開きます。
+1. *gs-spring-boot/SpringServiceFabric* フォルダーを開きます。
 1. 次のコマンドを実行して、ローカル クラスターに接続します。
 
     ```bash
     sfctl cluster select --endpoint http://localhost:19080
     ```
-1. `install.sh` スクリプトを実行します。
+1. *install.sh* スクリプトを実行します。
 
     ```bash
     ./install.sh
@@ -157,6 +140,8 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     ![Spring Boot Service Fabric サンプル](./media/service-fabric-quickstart-java-spring-boot/spring-boot-service-fabric-sample.png)
 
 これで、Azure Service Fabric クラスターに展開された Spring Boot アプリケーションにアクセスできるようになりました。
+
+詳細については、Spring Web サイトで Spring Boot の [Getting Started](https://spring.io/guides/gs/spring-boot/) サンプルを参照してください。
 
 ## <a name="scale-applications-and-services-in-a-cluster"></a>クラスター内のアプリケーションとサービスをスケールする
 

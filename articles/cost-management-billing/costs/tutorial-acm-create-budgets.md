@@ -1,21 +1,20 @@
 ---
 title: チュートリアル - Azure の予算を作成して管理する | Microsoft Docs
 description: このチュートリアルでは、使用する Azure サービスのコストの計画とアカウントについて説明します。
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/22/2020
+ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: adwise
+ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: bb02c4903348a3b8c1d129f02be64109ec0f48eb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9900a2f7a41a6b35be75326b9412ec628328e39b
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769788"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132099"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>チュートリアル:Azure の予算を作成して管理する
 
@@ -34,11 +33,12 @@ Cost Management での予算は、組織のアカウンタビリティを計画�
 
 > [!div class="checklist"]
 > * Azure portal で予算を作成する
+> * PowerShell で予算を作成して編集する
 > * 予算を編集する
 
 ## <a name="prerequisites"></a>前提条件
 
-予算は、さまざまな Azure アカウントの種類でサポートされています。 サポートされているアカウントの種類の完全な一覧については、「[Understand Cost Management data (Cost Management データの概要)](understand-cost-mgt-data.md)」を参照してください。 予算を表示するには、少なくとも Azure アカウントの読み取りアクセス権が必要です。
+予算は、さまざまな種類の Azure アカウントでサポートされています。 サポートされているアカウントの種類の完全な一覧については、「[Understand Cost Management data (Cost Management データの概要)](understand-cost-mgt-data.md)」を参照してください。 予算を表示するには、少なくとも Azure アカウントの読み取りアクセス権が必要です。
 
  Azure EA サブスクリプションの場合、予算を表示するには読み取りアクセス権が必要です。 予算を作成し、管理するには、共同作成者のアクセス許可が必要です。 EA サブスクリプションとリソース グループ用に個別の予算を作成できます。 ただし、EA の請求先アカウントの予算を作成することはできません。
 
@@ -62,7 +62,7 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 予算を作成すると、予算に対する現在の支出のシンプルなビューが表示されます。
 
-**[追加]** をクリックします。
+**[追加]** を選択します。
 
 ![既に作成されている予算の一覧を示す例](./media/tutorial-acm-create-budgets/budgets01.png)
 
@@ -78,15 +78,19 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 ![月額コスト データを使用した予算の作成を示す例 ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-予算金額を構成したら、 **[次へ]** をクリックして予算アラートを構成します。 予算では、少なくとも 1 つのコストしきい値 (予算の %) とそれに対応するメール アドレスが必要です。 必要に応じて、1 つの予算に最大で 5 つのしきい値と 5 つのメール アドレスを含めることができます。 予算のしきい値が満たされたとき、通常、20 時間以内に電子メールの通知が届きます。 通知の詳細については、[コスト アラートの使用](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md)に関するページを参照してください。 以下の例では、予算の 90% に達すると、メール アラートが生成されます。 Budgets API を使用して予算を作成する場合、アラートを受信するためにユーザーにロールを割り当てることもできます。 ユーザーへのロールの割り当ては、Azure portal ではサポートされていません。 Azure Budgets API の詳細については、[Budgets API](/rest/api/consumption/budgets) を参照してください。
+予算金額を構成したら、 **[次へ]** を選択して予算アラートを構成します。 予算では、少なくとも 1 つのコストしきい値 (予算の %) とそれに対応するメール アドレスが必要です。 必要に応じて、1 つの予算に最大で 5 つのしきい値と 5 つのメール アドレスを含めることができます。 予算のしきい値が満たされたとき、通常、20 時間以内に電子メールの通知が届きます。
+
+メールを受信したい場合は、迷惑メール フォルダーに振り分けられることのないよう、承認済みの差出人一覧に azure-noreply@microsoft.com を追加してください。 通知の詳細については、[コスト アラートの使用](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md)に関するページを参照してください。
+
+以下の例では、予算の 90% に達すると、メール アラートが生成されます。 Budgets API を使用して予算を作成する場合、アラートを受信するためにユーザーにロールを割り当てることもできます。 ユーザーへのロールの割り当ては、Azure portal ではサポートされていません。 Azure Budgets API の詳細については、[Budgets API](/rest/api/consumption/budgets) を参照してください。
 
 ![アラート条件を示す例](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 
-作成した予算は、コストの分析に表示されます。 支出の傾向に関連する予算を表示することは、[コストと支出の分析](../../cost-management/quick-acm-cost-analysis.md)を始めるときの最初のステップの 1 つです。
+作成した予算は、コストの分析に表示されます。 支出の傾向と照らして予算を表示することは、[コストと支出の分析](../../cost-management/quick-acm-cost-analysis.md)を始めるときの最初のステップの 1 つです。
 
 ![コスト分析に表示される予算と支出の例](./media/tutorial-acm-create-budgets/cost-analysis.png)
 
-前の例では、サブスクリプションの予算を作成しました。 しかし、リソース グループに対する予算を作成することもできます。 リソース グループに対する予算を作成する場合は、 **[コストの管理と請求]** &gt; **[サブスクリプション]** に移動してサブスクリプションを選択し、 **[リソース グループ]** を選択してリソース グループを選択し、 **[予算]** を選択して予算を**追加**します。
+前の例では、サブスクリプションの予算を作成しました。 リソース グループに対する予算を作成することもできます。 リソース グループに対する予算を作成する場合は、 **[コストの管理と請求]** &gt; **[サブスクリプション]** に移動してサブスクリプションを選択し、 **[リソース グループ]** を選択してリソース グループを選択し、 **[予算]** を選択して予算を**追加**します。
 
 ## <a name="costs-in-budget-evaluations"></a>予算評価におけるコスト
 
@@ -106,12 +110,12 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 
 
-アクション グループを作成または更新するには、予算の作成または編集時に **[アクション グループの管理]** をクリックします。
+アクション グループを作成または更新するには、予算の作成または編集時に **[アクション グループの管理]** を選択します。
 
 ![[アクション グループの管理] を示す予算作成の例](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
 
 
-次に、 **[アクション グループの追加]** をクリックし、アクション グループを作成します。
+次に、 **[アクション グループの追加]** を選択し、アクション グループを作成します。
 
 
 ![[アクション グループの追加] ボックスの画像](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
@@ -128,12 +132,42 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 予算とアクション グループの統合は、共通アラート スキーマが無効になっているアクション グループに対してのみ機能します。 スキーマの無効化の詳細については、「[共通アラート スキーマを有効にする方法](../../azure-monitor/platform/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema)」を参照してください。
 
+## <a name="create-and-edit-budgets-with-powershell"></a>PowerShell で予算を作成して編集する
+
+EA ユーザーは、Azure PowerShell モジュールを使用してプログラムから予算を作成、編集することができます。  最新バージョンの Azure PowerShell をダウンロードするには、次のコマンドを実行します。
+
+```azurepowershell-interactive
+install-module -name AzureRm
+```
+
+次に示したのは、予算を作成するコマンドの例です。
+
+```azurepowershell-interactive
+#Sign into Azure Powershell with your account
+
+Connect-AzureRmAccount
+
+#Select a subscription to to monitor with a budget
+
+select-AzureRmSubscription -Subscription "Your Subscription"
+
+#Create an action group email receiver and corresponding action group
+
+$email1 = New-AzureRmActionGroupReceiver -EmailAddress test@test.com -Name EmailReceiver1
+$ActionGroupId = (Set-AzureRmActionGroup -ResourceGroupName YourResourceGroup -Name TestAG -ShortName TestAG -Receiver $email1).Id
+
+#Create a monthly budget that sends an email and triggers an Action Group to send a second email. Make sure the StartDate for your monthly budget is set to the first day of the current month. Note that Action Groups can also be used to trigger automation such as Azure Functions or Webhooks.
+
+New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -StartDate 2020-02-01 -TimeGrain Monthly -EndDate 2022-12-31 -ContactEmail test@test.com -NotificationKey Key1 -NotificationThreshold 0.8 -NotificationEnabled -ContactGroup $ActionGroupId
+```
+
 ## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * Azure portal で予算を作成する
+> * PowerShell で予算を作成して編集する
 > * 予算を編集する
 
 次のチュートリアルに進んで、コスト管理データの定期的なエクスポートを作成してください。

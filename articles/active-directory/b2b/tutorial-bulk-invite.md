@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 9/19/2019
+ms.date: 2/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c78d2a8b4ccc51bc7afaef82a6c0dd609acdcab9
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c429648adeb0c81799bff2dca1650de965395a60
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76908838"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166453"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>チュートリアル:Azure AD B2B コラボレーション ユーザーを一括で招待する (プレビュー)
 
@@ -27,7 +27,7 @@ ms.locfileid: "76908838"
 
 > [!NOTE]
 > 2019 年 12 月 22 日の時点では、一括招待ユーザー (プレビュー) 機能は一時的に無効になっています。
-> 現在、この機能が再び有効になる日付は未定です。 
+> 現在、Azure portal でこの機能が再び有効になる日付は未定です。 PowerShell を使用してゲスト ユーザーを一括で招待するには、[B2B 一括招待に関するチュートリアル](bulk-invite-powershell.md)または [B2B コードと PowerShell のサンプル](code-samples.md)に関するページを参照してください。
 
 Azure Active Directory (Azure AD) B2B コラボレーションを使用して外部パートナーと協力する場合は、複数のゲスト ユーザーを組織に同時に招待できます。 このチュートリアルでは、Azure portal を使用して、外部ユーザーに招待状を一括送信する方法について説明します。 具体的には、以下を実行します。
 

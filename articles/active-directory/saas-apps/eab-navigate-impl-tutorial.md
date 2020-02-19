@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d02a9dbc5b89c4156b7ff8b6a49adb7f00fef83
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 465b41aaf3c3b16dcba489d1ea9ba951a3108c8e
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969744"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046594"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eab-navigate-impl"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と EAB Navigate IMPL の統合
 
@@ -29,7 +29,7 @@ ms.locfileid: "72969744"
 
 * EAB Navigate IMPL にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して EAB Navigate IMPL に自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -83,12 +83,15 @@ EAB Navigate IMPL に対する Azure AD SSO を構成してテストするには
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
-
+1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。 **[識別子 (エンティティ ID)]** ボックスの値として、厳密に「`https://impl.bouncer.eab.com`」と入力します。
+    
+    **[応答 URL (Assertion Consumer Service URL)]** ボックスに、次の両方の値を別々の行に入力します: `https://impl.bouncer.eab.com/sso/saml2/acs`
+    `https://impl.bouncer.eab.com/sso/saml2/acs/`
+    
     **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.navigate.impl.eab.com/` という形式で URL を入力します。
 
     > [!NOTE]
-    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[EAB Navigate IMPL クライアント サポート チーム](mailto:jmahoney@eab.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[EAB Navigate IMPL クライアント サポート チーム](mailto:EABTechSupport@eab.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
 
@@ -126,11 +129,11 @@ EAB Navigate IMPL に対する Azure AD SSO を構成してテストするには
 
 ## <a name="configure-eab-navigate-impl-sso"></a>EAB Navigate IMPL SSO の構成
 
-**EAB Navigate IMPL** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [EAB Navigate IMPL サポート チーム](mailto:jmahoney@eab.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**EAB Navigate IMPL** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [EAB Navigate IMPL サポート チーム](mailto:EABTechSupport@eab.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-eab-navigate-impl-test-user"></a>EAB Navigate IMPL テスト ユーザーの作成
 
-このセクションでは、EAB Navigate IMPL で B.Simon というユーザーを作成します。  [EAB Navigate IMPL サポート チーム](mailto:jmahoney@eab.com)と連携し、EAB Navigate IMPL プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、EAB Navigate IMPL で B.Simon というユーザーを作成します。  [EAB Navigate IMPL サポート チーム](mailto:EABTechSupport@eab.com)と連携し、EAB Navigate IMPL プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト
 

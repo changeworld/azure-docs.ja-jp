@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Python での Gremlin API の使用 - Azure Cosmos DB'
+title: クイック スタート:Python での Gremlin API の使用 - Azure Cosmos DB
 description: このクイック スタートでは、Azure portal および Python で Azure Cosmos DB Gremlin API を使ってコンソール アプリケーションを作成する方法を説明します
 author: luisbosquez
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: lbosq
-ms.openlocfilehash: 545f679b11295485567a817d144225b361a262ce
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b1286daaa76c71f88d44ea387a92876a8676783c
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815210"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062237"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>クイック スタート:Python と Azure portal を使用して Azure Cosmos DB にグラフ データベースを作成する
 
@@ -26,22 +26,16 @@ ms.locfileid: "68815210"
 > * [PHP](create-graph-php.md)
 >  
 
-このクイック スタートでは、Python と Azure Cosmos DB [Gremlin API](graph-introduction.md) を使って、GitHub から例を複製することによりコンソール アプリを作成する方法を説明します。 このクイックスタートでは、Web ベースの Azure Portal を使って Azure Cosmos DB アカウントを作成する手順についても説明します。   
+このクイックスタートでは、Azure portal から Azure Cosmos DB の Gremlin (グラフ) API アカウントを作成、管理し、GitHub からクローンした Python アプリを使用してデータを追加します。 Azure Cosmos DB は、マルチモデル データベース サービスです。グローバルな分散と水平方向のスケーリング機能を備えたドキュメント データベースやテーブル データベース、キーと値のデータベース、グラフ データベースをすばやく作成し、クエリを実行することができます。
 
-Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、テーブル、キーと値、およびグラフ データベースをすばやく作成およびクエリできます。  
+## <a name="prerequisites"></a>前提条件
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 または、Azure サブスクリプションなしで、[Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)こともできます。
+- [Python 3.5 以上](https://www.python.org/downloads/) ([pip](https://pip.pypa.io/en/stable/installing/) パッケージ インストーラーを含む)
+- [Gremlin 用 Python ドライバー](https://github.com/apache/tinkerpop/tree/master/gremlin-python)。
+- [Git](https://git-scm.com/downloads).
 
 > [!NOTE]
 > このクイックスタートには、2017 年 12 月 20 日以降に作成したグラフ データベース アカウントが必要です。 既存のアカウントは、一般公開に移行された後で Python をサポートするようになります。
-
-## <a name="prerequisites"></a>前提条件
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]または、Azure サブスクリプションを使わず、課金も契約もなしで [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。
-
-加えて次の作業を行います。
-* [Python](https://www.python.org/downloads/) バージョン v3.5 以降
-* [pip パッケージ マネージャー](https://pip.pypa.io/en/stable/installing/)
-* [Git](https://git-scm.com/)
-* [Gremlin 用 Python ドライバー](https://github.com/apache/tinkerpop/tree/master/gremlin-python)
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 
@@ -77,9 +71,9 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ## <a name="review-the-code"></a>コードの確認
 
-この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 スニペットはすべて、C:\git-samples\azure-cosmos-db-graph-python-getting-started\ フォルダーの connect.py ファイルからのものです。 関心がない場合は、「[接続文字列の更新](#update-your-connection-information)」に進んでください。 
+この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 スニペットはすべて、*C:\git-samples\azure-cosmos-db-graph-python-getting-started\\* フォルダーの *connect.py* ファイルからのものです。 関心がない場合は、「[接続文字列の更新](#update-your-connection-information)」に進んでください。 
 
-* Gremlin の `client` は、`connect.py` の 104 行目で初期化されます。
+* Gremlin の `client` は、*connect.py* の 104 行目で初期化されます。
 
     ```python
     ...
@@ -89,7 +83,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
     ...
     ```
 
-* `connect.py` ファイルの先頭で、Gremlin の一連のステップが宣言されています。 これらは、`client.submitAsync()` メソッドを使って実行されます。
+* *connect.py* ファイルの先頭で、Gremlin の一連のステップが宣言されています。 これらは、`client.submitAsync()` メソッドを使って実行されます。
 
     ```python
     client.submitAsync(_gremlin_cleanup_graph)
@@ -99,13 +93,13 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ここで Azure Portal に戻り、接続情報を取得して、アプリにコピーします。 これらの設定により、アプリはホストされているデータベースと通信できるようになります。
 
-1. [Azure Portal](https://portal.azure.com/) で **[キー]** をクリックします。 
+1. [Azure portal](https://portal.azure.com/) の Azure Cosmos DB アカウントで、 **[キー]** を選択します。 
 
     URI の値の最初の部分をコピーします。
 
     ![Azure Portal の [キー] ページでアクセス キーを表示およびコピーする](./media/create-graph-python/keys.png)
 
-2. connect.py ファイルを開き、104 行目の `<YOUR_ENDPOINT>` に URI の値を貼り付けます。
+2. *connect.py* ファイルを開き、104 行目の `<YOUR_ENDPOINT>` に URI の値を貼り付けます。
 
     ```python
     client = client.Client('wss://<YOUR_ENDPOINT>.gremlin.cosmosdb.azure.com:443/','g', 
@@ -133,7 +127,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
         password="<YOUR_PASSWORD>")
     ```
 
-4. Azure Portal でコピー ボタンを使って PRIMARY KEY をコピーし、`password=<YOUR_PASSWORD>` パラメーターの `<YOUR_PASSWORD>` に貼り付けます。
+4. **[キー]** ページでコピー ボタンを使って PRIMARY KEY をコピーし、`password=<YOUR_PASSWORD>` パラメーターの `<YOUR_PASSWORD>` に貼り付けます。
 
     `client` オブジェクトの定義全体は、次のコードのようになります。
     ```python
@@ -142,7 +136,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
         password="asdb13Fadsf14FASc22Ggkr662ifxz2Mg==")
     ```
 
-6. `connect.py` ファイルを保存します。
+6. *connect.py* ファイルを保存します。
 
 ## <a name="run-the-console-app"></a>コンソール アプリの実行
 
@@ -175,7 +169,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 頂点とエッジが挿入されたら、データ エクスプローラーに戻り、グラフに追加された頂点を確認して、データ ポイントを追加することができます。
 
-1. **[データ エクスプローラー]** をクリックし、**sample-graph** を展開して、 **[グラフ]** 、 **[フィルターの適用]** の順にクリックします。 
+1. Azure portal の Azure Cosmos DB アカウントで **[データ エクスプローラー]** を選択し、**sample-graph** を展開して **[グラフ]** 、 **[フィルターの適用]** の順に選択します。 
 
    ![Azure Portal のデータ エクスプローラーで新しいドキュメントを作成する](./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png)
 
@@ -183,15 +177,15 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
    ![Azure Portal のデータ エクスプローラーにおけるグラフの新しい頂点](./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png)
 
-3. 新しいユーザーを何人か追加してみます。 グラフにデータを追加するには、 **[New Vertex]\(新しい頂点\)** ボタンをクリックします。
+3. 新しいユーザーを何人か追加してみます。 グラフにデータを追加するには、 **[New Vertex]\(新しい頂点\)** ボタンを選択します。
 
    ![Azure Portal のデータ エクスプローラーで新しいドキュメントを作成する](./media/create-graph-python/azure-cosmosdb-data-explorer-new-vertex.png)
 
 4. 「*person*」というラベルを入力します。
 
-5. **[プロパティの追加]** をクリックして、次の各プロパティを追加します。 グラフ内の person ごとに一意のプロパティを作成できることに注目してください。 必須のキーは id のみです。
+5. **[プロパティの追加]** を選択して、次の各プロパティを追加します。 グラフ内の person ごとに一意のプロパティを作成できることに注目してください。 必須のキーは id のみです。
 
-    key|value|メモ
+    key|value|Notes
     ----|----|----
     pk|/pk| 
     id|ashley|頂点の一意の識別子。 id を指定しなかった場合は、自動的に生成されます。
@@ -201,28 +195,28 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
     > [!NOTE]
     > このクイックスタートでは、パーティション分割されていないコレクションを作成します。 ただし、コレクションの作成段階でパーティション キーを指定することによって、パーティション分割されたコレクションを作成した場合は、新たに作成する各頂点のキーとして、パーティション キーを追加する必要があります。 
 
-6. Click **OK**. 画面サイズを大きくしないと、画面下部の **[OK]** が見えない場合があります。
+6. **[OK]** を選択します。 画面サイズを大きくしないと、画面下部の **[OK]** が見えない場合があります。
 
-7. もう一度 **[New Vertex]\(新しい頂点\)** をクリックして、新しいユーザーを追加します。 
+7. もう一度 **[New Vertex]\(新しい頂点\)** を選択して、新しいユーザーを追加します。 
 
 8. 「*person*」というラベルを入力します。
 
-9. **[プロパティの追加]** をクリックして、次の各プロパティを追加します。
+9. **[プロパティの追加]** を選択し、次の各プロパティを追加します。
 
-    key|value|メモ
+    key|value|Notes
     ----|----|----
     pk|/pk| 
     id|rakesh|頂点の一意の識別子。 id を指定しなかった場合は、自動的に生成されます。
     gender|male| 
     school|MIT| 
 
-10. Click **OK**. 
+10. **[OK]** を選択します。 
 
-11. 既定の `g.V()` フィルターで **[フィルターの適用]** ボタンをクリックして、グラフ内のすべての値を表示します。 すると、 **[結果]** リストにすべてのユーザーが表示されます。 
+11. 既定の `g.V()` フィルターで **[フィルターの適用]** ボタンを選択して、グラフ内のすべての値を表示します。 すると、 **[結果]** リストにすべてのユーザーが表示されます。 
 
-    追加したデータが多くなってきたら、フィルターを使って結果を制限することができます。 既定では、データ エクスプローラーは `g.V()` を使ってグラフのすべての頂点を取得します。 `g.V().count()` などの他の[グラフ クエリ](tutorial-query-graph.md)に変更して、グラフ内のすべての頂点の数を JSON 形式で取得できます。 フィルターを変更した場合、フィルターを `g.V()` に戻して **[フィルターの適用]** をクリックし、もう一度すべての結果を表示します。
+    追加したデータが多くなってきたら、フィルターを使って結果を制限することができます。 既定では、データ エクスプローラーは `g.V()` を使ってグラフのすべての頂点を取得します。 `g.V().count()` などの他の[グラフ クエリ](tutorial-query-graph.md)に変更して、グラフ内のすべての頂点の数を JSON 形式で取得できます。 フィルターを変更した場合、フィルターを `g.V()` に戻して **[フィルターの適用]** を選択し、もう一度すべての結果を表示します。
 
-12. これで rakesh と ashley を接続できる状態になりました。 **[結果]** リストで **[ashley]** が選択されていることを確認し、右下の **[Targets]\(ターゲット\)** の横にある編集ボタンをクリックします。 ウィンドウの幅を広げないと **[プロパティ]** 領域が見えない場合があります。
+12. これで rakesh と ashley を接続できる状態になりました。 **[結果]** リストで **[ashley]** が選択されていることを確認し、右下の **[Targets]\(ターゲット\)** の横にある編集ボタンを選択します。 ウィンドウの幅を広げないと **[プロパティ]** 領域が見えない場合があります。
 
     ![グラフ内の頂点のターゲットを変更します。](./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png)
 
@@ -234,19 +228,19 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
     ![データ エクスプローラーで接続されている 2 つの頂点](./media/create-graph-python/azure-cosmosdb-graph-explorer.png)
 
-    以上で、このチュートリアルのリソース作成部分は完了です。 引き続き、グラフへの頂点の追加、既存の頂点の変更、またはクエリの変更を行うことができます。 次に、Azure Cosmos DB が提供するメトリックを確認し、リソースをクリーンアップします。 
+以上で、このチュートリアルのリソース作成部分は完了です。 引き続き、グラフへの頂点の追加、既存の頂点の変更、またはクエリの変更を行うことができます。 次に、Azure Cosmos DB が提供するメトリックを確認し、リソースをクリーンアップします。 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してグラフを作成し、アプリを実行する方法を説明しました。 これで Gremlin を使用して、さらに複雑なクエリを作成し、強力なグラフ トラバーサル ロジックを実装できます。 
+このクイックスタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してグラフを作成し、グラフにデータを追加する Python アプリを実行する方法を説明しました。 これで Gremlin を使用して、さらに複雑なクエリを作成し、強力なグラフ トラバーサル ロジックを実装できます。 
 
 > [!div class="nextstepaction"]
 > [Gremlin を使用したクエリ](tutorial-query-graph.md)

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/13/2019
+ms.date: 02/12/2020
 ms.author: erhopf
-ms.openlocfilehash: c9175f1f592c72e047b02a06a174d3013b0c7ef6
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 8035cce1482c3c441cc956272a7300f0d0ea8194
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815312"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189073"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-linux"></a>クイック スタート:Linux 上で Speech Devices SDK サンプル アプリを実行する
 
@@ -38,7 +38,7 @@ ms.locfileid: "74815312"
 * Speech サービス用の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
 * Java 用の [Speech Devices SDK](https://aka.ms/sdsdk-download-JRE) の最新バージョンをダウンロードし、.zip を作業ディレクトリに解凍します。
    > [!NOTE]
-   > JRE-Sample-Release.zip ファイルには、JRE サンプル アプリが含まれており、このクイックスタートでは、アプリが /home/wcaltest/JRE-Sample-Release に抽出されることを前提としています
+   > このクイックスタートでは、アプリが /home/wcaltest/JRE-Sample-Release に抽出されることを前提としています
 
 Eclipse を開始する前に、これらの依存関係がインストールされていることを確認してください。
 
@@ -96,7 +96,7 @@ Eclipse を開始する前に、これらの依存関係がインストールさ
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.7.0</version>
+             <version>1.9.0</version>
         </dependency>
     </dependencies>
    ```
@@ -188,7 +188,7 @@ Eclipse を開始する前に、これらの依存関係がインストールさ
      java -jar SpeechDemo.jar
      ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [リリース ノートを確認します](devices-sdk-release-notes.md)

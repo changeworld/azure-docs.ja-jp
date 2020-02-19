@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/29/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03de10f9ea3bc3bf13a0fffaf22805412456a6f9
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8e185f4065fee0399104feadc27f038dd9c4a612
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76991904"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046689"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eab-navigate"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と EAB Navigate の統合
 
@@ -45,7 +45,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * EAB Navigate では、**SP** Initiated SSO がサポートされます
 
-* EAB Navigate を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
 ## <a name="adding-eab-navigate-from-the-gallery"></a>ギャラリーからの EAB Navigate の追加
 
@@ -57,7 +58,6 @@ Azure AD への EAB Navigate の統合を構成するには、ギャラリーか
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**EAB Navigate**」と入力します。
 1. 結果パネルで **[EAB Navigate]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-eab-navigate"></a>EAB Navigate の Azure AD シングル サインオンの構成とテスト
 
@@ -82,32 +82,21 @@ EAB Navigate に対する Azure AD SSO を構成してテストするには、�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、**サービス プロバイダー メタデータ ファイル**がある場合は、次の手順に従います。
+1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
+    
+    **[識別子 (エンティティ ID)]** ボックスの値として、厳密に「`https://bouncer.eab.com`」と入力します。
+    
+    **[応答 URL (Assertion Consumer Service URL)]** ボックスに、次の両方の値を別々の行に入力します: `https://bouncer.eab.com/sso/saml2/acs`
+    `https://bouncer.eab.com/sso/saml2/acs/`
+    
+    **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.navigate.eab.com/` という形式で URL を入力します。
 
-    a. **[メタデータ ファイルをアップロードします]** をクリックします。
+    > [!NOTE]
+    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[EAB Navigate クライアント サポート チーム](mailto:EABTechSupport@eab.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-    ![メタデータ ファイルをアップロードする](common/upload-metadata.png)
+1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
 
-    b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
-
-    ![メタデータ ファイルを選択する](common/browse-upload-metadata.png)
-
-    c. メタデータ ファイルが正常にアップロードされると、**識別子**の値が、[基本的な SAML 構成] セクションに自動的に設定されます。
-
-    ![[EAB Navigate のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
-
-    **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.navigate.eab.com` という形式で URL を入力します。
-
-    > [!Note]
-    > **識別子**の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。 サインオン URL は実際の値ではありません。 この値を実際のサインオン URL で更新してください。 この値を取得するには、[EAB Navigate クライアント サポート チーム](mailto:jmahoney@eab.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
-
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (未加工)]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
-
-    ![証明書のダウンロードのリンク](common/certificateraw.png)
-
-1. **[EAB Navigate のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
-
-    ![構成 URL のコピー](common/copy-configuration-urls.png)
+    ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -141,13 +130,13 @@ EAB Navigate に対する Azure AD SSO を構成してテストするには、�
 
 ## <a name="configure-eab-navigate-sso"></a>EAB Navigate SSO の構成
 
-**EAB Navigate** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (未加工)** と Azure portal からコピーした適切な URL を [EAB Navigate サポート チーム](mailto:jmahoney@eab.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**EAB Navigate** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [EAB Navigate サポート チーム](mailto:EABTechSupport@eab.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-eab-navigate-test-user"></a>EAB Navigate テスト ユーザーの作成
 
-このセクションでは、EAB Navigate で B.Simon というユーザーを作成します。 [EAB Navigate サポート チーム](mailto:jmahoney@eab.com)と連携し、EAB Navigate プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、EAB Navigate で B.Simon というユーザーを作成します。 [EAB Navigate サポート チーム](mailto:EABTechSupport@eab.com)と連携し、EAB Navigate プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
-## <a name="test-sso"></a>SSO のテスト 
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 

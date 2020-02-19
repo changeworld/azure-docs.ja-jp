@@ -2,14 +2,14 @@
 author: trrwilson
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 5/23/2019
+ms.date: 02/10/2020
 ms.author: travisw
-ms.openlocfilehash: 5c0b6400c6dc346597329c82e82801403a888a4d
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: a7ce6bc2b6fa272c8dd3c4bf95bc06a37d1fe28f
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675557"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119752"
 ---
 1. Android Studio を起動し、**ウェルカム** ウィンドウの **[Start a new Android Studio project]\(新しい Android Studio プロジェクトを開始する\)** を選択します。
 
@@ -27,7 +27,7 @@ Android Studio が新しい Android プロジェクトを準備するまでし�
 
 [!INCLUDE [License notice](cognitive-services-speech-service-license-notice.md)]
 
-Cognitive Services Speech SDK の最新バージョンは 1.7.0 です。
+Cognitive Services Speech SDK の最新バージョンは 1.9.0 です。
 
 Android 用 Speech SDK は、必要なライブラリと必要な Android アクセス許可を含む [AAR (Android ライブラリ)](https://developer.android.com/studio/projects/android-library) としてパッケージ化されます。
 Maven リポジトリ (https:\//csspeechstorage.blob.core.windows.net/maven/) でホストされています。
@@ -42,12 +42,12 @@ Speech SDK を使用するためにプロジェクトを設定します。 Andro
 
    ![[Library dependency]\(ライブラリ依存関係\) のスクリーンショット](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. 表示されたウィンドウで、Android 用の Speech SDK の名前とバージョンを入力します (*com.microsoft.cognitiveservices.speech:client-sdk:1.7.0*)。 **[OK]** をクリックします。
+1. 表示されたウィンドウで、Android 用の Speech SDK の名前とバージョンを入力します (*com.microsoft.cognitiveservices.speech:client-sdk:1.9.0*)。 **[OK]** をクリックします。
    次に示すように、依存関係の一覧に Speech SDK が追加されます。
 
    ![Speech SDK が含まれた依存関係の一覧のスクリーンショット](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-08-dependency-added-1.0.0.png)
 
-1. **[プロパティ]** タブを選択します。 **[Source Compability]\(ソース互換性\)** と **[Target Compatibility]\(ターゲット互換性\)** はどちらも **[1.8]** を選択します。
+1. **[プロパティ]** タブを選択します。 **[Source Compability]\(ソース互換性\)** と **[Target Compatibility]\(ターゲット互換性\)** はどちらも **[1.9]** を選択します。
 
    ![[Source Compability]\(ソース互換性\) と [Target Compatibility]\(ターゲット互換性\) のスクリーンショット](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-09-dependency-added.png)
 

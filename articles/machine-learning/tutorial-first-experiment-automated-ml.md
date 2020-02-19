@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 93cbf8e9e60ef48e1ff3516dd4e9e123f70e0f42
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/04/2020
+ms.openlocfilehash: 70fcdb1c22664a0bd3091fea88c8e23e3d1b81e5
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982434"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048286"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>チュートリアル:自動化された機械学習を使用して最初の分類モデルを作成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -69,11 +69,15 @@ Azure Machine Learning Studio で、次の実験の設定を完了し、ステ�
 
 1. 新しいデータセットを作成するには、 **[+ データセットの作成]** ドロップダウンで **[From local files]\(ローカル ファイルから\)** を選択します。 
 
+    1. **[基本情報]** フォームでデータセットに名前を付け、必要に応じて説明を入力します。 現在、Azure Machine Learning Studio の自動 ML でサポートされるデータセットは表形式のみであるため、データセットの種類は既定で "表形式" に設定されます。
+
+    1. 左下の **[次へ]** を選択します。
+
+    1. **[データストアとファイルの選択]** フォームで、ワークスペースの作成時に自動的に設定された既定のデータストア、**workspaceblobstore (Azure Blob Storage)** を選択します。 データ ファイルは、ここにアップロードすることで、ワークスペースから利用できるようになります。
+
     1. **[参照]** を選択します。
     
     1. ローカル コンピューター上の **bankmarketing_train.csv** ファイルを選択します。 これは、[前提条件](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv)としてダウンロードしたファイルです。
-
-    1. データセットの種類には **[表形式]** を選択します。 
 
     1. データセットに一意の名前を付け、必要に応じて説明を入力します。 
 
@@ -136,18 +140,18 @@ Azure Machine Learning Studio で、次の実験の設定を完了し、ステ�
         ブロックされたアルゴリズム | トレーニング ジョブから除外するアルゴリズム| なし
         終了条件| 条件が満たされると、トレーニング ジョブが停止します。 |トレーニング&nbsp;ジョブ時間 (時間):&nbsp;1 <br> メトリック&nbsp;スコアしきい値:&nbsp;なし
         検証 | クロス検証タイプとテストの回数を選択します。|検証タイプ:<br>&nbsp;k 分割交差検証&nbsp; <br> <br> 検証の数: 2
-        コンカレンシー| 実行される並列イテレーションと、イテレーションごとに使用されるコアの最大数| &nbsp;最大同時イテレーション数:&nbsp;5<br> &nbsp;イテレーションごとのコアの最大数:&nbsp;&nbsp;なし
+        コンカレンシー| イテレーションごとに実行される並列イテレーションの最大数| &nbsp;最大同時イテレーション数:&nbsp;5
         
         **[保存]** を選択します。
 
-1. **[完了]** を選択して実験を実行します。 実験の準備が開始されると、 **[Run Detail]\(実行の詳細\)** 画面が開き **[Run status]\(実行の状態\)** が表示されます。
+1. **[完了]** を選択して実験を実行します。 実験の準備が開始されると、 **[Run Detail]\(実行の詳細\)** 画面が開いて、一番上に **[Run status]\(実行の状態\)** が表示されます。
 
 >[!IMPORTANT]
 > 実験の実行の準備に、**10 から 15 分**かかります。
 > 実行の開始後、**各イテレーションのためにさらに 2、3 分**かかります。  
 > 実験の進行に応じて実行の状態を確認するには、 **[最新の情報に更新]** を定期的に選択します。
 >
-> 運用環境では、しばらく席を離れるかもしれません。 ただし、このチュートリアルでは、他のイテレーションが実行中でも、アルゴリズムのテストが終わり次第、[モデル] タブで調査することをお勧めします。 
+> 運用環境では、しばらく席を離れるかもしれません。 ただし、このチュートリアルでは、他のイテレーションが実行中でも、アルゴリズムのテストが終わりしだい、 **[モデル]** タブで調査することをお勧めします。 
 
 ##  <a name="explore-models"></a>モデルを調査する
 
@@ -165,15 +169,15 @@ Azure Machine Learning Studio で自動機械学習を使用すると、わず�
 
 この実験における Web サービスへのデプロイは、定期預金の潜在顧客を特定するためのスケーラブルな反復 Web ソリューションを金融機関が持つことを意味します。 
 
-実行が完了したら、 **[Run Detail]\(実行の詳細\)** ページに戻り、 **[モデル]** タブを選択します。 **[最新の情報に更新]** を選択します。 
+実行が完了したら、 **[Run Detail]\(実行の詳細\)** ページに戻り、 **[モデル]** タブを選択します。
 
 この実験では、**VotingEnsemble** は **AUC_weighted** メトリックに基づいて最適なモデルと見なされます。  このモデルをデプロイしますが、デプロイには完了まで約 20 分かかることにご留意ください。 デプロイ プロセスには、モデルを登録したり、リソースを生成したり、Web サービス用にそれらを構成したりすることを含む、いくつかの手順が伴います。
 
-1. 左下隅の **[Deploy Best Model]\(最適なモデルのデプロイ\)** ボタンを選択します。
+1. 左下隅の **[Deploy best model]\(最適なモデルのデプロイ\)** ボタンを選択します。
 
 1. **[Deploy a model]\(モデルのデプロイ\)** ペインに次のように入力します。
 
-    フィールド| 値
+    フィールド| Value
     ----|----
     デプロイ名| my-automl-deploy
     デプロイの説明| 初めての自動機械学習実験のデプロイ
@@ -216,7 +220,7 @@ Azure Machine Learning Studio で自動機械学習を使用すると、わず�
 > [!div class="nextstepaction"]
 > [Web サービスを使用する](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
-+ [前処理](how-to-create-portal-experiments.md#preprocess)についてさらに理解を深める。
++ [特徴付け](how-to-create-portal-experiments.md#featurization)についてさらに理解を深める。
 + [データ プロファイル](how-to-create-portal-experiments.md#profile)についてさらに理解を深める。
 + [自動機械学習](concept-automated-ml.md)についてさらに理解を深める。
 + 分類メトリックとグラフの詳細については、「[自動化機械学習の結果の概要](how-to-understand-automated-ml.md#classification)」の記事を参照してください。

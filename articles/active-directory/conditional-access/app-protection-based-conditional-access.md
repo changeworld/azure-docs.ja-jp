@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbbe882acda532a54333ca8013693121d5b677b7
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3c853ef3a5a40381aba4e1c13eaf9ad7d8653170
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964091"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186631"
 ---
 # <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>条件付きアクセスを使用してクラウド アプリへのアクセスにアプリ保護ポリシーを要求する (プレビュー)
 
@@ -36,12 +36,12 @@ Azure Active Directory の条件付きアクセスでは、クラウド アプ�
 
 ![条件付きアクセス](./media/app-protection-based-conditional-access/05.png)
 
-ポリシーで保護されたクライアント アプリの一覧については、[アプリ保護ポリシーの要件](technical-reference.md#approved-client-app-requirement)に関するページを参照してください。
+ポリシーで保護されたクライアント アプリの一覧については、[アプリ保護ポリシーの要件](concept-conditional-access-grant.md)に関するページを参照してください。
 
 アプリ保護ベースの条件付きアクセス ポリシーは、[デバイス ベースの条件付きアクセス ポリシー](require-managed-devices.md)などの他のポリシーと組み合わせることができます。 これにより、個人デバイスと会社のデバイスの両方のデータを柔軟に保護することができます。
 
 > [!NOTE]
-> 招待側の組織は B2B ユーザーのホーム組織内を認識できない、条件付きアクセス アプリ保護ポリシーを B2B ユーザーに適用することはできません。
+> 招待側の組織は B2B ユーザーのホーム組織内を認識できないため、条件付きアクセス アプリ保護ポリシーを B2B ユーザーに適用することはできません。
 
 ## <a name="benefits-of-app-protection-based-conditional-access-requirement"></a>アプリ保護ベースの条件付きアクセスを要求する利点
 
@@ -55,8 +55,8 @@ Azure Active Directory の条件付きアクセスでは、クラウド アプ�
 
 この記事では、次の内容を熟知していることを前提としています。
 
-- [アプリ保護ポリシーの要件](technical-reference.md#app-protection-policy-requirement)に関するテクニカル リファレンス。
-- [承認されたクライアント アプリの要件](technical-reference.md#approved-client-app-requirement)に関するテクニカル リファレンス。
+- [アプリ保護ポリシーの要件](concept-conditional-access-grant.md)。
+- [承認されたクライアント アプリの要件](concept-conditional-access-grant.md)。
 - [Azure Active Directory の条件付きアクセス](overview.md)の基本的な概念。
 - [条件付きアクセス ポリシーの構成](app-based-mfa.md)方法。
 
@@ -91,7 +91,7 @@ Azure Active Directory の条件付きアクセスでは、クラウド アプ�
 
 ### <a name="configuration"></a>構成
 
-**手順 1:Exchange Online 用の Azure AD 条件付きアクセス ポリシーを構成する**
+**ステップ 1:Exchange Online 用の Azure AD 条件付きアクセス ポリシーを構成する**
 
 この手順の条件付きアクセス ポリシーの場合、次のコンポーネントを構成します。
 
@@ -138,7 +138,7 @@ Azure Active Directory の条件付きアクセスでは、クラウド アプ�
 
       ![条件付きアクセス](./media/app-protection-based-conditional-access/05.png)
 
-**手順 3:iOS および Android クライアント アプリケーション用の Intune アプリ保護ポリシーを構成する**
+**ステップ 3:iOS および Android クライアント アプリケーション用の Intune アプリ保護ポリシーを構成する**
 
 ![条件付きアクセス](./media/app-protection-based-conditional-access/09.png)
 
@@ -161,7 +161,7 @@ Azure Active Directory の条件付きアクセスでは、クラウド アプ�
 
 ### <a name="configuration"></a>構成
 
-**手順 1:Exchange Online 用の Azure AD 条件付きアクセス ポリシーを構成する**
+**ステップ 1:Exchange Online 用の Azure AD 条件付きアクセス ポリシーを構成する**
 
 この手順の条件付きアクセス ポリシーの場合、次のコンポーネントを構成します。
 
@@ -215,7 +215,7 @@ Azure Active Directory の条件付きアクセスでは、クラウド アプ�
 
       ![条件付きアクセス](./media/app-protection-based-conditional-access/11.png)
 
-**手順 3:iOS および Android クライアント アプリケーション用の Intune アプリ保護ポリシーを構成する**
+**ステップ 3:iOS および Android クライアント アプリケーション用の Intune アプリ保護ポリシーを構成する**
 
 ![条件付きアクセス](./media/app-protection-based-conditional-access/09.png)
 
@@ -242,7 +242,7 @@ Azure Active Directory の条件付きアクセスでは、クラウド アプ�
 
 ### <a name="configuration"></a>構成
 
-**手順 1:Exchange Online 用の Azure AD 条件付きアクセス ポリシーを構成する**
+**ステップ 1:Exchange Online 用の Azure AD 条件付きアクセス ポリシーを構成する**
 
 この手順の条件付きアクセス ポリシーの場合、次のコンポーネントを構成します。
 
@@ -295,7 +295,7 @@ Azure Active Directory の条件付きアクセスでは、クラウド アプ�
  
       ![条件付きアクセス](./media/app-protection-based-conditional-access/13.png)
 
-**手順 3:iOS および Android クライアント アプリケーション用の Intune アプリ保護ポリシーを構成する**
+**ステップ 3:iOS および Android クライアント アプリケーション用の Intune アプリ保護ポリシーを構成する**
 
 ![条件付きアクセス](./media/app-protection-based-conditional-access/09.png)
 
@@ -330,7 +330,7 @@ Azure Active Directory の条件付きアクセスでは、クラウド アプ�
 
 ### <a name="configuration"></a>構成
 
-**手順 1:Exchange Online と SharePoint Online 用の Azure AD 条件付きアクセス ポリシーを構成する**
+**ステップ 1:Exchange Online と SharePoint Online 用の Azure AD 条件付きアクセス ポリシーを構成する**
 
 この手順の条件付きアクセス ポリシーの場合、次のコンポーネントを構成します。
 
@@ -364,7 +364,7 @@ Azure Active Directory の条件付きアクセスでは、クラウド アプ�
 
 詳細については、[Microsoft Intune を使用したアプリおよびデータの保護](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- 条件付きアクセス ポリシーの構成方法を確認する場合は、[Azure Active Directory の条件付きアクセスを使用した特定のアプリケーションに対する MFA の要求](app-based-mfa.md)に関する記事をご覧ください。
+- 条件付きアクセス ポリシーの構成方法を把握するには、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](app-based-mfa.md)」を参照してください。
 - 環境に適用する条件付きアクセス ポリシーを構成する準備ができたら、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)」をご覧ください。

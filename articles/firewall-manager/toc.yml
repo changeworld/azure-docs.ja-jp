@@ -7,10 +7,14 @@
 - name: チュートリアル
   expanded: true
   items:
-    - name: クラウド ネットワークのセキュリティ保護 - ポータル
+    - name: 仮想 WAN のセキュリティ保護 - ポータル
       href: secure-cloud-network.md
+    - name: ハブ仮想ネットワークのセキュリティ保護 - ポータル
+      href: secure-hybrid-network.md
 - name: 概念
   items:
+    - name: ポリシーの概要
+      href: policy-overview.md
     - name: セキュリティ保護付き仮想ハブとは
       href: secured-virtual-hub.md
     - name: 一般的なデプロイ プロセス
@@ -19,11 +23,13 @@
       href: trusted-security-partners.md
     - name: ルール処理ロジック
       href: rule-processing.md
+    - name: アーキテクチャ オプション
+      href: vhubs-and-vnets.md
 - name: 操作方法ガイド
   items:
     - name: 信頼されたセキュリティ パートナーのデプロイ
       href: deploy-trusted-security-partner.md
-    - name: ファイアウォール ポリシーへの移行
+    - name: ファイアウォール ポリシーへの移行 - PowerShell
       href: migrate-to-policy.md
 - name: リファレンス
   items:

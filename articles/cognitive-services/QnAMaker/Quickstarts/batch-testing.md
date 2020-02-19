@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 12/19/2019
+ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 9483db2187c05fe8e0f4fa2d41c17b8748ba3db7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e16166c741b99c1af5b36f2c7ccd25b01f7544ba
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451107"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108997"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>クイック スタート:質問のバッチと期待される回答を使用したナレッジ ベースのテスト
 
@@ -24,7 +24,7 @@ QnA Maker バッチ テスト ツールを使用して、期待される回答�
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [QnA Maker サービスを作成する](create-publish-knowledge-base.md#create-a-new-qna-maker-knowledge-base)か、既存のサービスを使用する (このクイックスタートで使用するサンプル ドキュメントの言語には英語を使用します)。
+* [QnA Maker サービスを作成する](create-publish-knowledge-base.md)か、既存のサービス (言語には英語が使用されています) を使用する。
 * [複数ターン サンプル `.docx` ファイル](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)をダウンロードする
 * [バッチ テスト ツール](https://aka.ms/qnamakerbatchtestingtool)をダウンロードし、`.zip` ファイルから実行可能ファイルを抽出する。
 
@@ -41,9 +41,16 @@ QnA Maker ポータルに[サインイン](https://www.qnamaker.ai/)します。
     * Azure QnA サービス名
     * 言語 - 英語
 1. 実際のナレッジ ベースの名前として「`Multi-turn batch test quickstart`」と入力します。
-1. **手順 4.** では、 **[Enable multi-turn extraction from URLs, .pdf or .docx files]\(URL、.pdf、または .docx ファイルからの複数ターンの抽出を有効にする\)** チェック ボックスをオンにします。
-1. **既定の回答テキスト**として「`Quickstart - can't find answer`」と入力します。 運用環境のナレッジ ベースでは、この情報はユーザーにとってもっと有益にする必要がありますが、このクイックスタートでは単純な応答で十分です。
-1. **手順 4.** で、 **[+ ファイルの追加]** を選択し、前提条件に記載されている、ダウンロードした `.docx` ファイルを選択します。
+
+1. **[Step 4]\(手順 4\)** で、次の表を使用して設定を構成します。
+
+    |設定|Value|
+    |--|--|
+    |**Enable multi-turn extraction from URLs, .pdf or .docx files (URL、.pdf、または .docx ファイルからの複数ターンの抽出を有効にする)**|オン|
+    |**Default answer text (既定の回答テキスト)**| `Batch test - default answer not found.`|
+    |**+ Add File (+ ファイルの追加)**|前提条件に記載されている、ダウンロードした `.docx` ファイルを選択します。|
+    |**Chit-chat (おしゃべり)**|**[Professional]\(専門家\)** を選択します。|
+
 1. **手順 5.** で、 **[Create your KB]\(KB の作成\)** を選択します。
 
     作成プロセスが完了すると、ポータルに編集可能なナレッジ ベースが表示されます。
@@ -63,7 +70,7 @@ QnA Maker ポータルに[サインイン](https://www.qnamaker.ai/)します。
 
 バッチ テスト ツールを使用するために、テキスト エディターを使用して `batch-test-data-1.tsv` という名前のファイルを作成します。 このファイルには、タブで区切られた次の列が必要です。
 
-|TSV 入力ファイルのフィールド|メモ|例|
+|TSV 入力ファイルのフィールド|Notes|例|
 |--|--|--|
 |ナレッジ ベース ID|[発行] ページに表示されていたナレッジ ベース ID。 1 つのファイルで異なるナレッジ ベース ID を使用することにより、1 つのファイルで同じサービス内の複数のナレッジ ベースを同時にテストします。|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (`POST` の一部として表示されている 36 文字の文字列) |
 |質問|ユーザーが入力すると思われる質問テキスト。 最大 1,000 文字。|`How do I sign out?`|
@@ -160,7 +167,7 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
 * **チャット ログ ファイルの処理** - 以前に受けたことのない質問の上位の回答を確認します。最も一般的な状況は、チャット ボットのユーザーからの質問など、クエリのログ ファイルを処理する必要がある場合です。 必要な列のみを含むバッチ ファイル テストを作成します。 このテストでは、各質問の上位の回答が返されます。 これは、上位の回答が正しい回答であるという意味ではありません。 このテストが完了したら、検証テストに移ります。
 * **検証テスト** - 期待される回答を検証します。 このテストでは、バッチ テスト内の質問および一致する期待される回答がすべて検証される必要があります。 これには、手動プロセスが必要になる場合があります。
 
-次の手順では、チャット ログを処理するシナリオを想定しています。 
+次の手順では、チャット ログを処理するシナリオを想定しています。
 
 1. 省略可能なデータを含む新しいバッチ テスト ファイル `batch-test-data-2.tsv` を作成します。 元のバッチ テストの入力ファイルの 6 行を追加した後、各行に対してメタデータ、上位、および QnA セット ID を追加します。
 

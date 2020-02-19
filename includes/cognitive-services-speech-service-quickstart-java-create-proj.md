@@ -2,14 +2,14 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 2/20/2019
+ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 3c88b8cb40660327d2a4c28cc80b7ebd5956b189
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d0ab828a2574914c511042a16704c4b553960b84
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467264"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119685"
 ---
 1. Eclipse を起動します。
 
@@ -35,7 +35,7 @@ ms.locfileid: "73467264"
 
    ![パッケージ エクスプローラーのスクリーンショット](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-04-convert-to-maven-project.png)
 
-1. **[Create new POM]** ウィンドウが表示されます。 **[Group Id]\(グループ ID\)** フィールドに、「*com.microsoft.cognitiveservices.speech.samples*」と入力し、 **[Artifact Id]\(成果物 ID\)** フィールドに、「*quickstart*」と入力します。 続けて、 **[完了]** を選択します。
+1. **[Create new POM]** ウィンドウが表示されます。 **[Group Id]\(グループ ID\)** フィールドに、「*com.microsoft.cognitiveservices.speech.samples*」と入力し、 **[Artifact Id]\(成果物 ID\)** フィールドに、「*quickstart*」と入力します。 **[完了]** を選択します。
 
    ![[Create new POM] ウィンドウのスクリーンショット](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-05-configure-maven-pom.png)
 
@@ -45,7 +45,7 @@ ms.locfileid: "73467264"
 
      [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#repositories)]
 
-   * 依存関係として Speech SDK バージョン 1.7.0 を指定した `dependencies` 要素も追加します。
+   * 依存関係として Speech SDK バージョン 1.9.0 を指定した `dependencies` 要素も追加します。
 
      [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#dependencies)]
 

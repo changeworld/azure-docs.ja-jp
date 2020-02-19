@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfe426a6b3d087683e615d3212e0693b185c40f0
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: dc99e23e1b885de25bd2159d7916790cad851108
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212386"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150286"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>チュートリアル:Azure Active Directory SSO と Jamf Pro の統合
 
@@ -100,7 +100,7 @@ B. Simon というテスト ユーザーを使用して、Jamf Pro に対する 
 1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。
 1. **[ユーザー]** プロパティで、以下の手順を実行します。
-   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。
    1. **[ユーザー名]** フィールドに、「<name>@<companydomain>.<extension>」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **作成** を選択します。
@@ -123,7 +123,7 @@ B. Simon というテスト ユーザーを使用して、Jamf Pro に対する 
 1. SAML アサーション内にロール値が必要な場合、 **[ロールの選択]** ダイアログ ボックスで、ユーザーに適したロールを選択します。 その後、画面の下部にある **[選択]** ボタンを選択します。
 1. **[割り当ての追加]** ダイアログ ボックスで、 **[割り当て]** ボタンを選択します。
 
-## <a name="configure-sso-in-jamf-pro"></a>Jamf Pro の SSO の構成 
+## <a name="configure-sso-in-jamf-pro"></a>Jamf Pro の SSO の構成
 
 1. Jamf Pro 内での構成を自動化するには、 **[拡張機能のインストール]** を選択して **My Apps Secure Sign-in ブラウザー拡張機能**をインストールします。
 
@@ -147,30 +147,32 @@ B. Simon というテスト ユーザーを使用して、Jamf Pro に対する 
 
     ![Jamf Pro の [Single Sign-On]\(シングル サインオン\) ページ](./media/jamfprosamlconnector-tutorial/configure3.png)
 
-    a. **[Enable Single Sign-On Authentication]\(シングル サインオン認証を有効にする\)** チェック ボックスをオンにします。
+  a. **[編集]** を選択します。
 
-    b. **[IDENTITY PROVIDER]\(ID プロバイダー\)** ドロップダウン メニューから **[Other]\(その他\)** を選択します。
+  b. **[Enable Single Sign-On Authentication]\(シングル サインオン認証を有効にする\)** チェック ボックスをオンにします。
 
-    c. **[OTHER PROVIDER]\(その他のプロバイダー\)** フィールドに、「**Azure AD**」と入力します。
+    c. **[Identity Provider]\(ID プロバイダー\)** ドロップダウン メニューからオプションとして **[Azure]** を選択します。
 
     d. **[ENTITY ID]\(エンティティ ID\)** の値をコピーして、Azure portal の **[基本的な SAML 構成]** セクションにある **[識別子 (エンティティ ID)]** フィールドに貼り付けます。
 
     > [!NOTE]
     > `<SUBDOMAIN>` フィールドの値を使用して、Azure portal の **[基本的な SAML 構成]** セクションにおけるサインオン URL と応答 URL を完成させる必要があります。
 
-    e. **[IDENTITY PROVIDER METADATA SOURCE]\(ID プロバイダー メタデータ ソース\)** ドロップダウン メニューから **[Metadata URL]\(メタデータ URL\)** を選択します。 表示されたフィールドに、Azure portal からコピーした **[アプリのフェデレーション メタデータ URL]** の値を貼り付けます。
+    e. **[Identity Provider Metadata Source]\(ID プロバイダー メタデータ ソース\)** ドロップダウン メニューから **[Metadata URL]\(メタデータ URL\)** を選択します。 表示されたフィールドに、Azure portal からコピーした **[アプリのフェデレーション メタデータ URL]** の値を貼り付けます。
 
-7. 同じページで下へスクロールし、 **[User Mapping]\(ユーザー マッピング\)** セクションを表示します。 その後、次の手順を行います。   
+    f. (任意) トークンの有効期限の値を編集するか、[Disable SAML token expiration]\(SAML トークンの有効期限を無効にする\) を選択します。
 
-    ![Jamf Pro の [Single Sign-On]\(シングル サインオン\) ページの [User Mapping]\(ユーザー マッピング\) セクション](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_single.png)
+7. 同じページで下へスクロールし、 **[User Mapping]\(ユーザー マッピング\)** セクションを表示します。 その後、次の手順を行います。
 
-    a. **[IDENTITY PROVIDER USER MAPPING]\(ID プロバイダー ユーザー マッピング\)** で **[NameID]** オプションを選択します。 既定では、このオプションは **[NameID]** に設定されていますが、カスタム属性を定義することもできます。
+    ![Jamf Pro の [Single Sign-On]\(シングル サインオン\) ページの [User Mapping]\(ユーザー マッピング\) セクション](./media/jamfprosamlconnector-tutorial/tutorial-jamfprosamlconnector-single.png)
 
-    b. **[JAMF PRO USER MAPPING]\(JAMF PRO ユーザー マッピング\)** の **[Email]\(電子メール\)** を選択します。 Jamf Pro は、IdP によって送信された SAML 属性をまずユーザー別でマップし、次にグループ別でマップします。 ユーザーが Jamf Pro にアクセスしようとすると、Jamf Pro がユーザーに関する情報を ID プロバイダーから取得し、それを Jamf Pro の全ユーザー アカウントと照合します。 受信したユーザー アカウントが見つからない場合は、グループ名でのマッチングが試みられます。
+    a. **[Identity Provider User Mapping]\(ID プロバイダー ユーザー マッピング\)** で **[NameID]** オプションを選択します。 既定では、このオプションは **[NameID]** に設定されていますが、カスタム属性を定義することもできます。
+
+    b. **[Jamf Pro User Mapping]\(JAMF PRO ユーザー マッピング\)** の **[Email]\(電子メール\)** を選択します。 Jamf Pro は、IdP によって送信された SAML 属性をまずユーザー別でマップし、次にグループ別でマップします。 ユーザーが Jamf Pro にアクセスしようとすると、Jamf Pro がユーザーに関する情報を ID プロバイダーから取得し、それを Jamf Pro の全ユーザー アカウントと照合します。 受信したユーザー アカウントが見つからない場合は、グループ名でのマッチングが試みられます。
 
     c. **[IDENTITY PROVIDER GROUP ATTRIBUTE NAME]\(ID プロバイダー グループ属性名\)** フィールドに値 `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups` を貼り付けます。
 
-    d. **[Allow users to bypass the Single Sign-On authentication]\(ユーザーにシングル サインオン認証のバイパスを許可する\)** を選択します。 この場合、ユーザーは ID プロバイダーのサインイン ページにリダイレクトされて認証されるのではなく、Jamf Pro に直接サインインできるようになります。 ユーザーが ID プロバイダーを経由して Jamf Pro にアクセスしようとした場合は、IdP によって開始される SSO 認証と承認が発生します。
+    d. 同じページで、 **[Security]\(セキュリティ\)** セクションまで下にスクロールし、 **[Allow users to bypass the Single Sign-On authentication]\(ユーザーがシングル サインオン認証をバイパスできるようにする\)** を選択します。 この場合、ユーザーは ID プロバイダーのサインイン ページにリダイレクトされて認証されるのではなく、Jamf Pro に直接サインインできるようになります。 ユーザーが ID プロバイダーを経由して Jamf Pro にアクセスしようとした場合は、IdP によって開始される SSO 認証と承認が発生します。
 
     e. **[保存]** を選択します。
 
@@ -216,7 +218,7 @@ Azure AD ユーザーが Jamf Pro にサインインできるようにするに�
 
     g. **[保存]** を選択します。
 
-## <a name="test-the-sso-configuration"></a>SSO の構成のテスト 
+## <a name="test-the-sso-configuration"></a>SSO の構成のテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
@@ -231,4 +233,3 @@ Azure AD ユーザーが Jamf Pro にサインインできるようにするに�
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD で Jamf を試す](https://aad.portal.azure.com/)
-

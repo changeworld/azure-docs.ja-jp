@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - RBAC と Resource Manager テンプレートを使用して Azure リソースへのアクセス権をユーザーに付与する
+title: チュートリアル:RBAC と Resource Manager テンプレートを使用して Azure リソースへのアクセス権をユーザーに付与する
 description: このチュートリアルの Azure Resource Manager テンプレートを使用することにより、ロールベースのアクセス制御 (RBAC) を使用して、Azure リソースへのアクセス権をユーザーに付与する方法について説明します。
 services: role-based-access-control,azure-resource-manager
 documentationCenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 05/15/2019
 ms.author: rolyon
-ms.openlocfilehash: ed143f85b4372348baa1d74b4ec7a7447943a74f
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 96ca4f65d2def5f5004388c533410f09cc2a71fa
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74418491"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138213"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-resource-manager-template"></a>チュートリアル:RBAC と Resource Manager テンプレートを使用して Azure リソースへのアクセス権をユーザーに付与する
 
@@ -63,7 +63,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ## <a name="validate-the-deployment"></a>デプロイの検証
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 最後の手順で作成したリソース グループを開きます。 既定の名前は、**rg** が付加されたプロジェクト名です。
 1. 左側のメニューから **[アクセス制御 (IAM)]** を選択します。
 1. **[ロールの割り当て]** を選択します。 
@@ -80,7 +80,7 @@ $resourceGroupName = "${projectName}rg"
 Remove-AzResourceGroup -Name $resourceGroupName
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [チュートリアル:RBAC と Azure PowerShell を使用して Azure リソースへのアクセス権をユーザーに付与する](tutorial-role-assignments-user-powershell.md)

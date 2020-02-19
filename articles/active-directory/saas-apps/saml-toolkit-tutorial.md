@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/12/2019
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1aa2d58a40c623cc451ca30aaa9d75a4a6b3d4c0
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 7902112c1694bacfeb45b5f20db80d5136642169
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983879"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047942"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-azure-ad-saml-toolkit"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Azure AD SAML Toolkit の統合
 
@@ -45,6 +45,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Azure AD SAML Toolkit では、**SP** Initiated SSO がサポートされます
+* Azure AD SAML Toolkit を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="adding-azure-ad-saml-toolkit-from-the-gallery"></a>ギャラリーからの Azure AD SAML Toolkit の追加
 
@@ -76,17 +77,17 @@ Azure AD SAML Toolkit に対する Azure AD SSO を構成してテストする�
 
 1. [Azure portal](https://portal.azure.com/) の **Azure AD SAML Toolkit** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。 設定は、SAML Toolkit の SAML 構成ページを使用して取得できます。 
+1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 1. **[基本的な SAML 構成]** ページで、次のフィールドの値を入力します。
 
-    a. **[サインオン URL]** ボックスに URL として「`https://samltoolkit.azurewebsites.net/SAML/Login/<3digitnumber>`」と入力します。
+    a. **[サインオン URL]** ボックスに URL として「`https://samltoolkit.azurewebsites.net/`」と入力します。
 
     b. **[識別子 (エンティティ ID)]** ボックスに、`https://samltoolkit.azurewebsites.net` という URL を入力します。
 
-    c. **[応答 URL]** ボックスに、`https://samltoolkit.azurewebsites.net/SAML/Consume/<3digitnumber>` という URL を入力します。
+    c. **[応答 URL]** ボックスに、`https://samltoolkit.azurewebsites.net/SAML/Consume` という URL を入力します。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (未加工)]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -173,3 +174,7 @@ Azure AD SAML Toolkit に対する Azure AD SSO を構成してテストする�
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD で Azure AD SAML Toolkit を試す](https://aad.portal.azure.com/)
+
+- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [高度な可視性と制御によって Azure AD SAML Toolkit を保護する方法](https://docs.microsoft.com/cloud-app-security/protect-azure)

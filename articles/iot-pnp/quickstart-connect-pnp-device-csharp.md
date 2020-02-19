@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: b86f58a1b6b9e3a952861dbe7dbeef4dfe06a644
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 90d39635ac6302f816f39ca19cc00a39cfbbf850
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964836"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121016"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-c"></a>クイック スタート:サンプルの IoT プラグ アンド プレイ プレビュー デバイス アプリケーションを IoT Hub に接続する (C#)
 
@@ -25,7 +25,7 @@ ms.locfileid: "76964836"
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイックスタートを完了するには、お使いの開発用マシンに .NET Core 2.2 をインストールする必要があります。 「[.NET Core 2.2 のダウンロード](https://dotnet.microsoft.com/download/dotnet-core/2.2)」から、複数のプラットフォームに対応する .NET Core SDK のこのバージョンをダウンロードできます。
+このクイックスタートを完了するには、お使いの開発用マシンに .NET Core 3.0 をインストールする必要があります。 「[.NET Core 3.0 のダウンロード](https://dotnet.microsoft.com/download/dotnet-core/3.0)」から、複数のプラットフォームに対応する .NET Core SDK のこのバージョンをダウンロードできます。
 
 ローカル ターミナル ウィンドウで次のコマンドを実行すると、開発マシン上の .NET のバージョンを確認できます。 
 
@@ -39,7 +39,7 @@ dotnet --version
 
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
-次のコマンドを実行して、ご使用のハブに対する "_IoT ハブ接続文字列_" を取得します (後で使用するためにメモします)。
+次のコマンドを実行して、ご使用のハブに対する _IoT ハブ接続文字列_を取得します (後で使用するためにメモします)。
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
@@ -63,7 +63,7 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp
 
 1. ローカル ターミナル ウィンドウで、クローンしたリポジトリのフォルダーに移動し、さらに **azure-iot-samples-csharp/digitaltwin/Samples/device/EnvironmentalSensorSample** フォルダーに移動します。 
 
-1. "_デバイス接続文字列_" を構成します。
+1. _デバイス接続文字列_を構成します。
 
     ```cmd/sh
     set DIGITAL_TWIN_DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>
@@ -72,7 +72,7 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp
 1. サンプル アプリケーションを実行して、IoT ハブにテレメトリを送信する IoT プラグ アンド プレイ デバイスをシミュレートします。 必要なパッケージをビルドし、サンプル アプリケーションを実行するために、同じターミナル ウィンドウで次のコマンドを使用します。
 
     ```cmd\sh
-        dotnet run
+    dotnet run --framework=netcoreapp3.0
     ```
 
 デバイスが正常に登録され、クラウドからの更新を待機していることを示すメッセージが表示されます。 これは、デバイスがコマンドとプロパティの更新情報を受信する準備が整い、ハブへの利用統計情報の送信を開始したことを示します。 次の手順を完了するまで、サンプルを実行したままにしておきます。

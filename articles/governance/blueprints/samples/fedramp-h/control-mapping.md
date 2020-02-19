@@ -1,14 +1,14 @@
 ---
-title: サンプル - FedRAMP High ブループリント - コントロール マッピング
+title: FedRAMP High ブループリント サンプルのコントロール
 description: FedRAMP High ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy にマップされています。
 ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: 4b4d644497eb98ed88f57803e99cf27a419523fe
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: cceca23e4bdc749c553eaf41b5f9599be3c9bf7d
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76941350"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150614"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>FedRAMP High ブループリント サンプルのコントロール マッピング。
 
@@ -261,7 +261,7 @@ Azure の分散型サービス拒否 (DDoS) Standard レベルでは、Basic サ
 
 - インターネットに接続している仮想マシン用のネットワーク セキュリティ グループ ルールは、強化する必要がある
 - インターネットに接続するエンドポイント経由のアクセスを制限する必要がある
-- IaaS 上の Web アプリケーションに対する NSG 規則を強化する必要がある
+- Web ポートは VM に関連付けられたネットワーク セキュリティ グループで制限する必要がある
 - ストレージ アカウントに対する制限のないネットワーク アクセスの監査
 
 ## <a name="sc-7-3-boundary-protection--access-points"></a>SC-7 (3) 境界保護 | アクセス ポイント

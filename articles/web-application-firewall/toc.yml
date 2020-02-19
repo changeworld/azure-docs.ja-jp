@@ -68,6 +68,8 @@
               href: ./ag/tutorial-restrict-web-traffic-powershell.md
             - name: Azure CLI
               href: ./ag/tutorial-restrict-web-traffic-cli.md
+        - name: サイトごとのポリシー
+          href: ./ag/per-site-policies.md
         - name: WAF ポリシーを移行する
           href: ./ag/migrate-policy.md
         - name: WAF ルールをカスタマイズする

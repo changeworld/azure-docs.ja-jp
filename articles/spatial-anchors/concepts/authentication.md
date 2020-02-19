@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 823ce8d523a231875705d7c4d3f46cfd8fd24994
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3de84e2d814acfca67bc722243a90fa41f6536e1
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74270581"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161683"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure Spatial Anchors に対する認証と承認
 
@@ -45,38 +45,38 @@ Azure AD 認証トークンは、次の 2 つの方法で取得できます。
 
 SDK には、アカウント キーを使用した認証の組み込みのサポートがあり、cloudSession オブジェクトに対して AccountKey プロパティを設定するだけで済みます。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 this.cloudSession.Configuration.AccountKey = @"MyAccountKey";
 ```
 
-# <a name="objctabobjc"></a>[ObjC](#tab/objc)
+# <a name="objc"></a>[ObjC](#tab/objc)
 
 ```objc
 _cloudSession.configuration.accountKey = @"MyAccountKey";
 ```
 
-# <a name="swifttabswift"></a>[Swift](#tab/swift)
+# <a name="swift"></a>[Swift](#tab/swift)
 
 ```swift
 _cloudSession!.configuration.accountKey = "MyAccountKey"
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```java
 mCloudSession.getConfiguration().setAccountKey("MyAccountKey");
 ```
 
-# <a name="c-ndktabcpp"></a>[C++ NDK](#tab/cpp)
+# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
 
 ```cpp
 auto configuration = cloudSession_->Configuration();
 configuration->AccountKey(R"(MyAccountKey)");
 ```
 
-# <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
+# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 auto configuration = m_cloudSession.Configuration();
@@ -92,10 +92,17 @@ configuration.AccountKey(LR"(MyAccountKey)");
 
 ## <a name="azure-ad-user-authentication"></a>Azure AD ユーザー認証
 
-Azure Active Directory ユーザーをターゲットとするアプリケーションに対して推奨される方法は、ユーザーに Azure AD トークンを使用することです。これは次のドキュメント ([https://docs.microsoft.com/azure/active-directory/develop/v1-overview](../../active-directory/develop/v1-overview.md)) で説明されているように、ADAL ライブラリを使用して取得できます。「Quick starts」 (クイック スタート) の下に記載されている手順に従う必要があります。これには次が含まれます。
+Azure Active Directory ユーザーを対象とするアプリケーションでは、ユーザーに対して Azure AD トークンを使用することをお勧めします。これは、[MSAL ライブラリ](../../active-directory/develop/msal-overview.md)を使用して取得できます。 以下を含む、[アプリの登録のクイックスタート](../../active-directory/develop/quickstart-register-app.md)に関するページに一覧表示されている手順に従ってください。
 
 1. Azure portal での構成
     1.  Azure AD でアプリケーションを**ネイティブ アプリケーション**として登録します。 登録の一環として、アプリケーションをマルチ テナントにする必要があるかどうかを決定し、アプリケーションに許可するリダイレクト URL を提供する必要があります。
+        1.  **[API のアクセス許可]** タブに切り替えます
+        2.  **[アクセス許可の追加]** を選択します
+            1.  **[所属する組織で使用している API]** タブの下にある **[Mixed Reality Resource Provider]\(Mixed Reality リソース プロバイダー\)** を選択します
+            2.  **[委任されたアクセス許可]** を選択します
+            3.  **[mixedreality]** の下にある **[mixedreality.signin]** のチェックボックスをオンにします
+            4.  **[アクセス許可の追加]** を選択する
+        3.  **[管理者の同意の付与]** を選択します
     2.  アプリケーションまたはユーザーにご使用のリソースへのアクセス権を付与します。
         1.  Azure portal で、ご使用の Spatial Anchors リソースに移動します
         2.  **[アクセス制御 (IAM)]** タブに切り替えます
@@ -111,40 +118,40 @@ Azure Active Directory ユーザーをターゲットとするアプリケーシ
         3.  ご使用のアプリケーションで **[すべての Microsoft アカウント ユーザー]** がサポートされる場合は、この値を **[共通]** に置き換えます
     3.  トークンの要求で、**リソース**を "https://sts.mixedreality.azure.com" に設定します。 この "リソース" は、アプリケーションが Azure Spatial Anchors サービスに対してトークンを要求していることを Azure AD に示します。
 
-これで、アプリケーションが ADAL から Azure AD トークンを取得できるようになるはずです。その Azure AD トークンをクラウド セッション構成オブジェクトで **authenticationToken** として設定できます。
+これで、アプリケーションで MSAL から Azure AD トークンを取得できるようになるはずです。その Azure AD トークンを、クラウド セッション構成オブジェクトで **authenticationToken** として設定できます。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 this.cloudSession.Configuration.AuthenticationToken = @"MyAuthenticationToken";
 ```
 
-# <a name="objctabobjc"></a>[ObjC](#tab/objc)
+# <a name="objc"></a>[ObjC](#tab/objc)
 
 ```objc
 _cloudSession.configuration.authenticationToken = @"MyAuthenticationToken";
 ```
 
-# <a name="swifttabswift"></a>[Swift](#tab/swift)
+# <a name="swift"></a>[Swift](#tab/swift)
 
 ```swift
 _cloudSession!.configuration.authenticationToken = "MyAuthenticationToken"
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```java
 mCloudSession.getConfiguration().setAuthenticationToken("MyAuthenticationToken");
 ```
 
-# <a name="c-ndktabcpp"></a>[C++ NDK](#tab/cpp)
+# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
 
 ```cpp
 auto configuration = cloudSession_->Configuration();
 configuration->AuthenticationToken(R"(MyAuthenticationToken)");
 ```
 
-# <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
+# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 auto configuration = m_cloudSession.Configuration();
@@ -161,7 +168,7 @@ Azure Spatial Anchors を利用してアプリを運用環境にデプロイす�
 
 ここでは、アプリが独自のメカニズム (例:Microsoft アカウント、PlayFab、Facebook、Google ID、カスタムのユーザー名/パスワードなど) を使用してそのバックエンド サービスを認証することを前提としています。 ユーザーがバックエンド サービスに対して認証されると、そのサービスで Azure AD トークンを取得して、それを Azure Spatial Anchors のアクセス トークンと交換して、それをクライアント アプリケーションに返すことができます。
 
-Azure AD アクセス トークンは、次のドキュメント ([https://docs.microsoft.com/azure/active-directory/develop/v1-overview](../../active-directory/develop/v1-overview.md)) で説明されているように、ADAL ライブラリを使用して取得されます。「Quick starts」 (クイック スタート) の下に記載されている手順に従う必要があります。これには次が含まれます。
+Azure AD アクセス トークンは、[MSAL ライブラリ](../../active-directory/develop/msal-overview.md)を使用して取得されます。 以下を含む、[アプリの登録のクイックスタート](../../active-directory/develop/quickstart-register-app.md)に関するページに一覧表示されている手順に従ってください。
 
 1.  Azure portal での構成:
     1.  Azure AD でアプリケーションを登録します。
@@ -204,38 +211,38 @@ MS-CV: 05JLqWeKFkWpbdY944yl7A.0
 
 その MR トークンは、その後、クライアントに返されます。 その後、クライアント アプリでそれをクラウド セッション構成でアクセス トークンとして設定できます。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 this.cloudSession.Configuration.AccessToken = @"MyAccessToken";
 ```
 
-# <a name="objctabobjc"></a>[ObjC](#tab/objc)
+# <a name="objc"></a>[ObjC](#tab/objc)
 
 ```objc
 _cloudSession.configuration.accessToken = @"MyAccessToken";
 ```
 
-# <a name="swifttabswift"></a>[Swift](#tab/swift)
+# <a name="swift"></a>[Swift](#tab/swift)
 
 ```swift
 _cloudSession!.configuration.accessToken = "MyAccessToken"
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```java
 mCloudSession.getConfiguration().setAccessToken("MyAccessToken");
 ```
 
-# <a name="c-ndktabcpp"></a>[C++ NDK](#tab/cpp)
+# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
 
 ```cpp
 auto configuration = cloudSession_->Configuration();
 configuration->AccessToken(R"(MyAccessToken)");
 ```
 
-# <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
+# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 auto configuration = m_cloudSession.Configuration();
@@ -252,7 +259,7 @@ configuration.AccessToken(LR"(MyAccessToken)");
 - **Spatial Anchors アカウント共同作成者**: このロールが割り当てられているアプリケーションまたはユーザーは、空間アンカーの作成とクエリの実行はできますが、削除はできません。
 - **Spatial Anchors アカウント閲覧者**: このロールが割り当てられているアプリケーションまたはユーザーは、空間アンカーのクエリのみを実行できますが、新しく作成したり既存のものを削除したり、空間アンカーでメタデータを更新したりすることはできません。 これは通常、一部のユーザーが環境をキュレートし、他のユーザーは以前にその環境に配置されていたアンカーの呼び戻しのみができる環境で使用されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Spatial Anchors を使用して初めてのアプリを作成します。
 

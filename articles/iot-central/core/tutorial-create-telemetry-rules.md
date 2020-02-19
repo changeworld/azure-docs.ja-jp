@@ -3,29 +3,27 @@ title: チュートリアル - Azure IoT Central アプリケーションでル�
 description: このチュートリアルでは、Azure IoT Central のルールを使用して、ほぼリアルタイムでデバイスを監視し、ルールがトリガーされたときに、電子メールの送信などのアクションを自動的に呼び出す方法について説明します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 96514a224960240f2187164aac7c79c1659880e6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: f61a41fa89c7006341db928472f6b20d272bc550
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026355"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167384"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>チュートリアル:Azure IoT Central アプリケーションで規則を作成して通知を設定する
 
 *この記事は、オペレーター、ビルダー、および管理者に適用されます。*
 
-
-
 Azure IoT Central を使用して、接続されたデバイスをリモートで監視できます。 Azure IoT Central のルールを使用すると、ほぼリアルタイムでデバイスを監視し、電子メールの送信などのアクションを自動的に呼び出すことができます。 数回のクリックで、デバイスからテレメトリを監視する条件を定義したり、対応するアクションを構成したりできます。 この記事では、デバイスから送信されたテレメトリを監視するルールを作成する方法について説明します。
 
 デバイスは、テレメトリを使用してデバイスから数値データを送信します。 選択したデバイスのテレメトリが、指定したしきい値を超えると、ルールがトリガーされます。
 
-このチュートリアルでは、環境センサー デバイスの温度が華氏 70&deg; を超えたら電子メールを送信するルールを作成します。
+このチュートリアルでは、シミュレートされた環境センサー デバイスの温度が華氏 70&deg; を超えたら電子メールを送信するルールを作成します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -36,7 +34,7 @@ Azure IoT Central を使用して、接続されたデバイスをリモート�
 
 ## <a name="prerequisites"></a>前提条件
 
-作業を開始する前に、「[Azure IoT Central アプリケーションを作成する](./quick-deploy-iot-central.md)」と「[シミュレートされたデバイスを IoT Central アプリケーションに追加する](./quick-create-pnp-device.md)」のクイックスタートを完了して、作業に使用する**環境センサー** デバイス テンプレートを作成する必要があります。
+作業を開始する前に、「[Azure IoT Central アプリケーションの作成](./quick-deploy-iot-central.md)」および「[IoT Central アプリケーションにシミュレートされたデバイスを追加する](./quick-create-pnp-device.md)」クイックスタートを完了して、作業に使用する **MXChip IoT DevKit** デバイス テンプレートを作成する必要があります。
 
 ## <a name="create-a-rule"></a>規則を作成する
 
@@ -52,7 +50,7 @@ Azure IoT Central を使用して、接続されたデバイスをリモート�
 
 1. ルールを識別するために「_Temperature monitor_」という名前を入力して、Enter キーを押します。
 
-1. **[Environmental Sensor]\(環境センサー\)** デバイス テンプレートを選択します。 既定では、このルールはデバイス テンプレートに関連付けられたすべてのデバイスに自動的に適用されます。 デバイスのサブセットのためのフィルター処理を行うには、 **[+ フィルター]** を選択し、デバイス プロパティを使用してデバイスを識別します。 ルールを無効にするには、ルール ヘッダーで **[有効/無効]** ボタンを切り替えます。
+1. **MXChip IoT DevKit** デバイス テンプレートを選択します。 既定では、このルールはデバイス テンプレートに関連付けられたすべてのデバイスに自動的に適用されます。 デバイスのサブセットのためのフィルター処理を行うには、 **[+ フィルター]** を選択し、デバイス プロパティを使用してデバイスを識別します。 ルールを無効にするには、ルール ヘッダーで **[有効/無効]** ボタンを切り替えます。
 
     ![フィルターと有効化](media/tutorial-create-telemetry-rules/device-filters.png)
 
@@ -77,7 +75,7 @@ Azure IoT Central を使用して、接続されたデバイスをリモート�
 
 ### <a name="configure-actions"></a>アクションを構成する
 
-条件を定義したら、ルールが適用されたときに実行するアクションを設定します。 アクションは、ルールに指定されたすべての条件が true と評価されたときに呼び出されます。 現時点では、利用可能な唯一のアクションは電子メールです。
+条件を定義したら、ルールが適用されたときに実行するアクションを設定します。 アクションは、ルールに指定されたすべての条件が true と評価されたときに呼び出されます。
 
 1. **[アクション]** セクションで **[+ 電子メール]** を選択します。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure SignalR Service サーバーレス クイック スタート - Java
+title: Java を使用した Azure Functions と SignalR Service によるチャット ルームの作成
 description: Azure SignalR Service と Azure Functions を使ってチャット ルームを作成する方法について説明します。
 author: sffamily
 ms.service: signalr
@@ -7,36 +7,34 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
-ms.openlocfilehash: 9e4e64b99a69e523547bae04146c7460d08bc1df
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 890fc381afe0146e721e084e2dcd7eae9215d004
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59261175"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083205"
 ---
-# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-java"></a>クイック スタート:Java を使用した Azure Functions と SignalR Service によるチャット ルームの作成
+# <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>クイック スタート:Java を使用した Azure Functions と SignalR Service によるチャット ルームの作成
 
-Azure SignalR Service を使用すると、アプリケーションにリアルタイム機能を簡単に追加できます。 Azure Functions は、インフラストラクチャを管理することなくコードを実行できるサーバーレス プラットフォームです。 このクイック スタートでは、SignalR Service および Functions を使用して、サーバーレスかつリアルタイムのチャット アプリケーションを構築する方法を説明します。
+Azure SignalR Service を使用すると、アプリケーションに対してリアルタイム機能を簡単に追加できます。Azure Functions は、インフラストラクチャを管理することなくコードを実行できるサーバーレス プラットフォームです。 このクイックスタートでは、Java で SignalR Service および Functions を使用して、サーバーレスかつリアルタイムのチャット アプリケーションを作成します。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートは、macOS、Windows、または Linux で実行できます。
+- コード エディター ([Visual Studio Code](https://code.visualstudio.com/) など)。
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing)。 Azure 関数アプリをローカルに実行する際に使用します。
 
-[Visual Studio Code](https://code.visualstudio.com/) などのコード エディターがインストールされていることを確認してください。
+   > [!NOTE]
+   > Java では、必須の SignalR Service バインディングが Azure Function Core Tools バージョン 2.4.419 (ホスト バージョン 2.0.12332) 以降でのみサポートされます。
 
-Azure Functions アプリをローカルで実行するために、[Azure Functions Core Tools (v2)](https://github.com/Azure/azure-functions-core-tools#installing) をインストールします。
+   > [!NOTE]
+   > Azure Functions Core Tools では、拡張機能をインストールするために、[.NET Core SDK](https://www.microsoft.com/net/download) がインストールされている必要があります。 ただし、JavaScript Azure Functions アプリの構築には、.NET の知識は必要ありません。
+
+- [Java Developer Kit](https://www.azul.com/downloads/zulu/)、バージョン 8
+- [Apache Maven](https://maven.apache.org)、バージョン 3.0 以降
 
 > [!NOTE]
-> Java で SignalR Service バインディングを使用するには、Azure Functions Core Tools のバージョン 2.4.419 (ホストのバージョン 2.0.12332) を使用していることを確認してください。
-
-現在の Azure Functions Core Tools では、拡張機能をインストールするために [.NET Core SDK](https://www.microsoft.com/net/download) をインストールする必要があります。 ただし、JavaScript Azure Functions アプリの構築には、.NET の知識は必要ありません。
-
-Java で関数アプリを開発するには、以下のものがインストールされている必要があります。
-
-* [Java Developer Kit](https://www.azul.com/downloads/zulu/) バージョン 8。
-* [Apache Maven](https://maven.apache.org) バージョン 3.0 以降。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+> このクイック スタートは、macOS、Windows、または Linux で実行できます。
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
@@ -85,7 +83,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Maven を使ってリアルタイムのサーバーレス アプリケーションを構築して実行しました。 次に、Java Azure Functions を一から作成する方法について説明します。
 

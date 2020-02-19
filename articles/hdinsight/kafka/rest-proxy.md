@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: b53fc3af71ce872c9ca9f513139c8179fd4165ed
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: bc6859d29a574cea0d97989977ba9a333b20f6c4
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031403"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157137"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>REST プロキシを使用して Azure HDInsight で Apache Kafka クラスターを操作する
 
@@ -24,6 +24,8 @@ Kafka REST プロキシを使用すると、HTTP 経由の REST API を使用し
 
 REST プロキシを使用しない場合、Kafka クライアントは、Kafka クラスターまたはピアリングされた VNet と同じ VNet に存在する必要があります。 REST プロキシを使用すると、任意の場所に配置されたデータ プロデューサーまたはコンシューマーに接続できます。 REST プロキシをデプロイすると、クラスターの新しいパブリック エンドポイントが作成されます。このエンドポイントは、ポータルの設定で確認できます。
 
+![Kafka REST プロキシのアーキテクチャ](./media/rest-proxy/rest-proxy-architecture.png)
+
 API でサポートされている操作の詳細については、[Apache Kafka REST プロキシ API](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy) を参照してください。
 
 ### <a name="security"></a>Security
@@ -32,7 +34,7 @@ Kafka REST プロキシへのアクセスは Azure Active Directory セキュリ
 
 REST プロキシが有効な Kafka クラスターを作成する場合は、REST エンドポイントにアクセスする必要がある AAD セキュリティ グループを指定します。 REST プロキシにアクセスする必要がある Kafka クライアント (アプリケーション) は、グループの所有者によってこのグループに登録される必要があります。 グループの所有者は、ポータルまたは Powershell を使用してこれを行うことができます。
 
-REST プロキシ エンドポイントへの要求を行う前に、クライアント アプリケーションは、適切なセキュリティ グループのメンバーシップを確認するために OAuth トークンを取得する必要があります。 OAuth トークンのしくみについては、「[OAuth 2.0 コード付与フローを使用して Azure Active Directory Web アプリケーションへアクセスを承認する](../../active-directory/develop/v1-protocols-oauth-code.md)」を参照してください。 Python で OAuth トークンを取得する例については、[クライアント アプリケーションのサンプル](#client-application-sample)に関する記事を参照してください
+REST プロキシ エンドポイントへの要求を行う前に、クライアント アプリケーションは、適切なセキュリティ グループのメンバーシップを確認するために OAuth トークンを取得する必要があります。 OAuth トークンのしくみについては、「[OAuth 2.0 コード付与フローを使用して Azure Active Directory Web アプリケーションへアクセスを承認する](../../active-directory/azuread-dev/v1-protocols-oauth-code.md)」を参照してください。 Python で OAuth トークンを取得する例については、[クライアント アプリケーションのサンプル](#client-application-sample)に関する記事を参照してください
 
 クライアント アプリケーションが OAuth トークンを受け取ると、REST プロキシに対する HTTP 要求でそのトークンを渡す必要があります。
 

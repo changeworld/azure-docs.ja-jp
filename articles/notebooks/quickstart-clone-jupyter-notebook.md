@@ -3,24 +3,29 @@ title: Azure Notebooks プレビューを使用して GitHub から Jupyter ノ�
 description: 短時間で GitHub リポジトリから Jupyter ノートブックを複製し、ご自分の Azure Notebooks アカウントで実行します。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 8aa88008ece170a5eed7ab491e3318aed5168923
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d0f3a12ff04e115074c3821c5e29652484710bca
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647103"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064599"
 ---
 # <a name="quickstart-clone-a-notebook-in-azure-notebooks-preview"></a>クイック スタート:Azure Notebooks プレビューでノートブックを複製する
 
-多数のデータ サイエンティストと開発者が、さまざまな種類のプロジェクトのためのストレージとバージョン管理を提供する無料サービスである [GitHub リポジトリ](https://github.com)に自分のノートブックを格納しています。 GitHub は、ローカルで実行される Jupyter ノートブックで共同作業を行うための手段としてよく使用されます。 そのような場合は、コラボレーター全員がリポジトリのローカル コピーを保持し、そのコピーからノートブックを実行します。
+このクイックスタートでは、GitHub に格納されている Jupyter ノートブックを Azure Notebooks アカウントにコピーします。 
 
-複製では、GitHub のノートブックのコピーが Azure Notebooks アカウント内に作成されます。 この複製は元のリポジトリから独立しているため、変更は Azure Notebooks アカウントのみに格納され、元のリポジトリには影響しません。 複製はクラウド上に存在するため、他のコラボレータ―とプロジェクトを共有でき、コラボレーターはローカル コピーを作成する必要も、使用するコンピューターに Jupyter をインストールする必要もありません。 さらに、単にご自分のプロジェクトを始めるための出発点にしたり、データ ファイルを取得したりするために、ノートブックを複製する場合もあります。
+GitHub リポジトリは、Jupyter ノートブックのストレージとバージョン コントロールの役目をします。 コラボレーターは、リポジトリのローカル コピーを保持し、それらのコピーからノートブックを実行することができます。 Jupyter ノートブックを GitHub から Azure Notebooks アカウントにクローンすると、ノートブックの独立したコピーが作成されます。 変更は Azure Notebooks アカウントのみに格納され、元の GitHub リポジトリには影響しません。 
 
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+Azure Notebooks のクローンはクラウドに存在するため、コラボレーターと共有することができます。コラボレータはローカル コピーを作成する必要も、各自のコンピューターに Jupyter をインストールする必要もありません。 さらに、単にご自分のプロジェクトを始めるための出発点にしたり、データ ファイルを取得したりするために、ノートブックをクローンする場合もあります。 
+
+## <a name="prerequisites"></a>前提条件
+[なし] :
 
 ## <a name="clone-azure-cognitive-services-notebooks"></a>Azure Cognitive Services ノートブックを複製する
 
-1. [Azure Notebooks](https://notebooks.azure.com) に移動してサインインします (詳しくは、「[Quickstart - Sign in to Azure Notebooks](quickstart-sign-in-azure-notebooks.md)」(クイック スタート - Azure Notebook にサインインする) をご覧ください)。
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+1. [Azure Notebooks](https://notebooks.azure.com) に移動してサインインします 詳細については、[Azure Notebooks へのサインインに関するクイックスタート](quickstart-sign-in-azure-notebooks.md)を参照してください。
 
 1. パブリック プロファイル ページから、ページの上部にある **[マイ プロジェクト]** を選択します。
 
@@ -69,4 +74,4 @@ ms.locfileid: "75647103"
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [チュートリアル: 線形回帰を行う Jupyter ノートブックを作成して実行する](tutorial-create-run-jupyter-notebook.md)
+> [チュートリアル:線形回帰を行う Jupyter ノートブックを作成して実行する](tutorial-create-run-jupyter-notebook.md)

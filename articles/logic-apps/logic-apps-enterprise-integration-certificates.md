@@ -8,19 +8,19 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: 6c5de6eba000c9052c7eb7b31d75804b9f454607
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c1b48ae8191e2e5313d9037c791eca73c8a55691
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790680"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191382"
 ---
-# <a name="secure-b2b-messages-with-certificates"></a>証明書を使用して B2B メッセージをセキュリティで保護する
+# <a name="improve-security-for-b2b-messages-by-using-certificates"></a>証明書を使用して B2B メッセージのセキュリティを強化する
 
-B2B 通信の機密性を確保する必要がある場合は、統合アカウントに証明書を追加することで、エンタープライズ統合アプリ (具体的にはロジック アプリ) の B2B 通信をセキュリティで保護することができます。 証明書は、電子通信の参加者の ID を確認し、電子通信を次の方法で保護するためのデジタル ドキュメントです。
+B2B 通信の機密性を確保する必要がある場合は、統合アカウントに証明書を追加することで、エンタープライズ統合アプリ (具体的にはロジック アプリ) の B2B 通信のセキュリティを高めることができます。 証明書は、電子通信の参加者の ID を確認し、電子通信を次の方法で保護するためのデジタル ドキュメントです。
 
 * メッセージの内容を暗号化する。
-* メッセージにデジタル署名する。 
+* メッセージにデジタル署名する。
 
 エンタープライズ統合アプリでは、次の証明書を使うことができます。
 
@@ -34,7 +34,7 @@ B2B 通信の機密性を確保する必要がある場合は、統合アカウ�
 
 B2B 機能を備えたロジック アプリで "*パブリック証明書*" を使うには、最初に統合アカウントに証明書をアップロードする必要があります。 作成した[契約](logic-apps-enterprise-integration-agreements.md)でプロパティを定義した後は、証明書を使って B2B メッセージをセキュリティ保護できるようになります。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 Azure のメイン メニューで、 **[すべてのリソース]** を選択します。 検索ボックスに統合アカウント名を入力し、目的の統合アカウントを選択します。
+1. [Azure portal](https://portal.azure.com) にサインインします。 Azure のメイン メニューで、 **[すべてのリソース]** を選択します。 検索ボックスに統合アカウント名を入力し、目的の統合アカウントを選択します。
 
    ![統合アカウントを探して選択する](media/logic-apps-enterprise-integration-certificates/select-integration-account.png)  
 
@@ -44,11 +44,11 @@ B2B 機能を備えたロジック アプリで "*パブリック証明書*" を
 
 3. **[証明書]** で **[追加]** を選びます。 **[証明書の追加]** で、証明書に関する下記の情報を指定します。 完了したら、 **[OK]** を選びます。
 
-   | プロパティ | 値 | 説明 | 
+   | プロパティ | Value | 説明 | 
    |----------|-------|-------------|
    | **Name** | <*証明書名*> | 証明書の名前 (この例では "publicCert") | 
    | **証明書の種類** | パブリック | 証明書の種類 |
-   | **証明書** | <*証明書ファイル名*> | アップロードする証明書ファイルを検索して選択するには、 **[証明書]** ボックスの横にあるフォルダー アイコンを選択します。 |
+   | **[MSSQLSERVER のプロトコルのプロパティ]** | <*証明書ファイル名*> | アップロードする証明書ファイルを検索して選択するには、 **[証明書]** ボックスの横にあるフォルダー アイコンを選択します。 |
    ||||
 
    ![[追加] を選択し、証明書の詳細を指定する](media/logic-apps-enterprise-integration-certificates/public-certificate-details.png)
@@ -64,7 +64,7 @@ B2B 機能を備えたロジック アプリで "*プライベート証明書*" 
 作成した[契約](logic-apps-enterprise-integration-agreements.md)でプロパティを定義した後は、証明書を使って B2B メッセージをセキュリティ保護できるようになります。
 
 > [!NOTE]
-> プライベート証明書の場合、メッセージの署名と暗号化のため [AS2 契約](logic-apps-enterprise-integration-as2.md)の**送信と受信**の設定に表示される、対応するパブリック証明書を追加する必要があります。
+> プライベート証明書の場合、メッセージの署名と暗号化のために [AS2 契約](logic-apps-enterprise-integration-as2.md)の**送信と受信**の設定に表示される、対応するパブリック証明書を追加する必要があります。
 
 1. [Azure Key Vault に秘密キーを追加](../key-vault/certificate-scenarios.md#import-a-certificate)し、 **[キー名]** を指定します。
    
@@ -73,7 +73,7 @@ B2B 機能を備えたロジック アプリで "*プライベート証明書*" 
    `Set-AzKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
    '7cd684f4-8a78-49b0-91ec-6a35d38739ba' -PermissionsToKeys decrypt, sign, get, list`
  
-3. [Azure Portal](https://portal.azure.com) にサインインします。 Azure のメイン メニューで、 **[すべてのリソース]** を選択します。 検索ボックスに統合アカウント名を入力し、目的の統合アカウントを選択します。
+3. [Azure portal](https://portal.azure.com) にサインインします。 Azure のメイン メニューで、 **[すべてのリソース]** を選択します。 検索ボックスに統合アカウント名を入力し、目的の統合アカウントを選択します。
 
    ![統合アカウントの検索](media/logic-apps-enterprise-integration-certificates/select-integration-account.png) 
 
@@ -83,11 +83,11 @@ B2B 機能を備えたロジック アプリで "*プライベート証明書*" 
 
 5. **[証明書]** で **[追加]** を選びます。 **[証明書の追加]** で、証明書に関する下記の情報を指定します。 完了したら、 **[OK]** を選びます。
 
-   | プロパティ | 値 | 説明 | 
+   | プロパティ | Value | 説明 | 
    |----------|-------|-------------|
    | **Name** | <*証明書名*> | 証明書の名前 (この例では "privateCert") | 
    | **証明書の種類** | プライベート | 証明書の種類 |
-   | **証明書** | <*証明書ファイル名*> | アップロードする証明書ファイルを検索して選択するには、 **[証明書]** ボックスの横にあるフォルダー アイコンを選択します。 秘密キーにキー コンテナーを使用している場合、アップロードされたファイルは公開証明書になります。 | 
+   | **[MSSQLSERVER のプロトコルのプロパティ]** | <*証明書ファイル名*> | アップロードする証明書ファイルを検索して選択するには、 **[証明書]** ボックスの横にあるフォルダー アイコンを選択します。 秘密キーにキー コンテナーを使用している場合、アップロードされたファイルは公開証明書になります。 | 
    | **リソース グループ** | <*統合アカウントのリソース グループ*> | 統合アカウントのリソース グループ (この例では "MyResourceGroup") | 
    | **Key Vault** | <*キー コンテナー名*> | Azure キー コンテナーの名前 |
    | **キー名** | <*key-name*> | キーの名前 |
@@ -99,6 +99,6 @@ B2B 機能を備えたロジック アプリで "*プライベート証明書*" 
 
    ![新しい証明書が表示される](media/logic-apps-enterprise-integration-certificates/new-private-certificate.png) 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [B2B 契約の作成](logic-apps-enterprise-integration-agreements.md)

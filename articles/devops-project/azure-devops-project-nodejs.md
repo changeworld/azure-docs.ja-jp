@@ -16,28 +16,31 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 monikerRange: vsts
-ms.openlocfilehash: 11edeb35119e2c598fd83fd89c65ba4dc4679650
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 35eebeaa393ff75ada11752aaf9f195efddfa12b
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256095"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049797"
 ---
 #  <a name="quickstart-create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-projects"></a>クイック スタート:Azure DevOps Projects を使用して Azure Pipelines に Node.js 用の CI/CD パイプラインを作成する
 
-Azure DevOps Projects は、Azure リソースを作成して、Azure Pipelines 内に Node.js アプリ用の継続的インテグレーション (CI) および継続的デリバリー (CD) のパイプラインを設定する、簡単なエクスペリエンスを提供します。  
+このクイックスタートでは、Azure DevOps Projects の簡素化されたエクスペリエンスを使用して、Azure Pipelines 内に Node.js アプリ用の継続的インテグレーション (CI) および継続的デリバリー (CD) のパイプラインを設定します。 Azure DevOps Projects では、アプリの開発、デプロイ、監視に必要なすべてのものが設定されます。 
 
-Azure サブスクリプションをお持ちでない場合は、[Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) を通じて無料で取得できます。
+## <a name="prerequisites"></a>前提条件
+
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
+- [Azure DevOps](https://azure.microsoft.com/services/devops/) のアカウントと組織。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
 DevOps Projects によって、Azure Pipelines に CI/CD パイプラインが作成されます。 新しい Azure DevOps 組織を作成するか、既存の組織を使用できます。 DevOps Projects では、選択した Azure サブスクリプションに Azure リソースも作成されます。
 
-1. [Microsoft Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインし、左側のペインで **[リソースの作成]** を選択します。 
 
-1. 左のウィンドウで **[リソースの作成]** を選択し、**DevOps Projects** を検索します。 
+   ![Azure portal で Azure リソースを作成する](_img/azure-devops-project-nodejs/create-azure-resource.png)
 
-    ![継続的デリバリー構成リソースを作成する](_img/azure-devops-project-nodejs/create-azure-resource.png)
+1. **[DevOps Projects]** を検索して選択し、 **[作成]** を選択します。
 
 ## <a name="select-a-sample-application-and-azure-service"></a>サンプル アプリケーションと Azure サービスを選択する
 
@@ -52,16 +55,16 @@ DevOps Projects によって、Azure Pipelines に CI/CD パイプラインが�
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Azure DevOps と Azure サブスクリプションを構成する 
 
 1. 新しい Azure DevOps 組織を作成するか、既存の組織を選択します。 
+   
+   1. プロジェクトの名前を入力します。
+      
+   1. Azure サブスクリプションと場所を選択し、アプリケーションの名前を入力して、 **[完了]** を選択します。  
+      数分後、DevOps Projects ダッシュボードが Azure portal に表示されます。 サンプル アプリケーションが Azure DevOps 組織内のリポジトリに設定され、ビルドが実行され、アプリケーションが Azure にデプロイされます。 このダッシュボードでは、コード リポジトリ、CI/CD パイプライン、および Azure のアプリケーションが可視化されます。
+   
+1. **[参照]** を選択すると、実行中のアプリケーションが表示されます。
+   
+   ![CI/CD パイプラインのダッシュボード ビュー](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
 
-    a. プロジェクトの名前を入力します。
-
-    b. Azure サブスクリプションと場所を選択し、アプリケーションの名前を入力して、 **[完了]** を選択します。  
-    数分後、DevOps Projects ダッシュボードが Azure portal に表示されます。 サンプル アプリケーションが Azure DevOps 組織内のリポジトリに設定され、ビルドが実行され、アプリケーションが Azure にデプロイされます。 このダッシュボードでは、コード リポジトリ、CI/CD パイプライン、および Azure のアプリケーションが可視化されます。
-     
-3. **[参照]** を選択すると、実行中のアプリケーションが表示されます。
-
-    ![CI/CD パイプラインのダッシュボード ビュー](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
-    
 DevOps Projects によって、CI ビルドおよびリリース トリガーが自動的に構成されました。  Web サイトに最新の作業を自動的にデプロイする CI/CD プロセスを使用して、Node.js アプリに対してチームで共同作業を行う準備ができました。
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>コードの変更をコミットし、CI/CD を実行する
@@ -141,12 +144,12 @@ DevOps Projects によって、Azure Repos または GitHub に Git リポジト
 1. **[ログ]** を選択します。  
 ログには、デプロイ プロセスに関する有用な情報が含まれます。 これらは、デプロイ中とデプロイ後の両方に表示できます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 作成した Azure App Service とその他の関連リソースが必要なくなったら、削除してかまいません。 DevOps Projects ダッシュボードで**削除**機能を使用します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 CI/CD プロセスを構成したときに、ビルドとリリース パイプラインが自動的に作成されました。 チームのニーズを満たすようにこれらのビルドおよびリリース パイプラインを変更できます。 CI/CD パイプラインの詳細については、以下を参照してください。
 

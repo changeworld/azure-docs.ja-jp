@@ -32,6 +32,10 @@
         - name: データ取り込みの概要
           displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
           href: ingest-data-overview.md
+    - name: Kusto クエリ言語
+      items:
+        - name: クイック リファレンス ガイド
+          href: kql-quick-reference.md
     - name: データ視覚化の概要
       href: viz-overview.md
     - name: セキュリティの概要
@@ -52,6 +56,10 @@
           href: create-cluster-database-resource-manager.md
     - name: データの取り込み
       items:
+        - name: ワンクリックでのインジェスト
+          href: ingest-data-one-click.md
+        - name: ストリーミング インジェスト
+          href: ingest-data-streaming.md
         - name: イベント ハブ
           items:
             - name: Azure portal
@@ -82,10 +90,6 @@
               href: data-connection-iot-hub-python.md
             - name: Azure Resource Manager テンプレート
               href: data-connection-iot-hub-resource-manager.md
-        - name: ワンクリックでのインジェスト
-          href: ingest-data-one-click.md
-        - name: ストリーミング インジェスト
-          href: ingest-data-streaming.md
         - name: SDK の使用
           items:
             - name: Python

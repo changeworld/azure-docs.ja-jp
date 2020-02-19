@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 12/05/2019
-ms.openlocfilehash: 4fbfb31feb2183e3175a96023cbb3b08c4d18027
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 797cd82327d68003d4e5f007d1f16e9534092ac0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893685"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191352"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps 用のオンプレミス データ ゲートウェイのインストール
 
@@ -203,9 +203,9 @@ Azure AD テナント内のすべてのオンプレミス データ ゲートウ
 
 組織内のユーザーは、既にアクセスを認可されているオンプレミスのデータにアクセスできます。 ただし、これらのユーザーがオンプレミスのデータ ソースに接続できるためには、その前にオンプレミス データ ゲートウェイをインストールして設定する必要があります。 通常、管理者がゲートウェイをインストールして設定します。 これらの作業には、サーバー管理者のアクセス許可、またはオンプレミス サーバーに関する特別な知識が必要になる場合があります。
 
-ゲートウェイにより、バックグラウンド通信の迅速で安全な通信が容易になります。 この通信は、クラウド内のユーザー、ゲートウェイ クラウド サービス、オンプレミス データ ソースの間を流れます。 ゲートウェイ クラウド サービスでは、データ ソースの資格情報とゲートウェイの詳細を暗号化して格納します。 サービスでは、ユーザー、ゲートウェイ、オンプレミス データ ソースの間でのクエリとその結果のルーティングも行われます。
+ゲートウェイを使用すると、バックグラウンド通信の速度と安全性が向上します。 この通信は、クラウド内のユーザー、ゲートウェイ クラウド サービス、オンプレミス データ ソースの間を流れます。 ゲートウェイ クラウド サービスでは、データ ソースの資格情報とゲートウェイの詳細を暗号化して格納します。 サービスでは、ユーザー、ゲートウェイ、オンプレミス データ ソースの間でのクエリとその結果のルーティングも行われます。
 
-ゲートウェイはファイアウォールと共に動作し、ゲートウェイでは送信接続のみが使用されます。 すべてのトラフィックは、ゲートウェイ エージェントからの安全な送信トラフィックとして生成されます。 ゲートウェイでは、オンプレミス ソースからのデータが、[Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) 経由の暗号化されたチャネルで中継されます。 このサービス バスによって、ゲートウェイと呼び出しサービスとの間のチャネルが作成されます。ただし、データは格納されません。 ゲートウェイを経由するすべてのデータは暗号化されます。
+ゲートウェイはファイアウォールと共に動作し、ゲートウェイでは送信接続のみが使用されます。 すべてのトラフィックは、ゲートウェイ エージェントからのセキュリティで保護された送信トラフィックとして生成されます。 ゲートウェイでは、オンプレミス ソースからのデータが、[Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) 経由の暗号化されたチャネルで中継されます。 このサービス バスによって、ゲートウェイと呼び出しサービスとの間のチャネルが作成されます。ただし、データは格納されません。 ゲートウェイを経由するすべてのデータは暗号化されます。
 
 ![オンプレミス データ ゲートウェイのアーキテクチャ](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
 
@@ -265,7 +265,7 @@ Microsoft クラウド サービスでは、[Azure AD](../active-directory/funda
 * [オンプレミス データ ゲートウェイのトラブルシューティング](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
 * [ゲートウェイのパフォーマンスの監視と最適化](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ロジック アプリからオンプレミスのデータに接続する](../logic-apps/logic-apps-gateway-connection.md)
 * [エンタープライズ統合機能](../logic-apps/logic-apps-enterprise-integration-overview.md)

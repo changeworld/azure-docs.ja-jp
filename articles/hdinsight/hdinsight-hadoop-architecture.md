@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/28/2019
-ms.openlocfilehash: 2da9e41323a308782dad509c628a3677ab0cd21f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.custom: hdinsightactive
+ms.date: 02/07/2020
+ms.openlocfilehash: 3feacd94558ba275c81469827993aef106ae633c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162887"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162210"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>HDInsight の Apache Hadoop アーキテクチャ
 
@@ -47,7 +47,28 @@ NodeManagers は、アプリケーションを構成するタスクを実行し�
 
 ![Azure HDInsight 上の Apache YARN](./media/hdinsight-hadoop-architecture/apache-yarn-on-hdinsight.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="soft-delete"></a>論理的な削除
+
+ストレージ アカウントからのファイルの削除を取り消す場合は、以下を参照してください。
+
+### <a name="azure-storage"></a>Azure Storage
+
+* [Azure Storage Blob の論理的な削除](../storage/blobs/storage-blob-soft-delete.md)
+* [BLOB の削除の取り消し](https://docs.microsoft.com/rest/api/storageservices/undelete-blob)
+
+### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1
+
+[Restore-AzDataLakeStoreDeletedItem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
+
+### <a name="azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2
+
+[Azure Data Lake Storage Gen2 に関する既知の問題](../storage/blobs/data-lake-storage-known-issues.md)
+
+## <a name="trash-purging"></a>ごみ箱の消去
+
+ローカル ファイル システムにはデータを格納できないため、 **[HDFS]**  >  **[Advanced core-site]\(高度なコアサイト\)** の `fs.trash.interval` プロパティは既定値の `0` のままにしておく必要があります。 この値はリモート ストレージ アカウント (WASB、ADLS GEN1、ABFS) には影響しません
+
+## <a name="next-steps"></a>次のステップ
 
 * [HDInsight 上の Apache Hadoop で MapReduce を使用する](hadoop/hdinsight-use-mapreduce.md)
 * [Azure HDInsight の概要](hadoop/apache-hadoop-introduction.md)

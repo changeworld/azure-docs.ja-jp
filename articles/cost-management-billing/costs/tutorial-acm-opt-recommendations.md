@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 37253bb4c6001afe436e22597e75e2bc869fbbc8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 04b3802ae17440fe7cb96b424727600ab53aefce
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75985135"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168762"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>チュートリアル:推奨事項に従ってコストを最適化する
 
@@ -79,7 +79,7 @@ VM の詳細で、仮想マシンの使用率を確認して、適切なサイ�
 
 現在の仮想マシンのサイズをメモします。 仮想マシンのサイズを変更する必要があることを確認したら、仮想マシンの詳細を閉じて仮想マシンの一覧を表示します。
 
-シャットダウンまたはサイズを変更する候補の一覧で、**[ *&lt;FromVirtualMachineSKU&gt;* to *&lt;ToVirtualMachineSKU&gt;*]\(<FromVirtualMachineSKU> から <ToVirtualMachineSKU> へのサイズ変更\)** を選択します。
+シャットダウンまたはサイズを変更する候補の一覧で、 **[Resize _&lt;FromVirtualMachineSKU&gt;_ to _&lt;ToVirtualMachineSKU&gt;_ ]\(<FromVirtualMachineSKU> から <ToVirtualMachineSKU> へのサイズ変更\)** を選択します。
 ![仮想マシンのサイズを変更するオプションを伴う推奨事項の例](./media/tutorial-acm-opt-recommendations/resize-vm.png)
 
 次に、使用できるサイズ変更オプションの一覧が表示されます。 実際にシナリオに対応するベスト プラクティスと費用対効果を実現するものを選択します。 次の例では、選択したオプションが **Standard_D8s_v3** から **Standard_D2s_v3** にサイズ変更されます。

@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.custom: mvc
-ms.openlocfilehash: 0665a20bfd8253b28936044abe515862b32f1b43
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: ba94c9f2af737af3ae1ebcccf6685643a54da237
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888738"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110692"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>チュートリアル:デバイス ファームウェアの更新プロセスを実装する
 
@@ -49,6 +49,8 @@ node --version
 ```
 
 [https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip](https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip ) からサンプル Node.js プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
+
+ポート 8883 がファイアウォールで開放されていることを確認してください。 このチュートリアルのデバイス サンプルでは、ポート 8883 を介して通信する MQTT プロトコルを使用しています。 このポートは、企業や教育用のネットワーク環境によってはブロックされている場合があります。 この問題の詳細と対処方法については、「[IoT Hub への接続 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)」を参照してください。
 
 ## <a name="set-up-azure-resources"></a>Azure リソースの設定
 
@@ -187,7 +189,7 @@ node ServiceClient.js "{your service connection string}"
 
 ![ポータルで構成を表示する](./media/tutorial-firmware-update/portalview.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 次のチュートリアルを実行する場合は、リソース グループと IoT ハブをそのままにしておき、後で再利用します。
 
@@ -200,7 +202,7 @@ IoT ハブが必要でなくなった場合は、ポータルを使用して IoT
 az group delete --name tutorial-iot-hub-rg
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、接続されたデバイスのファームウェア更新プロセスを実装する方法を学習しました。 Azure IoT Hub ポータル ツールと Azure CLI コマンドを使用してデバイス接続をテストする方法については、次のチュートリアルに進んでください。
 

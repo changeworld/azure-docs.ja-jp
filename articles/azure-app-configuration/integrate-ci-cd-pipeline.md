@@ -1,38 +1,32 @@
 ---
-title: チュートリアル:継続的インテグレーションとデリバリー パイプラインとの統合
-titleSuffix: Azure App Configuration
-description: このチュートリアルでは、継続的インテグレーションとデリバリー中に Azure App Configuration のデータを使用して構成ファイルを生成する方法について説明します
+title: 継続的インテグレーションと継続的デリバリーのパイプラインを使用して Azure App Configuration を統合する
+description: Azure App Configuration を使用して継続的インテグレーションと継続的デリバリーを導入する方法について説明します
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: balans
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
 ms.topic: tutorial
-ms.date: 02/24/2019
+ms.date: 01/30/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: cd40b52c20a3cafdbbeef093b574d44b9163c7b2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c744557471a9b37bd620bb9195bdb709c24649ab
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899377"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047283"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>CI/CD パイプラインとの統合
 
-この記事では、継続的インテグレーションと継続的デプロイ システムで Azure App Configuration からデータを使用するさまざまな方法について説明します。
+この記事では、継続的インテグレーションと継続的デプロイ システムで Azure App Configuration からのデータを使用する方法について説明します。
 
 ## <a name="use-app-configuration-in-your-azure-devops-pipeline"></a>Azure DevOps パイプラインで App Configuration を使用する
 
-Azure DevOps パイプラインがある場合は、App Configuration からキー値をフェッチしてタスク変数として設定することができます。 [Azure App Configuration DevOps 拡張機能](https://go.microsoft.com/fwlink/?linkid=2091063)は、この機能を提供するアドオン モジュールです。 ビルドまたはリリース タスク シーケンスでこの拡張機能を使用するには、単にその指示に従ってください。
+Azure DevOps パイプラインがある場合は、App Configuration からキー値をフェッチしてタスク変数として設定することができます。 [Azure App Configuration DevOps 拡張機能](https://go.microsoft.com/fwlink/?linkid=2091063)は、この機能を提供するアドオン モジュールです。 ビルドまたはリリース タスク シーケンスでこの拡張機能を使用するには、その指示に従ってください。
 
 ## <a name="deploy-app-configuration-data-with-your-application"></a>App Configuration データをアプリケーションと共にデプロイする
 
-アプリケーションは、Azure App Configuration に依存していてそれに到達できない場合、実行に失敗する可能性があります。 発生する可能性が低くても、そのようなイベントに対処するようにアプリケーションの回復性を拡張することができます。 そのためには、現在の構成データを、アプリケーションと共にデプロイされ、起動時にローカルで読み込まれるファイルにパッケージ化します。 このアプローチを利用すると、少なくともアプリケーションの既定値が確実に設定されます。 これらの値は、App Configuration ストアが使用できる状態になったときに、新しい変更によって上書きされます。
+アプリケーションは、Azure App Configuration に依存していてそれに到達できない場合、実行に失敗する可能性があります。 アプリケーションと一緒にデプロイされてその起動時にローカルから読み込まれるファイルに構成データをパッケージ化すれば、アプリケーションの回復性を強化することができます。 このアプローチを利用すると、アプリケーションの起動時に、その既定値が確実に設定されます。 これらの値は、App Configuration ストアが使用できる状態になったときに、新しい変更によって上書きされます。
 
-Azure App Configuration の[エクスポート](./howto-import-export-data.md#export-data)機能を使用して、現在の構成データを 1 つのファイルとして取得するプロセスを自動化できます。 次に、継続的インテグレーションと継続的配信 (CI/CD) パイプラインのビルドまたはデプロイ手順にこのファイルを組み込みます。
+Azure App Configuration の[エクスポート](./howto-import-export-data.md#export-data)機能を使用して、現在の構成データを 1 つのファイルとして取得するプロセスを自動化できます。 次に、継続的インテグレーションと継続的配信 (CI/CD) パイプラインのビルドまたはデプロイ手順にこのファイルを組み込むことができます。
 
 クイック スタートで紹介した Web アプリのビルド手順として App Configuration データを含める方法の例を次に示します。 先に進む前に、[App Configuration を使用した ASP.NET Core アプリの作成](./quickstart-aspnet-core-app.md)を完了しておいてください。
 
@@ -54,10 +48,7 @@ Azure App Configuration の[エクスポート](./howto-import-export-data.md#ex
         <Exec WorkingDirectory="$(MSBuildProjectDirectory)" Condition="$(ConnectionString) != ''" Command="az appconfig kv export -d file --path $(OutDir)\azureappconfig.json --format json --separator : --connection-string $(ConnectionString)" />
     </Target>
     ```
-
-    App Configuration ストアに関連付けられている *ConnectionString* を環境変数として追加します。
-
-2. *Program.cs* を開き、`config.AddJsonFile()` メソッドを呼び出して、エクスポートされた JSON ファイルを使用するように `CreateWebHostBuilder` メソッドを更新します。
+1. *Program.cs* を開き、`config.AddJsonFile()` メソッドを呼び出して、エクスポートされた JSON ファイルを使用するように `CreateWebHostBuilder` メソッドを更新します。  `System.Reflection` 名前空間も追加してください。
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -75,7 +66,8 @@ Azure App Configuration の[エクスポート](./howto-import-export-data.md#ex
 
 ### <a name="build-and-run-the-app-locally"></a>アプリをビルドしてローカルで実行する
 
-1. **ConnectionString** という名前の環境変数に、App Configuration ストアへのアクセス キーを設定します。 Windows コマンド プロンプトを使用する場合は、次のコマンドを実行してコマンド プロンプトを再起動し、変更が反映されるようにします。
+1. **ConnectionString** という名前の環境変数に、App Configuration ストアへのアクセス キーを設定します。 
+    Windows コマンド プロンプトを使用する場合は、次のコマンドを実行してコマンド プロンプトを再起動し、変更が反映されるようにします。
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 

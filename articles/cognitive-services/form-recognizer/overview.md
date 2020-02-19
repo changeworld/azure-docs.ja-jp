@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 91ea2b68828ac54d4128a90550e9c60e065b719d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0d78f3cc4f2b12b2d9f45878a0c1b91263112689
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75379439"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118542"
 ---
 # <a name="what-is-form-recognizer"></a>Form Recognizer とは
 
@@ -51,38 +51,28 @@ Form Recognizer にはさらに、英語で書かれた米国のレシートを�
 
 Form Recognizer は、高精細の光学式文字認識 (OCR) を使用して、テキストやテーブル構造 (テキストが関連付けられた行番号と列番号) を抽出することもできます。 
 
-## <a name="where-do-i-start"></a>どこから始めるか
+## <a name="get-started"></a>はじめに
 
-**手順 1:** アクセスを要求する:
-
-Form Recognizer は、アクセスが制限されたプレビューで利用可能です。 プレビューへのアクセスを取得するには、[Form Recognizer アクセス要求](https://aka.ms/FormRecognizerRequestAccess)フォームに記入して送信します。 このフォームでは、ユーザー、会社、Form Recognizer を使用するシナリオに関する情報が要求されます。
-
-**手順 2:** Azure portal で Form Recognizer リソースを作成します。
-
-Form Recognizer を使用するためのアクセスが認められている場合、複数のリンクおよびリソースを含むウェルカム メールを受信します。 そのメッセージ内の "Azure portal" リンクを使用して、Azure portal を開き、Form Recognizer リソースを作成します。
-
-**手順 3:** フォームからデータを抽出する:
+クイックスタートに従って、フォームからのデータの抽出を開始します。 テクノロジを学習している場合は、無料のサービスを使用することをお勧めします。 無料のページは 1 か月あたり 500 ページに制限されていることに注意してください。
 
 * カスタム - 実際のフォームに合わせてモデルをトレーニングします。
   * ラベルを使用しないトレーニング
-    * [クイック スタート:cURL で REST API を使用して Form Recognizer モデルをトレーニングし、フォーム データを抽出する](quickstarts/curl-train-extract.md)
-    * [クイック スタート:Python で REST API を使用して Form Recognizer モデルをトレーニングし、フォーム データを抽出する](quickstarts/python-train-extract.md)
+    * [クイック スタート: cURL で REST API を使用して Form Recognizer モデルをトレーニングし、フォーム データを抽出する](quickstarts/curl-train-extract.md)
+    * [クイック スタート: Python で REST API を使用して Form Recognizer モデルをトレーニングし、フォーム データを抽出する](quickstarts/python-train-extract.md)
   * ラベルを使用したトレーニング 
     * [サンプル ラベル付けツールを使用したラベルによる Form Recognizer モデルのトレーニング](quickstarts/label-tool.md)
     * [REST API と Python でラベルを使用して Form Recognizer モデルをトレーニングする](quickstarts/python-labeled-data.md) 
 * あらかじめ構築されたレシート - 米国のレシートからデータを抽出します。
-  * [クイック スタート:cURL を使用してレシートのデータを抽出する](quickstarts/curl-receipts.md)
-  * [クイック スタート:Python を使用してレシートのデータを抽出する](quickstarts/python-receipts.md)
+  * [クイック スタート: cURL を使用してレシートのデータを抽出する](quickstarts/curl-receipts.md)
+  * [クイック スタート: Python を使用してレシートのデータを抽出する](quickstarts/python-receipts.md)
 * レイアウト - テキストとテーブル構造をフォームから抽出します。
-  * [クイック スタート:Python を使用してレイアウト データを抽出する](quickstarts/python-layout.md)
+  * [クイック スタート: Python を使用してレイアウト データを抽出する](quickstarts/python-layout.md)
 
-テクノロジを学習している場合は、無料のサービスを使用することをお勧めします。 無料のページは 1 か月あたり 500 ページに制限されていることに注意してください。
-
-**手順 4:** REST API を確認する:
+### <a name="review-the-rest-apis"></a>REST API を確認します
 
 次の API を使用して、モデルのトレーニングを行い、フォームから構造化データを抽出します。
 
-|Name |[説明] |
+|Name |説明 |
 |---|---|
 | **Train Custom Model**| 同じ種類の 5 つのフォームを使用して、フォームを分析する新しいモデルをトレーニングします。 手動でラベル付けしたデータを使ってトレーニングを行うには、_useLabelFile_ パラメーターを `true` に設定します。 |
 | **Analyze Form** |ストリームとして渡された単一のドキュメントを分析し、カスタム モデルを使用してフォームからテキスト、キーと値のペア、テーブルを抽出します。  |

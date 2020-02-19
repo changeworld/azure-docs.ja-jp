@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: fdb558267d823657f6a735d8b96efde33cdb8383
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 02/11/2020
+ms.openlocfilehash: b6147e45ca686328b1702faa5a8d50d9a75e50d6
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466521"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157841"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>PowerShell を使用して Azure Cognitive Search サービスを管理する
 > [!div class="op_single_selector"]
@@ -24,23 +24,19 @@ ms.locfileid: "73466521"
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-Windows、Linux、または [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) で PowerShell コマンドレットとスクリプトを実行して、Azure Cognitive Search を作成および構成できます。 **Az.Search** モジュールは、完全なパリティを含む Azure PowerShell を [Azure Cognitive Search 管理 REST API シリーズ](https://docs.microsoft.com/rest/api/searchmanagement)に拡張します。 Azure PowerShell と **Az.Search** を使用すると、次のタスクを実行できます。
+Windows、Linux、または [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) で PowerShell コマンドレットとスクリプトを実行して、Azure Cognitive Search を作成および構成できます。 **Az.Search** モジュールでは、完全なパリティを保持する [Azure PowerShell](https://docs.microsoft.com/powershell/) を、[Search 管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement) に拡張し、次のタスクを実行できるようにします。
 
 > [!div class="checklist"]
-> * [サブスクリプションのすべての検索サービスを一覧表示する](#list-search-services)
-> * [特定の検索サービスに関する情報を取得する](#get-search-service-information)
+> * [サブスクリプション内の検索サービスを一覧表示する](#list-search-services)
+> * [サービス情報を返す](#get-search-service-information)
 > * [サービスを作成または削除する](#create-or-delete-a-service)
 > * [管理者 API キーを再生成する](#regenerate-admin-keys)
 > * [クエリ API キーを作成または削除する](#create-or-delete-query-keys)
-> * [レプリカとパーティションを増減してサービスをスケールする](#scale-replicas-and-partitions)
+> * [レプリカとパーティションを使用してスケールアップまたはスケールダウンする](#scale-replicas-and-partitions)
 
-PowerShell は、サービスの名前、リージョン、またはレベルの変更には使用できません。 サービスの作成時に専用のリソースが割り当てられます。 基になるハードウェア (場所またはノードの種類) を変更するには、新しいサービスが必要です。 サービス間でコンテンツを転送するためのツールや API はありません。 すべてのコンテンツ管理は [REST](https://docs.microsoft.com/rest/api/searchservice/) または [.NET](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search) API を使用して行われ、インデックスを移動する場合は、新しいサービスで再作成したり再読み込みしたりする必要があります。 
+場合によっては、上記の一覧には "*ない*" タスクについて質問されることがあります。 現在、**Az.Search** モジュールや管理 REST API を使用して、サーバー名、リージョン、レベルを変更することはできません。 サービスの作成時に専用のリソースが割り当てられます。 そのため、基になるハードウェア (場所またはノードの種類) を変更するには、新しいサービスが必要です。 同様に、サービス間で、インデックスなどのコンテンツを転送するためのツールや API はありません。
 
-コンテンツ管理のための専用の PowerShell コマンドはありませんが、インデックスを作成したり読み込んだりする REST または .NET を呼び出す PowerShell スクリプトを記述できます。 **Az.Search** モジュール自体はこれらの操作を提供していません。
-
-PowerShell やその他の API (ポータルのみ) の使用がサポートされていないその他のタスクは、次のとおりです。
-+ [AI によって強化されたインデックス作成](cognitive-search-concept-intro.md)のための [Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)。 Cognitive Service は、サブスクリプションやサービスではなく、スキルにアタッチされます。
-+ Azure Cognitive Search を監視するための[アドオン監視ソリューション](search-monitor-usage.md#add-on-monitoring-solutions)。
+サービス内では、コンテンツの作成と管理は、[Search サービス REST API](https://docs.microsoft.com/rest/api/searchservice/) または [.NET SDK](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search) を介して行われます。 コンテンツ専用の PowerShell コマンドはありませんが、インデックスを作成したり読み込んだりする REST または .NET API を呼び出す PowerShell スクリプトを記述できます。
 
 <a name="check-versions-and-load"></a>
 
@@ -92,7 +88,7 @@ Select-AzSubscription -SubscriptionName ContosoSubscription
 
 <a name="list-search-services"></a>
 
-## <a name="list-all-azure-cognitive-search-services-in-your-subscription"></a>サブスクリプションのすべての Azure Cognitive Search サービスを一覧表示する
+## <a name="list-services-in-a-subscription"></a>サブスクリプション内のサービスを一覧表示する
 
 次のコマンドは、[**Az.Resources**](https://docs.microsoft.com/powershell/module/az.resources/?view=azps-1.4.0#resources) から、サブスクリプションで既にプロビジョニングされている既存のリソースとサービスに関する情報を返します。 既に作成されている検索サービスの数がわからない場合は、これらのコマンドがその情報を返して、ポータルに移動する手間を省きます。
 
@@ -253,7 +249,7 @@ Id                : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resource
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ポータル、REST API、または .NET SDK を使用して、[インデックス](search-what-is-an-index.md)を作成し、[インデックスのクエリを実行](search-query-overview.md)します。
 

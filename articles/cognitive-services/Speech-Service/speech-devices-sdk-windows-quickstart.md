@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/13/2019
+ms.date: 02/12/2020
 ms.author: erhopf
-ms.openlocfilehash: e3764dbfa7de52bf210a1e6cc8bd240d64d64aeb
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 78d9dc8c2302de6a9bdbfef62d47d10d252cf0c5
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815542"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189030"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows"></a>クイック スタート:Windows 上で Speech Devices SDK サンプル アプリを実行する
 
@@ -39,7 +39,7 @@ ms.locfileid: "74815542"
 * Speech サービス用の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
 * Java 用の [Speech Devices SDK](https://aka.ms/sdsdk-download-JRE) の最新バージョンをダウンロードし、.zip を作業ディレクトリに解凍します。
    > [!NOTE]
-   > JRE-Sample-Release.zip ファイルには、JRE サンプル アプリが含まれており、このクイックスタートでは、アプリが C:\SDSDK\JRE-Sample-Release に抽出されることを前提としています
+   > このクイックスタートでは、アプリが C:\SDSDK\JRE-Sample-Release に抽出されることを前提としています
 
 会話の文字起こしは、現時点では、“centralus” および “eastasia” リージョンで "en-US" と "zh-CN" 言語のみに対応しています。 会話の文字起こしを使用するには、それらのいずれかのリージョンの Speech キーが必要です。
 
@@ -81,7 +81,7 @@ ms.locfileid: "74815542"
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.7.0</version>
+             <version>1.9.0</version>
         </dependency>
     </dependencies>
    ```
@@ -160,7 +160,7 @@ ms.locfileid: "74815542"
    java -jar SpeechDemo.jar
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [リリース ノートを確認します](devices-sdk-release-notes.md)

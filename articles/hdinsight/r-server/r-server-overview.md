@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
-ms.date: 06/12/2019
-ms.openlocfilehash: b04cc3a5e3a5680f7a16e890c39a4a7d83002bd7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.date: 02/10/2020
+ms.openlocfilehash: a77771880da962298f6e80782e5f3e251f5f4641
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74321673"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122371"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Azure HDInsight での ML Services とは
 
@@ -23,7 +23,7 @@ HDInsight の ML Services は、Azure Blob Storage または Data Lake Storage �
 
 クラスターのエッジ ノードは、クラスターへの接続と R スクリプトの実行に便利な場所です。 エッジ ノードでは、エッジ ノード サーバーのコア間で、ScaleR の並列化された分散関数を実行できます。 また、ScaleR の Hadoop Map Reduce または Apache Spark コンピューティング コンテキストを使用して、クラスターのノード間でこれらの関数を実行することもできます。
 
-分析によって得られたモデルや予測は、ダウンロードしてオンプレミスで使用できます。 また、[Azure Machine Learning Studio (クラシック)](https://studio.azureml.net) などの [Web サービス](../../machine-learning/studio/deploy-a-machine-learning-web-service.md)を使用して、Azure の別の場所で運用化することもできます。
+分析によって得られたモデルや予測は、ダウンロードしてオンプレミスで使用できます。 また、[Azure Machine Learning Studio (classic)](https://studio.azureml.net) などの [Web サービス](../../machine-learning/studio/deploy-a-machine-learning-web-service.md)を使用して、Azure の別の場所で運用化することもできます。
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>HDInsight での ML Services の概要
 
@@ -50,6 +50,9 @@ HDInsight における ML Services のメリットは次のとおりです。
 
   Individuals embarking on the journey of making their applications intelligent or simply wanting to learn the new world of AI and machine learning, need the right resources to help them get started. In addition to this documentation, Microsoft provides several learning resources and has engaged several training partners to help you ramp up and become productive quickly.
 --->
+
+> [!NOTE]  
+> HDInsight の ML Services クラスター タイプは、HDInsight 3.6 でのみサポートされます。 HDInsight 3.6 は、2020 年 12 月 31 日に廃止される予定です。
 
 ## <a name="key-features-of-ml-services-on-hdinsight"></a>HDInsight での ML Services の主要機能
 
@@ -138,7 +141,7 @@ HDInsight クラスターの Linux エッジ ノードは、R ベースの分析
 
 ML Services HDInsight クラスターに関する価格は、他の HDInsight クラスター タイプの価格と同様に体系化されています。 料金は、ネーム、データ、エッジの各ノードの基になる VM のサイズに基づきますが、コア時間の割増分が加算されます。 詳細については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 HDInsight クラスターで ML Services を使用する方法の詳細については、次のトピックを参照してください。
 

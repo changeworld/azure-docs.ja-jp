@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: acf7fd91eff6a868074c61d557effa076033e799
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5df8ae89c16a453b008afed9ee9f8881a0ac4750
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845926"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046416"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Azure App Service で SSL 証明書を追加する
 
@@ -37,6 +37,9 @@ ms.locfileid: "76845926"
 - 無料の証明書の場合のみ: サブドメイン (たとえば、`www.contoso.com`) を [CNAME レコード](app-service-web-tutorial-custom-domain.md#map-a-cname-record)で App Service にマップします。
 
 ## <a name="private-certificate-requirements"></a>プライベート証明書の要件
+
+> [!NOTE]
+> Azure Web Apps では、AES256 がサポート**されません**。pfx ファイルはすべて TrippleDES で暗号化する必要があります。
 
 [無料の App Service マネージド証明書](#create-a-free-certificate-preview)または [App Service 証明書](#import-an-app-service-certificate)は、あらかじめ App Service の要件を満たしています。 App Service にプライベート証明書をアップロードまたはインポートする場合、証明書は次の要件を満たしている必要があります。
 

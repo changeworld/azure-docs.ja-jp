@@ -2,21 +2,21 @@
 title: Azure の使用制限 | Microsoft Docs
 description: この記事では、Azure の使用制限のしくみと削除方法を説明します。
 author: bandersmsft
-manager: amberb
+manager: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 5dbf885848d9866a184caee1da6b9000a26f83a9
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: bde3c142fa0f4f69948a9ff1df61d77f06d2b430
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76314135"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188337"
 ---
 # <a name="azure-spending-limit"></a>Azure の使用制限
 
@@ -36,30 +36,48 @@ Azure 無料アカウントにサインアップしたユーザーが使用制�
 
 ## <a name="remove-the-spending-limit-in-azure-portal"></a>Azure portal での使用制限の解除
 
+Azure サブスクリプションに関連付けられた有効な支払方法がある限り、使用制限はいつでも削除できます。 複数月にわたるクレジットを含むサブスクリプション タイプ (Visual Studio Enterprise、Visual Studio Professional など) の場合、無期限に、または現在の請求期間について使用制限を削除することができます。 現在の請求期間のみを選択した場合、使用制限は次の請求期間の開始時に自動的に有効になります。
+
+Azure の無料アカウントをお持ちの場合、使用制限を削除するには、[Azure サブスクリプションのアップグレード](upgrade-azure-subscription.md)に関するページをご覧ください。 それ以外の場合は、次の手順に従って使用制限を削除します。
+
 <a id="remove"></a>
 
-Azure サブスクリプションに関連付けられた有効な支払方法がある限り、使用制限はいつでも削除できます。 複数月にわたるクレジットを含むサブスクリプション タイプ (Visual Studio Enterprise、Visual Studio Professional など) の場合、翌請求期間の開始時に使用制限を有効化することもできます。
+1. [Azure Portal](https://portal.azure.com) にアカウント管理者としてサインインします。
+1. "**コスト管理 + 請求**" を検索します。
 
-使用制限を削除するには、次の手順に従ってください。
+    ![[コストの管理と請求] の検索を示すスクリーンショット ](./media/spending-limit/search-bar.png)
 
-1. [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) にサインインします。
-1. **[サブスクリプション]** に移動します。
-1. サブスクリプションを選択します。 たとえば、"*Visual Studio Enterprise*" など。
-1. ページの上部で **[管理]** を選択します。 https://account.azure.com/ にリダイレクトされます。 ページの右側で、 **[使用制限の削除]** を選択します。  
-  ![[使用制限の削除] を示す例](./media/spending-limit/account-azure-com-spending-limit.png)
-1. Azure portal にリダイレクトされます。 適切なオプションを選択し、支払い方法を選択します。 **[完了]** を選択します。  
-  ![使用制限を削除するオプションを選択する](./media/spending-limit/remove-spending-limit.png)
+1. **[個人用サブスクリプション]** の一覧で、ご使用のサブスクリプションを選択します。 たとえば、"*Visual Studio Enterprise*" など。 
 
-| オプション | 結果 |
-| --- | --- |
-| 使用制限を無期限に削除 | 次の請求期間の開始時に使用制限を自動的に有効にすることなく、使用制限を削除します。 |
-| 現在の請求期間の使用制限を削除 | 使用制限を削除し、次の請求期間の開始時に使用制限を自動的に有効に戻します。 |
+   ![[概要] の [個人用サブスクリプション] グリッドを示すスクリーンショット](./media/spending-limit/cost-management-overview-msdn-x.png)
+
+    > [!NOTE]
+    > Visual Studio サブスクリプションの一部がここに表示されない場合、原因として、ある時点でサブスクリプション ディレクトリを変更したことが考えられます。 これらのサブスクリプションについては、ディレクトリを元のディレクトリ (最初にサインアップしたディレクトリ) に切り替える必要があります。 その後、手順 2 を繰り返します。
+    
+1. サブスクリプションの概要で、オレンジ色のバナーをクリックして使用制限を削除します。
+    
+    ![使用制限の削除バナーを示すスクリーンショット](./media/spending-limit/msdn-remove-spending-limit-banner-x.png)
+
+1. 使用制限を永久に削除するか、現在の請求期間に対してのみ削除するかを選択します。
+    
+      ![[使用制限の削除] ブレードを示すスクリーンショット](./media/spending-limit/remove-spending-limit-blade-x.png)
+    
+      | オプション | 結果 |
+      | --- | --- |
+      | 使用制限を無期限に削除 | 使用制限は、次の請求期間の開始時に自動的に再び有効になるわけではありません。 ただし、いつでも自分で再び有効にすることができます。 |
+      | 現在の請求期間の使用制限を削除 | 使用制限は、次の請求期間の開始時に自動的に再び有効になります。 |
+
+
+1. **[支払い方法の選択]** をクリックして、サブスクリプションの支払い方法を選択します。 これが、サブスクリプションのアクティブな支払い方法になります。
+
+1. **[完了]** をクリックします。
+
 
 ## <a name="why-you-might-want-to-remove-the-spending-limit"></a>使用制限を削除しようと考えるときの理由は何ですか
 
 使用制限により、特定のサードパーティおよび Microsoft サービスのデプロイまたは使用ができなくなる場合があります。 サブスクリプションの使用制限を削除する必要がある状況を次に示します。
 
--  Oracle のようなファースト パーティ イメージや Azure DevOps Services などのサービスのデプロイを計画しています。 この状況は、ほぼ即座に使用制限に到達し、サブスクリプションが無効化される原因となります。
+-  Oracle のようなサードパーティ イメージや Azure DevOps Services などのサービスのデプロイを計画しています。 この状況は、ほぼ即座に使用制限に到達し、サブスクリプションが無効化される原因となります。
 - 中断したくないサービスがあります。 使用制限に達した場合、デプロイ済みの Azure リソースは運用環境から削除され、Azure 仮想マシンは停止し、割り当てが解除されます。 中断したくないサービスがある場合は、使用制限を解除してください。
 - 仮想 IP アドレスなど、中断することのできない設定があるサービスおよびリソースを利用しています。 これらの設定は、使用制限に到達してサービスおよびリソースの割り当てが解除されると、失われます。
 
@@ -67,9 +85,20 @@ Azure サブスクリプションに関連付けられた有効な支払方法�
 
 この機能を利用できるのは、複数月にわたるクレジットを含む種類のサブスクリプションで、使用制限が無期限に解除されている場合だけです。 この機能を使用すると、次の請求期間の開始時に使用制限を自動的に有効にできます。
 
-1. [アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインします。
-1. 使用制限オプションを変更するには、黄色のバナーを選択します。
-1. **[次の請求期間に使用制限を有効にする \<請求期間の開始日\>]** を選びます。
+
+1. [Azure Portal](https://portal.azure.com) にアカウント管理者としてサインインします。
+1. "**コスト管理 + 請求**" を検索します。
+
+    ![[コストの管理と請求] の検索を示すスクリーンショット ](./media/spending-limit/search-bar.png)
+
+1. **[個人用サブスクリプション]** の一覧で、ご使用のサブスクリプションを選択します。 たとえば、"*Visual Studio Enterprise*" など。 
+
+   ![[概要] の [個人用サブスクリプション] グリッドを示すスクリーンショット](./media/spending-limit/cost-management-overview-msdn-x.png)
+
+    > [!NOTE]
+    > Visual Studio サブスクリプションの一部がここに表示されない場合、原因として、ある時点でサブスクリプション ディレクトリを変更したことが考えられます。 これらのサブスクリプションについては、ディレクトリを元のディレクトリ (最初にサインアップしたディレクトリ) に切り替える必要があります。 その後、手順 2 を繰り返します。
+    
+1. サブスクリプションの概要で、ページの上部にあるバナーをクリックして、使用制限を再び有効にします。
 
 ## <a name="custom-spending-limit"></a>カスタムの使用制限
 

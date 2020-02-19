@@ -95,8 +95,6 @@
           href: concepts-data-access-security-private-link.md
         - name: データの暗号化
           href: concepts-data-encryption-mysql.md
-        - name: データの暗号化
-          href: concepts-data-encryption-mysql.md
         - name: Azure AD 認証
           href: concepts-azure-ad-authentication.md
     - name: ビジネス継続性
@@ -222,6 +220,8 @@
           href: howto-troubleshoot-query-performance.md
         - name: sys スキーマでビューを使用する方法
           href: howto-troubleshoot-sys-schema.md
+        - name: データ暗号化のトラブルシューティング
+          href: howto-data-encryption-troubleshoot.md
     - name: 高度な脅威保護
       items:
         - name: Azure portal

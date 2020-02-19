@@ -5,15 +5,15 @@ services: notification-hubs
 author: sethmanheim
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 11/21/2019
+ms.date: 02/10/2020
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: ef2b98821b28d8a49e5f16bf1c6ac176eb8b5793
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: bf2596f5a8e287799285f97f3d1be9f3fe10f644
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74407259"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77123189"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>証明書の署名要求ファイルを生成する
 
@@ -26,6 +26,9 @@ Apple Push Notification Service (APNs) では、証明書を使用してプッ�
 1. **[キーチェーン アクセス]** を選択し、 **[証明書アシスタント]** を展開して、 **[認証局に証明書を要求]** を選択します。
 
     ![Keychain Access を使用して新しい証明書を要求する](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-request-cert-from-ca.png)
+
+   > [!NOTE]
+   > 既定では、キーチェーン アクセスによってリスト内の最初の項目が選択されます。 これは、 **[証明書]** カテゴリで、 **[Apple Worldwide Developer Relations Certification Authority]** が一覧の最初の項目ではない場合に問題になることがあります。 CSR (証明書署名要求) を生成する前に、キー以外の項目があること、または **[Apple Worldwide Developer Relations Certification Authority]** キーが選択されていることを確認します。
 
 1. **[ユーザーのメール アドレス]** を選択し、 **[通称]** の値を入力します。 **[ディスクに保存]** を指定したことを確認してから、 **[続ける]** を選択します。 **[CA のメール アドレス]** は、必要がないため空白のままにします。
 

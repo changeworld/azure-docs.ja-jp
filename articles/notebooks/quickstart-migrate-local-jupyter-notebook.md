@@ -3,24 +3,30 @@ title: ローカルの Jupyter ノートブックを Azure Notebooks プレビ�
 description: Jupyter ノートブックをローカル コンピューターまたは Web URL から Azure Notebooks プレビューにすばやく転送した後、共同作業用に共有します。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 9e5270c59a64f9510f9108bbe4d00b922178888c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: baf05d7adb1340d712ff0fc87436d5bbac51bc8f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647052"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064327"
 ---
 # <a name="quickstart-migrate-a-local-jupyter-notebook-in-azure-notebooks-preview"></a>クイック スタート:ローカルの Jupyter ノートブックを Azure Notebooks プレビューに移行する
 
-自分のコンピューターでローカルに作成した Jupyter ノートブックには、自分しかアクセスできません。 さまざまな方法を使用してファイルを共有できますが、共有を受けた側はノートブックの自分のローカル コピーを使用するので、他のユーザーが行った変更を組み込むのが困難です。 また、GitHub などの共有オンライン リポジトリにノートブックを保存することもできますが、やはり各コラボレーターは所有者と同じ構成で独自のローカル Jupyter インストールを用意する必要があります。
+このクイックスタートでは、ローカル コンピューターまたは別のアクセス可能なファイルの URL から Jupyter ノートブックを Azure Notebooks に移行します。 
 
-ローカルまたはリポジトリ ベースのノートブックを Azure Notebooks に移行することで、クラウドに格納されたノートブックをコラボレーターとすぐに共有できます。 これらのコラボレーターに必要なものはノートブックを表示して実行するためのブラウザーだけであり、Azure Notebooks に[サインイン](quickstart-sign-in-azure-notebooks.md)すると変更することもできます。
+自分のコンピューター上の Jupyter ノートブックには、自分しかアクセスできません。 ファイルを共有することはできますが、共有を受けた側にあるのは、そのユーザーが所有する、ノートブックのローカル コピーであるため、その変更を組み込むのは困難です。 GitHub など、共有オンライン リポジトリにノートブックを格納したとしても、各コラボレーターには、共有元と同様にローカル Jupyter 環境が構成されている必要があります。
 
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+ローカルまたはリポジトリベースのノートブックを Azure Notebooks に移行することによって、コラボレーターとの間でそれらを即座に共有することができます。必要なのは、ノートブックを表示して実行するためのブラウザーだけです。 Azure Notebooks にサインインすれば、変更を加えることもできます。
 
-このクイック スタートでは、ローカル コンピューターまたは別のアクセス可能なファイルの URL からノートブックを移行するプロセスを実演します。 GitHub リポジトリからノートブックを移行するには、「[クイック スタート:ノートブックの複製](quickstart-clone-jupyter-notebook.md)」をご覧ください。
+## <a name="prerequisites"></a>前提条件
+
+- ローカル コンピューター上または別のアクセス可能なファイルの URL にある [Jupyter ノートブック](https://jupyter-notebook.readthedocs.io)。 
 
 ## <a name="create-a-project-on-azure-notebooks"></a>Azure Notebooks でプロジェクトを作成する
+
+このクイックスタートでは、ローカル コンピューターまたは別のアクセス可能なファイルの URL からノートブックを移行する方法を紹介します。 GitHub リポジトリからノートブックを移行するには、「[クイック スタート:ノートブックの複製](quickstart-clone-jupyter-notebook.md)」をご覧ください。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 1. [Azure Notebooks](https://notebooks.azure.com) に移動してサインインします (詳しくは、「[Quickstart - Sign in to Azure Notebooks](quickstart-sign-in-azure-notebooks.md)」(クイック スタート - Azure Notebook にサインインする) をご覧ください)。
 
@@ -28,7 +34,7 @@ ms.locfileid: "75647052"
 
     ![ブラウザー ウィンドウの上部にある [マイ プロジェクト] リンク](media/quickstarts/my-projects-link.png)
 
-1. **[マイ プロジェクト]** ページで、 **[+ 新しいプロジェクト]** (キーボード ショートカット: N) を選択します。ブラウザー ウィンドウが狭い場合、ボタンに **[+]** だけが表示されることがあります。
+1. **[マイ プロジェクト]** ページで **[新しいプロジェクト]** を選択します (キーボード ショートカット: N)。 ブラウザー ウィンドウが狭い場合、ボタンに **[+]** だけが表示されることがあります。
 
     ![[マイ プロジェクト] ページの [新しいプロジェクト] コマンド](media/quickstarts/new-project-command.png)
 
@@ -40,13 +46,13 @@ ms.locfileid: "75647052"
 
     ![URL またはローカル コンピューターからノートブックをアップロードするコマンド](media/quickstarts/upload-from-computer-url-command.png)
 
-   (やはり、ノートブックが GitHub リポジトリにある場合は、「[クイック スタート:ノートブックの複製](quickstart-clone-jupyter-notebook.md)」の手順を代わりにご覧ください)。
+   やはり、ノートブックが GitHub リポジトリにある場合は、[ノートブックのクローンに関するクイックスタート](quickstart-clone-jupyter-notebook.md)を参照してください。
 
-   - **[From Computer]\(コンピューターから\)** を使用している場合は、 *.ipynb* ファイルをドラッグしてポップアップにドロップするか、 **[ファイルの選択]** を選択し、インポートするデータ ファイルを参照して選択します。 **[アップロード]** を選択します。 アップロードされたファイルには、ローカル ファイルと同じ名前が与えられます ( *.ipynb_checkpoints* フォルダーの内容をアップロードする必要はありません)。
+   - **[From Computer]\(コンピューターから\)** を使用している場合は、 *.ipynb* ファイルをドラッグしてポップアップにドロップするか、 **[ファイルの選択]** を選択し、インポートするデータ ファイルを参照して選択します。 **[アップロード]** を選択します。 アップロードされたファイルには、ローカル ファイルと同じ名前が与えられます *.ipynb_checkpoints* フォルダーの内容をアップロードする必要はありません。
 
      ![コンピューターからアップロードする場合のポップアップ](media/quickstarts/upload-from-computer-popup.png)
 
-   - **[From URL]\(URL から\)** を使用している場合は、 **[ファイル URL]** フィールドに送信元アドレスを入力し、 **[ファイル名]** フィールドにプロジェクトのノートブックに割り当てるファイル名を入力します。 **[アップロード]** を選択します。 URL が異なる複数のファイルがある場合は、 **[+ ファイルの追加]** コマンドを使用して、入力した最初の URL をオンにすると、ポップアップに別のファイルを指定する新しいフィールドが表示されます。
+   - **[From URL]\(URL から\)** を使用している場合は、 **[ファイル URL]** フィールドに送信元アドレスを入力し、 **[ファイル名]** フィールドにプロジェクトのノートブックに割り当てるファイル名を入力します。 **[アップロード]** を選択します。 URL が異なる複数のファイルがある場合は、 **[ファイルの追加]** コマンドを使用して、入力した最初の URL をオンにすると、ポップアップに別のファイルを指定する新しいフィールドが表示されます。
 
      ![URL ポップアップからのアップロード](media/quickstarts/upload-from-url-popup.png)
 
@@ -59,4 +65,4 @@ ms.locfileid: "75647052"
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [チュートリアル: 線形回帰を行う Jupyter ノートブックを作成して実行する](tutorial-create-run-jupyter-notebook.md)
+> [チュートリアル:線形回帰を行う Jupyter ノートブックを作成して実行する](tutorial-create-run-jupyter-notebook.md)

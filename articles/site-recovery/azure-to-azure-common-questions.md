@@ -1,260 +1,310 @@
 ---
 title: Azure Site Recovery を使用した Azure VM のディザスター リカバリーについてよく寄せられる質問
-description: この記事では、Azure Site Recovery を使用した Azure VM のディザスター リカバリーについてよく寄せられる質問に回答します。
+description: この記事では、Azure Site Recovery を使用し、Azure VM をディザスター リカバリーすることに関連してよく寄せられる質問に回答します。
 author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 051e8b0add7cf7ab2c4cb2f02ed4e33ea9a23c9b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 99fed1d2b1246e4c099f275708f694e5d7ea2f22
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973820"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190819"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>一般的な質問:Azure から Azure へのディザスター リカバリー
 
-この記事では、[Site Recovery](site-recovery-overview.md) を使用して Azure VM を別の Azure リージョンにディザスター リカバリーする場合についてよく寄せられる質問に回答します。
-
+この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用し、Azure VM を別の Azure リージョンにディザスター リカバリーすることに関連してよく寄せられる質問に回答します。
 
 ## <a name="general"></a>全般
 
 ### <a name="how-is-site-recovery-priced"></a>Site Recovery の価格
-詳しくは、「[Site Recovery の価格](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/)」をご覧ください。
+
+詳しくは、[VM 向け Azure Site Recovery の価格](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/)に関するページをご覧ください。
+
 ### <a name="how-does-the-free-tier-for-azure-site-recovery-work"></a>Azure Site Recovery の Free レベルの課金はどのように行われますか?
-Azure Site Recovery で保護されるすべてのインスタンスは、保護を開始してから 31 日間は無料になります。 32 日目以降は、インスタンスの保護に対して上記の料金が課金されます。
+
+Azure Site Recovery で保護されるすべてのインスタンスは、保護を開始してから 31 日間は無料になります。 その期間を過ぎると、[Azure 仮想マシン向けの Azure Site Recovery の価格](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/)に関するページに記載されている価格で各インスタンスが保護されます。
+
 ### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>最初の 31 日間に、その他の Azure 料金は発生しますか?
-はい。Azure Site Recovery は保護されたインスタンスに対して最初の 31 日間無料ですが、Azure Storage、ストレージ トランザクション、データ転送について課金が発生する場合があります。 また、復旧された仮想マシンも、Azure のコンピューティングの料金が発生する場合があります。 価格の詳細については、[こちら](https://azure.microsoft.com/pricing/details/site-recovery)からご確認ください
 
-### <a name="where-can-i-find-best-practices-for-azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリーに関するベスト プラクティスはどこで確認できますか?
+はい。 Azure Site Recovery では、最初の 31 日間、インスタンスは無料で保護されますが、Azure Storage、ストレージ トランザクション、データ転送については料金が発生する場合があります。 復旧された仮想マシンからも、Azure のコンピューティングの料金が発生する場合があります。 価格の完全な詳細は、「[Azure Site Recovery の価格](https://azure.microsoft.com/pricing/details/site-recovery)」でご覧ください。
+
+### <a name="what-are-the-best-practices-for-azure-virtual-machines-disaster-recovery"></a>Azure Virtual Machines ディザスター リカバリーのベスト プラクティスは何ですか?
+
 1. [Azure から Azure へのアーキテクチャを理解する](azure-to-azure-architecture.md)
-2. [サポートされている構成とサポートされていない構成を確認する](azure-to-azure-support-matrix.md)
-3. [Azure VM のディザスター リカバリーを設定する](azure-to-azure-how-to-enable-replication.md)
-4. [テスト フェールオーバーの実行](azure-to-azure-tutorial-dr-drill.md)
-5. [プライマリ リージョンにフェールオーバーおよびフェールバックする](azure-to-azure-tutorial-failover-failback.md)
+1. [サポートされている構成とサポートされていない構成を確認する](azure-to-azure-support-matrix.md)
+1. [Azure VM のディザスター リカバリーを設定する](azure-to-azure-how-to-enable-replication.md)
+1. [テスト フェールオーバーの実行](azure-to-azure-tutorial-dr-drill.md)
+1. [プライマリ リージョンにフェールオーバーおよびフェールバックする](azure-to-azure-tutorial-failover-failback.md)
 
-### <a name="how-is-capacity-guaranteed-in-the-target-region"></a>ターゲット リージョンでは、容量はどのように保証されますか?
-Site Recovery チームは Azure 容量管理チームと連携し、十分なインフラストラクチャ容量を計画し、フェールオーバーが開始されたときに Site Recovery によって保護されている VM が確実にターゲット リージョンにデプロイされるように支援しています。
+### <a name="how-is-capacity-ensured-in-the-target-region"></a>ターゲット リージョンでは、容量はどのように確保されますか?
+
+十分なインフラストラクチャ容量が確保されるよう、Site Recovery チームと Azure 容量管理チームが計画を立てます。 フェールオーバーを開始するとき、Site Recovery によって保護される VM インスタンスがターゲット リージョンにデプロイされるよう、チームも支援します。
 
 ## <a name="replication"></a>レプリケーション
 
 ### <a name="can-i-replicate-vms-enabled-through-azure-disk-encryption"></a>Azure Disk Encryption が有効になっている VM をレプリケートできますか?
 
-はい。Site Recovery では、Azure Disk Encryption (ADE) が有効になっている VM のディザスター リカバリーがサポートされています。 レプリケーションを有効にすると、必要なすべての暗号化キーとシークレットがユーザー コンテキストでソース リージョンからターゲット リージョンにコピーされます。 適切なアクセス許可がない場合は、すぐに使用できるスクリプトをセキュリティ管理者に渡して、キーとシークレットをコピーできます。
+はい。 Site Recovery では、Azure Disk Encryption が有効になっている VM のディザスター リカバリーがサポートされています。 レプリケーションを有効にすると、Azure では、必要なすべてのディスク暗号化キーとシークレットがユーザー コンテキストでソース リージョンからターゲット リージョンにコピーされます。 自分に適切なアクセス許可がない場合、セキュリティ管理者がスクリプトを利用し、キーとシークレットをコピーできます。
 
-- Site Recovery では、Windows を実行している Azure VM で ADE がサポートされています。
-- Site Recovery では、Azure Active Directory (AAD) を使用したスキーマを含む ADE バージョン 0.1 と AAD を使用しないバージョン 1.1 がサポートされています。 [詳細については、こちらを参照してください](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata)。
-- ADE バージョン 1.1 では、Windows VM でマネージド ディスクを使用する必要があります。
-- 暗号化された VM のレプリケーションの有効化について、[詳細を確認します](azure-to-azure-how-to-enable-replication-ade-vms.md)。
-
-
+- Site Recovery では、Windows を実行している Azure VM の Azure Disk Encryption がサポートされています。
+- Site Recovery では、Azure Disk Encryption バージョン 0.1 がサポートされています。これには Azure Active Directory (Azure AD) を必要とするスキーマがあります。 Site Recovery では、Azure AD を必要としないバージョン 1.1 もサポートされています。 [Azure ディスク暗号化の拡張機能スキーマについてはこちらをご覧ください](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata)。
+  - Azure Disk Encryption バージョン 1.1 については、Windows VM と共にマネージド ディスクを使用する必要があります。
+  - 暗号化された VM のレプリケーションの有効化について、[詳細を確認します](azure-to-azure-how-to-enable-replication-ade-vms.md)。
 
 ### <a name="can-i-replicate-vms-to-another-subscription"></a>別のサブスクリプションに VM をレプリケートできますか?
+
 はい、同じ Azure AD テナント内で別のサブスクリプションに Azure VM をレプリケートできます。
-[サブスクリプション間](https://azure.microsoft.com/blog/cross-subscription-dr)で DR を構成するのは簡単です。 レプリケーション時に別のサブスクリプションを選択できます。
+
+レプリケーション時に別のサブスクリプションを選択することで、[サブスクリプション全体で](https://azure.microsoft.com/blog/cross-subscription-dr)ディザスター リカバリーを構成します。
 
 ### <a name="can-i-replicate-zone-pinned-azure-vms-to-another-region"></a>ゾーンにピン留めされた Azure VM を別のリージョンにレプリケートできますか?
+
 はい、[ゾーンにピン留めされた VM](https://azure.microsoft.com/blog/disaster-recovery-of-zone-pinned-azure-virtual-machines-to-another-region) を別のリージョンにレプリケートすることができます。
 
 ### <a name="can-i-exclude-disks"></a>ディスクを除外することはできますか?
 
-はい、PowerShell を使用して保護時にディスクを除外できます。 詳しくは、[記事](azure-to-azure-exclude-disks.md)を参照してください
+はい、PowerShell を使用して保護時にディスクを除外できます。 詳細については、[レプリケーションからディスクを除外する方法](azure-to-azure-exclude-disks.md)に関するページを参照してください。
 
 ### <a name="can-i-add-new-disks-to-replicated-vms-and-enable-replication-for-them"></a>レプリケートされた VM に新しいディスクを追加して、それらのレプリケーションを有効にすることはできますか?
 
-はい、マネージド ディスクがある Azure VM でサポートされています。 レプリケーションが有効な Azure VM に新しいディスクを追加すると、VM のレプリケーションの正常性に、警告と、VM 上の 1 つ以上のディスクを保護対象に指定できるという注意が表示されます。 追加されたディスクのレプリケートを有効にすることができます。
+はい。Azure VM とマネージド ディスクの組み合わせに対しては、レプリケートされた VM に新しいディスクを追加し、それらのレプリケーションを有効にできます。 レプリケーションが有効になっている Azure VM に新しいディスクを追加すると、その VM のレプリケーション正常性に警告が表示されます。 その警告は、VM 上の 1 つまたは複数のディスクに保護を適用できることを示しています。 追加されたディスクのレプリケートを有効にすることができます。
+
 - 追加されたディスクの保護を有効にすると、初回のレプリケーション後に警告は表示されなくなります。
-- ディスクのレプリケートを有効にしないことを選択した場合は、この警告の無視を選択できます。
-- ディスクを追加した VM をフェールオーバーし、そのディスクに対するレプリケーションを有効にすると、レプリケーション ポイントに復旧に使用できるディスクが表示されます。 たとえば、VM に単一のディスクがあり、新しいディスクを追加した場合、ディスクを追加する前に作成されたレプリケーション ポイントでは、そのレプリケーション ポイントが "2 台中の 1 台のディスク" で構成されていることが示されます。
+- ディスクのレプリケートを有効にしない場合、この警告を無視できます。
+- ディスクが追加され、レプリケーションが有効になっている VM をフェールオーバーする場合、レプリケーション ポイントがあります。 レプリケーション ポイントによって、回復できるディスクが示されます。 
 
-Site Recovery は、レプリケートされた VM からのディスクの "ホット リムーブ" をサポートしません。 VM ディスクを削除した場合は、VM のレプリケーションを無効にしてから再度有効にする必要があります。
+たとえば、ある VM にディスクが 1 つあるとき、新しいディスクを追加するとします。 ディスクを追加するより前にレプリケーション ポイントが作成されていた可能性があります。 このレプリケーション ポイントからは、それが "2 ディスク中 1" から構成されていることが示されます。
 
+Site Recovery では、レプリケートされた VM からディスクを "ホット リムーブ" できません。 VM ディスクを削除した場合は、VM のレプリケーションを無効にしてから再度有効にする必要があります。
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>どのくらいの頻度で Azure にレプリケートできますか?
+
 Azure VM を別の Azure リージョンにレプリケートするときは、レプリケーションは継続的に行われます。 詳しくは、[Azure から Azure へのレプリケーション アーキテクチャ](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-architecture#replication-process)に関する記事をご覧ください。
 
-### <a name="can-i-replicate-virtual-machines-within-a-region-i-need-this-to-migrate-vms"></a>リージョン内で仮想マシンをレプリケートできますか? VM を移行するのにこれが必要です。
-Azure から Azure の DR ソリューションを使用して、リージョン内で VM をレプリケートすることはできません。
+### <a name="can-i-replicate-virtual-machines-within-a-region-i-need-this-functionality-to-migrate-vms"></a>リージョン内で仮想マシンをレプリケートできますか? VM を移行するためにこの機能が必要です。
 
-### <a name="can-i-replicate-vms-to-any-azure-region"></a>VM を任意の Azure リージョンにレプリケートできますか?
-Site Recovery を使用して、同じ地理クラスター内の 2 つのリージョン間で VM をレプリケートして復旧できます。 地理クラスターは、データの遅延と主権を念頭に置きながら定義されます。 詳しくは、Site Recovery の[リージョンのサポート マトリックス](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)をご覧ください。
+Azure 間のディスク回復ソリューションを使用し、リージョン内で VM をレプリケートすることはできません。
+
+### <a name="can-i-replicate-vm-instances-to-any-azure-region"></a>VM インスタンスを任意の Azure リージョンにレプリケートできますか?
+
+Site Recovery を使用することで、同じ地理クラスター内の 2 つのリージョン間で VM をレプリケートして復旧できます。 地理クラスターは、データの遅延と主権を念頭に置きながら定義されます。 詳しくは、Site Recovery の[リージョンのサポート マトリックス](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)をご覧ください。
 
 ### <a name="does-site-recovery-require-internet-connectivity"></a>Site Recovery にはインターネット接続が必要ですか?
 
-いいえ、Site Recovery にはインターネット接続は必要ありません。 ただし、[こちらの記事](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)で説明されているように、Site Recovery の URL と IP 範囲にアクセスする必要があります。
+いいえ、Site Recovery にはインターネット接続は必要ありません。 ただし、「[Azure VM ディザスター リカバリーのネットワークについて](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)」で説明されているように、Site Recovery の URL と IP 範囲にアクセスする必要があります。
 
-### <a name="can-i-replicate-the-application-having-separate-resource-group-for-separate-tiers"></a>階層ごとに個別のリソース グループを使用してアプリケーションをレプリケートすることはできますか?
-はい、アプリケーションをレプリケートし、ディザスター リカバリー構成を個別のリソース グループに保持することは可能です。
-たとえば、各階層のアプリ、データベース、および Web が個別のリソース グループに属するアプリケーションがある場合は、[レプリケーション ウィザード](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication)を 3 回クリックして、すべての階層を保護することができます。 これら 3 つの階層は、Site Recovery によって 3 つの異なるリソース グループにレプリケートされます。
+### <a name="can-i-replicate-an-application-that-has-a-separate-resource-group-for-separate-tiers"></a>階層ごとにリソース グループが分かれているアプリケーションをレプリケートできますか?
+
+はい、アプリケーションをレプリケートし、同時に、リソース グループ別にディザスター リカバリー構成を保持することは可能です。
+
+ご利用のアプリケーションでたとえば、各層のアプリケーション、データベース、Web が別々のリソース グループに入っている場合、すべての層を保護するには[レプリケーション ウィザード](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication)を 3 回選択する必要があります。 Site Recovery によって、これら 3 つの層が 3 つの異なるリソース グループにレプリケートされます。
 
 ## <a name="replication-policy"></a>Replication policy
 
 ### <a name="what-is-a-replication-policy"></a>レプリケーション ポリシーとは何ですか?
-復旧ポイントの保持履歴と、アプリ整合性スナップショットの頻度の設定が定義されています。 既定では、次のような既定の設定の新しいレプリケーション ポリシーが Azure Site Recovery で作成されます。
 
-* 復旧ポイントの保持履歴は 24 時間。
-* アプリ整合性スナップショットの頻度は 60 分。
+レプリケーション ポリシーによって、復旧ポイントの保持履歴設定が定義されます。 このポリシーでは、アプリ整合性スナップショットの頻度も定義されます。 既定では、次のような既定の設定の新しいレプリケーション ポリシーが Azure Site Recovery で作成されます。
 
-[詳細については、こちらを参照してください](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#configure-replication-settings)。
+- 復旧ポイントの保持履歴は 24 時間。
+- アプリ整合性スナップショットの頻度は 60 分。
+
+[レプリケーション設定についてはこちらをご覧ください](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#configure-replication-settings)。
 
 ### <a name="what-is-a-crash-consistent-recovery-point"></a>クラッシュ整合性復旧ポイントとは何ですか?
-クラッシュ整合性復旧ポイントは、VM がクラッシュしたか、スナップショットの作成時に電源コードがサーバーから引き抜かれたときの、ディスク上のデータを表します。 これには、スナップショットの作成時にメモリ内にあったものは一切含まれません。
+
+クラッシュ整合性復旧ポイントには、スナップショットの作成中にサーバーから電源コードが引き抜かれたときのディスク上のデータが含まれます。 クラッシュ整合性復旧ポイントには、スナップショットの作成時にメモリに入っていたものは一切含まれません。
 
 現在、ほとんどのアプリケーションは、クラッシュ整合性のスナップショットから十分に復旧できます。 クラッシュ整合性復旧ポイントは通常、データベースのないオペレーティング システムや、ファイル サーバー、DHCP サーバー、プリント サーバーなどのアプリケーションにとっては十分です。
 
 ### <a name="what-is-the-frequency-of-crash-consistent-recovery-point-generation"></a>クラッシュ整合性復旧ポイントはどのくらいの頻度で生成されますか?
+
 Site Recovery では、5 分ごとにクラッシュ整合性復旧ポイントが作成されます。
 
 ### <a name="what-is-an-application-consistent-recovery-point"></a>アプリケーション整合性復旧ポイントとは何ですか?
-アプリケーション整合性復旧ポイントは、アプリケーション整合性スナップショットから作成されます。 アプリケーション整合性復旧ポイントでは、クラッシュ整合性スナップショットと同じデータがキャプチャされ、メモリ内のすべてのデータと処理中のすべてのトランザクションが追加されます。
-これらの追加コンテンツのため、アプリケーション整合性スナップショットは、最も複雑で実行時間も最も長くかかります。 アプリケーション整合性の復旧ポイントは、SQL Server などのデータベース オペレーティング システムで推奨されます。
+
+アプリケーション整合性復旧ポイントは、アプリケーション整合性スナップショットから作成されます。 アプリケーション整合性復旧ポイントでは、クラッシュ整合性スナップショットと同じデータがキャプチャされますが、さらに、メモリに入っていたデータと処理中のすべてのトランザクションもキャプチャされます。
+
+これらの追加コンテンツのため、アプリケーション整合性スナップショットは最も複雑となり、時間がかかります。 アプリケーション整合性の復旧ポイントは、SQL Server などのデータベース オペレーティング システムで推奨されます。
 
 ### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>アプリケーション整合性復旧ポイントがアプリケーション パフォーマンスにもたらす影響について教えてください。
-アプリケーション整合性復旧ポイントでは、メモリ内やプロセス内のすべてのデータが取得されます。またその際、Windows 上の VSS などのフレームワークで、アプリケーションを停止する必要があります。 これをあまり頻繁に行うと、既にワークロードがビジー状態の場合に、パフォーマンスに影響が出る可能性があります。 通常、データベース以外のワークロードについては、アプリ整合性復旧ポイントの間隔を短くしないことを推奨します。また、データベース ワークロードについても、1 時間で十分です。
+
+アプリケーション整合性復旧ポイントの場合、メモリに入っているデータと処理中のデータがすべてキャプチャされます。 復旧ポイントでそのデータがキャプチャされるため、アプリケーションを停止する目的で、ボリューム シャドウ コピー サービスなどのフレームワークが Windows で必要になります。 キャプチャ プロセスが頻繁に行われる場合、ワークロードが既にビジー状態であれば、パフォーマンスに影響が出ることがあります。 データベース以外のワークロードの場合、アプリ整合性復旧ポイントの頻度を低く設定しないことをお勧めします。 データベース ワークロードの場合であっても、1 時間で十分です。
 
 ### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>アプリケーション整合性復旧ポイントが生成される最小の頻度はどのくらいですか?
+
 Site Recovery では、アプリケーション整合性復旧ポイントを 1 時間という最小の頻度で作成できます。
 
 ### <a name="how-are-recovery-points-generated-and-saved"></a>復旧ポイントはどのように生成されて保存されますか?
-Site Recovery で復旧ポイントがどのように生成されるかを理解するため、レプリケーション ポリシーの例を見てみましょう。このポリシーには、24 時間の復旧ポイントの保有期間と 1 時間のアプリ整合性の頻度のスナップショットが設定されています。
 
-Site Recovery では、5 分ごとにクラッシュ整合性復旧ポイントが作成されます。 ユーザーは、この頻度を変更できません。 そのため、ユーザーは直近の 1 時間の 12 のクラッシュ整合性ポイントと 1 つのアプリケーション整合性ポイントから選択できます。 時間が経過すると、1 時間を経過した復旧ポイントは Site Recovery によってすべて取り除かれ、1 時間に 1 つの復旧ポイントのみが保存されます。
+Site Recovery で復旧ポイントを生成する方法を理解するため、レプリケーション ポリシーの例を見てみましょう。 このレプリケーション ポリシーの復旧ポイントには 24 時間の保持期間が設定されており、アプリ整合性スナップショットは 1 時間おきに作成されます。
+
+Site Recovery では、5 分ごとにクラッシュ整合性復旧ポイントが作成されます。 この頻度は変更できません。 最後の 1 時間については、12 のクラッシュ整合性ポイントと 1 つのアプリ整合性ポイントから選択できます。 時間が経過すると、最後の 1 時間を超えた復旧ポイントは Site Recovery によってすべて取り除かれ、1 時間につき 1 つの復旧ポイントのみが保存されます。
 
 次のスクリーンショットはこの例を示したものです。 スクリーンショットでは次のようになっています。
 
-1. 直近 1 時間未満では、5 分ごとの復旧ポイントがあります。
-2. 過去 1 時間を超える時間については、Site Recovery は復旧ポイントを 1 つだけ保持します。
+- 最後の 1 時間以内では、5 分ごとに復旧ポイントがあります。
+- 最後の 1 時間を超えると、Site Recovery では復旧ポイントが 1 つだけ保持されます。
 
    ![生成された復旧ポイントの一覧](./media/azure-to-azure-troubleshoot-errors/recoverypoints.png)
 
-
 ### <a name="how-far-back-can-i-recover"></a>過去のどの時点まで遡って復旧できますか?
+
 使用できる最も古い復旧ポイントは 72 時間です。
 
-### <a name="what-will-happen-if-i-have-a-replication-policy-of-24-hours-and-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-lost"></a>24 時間のレプリケーション ポリシーがあり、問題により 24 時間より長く Site Recovery で復旧ポイントが生成されなかった場合はどうなりますか? 以前の復旧ポイントはなくなりますか?
-いいえ、以前のすべての復旧ポイントが Site Recovery によって保持されます。 復旧ポイントのリテンション期間 (この場合は 24 時間) によって異なりますが、Site Recovery が最も古いポイントを置き換えるのは新しいポイントが生成される場合のみです。 このケースでは、問題があるために新しい復旧ポイントは生成されないため、リテンション期間が終了しても古いポイントはすべて保持されます。
+### <a name="i-have-a-replication-policy-of-24-hours-what-will-happen-if-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-lost"></a>レプリケーション ポリシーを 24 時間に設定しています。 問題が発生し、Site Recovery で 24 時間以上復旧ポイントを生成できなくなった場合、どうなりますか? 以前の復旧ポイントはなくなりますか?
+
+いいえ、以前のすべての復旧ポイントが Site Recovery によって保持されます。 復旧ポイントの保持期間に基づき、Site Recovery では、新しいポイントが生成された場合にのみ、最も古いポイントが置換されます。 問題のために、Site Recovery では新しい復旧ポイントを生成できません。 新しい復旧ポイントができるまで、保持期間に到達した後も古いポイントはすべて残ります。
 
 ### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>VM でレプリケーションを有効にした後で、レプリケーション ポリシーを変更するにはどうしたらよいですか?
-**[Site Recovery コンテナー]**  >  **[Site Recovery インフラストラクチャ]**  >  **[レプリケーション ポリシー]** の順に移動します。 編集するポリシーを選択し、変更を保存します。 変更は既存のすべてのレプリケーションにも適用されます。
+
+**[Site Recovery コンテナー]**  >  **[Site Recovery インフラストラクチャ]**  >  **[レプリケーション ポリシー]** の順に移動します。 編集するポリシーを選択し、変更内容を保存します。 変更は既存のすべてのレプリケーションにも適用されます。
 
 ### <a name="are-all-the-recovery-points-a-complete-copy-of-the-vm-or-a-differential"></a>すべての復旧ポイントが VM の完全なコピーですか、それとも差分ですか?
+
 生成される最初の復旧ポイントには、完全なコピーがあります。 それ以降の復旧ポイントでは、差分変更が保持されます。
 
 ### <a name="does-increasing-the-retention-period-of-recovery-points-increase-the-storage-cost"></a>復旧ポイントの保持期間を長くすると、ストレージ コストは増えますか?
-はい。 はい、保持期間を 24 時間から 72 時間に増やすと、Site Recovery により追加の 48 時間分の復旧ポイントが保存されます。 追加の時間により、ストレージ料金が発生します。 たとえば、1 つの復旧ポイントに 10 GB の差分変更が含まれ、GB あたりのコストが 0.16 ドル/月の場合、1 か月あたり 1.6 ドル * 48 の追加料金が発生します。
+
+はい、保持期間を 24 時間から 72 時間に増やすと、Site Recovery により追加の 48 時間分の復旧ポイントが保存されます。 追加の時間により、ストレージ料金が発生します。 たとえば、1 つの復旧ポイントで 10 GB の差分変更があったとき、GB あたりのコストが 1 か月 $0.16 であるとします。 追加料金は 1 か月あたり $1.60 × 48 になります。
 
 ## <a name="multi-vm-consistency"></a>マルチ VM 整合性
 
 ### <a name="what-is-multi-vm-consistency"></a>マルチ VM 整合性とは何ですか?
-レプリケートされたすべての仮想マシン間で復旧ポイントに整合性があることを確認することを意味します。
-Site Recovery の [マルチ VM 整合性] オプションを選択した場合、グループの一部であるすべてのマシンをまとめてレプリケートするためのレプリケーション グループが作成されます。
-すべての仮想マシンが、フェールオーバー時に共有のクラッシュ整合性復旧ポイントとアプリ整合性復旧ポイントを持ちます。
+
+マルチ VM 整合性によって、レプリケートされたすべての仮想マシン間で復旧ポイントに整合性が確保されます。
+
+Site Recovery には **マルチ VM 整合性**オプションがあります。このオプションにより、すべてのマシンのレプリケーション グループが作成されます。
+
+仮想マシンをフェールオーバーすると、仮想マシン間でクラッシュ整合性復旧ポイントとアプリ整合性復旧ポイントが共有されます。
+
 [マルチ VM 整合性の有効化](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication-for-a-vm)に関するチュートリアルをご覧ください。
 
-### <a name="can-i-failover-single-virtual-machine-within-a-multi-vm-consistency-replication-group"></a>マルチ VM 整合性レプリケーション グループ内の単一の仮想マシンをフェールオーバーできますか?
-[マルチ VM 整合性] オプションを選択すると、アプリケーションがグループ内のすべての仮想マシンに対して依存関係を持つことが示されます。 そのため、単一の仮想マシンのフェールオーバーは許可されません。
+### <a name="can-i-fail-over-a-single-virtual-machine-within-a-multi-vm-consistency-replication-group"></a>マルチ VM 整合性レプリケーション グループ内の単一の仮想マシンをフェールオーバーできますか?
+
+**[マルチ VM 整合性]** オプションを選択すると、アプリケーションがグループ内のすべての仮想マシンに対して依存関係を持つことが示されます。 単一の仮想マシンのフェールオーバーは許可されません。
 
 ### <a name="how-many-virtual-machines-can-i-replicate-as-a-part-of-a-multi-vm-consistency-replication-group"></a>マルチ VM 整合性レプリケーション グループの一部として何個の仮想マシンをレプリケートできますか?
+
 レプリケーション グループ内の 16 個の仮想マシンをまとめてレプリケートできます。
 
-### <a name="when-should-i-enable-multi-vm-consistency-"></a>どのようなときにマルチ VM 整合性を有効にする必要がありますか?
-CPU を多く消費するので、マルチ VM 整合性を有効にすると、ワークロードのパフォーマンスに影響する場合があります。 これは、複数のマシンが同じワークロードを実行していて、複数のマシン間に整合性を持たせる必要がある場合にのみ使用してください。 たとえば、2 個の SQL Server インスタンスと 2 個の Web サーバーがアプリケーション内にある場合、SQL Server インスタンスに対してのみマルチ VM 整合性を有効にする必要があります。
+### <a name="when-should-i-enable-multi-vm-consistency"></a>どのようなときにマルチ VM 整合性を有効にする必要がありますか?
 
+マルチ VM 整合性では CPU が集中的に消費されるので、これを有効にすると、ワークロードのパフォーマンスに影響する場合があります。 複数のマシンが同じワークロードを実行しているとき、複数のマシン間に整合性を持たせる必要がある場合にのみ、マルチ VM 整合性を使用してください。 たとえば、2 個の SQL Server インスタンスと 2 個の Web サーバーがアプリケーション内にある場合、SQL Server インスタンスに対してのみマルチ VM 整合性を有効にする必要があります。
 
 ## <a name="failover"></a>[フェールオーバー]
 
-### <a name="how-is-capacity-assured-in-target-region-for-azure-vms"></a>Azure VM のターゲット リージョンでは、容量はどのように保証されますか?
-Site Recovery チームは Azure 容量管理チームと連携し、十分なインフラストラクチャ容量を計画し、フェールオーバーが開始されたときにディザスター リカバリーに対応した VM がターゲット リージョンに確実にデプロイされるように支援しています。
+### <a name="how-is-capacity-ensured-in-the-target-region-for-azure-vms"></a>Azure VM のターゲット リージョンでは、容量はどのように確保されますか?
+
+十分なインフラストラクチャ容量が確保されるよう、Site Recovery チームと Azure 容量管理チームが計画を立てます。 フェールオーバーを開始するとき、Site Recovery によって保護される VM インスタンスがターゲット リージョンにデプロイされるよう、チームも支援します。
 
 ### <a name="is-failover-automatic"></a>フェールオーバーは自動で行われますか。
 
-フェールオーバーは自動では行われません。 ポータルで 1 回クリックするだけでフェールオーバーを開始できます。または [PowerShell](azure-to-azure-powershell.md) を使ってフェールオーバーをトリガーすることもできます。
+フェールオーバーは自動では行われません。 ポータルで 1 回クリックするだけでフェールオーバーを開始できます。または [PowerShell](azure-to-azure-powershell.md) を使用してフェールオーバーをトリガーすることもできます。
 
-### <a name="can-i-retain-a-public-ip-address-after-failover"></a>フェールオーバー後にパブリック IP アドレスを保持できますか?
+### <a name="can-i-keep-a-public-ip-address-after-a-failover"></a>フェールオーバー後にパブリック IP アドレスを保持できますか?
 
-運用アプリケーションのパブリック IP アドレスは、フェールオーバー後に保持されません。
-- フェールオーバー プロセスの一部として起動したワークロードは、ターゲット リージョンで利用可能なAzure パブリック IP リソースを割り当てる必要があります。
-- これは、手動で行うか、復旧計画を使用して自動化することができます。
-- 「[フェールオーバー後にパブリック IP アドレスを設定する](concepts-public-ip-address-with-site-recovery.md#public-ip-address-assignment-using-recovery-plan)」方法を参照してください。  
+運用アプリケーションのパブリック IP アドレスは、フェールオーバー後に保持できません。
 
-### <a name="can-i-retain-a-private-ip-address-during-failover"></a>フェールオーバー中にプライベート IP アドレスを保持することはできますか?
-はい、プライベート IP アドレスを保持することができます。 既定では、Azure VM のディザスター リカバリーを有効にすると、Site Recovery によって、ソース リソースの設定に基づいてターゲット リソースが作成されます。 - Azure VM が静的 IP アドレスで構成されている場合、Site Recovery は、使用中でなければ同じ IP アドレスをターゲット VM にプロビジョニングしようとします。
-[フェールオーバー時の IP アドレスの保持](site-recovery-retain-ip-azure-vm-failover.md)に関する記事を参照してください。
+フェールオーバー プロセスの一環としてワークロードを起動するとき、Azure パブリック IP リソースをワークロードに割り当てる必要があります。 Azure パブリック IP リソースは、ターゲット リージョンで使用できる必要があります。 Azure パブリック IP リソースは手動で割り当てるか、復旧計画で自動化できます。 「[フェールオーバー後にパブリック IP アドレスを設定する](concepts-public-ip-address-with-site-recovery.md#public-ip-address-assignment-using-recovery-plan)」方法を参照してください。  
 
-### <a name="after-failover-why-is-the-server-assigned-a-new-ip-address"></a>フェールオーバー後、サーバーに新しい IP アドレスが割り当てられるのはなぜですか?
+### <a name="can-i-keep-a-private-ip-address-during-a-failover"></a>フェールオーバー中、プライベート IP アドレスを保持できますか?
+
+はい、プライベート IP アドレスを保持することができます。 既定では、Azure VM のディザスター リカバリーを有効にすると、Site Recovery によって、ソース リソースの設定に基づいてターゲット リソースが作成されます。 Azure VM が静的 IP アドレスで構成されている場合、Site Recovery では、使用中でなければ同じ IP アドレスをターゲット VM にプロビジョニングしようとします。
+フェールオーバー時の IP アドレスの保持に関する[こちらの](site-recovery-retain-ip-azure-vm-failover.md)記事を参照してください。
+
+### <a name="after-a-failover-why-is-the-server-assigned-a-new-ip-address"></a>フェールオーバー後、サーバーに新しい IP アドレスが割り当てられるのはなぜですか?
 
 Site Recovery では、フェールオーバー時に IP アドレスの指定が試みられます。 別の仮想マシンがそのアドレスを取得している場合、Site Recovery では次の使用可能な IP アドレスがターゲットとして設定されます。
-[VNet のネットワーク マッピングと IP アドレス指定の設定](azure-to-azure-network-mapping.md#set-up-ip-addressing-for-target-vms)に関する記事を参照してください。
+
+仮想ネットワークのネットワーク マッピングと IP アドレス指定の設定に関する[こちらの](azure-to-azure-network-mapping.md#set-up-ip-addressing-for-target-vms)記事を参照してください。
 
 ### <a name="what-are-latest-lowest-rpo-recovery-points"></a>**最新 (最低 RPO)** の復旧ポイントとは何ですか?
-**[最新 (最低 RPO)]** オプションでは、Site Recovery サービスに送信されたすべてのデータが最初に処理されて、各 VM の復旧ポイントが作成されてから、それにフェールオーバーされます。 フェールオーバー後に作成された VM は、フェールオーバーがトリガーされた時点で Site Recovery にレプリケートされたすべてのデータを保持しているため、このオプションでは最低の目標復旧時点 (RPO) が提供されます。
+
+**[最新 (最低 RPO)]** オプションではまず、Site Recovery に送信されているすべてのデータが処理されます。 サービスでデータが処理された後、VM にフェールオーバーする前に、VM ごとに復旧ポイントが作成されます。 このオプションは、最も低い目標復旧ポイント (RPO) を提供します。 フェールオーバー後に作成された VM には、フェールオーバーのトリガー時に Site Recovery にレプリケートされたすべてのデータが含まれます。
 
 ### <a name="do-latest-lowest-rpo-recovery-points-have-an-impact-on-failover-rto"></a>**最新 (最低 RPO)** の復旧ポイントは、フェールオーバー RTO に影響しますか?
-はい。 Site Recovery では、フェールオーバー前に保留中のすべてのデータが処理されるので、このオプションは他のオプションより目標復旧時間 (RTO) が高くなります。
+
+はい。 Site Recovery では、フェールオーバー前に保留中のすべてのデータが処理されるので、このオプションは他のオプションに比べて目標復旧時間 (RTO) が高くなります。
 
 ### <a name="what-does-the-latest-processed-option-in-recovery-points-mean"></a>復旧ポイントの **[最後に処理があった時点]** オプションは何を意味しますか?
+
 **[最後に処理があった時点]** オプションでは、計画内のすべての VM が、Site Recovery によって処理された最新の復旧ポイントにフェールオーバーされます。 特定の VM の最新の復旧ポイントを参照するには、VM 設定の **[Latest Recovery Points] (最新の回復ポイント)** を確認します。 このオプションを使用すると、未処理のデータの処理に時間がかからないため、RTO を低くできます。
 
 ### <a name="what-happens-if-my-primary-region-experiences-an-unexpected-outage"></a>プライマリ リージョンで予期しない停止が発生した場合はどうなりますか?
+
 停止後、フェールオーバーをトリガーできます。 Site Recovery では、フェールオーバーを実行するためにプライマリ リージョンからの接続を必要としません。
 
-### <a name="what-is-a-rto-of-a-vm-failover-"></a>VM フェールオーバーの RTO とは何ですか?
-Site Recovery の [RTO の SLA は 2 時間](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/)です。 ただし、ほとんどの場合、Site Recovery による仮想マシンのフェールオーバーは、数分以内に行われます。 VM を起動するまでにかかった時間を示すフェールオーバー ジョブに移動することで、RTO を計算できます。 復旧計画の RTO については、以下のセクションを参照してください。
+### <a name="what-is-an-rto-of-a-vm-failover"></a>VM フェールオーバーの RTO とは何ですか?
+
+Site Recovery の [RTO SLA は 2 時間](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/)です。 ただし、ほとんどの場合、Site Recovery によって数分以内に仮想マシンがフェールオーバーされます。 VM を起動するまでにかかった時間を示すフェールオーバー ジョブに移動することで、RTO を計算できます。 復旧計画の RTO については、次のセクションを参照してください。
 
 ## <a name="recovery-plans"></a>復旧計画
 
 ### <a name="what-is-a-recovery-plan"></a>復旧計画とは何ですか?
-Site Recovery での復旧計画は、VM のフェールオーバーの復旧を調整します。 これは、復旧を常に正確で、繰り返し可能、さらに自動化されるようにするのに役立ちます。 復旧計画は、ユーザーの次のニーズに対応します。
+
+Site Recovery での復旧計画は、VM のフェールオーバーの復旧を調整します。 これは、復旧を常に正確で、繰り返し可能、さらに自動化されるようにするのに役立ちます。 復旧計画は次のニーズに対応します。
 
 - 一緒にフェールオーバーする仮想マシンのグループを定義する
 - アプリケーションが正確に動作するように、仮想マシン間の依存関係を定義する
 - 仮想マシンのフェールオーバー以外のタスクを実行するため、カスタムの手動操作と共に復旧を自動化する
 
-[こちら](site-recovery-create-recovery-plans.md) をご覧ください。
+復旧計画の作成の詳細については[こちら](site-recovery-create-recovery-plans.md)を参照してください。
 
 ### <a name="how-is-sequencing-achieved-in-a-recovery-plan"></a>復旧計画ではシーケンス処理はどのように実行されますか?
 
-復旧計画では、シーケンス処理を実行するために複数のグループを作成できます。 すべてのグループが一度にフェールオーバーされます。 同じグループの一部である VM がまとめてフェールオーバーされ、続いて別のグループがフェールオーバーされます。 復旧計画を使用してアプリケーションをモデル化する方法については、「[復旧計画について](recovery-plan-overview.md#model-apps)」をご覧ください。
+復旧計画では、シーケンス処理を実行するために複数のグループを作成できます。 すべてのグループが一度にフェールオーバーされます。 同じグループに属する仮想マシンがまとめてフェールオーバーされ、続いて別のグループがフェールオーバーされます。 復旧計画を使用してアプリケーションをモデル化する方法については、「[復旧計画について](recovery-plan-overview.md#model-apps)」をご覧ください。
 
 ### <a name="how-can-i-find-the-rto-of-a-recovery-plan"></a>復旧計画の RTO を検索するにはどうしたらよいですか?
+
 復旧計画の RTO を確認するには、復旧計画をテスト フェールオーバーして、**Site Recovery ジョブ**に移動します。
-次の例では、SAPTestRecoveryPlan という名前のジョブは、すべての仮想マシンをフェールオーバーして指定されたアクションを実行するのに、8 分 59 秒かかりました。
+次の例では、**SAPTestRecoveryPlan** というジョブを見てください。 このジョブでは、すべての仮想マシンをフェールオーバーし、指定のアクションを行うために 8 分 59 秒かかりました。
 
 ![Site Recovery ジョブの一覧](./media/azure-to-azure-troubleshoot-errors/recoveryplanrto.PNG)
 
 ### <a name="can-i-add-automation-runbooks-to-the-recovery-plan"></a>復旧計画に Automation Runbook を追加できますか?
-はい、Azure Automation Runbooks を復旧計画に組み込むことができます。 [詳細については、こちらを参照してください](site-recovery-runbook-automation.md)。
+
+はい、Azure Automation Runbooks を復旧計画に組み込むことができます。 Azure Automation Runbook の追加については[こちら](site-recovery-runbook-automation.md)をご覧ください。
 
 ## <a name="reprotection-and-failback"></a>再保護とフェールバック
 
-### <a name="after-a-failover-from-the-primary-region-to-a-disaster-recovery-region-are-vms-in-a-dr-region-protected-automatically"></a>プライマリ リージョンからディザスター リカバリー リージョンへのフェールオーバーの後、DR リージョン内の VM は自動的に保護されますか?
+### <a name="i-failed-over-from-the-primary-region-to-a-disaster-recovery-region-are-vms-in-a-dr-region-protected-automatically"></a>プライマリ リージョンからディザスター リカバリー リージョンにフェールオーバーしました。 DR リージョンの VM は自動的に保護されますか?
+
 いいえ。 あるリージョンから別のリージョンに Azure VM を[フェールオーバー](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback)すると、その VM は DR リージョン内で保護されていない状態で起動されます。 プライマリ リージョンに VM をフェールバックするには、セカンダリ リージョン内の VM を[再保護](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect)する必要があります。
 
 ### <a name="at-the-time-of-reprotection-does-site-recovery-replicate-complete-data-from-the-secondary-region-to-the-primary-region"></a>再保護時に、Site Recovery ではセカンダリ リージョンからプライマリ リージョンに完全なデータがレプリケートされますか?
-状況によって異なります。 たとえば、ソース リージョンの VM が存在している場合、ソース ディスクとターゲット ディスクの間の変更のみが同期されます。 Site Recovery では、ディスクを比較することで差分が計算された後、データが転送されます。 通常、このプロセスには数時間かかります。 再保護中に行われることについて詳しくは、「[プライマリ リージョンに対してフェールオーバーされた Azure VM を再保護する]( https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection)」をご覧ください。
+
+状況によって異なります。 ソース リージョンの VM が存在している場合、ソース ディスクとターゲット ディスクの間の変更のみが同期されます。 Site Recovery では、ディスクを比較することで差分が計算された後、データが転送されます。 通常、このプロセスには数時間かかります。 再保護中に行われることについて詳しくは、[プライマリ リージョンに対してフェールオーバーされた Azure VM インスタンスを再保護する](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection)方法に関するページをご覧ください。
 
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>フェールバックにはどのくらい時間がかかりますか?
-再保護の後、フェールバックにかかる時間は、通常、プライマリ リージョンからセカンダリ リージョンへのフェールオーバーに要した時間と同程度です。
+
+再保護後のフェールオーバーには、プライマリ リージョンからセカンダリ リージョンにフェールオーバーするときと大体同じ時間がかかります。
 
 ## <a name="capacity"></a>容量
 
-### <a name="how-is-capacity-assured-in-target-region-for-azure-vms"></a>Azure VM のターゲット リージョンでは、容量はどのように保証されますか?
-Site Recovery チームは Azure 容量管理チームと連携し、十分なインフラストラクチャ容量を計画し、フェールオーバーが開始されたときにディザスター リカバリーに対応した VM がターゲット リージョンに確実にデプロイされるように支援しています。
+### <a name="how-is-capacity-ensured-in-the-target-region-for-azure-vms"></a>Azure VM のターゲット リージョンでは、容量はどのように確保されますか?
+
+十分なインフラストラクチャ容量が確保されるよう、Site Recovery チームと Azure 容量管理チームが計画を立てます。 フェールオーバーを開始するとき、Site Recovery によって保護される VM インスタンスがターゲット リージョンにデプロイされるよう、チームも支援します。
 
 ### <a name="does-site-recovery-work-with-reserved-instances"></a>Site Recovery は予約インスタンスと連携しますか?
-はい、ディザスター リカバリー リージョンで[予約インスタンス](https://azure.microsoft.com/pricing/reserved-vm-instances/)を購入することができ、それらは Site Recovery のフェールオーバー操作で使用されます。 </br> 追加の構成は必要ありません。
 
+はい、ディザスター リカバリー リージョンで[予約 Azure VM](https://azure.microsoft.com/pricing/reserved-vm-instances/) を購入することができます。Site Recovery のフェールオーバー操作でその VM が使用されます。 追加の構成は必要ありません。
 
 ## <a name="security"></a>Security
 
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Site Recovery サービスにレプリケーション データが送信されますか。
-いいえ、Site Recovery はレプリケートされたデータを傍受しません。また、VM 上の実行内容に関するどのような情報も保持しません。 レプリケーションとフェールオーバーを調整するために必要なメタデータのみが、Site Recovery サービスに送信されます。  
-Site Recovery は ISO 27001:2013、27018、HIPAA、DPA の認証を受けており、SOC2 および FedRAMP JAB の評価が進行中です。
+
+いいえ、Site Recovery はレプリケートされたデータをインターセプトすることも、VM 上の実行内容に関するどのような情報を保持することもありません。 レプリケーションとフェールオーバーを調整するために必要なメタデータのみが、Site Recovery サービスに送信されます。  
+
+Site Recovery は ISO 27001:2013、27018、HIPAA、DPA 認定です。 このサービスは現在、SOC2 と FedRAMP JAB の評価を判定されている最中です。
 
 ### <a name="does-site-recovery-encrypt-replication"></a>Site Recovery はレプリケーションを暗号化しますか。
+
 はい、転送中の暗号化と [Azure に保存中の暗号化](https://docs.microsoft.com/azure/storage/storage-service-encryption)の両方がサポートされています。
 
 ## <a name="next-steps"></a>次のステップ
-* サポート要件を[確認する](azure-to-azure-support-matrix.md)。
-* Azure から Azure へのレプリケーションを[設定する](azure-to-azure-tutorial-enable-replication.md)。
+
+- [Azure 間サポートの要件を確認します](azure-to-azure-support-matrix.md)。
+- [Azure 間レプリケーションを設定します](azure-to-azure-tutorial-enable-replication.md)。
 - この記事の内容について質問がある場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)に投稿してください。

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/04/2019
-ms.openlocfilehash: 4cf979c99c596abff075eb38f3358c6389a6b07e
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.custom: hdinsightactive
+ms.date: 02/12/2020
+ms.openlocfilehash: d030e44f59d41c32c9a76c0b89c0bce1c8c54a69
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264290"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186854"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure Portal を使用して HDInsight の Apache Hadoop クラスターを管理する
 
@@ -25,17 +25,17 @@ ms.locfileid: "72264290"
 
 HDInsight 上の 既存の Apache Hadoop クラスター。  「[Azure Portal を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-portal.md)」を参照してください。
 
-## <a name="getting-started"></a>Getting Started (概要)
+## <a name="getting-started"></a>作業の開始
 
 [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
 ## <a name="showClusters"></a>クラスターの一覧と表示
 
 **[HDInsight クラスター]** ページに既存のクラスターの一覧が表示されます。  ポータルから:
-1. 左側のメニューから、 **[すべてのサービス]** を選択します。
+1. 左側のメニューから **[すべてのサービス]** を選択します。
 2. **[ANALYTICS]** の **[HDInsight クラスター]** を選択します。
 
-## <a name="homePage"></a> クラスター ホーム ページ 
+## <a name="homePage"></a> クラスター ホーム ページ
 
 [ **[HDInsight クラスター]** ](#showClusters) ページから、ご自身のクラスター名を選択します。  これにより、次の図のような **[概要]** ビューが開きます。
 
@@ -45,7 +45,7 @@ HDInsight 上の 既存の Apache Hadoop クラスター。  「[Azure Portal �
 
 | Item| 説明 |
 |---|---|
-|Move|クラスターを別のリソース グループまたは別のサブスクリプションに移動します。|
+|[詳細ビュー]|クラスターを別のリソース グループまたは別のサブスクリプションに移動します。|
 |削除|クラスターを削除します。 |
 |更新|ビューを更新します。|
 
@@ -76,15 +76,15 @@ HDInsight 上の 既存の Apache Hadoop クラスター。  「[Azure Portal �
     |スクリプト操作|クラスター上の Bash スクリプトを実行します。 「 [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」をご覧ください。|
     |外部メタストア|[Apache Hive](https://hive.apache.org/) メタストアと [Apache Oozie](https://oozie.apache.org/) メタストアを表示します。 メタストアを構成できるのは、クラスターの作成処理中のみです。|
     |HDInsight パートナー|現在の HDInsight パートナーを追加または削除します。|
-    |properties|[クラスターのプロパティ](#properties)を表示します。|
-    |ロック|クラスターの変更または削除を防ぐためのロックを追加します。|
+    |Properties|[クラスターのプロパティ](#properties)を表示します。|
+    |Locks|クラスターの変更または削除を防ぐためのロックを追加します。|
     |テンプレートをエクスポートする|クラスター向けの Azure Resource Manager テンプレートを表示およびエクスポートします。 現時点では、依存している Azure ストレージ アカウントのみをエクスポートできます。 「[Resource Manager テンプレートを使用して HDInsight で Apache Hadoop クラスターを作成する](hdinsight-hadoop-create-linux-clusters-arm-templates.md)」を参照してください。|
 
   - **監視メニュー**
 
     | Item| 説明 |
     |---|---|
-    |アラート|アラートとアクションを管理します。|
+    |警告|アラートとアクションを管理します。|
     |メトリック|Azure Monitor ログでクラスター メトリックを監視します。|
     |診断の設定|診断メトリックを格納する場所に関する設定。|
     |Azure Monitor|Azure Monitor でクラスターを監視します。|
@@ -106,12 +106,13 @@ HDInsight 上の 既存の Apache Hadoop クラスター。  「[Azure Portal �
 |クラスター URL|Ambari Web インターフェイスの URL。|
 |プライベート エンドポイント|クラスターのプライベート エンドポイント。|
 |Secure Shell (SSH)|SSH でクラスターにアクセスするときに使うユーザー名とホスト名。|
-|状態|次のいずれか:Aborted、Accepted、ClusterStorageProvisioned、AzureVMConfiguration、HDInsightConfiguration、Operational、Running、Error、Deleting、Deleted、Timedout、DeleteQueued、DeleteTimedout、DeleteError、PatchQueued、CertRolloverQueued、ResizeQueued、ClusterCustomization。|
+|状態|つぎのいずれかです。Aborted、Accepted、ClusterStorageProvisioned、AzureVMConfiguration、HDInsightConfiguration、Operational、Running、Error、Deleting、Deleted、Timedout、DeleteQueued、DeleteTimedout、DeleteError、PatchQueued、CertRolloverQueued、ResizeQueued、ClusterCustomization。|
 |リージョン|Azure の場所。 サポートされている Azure の場所の一覧については、「**HDInsight の価格**」の [[リージョン]](https://azure.microsoft.com/pricing/details/hdinsight/) ボックスの一覧をご覧ください。|
 |作成日|クラスターがデプロイされた日付。|
 |オペレーティング システム|**[Windows]** または **[Linux]** 。|
 |TYPE|Hadoop、HBase、Storm、Spark。|
 |Version|「[HDInsight で使用可能な Hadoop コンポーネントとバージョンとは](hdinsight-component-versioning.md)」をご覧ください。|
+|TLS の最小バージョン|TLS のバージョン。|
 |サブスクリプション|サブスクリプションの名前。|
 |既定のデータ ソース|クラスターの既定のファイル システムです。|
 |ワーカー ノードのサイズ|worker ノードの選択されている VM のサイズ。|
@@ -218,13 +219,13 @@ HDInsight クラスターは、2 つのユーザー アカウントを持つこ�
 4. **[スクリプト アクション]** ページで、 **[新規で送信]** を選択します。
 5. **[スクリプト アクションの送信]** ページで、次の情報を入力します。
 
-   | フィールド | 値 |
+   | フィールド | Value |
    | --- | --- |
    | スクリプトの種類 | ドロップダウン リストから **[- カスタム]** を選択します。|
-   | 名前 |"SSH パスワードの変更" |
+   | Name |"SSH パスワードの変更" |
    | Bash スクリプト URI |changepassword.sh ファイルへの URI |
-   | ノードの種類:(ヘッド、worker、Nimbus、Supervisor、Zookeeper など) |表示するすべてのノード型に ✓ |
-   | parameters |SSH ユーザー名と新しいパスワードを入力します。 ユーザー名とパスワードの間に、スペースを 1 つ入れる必要があります。 |
+   | ノードの種類:(ヘッド、ワーカー、Nimbus、スーパーバイザー、または Zookeeper) |表示するすべてのノード型に ✓ |
+   | パラメーター |SSH ユーザー名と新しいパスワードを入力します。 ユーザー名とパスワードの間に、スペースを 1 つ入れる必要があります。 |
    | このスクリプト アクションを保持する… |このフィールドはオフのままにします。 |
 
 6. **[作成]** を選択してスクリプトを適用します。 スクリプトの完了後は、新しいパスワードで SSH を使用して、クラスターに接続することができます。
@@ -269,9 +270,9 @@ HDInsight クラスターは、Azure Storage アカウントまたは Azure Data
 - [HDInsight での Apache Hive の使用](hadoop/apache-hadoop-use-hive-ambari-view.md)
 - [HDInsight で SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-この記事では、基本的な管理機能をいくつか説明しました。 詳細については、次の記事を参照してください。
+この記事では、基本的な管理機能をいくつか説明しました。 詳細については、以下の記事をお読みください。
 
 - [Azure PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)
 - [Azure CLI を使用した HDInsight の管理](hdinsight-administer-use-command-line.md)

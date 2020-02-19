@@ -1,25 +1,28 @@
 ---
 title: パートナー向け Azure Cost Management の利用を開始する
 description: この記事では、パートナーが Azure Cost Management の機能を使用する方法と、パートナーの顧客のために Cost Management アクセスを有効にする方法について説明します。
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/28/2020
+ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: fc0401ac200ac55de5d812ddc5162d970b8e6d2a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9f35f0ae2b310fba462a3f45038496854077da27
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76842420"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117595"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>パートナー向け Azure Cost Management の利用を開始する
 
-Azure Cost Management は、お客様を Microsoft 顧客契約にオンボードし、[Azure プランを購入](/partner-center/purchase-azure-plan)しているパートナーがネイティブに使用できます。 この記事では、パートナーが [Azure Cost Management](../index.yml) 機能を使用して、Azure プランのサブスクリプションのコストを表示する方法について説明します。 また、パートナーが顧客のために Cost Management アクセスを有効にする方法についても説明します。 顧客は、CSP パートナーによって有効化された場合、Cost Management の機能を使用できます。
+Azure Cost Management は、お客様を Microsoft 顧客契約にオンボードし、[Azure プランを購入](/partner-center/purchase-azure-plan)している直接パートナーがネイティブに使用できます。 この記事では、パートナーが [Azure Cost Management](../index.yml) 機能を使用して、Azure プランのサブスクリプションのコストを表示する方法について説明します。 また、パートナーが顧客のために Cost Management アクセスを有効にする方法についても説明します。
+
+直接パートナーおよび間接プロバイダーの場合、間接プロバイダーの全体管理者と管理者エージェントが、パートナー テナントの Cost Management にアクセスできます。 リセラーと顧客は、顧客テナントで Cost Management にアクセスし、サブスクリプションのコストを確認でき、コストは小売料金で計算されて表示されます。 ただし、コストを表示するためには、顧客テナントのサブスクリプションに対する RBAC アクセス権が必要です。 顧客テナントのプロバイダーによって、コスト可視性ポリシーが有効になっている必要があります。
+
+顧客は、CSP パートナーによって有効化された場合、Cost Management の機能を使用できます。
 
 CSP パートナーは、次の目的に Cost Management を使用します。
 

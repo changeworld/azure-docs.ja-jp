@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: c5e58f496176ec0f1b8317c8b862a8ef2ffa434d
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 96515d81668bf172325f88e3e5bac8d8cccfa999
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262728"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190858"
 ---
 # <a name="connect-your-domain-name-server"></a>ドメイン ネーム サーバーへの接続
 
@@ -73,7 +73,17 @@ DNS 分析ソリューションでは、Log Analytics エージェントがイ�
 
 Log Analytics で、スキーマ **DnsEvents** を検索し、イベントが存在することを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="troubleshooting"></a>トラブルシューティング
+
+参照クエリが Azure Sentinel に表示されない場合、クエリが正しく表示されるように次の手順を行ってください。
+1. [ご利用のサーバーで DNS Analytics ログ](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11))をオンにします。
+2. Log Analytics コレクション リストに DNSEvents が表示されることを確認します。
+3. [Azure DNS Analytics](../azure-monitor/insights/dns-analytics.md) をオンにします。
+4. Azure DNS Analytics の **Configuration** で、設定を変更して保存します。必要であれば変更を戻し、再び保存します。
+5. Azure DNS Analytics を確認して、今度はクエリが表示されていることを確認します。
+
+## <a name="next-steps"></a>次のステップ
+
 このドキュメントでは、DNS オンプレミス アプライアンスを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。

@@ -4,49 +4,47 @@ description: このチュートリアルでは、Linux を実行している Azu
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/11/2019
+ms.date: 2/5/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a9f9c6ebd55752ea5a3400da8d42b6c6487277df
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: ab3ed567d34c6284959f7875bb121ced4770d65e
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514648"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133346"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>チュートリアル:IoT Edge デバイスの構成
 
 > [!NOTE]
 > この記事は、IoT Edge 上で Azure Machine Learning を使用するためのチュートリアルのシリーズの一部です。 この記事に直接アクセスしている場合は、最適な結果を得るために、シリーズの[最初の記事](tutorial-machine-learning-edge-01-intro.md) から始めることをお勧めします。
 
-この記事では、Linux を実行している Azure 仮想マシンを、透過的なゲートウェイとして機能する Azure IoT Edge デバイスになるように構成します。 透過的なゲートウェイの構成では、デバイスはゲートウェイの存在を知らなくても、ゲートウェイを介して Azure IoT Hub に接続できます。 同時に、IoT Hub 内のデバイスを操作するユーザーは中間のゲートウェイ デバイスを意識しません。 最終的には、透過的なゲートウェイを使用し、IoT Edge モジュールをゲートウェイに追加することによってエッジ分析をシステムに追加します。
+この記事では、Linux を実行している Azure 仮想マシンを、透過的なゲートウェイとして機能する IoT Edge デバイスになるように構成します。 透過的なゲートウェイの構成では、デバイスはゲートウェイの存在を知らなくても、ゲートウェイを介して Azure IoT Hub に接続できます。 同時に、Azure IoT Hub 内のデバイスを操作するユーザーは中間のゲートウェイ デバイスを意識しません。 最終的には、IoT Edge モジュールを透過的なゲートウェイに追加することによってエッジ分析をシステムに追加します。
 
 この記事の手順は通常、クラウド開発者によって実行されます。
 
-## <a name="generate-certificates"></a>証明書の生成
+## <a name="create-certificates"></a>証明書の作成
 
-ゲートウェイとして機能するデバイスでは、ダウンストリーム デバイスに安全に接続できる必要があります。 Azure IoT Edge では、公開キー基盤 (PKI) を使用して、これらのデバイス間にセキュリティで保護された接続を設定することができます。 この場合、透過的なゲートウェイとして機能する IoT Edge デバイスにダウンストリーム デバイスが接続できるようにします。 妥当なセキュリティを維持するには、ダウン ストリーム デバイスで IoT Edge デバイスの ID を確認してください。 IoT Edge デバイスで証明書を使用するしくみの詳細については、[Azure IoT Edge 証明書の使用の詳細](iot-edge-certs.md)に関するページを参照してください。
+ゲートウェイとして機能するデバイスでは、ダウンストリーム デバイスに安全に接続できる必要があります。 Azure IoT Edge では、公開キー基盤 (PKI) を使用して、これらのデバイス間にセキュリティで保護された接続を設定することができます。 この場合、透過的なゲートウェイとして機能する IoT Edge デバイスにダウンストリームの IoT デバイスが接続できるようにします。 妥当なセキュリティを維持するには、ダウン ストリーム デバイスで IoT Edge デバイスの ID を確認してください。 IoT Edge デバイスで証明書を使用するしくみの詳細については、[Azure IoT Edge 証明書の使用の詳細](iot-edge-certs.md)に関するページを参照してください。
 
-このセクションでは、Docker イメージを使用して自己署名証明書を作成した後、そのイメージをビルドして実行します。 Docker イメージを使用してこのステップを完了することを選択した理由は、それによって、Windows 開発用コンピューターで証明書を作成するために必要なステップ数が大幅に削減されたからです。 Docker イメージで自動化した機能については、「[IoT Edge デバイスの機能テスト用のデモ証明書を作成する](how-to-create-test-certificates.md)」を参照してください。
+このセクションでは、Docker イメージを使用して自己署名証明書を作成した後、そのイメージをビルドして実行します。 Docker イメージを使用してこのステップを完了することを選択した理由は、それによって、Windows 開発用マシンで証明書を作成するために必要なステップ数が大幅に削減されたからです。 Docker イメージで自動化した機能については、「[IoT Edge デバイスの機能テスト用のデモ証明書を作成する](how-to-create-test-certificates.md)」を参照してください。
 
-1. 開発用の仮想マシンにサインインします。
+1. 開発用の VM にサインインします。
 
-2. コマンド ライン プロンプトを開き、次のコマンドを実行して VM 上にディレクトリを作成します。
+2. 新しいフォルダーを作成します。フォルダー名とパスは `c:\edgeCertificates` とします。
 
-    ```cmd
-    mkdir c:\edgeCertificates
-    ```
-
-3. Windows の [スタート] メニューから **[Docker for Windows]** を起動します。
+3. **[Docker for Windows]** をまだ実行していない場合は、Windows の [スタート] メニューから起動します。
 
 4. Visual Studio Code を開きます。
 
 5. **[ファイル]**  >  **[フォルダーを開く...]** を選択し、**C:\\source\\IoTEdgeAndMlSample\\CreateCertificates** を選択します。
 
-6. Dockerfile を右クリックし、 **[Build Image]\(イメージのビルド\)** を選択します。
+6. エクスプローラー ペインで **[dockerfile]** を右クリックし、 **[Build Image]\(イメージのビルド\)** を選択します。
 
 7. ダイアログで、イメージ名とタグは既定値 **createcertificates:latest** のままにします。
+
+    ![Visual Studio Code で証明書を作成する](media/tutorial-machine-learning-edge-05-configure-edge-device/create-certificates.png)
 
 8. ビルドが完了するまで待ちます。
 
@@ -95,17 +93,17 @@ ms.locfileid: "76514648"
 
 ## <a name="create-iot-edge-device"></a>IoT Edge デバイスを作成する
 
-Azure IoT Edge デバイスを IoT ハブに接続するために、まずハブ内のデバイスの ID を作成します。 クラウドでデバイス ID から接続文字列を取り、それを使用して IoT Edge デバイス上でランタイムを構成します。 デバイスが構成されてハブに接続したら、モジュールをデプロイしてメッセージを送信することができます。 対応するデバイス ID の構成を IoT ハブで変更することによって、物理 IoT Edge デバイスの構成を変更することもできます。
+Azure IoT Edge デバイスを IoT ハブに接続するために、まずハブ内のデバイスの ID を作成します。 クラウドでデバイス ID から接続文字列を取り、それを使用して IoT Edge デバイス上でランタイムを構成します。 構成済みのデバイスがハブに接続したら、モジュールをデプロイしてメッセージを送信することができます。 対応するデバイス ID を IoT ハブで変更することによって、物理 IoT Edge デバイスの構成を変更することもできます。
 
 このチュートリアルでは、Visual Studio Code を使用して新しいデバイス ID を作成します。 これらの手順は、[Azure portal](how-to-register-device.md#register-in-the-azure-portal) または [Azure CLI](how-to-register-device.md#register-with-the-azure-cli) を使用して完了することもできます。
 
 1. 開発用コンピューターで Visual Studio Code を開きます。
 
-2. Visual Studio Code のエクスプローラー ビューから、 **[Azure IoT Hub devices]\(Azure IoT Hub デバイス\)** フレームを開きます。
+2. Visual Studio Code のエクスプローラー ビューから、 **[Azure IoT Hub]** フレームを展開します。
 
 3. 省略記号をクリックして **[Create IoT Edge Device]\(IoT Edge デバイスの作成\)** を選択します。
 
-4. デバイスに名前を付けます。 便宜上、**aaTurbofanEdgeDevice** という名前を使用しますが、これは、以前にテスト データ送信用にデバイス ハーネスを通じて作成したすべてのクライアント デバイスよりも前の並び順になります。
+4. デバイスに名前を付けます。 ここでは並べ替えでデバイス一覧の一番上に表示されるよう、便宜上、名前は **aaTurbofanEdgeDevice** としています。
 
 5. 新しいデバイスがデバイスの一覧に表示されます。
 
@@ -125,9 +123,9 @@ Azure Marketplace にある [[Azure IoT Edge on Ubuntu]](https://azuremarketplac
 
 1. 検索バーに「**Marketplace**」と入力して選択します。
 
-1. 検索バーに「**Azure IoT Edge on Ubuntu**」と入力して選択します。
+1. Marketplace の検索バーに「**Azure IoT Edge on Ubuntu**」と入力して選択します。
 
-1. 次を選択します: **[プログラムによるデプロイを行いますか? 開始する]** ハイパーリンク。
+1. **[Get started]\(開始する\)** ハイパーリンクを選択して、プログラムからデプロイを行います。
 
 1. **[Enable]\(有効にする\)** ボタン、 **[保存]** の順に選択します。
 
@@ -192,7 +190,9 @@ Azure Marketplace にある [[Azure IoT Edge on Ubuntu]](https://azuremarketplac
 
 ## <a name="download-key-vault-certificates"></a>Key Vault 証明書をダウンロードする
 
-この記事の前半では、証明書を Key Vault にアップロードして、IoT Edge デバイスとリーフ デバイス (IoT Hub と通信するためのゲートウェイとして IoT Edge デバイスを使用するダウンストリーム デバイス) で使用できるようにしました。 リーフ デバイスについては、チュートリアルの後半で扱います。 このセクションでは、証明書を IoT Edge デバイスにダウンロードします。
+この記事の前半では、証明書を Key Vault にアップロードして、IoT Edge デバイスとリーフ デバイスで使用できるようにしました。 リーフ デバイスは、IoT Hub と通信するためのゲートウェイとして IoT Edge デバイスを使用するダウンストリーム デバイスです。
+
+リーフ デバイスについては、チュートリアルの後半で扱います。 このセクションでは、証明書を IoT Edge デバイスにダウンロードします。
 
 1. Linux 仮想マシン上の SSH セッションから、Azure CLI を使用して Azure にサインインします。
 
@@ -227,7 +227,7 @@ Azure Marketplace にある [[Azure IoT Edge on Ubuntu]](https://azuremarketplac
 
 ## <a name="update-the-iot-edge-device-configuration"></a>IoT Edge デバイス構成を更新する
 
-IoT Edge ランタイムは、ファイル /etc/iotedge/config.yaml を使用してその構成を保持します。 このファイル内の 3 つの情報を更新する必要があります。
+IoT Edge ランタイムは、ファイル `/etc/iotedge/config.yaml` を使用してその構成を保持します。 このファイル内の 3 つの情報を更新する必要があります。
 
 * **Device connection string** (デバイス接続文字列): IoT Hub におけるこのデバイスの ID からの接続文字列
 * **Certificates** (証明書): ダウンストリーム デバイスで行われる接続に使用する証明書
@@ -296,7 +296,9 @@ IoT Edge VM の作成に使用した *[Azure IoT Edge on Ubuntu]* イメージ�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure IoT Edge の透過的なゲートウェイとして Azure VM を構成する作業が完了しました。 まず、テスト証明書を生成して Azure Key Vault にアップロードしました。 次に、スクリプトと Resource Manager テンプレート、さらに Azure Marketplace の "Ubuntu Server 16.04 LTS + Azure IoT Edge runtime" イメージを使用して VM をデプロイしました。 スクリプトは Azure CLI をインストールする追加のステップを実行しました ([apt による Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli-apt))。 VM を起動して実行し、SSH 経由で接続し、Azure にサインインし、Key Vault から証明書をダウンロードし、config.yaml ファイルを更新して IoT Edge ランタイムの構成をいくつか更新しました。 ゲートウェイとしての IoT Edge の使用について、詳しくは「[IoT Edge デバイスをゲートウェイとして使用する方法](iot-edge-as-gateway.md)」を参照してください。 透過的なゲートウェイとして IoT Edge デバイスを構成する方法の詳細については、「[透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する](how-to-create-transparent-gateway.md)」を参照してください。
+Azure IoT Edge の透過的なゲートウェイとして Azure VM を構成する作業が完了しました。 まず、テスト証明書を生成して Azure Key Vault にアップロードしました。 次に、スクリプトと Resource Manager テンプレート、さらに Azure Marketplace の "Ubuntu Server 16.04 LTS + Azure IoT Edge runtime" イメージを使用して VM をデプロイしました。 VM を稼動状態にし、SSH 経由で接続して、Azure にサインインし、Key Vault から証明書をダウンロードしました。 config.yaml ファイルを更新して IoT Edge ランタイムの構成にいくつかの変更を加えました。
+
+詳細については、「[IoT Edge デバイスをゲートウェイとして使用する方法](iot-edge-as-gateway.md)」および「[透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する](how-to-create-transparent-gateway.md)」を参照してください。
 
 次の記事に進んで、IoT Edge モジュールをビルドします。
 

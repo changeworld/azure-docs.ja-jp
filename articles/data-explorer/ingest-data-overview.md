@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 90387a033a43c627be4ce69a93ee37c5b959732d
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 4846a19c403cce16bed704ed4e7c70499f3b5d13
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091797"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187992"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure データ エクスプローラーでのデータ インジェスト
 
@@ -88,7 +88,7 @@ Kusto では、データの取り込みとクエリに使用できるクライ�
 
 **さまざまな方法の待機時間**:
 
-| 方法 | Latency |
+| Method | Latency |
 | --- | --- |
 | **インライン インジェスト** | 即時 |
 | **クエリからの取り込み** | クエリ時間 + 処理時間 |
@@ -118,7 +118,7 @@ Event Hub や IoT Hub などのメッセージング サービスに基づく既
 ## <a name="supported-data-formats"></a>サポートされるデータ形式
 
 クエリからの取り込み以外のすべてのインジェスト方法では、Azure Data Explorer が解析できるようにデータを書式設定します。 
-* 以下のデータ形式がサポートされます。TXT、CSV、TSV、TSVE、PSV、SCSV、SOH、JSON (行区切り、複数行)、Avro、および Parquet。 
+* 以下のデータ形式がサポートされます。TXT、CSV、TSV、TSVE、PSV、SCSV、SOH、JSON (行区切り、複数行)、Avro、Orc および Parquet。 
 * ZIP および GZIP 圧縮をサポートします。
 
 > [!NOTE]
@@ -133,10 +133,10 @@ Event Hub や IoT Hub などのメッセージング サービスに基づく既
 
 スキーマ マッピングは、ソースのデータ フィールドをターゲットのテーブル列にバインドするのに役立ちます。
 
-* [CSV マッピング](/azure/kusto/management/mappings?branch=master#csv-mapping) (省略可能) は、すべての序数ベースの形式で動作します。 取り込みコマンドのパラメーターを使用して実行すること、または[テーブルで事前に作成](/azure/kusto/management/tables?branch=master#create-ingestion-mapping)して取り込みコマンドのパラメーターから参照することができます。
-* [JSON マッピング](/azure/kusto/management/mappings?branch=master#json-mapping) (必須) と [Avro マッピング](/azure/kusto/management/mappings?branch=master#avro-mapping) (必須) は、取り込みコマンドのパラメーターを使用して実行できます。 また、[テーブルで事前に作成](/azure/kusto/management/tables#create-ingestion-mapping)して取り込みコマンドのパラメーターから参照することもできます。
+* [CSV マッピング](/azure/kusto/management/mappings?branch=master#csv-mapping) (省略可能) は、すべての序数ベースの形式で動作します。 取り込みコマンドのパラメーターを使用して実行すること、または[テーブルで事前に作成](/azure/kusto/management/create-ingestion-mapping-command)して取り込みコマンドのパラメーターから参照することができます。
+* [JSON マッピング](/azure/kusto/management/mappings?branch=master#json-mapping) (必須) と [Avro マッピング](/azure/kusto/management/mappings?branch=master#avro-mapping) (必須) は、取り込みコマンドのパラメーターを使用して実行できます。 また、[テーブルで事前に作成](/azure/kusto/management/create-ingestion-mapping-command)して取り込みコマンドのパラメーターから参照することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [イベント ハブから Azure Data Explorer にデータを取り込む](ingest-data-event-hub.md)

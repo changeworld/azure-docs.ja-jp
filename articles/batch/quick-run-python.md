@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Azure Batch ジョブを実行する - Python API
+title: Python API を使用して Azure Batch ジョブを実行する
 description: Batch Python クライアント ライブラリを使用して Azure Batch のサンプル ジョブとタスクを簡単に実行できます。 Batch サービスの主要概念について説明します。
 services: batch
 author: LauraBrenner
@@ -12,30 +12,26 @@ ms.author: labrenne
 ms.custom:
 - seo-python-october2019
 - mvc
-ms.openlocfilehash: 87c08c403a1e5eefd7645572f593b20037a8212b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 140ae0fc9f9a8daba193aa05e0800d83b7b6b963
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77017107"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086049"
 ---
-# <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>クイック スタート:Python API で最初の Batch ジョブを実行する
+# <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>クイック スタート:Python API を使用して Azure Batch ジョブを実行する
 
-このクイック スタートでは、Azure Batch Python API に基づいて構築されたアプリケーションから Azure Batch ジョブを実行します。  このクイック スタートを完了すると、Batch サービスの主要な概念を理解し、より大規模でより現実的なワークロードで Batch を試せるようになります。
+このクイックスタートでは、Python API を使用して、アプリから Azure Batch ジョブを実行します。 このアプリでは、入力データ ファイルを Azure Storage にアップロードし、Batch コンピューティング ノード (仮想マシン) の "*プール*" を作成します。 その後、基本的なコマンドを使用してプールの各入力ファイルを処理するための "*タスク*" を実行する "*ジョブ*" を作成します。
 
-このアプリでは、複数の入力データ ファイルを Azure Storage にアップロードしてから、Batch コンピューティング ノード (仮想マシン) の "*プール*" を作成します。 その後、基本的なコマンドを使用してプールの各入力ファイルを処理するための "*タスク*" を実行するサンプル "*ジョブ*" を作成します。
- 
+ここでは、Batch サービスの主要な概念を説明します。より大規模でより現実的なワークロードで Batch を試す準備をしましょう。
+
 ![Azure Batch ワークフローの概要](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
-
-[!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Python バージョン 2.7 または 3.3 以降](https://www.python.org/downloads/)
-
-* [pip](https://pip.pypa.io/en/stable/installing/) パッケージ マネージャー
-
-* Azure Batch アカウントおよびリンクされた Azure ストレージ アカウント。 これらのアカウントを作成するには、[Azure Portal](quick-create-portal.md) または [Azure CLI](quick-create-cli.md) を使用した Batch のクイック スタートを参照してください。 
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- **Azure Batch** アカウントおよびリンクされた **Azure ストレージ** アカウント。 [Azure portal](quick-create-portal.md) または [CLI](quick-create-cli.md) を使用してこれらのアカウントを作成します。
+- [Python](https://python.org/downloads) バージョン 2.7 または 3.3 以降 ([pip](https://pip.pypa.io/en/stable/installing/) パッケージ マネージャーを含む)。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 

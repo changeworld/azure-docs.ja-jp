@@ -1,0 +1,29 @@
+---
+author: DCtheGeek
+ms.service: azure-policy
+ms.topic: include
+ms.date: 02/10/2020
+ms.author: dacoulte
+ms.openlocfilehash: 6bb35ba45b946ca631614c7fd6d54e7bcb9b9bcd
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77170420"
+---
+|Name |説明 |ポリシー |Version |
+|---|---|---|---|
+|[\[プレビュー\]: 監査要件をサポートするため、カナダ連邦の PBMM コントロールを監査し、特定の VM 拡張機能をデプロイする](https://github.com/Azure/azure-policy/blob/masterbuilt-in-policies/policySetDefinitions/Regulatory%20Compliance/CanadaFederalPBMM_audit.json) |このイニシアチブには、カナダ連邦 PBMM コントロールのサブセットに対応する監査および VM 拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、 https://aka.ms/canadafederalPBMM-blueprint にアクセスしてください |68 |1.0.0-preview |
+|[\[プレビュー\]: CIS Microsoft Azure Foundations Benchmark 1.1.0 の推奨事項を監査し、特定のサポート VM 拡張機能を展開します](https://github.com/Azure/azure-policy/blob/masterbuilt-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0_audit.json) |このイニシアチブには、CIS Microsoft Azure Foundations Benchmark の推奨事項のサブセットに対応する監査および VM 拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、 https://aka.ms/cisazure-blueprint にアクセスしてください。 |84 |1.0.0-preview |
+|[\[プレビュー\]: FedRAMP Moderate コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする](https://github.com/Azure/azure-policy/blob/masterbuilt-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_M_audit.json) |このイニシアチブには、FedRAMP M コントロールのサブセットに対応する監査および VM 拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、 https://aka.ms/fedrampm-blueprint にアクセスしてください。 |71 |1.0.0-preview |
+|[\[プレビュー\]: 監査要件をサポートするため、IRS1075 September 2016 コントロールを監査し、特定の VM 拡張機能をデプロイします](https://github.com/Azure/azure-policy/blob/masterbuilt-in-policies/policySetDefinitions/Regulatory%20Compliance/IRS1075_audit.json) |このイニシアチブには、IRS1075 (2016 年 9 月) コントロールのサブセットに対応する監査および VM 拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、 https://aka.ms/irs1075-blueprint にアクセスしてください。 |71 |1.0.0-preview |
+|[\[プレビュー\]: 監査要求をサポートするため、ISO 27001:2013 コントロールを監査し、特定の VM 拡張機能をデプロイします](https://github.com/Azure/azure-policy/blob/masterbuilt-in-policies/policySetDefinitions/Regulatory%20Compliance/ISO27001_2013_audit.json) |このイニシアチブには、ISO 27001:2013 コントロールのサブセットに対応する監査および VM 拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、 https://aka.ms/iso27001-blueprint にアクセスしてください。 |59 |1.0.0-preview |
+|[\[プレビュー\]: 監査要件をサポートするため、NIST SP 800-53 R4 コントロールを監査し、特定の VM 拡張機能をデプロイします](https://github.com/Azure/azure-policy/blob/masterbuilt-in-policies/policySetDefinitions/Regulatory%20Compliance/NIST80053_audit.json) |このイニシアチブには、NIST SP 800-53 R4 コントロールのサブセットに対応する監査および VM 拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、 https://aka.ms/nist80053-blueprint にアクセスしてください。 |799 |1.0.0-preview |
+|[\[プレビュー\]: PCI v3.2.1:2018 コントールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする](https://github.com/Azure/azure-policy/blob/masterbuilt-in-policies/policySetDefinitions/Regulatory%20Compliance/PCIv3_2_1_2018_audit.json) |このイニシアチブには、PCI v3.2.1:2018 コントロールのサブセットに対応する監査および VM 拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、 https://aka.ms/pciv321-init にアクセスしてください。 |39 |1.0.0-preview |
+|[\[プレビュー\]: 監査要件をサポートするため、SWIFT CSP-CSCF v2020 コントロールを監査し、特定の VM 拡張機能をデプロイします](https://github.com/Azure/azure-policy/blob/masterbuilt-in-policies/policySetDefinitions/Regulatory%20Compliance/SWIFTv2020_audit.json) |このイニシアチブには、SWIFT CSP-CSCF v2020 コントロールのサブセットに対応する監査および VM 拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、 https://aka.ms/SWIFT-blueprint にアクセスしてください。 |71 |1.0.0-preview |
+|[\[プレビュー\]: UK OFFICIAL コントロールと UK NHS コントールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする](https://github.com/Azure/azure-policy/blob/masterbuilt-in-policies/policySetDefinitions/Regulatory%20Compliance/ukofficial_audit.json) |このイニシアチブには、UK OFFICIAL および UK NHS コントロールのサブセットに対応するポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、 https://aka.ms/ukofficial-blueprint および https://aka.ms/uknhs-blueprint にアクセスしてください |67 |1.0.0-preview |
+|[Audit Azure Security Benchmark recommendations and deploy specific supporting VM Extensions (Azure Security Benchmark の推奨事項を監査し、特定のサポート VM 拡張機能をデプロイする)](https://github.com/Azure/azure-policy/blob/masterbuilt-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json) |このイニシアチブには、Azure セキュリティ ベンチマークの推奨事項のサブセットに対応する監査および VM 拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、 https://aka.ms/azsecbm にアクセスしてください。 |137 |1.0.0-preview |
+|[FedRAMP High コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする](https://github.com/Azure/azure-policy/blob/masterbuilt-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |このイニシアチブには、FedRAMP H コントロールのサブセットに対応する監査および VM 拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、 https://aka.ms/fedramph-blueprint にアクセスしてください。 |81 |1.0.0-preview |
+|[HITRUST/HIPAA コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする](https://github.com/Azure/azure-policy/blob/masterbuilt-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json) |このイニシアチブには、HITRUST/HIPAA コントロールのサブセットに対応するポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 [https://github.com/mysqljs/mysql/](https://aka.ms/hipaa-blueprint ) |57 |1.0.0 |
+|[監査要件をサポートするには、アメリカ映画協会 (MPAA) のコントロールを監査して、特定の VM 拡張機能をデプロイします](https://github.com/Azure/azure-policy/blob/masterbuilt-in-policies/policySetDefinitions/Regulatory%20Compliance/Media_audit.json) |このイニシアチブには、アメリカ映画協会 (MPAA) のセキュリティおよびガイドライン コントロールのサブセットに対応するポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、 https://aka.ms/mpaa-blueprint にアクセスしてください |45 |1.0.0-preview |
+|[DoD 影響レベル 4](https://github.com/Azure/azure-policy/blob/masterbuilt-in-policies/policySetDefinitions/Regulatory%20Compliance/DOD_IL4_audit.json) |特定の DoD 影響レベル 4 (IL4) コントロールに対処するポリシーを割り当てます。 詳細情報 - https://aka.ms/DoDIL4-blueprint 。 |81 |1.0.0-preview |

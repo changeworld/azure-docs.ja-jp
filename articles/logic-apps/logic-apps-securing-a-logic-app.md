@@ -1,17 +1,17 @@
 ---
 title: データへのアクセスをセキュリティで保護する
-description: Azure Logic Apps で、入力、出力、要求ベースのトリガー、実行履歴、管理タスク、その他のリソースへのアクセスを保護するためのセキュリティを追加します
+description: Azure Logic Apps で、入力、出力、要求ベースのトリガー、実行履歴、管理タスク、その他のリソースへのアクセスをセキュリティで保護します
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.openlocfilehash: 73b8a559eddec51dbc01f1d55f70414360ff2956
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/04/2020
+ms.openlocfilehash: 3a7fc8028348ae20403df62cd03c76a266edf07c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898436"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191318"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps におけるアクセスとデータのセキュリティ保護
 
@@ -29,7 +29,7 @@ Azure Logic Apps におけるアクセスを制御し、データを保護する
 
 着信した呼び出しや要求を受け取る要求ベースのトリガー ([Request](../connectors/connectors-native-reqres.md) トリガーや [Webhook](../connectors/connectors-native-webhook.md) トリガーなど) がロジック アプリで使用されている場合、承認されたクライアントだけがそのロジック アプリを呼び出すことができるように、アクセスを制限できます。 ロジック アプリで受信されるすべての要求は、Secure Sockets Layer (SSL) プロトコルで暗号化され、セキュリティ保護されます。
 
-このトリガーの種類へのアクセスをセキュリティ保護する方法を次に示します。
+この種類のトリガーへのアクセスをセキュリティで保護するためのオプションを次に示します。
 
 * [Shared Access Signature の生成](#sas)
 * [受信 IP アドレスの制限](#restrict-inbound-ip-addresses)
@@ -62,7 +62,7 @@ SAS によるアクセスのセキュリティ保護の詳細については、�
 
 #### <a name="regenerate-access-keys"></a>アクセス キーを再生成する
 
-新しい安全なアクセス キーを随時生成するには、Azure REST API または Azure portal を使用します。 古いキーを使用する、過去に生成された URL はすべて無効になり、ロジック アプリのトリガーが承認されなくなります。 再生成後に取得する URL は、新しいアクセス キーで署名されます。
+新しいセキュリティ アクセス キーを随時生成するには、Azure REST API または Azure portal を使用します。 古いキーを使用する、過去に生成された URL はすべて無効になり、ロジック アプリのトリガーが承認されなくなります。 再生成後に取得する URL は、新しいアクセス キーで署名されます。
 
 1. [Azure portal](https://portal.azure.com) で、再生成したいキーを備えたロジック アプリを開きます。
 
@@ -92,7 +92,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Logic/workflows/<workflow-name>/triggers/<trigger-name>/listCallbackUrl?api-version=2016-06-01
 ```
 
-本文では、`KeyType` プロパティに `Primary` または `Secondary` を指定します。 このプロパティは、指定された安全なキーによって署名された URL を返します。
+本文では、`KeyType` プロパティに `Primary` または `Secondary` を指定します。 このプロパティは、指定されたセキュリティ キーによって署名された URL を返します。
 
 <a name="restrict-inbound-ip"></a>
 
@@ -257,15 +257,15 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
 ### <a name="hide-data-from-run-history-by-using-obfuscation"></a>難読化を使用して実行履歴のデータを非表示にする。
 
-多くのトリガーおよびアクションには、ロジック アプリの実行履歴から、入力と出力のどちらかまたは両方を非表示にするための設定があります。 ここでは、それらの設定を使用してこのデータのセキュリティを保護する際に[確認すべきいくつかの考慮事項](#obfuscation-considerations)について取り上げます。
+多くのトリガーおよびアクションには、ロジック アプリの実行履歴から、入力と出力のどちらかまたは両方を非表示にするための設定があります。 ここでは、それらの設定を使用してこのデータをセキュリティで保護する際に[確認すべきいくつかの考慮事項](#obfuscation-considerations)について取り上げます。
 
-#### <a name="secure-inputs-and-outputs-in-the-designer"></a>デザイナーで入力と出力のセキュリティを保護する
+#### <a name="hide-inputs-and-outputs-in-the-designer"></a>デザイナーで入力と出力を非表示にする
 
 1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます。
 
    ![ロジック アプリ デザイナーでロジック アプリを開く](./media/logic-apps-securing-a-logic-app/open-sample-logic-app-in-designer.png)
 
-1. データをセキュリティで保護したいトリガーまたはアクションで省略記号 ( **...** ) ボタンを選択し、 **[設定]** を選択します。
+1. 機密データを非表示にするトリガーまたはアクションで省略記号 ( **...** ) ボタンを選択し、 **[設定]** を選択します。
 
    ![トリガーまたはアクションの設定を開く](./media/logic-apps-securing-a-logic-app/open-action-trigger-settings.png)
 
@@ -287,20 +287,20 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
    1. **[ロジック アプリの実行]** ウィンドウで、確認したいアクションを展開します。
 
-      入力と出力の両方をセキュリティで保護することを選択した場合は、それらの値が非表示になります。
+      入力と出力の両方を隠すことを選択した場合は、それらの値が非表示になります。
 
       ![実行履歴で非表示になっている入力と出力](./media/logic-apps-securing-a-logic-app/hidden-data-run-history.png)
 
 <a name="secure-data-code-view"></a>
 
-#### <a name="secure-inputs-and-outputs-in-code-view"></a>コード ビューで入力と出力のセキュリティを保護する
+#### <a name="hide-inputs-and-outputs-in-code-view"></a>コード ビューで入力と出力を非表示にする
 
 基になるトリガーまたはアクションの定義で、次の値のいずれかまたは両方を含んだ `runtimeConfiguration.secureData.properties` 配列を追加または更新します。
 
 * `"inputs"`:実行履歴における入力のセキュリティを保護します。
 * `"outputs"`:実行履歴における出力のセキュリティを保護します。
 
-ここでは、それらの設定を使用してこのデータのセキュリティを保護する際に[確認すべきいくつかの考慮事項](#obfuscation-considerations)について取り上げます。
+ここでは、それらの設定を使用してこのデータをセキュリティで保護する際に[確認すべきいくつかの考慮事項](#obfuscation-considerations)について取り上げます。
 
 ```json
 "<trigger-or-action-name>": {
@@ -324,13 +324,13 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
 #### <a name="considerations-when-hiding-inputs-and-outputs"></a>入力と出力を非表示にする際の考慮事項
 
-* トリガーまたはアクションの入力または出力をセキュリティで保護すると、Logic Apps から Azure Log Analytics にそのセキュリティで保護されたデータが送信されません。 また、そのトリガーまたはアクションに[追跡対象プロパティ](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data)を追加して監視することもできません。
+* トリガーまたはアクションの入力または出力を隠すと、Logic Apps から Azure Log Analytics にそのセキュリティで保護されたデータが送信されません。 また、そのトリガーまたはアクションに[追跡対象プロパティ](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data)を追加して監視することもできません。
 
 * セキュリティで保護された出力は、[ワークフロー履歴を処理するための Logic Apps API](https://docs.microsoft.com/rest/api/logic/) から返されません。
 
-* 入力をセキュリティで保護するアクション、またはセキュリティで保護された出力を明示的に使用するアクションから、出力をセキュリティで保護するには、そのアクションで **[セキュリティで保護された出力]** を手動で有効にします。
+* 入力を隠すか出力を明示的に隠すアクションからの出力を非表示にするには、そのアクションで **[セキュリティで保護された出力]** を手動で有効にします。
 
-* ダウンストリームのアクションで、実行履歴にそのデータのセキュリティ保護を求める場合は、 **[セキュリティで保護された入力]** または **[セキュリティで保護された出力]** を確実にオンにしてください。
+* ダウンストリームのアクションで、実行履歴にそのデータを隠すよう求める場合は、 **[セキュリティで保護された入力]** または **[セキュリティで保護された出力]** を確実にオンにしてください。
 
   **[セキュリティで保護された出力] の設定**
 
@@ -358,7 +358,7 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
 デプロイ先が複数の異なる環境にまたがる場合、環境に応じて変わる値は、ワークフロー定義内でパラメーター化することを検討してください。 そのようにすると、[Azure Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)を使用してロジック アプリをデプロイすることでデータのハードコーディングを避け、セキュリティで保護されたパラメーターを定義することで機密データを保護し、[パラメーター ファイル](../azure-resource-manager/templates/parameter-files.md)を使用することで[テンプレートのパラメーター](../azure-resource-manager/templates/template-parameters.md)で個別の入力としてそのデータを渡すことができます。
 
-たとえば、[Azure Active Directory OAuth](#azure-active-directory-oauth-authentication) で HTTP アクションの認証を行う場合、認証に使用されるクライアント ID とクライアント シークレットを受け入れるパラメーターを定義し、セキュリティで保護することができます。 ロジック アプリでこれらのパラメーターを定義するには、ロジック アプリのワークフロー定義内の `parameters` セクションと、デプロイ用の Resource Manager テンプレートを使用します。 ロジック アプリの編集時や実行履歴の確認時に表示させたくないパラメーター値を非表示にするには、`securestring` または `secureobject` 型を使用してパラメーターを定義し、必要に応じてエンコードを使用します。 この型のパラメーターはリソース定義と一緒に返されず、デプロイ後にリソースを表示するときにもアクセスできません。 それらのパラメーターの値に実行時にアクセスするには、ワークフロー定義内で `@parameters('<parameter-name>')` 式を使用します。 この式は実行時にのみ評価され、[ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)で記述されます。
+たとえば、[Azure Active Directory OAuth](#azure-active-directory-oauth-authentication) で HTTP アクションの認証を行う場合、認証に使用されるクライアント ID とクライアント シークレットを受け入れるパラメーターを定義し、隠すことができます。 ロジック アプリでこれらのパラメーターを定義するには、ロジック アプリのワークフロー定義内の `parameters` セクションと、デプロイ用の Resource Manager テンプレートを使用します。 ロジック アプリの編集時や実行履歴の確認時に表示させたくないパラメーター値を非表示にするには、`securestring` または `secureobject` 型を使用してパラメーターを定義し、必要に応じてエンコードを使用します。 この型のパラメーターはリソース定義と一緒に返されず、デプロイ後にリソースを表示するときにもアクセスできません。 それらのパラメーターの値に実行時にアクセスするには、ワークフロー定義内で `@parameters('<parameter-name>')` 式を使用します。 この式は実行時にのみ評価され、[ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)で記述されます。
 
 > [!NOTE]
 > 要求のヘッダーまたは本文でパラメーターを使用した場合、ロジック アプリの実行履歴や送信 HTTP 要求を表示したときに、そのパラメーターが表示されることがあります。 コンテンツ アクセス ポリシーも適切に設定するようにしてください。 [難読化](#obfuscate)を使用して、実行履歴の入力と出力を表示されないようにすることもできます。 Authorization ヘッダーは入力や出力では表示されません。 そのため、ここでシークレットが使用された場合はそのシークレットを取得できません。
@@ -566,7 +566,7 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
 ## <a name="access-to-services-and-systems-called-from-logic-apps"></a>ロジック アプリから呼び出されたサービスとシステムへのアクセス
 
-ロジック アプリから呼び出しまたは要求を受信するエンドポイントをセキュリティで保護するいくつかの方法を次に示します。
+ロジック アプリから呼び出しまたは要求を受信するエンドポイントをセキュリティで保護するためのいくつかの方法を次に示します。
 
 * 送信要求に認証を追加します。
 
@@ -586,13 +586,13 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
   ロジック アプリからエンドポイントへの呼び出しはすべて、ロジック アプリのリージョンに基づいて指定される特定の IP アドレスが起点となります。 これらの IP アドレスからのみ要求を受け入れるフィルターを追加できます。 これらの IP アドレスを取得するには、[Azure Logic Apps の制限と構成](logic-apps-limits-and-config.md#configuration)に関するページを参照してください。
 
-* オンプレミス システムへの接続をセキュリティで保護する。
+* オンプレミス システムへの接続のセキュリティを強化する。
 
-  Azure Logic Apps では、以下のサービスとの統合を行って、安全で信頼性の高いオンプレミス通信を実現できます。
+  Azure Logic Apps では、以下のサービスとの統合を行って、より安全で信頼性の高いオンプレミス通信を実現できます。
 
   * オンプレミスのデータ ゲートウェイ
 
-    Azure Logic Apps の多くのマネージド コネクタは、オンプレミス システム (ファイル システム、SQL、SharePoint、DB2 など) への安全な接続を提供します。 ゲートウェイは、オンプレミスのソースから、Azure Service Bus 経由の暗号化されたチャネルでデータを送信します。 すべてのトラフィックは、ゲートウェイ エージェントからの安全な送信トラフィックとして生成されます。 [オンプレミス データ ゲートウェイのしくみ](logic-apps-gateway-install.md#gateway-cloud-service)を確認してください。
+    Azure Logic Apps の多くのマネージド コネクタでは、オンプレミス システム (ファイル システム、SQL、SharePoint、DB2 など) への安全な接続が促進されます。 ゲートウェイは、オンプレミスのソースから、Azure Service Bus 経由の暗号化されたチャネルでデータを送信します。 すべてのトラフィックは、ゲートウェイ エージェントからのセキュリティで保護された送信トラフィックとして生成されます。 [オンプレミス データ ゲートウェイのしくみ](logic-apps-gateway-install.md#gateway-cloud-service)を確認してください。
 
   * Azure API Management での接続
 
@@ -604,17 +604,17 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
 HTTP および HTTPS エンドポイントでは、さまざまな種類の認証がサポートされています。 これらのエンドポイントにアクセスする送信呼び出しまたは送信要求を行うために使用するトリガーまたはアクションに基づいて、さまざまな認証の種類から選択できます。 ロジック アプリで処理される機密情報を確実に保護するには、セキュリティで保護されたパラメーターを使用し、必要に応じてデータをエンコードします。 パラメーターの使用とセキュリティ保護の詳細については、「[パラメーターの入力へのアクセス](#secure-action-parameters)」を参照してください。
 
+> [!NOTE]
+> ロジック アプリ デザイナーでは、認証の種類を指定できる一部のトリガーやアクションで、 **[認証]** プロパティが表示されていない場合があります。 このような場合にプロパティを表示するには、トリガーまたはアクションで **[新しいパラメーターの追加]** の一覧を開き、 **[認証]** を選択します。 詳細については、「[マネージド ID を使用してアクセスを認証する](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)」を参照してください。
+
 | 認証の種類 | サポートしているもの |
 |---------------------|--------------|
 | [Basic](#basic-authentication) | Azure API Management、Azure App Service、HTTP、HTTP + Swagger、HTTP Webhook |
 | [クライアント証明書](#client-certificate-authentication) | Azure API Management、Azure App Service、HTTP、HTTP + Swagger、HTTP Webhook |
 | [Active Directory OAuth](#azure-active-directory-oauth-authentication) | Azure API Management、Azure App Service、Azure Functions、HTTP、HTTP + Swagger、HTTP Webhook |
 | [Raw](#raw-authentication) | Azure API Management、Azure App Service、Azure Functions、HTTP、HTTP + Swagger、HTTP Webhook |
-| [マネージド ID](#managed-identity-authentication) (システム割り当てのみ) | Azure API Management、Azure App Service、Azure Functions、HTTP、HTTP + Swagger、HTTP Webhook |
+| [管理対象 ID](#managed-identity-authentication) | Azure API Management、Azure App Service、Azure Functions、HTTP、HTTP + Swagger、HTTP Webhook |
 |||
-
-> [!NOTE]
-> ロジック アプリ デザイナーでは、認証の種類を指定できる一部のトリガーやアクションで、 **[認証]** プロパティが表示されていない場合があります。 このような場合にプロパティを表示するには、トリガーまたはアクションで **[新しいパラメーターの追加]** の一覧を開き、 **[認証]** を選択します。 詳細については、「[マネージド ID を使用してアクセスを認証する](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)」を参照してください。
 
 <a name="basic-authentication"></a>
 
@@ -657,7 +657,7 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 |---------------------|-----------------|----------|-------|-------------|
 | **認証** | `type` | はい | **クライアント証明書** <br>or <br>`ClientCertificate` | Secure Sockets Layer (SSL) クライアント証明書に使用する認証の種類。 自己署名証明書はサポートされていますが、SSL 用の自己署名証明書はサポートされていません。 |
 | **Pfx** | `pfx` | はい | <*encoded-pfx-file-content*> | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ <p><p>PFX ファイルを Base64 でエンコードされた形式に変換するには、次の手順に従って PowerShell を使用します。 <p>1.証明書の内容を変数に保存します。 <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2.`ToBase64String()` 関数を使用して証明書の内容を変換し、その内容をテキスト ファイルに保存します。 <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
-| **パスワード** | `password`| 説明を参照してください | <*password-for-pfx-file*> | PFX ファイルにアクセスするためのパスワード。 <p><p>**注**:このプロパティ値は、ロジック アプリ デザイナーで作業するときに必要ですが、コードビューで作業するときは必要*ありません*。 |
+| **パスワード** | `password`| いいえ | <*password-for-pfx-file*> | PFX ファイルにアクセスするためのパスワード |
 |||||
 
 たとえば、[デプロイを自動化するための Azure Resource Manager テンプレート](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)で、[セキュリティ保護されたパラメーター](#secure-action-parameters)を使用して機密情報を処理および保護する場合は、式を使用して実行時にこれらのパラメーター値にアクセスできます。 次の例の HTTP アクション定義では、認証の `type` として `ClientCertificate` が指定され、パラメーター値を取得するために [parameters() 関数](../logic-apps/workflow-definition-language-functions-reference.md#parameters)が使用されています。
@@ -680,9 +680,9 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 
 クライアント証明書認証を使用してサービスをセキュリティ保護する方法の詳細については、次のトピックを参照してください。
 
-* [Azure API Management でクライアント証明書認証を使用して API を保護する](../api-management/api-management-howto-mutual-certificates-for-clients.md)
-* [Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する](../api-management/api-management-howto-mutual-certificates.md)
-* [クライアント証明書を使用して RESTful サービスを保護する](../active-directory-b2c/secure-rest-api-dotnet-certificate-auth.md)
+* [Azure API Management でクライアント証明書認証を使用して API のセキュリティを強化する](../api-management/api-management-howto-mutual-certificates-for-clients.md)
+* [Azure API Management でクライアント証明書認証を使用してバックエンド サービスのセキュリティを強化する](../api-management/api-management-howto-mutual-certificates.md)
+* [クライアント証明書を使用して RESTfuL サービスのセキュリティを強化する](../active-directory-b2c/secure-rest-api-dotnet-certificate-auth.md)
 * [アプリケーションを認証するための証明書資格情報](../active-directory/develop/active-directory-certificate-credentials.md)
 * [Azure App Service のアプリケーション コードに SSL 証明書を使用する](../app-service/configure-ssl-certificate-in-code.md)
 
@@ -695,6 +695,7 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 | プロパティ (デザイナー) | プロパティ (JSON) | Required | Value | 説明 |
 |---------------------|-----------------|----------|-------|-------------|
 | **認証** | `type` | はい | **Active Directory OAuth** <br>or <br>`ActiveDirectoryOAuth` | 使用する認証の種類。 現在、Logic Apps では [OAuth 2.0 プロトコル](../active-directory/develop/v2-overview.md)が使用されています。 |
+| **機関** | `authority` | いいえ | <*URL-for-authority-token-issuer*> | 認証トークンを提供する機関の URL。 この値の既定値は `https://login.windows.net` です。 |
 | **テナント** | `tenant` | はい | <*tenant-ID*> | Azure AD テナントのテナント ID |
 | **対象ユーザー** | `audience` | はい | <*resource-to-authorize*> | 承認で使用するリソース (`https://management.core.windows.net/` など) |
 | **クライアント ID** | `clientId` | はい | <*client-ID*> | 承認を要求しているアプリのクライアント ID |
@@ -702,7 +703,6 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 | **シークレット** | `secret` | はい (ただし資格情報の種類が "Secret" の場合のみ) | <*client-secret*> | 承認を要求しているクライアント シークレット |
 | **Pfx** | `pfx` | はい (ただし資格情報の種類が "Certificate" の場合のみ) | <*encoded-pfx-file-content*> | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ |
 | **パスワード** | `password` | はい (ただし資格情報の種類が "Certificate" の場合のみ) | <*password-for-pfx-file*> | PFX ファイルにアクセスするためのパスワード |
-| **機関** | `authority` | いいえ | <*URL-for-authority-token-issuer*> | 認証トークンを提供する機関の URL。 この値の既定値は `https://login.windows.net` です。 <p>**注**:このプロパティがデザイナーに表示されるようにするには、トリガーまたはアクションで **[新しいパラメーターの追加]** の一覧を開き、 **[機関]** を選択します。 |
 |||||
 
 たとえば、[デプロイを自動化するための Azure Resource Manager テンプレート](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)で、[セキュリティ保護されたパラメーター](#secure-action-parameters)を使用して機密情報を処理および保護する場合は、式を使用して実行時にこれらのパラメーター値にアクセスできます。 次の例の HTTP アクション定義では、認証の `type` として `ActiveDirectoryOAuth`、資格情報の種類として `Secret` が指定されており、パラメーター値を取得するために [parameters() 関数](../logic-apps/workflow-definition-language-functions-reference.md#parameters)が使用されています。
@@ -773,18 +773,19 @@ Raw 認証をサポートするトリガーまたはアクションでは、次�
 
 ### <a name="managed-identity-authentication"></a>マネージド ID の認証
 
-[[マネージド ID]](../active-directory/managed-identities-azure-resources/overview.md) オプションが使用可能な場合、ロジック アプリでは、サインインせずに他の Azure Active Directory (Azure AD) テナントのリソースにアクセスするための認証用に、システム割り当ての ID を使用できます。 この ID は、ユーザーの代わりに Azure で管理されます。ユーザーがシークレットを提供したりローテーションしたりする必要がないため、資格情報の保護に役立ちます。 [Azure AD 認証用のマネージド ID がサポートされているサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)の詳細をご覧ください。
+[[マネージド ID]](../active-directory/managed-identities-azure-resources/overview.md) オプションが使用可能な場合、ロジック アプリでは、サインインせずに他の Azure Active Directory (Azure AD) テナントのリソースにアクセスするための認証用に、システム割り当ての ID、または手動で作成されたユーザー割り当ての*単一の* ID を使用できます。 この ID は、ユーザーの代わりに Azure で管理されます。ユーザーがシークレットを提供したりローテーションしたりする必要がないため、資格情報の保護に役立ちます。 [Azure AD 認証用のマネージド ID がサポートされているサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)の詳細をご覧ください。
 
-1. ロジック アプリでシステム割り当ての ID を使用するには、その前に「[Azure Logic Apps でマネージド ID を使用して認証し、リソースにアクセスする](../logic-apps/create-managed-service-identity.md)」の手順に従います。 これらの手順により、ロジック アプリでマネージド ID が有効になり、ターゲットの Azure リソースに対するその ID のアクセスが設定されます。
+1. ロジック アプリでマネージド ID を使用するには、その前に「[Azure Logic Apps でマネージド ID を使用して認証し、リソースにアクセスする](../logic-apps/create-managed-service-identity.md)」の手順に従います。 これらの手順により、ロジック アプリでマネージド ID が有効になり、ターゲットの Azure リソースに対するその ID のアクセスが設定されます。
 
-2. Azure 関数でシステム割り当ての ID を使用できるようにするには、先に [Azure Functions の認証を有効](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions)にします。
+1. Azure 関数でマネージド ID を使用できるようにするには、先に [Azure Functions の認証を有効](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions)にします。
 
-3. マネージド ID を使用するトリガーまたはアクションで、次のプロパティ値を指定します。
+1. マネージド ID を使用するトリガーまたはアクションで、次のプロパティ値を指定します。
 
    | プロパティ (デザイナー) | プロパティ (JSON) | Required | Value | 説明 |
    |---------------------|-----------------|----------|-------|-------------|
    | **認証** | `type` | はい | **Managed Identity** <br>or <br>`ManagedServiceIdentity` | 使用する認証の種類 |
-   | **対象ユーザー** | `audience` | はい | <*target-resource-ID*> | アクセスするターゲット リソースのリソース ID。 <p>たとえば、`https://storage.azure.com/` では、認証用のアクセス トークンがすべてのストレージ アカウントに対して有効になります。 ただし、特定のストレージ アカウントに対する `https://fabrikamstorageaccount.blob.core.windows.net` など、ルート サービスの URL を指定することもできます。 <p>**注**:このプロパティは、一部のトリガーまたはアクションでは表示されない可能性があります。 このプロパティが表示されるようにするには、トリガーまたはアクションで **[新しいパラメーターの追加]** の一覧を開き、 **[対象ユーザー]** を選択します。 <p><p>**重要**:このターゲット リソース ID が、必要な末尾のスラッシュも含めて、Azure AD で予想される値と正確に一致するようにします。 そのため、すべての Azure Blob Storage アカウントの `https://storage.azure.com/` リソース ID には、末尾のスラッシュが必要です。 ただし、特定のストレージ アカウントのリソース ID については、末尾のスラッシュは必要ありません。 これらのリソース ID を調べるには、「[Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)」をご覧ください。 |
+   | **Managed Identity** | `identity` | はい | * **システム割り当てマネージド ID**。 <br>or <br>`SystemAssigned` <p><p>* <*user-assigned-identity-name*> | 使用するマネージド ID |
+   | **対象ユーザー** | `audience` | はい | <*target-resource-ID*> | アクセスするターゲット リソースのリソース ID。 <p>たとえば、`https://storage.azure.com/` では、認証用のアクセス トークンがすべてのストレージ アカウントに対して有効になります。 ただし、特定のストレージ アカウントに対する `https://fabrikamstorageaccount.blob.core.windows.net` など、ルート サービスの URL を指定することもできます。 <p>**注**: **[対象ユーザー]** プロパティは、一部のトリガーまたはアクションでは表示されない可能性があります。 このプロパティが表示されるようにするには、トリガーまたはアクションで **[新しいパラメーターの追加]** の一覧を開き、 **[対象ユーザー]** を選択します。 <p><p>**重要**:このターゲット リソース ID が、必要な末尾のスラッシュも含めて、Azure AD で予想される値と*正確に一致する*ようにします。 そのため、すべての Azure Blob Storage アカウントの `https://storage.azure.com/` リソース ID には、末尾のスラッシュが必要です。 ただし、特定のストレージ アカウントのリソース ID については、末尾のスラッシュは必要ありません。 これらのリソース ID を調べるには、「[Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)」をご覧ください。 |
    |||||
 
    たとえば、[デプロイを自動化するための Azure Resource Manager テンプレート](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)で、[セキュリティ保護されたパラメーター](#secure-action-parameters)を使用して機密情報を処理および保護する場合は、式を使用して実行時にこれらのパラメーター値にアクセスできます。 次の例の HTTP アクション定義では、認証の `type` として `ManagedServiceIdentity` が指定され、パラメーター値を取得するために [parameters() 関数](../logic-apps/workflow-definition-language-functions-reference.md#parameters)が使用されています。
@@ -797,6 +798,7 @@ Raw 認証をサポートするトリガーまたはアクションでは、次�
          "uri": "@parameters('endpointUrlParam')",
          "authentication": {
             "type": "ManagedServiceIdentity",
+            "identity": "SystemAssigned",
             "audience": "https://management.azure.com/"
          },
       },

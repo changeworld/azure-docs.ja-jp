@@ -5,14 +5,14 @@ services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 12/02/2019
+ms.date: 02/07/2019
 ms.author: alzam
-ms.openlocfilehash: 19aa029311584b5a9762691d24ed10c1666a032c
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: b3508c4c8da5b4987fb5f38cf3bf701f2dda1097
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74781729"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122035"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-by-using-azure-virtual-wan"></a>チュートリアル:Azure Virtual WAN を使用してユーザー VPN 接続を作成する
 
@@ -86,19 +86,17 @@ ms.locfileid: "74781729"
 
 P2S 構成には、リモート クライアントを接続するためのパラメーターが定義されています。
 
-1. 次の変数を設定します。実際の環境に合わせて値は置き換えてください。
+1. 仮想 WAN の下で、 **[User VPN configurations]\(ユーザー VPN の構成\)** を選択します。
 
-   ```powershell
-   $aadAudience = "00000000-abcd-abcd-abcd-999999999999"
-   $aadIssuer = "https://sts.windows.net/00000000-abcd-abcd-abcd-999999999999/"
-   $aadTenant = "https://login.microsoftonline.com/00000000-abcd-abcd-abcd-999999999999"    
-   ```
+   ![新しい構成](media/virtual-wan-point-to-site-azure-ad/aadportal1.jpg)
 
-2. 次のコマンドを実行して構成を作成します。
+2. **[+Create user VPN config]\(+ ユーザー VPN 構成の作成\)** をクリックします。
 
-   ```powershell
-   $aadConfig = New-AzVpnServerConfiguration -ResourceGroupName <ResourceGroup> -Name newAADConfig -VpnProtocol OpenVPN -VpnAuthenticationType AAD -AadTenant $aadTenant -AadIssuer $aadIssuer -AadAudience $aadAudience -Location westcentralus
-   ```
+   ![新しい構成](media/virtual-wan-point-to-site-azure-ad/aadportal2.jpg)
+
+3. 情報を入力して **[作成]** をクリックします
+
+   ![新しい構成](media/virtual-wan-point-to-site-azure-ad/aadportal3.jpg)
 
 ## <a name="hub"></a>ハブの割り当てを編集する
 
@@ -133,7 +131,7 @@ VPN プロファイルを使用してクライアントを構成します。
 
 #### <a name="to-download-the-azure-vpn-client"></a>Azure VPN Client をダウンロードするには
 
-この[リンク](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)を使用して、Azure VPN Client (プレビュー) をダウンロードします。
+この[リンク](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)を使用して、Azure VPN Client をダウンロードします。
 
 #### <a name="import"></a>クライアント プロファイルをインポートするには
 
@@ -205,6 +203,6 @@ VPN プロファイルを使用してクライアントを構成します。
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Virtual WAN の詳細については、[Virtual WAN の概要](virtual-wan-about.md)に関するページを参照してください。

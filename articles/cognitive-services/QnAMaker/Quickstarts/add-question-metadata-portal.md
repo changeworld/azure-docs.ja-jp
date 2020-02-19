@@ -1,6 +1,5 @@
 ---
 title: クイック スタート:QnA Maker ポータルで質問と回答を追加する
-titleSuffix: Azure Cognitive Services
 description: このクイックスタートでは、ユーザーが自分の質問に対する適切な回答を見つけられるように、質問と回答のセットをメタデータと共に追加する方法について説明します。
 services: cognitive-services
 author: diberry
@@ -8,58 +7,47 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 11/22/2019
+ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 664d6006ab78f91a8ed0e199cf78fae9512efd73
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 25c0fe549dfc850a53b06f79f348a87cba3b70a1
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843041"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109931"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>クイック スタート:QnA Maker ポータルで質問と回答を追加する
 
-ナレッジ ベースを作成したら、ユーザーが自分の質問に対する適切な回答を見つけられるように、質問と回答のセットをメタデータと共に追加します。
-
-適切な回答は 1 つですが、その回答に結びつく質問はいくつも考えられます。
-
-たとえば、次の表には Azure サービスの制限についての質問が記載されていますが、関係する Azure サービスはそれぞれ異なります。
+ナレッジ ベースを作成したら、質問と回答 (QnA) のセットを、回答をフィルター処理するためのメタデータと共に追加します。 次の表には Azure サービスの制限についての質問が記載されていますが、関係する Azure サービスはそれぞれ異なります。
 
 <a name="qna-table"></a>
-
 
 |オン|疑問がある場合|Answer|Metadata|
 |--|--|--|--|
 |1 番|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
 |2 番|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
 
-質問と回答のセットにメタデータが追加されると、クライアント アプリケーションでは次のことを実行できます。
+QnA セットにメタデータが追加されると、クライアント アプリケーションでは次のことを実行できます。
 
 * 特定のメタデータとのみ一致する回答を要求します。
 * すべての回答を受け取ったうえで、それぞれのメタデータに応じた後処理を回答に対して行います。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* QnA Maker サービス
-* その QnA Maker サービスで作成されたナレッジ ベース
-
-両方とも[最初のクイックスタート](../how-to/create-knowledge-base.md)で作成しました。
+* [前のクイックスタートを完了しておく](./create-publish-knowledge-base.md)
 
 ## <a name="sign-in-to-the-qna-maker-portal"></a>QnA Maker ポータルにサインインする
 
 1. [QnA Maker](https://www.qnamaker.ai) ポータルにサインインします。
 
-1. 既存のナレッジ ベースを選択します。 まだナレッジ ベースがない場合は、[前のクイックスタート](../how-to/create-knowledge-base.md)に戻って、ナレッジ ベースの作成手順を完了してください。
+1. [前のクイックスタート](../how-to/create-knowledge-base.md)から既存のナレッジ ベースを選択します。
 
 ## <a name="add-additional-alternatively-phrased-questions"></a>言い回しを変えて質問を追加する
 
-[前のクイックスタート](../how-to/create-knowledge-base.md)で作成した最新のナレッジ ベースには、QnA Maker のトラブルシューティングに関する質問と回答のセットが含まれています。 これらのセットは、作成プロセスでナレッジ ベースに URL を追加したときに作成されました。
+最新のナレッジ ベースには、QnA Maker のトラブルシューティングに関する QnA セットが含まれています。 これらのセットは、作成プロセスでナレッジ ベースに URL を追加したときに作成されました。
 
-この URL をインポートした時点では、1 つの回答について質問が 1 つしか作成されていませんでした。
-
-この手順では、別の質問を追加します。
+この URL をインポートした時点では、1 つの回答について質問が 1 つしか作成されていませんでした。 この手順では、別の質問を追加します。
 
 1. **[編集]** ページで、質問と回答のセットの上にある検索ボックスを使用し、`How large a knowledge base can I create?` という質問を探します。
 
@@ -76,7 +64,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     `What GB size can a knowledge base be?`
 
-    次のようにマークダウン形式で正しい回答が返されます: `The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`
+    次のようにマークダウン形式で正しい回答が返されます:
+
+    `The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`
 
     返された回答の下にある **[検査]** を選択すると、異なる信頼度で質問を満たした回答が他にも表示されます。
 
@@ -92,11 +82,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[オプションの表示]** を選択し、 **[メタデータの表示]** を選択します。
 
-1. 追加した質問と回答のセットについて、 **[Add metadata tags]\(メタデータ タグの追加\)** を選択し、`service` という名前と `search` という値を追加します (`service:search`)。
+1. 追加した QnA セットについて、 **[Add metadata tags]\(メタデータ タグの追加\)** を選択し、`service` という名前と `search` という値を追加します。 `service:search` のようになります。
 
-1. `link_in_answer` という名前と `false` という値で別のメタデータ タグを追加します (`link_in_answer:false`)。
+1. `link_in_answer` という名前と `false` という値で別のメタデータ タグを追加します。 `link_in_answer:false` のようになります。
 
 1. 表から 1 つ目の回答を検索します (`How large a knowledge base can I create?`)。
+
 1. 同じ 2 つのメタデータ タグに対し、メタデータのペアを追加します。
 
     `link_in_answer` : `true`<br>
@@ -107,71 +98,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[保存してトレーニング]** を選択してナレッジ ベースを再トレーニングします。
 
 1. トップ メニューの **[公開]** をクリックして公開ページに移動します。
-1. **[公開]** ボタンを選択して、クエリ可能なエンドポイントに最新のナレッジ ベースを公開します。
-1. ナレッジ ベースが公開された後、 **[Curl]** タブを選択すると、ナレッジ ベースから回答を生成するためのサンプル cURL コマンドが表示されます。
-1. このコマンドを編集できるように、メモ帳などの編集環境にコピーします。 実際のリソース名、ナレッジ ベース ID、エンドポイント キーに合わせて編集します。
+1. **[公開]** ボタンを選択して、エンドポイントに最新のナレッジ ベースを公開します。
+1. ナレッジ ベースが公開されたら、次のクイックスタートに進んで、ナレッジ ベースから回答を生成する方法を見てみましょう。
 
-    |Replace|
-    |--|
-    |`your-resource-name`|
-    |`your-knowledge-base-id`|
-    |`your-endpoint-key`|
+## <a name="what-did-you-accomplish"></a>ここで行ったこと
 
-    ```curl
-    curl -X POST https://your-resource-name.azurewebsites.net/qnamaker/knowledgebases/your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
-    ```
-
-    質問はたったの 1 単語 (`size`) であることに注目してください。この単語から、質問と回答のセットを取得することができます。 `strictFilters` 配列の指定により、`qna_maker` の回答のみに応答が限定されます。
-
-    [!INCLUDE [Tip for debug property to JSON request](../includes/tip-debug-json.md)]
-
-1. この応答には、フィルター条件を満たした回答のみが含まれます。
-
-    次の cURL 応答は、読みやすくするために書式設定されています。
-
-    ```JSON
-    {
-        "answers": [
-            {
-                "questions": [
-                    "How large a knowledge base can I create?",
-                    "What is the max size of a knowledge base?",
-                    "How many GB of data can a knowledge base hold?"
-                ],
-                "answer": "The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment)for more details.",
-                "score": 68.76,
-                "id": 3,
-                "source": "https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting",
-                "metadata": [
-                    {
-                        "name": "link_in_answer",
-                        "value": "true"
-                    },
-                    {
-                        "name": "service",
-                        "value": "qna_maker"
-                    }
-                ],
-                "context": {
-                    "isContextOnly": false,
-                    "prompts": []
-                }
-            }
-        ],
-        "debugInfo": null
-    }
-    ```
-
-    検索語句は満たしていないもののフィルターの条件は満たしているような質問と回答のセットがあったとしても、それは返されません。 代わりに一般的な回答 `No good match found in KB.` が返されます。
-
-    メタデータの名前と値のペアは、所定の制限内に保つようにしてください。
+ここでは、より多くの質問をサポートするようにナレッジ ベースを編集しました。また、回答が返された後、上位の回答を検索したり後処理を行ったりする際にフィルタリングが利用できるよう、名前と値のペアを指定しました。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Cognitive Services サブスクリプションをクリーンアップして削除したい場合は、リソースまたはリソース グループを削除することができます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。
-
-* [ポータル](../../cognitive-services-apis-create-account.md#clean-up-resources)
-* [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+次のクイックスタートに進まない場合は、Azure portal で QnA Maker と Bot フレームワークのリソースを削除します。
 
 ## <a name="next-steps"></a>次のステップ
 

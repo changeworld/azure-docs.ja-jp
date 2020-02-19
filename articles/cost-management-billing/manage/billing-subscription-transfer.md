@@ -3,30 +3,27 @@ title: Azure サブスクリプションの課金所有権を譲渡する
 description: Azure サブスクリプションの課金所有権を別のアカウントに譲渡する方法と、そのプロセスに関してよく寄せられる質問 (FAQ) について説明します
 keywords: Azure サブスクリプションを譲渡する, Azure サブスクリプションの譲渡, Azure サブスクリプションを別のアカウントに移動する, Azure サブスクリプション所有者の変更, Azure サブスクリプションを別のアカウントに譲渡する, Azure 課金所有権を譲渡する
 author: bandersmsft
-manager: amberb
+ms.reviewer: amberb
 tags: billing,top-support-issue
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/17/2020
+ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d2bbfd7f4ddc5fc34c0bec3612783dfef5074d83
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3eb76535a8047840a577f5b044001d85c20b13f0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76270868"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188387"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure サブスクリプションの課金所有権を別のアカウントに譲渡する
 
-自分が退職するときや、Azure サブスクリプションの請求先を別のアカウントに変える場合には、サブスクリプションの課金所有権を譲渡する必要があります。 別のアカウントに課金所有権を譲渡することで、譲渡先アカウントの管理者に、支払い方法の変更、料金の確認、サブスクリプションの取り消しといった請求関連のタスクを行う権限が付与されます。
+自分が退職するときや、Azure サブスクリプションの請求先を別のアカウントに変える場合には、サブスクリプションの課金所有権を譲渡する必要があります。 別のアカウントに課金所有権を譲渡すると、管理者には請求タスク用の新しいアカウントのアクセス許可が付与されます。 これにより、支払い方法の変更、料金の表示、サブスクリプションの取り消しを行うことができます。
 
-課金所有権を維持したまま、サブスクリプションの種類を変更する場合は、[別のオファーへの Azure サブスクリプションの切り替え](switch-azure-offer.md)に関するページを参照してください。 サブスクリプションに含まれるリソースを管理可能なユーザーを制御する方法については、「[Azure リソースの組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)」を参照してください。
+課金所有権を維持したまま、サブスクリプションの種類を変更する場合は、[別のオファーへの Azure サブスクリプションの切り替え](switch-azure-offer.md)に関するページを参照してください。 サブスクリプションに含まれるリソースを管理可能なユーザーを制御するには、「[Azure リソースの組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)」を参照してください。
 
-マイクロソフト エンタープライズ契約 (EA) のお客様であれば、お客様のエンタープライズ管理者が、アカウント間でサブスクリプションの課金所有権を移すことができます。 詳細については、「[マイクロソフト エンタープライズ契約 (EA) サブスクリプションの課金所有権を譲渡する](#transfer-billing-ownership-of-enterprise-agreement-ea-subscriptions)」を参照してください。
+マイクロソフト エンタープライズ契約 (EA) のお客様であれば、お客様のエンタープライズ管理者が、アカウント間でサブスクリプションの課金所有権を移すことができます。 詳細については、「[マイクロソフト エンタープライズ契約 (EA) サブスクリプションの課金所有権を譲渡する](#EA)」を参照してください。
 
 ## <a name="transfer-billing-ownership-of-an-azure-subscription"></a>Azure サブスクリプションの課金所有権を譲渡する
 
@@ -44,7 +41,7 @@ ms.locfileid: "76270868"
 
 1. サブスクリプションの新しい所有者となる、アカウントの課金管理者であるユーザーのメール アドレスを入力します。
 
-1. 別の Azure AD テナントのアカウントにサブスクリプションを譲渡する場合は、サブスクリプションを新しいアカウントのテナントに移行するかどうかを選択します。 詳細については、「[サブスクリプションを別の Azure AD テナント内のアカウントに譲渡する](#transferring-subscription-to-an-account-in-another-azure-ad-tenant)」を参照してください。
+1. 別の Azure AD テナントのアカウントにサブスクリプションを譲渡する場合は、サブスクリプションを新しいアカウントのテナントに移行するかどうかを選択します。 詳細については、「[サブスクリプションを別の Azure AD テナント内のアカウントに譲渡する](#transfer-a-subscription-to-another-azure-ad-tenant-account)」を参照してください。
 
     > [!IMPORTANT]
     >
@@ -58,7 +55,7 @@ ms.locfileid: "76270868"
 
    ![受信者に送信されるサブスクリプションの譲渡メール](./media/billing-subscription-transfer/billing-receiver-email.png)
 
-1. 譲渡要求を承認するには、ユーザーは、電子メールのリンクを選択し、指示に従います。 ユーザーは、サブスクリプション料金の支払いに使用する支払い方法を選択するように求められることがあります。 また、Azure アカウントを持っていない場合は、新しいアカウントにサインアップする必要があります。
+1. 譲渡要求を承認するには、ユーザーは、電子メールのリンクを選択し、指示に従います。 次に、サブスクリプションの支払いに使用する支払い方法を選択します。 Azure アカウントを持っていない場合は、新しいアカウントにサインアップする必要があります。
 
    ![First subscription transfer web page](./media/billing-subscription-transfer/billing-accept-ownership-step1.png)
 
@@ -68,23 +65,23 @@ ms.locfileid: "76270868"
 
 1. Success! サブスクリプションが譲渡されました。
 
-## <a name="transferring-subscription-to-an-account-in-another-azure-ad-tenant"></a>サブスクリプションを別の Azure AD テナント内のアカウントに譲渡する
+## <a name="transfer-a-subscription-to-another-azure-ad-tenant-account"></a>サブスクリプションを別の Azure AD テナント アカウントに譲渡する
 
 Azure へのサインアップ時に、Azure Active Directory (AD) テナントが自動的に作成されます。 このテナントは、自分のアカウントを表すものです。 サブスクリプションとリソースへのアクセスの管理には、このテナントを使用します。
 
-新しいサブスクリプションを作成すると、そのサブスクリプションは自分のアカウントの Azure AD テナントでホストされます。 サブスクリプションまたはリソースへのアクセス権を別のユーザーに付与するには、自分のテナントに参加するように招待する必要があります。 これにより、サブスクリプションとリソースへのアクセスを制御できます。
+新しいサブスクリプションを作成すると、そのサブスクリプションは自分のアカウントの Azure AD テナントでホストされます。 サブスクリプションまたはリソースへのアクセス権を別のユーザーに付与するには、自分のテナントに参加するように招待する必要があります。 そうすることで、サブスクリプションとリソースへのアクセスを制御できます。
 
-サブスクリプションの課金所有権を別の Azure AD テナント内のアカウントに譲渡すると、サブスクリプションをその新しいアカウントのテナントに移動することができます。 この場合、サブスクリプションとそのリソースを管理する[ロール ベースのアクセス権 (RBAC)](../../role-based-access-control/role-assignments-portal.md) を持つすべてのユーザー、グループ、またはサービス プリンシパルがアクセス権を失います。 譲渡要求を受け入れた新しいアカウントのユーザーにのみ、リソースの管理アクセス権が付与されます。 もともとアクセス権を持っていたユーザーにアクセス権を付与するには、新しい所有者が、[それらのユーザーをサブスクリプションに手動で追加する](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)必要があります。
+サブスクリプションの課金所有権を別の Azure AD テナント内のアカウントに譲渡すると、サブスクリプションをその新しいアカウントのテナントに移動することができます。 この場合、サブスクリプションとそのリソースを管理する[ロール ベースのアクセス権 (RBAC)](../../role-based-access-control/role-assignments-portal.md) を持つすべてのユーザー、グループ、またはサービス プリンシパルがアクセス権を失います。 譲渡要求を受け入れた新しいアカウントのユーザーにのみ、リソースの管理アクセス権が付与されます。 新しい所有者は、アクセス権を失ったユーザーにアクセス権を付与するために、[これらのユーザーをサブスクリプションに手動で追加](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)する必要があります。
 
 
-## <a name="transferring-visual-studio-mpn-and-pay-as-you-go-devtest-subscriptions"></a>Visual Studio、MPN、従量課金制の Dev/Test サブスクリプションを譲渡する
+## <a name="transfer-visual-studio-and-partner-network-subscriptions"></a>Visual Studio と Partner Network のサブスクリプションを譲渡する
 
 Visual Studio と Microsoft Partner Network のサブスクリプションでは、付随する Azure クレジットが毎月提供されます。 こうしたサブスクリプションを譲渡した場合、譲渡元のクレジットは、譲渡先の課金アカウントでは使用できません。 サブスクリプションでは、譲渡先の課金アカウントにあるクレジットが使用されます。 たとえば、9 月 9 日に Bob が Visual Studio Enterprise サブスクリプションを Jane のアカウントに譲渡し、Jane がその譲渡を受け入れたとします。 譲渡の完了後、そのサブスクリプションでは、Jane のアカウントのクレジットが使用されるようになります。 クレジットは毎月 9 日にリセットされます。
 
 
 <a id="EA"></a>
 
-## <a name="transfer-billing-ownership-of-enterprise-agreement-ea-subscriptions"></a>マイクロソフト エンタープライズ契約 (EA) サブスクリプションの課金所有権を譲渡する
+## <a name="transfer-ea-subscription-billing-ownership"></a>EA サブスクリプションの課金所有権を譲渡する
 
 エンタープライズ管理者は、加入契約に含まれるアカウント間でサブスクリプションの所有権を譲渡できます。 詳細については、EA Portal の「[アカウント所有者を変更する](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#change-account-owner)」を参照してください。
 
@@ -145,7 +142,7 @@ Azure portal でのサブスクリプションの譲渡は、下記の種類の�
 
 ### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>あらゆるものが譲渡されるのでしょうか。 リソース グループ、VM、ディスク、他の実行中のサービスは含まれますか?
 
-VM、ディスク、Web サイトなどのすべてのリソースが、新しいアカウントに譲渡されます。 ただし、別の Azure AD テナント内のアカウントにサブスクリプションを譲渡した場合は、そのサブスクリプションへの[管理者ロール](add-change-subscription-administrator.md)と[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/role-assignments-portal.md) による割り当ては[譲渡されません](#transferring-subscription-to-an-account-in-another-azure-ad-tenant)。 また、[アプリの登録](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)とテナント固有のその他のサービスも、サブスクリプションと共に譲渡されることはありません。
+VM、ディスク、Web サイトなどのすべてのリソースが、新しいアカウントに譲渡されます。 ただし、別の Azure AD テナント内のアカウントにサブスクリプションを譲渡した場合は、そのサブスクリプションへの[管理者ロール](add-change-subscription-administrator.md)と[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/role-assignments-portal.md) による割り当ては[譲渡されません](#transfer-a-subscription-to-another-azure-ad-tenant-account)。 また、[アプリの登録](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)とテナント固有のその他のサービスも、サブスクリプションと共に譲渡されることはありません。
 
 ### <a name="can-i-transfer-ownership-to-an-account-in-another-country"></a>別の国のアカウントに所有権を譲渡できますか。
 申し訳ありませんが、Azure portal では国外への譲渡は実行できません。 サブスクリプションを国外に譲渡する場合は、[サポートにお問い合わせください](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
@@ -155,9 +152,9 @@ VM、ディスク、Web サイトなどのすべてのリソースが、新し�
 
 ### <a name="does-a-subscription-transfer-result-in-any-service-downtime"></a>サブスクリプションの譲渡により、サービスのダウンタイムは発生しますか。
 
-同じ Azure AD テナント内のアカウントにサブスクリプションを譲渡する場合、そのサブスクリプションで実行されているリソースに影響は生じません。 ただし、サブスクリプションを別のテナントのアカウントに譲渡し、そのサブスクリプションをテナントに移行する場合、[ロールベースのアクセス権 (RBAC)](../../role-based-access-control/overview.md) を持つすべてのユーザー、グループ、およびサービス プリンシパルは、サブスクリプションのアクセス権が失われます。 これにより、サービスのダウンタイムが発生する可能性があります。
+同じ Azure AD テナント内のアカウントにサブスクリプションを譲渡する場合、そのサブスクリプションで実行されているリソースに影響は生じません。 ただし、PowerShell に保存されたコンテキスト情報は更新されないため、それをクリアするか、設定を変更しなければならない場合があります。 サブスクリプションを別のテナントのアカウントに譲渡し、サブスクリプションをそのテナントに移行する場合、そのサブスクリプションに含まれるリソースを管理するための[ロールベースのアクセス権 (RBAC)](../../role-based-access-control/overview.md) が付与されていたすべてのユーザー、グループ、およびサービス プリンシパルは、そのアクセス権を失います。 サービスのダウンタイムが発生する可能性があります。
 
-### <a name="do-users-in-new-account-have-access-to-usage-and-billing-history"></a>新しいアカウントのユーザーは、使用状況と請求履歴にアクセスできますか。
+### <a name="can-users-in-new-account-access-usage-and-billing-history"></a>新しいアカウントのユーザーは、使用状況と請求履歴にアクセスできますか。
 
 新しいアカウントのユーザーが利用できる情報は、サブスクリプションの先月の料金のみです。 使用履歴と請求履歴の他の部分が、サブスクリプションと共に譲渡されることはありません
 
@@ -167,7 +164,7 @@ VM、ディスク、Web サイトなどのすべてのリソースが、新し�
 
 ### <a name="if-i-transfer-a-visual-studio-or-microsoft-partner-network-subscription-does-my-credit-carry-forward-with-the-subscription-in-the-new-account"></a>Visual Studio または Microsoft Partner Network のサブスクリプションを譲渡する場合、クレジットは新しいアカウントのサブスクリプションに繰り越されますか。
 
-いいえ。譲渡元のクレジットは新しいアカウントでは利用できません。 譲渡要求を受け取ったユーザーが、譲渡要求を受け入れるには、Visual Studio ライセンスが必要になります。 サブスクリプションでは、ユーザーのアカウントで利用可能な Visual Studio クレジットが使用されます。 詳細については、[Visual Studio、Microsoft Partner Network (MPN)、従量課金制の Dev/Test サブスクリプションの譲渡](#transferring-visual-studio-mpn-and-pay-as-you-go-devtest-subscriptions)に関するセクションを参照してください。
+いいえ。譲渡元のクレジットは新しいアカウントでは利用できません。 譲渡要求を受け取ったユーザーが、譲渡要求を受け入れるには、Visual Studio ライセンスが必要になります。 サブスクリプションでは、ユーザーのアカウントで利用可能な Visual Studio クレジットが使用されます。 詳細については、[Visual Studio と Partner Network のサブスクリプションの譲渡](#transfer-visual-studio-and-partner-network-subscriptions)に関するセクションを参照してください。
 
 
 ## <a name="frequently-asked-questions-faq-for-recipients"></a>よく寄せられる質問 (FAQ) (譲渡先向け)
@@ -176,7 +173,7 @@ VM、ディスク、Web サイトなどのすべてのリソースが、新し�
 
 ### <a name="if-i-take-over-billing-ownership-of-a-subscription-from-another-account-do-users-in-that-account-continue-to-have-access-to-my-resources"></a>別のアカウントからサブスクリプションの課金所有権を引き継ぐ場合、そのアカウントのユーザーが引き続きそのリソースにアクセスすることはできますか。
 
-はい。 ただし、ご自分のアカウントがサブスクリプションのテナントとは異なる Azure AD テナント内にあり、譲渡要求を送信したユーザーがサブスクリプションをご自分のアカウントのテナントに移行した場合、すべての[管理者ロール](add-change-subscription-administrator.md)と[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/role-assignments-portal.md) の割り当ては削除されます。 サブスクリプション内のリソースを管理する[ロールベースのアクセス (RBAC)](../../role-based-access-control/overview.md) のアクセス権を持つユーザーを表示するには、次の手順を行います。
+はい。 ただし、[管理者ロール](add-change-subscription-administrator.md)と [ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/role-assignments-portal.md) の割り当てが削除される可能性があります。 ご自分のアカウントがサブスクリプションのテナントとは異なる Azure AD テナント内にあり、譲渡要求を送信したユーザーがサブスクリプションをご自分のアカウントのテナントに移行した場合、アクセス権が失われます。 サブスクリプション内のリソースを管理する[ロールベースのアクセス (RBAC)](../../role-based-access-control/overview.md) のアクセス権を持つユーザーを表示するには、次の手順を行います。
 
 1. [Azure portal の [サブスクリプション] ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)にアクセスします。
 1. チェックするサブスクリプションを選択して、左側のウィンドウで **[アクセス制御 (IAM)]** を選択します。
@@ -193,7 +190,7 @@ VM、ディスク、Web サイトなどのすべてのリソースが、新し�
   1. [Azure portal](https://portal.azure.com) にサインインします。
   2. ハブ メニューで、 **[すべてのリソース]** を選択します。
   3. リソースを選択します。
-  4. リソースのページで **[設定]** をクリックします。 ここで、既存のシークレットを表示して更新できます。
+  4. リソースのページで **[設定]** を選択します。 ここで、既存のシークレットを表示して更新できます。
 
 ### <a name="if-i-take-over-the-billing-ownership-of-a-subscription-in-the-middle-of-the-billing-cycle-do-i-have-to-pay-for-the-entire-billing-cycle"></a>請求サイクルの途中でサブスクリプションの課金所有権を引き継いだ場合、請求サイクル全体の料金を支払うことになりますか。
 
@@ -211,7 +208,7 @@ VM、ディスク、Web サイトなどのすべてのリソースが、新し�
 
 ### <a id="no-button"></a>[サブスクリプションの譲渡] ボタンが表示されないのはなぜですか。
 
-セルフサービスのサブスクリプションの譲渡は、ご利用の課金アカウントでは行えません。 現時点では、Azure portal で Enterprise Agreement (EA) アカウントのサブスクリプションの課金所有権の譲渡はサポートされていません。 さらに、Microsoft の担当者と協力して作成された Microsoft 顧客契約アカウントでも、課金所有権の譲渡はサポートされていません。
+セルフサービスのサブスクリプションの譲渡は、ご利用の課金アカウントでは行えません。 現時点では、Azure portal で Enterprise Agreement (EA) アカウントのサブスクリプションの課金所有権の譲渡はサポートされていません。 また、Microsoft の担当者と協力して作成された Microsoft 顧客契約アカウントでも、課金所有権の譲渡はサポートされていません。
 
 ### <a id="no-button"></a> 自分のサブスクリプションで譲渡がサポートされていないのはなぜですか。
 

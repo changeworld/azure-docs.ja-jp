@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - RBAC と Azure PowerShell を使用して Azure リソースへのアクセス権をグループに付与する
+title: チュートリアル:RBAC と Azure PowerShell を使用して Azure リソースへのアクセス権をグループに付与する
 description: このチュートリアルでは、ロールベースのアクセス制御 (RBAC) と Azure PowerShell を使用して、Azure リソースへのアクセス権をグループに付与する方法について説明します。
 services: active-directory
 documentationCenter: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: fb26e603ebb867bda47a93162ffef9bf716d3db6
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 2f001e781640704cfcee161b3de75b3f4cae1423
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74418594"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138239"
 ---
 # <a name="tutorial-grant-a-group-access-to-azure-resources-using-rbac-and-azure-powershell"></a>チュートリアル:RBAC と Azure PowerShell を使用して Azure リソースへのアクセス権をグループに付与する
 
-[ロールベースのアクセス制御 (RBAC)](overview.md) は、Azure のリソースに対するアクセス権を管理するための手法です。 このチュートリアルでは、Azure PowerShell を使用して、サブスクリプション内のすべてを表示し、リソース グループ内のすべてを管理するためのアクセス権をグループに付与します。
+[ロールベースのアクセス制御 (RBAC)](overview.md) は、Azure のリソースに対するアクセスを管理するための手法です。 このチュートリアルでは、Azure PowerShell を使用して、サブスクリプション内のすべてを表示し、リソース グループ内のすべてを管理するためのアクセス権をグループに付与します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -37,18 +37,18 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、以下が必要です。
+このチュートリアルを完了するには、次の要件があります。
 
 - Azure Active Directory でグループを作成する (または既存のグループを所有する) ためのアクセス許可
 - [Azure Cloud Shell](/azure/cloud-shell/quickstart-powershell)
 
 ## <a name="role-assignments"></a>ロールの割り当て
 
-RBAC では、アクセス権を付与するには、ロールの割り当てを作成する必要があります。 ロールの割り当ては、セキュリティ プリンシパル、ロールの定義、スコープの 3 つの要素で構成されています。 このチュートリアルで実行するロールの割り当ては次の 2 つです。
+RBAC でアクセス権を付与するには、ロールの割り当てを作成します。 ロールの割り当ては、セキュリティ プリンシパル、ロールの定義、スコープの 3 つの要素で構成されています。 このチュートリアルで実行するロールの割り当ては次の 2 つです。
 
-| セキュリティ プリンシパル | ロール定義 | Scope (スコープ) |
+| セキュリティ プリンシパル | ロール定義 | Scope |
 | --- | --- | --- |
-| Group<br>(RBAC チュートリアル グループ) | [Reader](built-in-roles.md#reader) | Subscription |
+| Group<br>(RBAC チュートリアル グループ) | [Reader](built-in-roles.md#reader) | サブスクリプション |
 | Group<br>(RBAC チュートリアル グループ)| [Contributor](built-in-roles.md#contributor) | Resource group<br>(rbac-tutorial-resource-group) |
 
    ![グループのロールの割り当て](./media/tutorial-role-assignments-group-powershell/rbac-role-assignments.png)
@@ -72,7 +72,7 @@ RBAC では、アクセス権を付与するには、ロールの割り当てを
 
 グループを作成するアクセス許可がない場合は、代わりに「[チュートリアル: RBAC と Azure PowerShell を使用して Azure リソースへのアクセス権をユーザーに付与する](tutorial-role-assignments-user-powershell.md)」を参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 リソース グループを使用して、リソース グループ スコープでロールを割り当てる方法を示すことができます。
 
@@ -265,7 +265,7 @@ RBAC では、アクセス権を付与するには、ロールの割り当てを
       -Scope $subScope
     ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルで作成したリソースをクリーンアップするには、リソース グループとグループを削除します。
 
@@ -291,7 +291,7 @@ RBAC では、アクセス権を付与するには、ロールの割り当てを
     
     グループを削除しようしたときにエラーが発生する場合は、ポータルでもグループを削除できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [RBAC と Azure PowerShell を使用して Azure リソースへのアクセス権をユーザーに付与する](role-assignments-powershell.md)

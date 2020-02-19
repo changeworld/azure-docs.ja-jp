@@ -5,17 +5,17 @@ services: active-directory
 author: eross-msft
 ms.service: active-directory
 ms.topic: include
-ms.date: 03/06/2019
+ms.date: 02/03/2020
 ms.author: lizross
 ms.custom: include file
-ms.openlocfilehash: c7f3fec478067a9b321d8c7bc5e371f5a6a330cb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: df529de23b5d964dd80dd9fa5dd17c460a2c4f28
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75469092"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77062381"
 ---
 | |
 |--|
-|管理者によって組織の新しい **[マイ アプリ]** プレビュー エクスペリエンスが有効にされている場合、 **[マイ アプリ]** ページの上部に "**An updated My Applications experience is available (更新されたマイ アプリケーション エクスペリエンスが利用可能です)** " というバナーが表示されます。 **[Try It]\(試してみる\)** を選択すると、すぐに新しい URL (myapplications.microsoft.com) と更新されたエクスペリエンスに移動します。 その後、 **[マイ アプリ]** ページに戻るたびに、自動的に新しいエクスペリエンスに移動します。<br><br>新しいエクスペリエンスの使用をやめるには、新しい **[マイ アプリ]** ページの上部にある **[Leave new experience]\(新しいエクスペリエンスを使用しない\)** バナーの **[はい]** を選択します。 すると、すぐに以前の URL (myapps.microsoft.com) とエクスペリエンスに戻ります。 その後、 **[マイ アプリ]** ページに戻るたびに、自動的に以前のエクスペリエンスに移動します。|
+|管理者によって組織の新しい **[マイ アプリ]** プレビュー エクスペリエンスが有効にされている場合、 **[マイ アプリ]** ページの上部にある、アカウント情報を表示するためのアカウント アイコンを選択するとリンクが表示されます。 **[Try the new My Apps experience!]\(新しいマイ アプリ エクスペリエンスを試す\)** を選択すると、すぐに新しい URL (https://myapplications.microsoft.com) と更新されたエクスペリエンスに移動します。 その後、 **[マイ アプリ]** ページに戻ると、自動的に新しいエクスペリエンスに移動します。<br><br>新しいエクスペリエンスの使用をやめるには、 **[マイ アプリ]** ページの上部で、アカウント情報を表示するためのアカウント アイコンを選択する際に、 **[Leave preview experience]\(プレビュー エクスペリエンスを使用しない\)** を選択します。 すると、すぐに以前の URL (myapps.microsoft.com) とエクスペリエンスに戻ります。 その後、 **[マイ アプリ]** ページに戻るたびに、自動的に以前のエクスペリエンスに移動します。|
 |

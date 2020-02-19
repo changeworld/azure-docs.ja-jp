@@ -2,25 +2,25 @@
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 03/23/2019
+ms.date: 01/22/2020
 ms.author: sngun
 ms.custom: seo-java-september2019
-ms.openlocfilehash: d5a0e8412b928aea83670ad9f7c99a892a058c70
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: caefb11e3d691cea940bae5103bf918d3d31cc96
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71210266"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134420"
 ---
-Web アプリと Azure Cosmos DB アカウントの使用を完了したら、それ以上料金がかからないように、作成した Azure リソースを削除できます。 リソースを削除するには、次の手順に従います。
+アプリと Azure Cosmos DB アカウントの使用を完了したら、それ以上料金がかからないように、作成した Azure リソースを削除できます。 リソースを削除するには、次の手順に従います。
 
-1. Azure Portal で、左端にある **[リソース グループ]** を選択します。 左側のメニューが折りたたまれている場合は、![展開ボタン](./media/cosmos-db-delete-resource-group/expand.png)を選択して展開します。
+1. Azure portal の検索バーで、「**リソース グループ**」を検索して選択します。
 
-2. このクイック スタートで作成したリソース グループを選択します。  
+2. 一覧から、このクイック スタートで作成したリソース グループを選択します。  
 
    ![削除するリソース グループを選択する](./media/cosmos-db-delete-resource-group/delete-resources-select.png)
 
-2. 新しいウィンドウで、 **[リソース グループの削除]** を選択します。
+2. リソース グループの **[概要]** ページで、 **[リソース グループの削除]** を選択します。
 
    ![リソース グループを削除します](./media/cosmos-db-delete-resource-group/delete-resources.png)   
 

@@ -11,16 +11,14 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 7534d425a9a7e00c4e57c0d9faea0750d311dcaf
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 3e1369901e259af6722d9e5a14fababac80f1d02
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549943"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160561"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>クイック スタート:Java Web アプリに "Microsoft でサインイン" を追加する
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 このクイックスタートでは、Java Web アプリを Microsoft ID プラットフォームと統合する方法を説明します。 お使いのアプリによって、ユーザーがサインインされ、Microsoft Graph API を呼び出すためのアクセス トークンが取得されて、Microsoft Graph API への要求が行われます。
 
@@ -61,7 +59,7 @@ ms.locfileid: "75549943"
 >    - ここでは **[リダイレクト URI]** は空白のままにして、 **[登録]** を選択します。
 > 1. **[概要]** ページで、アプリケーションの **[アプリケーション (クライアント) ID]** と **[ディレクトリ (テナント) ID]** の値を見つけます。 後のためにこれらの値をコピーします。
 > 1. メニューから **[認証]** を選択し、次の情報を追加します。
->    - **[リダイレクト URI]** で `http://localhost:8080/msal4jsample/secure/aad` と `http://localhost:8080/msal4jsample/graph/me` を追加します。
+>    - **[リダイレクト URI]** で `https://localhost:8080/msal4jsample/secure/aad` と `https://localhost:8080/msal4jsample/graph/me` を追加します。
 >    - **[保存]** を選択します。
 > 1. メニューから **[証明書とシークレット]** を選択し、 **[クライアント シークレット]** セクションで **[新しいクライアント シークレット]** をクリックします。
 >
@@ -75,7 +73,7 @@ ms.locfileid: "75549943"
 >
 > このクイックスタートのコード サンプルを動作させるには、以下の操作が必要です。
 >
-> 1. 応答 URL として `http://localhost:8080/msal4jsamples/secure/aad` および `http://localhost:8080/msal4jsamples/graph/me` を追加します。
+> 1. 応答 URL として `https://localhost:8080/msal4jsamples/secure/aad` および `https://localhost:8080/msal4jsamples/graph/me` を追加します。
 > 1. クライアント シークレットを作成します。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [これらの変更を行います]()
@@ -91,23 +89,36 @@ ms.locfileid: "75549943"
 
  1. ZIP ファイルをローカル フォルダーに展開します。
  1. 統合開発環境を使用する場合は、その IDE でサンプルを開きます (オプション)。
-
  1. application.properties ファイルを開きます。これは、src/main/resources/ フォルダーにあり、フィールド *aad. clientId*、*aad. authority*、および *aad.secretKey* の値を **アプリケーション ID**、**テナント ID**、および**クライアント シークレット**のそれぞれの値で置き換えます。
 
     ```file
     aad.clientId=Enter_the_Application_Id_here
     aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
     aad.secretKey=Enter_the_Client_Secret_Here
-    aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
-    aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
+    aad.redirectUriSignin=https://localhost:8080/msal4jsample/secure/aad
+    aad.redirectUriGraph=https://localhost:8080/msal4jsample/graph/me
     ```
 
-> [!div renderon="docs"]
-> 各値の説明:
->
-> - `Enter_the_Application_Id_here` - 登録したアプリケーションのアプリケーション ID。
-> - `Enter_the_Client_Secret_Here` - 登録済みアプリケーション用に **[証明書とシークレット]** で作成した **[クライアント シークレット]** です。
-> - `Enter_the_Tenant_Info_Here` - 登録したアプリケーションの**ディレクトリ (テナント) ID** 値です。
+    > [!div renderon="docs"]
+    > 各値の説明:
+    >
+    > - `Enter_the_Application_Id_here` - 登録したアプリケーションのアプリケーション ID。
+    > - `Enter_the_Client_Secret_Here` - 登録済みアプリケーション用に **[証明書とシークレット]** で作成した **[クライアント シークレット]** です。
+    > - `Enter_the_Tenant_Info_Here` - 登録したアプリケーションの**ディレクトリ (テナント) ID** 値です。
+
+ 1. localhost で https を使用するには、server.ssl.key プロパティを入力します。 自己署名証明書を生成するには、keytool ユーティリティ (JRE に含まれています) を使用します。
+
+   ```
+   Example: 
+   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
+
+   server.ssl.key-store-type=PKCS12  
+   server.ssl.key-store=classpath:keystore.p12  
+   server.ssl.key-store-password=password  
+   server.ssl.key-alias=testCert 
+   ```
+
+   生成されたキーストア ファイルを "resources" フォルダーに配置します。
 
 #### <a name="step-4-run-the-code-sample"></a>手順 4:コード サンプルの実行
 
@@ -117,11 +128,11 @@ ms.locfileid: "75549943"
 
 ##### <a name="running-from-ide"></a>IDE からの実行
 
-IDE から Web アプリケーションを実行している場合は、[実行] をクリックし、プロジェクトのホーム ページに移動します。 このサンプルでは、標準のホームページ URL は http://localhost:8080 です
+IDE から Web アプリケーションを実行している場合は、[実行] をクリックし、プロジェクトのホーム ページに移動します。 このサンプルでは、標準のホームページ URL は https://localhost:8080 です。
 
 1. 前面のページで、 **[ログイン]** ボタンを選択して Azure Active Directory にリダイレクトし、ユーザーに資格情報の入力を求めます。
 
-1. ユーザーは認証されると、 *http://localhost:8080/msal4jsample/secure/aad* にリダイレクトされます。 ユーザーがサインインしたので、ページにサインインしたアカウントに関する情報が表示されます。 サンプル UI には、次のボタンがあります。
+1. ユーザーは認証されると、 *https://localhost:8080/msal4jsample/secure/aad* にリダイレクトされます。 ユーザーがサインインしたので、ページにサインインしたアカウントに関する情報が表示されます。 サンプル UI には、次のボタンがあります。
     - "*サインアウト*": 現在のユーザーをアプリケーションからサインアウトし、ホーム ページにリダイレクトします。
     - *Show User Info (ユーザー情報の表示)* :Microsoft Graph のトークンを取得し、そのトークンを含む要求で Microsoft Graph を呼び出します。これにより、サインインしたユーザーに関する基本情報が返されます。
 

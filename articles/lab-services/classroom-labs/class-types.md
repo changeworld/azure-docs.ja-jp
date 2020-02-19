@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: e1c5504b30c2784e8657ccc0dc4ec18689fe2a68
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: ef5cc0fb561d385a1b1d7b4c14db8c10343508cf
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806815"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133665"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>クラスの種類の概要 - Azure Lab Services
 
@@ -36,7 +36,7 @@ Linux でのシェル スクリプトの作成を教えるためのラボを設�
 
 これらのスクリプト作成のクラスを受講する学生は、Linux 仮想マシンを使用して、Linux の基本を学習し、bash シェル スクリプトの作成にも慣れることができます。 Linux 仮想マシンには、有効になったリモート デスクトップ アクセスが付属しており、[gedit](https://help.gnome.org/users/gedit/stable/) と [Visual Studio Code](https://code.visualstudio.com/) テキスト エディターがインストールされています。
 
-この種類のラボを設定する方法の詳細については、[Linux でのシェル スクリプト作成](class-type-shell-scripting-linux.md)に関するページを参照してください。
+この種類のラボを設定する方法の詳細については、「[Linux でのシェル スクリプト](class-type-shell-scripting-linux.md)」を参照してください。
 
 ## <a name="ethical-hacking"></a>倫理的ハッキング
 
@@ -46,9 +46,25 @@ Linux でのシェル スクリプトの作成を教えるためのラボを設�
 
 この種類のラボを設定する方法の詳細については、「[エシカル ハッキング クラスを教えるためのラボを設定する](class-type-ethical-hacking.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="database-management"></a>データベースの管理
+データベースの概念は、大学のほとんどのコンピューター サイエンス部門で教えられる、入門コースの 1 つです。 基本的なデータベース管理のクラスのためのラボを Azure Lab Services で設定することができます。 たとえば、[MySQL](https://www.mysql.com/) Database Server または [SQL Server 2019](https://www.microsoft.com/sql-server/sql-server-2019) サーバーを使用した仮想マシン テンプレートをラボで設定することができます。
 
-次の記事を参照してください。
+この種類のラボを設定する方法の詳細については、「[リレーショナル データベースのデータベース管理を教えるためのラボを設定する](class-type-database-management.md)」を参照してください。
+
+## <a name="python-and-jupyter-notebooks"></a>Python と Jupyter Notebook
+[Jupyter Notebooks](http://jupyter-notebook.readthedocs.io) を使用する方法を学生に教えるために必要なツールを使用して、Azure Lab Services でテンプレート マシンを設定することができます。 Jupyter Notebooks は、ノートブックと呼ばれる単一のキャンバス上でリッチ テキストと実行可能な [Python](https://www.python.org/) ソース コードを簡単に組み合わせることができるオープンソース プロジェクトです。 ノートブックを実行すると、入力と出力の線形レコードが生成されます。  これらの出力には、テキスト、情報テーブル、散布図などを含めることができます。
+
+この種類のラボを設定する方法の詳細については、「[Python と Jupyter Notebook を使用してデータ サイエンスを教えるためのラボを設定する](class-type-jupyter-notebook.md)」を参照してください。
+
+## <a name="mobile-app-development-with-android-studio"></a>Android Studio を使用したモバイル アプリ開発
+モバイル アプリケーション開発の入門クラスを教えるためのラボを Azure Lab Services で設定することができます。 このクラスでは、[Google Play ストア](https://play.google.com/store/apps)に発行できる Android モバイル アプリを重点的に取り上げます。  学生は、[Android Studio](https://developer.android.com/studio) を使用してアプリケーションをビルドする方法を学習します。  [Visual Studio Emulator for Android](https://visualstudio.microsoft.com/vs/msft-android-emulator/) は、そのアプリケーションをローカルでテストするために使用されます。
+
+この種類のラボを設定する方法の詳細については、[Android Studio でのモバイル アプリケーション開発を教えるためのラボの設定](class-type-mobile-dev-android-studio.md)に関するページを参照してください。
+
+
+## <a name="next-steps"></a>次のステップ
+
+次の記事をご覧ください。
 
 - [Azure Lab Services を使用した自然言語処理でのディープ ラーニングに重点を置いたラボを設定する](class-type-deep-learning-natural-processing.md)
 - [Linux でのシェル スクリプト](class-type-shell-scripting-linux.md)

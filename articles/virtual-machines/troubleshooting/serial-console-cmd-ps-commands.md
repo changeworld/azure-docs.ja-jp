@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: a106984bc60d0ccfe29a1956213aec6f87ad30dd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 493340764f507c4fa364a5000f65cc232630b243
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090181"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167023"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows コマンド - CMD と PowerShell
 
@@ -28,7 +28,7 @@ SAC は Windows Server 2003 以降のすべてのバージョンの Windows に�
 
 SAC を使用すると、シリアル ポート経由で実行中の OS に接続できます。 SAC から CMD を起動すると、実行中の OS 内で、`sacsess.exe` によって `cmd.exe` が起動されます。 シリアル コンソール機能を使用して SAC に接続するのと同時に、VM に RDP で接続すると、タスク マネージャーでこのことを確認できます。 SAC 経由でアクセスする CMD は、RDP 接続の際に使用する `cmd.exe` と同じものです。 まったく同じコマンドとツールが利用可能です。CMD インスタンスから PowerShell を起動することもできます。 SAC と Windows 回復環境 (WinRE) の主な違いは、SAC では実行中の 0S を管理できるのに対し、WinRE では別の最小限の OS が起動されるということです。 Azure VM では WinRE へのアクセスはサポートされていませんが、シリアル コンソール機能を使用すると、SAC 経由で Azure VM を管理できます。
 
-SAC は 80 x 24 のスクリーン バッファーに制限されるうえ、スクロール バックもできないため、コマンドに `| more` を追加して、一度に 1 ページずつ出力を表示します。 `<spacebar>` で次のページを表示し、`<enter>` で次の行を表示します。  
+SAC は 80 x 24 のスクリーン バッファーに制限されるうえ、スクロール バックもできないため、コマンドに `| more` を追加して、一度に 1 ページずつ出力を表示します。 `<spacebar>` で次のページを表示し、`<enter>` で次の行を表示します。
 
 `SHIFT+INSERT` は、シリアル コンソール ウィンドウ用の貼り付けのショートカットです。
 
@@ -45,7 +45,7 @@ SAC はスクリーン バッファーが制限されているため、長いコ
 ### <a name="enable-rdp"></a>RDP を有効にする
 `reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0`
 
-`reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections /t REG_DWORD /d 0` 
+`reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections /t REG_DWORD /d 0`
 
 2 番目のキー (\Policies 下) が必要になるのは、関連するグループ ポリシー設定が構成されている場合のみです。 これをグループ ポリシーで構成する場合、値が書き換えられるのは次にグループ ポリシーを更新するときです。
 
@@ -55,12 +55,12 @@ SAC はスクリーン バッファーが制限されているため、長いコ
 `sc query termservice`
 ###  <a name="view-service-logon-account"></a>サービスのログオン アカウントの表示
 `sc qc termservice`
-### <a name="set-service-logon-account"></a>サービスのログオン アカウントの設定 
+### <a name="set-service-logon-account"></a>サービスのログオン アカウントの設定
 `sc config termservice obj= "NT Authority\NetworkService"`
 
 等号の後にはスペースが必要です。
 ### <a name="set-service-start-type"></a>サービス開始の種類の設定
-`sc config termservice start= demand` 
+`sc config termservice start= demand`
 
 等号の後にはスペースが必要です。 開始の値には、`boot`、`system`、`auto`、`demand`、`disabled`、`delayed-auto` などを使用できます。
 ### <a name="set-service-dependencies"></a>サービスの依存関係の設定
@@ -81,11 +81,11 @@ or
 `sc stop termservice`
 ## <a name="manage-networking-features"></a>ネットワーク機能の管理
 ### <a name="show-nic-properties"></a>NIC プロパティの表示
-`netsh interface show interface` 
+`netsh interface show interface`
 ### <a name="show-ip-properties"></a>IP プロパティの表示
 `netsh interface ip show config`
 ### <a name="show-ipsec-configuration"></a>IPSec 構成の表示
-`netsh nap client show configuration`  
+`netsh nap client show configuration`
 ### <a name="enable-nic"></a>NIC の有効化
 `netsh interface set interface name="<interface name>" admin=enabled`
 ### <a name="set-nic-to-use-dhcp"></a>DHCP を使用するように NIC を設定する
@@ -95,8 +95,8 @@ or
 
 IP アドレスを取得するために DHCP を使用するように、ゲスト OS で Azure VM を常に構成する必要があります。 Azure の静的 IP 設定では、VM に静的 IP を指定するために引き続き DHCP が使用されます。
 ### <a name="ping"></a>ping
-`ping 8.8.8.8` 
-### <a name="port-ping"></a>ポートの ping  
+`ping 8.8.8.8`
+### <a name="port-ping"></a>ポートの ping
 Telnet クライアントのインストール
 
 `dism /online /Enable-Feature /FeatureName:TelnetClient`
@@ -130,7 +130,7 @@ Windows で利用できる既定の方法に制限されている場合は、Pow
 
 一般化されたイメージから作成した Azure VM では、ローカル管理者アカウントの名前が、VM のプロビジョニング時に指定する名前に変更されます。 したがって、通常は `Administrator` ではありません。
 ### <a name="enable-user-account"></a>ユーザー アカウントの有効化
-`net user <username> /active:yes`  
+`net user <username> /active:yes`
 ### <a name="view-user-account-properties"></a>ユーザー アカウント プロパティの表示
 `net user <username>`
 
@@ -191,15 +191,15 @@ Windows で利用できる既定の方法に制限されている場合は、Pow
 ### <a name="export-file-permissions-to-text-file"></a>ファイルのアクセス許可をテキスト ファイルにエクスポートする
 `icacls %programdata%\Microsoft\Crypto\RSA\MachineKeys /t /c > %temp%\MachineKeys_permissions_before.txt`
 ### <a name="save-file-permissions-to-acl-file"></a>ファイルのアクセス許可を ACL ファイルに保存する
-`icacls %programdata%\Microsoft\Crypto\RSA\MachineKeys /save %temp%\MachineKeys_permissions_before.aclfile /t`  
+`icacls %programdata%\Microsoft\Crypto\RSA\MachineKeys /save %temp%\MachineKeys_permissions_before.aclfile /t`
 ### <a name="restore-file-permissions-from-acl-file"></a>ACL ファイルからファイルのアクセス許可を復元する
 `icacls %programdata%\Microsoft\Crypto\RSA /save %temp%\MachineKeys_permissions_before.aclfile /t`
 
 `/restore` を使用する際のパスには、`/save` を使用する際に指定したフォルダーの親フォルダーを指定する必要があります。 この例では、上記の `/save` の例で指定した `\MachineKeys` フォルダーの親は、`\RSA` です。
 ### <a name="take-ntfs-ownership-of-a-folder"></a>フォルダーの NTFS 所有権を取得する
-`takeown /f %programdata%\Microsoft\Crypto\RSA\MachineKeys /a /r`  
+`takeown /f %programdata%\Microsoft\Crypto\RSA\MachineKeys /a /r`
 ### <a name="grant-ntfs-permissions-to-a-folder-recursively"></a>再帰的にフォルダーに NTFS アクセス許可を付与する
-`icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "BUILTIN\Administrators:(F)"`  
+`icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "BUILTIN\Administrators:(F)"`
 ## <a name="manage-devices"></a>デバイスの管理
 ### <a name="remove-non-present-pnp-devices"></a>存在しない PNP デバイスの削除
 `%windir%\System32\RUNDLL32.exe %windir%\System32\pnpclean.dll,RunDLL_PnpClean /Devices /Maxclean`
@@ -210,11 +210,11 @@ Windows で利用できる既定の方法に制限されている場合は、Pow
 ### <a name="show-os-version"></a>OS バージョンの表示
 `ver`
 
-or 
+or
 
 `wmic os get caption,version,buildnumber /format:list`
 
-or 
+or
 
 `systeminfo  find /i "os name"`
 
@@ -222,7 +222,7 @@ or
 ### <a name="view-os-install-date"></a>OS のインストール日の表示
 `systeminfo | find /i "original"`
 
-or 
+or
 
 `wmic os get installdate`
 ### <a name="view-last-boot-time"></a>最終ブート時刻の表示
@@ -238,7 +238,7 @@ or
 
 `/f` を追加すると、ユーザーへの警告なしで実行中のアプリケーションを強制的に閉じます。
 ### <a name="detect-safe-mode-boot"></a>セーフ モードでのブートの検出
-`bcdedit /enum | find /i "safeboot"` 
+`bcdedit /enum | find /i "safeboot"`
 
 ## <a name="windows-commands---powershell"></a>Windows コマンド - PowerShell
 
@@ -249,7 +249,7 @@ SAC で PowerShell を実行するには、コマンド プロンプトで次の
 > [!CAUTION]
 > 他の PowerShell コマンドを実行する前に、PowerShell セッションから PSReadLine モジュールを削除してください。 SAC の PowerShell セッションで PSReadLine が実行されていると、クリップボードから貼り付けたテキストに余分な文字が追加されるという既知の問題があります。
 
-最初に、PSReadLine が読み込まれているかどうかを確認します。 Windows Server 2016、Windows 10、およびそれ以降のバージョンの Windows では、既定で読み込まれています。 以前のバージョンの Windows では、手動でインストールしない限り PSReadLine は存在しません。 
+最初に、PSReadLine が読み込まれているかどうかを確認します。 Windows Server 2016、Windows 10、およびそれ以降のバージョンの Windows では、既定で読み込まれています。 以前のバージョンの Windows では、手動でインストールしない限り PSReadLine は存在しません。
 
 このコマンドが出力なしでプロンプトに戻る場合は、モジュールが読み込まれておらず、通常どおり引き続き SAC で PowerShell セッションを使用できます。
 
@@ -295,7 +295,7 @@ SAC で PowerShell を実行するには、コマンド プロンプトで次の
 ### <a name="show-nic-properties"></a>NIC プロパティの表示
 `get-netadapter | where {$_.ifdesc.startswith('Microsoft Hyper-V Network Adapter')} |  format-list status,name,ifdesc,macadDresS,driverversion,MediaConNectState,MediaDuplexState`
 
-or 
+or
 
 `get-wmiobject win32_networkadapter -filter "servicename='netvsc'" |  format-list netenabled,name,macaddress`
 
@@ -319,6 +319,9 @@ or
 ### <a name="ping"></a>ping
 `test-netconnection`
 
+> [!NOTE]
+> Write-Progress コマンドレットは、このコマンドでは動作しない場合があります。 軽減策として、PowerShell で `$ProgressPreference = "SilentlyContinue"` を実行して、進行状況バーを無効にすることができます。
+
 or
 
 `get-wmiobject Win32_PingStatus -Filter 'Address="8.8.8.8"' | format-table -autosize IPV4Address,ReplySize,ResponseTime`
@@ -333,15 +336,15 @@ or
 
 2012 以降では `Test-NetConnection` を使用できます。 2008R2 では `Net.Sockets.TcpClient` を使用します。
 ### <a name="test-dns-name-resolution"></a>DNS 名前解決のテスト
-`resolve-dnsname bing.com` 
+`resolve-dnsname bing.com`
 
-or 
+or
 
 `[System.Net.Dns]::GetHostAddresses('bing.com')`
 
 2012 以降では `Resolve-DnsName` を使用できます。 2008R2 では `System.Net.DNS` を使用します。
 ### <a name="show-windows-firewall-rule-by-name"></a>Windows ファイアウォール規則を名前で表示する
-`get-netfirewallrule -name RemoteDesktop-UserMode-In-TCP` 
+`get-netfirewallrule -name RemoteDesktop-UserMode-In-TCP`
 ### <a name="show-windows-firewall-rule-by-port"></a>Windows ファイアウォール規則をポートで表示する
 `get-netfirewallportfilter | where {$_.localport -eq 3389} | foreach {Get-NetFirewallRule -Name $_.InstanceId} | format-list Name,Enabled,Profile,Direction,Action`
 
@@ -349,7 +352,7 @@ or
 
 `(new-object -ComObject hnetcfg.fwpolicy2).rules | where {$_.localports -eq 3389 -and $_.direction -eq 1} | format-table Name,Enabled`
 
-2012 以降では `Get-NetFirewallPortFilter` を使用できます。 2008R2 では `hnetcfg.fwpolicy2` COM オブジェクトを使用します。 
+2012 以降では `Get-NetFirewallPortFilter` を使用できます。 2008R2 では `hnetcfg.fwpolicy2` COM オブジェクトを使用します。
 ### <a name="disable-windows-firewall"></a>Windows ファイアウォールの無効化
 `Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False`
 
@@ -360,7 +363,7 @@ or
 ### <a name="verify-user-account-is-enabled"></a>ユーザー アカウントが有効になっていることを確認する
 `(get-localuser | where {$_.SID -like "S-1-5-21-*-500"}).Enabled`
 
-or 
+or
 
 `(get-wmiobject Win32_UserAccount -Namespace "root\cimv2" -Filter "SID like 'S-1-5-%-500'").Disabled`
 
@@ -368,13 +371,13 @@ or
 ### <a name="add-local-user-to-local-group"></a>ローカル グループにローカル ユーザーを追加する
 `add-localgroupmember -group Administrators -member <username>`
 ### <a name="enable-local-user-account"></a>ローカル ユーザー アカウントの有効化
-`get-localuser | where {$_.SID -like "S-1-5-21-*-500"} | enable-localuser` 
+`get-localuser | where {$_.SID -like "S-1-5-21-*-500"} | enable-localuser`
 
 この例では、組み込みのローカル管理者アカウントが有効化されます。それは常に `S-1-5-21-*-500` という SID を持ちます。 一般化されたイメージから作成した Azure VM では、ローカル管理者アカウントの名前が、VM のプロビジョニング時に指定する名前に変更されます。 したがって、通常は `Administrator` ではありません。
 ### <a name="view-user-account-properties"></a>ユーザー アカウント プロパティの表示
 `get-localuser | where {$_.SID -like "S-1-5-21-*-500"} | format-list *`
 
-or 
+or
 
 `get-wmiobject Win32_UserAccount -Namespace "root\cimv2" -Filter "SID like 'S-1-5-%-500'" |  format-list Name,Disabled,Status,Lockout,Description,SID`
 
@@ -414,7 +417,7 @@ or
 この例では、`c:\bin` フォルダーを作成し、一連の Sysinternals ツールを `c:\bin` にダウンロードし、抽出します。
 ## <a name="miscellaneous-tasks"></a>その他のタスク
 ### <a name="show-os-version"></a>OS バージョンの表示
-`get-wmiobject win32_operatingsystem | format-list caption,version,buildnumber` 
+`get-wmiobject win32_operatingsystem | format-list caption,version,buildnumber`
 ### <a name="view-os-install-date"></a>OS のインストール日の表示
 `(get-wmiobject win32_operatingsystem).converttodatetime((get-wmiobject win32_operatingsystem).installdate)`
 ### <a name="view-last-boot-time"></a>最終ブート時刻の表示
@@ -422,7 +425,7 @@ or
 ### <a name="view-windows-uptime"></a>Windows のアップタイムの表示
 `"{0:dd}:{0:hh}:{0:mm}:{0:ss}.{0:ff}" -f ((get-date)-(get-wmiobject win32_operatingsystem).converttodatetime((get-wmiobject win32_operatingsystem).lastbootuptime))`
 
-`<days>:<hours>:<minutes>:<seconds>:<milliseconds>` の形式でアップタイムを返します。たとえば `49:16:48:00.00` です。 
+`<days>:<hours>:<minutes>:<seconds>:<milliseconds>` の形式でアップタイムを返します。たとえば `49:16:48:00.00` です。
 ### <a name="restart-windows"></a>Windows の再起動
 `restart-computer`
 
@@ -474,7 +477,7 @@ Azure VM 内から Azure インスタンス メタデータを照会して、osT
 ### <a name="mac-address-instance-metadata"></a>MAC アドレス (インスタンス メタデータ)
 `$im.network.interface.macAddress`
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Windows のメインのシリアル コンソールのドキュメント ページは、[こちら](serial-console-windows.md)にあります。
 * シリアル コンソールは、[Linux](serial-console-linux.md) VM でも使用できます。
 * ブート診断の詳細については、[こちら](boot-diagnostics.md)を参照してください。

@@ -12,12 +12,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: bacac67ddd7f379d679a149fe9574676ae0c7567
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7d596292a823b4d912204f5cfbe8623ab7429fa3
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834424"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161394"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft ID プラットフォーム アクセス トークン
 
@@ -63,7 +63,7 @@ JWT は次の 3 つの部分に分かれています。
 
 各部分はピリオド (`.`) で区切られ、Base64 で個別にエンコードされます。
 
-クレームは、そこに入力される値が存在する場合にのみ存在します。 そのため、アプリはクレームの存在に依存することはできません。 例として、`pwd_exp` (すべてのテナントがパスワードを期限切れにする必要があるわけではありません) や、`family_name` (名前のないアプリケーションに代わって、[クライアント資格情報フロー](v1-oauth2-client-creds-grant-flow.md)が使用されます) などがあります。 アクセス トークンの検証に使用されるクレームは常に存在します。
+クレームは、そこに入力される値が存在する場合にのみ存在します。 そのため、アプリはクレームの存在に依存することはできません。 例として、`pwd_exp` (すべてのテナントでパスワードを期限切れにする必要があるわけではありません) や、`family_name` (名前のないアプリケーションに代わって、クライアント資格情報 ([v1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md)、[v2.0](v2-oauth2-client-creds-grant-flow.md)) フローが使用されます) などがあります。 アクセス トークンの検証に使用されるクレームは常に存在します。
 
 > [!NOTE]
 > 再利用に備え、Azure AD を使ったトークンのセキュリティ保護に活用されるクレームもあります。 これらは公開されないものとして、記述で "Opaque" としてマークされます。 これらのクレームはトークンに表示される場合とされない場合があり、新しいものが予告なく追加される場合もあります。
@@ -98,7 +98,7 @@ JWT は次の 3 つの部分に分かれています。
 | `preferred_username` | String | ユーザーを表すプライマリ ユーザー名です。 電子メール アドレス、電話番号、または指定された書式のない一般的なユーザー名を指定できます。 その値は、変更可能であり、時間の経過と共に変化することがあります。 これは変更可能であるため、この値は、承認の決定には使用できません。  ただしユーザー名のヒントには使用できます。 この要求を受け取るには、 `profile` スコープが必要です。 |
 | `name` | String | トークンのサブジェクトを識別する、人間が判読できる値を提供します。 この値は、一意であるとは限らず、変更可能であり、表示目的でのみ使用されます。 この要求を受け取るには、 `profile` スコープが必要です。 |
 | `scp` | 文字列、スコープのスペース区切りリスト | クライアント アプリケーションが同意を要求し、同意を得た、アプリケーションによって公開されているスコープのセット。 アプリでは、これらのスコープがアプリによって公開されている有効なスコープであることを確認し、これらのスコープの値に基づいて承認を決定する必要があります。 [ユーザー トークン](#user-and-application-tokens)にのみ含まれます。 |
-| `roles` | 文字列の配列、アクセス許可の一覧 | 要求元のアプリケーションに呼び出しのアクセス許可が付与されている、アプリケーションまたはユーザーによって公開されているアクセス許可のセット。 [アプリケーション トークン](#user-and-application-tokens)では、これはユーザー スコープの代わりに[クライアント資格情報](v1-oauth2-client-creds-grant-flow.md)フローで使用されます。  [ユーザー トークン](#user-and-application-tokens)では、これにはターゲット アプリケーションでユーザーに割り当てられたロールが設定されます。 |
+| `roles` | 文字列の配列、アクセス許可の一覧 | 要求元のアプリケーションに呼び出しのアクセス許可が付与されている、アプリケーションまたはユーザーによって公開されているアクセス許可のセット。 [アプリケーション トークン](#user-and-application-tokens)では、これはユーザー スコープの代わりにクライアント資格情報フロー ([v1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md)、[v2.0](v2-oauth2-client-creds-grant-flow.md)) で使用されます。  [ユーザー トークン](#user-and-application-tokens)では、これにはターゲット アプリケーションでユーザーに割り当てられたロールが設定されます。 |
 | `wids` | [RoleTemplateID](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids) GUID の配列 | [管理者ロール ページ](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids)に存在するロールのセクションから、このユーザーに割り当てられたテナント全体のロールを示します。  この要求は、[アプリケーション マニフェスト](reference-app-manifest.md)の `groupMembershipClaims` プロパティを介して、アプリケーションごとに構成されます。  これを "All" または "DirectoryRole" に設定することが必要です。  トークンの長さの問題のため、暗黙的フローを介して取得されたトークンには存在しない可能性があります。 |
 | `groups` | GUID の JSON 配列 | サブジェクトのグループ メンバーシップを表すオブジェクト ID です。 これらの値は一意 (「オブジェクト ID」を参照) であり、アクセスの管理 (リソースへのアクセスを承認するなど) に安全に使用できます。 groups 要求に含まれるグループは、[アプリケーション マニフェスト](reference-app-manifest.md)の `groupMembershipClaims` プロパティを使用してアプリケーションごとに構成されます。 値が null の場合はすべてのグループが除外され、値が ”SecurityGroup” の場合は Active Directory セキュリティ グループのメンバーシップのみが含まれ、値が ”All” の場合はセキュリティ グループと Office 365 配布リストの両方が含まれます。 <br><br>暗黙的な許可での `groups` 要求の使用の詳細については、以下の `hasgroups` 要求を参照してください。 <br>他のフローでは、ユーザーが属するグループの数が上限 (SAML の場合は 150、JWT の場合は 200) を超えた場合、ユーザーのグループのリストを含む AAD Graph エンドポイントを参照する要求ソースに超過要求が追加されます。 |
 | `hasgroups` | Boolean | 存在する場合、常に `true` であり、ユーザーが 1 つ以上のグループに属していることを示します。 すべてのグループ要求で URL 長の制限 (現在は 6 以上のグループ) を超えて URI フラグメントが拡張された場合、暗黙的な許可フローの JWT で `groups` 要求の代わりに使用されます。 クライアントが Graph を使用して、ユーザーのグループを決定する必要があることを示します (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`)。 |
@@ -172,7 +172,7 @@ id_token または access_token を検証するには、アプリはトークン
 
 Azure AD ミドルウェアにはアクセス トークンを検証するための機能が組み込まれており、選択した言語の[サンプル](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples)を参照できます。 JWT トークンを明示的に検証する方法の詳細については、[JWT の手動での検証のサンプル](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation)を参照してください。
 
-トークンの検証を簡単に処理する方法を示すライブラリとコード サンプルが用意されています。 以下の情報は、基になるプロセスを理解することを望む開発者を対象としています。 JWT の検証に使用できるサードパーティのオープン ソース ライブラリもいくつか存在し、ほぼすべてのプラットフォームと言語に対して少なくとも 1 つのオプションがあります。 Azure AD 認証ライブラリとコード サンプルの詳細については、[v1.0 認証ライブラリ](active-directory-authentication-libraries.md)に関する記事および [v2.0 認証ライブラリ](reference-v2-libraries.md)に関する記事をご覧ください。
+トークンの検証を簡単に処理する方法を示すライブラリとコード サンプルが用意されています。 以下の情報は、基になるプロセスを理解することを望む開発者を対象としています。 JWT の検証に使用できるサードパーティのオープン ソース ライブラリもいくつか存在し、ほぼすべてのプラットフォームと言語に対して少なくとも 1 つのオプションがあります。 Azure AD 認証ライブラリとコード サンプルの詳細については、[v1.0 認証ライブラリ](../azuread-dev/active-directory-authentication-libraries.md)に関する記事および [v2.0 認証ライブラリ](reference-v2-libraries.md)に関する記事をご覧ください。
 
 ### <a name="validating-the-signature"></a>署名の検証
 
@@ -229,9 +229,9 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 
 ## <a name="user-and-application-tokens"></a>ユーザー トークンとアプリケーション トークン
 
-アプリケーションは、ユーザーに代わってトークンを受け取る場合もあれば (通常のフロー)、([クライアント資格情報フロー](v1-oauth2-client-creds-grant-flow.md)を通じて) アプリケーションから直接受け取る場合もあります。 これらのアプリ専用トークンは、この呼び出しがアプリケーションからのものであり、その背後にユーザーがいないことを示します。 これらのトークンはほぼ同様に処理されますが、違いがいくつかあります。
+アプリケーションでは、ユーザーに代わってトークンを受け取る (通常のフロー) か、(クライアント資格情報フロー ([v1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md)、[v2.0](v2-oauth2-client-creds-grant-flow.md)) を通じて) アプリケーションから直接受け取る場合があります。 これらのアプリ専用トークンは、この呼び出しがアプリケーションからのものであり、その背後にユーザーがいないことを示します。 これらのトークンはほぼ同様に処理されますが、違いがいくつかあります。
 
-* アプリ専用トークンには `scp` 要求は含まれず、代わりに `roles` 要求が含まれることがあります。 これに、(委任されたアクセス許可ではなく) アプリケーションのアクセス許可が記録されます。 委任されたアクセス許可とアプリケーションのアクセス許可の詳細については、[v1.0](v1-permissions-and-consent.md) および [v2.0](v2-permissions-and-consent.md) のアクセス許可と同意を参照してください。
+* アプリ専用トークンには `scp` 要求は含まれず、代わりに `roles` 要求が含まれることがあります。 これに、(委任されたアクセス許可ではなく) アプリケーションのアクセス許可が記録されます。 委任されたアクセス許可とアプリケーションのアクセス許可の詳細については、アクセス許可と同意 ([v1.0](../azuread-dev/v1-permissions-consent.md)、[v2.0](v2-permissions-and-consent.md)) に関するページを参照してください。
 * 多くの人間固有の要求 (`name` や `upn` など) はありません。
 * `sub` および `oid` 要求は同じになります。 
 
@@ -257,7 +257,7 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 | 管理者によるパスワードのリセット | 取り消し | 取り消し | 存続 | 存続 | 存続 |
 | ユーザーが [PowerShellによって、](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken)更新トークンを無効にする | 取り消し | 取り消し | 取り消し | 取り消し | 取り消し |
 | 管理者が [PowerShellによって、](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken)テナントのすべての更新トークンを無効にする | 取り消し | 取り消し |取り消し | 取り消し | 取り消し |
-| Web での[シングル サインアウト](v1-protocols-openid-connect-code.md#single-sign-out) | 取り消し | 存続 | 取り消し | 存続 | 存続 |
+| Web 上でのシングル サインアウト ([v1.0](../azuread-dev/v1-protocols-openid-connect-code.md#single-sign-out)、[v2.0](v2-protocols-oidc.md#single-sign-out)) | 取り消し | 存続 | 取り消し | 存続 | 存続 |
 
 > [!NOTE]
 > ｢パスワード基づかない｣ログインは、ユーザーがそれを得るために、パスワードをタイプしなかった場合です。 たとえば、Windows Hello、FIDO2 キー、または PIN で自分の顔を使用する場合です。
@@ -269,4 +269,4 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure AD の `id_tokens`](id-tokens.md) の詳細を確認します。
-* [v1.0](v1-permissions-and-consent.md) と [v2.0](v2-permissions-and-consent.md) のアクセス許可と同意の詳細を確認します。
+* アクセス許可と同意 ([v1.0](../azuread-dev/v1-permissions-consent.md)、[v2.0](v2-permissions-and-consent.md)) の詳細を確認します。

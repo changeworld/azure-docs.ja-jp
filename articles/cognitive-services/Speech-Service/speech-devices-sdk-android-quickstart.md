@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 02/12/2020
 ms.author: erhopf
-ms.openlocfilehash: 2def0eaa2e1ee22498202228cf62257605d940e5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 657cf0a0648cd53e5692a2cf5333ba29951b77a4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75380322"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189120"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>クイック スタート:Android 上で Speech Devices SDK サンプル アプリを実行する
 
@@ -34,7 +34,7 @@ Speech Devices SDK の使用を開始する前に、次のことを行う必要�
 - [Speech Devices SDK](https://aka.ms/sdsdk-download) の最新バージョンをダウンロードし、.zip を作業ディレクトリに解凍します。
 
   > [!NOTE]
-  > Android-Sample-Release.zip ファイルには、Android サンプル アプリが含まれており、このクイックスタートでは、アプリが C:\SDSDK\Android-Sample-Release に抽出されることを前提としています
+  > このクイックスタートでは、アプリが C:\SDSDK\Android-Sample-Release に抽出されることを前提としています
 
 - [Speech サービス用の Azure サブスクリプション キー](get-started.md)を取得します
 
@@ -83,6 +83,29 @@ Speech Devices SDK の使用を開始する前に、次のことを行う必要�
 
 1. C:\SDSDK\Android-Sample-Release\example に移動します。 **[OK]** を選択してサンプル プロジェクトを開きます。
 
+1. Speech SDK を参照するように gradle を構成します。 次のファイルは Android Studio の **Gradle Scripts** にあります。
+
+    maven 行を追加することにより、**build.gradle(Project:example)** を更新します (allprojects ブロックは以下に一致する必要があります)。
+
+    ```xml
+    allprojects {
+        repositories {
+            google()
+            jcenter()
+            mavenCentral()
+            maven {
+                url 'https://csspeechstorage.blob.core.windows.net/maven/'
+            }
+        }
+    }
+    ```
+
+    依存関係セクションに次の行を追加して、**build.gradle(Module:app)** を更新します。 
+    
+    ```xml
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.9.0'
+    ```
+    
 1. ソース コードに Speech サブスクリプション キーを追加します。 意図認識を試す場合は、[Language Understanding Service](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) のサブスクリプション キーとアプリケーション ID も追加します。
 
    Speech および LUIS の場合、ユーザーの情報が MainActivity.java に配置されます。

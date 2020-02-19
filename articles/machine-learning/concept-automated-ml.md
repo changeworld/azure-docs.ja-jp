@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: 778b369e08ff6b0c6e4075c5a8d3d2a234bde70e
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f7a2e78ed2b1de770f7a60f1312e069dc1757cb6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894897"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191208"
 ---
 # <a name="what-is-automated-machine-learning"></a>自動化された機械学習とは
 
@@ -95,11 +95,11 @@ ms.locfileid: "75894897"
 
 ### <a name="advanced-preprocessing-optional-featurization"></a>高度な前処理: 任意の特徴付け
 
-データ ガードレール、エンコード、変換など、高度な前処理と特徴付けも追加で利用できます。 含まれる特徴付けに関する詳細は[こちら](how-to-create-portal-experiments.md#preprocess)から参照してください。 この設定は次の方法で有効にできます。
+データ ガードレール、エンコード、変換など、高度な前処理と特徴付けも追加で利用できます。 含まれる特徴付けに関する詳細は[こちら](how-to-create-portal-experiments.md#featurization)から参照してください。 この設定は次の方法で有効にできます。
 
-+ Azure Machine Learning Studio:[これらの手順](how-to-create-portal-experiments.md)に従って、 **[Configuration Run]\(構成の実行\)** セクションの **[View featurization settings]\(特徴付け設定の確認\)** を選択します。
++ Azure Machine Learning Studio:[これらの手順に従って](how-to-create-portal-experiments.md#create-and-run-experiment)、 **[View additional configuration]\(追加構成の表示\)** セクションで **[Automatic featurization]\(自動特性付け\)** を有効にします。
 
-+ Python SDK:[`AutoMLConfig` クラス](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) に `"feauturization": auto' / 'off' / FeaturizationConfig` を指定します。
++ Python SDK:[`AutoMLConfig` クラス](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) に `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` を指定します。 
 
 ## <a name="prevent-over-fitting"></a>オーバーフィットを防ぐ
 
@@ -217,9 +217,9 @@ Azure Machine Learning では、自動化された ML を使用して Python モ
 
 |統合|説明|
 |------------|-----------|
-|[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Visual Studio および Visual Studio Code と ML.NET 自動 ML を使用した .NET アプリでの自動モデル選択およびトレーニング (プレビュー)。|
+|[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Visual Studio および Visual Studio Code と ML.NET 自動 ML を使用した .NET アプリでの自動モデル選択およびトレーニング。|
 |[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|並列にしてある HDInsight クラスターの Spark で自動化された ML トレーニング ジョブをスケールアウトします。|
-|[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Power BI での機械学習モデルの直接呼び出し (プレビュー)。|
+|[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Power BI での機械学習モデルの直接呼び出し。|
 |[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|SQL Server 2019 ビッグ データ クラスターのデータに対して新しい機械学習モデルを作成します。|
 
 ## <a name="next-steps"></a>次のステップ

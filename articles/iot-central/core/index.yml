@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: philmea
   ms.author: philmea
-  ms.date: 10/25/2019
-  ms.openlocfilehash: cddfdbe709849f81f585ad7537556945ec14c990
-  ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+  ms.date: 02/18/2020
+  ms.openlocfilehash: f404ecb676b75258cd44fb819dbafc3b2fb6452e
+  ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/05/2020
-  ms.locfileid: "77023431"
+  ms.lasthandoff: 02/18/2020
+  ms.locfileid: "77431181"
 landingContent:
 - title: Azure IoT Central について
   linkLists:
@@ -23,14 +23,14 @@ landingContent:
     links:
     - text: Azure IoT Central とは
       url: overview-iot-central.md
-    - text: IoT ソリューションのオプション
-      url: overview-iot-central-tour.md
     - text: UI を確認する
       url: overview-iot-central-tour.md
   - linkListType: architecture
     links:
     - text: Azure IoT Central のアーキテクチャ
       url: concepts-architecture.md
+    - text: アプリケーション テンプレート
+      url: concepts-app-templates.md
   - linkListType: quickstart
     links:
     - text: 新しいアプリケーションを作成する
@@ -39,12 +39,12 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: デバイス テンプレートを設定する
-      url: howto-set-up-template.md
     - text: IoT プラグ アンド プレイ (プレビュー) デバイスを接続する
-      url: tutorial-add-device.md
+      url: tutorial-connect-pnp-device.md
   - linkListType: how-to-guide
     links:
+    - text: デバイス テンプレートを設定する
+      url: howto-set-up-template.md
     - text: MX Chip IoT DevKit を準備して接続する
       url: howto-connect-devkit.md
     - text: その他の IoT クラウドの接続
@@ -53,8 +53,8 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: デバイス セットを使用する
-      url: howto-use-device-sets.md
+    - text: デバイス グループを使用する
+      url: tutorial-use-device-groups.md
   - linkListType: how-to-guide
     links:
     - text: デバイスを管理する
@@ -68,9 +68,9 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: テレメトリ ルールを作成する
-      url: howto-create-telemetry-rules.md
-    - text: Blob Storage へのエクスポート
-      url: howto-export-data-blob-storage.md
+      url: tutorial-create-telemetry-rules.md
+    - text: データのエクスポート
+      url: howto-export-data.md
   - linkListType: how-to-guide
     links:
     - text: カスタム規則の作成

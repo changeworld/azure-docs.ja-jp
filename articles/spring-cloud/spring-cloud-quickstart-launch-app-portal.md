@@ -1,23 +1,23 @@
 ---
-title: クイックスタート - Azure portal を使用して Azure Spring Cloud アプリケーションを起動する
-description: このクイックスタートでは、Azure portal を使用して、サンプル アプリケーションを Azure Spring Cloud にデプロイします。
+title: クイックスタート - Azure portal を使用して既存の Azure Spring Cloud アプリケーションを起動する
+description: このクイックスタートでは、Azure portal を使用して、Spring Cloud アプリケーションを Azure Spring Cloud にデプロイします。
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 11/4/2019
+ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: f88319319b366ec8b726d5cf6cce540008497b57
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 67ad112021c2fadb5ea93ffefcf5e58e9404e92a
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278905"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137749"
 ---
-# <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Spring Cloud アプリケーションを起動する
+# <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して既存の Azure Spring Cloud アプリケーションを起動する
 
-Azure Spring Cloud では、Spring Cloud ベースのマイクロサービス アプリケーションを Azure で簡単に実行できます。
+このクイックスタートでは、既存の Spring Cloud アプリケーションを Azure にデプロイする方法について説明します。 Azure Spring Cloud では、Spring Cloud ベースのマイクロサービス アプリケーションを Azure で簡単に実行できます。 
 
-このクイックスタートでは、既存の Spring Cloud アプリケーションを Azure にデプロイする方法について説明します。  このチュートリアルで使用するサンプル アプリケーション コードについては、[GitHub サンプル リポジトリ](https://github.com/Azure-Samples/PiggyMetrics)を参照してください。 完了すると、準備したサンプル アプリケーションにオンラインでアクセスできるようになり、Azure portal で管理できるようになります。
+このチュートリアルで使用するサンプル アプリケーション コードについては、[GitHub サンプル リポジトリ](https://github.com/Azure-Samples/PiggyMetrics)を参照してください。 完了すると、準備したサンプル アプリケーションにオンラインでアクセスできるようになり、Azure portal で管理できるようになります。
 
 このクイックスタートでは、次の方法について説明します。
 

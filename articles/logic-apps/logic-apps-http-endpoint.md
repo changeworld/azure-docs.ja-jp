@@ -6,12 +6,12 @@ ms.workload: integration
 ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 11/04/2019
-ms.openlocfilehash: dbb91106ad00e1a82e2e6e9c470e61764a4ad4c4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: d5b5a69c7927d07c0ae6b3b56ec97b6551e5d46b
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792037"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191329"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-http-endpoints-in-azure-logic-apps"></a>Azure Logic Apps で HTTP エンドポイントを使用して、ロジック アプリの呼び出し、トリガー、または入れ子を行います。
 
@@ -36,7 +36,7 @@ HTTP エンドポイントを設定するには、次のいずれかのトリガ
 
 ## <a name="create-a-callable-endpoint"></a>呼び出し可能なエンドポイントを作成する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 ロジック アプリ デザイナーで、空のロジック アプリを作成して開きます。
+1. [Azure portal](https://portal.azure.com) にサインインします。 ロジック アプリ デザイナーで、空のロジック アプリを作成して開きます。
 
    この例では要求トリガーを使用しますが、受信 HTTP 要求を受信できる任意のトリガーを使用できます。 すべての原則がこれらのトリガーにも同様に適用されます。 要求トリガーの詳細については、「[Azure Logic Apps を使用して、HTTPS 呼び出しを受信して応答する](../connectors/connectors-native-reqres.md)」を参照してください。
 
@@ -309,10 +309,10 @@ HTTP エンドポイントを作成したら、そのエンドポイントの完
 **A**: Azure では、[Shared Access Signature (SAS)](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature) を使用してロジック アプリのコールバック URL を安全に生成します。 この署名はクエリ パラメーターとして渡され、ロジック アプリを実行する前に検証される必要があります。 Azure では、ロジック アプリごとの秘密キー、トリガー名、および実行される操作の一意の組み合わせを使用して署名が生成されます。 そのため、ロジック アプリの秘密キーにアクセスできなければ、有効な署名を生成することはできません。
 
 > [!IMPORTANT]
-> 運用環境のセキュリティで保護されたシステムでは、次の理由により、ブラウザーから直接ロジック アプリを呼び出さないことを強くお勧めします。
+> セキュリティの強化された運用環境のシステムでは、次の理由により、ブラウザーから直接ロジック アプリを呼び出さないことを強くお勧めします。
 >
 > * 共有アクセス キーが URL に表示されます。
-> * Azure Logic Apps の顧客にまたがる共有ドメインのために、セキュリティで保護されたコンテンツ ポリシーを管理できません。
+> * Azure Logic Apps の顧客にまたがる共有ドメインのために、セキュリティ コンテンツ ポリシーを管理できません。
 
 #### <a name="q-can-i-configure-http-endpoints-further"></a>Q:HTTP エンドポイントをさらに構成することは可能でしょうか。
 
@@ -323,6 +323,6 @@ HTTP エンドポイントを作成したら、そのエンドポイントの完
 * [Azure portal](https://portal.azure.com/) で API Management ドメインをセットアップする
 * 基本認証を確認するためのポリシーをセットアップする
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Logic Apps を使用して、HTTPS 呼び出しを受信して応答する](../connectors/connectors-native-reqres.md)

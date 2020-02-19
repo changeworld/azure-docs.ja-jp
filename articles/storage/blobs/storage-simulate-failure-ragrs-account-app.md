@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
-ms.openlocfilehash: 44c5d037797d845aa9c68af2d7b8e5e45bf418fb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 522ed13681a98535c35552128fc8432782ec1ca2
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892449"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162703"
 ---
 # <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>チュートリアル:プライマリ リージョンからデータを読み取る際のエラーをシミュレートする
 
-このチュートリアルは、シリーズの第 2 部です。 ここでは、失敗をシミュレートすることによって、[読み取りアクセス geo 冗長ストレージ](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) の利点について学習します。
+このチュートリアルは、シリーズの第 2 部です。 ここでは、失敗をシミュレートすることによって、[読み取りアクセス geo 冗長ストレージ](../common/storage-redundancy.md) (RA-GRS) の利点について学習します。
 
-エラーをシミュレートするには、[静的ルーティング](#simulate-a-failure-with-an-invalid-static-route)または [Fiddler](#simulate-a-failure-with-fiddler) のいずれかを使用できます。 どちらの方法でも、[読み取りアクセス geo 冗長ストレージ](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) ストレージ アカウントのプライマリ エンドポイントに対する要求エラーをシミュレートして、アプリケーションが代わりにセカンダリ エンドポイントから読み取りを行うようにすることができます。
+エラーをシミュレートするには、[静的ルーティング](#simulate-a-failure-with-an-invalid-static-route)または [Fiddler](#simulate-a-failure-with-fiddler) のいずれかを使用できます。 どちらの方法でも、[読み取りアクセス geo 冗長ストレージ](../common/storage-redundancy.md) (RA-GRS) ストレージ アカウントのプライマリ エンドポイントに対する要求エラーをシミュレートして、アプリケーションが代わりにセカンダリ エンドポイントから読み取りを行うようにすることができます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -41,7 +41,7 @@ Fiddler を使用してエラーをシミュレートするには、Fiddler を�
 
 ## <a name="simulate-a-failure-with-an-invalid-static-route"></a>無効な静的ルートで失敗をシミュレートする
 
-[read-access geo-redundant](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) ストレージ アカウントのプライマリ エンドポイントに対するすべての要求について無効な静的ルートを作成することができます。 このチュートリアルでは、ストレージ アカウントに要求をルーティングするためのゲートウェイとしてローカル ホストを使用します。 ローカル ホストをゲートウェイとして使用すると、ストレージ アカウントのプライマリ エンドポイントに対するすべての要求がホスト内でループバックされ、その後エラーとなります。 失敗とプライマリ エンドポイントの回復を無効な静的ルートでシミュレートするには、次の手順に従います。
+[read-access geo-redundant](../common/storage-redundancy.md) (RA-GRS) ストレージ アカウントのプライマリ エンドポイントに対するすべての要求について無効な静的ルートを作成することができます。 このチュートリアルでは、ストレージ アカウントに要求をルーティングするためのゲートウェイとしてローカル ホストを使用します。 ローカル ホストをゲートウェイとして使用すると、ストレージ アカウントのプライマリ エンドポイントに対するすべての要求がホスト内でループバックされ、その後エラーとなります。 失敗とプライマリ エンドポイントの回復を無効な静的ルートでシミュレートするには、次の手順に従います。
 
 ### <a name="start-and-pause-the-application"></a>アプリケーションの開始と一時停止
 
@@ -147,7 +147,7 @@ Fiddler で、カスタム ルールを削除するか、もう一度コメン�
 
 サンプルを実行中のウィンドウで、アプリケーションを再開するか適切なキーを押してサンプル ファイルをダウンロードします。それが再びプライマリ ストレージからダウンロードされていることを確認します。 この後、サンプルを終了できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 シリーズの第 2 部では、失敗をシミュレートして読み取りアクセス geo 冗長ストレージをテストする方法について学習しました。
 

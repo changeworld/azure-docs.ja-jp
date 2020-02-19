@@ -3,19 +3,17 @@ title: Azure の予約を管理する
 description: Azure の予約を管理する方法について説明します。
 ms.service: cost-management-billing
 author: bandersmsft
-manager: yashesvi
+ms.reviewer: yashesvi
 ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/06/2019
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: cc24c176b5b61210d68d2dcb244d63f15402928b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 82bf250a7902cfe4b905991809fd4bbe5dea102a
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75986291"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188516"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Azure リソースに対する予約を管理する
 
@@ -128,7 +126,7 @@ Azure Reserved Virtual Machine Instances を購入した場合は、予約の最
 
 ## <a name="optimize-reservation-use"></a>予約の使用を最適化する
 
-Azure の予約の割引は、継続的にリソースを使用した場合にのみ発生します。 予約を購入する場合、1 年または 3 年間のリソース使用率が基本的に 100% であることに対して、前払い料金を支払います。 できるだけ多くの使用と割引を実現するために、予約を最大限に活用してください。 以下のセクションでは、予約を監視し、その使用を最適化する方法について説明します。
+Azure の予約の割引は、継続的にリソースを使用した場合にのみ発生します。 予約を購入する場合、1 年または 3 年間のリソース使用率が基本的に 100% であることに対して、料金を支払います。 できるだけ多くの使用と割引を実現するために、予約を最大限に活用してください。 以下のセクションでは、予約を監視し、その使用を最適化する方法について説明します。
 
 ### <a name="view-reservation-use-in-the-azure-portal"></a>予約の使用状況は Azure portal 内で表示できます
 

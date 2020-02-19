@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: a0205d57fa68585b1a91b99b19e008eb92e73c0d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a0ffa6e20b42ed8ac145b50c062f5c0a8998add0
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435850"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061643"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>チュートリアル:Enterprise セキュリティ パッケージを使用して HDInsight に Apache Kafka ポリシーを構成する (プレビュー)
 
@@ -147,6 +147,8 @@ Enterprise セキュリティ パッケージ (ESP) の Apache Kafka クラス�
 
 4. 「**例を構築してデプロイする**」の手順 3. (「[チュートリアル: Apache Kafka Producer および Consumer API の使用](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example)」) に従って、`kafka-producer-consumer.jar` を **sales_user** が利用できるようにします。
 
+**注意事項: このチュートリアルでは、"DomainJoined-Producer-Consumer" プロジェクトの下にある kafka-producer-consumer.jar を使用してください (Producer-Consumer プロジェクトではありません。これはドメインに参加しないシナリオ用です)。**
+
 5. **sales_user1** は、次のコマンドを実行することによってトピック `salesevents` を生成できます。
 
    ```bash
@@ -189,11 +191,14 @@ Enterprise セキュリティ パッケージ (ESP) の Apache Kafka クラス�
 
 このアプリケーションを引き続き使用しない場合は、次の手順で作成した Kafka クラスターを削除します。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 1. 上部の**検索**ボックスに「**HDInsight**」と入力します。
 1. **[サービス]** の下の **[HDInsight クラスター]** を選択します。
 1. 表示される HDInsight クラスターの一覧で、このチュートリアル用に作成したクラスターの横にある **[...]** をクリックします。 
 1. **[削除]** をクリックします。 **[はい]** をクリックします。
+
+## <a name="troubleshooting"></a>トラブルシューティング
+ドメインに参加したクラスターで kafka-producer-consumer.jar が機能しない場合、"DomainJoined-Producer-Consumer" プロジェクトの下にある kafka-producer-consumer.jar を使用していることを確認してください (Producer-Consumer プロジェクトではありません。これはドメインに参加しないシナリオ用です)。
 
 ## <a name="next-steps"></a>次のステップ
 

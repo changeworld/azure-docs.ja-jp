@@ -1,18 +1,18 @@
 ---
 title: Azure のモノのインターネット (IoT) テクノロジとソリューション
 description: Azure IoT ソリューションの作成に使用できる一連のテクノロジとサービスについて説明します。
-author: robinsh
+author: dominicbetts
 ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
-ms.date: 10/09/2018
-ms.author: robinsh
-ms.openlocfilehash: cf707a0ddc3d5b46c7be7944a911ee03f00fc064
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/15/2020
+ms.author: dobett
+ms.openlocfilehash: 0b04b5170c13f6f6c3fd74976461f03e4367060a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457177"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046057"
 ---
 # <a name="azure-technologies-and-services-for-creating-iot-solutions"></a>IoT ソリューションを作成するための Azure のテクノロジとサービス
 
@@ -83,6 +83,8 @@ IoT Central はデジタル ツインを使用することで、現実世界の�
 ### <a name="data-and-analytics"></a>データと分析
 
 IoT デバイスは、一般的に、センサーからの温度の測定値など、時系列データを大量に生成します。 [Azure Time Series Insights](../time-series-insights/time-series-insights-overview.md) は、IoT ハブに接続してデバイスからのテレメトリ ストリームを読み取り、そのデータを保存します。ユーザーは、それを照会して可視化することができます。
+
+[Azure Maps](/azure/azure-maps) は、最新のマッピング データを使用して、精度の高い地理的なコンテキストを Web とモバイル アプリケーションに提供する一連の地理空間サービスです。 REST API、Web ベースの JavaScript コントロール、Android SDK のいずれかを使用してアプリケーションを作成できます。
 
 ## <a name="next-steps"></a>次のステップ
 

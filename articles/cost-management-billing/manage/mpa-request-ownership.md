@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: banders
-ms.openlocfilehash: 65b56511a3b454b192b5adb2a98fb3bb3510bb7e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6a4b215b2b386754bae2c1bbec171ed4bc558a93
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75984491"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048203"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>MPA アカウントに Azure サブスクリプションの課金所有権を取得する
 
@@ -120,7 +120,7 @@ ms.locfileid: "75984491"
 - [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)\*
 - [Microsoft Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/)
 
-\* Enterprise DevTest サブスクリプションは、譲渡時の従量課金制料金で課金されます。顧客の EA を通じて Enterprise DevTest プランによって提供される割引は、CSP パートナーには適用されません。
+\* 最初に、サポート チケットを使用して、Dev/Test サブスクリプションを EA Enterprise プランに変換する必要があります。 譲渡後、Enterprise Dev/Test サブスクリプションは従量課金制料金で課金されます。 顧客の EA を通じて Enterprise Dev/Test プランによって提供される割引は、CSP パートナーには適用されません。
 
 ## <a name="additional-information"></a>関連情報
 

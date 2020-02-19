@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5eb5cedf14af9a013a5b6a1eba5df40d665cbad5
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 7ad6b7150a43a286a4bec39a0482e08f50d95c06
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74181512"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048060"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と F5 の統合
 
@@ -31,7 +31,7 @@ ms.locfileid: "74181512"
 * ユーザーが自分の Azure AD アカウントを使用して F5 に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+シングル サインオンによる SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -279,7 +279,7 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 
     ![F5 (ヘッダー ベース) の構成](./media/headerf5-tutorial/configure11.png)
 
-## <a name="advanced-configuration"></a>詳細な構成
+## <a name="advanced-configuration"></a>高度な構成
 
 このセクションは、ガイド付き構成を使用できない場合や他のパラメーターを追加または変更したい場合に使用するためのものです。 アプリケーション ホスト名の SSL 証明書が必要になります。
 
