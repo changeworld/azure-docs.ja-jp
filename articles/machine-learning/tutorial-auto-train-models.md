@@ -894,7 +894,7 @@ x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, r
 
 トレーニング用の実験パラメーターとモデルの設定を定義します。 [設定](how-to-configure-auto-train.md)の完全な一覧を表示します。 これらの既定の設定で実験を送信するには約 5 分から 20 分かかりますが、実行時間を短くしたい場合は `experiment_timeout_minutes` パラメーターを減らしてください。
 
-|プロパティ| このチュートリアルの値 |[説明]|
+|プロパティ| このチュートリアルの値 |説明|
 |----|----|---|
 |**iteration_timeout_minutes**|2|各イテレーションの分単位での時間制限。 合計実行時間を短縮するには、この値を減らします。|
 |**experiment_timeout_minutes**|20|すべてのイテレーションを組み合わせて、実験が終了するまでにかかる分単位での最大時間。|
