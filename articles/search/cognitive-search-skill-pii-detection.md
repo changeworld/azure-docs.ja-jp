@@ -38,7 +38,7 @@ Microsoft.Skills.Text.PIIDetectionSkill
 
 パラメーターでは大文字と小文字が区別され、すべて任意です。
 
-| パラメーター名     | [説明] |
+| パラメーター名     | 説明 |
 |--------------------|-------------|
 | defaultLanguageCode | 入力テキストの言語コード。 現時点では、`en` のみがサポートされています。 |
 | minimumPrecision | 0\.0 から 1.0 の値。 (`piiEntities` 出力の) 信頼度スコアが `minimumPrecision` の設定値よりも小さい場合は、エンティティは返されず、マスクもされません。 既定では、0.0 です。 |
@@ -48,14 +48,14 @@ Microsoft.Skills.Text.PIIDetectionSkill
 
 ## <a name="skill-inputs"></a>スキルの入力
 
-| 入力名      | [説明]                   |
+| 入力名      | 説明                   |
 |---------------|-------------------------------|
 | languageCode  | 省略可能。 既定値は `en` です。  |
 | text          | 分析するテキスト。          |
 
 ## <a name="skill-outputs"></a>スキルの出力
 
-| 出力名     | [説明]                   |
+| 出力名     | 説明                   |
 |---------------|-------------------------------|
 | piiEntities | 次のフィールドが含まれる複合型の配列。 <ul><li>テキスト (抽出された実際の PII)</li> <li>型</li><li>subType</li><li>スコア (値が高いほど、実際のエンティティに近づく可能性が高くなります)</li><li>オフセット (入力テキスト内)</li><li>length</li></ul> </br> [使用できる型と subTypes については、こちらを参照してください。](https://docs.microsoft.com/azure/cognitive-services/text-analytics/named-entity-types?tabs=personal) |
 | maskedText | `maskingMode` が `none` 以外の値に設定されている場合、この出力は、選択した `maskingMode` で説明されている入力テキストに対して実行されるマスクの結果の文字列になります。  `maskingMode` が `none` に設定されている場合、この出力は表示されません。 |
