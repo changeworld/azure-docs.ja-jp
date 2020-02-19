@@ -323,10 +323,10 @@
       items:
         - name: 基礎
           href: search-monitor-usage.md
-        - name: クエリ アクティビティの監視
-          href: search-monitor-queries.md
         - name: 診断ログ
           href: search-monitor-logs.md
+        - name: クエリ アクティビティの監視
+          href: search-monitor-queries.md
         - name: 検索トラフィックの分析
           href: search-traffic-analytics.md
     - name: '[トラブルシューティング]'
