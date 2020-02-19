@@ -42,7 +42,7 @@ Azure Database for PostgreSQL サーバーを作成するには、次の手順�
 
     ![サーバーの作成](./media/quickstart-create-database-portal/create-basics.png)
 
-    設定|推奨値|[説明]
+    設定|推奨値|説明
     ---|---|---
     サブスクリプション|お使いのサブスクリプション名|サーバーに使用する Azure サブスクリプション。 複数のサブスクリプションをお持ちの場合は、リソースの課金対象となるサブスクリプションを選択してください。
     Resource group|*myresourcegroup*| 新しいリソース グループ名、またはサブスクリプションの既存のリソース グループ名。
@@ -170,7 +170,7 @@ pgAdmin は PostgreSQL で使用されるオープンソース ツールです�
 
    ![[接続] タブ](./media/quickstart-create-database-portal/10-pgadmin-create-server.png)
 
-    pgAdmin パラメーター |値|[説明]
+    pgAdmin パラメーター |値|説明
     ---|---|---
     ホスト名/アドレス | サーバー名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに使用したサーバー名の値。 例に示したサーバーは、**mydemoserver.postgres.database.azure.com** です。 Use the fully qualified domain name ( **\*.postgres.database.azure.com**) as shown in the example. サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 
     Port | 5432 | Azure Database for PostgreSQL サーバーに接続するときに使用するポート。 
