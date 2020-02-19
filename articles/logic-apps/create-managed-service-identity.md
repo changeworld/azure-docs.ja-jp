@@ -57,7 +57,7 @@ ms.locfileid: "75861202"
 
    ![システム割り当て ID のオブジェクト ID](./media/create-managed-service-identity/object-id.png)
 
-   | プロパティ | 値 | [説明] |
+   | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
    | **オブジェクト ID** | <*identity-resource-ID*> | Azure AD テナント内のロジック アプリのシステム割り当て ID を表すグローバル一意識別子 (GUID) |
    ||||
@@ -103,7 +103,7 @@ Azure によってロジック アプリのリソース定義が作成される�
 }
 ```
 
-| プロパティ (JSON) | 値 | [説明] |
+| プロパティ (JSON) | 値 | 説明 |
 |-----------------|-------|-------------|
 | `principalId` | <*principal-ID*> | Azure AD テナント内のロジック アプリを表すマネージド ID のサービス プリンシパル オブジェクトのグローバル一意識別子 (GUID)。 この GUID は、"オブジェクト ID" (`objectID`) として表されることがあります。 |
 | `tenantId` | <*Azure-AD-tenant-ID*> | ロジック アプリが現在メンバーとなっている Azure AD テナントを表すグローバル一意識別子 (GUID)。 Azure AD テナント内では、サービス プリンシパルは、ロジック アプリ インスタンスと同じ名前を持ちます。 |
@@ -173,7 +173,7 @@ Azure によってロジック アプリのリソース定義が作成される�
 
    たとえば、HTTP トリガーまたはアクションでは、ロジック アプリに対して有効にしたシステム割り当て ID を使用できます。 一般に、HTTP トリガーまたはアクションでは、次のプロパティを使用して、アクセスするリソースまたはエンティティを指定します。
 
-   | プロパティ | 必須 | [説明] |
+   | プロパティ | 必須 | 説明 |
    |----------|----------|-------------|
    | **方法** | はい | 実行する操作によって使用される HTTP メソッド |
    | **URI** | はい | ターゲットの Azure リソースまたはエンティティにアクセスするためのエンドポイント URL。 URI 構文には、通常、Azure リソースまたはサービスの[リソース ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) が含まれています。 |
@@ -189,7 +189,7 @@ Azure によってロジック アプリのリソース定義が作成される�
 
    [Snapshot Blob 操作](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob)を実行するには、HTTP アクションで次のプロパティを指定します。
 
-   | プロパティ | 必須 | 値の例 | [説明] |
+   | プロパティ | 必須 | 値の例 | 説明 |
    |----------|----------|---------------|-------------|
    | **方法** | はい | `PUT`| Snapshot Blob 操作で使用する HTTP メソッド |
    | **URI** | はい | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | この構文を使用する Azure Global (パブリック) 環境内の Azure Blob Storage ファイルのリソース ID |
