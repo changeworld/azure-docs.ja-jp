@@ -62,7 +62,7 @@ Azure Machine Learning のアラートにアクセスするには、**Azure Moni
 
 次の表に、Azure Machine Learning の一般的および推奨されるメトリック アラート ルールを示します。
 
-| アラートの種類 | 条件 | [説明] |
+| アラートの種類 | 条件 | 説明 |
 |:---|:---|:---|
 | モデル デプロイ失敗 | 集計の種類: 合計、演算子: より大きい、しきい値: 0 | 1 つ以上のモデル デプロイが失敗した場合 |
 | クォータ使用率 | 集計の種類: 平均、演算子: より大きい、しきい値: 90| クォータ使用率が 90% を超えている場合 |
@@ -85,7 +85,7 @@ Azure Machine Learning のアラートにアクセスするには、**Azure Moni
 
 Azure Machine Learning の次のログを構成できます。
 
-| カテゴリ | [説明] |
+| カテゴリ | 説明 |
 |:---|:---|
 | AmlComputeClusterEvent | Azure Machine Learning コンピューティング クラスターからのイベント。 |
 | AmlComputeClusterNodeEvent | Azure Machine Learning コンピューティング クラスター内のノードからのイベント。 |
@@ -100,7 +100,7 @@ Azure Monitor Log Analytics を使用するには、診断構成を作成して�
 
 Azure Monitor のログのデータはテーブルに格納され、各テーブルには独自の一意のプロパティ セットがあります。 Azure Machine Learning は、次のテーブルにデータを格納します。
 
-| テーブル | [説明] |
+| テーブル | 説明 |
 |:---|:---|
 | AmlComputeClusterEvent | Azure Machine Learning コンピューティング クラスターからのイベント。 |
 | AmlComputeClusterNodeEvent | Azure Machine Learning コンピューティング クラスター内のノードからのイベント。 |
