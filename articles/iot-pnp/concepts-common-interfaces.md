@@ -20,7 +20,7 @@ ms.locfileid: "75531413"
 
 ## <a name="summary-of-common-interfaces"></a>共通インターフェイスの概要
 
-| Name | id | [説明] | Azure IoT SDK によって実装される | 機能モデルで宣言する必要がある |
+| Name | id | 説明 | Azure IoT SDK によって実装される | 機能モデルで宣言する必要がある |
 | -------- | -------- | -------- | -------- | -------- | -------- |
 | モデル情報 | urn:azureiot:ModelDiscovery:ModelInformation:1 | デバイスが機能モデル ID とインターフェイスを宣言するため。 すべての IoT プラグ アンド プレイ デバイスに必要です。 | はい | いいえ |
 | デジタル ツイン クライアント SDK 情報 | urn:azureiot:Client:SDKInformation:1 | デバイスを Azure に接続するためのクライアント SDK。 [認定資格](tutorial-build-device-certification.md)のために必要です | はい | いいえ |
