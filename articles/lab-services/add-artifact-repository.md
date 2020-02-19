@@ -348,7 +348,7 @@ Set-AzContext -SubscriptionId <Your Azure subscription ID>
 ### <a name="parameters"></a>パラメーター
 この記事にあるサンプルの PowerShell スクリプトは、次のパラメーターを取ります。
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --------- | ----------- |
 | LabName | ラボの名前。 |
 | ArtifactRepositoryName | 新しいアーティファクト リポジトリの名前。 リポジトリの名前が指定されていない場合、このスクリプトはランダムな名前を作成します。 |
