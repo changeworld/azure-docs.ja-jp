@@ -134,7 +134,7 @@ IoT Hub では、[X.509](iot-hub-devguide-security.md#supported-x509-certificate
 
 考えられる値を次に示します。
 
-| 値 | [説明] |
+| 値 | 説明 |
 | --- | --- |
 | {signature} |HMAC-SHA256 署名文字列 (形式: `{URL-encoded-resourceURI} + "\n" + expiry`)。 **重要**:キーは base64 からデコードされ、HMAC-SHA256 計算を実行するためのキーとして使用されます。 |
 | {resourceURI} |IoT Hub のホスト名 (プロトコルなし) で始まる、このトークンを使用してアクセスできるエンドポイントの (セグメント単位の) URI プレフィックス。 たとえば、`myHub.azure-devices.net/devices/device1` のように指定します。 |
