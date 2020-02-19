@@ -109,7 +109,7 @@ Azure Database for MySQL サービスでは、サーバー レベルでファイ
     mysql --host mydemoserver.mysql.database.azure.com --user myadmin@mydemoserver -p
     ```
 
-    mysql パラメーター |推奨値|[説明]
+    mysql パラメーター |推奨値|説明
     ---|---|---
     --host | *サーバー名* | 前に Azure Database for MySQL サーバーを作成したときに使用したサーバー名の値。 この例におけるサーバーは、**mydemoserver.mysql.database.azure.com** です。 例で示されているように、完全修飾ドメイン名 ( **\*.mysql.database.azure.com**) を使用します。 サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 
     --user | "*サーバー管理者ログイン名*" |前の手順で Azure Database for MySQL サーバーを作成したときに指定したサーバー管理者ログイン ユーザー名。 ユーザー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 形式は *username\@servername* です。
