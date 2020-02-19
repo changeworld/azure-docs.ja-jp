@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 1e115c59cab4c340f927da516b5f937abf42e985
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 55cddf5317938dea353517cde7260a1aa531d1df
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839653"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061260"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Storage を使用する
 
@@ -74,7 +74,7 @@ Apache Hadoop は、既定のファイル システムの概念をサポート�
     touch testFile.txt
     ```
 
-1. クラスター記憶域にディレクトリを作成します。
+1. クラスター ストレージにディレクトリを作成します。
 
     ```bash
     hdfs dfs -mkdir wasbs://CONTAINERNAME@STORAGEACCOUNT.blob.core.windows.net/sampledata1/
@@ -90,7 +90,7 @@ Apache Hadoop は、既定のファイル システムの概念をサポート�
     hdfs dfs -copyFromLocal testFile.txt  /sampledata3/
     ```
 
-1. クラスター記憶域のディレクトリの内容を一覧表示します。
+1. クラスター ストレージのディレクトリの内容を一覧表示します。
 
     ```bash
     hdfs dfs -ls wasbs://CONTAINERNAME@STORAGEACCOUNT.blob.core.windows.net/sampledata1/
@@ -122,7 +122,7 @@ LOCATION 'wasbs:///example/data/';
 LOCATION '/example/data/';
 ```
 
-## <a name="identify-storage-path-from-abmari"></a>Ambari からストレージ パスを特定する
+## <a name="identify-storage-path-from-ambari"></a>Ambari からストレージ パスを特定する
 
 * 構成済みの既定ストアへの完全パスを特定するには、
 
@@ -160,7 +160,7 @@ HDInsight クラスターを作成しているときに、そのクラスター�
 > [!WARNING]  
 > HDInsight クラスター以外の場所で追加のストレージ アカウントを使用することはできません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、HDInsight で HDFS と互換性のある Azure Storage を使う方法について説明しました。 これにより、収集したデータを長期にわたって格納できるスケーラブルなソリューションを構築できます。さらに HDInsight を使用すると、格納されている構造化データと非構造化データから有益な情報を得ることができます。
 
