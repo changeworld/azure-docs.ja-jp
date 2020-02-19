@@ -38,7 +38,7 @@ ms.locfileid: "75750874"
 
 これらのプロパティは、キー配信ログのスキーマに固有です。
 
-|Name|[説明]|
+|Name|説明|
 |---|---|
 |keyId|要求されたキーの ID。|
 |keyType|次のいずれかの値を指定できます:"Clear" (暗号化なし)、"FairPlay"、"PlayReady"、または"Widevine"。|
