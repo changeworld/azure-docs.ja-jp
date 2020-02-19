@@ -46,7 +46,7 @@ Media Services でエンティティにアクセスするときは、HTTP 要求
 
 ### <a name="storage-side-encryption"></a>ストレージ側の暗号化
 
-|暗号化オプション|[説明]|Media Services v2|Media Services v3|
+|暗号化オプション|説明|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Media Services のストレージの暗号化|AES-256 暗号化、Media Services によって管理されるキー|サポートされています<sup>(1)</sup>|サポートされていません<sup>(2)</sup>|
 |[Storage Service Encryption for Data at Rest](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Azure Storage によって提供されるサーバー側暗号化、Azure またはお客様が管理するキー|サポートされています|サポートされています|
@@ -113,7 +113,7 @@ AMS の記憶域暗号化は、ファイル全体に **AES-CTR** モードの暗
 
     ストレージ暗号化では、次のプロパティを要求本文に含める必要があります。
 
-    要求本文のプロパティ    | [説明]
+    要求本文のプロパティ    | 説明
     ---|---
     Id | ContentKey ID は、"nb:kid:UUID:\<NEW GUID>" 形式を使用して生成されます。
     ContentKeyType | コンテンツ キーの種類は、キーを定義する整数です。 ストレージ暗号化形式の場合、値は 1 です。
