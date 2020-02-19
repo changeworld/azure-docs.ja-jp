@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: b35c23e6dd88af01391bf7f01a7e736a1a744fff
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 4e896c5fa6f8656be29eed7eb8d4e8854a94ecfa
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714435"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116623"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリで Key Vault 参照を使用する
 
@@ -125,7 +125,7 @@ App Configuration に格納されているその他のキーの場合と同様�
 
 1. *clientId*、*clientSecret*、*tenantId* の値を格納する環境変数を追加します。
 
-    #### <a name="windows-command-prompttabcmd"></a>[Windows コマンド プロンプト](#tab/cmd)
+    #### <a name="windows-command-prompt"></a>[Windows コマンド プロンプト](#tab/cmd)
 
     ```cmd
     setx AZURE_CLIENT_ID <clientId-of-your-service-principal>
@@ -133,7 +133,7 @@ App Configuration に格納されているその他のキーの場合と同様�
     setx AZURE_TENANT_ID <tenantId-of-your-service-principal>
     ```
 
-    #### <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    #### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
     ```PowerShell
     $Env:AZURE_CLIENT_ID = <clientId-of-your-service-principal>
@@ -141,7 +141,7 @@ App Configuration に格納されているその他のキーの場合と同様�
     $Env:AZURE_TENANT_ID = <tenantId-of-your-service-principal>
     ```
 
-    #### <a name="bashtabbash"></a>[Bash](#tab/bash)
+    #### <a name="bash"></a>[Bash](#tab/bash)
 
     ```bash
     export AZURE_CLIENT_ID = <clientId-of-your-service-principal>
@@ -172,9 +172,9 @@ App Configuration に格納されているその他のキーの場合と同様�
     using Azure.Identity;
     ```
 
-1. `config.AddAzureAppConfiguration` メソッドを呼び出して App Configuration を使用するように、`CreateWebHostBuilder` メソッドを更新します。 `UseAzureKeyVault` オプションを含めて、Key Vault への新しい `KeyVaultClient` 参照で渡します。
+1. `config.AddAzureAppConfiguration` メソッドを呼び出して App Configuration を使用するように、`CreateWebHostBuilder` メソッドを更新します。 `ConfigureKeyVault` オプションを追加し、ご利用のキー コンテナーに正しい資格情報を渡します。
 
-    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -195,7 +195,7 @@ App Configuration に格納されているその他のキーの場合と同様�
             .UseStartup<Startup>();
     ```
 
-    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -217,7 +217,7 @@ App Configuration に格納されているその他のキーの場合と同様�
             .UseStartup<Startup>());
     ```
 
-1. App Configuration への接続を初期化すると、`KeyVaultClient` 参照が `UseAzureKeyVault` メソッドに渡されます。 初期化後、通常の App Configuration キーの値にアクセスする場合と同じ方法で、Key Vault 参照の値にアクセスできます。
+1. App Configuration への接続を初期化するときは、`ConfigureKeyVault` メソッドを呼び出して、Key Vault への接続を設定します。 初期化後、通常の App Configuration キーの値にアクセスする場合と同じ方法で、Key Vault 参照の値にアクセスできます。
 
     このプロセスの動作を確認するには、**Views** > **Home** フォルダーにある *Index.cshtml* を開きます。 その内容を次のコードに置き換えます。
 
