@@ -52,7 +52,7 @@ Azure CLI を使用して、読み取りレプリカを作成して管理でき�
 
 [az postgres server replica create](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-create) コマンドには、次のパラメーターが必要です。
 
-| 設定 | 値の例 | [説明]  |
+| 設定 | 値の例 | 説明  |
 | --- | --- | --- |
 | resource-group | myresourcegroup |  レプリカ サーバーが作成されるリソース グループ。  |
 | name | mydemoserver-replica | 作成する新しいレプリカ サーバーの名前。 |
