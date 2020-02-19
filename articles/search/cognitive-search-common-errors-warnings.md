@@ -32,7 +32,7 @@ ms.locfileid: "76838549"
 
 API バージョン `2019-05-06` 以降では、項目レベルのインデクサーのエラーと警告は、原因と次の手順をより明確にするために構造化されています。 次のプロパティが含まれます。
 
-| プロパティ | [説明] | 例 |
+| プロパティ | 説明 | 例 |
 | --- | --- | --- |
 | key | エラーまたは警告によって影響を受けるドキュメントのドキュメント ID。 | https:\//coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
 | name | エラーまたは警告が発生した場所を示す操作名。 これは、次の構造によって生成されます: [category].[subcategory].[resourceType].[resourceName] | DocumentExtraction.azureblob.myBlobContainerName Enrichment.WebApiSkill.mySkillName Projection.SearchIndex.OutputFieldMapping.myOutputFieldName Projection.SearchIndex.MergeOrUpload.myIndexName Projection.KnowledgeStore.Table.myTableName |
