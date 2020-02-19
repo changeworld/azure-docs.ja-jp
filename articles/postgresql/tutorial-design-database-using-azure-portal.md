@@ -48,7 +48,7 @@ Azure Database for PostgreSQL サーバーを作成するには、次の手順�
 
     ![サーバーの作成](./media/tutorial-design-database-using-azure-portal/create-basics.png)
 
-    設定|推奨値|[説明]
+    設定|推奨値|説明
     ---|---|---
     サブスクリプション|お使いのサブスクリプション名|サーバーに使用する Azure サブスクリプション。 複数のサブスクリプションをお持ちの場合は、リソースの課金対象となるサブスクリプションを選択してください。
     Resource group|*myresourcegroup*| 新しいリソース グループ名、またはサブスクリプションの既存のリソース グループ名。
