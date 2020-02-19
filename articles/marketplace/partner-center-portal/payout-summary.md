@@ -68,7 +68,7 @@ Azure Marketplace でオファリングを販売する場合は、 **[支払い�
 
 ## <a name="corelation-between-payout-and-usage"></a>支払いと使用の相関関係
 
-|[説明]    |    Date  | 注文/使用量  | 支払い |
+|説明    |    Date  | 注文/使用量  | 支払い |
 |----------|----------|-----------|-------------|
 |注文期間   | 2019 年 8 月 15 日 - 2019 年 8 月 30 日 | **相関属性の注文** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **使用方法** <br> <ul> <li>CustomerId </li> <li>Customer Name</li> <li>(UsageReference)PurchaseRecordId/LineItemId</li> <li> 見積拡張価格 <br> 見積支払額 (PC) </li> </ul> |  |
 |期間の終了 (月)   | 2019 年 8 月 30 日 | | |
@@ -82,7 +82,7 @@ Azure Marketplace でオファリングを販売する場合は、 **[支払い�
 
 ### <a name="enterprise-agreement-quarterlymonthly-customers"></a>エンタープライズ契約 (四半期単位/月単位の顧客)
 
-| [説明] |    Date  | 使用法 | 支払い |
+| 説明 |    Date  | 使用法 | 支払い |
 |----------|----------|---------|-----------|
 |注文期間 | 2019 年 8 月 15 日 - 2019 年 8 月 30 日 | **相関属性の注文** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **利用状況レポート** <br> <ul> <li>CustomerId </li> <li>Customer Name</li> <li>(UsageReference)PurchaseRecordId/LineItemId</li> <li> 見積拡張価格 <br> 見積支払額 (PC) </li> </ul> | |
 |期間の終了 (四半期) | 2019 年 9 月 30 日 | | |
@@ -99,7 +99,7 @@ Azure Marketplace でオファリングを販売する場合は、 **[支払い�
 
 このオプションでは、[取引履歴] ページに表示される各収益品目、収益の種類、日付、関連付けられた取引金額、顧客、製品、およびインセンティブ プログラムに適用されるその他の取引詳細のダウンロードが提供されます。
 
-| 列名     | [説明]    |
+| 列名     | 説明    |
 |-------------|-------------------------------|
 | earningId                      | 各収益の一意識別子                                                                                                       |
 | participantId                  | プログラムによるパートナー収益のプライマリ ID                                                                            |
