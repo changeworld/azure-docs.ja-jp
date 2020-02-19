@@ -31,7 +31,7 @@ FPGA には、プログラミング可能なロジック ブロックの配列�
 
 ![Azure Machine Learning における FPGA の比較図](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
 
-|プロセッサ||[説明]|
+|プロセッサ||説明|
 |---|:-------:|------|
 |特定用途向け集積回路|ASIC|Google の TensorFlow Processor Unit (TPU) などのカスタム回路は、最高の効率性を提供します。 ニーズに変化に応じて再構成することはできません。|
 |フィールド プログラマブル ゲート アレイ|FPGA|FPGA (Azure で利用できるものなど) は、ASIC に近いパフォーマンスを提供します。 将来新しいロジックを実装するための柔軟性と再構成可能性も備えています。|
