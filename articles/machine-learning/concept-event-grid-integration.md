@@ -36,7 +36,7 @@ Azure Event Grid は、Azure Machine Learning やその他の Azure サービス
 
 Azure Machine Learning は、機械学習のライフサイクルのさまざまな時点でイベントを提供します。 
 
-| イベントの種類 | [説明] |
+| イベントの種類 | 説明 |
 | ---------- | ----------- |
 | `Microsoft.MachineLearningServices.RunCompleted` | 機械学習実験の実行が完了したときに発生します |
 | `Microsoft.MachineLearningServices.ModelRegistered` | 機械学習モデルがワークスペースに登録されたときに発生します |
