@@ -40,7 +40,7 @@ ms.locfileid: "75771634"
 
 パイプラインの定義では次のキーを使用します。これらのキーは、[Pipelines](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline?view=azure-ml-py) クラスに対応します。
 
-| YAML キー | [説明] |
+| YAML キー | 説明 |
 | ----- | ----- |
 | `name` | パイプラインの説明。 |
 | `parameters` | パイプラインへのパラメーター。 |
@@ -52,7 +52,7 @@ ms.locfileid: "75771634"
 
 `parameters` セクションでは次のキーを使用します。これらのキーは、[PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py) クラスに対応します。
 
-| YAML キー | [説明] |
+| YAML キー | 説明 |
 | ---- | ---- |
 | `type` | パラメーターの値の型。 有効な型は、`string`、`int`、`float`、`bool`、または `datapath` です。 |
 | `default` | 既定値。 |
@@ -80,7 +80,7 @@ pipeline:
 
 `data_references` セクションでは次のキーを使用します。これらのキーは、[DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py) に対応します。
 
-| YAML キー | [説明] |
+| YAML キー | 説明 |
 | ----- | ----- |
 | `datastore` | 参照するデータストア。 |
 | `path_on_datastore` | データ参照用バッキング ストレージの相対パス。 |
@@ -104,7 +104,7 @@ pipeline:
 
 ステップは、計算環境とその環境で実行すべきファイルを定義します。 ステップの種類を定義するには、`type` キーを使用します。
 
-| ステップの種類 | [説明] |
+| ステップの種類 | 説明 |
 | ----- | ----- |
 | `AdlaStep` | Azure Data Lake Analytics を使用して U-SQL スクリプトを実行します。 [AdlaStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.adlastep?view=azure-ml-py) クラスに対応します。 |
 | `AzureBatchStep` | Azure Batch を使用してジョブを実行します。 [AzureBatchStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep?view=azure-ml-py) クラスに対応します。 |
@@ -114,7 +114,7 @@ pipeline:
 
 ### <a name="adla-step"></a>ADLA ステップ
 
-| YAML キー | [説明] |
+| YAML キー | 説明 |
 | ----- | ----- |
 | `script_name` | U-SQL スクリプトの名前 (`source_directory` からの相対名)。 |
 | `compute_target` | このステップで使用する Azure Data Lake コンピューティング先。 |
@@ -165,7 +165,7 @@ pipeline:
 
 ### <a name="azure-batch-step"></a>Azure Batch ステップ
 
-| YAML キー | [説明] |
+| YAML キー | 説明 |
 | ----- | ----- |
 | `compute_target` | このステップで使用する Azure Batch コンピューティング先。 |
 | `inputs` | 入力は、[InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py)、[DataReference](#data-reference)、[PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py)、[PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)、[Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py)、[DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)、または [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py) のいずれかです。 |
@@ -219,7 +219,7 @@ pipeline:
 
 ### <a name="databricks-step"></a>Databricks ステップ
 
-| YAML キー | [説明] |
+| YAML キー | 説明 |
 | ----- | ----- |
 | `compute_target` | このステップで使用する Azure Databricks コンピューティング先。 |
 | `inputs` | 入力は、[InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py)、[DataReference](#data-reference)、[PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py)、[PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)、[Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py)、[DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)、または [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py) のいずれかです。 |
@@ -273,7 +273,7 @@ pipeline:
 
 ### <a name="data-transfer-step"></a>データ転送ステップ
 
-| YAML キー | [説明] |
+| YAML キー | 説明 |
 | ----- | ----- |
 | `compute_target` | このステップで使用する Azure Data Factory コンピューティング先。 |
 | `source_data_reference` | データ転送操作のソースとして機能する入力接続。 サポートされている値は、[InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py)、[DataReference](#data-reference)、[PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py)、[PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)、[Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py)、[DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)、または [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py) です。 |
@@ -317,7 +317,7 @@ pipeline:
 
 ### <a name="python-script-step"></a>Python スクリプト ステップ
 
-| YAML キー | [説明] |
+| YAML キー | 説明 |
 | ----- | ----- |
 | `compute_target` | このステップで使用するコンピューティング先。 コンピューティング先は、Azure Machine Learning コンピューティング、仮想マシン (Data Science VM など)、または HDInsight を使用できます。 |
 | `inputs` | 入力は、[InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py)、[DataReference](#data-reference)、[PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py)、[PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)、[Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py)、[DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)、または [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py) のいずれかです。 |
@@ -367,7 +367,7 @@ pipeline:
 
 パイプラインのスケジュールを定義する場合、そのスケジュールがデータストアによってトリガーされるか、一定間隔で定期的に実行されるかを選択できます。 スケジュールの定義に使用されるキーは次のとおりです。
 
-| YAML キー | [説明] |
+| YAML キー | 説明 |
 | ----- | ----- |
 | `description` | スケジュールの説明。 |
 | `recurrence` | スケジュールが定期的に実行される場合、繰り返し設定を格納します。 |
@@ -398,7 +398,7 @@ Schedule:
 
 **定期的なスケジュール**を定義する場合は、`recurrence` の下で次のキーを使用します。
 
-| YAML キー | [説明] |
+| YAML キー | 説明 |
 | ----- | ----- |
 | `frequency` | スケジュールが繰り返される頻度。 有効な値は、`"Minute"`、`"Hour"`、`"Day"`、`"Week"`、または `"Month"` です。 |
 | `interval` | スケジュールが実行される頻度。 整数値は、スケジュールがもう一度実行されるまで待機する時間単位の数です。 |
