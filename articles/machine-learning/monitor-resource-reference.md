@@ -27,7 +27,7 @@ ms.locfileid: "75979719"
 
 ### <a name="amlcomputejobevents-table"></a>AmlComputeJobEvents テーブル
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:---|
 | TimeGenerated | ログ エントリが生成された時刻 |
 | OperationName | ログ イベントに関連付けられた操作の名前 |
@@ -56,7 +56,7 @@ ms.locfileid: "75979719"
 
 ### <a name="amlcomputeclusterevents-table"></a>AmlComputeClusterEvents テーブル
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | TimeGenerated | ログ エントリが生成された時刻 |
 | OperationName | ログ イベントに関連付けられた操作の名前 |
@@ -99,7 +99,7 @@ ms.locfileid: "75979719"
 
 ### <a name="amlcomputeclusternodeevents-table"></a>AmlComputeClusterNodeEvents テーブル
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | TimeGenerated | ログ エントリが生成された時刻 |
 | OperationName | ログ イベントに関連付けられた操作の名前 |
@@ -128,7 +128,7 @@ ms.locfileid: "75979719"
 
 **Model**
 
-| メトリック | ユニット | [説明] |
+| メトリック | ユニット | 説明 |
 | ----- | ----- | ----- |
 | モデルのデプロイが失敗しました | Count | 失敗したモデルのデプロイの数。 |
 | 開始されたモデル デプロイ | Count | 開始されたモデル デプロイの数。 |
@@ -140,7 +140,7 @@ ms.locfileid: "75979719"
 
 クォータ情報は Azure Machine Learning のコンピューティングのみを対象としています。
 
-| メトリック | ユニット | [説明] |
+| メトリック | ユニット | 説明 |
 | ----- | ----- | ----- |
 | アクティブなコア | Count | アクティブなコンピューティング コアの数。 |
 | アクティブなノード | Count | アクティブなノードの数。 |
@@ -158,7 +158,7 @@ ms.locfileid: "75979719"
 
 クォータ メトリックをフィルター処理するのに使用できるディメンションを次に示します。
 
-| Dimension | 利用可能なメトリック | [説明] |
+| Dimension | 利用可能なメトリック | 説明 |
 | ---- | ---- | ---- |
 | クラスター名 | すべてのクォータ メトリック | コンピューティング インスタンスの名前。 |
 | VM ファミリ名 | クォータ使用率 | クラスターによって使用される VM ファミリの名前。 |
@@ -168,7 +168,7 @@ ms.locfileid: "75979719"
 
 トレーニングの実行に関する情報。
 
-| メトリック | ユニット | [説明] |
+| メトリック | ユニット | 説明 |
 | ----- | ----- | ----- |
 | 完了した実行 | Count | 完了した実行の数。 |
 | 失敗した実行 | Count | 失敗した実行の数。 |
@@ -176,7 +176,7 @@ ms.locfileid: "75979719"
 
 実行メトリックをフィルター処理するのに使用できるディメンションを次に示します。
 
-| Dimension | [説明] |
+| Dimension | 説明 |
 | ---- | ---- |
 | ComputeType | 実行で使用されるコンピューティングの種類。 |
 | PipelineStepType | 実行で使用される [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py) の種類。 |
@@ -185,7 +185,7 @@ ms.locfileid: "75979719"
 
 RunType ディメンションの有効な値は次のとおりです。
 
-| 値 | [説明] |
+| 値 | 説明 |
 | ----- | ----- |
 | 実験 | パイプライン以外の実行。 |
 | PipelineRun | StepRun の親であるパイプラインの実行。 |
