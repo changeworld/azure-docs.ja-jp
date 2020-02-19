@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0a33b5bb4fc7220a9cf66f40e9805d3fde9fccef
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 6675d67299091325fcc3e12572a906716bf5b88d
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702047"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132418"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>シナリオ:Web API を呼び出すモバイル アプリケーション
 
@@ -44,23 +44,23 @@ Web API を呼び出すモバイル アプリを構築する方法について�
 
 ## <a name="overview"></a>概要
 
-パーソナライズされたシームレスなユーザー エクスペリエンスはモバイル アプリにとって必要不可欠です。  Microsoft ID プラットフォームを使用すれば、モバイル開発者は iOS および Android のユーザーに対してこのエクスペリエンスを作り出すことができます。 お使いのアプリケーションで Azure Active Directory (Azure AD) ユーザー、個人の Microsoft アカウント ユーザー、Azure AD B2C ユーザーをサインインさせて、そのユーザーの代わりに Web API を呼び出すためのトークンを取得できます。 これらのフローを実装するため、業界標準の [OAuth2.0 承認コード フロー](v2-oauth2-auth-code-flow.md)を実装する Microsoft Authentication Library (MSAL) を使用します。
+パーソナライズされたシームレスなユーザー エクスペリエンスはモバイル アプリにとって必要不可欠です。  Microsoft ID プラットフォームを使用すれば、モバイル開発者は iOS および Android のユーザーに対してこのエクスペリエンスを作り出すことができます。 アプリケーションで、Azure Active Directory (Azure AD) ユーザー、個人の Microsoft アカウント ユーザー、Azure AD B2C ユーザーをサインインさせることができます。 また、ユーザーに代わって Web API を呼び出すためのトークンを取得することもできます。 これらのフローを実装するには、Microsoft Authentication Library (MSAL) を使用します。 MSAL では、業界標準の [OAuth 2.0 承認コード フロー](v2-oauth2-auth-code-flow.md)を実装しています。
 
 ![デーモン アプリ](./media/scenarios/mobile-app.svg)
 
 モバイル アプリに関する考慮事項:
 
-- **ユーザー エクスペリエンスが重要**:ユーザーが、サインイン要求の前に該当のアプリの値を確認して、必要なアクセス許可のみを要求できるようにします。
-- **すべてのユーザー構成をサポート**:多くのモバイル ビジネス ユーザーに、条件付きアクセスおよびデバイス コンプライアンスのポリシーが適用されています。 必ずこれらの重要なシナリオをサポートしてください。
-- **シングル サインオン (SSO) の実装**:MSAL と Microsoft ID プラットフォームにより、デバイスのブラウザーまたは Microsoft Authenticator (および Android の Intune ポータル サイト) を介したシングル サインオンを容易に実現できます。
+- **ユーザー エクスペリエンスが重要**:ユーザーにサインインを要求する前に、アプリの価値がわかるようにします。 必要なアクセス許可のみを要求します。
+- **すべてのユーザー構成をサポート**:多くのモバイル ビジネス ユーザーは、条件付きアクセス ポリシーとデバイス コンプライアンス ポリシーに従う必要があります。 必ずこれらの重要なシナリオをサポートしてください。
+- **シングル サインオン (SSO) の実装**:MSAL と Microsoft ID プラットフォームを使用すると、デバイスのブラウザーまたは Microsoft Authenticator (および Android の Intune ポータル サイト) を介したシングル サインオンを実現できます。
 
 ## <a name="specifics"></a>詳細
 
 Microsoft ID プラットフォームでモバイル アプリを構築するときは、以下の考慮事項を念頭に置いてください。
 
-- プラットフォームによっては、ユーザーが初めてサインインするときに何らかのユーザー対話が必要になる場合があります。 たとえば iOS では、Microsoft Authenticator (および Android の Intune ポータル サイト) を介して初めて SSO を使用するときに、アプリでユーザーの対話を表示する必要があります。
-- iOS および Android の MSAL では、ユーザーをサインインさせるために、(お使いのアプリの上に表示される場合がある) 外部ブラウザーを使用することがあります。 アプリ内の WebView を代わりに使用するように構成をカスタマイズすることができます。
-- モバイル アプリケーションでは、シークレットは決して使用しないでください。 すべてのユーザーがアクセスできるようになります。
+- プラットフォームによっては、ユーザーが初めてサインインするときにユーザーの操作が必要になる場合があります。 たとえば iOS では、Microsoft Authenticator (および Android の Intune ポータル サイト) を介して初めて SSO を使用するときに、アプリでユーザーの操作を表示する必要があります。
+- iOS および Android 上の MSAL で、外部ブラウザーを使用してユーザーをサインインさせることができます。 外部ブラウザーをアプリ上に表示できます。 アプリ内の WebView を代わりに使用するように構成をカスタマイズすることができます。
+- モバイル アプリケーションでは、シークレットは決して使用しないでください。 これらのアプリケーションでは、すべてのユーザーがシークレットにアクセスできます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,7 +1,7 @@
 ---
-title: Xamarin、iOS、および Android でブローカーを使用する | Azure
+title: Xamarin、iOS、Android でブローカーを使用する | Azure
 titleSuffix: Microsoft identity platform
-description: .NET 用の Azure AD Authentication ライブラリ (ADAL.NET) から .NET 用 Microsoft 認証ライブラリ (MSAL.NET) に Microsoft Authenticator を使用することができる Xamarin iOS アプリケーションの移行の方法について説明します
+description: Microsoft Authenticator と Microsoft Authentication Library for .NET (MSAL.NET) を使用できる Xamarin iOS アプリケーションを設定する方法について説明します。 また、Azure AD Authentication Library for .NET (ADAL.NET) から Microsoft Authentication Library for .NET (MSAL.NET) に移行する方法についても説明します。
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
@@ -12,29 +12,31 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 839f62660096aaf3d7954acc45443f04d9ace77d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 25b8aa9b5e80720e9543dafce7970404a62b7d1f
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695145"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132638"
 ---
-# <a name="use-microsoft-authenticator-or-microsoft-intune-company-portal-on-xamarin-applications"></a>Xamarin アプリケーションで Microsoft Authenticator または Microsoft Intune ポータル サイトを使用する
+# <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Xamarin アプリケーションで Microsoft Authenticator または Intune ポータル サイトを使用する
 
-Android および iOS では、Microsoft Authenticator または Microsoft Intune ポータル サイトのようなブローカー (Android のみ):
+Android および iOS では、Microsoft Authenticator や Android 固有の Microsoft Intune ポータル サイトなどのブローカーによって、以下が可能になります。
 
-- シングル サインオン (SSO)。 ユーザーがアプリケーションごとにサインインする必要がなくなります。
-- デバイスの識別。 ブローカーでは、ワークプレースに参加したときにデバイスに作成されたデバイス証明書にアクセスします。
-- アプリケーション ID の検証。 アプリケーションはブローカーを呼び出してリダイレクト URL を渡し、それがブローカーによって検証されます。
+- **シングル サインオン (SSO)** : ユーザーは、各アプリケーションにサインインする必要はありません。
+- **デバイスの識別**: ブローカーからデバイス証明書にアクセスします。 この証明書は、デバイスがワークプレースに参加したときに作成されます。
+- **アプリケーション ID の検証**: アプリケーションはブローカーを呼び出すとき、自身のリダイレクト URL を渡します。 ブローカーによって URL が確認されます。
 
-これらの機能のいずれかを有効にするには、アプリケーション開発者は、`PublicClientApplicationBuilder.CreateApplication` メソッドを呼び出すときに `WithBroker()` パラメーターを使用する必要があります。 `.WithBroker()` は既定で true に設定されます。 開発者は、[iOS](#brokered-authentication-for-ios) または [Android](#brokered-authentication-for-android) アプリケーションについても、こちらの手順に従う必要があります。
+これらの機能のいずれかを有効にするには、`PublicClientApplicationBuilder.CreateApplication` メソッドを呼び出すときに `WithBroker()` パラメーターを使用します。 `.WithBroker()` パラメーターは、既定で true に設定されています。 
+
+また、以下のセクションの手順に従って、[iOS](#brokered-authentication-for-ios) アプリケーションまたは [Android](#brokered-authentication-for-android) アプリケーションのブローカー認証を設定します。
 
 ## <a name="brokered-authentication-for-ios"></a>iOS のブローカー認証
 
 次の手順に従って、Xamarin.iOS アプリが [Microsoft Authenticator](https://itunes.apple.com/us/app/microsoft-authenticator/id983156458) アプリと通信できるようにします。
 
 ### <a name="step-1-enable-broker-support"></a>手順 1:ブローカーのサポートを有効にする
-ブローカーのサポートは、PublicClientApplication ベースごとに有効になります。 既定では無効になっています。 PublicClientApplicationBuilder を使用して PublicClientApplication を作成する場合は、`WithBroker()` パラメーターを使用します (既定では true に設定されています)。
+`PublicClientApplication` の個々のインスタンスに対してブローカーのサポートを有効にする必要があります。 既定では、サポートは無効になっています。 `PublicClientApplicationBuilder` を使用して `PublicClientApplication` を作成する場合は、次の例に示すように `WithBroker()` パラメーターを使用します。 `WithBroker()` パラメーターは、既定で true に設定されています。
 
 ```csharp
 var app = PublicClientApplicationBuilder
@@ -59,7 +61,7 @@ var builder = PublicClientApplicationBuilder
 詳しくは、「[キーチェーン アクセスの有効化](msal-net-xamarin-ios-considerations.md#enable-keychain-access)」を参照してください。
 
 ### <a name="step-3-update-appdelegate-to-handle-the-callback"></a>手順 3:コールバックを処理するように AppDelegate を更新する
-Microsoft Authentication Library for .NET (MSAL.NET) がブローカーを呼び出すと、ブローカーでは `AppDelegate` クラスの `OpenUrl` メソッドを使用してアプリケーションにコールバックされます。 MSAL はブローカーからの応答を待つため、アプリケーションが協力して MSAL.NET を再度呼び出す必要があります。 この連携を可能にするには、`AppDelegate.cs` ファイルを更新して次のメソッドをオーバーライドします。
+Microsoft Authentication Library for .NET (MSAL.NET) がブローカーを呼び出すと、ブローカーでは `AppDelegate` クラスの `OpenUrl` メソッドを使用してアプリケーションにコールバックされます。 MSAL はブローカーの応答を待つため、アプリケーションを連携させて MSAL.NET を再度呼び出す必要があります。 この連携を可能にするには、`AppDelegate.cs` ファイルを更新して次のメソッドをオーバーライドします。
 
 ```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url, 
@@ -83,44 +85,46 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
 
 このメソッドは、アプリケーションが起動されるたびに呼び出されます。 これは、ブローカーからの応答を処理し、MSAL.NET によって開始される認証プロセスを完了する機会として使用されます。
 
-### <a name="step-4-set-a-uiviewcontroller"></a>手順 4:UIViewController() を設定する
-まだ `AppDelegate.cs` にいる場合は、オブジェクト ウィンドウを設定する必要があります。 通常、Xamarin iOS では、オブジェクト ウィンドウを設定する必要はありません。 ブローカーから応答を送受信するには、オブジェクト ウィンドウが必要です。 
+### <a name="step-4-set-uiviewcontroller"></a>手順 4:Set UIViewController()
+`AppDelegate.cs` ファイルでも、オブジェクト ウィンドウを設定する必要があります。 通常、Xamarin iOS では、オブジェクト ウィンドウを設定する必要はありません。 ただし、ブローカーから応答を送受信するには、オブジェクト ウィンドウが必要です。 
 
-これを行うには、次の 2 つの操作を行います。 
-1. `AppDelegate.cs` で `App.RootViewController` を新しい `UIViewController()` に設定します。 これを割り当てることにより、UIViewController でのブローカーへの呼び出しが保証されます。 正しく設定されていないと、次のエラーが表示されることがあります。`"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
-1. AcquireTokenInteractive の呼び出しで、`.WithParentActivityOrWindow(App.RootViewController)` を使用し、使用するオブジェクト ウィンドウへの参照を渡します。
+オブジェクト ウィンドウを設定するには、次の手順を実行します。 
+1. `AppDelegate.cs` ファイルで、`App.RootViewController` を新しい `UIViewController()` に設定します。 この割り当てにより、ブローカーへの呼び出しに `UIViewController` が含まれるようになります。 この設定が正しく割り当てられていない場合は、次のエラーを受け取ることがあります。
 
-**例:**
+      `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
 
-`App.cs`:
-```csharp
-   public static object RootViewController { get; set; }
-```
-`AppDelegate.cs`:
-```csharp
-   LoadApplication(new App());
-   App.RootViewController = new UIViewController();
-```
-トークンの取得の呼び出しで、次のように記述します。
-```csharp
-result = await app.AcquireTokenInteractive(scopes)
-             .WithParentActivityOrWindow(App.RootViewController)
-             .ExecuteAsync();
-```
+1. `AcquireTokenInteractive` の呼び出しで `.WithParentActivityOrWindow(App.RootViewController)` を使用し、使用するオブジェクト ウィンドウへの参照を渡します。
+
+    `App.cs`:
+    
+    ```csharp
+       public static object RootViewController { get; set; }
+    ```
+    
+    `AppDelegate.cs`:
+    
+    ```csharp
+       LoadApplication(new App());
+       App.RootViewController = new UIViewController();
+    ```
+    
+    `AcquireToken` の呼び出しの場合:
+    
+    ```csharp
+    result = await app.AcquireTokenInteractive(scopes)
+                 .WithParentActivityOrWindow(App.RootViewController)
+                 .ExecuteAsync();
+    ```
 
 ### <a name="step-5-register-a-url-scheme"></a>手順 5:URL スキームを登録する
 MSAL.NET は、URL を使用してブローカーを呼び出し、ブローカーの応答をアプリに返します。 ラウンド トリップを終了するには、`Info.plist` ファイルにアプリの URL スキームを登録します。
 
-`CFBundleURLSchemes` 名には `msauth.` がプレフィックスとして、お使いの `CFBundleURLName` の前に含まれている必要があります。
+`CFBundleURLSchemes` の名前には、プレフィックスとして `msauth.` を含める必要があります。 プレフィックスに `CFBundleURLName` を続けます。 
 
-`$"msauth.(BundleId)"`
-
-**例:**
-
-`msauth.com.yourcompany.xforms`
+URL スキームでは、`BundleId` によってアプリが一意に識別されます (`$"msauth.(BundleId)"`)。 `BundleId` が `com.yourcompany.xforms` の場合、URL スキームは `msauth.com.yourcompany.xforms` になります。
 
 > [!NOTE]
-> この URL スキームは、ブローカーから応答を受け取るときにアプリを一意に識別するために使用されるリダイレクト URI の一部になります。
+> この URL スキームは、ブローカーから応答を受け取るときにアプリを一意に識別するリダイレクト URI の一部になります。
 
 ```XML
  <key>CFBundleURLTypes</key>
@@ -139,9 +143,9 @@ MSAL.NET は、URL を使用してブローカーを呼び出し、ブローカ�
 ```
 
 ### <a name="step-6-add-the-broker-identifier-to-the-lsapplicationqueriesschemes-section"></a>手順 6:LSApplicationQueriesSchemes セクションにブローカー識別子を追加する
-MSAL は、`–canOpenURL:` を使用してブローカーがデバイスにインストールされているかどうかを確認します。 iOS 9 では、アプリケーションがクエリを実行できるスキームが Apple によってロックダウンされました。 
+MSAL では、`–canOpenURL:` を使用してブローカーがデバイスにインストールされているかどうかを確認します。 iOS 9 では、アプリケーションが照会できるスキームが Apple によってロックされています。 
 
-`Info.plist` ファイルの `LSApplicationQueriesSchemes` セクションに `msauthv2` を追加します。
+次の例のように、`Info.plist` ファイルの `LSApplicationQueriesSchemes` セクションに `msauthv2` を追加します。
 
 ```XML 
 <key>LSApplicationQueriesSchemes</key>
@@ -152,11 +156,13 @@ MSAL は、`–canOpenURL:` を使用してブローカーがデバイスにイ�
 ```
 
 ### <a name="step-7-register-your-redirect-uri-in-the-application-portal"></a>手順 7:アプリケーション ポータルでリダイレクト URI を登録する
-ブローカーを使用すると、リダイレクト URI に追加の要件が追加されます。 リダイレクト URI は次の形式にする _必要_ があります。
+ブローカーを使用する場合、リダイレクト URI には追加の要件があります。 リダイレクト URI は次の形式にする _必要_ があります。
 ```csharp
 $"msauth.{BundleId}://auth"
 ```
-**例:**
+
+次に例を示します。 
+
 ```csharp
 public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth"; 
 ```
@@ -164,11 +170,13 @@ public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth";
 
 ### <a name="step-8-make-sure-the-redirect-uri-is-registered-with-your-app"></a>手順 8:リダイレクト URI がアプリに登録されていることを確認する
 
-このリダイレクト URI は、アプリ登録ポータル (https://portal.azure.com) でアプリケーションの有効なリダイレクト URI として登録されている必要があります。 
+このリダイレクト URI は、[アプリ登録ポータル](https://portal.azure.com)でアプリケーションの有効なリダイレクト URI として登録されている必要があります。 
 
-ポータルには、バンドル ID からのブローカー応答 URI を計算するのに役立つ、新しいエクスペリエンス アプリ登録ポータルが用意されています。
+アプリ登録ポータルには、バンドル ID からのブローカー応答 URI を計算するために役立つ、新しいエクスペリエンスが用意されています。 
 
-1. アプリの登録で、 **[認証]** を選択し、 **[新しいエクスペリエンスを試す]** を選択します。
+リダイレクト URI を計算するには、次の手順を実行します。
+
+1. アプリの登録で、 **[認証]**  >  **[新しいエクスペリエンスを試す]** を選択します。
 
    ![新しいアプリの登録エクスペリエンスを試す](media/msal-net-use-brokers-with-xamarin-apps/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 
@@ -182,18 +190,18 @@ public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth";
 
 1. 要求されたバンドル ID を入力し、 **[構成]** を選択します。
 
-   ![バンドル ID の入力](media/msal-net-use-brokers-with-xamarin-apps/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
+   ![バンドル ID を入力する](media/msal-net-use-brokers-with-xamarin-apps/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
 
-1. リダイレクト URI が自動的に計算されます。
+手順を完了すると、リダイレクト URI が自動的に計算されます。
 
-   ![リダイレクト URI のコピー](media/msal-net-use-brokers-with-xamarin-apps/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
+![リダイレクト URI のコピー](media/msal-net-use-brokers-with-xamarin-apps/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
 
 ## <a name="brokered-authentication-for-android"></a>Android のブローカー認証
 
-現時点で、MSAL.NET では Xamarin.iOS プラットフォームのみがサポートされています。 Xamarin.Android プラットフォームのブローカーはまだサポートされていません。
+MSAL.NET は、Xamarin.iOS プラットフォームのみをサポートしています。 Xamarin.Android プラットフォームのブローカーはまだサポートされていません。
 
-MSAL Android ネイティブ ライブラリでは既にサポートされています。 詳細については「[Android での仲介型認証](brokered-auth.md)」を参照してください
+MSAL Android ネイティブ ライブラリは、既にブローカー認証をサポートしています。 詳細については、「[Android のブローカー認証](brokered-auth.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-[MSAL.NET でのユニバーサル Windows プラットフォームに固有の考慮事項](msal-net-uwp-considerations.md)の詳細を確認します。
+[MSAL.NET でユニバーサル Windows プラットフォームを使用する場合の考慮事項](msal-net-uwp-considerations.md)に関するページを参照してください。

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.openlocfilehash: 81b57191a02dd3214928ac90e2761f5f8dfb2cfc
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive
+ms.date: 02/05/2020
+ms.openlocfilehash: d8cb8bfa32db958b6dfdda0df23429669ce2a439
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311664"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063800"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Ambari Web UI を使用した HDInsight クラスターの管理
 
@@ -32,7 +32,7 @@ Apache Ambari には使いやすい Web UI と REST API が用意されている
 Ambari Web UI はお使いの HDInsight クラスター (`https://CLUSTERNAME.azurehdinsight.net`) にあります。`CLUSTERNAME` はお使いのクラスターの名前です。
 
 > [!IMPORTANT]  
-> HDInsight の Ambari に接続するには、HTTPS が必要です。 認証情報の入力を求められたら、クラスターの作成時に提供された管理者アカウント名とパスワードを入力します。
+> HDInsight の Ambari に接続するには、HTTPS が必要です。 認証情報の入力を求められたら、クラスターの作成時に提供された管理者アカウント名とパスワードを入力します。 資格情報を求められない場合、クライアントと Azure HDInsight クラスター間に接続上の問題がないことをご自分のネットワーク設定で確認してください。
 
 ## <a name="ssh-tunnel-proxy"></a>SSH トンネル (プロキシ)
 
@@ -56,19 +56,19 @@ Ambari Web UI に接続するときに、そのページに対する認証が求
 |# alerts|クラスターの警告またはクリティカルなアラートの数 (ある場合) が表示されます。|
 |ダッシュボード|ダッシュボードが表示されます。|
 |サービス|クラスターのサービスの情報と構成設定。|
-|ホスト|クラスター内のノードの情報と構成設定。|
-|アラート|情報、警告、クリティカル アラートのログ。|
+|Hosts|クラスター内のノードの情報と構成設定。|
+|警告|情報、警告、クリティカル アラートのログ。|
 |[Admin]|クラスターにインストールされたソフトウェア スタック/サービス、サービス アカウント情報、Kerberos セキュリティ。|
 |[Admin] ボタン|Ambari の管理、ユーザー設定、サインアウト。|
 
 ## <a name="monitoring"></a>監視
 
-### <a name="alerts"></a>アラート
+### <a name="alerts"></a>警告
 
 次の一覧には、Ambari で使用される一般的なアラート状態が含まれています。
 
-* **OK**
-* **Warning**
+* **[OK]**
+* **警告**
 * **CRITICAL**
 * **UNKNOWN**
 
@@ -138,7 +138,7 @@ Ambari Web UI に接続するときに、そのページに対する認証が求
 > [!WARNING]  
 > Linux ベースの HDInsight クラスターでは、Ambari ウォッチドッグ (hdinsightwatchdog) のパスワードは変更しないでください。 パスワードを変更すると、スクリプト アクションを使用したり、クラスターでスケール操作を実行する能力が損なわれます。
 
-### <a name="hosts"></a>ホスト
+### <a name="hosts"></a>Hosts
 
 **[Hosts]** ページには、クラスター内のすべてのホストが一覧表示されます。 ホストを管理するには、次の手順に従います。
 
@@ -159,7 +159,7 @@ Ambari Web UI に接続するときに、そのページに対する認証が求
     |Turn on maintenance mode|ホストのアラートを抑制します。 アラートを生成するアクションを実行している場合は、このモードを有効にする必要があります。 たとえば、サービスの停止と開始です。|
     |Turn off maintenance mode|ホストを通常の警告に戻します。|
     |Stop|ホスト上の DataNode または NodeManagers を停止します。|
-    |start|ホスト上の DataNode または NodeManagers を起動します。|
+    |[開始]|ホスト上の DataNode または NodeManagers を起動します。|
     |Restart|ホスト上の DataNode または NodeManagers を停止して起動します。|
     |Decommission|クラスターからホストを削除します。 **HDInsight クラスターではこの操作は使用しないでください。**|
     |Recommission|以前に使用停止したホストをクラスターに追加します。 **HDInsight クラスターではこの操作は使用しないでください。**|
@@ -213,6 +213,6 @@ Ambari の次の操作は、HDInsight ではサポートされていません。
 
 * __メトリック コレクター サービスの移動__。 メトリック コレクター サービスで情報を表示するとき、[Service Actions]\(サービス アクション\) メニューで使うことができるアクションの 1 つに __[Move Metrics collector]\(メトリック コレクターの移動\)__ があります。 HDInsight では、このアクションはサポートされていません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 HDInsight で [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md) を使う方法を学習します。

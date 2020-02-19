@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: c9d02490a5627ead502429ead06608b4fb621058
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 3141795ed9ccfdabc9fd462a1cd09a74690f9c5b
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548409"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137917"
 ---
 # <a name="train-model-module"></a>モデルのトレーニング モジュール
 
@@ -39,7 +39,7 @@ ms.locfileid: "76548409"
 
 3. トレーニングの完了後、いずれかの[スコア付けモジュール](./score-model.md)と共にトレーニング済みのモデルを使用し、新しいデータについて予測を行います。
 
-## <a name="how-to-use-train-model"></a>**モデルのトレーニング**の使用方法  
+## <a name="how-to-use-train-model"></a>[モデルのトレーニング] の使用方法 
   
 1.  Azure Machine Learning で、分類モデルまたは回帰モデルを構成します。
     
@@ -49,7 +49,7 @@ ms.locfileid: "76548409"
 
     トレーニング データセットには、ラベル列が含まれている必要があります。 ラベルのない行は無視されます。
   
-4.  **[Label column]\(ラベル列\)** で **[Launch column selector]\(列セレクターの起動\)** をクリックし、モデルのトレーニングに使用できる結果を含んだ列を 1 つ選択します。
+4.  **[ラベル列]** について、モジュールの右パネルの **[列の編集]** をクリックし、モデルがトレーニングに使用できる結果を含む 1 つの列を選択します。
   
     - 分類問題の場合、ラベル列には**カテゴリ**値または**離散**値が含まれている必要があります。 たとえば、Yes/No 評価や疾患分類コード (または名前)、所得層が該当します。  非カテゴリ列を選んだ場合、トレーニング中にモジュールからエラーが返されます。
   

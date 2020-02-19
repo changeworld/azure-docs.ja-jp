@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: df50654b8673306a6bee544d9b5fcc2cb578795d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5a1d3753dfec673338bdde67656afd9c5f413ef0
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988194"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137602"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure portal 内で Azure Machine Learning ワークスペースを作成および管理する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -105,7 +105,6 @@ Basic Edition から Enterprise Edition にワークスペースをアップグ�
 
   ![[削除] ボタン](./media/how-to-manage-workspace/delete-workspace.png)
 
-
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
@@ -115,6 +114,11 @@ Basic Edition から Enterprise Edition にワークスペースをアップグ�
 ### <a name="resource-provider-errors"></a>リソース プロバイダーのエラー
 
 [!INCLUDE [machine-learning-resource-provider](../../includes/machine-learning-resource-provider.md)]
+
+### <a name="moving-the-workspace"></a>ワークスペースの移動
+
+> [!WARNING]
+> Azure Machine Learning ワークスペースを別のサブスクリプションに移動したり、所有するサブスクリプションを新しいテナントに移動したりすることは、サポートされていません。 エラーの原因になります。
 
 ## <a name="next-steps"></a>次のステップ
 

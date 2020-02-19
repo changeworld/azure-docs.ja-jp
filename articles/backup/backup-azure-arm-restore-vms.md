@@ -4,12 +4,12 @@ description: Azure Portal を使用して復旧ポイントから Azure 仮想�
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 23e34d65a06f5fbf3ad8ce53311862c680ddebd0
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d70db384101d838b2b65707090577156daa59b9a
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77021986"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138058"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal で Azure VM データを復元する方法
 
@@ -167,6 +167,9 @@ CRR が有効になっている場合は、セカンダリ リージョンのバ
 
 - VM を復元して作成する方法については、「[VMの作成](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#create-a-vm)」を参照してください。
 - ディスクとして復元するには、「[ディスクを復元する](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks)」を参照してください。
+
+>[!NOTE]
+>復元がトリガーされた後、データ転送フェーズでは、復元ジョブを取り消すことができません。
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>セカンダリ リージョンの復元ジョブの監視
 

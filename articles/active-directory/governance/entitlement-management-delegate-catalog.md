@@ -16,16 +16,18 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f71007b886d3cc25a7cf9dc23d784144ed4e1fbd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 51e37ad006da5042291614c773f242b5a1f3be97
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174380"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120200"
 ---
 # <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でカタログ作成者にアクセス ガバナンスを委任する
 
-自分のカタログを作成できるよう、管理者ではないユーザーに委任する目的で、Azure AD エンタイトルメント管理で定義されたカタログ作成者ロールにそのユーザーを追加できます。 個々のユーザーを追加することも、グループを追加することもできます。グループのメンバーはカタログを作成できるようになります。
+カタログは、リソースとアクセス パッケージのコンテナーです。 関連するリソースとアクセス パッケージをグループ化するときは、カタログを作成します。 既定では、グローバル管理者またはユーザー管理者は[カタログを作成する](entitlement-management-catalog-create.md)ことができ、カタログ所有者としてさらにユーザーを追加できます。
+
+自分のカタログを作成できるよう、管理者ではないユーザーに委任する目的で、Azure AD エンタイトルメント管理で定義されたカタログ作成者ロールにそのユーザーを追加できます。 個々のユーザーを追加することも、グループを追加することもできます。グループのメンバーはカタログを作成できるようになります。  カタログを作成した後、所有しているリソースをそのカタログに追加できます。
 
 ## <a name="as-an-it-administrator-delegate-to-a-catalog-creator"></a>IT 管理者としてカタログ作成者に委任する
 
@@ -45,7 +47,7 @@ ms.locfileid: "73174380"
 
 1. **[選択]** をクリックします。
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 ## <a name="allow-delegated-roles-to-access-the-azure-portal"></a>委任されたロールに Azure portal へのアクセスを許可する
 
@@ -61,7 +63,7 @@ ms.locfileid: "73174380"
 
     ![Azure AD ユーザー設定 - 管理ポータル](./media/entitlement-management-delegate-catalog/user-settings.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [リソースのカタログを作成および管理する](entitlement-management-catalog-create.md)
 - [アクセス パッケージ管理者にアクセス ガバナンスを委任する](entitlement-management-delegate-managers.md)

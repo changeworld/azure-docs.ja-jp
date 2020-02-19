@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/24/2020
-ms.openlocfilehash: 3877632565c1ca2c9a16681e03f8931a94af0599
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 01/31/2020
+ms.openlocfilehash: ea7c695ddb92d441018503839b974c1f4bb33473
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765756"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047838"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Azure Monitor for VMs の一般提供 (GA) についてよく寄せられる質問
 
@@ -37,7 +37,9 @@ VMInsights という名前の新しいソリューションがリリースされ
 
 
 ## <a name="how-do-i-upgrade"></a>アップグレード方法を教えてください。
-アップグレードが必要な各 VM は、Azure portal の Azure Monitor for VMs の **[はじめに]** タブで確認できます。 1 つの VM をアップグレードすることも、複数選択してアップグレードすることもできます。 PowerShell を使用してアップグレードするには、次のコマンドを使用します。
+Log Analytics ワークスペースが Azure Monitor for VMs の最新バージョンにアップグレードされると、そのワークスペースに接続されている各 VM の依存関係エージェントがアップグレードされます。 アップグレードが必要な各 VM は、Azure portal の Azure Monitor for VMs の **[はじめに]** タブで確認できます。 VM のアップグレードを選択した場合、その VM 用のワークスペースと、そのワークスペースに接続されている他のすべての VM がアップグレードされます。 1 つの VM、複数の VM、リソース グループまたはサブスクリプションを選択することが可能です。 
+
+PowerShell を使用してワークスペースをアップグレードするには、次のコマンドを使用します。
 
 ```PowerShell
 Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-group-name> -WorkspaceName <workspace-name> -IntelligencePackName "VMInsights" -Enabled $True

@@ -13,25 +13,26 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: 17906a7d0953d8b320301d74cda81d14c9ad340f
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 324425662622201bb50261d396d3eef1f531ba37
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123435"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187313"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Azure Event Hubs で Azure Blob Storage または Azure Data Lake Storage にイベントをキャプチャする
-Azure Event Hubs を利用すると、Event Hubs のストリーミング データをご自分で選択した [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) または [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) アカウントに自動的に配信できます。その際、時間やサイズの間隔を柔軟に指定できます。 Capture の設定は手軽で、実行に伴う管理コストは生じません。また、Event Hubs の[スループット単位](event-hubs-scalability.md#throughput-units)に応じて自動的にスケールします。 Event Hubs Capture はストリーミング データを Azure に読み込む最も簡単な方法であり、これを利用すれば、データのキャプチャではなくデータの処理に注力できるようになります。
+Azure Event Hubs を利用すると、Event Hubs のストリーミング データをご自分で選択した Gen 1 または Gen 2 の [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) アカウントまたは [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) アカウントに自動的に配信できます。その際、時間やサイズの間隔を柔軟に指定できます。 Capture の設定は手軽で、実行に伴う管理コストは生じません。また、Event Hubs の[スループット単位](event-hubs-scalability.md#throughput-units)に応じて自動的にスケールします。 Event Hubs Capture はストリーミング データを Azure に読み込む最も簡単な方法であり、これを利用すれば、データのキャプチャではなくデータの処理に注力できるようになります。
 
 Event Hubs Capture を利用すると、リアルタイムおよびバッチベースのパイプラインを同じストリームで処理できます。 すなわち、変化するニーズに合わせて拡大可能なソリューションを構築できます。 将来のリアルタイム処理を視野に入れてバッチベースのシステムを構築している場合も、既存のリアルタイム ソリューションに効率的なコールド パスを追加したいと考えている場合も、Event Hubs Capture ならストリーミング データの操作が容易です。
+
 
 ## <a name="how-event-hubs-capture-works"></a>Event Hubs Capture の仕組み
 
 Event Hubs は分散ログに似た、テレメトリの受信のための持続的バッファーです。 Event Hubs でのスケーリングの鍵となるのは、[パーティション分割されたコンシューマー モデル](event-hubs-scalability.md#partitions)です。 各パーティションは独立したデータのセグメントであり、個別に使用されます。 このデータは、構成可能なリテンション期間に基づいて、所定のタイミングで破棄されます。 そのため、特定のイベント ハブが "いっぱい" になることはありません。
 
-Event Hubs Capture を使用すると、キャプチャされたデータを格納するための独自の Azure Blob Storage アカウントとコンテナー、または Azure Data Lake Store アカウントを指定することができます。 これらのアカウントのリージョンは、イベント ハブと同じであっても、別のリージョンであってもかまわないため、Event Hubs Capture 機能の柔軟性がさらに高まります。
+Event Hubs Capture を使用すると、キャプチャされたデータを格納するための独自の Azure Blob Storage アカウントとコンテナー、または Azure Data Lake Storage アカウントを指定することができます。 これらのアカウントのリージョンは、イベント ハブと同じであっても、別のリージョンであってもかまわないため、Event Hubs Capture 機能の柔軟性がさらに高まります。
 
 キャプチャされたデータは [Apache Avro][Apache Avro] 形式で書き込まれます。これはコンパクトで高速なバイナリ形式で、インライン スキーマを備えた便利なデータ構造になっています。 この形式は Hadoop エコシステム、Stream Analytics、Azure Data Factory で幅広く使用されています。 Avro の操作の詳細は、この記事の後半に記載してあります。
 
@@ -141,14 +142,14 @@ Event Hubs Capture の料金は、スループット単位と同様に時間単�
 
 Event Hubs 名前空間をソースとして Azure Event Grid サブスクリプションを作成できます。 以下のチュートリアルでは、イベント ハブをソースとして、また Azure Functions アプリをシンクとして使用して、Event Grid サブスクリプションを作成する方法を示します。[Event Grid と Azure Functions を使用してキャプチャされた Event Hubs データを SQL Data Warehouse に移行する](store-captured-data-data-warehouse.md)
 
-## <a name="next-steps"></a>次の手順
-
+## <a name="next-steps"></a>次のステップ
 Event Hubs Capture は Azure にデータを取得する最も簡単な方法です。 Azure Data Lake、Azure Data Factory、Azure HDInsight を利用することで、使い慣れたツールとプラットフォームを使用して、必要なスケールでバッチ処理やその他の分析を実行できます。
 
-Event Hubs の詳細については、次のリンク先を参照してください:
+Azure portal および Azure Resource Manager テンプレートを使用してこの機能を有効にする方法を学習してください。
 
-* [イベントの送受信の概要](event-hubs-dotnet-framework-getstarted-send.md)
-* [Event Hubs の概要][Event Hubs overview]
+- [Azure Portal を使用して Event Hubs Capture を有効にする](event-hubs-capture-enable-through-portal.md)
+- [Azure Resource Manager テンプレートを使用した Event Hubs Capture の有効化](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
+
 
 [Apache Avro]: https://avro.apache.org/
 [Apache Drill]: https://drill.apache.org/

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94fc50bf238a74b7d8b45625d88b2d23d7dd1a13
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: acc458c59858196ea110d0ff2030ccd7f7b6fc58
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613766"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121745"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル:Workday を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -28,7 +28,7 @@ ms.locfileid: "75613766"
 
 ## <a name="overview"></a>概要
 
-ユーザー アカウントをプロビジョニングするために、[Azure Active Directory ユーザー プロビジョニング サービス](../manage-apps/user-provisioning.md)を [Workday Human Resources API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) と統合します。 Azure AD はこの接続を使用して、次のユーザー プロビジョニング ワークフローを有効にします。
+ユーザー アカウントをプロビジョニングするために、[Azure Active Directory ユーザー プロビジョニング サービス](../app-provisioning/user-provisioning.md)を [Workday Human Resources API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) と統合します。 Azure AD はこの接続を使用して、次のユーザー プロビジョニング ワークフローを有効にします。
 
 * **Active Directory へのユーザーのプロビジョニング** - Workday から選択したユーザーのセットを、1 つ以上の Active Directory ドメインにプロビジョニングします。
 
@@ -40,13 +40,13 @@ ms.locfileid: "75613766"
 
 Azure AD のユーザー プロビジョニング サービスでサポートされている Workday ユーザー プロビジョニング ワークフローは、次の人事管理および ID ライフサイクル管理シナリオを自動化します。
 
-* **新しい従業員の雇用** - Workday に新しい従業員が追加されると、Active Directory、Azure Active Directory、必要に応じて Office 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../manage-apps/user-provisioning.md)でユーザー アカウントが自動的に作成され、メール アドレスが Workday に書き戻されます。
+* **新しい従業員の雇用** - Workday に新しい従業員が追加されると、Active Directory、Azure Active Directory、必要に応じて Office 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../app-provisioning/user-provisioning.md)でユーザー アカウントが自動的に作成され、メール アドレスが Workday に書き戻されます。
 
-* **従業員の属性とプロファイルの更新** - Workday で従業員レコード (名前、職名、マネージャなど) が更新されると、Active Directory、Azure Active Directory、必要に応じて Office 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../manage-apps/user-provisioning.md)でユーザー アカウントが自動的に更新されます。
+* **従業員の属性とプロファイルの更新** - Workday で従業員レコード (名前、職名、マネージャなど) が更新されると、Active Directory、Azure Active Directory、必要に応じて Office 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../app-provisioning/user-provisioning.md)でユーザー アカウントが自動的に更新されます。
 
-* **従業員の退職** - Workday で従業員が退職状態になると、Active Directory、Azure Active Directory、必要に応じて Office 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../manage-apps/user-provisioning.md)でユーザー アカウントが自動的に無効になります。
+* **従業員の退職** - Workday で従業員が退職状態になると、Active Directory、Azure Active Directory、必要に応じて Office 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../app-provisioning/user-provisioning.md)でユーザー アカウントが自動的に無効になります。
 
-* **従業員の再雇用** - Workday で従業員が再雇用されると、Active Directory、Azure Active Directory、必要に応じて Office 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../manage-apps/user-provisioning.md)に以前のアカウントが (設定に応じて) 自動的に再アクティブ化または再プロビジョニングされます。
+* **従業員の再雇用** - Workday で従業員が再雇用されると、Active Directory、Azure Active Directory、必要に応じて Office 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../app-provisioning/user-provisioning.md)に以前のアカウントが (設定に応じて) 自動的に再アクティブ化または再プロビジョニングされます。
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>このユーザー プロビジョニング ソリューションが最適な場合
 
@@ -308,7 +308,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
 6. 以下の残りのセキュリティ ポリシーごとに、上記の手順 3 ～ 5 を繰り返します。
 
-   | 操作 | ドメイン セキュリティ ポリシー |
+   | Operation | ドメイン セキュリティ ポリシー |
    | ---------- | ---------- |
    | Get と Put | Worker Data:Public Worker Reports |
    | Get と Put | Person Data:Work Contact Information |
@@ -366,7 +366,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
 **Workday を Active Directory プロビジョニングに構成するには、**
 
-1. [https://tsiclientsample.azurewebsites.net/windFarmGen.html](<https://portal.azure.com>) にアクセスします。
+1. <https://portal.azure.com> にアクセスします。
 
 2. Azure portal で、 **[Azure Active Directory]** を検索して選択します。
 
@@ -502,7 +502,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
    > 初めてプロビジョニング アプリを構成するときは、属性マッピングと式をテストして検証し、目的の結果が得られていることを確認する必要があります。 Microsoft は、Workday の少数のテスト ユーザーを使用してマッピングをテストするために **[ソース オブジェクト スコープ]** の下のスコープ フィルターを使用することをお勧めします。 マッピングが機能していることを確認したら、フィルターを削除するか、徐々に拡張してより多くのユーザーを含めることができます。
 
    > [!CAUTION] 
-   > プロビジョニング エンジンの既定の動作では、スコープ外に出るユーザーが無効化または削除されます。 これはご使用の Workday と AD の統合には望ましくない場合があります。 この既定の動作をオーバーライドするには、「[スコープ外に出るユーザー アカウントの削除をスキップする](../manage-apps/skip-out-of-scope-deletions.md)」の記事を参照してください。
+   > プロビジョニング エンジンの既定の動作では、スコープ外に出るユーザーが無効化または削除されます。 これはご使用の Workday と AD の統合には望ましくない場合があります。 この既定の動作をオーバーライドするには、「[スコープ外に出るユーザー アカウントの削除をスキップする](../app-provisioning/skip-out-of-scope-deletions.md)」の記事を参照してください。
   
 1. **[対象オブジェクトのアクション]** フィールドでは、Active Directory 上で実行されるアクションをグローバルにフィルター処理できます。 **作成**と**更新**が最も一般的です。
 
@@ -516,7 +516,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
          * **定数** - 静的な定数文字列の値を AD 属性に書き込みます
 
-         * **式** – 1 つ以上の Workday 属性に基づいて、AD 属性にカスタム値を書き込むことができます。 [詳細については、式に関するこの記事を参照してください](../manage-apps/functions-for-customizing-application-data.md)。
+         * **式** – 1 つ以上の Workday 属性に基づいて、AD 属性にカスタム値を書き込むことができます。 [詳細については、式に関するこの記事を参照してください](../app-provisioning/functions-for-customizing-application-data.md)。
 
       * **ソース属性** - Workday のユーザー属性。 探している属性が存在しない場合は、「[Workday のユーザー属性リストをカスタマイズする](#customizing-the-list-of-workday-user-attributes)」を参照してください。
 
@@ -543,9 +543,9 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
 * *parentDistinguishedName* 属性にマップされる式を使用すると、1 つ以上の Workday ソース属性に基づいて異なる OU にユーザーをプロビジョニングできます。 この例では、住所の市区町村に基づいて、異なる OU にユーザーを配置しています。
 
-* Active Directory の *userPrincipalName* 属性は、ターゲット AD ドメインに生成された値が存在するかどうかを確認し、一意である場合にのみ設定する重複排除関数 [SelectUniqueValue](../manage-apps/functions-for-customizing-application-data.md#selectuniquevalue) を使用して生成されます。  
+* Active Directory の *userPrincipalName* 属性は、ターゲット AD ドメインに生成された値が存在するかどうかを確認し、一意である場合にのみ設定する重複排除関数 [SelectUniqueValue](../app-provisioning/functions-for-customizing-application-data.md#selectuniquevalue) を使用して生成されます。  
 
-* [式の記述に関するドキュメントについては、こちらを参照してください](../manage-apps/functions-for-customizing-application-data.md)。 このセクションでは、特殊文字を削除する方法の例についても紹介しています。
+* [式の記述に関するドキュメントについては、こちらを参照してください](../app-provisioning/functions-for-customizing-application-data.md)。 このセクションでは、特殊文字を削除する方法の例についても紹介しています。
 
 | WORKDAY 属性 | ACTIVE DIRECTORY 属性 |  ID 一致の有無 | 作成/更新 |
 | ---------- | ---------- | ---------- | ---------- |
@@ -572,7 +572,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 | **Fax**      | facsimileTelephoneNumber     |     |    作成時 + 更新時 |
 | **Mobile**  |    mobile       |     |       作成時 + 更新時 |
 | **LocalReference** |  preferredLanguage  |     |  作成時 + 更新時 |                                               
-| **Switch(\[Municipality\], "OU=Standard Users,OU=Users,OU=Default,OU=Locations,DC=contoso,DC=com", "Dallas", "OU=Standard Users,OU=Users,OU=Dallas,OU=Locations,DC=contoso,DC=com", "Austin", "OU=Standard Users,OU=Users,OU=Austin,OU=Locations,DC=contoso,DC=com", "Seattle", "OU=Standard Users,OU=Users,OU=Seattle,OU=Locations,DC=contoso,DC=com", “London", "OU=Standard Users,OU=Users,OU=London,OU=Locations,DC=contoso,DC=com")**  | parentDistinguishedName     |     |  作成時 + 更新時 |
+| **Switch(\[Municipality\], "OU=Standard Users,OU=Users,OU=Default,OU=Locations,DC=contoso,DC=com", "Dallas", "OU=Standard Users,OU=Users,OU=Dallas,OU=Locations,DC=contoso,DC=com", "Austin", "OU=Standard Users,OU=Users,OU=Austin,OU=Locations,DC=contoso,DC=com", "Seattle", "OU=Standard Users,OU=Users,OU=Seattle,OU=Locations,DC=contoso,DC=com", "London", "OU=Standard Users,OU=Users,OU=London,OU=Locations,DC=contoso,DC=com")**  | parentDistinguishedName     |     |  作成時 + 更新時 |
 
 属性マッピングの構成が完了したら、[ユーザー プロビジョニング サービスを有効にして起動](#enable-and-launch-user-provisioning)できるようになります。
 
@@ -591,7 +591,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
 **Workday を構成して、クラウドのみのユーザーを Azure Active Directory にプロビジョニングするには、**
 
-1. [https://tsiclientsample.azurewebsites.net/windFarmGen.html](<https://portal.azure.com>) にアクセスします。
+1. <https://portal.azure.com> にアクセスします。
 
 2. Azure portal で、 **[Azure Active Directory]** を検索して選択します。
 
@@ -653,7 +653,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
       * **定数** - 静的な定数文字列の値を AD 属性に書き込みます
 
-      * **式** – 1 つ以上の Workday 属性に基づいて、AD 属性にカスタム値を書き込むことができます。 [詳細については、式に関するこの記事を参照してください](../manage-apps/functions-for-customizing-application-data.md)。
+      * **式** – 1 つ以上の Workday 属性に基づいて、AD 属性にカスタム値を書き込むことができます。 [詳細については、式に関するこの記事を参照してください](../app-provisioning/functions-for-customizing-application-data.md)。
 
    * **ソース属性** - Workday のユーザー属性。 探している属性が存在しない場合は、「[Workday のユーザー属性リストをカスタマイズする](#customizing-the-list-of-workday-user-attributes)」を参照してください。
 
@@ -688,7 +688,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
 **Workday Writeback コネクタを構成するには:**
 
-1. [https://tsiclientsample.azurewebsites.net/windFarmGen.html](<https://portal.azure.com>) にアクセスします。
+1. <https://portal.azure.com> にアクセスします。
 
 2. Azure portal で、 **[Azure Active Directory]** を検索して選択します。
 
@@ -793,7 +793,7 @@ Workday プロビジョニング アプリの構成が完了したら、Azure po
 
 新しい AD アカウントのプロビジョニングに関連する最後の手順の 1 つは、ユーザーの AD アカウントに割り当てられている一時パスワードの配布です。 多くの企業では、一時パスワードをユーザーのマネージャーに配布し、そのマネージャーがそのパスワードを新規採用者/派遣従業員に引き渡すという従来のアプローチがまだ使用されています。 このプロセスには本質的なセキュリティ上の欠陥があり、Azure AD の機能を使用してより優れたアプローチを実装するための選択肢があります。
 
-採用プロセスの一環として、通常、人事チームは経歴調査を行い、新規採用者の携帯電話番号を確認および検査します。 Workday から AD へのユーザー プロビジョニングの統合により、このファクトに基づいて構築し、初日にユーザーのセルフサービス パスワードのリセット機能をロールアウトすることができます。 これを実現するには、新規採用者の "Mobile Number" 属性を Workday から AD に反映し、次に Azure AD Connect を使用して AD から Azure AD に反映させます。 Azure AD に "携帯電話番号" が表示されたら、ユーザーのアカウントに対して[セルフサービスによるパスワードのリセット (SSPR)](../authentication/howto-sspr-authenticationdata.md) を有効にして、新規採用者は、初日に登録済みで確認済みの携帯電話番号を認証に使用できるようになります。
+採用プロセスの一環として、通常、人事チームは経歴調査を行い、新規採用者の携帯電話番号を確認および検査します。 Workday から AD へのユーザー プロビジョニングの統合により、このファクトに基づいて構築し、初日にユーザーのセルフサービス パスワード リセット機能をロールアウトすることができます。 これを実現するには、新規採用者の "Mobile Number" 属性を Workday から AD に反映し、次に Azure AD Connect を使用して AD から Azure AD に反映させます。 Azure AD に "携帯電話番号" が表示されたら、ユーザーのアカウントに対して[セルフサービス パスワード リセット (SSPR)](../authentication/howto-sspr-authenticationdata.md) を有効にして、新規採用者は、初日に登録済みで確認済みの携帯電話番号を認証に使用できるようになります。
 
 #### <a name="does-the-solution-cache-workday-user-profiles-in-the-azure-ad-cloud-or-at-the-provisioning-agent-layer"></a>ソリューションでは、Azure AD クラウドまたはプロビジョニング エージェント レイヤーに Workday ユーザープロファイルがキャッシュされますか。
 
@@ -1023,9 +1023,9 @@ Workday から AD 方向の更新操作のみを実行するには、[更新] �
     )
      ```
     関連項目:
-  * [Switch 関数の構文](../manage-apps/functions-for-customizing-application-data.md#switch)
-  * [Join 関数の構文](../manage-apps/functions-for-customizing-application-data.md#join)
-  * [Append 関数の構文](../manage-apps/functions-for-customizing-application-data.md#append)
+  * [Switch 関数の構文](../app-provisioning/functions-for-customizing-application-data.md#switch)
+  * [Join 関数の構文](../app-provisioning/functions-for-customizing-application-data.md#join)
+  * [Append 関数の構文](../app-provisioning/functions-for-customizing-application-data.md#append)
 
 #### <a name="how-can-i-use-selectuniquevalue-to-generate-unique-values-for-samaccountname-attribute"></a>SelectUniqueValue を使用して samAccountName 属性の一意の値を生成する方法を教えてください。
 
@@ -1043,17 +1043,17 @@ SelectUniqueValue(
 
 関連項目:
 
-* [Mid 関数の構文](../manage-apps/functions-for-customizing-application-data.md#mid)
-* [Replace 関数の構文](../manage-apps/functions-for-customizing-application-data.md#replace)
-* [SelectUniqueValue 関数の構文](../manage-apps/functions-for-customizing-application-data.md#selectuniquevalue)
+* [Mid 関数の構文](../app-provisioning/functions-for-customizing-application-data.md#mid)
+* [Replace 関数の構文](../app-provisioning/functions-for-customizing-application-data.md#replace)
+* [SelectUniqueValue 関数の構文](../app-provisioning/functions-for-customizing-application-data.md#selectuniquevalue)
 
 #### <a name="how-do-i-remove-characters-with-diacritics-and-convert-them-into-normal-english-alphabets"></a>分音記号を使用する文字を削除し、通常の英語のアルファベットに変換するにはどうすればよいですか。
 
-ユーザーのメール アドレスまたは CN 値を作成するときに、ユーザーの姓と名の特殊文字を削除するには、関数 [NormalizeDiacritics](../manage-apps/functions-for-customizing-application-data.md#normalizediacritics) を使用します。
+ユーザーのメール アドレスまたは CN 値を作成するときに、ユーザーの姓と名の特殊文字を削除するには、関数 [NormalizeDiacritics](../app-provisioning/functions-for-customizing-application-data.md#normalizediacritics) を使用します。
 
 ## <a name="troubleshooting-tips"></a>トラブルシューティングのヒント
 
-このセクションでは、Azure AD 監査ログと Windows Server イベント ビューアー ログを使用して、Workday 統合に関するプロビジョニングの問題を解決する方法について、具体的なガイダンスを提供します。 一般的なトラブルシューティングの手順と概念 (「[チュートリアル:自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」で説明されています) に基づいて構築されています
+このセクションでは、Azure AD 監査ログと Windows Server イベント ビューアー ログを使用して、Workday 統合に関するプロビジョニングの問題を解決する方法について、具体的なガイダンスを提供します。 一般的なトラブルシューティングの手順と概念 (「[チュートリアル:自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」で説明されています) に基づいて構築されています
 
 このセクションでは、トラブルシューティングの次の側面について説明しています。
 
@@ -1209,7 +1209,7 @@ manager 属性は AD の参照属性です。 プロビジョニング サービ
 |#|エラーのシナリオ |考えられる原因|推奨される解決方法|
 |--|---|---|---|
 |1.| 次のメッセージを伴う監査ログのエクスポート操作の失敗。"*Error:OperationsError-SvcErr:An operation error occurred.No superior reference has been configured for the directory service.The directory service is therefore unable to issue referrals to objects outside this forest. (エラー: OperationsError-SvcErr: 操作エラーが発生ししました。このディレクトリ サービスの上位参照は構成されていません。そのため、ディレクトリ サービスはこのフォレストの外側にあるオブジェクトへの参照を発行できません。)* " | 通常、このエラーは、"*Active Directory コンテナー*" OU が正しく設定されていない場合、または *parentDistinguishedName* に使用される式のマッピングに問題がある場合に発生します。 | "*Active Directory コンテナー*" OU パラメーターに入力ミスがないか確認します。 属性マッピングで *parentDistinguishedName* を使用している場合は、常に AD ドメイン内の既知のコンテナーに評価されるようにしてください。 生成された値を確認するには、監査ログの *Export* イベントを確認します。 |
-|2.| 次のエラー コードを伴う監査ログのエクスポート操作の失敗。"*SystemForCrossDomainIdentityManagementBadResponse* and message *Error:ConstraintViolation-AtrErr:A value in the request is invalid.A value for the attribute was not in the acceptable range of values. \nError Details:CONSTRAINT_ATT_TYPE - company (SystemForCrossDomainIdentityManagementBadResponse エラー: ConstraintViolation-AtrErr: 要求の値は無効です。属性の値は値の許容範囲に含まれていません。\nエラーの詳細: CONSTRAINT_ATT_TYPE - company)* " | このエラーは *company* 属性に固有のものですが、*CN* のような他の属性についてもこのエラーが発生する可能性があります。 このエラーは、AD で適用されたスキーマ制約が原因で発生します。 既定では、AD の *company* や *CN* のような属性の上限は 64 文字です。 Workday に由来する値が 64 文字を超える場合は、このエラー メッセージが表示されます。 | 監査ログで *Export* イベントを確認して、エラー メッセージで報告されている属性の値を確認します。 [Mid](../manage-apps/functions-for-customizing-application-data.md#mid) 関数を使用して Workday に由来する値を切り捨てるか、同様の長さの制約がない AD 属性にマッピングを変更することを検討してください。  |
+|2.| 次のエラー コードを伴う監査ログのエクスポート操作の失敗。"*SystemForCrossDomainIdentityManagementBadResponse* and message *Error:ConstraintViolation-AtrErr:A value in the request is invalid.A value for the attribute was not in the acceptable range of values. \nError Details:CONSTRAINT_ATT_TYPE - company (SystemForCrossDomainIdentityManagementBadResponse エラー: ConstraintViolation-AtrErr: 要求の値は無効です。属性の値は値の許容範囲に含まれていません。\nエラーの詳細: CONSTRAINT_ATT_TYPE - company)* " | このエラーは *company* 属性に固有のものですが、*CN* のような他の属性についてもこのエラーが発生する可能性があります。 このエラーは、AD で適用されたスキーマ制約が原因で発生します。 既定では、AD の *company* や *CN* のような属性の上限は 64 文字です。 Workday に由来する値が 64 文字を超える場合は、このエラー メッセージが表示されます。 | 監査ログで *Export* イベントを確認して、エラー メッセージで報告されている属性の値を確認します。 [Mid](../app-provisioning/functions-for-customizing-application-data.md#mid) 関数を使用して Workday に由来する値を切り捨てるか、同様の長さの制約がない AD 属性にマッピングを変更することを検討してください。  |
 
 #### <a name="ad-user-account-update-errors"></a>AD ユーザー アカウントの更新エラー
 
@@ -1348,7 +1348,7 @@ Azure AD プロビジョニング サービスは、このリスト (Workday 属
 
 ### <a name="exporting-and-importing-your-configuration"></a>構成のエクスポートとインポート
 
-[プロビジョニング構成のエクスポートとインポート](../manage-apps/export-import-provisioning-configuration.md)に関する記事を参照してください。
+[プロビジョニング構成のエクスポートとインポート](../app-provisioning/export-import-provisioning-configuration.md)に関する記事を参照してください。
 
 ## <a name="managing-personal-data"></a>個人データの管理
 
@@ -1362,7 +1362,7 @@ Azure AD プロビジョニング サービスは、GDPR 分類の**データ �
 
 ## <a name="next-steps"></a>次のステップ
 
-* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)
+* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)
 * [Workday と Azure Active Directory の間でシングル サインオンを構成する方法](workday-tutorial.md)
 * [他の SaaS アプリケーションを Azure Active Directory と統合する方法](tutorial-list.md)
 * [Microsoft Graph API を使用してプロビジョニングの構成を管理する方法](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)

@@ -10,23 +10,23 @@ ms.workload: identity
 ms.topic: conceptual
 ms.author: marsma
 ms.subservice: B2C
-ms.date: 02/03/2020
-ms.openlocfilehash: 108c9c1112327a3fcadeff4c4074f31f976a4e3d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.date: 02/10/2020
+ms.openlocfilehash: 6f7f0252a6377397ccaccdc44c9c8561da7c9d29
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026411"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121384"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure Monitor で Azure AD B2C を監視する
 
-Azure Monitor を使用して、Azure Active Directory B2C (Azure AD B2C) の使用状況アクティビティ イベントをさまざまな監視ソリューションにルーティングします。 そのログを、長期的な使用のために保持したり、サードパーティのセキュリティ情報およびイベント管理 (SIEM) ツールと統合して環境の分析情報を取得したりすることができます。
+Azure Monitor を使用して、Azure Active Directory B2C (Azure AD B2C) のサインインと[監査](view-audit-logs.md)ログをさまざまな監視ソリューションにルーティングします。 そのログを、長期的な使用のために保持したり、サードパーティのセキュリティ情報およびイベント管理 (SIEM) ツールと統合して環境の分析情報を取得したりすることができます。
 
 ログ イベントは次の場所にルーティングできます。
 
-* Azure ストレージ アカウント。
-* Azure イベント ハブ (Splunk および Sumo Logic のインスタンスと統合できます)。
-* Azure Log Analytics ワークスペース (データの分析、ダッシュボードの作成、特定のイベントに対するアラートのため)。
+* Azure [ストレージ アカウント](../storage/blobs/storage-blobs-introduction.md)。
+* Azure [イベント ハブ](../event-hubs/event-hubs-about.md) (Splunk および Sumo Logic のインスタンスと統合できます)。
+* [Log Analytics ワークスペース](../azure-monitor/platform/resource-logs-collect-workspace.md) (データの分析、ダッシュボードの作成、特定のイベントに対するアラートのため)。
 
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
 
@@ -42,15 +42,15 @@ Azure Monitor を使用して、Azure Active Directory B2C (Azure AD B2C) の使
 
 Azure AD B2C では、[Azure Active Directory 監視](../active-directory/reports-monitoring/overview-monitoring.md)が利用されます。 Azure AD B2C テナント内の Azure Active Directory で*診断設定*を有効にするには、[委任されたリソース管理](../lighthouse/concepts/azure-delegated-resource-management.md)を使用します。
 
-Azure サブスクリプション (**顧客**) が含まれるテナント内の Azure Monitor インスタンスを構成するには、Azure AD B2C ディレクトリ (**サービス プロバイダー**) でユーザーを承認します。 承認を作成するには、サブスクリプションが含まれる Azure AD テナントに [Azure Resource Manager](../azure-resource-manager/index.yml) テンプレートをデプロイします。 以下のセクションでは、そのプロセスの手順を説明します。
+Azure サブスクリプション (**顧客**) が含まれるテナント内の Azure Monitor インスタンスを構成するには、Azure AD B2C ディレクトリ (**サービス プロバイダー**) でユーザーまたはグループを承認します。 承認を作成するには、サブスクリプションが含まれる Azure AD テナントに [Azure Resource Manager](../azure-resource-manager/index.yml) テンプレートをデプロイします。 以下のセクションでは、そのプロセスの手順を説明します。
 
-## <a name="create-a-resource-group"></a>リソース グループを作成する
+## <a name="create-or-choose-resource-group"></a>リソース グループの作成または選択
 
-お使いの Azure サブスクリプションが含まれる Azure Active Directory (Azure AD) テナントで (Azure AD B2C テナントが含まれるディレクトリでは "*ありません*")、[リソースグループを作成](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups)します。 次の値を使用します。
+これは、Azure Monitor からデータを受信するための、送信先の Azure ストレージ アカウント、イベント ハブ、または Log Analytics ワークスペースを含むリソース グループです。 Azure Resource Manager テンプレートをデプロイするときに、リソース グループ名を指定します。
 
-* **サブスクリプション**:Azure サブスクリプションを選択します。
-* **[リソース グループ]** :リソース グループの名前を入力します。 たとえば、*azure-ad-b2c-monitor* などです。
-* **[リージョン]** :Azure の場所を選択します。 たとえば *[米国中部]* です。
+[リソース グループを作成する](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups)か、お使いの Azure サブスクリプションが含まれる Azure Active Directory (Azure AD) テナントで (Azure AD B2C テナントが含まれるディレクトリでは "*ありません*")、既存のリソース グループを選択します。
+
+この例では、"*米国中部*" リージョンの *azure-ad-b2c-monitor* という名前のリソース グループを使用します。
 
 ## <a name="delegate-resource-management"></a>リソース管理を委任する
 
@@ -59,7 +59,7 @@ Azure サブスクリプション (**顧客**) が含まれるテナント内の
 お使いの Azure AD B2C ディレクトリの**ディレクトリ ID** (テナント ID とも呼ばれます)。
 
 1. "*ユーザー管理者*" ロール (またはそれ以上) を持つユーザーとして、[Azure portal](https://portal.azure.com/) にサインインします。
-1. ポータル ツールバーの **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントが含まれているディレクトリを選択します。
+1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. **[Azure Active Directory]** を選択し、 **[プロパティ]** を選択します。
 1. **[ディレクトリ ID]** を記録しておきます。
 
@@ -209,20 +209,42 @@ Parameters              :
 
 ## <a name="configure-diagnostic-settings"></a>診断設定を構成する
 
-リソース管理を委任し、サブスクリプションを選択すると、Azure portal で[診断設定を作成する](../active-directory/reports-monitoring/overview-monitoring.md)ことができるようになります。
+診断設定では、リソースのログとメトリックを送信する場所を定義します。 使用できる送信先は次のとおりです。
+
+- [Azure Storage アカウント](../azure-monitor/platform/resource-logs-collect-storage.md)
+- [イベント ハブ](../azure-monitor/platform/resource-logs-stream-event-hubs.md) ソリューション。
+- [Log Analytics ワークスペース](../azure-monitor/platform/resource-logs-collect-workspace.md)
+
+まだ作成していない場合は、[Azure Resource Manager テンプレート](#create-an-azure-resource-manager-template)で指定したリソース グループに、選択した送信先の種類のインスタンスを作成します。
+
+### <a name="create-diagnostic-settings"></a>診断設定の作成
+
+Azure portal で[診断設定を作成する](../active-directory/reports-monitoring/overview-monitoring.md)準備が整いました。
 
 Azure AD B2C のアクティビティ ログの監視設定を構成するには:
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-1. ポータル ツールバーの **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントが含まれているディレクトリを選択します。
+1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. **[Azure Active Directory]** を選択します
 1. **[監視]** で **[診断設定]** を選択します。
-1. **[+ 診断設定の追加]** を選択します。
+1. リソースに既存の設定が存在する場合は、構成済みの設定の一覧が表示されます。 **[診断設定を追加する]** を選択して新しい設定を追加するか、または **[設定の編集]** を選択して既存の設定を編集します。 各設定には、各送信先の種類を 1 つだけ含めることができます。
 
     ![Azure portal の [診断設定] ペイン](./media/azure-monitor/azure-monitor-portal-05-diagnostic-settings-pane-enabled.png)
 
+1. 設定にまだ名前がない場合は、名前を付けます。
+1. ログを送信する各送信先のチェック ボックスをオンにします。 **[構成]** を選択し、次の表に示すようにそれらの設定を指定します。
+
+    | 設定 | 説明 |
+    |:---|:---|
+    | ストレージ アカウントへのアーカイブ | ストレージ アカウントの名前。 |
+    | イベント ハブへのストリーミング | イベント ハブが作成される名前空間 (ログを初めてストリーミングする場合)、またはストリーミング先の名前空間 (そのログ カテゴリをこの名前空間にストリーミングしているリソースが既に存在する場合)。
+    | Log Analytics への送信 | ワークスペースの名前。 |
+
+1. **AuditLogs** と **SignInLogs** を選択します。
+1. **[保存]** を選択します。
+
 ## <a name="next-steps"></a>次のステップ
 
-Azure Monitor での診断設定の追加と構成の詳細については、Azure Monitor のドキュメントの次のチュートリアルを参照してください。
+Azure Monitor での診断設定の追加と構成の詳細については、「[チュートリアル: Azure リソースからリソース ログを収集して分析する](../azure-monitor/insights/monitor-azure-resource.md)」を参照してください。
 
-[チュートリアル:Azure リソースからリソース ログを収集して分析する](/azure-monitor/learn/tutorial-resource-logs.md)
+イベント ハブへの Azure AD ログのストリーム配信の詳細については、「[チュートリアル: Azure Active Directory ログを Azure イベント ハブにストリーム配信する](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)」を参照してください。

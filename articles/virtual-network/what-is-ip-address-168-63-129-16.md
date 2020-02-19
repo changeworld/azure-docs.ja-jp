@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: e061d503254ba7aa7735a97a060fc63f96b3fb61
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 287f881fb17dd84357f540ee562e21c66c11ab95
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196669"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114365"
 ---
 # <a name="what-is-ip-address-1686312916"></a>IP アドレス 168.63.129.16 とは
 
@@ -34,14 +34,15 @@ IP アドレス 168.63.129.16 は、Azure プラットフォーム リソース�
 
 ## <a name="scope-of-ip-address-1686312916"></a>IP アドレス 168.63.129.16 のスコープ
 
-パブリック IP アドレス 168.63.129.16 は、すべてのリージョンおよびすべての国内クラウドで使用されます。 この特殊なパブリック IP アドレスは Microsoft が所有しており、変化しません。 これは、既定のネットワーク セキュリティ グループの規則によって許可されています。 インバウンドとアウトバウンド両方向のすべてのローカル ファイアウォール ポリシーで、この IP アドレスを許可することをお勧めします。 この特殊な IP アドレスからメッセージを受信できるのは内部 Azure プラットフォームだけであるため、この IP アドレスとリソースの間の通信は安全です。 このアドレスがブロックされると、さまざまなシナリオで予期しない動作が発生する場合があります。
-WireServer と通信できるようにするには、少なくとも次のポートを開く必要があります: 80、443、32526。
+パブリック IP アドレス 168.63.129.16 は、すべてのリージョンおよびすべての国内クラウドで使用されます。 この特殊なパブリック IP アドレスは Microsoft が所有しており、変化しません。 (VM 内のアウトバウンド方向の) ローカル ファイアウォール ポリシーで、この IP アドレスを許可することをお勧めします。 この特殊な IP アドレスからメッセージを受信できるのは内部 Azure プラットフォームだけであるため、この IP アドレスとリソースの間の通信は安全です。 このアドレスがブロックされると、さまざまなシナリオで予期しない動作が発生する場合があります。 168.63.129.16 は[ホスト ノードの仮想 IP](../virtual-network/security-overview.md#azure-platform-considerations) であるため、ユーザー定義ルートの対象にはなりません。
 
-[Azure Load Balancer の正常性プローブ](../load-balancer/load-balancer-custom-probe-overview.md)は、この IP アドレスから送信されます。 この IP アドレスをブロックした場合、プローブは失敗します。
+- VM エージェントでは、ポート 80、443、32526 を介した WireServer (168.63.129.16) とのアウトバウンド通信が必要です。 これらは、VM 上のローカル ファイアウォールでは開いている必要があります。 これらのポート上での 168.63.129.16 との通信は、構成されたネットワーク セキュリティ グループの対象ではありません。
+- 168.63.129.16 では、VM に DNS サービスを提供できます。 これが望ましくない場合、このトラフィックは VM 上のローカル ファイアウォールでブロックすることができます。 既定では、[AzurePlatformDNS](../virtual-network/service-tags-overview.md#available-service-tags) サービス タグを活用して具体的にターゲットを絞らない限り、DNS 通信は構成されたネットワーク セキュリティ グループの対象になりません。
+- VM がロード バランサー バックエンド プールの一部である場合、[正常性プローブ](../load-balancer/load-balancer-custom-probe-overview.md)通信を、168.63.129.16 から発信できるようにする必要があります。 既定のネットワーク セキュリティ グループの構成には、この通信を許可する規則があります。 この規則では、[AzureLoadBalancer](../virtual-network/service-tags-overview.md#available-service-tags) サービス タグが活用されます。 必要に応じて、このトラフィックは、ネットワーク セキュリティ グループを構成することによってブロックできます。ただし、これによって失敗するプローブが発生します。
 
 仮想ネットワーク以外のシナリオ (クラシック) では、正常性プローブのソースはプライベート IP であり、168.63.129.16 は使用されません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [セキュリティ グループ](security-overview.md)
 - [ネットワーク セキュリティ グループの作成、変更、または削除](manage-network-security-group.md)

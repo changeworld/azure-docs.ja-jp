@@ -4,12 +4,12 @@ description: Recovery Services コンテナーを Azure サブスクリプショ
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: 7d0a6c47fa08774161d3a2b7507cdfecaf8c7197
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: fed42c578da2e4f27f42e11d5ac67d698bbcd939
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172886"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120714"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services コンテナーを Azure サブスクリプションおよびリソース グループをまたいで移動する
 
@@ -18,6 +18,10 @@ ms.locfileid: "74172886"
 ## <a name="supported-regions"></a>サポートされているリージョン
 
 Recovery Services コンテナーのリソースの移動がサポートされるのは、オーストラリア東部、オーストラリア南東部、カナダ中部、カナダ東部、東南アジア、東アジア、米国中部、米国中北部、米国東部、米国東部 2、米国中南部、米国中西部、米国中西部 2、米国西部、インド中部、インド南部、東日本、西日本、韓国中部、韓国南部、北ヨーロッパ、西ヨーロッパ、南アフリカ北部、南アフリカ西部、英国南部、および英国西部です。
+
+## <a name="unsupported-regions"></a>サポートされていないリージョン
+
+フランス中部、フランス南部、ドイツ北東部、ドイツ中部、US Gov アイオワ、中国北部、中国北部 2、中国東部、中国東部 2
 
 ## <a name="prerequisites-for-moving-recovery-services-vault"></a>Recovery Services コンテナーを移動するための前提条件
 
@@ -44,7 +48,7 @@ Recovery Services コンテナーのリソースの移動がサポートされ�
 
 Recovery Services コンテナーとその関連リソースを別のリソース グループに移動するには
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. **Recovery Services コンテナー**の一覧を開き、移動するコンテナーの名前を選択します。 コンテナーのダッシュボードが開き、次の図のように表示されます。
 
    ![Recover Service コンテナーを開く](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -73,7 +77,7 @@ Recovery Services コンテナーとその関連リソースを別のリソー�
 
 Recovery Services コンテナーとその関連リソースを別のサブスクリプションに移動できます
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. Recovery Services コンテナーの一覧を開き、移動するコンテナーを選択します。 コンテナーのダッシュボードが開き、次の図のように表示されます。
 
     ![Recover Service コンテナーを開く](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -135,7 +139,7 @@ az resource move --destination-group <destinationResourceGroupName> --ids <Vault
 1. リソース グループのアクセス制御を設定および検証します。  
 2. 移動の完了後のコンテナーに対して、バックアップのレポートと監視機能をもう一度構成する必要があります。 以前の構成は、移動操作中に失われます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 リソース グループとサブスクリプションの間でさまざまな種類のリソースを移動できます。
 

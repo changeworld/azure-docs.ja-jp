@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cd1b5f120952752e956c957df9daa124a06d7b63
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5a0e5846dd541e4997c271aee180b3790efa16e9
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850674"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114039"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーの概要
 
@@ -32,7 +32,7 @@ ms.locfileid: "76850674"
 ## <a name="add-signing-and-encryption-keys"></a>署名および暗号化キーを追加します。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ポータル ツールバーの **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントが含まれているディレクトリを選択します。
+1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. [概要] ページで、 **[ポリシー]** を選択してから **[Identity Experience Framework]** を選択します。
 
@@ -73,20 +73,20 @@ Azure AD B2C では、ローカル アカウントでのユーザーのサイン
 
 ### <a name="register-the-identityexperienceframework-application"></a>IdentityExperienceFramework アプリケーションを登録します
 
-アプリケーションを Azure AD B2C テナントに登録するには、現在の**アプリケーション** エクスペリエンス、または新しく統合された**アプリの登録 (プレビュー)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregintro)。
+アプリケーションを Azure AD B2C テナントに登録するには、**アプリの登録 (レガシ)** エクスペリエンス、または新しく統合された**アプリの登録 (プレビュー)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregintro)。
 
-#### <a name="applicationstabapplications"></a>[アプリケーション](#tab/applications/)
+#### <a name="applications"></a>[アプリケーション](#tab/applications/)
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. Azure portal で、 **[Azure Active Directory]** を検索して選択します。
-1. **[Azure Active Directory]** の概要メニューで、 **[管理]** から **[App registrations (Legacy)]\(アプリの登録 (レガシ)\)** を選択します。
+1. **[Azure Active Directory]** の概要メニューで、 **[管理]** から **[アプリの登録 (レガシ)]** を選択します。
 1. **[新しいアプリケーションの登録]** を選択します。
 1. **名前**には、`IdentityExperienceFramework`を入力します。
 1. **アプリケーションの種類**については、**Web アプリケーション/ API** を選択します。
 1. **サインオン URL** には、`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`を入力します。ここで、`your-tenant-name`は、Azure AD B2C テナント ドメイン名です。 ここでは、すべての URL で [b2clogin.com](b2clogin.md) を使用してください。
 1. **作成** を選択します。 作成した後は、アプリケーション ID をコピーし、後で使用するために保存します。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
 
 1. **[アプリの登録 (プレビュー)]** 、 **[新規登録]** の順に選択します。
 1. **名前**には、`IdentityExperienceFramework`を入力します。
@@ -110,7 +110,7 @@ Azure AD B2C では、ローカル アカウントでのユーザーのサイン
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>ProxyIdentityExperienceFramework アプリケーションを登録する
 
-#### <a name="applicationstabapplications"></a>[アプリケーション](#tab/applications/)
+#### <a name="applications"></a>[アプリケーション](#tab/applications/)
 
 1. **[アプリの登録 (レガシ)]** で、 **[新しいアプリケーションの登録]** を選択します。
 1. **名前**には、`ProxyIdentityExperienceFramework`を入力します。
@@ -122,7 +122,7 @@ Azure AD B2C では、ローカル アカウントでのユーザーのサイン
 1. **[IdentityExperienceFramework にアクセスする]** の横のチェックボックスにチェックを入れて、 **[選択する]** をクリックし、 **[完了]** をクリックします。
 1. **[アクセス許可を付与する]** を選択したら、 **[はい]** を選択して確定します。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
 
 1. **[アプリの登録 (プレビュー)]** 、 **[新規登録]** の順に選択します。
 1. **名前**には、`ProxyIdentityExperienceFramework`を入力します。

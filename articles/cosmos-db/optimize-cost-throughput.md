@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: 4bdf842ae24d90850280a5a19038dbd00168ff2c
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 02/07/2020
+ms.openlocfilehash: c6c3e9462b26b44857eea6b53092baeeb5034364
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053362"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087085"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Azure Cosmos DB でプロビジョニング済みのスループット コストを最適化する
 
@@ -55,10 +55,10 @@ Azure Cosmos DB では、プロビジョニング済みスループット モデ
 
 |API|**共有**スループットの場合の構成対象 |**専用**スループットの場合の構成対象 |
 |----|----|----|
-|SQL API|Database|コンテナー|
-|Azure Cosmos DB の MongoDB 用 API|Database|コレクション|
+|SQL API|データベース|コンテナー|
+|Azure Cosmos DB の MongoDB 用 API|データベース|コレクション|
 |Cassandra API|キースペース|テーブル|
-|Gremlin API|データベース アカウント|Graph|
+|Gremlin API|データベース アカウント|グラフ|
 |テーブル API|データベース アカウント|テーブル|
 
 異なるレベルでスループットをプロビジョニングすることにより、ワークロードの特性に基づいてコストを最適化できます。 前に説明したように、プログラムを使用していつでも、個々のコンテナーについて、またはコンテナーのセットで集合的に、プロビジョニング済みスループットを増やしたり減らしたりできます。 ワークロードの変化に応じてスループットを弾力的にスケーリングすることで、支払いは構成したスループットに対するものだけで済みます。 コンテナーまたはコンテナーのセットが複数のリージョンに分散されている場合、そのコンテナーまたはコンテナーのセットで構成するスループットがすべてのリージョンで使用可能になることが保証されます。
@@ -123,7 +123,7 @@ Azure Cosmos DB では既定で、すべてのレコードのすべてのプロ�
 
 ## <a name="scale-your-throughput-elastically-and-on-demand"></a>弾力的にオンデマンドでスループットをスケーリングする 
 
-プロビジョニングされたスループットに対して課金されるので、プロビジョニング済みスループットをニーズと一致させることが、未使用のスループットに課金されるのを防ぐのに役立ちます。 必要に応じていつでも、プロビジョニング済みスループットをスケールアップまたはスケールダウンできます。  
+プロビジョニングされたスループットに対して課金されるので、プロビジョニング済みスループットをニーズと一致させることが、未使用のスループットに課金されるのを防ぐのに役立ちます。 必要に応じていつでも、プロビジョニング済みスループットをスケールアップまたはスケールダウンできます。 スループットのニーズを正確に予測できる場合は、Azure Functions とタイマー トリガーを使用し、[スケジュールに従ってスループットを増減する](scale-on-schedule.md)ことができます。 
 
 * RU の消費量と、レート制限された要求の割合を監視することで、日または週を通してプロビジョニング済みスループットを一定に保つ必要がないことがわかる場合があります。 夜間や週末は、受け取るトラフィックが減ることがあります。 Azure portal または Azure Cosmos DB のネイティブ SDK や REST API を使用すると、いつでもプロビジョニング済みスループットをスケーリングできます。 Azure Cosmos DB の REST API では、コンテナーのパフォーマンス レベルをプログラムで更新するためのエンドポイントが提供されており、時間帯や曜日に応じてコードから簡単にスループットを調整できます。 操作はダウンタイムなしで実行され、通常は 1 分未満で有効になります。 
 
@@ -173,13 +173,13 @@ Azure Cosmos DB では既定で、すべてのレコードのすべてのプロ�
 
 10. Azure Cosmos DB の予約容量を利用すると、3 年間最大 65% という大幅な割引を受けることができます。 Azure Cosmos DB の予約容量モデルは、一定期間に必要な要求ユニットに対する前払いのコミットメントです。 割引は、要求ユニットの使用期間が長いほど、割引額が大きくなるように、階層化されています。 これらの割引は、すぐに適用されます。 プロビジョニングされた値を超えて使用された RU は、予約容量ではないコストに基づいて課金されます。 詳しくは、[Cosmos DB の予約容量](cosmos-db-reserved-capacity.md)に関する記事をご覧ください。 プロビジョニング済みスループットのコストをさらに下げるには、予約容量の購入を検討してください。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次は、先に進み、以下の各記事で Azure Cosmos DB でのコストの最適化の詳細について学習することができます。
 
 * [開発とテストのための最適化](optimize-dev-test.md)の詳細について学習します
-* [Azure Cosmos DB の請求書を理解する方法](understand-your-bill.md)について確認する
-* [ストレージ コストの最適化](optimize-cost-storage.md)について確認する
+* [Azure Cosmos DB の課金内容の確認](understand-your-bill.md)の詳細について学習します
+* [ストレージ コストの最適化](optimize-cost-storage.md)の詳細について学習します
 * [読み取りと書き込みのコストの最適化](optimize-cost-reads-writes.md)の詳細について学習します
 * [クエリ コストの最適化](optimize-cost-queries.md)の詳細について学習します
 * [複数リージョンの Azure Cosmos アカウント コストの最適化](optimize-cost-regions.md)の詳細について学習します

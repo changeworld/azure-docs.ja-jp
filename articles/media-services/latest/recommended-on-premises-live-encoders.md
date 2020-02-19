@@ -6,21 +6,23 @@ keywords: エンコード;エンコーダー;メディア
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 11/18/2019
+ms.date: 02/10/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 32ff975aa200e51e6a555f892a53b0ab9c73a84e
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: c8cf8883c80dad7988793a898dcaf01dd8f860c3
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186028"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152637"
 ---
 # <a name="recommended-live-streaming-encoders"></a>おすすめのライブ ストリーミング エンコーダー
 
 Azure Media Services では、[ライブ イベント](https://docs.microsoft.com/rest/api/media/liveevents) (チャネル) は、ライブ ストリーミング コンテンツを処理するためのパイプラインを表します。 ライブ イベントは、次の 2 つの方法のいずれかでライブ入力ストリームを受信します。
 
-* オンプレミスのライブ エンコーダーは、マルチビットレート RTMP またはスムーズ ストリーミング (フラグメント化 MP4) のストリームを、Media Services によるライブ エンコードの実行が無効な Live Event に送信します。 取り込んだストリームは、追加の処理なしで Live Event を通過します。 この方式は、 **パススルー**と呼ばれます。 ライブ エンコーダーは、パススルー チャネルに単一ビットレートのストリームを送信できます。 この構成は、クライアントへのアダプティブ ビットレート ストリーミングができないため推奨されません。
+* オンプレミスのライブ エンコーダーは、マルチビットレート RTMP またはスムーズ ストリーミング (フラグメント化 MP4) のストリームを、Media Services によるライブ エンコードの実行が無効な Live Event に送信します。 取り込んだストリームは、追加の処理なしで Live Event を通過します。 この方式は、 **パススルー**と呼ばれます。 ライブ エンコーダーの場合は、シングルビットレートのストリームではなく、マルチビットレートのストリームをパススルー ライブ イベントに送信して、クライアントへのアダプティブ ビットレート ストリーミングを可能にすることをお勧めします。 
+
+    パススルー ライブ イベントにマルチビットレートのストリームを使用している場合は、再生側での予期しない動作を避けるために、異なるビットレートでのビデオの GOP サイズおよびビデオ フラグメントを同期する必要があります。
 
   > [!NOTE]
   > パススルー方式を使用することが、ライブ ストリーミングを行う最も経済的な方法です。
@@ -29,21 +31,28 @@ Azure Media Services では、[ライブ イベント](https://docs.microsoft.co
 
 Media Services でのライブ エンコードの詳細については、[Media Services v3 でのライブ ストリーミング](live-streaming-overview.md)に関するページをご覧ください。
 
+## <a name="encoder-requirements"></a>エンコーダーの要件
+
+HTTPS または RTMPS プロトコルを使用する場合、エンコーダーで TLS 1.2 がサポートされている必要があります。
+
 ## <a name="live-encoders-that-output-rtmp"></a>RTMP を出力するライブ エンコーダー
 
 Media Services では、RTMP を使用した、次のいずれかのライブ エンコーダーを出力として使用することを推奨しています。 サポートされる URL スキームは `rtmp://` または `rtmps://` です。
 
+RTMP を使用してデータをストリーミングしている場合は、ファイアウォールまたはプロキシ、あるいはその両方の設定で、送信 TCP ポート 1935 と 1936 が開いていることを確認します。<br/><br/>
+RTMP を使用してデータをストリーミングしている場合は、ファイアウォールまたはプロキシ、あるいはその両方の設定で、送信 TCP ポート 2935 と 2936 が開いていることを確認します。
+
 > [!NOTE]
-> RTMP を使用してデータをストリーミングしている場合は、ファイアウォールまたはプロキシ、あるいはその両方の設定で、送信 TCP ポート 1935 と 1936 が開いていることを確認します。
+> RTMPS プロトコルを使用する場合、エンコーダーで TLS 1.2 がサポートされている必要があります。
 
 - Adobe Flash Media Live Encoder 3.2
 - [Cambria Live 4.3](https://www.capellasystems.net/products/cambria-live/)
+- Elemental Live (バージョン 2.14.15 以降)
 - Haivision KB
 - Haivision Makito X HEVC
 - OBS Studio
 - Switcher Studio (iOS)
-- Telestream Wirecast 8.1 以降
-- Telestream Wirecast S
+- Telestream Wirecast (TLS 1.2 の要件によりバージョン 13.0.2 以降)
 - Teradek Slice 756
 - TriCaster 8000
 - Tricaster Mini HD-4
@@ -57,17 +66,19 @@ Media Services では、RTMP を使用した、次のいずれかのライブ �
 
 Media Services では、マルチビットレートのスムーズ ストリーミング (フラグメント化 MP4) を使用した、次のいずれかのライブ エンコーダーを出力として使用することを推奨しています。 サポートされる URL スキームは `http://` または `https://` です。
 
+> [!NOTE]
+> HTTPS プロトコルを使用する場合、エンコーダーで TLS 1.2 がサポートされている必要があります。
+
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
-- Elemental Live
-- Envivio 4Caster C4 Gen III
+- Elemental Live (TLS 1.2 の要件により 2.14.15 以降)
+- Envivio 4Caster C4 Gen III 
 - Imagine Communications Selenio MCP3
 - Media Excel Hero Live と Hero 4K (UHD/HEVC)
 - [Ffmpeg](https://www.ffmpeg.org)
 
 > [!TIP]
 >  複数の言語でライブ イベント (たとえば、英語のオーディオ トラックやスペイン語のオーディオ トラックなど) をストリーミングする場合は、パススルー ライブ イベントにライブ フィードを送信するように構成された Media Excel ライブ エンコーダーを利用して、これを実現できます。
-
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>オンプレミス ライブ エンコーダーの設定を構成する
 
@@ -135,6 +146,6 @@ Media Services は、Azure Media Services オンプレミス エンコーダー 
 
 最後に、すべての自己検証チェックに成功したことを知らせる通知として、amshelp@microsoft.com 宛の電子メールで記録した設定とライブ アーカイブ パラメーターを Azure Media Services に送信します。 また、すべてのフォローアップに関する自分の連絡先情報を含めます。 このプロセスに関して質問がある場合は、Azure Media Services チームに問い合わせることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Media Services v3 を使用したライブ ストリーミング](live-streaming-overview.md)

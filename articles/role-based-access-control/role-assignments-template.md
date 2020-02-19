@@ -1,5 +1,5 @@
 ---
-title: Azure RBAC と Azure Resource Manager テンプレートを使用してロールの割り当てを追加する
+title: RBAC と Azure Resource Manager テンプレートを使用してロールの割り当てを追加する
 description: Azure のロールベースのアクセス制御 (RBAC) と Azure Resource Manager テンプレートを使用して、ユーザー、グループ、サービス プリンシパル、またはマネージド ID に対して Azure リソースへのアクセス権を付与する方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: aeb4bfbc40196575e2cb812738a9ab5de991d2aa
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 9f817880f938f5d03024e3aacd9b84817a5ac721
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981018"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138302"
 ---
 # <a name="add-role-assignments-using-azure-rbac-and-azure-resource-manager-templates"></a>Azure RBAC と Azure Resource Manager テンプレートを使用してロールの割り当てを追加する
 
@@ -361,7 +361,7 @@ az group deployment create --resource-group ExampleGroup2 --template-file rbac-t
 
 ## <a name="next-steps"></a>次のステップ
 
-- [クイック スタート:Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
+- [クイック スタート: Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 - [Azure Resource Manager テンプレートの構造と構文の詳細](../azure-resource-manager/templates/template-syntax.md)
 - [サブスクリプション レベルでリソース グループとリソースを作成する](../azure-resource-manager/templates/deploy-to-subscription.md)
 - [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/?term=rbac)

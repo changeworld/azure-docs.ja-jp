@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 02/10/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8a222aa63387f7c57f8896b013f71f0c1bf40b2e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 9d8d13ec955867eb574b5f0d782727d6ff8d063a
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76851286"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111547"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシーを使用してマルチテナント Azure Active Directory を設定する
 
@@ -49,6 +49,19 @@ ms.locfileid: "76851286"
 1. **[登録]** を選択します。 後の手順で使用するために、**アプリケーション (クライアント) ID** を記録しておきます。
 1. **[Certificates & secrets]\(証明書とシークレット\)** を選択してから、 **[New client secret]\(新しいクライアント シークレット\)** を選択します。
 1. シークレットの**説明**を入力し、有効期限を選択して、 **[追加]** を選択します。 後の手順で使用するために、シークレットの**値**を記録しておきます。
+
+## <a name="configuring-optional-claims"></a>省略可能な要求の構成
+
+Azure AD から `family_name` および `given_name` 要求を取得する場合は、ご利用のアプリケーションに対して省略可能な要求を Azure portal UI またはアプリケーション マニフェストで構成できます。 詳細については、[Azure AD アプリに省略可能な要求を提供する方法](../active-directory/develop/active-directory-optional-claims.md)に関するページを参照してください。
+
+1. [Azure portal](https://portal.azure.com) にサインインします。 **Azure Active Directory** を検索して選択します。
+1. **[管理]** セクションで、 **[アプリの登録]** を選択します。
+1. 省略可能な要求を構成するアプリケーションを一覧から選択します。
+1. **[管理]** セクションで、 **[トークンの構成 (プレビュー)]** を選択します。
+1. **[省略可能な要求を追加]** を選択します。
+1. 構成するトークンの型を選択します。
+1. 追加する省略可能な要求を選択します。
+1. **[追加]** をクリックします。
 
 ## <a name="create-a-policy-key"></a>ポリシー キーを作成する
 

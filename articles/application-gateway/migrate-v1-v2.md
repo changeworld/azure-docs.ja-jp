@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 719686cb123355359391c5cb1e517ff9cfd88371
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9909c46015fffb3bea3eef094599312e28b935c5
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231741"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046196"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Azure Application Gateway と Web アプリケーション ファイアウォールを v1 から v2 に移行する
 
@@ -58,7 +58,7 @@ Azure Az モジュールがインストールされているかどうかを確�
 
 このオプションを使用するには、コンピューターに Azure Az モジュールがインストールされていないことが必要です。 インストールされている場合、次のコマンドにはエラーが表示されます。 Azure Az モジュールをアンインストールするか、もう 1 つのオプションであるスクリプトを手動でダウンロードして実行する方法を使用します。
   
-次のコマンドを実行して、スクリプトを実行します。
+次のコマンドを使用してこのスクリプトを実行します。
 
 `Install-Script -Name AzureAppGWMigration`
 
@@ -98,11 +98,11 @@ Azure Az モジュールがインストールされていて、それらをア�
      $appgw.Id
      ```
 
-   * **subnetAddressRange: [String]:必須** - 新しい v2 ゲートウェイを含む新しいサブネットに割り当てた (または割り当てる) IP アドレス空間です。 これは、CIDR 表記で指定する必要があります。 例: 10.0.0.0/24。 このサブネットを事前に作成しておく必要はありません。 存在しない場合はスクリプトによって作成されます。
+   * **subnetAddressRange: [String]:必須** - 新しい v2 ゲートウェイを含む新しいサブネットに割り当てた (または割り当てる) IP アドレス空間です。 これは、CIDR 表記で指定する必要があります。 次に例を示します。10.0.0.0/24。 このサブネットを事前に作成しておく必要はありません。 存在しない場合はスクリプトによって作成されます。
    * **appgwName: [String]:省略可能**。 新しい Standard_v2 または WAF_v2 ゲートウェイの名前として使用するように指定する文字列です。 このパラメーターが指定されていない場合、サフィックス *_v2* が付加された既存の v1 ゲートウェイの名前が使用されます。
    * **sslCertificates: [PSApplicationGatewaySslCertificate]:省略可能**。  新しい v2 ゲートウェイにアップロードする必要がある、v1 ゲートウェイの SSL 証明書を表すために作成する PSApplicationGatewaySslCertificate オブジェクトのコンマ区切りの一覧です。 Standard v1 または WAF v1 ゲートウェイ用に構成された SSL 証明書のそれぞれに対して、次に示す `New-AzApplicationGatewaySslCertificate` コマンドを使用して新しい PSApplicationGatewaySslCertificate オブジェクトを作成することができます。 SSL 証明書ファイルへのパスとパスワードが必要です。
 
-       このパラメーターは、v1 ゲートウェイまたは WAF 用に構成された HTTPS リスナーがない場合は省略可能です。 HTTPS リスナーのセットアップが少なくとも 1 つある場合、このパラメーターを指定する必要があります。
+     このパラメーターは、v1 ゲートウェイまたは WAF 用に構成された HTTPS リスナーがない場合は省略可能です。 HTTPS リスナーのセットアップが少なくとも 1 つある場合、このパラメーターを指定する必要があります。
 
       ```azurepowershell  
       $password = ConvertTo-SecureString <cert-password> -AsPlainText -Force
@@ -114,12 +114,17 @@ Azure Az モジュールがインストールされていて、それらをア�
         -Password $password
       ```
 
-      スクリプトでは前の例の `$mySslCert1, $mySslCert2` (コンマ区切り) をこのパラメーターの値として渡すことができます。
-   * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]:省略可能**。 v2 ゲートウェイのバックエンド インスタンスの認証用の[信頼されたルート証明書](ssl-overview.md)を表すために作成する、PSApplicationGatewayTrustedRootCertificate オブジェクトのコンマ区切りの一覧です。  
+     スクリプトでは前の例の `$mySslCert1, $mySslCert2` (コンマ区切り) をこのパラメーターの値として渡すことができます。
+   * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]:省略可能**。 v2 ゲートウェイのバックエンド インスタンスの認証用の[信頼されたルート証明書](ssl-overview.md)を表すために作成する、PSApplicationGatewayTrustedRootCertificate オブジェクトのコンマ区切りの一覧です。
+   
+      ```azurepowershell
+      $certFilePath = ".\rootCA.cer"
+      $trustedCert = New-AzApplicationGatewayTrustedRootCertificate -Name "trustedCert1" -CertificateFile $certFilePath
+      ```
 
       PSApplicationGatewayTrustedRootCertificate オブジェクトの一覧を作成するには、「[New-AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0)」を参照してください。
    * **privateIpAddress: [String]:省略可能**。 新しい v2 ゲートウェイに関連付ける特定のプライベート IP アドレスです。  新しい v2 ゲートウェイに割り当てる同じ VNet のものである必要があります。 これが指定されていない場合、スクリプトによって v2 ゲートウェイにプライベート IP アドレスが割り当てられます。
-    * **publicIpResourceId: [String]:省略可能**。 新しい v2 ゲートウェイに割り当てる、サブスクリプション内のパブリック IP アドレス (Standard SKU) リソースのリソース ID です。 これが指定されていない場合、スクリプトによって同じリソース グループ内の新しいパブリック IP が割り当てられます。 名前は、v2 ゲートウェイの名前に *-IP* が付加されたものになります。
+   * **publicIpResourceId: [String]:省略可能**。 新しい v2 ゲートウェイに割り当てる、ご自分のサブスクリプション内の既存のパブリック IP アドレス (Standard SKU) リソースのリソース ID です。 これが指定されていない場合、スクリプトによって同じリソース グループ内の新しいパブリック IP が割り当てられます。 名前は、v2 ゲートウェイの名前に *-IP* が付加されたものになります。
    * **validateMigration: [switch]:省略可能**。 v2 ゲートウェイの作成と構成のコピーが完了した後に、スクリプトで基本的な構成比較検証を実行する場合は、このパラメーターを使用します。 既定では、検証は行われません。
    * **enableAutoScale: [switch]:省略可能**。 スクリプトで新しい v2 ゲートウェイを作成した後に自動スケールを有効にする場合は、このパラメーターを使用します。 既定では、自動スケールは無効です。 これは、新しく作成した v2 ゲートウェイで、後からいつでも手動で有効にすることができます。
 
@@ -132,10 +137,10 @@ Azure Az モジュールがインストールされていて、それらをア�
       -resourceId /subscriptions/8b1d0fea-8d57-4975-adfb-308f1f4d12aa/resourceGroups/MyResourceGroup/providers/Microsoft.Network/applicationGateways/myv1appgateway `
       -subnetAddressRange 10.0.0.0/24 `
       -appgwname "MynewV2gw" `
-      -sslCertificates $Certs `
+      -sslCertificates $mySslCert1,$mySslCert2 `
       -trustedRootCertificates $trustedCert `
       -privateIpAddress "10.0.0.1" `
-      -publicIpResourceId "MyPublicIP" `
+      -publicIpResourceId "/subscriptions/8b1d0fea-8d57-4975-adfb-308f1f4d12aa/resourceGroups/MyResourceGroup/providers/Microsoft.Network/publicIPAddresses/MyPublicIP" `
       -validateMigration -enableAutoScale
    ```
 
@@ -174,7 +179,7 @@ Azure Az モジュールがインストールされていて、それらをア�
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-v1-gateway-to-the-newly-created-v2-gateway"></a>Azure PowerShell スクリプトでは、v1 ゲートウェイから新しく作成した v2 ゲートウェイにトラフィックを切り替えることもできますか?
 
-No. Azure PowerShell スクリプトで移行されるのは構成のみです。 実際のトラフィックの移行は、お客様ご自身の責任において行っていただく必要があります。
+いいえ。 Azure PowerShell スクリプトで移行されるのは構成のみです。 実際のトラフィックの移行は、お客様ご自身の責任において行っていただく必要があります。
 
 ### <a name="is-the-new-v2-gateway-created-by-the-azure-powershell-script-sized-appropriately-to-handle-all-of-the-traffic-that-is-currently-served-by-my-v1-gateway"></a>Azure PowerShell スクリプトで作成した新しい v2 ゲートウェイのサイズは、現在 v1 ゲートウェイで対応しているすべてのトラフィックを処理するのに適切な大きさになりますか?
 
@@ -182,16 +187,16 @@ Azure PowerShell スクリプトにより、既存の v1 ゲートウェイの�
 
 ### <a name="i-configured-my-v1-gateway--to-send-logs-to-azure-storage-does-the-script-replicate-this-configuration-for-v2-as-well"></a>Azure Storage にログを送信するように v1 ゲートウェイを構成しました。 スクリプトによって、この構成も v2 用にレプリケートされますか?
 
-No. スクリプトでは、この構成は v2 用にレプリケートされません。 ログ構成は、移行後の v2 ゲートウェイに個別に追加する必要があります。
+いいえ。 スクリプトでは、この構成は v2 用にレプリケートされません。 ログ構成は、移行後の v2 ゲートウェイに個別に追加する必要があります。
 
 ### <a name="does-this-script-support-certificates-uploaded-to-azure-keyvault-"></a>このスクリプトは、Azure KeyVault にアップロードされた証明書をサポートしていますか?
 
-No. 現在、スクリプトは KeyVault の証明書をサポートしていません。 ただし、これは将来のバージョンで検討されています。
+いいえ。 現在、スクリプトは KeyVault の証明書をサポートしていません。 ただし、これは将来のバージョンで検討されています。
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>このスクリプトの使用中に問題が発生しました。 どこに問い合わせればよいですか?
   
 appgwmigrationsup@microsoft.com 宛に電子メールを送信する方法と、Azure サポートでサポート ケースを開く方法があります (両方利用できます)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Application Gateway v2 について](application-gateway-autoscaling-zone-redundant.md)

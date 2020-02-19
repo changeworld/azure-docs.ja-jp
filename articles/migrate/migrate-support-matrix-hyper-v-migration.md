@@ -3,12 +3,12 @@ title: Azure Migrate での Hyper-V の移行のサポート
 description: Azure Migrate を使用した Hyper-V の移行のサポートについて説明します。
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 4ca946597417ccde0e00c8bf09c70207bc4f85b9
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 1eab96df7ee58a8170f75b41c5a2a06f033ced19
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031648"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064463"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Hyper-V の移行のサポート マトリックス
 
@@ -23,10 +23,10 @@ ms.locfileid: "77031648"
 
 | **サポート**                | **詳細**               
 | :-------------------       | :------------------- |
-| **デプロイ**       | Hyper-V ホストは、スタンドアロンにすることも、クラスターにデプロイすることもできます。 |
+| **デプロイ**       | Hyper-V ホストは、スタンドアロンにすることも、クラスターにデプロイすることもできます。 <br/>Azure Migrate レプリケーション ソフトウェア (Hyper-V レプリケーション プロバイダー) を Hyper-V ホストにインストールする必要があります。|
 | **アクセス許可**           | Hyper-V ホストに対する管理者のアクセス許可が必要です。 |
 | **ホスト オペレーティング システム** | Windows Server 2019、Windows Server 2016、または Windows Server 2012 R2。 |
-| **URL アクセス** | Hyper-V ホストには、次の URL へのアクセス権が必要です。<br/><br/> - login.microsoftonline.com:Active Directory を使用したアクセス制御と ID 管理。<br/><br/> - *.backup.windowsazure.com:レプリケーション データの転送と調整。 サービス URL を移行します。<br/><br/> - *.blob.core.windows.net:ストレージ アカウントにデータをアップロードします。<br/><br/> - dc.services.visualstudio.com:内部監視に使用するアプリ ログをアップロードします。<br/><br/> - time.windows.com | システム時刻とグローバル時刻間の時刻同期を確認します。
+| **URL アクセス** | Hyper-V ホストのレプリケーション プロバイダー ソフトウェアは、次の URL にアクセスできる必要があります。<br/><br/> - login.microsoftonline.com:Active Directory を使用したアクセス制御と ID 管理。<br/><br/> - *.backup.windowsazure.com:レプリケーション データの転送と調整。 サービス URL を移行します。<br/><br/> - *.blob.core.windows.net:ストレージ アカウントにデータをアップロードします。<br/><br/> - dc.services.visualstudio.com:内部監視に使用するアプリ ログをアップロードします。<br/><br/> - time.windows.com:システム時刻とグローバル時刻間の時刻同期を確認します。
 | **ポート アクセス** |  VM レプリケーション データを送信するための HTTPS ポート 443 での送信接続。
 
 ## <a name="hyper-v-vms"></a>Hyper-V VM
@@ -34,8 +34,6 @@ ms.locfileid: "77031648"
 | **サポート**                  | **詳細**               
 | :----------------------------- | :------------------- |
 | **オペレーティング システム** | Azure でサポートされているすべての [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) および [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) オペレーティング システム。 |
-| **アクセス許可**           | 評価する各 Hyper-V VM に対する管理者のアクセス許可が必要です。 |
-| **統合サービス**       | オペレーティング システム情報をキャプチャするには、評価する VM で [Hyper-V 統合サービス](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services)が実行されている必要があります。 |
 | **Azure に必要な変更** | 一部の VM は、Azure で実行できるように変更が必要な場合があります。 移行の前に手動で調整する必要があります。 関連する記事には、その手順が記載されています。 |
 | **Linux ブート**                 | /boot が専用パーティションに存在する場合は、OS ディスク上に存在する必要があり、複数のディスクに分散していてはいけません。<br/> /boot がルート (/) パーティションに含まれている場合は、"/" パーティションは OS ディスク上に存在する必要があり、他のディスクにまたがっていてはいけません。 |
 | **UEFI ブート**                  | Azure 内の移行された VM は、自動的に BIOS ブート VM に変換されます。 VM では、Windows Server 2012 以降のみが実行されている必要があります。 OS ディスクには最大 5 つのパーティションが必要であり、OS ディスクのサイズは 300 GB 未満にする必要があります。
@@ -55,15 +53,13 @@ ms.locfileid: "77031648"
 
 ## <a name="azure-vm-requirements"></a>Azure VM の要件
 
-Azure にレプリケートされたオンプレミス VM はすべて、この表にまとめられている Azure VM の要件を満たしている必要があります。 Site Recovery がレプリケーションの前提条件確認を実行するとき、満たされていない要件がある場合には確認が失敗します。
+Azure にレプリケートされたオンプレミス VM はすべて、この表にまとめられている Azure VM の要件を満たしている必要があります。
 
 **コンポーネント** | **必要条件** | **詳細**
 --- | --- | ---
-ゲスト オペレーティング システム | 移行のためにサポートされている VMware VM オペレーティン グシステムを検証します。<br/> サポートされているオペレーティング システム上で実行されているすべてのワークロードを移行できます。 | サポートされていない場合、確認は失敗します。
-ゲスト オペレーティング システムのアーキテクチャ | 64 ビット。 | サポートされていない場合、確認は失敗します。
 オペレーティング システムのディスク サイズ | 最大 2,048 GB。 | サポートされていない場合、確認は失敗します。
 オペレーティング システムのディスク数 | 1 | サポートされていない場合、確認は失敗します。
-データ ディスク数 | 64 以下。 | サポートされていない場合、確認は失敗します。
+データ ディスク数 | 16 以下 | サポートされていない場合、確認は失敗します。
 データ ディスク サイズ | 最大 4,095 GB | サポートされていない場合、確認は失敗します。
 ネットワーク アダプター | 複数のアダプターがサポートされます。 |
 共有 VHD | サポートされていません。 | サポートされていない場合、確認は失敗します。

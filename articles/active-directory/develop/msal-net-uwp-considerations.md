@@ -1,69 +1,68 @@
 ---
 title: UWP に関する考慮事項 (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: .NET (MSAL.NET) 用 Microsoft 認証ライブラリでユニバーサル Windows プラットフォームを使用する場合の固有の考慮事項について説明します。
+description: ユニバーサル Windows プラットフォーム (UWP) を .NET 用 Microsoft Authentication Library (MSAL.NET) と使用する場合の考慮事項について説明します。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 549e36099e06d665ecab879ceb3c38987d000852
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2eeec28569cf31af4542d6cd7aca1fb27d77b1e0
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695094"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132523"
 ---
-# <a name="universal-windows-platform-specific-considerations-with-msalnet"></a>MSAL.NET でのユニバーサル Windows プラットフォームに固有の考慮事項
-UWP には、MSAL.NET を使用する場合に考慮する必要がある考慮事項がいくつかあります。
+# <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>ユニバーサル Windows プラットフォームを MSAL.NET と使用する場合の考慮事項
+ユニバーサル Windows プラットフォーム (UWP) を MSAL.NET と使用するアプリケーションの開発者は、この記事で紹介する概念を考慮する必要があります。
 
 ## <a name="the-usecorporatenetwork-property"></a>UseCorporateNetwork プロパティ
-WinRT のプラットフォームにおける `PublicClientApplication` には、ブール型プロパティ ``UseCorporateNetwork`` があります。 このプロパティにより、ユーザーがフェデレーション Azure AD テナントのアカウントでサインインした場合、Win8.1 および UWP のアプリケーションで、統合 Windows 認証 (したがって、オペレーティング システムにサインインしたユーザーによる SSO) のメリットが得られます。 このプロパティを設定すると、MSAL.NET は WAB (Web Authentication Broker) を利用します。
+Windows ランタイム (WinRT) プラットフォームでは、`PublicClientApplication` にブール型プロパティ `UseCorporateNetwork` があります。 このプロパティを使用すると、フェデレーション Azure Active Directory (Azure AD) テナントを持つアカウントにユーザーがサインインしている場合に、Windows 8.1 アプリケーションと UWP アプリケーションで統合 Windows 認証 (IWA) のメリットを活用できるようになります。 オペレーティング システムにサインインしているユーザーが、シングル サインオン (SSO) を使用することもできます。 `UseCorporateNetwork` プロパティを設定すると、MSAL.NET により、Web 認証ブローカー (WAB) が使用されます。
 
 > [!IMPORTANT]
-> このプロパティを true に設定するにあたり、アプリケーション開発者がアプリケーションで統合 Windows 認証 (IWA) を有効にしておくことが前提となります。 この場合、
-> - UWP アプリケーションの ``Package.appxmanifest`` の **[機能]** タブで、以下の機能を有効にします。
->   - エンタープライズ認証
->   - プライベート ネットワーク (クライアントとサーバー)
->   - 共有ユーザー証明書
+> `UseCorporateNetwork` プロパティを true に設定する場合は、アプリケーション開発者がアプリケーションで IWA を有効にしておくことが前提となります。 IWA を有効にするには、次を実行します。
+> - UWP アプリケーションの `Package.appxmanifest` の **[機能]** タブで、以下の機能を有効にします。
+>   - **エンタープライズ認証**
+>   - **プライベート ネットワーク (クライアントとサーバー)**
+>   - **共有ユーザー証明書**
 
-エンタープライズ認証または共有ユーザー証明書の機能を要求するアプリケーションでは、Windows ストアに受け入れるためにより高いレベルの検証が必要であり、またすべての開発者がより高いレベルの検証を望むわけではないため、IWA は既定では有効になっていません。
+IWA は既定では有効になっていません。これは、Microsoft Store では、エンタープライズ認証または共有ユーザー証明書の機能を要求するアプリケーションを受け入れる前に、高いレベルの検証が求められるからです。 すべての開発者がこのレベルの検証を望むとも限りません。
 
-UWP プラットフォーム (WAB) 上の基になる実装は、条件付きアクセスが有効となったエンタープライズ シナリオでは正しく動作しません。 症状は次のとおりです。ユーザーは Windows Hello でのサインインを試み、証明書を選択するように提案されますが:
+UWP プラットフォームでは、条件付きアクセスが有効になっているエンタープライズ シナリオでは、基になる WAB 実装が正しく動作しません。 ユーザーが Windows Hello を使用してサインインしようとすると、この問題が発生します。 ユーザーが証明書を選択するように求められたとき、以下が発生します。
 
-- PIN に対応した証明書が見つかりません。
-- または、ユーザーは証明書を選択しますが、PIN の指定を求められることはありません。
+- PIN に対応した証明書が見つからない。
+- ユーザーが証明書を選択すると、PIN 入力が求められなくなる。
 
-回避策として別の方法 (ユーザー名/パスワード + 電話認証) を使用できますが、あまり良い結果は得られません。
+この問題を回避するために、ユーザー名、パスワード、電話認証などの代替方法を使用することはできますが、望ましいエクスペリエンスではありません。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-ある特定の企業環境で次のサインイン エラーが発生したという報告が、一部のお客様から寄せられています。
+インターネット接続があり、パブリック ネットワークでは接続が動作することがわかっている特定のエンタープライズ環境で、一部のお客様から次のサインイン エラーが報告されました。
 
 ```Text
-We can't connect to the service you need right now. Check your network connection or try this again later
+We can't connect to the service you need right now. Check your network connection or try this again later.
 ```
 
-一方で、インターネット接続があること、またパブリック ネットワークでは正しく動作することをお客様は把握しています。
-
-回避策は、WAB (基礎となる Windows コンポーネント) がプライベート ネットワークを許可することの確認です。 これを行うには、次のようにレジストリ キーを設定します。
+この問題を回避するには、WAB (基礎となる Windows コンポーネント) でプライベート ネットワークが許可されていることを確認します。 これを行うには、次のようにレジストリ キーを設定します。
 
 ```Text
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\authhost.exe\EnablePrivateNetwork = 00000001
 ```
 
-詳細については、[「Web 認証ブローカー」の「Fiddler」](https://docs.microsoft.com/windows/uwp/security/web-authentication-broker#fiddler)を参照してください。
+詳細については、[Web 認証ブローカー - Fiddler](https://docs.microsoft.com/windows/uwp/security/web-authentication-broker#fiddler) に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-詳細は、以下の例に示されています。
+詳細については、以下の例を参照してください。
 
 サンプル | プラットフォーム | 説明 
 |------ | -------- | -----------|
-|[active-directory-dotnet-native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | Azure AD v2.0 エンドポイントで認証されているユーザーの Microsoft Graph にアクセスする、msal.net を使用したユニバーサル Windows プラットフォームのクライアント アプリケーション。 <br>![トポロジ](media/msal-net-uwp-considerations/topology-native-uwp.png)|
-|[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin.iOS、Android、UWP | AAD v 2.0 エンドポイント経由で MSA と Azure AD を認証し、結果のトークンで Microsoft Graph にアクセスするための MSAL の使用方法を示す、単純な Xamarin Forms アプリ。 <br>![トポロジ](media/msal-net-uwp-considerations/topology-xamarin-native.png)|
+|[active-directory-dotnet-native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | MSAL.NET を使用する UWP クライアント アプリケーション。 Azure AD 2.0 エンドポイントを使用して認証を行うユーザーの Microsoft Graph にアクセスします。 <br>![トポロジ](media/msal-net-uwp-considerations/topology-native-uwp.png)|
+|[active-directory-xamarin-native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin.iOS、Android、UWP | MSAL を使用して、Azure AD 2.0 エンドポイントを介して Microsoft の個人用アカウントおよび Azure AD を認証する方法を示すシンプルな Xamarin Forms アプリ。 また、Microsoft Graph にアクセスする方法と、結果として生成されるトークンについても示します。 <br>![トポロジ](media/msal-net-uwp-considerations/topology-xamarin-native.png)|
