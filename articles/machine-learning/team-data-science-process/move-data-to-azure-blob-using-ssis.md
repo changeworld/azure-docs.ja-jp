@@ -64,7 +64,7 @@ SSIS 機能パックを使用して、データをオンプレミスから Azure
 
 タスクで使用されるパラメーターについて、ここで説明します。
 
-| フィールド | [説明] |
+| フィールド | 説明 |
 | --- | --- |
 | **[AzureStorageConnection]** |既存の Azure Storage 接続マネージャーを指定するか、BLOB ファイルがホストされる場所を指す Azure Storage アカウントを参照する、新しい Azure Storage 接続マネージャーを作成します。 |
 | **BlobContainer** |アップロードしたファイルを BLOB として保持する BLOB コンテナーの名前を指定します。 |
