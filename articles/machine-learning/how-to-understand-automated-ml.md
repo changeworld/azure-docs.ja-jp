@@ -76,7 +76,7 @@ Azure Machine Learning の自動機械学習機能を使用して構築するす
 
 分類タスクの実行イテレーションごとに、次のメトリックが保存されます。
 
-メトリック|[説明]|計算|追加のパラメーター
+メトリック|説明|計算|追加のパラメーター
 --|--|--|--
 AUC_Macro| AUC は、受信者操作特徴曲線の下の領域です。 Macro は、クラスごとの AUC の算術平均です。  | [計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="macro"|
 AUC_Micro| AUC は、受信者操作特徴曲線の下の領域です。 Micro は、各クラスの真陽性と偽陽性を組み合わせることでグローバルに計算されます。| [計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="micro"|
@@ -218,7 +218,7 @@ Azure Machine Learning の自動機械学習機能を使用して構築するす
 
 回帰タスクまたは予測タスクの実行イテレーションごとに、次のメトリックが保存されます。
 
-|メトリック|[説明]|計算|追加のパラメーター
+|メトリック|説明|計算|追加のパラメーター
 --|--|--|--|
 explained_variance|説明分散は、ある数学的モデルが、提供されたデータ セットのバリエーションに占める割合です。 エラーの分散に対する元データの分散の減少の割合です。 エラーの平均が 0 の場合は、説明分散と同じです。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|なし|
 r2_score|R2 は、平均を出力するベースライン モデルと比較した、決定係数または二乗誤差の減少の割合です。 |[計算](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|なし|
