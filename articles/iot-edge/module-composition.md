@@ -141,7 +141,7 @@ IoT SDK を使用することにより、モジュールは、ModuleClient ク�
 
 ソース プロパティは、次のいずれかの値にすることができます。
 
-| source | [説明] |
+| source | 説明 |
 | ------ | ----------- |
 | `/*` | 任意のモジュールまたはリーフ デバイスからのすべての device-to-cloud メッセージまたはツイン変更通知 |
 | `/twinChangeNotifications` | 任意のモジュールまたはリーフ デバイスから送信されるツイン変更 (reported プロパティ) |
@@ -177,7 +177,7 @@ FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
 
 シンク プロパティは、次のいずれかの値にすることができます。
 
-| シンク | [説明] |
+| シンク | 説明 |
 | ---- | ----------- |
 | `$upstream` | IoT Hub にメッセージを送信する |
 | `BrokeredEndpoint("/modules/<moduleId>/inputs/<input>")` | 特定のモジュールの特定の入力にメッセージを送信する |
