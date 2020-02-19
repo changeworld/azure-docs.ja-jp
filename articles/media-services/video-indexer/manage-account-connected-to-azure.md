@@ -54,7 +54,7 @@ Videos Indexer アカウントが Azure に接続されている場合は、次�
 
 [Video Indexer](https://www.videoindexer.ai/) ページの **[Update connection to Azure Media Services]\(Azure Media Services への接続の更新\)** ダイアログで、次の設定の値を指定するように求められます。 
 
-|設定|[説明]|
+|設定|説明|
 |---|---|
 |Azure サブスクリプション ID|サブスクリプション ID は Azure portal から取得できます。 左側のウィンドウで **[すべてのサービス]** をクリックし、「サブスクリプション」と検索します。 **[サブスクリプション]** を選択して、サブスクリプションの一覧から目的の ID を選択します。|
 |Azure Media Services のリソース グループ名|Media Services アカウントを作成したリソース グループの名前。|
