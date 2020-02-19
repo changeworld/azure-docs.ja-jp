@@ -38,7 +38,7 @@ ms.locfileid: "75452934"
 
 1. *{filter}* をロールの種類に置き換えます。
 
-    | Assert | [説明] |
+    | Assert | 説明 |
     | --- | --- |
     | `$filter=type%20eq%20'CustomRole'` | CustomRole 型に基づいてフィルター処理する |
 
@@ -62,7 +62,7 @@ ms.locfileid: "75452934"
 
 1. *{filter}* をロールの種類に置き換えます。
 
-    | Assert | [説明] |
+    | Assert | 説明 |
     | --- | --- |
     | `$filter=type%20eq%20'CustomRole'` | CustomRole 型に基づいてフィルター処理する |
 
@@ -86,7 +86,7 @@ ms.locfileid: "75452934"
 
 1. *{filter}* をロールの表示名に置き換えます。
 
-    | Assert | [説明] |
+    | Assert | 説明 |
     | --- | --- |
     | `$filter=roleName%20eq%20'{roleDisplayName}'` | ロールの完全な表示名の URL エンコード形式を使用します。 次に例を示します。`$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
 
