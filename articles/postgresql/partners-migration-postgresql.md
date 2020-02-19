@@ -18,7 +18,7 @@ ms.locfileid: "76289783"
 Azure Database for PostgreSQL ソリューションを広くサポートするために、業界をリードするパートナーとツールを広範な選択肢の中から選択できます。 この記事は、Azure Database for PostgreSQL をサポートする移行ソリューションを提供している Microsoft パートナーについて説明しています。
 
 ## <a name="migration-partners"></a>移行パートナー
-| Partner | [説明] | リンク | ビデオ |
+| Partner | 説明 | リンク | ビデオ |
 | --- | --- | --- | --- |
 | ![SNP Technologies][1] |**SNP Technologies**<br>SNP Technologies は、将来のビジネス向けの安全性と信頼性の高いソリューションを構築している、クラウド専用のサービス プロバイダーです。 同社は、お客様のビジネスにとって本当の価値を生み出すことを信条としています。 SNP Technologies は、構想から実行まで顧客と共通の目的を共有して、その投資を利益に変えます。|[Web サイト][snp_website]<br>[Twitter][snp_twitter]<br>[連絡先][snp_contact] | |
 | ![DB Best Technologies, LLC][2] |**DB Best Technologies, LLC**<br>DB Best は、顧客がマネージド Azure データベース サービスを最大限に活用するお手伝いをします。 同社は、[Future-State Architectural Design](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2F www.dbbest.com%2Fservices%2Ffuture-state-architectural-design%2F&data=02%7C01%7Cjtoland%40microsoft.com%7C7311aa2024894a80eff208d5cfd45696%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636643433261194557&sdata=SCr3kseFvcU7mI1%2FZt7K2elXAqLY%2FyL6AO944QiWoLg%3D&reserved=0)、[Data Management Optimization for Microsoft Data Platform](https://www.dbbest.com/services/data-management-optimization-for-microsoft-data-platform/)、[Microsoft Azure Deployment Planning Services](https://www.dbbest.com/services/microsoft-azure-deployment-planning-services)、[Azure Data Platform Readiness Training](https://www.dbbest.com/services/azure-data-platform-readiness-training) など、利用を開始するのに役立つさまざまなサービスを提供しています。|[Web サイト][dbbest_website]<br>[Twitter][dbbest_twitter]<br>[YouTube][dbbest_youtube]<br>[連絡先][dbbest_contact] | |
