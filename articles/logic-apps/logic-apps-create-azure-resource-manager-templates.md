@@ -104,7 +104,7 @@ Azure Key Vault 参照 (静的のみ) を使用して抽出する場合は、次
 PS> Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileNameParameter
 ```
 
-| パラメーター | 必須 | [説明] |
+| パラメーター | 必須 | 説明 |
 |------------|----------|-------------|
 | TemplateFile | はい | テンプレート ファイルのファイル パス |
 | KeyVault | いいえ | 有効なキー コンテナー値の処理方法を記述する列挙。 既定では、 `None`です。 |
