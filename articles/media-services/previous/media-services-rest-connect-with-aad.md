@@ -62,7 +62,7 @@ Azure Media Services で Azure AD Authentication を使用する場合は、次�
 
 Media Services API にアクセスするには、以下のデータ ポイントを収集する必要があります。
 
-|設定|例|[説明]|
+|設定|例|説明|
 |---|-------|-----|
 |Azure Active Directory テナント ドメイン|microsoft.onmicrosoft.com|セキュリティ トークン サービス (STS) エンドポイントとしての Azure AD は、<https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token> という形式で作成されます。 Azure AD は、リソース (アクセス トークン) にアクセスするために JWT を発行します。|
 |REST API エンドポイント|<https://amshelloworld.restv2.westus.media.azure.net/api/>|これは、アプリケーションのすべての Media Services REST API 呼び出しの呼び出し先エンドポイントです。|
