@@ -195,7 +195,7 @@ ms.locfileid: "75933585"
 
 `BatchUsageEvent` API 応答で参照される状態コードの説明:
 
-| status code  | [説明] |
+| status code  | 説明 |
 | ---------- | -------------------- |
 | `Accepted` | コードが受け付けられました。 |
 | `Expired` | 使用状況の有効期限が切れています。 |
