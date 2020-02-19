@@ -259,7 +259,7 @@ run_config.source_directory_data_store = "workspaceblobstore"
 
 Azure Machine Learning には、スコアリングにモデルを使用する方法が複数用意されています。 これらの方法の一部では、データストアへのアクセスが提供されていません。 次の表を使用して、スコアリング中にデータストアへのアクセスが許可されるのはどの方法かを理解します。
 
-| 方法 | データストア アクセス | [説明] |
+| 方法 | データストア アクセス | 説明 |
 | ----- | :-----: | ----- |
 | [バッチ予測](how-to-use-parallel-run-step.md) | ✔ | 大量のデータの予測を非同期的に行います。 |
 | [Web サービス](how-to-deploy-and-where.md) | &nbsp; | モデルを Web サービスとしてデプロイします。 |
