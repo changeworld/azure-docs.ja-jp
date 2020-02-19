@@ -1,111 +1,186 @@
 ---
-title: B2B エンタープライズ統合を作成する
-description: Azure Logic Apps と Enterprise Integration Pack で B2B データを受信します
+title: B2B エンタープライズ統合シナリオのメッセージ交換
+description: Enterprise Integration Pack を使用して Azure Logic Apps 内の取引先間で B2B メッセージを送受信する
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 07/08/2016
-ms.openlocfilehash: 39966b8171296a8608b9436485f7682d114c8410
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 02/10/2020
+ms.openlocfilehash: 01b2bd464db51e255930fe83a3f4321687322275
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793101"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77151204"
 ---
-# <a name="receive-b2b-data-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B データを受信する
+# <a name="receive-and-send-b2b-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack を使用して B2B メッセージを送受信する
 
-パートナーと契約を含む統合アカウントを作成した後、[Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)を使用してロジック アプリの企業間 (B2B) ワークフローを作成できます。
+取引先と契約を定義する統合アカウントがあれば、[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) を使用して、取引先間でメッセージを交換するための自動化された企業間 (B2B) ワークフローを作成できます。 Azure Logic Apps は、AS2、X12、EDIFACT、RosettaNet の業界標準プロトコルをサポートするコネクタで動作します。 また、これらのコネクタを、[Logic Apps で使用可能な他のコネクタ](../connectors/apis-list.md) (たとえば、Salesforce、Office 365 Outlook など) と組み合わせることもできます。
+
+この記事では、要求トリガーを使用して HTTP 要求を受信し、AS2 アクションと X12 アクションを使用してメッセージのコンテンツをデコードした後、応答アクションを使用して応答を返すロジック アプリの作成方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-AS2 と X12 のアクションを使用するには、エンタープライズ統合アカウントが必要です。 「[統合アカウントの概要](../logic-apps/logic-apps-enterprise-integration-accounts.md)」を参照してください。
+* Azure サブスクリプション。 サブスクリプションをまだお持ちでない場合には、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
-## <a name="create-a-logic-app-with-b2b-connectors"></a>B2B コネクタを使用するロジック アプリを作成する
+* [要求](../connectors/connectors-native-reqres.md)トリガーを使用し、その後に次に示すアクションを使用して、B2B ワークフローを作成できるようにする空のロジック アプリ。
 
-次の手順に従って、AS2 と X12 のアクションを使用して取引先からデータを受信する B2B ロジック アプリを作成します。
+  * [[AS2 デコード]](../logic-apps/logic-apps-enterprise-integration-as2.md) を選択したことを確認します。
 
-1. ロジック アプリを作成した後、[アプリを統合アカウントにリンク](../logic-apps/logic-apps-enterprise-integration-accounts.md)します。
+  * [条件](../logic-apps/logic-apps-control-flow-conditional-statement.md)。AS2 デコード アクションの成功または失敗に基づいて[要求](../connectors/connectors-native-reqres.md)を送信します。
 
-2. ロジック アプリに **[Request - When an HTTP request is received (要求 - HTTP 要求を受信したとき)]** トリガーを追加します。
+  * [X12 メッセージのデコード](../logic-apps/logic-apps-enterprise-integration-x12.md) 
 
-    ![](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)
+  ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と[クイックスタートの初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
 
-3. **AS2 のデコード** アクションを追加するには、 **[アクションの追加]** を選択します。
+* Azure サブスクリプションに関連付けられ、ロジック アプリにリンクされている[統合アカウント](../logic-apps/logic-apps-enterprise-integration-accounts.md)。 使用するロジックアプリと統合アカウントは両方とも同じ場所または同じ Azure リージョンに存在する必要があります。
 
-    ![](./media/logic-apps-enterprise-integration-b2b/transform-2.png)
+* 統合アカウントで、パートナーの [AS2 契約および X12 契約](logic-apps-enterprise-integration-agreements.md)と共に既に定義されている 2 つ以上の[取引先](../logic-apps/logic-apps-enterprise-integration-partners.md)。
 
-4. すべてのアクションから目的のアクションを抽出するには、検索ボックスに「**as2**」と入力します。
+## <a name="add-request-trigger"></a>要求トリガーの追加
 
-    ![](./media/logic-apps-enterprise-integration-b2b/b2b-5.png)
+この例では、Azure portal のロジック アプリ デザイナーを使用しますが、Visual Studio のロジック アプリ デザイナーを使用して同様のステップに従うこともできます。
 
-5. **[AS2 - Decode AS2 message (AS2 - AS2 メッセージのデコード)]** アクションを選択します。
+1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーで空のロジック アプリを開きます。
 
-    ![](./media/logic-apps-enterprise-integration-b2b/b2b-6.png)
+1. 検索ボックスに「`when a http request`」と入力し、トリガーとして使用する **[HTTP 要求の受信時]** を選択します。
 
-6. 入力として使用する **[本文]** を追加します。 
-   この例では、ロジック アプリをトリガーする HTTP 要求の本文を選択します。 または、ヘッダーを入力する式を **[ヘッダー]** フィールドに入力します。
+   ![ロジック アプリ ワークフローを開始するための要求トリガーを選択する](./media/logic-apps-enterprise-integration-b2b/select-http-request-trigger.png)
 
-    @triggerOutputs()['headers']
+1. X12 メッセージはフラット ファイルであるため、 **[要求本文の JSON スキーマ]** ボックスは空のままにしておきます。
 
-7. AS2 で必要な **[ヘッダー]** を追加します。これは HTTP 要求ヘッダーで見つけることができます。 
-   この例では、ロジック アプリをトリガーする HTTP 要求のヘッダーを選択します。
+   ![[要求本文の JSON スキーマ] は空のままにしておく](./media/logic-apps-enterprise-integration-b2b/receive-trigger-message-body-json-schema.png)
 
-8. 次に、X12 メッセージのデコード アクションを追加します。 **[アクションの追加]** を選択します。
+1. 操作が完了したら、デザイナーのツールバーで、 **[保存]** を選択します。
 
-    ![](./media/logic-apps-enterprise-integration-b2b/b2b-9.png)
+   このステップでは、ロジック アプリをトリガーする要求を送信する場合に使用する **HTTP POST URL** を生成します。 この URL をコピーするには、URL の横にあるコピー アイコンを選択します。
 
-9. すべてのアクションから目的のアクションを抽出するには、検索ボックスに「**x12**」と入力します。
+   ![呼び出しを受信するために要求トリガー用に生成された URL](./media/logic-apps-enterprise-integration-b2b/generated-url-request-trigger.png)
 
-    ![](./media/logic-apps-enterprise-integration-b2b/b2b-10.png)
+## <a name="add-as2-decode-action"></a>AS2 デコード アクションの追加
 
-10. **[X12 - Decode X12 message (X12 - X12 メッセージのデコード)]** アクションを選択します。
+次に、使用する B2B アクションを追加します。 この例では、AS2 アクションと X12 アクションを使用します。
 
-    ![](./media/logic-apps-enterprise-integration-b2b/b2b-as2message.png)
+1. トリガーで、 **[新しいステップ]** を選択します。 トリガーの詳細を非表示にするには、トリガーのタイトル バーをクリックします。
 
-11. 次に、この操作に対する入力を指定する必要があります。 
-    この入力は、前の AS2 アクションからの出力です。
+   ![ロジック アプリ ワークフローに別のステップを追加する](./media/logic-apps-enterprise-integration-b2b/add-new-action-under-trigger.png)
 
-    実際のメッセージの内容は JSON オブジェクトであり、base64 でエンコードされているため、入力として式を指定する必要があります。 
-    次の式を **[X12 FLAT FILE MESSAGE TO DECODE (デコードする X12 フラット ファイル メッセージ)]** 入力フィールドに入力します。
-    
-    @base64ToString(body('Decode_AS2_message')?['AS2Message']?['Content'])
+1. **[アクションを選択してください]** の下にある検索ボックスに、「`as2 decode`」と入力して、 **[AS2 デコード (v2)]** を選択します。
 
-    次に、取引先から受信した X12 データをデコードし、項目を JSON オブジェクトに出力する手順を追加します。 
-    データを受信したことをパートナーに知らせるために、HTTP 応答アクションで AS2 Message Disposition Notification (MDN) を含む応答を返すことができます。
+   !["AS2 デコード (v2)" を検索して選択する](./media/logic-apps-enterprise-integration-b2b/add-as2-decode-action.png)
 
-12. **[応答]** アクションを追加するには、 **[アクションの追加]** を選択します。
+1. **[デコードするメッセージ]** プロパティでは、AS2 アクションでデコードする入力を入力します。この入力は、HTTP 要求トリガーで受信される `body` のコンテンツです。 このコンテンツを入力として指定するには、動的コンテンツ リストから選択する方法と、式として指定する方法があります。
 
-    ![](./media/logic-apps-enterprise-integration-b2b/b2b-14.png)
+   * 使用可能なトリガー出力を示す一覧から選択するには、 **[デコードするメッセージ]** ボックス内をクリックします。 動的コンテンツ リストが表示されたら、 **[HTTP 要求の受信時]** で、 **[本文]** プロパティ値を選択します。次に例を示します。
 
-13. すべてのアクションから目的のアクションを抽出するには、検索ボックスに「**応答**」と入力します。
+     ![トリガーから値 "本文" を選択する](./media/logic-apps-enterprise-integration-b2b/select-body-content-from-trigger.png)
 
-    ![](./media/logic-apps-enterprise-integration-b2b/b2b-15.png)
+   * トリガーの `body` 出力を参照する式を入力するには、 **[デコードするメッセージ]** ボックス内をクリックします。 動的コンテンツ リストが表示されたら、 **[式]** を選択します。 式エディターに式を入力して、 **[OK]** を選択します。
 
-14. **[応答]** アクションを選択します。
+     `triggerOutputs()['body']`
 
-    ![](./media/logic-apps-enterprise-integration-b2b/b2b-16.png)
+     または、 **[デコードするメッセージ]** ボックスに次の式を直接入力します。
 
-15. **[Decode X12 message (X12 メッセージのデコード)]** アクションの出力から MDN にアクセスするには、次の式を使用して、応答の **[本文]** フィールドを設定します。
+     `@triggerBody()`
 
-    @base64ToString(body('Decode_AS2_message')?['OutgoingMdn']?['Content'])
+     この式は、 **[本文]** トークンに解決されます。
 
-    ![](./media/logic-apps-enterprise-integration-b2b/b2b-17.png)  
+     ![トリガーからの解決済みの本文の出力](./media/logic-apps-enterprise-integration-b2b/resolved-trigger-outputs-body-expression.png)
 
-16. 作業内容を保存します。
+1. **[メッセージ ヘッダー]** プロパティでは、AS2 アクションに必要なヘッダーを入力します。これは、HTTP 要求トリガーによって受信される `headers` のコンテンツによって記述されます。
 
-    ![](./media/logic-apps-enterprise-integration-b2b/transform-5.png)  
+   トリガーの `headers` 出力を参照する式を入力するには、 **[メッセージ ヘッダー]** ボックス内をクリックします。 動的コンテンツ リストが表示されたら、 **[式]** を選択します。 式エディターに式を入力して、 **[OK]** を選択します。
 
-これで、B2B ロジック アプリの設定が完了しましました。 実際のアプリケーションでは、デコードした X12 データを基幹業務 (LOB) アプリやデータストアに保存できます。 独自の LOB アプリに接続してロジック アプリでこれらの API を使用するために、さらにアクションを追加したり、カスタム API を記述したりできます。
+   `triggerOutputs()['Headers']`
 
-## <a name="features-and-use-cases"></a>機能とユース ケース
+   この式をこのトークンとして解決するには、[デザイナー] と [コード ビュー] を切り替えます。次に例を示します。
 
-* AS2 と X12 のデコード アクションとエンコード アクションにより、ロジック アプリで業界標準のプロトコルを使用して取引先とデータ交換できます。
-* 取引先とのデータ交換は、互いに AS2 と X12 を使用して行うことも、使用しないで行うこともできます
-* B2B アクションにより、統合アカウントにパートナーと契約を簡単に作成して、ロジック アプリでこれらを使用できます。
-* 他のアクションでロジック アプリを拡張することにより、SalesForce などの他のアプリや サービス間でデータを送受信できます。
+   ![トリガーからの解決済みのヘッダーの出力](./media/logic-apps-enterprise-integration-b2b/resolved-trigger-outputs-headers-expression.png)
 
-## <a name="learn-more"></a>詳細情報
-[Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md)
+## <a name="add-response-action-for-message-receipt-notification"></a>メッセージ受信通知の応答アクションを追加する
+
+メッセージを受信したことを取引先に通知するには、**応答** アクションを使用して、AS2 メッセージ処理通知 (MDN) を含む応答を返すことができます。 このアクションを **AS2 デコード** アクションの直後に追加すると、AS2 デコード アクションが失敗した場合、ロジック アプリは処理を続行しません。
+
+1. **[AS2 デコード]** アクションで、 **[新しいステップ]** を選択します。
+
+1. **[アクションを選択してください]** の下にある検索ボックスの下で、 **[ビルトイン]** を選択します。 検索ボックスに「 `condition`」と入力します。 **[アクション]** の一覧で、 **[条件]** を選択します。
+
+   !["条件" アクションを追加する](./media/logic-apps-enterprise-integration-b2b/add-condition-action.png)
+
+   以上で、条件を満たしている場合と満たしていない場合のパスを含む条件図形が表示されます。
+
+   ![意思決定パスを含む条件図形](./media/logic-apps-enterprise-integration-b2b/added-condition-action.png)
+
+1. 次に、評価する条件を指定します。 **[値の選択]** ボックスに、次の式を入力します。
+
+   `@body('AS2_Decode')?['AS2Message']?['MdnExpected']`
+
+   中央のボックスの比較演算が `is equal to` に設定されていることを確認します。 右側のボックスに、値 `Expected` を入力します。 式をこのトークンとして解決するには、[デザイナー] と [コード ビュー] を切り替えます。
+
+   ![意思決定パスを含む条件図形](./media/logic-apps-enterprise-integration-b2b/expression-for-evaluating-condition.png)
+
+1. 次に、**AS2 デコード** アクションが成功したかどうかを返す応答を指定します。
+
+   1. **AS2 デコード** アクションが成功した場合については、 **[true の場合]** 図形で、 **[アクションの追加]** を選択します。 **[アクションを選択してください]** の下にある検索ボックスに、「`response`」と入力して、 **[応答]** を選択します。
+
+      !["応答" アクションを検索して追加する](./media/logic-apps-enterprise-integration-b2b/select-http-response-action.png)
+
+   1. **AS2 デコード** アクションの出力から AS2 MDN にアクセスするには、次の式を指定します。
+
+      * **[応答]** アクションの **[ヘッダー]** プロパティに、次の式を入力します。
+
+        `@body('AS2_Decode')?['OutgoingMdn']?['OutboundHeaders']`
+
+      * **[応答]** アクションの **[本文]** プロパティに、次の式を入力します。
+
+        `@body('AS2_Decode')?['OutgoingMdn']?['Content']`
+
+   1. 式をトークンとして解決するには、[デザイナー] と [コード ビュー] を切り替えます。
+
+      ![AS2 MDN にアクセスするための解決済みの式](./media/logic-apps-enterprise-integration-b2b/response-action-success-resolved-expression.png)
+
+   1. **AS2 デコード** アクションが失敗した場合については、 **[false の場合]** 図形で、 **[アクションの追加]** を選択します。 **[アクションを選択してください]** の下にある検索ボックスに、「`response`」と入力して、 **[応答]** を選択します。 必要な状態とエラーを返すように**応答** アクションを設定します。
+
+1. ロジック アプリを保存します。
+
+## <a name="add-decode-x12-message-action"></a>X12 メッセージのデコード アクションを追加する
+
+1. 次に、**X12 メッセージのデコード** アクションを追加します。 **[応答]** アクションで、 **[アクションの追加]** を選択します。
+
+1. **[アクションを選択してください]** の下にある検索ボックスに、「`x12 decode`」と入力して、 **[X12 メッセージのデコード]** を選択します。
+
+   !["X12 メッセージのデコード" アクションを検索して選択する](./media/logic-apps-enterprise-integration-b2b/add-x12-decode-action.png)
+
+1. X12 アクションで接続情報の入力を求められたら、接続の名前を指定して、使用する統合アカウントを選択した後、 **[作成]** を選択します。
+
+   ![統合アカウントへの X12 接続を作成する](./media/logic-apps-enterprise-integration-b2b/create-x12-integration-account-connection.png)
+
+1. 次に、X12 アクションの入力を指定します。 この例では、AS2 アクションからの出力を使用します。これは、メッセージのコンテンツですが、このコンテンツは JSON オブジェクト形式で、Base64 でエンコードされることに注意してください。 このため、このコンテンツを文字列に変換する必要があります。
+
+   **[デコードする X12 フラット ファイル メッセージ]** ボックスに、AS2 出力を変換する次の式を入力します。
+
+   `@base64ToString(body('AS2_Decode')?['AS2Message']?['Content'])`
+
+    式をこのトークンとして解決するには、[デザイナー] と [コード ビュー] を切り替えます。
+
+    ![Base64 でエンコードされたコンテンツを文字列に変換する](./media/logic-apps-enterprise-integration-b2b/x12-decode-message-content.png)
+
+1. ロジック アプリを保存します。
+
+   このロジック アプリに追加のステップが必要な場合 (たとえば、メッセージのコンテンツをデコードして、そのコンテンツを JSON オブジェクト形式で出力する場合)、ロジック アプリのビルドを続行します。
+
+これで、B2B ロジック アプリの設定が完了しました。 実際のアプリでは、デコードした X12 データを基幹業務 (LOB) アプリやデータ ストアに保存できます。 たとえば、次の記事を参照してください。
+
+* [Azure Logic Apps から SAP システムに接続する](../logic-apps/logic-apps-using-sap-connector.md)
+* [SSH と Azure Logic Apps を使用して SFTP ファイルの監視、作成、および管理を行う](../connectors/connectors-sftp-ssh.md)
+
+独自の LOB アプリに接続してロジック アプリでこれらの API を使用するために、さらにアクションを追加したり、[カスタム API を作成](../logic-apps/logic-apps-create-api-app.md)したりすることができます。
+
+## <a name="next-steps"></a>次のステップ
+
+* [HTTPS 呼び出しを受信して応答する](../connectors/connectors-native-reqres.md)
+* [B2B エンタープライズ統合用の AS2 メッセージを交換する](../logic-apps/logic-apps-enterprise-integration-as2.md)
+* [B2B エンタープライズ統合用の X12 メッセージを交換する](../logic-apps/logic-apps-enterprise-integration-x12.md)
+* [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) について詳細を確認する

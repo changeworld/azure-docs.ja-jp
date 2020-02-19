@@ -3,12 +3,12 @@ title: PowerShell を使用して Azure Files をバックアップする
 description: この記事では、Azure Backup サービスと PowerShell を使用して Azure Files をバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 5147ab893d4ebad395d7dbd8cc25872177ec10a2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: f85451e0da6458de34aea936836b46781f4c4a21
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773099"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120509"
 ---
 # <a name="back-up-azure-files-with-powershell"></a>PowerShell を使用して Azure Files をバックアップする
 
@@ -44,6 +44,13 @@ Azure ライブラリの **Az.RecoveryServices** [コマンドレット リフ�
 PowerShell を次のように設定します。
 
 1. [最新バージョンの Az PowerShell をダウンロードします](/powershell/azure/install-az-ps)。 必要な最小バージョンは 1.0.0 です。
+
+> [!WARNING]
+> プレビューに必要な PS の最小バージョンは "Az 1.0.0" でした。 GA に向けた今後の変更により、必要とされる PS の最小バージョンは "Az.RecoveryServices 2.6.0" になります。 すべての既存の PS バージョンをこのバージョンにアップグレードすることが非常に重要です。 そうしないと、既存のスクリプトは GA 後に中断されます。 次の PS コマンドを使用して最小バージョンをインストールします。
+
+```powershell
+Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
+```
 
 2. 次のコマンドを使用して、Azure Backup PowerShell コマンドレットを検索します。
 
@@ -241,19 +248,32 @@ WorkloadName       Operation            Status                 StartTime        
 testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 PM     11/12/2018 2:16:11 PM     ec7d4f1d-40bd-46a4-9edb-3193c41f6bf6
 ```
 
+## <a name="important-notice---backup-item-identification-for-afs-backups"></a>重要な注意 - AFS バックアップのバックアップ項目の識別
+
+このセクションでは、GA に向けての準備における、AFS バックアップの重要な変更点について説明します。
+
+AFS のバックアップを有効にするときに、ユーザーにわかりやすいファイル共有名をエンティティ名としてユーザーが指定し、バックアップ項目が作成されます。 バックアップ項目の "名前" は、Azure Backup サービスによって作成される一意の識別子です。 通常、識別子にはユーザー フレンドリ名が含まれます。 しかし、ファイル共有を削除して同じ名前で別のファイル共有を作成できるという論理的な削除の重要なシナリオを処理するために、Azure ファイル共有の一意の ID をユーザー フレンドリ名ではなく ID とすることになりました。 各項目の一意の ID または名前を確認するには、backupManagementType および WorkloadType に適切なフィルターを指定して ```Get-AzRecoveryServicesBackupItem``` コマンドを実行し、関連するすべての項目を取得してから、返された PS オブジェクトまたは応答の name フィールドを確認します。 常に、項目を一覧表示したうえで、応答の "name" フィールドから一意の名前を取得することをお勧めします。 この値を "Name" パラメーターで使用して、項目をフィルター処理します。 または、FriendlyName パラメーターを使用して、そのユーザー フレンドリ名または識別子を持つ項目を取得します。
+
+> [!WARNING]
+> PS バージョンが、AFS バックアップ用の "Az.RecoveryServices 2.6.0" のための最小バージョンにアップグレードされていることを確認してください。 このバージョンでは、```Get-AzRecoveryServicesBackupItem``` コマンドで "friendlyName" フィルターを使用できます。 Azure ファイル共有名を friendlyName パラメーターに渡します。 Azure ファイル共有名を "Name" パラメーターに渡すと、このバージョンでは、このフレンドリ名をフレンドリ名パラメーターに渡すための警告がスローされます。 この最小バージョンをインストールしないと、既存のスクリプトでエラーが発生する可能性があります。 次のコマンドを使用して PS の最小バージョンをインストールします。
+
+```powershell
+Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
+```
+
 ## <a name="trigger-an-on-demand-backup"></a>オンデマンド バックアップをトリガーする
 
 [Backup-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem?view=azps-1.4.0) を使用して、保護されている Azure ファイル共有のオンデマンド バックアップを実行します。
 
-1. [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer) を使用して、バックアップ データを保持するコンテナー内のコンテナーからストレージ アカウントとファイル共有を取得します。
-2. バックアップ ジョブを開始するには、[Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem) を使用して、VM に関する情報を取得します。
+1. [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer) を使用して、バックアップ データを保持するコンテナー内のコンテナーからストレージ アカウントを取得します。
+2. バックアップ ジョブを開始するには、[Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem) を使用して、Azure ファイル共有に関する情報を取得します。
 3. [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem) を使用して、オンデマンド バックアップを実行します。
 
 次のようにしてオンデマンド バックアップを実行します。
 
 ```powershell
 $afsContainer = Get-AzRecoveryServicesBackupContainer -FriendlyName "testStorageAcct" -ContainerType AzureStorage
-$afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -WorkloadType "AzureFiles" -Name "testAzureFS"
+$afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -WorkloadType "AzureFiles" -FriendlyName "testAzureFS"
 $job =  Backup-AzRecoveryServicesBackupItem -Item $afsBkpItem
 ```
 
@@ -272,6 +292,9 @@ testAzureFS       Backup               Completed            11/12/2018 2:42:07 P
 オンデマンド バックアップを使用すると、スナップショットを 10 年間保持することができます。 スケジューラを使い、保持期間を選択して PowerShell スクリプトをオンデマンドで実行することで、スナップショットを定期的 (週次、月次、年次) に作成することも可能です。 定期的なスナップショットの取得については、Azure Backup を使用した[オンデマンド バックアップの制限](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share)に関するページを参照してください。
 
 サンプル スクリプトをお探しの場合は、バックアップを定期的にスケジュールし、それを最大 10 年間保持することが可能な Azure Automation Runbook を使用した GitHub (<https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup>) 上のサンプル スクリプトを参照できます。
+
+> [!WARNING]
+> お使いの Automation の Runbook で、PS バージョンが、AFS バックアップ用の "Az.RecoveryServices 2.6.0" のための最小バージョンにアップグレードされていることを確認してください。 以前の "AzureRM" モジュールを "Az" モジュールに置き換える必要があります。 このバージョンでは、```Get-AzRecoveryServicesBackupItem``` コマンドで "friendlyName" フィルターを使用できます。 Azure ファイル共有名を friendlyName パラメーターに渡します。 Azure ファイル共有名を "Name" パラメーターに渡すと、このバージョンでは、このフレンドリ名をフレンドリ名パラメーターに渡すための警告がスローされます。
 
 ## <a name="next-steps"></a>次のステップ
 

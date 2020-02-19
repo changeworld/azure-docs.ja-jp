@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 6cec7c813b0723ac770da6ebd04f4d2cf26a1409
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: eaa95906e20072e2914d1486568d7a6ebeb64f2c
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840589"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114393"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -83,7 +83,7 @@ NSG のトラフィック分析は、次のサポートされているどのリ�
 * インド南部
 * 東日本 
 * 西日本
-* 米国政府バージニア州
+* US Gov バージニア州
 * 中国東部 2
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>サポートされているリージョン:Log Analytics ワークスペース
@@ -112,7 +112,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 * 韓国中部
 * インド中部
 * 東日本
-* 米国政府バージニア州
+* US Gov バージニア州
 * 中国東部 2
 
 ## <a name="prerequisites"></a>前提条件
@@ -151,7 +151,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 
 NSG フロー ログを有効にする前に、フローをログに記録する、対象のネットワーク セキュリティ グループを選択する必要があります。 ネットワーク セキュリティ グループがない場合、作成方法については、[ネットワーク セキュリティ グループの作成](../virtual-network/manage-network-security-group.md#create-a-network-security-group)に関する記事をご覧ください。
 
-Azure Portal の左側にある **[監視]** を選択し、 **[Network Watcher]** 、 **[NSG フロー ログ]** の順に選択します。 次の図に示すように、NSG フロー ログを有効にするネットワーク セキュリティ グループを選択します。
+Azure portal で、 **[Network Watcher]** に移動して、 **[NSG フロー ログ]** を選択します。 次の図に示すように、NSG フロー ログを有効にするネットワーク セキュリティ グループを選択します。
 
 ![NSG フロー ログを有効にする必要がある NSG の選択](./media/traffic-analytics/selection-of-nsgs-that-require-enablement-of-nsg-flow-logging.png)
 

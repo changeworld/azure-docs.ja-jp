@@ -11,20 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumi
-ms.openlocfilehash: 86726eefb53638036a4e9207c648bf5ffe6c866e
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 1aa4328a6d5367ef356ce33807289a873c93d90f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595381"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77056701"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>仮想ネットワーク サービス エンドポイント ポリシー (プレビュー)
 
 Virtual Network (VNet) のサービス エンドポイント ポリシーでは、サービス エンドポイント経由での Azure サービスへの仮想ネットワーク トラフィックをフィルター処理し、特定の Azure サービス リソースのみを許可することができます。 エンドポイント ポリシーでは、Azure サービスへの仮想ネットワーク トラフィックに対する詳細なアクセス制御が提供されます。
 
-この機能は __プレビュー__ 段階で、次の Azure サービスとリージョンで提供されています。
-
-__Azure Storage__:WestCentralUS、WestUS2、NorthCentralUS、SouthCentralUS、CentralUS、EastUS2。
+この機能は、Azure Storage のすべてのパブリック Azure リージョンで__プレビュー__として利用できます。
 
 プレビューに関する最新の通知については、[Azure Virtual Network の更新情報](https://azure.microsoft.com/updates/?product=virtual-network)ページをご覧ください。
 
@@ -182,7 +180,7 @@ __Azure Storage__:WestCentralUS、WestUS2、NorthCentralUS、SouthCentralUS、Ce
 
 サービス エンドポイント ポリシーでは、次の制限が適用されます。 
 
- |Resource | 既定の制限 |
+ |リソース | 既定の制限 |
  |---------|---------------|
  |ServiceEndpointPoliciesPerSubscription |500 |
  |ServiceEndpintPoliciesPerSubnet|100 |

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: b4396c82851969b39841ba77fb8aba9679363474
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 00ab3e9c7902e253d39a38eb0e98ee166244bca2
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986497"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048578"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -189,12 +189,18 @@ automl_config = AutoMLConfig(task = "classification")
 
 ### <a name="data-featurization"></a>データの特徴付け
 
-すべての自動機械学習実験では、さまざまなスケールの特徴を検知できる*特定の*アルゴリズムをサポートできるように、データが[自動的にスケーリングおよび正規化](concept-automated-ml.md#preprocess)されます。  ただし、不足値の代入、エンコード、変換などの特徴付けも追加で有効にできます。 含まれる特徴付けに関する詳細は[こちら](how-to-create-portal-experiments.md#preprocess)から参照してください。
+すべての自動機械学習実験では、さまざまなスケールの特徴を検知できる*特定の*アルゴリズムをサポートできるように、データが[自動的にスケーリングおよび正規化](concept-automated-ml.md#preprocess)されます。  ただし、不足値の代入、エンコード、変換などの特徴付けも追加で有効にできます。 含まれる特徴付けに関する詳細は[こちら](how-to-create-portal-experiments.md#featurization)から参照してください。
 
-この特徴付けを有効にするには、[`AutoMLConfig` クラス](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)に `"featurization": 'auto'` を指定します。
+実験を構成するときに、詳細設定の `featurization` を有効にすることができます。 次の表は、[`AutoMLConfig` クラス](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)の特徴付けで許可されている設定です。
+
+|特徴付けの構成 | 説明 |
+| ------------- | ------------- |
+|`"featurization":`&nbsp;`'FeaturizationConfig'`| カスタマイズされた特徴付け手順を使用する必要があることを示します。 [特徴付けをカスタマイズする方法の詳細](how-to-configure-auto-train.md#customize-feature-engineering)。|
+|`"featurization": 'off'`| 特徴付け手順が自動的に実行されないことを示します。|
+|`"featurization": 'auto'`| 前処理の一環として、[データ ガードレールと特徴付けの手順](how-to-create-portal-experiments.md#advanced-featurization-options)が自動的に実行されることを示します。|
 
 > [!NOTE]
-> 自動化された機械学習の前処理手順 (機能の正規化、欠損データの処理、テキストから数値への変換など) は、基になるモデルの一部になります。 モデルを予測に使用する場合、トレーニング中に適用されたのと同じ前処理手順が入力データに自動的に適用されます。
+> 自動化された機械学習の特徴付け手順 (機能の正規化、欠損データの処理、テキストから数値への変換など) は、基になるモデルの一部になります。 このモデルを予測に使用する場合、トレーニング中に適用されたのと同じ特徴付けの手順がご自分の入力データに自動的に適用されます。
 
 ### <a name="time-series-forecasting"></a>時系列予測
 時系列 `forecasting` タスクでは、構成オブジェクトに追加のパラメーターが必要です。
@@ -408,7 +414,7 @@ best_run, fitted_model = automl_run.get_output()
    |変換|エンジニアリングされた特徴を生成するために入力特徴に適用される変換の一覧。|
    
 ### <a name="customize-feature-engineering"></a>特徴エンジニアリングをカスタマイズする
-特徴エンジニアリングをカスタマイズするには、 `"feauturization":FeaturizationConfig` を指定します。
+特徴エンジニアリングをカスタマイズするには、 `"featurization": FeaturizationConfig` を指定します。
 
 サポートされているカスタマイズは次のとおりです。
 

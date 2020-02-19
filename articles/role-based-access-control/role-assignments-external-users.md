@@ -1,5 +1,5 @@
 ---
-title: Azure RBAC と Azure portal を使用して外部ゲスト ユーザーにロールの割り当てを追加または削除する
+title: RBAC と Azure portal を使用して外部ユーザーのロールの割り当てを追加または削除する
 description: Azure ロールベースのアクセス制御 (RBAC) を使用して、組織外のユーザーに Azure リソースへのアクセス権を付与する方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: db43a3cce27da5f40986968b6573bfd58a1d3cb7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 1c440b85f792ac5bb1336f4d20f930aafc38ad7d
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707877"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138376"
 ---
 # <a name="add-or-remove-role-assignments-for-external-guest-users-using-azure-rbac-and-the-azure-portal"></a>Azure RBAC と Azure portal を使用して外部ゲスト ユーザーにロールの割り当てを追加または削除する
 
@@ -159,7 +159,7 @@ RBAC でアクセス権を付与するには、ロールを割り当てます。
 
    ![ロールの割り当ての削除メッセージ](./media/role-assignments-external-users/remove-role-assignment.png)
 
-1. 表示されるロールの割り当ての削除メッセージで、 **[はい]** をクリックします。
+1. ロールの割り当ての削除メッセージが表示されたら、 **[はい]** をクリックします。
 
 1. 左側のナビゲーション バーで、 **[Azure Active Directory]**  >  **[ユーザー]** をクリックします。
 
@@ -171,7 +171,7 @@ RBAC でアクセス権を付与するには、ロールを割り当てます。
 
 1. 表示される削除メッセージで、 **[はい]** をクリックします。
 
-## <a name="troubleshoot"></a>トラブルシューティング
+## <a name="troubleshoot"></a>[トラブルシューティング]
 
 ### <a name="guest-user-cannot-browse-the-directory"></a>ゲスト ユーザーがディレクトリを参照できません
 
@@ -207,7 +207,7 @@ RBAC でアクセス権を付与するには、ロールを割り当てます。
 
 ![Azure portal の [ディレクトリ + サブスクリプション] ウィンドウ](./media/role-assignments-external-users/directory-subscription.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](../active-directory/b2b/add-users-administrator.md)
 - [Azure Active Directory B2B コラボレーション ユーザーのプロパティ](../active-directory/b2b/user-properties.md)

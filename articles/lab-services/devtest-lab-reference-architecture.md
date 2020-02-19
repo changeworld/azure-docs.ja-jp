@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: f079071a88d034dfd279da8656da517b934275a3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 77e6ab588f74c8b810f211e069c1c24043155111
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982113"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132855"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Azure DevTest Labs の企業向け参照アーキテクチャ
 この記事では、企業内の Azure DevTest Labs に基づくソリューションをデプロイするための参照アーキテクチャを提供します。 含まれる内容は次のとおりです。
@@ -41,7 +41,7 @@ ms.locfileid: "75982113"
     - セキュリティ/コンプライアンスのため、クラウド環境との間のすべてのネットワーク トラフィックを強制的にオンプレミスのファイアウォール経由にしたい。
 - **ネットワーク セキュリティ グループ**:ソースと宛先の IP アドレスに基づいてクラウド環境への (またはクラウド環境内での) トラフィックを制限する一般的な方法は、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)を使用することです。 たとえば、企業ネットワークからラボのネットワークに送信されたトラフィックのみを許可します。
 - **リモート デスクトップ ゲートウェイ**:通常、企業は企業のファイアウォールで発信リモート デスクトップ接続をブロックします。 DevTest Labs でクラウドベースの環境への接続を有効にする方法は、次のようにいくつかあります。
-  - [リモート デスクトップ ゲートウェイ](/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture)を使用し、ゲートウェイ ロード バランサーの静的 IP アドレスをホワイトリストに登録します。
+  - [リモート デスクトップ ゲートウェイ](/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture)を使用し、ゲートウェイ ロード バランサーの静的 IP アドレスを許可します。
   - ExpressRoute/サイト間 VPN 接続経由で[すべての受信 RDP トラフィック を転送](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)します。 企業が DevTest Labs のデプロイを計画する場合、この機能はよく見られる考慮事項です。
 - **ネットワーク サービス (仮想ネットワーク、サブネット)** :[Azure のネットワーク](../networking/networking-overview.md) トポロジも、DevTest Labs アーキテクチャの重要な要素です。 これで、オンプレミスやインターネットとの通信やアクセスをラボのリソースに許可するかどうかを制御します。 このアーキテクチャ図には、お客様の最も一般的な DevTest Labs の使用方法が含まれています。すべてのラボは、オンプレミスへの ExpressRoute/サイト間 VPN 接続に[ハブスポーク モデル](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) を使用し、[仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)を介して接続しています。 ただし、DevTest Labs は Azure Virtual Network を直接使用するため、ネットワーク インフラストラクチャの設定方法に制限はありません。
 - **DevTest ラボ**:DevTest Labs は、全体的なアーキテクチャの重要な部分です。 サービスの詳細については、[DevTest Labs](devtest-lab-overview.md) に関する記事を参照してください。
@@ -50,7 +50,7 @@ ms.locfileid: "75982113"
 ## <a name="scalability-considerations"></a>スケーラビリティに関する考慮事項
 DevTest Labs には、組み込みのクォータや制限はありませんが、ラボの通常の運用で使用されるその他の Azure リソースには、[サブスクリプションレベルのクォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)があります。 そのため、一般的なエンタープライズ デプロイでは、DevTest Labs の大規模なデプロイに対応するための複数の Azure サブスクリプションが必要です。 企業が最もよく到達するクォータは次のとおりです。
 
-- **リソース グループ**:既定の構成では、DevTest Labs により、すべての新しい仮想マシン用またはユーザーがサービスを使用して作成する環境用のリソース グループが作成されます。 サブスクリプションには、[最大 980 個のリソース グループ](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)を含めることができます。 つまり、これがサブスクリプション内の仮想マシンと環境の制限です。 検討する必要がある構成は他に 2 つあります。
+- **リソース グループ**:既定の構成では、DevTest Labs により、すべての新しい仮想マシン用またはユーザーがサービスを使用して作成する環境用のリソース グループが作成されます。 サブスクリプションには、[最大 980 個のリソース グループ](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)を含めることができます。 つまり、これがサブスクリプション内の仮想マシンと環境の制限です。 検討する必要がある構成は他に 2 つあります。
     - **[すべての仮想マシンが同じリソース グループに入る](resource-group-control.md)** :この設定はリソース グループの制限を満たすために役立ちますが、リソース グループごとのリソースの種類の制限に影響します。
     - **共有パブリック IP を使用**:サイズとリージョンが同じすべての VM が同じリソース グループに入ります。 仮想マシンにパブリック IP アドレスを使用することが許可されている場合、この構成はリソース グループのクォータとリソース グループごとのリソースの種類のクォータの間の '妥協点' です。
 - **リソースの種類ごとのリソース グループあたりのリソース数**:[リソースの種類ごとの、リソース グループあたりのリソース数の既定の制限は 800](../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) です。  使用する*すべての VM を同じリソース グループ構成に入れる*場合、ユーザーがこのサブスクリプション制限に達するのがはるかに早くなります。VM に多くの追加ディスクがある場合には特に早くなります。

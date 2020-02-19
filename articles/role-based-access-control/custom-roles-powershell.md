@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell を使用して Azure リソースのカスタム ロールを作成または更新する | Microsoft Docs
+title: Azure PowerShell を使用して Azure リソースのカスタム ロールを作成または更新する
 description: Azure PowerShell を使用して、Azure リソースのロールベースのアクセス制御 (RBAC) でカスタム ロールを一覧表示、作成、更新、または削除する方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fa4ff5f35df0f541d8a7e633df024af81676e58b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 52057477fdba9757be2737c223d569b9e9a3e749
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703091"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137452"
 ---
 # <a name="create-or-update-custom-roles-for-azure-resources-using-azure-powershell"></a>Azure PowerShell を使用して Azure リソースのカスタム ロールを作成または更新する
 
@@ -358,7 +358,7 @@ Are you sure you want to remove role definition with name 'Virtual Machine Opera
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [チュートリアル:Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する](tutorial-custom-role-powershell.md)
 - [Azure リソースのカスタム ロール](custom-roles.md)

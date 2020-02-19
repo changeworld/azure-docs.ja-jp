@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/02/2020
+ms.date: 02/11/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 69582291ca1da95003e26a6922899defd7d5e477
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f3a9265c1f9a5c6c63931798718e4d0679cd126b
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982400"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136256"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C カスタム ポリシーでの技術プロファイルについて
 
@@ -48,21 +48,25 @@ ms.locfileid: "76982400"
 
 ![技術プロファイルのフローを示している図](./media/technical-profiles-overview/technical-profile-idp-saml-flow.png)
  
-1. **InputClaimsTransformation** - すべての入力[要求変換](claimstransformations.md)の入力要求が要求バッグからピックアップされます。実行後、出力要求は要求バッグに戻されます。 入力要求変換の出力要求は、後続の入力要求変換の入力要求になる場合があります。
-2. **InputClaims** - 要求は要求バッグからピックアップされ、技術プロファイルに使用されます。 たとえば、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)では、入力要求を使用して、ユーザーが提供する出力要求を事前作成します。 REST API 技術プロファイルでは、入力要求を使用し、入力パラメーターを REST API エンドポイントに送信します。 Azure Active Directory では、アカウントの読み取り、更新、削除を行うために、一意識別子として入力要求を使用します。
-3. **技術プロファイルの実行** - 技術プロファイルでは、その要求を構成されたパーティと交換します。 次に例を示します。
+1. **シングル サインオン (SSO) セッション管理** - [SSO セッション管理](custom-policy-reference-sso.md)を使用して、技術プロファイルのセッション状態を復元します。 
+1. **入力要求変換** - 要求バッグからピックアップされるすべての入力[要求変換](claimstransformations.md)の入力要求。  入力要求変換の出力要求は、後続の入力要求変換の入力要求になる場合があります。
+1. **入力要求** - 要求は要求バッグからピックアップされ、技術プロファイルに使用されます。 たとえば、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)では、入力要求を使用して、ユーザーが提供する出力要求を事前作成します。 REST API 技術プロファイルでは、入力要求を使用し、入力パラメーターを REST API エンドポイントに送信します。 Azure Active Directory では、アカウントの読み取り、更新、削除を行うために、一意識別子として入力要求を使用します。
+1. **技術プロファイルの実行** - 技術プロファイルでは、その要求を構成されたパーティと交換します。 次に例を示します。
     - ユーザーを ID プロバイダーにリダイレクトして、サインインを完了します。 サインインが成功したら、ユーザーが返され、技術プロファイルの実行が続行されます。
     - InputClaims としてパラメーターを送信し、OutputClaims として情報を戻しながら、REST API を呼び出します。
     - ユーザー アカウントを作成または更新します。
     - MFA テキスト メッセージを送信して検証します。
-4. **ValidationTechnicalProfiles** - [セルフ アサート技術プロファイル](self-asserted-technical-profile.md)では、入力の[検証技術プロファイル](validation-technical-profile.md)を呼び出すことができます。 検証技術プロファイルでは、ユーザーによってプロファイルされたデータを検証し、出力要求を含めて、または含めないで、エラー メッセージや OK を返します。 たとえば、Azure AD B2C では、新しいアカウントを作成する前に、ユーザーがディレクトリ サービスに既に存在するかどうかを確認します。 REST API 技術プロファイルを呼び出して、独自のビジネス ロジックを追加できます。<p>検証技術プロファイルの出力要求の範囲は、検証技術プロファイルや同じ技術プロファイルにあるその他の技術プロファイルを呼び出す技術プロファイルに限定されます。 次のオーケストレーションの手順で出力要求を使用する場合は、検証技術プロファイルを呼び出す技術プロファイルに出力要求を追加する必要があります。
-5. **OutputClaims** - 要求は要求バッグに戻されます。 次のオーケストレーションの手順、または出力要求変換でこれらの要求を使用できます。
-6. **OutputClaimsTransformations** - すべての出力[要求変換](claimstransformations.md)の入力要求は、要求バッグからピックアップされます。 前の手順からの技術プロファイルの出力要求は、出力要求変換の入力要求になる場合があります。 実行後、出力要求は要求バッグに戻されます。 出力要求変換の出力要求は、後続の出力要求変換の入力要求になる場合があります。
-7. **シングル サインオン (SSO) セッションの管理** - [SSO セッションの管理](custom-policy-reference-sso.md)では、ユーザーが認証された後に、ユーザーとの相互作用を制御します。 たとえば、管理者は、選択した ID プロバイダーを表示するかどうか、ローカル アカウントの詳細をもう一度入力する必要があるかどうかを制御できます。
+1. **検証技術プロファイル** - [セルフアサート技術プロファイル](self-asserted-technical-profile.md)からは、[検証技術プロファイル](validation-technical-profile.md)を呼び出すことができます。 検証技術プロファイルでは、ユーザーによってプロファイルされたデータを検証し、出力要求を含めて、または含めないで、エラー メッセージや OK を返します。 たとえば、Azure AD B2C では、新しいアカウントを作成する前に、ユーザーがディレクトリ サービスに既に存在するかどうかを確認します。 REST API 技術プロファイルを呼び出して、独自のビジネス ロジックを追加できます。<p>検証技術プロファイルの出力要求のスコープは、検証技術プロファイルを呼び出す技術プロファイルに限定されます。 また、同じ技術プロファイル以下に他の検証技術プロファイルもあります。 次のオーケストレーションの手順で出力要求を使用する場合は、検証技術プロファイルを呼び出す技術プロファイルに出力要求を追加する必要があります。
+1. **出力要求** - 要求は要求バッグに戻されます。 次のオーケストレーションの手順、または出力要求変換でこれらの要求を使用できます。
+1. **出力要求変換** - すべての出力[要求変換](claimstransformations.md)の入力要求は、要求バッグからピックアップされます。 前の手順からの技術プロファイルの出力要求は、出力要求変換の入力要求になる場合があります。 実行後、出力要求は要求バッグに戻されます。 出力要求変換の出力要求は、後続の出力要求変換の入力要求になる場合があります。
+1. **シングル サインオン (SSO) セッション管理** - [SSO セッション管理](custom-policy-reference-sso.md)を使用して、技術プロファイルのデータをセッションに永続化します。
 
-技術プロファイルは、設定を変更したり、新しい機能を追加したりするために、別の技術プロファイルから継承できます。  **IncludeTechnicalProfile** 要素は、技術プロファイルの派生元の基本技術プロファイルへの参照です。
 
-たとえば、**AAD-UserReadUsingAlternativeSecurityId-NoError** 技術プロファイルには、**AAD-UserReadUsingAlternativeSecurityId** が含まれます。 この技術プロファイルでは、**RaiseErrorIfClaimsPrincipalDoesNotExist** メタデータ項目が `true` に設定され、ソーシャル アカウントがディレクトリに存在しない場合にエラーが発生します。 **AAD-UserReadUsingAlternativeSecurityId-NoError** では、この動作がオーバーライドされ、ユーザーが存在しない場合のエラー メッセージが無効になります。
+## <a name="technical-profile-inclusion"></a>技術プロファイルを含める
+
+技術プロファイルには、設定を変更したり、新しい機能を追加したりするために、別の技術プロファイルを含めることができます。  `IncludeTechnicalProfile` 要素は、技術プロファイルの派生元となる基本技術プロファイルへの参照です。 レベルの数に制限はありません。 
+
+たとえば、**AAD-UserReadUsingAlternativeSecurityId-NoError** 技術プロファイルには、**AAD-UserReadUsingAlternativeSecurityId** が含まれます。 この技術プロファイルを使うと、`RaiseErrorIfClaimsPrincipalDoesNotExist` メタデータ項目を `true` に設定し、ディレクトリにソーシャル アカウントが存在しない場合はエラーを発生させることができます。 **AAD-UserReadUsingAlternativeSecurityId-NoError** によってこの動作がオーバーライドされ、そのエラー メッセージは無効になります。
 
 ```XML
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId-NoError">
@@ -106,16 +110,3 @@ ms.locfileid: "76982400"
   ...
 </TechnicalProfile>
 ```
-
-技術プロファイルには、別の技術プロファイルを含めたり、継承したりすることができます。別の技術プロファイルにはまた別の技術プロファイルを含めることができます。 レベルの数に制限はありません。 ユーザー体験では、ビジネス要件に応じて、ユーザー ソーシャル アカウントが存在しない場合にエラーを発生させる **AAD-UserReadUsingAlternativeSecurityId**、またはエラーを発生させない **AAD-UserReadUsingAlternativeSecurityId-NoError** を呼び出すことができます。
-
-
-
-
-
-
-
-
-
-
-

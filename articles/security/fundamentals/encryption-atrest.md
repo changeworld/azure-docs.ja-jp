@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/25/2019
+ms.date: 02/07/2020
 ms.author: barclayn
-ms.openlocfilehash: da8dfe61e92c4839deb1f7fbc289be0136087720
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 682f0b66f7632bce16ae134e71ea27c4df976f43
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497307"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087103"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure Data Encryption-at-Rest
 
@@ -262,36 +262,48 @@ Azure SQL Database データのクライアント側の暗号化は、[Always En
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 |                                  | **サービス管理キーを使用したサーバー側**     | **顧客管理キーを使用したサーバー側**             | **クライアント管理キーを使用したクライアント側**      |
 | **AI と機械学習**      |                    |                    |                    |
-| Azure Cognitive Search                     | はい                | プレビュー            | -                  |
-| Azure Machine Learning   | はい                | -                  | -                  |
+| Azure Cognitive Search           | はい                | はい                | -                  |
+| Azure Machine Learning           | はい                | はい                | -                  |
 | Azure Machine Learning Studio    | はい                | プレビュー、RSA 2048 ビット | -               |
 | Power BI                         | はい                | プレビュー、RSA 2048 ビット | -                  |
 | **Analytics**                    |                    |                    |                    |
 | Azure Stream Analytics           | はい                | -                  | -                  |
-| Event Hubs                       | はい                | プレビュー、RSA の長さすべて。 | -                  |
+| Event Hubs                       | はい                | はい、RSA の長さすべて。 | -                  |
+| 関数                        | はい                | はい、RSA の長さすべて。 | -                  |
 | Azure Analysis Services          | はい                | -                  | -                  |
 | Azure Data Catalog               | はい                | -                  | -                  |
 | Azure HDInsight 上の Apache Kafka  | はい                | RSA の長さすべて。   | -                  |
-| Azure Data Explorer              | はい                | -                  | -                  |
+| Azure Monitor Application Insights | はい                | はい                | -                  |
+| Azure Monitor Log Analytics | はい                | はい                | -                  |
+| Azure Data Explorer              | はい                | はい                | -                  |
 | Azure Data Factory               | はい                | はい                | -                  |
 | Azure Data Lake Store            | はい                | はい、RSA 2048 ビット  | -                  |
 | **Containers**                   |                    |                    |                    |
-| Azure Kubernetes Service         | はい                | -                  | -                  |
-| Container Registry               | はい                | -                  | -                  |
+| Azure Kubernetes Service         | はい                | はい                | -                  |
+| Container Instances              | はい                | はい                | -                  |
+| Container Registry               | はい                | はい                | -                  |
 | **Compute**                      |                    |                    |                    |
 | Virtual Machines                 | はい                | はい、RSA 2048 ビット  | -                  |
 | 仮想マシン スケール セット        | はい                | はい、RSA 2048 ビット  | -                  |
 | SAP HANA                         | はい                | はい、RSA 2048 ビット  | -                  |
+| App Service                      | はい                | はい                | -                  |
+| Automation                       | はい                | はい                | -                  |
+| Azure portal                     | はい                | はい                | -                  |
+| Logic Apps                       | はい                | はい                | -                  |
+| Azure Managed Applications       | はい                | はい                | -                  |
+| Service Bus                      | はい                | はい                | -                  |
+| Site Recovery                    | はい                | はい                | -                  |
 | **データベース**                    |                    |                    |                    |
 | Virtual Machines 上の SQL Server   | はい                | はい、RSA 2048 ビット  | はい                |
 | Azure SQL データベース               | はい                | はい、RSA 2048 ビット  | はい                |
 | Azure SQL Database for MariaDB   | はい                | -                  | -                  |
-| Azure SQL Database for MySQL     | はい                | -                  | -                  |
-| Azure SQL Database for PostgreSQL | はい                | -                  | -                  |
-| Azure SQL Data Warehouse         | はい                | はい、RSA 2048 ビット  | はい                |
+| Azure SQL Database for MySQL     | はい                | はい                | -                  |
+| Azure SQL Database for PostgreSQL | はい               | はい                | -                  |
+| Azure Synapse Analytics          | はい                | はい、RSA 2048 ビット  | はい                |
 | SQL Server Stretch Database      | はい                | はい、RSA 2048 ビット  | はい                |
-| Table Storage                    | はい                | -                  | はい                |
-| Azure Cosmos DB                  | はい                | -                  | -                  |
+| Table Storage                    | はい                | はい                | はい                |
+| Azure Cosmos DB                  | はい                | はい                | -                  |
+| Azure Databricks                 | はい                | はい                | -                  |
 | **DevOps**                       |                    |                    |                    |
 | Azure DevOps                     | はい                | -                  | はい                |
 | Azure Repos                      | はい                | -                  | はい                |
@@ -299,27 +311,28 @@ Azure SQL Database データのクライアント側の暗号化は、[Always En
 | Azure Active Directory           | はい                | -                  | -                  |
 | Azure Active Directory Domain Services | はい          | はい、RSA 2048 ビット  | -                  |
 | **統合**                  |                    |                    |                    |
-| Service Bus                      | はい                | -                  | はい                |
+| Service Bus                      | はい                | はい                | はい                |
 | Event Grid                       | はい                | -                  | -                  |
 | API Management                   | はい                | -                  | -                  |
 | **IoT サービス**                 |                    |                    |                    |
-| IoT Hub                          | はい                | -                  | はい                |
+| IoT Hub                          | はい                | はい                | はい                |
 | **管理とガバナンス**    |                    |                    |                    |
 | Azure Site Recovery              | はい                | -                  | -                  |
 | **メディア**                        |                    |                    |                    |
 | Media Services                   | はい                | -                  | はい                |
 | **Storage**                      |                    |                    |                    |
 | Blob Storage                     | はい                | はい、RSA 2048 ビット  | はい                |
-| Disk Storage                     | はい                | -                  | -                  |
-| マネージド Disk Storage             | はい                | -                  | -                  |
+| Disk Storage                     | はい                | はい                | -                  |
+| マネージド Disk Storage             | はい                | はい                | -                  |
 | File Storage                     | はい                | はい、RSA 2048 ビット  | -                  |
-| Queue Storage                    | はい                | -                  | はい                |
+| Queue Storage                    | はい                | はい                | はい                |
 | Avere vFXT                       | はい                | -                  | -                  |
 | Azure NetApp Files               | はい                | -                  | -                  |
 | Archive Storage                  | はい                | はい、RSA 2048 ビット  | -                  |
 | StorSimple                       | はい                | はい、RSA 2048 ビット  | はい                |
-| Azure Backup                     | はい                | -                  | はい                |
+| Azure Backup                     | はい                | はい                | はい                |
 | Data Box                         | はい                | -                  | はい                |
+| Data Box Edge                    | はい                | はい                | -                  |
 
 ## <a name="conclusion"></a>まとめ
 

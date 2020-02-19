@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: a48ce60dca9f4221e364d53567f5b53719deb18c
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 443b021b266a202775e94e44acac3a91a2b70617
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314523"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137576"
 ---
 # <a name="apply-transformation-module"></a>変換の適用モジュール
 
-この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 このモジュールを使用して、事前に計算された変換に基づいて入力データセットを変更します。  
   
@@ -32,9 +32,9 @@ Azure Machine Learning には、作成に関するサポート、およびさま
 
 ## <a name="how-to-use-apply-transformation"></a>変換の適用の使用方法  
   
-1. **Apply Transformation (変換の適用)** モジュールをパイプラインに追加します。 このモジュールは、**Machine Learning** の **[スコア]** カテゴリにあります。 
+1. **Apply Transformation (変換の適用)** モジュールをパイプラインに追加します。 このモジュールは、 **[モデルのスコアリングと評価]** カテゴリにあります。 
   
-2. 入力として使用する既存の変換を見つけます。  以前に保存した変換は、左側のナビゲーション ウィンドウの **[変換]** グループにあります。  
+2. 入力として使用する既存の変換を見つけます。 以前に保存された変換は、左側のモジュール ツリーの **[データセット]** カテゴリの **[My Datasets]\(マイ データセット\)** グループにあります。  
   
    
   

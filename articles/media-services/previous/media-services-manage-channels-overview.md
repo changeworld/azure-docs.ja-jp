@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 8b58e9d2eae1fbe5b0f4086f772bea3bf46399c3
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 99efe375fad142963214b09df24be70bc3bc9d99
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895950"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131614"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Media Services を使用したライブ ストリーミングの概要
 
@@ -55,13 +55,13 @@ Azure Media Services では、**チャネル**、**プログラム**、**スト�
 
 **チャネル** は、ライブ ストリーミング コンテンツを処理するためのパイプラインを表します。 チャネルは次の方法でライブ入力ストリームを受信できます。
 
-* オンプレミスのライブ エンコーダーは、マルチビットレート **RTMP** または**スムーズ ストリーミング** (Fragmented MP4) を、**パススルー**配信用に設定されたチャネルに送信します。 **パススルー**配信とは、取り込んだストリームが、追加の処理なしで**チャネル**を通過することをいいます。 マルチビットレートのスムーズ ストリーミングが出力される次のライブ エンコーダーを使用できます:MediaExcel、Ateme、Imagine Communications、Envivio、Cisco、Elemental。 次のライブ エンコーダーでは RTMP が出力されます:Adobe Flash Media Live Encoder (FMLE)、Telestream Wirecast、Haivision、Teradek、Tricaster の各トランスコーダー。  ライブ エンコーダーは、ライブ エンコードが有効になっていないチャネルにシングル ビットレート ストリームも送信できますが、これはお勧めしません。 Media Services は、要求に応じて、ストリームを顧客に配信します。
+* オンプレミスのライブ エンコーダーは、マルチビットレート **RTMP** または**スムーズ ストリーミング** (Fragmented MP4) を、**パススルー**配信用に設定されたチャネルに送信します。 **パススルー**配信とは、取り込んだストリームが、追加の処理なしで**チャネル**を通過することをいいます。 マルチビットレートのスムーズ ストリーミングが出力される次のライブ エンコーダーを使用できます:MediaExcel、Ateme、Imagine Communications、Envivio、Cisco、Elemental。 次のライブ エンコーダーでは RTMP が出力されます:Telestream Wirecast、Haivision、Teradek、Tricaster transcoders。  ライブ エンコーダーは、ライブ エンコードが有効になっていないチャネルにシングル ビットレート ストリームも送信できますが、これはお勧めしません。 Media Services は、要求に応じて、ストリームを顧客に配信します。
 
   > [!NOTE]
   > 長期にわたって複数のイベントを配信する場合で、かつオンプレミスのエンコーダーを既に導入済みである場合、ライブ ストリーミングの手段としてはパススルー方式が最も低コストです。 詳しくは、 [価格情報](https://azure.microsoft.com/pricing/details/media-services/) ページを参照してください。
   > 
   > 
-* オンプレミスのライブ エンコーダーでは、次のいずれかの形式で、Media Services によるライブ エンコードが有効なチャネルに、シングル ビットレート ストリームが送信されます:RTMP またはスムーズ ストリーミング (フラグメント化 MP4)。 RTMP 出力を伴う次のライブ エンコーダーは、この種類のチャンネルで機能することがわかっています。Telestream Wirecast、FMLE。 次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードがチャネルで実行されます。 Media Services は、要求に応じて、ストリームを顧客に配信します。
+* オンプレミスのライブ エンコーダーでは、次のいずれかの形式で、Media Services によるライブ エンコードが有効なチャネルに、シングル ビットレート ストリームが送信されます:RTMP またはスムーズ ストリーミング (フラグメント化 MP4)。 RTMP 出力を伴う次のライブ エンコーダーは、この種類のチャンネルで機能することがわかっています。Telestream Wirecast。 次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードがチャネルで実行されます。 Media Services は、要求に応じて、ストリームを顧客に配信します。
 
 Media Services 2.10 リリース以降、チャネルを作成するときに、チャネルで入力ストリームを受信する方法、およびチャネルでストリームのライブ エンコードを実行するかどうかを指定できます。 2 つのオプションがあります。
 
@@ -77,7 +77,7 @@ Media Services 2.10 リリース以降、チャネルを作成するときに、
 | シングル ビットレートの入力がクラウド内でマルチビットレートにエンコードされる |いいえ |はい |
 | 最大解像度、層の数 |1080p、8 層、60 fps 以上 |720p、6 層、30 fps |
 | 入力プロトコル |RTMP、スムーズ ストリーミング |RTMP、スムーズ ストリーミング |
-| 料金 |[価格に関するページ](https://azure.microsoft.com/pricing/details/media-services/) を参照し、[ライブ ビデオ] タブをクリックしてください。 |[価格に関するページ](https://azure.microsoft.com/pricing/details/media-services/) |
+| Price |[価格に関するページ](https://azure.microsoft.com/pricing/details/media-services/) を参照し、[ライブ ビデオ] タブをクリックしてください。 |[価格に関するページ](https://azure.microsoft.com/pricing/details/media-services/) |
 | 最長実行時間 |24 時間 365 日 |8 時間 |
 | スレートの挿入のサポート |いいえ |はい |
 | 広告信号のサポート |いいえ |はい |
@@ -151,7 +151,7 @@ Media Services においてライブ ストリーミング コンテンツの処
 | チャネルの状態 | ポータル UI インジケーター | 課金対象 |
 | --- | --- | --- |
 | 開始中 |開始中 |いいえ (遷移状態) |
-| 実行中 |準備完了 (実行中プログラムなし)<br/>or<br/>ストリーミング (実行中プログラムが最低 1 つ存在) |はい |
+| 実行中 |準備完了 (実行中プログラムなし)<br/>or<br/>ストリーミング (実行中プログラムが最低 1 つ存在) |YES |
 | 停止中 |停止中 |いいえ (遷移状態) |
 | 停止済み |停止済み |いいえ |
 

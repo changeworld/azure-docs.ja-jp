@@ -6,13 +6,13 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/22/2019
-ms.openlocfilehash: 0649908e4767e48d23306c72b8db92dea9f26284
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.date: 02/05/2020
+ms.openlocfilehash: 035f819cfaad82373f7cb55a7bb2d14fc53bb49b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030926"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064633"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターのスケーリング
 
@@ -216,6 +216,10 @@ Hive で一時ファイルが残っている場合は、これらのファイル
 2 つ以下のワーカー ノードにスケールダウンしたときに、クラスターがセーフ モードで頻繁にスタックし、前述の手順が機能しない場合は、3 つ以上のワーカー ノードを保持することで、クラスターがすべてセーフ モードになるのを回避できます。
 
 3 つのワーカー ノードを保持するのは 1 つだけのワーカー ノードにスケールダウンするよりも高コストですが、クラスターがセーフ モードでスタックするのを防ぐことができます。
+
+### <a name="scale-hdinsight-down-to-one-worker-node"></a>HDInsight を 1 つのワーカー ノードにスケール ダウンする
+
+クラスターのノード数を 1 ノードにスケール ダウンしても、ワーカー ノード 0 は引き続き存続します。 ワーカー ノード 0 を使用停止にすることはできません。
 
 #### <a name="run-the-command-to-leave-safe-mode"></a>セーフ モードを終了するコマンドを実行する
 

@@ -5,16 +5,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 696885fa3e082ae7096954fb55b17da5b77788bc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0c9abb7333434e64fca32ce6d9c518e3f0137133
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418895"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116344"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker をデプロイする
 
 Azure Automation の Hybrid Runbook Worker 機能を使う、ロールをホスティングしているコンピューター上で環境内のリソースに対して Runbook を直接実行して、これらのローカル リソースを管理できます。 Runbook は Azure Automation で格納および管理された後、1 つ以上の指定されたコンピューターに配信されます。 この記事では、Windows コンピューターに Hybrid Runbook Worker をインストールする方法について説明します。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="installing-the-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker のインストール
 
@@ -31,12 +33,12 @@ Windows Hybrid Runbook Worker をインストールして構成するには、�
 
 Windows Hybrid Runbook Worker の最小要件は次のようになります。
 
-* Windows Server 2012 以降。
-* Windows PowerShell 5.1 以降 ([WMF 5.1 をダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))。
+* Windows Server 2012 またはそれ以降
+* Windows PowerShell 5.1 以降 ([WMF 5.1 をダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))
 * .NET Framework 4.6.2 以降。
-* 2 コア。
-* 4 GB の RAM。
-* ポート 443 (送信)。
+* 2 コア
+* 4 GB の RAM
+* ポート 443 (送信)
 
 Hybrid Runbook Worker のその他のネットワーク要件については、[ネットワークの構成](automation-hybrid-runbook-worker.md#network-planning)に関するページを参照してください。
 
@@ -51,17 +53,17 @@ Runbook Worker が正常にデプロイされたら、「[Hybrid Runbook Worker 
 
 Windows ハイブリッド worker ロールのインストールと構成を自動化するには、次の手順を実行します。
 
-1. [PowerShell ギャラリー](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker) の New-OnPremiseHybridWorker.ps1 スクリプトを Hybrid Runbook Worker ロールを実行しているコンピューターから、または環境内の別のコンピューターから直接ダウンロードします。 スクリプトを worker にコピーします。
+1. [PowerShell ギャラリー](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker) の New-OnPremiseHybridWorker.ps1 スクリプトを Hybrid Runbook Worker ロールを実行しているコンピューターから、または環境内の別のコンピューターから直接ダウンロードします。 スクリプトを worker にコピーします。 New-OnPremiseHybridWorker.ps1 スクリプトは、実行中に次のパラメーターを必要とします。
 
-   New-OnPremiseHybridWorker.ps1 スクリプトは、実行中に次のパラメーターを必要とします。
-
-   * *AutomationAccountName* (必須):Automation アカウントの名前。
    * *AAResourceGroupName* (必須):Automation アカウントに関連付けられているリソース グループの名前。
    * *OMSResourceGroupName* (省略可能):Log Analytics ワークスペース用のリソース グループの名前。 このリソース グループが指定されていない場合、*AAResourceGroupName* が使用されます。
-   * *HybridGroupName* (必須):このシナリオをサポートしている Runbook のターゲットとして指定する Hybrid Runbook Worker グループの名前。
    * *SubscriptionID* (必須):Automation アカウントが存在する Azure サブスクリプション ID。
+   * *TenantID* (省略可能): Automation アカウントに関連付けられているテナント組織の識別子。
    * *WorkspaceName* (省略可能):Log Analytics ワークスペース名。 Log Analytics ワークスペースがない場合は、スクリプトがこれを作成して構成します。
-
+   * *AutomationAccountName* (必須):Automation アカウントの名前。
+   * *HybridGroupName* (必須):このシナリオをサポートしている Runbook のターゲットとして指定する Hybrid Runbook Worker グループの名前。
+   * *Credential* (省略可能): Azure 環境にログインするときに使用する資格情報。
+  
    > [!NOTE]
    > ソリューションを有効にすると、Log Analytics ワークスペースと Automation アカウントをリンクするために特定のリージョンのみがサポートされます。
    >
@@ -97,10 +99,10 @@ Log Analytics ワークスペースがまだない場合は、ワークスペー
 
 Automation ソリューションは、Hybrid Runbook Worker のサポートなど、Azure Automation 用の機能を追加します。 ソリューションを Log Analytics ワークスペースに追加すると、次の手順でインストールする worker コンポーネントがエージェント コンピューターに自動的にプッシュされます。
 
-ワークスペースに **Automation** ソリューションを追加するには、次の PowerShell を実行します。
+ワークスペースに **Automation** ソリューションを追加するには、次の PowerShell コマンドレットを実行します。
 
 ```powershell-interactive
-Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <LogAnalyticsWorkspaceName> -IntelligencePackName "AzureAutomation" -Enabled $true
+Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <LogAnalyticsWorkspaceName> -IntelligencePackName "AzureAutomation" -Enabled $true -DefaultProfile <IAzureContextContainer>
 ```
 
 #### <a name="3-install-the-log-analytics-agent-for-windows"></a>3.Windows 用 Log Analytics エージェントをインストールする
@@ -109,7 +111,7 @@ Windows 用 Log Analytics エージェントにより、コンピューターが
 
 コンピューターにエージェントをインストールするには、[Azure Monitor ログへの Windows コンピューターの接続](../log-analytics/log-analytics-windows-agent.md)に関する記事の手順に従います。 コンピューターごとにこのプロセスを繰り返して、複数の worker を環境に追加できます。
 
-エージェントが Log Analytics ワークスペースに正常に接続したら、数分後に次のクエリを実行して、ワークスペースにハートビート データが送信されていることを確認できます。
+エージェントが Log Analytics ワークスペースに正常に接続されたら、数分後に次のクエリを実行して、ワークスペースにハートビート データが送信されていることを確認できます。
 
 ```kusto
 Heartbeat 

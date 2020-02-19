@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: 7a77a54dc59ec427bf6abdf8fc1d410533b5be44
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 56cbae7ae56c4b482ac6de201c7a2c8aacb81e59
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76771897"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048592"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Azure Key Vault で Azure Cosmos アカウントのカスタマー マネージド キーを構成する
 
@@ -21,18 +21,18 @@ ms.locfileid: "76771897"
 
 Azure Cosmos アカウントに格納されているデータは、自動的かつシームレスに暗号化されます。 Azure Cosmos DB には、保存データの暗号化に使用されるキーを管理するための次の 2 つのオプションが用意されています。
 
-- **サービス マネージド キー** - 既定では、Azure Cosmos アカウントのデータを暗号化するために使用されるキーは Microsoft が管理します。
+- **サービスが管理するキー**: 既定では、お使いの Azure Cosmos アカウントのデータの暗号化に使用するキーは Microsoft が管理します。
 
-- **カスタマー マネージド キー (CMK)** - 必要に応じて、独自のキーを使用して暗号化の 2 番目のレイヤーを追加することを選択できます。
+- **カスタマー マネージド キー (CMK)** :必要に応じ、お使いのご自分のキーに 2 番目の暗号化レイヤーの追加を選択できます。
 
-カスタマー マネージド キーは [Azure Key Vault](../key-vault/key-vault-overview.md) に格納し、カスタマー マネージド キーで有効にする Azure Cosmos アカウントごとにキーを指定する必要があります。 このキーは、そのアカウントに格納されているすべてのデータを暗号化するために使用されます。
+カスタマー マネージド キーは [Azure Key Vault](../key-vault/key-vault-overview.md) に格納し、カスタマー マネージド キーが有効になっている Azure Cosmos アカウントごとにキーを指定する必要があります。 このキーは、そのアカウントに格納されているすべてのデータを暗号化するために使用されます。
 
 > [!NOTE]
-> 現在、カスタマー マネージド キーは新しい Azure Cosmos アカウントでのみ使用できるため、アカウントの作成中に構成する必要があります。
+> 現在、カスタマー マネージド キーは新しい Azure Cosmos アカウントでのみ使用できます。 これらは、アカウントの作成時に構成します。
 
 ## <a id="register-resource-provider"></a> Azure サブスクリプション用の Azure Cosmos DB リソース プロバイダーを登録する
 
-1. [Azure portal](https://portal.azure.com/) にサインインし、Azure サブスクリプションに移動して **[設定]** タブの **[リソース プロバイダー]** を選択します。
+1. [Azure portal](https://portal.azure.com/) にサインインし、お使いの Azure サブスクリプションに移動して **[設定]** タブの **[リソース プロバイダー]** を選択します。
 
    ![左側のメニューの [リソース プロバイダー] エントリ](./media/how-to-setup-cmk/portal-rp.png)
 
@@ -42,7 +42,7 @@ Azure Cosmos アカウントに格納されているデータは、自動的か�
 
 ## <a name="configure-your-azure-key-vault-instance"></a>Azure Key Vault インスタンスを構成する
 
-Azure Cosmos DB でカスタマー マネージド キーを使用するには、暗号化キーをホストするために使用しようとしている Azure Key Vault インスタンスで 2 つのプロパティを設定する必要があります。 これらのプロパティには、 **[論理的な削除]** と **[消去しない]** が含まれます。 これらのプロパティは、既定では有効ではなく、PowerShell または Azure CLI を使用して有効にすることができます。
+Azure Cosmos DB でカスタマー マネージド キーを使用するには、暗号化キーをホストするために使用しようとしている Azure Key Vault インスタンスで 2 つのプロパティを設定する必要があります。 これらのプロパティには、 **[論理的な削除]** と **[消去しない]** が含まれます。 これらのプロパティは、既定では有効になっていません。 これらは、PowerShell または Azure CLI のいずれかを使用して有効にします。
 
 既存の Azure Key Vault インスタンスでこれらのプロパティを有効にする方法については、次のいずれかの記事の「論理的な削除を有効にする」と「消去保護を有効にする」のセクションを参照してください。
 
@@ -61,7 +61,7 @@ Azure Cosmos DB でカスタマー マネージド キーを使用するには�
 
    ![適切なアクセス許可の選択](./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png)
 
-1. **[プリンシパルの選択]** で、 **[選択されていません]** を選択します。 次に、**Azure Cosmos DB** プリンシパルを検索して選択します。 最後に、一番下の **[選択]** をクリックします (**Azure Cosmos DB** プリンシパルが一覧にない場合は、この記事の[リソース プロバイダーの登録](#register-resource-provider)のセクションの説明に従って **Microsoft.DocumentDB** リソース プロバイダーを再登録することが必要になる場合があります)。
+1. **[プリンシパルの選択]** で、 **[選択されていません]** を選択します。 次に、**Azure Cosmos DB** プリンシパルを検索して選択します。 最後に、一番下の **[選択]** を選択します。 **Azure Cosmos DB** プリンシパルが一覧にない場合は、この記事の[リソース プロバイダーの登録](#register-resource-provider)に関するセクションの説明に従って **Microsoft.DocumentDB** リソース プロバイダーを再登録することが必要になる場合があります。
 
    ![Azure Cosmos DB プリンシパルを選択する](./media/how-to-setup-cmk/portal-akv-add-ap.png)
 
@@ -73,13 +73,13 @@ Azure Cosmos DB でカスタマー マネージド キーを使用するには�
 
    ![左側のメニューの [キー] エントリ](./media/how-to-setup-cmk/portal-akv-keys.png)
 
-1. **[生成/インポート]** を選択して新しいキーの名前を指定し、RSA キーのサイズ (最高のセキュリティを得るには少なくとも 3072 が推奨されます) を選択してから **[作成]** を選択します。
+1. **[生成/インポート]** を選択し、新しいキーに名前を付け、RSA キー サイズを選択します。 最高のセキュリティを得るには、最小で 3072 をお勧めします。 次に、 **[作成]** を選択します。
 
    ![新しいキーを作成する](./media/how-to-setup-cmk/portal-akv-gen.png)
 
 1. キーが作成されたら、新しく作成されたキーを選択し、次にその現在のバージョンを選択します。
 
-1. 最後のフォワードスラッシュの後の部分を除き、キーの **[キー識別子]** をコピーします。
+1. 最後のスラッシュの後の部分を除き、キーの **[キー識別子]** をコピーします。
 
    ![キーのキー識別子のコピー](./media/how-to-setup-cmk/portal-akv-keyid.png)
 
@@ -87,13 +87,13 @@ Azure Cosmos DB でカスタマー マネージド キーを使用するには�
 
 ### <a name="using-the-azure-portal"></a>Azure ポータルの使用
 
-Azure portal から新しい Azure Cosmos DB アカウントを作成する場合は、 **[暗号化]** の手順で **[Customer-managed key] (カスタマー マネージド キー)** を選択します。 **[キー URI]** フィールドで、前の手順でコピーした Azure Key Vault キーの URI/キー識別子を貼り付けます。
+Azure portal から新しい Azure Cosmos DB アカウントを作成する場合は、 **[暗号化]** の手順で **[カスタマー マネージド キー]** を選択します。 **[キー URI]** フィールドで、前の手順でコピーした Azure Key Vault キーの URI/キー識別子を貼り付けます。
 
 ![Azure portal での CMK パラメーターの設定](./media/how-to-setup-cmk/portal-cosmos-enc.png)
 
 ### <a name="using-azure-powershell"></a>Azure PowerShell の使用
 
-PowerShell で新しい Azure Cosmos DB アカウントを作成する場合:
+PowerShell で新しい Azure Cosmos DB アカウントを作成する場合、次を実行します。
 
 - 前に **PropertyObject** の **keyVaultKeyUri** プロパティでコピーした Azure Key Vault キーの URI を渡します。
 
@@ -122,9 +122,9 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Location $accountLocation -Name $accountName -PropertyObject $CosmosDBProperties
 ```
 
-### <a name="using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
+### <a name="using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
 
-Azure Resource Manager テンプレートを使用して新しい Azure Cosmos アカウントを作成する場合:
+Azure Resource Manager テンプレートを使用して新しい Azure Cosmos アカウントを作成する場合、次を実行します。
 
 - 前に **properties** オブジェクトの **keyVaultKeyUri** プロパティでコピーした Azure Key Vault キーの URI を渡します。
 
@@ -191,13 +191,13 @@ New-AzResourceGroupDeployment `
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
-### <a name="is-there-any-additional-charge-when-using-customer-managed-keys"></a>カスタマー マネージド キーを使用する場合、何からの追加料金は発生しますか?
+### <a name="is-there-any-additional-charge-for-using-customer-managed-keys"></a>カスタマー マネージド キーを使用する場合、何からの追加料金は発生しますか?
 
-はい。 カスタマー マネージド キーでのデータの暗号化と暗号化解除を管理するために必要な追加のコンピューティング負荷に対処するために、Azure Cosmos アカウントに対して実行されるすべての操作で、使用される[要求ユニット](./request-units.md)が 25% 増加します。
+はい。 カスタマー マネージド キーでのデータの暗号化と暗号化の解除の管理で増えるコンピューティング負荷に対応するために、Azure Cosmos アカウントに対して実行されるすべての操作に対し 25% 多く[要求ユニット](./request-units.md)が消費されます。
 
 ### <a name="what-data-gets-encrypted-with-the-customer-managed-keys"></a>カスタマー マネージド キーでどのようなデータが暗号化されますか?
 
-次のメタデータを除き、Azure Cosmos アカウントに格納されているすべてのデータがカスタマー マネージド キーで暗号化されます。
+カスタマー マネージド キーでは、次のメタデータを除き、ご自分の Azure Cosmos アカウントに格納されているすべてのデータが暗号化されます。
 
 - Azure Cosmos DB [アカウント、データベース、およびコンテナー](./account-overview.md#elements-in-an-azure-cosmos-account)の名前
 
@@ -205,7 +205,7 @@ New-AzResourceGroupDeployment `
 
 - [インデックス作成ポリシー](./index-policy.md)で宣言されているプロパティ パス
 
-- コンテナーの[パーティション キー](./partitioning-overview.md)の値
+- お使いのコンテナーの[パーティション キー](./partitioning-overview.md)の値
 
 ### <a name="are-customer-managed-keys-supported-for-existing-azure-cosmos-accounts"></a>カスタマー マネージド キーは既存の Azure Cosmos アカウントでサポートされますか?
 
@@ -215,9 +215,9 @@ New-AzResourceGroupDeployment `
 
 現時点ではありませんが、コンテナー レベルのキーが検討されています。
 
-### <a name="how-does-customer-managed-keys-affect-a-backup"></a>カスタマー マネージド キーはバックアップにどのように影響しますか?
+### <a name="how-do-customer-managed-keys-affect-a-backup"></a>カスタマー マネージド キーはバックアップにどのように影響しますか?
 
-Azure Cosmos DB は、アカウントに格納されているデータの[定期的な自動バックアップ](./online-backup-and-restore.md)を取得します。 この操作では、暗号化されたデータがバックアップされます。 復元されたバックアップを使用するには、バックアップの時点で使用していた暗号化キーが必要です。 つまり、失効が行われおらず、バックアップの時点で使用されていたキーのバージョンが引き続き有効になっている必要があります。
+Azure Cosmos DB は、アカウントに格納されているデータの[定期的な自動バックアップ](./online-backup-and-restore.md)を取得します。 この操作では、暗号化されたデータがバックアップされます。 復元されたバックアップを使用するには、バックアップの時点で使用していた暗号化キーが必要です。 つまり、失効されておらず、バックアップの時点で使用していたキーのバージョンが依然有効になっている必要があります。
 
 ### <a name="how-do-i-revoke-an-encryption-key"></a>暗号化キーを失効させるにはどうすればよいですか?
 
@@ -236,4 +236,4 @@ Azure Cosmos DB は、アカウントに格納されているデータの[定期
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB でのデータの暗号化](./database-encryption-at-rest.md)について学習します。
-- [Cosmos DB 内のデータへのセキュリティで保護されたアクセス](secure-access-to-data.md)の概要
+- [Cosmos DB 内のデータへのセキュリティで保護されたアクセス](secure-access-to-data.md)の概要を理解します。

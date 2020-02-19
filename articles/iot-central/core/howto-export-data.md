@@ -8,12 +8,12 @@ ms.date: 01/30/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 058fe9aea87879fe85dcbc6dcb864fd841fcb049
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a3d60bf38c4a9dad13dacf8ba9798c4078c1df1a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026423"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049732"
 ---
 # <a name="export-your-azure-iot-central-data"></a>Azure IoT Central データをエクスポートする
 
@@ -62,10 +62,14 @@ ms.locfileid: "77026423"
 
 エクスポート先となる既存の Azure Storage アカウントがない場合は、次の手順に従います。
 
-1. [Azure portal で新しいストレージ アカウント](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)を作成します。 新しい [Azure Blob Storage アカウント](https://aka.ms/blobdocscreatestorageaccount)または [Azure Data Lake Storage v2 ストレージ アカウント](../../storage/blobs/data-lake-storage-quickstart-create-account.md)の作成の詳細を確認できます。
+1. [Azure portal で新しいストレージ アカウント](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)を作成します。 新しい [Azure Blob Storage アカウント](https://aka.ms/blobdocscreatestorageaccount)または [Azure Data Lake Storage v2 ストレージ アカウント](../../storage/blobs/data-lake-storage-quickstart-create-account.md)の作成の詳細を確認できます。 データのエクスポートでは、ブロック BLOB をサポートするストレージ アカウントにのみデータを書き込めます。 次に、互換性のある既知のストレージ アカウントの種類の一覧を示します。 
 
-    - データを Azure Data Lake Storage v2 ストレージ アカウントにエクスポートする場合は、 **[アカウントの種類]** として **[BlobStorage]** を選択する必要があります。
-    - IoT Central アプリケーションとは異なるサブスクリプションのストレージ アカウントにデータをエクスポートできます。 この場合、接続文字列を使用して接続します。
+    |パフォーマンス レベル|アカウントの種類|
+    |-|-|
+    |Standard|General Purpose V2|
+    |Standard|General Purpose V1|
+    |Standard|Blob Storage|
+    |Premium|ブロック BLOB ストレージ|
 
 2. ご自分のストレージ アカウントでコンテナーを作成します。 ストレージ アカウントに移動します。 **[Blob service]** で **[BLOB の参照]** を選択します。 上部の **[+ コンテナー]** を選択して、新しいコンテナーを作成します。
 

@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 07/12/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 94adac6ba232f8931d00083432c027ddccb2ce64
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 700dbfde3be2f24eb57acbdeb9d2841ef2bdfe44
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842498"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112288"
 ---
-コマンドの出力の `identity` セクションでは、タスクで `SystemAssigned` 型の ID が設定されたことが示されています。 `principalId` は、ID のサービス プリンシパル ID です。
+コマンドの出力の `identity` セクションでは、タスクで `SystemAssigned` 型の ID が設定されたことが示されています。 `principalId` は、タスク ID のプリンシパル ID です。
 
 ```console
 [...]

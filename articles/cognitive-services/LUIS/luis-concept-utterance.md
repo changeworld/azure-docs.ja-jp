@@ -55,10 +55,10 @@ LUIS モデルに[発話の例を追加する](luis-how-to-add-example-utterance
 
 |発話の例|
 |--|
-|コンピューターはどうすれば手に入りますか?|
-|コンピューターはどこで手に入りますか?|
+|how do I get a computer?|
+|Where do I get a computer?|
 |コンピューターを手に入れたいのですが、どうすればよいですか?|
-|いつコンピューターを入手できますか?| 
+|When can I have a computer?| 
 
 ここでのコア用語 "コンピューター" は全部同じです。 デスクトップ コンピューター、ラップトップ、ワークステーション、マシンなどの代替を使用します。 LUIS はコンテキストからシノニムをインテリジェントに推論できますが、それでもトレーニング用の発話を作成するときは、常に変更することをお勧めします。
 
@@ -144,8 +144,8 @@ LUIS JSON アプリ ファイルに対して、分音記号または句読点の
 
 |発話|
 |--|
-|今年の夏、シアトル地区でどのような種類のカウンティー フェアが開催されますか?|
-|シアトル レビューの現在の評価は公正ですか?|
+|What kind of county fairs are happening in the Seattle area this summer?|
+|Is the current rating for the Seattle review fair?|
 
 イベント エンティティですべてのイベント データを検索する場合は、2 つ目ではなく最初の発話の単語 `fair` にラベルを付けます。
 

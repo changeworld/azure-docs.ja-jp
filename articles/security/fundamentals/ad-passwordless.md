@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory でのパスワードレスの環境を理解する | Microsoft Docs
+title: Azure AD によるパスワードレス認証
+titleSuffix: Active Directory
 description: このガイドでは、Azure Active Directory 実装にパスワードレスの認証方法を選択することに責任を持つ、CEO、CIO、CISO、チーフ ID アーキテクト、エンタープライズ アーキテクト、セキュリティおよび IT の意思決定者を支援します。
 keywords: パスワードレス、azuread
 author: martincoetzer
@@ -9,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 39078e298093c2c2ab4835925a2ba8a70269f5f5
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 5fc6a4a23573995cf791a21ec7cf3a7d68d048e8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945585"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064480"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Azure Active Directory でのパスワードレスの環境
 
@@ -109,7 +110,7 @@ Windows Hello for Business が関係する他のシナリオの認証プロセ�
 
 [Microsoft PIN リセット サービス](/windows/security/identity-protection/hello-for-business/hello-feature-pin-reset)は、必要に応じてユーザーが自分の PIN をリセットできる Azure AD の機能です。 管理者は、グループ ポリシー、Microsoft Intune、または互換性のある MDM を使用して、Microsoft PIN リセット サービスを安全に使用するように Windows 10 デバイスを構成できます。これにより、ユーザーは、忘れた PIN を再登録することなく、設定またはロック画面上でリセットできるようになります。
 
-場合によっては、ユーザーはパスワードの使用にフォールバックする必要があります。 [パスワード リセットのセルフサービス](../../active-directory/authentication/howto-sspr-deployment.md) (SSPR) は、ユーザーが IT スタッフに連絡することなくパスワードをリセットできるようにする Azure AD のもう 1 つの機能です。 サービスを使用する前に、ユーザーはパスワード リセットのセルフサービスに登録するか、登録してもらう必要があります。 登録時に、ユーザーは組織で有効になっている 1 つまたは複数の認証方法を選択します。 SSPR を使用すると、ユーザーは場所や時間に関係なく、迅速にブロックを解除して作業を続けることができます。 ユーザーが自分自身のブロックを解除できるようにすることで、組織としては、パスワード関連のほとんどの一般的な問題に対する非生産的な時間と高いサポートコストを削減できます。
+場合によっては、ユーザーはパスワードの使用にフォールバックする必要があります。 [セルフサービス パスワード リセット ](../../active-directory/authentication/howto-sspr-deployment.md) (SSPR) は、ユーザーが IT スタッフに連絡することなくパスワードをリセットできるようにする Azure AD のもう 1 つの機能です。 サービスを使用する前に、ユーザーはセルフサービス パスワード リセット に登録するか、登録してもらう必要があります。 登録時に、ユーザーは組織で有効になっている 1 つまたは複数の認証方法を選択します。 SSPR を使用すると、ユーザーは場所や時間に関係なく、迅速にブロックを解除して作業を続けることができます。 ユーザーが自分自身のブロックを解除できるようにすることで、組織としては、パスワード関連のほとんどの一般的な問題に対する非生産的な時間と高いサポートコストを削減できます。
 
 ## <a name="passwordless-sign-in-with-microsoft-authenticator"></a>Microsoft Authenticator でのパスワードレスのサインイン
 
@@ -184,7 +185,7 @@ Microsoft Authenticator を使用したパスワードレスの認証は、Windo
 
 #### <a name="user-manages-their-passwordless-sign-in-with-microsoft-authenticator-credentials"></a>ユーザーが Microsoft Authenticator の資格情報を使用してパスワードレスのサインインを管理する
 
-[統合された登録](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md)を使用すると、ユーザーは Azure Multi-Factor Authentication とパスワード リセットのセルフサービスの両方を登録してそのメリットを得ることができます。 ユーザーは自分の [[マイ プロファイル] ページ](https://aka.ms/mysecurityinfo)に移動して、これらの設定を登録および管理します。 SSPR を有効にすることに加えて、統合された登録では複数の認証方法とアクションをサポートします。
+[統合された登録](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md)を使用すると、ユーザーは Azure Multi-Factor Authentication とセルフサービス パスワード リセット の両方を登録してそのメリットを得ることができます。 ユーザーは自分の [[マイ プロファイル] ページ](https://aka.ms/mysecurityinfo)に移動して、これらの設定を登録および管理します。 SSPR を有効にすることに加えて、統合された登録では複数の認証方法とアクションをサポートします。
 
 ## <a name="fido2-security-keys"></a>FIDO2 セキュリティ キー
 
@@ -323,7 +324,7 @@ Microsoft のパスワードレステクノロジを選択する際には、考�
 
 2. 多要素認証を有効にして保護を強化します。
 
-3. ユーザーがパスワードの使用にフォールバックする必要がある場合は、パスワード リセットのセルフサービスを有効にします。
+3. ユーザーがパスワードの使用にフォールバックする必要がある場合は、セルフサービス パスワード リセット を有効にします。
 
 4. モビリティを強化するために、Microsoft Authenticator の電話によるサインインを展開します。
 

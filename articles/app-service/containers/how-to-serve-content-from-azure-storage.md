@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: msangapu
-ms.openlocfilehash: 752c9dfd1ae67397713cdffce9ba530ad6a2c159
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: b2be84625035bb368784f3f423d63121c29255ad
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930007"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121421"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Linux 上の App Service 内の Azure Storage からコンテンツを提供する
 
@@ -34,6 +34,7 @@ ms.locfileid: "75930007"
 - App Service を使用する Azure Storage では、**Azure Files コンテナー** (読み取り/書き込み) と **Azure Blob コンテナー** (読み取り専用) のマウントがサポートされています
 - App Service を使用する Azure Storage では、インフラストラクチャの制限により、**Storage Firewall** 構成の使用は**サポートされていません**。
 - App Service を使用する Azure Storage では、アプリあたり**最大 5 つ**のマウント ポイントを指定できます。
+- アプリにマウントされた Azure Storage に App Service の FTP または FTPS エンドポイント経由でアクセスすることはできません。 [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用します。
 - Azure Storage は Web アプリに**含まれていない**ため、別途請求されます。 [Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage)の詳細を確認してください。
 
 > [!WARNING]

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5b039221f3a25bddf7953cbe8d517275f76d6f37
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7cbd088ed7b4f6ae242cce2067e52def2dad61c9
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474701"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136337"
 ---
 # <a name="display-controls"></a>表示コントロール
 
@@ -46,7 +46,7 @@ ms.locfileid: "75474701"
 
 **DisplayControl** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| Attribute | Required | 説明 |
 | --------- | -------- | ----------- |
 | Id | はい | 表示コントロールに使用される識別子です。 これは[参照](#referencing-display-controls)できます。 |
 | UserInterfaceControlType | はい | 表示コントロールの種類。 現在サポートされているのは [VerificationControl](display-control-verification.md) です。 |
@@ -58,7 +58,7 @@ ms.locfileid: "75474701"
 | InputClaims | 0:1 | **InputClaims** は、ユーザーから収集されるクレームの値を事前に設定するために使用されます。 |
 | DisplayClaims | 0:1 | **DisplayClaims** は、ユーザーから収集されるクレームを表すために使用されます。 |
 | OutputClaims | 0:1 | **OutputClaims** は、この **DisplayControl** のために一時的に保存されるクレームを表すために使用されます。 |
-| アクション | 0:1 | **Actions** は、フロントエンドで発生しているユーザー アクションに対して呼び出す検証技術プロファイルを一覧表示するために使用されます。 |
+| Actions | 0:1 | **Actions** は、フロントエンドで発生しているユーザー アクションに対して呼び出す検証技術プロファイルを一覧表示するために使用されます。 |
 
 ### <a name="input-claims"></a>入力クレーム
 

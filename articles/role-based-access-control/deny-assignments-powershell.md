@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell を使用して Azure リソースの拒否割り当てを一覧表示する | Microsoft Docs
+title: Azure PowerShell を使用して Azure リソースの拒否割り当てを一覧表示する
 description: Azure PowerShell を使用して、特定のスコープの特定の Azure リソース アクションへのアクセスが拒否されているユーザー、グループ、サービス プリンシパル、およびマネージド ID を一覧表示する方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 06/12/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c1ea26fdb4d60262f89ea6ab0f87220a08c01e68
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ba18b89bd37dbd55350321c503e37ab0590ab87
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113593"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137393"
 ---
 # <a name="list-deny-assignments-for-azure-resources-using-azure-powershell"></a>Azure PowerShell を使用して Azure リソースの拒否割り当てを一覧表示する
 
@@ -123,7 +123,7 @@ Get-AzDenyAssignment -Scope /subscriptions/<subscription_id>
 PS C:\> Get-AzDenyAssignment -Scope /subscriptions/11111111-1111-1111-1111-111111111111
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure リソースの拒否割り当ての概要](deny-assignments.md)
 - [Azure portal を使用して Azure リソースの拒否割り当てを一覧表示する](deny-assignments-portal.md)

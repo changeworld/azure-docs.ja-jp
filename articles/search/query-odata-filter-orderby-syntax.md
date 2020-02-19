@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/10/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e0db41098287ff011416932a0d44a1cb9f76127d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f3a1be435e297ab4a9ba7f8bfbd5f3ce3451d8a8
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786159"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153878"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Azure コグニティブ検索での `$filter`、`$orderby`、および `$select` 用の OData 言語の概要
 
@@ -59,10 +59,10 @@ identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 対話型の構文ダイアグラムも利用できます。
 
 > [!div class="nextstepaction"]
-> [Azure コグニティブ検索の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#field_path)
+> [Azure Cognitive Search の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#field_path)
 
 > [!NOTE]
-> 完全な EBNF については、[Azure コグニティブ検索の OData 式構文リファレンス](search-query-odata-syntax-reference.md)のページを参照してください。
+> 完全な EBNF については、[Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)に関するページをご覧ください。
 
 フィールド パスは、スラッシュで区切られた 1 つ以上の**識別子**で構成されます。 各識別子は、ASCII 文字またはアンダースコアで始まり、ASCII 文字、数字、またはアンダースコアのみを含む文字のシーケンスです。 文字には、大文字または小文字を指定できます。
 
@@ -113,14 +113,25 @@ OData では、定数は特定の [Entity Data Model](https://docs.microsoft.com
 
 | データ型 | 定数の例 |
 | --- | --- |
-| `Edm.Boolean` | `true`、`false` |
+| `Edm.Boolean` | `true`, `false` |
 | `Edm.DateTimeOffset` | `2019-05-06T12:30:05.451Z` |
 | `Edm.Double` | `3.14159`、`-1.2e7`、`NaN`、`INF`、`-INF` |
 | `Edm.GeographyPoint` | `geography'POINT(-122.131577 47.678581)'` |
 | `Edm.GeographyPolygon` | `geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'` |
-| `Edm.Int32` | `123`、`-456` |
+| `Edm.Int32` | `123`, `-456` |
 | `Edm.Int64` | `283032927235` |
 | `Edm.String` | `'hello'` |
+
+### <a name="escaping-special-characters-in-string-constants"></a>文字列定数での特殊文字のエスケープ
+
+OData 内の文字列定数は単一引用符で区切ります。 一重引用符を含む可能性のある文字列定数を使用してクエリを作成する必要がある場合は、埋め込まれた引用符を 2 つ入力することによってエスケープすることができます。
+
+たとえば、"Alice's car" のような書式設定されていないアポストロフィを含む語句は、OData で文字列定数 `'Alice''s car'` として表現されます。
+
+> [!IMPORTANT]
+> プログラムによってフィルターを構築する場合は、ユーザー入力に含まれる文字列定数を忘れずにエスケープすることが重要です。 これは、特にフィルターを使用して[セキュリティによるトリミング](search-security-trimming-for-azure-search.md)を実装する場合に、[インジェクション攻撃](https://wikipedia.org/wiki/SQL_injection)の可能性が低減されるようにするためです。
+
+### <a name="constants-syntax"></a>定数の構文
 
 次の EBNF ([拡張バッカスナウア記法フォーム](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) によって、上記の表に示されている定数の大部分に対する文法が定義されます。 地理空間型の文法については、[Azure コグニティブ検索での OData 地理空間関数](search-query-odata-geo-spatial-functions.md)に関する記事を参照してください。
 
@@ -187,10 +198,10 @@ boolean_literal ::= 'true' | 'false'
 対話型の構文ダイアグラムも利用できます。
 
 > [!div class="nextstepaction"]
-> [Azure コグニティブ検索の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#constant)
+> [Azure Cognitive Search の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#constant)
 
 > [!NOTE]
-> 完全な EBNF については、[Azure コグニティブ検索の OData 式構文リファレンス](search-query-odata-syntax-reference.md)のページを参照してください。
+> 完全な EBNF については、[Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)に関するページをご覧ください。
 
 ## <a name="building-expressions-from-field-paths-and-constants"></a>フィールド パスと定数からの式の構築
 
@@ -213,10 +224,10 @@ select_expression ::= '*' | field_path(',' field_path)*
 対話型の構文ダイアグラムも利用できます。
 
 > [!div class="nextstepaction"]
-> [Azure コグニティブ検索の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#filter_expression)
+> [Azure Cognitive Search の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/#filter_expression)
 
 > [!NOTE]
-> 完全な EBNF については、[Azure コグニティブ検索の OData 式構文リファレンス](search-query-odata-syntax-reference.md)のページを参照してください。
+> 完全な EBNF については、[Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)に関するページをご覧ください。
 
 **$orderby** パラメーターと **$select** パラメーターは、どちらも単純な式のコンマ区切りの一覧です。 **$filter** パラメーターは、単純なサブ式で構成されるブール式です。 これらのサブ式が、[`and`、`or`、`not`](search-query-odata-logical-operators.md) などの論理演算子、[`eq`、`lt`、`gt` など](search-query-odata-comparison-operators.md)の比較演算子、[`any` や `all`](search-query-odata-collection-operators.md) などのコレクション演算子を使用して結合されます。
 
@@ -226,10 +237,10 @@ select_expression ::= '*' | field_path(',' field_path)*
 - [Azure コグニティブ検索での OData $orderby 構文](search-query-odata-orderby.md)
 - [Azure コグニティブ検索での OData $select 構文](search-query-odata-select.md)
 
-## <a name="see-also"></a>関連項目  
+## <a name="see-also"></a>参照  
 
 - [Azure コグニティブ検索のファセット ナビゲーション](search-faceted-navigation.md)
-- [Azure コグニティブ検索のフィルター](search-filters.md)
-- [ドキュメントの検索 &#40;Azure コグニティブ検索 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Cognitive Search のフィルター](search-filters.md)
+- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 - [Lucene クエリ構文](query-lucene-syntax.md)
-- [Azure コグニティブ検索でのシンプルなクエリ構文](query-simple-syntax.md)
+- [Azure Cognitive Search でのシンプルなクエリ構文](query-simple-syntax.md)

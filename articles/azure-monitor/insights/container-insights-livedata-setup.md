@@ -3,12 +3,12 @@ title: コンテナー用 Azure Monitor のライブ データ (プレビュー)
 description: この記事では、コンテナー用 Azure Monitor で kubectl を使用せずに、コンテナーのログ (stdout/stderr) とイベントのリアルタイム ビューを設定する方法について説明します。
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 1ca52384e5ce657e4fedeb42e3304449a2d6be11
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: cf42eea99e437a76bb437b23f6eaffae1f1f3bc6
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030686"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063766"
 ---
 # <a name="how-to-setup-the-live-data-preview-feature"></a>ライブ データ (プレビュー) 機能を設定する方法
 
@@ -114,7 +114,7 @@ Kubernetes での高度なセキュリティ設定の詳細については、[Ku
     >[!NOTE]
     >この機能を Azure 中国で使用する場合は、最初のベース URL の値を `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` にし、2 番目のベース URL の値を `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` にする必要があります。 
     
-4. リダイレクト URL を登録したら、 **[詳細設定]** で **[アクセス トークン]** と **[ID トークン]** の各オプションを選択し、変更を保存します。
+4. リダイレクト URL を登録したら、 **[暗黙的な許可]** で **[アクセス トークン]** と **[ID トークン]** の各オプションを選択し、ご自分の変更を保存します。
 
 >[!NOTE]
 >シングル サインオン用の Azure Active Directory での認証の構成は、新しい AKS クラスターの最初のデプロイ中にのみ実行できます。 既にデプロイされている AKS クラスターに対して、シングル サインオンを構成することはできません。

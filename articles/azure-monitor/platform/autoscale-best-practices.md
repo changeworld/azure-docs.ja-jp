@@ -4,12 +4,12 @@ description: Azure での Web Apps、Virtual Machine Scale Sets、および Clou
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: d9f04e0af4349f6b149619f13dac8ca2f59b560e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a05cf87e660cc6c388ea2055bb174c47b99da4a3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75396993"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117117"
 ---
 # <a name="best-practices-for-autoscale"></a>自動スケールのベスト プラクティス
 Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[Cloud Services](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/)、および [API Management サービス](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)にのみ適用されます。
@@ -113,7 +113,7 @@ Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](http
 
 ### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>プロファイルに複数のルールが構成されている場合のスケーリングに関する考慮事項
 
-プロファイルに複数のルールを設定することが必要な場合があります。 複数のルールが設定されている場合、サービスで次の自動スケール ルールが使用されます。
+プロファイルに複数のルールを設定することが必要な場合があります。 複数のルールが設定されている場合、自動スケール エンジンで次の自動スケール ルールが使用されます。
 
 "*スケールアウト*" の場合、いずれかのルールが満たされていれば、自動スケールが実行されます。
 "*スケールイン*" の場合、すべてのルールが満たされている必要があります。
@@ -133,13 +133,13 @@ Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](http
 一方、CPU が 25% でメモリが 51% の場合、スケールインは "**実行されません**"。 スケールインを実行するためには、CPU が 29%、メモリが 49% である必要があります。
 
 ### <a name="always-select-a-safe-default-instance-count"></a>常に、安全な既定のインスタンス数を選択する
-自動スケールでは、メトリックを使用できないときにサービスをその数にスケールするので、既定のインスタンス数が重要となります。 そのため、ワークロードにとって安全な既定のインスタンス数を選択する必要があります。
+既定のインスタンス数は重要です。自動スケールでは、メトリックを使用できないときにサービスをその数にスケールするからです。 そのため、ワークロードにとって安全な既定のインスタンス数を選択する必要があります。
 
 ### <a name="configure-autoscale-notifications"></a>自動スケールの通知を構成する
 自動スケールでは、次のいずれかの状況が発生した場合に、アクティビティ ログに記録されます。
 
-* 自動スケールがスケール操作を発行した場合
-* 自動スケール サービスがスケール操作を正常に完了した場合
+* 自動スケールでスケール操作が発行された。
+* 自動スケール サービスでスケール操作が正常に完了した。
 * 自動スケール サービスがスケール操作を実行できない場合。
 * 自動スケール サービスがスケールを決定する際にメトリックを使用できない場合。
 * スケールを決定する際にメトリックを再び使用できるようになった (回復した) 場合。

@@ -3,12 +3,12 @@ title: マークダウン形式 - QnA Maker
 description: QnA Maker の回答テキストで使用できるマークダウン形式の一覧を次に示します。
 ms.topic: reference
 ms.date: 01/09/2020
-ms.openlocfilehash: f3c51052abeb48584df8fa1e831dc4605d471741
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3fb7d73afdfd5ab7f1fb56a685b21538b97c8ea4
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75898553"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77045403"
 ---
 # <a name="markdown-format-supported-in-qna-maker-answer-text"></a>QnA Maker の回答テキストでサポートされるマークダウン形式
 
@@ -25,7 +25,7 @@ QnA Maker の回答テキストで使用できるマークダウン形式の一�
 2 つの文の間の改行。|`\n\n`|`How can I create a bot with \n\n QnA Maker?`|![2 つの文の間の改行を書式設定する](./media/qnamaker-concepts-datasources/format-newline.png)|
 |h1 から h6 までのヘッダー。`#` の数はどのヘッダーかを表します。 1 `#` は h1 です。|`\n# text \n## text \n### text \n####text \n#####text` |`## Creating a bot \n ...text.... \n### Important news\n ...text... \n### Related Information\n ....text...`<br><br>`\n# my h1 \n## my h2\n### my h3 \n#### my h4 \n##### my h5`|![マークダウン ヘッダーを使用した書式設定](./media/qnamaker-concepts-datasources/format-headers.png)<br>![マークダウン ヘッダー H1 から H5 を使用した書式設定](./media/qnamaker-concepts-datasources/format-h1-h5.png)|
 |斜体 |`*text*`|`How do I create a bot with *QnA Maker*?`|![斜体を使用した書式設定](./media/qnamaker-concepts-datasources/format-italics.png)|
-|文字列 (太字)|`**text**`|`How do I create a bot with **QnA Maker**?`|![太字の強力なマーキングを使用した書式設定](./media/qnamaker-concepts-datasources/format-strong.png)|
+|強調 (太字)|`**text**`|`How do I create a bot with **QnA Maker**?`|![太字の強力なマーキングを使用した書式設定](./media/qnamaker-concepts-datasources/format-strong.png)|
 |リンクの URL|`[text](https://www.my.com)`|`How do I create a bot with [QnA Maker](https://www.qnamaker.ai)?`|![URL (ハイパーリンク) の書式設定](./media/qnamaker-concepts-datasources/format-url.png)|
 |\* 公開画像の URL|`![text](https://www.my.com/image.png)`|`How can I create a bot with ![QnAMaker](https://review.docs.microsoft.com/azure/cognitive-services/qnamaker/media/qnamaker-how-to-key-management/qnamaker-resource-list.png)`|![公開画像の URL の書式設定 ](./media/qnamaker-concepts-datasources/format-image-url.png)|
 |取り消し線|`~~text~~`|`some ~~questoins~~ questions need to be asked`|![取り消し線の書式設定](./media/qnamaker-concepts-datasources/format-strikethrough.png)|
@@ -34,7 +34,7 @@ QnA Maker の回答テキストで使用できるマークダウン形式の一�
 |リンクの斜体の URL|`[*text*](https://www.my.com)`|`How do I create a bot with [*QnA Maker*](https://www.qnamaker.ai)?`|![斜体の URL の書式設定](./media/qnamaker-concepts-datasources/format-url-italics.png)|
 |マークダウン記号のエスケープ|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![斜体の URL の書式設定](./media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
 |番号付きリスト|`\n 1. item1 \n 1. item2`|`This is an ordered list: \n 1. List item 1 \n 1. List item 2`<br>上の例では、マークダウンに組み込まれた自動番号付けを使用しています。<br>`This is an ordered list: \n 1. List item 1 \n 2. List item 2`<br>上の例では明示的な番号付けを使用しています。|![番号付きリストの書式設定](./media/qnamaker-concepts-datasources/format-ordered-list.png)|
-|記号付きリスト|`\n * item1 \n * item2`<br>or<br>`\n - item1 \n - item2`|`This is an ordered list: \n * List item 1 \n * List item 2`|![記号付きリストの書式設定](./media/qnamaker-concepts-datasources/format-unordered-list.png)|
+|記号付きリスト|`\n * item1 \n * item2`<br>or<br>`\n - item1 \n - item2`|`This is an unordered list: \n * List item 1 \n * List item 2`|![記号付きリストの書式設定](./media/qnamaker-concepts-datasources/format-unordered-list.png)|
 |入れ子になったリスト|`\n * Parent1 \n\t * Child1 \n\t * Child2 \n * Parent2`<br><br>`\n * Parent1 \n\t 1. Child1 \n\t * Child2 \n 1. Parent2`<br><br>番号付きリストと記号付きリストを一緒に入れ子にすることができます。 タブ `\t` は、子要素のインデント レベルを示します。|`This is an unordered list: \n * List item 1 \n\t * Child1 \n\t * Child2 \n * List item 2`<br><br>`This is an ordered nested list: \n 1. Parent1 \n\t 1. Child1 \n\t 1. Child2 \n 1. Parent2`|![入れ子になった記号付きリストの書式設定](./media/qnamaker-concepts-datasources/format-nested-unordered-list.png)<br>![入れ子になった番号付きリストの書式設定](./media/qnamaker-concepts-datasources/format-nested-ordered-list.png)|
 
 \* QnA Maker ではどのような方法でも画像は処理されません。 画像をレンダリングするのはクライアント アプリケーションの役割です。
