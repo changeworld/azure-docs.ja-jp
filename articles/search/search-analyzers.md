@@ -39,7 +39,7 @@ Azure コグニティブ検索では、["Unicode テキストのセグメント�
 
 次の一覧では、Azure コグニティブ検索で使用可能なアナライザーについて説明しています。
 
-| カテゴリ | [説明] |
+| カテゴリ | 説明 |
 |----------|-------------|
 | [標準 Lucene のアナライザー](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | 既定値。 指定や構成は必要ありません。 この汎用アナライザーは、ほとんどの言語とシナリオで適切に実行されます。|
 | 定義済みアナライザー | そのまま使用するように完成した製品として提供されます。 <br/>特殊と言語という 2 種類があります。 "定義済み" とは、カスタマイズまたは構成なしで、名前で参照するためです。 <br/><br/>[特殊 (言語を選ばない) アナライザー](index-add-custom-analyzers.md#AnalyzerTable)は、特殊な処理または最小限の処理が必要なテキスト入力に使用します。 非言語の定義済みアナライザーには、**Asciifolding**、**Keyword**、**Pattern**、**Simple**、**Stop**、**Whitespace** などがあります。<br/><br/>[言語アナライザー](index-add-language-analyzers.md)は、各言語に合わせて高度の言語サポートが必要な場合に使用されます。 Azure コグニティブ検索は、35 個の Lucene 言語アナライザーと 50 個の Microsoft 自然言語処理アナライザーをサポートしています。 |
