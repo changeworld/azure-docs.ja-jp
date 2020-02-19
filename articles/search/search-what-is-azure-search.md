@@ -127,7 +127,7 @@ Microsoft のお客様は、オンライン カタログ、基幹業務プログ
 
 多くのタスクを実行できるポータルに対し、Azure Cognitive Search は既存のアプリケーションに検索機能を統合したいと考えている開発者向けのものです。 次のプログラミング インターフェイスが用意されています。
 
-|プラットフォーム |[説明] |
+|プラットフォーム |説明 |
 |-----|------------|
 |[REST](/rest/api/searchservice/) | あらゆるプログラミング プラットフォームと言語 (Xamarin、Java、JavaScript など) でサポートされている HTTP コマンド|
 |[.NET SDK](search-howto-dotnet-sdk.md) | REST API 用の .NET ラッパーにより、C# と .NET Framework をターゲットとするその他のマネージ コード言語で効率的なコーディングを実現できます。 |
