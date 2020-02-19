@@ -97,7 +97,7 @@ Media Services に対して行うそれぞれの呼び出しについて、要�
 ## <a name="standard-http-verbs-supported-by-media-services"></a>Media Services でサポートされている標準の HTTP 動詞
 HTTP 要求を行うときに使用できる HTTP 動詞の完全な一覧を次に示します。
 
-| 動詞 | [説明] |
+| 動詞 | 説明 |
 | --- | --- |
 | GET |オブジェクトの現在の値を返します。 |
 | POST |提供されるデータに基づくオブジェクトを作成、またはコマンドを送信します。 |
