@@ -423,7 +423,7 @@ PdM では、通常の例よりも、少数派クラスを構成する故障の�
 
 このガイドの最後のセクションでは、PdM のソリューション テンプレート、チュートリアル、および Azure で実装された実験の一覧を示します。 これらの PdM アプリケーションは、場合によっては数分で Azure サブスクリプションにデプロイできます。 これらは、概念実証のデモ、代替手段を実験するためのサンドボックス、または実稼働の実装のためのアクセラレータとして使用できます。 これらのテンプレートは、[Azure AI Gallery](https://gallery.azure.ai) または [Azure GitHub](https://github.com/Azure) に配置されます。 これらのさまざまなサンプルは、時間とともにこのソリューション テンプレートにまとめられます。
 
-| # | タイトル | [説明] |
+| # | タイトル | 説明 |
 |--:|:------|-------------|
 | 2 | [Azure 予測メンテナンス ソリューション テンプレート](https://github.com/Azure/AI-PredictiveMaintenance) | IoT リモート監視における、Azure ML モデリングと、予測メンテナンス シナリオを支援できる完全な Azure インフラストラクチャを示すオープンソースのソリューション テンプレート。 |
 | 3 | [予測メンテナンスのためのディープ ラーニング](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | 予測メンテナンスのために LSTM (Long Short-Term Memory) ネットワーク (再帰型ニューラル ネットワークの 1 クラス) を使用したデモ ソリューションを含む Azure Notebook です。[このサンプルに関するブログ記事](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance)をご覧ください。|
