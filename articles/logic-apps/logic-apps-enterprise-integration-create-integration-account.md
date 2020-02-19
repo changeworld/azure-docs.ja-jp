@@ -55,7 +55,7 @@ ms.locfileid: "75979429"
 
    ![統合アカウントの詳細の指定](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-details.png)
 
-   | プロパティ | 必須 | 値 | [説明] |
+   | プロパティ | 必須 | 値 | 説明 |
    |----------|----------|-------|-------------|
    | **Name** | はい | <*integration-account-name*> | 統合アカウントの名前。文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、およびピリオド (`.`) のみを含めることができます。 この例では、"Fabrikam-Integration" を使用します。 |
    | **サブスクリプション** | はい | <*Azure サブスクリプション名*> | Azure サブスクリプションの名前 |
