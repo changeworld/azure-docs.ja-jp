@@ -83,7 +83,7 @@ Azure Resource Manager 体験版の作成に関する最も重要な部分は、
 
 ### <a name="accepted-parameter-metadata-types"></a>使用できるパラメーター メタデータの種類
 
-| メタデータの種類   | パラメーターの型  | [説明]     | 値の例    |
+| メタデータの種類   | パラメーターの型  | 説明     | 値の例    |
 |---|---|---|---|
 | **baseuri**     | string          | デプロイ パッケージのベース URI| https:\//\<\..\>.blob.core.windows.net/\<\..\> |
 | **username**    | string          | 新しいランダムなユーザー名。| admin68876      |
