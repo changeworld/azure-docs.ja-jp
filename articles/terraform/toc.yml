@@ -4,16 +4,16 @@
   items:
     - name: Azure での Terraform について
       href: terraform-overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: Terraform のインストールと構成
-      href: /azure/virtual-machines/linux/terraform-install-configure
+      href: terraform-install-configure.md
       maintainContext: true
     - name: Terraform 構成の作成
       href: terraform-create-configuration.md
     - name: Linux VM の作成
-      href: /azure/virtual-machines/linux/terraform-create-complete-vm
+      href: terraform-create-complete-vm.md
       maintainContext: true
 - name: チュートリアル
   items:
@@ -35,8 +35,6 @@
           href: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
     - name: インフラストラクチャ
       items:
-        - name: Azure リソースのマネージド ID が有効になっている Terraform VM の作成
-          href: terraform-vm-managed-identities-for-azure-resources.md
         - name: Terraform モジュールを使用した VM クラスターの作成
           href: terraform-create-vm-cluster-module.md
         - name: Terraform と HCL を使用して VM クラスターを作成する
