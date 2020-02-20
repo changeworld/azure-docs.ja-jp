@@ -49,7 +49,7 @@ Azure Time Series Insights では、Azure IoT Hub または Azure Event Hubs を
 
 サポートされるデータ型の一覧を次に示します。
 
-| データ型 | [説明] |
+| データ型 | 説明 |
 |-----------|------------------|-------------|
 | [bool]      |   2 つの状態 (true または false) のいずれかを持つデータ型。       |
 | dateTime    |   特定の時点を表します。通常、日時形式で表されます。 DateTimes は ISO 8601 形式である必要があります。      |
