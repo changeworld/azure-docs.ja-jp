@@ -30,7 +30,7 @@ ms.locfileid: "76760268"
 Microsoft Azure Service Bus メッセージングによってペイロード プロパティが定義され、プロデューサーとコンシューマーはこれを使用してトレース コンテキストを渡す必要があります。
 プロトコルは [HTTP 相関関係プロトコル](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)に基づいています。
 
-| プロパティ名        | [説明]                                                 |
+| プロパティ名        | 説明                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnostic-Id       | プロデューサーからキューへの外部呼び出しの一意識別子。 論理的根拠、考慮事項、形式について詳しくは、[HTTP プロトコルの Request-Id](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) に関するページをご覧ください。 |
 |  Correlation-Context | 操作の処理に関連するすべてのサービスに伝達される操作コンテキスト。 詳しくは、[HTTP プロトコルの Correlation-Context](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) に関するページをご覧ください。 |
