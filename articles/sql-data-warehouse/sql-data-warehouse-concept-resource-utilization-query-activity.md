@@ -25,7 +25,7 @@ Azure portal 内にある Azure SQL Data Warehouse のリッチな監視エク�
 Azure portal では、SQL Data Warehouse に対して以下のメトリックを使用できます。 これらのメトリックは、[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics) を通じて表示できます。
 
 
-| メトリックの名前             | [説明]                                                  | 集計の種類 |
+| メトリックの名前             | 説明                                                  | 集計の種類 |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
 | CPU の割合          | データ ウェアハウスの全ノードでの CPU 使用率      | 平均、最小、最大    |
 | データ IO の割合      | データ ウェアハウスの全ノードでの IO 使用率       | 平均、最小、最大    |
