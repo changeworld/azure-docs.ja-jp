@@ -52,7 +52,7 @@ Azure Stream Analytics スクリプトは、入力データを出力データに
 
 ![ジョブ ダイアグラムのライブ入力ソース](./media/debug-locally-using-job-diagram/live-input.png)
 
-|メトリック|[説明]|
+|メトリック|説明|
 |-|-|
 |**TaxiRide**| 入力の名前。|
 |**イベント ハブ** | 入力ソースの種類。|
@@ -68,7 +68,7 @@ Azure Stream Analytics スクリプトは、入力データを出力データに
 
 ![ジョブ ダイアグラムのローカル入力ソース](./media/debug-locally-using-job-diagram/local-input.png)
 
-|メトリック|[説明]|
+|メトリック|説明|
 |-|-|
 |**TaxiRide**| 入力の名前。|
 |**行数**| ステップから生成された行数。|
@@ -79,7 +79,7 @@ Azure Stream Analytics スクリプトは、入力データを出力データに
 
 ![ジョブ ダイアグラムのクエリ ステップ](./media/debug-locally-using-job-diagram/query-step.png)
 
-|メトリック|[説明]|
+|メトリック|説明|
 |-|-|
 |**TripData**|一時結果セットの名前。|
 |**行数**| ステップから生成された行数。|
@@ -89,7 +89,7 @@ Azure Stream Analytics スクリプトは、入力データを出力データに
 
 ![ジョブ ダイアグラムのローカル出力シンク](./media/debug-locally-using-job-diagram/live-output.png)
 
-|メトリック|[説明]|
+|メトリック|説明|
 |-|-|
 |**regionaggEH**|出力の名前。|
 |**イベント**|シンクに出力されるイベントの数。|
@@ -98,7 +98,7 @@ Azure Stream Analytics スクリプトは、入力データを出力データに
 
 ![ジョブ ダイアグラムのローカル出力シンク](./media/debug-locally-using-job-diagram/local-output.png)
 
-|メトリック|[説明]|
+|メトリック|説明|
 |-|-|
 |**regionaggEH**|出力の名前。|
 |**ローカル出力**| ローカル ファイルへの結果の出力。|
