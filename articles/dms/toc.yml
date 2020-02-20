@@ -26,15 +26,17 @@
       href: tutorial-mysql-azure-mysql-online.md
     - name: オンラインで RDS MySQL を Azure DB for MySQL に移行する
       href: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
-    - name: オンラインで PostgreSQL を Azure DB for PostgreSQL 単一サーバーに移行する
+    - name: ポータルを使用してオンラインで PostgreSQL を Azure DB for PostgreSQL に移行する
+      href: tutorial-postgresql-azure-postgresql-online-portal.md
+    - name: CLI を使用してオンラインで PostgreSQL を Azure DB for PostgreSQL に移行する
       href: tutorial-postgresql-azure-postgresql-online.md
-    - name: オンラインで RDS PostgreSQL を Azure DB for PostgreSQL 単一サーバーに移行する
+    - name: オンラインで RDS PostgreSQL を Azure DB for PostgreSQL に移行する
       href: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
     - name: オフラインで MongoDB を Azure Cosmos DB Mongo API に移行する
       href: tutorial-mongodb-cosmos-db.md
     - name: オンラインで MongoDB を Azure Cosmos DB Mongo API に移行する
       href: tutorial-mongodb-cosmos-db-online.md
-    - name: オンラインで Oracle を Azure Database for PostgreSQL 単一サーバーに移行する
+    - name: オンラインで Oracle を Azure DB for PostgreSQL 単一サーバーに移行する
       href: tutorial-oracle-azure-postgresql-online.md
 - name: 操作方法ガイド
   items:
@@ -44,9 +46,9 @@
       href: howto-sql-server-to-azure-sql-mi-powershell.md
     - name: 移行アクティビティの監視
       href: how-to-monitor-migration-activity.md
-    - name: SSIS パッケージを Azure SQL Database 単一データベースに再デプロイする
+    - name: SSIS パッケージを Azure SQL DB 単一データベースに再デプロイする
       href: how-to-migrate-ssis-packages.md
-    - name: SSIS パッケージを Azure SQL Database マネージド インスタンスに再デプロイする
+    - name: SSIS パッケージを Azure SQL DB マネージド インスタンスに再デプロイする
       href: how-to-migrate-ssis-packages-managed-instance.md
 - name: リソース
   expanded: true
@@ -85,13 +87,13 @@
           href: 'https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/'
         - name: 前提条件に対応して DMS インスタンスを作成する
           href: 'https://azure.microsoft.com/resources/videos/how-to-address-prerequisites-and-create-a-dms-instance/'
-        - name: SQL Server 2008 を Azure SQL Database Managed Instance に移行する
+        - name: SQL Server 2008 を Azure SQL DB マネージド インスタンスに移行する
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/'
-        - name: PostgreSQL を Azure Database for PostgreSQL に移行する
+        - name: PostgreSQL を Azure DB for PostgreSQL に移行する
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/'
         - name: オンライン移行を監視してカットオーバーを実行する
           href: 'https://azure.microsoft.com/resources/videos/how-to-monitor-online-migration-and-perform-cutover/'
-        - name: Oracle を Azure SQL Database に移行する
+        - name: Oracle を Azure SQL DB に移行する
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-oracle-to-sqldb-online/'
         - name: MongoDB を Azure Cosmos DB に移行する
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/'

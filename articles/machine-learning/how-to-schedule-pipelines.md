@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/12/2019
-ms.openlocfilehash: 1766b536043d8c404addb1877aa3ef9b57344ef4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: fed411ea171274513308ec3efa68da80e4d25f8a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722256"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116762"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Azure Machine Learning SDK for Python を使用して機械学習パイプラインのスケジュールを設定する
 
@@ -55,6 +55,13 @@ pipeline_id = "aaaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
 ## <a name="create-a-schedule"></a>スケジュールを作成する
 
 パイプラインを定期的に実行するには、スケジュールを作成します。 `Schedule` によって、パイプライン、実験、およびトリガーが関連付けられます。 トリガーには、実行の待機時間を示す `ScheduleRecurrence`、または変更を監視するディレクトリを指定するデータストア パスを指定できます。 どちらの場合も、パイプライン識別子と、スケジュールを作成する実験の名前が必要になります。
+
+Python ファイルの先頭に、`Schedule` クラスと `ScheduleRecurrence` クラスをインポートします。
+
+```python
+
+from azureml.pipeline.core.schedule import ScheduleRecurrence, Schedule
+```
 
 ### <a name="create-a-time-based-schedule"></a>時刻ベースのスケジュールを作成する
 
@@ -141,3 +148,4 @@ stop_by_schedule_id(ws, schedule_id)
 
 * [パイプライン](concept-ml-pipelines.md)に関する詳細情報
 * [Jupyter を使用した Azure Machine Learning の探索](samples-notebooks.md)に関する詳細情報
+

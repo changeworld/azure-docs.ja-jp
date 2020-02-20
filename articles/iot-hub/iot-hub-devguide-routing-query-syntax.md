@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 04db62f402c25dd4a04281047f684dc23d41a502
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: e95a0b4b9f071a0fd3949d50eeee17b811dfb8ea
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934632"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064820"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub メッセージ ルーティングのクエリ構文
 
@@ -196,7 +196,7 @@ $body.Weather.Temperature = 50 AND processingPath = 'hot'
 
 ### <a name="query-expressions"></a>クエリ式
 
-メッセージ本文に基づくクエリには、前に `$twin` を付ける必要があります。 さらにクエリ式では、ツインのタグまたはプロパティの参照を、本文の参照、メッセージ システム プロパティの参照、メッセージ アプリケーション プロパティの参照と組み合わせることもできます。 クエリでは大文字と小文字が区別されないため、タグとプロパティには一意の名前を使用することをお勧めします。 これは、デバイス ツインとモジュール ツインの両方に適用されます。 また、`twin`、`$twin`、`body`、`$body` をプロパティ名として使用することも避けてください。 たとえば、以下はすべて有効なクエリ式です。 
+メッセージ ツインに基づくクエリには、前に `$twin` を付ける必要があります。 さらにクエリ式では、ツインのタグまたはプロパティの参照を、本文の参照、メッセージ システム プロパティの参照、メッセージ アプリケーション プロパティの参照と組み合わせることもできます。 クエリでは大文字と小文字が区別されないため、タグとプロパティには一意の名前を使用することをお勧めします。 これは、デバイス ツインとモジュール ツインの両方に適用されます。 また、`twin`、`$twin`、`body`、`$body` をプロパティ名として使用することも避けてください。 たとえば、以下はすべて有効なクエリ式です。 
 
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'

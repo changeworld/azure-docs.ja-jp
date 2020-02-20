@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 09/17/2019
+ms.date: 01/05/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7cbb8c07b75509825795da45d8352140afd0864
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 3bec73ee7286ea831920fc20bd46cf43c2874081
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024230"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047098"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールを割り当てる
 
@@ -35,7 +35,7 @@ ms.locfileid: "77024230"
 
     ![Azure AD ロールの新しいバージョン](./media/pim-how-to-add-role-to-user/pim-new-version.png)
 
-# <a name="new-versiontabnew"></a>[新しいバージョン](#tab/new)
+# <a name="new-version"></a>[新しいバージョン](#tab/new)
 
 ## <a name="assign-a-role"></a>ロールの割り当て
 
@@ -61,19 +61,9 @@ ms.locfileid: "77024230"
 
 1. 割り当てるロールを選択し、 **[選択]** をクリックします。
 
-    **[メンバーまたはグループの選択]** ページが開きます。
+1. ロールに割り当てるメンバーを選択し、 **[選択]** を選択します。
 
-1. ロールに割り当てるメンバーまたはグループを選択し、 **[選択]** を選択します。
-
-    ![[メンバーまたはグループの選択] ウィンドウ](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
-
-    [メンバーシップ設定] ウィンドウが開きます。
-
-1. **[割り当ての種類]** リストで **[対象]** または **[アクティブ]** を選択します。
-
-    ![[メンバーシップ設定] ウィンドウ](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
-
-    Azure リソース向けの Privileged Identity Management には、2 つの明確な割り当ての種類があります。
+1. **[メンバーシップ設定]** ウィンドウの **[割り当ての種類]** リストで、 **[対象]** または **[アクティブ]** を選択します。
 
     - **[対象]** 割り当ての場合、このロールのメンバーは、ロールを使用するにはアクションを実行する必要があります。 要求されるアクションには、多要素認証 (MFA) チェックの実行、業務上の妥当性の指定、指定された承認者に対する承認要求などがあります。
 
@@ -83,13 +73,9 @@ ms.locfileid: "77024230"
 
     ロールの設定によっては、チェック ボックスが表示されない場合や、変更できない場合があります。
 
-1. 特定の割り当て期間を指定するには、チェック ボックスの選択を解除して、開始または終了日時フィールドを変更します。
+1. 特定の割り当て期間を指定するには、チェック ボックスの選択を解除して、開始または終了日時フィールドを変更します。 終わったら、 **[Done]\(完了\)** を選択します。
 
     ![メンバー シップ設定 - 日付と時刻](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
-
-1. 終わったら、 **[Done]\(完了\)** を選択します。
-
-    ![新しい割り当て - 追加](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
 
 1. 新しいロールの割り当てを作成するには、 **[追加]** を選択します。 状態の通知が表示されます。
 
@@ -117,7 +103,7 @@ ms.locfileid: "77024230"
 
     ロールの割り当てを延長する方法については、[Privileged Identity Management で Azure リソース ロールを延長または更新する方法](pim-resource-roles-renew-extend.md)に関するページを参照してください。
 
-# <a name="previous-versiontabprevious"></a>[以前のバージョン](#tab/previous)
+# <a name="previous-version"></a>[以前のバージョン](#tab/previous)
 
 ## <a name="make-a-user-eligible-for-a-role"></a>ユーザーをロールの候補にする
 

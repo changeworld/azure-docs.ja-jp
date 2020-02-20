@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 489f4a527a5afaf1bab5e2065137a5011d45baa6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5d0035e7c87806012d13117ae5335b7de5f3c99d
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474437"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132293"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services の一般的なユースケースとシナリオ
 
@@ -65,7 +65,7 @@ Contoso では、このアプリケーションを Azure に移行したいと�
 
 前のシナリオの例と同様に、Contoso には、約 10 年前に開発されたオンプレミスの基幹業務 (LOB) アプリケーションがあると仮定します。 このアプリケーションはディレクトリ対応であり、LDAP を使用して、ユーザーに関する情報や属性を AD DS から読み取るように設計されています。 アプリケーションでは属性の変更もディレクトリへの書き込みも行われません。
 
-Contoso では、このアプリケーションを Azure に移行し、現在このアプリケーションをホストしている古いオンプレミスのハードウェアを廃止したいと考えています。 REST ベースの Azure AD Graph API など、最新のディレクトリ API を使用するためにアプリケーションを書き直すことはできません。 コードの変更またはアプリケーションの書き直しを行うことなく、クラウドで実行されるようにアプリケーションを移行するには、リフトアンドシフト オプションが必要となります。
+Contoso では、このアプリケーションを Azure に移行し、現在このアプリケーションをホストしている古いオンプレミスのハードウェアを廃止したいと考えています。 REST ベースの Microsoft Graph API など、最新のディレクトリ API を使用するためにアプリケーションを書き直すことはできません。 コードの変更またはアプリケーションの書き直しを行うことなく、クラウドで実行されるようにアプリケーションを移行するには、リフトアンドシフト オプションが必要となります。
 
 このシナリオに対応するために、Azure AD DS はアプリケーションにマネージド ドメインに対する LDAP 読み取りを実行させ、必要な属性情報を取得できます。 アプリケーションを書き直す必要がないため、Azure へのリフトアンドシフトを実施することにより、アプリの実行場所の変更に気づくことなくユーザーが引き続きアプリを使用できるようにすることができます。
 
@@ -103,7 +103,7 @@ Azure AD DS のマネージド ドメインに Apache Ranger が有効な状態�
 
 このデプロイ シナリオの詳細については、[ドメイン参加済み HDInsight クラスターを構成する方法][hdinsight]に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 作業を開始するには、[Azure Active Directory Domain Services インスタンスを作成して構成][tutorial-create-instance]してください。
 

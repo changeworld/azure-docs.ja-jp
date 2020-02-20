@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 15a118dc72ae9ffc4b6c99b0e0b527a252d3ded8
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 235d8788b47355925d93cb3e3835d32e25c1b51f
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293591"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168160"
 ---
 # <a name="release-notes"></a>リリース ノート
 
@@ -86,7 +86,7 @@ ms.locfileid: "76293591"
 
 **バグの修正**
 
-- 有効な音声サービスのサブスクリプション キーなしでローカル `KeywordRecognizer` を使用した場合に発生するクラッシュを修正しました。
+- 有効な音声サービスのサブスクリプション キーなしでローカル `KeywordRecognizer` を使用した場合に発生するクラッシュを修正しました
 
 **サンプル**
 

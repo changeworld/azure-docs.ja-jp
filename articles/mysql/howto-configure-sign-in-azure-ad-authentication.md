@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 10dae81bf0ca8958f7c10aebef501fc604c4839c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bb3a8c94b377fb9c9150945ec4cf5980e006dd34
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76706018"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110612"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>MySQL での認証に Azure Active Directory を使用する
 
@@ -40,42 +40,7 @@ Azure AD ベースの認証用にユーザーを作成/有効化できるのは�
 
 今後のリリースでは、個々のユーザーの代わりに Azure AD グループを指定して管理者を複数指定できるようサポートされますが、現時点ではまだサポートされていません。
 
-## <a name="creating-azure-ad-users-in-azure-database-for-mysql"></a>Azure Database for MySQL で Azure AD ユーザーを作成する
-
-Azure Database for MySQL データベースに Azure AD ユーザーを追加するには、接続後に次の手順を実行します (接続方法については、後述のセクションを参照してください)。
-
-1. まず、Azure AD ユーザー `<user>@yourtenant.onmicrosoft.com` が Azure AD テナントの有効なユーザーであることを確認します。
-2. Azure AD 管理者ユーザーとして Azure Database for MySQL インスタンスにサインインします。
-3. Azure Database for MySQL でユーザー `<user>@yourtenant.onmicrosoft.com` を作成します。
-
-**例:**
-
-```sql
-CREATE AADUSER 'user1@yourtenant.onmicrosoft.com';
-```
-
-ユーザー名が 32 文字を超える場合は、接続時に使用するため、代わりに別名を使用することをお勧めします。 
-
-例:
-
-```sql
-CREATE AADUSER 'userWithLongName@yourtenant.onmicrosoft.com' as 'userDefinedShortName'; 
-```
-
-> [!NOTE]
-> Azure AD を通じてユーザーを認証しても、Azure Database for MySQL データベース内のオブジェクトにアクセスするためのアクセス許可はユーザーに付与されません。 必要なアクセス許可をユーザーに手動で付与する必要があります。
-
-## <a name="creating-azure-ad-groups-in-azure-database-for-mysql"></a>Azure Database for MySQL で Azure AD グループを作成する
-
-Azure AD グループがデータベースにアクセスできるようにするには、ユーザーの場合と同じメカニズムを使用しますが、代わりにグループ名を指定します。
-
-**例:**
-
-```sql
-CREATE AADUSER 'Prod_DB_Readonly';
-```
-
-ログインするときに、グループのメンバーは自分の個人用アクセス トークンを使用しますが、ユーザー名として指定されたグループ名でサインインします。
+管理者を構成した後、サインインできるようになりました。
 
 ## <a name="connecting-to-azure-database-for-mysql-using-azure-ad"></a>Azure AD を使用して Azure Database for MySQL に接続する
 
@@ -156,12 +121,53 @@ az account get-access-token --resource-type oss-rdbms
 CLI を使用する場合は、この短縮形を使用して接続できます。 
 
 **例 (Linux/macOS):**
-
-mysql -h mydb.mysql.database.azure.com \ --user user@tenant.onmicrosoft.com@mydb \ --enable-cleartext-plugin \ --password=`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`  
+```
+mysql -h mydb.mysql.database.azure.com \ 
+  --user user@tenant.onmicrosoft.com@mydb \ 
+  --enable-cleartext-plugin \ 
+  --password=`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`
+```
 
 “enable-cleartext-plugin” 設定に注意してください。トークンがハッシュされずにサーバーに送信されるようにするには、他のクライアントと同様の構成を使用する必要があります。
 
 これで、Azure AD 認証を使用して MySQL サーバーに対して認証されました。
+
+## <a name="creating-azure-ad-users-in-azure-database-for-mysql"></a>Azure Database for MySQL で Azure AD ユーザーを作成する
+
+Azure Database for MySQL データベースに Azure AD ユーザーを追加するには、接続後に次の手順を実行します (接続方法については、後述のセクションを参照してください)。
+
+1. まず、Azure AD ユーザー `<user>@yourtenant.onmicrosoft.com` が Azure AD テナントの有効なユーザーであることを確認します。
+2. Azure AD 管理者ユーザーとして Azure Database for MySQL インスタンスにサインインします。
+3. Azure Database for MySQL でユーザー `<user>@yourtenant.onmicrosoft.com` を作成します。
+
+**例:**
+
+```sql
+CREATE AADUSER 'user1@yourtenant.onmicrosoft.com';
+```
+
+ユーザー名が 32 文字を超える場合は、接続時に使用するため、代わりに別名を使用することをお勧めします。 
+
+例:
+
+```sql
+CREATE AADUSER 'userWithLongName@yourtenant.onmicrosoft.com' as 'userDefinedShortName'; 
+```
+
+> [!NOTE]
+> Azure AD を通じてユーザーを認証しても、Azure Database for MySQL データベース内のオブジェクトにアクセスするためのアクセス許可はユーザーに付与されません。 必要なアクセス許可をユーザーに手動で付与する必要があります。
+
+## <a name="creating-azure-ad-groups-in-azure-database-for-mysql"></a>Azure Database for MySQL で Azure AD グループを作成する
+
+Azure AD グループがデータベースにアクセスできるようにするには、ユーザーの場合と同じメカニズムを使用しますが、代わりにグループ名を指定します。
+
+**例:**
+
+```sql
+CREATE AADUSER 'Prod_DB_Readonly';
+```
+
+ログインするときに、グループのメンバーは自分の個人用アクセス トークンを使用しますが、ユーザー名として指定されたグループ名でサインインします。
 
 ## <a name="token-validation"></a>トークンの検証
 

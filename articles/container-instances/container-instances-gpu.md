@@ -3,12 +3,12 @@ title: GPU 対応コンテナー インスタンスをデプロイする
 description: GPU リソースを使用してコンピューティング集中型コンテナー アプリを実行するために、Azure コンテナー インスタンスをデプロイする方法について説明します。
 ms.topic: article
 ms.date: 04/17/2019
-ms.openlocfilehash: ea3b0ccba2d84487356f4bbd404cec3af1d0979a
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c3b202d1f35194d59090c3cc310226d6cfc4dfea
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484186"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482957"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU リソースを使用するコンテナー インスタンスをデプロイする
 
@@ -42,9 +42,9 @@ ms.locfileid: "74484186"
 
   | SKU | VM ファミリ |
   | --- | --- |
-  | K80 | [NC](../virtual-machines/linux/sizes-gpu.md#nc-series) |
-  | P100 | [NCv2](../virtual-machines/linux/sizes-gpu.md#ncv2-series) |
-  | V100 | [NCv3](../virtual-machines/linux/sizes-gpu.md#ncv3-series) |
+  | K80 | [NC](../virtual-machines/nc-series.md) |
+  | P100 | [NCv2](../virtual-machines/ncv2-series.md) |
+  | V100 | [NCv3](../virtual-machines/ncv3-series.md) |
 
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
@@ -204,9 +204,9 @@ Accuracy at step 990: 0.969
 Adding run metadata for 999
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-GPU のリソースの使用は高価になる可能性があるため、コンテナーが長期間にわたり予期せず実行されていることがないようにします。 Azure portal でコンテナーを監視するか、[az container show][az-container-show] コマンドを使用して、コンテナー グループの状態を確認します。 例:
+GPU のリソースの使用は高価になる可能性があるため、コンテナーが長期間にわたり予期せず実行されていることがないようにします。 Azure portal でコンテナーを監視するか、[az container show][az-container-show] コマンドを使用して、コンテナー グループの状態を確認します。 次に例を示します。
 
 ```azurecli
 az container show --resource-group myResourceGroup --name gpucontainergroup --output table
@@ -219,7 +219,7 @@ az container delete --resource-group myResourceGroup --name gpucontainergroup -y
 az container delete --resource-group myResourceGroup --name gpucontainergrouprm -y
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [YAML ファイル](container-instances-multi-container-yaml.md)または [Resource Manager テンプレート](container-instances-multi-container-group.md)を使用したコンテナー グループのデプロイについて学習します。
 * Azure での [GPU 最適化済み VM サイズ](../virtual-machines/linux/sizes-gpu.md)について学習します。

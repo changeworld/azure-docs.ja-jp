@@ -16,12 +16,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06dfe1e76682d70170bfea104050b1000269c38f
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 2cfa5e2117b2d6fce525e66b25ec44f696d7d450
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932386"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484419"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory パススルー認証:よく寄せられる質問
 
@@ -35,11 +35,11 @@ Azure AD の各種サインイン方法の比較および組織に合った適�
 
 パススルー認証は、無料の機能です。 この機能を使用するために Azure AD の有料エディションは不要です。
 
-## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloudhttpswwwmicrosoftdecloud-deutschland-and-the-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>パススルー認証は [Microsoft Azure Germany クラウド](https://www.microsoft.de/cloud-deutschland)および [Microsoft Azure Government クラウド](https://azure.microsoft.com/features/gov/)で使用できますか。
+## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloud-and-the-microsoft-azure-government-cloud"></a>パススルー認証は [Microsoft Azure Germany クラウド](https://www.microsoft.de/cloud-deutschland)および [Microsoft Azure Government クラウド](https://azure.microsoft.com/features/gov/)で使用できますか。
 
 いいえ。 パススルー認証は、世界中の Azure AD のインスタンスでのみ使用できます。
 
-## <a name="does-conditional-accessactive-directory-conditional-access-azure-portalmd-work-with-pass-through-authentication"></a>[条件付きアクセス](../active-directory-conditional-access-azure-portal.md)は、パススルー認証と連携しますか。
+## <a name="does-conditional-access-work-with-pass-through-authentication"></a>[条件付きアクセス](../active-directory-conditional-access-azure-portal.md)は、パススルー認証と連携しますか。
 
 はい。 Microsoft Azure Multi-Factor Authentication を含め、すべての条件付きアクセス機能がパススルー認証と連携します。
 
@@ -54,7 +54,7 @@ Azure AD の各種サインイン方法の比較および組織に合った適�
 
 Azure AD Connect を使用して、サインイン方法をパスワード ハッシュ同期からパススルー認証に切り替えると、パススルー認証がマネージド ドメイン内でのユーザーのプライマリ サインイン方法になります。 パスワード ハッシュ同期によって以前同期されていたすべてのユーザーのパスワード ハッシュは、Azure AD に格納されたままになることに注意してください。
 
-## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>[Azure AD アプリケーション プロキシ](../manage-apps/application-proxy.md) コネクタを、パススルー認証エージェントと同じサーバーにインストールできますか。
+## <a name="can-i-install-an-azure-ad-application-proxy-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>[Azure AD アプリケーション プロキシ](../manage-apps/application-proxy.md) コネクタを、パススルー認証エージェントと同じサーバーにインストールできますか。
 
 はい。 この構成は、パススルー認証エージェント (バージョン 1.5.193.0 以降) のブランド名変更バージョンでサポートされます。
 
@@ -107,7 +107,7 @@ Azure AD Connect を使用して、サインイン方法をパスワード ハ�
 
 ## <a name="do-i-have-to-manually-renew-certificates-used-by-pass-through-authentication-agents"></a>パススルー認証エージェントで使用される証明書は手動で更新する必要がありますか。
 
-各パススルー認証エージェントと Azure AD の間の通信は、証明書ベースの認証を使用して保護されます。 これらの[証明書は、Azure AD によって数か月ごとに自動的に更新されます](how-to-connect-pta-security-deep-dive.md#operational-security-of -the-authentication-agents)。 これらの証明書を手動で更新する必要はありません。 必要に応じて、有効期限が切れた古い証明書をクリーンアップできます。
+各パススルー認証エージェントと Azure AD の間の通信は、証明書ベースの認証を使用して保護されます。 これらの[証明書は、Azure AD によって数か月ごとに自動的に更新されます](how-to-connect-pta-security-deep-dive.md#operational-security-of-the-authentication-agents)。 これらの証明書を手動で更新する必要はありません。 必要に応じて、有効期限が切れた古い証明書をクリーンアップできます。
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>パススルー認証エージェントを削除するにはどうすればよいですか。
 

@@ -5,14 +5,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 8/29/2019
+ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: 695507b0d6997870dbea392e73e4f4470248d26c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 1fa9c72f7ca305a03cdc90ea02cefe973932792b
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985885"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046313"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway のメトリック
 
@@ -132,6 +132,9 @@ Application Gateway に関しては、次のメトリックを利用できます
 - **異常なホストの数**
 
   正常性プローブによって異常であると判定されたバックエンドの数です。 バックエンド プールごとにフィルター処理を行って、特定のバックエンド プールの異常なホストの数を表示できます。
+  
+- **正常なホストごとの 1 分あたりの要求**は、バックエンド プール内の正常なメンバーが 1 分間に受信した要求の平均数です。 *BackendPool HttpSettings* ディメンションを使用してバックエンド プールを指定する必要があります。  
+  
 
 ## <a name="metrics-supported-by-application-gateway-v1-sku"></a>Application Gateway V1 SKU でサポートされるメトリック
 

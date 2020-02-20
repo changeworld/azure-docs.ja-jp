@@ -17,12 +17,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: fbef4d84e86c3d35e35a8bbeb04a399ad87a1b89
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 084c15c7ac3ec782dc48a55e65bf4d7aa43b58a1
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163380"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484181"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>On-Behalf-Of フローでの委任ユーザー ID を使用するサービス間の呼び出し
 
@@ -267,7 +267,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdW
 - **OBO 呼び出しから提供される SAML アサーションの SubjectConfirmationData**:ターゲット アプリケーションで **SubjectConfirmationData** の受信者の値が必要な場合、その値はリソース アプリケーション構成内の非ワイルドカードの応答 URL である必要があります。
 - **SubjectConfirmationData ノード**:このノードは SAML 応答の一部ではないため、**InResponseTo** 属性を含めることはできません。 SAML トークンを受け取るアプリケーションは、**InResponseTo** 属性なしで SAML アサーションを受け入れることができる必要があります。
 
-- **同意**:OAuth フローでユーザー データを含む SAML トークンを受信するためには、同意が付与されている必要があります。 アクセス許可および管理者の同意を得る方法については、「[Azure Active Directory v1.0 エンドポイントでのアクセス許可と同意](https://docs.microsoft.com/azure/active-directory/develop/v1-permissions-and-consent)」を参照してください。
+- **同意**:OAuth フローでユーザー データを含む SAML トークンを受信するためには、同意が付与されている必要があります。 アクセス許可および管理者の同意を得る方法については、「[Azure Active Directory v1.0 エンドポイントでのアクセス許可と同意](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent)」を参照してください。
 
 ### <a name="response-with-saml-assertion"></a>SAML アサーションの応答
 

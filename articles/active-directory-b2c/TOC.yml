@@ -351,6 +351,12 @@
           href: view-usage-reports.md
         - name: アカウント管理
           href: manage-user-accounts-graph-api.md
+        - name: Azure Pipelines を使用したデプロイ
+          href: deploy-custom-policies-devops.md
+          displayName: 'azure devops, ci/cd, cicd, custom policy, policies'
+        - name: PowerShell を使用したポリシーの管理
+          href: manage-custom-policies-powershell.md
+          displayName: 'scripting, scripts, psh, custom policy'
     - name: 監査ログ
       href: view-audit-logs.md
     - name: ユーザーの管理 - Azure portal

@@ -3,20 +3,18 @@ title: Azure Site Recovery の最新情報
 description: Azure Site Recovery サービスの新機能と最新の更新プログラムの概要について説明します。
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.openlocfilehash: d6aa04586c9c087a736c7e1b10b8c21328a63cab
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: cae653c9e51e2a497d6fa3781415a1f836053593
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934935"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064531"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery の最新情報
 
 [Azure Site Recovery](site-recovery-overview.md) サービスは、継続的に更新され、改善されています。 最新情報を入手し続ける助けになるように、この記事では、最新のリリース、新機能、および新しいコンテンツに関する情報を提供します。 このページは定期的に更新されます。
 
 [Azure 更新プログラム](https://azure.microsoft.com/updates/?product=site-recovery) チャネルで Site Recovery の更新通知をフォローし、サブスクライブすることができます。
-
-
 
 ## <a name="supported-updates"></a>サポートされる更新プログラム
 
@@ -30,18 +28,18 @@ Site Recovery コンポーネントでは、N-4 バージョン (N は最新リ�
 [ロールアップ 40](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [ロールアップ 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
 
-
-
 更新プログラムのインストールとサポートの詳細については、[こちら](service-updates-how-to.md)を参照してください。
 
 ## <a name="updates-january-2020"></a>更新プログラム (2020 年 1 月)
 
 ### <a name="update-rollup-44"></a>更新プログラム ロールアップ 44
+
 [更新プログラム ロールアップ 44](https://support.microsoft.com/help/4538187/update-rollup-44-for-azure-site-recovery) では、以下の更新が提供されます。
 
 **アップデート** | **詳細**
 --- | ---
-**問題の修正/改善点** | Site Recovery のエージェントとプロバイダーに対する多数の更新 (詳細はロールアップを参照)。
+**プロバイダーおよびエージェント** | Site Recovery のプロバイダーとエージェント向けの更新プログラムはありませんでした。
+**問題の修正/改善点** | さまざまな修正プログラムと機能強化 (詳細はロールアップを参照)
 
 ### <a name="azure-vmware-disaster-recovery"></a>Azure VMware のディザスター リカバリー
 

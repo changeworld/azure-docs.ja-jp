@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
-ms.openlocfilehash: 75a9e3e8422c0c59e00c290f1f360d61fce1eceb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3eafb8aff5525f668e6fe0bddb261b1117b5e38b
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901584"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048175"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute のルーティングの要件
 ExpressRoute を使用して Microsoft クラウド サービスに接続するには、ルーティングをセットアップして管理する必要があります。 一部の接続プロバイダーでは、ルーティングのセットアップと管理が管理されたサービスとして提供されています。 このサービスが提供されているかどうか、接続プロバイダーに問い合わせてください。 提供されていない場合は、次の要件に従う必要があります。
@@ -223,13 +223,14 @@ Microsoft からアドバタイズされるすべてのルートには、適切�
 | Exchange Online** | 12076:5010 |
 | SharePoint Online** | 12076:5020 |
 | Skype For Business Online** | 12076:5030 |
-| CRM Online |12076:5040 |
+| CRM Online*** |12076:5040 |
 | Azure Global Services* | 12076:5050 |
 | Azure Active Directory |12076:5060 |
 | その他の Office 365 Online サービス** | 12076:5100 |
 
-*現在のところ、Azure Global Services には、Azure DevOps のみが含まれています。
-** Microsoft からの承認が必要です。「[Microsoft ピアリングにルート フィルターを構成する](how-to-routefilter-portal.md)」を参照してください 
+\* 現在のところ、Azure Global Services には、Azure DevOps のみが含まれています。\
+** Microsoft からの承認が必要です。「[Microsoft ピアリングにルート フィルターを構成する](how-to-routefilter-portal.md)\」を参照してください
+*** CRM Online では、Dynamics v8.2 以下をサポートしています。 より新しいバージョンの場合は、Dynamics デプロイのリージョン コミュニティを選択してください。
 
 > [!NOTE]
 > Microsoft は、Microsoft にアドバタイズされるルートに設定されたすべての BGP コミュニティ値を無視します。

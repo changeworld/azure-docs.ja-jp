@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/04/2019
-ms.openlocfilehash: 4198b3a9213ed535c6649c50a20f2ff957d60c94
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1653a904875964d86864c59c718603a6dacdcbda
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823482"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087178"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Entity Framework による Elastic Database クライアント ライブラリ
 
@@ -27,7 +27,7 @@ ms.locfileid: "73823482"
 この記事のコードをダウンロードするには:
 
 * Visual Studio 2012 以降が必要です。 
-* [Elastic DB Tools for Azure SQL - Entity Framework Integration のサンプル](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-bae904ba)を MSDN からダウンロードします。 任意の場所にサンプルを解凍します。
+* [Elastic DB Tools for Azure SQL - Entity Framework Integration のサンプル](https://github.com/Azure/elastic-db-tools/)をダウンロードします。 任意の場所にサンプルを解凍します。
 * Visual Studio を起動します。 
 * Visual Studio で、[ファイル]、[プロジェクト / ソリューションを開く] の順に選択します。 
 * **[プロジェクトを開く]** ダイアログ ボックスで、ダウンロードしたサンプルに移動して **[EntityFrameworkCodeFirst.sln]** を選択し、サンプルを開きます。 
@@ -64,9 +64,9 @@ Entity Framework 開発者は、アプリケーションをビルドし、アプ
 エラスティック データベース クライアント ライブラリと Entity Framework API の両方を使用する場合は、次のプロパティを維持することを想定してください。 
 
 * **スケール アウト**: アプリケーションの容量要求に合わせて、必要に応じてシャード化されたアプリケーションのデータ層のデータベースを追加または削除します。 これには、データベースの作成と削除を制御することに加え、エラスティック データベース シャード マップ マネージャー API を使用したデータベースの管理やシャードレットのマッピングが含まれます。 
-* **一貫性**: アプリケーションでは、シャーディングが利用され、クライアント ライブラリのデータ依存ルーティング機能が使用されます。 破損や誤ったクエリ結果を回避するために、シャード マップ マネージャーを通じて接続が仲介されます。 これにより、検証と一貫性も維持されます。
+* **整合性**:アプリケーションでは、シャーディングが利用され、クライアント ライブラリのデータ依存ルーティング機能が使用されます。 破損や誤ったクエリ結果を回避するために、シャード マップ マネージャーを通じて接続が仲介されます。 これにより、検証と一貫性も維持されます。
 * **コード ファースト**: EF のコード ファースト パラダイムの利便性を保ちます。 Code First では、アプリケーションのクラスは基になるデータベース構造に透過的にマップされます。 アプリケーション コードは、基になるデータベースの処理に関連するほとんどの側面をマスクする Dbset と対話します。
-* **スキーマ**: Entity Framework では、初期のデータベース スキーマの作成とそれ以降のスキーマの展開が移行を通じて処理されます。 これらの機能を維持することで、データの進化に対して簡単にアプリを適合させることができます。 
+* **[スキーマ]** : Entity Framework では、初期のデータベース スキーマの作成とそれ以降のスキーマの展開が移行を通じて処理されます。 これらの機能を維持することで、データの進化に対して簡単にアプリを適合させることができます。 
 
 エラスティック データベース ツールを使用してこれらの Code First アプリケーションの要件を満たす方法を次のガイダンスに示します。 
 
@@ -190,7 +190,7 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 
 上記のコード例は、アプリケーションがデータ依存ルーティングを Entity Framework で使用するために、既定のコンストラクターを書き直す必要があることを示しています。 次の表では、この方法を他のコンストラクター向けに一般化しています。 
 
-| 現在のコンストラクター | データの書き換えのコンストラクター | 基本コンストラクター | メモ |
+| 現在のコンストラクター | データの書き換えのコンストラクター | 基本コンストラクター | Notes |
 | --- | --- | --- | --- |
 | MyContext() |ElasticScaleContext(ShardMap、TKey) |DbContext(DbConnection、bool) |接続は、シャード マップとデータに依存するルーティングのキーの関数である必要があります。 EF による自動的な接続の作成を回避し、代わりにシャード マップを使用して接続を仲介する必要があります。 |
 | MyContext(string) |ElasticScaleContext(ShardMap、TKey) |DbContext(DbConnection、bool) |接続は、シャード マップとデータに依存するルーティングのキーの関数である必要があります。 シャード マップによる検証が回避されるため、固定されたデータベース名または接続文字列は機能しません。 |

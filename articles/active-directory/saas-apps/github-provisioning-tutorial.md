@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02bae60622ca8f0e660c8fafbd21189d8e368ba9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 82f7252f2d9cdd2c54fae593d8463bfe84bd6ce2
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276603"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057653"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>チュートリアル:GitHub を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -33,6 +33,7 @@ ms.locfileid: "74276603"
 * Azure Active Directory テナント
 * [GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise) に作成された GitHub 組織 ([GitHub Enterprise 課金プラン](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)が必要)
 * 組織への Admin アクセス許可がある GitHub のユーザー アカウント
+* [こちら](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization)で説明しているように、組織に OAuth アクセスが提供されていることを確認します
 
 > [!NOTE]
 > Azure AD プロビジョニング統合では、[GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise) のお客様が [GitHub Enterprise 課金プラン](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)で使用できる [GitHub SCIM API](https://developer.github.com/v3/scim/) が必要です。
@@ -70,7 +71,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![GitHub のプロビジョニング](./media/github-provisioning-tutorial/GitHub1.png)
 
-5. **[管理者資格情報]** セクションにある **[承認する]** をクリックします。 これで、ブラウザーの新しいウィンドウで GitHub 承認ダイアログが開きます。 
+5. **[管理者資格情報]** セクションにある **[承認する]** をクリックします。 これで、ブラウザーの新しいウィンドウで GitHub 承認ダイアログが開きます。 アクセスの承認が承認されていることを確認する必要があることに注意してください。 [こちら](https://help.github.com/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization)に記載されている指示に従ってください。
 
 6. 新しいウィンドウで、Admin アカウントを使用して GitHub にサインインします。 表示された承認ダイアログで、プロビジョニングを有効にしたい GitHub チームを選択して **[承認する]** を選択します。 終わったら Azure Portal に戻り、プロビジョニング構成を完了します。
 
@@ -82,7 +83,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 8. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、[エラーが発生したときにメール通知を送信します] チェック ボックスをオンにします。
 
-9. **[Save]** をクリックします。
+9. **[保存]** をクリックします。
 
 10. [マッピング] セクションの **[Synchronize Azure Active Directory Users to GitHub]\(Azure Active Directory ユーザーを GitHub に同期する\)** を選びます。
 
@@ -90,17 +91,17 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 12. GitHub に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
 
-13. **[Save]** をクリックします。
+13. **[保存]** をクリックします。
 
 これにより、[ユーザーとグループ] セクションで GitHub に割り当てたユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ ログを取得できます。このログには、プロビジョニング サービスによって実行されたすべてのアクションが記載されています。
 
-Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
+Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)
+* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)

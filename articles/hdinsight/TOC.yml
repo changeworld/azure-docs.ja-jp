@@ -852,6 +852,8 @@
           href: ./domain-joined/hdinsight-use-oozie-domain-joined-clusters.md
     - name: 概念
       items:
+        - name: エンタープライズ セキュリティの一般的なガイドライン
+          href: ./domain-joined/general-guidelines.md
         - name: ESP クラスターの計画
           href: ./domain-joined/apache-domain-joined-architecture.md
         - name: HDInsight 仮想ネットワーク アーキテクチャ
@@ -864,6 +866,8 @@
           href: ./hdinsight-service-tags.md
         - name: お客様が管理するキー ディスクの暗号化
           href: ./disk-encryption.md
+        - name: Ranger と Apache Ambari での LDAP 同期
+          href: ./domain-joined/ldap-sync.md
     - name: 方法
       items:
         - name: 資格情報の管理に ID ブローカーを使用する

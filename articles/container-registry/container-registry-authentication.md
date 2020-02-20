@@ -3,12 +3,12 @@ title: レジストリ認証オプション
 description: Azure Active Directory ID でのサインイン、サービス プリンシパルの使用、オプションの管理者資格情報の使用など、非公開の Azure コンテナー レジストリのための認証オプション。
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 384f401a986c58dc6ce63384ce3e2a43b8db27fa
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 5459ac29c1264b18404cb2863b9d4209907ac029
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029879"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152945"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>Azure コンテナー レジストリでの認証
 
@@ -23,7 +23,7 @@ Azure コンテナー レジストリでの認証には複数の方法があり�
 | Method                               | 認証方法                                           | シナリオ                                                            | RBAC                             | 制限事項                                |
 |---------------------------------------|-------------------------------------------------------|---------------------------------------------------------------------|----------------------------------|--------------------------------------------|
 | [個人の AD ID](#individual-login-with-azure-ad)                |  Azure CLI  の `az acr login`                            | 開発者、テスト担当者による対話型のプッシュ/プル                                    | はい                              | AD トークンを 3 時間ごとに更新する必要がある     |
-| [AD サービス プリンシパル](#service-principal)                  | `docker login`<br/><br/>Azure CLI の `az acr login`<br/><br/> API またはツールのレジストリ ログイン設定<br/><br/> Kubernetes のプル シークレット                                           | CI/CD パイプラインからの無人プッシュ<br/><br/> Azure または外部サービスへの無人プル  | はい                              | SP パスワードの既定の有効期限は 1 年である       |                                                           
+| [AD サービス プリンシパル](#service-principal)                  | `docker login`<br/><br/>Azure CLI の `az acr login`<br/><br/> API またはツールのレジストリ ログイン設定<br/><br/> [Kubernetes のプル シークレット](container-registry-auth-kubernetes.md)                                           | CI/CD パイプラインからの無人プッシュ<br/><br/> Azure または外部サービスへの無人プル  | はい                              | SP パスワードの既定の有効期限は 1 年である       |                                                           
 | [AKS との統合](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)                    | AKS クラスターが作成または更新されたときにレジストリをアタッチする  | AKS クラスターへの無人プル                                                  | いいえ、プル アクセスのみ             | AKS クラスターでしか使用できない            |
 | [Azure リソースのマネージド ID](container-registry-authentication-managed-identity.md)  | `docker login`<br/><br/>Azure CLI の  `az acr login`                                        | Azure CI/CD パイプラインからの無人プッシュ<br/><br/> Azure サービスへの無人プル<br/><br/>   | はい                              | [Azure リソースのマネージド ID をサポートする](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) Azure サービスからのみ使用              |
 | [管理者ユーザー](#admin-account)                            | `docker login`                                          | 個人の開発者またはテスト担当者による対話型のプッシュ/プル                           | いいえ、常にプルおよびプッシュ アクセス  | レジストリごとに 1 つのアカウント (複数のユーザーの場合は推奨されません)         |

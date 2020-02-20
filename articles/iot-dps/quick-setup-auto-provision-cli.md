@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: f5737dccca6baa2dc2c1d98233b80d871cf86007
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ea1cae1f5a30d4cd76df39fec43f3818178fc213
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974713"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484198"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>クイック スタート:Azure CLI で IoT Hub Device Provisioning Service をセットアップする
 
@@ -28,9 +28,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[az group create](/cli/azure/group#az-group-create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+[az group create](/cli/azure/group#az-group-create) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
 次の例では、*my-sample-resource-group* という名前のリソース グループを場所 *westus* に作成します。
 
@@ -47,7 +47,7 @@ az group create --name my-sample-resource-group --location westus
 
 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) コマンドを使用して、IoT Hub を作成します。
 
-次の例では、*my-sample-hub* という名前の IoT ハブを場所 *westus* に作成します。 IoT ハブ名は Azure でグローバルに一意である必要があるため、一意のプレフィックスまたはサフィックスを例の名前に追加するか、まったく新しい名前を選択したい場合があります。 名前は、IoT ハブの適切な名前付け規則に従う必要があります。長さは 3 から 50 文字にする必要があるほか、使用できるのは大文字または小文字の英数字とハイフン ("-") のみです。 
+次の例では、*my-sample-hub* という名前の IoT ハブを場所 *westus* に作成します。 IoT ハブ名は Azure でグローバルに一意である必要があるため、一意のプレフィックスまたはサフィックスを例の名前に追加するか、まったく新しい名前を選択できます。 名前は、IoT ハブの適切な名前付け規則に従う必要があります。長さは 3 から 50 文字にする必要があるほか、使用できるのは大文字または小文字の英数字とハイフン ("-") のみです。 
 
 ```azurecli-interactive 
 az iot hub create --name my-sample-hub --resource-group my-sample-resource-group --location westus
@@ -64,7 +64,7 @@ az iot dps create --name my-sample-dps --resource-group my-sample-resource-group
 ```
 
 > [!TIP]
-> この例では、米国西部にプロビジョニング サービスが作成されます。 使用可能な場所の一覧を表示するには、`az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` コマンドを実行するか、[Azure の状態](https://azure.microsoft.com/status/)ページに移動して "Device Provisioning Service" を検索します。 コマンドでは、場所は 1 単語または複数単語の形式で指定できます。たとえば、westus、West US、WEST US などです。この値で、大文字と小文字は区別されません。 複数単語形式で場所を指定する場合は、値を引用符で囲みます。たとえば、`-- location "West US"` のようにします。
+> この例では、米国西部にプロビジョニング サービスが作成されます。 使用可能な場所の一覧を表示するには、`az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` コマンドを実行するか、[Azure の状態](https://azure.microsoft.com/status/)ページに移動して "Device Provisioning Service" を検索します。 コマンドでは、場所は 1 単語または複数単語の形式で指定できます。たとえば、westus、West US、WEST US などです。この値で、大文字と小文字は区別されません。 複数単語形式で場所を指定する場合は、値を引用符で囲みます。たとえば、`--location "West US"` のようにします。
 >
 
 ## <a name="get-the-connection-string-for-the-iot-hub"></a>IoT ハブの接続文字列の取得
@@ -112,7 +112,7 @@ az iot dps show --name my-sample-dps
 
 ![プロビジョニング サービスの確認](./media/quick-setup-auto-provision-cli/verify-provisioning-service.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このコレクションの他のクイックスタートは、このクイックスタートに基づいています。 引き続きクイックスタートまたはチュートリアルの作業を行う場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 作業を続けない場合は、以下のコマンドを使用して、プロビジョニング サービス、IoT ハブ、またはリソース グループとそのすべてのリソースを削除することができます。 以下に記述されているリソースの名前を、独自のリソースの名前に置き換えてください。
 
@@ -133,7 +133,7 @@ az iot hub delete --name my-sample-hub --resource-group my-sample-resource-group
 az group delete --name my-sample-resource-group
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、IoT ハブと Device Provisioning Service インスタンスをデプロイし、この 2 つのリソースをリンクしました。 ここで行った設定を使用して、シミュレートされたデバイスをプロビジョニングする方法については、シミュレートされたデバイスの作成に関するクイックスタートを参照してください。
 

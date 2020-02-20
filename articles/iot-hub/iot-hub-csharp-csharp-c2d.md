@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: robinsh
-ms.openlocfilehash: 99acd43128bedcf3dba470f84c0a406861d77e2d
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 7805b9b3f000b2bc2e45272ab9ff469d5711e581
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147786"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110205"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>デバイスに IoT Hub でクラウドからメッセージを送信する (.NET)
 
@@ -30,7 +30,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 * クラウドからデバイスへのメッセージをデバイスで受信する。
 
-* IoT Hub からデバイスに送信されたメッセージの配信確認 ("*フィードバック*") を、ソリューション バックエンドから要求する。
+* ソリューション バックエンドから、IoT Hub からデバイスに送信されたメッセージの配信確認 ("*フィードバック*") を要求する。
 
 cloud-to-device メッセージの詳細については、[IoT Hub における D2C と C2D のメッセージング](iot-hub-devguide-messaging.md)に関するページを参照してください。
 
@@ -46,9 +46,11 @@ cloud-to-device メッセージの詳細については、[IoT Hub における 
 
 ## <a name="prerequisites"></a>前提条件
 
-* Visual Studio
+* Visual Studio
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、 [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成することができます。
+
+* ポート 8883 がファイアウォールで開放されていることを確認してください。 この記事のデバイス サンプルでは、ポート 8883 を介して通信する MQTT プロトコルを使用しています。 このポートは、企業や教育用のネットワーク環境によってはブロックされている場合があります。 この問題の詳細と対処方法については、「[IoT Hub への接続 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)」を参照してください。
 
 ## <a name="receive-messages-in-the-device-app"></a>デバイス アプリでメッセージを受信する
 
@@ -210,7 +212,7 @@ cloud-to-device メッセージの詳細については、[IoT Hub における 
 > わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。 運用コードでは、「[一時的な障害の処理](/azure/architecture/best-practices/transient-faults)」で推奨されているように、再試行ポリシー (エクスポネンシャル バックオフなど) を実装してください。
 >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このハウツー記事では、cloud-to-device メッセージを送受信する方法を学習しました。
 

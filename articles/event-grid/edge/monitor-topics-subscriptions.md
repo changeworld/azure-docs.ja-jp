@@ -8,12 +8,12 @@ ms.date: 01/09/2020
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 79b223de7a0a0cfdaf799b1f80e585a2a55f7e82
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ce7c92f121fb458d528d63d0af0aad025b377386
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76851322"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086677"
 ---
 # <a name="monitor-topics-and-event-subscriptions"></a>トピックとイベント サブスクリプションを監視する
 
@@ -40,7 +40,7 @@ Edge の Event Grid では、トピックおよびイベント サブスクリ�
         }
  ```    
 
-メトリックは、http の場合はモジュールの `5888/metrics` で、https の場合は `4438/metrics` で使用できます。 たとえば、http の場合は `http://<modulename>:4438/metrics?api-version=2019-01-01-preview`。 この時点で、メトリック モジュールではエンドポイントをポーリングして、こちらの[アーキテクチャ例](https://github.com/veyalla/ehm)のようにメトリックを収集できます。
+メトリックは、http の場合はモジュールの `5888/metrics` で、https の場合は `4438/metrics` で使用できます。 たとえば、http の場合は `http://<modulename>:5888/metrics?api-version=2019-01-01-preview`。 この時点で、メトリック モジュールではエンドポイントをポーリングして、こちらの[アーキテクチャ例](https://github.com/veyalla/ehm)のようにメトリックを収集できます。
 
 ## <a name="available-metrics"></a>使用可能なメトリック
 
@@ -62,10 +62,10 @@ Edge の Event Grid では、トピックおよびイベント サブスクリ�
 
 | メトリック | 説明 |
 | ------ | ----------- |
-| deliverySuccessCounts | 構成されたエンドポイントに正常に配信されたイベントの数
-| deliveryFailureCounts | 構成されたエンドポイントへのイベント配信の試行が失敗した回数
-| deliverySuccessLatencyMs | 正常に配信されたイベントの待機時間 (ミリ秒)
-| deliveryFailureLatencyMs | 失敗したイベント配信の待機時間 (ミリ秒)
-| systemDelayForFirstAttemptMs | 最初の配信試行までのイベントのシステム遅延 (ミリ秒)
-| deliveryAttemptsCount | イベント配信試行回数 - 成功および失敗
-| expiredCounts | 配信できないイベントの数 
+| DeliverySuccessCounts | 構成されたエンドポイントに正常に配信されたイベントの数
+| DeliveryFailureCounts | 構成されたエンドポイントへの配信に失敗したイベントの数
+| DeliverySuccessLatencyMs | 正常に配信されたイベントの待機時間 (ミリ秒)
+| DeliveryFailureLatencyMs | 失敗したイベント配信の待機時間 (ミリ秒)
+| SystemDelayForFirstAttemptMs | 最初の配信試行までのイベントのシステム遅延 (ミリ秒)
+| DeliveryAttemptsCount | イベント配信試行回数 - 成功および失敗
+| ExpiredCounts | 有効期限が切れ、構成されたエンドポイントに配信されなかったイベントの数

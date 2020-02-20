@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 173e483710c3fa96ae542f7941f0912ed07ea2ca
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 57a211c6ffab9a960c013008410f4b52b909d360
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312204"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137517"
 ---
 # <a name="edit-metadata-module"></a>Edit Metadata (メタデータの編集) モジュール
 
-この記事では Azure Machine Learning デザイナーに含まれるモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) に含まれるモジュールについて説明します。
 
 Edit Metadata (メタデータの編集) モジュールを使用して、データセット内の列に関連付けられているメタデータを変更します。 Edit Metadata (メタデータの編集) モジュールの使用後、データセットの値とデータ型が変更されます。
 
@@ -40,9 +40,9 @@ Edit Metadata (メタデータの編集) モジュールを使用して、デー
   
 ## <a name="configure-edit-metadata"></a>Edit Metadata (メタデータの編集) を構成する
   
-1. Azure Machine Learning で、Edit Metadata (メタデータの編集) モジュールをパイプラインに追加し、更新するデータセットを接続します。 データセットは **[Manipulate]\(操作\)** カテゴリの **[Data Transformation]\(データ変換\)** の下にあります。
+1. Azure Machine Learning デザイナーで、Edit Metadata (メタデータの編集) モジュールをパイプラインに追加し、更新するデータセットを接続します。 このモジュールは、 **[データ変換]** カテゴリ内にあります。
   
-1. **[Launch the column selector]\(列セレクターの起動\)** をクリックし、操作する列または列のセットを選択します。 名前またはインデックスで列を個別に選択することも、型で列のグループを選択することもできます。  
+1. モジュールの右側のパネルにある **[列の編集]** をクリックして、操作する列または列のセットを選択します。 名前またはインデックスで列を個別に選択することも、型で列のグループを選択することもできます。  
   
 1. 選択した列に別のデータ型を割り当てる必要がある場合は、 **[Data type]\(データ型\)** オプションを選択します。 特定の操作で、データ型の変更が必要な場合があります。 たとえば、ソース データセットにテキストとして処理される数値がある場合、算術演算を使用する前にそれらを数値データ型に変更する必要があります。
 

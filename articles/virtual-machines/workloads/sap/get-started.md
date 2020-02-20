@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 42df2d24aad1465a200203e648feb97d4e96fd18
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8e5ea4bba693a6785dae4075da7b13154593bb4c
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989826"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087373"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure を使用して SAP ワークロード シナリオをホストして実行する
 
@@ -121,6 +121,7 @@ SAP コンポーネントへの Azure サービスの統合については、以
 
 ## <a name="change-log"></a>変更履歴
 
+- 2020 年 2 月 7 日:サンプルの NSG スクリーンショットを更新するために、[SAP の HA シナリオにおける Azure ILB を使用した VM のパブリック エンドポイント接続](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)が変更されました
 - 2020 年 2 月 3 日:「[SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)」と「[SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)」に変更があり、SLES でクラスター ノードのホスト名にダッシュを使用することに関する警告が削除されました。
 - 2020 年 1 月 28 日:SAP HANA クラスター リソースのタイムアウトを Red Hat のタイムアウトの推奨事項に合わせるために、[RHEL 上の Azure VM での SAP HANA の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel)に関する記事が変更されました
 - 2020 年 1 月 17 日:「[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios)」が変更され、既存の VM を近接通信配置グループに移動するセクションが変更されました

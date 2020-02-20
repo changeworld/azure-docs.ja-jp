@@ -4,7 +4,7 @@
   items:
     - name: Azure Batch とは
       href: batch-technical-overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: Batch ジョブの実行 - CLI
@@ -51,11 +51,11 @@
       href: batch-quota-limit.md
     - name: サポートされる VM のサイズ
       href: batch-pool-vm-sizes.md
-    - name: 高可用性と障害復旧
+    - name: 高可用性とディザスター リカバリー
       href: high-availability-disaster-recovery.md
     - name: タスク ランタイム環境変数
       href: batch-compute-node-environment-variables.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: Batch アカウントの管理
       items:
@@ -71,6 +71,8 @@
           href: batch-aad-auth.md
         - name: Batch Management での Azure AD
           href: batch-aad-auth-management.md
+        - name: Batch で Key Vault に安全にアクセスする
+          href: credential-access-key-vault.md
     - name: アプリケーション パッケージの使用
       href: batch-application-packages.md
     - name: プールの作成と管理

@@ -3,12 +3,12 @@ title: Python 関数に Azure Storage キュー バインドを追加する
 description: 出力バインディングを使用して Azure Storage キューを Python 関数に統合します。
 ms.date: 01/15/2020
 ms.topic: quickstart
-ms.openlocfilehash: f5527e0e636c3f8c9ee3723570ed9811f0df3641
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6cea44dca666bbf002de6e2b7dd283f49ac7bd5a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198481"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485167"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Python 関数に Azure Storage キュー バインドを追加する
 
@@ -100,7 +100,7 @@ ms.locfileid: "77198481"
 
 このケースでは、`msg` が出力引数として関数に与えられています。 型 `queue` では、`queueName` にキューの名前を指定し、(*local.settings.json* から得られる) Azure Storage 接続の "*名前*" を `connection` に指定する必要もあります。
 
-バインディングの詳細については、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」と[キューの出力の構成](functions-bindings-storage-queue.md#output---configuration)に関する記事を参照してください。
+バインディングの詳細については、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」と[キューの出力の構成](functions-bindings-storage-queue-output.md#configuration)に関する記事を参照してください。
 
 ## <a name="add-code-to-use-the-output-binding"></a>出力バインディングを使用するコードを追加する
 
@@ -219,7 +219,7 @@ def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
     ---
 
 
-1. [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) コマンドを使用して、このキュー内のメッセージ (先ほど関数をテストするときに使用した名) を表示します。 このコマンドでは、キューの 1 つ目のメッセージを [base64 エンコーディング](functions-bindings-storage-queue.md#encoding)で取得します。そのため、テキストとして表示するためには、メッセージをデコードする必要もあります。
+1. [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) コマンドを使用して、このキュー内のメッセージ (先ほど関数をテストするときに使用した名) を表示します。 このコマンドでは、キューの 1 つ目のメッセージを [base64 エンコーディング](functions-bindings-storage-queue-trigger.md#encoding)で取得します。そのため、テキストとして表示するためには、メッセージをデコードする必要もあります。
 
     # <a name="bash"></a>[bash](#tab/bash)
     

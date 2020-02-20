@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: f6d2da49e2659cfa69d25e3fe71351547706fd42
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b65b7a9fd38b690729fafd86fe213ff56760a1bb
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984848"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169836"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスとは
 
@@ -26,9 +26,6 @@ Azure Machine Learning コンピューティング インスタンス (プレビ
 
 通常、コンピューティング インスタンスは開発環境として使用されます。  また、開発時やテスト時におけるトレーニングや推論のコンピューティング ターゲットとして使用することもできます。  大規模なタスクの場合、マルチノード スケーリング機能を備える [Azure Machine Learning コンピューティング クラスター](how-to-set-up-training-targets.md#amlcompute)は、コンピューティング ターゲットの選択肢として適しています。
 
-> [!NOTE]
-> コンピューティング インスタンスは現在、**米国中北部**、**米国東部 2**、**北ヨーロッパ**、または**英国南部**リージョンのワークスペースでのみ使用できます。他のリージョンは近日中にサポートされる予定です。
->ワークスペースが他のリージョンにある場合は、代わりに [Notebook VM](concept-compute-instance.md#notebookvm) を引き続き作成して使用することができます。 
 
 ## <a name="why-use-a-compute-instance"></a>コンピューティング インスタンスを使用する理由
 
@@ -124,7 +121,7 @@ Azure Machine Learning Studio 内のご利用のワークスペースで、 **[�
 
 ご利用のワークスペース内のコンピューティング インスタンスごとに、次のことができます。
 
-* コンピューティング インスタンス上の Jupyter、JupyterLab、RStudio、VS Code URI にアクセスする
+* コンピューティング インスタンス上の Jupyter、JupyterLab、RStudio にアクセスする
 * コンピューティング インスタンスに SSH 接続する。 SSH アクセスは既定で無効になっていますが、コンピューティング インスタンスの作成時に有効にすることができます。 SSH アクセスは、公開/秘密キーのメカニズムを通じて実行されます。 このタブには、SSH 接続の詳細が表示されます (IP アドレス、ユーザー名、ポート番号など)。
 * 特定のコンピューティング インスタンスに関する詳細を取得する (IP アドレス、リージョンなど)。
 

@@ -1,25 +1,25 @@
 ---
 title: カスタム API の呼び出しをセキュリティで保護するために認証を追加する
-description: Azure Logic Apps からのカスタム API に呼び出しをセキュリティで保護するための認証を設定する方法
+description: Azure Logic Apps からのカスタム API の呼び出しのセキュリティ強化のために認証を設定する方法
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: 2f8b1cc002fe3f340ff6d5329329507316577885
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 110a684cf6ad21c13411d3bc2ada84750744f00e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666892"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191405"
 ---
-# <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Azure Logic Apps からのカスタム API の呼び出しのセキュリティ保護
+# <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>Azure Logic Apps からのカスタム API の呼び出しのセキュリティの向上
 
-API の呼び出しをセキュリティで保護するために、Azure Portal で Azure Active Directory (Azure AD) を設定できます。コードを更新する必要はありません。 あるいは、API のコードで認証を要求し、強制できます。
+API の呼び出しのセキュリティを向上させるために、Azure portal で Azure Active Directory (Azure AD) 認証を設定できます。コードを更新する必要はありません。 あるいは、API のコードで認証を要求し、強制できます。
 
 ## <a name="authentication-options-for-your-api"></a>API の認証オプション
 
-次の方法でカスタム API の呼び出しを保護できます。
+カスタム API の呼び出しのセキュリティは、次の方法で向上させることができます。
 
 * [コードを変更しない](#no-code):Azure portal 経由で [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) を利用し、API を保護します。そのため、コードを更新したり、API を再デプロイしたりする必要がありません。
 
@@ -197,13 +197,13 @@ Azure Active Directory 認証と共に、空の Web アプリやロジック ア
 }
 ```
 
-| プロパティ | 必須 | 説明 | 
+| プロパティ | Required | 説明 | 
 | -------- | -------- | ----------- | 
 | tenant | はい | Azure AD テナントの GUID | 
 | audience | はい | アクセスするターゲット リソースの GUID。Web アプリまたは API アプリのアプリケーション ID からのクライアント ID です | 
 | clientId | はい | アクセスを要求するクライアントの GUID。ロジック アプリのアプリケーション ID からのクライアント ID です | 
 | secret | はい | アクセス トークンを要求しているクライアントのアプリケーション ID からのキーまたはパスワード | 
-| 型 | はい | 認証の種類。 ActiveDirectoryOAuth 認証の場合、値 `ActiveDirectoryOAuth`を使用します。 | 
+| type | はい | 認証の種類。 ActiveDirectoryOAuth 認証の場合、値 `ActiveDirectoryOAuth`を使用します。 | 
 |||| 
 
 次に例を示します。
@@ -248,7 +248,7 @@ Azure Active Directory 認証と共に、空の Web アプリやロジック ア
 } 
 ```
 
-| プロパティ | 必須 | 説明 |
+| プロパティ | Required | 説明 |
 | -------- | -------- | ----------- |
 | `type` | はい | 認証の種類。 SSL クライアント証明書の場合、値として `ClientCertificate` を指定する必要があります。 |
 | `password` | いいえ | クライアント証明書 (PFX ファイル) にアクセスするためのパスワード |
@@ -271,9 +271,9 @@ Azure Active Directory 認証と共に、空の Web アプリやロジック ア
 }
 ```
 
-| プロパティ | 必須 | 説明 | 
+| プロパティ | Required | 説明 | 
 | -------- | -------- | ----------- | 
-| 型 | はい | 使用する認証の種類。 基本認証の場合、値 `Basic` を使用する必要があります。 | 
+| type | はい | 使用する認証の種類。 基本認証の場合、値 `Basic` を使用する必要があります。 | 
 | username | はい | 認証に使用するユーザー名 | 
 | パスワード | はい | 認証に使用するパスワード | 
 |||| 

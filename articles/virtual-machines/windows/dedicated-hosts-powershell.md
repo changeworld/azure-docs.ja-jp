@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: ae7c6f2d5f05b3d4ed3744be57112a62606cf622
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 5cd82635f3aec2cca251e122aadf96f70d377c8a
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833836"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190518"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Azure PowerShell を使用して専用ホストに VM をデプロイする
 
@@ -28,7 +28,7 @@ Azure PowerShell バージョン 2.8.0 以降がインストールされてい�
 ## <a name="limitations"></a>制限事項
 
 - 仮想マシン スケール セットは、現在、専用ホストではサポートされていません。
-- 次の VM シリーズがサポートされています。DSv3 と ESv3。 
+- 次の VM シリーズがサポートされています。DSv3、ESv3、Fsv2。 
 
 ## <a name="create-a-host-group"></a>ホスト グループを作成する
 
@@ -56,7 +56,7 @@ $hostGroup = New-AzHostGroup `
 
 ## <a name="create-a-host"></a>ホストを作成する
 
-次に、ホスト グループに専用ホストを作成してみましょう。 ホストの名前に加えて、ホストの SKU を指定する必要があります。 ホスト SKU では、専用ホストに対してサポートされている VM シリーズとハードウェアの世代がキャプチャされます。  プレビュー期間中は、次のホスト SKU 値がサポートされます: DSv3_Type1 と ESv3_Type1。
+次に、ホスト グループに専用ホストを作成してみましょう。 ホストの名前に加えて、ホストの SKU を指定する必要があります。 ホスト SKU では、専用ホストに対してサポートされている VM シリーズとハードウェアの世代がキャプチャされます。
 
 
 ホスト SKU の詳細と価格については、「[Azure 専用ホストの価格](https://aka.ms/ADHPricing)」を参照してください。

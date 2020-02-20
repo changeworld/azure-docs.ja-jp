@@ -3,12 +3,12 @@ title: よく寄せられる質問 - Azure Migrate での検出、評価、お�
 description: Azure Migrate での検出、評価、および依存関係分析に関してよく寄せられる質問への回答を取得します。
 ms.topic: conceptual
 ms.date: 12/29/2019
-ms.openlocfilehash: 0132563072ed04a52e4937da7a8df69196f1a91f
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 201d67c38e9583de16cb6075cc1c4bf826c204fd
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513288"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77059489"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>検出、評価、および依存関係分析に関してよく寄せられる質問
 
@@ -16,6 +16,8 @@ ms.locfileid: "76513288"
 
 - Azure Migrate に関する[一般的な質問](resources-faq.md)。
 - Azure Migrate アプライアンスに関する[一般的な質問](common-questions-appliance.md)。
+- サーバー移行に関する[質問](common-questions-server-migration.md)
+
 
 
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>1 つのアプライアンスで検出できる VM の数を教えてください？

@@ -3,12 +3,12 @@ title: Azure Migrate アプライアンスに関する一般的な質問
 description: Azure Migrate アプライアンスに関する一般的な質問の回答を示します
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: c9727287160f996059e9c1fb2d1fb5aec5900ab5
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: de9583b7983dda904e06ea258ecb0d202644586b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292334"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064701"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate アプライアンス:一般的な質問
 
@@ -16,6 +16,7 @@ ms.locfileid: "76292334"
 
 - Azure Migrate に関する[一般的な質問](resources-faq.md)
 - 検出、評価、依存関係の視覚化に関する[質問](common-questions-discovery-assessment.md)
+- サーバー移行に関する[質問](common-questions-server-migration.md)
 
 
 ## <a name="what-is-the-azure-migrate-appliance"></a>Azure Migrate アプライアンスとは何ですか。

@@ -15,24 +15,20 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
 ms.reviewer: milanga; johndeu
-ms.openlocfilehash: 4b0d360c11313e086f6ec26e5ee46b8d6f49869a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ab1eba3de474d9ff985e62f491c24fa63be0fa63
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844345"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069627"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Media Services プラットフォームの Media Analytics 
 
 ## <a name="retirement-plans"></a>提供終了予定
 
 > [!IMPORTANT]
-> 次のレガシ メディア プロセッサは 2020 年に廃止される予定です。次の表の詳細を参照してください。 
+> 一部のメディア プロセッサは廃止される予定です。 提供終了日と詳細情報については、[レガシ コンポーネント](legacy-components.md)に関するトピックを参照してください。 
 
-|メディア プロセッサ名|提供終了日|その他のメモ|
-|---|---|
-|[Azure Media Indexer](media-services-index-content.md)|2020 年 10 月 1 日|このメディア プロセッサは、[Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) に置き換えられます。 詳細については、「[Media Indexer と Media Indexer 2 から Video Indexer に移行する](migrate-indexer-v1-v2.md)」をご覧ください
- 
 ## <a name="overview"></a>概要
 
 従業員のトレーニング、お客様への対応、およびビジネス機能のドキュメント化で優先的に利用するメディアとしてビデオを使用する組織が増えています。 クラウド コンピューティングでは、それらの大量のメディア ファイルを格納、ストリーミングしたり、それらのファイルにアクセスしたりできます。 しかし、企業のビデオ コンテンツのライブラリが大きくなると、コンテンツから洞察を引き出す効果的な手段も必要です。 

@@ -12,22 +12,22 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: 6b880696b4922c68c73ce4ff59f72a62ce5a5a30
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f460bc3e4809b8a1cbabe1161c888255a7a484db
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348955"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157518"
 ---
 # <a name="automated-backups"></a>自動バックアップ
 
-SQL Database では、設定されている保持期間にわたり保存されるデータベース バックアップが自動的に作成され、Azure の[読み取りアクセス geo 冗長ストレージ (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) を使用し、データ センターを使用できない場合でもデータベース バックアップが確実に保存されます。 これらのバックアップは自動的に作成されます。 データの不慮の破損または削除から保護するデータベース バックアップは、ビジネス継続性およびディザスター リカバリー戦略の最も重要な部分です。 セキュリティ規則で、長期間バックアップ (最長 10 年間) を利用できる必要がある場合は、Single Database と Elastic Pool で[長期保有](sql-database-long-term-retention.md)を構成できます。
+SQL Database では、設定されている保持期間にわたり保存されるデータベース バックアップが自動的に作成され、Azure の[読み取りアクセス geo 冗長ストレージ (RA-GRS)](../storage/common/storage-redundancy.md) を使用し、データ センターを使用できない場合でもデータベース バックアップが確実に保存されます。 これらのバックアップは自動的に作成されます。 データの不慮の破損または削除から保護するデータベース バックアップは、ビジネス継続性およびディザスター リカバリー戦略の最も重要な部分です。 セキュリティ規則で、長期間バックアップ (最長 10 年間) を利用できる必要がある場合は、Single Database と Elastic Pool で[長期保有](sql-database-long-term-retention.md)を構成できます。
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="what-is-a-sql-database-backup"></a>SQL Database バックアップとは
 
-SQL Database は SQL Server 技術を利用して、[完全バックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server)を毎週、[差分バックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server)を 12 時間ごと、そして[トランザクション ログ バックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server)を 5 分から 10 分ごとに作成します。 バックアップは [RA-GRS ストレージ BLOB](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) に格納され、この BLOB はデータ センターの停止に対する保護のために[ペアのデータ センター](../best-practices-availability-paired-regions.md)にレプリケートされます。 データベースを復元するとき、どのバックアップを復元する必要があるかをサービスが判定します (完全、差分、トランザクション ログ)。
+SQL Database は SQL Server 技術を利用して、[完全バックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server)を毎週、[差分バックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server)を 12 時間ごと、そして[トランザクション ログ バックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server)を 5 分から 10 分ごとに作成します。 バックアップは [RA-GRS ストレージ BLOB](../storage/common/storage-redundancy.md) に格納され、この BLOB はデータ センターの停止に対する保護のために[ペアのデータ センター](../best-practices-availability-paired-regions.md)にレプリケートされます。 データベースを復元するとき、どのバックアップを復元する必要があるかをサービスが判定します (完全、差分、トランザクション ログ)。
 
 これらのバックアップを使用して、以下を行うことができます。
 
@@ -55,9 +55,9 @@ SQL Database は SQL Server 技術を利用して、[完全バックアップ](h
 
 ### <a name="point-in-time-restore"></a>ポイントインタイム リストア
 
-SQL Database では、完全バックアップ、差分バックアップ、トランザクション ログ バックアップを自動的に作成して、ポイントインタイム リストア (PITR) のセルフ サービスをサポートします。 完全データベース バックアップは毎週、差分データベース バックアップは一般的に 12 時間ごとに、トランザクション ログ バックアップは通常、5 - 10 分ごとに作成されます。頻度は、コンピューティング サイズとデータベース アクティビティの量に基づきます。 初回の完全バックアップは、データベースの作成直後にスケジュールされます。 通常この操作は 30 分以内に終了しますが、データベースのサイズが大きい場合はそれ以上かかることがあります。 たとえば、復元されたデータベースまたはデータベースのコピーでは、初期バックアップに時間がかかります。 初回の完全バックアップ以降のバックアップは、すべて自動的にスケジュールされ、バックグラウンドで自動的に管理されます。 データベースのバックアップの正確なタイミングは、全体的なシステムのワークロードのバランスを図りながら SQL Database サービスによって決定されます。 バックアップ ジョブを変更または無効化することはできません。 
+SQL Database では、完全バックアップ、差分バックアップ、トランザクション ログ バックアップを自動的に作成して、ポイントインタイム リストア (PITR) のセルフ サービスをサポートします。 完全データベース バックアップは毎週、差分データベース バックアップは一般的に 12 時間ごとに、トランザクション ログ バックアップは通常、5 - 10 分ごとに作成されます。頻度は、コンピューティング サイズとデータベース アクティビティの量に基づきます。 初回の完全バックアップは、データベースの作成直後にスケジュールされます。 通常この操作は 30 分以内に終了しますが、データベースのサイズが大きい場合はそれ以上かかることがあります。 たとえば、復元されたデータベースまたはデータベースのコピーでは、初期バックアップに時間がかかります。 初回の完全バックアップ以降のバックアップは、すべて自動的にスケジュールされ、バックグラウンドで自動的に管理されます。 データベースのバックアップの正確なタイミングは、全体的なシステムのワークロードのバランスを図りながら SQL Database サービスによって決定されます。 バックアップ ジョブを変更または無効化することはできません。
 
-PITR バックアップは、geo 冗長であり、[Azure Storage のリージョン間レプリケーション](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)によって保護されます。
+PITR バックアップは、geo 冗長ストレージで保護されています。 詳細については、「[Azure Storage の冗長性](../storage/common/storage-redundancy.md)」をご覧ください。
 
 詳細については、「[ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)」をご覧ください。
 
@@ -65,17 +65,17 @@ PITR バックアップは、geo 冗長であり、[Azure Storage のリージ�
 
 単一データベースとプールされたデータベースには、Azure Blob Storage に対する最大 10 年の完全バックアップの長期保有 (LTR) を構成するオプションが用意されています。 LTR ポリシーが有効になっている場合、週次の完全バックアップは自動的に別の RA-GRS ストレージ コンテナーにコピーされます。 さまざまなコンプライアンス要件を満たすために、毎週、毎月、毎年のバックアップに対して異なったリテンション期間を選択することができます。 ストレージの使用量は、選択したバックアップの頻度とリテンション期間によって異なります。 LTR ストレージのコストは、[LTR 料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=sql-database)を使用して見積もることができます。
 
-PITR と同じように、LTR バックアップは、geo 冗長であり、[Azure Storage のリージョン間レプリケーション](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)によって保護されます。
+PITR などの LTR バックアップは、geo 冗長ストレージで保護されています。 詳細については、「[Azure Storage の冗長性](../storage/common/storage-redundancy.md)」をご覧ください。
 
 詳細については、「[Long-term backup retention](sql-database-long-term-retention.md)」(長期バックアップ リテンション) をご覧ください。
 
 ## <a name="backup-storage-consumption"></a>バックアップ ストレージ消費量 
 
 単一データベースの場合、バックアップ ストレージの合計使用量は次のように計算されます。   
-[https://login.microsoftonline.com/consumers/](`Total backup storage size = (size of full backups + size of differential backups + size of log backups) – database size`)
+`Total backup storage size = (size of full backups + size of differential backups + size of log backups) – database size`
 
 エラスティック プールの場合、バックアップ ストレージの合計サイズはプール レベルで集計され、次のように計算されます。   
-[https://login.microsoftonline.com/consumers/](`Total backup storage size = (total size of all full backups + total size of all differential backups + total size of all log backups) - allocated pool data storage`) 
+`Total backup storage size = (total size of all full backups + total size of all differential backups + total size of all log backups) - allocated pool data storage` 
 
 保持期間を過ぎたバックアップはタイムスタンプに基づいて自動的に消去されます。 差分バックアップとログ バックアップにはそれに先行する完全バックアップが必要であるため、それらも毎週まとめて消去されます。 
 
@@ -169,13 +169,13 @@ DTU ベースのサービス レベルから仮想コア ベースのサービ�
 
 Azure portal を使用して PITR バックアップ保有期間を変更するには、portal 内で保持期間を変更するサーバー オブジェクトに移動し、変更するサーバー オブジェクトに基づいて適切なオプションを選択します。
 
-#### <a name="single-database--elastic-poolstabsingle-database"></a>[単一データベースとエラスティック プール](#tab/single-database)
+#### <a name="single-database--elastic-pools"></a>[単一データベースとエラスティック プール](#tab/single-database)
 
 単一の Azure SQL Database に対する PITR バックアップ保有期間の変更は、サーバー レベルで実行されます。 サーバー レベルで行われた変更は、そのサーバー上のデータベースに適用されます。 Azure SQL Database サーバーの PITR を Azure portal から変更するには、サーバーの概要ブレードに移動し、ナビゲーション メニューの [バックアップの管理] をクリックして、ナビゲーション バーの [保有期間の構成] をクリックします。
 
 ![Azure portal の PITR の変更](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
 
-#### <a name="managed-instancetabmanaged-instance"></a>[Managed Instance](#tab/managed-instance)
+#### <a name="managed-instance"></a>[Managed Instance](#tab/managed-instance)
 
 SQL Database マネージド インスタンスの PITR バックアップ保有期間の変更は、個々のデータベース レベルで実行されます。 Azure portal からインスタンス データベースの PITR バックアップ保有期間を変更するには、個々のデータベースの概要ブレードに移動し、ナビゲーション バーの [バックアップ保有期間の構成] をクリックします。
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
-ms.openlocfilehash: 7705ea3b60d8c8e2b189ad555d1b53fa395aa1fb
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 3aeb0369ee4a04dbbe89a4d0684b2a6c97378d13
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912512"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77123142"
 ---
 Azure Compute では、特定のハードウェアの種類に分離される、単一顧客専用の仮想マシン サイズを提供します。  これらの仮想マシン サイズは、コンプライアンスや規制上の要件などの要素に関連するワークロードについて、他の顧客からの高いレベルの分離を必要とするワークロードに最適です。  お客様は、[入れ子になった仮想マシンの Azure サポート](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)を使用して、これらの分離された仮想マシンのリソースをさらに分割することもできます。
 
@@ -29,16 +29,18 @@ Azure Compute では、特定のハードウェアの種類に分離される、
 
 利用可能な分離されたサイズごとの詳細については、[こちら](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)を参照してください。
 
-## <a name="retiring-d15_v2ds15_v2-isolation-on-february-15-2020"></a>2020 年 2 月 15 日の D15_v2/DS15_v2 分離の廃止
-Azure Dedicated Host の一般提供が開始されました。これを利用すると、シングル テナントの物理サーバー上で、組織の Linux と Windows の仮想マシンを実行できます。 これにより分離された Azure VM を Azure Dedicated Host と完全に置き換えることを計画しています。 **2020 年 2 月 15 日**以降、D15_v2/DS15_v2 Azure VM はハードウェア分離されなくなります。
+## <a name="retiring-d15_v2ds15_v2-isolation-on-may-15-2020"></a>2020 年 5 月 15 日の D15_v2/DS15_v2 分離の廃止
+**2020 年 2 月 10 日の更新:"分離" の廃止タイムラインは 2020 年 5 月 15 日まで延長されました "**
+
+Azure Dedicated Host の一般提供が開始されました。これを利用すると、シングル テナントの物理サーバー上で、組織の Linux と Windows の仮想マシンを実行できます。 これにより分離された Azure VM を Azure Dedicated Host と完全に置き換えることを計画しています。 **2020 年 5 月 15 日**以降、D15_v2/DS15_v2 Azure VM はハードウェア分離されなくなります。
 
 ## <a name="how-does-this-affect-me"></a>どのような影響がありますか?
-2020 年 2 月 15 日以降、D15_v2/DS15_v2 Azure 仮想マシンの分離保証は提供されなくなります。 
+2020 年 5 月 15 日以降、D15_v2/DS15_v2 Azure 仮想マシンの分離保証は提供されなくなります。 
 
 ## <a name="what-actions-should-i-take"></a>どのような対応が必要ですか?
 ハードウェア分離が不要な場合は、対応は不要です。 
 
-分離が必要な場合は、2020 年 2 月 15 日より前に、次のいずれかの対応が必要です。
+分離が必要な場合は、2020 年 5 月 15 日より前に、次のいずれかの対応が必要です。
 
 •   ワークロードを Azure Dedicated Host に[移行](https://azure.microsoft.com/blog/introducing-azure-dedicated-host)します。
 
@@ -51,13 +53,19 @@ Azure Dedicated Host の一般提供が開始されました。これを利用�
 ## <a name="timeline"></a>タイムライン
 | Date | アクション | 
 | --- | --- |
-| 2019 年 11 月 18 日  | D/DS15i_v2 (従量課金制、1 年間の予約インスタンス) を入手可能です |
-| 2020 年 2 月 14 日  | D/DS15i_v2 (1 年間の予約インスタンス) を購入できる最終日です | 
-| 2020 年 2 月 15 日   | D/DS15_v2 分離保証が削除されます | 
+| 2019 年 11 月 18 日 | D/DS15i_v2 (従量課金制、1 年間の予約インスタンス) を入手可能です |
+| 2020 年 5 月 14 日  | D/DS15i_v2 (1 年間の予約インスタンス) を購入できる最終日です | 
+| 2020 年 5 月 15 日   | D/DS15_v2 分離保証が削除されます | 
 | 2021 年 5 月 15 日  | D/DS15i_v2 が廃止されます (2019 年 11 月 18 日より前に D/DS15_v2 の 3 年間の予約インスタンスを購入したお客様を除くすべてのお客様)| 
-| 2022 年 11 月 17 日   | 3 年間の予約インスタンスの完了時に D/DS15i_v2 が廃止されます (2019 年 11 月 18 日より前に D/DS15_v2 の 3 年間の予約インスタンスを購入したお客様の場合) | 
+| 2022 年 11 月 17 日  | 3 年間の予約インスタンスの完了時に D/DS15i_v2 が廃止されます (2019 年 11 月 18 日より前に D/DS15_v2 の 3 年間の予約インスタンスを購入したお客様の場合) | 
 
 ## <a name="faq"></a>よく寄せられる質問
+### <a name="q-is-the-size-dds15_v2-going-to-get-retired"></a>Q:D/DS15_v2 のサイズは廃止される予定ですか?
+**A**: いいえ、"分離" 機能のみが廃止される予定です。 分離が不要な場合は、何もする必要はありません。
+
+### <a name="q-is-the-size-dds15i_v2-going-to-get-retired"></a>Q:D/DS15i_v2 のサイズは廃止される予定ですか?
+**A**: はい。このサイズは 2021 年 5 月 15 日まで使用できます。 2019 年 11 月 18 日より前に、D/DS15_v2 の 3 年間の予約インスタンスを購入したお客様については、2022 年 11 月 17 日まで D/DS15i_v2 にアクセスできます。
+
 ### <a name="q-why-am-i-not-seeing-the-new-dds15i_v2-sizes-in-the-portal"></a>Q:ポータルに新しい D/DS15i_v2 サイズが表示されないのはなぜですか?
 **A**: 現在 D/DS15_v2 のお客様で、新しい D/DS15i_v2 サイズを使用する場合は、こちらの[フォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0FTPNXHdWpJlO27GE-bHitUMkZUWEFPNjFPNVgyMkhZS05FSzlPTzRIOS4u)に記入してください
 
@@ -100,7 +108,7 @@ Dsv2 シリーズの場合も同様です。
 **A**: 残念ながら、新規購入できるのは 1 年間の予約インスタンスのみです。
  
 ### <a name="q-can-i-move-my-existing-d15_v2ds15_v2-reserve-instance-to-an-isolated-size-reserved-instance"></a>Q:既存の D15_v2/DS15_v2 予約インスタンスを、分離されたサイズの予約インスタンスに移行できますか?
-**A**: この特典は分離サイズと分離されていないサイズの両方に適用されるため、必要ありません。 ただし、Azure は既存の D15_v2/DS15_v2 予約インスタンスから D15i_v2/DS15i_v2 への変更をサポートしています。 他のすべての Dv2/Dsv2 予約インスタンスについては、既存の予約インスタンスを使用するか、分離されたサイズの新しい予約インスタンスを購入します。
+**A**: このアクションは分離サイズと分離されていないサイズの両方に適用されるため、必要ありません。 ただし、Azure は既存の D15_v2/DS15_v2 予約インスタンスから D15i_v2/DS15i_v2 への変更をサポートしています。 他のすべての Dv2/Dsv2 予約インスタンスについては、既存の予約インスタンスを使用するか、分離されたサイズの新しい予約インスタンスを購入します。
 
-### <a name="q-im-a-azure-service-fabric-customer-relying-on-the-silver-or-gold-durability-tiers-does-this-change-impact-me"></a>Q:シルバーまたはゴールドの持続性層を利用している Azure Service Fabric ユーザーです。 この変更の影響はありますか?
+### <a name="q-im-an-azure-service-fabric-customer-relying-on-the-silver-or-gold-durability-tiers-does-this-change-impact-me"></a>Q:シルバーまたはゴールドの持続性層を利用している Azure Service Fabric ユーザーです。 この変更の影響はありますか?
 **A**: いいえ。 Service Fabric の[持続性層](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)で提供されている保証は、この変更の後も引き続き機能します。 その他の理由で物理的なハードウェアの分離が必要な場合、上記のいずれかのアクションを実行する必要があります。 

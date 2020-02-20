@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 5aa75de694d05ce31becc6996aca419dff256a3f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5517b6434d8d654e8aa7e28bec8f6d2a3d9ca73b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023550"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77056684"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer の正常性プローブ
 
@@ -128,7 +128,7 @@ Cloud Services を使用し、w3wp.exe を使う Web ロールがある場合は
 
 次の場合、HTTP/HTTPS プローブは失敗します。
 * プローブ エンドポイントが、200 以外の HTTP 応答コード (403、404、500 など) を返す場合。 これにより、正常性プローブはすぐにダウンとしてマークされます。 
-* 31 秒のタイムアウト期間内に、プローブ エンドポイントがまったく応答しない場合。 プローブが停止中としてマークされる前、すべてのタイムアウト間隔の合計に達するまで、複数のプローブ要求が応答なしになる可能性があります。
+* プローブ エンドポイントは、プローブ間隔の最小値と 30 秒のタイムアウト期間中はまったく応答しません。 プローブが停止中としてマークされる前、すべてのタイムアウト間隔の合計に達するまで、複数のプローブ要求が応答なしになる可能性があります。
 * プローブ エンドポイントが TCP リセットによって接続を閉じた場合。
 
 次に、この種類のプローブ構成を Resource Manager テンプレートで表現する方法を示します。

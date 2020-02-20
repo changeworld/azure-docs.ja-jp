@@ -9,22 +9,31 @@ ms.author: johndeu
 ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 4a0af9d040c801c125d04a5af72b2ea53322ccdb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 89b01a3fb066f181f5ec54b481b71feaa7a6ae08
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74886573"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131402"
 ---
 # <a name="recommended-on-premises-encoders"></a>推奨のオンプレミス エンコーダー
+
 Azure Media Services でライブ ストリーミングを行う際には、チャネルでの入力ストリームの受信方法を指定できます。 ライブ エンコード チャネルを使用したオンプレミス エンコーダーを使用する場合、エンコーダーでは、出力として高品質のシングルビットレート ストリームをプッシュする必要があります。 パススルー チャネルを使用したオンプレミス エンコーダーを使用する場合、エンコーダーでは、目的の出力品質をすべて満たした出力として、マルチビット レート ストリームをプッシュする必要があります。 詳細については、[オンプレミス エンコーダーを使用したライブ ストリーミング](media-services-live-streaming-with-onprem-encoders.md)に関する記事を参照してください。
 
+## <a name="encoder-requirements"></a>エンコーダーの要件
+
+HTTPS または RTMPS プロトコルを使用する場合、エンコーダーで TLS 1.2 がサポートされている必要があります。
+
+## <a name="live-encoders-that-output-rtmp"></a>RTMP を出力するライブ エンコーダー 
+
 Azure Media Services では、RTMP を使用した、次のいずれかのライブ エンコーダーを出力として使用することを推奨しています。
+
 - Adobe Flash Media Live Encoder 3.2
 - Haivision Makito X HEVC
 - Haivision KB
-- Telestream Wirecast 8.1 以降
-- Telestream Wirecast S
+- Telestream Wirecast (TLS 1.2 の要件によりバージョン 13.0.2 以降)
+
+  RTMPS プロトコルを使用する場合、エンコーダーで TLS 1.2 がサポートされている必要があります。
 - Teradek Slice 756
 - TriCaster 8000
 - Tricaster Mini HD-4
@@ -33,11 +42,16 @@ Azure Media Services では、RTMP を使用した、次のいずれかのライ
 - xStream
 - Switcher Studio (iOS)
 
+## <a name="live-encoders-that-output-fragmented-mp4"></a>フラグメント化 MP4 を出力するライブ エンコーダー 
+
 Azure Media Services では、マルチビットレートの fragmented-MP4 (Smooth Streaming) を使用した、次のいずれかのライブ エンコーダーを出力として使用することを推奨しています。
+
 - Media Excel Hero Live と Hero 4K (UHD/HEVC)
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
-- Elemental Live
+- Elemental Live (TLS 1.2 の要件により 2.14.15 以降)
+
+  HTTPS プロトコルを使用する場合、エンコーダーで TLS 1.2 がサポートされている必要があります。
 - Envivio 4Caster C4 Gen III
 - Imagine Communications Selenio MCP3
 
@@ -45,6 +59,7 @@ Azure Media Services では、マルチビットレートの fragmented-MP4 (Smo
 > ライブ エンコーダーではパススルー チャネルにシングルビットレート ストリームを送信することができますが、クライアントへのアダプティブ ビットレート ストリーミングができなくなるため、この構成は推奨されません。
 
 ## <a name="how-to-become-an-on-premises-encoder-partner"></a>オンプレミス エンコーダー パートナーになる方法
+
 Media Services は、Azure Media Services オンプレミス エンコーダー パートナーとして企業のお客様にエンコーダーを推奨することで、製品の販売を促進します。 オンプレミス エンコーダー パートナーになるには、オンプレミス エンコーダーと Media Services との互換性を確認する必要があります。 これを行うには、次の検証を実行します。
 
 パススルー チャネルの検証

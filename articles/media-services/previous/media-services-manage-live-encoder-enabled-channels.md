@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 32a4fde12287e06c12fac9ed13ad7a8889b49fc1
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: a32624c37cd8ca7fbef9e38ca61de9369791dd25
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895911"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162533"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する
 
@@ -31,7 +31,7 @@ ms.locfileid: "74895911"
 Azure Media Services (AMS) では、 **チャネル** はライブ ストリーミング コンテンツを処理するパイプラインを表します。 **チャネル** は、次の 2 つの方法のいずれかでライブ入力ストリームを受信します。
 
 * オンプレミスのライブ エンコーダーでは、次のいずれかの形式で、Media Services によるライブ エンコードが有効なチャネルに、シングル ビットレート ストリームが送信されます:RTMP またはスムーズ ストリーミング (Fragmented MP4)。 次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードがチャネルで実行されます。 Media Services は、要求に応じて、ストリームを顧客に配信します。
-* オンプレミスのライブ エンコーダーは、マルチビットレート **RTMP** または**スムーズ ストリーミング** (Fragmented MP4) を、AMS によるライブ エンコードの実行が無効なチャネルに送信します。 取り込んだストリームは、追加の処理なしで **チャネル**を通過します。 この方式は、 **パススルー**と呼ばれます。 マルチビットレートのスムーズ ストリーミングが出力される次のライブ エンコーダーを使用できます:MediaExcel、Ateme、Imagine Communications、Envivio、Cisco、Elemental。 次のライブ エンコーダーでは RTMP が出力されます:Adobe Flash Media Live Encoder (FMLE)、Telestream Wirecast、Haivision、Teradek、Tricaster の各エンコーダー。  ライブ エンコーダーは、ライブ エンコードが有効になっていないチャネルにシングル ビットレート ストリームも送信できますが、これはお勧めしません。 Media Services は、要求に応じて、ストリームを顧客に配信します。
+* オンプレミスのライブ エンコーダーは、マルチビットレート **RTMP** または**スムーズ ストリーミング** (Fragmented MP4) を、AMS によるライブ エンコードの実行が無効なチャネルに送信します。 取り込んだストリームは、追加の処理なしで **チャネル**を通過します。 この方式は、 **パススルー**と呼ばれます。 マルチビットレートのスムーズ ストリーミングが出力される次のライブ エンコーダーを使用できます:MediaExcel、Ateme、Imagine Communications、Envivio、Cisco、Elemental。 次のライブ エンコーダーでは RTMP が出力されます:[Telestream Wirecast](media-services-configure-wirecast-live-encoder.md)、Haivision、Teradek、Tricaster の各エンコーダー。  ライブ エンコーダーは、ライブ エンコードが有効になっていないチャネルにシングル ビットレート ストリームも送信できますが、これはお勧めしません。 Media Services は、要求に応じて、ストリームを顧客に配信します。
 
   > [!NOTE]
   > パススルー方式を使用することが、ライブ ストリーミングを行う最も経済的な方法です。
@@ -71,7 +71,7 @@ Media Services 2.10 リリース以降、チャネルを作成するときに、
 | チャネルの状態 | ポータル UI インジケーター | 課金対象 |
 | --- | --- | --- |
 | 開始中 |開始中 |いいえ (遷移状態) |
-| 実行中 |準備完了 (実行中プログラムなし)<br/>or<br/>ストリーミング (実行中プログラムが最低 1 つ存在) |はい |
+| 実行中 |準備完了 (実行中プログラムなし)<br/>or<br/>ストリーミング (実行中プログラムが最低 1 つ存在) |YES |
 | 停止中 |停止中 |いいえ (遷移状態) |
 | 停止済み |停止済み |いいえ |
 
@@ -146,7 +146,7 @@ Media Services 2.10 リリース以降、チャネルを作成するときに、
 * 44.1 kHz sampling rate
 * MPEG-2 style ADTS packaging
 * 推奨されるエンコーダーは、次のとおりです。
-* Telestream Wirecast
+* [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md)
 * Flash Media Live Encoder
 
 #### <a name="single-bitrate-fragmented-mp4-smooth-streaming"></a>シングル ビットレート Fragmented MP4 (スムーズ ストリーミング)
@@ -204,10 +204,10 @@ Ad マーカーの信号ソースを指定できます。 既定値は **Api** �
 ### <a name="cea-708-closed-captions"></a>CEA 708 クローズ キャプション
 受信ビデオに埋め込まれている CEA 708 キャプション データをすべて無視するようにライブ エンコーダーに指示するオプション フラグです。 このフラグが false (既定値) に設定されている場合、エンコーダーは CEA 708 データを検出し、そのデータを出力ビデオ ストリームに再び挿入します。
 
-#### <a name="index"></a>Index
+#### <a name="index"></a>インデックス
 シングル プログラム トランスポート ストリーム (SPTS) で送信することをお勧めします。 入力ストリームに複数のプログラムが含まれている場合、チャネル内のライブ エンコーダーは、入力でプログラム マップ テーブル (PMT) を解析し、ストリーム種類名が MPEG-2 AAC ADTS、AC-3 System-A、AC-3 System-B、MPEG-2 プライベート PES、MPEG-1 オーディオ、MPEG-2 オーディオの入力を特定し、PMT で指定された順序に配置します。 次に 0 から始まるインデックスを使用して、その配置内の n 番目のエントリを選択します。
 
-#### <a name="language"></a>言語
+#### <a name="language"></a>Language
 ISO 639-2 に準拠している、オーディオ ストリームの言語識別子 (例: ENG)。 存在しない場合の既定値は UND (未定義) です。
 
 ### <a id="preset"></a>システム プリセット
@@ -217,7 +217,7 @@ ISO 639-2 に準拠している、オーディオ ストリームの言語識別
 
 #### <a name="output-video-stream"></a>出力ビデオ ストリーム
 
-| ビットレート | 幅 | 高さ | 最大 FPS | プロファイル | 出力ストリーム名 |
+| ビットレート | 幅 | [高さ] | 最大 FPS | プロファイル | 出力ストリーム名 |
 | --- | --- | --- | --- | --- | --- |
 | 3500 |1280 |720 |30 |高 |Video_1280x720_3500kbps |
 | 2200 |960 |540 |30 |高 |Video_960x540_2200kbps |
@@ -260,7 +260,7 @@ Live Encoding が有効なチャネルがある場合、パイプライン内の
 スレートの時間 (秒) です。 スレートを開始するには、この値を 0 以外の正の値にします。 使用中のスレートがある場合、時間が 0 に設定されると、現在使用中のスレートが終了します。
 
 ### <a name="insert-slate-on-ad-marker"></a>Ad マーカーへのスレートの挿入
-この設定を true にすると、広告による中断期間中にライブ エンコーダーがスレート イメージを挿入するように構成されます。 既定値は true です。 
+この設定を true にすると、広告による中断期間中にライブ エンコーダーがスレート イメージを挿入するように構成されます。 既定値は、true です。 
 
 ### <a id="default_slate"></a>既定のスレート アセット ID
 
@@ -342,7 +342,7 @@ Live Encoding が有効な場合は、ライブ フィードがチャネルに�
 
 ## <a name="need-help"></a>お困りの際は、
 
-[[新しいサポート要求]](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) に移動することによってサポート チケットを開くことができます
+[[新しいサポート リクエスト]](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) に移動してサポート チケットを開くことができます
 
 ## <a name="next-step"></a>次のステップ
 

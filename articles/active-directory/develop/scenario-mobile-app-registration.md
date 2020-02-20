@@ -16,70 +16,82 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 33510015f4f05661ad2ea041b1fd3da0e8bfb1ed
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 75cfd304869bfb63131dfd2afed9f925c86d32fb
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702081"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132438"
 ---
-# <a name="mobile-app-that-calls-web-apis---app-registration"></a>Web API を呼び出すモバイル アプリ - アプリの登録
+# <a name="register-mobile-apps-that-call-web-apis"></a>Web API を呼び出すモバイル アプリを登録する
 
-この記事では、モバイル アプリケーションを作成するためのアプリの登録手順が記載されています。
+この記事では、作成中のモバイル アプリケーションを登録するための手順について説明します。
 
-## <a name="supported-accounts-types"></a>サポートされているアカウントの種類
+## <a name="supported-account-types"></a>サポートされているアカウントの種類
 
 モバイル アプリケーションでサポートされるアカウントの種類は、有効にするエクスペリエンスと使用するフローによって異なります。
 
 ### <a name="audience-for-interactive-token-acquisition"></a>対話型トークン取得の対象ユーザー
 
-ほとんどのモバイル アプリケーションでは、対話型認証が使用されています。 その場合は、任意の[アカウントの種類](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)からユーザーをサインインさせることができます。
+ほとんどのモバイル アプリケーションでは、対話型認証が使用されています。 アプリケーションでこの形式の認証を使用する場合は、任意の[アカウントの種類](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)からユーザーをサインインできます。
 
-### <a name="audience-for-integrated-authentication-usernamepassword-and-b2c"></a>統合認証の対象ユーザー、ユーザー名/パスワード、B2C
+### <a name="audience-for-integrated-windows-authentication-username-password-and-b2c"></a>統合 Windows 認証の対象ユーザー、ユーザー名とパスワード、B2C
 
-- 統合 Windows 認証 (UWP アプリで可能) またはユーザー名/パスワードを使用する場合は、アプリケーションが独自のテナント (LOB 開発者) 内のユーザー、または Azure Active Directory 組織 (ISV シナリオ) にサインインする必要があります。 これらの認証フローは、Microsoft の個人用アカウントではサポートされていません。
-- B2C 機関とポリシーを渡すソーシャル ID を使用してユーザーにサインインさせる場合は、対話型のユーザー名とパスワード認証のみを使用できます。 ユーザー名とパスワードは現在、Xamarin.iOS、Xamarin.Android、および UWP でのみサポートされています。
+ユニバーサル Windows プラットフォーム (UWP) アプリがある場合は、統合 Windows 認証を使用してユーザーにサインインできます。 統合 Windows 認証またはユーザー名とパスワード認証を使用するには、アプリケーションでは自分の基幹業務 (LOB) 開発者テナントにユーザーをサインインする必要があります。 独立系ソフトウェア ベンダー (ISV) のシナリオでは、アプリケーションは Azure Active Directory 組織内のユーザーにサインインできます。 これらの認証フローは、Microsoft の個人用アカウントではサポートされていません。
 
-全体像については、「[シナリオとサポートされている認証フロー](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)」と「[シナリオとサポートされているプラットフォームと言語](authentication-flows-app-scenarios.md#scenarios-and-supported-platforms-and-languages)」を参照してください。
+B2C の機関およびポリシーを渡すソーシャル ID を使用してユーザーにサインインすることもできます。 この方法を使用するには、対話型認証およびユーザー名とパスワード認証のみを使用できます。 ユーザー名とパスワード認証は現在、Xamarin.iOS、Xamarin.Android、および UWP でのみサポートされています。
+
+詳細については、「[シナリオとサポートされている認証フロー](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)」と「[シナリオとサポートされているプラットフォームと言語](authentication-flows-app-scenarios.md#scenarios-and-supported-platforms-and-languages)」を参照してください。
 
 ## <a name="platform-configuration-and-redirect-uris"></a>プラットフォーム構成とリダイレクト URI  
 
 ### <a name="interactive-authentication"></a>対話型認証
 
-対話型認証を使用してモバイル アプリをビルドするときに最も重要な登録手順は、リダイレクト URI です。 これは、[認証ブレードのプラットフォーム構成](https://aka.ms/MobileAppReg)で設定できます。
+対話型認証を使用するモバイル アプリをビルドするときに最も重要な登録手順は、リダイレクト URI です。 対話型認証は、[ **[認証]** ブレードのプラットフォーム構成](https://aka.ms/MobileAppReg)を使用して設定できます。
 
-このエクスペリエンスにより、お使いのアプリで Microsoft Authenticator (および Android の Intune ポータル サイト) を介してシングル サインオン (SSO) できるようになり、デバイス管理ポリシーもサポートされます。
+このエクスペリエンスにより、お使いのアプリで Microsoft Authenticator (および Android の Intune ポータル サイト) を介してシングル サインオン (SSO) できるようになります。 また、デバイス管理ポリシーもサポートされます。
 
-アプリ登録ポータルでは、iOS および Android アプリケーションの仲介型応答 URI を計算するのに役立つプレビュー エクスペリエンスがあることに注目してください。
+アプリ登録ポータルでは、iOS および Android アプリケーションの仲介型応答 URI を計算するのに役立つプレビュー エクスペリエンスがあります。
 
-1. アプリの登録で、 **[認証]** を選択し、 **[新しいエクスペリエンスを試す]** を選択します。
-   ![イメージ](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
+1. アプリの登録で、 **[認証]**  >  **[新しいエクスペリエンスを試す]** を選択します。
+
+   ![新しいエクスペリエンスを選択する [認証] ブレード](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 
 2. **[プラットフォームの追加]** を選択します。
-   ![イメージ](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
+
+   ![プラットフォームの追加](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
 
 3. プラットフォームの一覧がサポートされている場合は、 **[iOS]** を選択します。
-   ![イメージ](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
 
-4. 要求されたらバンドル ID を入力し、 **[登録]** を押します。
-   ![イメージ](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
+   ![モバイル アプリケーションの選択](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
 
-5. リダイレクト URI が自動的に計算されます。
-   ![image](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
+4. バンドル ID を入力し、 **[登録]** を選択します。
 
-リダイレクト URI を手動で構成する場合は、アプリケーション マニフェストを介して行えます。 推奨フォーマットは以下のとおりです。
+   ![バンドル ID の入力](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
 
-- ***iOS***: `msauth.<BUNDLE_ID>://auth` (例: "msauth.com.yourcompany.appName://auth")
-- ***Android***: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
+手順を完了すると、次の画像のようにリダイレクト URI が計算されます。
+
+![結果として得られるリダイレクト URI](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
+
+リダイレクト URI を手動で構成する場合は、アプリケーション マニフェストを介して行えます。 マニフェストの推奨される形式は次のとおりです。
+
+- **iOS**: `msauth.<BUNDLE_ID>://auth` 
+  - たとえば、「`msauth.com.yourcompany.appName://auth`」と入力します。
+- **Android**: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
   - Android の署名のハッシュは、KeyTool コマンドを通じて、リリース キーまたはデバッグ キーを使用して生成できます。
 
-### <a name="username-password"></a>ユーザー名とパスワード
+### <a name="username-password-authentication"></a>ユーザー名とパスワード認証
 
-アプリでユーザー名/パスワードのみを使用する場合は、アプリケーションのリダイレクト URI を登録する必要はありません。 実際には、このフローが Microsoft ID プラットフォームの v2.0 エンドポイントへのラウンド トリップを行い、アプリケーションは特定の URI にコールバックされません。 ただし、アプリケーションがパブリック クライアント アプリケーションであることを示す必要があります。 この構成を実現するには、アプリケーションの **[認証]** セクションに移動して、 **[詳細設定]** のサブセクションで、( **[既定のクライアントの種類]** の段落で) **[アプリケーションは、パブリック クライアントとして扱います]** の質問に対して **[はい]** を選択します。
+アプリでユーザー名とパスワード認証のみを使用する場合は、アプリケーションのリダイレクト URI を登録する必要はありません。 このフローは、Microsoft ID プラットフォーム バージョン 2.0 エンドポイントへのラウンドトリップを実行します。 アプリケーションが特定の URI でコールバックされることはありません。 
+
+ただし、アプリケーションをパブリック クライアント アプリケーションとして識別する必要があります。 これを行うには、アプリケーションの **[認証]** セクションから開始します。 **[詳細設定]** サブセクションの **[既定のクライアントの種類]** 段落で、 **[アプリケーションは、パブリック クライアントとして扱います]** の質問に対して **[はい]** を選択します。
 
 ## <a name="api-permissions"></a>API のアクセス許可
 
-モバイル アプリケーションでは、サインインしたユーザーの代わりに API を呼び出せます。 お使いのアプリでは、委任されたアクセス許可 (スコープとも呼ばれる) を要求する必要があります。 これは、目的のエクスペリエンスに応じて、Azure portal を介して静的に実行することも、実行時に動的に実行することもできます。 アクセス許可を静的に登録すれば、管理者は簡単にアプリを承認できるため、この方法をお勧めします。
+モバイル アプリケーションでは、サインインしたユーザーの代わりに API を呼び出せます。 アプリは、委任されたアクセス許可を要求する必要があります。 これらのアクセス許可は、スコープとも呼ばれます。 必要なエクスペリエンスに応じて、Azure portal を使用して、委任されたアクセス許可を静的に要求できます。 または、これらを実行時に動的に要求することができます。 
+
+アクセス許可を静的に登録すれば、管理者は簡単にアプリを承認できます。 静的な登録をお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
 

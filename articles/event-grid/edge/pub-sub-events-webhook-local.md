@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: e403d690470f3c4f1d0c8e565e90641d9c114a80
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ba82b1bea4753cd51e275a78b248247032d79a01
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844550"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086640"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>チュートリアル:ローカルでイベントを発行してサブスクライブする
 
@@ -64,8 +64,7 @@ ms.locfileid: "76844550"
     ```json
         {
           "Env": [
-            "inbound__clientAuth__clientCert__enabled=false",
-            "outbound__webhook__httpsOnly=false"
+            "inbound__clientAuth__clientCert__enabled=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -79,21 +78,17 @@ ms.locfileid: "76844550"
         }
     ```    
  1. **[保存]**
- 1. 次のセクションに進み、Azure Functions モジュールを追加してから一緒にデプロイします。
+ 1. 次のセクションに進み、Azure Event Grid Subscriber モジュールを追加してから一緒にデプロイします。
 
     >[!IMPORTANT]
-    > このチュートリアルでは、クライアント認証が無効になっている Event Grid モジュールをデプロイし、HTTP サブスクライバーを許可します。 運用環境のワークロードでは、クライアント認証を有効にして、HTTPS サブスクライバーのみを許可することをお勧めします。 Event Grid モジュールを安全に構成する方法の詳細については、「[セキュリティと認証](security-authentication.md)」を参照してください。
+    > このチュートリアルでは、クライアント認証が無効になっている Event Grid モジュールをデプロイしします。 運用環境のワークロードでは、クライアント認証を有効にすることをお勧めします。 Event Grid モジュールを安全に構成する方法の詳細については、「[セキュリティと認証](security-authentication.md)」を参照してください。
     > 
     > Azure VM をエッジ デバイスとして使用している場合は、ポート 4438 で受信トラフィックを許可する受信ポート規則を追加します。 規則を追加する手順については、[VM に対してポートを開く方法](../../virtual-machines/windows/nsg-quickstart-portal.md)に関するページを参照してください。
     
 
-## <a name="deploy-azure-function-iot-edge-module"></a>Azure Functions IoT Edge モジュールをデプロイする
+## <a name="deploy-event-grid-subscriber-iot-edge-module"></a>Event Grid Subscriber IoT Edge モジュールをデプロイする
 
-このセクションでは、Azure Functions IoT モジュールをデプロイする方法を示します。これは、イベントの配信先となる Event Grid サブスクライバーとして機能します。
-
->[!IMPORTANT]
->このセクションでは、Azure Functions ベースのサブスクライブ モジュールのサンプルをデプロイします。 もちろん、HTTP POST 要求をリッスンできるのであれば、任意のカスタム IoT モジュールでかまいません。
-
+このセクションでは、イベントの配信先となるイベント ハンドラーとして機能する別の IoT モジュールをデプロイする方法を示します。
 
 ### <a name="add-modules"></a>モジュールを追加する
 
@@ -102,23 +97,8 @@ ms.locfileid: "76844550"
 1. コンテナーの名前、イメージ、およびコンテナー作成オプションを指定します。
 
    * **名前**: subscriber
-   * **[イメージの URI]** : `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber-azfunc:latest`
-   * **[コンテナーの作成オプション]** :
-
-       ```json
-            {
-              "HostConfig": {
-                "PortBindings": {
-                  "80/tcp": [
-                    {
-                      "HostPort": "8080"
-                    }
-                  ]
-                }
-              }
-            }
-       ```
-
+   * **[イメージの URI]** : `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
+   * **[コンテナーの作成オプション]** : なし
 1. **[保存]**
 1. **[次へ]** をクリックして、ルートのセクションに進みます
 
@@ -191,7 +171,7 @@ ms.locfileid: "76844550"
             "destination": {
               "endpointType": "WebHook",
               "properties": {
-                "endpointUrl": "http://subscriber:80/api/subscriber"
+                "endpointUrl": "https://subscriber:4430"
               }
             }
           }
@@ -199,7 +179,7 @@ ms.locfileid: "76844550"
     ```
 
     >[!NOTE]
-    > **endpointType** プロパティによって、サブスクライバーが **Webhook** であることが指定されます。  **endpointUrl** によって、サブスクライバーがイベントをリッスンしている URL が指定されます。 この URL は、先ほどデプロイした Azure Functions のサンプルに対応しています。
+    > **endpointType** プロパティによって、サブスクライバーが **Webhook** であることが指定されます。  **endpointUrl** によって、サブスクライバーがイベントをリッスンしている URL が指定されます。 この URL は、先ほどデプロイした Azure Subscriber のサンプルに対応しています。
 2. 次のコマンドを実行して、トピックのサブスクリプションを作成します。 HTTP 状態コードが `200 OK` になることを確認します。
 
     ```sh
@@ -223,7 +203,7 @@ ms.locfileid: "76844550"
             "destination": {
               "endpointType": "WebHook",
               "properties": {
-                "endpointUrl": "http://subscriber:80/api/subscriber"
+                "endpointUrl": "https://subscriber:4430"
               }
             }
           }
@@ -275,7 +255,7 @@ ms.locfileid: "76844550"
     サンプル出力:
 
     ```sh
-        Received event data [
+        Received Event:
             {
               "id": "eventId-func-0",
               "topic": "sampleTopic1",
@@ -289,7 +269,6 @@ ms.locfileid: "76844550"
                 "model": "Monster"
               }
             }
-          ]
     ```
 
 ## <a name="cleanup-resources"></a>リソースをクリーンアップする

@@ -81,7 +81,7 @@
           href: container-instances-managed-identity.md
         - name: GPU リソースの使用 (プレビュー)
           href: container-instances-gpu.md
-        - name: SSL エンドポイントの有効化
+        - name: サイドカーでの SSL エンドポイントの有効化
           href: container-instances-container-group-ssl.md
     - name: データ ボリュームのマウント
       items:

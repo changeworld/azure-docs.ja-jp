@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 11df1557fdcad059910dd2a87e9056e19a90bf01
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: e2b61b87707a732d3b7c27f97b9ca5fcf82b4bf3
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75640842"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483044"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理で Azure WebJobs SDK の使用を開始する
 
@@ -177,7 +177,7 @@ ASP.NET Core では、ホストの構成は [`HostBuilder`](/dotnet/api/microsof
 
    `QueueTrigger` 属性は、`queue` と呼ばれる Azure Storage キューに新しいメッセージが書き込まれたときに、この関数を呼び出すようランタイムに通知します。 キュー メッセージの内容は、`message` パラメーター内のメソッド コードに提供されます。 メソッドの本文では、トリガー データを処理します。 この例では、コードはメッセージをログに記録するだけです。
 
-   `message` パラメーターは文字列である必要はありません。 JSON オブジェクト、バイト配列、または [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) オブジェクトにバインドすることもできます。 [キュー トリガーの使用方法](../azure-functions/functions-bindings-storage-queue.md#trigger---usage)に関するページをご覧ください。 バインドの種類 (キュー、BLOB、テーブルなど) ごとに、バインドできる異なる種類のパラメーター セットがあります。
+   `message` パラメーターは文字列である必要はありません。 JSON オブジェクト、バイト配列、または [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) オブジェクトにバインドすることもできます。 [キュー トリガーの使用方法](../azure-functions/functions-bindings-storage-queue-trigger.md#usage)に関するページをご覧ください。 バインドの種類 (キュー、BLOB、テーブルなど) ごとに、バインドできる異なる種類のパラメーター セットがあります。
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
@@ -273,7 +273,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
    `ProcessQueueMessage` 関数で `QueueTrigger` 属性を使用したので、WeJobs SDK ランタイムは起動時にキュー メッセージをリッスンします。 "*キュー*" という名前のキューで新しいキュー メッセージを検索し、関数を呼び出します。
 
-   [キュー ポーリング指数バックオフ](../azure-functions/functions-bindings-storage-queue.md#trigger---polling-algorithm)により、ランタイムがメッセージを検索して関数を呼び出すのに 2 分ほどかかる場合があります。 [開発モード](webjobs-sdk-how-to.md#host-development-settings)で実行すると、この待機時間を短縮できます。
+   [キュー ポーリング指数バックオフ](../azure-functions/functions-bindings-storage-queue-trigger.md#polling-algorithm)により、ランタイムがメッセージを検索して関数を呼び出すのに 2 分ほどかかる場合があります。 [開発モード](webjobs-sdk-how-to.md#host-development-settings)で実行すると、この待機時間を短縮できます。
 
    コンソール出力は次のようになります。
 
@@ -320,13 +320,13 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 1. **[接続文字列]** ボックスで、次のエントリを追加します。
 
-   |Name  |接続文字列  |データベースの種類|
+   |名前  |接続文字列  |データベースの種類|
    |---------|---------|------|
    |AzureWebJobsStorage | {先ほどコピーした Storage 接続文字列}|Custom|
 
 1. **[アプリケーション設定]** ボックスに Application Insights インストルメンテーション キーがない場合は、先ほどコピーしたキーを追加します (App Service アプリを作成する方法によっては、インストルメンテーション キーが既にある場合があります)。
 
-   |Name  |値  |
+   |名前  |Value  |
    |---------|---------|
    |APPINSIGHTS_INSTRUMENTATIONKEY | {instrumentation key} |
 
@@ -436,7 +436,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 1. **[キュー]** ページを更新すると、Azure で実行されている関数によって処理されたため、新しいメッセージが表示されなくなります。
 
    > [!TIP]
-   > Azure でテストするときに、[開発モード](webjobs-sdk-how-to.md#host-development-settings)を使用して、キュー トリガー関数がすぐに呼び出されることを確認し、[キュー ポーリング指数バックオフ](../azure-functions/functions-bindings-storage-queue.md#trigger---polling-algorithm)による遅延を回避します。
+   > Azure でテストするときに、[開発モード](webjobs-sdk-how-to.md#host-development-settings)を使用して、キュー トリガー関数がすぐに呼び出されることを確認し、[キュー ポーリング指数バックオフ](../azure-functions/functions-bindings-storage-queue-trigger.md#polling-algorithm)による遅延を回避します。
 
 ### <a name="view-logs-in-application-insights"></a>Application Insights のログの表示
 

@@ -527,7 +527,7 @@
               href: platform/resource-logs-blob-format.md
         - name: Event Hubs へのデータのストリーム配信
           href: platform/stream-monitoring-data-event-hubs.md
-    - name: VM とコンピューティングの監視
+    - name: VM とゲスト OS の監視
       items:
         - name: '[エージェント]'
           items:
@@ -537,13 +537,15 @@
               href: 'faq.md#agents'
             - name: Azure Diagnostics 拡張機能
               items:
+                - name: 概要
+                  href: platform/diagnostics-extension-overview.md
                 - name: Windows
                   displayname: diagnostics extension
                   items:
-                    - name: 概要
-                      href: platform/diagnostics-extension-overview.md
                     - name: '[インストールと構成]'
                       items:
+                        - name: インストール オプション
+                          href: platform/diagnostics-extension-windows-install.md
                         - name: PowerShell
                           href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
                         - name: Resource Manager テンプレート
@@ -561,13 +563,11 @@
                     - name: Event Hubs への送信
                       href: platform/diagnostics-extension-stream-event-hubs.md
                     - name: ログへの送信
-                      href: platform/azure-storage-iis-table.md
-                    - name: Azure Storage への送信
-                      href: platform/diagnostics-extension-to-storage.md
+                      href: platform/diagnostics-extension-logs.md
                     - name: Application Insights への送信
                       href: platform/diagnostics-extension-to-application-insights.md
                     - name: バージョン履歴
-                      href: platform/diagnostics-extension-schema.md
+                      href: platform/diagnostics-extension-versions.md
                     - name: JSON Lines リソース ログの形式
                       href: platform/diagnostic-logs-append-blobs.md
                     - name: トラブルシューティング
@@ -588,9 +588,9 @@
                 - name: Linux エージェント
                   href: platform/agent-linux.md
                 - name: Windows 用の VM 拡張機能
-                  href: ../virtual-machines/windows/extensions-oms.md
+                  href: ../virtual-machines/windows/extensions-oms.md?toc=/azure/azure-monitor/toc.json
                 - name: Linux 用の VM 拡張機能
-                  href: ../virtual-machines/linux/extensions-oms.md
+                  href: ../virtual-machines/linux/extensions-oms.md?toc=/azure/azure-monitor/toc.json
                 - name: Log Analytics ゲートウェイ
                   href: platform/gateway.md
                 - name: エージェント管理
@@ -1151,8 +1151,8 @@
       href: service-limits.md
     - name: 診断拡張機能
       items:
-        - name: スキーマ
-          href: platform/diagnostics-extension-schema-1dot3.md
+        - name: Windows の構成スキーマ
+          href: platform/diagnostics-extension-schema-windows.md
     - name: 用語の変更
       href: terminology.md
     - name: Application Insights

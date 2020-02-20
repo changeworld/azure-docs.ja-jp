@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
-ms.openlocfilehash: 108294e3f125da9fb009eb0a85585dab026c8d01
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: c3ed780bc50b690b2f5c3285024695ec6426b9b3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933333"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167324"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions のウォームアップ トリガー
 
@@ -38,7 +38,7 @@ ms.locfileid: "75933333"
 
 ## <a name="trigger---example"></a>トリガー - 例
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 新しいインスタンスがアプリに追加されるたびに実行される [C# 関数](functions-dotnet-class-library.md)の例を次に示します。 戻り値の属性は必須ではありません。
 
@@ -73,7 +73,7 @@ namespace WarmupSample
     }
 }
 ```
-# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+# <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
 
 *function.json* ファイルのウォームアップ トリガーと、新しいインスタンスがアプリに追加されるたびに実行される [C# スクリプト関数](functions-reference-csharp.md)の例を次に示します。
@@ -105,7 +105,7 @@ public static void Run(ILogger log)
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 *function.json* ファイルのウォームアップ トリガーと、新しいインスタンスがアプリに追加されるたびに実行される [JavaScript 関数](functions-reference-node.md)の例を次に示します。
 
@@ -136,7 +136,7 @@ module.exports = async function (context, warmupContext) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 *function.json* ファイルのウォームアップ トリガーと、新しいインスタンスがアプリに追加されるたびに実行される [Python 関数](functions-reference-python.md)の例を次に示します。
 
@@ -169,27 +169,11 @@ def main(warmupContext: func.Context) -> None:
     logging.info('Function App instance is warm 🌞🌞🌞')
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-*function.json* ファイルのウォームアップ トリガーと、新しいインスタンスがアプリに追加されるたびに実行される [Java 関数](functions-reference-java.md)の例を次に示します。
+次の例は、新しいインスタンスがアプリに追加されるたびに実行されるウォームアップ トリガーを示しています。
 
-関数には ```warmup``` (大文字と小文字を区別しない) という名前を付ける必要があります。アプリごとに 1 つのウォームアップ関数しか存在しない場合があります。
-
-*function.json* ファイルを次に示します。
-
-```json
-{
-    "bindings": [
-        {
-            "type": "warmupTrigger",
-            "direction": "in",
-            "name": "warmupContext"
-        }
-    ]
-}
-```
-
-Java コードを次に示します。
+関数には `warmup` (大文字と小文字を区別しない) という名前を付ける必要があります。アプリごとに 1 つのウォームアップ関数しか存在しない場合があります。
 
 ```java
 @FunctionName("Warmup")
@@ -204,7 +188,7 @@ public void run( ExecutionContext context) {
 
 [C# クラス ライブラリ](functions-dotnet-class-library.md)では、`WarmupTrigger` 属性を使用して関数を構成できます。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 この例では、[warmup](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions/Extensions/Warmup/Trigger/WarmupTriggerAttribute.cs) 属性の使用方法を示します。
 
@@ -221,19 +205,19 @@ public void run( ExecutionContext context) {
 
 完全な例については、[トリガーの例](#trigger---example)を参照してください。
 
-# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+# <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
 属性は、C# スクリプトではサポートされていません。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 属性は、JavaScript ではサポートされていません。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 属性は、Python ではサポートされていません。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ウォームアップ トリガーは、Java では属性としてサポートされていません。
 
@@ -245,9 +229,9 @@ public void run( ExecutionContext context) {
 
 |function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
-| **type** | 該当なし| 必須 - `warmupTrigger` に設定する必要があります。 |
-| **direction** | 該当なし| 必須 - `in` に設定する必要があります。 |
-| **name** | 該当なし| 必須 - 関数コードで使用される変数名。|
+| **type** | 300| 必須 - `warmupTrigger` に設定する必要があります。 |
+| **direction** | 300| 必須 - `in` に設定する必要があります。 |
+| **name** | 300| 必須 - 関数コードで使用される変数名。|
 
 ## <a name="trigger---usage"></a>トリガー - 使用方法
 

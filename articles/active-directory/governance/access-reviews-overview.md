@@ -16,12 +16,12 @@ ms.date: 01/10/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e77f507f2a3bd89069f25bf984cf4059009faa6
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 5499c8808c3916842071df1f03a865efd98719f6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932638"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185750"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Azure AD アクセス レビューとは
 
@@ -62,9 +62,9 @@ Azure AD を使用すると、組織内での共同作業、およびパート�
 | Azure リソース ロール | 指定されたレビュー担当者</br>自己レビュー | [Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure portal |
 
 
-## <a name="onboard-access-reviews"></a>アクセス レビューの配布準備
+## <a name="create-access-reviews"></a>アクセス レビューを作成する
 
-アクセス レビューをオンボードするには、次の手順に従います。
+アクセス レビューを作成するには、次の手順に従います。
 
 1. アクセス レビューを管理し、グローバル管理者またはユーザー管理者としてサインインするには、[Azure portal](https://portal.azure.com) にアクセスしてください。
 
@@ -74,13 +74,9 @@ Azure AD を使用すると、組織内での共同作業、およびパート�
 
 1. **[Identity Governance]** を選択します。
 
-1. **[アクセス レビュー]** をクリックします。
- 
-    ![アクセス レビューの開始ページ](./media/access-reviews-overview/access-reviews-overview-onboard.png)
+1. [作業の開始] ページで、 **[アクセス レビューの作成]** ボタンをクリックします。
 
-1. このページで、 **[今すぐオンボード]** ボタンをクリックします。
-    
-      ![アクセス レビューの配布準備](./media/access-reviews-overview/access-reviews-overview-select-onboard.png)
+   ![アクセス レビューの開始ページ](./media/access-reviews-overview/access-reviews-overview-create-access-reviews.png) 
 
 
 ## <a name="learn-about-access-reviews"></a>アクセス レビューの詳細情報

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 02/19/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b1489ce6bee2ce25ffb268ef20cc8fa587664619
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f4265659df786cf0a972b6dcf4f122bfc68535c1
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76851074"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483280"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して Microsoft アカウントでのサインインを設定する
 
@@ -29,7 +29,7 @@ ms.locfileid: "76851074"
 - 「[Azure Active Directory B2C でのカスタム ポリシーの概要](custom-policy-get-started.md)」にある手順を完了する。
 - Microsoft アカウントをまだお持ちでない場合は、[https://www.live.com/](https://www.live.com/) で作成します。
 
-## <a name="add-an-application"></a>アプリケーションを追加する
+## <a name="register-an-application"></a>アプリケーションを登録する
 
 Microsoft アカウントを使用したユーザーのサインインを有効にするには、Azure AD テナント内でアプリケーションを登録する必要があります。 Azure AD テナントは、Azure AD B2C テナントと同じものではありません。
 
@@ -46,6 +46,19 @@ Microsoft アカウントを使用したユーザーのサインインを有効�
 1. **[新しいクライアント シークレット]** をクリックします
 1. シークレットの **[説明]** を「*MSA アプリケーション クライアント シークレット*」のように入力して、 **[追加]** をクリックします。
 1. **[値]** 列に示されているアプリケーション パスワードを記録します。 次のセクションでこの値を使用します。
+
+## <a name="configuring-optional-claims"></a>省略可能な要求の構成
+
+Azure AD から `family_name` および `given_name` 要求を取得する場合は、ご利用のアプリケーションに対して省略可能な要求を Azure portal UI またはアプリケーション マニフェストで構成できます。 詳細については、[Azure AD アプリに省略可能な要求を提供する方法](../active-directory/develop/active-directory-optional-claims.md)に関するページを参照してください。
+
+1. [Azure portal](https://portal.azure.com) にサインインします。 **Azure Active Directory** を検索して選択します。
+1. **[管理]** セクションで、 **[アプリの登録]** を選択します。
+1. 省略可能な要求を構成するアプリケーションを一覧から選択します。
+1. **[管理]** セクションで、 **[トークンの構成 (プレビュー)]** を選択します。
+1. **[省略可能な要求を追加]** を選択します。
+1. 構成するトークンの型を選択します。
+1. 追加する省略可能な要求を選択します。
+1. **[追加]** をクリックします。
 
 ## <a name="create-a-policy-key"></a>ポリシー キーを作成する
 
@@ -94,10 +107,12 @@ Microsoft アカウントを使用したユーザーのサインインを有効�
             <Key Id="client_secret" StorageReferenceId="B2C_1A_MSASecret" />
           </CryptographicKeys>
           <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="live.com" />
-            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
-            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="sub" />
+            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="oid" />
+            <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
+            <OutputClaim ClaimTypeReferenceId="surName" PartnerClaimType="family_name" />
             <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
+            <OutputClaim ClaimTypeReferenceId="identityProvider" PartnerClaimType="iss" />
             <OutputClaim ClaimTypeReferenceId="email" />
           </OutputClaims>
           <OutputClaimsTransformations>

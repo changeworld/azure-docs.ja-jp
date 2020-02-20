@@ -5,30 +5,18 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 06/04/2019
+ms.date: 02/10/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 684b212ca771af6c336cf6239e18ea367f2da5ce
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 35463c2b74e0a20a65239e7bf0d0ab08a866ad71
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045095"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149165"
 ---
-この記事では、PowerShell コマンドレットを使用します。 コマンドレットを実行するには、Azure でホストされ、ブラウザーを介して使用される対話型のシェル環境である Azure Cloud Shell を使用できます。 Azure Cloud Shell には、Azure PowerShell コマンドレットが事前にインストールされています。
+[!INCLUDE [cloudshell powershell](vpn-gateway-cloud-shell-powershell.md)]
 
-この記事に含まれるコードを Azure Cloud Shell で実行するには、Cloud Shell セッションを開き、コード ブロック上の **[コピー]** ボタンを使ってコードをコピーし、__Ctrl + Shift + V__ キー (Windows と Linux) または __command + Shift + V__ キー (macOS) を押して Cloud Shell セッションに貼り付けます。 テキストを貼り付けても自動的には実行されません。コードを実行するには、**Enter** キーを押します。
+[!INCLUDE [powershell locally](vpn-gateway-powershell-locally.md)]
 
-Azure Cloud Shell は次の方法で起動できます。
-
-|  |   |
-|-----------------------------------------------|---|
-| コード ブロックの右上隅にある **[使ってみる]** を選択します。 テキストが自動的に Cloud Shell にコピーされるわけでは __ありません__ 。 | ![Azure Cloud Shell の [使ってみる] の例](./media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
-| ブラウザーで [shell.azure.com](https://shell.azure.com) を開きます。 | [![Azure Cloud Shell の起動ボタン](./media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
-| [Azure Portal](https://portal.azure.com) の右上隅にあるメニューの **[Cloud Shell]** ボタンを選択します。 | ![Azure Portal の [Cloud Shell] ボタン](./media/cloud-shell-try-it/hdi-cloud-shell-menu.png) |
-
-**ローカルでの PowerShell の実行**
-
-Azure PowerShell コマンドレットは、ローカルのコンピューターにインストールして実行することもできます。 PowerShell コマンドレットは、頻繁に更新されます。 最新バージョンを実行していないと、手順で指定されている値は失敗する場合があります。 コンピューターにインストールされている Azure PowerShell のバージョンを確認するには、`Get-Module -ListAvailable Az` コマンドレットを使用します。 インストールまたは更新するには、「[Install the Azure PowerShell module (Azure PowerShell モジュールのインストール)](/powershell/azure/install-az-ps)」を参照してください。
-
-PowerShell をローカルで実行する場合は必ず、"Connect-AzAccount" を実行して Azure との接続を作成してください。
+Azure CloudShell を使用している場合は、アカウントに自動的に接続されるため、Connect-AzAccount コマンドを実行する必要はありません。 PowerShell をローカルで実行している場合は、昇格された特権で PowerShell コンソールを開き、`Connect-AzAccount` コマンドを使用して Azure に接続します。

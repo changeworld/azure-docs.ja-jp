@@ -5,15 +5,15 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/11/2019
+ms.date: 02/11/2020
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: a95b59c6cc0d486c1d4b10f39d0d272dd4b34f54
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 944f5008cff8d982ef15a1b129e2cd41d7df5cb4
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018994"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137723"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Azure PowerShell から IoT Central を管理する
 
@@ -57,7 +57,7 @@ New-AzResourceGroup -ResourceGroupName "MyIoTCentralResourceGroup" `
 # Create an IoT Central application
 New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
   -Name "myiotcentralapp" -Subdomain "mysubdomain" `
-  -Sku "ST1" -Template "iotc-demo@1.0.0" `
+  -Sku "ST1" -Template "iotc-pnp-preview@1.0.0" `
   -DisplayName "My Custom Display Name"
 ```
 
@@ -66,30 +66,14 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
 |パラメーター         |説明 |
 |------------------|------------|
 |ResourceGroupName |そのアプリケーションを含むリソース グループ。 サブスクリプションにこのリソース グループが既に存在している必要があります。 |
-|Location |既定で、このコマンドレットにはリソース グループの場所が使用されます。 現在、IoT Central アプリケーションは、**米国東部**、**米国西部**、**北ヨーロッパ**、または**西ヨーロッパ**のリージョン、あるいは**オーストラリア**または**アジア太平洋**の地域で作成できます。  |
+|Location |既定で、このコマンドレットにはリソース グループの場所が使用されます。 現時点では、IoT Central アプリケーションは、**オーストラリア**、**アジア太平洋**、**ヨーロッパ**、または**米国**の地域で作成できます。  |
 |Name              |Azure portal 内のアプリケーションの名前。 |
 |Subdomain         |アプリケーションの URL のサブドメイン。 この例では、アプリケーションの URL は https://mysubdomain.azureiotcentral.com です。 |
 |Sku               |現在、**ST1** または **ST2** のいずれかを使用できます。 「[Azure IoT Central の価格](https://azure.microsoft.com/pricing/details/iot-central/)」を参照してください。 |
 |Template          | 使用するアプリケーション テンプレート。 詳細については、後の表を参照してください。 |
 |DisplayName       |UI に表示されるアプリケーションの名前。 |
 
-**アプリケーション テンプレート**
-
-| テンプレート名            | 説明 |
-| ------------------------ | ----------- |
-| iotc-default@1.0.0       | 独自のデバイス テンプレートおよびデバイスにデータを入力するための空のアプリケーションを作成します。
-| iotc-pnp-preview@1.0.0   | 独自のデバイス テンプレートとデバイスにデータを入力するための空のプラグ アンド プレイ (プレビュー) アプリケーションを作成します。 |
-| iotc-condition@1.0.0     | ストア内分析 (条件監視テンプレート) を含むアプリケーションを作成します。 このテンプレートを使用して、ストア環境に接続して監視します。 |
-| iotc-consumption@1.0.0   | 水消費量監視テンプレートを含むアプリケーションを作成します。 このテンプレートを使用して、水流の監視と制御を行います。 |
-| iotc-distribution@1.0.0  | デジタル配布テンプレートを含むアプリケーションを作成します。 このテンプレートを使用して、主要な資産と作業をデジタル化することで、倉庫からの出荷の効率を向上させます。 |
-| iotc-inventory@1.0.0     | スマート インベントリ管理テンプレートを含むアプリケーションを作成します。 このテンプレートを使用して、入荷、製品の移動、循環棚卸、およびセンサーの追跡を自動化します。 |
-| iotc-logistics@1.0.0     | 接続された物流テンプレートを含むアプリケーションを作成します。 このテンプレートを使用して、場所と条件を監視して、航空輸送、船舶輸送、および陸上輸送での出荷をリアルタイムで追跡します。 |
-| iotc-meter@1.0.0         | スマート メーター監視テンプレートを含むアプリケーションを作成します。 このテンプレートを使用して、エネルギー消費量やネットワークの状態を監視し、カスタマー サポートとスマート メーターの管理を向上させるための傾向を識別します。  |
-| iotc-patient@1.0.0       | 患者の継続的なモニタリング テンプレートを含むアプリケーションを作成します。 このテンプレートを使用して、患者の治療、再入院、および病名を管理します。 |
-| iotc-power@1.0.0         | ソーラー パネル監視テンプレートを含むアプリケーションを作成します。 このテンプレートを使用して、ソーラー パネルの状態やエネルギー生成の傾向を監視します。 |
-| iotc-quality@1.0.0       | 水質監視テンプレートを含むアプリケーションを作成します。 このテンプレートを使用して、水質をデジタルに監視します。|
-| iotc-store@1.0.0         | ストア内分析 (チェックアウト テンプレート) を備えたアプリケーションを作成します。 このテンプレートを使用して、ストア内のチェックアウト フローの監視と管理を行います。 |
-| iotc-waste@1.0.0         | 接続された廃棄物管理テンプレートを含むアプリケーションを作成します。 このテンプレートを使用して、ゴミ箱を監視し、現場作業員を派遣します。 |
+[!INCLUDE [iot-central-template-list](../../../includes/iot-central-template-list.md)]
 
 ## <a name="view-your-iot-central-applications"></a>IoT Central アプリケーションの表示
 

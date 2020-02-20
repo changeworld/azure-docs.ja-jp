@@ -12,23 +12,23 @@ ms.date: 09/11/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ee4b452d087bfef0e9f5f7c820870da0df8dc3e
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: f83a48ad13fe4ae217319b2aa85adf976aa6a7ae
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74683939"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149849"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Azure Active Directory でグループ所有者を追加または削除する
 Azure Active Directory (Azure AD) グループを所有および管理するのはグループ所有者です。 グループ所有者には、ユーザーまたはサービス プリンシパルがなることができ、メンバーシップを含むグループを管理できます。 既存のグループ所有者またはグループを管理する管理者のみがグループ所有者を割り当てることができます。 グループ所有者は、グループのメンバーである必要はありません。
 
-グループに所有者がいない場合、まだグループを管理する管理者がグループを管理できます。
+グループに所有者がいない場合、まだグループを管理する管理者がグループを管理できます。 すべてのグループに少なくとも 1 人の所有者を割り当てることをお勧めします。 所有者がグループに割り当てられた後は、そのグループの最後の所有者を削除することはできません。 グループから最後の所有者を削除する前に、必ず別の所有者を選択してください。
 
 ## <a name="add-an-owner-to-a-group"></a>グループに所有者を追加する
 次に、Azure AD portal を使用して、グループの所有者としてユーザーを追加する方法を示します。 グループ所有者としてサービス プリンシパルを追加するには、[PowerShell](https://docs.microsoft.com/powershell/module/Azuread/Add-AzureADGroupOwner?view=azureadps-2.0) を使用してそれを実行する手順に従ってください。
 
 ### <a name="to-add-a-group-owner"></a>グループ所有者を追加するには
-1. ディレクトリのグローバル管理者アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. ディレクトリのグローバル管理者アカウントを使用して [Azure portal](https://portal.azure.com) にサインインします。
 
 2. **[Azure Active Directory]** を選択し、 **[グループ]** を選択して、所有者を削除するグループ (この例では、*MDM policy - West*) を選択します。
 
@@ -60,7 +60,7 @@ Azure AD を使用してグループから所有者を削除します。
 
     所有者を削除した後、 **[所有者]** ページに戻ると、所有者の一覧から名前が削除されているのがわかります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure Active Directory グループによるリソースへのアクセス管理](active-directory-manage-groups.md)
 
 - [グループの設定を構成するための Azure Active Directory コマンドレット](../users-groups-roles/groups-settings-cmdlets.md)

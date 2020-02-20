@@ -3,12 +3,12 @@ title: Visual Studio Code を使用して Azure Functions を開発する
 description: Visual Studio Code 用 Azure Functions 拡張機能を使用して、Azure Functions を開発およびテストする方法を説明します。
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 3bc8c9aa5d31f757a34350d9605fdecbe42b8be7
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 41a1a64be4823769f6bf23b251fec94fd68eb0f0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210244"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484776"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code を使用して Azure Functions を開発する
 
@@ -174,7 +174,7 @@ using Microsoft.Azure.WebJobs.Extensions.Storage;
 
 `msg` パラメーターは `ICollector<T>` 型です。これは、関数の完了時に出力バインドに書き込まれるメッセージのコレクションを表します。 1 つ以上のメッセージをコレクションに追加します。 これらのメッセージは、関数の完了時にキューに送信されます。
 
-詳細については、[キュー ストレージの出力バインド](functions-bindings-storage-queue.md#output)に関するドキュメントをご覧ください。
+詳細については、[キュー ストレージの出力バインド](functions-bindings-storage-queue-output.md)に関するドキュメントをご覧ください。
 
 # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
@@ -212,7 +212,7 @@ Visual Studio Code では、便利な一連のプロンプトに従って、func
 context.bindings.msg = "Name passed to the function: " req.query.name;
 ```
 
-詳細については、[キュー ストレージの出力バインド](functions-bindings-storage-queue.md#output)の参照をご覧ください。
+詳細については、[キュー ストレージの出力バインド](functions-bindings-storage-queue-output.md)の参照をご覧ください。
 
 ---
 
