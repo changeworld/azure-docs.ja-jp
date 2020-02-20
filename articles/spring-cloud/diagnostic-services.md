@@ -25,7 +25,7 @@ Azure Spring Cloud の診断機能を使用することで、次のいずれか�
 
 ## <a name="logs"></a>ログ
 
-|ログ | [説明] |
+|ログ | 説明 |
 |----|----|
 | **ApplicationConsole** | すべての顧客アプリケーションのコンソール ログ。 | 
 | **SystemLogs** | 現在、このカテゴリーでは [Spring Cloud Config Server](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) ログのみ。 |
