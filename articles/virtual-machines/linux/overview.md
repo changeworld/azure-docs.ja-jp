@@ -49,7 +49,7 @@ Azure で作成されるすべてのリソースは、世界各地の複数の[�
 
 次の表に、利用可能な場所の一覧を取得する方法の一部を示します。
 
-| 方法 | [説明] |
+| 方法 | 説明 |
 | --- | --- |
 | Azure portal |VM を作成するときに一覧から場所を選択します。 |
 | Azure PowerShell |[Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) コマンドを使用します。 |
