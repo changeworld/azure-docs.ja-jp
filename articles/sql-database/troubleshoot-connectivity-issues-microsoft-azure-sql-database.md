@@ -27,7 +27,7 @@ Azure インフラストラクチャには、SQL Database サービス内で負�
 ### <a name="list-of-transient-fault-error-codes"></a>一時的な障害のエラー コードの一覧
 
 
-| エラー コード | 重大度 | [説明] |
+| エラー コード | 重大度 | 説明 |
 | ---:| ---:|:--- |
 | 4060 |16 |ログインで要求されたデータベース "%.&#x2a;ls" を開くことができません。 ログインに失敗しました。 詳細については、[エラー 4000 から 4999](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999) を参照してください。|
 | 40197 |17 |要求の処理中にサービスでエラーが発生しました。 再試行してください。 エラー コード %d。<br/><br/>ソフトウェアやハードウェアのアップグレード、ハードウェアの障害、その他フェールオーバーに関する問題によってサービスがダウンしたときに、このエラーが発生します。 発生したエラーやフェールオーバーの種類に関する追加情報は、エラー 40197 のメッセージに埋め込まれたエラー コード (%d) から得られます。 エラー 40197 のメッセージ内に埋め込まれているエラー コードは、40020、40143、40166、40540 などです。<br/><br/>SQL Database サーバーに再接続すると、自動的にデータベースの正常なコピーに接続されます。 アプリケーションでエラー 40197 をキャッチし、メッセージに埋め込まれているエラー コード (%d) をログに記録してトラブルシューティングに備えたうえで、リソースが復旧して接続が再度確立されるまで SQL Database への再接続を試みる必要があります。 詳細については、「[一時エラー](sql-database-connectivity-issues.md#transient-errors-transient-faults)」を参照してください。|
@@ -297,7 +297,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 ### <a name="table-of-additional-resource-governance-error-messages"></a>その他のリソース ガバナンス エラー メッセージの表
 
-| エラー コード | 重大度 | [説明] |
+| エラー コード | 重大度 | 説明 |
 | ---:| ---:|:--- |
 | 10928 |20 |リソース ID: %d。 データベースの %s 制限の %d に達しました。 詳細については、「[単一データベースとプールされたデータベースに関する SQL Database のリソース制限](sql-database-resource-limits-database-server.md)」を参照してください。<br/><br/>リソース ID は、制限に達したリソースを示します。 ワーカー スレッドの場合、リソース ID = 1 となります。 セッションの場合、リソース ID = 2 です。<br/><br/>このエラーの詳細および解決方法については、 <br/>&bull; &nbsp;[データベース サーバーのリソース制限](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[単一データベースに関する DTU ベースの制限](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[マネージド インスタンスのリソースの制限](sql-database-managed-instance-resource-limits.md). |
 | 10929 |20 |リソース ID: %d。 %s の最低限保証は %d、最大値は %d 、データベースの現在の使用状況は %d です。 ただし、サーバーは現在ビジー状態であり、このデータベースの %d を超える要求をサポートできません。 リソース ID は、制限に達したリソースを示します。 ワーカー スレッドの場合、リソース ID = 1 となります。 セッションの場合、リソース ID = 2 です。 詳細については、次を参照してください。 <br/>&bull; &nbsp;[データベース サーバーのリソース制限](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[単一データベースに関する DTU ベースの制限](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[マネージド インスタンスのリソースの制限](sql-database-managed-instance-resource-limits.md). <br/>それ以外の場合は、後でもう一度やり直してください。 |
@@ -312,7 +312,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 次のエラーは、エラスティック プールの作成と使用に関連しています。
 
-| エラー コード | 重大度 | [説明] | 是正措置 |
+| エラー コード | 重大度 | 説明 | 是正措置 |
 |:--- |:--- |:--- |:--- |
 | 1132 | 17 |エラスティック プールが、その記憶域の上限に達しました。 エラスティック プールの記憶域の使用率が (%d) MB を超えることはできません。 エラスティック プールの記憶域が上限に達したときに、データベースにデータを書き込もうとしています。 リソース制限については、以下を参照してください。 <br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](sql-database-vcore-resource-limits-elastic-pools.md) <br/> |可能であれば、エラスティック プールの DTU を増やすかストレージを追加して、その記憶域の上限を上げることを検討するか、エラスティック プール内の個々のデータベースで使用される記憶域を減らすか、あるいはエラスティック プールからデータベースを削除してください。 エラスティック プールのスケーリングについては、[エラスティック プールのリソースのスケーリング](sql-database-elastic-pool-scale.md)に関する記事を参照してください。|
 | 10929 | 16 |%s の最低限保証は %d、最大値は %d 、データベースの現在の使用状況は %d です。 ただし、サーバーは現在ビジー状態であり、このデータベースの %d を超える要求をサポートできません。 リソース制限については、以下を参照してください。 <br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](sql-database-vcore-resource-limits-elastic-pools.md) <br/> それ以外の場合は、後でもう一度やり直してください。 データベースあたりの DTU/仮想コア最小値、データベースあたりの DTU/仮想コア最大値。 エラスティック プール内のすべてのデータベース間での同時実行ワーカー (要求) の合計数が、プールの制限を超えようとしました。 |可能であれば、エラスティック プールの DTU または仮想コアを増やしてワーカーの上限を上げることを検討するか、エラスティック プールからデータベースを削除してください。 |
