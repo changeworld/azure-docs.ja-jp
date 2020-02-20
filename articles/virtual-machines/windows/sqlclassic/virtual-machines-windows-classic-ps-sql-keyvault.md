@@ -51,7 +51,7 @@ PowerShell を使用し、Azure Key Vault 統合を構成します。 次のセ�
 ### <a name="understand-the-input-parameters"></a>入力パラメーターについて
 次の表は、以降のセクションで PowerShell スクリプトを実行するために必要となるパラメーターをまとめたものです。
 
-| パラメーター | [説明] | 例 |
+| パラメーター | 説明 | 例 |
 | --- | --- | --- |
 | **$akvURL** |**Key Vault の URL** |"https:\//contosokeyvault.vault.azure.net/" |
 | **$spName** |**サービス プリンシパル名** |"fde2b411-33d5-4e11-af04eb07b669ccf2" |
