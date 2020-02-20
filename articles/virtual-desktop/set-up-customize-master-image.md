@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 30895af3e973fd5c9ae0de559df440f18cec1563
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 23763123ce8e92b6bb15b2b33a196ed1a1d75c9f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013146"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368799"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>マスター VHD イメージを準備してカスタマイズする
 
@@ -22,13 +22,13 @@ ms.locfileid: "74013146"
 
 Windows 10 Enterprise マルチセッションは、Azure イメージ ギャラリーで入手できます。 このイメージをカスタマイズにするには、2 つのオプションがあります。
 
-最初のオプションでは、「[管理イメージから VM を作成する](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)」の手順に従ってAzure 内で仮想マシン (VM) をプロビジョニングしてから、「[ソフトウェアの準備とインストール](set-up-customize-master-image.md#software-preparation-and-installation)」に進みます。
+最初のオプションでは、「[管理イメージから VM を作成する](../virtual-machines/windows/create-vm-generalized-managed.md)」の手順に従ってAzure 内で仮想マシン (VM) をプロビジョニングしてから、「[ソフトウェアの準備とインストール](set-up-customize-master-image.md#software-preparation-and-installation)」に進みます。
 
 2 番目のオプションでは、イメージをダウンロードし、Hyper-V VM をプロビジョニングし、ニーズに合わせてカスタマイズすることで、イメージをローカルで作成します。これについては次のセクションで説明します。
 
 ### <a name="local-image-creation"></a>ローカル イメージの作成
 
-イメージをローカルの場所にダウンロードした後、**Hyper-V マネージャー**を開き、コピーした VHD を使用して VM を作成します。 次の手順はシンプルなバージョンですが、「[Create a virtual machine in Hyper-V (Hyper-V 内で仮想マシンを作成する)](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v)」で詳細な手順を確認できます。
+イメージをローカルの場所にダウンロードした後、**Hyper-V マネージャー**を開き、コピーした VHD を使用して VM を作成します。 次の手順はシンプルなバージョンですが、「[Create a virtual machine in Hyper-V (Hyper-V 内で仮想マシンを作成する)](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v/)」で詳細な手順を確認できます。
 
 コピーした VHD を使用して VM を作成するには:
 
@@ -50,7 +50,7 @@ Set-VM -Name <VMNAME> -CheckpointType Disabled
 
 ### <a name="fixed-disk"></a>固定ディスク
 
-既存の VHD から VM を作成する場合、既定ではダイナミック ディスクが作成されます。 次の図に示すように、 **[ディスクの編集]** を選択して固定ディスクに変更できます。 詳しい手順については、「[Azure にアップロードする Windows VHD または VHDX を準備する](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image)」をご覧ください。
+既存の VHD から VM を作成する場合、既定ではダイナミック ディスクが作成されます。 次の図に示すように、 **[ディスクの編集]** を選択して固定ディスクに変更できます。 詳しい手順については、「[Azure にアップロードする Windows VHD または VHDX を準備する](../virtual-machines/windows/prepare-for-upload-vhd-image.md)」をご覧ください。
 
 ![[ディスクの編集] オプションのスクリーンショット。](media/35772414b5a0f81f06f54065561d1414.png)
 
@@ -70,7 +70,7 @@ Office 365 ProPlus と OneDrive を VM にインストールする場合は、�
 
 ### <a name="set-up-user-profile-container-fslogix"></a>ユーザー プロファイル コンテナーを設定する (FSLogix)
 
-FSLogix コンテナーをイメージの一部として含めるには、「[ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成する](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)」の手順に従います。 [このクイックスタート](https://docs.microsoft.com/fslogix/configure-cloud-cache-tutorial)を使用して FSLogix コンテナーの機能をテストできます。
+FSLogix コンテナーをイメージの一部として含めるには、「[ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成する](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)」の手順に従います。 [このクイックスタート](/fslogix/configure-cloud-cache-tutorial/)を使用して FSLogix コンテナーの機能をテストできます。
 
 ### <a name="configure-windows-defender"></a>Windows Defender を構成する
 
@@ -78,9 +78,9 @@ VM に Windows Defender が構成されている場合、ファイルの添付�
 
 この構成では、ファイル添付中の VHD ファイルと VHDX ファイルのスキャンのみ削除され、リアルタイム スキャンには影響しません。
 
-Windows Server 上で Windows Defender を構成する手順について詳しくは、「[Windows Server 上で Windows Defender ウイルス対策の除外を構成する](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus)」をご覧ください。
+Windows Server 上で Windows Defender を構成する手順について詳しくは、「[Windows Server 上で Windows Defender ウイルス対策の除外を構成する](/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus/)」をご覧ください。
 
-特定のファイルをスキャンから除外するように Windows Defender を構成する方法について詳しくは、「[ファイル拡張子とフォルダーの場所に基づく除外の構成と検証](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)」をご覧ください。
+特定のファイルをスキャンから除外するように Windows Defender を構成する方法について詳しくは、「[ファイル拡張子とフォルダーの場所に基づく除外の構成と検証](/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus/)」をご覧ください。
 
 ### <a name="disable-automatic-updates"></a>自動更新を無効にする
 
@@ -137,9 +137,9 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\
 
 この記事では、言語とリージョンのサポートの構成方法については説明しません。 詳細については、次の記事を参照してください。
 
-- [Windows イメージへの言語の追加](https://docs.microsoft.com/windows-hardware/manufacture/desktop/add-language-packs-to-windows)
-- [オンデマンド機能](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities)
-- [Language and region features on demand (FOD) (言語とリージョンのオンデマンド機能 (FOD))](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-language-fod)
+- [Windows イメージへの言語の追加](/windows-hardware/manufacture/desktop/add-language-packs-to-windows/)
+- [オンデマンド機能](/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities/)
+- [Language and region features on demand (FOD) (言語とリージョンのオンデマンド機能 (FOD))](/windows-hardware/manufacture/desktop/features-on-demand-language-fod/)
 
 ### <a name="other-applications-and-registry-configuration"></a>その他のアプリケーションとレジストリを構成する
 
@@ -174,7 +174,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
 
 ## <a name="prepare-the-image-for-upload-to-azure"></a>Azure にアップロードするイメージの準備
 
-構成が完了し、すべてのアプリケーションをインストールしたら、「[Azure にアップロードする Windows VHD または VHDX を準備する](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image)」の手順に従ってイメージを準備します。
+構成が完了し、すべてのアプリケーションをインストールしたら、「[Azure にアップロードする Windows VHD または VHDX を準備する](../virtual-machines/windows/prepare-for-upload-vhd-image.md)」の手順に従ってイメージを準備します。
 
 イメージのアップロードの準備ができたら、VM がオフのままであるか、または割り当てが解除された状態になっていることを確認します。
 
@@ -198,7 +198,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
 
     !["イメージが作成されました" 通知のスクリーンショット。](media/1f41b7192824a2950718a2b7bb9e9d69.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これでイメージが作成されたので、ホスト プールを作成または更新することができます。 ホスト プールの作成と更新の方法について詳しくは、以下の記事をご覧ください。
 

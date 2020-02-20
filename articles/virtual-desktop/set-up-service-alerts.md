@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/11/2019
 ms.author: helohr
-ms.openlocfilehash: b5fa5fc13c8ce0c98c04d2451f3a50e89b986c16
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 8c062c1ce8e938ac426a10c41161eb7e28f3dcba
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676443"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368758"
 ---
 # <a name="tutorial-set-up-service-alerts"></a>チュートリアル:サービス アラートを設定する
 
@@ -27,9 +27,9 @@ Azure Service Health の詳細については、[Azure Health のドキュメン
 
 ## <a name="prerequisites"></a>前提条件
 
-- [チュートリアル:Windows Virtual Desktop でテナントを作成する](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory)
-- [チュートリアル:PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell)
-- [チュートリアル:](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-azure-marketplace)Azure Marketplace を使用してホスト プールを作成する
+- [チュートリアル:Windows Virtual Desktop でテナントを作成する](tenant-setup-azure-active-directory.md)
+- [チュートリアル:PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する](create-service-principal-role-powershell.md)
+- [チュートリアル:](create-host-pools-azure-marketplace.md)Azure Marketplace を使用してホスト プールを作成する
 
 ## <a name="create-service-alerts"></a>サービス アラートを作成する
 
@@ -48,11 +48,11 @@ Azure Service Health の詳細については、[Azure Health のドキュメン
 
 サービス アラートを構成するには:
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. **[Service Health]** を選択します。
 3. 「[Create activity log alerts on service notifications (サービス通知に関するアクティビティ ログ アラートを作成する)](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log-service-notifications?toc=%2Fazure%2Fservice-health%2Ftoc.json#alert-and-new-action-group-using-azure-portal)」の手順を使用してアラートと通知を設定します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Service Health を設定および使用して Windows Virtual Desktop のサービスの問題と正常性に関するアドバイザリを監視する方法について学習しました。 Windows Virtual Desktop にサインインする方法について詳しくは、引き続き Windows Virtual Desktop への接続方法に関するページを参照してください。
 

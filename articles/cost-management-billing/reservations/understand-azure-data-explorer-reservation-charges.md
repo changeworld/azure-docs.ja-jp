@@ -1,19 +1,18 @@
 ---
 title: Azure Data Explorer に予約割引が適用されるしくみについて
 description: Azure Data Explorer のマークアップ メーターに予約割引が適用されるしくみについて説明します。
-services: data-explorer
 author: avneraa
 ms.author: avnera
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 11/03/2019
-ms.openlocfilehash: 88ab9c475d417bc935cf5d2d67f1678794fb74d1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/12/2020
+ms.openlocfilehash: ab107a0afe8be1d95de8dafb21f239e6da733271
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75986775"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199332"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>Azure Data Explorer に予約割引が適用されるしくみについて
 
@@ -36,23 +35,23 @@ Azure Data Explorer の予約容量を購入すると、予約の属性や数量
 ## <a name="examples"></a>例
 
 次の例は、購入したマークアップ ユニット数と実行する時間に応じて、Azure Data Explorer の予約容量割引がどのように適用されるかを示しています。
-たとえば、エンジン クラスターのサイズが **2 台の D11_v2 VM**の場合、合計オンデマンド料金は、1 時間あたり Azure Data Explorer マークアップ メーター × 4 ユニットになります。 
+たとえば、エンジン クラスターのサイズが **2 台の D11_v2 VM**の場合、合計オンデマンド料金は、1 時間あたり Azure Data Explorer マークアップ メーター × 4 ユニットになります。
 
-**シナリオ 1** 
+**シナリオ 1**
 
 Azure Data Explorer マークアップ × 8 ユニット用の Azure Data Explorer 予約容量を購入するとします。 残りの予約の属性に一致し、合計 16 コアを搭載した 2 台の D13_v2 VM のエンジン クラスターを実行しており、1 時間あたり Azure Data Explorer マークアップ × 16 ユニット分が課金されます。 Azure Data Explorer のコンピューティング使用量の 8 コアに対して従量課金制の料金が請求され、1 時間分の 8 コアの Azure Data Explorer マークアップ ユニットの使用量に対して予約割引が適用されます。
 
 以降の例では、購入する Azure Data Explorer の予約容量は、16 コアの Azure Data Explorer 用であり、残りの予約属性は実行中の Azure Data Explorer クラスターと一致するものとします。
 
-**シナリオ 2** 
+**シナリオ 2**
 
 それぞれ 8 コアを搭載した 2 台の Azure Data Explorer エンジン クラスターを、2 つの異なるリージョンで 1 時間実行します。 16 コアの予約割引は、両方のクラスターとそれらが使用する Azure Data Explorer マークアップの 16 ユニットに適用されます。
 
-**シナリオ 3** 
+**シナリオ 3**
 
 一方の 16 コア Azure Data Explorer エンジン クラスターを午後 1 時から午後 1 時 30 分まで実行します。 もう一方の 16 コア Azure Data Explorer エンジン クラスターを午後 1 時 30 分から午後 2 時まで実行します。 いずれも予約割引が適用されます。
 
-**シナリオ 4** 
+**シナリオ 4**
 
 一方の 16 コア Azure Data Explorer エンジン クラスターを午後 1 時から午後 1 時 45 分まで実行します。 もう一方の 16 コア Azure Data Explorer エンジン クラスターを午後 1 時 30 分から午後 2 時まで実行します。 15 分間の重複分には、従量課金制の料金が適用されます。 残りの時間の Azure Data Explorer マークアップ使用量には、予約割引が適用されます。
 

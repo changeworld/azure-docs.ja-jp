@@ -2,22 +2,17 @@
 title: Azure サブスクリプションの課金所有権の取得
 description: 他のユーザーから Azure サブスクリプションの課金所有権を要求する方法について説明します。
 author: amberbhargava
-manager: amberb
-editor: banders
 tags: billing
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 07/01/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: f7d6c6cbe5b99cb429b5399df7ba9765c1553901
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 10f1052f9acf9bf91c1d7fb0b64a1d3285487cf3
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75985387"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200729"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>他のアカウントから Azure サブスクリプションの課金所有権を取得する
 
@@ -114,7 +109,7 @@ ms.locfileid: "75985387"
    |---------|---------|
    |進行中|ユーザーは譲渡要求を承諾していません|
    |処理中|ユーザーは譲渡要求を承諾しました。 ユーザーが選択したサブスクリプションの課金が、請求書セクションに移されています|
-   |[完了]| ユーザーが選択したサブスクリプションの課金が、請求書セクションに移されています|
+   |完了| ユーザーが選択したサブスクリプションの課金が、請求書セクションに移されています|
    |エラーで終了|要求が完了しましたが、ユーザーが選択した一部のサブスクリプションの課金を移せませんでした|
    |有効期限切れ|ユーザーは予定どおりには要求を受諾せず、期限切れになりました|
    |Canceled|譲渡要求へのアクセス権を持つユーザーが要求を取り消しました|

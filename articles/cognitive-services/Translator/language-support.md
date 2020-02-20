@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: ec5c1295f883bb37ad5f016bc3346c134863e6bd
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: a4f9833e8dd14dc7c8ec5849cb809bf2089a5dae
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118818"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206125"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Translator Text API の言語と地域のサポート
 
@@ -141,7 +141,7 @@ Translator Text API では、テキスト対テキストの翻訳について、
 | セルビア語 (ラテン) | `sr-Latn` | ラテン語 `Latn` | --> | キリル語 `Cyrl`|
 | タミル語 | `ta` | タミール語 `Taml` | --> | ラテン語 `Latn` |
 | テルグ語 | `te` | テルグ語 `Telu` | --> | ラテン語 `Latn` |
-| Thai | `th` | タイ語 `Thai` | <--> | ラテン語 `Latn` |
+| Thai | `th` | タイ語 `Thai` | --> | ラテン語 `Latn` |
 
 ## <a name="dictionary"></a>Dictionary
 

@@ -8,17 +8,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2019
-ms.openlocfilehash: 2f1843690861a463c634f523e82facffc72b6743
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/13/2020
+ms.openlocfilehash: e0dc7780ee570ce2d731bedf9ef56be606088a1f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75986739"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199298"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL 単一サーバーに対する予約割引の適用方法
 
-Azure Database for PostgreSQL 単一サーバーの予約容量を購入すると、予約の属性や数量に合致する PostgreSQL 単一サーバーに対して予約割引が自動的に適用されます。 予約の対象となるのは、Azure Database for PostgreSQL 単一サーバーのコンピューティング コストのみです。 ストレージおよびネットワークについては、通常料金が適用されます。 
+Azure Database for PostgreSQL 単一サーバーの予約容量を購入すると、予約の属性や数量に合致する PostgreSQL 単一サーバーに対して予約割引が自動的に適用されます。 予約の対象となるのは、Azure Database for PostgreSQL 単一サーバーのコンピューティング コストのみです。 ストレージおよびネットワークについては、通常料金が適用されます。
 
 ## <a name="how-reservation-discount-is-applied"></a>予約割引の適用方法
 

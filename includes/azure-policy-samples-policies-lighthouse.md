@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/10/2020
+ms.date: 02/13/2020
 ms.author: dacoulte
-ms.openlocfilehash: 47c5d01834e835279f2ec19c19af13284f7ba0af
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 1fea75e6264fb29559fc9285991b52c17a6e0266
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77170190"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77370730"
 ---
-|Name |説明 |効果 |Version |
+|名前 |説明 |効果 |Version |source |
 |---|---|---|---|
-|[管理テナントへのスコープの委任を監査する](https://github.com/Azure/azure-policy/blob/masterbuilt-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json) |Azure Lighthouse を介した管理テナントへのスコープの委任を監査します。 |Audit、Disabled |1.0.0 |
+|[管理テナントへのスコープの委任を監査する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F76bed37b-484f-430f-a009-fd7592dff818) |Azure Lighthouse を介した管理テナントへのスコープの委任を監査します。 |Audit、Disabled |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json)

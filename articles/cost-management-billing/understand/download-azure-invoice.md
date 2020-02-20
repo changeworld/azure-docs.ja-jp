@@ -3,21 +3,18 @@ title: Microsoft Azure の請求書の表示とダウンロード
 description: Microsoft Azure の請求書の表示とダウンロードの方法を説明します。
 keywords: 請求書,請求書のダウンロード,Azure の請求書,Azure の使用状況
 author: bandersmsft
-manager: jureid
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 0f413d38565202d379c81570b5cb169c2ed8effe
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 691d27acebf238e84265870e8c01976bfc2412b2
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75984375"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200267"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Microsoft Azure の請求書の表示とダウンロード
 
@@ -87,7 +84,7 @@ Microsoft Partner Agreement (MPA) を結んでいる場合、Azure の請求書�
 <!-- Does following section apply to MPA too? -->
 ## <a name="get-your-microsoft-customer-agreement-invoices-in-email"></a>Microsoft 顧客契約の請求書をメールで受け取る
 
-Microsoft 顧客契約の課金アカウントをお持ちの場合は、メールで請求書を受け取ることをオプトインできます。 課金プロファイルで所有者、共同作成者、閲覧者、または請求書管理者のロールを持つすべてのユーザーは、メールでその請求書を受け取ります。 
+Microsoft 顧客契約の課金アカウントをお持ちの場合は、メールで請求書を受け取ることをオプトインできます。 課金プロファイルで所有者、共同作成者、閲覧者、または請求書管理者のロールを持つすべてのユーザーは、メールでその請求書を受け取ります。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
@@ -109,11 +106,11 @@ Microsoft 顧客契約の課金アカウントをお持ちの場合は、メー�
 
 ## <a name="opt-out-of-getting-your-microsoft-customer-agreement-invoices-in-email"></a>Microsoft 顧客契約の請求書のメールによる取得をオプトアウトする
 
-請求書をメールで受け取らないようにするには、前述の手順に従って **[オプトアウトする]** をクリックします。所有者、共同作成者、閲覧者、または請求書管理者のロールを持つすべてのユーザーは、メールで請求書を受け取ることからオプトアウトされます。 
+請求書をメールで受け取らないようにするには、前述の手順に従って **[オプトアウトする]** をクリックします。所有者、共同作成者、閲覧者、または請求書管理者のロールを持つすべてのユーザーは、メールで請求書を受け取ることからオプトアウトされます。
 
 ## <a name="give-others-access-to-your-microsoft-customer-agreement-invoices"></a>Microsoft 顧客契約の請求書へのアクセスを他のユーザーに許可する
 
-他のユーザーに課金プロファイルの請求書管理者ロールを割り当てることにより、請求書の表示、ダウンロード、および支払いを行うためのアクセス権を付与することができます。 請求書をメールで受け取ることをオプトインした場合、これらのユーザーもメールで請求書を受け取ります。 
+他のユーザーに課金プロファイルの請求書管理者ロールを割り当てることにより、請求書の表示、ダウンロード、および支払いを行うためのアクセス権を付与することができます。 請求書をメールで受け取ることをオプトインした場合、これらのユーザーもメールで請求書を受け取ります。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 

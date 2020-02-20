@@ -1,19 +1,18 @@
 ---
 title: Azure エンタープライズ ポータルを使い始める
 description: この記事では、Azure Enterprise Agreement (Azure EA) のお客様が Azure エンタープライズ ポータルを使用する方法について説明します。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/04/2020
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: boalcsva
-ms.openlocfilehash: 516b3704daee885541cec49b0ee374e050dd4b22
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.reviewer: boalcsva
+ms.openlocfilehash: e1c6eac81968ef6ecbc12ec52415c2aa9680f3e1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023346"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200831"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Azure エンタープライズ ポータルを使い始める
 
@@ -235,7 +234,7 @@ Azure エンタープライズ ポータルの階層は、次のもので構成�
   - 職場または学校アカウントから、別の職場または学校アカウントに。
   - Microsoft アカウントから、職場または学校アカウントに。
   - Microsoft アカウントから、別の Microsoft アカウントに。
-  
+
     ターゲット アカウントは、転送の有効なターゲットとなる有効な Azure コマース アカウントである必要があります。 新しいアカウントの場合は、Azure エンタープライズ ポータルにサインインするときに、Azure コマース アカウントを作成するよう求められます。 既存のアカウントの場合は、最初に新しい Azure サブスクリプションを作成してから、アカウントが対象となるようにする必要があります。
 
 - 職場または学校アカウントから Microsoft アカウントに転送することはできません。
@@ -285,7 +284,7 @@ Azure エンタープライズ ポータルでのユーザー管理について�
 
 アプリケーション環境ごとに異なるサブスクリプションを作成すると、各環境のセキュリティ保護に役立ちます。
 
-- また、サブスクリプションごとに異なるサービス管理者アカウントを割り当てることもできます。 
+- また、サブスクリプションごとに異なるサービス管理者アカウントを割り当てることもできます。
 - サブスクリプションを任意の数のサービスに関連付けることができます。
 - アカウント所有者は、サブスクリプションを作成し、アカウント内の各サブスクリプションにサービス管理者アカウントを割り当てます。
 
@@ -309,7 +308,7 @@ Azure エンタープライズ ポータルでのユーザー管理について�
 1. **[サブスクリプション]** を選択し、作成したサブスクリプションを選択します。
 1. **[サブスクリプション詳細の編集]** を選択します。
 1. **[サブスクリプション名]** と **[サービス管理者]** を編集し、チェック マークを選択します。
-  
+
    サブスクリプション名はレポートに表示されます。 それは、開発ポータルでサブスクリプションに関連付けられているプロジェクトの名前です。
 
 新しいサブスクリプションがサブスクリプション リストに表示されるまで、最大 24 時間かかることがあります。 サブスクリプションを作成した後、次のことができます。
@@ -509,14 +508,14 @@ Azure エンタープライズ ポータルには、企業のお客様向けに 
 - Microsoft Azure エンタープライズ。次の場合に最適です。
   - すべての運用環境での使用
   - インフラストラクチャへの支出に基づく最適な料金
-  
+
   詳細については、[Azure 営業担当者にお問い合わせください](https://azure.microsoft.com/pricing/enterprise-agreement/)。
 
 - Enterprise Dev/Test。次の場合に最適です。
   - チームによるすべての開発/テスト ワークロード
   - 中規模から大規模の個別の開発/テスト ワークロード
   - 特別な MSDN イメージと優先サービス レートへのアクセス
-  
+
   詳細については、[Enterprise Dev/Test のオファー](https://azure.microsoft.com/offers/ms-azr-0148p/)に関する記事を参照してください。
 
 ### <a name="is-it-possible-to-transfer-subscription-ownership-to-another-account"></a>Azure サブスクリプションの所有権を別のアカウントに譲渡できますか?

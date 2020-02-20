@@ -1,24 +1,17 @@
 ---
 title: REST API を使用して Azure サービスのリソースの使用状況を確認する | Microsoft Docs
 description: Azure REST API を使用して Azure サービスのリソースの使用状況を確認する方法を説明します。
-services: billing
-documentationcenter: na
 author: lleonard-msft
-manager: ''
-editor: ''
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: eb444f090c1b2047e3d71c1b2ec52699a61bd880
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f421ddc7cd509527053b099c7e4e538ab84b814e
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75984831"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200573"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>REST API を使用して Azure リソースの使用状況を確認する
 
@@ -41,7 +34,7 @@ Authorization: Bearer
 
 `{subscriptionGuid}` パラメーターは必須であり、API トークンで提供された資格情報を使用して読み取ることができるサブスクリプション ID を含む必要があります。 `{reportName}`
 
-次のヘッダーは必須です｡ 
+次のヘッダーは必須です｡
 
 |要求ヘッダー|説明|  
 |--------------------|-----------------|  
@@ -93,7 +86,7 @@ HTTP 要求本文でレポートのパラメーターを構成します。 次�
 
 ## <a name="filtering-reports"></a>レポートのフィルター処理
 
-レポートを使用するときに、要求本文の `filter` および `dimensions` セクションを使用して、特定のリソースの種類のコストだけに絞り込むことができます。 前記の要求本文では、リージョンのすべてのリソースでフィルター処理する方法が示されています。 
+レポートを使用するときに、要求本文の `filter` および `dimensions` セクションを使用して、特定のリソースの種類のコストだけに絞り込むことができます。 前記の要求本文では、リージョンのすべてのリソースでフィルター処理する方法が示されています。
 
 ### <a name="get-all-compute-usage"></a>すべてのコンピューティングの使用状況を取得する
 
@@ -105,9 +98,9 @@ HTTP 要求本文でレポートのパラメーターを構成します。 次�
         "name": "ResourceType",
         "operator": "In",
         "values": [
-                "Microsoft.ClassicCompute/virtualMachines", 
+                "Microsoft.ClassicCompute/virtualMachines",
                 "Microsoft.Compute/virtualMachines"
-        ] 
+        ]
     }
 }
 ```
@@ -123,7 +116,7 @@ HTTP 要求本文でレポートのパラメーターを構成します。 次�
         "operator": "In",
         "values": [
                 "Microsoft.Sql/servers"
-        ] 
+        ]
     }
 }
 ```

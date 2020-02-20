@@ -4,12 +4,12 @@ description: Ansible を使用して Azure の動的インベントリを管理�
 keywords: Ansible, Azure, DevOps, Bash, Cloud Shell, 動的インベントリ
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: f159322a19cc79758de33904bbad9dfce32ff7cc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d2ebf202cfc9f94b28fc7a512e1fea452401aec6
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442782"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193601"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>チュートリアル:Ansible を使用して Azure リソースの動的インベントリを構成する
 
@@ -32,7 +32,7 @@ Ansible を使用して、(Azure などのクラウド ソースを含む) さ�
 
 ## <a name="create-the-test-vms"></a>テスト VM を作成する
 
-1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインする
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 
 1. [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を開きます。
 
@@ -47,7 +47,7 @@ Ansible を使用して、(Azure などのクラウド ソースを含む) さ�
 
 1. 次の手法のいずれかを使用して、Azure に 2 つの Linux 仮想マシンを作成します。
 
-    - **Ansible プレイブック** - Ansible プレイブックから仮想マシンを作成する方法については、「[Ansible を使用して Azure で基本的な仮想マシンを作成する](/azure/virtual-machines/linux/ansible-create-vm)」を参照してください。 プレイブックを使用して仮想マシンの一方または両方を定義する場合は、パスワードの代わりに SSH 接続を必ず使用してください。
+    - **Ansible プレイブック** - Ansible プレイブックから仮想マシンを作成する方法については、「[Ansible を使用して Azure で基本的な仮想マシンを作成する](./ansible-create-vm.md)」を参照してください。 プレイブックを使用して仮想マシンの一方または両方を定義する場合は、パスワードの代わりに SSH 接続を必ず使用してください。
 
     - **Azure CLI** - Cloud Shell で次の各コマンドを発行して、2 つの仮想マシンを作成します。
 
@@ -316,4 +316,4 @@ Ansible 2.8 以降、Ansible では [Azure 動的インベントリ プラグイ
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"] 
-> [クイック スタート:Ansible を使用して Azure で Linux 仮想マシンを構成する](/azure/virtual-machines/linux/ansible-create-vm)
+> [クイック スタート: Ansible を使用して Azure で Linux 仮想マシンを構成する](./ansible-create-vm.md)

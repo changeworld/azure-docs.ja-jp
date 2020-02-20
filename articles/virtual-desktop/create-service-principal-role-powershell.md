@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
-ms.openlocfilehash: 1141731697c9f649a4a8d4052cd550605049b52e
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 1e26af6c4bf86cfd412df7435379e610ffd69e85
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606947"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367419"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>チュートリアル:PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する
 
@@ -38,7 +38,7 @@ ms.locfileid: "73606947"
     Install-Module AzureAD
     ```
 
-2. [Windows Virtual Desktop PowerShell モジュールをダウンロードしてインポート](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)します。
+2. [Windows Virtual Desktop PowerShell モジュールをダウンロードしてインポート](/powershell/windows-virtual-desktop/overview/)します。
 
 3. 同じ PowerShell セッションで、この記事のすべての手順を実行します。 ウィンドウを閉じてから開き直すことによって PowerShell セッションを中断すると、手順がうまくいかない場合があります。
 
@@ -80,7 +80,7 @@ $svcPrincipalCreds = New-AzureADApplicationPasswordCredential -ObjectId $svcPrin
 
 次に、サービス プリンシパルが Windows Virtual Desktop にサインインできるよう、ロールの割り当てを作成する必要があります。 必ずロールの割り当てを作成するアクセス許可があるアカウントでサインインしてください。
 
-まず、まだ行っていない場合は、PowerShell セッション内で使用する [Windows Virtual Desktop PowerShell モジュールをダウンロードしてインポート](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)します。
+まず、まだ行っていない場合は、PowerShell セッション内で使用する [Windows Virtual Desktop PowerShell モジュールをダウンロードしてインポート](/powershell/windows-virtual-desktop/overview/)します。
 
 次の PowerShell コマンドレットを実行して、Windows Virtual Desktop に接続し、テナントを表示します。
 
@@ -107,7 +107,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com" -Credential $
 
 サインインできたら、そのサービス プリンシパルで、いくつかの Windows Virtual Desktop PowerShell コマンドレットを試し、すべてがうまく機能することを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 サービス プリンシパルを作成して Windows Virtual Desktop テナント内のロールに割り当てたら、それを使用してホスト プールを作成できます。 ホスト プールについて詳しく確認するために、Windows Virtual Desktop でホスト プールを作成するためのチュートリアルに進んでください。
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: b6b310bf1958671583aab873ab42a70845f93f9a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5eff53119362cd03c9a6497e3133984627e513c1
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452422"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368857"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>診断ツールをデプロイする
 
@@ -36,8 +36,8 @@ Windows Virtual Desktop の診断ツールでは、次のことを行うこと�
 
 また、開始する前に、次の 2 つの PowerShell モジュールもインストールする必要があります。
 
-- [Azure PowerShell モジュール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.4.0)
-- [Azure AD モジュール](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
+- [Azure PowerShell モジュール](/powershell/azure/install-az-ps?view=azps-2.4.0/)
+- [Azure AD モジュール](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/)
 
 サインインするときに、サブスクリプション ID が準備できていることを確認します。
 
@@ -253,7 +253,7 @@ VM の正常性を確認できるようにするには、Log Analytics 接続を
 
     - しきい値: 80% を超えると、異常とマークされます。
 
-- [User Input Delay per Session(\*)\\Max Input Delay](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
+- [User Input Delay per Session(\*)\\Max Input Delay](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/):
 
     - しきい値: 2000 ミリ秒を超えると、異常とマークされます。
 
