@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: sample
 ms.date: 01/24/2020
 ms.author: lcozzens
-ms.openlocfilehash: 7cc8454ca8dc8d6313e1cf353292adb47b15ef47
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 11f3aec10aed0dc8bc0c9831d563dca2b0c1a6fb
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898722"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468357"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Azure App Configuration ストアの作成
 
@@ -24,10 +24,6 @@ ms.locfileid: "76898722"
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
-
-最初に次のコマンドを実行して Azure App Configuration CLI の拡張機能をインストールする必要があります。
-
-        az extension add -n appconfig
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -71,8 +67,8 @@ echo "$appConfigConnectionString"
 | command | Notes |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az appconfig create](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-create) | App Configuration ストア リソースを作成します。 |
-| [az appconfig credential list](/cli/azure/ext/appconfig/appconfig/credential?view=azure-cli-latest) | App Configuration ストアのアクセス キーを一覧表示します。 |
+| [az appconfig create](/cli/azure/appconfig#az-appconfig-create) | App Configuration ストア リソースを作成します。 |
+| [az appconfig credential list](/cli/azure/appconfig/credential#az-appconfig-credential-list) | App Configuration ストアのアクセス キーを一覧表示します。 |
 
 ## <a name="next-steps"></a>次のステップ
 
