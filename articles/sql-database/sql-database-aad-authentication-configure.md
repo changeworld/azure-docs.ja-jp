@@ -190,7 +190,7 @@ Azure AD 管理者をプロビジョニングするには、次のような Azur
 
 SQL マネージド インスタンスの Azure AD 管理者のプロビジョニングと管理に使用するコマンドレットは、次のとおりです。
 
-| コマンドレット名 | [説明] |
+| コマンドレット名 | 説明 |
 | --- | --- |
 | [Set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |現在のサブスクリプションでの SQL マネージド インスタンスの Azure AD 管理者をプロビジョニングします (現在のサブスクリプションから実行する必要があります)。|
 | [Remove-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |現在のサブスクリプションでの SQL マネージド インスタンスの Azure AD 管理者を削除します。 |
@@ -218,7 +218,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 次の CLI コマンドを呼び出して、SQL マネージド インスタンスの Azure AD 管理者をプロビジョニングすることもできます。
 
-| command | [説明] |
+| command | 説明 |
 | --- | --- |
 |[az sql mi ad-admin create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | SQL マネージド インスタンスの Azure Active Directory 管理者をプロビジョニングします (現在のサブスクリプションから実行する必要があります)。 |
 |[az sql mi ad-admin delete](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | SQL マネージド インスタンスの Azure Active Directory 管理者を削除します。 |
@@ -281,7 +281,7 @@ PowerShell コマンドレットを実行するには、Azure PowerShell をイ�
 
 Azure SQL Database および Azure SQL Data Warehouse の Azure AD 管理者のプロビジョニングと管理に使用するコマンドレットは、次のとおりです。
 
-| コマンドレット名 | [説明] |
+| コマンドレット名 | 説明 |
 | --- | --- |
 | [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |Azure SQL Server または Azure SQL Data Warehouse の Azure Active Directory 管理者をプロビジョニングします (現在のサブスクリプションから実行する必要があります)。 |
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Azure SQL Server または Azure SQL Data Warehouse の Azure Active Directory 管理者を削除します。 |
@@ -326,7 +326,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 以下の CLI コマンドを呼び出して、Azure AD 管理者をプロビジョニングできます。
 
-| command | [説明] |
+| command | 説明 |
 | --- | --- |
 |[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | Azure SQL Server または Azure SQL Data Warehouse の Azure Active Directory 管理者をプロビジョニングします (現在のサブスクリプションから実行する必要があります)。 |
 |[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | Azure SQL Server または Azure SQL Data Warehouse の Azure Active Directory 管理者を削除します。 |
