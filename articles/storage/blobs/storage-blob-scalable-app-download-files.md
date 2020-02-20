@@ -98,7 +98,7 @@ dotnet run
 アプリケーションは、**storageconnectionstring** で指定されたストレージ アカウント内にあるコンテナーを読み取ります。 コンテナー内の [ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer) メソッドを使用して一度に 10 個の BLOB を反復処理し、[DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) メソッドを使用してローカル コンピューターにダウンロードします。
 次の表に、ダウンロード時に各 BLOB に対して定義される [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) を示します。
 
-|プロパティ|値|[説明]|
+|プロパティ|値|説明|
 |---|---|---|
 |[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| このプロパティは、アップロードされたコンテンツの MD5 ハッシュのチェックを無効にします。 MD5 の検証を無効にすると、転送が高速になります。 ただし、転送されるファイルの有効性や整合性は確認されません。 |
 |[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false| このプロパティは、MD5 ハッシュが計算されて格納されるかどうかを示します。   |
