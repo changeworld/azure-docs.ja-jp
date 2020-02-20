@@ -41,7 +41,7 @@ StatefulRunAsyncSlowCancellation は、RunAsync タスクの取り消し要求�
 ## <a name="performance-counters"></a>パフォーマンス カウンター
 Reliable Services ランタイムでは、次のパフォーマンス カウンター カテゴリを定義しています。
 
-| カテゴリ | [説明] |
+| カテゴリ | 説明 |
 | --- | --- |
 | Service Fabric トランザクション レプリケーター |Azure Service Fabric トランザクション レプリケーターに固有のカウンター |
 | Service Fabric TStore |Azure Service Fabric TStore に固有のカウンター |
@@ -95,7 +95,7 @@ Service Fabric TStore は、[Reliable Collections](service-fabric-reliable-servi
 
 Reliable Services ランタイムでは、`Service Fabric Transactional Replicator` カテゴリにある次のイベントを出力します。
 
- カウンター名 | [説明] |
+ カウンター名 | 説明 |
 | --- | --- |
 | トランザクションの開始操作数/秒 | 1 秒あたりに作成された新しい書き込みトランザクションの数。|
 | トランザクション操作数/秒 | 1 秒あたりにリライアブル コレクションで実行される追加/更新/削除操作の数。|
@@ -108,7 +108,7 @@ Reliable Services ランタイムでは、`Service Fabric Transactional Replicat
 
 Reliable Services ランタイムでは、`Service Fabric TStore` カテゴリにある次のイベントを出力します。
 
- カウンター名 | [説明] |
+ カウンター名 | 説明 |
 | --- | --- |
 | 項目数 | ストアに含まれる項目数。|
 | ディスク サイズ | ストアのチェックポイント ファイルの合計ディスク サイズ (バイト)。|
