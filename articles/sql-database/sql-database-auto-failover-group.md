@@ -394,7 +394,7 @@ OLTP 操作を実行するときに、サーバー URL として `<fog-name>.zon
 
 ### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>単一データベースとエラスティック プールを使用して SQL データベース フェールオーバーを管理する
 
-| コマンドレット | [説明] |
+| コマンドレット | 説明 |
 | --- | --- |
 | [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
 | [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | フェールオーバー グループをサーバーから削除します。 |
@@ -405,7 +405,7 @@ OLTP 操作を実行するときに、サーバー URL として `<fog-name>.zon
 
 ### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>マネージド インスタンスで SQL データベースのフェールオーバー グループを管理する
 
-| コマンドレット | [説明] |
+| コマンドレット | 説明 |
 | --- | --- |
 | [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のインスタンスに登録します。|
 | [Set-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |フェールオーバー グループの構成を変更します。|
@@ -417,7 +417,7 @@ OLTP 操作を実行するときに、サーバー URL として `<fog-name>.zon
 
 ### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>単一データベースとエラスティック プールを使用して SQL データベース フェールオーバーを管理する
 
-| command | [説明] |
+| command | 説明 |
 | --- | --- |
 | [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
 | [az sql failover-group delete](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | フェールオーバー グループをサーバーから削除します。 |
@@ -427,7 +427,7 @@ OLTP 操作を実行するときに、サーバー URL として `<fog-name>.zon
 
 ### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>マネージド インスタンスで SQL データベースのフェールオーバー グループを管理する
 
-| command | [説明] |
+| command | 説明 |
 | --- | --- |
 | [az sql instance-failover-group create](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-create) | このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のインスタンスに登録します。 |
 | [az sql instance-failover-group update](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-update) | フェールオーバー グループの構成を変更します。|
@@ -442,7 +442,7 @@ OLTP 操作を実行するときに、サーバー URL として `<fog-name>.zon
 
 ### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API:単一またはプールされたデータベースで SQL データベースのフェールオーバー グループを管理する
 
-| API | [説明] |
+| API | 説明 |
 | --- | --- |
 | [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | フェールオーバー グループを作成または更新します |
 | [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | フェールオーバー グループをサーバーから削除します。 |
@@ -454,7 +454,7 @@ OLTP 操作を実行するときに、サーバー URL として `<fog-name>.zon
 
 ### <a name="rest-api-manage-failover-groups-with-managed-instances"></a>REST API:マネージド インスタンスでフェールオーバー グループを管理する
 
-| API | [説明] |
+| API | 説明 |
 | --- | --- |
 | [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | フェールオーバー グループの構成を作成または更新します。 |
 | [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | フェールオーバー グループをインスタンスから削除します。 |
