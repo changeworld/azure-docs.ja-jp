@@ -1,20 +1,20 @@
 ---
 title: 認証方法 | Microsoft Azure Maps
 description: この記事では、Azure Active Directory (Azure AD) と共有キー認証について説明します。 どちらも Microsoft Azure Maps サービスに使用されます。 Azure Maps のサブスクリプション キーを取得する方法について説明します。
-author: walsehgal
-ms.author: v-musehg
-ms.date: 02/11/2020
+author: farah-alyasari
+ms.author: v-faalya
+ms.date: 01/28/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 73c0d9f76ad92d0ef7ed0f518de5ab1f8b174c9d
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: ee8b166077c64ae5e0f2cce18ee0bc77e8c996f4
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189774"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210125"
 ---
 # <a name="authentication-with-azure-maps"></a>Azure Maps による認証
 
