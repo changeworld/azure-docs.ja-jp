@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: 43110036c685cd17ba912766dd8ec19aa274e7c1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b811b9afe0abcd81fe81d47ef0e1566d3042c8ae
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459521"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367380"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>ホスト プールのリモート デスクトップ プロトコル プロパティをカスタマイズする
 
@@ -20,7 +20,7 @@ ms.locfileid: "75459521"
 
 サポートされているプロパティとその既定値の全リストについては、「[サポートされるリモート デスクトップ RDP ファイルの設定](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context)」を参照してください。
 
-まず、まだ行っていない場合は、PowerShell セッション内で使用する [Windows Virtual Desktop PowerShell モジュールをダウンロードしてインポート](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)します。 その後、次のコマンドレットを実行して、ご自分のアカウントにサインインします。
+まず、まだ行っていない場合は、PowerShell セッション内で使用する [Windows Virtual Desktop PowerShell モジュールをダウンロードしてインポート](/powershell/windows-virtual-desktop/overview/)します。 その後、次のコマンドレットを実行して、ご自分のアカウントにサインインします。
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
@@ -32,7 +32,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 |RDP のプロパティ | デスクトップ | RemoteApps |
 |---|---| --- |
-| マルチモニター モード | 有効 | 該当なし |
+| マルチモニター モード | Enabled | 該当なし |
 | ドライブ リダイレクト有効 | ドライブ、クリップボード、プリンター、COM ポート、USB デバイス、スマートカード| ドライブ、クリップボード、プリンター |
 | リモート オーディオ モード | ローカルで再生 | ローカルで再生 |
 

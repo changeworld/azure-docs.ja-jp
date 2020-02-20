@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: tagore
-ms.openlocfilehash: d5a4e5ce40726ea36734a0dcf751b79225d5e153
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1e49a0935a70a2470267e5458fa1f55e3059e965
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75361115"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469767"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Azure Cloud Services での Azure Diagnostics の有効化
 Azure 診断の背景については、「 [What is Microsoft Azure Diagnostics](../azure-diagnostics.md) 」をご覧ください。
@@ -193,7 +193,7 @@ Visual Studio の**サーバー エクスプローラー**で、wadexample ス�
 問題が発生した場合、一般的な問題の解決方法については、「 [Azure Diagnostics Troubleshooting](../azure-diagnostics-troubleshooting.md) 」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
-収集するデータの変更、問題のトラブルシューティング、または一般的な診断の詳細については、[関連する Azure 仮想マシンの診断に関する記事の一覧](../azure-monitor/platform/diagnostics-extension-overview.md#cloud-services-using-azure-diagnostics)をご覧ください。
+収集するデータの変更、問題のトラブルシューティング、または一般的な診断の詳細については、[関連する Azure 仮想マシンの診断に関する記事の一覧](../azure-monitor/platform/diagnostics-extension-overview.md)をご覧ください。
 
 [EventSource Class]: https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
 

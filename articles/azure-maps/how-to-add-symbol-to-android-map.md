@@ -1,19 +1,19 @@
 ---
 title: Android マップにシンボル レイヤーを追加する | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps Android SDK を使用してマップにシンボル レイヤーを追加することによってマップ上にポイント データをレンダリングする方法について説明します。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 877147bc0fd680278f999d2007040a92b0cbff38
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: e323d99c11df7f482e6caf81e8d38bf64d160859
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911536"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209989"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Azure Maps Android SDK を使用してマップにシンボル レイヤーを追加する方法
 

@@ -3,12 +3,12 @@ title: テンプレート内の子リソース
 description: Azure Resource Manager テンプレートで子リソースの名前と種類を設定する方法について説明します。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 7d8a7a39bab3340b6f5c9e66d54b7398fa70ee3e
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 6de2b476fe19a057a62e4a54963dd8fde0d11579
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122017"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207895"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>子リソースの名前と種類の設定
 
@@ -27,7 +27,7 @@ Resource Manager テンプレートでは、親リソースの内側または外
 ]
 ```
 
-次の例は、親リソースの外側の子リソースを示しています。 親リソースが同じテンプレート内にデプロイされていない場合、または複数の子リソースを作成するために [copy](create-multiple-instances.md) を使う場合は、このアプローチを使用することがあります。
+次の例は、親リソースの外側の子リソースを示しています。 親リソースが同じテンプレート内にデプロイされていない場合、または複数の子リソースを作成するために [copy](copy-resources.md) を使う場合は、このアプローチを使用することがあります。
 
 ```json
 "resources": [

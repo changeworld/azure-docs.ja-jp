@@ -5,12 +5,12 @@ author: sebastianburckhardt
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 750ccbfa885b4679dfa61240b49ea9ec86a46d51
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 01e07eaee705634b03cc4462c4058e290daa8bc2
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120643"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198498"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>.NET での持続エンティティに関する開発者ガイド
 
@@ -371,7 +371,7 @@ public static Task Run([EntityTrigger] IDurableEntityContext ctx)
 
 通常の関数とは異なり、エンティティ クラスのメソッドでは、入力と出力のバインドに直接アクセスできません。 代わりに、エントリ ポイント関数の宣言でバインド データをキャプチャした後、`DispatchAsync<T>` メソッドに渡す必要があります。 `DispatchAsync<T>`に渡されたオブジェクトは、エンティティ クラスのコンストラクターに引数として自動的に渡されます。
 
-次の例では、[BLOB 入力バインド](../functions-bindings-storage-blob.md#input)からの `CloudBlobContainer` 参照をクラス ベースのエンティティで使用できるようにする方法を示します。
+次の例では、[BLOB 入力バインド](../functions-bindings-storage-blob-input.md)からの `CloudBlobContainer` 参照をクラス ベースのエンティティで使用できるようにする方法を示します。
 
 ```csharp
 public class BlobBackedEntity

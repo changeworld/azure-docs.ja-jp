@@ -3,12 +3,12 @@ title: テンプレートのベスト プラクティス
 description: Azure Resource Manager テンプレートを作成するための推奨されるアプローチについて説明します。 テンプレートを使用する場合の一般的な問題を回避するための推奨事項を示します。
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: b87f66f194b9e1daf8fa6a546c02aa4e86caabc3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f623255a64404f0e041173fd29488ded24cd03b3
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476297"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207487"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure Resource Manager テンプレートのベスト プラクティス
 
@@ -156,7 +156,7 @@ Azure サブスクリプションを管理する方法に関する推奨事項�
 
 * リソース名を表す変数は、一意である必要があります。
 
-* [変数のコピー ループ](create-multiple-instances.md#variable-iteration)を使用して、JSON オブジェクトの繰り返しパターンを作成します。
+* [変数のコピー ループ](copy-variables.md)を使用して、JSON オブジェクトの繰り返しパターンを作成します。
 
 * 未使用の変数を削除します。
 

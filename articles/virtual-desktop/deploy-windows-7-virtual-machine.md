@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: helohr
-ms.openlocfilehash: 28111e45d365069f80f10b88c38618dbb2b4651d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f8aebee72105e4f3218e7ae5f867962d0ed8e23d
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896220"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367371"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Windows Virtual Desktop で Windows 7 仮想マシンをデプロイする
 
@@ -44,7 +44,7 @@ Windows Virtual Desktop で Windows 7 VM を設定するには、次のように
      shutdown /r /t 0
      ```
     
-12. [こちら](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo)の指示に従って、登録トークンを取得します。
+12. [こちら](/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo/)の指示に従って、登録トークンを取得します。
 13. [Windows 7 用 Windows Virtual Desktop エージェントをダウンロードします](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm)。
 14. [Windows 7 用 Windows Virtual Desktop エージェント マネージャーをダウンロードします](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3)。
 15. Windows Virtual Desktop エージェント インストーラーを開き、指示に従います。 メッセージが表示されたら、手順 12 で作成した登録キーを指定します。

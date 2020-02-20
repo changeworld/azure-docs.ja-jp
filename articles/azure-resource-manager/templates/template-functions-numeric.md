@@ -3,12 +3,12 @@ title: テンプレート関数 - 数値
 description: Azure Resource Manager テンプレートで、数値を操作するために使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 11/08/2017
-ms.openlocfilehash: 1a611277bb473d605c76d131a18f9ccb550fab29
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 91aa637701acb278e81b7eb86aa3ae2db15acc28
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476205"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207237"
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの数値関数
 
@@ -36,7 +36,7 @@ ms.locfileid: "75476205"
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | Required | Type | 説明 |
 |:--- |:--- |:--- |:--- | 
 |operand1 |はい |INT |加算する最初の整数。 |
 |operand2 |はい |INT |加算する 2 つ目の整数。 |
@@ -82,7 +82,7 @@ ms.locfileid: "75476205"
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | 種類 | 値 |
+| 名前 | Type | Value |
 | ---- | ---- | ----- |
 | addResult | int | 8 |
 
@@ -107,7 +107,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | Required | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | loopName | いいえ | string | 反復処理の取得対象となるループの名前。 |
 | offset |いいえ |INT |0 から始まる反復値に追加する整数。 |
@@ -118,7 +118,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 copyIndex がリソースの反復処理を指すのかプロパティの反復処理を指すのかは、**loopName** プロパティで指定できます。 **loopName** に値を指定しなかった場合は、現在のリソース タイプの反復処理が使われます。 プロパティに対する反復では、**loopName** に値を指定してください。 
  
-**copyIndex**の使用方法の詳細については、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](create-multiple-instances.md)」を参照してください。
+**copyIndex**の使用方法の詳細については、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](copy-resources.md)」を参照してください。
 
 変数を定義するときに **copyIndex** を使用する例については、「[変数](template-syntax.md#variables)」を参照してください。
 
@@ -153,7 +153,7 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | Required | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |はい |INT |除算される整数。 |
 | operand2 |はい |INT |除算に使用される整数。 0 にすることはできません。 |
@@ -199,7 +199,7 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | 種類 | 値 |
+| 名前 | Type | Value |
 | ---- | ---- | ----- |
 | divResult | int | 2 |
 
@@ -224,7 +224,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | Required | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |文字列または整数 |浮動小数点数に変換する値。 |
 
@@ -258,7 +258,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | Required | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |はい |文字列または整数 |整数に変換する値。 |
 
@@ -293,7 +293,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | 種類 | 値 |
+| 名前 | Type | Value |
 | ---- | ---- | ----- |
 | intResult | int | 4 |
 
@@ -318,7 +318,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | Required | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数の配列、または整数のコンマ区切りリスト |最大値を取得するコレクション。 |
 
@@ -356,7 +356,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | 種類 | 値 |
+| 名前 | Type | Value |
 | ---- | ---- | ----- |
 | arrayOutput | int | 5 |
 | intOutput | int | 5 |
@@ -382,7 +382,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | Required | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数の配列、または整数のコンマ区切りリスト |最小値を取得するコレクション。 |
 
@@ -420,7 +420,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | 種類 | 値 |
+| 名前 | Type | Value |
 | ---- | ---- | ----- |
 | arrayOutput | int | 0 |
 | intOutput | int | 0 |
@@ -446,7 +446,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | Required | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |はい |INT |除算される整数。 |
 | operand2 |はい |INT |除算に使用される整数。0 にすることはできません。 |
@@ -491,7 +491,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | 種類 | 値 |
+| 名前 | Type | Value |
 | ---- | ---- | ----- |
 | modResult | int | 1 |
 
@@ -516,7 +516,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | Required | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |はい |INT |乗算する最初の整数。 |
 | operand2 |はい |INT |乗算する 2 つ目の整数。 |
@@ -562,7 +562,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | 種類 | 値 |
+| 名前 | Type | Value |
 | ---- | ---- | ----- |
 | mulResult | int | 15 |
 
@@ -587,7 +587,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | Required | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |はい |INT |減算される整数。 |
 | operand2 |はい |INT |減算する整数。 |
@@ -632,7 +632,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | 種類 | 値 |
+| 名前 | Type | Value |
 | ---- | ---- | ----- |
 | subResult | int | 4 |
 
@@ -651,6 +651,6 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="next-steps"></a>次のステップ
 * Azure Resource Manager テンプレートのセクションの説明については、[Azure Resource Manager テンプレートの作成](template-syntax.md)に関するページを参照してください。
 * 複数のテンプレートをマージするには、[Azure Resource Manager でのリンクされたテンプレートの使用](linked-templates.md)に関するページを参照してください。
-* 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](create-multiple-instances.md)」を参照してください。
+* 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](copy-resources.md)」を参照してください。
 * 作成したテンプレートをデプロイする方法を確認するには、[Azure Resource Manager テンプレートを使用したアプリケーションのデプロイ](deploy-powershell.md)に関するページを参照してください。
 

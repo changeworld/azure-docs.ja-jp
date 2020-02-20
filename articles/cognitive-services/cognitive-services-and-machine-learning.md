@@ -48,9 +48,9 @@ Cognitive Services は次の場合に使用します。
 
 機械学習は、[Azure Machine Learning (AML) の製品とサービス](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context)を通じて提供されます。
 
-## <a name="what-is-a-cognitive-service"></a>コグニティブ サービスとは
+## <a name="what-is-a-cognitive-service"></a>Cognitive Services とは
 
-コグニティブ サービスは、機械学習ソリューションのコンポーネントであるデータ、アルゴリズム、トレーニング済みモデルの一部または全部を提供します。 これらのサービスは、データに関する一般的な知識が前提になりますが、機械学習やデータ サイエンスの経験は不要です。 これらのサービスでは REST API と言語ベースの SDK の両方を提供しています。 そのため、これらのサービスを使用するにはプログラミング言語の知識が必要です。
+Cognitive Services は、機械学習ソリューションのコンポーネントであるデータ、アルゴリズム、トレーニング済みモデルの一部または全部を提供します。 これらのサービスは、データに関する一般的な知識が前提になりますが、機械学習やデータ サイエンスの経験は不要です。 これらのサービスでは REST API と言語ベースの SDK の両方を提供しています。 そのため、これらのサービスを使用するにはプログラミング言語の知識が必要です。
 
 ## <a name="how-are-cognitive-services-and-azure-machine-learning-aml-similar"></a>コグニティブ サービスと Azure Machine Learning (AML) の類似点
 

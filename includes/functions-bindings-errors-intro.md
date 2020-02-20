@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 0c04e7812d023cd394b54cf03bcca11a5589b18a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 629de079f7cc7d95d10f8ff951a47b8b8fc62dad
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564726"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77474183"
 ---
 Azure Functions で発生するエラーは、次のいずれかが元になっています。
 
@@ -37,6 +37,6 @@ Azure Functions で発生するエラーは、次のいずれかが元になっ�
 * [Azure Queue Storage](../articles/azure-functions/functions-bindings-storage-queue.md)
 * [Azure Service Bus (キュー/トピック)](../articles/azure-functions/functions-bindings-service-bus.md)
 
-既定では、これらのトリガーにより要求が最大 5 回再試行されます。 5 回目の再試行後に、Azure Queue storage と Azure Service Bus の両方のトリガーによって[有害キュー](..\articles\azure-functions\functions-bindings-storage-queue.md#trigger---poison-messages)にメッセージが書き込まれます。
+既定では、これらのトリガーにより要求が最大 5 回再試行されます。 5 回目の再試行後に、Azure Queue storage と Azure Service Bus の両方のトリガーによって[有害キュー](..\articles\azure-functions\functions-bindings-storage-queue-trigger.md#poison-messages)にメッセージが書き込まれます。
 
-他のトリガーまたはバインドの種類については、再試行ポリシーを手動で実装する必要があります。 手動の実装には、[有害メッセージ キュー](..\articles\azure-functions\functions-bindings-storage-blob.md#trigger---poison-blobs)へのエラー情報の書き込みが含まれる場合があります。 有害キューに書き込むことによって、後で操作を再試行する機会ができます。 この方法は、Blob Storage トリガーによって使用されるものと同じです。
+他のトリガーまたはバインドの種類については、再試行ポリシーを手動で実装する必要があります。 手動の実装には、[有害メッセージ キュー](..\articles\azure-functions\functions-bindings-storage-blob-trigger.md#poison-blobs)へのエラー情報の書き込みが含まれる場合があります。 有害キューに書き込むことによって、後で操作を再試行する機会ができます。 この方法は、Blob Storage トリガーによって使用されるものと同じです。

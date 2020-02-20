@@ -14,12 +14,12 @@ ms.workload: multiple
 ms.date: 10/24/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: a423b123626633eac761122583c5c494af68ca65
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 46be210ead3816356b63293b910e1c0e7ffc087b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020439"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200097"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch プール内のコンピューティング ノードをスケーリングするための自動式を作成する
 
@@ -675,10 +675,10 @@ $NodeDeallocationOption = taskcompletion;
 
 ```csharp
 // Get pending tasks for the past 15 minutes.
-$samples = $ActiveTasks.GetSamplePercent(TimeInterval_Minute * 15);
+$samples = $PendingTasks.GetSamplePercent(TimeInterval_Minute * 15);
 // If we have fewer than 70 percent data points, we use the last sample point,
 // otherwise we use the maximum of last sample point and the history average.
-$tasks = $samples < 70 ? max(0,$ActiveTasks.GetSample(1)) : max( $ActiveTasks.GetSample(1), avg($ActiveTasks.GetSample(TimeInterval_Minute * 15)));
+$tasks = $samples < 70 ? max(0,$PendingTasks.GetSample(1)) : max( $PendingTasks.GetSample(1), avg($PendingTasks.GetSample(TimeInterval_Minute * 15)));
 // If number of pending tasks is not 0, set targetVM to pending tasks, otherwise
 // half of current dedicated.
 $targetVMs = $tasks > 0? $tasks:max(0, $TargetDedicatedNodes/2);

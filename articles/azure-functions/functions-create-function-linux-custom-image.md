@@ -5,12 +5,12 @@ ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions01
-ms.openlocfilehash: 9c97606b21a6e98494fffb689567aaab6e2f0621
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b714806c163a94bbae7069c357e603b82ba797ba
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210193"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482362"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>カスタム コンテナーを使用して Linux で関数を作成する
 
@@ -919,7 +919,7 @@ export default httpTrigger;
     
     ---
 
-1. [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) コマンドを使用して、このキュー内のメッセージ (先ほど関数をテストするときに使用した名) を表示します。 このコマンドでは、キューの 1 つ目のメッセージを [base64 エンコーディング](functions-bindings-storage-queue.md#encoding)で取得します。そのため、テキストとして表示するためには、メッセージをデコードする必要もあります。
+1. [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) コマンドを使用して、このキュー内のメッセージ (先ほど関数をテストするときに使用した名) を表示します。 このコマンドでは、キューの 1 つ目のメッセージを [base64 エンコーディング](functions-bindings-storage-queue-trigger.md#encoding)で取得します。そのため、テキストとして表示するためには、メッセージをデコードする必要もあります。
 
     # <a name="bash"></a>[bash](#tab/bash)
     

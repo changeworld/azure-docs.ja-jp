@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: helohr
-ms.openlocfilehash: 1e26d61e0b1ec50e7a3831970af1fd8fad7fed99
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 4c5b31c54bf4926caaa1bd793229bdfbb22af2a2
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483659"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368920"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Azure NetApp Files を使用してホスト プール用の FSLogix プロファイル コンテナーを作成する
 
@@ -38,13 +38,13 @@ FSLogix プロファイル コンテナーは、使いやすい Azure のネイ�
 
 - Windows Virtual Desktop の設定と構成
 - Windows Virtual Desktop のホスト プールのプロビジョニング
-- [Azure NetApp Files サブスクリプションの有効化](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)
+- [Azure NetApp Files サブスクリプションの有効化](../azure-netapp-files/azure-netapp-files-register.md)
 
 ## <a name="set-up-your-azure-netapp-files-account"></a>Azure NetApp Files アカウントの設定
 
 初めに、Azure NetApp Files アカウントを設定する必要があります。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 使用するアカウントに、共同作成者または管理者の権限があることを確認してください。
+1. [Azure portal](https://portal.azure.com) にサインインします。 使用するアカウントに、共同作成者または管理者の権限があることを確認してください。
 
 2. 検索バーの右側にある **Azure Cloud Shell のアイコン**をクリックして、Azure Cloud Shell を開きます。
 
@@ -134,7 +134,7 @@ FSLogix プロファイル コンテナーは、使いやすい Azure のネイ�
     - **[仮想ネットワーク]** では、ボックスの一覧から、ドメイン コントローラーに接続されている既存の仮想ネットワークを選択します。
     - **[サブネット]** では **[新規作成]** を選択します。 このサブネットは、Azure NetApp Files に委任されることに留意してください。
 
-3.  **[次へ:プロトコル\>\>]** を選択して [プロトコル] タブを開き、ボリュームのアクセス パラメーターを構成します。
+3.  **プロトコル\>\>** を選択して プロトコル タブを開き、ボリュームのアクセス パラメーターを構成します。
 
 ## <a name="configure-volume-access-parameters"></a>ボリュームのアクセス パラメーターの構成
 
@@ -230,6 +230,6 @@ FSLogix プロファイル コンテナーは、使いやすい Azure のネイ�
 
    ![マウント パスにあるフォルダーの内容のスクリーンショット。 内部には "Profile_ssbb" という名前の VHD ファイルが 1 つ存在しています。](media/mount-path-folder.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 FSLogix プロファイル コンテナーを使用すると、ユーザー プロファイル共有を設定できます。 新しいコンテナーを使用してユーザー プロファイル共有を作成する方法については、「[ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成する](create-host-pools-user-profile.md)」を参照してください。

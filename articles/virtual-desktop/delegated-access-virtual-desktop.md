@@ -7,16 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: ad8dc610d15742844b8bec630d7bc3e08fb46973
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 849a3b1eb1a4648c2eaae7dd564f14b9c511fdcf
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606895"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367354"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop"></a>Windows Virtual Desktop における委任されたアクセス
 
-Windows Virtual Desktop には委任されたアクセス モデルが用意され、これにより特定のユーザーにロールを割り当てることで、それらのユーザーが持つことのできるアクセス数を定義できます。 ロールの割り当てには、セキュリティ プリンシパル、ロールの定義、スコープの 3 つのコンポーネントがあります。 Windows Virtual Desktop の委任されたアクセス モデルは、Azure RBAC モデルに基づいています。 特定のロールの割り当てとそのコンポーネントの詳細については、「[Azure ロールベースのアクセス制御の概要](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)」を参照してください。
+Windows Virtual Desktop には委任されたアクセス モデルが用意され、これにより特定のユーザーにロールを割り当てることで、それらのユーザーが持つことのできるアクセス数を定義できます。 ロールの割り当てには、セキュリティ プリンシパル、ロールの定義、スコープの 3 つのコンポーネントがあります。 Windows Virtual Desktop の委任されたアクセス モデルは、Azure RBAC モデルに基づいています。 特定のロールの割り当てとそのコンポーネントの詳細については、「[Azure ロールベースのアクセス制御の概要](../role-based-access-control/built-in-roles.md)」を参照してください。
 
 Windows Virtual Desktop の委任されたアクセスでは、ロール割り当ての要素ごとに次の値がサポートされています。
 
@@ -25,7 +25,7 @@ Windows Virtual Desktop の委任されたアクセスでは、ロール割り�
     * サービス プリンシパル
 * ロール定義
     * 組み込みのロール
-* Scope (スコープ)
+* Scope
     * テナント グループ
     * テナント
     * ホスト プール
@@ -62,7 +62,7 @@ Windows Virtual Desktop の委任されたアクセスには、ユーザーお�
 * **SignInName**: ユーザーの電子メール アドレスまたはユーザー プリンシパル名。
 * **TenantName**: リモート デスクトップ テナントの名前。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 各ロールで使用できる PowerShell コマンドレットのより詳細な一覧については、「[PowerShell リファレンス](/powershell/windows-virtual-desktop/overview)」を参照してください。
 

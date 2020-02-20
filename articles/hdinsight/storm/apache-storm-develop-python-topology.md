@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/16/2019
-ms.openlocfilehash: ba632a98c21926ec28606def128cc068abf47f53
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 20e4827b1a86bff338646ef71f0dd732255c09c9
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646627"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460026"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>HDInsight での Python を使用した Apache Storm トポロジの開発
 
@@ -26,7 +26,7 @@ Python コンポーネントを使用する [Apache Storm](https://storm.apache.
 
 * HDInsight 上の Apache Storm クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照し、 **[クラスターの種類]** で **[Storm]** を選択してください。
 
-* ローカルの Storm 開発環境 (省略可能)。 ローカルの Storm 環境は、トポロジをローカルで実行する場合にのみ必要です。 詳細については、「[Setting up a development environment (開発環境のセットアップ)](http://storm.apache.org/releases/current/Setting-up-development-environment.html)」を参照してください。
+* ローカルの Storm 開発環境 (省略可能)。 ローカルの Storm 環境は、トポロジをローカルで実行する場合にのみ必要です。 詳細については、「[Setting up a development environment (開発環境のセットアップ)](https://storm.apache.org/releases/current/Setting-up-development-environment.html)」を参照してください。
 
 * [Python 2.7 以上](https://www.python.org/downloads/)。
 
@@ -38,7 +38,7 @@ Python コンポーネントを使用する [Apache Storm](https://storm.apache.
 
 Apache Storm は、任意のプログラミング言語で記述されたコンポーネントで動作するように設計されました。 コンポーネントは、 Storm の Thrift 定義の操作方法を理解する必要があります。 Python では、Storm と簡単に連動できるようにするための Apache Storm プロジェクトの一部として、モジュールが提供されます。 このモジュールは [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py) にあります。
 
-Storm は、Java 仮想マシン (JVM) で実行される Java プロセスです。 他の言語で書かれたコンポーネントは、サブプロセスとして実行されます。 Storm は、stdin/stdout 経由で送信される JSON メッセージを使用して、これらのサブプロセスと通信します。 コンポーネント間の通信の詳細については、 [多言語プロトコル](https://storm.apache.org/documentation/Multilang-protocol.html) に関するドキュメントを参照してください。
+Storm は、Java 仮想マシン (JVM) で実行される Java プロセスです。 他の言語で書かれたコンポーネントは、サブプロセスとして実行されます。 Storm は、stdin/stdout 経由で送信される JSON メッセージを使用して、これらのサブプロセスと通信します。 コンポーネント間の通信の詳細については、 [多言語プロトコル](https://storm.apache.org/releases/current/Multilang-protocol.html) に関するドキュメントを参照してください。
 
 ## <a name="python-with-the-flux-framework"></a>Python と Flux フレームワーク
 

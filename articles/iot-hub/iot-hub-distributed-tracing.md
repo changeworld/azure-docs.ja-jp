@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: fc861126cd723bbb0f7c43d5d2db4eed1503605a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: ed477dddeb499023f4803929d9433ed37c302159
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911891"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212484"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>分散トレース (プレビュー) を使用して Azure IoT の cloud-to-device メッセージをトレースする
 
@@ -130,6 +130,9 @@ IoT Hub に対して分散トレースを有効にすると、次のことを実
 
 ### <a name="edit-the-send-telemetry-sample-to-enable-distributed-tracing"></a>送信テレメトリ サンプルを編集して分散トレースを有効にする
 
+> [!div class="button"]
+> <a href="https://github.com/Azure-Samples/azure-iot-distributed-tracing-sample/blob/master/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c" target="_blank">Github でのサンプルの入手</a>
+
 1. エディターを使用して、`azure-iot-sdk-c/iothub_client/samples/iothub_ll_telemetry_sample/iothub_ll_telemetry_sample.c` ソース ファイルを開きます。
 
 1. 次の `connectionString` 定数の宣言を探します。
@@ -241,7 +244,7 @@ C SDK を使用せずに分散トレース機能をプレビューするのは**
 }
 ```
 
-| 要素名 | 必須 | 種類 | 説明 |
+| 要素名 | Required | Type | 説明 |
 |-----------------|----------|---------|-----------------------------------------------------|
 | `sampling_mode` | はい | 整数 | サンプリングのオンとオフを切り替えるために、現在 2 つのモード値がサポートされています。 `1` がオンで、`2` がオフです。 |
 | `sampling_rate` | はい | 整数 | この値は、パーセンテージです。 `0` から `100` までの値 (両端を含む) のみ許可されます。  |

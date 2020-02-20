@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/14/2019
 ms.author: helohr
-ms.openlocfilehash: 8e8eec8af81832992a27206efcd7b7e7051a83b8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 5db60160540fc59465e13bd2e68680f49ee0aa2b
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772552"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470889"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX アプリのアタッチを設定する
 
@@ -38,7 +38,7 @@ ms.locfileid: "75772552"
 1. [Windows Insider ポータル](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0)を開き、サインインします。
 
      >[!NOTE]
-     >Windows Insider ポータルにアクセスするには、Windows Insider Program のメンバーである必要があります。 Windows Insider Program の詳細については、[Windows Insider のドキュメント](https://docs.microsoft.com/windows-insider/at-home/)を参照してください。
+     >Windows Insider ポータルにアクセスするには、Windows Insider Program のメンバーである必要があります。 Windows Insider Program の詳細については、[Windows Insider のドキュメント](/windows-insider/at-home/)を参照してください。
 
 2. **[エディションの選択]** セクションまで下にスクロールし、 **[Windows 10 Insider Preview Enterprise (FAST) – ビルド 19035]** 以降のビルドを選択します。
 
@@ -79,7 +79,7 @@ VHD を Azure にアップロードしたら、チュートリアル「[Azure Ma
 
 ## <a name="prepare-the-application-for-msix-app-attach"></a>MSIX アプリのアタッチ用のアプリケーションを準備する 
 
-既に MSIX パッケージがある場合は、「[Windows Virtual Desktop インフラストラクチャの構成](#configure-windows-virtual-desktop-infrastructure)」に進んでください。 レガシ アプリケーションをテストする場合は、「[VM 上でデスクトップ インストーラーからの MSIX パッケージを作成する](https://docs.microsoft.com/windows/msix/packaging-tool/create-app-package-msi-vm)」の手順に従って、レガシ アプリケーションを MSIX パッケージに変換します。
+既に MSIX パッケージがある場合は、「[Windows Virtual Desktop インフラストラクチャの構成](#configure-windows-virtual-desktop-infrastructure)」に進んでください。 レガシ アプリケーションをテストする場合は、「[VM 上でデスクトップ インストーラーからの MSIX パッケージを作成する](/windows/msix/packaging-tool/create-app-package-msi-vm/)」の手順に従って、レガシ アプリケーションを MSIX パッケージに変換します。
 
 ## <a name="generate-a-vhd-or-vhdx-package-for-msix"></a>MSIX 用の VHD または VHDX パッケージを生成する
 
@@ -390,7 +390,7 @@ rmdir $packageName -Force -Verbose
 
 ## <a name="set-up-simulation-scripts-for-the-msix-app-attach-agent"></a>MSIX アプリのアタッチ エージェントのシミュレーション スクリプトを設定する
 
-作成したスクリプトは、手動で実行するか、起動、ログオン、ログオフ、およびシャットダウン スクリプトとして自動的に実行するように設定することができます。 これらの種類のスクリプトの詳細については、[グループ ポリシーでの起動、シャットダウン、ログオン、およびログオフのスクリプトの使用](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11))に関するページを参照してください。
+作成したスクリプトは、手動で実行するか、起動、ログオン、ログオフ、およびシャットダウン スクリプトとして自動的に実行するように設定することができます。 これらの種類のスクリプトの詳細については、[グループ ポリシーでの起動、シャットダウン、ログオン、およびログオフのスクリプトの使用](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)/)に関するページを参照してください。
 
 以下の各自動スクリプトはそれぞれ、アプリのアタッチ スクリプトの 1 つのフェーズを実行します。
 
@@ -407,7 +407,7 @@ rmdir $packageName -Force -Verbose
 
 オフラインで使用するためにライセンスを設定するには、次の手順を実行します。 
 
-1. アプリ パッケージ、ライセンス、および必要なフレームワークをビジネス向け Microsoft Store からダウンロードします。 エンコードされたライセンス ファイルとエンコードされていないライセンス ファイルの両方が必要です。 ダウンロードの詳細な手順については、[こちら](https://docs.microsoft.com/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app)を確認してください。
+1. アプリ パッケージ、ライセンス、および必要なフレームワークをビジネス向け Microsoft Store からダウンロードします。 エンコードされたライセンス ファイルとエンコードされていないライセンス ファイルの両方が必要です。 ダウンロードの詳細な手順については、[こちら](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app)を確認してください。
 2. 手順 3 のスクリプトで次の変数を更新します。
       1. `$contentID` は、エンコードされていないライセンス ファイル (.xml) の ContentID 値です。 ライセンス ファイルは任意のテキスト エディターで開くことができます。
       2. `$licenseBlob` は、エンコードされたライセンス ファイル (.bin) のライセンス BLOB の文字列全体です。 エンコードされたライセンス ファイルは、任意のテキスト エディターで開くことができます。 

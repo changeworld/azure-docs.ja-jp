@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1d2606296ba55c0ef66d118091f6764f7a285137
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: d0491a5178331c53248d9c764d9ff1c6a6970683
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806781"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425784"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Windows 用の Key Vault 仮想マシン拡張機能
 
@@ -29,7 +29,7 @@ Key Vault VM 拡張機能では、以下のバージョンの Windows がサポ�
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
-次の JSON は、Key Vault VM 拡張機能のスキーマを示しています。 この拡張機能では、保護された設定は必要ありません。そのすべての設定はパブリック情報と見なされます。 この拡張機能には、監視対象の証明書、ポーリング頻度、および宛先の証明書ストアの一覧が必要です。 具体的には次の処理が行われます。  
+次の JSON は、Key Vault VM 拡張機能のスキーマを示しています。 この拡張機能では、保護された設定は必要ありません。そのすべての設定はパブリック情報と見なされます。 この拡張機能には、監視対象の証明書、ポーリング頻度、および宛先の証明書ストアの一覧が必要です。 具体的な内容は次のとおりです。  
 
 ```json
     {
@@ -71,12 +71,12 @@ Key Vault VM 拡張機能では、以下のバージョンの Windows がサポ�
 | apiVersion | 2019-07-01 | date |
 | publisher | Microsoft.Azure.KeyVault | string |
 | type | KeyVaultForWindows | string |
-| typeHandlerVersion | 1.0 | int |
+| typeHandlerVersion | 1.0 | INT |
 | pollingIntervalInS | 3600 | string |
 | certificateStoreName | MY | string |
-| linkOnRenewal | false | ブール値 |
+| linkOnRenewal | false | boolean |
 | certificateStoreLocation  | LocalMachine | string |
-| requiredInitialSync | true | ブール値 |
+| requiredInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | 文字列配列
 
 
@@ -169,7 +169,7 @@ Azure CLI を使用すると、Key Vault VM 拡張機能を既存の仮想マシ
          az vm extension set -n "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
          -g "<resourcegroup>" `
-         --vmss-name "<vmName>" `
+         --vm-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\ <observedCerts>\"] }}'
     ```
 
@@ -192,7 +192,7 @@ Azure CLI を使用すると、Key Vault VM 拡張機能を既存の仮想マシ
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
 
-### <a name="troubleshoot"></a>トラブルシューティング
+### <a name="troubleshoot"></a>[トラブルシューティング]
 
 拡張機能のデプロイ状態に関するデータを取得するには、Azure Portal または Azure PowerShell を使用します。 特定の VM での拡張機能のデプロイ状態を確認するには、Azure PowerShell を使用して次のコマンドを実行します。
 

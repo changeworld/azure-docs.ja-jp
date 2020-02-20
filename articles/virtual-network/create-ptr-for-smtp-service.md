@@ -1,5 +1,5 @@
 ---
-title: Azure で SMTP バナー チェック用に逆引き参照ゾーンを構成する
+title: SMTP バナー チェック用に逆引き参照ゾーンを構成する
 titlesuffix: Azure Virtual Network
 description: Azure で SMTP バナー チェック用に逆引き参照ゾーンを構成する方法について説明します
 services: virtual-network
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 084fdb7f850f3819738a982127fa98efab114197
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 6c37ba61005c9936e6421d06369d1f52b93ac264
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059018"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201698"
 ---
 # <a name="configure-reverse-lookup-zones-for-an-smtp-banner-check"></a>SMTP バナー チェック用に逆引き参照ゾーンを構成する
 

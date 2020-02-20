@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 01/24/2020
+ms.date: 02/07/2020
 ms.author: raiye
-ms.openlocfilehash: 89fd16b6afadee75678b76381739c12a31dc1a07
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: cca79946c0537b75335eb2e64ae1fa429f2c8d18
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765372"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087239"
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
@@ -42,9 +42,9 @@ ms.locfileid: "76765372"
 |  Rel 20-01  |  [4494174]  |  マイクロコード v4  | [6.15] | 2019 年 8 月 29 日 |
 |  Rel 20-01  |  [4532947]  |  Windows セキュリティ  | [6.15] | 2020 年 1 月 14 日 |
 |  Rel 20-01  |  [4534273]  |  LCU  | [6.15] | 2020 年 1 月 14 日 |
-|  Rel 20-01  |  [4530734]  |  セキュリティ以外  | [2.94] | 2019 年 12 月 10 日 |
-|  Rel 20-01  |  [4530691]  |  セキュリティ以外   | [3.81] | 2019 年 12 月 10 日 |
-|  Rel 20-01  |  [4530702]  |  セキュリティ以外  | [4.74] | 2019 年 12 月 10 日 |
+|  Rel 20-01  |  [4530734]  |  マンスリー ロールアップ  | [2.94] | 2019 年 12 月 10 日 |
+|  Rel 20-01  |  [4530691]  |  マンスリー ロールアップ   | [3.81] | 2019 年 12 月 10 日 |
+|  Rel 20-01  |  [4530702]  |  マンスリー ロールアップ  | [4.74] | 2019 年 12 月 10 日 |
 
 [4532960]: https://support.microsoft.com/kb/4532960
 [4534251]: https://support.microsoft.com/kb/4534251

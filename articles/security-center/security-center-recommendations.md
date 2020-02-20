@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center でのセキュリティに関する推奨事項 | Microsoft Docs
+title: Security recommendations in Azure Security Center
 description: このドキュメントでは、Azure セキュリティ センターでの推奨事項に従ってご使用の Azure のリソースを保護し、セキュリティ ポリシーを使用してコンプライアンスを順守する方法について説明します。
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/29/2019
 ms.author: memildin
-ms.openlocfilehash: 6a01ddbc733ce52c02e9abef2569adbfbd19c6a8
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 4f41f4996f230a373245633b9449e93c403a1dfc
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520729"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430297"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Security recommendations in Azure Security Center 
 このトピックでは、Azure セキュリティ センターで推奨事項を確認し、理解し、Azure リソースの保護に役立てる方法について説明します。
@@ -69,7 +69,7 @@ Security Center はリソースのセキュリティの状態を分析して、�
 >[!NOTE] 
 > Azure リソースの詳細については、[クラシック デプロイ モデルと Resource Manager デプロイ モデル](../azure-classic-rm.md)に関するページを参照してください。
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このドキュメントでは、セキュリティ センターのセキュリティに関する推奨事項について説明しました。 推奨事項を修正する方法については、次を参照してください。
 

@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 01/11/2020
-ms.openlocfilehash: e677b2e958d25181b972b2696584355f8a1a465b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/05/2020
+ms.openlocfilehash: eff751465c7b64429968b0305e6ad483943c374b
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901287"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048182"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Monitor のカスタマー マネージド キーの構成 
 
@@ -308,54 +308,31 @@ Content-type: application/json
 > [!NOTE]
 > この手順は、**Azure Monitor データストア (ADX クラスター) のプロビジョニング**が満たされたことの確認を、Microsoft チャネルを通じて製品グループから受信した後に**のみ**実行してください。 この**プロビジョニング**の前にワークスペースを関連付けてデータを取り込むと、データは削除され、回復できなくなります。
 
-**[ワークスペース - 作成または更新](https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate) API を使用してワークスペースを*クラスター* リソースに関連付ける**
-
 Application Insights CMK の構成の場合、この手順については付録の内容に従ってください。
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>?api-version=2015-11-01-preview 
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2019-08-01-preview 
 Authorization: Bearer <token>
 Content-type: application/json
 
 {
   "properties": {
-    "source": "Azure",
-    "customerId": "<workspace-id>",
-    "features": {
-      "clusterDefinitionId": "<cluster-id>" 
+    "WriteAccessResourceId": "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
     }
-  },
-  "id": "/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>",
-  "name": "<workspace-name>",
-  "type": "Microsoft.OperationalInsights/workspaces",
-  "location": "<region-name>"
 }
 ```
-"clusterDefinitionId" は、前の手順の応答で指定された "clusterId" 値です。
+*clusterDefinitionId* は、前の手順の応答で指定された *clusterId* 値です。
 
 **応答**
 
 ```json
 {
   "properties": {
-    "source": "Azure",
-    "customerId": "workspace-id",
-    "retentionInDays": value,
-    "features": {
-      "legacy": value,
-      "searchVersion": value,
-      "clusterDefinitionId": "cluster-id"
+    "WriteAccessResourceId": "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
     },
-    "workspaceCapping": {
-      "dailyQuotaGb": value,
-      "quotaNextResetTime": "timeStamp",
-      "dataIngestionStatus": "RespectQuota"
-    }
-  },
-  "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.operationalinsights/workspaces/workspace-name",
-  "name": "workspace-name",
-  "type": "Microsoft.OperationalInsights/workspaces",
-  "location": "region-name"
+  "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.operationalinsights/workspaces/workspace-name/linkedservices/cluster",
+  "name": "workspace-name/cluster",
+  "type": "microsoft.operationalInsights/workspaces/linkedServices",
 }
 ```
 
@@ -583,7 +560,7 @@ ID は、作成時に*クラスター* リソースに割り当てられます�
 > [!IMPORTANT]
 > "cluster-id" の値は、次の手順で必要になるため、コピーして保持します。
 
-### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-updatehttpsdocsmicrosoftcomrestapiapplication-insightscomponentscreateorupdate-api"></a>[コンポーネント - 作成または更新](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate) API を使用してコンポーネントを*クラスター* リソースに関連付ける
+### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>[コンポーネント - 作成または更新](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate) API を使用してコンポーネントを*クラスター* リソースに関連付ける
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Insights/components/<component-name>?api-version=2015-05-01

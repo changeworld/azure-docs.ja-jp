@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 975ffcd7142aac24363c2235db3742c155c1007b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d4e25074203ddcc016f54842f25f52017c6137f0
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019827"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083214"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>レイヤー 2 拡張済みネットワークを使用したワークロードの移行
 
@@ -48,7 +48,7 @@ L2 VPN を使用した移行の詳細については、VMware ドキュメント
 * スタンドアロンの NSX-T Edge アプライアンスのバージョンが、AVS プライベート クラウド環境で使用されている NSX-T Manager のバージョン (NSX-T 2.3.0) と互換性がある。
 * 偽装転送を有効にして、オンプレミスの vCenter にトランク ポート グループが作成されている。
 * NSX-T スタンドアロン クライアントのアップリンク IP アドレスに使用するためのパブリック IP アドレスが予約済みであり、2 つのアドレス間の変換のために 1 対 1 の NAT が用意されている。
-* az.AVS.io ドメインが AVS プライベート クラウドの DNS サーバーを参照するように、オンプレミスの DNS サーバーで DNS 転送が設定されている。
+* az.cloudsimple.io ドメインが AVS プライベート クラウドの DNS サーバーを参照するように、オンプレミスの DNS サーバーで DNS 転送が設定されている。
 * VMotion が 2 つのサイト間で機能するために、RTT 待機時間は 150 ミリ秒以下である必要がある。
 
 ## <a name="limitations-and-considerations"></a>制限と考慮事項

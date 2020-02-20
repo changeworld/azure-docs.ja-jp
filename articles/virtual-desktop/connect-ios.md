@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 02/08/2020
 ms.author: helohr
-ms.openlocfilehash: 92e11edf3b28017ac73702e3f71dfc491d3986e3
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: aba2202f0d33609400588e379a4ed3bb9bb798d9
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110631"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367517"
 ---
 # <a name="connect-with-the-ios-client"></a>iOS クライアントに接続する
 
@@ -47,4 +47,4 @@ ms.locfileid: "77110631"
 
 ## <a name="next-steps"></a>次のステップ
 
-iOS クライアントの使用方法の詳細については、「[iOS クライアントの概要](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-ios)」のドキュメントで確認してください。
+iOS クライアントの使用方法の詳細については、「[iOS クライアントの概要](/windows-server/remote/remote-desktop-services/clients/remote-desktop-ios/)」のドキュメントで確認してください。

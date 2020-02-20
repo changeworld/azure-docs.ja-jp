@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 44fcaa0a4292ac86c7371c27f29faf0e7246e9d5
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 16ba90aab52c00f77af590f854217cd989df53b3
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894789"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251908"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL Database および Data Warehouse のネットワーク アクセスの制御
 
@@ -113,7 +113,7 @@ Azure SQL Server ファイアウォールでは、IP 規則だけでなく、"*�
 
 **サブネット:** 仮想ネットワークには**サブネット**が含まれます。 保持している任意の Azure 仮想マシン (VM) がサブネットに割り当てられます。 1 つのサブネットには、複数の VM や他のコンピューティング ノードが含まれる場合があります。 お使いの仮想ネットワークの外部にあるコンピューティング ノードは、アクセスを許可するようにセキュリティを構成しない限り、お使いの仮想ネットワークにはアクセスできません。
 
-**仮想ネットワーク サービス エンドポイント:** [仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]は、プロパティ値に 1 つ以上の正式な Azure サービスの種類名が含まれるサブネットです。 この記事では、"SQL Database" という名前の Azure サービスを参照する **Microsoft.Sql** という種類名に注目します。
+**仮想ネットワーク サービス エンドポイント:** [仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)は、プロパティ値に 1 つ以上の正式な Azure サービスの種類名が含まれるサブネットです。 この記事では、"SQL Database" という名前の Azure サービスを参照する **Microsoft.Sql** という種類名に注目します。
 
 **仮想ネットワーク規則:** お使いの SQL Database サーバーの仮想ネットワーク規則は、SQL Database サーバーのアクセス制御リスト (ACL) に記載されているサブネットです。 SQL Database の ACL 内に記載するためには、サブネットに **Microsoft.Sql** という種類名が含まれている必要があります。 仮想ネットワーク規則は、サブネット上にあるどのノードからの通信も許可するように、お使いの SQL Database サーバーに指示します。
 
@@ -122,7 +122,7 @@ Azure SQL Server ファイアウォールでは、IP 規則だけでなく、"*�
 
 Azure SQL Server のファイアウォールでは、SQL Database への通信が許可される IP アドレス範囲を指定できます。 この方法は、Azure プライベート ネットワークの外部にある安定した IP アドレスに適しています。 ただし、Azure プライベート ネットワーク内の仮想マシン (VM) では、"*動的*" IP アドレスが構成されます。 VM を再起動したときに動的 IP アドレスが変化し、その結果 IP ベースのファイアウォール規則が無効になることがあります。 運用環境では、ファイアウォール規則に動的 IP アドレスを指定することは、賢明ではありません。
 
-この制限は、VM の "*静的*" IP アドレスを取得することで回避できます。 詳細については、「[Azure portal を使用して仮想マシンのプライベート IP アドレスを構成する][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]」を参照してください。ただし、静的 IP のアプローチは管理が困難になる場合があり、大規模に行うとコストがかさみます。 
+この制限は、VM の "*静的*" IP アドレスを取得することで回避できます。 詳細については、「[Azure portal を使用して仮想マシンのプライベート IP アドレスを構成する](../virtual-network/virtual-networks-static-private-ip-arm-pportal.md)」をご覧ください。 ただし、静的 IP の方法は管理が困難になる場合があり、まとめて実行すると負荷がかかります。 
 
 仮想ネットワーク規則は、対象の VM を含む特定のサブネットからのアクセスを確立および管理するためのより簡単な代替手段です。
 

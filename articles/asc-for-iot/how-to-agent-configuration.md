@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2019
+ms.date: 02/18/2020
 ms.author: mlottner
-ms.openlocfilehash: 6adb918bbc6d4718be8518019394582a6a843fb8
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 70396cdcaf8b6e2ac66619290eea35a7b260cd9a
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664847"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461251"
 ---
 # <a name="tutorial-configure-security-agents"></a>チュートリアル:セキュリティ エージェントを構成する
 
@@ -31,7 +31,7 @@ ms.locfileid: "74664847"
 > * ツインのプロパティを編集してエージェントの動作を変更する
 > * 既定の構成を検出する
 
-## <a name="agents"></a>エージェント
+## <a name="agents"></a>[エージェント]
 
 Azure Security Center for IoT セキュリティ エージェントは、IoT デバイスからデータを収集し、検出された脆弱性を軽減するためにセキュリティ アクションを実行します。 セキュリティ エージェント構成は、カスタマイズ可能なモジュール ツイン プロパティのセットを使用して制御することができます。 一般に、これらのプロパティに対する第 2 更新は、めったに起こりません。  
 
@@ -108,7 +108,7 @@ Azure Security Center for IoT セキュリティ エージェントは、**azure
     }
     ```
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 ### <a name="using-a-default-value"></a>既定値の使用
 
@@ -133,10 +133,9 @@ Azure Security Center for IoT セキュリティ エージェントは、**azure
 
 |イベント名| PropertyName | Default value| スナップショット イベント| 詳細の状態  |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|診断イベント|eventPriorityDiagnostic| オフ| False| エージェント関連の診断イベント。 このイベントは、詳細ログ記録のために使用します。| 
+|診断イベント|eventPriorityDiagnostic| Off| False| エージェント関連の診断イベント。 このイベントは、詳細ログ記録のために使用します。| 
 |構成エラー |eventPriorityConfigurationError |低 |False |構成の解析に失敗したエージェント。 構成をスキーマに照らして検証します。| 
 |削除されたイベントの統計 |eventPriorityDroppedEventsStatistics |低 |True|エージェント関連イベントの統計。 |
-|メッセージの統計|eventPriorityMessageStatistics |低 |True |エージェント関連メッセージの統計。 |
 |接続されているハードウェア|eventPriorityConnectedHardware |低 |True |デバイスに接続されているすべてのハードウェアのスナップショット。|
 |ポートのリッスン|eventPriorityListeningPorts |高 |True |デバイス上のオープンしているすべてのリスニング ポートのスナップショット。|
 |プロセスの作成 |eventPriorityProcessCreate |低 |False |デバイス上のプロセスの作成を監査します。|
@@ -150,7 +149,7 @@ Azure Security Center for IoT セキュリティ エージェントは、**azure
 |
  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Security Center for IoT の推奨事項について](concept-recommendations.md)
 - [Azure Security Center for IoT アラートの調査](concept-security-alerts.md)

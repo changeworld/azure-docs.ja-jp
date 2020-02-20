@@ -6,21 +6,16 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.openlocfilehash: a0f78239406567513c1eb94b48bf1090165d9185
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 9188db19adab9bd46d65fc97f1c62b39141cee90
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668698"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461387"
 ---
 # <a name="create-a-windows-app-with-an-azure-backend"></a>Azure バックエンドを使用して Windows アプリを作成する
 
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
-
-> [!NOTE]
-> Visual Studio App Center は、モバイル アプリ開発の中心となるエンドツーエンドの統合サービスをサポートしています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーと関わることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。
->
-> モバイル アプリケーションにクラウド サービスを統合することを検討している場合は、今すぐ [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) にサインアップしてください。
 
 ## <a name="overview"></a>概要
 
@@ -34,7 +29,7 @@ UWP アプリの他のすべての Mobile Apps チュートリアルを行う前
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料モバイル アプリを入手できます。 このアプリは評価終了後も使用できます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 このアプリは評価終了後も使用できます。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
 * Windows 10。
 * Visual Studio Community 2017。
 * UWP アプリ開発に関する知識。 UWP アプリをビルドするための[セットアップ](https://docs.microsoft.com/windows/uwp/get-started/get-set-up)方法については、[UWP のドキュメント](https://docs.microsoft.com/windows/uwp/)を参照してください。
@@ -52,7 +47,7 @@ UWP アプリの他のすべての Mobile Apps チュートリアルを行う前
 
 1. UWP プロジェクトを開きます。
 
-2. [Azure Portal](https://portal.azure.com/) にアクセスし、作成したモバイル アプリに移動します。 `Overview` ブレードで、モバイル アプリのパブリック エンドポイントである URL を探します。 例 - アプリ名 "test123" のサイト名は https://test123.azurewebsites.net になります。
+2. [Azure portal](https://portal.azure.com/) に移動し、作成したモバイル アプリに移動します。 `Overview` ブレードで、モバイル アプリのパブリック エンドポイントである URL を探します。 例 - アプリ名 "test123" のサイト名は https://test123.azurewebsites.net になります。
 
 3. このフォルダー内のファイル `App.xaml.cs` (windows-uwp-cs/ZUMOAPPNAME/) を開きます。 アプリケーション名は `ZUMOAPPNAME` です。
 
