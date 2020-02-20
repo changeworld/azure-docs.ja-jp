@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 203bf584711fbfcfd0baeee8f5e4c7f70d96823b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 9b71c4a5c0f245d9da97dc8f096d15c5386bf919
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157221"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368604"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 
@@ -177,8 +177,6 @@ Azure Files Premium ファイル共有は LRS と ZRS の両方に対応して�
 100 TiB の容量制限がある Standard ファイル共有は、すべての Azure リージョンでグローバルに使用可能です。
 
 - LRS:南アフリカ北部と南アフリカ西部を除くすべてのリージョン。
-   - 米国東部と西ヨーロッパ:すべての新しいアカウントがサポートされます。 少数の既存アカウントが、アップグレード プロセスを完了していません。 [大きなファイル共有を有効にする](storage-files-how-to-create-large-file-share.md)ことで、既存のストレージ アカウントのアップグレード プロセスが完了したかどうかを確認することができます。
-
 - ZRS:東日本、北ヨーロッパ、南アフリカ北部を除くすべてのリージョン。
 - GRS/GZRS:サポートされていません。
 

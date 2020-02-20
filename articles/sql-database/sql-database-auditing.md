@@ -9,12 +9,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/11/2020
-ms.openlocfilehash: 7011bf068a96fe9da035ec08a1f6ef7f80a0b240
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 686e426ef0b7706eff168e42ffc67417b2c5c743
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161955"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212899"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL Database 監査の使用
 
@@ -90,7 +90,7 @@ SQL Database 監査を使用して、以下を行うことができます。
 
    ![ストレージ アカウント](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
-仮想ネットワークまたはファイアウォールの下にストレージ アカウントを構成するには、サーバー上に [Active Directory 管理者](/sql-database-aad-authentication-configure.md?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)が必要です。このストレージアカウントの **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** を有効にします。 また、選択したストレージ アカウントに対して 'Microsoft.Authorization/roleAssignments/write' アクセス許可を持っている必要があります。
+仮想ネットワークまたはファイアウォールの下にストレージ アカウントを構成するには、サーバー上に [Active Directory 管理者](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-managed-instance)が必要です。このストレージアカウントの **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** を有効にします。 また、選択したストレージ アカウントに対して 'Microsoft.Authorization/roleAssignments/write' アクセス許可を持っている必要があります。
 
 マネージド ID に "ストレージ BLOB データ共同作成者" ロールを付与するために、[ユーザー アクセス管理者](../role-based-access-control/built-in-roles.md#user-access-administrator)になることをお勧めします。 アクセス許可とロールベースのアクセス制御の詳細については、「[Azure リソースのロールベースのアクセス制御 (RBAC) の概要](../role-based-access-control/overview.md)」および「[Azure RBAC と Azure portal を使用してロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
@@ -241,7 +241,7 @@ Geo レプリケーション データベースでは、プライマリ デー�
 
     > [!IMPORTANT]
     > 時間ベースの保持における保護された追加 BLOB の書き込みの許可の設定は、現時点では次のリージョンでのみ使用および表示できます。
-    > - East US
+    > - 米国東部
     > - 米国中南部
     > - 米国西部 2
 
