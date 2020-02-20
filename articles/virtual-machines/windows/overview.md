@@ -48,7 +48,7 @@ Azure で作成されるすべてのリソースは、世界各地の複数の[�
 
 次の表に、利用可能な場所の一覧を取得する方法の一部を示します。
 
-| 方法 | [説明] |
+| 方法 | 説明 |
 | --- | --- |
 | Azure portal |VM を作成するときに一覧から場所を選択します。 |
 | Azure PowerShell |[Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) コマンドを使用します。 |
@@ -74,7 +74,7 @@ Azure には、Windows Server オペレーティング システムのさまざ�
 
 次の表に、イメージに関する情報を見つける方法をいくつか示します。
 
-| 方法 | [説明] |
+| 方法 | 説明 |
 | --- | --- |
 | Azure portal |値は、使用するイメージを選択する際に自動的に指定されます。 |
 | Azure PowerShell |[Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher) -Location *location*<BR>[Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) -Location *location* -Publisher *publisherName*<BR>[Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) -Location *location* -Publisher *publisherName* -Offer *offerName* |
@@ -95,7 +95,7 @@ VM の[拡張機能](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwi
 ### <a name="related-resources"></a>関連リソース
 次の表のリソースは VM によって使用されるため、VM の作成時に存在するか、作成する必要があります。
 
-| リソース | 必須 | [説明] |
+| リソース | 必須 | 説明 |
 | --- | --- | --- |
 | [リソース グループ](../../azure-resource-manager/management/overview.md) |はい |VM は、リソース グループに含まれる必要があります。 |
 | [ストレージ アカウント](../../storage/common/storage-create-storage-account.md) |はい |VM には、その仮想ハード ディスクを格納するストレージ アカウントが必要です。 |
