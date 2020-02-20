@@ -43,7 +43,7 @@ BLOB ストレージに格納されている監査ログは、Azure Storage ア�
 
 ## <a id="subheading-1"></a>監査ログのフィールド
 
-| 名前 (BLOB) | 名前 (Event Hubs または Log Analytics) | [説明] | BLOB の種類 | Event Hubs または Log Analytics の種類 |
+| 名前 (BLOB) | 名前 (Event Hubs または Log Analytics) | 説明 | BLOB の種類 | Event Hubs または Log Analytics の種類 |
 |-------------|---------------------------------|-------------|-----------|-------------------------------|
 | action_id | action_id_s | アクションの ID | varchar (4) | string |
 | action_name | action_name_s | アクションの名前 | 該当なし | string |
