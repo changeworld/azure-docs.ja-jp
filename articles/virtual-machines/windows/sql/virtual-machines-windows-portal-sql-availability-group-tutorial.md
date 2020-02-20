@@ -38,7 +38,7 @@ ms.locfileid: "76045822"
 
 次の表に、このチュートリアルを開始する前に完了している必要がある前提条件を示します。
 
-|  |要件 |[説明] |
+|  |要件 |説明 |
 |----- |----- |----- |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png) | 2 つの SQL Server | - Azure 可用性セット内 <br/> - 単一のドメイン内 <br/> - フェールオーバー クラスタリング機能インストール済み |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | クラスター監視用のファイル共有 |  
@@ -402,7 +402,7 @@ Azure Load Balancer には、Standard Load Balancer または Basic Load Balance
 
 1. リスナーの正常性プローブを次のように設定します。
 
-   | 設定 | [説明] | 例
+   | 設定 | 説明 | 例
    | --- | --- |---
    | **Name** | Text | SQLAlwaysOnEndPointProbe |
    | **プロトコル** | TCP を選びます | TCP |
@@ -418,7 +418,7 @@ Azure Load Balancer には、Standard Load Balancer または Basic Load Balance
 
 1. 次のようにリスナーの負荷分散規則を設定します。
 
-   | 設定 | [説明] | 例
+   | 設定 | 説明 | 例
    | --- | --- |---
    | **Name** | Text | SQLAlwaysOnEndPointListener |
    | **フロントエンド IP アドレス** | アドレスを選びます |ロード バランサーの作成時に作成したアドレスを使います。 |
@@ -445,7 +445,7 @@ WSFC の IP アドレスもロード バランサー上に存在する必要が�
 
 1. WSFC クラスターのコア IP アドレスの正常性プローブを次のように設定します。
 
-   | 設定 | [説明] | 例
+   | 設定 | 説明 | 例
    | --- | --- |---
    | **Name** | Text | WSFCEndPointProbe |
    | **プロトコル** | TCP を選びます | TCP |
@@ -459,7 +459,7 @@ WSFC の IP アドレスもロード バランサー上に存在する必要が�
 
 1. クラスターのコア IP アドレスの負荷分散規則を次のように設定します。
 
-   | 設定 | [説明] | 例
+   | 設定 | 説明 | 例
    | --- | --- |---
    | **Name** | Text | WSFCEndPoint |
    | **フロントエンド IP アドレス** | アドレスを選びます |WSFC の IP アドレスの構成時に作成したアドレスを使用します。 これはリスナーの IP アドレスとは異なります |
