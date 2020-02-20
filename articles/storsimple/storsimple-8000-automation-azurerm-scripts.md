@@ -25,7 +25,7 @@ ms.locfileid: "76276643"
 
 #### <a name="table-of-azure-resource-manager-sdk-based-sample-scripts"></a>Azure Resource Manager SDK ベースのサンプル スクリプトの表
 
-| Azure Resource Manager スクリプト                    | [説明]                                                                                                                                                                                                       |
+| Azure Resource Manager スクリプト                    | 説明                                                                                                                                                                                                       |
 |--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Authorize-ServiceEncryptionRollover.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Authorize-ServiceEncryptionRollover.ps1)          | このスクリプトを使用して、StorSimple デバイスによるサービス データ暗号化キーの変更を承認できます。                                                                                                           |
 | [Create-StorSimpleCloudAppliance.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Create-StorSimpleCloudAppliance.ps1)              | このスクリプトでは、8010 または 8020 の StorSimple Cloud Appliance を作成します。 クラウド アプライアンスを構成し、StorSimple Data Manager サービスに登録できます。                                                       |
