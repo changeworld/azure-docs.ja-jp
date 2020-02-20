@@ -355,12 +355,12 @@ ApplicationInstance ドキュメントのバージョン。
 ```
 ### <a name="content-element-details"></a>Content 要素の詳細
 
-#### <a name="description"></a>[説明]
+#### <a name="description"></a>説明
 このアプリケーションについて説明するテキスト。
 
 |Attribute|値|
 |---|---|
-|name|[説明]|
+|name|説明|
 |型|xs:string|
 |minOccurs|0|
 
@@ -1080,12 +1080,12 @@ Microsoft Azure Service Fabric クラスターについて説明します。
 |name|Version|
 |use|required|
 
-#### <a name="description"></a>[説明]
+#### <a name="description"></a>説明
 クラスター マニフェストの説明。
 
 |Attribute|値|
 |---|---|
-|name|[説明]|
+|name|説明|
 
 ### <a name="content-element-details"></a>Content 要素の詳細
 
@@ -6612,12 +6612,12 @@ HTTPS エンドポイントのクライアントに返す必要がある証明�
 
 ### <a name="content-element-details"></a>Content 要素の詳細
 
-#### <a name="description"></a>[説明]
+#### <a name="description"></a>説明
 このサービスを説明するテキスト。
 
 |Attribute|値|
 |---|---|
-|name|[説明]|
+|name|説明|
 |型|xs:string|
 |minOccurs|0|
 
@@ -6946,11 +6946,11 @@ ServiceManifest ファイルのチェックサム値。
 
 ### <a name="content-element-details"></a>Content 要素の詳細
 
-#### <a name="description"></a>[説明]
+#### <a name="description"></a>説明
 
 |Attribute|値|
 |---|---|
-|name|[説明]|
+|name|説明|
 |型|xs:string|
 |minOccurs|0|
 
