@@ -50,7 +50,7 @@ GET 'http://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-01
 ```
 各値の説明:
 
-| 要素 | [説明] |
+| 要素 | 説明 |
 | ------- | ----------- |
 | `GET` | HTTP 動詞。エンドポイントからデータを取得する必要があることを示します。 この例では、OAuth アクセス トークンです。 | 
 | `http://localhost:2377/metadata/identity/oauth2/token` | Service Fabric アプリケーションのマネージド ID エンドポイント。MSI_ENDPOINT 環境変数を介して提供されます。 |
@@ -72,7 +72,7 @@ Content-Type: application/json
 ```
 各値の説明:
 
-| 要素 | [説明] |
+| 要素 | 説明 |
 | ------- | ----------- |
 | `token_type` | トークンの種類。この場合は、"ベアラー" アクセス トークンです。これは、このトークンの提示側 ("ベアラー") がこのトークンの対象であることを意味します。 |
 | `access_token` | 要求されたアクセス トークン。 セキュリティで保護された REST API を呼び出すとき、トークンは `Authorization` 要求ヘッダー フィールドに "ベアラー" トークンとして埋め込まれ、API が呼び出し元を認証できるようにします。 | 
@@ -321,7 +321,7 @@ HTTP 応答ヘッダーの "状態コード" フィールドは、要求の成�
 
 エラーが発生すると、対応する HTTP 応答本文に、JSON オブジェクトとエラーの詳細が含まれます。
 
-| 要素 | [説明] |
+| 要素 | 説明 |
 | ------- | ----------- |
 | コード | エラー コード。 |
 | correlationId | デバッグに使用できる相関 ID。 |
@@ -334,7 +334,7 @@ HTTP 応答ヘッダーの "状態コード" フィールドは、要求の成�
 
 マネージド ID に固有の一般的な Service Fabric エラーの一覧を次に示します。
 
-| コード | Message | [説明] | 
+| コード | Message | 説明 | 
 | ----------- | ----- | ----------------- |
 | SecretHeaderNotFound | Secret is not found in the request headers. (要求ヘッダー内にシークレットが見つかりません。) | 認証コードが要求に指定されていません。 | 
 | ManagedIdentityNotFound | Managed identity not found for the specified application host. (指定されたアプリケーション ホストのマネージド ID が見つかりません。) | アプリケーションに ID がないか、認証コードが不明です。 |
