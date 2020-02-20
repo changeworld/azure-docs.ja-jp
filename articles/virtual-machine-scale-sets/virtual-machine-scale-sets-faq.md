@@ -221,7 +221,7 @@ SSH 公開キーは、Linux VM の作成時にプレーン テキストで提供
 }
 ```
 
-linuxConfiguration の要素名 | 必須 | 種類 | [説明]
+linuxConfiguration の要素名 | 必須 | 種類 | 説明
 --- | --- | --- | ---
 ssh | いいえ | コレクション | Linux OS の SSH キーの構成を指定します。
 path | はい | String | SSH キーまたは証明書を配置する Linux ファイル パスを指定します。
