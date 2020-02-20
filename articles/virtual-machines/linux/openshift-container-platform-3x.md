@@ -248,7 +248,7 @@ Resource Manager テンプレートを使用してデプロイするには、パ
 
 ### <a name="azuredeployparametersjson-file-explained"></a>azuredeploy.Parameters.json ファイルの説明
 
-| プロパティ | [説明] | 有効なオプション | Default value |
+| プロパティ | 説明 | 有効なオプション | Default value |
 |----------|-------------|---------------|---------------|
 | `_artifactsLocation`  | 成果物 (json、スクリプトなど) への URL |  |  https:\//raw.githubusercontent.com/Microsoft/openshift-container-platform/master  |
 | `location` | リソースのデプロイ先となる Azure リージョン |  |  |
