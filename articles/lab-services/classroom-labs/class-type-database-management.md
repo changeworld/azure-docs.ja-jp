@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: 92152652ca264cace12d3f780ebec0f80bb2048a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4c375487b30595251753021033c98cf0ca1e8dd7
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74234444"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469920"
 ---
 # <a name="set-up-a-lab-to-teach-database-management-for-relational-databases"></a>リレーショナル データベースのデータベース管理を教えるためのラボを設定する
 
@@ -32,7 +32,7 @@ ms.locfileid: "74234444"
 
 ### <a name="lab-account-settings"></a>ラボ アカウントの設定
 
-以下の表に記載されているラボ アカウントの設定を有効にします。 Marketplace イメージを有効にする方法の詳細については、「[ラボ作成者が利用できる Marketplace イメージを指定する](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#specify-marketplace-images-available-to-lab-creators)」を参照してください。
+以下の表に記載されているラボ アカウントの設定を有効にします。 Marketplace イメージを有効にする方法の詳細については、「[ラボ作成者が利用できる Marketplace イメージを指定する](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images)」を参照してください。
 
 | ラボ アカウントの設定 | Instructions |
 | ------------------- | ------------ |
@@ -55,7 +55,7 @@ SQL Server 2019 は、新しいラボの作成時に選択した仮想マシン 
 
 ## <a name="cost-estimate"></a>コストの見積もり
 
-このクラスの考えられるコスト見積もりを検討しましょう。  学生数が 25 人のクラスを使用します。  スケジュールされた授業時間は 20 時間です。  また、各学生は、スケジュールされた授業時間の他に、宿題や課題のための 10 時間のクォータを取得します。  ここで選択した仮想マシンのサイズは、42 ラボ ユニットの "中" です。
+このクラスの考えられるコスト見積もりを検討しましょう。  クラスの生徒数は 25 人とします。  予定された授業時間は 20 時間です。  また、各学生には、予定された授業時間の他に、宿題や課題を行うための時間として 10 時間が割り当てられます。  ここで選択した仮想マシンのサイズは、42 ラボ ユニットの "中" です。
 
 このクラスで考えられるコスト見積もりの例を次に示します。
 
@@ -67,7 +67,7 @@ SQL Server 2019 は、新しいラボの作成時に選択した仮想マシン 
 
 この記事では、MySQL と SQL Server の両方を使用した基本的なデータベース管理の概念のためのラボの作成に必要な手順について説明しました。 他のデータベース クラスにも同様のセットアップを使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の手順は、すべてのラボの設定で共通です。
 
