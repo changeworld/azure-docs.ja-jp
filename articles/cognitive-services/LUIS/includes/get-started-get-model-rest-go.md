@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: a153416a247ec3a38ec29e95b83fa919e765942b
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 8d180eeffdbc41db6fa0e636daf7702faad47fcc
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76966844"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368482"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -29,8 +29,6 @@ ms.locfileid: "76966844"
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
 ## <a name="change-model-programmatically"></a>プログラムを使用してモデルを変更する
-
-Go を使用して、機械学習されたエンティティ [API](https://aka.ms/luis-apim-v3-authoring) をアプリケーションに追加します。
 
 1. `predict.go` という名前で新しいファイルを作成します。 次のコードを追加します。
 

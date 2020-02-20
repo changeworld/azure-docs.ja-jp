@@ -3,12 +3,12 @@ title: チュートリアル - Terraform と HCL を使用した Azure VM クラ
 description: Azure で Terraform と HCL を使用してロード バランサ―を備えた Linux 仮想マシン クラスターを作成する
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 1ff13f05a5be463ed7477b4bbbc3e1f977a04a75
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 39e9857ad0119c08e949bbe5f6accb07432f3469
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665368"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470872"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>チュートリアル:Terraform と HCL を使用した Azure VM クラスターの作成
 
@@ -28,11 +28,11 @@ ms.locfileid: "75665368"
 ## <a name="1-set-up-azure-authentication"></a>1.Azure 認証をセットアップする
 
 > [!NOTE]
-> [Terraform 環境変数を使う](/azure/virtual-machines/linux/terraform-install-configure)場合、または [Azure Cloud Shell](terraform-cloud-shell.md) でこのチュートリアルを実行する場合は、このセクションを省略します。
+> [Terraform 環境変数を使う](terraform-install-configure.md)場合、または [Azure Cloud Shell](terraform-cloud-shell.md) でこのチュートリアルを実行する場合は、このセクションを省略します。
 
 このセクションでは、Azure のサービス プリンシパルと、セキュリティ プリンシパルからの資格情報を含む 2 つの Terraform 構成ファイルを生成します。
 
-1. [Azure AD サービス プリンシパルをセットアップ](/azure/virtual-machines/linux/terraform-install-configure#set-up-terraform-access-to-azure)して、Terraform で Azure にリソースをプロビジョニングできるようにします。 プリンシパルを作成するときに、サブスクリプション ID、テナント、appId、パスワードの値を書き留めておきます。
+1. [Azure AD サービス プリンシパルをセットアップ](terraform-install-configure.md#set-up-terraform-access-to-azure)して、Terraform で Azure にリソースをプロビジョニングできるようにします。 プリンシパルを作成するときに、サブスクリプション ID、テナント、appId、パスワードの値を書き留めておきます。
 
 2. コマンド プロンプトを開きます。
 

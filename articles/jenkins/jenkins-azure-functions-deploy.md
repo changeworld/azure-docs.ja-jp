@@ -4,12 +4,12 @@ description: Jenkins Azure Functions プラグインを使用して Azure Functi
 keywords: Jenkins, Azure, DevOps, Java, Azure Functions
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: af3e8dfd6e2bfc676e659a03d92658af66b5bcde
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: edf8c763a46a6f519175842a6525b2c1b314fb66
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158775"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470668"
 ---
 # <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>Jenkins Azure Functions プラグインを使用した Azure Functions へのデプロイ
 
@@ -131,7 +131,7 @@ Java ランタイム スタックを備えた Java 関数を作成するには�
 
 ここで、Jenkins ジョブを実行します。
 
-1. 最初に、記事「[Azure Functions のトリガーとバインド](/azure/azure-functions/functions-bindings-http-webhook#authorization-keys)」の手順を使用して、承認キーを取得します。
+1. 最初に、記事「[Azure Functions のトリガーとバインド](/azure/azure-functions/functions-bindings-http-webhook-trigger#authorization-keys)」の手順を使用して、承認キーを取得します。
 
 1. ブラウザーでアプリの URL を入力します。 プレースホルダーを適切な値に置き換え、Java 関数に対する入力として **&lt;input_number>** の数値を指定します。
 
@@ -144,7 +144,7 @@ Java ランタイム スタックを備えた Java 関数を作成するには�
     The number 365 is Odd.
     ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このアプリケーションを引き続き使用しない場合は、作成したリソースを次の手順で削除します。
 
@@ -152,7 +152,7 @@ Java ランタイム スタックを備えた Java 関数を作成するには�
 az group delete -y --no-wait -n <resource_group>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Functions の詳細については、次のリソースを参照してください。
 > [!div class="nextstepaction"]

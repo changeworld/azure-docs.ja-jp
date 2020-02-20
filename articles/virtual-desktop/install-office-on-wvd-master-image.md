@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: helohr
-ms.openlocfilehash: 059748f6f08b1c73d56aa3a127aa785f55eb63ee
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 1637cb7621d6071bbce2af66f3a106770139ad4e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539129"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368820"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>マスター VHD イメージに Office をインストールする
 
@@ -20,20 +20,20 @@ ms.locfileid: "74539129"
 
 この記事では、仮想マシンが既に作成されていることを前提としています。 そうでない場合は、「[マスター VHD イメージを準備してカスタマイズする](set-up-customize-master-image.md#create-a-vm)」を参照してください
 
-この記事では、Azure と Hyper-V マネージャーのどちらでプロビジョニングされているかにかかわらず、VM に対して昇格されたアクセス権があることも前提としています。 そうでない場合は、「[Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権限を昇格させる](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin)」を参照してください。
+この記事では、Azure と Hyper-V マネージャーのどちらでプロビジョニングされているかにかかわらず、VM に対して昇格されたアクセス権があることも前提としています。 そうでない場合は、「[Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権限を昇格させる](../role-based-access-control/elevate-access-global-admin.md)」を参照してください。
 
 >[!NOTE]
 >これらの手順は、組織の既存のプロセスで使用できる Windows Virtual Desktop 固有の構成に対するものです。
 
 ## <a name="install-office-in-shared-computer-activation-mode"></a>共有コンピューターのアクティブ化モードで Office をインストールする
 
-共有コンピューターのライセンス認証により、組織内で複数のユーザーによってアクセスされるコンピューターに Office 365 ProPlus をデプロイすることができます。 共有コンピューターのライセンス認証の詳細については、「[Office 365 ProPlus に対する共有コンピューターのライセンス認証の概要](https://docs.microsoft.com/DeployOffice/overview-of-shared-computer-activation-for-office-365-proplus)」を参照してください。
+共有コンピューターのライセンス認証により、組織内で複数のユーザーによってアクセスされるコンピューターに Office 365 ProPlus をデプロイすることができます。 共有コンピューターのライセンス認証の詳細については、「[Office 365 ProPlus に対する共有コンピューターのライセンス認証の概要](/deployoffice/overview-of-shared-computer-activation-for-office-365-proplus/)」を参照してください。
 
 [Office 展開ツール](https://www.microsoft.com/download/details.aspx?id=49117)を使用して Office をインストールします。 Windows 10 Enterprise マルチセッションでは次のバージョンの Office のみがサポートされています。
 - Office 365 ProPlus
 - Microsoft 365 Business サブスクリプションに付属している Office 365 Business
 
-Office 展開ツールには、構成 XML ファイルが必要です。 次のサンプルをカスタマイズするには、「[Office 展開ツールの構成オプション](https://docs.microsoft.com/deployoffice/configuration-options-for-the-office-2016-deployment-tool)」をご覧ください。
+Office 展開ツールには、構成 XML ファイルが必要です。 次のサンプルをカスタマイズするには、「[Office 展開ツールの構成オプション](/deployoffice/configuration-options-for-the-office-2016-deployment-tool/)」をご覧ください。
 
 マイクロソフトが提供しているこのサンプル構成 XML では、次の操作を行います。
 
@@ -159,6 +159,6 @@ OneDrive は、通常はユーザーごとにインストールされます。 �
 
 Windows Virtual Desktop では、Skype for Business と Teams はサポートされていません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 イメージに Office が追加されたので、引き続きマスター VHD イメージをカスタマイズすることができます。 「[マスター VHD イメージを準備してカスタマイズする](set-up-customize-master-image.md)」を参照してください。

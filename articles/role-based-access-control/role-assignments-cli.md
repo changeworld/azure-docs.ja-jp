@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0351721283df68fde910ae16b16d567954c3e6fb
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b32df50715d5e7276861e0696df1bd6ceb3f684e
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707894"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471994"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-azure-cli"></a>Azure RBAC と Azure CLI を使用してロールの割り当てを追加または削除する
 
@@ -34,7 +34,7 @@ ms.locfileid: "74707894"
 
 ## <a name="get-object-ids"></a>オブジェクト ID を取得する
 
-ロールの割り当てを追加または削除するには、オブジェクトの一意の ID の指定が必要になることがあります。 この ID の形式は `11111111-1111-1111-1111-111111111111` です。 この ID は、Azure portal または Azure CLI を使用して取得できます。
+ロールの割り当てを追加または削除するには、オブジェクトの一意の ID の指定が必要になることがあります。 ID の形式は `11111111-1111-1111-1111-111111111111` です。 この ID は、Azure portal または Azure CLI を使用して取得できます。
 
 ### <a name="user"></a>User
 
@@ -44,7 +44,7 @@ Azure AD ユーザーのオブジェクト ID を取得するには、[az ad use
 az ad user show --id "{email}" --query objectId --output tsv
 ```
 
-### <a name="group"></a>Group
+### <a name="group"></a>グループ
 
 Azure AD グループのオブジェクト ID を取得するには、[az ad group show](/cli/azure/ad/group#az-ad-group-show) または [az ad group list](/cli/azure/ad/group#az-ad-group-list) を使用できます。
 
@@ -157,7 +157,7 @@ az role assignment create --role "Reader" --assignee annm@example.com --subscrip
 
 ### <a name="user-at-a-management-group-scope"></a>管理グループをスコープとするユーザー
 
-管理グループのスコープでユーザーにロールの割り当てを追加するには、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) を使用します。 管理グループ ID を取得するには、Azure portal の **[管理グループ]** ブレードで確認するか、[az account management-group list](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list) を使用します。
+管理グループのスコープでユーザーにロールの割り当てを追加するには、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) を使用します。 管理グループ ID を取得するには、Azure portal の **[管理グループ]** ブレードで確認するか、[az account management-group list](/cli/azure/account/management-group#az-account-management-group-list) を使用します。
 
 ```azurecli
 az role assignment create --role <role_name_or_id> --assignee <assignee> --scope /providers/Microsoft.Management/managementGroups/<group_id>
@@ -205,13 +205,13 @@ az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine
 az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role "Reader" --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-次の例では、管理グループ スコープで *alain\@example.com* ユーザーから "*課金データ閲覧者*" ロールが削除されます。 管理グループの ID を取得するには、[az account management-group list](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list) を使用できます。
+次の例では、管理グループ スコープで *alain\@example.com* ユーザーから "*課金データ閲覧者*" ロールが削除されます。 管理グループの ID を取得するには、[az account management-group list](/cli/azure/account/management-group#az-account-management-group-list) を使用できます。
 
 ```azurecli
 az role assignment delete --assignee alain@example.com --role "Billing Reader" --scope /providers/Microsoft.Management/managementGroups/marketing-group
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure RBAC と Azure CLI を使用してロールの割り当てを一覧表示する](role-assignments-list-cli.md)
 - [Azure CLI を使用して Azure のリソースとリソース グループを管理する](../azure-resource-manager/cli-azure-resource-manager.md)

@@ -3,12 +3,12 @@ title: チュートリアル - Terraform を使用して Azure でハブ スポ�
 description: Azure で Terraform を使用して、ハイブリッド ネットワーク参照アーキテクチャ全体を作成する方法を示すチュートリアル
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 90a60fc4fe98397c903e3e8a460806d6a2edb908
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 6f156dd90b83ceaf5749c8c2acebae35bcb54a92
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159022"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472181"
 ---
 # <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-in-azure-using-terraform"></a>チュートリアル:Terraform を使用して Azure でハブ スポーク ハイブリッド ネットワーク トポロジを作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "74159022"
 
 - **Azure サブスクリプション**:Azure サブスクリプションをまだお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
 
-- **Terraform のインストールと構成**: Azure 上に VM とその他のインフラストラクチャをプロビジョニングするには、[Terraform をインストールして構成](/azure/virtual-machines/linux/terraform-install-configure)します。
+- **Terraform のインストールと構成**: Azure 上に VM とその他のインフラストラクチャをプロビジョニングするには、[Terraform をインストールして構成](terraform-install-configure.md)します。
 
 ## <a name="hub-and-spoke-topology-architecture"></a>ハブ スポーク トポロジ アーキテクチャ
 
@@ -155,7 +155,7 @@ Azure プロバイダーを宣言する Terraform 構成ファイルを作成し
 
 1. ファイルを保存し、エディターを終了します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"] 
 > [Azure で Terraform を使用してオンプレミス仮想ネットワークを作成する](./terraform-hub-spoke-on-prem.md)
