@@ -98,7 +98,7 @@ PowerShell を使用して Transparent Data Encryption を構成するには、A
 
 Azure SQL Database と Data Warehouse には次のコマンドレットを使用します。
 
-| コマンドレット | [説明] |
+| コマンドレット | 説明 |
 | --- | --- |
 | [Set-AzSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) |データベースの Transparent Data Encryption を有効または無効にします。|
 | [Get-AzSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) |データベースの Transparent Data Encryption の状態を取得します。 |
@@ -118,7 +118,7 @@ Transact-SQL を使用して Transparent Data Encryption を管理します。
 
 master データベースの **dbmanager** ロールの管理者またはメンバーであるログインを使用してデータベースに接続します。
 
-| command | [説明] |
+| command | 説明 |
 | --- | --- |
 | [ALTER DATABASE (Azure SQL Database)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database) | SET ENCRYPTION ON/OFF によって、データベースを暗号化または暗号化解除します。 |
 | [sys.dm_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |データベースの暗号化の状態と、関連付けられているデータベース暗号化キーに関する情報を返します。 |
@@ -133,7 +133,7 @@ REST API を使用して Transparent Data Encryption を管理します。
 REST API を使用して Transparent Data Encryption を構成するには、Azure の所有者、共同作成者、または SQL セキュリティ管理者として接続する必要があります。
 Azure SQL Database と Data Warehouse には次の一連のコマンドを使用します。
 
-| command | [説明] |
+| command | 説明 |
 | --- | --- |
 |[サーバーの作成または更新](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|SQL Server インスタンスに Azure Active Directory ID を追加します (Key Vault へのアクセスを許可するために使用)。|
 |[サーバー キーの作成または更新](https://docs.microsoft.com/rest/api/sql/serverkeys/createorupdate)|SQL Server インスタンスに Key Vault キーを追加します。|
