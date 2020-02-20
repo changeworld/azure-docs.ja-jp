@@ -22,7 +22,7 @@ ms.locfileid: "75458856"
 データ ウェアハウス ソリューションを作成するには、業界をリードする広範なツールから選択する必要があります。 この記事は、Azure SQL Data Warehouse をサポートするデータ管理ツールおよびソリューションを提供している Microsoft パートナー企業について説明しています。
 
 ## <a name="data-management-partners"></a>データ管理パートナー
-| Partner | [説明] | Web サイト/製品リンク |
+| Partner | 説明 | Web サイト/製品リンク |
 | ------- | ----------- | -------------------- |
 | ![Coffing Data Warehousing](./media/sql-data-warehouse-partner-data-management/coffing-data-warehousing-logo.png) |**Coffing Data Warehousing**<br>Coffing Data Warehousing は、クエリ実行システムに特化された設計で、10 年の実績があるツール、Nexus Chameleon を提供しています。 Nexus は SQL Data Warehouse のクエリ ツールとして使用できます。 Nexus を使用することで、社内およびクラウド コンピューターにクエリを実行し、異種プラットフォーム間でデータを結合できます。 ポイントしてクリックするだけでレポートが生成されます。 |[製品ページ](https://www.coffingdw.com/software/nexus/)<br> |
 | ![Inbrein](./media/sql-data-warehouse-partner-data-management/inbrein-logo.png) |**Inbrein MicroERD**<br>Inbrein MicroERD は、精密なデータ モデルの作成、データの冗長性の削減、生産性向上、および標準の遵守に必要なツールを提供します。 広範なユーザー エクスペリエンスに基づいて開発されたこのツールの UI を使用することで、モデル作成者は容易かつ使い勝手よく DB モデルに取り組むことができます。 プロンプト機能の向上と更新により、MicroERD の強化された新機能を途切れることなく利用できます。 |[製品ページ](http://microerd.com/)<br> |
