@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/03/2020
+ms.date: 02/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 9559f1d52f87314670162482e10714dad13be5bb
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: aaa7e5e65ced2a9899bef5a811ee74be42a8548f
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046164"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048808"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files についての FAQ
 
@@ -131,7 +131,9 @@ Azure NetApp Files では、NFSv3 および NFSv4.1 がサポートされてい�
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>サポートされている Active Directory 接続はいくつですか?
 
-Azure NetApp Files は現在、NetApp アカウントごとに、サブスクリプションごとに、および各リージョンで 1 つの Active Directory 接続のみをサポートしています。接続は NetApp アカウント間で共有されません。
+Azure NetApp Files は、AD 接続が異なる NetApp アカウントにある場合でも、1 つの "*リージョン*" で複数の Active Directory (AD) 接続をサポートしていません。 ただし、AD 接続が異なるリージョンにある場合に限り、1 つの "*サブスクリプション*" で複数の AD 接続を使用できます。 1 つのリージョンに複数の AD 接続が必要な場合は、別のサブスクリプションを使用してこれを行うことができます。 
+
+AD 接続は、NetApp アカウントごとに構成され、作成された NetApp アカウントを介してのみ表示されます。
 
 ### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Azure NetApp Files で Azure Active Directory はサポートされていますか? 
 

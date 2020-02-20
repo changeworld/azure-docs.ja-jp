@@ -1,21 +1,21 @@
 ---
 title: Speech Devices SDK について - Speech Service
 titleSuffix: Azure Cognitive Services
-description: Speech Devices SDK を使ってみましょう。 Speech Service は、さまざまなデバイスやオーディオ ソースと連携します。 Speech Devices SDK は、専用マイク配列開発キットとの組み合わせで事前に調整されたライブラリです。
+description: Speech Devices SDK を使ってみましょう。 音声サービスは、さまざまなデバイスやオーディオ ソースと連携します。 Speech Devices SDK は、専用マイク配列開発キットとの組み合わせで事前に調整されたライブラリです。
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 02/12/2020
 ms.author: erhopf
-ms.openlocfilehash: 7f6793cab3d2d7cc54252bae3a7393f836256bdd
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 854e7beb2afd8ae838455f77ff448f13d8b3fbea
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815539"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188976"
 ---
 # <a name="about-the-speech-devices-sdk"></a>Speech Devices SDK について
 
@@ -27,29 +27,31 @@ Speech Devices SDK は、次の場合に役立ちます。
 - クラウド ベースの Speech サービスをより簡単にデバイスに統合する。
 - 顧客向けに優れたユーザー エクスペリエンスを作成する。
 
-Speech Devices SDK は、[Speech SDK](speech-sdk.md) を利用しています。 Speech SDK を使って、Microsoft の先進の音声処理アルゴリズムによって処理された音声をデバイスのマイク配列から [Speech サービス](overview.md)に送信します。 マルチチャンネル オーディオを使用して、ノイズの抑制、エコー キャンセレーション、ビームフォーミング、残響除去によってより正確な遠距離[音声認識](speech-to-text.md)が実現されます。
+Speech Devices SDK は、[Speech SDK](speech-sdk.md) を利用しています。 デバイスのマイク配列と共に高度な音声処理アルゴリズムを使用して、[Speech サービス](overview.md)に音声を送信します。 ノイズの抑制、エコー キャンセレーション、ビームフォーミング、残響除去によって、正確な遠距離[音声認識](speech-to-text.md)が提供されます。
 
-また、Speech Devices SDK を使用して、独自の[カスタマイズされたキーワード](speech-devices-sdk-create-kws.md)を持つアンビエント デバイスを構築することで、ユーザー操作を開始するキューをブランド固有のものにすることができます。
+また、Speech Devices SDK を使用して、独自の[カスタマイズされたキーワード](speech-devices-sdk-create-kws.md)を備えたアンビエント デバイスを構築することもできます。 カスタム キーワードによって、ブランドに固有のユーザー操作を開始するキューが提供されます。
 
-Speech Devices SDK を使用すると、[音声アシスタント](https://aka.ms/bots/speech/va)、ドライブスルー注文システム、[会話の文字起こし](conversation-transcription-service.md)、スマート スピーカーなど、さまざまな音声対応シナリオが容易になります。 ユーザーへのテキストでの応答、既定の音声または[カスタム音声](how-to-customize-voice-font.md)での応答、検索結果の提供、他の言語への[翻訳](speech-translation.md)などを行うことができます。 皆様の開発の成果を楽しみにしております。
+Speech Devices SDK を使用すると、[音声アシスタント](https://aka.ms/bots/speech/va)、ドライブスルー注文システム、[会話の文字起こし](conversation-transcription-service.md)、スマート スピーカーなど、さまざまな音声対応シナリオが可能になります。 ユーザーへのテキストでの応答、既定の音声または[カスタム音声](how-to-customize-voice-font.md)での応答、検索結果の提供、他の言語への[翻訳](speech-translation.md)などを行うことができます。 皆様の開発の成果を楽しみにしております。
 
 ## <a name="get-the-speech-devices-sdk"></a>Speech Devices SDK を取得する
 
 ### <a name="android"></a>Android
 
-Android デバイスの場合は、[Android Speech Devices SDK](https://aka.ms/sdsdk-download-android) の最新バージョンをダウンロードします。
+Android の場合、デバイスでは [Android Speech Devices SDK](https://aka.ms/sdsdk-download-android) の最新バージョンがダウンロードされます。
 
 ### <a name="windows"></a>Windows
 
-Windows の場合、サンプル アプリケーションは、クロスプラット フォーム Java アプリケーションとして提供されます。 [JRE Speech Devices SDK](https://aka.ms/sdsdk-download-JRE) の最新バージョンをダウンロードします。
+Windows の場合、サンプル アプリケーションは、クロスプラットフォーム Java アプリケーションとして提供されます。 [JRE Speech Devices SDK](https://aka.ms/sdsdk-download-JRE) の最新バージョンをダウンロードします。
 アプリケーションは、Speech SDK パッケージと、64 ビット Windows 上の Eclipse Java IDE (v4) で構築されます。 これは、64 ビットの Java 8 のランタイム環境 (JRE) で実行されます。
 
 ### <a name="linux"></a>Linux
 
-Linux の場合、サンプル アプリケーションは、クロスプラット フォーム Java アプリケーションとして提供されます。 [JRE Speech Devices SDK](https://aka.ms/sdsdk-download-JRE) の最新バージョンをダウンロードします。
+Linux の場合、サンプル アプリケーションは、クロスプラットフォーム Java アプリケーションとして提供されます。 [JRE Speech Devices SDK](https://aka.ms/sdsdk-download-JRE) の最新バージョンをダウンロードします。
 アプリケーションは、Speech SDK パッケージと、64 ビット Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9) 上の Eclipse Java IDE (v4) で構築されます。 これは、64 ビットの Java 8 のランタイム環境 (JRE) で実行されます。
 
-## <a name="next-steps"></a>次の手順
+今後公開されるデバイス [Roobo v2 DDK ](https://aka.ms/sdsdk-download-roobov2)および [Urbetter DDK ](https://aka.ms/sdsdk-download-urbetter)をサポートするために、追加のバイナリが提供されます。
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Speech Device を選択する](get-speech-devices-sdk.md)

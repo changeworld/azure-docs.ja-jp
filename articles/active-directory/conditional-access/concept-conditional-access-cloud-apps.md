@@ -1,31 +1,31 @@
 ---
-title: 条件付きアクセス ポリシーのクライアント アプリ - Azure Active Directory
-description: ''
+title: 条件付きアクセス ポリシーのクラウド アプリまたは操作 - Azure Active Directory
+description: Azure AD 条件付きアクセス ポリシーのクラウド アプリまたは操作とは
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9afc25c906ecd3b7807e6bf3e0763ac1673ebd99
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: a9d2780e09c099d76aa2ef4ec2638a410793481d
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544057"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186372"
 ---
-# <a name="conditional-access-cloud-apps-and-actions"></a>条件付きアクセス:クラウド アプリとアクション
+# <a name="conditional-access-cloud-apps-or-actions"></a>条件付きアクセス:クラウド アプリまたはアクション
 
-クラウド アプリまたはアクションは、条件付きアクセス ポリシーの重要な部分です。 管理者は、条件付きアクセス ポリシーを使用して、特定のアプリケーションまたはアクションにコントロールを割り当てることができます。 
+クラウド アプリまたは操作は、条件付きアクセス ポリシーの重要なシグナルです。 管理者は、条件付きアクセス ポリシーを使用して、特定のアプリケーションまたはアクションにコントロールを割り当てることができます。
 
 - 管理者は、組み込みの Microsoft アプリケーションおよび [Azure AD 統合アプリケーション](../manage-apps/what-is-application-management.md) (ギャラリー、ギャラリー以外、[アプリケーション プロキシ](../manage-apps/what-is-application-proxy.md)経由で公開されたアプリケーションなど) を含むアプリケーションの一覧から選択できます。
 - 管理者は、クラウド アプリケーションではなく、ユーザー アクションに基づいてポリシーを定義することを選択できます。 サポートされている唯一のアクションは、[セキュリティ情報の登録 (プレビュー)] です。これにより、条件付きアクセスは、[統合されたセキュリティ情報の登録エクスペリエンス](../authentication/howto-registration-mfa-sspr-combined.md)に関連したコントロールを適用できます。
 
-![条件付きアクセス ポリシーを定義し、クラウド アプリを指定する](./media/concept-conditional-access-cloud-apps/conditional-access-define-policy-specify-cloud-apps.png)
+![条件付きアクセス ポリシーを定義し、クラウド アプリを指定する](./media/concept-conditional-access-cloud-apps/conditional-access-cloud-apps-or-actions.png)
 
 ## <a name="microsoft-cloud-applications"></a>Microsoft クラウド アプリケーション
 
@@ -124,6 +124,7 @@ Microsoft Azure Management アプリケーションには、基になる複数�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [条件付きアクセス ポリシーのコンポーネント](concept-conditional-access-policies.md)
+- [条件付きアクセス:条件](concept-conditional-access-conditions.md)
+
+- [Conditional Access common policies](concept-conditional-access-policy-common.md) (条件付きアクセスの一般的なポリシー)
 - [クライアント アプリケーションの依存関係](service-dependencies.md)
-- [Microsoft Intune: デバイスの登録で多要素認証を要求する](https://docs.microsoft.com/intune/enrollment/multi-factor-authentication)

@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a89983a9ae45f21deb7a823de049373b4ff9b935
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: ca77d4704fb71972090ce0b96dfdb888ef7d1d2c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989061"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190325"
 ---
 # <a name="react-to-azure-maps-events-by-using-event-grid"></a>Event Grid を使用して Azure Maps イベントに反応する 
 
-Azure Maps は Azure Event Grid と統合されているため、ユーザーは他のサービスにイベント通知を送信して、ダウンストリームのプロセスをトリガーすることができます。 この記事の目的は、ご利用のビジネス アプリケーションを構成して Azure Maps イベントをリッスンできるようにすることです。 このサービスを使用すると、信頼性が高く、スケーラブルで安全な方法で重要なイベントに対応することができます。 たとえば、ユーザーは、デバイスがジオフェンスに入るたびに、データベースの更新、チケットの作成、電子メール通知の配信を実行するアプリケーションを構築できます。
+Azure Maps は Azure Event Grid と統合されているため、ユーザーは他のサービスにイベント通知を送信して、ダウンストリームのプロセスをトリガーすることができます。 この記事の目的は、ご利用のビジネス アプリケーションを構成して Azure Maps イベントをリッスンできるようにすることです。 これにより、ユーザーは信頼性が高く、スケーラブルで安全な方法で重要なイベントに対応することができます。 たとえば、ユーザーは、デバイスがジオフェンスに入るたびに、データベースの更新、チケットの作成、電子メール通知の配信を実行するアプリケーションを構築できます。
 
 Azure Event Grid は、発行 - サブスクライブ モデルを使用する、フル マネージドのイベント ルーティング サービスです。 Event Grid には、[Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) や [Azure Logic Apps](https://docs.microsoft.com/azure/azure-functions/functions-overview) のような Azure サービスのサポートが組み込まれています。 また、Webhook を使用することで、Azure 以外のサービスにイベント アラートを配信することもできます。 Event Grid がサポートするイベント ハンドラーの完全な一覧については、「[Azure Event Grid の概要](https://docs.microsoft.com/azure/event-grid/overview)」をご覧ください。
 
@@ -80,9 +80,9 @@ Event Grid は、[イベント サブスクリプション](https://docs.microso
 
 Azure Maps ジオフェンス イベントを処理するアプリケーションでは、いくつかの推奨される手法に従う必要があります。
 
-* 同じイベント ハンドラーにイベントをルーティングするように、複数のサブスクリプションを構成できます。 イベントが特定のソースからのものであると想定しないことが重要です。 常にメッセージ トピックをチェックし、予期されるソースからものであることを確認します。
-* メッセージは、順不同で、または遅延の後に、到着する場合があります。 応答ヘッダーの `X-Correlation-id` フィールドを使用して、オブジェクトに関する情報が最新かどうかを確認します。
-* モード パラメーターを `EnterAndExit` に設定して Get および POST Geofence API を呼び出すと、前回の Geofence API 呼び出しの後で状態が変化したジオフェンスのジオメトリごとに、Enter または Exit イベントが生成されます。
+* 同じイベント ハンドラーにイベントをルーティングするように、複数のサブスクリプションを構成します。 イベントが特定のソースからのものであると想定しないことが重要です。 常にメッセージ トピックをチェックして、メッセージが予期されたソースからのものであることを確認します。
+* 応答ヘッダーの `X-Correlation-id` フィールドを使用して、オブジェクトに関する情報が最新かどうかを確認します。 メッセージは、順不同で、または遅延の後に、到着する場合があります。
+* モード パラメーターを `EnterAndExit` に設定して Geofence API 内の GET または POST 要求を呼び出すと、前回の Geofence API 呼び出しから状態が変化したジオフェンス内のジオメトリごとに、Enter または Exit イベントが生成されます。
 
 ## <a name="next-steps"></a>次のステップ
 

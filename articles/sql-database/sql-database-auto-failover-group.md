@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 1/05/2020
-ms.openlocfilehash: 9b838edea4b5f47fe57305c593944ef5fa93a63c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 2/10/2020
+ms.openlocfilehash: 6d87d3373711d12df3f2cced26ef35ae951ad41e
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768660"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116194"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 
@@ -242,7 +242,7 @@ OLTP 操作を実行するときに、サーバー URL として `<fog-name>.dat
 2 つの異なるサブスクリプションのマネージド インスタンス間でフェールオーバー グループを作成できます。 PowerShell API を使用している場合、セカンダリ インスタンスの `PartnerSubscriptionId` パラメーターを指定することでこれを実行できます。 REST API を使用している場合、`properties.managedInstancePairs` パラメーターに含まれる各インスタンス ID は、独自のサブスクリプション ID を持つことができます。
   
 > [!IMPORTANT]
-> Azure Portal では、異なるサブスクリプション間でのフェールオーバー グループはサポートされません。
+> Azure Portal では、異なるサブスクリプション間でのフェールオーバー グループの作成はサポートされません。 また、異なるサブスクリプションやリソース グループにまたがる既存のフェールオーバー グループについては、プライマリ インスタンスからポータルを使用して手動でフェールオーバーを開始することはできません。 代わりに、geo セカンダリ インスタンスから開始してください。
 
 ### <a name="managing-failover-to-secondary-instance"></a>セカンダリ インスタンスへのフェールオーバーを管理する
 
@@ -390,11 +390,11 @@ OLTP 操作を実行するときに、サーバー URL として `<fog-name>.zon
 
 前に説明したように、自動フェールオーバー グループとアクティブ geo レプリケーションは、Azure PowerShell および REST API を使用してプログラムによって管理することもできます。 次の表では、使用できるコマンド セットについて説明します。 アクティブ geo レプリケーションには、管理のための Azure Resource Manager API 一式 ([Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/)、[Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/overview)など) が含まれています。 これらの API は、リソース グループの使用を必要とし、ロール ベース セキュリティ (RBAC) をサポートします。 アクセス ロールの実装方法の詳細については、[Azure のロール ベースのアクセス制御](../role-based-access-control/overview.md)に関するページをご覧ください。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>単一データベースとエラスティック プールを使用して SQL データベース フェールオーバーを管理する
 
-| コマンドレット | [説明] |
+| コマンドレット | 説明 |
 | --- | --- |
 | [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
 | [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | フェールオーバー グループをサーバーから削除します。 |
@@ -405,7 +405,7 @@ OLTP 操作を実行するときに、サーバー URL として `<fog-name>.zon
 
 ### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>マネージド インスタンスで SQL データベースのフェールオーバー グループを管理する
 
-| コマンドレット | [説明] |
+| コマンドレット | 説明 |
 | --- | --- |
 | [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のインスタンスに登録します。|
 | [Set-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |フェールオーバー グループの構成を変更します。|
@@ -413,11 +413,11 @@ OLTP 操作を実行するときに、サーバー URL として `<fog-name>.zon
 | [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |フェールオーバー グループのセカンダリ インスタンスに対するフェールオーバーをトリガーします。|
 | [Remove-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | フェールオーバー グループを削除します|
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>単一データベースとエラスティック プールを使用して SQL データベース フェールオーバーを管理する
 
-| command | [説明] |
+| command | 説明 |
 | --- | --- |
 | [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
 | [az sql failover-group delete](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | フェールオーバー グループをサーバーから削除します。 |
@@ -427,7 +427,7 @@ OLTP 操作を実行するときに、サーバー URL として `<fog-name>.zon
 
 ### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>マネージド インスタンスで SQL データベースのフェールオーバー グループを管理する
 
-| command | [説明] |
+| command | 説明 |
 | --- | --- |
 | [az sql instance-failover-group create](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-create) | このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のインスタンスに登録します。 |
 | [az sql instance-failover-group update](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-update) | フェールオーバー グループの構成を変更します。|
@@ -442,7 +442,7 @@ OLTP 操作を実行するときに、サーバー URL として `<fog-name>.zon
 
 ### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API:単一またはプールされたデータベースで SQL データベースのフェールオーバー グループを管理する
 
-| API | [説明] |
+| API | 説明 |
 | --- | --- |
 | [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | フェールオーバー グループを作成または更新します |
 | [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | フェールオーバー グループをサーバーから削除します。 |
@@ -454,7 +454,7 @@ OLTP 操作を実行するときに、サーバー URL として `<fog-name>.zon
 
 ### <a name="rest-api-manage-failover-groups-with-managed-instances"></a>REST API:マネージド インスタンスでフェールオーバー グループを管理する
 
-| API | [説明] |
+| API | 説明 |
 | --- | --- |
 | [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | フェールオーバー グループの構成を作成または更新します。 |
 | [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | フェールオーバー グループをインスタンスから削除します。 |

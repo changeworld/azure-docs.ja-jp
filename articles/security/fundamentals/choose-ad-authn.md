@@ -1,5 +1,6 @@
 ---
-title: Azure AD ハイブリッド ID ソリューションの適切な認証方法を選択する | Microsoft Docs
+title: Azure AD ハイブリッド ID ソリューションでの認証
+titleSuffix: Active Directory
 description: このガイドは、CEO、CIO、CISO、チーフ ID アーキテクト、エンタープライズ アーキテクト、セキュリティと IT に関する意思決定者など、中規模から大規模な組織で Azure AD ハイブリッド ID ソリューションの認証方法の選択を担当するユーザーの役に立ちます。
 keywords: ''
 author: martincoetzer
@@ -9,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 2865ce640389c0250f14a53088a94aff15ddf1c8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7a13e50e6b5357264e7096fa58e34a4bcaf6ad8b
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460678"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190905"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する
 
@@ -184,7 +185,7 @@ Azure AD では検証できないルーティング不可能なドメインの�
 |多要素認証のオプション|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[条件付きアクセスを使用するカスタム コントロール*](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[条件付きアクセスを使用するカスタム コントロール*](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Azure MFA サーバー](../../active-directory/authentication/howto-mfaserver-deploy.md)<br><br>[サード パーティの MFA](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[条件付きアクセスを使用するカスタム コントロール*](../../active-directory/conditional-access/controls.md)|
 |サポートされるユーザー アカウントの状態|無効なアカウント<br>(最大 30 分の遅延)|無効なアカウント<br><br>アカウントのロックアウト<br><br>アカウント期限切れ<br><br>パスワード期限切れ<br><br>サインイン時間|無効なアカウント<br><br>アカウントのロックアウト<br><br>アカウント期限切れ<br><br>パスワード期限切れ<br><br>サインイン時間|
 |条件付きアクセスのオプション|[Azure AD の条件付きアクセス、Azure AD Premium を使用](../../active-directory/conditional-access/overview.md)|[Azure AD の条件付きアクセス、Azure AD Premium を使用](../../active-directory/conditional-access/overview.md)|[Azure AD の条件付きアクセス、Azure AD Premium を使用](../../active-directory/conditional-access/overview.md)<br><br>[AD FS の要求規則](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
-|サポートされる従来のプロトコルのブロック|[はい](../../active-directory/conditional-access/conditions.md)|[はい](../../active-directory/conditional-access/conditions.md)|[はい](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
+|サポートされる従来のプロトコルのブロック|[はい](../../active-directory/conditional-access/overview.md)|[はい](../../active-directory/conditional-access/overview.md)|[はい](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
 |サインイン ページのロゴ、イメージ、説明のカスタマイズ可能性|[Azure AD Premium を使用して可能](../../active-directory/fundamentals/customize-branding.md)|[Azure AD Premium を使用して可能](../../active-directory/fundamentals/customize-branding.md)|[はい](../../active-directory/hybrid/how-to-connect-fed-management.md)|
 |サポートされる高度なシナリオ|[Smart Password Lockout](../../active-directory/authentication/howto-password-smart-lockout.md)<br><br>[漏洩した資格情報レポート、Azure AD Premium P2 を使用](../../active-directory/reports-monitoring/concept-risk-events.md)|[Smart Password Lockout](../../active-directory/authentication/howto-password-smart-lockout.md)|複数サイトの低待機時間の認証システム<br><br>[AD FS エクストラネットのロックアウト](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)<br><br>[サード パーティの ID システムとの統合](../../active-directory/hybrid/how-to-connect-fed-compatibility.md)|
 

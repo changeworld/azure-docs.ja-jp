@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory で ID インフラストラクチャをセキュリティ保護する 5 つのステップ
+title: Azure AD の ID インフラストラクチャをセキュリティ保護する
+titleSuffix: Azure Active Directory
 description: このドキュメントでは、管理者が Azure AD 機能を使って組織をセキュリティで保護するうえで実行すべき一連の重要なアクションについて概説します
 author: martincoetzer
 manager: manmeetb
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 870bb9720500b6eda5e7b9eb258b6764a94f01b6
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: cafa9d6100e03d8315bf5dd19d863ca90aadd4bb
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76903577"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190887"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>ID インフラストラクチャをセキュリティ保護する 5 つのステップ
 
@@ -106,7 +107,7 @@ Azure AD による認証と会社データへのアクセスに、独自の古�
 
 1. [AD FS を使用している場合はレガシ認証](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)をブロックする。
 2. [最新の認証を使用するよう SharePoint Online と Exchange Online](../../active-directory/conditional-access/conditional-access-for-exo-and-spo.md) を設定する。
-3. Azure AD Premium がある場合は、[条件付きアクセス ポリシー](../../active-directory/conditional-access/conditions.md)を使用してレガシ認証をブロックし、それ以外の場合は、[Azure AD セキュリティの既定値](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)を使用します。
+3. Azure AD Premium がある場合は、[条件付きアクセス ポリシー](../../active-directory/conditional-access/overview.md)を使用してレガシ認証をブロックし、それ以外の場合は、[Azure AD セキュリティの既定値](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)を使用します。
 
 ### <a name="block-invalid-authentication-entry-points"></a>無効な認証エントリ ポイントをブロックする
 

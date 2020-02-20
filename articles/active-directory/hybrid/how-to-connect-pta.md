@@ -16,18 +16,18 @@ ms.date: 10/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 814c81b6092c4af3778617e165a0bdbce09d71d7
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: d4b52a3025bfb15e2679709353cebf28254a75c2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779123"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185501"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証によるユーザー サインイン
 
 ## <a name="what-is-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証とは
 
-Azure Active Directory (Azure AD) パススルー認証を使用すると、ユーザーは同じパスワードを使用して、オンプレミスのアプリケーションとクラウド ベースのアプリケーションの両方にサインインすることができるようになります。 この機能により、ユーザー エクスペリエンスが向上します。ユーザーは、覚えておくパスワードが 1 つ少なくなり、ユーザーがサインイン方法を忘れる可能性が低くなるため IT ヘルプデスクのコストが削減します。 この機能により、ユーザーが Azure AD を使用してサインインするとき、ユーザーのパスワードがオンプレミスの Active Directory に対して直接検証されます。
+Azure Active Directory (Azure AD) パススルー認証を使用すると、ユーザーは同じパスワードを使用して、オンプレミスのアプリケーションとクラウド ベースのアプリケーションの両方にサインインできます。 この機能により、ユーザー エクスペリエンスが向上します。ユーザーは、覚えておくパスワードが 1 つ少なくなり、ユーザーがサインイン方法を忘れる可能性が低くなるため IT ヘルプデスクのコストが削減します。 この機能により、ユーザーが Azure AD を使用してサインインするとき、ユーザーのパスワードがオンプレミスの Active Directory に対して直接検証されます。
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
@@ -43,13 +43,13 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
   - ユーザーは、オンプレミスのアプリケーションとクラウド ベースのアプリケーションの両方に同じパスワードを使用してサインインできます。
   - パスワード関連の問題を解決するのに、ユーザーが IT ヘルプデスクと対話する時間が減ります。
   - ユーザーはクラウドで[セルフ サービスによるパスワード管理](../authentication/active-directory-passwords-overview.md)ができます。
-- *簡単にデプロイし、管理できる*
+- *デプロイと管理が容易*
   - 簡単にオンプレミスにデプロイしてネットワーク構成できます。
   - オンプレミスには、軽量エージェントのみをインストールすれば済みます。
   - 管理のオーバーヘッドを排除できます。 エージェントは、機能強化とバグ修正を自動的に受け取ります。
 - *セキュリティ保護*
   - オンプレミス パスワードが何らかの形でクラウドに保存されることはありません。
-  - 多要素認証 (MFA) を含む、[Azure AD 条件付きアクセス ポリシー](../active-directory-conditional-access-azure-portal.md)と[レガシ認証のブロック](../conditional-access/conditions.md)、[フィルター処理によるブルート フォース パスワード攻撃の除外](../authentication/howto-password-smart-lockout.md)により、作業を中断されずに、ユーザー アカウントを保護できます。
+  - 多要素認証 (MFA) を含む、[Azure AD 条件付きアクセス ポリシー](../active-directory-conditional-access-azure-portal.md)と[レガシ認証のブロック](../conditional-access/concept-conditional-access-conditions.md)、[フィルター処理によるブルート フォース パスワード攻撃の除外](../authentication/howto-password-smart-lockout.md)により、作業を中断されずに、ユーザー アカウントを保護できます。
   - エージェントは、ネットワーク内からの送信接続のみを行います。 そのため、DMZ とも呼ばれる、境界ネットワークにエージェントをインストールする必要がありません。
   - エージェントと Azure AD の間の通信は、証明書ベースの認証を使用して保護されます。 これらの証明書は、Azure AD によって数か月ごとに自動的に更新されます。
 - *高可用性*
@@ -68,7 +68,7 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 - 複数のエージェントをインストールすることにより、サインイン要求の高可用性が実現されます。
 - これにより、オンプレミス アカウントがクラウドへのブルート フォース パスワード攻撃から[保護](../authentication/howto-password-smart-lockout.md)されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [クイック スタート](how-to-connect-pta-quick-start.md) - Azure AD パススルー認証を起動および実行します。
 - [AD FS からパススルー認証への移行](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true) - AD FS (または他のフェデレーション テクノロジ) からパススルー認証に移行するための詳細なガイドです。

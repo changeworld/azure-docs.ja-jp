@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: kgremban
-ms.openlocfilehash: 38e688528d7445b16141d9f1ecc0318faf07e140
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: e3f55f9be28a8b53f012e111e43ba1f495b1d585
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510007"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186479"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Windows に Azure IoT Edge ランタイムをインストールする
 
@@ -133,14 +133,14 @@ IoT Edge ランタイムをデバイスに初めてインストールすると�
 
 これらのインストール オプションの詳細については、この記事を読み進めるか、[すべてのインストール パラメーター](#all-installation-parameters)にスキップしてください。
 
-## <a name="offline-installation"></a>オフライン インストール
+## <a name="offline-or-specific-version-installation"></a>オフラインまたは特定のバージョンのインストール
 
 インストール中に、次の 2 つのファイルがダウンロードされます。
 
 * Microsoft Azure IoT Edge cab には、IoT Edge セキュリティ デーモン (iotedged)、Moby コンテナー エンジン、Moby CLI が含まれています。
-* Visual C++ 再頒布可能パッケージ (VC ランタイム) の msi
+* Visual C++ 再頒布可能パッケージ (VC ランタイム) の MSI
 
-これらのファイルのうち 1 つまたは両方をデバイスに事前にダウンロードし、ファイルを含むディレクトリをインストール スクリプトで指定することができます。 インストーラーはまずディレクトリをチェックし、見つからないコンポーネントのみダウンロードします。 すべてのファイルがオフラインで利用可能な場合、インターネット接続なしでインストールできます。 また、この機能を使用して、特定のバージョンのコンポーネントをインストールすることもできます。  
+インストール中にデバイスがオフラインになる予定の場合、または、特定のバージョンの IoT Edge をインストールする場合は、これらのファイルのどちらかまたは両方を事前にデバイスにダウンロードすることができます。 インストール時には、インストール スクリプトによって、ダウンロード済みのファイルを含むディレクトリを指定します。 インストーラーでは、最初にそのディレクトリをチェックし、見つからないコンポーネントのみをダウンロードします。 すべてのファイルがオフラインで利用可能な場合、インターネット接続なしでインストールできます。
 
 IoT Edge の最新のインストール ファイルとその以前のバージョンについては、[Azure IoT Edge リリース](https://github.com/Azure/azure-iotedge/releases)を参照してください。
 
@@ -151,7 +151,17 @@ IoT Edge の最新のインストール ファイルとその以前のバージ�
 Deploy-IoTEdge -OfflineInstallationPath C:\Downloads\iotedgeoffline
 ```
 
-この記事で後ほど紹介する Update-IoTEdge コマンドで、オフライン インストール パス パラメーターを使用することもできます。
+>[!NOTE]
+>`-OfflineInstallationPath` パラメーターでは、指定されたディレクトリで **Microsoft-Azure-IoTEdge.cab** という名前のファイルを検索します。 IoT Edge バージョン 1.0.9-rc4 以降では、2 つの .cab ファイル (AMD64 デバイス用と ARM32 デバイス用に 1 つずつ) を使用できます。 お使いのデバイスに適切なファイルをダウンロードし、ファイルの名前を変更して、アーキテクチャのサフィックスを削除します。
+
+`Deploy-IoTEdge` コマンドによって IoT Edge コンポーネントがインストールされ、その後は `Initialize-IoTEdge` コマンドを使用して、IoT Hub デバイス ID および接続によってデバイスをプロビジョニングする必要があります。 コマンドを直接実行して IoT Hub からの接続文字列を指定するか、または前のセクションにあるリンクの 1 つを使用して Device Provisioning Service によってデバイスを自動的にプロビジョニングする方法を確認してください。
+
+```powershell
+. {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
+Initialize-IoTEdge
+```
+
+Update-IoTEdge コマンドと共に、オフライン インストール パス パラメーターを使用することもできます。
 
 ## <a name="verify-successful-installation"></a>インストールの成功を確認する
 
@@ -204,29 +214,6 @@ docker -H npipe:////./pipe/iotedge_moby_engine images
 ![config.yaml の moby_runtime uri](./media/how-to-install-iot-edge-windows/moby-runtime-uri.png)
 
 デバイス上で実行されているコンテナーやイメージを操作するために使用できるコマンドの詳細については、[Docker コマンド ライン インターフェイス](https://docs.docker.com/engine/reference/commandline/docker/)を参照してください。
-
-## <a name="update-an-existing-installation"></a>既存のインストールを更新する
-
-IoT Edge ランタイムを以前デバイスにインストールしたことがあり、IoT Hub からの ID によってデバイスがプロビジョニングされている場合、デバイスの情報を再入力せずにランタイムを更新できます。
-
-詳細については、[IoT Edge セキュリティ デーモンおよびランタイムの更新](how-to-update-iot-edge.md)を参照してください。
-
-この例では、既存の構成ファイルを指定し、Windows コンテナーを使用するインストールを示します。
-
-```powershell
-. {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-Update-IoTEdge
-```
-
-IoT Edge を更新するときは、追加のパラメーターを使用して次のように更新を変更できます。
-
-* プロキシ サーバーを経由するようトラフィックを誘導する
-* インストーラーでオフライン ディレクトリを指定する
-* 必要な場合は、プロンプトなしで再起動する
-
-IoT Edge エージェント コンテナー イメージは、以前のインストールの構成ファイルですでに設定されているため、スクリプト パラメーターで宣言することはできません。 エージェント コンテナー イメージを変更する場合は、config.yaml ファイルで行います。
-
-これらの更新オプションについて詳しくは、`Get-Help Update-IoTEdge -full` コマンドを使用するか、「[すべてのインストール パラメーター](#all-installation-parameters)」を参照してください。
 
 ## <a name="uninstall-iot-edge"></a>IoT Edge をアンインストールする
 

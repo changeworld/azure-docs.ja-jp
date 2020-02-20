@@ -8,23 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: 4d5d3cc6159a4601f0a398e87b89eea9b8d3aba6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c12aaea1dbc99a3f6db064e03b4b49e569f15194
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446957"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189057"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>リリース ノート:Speech Devices SDK
 
 以下のセクションでは、最新リリースでの変更点の一覧を示します。
 
+## <a name="speech-devices-sdk-190"></a>Speech Devices SDK 1.9.0:
+
+- [Urbetter DDK](https://aka.ms/sdsdk-download-urbetter) 対応の初期バイナリ (Linux ARM64) が提供されています。
+- Roobo v1 では Speech SDK に Maven が使用されるようになりました
+- [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) コンポーネントがバージョン 1.9.0 に更新されました。 詳しくは、[リリース ノート](https://aka.ms/csspeech/whatsnew)をご覧ください。
+
 ## <a name="speech-devices-sdk-170"></a>Speech Devices SDK 1.7.0:
 
 - Linux ARM がサポートされるようになりました。
-- Roobo ｖ2 対応の初期バイナリが提供されています (Linux ARM64)。
+- [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2) 対応の初期バイナリが提供されています (Linux ARM64)。
 - Windows ユーザーは、`AudioConfig.fromDefaultMicrophoneInput()` または`AudioConfig.fromMicrophoneInput(deviceName)` を使用して、使用するマイクを指定できます。
 - ライブラリのサイズが最適化されました。
 - 同じ音声/意図認識オブジェクトを使用したマルチターン認識のサポート。

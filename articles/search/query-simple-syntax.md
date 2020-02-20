@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/10/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,19 +19,21 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: fb98be9975de38ec9f65e723e078a1db8755b4ed
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fc1eb1836badc3ced688750bbc7c7a164773d022
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792549"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152671"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Azure Cognitive Search での単純なクエリ構文
 
 Azure Cognitive Search は、2 つの Lucene ベースのクエリ言語を実装します。[Simple Query Parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) と [Lucene Query Parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) です。 Azure Cognitive Search では、単純なクエリ構文では fuzzy/slop のオプションは除外されます。  
 
-> [!NOTE]  
->  Azure Cognitive Search では、より複雑なクエリには [Lucene クエリ構文](query-lucene-syntax.md)という代替方法が用意されています。 クエリ解析のアーキテクチャと各構文の利点の詳細については、[Azure Cognitive Search のフルテキスト検索のしくみ](search-lucene-query-architecture.md)に関する記事を参照してください。
+> [!NOTE]
+> 単純なクエリ構文は、[Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents) API の **search** パラメーターで渡されるクエリ式に使用されます。その API の [$filter](search-filters.md) パラメーターで使用される [OData 構文](query-odata-filter-orderby-syntax.md)と混同しないでください。 これらのさまざまな構文には、クエリの作成や文字列のエスケープなどを行うための独自の規則があります。
+>
+> Azure Cognitive Search では、**search** パラメーターでのより複雑なクエリについては、[完全な Lucene クエリ構文](query-lucene-syntax.md)という代替方法が用意されています。 クエリ解析のアーキテクチャと各構文の利点の詳細については、[Azure Cognitive Search のフルテキスト検索のしくみ](search-lucene-query-architecture.md)に関する記事を参照してください。
 
 ## <a name="how-to-invoke-simple-parsing"></a>単純な解析を呼び出す方法
 
@@ -88,7 +90,7 @@ NOT 演算子はマイナス記号です。 たとえば、`wifi –luxury` を�
 > [!NOTE]  
 >  エスケープでトークンは一緒に保持されますが、分析モードによっては、テキスト分析で分割される可能性があります。 詳細については、[言語サポート &#40;Azure Cognitive Search REST API&#41;](index-add-language-analyzers.md) に関する記事を参照してください。  
 
-## <a name="see-also"></a>関連項目  
+## <a name="see-also"></a>参照  
 
 + [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) 
 + [Lucene クエリ構文](query-lucene-syntax.md)

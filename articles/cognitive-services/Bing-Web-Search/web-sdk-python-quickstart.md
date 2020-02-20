@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 02/11/2019
 ms.author: aahi
-ms.openlocfilehash: 64ef052478bed627c896cd0e0b5301961a8b6f21
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: a1407a35fbf645ad839fbf2fee046774fc303cb6
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562869"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201205"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>クイック スタート:Python 用の Bing Web Search SDK を使用する
 
@@ -90,7 +90,7 @@ python -m pip install azure-cognitiveservices-search-websearch
 
     ```python
     # Import required modules.
-    from azure.cognitiveservices.search.websearch import WebSearchAPI
+    from azure.cognitiveservices.search.websearch import WebSearchClient
     from azure.cognitiveservices.search.websearch.models import SafeSearch
     from msrest.authentication import CognitiveServicesCredentials
 
@@ -98,7 +98,7 @@ python -m pip install azure-cognitiveservices-search-websearch
     subscription_key = "YOUR_SUBSCRIPTION_KEY"
 
     # Instantiate the client and replace with your endpoint.
-    client = WebSearchAPI(CognitiveServicesCredentials(subscription_key), base_url = "YOUR_ENDPOINT")
+    client = WebSearchClient(endpoint="YOUR_ENDPOINT", CognitiveServicesCredentials(subscription_key))
 
     # Make a request. Replace Yosemite if you'd like.
     web_data = client.web.search(query="Yosemite")
@@ -321,6 +321,6 @@ Bing Web Search API の最初の呼び出しを行ったので、関数をいく
 > [!div class="nextstepaction"]
 > [Cognitive Services の Python 向け SDK のサンプル](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * [Azure Python SDK リファレンス](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/websearch)

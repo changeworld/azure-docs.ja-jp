@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 771257df12ee29c2bc8d32672c8e8b7d039a96ba
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 8b396b782c1254b3229aeeb8e51b61cc744d6318
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120811"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190361"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Azure Active Directory と API Management で OAuth 2.0 を使用して API を保護する
 
@@ -47,7 +47,7 @@ ms.locfileid: "76120811"
 
 Azure AD で API を保護するには、まず API を表すアプリケーションを Azure AD に登録します。 
 
-1. [Azure portal](https://portal.azure.com) にアクセスして、アプリケーションを登録します。 **API 登録**を検索して選択します。
+1. [Azure portal](https://portal.azure.com) にアクセスして、アプリケーションを登録します。 **[アプリの登録]** を検索して選択します。
 
 1. **[新規登録]** を選択します。 
 
@@ -71,7 +71,7 @@ Azure AD で API を保護するには、まず API を表すアプリケーシ�
 
 API を呼び出すすべてのクライアント アプリケーションも、Azure AD にアプリケーションとして登録する必要があります。 この例のクライアント アプリケーションは、API Management 開発者ポータルの Developer Console です。 Developer Console を表す別のアプリケーションを Azure AD に登録する方法は次のとおりです。
 
-1. [Azure portal](https://portal.azure.com) にアクセスして、アプリケーションを登録します。 **API 登録**を検索して選択します。
+1. [Azure portal](https://portal.azure.com) にアクセスして、アプリケーションを登録します。 **[アプリの登録]** を検索して選択します。
 
 1. **[新規登録]** を選択します。
 
@@ -97,7 +97,7 @@ API を呼び出すすべてのクライアント アプリケーションも、
 
 API と Developer Console を表す 2 つのアプリケーションを登録したら、次はクライアントアプリがバックエンドアプリを呼び出すことができるようにアクセス許可を付与する必要があります。  
 
-1. [Azure portal](https://portal.azure.com) にアクセスして、クライアント アプリケーションにアクセス許可を付与します。 **API 登録**を検索して選択します。
+1. [Azure portal](https://portal.azure.com) にアクセスして、クライアント アプリケーションにアクセス許可を付与します。 **[アプリの登録]** を検索して選択します。
 
 1. 対象のクライアント アプリを選択します。 アプリのページの一覧から **[API のアクセス許可]** を選択します。
 
@@ -202,7 +202,7 @@ OAuth 2.0 承認サーバーを設定したので、Developer Console で Azure 
     <openid-config url="https://login.microsoftonline.com/{aad-tenant}/.well-known/openid-configuration" />
     <required-claims>
         <claim name="aud">
-            <value>{Application ID URI of backend-app}</value>
+            <value>{Application ID of backend-app}</value>
         </claim>
     </required-claims>
 </validate-jwt>
@@ -212,7 +212,7 @@ OAuth 2.0 承認サーバーを設定したので、Developer Console で Azure 
 
 ## <a name="build-an-application-to-call-the-api"></a>アプリケーションをビルドして API を呼び出す
 
-このガイドでは、サンプル クライアント アプリケーションとして API Management で Developer Console を使用して、OAuth 2.0 によって保護された `Echo API` を呼び出します。 アプリケーションのビルドと OAuth 2.0 の実装の詳細については、「[Azure Active Directory のコード例](../active-directory/develop/sample-v1-code.md)」を参照してください。
+このガイドでは、サンプル クライアント アプリケーションとして API Management で Developer Console を使用して、OAuth 2.0 によって保護された `Echo API` を呼び出します。 アプリケーションのビルドと OAuth 2.0 の実装の詳細については、「[Azure Active Directory のコード例](../active-directory/develop/sample-v2-code.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Active Directory と OAuth2.0](../active-directory/develop/authentication-scenarios.md) の詳細を確認します。

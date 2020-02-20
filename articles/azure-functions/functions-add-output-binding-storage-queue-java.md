@@ -3,12 +3,12 @@ title: Java 関数を Azure Storage に接続する
 description: Queue storage の出力バインドを使用して、HTTP によってトリガーされる Java 関数を Azure Storage に接続する方法を学習します。
 ms.date: 10/14/2019
 ms.topic: quickstart
-ms.openlocfilehash: 98f49338f0df935347a26798aceccb80f9f43f50
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 72e3aad15ea8ef922d89a67891e223b65473b909
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926899"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198549"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>Java 関数を Azure Storage に接続する
 
@@ -118,7 +118,7 @@ mvn azure-functions:run
 ```
 
 > [!NOTE]  
-> host.json で拡張バンドルを有効にしていたため、スタートアップ時に[ストレージ バインド拡張機能](functions-bindings-storage-blob.md#packages---functions-2x-and-higher)が他の Microsoft バインド拡張機能と共に自動的にダウンロードされ、インストールされました。
+> host.json で拡張バンドルを有効にしていたため、スタートアップ時に[ストレージ バインド拡張機能](functions-bindings-storage-blob.md#add-to-your-functions-app)が他の Microsoft バインド拡張機能と共に自動的にダウンロードされ、インストールされました。
 
 前と同様に、新しいターミナル ウィンドウで cURL を使用して、コマンド ラインから関数をトリガーします。
 
@@ -152,7 +152,7 @@ curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 HTTP によってトリガーされる関数を、ストレージ キューにデータを書き込むように更新しました。 Python を使用して Azure Functions を開発する方法の詳細については、「[Azure Functions の Java 開発者向けガイド](functions-reference-java.md)」と、[Azure Functions のトリガーとバインド](functions-triggers-bindings.md)に関するページを参照してください。 Java での完全な関数プロジェクトの例については、[Java 関数のサンプル](/samples/browse/?products=azure-functions&languages=Java)を参照してください。 
 

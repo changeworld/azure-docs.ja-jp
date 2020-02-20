@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c4b8b03394eee6dffb79b0e40a22dd49880dee88
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 7ef868f156ac537cb066f293872f69135c4df25f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793482"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77059652"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-cognitive-search"></a>Azure Cognitive Search 上でリソース消費とクエリ アクティビティを監視する
 
@@ -56,7 +56,7 @@ Azure Cognitive Search では、管理しているオブジェクトの外にあ
 
 次の表は、ログの格納、および Application Insights によるサービス操作とクエリ ワークロードの詳細監視の追加に関して、オプションを比較したものです。
 
-| リソース | 使用対象 |
+| リソース | 使用目的 |
 |----------|----------|
 | [Azure Monitor ログ](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | 後述のスキーマに基づいてログに記録されるイベントとクエリ メトリック。 イベントは Log Analytics ワークスペースに記録されます。 ワークスペースに対してクエリを実行し、ログから詳細な情報を取得することができます。 詳細については、[Azure Monitor ログの使用](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata)に関するページを参照してください |
 | [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | 後述のスキーマに基づいてログに記録されるイベントとクエリ メトリック。 イベントのログは BLOB コンテナーに記録されて、JSON ファイルに格納されます。 ファイルの内容を表示するには JSON エディターを使用します。|
@@ -76,19 +76,21 @@ Azure Monitor ログと Blob Storage は、どちらも無料のサービスと�
 
    ストレージ アカウントは、Azure Cognitive Search と同じリージョンに存在する必要があります。
 
-2. 検索サービスの [概要] ページを開きます。 左側のナビゲーション ウィンドウで **[監視]** まで下にスクロールし、 **[監視を有効にする]** をクリックします。
+2. 検索サービスの [概要] ページを開きます。 左側のナビゲーション ペインで **[監視]** まで下にスクロールし、 **[診断設定]** をクリックします。
 
-   ![監視を有効にする](./media/search-monitor-usage/enable-monitoring.png "監視を有効にする")
+   ![診断設定](./media/search-monitor-usage/diagnostic-settings.png "診断設定")
 
-3. エクスポートするデータを選択します (ログ、メトリック、または両方)。 データはストレージ アカウントにコピーする、イベント ハブに送信する、または Azure Monitor ログにエクスポートすることができます。
+3. **[診断設定を追加する]** を選択します
+
+4. エクスポートするデータを選択します (ログ、メトリック、または両方)。 データはストレージ アカウントにコピーする、イベント ハブに送信する、または Azure Monitor ログにエクスポートすることができます。
 
    Blob Storage にアーカイブするには、ストレージ アカウントのみが存在する必要があります。 ログ データをエクスポートすると、必要に応じてコンテナーと BLOB が作成されます。
 
    ![Blob Storage アーカイブを構成する](./media/search-monitor-usage/configure-blob-storage-archive.png "Blob Storage アーカイブを構成する")
 
-4. プロファイルを保存します。
+5. プロファイルを保存します
 
-5. オブジェクトを作成または削除し (ログ イベントの作成)、クエリを送信することで (メトリックの生成)、ログ記録をテストします。 
+6. オブジェクトを作成または削除し (ログ イベントの作成)、クエリを送信することで (メトリックの生成)、ログ記録をテストします。 
 
 プロファイルを保存すると、ログ記録が有効になります。 コンテナーは、ログ記録または測定するアクティビティが発生した場合にのみ作成されます。 データをストレージ アカウントにコピーすると、データは JSON 形式でフォーマットされ、次の 2 つのコンテナーに置かれます。
 
@@ -108,41 +110,41 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 ## <a name="log-schema"></a>ログのスキーマ
 検索サービスのトラフィック ログが格納される BLOB は、このセクションで説明するような構成になっています。 各 BLOB には、ログ オブジェクトの配列を含む、**レコード**と呼ばれるルート オブジェクトが 1 つあります。 各 BLOB には、同じ時間帯に行われたすべての操作に関するレコードが含まれます。
 
-| 名前 | 種類 | 例 | メモ |
+| Name | Type | 例 | Notes |
 | --- | --- | --- | --- |
-| time |datetime |"2018-12-07T00:00:43.6872559Z" |操作のタイムスタンプ |
+| time |DATETIME |"2018-12-07T00:00:43.6872559Z" |操作のタイムスタンプ |
 | resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |使用している ResourceId |
 | operationName |string |"Query.Search" |操作の名前 |
 | operationVersion |string |"2019-05-06" |使用されている API バージョン |
-| category |string |"OperationLogs" |定数 |
+| category |string |"OperationLogs" |定数 (constant) |
 | resultType |string |"Success" |指定できる値成功または失敗 |
-| resultSignature |int |200 |HTTP の結果コード |
-| durationMS |int |50 |操作時間 (ミリ秒) |
+| resultSignature |INT |200 |HTTP の結果コード |
+| durationMS |INT |50 |操作時間 (ミリ秒) |
 | properties |object |次の表を参照 |操作固有データを含むオブジェクト |
 
 **プロパティのスキーマ**
 
-| 名前 | 種類 | 例 | メモ |
+| Name | Type | 例 | Notes |
 | --- | --- | --- | --- |
 | 説明 |string |"GET /indexes('content')/docs" |操作のエンドポイント |
 | クエリ |string |"?search=AzureSearch&$count=true&api-version=2019-05-06" |クエリ パラメーター |
-| Documents |int |42 |処理されたドキュメント数 |
+| Documents |INT |42 |処理されたドキュメント数 |
 | IndexName |string |"testindex" |操作に関連付けられているインデックスの名前 |
 
 ## <a name="metrics-schema"></a>メトリックのスキーマ
 
 メトリックはクエリ要求に対してキャプチャされます。
 
-| 名前 | 種類 | 例 | メモ |
+| Name | Type | 例 | Notes |
 | --- | --- | --- | --- |
 | resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |お使いのリソース ID |
 | metricName |string |"Latency" |メトリックの名前 |
-| time |datetime |"2018-12-07T00:00:43.6872559Z" |操作のタイムスタンプ |
-| average |int |64 |メトリックの時間間隔内の生のサンプルの平均値 |
-| minimum |int |37 |メトリックの時間間隔内の生のサンプルの最小値 |
-| maximum |int |78 |メトリックの時間間隔内の生のサンプルの最大値 |
-| total |int |258 |メトリックの時間間隔内の生のサンプルの合計値 |
-| count |int |4 |メトリックの生成に使用される生のサンプル数 |
+| time |DATETIME |"2018-12-07T00:00:43.6872559Z" |操作のタイムスタンプ |
+| average |INT |64 |メトリックの時間間隔内の生のサンプルの平均値 |
+| minimum |INT |37 |メトリックの時間間隔内の生のサンプルの最小値 |
+| maximum |INT |78 |メトリックの時間間隔内の生のサンプルの最大値 |
+| total |INT |258 |メトリックの時間間隔内の生のサンプルの合計値 |
+| count |INT |4 |メトリックの生成に使用される生のサンプル数 |
 | timegrain |string |"PT1M" |ISO 8601 でのメトリックの時間グレイン |
 
 すべてのメトリックは、1 分間隔で報告されます。 各メトリックは、1 分あたりの最小値、最大値、および平均値を公開します。
@@ -169,11 +171,11 @@ Azure Cognitive Search REST API および .NET SDK の両方を使用するこ�
 
 * [サービスの統計情報の取得](/rest/api/searchservice/get-service-statistics)
 * [インデックス統計の取得](/rest/api/searchservice/get-index-statistics)
-* [ドキュメントの数](/rest/api/searchservice/count-documents)
+* [ドキュメントのカウント](/rest/api/searchservice/count-documents)
 * [インデクサーの状態の取得](/rest/api/searchservice/get-indexer-status)
 
 PowerShell または Azure CLI の使用を有効にする方法については、[こちら](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)のマニュアルをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 サービス管理の詳細については、[Microsoft Azure での Search サービスの管理](search-manage.md)に関する記事、チューニング ガイダンスについては、[パフォーマンスと最適化](search-performance-optimization.md)に関する記事。

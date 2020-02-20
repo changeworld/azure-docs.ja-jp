@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0bbd8a12820432ce2f131dda29af6740a2f04e18
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: ccdf385d2581923e1fad4fa5c42f351c4f0947ca
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024723"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083156"
 ---
 # <a name="set-up-avs-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>VMware Site Recovery Manager を使用して、AVS プライベート クラウドをディザスター リカバリー ターゲットとして設定する
 
@@ -101,7 +101,7 @@ SRM ソリューション ネットワーク用の VLAN を作成し、それを
 
 AVS プライベート クラウド内のワークロードに対して IP アドレス参照、IP アドレス管理、名前解決サービスを提供するには、「[AVS プライベート クラウドで DNS および DHCP アプリケーションとワークロードを設定する](dns-dhcp-setup.md)」の説明に従って、DHCP および DNS サーバーを設定します。
 
-AVS プライベート クラウド内の管理 VM とホストでは、*.avs.io ドメインが使用されます。 このドメインに対する要求を解決するには、「[条件付きフォワーダーの作成](on-premises-dns-setup.md#create-a-conditional-forwarder)」の説明に従って、DNS サーバー上で DNS 転送を構成します。
+AVS プライベート クラウド内の管理 VM とホストでは *.cloudsimple.io ドメインが使用されます。 このドメインに対する要求を解決するには、「[条件付きフォワーダーの作成](on-premises-dns-setup.md#create-a-conditional-forwarder)」の説明に従って、DNS サーバー上で DNS 転送を構成します。
 
 ### <a name="install-vsphere-replication-appliance-in-your-on-premises-environment"></a>オンプレミス環境に vSphere Replication アプライアンスをインストールする
 

@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB での ORDER BY 句
 description: Azure Cosmos DB の SQL の ORDER BY 句について説明します。 Azure Cosmos DB JSON クエリ言語として SQL を使用します。
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.author: mjbrown
-ms.openlocfilehash: fc5c875f4ae54ed334318efc5a1d5610b89bdda5
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.date: 02/12/2020
+ms.author: tisande
+ms.openlocfilehash: b88184be39a41ec42f8fb304a7511073f645f1cb
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75929592"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188727"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での ORDER BY 句
 
@@ -49,10 +49,10 @@ ORDER BY <sort_specification>
   
 ## <a name="remarks"></a>解説  
   
-   ORDER BY 句では、並べ替えるフィールドのインデックスがインデックス作成ポリシーに含まれている必要があります。 Azure Cosmos DB のクエリ ランタイムでは、計算されたプロパティに対してではなく、プロパティ名に対する並べ替えがサポートされています。 Azure Cosmos DB では、複数の ORDER BY プロパティがサポートされています。 複数の ORDER BY プロパティを使ったクエリを実行するには、並べ替えるフィールドに対する[複合インデックス](index-policy.md#composite-indexes)を定義する必要があります。
-   
-> [!Note] 
-> 一部のドキュメントについて並べ替えの基準となっているプロパティが定義されていない可能性があり、ORDER BY クエリでそれを取得したい場合は、そのプロパティにインデックスを明示的に作成する必要があります。 既定のインデックス作成ポリシーでは、並べ替えプロパティが定義されていないドキュメントを取得することができません。
+   `ORDER BY` 句では、並べ替えるフィールドのインデックスがインデックス作成ポリシーに含まれている必要があります。 Azure Cosmos DB のクエリ ランタイムでは、計算されたプロパティに対してではなく、プロパティ名に対する並べ替えがサポートされています。 Azure Cosmos DB では、複数の `ORDER BY` プロパティがサポートされています。 複数の ORDER BY プロパティを使ったクエリを実行するには、並べ替えるフィールドに対する[複合インデックス](index-policy.md#composite-indexes)を定義する必要があります。
+
+> [!Note]
+> 並べ替えるプロパティが一部のドキュメントに定義されていない可能性があり、ORDER BY クエリでそれらを取得したい場合は、インデックスにこのパスを明示的に含める必要があります。 既定のインデックス作成ポリシーでは、並べ替えプロパティが定義されていないドキュメントを取得することができません。 [フィールドがないドキュメントに対するクエリ例を確認してください](#documents-with-missing-fields)。
 
 ## <a name="examples"></a>例
 
@@ -112,8 +112,112 @@ ORDER BY <sort_specification>
 
 このクエリでは、都市名の昇順で家族の `id` が取得されます。 複数の項目に同じ都市名がある場合、クエリが `creationDate` の降順で並べ替えます。
 
+## <a name="documents-with-missing-fields"></a>フィールドがないドキュメント
+
+既定のインデックス作成ポリシーが設定されているコンテナーに対して実行される、`ORDER BY` を含むクエリでは、並べ替えプロパティが定義されていないドキュメントは返されません。 並べ替えプロパティが定義されていないドキュメントを含める場合は、インデックス作成ポリシーにこのプロパティを明示的に含める必要があります。
+
+たとえば、`"/*"` 以外のパスが明示的に含まれていないインデックス作成ポリシーを設定したコンテナーを次に示します。
+
+```json
+{
+    "indexingMode": "consistent",
+    "automatic": true,
+    "includedPaths": [
+        {
+            "path": "/*"
+        }
+    ],
+    "excludedPaths": []
+}
+```
+
+`Order By` 句に `lastName` を含むクエリを実行すると、結果には `lastName` プロパティが定義されているドキュメントのみが含まれます。 `lastName` について明示的に含めるパスが定義されていないため、クエリ結果に `lastName` のないドキュメントは表示されません。
+
+2 つのドキュメント (そのうちの 1 つには `lastName` が定義されていない) について、`lastName` で並べ替えるクエリを次に示します。
+
+```sql
+    SELECT f.id, f.lastName
+    FROM Families f
+    ORDER BY f.lastName
+```
+
+結果には、`lastName` が定義されているドキュメントのみが含まれます。
+
+```json
+    [
+        {
+            "id": "AndersenFamily",
+            "lastName": "Andersen"
+        }
+    ]
+```
+
+コンテナーのインデックス作成ポリシーを更新して `lastName` のパスを明示的に含めた場合、並べ替えプロパティが定義されていないドキュメントがクエリ結果に含まれます。 このスカラー値に至る (かつ、これを超えない) パスを明示的に定義する必要があります。 インデックス作成ポリシーのパス定義に `?` 文字を使用して、プロパティ `lastName` の明示的なインデックス付けを、それを超えるその他の入れ子になったパスなしで確実に行う必要があります。
+
+`lastName` が定義されていないドキュメントをクエリ結果に含めることができるインデックス作成ポリシーの例を次に示します。
+
+```json
+{
+    "indexingMode": "consistent",
+    "automatic": true,
+    "includedPaths": [
+        {
+            "path": "/lastName/?"
+        },
+        {
+            "path": "/*"
+        }
+    ],
+    "excludedPaths": []
+}
+```
+
+同じクエリをもう一度実行すると、`lastName` がないドキュメントがクエリ結果の最初に表示されます。
+
+```sql
+    SELECT f.id, f.lastName
+    FROM Families f
+    ORDER BY f.lastName
+```
+
+結果は次のようになります。
+
+```json
+[
+    {
+        "id": "WakefieldFamily"
+    },
+    {
+        "id": "AndersenFamily",
+        "lastName": "Andersen"
+    }
+]
+```
+
+並べ替え順序を `DESC` に変更すると、 `lastName` がないドキュメントがクエリ結果の最後に表示されます。
+
+```sql
+    SELECT f.id, f.lastName
+    FROM Families f
+    ORDER BY f.lastName DESC
+```
+
+結果は次のようになります。
+
+```json
+[
+    {
+        "id": "AndersenFamily",
+        "lastName": "Andersen"
+    },
+    {
+        "id": "WakefieldFamily"
+    }
+]
+```
+
 ## <a name="next-steps"></a>次のステップ
 
 - [作業の開始](sql-query-getting-started.md)
-- [SELECT 句](sql-query-select.md)
+- [Azure Cosmos DB での自動インデックス作成](index-policy.md)
 - [OFFSET LIMIT 句](sql-query-offset-limit.md)

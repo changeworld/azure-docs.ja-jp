@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 02ae140568150b0db8ebdea065ee683e4f4eec9c
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: a83ed5c9cec994c1bc4cadd5cf6208c159823658
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189010"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469019"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>チュートリアル:テナント モデルを作成する (プレビュー)
 
@@ -81,7 +81,7 @@ Speech SDK でテナント モデルを使用するには、音声リソース�
    > 北米の Office 365 企業ユーザーのお客様は、テナント モデル (英語) を作成することができます。 カスタマー ロックボックス、カスタマー キー、Office 365 Government のお客様は、この機能をご利用いただけません。 お客様がカスタマー ロックボックスまたはカスタマー キーのユーザーかどうかを判断するには、次のページを参照してください。
    > * [カスタマー ロックボックス](/microsoft-365/compliance/customer-lockbox-requests)
    > * [カスタマー キー](/microsoft-365/compliance/customer-key-overview)
-   > * [Office 365 Government](/microsoft-365/government)
+   > * [Office 365 Government](https://www.microsoft.com/microsoft-365/government)
 
 1. **[オプトイン]** を選択します。
 

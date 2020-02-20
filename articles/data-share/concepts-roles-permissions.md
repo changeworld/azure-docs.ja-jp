@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 0f836553c3c3bb324d76d022af189f154b5b1972
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 36a492f6a3e86cfb2fc9505550cc2d9f4746e070
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964466"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087161"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Azure Data Share のロールと要件 
 
@@ -91,7 +91,7 @@ REST API を使用してデータを共有する場合は、これらのロー�
 
 ## <a name="resource-provider-registration"></a>リソース プロバイダーの登録 
 
-ご自分の Azure テナントで Azure Data Share の招待を初めて表示する場合は、Microsoft.DataShare リソース プロバイダーを Azure サブスクリプションに手動で登録することが必要になる場合があります。 Microsoft.DataShare リソース プロバイダーを Azure サブスクリプションに登録するには、次の手順に従います。 
+ご自分の Azure テナントで Azure Data Share の招待を初めて表示する場合は、Microsoft.DataShare リソース プロバイダーを Azure サブスクリプションに手動で登録することが必要になる場合があります。 Microsoft.DataShare リソース プロバイダーを Azure サブスクリプションに登録するには、次の手順に従います。 リソース プロバイダーを登録するには、Azure サブスクリプションへの "*共同作成者*" アクセス権が必要です。
 
 1. Azure portal で、 **[サブスクリプション]** に移動します。
 1. Azure Data Share に使っているサブスクリプションを選択します。

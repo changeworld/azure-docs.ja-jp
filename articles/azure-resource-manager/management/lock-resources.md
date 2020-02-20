@@ -2,22 +2,20 @@
 title: 変更されないようにリソースをロックする
 description: 重要な Azure リソースの更新または削除をユーザーに禁止するには、すべてのユーザーとロールを対象にロックを適用します。
 ms.topic: conceptual
-ms.date: 05/14/2019
-ms.openlocfilehash: b7c6c7980f12e7f9015f4504f461733100b14ea8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 02/07/2020
+ms.openlocfilehash: 70fb189adb634b7ac24afe7cc8b94738117da5ef
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644360"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109543"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>リソースのロックによる予期せぬ変更の防止
 
 管理者は、サブスクリプション、リソース グループ、またはリソースをロックし、組織の他のユーザーが誤って重要なリソースを削除したり変更したりするのを防止しなければならないことがあります。 ロック レベルは **CanNotDelete** または **ReadOnly** に設定できます。 ポータルでは、これらのロックはそれぞれ **[削除]** と **[読み取り専用]** と表示されます。
 
 * **CanNotDelete** は、正規ユーザーはリソースの読み取りと変更を実行できますが、削除は実行できないことを示します。 
-* **ReadOnly** は、正規ユーザーはリソースの読み取りを実行できますが、リソースの更新は実行できないことを示します。 このロックの適用は、すべての正規ユーザーのアクセス許可を、**閲覧者**ロールによって与えられるアクセス許可に制限することに似ています。 
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+* **ReadOnly** は、正規ユーザーはリソースの読み取りを実行できますが、リソースの更新は実行できないことを示します。 このロックの適用は、すべての正規ユーザーのアクセス許可を、**閲覧者**ロールによって与えられるアクセス許可に制限することに似ています。
 
 ## <a name="how-locks-are-applied"></a>ロックが適用されるしくみ
 
@@ -36,6 +34,7 @@ Resource Manager のロックは、管理ウィンドウで実行され、`https
 * **ReadOnly** ロックを、仮想マシンを含むリソース グループに設定すると、どのユーザーも仮想マシンを起動したり、再起動したりできなくなります。 これらの操作では、POST 要求が必要です。
 
 ## <a name="who-can-create-or-delete-locks"></a>誰がロックを作成または削除できるか
+
 管理ロックを作成または削除するには、`Microsoft.Authorization/*` または `Microsoft.Authorization/locks/*` アクションにアクセスできる必要があります。 組み込みロールのうち、**所有者**と**ユーザー アクセス管理者**にのみこれらのアクションが許可されています。
 
 ## <a name="managed-applications-and-locks"></a>Managed Applications とロック
@@ -58,7 +57,12 @@ Azure Databricks などの一部の Azure サービスでは、[マネージド 
 
 ![サービスの削除](./media/lock-resources/delete-service.png)
 
+## <a name="azure-backups-and-locks"></a>Azure のバックアップとロック
+
+Azure Backup サービスによって作成されたリソース グループをロックした場合、バックアップは失敗するようになります。 このサービスでは、最大 18 個の復元ポイントがサポートされています。 **CanNotDelete** ロックを使用すると、バックアップ サービスは復元ポイントをクリーンアップできません。 詳細については、「[よく寄せられる質問 - Azure VM のバックアップ](../../backup/backup-azure-vm-backup-faq.md)」を参照してください。
+
 ## <a name="portal"></a>ポータル
+
 [!INCLUDE [resource-manager-lock-resources](../../../includes/resource-manager-lock-resources.md)]
 
 ## <a name="template"></a>Template

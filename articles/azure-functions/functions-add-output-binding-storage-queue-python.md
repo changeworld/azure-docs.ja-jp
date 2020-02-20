@@ -3,12 +3,12 @@ title: Python 関数に Azure Storage キュー バインドを追加する
 description: 出力バインディングを使用して Azure Storage キューを Python 関数に統合します。
 ms.date: 01/15/2020
 ms.topic: quickstart
-ms.openlocfilehash: 14a381d13da052fd67679ed17bbb6b6711f7a0e6
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f5527e0e636c3f8c9ee3723570ed9811f0df3641
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715369"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198481"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Python 関数に Azure Storage キュー バインドを追加する
 
@@ -156,7 +156,7 @@ def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
 1. 完了したら、**Ctrl** + **C** キーでホストを停止します。
 
 > [!TIP]
-> 起動中、[Storage バインディング拡張機能](functions-bindings-storage-blob.md#packages---functions-2x-and-higher)など、Microsoft のバインディング拡張機能がホストによってダウンロードされてインストールされます。 このインストールが実行される理由は、*host.json* ファイルでバインディング拡張機能が次のプロパティによって既定で有効になっているためです。
+> 起動中、[Storage バインディング拡張機能](functions-bindings-storage-blob.md#add-to-your-functions-app)など、Microsoft のバインディング拡張機能がホストによってダウンロードされてインストールされます。 このインストールが実行される理由は、*host.json* ファイルでバインディング拡張機能が次のプロパティによって既定で有効になっているためです。
 >
 > ```json
 > {
@@ -176,19 +176,19 @@ def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
 
 1. 関数プロジェクトの *local.setting.json* ファイルを開き、接続文字列の値をコピーします。 ターミナルまたはコマンド ウィンドウで、次のコマンドを実行して、`AZURE_STORAGE_CONNECTION_STRING` という名前の環境変数を作成し、`<connection_string>` の代わりに実際の接続文字列を貼り付けます。 (この環境変数を作成すれば、`--connection-string` 引数を使用して接続文字列を後続の各コマンドに指定する必要はありません。)
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     $env:AZURE_STORAGE_CONNECTION_STRING = "<connection_string>"
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     set AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
@@ -198,19 +198,19 @@ def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
     
 1. (省略可) [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) コマンドを使用して、ご利用のアカウント内のストレージ キューを表示します。 このコマンドからの出力には、`outqueue` という名前のキューが含まれています。これはこのキューに対する最初のメッセージを関数が書き込んだときに作成されたものです。
     
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     az storage queue list --output tsv
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     az storage queue list --output tsv
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     az storage queue list --output tsv
@@ -221,19 +221,19 @@ def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
 
 1. [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) コマンドを使用して、このキュー内のメッセージ (先ほど関数をテストするときに使用した名) を表示します。 このコマンドでは、キューの 1 つ目のメッセージを [base64 エンコーディング](functions-bindings-storage-queue.md#encoding)で取得します。そのため、テキストとして表示するためには、メッセージをデコードする必要もあります。
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}')))
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     メッセージ コレクションを逆参照して、base64 からデコードする必要があるため、PowerShell を実行し、PowerShell コマンドを使用してください。
 
@@ -251,13 +251,13 @@ def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
     
 1. 前のクイックスタートと同様、ブラウザーまたは CURL を使用して、再デプロイした関数をテストします。
 
-    # <a name="browsertabbrowser"></a>[ブラウザー](#tab/browser)
+    # <a name="browser"></a>[ブラウザー](#tab/browser)
     
     publish コマンドの出力に表示されている完全な **Invoke url** にクエリ パラメーター `&name=Azure` を追加して、ブラウザーのアドレス バーにコピーします。 関数をローカルで実行したときと同様の出力がブラウザーに表示されるはずです。
 
     ![Azure 上で実行された関数の出力をブラウザーで表示したところ](./media/functions-create-first-function-python/function-test-cloud-browser.png)
 
-    # <a name="curltabcurl"></a>[curl](#tab/curl)
+    # <a name="curl"></a>[curl](#tab/curl)
     
     **Invoke url** にパラメーター `&name=Azure` を追加して [curl](https://curl.haxx.se/) を実行します。 "Hello Azure" というテキストがコマンドの出力として表示されます。
     

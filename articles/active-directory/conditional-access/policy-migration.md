@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16c6ce46af8fb9a9ab4be5fcc63ccd4909374e4f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 33b1f76dd1489e00115d0f805add8d754038df84
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74846175"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185908"
 ---
 # <a name="conditional-access-classic-policy-migration"></a>条件付きアクセスのクラシック ポリシーの移行
 
@@ -89,7 +89,7 @@ ms.locfileid: "74846175"
 
 ![条件付きアクセスでの条件](./media/policy-migration/16.png)
  
-**Exchange Active Sync** をクライアント アプリの条件として含む Office 365 Exchange Online の[アプリ ベース](technical-reference.md#approved-client-app-requirement)のクラシック ポリシーは、**サポートされている**[デバイス プラットフォーム](technical-reference.md#device-platform-condition)と**サポートされていない**デバイス プラットフォームに対応できます。 関連する新しいポリシーで個々のデバイス プラットフォームを構成することはできませんが、サポートを[サポートされているデバイス プラットフォーム](technical-reference.md#device-platform-condition)のみに制限できます。 
+**Exchange Active Sync** をクライアント アプリの条件として含む Office 365 Exchange Online のアプリ ベースのクラシック ポリシーは、**サポートされている**デバイス プラットフォームと**サポートされていない**デバイス プラットフォームに対応できます。 関連する新しいポリシーで個々のデバイス プラットフォームを構成することはできませんが、サポートを[サポートされているデバイス プラットフォーム](concept-conditional-access-conditions.md#device-platforms)のみに制限できます。 
 
 ![条件付きアクセスでの Exchange ActiveSync の選択](./media/policy-migration/65.png)
 
@@ -109,13 +109,13 @@ ms.locfileid: "74846175"
 
 ### <a name="device-platforms"></a>デバイス プラットフォーム
 
-[アプリ ベースのコントロール](technical-reference.md#approved-client-app-requirement)を持つクラシック ポリシーは、iOS と Android で[デバイス プラットフォーム条件](technical-reference.md#device-platform-condition)として事前に構成されています。 
+アプリ ベースのコントロールを持つクラシック ポリシーは、iOS と Android でデバイス プラットフォーム条件として事前に構成されています。 
 
-新しいポリシーでは、個別にサポートする[デバイス プラットフォーム](technical-reference.md#device-platform-condition)を選ぶ必要があります。
+新しいポリシーでは、個別にサポートする[デバイス プラットフォーム](concept-conditional-access-conditions.md#device-platforms)を選ぶ必要があります。
 
 ![条件付きアクセスでのデバイス プラットフォームの選択](./media/policy-migration/41.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [条件付きアクセスのレポート専用モードを使用して、新しいポリシー決定の影響を判断します。](concept-conditional-access-report-only.md)
 - 条件付きアクセス ポリシーの構成方法については、「[一般的な条件付きアクセス ポリシー](concept-conditional-access-policy-common.md)」を参照してください。
