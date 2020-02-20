@@ -22,7 +22,7 @@ ms.locfileid: "75772212"
 エンド ツー エンドのデータ ウェアハウス ソリューションを作成するには、業界をリードする広範なツールから選択する必要があります。  この記事では、Azure SQL Data Warehouse をサポートする公式のビジネス インテリジェンス (BI) ソリューションを提供している Microsoft パートナー企業について説明しています。
 
 ## <a name="our-business-intelligence-partners"></a>ビジネス インテリジェンス パートナー
-| Partner | [説明] | Web サイト/製品リンク |
+| Partner | 説明 | Web サイト/製品リンク |
 | ------- | ----------- | -------------------- |
 | ![Birst][1] |**Birst**<br>Birst は、共有の一般的な分析ファブリック上に織り込まれた仮想化 BI インスタンスのネットワークを介して、組織全体を接続します|[製品ページ][birst_website]<br>[Azure Marketplace][birst_marketplace]<br> |
 | ![ClearStory Data][2] |**ClearStory Data (継続的なビジネス インサイト)**<br>ClearStory Data は、SQL Data Warehouse に格納されている各種データ全体にわたる高速サイクル分析を実現します。 ClearStory の Spark ベース プラットフォームと分析アプリケーションにより、多種多様なデータ セットへのアクセスと協調が高速化されます。 また、高速で調和的な探索が実現されるため、ビジネス ユーザーは他のユーザーに頼らずに知見を得ることができます。 |[製品ページ][clearstory_website]<br> |
