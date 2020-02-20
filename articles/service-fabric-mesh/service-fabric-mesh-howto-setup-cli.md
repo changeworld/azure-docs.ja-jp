@@ -17,7 +17,7 @@ Service Fabric Mesh コマンド ライン インターフェイス (CLI) は、
 
 使用できる3 種類の CLI を次の表にまとめています。
 
-| CLI モジュール | ターゲット環境 |  [説明] | 
+| CLI モジュール | ターゲット環境 |  説明 | 
 |---|---|---|
 | az mesh | Azure Service Fabric Mesh | プライマリ CLI。Azure Service Fabric Mesh 環境でアプリケーションをデプロイしてリソースを管理するために使用できます。 
 | sfctl | ローカル クラスター | Service Fabric CLI。ローカル クラスターに対する Service Fabric リソースのデプロイメントとテストに使用できます。  
