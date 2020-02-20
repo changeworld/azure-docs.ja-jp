@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/28/2020
+ms.date: 02/10/2020
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1ed80ad87d81c2ec1bdfe50e9cd4556f141507b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c91b9ffc9e3487e492c91cb0f5825d0b725f9410
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76907130"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120086"
 ---
 # <a name="create-collections-on-the-my-apps-portal"></a>マイ アプリ ポータルでコレクションを作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "76907130"
 > [!NOTE]
 > この記事では、管理者がコレクションを有効にして作成する方法について説明します。 マイ アプリ ポータルとコレクションの使用方法に関するエンド ユーザー向けの情報については、[コレクションにアクセスして使用する方法](https://docs.microsoft.com/azure/active-directory/user-help/my-applications-portal-workspaces)に関するページを参照してください。
 
-## <a name="enable-my-apps-preview-features"></a>マイ アプリのプレビュー機能を有効にする
+## <a name="enable-the-latest-my-apps-features"></a>最新のマイ アプリ機能を有効にする
 
 1. [**Azure portal**](https://portal.azure.com/) を開いて、ユーザー管理者またはグローバル管理者としてサインインします。
 
@@ -39,8 +39,8 @@ ms.locfileid: "76907130"
 3. **[ユーザー機能プレビュー]** で、 **[ユーザー機能プレビュー設定の管理]** を選択します。
 
 4. **[ユーザーはマイ アプリのプレビュー機能を使用できます]** で、次のいずれかのオプションを選択します。
-   * **[選択済み]** - 特定のグループのプレビュー機能を有効にします。 **[グループを選ぶ]** オプションを使用して、プレビュー機能を有効にしたいグループを選択します。  
-   * **[すべて]** - すべてのユーザーに対してプレビュー機能を有効にします。
+   * **[選択済み]** - 特定のグループに対して機能を有効にします。 **[グループを選ぶ]** オプションを使用して、機能を有効にしたいグループを選択します。  
+   * **[すべて]** - すべてのユーザーに対して機能を有効にします。
 
 > [!NOTE]
 > ユーザーがマイ アプリ ポータルを開くには、リンク `https://myapps.microsoft.com` または組織用にカスタマイズされたリンク (`https://myapps.microsoft.com/contoso.com` など) を使用できます。 新しいマイ アプリ エクスペリエンスを有効にすると、[マイ アプリ] ページの上部に **[An updated My Applications experience is available]\(更新されたマイ アプリケーション エクスペリエンスが利用可能\)** バナーが表示され、ユーザーは **[Try it]\(試す\)** を選択して新しいエクスペリエンスを表示できます。 新しいエクスペリエンスの使用をやめるには、そのページの上部にある **[Leave new experience]\(新しいエクスペリエンスを使用しない\)** バナーの **[はい]** を選択します。

@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: 2b11bbc22714ab1905421812e3cb24ee660ee667
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 750d08f3667317e9e1e396cff50884101d7ff55d
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372332"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131965"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database サーバーレス
 
@@ -342,7 +342,7 @@ az sql db show --name $databasename --resource-group $resourcegroupname --server
 |8:00-24:00|0|0|一時停止中、コンピューティングには課金なし|0 仮想コア秒|
 |24 時間で課金対象となる合計仮想コア秒数||||50,400 仮想コア秒|
 
-コンピューティングの単位価格は $0.000073/仮想コア/秒とします。  この場合、この 24 時間で課金対象となるコンピューティングは、コンピューティング ユニット価格と課金対象の仮想コア秒数の積になります: $0.000073/仮想コア/秒 * 50,400 仮想コア秒 = $3.68
+コンピューティングの単位価格は $0.000145/仮想コア/秒とします。  この場合、この 24 時間で課金対象となるコンピューティングは、コンピューティング ユニット価格と課金対象の仮想コア秒数の積になります: $0.000145/仮想コア/秒 * 50,400 仮想コア秒 = 約 $7.31
 
 ### <a name="azure-hybrid-benefit-and-reserved-capacity"></a>Azure ハイブリッド特典と予約容量
 
@@ -350,7 +350,7 @@ Azure ハイブリッド特典 (AHB) と予約容量の割引は、サーバー�
 
 ## <a name="available-regions"></a>対応リージョン
 
-サーバーレス コンピューティング レベルは、次のリージョンを除く全世界で利用できます。中国東部、中国北部、ドイツ中部、ドイツ北東部、英国北部、英国南部 2、米国中西部の各リージョンと、米国政府中部 (アイオワ) を除くすべてのリージョンで利用できます。
+サーバーレス コンピューティング レベルは、次のリージョンを除く全世界で利用できます。中国東部、中国北部、ドイツ中部、ドイツ北東部、英国北部、英国南部 2、米国中西部の各リージョンと、US Gov 中部 (アイオワ) を除くすべてのリージョンで利用できます。
 
 ## <a name="next-steps"></a>次のステップ
 

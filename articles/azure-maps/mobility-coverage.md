@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9519aaf7b57f5f4fbafa7248d3d524aea5d22c46
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 8dcbfe7a47dba5a1783d6010d41e33073bc0bb20
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922401"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048918"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Azure Maps のモビリティ範囲
 
-Azure Maps [Mobility サービス](https://aka.ms/AzureMapsMobilityService)を使用すると、マルチモーダルな旅行計画オプションを備えた公共輸送機関、自転車シェアリング、スクーター シェアリングのルーティングの機能を実現できます。 このサービスでは、公共輸送機関に対して、近くの駅、停留所、路線を検索し、スケジュール済みおよびリアルタイムの公共輸送機関の到着時刻、停留所の一覧、路線案内だけでなく、詳細とマルチモーダルの手順を追った旅程とサービス アラートなどの情報を提供しています。 また、モビリティ サービスからは、カー シェアリングの車両、シェア済みのバイクやスクーターにリアルタイムで静的な可用性情報も返されます。
+Azure Maps では [Mobility Service](https://aka.ms/AzureMapsMobilityService) を利用することができます。 Mobility Service を使用すると、公共輸送機関、自転車シェアリング、スクーター シェアリングの機能を備えたアプリケーションの開発期間を短縮することができます。 このサービスには、マルチモーダルな旅行計画オプションでルート検索する機能が用意されています。 たとえば、公共輸送機関に関して、近くの駅や停留所、路線を検索したり、時刻表情報を取得したり、到着時刻をリアルタイムで取得したり、停留所を一覧表示したり、ルート案内を提供したりする機能が利用できます。 このサービスは、自動車、バイク、スクーターなど、シェアリングされた車両の静的な空き状況についての情報をリアルタイムに返します。 詳細でマルチモーダルなステップ バイ ステップの旅程とサービス アラートを、この API から取得することができます。
 
-Azure Maps は、すべての都市と国/地域に対して同じレベルの情報と精度を備えているわけではありません。 輸送データを呼び出す機能は都市によって異なるため、データには都市にサービスを提供するすべての公共輸送機関のオプションと機関が含まれているとは限りません。
+Azure Maps は、すべての都市と国 (または地域) に対して同じレベルの情報と精度を備えているわけではありません。 輸送データを呼び出す機能は、都市によって異なります。 データには都市にサービスを提供するすべての公共輸送機関のオプションと機関が含まれているとは限りません。
 
 次の表は、Azure Maps Mobility サービスの対象範囲情報を提供しています。
 

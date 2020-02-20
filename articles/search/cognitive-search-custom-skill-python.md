@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.openlocfilehash: 06a247c9e65ce386034a50650e46994bbbe9074a
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: fc69761a05ea381d39d58d5ebf0046e0d9874961
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152172"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210467"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>例:Python を使用してカスタム スキルを作成する
 
@@ -52,12 +52,12 @@ Visual Studio Code の Azure Functions プロジェクト テンプレートで�
 1. Python のバージョンを選択します (Azure Functions では、バージョン 3.7.5 がサポートされています)。
 1. プロジェクトの最初の関数のテンプレートを選択します。 **[HTTP トリガー]** を選択して、HTTP によってトリガーされる関数を新しい関数アプリに作成します。
 1. 関数名を指定します。 このケースでは、「**Concatenator**」を使用しましょう。 
-1. 認証レベルとして **[関数]** を選択します。 これは、関数の HTTP エンドポイントを呼び出すために[関数キー](../azure-functions/functions-bindings-http-webhook.md#authorization-keys)を指定することを意味します。 
+1. 認証レベルとして **[関数]** を選択します。 これは、関数の HTTP エンドポイントを呼び出すために[関数キー](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)を指定することを意味します。 
 1. プロジェクトを開く方法を選択します。 この手順では、 **[ワークスペースに追加]** を選択して、現在のワークスペースに関数アプリを作成します。
 
 Visual Studio Code によって、新しいワークスペースに関数アプリ プロジェクトが作成されます。 このプロジェクトには、[host.json](../azure-functions/functions-host-json.md) および [local.settings.json](../azure-functions/functions-run-local.md#local-settings-file) 構成ファイルと、言語固有のプロジェクト ファイルが含まれています。 
 
-新しい HTTP によってトリガーされる関数は、関数アプリ プロジェクトの **Concatenator** フォルダーにも作成されます。 その中には、次の内容の "\__init__.py" というファイルがあります。
+新しい HTTP によってトリガーされる関数は、関数アプリ プロジェクトの **Concatenator** フォルダーにも作成されます。 その中には、次の内容の "\_\_init__.py" というファイルがあります。
 
 ```py
 import logging

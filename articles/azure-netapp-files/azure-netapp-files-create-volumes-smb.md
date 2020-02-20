@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 6b1946cdaebd01a0742f9ce2b2efb5054ac9d2a8
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: c65da771dd483b3a79785d4bec2b89cbeefca5c4
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867430"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049883"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files の SMB ボリュームを作成する
 
@@ -73,6 +73,8 @@ Azure NetApp Files は NFS ボリュームと SMBv3 ボリュームをサポー�
     Azure NetApp Files の委任されたサブネット経由で到達できないドメイン コントローラーがある場合は、Azure サポート リクエストを送信して、その範囲を**グローバル** (既定) から**サイト**に変更することができます。  Azure NetApp Files は、Azure NetApp Files の委任されたサブネットのアドレス空間が存在するサイト内のドメイン コントローラーとのみ通信する必要があります。
 
     AD サイトとサービスに関する「[サイト トポロジの設計](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)」を参照してください。 
+    
+その他の AD 情報については、Azure NetApp Files の「[SMB に関する FAQ](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs)」を参照してください。 
 
 ## <a name="create-an-active-directory-connection"></a>Active Directory 接続を作成する
 

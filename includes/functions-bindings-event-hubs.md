@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: ec3a7b6420144278df66f693d9fd9933449b3d80
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: a31dc1c6d1a7f4dce6e7baae5a0e0e8f3d6d3d34
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76748793"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77179054"
 ---
 ## <a name="trigger"></a>トリガー
 
@@ -36,7 +36,7 @@ ms.locfileid: "76748793"
 
 すべての関数の実行が (エラーの有無にかかわらず) 完了すると、関連付けられているストレージ アカウントにチェックポイントが追加されます。 チェックポイントの追加が成功したら、1000 個のすべてのメッセージが再度取得されることはありません。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 次の例は、イベント ハブ トリガーのメッセージ本文をログに記録する [C# 関数](../articles/azure-functions/functions-dotnet-class-library.md)を示しています。
 
@@ -88,7 +88,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+# <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
 次の例は、*function.json* ファイルのイベント ハブ トリガー バインドと、そのバインドが使用される [C# スクリプト関数](../articles/azure-functions/functions-reference-csharp.md)を示しています。 この関数では、イベント ハブ トリガーのメッセージ本文を記録します。
 
@@ -169,7 +169,7 @@ public static void Run(string[] eventHubMessages, TraceWriter log)
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 次の例は、*function.json* ファイルのイベント ハブ トリガー バインドと、そのバインドが使用される [JavaScript 関数](../articles/azure-functions/functions-reference-node.md)を示しています。 この関数は、[イベント メタデータ](#trigger---event-metadata)を読み取り、メッセージをログに記録します。
 
@@ -257,7 +257,7 @@ module.exports = function (context, eventHubMessages) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 次の例は、*function.json* ファイルのイベント ハブ トリガー バインドと、そのバインドが使用される [Python 関数](../articles/azure-functions/functions-reference-python.md)を示しています。 この関数は、[イベント メタデータ](#trigger---event-metadata)を読み取り、メッセージをログに記録します。
 
@@ -287,19 +287,9 @@ def main(event: func.EventHubEvent):
     logging.info('  Offset =', event.offset)
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-次の例は、*function.json* ファイルの Event Hub トリガー バインドと、そのバインドが使用される [Java 関数](../articles/azure-functions/functions-reference-java.md)を示しています。 この関数では、Event Hub トリガーのメッセージ本文を記録します。
-
-```json
-{
-  "type": "eventHubTrigger",
-  "name": "msg",
-  "direction": "in",
-  "eventHubName": "myeventhubname",
-  "connection": "myEventHubReadConnectionAppSetting"
-}
-```
+次の例は、イベント ハブ トリガーのメッセージ本文をログに記録するイベント ハブ トリガー バインドを示しています。
 
 ```java
 @FunctionName("ehprocessor")
@@ -319,7 +309,7 @@ public void eventHubProcessor(
 
 ## <a name="trigger---attributes-and-annotations"></a>トリガー - 属性と注釈
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [C# クラス ライブラリ](../articles/azure-functions/functions-dotnet-class-library.md)では、[EventHubTriggerAttribute](https://github.com/Azure/azure-functions-eventhubs-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs/EventHubTriggerAttribute.cs) 属性を使用します。
 
@@ -335,19 +325,19 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 完全な例については、「[トリガー - C# の例](#trigger)」を参照してください。
 
-# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+# <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
 属性は、C# スクリプトではサポートされていません。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 属性は、JavaScript ではサポートされていません。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 属性は、Python ではサポートされていません。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Java [関数ランタイム ライブラリ](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)で、その値が Event Hub に由来するパラメーター上で [EventHubTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhubtrigger) 注釈を使用します。 これらの注釈を使用したパラメーターによって、イベントを受信したときに関数が実行されます。 この注釈は、Java のネイティブ型、POJO、または `Optional<T>` を使用した null 許容値で使用できます。
 
@@ -374,7 +364,7 @@ Java [関数ランタイム ライブラリ](https://docs.microsoft.com/java/api
 
 Event Hubs トリガーには、いくつかの[メタデータ プロパティ](../articles/azure-functions/./functions-bindings-expressions-patterns.md)があります。 メタデータ プロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらのプロパティは、[EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata) クラスに由来します。
 
-|プロパティ|種類|説明|
+|プロパティ|Type|説明|
 |--------|----|-----------|
 |`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|`PartitionContext` のインスタンスです。|
 |`EnqueuedTimeUtc`|`DateTime`|エンキューされた時刻 (UTC)。|
@@ -398,7 +388,7 @@ Event Hubs 出力バインドを使用して、イベント ストリームに�
 
 出力バインディングを実装する前に、必要なパッケージ参照が用意されていることを確認してください。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 次の例は、メソッドの戻り値を出力として使用してメッセージをイベント ハブに書き込む [C# 関数](../articles/azure-functions/functions-dotnet-class-library.md)を示しています。
 
@@ -432,7 +422,7 @@ public static async Task Run(
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+# <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
 次の例は、*function.json* ファイルのイベント ハブ トリガー バインドと、そのバインドが使用される [C# スクリプト関数](../articles/azure-functions/functions-reference-csharp.md)を示しています。 この関数では、メッセージをイベント ハブに書き込みます。
 
@@ -484,7 +474,7 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 次の例は、*function.json* ファイルのイベント ハブ トリガー バインドと、そのバインドが使用される [JavaScript 関数](../articles/azure-functions/functions-reference-node.md)を示しています。 この関数では、メッセージをイベント ハブに書き込みます。
 
@@ -536,7 +526,7 @@ module.exports = function(context) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 次の例は、*function.json* ファイルのイベント ハブ トリガー バインドと、そのバインドが使用される [Python 関数](../articles/azure-functions/functions-reference-python.md)を示しています。 この関数では、メッセージをイベント ハブに書き込みます。
 
@@ -566,7 +556,7 @@ def main(timer: func.TimerRequest) -> str:
     return 'Message created at: {}'.format(timestamp)
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 次の例は、現在の時刻を含むメッセージを Event Hub に書き込む Java 関数を示しています。
 
@@ -585,7 +575,7 @@ public String sendTime(
 
 ## <a name="output---attributes-and-annotations"></a>出力 - 属性と注釈
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [C# クラス ライブラリ](../articles/azure-functions/functions-dotnet-class-library.md)では、[EventHubAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs) 属性を使用します。
 
@@ -602,19 +592,19 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 
 完全な例については、「[出力 - C# の例](#output)」を参照してください。
 
-# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+# <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
 属性は、C# スクリプトではサポートされていません。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 属性は、JavaScript ではサポートされていません。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 属性は、Python ではサポートされていません。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 [Java 関数ランタイム ライブラリ](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)で、その値が Event Hub に公開されるパラメーター上で [EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) 注釈を使用します。 パラメーターの型は `OutputBinding<T>` にする必要があります。`T` は POJO または Java の任意のネイティブ型です。
 
@@ -637,19 +627,19 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 
 ## <a name="output---usage"></a>出力 - 使用方法
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 `out string paramName` などのメソッド パラメーターを使用してメッセージを送信します。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 複数のメッセージを書き込むには、`out string` の代わりに `ICollector<string>` または `IAsyncCollector<string>` を使用します。
 
-# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+# <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
 `out string paramName` などのメソッド パラメーターを使用してメッセージを送信します。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 複数のメッセージを書き込むには、`out string` の代わりに `ICollector<string>` または `IAsyncCollector<string>` を使用します。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 `context.bindings.<name>` を使用して出力イベントにアクセスします。`<name>` は *function.json* の `name` プロパティで指定された値です。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 関数からイベント ハブ メッセージを出力するには、次の 2 つのオプションがあります。
 
@@ -657,7 +647,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 
 - **命令型**:[Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) 型として宣言されたパラメーターの [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) メソッドに値を渡します。 `set` に渡された値は、イベント ハブ メッセージとして永続化されます。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 [EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) 注釈を使用して関数からイベント ハブ メッセージを出力するには、次の 2 つのオプションがあります。
 

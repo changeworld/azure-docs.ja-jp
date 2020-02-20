@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 6/5/2019
 ms.author: victorh
-ms.openlocfilehash: 0ba21fe3789fba03cd4814d19fb103c3a2559c13
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 6ab6c4c2051ccd2fbb22c383b9ca0af53ceb13d3
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75662906"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77054916"
 ---
 | リソース | 既定/上限 | Note |
 | --- | --- | --- |
@@ -21,7 +21,7 @@ ms.locfileid: "75662906"
 | HTTP リスナー |100<sup>1</sup> | |
 | HTTP の負荷分散規則 |100<sup>1</sup> | |
 | バックエンドの HTTP 設定 |100<sup>1</sup> | |
-| ゲートウェイあたりのインスタンスの数 |32 | |
+| ゲートウェイあたりのインスタンスの数 |V1 SKU - 32<br>V2 SKU - 125 | |
 | SSL 証明書の数 |100<sup>1</sup> |HTTP リスナーあたり 1 |
 | 最大 SSL 証明書サイズ |V1 SKU - 10 KB<br>V2 SKU - 16 KB| |
 | 認証証明書 |100 | |
@@ -36,7 +36,7 @@ ms.locfileid: "75662906"
 | URL の最大長|32KB| |
 | HTTP/2 向けヘッダーの最大サイズ |4KB| |
 | 最大ファイル アップロード サイズ (標準) |2 GB | |
-| 最大ファイル アップロード サイズ (WAF) |中規模の v1 WAF ゲートウェイ、100 MB<br>大規模の v1 WAF ゲートウェイ、500 MB<br>v2 WAF、750 MB| |
+| 最大ファイル アップロード サイズ (WAF) |中規模の V1 WAF ゲートウェイ、100 MB<br>大規模の V1 WAF ゲートウェイ、500 MB<br>V2 WAF、750 MB| |
 | WAF の本文サイズの制限 (ファイルがない場合)|128 KB||
 | WAF カスタム規則の最大数|100||
 | WAF 除外の最大数|100||

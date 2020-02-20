@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/12/2019
-ms.openlocfilehash: f088b8210b8170d22e84d131f0a72f5f8caa3b92
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/10/2020
+ms.openlocfilehash: f8737f645df2aefbf9ce544199f0cc45ce6a3d60
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435220"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162805"
 ---
 # <a name="run-apache-spark-from-the-spark-shell"></a>Spark Shell から Apache Spark を実行する
 
@@ -27,29 +27,74 @@ ms.locfileid: "75435220"
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Spark には、Scala (spark-shell) 向けと Python (pyspark) 向けのシェルが用意されています。 SSH セッションで、次のいずれかのコマンドを入力します。
+1. Spark には、Scala (spark-shell) 向けと Python (pyspark) 向けのシェルが用意されています。 この SSH セッションでは、次の "*いずれか*" のコマンドを入力します。
 
     ```bash
     spark-shell
-    pyspark
+
+    # Optional configurations
+    # spark-shell --num-executors 4 --executor-memory 4g --executor-cores 2 --driver-memory 8g --driver-cores 4
     ```
 
-    これで適切な言語で Spark コマンドを入力できるようになります。
+    ```bash
+    pyspark
 
-1. 基本コマンドの例:
+    # Optional configurations
+    # pyspark --num-executors 4 --executor-memory 4g --executor-cores 2 --driver-memory 8g --driver-cores 4
+    ```
+
+    オプション構成を使用する場合は、まず [Apache Spark の OutOfMemoryError 例外](./apache-spark-troubleshoot-outofmemory.md)に関するページを確認してください。
+
+1. 基本的なコマンドの例を次に示します。 該当する言語を選択してください。
+
+    ```spark-shell
+    val textFile = spark.read.textFile("/example/data/fruits.txt")
+    textFile.first()
+    textFile.filter(line => line.contains("apple")).show()
+    ```
+
+    ```pyspark
+    textFile = spark.read.text("/example/data/fruits.txt")
+    textFile.first()
+    textFile.filter(textFile.value.contains("apple")).show()
+    ```
+
+1. CSV ファイルに対してクエリを実行します。 下のコマンドは `spark-shell` と `pyspark` の両方に使用できます。
 
     ```scala
-    // Load data
+    spark.read.csv("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv").show()
+    ```
+
+1. CSV ファイルに対してクエリを実行し、結果を変数に格納します。
+
+    ```spark-shell
     var data = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv")
+    ```
 
-    // Show data
+    ```pyspark
+    data = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv")
+    ```
+
+1. 結果を表示します。
+
+    ```spark-shell
     data.show()
-
-    // Select certain columns
     data.select($"BuildingID", $"Country").show(10)
+    ```
 
-    // exit shell
+    ```pyspark
+    data.show()
+    data.select("BuildingID", "Country").show(10)
+    ```
+
+1. Exit
+
+    ```spark-shell
     :q
+    ```
+
+    ```pyspark
+    exit()
     ```
 
 ## <a name="sparksession-and-sparkcontext-instances"></a>SparkSession インスタンスと SparkContext インスタンス

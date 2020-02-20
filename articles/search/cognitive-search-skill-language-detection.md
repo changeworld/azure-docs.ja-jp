@@ -49,7 +49,7 @@ Microsoft.Skills.Text.LanguageDetectionSkill
 |--------------------|-------------|
 | languageCode | 識別された言語の ISO 6391 言語コード。 例: "en"。 |
 | languageName | 言語の名前。 例: "English"。 |
-| スコア | 0 から 1 の値。 言語が正しく識別されている確率。 文章内に言語が混在している場合、スコアが 1 よりも低くなる場合があります。  |
+| score | 0 から 1 の値。 言語が正しく識別されている確率。 文章内に言語が混在している場合、スコアが 1 よりも低くなる場合があります。  |
 
 ##  <a name="sample-definition"></a>定義例
 

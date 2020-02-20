@@ -3,19 +3,19 @@ title: Speech SDK for C# を使用して音声の意図を認識する方法
 titleSuffix: Azure Cognitive Services
 description: このガイドでは、Speech SDK for C# を使用して、音声から意図を認識する方法を学習します。
 services: cognitive-services
-author: wolfma61
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/28/2019
-ms.author: wolfma
-ms.openlocfilehash: 554a7cbd79dbb6e1306686600474f727c99defed
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 5d3c77c307739f9014010a592aa496a1cc83b333
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805894"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120043"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Speech SDK for C# を使用して音声の意図を認識する方法
 
@@ -91,12 +91,15 @@ Azure ダッシュ ボードで LUIS のリソースを作成した後、[LUIS �
 
    [!code-csharp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#toplevel)]
 
-1. 指定された `Main()` メソッドの内部に次のコードを追加します。
+1. 用意されている `Main()` メソッドを、次のように対応する非同期メソッドに置き換えます。
 
    ```csharp
-   RecognizeIntentAsync().Wait();
-   Console.WriteLine("Please press Enter to continue.");
-   Console.ReadLine();
+   public static async Task Main()
+   {
+       await RecognizeIntentAsync();
+       Console.WriteLine("Please press Enter to continue.");
+       Console.ReadLine();
+   }
    ```
 
 1. 次に示すように空の非同期メソッド `RecognizeIntentAsync()` を作成します。
@@ -173,7 +176,7 @@ result.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_Js
 
 ## <a name="specify-recognition-language"></a>認識言語を指定する
 
-既定では、LUIS は意図を米国英語 (`en-us`) で認識します。 音声構成の `SpeechRecognitionLanguage` プロパティにロケール コードを割り当てることで、意図を他の言語で認識することができます。 たとえば、認識エンジンを作成する前にアプリケーションに `config.SpeechRecognitionLanguage = "de-de";` を追加すると、意図はドイツ語で認識されます。 詳細については、[サポートされている言語](language-support.md#speech-to-text)に関するページを参照してください。
+既定では、LUIS は意図を米国英語 (`en-us`) で認識します。 音声構成の `SpeechRecognitionLanguage` プロパティにロケール コードを割り当てることで、意図を他の言語で認識することができます。 たとえば、認識エンジンを作成する前にアプリケーションに `config.SpeechRecognitionLanguage = "de-de";` を追加すると、意図はドイツ語で認識されます。 詳細については、[LUIS の言語サポート](../LUIS/luis-language-support.md#languages-supported)に関するページを参照してください。
 
 ## <a name="continuous-recognition-from-a-file"></a>ファイルからの継続的な認識
 
@@ -194,7 +197,7 @@ result.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_Js
 [!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 この記事のコードを **samples/csharp/sharedcontent/console** フォルダーから探します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [クイック スタート:マイクから音声を認識する](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)
+> [クイック スタート: マイクから音声を認識する](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)

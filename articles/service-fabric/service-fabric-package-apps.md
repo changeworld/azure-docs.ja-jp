@@ -3,12 +3,12 @@ title: Azure Service Fabric アプリをパッケージ化する
 description: Azure Service Fabric アプリケーションをパッケージ化し、クラスターへのデプロイを準備する方法について説明します。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 16bd48963040a8e30ff81f40c01134014eaccf48
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 7c99eec28ac06ecf666d6dda1015f889841a5dbf
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639685"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083618"
 ---
 # <a name="package-an-application"></a>アプリケーションをパッケージ化する
 
@@ -56,9 +56,9 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 ### <a name="build-a-package-by-using-visual-studio"></a>Visual Studio を使用したパッケージ構築
 
-Visual Studio 2015 を使用して、アプリケーションを作成する場合、パッケージのコマンドを使用して、前述のレイアウトと一致するパッケージを自動的に作成できます。
+Visual Studio を使用して、アプリケーションを作成する場合、 *[パッケージ]* コマンドを使用して、前述のレイアウトと一致するパッケージを自動的に作成できます。
 
-パッケージを作成するには、次のように、ソリューション エクスプローラーでアプリケーション プロジェクトを右クリックして [パッケージ] コマンドを選択します。
+パッケージを作成するには、"*ソリューション エクスプローラー*" でアプリケーション プロジェクトを右クリックして **[パッケージ]** コマンドを選択します。
 
 ![Visual Studio でアプリケーションをパッケージングする][vs-package-command]
 

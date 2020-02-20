@@ -15,12 +15,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 09/18/2019
 ms.author: shvija
-ms.openlocfilehash: 788f0647bec11184c2a85d87d0dfde2cb6c5744c
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 96c346f4359740fda5638dfdbe5735c5bdfce8c9
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266299"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162652"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure Monitor での Azure Event Hubs メトリック
 
@@ -82,8 +82,8 @@ Azure Monitor でのメトリックの使用は現在無料です。 ただし�
 | ------------------- | ----------------- |
 |受信メッセージ |指定された期間にわたって Event Hubs に送信されたイベントまたはメッセージの数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
 |送信メッセージ |指定された期間にわたって Event Hubs から取得されたイベントまたはメッセージの数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|着信バイト数 |指定された期間にわたって Azure Event Hubs サービスに送信されたバイト数。<br/><br/> 単位:Bytes <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|発信バイト数 |指定された期間にわたって Azure Event Hubs サービスから取得されたバイト数。<br/><br/> 単位:Bytes <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|着信バイト数 |指定された期間にわたって Azure Event Hubs サービスに送信されたバイト数。<br/><br/> 単位:バイト <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|発信バイト数 |指定された期間にわたって Azure Event Hubs サービスから取得されたバイト数。<br/><br/> 単位:バイト <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
 
 ## <a name="connection-metrics"></a>接続のメトリック
 
@@ -99,9 +99,9 @@ Azure Monitor でのメトリックの使用は現在無料です。 ただし�
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
-|バックログのキャプチャ |選択された宛先にまだキャプチャされていないバイト数。<br/><br/> 単位:Bytes <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|バックログのキャプチャ |選択された宛先にまだキャプチャされていないバイト数。<br/><br/> 単位:バイト <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
 |キャプチャされたメッセージ数 |指定された期間にわたって選択された宛先にキャプチャされたメッセージまたはイベントの数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|キャプチャされたバイト数 |指定された期間にわたって選択された宛先にキャプチャされたバイト数。<br/><br/> 単位:Bytes <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|キャプチャされたバイト数 |指定された期間にわたって選択された宛先にキャプチャされたバイト数。<br/><br/> 単位:バイト <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
 
 ## <a name="metrics-dimensions"></a>メトリックのディメンション
 
@@ -124,14 +124,18 @@ SIEM ツールでイベント ハブからログ データを使用するシナ�
 - 受信メッセージはあるが**送信メッセージがない**場合は、SIEM アプリケーションがメッセージを読み取っていないことを意味します。 SIEM プロバイダーに問い合わせて、それらのアプリケーションのイベント ハブの構成が正しいかどうかを確認してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 「[Microsoft Azure での監視の概要](../monitoring-and-diagnostics/monitoring-overview.md)」を参照してください。
 * GitHub 上の「[Retrieve Azure Monitor metrics with .NET (.NET を使用した Azure Monitor メトリックの取得)](https://github.com/Azure-Samples/monitor-dotnet-metrics-api)」のサンプル。 
 
 Event Hubs の詳細については、次のリンクを参照してください。
 
-* [Event Hubs のチュートリアル](event-hubs-dotnet-standard-getstarted-send.md)を開始する
+- Event Hubs のチュートリアルを開始する
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)
 * [Event Hubs を使用するサンプル アプリケーション](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 
