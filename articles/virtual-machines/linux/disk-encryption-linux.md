@@ -193,7 +193,7 @@ Azure 内にある既存または実行中の Linux VM でのディスク暗号�
 
 次の表は、既存または実行中の VM に対する、Resource Manager テンプレートのパラメーターをまとめたものです。
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | vmName | 暗号化操作を実行する VM の名前。 |
 | KeyVaultName | 暗号化キーのアップロード先となるキー コンテナーの名前。 コマンドレット `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` または次の Azure CLI コマンド `az keyvault list --resource-group "MyKeyVaultResourceGroupName"` を使用して取得できます。|
