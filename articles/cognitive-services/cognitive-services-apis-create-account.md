@@ -35,7 +35,7 @@ ms.locfileid: "74482881"
     
     マルチサービス リソースには、ポータルで **Cognitive Services** という名前が付けられます。 [Cognitive Services リソースを作成します](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)。
     
-    現在、マルチサービス リソースでは次のコグニティブ サービスにアクセスできます。
+    現在、マルチサービス リソースでは次の Cognitive Services にアクセスできます。
     
     |                  |                                                      |                    |                               |                  |
     |------------------|------------------------------------------------------|--------------------|-------------------------------|------------------|
@@ -45,7 +45,7 @@ ms.locfileid: "74482881"
     
     #### <a name="single-service-resourcetabsingleservice"></a>[単一サービス リソース](#tab/singleservice)
 
-    以下のリンクを使用して、利用可能なコグニティブ サービスのリソースを作成します。
+    以下のリンクを使用して、利用可能な Cognitive Services のリソースを作成します。
 
     | 視覚                      | 音声                  | 言語                          | 決定             | Search                 |
     |-----------------------------|-------------------------|-----------------------------------|----------------------|------------------------|
@@ -76,10 +76,10 @@ ms.locfileid: "74482881"
 
     |    |    |
     |--|--|
-    | **Name** | Cognitive Sservices リソースのわかりやすい名前。 例: *TextAnalyticsResource*。 |
+    | **名前** | Cognitive Sservices リソースのわかりやすい名前。 例: *TextAnalyticsResource*。 |
     | **サブスクリプション** | 使用できる Azure サブスクリプションのいずれかを選択します。 |
-    | **Location** | Cognitive Services インスタンスの場所。 別の場所を選択すると待機時間が生じる可能性がありますが、リソースのランタイムの可用性には影響しません。 |
-    | **[価格レベル]** | Cognitive Services アカウントのコストは、選択しているオプションと使用量によって異なります。 詳細については、「[API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/)」をご覧ください。
+    | **場所** | Cognitive Services インスタンスの場所。 別の場所を選択すると待機時間が生じる可能性がありますが、リソースのランタイムの可用性には影響しません。 |
+    | **価格レベル** | Cognitive Services アカウントのコストは、選択しているオプションと使用量によって異なります。 詳細については、「[API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/)」をご覧ください。
     | **リソース グループ** | Cognitive Services リソースを含むことになる Azure リソース グループ。 新しいグループを作成することも、既存のグループに追加することもできます。 |
 
     ![リソース作成画面](media/cognitive-services-apis-create-account/resource_create_screen.png)
