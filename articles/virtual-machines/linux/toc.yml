@@ -771,4 +771,4 @@
     - name: よく寄せられる質問
       href: faq.md
 - name: '[トラブルシューティング]'
-  href: ../troubleshooting/index.md
+  href: ../troubleshooting/index.yml
