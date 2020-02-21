@@ -140,7 +140,7 @@ public static async Task<HttpResponseMessage> Run(
 
 | Durable の拡張機能のバージョン | 既定のタスク ハブ名 |
 | - | - |
-| 2.x | Azure にデプロイする場合、タスク ハブ名は_関数アプリ_の名前から派生します。 Azure の外部で実行する場合、既定のタスク ハブ名は `TestHubName` です。 |
+| 2.x | Azure にデプロイする場合、タスク ハブ名は _関数アプリ_ の名前から派生します。 Azure の外部で実行する場合、既定のタスク ハブ名は `TestHubName` です。 |
 | 1.x | すべての環境で、既定のタスク ハブ名は `DurableFunctionsHub` です。 |
 
 拡張機能のバージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
