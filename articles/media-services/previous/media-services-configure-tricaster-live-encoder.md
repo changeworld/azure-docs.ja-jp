@@ -15,19 +15,18 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: 0e793a5aa7d619b0bb7a1d3efcdf665ea400c555
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 7909fbb958a66d00616d4ed1b844d02bb47d997e
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69016734"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152501"
 ---
 # <a name="use-the-newtek-tricaster-encoder-to-send-a-single-bitrate-live-stream"></a>NewTek TriCaster エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する  
 > [!div class="op_single_selector"]
 > * [Tricaster](media-services-configure-tricaster-live-encoder.md)
 > * [Elemental Live](media-services-configure-elemental-live-encoder.md)
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)
-> * [FMLE](media-services-configure-fmle-live-encoder.md)
 >
 >
 
@@ -35,10 +34,10 @@ ms.locfileid: "69016734"
 
 このチュートリアルでは、Azure Media Service Explorer (AMSE) ツールを使用して、Azure Media Services (AMS) を管理する方法を示します。 このツールは、Windows PC でのみ実行されます。 Mac または Linux の場合は、Azure Portal を使用して、[チャネル](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel)と[プログラム](media-services-portal-creating-live-encoder-enabled-channel.md)を作成します。
 
+Live Encoding 用に有効にされている AMS チャネルへの投稿フィードで送信に Tricaster を使用する場合、フィード間の迅速なカットやスレートとの間の切り替えなど、Tricaster の一部の機能を使用すると、ライブでビデオ/オーディオの誤作動が発生する可能性があります。 AMS チームがこれらの問題の解決に取り組んでいます。問題が解決するまで、これらの機能を使用しないことをお勧めします。
+
 > [!NOTE]
-> Live Encoding 用に有効にされている AMS チャネルへの投稿フィードで送信に Tricaster を使用する場合、フィード間の迅速なカットやスレートとの間の切り替えなど、Tricaster の一部の機能を使用すると、ライブでビデオ/オーディオの誤作動が発生する可能性があります。 AMS チームがこれらの問題の解決に取り組んでいます。問題が解決するまで、これらの機能を使用しないことをお勧めします。
->
->
+>  TLS 1.2 (推奨の TLS バージョン) に移行することを検討してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -106,7 +105,7 @@ ms.locfileid: "69016734"
 3. メニューが開いたら、[接続] という見出しの下で **[新規]** をクリックします。 接続の種類をたずねられたら、 **[Adobe Flash]** を選択します。
 
     ![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster4.png)
-4. Click **OK**.
+4. **[OK]** をクリックします。
 5. **[ストリーミング プロファイル]** の下のドロップダウンの矢印をクリックし、 **[参照]** に移動することで、FMLE プロファイルをインポートできるようになりました。
 
     ![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster5.png)

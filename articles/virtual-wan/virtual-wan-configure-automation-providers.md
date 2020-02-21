@@ -1,20 +1,20 @@
 ---
-title: Azure Virtual WAN パートナー | Microsoft Docs
+title: Azure Virtual WAN パートナー向けの自動化のガイドライン | Microsoft Docs
 description: パートナーは、この記事を参考にして、Azure Virtual WAN 自動化を設定できます。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 02/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6f95107960cf11ab15cb5a8294a5432498956a7a
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 7848dda09b39f446dd218b7ce1eb2a07664bcaa6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775316"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190412"
 ---
-# <a name="virtual-wan-partners"></a>Virtual WAN パートナー
+# <a name="automation-guidelines-for-virtual-wan-partners"></a>Virtual WAN パートナー向けの自動化のガイドライン
 
 この記事では、Azure Virtual WAN のブランチ デバイス (お客様のオンプレミスの VPN デバイスまたは SDWAN CPE) を接続および構成する自動化環境を設定する方法を理解できます。 IPsec/IKEv2 または IPsec/IKEv1 経由で VPN 接続に対応できるブランチ デバイスを提供するプロバイダーの場合は、この記事が適しています。
 

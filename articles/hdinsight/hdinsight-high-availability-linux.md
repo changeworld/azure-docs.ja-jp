@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 8c3e377faef4e18bff01fd7001751d1f1e347b8d
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 085933f9a74ee37779ce63ce499d89ea53a9f7d6
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030874"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198941"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight における Apache Hadoop クラスターの可用性と信頼性
 
@@ -27,7 +27,7 @@ Hadoop は、クラスター内の複数のノードにわたってサービス�
 HDInsight クラスターのノードは、Azure Virtual Machines を使用して実装します。 次のセクションでは、HDInsight で使用される個々のノード タイプについて説明します。
 
 > [!NOTE]  
-> クラスターの種類によっては、一部のノード タイプのみが使用されます。 たとえば、Hadoop クラスターには、Nimbus ノードはありません。 HDInsight クラスターの各種類で使用されるノードの詳細については、[HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md#cluster-types)に関するドキュメントの「クラスターの種類」セクションを参照してください。
+> クラスターの種類によっては、一部のノード タイプのみが使用されます。 たとえば、Hadoop クラスターには、Nimbus ノードはありません。 HDInsight クラスターの各種類で使用されるノードの詳細については、[HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md#cluster-type)に関するドキュメントの「クラスターの種類」セクションを参照してください。
 
 ### <a name="head-nodes"></a>ヘッド ノード
 

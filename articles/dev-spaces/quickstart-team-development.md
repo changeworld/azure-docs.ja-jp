@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: このクイックスタートでは、Azure Dev Spaces でコンテナーとマイクロサービスを使用した Kubernetes チーム開発を行う方法について説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: d2b31cce6604cef31de6f034566ebd46a4e92750
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1b36cf30574c0c9892a0383bee7e2f914bc9feac
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721593"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482396"
 ---
 # <a name="quickstart-team-development-on-kubernetes---azure-dev-spaces"></a>クイック スタート:Kubernetes 上でのチーム開発 - Azure Dev Spaces
 
@@ -86,7 +86,7 @@ Kubernetes でサンプル アプリケーションを実行するためのコ�
 
 ```cmd
 cd charts/
-helm install bikesharing . --dependency-update --namespace dev --atomic
+helm install bikesharingsampleappsampleapp . --dependency-update --namespace dev --atomic
 ```
 
 `helm install` コマンドは、完了までに数分かかる場合があります。 サンプル アプリケーションをクラスターにインストールした後で、クラスターで Dev Spaces を有効にして以来、`azds list-uris` コマンドを使用して、現在選択されている *dev* 内のサンプル アプリケーションの URL を表示します。

@@ -1,18 +1,18 @@
 ---
 title: 概念 - Azure Kubernetes サービス (AKS) におけるネットワーク
 description: Azure Kubernetes Service (AKS) におけるネットワークについて説明します。kubenet と Azure CNI ネットワーク、イングレス コントローラー、ロード バランサー、静的 IP アドレスの説明が含まれます。
-services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
+ms.custom: fasttrack-edit
 ms.author: mlearned
-ms.openlocfilehash: 7c1a25c4d2df83c9bcfb33b658e3d3100d850b6e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 06825f184365cfc439167be15580eb19bf5ecb38
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547967"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084269"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションに対するネットワークの概念
 
@@ -108,6 +108,8 @@ kubenet と Azure CNI には、次のような動作の違いが存在します�
 | ロード バランサー サービス、App Gateway、またはイングレス コントローラーを使用して、Kubernetes サービスを公開する | サポートされています | サポートされています |
 | 既定の Azure DNS およびプライベート ゾーン                                                          | サポートされています | サポートされています |
 
+DNS については、kubernet と Azure CNI のどちらのプラグインでも、CoreDNS (AKS で実行されるデーモン セット) によって DNS が提供されます。 Kubernetes の CoreDNS の詳細については、[DNS サービスのカスタマイズ](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)に関するページを参照してください。 CoreDNS は、既定では、不明なドメインをノードの DNS サーバー (つまり、AKS クラスターがデプロイされている Azure Virtual Network の DNS 機能) に転送するように構成されています。 そのため、Azure DNS およびプライベート ゾーンは、AKS で実行されるポッドに対して機能します。
+
 ### <a name="support-scope-between-network-models"></a>ネットワーク モデル間のサポート範囲
 
 kubenet と Azure CNI は、両方とも、使用するネットワーク モデルに関係なく次のいずれかの方法でデプロイすることができます。
@@ -118,7 +120,7 @@ kubenet と Azure CNI は、両方とも、使用するネットワーク モデ
 サービス エンドポイントや UDR のような機能は kubenet と Azure CNI の両方でサポートされていますが、[AKS のサポート ポリシー][support-policies]は、どのような変更を行うことができるかを定義します。 次に例を示します。
 
 * AKS クラスターの仮想ネットワーク リソースを手動で作成する場合は、独自の UDR またはサービス エンドポイントを構成するときにサポートされます。
-* Azure プラットフォームが AKS クラスター用の仮想ネットワーク リソースを自動的に作成する場合、それらの AKS 管理対象リソースを手動で変更して独自の UDR またはサービスエンドポイントを構成することはサポートされていません。
+* Azure プラットフォームで AKS クラスター用の仮想ネットワーク リソースを自動的に作成する場合、それらの AKS 管理対象リソースを手動で変更して独自の UDR またはサービスエンドポイントを構成することはサポートされていません。
 
 ## <a name="ingress-controllers"></a>イングレス コントローラー
 
@@ -132,7 +134,7 @@ AKS では、NGINX などを使用してイングレス リソースを作成す
 
 イングレスのもう 1 つの一般的な機能は、SSL/TLS 終端です。 HTTPS 経由でアクセスされる大規模な Web アプリケーションでは、アプリケーション自体の中ではなく、イングレス リソースによって TLS 終端を処理できます。 TLS 証明書の自動生成と構成を提供することで、Let's Encrypt などのプロバイダーを使用するイングレス リソースを構成できます。 Let's Encrypt を使用した NGINX イングレス コントローラーの構成の詳細については、[イングレスと TLS][aks-ingress-tls] に関する記事を参照してください。
 
-イングレス コントローラーを構成して、クライアント ソース IP を AKS クラスター内のコンテナーへの要求上で保持することもできます。 クライアントの要求が、イングレス コントローラー経由で AKS クラスター内のコントローラーにルーティングされている場合、その要求の元のソース IP は、ターゲット コンテナーに対しては利用できません。 *クライアント ソース IP の保持*を有効にすると、クライアントに対するソース IP は、*X-Forwarded-For* 下にある要求ヘッダー内で利用できます。 クライアント ソース IP の保持機能をイングレス コントローラー上で使用している場合は、SSL パススルーを使用することはできません。 クライアント ソース IP の保持と SSL パススルーは、*LoadBalancer* 型など、他のサービスによって使用できます。
+イングレス コントローラーを構成して、クライアント ソース IP を AKS クラスター内のコンテナーへの要求上で保持することもできます。 クライアントの要求が、イングレス コントローラー経由で AKS クラスター内のコントローラーにルーティングされている場合、その要求の元のソース IP は、ターゲット コンテナーに対しては利用できません。 *クライアント ソース IP の保持*を有効にすると、クライアントに対するソース IP は、*X-Forwarded-For* 下にある要求ヘッダー内で利用できます。 クライアント ソース IP の保持機能をイングレス コントローラー上で使用している場合は、SSL パススルーを使用できません。 クライアント ソース IP の保持と SSL パススルーは、*LoadBalancer* 型など、他のサービスによって使用できます。
 
 ## <a name="network-security-groups"></a>ネットワーク セキュリティ グループ
 

@@ -3,12 +3,12 @@ title: デプロイ用のテンプレートをリンクする
 description: Azure リソース マネージャー テンプレートでリンクされたテンプレートを使用して、モジュール構造のテンプレート ソリューションを作成する方法について説明します。 パラメーターの値を渡す方法、パラメーター ファイルを指定する方法、および URL を動的に作成する方法を示します。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 5d278ba05fd8230a3573983a631e4e347ff31e4f
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: c6a5dced0f8607e760422bebd114a08ca0a238e3
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76119831"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207606"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用
 
@@ -160,7 +160,7 @@ ms.locfileid: "76119831"
 
 変数の値は、スコープに基づいて変化します。 次の表に、両方のスコープの結果を示します。
 
-| スコープ | Output |
+| Scope | Output |
 | ----- | ------ |
 | 内部 (inner) | 入れ子になったテンプレートから |
 | outer (既定値) | 親テンプレートから |
@@ -776,5 +776,5 @@ az group deployment create --resource-group ExampleGroup --template-uri $url?$to
 
 * チュートリアルの実行については、「[チュートリアル: リンクされた Azure Resource Manager テンプレートの作成](template-tutorial-create-linked-templates.md)」を参照してください。
 * リソースのデプロイの順序の定義については、「[Azure Resource Manager テンプレートでの依存関係の定義](define-resource-dependency.md)」を参照してください。
-* リソースを 1 つ定義し、そのリソースの複数のインスタンスを作成する方法については、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](create-multiple-instances.md)」を参照してください。
+* リソースを 1 つ定義し、そのリソースの複数のインスタンスを作成する方法については、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](copy-resources.md)」を参照してください。
 * ストレージ アカウントにテンプレートを設定し SAS トークンを生成する手順については、「[Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」または「[Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](deploy-cli.md)」を参照してください。

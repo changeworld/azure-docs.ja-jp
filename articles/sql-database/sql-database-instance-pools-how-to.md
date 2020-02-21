@@ -41,7 +41,7 @@ ms.locfileid: "75754046"
 
 使用可能な [PowerShell コマンド](https://docs.microsoft.com/powershell/module/az.sql/)
 
-|コマンドレット |[説明] |
+|コマンドレット |説明 |
 |:---|:---|
 |[New-AzSqlInstancePool](/powershell/module/az.sql/new-azsqlinstancepool/) | Azure SQL Database インスタンス プールを作成します。 |
 |[Get-AzSqlInstancePool](/powershell/module/az.sql/get-azsqlinstancepool/) | Azure SQL インスタンス プールに関する情報を返します。 |

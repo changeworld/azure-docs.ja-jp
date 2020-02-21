@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
-ms.openlocfilehash: 82d64895f4bf2ef6eb1fdb248f470f981d1cb426
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: c9b449b65a8f8def9dc28a668cd9ee3671124cb0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698171"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484504"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Azure AD アプリケーションの同意エクスペリエンスについて
 
@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) アプリケーションの同意ユーザー 
 
 同意は、保護されたリソースにアプリケーションが代理でアクセスする認証を、ユーザーが許可するプロセスです。 管理者またはユーザーは、組織または個人のデータへのアクセスを許可するように同意を求められることがあります。
 
-同意を許可する実際のユーザー エクスペリエンスは、ユーザーのテナント、ユーザーの機関でのスコープ (ロール)、クライアント アプリケーションによって要求されている[アクセス許可](https://docs.microsoft.com/azure/active-directory/develop/active-directory-permissions)の種類に設定されたポリシーによって異なります。 つまり、そのアプリケーション開発者とテナント管理者は、同意エクスペリエンスの一部を制御できます。 管理者は、テナントで同意エクスペリエンスを制御するために、テナント上でポリシーまたはアプリを柔軟に設定および無効化することができます。 アプリケーション開発者は、要求されているアクセス許可の種類、およびユーザーの同意フローまたは管理者の同意フローにユーザーをガイドする必要があるかどうかを指示します。
+同意を許可する実際のユーザー エクスペリエンスは、ユーザーのテナント、ユーザーの機関でのスコープ (ロール)、クライアント アプリケーションによって要求されている[アクセス許可](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent)の種類に設定されたポリシーによって異なります。 つまり、そのアプリケーション開発者とテナント管理者は、同意エクスペリエンスの一部を制御できます。 管理者は、テナントで同意エクスペリエンスを制御するために、テナント上でポリシーまたはアプリを柔軟に設定および無効化することができます。 アプリケーション開発者は、要求されているアクセス許可の種類、およびユーザーの同意フローまたは管理者の同意フローにユーザーをガイドする必要があるかどうかを指示します。
 
 - **ユーザーの同意フロー**は、現在のユーザーのみに対する同意を記録する目的で、アプリケーション開発者がユーザーを承認エンドポイントに直接アクセスさせます。
 - **管理者の同意フロー**は、テナント全体に対する同意を記録する目的で、アプリケーション開発者がユーザーを管理者の同意エンドポイントに直接アクセスさせます。 管理者の同意フローが適切に動作するようにするため、アプリケーション開発者はアプリケーション マニフェストで `RequiredResourceAccess` プロパティのアクセス許可をすべて一覧する必要があります。 詳細については、[アプリケーション マニフェスト](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)に関するページを参照してください。

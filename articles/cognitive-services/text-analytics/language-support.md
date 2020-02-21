@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 3e7402be79f7b57a426543c35f08524e0da9d283
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c5a413a4fe8d9ac9b7aac59ca78cedc6d5a7a313
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024536"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206176"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Text Analytics API の言語と地域のサポート
 
@@ -51,7 +51,7 @@ Text Analytics API では、広範囲の言語、異形、方言、およびい�
 |:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
 | アラビア語                |     `ar`      |           |             |           ✔ \*           |                |                    |
 | Czech                 |     `cs`      |           |             |           ✔ \*           |                |                    |
-| 簡体中国語    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                |                    |
+| 簡体中国語    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                | `zh` も可能                   |
 | 繁体字中国語   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
 | Danish                |     `da`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | Dutch                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
@@ -64,7 +64,7 @@ Text Analytics API では、広範囲の言語、異形、方言、およびい�
 | Italian               |     `it`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
 | Japanese              |     `ja`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
 | Korean                |     `ko`      |   ✔ \*\*  |      ✔      |           ✔ \*           |                |                    |
-| ノルウェー語 (ブークモール)   |     `no`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| ノルウェー語 (ブークモール)   |     `no`      |   ✔ \*    |      ✔      |           ✔ \*           |                | `nb` も可能                   |
 | Polish                |     `pl`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | ポルトガル語 (ポルトガル) |    `pt-PT`    |   ✔\**    |      ✔      |           ✔ \*           |                | `pt` も可能 |
 | ポルトガル語 (ブラジル)   |    `pt-BR`    |           |      ✔      |           ✔ \*           |                |                    |
@@ -77,7 +77,7 @@ Text Analytics API では、広範囲の言語、異形、方言、およびい�
 
 \** [感情分析 v3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-versions-and-features) および[名前付きエンティティの認識 v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) パブリック プレビューでも使用できます。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 [Cognitive Services のドキュメント ページ](https://docs.microsoft.com/azure/cognitive-services/)   
 [Cognitive Services の製品ページ](https://azure.microsoft.com/services/cognitive-services/)

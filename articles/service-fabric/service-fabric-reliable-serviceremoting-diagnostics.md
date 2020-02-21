@@ -19,7 +19,7 @@ Reliable ServiceRemoting ランタイムからは[パフォーマンス カウ�
 ## <a name="performance-counters"></a>パフォーマンス カウンター
 Reliable ServiceRemoting ランタイムは、次のパフォーマンス カウンター カテゴリを定義します。
 
-| カテゴリ | [説明] |
+| カテゴリ | 説明 |
 | --- | --- |
 | Service Fabric サービス |Azure Service Fabric Service Remoting に固有のカウンター (要求の処理にかかる平均時間など) |
 | Service Fabric サービス メソッド |Service Fabric Remoting Service に実装されるメソッドに固有のカウンター (サービス メソッドが呼び出される頻度など) |
@@ -74,7 +74,7 @@ Reliable ServiceRemoting ランタイムは、次のパフォーマンス カウ
 
 Reliable Service ランタイムは、サービス メソッドの実行に関連する次のパフォーマンス カウンターを発行します。
 
-| カテゴリ名 | カウンター名 | [説明] |
+| カテゴリ名 | カウンター名 | 説明 |
 | --- | --- | --- |
 | Service Fabric サービス メソッド |呼び出し/秒 |1 秒あたりにサービス メソッドが呼び出される回数 |
 | Service Fabric サービス メソッド |呼び出しあたりの平均時間 (ミリ秒) |サービス メソッドの実行にかかった時間 (ミリ秒単位) |
@@ -83,7 +83,7 @@ Reliable Service ランタイムは、サービス メソッドの実行に関�
 ### <a name="service-request-processing-performance-counters"></a>サービス要求処理のパフォーマンス カウンター
 クライアントがサービス プロキシ オブジェクト経由でメソッドを呼び出すと、要求メッセージがネットワーク経由でリモート処理サービスに送信されます。 サービスは要求メッセージを処理し、クライアントに応答を送り返します。 Reliable ServiceRemoting ランタイムは、サービス要求処理に関連する次のパフォーマンス カウンターを発行します。
 
-| カテゴリ名 | カウンター名 | [説明] |
+| カテゴリ名 | カウンター名 | 説明 |
 | --- | --- | --- |
 | Service Fabric サービス |未処理の要求の数 |サービスで処理中の要求の数 |
 | Service Fabric サービス |要求あたりの平均時間 (ミリ秒) |サービスで要求の処理にかかった時間 (ミリ秒単位) |

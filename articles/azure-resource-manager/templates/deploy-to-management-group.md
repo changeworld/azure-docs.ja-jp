@@ -2,13 +2,13 @@
 title: 管理グループにリソースをデプロイする
 description: Azure Resource Manager テンプレートを使用して、管理グループのスコープでリソースをデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 4ba4f4d2e95c0b878e9f402fa84139ac5b351e3c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 02/10/2020
+ms.openlocfilehash: 0419f3daca6845c6809c9f66e870fdf884a7193f
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121915"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117042"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>管理グループ レベルでリソースを作成する
 
@@ -63,8 +63,20 @@ REST API の場合は、[管理グループ スコープでの作成によるデ
 
 * [resourceGroup ()](template-functions-resource.md#resourcegroup) 関数は、サポートされて**いません**。
 * [subscription()](template-functions-resource.md#subscription) 関数は、サポートされて**いません**。
-* [resourceId()](template-functions-resource.md#resourceid) 関数は、サポートされています。 管理グループ レベルのデプロイで使用されているリソースのリソース ID を取得するには、これを使用します。 たとえば、`resourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))` と指定して、ポリシー定義のリソース ID を取得します。 リソース ID は `/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}` の形式で返されます。
 * [reference()](template-functions-resource.md#reference) および [list()](template-functions-resource.md#list) 関数がサポートされています。
+* [resourceId()](template-functions-resource.md#resourceid) 関数は、サポートされています。 管理グループ レベルのデプロイで使用されているリソースのリソース ID を取得するには、これを使用します。 リソース グループ パラメーターに値を指定しないでください。
+
+  たとえば、ポリシー定義のリソース ID を取得するには、次を使用します。
+  
+  ```json
+  resourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
+  ```
+  
+  返されるリソース ID の形式は次のとおりです。
+  
+  ```json
+  /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  ```
 
 ## <a name="create-policies"></a>ポリシーの作成
 
@@ -136,9 +148,13 @@ REST API の場合は、[管理グループ スコープでの作成によるデ
 }
 ```
 
+## <a name="template-sample"></a>テンプレートのサンプル
+
+* リソース グループ、ポリシー、およびポリシーの割り当てを作成します。  [こちら](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json)を参照してください。
+
 ## <a name="next-steps"></a>次のステップ
 
 * ロールの割り当てについては、「[RBAC と Azure Resource Manager テンプレートを使用して Azure リソースへのアクセスを管理する](../../role-based-access-control/role-assignments-template.md)」をご覧ください。
 * Azure Security Center のワークスペースの設定をデプロイする例については、[deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json) のページを参照してください。
-* Azure リソース マネージャーのテンプレートの作成の詳細については、 [テンプレートの作成](template-syntax.md)に関するページを参照してください。 
+* Azure リソース マネージャーのテンプレートの作成の詳細については、 [テンプレートの作成](template-syntax.md)に関するページを参照してください。
 * テンプレートで使用可能な関数の一覧については、 [テンプレートの関数](template-functions.md)に関するページを参照してください。

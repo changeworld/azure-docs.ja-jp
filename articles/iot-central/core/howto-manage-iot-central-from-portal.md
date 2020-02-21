@@ -5,15 +5,15 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/02/2019
+ms.date: 02/11/2020
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 90bccf76b4c98c732cb926bb4252654d20478412
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 27517c375265b552d2e1dec4d8c167d1bc86549d
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018977"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137685"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Azure portal で IoT Central を管理する
 
@@ -23,15 +23,13 @@ ms.locfileid: "77018977"
 
 ## <a name="create-iot-central-applications"></a>IoT Central アプリケーションを作成する
 
-アプリケーションを作成するには、[Azure portal](https://ms.portal.azure.com) に移動し、左側のメイン ウィンドウの **[リソースの作成]** を選択します。
+アプリケーションを作成するには、[Azure portal](https://ms.portal.azure.com) に移動し、 **[リソースの作成]** を選択します。
 
-![管理ポータル: ナビゲーション メニュー](media/howto-manage-iot-central-from-portal/image0.png)
-
-検索バーに、「**IoT Central**」と入力します。
+**[Marketplace を検索]** バーで、「*IoT Central*」と入力します。
 
 ![管理ポータル: 検索](media/howto-manage-iot-central-from-portal/image0a1.png)
 
-検索結果の **[IoT Central アプリケーション]** 行項目を選択します。
+検索結果の **[IoT Central アプリケーション]** タイルを選択します。
 
 ![管理ポータル: 検索結果](media/howto-manage-iot-central-from-portal/image0b1.png)
 
@@ -43,7 +41,7 @@ ms.locfileid: "77018977"
 
 ![IoT Central フォームを作成する](media/howto-manage-iot-central-from-portal/image6a.png)
 
-**場所**は、アプリケーションを作成する[地域](https://azure.microsoft.com/global-infrastructure/geographies/)です。 通常、最適なパフォーマンスを得るには、ご利用のデバイスに物理的に最も近い場所を選択する必要があります。 現在、Azure IoT Central は、**米国**、**オーストラリア**、**アジア太平洋**、または**ヨーロッパ**で使用できます。  いったん場所を選択すると、後でアプリケーションを別の場所に移動することはできません。
+"**場所**" は、アプリケーションを作成する[地域](https://azure.microsoft.com/global-infrastructure/geographies/)です。 通常、最適なパフォーマンスを得るには、ご利用のデバイスに物理的に最も近い場所を選択する必要があります。 現在、Azure IoT Central は、**米国**、**オーストラリア**、**アジア太平洋**、または**ヨーロッパ**で使用できます。  いったん場所を選択すると、後でアプリケーションを別の場所に移動することはできません。
 
 
 すべてのフィールドに値を入力したら、 **[作成]** を選択します。
@@ -55,11 +53,9 @@ Azure IoT Central アプリケーションが既にある場合は、Azure porta
 > [!NOTE]
 > 無料価格プランで作成されたアプリケーションは、サブスクリプションに関連付けられていないため、Azure portal には表示されません。
 
-開始するには、左側のメイン ウィンドウの **[すべてのリソース]** を選択します。 検索ボックスにアプリケーションの名前を入力し、リソースの一覧でそれを見つけます。 次に、管理する IoT Central アプリケーションを選択します。
+開始するには、ポータルの **[すべてのリソース]** を選択します。 **[非表示の型の表示]** を選択し、 **[名前でフィルター処理]** にアプリケーションの名前の入力を開始して名前を見つけます。 次に、管理する IoT Central アプリケーションを選択します。
 
-![管理ポータル: リソースの管理](media/howto-manage-iot-central-from-portal/image2a.png)
-
-アプリケーションに移動するには、IoT Central アプリケーションの URL を選択します。
+アプリケーションに移動するには、 **[IoT Central アプリケーションの URL]** を選択します。
 
 ![管理ポータル: リソースの管理](media/howto-manage-iot-central-from-portal/image3.png)
 
@@ -67,7 +63,7 @@ Azure IoT Central アプリケーションが既にある場合は、Azure porta
 
 ![管理ポータル: リソースの管理](media/howto-manage-iot-central-from-portal/image4a.png)
 
-アプリケーションを別のサブスクリプションに移動するには、サブスクリプションの横にある **[変更]** リンクを選択します。 表示されたダイアログ ボックスで、このアプリケーションの移動先となるサブスクリプションを選択します。
+アプリケーションを別のサブスクリプションに移動するには、サブスクリプションの横にある **[変更]** を選択します。 **[リソースの移動]** ページで、このアプリケーションの移動先となるサブスクリプションを選択します。
 
 ![管理ポータル: リソースの管理](media/howto-manage-iot-central-from-portal/image5a.png)
 

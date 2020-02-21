@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 006ea071ce1ab0354ecf191cdde2e031255ef4ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cc7d58f0557e620c273043af8ffb2e8ec4d8ec87
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407684"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485150"
 ---
 # <a name="application-map-triage-distributed-applications"></a>アプリケーション マップ:分散アプリケーションのトリアージ
 
@@ -276,6 +276,6 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 ## <a name="next-steps"></a>次のステップ
 
-* Application Insights での関連付けのしくみの詳細については、[テレメトリの関連付けの記事](https://docs.microsoft.com/azure/application-insights/application-insights-correlation)を参照してください。
+* Application Insights での関連付けのしくみの詳細については、[テレメトリの関連付けの記事](correlation.md)を参照してください。
 * [エンドツーエンドのトランザクション診断エクスペリエンス](transaction-diagnostics.md)は、Application Insights に監視されるすべてのコンポーネントからのサーバー側テレメトリを単一ビューに関連付けます。
 * ASP.NET Core と ASP.NET の高度な相関シナリオについては、[カスタム操作の追跡](custom-operations-tracking.md)に関する記事を参照してください。

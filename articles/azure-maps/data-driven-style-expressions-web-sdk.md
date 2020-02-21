@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 8372012734d937da99c32d2d18fed91ae52c7444
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: e3e8476d09541518d964bfaff4dabad47755eeb9
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911774"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189645"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>データ ドリブンのスタイルの式 (Web SDK)
 
-式を使用すると、データ ソース内の各図形で定義されたプロパティを監視するスタイル設定オプションにビジネス ロジックを適用できます。 また、式は、データ ソースまたはレイヤーでデータをフィルター処理するのにも使用できます。 式は、if ステートメントなどの条件付きロジックで構成でき、文字列、論理演算子、数学演算子によるデータの操作にも使用できます。 
+式を使用すると、データ ソース内の各図形で定義されたプロパティを監視するスタイル設定オプションにビジネス ロジックを適用できます。 式は、データ ソースまたはレイヤーのデータをフィルター処理できます。 式は、if ステートメントなどの条件付きロジックで構成されている場合があります。 また、文字列演算子、論理演算子、および算術演算子を使用して、データを操作するために使用することもできます。
 
-データ ドリブンのスタイルを使用すると、スタイル設定関連のビジネス ロジックを実装するために必要なコードの量を削減できます。 レイヤーを併用すると、式は個々のスレッドでのレンダリング時に評価されます。この場合、UI スレッドでのビジネス ロジックの評価時と比較して、パフォーマンスが向上します。
+データ ドリブンのスタイルを使用すると、スタイル設定関連のビジネス ロジックを実装するために必要なコードの量が削減されます。 レイヤーで使用する場合、式は別のスレッドでレンダリング時に評価されます。 この機能により、ビジネス ロジックを UI スレッドで評価する場合に比べてパフォーマンスが向上します。
 
-次のビデオでは、Azure Maps Web SDK でのデータ ドリブンのスタイル処理の概要を示します。
+このビデオでは、Azure Maps Web SDK でのデータ ドリブンのスタイル処理の概要を示します。
 
 <br/>
 
@@ -39,7 +39,7 @@ ms.locfileid: "75911774"
 ] 
 ```
 
-Azure Maps Web SDK では、単独で、または他の式と組み合わせて使用できる、さまざまな種類の式がサポートされています。
+Azure Maps Web SDK では、さまざまな種類の式がサポートされています。 式は、独自に使用することも、他の式と組み合わせて使用することもできます。
 
 | 式の種類 | 説明 |
 |---------------------|-------------|
@@ -94,7 +94,7 @@ Azure Maps Web SDK では、単独で、または他の式と組み合わせて�
 
 **使用例**
 
-機能のプロパティには、`get` 式を使用して式内で直接アクセスできます。 次の例では、機能の "zoneColor" 値を使用して、バブル レイヤーの色のプロパティを指定します。 
+機能のプロパティには、`get` 式を使用して式内で直接アクセスできます。 この例では、機能の "zoneColor" 値を使用して、バブル レイヤーの色のプロパティを指定します。 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -102,7 +102,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-すべてのポイント機能に `zoneColor` プロパティがある場合、上記の例は問題なく機能しますが、プロパティがない場合、色は "黒" にフォールバックする可能性があります。 フォールバックの色を変更するには、`case` 式と `has` 式を組み合わせて使用して、プロパティが存在するかどうかをチェックします。プロパティが存在しない場合は代わりにフォールバックの色が返されます。
+上の例は、すべてのポイント機能に `zoneColor` プロパティがある場合、問題なく動作します。 そうでない場合は、色が "黒色" にフォールバックする可能性があります。 フォールバックの色を変更するには、`case` 式と `has` 式を組み合わせて使用して、このプロパティが存在するかどうかをチェックします。 このプロパティが存在しない場合は、フォールバックの色が返されます。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -117,7 +117,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-バブルとシンボルのレイヤーでは、既定でデータ ソース内のすべての図形の座標がレンダリングされます。 これは、多角形または線の頂点を強調表示するために実行できます。 レイヤーの `filter` オプションを使用すると、ブール式内で `['geometry-type']` 式を使用して、レンダリングする機能の geometry 型を制限できます。 次の例では、`Point` 機能のみがレンダリングされるようにバブル レイヤーを制限できます。
+バブルとシンボルのレイヤーでは、既定でデータ ソース内のすべての図形の座標がレンダリングされます。 この動作により、多角形または線の頂点を強調表示できます。 レイヤーの `filter` オプションを使用すると、ブール式内で `['geometry-type']` 式を使用して、レンダリングする機能の geometry 型を制限できます。 次の例では、`Point` 機能のみがレンダリングされるようにバブル レイヤーを制限できます。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -178,7 +178,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 [operator: string, initialValue: boolean | number, mapExpression: Expression]
 ```
 
-- 演算子:クラスター内の各ポイントについて `mapExpression` によって計算されるすべての値に適用される式関数。 サポートされている演算子: 
+- 演算子:クラスター内の各ポイントについて `mapExpression` によって計算されるすべての値に適用される式関数。 サポートされている演算子は次のとおりです。 
     - 数値の場合: `+`、`*`、`max`、`min`
     - ブール値の場合: `all`、`any`
 - initialValue:最初の計算値が集計される初期値。
@@ -186,7 +186,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 **使用例**
 
-データ セット内のすべての機能に、数値である `revenue` プロパティがある場合。 データ セットから作成されたクラスター内のすべてのポイントの合計収益は、次の集計式を使用して計算できます: `['+', 0, ['get', 'revenue']]`
+データ セット内のすべての機能に、数値である `revenue` プロパティがある場合。 この場合、データ セットから作成されたクラスター内のすべてのポイントの合計収益を計算できます。 この計算は、次の集計式を使用して行われます。`['+', 0, ['get', 'revenue']]`
 
 ## <a name="boolean-expressions"></a>ブール式
 
@@ -214,7 +214,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 ### <a name="case-expression"></a>case 式
 
-`case` 式は、ロジック (if/then/else) などの if ステートメントを提供する一種の条件式です。 この種類の式では、一連のブール条件を通過し、true となる最初のブール条件の出力値が返されます。
+`case` 式は、"if/then/else" ロジックを提供する一種の条件式です。 この種類の式は、ブール条件のリストを通過します。 True に評価される最初のブール条件の出力値を返します。
 
 次の疑似コードでは、`case` 式の構造が定義されます。 
 
@@ -315,7 +315,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-次の例では、match 式を使用して "配列内" または "配列に含まれる" タイプのフィルター処理を実行します。この場合、許可される ID のリストに含まれる ID 値を持つデータがフィルター処理されます。 フィルターを含む式を使用するときは、結果がブール値である必要があります。
+次の例では、match 式を使用して、"配列内にある" または "配列が含む" の種類のフィルターを実行します。 この場合、式は、許可された ID の一覧に含まれる ID 値を持つデータをフィルター処理します。 フィルターを含む式を使用するときは、結果がブール値である必要があります。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -441,7 +441,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 **例**
 
-次の例では、*red* 値 `255`、および `2.5` を `temperature` プロパティの値で乗算して計算された *green* 値と *blue* 値を含む、色の RGB 値が作成されます。 温度の変化に応じて、色は網掛けの異なる *red* に変化します。
+次の例では、*red* 値 `255`、および `2.5` を `temperature` プロパティの値で乗算して計算された *green* 値と *blue* 値を含む、色の RGB 値が作成されます。 温度の変化に応じて、色はさまざまな色調の *red* に変化します。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -492,7 +492,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 ## <a name="interpolate-and-step-expressions"></a>補間式とステップ式
 
-補間式とステップ式は、補間曲線またはステップ関数に沿って値を計算するために使用できます。 これらの式では、入力として数値を返す式が包含されします (たとえば、`['get',  'temperature']`)。 入力値は、入力値と出力値のペア ("分岐点" と呼ばれる) に対して評価され、補間曲線またはステップ関数に最適な値が判断されます。 各分岐点の入力値は数値で、昇順である必要があります。 出力値は、数値、数値の配列、または色である必要があります。
+補間式とステップ式は、補間曲線またはステップ関数に沿って値を計算するために使用できます。 これらの式では、入力として数値を返す式が包含されします (たとえば、`['get',  'temperature']`)。 入力値は、入力値と出力値のペアに対して評価され、補間曲線またはステップ関数に最適な値が判断されます。 出力値は "分岐点" と呼ばれます。 各分岐点の入力値は数値で、昇順である必要があります。 出力値は、数値、数値の配列、または色である必要があります。
 
 ### <a name="interpolate-expression"></a>補間式
 
@@ -527,7 +527,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 **例**
 
-次の例では、`linear interpolate` 式を使用して、ポイント機能の `temperature` プロパティに基づきバブル レイヤーの `color` プロパティが設定されます。 `temperature` 値が 60 未満の場合は "blue"、60 以上 70 未満の場合は "yellow"、70 以上 80 未満の場合は "orange"、80 以上の場合は "red"が返されます。
+次の例では、`linear interpolate` 式を使用して、ポイント機能の `temperature` プロパティに基づきバブル レイヤーの `color` プロパティが設定されます。 `temperature` 値が 60 未満の場合、"blue" が返されます。 60 以上 70 未満の場合は、yellow が返されます。 70 以上 80 未満の場合は、"orange" が返されます。 80 以上の場合は、"red" が返されます。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -576,7 +576,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 **例**
 
-次の例では、`step` 式を使用して、ポイント機能の `temperature` プロパティに基づきバブル レイヤーの `color` プロパティが設定されます。 `temperature` 値が 60 未満の場合は "blue"、60 以上 70 未満の場合は "yellow"、70 以上 80 未満の場合は "orange"、80 以上の場合は "red"が返されます。
+次の例では、`step` 式を使用して、ポイント機能の `temperature` プロパティに基づきバブル レイヤーの `color` プロパティが設定されます。 `temperature` 値が 60 未満の場合、"blue" が返されます。 60 以上 70 未満の場合は、"yellow" が返されます。 70 以上 80 未満の場合は、"orange" が返されます。 80 以上の場合は、"red" が返されます。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -607,10 +607,10 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 ### <a name="heat-map-density-expression"></a>ヒート マップ密度式
 
-ヒート マップ密度式では、ヒート マップ レイヤー内の各ピクセルに対してヒート マップ密度値を取得します。この式は `['heatmap-density']` として定義されます。 この値は `0` と `1` の間の数値で、`interpolation` 式または `step` 式と組み合わせて使用して、ヒート マップの色分けに使用される色のグラデーションが定義されます。 この式は、ヒート マップ レイヤーの[色のオプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest#color)でのみ使用できます。
+ヒート マップ密度式では、ヒート マップ レイヤー内の各ピクセルに対してヒート マップ密度値を取得します。この式は `['heatmap-density']` として定義されます。 この値は `0` から `1` までの数値です。 これは `interpolation` 式または `step` 式と組み合わせて使用して、ヒート マップの色分けに使用される色のグラデーションが定義されます。 この式は、ヒート マップ レイヤーの[色のオプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest#color)でのみ使用できます。
 
 > [!TIP]
-> 補間式のインデックス 0 の色、または段階色の既定の色では、データのない領域の色が定義されます。これは背景色を定義するために使用できます。 多くの場合、この値は透明または半透明の黒に設定することが好まれます。 
+> 補間式内のインデックス 0 の色、または段階色の既定の色では、データのない領域の色が定義されます。 インデックス 0 の色は背景色を定義するために使用できます。 多くの場合、この値は透明または半透明の黒に設定することが好まれます。
 
 **例**
 
@@ -651,14 +651,14 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 ### <a name="line-progress-expression"></a>線形進行状況の式
 
-線形進行状況の式では、線レイヤー内のグラデーション線に沿って進行状況を取得します。この式は `['line-progress']` として定義されます。 この値は 0 から 1 の数値で、`interpolation` 式または `step` 式と組み合わせて使用されます。 この式は、線レイヤーの [strokeGradient オプション]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest#strokegradient)でのみ使用できます。 
+線形進行状況の式では、線レイヤー内のグラデーション線に沿って進行状況を取得します。この式は `['line-progress']` として定義されます。 この値は 0 から 1 までの数値です。 これは `interpolation` 式または `step` 式と組み合わせて使用されます。 この式は、線レイヤーの [strokeGradient オプション]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest#strokegradient)でのみ使用できます。 
 
 > [!NOTE]
 > 線レイヤーの `strokeGradient` オプションでは、データ ソースの `lineMetrics` オプションが `true` に設定される必要があります。
 
 **例**
 
-次の例では、`['line-progress']` 式を使用して、線のストロークに色のグラデーションを適用します。
+この例では、`['line-progress']` 式を使用して、線のストロークに色のグラデーションを適用します。
 
 ```javascript
 var layer = new atlas.layer.LineLayer(datasource, null, {
@@ -793,7 +793,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 ## <a name="zoom-expression"></a>ズーム式
 
-`zoom` 式は、レンダリング時にマップの現在のズーム レベルを取得するために使用され、`['zoom']` として定義されます。 この式では、マップの最小ズーム レベルと最大ズーム レベルの範囲内にある数値が返されます。 この式を使用すると、マップのズーム レベルの変更に応じて、スタイルを動的に変更できます。 `zoom` 式は、`interpolate` 式と `step` 式でのみ使用できます。
+`zoom` 式は、レンダリング時にマップの現在のズーム レベルを取得するために使用され、`['zoom']` として定義されます。 この式では、マップの最小ズーム レベルと最大ズーム レベルの範囲内にある数値が返されます。 Web および Android 用の Azure Maps 対話型コントロールでは、25 のズーム レベル (0 から 24 までの番号が付けられている) がサポートされます。 `zoom` 式を使用すると、マップのズーム レベルの変更に応じて、スタイルを動的に変更できます。 `zoom` 式は、`interpolate` 式と `step` 式でのみ使用できます。
 
 **例**
 
@@ -819,7 +819,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 ## <a name="variable-binding-expressions"></a>変数バインド式
 
-変数バインド式では、計算結果を変数に格納して、格納された値を再計算することなく、式内の別の場所で繰り返し参照できるようにします。 これは、多くの計算を含む式で便利な最適化です。
+変数バインド式は、計算結果を変数に格納します。 そのため、計算結果は式内の別の場所で繰り返し参照することができます。 これは、多くの計算を含む式で便利な最適化です。
 
 | 式 | の戻り値の型 : | 説明 |
 |--------------|---------------|--------------|
@@ -828,7 +828,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 **例**
 
-この例では、温度の比率を基準として収益を計算する式を使用した後、`case` 式を使用して、この値に対してさまざまなブール演算子を評価します。 `let` 式を使用して、温度の比率を基準とした収益を格納します。これにより、収益を 1 回計算するだけで済み、`var` 式では再計算を行うことなく、必要な回数だけこの変数を参照できます。
+この例では、温度の比率を基準として収益を計算する式を使用した後、`case` 式を使用して、この値に対してさまざまなブール演算子を評価します。 `let` 式は、温度を基準とした収益の比率を格納するために使用され、その結果、1 回だけ計算すればよくなります。 `var` 式は、必要に応じてこの変数を再計算することなく何度も参照できます。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {

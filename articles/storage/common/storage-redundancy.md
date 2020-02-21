@@ -10,12 +10,12 @@ ms.date: 02/10/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 0e612dbecb9f215a90f728afb0f06a65db09764b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 038e53251bd81552fd3379f2d7645570fbcda4ef
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162924"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471348"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage の冗長性
 
@@ -66,7 +66,7 @@ ZRS をサポートしているストレージ アカウントの種類とリー
 |    FileStorage    | 西ヨーロッパ<br /> 米国東部    |    Azure Files のみ    |
 
 <sup>1</sup> アーカイブ層は、ZRS アカウントでは現在サポートされていません。<br />
-<sup>2</sup> 仮想マシン用 Azure ディスク (マネージド ディスクとアンマネージド ディスクの両方を含む) では、LRS のみがサポートされています。 ZRS または GZRS はサポートされていません。 マネージド ディスクの詳細については、[Azure マネージド ディスクの価格](/pricing/details/managed-disks/)に関するページをご覧ください。
+<sup>2</sup> 仮想マシン用 Azure ディスク (マネージド ディスクとアンマネージド ディスクの両方を含む) では、LRS のみがサポートされています。 ZRS または GZRS はサポートされていません。 マネージド ディスクの詳細については、[Azure マネージド ディスクの価格](https://azure.microsoft.com/pricing/details/managed-disks/)に関するページをご覧ください。
 
 ZRS をサポートしているリージョンの詳細については、「[Azure の Availability Zones の概要](../../availability-zones/az-overview.md)」の「**リージョン別のサービスのサポート**」を参照してください。
 
@@ -169,7 +169,7 @@ geo 冗長ストレージ (GRS または GZRS を使用) は、リージョン�
 
 Azure Storage では、巡回冗長検査 (CRCs) を使用して、格納データの整合性を定期的に検証します。 データの破損が検出された場合は、冗長データを使用して修復されます。 また Azure Storage では、データの格納時または取得時にデータ パケットの破損を検出する目的ですべてのネットワーク トラフィックのチェックサムを計算します。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - [ストレージ アカウントの最終同期時刻プロパティを確認する](last-sync-time-get.md)
 - [ストレージ アカウントの冗長オプションを変更する](redundancy-migration.md)

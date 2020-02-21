@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
-ms.openlocfilehash: 3ef584c48ab44fd3616b5c7897d589bddbe45dc0
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 9b9c4b326596887774d9dfc0dd792052ec672be2
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549259"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063817"
 ---
 # <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>NFS (Network File System) Linux Server ボリュームを手動で作成し、Azure Kubernetes Service (AKS) と共に使用する
 コンテナー間のデータ共有はしばしば、コンテナーを基盤とするサービスやアプリケーションで必要となります。 一般的に、外部の永続ボリューム上の同じ情報にさまざまなポットでアクセスする必要があります。    
@@ -93,7 +93,8 @@ chmod +x ~/nfs-server-setup.sh
 ```
 
 ## <a name="connecting-aks-cluster-to-nfs-server"></a>AKS クラスターを NFS サーバーに接続する
-永続ボリュームとボリュームへのアクセス方法を指定する永続ボリューム要求をプロビジョニングすることで、NFS Server をクラスターに接続できます。  
+永続ボリュームとボリュームへのアクセス方法を指定する永続ボリューム要求をプロビジョニングすることで、NFS Server をクラスターに接続できます。
+
 同じまたは対等の仮想ネットワークにある 2 つのサービスを接続する必要があります。 同じ VNET でクラスターを設定する方法は、[既存の VNET 内での AKS クラスターの作成][aks-virtual-network]に関する記事を参照してください
 
 同じ仮想ネットワーク (または、対等な仮想ネットワーク) に置かれている場合、AKS クラスターで永続ボリュームと永続ボリューム要求をプロジェクトする必要があります。 その後、コンテナーでは、NFS ドライブをそのローカル ディレクトリにマウントできます。

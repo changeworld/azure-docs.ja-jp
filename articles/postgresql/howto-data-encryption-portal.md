@@ -1,27 +1,27 @@
 ---
-title: ポータルを使用した Azure Database for PostgreSQL 単一サーバーのデータ暗号化
+title: Azure portal を使用した Azure Database for PostgreSQL 単一サーバーのデータ暗号化
 description: Azure portal を使用して Azure Database for PostgreSQL 単一サーバーのデータ暗号化を設定および管理する方法について説明します。
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 9c935ad8f77e2f8a6198a8ac095e0cc60c025a72
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 4be80e9ded2fe4009c05a2b699342f848491994a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028640"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046134"
 ---
-# <a name="data-encryption-for-azure-database-for-postgresql-single-server-using-portal"></a>ポータルを使用した Azure Database for PostgreSQL 単一サーバーのデータ暗号化
+# <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-portal"></a>Azure portal を使用した Azure Database for PostgreSQL 単一サーバーのデータ暗号化
 
-この記事では、Azure portal を使用して Azure Database for PostgreSQL 単一サーバーのデータ暗号化を設定および管理する方法について説明します。
+Azure portal を使用して Azure Database for PostgreSQL 単一サーバーのデータ暗号化を設定および管理する方法について説明します。
 
-## <a name="prerequisites-for-cli"></a>CLI の前提条件
+## <a name="prerequisites-for-azure-cli"></a>Azure CLI の前提条件
 
 * Azure サブスクリプションがあり、そのサブスクリプションの管理者である必要があります。
-* カスタマー マネージド キーに使用する Azure Key Vault とキーを作成します。
-* キー コンテナーには、カスタマー マネージド キーとして使用するための次のプロパティが必要です。
+* Azure Key Vault で、カスタマー マネージド キーに使用するキー コンテナーとキーを作成します。
+* カスタマー マネージド キーとして使用するには、キー コンテナーに次のプロパティが必要です。
   * [論理的な削除](../key-vault/key-vault-ovw-soft-delete.md)
 
     ```azurecli-interactive
@@ -34,66 +34,66 @@ ms.locfileid: "76028640"
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
     ```
 
-* キーには、カスタマー マネージド キーに使用するための次の属性が必要です。
+* カスタマー マネージド キーとして使用するには、キーに次の属性が必要です。
   * 有効期限がない
   * 無効化されていない
-  * _[取得]_ 、 _[キーを折り返す]_ 、 _[キーの折り返しを解除]_ の各操作を実行できる
+  * [取得]、[キーを折り返す]、[キーの折り返しを解除] の各操作を実行できる
 
-## <a name="setting-the-right-permissions-for-key-operations"></a>キー操作のための適切なアクセス許可の設定
+## <a name="set-the-right-permissions-for-key-operations"></a>キー操作に対する適切なアクセス許可を設定する
 
-1. Azure Key Vault で、 **[アクセス ポリシー]** 、 **[アクセス ポリシーの追加]** の順に選択します。
+1. Key Vault で、 **[アクセス ポリシー]**  >  **[アクセス ポリシーの追加]** の順に選択します。
 
-   ![アクセス ポリシーの概要](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
+   ![[アクセス ポリシー] と [アクセスポリシーの追加] が強調表示されている Key Vault のスクリーンショット](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
 
-2. **[キーのアクセス許可]** で、 **[取得]** 、 **[ラップ]** 、 **[ラップ解除]** 、および PostgreSQL サーバーの名前である **[プリンシパル]** を選択します。 サーバー プリンシパルが既存のプリンシパルの一覧に見つからない場合は、初めてのデータ暗号化の設定を試みる (これは失敗します) ことによって登録する必要があります。  
+2. **[キーのアクセス許可]** を選択し、 **[取得]** 、 **[キーを折り返す]** 、 **[キーの折り返しを解除]** 、および PostgreSQL サーバーの名前である**プリンシパル**を選択します。 お使いのサーバー プリンシパルが既存のプリンシパルの一覧に見つからない場合は、登録する必要があります。 初めてデータの暗号化を設定しようとして失敗したときに、サーバー プリンシパルを登録するように求められます。  
 
    ![アクセス ポリシーの概要](media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png)
 
-3. 設定を**保存**します。
+3. **[保存]** を選択します。
 
-## <a name="setting-data-encryption-for-azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL 単一サーバーのデータ暗号化の設定
+## <a name="set-data-encryption-for-azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL 単一サーバーのデータ暗号化を設定する
 
-1. **[Azure Database for PostgreSQL]** で、 **[データの暗号化]** を選択して、カスタマー マネージド キーのセットアップを設定します。
+1. Azure Database for PostgreSQL で、 **[データの暗号化]** を選択して、カスタマー マネージド キーを設定します。
 
-   ![データ暗号化の設定](media/concepts-data-access-and-security-data-encryption/data-encryption-overview.png)
+   ![[データの暗号化] が強調表示されている Azure Database for PostgreSQL のスクリーンショット](media/concepts-data-access-and-security-data-encryption/data-encryption-overview.png)
 
-2. **[キー コンテナー]** と **[キー]** のペアを選択するか、または **[キー識別子]** を渡すことができます。
+2. キー コンテナー とキーの組を選択するか、キー識別子を入力することができます。
 
-   ![キー コンテナーの設定](media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png)
+   ![データの暗号化のオプションが強調表示されている Azure Database for PostgreSQL のスクリーンショット](media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png)
 
-3. 設定を**保存**します。
+3. **[保存]** を選択します。
 
-4. すべてのファイル (**一時ファイル**を含む) が完全に暗号化されようにするには、サーバーの**再起動**が**必須**です。
+4. 確実にすべてのファイル (一時ファイルを含む) が完全に暗号化されるように、サーバーを再起動します。
 
-## <a name="restoring-or-creating-replica-of-the-server-which-has-data-encryption-enabled"></a>データ暗号化が有効になっているサーバーのレプリカの復元または作成
+## <a name="restore-or-create-a-replica-of-the-server"></a>サーバーのレプリカを復元または作成する
 
-Azure Database for PostgreSQL 単一サーバーが、キー コンテナーに格納されているカスタマー マネージド キーで暗号化されていると、そのサーバーの新しく作成されるすべてのコピーに対して、ローカル/geo リストア操作またはレプリカ (ローカル/リージョン間) 操作のどちらかが実行されます。 そのため、暗号化された PostgreSQL サーバーの場合は、次の手順に従って、暗号化済みの復元されたサーバーを作成できます。
+Key Vault に格納されている顧客のマネージド キーで Azure Database for PostgreSQL 単一サーバーが暗号化されると、そのサーバーの新しく作成されたコピーも暗号化されます。 この新しいコピーは、ローカルまたは geo 復元操作を使用するか、レプリカ (ローカル/リージョン間) 操作を使用して作成できます。 そのため、暗号化された PostgreSQL サーバーの場合は、次の手順を使用して、暗号化済みの復元されたサーバーを作成できます。
 
-1. サーバーで、 **[概要]** を選択してから、 **[復元]** を選択します。
+1. サーバーで、 **[概要]**  >  **[復元]** の順に選択します。
 
-   ![復元を開始する](media/concepts-data-access-and-security-data-encryption/show-restore.png)
+   ![[概要] と [復元] が強調表示されている Azure Database for PostgreSQL のスクリーンショット](media/concepts-data-access-and-security-data-encryption/show-restore.png)
 
-   または、レプリケーションが有効になっているサーバーの場合は、次に示すように、 **[設定]** 見出しで **[レプリケーション]** を選択します。
+   または、レプリケーションが有効なサーバーでは、 **[設定]** 見出しの下にある **[レプリケーション]** を選択します。
 
-   ![レプリケーションを開始する](media/concepts-data-access-and-security-data-encryption/postgresql-replica.png)
+   ![[レプリケーション] が強調表示されている Azure Database for PostgreSQL のスクリーンショット](media/concepts-data-access-and-security-data-encryption/postgresql-replica.png)
 
-2. 復元操作が完了すると、作成された新しいサーバーは、プライマリ サーバーのキーでデータが暗号化されます。 ただし、サーバー上の機能やオプションは無効になっており、サーバーは **[アクセス不可]** 状態でマークされます。 新しいサーバーの ID にはキー コンテナーにアクセスするためのアクセス許可がまだ与えられていないため、この動作はすべてのデータ操作を防止するために設計されています。
+2. 復元操作が完了すると、作成された新しいサーバーは、プライマリ サーバーのキーで暗号化されます。 ただし、このサーバーの機能とオプションは無効になっており、サーバーにアクセスできません。 新しいサーバーの ID には、キー コンテナーへのアクセス許可がまだ付与されていないため、これによってデータ操作が抑止されます。
 
-   ![サーバーを [アクセス不可] としてマークする](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
+   ![[アクセス不可] 状態が強調表示されている Azure Database for PostgreSQL のスクリーンショット](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
 
-3. [アクセス不可] 状態を解決するには、復元されたサーバーでキーを再検証する必要があります。 **[データの暗号化]** ウィンドウを選択し、 **[キーの再検証]** ボタンを選択します。
+3. サーバーにアクセスできるようにするには、復元されたサーバーでキーを再検証します。 **[データの暗号化]**  >  **[キーの再検証]** の順に選択します。
 
    > [!NOTE]
-   > 新しいサーバーのサービス プリンシパルにキー コンテナーへのアクセス権を付与する必要があるため、最初の再検証の試行は失敗します。 サービス プリンシパルを生成するには、 **[キーの再検証]** を選択します。これにより、エラーが発生しますが、サービス プリンシパルが生成されます。 それ以降の操作については、上の[セクション 2](#setting-the-right-permissions-for-key-operations) の手順を参照してください。
+   > 新しいサーバーのサービス プリンシパルにキー コンテナーへのアクセス権を付与する必要があるため、最初の再検証の試行は失敗します。 サービス プリンシパルを生成するには、 **[キーの再検証]** を選択します。これにより、エラーが表示されますが、サービス プリンシパルが生成されます。 その後、この記事で前述した[こちらの手順](#set-the-right-permissions-for-key-operations)を参照してください。
 
-   ![サーバーを再検証する](media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png)
+   ![再検証の手順が強調表示されている Azure Database for PostgreSQL のスクリーンショット](media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png)
 
-   新しいサーバーにキー コンテナーへのアクセス権を付与する必要があります。
+   新しいサーバーへのアクセス権をキー コンテナーに付与する必要があります。
 
-4. サービス プリンシパルを登録した後、再びキーを再検証する必要があります。それにより、サーバーがその通常の機能を再開します。
+4. サービス プリンシパルを登録した後、もう一度キーを再検証すると、サーバーの通常の機能が再開されます。
 
-   ![通常のサーバーの復元](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
+   ![復元された機能を示している Azure Database for PostgreSQL のスクリーンショット](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
 
 ## <a name="next-steps"></a>次のステップ
 
- データ暗号化の詳細については、[Azure のデータ暗号化の概要](concepts-data-encryption-postgresql.md)に関するページを参照してください。
+ データ暗号化の詳細については、「[カスタマー マネージド キーを使用した Azure Database for PostgreSQL 単一サーバーのデータの暗号化](concepts-data-encryption-postgresql.md)」を参照してください。

@@ -9,18 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: d8e96ffc3e2b4756a4184a9a023133f14b326ed3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 42ab32e80ef0a1a7f3c02d8a8eedbb8ab13c4b88
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979940"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132250"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services でセキュリティ監査を有効にする
 
-Azure Active Directory Domain Services (Azure AD DS) セキュリティ監査を使用すると、Azure でセキュリティ イベントを対象のリソースにストリーミングできます。 これらのリソースには、Azure Storage、Azure Log Analytics ワークスペース、または Azure Event Hub が含まれます。 セキュリティ監査イベントを有効にすると、Azure AD DS は、選択されたカテゴリのすべての監査対象イベントを対象のリソースに送信します。 Azure ストレージ内にイベントをアーカイブし、Azure Event Hubs を使用してセキュリティ情報およびイベント管理 (SIEM) ソフトウェア (または同等のもの) にイベントをストリーム配信したり、Azure portal から Azure Log Analytics ワークスペースを使用して独自の分析を行ったりすることができます。
+Azure Active Directory Domain Services (Azure AD DS) セキュリティ監査を使用すると、Azure でセキュリティ イベントを対象のリソースにストリーミングできます。 これらのリソースには、Azure Storage、Azure Log Analytics ワークスペース、または Azure Event Hub が含まれます。 セキュリティ監査イベントを有効にすると、Azure AD DS は、選択されたカテゴリのすべての監査対象イベントを対象のリソースに送信します。
+
+Azure ストレージ内にイベントをアーカイブし、Azure Event Hubs を使用してセキュリティ情報およびイベント管理 (SIEM) ソフトウェア (または同等のもの) にイベントをストリーム配信したり、Azure portal から Azure Log Analytics ワークスペースを使用して独自の分析を行ったりすることができます。
 
 > [!IMPORTANT]
 > Azure AD DS セキュリティ監査は、Azure Resource Manager ベースのインスタンスでのみ使用できます。 移行方法の詳細については、「[クラシック仮想ネットワーク モデルから Resource Manager への Azure AD DS の移行][migrate-azure-adds]」を参照してください。
@@ -61,25 +63,25 @@ Azure AD DS セキュリティ監査は、従来の AD DS ドメイン コント
 
 ## <a name="security-audit-destinations"></a>セキュリティ監査の出力先
 
-Azure AD DS セキュリティ監査のターゲット リソースには、Azure Storage、Azure Event Hubs、Azure Log Analytics ワークスペースの任意の組み合わせを使用できます。 Azure Storage はセキュリティ監査イベントをアーカイブするために使用できますが、Azure Log Analytics ワークスペースでは、短期の情報を分析してレポートを作成できます。
+Azure AD DS セキュリティ監査のターゲット リソースには、Azure Storage、Azure Event Hubs、または Azure Log Analytics ワークスペースを使用できます。 これらの出力先は、組み合わせて使用できます。 たとえば、Azure Storage はセキュリティ監査イベントをアーカイブするために使用できますが、Azure Log Analytics ワークスペースでは、短期の情報を分析してレポートを作成できます。
 
 次の表は、対象となるリソースの種類ごとのシナリオの概要を示しています。
 
 > [!IMPORTANT]
-> Azure AD ドメイン サービスのセキュリティ監査を有効にする前に、ターゲット リソースを作成する必要があります。 これらのリソースは、Azure portal、Azure PowerShell、または Azure CLI を使用して作成することができます。
+> Azure AD DS のセキュリティ監査を有効にする前に、ターゲット リソースを作成する必要があります。 これらのリソースは、Azure portal、Azure PowerShell、または Azure CLI を使用して作成することができます。
 
 | ターゲット リソース | シナリオ |
 |:---|:---|
-|Azure Storage| 主なニーズがセキュリティ監査イベントをアーカイブ用に格納することである場合は、このターゲットを使用してください。 その他のターゲットもアーカイブの目的で使用できますが、主なニーズがアーカイブ以上である機能を提供しています。 Azure AD DS セキュリティ監査イベントを有効にする前に、まず [Azure Storage アカウント](../storage/common/storage-account-create.md) を作成します。|
-|Azure Event Hubs| 主なニーズがデータ分析ソフトウェアやセキュリティ情報およびイベント管理 (SIEM) ソフトウェアなどの追加ソフトウェアとセキュリティ監査イベントを共有することである場合は、このターゲットを使用してください。 Azure AD DS のセキュリティ監査イベントを有効にする前に、[Azure portal を使用してイベント ハブを作成してください](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
-|Azure Log Analytics ワークスペース| 主なニーズが Azure portal でセキュリティ監査を直接分析して確認することである場合は、このターゲットを使用してください。 Azure AD DS のセキュリティ監査イベントを有効にする前に、[Azure portal で Log Analytics ワークスペースを作成してください](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)。|
+|Azure Storage| 主なニーズがセキュリティ監査イベントをアーカイブ用に格納することである場合は、このターゲットを使用してください。 その他のターゲットもアーカイブの目的で使用できますが、主なニーズがアーカイブ以上である機能を提供しています。 <br /><br />Azure AD DS セキュリティ監査イベントを有効にする前に、まず [Azure Storage アカウント](../storage/common/storage-account-create.md) を作成します。|
+|Azure Event Hubs| 主なニーズがデータ分析ソフトウェアやセキュリティ情報およびイベント管理 (SIEM) ソフトウェアなどの追加ソフトウェアとセキュリティ監査イベントを共有することである場合は、このターゲットを使用してください。<br /><br />Azure AD DS のセキュリティ監査イベントを有効にする前に、[Azure portal を使用してイベント ハブを作成してください](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
+|Azure Log Analytics ワークスペース| 主なニーズが Azure portal でセキュリティ監査を直接分析して確認することである場合は、このターゲットを使用してください。<br /><br />Azure AD DS のセキュリティ監査イベントを有効にする前に、[Azure portal で Log Analytics ワークスペースを作成してください](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)。|
 
 ## <a name="enable-security-audit-events-using-the-azure-portal"></a>Azure portal を使用してセキュリティ監査イベントを有効にする
 
 Azure portal を使用して Azure AD DS のセキュリティ監査イベントを有効にするには、次の手順を完了します。
 
 > [!IMPORTANT]
-> Azure AD DS のセキュリティ監査は、さかのぼって適用されません。 過去のイベントを取得する、または過去のイベントを再生することはできません。 Azure AD DS を有効にした後に発生するイベントのみが送信されます。
+> Azure AD DS のセキュリティ監査は、さかのぼって適用されません。 過去のイベントを取得したり再生したりすることはできません。 Azure AD DS では、セキュリティ監査を有効にした後に発生するイベントのみ送信できます。
 
 1. Azure Portal ( https://portal.azure.com ) にサインインします。
 1. Azure portal の上部で、**Azure AD Domain Services** を検索して選択します。 目的のマネージド ドメインを選択します (例: *aadds.contoso.com*)。
@@ -116,7 +118,7 @@ Azure portal を使用して Azure AD DS のセキュリティ監査イベント
 Azure PowerShell を使用して Azure AD DS のセキュリティ監査イベントを有効にするには、次の手順を完了します。 必要に応じて、最初に [Azure PowerShell モジュールをインストールし、Azure サブスクリプションに接続](/powershell/azure/install-az-ps)します。
 
 > [!IMPORTANT]
-> Azure AD DS のセキュリティ監査は、さかのぼって適用されません。 過去のイベントを取得する、または過去のイベントを再生することはできません。 Azure AD DS を有効にした後に発生するイベントのみが送信されます。
+> Azure AD DS のセキュリティ監査は、さかのぼって適用されません。 過去のイベントを取得したり再生したりすることはできません。 Azure AD DS では、セキュリティ監査を有効にした後に発生するイベントのみ送信できます。
 
 1. [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) コマンドレットを使用して、Azure サブスクリプションに対して認証します。 メッセージが表示されたら、アカウント資格情報を入力します。
 
@@ -191,11 +193,11 @@ AADDomainServicesAccountManagement
 
 ### <a name="sample-query-2"></a>サンプル クエリ 2
 
-2019 年 6 月 26 日午前 9 時からのすべてのアカウントのロックアウト イベント (*4740*) を表示します。 から 2019 年 7 月 1 日午前 0 時までのすべてのアカウント ロックアウト イベントを表示します。
+2020 年 2 月 3 日午前 9 時から 2019 年 2 月 10 日午前 0 時までのすべてのアカウント ロックアウト イベント (*4740*) を、 日時の昇順でソートして表示します。
 
 ```Kusto
 AADDomainServicesAccountManagement
-| where TimeGenerated >= datetime(2019-06-26 09:00) and TimeGenerated <= datetime(2019-07-01)
+| where TimeGenerated >= datetime(2020-02-03 09:00) and TimeGenerated <= datetime(2020-02-10)
 | where OperationName has "4740"
 | sort by TimeGenerated asc
 ```

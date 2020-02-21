@@ -9,16 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 7f9bd55054fca6b45a25ef737a1a00872e536ca8
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 5782f07167f72be2ea7b148ad1b0a61d8cb710e2
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75908937"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048905"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps コミュニティ - オープンソース プロジェクト
 
-これらは、オープンソースのコミュニティ主導型イニシアチブであり、Azure Maps チームによって作成および管理されていますが、標準の製品またはサービス オファリングには含まれていません。 Azure Maps によって作成された広く使用されているオープンソース プロジェクトとサンプルのいくつかを、次の一覧に示します。
+これらのオープンソースのコミュニティ主導イニシアチブは、Azure Maps チームによって作成および管理されています。 標準の製品またはサービス内容には含まれていません。
+
+次の一覧に、最も広く使用されている Azure Maps のオープンソース プロジェクトとサンプルのいくつかを示します。
 
 | プロジェクト名 | 説明 |
 |-|-|

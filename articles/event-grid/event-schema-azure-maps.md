@@ -2,17 +2,17 @@
 title: Azure Event Grid の Azure Maps 用のイベント スキーマ
 description: Azure Event Grid で Azure Maps のイベント用に提供されているプロパティとスキーマについて説明します
 services: event-grid
-author: walsehgal
+author: femila
 ms.service: event-grid
 ms.topic: reference
 ms.date: 02/08/2019
-ms.author: v-musehg
-ms.openlocfilehash: 74a3674e632f8dc3f0755bc2ad48376708c7966f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: femila
+ms.openlocfilehash: 9acef524521e8fac6ce6f8f61e5ff3fbbb81d18d
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60861856"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486361"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-maps"></a>Azure Maps 用の Azure Event Grid イベント スキーマ
 
@@ -161,9 +161,9 @@ geometries オブジェクト。要求のユーザー時刻を基準にして有
 | expiredGeofenceGeometryId | string[] | 要求でのユーザー時刻を基準にして期限切れになっているジオフェンスのジオメトリ ID の一覧。 |
 | geometries | geometries[] |座標が含まれるフェンス ジオメトリ、または位置の周りに searchBuffer が重なっているフェンス ジオメトリの一覧を示します。 |
 | invalidPeriodGeofenceGeometryId | string[]  | 要求でのユーザー時刻を基準にして無効期間内になっているジオフェンスのジオメトリ ID の一覧。 |
-| isEventPublished | ブール値 | Azure Maps イベント サブスクライバーに対して少なくとも 1 つのイベントが発行されている場合は true、Azure Maps イベント サブスクライバーに対してイベントが発行されていない場合は false。 |
+| isEventPublished | boolean | Azure Maps イベント サブスクライバーに対して少なくとも 1 つのイベントが発行されている場合は true、Azure Maps イベント サブスクライバーに対してイベントが発行されていない場合は false。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * Azure Event Grid サブスクリプションの作成の詳細については、[Event Grid サブスクリプション スキーマ](subscription-creation-schema.md)に関する記事を参照してください。

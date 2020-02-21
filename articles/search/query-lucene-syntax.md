@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/10/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,19 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 0bb8474b30c05e21a62ded1fa2cb8a6df8e4e321
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d35c96657f48905f37c9ebe246d81ebb9545cf27
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112190"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149883"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure Cognitive Search での Lucence クエリ構文
 
 特殊なクエリ形式 (ワイルドカード、あいまい検索、近接検索、正規表現などその他多数) に対し、高度な [Lucene Query Parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) 構文に基づいて Azure Cognitive Search に対するクエリを作成できます。 Lucene Query Parser 構文の多くは、[Azure Cognitive Search でそのまま実装](search-lucene-query-architecture.md)されています。ただし、*範囲検索*は例外で、これは Azure Cognitive Search では `$filter` 式を介して構築されます。 
+
+> [!NOTE]
+> 完全な Lucene 構文は、[Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents) API の **search** パラメーターで渡されるクエリ式に使用されます。その API の [$filter](search-filters.md) パラメーターで使用される [OData 構文](query-odata-filter-orderby-syntax.md)と混同しないでください。 これらのさまざまな構文には、クエリの作成や文字列のエスケープなどを行うための独自の規則があります。
 
 ## <a name="how-to-invoke-full-parsing"></a>完全な解析を呼び出す方法
 
@@ -123,7 +126,7 @@ NOT 演算子は、感嘆符またはマイナス記号です。 たとえば、
  Azure Cognitive Search は、テキスト クエリで、頻度に基づいたスコアリング ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) を使用します。 ただし、用語のスコープが広くなる可能性があるワイルドカード クエリと正規表現クエリでは、出現頻度が低い用語の一致に対する優先度付けに偏りが発生するのを避けるために、頻度の係数は無視されます。 すべての一致は、ワイルドカード検索と正規表現検索で同等に扱われます。
 
 ##  <a name="bkmk_fields"></a> フィールド検索  
-`fieldName:searchExpression` 構文を使用して、フィールド検索操作を定義できます。検索式は、単一の単語、単一の語句、またはかっこで囲まれた複雑な式が可能であり、必要に応じてブール演算子も使用できます たとえば、次のようになります。  
+`fieldName:searchExpression` 構文を使用して、フィールド検索操作を定義できます。検索式は、単一の単語、単一の語句、またはかっこで囲まれた複雑な式が可能であり、必要に応じてブール演算子も使用できます 例として、次のようなものがあります。  
 
 - genre:jazz NOT history  
 
@@ -169,8 +172,8 @@ NOT 演算子は、感嘆符またはマイナス記号です。 たとえば、
 >  検索の最初の文字として * または ? を使用することはできません。  
 >  ワイルドカード検索のクエリでは、テキスト分析は実行されません。 クエリ時、ワイルドカード クエリの用語は、検索インデックス内の分析済みの用語と比較されて、展開されます。
 
-## <a name="see-also"></a>関連項目  
+## <a name="see-also"></a>参照  
 
 + [ドキュメントの検索](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 + [フィルターと並べ替えの OData 式の構文](query-odata-filter-orderby-syntax.md)   
-+ [Azure Cognitive Search での単純なクエリ構文](query-simple-syntax.md)   
++ [Azure Cognitive Search でのシンプルなクエリ構文](query-simple-syntax.md)   

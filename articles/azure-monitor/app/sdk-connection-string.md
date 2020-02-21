@@ -8,12 +8,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2cf3c784c711977a6fe758bb9017e1f0dc404c33
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8febe1fd749842a6db0cd1c9991f4002eb7cf2ad
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76991970"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190087"
 ---
 # <a name="connection-strings"></a>Connection strings
 
@@ -140,10 +140,10 @@ ms.locfileid: "76991970"
 - 認証方式の既定値は "ikey" です 
 - インストルメンテーション キー:00000000-0000-0000-0000-000000000000
 - リージョン サービスの URI は、明示的なオーバーライド値に基づきます。 
-   - インジェスト: https://custom.com:111/
-   - Live Metrics: https://custom.com:222/
-   - Profiler: https://custom.com:333/ 
-   - デバッガー: https://custom.com:444/   
+   - インジェスト: https:\//custom.com:111/
+   - ライブ メトリック: https:\//custom.com:222/
+   - プロファイラー: https:\//custom.com:333/ 
+   - デバッガー: https:\//custom.com:444/   
 
 
 ## <a name="how-to-set-a-connection-string"></a>接続文字列を追加する方法

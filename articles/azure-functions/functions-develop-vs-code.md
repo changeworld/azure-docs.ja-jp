@@ -3,12 +3,12 @@ title: Visual Studio Code を使用して Azure Functions を開発する
 description: Visual Studio Code 用 Azure Functions 拡張機能を使用して、Azure Functions を開発およびテストする方法を説明します。
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 7e533d5826d429a716ad1592d75159782ed43fa7
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 41a1a64be4823769f6bf23b251fec94fd68eb0f0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964017"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484776"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code を使用して Azure Functions を開発する
 
@@ -71,7 +71,7 @@ Functions の拡張機能により、最初の関数と共に関数アプリ プ
 
     ![HTTP トリガー テンプレートを選択する](./media/functions-develop-vs-code/create-function-choose-template.png)
 
-1. 関数名として **HttpExample** を入力して Enter キーを選択してから、 **[関数]** の承認を選択します。 この承認レベルでは、関数エンドポイントを呼び出すときに[関数キー](functions-bindings-http-webhook.md#authorization-keys)を指定する必要があります。
+1. 関数名として **HttpExample** を入力して Enter キーを選択してから、 **[関数]** の承認を選択します。 この承認レベルでは、関数エンドポイントを呼び出すときに[関数キー](functions-bindings-http-webhook-trigger.md#authorization-keys)を指定する必要があります。
 
     ![関数の承認を選択する](./media/functions-develop-vs-code/create-function-auth.png)
 
@@ -92,11 +92,11 @@ Functions の拡張機能により、最初の関数と共に関数アプリ プ
 
 言語に応じて、次のような他のファイルが作成されます。
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 * 関数を実装する [HttpExample.cs クラス ライブラリ ファイル](functions-dotnet-class-library.md#functions-class-library-project)。
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 * ルート フォルダー内の package.json ファイル。
 
@@ -122,7 +122,7 @@ Functions の拡張機能により、最初の関数と共に関数アプリ プ
 
 HTTP トリガーとタイマー トリガーを除き、バインドは拡張機能パッケージで実装されます。 拡張機能パッケージは、それらを必要とするトリガーおよびバインド用のものをインストールする必要があります。 バインドの拡張機能をインストールするプロセスは、プロジェクトの言語によって異なります。
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 ターミナル ウィンドウで [dotnet add package](/dotnet/core/tools/dotnet-add-package) コマンドを実行して、プロジェクトに必要な拡張機能パッケージをインストールします。 次のコマンドは、Blob Storage、Queue Storage、Table Storage のバインドを実装する Azure Storage 拡張機能をインストールします。
 
@@ -130,7 +130,7 @@ HTTP トリガーとタイマー トリガーを除き、バインドは拡張�
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -142,11 +142,11 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 このアクションの結果は、お使いのプロジェクトの言語によって異なります。
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 新しい C# クラス ライブラリ (.cs) ファイルがプロジェクトに追加されます。
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 プロジェクト内に新しいフォルダーが作成されます。 そのフォルダーには、新しい function.json ファイルと新しい JavaScript コード ファイルが含まれています。
 
@@ -158,7 +158,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 次の例では、`outqueue` という名前のストレージ キューに接続します。ここで、ストレージ アカウントの接続文字列は、local.settings.json の `MyStorageConnection` アプリケーション設定に指定されています。
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 次のパラメーターを `Run` メソッド定義に追加する関数メソッドを更新します。
 
@@ -174,9 +174,9 @@ using Microsoft.Azure.WebJobs.Extensions.Storage;
 
 `msg` パラメーターは `ICollector<T>` 型です。これは、関数の完了時に出力バインドに書き込まれるメッセージのコレクションを表します。 1 つ以上のメッセージをコレクションに追加します。 これらのメッセージは、関数の完了時にキューに送信されます。
 
-詳細については、[キュー ストレージの出力バインド](functions-bindings-storage-queue.md#output)に関するドキュメントをご覧ください。
+詳細については、[キュー ストレージの出力バインド](functions-bindings-storage-queue-output.md)に関するドキュメントをご覧ください。
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 Visual Studio Code では、便利な一連のプロンプトに従って、function.json ファイルにバインドを追加できます。 バインドを作成するには、関数フォルダー内の **function.json** ファイルを右クリック (macOS では Ctrl を押しながらクリック) して **[バインドの追加]** を選択します。
 
@@ -212,7 +212,7 @@ Visual Studio Code では、便利な一連のプロンプトに従って、func
 context.bindings.msg = "Name passed to the function: " req.query.name;
 ```
 
-詳細については、[キュー ストレージの出力バインド](functions-bindings-storage-queue.md#output)の参照をご覧ください。
+詳細については、[キュー ストレージの出力バインド](functions-bindings-storage-queue-output.md)の参照をご覧ください。
 
 ---
 
@@ -277,7 +277,7 @@ Visual Studio Code から発行するときには、[ZIP デプロイ](functions
 
 ## <a name="get-the-url-of-the-deployed-function"></a>デプロイされた関数の URL を取得する
 
-HTTP によってトリガーされる関数を呼び出すには、関数アプリにデプロイされたときの関数の URL が必要です。 この URL には、必要なすべての[関数キー](functions-bindings-http-webhook.md#authorization-keys)が含まれています。 デプロイした関数のこれらの URL を取得するには、拡張機能を使用できます。
+HTTP によってトリガーされる関数を呼び出すには、関数アプリにデプロイされたときの関数の URL が必要です。 この URL には、必要なすべての[関数キー](functions-bindings-http-webhook-trigger.md#authorization-keys)が含まれています。 デプロイした関数のこれらの URL を取得するには、拡張機能を使用できます。
 
 1. F1 キーを選択してコマンド パレットを開き、次のコマンドを検索して実行します: **Azure Functions: Copy Function URL**。
 

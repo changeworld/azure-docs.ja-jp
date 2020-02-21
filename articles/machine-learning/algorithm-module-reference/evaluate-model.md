@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 11/19/2019
-ms.openlocfilehash: a906e5f354f332cebb0656c6fc40b17c8a5016a2
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 5951c6ec63478b4b266f22eaf8bf3162e0a45df0
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546692"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137543"
 ---
 # <a name="evaluate-model-module"></a>Evaluate Model (モデルの評価) モジュール
 
@@ -80,10 +80,10 @@ ms.locfileid: "76546692"
 
 このセクションでは、**Evaluate Model (モデルの評価)** で使用するためにサポートされているモデルの特定の種類に対して返されるメトリックについて説明します。
 
-+ [分類モデル](#bkmk_classification)
-+ [回帰モデル](#bkmk_regression)
++ [分類モデル](#metrics-for-classification-models)
++ [回帰モデル](#metrics-for-regression-models)
 
-###  <a name="bkmk_classification"></a> 分類モデルのメトリック
+### <a name="metrics-for-classification-models"></a>分類モデルのメトリック
 
 分類モデルを評価するときに、次のメトリックが報告されます。 モデルを比較すると、評価のために選択したメトリックによってモデルが順位付けされます。  
   
@@ -101,7 +101,7 @@ ms.locfileid: "76546692"
   
 - **Training log loss (トレーニング ログ損失)** は、ランダムな予測に対する分類子の利点を表す 1 つのスコアです。 ログ損失は、モデルがラベル内の既知の値 (グラウンド トゥルース) に出力する確率を比較することによって、モデルの不確実性を測定します。 モデル全体のログ損失を最小限にすることが目標です。
 
-##  <a name="bkmk_regression"></a> 回帰モデルのメトリック
+### <a name="metrics-for-regression-models"></a>回帰モデルのメトリック
  
 回帰モデルに対して返されるメトリックは、エラーの量を見積もるように設計されています。  観察された値と予測された値の差が小さい場合は、モデルがデータとうまく適合しているとみなされます。 ただし、残差のパターン (任意の 1 つの予測ポイントとそれに対応する実際の値の差) を調べることで、モデル内の潜在的なバイアスに関して多くのことがわかります。  
   
@@ -115,7 +115,7 @@ ms.locfileid: "76546692"
   
 - **Relative squared error (RSE) (相対二乗誤差 (RSE))** は、予測された値の二乗誤差の合計を、実際の値の二乗誤差の合計で除算することで、同様に正規化します。  
   
-- **Mean Zero One Error (MZOE) (ゼロワン誤差平均 (MZOE))** は、予測が正しかったかどうかを示します。  つまり、`x!=y` のときは `ZeroOneLoss(x,y) = 1` で、それ以外の場合は `0` です。
+
   
 - **Coefficient of determination (決定係数)** (大抵は R<sup>2</sup> と呼ばれます) は、モデルの予測能力を 0 から 1 の値で表します。 ゼロはモデルがランダム (何も説明しない) であることを意味し、1 は完全一致があることを意味します。 ただし、R<sup>2</sup> 値の解釈には注意が必要です。低い値はまったく正常で、高い値は疑わしい場合があります。
   

@@ -4,21 +4,21 @@ description: Azure Active Directory の Azure 管理センターでユーザー 
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: mtillman
-ms.date: 07/15/2019
+manager: daveba
+ms.date: 02/06/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
-ms.reviewer: jeffsta
+ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d106e803fdef4f054b7e4717ba59a43359d1d68a
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 4716ff9547f64dc6551b4d4adb0a8578da9fa83e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720287"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063834"
 ---
 # <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>Azure Active Directory ポータルでユーザーの一覧をダウンロードする (プレビュー)
 
@@ -39,22 +39,21 @@ Azure AD 管理センターからユーザー一覧をダウンロードする�
 
    ダウンロードしたファイルには、フィルター処理されたユーザーの一覧が含まれます。
 
-   次のユーザー属性が含まれます。 
+   次のユーザー属性が含まれます。
 
    - userPrincipalName
    - displayName
-   - surname
+   - 姓
    - mail
    - givenName
    - objectId
    - userType
    - jobTitle
    - department
-   - manager
    - accountEnabled
    - usageLocation
    - streetAddress
-   - state
+   - 状態
    - country
    - physicalDeliveryOfficeName
    - city
@@ -79,7 +78,7 @@ Azure AD 管理センターからユーザー一覧をダウンロードする�
 
 ユーザー一覧の作成の一括操作は、それぞれ最大 1 時間かかる場合があります。 これにより、最小で 50 万ユーザーを一括作成およびダウンロードできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ユーザーの一括追加](users-bulk-add.md)
 - [ユーザーの一括削除](users-bulk-delete.md)

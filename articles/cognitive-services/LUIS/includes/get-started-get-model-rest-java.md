@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: 5214395aa583bfa344f2c8e84066db84edb3939a
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 92552a9870f037555a6cde9daa67d3af112ccee7
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76966656"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368475"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -29,8 +29,6 @@ ms.locfileid: "76966656"
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
 ## <a name="change-model-programmatically"></a>プログラムを使用してモデルを変更する
-
-Go を使用して、機械学習されたエンティティ [API](https://aka.ms/luis-apim-v3-authoring) をアプリケーションに追加します。
 
 1. `lib` という名前のサブディレクトリを作成し、次の Java ライブラリにコピーします。
 

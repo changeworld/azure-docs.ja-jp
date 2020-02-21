@@ -6,7 +6,7 @@
       href: dns-overview.md
     - name: Azure プライベート DNS とは
       href: private-dns-overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: パブリック DNS
@@ -49,7 +49,7 @@
           href: dns-alias.md
         - name: Azure DNS による委任
           href: dns-domain-delegation.md
-        - name: FAQ
+        - name: よく寄せられる質問
           href: dns-faq.md
         - name: DNS メトリックとアラート
           href: dns-alerts-metrics.md
@@ -69,7 +69,7 @@
           href: private-dns-scenarios.md
         - name: 仮想ネットワークでの DNS 解決
           href: ../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
-        - name: FAQ
+        - name: よく寄せられる質問
           href: dns-faq-private.md
 - name: 方法
   items:
@@ -79,7 +79,7 @@
           href: dns-alias-appservice.md
         - name: DNS ゾーンの管理
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: dns-operations-dnszones-portal.md
             - name: Azure PowerShell
               href: dns-operations-dnszones.md
@@ -87,7 +87,7 @@
               href: dns-operations-dnszones-cli.md
         - name: DNS レコードの管理
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: dns-operations-recordsets-portal.md
             - name: Azure PowerShell
               href: dns-operations-recordsets.md
@@ -113,7 +113,11 @@
           href: dns-sdk.md
         - name: Azure リソースのカスタム ドメイン
           href: dns-custom-domain.md
-    - name: トラブルシューティング
+    - name: プライベート DNS
+      items:
+        - name: プライベート DNS ゾーンとレコードを保護する
+          href: dns-protect-private-zones-recordsets.md
+    - name: '[トラブルシューティング]'
       items:
         - name: トラブルシューティング ガイド
           href: dns-troubleshoot.md

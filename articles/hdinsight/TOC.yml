@@ -431,53 +431,9 @@
           items:
             - name: Apache Hadoop サンドボックスの使用
               href: ./hadoop/apache-hadoop-emulator-get-started.md
+            - name: Apache Pig を使用する
+              href: use-pig.md
         - name: 開発
-          items:
-            - name: Apache Hadoop と MapReduce を使用する
-              items:
-                - name: MapReduce の概要
-                  href: ./hadoop/hdinsight-use-mapreduce.md
-                - name: SSH の使用
-                  href: ./hadoop/apache-hadoop-use-mapreduce-ssh.md
-                - name: cURL の使用
-                  href: ./hadoop/apache-hadoop-use-mapreduce-curl.md
-                - name: Azure PowerShell の使用
-                  href: ./hadoop/apache-hadoop-use-mapreduce-powershell.md
-                - name: .NET 用 SDK の使用
-                  href: ./hadoop/apache-hadoop-use-mapreduce-dotnet-sdk.md
-                - name: MapReduce サンプルの実行
-                  href: ./hadoop/apache-hadoop-run-samples-linux.md
-                - name: カスタムの Apache Hadoop MapReduce プログラムを実行する
-                  href: ./hadoop/apache-hadoop-run-custom-programs.md
-                - name: 'C# ストリーミング MapReduce プログラムを開発する'
-                  href: ./hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md
-                - name: Java MapReduce プログラムを開発する
-                  href: ./hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
-            - name: 抽出、変換、読み込み (ETL) ツールとして Apache Hive を使用する
-              href: ./hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md
-            - name: 大規模な抽出、変換、読み込み
-              href: ./hadoop/apache-hadoop-etl-at-scale.md
-            - name: 非対話型認証 .NET HDInsight アプリケーションを作成する
-              href: ./hdinsight-create-non-interactive-authentication-dotnet-applications.md
-            - name: ビッグ データの分析
-              items:
-                - name: Power Query を使用して分析する
-                  href: ./hadoop/apache-hadoop-connect-excel-power-query.md
-                - name: Power BI を対話型クエリに接続する
-                  href: ./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md
-                - name: Power BI を Apache Hadoop に接続する
-                  href: ./hadoop/apache-hadoop-connect-hive-power-bi.md
-                - name: Excel を Apache Hadoop に接続する
-                  href: ./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
-                - name: Apache Hive JDBC ドライバーを使用して接続する
-                  href: ./hadoop/apache-hadoop-connect-hive-jdbc-driver.md
-                - name: 格納されたツイートを分析する
-                  href: ./hdinsight-analyze-twitter-data-linux.md
-                - name: Apache Mahout で推奨事項を生成する
-                  href: ./hadoop/apache-hadoop-mahout-linux-mac.md
-                - name: HDInsight の高度な分析
-                  href: ./hadoop/apache-hadoop-deep-dive-advanced-analytics.md
-        - name: 管理する
           items:
             - name: 空のエッジ ノードを使用する
               href: ./hdinsight-apps-use-edge-node.md
@@ -529,6 +485,8 @@
               href: ./hadoop/troubleshoot-lost-key-vault-access.md
             - name: WASBS ストレージの例外
               href: ./hadoop/troubleshoot-wasbs-storage-exception.md
+            - name: ディスク領域の管理
+              href: ./hadoop/troubleshoot-disk-space.md
 - name: Apache Kafka
   items:
     - name: 概要
@@ -852,6 +810,8 @@
           href: ./domain-joined/hdinsight-use-oozie-domain-joined-clusters.md
     - name: 概念
       items:
+        - name: エンタープライズ セキュリティの一般的なガイドライン
+          href: ./domain-joined/general-guidelines.md
         - name: ESP クラスターの計画
           href: ./domain-joined/apache-domain-joined-architecture.md
         - name: HDInsight 仮想ネットワーク アーキテクチャ
@@ -864,6 +824,8 @@
           href: ./hdinsight-service-tags.md
         - name: お客様が管理するキー ディスクの暗号化
           href: ./disk-encryption.md
+        - name: Ranger と Apache Ambari での LDAP 同期
+          href: ./domain-joined/ldap-sync.md
     - name: 方法
       items:
         - name: 資格情報の管理に ID ブローカーを使用する
@@ -880,6 +842,8 @@
           href: ./hdinsight-sync-aad-users-to-cluster.md
         - name: エンタープライズ セキュリティでのクラスターの管理
           href: ./domain-joined/apache-domain-joined-manage.md
+        - name: SSH アクセスの管理
+          href: ./domain-joined/ssh-domain-accounts.md
         - name: データのセキュリティ保護
           href: ./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
         - name: '[トラブルシューティング]'

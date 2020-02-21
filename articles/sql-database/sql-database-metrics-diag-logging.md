@@ -459,7 +459,7 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 ### <a name="resource-usage-stats-for-managed-instance"></a>マネージド インスタンスのリソース使用状況の統計
 
-|プロパティ|[説明]|
+|プロパティ|説明|
 |---|---|
 |TenantId|テナント ID |
 |SourceSystem|常時: Azure|
@@ -484,7 +484,7 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 ### <a name="query-store-runtime-statistics"></a>クエリ ストアのランタイム統計
 
-|プロパティ|[説明]|
+|プロパティ|説明|
 |---|---|
 |TenantId|テナント ID |
 |SourceSystem|常時: Azure |
@@ -535,7 +535,7 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 ### <a name="query-store-wait-statistics"></a>クエリ ストアの待機統計
 
-|プロパティ|[説明]|
+|プロパティ|説明|
 |---|---|
 |TenantId|テナント ID |
 |SourceSystem|常時: Azure |
@@ -573,7 +573,7 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 ### <a name="errors-dataset"></a>エラー データセット
 
-|プロパティ|[説明]|
+|プロパティ|説明|
 |---|---|
 |TenantId|テナント ID |
 |SourceSystem|常時: Azure |
@@ -602,7 +602,7 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 ### <a name="database-wait-statistics-dataset"></a>データベースの待機統計データセット
 
-|プロパティ|[説明]|
+|プロパティ|説明|
 |---|---|
 |TenantId|テナント ID |
 |SourceSystem|常時: Azure |
@@ -631,7 +631,7 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 ### <a name="time-outs-dataset"></a>タイムアウトのデータセット
 
-|プロパティ|[説明]|
+|プロパティ|説明|
 |---|---|
 |TenantId|テナント ID |
 |SourceSystem|常時: Azure |
@@ -654,7 +654,7 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 ### <a name="blockings-dataset"></a>ブロックしているデータセット
 
-|プロパティ|[説明]|
+|プロパティ|説明|
 |---|---|
 |TenantId|テナント ID |
 |SourceSystem|常時: Azure |
@@ -678,7 +678,7 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 ### <a name="deadlocks-dataset"></a>デッドロック データセット
 
-|プロパティ|[説明]|
+|プロパティ|説明|
 |---|---|
 |TenantId|テナント ID |
 |SourceSystem|常時: Azure |
@@ -699,7 +699,7 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 ### <a name="automatic-tuning-dataset"></a>自動チューニング データセット
 
-|プロパティ|[説明]|
+|プロパティ|説明|
 |---|---|
 |TenantId|テナント ID |
 |SourceSystem|常時: Azure |

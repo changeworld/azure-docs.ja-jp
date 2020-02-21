@@ -7,12 +7,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/15/2020
 ms.author: ralphe
-ms.openlocfilehash: a77fedd92800a73ef446f1f8241a518e42f977ee
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 62b6fe76fcd55df7f1fe65bd3d8d7d2aa7cc0841
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156581"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77446058"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -56,8 +56,7 @@ ms.locfileid: "77156581"
         // Set these
         std::string subscriptionKey("YourSubscriptionKey");
 
-        // Replace below with your own service region (e.g., "westus", use the one of SpeechSDKParameters
-        // from here: https://aka.ms/speech/sdkregion).   
+        // Replace below with your own region identifier from here: https://aka.ms/speech/sdkregion
         std::string region("YourServiceRegion");
         
         std::string speechLanguage("en-US");

@@ -1,31 +1,29 @@
 ---
-title: クイック スタート:テキスト読み上げ音声を一覧表示する、Python - Speech サービス
+title: テキスト読み上げ音声を一覧表示する、Python - Speech サービス
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、Python を使用してリージョン/エンドポイントの標準音声およびニューラル音声の完全な一覧を取得する方法について説明します。 一覧は JSON として返されます。音声の可用性はリージョンによって異なります。
+description: この記事では、Python を使用してリージョンまたはエンドポイントの標準音声およびニューラル音声の完全な一覧を取得する方法について説明します。 この一覧は JSON として返されます。利用可能な音声はリージョンによって異なります。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 12/09/2019
-ms.author: erhopf
-ms.openlocfilehash: c645d01dd37fd370911019446c99c76c9da6221c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.topic: how-to
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 51fe6cea80e097f34432ab8dc7293c758bd8d720
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975977"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119795"
 ---
-# <a name="quickstart-get-the-list-of-text-to-speech-voices-using-python"></a>クイック スタート:Python を使用してテキスト読み上げ音声の一覧を取得する
+# <a name="get-the-list-of-text-to-speech-voices-using-python"></a>Python を使用してテキスト読み上げ音声の一覧を取得する
 
-このクイック スタートでは、Python を使用してリージョン/エンドポイントの標準音声およびニューラル音声の完全な一覧を取得する方法について説明します。 一覧は JSON として返されます。音声の可用性はリージョンによって異なります。 サポートされているリージョンの一覧については、[リージョン](regions.md)に関するページをご覧ください。
+この記事では、Python を使用してリージョンまたはエンドポイントの標準音声およびニューラル音声の完全な一覧を取得する方法について説明します。 この一覧は JSON として返されます。利用可能な音声はリージョンによって異なります。 サポートされているリージョンの一覧については、[リージョン](regions.md)に関するページをご覧ください。
 
-このクイックスタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Speech サービス リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](get-started.md)を使用してサブスクリプション キーを取得できます。
+この記事では、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Speech サービス リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](get-started.md)を使用してサブスクリプション キーを取得できます。
 
 ## <a name="prerequisites"></a>前提条件
-
-このクイック スタートでは以下が必要です。
 
 * Python 2.7.x または 3.x
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download)、または任意のテキスト エディター
@@ -125,16 +123,16 @@ if __name__ == "__main__":
 python get-voices.py
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 サブスクリプション キーなどの秘密情報は、サンプル アプリのソース コードからすべて確実に削除してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [GitHub で Python のサンプルを詳しく見てみる](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/Python)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [Text-to-speech API リファレンス](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
 * [カスタム音声フォントの作成](how-to-customize-voice-font.md)

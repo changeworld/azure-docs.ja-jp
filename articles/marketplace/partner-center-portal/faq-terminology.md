@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: 559c0e2a56bfb452f1faf10f68c19d4f406427e8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/17/2020
+ms.openlocfilehash: 081109c2208e2006eb1628fbf0cfb99b1e6bd8f9
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475161"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462141"
 ---
 # <a name="frequently-asked-questions-and-terminology-for-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析に関するよく寄せられる質問と用語
 
@@ -29,7 +29,6 @@ ms.locfileid: "75475161"
 
 このメッセージが表示される理由:
 
-- マーケットプレースにリストアップされているあなたのサービスが SaaS サービスではありません。 現在、パートナー センターでは、SaaS サービスの場合にのみ、分析が報告されています。 Dynamics 365 サービスはパートナー センターで公開できますが、サービスの分析はまだ、パートナー センターで有効にされていません。
 - マーケットプレースでは、あなたが公開したサービスに対する購入がありません。 これは、あなたのサービスがマーケットプレースで販売されており、製品表示ページで顧客に閲覧されていますが、顧客はまだ購入もデプロイもしていないことを意味している可能性があります。
 - あなたのサービスを公開するためのプロセスが進行中であり、まだ販売されていません。 顧客が購入できるのは、販売が始まったサービスだけです。 サービスの状態を確認するには、[分析ダッシュボード](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)の [概要] をご覧ください。 詳細については、「[コマーシャル マーケットプレース分析の [概要] ダッシュボード](./summary-dashboard.md)」を参照してください。
 - あなたのサービスが **[連絡する]** としてリストアップされている可能性があります。[連絡する] はリストのみのサービスであり、顧客はマーケットプレースで購入できません。 そのようなサービスが潜在顧客を生み、その情報が提供されることがありますが、購入できないため、注文されません。 サービスのリストアップの種類を確認するには、設定ページに移動してください。

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 02/11/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1802c3a92ed18dec5cba974c54c92f01324245eb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 64934dd5bc591415c0bad6ac3dc6a4a2d98dd005
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850670"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136306"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>カスタム ポリシーを使用して Azure Active Directory B2C に Azure Active Directory アカウントでサインインするように設定する
 
@@ -50,6 +50,19 @@ ms.locfileid: "76850670"
 1. **[Certificates & secrets]\(証明書とシークレット\)** を選択してから、 **[New client secret]\(新しいクライアント シークレット\)** を選択します。
 1. シークレットの**説明**を入力し、有効期限を選択して、 **[追加]** を選択します。 後の手順で使用するために、シークレットの**値**を記録しておきます。
 
+## <a name="configuring-optional-claims"></a>省略可能な要求の構成
+
+Azure AD から `family_name` および `given_name` 要求を取得する場合は、ご利用のアプリケーションに対して省略可能な要求を Azure portal UI またはアプリケーション マニフェストで構成できます。 詳細については、[Azure AD アプリに省略可能な要求を提供する方法](../active-directory/develop/active-directory-optional-claims.md)に関するページを参照してください。
+
+1. [Azure portal](https://portal.azure.com) にサインインします。 **Azure Active Directory** を検索して選択します。
+1. **[管理]** セクションで、 **[アプリの登録]** を選択します。
+1. 省略可能な要求を構成するアプリケーションを一覧から選択します。
+1. **[管理]** セクションで、 **[トークンの構成 (プレビュー)]** を選択します。
+1. **[省略可能な要求を追加]** を選択します。
+1. 構成するトークンの型を選択します。
+1. 追加する省略可能な要求を選択します。
+1. **[追加]** をクリックします。
+
 ## <a name="create-a-policy-key"></a>ポリシー キーを作成する
 
 作成したアプリケーション キーを Azure AD B2C テナントに格納する必要があります。
@@ -73,23 +86,20 @@ ms.locfileid: "76850670"
 1. *TrustFrameworkExtensions.xml* ファイルを開きます。
 2. **ClaimsProviders** 要素を見つけます。 存在しない場合は、それをルート要素の下に追加します。
 3. 新しい **ClaimsProvider** を次のように追加します。
-
-    ```XML
+    ```xml
     <ClaimsProvider>
       <Domain>Contoso</Domain>
       <DisplayName>Login using Contoso</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="ContosoProfile">
+        <TechnicalProfile Id="OIDC-Contoso">
           <DisplayName>Contoso Employee</DisplayName>
           <Description>Login with your Contoso account</Description>
           <Protocol Name="OpenIdConnect"/>
           <Metadata>
-            <Item Key="METADATA">https://login.windows.net/your-AD-tenant-name.onmicrosoft.com/.well-known/openid-configuration</Item>
-            <Item Key="ProviderName">https://sts.windows.net/00000000-0000-0000-0000-000000000000/</Item>
-            <!-- Update the Client ID below to the Application ID -->
+            <Item Key="METADATA">https://login.microsoftonline.com/tenant-name.onmicrosoft.com/v2.0/.well-known/openid-configuration</Item>
             <Item Key="client_id">00000000-0000-0000-0000-000000000000</Item>
             <Item Key="response_types">code</Item>
-            <Item Key="scope">openid</Item>
+            <Item Key="scope">openid profile</Item>
             <Item Key="response_mode">form_post</Item>
             <Item Key="HttpBinding">POST</Item>
             <Item Key="UsePolicyInRedirectUri">false</Item>
@@ -125,12 +135,11 @@ ms.locfileid: "76850670"
 
 Azure AD エンドポイントからトークンを取得するには、Azure AD B2C で Azure AD との通信に使用するプロトコルを定義する必要があります。 これは、**ClaimsProvider** の **TechnicalProfile** 要素の中で実行します。
 
-1. **TechnicalProfile** 要素の ID を更新します。 この ID は、ポリシーの他の部分からこの技術プロファイルを参照するために使用します。
+1. **TechnicalProfile** 要素の ID を更新します。 この ID は、`OIDC-Contoso` など、ポリシーの他の部分からこの技術プロファイルを参照するために使用します。
 1. **DisplayName** の値を更新します。 この値は、サインイン画面のサインイン ボタン上に表示されます。
 1. **Description** の値を更新します。
 1. Azure AD では OpenID Connect プロトコルを使用するため、**Protocol** の値が `OpenIdConnect` になっていることを確認してください。
-1. **METADATA** の値を `https://login.windows.net/your-AD-tenant-name.onmicrosoft.com/.well-known/openid-configuration` に設定します。`your-AD-tenant-name` は Azure AD テナント名です。 たとえば、`https://login.windows.net/fabrikam.onmicrosoft.com/.well-known/openid-configuration` のように指定します。
-1. ブラウザーを開き、更新したばかりの **METADATA** URL に移動し、**issuer** オブジェクトを見つけてその値をコピーし、XML ファイル内の **ProviderName** の値の中に貼り付けます。
+1. **METADATA** の値を `https://login.microsoftonline.com/tenant-name.onmicrosoft.com/v2.0/.well-known/openid-configuration` に設定します。`tenant-name` は Azure AD テナント名です。 たとえば、`https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration` のように指定します。
 1. **client_id** を、アプリケーションの登録で取得したアプリケーション ID に設定します。
 1. **CryptographicKeys** で、**StorageReferenceId** の値を、前に作成したポリシー キーの名前に更新します。 たとえば、「 `B2C_1A_ContosoAppSecret` 」のように入力します。
 
@@ -171,10 +180,10 @@ Azure AD エンドポイントからトークンを取得するには、Azure AD
 1. 次の **ClaimsExchange** 要素を追加します。**TargetClaimsExchangeId** に使用した **Id** と同じ値を必ずご使用ください。
 
     ```XML
-    <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="ContosoProfile" />
+    <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="OIDC-Contoso" />
     ```
 
-    **TechnicalProfileReferenceId** の値を、前に作成した技術プロファイルの **Id** に更新します。 たとえば、「 `ContosoProfile` 」のように入力します。
+    **TechnicalProfileReferenceId** の値を、前に作成した技術プロファイルの **Id** に更新します。 たとえば、「 `OIDC-Contoso` 」のように入力します。
 
 1. *TrustFrameworkExtensions.xml* ファイルを保存し、確認のために再度アップロードします。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: e99a0e8e42bcfb5c7967a9cb1c91631bacbea53a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f4109359adaaeae0a1ba027ac04439ff60b5a939
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980072"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467183"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Azure リソース ログをストレージ アカウントにアーカイブする
 Azure のアクティビティ ログとリソース ログを含む Azure の[プラットフォーム ログ](platform-logs-overview.md)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。  この記事では、アーカイブ対象のデータを保持するための、Azure ストレージ アカウントへのプラットフォーム ログの収集について説明します。
@@ -33,7 +33,7 @@ Azure リソース用の診断設定を作成して、ストレージやその�
 
 
 ## <a name="collect-data-from-compute-resources"></a>コンピューティング リソースからのデータの収集
-診断設定によって、他のリソースと同様に、Azure コンピューティング リソースのリソース ログが収集されますが、ゲスト オペレーティング システムやワークロードについては収集されません。 このデータを収集するには、[Windows Azure Diagnostics エージェント](diagnostics-extension-overview.md)をインストールします。 詳細については、「[Azure Storage への診断データの保存と表示](diagnostics-extension-to-storage.md)」を参照してください。
+診断設定によって、他のリソースと同様に、Azure コンピューティング リソースのリソース ログが収集されますが、ゲスト オペレーティング システムやワークロードについては収集されません。 このデータを収集するには、[Windows Azure Diagnostics エージェント](diagnostics-extension-overview.md)をインストールします。 
 
 
 ## <a name="schema-of-platform-logs-in-storage-account"></a>ストレージ アカウントのプラットフォーム ログのスキーマ

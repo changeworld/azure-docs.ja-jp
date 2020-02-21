@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68d34046a16787ca1c6790880592fb30667ff2dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c858a17d4574e6e45283df7c1276cd303f25297
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422693"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120488"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理で新しいアクセス パッケージを作成する
 
@@ -57,7 +57,7 @@ ms.locfileid: "75422693"
 
 **事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネージャー
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. **[Azure Active Directory]** をクリックしてから **[Identity Governance]** をクリックします。
 
@@ -131,7 +131,18 @@ ms.locfileid: "75422693"
 
     新しいアクセス パッケージがアクセス パッケージの一覧に表示されます。
 
+## <a name="creating-an-access-package-programmatically"></a>プログラムによるアクセス パッケージの作成
+
+Microsoft Graph を使用して、アクセス パッケージを作成することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、次のことを行うことができます
+
+1. [カタログ内の accessPackageResources を一覧表示し](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresources?view=graph-rest-beta)、カタログにまだ存在しないすべてのリソースに対して [accessPackageResourceRequest](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta) を作成します。
+1. accessPackageCatalog 内の各 accessPackageResource の [accessPackageResourceRoles](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresourceroles?view=graph-rest-beta) を一覧表示します。 このロールの一覧は、後で accessPackageResourceRoleScope を作成するときにロールを選択するために使用されます。
+1. [accessPackage を作成します](https://docs.microsoft.com/graph/api/accesspackage-post?view=graph-rest-beta)。
+1. [accessPackageAssignmentPolicy を作成します](https://docs.microsoft.com/graph/api/accesspackageassignmentpolicy-post?view=graph-rest-beta)。
+1. アクセス パッケージ内で必要なリソース ロールごとに [accessPackageResourceRoleScope](https://docs.microsoft.com/graph/api/accesspackage-post-accesspackageresourcerolescopes?view=graph-rest-beta) を作成します。
+
 ## <a name="next-steps"></a>次のステップ
 
 - [リンクを共有してアクセス パッケージを要求する](entitlement-management-access-package-settings.md)
 - [アクセス パッケージのリソースのロールを変更する](entitlement-management-access-package-resources.md)
+- [アクセス パッケージにユーザーを直接割り当てる](entitlement-management-access-package-assignments.md)

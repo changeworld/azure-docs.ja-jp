@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0bbd8a12820432ce2f131dda29af6740a2f04e18
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 209eb6ed93ed12f97b116b648a36d14e09b822f7
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024723"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461183"
 ---
 # <a name="set-up-avs-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>VMware Site Recovery Manager を使用して、AVS プライベート クラウドをディザスター リカバリー ターゲットとして設定する
 
@@ -101,7 +101,7 @@ SRM ソリューション ネットワーク用の VLAN を作成し、それを
 
 AVS プライベート クラウド内のワークロードに対して IP アドレス参照、IP アドレス管理、名前解決サービスを提供するには、「[AVS プライベート クラウドで DNS および DHCP アプリケーションとワークロードを設定する](dns-dhcp-setup.md)」の説明に従って、DHCP および DNS サーバーを設定します。
 
-AVS プライベート クラウド内の管理 VM とホストでは、*.avs.io ドメインが使用されます。 このドメインに対する要求を解決するには、「[条件付きフォワーダーの作成](on-premises-dns-setup.md#create-a-conditional-forwarder)」の説明に従って、DNS サーバー上で DNS 転送を構成します。
+AVS プライベート クラウド内の管理 VM とホストでは *.cloudsimple.io ドメインが使用されます。 このドメインに対する要求を解決するには、「[条件付きフォワーダーの作成](on-premises-dns-setup.md#create-a-conditional-forwarder)」の説明に従って、DNS サーバー上で DNS 転送を構成します。
 
 ### <a name="install-vsphere-replication-appliance-in-your-on-premises-environment"></a>オンプレミス環境に vSphere Replication アプライアンスをインストールする
 
@@ -223,7 +223,7 @@ AVS プライベート クラウド環境では、vSphere Replication および 
 
 * [VMware Site Recovery Manager のドキュメント](https://docs.vmware.com/en/Site-Recovery-Manager/index.html)
 * [Site Recovery Manager 6.5 の運用上の制限](https://kb.vmware.com/s/article/2147110)
-* [vSphere Replication の帯域幅要件の計算](https://kb.vmware.com/s/article/2037268)
+* [vSphere Replication の帯域幅要件の計算](https://docs.vmware.com/en/vSphere-Replication/6.5/com.vmware.vsphere.replication-admin.doc/GUID-4A34D0C9-8CC1-46C4-96FF-3BF7583D3C4F.html)
 * [vSphere Replication 6.5 をデプロイする場合の OVF の選択](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices/)
 * [VMware vSphere Replication 6.5 のインストールと構成](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf)
 * [SRM 6.5 の前提条件とベスト プラクティス](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-BB0C03E4-72BE-4C74-96C3-97AC6911B6B8.html)

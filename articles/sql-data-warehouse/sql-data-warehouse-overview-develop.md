@@ -1,5 +1,5 @@
 ---
-title: Azure でのデータ ウェアハウスの開発に関するリソース
+title: Azure Synapse Analytics でのデータ ウェアハウスの開発に関するリソース
 description: SQL Data Warehouse に関する開発コンセプト、設計上の決定、推奨事項、およびコーディング技法。
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,67 +10,40 @@ ms.subservice: development
 ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a6cb7937bdd5dea9eb1a48b2b350db9077431fe0
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 0f8967eab1be8351c50035d8afa784aa7afd79e1
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73645611"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153317"
 ---
-# <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>SQL Data Warehouse の設計上の決定と コーディング技法
-SQL Data Warehouse に関する主要な設計上の決定、推奨事項、およびコーディング技法をより深く理解するために、開発に関する次の記事に目を通してください。
+# <a name="design-decisions-and-coding-techniques-for-a-data-warehouse-in-azure-synapse-analytics"></a>Azure Synapse Analytics のデータ ウェアハウスの設計上の決定と コーディング技法 
+ この記事では、Azure Synapse Analytics のデータ ウェアハウスに関する主要な設計上の決定、推奨事項、およびコーディング技法をより深く理解するために、追加のリソースについて説明します。
 
 ## <a name="key-design-decisions"></a>主要な設計上の決定
-次の記事には、SQL Data Warehouse を使用して分散データウェア ハウスを開発するための概念と設計に関する決定事項が概説されています。
+次の記事には、Azure Synapse の SQL Analytics 機能を使用して分散データウェア ハウスを開発するための概念と設計に関する決定事項が概説されています。
 
-* [connections][connections]
-* [コンカレンシー][concurrency]
-* [トランザクション][transactions]
-* [ユーザー定義スキーマ][user-defined schemas]
-* [テーブルのディストリビューション][table distribution]
-* [テーブルのインデックス][table indexes]
-* [テーブルのパーティション][table partitions]
-* [CTAS][CTAS]
-* [統計][statistics]
+* [connections](sql-data-warehouse-connect-overview.md)
+* [concurrency](resource-classes-for-workload-management.md)
+* [トランザクション](sql-data-warehouse-develop-transactions.md)
+* [ユーザー定義スキーマ](sql-data-warehouse-develop-user-defined-schemas.md)
+* [テーブルのディストリビューション](sql-data-warehouse-tables-distribute.md)
+* [テーブルのインデックス](sql-data-warehouse-tables-index.md)
+* [テーブルのパーティション](sql-data-warehouse-tables-partition.md)
+* [CTAS](sql-data-warehouse-develop-ctas.md)
+* [統計](sql-data-warehouse-tables-statistics.md)
 
 ## <a name="development-recommendations-and-coding-techniques"></a>開発における推奨事項とコーディング技法
-次の記事には、SQL Data Warehouse を開発するための具体的なコーディング技法、ヒント、および推奨事項が概説されています。
+次の記事では、SQL Analytics を使用してデータ ウェアハウスを開発するための具体的なコーディング技法、ヒント、および推奨事項について説明しています。
 
-* [ストアド プロシージャ][stored procedures]
-* [ラベル][labels]
-* [ビュー][views]
-* [一時テーブル][temporary tables]
-* [動的 SQL][dynamic SQL]
-* [ループ][looping]
-* [オプションでのグループ化][group by options]
-* [変数の代入][variable assignment]
+* [ストアド プロシージャ](sql-data-warehouse-develop-stored-procedures.md)
+* [ラベル](sql-data-warehouse-develop-label.md)
+* [views](sql-data-warehouse-develop-views.md)
+* [一時テーブル](sql-data-warehouse-tables-temporary.md)
+* [動的 SQL](sql-data-warehouse-develop-dynamic-sql.md)
+* [ループ](sql-data-warehouse-develop-loops.md)
+* [オプションでのグループ化](sql-data-warehouse-develop-group-by-options.md)
+* [変数の代入](sql-data-warehouse-develop-variable-assignment.md)
 
-## <a name="next-steps"></a>次の手順
-詳細な参照情報については、[SQL Data Warehouse ステートメント](sql-data-warehouse-reference-tsql-statements.md)に関するページをご覧ください。
-
-<!--Image references-->
-
-<!--Article references-->
-[concurrency]: ./resource-classes-for-workload-management.md
-[connections]: ./sql-data-warehouse-connect-overview.md
-[CTAS]: ./sql-data-warehouse-develop-ctas.md
-[dynamic SQL]: ./sql-data-warehouse-develop-dynamic-sql.md
-[group by options]: ./sql-data-warehouse-develop-group-by-options.md
-[labels]: ./sql-data-warehouse-develop-label.md
-[looping]: ./sql-data-warehouse-develop-loops.md
-[statistics]: ./sql-data-warehouse-tables-statistics.md
-[stored procedures]: ./sql-data-warehouse-develop-stored-procedures.md
-[table distribution]: ./sql-data-warehouse-tables-distribute.md
-[table indexes]: ./sql-data-warehouse-tables-index.md
-[table partitions]: ./sql-data-warehouse-tables-partition.md
-[temporary tables]: ./sql-data-warehouse-tables-temporary.md
-[transactions]: ./sql-data-warehouse-develop-transactions.md
-[user-defined schemas]: ./sql-data-warehouse-develop-user-defined-schemas.md
-[variable assignment]: ./sql-data-warehouse-develop-variable-assignment.md
-[views]: ./sql-data-warehouse-develop-views.md
-
-
-<!--MSDN references-->
-[renaming objects]: https://msdn.microsoft.com/library/mt631611.aspx
-
-<!--Other Web references-->
+## <a name="next-steps"></a>次のステップ
+詳細な参照情報については、[T-SQL ステートメント](sql-data-warehouse-reference-tsql-statements.md)に関するページをご覧ください。

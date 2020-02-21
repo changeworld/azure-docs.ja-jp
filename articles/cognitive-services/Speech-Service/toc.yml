@@ -305,46 +305,50 @@
       items:
         - name: 音声アシスタントとは
           href: voice-assistants.md
-    - name: アシスタントを作成する
+    - name: カスタム コマンド (プレビュー)
       items:
-        - name: カスタム コマンド (プレビュー)
+        - name: カスタム コマンドとは
           href: custom-commands.md
-        - name: Direct Line Speech
+        - name: クイックスタート
+          items:
+            - name: カスタム コマンドを作成する (プレビュー)
+              href: quickstart-custom-speech-commands-create-new.md
+            - name: パラメーターを使用してカスタム コマンドを作成する (プレビュー)
+              href: quickstart-custom-speech-commands-create-parameters.md
+            - name: カスタム音声でカスタム コマンドを使用する (プレビュー)
+              href: quickstart-custom-speech-commands-select-custom-voice.md
+            - name: Speech SDK でカスタム コマンドを使用する (プレビュー)
+              href: quickstart-custom-speech-commands-speech-sdk.md
+        - name: 操作方法ガイド
+          items:
+            - name: Speech SDK でカスタム コマンドを実行する
+              href: how-to-custom-speech-commands-fulfill-sdk.md
+            - name: カスタム コマンドにパラメーターの検証を追加する
+              href: how-to-custom-speech-commands-validations.md
+            - name: カスタム コマンドに確認を追加する
+              href: how-to-custom-speech-commands-confirmations.md
+            - name: カスタム コマンドにワンステップ修正を追加する
+              href: how-to-custom-speech-commands-one-step-correction.md
+    - name: Direct Line Speech
+      items:
+        - name: Direct Line Speech とは
           href: direct-line-speech.md
-    - name: クイックスタート
-      items:
-        - name: 'C# (UWP)'
-          href: quickstart-voice-assistant-csharp-uwp.md
-        - name: Java (Windows、macOS、Linux)
-          href: quickstart-voice-assistant-java-jre.md
-        - name: Java (Android)
-          href: quickstart-voice-assistant-java-android.md
-        - name: カスタム コマンドを作成する (プレビュー)
-          href: quickstart-custom-speech-commands-create-new.md
-        - name: パラメーターを使用してカスタム コマンドを作成する (プレビュー)
-          href: quickstart-custom-speech-commands-create-parameters.md
-        - name: カスタム音声でカスタム コマンドを使用する (プレビュー)
-          href: quickstart-custom-speech-commands-select-custom-voice.md
-        - name: Speech SDK でカスタム コマンドを使用する (プレビュー)
-          href: quickstart-custom-speech-commands-speech-sdk.md
-    - name: 操作方法ガイド
-      items:
-        - name: Speech SDK でカスタム コマンドを実行する
-          href: how-to-custom-speech-commands-fulfill-sdk.md
-        - name: カスタム コマンドにパラメーターの検証を追加する
-          href: how-to-custom-speech-commands-validations.md
-        - name: カスタム コマンドに確認を追加する
-          href: how-to-custom-speech-commands-confirmations.md
-        - name: カスタム コマンドにワンステップ修正を追加する
-          href: how-to-custom-speech-commands-one-step-correction.md
-    - name: チュートリアル
-      items:
-        - name: Speech SDK を使用してボットを音声対応にする
-          href: tutorial-voice-enable-your-bot-speech-sdk.md
-    - name: リソース
-      items:
-        - name: 音声アシスタントの FAQ
-          href: faq-voice-assistants.md
+        - name: クイックスタート
+          items:
+            - name: 'C# (UWP)'
+              href: quickstart-voice-assistant-csharp-uwp.md
+            - name: Java (Windows、macOS、Linux)
+              href: quickstart-voice-assistant-java-jre.md
+            - name: Java (Android)
+              href: quickstart-voice-assistant-java-android.md
+        - name: チュートリアル
+          items:
+            - name: Speech SDK を使用してボットを音声対応にする
+              href: tutorial-voice-enable-your-bot-speech-sdk.md
+        - name: リソース
+          items:
+            - name: 音声アシスタントの FAQ
+              href: faq-voice-assistants.md
 - name: カスタマイズ
   expanded: false
   items:

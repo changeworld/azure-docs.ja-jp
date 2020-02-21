@@ -5,17 +5,17 @@ services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: luis
+ms.subservice: language-understanding
+ms.date: 02/14/2020
 ms.topic: include
 ms.custom: include file
-ms.date: 01/23/2020
 ms.author: diberry
-ms.openlocfilehash: 0539f4a8080056f96319a7a75a355782ee80018d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 05e668ff5b0ec19c5e380cf6bfee4b6e46900b2f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772392"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77371795"
 ---
 Node.js 用 Language Understanding (LUIS) ランタイム クライアント ライブラリの用途は次のとおりです。
 

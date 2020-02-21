@@ -34,7 +34,7 @@
       href: connect-virtual-network-gateway-vwan.md
     - name: グローバル VNet ピアリングを構成する
       href: global-peering-vnet.md
-    - name: ExpressRoute 経由の VPN 接続を作成する
+    - name: ExpressRoute の暗号化を構成する
       href: vpn-over-expressroute.md
     - name: Virtual WAN SKU をアップグレードする
       href: upgrade-virtual-wan.md

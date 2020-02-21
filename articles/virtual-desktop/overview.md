@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 01/27/2020
 ms.author: helohr
-ms.openlocfilehash: 168a345427be47dc1c33f43be1af47daa8f638ef
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 6cb8362b2de1f8345f693b00df021afe84f2d5a5
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772783"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471773"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Virtual Desktop とは 
 
@@ -72,7 +72,7 @@ Windows Virtual Desktop を設定し、ユーザーを Windows のデスクト�
 
 インフラストラクチャが Windows Virtual Desktop をサポートするうえで必要なものは次のとおりです。
 
-* [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
+* [Azure Active Directory](/azure/active-directory/)
 * Azure Active Directory と同期している Windows Server Active Directory。 これは、次のいずれかを使用して構成できます。
   * Azure AD Connect (ハイブリッド組織向け)
   * Azure AD Domain Services (ハイブリッドまたはクラウド組織向け)
@@ -80,7 +80,7 @@ Windows Virtual Desktop を設定し、ユーザーを Windows のデスクト�
   
 Windows Virtual Desktop 用に作成する Azure 仮想マシンに必要な条件は次のとおりです。
 
-* [標準ドメイン参加済み](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison)または [Hybrid AD 参加済み](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)であること。 仮想マシンを Azure AD に参加させることはできません。
+* [標準ドメイン参加済み](../active-directory-domain-services/active-directory-ds-comparison.md)または [Hybrid AD 参加済み](../active-directory/devices/hybrid-azuread-join-plan.md)であること。 仮想マシンを Azure AD に参加させることはできません。
 * 次のいずれかの[サポート対象となる OS イメージ](#supported-virtual-machine-os-images)を実行していること。
 
 >[!NOTE]

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: e3d8821fc36a9ba570893ec861b949921d9fabf5
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 8f748764d0f61e4932b2d4710f5a6805a5eddf0e
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029947"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047466"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法
 
@@ -169,7 +169,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 バックアップは完了までに 1 分以上かかることもある、長時間の処理です。 要求が成功してバックアップ処理が開始されると、`Location` ヘッダーのある `202 Accepted` 応答状態コードを受け取ります。 `Location` ヘッダー内の URL に "GET" 要求を出して、処理のステータスを確認します。 バックアップの進行中は、"202 Accepted" 状態コードの受け取りが続きます。 応答コードの `200 OK` は、バックアップ処理が正常に終了したことを示します。
 
-バックアップ要求を行う際には、次の制約があることに注意してください。
+バックアップまたは復元要求を行う際には、次の制約があることに注意してください。
 
 -   要求の本文に指定された**コンテナー**は、**存在する必要があります**。
 -   バックアップの進行中は、**サービスでの管理の変更は避けてください** (SKU のアップグレードやダウングレード、ドメイン名の変更など)。
@@ -178,10 +178,10 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 -   さらに、バックアップ データの一部ではない項目として、カスタム ドメインの SSL 証明書および顧客によってアップロードされたすべての中間証明書またはルート証明書、開発者ポータルのコンテンツ、および仮想ネットワーク統合設定があります。
 -   サービス バックアップを実行する頻度は、復旧ポイントの目標に影響を与えます。 その頻度を最小限に抑えるため、定期的なバックアップを実装すると共に、API Management サービスに対して変更を行った後のオンデマンドのバックアップを実行することをお勧めします。
 -   バックアップ処理の進行中にサービス構成 (API、ポリシー、開発者ポータルの外観など) に対して行われた**変更**は、**バックアップ対象から除外され、その結果失われる可能性があります**。
--   コントロール プレーンから Azure Storage アカウントへのアクセスを**許可**します。 お客様は、バックアップ用のストレージ アカウントで [Azure API Management コントロール プレーンの IP アドレス][control-plane-ip-address] セットを開く必要があります。 
+-   [ファイアウォール][azure-storage-ip-firewall]が有効になっている場合は、コントロール プレーンから Azure Storage アカウントへのアクセスを**許可**します。 お客様は、バックアップまたは復元用のストレージ アカウントで [Azure API Management コントロール プレーンの IP アドレス][control-plane-ip-address] セットを開く必要があります。 
 
 > [!NOTE]
-> ストレージ アカウントでファイアウォールを有効にしていて、同じリージョン内の API Management サービスからバックアップ/復元を実行しようとしている場合、これは機能しません。Azure Storage に対する要求は、同じリージョンにデプロイされた Compute からパブリック IP に SNAT されないためです。
+> [ファイアウォール][azure-storage-ip-firewall]が有効になっているストレージ アカウントを使用して、API Management サービスとの間でバックアップ/復元を実行しようとすると、同じ Azure リージョンでは、これは機能しません。 これは、Azure Storage への要求が、SNAT によってコンピューティング > (Azure API Management コントロール プレーン) からパブリック IP に変換されないためです。 リージョン間のストレージ要求は、SNAT により変換されます。
 
 ### <a name="step2"> </a>API Management サービスの復元
 
@@ -244,3 +244,4 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 [api-management-arm-token]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-arm-token.png
 [api-management-endpoint]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-endpoint.png
 [control-plane-ip-address]: api-management-using-with-vnet.md#control-plane-ips
+[azure-storage-ip-firewall]: ../storage/common/storage-network-security.md#grant-access-from-an-internet-ip-range

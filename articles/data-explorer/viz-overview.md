@@ -4,16 +4,16 @@ description: Azure Data Explorer のデータを視覚化するさまざまな�
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/30/2019
-ms.openlocfilehash: d1c73d8eb65ed5d67d5250b4a3bca3b80450001e
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.date: 01/30/2020
+ms.openlocfilehash: 32ccc5ad236c87d3609798a8432db14ee440d067
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536726"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064565"
 ---
 # <a name="data-visualization-with-azure-data-explorer"></a>Azure Data Explorer でのデータの視覚化 
 
@@ -37,7 +37,7 @@ Azure Data Explorer には、さまざまな方法を使用して [Power BI](htt
 
 ## <a name="microsoft-excel"></a>Microsoft Excel
 
-Azure Data Explorer には、組み込みのネイティブ Excel コネクタを使用して [Microsoft Excel](https://products.office.com/excel) に接続したり、Azure Data Explorer から Excel にクエリをインポートしたりする機能があります。
+Azure Data Explorer には、[組み込みのネイティブ Excel コネクタ](excel-connector.md)を使用して [Microsoft Excel](https://products.office.com/excel) に接続したり、Azure Data Explorer から Excel に[クエリをインポート](excel-blank-query.md)したりする機能があります。
 
 ## <a name="grafana"></a>Grafana
 
@@ -60,3 +60,7 @@ Azure Data Explorer には、[ODBC コネクタ](/azure/data-explorer/connect-od
 ## <a name="sisense"></a>SiSense
 
 Azure Data Explorer には、JDBC コネクタを使用して [Sisense](https://www.sisense.com) に接続する機能があります。 [Sisense のデータ ソースとして Azure Data Explorer を設定し、データを視覚化します](/azure/data-explorer/sisense)。
+
+## <a name="redash"></a>Redash
+
+[Redash](https://redash.io/) を使用して、ダッシュボードを作成し、データを視覚化できます。 [Redash のデータ ソースとして Azure Data Explorer を設定し、データを視覚化します](/azure/data-explorer/redash)。

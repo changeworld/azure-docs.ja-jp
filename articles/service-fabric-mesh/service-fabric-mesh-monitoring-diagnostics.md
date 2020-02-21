@@ -43,7 +43,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzV
 
 Mesh 環境は、コンテナーのパフォーマンスを示す、いくつかのメトリックを公開します。 Azure portal および Azure Monitor の CLI を介して、次のメトリックを使用できます。
 
-| メトリック | [説明] | Units|
+| メトリック | 説明 | Units|
 |----|----|----|
 | CpuUtilization | ActualCpu/AllocatedCpu (パーセンテージ) | % |
 | MemoryUtilization | ActualMem/AllocatedMem (パーセンテージ) | % |

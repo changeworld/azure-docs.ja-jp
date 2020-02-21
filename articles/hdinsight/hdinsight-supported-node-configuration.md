@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 278639b27d821e8d6440248a1add43bcd9de22c6
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: e75146266568001d8fee7be26898ac8bdfffb7fc
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775227"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484788"
 ---
 # <a name="what-are-the-default-and-recommended-node-configurations-for-azure-hdinsight"></a>Azure HDInsight の既定および推奨のノード構成
 
@@ -30,7 +30,7 @@ ms.locfileid: "74775227"
 
 このドキュメントで使用されているすべての最小推奨 VM の種類の仕様を次の表にまとめます。
 
-| Size              | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
+| Size              | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_D3_v2 | 4    | 14          | 200                    | 12000/187/93                                           | 16             / 16x500           | 4/3,000                                       |
 | Standard_D4_v2 | 8    | 28          | 400                    | 24000/375/187                                          | 32            / 32x500           | 8/6,000                                       |
@@ -44,9 +44,9 @@ ms.locfileid: "74775227"
 
 各 VM の種類の仕様の詳細については、次のドキュメントを参照してください。
 
-* [汎用仮想マシンのサイズ:Dv2 シリーズ 1-5](../virtual-machines/linux/sizes-general.md#dv2-series)
-* [メモリ最適化済み仮想マシンのサイズ:Dv2 シリーズ 11-15](../virtual-machines/linux/sizes-memory.md#dv2-series-11-15)
-* [汎用仮想マシンのサイズ:Av2 シリーズ 1-8](../virtual-machines/linux/sizes-general.md#av2-series)
+* [汎用仮想マシンのサイズ:Dv2 シリーズ 1-5](../virtual-machines/dv2-dsv2-series.md)
+* [メモリ最適化済み仮想マシンのサイズ:Dv2 シリーズ 11-15](../virtual-machines/dv2-dsv2-series-memory.md)
+* [汎用仮想マシンのサイズ:Av2 シリーズ 1-8](../virtual-machines/av2-series.md)
 
 ### <a name="all-supported-regions-except-brazil-south-and-japan-west"></a>ブラジル南部と西日本を除くすべてのサポートされているリージョン
 
@@ -84,6 +84,6 @@ ms.locfileid: "74775227"
 > - Worker は、Storm クラスター タイプでは *Supervisor* と呼ばれます。
 > - Worker は、HBase クラスター タイプでは *Region* と呼ばれます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [HDInsight で使用できる Apache Hadoop コンポーネントおよびバージョンとは](hdinsight-component-versioning.md)

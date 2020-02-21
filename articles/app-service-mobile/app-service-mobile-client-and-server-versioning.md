@@ -6,18 +6,14 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: 4d0b301dee363c2338cb13a9fc09ee17549467eb
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: f24ae0a48b835785a2e000210f3609b82d42d0f6
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668853"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461557"
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Mobile Apps と Mobile Services のクライアントとサーバーのバージョン管理
-> [!NOTE]
-> Visual Studio App Center は、モバイル アプリ開発の中心となるエンドツーエンドの統合サービスをサポートしています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーと関わることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。
->
-> モバイル アプリケーションにクラウド サービスを統合することを検討している場合は、今すぐ [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) にサインアップしてください。
 
 Azure Mobile Services の最新版は Azure App Service の **Mobile Apps** 機能です。
 
@@ -29,7 +25,7 @@ Mobile Apps のクライアント/サーバー SDK は Mobile Services のクラ
 ## <a name="header-specification"></a>ヘッダーの仕様
 キー `ZUMO-API-VERSION` を HTTP ヘッダーかクエリ文字列に指定できます。 値は「 **x.y.z**」形式のバージョン文字列です。
 
-例:
+次に例を示します。
 
 GET https://service.azurewebsites.net/tables/TodoItem
 
@@ -58,14 +54,14 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 
 | サーバー プラットフォーム | SDK | 同意済みのバージョン ヘッダー |
 | --- | --- | --- |
-| .NET |[Microsoft.Azure.Mobile.Server.](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) |2.0.0 |
+| .NET |[Microsoft.Azure.Mobile.Server](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) |2.0.0 |
 | Node.js |[azure-mobile-apps)](https://www.npmjs.com/package/azure-mobile-apps) |2.0.0 |
 
 ### <a name="behavior-of-mobile-apps-backends"></a>Mobile Apps バックエンドの動作
 | ZUMO-API-VERSION | MS_SkipVersionCheck の値 | Response |
 | --- | --- | --- |
 | x.y.z または Null |True |200 - OK |
-| Null |偽/指定なし |400 - 正しくない要求 |
+| [Null] |偽/指定なし |400 - 正しくない要求 |
 | 1.x.y |偽/指定なし |400 - 正しくない要求 |
 | 2.0.0-2.x.y |偽/指定なし |200 - OK |
 | 3.0.0-3.x.y |偽/指定なし |400 - 正しくない要求 |

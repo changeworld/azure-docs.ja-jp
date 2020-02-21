@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c83aa6e476bbd898999fb6efe490c7847a809ff
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 0d770336099611d69fa9e44d04fff4dd37696707
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382152"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120116"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection の通知
 
@@ -26,6 +26,9 @@ Azure AD Identity Protection では、ユーザーのリスクとリスク検出
 - 週間ダイジェスト電子メール
 
 この記事では、両方の通知メールの概要を説明します。
+
+>[!NOTE]
+>電子メール通知はパブリック クラウドでのみ利用可能であり、米国政府のクラウドでは現在利用できません。
 
 ## <a name="users-at-risk-detected-email"></a>危険な状態のユーザーが検出された電子メール
 
@@ -65,6 +68,6 @@ Azure AD Identity Protection では、ユーザーのリスクとリスク検出
 
 週刊ダイジェストの電子メールは、**Azure portal** の **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[Identity Protection]**  >  **[週刊ダイジェスト]** で構成します。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)

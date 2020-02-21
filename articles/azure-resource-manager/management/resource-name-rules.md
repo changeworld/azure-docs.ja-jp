@@ -2,13 +2,13 @@
 title: リソースの名前付けに関する制限事項
 description: Azure リソースの名前付けに関する規則と制限事項を示します。
 ms.topic: conceptual
-ms.date: 01/16/2020
-ms.openlocfilehash: 9d685e2852dee25e03bdd98ea5463fd40e795f23
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 02/11/2020
+ms.openlocfilehash: 7b6a9e16ba28a2a0e5e4e181dc5650d2110eab88
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157664"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153164"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure リソースの名前付け規則と制限事項
 
@@ -25,14 +25,14 @@ ms.locfileid: "76157664"
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | servers | resource group | 3 ～ 63 | 小文字と数字。<br><br>小文字で開始します。 |
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | サービス (service) | グローバル | 1-50 | 英数字。<br><br>文字で開始します。 |
 > | service/apis | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
@@ -71,14 +71,14 @@ ms.locfileid: "76157664"
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | configurationStores | resource group | 5 ～ 50 | 英数字、アンダースコア、およびハイフン。 |
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | locks | 割り当てのスコープ | 1-90 | 英数字、ピリオド、アンダースコア、ハイフン、およびかっこ。<br><br>末尾をピリオドにすることはできません。 |
 > | policyassignments | 割り当てのスコープ | 1-128 (表示名)<br><br>1-260 (リソース名) | 表示名には任意の文字を含めることができます。<br><br>リソース名に `%` を含めることはできません。また、末尾をピリオドまたはスペースにすることはできません。 |
@@ -88,7 +88,7 @@ ms.locfileid: "76157664"
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | automationAccounts | resource group | 6-50 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
 > | automationAccounts/certificates | Automation アカウント | 1-128 | 次は使用できません:<br> `<>*%&:\?.+/` <br><br>末尾をスペースにすることはできません。  |
@@ -103,7 +103,7 @@ ms.locfileid: "76157664"
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | batchAccounts | リージョン | 3 ～ 24 | 小文字と数字。 |
 > | batchAccounts/applications | Batch アカウント | 1 ～ 64 | 英数字、アンダースコア、およびハイフン。 |
@@ -113,14 +113,14 @@ ms.locfileid: "76157664"
 ## <a name="microsoftblockchain"></a>Microsoft.Blockchain
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | blockchainMembers | グローバル | 2-20 | 小文字と数字。<br><br>小文字で開始します。 |
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | botServices | グローバル | 2 ～ 64 |  英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 |
 > | botServices / channels | ボット サービス | 2 ～ 64 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 |
@@ -130,7 +130,7 @@ ms.locfileid: "76157664"
 ## <a name="microsoftcache"></a>Microsoft.Cache
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | Redis | グローバル | 1 ～ 63 | 英数字とハイフン。<br><br>先頭と末尾には英数字を使用します。 連続するハイフンは使用できません。 |
 > | Redis/firewallRules | Redis | 1-256 | 英数字 |
@@ -138,7 +138,7 @@ ms.locfileid: "76157664"
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | profiles | resource group | 1-260 | 英数字とハイフン。<br><br>先頭と末尾には英数字を使用します。 |
 > | profiles/endpoints | グローバル | 1-50 | 英数字とハイフン。<br><br>先頭と末尾には英数字を使用します。 |
@@ -146,21 +146,21 @@ ms.locfileid: "76157664"
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | certificateOrders | resource group | 3-30 | 英数字。 |
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | accounts | resource group | 2 ～ 64 | 英数字とハイフン。<br><br>先頭と末尾には英数字を使用します。 |
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | availabilitySets | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
 > | diskEncryptionSets | resource group | 1 ～ 80 | 英数字とアンダースコア。 |
@@ -181,14 +181,14 @@ ms.locfileid: "76157664"
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | containerGroups | resource group | 1 ～ 63 | 小文字、数字、およびハイフン。<br><br>先頭または末尾をハイフンにすることはできません。 連続するハイフンは使用できません。 |
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | registries | グローバル | 5 ～ 50 | 英数字。 |
 > | registries / buildTasks | 使用) | 5 ～ 50 | 英数字。 |
@@ -202,7 +202,7 @@ ms.locfileid: "76157664"
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | managedClusters | resource group | 1 ～ 63 | 英数字、アンダースコア、およびハイフン。<br><br>先頭と末尾には英数字を使用します。 |
 > | openShiftManagedClusters | resource group | 1-30 | 英数字。 |
@@ -210,7 +210,7 @@ ms.locfileid: "76157664"
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | hubs | resource group | 1 ～ 64 | 英数字。<br><br>文字で開始します。  |
 > | hubs/authorizationPolicies | ハブ | 1-50 | 英数字、アンダースコア、およびピリオド。<br><br>先頭と末尾には英数字を使用します。 |
@@ -229,7 +229,7 @@ ms.locfileid: "76157664"
 ## <a name="microsoftcustomproviders"></a>Microsoft.CustomProviders
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | associations | resource group | 1-180 | 次は使用できません:<br>`%&\\?/`<br><br>末尾をピリオドまたはスペースにすることはできません。 |
 > | resourceProviders | resource group | 3-64 | 次は使用できません:<br>`%&\\?/`<br><br>末尾をピリオドまたはスペースにすることはできません。 |
@@ -237,21 +237,21 @@ ms.locfileid: "76157664"
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | jobs | resource group | 3 ～ 24 | 英数字、ハイフン、アンダースコア、およびピリオド。 |
 
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | workspaces | resource group | 3-30 | 英数字、アンダースコア、およびハイフン |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | factories | グローバル | 3 ～ 63 | 英数字とハイフン。<br><br>先頭と末尾には英数字を使用します。 |
 > | factories/dataflows | factory | 1-260 | 次は使用できません:<br>`<>*#.%&:\\+?/`<br><br>英数字で開始します。 |
@@ -265,7 +265,7 @@ ms.locfileid: "76157664"
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | accounts | グローバル | 3 ～ 24 | 小文字と数字。 |
 > | accounts/computePolicies | account | 3-60 | 英数字、ハイフン、およびアンダースコア。 |
@@ -276,7 +276,7 @@ ms.locfileid: "76157664"
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | accounts | グローバル | 3 ～ 24 | 小文字と数字。 |
 > | accounts / firewallRules | account | 3 ～ 50 | 英数字、ハイフン、およびアンダースコア。 |
@@ -285,7 +285,7 @@ ms.locfileid: "76157664"
 ## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | services | resource group | 2-62 | 英数字、ハイフン、ピリオド、およびアンダースコア。<br><br>英数字で開始します。 |
 > | services/projects | サービス (service) | 2-57 | 英数字、ハイフン、ピリオド、およびアンダースコア。<br><br>英数字で開始します。 |
@@ -293,7 +293,7 @@ ms.locfileid: "76157664"
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | servers | グローバル | 3 ～ 63 | 小文字、ハイフン、および数字。<br><br>先頭または末尾をハイフンにすることはできません。 |
 > | servers/databases | servers | 1 ～ 63 | 英数字とハイフン。 |
@@ -303,7 +303,7 @@ ms.locfileid: "76157664"
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | servers | グローバル | 3 ～ 63 | 小文字、ハイフン、および数字。<br><br>先頭または末尾をハイフンにすることはできません。 |
 > | servers/databases | servers | 1 ～ 63 | 英数字とハイフン。 |
@@ -313,7 +313,7 @@ ms.locfileid: "76157664"
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | servers | グローバル | 3 ～ 63 | 小文字、ハイフン、および数字。<br><br>先頭または末尾をハイフンにすることはできません。 |
 > | servers/databases | servers | 1 ～ 63 | 英数字とハイフン。 |
@@ -323,7 +323,7 @@ ms.locfileid: "76157664"
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | IotHubs | グローバル | 3 ～ 50 | 英数字とハイフン。<br><br>末尾をハイフンにすることはできません。 |
 > | IotHubs/certificates | IoT ハブ | 1 ～ 64 | 英数字、ハイフン、ピリオド、およびアンダースコア。 |
@@ -334,7 +334,7 @@ ms.locfileid: "76157664"
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | labs | resource group | 1-50 | 英数字、アンダースコア、およびハイフン。 |
 > | labs/customimages | ラボ | 1 ～ 80 | 英数字、アンダースコア、ハイフン、およびかっこ。 |
@@ -344,14 +344,14 @@ ms.locfileid: "76157664"
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | databaseAccounts | グローバル | 3-31 | 小文字、数字、およびハイフン。<br><br>先頭には小文字または数字を使用します。 |
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | domains | resource group | 3 ～ 50 | 英数字とハイフン。 |
 > | domains / topics | domain | 3 ～ 50 | 英数字とハイフン。 |
@@ -361,7 +361,7 @@ ms.locfileid: "76157664"
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | clusters | resource group | 6-50 | 英数字とハイフン。<br><br>文字で開始します。 文字または数字で終了します。 |
 > | namespaces | グローバル | 6-50 | 英数字とハイフン。<br><br>文字で開始します。 文字または数字で終了します。 |
@@ -374,28 +374,28 @@ ms.locfileid: "76157664"
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | clusters | グローバル | 3-59 | 英数字とハイフン<br><br>先頭と末尾には、文字または数字を使用します。 |
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | jobs | resource group | 2 ～ 64 | 英数字とハイフン。<br><br>文字で開始します。 |
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | IoTApps | グローバル | 2-63 | 小文字、数字、およびハイフン。<br><br>先頭には小文字または数字を使用します。 |
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | vaults | グローバル | 3 ～ 24 | 英数字とハイフン。<br><br>文字で開始します。 文字または数字で終了します。 連続するハイフンを含めることはできません。 |
 > | vaults / secrets | コンテナー | 1-127 | 英数字とハイフン。 |
@@ -403,7 +403,7 @@ ms.locfileid: "76157664"
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | clusters | グローバル | 4-22 | 小文字と数字。<br><br>文字で開始します。 |
 > | /clusters/databases | cluster | 1-260 | 英数字、ハイフン、スペース、およびピリオド。 |
@@ -413,7 +413,7 @@ ms.locfileid: "76157664"
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | integrationAccounts | resource group | 1 ～ 80 | 英数字、ハイフン、アンダースコア、ピリオド、およびかっこ。 |
 > | integrationAccounts/assemblies | 統合アカウント | 1 ～ 80 | 英数字、ハイフン、アンダースコア、ピリオド、およびかっこ。 |
@@ -431,7 +431,7 @@ ms.locfileid: "76157664"
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | commitmentPlans | resource group | 1-260 | 次は使用できません:<br>`<>*%&:?+/\\`<br><br>末尾をスペースにすることは使用できません。 |
 > | webServices | resource group | 1-260 | 次は使用できません:<br>`<>*%&:?+/\\`<br><br>末尾をスペースにすることは使用できません。 |
@@ -440,7 +440,7 @@ ms.locfileid: "76157664"
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | workspaces | resource group | 3-33 | 英数字とハイフン。 |
 > | workspaces / computes | ワークスペース | 2-16 | 英数字とハイフン。 |
@@ -448,21 +448,21 @@ ms.locfileid: "76157664"
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | userAssignedIdentities | resource group | 3-128 | 英数字、ハイフン、およびアンダースコア<br><br>先頭には文字または数字を使用します。 |
 
 ## <a name="microsoftmaps"></a>Microsoft.Maps
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | accounts | resource group | 1-98 (リソース グループ名とアカウント名) | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 |
 
 ## <a name="microsoftmedia"></a>Microsoft.Media
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | mediaservices | resource group | 3 ～ 24 | 小文字と数字。 |
 > | mediaservices / liveEvents | メディア サービス | 1-32 | 英数字とハイフン。<br><br>英数字で開始します。 |
@@ -472,7 +472,7 @@ ms.locfileid: "76157664"
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | applicationGateways | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
 > | applicationSecurityGroups | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
@@ -513,7 +513,7 @@ ms.locfileid: "76157664"
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | namespaces | グローバル | 6-50 | 英数字とハイフン<br><br>先頭と末尾には英数字を使用します。 |
 > | namespaces/AuthorizationRules | namespace | 1-256 | 英数字、ピリオド、ハイフン、およびアンダースコア。<br><br>英数字で開始します。 |
@@ -523,29 +523,36 @@ ms.locfileid: "76157664"
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | clusters | resource group | 4-63 | 英数字とハイフン。<br><br>先頭と末尾には英数字を使用します。 |
 > | workspaces | resource group | 4-63 | 英数字とハイフン。<br><br>先頭と末尾には英数字を使用します。 |
 
+## <a name="microsoftportal"></a>Microsoft.Portal
+
+> [!div class="mx-tableFixed"]
+> | Entity | Scope | 長さ | 有効な文字 |
+> | --- | --- | --- | --- |
+> | dashboards | resource group | 3-160 | 英数字とハイフン。<br><br>制限のある文字を使用するには、**hidden-title** という名前のタグを、使用するダッシュボード名とともに追加します。 ポータルでは、ダッシュボードを表示するときにその名前が表示されます。 |
+
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | workspaceCollections | region | 3 ～ 63 | 英数字とハイフン。<br><br>先頭をハイフンにすることはできません。 連続するハイフンを使用することはできません。 |
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | capacities | region | 3 ～ 63 | 小文字または数字。<br><br>小文字で開始します。 |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | vaults | resource group | 2-50 | 英数字とハイフン。<br><br>文字で開始します。 |
 > | vaults/backupPolicies | コンテナー | 3-150 | 英数字とハイフン。<br><br>文字で開始します。 末尾をハイフンにすることはできません。 |
@@ -553,7 +560,7 @@ ms.locfileid: "76157664"
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | namespaces | グローバル | 6-50 | 英数字とハイフン。<br><br>文字で始めます。 文字または数字で終了します。 |
 > | namespaces/AuthorizationRules | namespace | 1-50 |  英数字、ピリオド、ハイフン、およびアンダースコア。<br><br>先頭と末尾には英数字を使用します。 |
@@ -565,7 +572,7 @@ ms.locfileid: "76157664"
 ## <a name="microsoftresources"></a>Microsoft.Resources
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | deployments | resource group | 1 ～ 64 | 英数字、アンダースコア、かっこ、ハイフン、およびピリオド。 |
 > | resourcegroups | subscription | 1-90 | [正規表現ドキュメント](/rest/api/resources/resourcegroups/createorupdate)の記載と一致する英数字、アンダースコア、かっこ、ハイフン、ピリオド、および Unicode 文字。<br><br>末尾をピリオドにすることはできません。 |
@@ -575,7 +582,7 @@ ms.locfileid: "76157664"
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | namespaces | グローバル | 6-50 | 英数字とハイフン。<br><br>文字で始めます。 文字または数字で終了します。<br><br>詳細については、[名前空間の作成](/rest/api/servicebus/create-namespace)に関するページを参照してください。 |
 > | namespaces/AuthorizationRules | namespace | 1-50 | 英数字、ピリオド、ハイフン、およびアンダースコア。<br><br>先頭と末尾には英数字を使用します。 |
@@ -591,21 +598,21 @@ ms.locfileid: "76157664"
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | clusters | region | 4-23 | 小文字、数字、およびハイフン。<br><br>小文字で開始します。 末尾には小文字または数字を使用します。 |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | signalR | グローバル | 3 ～ 63 | 英数字とハイフン。<br><br>文字で開始します。 文字または数字で終了します。  |
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | managedInstances | グローバル | 1 ～ 63 | 小文字、数字、およびハイフン。<br><br>先頭または末尾をハイフンにすることはできません。 |
 > | servers | グローバル | 1 ～ 63 | 小文字、数字、およびハイフン。<br><br>先頭または末尾をハイフンにすることはできません。 |
@@ -618,7 +625,7 @@ ms.locfileid: "76157664"
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | storageAccounts | グローバル | 3 ～ 24 | 小文字と数字。 |
 > | storageAccounts / blobServices | ストレージ アカウント |  | `default`である必要があります。 |
@@ -633,7 +640,7 @@ ms.locfileid: "76157664"
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | storageSyncServices | resource group | 1-260 | 英数字、スペース、ピリオド、ハイフン、およびアンダースコア。<br><br>末尾をピリオドまたはスペースにすることはできません。 |
 > | storageSyncServices / syncGroups | ストレージ同期サービス | 1-260 | 英数字、スペース、ピリオド、ハイフン、およびアンダースコア。<br><br>末尾をピリオドまたはスペースにすることはできません。 |
@@ -641,14 +648,14 @@ ms.locfileid: "76157664"
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | managers | resource group | 2-50 | 英数字とハイフン。<br><br>文字で開始します。 末尾には英数字を使用します。 |
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | streamingjobs | resource group | 3 ～ 63 | 英数字、ハイフン、およびアンダースコア。 |
 > | streamingjobs/functions | ストリーミング ジョブ | 3 ～ 63 | 英数字、ハイフン、およびアンダースコア。 |
@@ -659,7 +666,7 @@ ms.locfileid: "76157664"
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | 環境 | resource group | 1-90 | 次は使用できません:<br>`'<>%&:\?/#` |
 > | environments / accessPolicies | 環境 | 1-90 | 次は使用できません:<br> `'<>%&:\?/#` |
@@ -669,7 +676,7 @@ ms.locfileid: "76157664"
 ## <a name="microsoftweb"></a>Microsoft.Web
 
 > [!div class="mx-tableFixed"]
-> | Entity | スコープ | 長さ | 有効な文字 |
+> | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | serverfarms | resource group | 1-40 | 英数字とハイフン。 |
 > | sites | グローバル | 2 から 60 | 英数字とハイフンを含みます。<br><br>先頭または末尾をハイフンにすることはできません。 |

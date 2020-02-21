@@ -3,12 +3,12 @@ title: チュートリアル - Azure で Yeoman を使用して Terraform ベー
 description: Azure で Yeoman を使用して Terraform ベース テンプレートを作成する方法について説明します。
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: ba81d0ee797fd879fdadc3a6b25ca8f310383f61
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 82c3f5e640789547abb716b55959e1821a61e6d0
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159170"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472147"
 ---
 # <a name="tutorial-create-a-terraform-base-template-in-azure-using-yeoman"></a>チュートリアル:Azure で Yeoman を使用して Terraform ベース テンプレートを作成する
 
@@ -25,7 +25,7 @@ ms.locfileid: "74159170"
 
 - **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 - **Visual Studio Code**:お使いのプラットフォーム向けの [Visual Studio Code をダウンロードします](https://code.visualstudio.com/download)。
-- **Terraform**:Yeoman で作成したモジュールを実行するために、[Terraform をインストールします](/azure/virtual-machines/linux/terraform-install-configure )。
+- **Terraform**:Yeoman で作成したモジュールを実行するために、[Terraform をインストールします](terraform-install-configure.md)。
 - **Docker**:Yeoman ジェネレーターによって作成されたモジュールを実行するために、[Docker をインストールします](https://www.docker.com/get-started)。
 - **Go プログラミング言語**: Yeoman で生成されるテスト ケースは Go 言語を使用したコードであるため、[Go をインストールします](https://golang.org/)。
 
@@ -139,7 +139,7 @@ Yeoman テンプレートは、現在のディレクトリ内にファイルを�
     - テスト ケースは Go で述されています。
     - テストのすべてのコードは、エンド ツー エンド テストです。
     - エンド ツー エンド テストでは、`fixture` で定義されているすべての項目のプロビジョニングを試行します。 `template_output.go` ファイルの結果は、事前定義された想定値と比較されます。
-    - `Gopkg.lock` と `Gopkg.toml`: 依存関係を定義します。 
+    - `Gopkg.lock` および `Gopkg.toml`:依存関係を定義します。 
 
 ## <a name="test-your-new-terraform-module-using-a-docker-file"></a>Docker ファイルを使用して新しい Terraform モジュールをテストする
 
@@ -174,7 +174,7 @@ Docker が実際に実行されていることを確認するには、`docker in
 
     ![新しいモジュールを含む一覧](media/terraform-vscode-module-generator/ymg-repository-results.png)
 
-1. 「 `docker run -it terra-mod-example /bin/sh` 」を入力します。 `docker run` コマンドを実行すると、Docker 環境に入ります。 その時点で、`ls` コマンドを使用してファイルを検出できます。
+1. 「`docker run -it terra-mod-example /bin/sh`」と入力します。 `docker run` コマンドを実行すると、Docker 環境に入ります。 その時点で、`ls` コマンドを使用してファイルを検出できます。
 
     ![Docker のファイル一覧](media/terraform-vscode-module-generator/ymg-list-docker-file.png)
 
@@ -204,7 +204,7 @@ Docker が実際に実行されていることを確認するには、`docker in
 
 1. しばらくすると、**合格**メッセージが表示されます。
 
-    ![合格](media/terraform-vscode-module-generator/ymg-pass.png)
+    ![PASS](media/terraform-vscode-module-generator/ymg-pass.png)
 
 1. 「`exit`」と入力してテストを完了し、Docker 環境を終了します。
 
@@ -236,7 +236,7 @@ Docker が実際に実行されていることを確認するには、`docker in
 
 1. この時点で、環境変数には既に、Cloud Shell によって自動的に GOPATH が構成されています。 このパスを確認するには、「`go env`」と入力します。
 
-1. $GOPATH ディレクトリがまだない場合は、作成します。「 `mkdir ~/go` 」を入力します。
+1. $GOPATH ディレクトリがまだない場合は、作成します。「`mkdir ~/go`」と入力します。
 
 1. $GOPATH ディレクトリ内にディレクトリを作成します。 このディレクトリは、この例で作成されるさまざまなプロジェクトディレクトリを保持するために使用されます。 
 
@@ -286,7 +286,7 @@ Docker が実際に実行されていることを確認するには、`docker in
 
     ![テスト合格の結果](media/terraform-vscode-module-generator/ymg-pass.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Terraform Visual Studio Code 拡張機能のインストールと使用](/azure/terraform/terraform-vscode-extension)。

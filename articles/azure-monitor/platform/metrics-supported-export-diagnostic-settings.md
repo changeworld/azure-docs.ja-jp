@@ -4,16 +4,16 @@ description: Azure Monitor で使用できるメトリックの一覧 (リソー
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 05/20/2019
+ms.date: 02/10/2020
 author: rboucher
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: dcf5276393400be864e738d89bc5713f5aac242b
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: fb11bf402ec671a46c191be0d8958c6a8a2c963d
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963480"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134954"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>診断設定を使用してエクスポート可能な Azure Monitor プラットフォーム メトリック
 
@@ -24,6 +24,19 @@ Azure Monitor には、構成なしの[プラットフォーム メトリック]
 2. [メトリック REST API](https://docs.microsoft.com/rest/api/monitor/metrics/list) を使用します。
 
 Azure Monitor バックエンドの複雑さにより、すべてのメトリックが診断設定を使用してエクスポート可能であるとは限りません。 次の表に、診断設定を使用したエクスポートが可能か不可能かに関する一覧を示します。
+
+## <a name="change-to-behavior-for-nulls-and-zero-values"></a>Null 値と 0 値の動作を変更する 
+ 
+診断設定を使用してエクスポートできるプラットフォーム メトリックについて、Azure Monitor が '0' を 'Null' と解釈するメトリックがいくつかあります。 これにより、実際の '0' (リソースによって生成されたもの) と解釈された '0' (Null) との間で混同が発生していました。 **2020 年 4 月 1 日**以降、診断設定を使用してエクスポートされるプラットフォーム メトリックでは、基になるリソースによって実際に出力されたものでない限り、'0' がエクスポートされなくなります。 注意:
+
+1.  リソース グループまたは特定のリソースを削除すると、影響を受けるリソースのメトリック データは、診断設定のエクスポート先に送信されなくなります。 つまり、Event Hubs、ストレージ アカウント、Log Analytics ワークスペースに表示されなくなります。
+2.  この改善は、すべてのパブリック クラウドとプライベート クラウドで利用できるようになります。
+3.  この変更は、次のいずれのエクスペリエンスの動作にも影響しません。 
+-   診断設定を使用してエクスポートされるプラットフォーム リソース ログ
+-   メトリックス エクスプローラーのメトリック グラフ
+-   プラットフォーム メトリックに関するアラート
+ 
+## <a name="metrics-exportable-table"></a>メトリック エクスポート可能テーブル 
 
 表には次の列が含まれています。 
 - 診断設定を使用したエクスポートが可能か? 

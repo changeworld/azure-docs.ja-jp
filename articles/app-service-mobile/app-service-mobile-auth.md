@@ -3,19 +3,14 @@ title: 認証と権限承認
 description: 。、特にモバイル アプリを対象とした Azure App Service の認証/承認機能の概念リファレンスと概要。
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: 2c3bc1f9563a5657d7574020fc908f23a711391c
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 4a9ef62178b9a58fa8703413a09114a617d1d239
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668529"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459465"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>モバイル アプリを対象とした Azure App Service での認証および承認
-
-> [!NOTE]
-> Visual Studio App Center では、モバイル アプリ開発の中心となるエンドツーエンドの統合サービスをサポートしています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーと関わることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。
->
-> モバイル アプリケーションにクラウド サービスを統合することを検討している場合は、今すぐ [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) にサインアップしてください。
 
 この記事では、App Service のバックエンドでネイティブ モバイル アプリを開発するときの認証と承認のしくみについて説明します。 App Service では統合認証および承認を利用できます。このため、App Service のコードを変更しなくても、お使いのモバイル アプリでユーザーをサインインさせることができます。 これにより、アプリケーションの保護が容易になり、またユーザーごとのデータにも対応できるようになります。 
 

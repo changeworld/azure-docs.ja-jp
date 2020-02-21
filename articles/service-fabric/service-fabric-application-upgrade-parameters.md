@@ -33,7 +33,7 @@ Visual Studio Service Fabric のアプリケーション アップグレード�
 ### <a name="required-parameters"></a>必須のパラメーター
 (PS=PowerShell、VS=Visual Studio)
 
-| パラメーター | 適用対象 | [説明] |
+| パラメーター | 適用対象 | 説明 |
 | --- | --- | --- |
 ApplicationName |PS| アップグレードするアプリケーションの名前です。 例: fabric:/VisualObjects、fabric:/ClusterMonitor。 |
 ApplicationTypeVersion|PS|ターゲットをアップグレードするアプリケーションの種類のバージョンです。 |
@@ -48,7 +48,7 @@ UnmonitoredManual | PS | アップグレード モードが監視対象外の手
 正常性の評価パラメーターは省略可能です。 アップグレードを開始するときに、正常性評価の基準が指定されていない場合、Service Fabric はアプリケーション インスタンスの ApplicationManifest.xml で指定されているアプリケーションの正常性ポリシーを使用します。
 
 > [!div class="mx-tdBreakAll"]
-> | パラメーター | 適用対象 | [説明] |
+> | パラメーター | 適用対象 | 説明 |
 > | --- | --- | --- |
 > | ApplicationParameter |PS、VS| アプリケーション パラメーターのオーバーライドを指定します。<br>PowerShell のアプリケーション パラメーターは、ハッシュテーブルの名前と値のペアとして指定されます。 たとえば、@{ "VotingData_MinReplicaSetSize" = "3"; "VotingData_PartitionCount" = "1" } です。<br>Visual Studio のアプリケーション パラメーターは、[Service Fabric アプリケーションの発行] ダイアログの **[アプリケーション パラメーター ファイル]** フィールドで指定できます。
 > | Confirm |PS| 使用可能な値: **True** および **False**。 コマンドレットの実行前に確認メッセージを表示します。 |
@@ -78,7 +78,7 @@ Service Fabric CLI を使用した Service Fabric アプリケーションのア
 
 ### <a name="required-parameters"></a>必須のパラメーター
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | application-id  |アップグレードするアプリケーションの ID です。 <br> これは、通常は、'fabric:' URI スキームのないアプリケーションの完全な名前です。 バージョン 6.0 以降では、階層名は "\~" 文字で区切られます。 たとえば、アプリケーション名が "fabric:/myapp/app1" の場合、アプリケーション ID は、6.0 以降では "myapp\~app1" になり、それより前のバージョンでは "myapp/app1" になります。|
 application-version |ターゲットをアップグレードするアプリケーションの種類のバージョンです。|
@@ -86,7 +86,7 @@ parameters  |アプリケーションのアップグレード時に適用され�
 
 ### <a name="optional-parameters"></a>省略可能なパラメーター
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 default-service-health-policy | サービスの種類の正常性を評価するために既定で使用される正常性ポリシーの [JSON](https://docs.microsoft.com/rest/api/servicefabric/sfclient-model-servicetypehealthpolicy) でエンコードされた仕様。 このマップは、既定では空です。 |
 failure-action | 使用できる値は、**Rollback**、**Manual**、および **Invalid** です。 *Monitored* アップグレードで監視ポリシー違反または正常性ポリシー違反が発生した場合に実行する補正アクションです。 <br>**Rollback** は、アップグレードによってアップグレード前のバージョンに自動的にロールバックされることを示します。 <br>**Manual** は、アップグレードが *UnmonitoredManual* アップグレード モードに切り替わることを示します。 <br>**Invalid** は、失敗アクションが無効であることを示します。|

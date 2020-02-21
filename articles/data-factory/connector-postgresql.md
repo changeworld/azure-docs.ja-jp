@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 02/19/2020
 ms.author: jingwang
-ms.openlocfilehash: fa5835b287a2fd39671ea5ac0c3bc849378645c5
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 38cab21fb38fe171992ec8ce6c48b07f2ea94e9a
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75891931"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471144"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Azure Data Factory を使用して PostgreSQL からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -40,7 +40,7 @@ PostgreSQL データベースのデータを、サポートされているシン
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-バージョン 3.7 より前のセルフホステッド IR では、Integration Runtime コンピューターに、[PostgreSQL 用の Ngpsql データ プロバイダー](https://go.microsoft.com/fwlink/?linkid=282716)のバージョン 2.0.12 から 3.1.9 までをインストールする必要があります。
+Integration Runtime のバージョン 3.7 以降には PostgreSQL ドライバーが組み込まれているため、ドライバーを手動でインストールする必要はありません。
 
 ## <a name="getting-started"></a>作業の開始
 
@@ -52,15 +52,15 @@ PostgreSQL データベースのデータを、サポートされているシン
 
 PostgreSQL のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | 説明 | Required |
 |:--- |:--- |:--- |
-| 型 | type プロパティは、次のように設定する必要があります:**PostgreSql** | はい |
+| type | type プロパティは、次のように設定する必要があります:**PostgreSql** | はい |
 | connectionString | Azure Database for PostgreSQL に接続するための ODBC 接続文字列。 <br/>パスワードを Azure Key Vault に格納して、接続文字列から `password` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 一般的な接続文字列は `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>` です。 ケースごとにさらに多くのプロパティを設定できます。
 
-| プロパティ | 説明 | オプション | 必須 |
+| プロパティ | 説明 | オプション | Required |
 |:--- |:--- |:--- |:--- |
 | EncryptionMethod (EM)| ドライバーとデータベース サーバー間で送信されるデータを暗号化するためにドライバーが使用するメソッド。 例: `EncryptionMethod=<0/1/6>;`| 0 (暗号化なし) **(既定)** /1 (SSL)/6 (RequestSSL) | いいえ |
 | ValidateServerCertificate (VSC) | SSL 暗号化が有効 (Encryption Method=1) になっているときに、データベース サーバーによって送信される証明書をドライバーが検証するかどうかを決定します。 例: `ValidateServerCertificate=<0/1>;`| 0 (無効) **(既定)** / 1 (有効) | いいえ |
@@ -141,11 +141,11 @@ PostgreSQL のリンクされたサービスでは、次のプロパティがサ
 
 PostgreSQL からのデータ コピーについては、次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | 説明 | Required |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは、次のように設定する必要があります:**PostgreSqlTable** | はい |
+| type | データセットの type プロパティは、次のように設定する必要があります:**PostgreSqlTable** | はい |
 | schema | スキーマの名前。 |いいえ (アクティビティ ソースの "query" が指定されている場合)  |
-| テーブル | テーブルの名前。 |いいえ (アクティビティ ソースの "query" が指定されている場合)  |
+| table | テーブルの名前。 |いいえ (アクティビティ ソースの "query" が指定されている場合)  |
 | tableName | スキーマがあるテーブルの名前。 このプロパティは下位互換性のためにサポートされています。 新しいワークロードでは、`schema` と `table` を使用します。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -176,9 +176,9 @@ PostgreSQL からのデータ コピーについては、次のプロパティ�
 
 PostgreSQL からデータをコピーするために、コピー アクティビティの **source** セクションでは次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | 説明 | Required |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**PostgreSqlSource** | はい |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**PostgreSqlSource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"query": "SELECT * FROM \"MySchema\".\"MyTable\""`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 > [!NOTE]

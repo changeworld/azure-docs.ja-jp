@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b77d6fe03a051c019519f195d55cdeb00fb9afb2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9b71c4a5c0f245d9da97dc8f096d15c5386bf919
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906273"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368604"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 
@@ -93,7 +93,7 @@ Premium ファイル共有を作成する方法については、[Azure Premium 
 現在、標準ファイル共有と Premium ファイル共有の間で直接変換することはできません。 どちらかの層に切り替える場合は、その層に新しいファイル共有を作成し、作成した新しい共有に元の共有から手動でデータをコピーする必要があります。 これは、Azure Files でサポートされているいずれかのコピー ツール (Robocopy、AzCopy など) を使用して行うことができます。
 
 > [!IMPORTANT]
-> Premium ファイル共有は、ストレージ アカウントを提供するほとんどのリージョンにおいて、LRS で利用できます。また、一部のリージョンでは ZRS で利用できます。 ご自分のリージョンで現在 Premium ファイル共有を使用できるかどうかを見つけるには、Azure の [[リージョン別の利用可能な製品]](https://azure.microsoft.com/global-infrastructure/services/?products=storage) ページを参照してください。 ZRS 対応のリージョンを見つけるには、「[サポート範囲とリージョンの可用性](../common/storage-redundancy-zrs.md#support-coverage-and-regional-availability)」を参照してください。
+> Premium ファイル共有は、ストレージ アカウントを提供するほとんどのリージョンにおいて、LRS で利用できます。また、一部のリージョンでは ZRS で利用できます。 ご自分のリージョンで現在 Premium ファイル共有を使用できるかどうかを見つけるには、Azure の [[リージョン別の利用可能な製品]](https://azure.microsoft.com/global-infrastructure/services/?products=storage) ページを参照してください。 ZRS をサポートするリージョンの詳細については、[Azure Storage の冗長性](../common/storage-redundancy.md)に関する記事を参照してください。
 >
 > この[アンケート](https://aka.ms/pfsfeedback)にご記入ください。新しいリージョンと機能に優先順位を付けるために役立ちます。
 
@@ -155,41 +155,14 @@ Premium ファイル共有は、最大 3 倍の IOPS をバーストできます
 
 ## <a name="file-share-redundancy"></a>ファイル共有の冗長性
 
-Azure Files 標準の共有でサポートされているデータ冗長性オプションは、ローカル冗長ストレージ (LRS)、ゾーン冗長ストレージ (ZRS)、geo 冗長ストレージ (GRS)、geo ゾーン冗長ストレージ (GZRS) (プレビュー) の 4 種類です。
+[!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 
-Azure Files Premium ファイル共有は LRS と ZRS の両方に対応していますが、ZRS は現在のところ、一部のリージョンで利用できます。
-
-次のセクションで、さまざまな冗長性オプションの違いについて説明します。
-
-### <a name="locally-redundant-storage"></a>ローカル冗長ストレージ
-
-[!INCLUDE [storage-common-redundancy-LRS](../../../includes/storage-common-redundancy-LRS.md)]
-
-### <a name="zone-redundant-storage"></a>ゾーン冗長ストレージ
-
-[!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-ZRS.md)]
-
-### <a name="geo-redundant-storage"></a>geo 冗長ストレージ
+読み取りアクセス geo 冗長ストレージ (RA-GRS) を選択する場合は、Azure Files が、現時点ではどのリージョンでも、読み取りアクセス geo 冗長ストレージ (RA-GRS) をサポートしていないことに注意してください。 RA-GRS ストレージ アカウントのファイル共有は GRS アカウントと同じように動作し、GRS 料金で課金されます。
 
 > [!Warning]  
 > Azure ファイル共有を GRS ストレージ アカウントのクラウド エンドポイントとして使用している場合は、ストレージ アカウントのフェールオーバーを開始しないでください。 それを行うと、同期の動作が停止し、新しく階層化されたファイルの場合は予期せずデータが失われる可能性があります。 Azure リージョンが失われた場合は、Azure File Sync との互換性のある方法でストレージ アカウントのフェールオーバーがトリガーされます。
 
-geo 冗長ストレージ (GRS) は、プライマリ リージョンから数百マイル離れたセカンダリ リージョンにデータをレプリケートすることで、通年で少なくとも 99.99999999999999% (シックスティーンナイン) の持続性をオブジェクトに確保するように設計されています。 ご使用のストレージ アカウントで GRS が有効になっている場合は、地域的な停電やプライマリ リージョンが復旧できない災害が発生しても、データは保持されます。
-
-読み取りアクセス geo 冗長ストレージ (RA-GRS) を選択する場合は、Azure Files が、現時点ではどのリージョンでも、読み取りアクセス geo 冗長ストレージ (RA-GRS) をサポートしていないことに注意してください。 RA-GRS ストレージ アカウントのファイル共有は GRS アカウントと同じように動作し、GRS 料金で課金されます。
-
-GRS は、セカンダリ リージョンの別のデータセンターにデータをレプリケートしますが、Microsoft がプライマリ リージョンからセカンダリ リージョンへのフェールオーバーを開始する場合にのみ、そのデータを読み取ることができます。
-
-GRS が有効なストレージ アカウントでは、すべてのデータが最初にローカル冗長ストレージ (LRS) でレプリケートされます。 更新は、まずプライマリの場所にコミットされ、LRS を使用してレプリケートされます。 更新は、GRS を使用してセカンダリ リージョンに非同期にレプリケートされます。 データがセカンダリの場所に書き込まれると、LRS を使用してその場所内にレプリケートされます。
-
-プライマリ リージョンとセカンダリ リージョンの両方が、ストレージ スケール ユニット内の異なる障害ドメインとアップグレード ドメイン間でレプリカを管理します。 ストレージ スケール ユニットは、データセンター内の基本的なレプリケーション ユニットです。 このレベルのレプリケーションは LRS で提供されています。詳細については、「[ローカル冗長ストレージ (LRS):Azure Storage の低コストのデータ冗長性](../common/storage-redundancy-lrs.md)」を参照してください。
-
-使用するレプリケーション オプションを決定するときは、次の点に注意してください。
-
-* geo ゾーン冗長ストレージ (GZRS) (プレビュー) では、3 つの Azure 可用性ゾーン間でデータを同期的にレプリケートした後、セカンダリ リージョンに非同期的にデータをレプリケートすることによって、高可用性と最大限の持続性が提供されます。 セカンダリ リージョンへの読み取りアクセスを有効にすることもできます。 GZRS は、オブジェクトに年間 99.99999999999999% (シックスティーンナイン) 以上の持続性を確保するように設計されています。 GZRS の詳細については、[高可用性と最大限の持続性のための geo ゾーン冗長ストレージ (プレビュー)](../common/storage-redundancy-gzrs.md) に関する記事を参照してください。
-* ゾーン冗長ストレージ (ZRS) は同期レプリケーションの可用性を高めるため、シナリオによっては GRS よりも適した選択肢となります。 ZRS の詳細については、[ZRS](../common/storage-redundancy-zrs.md) に関するページを参照してください。
-* 非同期レプリケーションには、データがプライマリ リージョンに書き込まれた時間から、それがセカンダリ リージョンにレプリケートされるまでの遅延が伴います。 地域的な災害が発生した場合に、データをプライマリ リージョンから復旧できないと、セカンダリ リージョンにまだレプリケートされていない変更が失われる可能性があります。
-* GRS では、Microsoft がセカンダリ リージョンへのフェールオーバーを開始しない限り、レプリカを読み取りまたは書き込みアクセスに利用できません。 フェールオーバーの場合、フェールオーバーの完了後にそのデータへの読み取りおよび書き込みアクセス権が得られます。 詳細については、[ディザスター リカバリーのガイダンス](../common/storage-disaster-recovery-guidance.md)に関するページを参照してください。
+Azure Files Premium ファイル共有は LRS と ZRS の両方に対応していますが、ZRS は現在のところ、一部のリージョンで利用できます。
 
 ## <a name="onboard-to-larger-file-shares-standard-tier"></a>大きなファイル共有へのオンボード (Standard レベル)
 
@@ -204,9 +177,6 @@ GRS が有効なストレージ アカウントでは、すべてのデータが
 100 TiB の容量制限がある Standard ファイル共有は、すべての Azure リージョンでグローバルに使用可能です。
 
 - LRS:南アフリカ北部と南アフリカ西部を除くすべてのリージョン。
-   - 各国のクラウド (政府、ドイツ、中国) は、PowerShell と Azure コマンド ライン インターフェイス (CLI) を介してサポートされます。 ポータルのサポートはありません。 
-   - 米国東部、米国東部 2、西ヨーロッパ:すべての新しいアカウントがサポートされます。 少数の既存アカウントが、アップグレード プロセスを完了していません。 [大きなファイル共有を有効にする](storage-files-how-to-create-large-file-share.md)ことで、既存のストレージ アカウントのアップグレード プロセスが完了したかどうかを確認することができます。
-
 - ZRS:東日本、北ヨーロッパ、南アフリカ北部を除くすべてのリージョン。
 - GRS/GZRS:サポートされていません。
 

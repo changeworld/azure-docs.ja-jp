@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 01/21/2020
-ms.openlocfilehash: d28eb6c4ee4fadf8a090a17121f6910eb34135e3
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: b9fdd1b25e53e1cdc8aa76564304a61adaa8d804
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935201"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201596"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance とは
 
@@ -80,9 +80,6 @@ Azure SQL Database デプロイ オプションの単一データベース、プ
 - **Gen5** 論理 CPU は、Intel E5-2673 v4 (Broadwell) 2.3-GHz および Intel SP-8160 (Skylake) プロセッサ、高速 NVMe SSD、ハイパースレッド論理コア、4 - 80 コアのコンピューティング サイズに基づいています。
 
 ハードウェアの世代の違いについて詳しくは、[マネージド インスタンスのリソース制限](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)に関する記事をご覧ください。
-
-> [!IMPORTANT]
-> 新しい Gen4 データベースは、オーストラリア東部とブラジル南部リージョンでサポートされなくなりました。
 
 ## <a name="managed-instance-service-tiers"></a>マネージド インスタンスのサービス レベル
 

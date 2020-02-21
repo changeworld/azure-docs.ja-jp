@@ -3,12 +3,12 @@ title: チュートリアル - Azure Terraform Visual Studio Code 拡張機能�
 description: Visual Studio Code で Azure Terraform 拡張機能をインストールして使用する方法を説明します。
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 7f2f15c3a45480b8922f34e191fb965d5e83d9fa
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: fcb47024fd26f061ca4475b01d00f1ae13303b61
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159238"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472283"
 ---
 # <a name="tutorial-configure-the-azure-terraform-visual-studio-code-extension"></a>チュートリアル:Azure Terraform Visual Studio Code 拡張機能の構成
 
@@ -23,7 +23,7 @@ Azure Terraform Visual Studio Code 拡張機能を使用すると、エディタ
 ## <a name="prerequisites"></a>前提条件
 - **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成してください。
 
-- **Terraform**:[Terraform をインストールして構成します](/azure/virtual-machines/linux/terraform-install-configure)。
+- **Terraform**:[Terraform をインストールして構成します](terraform-install-configure.md)。
 
 - **Visual Studio Code**:ご利用の環境に適したバージョンの [Visual Studio Code](https://code.visualstudio.com/download) をインストールしてください。
 
@@ -190,7 +190,7 @@ Terraform *plan* の結果に満足したら、*apply* コマンドを実行で�
 
     ![terraform apply](media/terraform-vscode-extension/tf-terraform-apply.png)
 
-1. 「 `yes` 」を入力します。
+1. 「`yes`」と入力します。
 
     ![Terraform apply、yes](media/terraform-vscode-extension/tf-terraform-apply-yes.png)
 
@@ -198,7 +198,7 @@ Terraform *plan* の結果に満足したら、*apply* コマンドを実行で�
 
 目的の新しい Azure リソース グループが正常に作成されたかどうかを確認するには:
 
-1. Azure Portal を開きます。
+1. Azure portal を開きます。
 
 1. 左側のナビゲーション ウィンドウで、 **[リソース グループ]** を選択します。
 
@@ -300,6 +300,6 @@ Visual Studio Code 内からの Terraform コマンドの使用を開始する�
 
 ![Test results](media/terraform-vscode-extension/tf-end-to-end-test-results.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [Azure およびサポートされているその他のプロバイダーで使用できる Terraform モジュールの一覧](https://registry.terraform.io/)

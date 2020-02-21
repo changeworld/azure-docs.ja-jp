@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/10/2020
+ms.date: 02/05/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 8cf1f8ecb68e31f93c19d93d6ebc4f8ef37724e7
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 09558a8d1e4e2dc68cefd2c870f54e008d10b97b
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028439"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083548"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>テーブルとキューのカスタマーマネージド キーがサポートされるアカウントを作成する
 
@@ -35,41 +35,93 @@ Queue storage と Table Storage でアカウント暗号化キーを使用する
 
 ### <a name="register-to-use-the-account-encryption-key"></a>アカウント暗号化キーを使用するための登録を行う
 
+Queue storage または Table storage でアカウント暗号化キーを使用するための登録を行うには、PowerShell または Azure CLI を使用します。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell を使用して登録を行うには、[Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) コマンドを呼び出します。
+
+```powershell
+Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
+    -FeatureName AllowAccountEncryptionKeyForQueues
+Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
+    -FeatureName AllowAccountEncryptionKeyForTables
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 Azure CLI を使用して登録を行うには、[az feature register](/cli/azure/feature#az-feature-register) コマンドを呼び出します。
 
-Queue storage でアカウント暗号化キーを使用するための登録を行うには:
-
 ```azurecli
-az feature register --namespace Microsoft.Storage --name AllowAccountEncryptionKeyForQueues
+az feature register --namespace Microsoft.Storage \
+    --name AllowAccountEncryptionKeyForQueues
+az feature register --namespace Microsoft.Storage \
+    --name AllowAccountEncryptionKeyForTables
 ```
 
-Table Storage でアカウント暗号化キーを使用するための登録を行うには:
+# <a name="template"></a>[テンプレート](#tab/template)
 
-```azurecli
-az feature register --namespace Microsoft.Storage --name AllowAccountEncryptionKeyForTables
-```
+該当なし
+
+---
 
 ### <a name="check-the-status-of-your-registration"></a>登録の状態を確認する
 
-Queue storage の登録の状態を確認するには:
+Queue storage または Table storage の登録の状態を確認するには、PowerShell または Azure CLI を使用します。
 
-```azurecli
-az feature show --namespace Microsoft.Storage --name AllowAccountEncryptionKeyForQueues
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell での登録の状態を確認するには、[Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) コマンドを呼び出します。
+
+```powershell
+Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
+    -FeatureName AllowAccountEncryptionKeyForQueues
+Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
+    -FeatureName AllowAccountEncryptionKeyForTables
 ```
 
-Table Storage の登録の状態を確認するには:
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLI での登録の状態を確認するには、[az feature](/cli/azure/feature#az-feature-show) コマンドを呼び出します。
 
 ```azurecli
-az feature show --namespace Microsoft.Storage --name AllowAccountEncryptionKeyForTables
+az feature show --namespace Microsoft.Storage \
+    --name AllowAccountEncryptionKeyForQueues
+az feature show --namespace Microsoft.Storage \
+    --name AllowAccountEncryptionKeyForTables
 ```
+
+# <a name="template"></a>[テンプレート](#tab/template)
+
+該当なし
+
+---
 
 ### <a name="re-register-the-azure-storage-resource-provider"></a>Azure Storage リソース プロバイダーを再登録する
 
-登録が承認されたら、Azure Storage リソース プロバイダーを再登録する必要があります。 [az provider register](/cli/azure/provider#az-provider-register) コマンドを呼び出します。
+登録が承認されたら、Azure Storage リソース プロバイダーを再登録する必要があります。 PowerShell または Azure CLI を使用して、リソース プロバイダーを再登録します。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell でリソース プロバイダーを再登録するには、[Register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider) コマンドを呼び出します。
+
+```powershell
+Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLI でリソース プロバイダーを再登録するには、[az provider register](/cli/azure/provider#az-provider-register) コマンドを呼び出します。
 
 ```azurecli
 az provider register --namespace 'Microsoft.Storage'
 ```
+
+# <a name="template"></a>[テンプレート](#tab/template)
+
+該当なし
+
+---
 
 ## <a name="create-an-account-that-uses-the-account-encryption-key"></a>アカウント暗号化キーを使用するアカウントを作成する
 
@@ -80,7 +132,28 @@ az provider register --namespace 'Microsoft.Storage'
 > [!NOTE]
 > アカウント暗号化キーを使用してデータを暗号化するための構成を、ストレージ アカウントの作成時に任意で行えるのは、Queue storage と Table Storage だけです。 Blob Storage と Azure Files では、常にアカウント暗号化キーを使用してデータを暗号化します。
 
-### <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell を使用して、アカウント暗号化キーを使用するストレージ アカウントを作成するには、Azure PowerShell モジュール バージョン 3.4.0 以降がインストールされていることを確認してください。 詳しくは、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。
+
+次に、適切なパラメーターを指定して [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) コマンドを呼び出し、汎用 v2 ストレージ アカウントを作成します。
+
+- アカウント暗号化キーを使用して Queue storage のデータを暗号化するには、`-EncryptionKeyTypeForQueue` オプションを指定して、その値を `Account` に設定します。
+- アカウント暗号化キーを使用して Table Storage のデータを暗号化するには、`-EncryptionKeyTypeForTable` オプションを指定して、その値を `Account` に設定します。
+
+次の例で示すのは、読み取りアクセス geo 冗長ストレージ (RA-GRS) 用に構成されていて、Queue storage と Table Storage の両方でデータの暗号化にアカウント暗号化キーを使用する汎用 v2 ストレージ アカウントを作成する方法です。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
+
+```powershell
+New-AzStorageAccount -ResourceGroupName <resource_group> `
+    -AccountName <storage-account> `
+    -Location <location> `
+    -SkuName "Standard_RAGRS" `
+    -Kind StorageV2 `
+    -EncryptionKeyTypeForTable Account `
+    -EncryptionKeyTypeForQueue Account
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLI を使用して、アカウント暗号化キーを使用するストレージ アカウントを作成するには、Azure CLI バージョン 2.0.80 以降がインストールされていることを確認してください。 詳細については、「 [Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
@@ -89,22 +162,22 @@ Azure CLI を使用して、アカウント暗号化キーを使用するスト�
 - アカウント暗号化キーを使用して Queue storage のデータを暗号化するには、`--encryption-key-type-for-queue` オプションを指定して、その値を `Account` に設定します。
 - アカウント暗号化キーを使用して Table Storage のデータを暗号化するには、`--encryption-key-type-for-table` オプションを指定して、その値を `Account` に設定します。
 
-次の例で示すのは、LRS 用に構成されていて、Queue storage と Table Storage の両方でデータの暗号化にアカウント暗号化キーを使用する汎用 v2 ストレージ アカウントを作成する方法です。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
+次の例で示すのは、読み取りアクセス geo 冗長ストレージ (RA-GRS) 用に構成されていて、Queue storage と Table Storage の両方でデータの暗号化にアカウント暗号化キーを使用する汎用 v2 ストレージ アカウントを作成する方法です。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
 
 ```azurecli
 az storage account create \
     --name <storage-account> \
     --resource-group <resource-group> \
     --location <location> \
-    --sku Standard_LRS \
+    --sku Standard_RAGRS \
     --kind StorageV2 \
     --encryption-key-type-for-table Account \
     --encryption-key-type-for-queue Account
 ```
 
-### <a name="templatetabtemplate"></a>[テンプレート](#tab/template)
+# <a name="template"></a>[テンプレート](#tab/template)
 
-次の JSON サンプルでは、LRS 用に構成されていて、Queue storage と Table Storage の両方でデータの暗号化にアカウント暗号化キーを使用する汎用 v2 ストレージ アカウントを作成します。 山かっこ内のプレースホルダー値は、実際の値に置き換えてください。
+次の JSON 例では、読み取りアクセス geo 冗長ストレージ (RA-GRS) 用に構成されていて、Queue storage と Table Storage の両方でデータの暗号化にアカウント暗号化キーを使用する汎用 v2 ストレージ アカウントを作成します。 山かっこ内のプレースホルダー値は、実際の値に置き換えてください。
 
 ```json
 "resources": [
@@ -116,7 +189,7 @@ az storage account create \
         "dependsOn": [],
         "tags": {},
         "sku": {
-            "name": "[parameters('Standard_LRS')]"
+            "name": "[parameters('Standard_RAGRS')]"
         },
         "kind": "[parameters('StorageV2')]",
         "properties": {
@@ -151,11 +224,32 @@ az storage account create \
 
 ストレージ アカウント内のサービスでアカウント暗号化キーが使用されていることを確認するには、Azure CLI の [az storage account](/cli/azure/storage/account#az-storage-account-show) コマンドを呼び出します。 このコマンドによって、ストレージ アカウントのプロパティとその値のセットが返されます。 暗号化プロパティ内で各サービスの `keyType` フィールドを探し、`Account` に設定されていることを確認します。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+ストレージ アカウント内のサービスでアカウント暗号化キーが使用されていることを確認するには、[Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) コマンドを呼び出します。 このコマンドによって、ストレージ アカウントのプロパティとその値のセットが返されます。 `Encryption` プロパティ内で各サービスの `KeyType` フィールドを探し、`Account` に設定されていることを確認します。
+
+```powershell
+$account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
+    -StorageAccountName <storage-account>
+$account.Encryption.Services.Queue
+$account.Encryption.Services.Table
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+ストレージ アカウント内のサービスでアカウント暗号化キーが使用されていることを確認するには、[az storage account](/cli/azure/storage/account#az-storage-account-show) コマンドを呼び出します。 このコマンドによって、ストレージ アカウントのプロパティとその値のセットが返されます。 暗号化プロパティ内で各サービスの `keyType` フィールドを探し、`Account` に設定されていることを確認します。
+
 ```azurecli
 az storage account show /
     --name <storage-account> /
     --resource-group <resource-group>
 ```
+
+# <a name="template"></a>[テンプレート](#tab/template)
+
+該当なし
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 

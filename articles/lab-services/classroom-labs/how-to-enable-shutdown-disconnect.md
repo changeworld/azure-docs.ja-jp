@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: spelluru
-ms.openlocfilehash: e615170952ea2987639a0bfc269ad5a1692e1e59
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 68a27a325a0ef02c6eeea9867a21ba0e24ab5321
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475237"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117132"
 ---
 # <a name="enable-automatic-shutdown-of-vms-on-disconnect"></a>切断時の VM の自動シャットダウンを有効にする
 この記事では、リモート デスクトップ接続が切断された後の **Windows 10** ラボ VM (テンプレートまたは学生) の自動シャットダウンを有効または無効にする方法について説明します。 VM が自動的にシャットダウンされる前にユーザーの再接続を待つ時間の長さを指定することもできます。
@@ -34,6 +34,9 @@ ms.locfileid: "75475237"
 この設定は、次の図に示すように、 **[設定]** ページで構成できます。 
 
 ![ラボの作成後に構成する](../media/how-to-enable-shutdown-disconnect/configure-lab-automatic-shutdown.png)
+
+> [!WARNING]
+> VM に対する RDP セッションを切断する前に VM で Windows オペレーティング システム (OS) をシャットダウンすると、自動シャットダウン機能が正常に機能しなくなります。  
 
 ## <a name="next-steps"></a>次のステップ
 次の記事をご覧ください。

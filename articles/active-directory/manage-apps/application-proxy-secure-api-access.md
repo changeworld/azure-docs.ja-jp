@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.author: celested
+ms.date: 02/12/2020
+ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: b741f42bb215df59903fed7ed84094b7d037ce65
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: ecd5d8bae22d67f8d9f5b99d5c94eecf54a4a1f3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063039"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166009"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したオンプレミス API へのアクセスのセキュリティ保護
 
@@ -47,17 +47,17 @@ Azure AD アプリケーション プロキシの認証と承認は Azure AD 上
 
 ## <a name="publish-the-api-through-application-proxy"></a>アプリケーション プロキシ経由で API を公開する
 
-アプリケーション プロキシを介してイントラネットの外部で API を公開するには、Web アプリを公開する場合と同じパターンに従ってください。 詳細については、[チュートリアル: Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](application-proxy-add-on-premises-application.md)を参照してください。
+アプリケーション プロキシを介してイントラネットの外部で API を公開するには、Web アプリを公開する場合と同じパターンに従ってください。 詳細については、「[チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](application-proxy-add-on-premises-application.md)を参照してください。
 
 アプリケーション プロキシ経由で SecretAPI Web API を公開するには、次のようにします。
 
 1. ローカル コンピューターまたはイントラネット上で、サンプルの SecretAPI プロジェクトを ASP.NET Web アプリとしてビルドして公開します。 Web アプリにローカルでアクセスできることを確認します。 
    
-1. [Azure portal](https://portal.azure.com) で、左側のナビゲーションから **[Azure Active Directory]** を選択します。 次に、 **[概要]** ページで、 **[エンタープライズ アプリケーション]** を選択します。
+1. [Azure Portal](https://portal.azure.com) で、 **[Azure Active Directory]** を選択します。 次に、 **[エンタープライズ アプリケーション]** を選択します。
    
 1. **[エンタープライズ アプリケーション - すべてのアプリケーション]** ページの上部で、 **[新しいアプリケーション]** を選択します。
    
-1. **[Azure AD ギャラリーの参照]** ページの **[オンプレミスのアプリケーション]** で、 **[オンプレミスのアプリケーションの追加]** を選択します。 **[独自のオンプレミスのアプリケーションの追加]** ページが表示されます。
+1. **[アプリケーションの追加]** ページで、 **[オンプレミスのアプリケーション]** を選択します。 **[独自のオンプレミスのアプリケーションの追加]** ページが表示されます。
    
 1. アプリケーション プロキシ コネクタがインストールされていない場合は、インストールするように求められます。 **[アプリケーション プロキシ コネクタのダウンロード]** を選択してコネクタをダウンロードしてインストールします。 
    
@@ -65,7 +65,7 @@ Azure AD アプリケーション プロキシの認証と承認は Azure AD 上
    
    1. **[名前]** の横に *SecretAPI* と入力します。
       
-   1. 次に、イントラネット内から API へのアクセスに使用する URL を **[内部 URL]** の横に入力します。 
+   1. **[内部 URL]** の横に、イントラネット内から API へのアクセスに使用する URL を入力します。
       
    1. **[事前認証]** が **[Azure Active Directory]** に設定されていることを確認します。 
       
@@ -171,8 +171,8 @@ AppProxyNativeAppSample ネイティブ アプリを登録するには、次の�
 
 ![Success](./media/application-proxy-secure-api-access/success.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](application-proxy-add-on-premises-application.md)
-- [クイック スタート:Web API にアクセスするようにクライアント アプリケーションを構成する](../develop/quickstart-configure-app-access-web-apis.md)
+- [クイック スタート: Web API にアクセスするようにクライアント アプリケーションを構成する](../develop/quickstart-configure-app-access-web-apis.md)
 - [ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする方法](application-proxy-configure-native-client-application.md)

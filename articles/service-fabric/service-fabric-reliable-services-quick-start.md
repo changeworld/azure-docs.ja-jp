@@ -1,27 +1,26 @@
 ---
 title: C# で最初の Service Fabric アプリケーションを作成する
 description: ステートレス サービスとステートフル サービスを使用して Microsoft Azure Service Fabric アプリケーションを作成する方法。
-author: vturecek
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: vturecek
-ms.openlocfilehash: e7c5c30dc7cbfa0a3f5a8dc76899c5c8bad6e6ea
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: sfrev
+ms.openlocfilehash: 15dd9bf6ac19bdac7bc8b50fc70e0b3b0a4e9a83
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462820"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083775"
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 使用
+
 > [!div class="op_single_selector"]
 > * [Windows での C#](service-fabric-reliable-services-quick-start.md)
 > * [Linux での Java](service-fabric-reliable-services-quick-start-java.md)
-> 
-> 
 
 Azure Service Fabric アプリケーションには、コードを実行する 1 つ以上のサービスが含まれています。 ここでは、 [Reliable Services](service-fabric-reliable-services-introduction.md)を使用して、ステートレスとステートフルの両方の Service Fabric アプリケーションを作成する方法を説明します。  
 
 ## <a name="basic-concepts"></a>基本的な概念
+
 Reliable Services の使用を開始するには、いくつかの基本的な概念を理解する必要があります。
 
 * **サービスの種類**: 使用するサービス実装です。 `StatelessService` を拡張する記述したクラスと、そこで使用する他のコードまたは依存関係のほか、名前やバージョン番号によって定義されます。
@@ -30,6 +29,7 @@ Reliable Services の使用を開始するには、いくつかの基本的な�
 * **サービス登録**: 登録はすべてを 1 つにまとめます。 サービス ホストでサービスの種類を Service Fabric ランタイムに登録して、Service Fabric がそのインスタンスを作成して実行できるようにする必要があります。  
 
 ## <a name="create-a-stateless-service"></a>ステートレス サービスの作成
+
 ステートレス サービスは、クラウド アプリケーションで現在基準となっている種類のサービスです。 ステートレスと見なされるのは、確実に格納する必要があるデータや高可用性を実現する必要があるデータが、サービス自体には含まれていないためです。 ステートレス サービスのインスタンスが終了すると、すべての内部状態が失われます。 この種類のサービスで、状態の高可用性と高い信頼性を実現するには、Azure テーブルや SQL データベースなどの外部ストアに状態を格納する必要があります。
 
 Visual Studio 2017 または Visual Studio 2019 を管理者として起動し、*HelloWorld* という名前の新しい Service Fabric アプリケーション プロジェクトを作成します。
@@ -46,6 +46,7 @@ Visual Studio 2017 または Visual Studio 2019 を管理者として起動し�
 * *HelloWorldStateless*。 これはサービス プロジェクトです。 ステートレス サービスの実装が含まれています。
 
 ## <a name="implement-the-service"></a>サービスの実装
+
 サービス プロジェクト内にある **HelloWorldStateless.cs** ファイルを開きます。 Service Fabric では、どのようなビジネス ロジックもサービスで実行できます。 サービス API には、コードのエントリ ポイントが 2 つあります。
 
 * *RunAsync*という変更可能なエントリ ポイント メソッドでは、実行時間の長いコンピューティング ワークロードなどの任意のワークロードの実行を開始できます。
@@ -70,11 +71,10 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 プロジェクト テンプレートには、ローリング カウントをインクリメントする `RunAsync()` の実装例が含まれます。
 
 > [!NOTE]
-> 通信スタックを使用する方法の詳細については、「 [OWIN 自己ホストによる Microsoft Azure Service Fabric Web API の概要](service-fabric-reliable-services-communication-webapi.md)
-> 
-> 
+> 通信スタックを使用する方法の詳細については、[ASP.NET Core とのサービス通信](service-fabric-reliable-services-communication-aspnetcore.md)に関するページを参照してください。
 
 ### <a name="runasync"></a>RunAsync
+
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)
 {
@@ -110,6 +110,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 このステートレス サービスの例では、カウントはローカル変数に格納されます。 これはステートレス サービスであるため、保存される値は、サービス インスタンスの現在のライフサイクルのみで保持されます。 このサービスを移動または再起動すると、値は失われます。
 
 ## <a name="create-a-stateful-service"></a>ステートフル サービスの作成
+
 Service Fabric には、新しい種類のステートフルなサービスが導入されています。 ステートフル サービスは、サービス内に状態を確実に維持でき、それを使用するコードと同じ場所に配置できます。 Service Fabric によって状態の可用性が高まるため、外部ストアに状態を維持する必要がなくなります。
 
 サービスが移動または再起動した場合でも、カウンター値をステートレスから高可用と永続性に変換するには、ステートフル サービスが必要です。
@@ -159,9 +160,11 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 ```
 
 ### <a name="runasync"></a>RunAsync
+
 `RunAsync()` は、ステートフル サービスとステートレス サービスで同様に動作します。 ただし、ステートフル サービスでは、プラットフォームは、 `RunAsync()`を実行する前に、ユーザーに代わって追加の作業を行います。 この作業には、Reliable State Manager と Reliable Collection が使用できる状態にあることの確認が含まれる場合があります。
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>Reliable Collection と Reliable State Manager
+
 ```csharp
 var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 ```
@@ -178,6 +181,7 @@ Reliable Collection にはカスタム型を含むすべての .NET 型を格納
 Reliable Collection の管理は Reliable State Manager が行います。 サービス内のどの場所でも、Reliable Collection の名前を指定することで、Reliable State Manager に Reliable Collection をいつでも要求できます。 Reliable State Manager により、参照を確実に取得できます。 Reliable Collection インスタンスへの参照をクラス メンバー変数やプロパティに保存することはお勧めしません。 サービスのライフサイクル中、参照が常にインスタンスに設定されていることを保証するために特に注意を払う必要があります。 この作業は Reliable State Manager によって処理され、繰り返されるアクセスのために最適化されます。
 
 ### <a name="transactional-and-asynchronous-operations"></a>トランザクション処理と非同期処理
+
 ```csharp
 using (ITransaction tx = this.StateManager.CreateTransaction())
 {
@@ -189,7 +193,7 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 }
 ```
 
-Reliable Collection には、LINQ を除き、対応する `System.Collections.Generic` と `System.Collections.Concurrent` が実行する操作と同じ操作が多数あります。 Reliable Collection での操作は非同期です。 Reliable Collection での書き込み操作では、データをレプリケートしてディスクに保持するために I/O 操作が実行されるためです。
+Reliable Collection には、統合言語クエリ (LINQ) を除き、対応する `System.Collections.Generic` と `System.Collections.Concurrent` が実行する操作と同じ操作が多数あります。 Reliable Collection での操作は非同期です。 Reliable Collection での書き込み操作では、データをレプリケートしてディスクに保持するために I/O 操作が実行されるためです。
 
 Reliable Collection の操作は *トランザクション*であるため、複数の Reliable Collection と操作で状態の整合性を維持できます。 たとえば、1 つのトランザクション内で Reliable Queue から作業項目をデキューし、その項目の操作を実行してから、結果を Reliable Dictionary に保存するとします。 これはアトミック操作として扱われので、操作全体が成功するか、操作全体がロールバックされることが保証されます。 項目をデキューしたが、結果を保存する前にエラーが発生した場合は、トランザクション全体がロールバックされ、項目は処理のためにキューに残ります。
 

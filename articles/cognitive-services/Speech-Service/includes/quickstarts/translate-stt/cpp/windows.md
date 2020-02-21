@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 232edfc08b2d2696f5592e8bfb7bc16b52edb34c
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: c4a0e37946d98e48ed424ebd7f1a1e520fbbb7c8
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156552"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77446389"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,8 +44,7 @@ ms.locfileid: "77156552"
    void TranslateSpeechToText()
    {
        // Creates an instance of a speech translation config with specified subscription key and service region.
-       // Replace with your own subscription key and service region (e.g., "westus", use the one of SpeechSDKParameters
-       // from here: https://aka.ms/speech/sdkregion).   
+       // Replace with your own subscription key and region identifier from here: https://aka.ms/speech/sdkregion
        auto config = SpeechTranslationConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 
        // Sets source and target languages.

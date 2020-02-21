@@ -2,18 +2,18 @@
 title: リージョンごとのリソースの可用性
 description: さまざまな Azure リージョンにある Azure Container Instances サービス用のコンピューティング リソースとメモリ リソースの可用性。
 ms.topic: article
-ms.date: 12/17/2019
+ms.date: 01/31/2020
 ms.author: danlep
-ms.openlocfilehash: 9de5b08eed3aa10015813cbb4724ef4e947005fb
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3f64a13331658c1360c9d54f6f57a68c2c91fc6f
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888007"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117836"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure リージョンの Azure Container Instances のリソースの可用性
 
-この記事では、Azure リージョンの Azure Container Instances のコンピューティング リソースとメモリ リソースの可用性について詳しく説明します。 
+この記事では、Azure リージョン内とターゲット オペレーティング システムによる Azure Container Instances のコンピューティング、メモリ、およびストレージのリソースの可用性について詳しく説明します。 
 
 表示されている値は、[コンテナー グループ](container-instances-container-groups.md)のデプロイごとに使用できる最大リソースです。 値は公開時現在のものです。 
 
@@ -26,23 +26,23 @@ ms.locfileid: "75888007"
 
 次のリージョンとリソースは、Linux および [サポートされている](container-instances-faq.md#what-windows-base-os-images-are-supported) Windows Server 2016 ベースのコンテナーを含むコンテナー グループで使用できます。
 
-| リージョン | OS | Max CPU (最大 CPU) | 最大メモリ (GB) |
-| -------- | -- | :---: | :-----------: |
-| ブラジル南部、カナダ中部、インド中部、米国中部、東アジア、米国東部、米国東部 2、北ヨーロッパ、米国中南部、東南アジア、インド南部、英国南部、西ヨーロッパ、米国西部、米国西部 2 | Linux | 4 | 16 |
-| オーストラリア東部、東日本 | Linux | 2 | 8 |
-| 米国中北部 | Linux | 2 | 3.5 |
-| ブラジル南部、東日本、西ヨーロッパ | Windows | 4 | 16 |
-| 米国東部、米国西部 | Windows | 4 | 14 |
-| オーストラリア東部、カナダ中部、インド中部、米国中部、東アジア、米国東部 2、米国中北部、北ヨーロッパ、米国中南部、東南アジア、インド南部、英国南部、米国西部 2 | Windows | 2 | 3.5 |
+| リージョン | OS | Max CPU (最大 CPU) | 最大メモリ (GB) | ストレージ (GB) |
+| -------- | -- | :---: | :-----------: | :---: |
+| ブラジル南部、カナダ中部、インド中部、米国中部、東アジア、米国東部、米国東部 2、北ヨーロッパ、米国中南部、東南アジア、インド南部、英国南部、西ヨーロッパ、米国西部、米国西部 2 | Linux | 4 | 16 | 50 |
+| オーストラリア東部、東日本 | Linux | 2 | 8 | 50 |
+| 米国中北部 | Linux | 2 | 3.5 | 50 |
+| ブラジル南部、東日本、西ヨーロッパ | Windows | 4 | 16 | 20 |
+| 米国東部、米国西部 | Windows | 4 | 14 | 20 |
+| オーストラリア東部、カナダ中部、インド中部、米国中部、東アジア、米国東部 2、米国中北部、北ヨーロッパ、米国中南部、東南アジア、インド南部、英国南部、米国西部 2 | Windows | 2 | 3.5 | 20 |
 
 ## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>可用性 - Windows Server 2019 LTSC、1809 デプロイ (プレビュー)
 
 次のリージョンとリソースは、Windows Server 2019 ベースのコンテナー (プレビュー) を含むコンテナー グループで使用できます。
 
-| リージョン | OS | Max CPU (最大 CPU) | 最大メモリ (GB) |
-| -------- | -- | :---: | :-----------: |
-| オーストラリア東部、ブラジル南部、カナダ中部、インド中部、米国中部、東アジア、米国東部、東日本、米国中北部、北ヨーロッパ、米国中南部、東南アジア、インド南部、英国南部、西ヨーロッパ | Windows | 4 | 16 |
-| 米国東部 2、米国西部 2 | Windows | 2 | 3.5 |
+| リージョン | OS | Max CPU (最大 CPU) | 最大メモリ (GB) | ストレージ (GB) |
+| -------- | -- | :---: | :-----------: | :---: |
+| オーストラリア東部、ブラジル南部、カナダ中部、インド中部、米国中部、東アジア、米国東部、東日本、米国中北部、北ヨーロッパ、米国中南部、東南アジア、インド南部、英国南部、西ヨーロッパ | Windows | 4 | 16 | 20 |
+| 米国東部 2、米国西部 2 | Windows | 2 | 3.5 | 20 |
 
 
 ## <a name="availability---virtual-network-deployment"></a>可用性 - 仮想ネットワークのデプロイ

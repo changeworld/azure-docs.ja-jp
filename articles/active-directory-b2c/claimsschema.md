@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/02/2020
+ms.date: 02/12/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3c3bb0cb6726326cda7ede46ba09fa6d17c2ba2c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 76e2b1c221475a90dc63498d13d4ede7a78e0779
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983046"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185582"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -42,7 +42,7 @@ ms.locfileid: "76983046"
 
 **ClaimType** 要素には、次の属性が含まれています。
 
-| Attribute | Required | Description |
+| Attribute | Required | 説明 |
 | --------- | -------- | ----------- |
 | Id | はい | 要求の種類に使用される識別子です。 その他の要素は、ポリシーでこの識別子を使用することができます。 |
 
@@ -51,7 +51,7 @@ ms.locfileid: "76983046"
 | 要素 | 発生回数 | Description |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | さまざまな画面上のユーザーに表示されるタイトル。 値を[ローカライズ](localization.md)することができます。 |
-| DataType | 1:1 | 要求の種類です。 boolean、date、dateTime、int、long、string、stringCollection のデータ型を使用することができます。 プリミティブ データ型は、C# 変数データ型に相当するものを表します。 stringCollection は、文字列のコレクションを表します。 詳細については、[C# の型と変数](https://docs.microsoft.com/dotnet/csharp/tour-of-csharp/types-and-variables)に関するページを参照してください。 date は ISO 8601 規則に準拠します。 |
+| DataType | 1:1 | 要求の種類です。 boolean、date、dateTime、int、long、string、stringCollection、phoneNumber のデータ型を使用することができます。 プリミティブ データ型は、C# 変数データ型に相当するものを表します。 stringCollection は、文字列のコレクションを表します。 詳細については、[C# の型と変数](https://docs.microsoft.com/dotnet/csharp/tour-of-csharp/types-and-variables)に関するページを参照してください。 date は ISO 8601 規則に準拠します。 |
 | DefaultPartnerClaimTypes | 0:1 | パートナーの既定要求は、指定されたプロトコルに使用する種類です。 **InputClaim**または**OutputClaim** 要素で指定されている**PartnerClaimType**内の値を上書きすることができます。 この要素を使用すると、プロトコルの既定の名前を指定できます。  |
 | Mask | 0:1 | 要求を表示するときに適用できる、文字をマスクするのに使用されるオプショナルな文字列。 たとえば、電話番号 324-232-4343 をXXX-XXX-4343 としてマスクすることができます。 |
 | UserHelpText | 0:1 | 要求の目的を理解するのにユーザーに役立つ種類の説明。 値を[ローカライズ](localization.md)することができます。 |

@@ -3,12 +3,12 @@ title: リソース ロックについて
 description: ブループリントを割り当てるときにリソースを保護するための Azure Blueprints 内のロック オプションについて説明します。
 ms.date: 04/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 50f506cc57f67ca2ae2b07e342750d6c5099e739
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: e042a4d117e28a2fd2228ce36f1be98a1da31e91
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406404"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057347"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Azure Blueprint でのリソース ロックについて
 
@@ -21,11 +21,11 @@ ms.locfileid: "74406404"
 
 ブループリント割り当て内のアーティファクトによって作成されたリソースは、次の 4 つのいずれかの状態になります。**ロックなし**、**読み取り専用**、**編集/削除できません**、または**削除不可**。 各種のアーティファクトは、**ロックなし**の状態にすることができます。 次の表を使用することで、リソースの状態を特定することができます。
 
-|Mode|アーティファクトのリソースの種類|State|説明|
+|モード|アーティファクトのリソースの種類|State|説明|
 |-|-|-|-|
 |ロックしない|*|ロックなし|リソースはブループリントによって保護されません。 この状態は、ブループリント割り当ての外部から**読み取り専用**または**削除しない**のリソース グループ アーティファクトに追加されるリソースに対しても使用されます。|
-|読み取り専用|Resource group|編集/削除できません|リソース グループは読み取り専用であり、リソース グループ上のタグを変更することはできません。 このリソース グループに対しては、**ロックなし**リソースの追加、移動、変更、削除を行うことができます。|
-|読み取り専用|非リソース グループ|読み取り専用|いかなる方法でもリソースを変更することはできません。変更することも削除することもできません。|
+|[読み取り専用]|Resource group|編集/削除できません|リソース グループは読み取り専用であり、リソース グループ上のタグを変更することはできません。 このリソース グループに対しては、**ロックなし**リソースの追加、移動、変更、削除を行うことができます。|
+|[読み取り専用]|非リソース グループ|[読み取り専用]|いかなる方法でもリソースを変更することはできません。変更することも削除することもできません。|
 |削除しない|*|削除不可|リソースを変更することはできますが、削除することはできません。 このリソース グループに対しては、**ロックなし**リソースの追加、移動、変更、削除を行うことができます。|
 
 ## <a name="overriding-locking-states"></a>ロック状態をオーバーライドする
@@ -51,9 +51,9 @@ ms.locfileid: "74406404"
 
 各モードの[拒否割り当てプロパティ](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties)は、次のようになります。
 
-|Mode |Permissions.Actions |Permissions.NotActions |Principals[i].Type |ExcludePrincipals[i].Id | DoNotApplyToChildScopes |
+|モード |Permissions.Actions |Permissions.NotActions |Principals[i].Type |ExcludePrincipals[i].Id | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|読み取り専用 |**\*** |**\*/read** |SystemDefined (Everyone) |**excludedPrincipals** におけるブループリント割り当てとユーザー定義 |リソース グループ - _true_;リソース - _false_ |
+|[読み取り専用] |**\*** |**\*/read** |SystemDefined (Everyone) |**excludedPrincipals** におけるブループリント割り当てとユーザー定義 |リソース グループ - _true_;リソース - _false_ |
 |削除しない |**\*/delete** | |SystemDefined (Everyone) |**excludedPrincipals** におけるブループリント割り当てとユーザー定義 |リソース グループ - _true_;リソース - _false_ |
 
 > [!IMPORTANT]
@@ -103,7 +103,27 @@ ms.locfileid: "74406404"
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="exclude-an-action-from-a-deny-assignment"></a>拒否割り当てからアクションを除外する
+
+ブループリント割り当ての[拒否割り当て](../../../role-based-access-control/deny-assignments.md)で[プリンシパルを除外する](#exclude-a-principal-from-a-deny-assignment)場合と同様に、特定の [RBAC 操作](../../../role-based-access-control/resource-provider-operations.md)を除外することができます。 **properties.locks** ブロック内の **excludedPrincipals** と同じ場所に **excludedActions** を追加できます。
+
+```json
+"locks": {
+    "mode": "AllResourcesDoNotDelete",
+    "excludedPrincipals": [
+        "7be2f100-3af5-4c15-bcb7-27ee43784a1f",
+        "38833b56-194d-420b-90ce-cff578296714"
+    ],
+    "excludedActions": [
+        "Microsoft.ContainerRegistry/registries/push/write",
+        "Microsoft.Authorization/*/read"
+    ]
+},
+```
+
+**excludedPrincipals** は明示的である必要がありますが、**excludedActions** エントリでは、RBAC 操作のワイルドカード検索に `*` を使用できます。
+
+## <a name="next-steps"></a>次のステップ
 
 - [新しいリソースの保護](../tutorials/protect-new-resources.md)に関するチュートリアルに従います。
 - [ブループリントのライフサイクル](lifecycle.md)を参照する。

@@ -8,16 +8,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 09/17/2019
-ms.openlocfilehash: 3e0fddc03ad880d36876276827198b0ac180a00d
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: f03797a8c7df1609a32f934bc090c7adc899aa9a
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076371"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198924"
 ---
 # <a name="what-is-interactive-query-in-azure-hdinsight"></a>Azure HDInsight での対話型クエリとは
 
-対話型クエリ (別名 Apache Hive LLAP または [Low Latency Analytical Processing](https://cwiki.apache.org/confluence/display/Hive/LLAP)) は、Azure HDInsight の[クラスターの一種](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types)です。 対話型クエリではインメモリ キャッシュがサポートされるため、Apache Hive クエリの速度と対話性が向上します。 顧客は、対話型クエリを使用して、Azure ストレージと Azure Data Lake Storage に格納されているデータに対するクエリを超高速で実行します。 対話型クエリにより、開発者およびデータ サイエンティストは、お気に入りの BI ツールを使用して容易にビッグ データを操作できるようになります。 HDInsight の対話型クエリは、簡単な方法でビッグ データにアクセスするためにいくつかのツールをサポートします。
+対話型クエリ (別名 Apache Hive LLAP または [Low Latency Analytical Processing](https://cwiki.apache.org/confluence/display/Hive/LLAP)) は、Azure HDInsight の[クラスターの一種](../hdinsight-hadoop-provision-linux-clusters.md#cluster-type)です。 対話型クエリではインメモリ キャッシュがサポートされるため、Apache Hive クエリの速度と対話性が向上します。 顧客は、対話型クエリを使用して、Azure ストレージと Azure Data Lake Storage に格納されているデータに対するクエリを超高速で実行します。 対話型クエリにより、開発者およびデータ サイエンティストは、お気に入りの BI ツールを使用して容易にビッグ データを操作できるようになります。 HDInsight の対話型クエリは、簡単な方法でビッグ データにアクセスするためにいくつかのツールをサポートします。
 
 [!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 
@@ -44,7 +44,7 @@ Hive クエリを実行するには、次のオプションがあります。
 
     [Data Lake Tools for Visual Studio を使用した Azure HDInsight への接続と Apache Hive クエリの実行](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-apache-hive-queries)に関するページをご覧ください。
 
-* Visual Studio Code を使用する
+* Visual Studio Code の使用
 
     [Apache Hive、LLAP、pySpark に Visual Studio Code を使用する](../hdinsight-for-vscode.md)方法に関する記事を参照してください。
 * Apache Ambari Hive ビューを使用して Apache Hive を実行する。
@@ -68,7 +68,7 @@ Java Database Connectivity (JDBC) 接続文字列は次の方法で調べるこ�
 
    ![HDInsight Hadoop 対話型クエリ LLAP JDBC](./media/apache-interactive-query-get-started/hdinsight-hadoop-use-interactive-hive-jdbc.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [HDInsight で対話型クエリ クラスターを作成する](../hdinsight-hadoop-provision-linux-clusters.md)方法を学ぶ。
 * [Azure HDInsight の Power BI でビッグ データを視覚化する](../hadoop/apache-hadoop-connect-hive-power-bi.md)方法を学ぶ。

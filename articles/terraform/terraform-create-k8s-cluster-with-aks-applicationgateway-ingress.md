@@ -3,12 +3,12 @@ title: チュートリアル - Azure Kubernetes Service で Application Gateway 
 description: Azure Kubernetes Service を使用してイングレス コントローラーとしての Application Gateway を備えた Kubernetes クラスターを作成する方法を示すチュートリアル
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: da9768c8b2ad854b116ef1b9eab801661f547bfa
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: b16b0a40d14ecde87b2637976299d05d37d706f3
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772868"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472266"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>チュートリアル:Azure Kubernetes Service で Application Gateway イングレス コントローラーを作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "76772868"
 
 - **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成してください。
 
-- **Terraform の構成**:[Terraform および Azure へのアクセスの構成](/azure/virtual-machines/linux/terraform-install-configure)に関する記事の指示に従ってください
+- **Terraform の構成**:[Terraform および Azure へのアクセスの構成](terraform-install-configure.md)に関する記事の指示に従ってください
 
 - **Azure リソース グループ**:デモに使用する Azure リソース グループがない場合は、[Azure リソース グループを作成してください](/azure/azure-resource-manager/manage-resource-groups-portal#create-resource-groups)。 リソース グループの名前と場所がデモで使用されるため、それらの値をメモしてください。
 

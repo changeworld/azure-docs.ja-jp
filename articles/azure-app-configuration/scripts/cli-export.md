@@ -15,12 +15,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 0cdefaa60c9e7a1aab418042c037ef76b63e7804
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c4fc8f1cd1159f296d37fd67634d1c3171f7d7a9
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898669"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468270"
 ---
 # <a name="export-from-an-azure-app-configuration-store"></a>Azure App Configuration ストアからのエクスポート
 
@@ -31,10 +31,6 @@ ms.locfileid: "76898669"
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
-
-最初に次のコマンドを実行して Azure App Configuration CLI の拡張機能をインストールする必要があります。
-
-        az extension add -n appconfig
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -53,7 +49,7 @@ az appconfig kv export --name myTestAppConfigStore --file ~/Export.json
 
 | command | Notes |
 |---|---|
-| [az appconfig kv export](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-export) | App Configuration ストア リソースからのエクスポートを行います。 |
+| [az appconfig kv export](/cli/azure/appconfig/kv#az-appconfig-kv-export) | App Configuration ストア リソースからのエクスポートを行います。 |
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: f8400cbefc514fa01dedb1434a60989b1df0528d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c15662409f9f5badf50765b78bce7dd71e9fb1bc
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980229"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367165"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>セッション ホスト仮想マシンの構成
 
@@ -26,7 +26,7 @@ Windows Virtual Desktop サービスに関して製品チームや活発なコ�
 
 VM をドメインに参加させることができない場合、次の指示に従ってください。
 
-- 「[Join a Windows Server virtual machine to a managed domain](https://docs.microsoft.com/azure/active-directory-domain-services/Active-directory-ds-admin-guide-join-windows-vm-portal)」(Windows Server 仮想マシンのマネージド ドメインへの参加) のプロセスを利用するか、[ドメイン参加テンプレート](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)を利用し、VM を手動で参加させます。
+- 「[Join a Windows Server virtual machine to a managed domain](../active-directory-domain-services/join-windows-vm.md)」(Windows Server 仮想マシンのマネージド ドメインへの参加) のプロセスを利用するか、[ドメイン参加テンプレート](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)を利用し、VM を手動で参加させます。
 - VM でコマンド ラインからドメイン名を ping してみます。
 - 「[Troubleshooting Domain Join Error Messages](https://social.technet.microsoft.com/wiki/contents/articles/1935.troubleshooting-domain-join-error-messages.aspx)」(ドメイン参加エラー メッセージのトラブルシューティング) でドメイン参加エラー メッセージの一覧を確認します。
 
@@ -37,7 +37,7 @@ VM をドメインに参加させることができない場合、次の指示�
 **解決策:** 解決するには、次のいずれかの操作を行ってください。
 
 - ドメインに VM を手動で追加します。
-- 資格情報が確認されたらテンプレートを再デプロイします。 「[PowerShell を使用してホスト プールを作成する](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)」を参照してください。
+- 資格情報が確認されたらテンプレートを再デプロイします。 「[PowerShell を使用してホスト プールを作成する](create-host-pools-powershell.md)」を参照してください。
 - 「[Joins an existing Windows VM to AD Domain](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)」 (既存の Windows VM を AD ドメインに参加させる) のテンプレートで VM をドメインに参加させます。
 
 ### <a name="error-timeout-waiting-for-user-input"></a>エラー:ユーザー入力の待機中にタイムアウトになりました
@@ -62,17 +62,17 @@ VM をドメインに参加させることができない場合、次の指示�
 
 **原因 1:** ドメインが置かれている仮想ネットワーク (VNET) に関連しない仮想ネットワークに VM が入っています。
 
-**解決策 1:** VM がプロビジョニングされた VNET と、ドメイン コントローラー (DC) が実行されている VNET の間に VNET ピアリングを作成します。 「[仮想ネットワーク ピアリングを作成する - Resource Manager、異なるサブスクリプション](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions)」を参照してください。
+**解決策 1:** VM がプロビジョニングされた VNET と、ドメイン コントローラー (DC) が実行されている VNET の間に VNET ピアリングを作成します。 「[仮想ネットワーク ピアリングを作成する - Resource Manager、異なるサブスクリプション](../virtual-network/create-peering-different-subscriptions.md)」を参照してください。
 
 **原因 2:** Azure Active Directory Domain Services (Azure AD DS) を使用する場合、仮想ネットワークの DNS サーバーの設定が、管理対象のドメイン コントローラーを指すように更新されません。
 
-**解決策 2:** Azure AD DS を含む仮想ネットワークの DNS 設定を更新するには、「[Azure 仮想ネットワークの DNS 設定を更新する](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance#update-dns-settings-for-the-azure-virtual-network)」を参照してください。
+**解決策 2:** Azure AD DS を含む仮想ネットワークの DNS 設定を更新するには、「[Azure 仮想ネットワークの DNS 設定を更新する](../active-directory-domain-services/tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network)」を参照してください。
 
 **原因 3:** ネットワーク インターフェイスの DNS サーバー設定が、仮想ネットワーク上の適切な DNS サーバーを指していません。
 
 **解決策 3:** 次のいずれかの操作を実行して、[DNS サーバーの変更] の手順に従って解決します。
-- [[DNS サーバーの変更]](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers) の手順に従って、ネットワーク インターフェイスの DNS サーバー設定を **[カスタム]** に変更し、仮想ネットワーク上の DNS サーバーのプライベート IP アドレスを指定します。
-- [[DNS サーバーの変更]](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers) の手順に従って、ネットワーク インターフェイスの DNS サーバー設定を **[仮想ネットワークから継承する]** に変更し、その後、[[DNS サーバーの変更]](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network#change-dns-servers) の手順に従って、仮想ネットワークの DNS サーバーの設定を変更します。
+- [[DNS サーバーの変更]](../virtual-network/virtual-network-network-interface.md#change-dns-servers) の手順に従って、ネットワーク インターフェイスの DNS サーバー設定を **[カスタム]** に変更し、仮想ネットワーク上の DNS サーバーのプライベート IP アドレスを指定します。
+- [[DNS サーバーの変更]](../virtual-network/virtual-network-network-interface.md#change-dns-servers) の手順に従って、ネットワーク インターフェイスの DNS サーバー設定を **[仮想ネットワークから継承する]** に変更し、その後、[[DNS サーバーの変更]](../virtual-network/manage-virtual-network.md#change-dns-servers) の手順に従って、仮想ネットワークの DNS サーバーの設定を変更します。
 
 ## <a name="windows-virtual-desktop-agent-and-windows-virtual-desktop-boot-loader-are-not-installed"></a>Windows Virtual Desktop Agent と Windows Virtual Desktop Boot Loader がインストールされていません
 
@@ -88,7 +88,7 @@ VM の推奨プロビジョニング方法は、Azure Resource Manager の「**C
 
 **原因 1:** Azure Resource Manager テンプレートに入力中に指定された資格情報が間違っているか、アクセス許可が足りません。
 
-**解決策 1:** 「[PowerShell を使用してホスト プールを作成する](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)」の手順で VM に足りないコンポーネントを手動追加します。
+**解決策 1:** 「[PowerShell を使用してホスト プールを作成する](create-host-pools-powershell.md)」の手順で VM に足りないコンポーネントを手動追加します。
 
 **原因 2:** PowerShell DSC は起動し、実行できましたが、Windows Virtual Desktop にサインインして必要な情報を得ることができないため、実行を完了できませんでした。
 
@@ -147,7 +147,7 @@ VM の推奨プロビジョニング方法は、Azure Resource Manager の「**C
 
 **解決策 2:** 次の手順でポート 443 を開きます。
 
-1. [Sysinternal ツール](https://docs.microsoft.com/sysinternals/downloads/psping)から PSPing ツールをダウンロードし、ポート 443 が開いていることを確認します。
+1. [Sysinternal ツール](/sysinternals/downloads/psping/)から PSPing ツールをダウンロードし、ポート 443 が開いていることを確認します。
 2. エージェントが実行されているセッション ホスト VM に PSPing をインストールします。
 3. 管理者としてコマンド プロンプトを開き、下のコマンドを実行します。
 
@@ -189,7 +189,7 @@ Windows Virtual Desktop サイドバイサイド スタックに問題がある�
 
 ![サイドバイサイド スタックは、出力に rdp-sxs として記載されている qwinsta でインストールされ、有効化されました。](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-下に記載されているレジストリ エントリを調べ、その値が一致することを確認します。 レジストリ キーがないか、値が一致しない場合、「[PowerShell を使用してホスト プールを作成する](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)」にあるサイドバイサイド スタックの再インストール方法を実行してください。
+下に記載されているレジストリ エントリを調べ、その値が一致することを確認します。 レジストリ キーがないか、値が一致しない場合、「[PowerShell を使用してホスト プールを作成する](create-host-pools-powershell.md)」にあるサイドバイサイド スタックの再インストール方法を実行してください。
 
 ```registry
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal
@@ -208,13 +208,13 @@ Windows Virtual Desktop サイドバイサイド スタックに問題がある�
 **解決策:** 次の手順で、セッション ホスト VM にサイドバイサイド スタックをインストールします。
 
 1. リモート デスクトップ プロトコル (RDP) を使用し、ローカル管理者としてセッション ホスト VM に直接入ります。
-2. まだ行っていない場合は、ご自分の PowerShell セッション内で使用する [Windows Virtual Desktop PowerShell モジュール](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)をダウンロードしてインポートし、次のコマンドレットを実行してご自分のアカウントにサインインします。
+2. まだ行っていない場合は、ご自分の PowerShell セッション内で使用する [Windows Virtual Desktop PowerShell モジュール](/powershell/windows-virtual-desktop/overview/)をダウンロードしてインポートし、次のコマンドレットを実行してご自分のアカウントにサインインします。
 
     ```powershell
     Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
     ```
 
-3. 「[PowerShell を使用してホスト プールを作成する](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)」を参照してサイドバイサイド スタックをインストールします。
+3. 「[PowerShell を使用してホスト プールを作成する](create-host-pools-powershell.md)」を参照してサイドバイサイド スタックをインストールします。
 
 ## <a name="how-to-fix-a-windows-virtual-desktop-side-by-side-stack-that-malfunctions"></a>誤作動する Windows Virtual Desktop サイドバイサイド スタックの修正方法
 
@@ -226,7 +226,7 @@ Windows Virtual Desktop サイドバイサイド スタックに問題がある�
 - enablesxsstackrc.ps1 を複数回実行
 - ローカル管理特権のないアカウントで enablesxsstackrc.ps1 を実行
 
-このセクションの手順は、Windows Virtual Desktop サイドバイサイド スタックをアンインストールする際に参考になります。 サイドバイサイド スタックをアンインストールしたら、「[PowerShell を使用してホスト プールを作成する](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)」の「Windows Virtual Desktop ホスト プールに VM を登録する」に進み、サイドバイサイド スタックを再インストールします。
+このセクションの手順は、Windows Virtual Desktop サイドバイサイド スタックをアンインストールする際に参考になります。 サイドバイサイド スタックをアンインストールしたら、「[PowerShell を使用してホスト プールを作成する](create-host-pools-powershell.md)」の「Windows Virtual Desktop ホスト プールに VM を登録する」に進み、サイドバイサイド スタックを再インストールします。
 
 修復に使用される VM は、誤作動するサイドバイサイド スタックがある VM と同じサブネットならびにドメインに置かれている必要があります。
 
@@ -305,7 +305,7 @@ Windows Virtual Desktop サイドバイサイド スタックに問題がある�
 これらのメッセージのいずれかが表示された場合は、イメージに最新の Windows 更新プログラムがインストールされていないか、グループ ポリシーでリモート デスクトップ ライセンス モードを設定していることを意味します。 次のセクションの手順に従って、グループ ポリシーの設定を確認し、Windows 10 Enterprise マルチセッションのバージョンを特定して、対応する更新プログラムをインストールしてください。  
 
 >[!NOTE]
->Windows Virtual Desktop では、ホスト プールに Windows Server セッション ホストが含まれている場合は、RDS クライアント アクセス ライセンス (CAL) のみが必要です。 RDS CAL を構成する方法については、「[クライアント アクセス ライセンス (CAL) を使用して RDS 展開をライセンスする](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-client-access-license)」を参照してください。
+>Windows Virtual Desktop では、ホスト プールに Windows Server セッション ホストが含まれている場合は、RDS クライアント アクセス ライセンス (CAL) のみが必要です。 RDS CAL を構成する方法については、「[クライアント アクセス ライセンス (CAL) を使用して RDS 展開をライセンスする](/windows-server/remote/remote-desktop-services/rds-client-access-license/)」を参照してください。
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>リモート デスクトップ ライセンス モードのグループ ポリシーの設定を無効にする
 
@@ -340,7 +340,7 @@ Azure ギャラリーから、最新バージョンの Windows 10 バージョ�
 - Windows Virtual Desktop トラブルシューティングの概要とエスカレーション トラックについては、「[トラブルシューティングの概要、フィードバック、サポート](troubleshoot-set-up-overview.md)」を参照してください。
 - Windows Virtual Desktop 環境でテナント/ホスト プールを作成しているときに発生した問題を解決するには、「[Tenant and host pool creation](troubleshoot-set-up-issues.md)」 (テナントとホスト プールの作成) を参照してください。
 - Windows Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、[Session host virtual machine configuration (セッション ホスト仮想マシンの構成)](troubleshoot-vm-configuration.md) に関する記事を参照してください。
-- Windows Virtual Desktop クライアント接続の問題をトラブルシューティングするには、[Windows Virtual Desktop サービス接続](troubleshoot-service-connection.md) に関するページを参照してください。
+- Windows Virtual Desktop クライアント接続の問題をトラブルシューティングするには、[Windows Virtual Desktop サービスの接続](troubleshoot-service-connection.md)に関するページを参照してください。
 - リモート デスクトップ クライアントの問題をトラブルシューティングするには、[リモート デスクトップ クライアントのトラブルシューティング](troubleshoot-client.md) に関するページを参照してください
 - Windows Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Windows Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照してください。
 - サービスの詳細については、[Windows Virtual Desktop 環境](environment-setup.md)に関するページを参照してください。

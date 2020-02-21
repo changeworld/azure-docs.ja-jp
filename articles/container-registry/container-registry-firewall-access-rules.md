@@ -2,13 +2,13 @@
 title: ファイアウォール アクセス規則
 description: ファイアウォールの内側から Azure コンテナー レジストリにアクセスする規則を構成します。これには、("ホワイトリスト登録") REST API およびストレージ エンドポイントのドメイン名またはサービス固有の IP アドレス範囲へのアクセスを許可します。
 ms.topic: article
-ms.date: 07/17/2019
-ms.openlocfilehash: 4d3c4ff4ca19d8b563c185e5c314011823081df1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/11/2020
+ms.openlocfilehash: 06fedea2adf5e73929f5752279f2bd7e7227e570
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745206"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168012"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>ファイアウォールの内側から Azure コンテナー レジストリにアクセスする規則を構成する
 
@@ -115,6 +115,10 @@ ms.locfileid: "75745206"
 Azure 仮想ネットワークでは、ネットワーク セキュリティ規則を使用して、仮想マシンなどのリソースからコンテナー レジストリへのトラフィックをフィルター処理します。 Azure ネットワーク規則の作成を簡略化するには、**AzureContainerRegistry** の[サービス タグ](../virtual-network/security-overview.md#service-tags)を使用します。 サービス タグは、グローバルまたは Azure リージョンごとに Azure サービスにアクセスするための IP アドレス プレフィックスのグループを表します。 アドレスが変更されると、タグは自動的に更新されます。 
 
 たとえば、Azure コンテナー レジストリへのトラフィックを許可するために、宛先が **AzureContainerRegistry** の送信ネットワーク セキュリティ グループの規則を作成します。 特定のリージョンでのみサービス タグへのアクセスを許可するには、次の形式でリージョンを指定します。**AzureContainerRegistry**.[*リージョン名*]
+
+## <a name="configure-client-firewall-rules-for-mcr"></a>MCR 用のクライアント ファイアウォール規則を構成する
+
+ファイアウォールの内側から Microsoft Container Registry (MCR) にアクセスする必要がある場合は、[MCR クライアント ファイアウォール規則](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md)を構成するためのガイダンスを参照してください。 MCR は、Microsoft が公開しているすべての docker イメージ (Windows Server イメージなど) のプライマリ レジストリです。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -2,14 +2,14 @@
 title: Azure Blockchain Service のブロックチェーン データ マネージャーとは
 description: ブロックチェーン データのキャプチャ、変換、および Event Grid トピックへの配信を行うブロックチェーン データ マネージャー。
 ms.date: 11/04/2019
-ms.topic: overview
+ms.topic: conceptual
 ms.reviewer: chroyal
-ms.openlocfilehash: 6583a99ef6efaefa732178d0228708cea82365b1
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 78c93880007259267b26cf53e93de722be1c7323
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326211"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209445"
 ---
 # <a name="what-is-blockchain-data-manager-for-azure-blockchain-service"></a>Azure Blockchain Service のブロックチェーン データ マネージャーとは
 
@@ -41,6 +41,6 @@ ms.locfileid: "74326211"
 * Azure Blockchain Service トランザクション ノードごとに 1 つのブロックチェーン データ マネージャー インスタンス。 たとえば、プライベート トランザクション ノードは、機密性を保持するために、独自のブロックチェーン データ マネージャー インスタンスを持つことができます。
 * ブロックチェーン データ マネージャー インスタンスでは、複数の出力接続をサポートできます。 1 つのブロックチェーン データ マネージャー インスタンスを使用して、1 つの Azure Blockchain Service メンバーのデータ発行統合ポイントをすべて管理できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Blockchain Service メンバーの[ブロックチェーン データ マネージャー インスタンスを作成](data-manager-portal.md)してみましょう。

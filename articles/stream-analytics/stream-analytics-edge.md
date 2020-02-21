@@ -6,14 +6,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 02/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: ff2a7e571c771a73c46959f35e341d861533bb55
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7e4a1cf43931b56cfdb3c31ffe870a07dbaa75af
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426330"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201757"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics on IoT Edge
  
@@ -44,7 +44,7 @@ ASA では、IoT ハブを使用してエッジ ジョブをデバイスに展�
 ### <a name="installation-instructions"></a>インストール手順
 手順の概要を次の表に示します。 詳細については、以降のセクションを参照してください。
 
-|      |手順   | メモ   |
+|      |手順   | Notes   |
 | ---   | ---   |  ---      |
 | 1   | **ストレージ コンテナーを作成する**   | ストレージ コンテナーを使用してジョブ定義を保存します。コンテナーには、IoT デバイスからアクセスできます。 <br>  既存のストレージ コンテナーを再利用できます。     |
 | 2   | **ASA エッジ ジョブを作成する**   |  新しいジョブを作成し、**ホスティング環境**として **Edge** を選択します。 <br> このジョブはクラウドから作成および管理され、お使いの IoT Edge デバイスで実行されます。     |
@@ -206,19 +206,19 @@ IoT Edge の更新プログラム上の参照データは、デプロイによ�
 
 このバージョン情報は、2019 年 6 月 27 日に最終更新が行われました。
 
-- イメージ: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-amd64`
+- イメージ: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-linux-amd64`
    - 基本イメージ: microsoft/dotnet:2.1.6-runtime-alpine3.7
    - プラットフォーム:
       - アーキテクチャ: amd64
       - OS: linux
   
-- イメージ: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-arm32v7`
+- イメージ: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-linux-arm32v7`
    - 基本イメージ: microsoft/dotnet:2.1.6-runtime-bionic-arm32v7
    - プラットフォーム:
       - アーキテクチャ: arm
       - OS: linux
   
-- イメージ: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-windows-amd64`
+- イメージ: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-windows-amd64`
    - 基本イメージ: microsoft/dotnet:2.1.6-runtime-nanoserver-1809
    - プラットフォーム:
       - アーキテクチャ: amd64

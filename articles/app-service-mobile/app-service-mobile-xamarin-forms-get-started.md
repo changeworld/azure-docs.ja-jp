@@ -6,21 +6,16 @@ ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.openlocfilehash: 69a9b3294bf080f7ae1516b0acbfc4be077518f4
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 9ae97ccbcc358a150e914a6e950579a972fef0bc
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668666"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461336"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>Azure での Xamarin.Forms アプリの作成
 
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
-
-> [!NOTE]
-> Visual Studio App Center は、モバイル アプリ開発の中心となるエンドツーエンドの統合サービスをサポートしています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーと関わることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。
->
-> モバイル アプリケーションにクラウド サービスを統合することを検討している場合は、今すぐ [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) にサインアップしてください。
 
 ## <a name="overview"></a>概要
 このチュートリアルでは、Azure App Service の Mobile Apps 機能をバックエンドとして使用して、Xamarin.Forms モバイル アプリにクラウドベースのバックエンド サービスを追加する方法を示します。 新しい Mobile Apps バックエンドと、アプリのデータを Azure に格納する簡単な To Do リスト Xamarin.Forms アプリの両方を作成します。
@@ -31,7 +26,7 @@ Xamarin.Forms の他のすべての Azure Mobile Apps のチュートリアル�
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料モバイル アプリを入手できます。 このアプリは評価終了後も使用できます。 詳細については、[Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 このアプリは評価終了後も使用できます。 詳細については、[Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
 * Visual Studio 2017 以降または Visual Studio for Mac に含まれる Visual Studio Tools for Xamarin。 手順については、[Xamarin のインストール ページ][Install Xamarin]を参照してください。
 
@@ -67,7 +62,7 @@ Xamarin.Forms の他のすべての Azure Mobile Apps のチュートリアル�
 
 このセクションでは、Xamarin.Android プロジェクトを実行します。 Android デバイスを使用していない場合は、このセクションを省略できます。
 
-### <a name="visual-studio"></a>Visual Studio
+### <a name="visual-studio"></a>Visual Studio
 
 1. Android (Droid) プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。
 
@@ -97,7 +92,7 @@ Xamarin.Forms の他のすべての Azure Mobile Apps のチュートリアル�
 
 このセクションでは、iOS デバイス用の Xamarin.iOS プロジェクトを実行します。 iOS デバイスを使用していない場合は、このセクションを省略できます。
 
-### <a name="visual-studio"></a>Visual Studio
+### <a name="visual-studio"></a>Visual Studio
 
 1. iOS プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。
 
@@ -127,7 +122,7 @@ Xamarin.Forms の他のすべての Azure Mobile Apps のチュートリアル�
 
 このセクションでは、Windows デバイス用の Xamarin.Forms Universal Windows Platform (UWP) プロジェクトを実行します。 Windows デバイスを使用していない場合は、このセクションを省略できます。
 
-### <a name="visual-studio"></a>Visual Studio
+### <a name="visual-studio"></a>Visual Studio
 
 1. UWP プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。
 

@@ -16,19 +16,19 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67cfe5a26740837508ea3a3e76295a896c3cc107
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 988efc2087b3b30e6073bd7f6e2cf08f91fd397c
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670918"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77060492"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>チュートリアル:Samanage を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、Samanage に対するユーザーとグループのプロビジョニングとプロビジョニング解除を自動的に実行するように Azure AD を構成するために、Samanage と Azure Active Directory (Azure AD) で実行する手順を示します。
 
 > [!NOTE]
-> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービス上に構築されるコネクタについて説明します。 このサービスで実行されること、しくみ、およびよく寄せられるについては、「[Azure Active Directory によるサービスとしてのソフトウェア (SaaS) アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。
+> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービス上に構築されるコネクタについて説明します。 このサービスで実行されること、しくみ、およびよく寄せられるについては、「[Azure Active Directory によるサービスとしてのソフトウェア (SaaS) アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -86,7 +86,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="configure-automatic-user-provisioning-for-samanage-in-azure-ad"></a>Azure AD で Samanage の自動ユーザー プロビジョニングを構成する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]**  >  **[Samanage]** の順に選択します。
+1. [Azure portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]**  >  **[Samanage]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -100,51 +100,45 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![Samanage のプロビジョニング モード](./media/samanage-provisioning-tutorial/ProvisioningCredentials.png)
+    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションに、Samanage アカウントの管理ユーザー名と管理パスワードを入力します。 これらの値の例を次に示します。
+5. **[管理者資格情報]** セクションで、Samanage の **[テナントの URL]** と **[シークレット トークン]** を入力します。 **[接続テスト]** をクリックして、Azure AD から Samanage に接続できることを確認します。 接続できない場合は、使用中の Samanage アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
-   * **[管理ユーザー名]** ボックスに、Samanage テナントの管理者アカウントのユーザー名を入力します。 例: admin@contoso.com。
+    ![Samanage のテスト接続](./media/samanage-provisioning-tutorial/provisioning.png)
 
-   * **[管理パスワード]** ボックスに、管理者ユーザー名に対応する管理者アカウントのパスワードを入力します。
-
-6. 手順 5 に示されているボックスに入力したら、 **[テスト接続]** を選択して、Azure AD が Samanage に接続できることを確認します。 接続できない場合は、使用中の Samanage アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
-
-    ![Samanage のテスト接続](./media/samanage-provisioning-tutorial/TestConnection.png)
-
-7. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループのメール アドレスを入力します。 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
+6. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループのメール アドレスを入力します。 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
     ![Samanage の通知メール](./media/samanage-provisioning-tutorial/EmailNotification.png)
 
-8. **[保存]** を選択します。
+7. **[保存]** を選択します。
 
-9. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Samanage]\(Azure Active Directory ユーザーを Samanage に同期する\)** を選びます。
+8. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Samanage]\(Azure Active Directory ユーザーを Samanage に同期する\)** を選びます。
 
     ![Samanage のユーザー同期](./media/samanage-provisioning-tutorial/UserMappings.png)
 
-10. **[属性マッピング]** セクションで、Azure AD から Samanage に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Samanage のユーザー アカウントとの照合に使用されます。 すべての変更を保存するために、 **[保存]** を選択します。
+9. **[属性マッピング]** セクションで、Azure AD から Samanage に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Samanage のユーザー アカウントとの照合に使用されます。 すべての変更を保存するために、 **[保存]** を選択します。
 
     ![Samanage の一致するユーザー属性](./media/samanage-provisioning-tutorial/UserAttributeMapping.png)
 
-11. グループ マッピングを有効にするには、 **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to Samanage]\(Azure Active Directory グループを Samanage に同期する\)** を選択します。
+10. グループ マッピングを有効にするには、 **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to Samanage]\(Azure Active Directory グループを Samanage に同期する\)** を選択します。
 
     ![Samanage のグループ同期](./media/samanage-provisioning-tutorial/GroupMappings.png)
 
-12. **[有効化]** を **[はい]** に設定して、グループを同期します。 **[属性マッピング]** セクションで、Azure AD から Samanage に同期されるグループ属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Samanage のユーザー アカウントとの照合に使用されます。 すべての変更を保存するために、 **[保存]** を選択します。
+11. **[有効化]** を **[はい]** に設定して、グループを同期します。 **[属性マッピング]** セクションで、Azure AD から Samanage に同期されるグループ属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Samanage のユーザー アカウントとの照合に使用されます。 すべての変更を保存するために、 **[保存]** を選択します。
 
     ![Samanage の一致するグループ属性](./media/samanage-provisioning-tutorial/GroupAttributeMapping.png)
 
-13. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の手順を参照してください。
+13. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の手順を参照してください。
 
-14. Samanage に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+13. Samanage に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
     ![Samanage のプロビジョニング状態](./media/samanage-provisioning-tutorial/ProvisioningStatus.png)
 
-15. Samanage にプロビジョニングするユーザーまたはグループを定義します。 **[設定]** セクションで、 **[スコープ]** として指定する値を選択します。 **[すべてのユーザーとグループを同期する]** オプションを選択するときは、「コネクタの制限事項」セクションの説明に従って制限事項を検討します。
+14. Samanage にプロビジョニングするユーザーまたはグループを定義します。 **[設定]** セクションで、 **[スコープ]** として指定する値を選択します。 **[すべてのユーザーとグループを同期する]** オプションを選択するときは、「コネクタの制限事項」セクションの説明に従って制限事項を検討します。
 
     ![Samanage の [スコープ]](./media/samanage-provisioning-tutorial/ScopeSync.png)
 
-16. プロビジョニングの準備ができたら、 **[保存]** を選択します。
+15. プロビジョニングの準備ができたら、 **[保存]** を選択します。
 
     ![Samanage の [保存]](./media/samanage-provisioning-tutorial/SaveProvisioning.png)
 
@@ -153,7 +147,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 **[同期の詳細]** セクションを使用して進行状況を監視し、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。 このレポートには、Azure AD プロビジョニング サービスによって Samanage で実行されたすべてのアクションが記述されます。
 
-Azure AD プロビジョニング ログの見方について詳しくは、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」を参照してください。
+Azure AD プロビジョニング ログの見方について詳しくは、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」を参照してください。
 
 ## <a name="connector-limitations"></a>コネクタの制限事項
 
@@ -163,13 +157,13 @@ Azure AD プロビジョニング ログの見方について詳しくは、「[
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)
+* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/samanage-provisioning-tutorial/tutorial_general_01.png

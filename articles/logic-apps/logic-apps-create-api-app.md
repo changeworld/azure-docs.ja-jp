@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 05/26/2017
-ms.openlocfilehash: e4200d09a02da1fd95f9bf5051b7f9d5fca5aa98
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: bb6c99ea12e5b53631d42a04b36b7bfef2337e42
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793213"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191446"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Azure Logic Apps から呼び出しできるカスタム API の作成
 
@@ -32,7 +32,7 @@ API は [Azure App Service](../app-service/overview.md) でホストできます
 > 
 > * [ASP.NET](../app-service/app-service-web-get-started-dotnet.md)。 
 > * [Java](../app-service/app-service-web-get-started-java.md)
-> * [Node.JS](../app-service/app-service-web-get-started-nodejs.md)
+> * [Node.js](../app-service/app-service-web-get-started-nodejs.md)
 > * [PHP](../app-service/app-service-web-get-started-php.md)
 > * [Python](../app-service/containers/quickstart-python.md)
 > * [Ruby](../app-service/containers/quickstart-ruby.md)
@@ -102,7 +102,7 @@ API が従う手順を API の観点から説明すると次のようになり�
    
    * *必須*:ロジック アプリ エンジンが API のジョブの状態を確認できる URL の絶対パスを指定する `location` ヘッダー
 
-   * *省略可能*: 待機時間を秒単位で指定する `retry-after` ヘッダー。この時間が経過しないとエンジンは `location` URL にジョブの状態を確認できません。 
+   * *省略可能*:待機時間を秒単位で指定する `retry-after` ヘッダー。この時間が経過しないとエンジンは `location` URL にジョブの状態を確認できません。 
 
      既定では、エンジンは 20 秒ごとに確認します。 別の時間間隔を指定するには、`retry-after` ヘッダーと次のポーリングまでの秒数を追加します。
 
@@ -206,9 +206,9 @@ webhook トリガーはこのトピックの前半で説明した [webhook ア�
 > [!TIP]
 > webhook パターンのサンプルについては、[ここ](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)で GitHub の webhook トリガー コントローラー サンプルを参照してください。
 
-## <a name="secure-calls-to-your-apis-from-logic-apps"></a>ロジック アプリからの API の呼び出しのセキュリティ保護
+## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>ロジック アプリからの API の呼び出しのセキュリティを強化する
 
-カスタム API を作成した後、ロジック アプリから安全に呼び出すことができるように API の認証を設定します。 [ロジック アプリからカスタム API の呼び出しをセキュリティで保護する方法](../logic-apps/logic-apps-custom-api-authentication.md)について確認してください。
+カスタム API を作成した後、ロジック アプリから安全に呼び出すことができるように API の認証を設定します。 [ロジック アプリからのカスタム API の呼び出しのセキュリティを強化する方法](../logic-apps/logic-apps-custom-api-authentication.md)について説明します。
 
 ## <a name="deploy-and-call-your-apis"></a>API をデプロイして呼び出す
 
@@ -228,7 +228,7 @@ Logic Apps、Power Automate、および Microsoft Power Apps のすべてのユ�
 
 * [Logic Apps ユーザー フィードバック サイト](https://aka.ms/logicapps-wish)でアイデアへの投票やアイデアの投稿を行って、Logic Apps の改善にご協力ください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [エラーと例外を処理する](../logic-apps/logic-apps-exception-handling.md)
 * [HTTP エンドポイントでロジック アプリを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)

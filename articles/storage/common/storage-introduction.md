@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/20/2019
+ms.date: 01/16/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 4725329ace12a2bfb285253c52249f242da31619
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ddd4f45e88c0bcc63fb62cc816fae4dbad255841
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970207"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157586"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure Storage の概要
 
@@ -120,11 +120,9 @@ Azure Storage のクライアント ライブラリには、クライアント �
 
 ## <a name="redundancy"></a>冗長性
 
-Azure Storage は、データの持続性を確保するために、データの複数のコピーをレプリケートします。 冗長性オプションは、ストレージ アカウントを設定するときに選択します。
+Azure Storage は、データの持続性を確保するために、データの複数のコピーを保管します。 冗長性オプションは、ストレージ アカウントを設定するときに選択します。
 
 [!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
-
-ディザスター リカバリーの詳細については、「[Azure Storage の停止が発生した場合の対処方法](storage-disaster-recovery-guidance.md)」を参照してください。
 
 ## <a name="transferring-data-to-and-from-azure-storage"></a>Azure Storage との間のデータ転送
 

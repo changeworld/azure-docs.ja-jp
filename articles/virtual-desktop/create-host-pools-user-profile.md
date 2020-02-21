@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: helohr
-ms.openlocfilehash: 65d800cc6c1b6818369807ffeae9cd350a34066f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: a6bc8546a4047e921d62953e39eaddf546f38229
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606988"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367444"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成する
 
@@ -27,13 +27,13 @@ Windows Virtual Desktop サービスでは、推奨されるユーザー プロ�
 
 仮想マシンを作成するときは、ホスト プール仮想マシンと同じ仮想ネットワーク、またはホスト プール仮想マシンに接続されている仮想ネットワークに配置してください。 仮想マシンは複数の方法で作成できます。
 
-- [Azure ギャラリー イメージから仮想マシンを作成する](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#create-virtual-machine)
-- [マネージド イメージから仮想マシンを作成する](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)
+- [Azure ギャラリー イメージから仮想マシンを作成する](../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
+- [マネージド イメージから仮想マシンを作成する](../virtual-machines/windows/create-vm-generalized-managed.md)
 - [アンマネージド イメージから仮想マシンを作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
 
 仮想マシンの作成後に、次の手順を実行してドメインに参加させます。
 
-1. 仮想マシンの作成時に指定した資格情報を使用して[仮想マシンに接続](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine)します。
+1. 仮想マシンの作成時に指定した資格情報を使用して[仮想マシンに接続](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine)します。
 2. 仮想マシン上で、 **[コントロール パネル]** を起動し、 **[システム]** を選択します。
 3. **[コンピューター名]** を選択し、 **[設定の変更]** を選択してから **[変更]** を選択します
 4. **[ドメイン]** を選択し、仮想ネットワーク上の Active Directory ドメインを入力します。
@@ -43,31 +43,31 @@ Windows Virtual Desktop サービスでは、推奨されるユーザー プロ�
 
 ユーザー プロファイルのファイル共有として機能する仮想マシンを準備する方法についての一般的な手順を次に示します。
 
-1. Windows Virtual Desktop の Active Directory ユーザーを [Active Directory セキュリティ グループ](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups)に追加します。 このセキュリティ グループは、先ほど作成したファイル共有仮想マシンに対して、Windows Virtual Desktop ユーザーを認証するために使用されます。
-2. [ファイル共有仮想マシンに接続します](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine)。
+1. Windows Virtual Desktop の Active Directory ユーザーを [Active Directory セキュリティ グループ](/windows/security/identity-protection/access-control/active-directory-security-groups/)に追加します。 このセキュリティ グループは、先ほど作成したファイル共有仮想マシンに対して、Windows Virtual Desktop ユーザーを認証するために使用されます。
+2. [ファイル共有仮想マシンに接続します](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine)。
 3. ファイル共有仮想マシン上で、プロファイル共有として使用するフォルダーを **C ドライブ**に作成します。
 4. 新しいフォルダーを右クリックし、 **[プロパティ]** 、 **[共有]** 、 **[詳細な共有]** を選択します。
 5. **[このフォルダーを共有する]** を選択し、 **[アクセス許可]** を選択してから、 **[追加]** を選択します。
 6. Windows Virtual Desktop ユーザーを追加したセキュリティ グループを検索し、そのグループに**フル コントロール**があることを確認します。
 7. セキュリティ グループを追加した後、フォルダーを右クリックして **[プロパティ]** を選択し、 **[共有]** を選択して、後で使用するために **[ネットワーク パス]** をコピーしておきます。
 
-アクセス許可について詳しくは、[FSLogix のドキュメント](https://docs.microsoft.com/fslogix/fslogix-storage-config-ht)をご覧ください。
+アクセス許可について詳しくは、[FSLogix のドキュメント](/fslogix/fslogix-storage-config-ht/)をご覧ください。
 
 ## <a name="configure-the-fslogix-profile-container"></a>FSLogix プロファイル コンテナーを構成する
 
 FSLogix ソフトウェアで仮想マシンを構成するには、ホスト プールに登録される各マシンで、以下を実行します。
 
-1. 仮想マシンの作成時に指定した資格情報を使用して[仮想マシンに接続](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine)します。
+1. 仮想マシンの作成時に指定した資格情報を使用して[仮想マシンに接続](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine)します。
 2. インターネット ブラウザーを起動し、[このリンク](https://go.microsoft.com/fwlink/?linkid=2084562)に移動して FSLogix エージェントをダウンロードします。
-3. .zip ファイル内の \\\\Win32\\Release または \\\\X64\\Release のいずれかに移動し、**FSLogixAppsSetup** を実行して FSLogix エージェントをインストールします。  FSLogix のインストール方法の詳細については、「[Download and install FSLogix (FSLogix のダウンロードとインストール)](https://docs.microsoft.com/fslogix/install-ht)」を参照してください。
+3. .zip ファイル内の \\\\Win32\\Release または \\\\X64\\Release のいずれかに移動し、**FSLogixAppsSetup** を実行して FSLogix エージェントをインストールします。  FSLogix のインストール方法の詳細については、「[Download and install FSLogix (FSLogix のダウンロードとインストール)](/fslogix/install-ht/)」を参照してください。
 4. **Program Files** > **FSLogix** > **Apps** に移動して、インストールされているエージェントを確認します。
 5. スタート メニューから、**RegEdit** を管理者として実行します。 **Computer\\HKEY_LOCAL_MACHINE\\software\\FSLogix** に移動します。
 6. **Profiles** という名前のキーを作成します。
 7. Profiles キーに以下の値を作成します。
 
-| 名前                | 種類               | データ/値                        |
+| 名前                | Type               | データ/値                        |
 |---------------------|--------------------|-----------------------------------|
-| 有効             | DWORD              | 1                                 |
+| Enabled             | DWORD              | 1                                 |
 | VHDLocations        | 複数行文字列値 | "ファイル共有のネットワーク パス"     |
 
 >[!IMPORTANT]

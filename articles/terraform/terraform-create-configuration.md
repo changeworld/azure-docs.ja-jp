@@ -3,12 +3,12 @@ title: クイックスタート - Azure 用の Terraform 構成の作成
 description: Azure Cosmos DB と Azure Container Instances をデプロイして、Azure 上の Terraform の使用を開始します。
 ms.topic: quickstart
 ms.date: 10/26/2019
-ms.openlocfilehash: 47eec1f238d3fdff99b75953bc6d7e92137cca2d
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 92f66fcfeac69b66eb8cdb0dc58b7a3171d45e10
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159318"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470023"
 ---
 # <a name="quickstart-create-a-terraform-configuration-for-azure"></a>クイック スタート:Azure 用の Terraform 構成の作成
 
@@ -23,7 +23,7 @@ ms.locfileid: "74159318"
 
 このセクションでは、Azure Cosmos DB インスタンスの構成を作成します。
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 
 1. Azure Cloud Shell を開きます。
 
@@ -160,7 +160,7 @@ ms.locfileid: "74159318"
 
 ![Azure 投票アプリケーション](media/terraform-quickstart/azure-vote.jpg)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この記事で作成したリソースが不要になったら、削除してください。
 
@@ -170,7 +170,7 @@ ms.locfileid: "74159318"
 terraform destroy -auto-approve
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Azure リソースを作成するために Terraform をインストールして構成する](../virtual-machines/linux/terraform-install-configure.md)。
+> [Azure リソースを作成するために Terraform をインストールして構成する](terraform-install-configure.md)。

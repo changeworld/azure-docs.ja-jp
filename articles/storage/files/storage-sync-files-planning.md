@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d2dbe29c5a348363172f57da86483ccf3fd787f0
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 483603b8ff2f4b51f85d21d6ff4f02ad6f8a8272
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046086"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162091"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -122,7 +122,7 @@ CSV で結果を表示するには:
 
 ### <a name="file-system-features"></a>ファイル システムの機能
 
-| 機能 | サポートの状態 | メモ |
+| 機能 | サポートの状態 | Notes |
 |---------|----------------|-------|
 | アクセス制御リスト (ACL) | 完全にサポートされています | Windows ACL は、Azure File Sync に保持され、サーバー エンドポイント上の Windows Server によって適用されます。 クラウドでファイルに直接アクセスする場合、Azure Files は Windows ACL を (まだ) サポートしていません。 |
 | ハード リンク | スキップ | |
@@ -276,9 +276,9 @@ Azure File Sync は、次のリージョンでのみ利用できます。
 | 東南アジア | シンガポール |
 | 英国南部 | London |
 | 英国西部 | カーディフ |
-| 米国政府アリゾナ | アリゾナ |
-| 米国政府テキサス | テキサス |
-| 米国政府バージニア州 | バージニア州 |
+| US Gov アリゾナ | アリゾナ |
+| US Gov テキサス | テキサス |
+| US Gov バージニア州 | バージニア州 |
 | アラブ首長国連邦北部 | ドバイ |
 | アラブ首長国連邦中部* | アブダビ |
 | 西ヨーロッパ | オランダ |
@@ -291,7 +291,7 @@ Azure File Sync は、ストレージ同期サービスと同じリージョン�
 アスタリスクが付いているリージョンでは、Azure サポートに連絡して、これらのリージョンの Azure Storage へのアクセス権を要求する必要があります。 このプロセスについては、[このドキュメント](https://azure.microsoft.com/global-infrastructure/geographies/)で概説されています。
 
 ### <a name="azure-disaster-recovery"></a>Azure ディザスター リカバリー
-Azure リージョンの損失を防ぐため、Azure File Sync には [geo 冗長ストレージの冗長性](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS) オプションが統合されています。 GRS ストレージは、プライマリ リージョンのストレージ (通常、操作している) と、ペアのセカンダリ リージョンとの間でブロックの非同期レプリケーションを使用することで機能します。 Azure リージョンが一時的または永続的にオフラインになる障害が発生した場合、Microsoft はペアのリージョンにストレージをフェールオーバーします。 
+Azure リージョンの損失を防ぐため、Azure File Sync には [geo 冗長ストレージ](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS) が統合されています。 GRS ストレージは、プライマリ リージョンのストレージ (通常、操作している) と、ペアのセカンダリ リージョンとの間でブロックの非同期レプリケーションを使用することで機能します。 Azure リージョンが一時的または永続的にオフラインになる障害が発生した場合、Microsoft はペアのリージョンにストレージをフェールオーバーします。 
 
 > [!Warning]  
 > Azure ファイル共有を GRS ストレージ アカウントのクラウド エンドポイントとして使用している場合は、ストレージ アカウントのフェールオーバーを開始しないでください。 それを行うと、同期の動作が停止し、新しく階層化されたファイルの場合は予期せずデータが失われる可能性があります。 Azure リージョンが失われた場合は、Azure File Sync との互換性のある方法でストレージ アカウントのフェールオーバーがトリガーされます。
@@ -325,9 +325,9 @@ geo 冗長ストレージと Azure File Sync との間のフェールオーバ�
 | 東南アジア      | 東アジア          |
 | 英国南部            | 英国西部            |
 | 英国西部             | 英国南部           |
-| 米国政府アリゾナ      | 米国政府テキサス       |
-| US Gov アイオワ         | 米国政府バージニア州    |
-| 米国政府バージニア州      | 米国政府テキサス       |
+| US Gov アリゾナ      | US Gov テキサス       |
+| US Gov アイオワ         | US Gov バージニア州    |
+| US Gov バージニア州      | US Gov テキサス       |
 | 西ヨーロッパ         | 北ヨーロッパ       |
 | 米国中西部     | 米国西部 2          |
 | 米国西部             | East US            |

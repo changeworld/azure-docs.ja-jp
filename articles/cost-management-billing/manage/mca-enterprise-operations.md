@@ -2,22 +2,17 @@
 title: Microsoft 顧客契約における EA タスク - Azure
 description: 新しい課金アカウントでの Enterprise Agreement タスクを実行する方法について説明します。
 author: amberbhargava
-manager: amberb
-editor: banders
 tags: billing
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/04/2020
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 9fff39fd2fdf4b857e13f53f235eb95158d16ba9
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6fcc6f747084b609b1f2e2b9405a209676422ee7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025692"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200661"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約用の課金アカウントでの Enterprise Agreement タスクを実行する
 

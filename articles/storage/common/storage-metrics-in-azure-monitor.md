@@ -334,13 +334,13 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 
 ### <a name="account-level"></a>アカウント レベル
 
-| メトリックの名前 | [説明] |
+| メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
 | UsedCapacity | ストレージ アカウントによって使用されているストレージの量。 Standard ストレージ アカウントについては、Blob、Table、File、および Queue で使用される容量の合計です。 Premium ストレージ アカウントと BLOB ストレージ アカウントについては、BlobCapacity と同じです。 <br/><br/> 単位:バイト <br/> 集計の種類:Average <br/> 値の例:1024 |
 
 ### <a name="blob-storage"></a>BLOB ストレージ
 
-| メトリックの名前 | [説明] |
+| メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
 | BlobCapacity | ストレージ アカウントで使用されている Blob Storage の合計。 <br/><br/> 単位:バイト <br/> 集計の種類:Average <br/> 値の例:1024 <br/> 寸法: **BlobType**、および **BlobTier** ([定義](#metrics-dimensions)) |
 | BlobCount    | ストレージ アカウントに格納されている BLOB オブジェクトの数。 <br/><br/> 単位:Count <br/> 集計の種類:Average <br/> 値の例:1024 <br/> 寸法: **BlobType**、および **BlobTier** ([定義](#metrics-dimensions)) |
@@ -349,7 +349,7 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 
 ### <a name="table-storage"></a>テーブル ストレージ
 
-| メトリックの名前 | [説明] |
+| メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
 | TableCapacity | ストレージ アカウントによって使用されている Table Storage の量。 <br/><br/> 単位:バイト <br/> 集計の種類:Average <br/> 値の例:1024 |
 | TableCount   | ストレージ アカウントのテーブルの数。 <br/><br/> 単位:Count <br/> 集計の種類:Average <br/> 値の例:1024 |
@@ -357,7 +357,7 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 
 ### <a name="queue-storage"></a>ストレージ
 
-| メトリックの名前 | [説明] |
+| メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
 | QueueCapacity | ストレージ アカウントによって使用されている Queue ストレージの量。 <br/><br/> 単位:バイト <br/> 集計の種類:Average <br/> 値の例:1024 |
 | QueueCount   | ストレージ アカウントのキューの数。 <br/><br/> 単位:Count <br/> 集計の種類:Average <br/> 値の例:1024 |
@@ -365,7 +365,7 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 
 ### <a name="file-storage"></a>File Storage
 
-| メトリックの名前 | [説明] |
+| メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
 | FileCapacity | ストレージ アカウントによって使用されている File ストレージの量。 <br/><br/> 単位:バイト <br/> 集計の種類:Average <br/> 値の例:1024 |
 | FileCount   | ストレージ アカウントのファイルの数。 <br/><br/> 単位:Count <br/> 集計の種類:Average <br/> 値の例:1024 |
@@ -377,7 +377,7 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 
 Azure Storage は、Azure Monitor で次のトランザクション メトリックを提供します。
 
-| メトリックの名前 | [説明] |
+| メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
 | トランザクション | ストレージ サービスまたは指定された API 操作に対して行われた要求の数。 この数には、成功した要求と失敗した要求およびエラーが発生した要求が含まれます。 <br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> 適用可能なディメンション:ResponseType、GeoType、ApiName、Authentication ([定義](#metrics-dimensions))<br/> 値の例:1024 |
 | イングレス | イングレス データの量。 この値には、外部クライアントから Azure Storage へのイングレスおよび Azure 内でのイングレスが含まれます。 <br/><br/> 単位:バイト <br/> 集計の種類:合計 <br/> 適用可能なディメンション:GeoType、ApiName、Authentication ([定義](#metrics-dimensions)) <br/> 値の例:1024 |
@@ -390,7 +390,7 @@ Azure Storage は、Azure Monitor で次のトランザクション メトリッ
 
 Azure Storage では、Azure Monitor の次のメトリック ディメンションがサポートされます。
 
-| ディメンション名 | [説明] |
+| ディメンション名 | 説明 |
 | ------------------- | ----------------- |
 | **BlobType** | BLOB メトリックの BLOB の種類のみ。 サポートされる値は、**BlockBlob**、**PageBlob**、**Azure Data Lake Storage** です。 BlockBlob には Append Blob が含まれます。 |
 | **BlobTier** | Azure Storage からはさまざまなアクセス層が提供され、最もコスト効果の高い方法で BLOB オブジェクト データを格納できます。 詳細については、[Azure Storage の BLOB 層](../blobs/storage-blob-storage-tiers.md)に関する記事を参照してください。 サポートされる値は次のとおりです。 <br/> <li>**Hot**:ホット層</li> <li>**Cool**:クール層</li> <li>**アーカイブ**: アーカイブ層</li> <li>**Premium**:ブロック BLOB 用 Premium 層</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**:Premium ページ BLOB 用の層の種類</li> <li>**Standard**:Standard ページ BLOB 用の層の種類</li> <li>**Untiered**:汎用 v1 ストレージ アカウントの層の種類</li> |

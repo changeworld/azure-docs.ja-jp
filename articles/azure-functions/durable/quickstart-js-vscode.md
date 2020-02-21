@@ -5,12 +5,12 @@ author: ColbyTresness
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.reviewer: azfuncdf, cotresne
-ms.openlocfilehash: b0a1d1a9305f6de2a072ee1ded310d8de174436b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 431bd45763cbe24e44d47342b32c5c452a27b0f6
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845713"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210295"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>JavaScript で最初の Durable Functions を作成する
 
@@ -57,7 +57,7 @@ ms.locfileid: "76845713"
     | Select a version (バージョンを選択してください) | Azure Functions v2 | このオプションが表示されるのは、Core Tools がまだインストールされていない場合だけです。 その場合、アプリの初回実行時に Core Tools がインストールされます。 |
     | Select a template for your project's first function (プロジェクトの最初の関数のテンプレートを選択してください) | HTTP トリガー | 新しい関数アプリで HTTP トリガー関数を作成します。 |
     | Provide a function name (関数名を指定してください) | HttpTrigger | Enter キーを押して既定の名前を使用します。 |
-    | 承認レベル | Function | `function` 承認レベルでは、関数の HTTP エンドポイントを呼び出す際にアクセス キーの指定が必須となります。 これには、セキュリティで保護されていないエンドポイントへのアクセスを難しくする効果があります。 詳細については、「[承認キー](../functions-bindings-http-webhook.md#authorization-keys)」を参照してください。  |
+    | 承認レベル | Function | `function` 承認レベルでは、関数の HTTP エンドポイントを呼び出す際にアクセス キーの指定が必須となります。 これには、セキュリティで保護されていないエンドポイントへのアクセスを難しくする効果があります。 詳細については、「[承認キー](../functions-bindings-http-webhook-trigger.md#authorization-keys)」を参照してください。  |
     | Select how you would like to open your project (プロジェクトを開く方法を選択してください) | Add to workspace (ワークスペースに追加) | 現在のワークスペースに関数アプリを作成します。 |
 
 Azure Functions Core Tools は、必要に応じて Visual Studio Code によりインストールされます。 また、関数アプリ プロジェクトが新しいワークスペースに作成されます。 このプロジェクトには、[host.json](../functions-host-json.md) および [local.settings.json](../functions-run-local.md#local-settings-file) 構成ファイルが含まれています。 さらに、[function.json 定義ファイル](../functions-reference-node.md#folder-structure)と [index.js ファイル](../functions-reference-node.md#exporting-a-function) (関数コードを含む Node.js ファイル) の格納先となる HttpExample フォルダーも作成されます。

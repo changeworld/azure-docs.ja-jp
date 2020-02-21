@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/20/2019
+ms.date: 02/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1f560a7aa746ce7c6262dcaddf74c9d573332fa6
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 884244b245be06f1477d27a4828cad18e36eca24
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861389"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368623"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューの時系列モデル
 
@@ -97,7 +97,7 @@ Time Series Insights 環境に対してイベント ソースが構成される�
 
 インスタンスは、**timeSeriesId**、**typeId**、**name**、**description**、**hierarchyIds**、および **instanceFields** によって定義されます。 各インスタンスは、1 つのみの*型*、および 1 つ以上の*階層*にマップされます。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | ---|
 | timeSeriesId | インスタンスが関連付けられている時系列の UUID。 |
 | typeId | インスタンスが関連付けられているタイム シリーズ モデルの型の UUID。 既定では、検出されたすべての新しいインスタンスは既定の型に関連付けられます。
@@ -145,7 +145,7 @@ Time Series Insights 環境に対してイベント ソースが構成される�
 
 階層は、階層の **id**、**名前**、および **source** によって定義されます。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | ---| ---|
 | id | 階層の一意識別子。たとえば、インスタンスを定義するときに使用されます。 |
 | name | 階層の名前を指定するために使用される文字列。 |
@@ -237,7 +237,7 @@ Time Series Insights 環境に対してイベント ソースが構成される�
 
 タイム シリーズ モデルの型は、**id**、**名前**、**description**、および **variables** によって定義されます。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | ---| ---|
 | id | 型の UUID。 |
 | name | 型の名前を指定するために使用される文字列。 |
@@ -300,7 +300,7 @@ Time Series Insights 型には、イベントに対する式および計算ル�
 
 #### <a name="numeric-variables"></a>数値変数
 
-| 変数のプロパティ | [説明] |
+| 変数のプロパティ | 説明 |
 | --- | ---|
 | 変数のフィルター | フィルターは、計算対象として考慮する行の数を制限するための、オプションの条件付きの句です。 |
 | 変数の値 | デバイスまたはセンサーからの計算、またはタイム シリーズ式を使用して変換された計算に使用されるテレメトリ値。 数値の種類の変数は、*Double* 型である必要があります。|
@@ -330,7 +330,7 @@ Time Series Insights 型には、イベントに対する式および計算ル�
 
 #### <a name="categorical-variables"></a>カテゴリ別変数
 
-| 変数のプロパティ | [説明] |
+| 変数のプロパティ | 説明 |
 | --- | ---|
 | 変数のフィルター | フィルターは、計算対象として考慮する行の数を制限するための、オプションの条件付きの句です。 |
 | 変数の値 | デバイスまたはセンサーからの計算に使用されるテレメトリ値。 カテゴリ別の種類の変数は、*Long* または *String* である必要があります。 |
@@ -370,7 +370,7 @@ Time Series Insights 型には、イベントに対する式および計算ル�
 
 #### <a name="aggregate-variables"></a>集計変数
 
-| 変数のプロパティ | [説明] |
+| 変数のプロパティ | 説明 |
 | --- | ---|
 | 変数のフィルター | フィルターは、計算対象として考慮する行の数を制限するための、オプションの条件付きの句です。 |
 | 変数の集計 | *Avg*、*Min*、*Max*、*Sum*、*Count*、*First*、*Last*を使用した計算をサポートします。 |

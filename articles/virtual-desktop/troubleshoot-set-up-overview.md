@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 02/07/2020
 ms.author: helohr
-ms.openlocfilehash: dc4e4e271ac7108f4c29c82646e9849b9a5cd929
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 730d12625b134f411096b4b49641b79efb1a0d26
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110788"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368745"
 ---
 # <a name="troubleshooting-overview-feedback-and-support"></a>トラブルシューティングの概要、フィードバック、サポート
 
@@ -24,7 +24,7 @@ Windows Virtual Desktop サービスに関して製品チームや活発なコ�
 
 ## <a name="escalation-tracks"></a>エスカレーション トラック
 
-リモート デスクトップ クライアントを使用してテナント環境を設定しているときに発生することがある問題を特定し、解決するために次の表をご利用ください。 テナントが設定されたら、新しい[診断サービス](https://docs.microsoft.com/azure/virtual-desktop/diagnostics-role-service)を使用して、一般的なシナリオに関する問題を識別できます。
+リモート デスクトップ クライアントを使用してテナント環境を設定しているときに発生することがある問題を特定し、解決するために次の表をご利用ください。 テナントが設定されたら、新しい[診断サービス](diagnostics-role-service.md)を使用して、一般的なシナリオに関する問題を識別できます。
 
 >[!NOTE]
 > 弊社の Tech Community フォーラムにアクセスすると、製品チームやアクティブなコミュニティ メンバーと問題について話し合うことができます。 [Windows Virtual Desktop の Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) にアクセスして、話し合いを始めてください。
@@ -38,7 +38,7 @@ Windows Virtual Desktop サービスに関して製品チームや活発なコ�
 | Windows Virtual Desktop で提供される Azure Resource Manager テンプレートが使用されないときのセッション ホスト プール仮想マシン (VM) 作成 | [Azure サポート リクエストを開いて](https://azure.microsoft.com/support/create-ticket/)、サービスとして **[Windows を実行している仮想マシン]** を選択します。 <br> <br> Windows Virtual Desktop で提供される Azure Resource Manager テンプレートの問題については、「[テナントとホスト プールの作成](troubleshoot-set-up-issues.md)」の「Windows Virtual Desktop テナントの作成」セクションを参照してください。 |
 | Azure portal から Windows Virtual Desktop セッション ホスト環境を管理する    | [Azure サポート リクエストを開きます](https://azure.microsoft.com/support/create-ticket/)。 <br> <br> リモート デスクトップ サービスまたは Windows Virtual Desktop PowerShell を使用する際の管理上の問題については、「[Windows Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照するか、または、[Azure サポート リクエストを開き](https://azure.microsoft.com/support/create-ticket/)、サービスとして **[Windows Virtual Desktop]** を選択し、問題の種類として **[構成と管理]** を選択し、さらに問題のサブタイプとして **[Issues configuring tenant using PowerShell]\(PowerShell を使用してテナントを構成する際の問題\)** を選択してください。 |
 | ホスト プールとアプリケーション グループ (アプリ グループ) に関連付けられている Windows Virtual Desktop 構成を管理する      | 「[Windows Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照するか、または [Azure サポート リクエストを開き](https://azure.microsoft.com/support/create-ticket/)、サービスとして **[Windows Virtual Desktop]** を選択してから、該当する問題の種類を選択してください。|
-| FSLogix プロファイル コンテナーのデプロイと管理 | 「[FSLogix 製品のトラブルシューティング ガイド](https://docs.microsoft.com/fslogix/fslogix-trouble-shooting-ht)」を参照してください。それでも問題が解決しない場合は、[Azure サポート リクエストを開き](https://azure.microsoft.com/support/create-ticket/)、サービスとして **[Windows Virtual Desktop]** を選択し、問題の種類として **[FSLogix]** を選択してから、該当する問題のサブタイプを選択してください。 |
+| FSLogix プロファイル コンテナーのデプロイと管理 | 「[FSLogix 製品のトラブルシューティング ガイド](/fslogix/fslogix-trouble-shooting-ht/)」を参照してください。それでも問題が解決しない場合は、[Azure サポート リクエストを開き](https://azure.microsoft.com/support/create-ticket/)、サービスとして **[Windows Virtual Desktop]** を選択し、問題の種類として **[FSLogix]** を選択してから、該当する問題のサブタイプを選択してください。 |
 | 起動時のリモート デスクトップ クライアントの誤作動                                                 | 「[リモート デスクトップ クライアントのトラブルシューティング](troubleshoot-client.md)」を参照してください。それでも問題が解決しない場合は、[Azure サポート リクエストを開き](https://azure.microsoft.com/support/create-ticket/)、サービスとして **[Windows Virtual Desktop]** を選択してから、問題の種類として **[リモート デスクトップ クライアント]** を選択してください。  <br> <br> ネットワーク問題の場合、ユーザーはネットワーク管理者に問い合わせる必要があります。 |
 | 接続されたがフィードがない                                                                 | 「[Windows Virtual Desktop サービスの接続](troubleshoot-service-connection.md)」の「[ユーザーが接続しても何も表示されない (フィードなし)](troubleshoot-service-connection.md#user-connects-but-nothing-is-displayed-no-feed)」セクションに従ってトラブルシューティングを行います。 <br> <br> ユーザーがアプリ グループに割り当てられている場合は、[Azure サポート リクエストを開き](https://azure.microsoft.com/support/create-ticket/)、サービスとして **[Windows Virtual Desktop]** を選択してから、問題の種類として **[リモート デスクトップ クライアント]** を選択します。 |
 | ネットワークに起因するフィード検出問題                                            | ユーザーはネットワーク管理者に問い合わせる必要があります。 |

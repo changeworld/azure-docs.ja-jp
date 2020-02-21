@@ -3,12 +3,12 @@ title: リソースにデプロイ順序を設定する
 description: デプロイ時にリソースが正しい順序でデプロイされるように、あるリソースが別のリソースに依存するように設定する方法について説明します。
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: 44cf793859d2817695a58bd1159e2f4465c1f9c2
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: ffd6d6c65a1cbe9578b5f9162d29f3238e27ea71
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121966"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207691"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでのリソース デプロイ順序の定義
 
@@ -40,7 +40,7 @@ Resource Manager により、リソース間の依存関係が評価され、リ
 }
 ```
 
-前の例では、依存関係は **storageLoop** という名前のコピー ループを通じて作成されたリソースにのみ含まれます。 例が必要であれば、「 [Azure リソース マネージャーでリソースの複数のインスタンスを作成する](create-multiple-instances.md)」を参照してください。
+前の例では、依存関係は **storageLoop** という名前のコピー ループを通じて作成されたリソースにのみ含まれます。 例が必要であれば、「 [Azure リソース マネージャーでリソースの複数のインスタンスを作成する](copy-resources.md)」を参照してください。
 
 依存関係を定義するときに、あいまいにならないように、リソースプロバイダーの名前空間とリソースの種類を含めることができます。 たとえば、他のリソースと同じ名前を持つロード バランサーと仮想ネットワークを明確にするには、次の形式を使用します。
 

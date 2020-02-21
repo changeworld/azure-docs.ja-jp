@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: e39056d6ed1ced85e3f953bcbd7f04dd6311942c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: a87bdd7a55036e8b70f0bc5816d2b587c1569202
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111650"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168135"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Speech Devices SDK のマイク配列の推奨事項
 
@@ -50,7 +50,7 @@ Microsoft Audio Stack で使用するために、次の配列のジオメトリ�
 | Bit Rate (ビット レート) | 最小 24 ビット |
 | サンプリング レート | 最小 16 kHz\* |
 | Frequency Response (周波数応答) | ± 3 dB、200 - 8000 Hz フローティング マスク\* |
-| 信頼性 | 保存温度範囲 -40°C から 70°C<br />動作温度範囲 -20°C から 55°C |
+| [信頼性] | 保存温度範囲 -40°C から 70°C<br />動作温度範囲 -20°C から 55°C |
 
 \*_高品質なコミュニケーション (VoIP) アプリケーションには、より高いサンプリング レート、または "より広い" 周波数範囲が必要になる場合があります。_
 
@@ -109,7 +109,7 @@ PDM-to-TDM 変換などのハードウェア コンポーネントは、マイ�
 
 最大 7 つのチャネルに高いサンプル レートとビット深度で必要な帯域幅を提供するためには、任意のオーディオ MCU 内で高速な USB Audio Class 2.0 がサポートされている必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Speech Devices SDK についてさらに詳しく学習する](speech-devices-sdk.md)

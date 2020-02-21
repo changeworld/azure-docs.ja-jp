@@ -18,7 +18,7 @@ ms.locfileid: "75359768"
 
 Stream Analytics ジョブは常に、実行中、停止、デグレード、失敗の 4 つの状態のいずれかに当てはまります。 ジョブの状態は、Azure portal の Stream Analytics ジョブの概要ページで確認できます。 
 
-| State | [説明] | 推奨アクション |
+| State | 説明 | 推奨アクション |
 | --- | --- | --- |
 | **実行中** | ジョブは Azure 上で実行されており、定義された入力ソースからのイベントを読み取って、それらを処理し、構成済みの出力シンクに結果を書き込んでいます。 | [主要メトリック](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor)を監視して、ジョブのパフォーマンスを追跡することをお勧めします。 |
 | **停止** | ジョブは停止し、イベントを処理していません。 | NA | 

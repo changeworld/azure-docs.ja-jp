@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 09b25dbdc8fc13c40ccd89b2cfd78611cedaac9d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a4a9760b5c7a70c58a1afe1b14b781a35f2b9b18
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024468"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77082973"
 ---
 # <a name="accessing-your-avs-private-cloud-environment-and-applications-from-on-premises"></a>オンプレミスから AVS プライベート クラウド環境およびアプリケーションにアクセスする
 
@@ -26,7 +26,7 @@ AVS プライベート クラウドの vCenter と NSX-T Manager にアクセス
 
 | Port       | source                           | 宛先                      | 目的                                                                                                                |
 |------------|----------------------------------|----------------------------------|------------------------------------------------------------------------------------------------------------------------|
-| 53 (UDP)   | オンプレミスの DNS サーバー          | AVS プライベート クラウドの DNS サーバー        | *az.AVS.io* の DNS 参照を、オンプレミス ネットワークから AVS プライベート クラウドの DNS サーバーに転送するために必要です。     |
+| 53 (UDP)   | オンプレミスの DNS サーバー          | AVS プライベート クラウドの DNS サーバー        | オンプレミス ネットワークから AVS プライベート クラウドの DNS サーバーに *az.cloudsimple.io* の DNS 参照を転送するために必要です。     |
 | 53 (UDP)   | AVS プライベート クラウドの DNS サーバー        | オンプレミスの DNS サーバー          | オンプレミスのドメイン名の DNS 参照を、AVS プライベート クラウドの vCenter からオンプレミスの DNS サーバーに転送するために必要です。 |
 | 80 (TCP)   | オンプレミス ネットワーク              | AVS プライベート クラウドの管理ネットワーク | vCenter URL を *http* から *https* にリダイレクトするために必要です。                                                         |
 | 443 (TCP)  | オンプレミス ネットワーク              | AVS プライベート クラウドの管理ネットワーク | オンプレミス ネットワークから vCenter と NSX-T Manager にアクセスするために必要です。                                           |

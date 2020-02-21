@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6084eca4f7d2d6040eb3f32a9b28cfc50922d200
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3db5cf0ddfec231a313df58e551061cbd5f9bef5
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896096"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110450"
 ---
 # <a name="about-point-to-site-vpn"></a>ポイント対サイト VPN について
 
@@ -45,7 +45,7 @@ Azure が P2S VPN 接続を受け入れる前に、ユーザーはまず認証�
 
 ### <a name="authenticate-using-native-azure-active-directory-authentication"></a>ネイティブ Azure Active Directory 認証を使用した認証
 
-Azure AD 認証では、ユーザーは Azure Active Directory 資格情報を使用して、Azure に接続できます。 ネイティブ Azure AD 認証は、OpenVPN プロトコルと Windows 10 のみでサポートされており、[Azure VPN Client (プレビュー)](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) を使用する必要があります。
+Azure AD 認証では、ユーザーは Azure Active Directory 資格情報を使用して、Azure に接続できます。 ネイティブ Azure AD 認証は、OpenVPN プロトコルと Windows 10 のみでサポートされており、[Azure VPN クライアント](https://go.microsoft.com/fwlink/?linkid=2117554)を使用する必要があります。
 
 ネイティブ Azure AD 認証を使用すると、Azure AD の条件付きアクセスに加えて、VPN 用の Multi-Factor Authentication (MFA) 機能を利用できます。
 
@@ -55,7 +55,7 @@ Azure AD 認証では、ユーザーは Azure Active Directory 資格情報を�
 
 2. [ゲートウェイでの Azure AD 認証を有効にする](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
 
-3. [Azure VPN クライアント (プレビュー) をダウンロードして構成する](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)
+3. [Azure VPN クライアントをダウンロードして構成する](https://go.microsoft.com/fwlink/?linkid=2117554)
 
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Active Directory (AD) ドメイン サーバーを使用した認証

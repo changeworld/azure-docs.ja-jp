@@ -17,12 +17,12 @@ ms.date: 1/24/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 15293f6cf5ceafda2dd5727ad85804b432bae54a
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: c6ed72e5c94191411572c6ab67533141e2fe47d6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76758752"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185816"
 ---
 # <a name="whats-new-for-authentication"></a>認証の新機能 
 
@@ -42,7 +42,7 @@ ms.locfileid: "76758752"
 
 現時点ではスケジュールされていません。  運用環境の変更または変更予定については、以下を参照してください。 
 
-## <a name="february-2020"></a>2020 年 2 月: 
+## <a name="february-2020"></a>2020 年 2 月 
 
 ### <a name="empty-fragments-will-be-appended-to-every-http-redirect-from-the-login-endpoint"></a>ログイン エンドポイントからのすべての HTTP リダイレクトに空のフラグメントが追加されます。 
 
@@ -156,7 +156,7 @@ login.microsoftonline.com から HTTP リダイレクト経由で認証応答が
 
 お使いのアプリで承認コードを再利用して複数のリソースに対するトークンを取得している場合は、コードを使用して更新トークンを取得した後、その更新トークンを使用して他のリソース用のトークンを追加取得することお勧めします。 承認コードは 1 回しか使用できませんが、更新トークンは複数のリソースで複数回使用できます。 OAuth コード フローの使用時に新しいアプリで認証コードを再利用しようとすると、invalid_grant エラーが発生します。
 
-更新トークンについて詳しくは、「[アクセス トークンの更新](v1-protocols-oauth-code.md#refreshing-the-access-tokens)」をご覧ください。  ADAL または MSAL を使用する場合、これはライブラリによって処理され、'AcquireTokenByAuthorizationCodeAsync' の 2 つ目のインスタンスを 'AcquireTokenSilentAsync' に置き換えます。 
+更新トークンについて詳しくは、「[アクセス トークンの更新](v2-oauth2-auth-code-flow.md#refresh-the-access-token)」をご覧ください。  ADAL または MSAL を使用する場合、これはライブラリによって処理され、'AcquireTokenByAuthorizationCodeAsync' の 2 つ目のインスタンスを 'AcquireTokenSilentAsync' に置き換えます。 
 
 ## <a name="may-2018"></a>2018 年 5 月
 
@@ -166,7 +166,7 @@ login.microsoftonline.com から HTTP リダイレクト経由で認証応答が
 
 **影響を受けるエンドポイント**:v1.0 と v2.0 の両方
 
-**影響を受けるプロトコル**:暗黙的フローと [OBO フロー](v1-oauth2-on-behalf-of-flow.md)
+**影響を受けるプロトコル**:暗黙的フローと [On-Behalf-Of フロー](v2-oauth2-on-behalf-of-flow.md)
 
 2018 年 5 月 1 日以降、id_tokens は新しいアプリケーションの OBO フローでアサーションとして使用できません。 代わりに、アクセス トークンを使用して、同じアプリケーションのクライアントと中間層の間でも、API のセキュリティを確保する必要があります。 2018 年 5 月 1 日より前に登録されたアプリは、引き続き動作し、id_tokens をアクセス トークンに交換することができますが、このパターンはベスト プラクティスとは見なされません。
 

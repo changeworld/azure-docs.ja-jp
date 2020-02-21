@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 2525ca681d805a3b6f086335531a4beaeb9c4e51
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 68975f21ab810398da969384db4d3bddd22f1bd9
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453464"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116905"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Azure Logic Apps から Azure 関数を呼び出す
 
@@ -200,11 +200,11 @@ Azure 関数の内部からロジック アプリをトリガーする場合、�
 
 サインインしたり、資格情報やシークレットを指定したりする必要なく他の Azure Active Directory (Azure AD) テナント内のリソースへのアクセスを認証するために、ロジック アプリでは、[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) (以前はマネージド サービス ID (MSI) と呼ばれていました) を使用することができます。 この ID は、ユーザーの代わりに Azure で管理されます。ユーザーがシークレットを提供したりローテーションしたりする必要がないため、資格情報の保護に役立ちます。 [Azure AD 認証用のマネージド ID がサポートされているサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)の詳細をご覧ください。
 
-システム割り当てのマネージド ID を使用するようにロジック アプリを設定した場合、ロジック アプリの Azure 関数では、認証にもその同じ ID を使用できます。 ロジック アプリの Azure 関数の認証サポートについては、[送信呼び出しへの認証の追加](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)に関するページを参照してください。
+システム割り当ての ID または手動で作成したユーザー割り当ての ID を使用するようにロジック アプリを設定した場合、ロジック アプリの Azure 関数では、認証にもその同じ ID を使用できます。 ロジック アプリの Azure 関数の認証サポートについては、[送信呼び出しへの認証の追加](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)に関するページを参照してください。
 
-自分の関数でシステム割り当ての ID を設定し、使用するには、次の手順を行います。
+自分の関数でマネージド ID を設定し、使用するには、次の手順を行います。
 
-1. ロジック アプリでシステム割り当て ID を有効にし、ターゲット リソースに対するその ID のアクセスを設定します。 「[Azure Logic Apps でマネージド ID を使用して認証し、リソースにアクセスする](../logic-apps/create-managed-service-identity.md)」を参照してください。
+1. ロジック アプリでマネージド ID を有効にし、ターゲット リソースに対するその ID のアクセスを設定します。 「[Azure Logic Apps でマネージド ID を使用して認証し、リソースにアクセスする](../logic-apps/create-managed-service-identity.md)」を参照してください。
 
 1. 次の手順で Azure 関数と関数アプリの認証を有効にします。
 
@@ -215,7 +215,7 @@ Azure 関数の内部からロジック アプリをトリガーする場合、�
 
 ### <a name="set-up-anonymous-authentication-in-your-function"></a>関数で匿名認証を設定する
 
-Azure 関数でロジック アプリのシステム割り当て ID を使用するには、関数の認証レベルを匿名に設定しておきます。 設定していないと、ロジック アプリにより "BadRequest" エラーがスローされます。
+Azure 関数でロジック アプリのマネージド ID を使用するには、関数の認証レベルを匿名に設定しておきます。 設定していないと、ロジック アプリにより "BadRequest" エラーがスローされます。
 
 1. [Azure portal](https://portal.azure.com) で、お使いの関数アプリを探して選択します。 以下の手順ではサンプル関数アプリとして "FabrikamFunctionApp" が使用されます。
 

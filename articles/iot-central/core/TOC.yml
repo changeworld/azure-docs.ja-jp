@@ -35,7 +35,7 @@
       items:
         - name: 規則を作成する
           href: tutorial-create-telemetry-rules.md
-        - name: REST API の使用
+        - name: IoT Central API を調べる
           href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
 - name: 概念
   items:
@@ -83,8 +83,10 @@
           href: howto-version-device-template.md
     - name: 変換
       items:
-        - name: 連続データ エクスポートを構成する
+        - name: Azure で宛先にデータをエクスポートする
           href: howto-export-data.md
+        - name: IoT Central API を調べる
+          href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
         - name: 規則に基づいて Webhook を作成する
           href: howto-create-webhooks.md
         - name: 規則に基づいて Azure Monitor アクション グループを接続する
@@ -159,7 +161,7 @@
   items:
     - name: サポート オプションとヘルプ オプション
       href: /azure/iot-fundamentals/iot-support-help
-    - name: REST API
+    - name: IoT Central API リファレンス
       href: 'https://docs.microsoft.com/rest/api/iotcentral/'
     - name: 顧客データ要求
       href: iot-central-customer-data-requests.md

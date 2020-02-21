@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9c7e49fe522859f97f00f760822d5eef60db5f69
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b291d5babb0680f5f1a742efcf624a82c804de68
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228857"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460009"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Azure HDInsight での Apache Storm とは
 
@@ -42,7 +42,7 @@ HDInsight における Storm の機能は次のとおりです。
 
     Azure サービスと連携するソリューションの例については、[HDInsight 上の Apache Storm で Event Hubs からのイベントを処理する方法](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)に関するページを参照してください。
 
-リアルタイム分析ソリューションに Apache Storm を利用している企業の一覧については、[Apache Storm を使用している企業](https://storm.apache.org/documentation/Powered-By.html)に関するページを参照してください。
+リアルタイム分析ソリューションに Apache Storm を利用している企業の一覧については、[Apache Storm を使用している企業](https://storm.apache.org/Powered-By.html)に関するページを参照してください。
 
 Storm を使い始めるには、「[Create and monitor an Apache Storm topology in Azure HDInsight (Azure HDInsight での Apache Storm トポロジの作成と監視)](apache-storm-quickstart.md)」を参照してください。
 
@@ -56,7 +56,7 @@ Storm は、ユーザーが使い慣れている可能性のある [Apache Hadoo
 
 * ボルト コンポーネントは、スパウトまたはその他のボルトから出力されたストリームを使用します。 ボルトは、必要に応じてストリームをトポロジに出力できます。 また、HDFS、Kafka、HBase などの外部サービスまたはストレージへのデータの書き込みも行います。
 
-## <a name="reliability"></a>信頼性
+## <a name="reliability"></a>[信頼性]
 
 Apache Storm では、データ分析が多数のノードにまたがる場合でも、各受信メッセージが必ず完全に処理されることを保証しています。
 
@@ -113,7 +113,7 @@ HDInsight の Storm には、完全なエンタープライズレベルの継続
 * ソーシャル分析
 * 抽出、変換、読み込み (ETL: Extraction、Transformation、Loading)
 * ネットワーク監視
-* Search
+* 検索
 * Mobile Engagement
 
 実際のシナリオについては、[企業での Apache Storm の使用事例](https://storm.apache.org/Powered-By.html)に関するドキュメントを参照してください。
@@ -166,13 +166,13 @@ C# コンポーネントからの tick タプルの使用例については、[P
 
 "トップ N" の値の計算例については、[RollingTopWords](https://github.com/apache/storm/blob/master/examples/storm-starter/src/jvm/org/apache/storm/starter/RollingTopWords.java) の例を参照してください。
 
-## <a name="logging"></a>ログの記録
+## <a name="logging"></a>ログ記録
 
 Storm は、[Apache Log4j 2](https://logging.apache.org/log4j/2.x/) を使用して情報をログに記録します。 既定では大量のデータがログに記録されるため、情報を調べるのが困難になる可能性があります。 Storm トポロジの一部にログの構成ファイルを含めることにより、ログ記録の動作を制御することができます。
 
 ログ記録を構成する方法を示すトポロジの例については、HDInsight で Storm を使用した [Java ベースの WordCount](apache-storm-develop-java-topology.md) の例を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 HDInsight 上の Apache Storm によるリアルタイム分析ソリューションの詳細を学習します。
 

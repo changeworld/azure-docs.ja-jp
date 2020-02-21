@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 01/14/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 269ae5630d1524cb8f89d3af8728892079f6eb5f
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: ce8d42ec7c37b19378b6f4ae0c81548f2eff5c9c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899628"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190391"
 ---
 # <a name="sync-your-app-configuration-instance-using-github-actions"></a>GitHub Actions を使用して App Configuration インスタンスを同期する
 Azure App Configuration は、GitHub リポジトリで実行されたアクションによってトリガーされたときに、GitHub Actions を使用して App Configuration インスタンスを更新します。 GitHub ワークフローを利用してアプリ構成を更新し、アプリ コードの更新に使用されているのと同じワークフローにアプリ構成の更新を統合することができます。
@@ -25,8 +25,7 @@ GitHub イベント (リポジトリへのプッシュなど) によって、Git
 GitHub の[ドキュメント](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow)では、GitHub ワークフローとアクションについて詳細に説明されています。 
 
 ## <a name="enable-github-actions-in-your-repository"></a>リポジトリで GitHub Actions を有効にする
-この GitHub アクションの使用を開始するには、リポジトリにアクセスし、 **[Actions]\(アクション\)** タブを選択します。"Azure App Configuration Sync" を検索して、マーケットプレースでこの GitHub アクションを見つけて選択します。 
-
+この GitHub アクションの使用を開始するには、リポジトリにアクセスし、 **[Actions]\(アクション\)** タブを選択します。[新しいワークフロー]、[Set up a workflow yourself]\(ワークフローを自分で設定する\) の順にクリックします。 そこから、マーケットプレース上で [Azure App Configuration Sync]\(Azure アプリ構成の同期\) を検索します。
 > [!div class="mx-imgBorder"]
 > ![[Actions]\(アクション\) タブを選択する](media/find-github-action.png)
 
@@ -189,7 +188,7 @@ depth を 2 に指定した場合、上記の例では次のキーと値のペ�
 | configurationFile | はい | リポジトリ内の構成ファイルへのパス。リポジトリのルートを基準とした相対パスです。  glob パターンがサポートされており、複数のファイルを含めることができます。 |
 | format | はい | 構成ファイルのファイル形式。  有効な形式:JSON、YAML、properties。 |
 | connectionString | はい | App Configuration インスタンスの接続文字列。 接続文字列は、GitHub リポジトリにシークレットとして格納する必要があります。また、ワークフローではシークレット名のみを使用する必要があります。 |
-| separator | はい | 構成ファイルをキーと値のペアにフラット化するときに使用される区切り記号。  有効な値: . , ; : - _ __ / |
+| separator | はい | 構成ファイルをキーと値のペアにフラット化するときに使用される区切り記号。  有効な値: , ; : - _ __ / |
 | prefix | いいえ | キーの先頭に追加されるプレフィックス。 |
 | label | いいえ | キーと値のペアを設定するときに使用されるラベル。 指定されない場合、null ラベルが使用されます。 |
 | strict | いいえ | 厳格モードを有効にするかどうかを決めるブール値。 既定値は false です。 |

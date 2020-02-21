@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0501da153567f3b95804d8a8a6576d8cf199762c
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: d5a2107974cd63c0d02aaeb555430453c39990bd
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74553985"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120433"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージの割り当てを表示、追加、および削除する
 
@@ -48,6 +48,10 @@ Azure AD エンタイトルメント管理では、アクセス パッケージ�
 1. 有効期限切れの割り当てを確認するには、フィルターの状態をクリックし、 **[Expired]\(有効期限切れ)** を選択します。
 
 1. フィルター処理された一覧の CSV ファイルをダウンロードするには、 **[ダウンロード]** をクリックします。
+
+### <a name="viewing-assignments-programmatically"></a>プログラムによる割り当ての表示
+
+Microsoft Graph を使用して、アクセス パッケージの割り当てを取得することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、[accessPackageAssignments をリストする](https://docs.microsoft.com/graph/api/accesspackageassignment-list?view=graph-rest-beta)ことができます。
 
 ## <a name="directly-assign-a-user"></a>ユーザーを直接割り当てる
 
@@ -77,6 +81,10 @@ Azure AD エンタイトルメント管理では、アクセス パッケージ�
 
     しばらくしてから **[更新]** をクリックすると、割り当ての一覧にユーザーが表示されます。
 
+### <a name="directly-assigning-users-programmatically"></a>プログラムによるユーザーの直接割り当て
+
+Microsoft Graph を使用して、アクセス パッケージにユーザーを直接割り当てることもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、[accessPackageAssignmentRequest を作成する](https://docs.microsoft.com/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta)ことができます。
+
 ## <a name="remove-an-assignment"></a>割り当ての削除
 
 **事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネージャー
@@ -95,7 +103,7 @@ Azure AD エンタイトルメント管理では、アクセス パッケージ�
 
     割り当てが削除されたことを知らせる通知が表示されます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [アクセス パッケージの要求と設定を変更する](entitlement-management-access-package-request-policy.md)
 - [レポートとログを表示する](entitlement-management-reports.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 376d7c1a9d2fe2ebce857362fd216e2047eb1f7b
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 7916bbb28602d64e0916fce7badf16a65c242227
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934327"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251874"
 ---
 # <a name="security-control-network-security"></a>セキュリティ コントロール:ネットワークのセキュリティ
 
@@ -21,7 +21,7 @@ ms.locfileid: "75934327"
 
 ## <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1:Virtual Network でネットワーク セキュリティ グループまたは Azure Firewall を使用してリソースを保護する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 1.1 | 9.2、9.4、14.1-14.3 | Customer |
 
@@ -33,7 +33,7 @@ Private Link に関する一般情報:
 
 https://docs.microsoft.com/azure/private-link/private-link-overview
 
-Virtual Network を作成する方法:
+仮想ネットワークを作成する方法:
 
 https://docs.microsoft.com/azure/virtual-network/quick-create-portal
 
@@ -47,7 +47,7 @@ https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
 
 ## <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2:VNet、サブネット、NIC の構成とトラフィックを監視してログに記録する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 1.2 | 9.3、12.2 | Customer |
 
@@ -63,7 +63,7 @@ https://docs.microsoft.com/azure/security-center/security-center-network-recomme
 
 ## <a name="13-protect-critical-web-applications"></a>1.3:重要な Web アプリケーションを保護する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 1.3 | 9.5 | Customer |
 
@@ -75,7 +75,7 @@ https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-a
 
 ## <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4:既知の悪意のある IP アドレスとの通信を拒否する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 1.4 | 12.3 | Customer |
 
@@ -109,7 +109,7 @@ https://docs.microsoft.com/azure/security-center/security-center-just-in-time
 
 ## <a name="15-record-network-packets-and-flow-logs"></a>1.5:ネットワーク パケットとフロー ログを記録する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 1.5 | 12.5、15.8 | Customer |
 
@@ -125,7 +125,7 @@ https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
 ## <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6:ネットワーク ベースの侵入検出/侵入防止システム (IDS/IPS) をデプロイする
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 1.6 | 12.6、12.7 | Customer |
 
@@ -137,7 +137,7 @@ Azure Firewall でアラートを構成する方法: https://docs.microsoft.com/
 
 ## <a name="17-manage-traffic-to-web-applications"></a>1.7:Web アプリケーションへのトラフィックを管理する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 1.7 | 12.9、12.10 | Customer |
 
@@ -157,7 +157,7 @@ https://docs.microsoft.com/azure/application-gateway/overview
 
 ## <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8:ネットワーク セキュリティ規則の複雑さと管理オーバーヘッドを最小限に抑える
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 1.8 | 1.5 | Customer |
 
@@ -169,7 +169,7 @@ https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 ## <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9:ネットワーク デバイスの標準的なセキュリティ構成を維持する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 1.9 | 11.1 | Customer |
 
@@ -183,7 +183,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 ネットワークに関する Azure Policy のサンプル:
 
-https://docs.microsoft.com/azure/governance/policy/samples/#network
+https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network
 
 Azure Blueprint の作成方法:
 
@@ -191,7 +191,7 @@ https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
 ## <a name="110-document-traffic-configuration-rules"></a>1.10:トラフィック構成規則を文書化する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 1.1 | 11.2 | Customer |
 
@@ -201,7 +201,7 @@ https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-Virtual Network を作成する方法:
+仮想ネットワークを作成する方法:
 
 https://docs.microsoft.com/azure/virtual-network/quick-create-portal
 
@@ -211,7 +211,7 @@ https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
 
 ## <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11:自動化ツールを使用してネットワーク リソース構成を監視し、変更を検出する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 1.11 | 11.3 | Customer |
 
@@ -223,7 +223,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 ネットワークに関する Azure Policy のサンプル:
 
-https://docs.microsoft.com/azure/governance/policy/samples/#network
+https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network
 
 ## <a name="next-steps"></a>次のステップ
 

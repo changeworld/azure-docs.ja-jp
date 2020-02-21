@@ -1479,7 +1479,7 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
 |型|xs:string|
 |content|0 個の要素、0 個の属性|
 |定義済み|[ApplicationManifestType complexType](service-fabric-service-model-schema-complex-types.md#applicationmanifesttype-complextype)、[ServiceManifestType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifesttype-complextype)、[ServicePackageType complexType](service-fabric-service-model-schema-complex-types.md#servicepackagetype-complextype) 内でローカルに|
-|name|[説明]|
+|name|説明|
 |minOccurs|0|
 
 ### <a name="xml-source"></a>XML ソース

@@ -2,21 +2,18 @@
 title: Azure portal でのアカウント管理者のタスク
 description: Azure portal で支払い操作を実行する方法について説明します
 author: bandersmsft
-manager: judupont
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 2f858fa7715145d55cf1c978b9c368e1f6586dce
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 5d48f6e02719bbf647cdbf800550d73ce83a018f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132137"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201001"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Azure portal でのアカウント管理者のタスク
 
@@ -25,35 +22,35 @@ ms.locfileid: "77132137"
 - サブスクリプションの使用制限を削除する
 - Azure イン オープン プラン サブスクリプションにクレジットを追加する
 
-これらのすべてのタスクを実行するには、アカウント管理者である必要があります。 
+これらのすべてのタスクを実行するには、アカウント管理者である必要があります。
 
 ## <a name="navigate-to-your-subscriptions-payment-methods"></a>サブスクリプションの支払い方法に移動する
 
-1. [Azure Portal](https://portal.azure.com) にアカウント管理者としてサインインします。 
+1. [Azure Portal](https://portal.azure.com) にアカウント管理者としてサインインします。
 
 1. "**コスト管理 + 請求**" を検索します。
-    
+
     ![[コストの管理と請求] の検索を示すスクリーンショット ](./media/account-admin-tasks/search-bar.png)
 
-1. **[個人用サブスクリプション]** 一覧で、クレジット カードを追加するサブスクリプションを選択します。 
-   
+1. **[個人用サブスクリプション]** 一覧で、クレジット カードを追加するサブスクリプションを選択します。
+
    ![[概要] の [個人用サブスクリプション] グリッドを示すスクリーンショット](./media/account-admin-tasks/cost-management-billing-overview-x.png)
-   
+
    > [!NOTE]
-   > サブスクリプションの一部がここに表示されない場合、原因として、ある時点でサブスクリプション ディレクトリを変更したことが考えられます。 これらのサブスクリプションについては、ディレクトリを元のディレクトリ (最初にサインアップしたディレクトリ) に切り替える必要があります。 その後、手順 2 を繰り返します。 
+   > サブスクリプションの一部がここに表示されない場合、原因として、ある時点でサブスクリプション ディレクトリを変更したことが考えられます。 これらのサブスクリプションについては、ディレクトリを元のディレクトリ (最初にサインアップしたディレクトリ) に切り替える必要があります。 その後、手順 2 を繰り返します。
 
 1. **[支払い方法]** を選択します。
 
     ![[支払方法] ブレードを示すスクリーンショット。](./media/account-admin-tasks/subscription-payment-methods-blade.png)
 
-ここでは、新しいクレジット カードの追加、アクティブな支払い方法の変更、クレジット カードの詳細の編集、およびクレジット カードの削除を行えます。 
+ここでは、新しいクレジット カードの追加、アクティブな支払い方法の変更、クレジット カードの詳細の編集、およびクレジット カードの削除を行えます。
 
 ### <a name="change-active-payment-method"></a>アクティブな支払い方法を変更する
 
 アクティブな支払い方法を変更するには、新しいクレジット カードを追加するか、既に保存されているものを選択します。 アクティブな支払い方法を新しいクレジット カードに変更するには:
 
 1. 左上隅にある [+] を選択して、クレジット カードを追加します。
-    
+
     ![[+] 記号を示すスクリーンショット](./media/account-admin-tasks/subscription-payment-methods-plus.png)
 
 1. 右側のフォームにクレジット カードの詳細を入力します。
@@ -111,7 +108,7 @@ ms.locfileid: "77132137"
 
 ### <a name="edit-invoice-payment-address"></a>請求書支払いの住所を編集する
 
-請求書支払い方法の住所を編集するには、サブスクリプションの支払い方法の一覧で **[請求書]** をクリックします。 住所のフォームが右側に表示されます。 
+請求書支払い方法の住所を編集するには、サブスクリプションの支払い方法の一覧で **[請求書]** をクリックします。 住所のフォームが右側に表示されます。
 
 ## <a name="remove-spending-limit"></a>支出制限を削除する
 
@@ -124,15 +121,15 @@ Azure の使用制限により、クレジット額を超過する支出が防�
 
     ![[コストの管理と請求] の検索を示すスクリーンショット ](./media/account-admin-tasks/search-bar.png)
 
-1. **[個人用サブスクリプション]** 一覧で、Visual Studio Enterprise サブスクリプションを選択します。 
+1. **[個人用サブスクリプション]** 一覧で、Visual Studio Enterprise サブスクリプションを選択します。
 
    ![[概要] の [個人用サブスクリプション] グリッドを示すスクリーンショット](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
 
     > [!NOTE]
     > Visual Studio サブスクリプションの一部がここに表示されない場合、原因として、ある時点でサブスクリプション ディレクトリを変更したことが考えられます。 これらのサブスクリプションについては、ディレクトリを元のディレクトリ (最初にサインアップしたディレクトリ) に切り替える必要があります。 その後、手順 2 を繰り返します。
-    
+
 1. サブスクリプションの概要で、オレンジ色のバナーをクリックして使用制限を削除します。
-    
+
     ![使用制限の削除バナーを示すスクリーンショット](./media/account-admin-tasks/msdn-remove-spending-limit-banner-x.png)
 
 1. 使用制限を永久に削除するか、現在の請求期間に対してのみ削除するかを選択します。
@@ -152,15 +149,15 @@ Azure イン オープン プランのライセンス サブスクリプショ�
 
     ![[コストの管理と請求] の検索を示すスクリーンショット ](./media/account-admin-tasks/search-bar.png)
 
-1. **[個人用サブスクリプション]** 一覧で、Azure イン オープン プラン サブスクリプションを選択します。 
+1. **[個人用サブスクリプション]** 一覧で、Azure イン オープン プラン サブスクリプションを選択します。
 
     ![[概要] の [個人用サブスクリプション] グリッドを示すスクリーンショット](./media/account-admin-tasks/cost-management-overview-aio-x.png)
 
    > [!NOTE]
    > サブスクリプションがここに表示されない場合、原因として、ある時点でサブスクリプション ディレクトリを変更したことが考えられます。 サブスクリプションのディレクトリを元のディレクトリ (最初にサインアップしたディレクトリ) に切り替える必要があります。 その後、手順 2 を繰り返します。
-    
+
 1. **[クレジットの履歴]** を選択します。
-    
+
     ![クレジットの履歴を示すスクリーンショット](./media/account-admin-tasks/aio-credit-history-blade.png)
 
 1. 左上隅にある [+] を選択して、さらにカードを追加します。
@@ -168,7 +165,7 @@ Azure イン オープン プランのライセンス サブスクリプショ�
     ![[クレジットの追加] ボタンを示すスクリーンショット](./media/account-admin-tasks/aio-credit-history-plus.png)
 
 1. ドロップダウンで支払い方法の種類を選択します。 プロダクト キーを追加するか、クレジット カードを使用してクレジットを購入できます。
-    
+
     ![[クレジットの追加] ブレードの [支払方法] ドロップダウンを示すスクリーンショット](./media/account-admin-tasks/add-credits-select-payment-method.png)
 
 1. プロダクト キーを選択する場合:

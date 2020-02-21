@@ -14,12 +14,12 @@ ms.date: 11/14/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 301fe9c213ec6d78d32d6ccde84a689c4659acb3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c99a6e018edd0806daac7cd429135e522f217f23
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888976"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159830"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect のカスタム インストール
 Azure AD Connect **カスタム設定** は、より多くのインストール オプションが必要な場合に使用します。 この設定を使用するのは、複数のフォレストがある場合や、高速インストールの対象でないオプション機能を構成する必要がある場合です。 [**高速インストール**](how-to-connect-install-express.md) オプションで対象のデプロイまたはトポロジに対応できない場合は、常にこの設定を使用します。
@@ -97,7 +97,7 @@ Azure AD Connect では、Active Directory ドメイン サービスに接続す
 ![Unverified domains](./media/how-to-connect-install-custom/aadsigninconfig2.png)  
 **[Not Added (追加されていません)]** と **[Not Verified (検証されていません)]** のマークが付いたドメインをすべて確認します。 使用するドメインを Azure AD で検証済みにしてください。 対象のドメインを検証済みにしたら、更新シンボルをクリックします。 詳細については、[ドメインの追加と検証](../active-directory-domains-add-azure-portal.md)に関するページを参照してください。
 
-**UserPrincipalName** - userPrincipalName 属性は、ユーザーが Azure AD と Office 365 にサインインするときに使用する属性です。 使用するドメイン (UPN サフィックス) は、ユーザーを同期する前に、Azure AD で検証する必要があります。 既定の userPrincipalName 属性のままにしておくことをお勧めします。 この属性がルーティング不可能で検証できない場合は、別の属性を選択することができます。 たとえば、サインイン ID を保持する属性として電子メールを選択することができます。 userPrincipalName 以外の属性を使用する方法は、 **代替 ID**と呼ばれます。 代替 ID の属性値は、RFC822 標準に従う必要があります。 代替 ID は、パスワード ハッシュの同期、パススルー認証、およびフェデレーションで使用できます。 Active Directory では、値が 1 つのみであってもこの属性を複数値として定義できません。 Alternate ID の詳細については、[ここをクリック](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname)してください。
+**UserPrincipalName** - userPrincipalName 属性は、ユーザーが Azure AD と Office 365 にサインインするときに使用する属性です。 使用するドメイン (UPN サフィックス) は、ユーザーを同期する前に、Azure AD で検証する必要があります。 既定の userPrincipalName 属性のままにしておくことをお勧めします。 この属性がルーティング不可能で検証できない場合は、別の属性を選択することができます。 たとえば、サインイン ID を保持する属性として電子メールを選択することができます。 userPrincipalName 以外の属性を使用する方法は、 **代替 ID**と呼ばれます。 代替 ID の属性値は、RFC822 標準に従う必要があります。 代替 ID は、パスワード ハッシュの同期、パススルー認証、およびフェデレーションで使用できます。 Active Directory では、値が 1 つのみであってもこの属性を複数値として定義できません。 代替 ID の詳細については、[よく寄せられる質問](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname)のトピックを参照してください。
 
 >[!NOTE]
 > パススルー認証を有効にする場合、ウィザードを続行するために少なくとも 1 つの検証済みドメインが必要になります。
@@ -163,9 +163,9 @@ sourceAnchor 属性は、ユーザー オブジェクトの有効期間中に変
 >[!WARNING]
 >**1.0.8641.0** とそれ以前のバージョンの Azure AD Connect では、パスワード ライトバックで Azure Access Control サービスに依存しています。  このサービスは **2018 年 11 月 7 日**に廃止されます。  これらのいずれかのバージョンの Azure AD Connect を使用しており、パスワード ライトバックを有効にしている場合、サービスが廃止されると、ユーザーはパスワードを変更またはリセットできなくなる可能性があります。 これらのバージョンの Azure AD Connect では、パスワード ライトバックはサポートされません。
 >
->Azure Access Control サービスの詳細については、「[方法: Azure Access Control Service からの移行](../develop/active-directory-acs-migration.md)」を参照してください。
+>Azure Access Control サービスの詳細については、「[方法: Azure Access Control Service からの移行](../azuread-dev/active-directory-acs-migration.md)」を参照してください。
 >
->最新バージョンの Azure AD Connect をダウンロードするには、[ここ](https://www.microsoft.com/en-us/download/details.aspx?id=47594)をクリックしてください。
+>最新バージョンの Azure AD Connect をダウンロードするには、[ここ](https://www.microsoft.com/download/details.aspx?id=47594)をクリックしてください。
 
 ![オプション機能](./media/how-to-connect-install-custom/optional2.png)
 

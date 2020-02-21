@@ -11,12 +11,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 11/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: aba613911328b1272ebb07eeae633932cb4a442f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 5257d9f94f6304c2a8dbea3f1648a71d0ba65e94
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935366"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064752"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースへのアクセスの管理
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -111,6 +111,62 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 カスタム ロールの詳細については、「[Azure リソースのカスタム ロール](/azure/role-based-access-control/custom-roles)」を参照してください。
 
 カスタム ロールで使用できる操作 (アクション) の詳細については、「[リソース プロバイダー操作](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)」を参照してください。
+
+
+## <a name="frequently-asked-questions"></a>よく寄せられる質問
+
+
+### <a name="q-what-are-the-permissions-needed-to-perform-various-actions-in-the-azure-machine-learning-service"></a>Q. Azure Machine Learning service でさまざまなアクションを実行するために必要なアクセス許可はどのようなものですか。
+
+次の表は、Azure Machine Learning アクティビティの概要と、それらを最小のスコープで実行するために必要なアクセス許可をまとめたものです。 たとえば、ワークスペース スコープ (列 4) を使用してアクティビティを実行できる場合は、そのアクセス許可を持つそれより高いすべてのスコープも自動的に機能します。 この表内のすべてのパスは、`Microsoft.MachineLearningServices/` に対する**相対パス**です。
+
+| アクティビティ | サブスクリプション レベルのスコープ | リソース グループレベルのスコープ | ワークスペースレベルのスコープ |
+|---|---|---|---|
+| 新しいワークスペースの作成 | 必要なし | 所有者または共同作成者 | 該当なし (所有者になるか、作成後に上位のスコープ ロールを継承します) |
+| 新しいコンピューティング クラスターの作成 | 必要なし | 必要なし | 所有者、共同作成者、または `workspaces/computes/write` が可能なカスタム ロール |
+| 新しい Notebook VM の作成 | 必要なし | 所有者または共同作成者 | サポートできません |
+| 新しいコンピューティング インスタンスの作成 | 必要なし | 必要なし | 所有者、共同作成者、または `workspaces/computes/write` が可能なカスタム ロール |
+| 実行の送信、データへのアクセス、モデルまたは公開パイプラインのデプロイなどのデータ プレーン アクティビティ | 必要なし | 必要なし | 所有者、共同作成者、または `workspaces/*/write` が可能なカスタム ロール <br/> また、MSI がストレージ アカウントのデータにアクセスできるようにするには、ワークスペースに登録されているデータストアも必要です。 |
+
+
+### <a name="q-how-do-i-list-all-the-custom-roles-in-my-subscription"></a>Q. サブスクリプション内のすべてのカスタム ロールを一覧表示するにはどうすればよいですか。
+
+Azure CLI で、次のコマンドを実行します。
+
+```azurecli-interactive
+az role definition list --subscription <sub-id> --custom-role-only true
+```
+
+### <a name="q-how-do-i-find-the-role-definition-for-a-role-in-my-subscription"></a>Q. サブスクリプション内のロールについてのロールの定義を見つけるにはどうすればよいですか。
+
+Azure CLI で、次のコマンドを実行します。 `<role-name>` は、上記のコマンドで返されるのと同じ形式である必要があります。
+
+```azurecli-interactive
+az role definition list -n <role-name> --subscription <sub-id>
+```
+
+### <a name="q-how-do-i-update-a-role-definition"></a>Q. ロールの定義を更新するにはどうすればよいですか。
+
+Azure CLI で、次のコマンドを実行します。
+
+```azurecli-interactive
+az role definition update --role-definition update_def.json --subscription <sub-id>
+```
+
+新しいロールの定義のスコープ全体に対するアクセス許可が必要であることに注意してください。 たとえば、この新しいロールが 3 つのサブスクリプションにわたってスコープを持つ場合は、3 つすべてのサブスクリプションに対するアクセス許可が必要です。 
+
+> [!NOTE]
+> ロールの更新は、そのスコープ内のすべてのロールの割り当てに適用されるまでに 15 分 ~ 1 時間かかることがあります。
+### <a name="q-can-i-define-a-role-that-prevents-updating-the-workspace-edition"></a>Q. ワークスペースのエディションを更新できないようにするロールを定義できますか。 
+
+はい。ワークスペースのエディションの更新を禁止するロールを定義できます。 ワークスペースの更新は、ワークスペース オブジェクトのパッチ呼び出しであるため、JSON 定義の `"NotActions"` 配列に次のアクションを配置して、これを行います。 
+
+`"Microsoft.MachineLearningServices/workspaces/write"`
+
+### <a name="q-what-permissions-are-needed-to-perform-quota-operations-in-a-workspace"></a>Q. ワークスペースでクォータ操作を実行するには、どのようなアクセス許可が必要ですか。 
+
+ワークスペースでクォータ関連の操作を実行するには、サブスクリプション レベルのアクセス許可が必要です。 これは、マネージド コンピューティング リソースに対するサブスクリプション レベルのクォータまたはワークスペース レベルのクォータの設定は、サブスクリプション スコープで書き込みアクセス許可がある場合にのみ可能であることを意味します。 
+
 
 ## <a name="next-steps"></a>次のステップ
 

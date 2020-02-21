@@ -1,34 +1,28 @@
 ---
 title: 新機能 - Language Understanding (LUIS)
-titleSuffix: Azure Cognitive Services
 description: この記事では、Azure Cognitive Services Language Understanding API に関するニュースが定期的に更新されています。
-author: diberry
-manager: nitinme
-ms.custom: experiment-luis-0519
-services: cognitive-services
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.author: diberry
-ms.openlocfilehash: e03c7489268f3ad7076481de4498c5e202f654b6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.date: 02/11/2020
+ms.openlocfilehash: 716860b54e7d8e75984c0365cac61d14153c09ff
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280289"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137802"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding の新機能
 
-サービス内の新機能について説明します。 これらの項目には、リリース ノート、ビデオ、ブログ記事、およびその他の種類の情報が含まれています。 このページをブックマークして、常にサービスの最新情報を確認してください。  
+サービス内の新機能について説明します。 これらの項目には、リリース ノート、ビデオ、ブログ記事、およびその他の種類の情報が含まれています。 このページをブックマークして、常にサービスの最新情報を確認してください。
 
-## <a name="release-notes"></a>リリース ノート 
+## <a name="release-notes"></a>リリース ノート
 
 ### <a name="november-4-2019---ignite"></a>2019 年 11 月 4 日 - Ignite
 
+* ビデオ - [LUIS と Azure Cognitive Services を使用した高度な自然言語理解 (NLU) モデル | BRK2188](https://www.youtube.com/watch?v=JdJEV2jV0_Y)
+
 * 開発者の生産性の向上
-    * [予測エンドポイント V3](luis-migration-api-v3.md) の一般提供。 
-    * .lu ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)) 形式のアプリをインポートおよびエクスポートする機能。 これにより、有効な CI/CD プロセスが可能になります。 
+    * [予測エンドポイント V3](luis-migration-api-v3.md) の一般提供。
+    * .lu ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)) 形式のアプリをインポートおよびエクスポートする機能。 これにより、有効な CI/CD プロセスが可能になります。
 * 言語の増加
     * [アラビア語とヒンディー語](luis-language-support.md) (パブリック プレビュー)。
 * 事前構築済みのモデル
@@ -37,8 +31,8 @@ ms.locfileid: "74280289"
     * イタリア語の[事前構築済みエンティティ](luis-reference-prebuilt-entities.md#italian-entity-support) - 年齢、通貨、ディメンション、数値、割合、解像度が V2 から変更されました。
 * [preview.luis.ai ポータル](https://preview.luis.ai)でのユーザー エクスペリエンスの強化 - 複雑なモデルの構築とデバッグを可能にするため、ラベル付けエクスペリエンスが改良されました。 プレビュー ポータルのチュートリアルをお試しください。
     * [意図のみ](tutorial-intents-only.md)
-    * [分解可能な機械学習エンティティ](tutorial-machine-learned-entity.md) 
-* 高度な言語理解機能 - 少ない労力で[洗練された言語モデルを構築](luis-concept-entity-types.md)します。 
+    * [分解可能な機械学習エンティティ](tutorial-machine-learned-entity.md)
+* 高度な言語理解機能 - 少ない労力で[洗練された言語モデルを構築](luis-concept-entity-types.md)します。
 * モデル レベルで機械学習機能を定義し、モデルを他のモデルへの信号として使用できるようにします。たとえば、エンティティを機能として、意図やその他のエンティティに使用します。
 * 新しい、拡張された[制限](luis-boundaries.md) - フレーズ リストおよびフレーズの合計のより高い最大値、機能制限としての新しいモデル
 * 深い階層構造の形式でテキストから情報を抽出することで、メッセージ交換アプリケーションをより強力にします。
@@ -74,7 +68,7 @@ Build 2019 Conference では、次の機能が公開されました。
 
 * [V3 API 移行ガイドのプレビュー](luis-migration-api-v3.md)
 * [改善された分析ダッシュ ボード](luis-how-to-use-dashboard.md)
-* [改善された事前構築済みドメイン](luis-reference-prebuilt-domains.md) 
+* [改善された事前構築済みドメイン](luis-reference-prebuilt-domains.md)
 * [動的なリスト エンティティ](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
 * [外部エンティティ](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
 
@@ -83,6 +77,10 @@ Build 2019 Conference では、次の機能が公開されました。
 [Bot Framework](https://blog.botframework.com/)
 
 ## <a name="videos"></a>ビデオ
+
+### <a name="2019-ignite-videos"></a>2019 Ignite ビデオ
+
+[LUIS と Azure Cognitive Services を使用した高度な自然言語理解 (NLU) モデル | BRK2188](https://www.youtube.com/watch?v=JdJEV2jV0_Y)
 
 ### <a name="2019-build-videos"></a>2019 Build のビデオ
 

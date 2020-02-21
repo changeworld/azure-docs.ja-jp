@@ -1,23 +1,23 @@
 ---
 title: マップ スタイルの機能 | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps Web SDK で使用できるスタイル関連の機能について説明します。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: b92e03c4e5346dd39eaba84cfeeedb93e418678c
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: b793a0fc977d3da4b4b6753877e838441e70e800
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911789"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210091"
 ---
 # <a name="choose-a-map-style-in-azure-maps"></a>Azure Maps でマップ スタイルを選択する
 
-[Azure Maps でサポートされているマップ スタイル](./supported-map-styles.md)の多くは、Web SDK で利用できます。 この記事では、スタイル関連の機能を使用して、マップの読み込み時にスタイルを設定する方法、新しいスタイルを設定する方法、スタイル選択コントロールを使用する方法について説明します。
+[Azure Maps でサポートされているマップ スタイル](./supported-map-styles.md)の多くは、Web SDK で利用できます。 この記事では、スタイル関連の機能を使用する方法について説明します。 マップの読み込み時にスタイルを設定する方法と、スタイル ピッカー コントロールを使用して新しいマップ スタイルを設定する方法を確認します。
 
 ## <a name="set-style-on-map-load"></a>マップの読み込み時にスタイルを設定する
 
@@ -30,7 +30,7 @@ ms.locfileid: "75911789"
 
 ## <a name="update-the-style"></a>スタイルを更新する
 
-次のコードでは、マップ インスタンスが読み込まれた後、マップの [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 関数を使用して、マップのスタイルが `road` から `satellite` に更新されます。
+次のコードでは、マップ インスタンスが読み込まれた後、[setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 関数を使用して、マップのスタイルが `road` から `satellite` に更新されます。
 
 <br/>
 
@@ -39,7 +39,7 @@ ms.locfileid: "75911789"
 
 ## <a name="add-the-style-picker"></a>スタイル選択機能を追加する
 
-次のコードでは、ユーザーが異なるマップ スタイルに簡単に切り替えることができるように、マップに [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) を追加しています。 
+次のコードでは、マップに [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) を追加しているので、ユーザーは異なるマップ スタイルに簡単に切り替えることができます。 右上隅の近くにあるマップ スタイル コントロールを使用して、マップ スタイルを切り替えます。
 
 <br/>
 
@@ -47,7 +47,7 @@ ms.locfileid: "75911789"
 </iframe>
 
 > [!TIP]
-> 既定では、スタイルの選択ツール コントロールには、Azure Maps の S0 価格レベルを使用しているときに利用できるすべてのスタイルが一覧表示されます。 この一覧に表示されるスタイルの数を減らすには、一覧に表示するスタイルの配列をスタイルの選択ツールの `mapStyle` オプションに渡します。 S1 を使用していて、使用できるすべてのスタイルを表示する場合は、スタイル選択ツールの `mapStyles` オプションを `"all"` に設定します。
+> 既定では、Azure Maps の S0 価格レベルを使用している場合、スタイルの選択ツール コントロールに利用可能なすべてのスタイルが一覧表示されます。 この一覧に表示されるスタイルの数を減らすには、一覧に表示するスタイルの配列をスタイルの選択ツールの `mapStyle` オプションに渡します。 S1 を使用していて、使用できるすべてのスタイルを表示する場合は、スタイル選択ツールの `mapStyles` オプションを `"all"` に設定します。
 
 ## <a name="next-steps"></a>次のステップ
 

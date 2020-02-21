@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/15/2019
-ms.openlocfilehash: a01258799efa81c8d3ddba398facaa90c24c2513
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: ae799e9a852b8700399ef695c54b3348174b560c
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150031"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069406"
 ---
 # <a name="overview-of-the-azure-monitor-agents"></a>Azure Monitor エージェントの概要 
 仮想マシンなどのコンピューティングリ ソースでは、[他のクラウド リソース](../insights/monitor-azure-resource.md)と同様に、自身のパフォーマンスと可用性を監視するためのデータが生成されます。 また、コンピューティング リソースには、監視を必要とする、ゲスト オペレーティング システムとワークロードも含まれています。 この監視データをリソース内から収集するには、エージェントが必要です。 この記事では、Azure Monitor で使用されるエージェントについて説明します。特定の環境の要件を満たす上で必要なエージェントを判断するのに役に立ちます。
@@ -95,7 +95,7 @@ Log Analytics エージェントによってサポートされるシナリオは
 - Linux VM の場合は、Azure 診断の拡張機能の前に Log Analytics エージェントをインストールする必要があります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Log Analytics エージェントの概要](../../azure-monitor/platform/log-analytics-agent.md)に関する記事を参照して、Azure、データ センター、または他のクラウド環境でホストされているマシンにエージェントをデプロイするための要件とサポートされている方法を確認します。
 

@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a9b545d71f21138c0374cf199ce10dc2dc246afb
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: d94237d2cfeb814b2e15d43c9f8863a76c0bcd11
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732146"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190665"
 ---
 # <a name="enable-and-create-large-file-shares"></a>大きなファイル共有の有効化と作成
 
-当初、Standard ファイル共有は、最大 5 TiB までスケールアップできました。 現在では、大きなファイル共有を使用することで 100 TiB までスケールアップできます。 既存のファイル共有のため、既存のストレージ アカウントに対してこのスケーリングを有効にすることができます。 Premium ファイル共有は、既定では 100 TiB までスケールアップされます。
+ストレージ アカウントで大きなファイル共有を有効にすると、ファイル共有は 100 TiB までスケールアップできます。 既存のファイル共有のため、既存のストレージ アカウントに対してこのスケーリングを有効にすることができます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -26,14 +26,14 @@ ms.locfileid: "75732146"
 
 ## <a name="restrictions"></a>制限
 
-現時点では、大きなファイル共有が有効なアカウントでのみ、LRS または ZRS を使用できます。 GZRS、GRS、および RA-GRS は使用できません。
+現時点では、大きなファイル共有を有効にしたアカウントでは、ローカル冗長ストレージ (LRS) またはゾーン冗長ストレージ (ZRS) のみを使用できます。 geo ゾーン冗長ストレージ (GZRS)、geo 冗長ストレージ (GRS)、読み取りアクセス geo 冗長ストレージ (RA-GRS) はいずれも使用できません。
 アカウントで大きなファイル共有を有効にすると、元に戻すことができません。 有効にした後、アカウントを GZRS、GRS、および RA-GRS に変換することはできません。
 
 ## <a name="create-a-new-storage-account"></a>新しいストレージ アカウントの作成
 
 ### <a name="portal"></a>ポータル
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. Azure Portal で **[すべてのサービス]** を選択します。 
 1. リソースの一覧で、「**Storage Accounts**」と入力します。 入力すると、入力内容に基づいて一覧がフィルター処理されます。 **[ストレージ アカウント]** を選択します。
 1. 表示された **[ストレージ アカウント]** ウィンドウで、 **[追加]** を選択します。
@@ -47,7 +47,7 @@ ms.locfileid: "75732146"
 1. レプリケーションを **[ローカル冗長ストレージ]** または **[ゾーン冗長ストレージ]** に設定します。
 1. 以下のフィールドは既定値のままにします。
 
-   |フィールド  |値  |
+   |フィールド  |Value  |
    |---------|---------|
    |デプロイメント モデル     |リソース マネージャー         |
    |パフォーマンス     |Standard         |

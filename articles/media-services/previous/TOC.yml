@@ -1,5 +1,5 @@
 - name: Media Services のドキュメント
-  href: index.md
+  href: index.yml
 - name: 概要
   href: media-services-overview.md
   items:
@@ -66,7 +66,7 @@
         - name: アカウント
           displayName: subscription
           href: media-services-account-concept.md
-        - name: '[エンティティ]'
+        - name: エンティティ
           items:
             - name: .NET
               href: media-services-dotnet-manage-entities.md

@@ -136,24 +136,47 @@
         - name: JavaScript クライアント SDK
           href: 'https://github.com/microsoft/tsiclient/blob/master/docs/API.md'
 - name: リソース
+  expanded: true
   items:
-    - name: サポート オプションとヘルプ オプション
-      href: /azure/iot-fundamentals/iot-support-help
     - name: 顧客データ要求
       href: time-series-insights-customer-data-requests.md
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/?category=iot'
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/time-series-insights/'
-    - name: 料金計算ツール
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: 利用可能なリージョン
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureTimeSeriesInsights'
-    - name: スタック オーバーフロー
-      href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
-    - name: サポート オプション
-      href: 'https://azure.microsoft.com/support/options/'
-    - name: ビデオ
+    - name: 開発者向けリソース
+      items:
+        - name: Azure Time Series Insights コードサンプル
+          href: 'https://github.com/Azure-Samples/Azure-Time-Series-Insights/'
+        - name: JavaScript クライアント SDK
+          href: 'https://github.com/Microsoft/tsiclient'
+        - name: ホストされているクライアントのサンプル
+          href: 'https://tsiclientsample.azurewebsites.net/'
+        - name: Azure IoT のコード サンプル
+          href: 'https://docs.microsoft.com/samples/browse/?term=iot'
+    - name: 価格と可用性
+      items:
+        - name: 価格
+          href: 'https://azure.microsoft.com/pricing/details/time-series-insights/'
+        - name: 料金計算ツール
+          href: 'https://azure.microsoft.com/pricing/calculator/'
+        - name: 利用可能なリージョン
+          href: 'https://azure.microsoft.com/regions/services/'
+    - name: サポート オプションとヘルプ オプション
+      items:
+        - name: Azure のサポート オプション
+          href: 'https://azure.microsoft.com/support/options/'
+        - name: Azure IoT のサポートとヘルプのオプション
+          href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
+        - name: スタック オーバーフロー
+          href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
+        - name: MSDN フォーラム
+          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
+    - name: フィードバックとフォーラム
+      items:
+        - name: MSDN フォーラム
+          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
+        - name: 製品の要求と提案
+          href: 'https://feedback.azure.com/forums/906859-azure-time-series-insights'
+    - name: Azure のビデオ
       href: 'https://azure.microsoft.com/resources/videos/index/?services=time-series-insights'
+    - name: Channel 9 の動画
+      href: 'https://channel9.msdn.com/Search?term=time%20series%20insights'
+    - name: Azure IoT の更新
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'

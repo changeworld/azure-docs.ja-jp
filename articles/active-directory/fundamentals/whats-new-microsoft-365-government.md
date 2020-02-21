@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/07/2019
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75e7c6809810a78c81348bd4bbeb808e103f453f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 48a7e5e810e509a97b6010218532f6e7dff0b73f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73805277"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425546"
 ---
 # <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>Microsoft 365 Government における Azure Active Directory の最新情報
 
@@ -55,14 +55,13 @@ Microsoft Azure Government、Microsoft 365 Government - GCC High、Microsoft 365
 |------|------------------|
 | ポータル |Microsoft Azure Government: https://portal.azure.us<p>Microsoft 365 Government – GCC High: https://portal.office365.us<p>Microsoft 365 Government – DoD: https://portal.apps.mil |
 | Azure Active Directory オーソリティ エンドポイント | https://login.microsoftonline.us |
-| Azure Active Directory Graph API | https://graph.windows.net |
 | Microsoft Graph API for Microsoft 365 Government - GCC High | https://graph.microsoft.us |
 | Microsoft Graph API for Microsoft 365 Government - DoD | https://dod-graph.microsoft.us |
 | Azure Government サービス エンドポイント | 詳細については、「[Azure Government developer guide (Azure Government 開発者ガイド)](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide)」を参照してください。 |
 | Microsoft 365 Government - GCC High エンドポイント | 詳細については、「[Office 365 U.S. Government GCC High エンドポイント](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-gcc-high-endpoints)」を参照してください。 |
 | Microsoft 365 Government - DoD | 詳細については、「[Office 365 U.S. Government DoD エンドポイント](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-dod-endpoints)」を参照してください。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細と例については、次の記事をご覧ください。
 

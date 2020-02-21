@@ -15,19 +15,43 @@ ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81c9d8582eb41d4a13799c42383ff22010c60577
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: d7d8a7881c00427023e5f174461b3d8b24d83444
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985173"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121450"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>チュートリアル:Workplace by Facebook を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、自動ユーザー プロビジョニングを構成するために Workplace by Facebook と Azure Active Directory (Azure AD) の両方で実行する必要がある手順について説明します。 構成すると、Azure AD では、ユーザーとグループの [Workplace by Facebook](https://work.workplace.com/) へのプロビジョニングおよびプロビジョニング解除が Azure AD プロビジョニング サービスを使って自動的に行われるようになります。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。
 
-> [!NOTE]
-> Workplace by Facebook の Azure AD サードパーティ アプリケーションが承認されました。 12 月 16 日にサービスの中断が発生することはありません。 新しいアプリケーションへの移行が必要になった際は、Workplace by Facebook 管理コンソールに、2020 年 2 月28 日の移行期限を示すメモが表示されます。 Microsoft は、移行を可能な限りシンプルにするために取り組んでおり、今月末までに、こちらで更新プログラムを提供します。
+## <a name="migrating-to-the-new-workplace-by-facebook-application"></a>Workplace by Facebook の新しいアプリケーションへの移行
+Workplace by Facebook と既に統合されている場合は、今後の変更について以下のセクションを参照してください。 Workplace by Facebook を初めて設定する場合は、このセクションをスキップして、サポートされている機能に移動することができます。 
+
+#### <a name="whats-changing"></a>変更点
+* Azure AD 側での変更点: Workplace でユーザーをプロビジョニングするための承認方法は、従来は有効期間が長いシークレット トークンでした。 間もなく、承認方法が OAuth 承認付与に変更されます。 
+* Workplace 側での変更点: 以前は、Azure AD アプリは Workplace by Facebook でのカスタム統合でした。 今後は、Workplace integration ディレクトリにサード パーティ アプリケーションとして Azure AD が表示されるようになります。 
+
+ 
+
+#### <a name="what-do-i-need-to-do-to-migrate-my-existing-custom-integration-to-the-new-application"></a>既存のカスタム統合を新しいアプリケーションに移行するには、どうすればよいですか?
+有効なトークンとの既存の Workplace 統合がある場合、**操作は必要ありません**。 お客様は新しいアプリケーションに、毎週自動的に移行されます。 これは、バックグラウンドで完全に実行されます。 待つことができず、新しいアプリケーションに手動で移動したい場合は、ギャラリーから Workplace の新しいインスタンスを追加し、再度プロビジョニングを構成することができます。 Workplace の新しいインスタンスはすべて、自動的に新しいアプリケーション バージョンを使用します。 
+
+ 
+Workplace 統合が検疫状態の場合は、自動的に移行できるようにするために、有効なトークンを再度提供する必要があります。 管理者の資格情報セクションは淡色表示されますが、次の ( **?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride=true**) を URL に追加すると、資格情報を再度保存できます。 
+
+https://portal.azure.com/?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride=true
+
+#### <a name="how-can-i-tell-if-my-application-has-been-migrated"></a>アプリケーションが移行されたかどうかを確認するにはどうすればよいですか? 
+アプリケーションが移行されると、今後の変更に関する承認セクションのバナーが削除され、シークレット トークン フィールドが青い承認ボタンに置き換えられます。 
+
+#### <a name="the-admin-credentials-section-is-greyed-out-on-my-application-and-i-cant-save-why"></a>アプリケーションの管理者の資格情報セクションが淡色表示されていて、保存することができません。 なぜですか?
+既存の Workplace のお客様については、管理者の資格情報セクションがロックダウンされています。 テナントが新しい Workplace アプリケーションに移行されたら、管理者の資格情報セクションを再度更新できるようになります。 待てない場合は、上記の URL を使用してアプリケーションを編集できます。 
+
+ 
+#### <a name="when-will-these-changes-happen"></a>これらの変更はいつ行われるのですか?
+Workplace の新しいインスタンスはすべて、既に新しい統合/承認方法を使用することになっています。 既存の統合は 2 月に段階的に移行されます。 すべてのテナントの移行は、この月の終わりまでに完了する予定です。 
 
 ## <a name="capabilities-supported"></a>サポートされる機能
 > [!div class="checklist"]

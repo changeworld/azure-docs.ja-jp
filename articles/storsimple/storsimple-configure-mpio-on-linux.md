@@ -413,7 +413,7 @@ A. ご使用のデバイスがホワイトリストに登録されているか�
 詳細については、[マルチパスのトラブルシューティング](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot)に関するページを参照してください。
 
 ## <a name="list-of-useful-commands"></a>便利なコマンドの一覧
-| 種類 | command | [説明] |
+| 種類 | command | 説明 |
 | --- | --- | --- |
 | **iSCSI** |`service iscsid start` |iSCSI サービスを開始する |
 | &nbsp; |`service iscsid stop` |iSCSI サービスを停止する |

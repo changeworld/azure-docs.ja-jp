@@ -3,12 +3,12 @@ title: チュートリアル- Terraform を使用して Packer カスタム イ�
 description: Terraform を使用して、Packer で生成されたカスタム イメージから Azure 仮想マシン スケール セットを構成し、バージョンを管理します (仮想ネットワークおよび接続された管理ディスクを使用)。
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 9d149a28f82100715035f435de56ff134ca685f5
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 92a8221d625f8b6b73343f74b85fdfcf5e578b23
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159290"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472208"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image-by-using-terraform"></a>チュートリアル:Terraform を使用して Packer カスタム イメージから Azure 仮想マシン スケール セットを作成する
 
@@ -28,7 +28,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-- **Terraform**:[Terraform をインストールし、Azure へのアクセスを構成します](/azure/virtual-machines/linux/terraform-install-configure)。
+- **Terraform**:[Terraform をインストールし、Azure へのアクセスを構成します](terraform-install-configure.md)。
 - **SSH キーの組**:[SSH キーの組を作成します](/azure/virtual-machines/linux/mac-create-ssh-keys)。
 - **Packer**:[Packer をインストールします](https://www.packer.io/docs/install/index.html)。
 
@@ -449,7 +449,7 @@ terraform destroy
 
 リソースの削除の確認を求めるメッセージが表示されたら、「*yes*」と入力します。 この削除プロセスが完了するまでに数分かかることがあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"] 
 > [Azure での Terraform の使用について詳細を参照](/azure/terraform)

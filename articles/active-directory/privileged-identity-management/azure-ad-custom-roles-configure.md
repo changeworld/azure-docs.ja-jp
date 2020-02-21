@@ -1,5 +1,5 @@
 ---
-title: Privileged Identity Management (PIM) で Azure AD のカスタム ロールを構成する | Microsoft Docs
+title: Azure AD のカスタム ロールを構成する - Privileged Identity Management (PIM)
 description: Privileged Identity Management (PIM) で Azure AD のカスタム ロールを構成する方法
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82d0c001ecea4c3afbcb800b68246b628c130ff2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: d6251c1576d38b191ca1cba48075cc869c48d004
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896550"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048123"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD のカスタム ロールを構成する
 

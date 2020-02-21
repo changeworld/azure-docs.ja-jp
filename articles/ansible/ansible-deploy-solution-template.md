@@ -4,12 +4,12 @@ description: このクイック スタートでは、Azure と連携するよう
 keywords: Ansible, Azure, DevOps, ソリューション テンプレート, 仮想マシン, Azure リソースのマネージド ID, CentOS, Red Hat
 ms.topic: quickstart
 ms.date: 04/30/2019
-ms.openlocfilehash: ebd01411ff27b0e95be21ef147098a90b6f62742
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: cc3a6c1f0ef36b51b62e6aa58f317aee13149589
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156333"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193788"
 ---
 # <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>クイック スタート:Azure 用の Ansible ソリューション テンプレートを CentOS にデプロイする
 
@@ -82,7 +82,7 @@ Azure 用の Ansible ソリューション テンプレートは、Azure と連�
 
 1. リソース グループのページで、お客様の Ansible ホストの IP アドレスを取得してサインインし、Ansible を使用して Azure リソースを管理します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"] 
-> [クイック スタート:Ansible を使用して Azure で Linux 仮想マシンを構成する](/azure/virtual-machines/linux/ansible-create-vm)
+> [クイック スタート: Ansible を使用して Azure で Linux 仮想マシンを構成する](./ansible-create-vm.md)

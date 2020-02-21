@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.openlocfilehash: 781c5a579fa0cd0383e95b79df1f81f74008111c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ffb610634399594788afcb9b600ba00c6803dfdd
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679968"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207027"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure Data Factory の Azure 関数アクティビティ
 
@@ -34,17 +34,17 @@ Azure 関数の戻り値の型は、有効な `JObject` である必要があり
 | --- | --- | --- |
 | type   | type プロパティは、次のように設定する必要があります:**AzureFunction** | はい |
 | function app url | Azure 関数アプリの URL。 形式は `https://<accountname>.azurewebsites.net` です。 この URL は、Azure portal で関数アプリを表示した際に **URL** セクションに表示される値です  | はい |
-| function key | Azure 関数のアクセス キーです。 それぞれの関数の **[管理]** セクションをクリックし、**ファンクション キー**または**ホスト キー**をコピーします。 詳しくは、次の記事をご覧ください:[Azure Functions の HTTP トリガーとバインド](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) | はい |
+| function key | Azure 関数のアクセス キーです。 それぞれの関数の **[管理]** セクションをクリックし、**ファンクション キー**または**ホスト キー**をコピーします。 詳しくは、次の記事をご覧ください:[Azure Functions の HTTP トリガーとバインド](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) | はい |
 |   |   |   |
 
 ## <a name="azure-function-activity"></a>Azure 関数アクティビティ
 
-| **プロパティ**  | **説明** | **使用できる値** | **必須** |
+| **プロパティ**  | **説明** | **指定できる値** | **必須** |
 | --- | --- | --- | --- |
-| 名前  | パイプラインのアクティビティの名前。  | string | はい |
-| type  | アクティビティの種類は 'AzureFunctionActivity' です | string | はい |
+| name  | パイプラインのアクティビティの名前。  | String | はい |
+| type  | アクティビティの種類は 'AzureFunctionActivity' です | String | はい |
 | linked service | 対応する Azure 関数アプリの、Azure 関数のリンクされたサービス  | リンクされたサービスの参照 | はい |
-| function name  | このアクティビティによって呼び出される Azure 関数アプリ内の関数の名前 | string | はい |
+| 関数名  | このアクティビティによって呼び出される Azure 関数アプリ内の関数の名前 | String | はい |
 | method  | 関数呼び出しのための REST API メソッド | 文字列がサポートされている型:"GET"、"POST"、"PUT"   | はい |
 | header  | 要求に送信されるヘッダー。 たとえば、要求に種類と言語を設定する場合: "headers": { "Accept-Language": "en-us", "Content-Type": "application/json" } | 文字列 (または文字列の resultType を含む式) | いいえ |
 | body  | 関数 API メソッドへの要求と共に送信される本文  | 文字列 (または文字列の resultType を含む式) またはオブジェクト。   | PUT/POST メソッドには必須です |
@@ -69,6 +69,6 @@ Azure Functions は、設定で構成した`functionTimeout`設定に関係無�
 
 Azure Functions を使用して tar ファイルのコンテンツを抽出する Data Factory のサンプルについては、[こちら](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Data Factory のパイプラインとアクティビティ](concepts-pipelines-activities.md)について学習する。

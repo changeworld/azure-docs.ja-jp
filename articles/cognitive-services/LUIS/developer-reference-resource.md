@@ -1,25 +1,18 @@
 ---
 title: 開発者向けリソース - Language Understanding
-titleSuffix: Azure Cognitive Services
-description: 開発者には、Language Understanding 用の REST API と SDK の両方があります。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
-ms.topic: conceptual
-ms.date: 01/22/2020
-ms.author: diberry
-ms.openlocfilehash: 2f351ac570080c83e78697bbca94340bb96cbcf7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+description: SDK、REST API、CLI は、ご使用のプログラミング言語で Language Understanding (LUIS) アプリを開発する際に役立ちます。 Azure リソースと LUIS 予測を管理します。
+ms.topic: reference
+ms.date: 02/11/2020
+ms.openlocfilehash: fda4301a0851e6a36cbb6493dcf48293b2c5db37
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716138"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152688"
 ---
-# <a name="developer-resources-for-language-understanding"></a>Language Understanding の開発者向けリソース
+# <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>Language Understanding (LUIS) 用の SDK、REST、CLI 開発者向けリソース
 
-開発者は、Language Understanding 用の REST API と SDK の両方を使用できます。
+SDK、REST API、CLI は、ご使用のプログラミング言語で Language Understanding (LUIS) アプリを開発する際に役立ちます。 Azure リソースと LUIS 予測を管理します。
 
 ## <a name="azure-resource-management"></a>Azure Resource Management
 
@@ -31,20 +24,53 @@ Azure Cognitive Services 管理レイヤーを使用して、Language Understand
 
 * [Azure RM PowerShell](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services)
 
+
 ## <a name="language-understanding-authoring-and-prediction-requests"></a>Language Understanding の作成と予測要求
 
-Language Understanding サービスには、作成する必要がある Azure リソースからアクセスします。 作成と予測のエンドポイント リソースという 2 つのリソースがあります。 これらのどちらのリソースでも、LUIS リソースを制御できます。
+Language Understanding サービスには、作成する必要がある Azure リソースからアクセスします。 次の 2 つのリソースがあります。
+
+* トレーニング用の**作成**リソースを使用して、作成、編集、トレーニング、公開を行います。
+* ランタイム用の**予測**を使用すると、ユーザーのテキストを送信し、予測を受け取ることができます。
 
 V3 予測エンドポイントの詳細については[こちら](luis-migration-api-v3.md)を参照してください。
+
+最も一般的なタスクについて学習し、使用するには、[Cognitive Services のサンプル コード](https://github.com/Azure-Samples/cognitive-services-quickstart-code)を使用します。
+
+### <a name="rest-specifications"></a>REST の仕様
+
+[LUIS REST 仕様](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/cognitiveservices/data-plane/LUIS)は、すべての [Azure REST 仕様](https://github.com/Azure/azure-rest-api-specs)と共に GitHub で一般提供されています。
 
 ### <a name="rest-apis"></a>REST API
 
 作成と予測の両方のエンドポイント API は、REST API から入手できます。
 
-|種類|Version|
+|Type|Version|
 |--|--|
 |Authoring|[V2](https://go.microsoft.com/fwlink/?linkid=2092087)<br>[プレビュー V3](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview)|
 |予測|[V2](https://go.microsoft.com/fwlink/?linkid=2092356)<br>[V3](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/)|
+
+### <a name="rest-endpoints"></a>REST エンドポイント
+
+現在、LUIS には次の 2 種類のエンドポイントがあります。
+
+* トレーニング エンドポイントでの作成
+* ランタイム エンドポイントでのクエリ予測。
+
+|目的|URL|
+|--|--|
+|トレーニング エンドポイントでの作成|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appID}/`|
+|V2 ランタイム - ランタイム エンドポイントでのすべての予測|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
+|V3 ランタイム - ランタイム エンドポイントでのバージョン予測|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/versions/{versionId}/predict?query={query}[&verbose][&log][&show-all-intents]`|
+|V3 ランタイム - ランタイム エンドポイントでのスロット予測|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/slots/{slotName}/predict?query={query}[&verbose][&log][&show-all-intents]`|
+
+次の表は、前の表で中かっこ `{}` で囲まれているパラメーターの説明です。
+
+|パラメーター|目的|
+|--|--|
+|`your-resource-name`|Azure リソース名|
+|`q` または `query`|チャット ボットなどのクライアント アプリケーションから送信される発話テキスト|
+|`version`|10 文字のバージョン名|
+|`slot`| `production` または `staging`|
 
 ### <a name="language-based-sdks"></a>言語ベースの SDK
 
@@ -78,7 +104,7 @@ Bot Framework には、次のような Language Understanding に役立つ[い�
 * [Dispatch](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Dispatch) - 親アプリと子アプリを管理します
 * [LUISGen](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUISGen) - LUIS の意図とエンティティのバッキング C#/Typescript クラスを自動生成します。
 * [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases) - ボット開発者が Bot Framework SDK を使用して構築されたボットをテストおよびデバッグできるデスクトップ アプリケーションです
-
+* [Bot Framework Composer](https://github.com/microsoft/BotFramework-Composer/blob/stable/README.md) - 開発者およびさまざまな分野から成るチームが Microsoft Bot Framework を使用してボットや会話エクスペリエンスを作成できるようにするのための統合開発ツールです
 
 ## <a name="next-steps"></a>次のステップ
 
