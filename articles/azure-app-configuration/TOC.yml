@@ -75,6 +75,8 @@
           href: howto-integrate-azure-managed-service-identity.md
         - name: Azure Active Directory を使用してアクセスを有効にする
           href: concept-enable-rbac.md
+        - name: Azure マネージド ID を割り当てる
+          href: overview-managed-identity.md
     - name: 高可用性
       items:
         - name: 回復性とディザスター リカバリー

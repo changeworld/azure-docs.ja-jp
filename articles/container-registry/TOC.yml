@@ -56,6 +56,8 @@
               href: container-registry-get-started-docker-cli.md
             - name: OCI 成果物のプッシュとプル
               href: container-registry-oci-artifacts.md
+            - name: ヘルム グラフのプッシュとプル
+              href: container-registry-helm-repos.md
             - name: リポジトリの表示
               href: container-registry-repositories.md
             - name: コンテナー イメージのインポート
@@ -72,8 +74,6 @@
                   href: container-registry-auto-purge.md
             - name: ACR webhook の使用
               href: container-registry-webhook.md
-            - name: Helm Chart リポジトリ (プレビュー)
-              href: container-registry-helm-repos.md
         - name: セキュリティと認証
           items:
             - name: 仮想ネットワークでのアクセスの制限 (プレビュー)

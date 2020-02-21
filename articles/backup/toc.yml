@@ -281,23 +281,23 @@
         - name: Azure Backup のレポートを構成する
           items:
             - name: Azure Backup のレポートを構成する
-              href: backup-azure-configure-reports.md
-            - name: Azure Backup レポートのデータ モデル
-              href: backup-azure-reports-data-model.md
-            - name: Azure Backup の Log Analytics データ モデル
-              href: backup-azure-log-analytics-data-model.md
+              href: configure-reports.md
         - name: Recovery Services コンテナーの診断イベントを構成する
           items:
             - name: Recovery Services コンテナーの診断設定を使用する
               href: backup-azure-diagnostic-events.md
             - name: リソース固有の診断イベントの Log Analytics データ モデル
-              href: backup-azure-log-analytics-new-data-model.md
+              href: backup-azure-reports-data-model.md
+            - name: Azure Backup の Log Analytics データ モデル (Azure Diagnostics モード)
+              href: backup-azure-diagnostics-mode-data-model.md
     - name: Automation
       items:
         - name: Azure Backup 用に組み込まれた Azure Policy
           items:
             - name: Azure Policy を使用して VM 作成時のバックアップを自動的に有効にする
               href: backup-azure-auto-enable-backup.md
+            - name: 大規模なコンテナーの診断設定を構成する
+              href: azure-policy-configure-diagnostics.md
         - name: PowerShell
           items:
             - name: Azure portal での Azure VM

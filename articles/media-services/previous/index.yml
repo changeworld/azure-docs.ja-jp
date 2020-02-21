@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: Azure Media Services v2 (legacy)
+summary: Media Services v2 に新機能は追加されません。 最新のバージョンである Media Services v3 をご確認ください。
+metadata:
+  title: Azure Media Services v2 のドキュメント
+  description: Media Services v2 を使用して、ブロードキャスト品質のビデオ ストリーミングをオンデマンドやライブで安全に行う方法について説明します。
+  services: media-services
+  ms.service: media-services
+  ms.subservice: 
+  ms.topic: landing-page
+  ms.collection: collection
+  author: Juliako
+  ms.author: juliako
+  ms.date: 02/18/2020
+  ms.openlocfilehash: c222a7c0603e9b57518993216711076659b51e4c
+  ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 02/20/2020
+  ms.locfileid: "77500775"
+landingContent:
+- title: Azure Media Services v2 について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Media Services v2 の概要
+      url: media-services-overview.md
+    - text: Media Services v3 への移行
+      url: https://docs.microsoft.com/azure/media-services/latest/migrate-from-v2-to-v3
+  - linkListType: whats-new
+    links:
+    - text: Media Services v2 の最新情報
+      url: media-services-release-notes.md
+  - linkListType: concept
+    links:
+    - text: レガシ コンポーネント
+      url: legacy-components.md
+- title: ライブ ストリーム配信
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 概要
+      url: media-services-manage-channels-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: ポータルを使用して Media Services アカウントを作成する
+      url: media-services-portal-create-account.md
+    - text: プログラムによる接続
+      url: media-services-use-aad-auth-to-access-ams-api.md
+    - text: Azure portal を使用したライブ ストリーム配信
+      url: media-services-portal-live-passthrough-get-started.md
+    - text: .NET を使用したライブ ストリーム配信
+      url: media-services-dotnet-live-encode-with-onpremises-encoders.md
+- title: ビデオ オン デマンドの配信
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure ポータルの使用
+      url: media-services-portal-vod-get-started.md
+    - text: .NET の使用
+      url: media-services-dotnet-get-started.md
+    - text: REST の使用
+      url: media-services-rest-get-started.md

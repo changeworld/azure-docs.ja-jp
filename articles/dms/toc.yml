@@ -73,7 +73,7 @@
           href: known-issues-azure-sql-db-managed-instance-online.md
         - name: 既知の問題 - Azure DB for MySQL へのオンライン移行
           href: known-issues-azure-mysql-online.md
-        - name: 既知の問題 - PostgreSQL から Azure DB for PostgreSQL 単一サーバーへのオンライン移行
+        - name: 既知の問題 - PostgreSQL から Azure DB for PostgreSQL へのオンライン移行
           href: known-issues-azure-postgresql-online.md
         - name: 既知の問題 - Oracle から Azure DB for PostgreSQL 単一サーバーへのオンライン移行
           href: known-issues-oracle-azure-postgresql-online.md

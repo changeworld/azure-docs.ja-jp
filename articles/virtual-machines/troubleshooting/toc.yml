@@ -1,217 +1,302 @@
+### YamlMime:TOC
 - name: Azure VM のトラブルシューティング
-  href: index.md
-- name: 割り当ての失敗
+  href: index.yml
+- name: デプロイ エラーのトラブルシューティング
+  items:
+    - name: Windows
+      href: troubleshoot-deploy-vm-windows.md
+    - name: Linux
+      href: troubleshoot-deploy-vm-linux.md
+    - name: 可用性セット
+      href: virtual-machines-availability-set-supportability.md
+- name: VM デプロイ ガイダンス
+  items:
+    - name: 新しい VM のデプロイ
+      items:
+        - name: Linux
+          href: troubleshoot-deployment-new-vm-linux.md
+        - name: Windows
+          href: troubleshoot-deployment-new-vm-windows.md
+    - name: VM を再デプロイする
+      items:
+        - name: Linux
+          href: redeploy-to-new-node-linux.md
+        - name: Windows
+          href: redeploy-to-new-node-windows.md
+    - name: NIC のリセット
+      href: reset-network-interface.md
+- name: 割り当てエラーのトラブルシューティングを行う
   items:
     - name: 割り当ての失敗
       href: allocation-failure.md
-    - name: クラシック デプロイの割り当ての失敗
+    - name: クラシック デプロイ モデル
       href: allocation-failure-classic.md
-    - name: 可用性セット
-      href: virtual-machines-availability-set-supportability.md
-- name: RDP
-  href: rdp.md
+- name: VM の再起動に関する問題
   items:
-    - name: RDP のリセット
-      href: reset-rdp.md
-    - name: RDP のトラブルシューティング
-      href: troubleshoot-rdp-connection.md
-    - name: RDP のトラブルシューティングの詳細
-      href: detailed-troubleshoot-rdp.md
-    - name: 無効になっている DHCP に起因する RDP エラーのトラブルシューティング
-      href: troubleshoot-rdp-dhcp-disabled.md
-    - name: NSG 設定による RDP エラーのトラブルシューティング
-      href: troubleshoot-rdp-nsg-problem.md
-    - name: 特定のエラーのトラブルシューティング
-      href: troubleshoot-specific-rdp-errors.md
-    - name: ライセンス サーバーがない問題のトラブルシューティング
-      href: troubleshoot-rdp-no-license-server.md
-    - name: リモート デスクトップ サービスの問題のトラブルシューティング
-      href: troubleshoot-remote-desktop-services-issues.md
-    - name: 内部エラーのトラブルシューティング
-      href: Troubleshoot-rdp-internal-error.md
-    - name: 接続が頻繁に切れる問題のトラブルシューティング
-      href: troubleshoot-rdp-intermittent-connectivity.md
-    - name: 一般的なエラーのトラブルシューティング
-      href: troubleshoot-rdp-general-error.md
-    - name: 認証エラーのトラブルシューティング
-      href: troubleshoot-authentication-error-rdp-vm.md
-    - name: イベント ID を使用した、Azure VM の RDP 接続に関する問題のトラブルシューティング
-      href: event-id-troubleshoot-vm-rdp-connecton.md
-    - name: 静的 IP に起因する VM の RDP エラーのトラブルシューティング
-      href: troubleshoot-rdp-static-ip.md
-    - name: 無効になっている NIC に起因する VM の RDP エラーのトラブルシューティング
-      href: troubleshoot-rdp-nic-disabled.md
-    - name: セーフ モードによる RDP エラーのトラブルシューティング
-      href: troubleshoot-rdp-safe-mode.md
-    - name: Azure VM でゲスト OS ファイアウォールを無効にする
-      href: disable-guest-os-firewall-windows.md
-    - name: ゲスト OS でファイアウォール規則を有効または無効にする
-      href: enable-disable-firewall-rule-guest-os.md
-    - name: ゲスト OS のファイアウォールが受信トラフィックをブロックしている
-      href: guest-os-firewall-blocking-inbound-traffic.md
-    - name: ゲスト OS のファイアウォールが正しく構成されていない
-      href: guest-os-firewall-misconfigured.md
-    - name: netvsc.sys による RDP エラーのトラブルシューティング
-      href: troubleshoot-rdp-driver-netvsc.md
-- name: SSH
-  items:
-    - name: SSH のトラブルシューティング
-      href: troubleshoot-ssh-connection.md
-    - name: ファイル システム エラーのトラブルシューティング
-      href: linux-recovery-cannot-start-file-system-errors.md
-    - name: カーネルに関連するブートの問題のトラブルシューティング
-      href: 'https://support.microsoft.com/help/4091524'
-    - name: LVM で構成された VM の回復とブートなし
-      href: chroot-logical-volume-manager.md
-    - name: fstab エラーのトラブルシューティング
-      href: linux-virtual-machine-cannot-start-fstab-errors.md
-    - name: SSH のトラブルシューティングの詳細
-      href: detailed-troubleshoot-ssh-connection.md
-- name: 一般的なエラー メッセージ
-  href: error-messages.md
-- name: Azure VM のパフォーマンスに関する問題のトラブルシューティング
-  items:
-    - name: Linux または Windows のパフォーマンスに関する問題
-      href: troubleshoot-performance-virtual-machine-linux-windows.md
-    - name: パフォーマンス診断
-      href: performance-diagnostics.md
-- name: 32 ビット オペレーティング システムのサポート
-  href: support-32-bit-operating-systems-virtual-machines.md
-- name: PerfInsights
-  items:
-    - name: Windows
-      items:
-        - name: PerfInsights を使用する方法
-          href: how-to-use-perfinsights.md
-        - name: パフォーマンス診断拡張機能
-          href: performance-diagnostics-vm-extension.md
-    - name: Linux
-      items:
-        - name: PerfInsights を使用する方法
-          href: how-to-use-perfinsights-linux.md
-- name: Windows VM エージェントのオフライン インストール
-  href: install-vm-agent-offline.md
-- name: VM を再デプロイする
-  items:
-    - name: Linux
-      href: redeploy-to-new-node-linux.md
-    - name: Windows
-      href: redeploy-to-new-node-windows.md
-- name: VM パスワードのリセット
-  items:
-    - name: Windows
-      href: reset-local-password-without-agent.md
-    - name: Linux
-      href: reset-password.md
-- name: NIC のリセット
-  href: reset-network-interface.md
-- name: VM の再起動またはサイズ変更
-  href: restart-resize-error-troubleshooting.md
-- name: シリアル コンソール
-  items:
-    - name: シリアル コンソールの概要
-      href: serial-console-overview.md
-    - name: Linux 用シリアル コンソール
-      href: serial-console-linux.md
-      items:
-        - name: シリアル コンソール GRUB/シングル ユーザー モード
-          href: serial-console-grub-single-user-mode.md
-        - name: シリアル コンソール NMI/SysRq
-          href: serial-console-nmi-sysrq.md
-        - name: シリアル コンソールの grub プロアクティブ構成
-          href: serial-console-grub-proactive-configuration.md
-    - name: Windows 用シリアル コンソール
-      href: serial-console-windows.md
-      items:
-        - name: CMD と PowerShell コマンド
-          href: serial-console-cmd-ps-commands.md
-    - name: シリアル コンソールの有効化と無効化
-      href: serial-console-enable-disable.md
-    - name: シリアル コンソール内の電源オプション
-      href: serial-console-power-options.md
-    - name: シリアル コンソールに関する一般的なエラー
-      href: serial-console-errors.md
-- name: ストレージ リソースの削除時のエラー
-  href: storage-resource-deletion-errors.md
-- name: クラシック ストレージ リソースの削除時のエラー
-  href: storage-classic-cannot-delete-storage-account-container-vhd.md
-- name: VM の再起動に関する問題のトラブルシューティング
+    - name: VM の再起動またはサイズ変更
+      href: restart-resize-error-troubleshooting.md
+    - name: サービスの再起動、シャットダウン、または停止
+      href: boot-error-troubleshoot-windows.md
+- name: 予期しない再起動
   items:
     - name: 接続された VHD による VM の予期しない再起動
       href: unexpected-reboots-attached-vhds.md
     - name: システムの再起動を理解する
       href: understand-vm-reboot.md
-- name: Windows のライセンス認証
+- name: VM を開始または停止できない
+  items:
+    - name: Azure Automation を使用した VM の開始/停止
+      href: ../../automation/troubleshoot/start-stop-vm.md
+    - name: VM の再起動またはサイズ変更
+      href: restart-resize-error-troubleshooting.md
+    - name: クラシック デプロイの割り当ての失敗
+      href: allocation-failure-classic.md
+    - name: VM の起動が停止しています
+      href: troubleshoot-vm-boot-configure-update.md
+    - name: VM のライフサイクルと状態
+      href: ../windows/states-lifecycle.md
+- name: VM が起動しない
+  items:
+    - name: Linux
+      href: boot-error-troubleshoot-linux.md
+      items:
+        - name: Grub の復旧
+          href: troubleshoot-vm-boot-error.md
+    - name: Windows
+      href: boot-error-troubleshoot.md
+      items:
+        - name: ブート診断
+          href: boot-diagnostics.md
+        - name: BitLocker のエラー
+          href: troubleshoot-bitlocker-boot-error.md
+        - name: ファイル システム エラーのチェック
+          href: troubleshoot-check-disk-boot-error.md
+        - name: ブルー スクリーン エラー
+          href: troubleshoot-common-blue-screen-error.md
+        - name: VM の起動が停止しています
+          href: troubleshoot-vm-boot-configure-update.md
+        - name: 重要なサービスが失敗しました
+          href: troubleshoot-critical-service-failed-boot-error.md
+        - name: 再起動ループ
+          href: troubleshoot-reboot-loop.md
+        - name: Windows Update でのスタック
+          href: troubleshoot-stuck-updating-boot-error.md
+- name: VM に接続できない
+  items:
+    - name: RDP
+      href: rdp.md
+      items:
+        - name: RDP のリセット
+          href: reset-rdp.md
+        - name: RDP のトラブルシューティング
+          href: troubleshoot-rdp-connection.md
+        - name: RDP のトラブルシューティングの詳細
+          href: detailed-troubleshoot-rdp.md
+        - name: 無効になっている DHCP に起因する RDP エラーのトラブルシューティング
+          href: troubleshoot-rdp-dhcp-disabled.md
+        - name: NSG 設定による RDP エラーのトラブルシューティング
+          href: troubleshoot-rdp-nsg-problem.md
+        - name: 特定のエラーのトラブルシューティング
+          href: troubleshoot-specific-rdp-errors.md
+        - name: ライセンス サーバーがない問題のトラブルシューティング
+          href: troubleshoot-rdp-no-license-server.md
+        - name: リモート デスクトップ サービスの問題のトラブルシューティング
+          href: troubleshoot-remote-desktop-services-issues.md
+        - name: 内部エラーのトラブルシューティング
+          href: Troubleshoot-rdp-internal-error.md
+        - name: 接続が頻繁に切れる問題のトラブルシューティング
+          href: troubleshoot-rdp-intermittent-connectivity.md
+        - name: 一般的なエラーのトラブルシューティング
+          href: troubleshoot-rdp-general-error.md
+        - name: 認証エラーのトラブルシューティング
+          href: troubleshoot-authentication-error-rdp-vm.md
+        - name: イベント ID を使用した、Azure VM の RDP 接続に関する問題のトラブルシューティング
+          href: event-id-troubleshoot-vm-rdp-connecton.md
+        - name: 静的 IP に起因する VM の RDP エラーのトラブルシューティング
+          href: troubleshoot-rdp-static-ip.md
+        - name: 無効になっている NIC に起因する VM の RDP エラーのトラブルシューティング
+          href: troubleshoot-rdp-nic-disabled.md
+        - name: セーフ モードによる RDP エラーのトラブルシューティング
+          href: troubleshoot-rdp-safe-mode.md
+        - name: Azure VM でゲスト OS ファイアウォールを無効にする
+          href: disable-guest-os-firewall-windows.md
+        - name: ゲスト OS でファイアウォール規則を有効または無効にする
+          href: enable-disable-firewall-rule-guest-os.md
+        - name: ゲスト OS のファイアウォールが受信トラフィックをブロックしている
+          href: guest-os-firewall-blocking-inbound-traffic.md
+        - name: ゲスト OS のファイアウォールが正しく構成されていない
+          href: guest-os-firewall-misconfigured.md
+        - name: netvsc.sys による RDP エラーのトラブルシューティング
+          href: troubleshoot-rdp-driver-netvsc.md
+    - name: SSH
+      items:
+        - name: SSH のトラブルシューティング
+          href: troubleshoot-ssh-connection.md
+        - name: ファイル システム エラーのトラブルシューティング
+          href: linux-recovery-cannot-start-file-system-errors.md
+        - name: カーネルに関連するブートの問題のトラブルシューティング
+          href: 'https://support.microsoft.com/help/4091524'
+        - name: LVM で構成された VM の回復とブートなし
+          href: chroot-logical-volume-manager.md
+        - name: fstab エラーのトラブルシューティング
+          href: linux-virtual-machine-cannot-start-fstab-errors.md
+        - name: SSH のトラブルシューティングの詳細
+          href: detailed-troubleshoot-ssh-connection.md
+    - name: アプリケーション アクセスに関する問題
+      href: troubleshoot-app-connection.md
+- name: VM のパスワード リセットに関するヘルプ
+  items:
+    - name: Windows
+      href: reset-local-password-without-agent.md
+    - name: Linux
+      href: reset-password.md
+    - name: VM の復旧方法
+      items:
+        - name: Windows
+          items:
+            - name: PowerShell
+              href: troubleshoot-recovery-disks-windows.md
+            - name: Azure portal
+              href: troubleshoot-recovery-disks-portal-windows.md
+        - name: Linux
+          items:
+            - name: CLI
+              href: troubleshoot-recovery-disks-linux.md
+            - name: Azure portal
+              href: troubleshoot-recovery-disks-portal-linux.md
+        - name: デバイス名が変更されている
+          href: troubleshoot-device-names-problems.md
+- name: 仮想ディスクの管理の問題
+  items:
+    - name: 概要
+      href: ../windows/managed-disks-overview.md
+    - name: よく寄せられる質問
+      href: ../windows/faq-for-disks.md
+    - name: ストレージ リソースの削除時のエラー
+      href: storage-resource-deletion-errors.md
+    - name: クラシック ストレージ リソースの削除時のエラー
+      href: storage-classic-cannot-delete-storage-account-container-vhd.md
+    - name: 入れ子になった仮想化の使用
+      href: troubleshoot-vm-by-use-nested-virtualization.md
+- name: VM のパフォーマンスの問題
+  items:
+    - name: Azure VM のパフォーマンスに関する問題のトラブルシューティング
+      items:
+        - name: Linux または Windows のパフォーマンスに関する問題
+          href: troubleshoot-performance-virtual-machine-linux-windows.md
+        - name: パフォーマンス診断
+          href: performance-diagnostics.md
+    - name: PerfInsights
+      items:
+        - name: Windows
+          items:
+            - name: PerfInsights を使用する方法
+              href: how-to-use-perfinsights.md
+            - name: パフォーマンス診断拡張機能
+              href: performance-diagnostics-vm-extension.md
+        - name: Linux
+          items:
+            - name: PerfInsights を使用する方法
+              href: how-to-use-perfinsights-linux.md
+- name: VM 拡張機能の問題
+  items:
+    - name: Azure 拡張機能の概要
+      href: ../extensions/overview.md
+    - name: 拡張機能に関する問題のトラブルシューティング
+      href: ../extensions/troubleshoot.md
+    - name: Windows VM エージェントのオフライン インストール
+      href: install-vm-agent-offline.md
+- name: バックアップと復元
+  items:
+    - name: Azure VM でのバックアップ エラーのトラブルシューティング
+      href: ../../backup/backup-azure-vms-troubleshoot.md
+- name: コマンドを使用して VM を修復する
+  items:
+    - name: Windows
+      href: repair-windows-vm-using-azure-virtual-machine-repair-commands.md
+    - name: Linux
+      href: repair-linux-vm-using-azure-virtual-machine-repair-commands.md
+- name: Windows のライセンス認証の問題
   items:
     - name: Windows のライセンス認証に関する問題
       href: troubleshoot-activation-problems.md
     - name: 強制トンネリングを使用したアクティブ化の問題
       href: custom-routes-enable-kms-activation.md
-- name: アプリケーション アクセスに関する問題
-  href: troubleshoot-app-connection.md
-- name: 新しい VM のデプロイ
-  items:
-    - name: Linux
-      href: troubleshoot-deployment-new-vm-linux.md
-    - name: Windows
-      href: troubleshoot-deployment-new-vm-windows.md
-- name: デプロイのトラブルシューティング
-  items:
-    - name: Linux
-      href: troubleshoot-deploy-vm-linux.md
-    - name: Windows
-      href: troubleshoot-deploy-vm-windows.md
-- name: デバイス名が変更されている
-  href: troubleshoot-device-names-problems.md
-- name: VM の復旧方法
-  items:
-    - name: Windows
-      items:
-        - name: PowerShell
-          href: troubleshoot-recovery-disks-windows.md
-        - name: Azure portal
-          href: troubleshoot-recovery-disks-portal-windows.md
-    - name: Linux
-      items:
-        - name: CLI
-          href: troubleshoot-recovery-disks-linux.md
-        - name: Azure portal
-          href: troubleshoot-recovery-disks-portal-linux.md
-- name: ブート エラー (Linux)
-  href: boot-error-troubleshoot-linux.md
-  items:
-    - name: Grub の復旧
-      href: troubleshoot-vm-boot-error.md
-- name: ブート エラー (Windows)
-  href: boot-error-troubleshoot.md
-  items:
-    - name: ブート診断
-      href: boot-diagnostics.md
-    - name: BitLocker のエラー
-      href: troubleshoot-bitlocker-boot-error.md
-    - name: ファイル システム エラーのチェック
-      href: troubleshoot-check-disk-boot-error.md
-    - name: ブルー スクリーン エラー
-      href: troubleshoot-common-blue-screen-error.md
-    - name: VM の起動が停止しています
-      href: troubleshoot-vm-boot-configure-update.md
-    - name: 重要なサービスが失敗しました
-      href: troubleshoot-critical-service-failed-boot-error.md
-    - name: 再起動ループ
-      href: troubleshoot-reboot-loop.md
-    - name: サービスの再起動、シャットダウン、または停止
-      href: boot-error-troubleshoot-windows.md
-    - name: Windows Update でのスタック
-      href: troubleshoot-stuck-updating-boot-error.md
-- name: 調整エラー
-  href: troubleshooting-throttling-errors.md
-- name: 入れ子になった仮想化の使用
-  href: troubleshoot-vm-by-use-nested-virtualization.md
 - name: リモートのトラブルシューティング ツール
   href: remote-tools-troubleshoot-azure-vm-issues.md
-- name: 仮想マシンの修復
   items:
-    - name: Azure 仮想マシンの修復コマンドを使用して Windows VM を修復する
-      href: repair-windows-vm-using-azure-virtual-machine-repair-commands.md
-    - name: Azure 仮想マシンの修復コマンドを使用して Linux VM を修復する
-      href: repair-linux-vm-using-azure-virtual-machine-repair-commands.md
+    - name: シリアル コンソール
+      items:
+        - name: 概要
+          href: serial-console-overview.md
+        - name: Linux 用シリアル コンソール
+          href: serial-console-linux.md
+          items:
+            - name: シリアル コンソール GRUB/シングル ユーザー モード
+              href: serial-console-grub-single-user-mode.md
+            - name: シリアル コンソール NMI/SysRq
+              href: serial-console-nmi-sysrq.md
+            - name: シリアル コンソールの grub プロアクティブ構成
+              href: serial-console-grub-proactive-configuration.md
+        - name: Windows 用シリアル コンソール
+          href: serial-console-windows.md
+          items:
+            - name: CMD と PowerShell コマンド
+              href: serial-console-cmd-ps-commands.md
+        - name: シリアル コンソールの有効化と無効化
+          href: serial-console-enable-disable.md
+        - name: シリアル コンソール内の電源オプション
+          href: serial-console-power-options.md
+        - name: シリアル コンソールに関する一般的なエラー
+          href: serial-console-errors.md
+- name: Azure Disk Encryption の問題
+  items:
+    - name: Windows
+      items:
+        - name: 概要
+          href: ../windows/disk-encryption-overview.md
+        - name: '[トラブルシューティング]'
+          href: ../windows/disk-encryption-troubleshooting.md
+        - name: よく寄せられる質問
+          href: ../windows/disk-encryption-faq.md
+    - name: Linux
+      items:
+        - name: 概要
+          href: ../linux/disk-encryption-overview.md
+        - name: '[トラブルシューティング]'
+          href: ../linux/disk-encryption-troubleshooting.md
+        - name: よく寄せられる質問
+          href: ../linux/disk-encryption-faq.md
+- name: クォータの増加
+  items:
+    - name: コンピューティング vCPU の上限を引き上げる
+      items:
+        - name: Resource Manager デプロイ モデル
+          items:
+            - name: VM シリーズ vCPU の上限を引き上げる
+              href: ../../azure-portal/supportability/per-vm-quota-requests.md
+            - name: リージョンにおける合計 vCPU の上限を引き上げる
+              href: ../../azure-portal/supportability/regional-quota-requests.md
+            - name: スポットのクォータの上限を引き上げる
+              href: ../../azure-portal/supportability/low-priority-quota.md
+        - name: クラシック デプロイ モデル
+          href: ../../azure-portal/supportability/classic-deployment-model-quota-increase-requests.md
+    - name: ネットワークの上限を引き上げる
+      href: ../../azure-portal/supportability/networking-quota-requests.md
+- name: 移行と移動の問題
+  items:
+    - name: Azure Resource Manager の移行 (ASM から ARM) に関する FAQ
+      href: ../windows/migration-classic-resource-manager-overview.md
+- name: 計画メンテナンス
+  items:
+    - name: 概要
+      href: ../maintenance-notifications.md
+- name: 一般的なエラー メッセージ
+  href: error-messages.md
+  items:
+    - name: 調整エラー
+      href: troubleshooting-throttling-errors.md
+- name: サポート ステートメント
+  items:
+    - name: 32 ビット オペレーティング システムのサポート
+      href: support-32-bit-operating-systems-virtual-machines.md

@@ -81,6 +81,9 @@
         - name: SAML サービス プロバイダーを登録する
           href: connect-with-saml-service-providers.md
           displayName: 'SP, RP, service provider, connect'
+        - name: Graph アプリケーションを登録する
+          href: microsoft-graph-get-started.md
+          displayName: 'migrate, migration, microsoft graph'
         - name: Web API アプリケーションを追加する
           href: add-web-application.md
         - name: ネイティブ クライアント アプリケーションを追加する
@@ -377,8 +380,6 @@
       items:
         - name: ユーザーを移行する
           href: user-migration.md
-        - name: 外部 ID を持つユーザーの移行
-          href: migrate-social-identities.md
 - name: リファレンス
   items:
     - name: Identity Experience Framework のリリース ノート
@@ -392,9 +393,11 @@
       displayName: 'cookies, SameSite'
     - name: エラー コード
       href: error-codes.md
+    - name: Microsoft Graph API の操作
+      href: microsoft-graph-operations.md
     - name: 利用可能なリージョンとデータの保存場所
       href: data-residency.md
-    - name: 課金の有効化
+    - name: 課金モデル
       href: billing.md
     - name: 脅威管理
       href: threat-management.md
