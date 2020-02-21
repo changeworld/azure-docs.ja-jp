@@ -13,7 +13,7 @@ ms.locfileid: "75436387"
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Azure Kubernetes Service に対する Azure Policy の理解
 
 Azure Policy は [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) (AKS) と統合することにより、一元的な一貫性のある方法でクラスターを大規模に適用して保護できます。
-[Gatekeeper](https://github.com/open-policy-agent/gatekeeper/tree/master/deprecated) v2 ([Open Policy Agent](https://www.openpolicyagent.org/) (OPA) のための_アドミッション コントローラー Webhook_) の使用を拡張することにより、Azure Policy では Azure リソースおよび AKS クラスターのコンプライアンスの状態を 1 つの場所から管理および報告することが可能になります。
+[Gatekeeper](https://github.com/open-policy-agent/gatekeeper/tree/master/deprecated) v2 ([Open Policy Agent](https://www.openpolicyagent.org/) (OPA) のための _アドミッション コントローラー Webhook_) の使用を拡張することにより、Azure Policy では Azure リソースおよび AKS クラスターのコンプライアンスの状態を 1 つの場所から管理および報告することが可能になります。
 
 > [!NOTE]
 > AKS 用の Azure Policy は限定プレビューで、組み込みのポリシー定義のみをサポートします。
@@ -80,7 +80,7 @@ Azure Policy アドオンをインストールするか、いずれかのサー�
 
 ## <a name="azure-policy-add-on"></a>Azure Policy アドオン
 
-Kubernetes 用の _Azure Policy アドオン_を使って、Azure Policy サービスを Gatekeeper アドミッション コントローラーに接続します。 _azure-policy_ 名前空間にインストールされるこのアドオンは、次の機能を実行します。
+Kubernetes 用の _Azure Policy アドオン_ を使って、Azure Policy サービスを Gatekeeper アドミッション コントローラーに接続します。 _azure-policy_ 名前空間にインストールされるこのアドオンは、次の機能を実行します。
 
 - Azure Policy で AKS クラスターへの割り当てをチェックします
 - _rego_ ポリシー定義などのポリシー詳細をダウンロードし、**configmaps** としてキャッシュします
@@ -153,7 +153,7 @@ AKS クラスターにアドオンをインストールする前に、プレビ�
 アドオンは5 分おきに、ポリシーの割り当ての変更について Azure Policy でチェックインします。 この更新サイクル中に、アドオンによって _azure-policy_ 名前空間のすべての _configmaps_ が削除され、Gatekeeper で使用される _configmaps_ が再作成されます。
 
 > [!NOTE]
-> _クラスター管理者_は _azure-policy_ 名前空間に対する権限を持つ場合がありますが、名前空間を変更することは推奨されず、サポートもされません。 手動で行ったすべての変更は、更新サイクル中に失われます。
+> _クラスター管理者_ は _azure-policy_ 名前空間に対する権限を持つ場合がありますが、名前空間を変更することは推奨されず、サポートもされません。 手動で行ったすべての変更は、更新サイクル中に失われます。
 
 アドオンは 5 分ごとにクラスターのフル スキャンを呼び出します。 アドオンを使うと、フル スキャンの詳細情報と、クラスターに試行された変更についての Gatekeeper によるすべてのリアルタイム評価が収集された後、すべての Azure Policy 割り当てと同様に、[[ポリシー準拠状況の詳細]](../how-to/get-compliance-data.md) に含めるために、結果が Azure Policy に報告されます。 アクティブなポリシー割り当ての結果のみが監査サイクル中に返されます。
 
