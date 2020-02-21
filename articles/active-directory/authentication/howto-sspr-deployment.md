@@ -35,7 +35,7 @@ SSPR の主な機能は次のとおりです。
 
 ## <a name="learn-about-sspr"></a>SSPR の詳細
 
-SSPR の詳細を参照してください。 「[動作のしくみ:Azure AD のセルフサービス パスワード リセット のクイック スタート](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks)に関する記事をご覧ください。
+SSPR の詳細を参照してください。 「[動作のしくみ:Azure AD のセルフ サービスによるパスワードのリセット](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks)をご覧ください。
 
 ### <a name="key-benefits"></a>主な利点
 
