@@ -31,7 +31,7 @@ ms.locfileid: "74482881"
 
 1. リソースを作成します。
 
-    #### <a name="multi-service-resourcetabmultiservice"></a>[マルチサービス リソース](#tab/multiservice)
+    #### <a name="multi-service-resource"></a>[マルチサービス リソース](#tab/multiservice)
     
     マルチサービス リソースには、ポータルで **Cognitive Services** という名前が付けられます。 [Cognitive Services リソースを作成します](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)。
     
@@ -43,7 +43,7 @@ ms.locfileid: "74482881"
     | Translator Text  | Bing Search v7 <br>(Web、画像、ニュース、ビデオ、ビジュアル) | Bing Custom Search | Bing Entity Search            | Bing Autosuggest |
     | Bing Spell Check |                                                      |                    |                               |                  |
     
-    #### <a name="single-service-resourcetabsingleservice"></a>[単一サービス リソース](#tab/singleservice)
+    #### <a name="single-service-resource"></a>[単一サービス リソース](#tab/singleservice)
 
     以下のリンクを使用して、利用可能な Cognitive Services のリソースを作成します。
 
@@ -58,21 +58,21 @@ ms.locfileid: "74482881"
 
 3. **[作成]** ページで、次の情報を指定します。
 
-    #### <a name="multi-service-resourcetabmultiservice"></a>[マルチサービス リソース](#tab/multiservice)
+    #### <a name="multi-service-resource"></a>[マルチサービス リソース](#tab/multiservice)
 
     |    |    |
     |--|--|
-    | **Name** | Cognitive Sservices リソースのわかりやすい名前。 例: *MyCognitiveServicesResource*。 |
+    | **名前** | Cognitive Sservices リソースのわかりやすい名前。 例: *MyCognitiveServicesResource*。 |
     | **サブスクリプション** | 使用できる Azure サブスクリプションのいずれかを選択します。 |
-    | **Location** | Cognitive Services インスタンスの場所。 別の場所を選択すると待機時間が生じる可能性がありますが、リソースのランタイムの可用性には影響しません。 |
-    | **[価格レベル]** | Cognitive Services アカウントのコストは、選択しているオプションと使用量によって異なります。 詳細については、「[API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/)」をご覧ください。
+    | **場所** | Cognitive Services インスタンスの場所。 別の場所を選択すると待機時間が生じる可能性がありますが、リソースのランタイムの可用性には影響しません。 |
+    | **価格レベル** | Cognitive Services アカウントのコストは、選択しているオプションと使用量によって異なります。 詳細については、「[API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/)」をご覧ください。
     | **リソース グループ** | Cognitive Services リソースを含むことになる Azure リソース グループ。 新しいグループを作成することも、既存のグループに追加することもできます。 |
 
     ![リソース作成画面](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
 
     **Create** をクリックしてください。
 
-    #### <a name="single-service-resourcetabsingleservice"></a>[単一サービス リソース](#tab/singleservice)
+    #### <a name="single-service-resource"></a>[単一サービス リソース](#tab/singleservice)
 
     |    |    |
     |--|--|
