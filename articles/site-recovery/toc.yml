@@ -493,6 +493,8 @@
       href: /powershell/module/az.recoveryservices
     - name: AzureRM PowerShell
       href: /powershell/module/AzureRM.RecoveryServices
+    - name: Resource Manager テンプレート
+      href: /azure/templates/microsoft.recoveryservices/allversions
     - name: REST
       href: /rest/api/site-recovery
 - name: 関連項目
@@ -508,7 +510,7 @@
     - name: フォーラム
       href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hypervrecovmgr'
     - name: ラーニング パス
-      href: 'https://azure.microsoft.com/documentation/learning-paths/site-recovery/'
+      href: /learn/azure/
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/site-recovery/'
     - name: 料金計算ツール

@@ -6,12 +6,14 @@
       href: overview.md
 - name: クイックスタート
   items:
-    - name: 特定のアプリで MFA を必須にする
-      href: app-based-mfa.md
     - name: 使用条件への同意を必須にする
       href: require-tou.md
     - name: セッションのリスクが検出されたときにアクセスをブロックする
       href: app-sign-in-risk.md
+- name: チュートリアル
+  items:
+    - name: Azure Multi-Factor Authentication を必須とする
+      href: /authentication/tutorial-enable-azure-mfa.md?toc=/azure/conditional-access/toc.json&bc=/azure/conditional-access/breadcrumb/toc.json
 - name: 概念
   expanded: false
   items:
