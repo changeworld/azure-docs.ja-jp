@@ -34,7 +34,7 @@ ms.locfileid: "77199417"
 
 そのため、スタンプの有効期間中、スタンプの測定は Windows と Linux とで変わる可能性があります。
 
-スタンプ上に 1 つ以上の Windows worker がある場合は、Windows スタンプ予約を購入します。 Linux スタンプ予約を購入する必要があるのは、スタンプに Linux worker _のみ_を使用する予定の場合だけです。
+スタンプ上に 1 つ以上の Windows worker がある場合は、Windows スタンプ予約を購入します。 Linux スタンプ予約を購入する必要があるのは、スタンプに Linux worker _のみ_ を使用する予定の場合だけです。
 
 ## <a name="buy-isolated-stamp-reserved-capacity"></a>Isolated スタンプの予約容量を購入する
 
