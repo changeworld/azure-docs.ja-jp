@@ -321,7 +321,7 @@ ResourceGroups    : ResourceGroup
 
 ## <a name="remove-blueprint-assignments"></a>ブループリント割り当てを削除する
 
-ブループリント割り当てを削除するときは、`Remove-AzBlueprintAssignment` コマンドレットがこのアクションを処理します。 このコマンドレットは、削除するブループリント割り当てを指定するために **Name** と **InputObject** のどちらかを取ります。 **SubscriptionId** は_必須_であり、すべての場合で指定する必要があります。
+ブループリント割り当てを削除するときは、`Remove-AzBlueprintAssignment` コマンドレットがこのアクションを処理します。 このコマンドレットは、削除するブループリント割り当てを指定するために **Name** と **InputObject** のどちらかを取ります。 **SubscriptionId** は _必須_ であり、すべての場合で指定する必要があります。
 
 次の例では、`Get-AzBlueprintAssignment` で既存のブループリント割り当てをフェッチした後、`{subId}` と表される特定のサブスクリプションからこれを削除します。
 
