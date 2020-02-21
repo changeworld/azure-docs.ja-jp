@@ -15,7 +15,7 @@ ms.locfileid: "77170150"
 [value](../concepts/definition-structure.md#value) 演算子は、[パラメーター](../concepts/definition-structure.md#parameters)、[サポートされているテンプレート関数](../concepts/definition-structure.md#policy-functions)、またはリテラルを、与えられた[条件](../concepts/definition-structure.md#conditions)に合うように、指定した値に評価します。
 
 > [!WARNING]
-> _テンプレート関数_の結果がエラーの場合、ポリシーの評価は失敗します。 評価の失敗は、暗黙的な **deny** です。 詳細については、「[テンプレート エラーの回避](../concepts/definition-structure.md#avoiding-template-failures)」を参照してください。
+> _テンプレート関数_ の結果がエラーの場合、ポリシーの評価は失敗します。 評価の失敗は、暗黙的な **deny** です。 詳細については、「[テンプレート エラーの回避](../concepts/definition-structure.md#avoiding-template-failures)」を参照してください。
 
 ## <a name="sample-policy-definition"></a>ポリシー定義の例
 
