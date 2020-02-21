@@ -216,7 +216,7 @@ az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' |
 Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-これらの結果は、Resource Manager テンプレートや Azure Resource Explorer を使用した場合と似ています。 しかし、Azure Resource Graph の結果には、_エイリアス_配列を_プロジェクションする_ことで、"[エイリアス](../concepts/definition-structure.md#aliases)" の詳細を含めることもできます。
+これらの結果は、Resource Manager テンプレートや Azure Resource Explorer を使用した場合と似ています。 しかし、Azure Resource Graph の結果には、_エイリアス_ 配列を _プロジェクションする_ ことで、"[エイリアス](../concepts/definition-structure.md#aliases)" の詳細を含めることもできます。
 
 ```kusto
 Resources
