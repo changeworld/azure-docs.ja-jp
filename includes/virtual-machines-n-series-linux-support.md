@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 224180bdebdf94c6d2360df8ea6615add4675921
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 5dccdb6c357635e78b076b1560bf6c0c62c03753
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72902225"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77135154"
 ---
 ## <a name="supported-distributions-and-drivers"></a>サポートされているディストリビューションとドライバー
 
@@ -24,7 +24,7 @@ NC、NCv2、NCv3、ND、および NDv2 シリーズ VM (NV シリーズではオ
 > [!TIP]
 > CUDA ドライバーを手動で Linux VM にインストールする代わりに、Azure [データ サイエンス仮想マシン](../articles/machine-learning/data-science-virtual-machine/overview.md) イメージをデプロイすることもできます。 Ubuntu 16.04 LTS または CentOS 7.4 用の DSVM エディションでは、NVIDIA CUDA ドライバーや CUDA Deep Neural Network ライブラリなどのツールが事前にインストールされています。
 
-| ディストリビューション | ドライバー |
+| Distribution | Driver |
 | --- | -- | 
 | Ubuntu 16.04 LTS、18.04 LTS<br/><br/> Red Hat Enterprise Linux 7.3、7.4、7.5、7.6<br/><br/> CentOS-based 7.3、7.4、7.5、7.6、CentOS-based 7.4 HPC | NVIDIA CUDA 10.1、ドライバー ブランチ R418 |
 
@@ -32,9 +32,9 @@ NC、NCv2、NCv3、ND、および NDv2 シリーズ VM (NV シリーズではオ
 
 Microsoft では、仮想ワークステーションまたは仮想アプリケーションとして使用される NV および NVv3 シリーズ VM 用の NVIDIA GRID ドライバーのインストーラーを再分配します。 次の表に記載されているオペレーティング システム上でのみ、これらの GRID ドライバーを Azure NV VM にインストールします。 これらのドライバーには、Azure での GRID 仮想 GPU ソフトウェアのライセンスが含まれています。 NVIDIA vGPU ソフトウェア ライセンス サーバーを設定する必要はありません。
 
-| ディストリビューション | ドライバー |
+| Distribution | Driver |
 | --- | -- |
-|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.0 - 7.6<br/><br/>CentOS-based 7.0 - 7.6<br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVIDIA GRID 9.1、ドライバー ブランチ R430|
+|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.0 - 7.6<br/><br/>CentOS-based 7.0 - 7.6<br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVIDIA GRID 10.1、ドライバー ブランチ R440|
 
 > [!WARNING] 
 > サード パーティ製ソフトウェアを Red Hat 製品にインストールすると、Red Hat サポート条件に影響を与えることがあります。 [Red Hat のサポート技術情報記事](https://access.redhat.com/articles/1067)を参照してください。

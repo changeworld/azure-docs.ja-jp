@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 789af25cc37183e9eeae253e1e8529615abdd308
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4a117e7f69647af3ad82f9013bfa40556ccc0dbd
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849804"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152892"
 ---
 # <a name="durable-functions-versions-overview"></a>Durable Functions のバージョンの概要
 
@@ -59,6 +59,10 @@ Durable Functions 2.x では、新しいホストの json スキーマが使用�
 * イベント グリッド通知構成用の `"notifications"` (および `"eventGrid"` サブセクション)
 
 詳細については、[Durable Functions host. json のリファレンス ドキュメント](durable-functions-bindings.md#durable-functions-2-0-host-json)を参照してください。
+
+#### <a name="default-taskhub-name-changes"></a>既定のタスクハブ名の変更
+
+バージョン 1.x では、タスクハブ名が host.json で指定されていない場合、既定で "DurableFunctionsHub" になっていました。 バージョン 2.x では、既定のタスク ハブ名は関数アプリの名前から派生するようになりました。 このため、2.x にアップグレードするときにタスク ハブ名を指定していない場合、コードは新しいタスク ハブで動作し、すべての実行中のオーケストレーションでは、アプリケーションがそれらを処理しなくなります。 この問題を回避するには、タスク ハブ名を v1.x の既定値 "DurableFunctionsHub" に明示的に設定するか、実行中のオーケストレーションの重大な変更を処理する方法についての詳細が記載されている、[ダウンタイムのないデプロイのガイダンス](durable-functions-zero-downtime-deployment.md)に関する記事に従うことができます。
 
 #### <a name="public-interface-changes-net-only"></a>パブリック インターフェイスの変更 (.NET のみ)
 

@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/28/2019
+ms.date: 02/07/2020
 ms.author: radeltch
-ms.openlocfilehash: 179df26eb0cc75899c9b509ebe00410ffa916dc8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 52179f15829981d59ff060784a49eccef89bb186
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935194"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083723"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続
 
@@ -106,7 +106,7 @@ VM からの発信呼び出しにアクセスできるパブリック エンド�
     az network lb outbound-rule create --address-pool MyBackendPoolOfPublicILB --frontend-ip-configs MyPublicILBFrondEndIP --idle-timeout 30 --lb-name MyPublicILB --name MyOutBoundRules  --outbound-ports 10000 --enable-tcp-reset true --protocol All --resource-group MyResourceGroup
    ```
 
-4. 特定のパブリック エンドポイントへのアクセスを制限するネットワーク セキュリティ グループの規則を作成します。 既存のネットワーク セキュリティ グループがある場合は、それを調整できます。 次の例では、Azure 管理 API に対してのみアクセスを許可する方法を示します。 
+4. 特定のパブリック エンドポイントへのアクセスを制限するネットワーク セキュリティ グループの規則を作成します。 既存のネットワーク セキュリティ グループがある場合は、それを調整できます。 次の例では、Azure 管理 API に対してのみアクセスを有効にする方法を示します。 
    1. [ネットワーク セキュリティ グループ] に移動します
    1. [送信セキュリティ規則] をクリックします
    1. **インターネット**へのすべての送信アクセスを**拒否する**規則を追加します。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/08/2019
-ms.openlocfilehash: b026ef7dbbe850f0d2d1cb67ec8ca93b14ef879a
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 96d0124941f9f2daa1e1b2d1d254b0b767ffb395
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044896"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111570"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure の Office 365 管理ソリューション (プレビュー)
 
@@ -21,7 +21,7 @@ ms.locfileid: "76044896"
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>ソリューションの更新
-> このソリューションは、[Azure Sentinel](../../sentinel/overview.md) の [Office 365](../../sentinel/connect-office-365.md) 一般公開ソリューション、および [Azure AD レポートおよび監視ソリューション](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)に置き換えられました。 これらのソリューションにより、以前の Azure Monitor Office 365 ソリューションの更新バージョンが提供され、構成操作が向上しました。 2020 年 3 月 30 日までは、既存のソリューションを引き続きご利用いただけます。
+> このソリューションは、[Azure Sentinel](../../sentinel/overview.md) の [Office 365](../../sentinel/connect-office-365.md) 一般公開ソリューション、および [Azure AD レポートおよび監視ソリューション](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)に置き換えられました。 これらのソリューションにより、以前の Azure Monitor Office 365 ソリューションの更新バージョンが提供され、構成操作が向上しました。 2020 年 4 月 30 日までは、既存のソリューションを引き続きご利用いただけます。
 > 
 > Azure Sentinel は、ログを取り込み、検出、調査、検出、機械学習による分析情報を含む追加の SIEM 機能を提供するクラウド ネイティブのセキュリティ情報およびイベント管理ソリューションです。 Azure Sentinel を使用することで、Office 365 SharePoint アクティビティと Exchange 管理ログの取り込みが提供されるようになりました。
 > 
@@ -37,8 +37,8 @@ ms.locfileid: "76044896"
 >
 > ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 > 
-> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-march-30th"></a>Q:現時点から 3 月 30 日までの間に、Office 365 Azure Monitor ソリューションをオンボードすることはできますか。
-> いいえ、Azure Monitor Office 365 ソリューションのオンボード スクリプトは使用できません。 このソリューションは 3 月 30 日に削除されます。
+> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-april-30th"></a>Q:現時点から 4 月 30 日までの間に、Office 365 Azure Monitor ソリューションをオンボードすることはできますか。
+> いいえ、Azure Monitor Office 365 ソリューションのオンボード スクリプトは使用できません。 このソリューションは 4 月 30 日に削除されます。
 > 
 > ### <a name="q-will-the-tables-and-schemas-be-changed"></a>Q:テーブルとスキーマは変更されますか。
 > **OfficeActivity** テーブル名とスキーマは、現在のソリューションと同じままです。 新しいソリューションでは、Azure AD データを参照するクエリを除き、同じクエリを使用し続けることができます。
@@ -104,11 +104,11 @@ ms.locfileid: "76044896"
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>Q:Azure Sentinel は、ソリューションの一部として追加のコネクタを提供しますか。
 > はい。[Azure Sentinel データ ソースの接続](../../sentinel/connect-data-sources.md)に関する記事を参照してください。
 > 
-> ###   <a name="q-what-will-happen-on-march-30-do-i-need-to-offboard-beforehand"></a>Q:3 月 30 日には何が行われるのですか。 事前にオフボードする必要はありますか。
+> ###   <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>Q:4 月 30 日には何が行われるのですか。 事前にオフボードする必要はありますか。
 > 
 > - **Office365** ソリューションからデータを受信することができなくなります。 このソリューションは Marketplace で使用できなくなります
 > - Azure Sentinel のお客様については、Log Analytics ワークスペース ソリューション **Office365** が Azure Sentinel **SecurityInsights** ソリューションに含まれるようになります。
-> - ソリューションを手動でオフボードしない場合、データは 3 月 30 日に自動的に切断されます。
+> - ソリューションを手動でオフボードしない場合、データは 4 月 30 日に自動的に切断されます。
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>Q:データは新しいソリューションに転送されますか。
 > はい。 **Office 365** ソリューションをワークスペースから削除すると、スキーマが削除されるため、そのデータは一時的に使用できなくなります。 新しい **Office 365** コネクタを Sentinel で有効にすると、スキーマがワークスペースに復元され、既に収集されたデータが使用できるようになります。 
@@ -245,7 +245,7 @@ Log Analytics ワークスペースに Office 365 ソリューションを追加
 
 ダッシュボードには、次の表に示した列が存在します。 それぞれの列には、特定のスコープと時間範囲について、その列の基準に該当するアラート数の上位 10 件が表示されます。 ログ検索を実行してアラート全件を取得するには、列の一番下にある [See all] \(すべて表示) をクリックするか、列ヘッダーをクリックします。
 
-| 列 | [説明] |
+| 列 | 説明 |
 |:--|:--|
 | 操作 | すべての監視対象 Office 365 サブスクリプションから、アクティブ ユーザーに関する情報を提供します。 時間の経過と共に発生するアクティビティの数を見ることもできます。
 | Exchange | Add-Mailbox Permission、または Set-Mailbox などの Exchange Server アクティビティの内訳を示します。 |
@@ -263,12 +263,12 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 次のプロパティは、Office 365 のすべてのレコードに共通です。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
-| 種類 | *OfficeActivity* |
+| Type | *OfficeActivity* |
 | ClientIP | アクティビティが記録されたときに使用されたデバイスの IP アドレス。 IP アドレスは IPv4 または IPv6 アドレスの形式で表示されます。 |
 | OfficeWorkload | レコードが参照する Office 365 サービス。<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
-| 操作 | ユーザーまたは管理者アクティビティの名前。  |
+| Operation | ユーザーまたは管理者アクティビティの名前。  |
 | OrganizationId | 組織の Office 365 テナントの GUID。 どの Office 365 サービスで発生するかにかかわらず、この値は組織に対して常に同じになります。 |
 | RecordType | 実行する操作の種類。 |
 | ResultStatus | (Operation プロパティで指定された) アクションが正常に終了したかどうかを示します。 値は Succeeded、PartiallySucceeded、Failed のいずれかです。 Exchange 管理者アクティビティの場合、値は True または False です。 |
@@ -281,7 +281,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 次のプロパティは、Azure Active Directory のすべてのレコードに共通です。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -293,7 +293,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのレコードは、Active Directory のユーザーがログオンを試みたときに作成されます。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | `OfficeWorkload` | AzureActiveDirectory |
 | `RecordType`     | AzureActiveDirectoryAccountLogon |
@@ -307,7 +307,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのレコードは、変更または追加が Azure Active Directory オブジェクトに行われたときに作成されます。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -325,7 +325,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのレコードは、データ センター セキュリティの監査データから作成されます。  
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | EffectiveOrganization | 昇格/コマンドレットのターゲットだったテナントの名前。 |
 | ElevationApprovedTime | 昇格が承認されたときのタイムスタンプ。 |
@@ -341,7 +341,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのレコードは、Exchange 構成が変更されたときに作成されます。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeAdmin |
@@ -356,7 +356,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのレコードは、変更または追加が Exchange メールボックスに行われたときに作成されます。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
@@ -379,11 +379,11 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのレコードは、メールボックス監査エントリが作成されるときに作成されます。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
-| アイテム | 操作が実行された対象の項目を表します。 | 
+| Item | 操作が実行された対象の項目を表します。 | 
 | SendAsUserMailboxGuid | その名前で電子メールを送信するためにアクセスされたメールボックスの Exchange GUID。 |
 | SendAsUserSmtp | 偽装されているユーザーの SMTP アドレス。 |
 | SendonBehalfOfUserMailboxGuid | 代理でメールを送信するためにアクセスされたメールボックスの Exchange GUID。 |
@@ -394,7 +394,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのレコードは、変更または追加が Exchange グループに行われたときに作成されます。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | OfficeWorkload | ExchangeItemGroup |
@@ -413,7 +413,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのプロパティは、SharePoint のすべてのレコードに共通です。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -430,7 +430,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのレコードは、SharePoint の構成変更が行われたときに作成されます。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -443,7 +443,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのレコードは、SharePoint でのファイル操作に応答して作成されます。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePointFileOperation |
@@ -464,7 +464,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 次の表は、このソリューションによって収集された更新レコードを探すログ クエリの例です。
 
-| クエリ | [説明] |
+| クエリ | 説明 |
 | --- | --- |
 |Office 365 サブスクリプションでのすべての操作のカウント |OfficeActivity &#124; summarize count() by Operation |
 |SharePoint サイトの使用率|OfficeActivity &#124; where OfficeWorkload =~ "sharepoint" &#124; summarize count() by SiteUrl \| sort by Count asc|

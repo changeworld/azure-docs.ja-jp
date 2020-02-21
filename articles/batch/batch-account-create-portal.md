@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a0c6fab0c9e26630bd54830044da56dba20564b3
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 3723631609a04f6d12abcaac1f9d7733bf3caa01
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025898"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048625"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Azure Portal で Batch アカウントを作成する
 
@@ -117,6 +117,14 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 キー コンテナーへのアクセス権を手動で付与する場合は、キー コンテナーの **[アクセス ポリシー]** セクションに移動して、 **[アクセス ポリシーの追加]** を選択し、 **[Microsoft Azure Batch]** を検索します。 選択したら、ドロップ ダウン メニューを使用して **[シークレットのアクセス許可]** を設定する必要があります。 Azure Batch には、少なくとも **[取得]** 、 **[一覧]** 、 **[設定]** 、および **[削除]** のアクセス許可を付与する必要があります。
 
 ![Azure Batch のシークレットのアクセス許可](./media/batch-account-create-portal/secret-permissions.png)
+
+
+> [!NOTE]
+> リンクされている **Key Vault** リソースの **[アクセス ポリシー]** の下で、 **[Azure Virtual Machines (展開用)]** チェック ボックスと **[Azure Resource Manager (テンプレートの展開用)]** チェック ボックスがオンになっていることを確認します。
+> 
+> ![[Mandatory Key Vault Access Policy] (必須の Key Vault アクセス ポリシー)](./media/batch-account-create-portal/key-vault-access-policy.png) これは、Azure portal で Batch アカウントを作成する場合は必須ではありません。 既定では、このオプションが選択されています。
+
+
 
 ### <a name="configure-subscription-quotas"></a>サブスクリプション クォータを構成する
 

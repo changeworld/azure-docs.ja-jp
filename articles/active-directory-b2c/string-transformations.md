@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 02/05/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 774d3325cff98ef01dc0b2e8d5c1db38e449d1b5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 69091fbcc2b6789abc7825632a56197427d34e4c
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982759"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77045369"
 ---
 # <a name="string-claims-transformations"></a>文字列要求変換
 
@@ -81,7 +81,7 @@ ms.locfileid: "76982759"
 - 入力要求:
   - **inputClaim1**: someone@contoso.com
   - **inputClaim2**: someone@outlook.com
-    - 入力パラメーター:
+- 入力パラメーター:
   - **stringComparison**:  ordinalIgnoreCase
 - 結果:エラーがスローされます
 
@@ -326,7 +326,7 @@ ms.locfileid: "76982759"
 
 ## <a name="formatstringmultipleclaims"></a>FormatStringMultipleClaims
 
-指定された書式設定文字列に従って、2 つの要求の書式を設定します。 この変換は C# **String.Format** メソッドを使用します。
+指定された書式設定文字列に従って、2 つの要求の書式を設定します。 この変換では､C# の `String.Format` メソッドを使用します。
 
 | Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
@@ -361,6 +361,76 @@ ms.locfileid: "76982759"
     - **stringFormat**: {0} {1}
 - 出力要求:
     - **outputClaim**:Joe Fernando
+
+## <a name="getlocalizedstringstransformation"></a>GetLocalizedStringsTransformation 
+
+ローカライズされた文字列を要求にコピーします。
+
+| Item | TransformationClaimType | データ型 | Notes |
+| ---- | ----------------------- | --------- | ----- |
+| OutputClaim | ローカライズされた文字列の名前 | string | この要求変換が呼び出された後に生成される要求の種類の一覧。 |
+
+GetLocalizedStringsTransformation 要求変換を使用する場合は、次の操作を行います。
+
+1. [ローカライズ文字列](localization.md)を定義し、それを[セルフアサート技術プロファイル](self-asserted-technical-profile.md)に関連付けます。
+1. `LocalizedString` 要素の `ElementType` は `GetLocalizedStringsTransformationClaimType` に設定する必要があります。
+1. `StringId` はユーザーが定義する一意識別子であり、後ほど要求変換で使用します。
+1. 要求変換で、ローカライズされた文字列を使用して設定される要求の一覧を指定します。 `ClaimTypeReferenceId` は、ポリシー内の ClaimsSchema セクションに既に定義されている ClaimType への参照です。 `TransformationClaimType` は、`LocalizedString` 要素の `StringId` で定義されているローカライズされた文字列の名前です。
+1. [セルフアサート技術プロファイル](self-asserted-technical-profile.md)、または[表示コントロール](display-controls.md)の入力または出力要求変換で、要求変換への参照を付けます。
+
+![GetLocalizedStringsTransformation](./media/string-transformations/get-localized-strings-transformation.png)
+
+次の例では、ローカライズされた文字列から電子メールの件名、本文、コード メッセージ、電子メールの署名を検索します。 これらの要求は、後でカスタム メール確認テンプレートによって使用されます。
+
+英語 (既定値) とスペイン語のローカライズされた文字列を定義します。
+
+```XML
+<Localization Enabled="true">
+  <SupportedLanguages DefaultLanguage="en" MergeBehavior="Append">
+    <SupportedLanguage>en</SupportedLanguage>
+    <SupportedLanguage>es</SupportedLanguage>
+   </SupportedLanguages>
+
+  <LocalizedResources Id="api.localaccountsignup.en">
+    <LocalizedStrings>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_subject">Contoso account email verification code</LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_message">Thanks for verifying your account!</LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_code">Your code is</LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_signature">Sincerely</LocalizedString>
+     </LocalizedStrings>
+   </LocalizedResources>
+   <LocalizedResources Id="api.localaccountsignup.es">
+     <LocalizedStrings>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_subject">Código de verificación del correo electrónico de la cuenta de Contoso</LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_message">Gracias por comprobar la cuenta de </LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_code">Su código es</LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_signature">Atentamente</LocalizedString>
+    </LocalizedStrings>
+  </LocalizedResources>
+</Localization>
+```
+
+要求変換では、`StringId` *email_subject* の値を使用して要求の種類 *subject* の値が設定されます。
+
+```XML
+<ClaimsTransformation Id="GetLocalizedStringsForEmail" TransformationMethod="GetLocalizedStringsTransformation">
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="subject" TransformationClaimType="email_subject" />
+    <OutputClaim ClaimTypeReferenceId="message" TransformationClaimType="email_message" />
+    <OutputClaim ClaimTypeReferenceId="codeIntro" TransformationClaimType="email_code" />
+    <OutputClaim ClaimTypeReferenceId="signature" TransformationClaimType="email_signature" />
+   </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>例
+
+- 出力要求:
+  - **subject**: Contoso アカウントの電子メール確認コード
+  - **message**:アカウントの確認が完了しました! 
+  - **codeIntro**:お客様のコード 
+  - **signature**:ご利用ありがとうございます  
+
 
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
 
@@ -414,7 +484,7 @@ ms.locfileid: "76982759"
 | InputClaim | inputParameterId | string | 参照値が含まれる要求 |
 | InputParameter | |string | inputParameters のコレクションです。 |
 | InputParameter | errorOnFailedLookup | boolean | 一致参照がない場合にエラーが返されるかどうかを制御します。 |
-| OutputClaim | inputParameterId | string | この要求変換が呼び出された後に生成される ClaimTypes。 一致する ID の値 |
+| OutputClaim | inputParameterId | string | この要求変換が呼び出された後に生成される ClaimTypes。 一致する `Id` の値。 |
 
 次の例では、inpuParameters コレクションの 1 つからドメイン名を検索します。 要求変換では、識別子内のドメイン名を検索し、その値 (アプリケーション ID) を返します。
 
@@ -479,7 +549,7 @@ ms.locfileid: "76982759"
 | InputClaim | emailAddress | string | 電子メール アドレスが含まれている ClaimType。 |
 | OutputClaim | domain | string | この要求変換が呼び出された後に生成される ClaimType - ドメイン。 |
 
-この要求変換は、ユーザーの @ 記号の後のドメイン名を解析するために使用します。 これは、監査データから個人を特定できる情報 (PII) を削除するために役立てることができます。 次の要求変換は、**email** 要求からドメイン名を解析する方法を示しています。
+この要求変換は、ユーザーの @ 記号の後のドメイン名を解析するために使用します。 次の要求変換は、**email** 要求からドメイン名を解析する方法を示しています。
 
 ```XML
 <ClaimsTransformation Id="SetDomainName" TransformationMethod="ParseDomain">
@@ -641,7 +711,7 @@ ms.locfileid: "76982759"
 | Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | string | 検索する要求の種類。 |
-|InputParameter|contains|string|検索対象の値。|
+|InputParameter|contains|string|検索する値。|
 |InputParameter|ignoreCase|string|この比較で比較対象の文字列の大文字と小文字を無視するかどうかを指定します。|
 | OutputClaim | outputClaim | string | この ClaimsTransformation が呼び出された後に生成される ClaimType。 入力要求内で substring が出現した場合のブール値インジケーター。 |
 

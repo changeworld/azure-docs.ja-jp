@@ -5,21 +5,18 @@ services: web-application-firewall
 ms.topic: conceptual
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/19/2019
+ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: 3f7d213aed82d1cb94bb96b9e212d3b255851afd
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 3e8cd2f1e594cd6a60296b2df135f275641df313
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171219"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086981"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Application Gateway 用の Web アプリケーション ファイアウォール ポリシーの作成
 
 WAF ポリシーをリスナーに関連付けると、1 つの WAF の背後にある複数のサイトを異なるポリシーで保護できるようになります。 たとえば、WAF の背後に 5 つのサイトがある場合、5 つの個別の WAF ポリシー (リスナーごとに 1 つ) を設けて、それぞれ 1 つのサイトの除外、カスタム ルール、マネージド ルール セットをカスタマイズし、他の 4 つに影響させないようにできます。 1 つのポリシーをすべてのサイトに適用する場合は、ポリシーを個々のリスナーではなくアプリケーション ゲートウェイに関連付けて、グローバルに適用できます。 ポリシーを、パスベースのルーティング規則に適用することもできます。 
-
-   > [!NOTE]
-   > サイトごとの WAF ポリシーは、米国中南部と北ヨーロッパでご利用いただけます。 ポータルからアクセスできます。全ユーザー向けに運用が開始されるまでは、[こちらのリンク](https://aka.ms/AppgwwafWithAllFeatureFlags)を使用してください。  
 
 ポリシーは、必要な数だけ作成できます。 作成したポリシーは、有効にするために 1 つのアプリケーション ゲートウェイに関連付ける必要がありますが、アプリケーション ゲートウェイとリスナーの任意の組み合わせに関連付けることもできます。 
 
@@ -37,15 +34,15 @@ WAF ポリシーをリスナーに関連付けると、1 つの WAF の背後に
 1. ポータルの左上で、 **[リソースの作成]** を選択します。 **WAF** を検索し、 **[Web アプリケーション ファイアウォール]** 、 **[作成]** の順に選択します。
 2. **[WAF ポリシーの作成]** ページの **[基本]** タブで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[確認と作成]** を選択します。
 
-   |Setting  |値  |
+   |設定  |Value  |
    |---------|---------|
    |次に対するポリシー     |リージョンの WAF (Application Gateway)|
-   |Subscription     |サブスクリプション名を選択します|
+   |サブスクリプション     |サブスクリプション名を選択します|
    |Resource group     |リソース グループを選択します|
    |ポリシー名     |WAF ポリシーの一意の名前を入力します。|
 3. **[関連付け]** タブで、次の設定のいずれかを入力し、 **[追加]** を選択します。
 
-   |Setting  |値  |
+   |設定  |Value  |
    |---------|---------|
    |Application Gateway の関連付け     |Application Gateway プロファイル名を選択します。|
    |リスナーの関連付け     |Application Gateway リスナーの名前を選択し、 **[追加]** を選択します。|
@@ -64,13 +61,13 @@ WAF ポリシーを作成するとき、既定では*検出*モードになり�
 
 Azure マネージド OWASP ルールは、既定で有効になっています。 ルール グループ内の個々のルールを無効にするには、そのルール グループ内のルールを展開し、ルール番号の前のチェック ボックスをオンにして、上のタブの **[無効]** を選択します。
 
-[ ![マネージド ルール](../media/create-waf-policy-ag/managed-rules.png) ](../media/create-waf-policy-ag/managed-rules-lrg.png#lightbox)
+[![マネージド ルール](../media/create-waf-policy-ag/managed-rules.png)](../media/create-waf-policy-ag/managed-rules-lrg.png#lightbox)
 
 ## <a name="custom-rules"></a>カスタム規則
 
 カスタム ルールを作成するには、 **[カスタム ルール]** タブの下の **[カスタム ルールの追加]** を選択します。これで、カスタム ルールの構成ページが開きます。 次のスクリーンショットは、クエリ文字列に "*blockme*" というテキストが含まれている場合に要求をブロックするように構成されたカスタム ルールの例を示しています。
 
-[ ![カスタム ルールの編集](../media/create-waf-policy-ag/edit-custom-rule.png) ](../media/create-waf-policy-ag/edit-custom-rule-lrg.png#lightbox)
+[![カスタム ルールの編集](../media/create-waf-policy-ag/edit-custom-rule.png)](../media/create-waf-policy-ag/edit-custom-rule-lrg.png#lightbox)
 
 ## <a name="migrate"></a>WAF 構成の WAF ポリシーへの移行
 
@@ -82,7 +79,7 @@ Azure マネージド OWASP ルールは、既定で有効になっています�
 
 WAF の状態を確認するには、ポータルでそれを参照します。 WAF 設定が表示されており、Application Gateway ビュー内から変更できる場合、WAF は状態 1 です。
 
-[ ![WAF 構成](../media/create-waf-policy-ag/waf-configure.png) ](../media/create-waf-policy-ag/waf-configure-lrg.png#lightbox)
+[![WAF 構成](../media/create-waf-policy-ag/waf-configure.png)](../media/create-waf-policy-ag/waf-configure-lrg.png#lightbox)
 
 **[Web アプリケーション ファイアウォール]** を選択すると、関連付けられているポリシーが表示される場合、WAF は状態 2 または状態 3 です。 ポリシーに移動した後、カスタム ルール、および関連付けられているアプリケーション ゲートウェイ**のみ**が表示される場合は、カスタム ルールのみのポリシーです。
 
@@ -102,6 +99,6 @@ WAF の状態を確認するには、ポータルでそれを参照します。 
 
 必要な場合は、移行スクリプトを使用して WAF ポリシーに移行できます。 詳しくは、「[Azure PowerShell を使用して Web アプリケーションのファイアウォール ポリシーを移行する](migrate-policy.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Web アプリケーション ファイアウォールの CRS ルール グループとルール](application-gateway-crs-rulegroups-rules.md)の詳細をご確認ください。

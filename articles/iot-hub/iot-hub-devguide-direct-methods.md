@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: rezas
-ms.openlocfilehash: f4125aae954519beead99db45fc8a35264d5731e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dcbc03257b8bfeacda700f60f2724f2d02ec147d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429264"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048263"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>IoT Hub からのダイレクト メソッドの呼び出しについて
 
@@ -73,7 +73,10 @@ IoT Hub で**サービス接続**のアクセス許可を持っていれば、�
     }
     ```
 
-タイムアウトは秒単位です。 タイムアウトが設定されていない場合の既定値は 30 秒です。
+要求で `responseTimeoutInSeconds` として指定された値は、IoT Hub サービスがデバイスでのダイレクト メソッドの実行が完了するまで待機する必要がある時間です。 このタイムアウトは、少なくとも、デバイスによるダイレクト メソッドの予想実行時間と同じ長さに設定してください。 タイムアウトが指定されていない場合は、既定値の 30 秒が使用されます。 `responseTimeoutInSeconds` の最小値は 5 秒で、最大値は 300 秒です。
+
+要求で `connectTimeoutInSeconds` として指定された値は、ダイレクト メソッドの呼び出し時に、IoT Hub サービスが接続されていないデバイスがオンラインになるまで待機する必要がある時間です。 既定値は 0 です。これは、ダイレクト メソッドの呼び出し時にデバイスが既にオンラインである必要があることを意味します。 `connectTimeoutInSeconds` の最大値は 300 秒です。
+
 
 #### <a name="example"></a>例
 
@@ -98,7 +101,10 @@ curl -X POST \
 
 バックエンド アプリは、次の項目で構成されている応答を受け取ります。
 
-* *HTTP 状態コード*。接続されていないデバイスの 404 エラーを含む、IoT Hub からのエラーに使用される。
+* *HTTP 状態コード*:
+  * 200 は、ダイレクト メソッドが正常に実行されたことを示します。
+  * 404 は、デバイス ID が無効であること、またはダイレクト メソッドの呼び出し時とその後 `connectTimeoutInSeconds` の間、デバイスがオンラインになっていなかったことを示します (根本原因を把握するには、付随するエラー メッセージを使用してください)。
+  * 504 は、`responseTimeoutInSeconds` 内のダイレクト メソッドの呼び出しにデバイスが応答していないことが原因で、ゲートウェイのタイムアウトが発生したことを示します。
 
 * *ヘッダー*。ETag、要求 ID、コンテンツの種類、コンテンツのエンコーディングを含む。
 

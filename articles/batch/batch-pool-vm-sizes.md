@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/12/2019
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: be19de19dab92bc40ca5529ad578e033a98929cd
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c18190ec5e5d079d51630a976681717a78a46e00
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023567"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087050"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールのコンピューティング ノード用の VM サイズを選択する
 
@@ -36,38 +36,40 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 
 仮想マシン構成の Batch プールでは、ほぼすべての VM サイズ ([Linux](../virtual-machines/linux/sizes.md)、[Windows](../virtual-machines/windows/sizes.md)) がサポートされています。 サポートされているサイズと制限の詳細については、次の表を参照してください。
 
-記載されていないプロモーション用またはプレビュー VM サイズのサポートは保証されていません。
+| VM シリーズ  | サポートされるサイズ |
+|------------|---------|
+| Basic A | Basic_A0 (A0) を*除く*すべてのサイズ |
+| A | Standard_A0 を*除く*すべてのサイズ |
+| Av2 | すべてのサイズ |
+| B | なし |
+| DC | なし |
+| Dv2、DSv2 | すべてのサイズ |
+| Dv3、Dsv3 | すべてのサイズ |
+| Dav4、Dasv4 | なし - まだ使用できません |
+| Ev3、Esv3 | すべてのサイズ (E64is_v3 と E64i_v3 を除く) |
+| Eav4、Easv4 | なし - まだ使用できません |
+| F、Fs | すべてのサイズ |
+| Fsv2 | すべてのサイズ |
+| G、Gs | すべてのサイズ |
+| H | すべてのサイズ |
+| HB<sup>1</sup> | すべてのサイズ |
+| HBv2<sup>1</sup> | すべてのサイズ |
+| HC<sup>1</sup> | すべてのサイズ |
+| Ls | すべてのサイズ |
+| Lsv2 | なし - まだ使用できません |
+| M<sup>1</sup> | すべてのサイズ (M64、M64m、M128、M128m を除く) |
+| Mv2 | なし - まだ使用できません |
+| NC | すべてのサイズ |
+| NCv2<sup>1</sup> | すべてのサイズ |
+| NCv3<sup>1</sup> | すべてのサイズ |
+| ND<sup>1</sup> | すべてのサイズ |
+| NDv2<sup>1</sup> | なし - まだ使用できません |
+| NV | すべてのサイズ |
+| NVv3<sup>1</sup> | すべてのサイズ |
+| NVv4 | なし |
+| SAP HANA | なし |
 
-| VM シリーズ  | サポートされるサイズ | Batch アカウントのプール割り当てモード<sup>1</sup> |
-|------------|---------|-----------------|
-| 基本の A シリーズ | Basic_A0 (A0) を*除く*すべてのサイズ | Any |
-| A シリーズ | Standard_A0 を*除く*すべてのサイズ | Any |
-| Av2 シリーズ | すべてのサイズ | Any |
-| B シリーズ | なし | 使用不可 |
-| DC シリーズ | なし | 使用不可 |
-| Dv2、DSv2 シリーズ | すべてのサイズ | Any |
-| Dv3/DSv3 シリーズ | すべてのサイズ | Any |
-| Ev3、Esv3 シリーズ | すべてのサイズ | Any |
-| Fsv2 シリーズ | すべてのサイズ | Any |
-| H シリーズ | すべてのサイズ | Any |
-| HB シリーズ<sup>2</sup> | すべてのサイズ | Any |
-| HC シリーズ<sup>2</sup> | すべてのサイズ | Any |
-| Ls シリーズ | すべてのサイズ | Any |
-| Lsv2 シリーズ | なし | 使用不可 |
-| M シリーズ | Standard_M64ms (低優先度のみ)、Standard_M128s (低優先度のみ) | Any |
-| Mv2 シリーズ | なし | 使用不可 |
-| NC シリーズ | すべてのサイズ | Any |
-| NCv2 シリーズ<sup>2</sup> | すべてのサイズ | Any |
-| NCv3 シリーズ<sup>2</sup> | すべてのサイズ | Any |
-| ND シリーズ<sup>2</sup> | すべてのサイズ | Any |
-| NDv2 シリーズ | すべてのサイズ | ユーザー サブスクリプション モード |
-| NV シリーズ | すべてのサイズ | Any |
-| NVv3 シリーズ | なし | 使用不可 |
-| SAP HANA | なし | 使用不可 |
-
-<sup>1</sup> 一部の新しい VM シリーズは、最初は部分的にサポートされます。 これらの VM シリーズは、**プール割り当てモード**が**ユーザー サブスクリプション**に設定された Batch アカウントで割り当てることができます。 Batch アカウントの構成の詳細については、[Batch アカウントの管理](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode)に関するセクションをご覧ください。 **ユーザー サブスクリプション**の Batch アカウントを対象とする、これらの部分的にサポートされた VM シリーズのクォータを要求する方法については、[クォータと制限](batch-quota-limit.md)に関する記事をご覧ください。  
-
-<sup>2</sup> これらの VM サイズは仮想マシン構成の Batch プールに割り当てることができますが、特定の[クォータ引き上げ](batch-quota-limit.md#increase-a-quota)を要求する必要があります。
+<sup>1</sup> これらの VM サイズは仮想マシン構成の Batch プールに割り当てることができますが、新しい Batch アカウントを作成し、特定の[クォータ引き上げ](batch-quota-limit.md#increase-a-quota)を要求する必要があります。 この制限は、VM シリーズごとの vCPU クォータが Batch アカウントで完全にサポートされると削除されます。
 
 ### <a name="pools-in-cloud-service-configuration"></a>クラウド サービス構成のプール
 

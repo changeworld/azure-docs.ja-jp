@@ -10,13 +10,13 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: b9060823c997391d02eae61911f8aa748f191657
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.date: 02/10/2020
+ms.openlocfilehash: 0bfaef72be23f148c01e02e910b11128cec1659e
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260856"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116719"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning データセットを作成する
 
@@ -172,12 +172,14 @@ Studio でデータセットを作成するには、次の手順を実行しま�
 1. 左側のウィンドウの **[アセット]** セクションで **[データセット]** を選択します。 
 1. **[データセットの作成]** を選択して、データセットのソースを選択します。 このソースには、ローカル ファイル、データストア、またはパブリック URL を指定できます。
 1. データセットの種類として **[表形式]** または **[ファイル]** を選択します。
-1. **[次へ]** を選択して、 **[Settings and preview]\(設定とプレビュー\)** 、 **[スキーマ]** 、および **[詳細の確認]** フォームを確認します。これらはファイルの種類に基づいてインテリジェントに設定されます。 これらのフォームを使用して、選択内容を確認し、作成前にデータセットをさらに構成します。  
+1. **[次へ]** を選択して、 **[データストアとファイルの選択]** フォームを開きます。 このフォームでは、作成後にデータセットを保存する場所を選択し、データセットに使用するデータ ファイルを選択します。 
+1. **[次へ]** を選択して **[Settings and preview]/(設定とプレビュー/)** および **[Schema]\(スキーマ\)** フォームを設定します。これらのフォームはファイルの種類に基づいてインテリジェントに設定され、これらのフォームで、作成前にデータセットを構成することができます。 
+1. **[次へ]** を選択して、 **[詳細の確認]** フォームを確認します。 選択内容を確認し、データセットについてのオプションのデータ プロファイルを作成します。 [データ プロファイル](how-to-create-portal-experiments.md#profile)についてさらに理解を深める。 
 1. **[作成]** を選択して、データセットの作成を完了します。
 
 ## <a name="register-datasets"></a>データセットを登録する
 
-作成プロセスを完了するには、ワークスペースにデータセットを登録します。 データセットを他のユーザーと共有したり、さまざまな実験で再利用できるように、ご使用のワークスペースに登録するには、[`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-) メソッドを使用します。
+作成プロセスを完了するには、ワークスペースにデータセットを登録します。 データセットを他のユーザーと共有したり、さまざまな実験で再利用できるように、ご使用のワークスペースに登録するには、[`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-) メソッドを使用します。
 
 ```Python
 titanic_ds = titanic_ds.register(workspace=workspace,

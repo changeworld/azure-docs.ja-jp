@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 800b51c8f900d2ea99900ea147b33010452348f5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 2604d5b357feacce3493b4a4ded971144262611d
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639873"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161938"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Azure Databricks クラスターに対するリージョンのディザスター リカバリー
 
@@ -37,7 +37,7 @@ Databricks ワークスペース環境の管理と監視は、Databricks のコ�
 
    1. 複数の Azure Databricks ワークスペースは、別個の Azure リージョンにプロビジョニングします。 たとえばプライマリ Azure Databricks ワークスペースを米国東部 2 に作成するなら、 セカンダリ ディザスター リカバリー Azure Databricks ワークスペースは、別のリージョン (米国西部など) に作成する必要があります。
 
-   2. [geo 冗長ストレージ](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)を使用します。 Azure Databricks に関連付けられているデータは、既定で Azure Storage に格納されます。 Databricks ジョブの結果も Azure Blob Storage に格納されます。そのため、処理されたデータには持続性があり、クラスターが停止された後も高可用性が保たれます。 Storage と Databricks クラスターは併置されるため、プライマリ リージョンが利用できなくなってもセカンダリ リージョンのデータにアクセスできるよう、geo 冗長ストレージを使用する必要があります。
+   2. [geo 冗長ストレージ](../storage/common/storage-redundancy.md)を使用します。 Azure Databricks に関連付けられているデータは、既定で Azure Storage に格納されます。 Databricks ジョブの結果も Azure Blob Storage に格納されます。そのため、処理されたデータには持続性があり、クラスターが停止された後も高可用性が保たれます。 Storage と Databricks クラスターは併置されるため、プライマリ リージョンが利用できなくなってもセカンダリ リージョンのデータにアクセスできるよう、geo 冗長ストレージを使用する必要があります。
 
    3. セカンダリ リージョンの作成後、ユーザー、ユーザーのフォルダー、ノートブック、クラスター構成、ジョブ構成、ライブラリ、ストレージ、初期化スクリプトを移行し、アクセスの制御を再構成する必要があります。 その他詳しい情報については、次のセクションで取り上げます。
 

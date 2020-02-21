@@ -8,12 +8,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 04/29/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6fe43eb5963f2918f41ad15f1904f883b5e9c298
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: e774690fae2314b8db6e14f19a67c7ae1ce3a203
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678302"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064276"
 ---
 # <a name="dependency-auto-collection"></a>依存関係の自動収集
 
@@ -84,10 +84,11 @@ ms.locfileid: "72678302"
 | ------------------------|----------|
 | [XMLHttpRequest](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest) | All |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [.NET](../../azure-monitor/app/asp-net-dependencies.md) のカスタム依存関係追跡を設定します。
 - [Java](../../azure-monitor/app/java-agent.md) のカスタム依存関係追跡を設定します。
+- [OpenCensus Python](../../azure-monitor/app/opencensus-python-dependency.md) のカスタム依存関係追跡を設定します。
 - [カスタム依存関係テレメトリを記述します](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)。
 - Application Insights の型とデータ モデルについては、[データ モデル](../../azure-monitor/app/data-model.md)に関するページを参照してください。
 - Application Insights でサポートされている[プラットフォーム](../../azure-monitor/app/platforms.md)を確認します。

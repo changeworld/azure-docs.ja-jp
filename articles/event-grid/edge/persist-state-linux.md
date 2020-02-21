@@ -9,12 +9,12 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 39b16c6cfd5b94d412827ed88197edbef2da1453
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 12655d2ceb4a1124376d9bddf82194472c98ebb9
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844634"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086658"
 ---
 # <a name="persist-state-in-linux"></a>Linux で状態を永続化する
 
@@ -49,17 +49,17 @@ Event Grid モジュールで作成したトピックとサブスクリプショ
 ```json
  {
   "Env": [
-    "inbound:serverAuth:tlsPolicy=strict",
-    "inbound:serverAuth:serverCert:source=IoTEdge",
-    "inbound:clientAuth:sasKeys:enabled=false",
-    "inbound:clientAuth:clientCert:enabled=true",
-    "inbound:clientAuth:clientCert:source=IoTEdge",
-    "inbound:clientAuth:clientCert:allowUnknownCA=true",
-    "outbound:clientAuth:clientCert:enabled=true",
-    "outbound:clientAuth:clientCert:source=IoTEdge",
-    "outbound:webhook:httpsOnly=true",
-    "outbound:webhook:skipServerCertValidation=false",
-    "outbound:webhook:allowUnknownCA=true"
+    "inbound__serverAuth__tlsPolicy=strict",
+    "inbound__serverAuth__serverCert__source=IoTEdge",
+    "inbound__clientAuth__sasKeys__enabled=false",
+    "inbound__clientAuth__clientCert__enabled=true",
+    "inbound__clientAuth__clientCert__source=IoTEdge",
+    "inbound__clientAuth__clientCert__allowUnknownCA=true",
+    "outbound__clientAuth__clientCert__enabled=true",
+    "outbound__clientAuth__clientCert__source=IoTEdge",
+    "outbound__webhook__httpsOnly=true",
+    "outbound__webhook__skipServerCertValidation=false",
+    "outbound__webhook__allowUnknownCA=true"
   ],
   "HostConfig": {
     "Binds": [
@@ -116,7 +116,8 @@ Docker ボリュームの代わりに、ホスト フォルダーをマウント
     {
          "HostConfig": {
             "Binds": [
-                "<your-directory-name-here>:/app/metadataDb"
+                "<your-directory-name-here>:/app/metadataDb",
+                "<your-directory-name-here>:/app/eventsDb",
              ]
          }
     }
@@ -127,17 +128,17 @@ Docker ボリュームの代わりに、ホスト フォルダーをマウント
     ```json
     {
           "Env": [
-            "inbound:serverAuth:tlsPolicy=strict",
-            "inbound:serverAuth:serverCert:source=IoTEdge",
-            "inbound:clientAuth:sasKeys:enabled=false",
-            "inbound:clientAuth:clientCert:enabled=true",
-            "inbound:clientAuth:clientCert:source=IoTEdge",
-            "inbound:clientAuth:clientCert:allowUnknownCA=true",
-            "outbound:clientAuth:clientCert:enabled=true",
-            "outbound:clientAuth:clientCert:source=IoTEdge",
-            "outbound:webhook:httpsOnly=true",
-            "outbound:webhook:skipServerCertValidation=false",
-            "outbound:webhook:allowUnknownCA=true"
+            "inbound__serverAuth__tlsPolicy=strict",
+            "inbound__serverAuth__serverCert__source=IoTEdge",
+            "inbound__clientAuth__sasKeys__enabled=false",
+            "inbound__clientAuth__clientCert__enabled=true",
+            "inbound__clientAuth__clientCert__source=IoTEdge",
+            "inbound__clientAuth__clientCert__allowUnknownCA=true",
+            "outbound__clientAuth__clientCert__enabled=true",
+            "outbound__clientAuth__clientCert__source=IoTEdge",
+            "outbound__webhook__httpsOnly=true",
+            "outbound__webhook__skipServerCertValidation=false",
+            "outbound__webhook__allowUnknownCA=true"
           ],
           "HostConfig": {
                 "Binds": [
@@ -156,18 +157,18 @@ Docker ボリュームの代わりに、ホスト フォルダーをマウント
     ```
 
     >[!IMPORTANT]
-    >バインド値の 2 番目の部分は変更しないでください。 これはモジュール内の特定の場所を指します。 Linux の Event Grid モジュールでは、これは **/app/metadata** である必要があります。
+    >バインド値の 2 番目の部分は変更しないでください。 これはモジュール内の特定の場所を指します。 Linux の Event Grid モジュールでは、これは **/app/metadataDb** および **/app/eventsDb** である必要があります
 
 
 ## <a name="persist-events"></a>イベントの永続化
 
-イベントの永続化を有効にするには、前のセクションを使用して、ボリューム マウントまたはホスト ディレクトリ マウントのいずれかを使用して、まずメタデータの永続性を有効にする必要があります。
+イベントの永続化を有効にするには、最初に上記のセクションを使用して、ボリューム マウントまたはホスト ディレクトリ マウントのいずれかでメタデータの永続化を有効にする必要があります。
 
 イベントの永続化に関する重要な注意事項:
 
 * イベントの永続化はイベント サブスクリプションごとに有効になり、ボリュームまたはディレクトリがマウントされるとオプトインされます。
-* イベントの永続化は作成時にイベント サブスクリプションに構成され、イベント サブスクリプションの作成後に変更することはできません。 イベントの永続化を切り替えるには、イベント サブスクリプションを削除してから再作成する必要があります。
-* イベントの永続化は、ほぼ常にメモリ内操作よりも遅くなりますが、速度の違いはドライブの特性に大きく依存します。 速度と信頼性のトレードオフは、すべてのメッセージング システムに内在しますが、一般的に大規模な場合にのみ顕著になります。
+* イベントの永続化は、作成時にイベント サブスクリプションで構成され、イベント サブスクリプションの作成後は変更できません。 イベントの永続化を切り替えるには、イベント サブスクリプションを削除してから再作成する必要があります。
+* イベントの永続化は、ほとんどの場合、メモリ操作よりも低速ですが、速度の違いはドライブの特性に大きく依存します。 速度と信頼性のトレードオフは、すべてのメッセージング システムに内在しますが、一般的に大規模な場合にのみ顕著になります。
 
 イベント サブスクリプションでイベントの永続化を有効にするには、`persistencePolicy` を `true` に設定します。
 

@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 2bac51a86c8acdba0f6c2f03e5a24ab2b133aa8e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7529cfbd0ab75d0113e5cea666bc04aa1b15d30b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521004"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157712"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>ストレージ アカウントのフェールオーバー (プレビュー) を開始する
 
@@ -32,19 +32,19 @@ ms.locfileid: "73521004"
 ストレージ アカウントでアカウントのフェールオーバーを実行するには、事前に次の手順を完了しておく必要があります。
 
 - アカウントのフェールオーバー プレビューに登録します。 登録方法については、「[プレビューについて](storage-disaster-recovery-guidance.md#about-the-preview)」をご覧ください。
-- お使いのストレージ アカウントが、geo 冗長ストレージ (GRS) または読み取りアクセス geo 冗長ストレージ (RA-GRS) を使用するように構成されていることを確認します。 geo 冗長ストレージについて詳しくは、「[geo 冗長ストレージ (GRS):Azure Storage のリージョン間レプリケーション](storage-redundancy-grs.md)」をご覧ください。 
+- お使いのストレージ アカウントが、geo 冗長ストレージ (GRS) または読み取りアクセス geo 冗長ストレージ (RA-GRS) を使用するように構成されていることを確認します。 geo 冗長ストレージの詳細については、「[Azure Storage の冗長性](storage-redundancy.md)」をご覧ください。
 
 ## <a name="important-implications-of-account-failover"></a>アカウントのフェールオーバーの重要な影響
 
 ストレージ アカウントのアカウントのフェールオーバーを開始すると、セカンダリ エンドポイントがプライマリ エンドポイントになるように、セカンダリ エンドポイントの DNS レコードが更新されます。 フェールオーバーを開始する前に、ストレージ アカウントに対して可能性のある影響について理解しておいてください。
 
-フェールオーバーを始める前に、可能性のあるデータ損失の範囲を見積もるには、`-IncludeGeoReplicationStats` パラメーターを指定して `Get-AzStorageAccount` PowerShell コマンドレットを使用することで、**最終同期時刻** プロパティを確認します。 その後、アカウントの `GeoReplicationStats` プロパティを確認します。 
+フェールオーバーを始める前に、可能性のあるデータ損失の範囲を見積もるには、`-IncludeGeoReplicationStats` パラメーターを指定して `Get-AzStorageAccount` PowerShell コマンドレットを使用することで、**最終同期時刻** プロパティを確認します。 その後、アカウントの `GeoReplicationStats` プロパティを確認します。 \
 
-フェールオーバーの後、新しいプライマリ リージョンでのストレージ アカウントの種類は、ローカル冗長ストレージ (LRS) に自動的に変換されます。 アカウントに対して geo 冗長ストレージ (GRS) または読み取りアクセス geo 冗長ストレージ (RA-GRS) を再び有効にすることができます。 LRS から GRS または RA-GRS に変換すると、追加コストが発生することに注意してください。 詳しくは、「[帯域幅の料金詳細](https://azure.microsoft.com/pricing/details/bandwidth/)」をご覧ください。 
+フェールオーバーの後、新しいプライマリ リージョンでのストレージ アカウントの種類は、ローカル冗長ストレージ (LRS) に自動的に変換されます。 アカウントに対して geo 冗長ストレージ (GRS) または読み取りアクセス geo 冗長ストレージ (RA-GRS) を再び有効にすることができます。 LRS から GRS または RA-GRS に変換すると、追加コストが発生することに注意してください。 詳しくは、「[帯域幅の料金詳細](https://azure.microsoft.com/pricing/details/bandwidth/)」をご覧ください。
 
 ストレージ アカウントの GRS を再度有効にすると、アカウント内のデータの新しいセカンダリ リージョンへのレプリケートが開始されます。 レプリケーションにかかる時間は、レプリケートされるデータの量に依存します。  
 
-## <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+## <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal からアカウントのフェールオーバーを開始するには、次の手順のようにします。
 
@@ -60,7 +60,7 @@ Azure portal からアカウントのフェールオーバーを開始するに�
 
     ![アカウントのフェールオーバーの確認ダイアログを示すスクリーンショット](media/storage-initiate-account-failover/portal-failover-confirm.png)
 
-## <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell を使用してアカウントのフェールオーバーを開始するには、最初に 6.0.1 プレビュー モジュールをインストールする必要があります。 次の手順のようにしてモジュールをインストールします。
 
@@ -97,7 +97,7 @@ PowerShell からアカウントのフェールオーバーを開始するには
 Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <account-name> 
 ```
 
-## <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLI を使用してアカウントのフェールオーバーを開始するには、次のコマンドを実行します。
 
@@ -108,7 +108,7 @@ az storage account failover \ --name accountName
 
 ---
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Storage でのディザスター リカバリーとアカウントのフェールオーバー (プレビュー)](storage-disaster-recovery-guidance.md)
 - [RA-GRS を使用した高可用性アプリケーションの設計](storage-designing-ha-apps-with-ragrs.md)

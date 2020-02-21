@@ -12,12 +12,12 @@ metadata:
   ms.author: iainfou
   ms.date: 02/11/2020
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 3c431b81c0da54045e9b9b020de5275912b394c6
-  ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+  ms.openlocfilehash: d06cc6f3c2d0d5033777a2f988d12ba7edb7be9c
+  ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/12/2020
-  ms.locfileid: "77166411"
+  ms.lasthandoff: 02/20/2020
+  ms.locfileid: "77484096"
 landingContent:
 - title: 認証について
   linkLists:
@@ -37,14 +37,14 @@ landingContent:
     links:
     - text: セルフサービス パスワード リセット のしくみ
       url: concept-sspr-howitworks.md
-    - text: パスワードの書き戻し
+    - text: パスワード ライトバックのしくみ
       url: concept-sspr-writeback.md
   - linkListType: tutorial
     links:
     - text: セルフサービス パスワード リセットを有効にする
       url: tutorial-enable-sspr.md
     - text: オンプレミスへのパスワード ライトバックを有効にする
-      url: tutorial-enable-writeback.md
+      url: tutorial-enable-sspr-writeback.md
   - linkListType: deploy
     links:
     - text: セルフサービス パスワード リセットのデプロイ ガイド

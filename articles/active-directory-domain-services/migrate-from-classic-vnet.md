@@ -9,18 +9,18 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 5c50e3c17fe09b735aa4f4104615c4833164d94d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: bd20bb008c52b7d99416aed7a0599a6e78d2acf2
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544159"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161649"
 ---
-# <a name="preview---migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>プレビュー - クラシック仮想ネットワーク モデルから Resource Manager への Azure AD Domain Services の移行
+# <a name="migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>クラシック仮想ネットワーク モデルから Resource Manager への Azure AD Domain Services の移行
 
 Azure Active Directory Domain Services (AD DS) では、現在クラシック仮想ネットワーク モデルを使用しているお客様に対して、Resource Manager 仮想ネットワーク モデルへの 1 回限りの移動がサポートされています。 Resource Manager デプロイ モデルを使用する Azure AD DS マネージド ドメインでは、詳細なパスワード ポリシー、監査ログ、アカウント ロックアウト保護などの追加機能が提供されます。
 
-この記事では、移行の利点および考慮事項と、既存の Azure AD DS インスタンスの移行を成功させるために必要な手順について説明します。 現在、この移行機能はプレビュー段階です。
+この記事では、移行の利点および考慮事項と、既存の Azure AD DS インスタンスの移行を成功させるために必要な手順について説明します。
 
 ## <a name="overview-of-the-migration-process"></a>移行プロセスの概要
 
