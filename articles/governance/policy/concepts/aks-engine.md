@@ -12,7 +12,7 @@ ms.locfileid: "75436434"
 ---
 # <a name="understand-azure-policy-for-aks-engine"></a>AKS エンジン用 Azure Policy の概要
 
-Azure Policy は、[AKS エンジン](https://github.com/Azure/aks-engine/blob/master/docs/README.md)と統合されています。これは、Azure 上のセルフマネージド Kubernetes クラスターをすばやくブートストラップする便利なツールが用意されているシステムです。 この統合により、AKS エンジンのセルフマネージド クラスターを使った一貫した一元的な方法で、大規模な適用と保護を実現できます。 Azure Policy では、Kubernetes 用の_アドミッション コントローラー Webhook_ である [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) [Gatekeeper](https://github.com/open-policy-agent/gatekeeper) v3 (ベータ) を拡張することで、Azure リソースと AKS エンジンのセルフマネージド クラスターのコンプライアンス状態を 1 か所から管理および報告できるようになります。
+Azure Policy は、[AKS エンジン](https://github.com/Azure/aks-engine/blob/master/docs/README.md)と統合されています。これは、Azure 上のセルフマネージド Kubernetes クラスターをすばやくブートストラップする便利なツールが用意されているシステムです。 この統合により、AKS エンジンのセルフマネージド クラスターを使った一貫した一元的な方法で、大規模な適用と保護を実現できます。 Azure Policy では、Kubernetes 用の _アドミッション コントローラー Webhook_ である [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) [Gatekeeper](https://github.com/open-policy-agent/gatekeeper) v3 (ベータ) を拡張することで、Azure リソースと AKS エンジンのセルフマネージド クラスターのコンプライアンス状態を 1 か所から管理および報告できるようになります。
 
 > [!NOTE]
 > AKS エンジン用 Azure Policy はパブリック プレビュー段階であり、SLA はありません。 Gatekeeper v3 はベータ版であり、オープン ソース コミュニティによってサポートされています。 このサービスは、組み込みのポリシー定義と、サービス プリンシパルを使って構成されたリソース グループごとに 1 つの AKS エンジン クラスターのみをサポートします。
@@ -73,7 +73,7 @@ Azure Policy アドオンをインストールするか、このサービスの�
 
 ## <a name="azure-policy-add-on"></a>Azure Policy アドオン
 
-Kubernetes 用の _Azure Policy アドオン_を使って、Azure Policy サービスを Gatekeeper アドミッション コントローラーに接続します。 このアドオンは _kube-system_ 名前空間にインストールされ、次の機能が実行されます。
+Kubernetes 用の _Azure Policy アドオン_ を使って、Azure Policy サービスを Gatekeeper アドミッション コントローラーに接続します。 このアドオンは _kube-system_ 名前空間にインストールされ、次の機能が実行されます。
 
 - AKS エンジン クラスターへの割り当てを Azure ポリシーで確認します
 - ポリシーの詳細、制約テンプレート、および制約をダウンロードしてインストールします
@@ -154,7 +154,7 @@ kubectl get pods -n kube-system
 アドオンは5 分おきに、ポリシーの割り当ての変更について Azure Policy でチェックインします。 この更新サイクル中に、アドオンによって変更が確認されます。 これらの変更によって、制約テンプレートと制約の作成、更新、または削除がトリガーされます。
 
 > [!NOTE]
-> _クラスター管理者_が制約テンプレートや制約を変更するアクセス許可を持っているとしても、Azure Policy によって作成された制約テンプレートや制約を変更することは推奨されません。またサポートされていません。 手動で行ったすべての変更は、更新サイクル中に失われます。
+> _クラスター管理者_ が制約テンプレートや制約を変更するアクセス許可を持っているとしても、Azure Policy によって作成された制約テンプレートや制約を変更することは推奨されません。またサポートされていません。 手動で行ったすべての変更は、更新サイクル中に失われます。
 
 アドオンは 5 分ごとにクラスターのフル スキャンを呼び出します。 アドオンを使うと、フル スキャンの詳細情報と、クラスターに試行された変更についての Gatekeeper によるすべてのリアルタイム評価が収集された後、すべての Azure Policy 割り当てと同様に、[[ポリシー準拠状況の詳細]](../how-to/get-compliance-data.md) に含めるために、結果が Azure Policy に報告されます。 アクティブなポリシー割り当ての結果のみが監査サイクル中に返されます。 監査結果は、失敗した制約の状態フィールドに違反と示されることもあります。
 
