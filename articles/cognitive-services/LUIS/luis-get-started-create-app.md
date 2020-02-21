@@ -103,7 +103,7 @@ Turn off the lights
     |`verbose=true`|
     |`show-all-intents=true`|
 
-1. ブラウザーのアドレス バーで、URL の最後に移動し、_クエリ_値に「`turn off the living room light`」と入力して Enter キーを押します。
+1. ブラウザーのアドレス バーで、URL の最後に移動し、_クエリ_ 値に「`turn off the living room light`」と入力して Enter キーを押します。
 
     ```json
     {
