@@ -27,7 +27,7 @@ Hyperscale データベースでのパフォーマンスの問題のトラブル
 
 次の待機の種類 ([sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/) 内) は、プライマリ コンピューティング レプリカでログ速度を調整できる理由を示しています。
 
-|待機の種類    |[説明]                         |
+|待機の種類    |説明                         |
 |-------------          |------------------------------------|
 |RBIO_RG_STORAGE        | ページ サーバーでのログ使用の遅延が原因で Hyperscale データベースのプライマリ 計算ノードのログ生成速度が調整されているときに発生します。         |
 |RBIO_RG_DESTAGE        | 長期ログ ストレージによるログ使用の遅延が原因で Hyperscale データベースの計算ノードのログ生成速度が調整されているときに発生します。         |

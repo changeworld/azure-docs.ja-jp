@@ -13,12 +13,12 @@ ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e85a768d8e4f11ca3637bc8f0b394cfb1ea9744a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 89bf49fb44d8575b251a0b33698bc4ce8425cc2b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697474"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160969"
 ---
 # <a name="support-and-help-options-for-developers"></a>開発者向けのサポート オプションとヘルプ オプション
 
@@ -79,8 +79,8 @@ Stack Overflow の次の投稿には、質問方法やソース コードの追�
 
 ライブラリとその GitHub リポジトリの一覧については、以下を参照してください。
 
-* [ADAL](active-directory-authentication-libraries.md) ライブラリおよび GitHub リポジトリ
-* [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md)、[MSAL.Android](https://github.com/AzureAD/microsoft-authentication-library-for-android)、および [MSAL.obj_c](https://github.com/AzureAD/microsoft-authentication-library-for-objc) ライブラリと GitHub リポジトリ
+* [Azure Active Directory 認証ライブラリ (ADAL) ライブラリと GitHub リポジトリ](../azuread-dev/active-directory-authentication-libraries.md)
+* [Microsoft 認証ライブラリ (MSAL) ライブラリと GitHub リポジトリ](reference-v2-libraries.md)
 
 ## <a name="open-a-support-request"></a>サポート要求をオープンする
 

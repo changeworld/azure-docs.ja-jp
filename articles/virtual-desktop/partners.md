@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 02/13/2020
 ms.author: helohr
-ms.openlocfilehash: b7c7c21f14eddf29c3dda1f420d7748a4c23e53d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f75e404e37ff45eb7d9f540cf6acba71fa83349f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906870"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201783"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows Virtual Desktop のパートナー統合
 
@@ -46,6 +46,8 @@ Citrix は、堅牢なエンタープライズ ツールで、ユーザー密度
 最先端のシン クライアントおよびゼロ クライアント ハードウェアとソフトウェアを提供する 10ZiG Technology は、長年にわたる Microsoft のパートナー、そして Microsoft Azure と Windows Virtual Desktop の専属パートナーです。 10ZiG Windows 10 IoT ベースのシン クライアントは、すべての Windows Virtual Desktop マルチ ユーザー向けの強力で信頼性の高い、手頃な価格のエンドポイントです。 10ZiG Manager ソフトウェアでは、ライセンス数の制限および追加コストなしで、優れた管理とデプロイを実行できます。 10ZiG Tech チーム、Advance Warranty プログラム、および簡単なデモは、クラウドにおけるワンストップ Windows Virtual Desktop マルチセッション サポート ソリューションです。
 
 シン クライアントおよびゼロ クライアントのエンドポイント デバイス、および仮想デスクトップ用の管理ソフトウェアにおける 10ZiG の世界市場のリーダーシップは、これらのデバイスとソフトウェアがお客様のお役に立てていることから実証されています。 このシン クライアントハードウェアには慎重に考案された特典が付属しており、顧客のニーズに基づいてお客様が適切なクライアント デバイスを確実に入手できるように設計されています。 10ZiG は、Windows ベースおよび Linux ベースのクライアントを使用して、お客様環境に合わせてデバイスをカスタマイズします。これにより、クラウドの内外の両方で仮想デスクトップで最高のパフォーマンスが得られます。
+
+- [パートナーの Web サイトにアクセスする。](https://www.10zig.com/)
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -148,6 +150,8 @@ Liquidware Essentials により、Azure へのユーザー環境の移行を合�
 Liquit アプリケーションの集計および配信ソフトウェアを使用すると、企業やサービス プロバイダーは、顧客のアプリケーションが存在する場所に関係なく、すべてのワークスペースのバックエンド (Citrix、VMWare、Windows Virtual Desktop、RDP、およびレガシ) に接続して結合してカスタマイズされた一貫性のあるカスタマー エクスペリエンスを提供できます。 顧客がスマート アイコンを発行すると、Liquit では、顧客の所在地、デバイス、およびプロファイルの権限に基づいて、アプリケーションをどこで開始するかを決定します。
 
 Liquit は、認定された統合パートナーとして、完全な置き換え (rip-and-replace) による遅延なしでクラウドへの移行を加速させるのに役立ちます。 Windows Virtual Desktop は容易に既存の環境に接続し、ワークスペースを作成して、デスクトップを配信できます。 その後、古いプラットフォームから移行し、ユーザーが気付くことなくバックエンドで変更を加えることができます。 一貫したエンドユーザー エクスペリエンスと柔軟なインフラストラクチャを提供するとともに、場所に関係なくアプリケーションの制御を維持します。
+
+- [パートナーの Web サイトにアクセスする。](https://www.liquit.com/wvd/)
 
 ## <a name="login-vsi"></a>Login VSI
 

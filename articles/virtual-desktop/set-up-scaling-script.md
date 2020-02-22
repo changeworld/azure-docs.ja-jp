@@ -1,138 +1,255 @@
 ---
-title: Windows Virtual Desktop のセッション ホストの動的スケーリング - Azure
-description: Windows Virtual Desktop のセッション ホストの自動スケール スクリプトを設定する方法について説明します。
+title: Azure Automation によるセッション ホストのスケーリング - Azure
+description: Azure Automation を使用して Windows Virtual Desktop のセッション ホストを自動的にスケーリングする方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 02/06/2020
 ms.author: helohr
-ms.openlocfilehash: a991a41466d216b9f245c20dbd8054f3ae5ef3d0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f38fc45411c89351eb9a50a48f22d22905ee34e6
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451335"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367256"
 ---
-# <a name="scale-session-hosts-dynamically"></a>セッション ホストを動的にスケーリングする
+# <a name="scale-session-hosts-using-azure-automation"></a>Azure Automation を使用してセッション ホストをスケーリングする
 
-Azure に多くの Windows Virtual Desktop をデプロイする場合、仮想マシンのコストは、Windows Virtual Desktop 展開の合計コストの大部分を占めます。 コストを削減するには、ピーク使用時間外にセッション ホスト仮想マシン (VM) をシャットダウンしてセッションの割り当てを解除し、ピーク使用時間中に再起動することをお勧めします。
+仮想マシン (VM) をスケーリングすると、Windows Virtual Desktop の総デプロイ コストを削減できます。 これは、ピーク時以外の使用時間帯にセッション ホスト VM をシャットダウンして割り当て解除し、ピーク時間帯に再びオンにして再割り当てすることを意味します。
 
-この記事では、単純なスケーリング スクリプトを使用して、Windows Virtual Desktop 環境内のセッション ホスト仮想マシンを自動的にスケーリングします。 スケーリング スクリプトのしくみについて詳しくは、「[スケーリング スクリプトのしくみ](#how-the-scaling-script-works)」のセクションをご覧ください。
+この記事では、Windows Virtual Desktop 環境でセッション ホスト仮想マシンを自動的にスケーリングする、Azure Automation および Azure Logic Apps で構築されたスケーリング ツールについて説明します。 スケーリング ツールの使用方法を確認するには、「[前提条件](#prerequisites)」に進んでください。
+
+## <a name="how-the-scaling-tool-works"></a>スケーリング ツールのしくみ
+
+スケーリング ツールでは、セッション ホスト VM のコストを最適化したいお客様のために低コストの自動化オプションを提供しています。
+
+スケーリング ツールを使用すると、次の操作を行えます。
+ 
+- ピーク時とピーク時以外の営業時間に基づいて、VM の起動と停止をスケジュールします。
+- CPU コアあたりのセッション数に基づいて VM をスケールアウトします。
+- ピーク時以外の時間帯に VM をスケールインして、最低限の数のセッション ホスト VM だけを実行状態のままにします。
+
+スケーリング ツールは、Azure Automation PowerShell Runbook、Webhook、Azure Logic Apps を組み合わせて使用することで機能します。 ツールが実行されると、Azure Logic Apps によって Webhook が呼び出されて Azure Automation Runbook が起動します。 その後、Runbook によってジョブが作成されます。
+
+ピーク時の使用時間帯は、このジョブによって現在のセッション数と現在実行中のセッション ホストの VM 容量が、ホスト プールごとにチェックされます。 この情報を使用して、実行中のセッション ホスト VM が既存のセッションをサポートできるかどうかが、**createazurelogicapp.ps1** ファイルに定義された *SessionThresholdPerCPU* パラメーターに基づいて計算されます。 セッション ホスト VM が既存のセッションをサポートできない場合は、このジョブによってホスト プール内の追加のセッション ホスト VM が起動されます。
+
+>[!NOTE]
+>*SessionThresholdPerCPU* では、VM 上のセッション数は制限されません。 このパラメーターは、接続を負荷分散するために、どのタイミングで新しい VM を起動する必要があるかを決めるだけのものです。 セッションの数を制限するには、「[Set-RdsHostPool](/powershell/module/windowsvirtualdesktop/set-rdshostpool/)」の手順に従って、*MaxSessionLimit* パラメーターを適切に構成する必要があります。
+
+ピーク時以外の使用時間帯は、*MinimumNumberOfRDSH* パラメーターに基づいて、シャットダウンすべきセッション ホスト VM がジョブによって特定されます。 新しいセッションがホストに接続できないよう、セッション ホスト VM はドレイン モードに設定されます。 *LimitSecondsToForceLogOffUser* パラメーターを 0 以外の正の値に設定した場合は、スクリプトによって、現在サインインしているユーザーは作業内容を保存するよう通知され、構成された時間待機した後、強制的にサインアウトされます。セッション ホスト VM 上のすべてのユーザー セッションがサインアウトされると、スクリプトによって VM がシャットダウンされます。
+
+*LimitSecondsToForceLogOffUser* パラメーターを 0 に設定した場合は、指定されたグループ ポリシー内のセッション構成設定で、ユーザー セッションのサインオフを処理できるようになります。 これらのグループ ポリシーを確認するには、 **[コンピューターの構成]**  >  **[ポリシー]**  >  **[管理用テンプレート]**  >  **[Windows コンポーネント]**  >  **[ターミナル サービス]**  >  **[ターミナル サーバー]**  >  **[セッションの時間制限]** にアクセスしてください。 セッション ホスト VM にアクティブなセッションが存在する場合は、ジョブによってセッション ホスト VM は実行状態のままとなります。 アクティブなセッションが存在しない場合は、ジョブによってセッション ホスト VM はシャットダウンされます。
+
+ジョブは、設定された繰り返し間隔に基づいて定期的に実行されます。 Windows Virtual Desktop 環境のサイズに基づいてこの間隔を変更できますが、仮想マシンの起動とシャットダウンには時間がかかることがあるため、遅延を考慮してください。 繰り返し間隔を 15 分に設定することをお勧めします。
+
+ただし、このツールには次の制限事項もあります。
+
+- このソリューションは、プールされたセッション ホスト VM にのみ適用されます。
+- このソリューションは任意のリージョンの VM を管理しますが、Azure Automation アカウントおよび Azure Logic Apps と同じサブスクリプションでのみ使用できます。
+
+>[!NOTE]
+>スケーリング ツールでは、スケーリングするホスト プールの負荷分散モードを制御します。 ピーク時とピーク時以外の両方に対して、幅優先の負荷分散に設定されます。
 
 ## <a name="prerequisites"></a>前提条件
 
-スクリプトを実行する環境には、以下のものが必要です。
+スケーリング ツールの設定を開始する前に、次の準備ができていることを確認してください。
 
-- Windows Virtual Desktop のテナントとアカウント、またはそのテナントのクエリを実行するためのアクセス許可を持つサービス プリンシパル (RDS 共同作成者など)。
-- 構成されて Windows Virtual Desktop サービスに登録されたセッション ホスト プール VM。
-- タスク スケジューラでスケジュールされたタスクを実行すると共に、セッション ホストにネットワークでアクセスできる追加の仮想マシン。 以後、このドキュメントでは、これをスケーラー VM と呼びます。
-- [Microsoft Azure Resource Manager PowerShell モジュール](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) (スケジュールされたタスクを実行する VM にインストールされていること)。
-- [Windows Virtual Desktop PowerShell モジュール](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) (スケジュールされたタスクを実行する VM にインストールされていること)。
+- [Windows Virtual Desktop のテナントとホスト プール](create-host-pools-arm-template.md)
+- 構成されて Windows Virtual Desktop サービスに登録されたセッション ホスト プール VM
+- Azure サブスクリプション対する[共同作成者のアクセス権](../role-based-access-control/role-assignments-portal.md)を持っているユーザー
 
-## <a name="recommendations-and-limitations"></a>推奨事項と制限事項
+ツールのデプロイに使用するマシンには、次のものが必要です。 
 
-スケーリング スクリプトを実行するときには、次の点にご注意ください。
+- Windows PowerShell 5.1 以降
+- Microsoft Az PowerShell モジュール
 
-- このスケーリング スクリプトでは、スケーリング スクリプトを実行しているスケジュールされたタスクのインスタンスごとに 1 つのホスト プールだけを処理できます。
-- スケーリング スクリプトを実行するスケジュールされたタスクは、常に電源オンになっている VM 上にある必要があります。
-- スケーリング スクリプトとその構成のインスタンスごとに別々のフォルダーを作成します。
-- 多要素認証を必要とする Azure AD ユーザー アカウントを使用し、管理者として Windows Virtual Desktop にサインインすることは、このスクリプトではサポートされません。 Windows Virtual Desktop サービスと Azure へのアクセスにはサービス プリンシパルを使用することをお勧めします。 [こちらのチュートリアル](create-service-principal-role-powershell.md)に従って、サービス プリンシパルとロールの割り当てを PowerShell で作成してください。
-- Azure の SLA 保証は、可用性セット内の VM にのみ適用されます。 ドキュメントの現在のバージョンでは、スケーリングを行う 1 台の VM がある環境について説明しています。これは可用性の要件を満たしていない可能性があります。
+すべての準備が整ったら、始めましょう。
 
-## <a name="deploy-the-scaling-script"></a>スケーリング スクリプトのデプロイ
+## <a name="create-an-azure-automation-account"></a>Azure Automation アカウントを作成する
 
-次の手順では、スケーリング スクリプトをデプロイする方法を示します。
+まず、PowerShell Runbook を実行するために、Azure Automation アカウントが必要です。 アカウントの設定方法は次のとおりです。
 
-### <a name="prepare-your-environment-for-the-scaling-script"></a>スケーリング スクリプト用の環境の準備
+1. Windows PowerShell を管理者として開きます。
+2. 次のコマンドレットを実行して、Azure アカウントにサインインします。
 
-まず、スケーリング スクリプト用の環境を準備します。
+     ```powershell
+     Login-AzAccount
+     ```
 
-1. スケジュールされたタスクをドメイン管理者アカウントで実行する VM (スケーラー VM) にサインインします。
-2. スケーリング スクリプトとその構成 (**C:\\scaling-HostPool1** など) を格納するフォルダーをスケーラー VM に作成します。
-3. **basicScale.ps1**、**Config.json**、**Functions-PSStoredCredentials.ps1** の各ファイルおよび **PowershellModules** フォルダーを[スケーリング スクリプト リポジトリ](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script)からダウンロードし、それらを手順 2. で作成したフォルダーにコピーします。 これらのファイルをスケーラー VM にコピーする前に入手します。主な方法は、次の 2 つです。
-    - Git リポジトリをローカル コンピューターに複製します。
-    - 各ファイルの **Raw** バージョンを表示し、各ファイルの内容をコピーしてテキスト エディターに貼り付けた後、対応するファイル名とファイルの種類でそのファイルを保存します。 
+     >[!NOTE]
+     >アカウントには、スケーリング ツールをデプロイする Azure サブスクリプションに対する共同作成者の権限が必要です。
 
-### <a name="create-securely-stored-credentials"></a>安全に保存された資格情報の作成
+3. 次のコマンドレットを実行して、Azure Automation アカウントを作成するためのスクリプトをダウンロードします。
 
-次に、安全に保存された資格情報を作成する必要があります。
+     ```powershell
+     Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/wvd-scaling-script/createazureautomationaccount.ps1" -OutFile "your local machine path\ createazureautomationaccount.ps1"
+     ```
 
-1. PowerShell ISE を管理者として開きます。
-2. 次のコマンドレットを実行して、RDS PowerShell モジュールをインポートします。
+4. 次のコマンドレットを実行して、スクリプトを実行し、Azure Automation アカウントを作成します。
 
-    ```powershell
-    Install-Module Microsoft.RdInfra.RdPowershell
-    ```
-    
-3. 編集ウィンドウを開き、**Function-PSStoredCredentials.ps1** ファイルを読み込んでから、スクリプト全体を実行します (F5)
-4. 次のコマンドレットを実行します。
-    
-    ```powershell
-    Set-Variable -Name KeyPath -Scope Global -Value <LocalScalingScriptFolder>
-    ```
-    
-    たとえば、**Set-Variable -Name KeyPath -Scope Global -Value "c:\\scaling-HostPool1"** などです
-5. **New-StoredCredential -KeyPath \$KeyPath** コマンドレットを実行します。 入力を求められたら、ホスト プール (ホスト プールは **config.json** で指定されます) のクエリを実行するためのアクセス許可を持つ Windows Virtual Desktop 資格情報を入力します。
-    - 別のサービス プリンシパルまたは標準アカウントを使用する場合は、アカウントごとに 1 回ずつ **New-StoredCredential -KeyPath \$KeyPath** コマンドレットを実行して、ローカルに格納された資格情報を作成します。
-6. **Get-StoredCredential -List** を実行して、資格情報が正常に作成されたことを確認します。
+     ```powershell
+     .\createazureautomationaccount.ps1 -SubscriptionID <azuresubscriptionid> -ResourceGroupName <resourcegroupname> -AutomationAccountName <name of automation account> -Location "Azure region for deployment"
+     ```
 
-### <a name="configure-the-configjson-file"></a>config.json ファイルを構成する
+5. コマンドレットの出力には、Webhook の URI が含まれています。 Azure ロジック アプリの実行スケジュールを設定するときにパラメーターとして使用するため、必ずこの URI を記録しておいてください。
 
-次のフィールドに妥当な値を入力して、config.json 内のスケーリング スクリプト設定を更新します。
+Azure Automation アカウントの設定が完了したら、Azure サブスクリプションにサインインし、次の図に示すように、指定のリソースグループに Azure Automation アカウントと関連する Runbook が表示されていることを確認します。
 
-| フィールド                     | [説明]                    |
-|-------------------------------|------------------------------------|
-| AADTenantId                   | セッション ホスト VM を実行しているサブスクリプションを関連付ける Azure AD テナント ID     |
-| AADApplicationId              | サービス プリンシパルのアプリケーション ID                                                       |
-| AADServicePrincipalSecret     | これはテスト フェーズ中に入力できますが、**Functions-PSStoredCredentials.ps1** を使用して資格情報を作成した後は空のままにします    |
-| currentAzureSubscriptionId    | セッション ホスト VM が実行される Azure サブスクリプションの ID                        |
-| tenantName                    | Windows Virtual Desktop のテナント名                                                    |
-| hostPoolName                  | Windows Virtual Desktop のホスト プール名                                                 |
-| RDBroker                      | WVD サービスの URL。既定値は https:\//rdbroker.wvd.microsoft.com             |
-| ユーザー名                      | サービス プリンシパル アプリケーション ID (AADApplicationId の場合と同じサービス プリンシパルを持つことができます) または多要素認証なしの標準ユーザー |
-| isServicePrincipal            | 使用可能な値は **true** または **false** です。 使用されている 2 セット目の資格情報がサービス プリンシパルと標準アカウントのどちらであるかを示します。 |
-| BeginPeakTime                 | ピーク使用時間の開始時刻                                                            |
-| EndPeakTime                   | ピーク使用時間の終了時刻                                                              |
-| TimeDifferenceInHours         | 現地時刻と UTC の時間差 (時間単位)                                   |
-| SessionThresholdPerCPU        | CPU ごとの最大セッション数のしきい値。ピーク時に新しいセッション ホスト VM をいつ起動すべきかの判断に使用されます。  |
-| MinimumNumberOfRDSH           | ピーク使用時間外中も実行を続けるホスト プール VM の最小数             |
-| LimitSecondsToForceLogOffUser | ユーザーにサインアウトを強制する前に待機する秒数。0 に設定されている場合、ユーザーは強制的にサインアウトされません。  |
-| LogOffMessageTitle            | サインアウトを強制する前にユーザーに送信されるメッセージのタイトル                  |
-| LogOffMessageBody             | サインアウトの前にユーザーに送信される警告メッセージの本文。たとえば、"このマシンは X 分後にシャットダウンされます。 作業内容を保存してサインアウトしてください。" |
+![新しく作成した Automation アカウントと Runbook を示す Azure の概要ページの画像。](media/automation-account.png)
 
-### <a name="configure-the-task-scheduler"></a>タスク スケジューラの構成
+Webhook が必要な場所にあるかどうかを確認するには、画面の左側にあるリソースの一覧に移動し、**Webhook** を選択します。
 
-構成 JSON ファイルを構成した後、一定の間隔で basicScaler.ps1 ファイルを実行するようにタスク スケジューラを構成する必要があります。
+## <a name="create-an-azure-automation-run-as-account"></a>Azure Automation の実行アカウントを作成する
 
-1. **タスク スケジューラ**を起動します。
-2. **[タスク スケジューラ]** ウィンドウで、 **[タスクの作成]** を選択します
-3. **[タスクの作成]** ダイアログで、 **[全般]** タブを選択し、 **[名前]** (たとえば、"Dynamic RDSH") を入力して、 **[ユーザーがログオンしているかどうかにかかわらず実行する]** と **[最上位の特権で実行する]** を選択します。
-4. **[トリガー]** タブに移動し、 **[新規]** を選択します
-5. **[新しいトリガー]** ダイアログの **[詳細設定]** で、 **[繰り返し間隔]** をオンにし、適切な期間と継続時間 (たとえば、 **[15 分]** または **[無期限]** ) を選択します。
-6. **[アクション]** タブと **[新規]** を選択します
-7. **[新しいアクション]** ダイアログで、**powershell.exe** を **[プログラム/スクリプト]** フィールドに入力し、**C:\\scaling\\basicScale.ps1** を **[引数の追加 (オプション)]** フィールドに入力します。
-8. **[条件]** タブと **[設定]** タブに移動し、 **[OK]** を選択してそれぞれの既定の設定を受け入れます。
-9. スケーリング スクリプトの実行を計画している管理アカウントのパスワードを入力します。
+これで Azure Automation アカウントの用意ができたので、Azure リソースにアクセスするために Azure Automation の実行アカウントも作成する必要があります。
 
-## <a name="how-the-scaling-script-works"></a>スケーリング スクリプトのしくみ
+[Azure Automation の実行アカウント](../automation/manage-runas-account.md)は、Azure コマンドレットを使用して Azure のリソースを管理するための認証を提供します。 実行アカウントを作成すると、新しいサービス プリンシパル ユーザーが Azure Active Directory に作成され、サブスクリプション レベルでこのユーザーに共同作成者ロールが割り当てられます。Azure 実行アカウントは、資格情報オブジェクトにユーザー名とパスワードを保存しなくても、証明書とサービス プリンシパル名で安全に認証できる優れた方法です。 実行アカウントの認証の詳細については、「[実行アカウントのアクセス許可の制限](../automation/manage-runas-account.md#limiting-run-as-account-permissions)」をご覧ください。
 
-このスケーリング スクリプトでは、config.json ファイルから、その日のピーク使用期間の開始と終了などの設定が読み取られます。
+サブスクリプション管理者ロールのメンバーであり、サブスクリプションの共同管理者であるユーザーは、次のセクションの手順に従って実行アカウントを作成できます。
 
-ピーク使用時間帯、現在のセッション数と現在実行中の RDSH のキャパシティが、このスクリプトによってホスト プールごとにチェックされます。 実行中のセッション ホスト VM に、既存のセッションをサポートできるだけのキャパシティがあるかどうかが、config.json ファイルに定義された SessionThresholdPerCPU パラメーターに基づいて計算されます。 存在しない場合は、ホスト プールで追加のセッション ホスト VM を起動します。
+Azure アカウントで実行アカウントを作成するには、次の操作を行います。
 
-オフピーク使用時間帯には、config.json ファイル内の MinimumNumberOfRDSH パラメーターに基づいて、シャットダウンすべきセッション ホスト VM が特定されます。 新しいセッションがホストに接続できないよう、セッション ホスト VM はドレイン モードに設定されます。 config.json ファイル内で **LimitSecondsToForceLogOffUser** パラメーターを 0 以外の正の値に設定した場合は、スクリプトによって、現在サインインしているユーザーに作業内容を保存するよう通知され、構成された時間待機してからユーザーが強制的にサインアウトされます。セッション ホスト VM のすべてのユーザー セッションがサインオフされると、スクリプトによってサーバーがシャットダウンされます。
+1. Azure Portal で **[すべてのサービス]** を選択します。 リソースの一覧で、 **[Automation アカウント]** を入力して選択します。
 
-config.json ファイルで **LimitSecondsToForceLogOffUser** パラメーターを 0 に設定した場合、ホスト プールのプロパティのセッション構成設定で、ユーザー セッションのサインオフを処理することができます。 セッション ホスト VM にセッションが存在する場合、セッション ホスト VM は実行状態のままとなります。 セッションがまったく存在しない場合、スクリプトによってセッション ホスト VM がシャットダウンされます。
+2. **[Automation アカウント]** ページで、自分の Automation アカウントの名前を選択します。
 
-スクリプトは、タスク スケジューラを使用してスケーラー VM サーバー上で定期的に実行されるように設計されています。 リモート デスクトップ サービス環境のサイズに基づいて適切な時間間隔を選択し、仮想マシンの起動とシャットダウンにしばらく時間がかかることを忘れないでください。 スケーリング スクリプトを 15 分ごとに実行することをお勧めします。
+3. ウィンドウの左側のペインで、[アカウント設定] セクションの **[実行アカウント]** を選択します。
 
-## <a name="log-files"></a>ログ ファイル
+4. **[Azure 実行アカウント]** を選択します。 **[Azure 実行アカウントを追加する]** ウィンドウが表示されたら、概要情報を確認した後で **[作成]** を選択して、アカウントの作成プロセスを開始します。
 
-スケーリング スクリプトでは、**WVDTenantScale.log** と **WVDTenantUsage.log** の 2 つのログ ファイルが作成されます。 **WVDTenantScale.log** ファイルには、スケーリング スクリプトの各実行中のイベントとエラー (ある場合) が記録されます。
+5. Azure で実行アカウントが作成されるまで数分待ちます。 メニューの [通知] で作成の進行状況を追跡できます。
 
-**WVDTenantUsage.log** ファイルには、スケーリング スクリプトを実行するたびアクティブなコア数とアクティブな仮想マシン数が記録されます。 この情報を使用して、Microsoft Azure VM の実際の使用料とコストを見積もることができます。 ファイルはコンマ区切り値として書式設定され、各項目に次の情報が含まれます。
+6. 作成プロセスが完了すると、指定の Automation アカウントに AzureRunAsConnection という名前の資産が作成されます。 この接続資産には、アプリケーション ID、テナント ID、サブスクリプション ID、証明書の拇印が格納されます。 アプリケーション ID は後で使用するため、覚えておいてください。
 
->時間、ホスト プール、コア、VM
+### <a name="create-a-role-assignment-in-windows-virtual-desktop"></a>Windows Virtual Desktop にロールの割り当てを作成する
 
-ファイル名を変更して .csv 拡張子を付け、Microsoft Excel に読み込んで分析することもできます。
+次に、AzureRunAsConnection が Windows Virtual Desktop と対話できるように、ロールの割り当てを作成する必要があります。 必ず PowerShell を使用して、ロールの割り当てを作成するアクセス許可を持つアカウントでサインインしてください。
+
+まず、PowerShell セッション内で使用する [Windows Virtual Desktop PowerShell モジュール](/powershell/windows-virtual-desktop/overview/)をダウンロードしてインポートします (まだ行っていない場合)。 次の PowerShell コマンドレットを実行して、Windows Virtual Desktop に接続し、テナントを表示します。
+
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+
+Get-RdsTenant
+```
+
+スケーリングするホスト プールを含むテナントを見つけたら、「[Azure Automation アカウントを作成する](#create-an-azure-automation-account)」の手順に従い、前のコマンドレットで取得したテナント名を次のコマンドレットに使用して、ロールの割り当てを作成 します。
+
+```powershell
+New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId <applicationid> -TenantName <tenantname>
+```
+
+## <a name="create-the-azure-logic-app-and-execution-schedule"></a>Azure ロジック アプリと実行スケジュールを作成する
+
+最後に、Azure ロジック アプリを作成し、新しいスケーリング ツールの実行スケジュールを設定する必要があります。
+
+1.  Windows PowerShell を管理者として開きます。
+
+2.  次のコマンドレットを実行して、Azure アカウントにサインインします。
+
+     ```powershell
+     Login-AzAccount
+     ```
+
+3. 次のコマンドレットを実行して、ローカル コンピューターに createazurelogicapp.ps1 スクリプト ファイルをダウンロードします。
+
+     ```powershell
+     Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/wvd-scaling-script/createazurelogicapp.ps1" -OutFile "your local machine path\ createazurelogicapp.ps1"
+     ```
+
+4. 次のコマンドレットを実行して、RDS 所有者または RDS 共同作成者のアクセス許可を持つアカウントを使用して Windows Virtual Desktop にサインインします。
+
+     ```powershell
+     Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+     ```
+
+5. 次の PowerShell スクリプトを実行して、Azure ロジック アプリと実行スケジュールを作成します。
+
+     ```powershell
+     $resourceGroupName = Read-Host -Prompt "Enter the name of the resource group for the new Azure Logic App"
+     
+     $aadTenantId = Read-Host -Prompt "Enter your Azure AD tenant ID"
+
+     $subscriptionId = Read-Host -Prompt "Enter your Azure Subscription ID"
+
+     $tenantName = Read-Host -Prompt "Enter the name of your WVD tenant"
+
+     $hostPoolName = Read-Host -Prompt "Enter the name of the host pool you’d like to scale"
+
+     $recurrenceInterval = Read-Host -Prompt "Enter how often you’d like the job to run in minutes, e.g. ‘15’"
+
+     $beginPeakTime = Read-Host -Prompt "Enter the start time for peak hours in local time, e.g. 9:00"
+
+     $endPeakTime = Read-Host -Prompt "Enter the end time for peak hours in local time, e.g. 18:00"
+
+     $timeDifference = Read-Host -Prompt "Enter the time difference between local time and UTC in hours, e.g. +5:30"
+
+     $sessionThresholdPerCPU = Read-Host -Prompt "Enter the maximum number of sessions per CPU that will be used as a threshold to determine when new session host VMs need to be started during peak hours"
+
+     $minimumNumberOfRdsh = Read-Host -Prompt "Enter the minimum number of session host VMs to keep running during off-peak hours"
+
+     $limitSecondsToForceLogOffUser = Read-Host -Prompt "Enter the number of seconds to wait before automatically signing out users. If set to 0, users will be signed out immediately"
+
+     $logOffMessageTitle = Read-Host -Prompt "Enter the title of the message sent to the user before they are forced to sign out"
+
+     $logOffMessageBody = Read-Host -Prompt "Enter the body of the message sent to the user before they are forced to sign out"
+
+     $location = Read-Host -Prompt "Enter the name of the Azure region where you will be creating the logic app"
+
+     $connectionAssetName = Read-Host -Prompt "Enter the name of the Azure RunAs connection asset"
+
+     $webHookURI = Read-Host -Prompt "Enter the URI of the WebHook returned by when you created the Azure Automation Account"
+
+     $automationAccountName = Read-Host -Prompt "Enter the name of the Azure Automation Account"
+
+     $maintenanceTagName = Read-Host -Prompt "Enter the name of the Tag associated with VMs you don’t want to be managed by this scaling tool"
+
+     .\createazurelogicapp.ps1 -ResourceGroupName $resourceGroupName `
+       -AADTenantID $aadTenantId `
+       -SubscriptionID $subscriptionId `
+       -TenantName $tenantName `
+       -HostPoolName $hostPoolName `
+       -RecurrenceInterval $recurrenceInterval `
+       -BeginPeakTime $beginPeakTime `
+       -EndPeakTime $endPeakTime `
+       -TimeDifference $timeDifference `
+       -SessionThresholdPerCPU $sessionThresholdPerCPU `
+       -MinimumNumberOfRDSH $minimumNumberOfRdsh `
+       -LimitSecondsToForceLogOffUser $limitSecondsToForceLogOffUser `
+       -LogOffMessageTitle $logOffMessageTitle `
+       -LogOffMessageBody $logOffMessageBody `
+       -Location $location `
+       -ConnectionAssetName $connectionAssetName `
+       -WebHookURI $webHookURI `
+       -AutomationAccountName $automationAccountName `
+       -MaintenanceTagName $maintenanceTagName
+     ```
+
+     スクリプトを実行すると、次の図に示すように、ロジック アプリがリソース グループに表示されます。
+
+     ![Azure ロジック アプリの例を表す概要ページの画像。](media/logic-app.png)
+
+繰り返し間隔やタイム ゾーンを変更するなど、実行スケジュールに変更を加えるには、自動スケーリングのスケジューラにアクセスし、 **[編集]** を選択して Logic Apps デザイナーに移動します。
+
+![Logic Apps デザイナーの画像。 繰り返し時間と Webhook ファイルを編集できる [繰り返し] メニューと [Webhook] メニューが開いています。](media/logic-apps-designer.png)
+
+## <a name="manage-your-scaling-tool"></a>スケーリング ツールを管理する
+
+スケーリング ツールの作成が完了したので、その出力にアクセスできます。 ここでは、役に立つと思われるいくつかの機能について説明します。
+
+### <a name="view-job-status"></a>ジョブの状態を見る
+
+すべての Runbook ジョブの状態の概要を表示したり、Azure portal で特定の Runbook ジョブの詳細な状態を表示したりできます。
+
+選択した Automation アカウントの右側にある [ジョブの統計情報] で、すべての Runbook ジョブの概要の一覧を表示できます。 ウィンドウの左側にある **[ジョブ]** ページを開くと、現在のジョブの状態、開始時刻、完了時刻が表示されます。
+
+![ジョブの状態ページのスクリーンショット。](media/jobs-status.png)
+
+### <a name="view-logs-and-scaling-tool-output"></a>ログとスケーリング ツールの出力を見る
+
+スケールアウト操作やスケールイン操作のログを表示するには、Runbook を開いて、ジョブの名前を選択します。
+
+Azure Automation アカウントをホストしているリソース グループの Runbook (既定の名前は WVDAutoScaleRunbook) に移動して、 **[概要]** を選択します。 [概要] ページで、[最近のジョブ] の下にあるジョブを選択すると、次の図に示すようなスケーリング ツールの出力が表示されます。
+
+![スケーリング ツールの出力ウィンドウの画像。](media/tool-output.png)

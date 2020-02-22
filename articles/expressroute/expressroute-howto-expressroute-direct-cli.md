@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6a17570a62728d5b4f9c99e3c4c939b5c77cb3df
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 47ee05113d46f66efd02978fed09cf72edc5ac1c
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74080208"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049939"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Azure CLI の使用による ExpressRoute Direct の構成
 
@@ -38,7 +38,12 @@ Azure ExpressRoute Direct を使用すると、世界中に戦略的に分散さ
    az account set --subscription "<subscription ID>"
    ```
 
-2. ExpressRoute Direct がサポートされるすべての場所を一覧表示します。
+2. expressrouteportslocation および expressrouteport API にアクセスするために、Microsoft.Network へのサブスクリプションを再登録します。
+
+   ```azurecli
+   az provider register --namespace Microsoft.Network
+   ```
+3. ExpressRoute Direct がサポートされるすべての場所を一覧表示します。
     
    ```azurecli
    az network express-route port location list
@@ -105,7 +110,7 @@ Azure ExpressRoute Direct を使用すると、世界中に戦略的に分散さ
    }
    ]
    ```
-3. 上記の手順で示されている場所のいずれかに使用可能な帯域幅があるかどうかを確認します。
+4. 上記の手順で示されている場所のいずれかに使用可能な帯域幅があるかどうかを確認します。
 
    ```azurecli
    az network express-route port location show -l "Equinix-Ashburn-DC2"
@@ -131,7 +136,7 @@ Azure ExpressRoute Direct を使用すると、世界中に戦略的に分散さ
    "type": "Microsoft.Network/expressRoutePortsLocations"
    }
    ```
-4. 上記の手順で選択した場所に基づく ExpressRoute Direct リソースを作成します。
+5. 上記の手順で選択した場所に基づく ExpressRoute Direct リソースを作成します。
 
    ExpressRoute Direct では、QinQ と Dot1Q 両方のカプセル化がサポートされます。 QinQ を選択した場合、各 ExpressRoute 回線に S-Tag が動的に割り当てられ、ExpressRoute Direct リソース全体で一意になります。 回線上の各 C-Tag は、その回線で一意である必要がありますが、ExpressRoute Direct リソース全体では、その必要はありません。  
 
@@ -326,6 +331,6 @@ ExpressRoute Direct リソース上に回線を作成します。
   }  
   ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ExpressRoute Direct について詳しくは、「[概要](expressroute-erdirect-about.md)」に関する記事をご覧ください。

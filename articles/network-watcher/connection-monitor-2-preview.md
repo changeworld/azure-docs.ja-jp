@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: c993a08a4163d50a9632055da355e39b5bdde004
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 43c49cce1dd53edd5c2b13b01a31f94752579dff
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026451"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169331"
 ---
-# <a name="overview"></a>概要
+# <a name="unified-connectivity-monitoring-with-connection-monitor-preview"></a>接続モニター (プレビュー) を使用した統合された接続監視
 
 接続モニター (プレビュー) は、ハイブリッドおよび Azure クラウドのデプロイに対して Azure Network Watcher で統合されたエンド ツー エンドの接続監視機能を提供します。 Azure Network Watcher には、Azure のデプロイに対する接続に関連したメトリックを監視、診断、および表示するためのツールが用意されています。
 
@@ -31,7 +31,7 @@ ms.locfileid: "77026451"
 
 - 多層アプリケーション内のデータベース サーバー VM と通信するフロントエンド Web サーバー VM がある。 2 つの VM 間のネットワーク接続を確認したい。
 - 米国東部リージョンの VM から、米国中部リージョンの VM に ping を実行して、リージョン間のネットワーク待ち時間を比較したい
-- シアトルのような都市に、Office 365 URL に接続する複数のオンプレミスのオフィス サイトがある。 connecting to Office 365 URLs. シアトルとアッシュバーンから Office 365 URL を使用しているユーザーが体験した待ち時間を比較したい。
+- シアトルのような都市に複数のオンプレミスのオフィス サイトがある。 そこから Office 365 URL に接続している。 シアトルとアッシュバーンから Office 365 URL を使用しているユーザーが体験した待ち時間を比較したい。
 - Azure Storage エンドポイントへの接続を必要とするハイブリッド アプリケーションをセットアップしている。 同じ Azure Storage エンドポイントに接続しているオンプレミス サイトと Azure アプリケーションの間の待ち時間を比較したい。
 - クラウド アプリケーションをホストしている Azure VM からオンプレミス セットアップへの接続を確認したい。
 
@@ -78,8 +78,8 @@ VNET を使用するすべてのサブスクリプションでは、Network Watc
 
 ### <a name="accessing-connection-monitor-preview"></a>接続モニター (プレビュー) へのアクセス
 
-1. 次のリンクを使用して Network Watcher にアクセスします:[https://ms.portal.azure.com/?Microsoft\_Azure\_Network\_connectionmonitorpreview=true#blade/Microsoft\_Azure\_Network/NetworkWatcherMenuBlade/connectionMonitorPreview](https://ms.portal.azure.com/?Microsoft_Azure_Network_connectionmonitorpreview=true#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/connectionMonitorPreview)
-2. Network Watcher の左ペインの [監視] セクションにある [接続モニター (プレビュー)] タブをクリックします。 このタブは、手順 1 で指定されているリンクを使用して Network Watcher にアクセスした場合にのみ表示されます。
+1. Azure portal のホームページで、Network Watcher にアクセスします
+2. Network Watcher の左ペインの [監視] セクションにある [接続モニター (プレビュー)] タブをクリックします。
 3. 接続モニター (プレビュー) エクスペリエンスを使用して作成されたすべての接続モニターを表示できます。 [接続モニター] タブの従来のエクスペリエンスを使用して作成されたすべての接続モニターは、[接続モニター] タブに表示されます。
 
     ![接続モニターを作成する](./media/connection-monitor-2-preview/cm-resource-view.png)
@@ -403,7 +403,7 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
 
       ![宛先の追加 2](./media/connection-monitor-2-preview/add-azure-dests2.png)
 
-   2. [エンドポイント] タブをクリックして、Azure VM を宛先として選択します。 エンドポイント リストには、O365 と D365 のテスト URL が名前でグループ化されて設定されます。  同じ接続モニターの他のテスト グループで作成されたエンドポイントを選択することもできます。 新しいエンドポイントを追加するには、画面の右上隅にある [+ Endpoint]\(+ エンドポイント\) をクリックし、エンドポイントの URL/IP/FQDN と名前を指定します
+   2. [エンドポイント] タブをクリックして、エンドポイントを宛先として選択します。 エンドポイント リストには、O365 と D365 のテスト URL が名前でグループ化されて設定されます。  同じ接続モニターの他のテスト グループで作成されたエンドポイントを選択することもできます。 新しいエンドポイントを追加するには、画面の右上隅にある [+ Endpoint]\(+ エンドポイント\) をクリックし、エンドポイントの URL/IP/FQDN と名前を指定します
 
       ![エンドポイントの追加](./media/connection-monitor-2-preview/add-endpoints.png)
 
@@ -535,7 +535,7 @@ Network Watcher サービスから接続モニター (プレビュー) に移動
       ![RTT](./media/connection-monitor-2-preview/cm-drill-charts.png)
 
   7. さらに多くのデータを表示するには、期間を変更します。
-  8. 手順 b でビューを変更し、ソース、宛先、またはテスト構成別に表示するように選択できます。 次に、失敗したテストに基づいてソースを選択し、失敗したテストの上位 5 件を調査します。  次に例を示します。表示方法: ソースと宛先を選択して、選択した接続モニターでその組み合わせの間で実行されているすべてのテストを調査します。
+  8. 手順 b でビューを変更し、ソース、宛先、またはテスト構成別に表示するように選択できます。 次に、失敗したテストに基づいてソースを選択し、失敗したテストの上位 5 件を調査します。  次に例を示します。表示方法:ソースと宛先を選択して、選択した接続モニターでその組み合わせの間で実行されているすべてのテストを調査します。
 
       ![RTT2](./media/connection-monitor-2-preview/cm-drill-select-source.png)
 
@@ -548,7 +548,7 @@ Network Watcher サービスから接続モニター (プレビュー) に移動
    3. 詳細に調査するテストを選択します。
    4. 選択されている期間とチェックの失敗率 (%) については、しきい値と実際の値が表示されます。 RTT ミリ秒については、しきい値、平均値、最小値、および最大値が表示されます。 また、選択したテストに固有の発生したアラートも表示されます。
    5. さらに多くのデータを表示するには、期間を変更します。
-   6. 手順 b でビューを変更し、ソース、宛先、またはテスト構成別に表示するように選択できます。 次に、失敗したテストの上位 5 件を調査するエンティティを選択します。  次に例を示します。表示方法: ソースと宛先を選択して、選択した接続モニターでその組み合わせの間で実行されているすべてのテストを調査します。
+   6. 手順 b でビューを変更し、ソース、宛先、またはテスト構成別に表示するように選択できます。 次に、失敗したテストの上位 5 件を調査するエンティティを選択します。  次に例を示します。表示方法:ソースと宛先を選択して、選択した接続モニターでその組み合わせの間で実行されているすべてのテストを調査します。
 
 3. テスト
    1. 詳細に調査するソースと宛先とテスト構成をクリックします
@@ -578,8 +578,8 @@ Network Watcher サービスから接続モニター (プレビュー) に移動
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | 失敗したプローブの割合 | Percent | Average | 失敗した接続監視プローブの割合 | ディメンションなし |
 | AverageRoundtripMs | Avg.ラウンド トリップ時間 (ミリ秒) | MilliSeconds | Average | ソースと接続先の間で送信された接続監視プローブのネットワークの平均ラウンド トリップ時間 (ミリ秒) |             ディメンションなし |
-| ChecksFailedPercent (プレビュー) | チェックの失敗率 (%) (プレビュー) | Percent | Average | テストのチェックの失敗率 (%) |リスト: - ConnectionMonitorResourceId - SourceAddress - SourceName - SourceResourceId - SourceType - Protocol - DestinationAddress - DestinationName - DestinationResourceId - DestinationType -DestinationPort - TestGroupName - TestConfigurationName - Region |
-| RoundTripTimeMs (プレビュー) | ラウンド トリップ時間 (ミリ秒) (プレビュー) | ミリ秒 | Average | ソースと宛先の間で送信されたチェックのラウンド トリップ時間 (ミリ秒)。 この値は平均化されません | リスト: - ConnectionMonitorResourceId - SourceAddress - SourceName - SourceResourceId - SourceType - Protocol - DestinationAddress - DestinationName - DestinationResourceId - DestinationType - DestinationPort - TestGroupName - TestConfigurationName - Region |
+| ChecksFailedPercent (プレビュー) | チェックの失敗率 (%) (プレビュー) | Percent | Average | テストのチェックの失敗率 (%) | * ConnectionMonitorResourceId <br> * SourceAddress <br> *  SourceName <br> * SourceResourceId <br> *  SourceType <br> * Protocol <br> * DestinationAddress <br> * DestinationName <br> * DestinationResourceId <br> * DestinationType <br> * DestinationPort <br> *  TestGroupName <br> *  TestConfigurationName <br> * Region |
+| RoundTripTimeMs (プレビュー) | ラウンド トリップ時間 (ミリ秒) (プレビュー) | ミリ秒 | Average | ソースと宛先の間で送信されたチェックのラウンド トリップ時間 (ミリ秒)。 この値は平均化されません | * ConnectionMonitorResourceId <br> * SourceAddress <br> *  SourceName <br> * SourceResourceId <br> *  SourceType <br> * Protocol <br> * DestinationAddress <br> * DestinationName <br> * DestinationResourceId <br> * DestinationType <br> * DestinationPort <br> *  TestGroupName <br> *  TestConfigurationName <br> * Region |
 
  ![監視メトリック](./media/connection-monitor-2-preview/monitor-metrics.png)
 

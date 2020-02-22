@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/17/2020
+ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2ef90e1cb883a2d22b355ff4105ae0ce3c73ad6d
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 86aaebe652968a2ea33fd8e15f9de9c1dff31a30
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759853"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086970"
 ---
 # <a name="create-an-azure-storage-account"></a>Azure Storage アカウントの作成
 
@@ -28,15 +28,23 @@ Azure ストレージ アカウントには、すべての Azure Storage デー�
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 [なし] :
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-このハウツー記事には、Azure PowerShell モジュール Az バージョン 0.7 以降が必要です。 現在のバージョンを調べるには、`Get-Module -ListAvailable Az` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。
+PowerShell で Azure Storage アカウントを作成するには、Azure PowerShell モジュール Az バージョン 0.7 以降をインストールしておく必要があります。 詳細については、[Azure PowerShell Az モジュールの概要](/powershell/azure/new-azureps-module-az)に関するページを参照してください。
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+現在のバージョンを調べるには、次のコマンドを実行します。
+
+```powershell
+Get-InstalledModule -Name "Az"
+```
+
+Azure PowerShell をインストールまたはアップグレードする場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 次の 2 つの方法のいずれかで Azure にサインインし、Azure CLI コマンドを実行できます。
 
@@ -57,7 +65,7 @@ Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash �
 
 Azure CLI はローカルにインストールして使用することもできます。 このハウツー記事では、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 
 
-# <a name="templatetabtemplate"></a>[テンプレート](#tab/template)
+# <a name="template"></a>[テンプレート](#tab/template)
 
 [なし] :
 
@@ -65,11 +73,11 @@ Azure CLI はローカルにインストールして使用することもでき�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 [Azure portal](https://portal.azure.com) にサインインします。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 `Connect-AzAccount` コマンドで Azure サブスクリプションにサインインし、画面上の指示に従って認証を行います。
 
@@ -77,17 +85,17 @@ Azure CLI はローカルにインストールして使用することもでき�
 Connect-AzAccount
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure Cloud Shell を起動するには、[Azure portal](https://portal.azure.com) にサインインします。
 
 CLI のローカル インストールにログインするには、[az login](/cli/azure/reference-index#az-login) コマンドを実行します。
 
-```cli
+```azurecli-interactive
 az login
 ```
 
-# <a name="templatetabtemplate"></a>[テンプレート](#tab/template)
+# <a name="template"></a>[テンプレート](#tab/template)
 
 該当なし
 
@@ -101,11 +109,11 @@ az login
 
 **汎用 v2** ストレージ アカウントでは、すべての Azure Storage サービス (BLOB、ファイル、キュー、テーブル、ディスク) へのアクセスが提供されます。 ここで説明する手順では汎用 v2 ストレージ アカウントを作成しますが、作成手順はどの種類のストレージ アカウントでも似ています。
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 まず、PowerShell で [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドを使用して新しいリソース グループを作成します。
 
@@ -113,6 +121,7 @@ az login
 # put resource group in a variable so you can use the same group name going forward,
 # without hard-coding it repeatedly
 $resourceGroup = "storage-resource-group"
+$location = "westus"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
@@ -120,7 +129,6 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 ```powershell
 Get-AzLocation | select Location
-$location = "westus"
 ```
 
 次に、[New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) コマンドを使って、読み取りアクセス geo 冗長ストレージ (RA-GRS) で汎用 v2 ストレージ アカウントを作成します。 ストレージ アカウントの名前は Azure 全体で一意である必要があるため、角かっこ内のプレースホルダーの値を独自の一意の値に置き換えることを忘れないでください。
@@ -134,7 +142,7 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 ```
 
 > [!IMPORTANT]
-> [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) を使用する予定がある場合は、このパラメーターの一覧に `-EnableHierarchicalNamespace $True` を含めてください。 
+> [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) を使用する予定がある場合は、このパラメーターの一覧に `-EnableHierarchicalNamespace $True` を含めてください。
 
 別のレプリケーション オプションで汎用 v2 ストレージ アカウントを作成するには、**SkuName** パラメーターを次の表の目的の値で置き換えます。
 
@@ -147,7 +155,7 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 |geo ゾーン冗長ストレージ (GZRS) (プレビュー)    |Standard_GZRS         |
 |読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS) (プレビュー)    |Standard_RAGZRS         |
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 まず、Azure CLI の [az group create](/cli/azure/group#az_group_create) コマンドを使用して新しいリソース グループを作成します。
 
@@ -190,7 +198,7 @@ az storage account create \
 |geo ゾーン冗長ストレージ (GZRS) (プレビュー)    |Standard_GZRS         |
 |読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS) (プレビュー)    |Standard_RAGZRS         |
 
-# <a name="templatetabtemplate"></a>[テンプレート](#tab/template)
+# <a name="template"></a>[テンプレート](#tab/template)
 
 Azure PowerShell または Azure CLI を使用して Resource Manager テンプレートをデプロイし、ストレージ アカウントを作成できます。 このハウツー記事で使うテンプレートは、[Azure Resource Manager クイックスタートのテンプレート](https://azure.microsoft.com/resources/templates/101-storage-account-create/)に関する記事からのものです。 スクリプトを実行するには、 **[使ってみる]** を選択して、Azure Cloud Shell を開きます。 スクリプトを貼り付けるには、シェルを右クリックし、 **[貼り付け]** を選択します。
 
@@ -225,12 +233,12 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 
 ストレージ アカウントを削除すると、アカウント内のすべてのデータを含むアカウント全体が削除され、元に戻すことができなくなります。
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 1. [Azure portal](https://portal.azure.com) でストレージ アカウントに移動します。
 1. **[削除]** をクリックします。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ストレージ アカウントを削除するには、[Remove-AzStorageAccount](/powershell/module/az.storage/remove-azstorageaccount) コマンドを使用します。
 
@@ -238,7 +246,7 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 Remove-AzStorageAccount -Name <storage-account> -ResourceGroupName <resource-group>
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ストレージ アカウントを削除するには、[az storage account delete](/cli/azure/storage/account#az-storage-account-delete) コマンドを使用します。
 
@@ -246,7 +254,7 @@ Remove-AzStorageAccount -Name <storage-account> -ResourceGroupName <resource-gro
 az storage account delete --name <storage-account> --resource-group <resource-group>
 ```
 
-# <a name="templatetabtemplate"></a>[テンプレート](#tab/template)
+# <a name="template"></a>[テンプレート](#tab/template)
 
 ストレージ アカウントを削除するには、Azure PowerShell または Azure CLI を使用します。
 
@@ -277,22 +285,22 @@ az storage account delete --name storageAccountName --resource-group resourceGro
 
 このハウツー記事では、汎用 v2 標準ストレージ アカウントを作成しました。 ストレージ アカウントとの間で BLOB をアップロードおよびダウンロードする方法を学習するには、Blob Storage のクイックスタートのいずれかに進みます。
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 > [!div class="nextstepaction"]
 > [Azure portal を使用して BLOB を操作する](../blobs/storage-quickstart-blobs-portal.md)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!div class="nextstepaction"]
 > [PowerShell を使用して BLOB を操作する](../blobs/storage-quickstart-blobs-powershell.md)
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!div class="nextstepaction"]
 > [Azure CLI を使用して BLOB を操作する](../blobs/storage-quickstart-blobs-cli.md)
 
-# <a name="templatetabtemplate"></a>[テンプレート](#tab/template)
+# <a name="template"></a>[テンプレート](#tab/template)
 
 > [!div class="nextstepaction"]
 > [Azure portal を使用して BLOB を操作する](../blobs/storage-quickstart-blobs-portal.md)

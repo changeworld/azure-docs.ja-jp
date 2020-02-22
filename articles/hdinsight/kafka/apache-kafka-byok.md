@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 72fd23e4283925b91d749fef0afac4e87e93405c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: cba8a4fd64b948d7a3e443426ca1f779af68a3fe
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841666"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049023"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Azure HDInsight で Apache Kafka 用に自分のキーを持ち込む
 
@@ -95,9 +95,13 @@ HDInsight では、Azure Key Vault にのみ対応しています。 自分の�
 
 ## <a name="create-hdinsight-cluster"></a>HDInsight クラスターの作成
 
-これで新しい HDInsight クラスターを作成する準備が整いました。 BYOK は、クラスター作成時、新しいクラスターにのみ適用できます。 BYOK クラスターから暗号化を削除することはできません。既存のクラスターに BYOK を追加することはできません。
+これで新しい HDInsight クラスターを作成する準備が整いました。 **[基本]** タブの **[クラスターの種類]** で **[Kafka]** を選択します。
 
-![Azure portal の Kafka ディスク暗号化](./media/apache-kafka-byok/azure-portal-cluster-security-networking-kafka.png)
+![Azure portal で Kafka タイプを選択する](./media/apache-kafka-byok/azure-portal-cluster-basics-type-kafka.png)
+
+BYOK は、クラスター作成時、新しいクラスターにのみ適用できます。 BYOK クラスターから暗号化を削除することはできません。既存のクラスターに BYOK を追加することはできません。
+
+![Azure portal の Kafka ディスク暗号化](./media/apache-kafka-byok/azure-portal-cluster-security-networking-kafka-byok.png)
 
 クラスター作成時、キーのバージョンも含む、完全キー URL を指定します。 たとえば、「 `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4` 」のように入力します。 また、クラスターにマネージド ID を割り当て、キー URI を指定する必要があります。 クラスターの作成の完全な詳細については、[Azure portal を使用した Apache Hadoop クラスターの作成](./apache-kafka-get-started.md)に関するページを参照してください。
 

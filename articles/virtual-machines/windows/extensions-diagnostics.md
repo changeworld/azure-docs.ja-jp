@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.openlocfilehash: 3fcdcd4565ed0512b3efcf9b23ca349a3bbf3a6c
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d4ba3e8bbdad72f10c630a056f988ec83e9b1a68
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033477"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471620"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>Windows VM 用の Azure Diagnostics 拡張機能
 
@@ -37,7 +37,7 @@ Azure Diagnostics 拡張機能では、ターゲットの仮想マシンがイ�
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
-[このドキュメントでは、Azure Diagnostics 拡張機能のスキーマとプロパティ値について説明します。](../../azure-monitor/platform/diagnostics-extension-schema-1dot3.md)
+[このドキュメントでは、Azure Diagnostics 拡張機能のスキーマとプロパティ値について説明します。](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 
@@ -76,7 +76,7 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup `
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
 
-### <a name="troubleshoot"></a>トラブルシューティング
+### <a name="troubleshoot"></a>[トラブルシューティング]
 
 拡張機能のデプロイ状態に関するデータを取得するには、Azure Portal か Azure CLI を使用します。 特定の VM の拡張機能のデプロイ状態を確認するには、Azure CLI を使用して次のコマンドを実行します。
 
@@ -92,4 +92,4 @@ Azure Diagnostics 拡張機能の包括的なトラブルシューティング �
 
 ## <a name="next-steps"></a>次の手順
 * [Azure Diagnostics 拡張機能の詳細](../../azure-monitor/platform/diagnostics-extension-overview.md)
-* [拡張機能スキーマとバージョンの確認](../../azure-monitor/platform/diagnostics-extension-schema.md)
+* [拡張機能スキーマとバージョンの確認](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)

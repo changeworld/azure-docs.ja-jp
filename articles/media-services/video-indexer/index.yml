@@ -1,52 +1,71 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Media Services Video Indexer のドキュメント
+### YamlMime:Landing
+title: Azure Media Services Video Indexer について説明します
+summary: Azure Media Services Video Indexer は、Azure Media Analytics、Azure Cognitive Search、Cognitive Services (Face API、Microsoft Translator、Computer Vision API、Custom Speech Service など) を基盤として構築されたクラウド アプリケーションです。 Video Indexer のビデオとオーディオのモデルを使用して、ビデオから分析情報を抽出することができます。
 metadata:
-  title: Azure Media Services Video Indexer のドキュメント | Microsoft Docs
-  description: Video Indexer について説明します。
+  title: Azure Media Services Video Indexer のドキュメント
+  description: Azure Media Services Video Indexer は、Azure Media Analytics、Azure Cognitive Search、Cognitive Services (Face API、Microsoft Translator、Computer Vision API、Custom Speech Service など) を基盤として構築されたクラウド アプリケーションです。 Video Indexer のビデオとオーディオのモデルを使用して、ビデオから分析情報を抽出することができます。
   services: media-services
-  author: juliako
-  manager: femila
   ms.service: media-services
-  ms.subservice: video-indexer
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: 
   ms.topic: landing-page
-  ms.date: 03/11/2019
+  ms.collection: collection
+  author: Juliako
   ms.author: juliako
-abstract:
-  description: Azure Media Services Video Indexer は、Azure Media Analytics、Azure Cognitive Search、Cognitive Services (Face API、Microsoft Translator、Computer Vision API、Custom Speech Service など) を基盤として構築されたクラウド アプリケーションです。 Video Indexer のビデオとオーディオのモデルを使用して、ビデオから分析情報を抽出することができます。<br/>どのような場合に Video Indexer やMedia Services アナライザー プリセットを使用するかについて詳しくは、<a href="/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets">比較のドキュメント</a>をご覧ください。
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 2
-        items:
-          - href: video-indexer-overview.md
-            html: <p>Video Indexer には、ビデオから分析情報を簡単に抽出するためのメディア AI テクノロジが組み込まれています。</p>
-            image:
-              src: media/index/AMSIcons-media_servicesV3.svg
-            title: Azure Media Services Video Indexer とは
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: Video Indexer Web サイトにサインインして最初のビデオをアップロードします。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/AMSIcons-media_analytics.svg
-            text: 分析情報の抽出
-            href: /azure/media-services/video-indexer/video-indexer-get-started
-  - title: ステップバイステップ チュートリアル
-    items:
-      - type: paragraph
-        text: Video Indexer API を使用してビデオから分析情報を抽出する方法について説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/AMSIcons-media_analytics.svg
-            text: 分析情報の抽出
-            href: /azure/media-services/video-indexer/video-indexer-use-apis
+  ms.date: 02/18/2020
+  ms.openlocfilehash: a3e1ec7b97d76287614b4e154143899acf7fd902
+  ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 02/20/2020
+  ms.locfileid: "77485116"
+landingContent:
+- title: Azure Media Services Video Indexer について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Video Indexer とは
+      url: video-indexer-overview.md
+    - text: Media Services v3 プリセットと Video Indexer の比較
+      url: compare-video-indexer-with-media-services-presets.md
+    - text: よく寄せられる質問
+      url: faq.md
+    - text: ユーザーの声
+      url: https://cognitive.uservoice.com/forums/598144-video-indexer
+  - linkListType: whats-new
+    links:
+    - text: Video Indexer の新機能
+      url: release-notes.md
+- title: はじめに
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: サインアップしてビデオをアップロードする
+      url: video-indexer-get-started.md
+    - text: ユーザーの招待
+      url: invite-users.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure に接続されたアカウントを作成する
+      url: connect-to-azure.md
+    - text: Video Indexer API の使用
+      url: video-indexer-use-apis.md
+    - text: ビデオのアップロードとインデックス作成
+      url: upload-index-videos.md
+    - text: API によって生成された出力を調べる
+      url: video-indexer-output-json-v2.md
+    - text: アプリに Video Indexer ウィジェットを埋め込む
+      url: video-indexer-embed-widgets.md
+  - linkListType: sample
+    links:
+    - text: コード サンプル
+      url: https://github.com/Azure-Samples/media-services-video-indexer
+- title: コンテンツ モデルのカスタマイズ
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: ブランド モデルのカスタマイズ
+      url: customize-brands-model-with-website.md
+    - text: 言語モデルのカスタマイズ
+      url: customize-language-model-with-website.md
+    - text: 人物モデルのカスタマイズ
+      url: customize-person-model-with-website.md

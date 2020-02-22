@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
-ms.openlocfilehash: c41a433ee19969546e1db2aa583c72ed166b7ebf
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: eee8fdf515861b43b58d5af111930e2224c9a60a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607476"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367239"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>リモート デスクトップでグラフィックスのパフォーマンスの問題を診断する
 
@@ -69,7 +69,7 @@ ms.locfileid: "73607476"
 
 [Output Frames/Second] (出力フレーム/秒) カウンターが [Input Frames/Second] (入力フレーム/秒) カウンターに一致していても、引き続き通常とは異なる遅延または失速が発生する場合は、[Average Encoding Time] (平均エンコード時間) が原因である可能性があります。 エンコードは、シングルセッション (vGPU) シナリオではサーバー上で、マルチセッション シナリオでは VM 上で発生する同期プロセスです。 [Average Encoding Time]\(平均エンコード時間\) は 33 ミリ秒未満になるようにします。 [Average Encoding Time]\(平均エンコード時間\) が 33 ミリ秒未満でも、パフォーマンスの問題がある場合は、使用しているアプリまたはオペレーティング システムに問題がある可能性があります。
 
-アプリ関連の問題の診断の詳細については、[[User Input Delay]\(ユーザー入力の遅延\) パフォーマンス カウンター](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters)に関する記事を参照してください。
+アプリ関連の問題の診断の詳細については、[[User Input Delay]\(ユーザー入力の遅延\) パフォーマンス カウンター](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/)に関する記事を参照してください。
 
 RDP は 33 ミリ秒の [Average Encoding Time]\(平均エンコード時間\) をサポートしているので、最大 30 フレーム/秒の入力フレーム レートをサポートします。 33 ミリ秒がサポートされる最大フレーム レートであることに注意してください。 多くの場合、ソースから RDP にフレームが提供される頻度に応じて、ユーザーが経験するフレーム レートは低くなります。 たとえば、ビデオの視聴などのタスクには 30 フレーム/秒の完全な入力フレーム レートが必要ですが、低い頻度でのドキュメントの編集などの計算負荷の低いタスクでは、[Input Frames/Second] (入力フレーム/秒) の値がはるかに低くてもユーザーのエクスペリエンス品質は低下しません。
 
@@ -99,8 +99,8 @@ RDP は 33 ミリ秒の [Average Encoding Time]\(平均エンコード時間\) �
 > [!NOTE]
 > 現在、[Source Frames/Second]\(ソース フレーム/秒\) カウンターはサポートされていません。 現在のところ、[Source Frames/Second] (ソース フレーム/秒) カウンターには常に 0 が表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- GPU が最適化された Azure 仮想マシンを作成するには、「[Windows Virtual Desktop 用にグラフィックス処理装置 (GPU) のアクセラレーションを構成する](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu)」を参照してください。
-- トラブルシューティングとエスカレーション トラックの概要については、「[トラブルシューティングの概要、フィードバック、サポート](https://docs.microsoft.com/azure/virtual-desktop/troubleshoot-set-up-overview)」を参照してください。
-- サービスの詳細については、[Windows Desktop の環境](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)に関する記事を参照してください。
+- GPU が最適化された Azure 仮想マシンを作成するには、「[Windows Virtual Desktop 用にグラフィックス処理装置 (GPU) のアクセラレーションを構成する](configure-vm-gpu.md)」を参照してください。
+- トラブルシューティングとエスカレーション トラックの概要については、「[トラブルシューティングの概要、フィードバック、サポート](troubleshoot-set-up-overview.md)」を参照してください。
+- サービスの詳細については、[Windows Desktop の環境](environment-setup.md)に関する記事を参照してください。

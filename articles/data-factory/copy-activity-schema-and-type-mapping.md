@@ -9,14 +9,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 02/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 2c637346aae72a238963607f6f5d23910684265c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9ae07e2a471cc417b467092a2616a5a0cdafb1fe
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921992"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77423635"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>コピー アクティビティでのスキーマ マッピング
 
@@ -87,9 +87,9 @@ ms.locfileid: "74921992"
 
 次のプロパティは、[`translator` -> `mappings`] -> [オブジェクト] で `source` と `sink` によりサポートされます。
 
-| プロパティ | 説明                                                  | 必須 |
+| プロパティ | 説明                                                  | Required |
 | -------- | ------------------------------------------------------------ | -------- |
-| 名前     | ソースまたはシンク列の名前。                           | はい      |
+| name     | ソースまたはシンク列の名前。                           | はい      |
 | ordinal  | 列のインデックス。 1 から始まります。 <br>ヘッダー行がない区切りテキストを使用するときに適用され、必須です。 | いいえ       |
 | path     | 抽出またはマップする各フィールドの JSON パス式。 たとえば MongoDB/REST などの階層データに適用します。<br>ルート オブジェクトの下のフィールドでは、JSON パスはルート $ で始まり、`collectionReference` プロパティにより選択された配列内のフィールドでは、JSON パスは配列要素で始まります。 | いいえ       |
 | type     | ソースまたはシンク列の Data Factory 中間データ型。 | いいえ       |
@@ -98,7 +98,7 @@ ms.locfileid: "74921992"
 
 次のプロパティは、`translator` -> `mappings` の下で、`source` および `sink` があるオブジェクトに加えてサポートされます。
 
-| プロパティ            | 説明                                                  | 必須 |
+| プロパティ            | 説明                                                  | Required |
 | ------------------- | ------------------------------------------------------------ | -------- |
 | collectionReference | MongoDB/REST などの階層データがソースである場合にのみサポートされます。<br>同じパターンを持つ**配列フィールド内**のオブジェクトからのデータの反復処理と抽出を行って、オブジェクトごとの行ごとに変換する場合は、その配列の JSON のパスを指定してクロス適用を行います。 | いいえ       |
 
@@ -200,7 +200,7 @@ ms.locfileid: "74921992"
 
 [コピー アクティビティ] -> [`translator` -> `schemaMapping`] を指定して、階層形式データと表形式データの間をマップできます。たとえば MongoDB/REST からテキスト ファイルにコピーしたり、Oracle から MongoDB の Azure Cosmos DB の API にコピーしたりできます。 コピー アクティビティの `translator` セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | 説明 | Required |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのトランスレーターの type プロパティは**TabularTranslator** に設定する必要があります。 | はい |
 | schemaMapping | キーと値のペアのコレクション。**ソース側からシンク側**へのマッピングの関係を表します。<br/>- **Key:** ソースを表します。 **表形式のソース**の場合、データセットの構造に定義された列名を指定します。**階層構造のソース**の場合、抽出とマッピングの対象となる各フィールドの JSON パス式を指定します。<br>- **Value:** シンクを表します。 **表形式のシンク**の場合、データセットの構造に定義された列名を指定します。**階層構造のシンク**の場合、抽出とマッピングの対象となる各フィールドの JSON パス式を指定します。 <br>階層構造のデータで、ルート オブジェクトの直下のフィールドの場合、JSON パスはルートの $ から記述します。`collectionReference` プロパティによって選択された配列内のフィールドの場合、JSON パスは配列要素から記述します。  | はい |
@@ -239,9 +239,9 @@ ms.locfileid: "74921992"
 
 | orderNumber | orderDate | order_pd | order_price | city |
 | --- | --- | --- | --- | --- |
-| 01 | 20170122 | P1 | 23 | シアトル |
-| 01 | 20170122 | P2 | 13 | シアトル |
-| 01 | 20170122 | P3 | 231 | シアトル |
+| 01 | 20170122 | P1 | 23 | Seattle |
+| 01 | 20170122 | P2 | 13 | Seattle |
+| 01 | 20170122 | P3 | 231 | Seattle |
 
 次のコピー アクティビティの JSON サンプルとしてスキーマ マッピング ルールを構成します。
 
@@ -259,11 +259,11 @@ ms.locfileid: "74921992"
         "translator": {
             "type": "TabularTranslator",
             "schemaMapping": {
-                "orderNumber": "$.number",
-                "orderDate": "$.date",
-                "order_pd": "prod",
-                "order_price": "price",
-                "city": " $.city[0].name"
+                "$.number": "orderNumber",
+                "$.date": "orderDate",
+                "prod": "order_pd",
+                "price": "order_price",
+                "$.city[0].name": "city"
             },
             "collectionReference":  "$.orders"
         }
@@ -271,7 +271,7 @@ ms.locfileid: "74921992"
 }
 ```
 
-## <a name="data-type-mapping"></a>データ型のマッピング
+## <a name="data-type-mapping"></a>データ型マッピング
 
 コピー アクティビティは、次の 2 段階のアプローチを使用してソースの型からシンクの型へのマッピングを実行します。
 
@@ -280,7 +280,7 @@ ms.locfileid: "74921992"
 
 ネイティブ型から中間型へのマッピングは、各コネクタのトピックにある「データ型のマッピング」のセクションで見つけることができます。
 
-### <a name="supported-data-types"></a>サポートされているデータ型
+### <a name="supported-data-types"></a>サポートされるデータ型
 
 Data Factory は次の中間データ型をサポートしています。[データセット構造](concepts-datasets-linked-services.md#dataset-structure-or-schema)の構成で型情報を構成するときは、次の値を指定できます。
 
@@ -295,10 +295,10 @@ Data Factory は次の中間データ型をサポートしています。[デー
 * Int32
 * Int64
 * Single
-* string
+* String
 * Timespan
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 コピー アクティビティの他の記事を参照してください。
 
 - [コピー アクティビティの概要](copy-activity-overview.md)

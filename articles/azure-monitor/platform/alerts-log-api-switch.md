@@ -8,17 +8,20 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 5d6b8ce557cb794b3a56ecb3a938a2fe184156ab
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: a6f71cca2c63591d2d26a7d34ced232eabfbc6bb
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680751"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425153"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>ログ アラートの API の基本設定を切り替える
 
 > [!NOTE]
 > 記載されている内容は Azure パブリック クラウドのユーザーのみに適用され、Azure Government または Azure China クラウドには適用**されません**。  
+
+> [!NOTE]
+> ユーザーが、基本設定を新しい [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) に切り替える選択をした後は、古い[レガシ ログ Analytics アラート API](api-alerts.md) の使用に戻すことはできません。
 
 最近まで、アラート ルールは Microsoft Operations Management Suite ポータルで管理していました。 新しいアラート エクスペリエンスは Log Analytics などの Microsoft Azure のさまざまなサービスと統合されており、Microsoft はお客様に[アラート ルールを OMS ポータルから Azure に拡張する](alerts-extend.md)ことをお願いしました。 しかし、お客様の中断を最小限にするため、このプロセスではそれを使用するためのプログラム インターフェイスは変更されませんでした (SavedSearch に基づく [Log Analytics Alert API](api-alerts.md))。
 
@@ -50,9 +53,6 @@ ms.locfileid: "75680751"
 
 - API の基本設定での変更と、新しい API 経由のルールへのアクセス。
 - 変更されたアラート ルール リソース URI には、この構造 `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` のアラート ルール名の代わりに、[レガシ ログ Analytics アラート API](api-alerts.md) で使用された ID が含まれています。 アラートルールの表示名は変更されません。
-
-> [!NOTE]
-> ユーザーが、基本設定を新しい [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) に切り替える選択をした後は、古い[レガシ ログ Analytics アラート API](api-alerts.md) の使用に戻すことはできません。
 
 自主的に新しい [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) に切り替えて[従来の Log Analytics Alert API](api-alerts.md) からの使用をブロックしたいお客様は、次の API で PUT 呼び出しを実行して特定の Log Analytics ワークスペースに関連付けられているすべてのアラート ルールを切り替えることによって行うことができます。
 

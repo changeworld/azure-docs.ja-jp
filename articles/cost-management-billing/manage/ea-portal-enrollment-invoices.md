@@ -1,19 +1,18 @@
 ---
 title: Azure エンタープライズ加入契約の請求書
 description: この記事では、Azure Enterprise の請求書を管理および操作する方法について説明します。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/04/2020
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: boalcsva
-ms.openlocfilehash: 2a75972d00733d23df7f4a59b2d5010404df8dc3
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.reviewer: boalcsva
+ms.openlocfilehash: 37af492ae156aa880c55034550d4165ec046e74f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023397"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199757"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure エンタープライズ加入契約の請求書
 
@@ -71,11 +70,11 @@ Microsoft では、Microsoft Azure サービスのコミットメント購入に
   - 年額コミットメントの対象となっていない料金は、超過分としてお支払いいただくことになります。  
 
 - **加入契約が 2018 年 5 月 1 日より前に開始されたインダイレクト加入契約**:
-  
+
   開始日が 2018 年 5 月 1 日より前のインダイレクト エンタープライズ契約 (EA) の場合は、四半期ごとの請求サイクルに設定されます。 チャネル パートナー (CP) はお客様に直接請求を行います。  
 
 - **開始日が 2018 年 5 月 1 日より後のインダイレクト加入契約**:
-  
+
   月単位の請求サイクルとなります。  
 
 ### <a name="increase-your-monetary-commitment"></a>年額コミットメントを増やす
@@ -617,7 +616,7 @@ See [Power BI self-service sign up](https://powerbi.microsoft.com/documentation/
 - **Exclusions**:
   - Users already participating in the Extended Power BI Pro trial will continue to qualify under the pre-existing offer and can't enter into the Azure EA Power BI Pro trial offer.
   - Users participating in the Offer can only use Power BI Pro with the Microsoft Azure Enterprise content pack. Any other use of Power BI Pro is prohibited.
-  - Term: The Offer began on June 1, 2017 and ended on May 31, 2018.  Acceptance can occur at any time during the 12-month period, though the offer will terminate on May 31, 2018 for all users regardless of when they accepted the Offer. 
+  - Term: The Offer began on June 1, 2017 and ended on May 31, 2018.  Acceptance can occur at any time during the 12-month period, though the offer will terminate on May 31, 2018 for all users regardless of when they accepted the Offer.
   -->
 
 ### <a name="to-access-microsoft-azure-consumption-insights"></a>Microsoft Azure Consumption Insights にアクセスするには、次のようにします。
@@ -630,7 +629,7 @@ See [Power BI self-service sign up](https://powerbi.microsoft.com/documentation/
 1. 完了すると、新しいダッシュボード、レポート、およびモデルがナビゲーション ペインに表示されます。 ダッシュボードを選択して、インポートされたデータを表示します。
 
 > [!TIP]
-> 
+>
 > - 加入契約用の API キーを生成する方法の詳細については、[エンタープライズ ポータル](https://ea.azure.com/?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26)の API レポートのヘルプ ファイルを参照してください。
 > - Azure Consumption への Power BI の接続について詳しくは、[Microsoft Azure Consumption Insights](/power-bi/desktop-connect-azure-cost-management) に関するページを参照してください。
 

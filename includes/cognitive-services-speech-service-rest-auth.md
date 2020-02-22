@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: 22a95be43f06e95a6067b179b3023ba94ee5795d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 020055c1629a66ec1aa82beb050501803b2a0f18
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68362562"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168301"
 ---
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
 各要求には Authorization ヘッダーが必要です。 次の表は、各サービスでサポートされているヘッダーを示したものです。
 
@@ -20,7 +20,7 @@ ms.locfileid: "68362562"
 | Ocp-Apim-Subscription-Key | はい | いいえ |
 | Authorization:Bearer | はい | はい |
 
-`Ocp-Apim-Subscription-Key` ヘッダーを使用する場合、指定する必要があるのはサブスクリプション キーだけです。 例:
+`Ocp-Apim-Subscription-Key` ヘッダーを使用する場合、指定する必要があるのはサブスクリプション キーだけです。 次に例を示します。
 
 ```
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
@@ -32,9 +32,15 @@ ms.locfileid: "68362562"
 
 アクセス トークンを取得するには、`Ocp-Apim-Subscription-Key` とサブスクリプション キーを使用して、`issueToken` エンドポイントに対して要求を実行する必要があります。
 
-次のリージョンとエンドポイントがサポートされています。
+`issueToken` エンドポイントの形式は次のとおりです。
 
-[!INCLUDE [](./cognitive-services-speech-service-endpoints-token-service.md)]
+```
+https://<REGION_IDENTIFIER>.api.cognitive.microsoft.com/sts/v1.0/issueToken
+```
+
+次の表に示す、ご利用のサブスクリプションのリージョンと一致する識別子で `<REGION_IDENTIFIER>` を置き換えてください。
+
+[!INCLUDE [](cognitive-services-speech-service-region-identifier.md)]
 
 アクセス トークン要求の作成にあたっては、以下のサンプルを使用してください。
 

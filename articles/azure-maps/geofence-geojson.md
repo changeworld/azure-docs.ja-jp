@@ -1,19 +1,19 @@
 ---
 title: ジオフェンスの GeoJSON データ形式 | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps の GET Geofence および POST Geofence API で使用できるジオフェンス データの準備方法について説明します。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 02/14/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: f853962bba7302affd78d5ef267460893ea80a33
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 7d1c9a1587771a020f5c9f89e2497a25eb1bba70
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911588"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210023"
 ---
 # <a name="geofencing-geojson-data"></a>GeoJSON データのジオフェンシング
 
@@ -30,7 +30,7 @@ Azure Maps の [GET Geofence](/rest/api/maps/spatial/getgeofence) および [POS
 * `expiredTime` は、ジオフェンシング データの期限切れ日時です。 要求に含まれる `userTime` の値がこの値より後の場合、対応するジオフェンス データは期限切れデータと見なされ、クエリは実行されません。 その場合、このジオフェンス データの geometryId が、ジオフェンス応答内の `expiredGeofenceGeometryId` 配列に格納されます。
 * `validityPeriod` は、ジオフェンスの有効期間のリストです。 要求に含まれる `userTime` の値が有効期間の範囲外の場合、対応するジオフェンス データは無効と見なされ、クエリは実行されません。 このジオフェンス データの geometryId は、ジオフェンス応答内の `invalidPeriodGeofenceGeometryId` 配列に格納されます。 validityPeriod 要素のプロパティを次の表に示します。
 
-| Name | 種類 | 必須  | 説明 |
+| 名前 | Type | Required  | 説明 |
 | :------------ |:------------: |:---------------:| :-----|
 | startTime | Datetime  | true | 有効期間の開始日時。 |
 | endTime   | Datetime  | true |  有効期間の終了日時。 |

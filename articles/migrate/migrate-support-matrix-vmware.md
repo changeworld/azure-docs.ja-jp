@@ -3,16 +3,16 @@ title: Azure Migrate での VMware 評価サポート
 description: Azure Migrate での VMware 評価サポートの詳細を知る
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 8ed20ecd37eacdcb771db7c166ff8fc22b96cb89
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 19ed506228bac425ad05edee1586740e6c33f69e
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846179"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121327"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 評価のサポートマトリックス 
 
-この記事では、[Azure Migrate を使用した VMware Vm 評価サポートの設定と制限事項について説明します。Server Assessment](migrate-services-overview.md#azure-migrate-server-migration-tool) でクリックします。 VMware Vm を Azure に移行する方法については、「[移行サポート マトリックス](migrate-support-matrix-vmware-migration.md)」を参照してください。
+この記事では、[Azure Migrate を使用した VMware Vm 評価サポートの設定と制限事項について説明します。Server Assessment](migrate-services-overview.md#azure-migrate-server-migration-tool) を使用した評価と依存関係の視覚化に関する問題のトラブルシューティングに役立ちます。 VMware Vm を Azure に移行する方法については、「[移行サポート マトリックス](migrate-support-matrix-vmware-migration.md)」を参照してください。
 
 ## <a name="overview"></a>概要
 
@@ -42,7 +42,7 @@ ms.locfileid: "76846179"
 **マシンのオペレーティング システム** | Windows と Linux のすべてのバージョン。
 **vCenter の資格情報** | 読み取り専用アクセス権を持ち、[仮想マシン] > [ゲスト操作] の権限が有効な vCenter Server アカウント。
 **VM の資格情報** | 現在、すべての Windows サーバーに対して 1 つの資格情報と、すべての Linux サーバーに対して 1 つの資格情報を使用することがサポートされています。<br/><br/> Windows VM 用にゲスト ユーザー アカウントを作成し、すべての Linux VM 用に通常/標準ユーザー アカウント (非 sudo アクセス) を作成します。
-**VMware ツール** | 検出する VM に VMware ツールがインストールされ、実行されている必要があります。
+**VMware ツール** | 検出する VM に VMware ツールがインストールされ、実行されている必要があります。 <br/> VMware ツールのバージョンが 9.10 ~ 10.2.0 の場合は、10.2.0 以降のバージョンにアップグレードしてください。
 **ポート アクセス** | 検出する VM を実行している ESXi ホストでは、Azure Migrate アプライアンスが TCP ポート 443 に接続できる必要があります。
 **制限** | アプリ検出に関しては、1アプライアンスにつき最大 10,000 個を検出できます。 
 
@@ -82,7 +82,7 @@ ESXi ホスト | **[アプリケーションの検出](https://docs.microsoft.co
 **サービス マップ** | エージェントベースの依存関係の視覚化では、[Azure Monitor ログ[で ](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map)Service Map](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) ソリューションが使用されます。<br/><br/> デプロイするには、新規または既存の Log Analytics ワークスペースを Azure Migrate プロジェクトに関連付けます。
 **Log Analytics ワークスペース** | このワークスペースは、Azure Migrate プロジェクトと同じサブスクリプションに含まれている必要があります。<br/><br/> Azure Migrate では、米国東部、東南アジア、および西ヨーロッパの各リージョンにあるワークスペースがサポートされます。<br/><br/>  ワークスペースは、[Service Map がサポートされている](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#prerequisites)リージョンに存在する必要があります。<br/><br/> Azure Migrate プロジェクトのワークスペースは、追加後に変更できません。
 **料金** | Service Map ソリューションでは、(Log Analytics ワークスペースを Azure Migrate プロジェクトに関連付けた日から) 最初の 180 日間は料金が発生しません。<br/><br/> 180 日が経過すると、Log Analytics の標準の料金が適用されます。<br/><br/> この関連付けられた Log Analytics ワークスペース内で Service Map 以外のソリューションを使用すると、標準の Log Analytics 料金が発生します。<br/><br/> Azure Migrate プロジェクトを削除しても、ワークスペースが一緒に削除されることはありません。 プロジェクトの削除後、Service Map は無料にならず、Log Analytics ワークスペースの有料レベルに応じて各ノードの料金が請求されます。
-**[エージェント]** | エージェントベースの依存関係の視覚化では、分析する各マシンに 2 つのエージェントをインストールする必要があります。<br/><br/> - [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)<br/><br/> - [依存関係エージェント](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent)。 
+**[エージェント]** | エージェントベースの依存関係の視覚化では、分析する各マシンに 2 つのエージェントをインストールする必要があります。<br/><br/> - [Microsoft Monitoring agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)<br/><br/> - [依存関係エージェント](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent)。 
 **インターネット接続** | マシンがインターネットに接続されていない場合は、それらに Log Analytics ゲートウェイをインストールする必要があります。
 
 
@@ -96,10 +96,10 @@ ESXi ホスト | **[アプリケーションの検出](https://docs.microsoft.co
 **VM のサポート** | 現在、VMware VM のみでサポートされています。
 **Windows VM** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 ビット)
 **Linux VM** | Red Hat Enterprise Linux 7、6、5<br/> Ubuntu Linux 14.04、16.04<br/> Debian 7、8<br/> Oracle Linux 6、7<br/> CentOS 5、6、7。
-**Windows アカウント** |  視覚化には、ゲスト アクセス権を持つユーザー アカウントが必要です。
+**Windows アカウント** |  視覚化には、ローカルまたはドメインの管理者アカウントが必要です。
 **Linux アカウント** | 視覚化には、ルート特権を持つユーザー アカウントが必要です。<br/><br/> また、ユーザー アカウントには /bin/netstat および /bin/ls ファイルに対する次の権限が必要です。CAP_DAC_READ_SEARCH と CAP_SYS_PTRACE。
 **VM エージェント** | VM にエージェントは必要ありません。
-**VMware ツール** | 分析する VM に VMware ツールがインストールされ、実行されている必要があります。
+**VMware ツール** | 分析する VM に VMware ツールがインストールされ、実行されている必要があります。 <br/> VMware ツールのバージョンが 9.10 ~ 10.2.0 の場合は、10.2.0 以降のバージョンにアップグレードしてください。
 **vCenter の資格情報** | 読み取り専用アクセス権を持ち、[仮想マシン] > [ゲスト操作] の権限が有効な vCenter Server アカウント。
 **ポート アクセス** | 分析する VM を実行している ESXi ホストでは、Azure Migrate アプライアンスが TCP ポート 443 に接続できる必要があります。
 

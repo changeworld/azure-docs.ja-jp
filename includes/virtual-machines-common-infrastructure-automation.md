@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: f7dcf342a1b9b2107138044dfc207d6dbcb42e9e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 525eba8a5a4e891526eb32a24287ea3887ee6743
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260791"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77474161"
 ---
 Azure の仮想マシン (VM) を一貫した方法で大規模に作成および管理するには、一般的に、何らかの形で自動化することが必要です。 Azure インフラストラクチャのデプロイと管理のライフサイクル全体を自動化できるツールやソリューションはたくさんあります。 この記事では、Azure で使用できるインフラストラクチャ自動化ツールの一部を紹介します。 これらのツールは、一般的に、次のいずれかのアプローチに適しています。
 
@@ -27,17 +27,17 @@ Azure の仮想マシン (VM) を一貫した方法で大規模に作成およ�
 ## <a name="ansible"></a>Ansible
 [Ansible](https://www.ansible.com/) は、構成の管理、VM の作成、またはアプリケーションのデプロイ用の自動化エンジンです。 Ansible では、ターゲット マシンを認証および管理するために、通常は SSH キーによる、エージェントレス モデルを使用します。 構成タスクはプレイブックで定義し、特定のタスクを実行するために利用できるさまざまな Ansible モジュールが用意されています。 詳細については、「[How Ansible works (Ansible のしくみ)](https://www.ansible.com/how-ansible-works)」を参照してください。
 
-以下の項目について説明します。
+具体的には、次の方法を学習します。
 
-- [Azure で使用するために Linux で Ansible をインストールおよび構成する](../articles/virtual-machines/linux/ansible-install-configure.md)。
-- [Linux 仮想マシンを作成する](../articles/virtual-machines/linux/ansible-create-vm.md)。
-- [Linux 仮想マシンを管理する](../articles/virtual-machines/linux/ansible-manage-linux-vm.md)。
+- [Azure で使用するために Linux で Ansible をインストールおよび構成する](../articles/ansible/ansible-install-configure.md)。
+- [Linux 仮想マシンを作成する](../articles/ansible/ansible-create-vm.md)。
+- [Linux 仮想マシンを管理する](../articles/ansible/ansible-manage-linux-vm.md)。
 
 
 ## <a name="chef"></a>Chef
 [Chef](https://www.chef.io/) は、インフラストラクチャを構成、デプロイ、管理する方法を定義するのに役立つ自動化プラットフォームです。 追加コンポーネントには、インフラストラクチャではなくアプリケーションのライフサイクル自動化のための Chef Habitat のほか、セキュリティとポリシー要件へのコンプライアンスの自動化に役立つ Chef InSpec があります。 Chef Client はターゲット マシンにインストールし、1 つ以上の中央 Chef Server で構成を保存および管理します。 詳細は、「[An Overview of Chef (シェフの概要)](https://docs.chef.io/chef_overview.html)」を参照してください。
 
-以下の項目について説明します。
+具体的には、次の方法を学習します。
 
 - [Azure Marketplace から Chef Automate をデプロイする](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate?tab=Overview)。
 - [Windows に Chef をインストールし、Azure VM を作成する](../articles/virtual-machines/windows/chef-automation.md)。
@@ -46,9 +46,9 @@ Azure の仮想マシン (VM) を一貫した方法で大規模に作成およ�
 ## <a name="puppet"></a>Puppet
 [Puppet](https://www.puppet.com) は、アプリケーションの配信とデプロイのプロセスを処理する、エンタープライズ対応の自動化プラットフォームです。 エージェントは、ターゲット マシンにインストールし、Azure インフラストラクチャと VM の目的の構成を定義したマニフェストを Puppet Master が実行できるようにします。 Puppet は、Jenkins や GitHub などの他のソリューションと統合して、DevOps ワークフローを強化できます。 詳細については、「[How Puppet works (Puppet のしくみ)](https://puppet.com/products/how-puppet-works)」を参照してください。
 
-以下の項目について説明します。
+具体的には、次の方法を学習します。
 
-- [Azure Marketplace から Puppet をデプロイする](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2?tab=Overview)。
+- [Azure Marketplace から Puppet をデプロイする](https://azuremarketplace.microsoft.com/marketplace/apps/Puppet.puppet-agent-windows-asm?tab=Overview)。
 
 
 ## <a name="cloud-init"></a>cloud-init
@@ -67,7 +67,7 @@ Microsoft は、動作保証済み Linux ディストリビューションのパ
 
 DSC 構成では、マシンにインストールするものと、ホストを構成する方法を定義します。 Local Configuration Manager (LCM) エンジンは、プッシュされた構成に基づいて要求されたアクションを処理する各ターゲット ノードで実行されます。 プル サーバーは、中央ホストで実行され、DSC 構成と関連リソースを格納する Web サービスです。 プル サーバーは、各ターゲット ホスト上の LCM エンジンと通信して、必要な構成を提供し、コンプライアンスについて報告します。
 
-以下の項目について説明します。
+具体的には、次の方法を学習します。
 
 - [基本的な DSC 構成を作成する](/powershell/scripting/dsc/quickstarts/website-quickstart)。
 - [DSC プル サーバーを構成する](/powershell/scripting/dsc/pull-server/pullserver)。
@@ -79,7 +79,7 @@ DSC 構成では、マシンにインストールするものと、ホストを�
 
 スクリプトは、Azure Storage または GitHub リポジトリなどの公開されている場所からダウンロードできます。 カスタム スクリプト拡張機能を使用すると、ソース VM で実行されるスクリプトを任意の言語で作成できます。 これらのスクリプトを使用して、アプリケーションをインストールしたり、必要に応じて VM を構成したりすることができます。 資格情報をセキュリティで保護するために、パスワードなどの機密情報を保護された構成に格納することができます。 これらの資格情報は、VM 内でのみ復号化されます。
 
-以下の項目について説明します。
+具体的には、次の方法を学習します。
 
 - [Azure CLI で Linux VM を作成し、カスタム スクリプト拡張機能を使用する](../articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md?toc=%2fcli%2fazure%2ftoc.json)。
 - [Azure PowerShell で Windows VM を作成し、カスタム スクリプト拡張機能を使用する](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md?toc=%2fpowershell%2fmodule%2ftoc.json)。
@@ -88,7 +88,7 @@ DSC 構成では、マシンにインストールするものと、ホストを�
 ## <a name="packer"></a>Packer
 [Packer](https://www.packer.io) は、Azure でカスタム VM イメージを作成するときのビルド プロセスを自動化します。 Packer を使用して、OS を定義し、特定のニーズに合わせて VM をカスタマイズする構成後スクリプトを実行します。 構成後、VM は管理対象ディスク イメージとしてキャプチャされます。 Packer は、ソース VM、ネットワーク、ストレージ リソースを作成し、構成スクリプトを実行して、VM イメージを作成するプロセスを自動化します。
 
-以下の項目について説明します。
+具体的には、次の方法を学習します。
 
 - [Packer を使用して、Azure で Linux VM イメージを作成する](../articles/virtual-machines/linux/build-image-with-packer.md)。
 - [Packer を使用して、Azure で Windows VM イメージを作成する](../articles/virtual-machines/windows/build-image-with-packer.md)。
@@ -97,10 +97,10 @@ DSC 構成では、マシンにインストールするものと、ホストを�
 ## <a name="terraform"></a>Terraform
 [Terraform](https://www.terraform.io) は、単一のテンプレート形式言語 (HashiCorp 構成言語 (HCL)) で、Azure インフラストラクチャ全体を定義して作成できる自動化ツールです。 Terraform を使用して、特定のアプリケーション ソリューションのネットワーク、ストレージ、および VM リソースを作成するプロセスを自動化するテンプレートを定義します。 他のプラットフォーム用の既存の Terraform テンプレートを Azure で使用することで、Azure Resource Manager テンプレートに変換せずに、一貫性を確保し、インフラストラクチャのデプロイを簡略化することができます。
 
-以下の項目について説明します。
+具体的には、次の方法を学習します。
 
-- [Azure で Terraform をインストールして構成する](../articles/virtual-machines/linux/terraform-install-configure.md)。
-- [Terraform を使用して Azure インフラストラクチャを作成する](../articles/virtual-machines/linux/terraform-create-complete-vm.md)。
+- [Azure で Terraform をインストールして構成する](../articles/terraform/terraform-install-configure.md)。
+- [Terraform を使用して Azure インフラストラクチャを作成する](../articles/terraform/terraform-create-complete-vm.md)。
 
 
 ## <a name="azure-automation"></a>Azure Automation
@@ -108,7 +108,7 @@ DSC 構成では、マシンにインストールするものと、ホストを�
 
 また、Azure Automation には、特定の VM セットの構成方法の定義を作成できる Desired State Configuration (DSC) サービスも用意されています。 DSC により、必要な構成が適用され、VM の一貫性が維持されます。 Azure Automation DSC は、Windows マシンと Linux マシンの両方で動作します。
 
-以下の項目について説明します。
+具体的には、次の方法を学習します。
 
 - [PowerShell Runbook を作成する](../articles/automation/automation-first-runbook-textual-powershell.md)。
 - [Hybrid Runbook Worker を使用して、オンプレミスのリソースを管理する](../articles/automation/automation-hybrid-runbook-worker.md)。
@@ -126,10 +126,10 @@ DSC 構成では、マシンにインストールするものと、ホストを�
 ## <a name="jenkins"></a>Jenkins
 [Jenkins](https://www.jenkins.io) は、アプリケーションのデプロイとテスト、コード配信用の自動化されたパイプラインの作成に役立つ継続的インテグレーション サーバーです。 Jenkins のコア プラットフォームを拡張するプラグインは多数あります。また、webhook を介して他のさまざまな製品やソリューションと統合することもできます。 Azure VM に手動で Jenkins をインストールしたり、Docker コンテナー内から Jenkins を実行したり、事前に構築された Azure Marketplace イメージを使用したりできます。
 
-以下の項目について説明します。
+具体的には、次の方法を学習します。
 
 - [Jenkins、GitHub、および Docker を使用して、Azure 内の Linux VM に開発インフラストラクチャを作成する](../articles/virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md)。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure でインフラストラクチャ自動化ツールを使用する方法はたくさんあります。 ニーズや環境に最適なソリューションを自由に使用できます。 Azure に組み込まれているいくつかのツールを使用したり、試したりするには、[Linux](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md) または [Windows](../articles/virtual-machines/windows/tutorial-automate-vm-deployment.md) VM のカスタマイズを自動化する方法を参照してください。

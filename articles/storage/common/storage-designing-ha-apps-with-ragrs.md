@@ -10,12 +10,12 @@ ms.date: 01/14/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: bab95f6494fad86c9fdfc0b8fb044c22a7c5a628
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 592be1710893791e80dfe4b20e1323e789b33e69
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945446"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157094"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>読み取りアクセス geo 冗長ストレージを使用した高可用性アプリケーションの設計
 
@@ -23,8 +23,8 @@ Azure Storage のようなクラウドベースのインフラストラクチャ
 
 geo 冗長レプリケーション用に構成されたストレージ アカウントは、プライマリ リージョンで同期的にレプリケートされた後、数百マイル離れたセカンダリ リージョンに非同期的にレプリケートされます。 Azure Storage には、次の 2 種類の geo 冗長レプリケーションが用意されています。
 
-* [geo ゾーン冗長ストレージ (GZRS) (プレビュー)](storage-redundancy-gzrs.md) は、高可用性と最大限の持続性の両方を必要とするシナリオ向けのレプリケーションを提供します。 データは、ゾーン冗長ストレージ (ZRS) を使用してプライマリ リージョンの 3 つの Azure 可用性ゾーン間で同期的にレプリケートされた後、セカンダリ リージョンに非同期的にレプリケートされます。 セカンダリ リージョンのデータへの読み取りアクセスのために、読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS) を有効にします。
-* [geo 冗長ストレージ (GRS)](storage-redundancy-grs.md) は、リージョンのサービス停止に備えたリージョン間レプリケーションを提供します。 データは、ローカル冗長ストレージ (LRS) を使用してプライマリ リージョンで 3 回同期的にレプリケートされた後、セカンダリ リージョンに非同期的にレプリケートされます。 セカンダリ リージョンのデータへの読み取りアクセスのために、読み取りアクセス geo 冗長ストレージ (RA-GRS) を有効にします。
+* [geo ゾーン冗長ストレージ (GZRS) (プレビュー)](storage-redundancy.md) は、高可用性と最大限の持続性の両方を必要とするシナリオ向けのレプリケーションを提供します。 データは、ゾーン冗長ストレージ (ZRS) を使用してプライマリ リージョンの 3 つの Azure 可用性ゾーン間で同期的にレプリケートされた後、セカンダリ リージョンに非同期的にレプリケートされます。 セカンダリ リージョンのデータへの読み取りアクセスのために、読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS) を有効にします。
+* [geo 冗長ストレージ (GRS)](storage-redundancy.md) は、リージョンのサービス停止に備えたリージョン間レプリケーションを提供します。 データは、ローカル冗長ストレージ (LRS) を使用してプライマリ リージョンで 3 回同期的にレプリケートされた後、セカンダリ リージョンに非同期的にレプリケートされます。 セカンダリ リージョンのデータへの読み取りアクセスのために、読み取りアクセス geo 冗長ストレージ (RA-GRS) を有効にします。
 
 この記事では、プライマリ リージョンでのサービス停止に備えてアプリケーションを設計する方法を示します。 プライマリ リージョンが使用できなくなった場合、代わりにセカンダリ リージョンに対して読み取り操作を実行するよう、アプリケーションを調整することができます。 開始する前に、ストレージ アカウントが RA-GRS または RA-GZRS 用に構成されていることを確認してください。
 
@@ -214,38 +214,7 @@ geo 冗長ストレージは、プライマリ リージョンからセカンダ
 
 データの不整合が発生しているかどうかを判断するとき、クライアントは "*最後の同期時刻*" の値を使用します。この値は、ストレージ サービスを照会することでいつでも取得できます。 この値を見ると、セカンダリ リージョンのデータの整合性が取れていた最後の時刻と、その時点よりも前にサービスがすべてのトランザクションを適用した時刻がわかります。 上で示した例では、セカンダリ リージョンに**従業員**エンティティが挿入された後、最後の同期時刻が *T1* に設定されています。 この値はしばらく *T1* のままですが、セカンダリ リージョンの**従業員**エンティティが更新されると *T6* に設定されます。 クライアントは *T5* でエンティティを読み取ったときに最後の同期時刻を取得し、エンティティ上のタイムスタンプと比較することができます。 エンティティのタイムスタンプが最後の同期時刻よりも新しい場合、そのエンティティは不整合な状態である可能性があります。そこで、アプリケーションに応じて適切な対応を取ることができます。 このフィールドを使用するには、プライマリ リージョンへの最後の更新が完了した日時がわかっている必要があります。
 
-## <a name="getting-the-last-sync-time"></a>最終同期時刻の取得
-
-データがセカンダリに最後に書き込まれた時刻を特定するために、PowerShell または Azure CLI を使用して最終同期時刻を取得できます。
-
-### <a name="powershell"></a>PowerShell
-
-PowerShell を使用してストレージ アカウントの最終同期時刻を取得するには、geo レプリケーションの統計情報の取得をサポートする Azure Storage プレビュー モジュールをインストールします。次に例を示します。
-
-```powershell
-Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force
-```
-
-次に、ストレージ アカウントの **GeoReplicationStats.LastSyncTime** プロパティを確認します。 プレースホルダー値をお客様独自の値に置き換えてください。
-
-```powershell
-$lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
-    -Name <storage-account> `
-    -IncludeGeoReplicationStats).GeoReplicationStats.LastSyncTime
-```
-
-### <a name="azure-cli"></a>Azure CLI
-
-Azure CLI を使用してストレージ アカウントの最終同期時刻を取得するには、ストレージ アカウントの **geoReplicationStats.lastSyncTime** プロパティを確認します。 `--expand` パラメーターを使用して、**geoReplicationStats** に下に入れ子になっているプロパティの値を返します。 プレースホルダー値をお客様独自の値に置き換えてください。
-
-```azurecli
-$lastSyncTime=$(az storage account show \
-    --name <storage-account> \
-    --resource-group <resource-group> \
-    --expand geoReplicationStats \
-    --query geoReplicationStats.lastSyncTime \
-    --output tsv)
-```
+最後の同期時刻のチェック方法については、「[ストレージ アカウントの最後の同期時刻プロパティを確認する](last-sync-time-get.md)」を参照してください。
 
 ## <a name="testing"></a>テスト
 

@@ -1,20 +1,19 @@
 ---
 title: '監視: Apache Ambari と Azure Monitor のログ - Azure HDInsight'
 description: Ambari と Azure Monitor ログを使用してクラスターのヘルスと可用性を監視する方法について説明します。
-keywords: 監視、ambari、監視する、ログ分析、アラート、可用性、ヘルス
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/25/2019
-ms.openlocfilehash: a21610fefcfe1632dffbfd8e055497476f7e59c1
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.date: 02/06/2020
+ms.openlocfilehash: 383366fa3e436c79bed28a7c47f1e9daa5f0d9de
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687809"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77060178"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-and-azure-monitor-logs"></a>Apache Ambari と Azure Monitor ログを使用してクラスターの可用性を監視する方法
 
@@ -77,7 +76,7 @@ Ambari では、次に示すように、可用性に関連する多数の定義�
 
 この例では、異常な DataNodes が 2 つの場合に重大アラートをトリガーし、異常な DataNode が 1 つのみの場合に警告をトリガーできます。 編集が終了したら、 **[保存]** を選択します。
 
-### <a name="email-notifications"></a>電子メール通知
+### <a name="email-notifications"></a>メール通知
 
 必要に応じて、Ambari アラートに対する電子メール通知を構成することも可能です。 これを行うには、 **[アラート]** タブ上で、左上にある **[Actions]\(アクション\)** ボタン、 **[Manage Notifications]\(通知の管理\)** の順にクリックします。
 
@@ -96,9 +95,9 @@ Azure Monitor ログでは、HDInsight クラスターなどの複数のリソ�
 
 ### <a name="enable-hdinsight-azure-monitor-logs-integration"></a>HDInsight Azure Monitor ログの統合を有効にする
 
-ポータルの HDInsight クラスター リソースのページから、 **[Operations Management Suite]** を選択します。 次に、 **[有効]** を選択して、ドロップダウンから Log Analytics ワークスペースを選択します。
+ポータルの HDInsight クラスター リソースのページから、 **[Azure Monitor]** を選択します。 次に、 **[有効]** を選択して、ドロップダウンから Log Analytics ワークスペースを選択します。
 
-![[HDInsight Operations Management Suite]](media/hdinsight-cluster-availability/hdi-portal-oms-enable.png)
+![[HDInsight Operations Management Suite]](media/hdinsight-cluster-availability/azure-portal-monitoring.png)
 
 ### <a name="query-metrics-and-logs-tables"></a>メトリックとログ テーブルにクエリを実行する
 
@@ -190,6 +189,6 @@ Azure Monitor ログの統合が有効になったら (これには数分かか�
 
 ![Log Analytics ワークスペースの [重大度 1] のアラート](media/hdinsight-cluster-availability/portal-oms-alerts-sev1.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [HDInsight における Apache Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md)

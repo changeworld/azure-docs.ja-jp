@@ -2,21 +2,18 @@
 title: Azure のお客様向けのオープン バンキング (PSD2) と強力なカスタマー認証 (SCA)
 description: この記事では、一部の Azure 購入で多要素認証が必要な理由と、認証を完了する方法について説明します。
 author: bandersmsft
-manager: judupont
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: 5f9c5f861e238bf38451863fb2d39cbb8af93225
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 1c4522bed191ef4142cc603bf0e1d22f086111ee
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133559"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200590"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>Azure のお客様向けのオープン バンキング (PSD2) と強力なカスタマー認証 (SCA)
 

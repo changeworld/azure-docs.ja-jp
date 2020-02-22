@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: ff267aabe2f9e4cec38c307fe4382a84ba6d62df
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c8ddd343cd00b24506382521361ebad33ad112a7
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76288959"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049745"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>エージェントレスの依存関係の視覚化を評価用に設定する
 
@@ -62,7 +62,7 @@ ms.locfileid: "76288959"
 
 検出のために Server Assessment から VM にアクセスできるように、必要なアクセス許可を持つユーザー アカウントを設定します。 1 つのユーザー アカウントを指定できます。
 
-- **Windows VM 上で必要なアクセス許可**:ユーザー アカウントには 'ゲスト' アクセスが必要です。
+- **Windows VM 上で必要なアクセス許可**:ユーザー アカウントは、ローカル管理者またはドメイン管理者である必要があります。
 - **Linux VM 上で必要なアクセス許可**:アカウントには root 特権が必要です。 また、ユーザー アカウントには /bin/netstat ファイルと /bin/ls ファイルに対する次の 2 つの機能が必要です。CAP_DAC_READ_SEARCH と CAP_SYS_PTRACE。
 
 ## <a name="add-the-user-account-to-the-appliance"></a>アプライアンスにユーザー アカウントを追加する

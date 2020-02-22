@@ -1,21 +1,20 @@
 ---
 title: Azure Cost Management を使用してクラウドへの投資を最適化する | Microsoft Docs
 description: この記事は、クラウドへの投資から最大限の価値を得て、コストを削減し、コストのかかる部分を評価するのに役立ちます。
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/21/2019
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: vitavor
+ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 47a53136a8f299e5c8654d122d8e319be4ae29db
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6d13bf4b2a3abd3a1552ac656a6a15fed8c7cb60
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75984547"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201069"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Azure Cost Management を使用してクラウドへの投資を最適化する方法
 
@@ -85,20 +84,20 @@ Cost Management 内でのエクスペリエンスを最大化する最初の手�
 
 さまざまなオプションの詳細については、[Azure の購入方法](https://azure.microsoft.com/pricing/purchase-options/)に関するページを参照してください。 最も一般的な課金モデルをいくつか以下に示します。
 
-#### <a name="freehttpsazuremicrosoftcomfree"></a>[Free](https://azure.microsoft.com/free/)
+#### <a name="free"></a>[Free](https://azure.microsoft.com/free/)
 
 - 12 か月間の人気の無料サービス
 - $200 のクレジットで 30 日間サービス群をじっくり検討
 - 25 個以上のサービスがいつでも無料
 
-#### <a name="pay-as-you-gohttpsazuremicrosoftcomoffersms-azr-0003p"></a>[従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p)
+#### <a name="pay-as-you-go"></a>[従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p)
 
 - 最低支払金額や付帯条件なし
 - 有利な価格設定
 - 使用した分だけお支払い
 - いつでもキャンセル可能
 
-#### <a name="enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement"></a>[マイクロソフトエンタープライズ契約](https://azure.microsoft.com/pricing/enterprise-agreement/)
+#### <a name="enterprise-agreement"></a>[マイクロソフトエンタープライズ契約](https://azure.microsoft.com/pricing/enterprise-agreement/)
 
 - 前払いの年額コミットメントに関するオプション
 - Azure の割引価格を利用

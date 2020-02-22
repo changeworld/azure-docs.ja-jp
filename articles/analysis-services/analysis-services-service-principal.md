@@ -4,15 +4,15 @@ description: Azure Analysis Services 管理タスクを自動化するための�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 02/18/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5078fcc1ba5c581aca475025b286d0319d6024a6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: dc163de9a7fb46d62f4bc2983e040e68bbf9231c
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572604"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461676"
 ---
 # <a name="automation-with-service-principals"></a>サービス プリンシパルによる自動化
 
@@ -20,7 +20,7 @@ ms.locfileid: "73572604"
 
 Analysis Services では、サービス プリンシパルは Azure Automation、PowerShell 無人モード、カスタム クライアント アプリケーション、Web アプリと共に使用し、共通タスクを自動化します。 たとえば、サーバーのプロビジョニング、モデルのデプロイ、データ更新、拡大縮小、一時停止/再開をすべて、サービス プリンシパルを利用することで自動化できます。 権限は、通常の Azure AD UPN アカウントとほぼ同じように、ロール メンバーシップを介してサービス プリンシパルに割り当てられます。
 
-Analysis Services では、サービス プリンシパルを使用してマネージド ID によって実行される操作もサポートされます。 詳細については、[Azure リソースのマネージド ID に関するページ](../active-directory/managed-identities-azure-resources/overview.md) と [Azure AD 認証をサポートする Azure サービスに関するページ](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services)を参照してください。
+Analysis Services では、サービス プリンシパルを使用してマネージド ID によって実行される操作もサポートされます。 詳細については、[Azure リソースのマネージド ID に関するページ](../active-directory/managed-identities-azure-resources/overview.md) と [Azure AD 認証をサポートする Azure サービスに関するページ](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services)を参照してください。  
 
 ## <a name="create-service-principals"></a>サービス プリンシパルの作成
  
@@ -108,6 +108,6 @@ tbl.RequestRefresh(RefreshType.Full);
 db.Model.SaveChanges();
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure PowerShell を使用してサインインする](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
 [サーバー管理者ロールへのサービス プリンシパルの追加](analysis-services-addservprinc-admins.md)   

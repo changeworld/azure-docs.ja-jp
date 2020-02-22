@@ -3,12 +3,12 @@ title: テンプレート関数 - デプロイ
 description: Azure Resource Manager テンプレートで、デプロイ情報を取得するために使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: f2939efc9481255233fbdda29f4fa30adcd24b7f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b241aaf43ee3204c9960d0099ce3c61d4c1a80ee
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476233"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207283"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのデプロイ関数 
 
@@ -239,7 +239,7 @@ deployment() を使い、親テンプレートの URI に基づいて、別の�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | Required | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | parameterName |はい |string |返されるパラメーターの名前。 |
 
@@ -326,7 +326,7 @@ deployment() を使い、親テンプレートの URI に基づいて、別の�
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | 種類 | 値 |
+| 名前 | Type | Value |
 | ---- | ---- | ----- |
 | stringOutput | String | option 1 |
 | intOutput | int | 1 |
@@ -344,7 +344,7 @@ deployment() を使い、親テンプレートの URI に基づいて、別の�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | Required | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | variableName |はい |String |返す変数の名前。 |
 
@@ -418,7 +418,7 @@ deployment() を使い、親テンプレートの URI に基づいて、別の�
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | 種類 | 値 |
+| 名前 | Type | Value |
 | ---- | ---- | ----- |
 | exampleOutput1 | String | myVariable |
 | exampleOutput2 | Array | [1, 2, 3, 4] |
@@ -430,6 +430,6 @@ deployment() を使い、親テンプレートの URI に基づいて、別の�
 ## <a name="next-steps"></a>次のステップ
 * Azure Resource Manager テンプレートのセクションの説明については、[Azure Resource Manager テンプレートの作成](template-syntax.md)に関するページを参照してください。
 * 複数のテンプレートをマージするには、[Azure Resource Manager でのリンクされたテンプレートの使用](linked-templates.md)に関するページを参照してください。
-* 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](create-multiple-instances.md)」を参照してください。
+* 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](copy-resources.md)」を参照してください。
 * 作成したテンプレートをデプロイする方法を確認するには、[Azure Resource Manager のテンプレートを使用したアプリケーションのデプロイ](deploy-powershell.md)に関するページを参照してください。
 

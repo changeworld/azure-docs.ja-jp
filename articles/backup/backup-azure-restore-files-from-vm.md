@@ -3,12 +3,12 @@ title: Azure VM バックアップからファイルとフォルダーを回復�
 description: この記事では、Azure 仮想マシンの復旧ポイントからファイルとフォルダーを回復する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 86a46e606e9425cf4951817ca3afa23fe57dae52
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 4565929b5475e2348685fbec77b596b65ed73fd6
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294084"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114328"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
@@ -56,6 +56,8 @@ Azure Backup は、[Azure 仮想マシン (VM) とディスク](./backup-azure-a
 7. ダウンロードの場所 (通常は [ダウンロード] フォルダー) で、実行可能ファイルまたはスクリプトを右クリックし、管理者の資格情報を使用して実行します。 メッセージが表示されたら、パスワードを入力するか、またはメモリからのパスワードを貼り付けて、**Enter** キーを押します。 有効なパスワードが入力されると、スクリプトが復旧ポイントに接続されます。
 
     ![[ファイルの回復] メニュー](./media/backup-azure-restore-files-from-vm/executable-output.png)
+
+8. Linux マシンの場合は Python スクリプトが生成されます。 このスクリプトをダウンロードして、適切な (対応している) Linux サーバーにコピーする必要があります。 それを実行するためには、```chmod +x <python file name>``` でアクセス許可を変更しなければならない場合があります。 そのうえで、```./<python file name>``` を使用し、Python ファイルを実行します。
 
 スクリプトが確実に正常に実行されるようにするために、[アクセス要件](#access-requirements)に関するセクションを参照してください。
 

@@ -1,6 +1,6 @@
 ---
 title: データベースの保護
-description: ソリューション開発のための Azure SQL Data Warehouse でのデータベース保護に関するヒント。
+description: SQL Analytics の SQL プールのリソースでデータベースを保護し、ソリューションを開発するためのヒント。
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8e9ab9dddad35708b58d32802452789adf84a19e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 26cdbb1fc2899d1b03fea6199074467623706c63
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759467"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153283"
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>SQL Data Warehouse でのデータベース保護
 > [!div class="op_single_selector"]
@@ -27,21 +27,21 @@ ms.locfileid: "76759467"
 > 
 > 
 
-この記事では、Azure SQL Data Warehouse データベースの保護に関する基本事項を説明します。 特にこの記事では、アクセスの制限、データの保護、データベースでのアクティビティの監視を行うためのリソースの概要を説明します。
+この記事では、SQL Analytics 内の SQL プールをセキュリティで保護するための基本事項について説明します。 特にこの記事では、アクセスの制限、データの保護、SQL プールを使用してプロビジョニングしたデータベースでのアクティビティの監視を行うためのリソースの概要を説明します。
 
 ## <a name="connection-security"></a>接続のセキュリティ
 接続のセキュリティとは、ファイアウォール ルールと接続の暗号化を使用して、データベースへの接続を制限し、保護する方法のことです。
 
 ファイアウォール ルールはサーバーとデータベースの両方で使用され、明示的にホワイト リストに登録されていない IP アドレスからの接続試行を拒否します。 アプリケーションまたはクライアント コンピューターのパブリック IP アドレスからの接続を許可するには、まず Azure Portal、REST API、または PowerShell を使用して、サーバーレベルのファイアウォール ルールを作成する必要があります。 
 
-ベスト プラクティスとして、可能な限りサーバーのファイアウォールにより許可される IP アドレスの範囲を制限する必要があります。  ローカル コンピューターから Azure SQL Data Warehouse にアクセスするには、ネットワークとローカル コンピューターのファイアウォールで、TCP ポート 1433 での送信方向の通信が許可されていることを確認します。  
+ベスト プラクティスとして、可能な限りサーバーのファイアウォールにより許可される IP アドレスの範囲を制限する必要があります。  ローカル コンピューターから SQL プールにアクセスするには、TCP ポート 1433 での発信を許可するようにネットワークのファイアウォールとローカル コンピューターを設定してください。  
 
-Azure Synapse は、サーバー レベルの IP ファイアウォール規則を使用します。 データベース レベルの IP ファイアウォール規則はサポートされていません。 詳細については、「[Azure SQL Database ファイアウォール規則](../sql-database/sql-database-firewall-configure.md)」を参照してください
+Azure Synapse Analytics は、サーバー レベルの IP ファイアウォール規則を使用します。 データベース レベルの IP ファイアウォール規則はサポートされていません。 詳細については、「[Azure SQL Database ファイアウォール規則](../sql-database/sql-database-firewall-configure.md)」を参照してください
 
-SQL Data Warehouse への接続は、既定で暗号化されます。  暗号化を無視するように接続の設定を変更しても、その変更は無視されます。
+SQL プールへの接続は、既定で暗号化されます。  暗号化を無視するように接続の設定を変更しても、その変更は無視されます。
 
 ## <a name="authentication"></a>認証
-認証とは、データベースへの接続時に ID を証明する方法のことです。 SQL Data Warehouse では現在、ユーザー名とパスワードを使用した SQL Server 認証と、Azure Active Directory による認証がサポートされています。 
+認証とは、データベースへの接続時に ID を証明する方法のことです。 SQL プールでは現在、ユーザー名とパスワードを使用した SQL Server 認証と、Azure Active Directory による認証がサポートされています。 
 
 データベースの論理サーバーを作成したときに、ユーザー名とパスワードによる "サーバー管理" ログインを指定したとします。 これらの資格情報を使用すると、データベース所有者、つまり "dbo" として、そのサーバーにある任意のデータベースを SQL Server 認証を通して認証できます。
 
@@ -55,7 +55,7 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'Str0ng_password';
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-次に、サーバー管理者ログインを使用して **SQL Data Warehouse データベース** に接続し、先ほど作成したサーバー ログインに基づいてデータベース ユーザーを作成します。
+次に、サーバー管理者ログインを使用して **SQL プール データベース** に接続し、先ほど作成したサーバー ログインに基づいてデータベース ユーザーを作成します。
 
 ```sql
 -- Connect to SQL DW database and create a database user
@@ -98,4 +98,4 @@ SQL Database では、データベース暗号化キーは組み込まれてい�
 データベースは、[Azure portal](sql-data-warehouse-encryption-tde.md) または [T-SQL](sql-data-warehouse-encryption-tde-tsql.md) を使用して暗号化できます。
 
 ## <a name="next-steps"></a>次のステップ
-さまざまなプロトコルでのウェアハウスへの接続の詳細と例については、[SQL Data Warehouse への接続](sql-data-warehouse-connect-overview.md)に関する記事をご覧ください。
+さまざまなプロトコルでのウェアハウスへの接続の詳細と例については、[SQL プールへの接続](sql-data-warehouse-connect-overview.md)に関する記事をご覧ください。

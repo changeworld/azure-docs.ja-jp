@@ -6,12 +6,12 @@ ms.author: jaiello
 ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: b1a1caf985e9693e261684c1edb21184071ebfc8
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e9aeb7234f5b840d790f6358bab2426462cc7986
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845908"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210227"
 ---
 # <a name="create-your-first-powershell-function-in-azure"></a>Azure で初めての PowerShell 関数を作成する
 
@@ -61,7 +61,7 @@ Visual Studio Code の Azure Functions プロジェクト テンプレートで�
 1. 初めての関数のテンプレートとして **[HTTP Trigger]\(HTTP トリガー\)** を選択し、関数名として `HTTPTrigger` を使用します。次に、承認レベルとして **[Function]\(関数\)** を選択します。
 
     > [!NOTE]
-    > **関数**承認レベルでは、Azure で関数エンドポイントを呼び出すときに[関数キー](functions-bindings-http-webhook.md#authorization-keys)の値が必要です。 これにより、あらゆるユーザーによる関数の呼び出しを防ぎます。
+    > **関数**承認レベルでは、Azure で関数エンドポイントを呼び出すときに[関数キー](functions-bindings-http-webhook-trigger.md#authorization-keys)の値が必要です。 これにより、あらゆるユーザーによる関数の呼び出しを防ぎます。
 
 1. メッセージが表示されたら、 **[Add to workspace]\(ワークスペースに追加\)** を選択します。
 

@@ -8,13 +8,13 @@ ms.author: daperlov
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/27/2018
-ms.openlocfilehash: 8238f2ea8395fc53044703db619d768918cb1834
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 02/10/2020
+ms.openlocfilehash: 2e50d226282536fa4e8c044d2ee3d91df4cfd1ee
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644700"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131465"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory FAQ
 この記事では、Azure Data Factory に関してよく寄せられる質問に対する回答を示します。  
@@ -195,6 +195,9 @@ Microsoft では、データ フローに関するサポートやトラブルシ
 
 セルフホステッド IR は ADF パイプライン コンストラクトであり、コピー アクティビティと共に使用して、オンプレミスまたは VM ベースのデータ ソースおよびシンクに対してデータを取得または移動することができます。 その変換済みデータをオンプレミスのストアに戻すには、最初にコピーを使ってデータをステージングしてから、変換用のデータ フロー、後続のコピーの順に使用します。
 
+### <a name="does-the-data-flow-compute-engine-serve-multiple-tenants"></a>データ フロー コンピューティング エンジンは複数のテナントにサービスを提供しますか?
+クラスターが共有されることはありません。 運用環境で実行されるジョブごとの分離が保証されています。 デバッグ シナリオの場合、1 人のユーザーが 1 つのクラスターを取得し、そのユーザーによって開始されるそのクラスターにすべてのデバッグが送られます。
+
 ## <a name="wrangling-data-flows"></a>ラングリング データ フロー
 
 ### <a name="what-are-the-supported-regions-for-wrangling-data-flow"></a>ラングリング データ フローでサポートされているリージョンを教えてください。
@@ -274,5 +277,5 @@ Power Platform データフローを使用すると、ユーザーはさまざ�
 ## <a name="next-steps"></a>次のステップ
 データ ファクトリを作成する手順については、次のチュートリアルをご覧ください。
 
-- [クイック スタート:データ ファクトリを作成する](quickstart-create-data-factory-dot-net.md)
+- [クイック スタート: データ ファクトリを作成する](quickstart-create-data-factory-dot-net.md)
 - [チュートリアル:クラウド内のデータをコピーする](tutorial-copy-data-dot-net.md)

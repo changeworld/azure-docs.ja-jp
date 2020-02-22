@@ -2,21 +2,21 @@
 title: Microsoft Authenticator アプリを使用してサインインする - Azure AD
 description: Microsoft Authenticator アプリを使用して、職場または学校アカウント、または個人用の Microsoft アカウントと Microsoft 以外のアカウントにサインインします。このとき、2 要素認証または電話によるサインインが使用されます。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 01/24/2019
-ms.author: lizross
+ms.date: 02/07/2020
+ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 84aa3731f8066772c6a268f2ae4e16215452e78a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: b5f2b42728fd6f3d61695b4f88cc416015dd97cb
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704682"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108260"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを使用してアカウントにサインインする
 
@@ -116,7 +116,7 @@ Outlook.com、Xbox、または Skype などにサインインするために使�
 | アカウントの 2 段階認証を有効にしたままにする場合、2 つの通知を承認する必要がありますか。 | いいえ。 電話を使用して Microsoft アカウントにサインインすると 2 段階認証とみなされ、2 回目の承認は必要ありません。 |
 | 電話を紛失した場合、または電話が手元にない場合は、どのようにしてアカウントにアクセスできますか。 アカウントへのアクセス方法を教えてください。 | サインイン ページで [Use a password instead]\(代わりにパスワードを使用する)\ リンクを選択すれば、いつでもパスワードの使用に戻すことができます。 ただし、2 段階認証を使用している場合は、第 2 の方法で身元を証明する必要があることに注意してください。<br><br>**重要**<br>アカウントに、最新の認証方法を複数関連付けてあることを確認することを強くお勧めします。<br><br>個人アカウントの認証方法は [[セキュリティ設定]](https://account.live.com/proofs/manage) ページから管理することができます。 職場または学校アカウントの場合、管理者がセキュリティ情報をオンに設定している場合は、組織の [[追加のセキュリティ確認]](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) ページまたは **[Keep your account secure]\(アカウントのセキュリティ保護を維持\)** ページに移動します。 セキュリティ情報の詳細については、「[セキュリティ情報 (プレビュー) の概要](user-help-security-info-overview.md)」を参照してください。<br><br>認証方法を管理できない場合は、管理者に連絡する必要があります。 |
 | この機能の使用を停止してパスワードの入力に戻すにはどうすればよいですか。 | 個人アカウントの場合は、サインイン時に **[Use a password instead]\(代わりにパスワードを使用する\)** リンクを選択します。 前回の選択内容が記憶され、次にサインインするときは既定で表示されます。 電話によるサインインに戻る場合は、サインイン時に **[Use an app instead]\(代わりにアプリを使用する)** リンクを選択します。<br><br>職場または学校アカウントの場合、Microsoft Authenticator アプリの **[設定]** ページからデバイスの登録を解除するか、プロファイルの **[デバイスとアクティビティ]** 領域でデバイスを無効にする必要があります。 プロファイルからデバイスを無効にする方法の詳細については、「[マイ アプリ ポータルからプロファイルとアカウント情報を更新する](my-apps-portal-end-user-update-profile.md#view-your-organization-related-profile-information)」を参照してください。 |
-| 電話によるサインインに複数の職場または学校アカウントを使用できないのはなぜですか。 | 携帯電話は、1 つの職場または学校アカウントに登録する必要があります。 電話によるサインインを別の職場または学校アカウントで有効にするには、 **[設定]** ページから古いデバイスの登録を解除する必要があります。 |
+| 電話によるサインインに複数の職場または学校アカウントを使用できないのはなぜですか。 | 携帯電話は、1 つの職場または学校アカウントに登録する必要があります。 電話によるサインインを別の職場または学校アカウントで有効にするには、 **[設定]** ページで、このデバイスからアカウントの登録を解除する必要があります。 |
 | 携帯電話を使用して自分のコンピューターにサインインできますか。 | コンピューターには、Windows 10 で Windows Hello を使用してサインインすることをお勧めします。 Windows Hello を使用すると、顔、指紋、または暗証番号を使用してサインインできます。 |
 
 ## <a name="next-steps"></a>次のステップ

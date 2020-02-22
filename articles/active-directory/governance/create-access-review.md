@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/21/2019
+ms.date: 02/06/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e65eb08873da71c7683fe3347484831dfff58793
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: fcb2198ea3f01e923022c205e478167240a01894
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932635"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084446"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>グループとアプリケーションのアクセス レビューを Azure AD アクセス レビューで作成する
 
@@ -127,6 +127,20 @@ ms.locfileid: "75932635"
 既定では、レビューの開始直後に Azure AD からレビュー担当者宛てにメールが送信されます。 Azure AD からメールを送信することを選択しなかった場合は、アクセス レビューが実行待ちになっていることを必ずレビュー担当者に伝えてください。 レビュー担当者には、[グループまたはアプリケーションへのアクセスをレビュー](perform-access-review.md)する手順を案内することができます。 レビュー対象がゲストで、自分のアクセスをレビューしてもらう場合は、[グループまたはアプリケーションへの自身のアクセス権をレビューする](review-your-access.md)手順を案内します。
 
 レビュー担当者として割り当てられているが招待状を受け取っていないゲストは、レビューの前にまず招待状を受け取る必要があるため、アクセス レビューから電子メールが送信されません。
+
+## <a name="access-review-status-table"></a>アクセス レビューの状態表
+
+| Status | 定義 |
+|--------|------------|
+|NotStarted | レビューは作成されましたが、ユーザーの探索が開始待ちです。 |
+|初期化中   | レビュー対象のすべてのユーザーを把握するために、ユーザーの探索が進行中です。 |
+|開始中 | レビューが開始されようとしています。 メール通知が有効になっている場合、レビュー担当者にメールが送信されます。 |
+|InProgress | レビューが開始されました。 メール通知が有効になっている場合、レビュー担当者には既にメールが送信されています。 レビュー担当者は、期限までに決定を送信することができます。 |
+|完了処理中 | レビューが完了されようとしています。レビューの所有者にメールが送信されます。 |
+|AutoReviewing | レビューはシステム レビュー段階です。 レビューされなかったユーザーについて、推奨事項または事前構成済みの判断に基づいてシステムが決定を記録しています。 |
+|AutoReviewed | レビューされなかったすべてのユーザーについての決定が、システムによって記録されました。 自動適用が有効になっている場合、レビューはいつでも**適用中**に移行することができます。 |
+|適用中 | 承認されたユーザーについては、アクセスに変更はありません。 |
+|適用済み | 拒否されたユーザーがいた場合、そのユーザーはリソースまたはディレクトリから削除されます。 |
 
 ## <a name="create-reviews-via-apis"></a>API を使用してレビューを作成する
 

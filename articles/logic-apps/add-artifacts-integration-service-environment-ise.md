@@ -1,17 +1,17 @@
 ---
 title: 成果物を統合サービス環境に追加する
-description: 統合サービス環境 (ISE) にロジック アプリ、統合アカウント、カスタム コネクタを追加して Azure 仮想ネットワーク (VNET) にアクセスする
+description: ロジック アプリ、統合アカウント、カスタム コネクタ、およびマネージド コネクタを統合サービス環境 (ISE) に追加する
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: c597bc4430e4390f0e29e4fe8ae4014521e1ae74
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.date: 02/10/2020
+ms.openlocfilehash: e2505d8ee8b8539f158c0a549bedfcd69a954e24
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732251"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191635"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps で統合サービス環境 (ISE) に成果物を追加する
 
@@ -33,18 +33,19 @@ ms.locfileid: "75732251"
 
    ![ISE に新しいロジック アプリを追加する](./media/add-artifacts-integration-service-environment-ise/add-logic-app-to-ise.png)
 
-   または
+1. 作成するロジック アプリに関する情報を指定します。次に例を示します。
 
-   Azure のメイン メニューで、 **[リソースの作成]**  >  **[統合]**  >  **[ロジック アプリ]** の順に選択します。
+   ![統合サービス環境を選択する](./media/add-artifacts-integration-service-environment-ise/create-logic-app-integration-service-environment.png)
 
-1. ロジック アプリに使用する名前、Azure サブスクリプション、および Azure リソース グループ (新規または既存) を入力します。
+   | プロパティ | Required | 説明 |
+   |----------|----------|-------------|
+   | **Name** | はい | 作成するロジック アプリの名前 |
+   | **サブスクリプション** | はい | 使用する Azure サブスクリプションの名前。 |
+   | **リソース グループ** | はい | 使用する Azure リソース グループ (新規または既存) の名前 |
+   | **場所** | はい | **[統合サービス環境]** で、使用する ISE を選択します (まだ選択していない場合)。 <p><p> **重要**:統合アカウントでロジック アプリを使用するには、どちらも同じ ISE を使用する必要があります。 |
+   ||||
 
-1. **[統合サービス環境]** セクションの **[場所]** 一覧で、ご使用の ISE を選択します。次に例を示します。
-
-   ![統合サービス環境を選択する](./media/add-artifacts-integration-service-environment-ise/create-logic-app-with-integration-service-environment.png)
-
-   > [!IMPORTANT]
-   > ロジック アプリを統合アカウントで使用する場合は、それらのロジック アプリと統合アカウントで同じ ISE を使用する必要があります。
+1. 完了したら **[作成]** を選択します。
 
 1. 引き続き[通常の方法でロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。
 
@@ -64,15 +65,20 @@ ISE を使用する統合アカウントを作成するには、次の手順を�
 
    ![ISE に新しい統合アカウントを追加する](./media/add-artifacts-integration-service-environment-ise/add-integration-account-to-ise.png)
 
-   または
+1. 作成するロジック アプリに関する情報を指定します。次に例を示します。
 
-   Azure のメイン メニューから、 **[リソースの作成]**  >  **[統合]**  >  **[統合アカウント]** の順に選択します。
+   ![統合サービス環境を選択する](./media/add-artifacts-integration-service-environment-ise/create-integration-account-integration-service-environment.png)
 
-1. 統合アカウントに使用する名前、Azure サブスクリプション、Azure リソース グループ (新規または既存)、および価格レベルを指定します。
+   | プロパティ | Required | 説明 |
+   |----------|----------|-------------|
+   | **Name** | はい | 作成する統合アカウントの名前 |
+   | **サブスクリプション** | はい | 使用する Azure サブスクリプションの名前 |
+   | **リソース グループ** | はい | 使用する Azure リソース グループ (新規または既存) の名前 |
+   | **価格レベル** | はい | 統合アカウントに使用する価格レベル |
+   | **場所** | はい | **[統合サービス環境]** で、ロジック アプリが使用するものと同じ ISE を選択します (まだ選択していない場合)。 <p><p> **重要**:ロジック アプリで統合アカウントを使用するには、どちらも同じ ISE を使用する必要があります。 |
+   ||||
 
-1. **[統合サービス環境]** セクションの **[場所]** 一覧から、ロジック アプリで使用しているものと同じ ISE を選択します。次に例を示します。
-
-   ![統合サービス環境を選択する](./media/add-artifacts-integration-service-environment-ise/create-integration-account-with-integration-service-environment.png)
+1. 完了したら **[作成]** を選択します。
 
 1. [通常の方法でロジック アプリを統合アカウントにリンクします](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)。
 
@@ -110,7 +116,7 @@ ISE でカスタム コネクタを使用するには、ISE 内から直接こ�
 
 1. **[統合サービス環境]** セクションの **[場所]** 一覧から、ロジック アプリで使用しているものと同じ ISE を選択し、 **[作成]** を選択します。次に例を示します。
 
-   ![統合サービス環境を選択する](./media/add-artifacts-integration-service-environment-ise/create-custom-connector-with-integration-service-environment.png)
+   ![統合サービス環境を選択する](./media/add-artifacts-integration-service-environment-ise/create-custom-connector-integration-service-environment.png)
 
 1. 新しいカスタム コネクタを選択し、 **[編集]** を選択します。次に例を示します。
 

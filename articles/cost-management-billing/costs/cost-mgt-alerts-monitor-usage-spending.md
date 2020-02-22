@@ -1,21 +1,19 @@
 ---
 title: コストのアラートで使用量と支出を監視する | Microsoft Docs
 description: この記事では、Azure Cost Management のコストのアラートが使用量と支出の監視にどのように役立つのかについて説明します。
-services: cost-management
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/21/2019
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: alavital
+ms.reviewer: adwise
 ms.custom: ''
-ms.openlocfilehash: 4be484cdff2014f11c872da9a246ef8406447712
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3ce643767ad8ba6116c9e93f23b1c8a7819d7277
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75984583"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199944"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>コストのアラートを使用して使用量と支出を監視する
 
@@ -67,6 +65,6 @@ Azure portal では、予算はコストによって定義されます。 Azure 
 
 ![無視と再アクティブ化のオプションが示されている例の画像](./media/cost-mgt-alerts-monitor-usage-spending/Dismiss-reactivate-options.png)
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - 予算をまだ作成していない場合、または予算のアラート条件をまだ設定していない場合は、「[Azure の予算を作成して管理する](tutorial-acm-create-budgets.md)」チュートリアルを行ってください。

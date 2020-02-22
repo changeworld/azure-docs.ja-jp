@@ -15,12 +15,12 @@ ms.date: 01/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: b2a49528ca3c2b55c02f3bda89b3722ee8fef535
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 04a3af7c85a361878e37cf3ee210e8a5c9f3cd30
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264256"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121979"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure リソースの組み込みロール
 
@@ -152,9 +152,9 @@ ms.locfileid: "76264256"
 > | [ストレージ BLOB データ所有者](#storage-blob-data-owner) | Azure Storage Blob コンテナーとデータに対するフル アクセス (POSIX アクセスの制御の割り当てを含む) を提供します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | [ストレージ BLOB データ閲覧者](#storage-blob-data-reader) | Azure Storage コンテナーと BLOB の読み取りと一覧表示を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | [Storage Blob デリゲータ](#storage-blob-delegator) | Azure AD 資格情報で署名されたコンテナーまたは BLOB 用の共有アクセス署名を作成するために使用できるユーザー委任キーを取得します。 詳細については、「[ユーザー委任 SAS を作成する](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)」を参照してください。 | db58b8e5-c6ad-4a2a-8342-4190687cbf4a |
-> | [記憶域ファイル データの SMB 共有の共同作成者](#storage-file-data-smb-share-contributor) | SMB 経由の Azure Storage ファイル共有に対する読み取りアクセス、書き込みアクセス、削除アクセスを許可します。 | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
-> | [記憶域ファイル データの SMB 共有の管理者特権共同作成者](#storage-file-data-smb-share-elevated-contributor) | SMB 経由の Azure Storage ファイル共有に対する読み取りアクセス、書き込みアクセス、削除アクセス、NTFS アクセス許可の変更アクセスを許可します。 | a7264617-510b-434b-a828-9731dc254ea7 |
-> | [ストレージ ファイル データの SMB 共有の閲覧者](#storage-file-data-smb-share-reader) | SMB 経由の Azure ファイル共有に対する読み取りアクセスを許可します。 | aba4ae5f-2193-4029-9191-0cb91df5e314 |
+> | [記憶域ファイル データの SMB 共有の共同作成者](#storage-file-data-smb-share-contributor) | Azure ファイル共有のファイルまたはディレクトリに対する読み取り、書き込み、削除のアクセス権を許可します。 このロールに相当する機能は Windows ファイル サーバーに組み込まれていません。 | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
+> | [記憶域ファイル データの SMB 共有の管理者特権共同作成者](#storage-file-data-smb-share-elevated-contributor) | Azure ファイル共有のファイルまたはディレクトリに対する ACL の読み取り、書き込み、削除、変更を許可します。 このロールは、Windows ファイル サーバーでのファイル共有 ACL の変更に相当します。 | a7264617-510b-434b-a828-9731dc254ea7 |
+> | [ストレージ ファイル データの SMB 共有の閲覧者](#storage-file-data-smb-share-reader) | Azure ファイル共有のファイルまたはディレクトリに対する読み取りアクセスを許可します。 このロールは、Windows ファイル サーバーでのファイル共有 ACL の読み取りに相当します。 | aba4ae5f-2193-4029-9191-0cb91df5e314 |
 > | [ストレージ キュー データ共同作成者共同作成者](#storage-queue-data-contributor) | Azure Storage キューおよびキュー メッセージの読み取り、書き込み、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | 974c5e8b-45b9-4653-ba55-5f855dd0fb88 |
 > | [ストレージ キュー データのメッセージ プロセッサ](#storage-queue-data-message-processor) | Azure Storage キューからのメッセージのピーク、取得、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
 > | [ストレージ キュー データ メッセージ送信者](#storage-queue-data-message-sender) | Azure Storage キューにメッセージを追加します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
@@ -2915,7 +2915,7 @@ ms.locfileid: "76264256"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | SMB 経由の Azure Storage ファイル共有に対する読み取りアクセス、書き込みアクセス、削除アクセスを許可します。 |
+> | **説明** | Azure ファイル共有のファイルまたはディレクトリに対する読み取りアクセス、書き込みアクセス、削除アクセスを許可します。 このロールに相当する機能は Windows ファイル サーバーに組み込まれていません。 |
 > | **Id** | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
 > | **アクション** |  |
 > | "*なし*" |  |
@@ -2932,7 +2932,7 @@ ms.locfileid: "76264256"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | SMB 経由の Azure Storage ファイル共有に対する読み取りアクセス、書き込みアクセス、削除アクセス、NTFS アクセス許可の変更アクセスを許可します。 |
+> | **説明** | Azure ファイル共有のファイルまたはディレクトリに対する ACL の読み取り、書き込み、削除、変更を許可します。 このロールは、Windows ファイル サーバーでのファイル共有 ACL の変更に相当します。 |
 > | **Id** | a7264617-510b-434b-a828-9731dc254ea7 |
 > | **アクション** |  |
 > | "*なし*" |  |
@@ -2950,7 +2950,7 @@ ms.locfileid: "76264256"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | SMB 経由の Azure ファイル共有に対する読み取りアクセスを許可します。 |
+> | **説明** | Azure ファイル共有のファイルまたはディレクトリに対する読み取りアクセスを許可します。 このロールは、Windows ファイル サーバーでのファイル共有 ACL の読み取りに相当します。 |
 > | **Id** | aba4ae5f-2193-4029-9191-0cb91df5e314 |
 > | **アクション** |  |
 > | "*なし*" |  |

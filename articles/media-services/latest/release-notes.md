@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 12/13/2019
+ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: 52d8dda8b543e5bdf3ca88ae3784df65be3a2ba1
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: e5bf99e2ea84f41054ff57d08882bfa8ab4d6be5
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962945"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114230"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -35,14 +35,33 @@ ms.locfileid: "76962945"
 > 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-sdk)、CLI、またはサポートされている SDK のいずれかを使用します。
 
 詳細については、「[Media Services v2 から v3 への移行のガイダンス](migrate-from-v2-to-v3.md#known-issues)」を参照してください。
-
+ 
 ## <a name="january-2020"></a>2020 年 1 月
 
 ### <a name="improvements-in-media-processors"></a>メディア プロセッサの機能強化
 
 - ビデオ分析でのインターレース ソースのサポートが強化されました。このようなコンテンツは推論エンジンに送信される前に適切にインターレースが解除されるようになりました。
 - "最適" モードでサムネイルを生成すると、エンコーダーでは、モノクロではないフレームの選択にかかる検索時間が 30 秒を超えるようになりました。
- 
+
+### <a name="azure-government-cloud-updates"></a>Azure Government クラウドの更新
+
+Media Services が次の Azure Government リージョンで一般公開されました。*米国政府アリゾナ*および*米国政府テキサス*。
+
+## <a name="december-2019"></a>2019 年 12 月
+
+ライブ ストリーミングとビデオ オンデマンド ストリーミングの両方の *Origin-Assist Prefetch* ヘッダーに対する CDN サポートが追加されました。Akamai CDN と直接契約しているお客様が利用できます。 Origin-Assist CDN-Prefetch 機能には、Akamai CDN と Azure Media Services オリジン間での次の HTTP ヘッダーの交換が含まれます。
+
+|HTTP ヘッダー|値|送信者|受信者|目的|
+| ---- | ---- | ---- | ---- | ----- |
+|CDN-Origin-Assist-Prefetch-Enabled | 1 (既定) または 0 |CDN|Origin (配信元)|CDN がプリフェッチ対応であることを示すこと|
+|CDN-Origin-Assist-Prefetch-Path| 例: <br/>フラグメント(ビデオ= 1400000000, フォーマット = mpd-time-cmaf)|Origin (配信元)|CDN|CDN にプリフェッチ パスを提供すること|
+|CDN-Origin-Assist-Prefetch-Request|1 (プリフェッチ要求) または 0 (通常の要求)|CDN|Origin (配信元)|CDN からの要求がプリフェッチであることを示すこと|
+
+ヘッダー交換の一部を実際に確認するには、次の手順を実行します。
+
+1. Postman または curl を使用して、オーディオまたはビデオのセグメントまたはフラグメントの Media Services 配信元に要求を発行します。 ヘッダー CDN-Origin-Assist-Prefetch-Enabled: 1 を必ず要求に追加してください。
+2. 応答には、その値として相対パスが指定されたヘッダー CDN-Origin-Assist-Prefetch-Path が表示されます。
+
 ## <a name="november-2019"></a>2019 年 11 月
 
 ### <a name="live-transcription-preview"></a>ライブ文字起こし (プレビュー)
@@ -90,7 +109,7 @@ Media Services v3 で、24 時間 365 日のライブ イベントのライブ �
 
 #### <a name="deprecation-of-media-processors"></a>メディア プロセッサの非推奨化
 
-*Azure Media Indexer* および "*Azure Media Indexer 2 プレビュー*" の廃止を発表します。 提供終了日については、この[レガシ コンポーネント](../previous/legacy-components.md)に関するトピックを参照してください。 [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) が、これらの従来のメディア プロセッサに取って代わります。
+*Azure Media Indexer* および "*Azure Media Indexer 2 プレビュー*" の廃止を発表します。 提供終了日については、[レガシ コンポーネント](../previous/legacy-components.md)に関するトピックを参照してください。 [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) が、これらの従来のメディア プロセッサに取って代わります。
 
 詳細については、[Azure Media Indexer および Azure Media Indexer 2 から Azure Media Services Video Indexer への移行](../previous/migrate-indexer-v1-v2.md)に関する記事をご覧ください。
 

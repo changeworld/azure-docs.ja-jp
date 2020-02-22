@@ -1,22 +1,19 @@
 ---
 title: Azure の予約ソフトウェアのコスト
 description: Azure Reserved VM Instance のコストに含まれないソフトウェアのメーターについて説明します。
-author: yashar
-manager: yashar
+author: yashesvi
+ms.reviewer: yashar
 tags: billing
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 11/14/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 7807129061328d1c6d563b9058987388e84c6e4c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3480f60b354de94f604dab1ea1f16d3b0ad59379
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75986795"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199349"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Azure Reserved VM Instances に含まれないソフトウェアのコスト
 

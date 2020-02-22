@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24e82abd2c95bcbfdde843a6636a809bb3aeb70c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5895ed256fa5f0337b74d9dbe14c4074dad4b522
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422638"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120243"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でリソースのカタログを作成して管理する
 
@@ -51,6 +51,10 @@ ms.locfileid: "75422638"
 
 1. **[作成]** をクリックすると、カタログが作成されます。
 
+### <a name="creating-a-catalog-programmatically"></a>プログラムによるカタログの作成
+
+Microsoft Graph を使用して、カタログを作成することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、[accessPackageCatalog を作成する](https://docs.microsoft.com/graph/api/accesspackagecatalog-post?view=graph-rest-beta)ことができます。
+
 ## <a name="add-resources-to-a-catalog"></a>カタログにリソースを追加する
 
 アクセス パッケージにリソースを含めるには、リソースがカタログ内に存在している必要があります。 追加できるリソースの種類は、グループ、アプリケーション、および SharePoint Online サイトです。 追加できるグループは、クラウドで作成された Office 365 グループ、またはクラウドで作成された Azure AD セキュリティ グループです。 追加できるアプリケーションは Azure AD エンタープライズ アプリケーションで、これには SaaS アプリケーションと、Azure AD にフェデレーションされた独自アプリケーションの両方が含まれます。 追加できるサイトは、SharePoint Online サイトまたは SharePoint Online サイト コレクションです。
@@ -76,6 +80,10 @@ ms.locfileid: "75422638"
 1. 作業が終了したら、 **[追加]** をクリックします。
 
     これらのリソースをカタログ内のアクセス パッケージに含めることができるようになりました。
+
+### <a name="adding-a-resource-to-a-catalog-programmatically"></a>プログラムによるカタログへのリソースの追加
+
+Microsoft Graph を使用して、カタログにリソースを追加することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーまたはカタログおよびリソースの所有者は、API を呼び出して、[accessPackageResourceRequest を作成する](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta)ことができます。
 
 ## <a name="remove-resources-from-a-catalog"></a>カタログからリソースを削除する
 
@@ -144,6 +152,10 @@ ms.locfileid: "75422638"
 1. カタログの **[概要]** で **[削除]** をクリックします。
 
 1. 表示されるメッセージ ボックスで、 **[はい]** をクリックします。
+
+### <a name="deleting-a-catalog-programmatically"></a>プログラムによるカタログの削除
+
+Microsoft Graph を使用して、カタログを削除することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、[accessPackageCatalog を削除する](https://docs.microsoft.com/graph/api/accesspackagecatalog-delete?view=graph-rest-beta)ことができます。
 
 ## <a name="next-steps"></a>次のステップ
 

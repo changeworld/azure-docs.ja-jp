@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 83884447e9856b5e3db26e4829ccbd3ab1baed13
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 715415929afaad36e4854e75a2b7b5360d22a6bf
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549089"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486344"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法
 
@@ -453,7 +453,7 @@ static async Task Main()
 }
 ```
 
-詳しくは、[Queue Storage のバインド](../azure-functions/functions-bindings-storage-queue.md#hostjson-settings)に関する記事をご覧ください。
+詳しくは、[Queue Storage のバインド](../azure-functions/functions-bindings-storage-queue-trigger.md#hostjson-properties)に関する記事をご覧ください。
 
 #### <a name="version-2x"></a>バージョン 2.*x*
 
@@ -524,7 +524,7 @@ static async Task Main()
 }
 ```
 
-詳しくは、[Service Bus のバインド](../azure-functions/functions-bindings-service-bus.md#hostjson-settings)に関する記事をご覧ください。
+詳しくは、[Service Bus のバインド](../azure-functions/functions-bindings-service-bus-output.md#hostjson-settings)に関する記事をご覧ください。
 
 ### <a name="configuration-for-other-bindings"></a>その他のバインドの構成
 
@@ -680,11 +680,11 @@ public static void CreateQueueMessage(
 
 Azure Functions のドキュメントでは、各バインドの種類に関する参照情報が提供されています。 各バインド参照記事には、以下の情報が記載されています。 (この例は、Storage キューに基づいています。)
 
-* [パッケージ](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x)。 WebJobs SDK プロジェクトにバインドのサポートを含めるためにインストールする必要のあるパッケージです。
-* [例](../azure-functions/functions-bindings-storage-queue.md#trigger)。 コード サンプルです。 C# クラス ライブラリの例は、WebJobs SDK に適用されます。 `FunctionName` 属性は単に省略します。
-* [属性](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes-and-annotations)。 バインドの種類に使用する属性です。
-* [構成](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration)。 属性のプロパティとコンストラクターのパラメーターの説明です。
-* [使用方法](../azure-functions/functions-bindings-storage-queue.md#trigger---usage)。 どの種類にバインドできるかとバインドの動作方法に関する情報です。 例: ポーリング アルゴリズム、有害キュー処理。
+* [パッケージ](../azure-functions/functions-bindings-storage-queue.md)。 WebJobs SDK プロジェクトにバインドのサポートを含めるためにインストールする必要のあるパッケージです。
+* [例](../azure-functions/functions-bindings-storage-queue-trigger.md)。 コード サンプルです。 C# クラス ライブラリの例は、WebJobs SDK に適用されます。 `FunctionName` 属性は単に省略します。
+* [属性](../azure-functions/functions-bindings-storage-queue-trigger.md#attributes-and-annotations)。 バインドの種類に使用する属性です。
+* [構成](../azure-functions/functions-bindings-storage-queue-trigger.md#configuration)。 属性のプロパティとコンストラクターのパラメーターの説明です。
+* [使用方法](../azure-functions/functions-bindings-storage-queue-trigger.md#usage)。 どの種類にバインドできるかとバインドの動作方法に関する情報です。 例: ポーリング アルゴリズム、有害キュー処理。
   
 バインドの参照記事の一覧については、Azure Functions の[トリガーとバインド](../azure-functions/functions-triggers-bindings.md#supported-bindings)に関する記事の「サポートされるバインディング」をご覧ください。 その一覧では、HTTP、Webhook、Event Grid のバインドは、Azure Functions でのみサポートされており、WebJobs SDK ではサポートされていません。
 

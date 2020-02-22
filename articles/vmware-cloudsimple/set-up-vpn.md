@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fbd2b227c9292593a7652044ef4c013bf0cfaf8e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8188fac270eadb6e09cc3561ddefb05aa59ba661
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77017005"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087134"
 ---
 # <a name="configure-a-vpn-connection-to-your-avs-private-cloud"></a>AVS プライベート クラウドへの VPN 接続を構成する
 
@@ -97,7 +97,7 @@ Viscosity OpenVPN クライアントを使用して VPN に接続するには、
 
     ![VPN 接続を編集する](media/viscosity-edit-connection.png)
 
-7. **[ネットワーク]** タブをクリックし、AVS プライベート クラウドの DNS サーバーの IP アドレスをコンマまたはスペースで区切って入力し、ドメインを ```AVS.io``` として入力します。 **[VPN サーバーによって送信される DNS 設定を無視する]** を選択します。
+7. **[ネットワーク]** タブをクリックし、AVS プライベート クラウドの DNS サーバーの IP アドレスをコンマまたはスペースで区切って入力し、ドメインを ```az.cloudsimple.io``` として入力します。 **[VPN サーバーによって送信される DNS 設定を無視する]** を選択します。
 
     ![VPN ネットワーク](media/viscosity-edit-connection-networking.png)
 
@@ -117,4 +117,4 @@ Viscosity OpenVPN クライアントを使用して VPN に接続するには、
 
 > [!IMPORTANT]
 >    1. VPN デバイスでの TCP MSS クランプは 1,200 で設定します。 お使いの VPN デバイスで MSS クランプがサポートされていない場合は、別の方法として、トンネル インターフェイスの MTU を 1,240 バイトに設定できます。
-> 2. サイト対サイト VPN が設定されたら、*.AVS.io に対する DNS 要求を AVS プライベート クラウドの DNS サーバーに転送します。 [オンプレミスの DNS のセットアップ](on-premises-dns-setup.md)に関する記事の手順に従います。
+> 2. サイト対サイト VPN がセットアップされたら、*.cloudsimple.io に対する DNS 要求を AVS プライベート クラウドの DNS サーバーに転送します。 [オンプレミスの DNS のセットアップ](on-premises-dns-setup.md)に関する記事の手順に従います。

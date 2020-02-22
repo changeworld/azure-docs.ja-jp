@@ -3,12 +3,12 @@ title: チュートリアル - モジュール レジストリを使用した Te
 description: Terraform モジュールを使用して Azure で Windows 仮想マシン クラスターを作成する方法について説明します。
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 3ddc80e8f5a81e89e4574ff6524055f12a4a618a
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: d17a0d7c26cc1a16ab73350fe6e8c28ba4af6ff2
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185561"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472207"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-using-the-module-registry"></a>チュートリアル:モジュール レジストリを使用した Terraform での Azure VM クラスターの作成
 
@@ -25,9 +25,9 @@ Terraform の詳細については、[Terraform のドキュメント](https://w
 ## <a name="set-up-authentication-with-azure"></a>Azure で認証を設定する
 
 > [!TIP]
-> [Terraform 環境変数を使用する](/azure/virtual-machines/linux/terraform-install-configure)か、または [Azure Cloud Shell](/azure/cloud-shell/overview) でこのチュートリアルを実行する場合は、この手順を省略します。
+> [Terraform 環境変数を使用する](terraform-install-configure.md)か、または [Azure Cloud Shell](/azure/cloud-shell/overview) でこのチュートリアルを実行する場合は、この手順を省略します。
 
- Azure サービス プリンシパルを作成するには、「[Install Terraform and configure access to Azure (Terraform のインストールおよび Azure へのアクセスの構成)](/azure/virtual-machines/linux/terraform-install-configure)」を確認してください。 このサービス プリンシパルを使用して、空のディレクトリ内の新しいファイル `azureProviderAndCreds.tf` に次のコードを入力します。
+ Azure サービス プリンシパルを作成するには、「[Install Terraform and configure access to Azure (Terraform のインストールおよび Azure へのアクセスの構成)](terraform-install-configure.md)」を確認してください。 このサービス プリンシパルを使用して、空のディレクトリ内の新しいファイル `azureProviderAndCreds.tf` に次のコードを入力します。
 
 ```hcl
 variable subscription_id {}
@@ -97,7 +97,7 @@ Azure に VM をプロビジョニングするには、`terraform apply` を実�
 
 ![Terraform の適用](media/terraform-create-vm-cluster-with-infrastructure/terraform-apply.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"] 
 > [Azure Terraform モジュールの一覧を参照する](https://registry.terraform.io/modules/Azure)

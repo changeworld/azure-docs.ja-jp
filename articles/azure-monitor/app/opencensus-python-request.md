@@ -7,22 +7,22 @@ ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
-ms.openlocfilehash: f6b06e7bb2bb8637ca28b2fa4185754f8686798e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 475ba601c61169f92eddd7f203b7fa34ed2e4916
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73586976"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368258"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>OpenCensus Python を使用した受信要求の追跡
 
-受信要求データは、OpenCensus Python とそのさまざまな統合を使用して収集されます。 一般的な Web フレームワーク `django`、`flask` および `pyramid` 上に構築された Web アプリケーションに送信された受信要求データを追跡します。 データはその後、Azure Monitor の Application Insights に `requests` テレメトリとして送信されます。
+受信要求データは、OpenCensus Python とそのさまざまな統合を使用して収集されます。 一般的な Web フレームワーク `django`、`flask` および `pyramid` 上に構築された Web アプリケーションに送信された受信要求データを追跡します。 その後、データは Azure Monitor の Application Insights に `requests` テレメトリとして送信されます。
 
 まず、最新の [OpenCensus Python SDK](../../azure-monitor/app/opencensus-python.md) を使用して Python アプリケーションをインストルメント化します。
 
 ## <a name="tracking-django-applications"></a>Django アプリケーションの追跡
 
-1. [PyPI](https://pypi.org/project/opencensus-ext-django/) から `opencensus-ext-django` をダウンロードしてインストールし、`django` ミドルウェアを使用してアプリケーションをインストルメント化します。 `django` アプリケーションに送信された受信要求が追跡されます。
+1. [PyPI](https://pypi.org/project/opencensus-ext-django/) から `opencensus-ext-django` をダウンロードしてインストールし、`django` ミドルウェアでアプリケーションをインストルメント化します。 `django` アプリケーションに送信された受信要求が追跡されます。
 
 2. `settings.py` ファイルの `MIDDLEWARE` に `opencensus.ext.django.middleware.OpencensusMiddleware` を含めます。
 
@@ -39,9 +39,9 @@ ms.locfileid: "73586976"
     ```python
     OPENCENSUS = {
         'TRACE': {
-            'SAMPLER': 'opencensus.trace.samplers.ProbabilitySampler(rate=0.5)',
+            'SAMPLER': 'opencensus.trace.samplers.ProbabilitySampler(rate=1)',
             'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
-                service_name='foobar',
+                connection_string="InstrumentationKey=<your-ikey-here>"
             )''',
         }
     }
@@ -54,9 +54,9 @@ ms.locfileid: "73586976"
         'TRACE': {
             'SAMPLER': 'opencensus.trace.samplers.ProbabilitySampler(rate=0.5)',
             'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
-                service_name='foobar',
+                connection_string="InstrumentationKey=<your-ikey-here>",
             )''',
-            'BLACKLIST_PATHS': 'https://example.com',  <--- This site will not be traced if a request is sent from it.
+            'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent from it.
         }
     }
     ```
@@ -95,9 +95,9 @@ ms.locfileid: "73586976"
         'TRACE': {
             'SAMPLER': 'opencensus.trace.samplers.ProbabilitySampler(rate=1.0)',
             'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
-                service_name='foobar',
+                connection_string="InstrumentationKey=<your-ikey-here>",
             )''',
-            'BLACKLIST_PATHS': 'https://example.com',  <--- This site will not be traced if a request is sent to it.
+            'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
         }
     }
     ```
@@ -122,16 +122,16 @@ ms.locfileid: "73586976"
             'TRACE': {
                 'SAMPLER': 'opencensus.trace.samplers.ProbabilitySampler(rate=1.0)',
                 'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
-                    service_name='foobar',
+                    connection_string="InstrumentationKey=<your-ikey-here>",
                 )''',
-                'BLACKLIST_PATHS': 'https://example.com',  <--- This site will not be traced if a request is sent to it.
+                'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
             }
         }
     }
     config = Configurator(settings=settings)
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [アプリケーション マップ](../../azure-monitor/app/app-map.md)
 * [可用性](../../azure-monitor/app/monitor-web-app-availability.md)

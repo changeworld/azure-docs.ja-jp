@@ -37,7 +37,7 @@ Azure Service Bus は現在、Azure Service Bus 名前空間上で実行され�
 
 操作ログの JSON 文字列には、次の表に示す要素が含まれます。
 
-| Name | [説明] |
+| Name | 説明 |
 | ------- | ------- |
 | ActivityId | 指定されたアクティビティを識別するために使用される内部 ID |
 | EventName | 操作の名前 |

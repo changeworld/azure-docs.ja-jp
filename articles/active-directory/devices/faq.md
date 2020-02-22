@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a27c9ae1b75b9517bd3af92486df96434c5b34fb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cebb59d30dd717e54321ab138f6580947a545961
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74207386"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185842"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
 
@@ -55,7 +55,7 @@ Azure portal の **[すべてのデバイス]** ビューを使用してくだ�
 
 ---
 
-### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices-"></a>Q:Windows 10 デバイスに "Your organization has deleted the device (組織がデバイスを削除しました)" または "Your organization has disabled the device (組織がデバイスを無効にしました)" というエラー メッセージが表示されるのはなぜですか?
+### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices"></a>Q:Windows 10 デバイスに "Your organization has deleted the device (組織がデバイスを削除しました)" または "Your organization has disabled the device (組織がデバイスを無効にしました)" というエラー メッセージが表示されるのはなぜですか?
 
 **A:** Azure AD に参加または登録した Windows 10 デバイスで、シングル サインオンを有効にする[プライマリ更新トークン (PRT)](concept-primary-refresh-token.md) がユーザーに発行されます。 PRT の有効性は、デバイス自体の有効性に基づきます。 デバイス自体からアクションを開始せずに、Azure AD でデバイスが削除または無効にされている場合に、このメッセージがユーザーに表示されます。 デバイスは、次のいずれかのシナリオで Azure AD で削除または無効にすることができます。 
 
@@ -82,14 +82,14 @@ Azure portal の **[すべてのデバイス]** ビューを使用してくだ�
       ハイブリッド Azure AD 参加済み Windows 10 および Windows Server 2016/2019 デバイスを再登録するには、次の手順を実行します。
 
       1. 管理者としてコマンド プロンプトを開きます。
-      1. 「 `dsregcmd.exe /debug /leave` 」を入力します。
+      1. 「`dsregcmd.exe /debug /leave`」と入力します。
       1. サインアウトしてからサインインして、デバイスを Azure AD に再登録するスケジュール済みタスクをトリガーします。 
 
       ハイブリッド Azure AD に参加済みのダウンレベルの Windows OS バージョンの場合は、次の手順を実行します。
 
       1. 管理者としてコマンド プロンプトを開きます。
-      1. 「 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"` 」を入力します。
-      1. 「 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"` 」を入力します。
+      1. 「`"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`」と入力します。
+      1. 「`"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`」と入力します。
 
       Azure AD 参加済み Windows 10 デバイスの場合、次の手順を実行します。
 
@@ -119,7 +119,7 @@ Azure portal の **[すべてのデバイス]** ビューを使用してくだ�
 
 ### <a name="q-does-windows-10-device-registration-in-azure-ad-support-tpms-in-fips-mode"></a>Q:Azure AD での Windows 10 デバイス登録では、FIPS モードの TPM はサポートされますか?
 
-**A:** Windows 10 デバイス登録は FIPS 準拠の TPM 2.0 でのみサポートされ、TPM 1.2 ではサポートされていません。 デバイスが FIPS 準拠の TPM 1.2 を使用している場合は、Azure AD 参加または Hybrid Azure AD 参加に進む前に、それを無効にする必要があります。 TPM の FIPS モードを無効にするためのツールは TPM の製造元に依存するため、Microsoft では用意していないことに注意してください。 サポートが必要な場合は、お使いのハードウェアの OEM にお問い合わせください。 
+**A:** Windows 10 デバイス登録は FIPS 準拠の TPM 2.0 でのみサポートされ、TPM 1.2 ではサポートされていません。 デバイスが FIPS 準拠の TPM 1.2 を使用している場合は、Azure AD 参加または Hybrid Azure AD 参加に進む前に、それを無効にする必要があります。 TPM の FIPS モードを無効にするためのツールは、TPM の製造元に依存するため、Microsoft では用意していません。 サポートが必要な場合は、お使いのハードウェアの OEM にお問い合わせください。 
 
 ---
 
@@ -288,7 +288,7 @@ Hybrid Azure AD Join は、Azure AD 登録済み状態よりも優先されま�
 **A:** 
 - Windows 10 Azure AD 登録済みデバイスの場合、 **[設定]**  >  **[アカウント]**  >  **[職場または学校にアクセスする]** に移動します。 アカウントを選択し、 **[切断]** を選択します。 デバイスの登録は、Windows 10 のユーザー プロファイルごとに行います。
 - iOS および Android の場合は、Microsoft Authenticator アプリケーションの **[設定]**  >  **[デバイスの登録]** で、 **[デバイスの登録を解除する]** を選択します。
-- macOS の場合は、Microsoft Intune ポータル サイト アプリケーションを使用すると、管理対象からデバイスを登録解除して、登録を削除することができます。 
+- macOS の場合は、Microsoft Intune ポータル サイト アプリケーションを使用して、管理対象からデバイスを登録解除して、登録を削除することができます。 
 
 ---
 ### <a name="q-how-can-i-block-users-from-adding-additional-work-accounts-azure-ad-registered-on-my-corporate-windows-10-devices"></a>Q:ユーザーが会社の Windows 10 デバイスに職場アカウント (Azure AD 登録済み) を追加できないようにするにはどうすればよいですか?
@@ -310,13 +310,13 @@ Hybrid Azure AD Join は、Azure AD 登録済み状態よりも優先されま�
 1.  [コンプライアンス ポリシーを作成する](https://docs.microsoft.com/intune/compliance-policy-create-mac-os)
 1.  [macOS デバイスの条件付きアクセス ポリシーを定義する](../active-directory-conditional-access-azure-portal.md) 
 
-**解説:**
+**備考:**
 
-- 条件付きアクセス ポリシーに含まれているユーザーがリソースにアクセスするには、[macOS でサポートされているバージョンの Office](../conditional-access/technical-reference.md#client-apps-condition) が必要です。 
+- 条件付きアクセス ポリシーに含まれているユーザーがリソースにアクセスするには、[macOS でサポートされているバージョンの Office](../conditional-access/concept-conditional-access-conditions.md) が必要です。 
 - 最初のアクセス試行中に、ユーザーは、会社のポータルを使用してデバイスを登録するよう求められます。
 
 ---
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure AD 登録済みデバイス](concept-azure-ad-register.md)について学習する
 - [Azure AD 参加済みデバイス](concept-azure-ad-join.md)について学習する

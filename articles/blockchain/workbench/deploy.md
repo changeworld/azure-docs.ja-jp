@@ -4,12 +4,12 @@ description: Azure Blockchain Workbench Preview のデプロイ方法
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: brendal
-ms.openlocfilehash: 190f780d7aed30667c23bb97f9ce7726da0f00ca
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: fab61b5850815e480b4a380fdccd6c1df5b449cd
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779835"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189246"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>Azure Blockchain Workbench Preview のデプロイ
 
@@ -51,7 +51,7 @@ Azure Blockchain Workbench では、Azure AD 構成とアプリケーション�
 
 前提条件の手順が完了すると、Blockchain Workbench を展開できる状態になります。 次のセクションでは、フレームワークを展開する方法の概要を説明します。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 右上隅でお使いのアカウントを選び、Azure Blockchain Workbench を展開する Azure AD テナントに切り替えます。
 1. Azure Portal の左上隅にある **[リソースの作成]** を選択します。
 1. **[ブロックチェーン]**  >  **[Azure Blockchain Workbench (プレビュー)]** の順に選択します。
@@ -123,7 +123,7 @@ Azure Blockchain Workbench では、Azure AD 構成とアプリケーション�
 
 Blockchain Workbench の展開が完了すると、新しいリソース グループには Blockchain Workbench のリソースが格納されています。 Blockchain Workbench サービスには、Web URL を使ってアクセスします。 次の手順では、展開済みのフレームワークの Web URL を取得する方法を示します。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左側のナビゲーション ウィンドウで、 **[リソース グループ]** を選択します。
 1. Blockchain Workbench の展開時に指定したリソース グループ名を選びます。
 1. **[種類]** 列見出しを選択して、種類のアルファベット順に一覧を並べ替えます。
@@ -178,7 +178,7 @@ Azure Blockchain Workbench のデプロイが完了しました。 デプロイ�
 Blockchain Workbench の展開には、Azure AD アプリケーションの登録が必要です。 アプリを登録するには Azure Active Directory (Azure AD) テナントが必要です。 既存のテナントを使うか、新しいテナントを作成することができます。 既存の Azure AD テナントを使う場合は、Azure AD テナントにアプリケーションを登録し、Graph API のアクセス許可を付与し、Azure AD テナント内でゲストのアクセスを許可するための十分なアクセス許可が必要です。 既存の Azure AD テナントに十分なアクセス許可がない場合は、新しいテナントを作成します。
 
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 右上隅でお使いのアカウントを選び、目的の Azure AD テナントに切り替えます。 テナントは、Azure Blockchain Workbench を展開するサブスクリプションのサブスクリプション管理者のテナントでなければならず、アプリケーションを登録するための十分なアクセス許可が必要です。
 1. 左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** サービスを選びます。 **[アプリの登録]**  >  **[新しい登録]** の順に選びます。
 
@@ -195,7 +195,7 @@ Blockchain Workbench の展開には、Azure AD アプリケーションの登�
 次に、Azure AD 内のアプリケーション ロールを使って Blockchain Workbench 管理者を指定するように、マニフェストを変更する必要があります。  アプリケーション マニフェストについて詳しくは、「[Azure Active Directory アプリケーション マニフェスト](../../active-directory/develop/reference-app-manifest.md)」をご覧ください。
 
 
-1. マニフェストの GUID を生成する必要があります。 PowerShell コマンド `[guid]::NewGuid()` または `New-GUID` コマンドレットを使用して GUID を生成できます。 GUID ジェネレーター Web サイトを使用することもできます。
+1. マニフェストには GUID が必要です。 PowerShell コマンド `[guid]::NewGuid()` または `New-GUID` コマンドレットを使用して GUID を生成できます。 GUID ジェネレーター Web サイトを使用することもできます。
 1. 登録したアプリケーションについて、 **[管理]** セクションで **[マニフェスト]** を選びます。
 1. 次に、マニフェストの **appRoles** セクションを更新します。 `"appRoles": []` を、示されている JSON に置き換えます。 忘れずに、**id** フィールドの値を、生成した GUID に置き換えてください。 
 
@@ -233,8 +233,15 @@ Blockchain Workbench の展開には、Azure AD アプリケーションの登�
 API アプリケーションは、ディレクトリにアクセスするために、ユーザーからのアクセス許可を要求する必要があります。 API アプリケーションに必要な次のアクセス許可を設定します。
 
 1. 「*Blockchain API*」のアプリ登録で、 **[API のアクセス許可]** を選択します。 既定では、Graph API の **User.Read** アクセス許可が追加されます。
+1. Workbench アプリケーションでは、ユーザーの基本プロファイル情報に対する読み取りアクセス権が必要です。 *[構成されたアクセス許可]* で、 **[アクセス許可の追加]** を選択します。 **[Microsoft API]** で、 **[Microsoft Graph]** を選択します。
+1. Workbench アプリケーションでは認証されたユーザーの資格情報が使用されるため、 **[委任されたアクセス許可]** を選択します。
+1. *[ユーザー]* カテゴリで、 **[User.ReadBasic.All]** アクセス許可を選択します。
 
-1. **[同意する]** で、ドメインに対して **[管理者の同意を与えます]** を選択し、確認プロンプトで **[はい]** を選択します。
+    ![Microsoft Graph の [User.ReadBasic.All] の委任されたアクセス許可を追加することを示す Azure AD アプリの登録構成](media/deploy/add-graph-user-permission.png)
+
+    **[アクセス許可の追加]** を選択します.
+
+1. *[構成されたアクセス許可]* で、ドメインに対して **[管理者の同意を与える]** を選択し、確認プロンプトで **[はい]** を選択します。
 
    ![[アクセス許可の付与]](media/deploy/client-app-grant-permissions.png)
 
@@ -273,7 +280,7 @@ API アプリケーションは、ディレクトリにアクセスするため�
 
 Azure Blockchain Workbench をデプロイした後は、デプロイした Blockchain Workbench Web URL について Azure Active Directory (Azure AD) クライアント アプリケーションの**応答 URL** を構成する必要があります。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. Azure AD クライアント アプリケーションを登録したテナントにいることを確認します。
 1. 左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** サービスを選びます。 **[アプリの登録]** を選択します。
 1. 前提条件セクションで登録した Azure AD クライアント アプリケーションを選びます。

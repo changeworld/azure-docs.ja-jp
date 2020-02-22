@@ -11,8 +11,8 @@
       href: tutorial-enable-sspr.md
     - name: Azure Multi-Factor Authentication の有効化
       href: tutorial-enable-azure-mfa.md
-    - name: SSPR オンプレミス統合を有効にする
-      href: tutorial-enable-writeback.md
+    - name: オンプレミスへのパスワード ライトバックを有効にする
+      href: tutorial-enable-sspr-writeback.md
     - name: Azure Identity Protection を統合する
       href: tutorial-risk-based-sspr-mfa.md
 - name: 概念
@@ -68,8 +68,6 @@
           href: howto-sspr-deployment.md
         - name: 認証データの事前登録
           href: howto-sspr-authenticationdata.md
-        - name: パスワード ライトバックの有効化
-          href: howto-sspr-writeback.md
         - name: Windows クライアント用 SSPR
           href: howto-sspr-windows.md
     - name: クラウドベースの MFA

@@ -1,19 +1,18 @@
 ---
 title: Azure の予約を自動的に更新する
 description: Azure の予約を自動的に更新して、予約割引の取得を継続する方法について説明します。
-services: billing
 author: bandersmsft
-manager: yashar
+ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: dfff02c554c94daf1dd7fd844cea461fd76589d8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: fc82fe0f63b244adb74d2242d25270528669380a
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75986803"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199400"
 ---
 # <a name="automatically-renew-reservations"></a>予約を自動的に更新する
 

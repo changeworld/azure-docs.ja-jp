@@ -1,24 +1,17 @@
 ---
 title: 追加 Azure サブスクリプションの作成
 description: Azure portal で新しい Azure サブスクリプションを作成する方法を説明します。
-services: billing
-documentationcenter: ''
-author: amberb
-manager: amberb
-editor: ''
+author: amberbhargava
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 33fa553e9148a1ac838e6bf53fc83cf7eadd7499
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: d6a8196816aaaa61458050334f605cb41afa16b9
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75985839"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200848"
 ---
 # <a name="create-an-additional-azure-subscription"></a>追加 Azure サブスクリプションの作成
 
@@ -57,7 +50,7 @@ Microsoft Online Services プログラム (MOSP) の課金アカウントをお�
 
 |フィールド  |定義  |
 |---------|---------|
-|Name     | Azure portal でサブスクリプションを識別しやすくするための表示名。  |
+|名前     | Azure portal でサブスクリプションを識別しやすくするための表示名。  |
 |プラン     | 開発またはテスト用ワークロードにこのサブスクリプションを使用する場合は、[EA Dev/Test] を選択します。その他の場合には、[Microsoft Azure エンタープライズ] を使用します。 EA Dev/Test サブスクリプションを作成するためには、ご利用の登録アカウントに対して DevTest プランが有効になっている必要があります。|
 
 **Microsoft 顧客契約**
@@ -67,7 +60,7 @@ Microsoft Online Services プログラム (MOSP) の課金アカウントをお�
 |請求プロファイル     | サブスクリプションの料金は、選択した課金プロファイルに対して課金されます。 アクセスできる課金プロファイルが 1 つのみの場合は、この選択範囲はグレー表示されます。     |
 |請求書セクション     | お使いのサブスクリプションの料金は、その課金プロファイルの請求書のこのセクションに表示されます。 アクセスできる請求書セクションが 1 つのみの場合は、この選択範囲はグレー表示されます。  |
 |プラン     | 開発またはテスト用ワークロードにこのサブスクリプションを使用する場合は、[Dev/Test 用 Microsoft Azure プラン] を選択します。その他の場合には、[Microsoft Azure プラン] を使用します。 課金プロファイルで有効になっているプランが 1 つのみの場合は、この選択項目はグレー表示されます。  |
-|Name     | Azure portal でサブスクリプションを識別しやすくするための表示名。  |
+|名前     | Azure portal でサブスクリプションを識別しやすくするための表示名。  |
 
 **Microsoft Partner Agreement**
 
@@ -75,7 +68,7 @@ Microsoft Online Services プログラム (MOSP) の課金アカウントをお�
 |---------|---------|
 |Customer    | サブスクリプションは、選択した顧客に対して作成されます。 顧客が 1 件しか存在しなければ、この選択項目はグレー表示されます。  |
 |Reseller    | 顧客にサービスを提供するリセラー。 これはオプション フィールドです。CSP の2 層モデルの間接プロバイダーにのみ関係します。 |
-|Name     | Azure portal でサブスクリプションを識別しやすくするための表示名。  |
+|名前     | Azure portal でサブスクリプションを識別しやすくするための表示名。  |
 
 ## <a name="create-an-additional-azure-subscription-programmatically"></a>追加の Azure サブスクリプションをプログラムから作成する
 

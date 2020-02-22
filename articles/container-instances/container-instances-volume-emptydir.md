@@ -2,13 +2,13 @@
 title: emptyDir ボリュームをコンテナー グループにマウントする
 description: emptyDir ボリュームをマウントし、Azure Container Instances のコンテナー グループに属するコンテナー間でデータを共有する方法について説明します。
 ms.topic: article
-ms.date: 02/08/2018
-ms.openlocfilehash: 955423b685ebb3979271c7c2dc7e835a16100c2b
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.date: 01/31/2020
+ms.openlocfilehash: 64a3c83008f163167528a5e5987fe2316942d5bc
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552459"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117739"
 ---
 # <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>Azure Container Instances に emptyDir ボリュームをマウントする
 
@@ -29,18 +29,20 @@ ms.locfileid: "75552459"
 
 *emptyDir* ボリュームのデータはコンテナーがクラッシュしても存続します。 ただし、再開後のコンテナーが *emptyDir* ボリュームのデータを永続化するかどうかは保証されません。 コンテナー グループを停止した場合、*emptyDir* ボリュームは永続化されません。
 
+Linux *emptyDir* ボリュームの最大サイズは 50 GB です。
+
 ## <a name="mount-an-emptydir-volume"></a>emptyDir ボリュームをマウントする
 
-コンテナー インスタンスに emptyDir ボリュームをマウントするには、[Azure Resource Manager テンプレート](/azure/templates/microsoft.containerinstance/containergroups)を使用してデプロイを行う必要があります。
+コンテナー インスタンスに emptyDir ボリュームをマウントするには、[Azure Resource Manager テンプレート](/azure/templates/microsoft.containerinstance/containergroups)、[YAML ファイル](container-instances-reference-yaml.md)、またはその他のプログラムによる方法を使用してデプロイを行って、コンテナー グループをデプロイすることができます。
 
-最初に、テンプレートのコンテナー グループ `properties` セクションに `volumes` 配列を入力します。 次に、*emptyDir* ボリュームをマウントするコンテナー グループ内の各コンテナーに対して、コンテナー定義の `properties` セクションで `volumeMounts` 配列を設定します。
+最初に、ファイルのコンテナー グループ `properties` セクションに `volumes` 配列を入力します。 次に、*emptyDir* ボリュームをマウントするコンテナー グループ内の各コンテナーに対して、コンテナー定義の `properties` セクションで `volumeMounts` 配列を設定します。
 
 たとえば、次の Resource Manager テンプレートでは、それぞれが *emptyDir* ボリュームを作成する 2 つのコンテナーから構成されるコンテナー グループが作成されます。
 
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-emptydir.json -->
 [!code-json[volume-emptydir](~/azure-docs-json-samples/container-instances/aci-deploy-volume-emptydir.json)]
 
-Azure Resource Manager テンプレートによるコンテナー インスタンスのデプロイ例を見るには、[Azure Container Instances での複数コンテナーのデプロイ](container-instances-multi-container-group.md)に関するページを参照してください。
+コンテナー グループのデプロイの例については、「[Resource Manager テンプレートを使用してマルチコンテナー グループをデプロイする](container-instances-multi-container-group.md)」および「[YAML ファイルを使用して複数コンテナー グループをデプロイする](container-instances-multi-container-yaml.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

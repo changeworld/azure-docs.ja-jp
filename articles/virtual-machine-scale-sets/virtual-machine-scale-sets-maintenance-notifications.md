@@ -80,7 +80,7 @@ Azure Portal、PowerShell、REST API、Azure CLI を使用して、仮想マシ�
 
 これで、仮想マシン スケール セットの一覧に **[セルフサービス メンテナンス]** 列が表示されます。 各仮想マシン スケール セットのセルフサービス メンテナンスの列の値は、次のいずれかの値をとることができます。
 
-| 値 | [説明] |
+| 値 | 説明 |
 |-------|-------------|
 | はい | 仮想マシン スケール セット内の少なくとも 1 つの VM がセルフ サービス期間内です。 このセルフサービス期間中は、いつでもメンテナンスを開始することができます。 | 
 | いいえ | 影響を受ける仮想マシン スケール セットには、セルフサービス期間内の VM はありません。 | 
@@ -121,7 +121,7 @@ Get-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -In
 
 **MaintenanceRedeployStatus** では、次のプロパティが返されます。 
 
-| 値 | [説明]   |
+| 値 | 説明   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | この時点で VM に対してメンテナンスを開始できるかどうかを示します。 |
 | PreMaintenanceWindowStartTime         | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の始まりです。 |
@@ -152,7 +152,7 @@ az vmss list-instances -g rgName -n vmssName --expand instanceView
 
 **MaintenanceRedeployStatus** では、各 VM インスタンスについて次のプロパティが返されます。 
 
-| 値 | [説明]   |
+| 値 | 説明   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | この時点で VM に対してメンテナンスを開始できるかどうかを示します。 |
 | PreMaintenanceWindowStartTime         | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の始まりです。 |

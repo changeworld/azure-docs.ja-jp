@@ -2,21 +2,18 @@
 title: Enterprise Agreement に適用される Azure の予約の使用状況について
 description: 使用状況を読み、エンタープライズ加入契約に Azure の予約がどのように適用されているかを把握する方法について説明します。
 author: bandersmsft
-manager: yashar
+ms.reviewer: yashar
 tags: billing
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 06/30/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: af0769ae4e242c86a56ff63d5f7c9ecbe9382b48
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 76d73b57202acabdf42ce0bec6b9b33cde15592f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75986711"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199281"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Enterprise Agreement の予約のコストと使用状況を取得する
 
@@ -33,7 +30,7 @@ Enterprise Agreement のお客様は、Azure portal と REST API で予約のコ
 
 ## <a name="reservation-charges-in-azure-usage-data"></a>Azure の使用状況データの予約料金
 
-データは 2 つのデータ セットに分割されます。_実際のコスト_と_分散コスト_です。 これら 2 つのデータセットの違いを次に示します。
+データは 2 つのデータ セットに分割されます。_実際のコスト_ と _分散コスト_ です。 これら 2 つのデータセットの違いを次に示します。
 
 **実際のコスト**: 月ごとの請求を調整するためのデータを提供します。 このデータには、予約購入コストと予約アプリケーションの詳細が含まれています。 このデータを使用して、特定の日にどのサブスクリプション、リソース グループ、またはリソースが予約割引を受けたかを確認できます。 予約割引を受ける使用量の EffectivePrice はゼロです。
 

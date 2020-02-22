@@ -4,12 +4,12 @@ description: Azure Monitor で自動スケール操作を使用して Web URL �
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: autoscale
-ms.openlocfilehash: fd5aeadd72123b58801ce038b0cc99d17dcfd200
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c82b170bb3801bdc701ed84230db57f5691523ea
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364205"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120691"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Azure Monitor で自動スケール操作を使用して電子メールと webhook アラート通知を送信する
 この記事では、Azure で自動スケール操作に基づいて特定の Web URL を呼び出すことや電子メールを送信することができるようにトリガーを設定する方法について説明します。  
@@ -20,8 +20,8 @@ Webhook を使用すると、後処理やカスタム通知のために、Azure 
 ## <a name="email"></a>Email
 電子メールは、任意の有効な電子メール アドレスに送信できます。 このルールが実行されているサブスクリプションの管理者と共同管理者にも通知されます。
 
-## <a name="cloud-services-and-web-apps"></a>Cloud Services と Web Apps
-Azure ポータルから Cloud Services とサーバー ファーム (Web Apps) をオプトインできます。
+## <a name="cloud-services-and-app-services"></a>Cloud Services と App Services
+Azure portal から Cloud Services とサーバー ファーム (App Services) をオプトインできます。
 
 * **[スケールの基準]** メトリックを選択します。
 

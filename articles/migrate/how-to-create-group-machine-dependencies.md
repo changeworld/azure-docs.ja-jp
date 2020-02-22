@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: hamusa
-ms.openlocfilehash: 96d1c44eb9ecb71684e817a89f9376a07dbe3ccb
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: bf6798d557cb1d27030565e4706864e945de6f04
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514971"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472096"
 ---
 # <a name="set-up-dependency-visualization-for-assessment"></a>評価のために依存関係の視覚化を設定する
 
@@ -40,7 +40,7 @@ ms.locfileid: "76514971"
 サービス マップ | 依存関係の視覚化では、Azure Monitor で Service Map ソリューションが使用されます。 [Service Map](../azure-monitor/insights/service-map.md) は、サーバー間の接続を自動的に検出して表示します。
 [エージェント] | 依存関係の視覚化を使用するには、マップするマシン上に次のエージェントをインストールします。<br/> - [Log Analytics エージェント](../azure-monitor/platform/log-analytics-agent.md) (以前は Microsoft Monitoring Agent (MMA) と呼ばれていました)。<br/> - [Service Map の Dependency Agent](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent)。<br/><br/> エージェントのインストールを自動化するには、Azure Migrate 用のエージェント デプロイ ソリューションを備えたデプロイ ツール (Configuration Manager など) を使用することができます。
 依存関係エージェント | Windows および Linux での [Dependency Agent](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent) のサポートを確認します。<br/><br/> スクリプトを使用した依存関係エージェントのインストールの[詳細情報](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)を確認します。
-Log Analytics エージェント (MMA) | MMA のインストール方法の[詳細情報](../azure-monitor/platform/log-analytics-agent.md#install-and-configure-agent)を確認します。<br/><br/> System Center Operations Manager 2012 R2 以降によって監視されているマシンの場合、MMA エージェントをインストールする必要はありません。 Service Map は Operations Manager と統合されます。 統合を有効にする方法については、[こちら](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)のガイダンスを参照してください。 ただし、このようなマシンには、Dependency Agent をインストールする必要がある点に注意してください。<br/><br/> Log Analytics エージェントでサポートされている Linux オペレーティング システムを[確認](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)します。
+Log Analytics エージェント (MMA) | MMA のインストール方法の[詳細情報](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)を確認します。<br/><br/> System Center Operations Manager 2012 R2 以降によって監視されているマシンの場合、MMA エージェントをインストールする必要はありません。 Service Map は Operations Manager と統合されます。 統合を有効にする方法については、[こちら](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)のガイダンスを参照してください。 ただし、このようなマシンには、Dependency Agent をインストールする必要がある点に注意してください。<br/><br/> Log Analytics エージェントでサポートされている Linux オペレーティング システムを[確認](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)します。
 評価グループ | 依存関係を視覚化するグループには、10 個を超えるマシンを含めないでください。 マシンが 10 台を超える場合は、小さいグループに分割して依存関係を視覚化してください。
 
 ## <a name="associate-a-log-analytics-workspace"></a>Log Analytics ワークスペースを関連付ける

@@ -1,20 +1,20 @@
 ---
 title: 概要 | Microsoft Azure Maps
 description: Microsoft Azure Maps のサービスと機能、およびそれらをアプリケーションで使用する方法について説明します。
-author: walsehgal
-ms.author: v-musehg
-ms.date: 02/11/2020
+author: farah-alyasari
+ms.author: v-faalya
+ms.date: 01/15/2020
 ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e01bfec9edbe1e868a3e3244e3cb6d1e1a46561d
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: b375ea8fdebd876bdc7ecf157a4cebd5e614dfd0
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190349"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443725"
 ---
 # <a name="what-is-azure-maps"></a>Azure Maps とは
 
@@ -45,13 +45,13 @@ Azure Maps は、最新のマッピング データを使用して、地理的�
 
 Azure Maps Web SDK では、独自のコンテンツや映像を使用して、インタラクティブ マップをカスタマイズすることができます。 この対話型マップは、Web とモバイル アプリケーションの両方に使用できます。 このマップ コントロールには、WebGL が利用されているため、大きなデータ セットをハイ パフォーマンスでレンダリングすることができます。 この SDK を使った開発は、JavaScript または TypeScript を使用して行います。
 
-![人口変動のマップの例](media/about-azure-maps/Introduction_WebMapControl.png)
+![人口変動のマップの例](media/about-azure-maps/intro_web_map_control.png)
 
 ### <a name="android-sdk"></a>Android SDK
 
 Azure Maps Android SDK は、モバイル マッピング アプリケーションの作成に使用します。 
 
-![モバイル デバイス上のマップの例](media/about-azure-maps/AndroidSDK.png)
+![モバイル デバイス上のマップの例](media/about-azure-maps/android_sdk.png)
 
 ## <a name="services-in-azure-maps"></a>Azure Maps のサービス
 
@@ -73,7 +73,7 @@ Azure Maps Mobility Service を使用すると、リアルタイムで旅行を�
 
 Render Service は、開発者がマッピング機能を持つ Web およびモバイル アプリケーションを作成するのに役立ちます。 このサービスは、高品質のラスター グラフィックス イメージ、19 のズーム レベル、または完全にカスタマイズ可能なベクター形式のマップ イメージを使います。
 
-![Render Service からのマップの例](media/about-azure-maps/Introduction_Map.png)
+![Render Service からのマップの例](media/about-azure-maps/intro_map.png)
 
 Render Service では現在、開発者が衛星画像を操作できるプレビュー API が提供されています。 詳細については、[Render API のドキュメント](https://docs.microsoft.com/rest/api/maps/render)を参照してください。
 
@@ -81,7 +81,7 @@ Render Service では現在、開発者が衛星画像を操作できるプレ�
 
 Route Service には、現実世界のインフラストラクチャに関する堅牢なジオメトリ計算と複数の輸送モードでの道案内が含まれています。 このサービスを使って、開発者は、自動車、トラック、自転車、徒歩などの複数の移動手段について指示を計算できます。 サービスでは、交通状況、重量制限、危険物輸送などの入力も検討されます。
 
-![Route Service からのマップの例](media/about-azure-maps/Introduction_Route.png)
+![Route Service からのマップの例](media/about-azure-maps/intro_route.png)
 
 Route Service では、次のような高度な機能のプレビューが提供されます。 
 
@@ -95,7 +95,7 @@ Route Service では、次のような高度な機能のプレビューが提供
 
 Search Service は、開発者が住所、場所、名前またはカテゴリ別の事業所一覧、およびその他の地理情報を検索するのに役立ちます。 Search Service では、緯度と経度に基づいて住所や交差点の[逆引き地理コード](https://en.wikipedia.org/wiki/Reverse_geocoding)を行うことができます。
 
-![マップ上での検索の例](media/about-azure-maps/Introduction_Search.png)
+![マップ上での検索の例](media/about-azure-maps/intro_search.png)
 
 Search Service では、次のような高度な機能も提供されます。
 
@@ -149,7 +149,7 @@ Traffic Service は、交通情報を必要とする Web またはモバイル �
 * トラフィック フロー:ネットワーク内のすべての主要道路で観察されたリアルタイムの速度と移動時間。
 * トラフィック インシデント:道路ネットワークでの交通渋滞およびインシデントに関する最新のビュー。
 
-![交通情報を使用したマップの例](media/about-azure-maps/Introduction_Traffic.png)
+![交通情報を使用したマップの例](media/about-azure-maps/intro_traffic.png)
 
 詳細については、[Traffic API のドキュメント](https://docs.microsoft.com/rest/api/maps/traffic)を参照してください。
 

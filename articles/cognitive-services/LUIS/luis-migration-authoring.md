@@ -78,7 +78,7 @@ Azure サブスクリプションをお持ちでない場合は、[サインア�
 
 移行プロセスが完了すると、すべての LUIS アプリが 1 つの LUIS オーサリング リソースに割り当てられます。
 
-_LUIS ポータル_の **[Manage]\(管理\) -> [Azure resources]\(Azure リソース\)** ページで、さらに多くのオーサリング リソースを作成して割り当てることができます。
+_LUIS ポータル_ の **[Manage]\(管理\) -> [Azure resources]\(Azure リソース\)** ページで、さらに多くのオーサリング リソースを作成して割り当てることができます。
 
 _Azure portal_ のオーサリング リソースの **[Access Control (IAM)]** ページから、そのリソースの共同作成者を追加できます。 詳細については、[共同作成者アクセスの追加](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource)に関するページを参照してください。
 

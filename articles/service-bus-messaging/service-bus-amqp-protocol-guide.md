@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: c99f4491af8fe3e5f0f0ed7a264995ae3ec5911f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d706e9b3351b0693a1f352e15b6b9b0cc5c7a65d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60749446"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086157"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド
 
@@ -53,7 +53,7 @@ AMQP 1.0 プロトコルでは拡張性を意図した設計が採用され、�
 
 このセクションでは、Azure Service Bus での AMQP 1.0 の基本的な処理について説明します。接続やセッション、リンクを作成したり、Service Bus の各種エンティティ (キュー、トピック、サブスクリプションなど) との間でメッセージをやり取りしたりする方法を見ていきましょう。
 
-AMQP の動作について最も権威のある情報源は AMQP 1.0 仕様です。しかし仕様の目的は、実装上の指針を厳密に記述することであり、プロトコルについてわかりやすく解説することではありません。 このセクションでは、Service Bus での AMQP 1.0 の使われ方を理解するうえで最低限必要な用語のみを紹介することに重点を置いています。 AMQP について大局的に扱った入門情報が必要な場合や、AMQP 1.0 についての広範な解説が必要である場合は、[こちら][this video course]のビデオ コースをご覧ください。
+AMQP の動作について最も権威のある情報源は AMQP 1.0 仕様です。しかし仕様の目的は、実装上の指針を厳密に記述することであり、プロトコルについてわかりやすく解説することではありません。 このセクションでは、Service Bus での AMQP 1.0 の使われ方を理解するうえで最低限必要な用語のみを紹介することに重点を置いています。 AMQP について大局的に扱った入門情報が必要な場合や、AMQP 1.0 についての広範な解説が必要である場合は、[こちらのビデオ コース][this video course]をご覧ください。
 
 ### <a name="connections-and-sessions"></a>接続とセッション
 
@@ -81,6 +81,15 @@ Service Bus では、接続と TLS のセットアップ後、SASL の機構に�
 現在、Azure Service Bus では各接続につき厳密に 1 つのセッションが使用されます。 Service Bus Standard と Event Hubs の場合､Service Bus の最大フレーム サイズは 262,144 バイト (256KB) です｡ Service Bus Premium の場合は、これが 1,048,576 (1 MB) になります。 セッション レベルで特定のスロットル ウィンドウを Service Bus が強制的に適用することはありませんが、リンク レベルのフロー制御の一環として Service Bus は、ウィンドウを定期的にリセットします ([次のセクション](#links)を参照)。
 
 接続、チャネル、セッションは一時的にしか存在しません。 根底の接続がダウンした場合、接続、TLS トンネル、SASL 承認コンテキスト、セッションを再度確立する必要があります。
+
+### <a name="amqp-outbound-port-requirements"></a>AMQP 送信ポートの要件
+
+TCP 経由で AMQP 接続を使用するクライアントでは、ローカル ファイアウォールでポート 5671 と 5672 を開く必要があります。 これらのポートと共に、[EnableLinkRedirect](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) 機能が有効になっている場合は、追加のポートを開く必要がある場合があります。 `EnableLinkRedirect` は、メッセージの受信中に 1 ホップをスキップし、スループットを向上させることができるようにする新しいメッセージング機能です。 クライアントは、次の図に示すように、ポート範囲 104XX 経由でバックエンド サービスとの直接通信を開始します。 
+
+![宛先ポートの一覧][4]
+
+これらのポートがファイアウォールによってブロックされている場合、.NET クライアントは、SocketException ("アクセス許可で禁じられた方法でソケットにアクセスしようとしました") で失敗します。 この機能を無効にするには、接続文字列で `EnableAmqpLinkRedirect=false` を設定します。これにより、クライアントはポート 5671 を介してリモート サービスと通信するように強制されます。
+
 
 ### <a name="links"></a>リンク
 
@@ -283,7 +292,7 @@ AMQP メッセージ プロパティの一部ではなく、かつ、メッセ�
 | --- | --- | --- |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction ID}<br/>))|
-| | 。 . 。 <br/>トランザクション作業<br/>(別のリンク上で)<br/> 。 . 。 |
+| | 。 。 。 <br/>トランザクション作業<br/>(別のリンク上で)<br/> 。 。 。 |
 | transfer(<br/>delivery-id=57, ...)<br/>{ AmqpValue (<br/>**Discharge(txn-id=0,<br/>fail=false)** )}| ------> |  |
 | | <------ | disposition( <br/> first=57, last=57, <br/>state=**Accepted()** )|
 
@@ -359,7 +368,7 @@ CBS には、メッセージング インフラストラクチャによって提
 
 要求メッセージには、次のアプリケーション プロパティがあります。
 
-| キー | 省略可能 | 値の型 | 値の内容 |
+| Key | 省略可能 | 値の型 | 値の内容 |
 | --- | --- | --- | --- |
 | operation |いいえ |string |**put-token** |
 | type |いいえ |string |格納されるトークンの種類。 |
@@ -368,7 +377,7 @@ CBS には、メッセージング インフラストラクチャによって提
 
 トークンの関連付けの対象となるエンティティは、*name* プロパティによって識別されます。 Service Bus では、キュー (またはトピック/サブスクリプション) のパスになります。 トークンの種類は、*type* プロパティによって識別されます。
 
-| トークンの種類 | トークンの説明 | 本文の型 | メモ |
+| トークンの種類 | トークンの説明 | 本文の型 | Notes |
 | --- | --- | --- | --- |
 | amqp:jwt |JSON Web トークン (JWT) |AMQP 値 (string) |まだ使用できません。 |
 | amqp:swt |Simple Web Token (SWT) |AMQP 値 (string) |AAD/ACS によって発行された SWT トークンでのみサポートされます。 |
@@ -378,9 +387,9 @@ CBS には、メッセージング インフラストラクチャによって提
 
 応答メッセージには、次の *application-properties* 値があります。
 
-| キー | 省略可能 | 値の型 | 値の内容 |
+| Key | 省略可能 | 値の型 | 値の内容 |
 | --- | --- | --- | --- |
-| status-code |いいえ |int |HTTP 応答コード **[RFC2616]** 。 |
+| status-code |いいえ |INT |HTTP 応答コード **[RFC2616]** 。 |
 | status-description |はい |string |ステータスの説明。 |
 
 クライアントは、メッセージング インフラストラクチャ内の任意のエンティティに対し、*put-token* を繰り返し呼び出すことができます。 トークンの有効範囲は現在のクライアントに限定され、現在の接続に固定されます。つまり、保持されているトークンは、接続が失われた時点でサーバーによって破棄されます。
@@ -406,7 +415,7 @@ Service Bus の現在の実装では、SASL の "ANONYMOUS" 方式との組み�
 | attach(<br/>name={link name},<br/>role=sender,<br/>source={client link ID},<br/>target= **{via-entity}** ,<br/>**properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )]** ) | ------> | |
 | | <------ | attach(<br/>name={link name},<br/>role=receiver,<br/>source={client link ID},<br/>target={via-entity},<br/>properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )] ) |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 AMQP の詳細については、次のリンクを参照してください。
 

@@ -6,25 +6,25 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: 2c6d9aa13c8c320dc46f6634f3a60e0c1730c710
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e5083ec55ee0a57cd7defd466f5baf1704336320
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418726"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370657"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-dsc-using-composite-resources"></a>Azure Automation State Configuration (DSC) で複合リソースを使用して DSC 構成を作成する
 
 リソースを複数の Desired State Configuration (DSC) 構成で管理する必要がある場合に最適な方法は、[複合リソース](/powershell/scripting/dsc/resources/authoringresourcecomposite)を使用することです。 複合リソースは、別の構成内の DSC リソースとして使用されている、入れ子になったパラメーター化された構成です。 これにより、基礎となる複合リソース (パラメーター化された構成) を個別に管理および構築しながら、複雑な構成を作成することができます。
 
-Azure Automation により、[複合リソースのインポートとコンパイル](automation-dsc-compile.md#compiling-configurations-in-azure-automation-that-contain-composite-resources)が可能になります。
+Azure Automation により、[複合リソースのインポートとコンパイル](automation-dsc-compile.md)が可能になります。
 複合リソースが Automation アカウントにインポートされると、 **[状態の構成 (DSC)]** ページで **[構成の作成]** エクスペリエンスを使用できるようになります。
 
 ## <a name="composing-a-configuration-from-composite-resources"></a>複合リソースから構成を作成する
 
 Azure portal で複合リソースから作成された構成を割り当てるには、まずそれを作成する必要があります。 これを行うには、 **[状態の構成 (DSC)]** ページの **[構成]** または **[コンパイル済み構成]** のいずれかのタブで **[構成の作成]** を使用します。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
 1. **[Automation アカウント]** ページで、 **[構成管理]** の **[状態の構成 (DSC)]** を選択します。
 1. **[状態の構成 (DSC)]** ページで、 **[構成]** または **[コンパイル済み構成]** のいずれかのタブをクリックしてから、ページ上部のメニューで **[構成の作成]** をクリックします。

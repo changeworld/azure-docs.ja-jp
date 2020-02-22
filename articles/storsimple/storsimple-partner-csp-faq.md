@@ -1,5 +1,5 @@
 ---
-title: パートナー向けの Microsoft Azure StorSimple とクラウド ソリューション プロバイダー プログラムについてよく寄せられる質問 | Microsoft Docs
+title: 'パートナー向けの FAQ: クラウド ソリューション プロバイダー プログラムの StorSimple'
 description: パートナー向けの StorSimple と CSP について、一般的な質問にお答えします。
 services: storsimple
 documentationcenter: NA
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 893e8de5efc523df34e2c1e139082d2b471cb63e
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: eaf22773e581f0b7557a64917e183573039d1cef
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828522"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116169"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>クラウド ソリューション プロバイダー プログラムの StorSimple:よく寄せられる質問
 
@@ -97,5 +97,5 @@ CSP の StorSimple の詳細については、以下を参照してください�
 - [パートナー センター](https://partnercenter.microsoft.com/) 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 StorSimple をデプロイする準備ができている場合は、[CSP での StorSimple のデプロイ](storsimple-partner-csp-deploy.md)に関するページに進みます。

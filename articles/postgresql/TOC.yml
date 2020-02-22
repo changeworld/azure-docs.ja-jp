@@ -281,6 +281,8 @@
               href: howto-read-replicas-cli.md
     - name: Hyperscale (Citus)
       items:
+        - name: ユーザーの作成
+          href: howto-hyperscale-create-users.md
         - name: スケール
           href: howto-hyperscale-scaling.md
         - name: ファイアウォールの管理

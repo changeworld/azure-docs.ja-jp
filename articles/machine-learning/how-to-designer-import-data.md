@@ -9,14 +9,14 @@ ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
-ms.openlocfilehash: 5df00d68b7114cc489b0708f5c2e401c87d0be15
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: d41b0499df1a62440e8c1991e29f7963224a50d6
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314030"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138164"
 ---
-# <a name="import-your-data-into-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーへデータをインポートする
+# <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナー (プレビュー) へデータをインポートする
 
 この記事では、デザイナーに独自のデータをインポートして、カスタム ソリューションを作成する方法について説明します。 デザイナーにデータをインポートするには、次の 2 つの方法があります。 
 
@@ -45,7 +45,7 @@ Microsoft では、[データセット](concept-data.md#datasets) 使用して�
 
 ![デザイナー パレットに保存されているデータセットの場所を示すスクリーンショット](media/how-to-designer-import-data/use-datasets-designer.png)
 
-Machine Learning ワークスペースに登録されている[ファイル データセット](how-to-create-register-datasets.md#dataset-types)は、モジュール パレットに表示されます。 使用できるのは、デザイナーで作成されたデータセットだけではありません。
+
 
 > [!NOTE]
 > 現時点では、デザイナーでは[表形式データ](how-to-create-register-datasets.md#dataset-types)の処理のみがサポートされています。 [ファイル データセット](how-to-create-register-datasets.md#dataset-types)を使用する場合は、Python および R で使用可能な Azure Machine Learning SDK を使用します。

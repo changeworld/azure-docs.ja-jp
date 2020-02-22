@@ -3,13 +3,13 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
-ms.author: cynthn
-ms.openlocfilehash: dc871b29cdafa57d337f9be6cf01e76212f31b67
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.author: tanmaygore
+ms.openlocfilehash: 215057640dd08d9ea524d8f6b3bed8b03a8b5b8c
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181151"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068438"
 ---
 ## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>クラシック デプロイ モデルから Azure Resource Manager への IaaS リソースの移行
 最初に、サービスとしてのインフラストラクチャ (IaaS) リソースにおけるデータ プレーン操作と管理プレーン操作の違いについて理解することが重要です。
@@ -117,11 +117,11 @@ ms.locfileid: "67181151"
 > この操作は、コミット操作をトリガーした後には実行できません。     
 >
 
-### <a name="commit"></a>コミット
+### <a name="commit"></a>Commit
 検証が完了したら、移行をコミットできます。 リソースは Resource Manager デプロイ モデルでのみ使用できるようになります。クラシック デプロイ モデルには表示されません。 つまり、移行されたリソースは新しいポータルでのみ管理できます。
 
 > [!NOTE]
-> これはべき等操作です。 失敗した場合、操作を再試行してください。 失敗が続く場合は、サポート チケットを作成するか、[VM フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesforWindows)でフォーラム投稿を作成し、"ClassicIaaSMigration" タグを付けてください。
+> これはべき等操作です。 失敗した場合、操作を再試行してください。 失敗が続く場合は、サポート チケットを作成するか、[Microsoft Q&A](https://docs.microsoft.com/answers/index.html) でフォーラムを作成してください。
 >
 >
 
@@ -136,7 +136,7 @@ ms.locfileid: "67181151"
 ## <a name="translation-of-the-classic-deployment-model-to-resource-manager-resources"></a>クラシック デプロイ モデル リソースから Resource Manager リソースへの変換
 次の表では、リソースはクラシック デプロイ モデルと Resource Manager で呼称が異なる場合があります。 その他の機能とリソースは現在サポートされていません。
 
-| クラシック表示 | Resource Manager の表示 | メモ |
+| クラシック表示 | Resource Manager の表示 | Notes |
 | --- | --- | --- |
 | クラウド サービス名 |DNS name |移行中、 `<cloudservicename>-migrated`の命名パターンで、すべてのクラウド サービスに新しいリソース グループが作成されます。 このリソース グループには、すべてのリソースが含まれています。 クラウド サービス名は、パブリック IP アドレスが関連付けられた DNS 名になります。 |
 | 仮想マシン |仮想マシン |VM 固有のプロパティはそのまま移行されます。 コンピューター名など、一部の osProfile 情報はクラシック デプロイ モデルに格納されておらず、移行後も空のままです。 |
@@ -161,7 +161,7 @@ ms.locfileid: "67181151"
 | VM の内部 DNS 名 |NIC の内部 DNS 名 |移行中、VM の内部 DNS サフィックスは、NIC の "InternalDomainNameSuffix" という名前の読み取り専用プロパティに移行されます。 サフィックス名は移行後もそのままで、VM 解決は前と同じように動作し続けます。 |
 | 仮想ネットワーク ゲートウェイ |仮想ネットワーク ゲートウェイ |仮想ネットワーク ゲートウェイのプロパティはそのまま移行されます。 ゲートウェイに関連付けられている VIP も変更されません。 |
 | ローカル ネットワーク サイト |ローカル ネットワーク ゲートウェイ |ローカル ネットワーク サイトのプロパティは、ローカル ネットワーク ゲートウェイと呼ばれる新しいリソースにそのまま移行されます。 これは、オンプレミス アドレス プレフィックスおよびリモート ゲートウェイ IP を表します。 |
-| 接続の参照 |接続 |ネットワーク構成のゲートウェイとローカル ネットワーク サイトを結ぶ接続の参照は、"接続" と呼ばれる新しいリソースによって表されます。 ネットワーク構成ファイル内の接続の参照に関するすべてのプロパティは、"接続" リソースにそのままコピーされます。 クラシック デプロイ モデルの仮想ネットワーク間の接続は、仮想ネットワークを表すローカル ネットワーク サイトへの 2 つの IPsec トンネルを作成することで実現されます。 Resource Manager モデルでは、これが VNet2VNet の接続の種類に変更され、ローカル ネットワーク ゲートウェイは不要になります。 |
+| 接続の参照 |Connection |ネットワーク構成のゲートウェイとローカル ネットワーク サイトを結ぶ接続の参照は、"接続" と呼ばれる新しいリソースによって表されます。 ネットワーク構成ファイル内の接続の参照に関するすべてのプロパティは、"接続" リソースにそのままコピーされます。 クラシック デプロイ モデルの仮想ネットワーク間の接続は、仮想ネットワークを表すローカル ネットワーク サイトへの 2 つの IPsec トンネルを作成することで実現されます。 Resource Manager モデルでは、これが VNet2VNet の接続の種類に変更され、ローカル ネットワーク ゲートウェイは不要になります。 |
 
 ## <a name="changes-to-your-automation-and-tooling-after-migration"></a>移行後のオートメーションおよびツールの変更
 クラシック デプロイ モデルから Resource Manager デプロイ モデルへのリソース移行の一環として、既存のオートメーションまたはツールを、リソース移行後も確実に機能し続けるように更新する必要があります。

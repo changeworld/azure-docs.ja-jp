@@ -8,14 +8,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
-ms.date: 04/11/2018
+ms.date: 02/10/2020
 ms.author: robinsh
-ms.openlocfilehash: d26ccd47ada4f1f1fd87f315e05f822bb2463114
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b71b86c14c55c312ef420a4d8517140fdded4072
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976181"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122219"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Azure Machine Learning で IoT Hub からのセンサー データを使用して天気予報を行う
 
@@ -49,24 +49,77 @@ Azure Machine Learning で Azure IoT Hub から取得した気温と湿度のデ
 
 ## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a>天気予報モデルを Web サービスとしてデプロイする
 
+このセクションでは、Azure AI ライブラリから天気予報モデルを取得します。 その後、R スクリプト モジュールをモデルに追加して、気温と湿度のデータをクリーニングします。 最後に、モデルを予測 Web サービスとしてデプロイします。
+
+### <a name="get-the-weather-prediction-model"></a>天気予報モデルを取得する
+
+このセクションでは、Azure AI Gallery から天気予報モデルを取得し、Azure Machine Learning Studio (classic) で開きます。
+
 1. [[weather prediction model] \(天気予報モデル) ページ](https://gallery.cortanaintelligence.com/Experiment/Weather-prediction-model-1)に移動します。
-1. Microsoft Azure Machine Learning Studio (クラシック) の **[Studio で開く]** をクリックします。
-   ![Cortana Intelligence ギャラリーで [weather prediction model] \(天気予報モデル) ページを開く](media/iot-hub-weather-forecast-machine-learning/2_weather-prediction-model-in-cortana-intelligence-gallery.png)
-1. **[実行]** をクリックしてモデルの手順を検証します。 この手順の完了までに約 2 分かかります。
-   ![Azure Machine Learning Studio (クラシック) で天気予報モデルを開く](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)
-1. **[Web サービスの設定]**  >  **[予測 Web サービス]** の順にクリックします。
-   ![Azure Machine Learning Studio (クラシック) に天気予報モデルをデプロイする](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)
-1. ダイアグラムで、**Web サービスの入力**モジュールを**モデルのスコア付け**モジュールの近くにドラッグします。
-1. **Web サービスの入力**モジュールを**モデルのスコア付け**モジュールに接続します。
-   ![Azure Machine Learning Studio (クラシック) で 2 つのモジュールを接続する](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
+
+   ![Azure AI Gallery の [Weather prediction model]\(天気予報モデル\) ページを開く](media/iot-hub-weather-forecast-machine-learning/weather-prediction-model-in-azure-ai-gallery.png)
+
+1. **[Open in Studio (classic)]\(Studio で開く (クラシック)\)** をクリックして、Microsoft Azure Machine Learning Studio (classic) でモデルを開きます。
+
+   ![Azure Machine Learning Studio (classic) で天気予報モデルを開く](media/iot-hub-weather-forecast-machine-learning/open-ml-studio.png)
+
+### <a name="add-an-r-script-module-to-clean-temperature-and-humidity-data"></a>R スクリプト モジュールを追加して、気温と湿度のデータをクリーニングする
+
+モデルを正しく動作させるには、気温と湿度のデータが数値データに変換可能である必要があります。 このセクションでは、R スクリプト モジュールを天気予報モデルに追加して、数値に変換できない気温または湿度のデータ値のある行を削除します。
+
+1. Azure Machine Learning Studio ウィンドウの左側にある矢印をクリックして、ツール パネルを展開します。 検索ボックスに「実行」と入力します。 **R スクリプトの実行**モジュールを選択します。
+
+   ![R スクリプトの実行モジュールを選択する](media/iot-hub-weather-forecast-machine-learning/select-r-script-module.png)
+
+1. ダイアグラム上の**見つからないデータのクリーンアップ** モジュールと既存の **R スクリプトの実行**モジュールの近くにある **R スクリプトの実行**モジュールをドラッグします。 **見つからないデータのクリーンアップ** モジュールおよび **R スクリプトの実行**モジュールとの間の接続を削除してから、新しいモジュールの入力と出力を次のように接続します。
+
+   ![R スクリプトの実行モジュールを追加する](media/iot-hub-weather-forecast-machine-learning/add-r-script-module.png)
+
+1. 新しい **R スクリプトの実行**モジュールを選択して、その [プロパティ] ウィンドウを開きます。 次のコードをコピーして **[R スクリプト]** ボックスに貼り付けます。
+
+   ```r
+   # Map 1-based optional input ports to variables
+   data <- maml.mapInputPort(1) # class: data.frame
+
+   data$temperature <- as.numeric(as.character(data$temperature))
+   data$humidity <- as.numeric(as.character(data$humidity))
+
+   completedata <- data[complete.cases(data), ]
+
+   maml.mapOutputPort('completedata')
+
+   ```
+
+   完了すると、プロパティ ウィンドウは次のようになります。
+
+   ![R スクリプトの実行モジュールにコードを追加する](media/iot-hub-weather-forecast-machine-learning/add-code-to-module.png)
+
+### <a name="deploy-predictive-web-service"></a>予測 Web サービスをデプロイする
+
+このセクションでは、モデルを検証し、モデルに基づいて予測 Web サービスを設定してから、Web サービスをデプロイします。
+
+1. **[実行]** をクリックしてモデルの手順を検証します。 この手順は完了までに数分かかることがあります。
+
+   ![手順を検証するために実験を実行する](media/iot-hub-weather-forecast-machine-learning/run-experiment.png)
+
+1. **[Web サービスの設定]**  >  **[予測 Web サービス]** の順にクリックします。 予測実験のダイアグラムが開きます。
+
+   ![Azure Machine Learning Studio (classic) に天気予報モデルをデプロイする](media/iot-hub-weather-forecast-machine-learning/predictive-experiment.png)
+
+1. 予測実験のダイアグラムで、**Web サービス入力**モジュールと上部にある**天候データセット**の間の接続を削除します。 次に、**Web サービスの入力**モジュールを**モデルのスコア付け**モジュールの近くにドラッグし、次のように接続します。
+
+   ![Azure Machine Learning Studio (classic) で 2 つのモジュールを接続する](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
+
 1. **[実行]** をクリックしてモデルの手順を検証します。
+
 1. **[DEPLOY WEB SERVICE] \(Web サービスのデプロイ)** をクリックして、モデルを Web サービスとしてデプロイします。
+
 1. モデルのダッシュボードで、**要求/応答**用に **Excel 2010 以前のブック**をダウンロードします。
 
    > [!Note]
-   > コンピューターで新しいバージョンの Excel を実行している場合でも、**Excel 2010 以前のブック**をダウンロードしてください。
+   > ご自分のコンピューターで新しいバージョンの Excel を実行している場合でも、**Excel 2010 以前のブック**をダウンロードしてください。
 
-   ![要求/応答エンドポイントに Excel をダウンロードする](media/iot-hub-weather-forecast-machine-learning/5_download-endpoint-app-excel-for-request-response.png)
+   ![要求/応答エンドポイントに Excel をダウンロードする](media/iot-hub-weather-forecast-machine-learning/download-workbook.png)
 
 1. Excel ブックを開いて、**Web サービス URL** と**アクセス キー**をメモします。
 
@@ -131,7 +184,7 @@ Azure Machine Learning で Azure IoT Hub から取得した気温と湿度のデ
 1. **[ジョブ トポロジ]** で **[関数]**  >  **[追加]** の順にクリックします。
 1. 次の情報を入力します。
 
-   **関数のエイリアス**: 「 `machinelearning` 」を入力します。
+   **関数のエイリアス**: 「`machinelearning`」と入力します。
 
    **関数の型**: **[Azure ML]** を選択します。
 
@@ -163,7 +216,7 @@ Azure Machine Learning で Azure IoT Hub から取得した気温と湿度のデ
 
    `[YourOutputAlias]` をジョブの出力エイリアスに置き換えます。
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 ### <a name="run-the-stream-analytics-job"></a>Stream Analytics ジョブの実行
 
@@ -180,9 +233,9 @@ Stream Analytics ジョブで、 **[開始]**  >  **[現在]**  >  **[開始]** 
 1. Azure アカウントにサインインします。
 1. サブスクリプションを選択します。
 1. Azure サブスクリプション > **[ストレージ アカウント]** > 自分のストレージ アカウント > **[BLOB コンテナー]** > 自分のコンテナーの順にクリックします。
-1. .csv ファイルを開いて結果を表示します。 降水確率は最後の列に記録されています。
+1. .csv ファイルをダウンロードして結果を表示します。 降水確率は最後の列に記録されています。
 
-   ![Azure Machine Learning で天気予報の結果を取得する](media/iot-hub-weather-forecast-machine-learning/12_get-weather-forecast-result-azure-machine-learning.png)
+   ![Azure Machine Learning で天気予報の結果を取得する](media/iot-hub-weather-forecast-machine-learning/weather-forecast-result.png)
 
 ## <a name="summary"></a>まとめ
 

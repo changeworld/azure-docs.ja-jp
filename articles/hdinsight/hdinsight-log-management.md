@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: e5abc9e75e11424b5d0dc4c260b412d0e414ad83
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.custom: hdinsightactive
+ms.date: 02/05/2020
+ms.openlocfilehash: 8c3cbf4c18b32a94abfe95e77be768020b44fda6
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837932"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064684"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight クラスターのログを管理する
 
@@ -23,13 +23,13 @@ HDInsight クラスターのログの管理には、クラスター環境のあ�
 
 HDInsight のログ管理の一般的な手順は次のとおりです。
 
-* ステップ 1: ログのリテンション期間ポリシーを決定する
-* ステップ 2: クラスター サービスのバージョンの構成ログを管理する
-* ステップ 3: クラスターのジョブ実行のログ ファイルを管理する
-* ステップ 4: ログ ボリュームのストレージ サイズとコストを予測する
-* ステップ 5: ログのアーカイブ ポリシーとプロセスを決定する
+* 手順 1:ログのリテンション期間ポリシーを決定する
+* 手順 2:クラスター サービスのバージョンの構成ログを管理する
+* 手順 3:クラスターのジョブ実行のログ ファイルを管理する
+* 手順 4:ログ ボリュームのストレージ サイズとコストを予測する
+* 手順 5:ログのアーカイブ ポリシーとプロセスを決定する
 
-## <a name="step-1-determine-log-retention-policies"></a>ステップ 1: ログのリテンション期間ポリシーを決定する
+## <a name="step-1-determine-log-retention-policies"></a>手順 1:ログのリテンション期間ポリシーを決定する
 
 HDInsight クラスターのログ管理戦略作成の最初のステップでは、ビジネス シナリオおよびジョブ実行履歴ストレージ要件に関する情報を収集します。
 
@@ -69,7 +69,7 @@ az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 
 * ソリューションまたはサービスを監視することに有用なメリットがあるかどうかを検討します。 Microsoft System Center では、[HDInsight 管理パック](https://www.microsoft.com/download/details.aspx?id=42521)が提供されています。 また、Apache Chukwa や Ganglia などのサードパーティ製ツールを使って、ログを収集および一元管理することもできます。 多くの企業から Hadoop ベースのビッグ データ ソリューションを監視するサービスが提供されています (例: Centerity、Compuware APM、Sematext SPM、Zettaset Orchestrator)。
 
-## <a name="step-2-manage-cluster-service-versions-and-view-script-action-logs"></a>ステップ 2: クラスター サービスのバージョンを管理し、スクリプト アクション ログを表示する
+## <a name="step-2-manage-cluster-service-versions-and-view-logs"></a>手順 2:クラスター サービスのバージョンを管理し、ログを表示する
 
 一般的な HDInsight クラスターでは、複数のサービスとオープン ソース ソフトウェア パッケージ (Apache HBase、Apache Spark など) が使われます。 バイオインフォマティクスなどの一部のワークロードでは、ジョブ実行ログに加えてサービス構成ログ履歴の保持を求められる場合があります。
 
@@ -89,15 +89,27 @@ Ambari UI を使って、クラスターの特定のホスト (またはノー�
 
 HDInsight の[スクリプト アクション](hdinsight-hadoop-customize-cluster-linux.md)を使うと、手動または日時指定により、クラスターでスクリプトを実行できます。 たとえば、スクリプト アクションを使って、クラスターに追加ソフトウェアをインストールしたり、構成設定を既定値から変更したりできます。 スクリプト アクション ログでは、クラスターのセットアップ中に発生したエラーや、クラスターのパフォーマンスと可用性に影響を与える可能性のある構成設定の変更に関する洞察が得られます。  スクリプト アクションの状態を表示するには、Ambari UI の **[ops]\(操作\)** ボタンを選ぶか、既定のストレージ アカウントで状態ログにアクセスします。 ストレージ ログは、 `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE`にあります。
 
-## <a name="step-3-manage-the-cluster-job-execution-log-files"></a>ステップ 3: クラスターのジョブ実行のログ ファイルを管理する
+### <a name="view-ambari-alerts-status-logs"></a>Ambari アラートの状態ログを表示する
 
-ここでは、さまざまなサービスのジョブ実行ログ ファイルを確認します。  Apache HBase や Apache Spark など、多くのサービスがあります。 Hadoop クラスターでは多数の詳細ログが生成されるので、役に立つ (役に立たない) ログを判断するには時間がかかることがあります。  ログ ファイル管理の対象を絞り込むには、ログ システムを理解することが重要です。  ログ ファイルの例を次に示します。
+Apache Ambari は、アラートの状態の変更を `ambari-alerts.log` に書き込みます。 完全なパスは `/var/log/ambari-server/ambari-alerts.log` です。 ログのデバッグを有効にするには、`/etc/ambari-server/conf/log4j.properties.` のプロパティを変更します。その後、`# Log alert state changes` の下にあるエントリを次のように変更します。
+
+```
+log4j.logger.alerts=INFO,alerts
+
+to
+
+log4j.logger.alerts=DEBUG,alerts
+```
+
+## <a name="step-3-manage-the-cluster-job-execution-log-files"></a>手順 3:クラスターのジョブ実行のログ ファイルを管理する
+
+ここでは、さまざまなサービスのジョブ実行ログ ファイルを確認します。  Apache HBase や Apache Spark など、多くのサービスがあります。 Hadoop クラスターでは多数の詳細ログが生成されるので、役に立つ (役に立たない) ログを判断するには時間がかかることがあります。  ログ ファイル管理の対象を絞り込むには、ログ システムを理解することが重要です。  次の画像は、ログ ファイルの例です。
 
 ![HDInsight サンプル ログ ファイルのサンプル出力](./media/hdinsight-log-management/hdi-log-file-example.png)
 
 ### <a name="access-the-hadoop-log-files"></a>Hadoop のログ ファイルにアクセスする
 
-HDInsight では、クラスター ファイル システムと Azure ストレージの両方にログ ファイルが格納されます。 クラスター内のログ ファイルは、クラスターへの [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) 接続を開いてファイル システムを参照するか、リモート ヘッド ノード サーバー上の Hadoop YARN Status ポータルを使うことで確認できます。 Azure ストレージのログ ファイルは、Azure ストレージにアクセスしてデータをダウンロードできるツールを使って確認できます。 たとえば、[AzCopy](../storage/common/storage-use-azcopy.md)、[CloudXplorer](https://clumsyleaf.com/products/cloudxplorer)、Visual Studio サーバー エクスプローラーなどがあります。 また、PowerShell と Azure Storage クライアント ライブラリ、または Azure .NET SDK を使って、Azure Blob Storage 内のデータにアクセスすることもできます。
+HDInsight では、クラスター ファイル システムと Azure Storage の両方にログ ファイルが格納されます。 クラスター内のログ ファイルは、クラスターへの [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) 接続を開いてファイル システムを参照するか、リモート ヘッド ノード サーバー上の Hadoop YARN Status ポータルを使うことで確認できます。 Azure Storage のログ ファイルは、Azure Storage にアクセスしてデータをダウンロードできるツールを使って確認できます。 たとえば、[AzCopy](../storage/common/storage-use-azcopy.md)、[CloudXplorer](https://clumsyleaf.com/products/cloudxplorer)、Visual Studio サーバー エクスプローラーなどがあります。 また、PowerShell と Azure Storage クライアント ライブラリ、または Azure .NET SDK を使って、Azure Blob Storage 内のデータにアクセスすることもできます。
 
 Hadoop は、クラスターのさまざまなノードでジョブの作業を "*タスク試行*" として実行します。 HDInsight は、予測タスク試行を開始して、最初に完了していない他のすべてのタスク試行を終了することがあります。 これにより、コントローラー、stderr、syslog のログ ファイルに即座に記録される大量のアクティビティが生成されます。 さらに、複数のタスク試行が同時に実行しますが、ログ ファイルでは結果を順番にしか表示できません。
 
@@ -140,9 +152,9 @@ YARN ResourceManager UI は、クラスターのヘッド ノード上で実行�
 
 次に、一定の期間にわたって、重要なログ ストレージ場所のログ データのボリュームを分析します。 たとえば、30、60、90 日間にわたりボリュームや増加を分析します。  この情報をスプレッドシートに記録するか、Visual Studio、Azure Storage Explorer、Power Query for Excel などの他のツールを使います。 詳しくは、「[HDInsight ログの分析](hdinsight-debug-jobs.md)」をご覧ください。  
 
-重要なログのログ管理戦略を作成するのに十分な情報が手に入ります。  スプレッドシート (または選んだツール) を使って、ログ サイズの増加量と、ログ ストレージの Azure サービスのコストを予測します。  調べているログ セットのログ リテンション期間要件も検討します。  削除できるファイル (ある場合) および低コストの Azure ストレージに保持してアーカイブする必要のあるログを決定した後、将来のログ ストレージ コストを再予測できます。
+重要なログのログ管理戦略を作成するのに十分な情報が手に入ります。  スプレッドシート (または選んだツール) を使って、ログ サイズの増加量と、ログ ストレージの Azure サービスのコストを予測します。  調べているログ セットのログ リテンション期間要件も検討します。  削除できるファイル (ある場合) および低コストの Azure Storage に保持してアーカイブする必要のあるログを決定した後、将来のログ ストレージ コストを再予測できます。
 
-## <a name="step-5-determine-log-archive-policies-and-processes"></a>ステップ 5: ログのアーカイブ ポリシーとプロセスを決定する
+## <a name="step-5-determine-log-archive-policies-and-processes"></a>手順 5:ログのアーカイブ ポリシーとプロセスを決定する
 
 削除できるログ ファイルを決定した後は、さまざまな Hadoop サービスのログ パラメーターを調整して、指定期間後にログ ファイルを自動的に削除できます。
 
@@ -172,7 +184,7 @@ YARN ResourceManager UI は、クラスターのヘッド ノード上で実行�
 
 すべてのノードから 1 つの場所にログを収集するには、データ フローを作成できます (Solr へのすべてのログ エントリの取り込みなど)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [HDInsight の監視とログの方法](https://msdn.microsoft.com/library/dn749790.aspx)
 * [Linux ベースの HDInsight で Apache Hadoop YARN アプリケーション ログにアクセスする](hdinsight-hadoop-access-yarn-app-logs-linux.md)

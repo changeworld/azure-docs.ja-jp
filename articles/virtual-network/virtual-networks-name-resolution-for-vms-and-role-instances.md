@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: f17b4ee0e4ce79cd12a6fda6f056b4e63b4161c9
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fac6c29d5371c536c20eca58d90ee5d54d7e90d1
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76991033"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462668"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内のリソースの名前解決
 
@@ -105,8 +105,7 @@ DNS クエリには、ネットワーク経由で送信する必要がないも�
 
 > [!NOTE]
 > dnsmasq パッケージは、Linux で使用可能な多くの DNS キャッシュの 1 つにすぎません。 使用する前に、目的とするニーズに適合するかどうかと、その他のキャッシュがインストールされていないことを確認してください。
->
->
+
     
 ### <a name="client-side-retries"></a>クライアント側の再試行
 
@@ -169,8 +168,7 @@ Azure へのクエリの転送がニーズに合わない場合は、独自の D
 * 外部エージェントによる脅威を軽減するために、インターネットからのアクセスをセキュリティ保護する。
 
 > [!NOTE]
-> 最高のパフォーマンスを得るには、Azure VM を DNS サーバーとして使用するときに IPv6 を無効にする必要があります。 [パブリック IP アドレス](virtual-network-public-ip-address.md)を各 DNS サーバーの VM に割り当てる必要があります。 Windows Server を DNS サーバーとして使用したときの追加のパフォーマンスの分析と最適化については、[再帰的な Windows DNS Server 2012 R2 の名前解決のパフォーマンス](https://blogs.technet.com/b/networking/archive/2015/08/19/name-resolution-performance-of-a-recursive-windows-dns-server-2012-r2.aspx)に関する記事を参照してください。
-> 
+> 最高のパフォーマンスを得るには、Azure VM を DNS サーバーとして使用するときに IPv6 を無効にする必要があります。 [パブリック IP アドレス](virtual-network-public-ip-address.md)を各 DNS サーバーの VM に割り当てる必要があります。 
 > 
 
 ### <a name="web-apps"></a>Web Apps

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: bb0f2e3fc3b84f5e1f9fe999b31fffadaa5915d4
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: c590a27f61c1a555ae30828332e4140a6116f95f
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687591"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443858"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service on Linux の FAQ
 
@@ -32,8 +32,8 @@ App Service on Linux のリリースでは、機能の追加とプラットフ�
 
 | スタック           | 必要な値                                                                         |
 |-----------------|----------------------------------------------------------------------------------------|
-| Java SE         | ご自分の JAR アプリを起動するコマンド (例: `java -jar my-app.jar --server.port=80`) |
-| Tomcat、Wildfly | 必要なすべての構成を実行するスクリプトの場所 (例: `/home/site/deployments/tools/startup_script.sh`)          |
+| Java SE         | ご自分の JAR アプリを起動するコマンド (例: `java -jar /home/site/wwwroot/app.jar --server.port=80`) |
+| Tomcat          | 必要なすべての構成を実行するスクリプトの場所 (例: `/home/site/deployments/tools/startup_script.sh`)          |
 | Node.js         | PM2 構成ファイルまたは独自のスクリプト ファイル                                |
 | .NET Core       | `dotnet <myapp>.dll` としてコンパイルされた DLL 名                                 |
 | Ruby            | ご自分のアプリの初期化に使用する Ruby スクリプト                     |
@@ -179,7 +179,7 @@ image: <server-name>.azurecr.io/<image-name>:<tag>
 
 アプリの実行時間に対して、通常の Azure App Service の料金が課金されます。
 
-## <a name="other-questions"></a>どの他の質問
+## <a name="other-questions"></a>その他の質問
 
 **アプリケーションの設定名でサポートされる文字は何ですか。**
 
@@ -189,7 +189,7 @@ image: <server-name>.azurecr.io/<image-name>:<tag>
 
 [Web Apps フィードバック フォーラム](https://aka.ms/webapps-uservoice)でご自分のアイデアを送信できます。 アイデアのタイトルに "[Linux]" を追加してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure App Service on Linux とは](app-service-linux-intro.md)
 - [Azure App Service でステージング環境を設定する](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)

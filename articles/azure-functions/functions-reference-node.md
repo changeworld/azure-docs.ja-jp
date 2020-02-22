@@ -423,7 +423,7 @@ FUNCTIONS_WORKER_PROCESS_COUNT は、要求に応じてアプリケーション�
 | Functions バージョン | Node.js バージョン | 
 |---|---|
 | 1.x | 6.11.2 (ランタイムによりロック) |
-| 2.x  | _アクティブ LTS_ および_メンテナンス LTS_ Node.js バージョン (10 以下を推奨)。 WEBSITE_NODE_DEFAULT_VERSION [アプリ設定](functions-how-to-use-azure-function-app-settings.md#settings)を使用して Azure でバージョンを `~10` に設定します。|
+| 2.x  | _アクティブ LTS_ および _メンテナンス LTS_ Node.js バージョン (10 以下を推奨)。 WEBSITE_NODE_DEFAULT_VERSION [アプリ設定](functions-how-to-use-azure-function-app-settings.md#settings)を使用して Azure でバージョンを `~10` に設定します。|
 
 ランタイムが使用している現在のバージョンを確認するには、上記のアプリ設定を調べるか、または任意の関数から `process.version` を出力します。
 

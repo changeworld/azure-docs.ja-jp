@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: 70cabc75ebdeb7ed6d7ffd000419295fce6303de
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f38f0cec336061c97daa02798e94d98844d76ea2
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459511"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368776"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>チュートリアル:Windows Virtual Desktop でテナントを作成する
 
@@ -121,7 +121,7 @@ Azure サブスクリプション ID を検索するには:
 
 これで、Azure Active Directory に対してクエリを実行するアクセス許可を Windows Virtual Desktop サービスに付与し、TenantCreator ロールをユーザー アカウントに割り当てたため、Windows Virtual Desktop テナントを作成できます。
 
-まず、まだ行っていない場合は、PowerShell セッションで使用する [Windows Virtual Desktop モジュールをダウンロードしてインポートします](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)。
+まず、まだ行っていない場合は、PowerShell セッションで使用する [Windows Virtual Desktop モジュールをダウンロードしてインポートします](/powershell/windows-virtual-desktop/overview/)。
 
 次のコマンドレットと共に TenantCreator ユーザー アカウントを使用して、Windows Virtual Desktop にサインインします。
 

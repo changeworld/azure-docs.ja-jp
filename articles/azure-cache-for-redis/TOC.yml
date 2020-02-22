@@ -53,6 +53,8 @@
           href: cache-how-to-premium-vnet.md
         - name: geo レプリケーションの設定
           href: cache-how-to-geo-replication.md
+        - name: 予約容量で保存する
+          href: cache-reserved-pricing.md
         - name: Managed Cache Service から移行する
           href: cache-migrate-to-redis.md
     - name: 自動化

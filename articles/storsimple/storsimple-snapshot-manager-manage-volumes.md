@@ -91,7 +91,7 @@ StorSimple ボリュームをマウントし、初期化してフォーマット
    
     ![列の構成](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_View_volumes.png)
    
-   | 結果の列 | [説明] |
+   | 結果の列 | 説明 |
    |:--- |:--- |
    |  Name |**[名前]** 列には、検出された各ボリュームに割り当てられたドライブ文字が表示されます。 |
    |  Device |**[デバイス]** 列には、ホスト コンピューターに接続されているデバイスの IP アドレスが表示されます。 |

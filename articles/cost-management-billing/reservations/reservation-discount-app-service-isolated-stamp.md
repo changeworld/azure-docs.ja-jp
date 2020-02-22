@@ -1,19 +1,18 @@
 ---
 title: Azure App Service の予約割引
 description: Azure App Service Isolated スタンプに予約割引を適用する方法について説明します。
-services: billing
 author: yashesvi
-manager: yashar
+ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 1294ee126ecef1f635ffc4d6bec6da02c6171897
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 97a0b63200951a30d1b5576fddbb5aa044a91a62
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75986827"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200335"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-app-service-isolated-stamps"></a>Azure App Service Isolated スタンプに予約割引を適用する方法
 
@@ -33,7 +32,7 @@ App Service Isolated スタンプ料金の割引は、1 時間ごとのIsolated 
 
 その結果、スタンプの有効期間中、スタンプの測定は Windows と Linux とで変わる可能性があります。 一方、予約はオペレーティング システム固有です。 スタンプにデプロイする予定の worker をサポートする予約を購入する必要があります。 Windows 専用スタンプと混合スタンプには、Windows 予約を使用します。 Linux worker のみのスタンプには、Linux 予約を使用します。
 
-Linux 予約を購入する必要があるのは、スタンプに Linux worker _のみ_を使用する予定の場合だけです。
+Linux 予約を購入する必要があるのは、スタンプに Linux worker _のみ_ を使用する予定の場合だけです。
 
 ## <a name="discount-examples"></a>割引の例
 

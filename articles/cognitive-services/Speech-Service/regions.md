@@ -11,18 +11,20 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 409ce8b904997f2ab75f70b2138ec5b1e70a0e69
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: f1379202fc59e9cca7a3543be201f8ebff276bef
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816652"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168353"
 ---
 # <a name="speech-service-supported-regions"></a>Speech サービスがサポートされているリージョン
 
 Speech Service を使用すると、アプリケーションで音声をテキストに変換し、音声翻訳を実行し、テキストを音声に変換することができます。 このサービスは、Speech SDK および REST API に固有のエンドポイントを使用して複数のリージョンで利用できます。
 
-必ず、ご利用のサブスクリプションのリージョンと一致するエンドポイントを選択してください。
+すべてのリージョンの音声エクスペリエンスにカスタム構成を実行するための Speech ポータルについては、 https://speech.microsoft.com を参照してください
+
+Speech サービスを呼び出す場合は、呼び出しがサブスクリプションのリージョンと一致していることを確認してください。
 
 ## <a name="speech-sdk"></a>Speech SDK
 
@@ -30,28 +32,13 @@ Speech Service を使用すると、アプリケーションで音声をテキ�
 
 ### <a name="speech-to-text-text-to-speech-and-translation"></a>音声変換、テキスト読み上げ、翻訳
 
-Speech SDK は、以下のリージョンで**音声認識**、**テキスト読み上げ**、**翻訳**に利用できます。
+音声カスタマイズ ポータルについては、 https://speech.microsoft.com を参照してください
 
-| リージョン           | Speech SDK パラメーター | 音声カスタマイズ ポータル    |
-| ---------------- | -------------------- | ------------------------------ |
-| 米国西部          | `westus`             | https://westus.cris.ai         |
-| 米国西部 2        | `westus2`            | https://westus2.cris.ai        |
-| East US          | `eastus`             | https://eastus.cris.ai         |
-| 米国東部 2        | `eastus2`            | https://eastus2.cris.ai        |
-| 米国中部       | `centralus`          | https://centralus.cris.ai      |
-| 米国中北部 | `northcentralus`     | https://northcentralus.cris.ai |
-| 米国中南部 | `southcentralus`     | https://southcentralus.cris.ai |
-| インド中部    | `centralindia`       | https://centralindia.cris.ai   |
-| 東アジア        | `eastasia`           | https://eastasia.cris.ai       |
-| 東南アジア   | `southeastasia`      | https://southeastasia.cris.ai  |
-| 東日本       | `japaneast`          | https://japaneast.cris.ai      |
-| 韓国中部    | `koreacentral`       | https://koreacentral.cris.ai   |
-| オーストラリア東部   | `australiaeast`      | https://australiaeast.cris.ai  |
-| カナダ中部   | `canadacentral`      | https://canadacentral.cris.ai  |
-| 北ヨーロッパ     | `northeurope`        | https://northeurope.cris.ai    |
-| 西ヨーロッパ      | `westeurope`         | https://westeurope.cris.ai     |
-| 英国南部         | `uksouth`            | https://uksouth.cris.ai        |
-| フランス中部   | `francecentral`      | https://francecentral.cris.ai  |
+Speech サービスは、以下のリージョンで**音声認識**、**テキスト読み上げ**、**翻訳**に利用できます。
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
+
+[Speech SDK](speech-sdk.md) を使用する場合、リージョンは**リージョン識別子**として (たとえば、`SpeechConfig.FromSubscription` へのパラメーターとして) 指定されます。 リージョンがサブスクリプションのリージョンと一致していることを確認してください。
 
 ### <a name="intent-recognition"></a>意図認識
 
@@ -59,8 +46,8 @@ Speech SDK を介して**意図認識**を使用できるリージョンは以�
 
 | グローバル リージョン | リージョン           | Speech SDK パラメーター |
 | ------------- | ---------------- | -------------------- |
-| アジア          | 東アジア        | `eastasia`           |
-| アジア          | 東南アジア   | `southeastasia`      |
+| Asia          | 東アジア        | `eastasia`           |
+| Asia          | 東南アジア   | `southeastasia`      |
 | オーストラリア     | オーストラリア東部   | `australiaeast`      |
 | ヨーロッパ        | 北ヨーロッパ     | `northeurope`        |
 | ヨーロッパ        | 西ヨーロッパ      | `westeurope`         |
@@ -96,7 +83,18 @@ Speech Service は、音声テキスト変換要求とテキスト読み上げ�
 
 音声テキスト変換のリファレンス ドキュメントについては、「[Speech to Text REST API](rest-speech-to-text.md)」を参照してください。
 
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
+REST API のエンドポイントの形式は次のとおりです。
+
+```
+https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
+```
+
+次の表に示す、ご利用のサブスクリプションのリージョンと一致する識別子で `<REGION_IDENTIFIER>` を置き換えてください。
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
+
+> [!NOTE]
+> 4xx HTTP エラーを受け取らないためには、URL に言語パラメーターを付加する必要があります。 たとえば、米国西部エンドポイントを使用する米国英語に設定される言語は `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US` です。
 
 ### <a name="text-to-speech"></a>テキスト読み上げ
 

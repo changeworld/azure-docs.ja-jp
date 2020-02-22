@@ -1,27 +1,20 @@
 ---
 title: 「サブスクリプションが見つかりません」エラー - Azure portal へのサインイン | Microsoft Docs
 description: Azure Portal または Azure アカウント センターにサインインしようとすると「サブスクリプションが見つかりません」エラーになるという問題の解決策を示します。
-services: ''
-documentationcenter: ''
 author: genlin
-manager: dcscontentpm
-editor: ''
+ms.reviewer: dcscontentpm
 tags: billing
-ms.assetid: d1545298-99db-4941-8e97-f24a06bb7cb6
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 05/11/2018
+ms.date: 02/12/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 1573a5d5d9b537b208b2f6d6aea29b9738ddad3e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5011f0a09e33221650cf050578db5ab1d6b0a033
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75984463"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200624"
 ---
 # <a name="no-subscriptions-found-sign-in-error-for-azure-portal-or-azure-account-center"></a>Azure portal または Azure アカウント センターにおける「サブスクリプションが見つかりません」のサインイン エラー
 
@@ -33,11 +26,11 @@ ms.locfileid: "75984463"
 
 ## <a name="cause"></a>原因
 
-この問題は、誤ったディレクトリで選択した場合、または、自分のアカウントに十分なアクセス許可がない場合に発生します。 
+この問題は、誤ったディレクトリで選択した場合、または、自分のアカウントに十分なアクセス許可がない場合に発生します。
 
 ## <a name="solution"></a>解決策
 
-### <a name="scenario-1-error-message-is-received-in-the-azure-portalhttpsportalazurecom"></a>シナリオ 1:[Azure portal](https://portal.azure.com) でエラー メッセージが表示される
+### <a name="scenario-1-error-message-is-received-in-the-azure-portal"></a>シナリオ 1:[Azure portal](https://portal.azure.com) でエラー メッセージが表示される
 
 この問題を解決するには、次の手順に従います。
 
@@ -46,7 +39,7 @@ ms.locfileid: "75984463"
   ![Azure ポータルの右上にあるディレクトリを選択する](./media/no-subscriptions-found/directory-switch.png)
 * 適切な Azure ディレクトリが選択されていてもエラー メッセージが表示される場合は、[アカウントに所有者ロールを割り当て](../../role-based-access-control/role-assignments-portal.md)ます。
 
-### <a name="scenario-2-error-message-is-received-in-the-azure-account-centerhttpsaccountwindowsazurecomsubscriptions"></a>シナリオ 2: [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)でエラー メッセージが表示される
+### <a name="scenario-2-error-message-is-received-in-the-azure-account-center"></a>シナリオ 2: [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)でエラー メッセージが表示される
 
 使用しているアカウントがアカウント管理者であるかどうかを確認します。 どのアカウントがアカウント管理者であるかを確認するには、以下の手順に従ってください。
 

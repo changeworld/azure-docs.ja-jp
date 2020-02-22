@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
-ms.openlocfilehash: 75a9e3e8422c0c59e00c290f1f360d61fce1eceb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3eafb8aff5525f668e6fe0bddb261b1117b5e38b
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901584"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048175"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute のルーティングの要件
 ExpressRoute を使用して Microsoft クラウド サービスに接続するには、ルーティングをセットアップして管理する必要があります。 一部の接続プロバイダーでは、ルーティングのセットアップと管理が管理されたサービスとして提供されています。 このサービスが提供されているかどうか、接続プロバイダーに問い合わせてください。 提供されていない場合は、次の要件に従う必要があります。
@@ -124,13 +124,13 @@ Microsoft は、Azure パブリック、Azure プライベート、および Mic
 ## <a name="route-aggregation-and-prefix-limits"></a>ルート集約とプレフィックスの制限
 Azure プライベート ピアリングを介してアドバタイズされるプレフィックスは、最大で 4,000 個がサポートされます。 ExpressRoute Premium アドオンが有効になっている場合、このプレフィックス数を 10,000 に増やすことができます。 Azure パブリックおよび Microsoft ピアリングの場合、BGP セッションあたり最大で 200 個のプレフィックスを使用できます。 
 
-プレフィックスの数がこの制限を超えると、BGP セッションは切断されます。 既定のルートは、プライベート ピアリング リンクのみで使用できます。 プロバイダーは、Azure パブリック パスと Microsoft ピアリング パスから既定のルートおよびプライベート IP アドレス (RFC 1918) をフィルターで除外する必要があります。 
+プレフィックスの数がこの制限を超えると、BGP セッションは切断されます。 デフォルト ルートは、プライベート ピアリング リンクのみで使用できます。 プロバイダーは、Azure パブリック パスと Microsoft ピアリング パスからデフォルト ルートおよびプライベート IP アドレス (RFC 1918) をフィルターで除外する必要があります。 
 
 ## <a name="transit-routing-and-cross-region-routing"></a>トランジット ルーティングおよびリージョン間ルーティング
 ExpressRoute をトランジット ルーターとして構成することはできません。 トランジット ルーティング サービスについては、接続プロバイダーに依存する必要があります。
 
-## <a name="advertising-default-routes"></a>既定のルートのアドバタイズ
-既定のルートは、Azure プライベート ピアリング セッションでのみ許可されます。 その場合、Microsoft は、関連付けられている仮想ネットワークからのすべてのトラフィックをユーザーのネットワークにルーティングします。 プライベート ピアリングに既定のルートをアドバタイズすると、Azure からのインターネット パスがブロックされます。 Azure でホストされるサービスのトラフィックをインターネットとの間で送受信するには、会社のエッジに依存する必要があります。 
+## <a name="advertising-default-routes"></a>デフォルト ルートのアドバタイズ
+デフォルト ルートは、Azure プライベート ピアリング セッションでのみ許可されます。 その場合、Microsoft は、関連付けられている仮想ネットワークからのすべてのトラフィックをユーザーのネットワークにルーティングします。 プライベート ピアリングにデフォルト ルートをアドバタイズすると、Azure からのインターネット パスがブロックされます。 Azure でホストされるサービスのトラフィックをインターネットとの間で送受信するには、会社のエッジに依存する必要があります。 
 
  他の Azure サービスおよびインフラストラクチャ サービスへの接続を有効にするには、次のどちらかの条件が満たされている必要があります。
 
@@ -138,7 +138,7 @@ ExpressRoute をトランジット ルーターとして構成することはで
 * ユーザー定義のルーティングを使用して、インターネット接続を必要とするすべてのサブネットに対してインターネット接続を許可している。
 
 > [!NOTE]
-> 既定のルートをアドバタイズすると、Windows VM や他の VM のライセンス認証が破棄されます。 これを回避する方法については、 [このページ](https://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx) を参照してください。
+> デフォルト ルートをアドバタイズすると、Windows VM や他の VM のライセンス認証が破棄されます。 これを回避する方法については、 [このページ](https://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx) を参照してください。
 > 
 > 
 
@@ -223,13 +223,14 @@ Microsoft からアドバタイズされるすべてのルートには、適切�
 | Exchange Online** | 12076:5010 |
 | SharePoint Online** | 12076:5020 |
 | Skype For Business Online** | 12076:5030 |
-| CRM Online |12076:5040 |
+| CRM Online*** |12076:5040 |
 | Azure Global Services* | 12076:5050 |
 | Azure Active Directory |12076:5060 |
 | その他の Office 365 Online サービス** | 12076:5100 |
 
-*現在のところ、Azure Global Services には、Azure DevOps のみが含まれています。
-** Microsoft からの承認が必要です。「[Microsoft ピアリングにルート フィルターを構成する](how-to-routefilter-portal.md)」を参照してください 
+\* 現在のところ、Azure Global Services には、Azure DevOps のみが含まれています。\
+** Microsoft からの承認が必要です。「[Microsoft ピアリングにルート フィルターを構成する](how-to-routefilter-portal.md)\」を参照してください
+*** CRM Online では、Dynamics v8.2 以下をサポートしています。 より新しいバージョンの場合は、Dynamics デプロイのリージョン コミュニティを選択してください。
 
 > [!NOTE]
 > Microsoft は、Microsoft にアドバタイズされるルートに設定されたすべての BGP コミュニティ値を無視します。

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9fa84b5e87581fad4a7ada5fda074429409d2f8f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: bbc9048452c5361306dd05e712090543bb1066ce
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850348"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111506"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Azure Monitor ログへの Azure Automation State Configuration レポート データの転送
 
@@ -37,7 +37,7 @@ Azure Monitor ログへの Automation State Configuration レポートの送信�
 
 - 2016 年 11 月以降のリリースの [Azure PowerShell](/powershell/azure/overview) (v2.3.0)。
 - Azure Automation アカウント。 詳しくは、「[Azure Automation の概要](automation-offering-get-started.md)」をご覧ください。
-- **Automation &amp; Control** サービス プラン付きの Log Analytics ワークスペース。 詳細については、[Azure Monitor ログの概要](../log-analytics/log-analytics-get-started.md)に関するページを参照してください。
+- **Automation &amp; Control** サービス プラン付きの Log Analytics ワークスペース。 詳細については、[Azure Monitor ログの使用](../log-analytics/log-analytics-get-started.md)に関するページを参照してください
 - 1 つ以上の Azure Automation State Configuration ノード。 詳細については、「[Azure Automation State Configuration による管理のためのマシンのオンボード](automation-dsc-onboarding.md)」をご覧ください。
 - [xDscDiagnostics](https://www.powershellgallery.com/packages/xDscDiagnostics/2.7.0.0) モジュール、バージョン 2.7.0.0 以上。 インストール手順については、[ノードでの DSC ログの表示](./troubleshoot/desired-state-configuration.md#steps-to-troubleshoot-desired-state-configuration-dsc)に関するページを参照してください。
 
@@ -74,9 +74,9 @@ Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <Workspa
 
 ## <a name="view-the-state-configuration-logs"></a>State Configuration ログを表示する
 
-Automation State Configuration データ用に Azure Monitor ログとの統合を設定すると、Automation アカウントの **[DSC ノード]** ブレードに **[ログ検索]** ボタンが表示されます。 **[ログ検索]** ボタンをクリックすると、DSC ノード データのログが表示されます。
+Automation State Configuration データの Azure Monitor ログとの統合を設定した後は、State Configuration (DSC) ページの左側のウィンドウにある **[監視]** セクションで **[ログ]** を選択することで表示できます。  
 
-![[ログ検索] ボタン](media/automation-dsc-diagnostics/log-search-button.png)
+![ログ](media/automation-dsc-diagnostics/automation-dsc-logs-toc-item.png)
 
 **[ログ検索]** ブレードには、各 State Configuration ノードの **DscNodeStatusData** 操作、およびそのノードに適用されたノード構成で呼び出された各 [DSC リソース](/powershell/scripting/dsc/resources/resources)の **DscResourceStatusData** 操作が表示されます。
 
@@ -84,11 +84,14 @@ Automation State Configuration データ用に Azure Monitor ログとの統合�
 
 操作のデータを確認するには、一覧からその操作をクリックします。
 
-また、Azure Monitor ログを検索してログを表示することもできます。
-「[ログ検索を使用してデータを探す](../log-analytics/log-analytics-log-searches.md)」をご覧ください。
-State Configuration のログを検索するには、次のクエリを入力します。`Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus'`
+また、Azure Monitor ログを検索してログを表示することもできます。 「[ログ検索を使用してデータを探す](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)」をご覧ください。 State Configuration のログを検索するには、次のクエリを入力します。
 
-操作名でクエリの検索結果を絞り込むこともできます。 次に例を示します。`Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus' OperationName='DscNodeStatusData'`
+```
+AzureDiagnostics
+| where Category == 'DscNodeStatus' 
+| where OperationName contains 'DSCNodeStatusData'
+| where ResultType != 'Compliant'
+```
 
 ### <a name="send-an-email-when-a-state-configuration-compliance-check-fails"></a>State Configuration のコンプライアンス チェックでエラーになったときに電子メールを送信する
 
@@ -134,7 +137,7 @@ Azure Automation からの診断により、Azure Monitor ログに 2 つのカ�
 | NodeName_s |管理対象ノードの名前。 |
 | NodeComplianceStatus_s |ノードが準拠しているかどうか。 |
 | DscReportStatus |コンプライアンス チェックが正常に実行されたかどうか。 |
-| ConfigurationMode | ノードに構成が適用される方法。 指定できる値は、 __"ApplyOnly"__ 、 __"ApplyandMonitior"__ 、および __"ApplyandAutoCorrect"__ です。 <ul><li>__ApplyOnly__:DSC が構成を適用し、以降は新しい構成がターゲット ノードにプッシュない限り、または新しい構成がサーバーからプルされるまで何もしません。 新しい構成が最初に適用された後、DSC は以前の構成された状態からの誤差を確認しません。 DSC は __ApplyOnly__ が有効になる前に、構成の適用を成功するまで試行します。 </li><li> __ApplyAndMonitor__:これが既定値です。 LCM が任意の新しい構成を適用します。 新しい構成が最初に適用された後、ターゲット ノードが目的の状態から変わった場合、DSC はログに不一致を報告します。 DSC は __ApplyAndMonitor__ が有効になる前に、構成の適用を成功するまで試行します。</li><li>__ApplyAndAutoCorrect__:DSC が任意の新しい構成を適用します。 新しい構成が最初に適用された後、ターゲット ノードが目的の状態から変わった場合、DSC はログに不一致を報告し、現在の構成を再適用します。</li></ul> |
+| ConfigurationMode | ノードに構成が適用される方法。 指定できる値は、 __"ApplyOnly"__ 、 __"ApplyandMonitior"__ 、および __"ApplyandAutoCorrect"__ です。 <ul><li>__ApplyOnly__:DSC が構成を適用し、以降は新しい構成がターゲット ノードにプッシュない限り、または新しい構成がサーバーからプルされるまで何もしません。 新しい構成が最初に適用された後、DSC は以前の構成された状態からの誤差を確認しません。 DSC は __ApplyOnly__ が有効になる前に、構成の適用を成功するまで試行します。 </li><li> __ApplyAndMonitor__:これが既定値です。 LCM が任意の新しい構成を適用します。 新しい構成が最初に適用された後、ターゲット ノードが目的の状態から変わった場合、DSC はログに不一致を報告します。 DSC は __ApplyAndMonitor__ が有効になる前に、構成の適用を成功するまで試行します。</li><li>__ApplyAndAutoCorrect__:DSC によって新しい構成が適用されます。 新しい構成が最初に適用された後、ターゲット ノードが目的の状態から変わった場合、DSC はログに不一致を報告し、現在の構成を再適用します。</li></ul> |
 | HostName_s | 管理対象ノードの名前。 |
 | IPAddress | 管理対象ノードの IPv4 アドレス。 |
 | カテゴリ | DscNodeStatus |
@@ -153,7 +156,7 @@ Azure Automation からの診断により、Azure Monitor ログに 2 つのカ�
 | ResourceGroup | Automation アカウントのリソース グループの名前です。 |
 | ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
-| CorrelationId |コンプライアンス レポートの相関 ID を示す GUID。 |
+| CorrelationId |コンプライアンス レポートの相関 ID を示す GUID です。 |
 
 ### <a name="dscresourcestatusdata"></a>DscResourceStatusData
 
@@ -184,7 +187,7 @@ Azure Automation からの診断により、Azure Monitor ログに 2 つのカ�
 | ResourceGroup | Automation アカウントのリソース グループの名前です。 |
 | ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
-| CorrelationId |コンプライアンス レポートの相関 ID を示す GUID。 |
+| CorrelationId |コンプライアンス レポートの相関 ID を示す GUID です。 |
 
 ## <a name="summary"></a>まとめ
 
@@ -195,7 +198,7 @@ Automation State Configuration のデータを Azure Monitor ログに送信し�
 
 Azure Monitor ログによって、Automation State Configuration のデータの状態をさらに詳しく把握でき、インシデントにより迅速に対処できるようになります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 概要については、[Azure Automation State Configuration](automation-dsc-overview.md) に関するページをご覧ください。
 - 使用を開始するには、「[Azure Automation State Configuration の使用](automation-dsc-getting-started.md)」をご覧ください。

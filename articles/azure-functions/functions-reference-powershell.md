@@ -4,12 +4,12 @@ description: PowerShell を使用して関数を開発する方法について�
 author: eamonoreilly
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: 2fa510e447d4d9b054a37f7665d010382a5db819
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 41f977e7e7c23c2f49fd656461b7a3920802997e
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974242"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485133"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions の PowerShell 開発者向けガイド
 
@@ -73,13 +73,13 @@ param($MyFirstInputBinding, $MySecondInputBinding, $TriggerMetadata)
 $TriggerMetadata.sys
 ```
 
-| プロパティ   | Description                                     | 種類     |
+| プロパティ   | 説明                                     | Type     |
 |------------|-------------------------------------------------|----------|
 | UtcNow     | 関数がトリガーされた日時 (UTC)        | DateTime |
 | MethodName | トリガーされた関数の名前     | string   |
 | RandGuid   | この関数の実行に対して一意の GUID | string   |
 
-トリガーの種類ごとに、異なる一連のメタデータがあります。 たとえば、`QueueTrigger` の `$TriggerMetadata` には、数ある中でも `InsertionTime`、`Id`、`DequeueCount` が格納されます。 キュー トリガーのメタデータの詳細については、[キュー トリガーの公式ドキュメント](functions-bindings-storage-queue.md#trigger---message-metadata)を参照してください。 実際に使用している[トリガー](functions-triggers-bindings.md)のドキュメントを確認すると、そのトリガーのメタデータに含まれるものがわかります。
+トリガーの種類ごとに、異なる一連のメタデータがあります。 たとえば、`QueueTrigger` の `$TriggerMetadata` には、数ある中でも `InsertionTime`、`Id`、`DequeueCount` が格納されます。 キュー トリガーのメタデータの詳細については、[キュー トリガーの公式ドキュメント](functions-bindings-storage-queue-trigger.md#message-metadata)を参照してください。 実際に使用している[トリガー](functions-triggers-bindings.md)のドキュメントを確認すると、そのトリガーのメタデータに含まれるものがわかります。
 
 ## <a name="bindings"></a>バインド
 
@@ -125,9 +125,9 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 `Push-OutputBinding` の呼び出しに使用できる有効なパラメーターを次に示します。
 
-| 名前 | 種類 | 位置 | 説明 |
+| 名前 | Type | [位置] | 説明 |
 | ---- | ---- |  -------- | ----------- |
-| **`-Name`** | string | 1 | 設定する出力バインディングの名前。 |
+| **`-Name`** | String | 1 | 設定する出力バインディングの名前。 |
 | **`-Value`** | Object | 2 | 設定する出力バインディングの値。パイプライン ByValue から受け取ります。 |
 | **`-Clobber`** | SwitchParameter | named | (省略可能) 指定した場合は、指定した出力バインディングに対して値が強制的に設定されます。 | 
 
@@ -175,7 +175,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 
 #### <a name="push-outputbinding-example-queue-output-binding"></a>Push-OutputBinding の例: キュー出力バインディング
 
-`Push-OutputBinding` は、出力バインディング ([Azure Queue storage 出力バインディング](functions-bindings-storage-queue.md#output)など) にデータを送信するために使用されます。 次の例では、キューに書き込まれるメッセージの値は "output #1" です。
+`Push-OutputBinding` は、出力バインディング ([Azure Queue storage 出力バインディング](functions-bindings-storage-queue-output.md)など) にデータを送信するために使用されます。 次の例では、キューに書き込まれるメッセージの値は "output #1" です。
 
 ```powershell
 PS >Push-OutputBinding -Name outQueue -Value "output #1"
@@ -226,13 +226,13 @@ MyQueue                        myData
 
 `Get-OutputBinding` では、ワイルドカード (*) がサポートされます。
 
-## <a name="logging"></a>ログの記録
+## <a name="logging"></a>ログ記録
 
 PowerShell 関数におけるログは、通常の PowerShell のログと同様に機能します。 各出力ストリームへの書き込みには、ログ コマンドレットを使用できます。 各コマンドレットは、Functions で使用されるログ レベルに対応します。
 
 | Functions のログ レベル | ログ コマンドレット |
 | ------------- | -------------- |
-| Error | **`Write-Error`** |
+| エラー | **`Write-Error`** |
 | 警告 | **`Write-Warning`**  | 
 | Information | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Information | "_情報_" レベル ログへの書き込み |
 | デバッグ | **`Write-Debug`** |
@@ -277,7 +277,7 @@ Azure 内で実行されている関数アプリは、Application Insights を�
 * Hashtable
 * string
 * byte[]
-* int
+* INT
 * double
 * HttpRequestContext
 * HttpResponseContext
@@ -294,7 +294,7 @@ HTTP、webhook トリガー、および HTTP 出力バインディングでは�
 
 スクリプトに渡される要求オブジェクトは `HttpRequestContext` 型で、次のプロパティを持ちます。
 
-| プロパティ  | Description                                                    | 種類                      |
+| プロパティ  | 説明                                                    | Type                      |
 |-----------|----------------------------------------------------------------|---------------------------|
 | **`Body`**    | 要求の本文を格納するオブジェクト。 `Body` は、データに基づいて最適な型にシリアル化されます。 たとえば、データが JSON である場合はハッシュテーブルとして渡されます。 データが文字列の場合は文字列として渡されます。 | object |
 | **`Headers`** | 要求ヘッダーを格納するディクショナリ。                | Dictionary<string,string><sup>*</sup> |
@@ -303,13 +303,13 @@ HTTP、webhook トリガー、および HTTP 出力バインディングでは�
 | **`Query`** | クエリ パラメーターを格納するオブジェクト。                  | Dictionary<string,string><sup>*</sup> |
 | **`Url`** | 要求の URL。                                        | string                    |
 
-<sup>*</sup> `Dictionary<string,string>` のキーはすべて、大文字と小文字が区別されません。
+<sup>*</sup>`Dictionary<string,string>` のキーはすべて、大文字と小文字が区別されません。
 
 #### <a name="response-object"></a>応答オブジェクト
 
 返すべき応答オブジェクトは `HttpResponseContext` 型で、次のプロパティを持ちます。
 
-| プロパティ      | Description                                                 | 種類                      |
+| プロパティ      | 説明                                                 | Type                      |
 |---------------|-------------------------------------------------------------|---------------------------|
 | **`Body`**  | 応答の本文を格納するオブジェクト。           | object                    |
 | **`ContentType`** | 応答のコンテンツ タイプを設定するための省略表現。 | string                    |
@@ -599,7 +599,7 @@ PowerShell 関数を使用するときは、以下のセクションに記載さ
 
 スクリプトは、呼び出しのたびに実行されます。 スクリプト内で `Install-Module` を使用することは避けてください。 その代わり、発行前に `Save-Module` を使用します。そうすれば、関数がモジュールをダウンロードする際に生じる無駄な時間をなくすことができます。 コールド スタートが関数に影響を及ぼす場合は、"*常にオン*" に設定された [App Service プラン](functions-scale.md#app-service-plan)、または [Premium プラン](functions-scale.md#premium-plan)に関数アプリをデプロイすることを検討してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、次のリソースを参照してください。
 

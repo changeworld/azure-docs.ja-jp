@@ -34,7 +34,7 @@ AGIC では、Kubernetes [イングレス](https://kubernetes.io/docs/concepts/s
 - ご利用の AKS クラスターにインストールされている [AAD ポッド ID](https://github.com/Azure/aad-pod-identity)
 - [Cloud Shell](https://shell.azure.com/) は、`az`CLI、`kubectl`、`helm` がインストールされている Azure シェル環境です。 これらのツールは、以下のコマンドに必要です。
 
-AGIC をインストールする前に、__Application Gateway の構成をバックアップ__してください。
+AGIC をインストールする前に、__Application Gateway の構成をバックアップ__ してください。
   1. [Azure portal](https://portal.azure.com/) を使用してご利用の `Application Gateway` インスタンスに移動する
   2. `Export template` から `Download` をクリックする
 
@@ -237,7 +237,7 @@ Azure Application Gateway を使用して、AKS サービスを HTTP または H
 ## <a name="multi-cluster--shared-application-gateway"></a>マルチクラスター/共有 Application Gateway
 既定では、AGIC はリンク先の Application Gateway の完全な所有権を前提としています。 AGIC バージョン 0.8.0 以降では、1 つの Application Gateway を他の Azure コンポーネントと共有できます。 たとえば、AKS クラスターだけでなく、仮想マシン スケール セットでホストされているアプリケーションに対しても同じ Application Gateway を使用できます。
 
-この設定を有効にする前に、__Application Gateway の構成をバックアップ__してください。
+この設定を有効にする前に、__Application Gateway の構成をバックアップ__ してください。
   1. [Azure portal](https://portal.azure.com/) を使用してご利用の `Application Gateway` インスタンスに移動する
   2. `Export template` から `Download` をクリックする
 

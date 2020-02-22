@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/03/2020
+ms.date: 02/10/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dab35fbcd221af9f4eb587b8c98a8ff85aeef59f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 9becb91cfffd4553b2b8aa1a2d616963eae92ab0
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982791"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114057"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C カスタム ポリシーでワンタイム パスワードの技術プロファイルを定義する
 
@@ -47,7 +47,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 この技術プロファイルの最初のモードでは、コードを生成します。 このモードで構成できるオプションを以下に示します。
 
-### <a name="input-claims"></a>入力要求
+### <a name="input-claims"></a>入力クレーム
 
 **InputClaims** 要素には、ワンタイム パスワード プロトコル プロバイダーに送信する必要がある要求の一覧が含まれています。 要求の名前を以下に定義されている名前にマップすることもできます。
 
@@ -57,7 +57,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 **InputClaimsTransformations** 要素には、ワンタイム パスワード プロトコル プロバイダーに送信する前に、入力要求を変更するため、または新しい要求を生成するために使用される、**InputClaimsTransformation** 要素のコレクションが含まれる場合があります。
 
-### <a name="output-claims"></a>出力要求
+### <a name="output-claims"></a>出力クレーム
 
 **OutputClaims** 要素には、ワンタイム パスワード プロトコル プロバイダーによって生成される要求の一覧が含まれています。 要求の名前を以下に定義されている名前にマップすることもできます。
 
@@ -113,7 +113,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 この技術プロファイルの 2 番目のモードでは、コードを確認します。 このモードで構成できるオプションを以下に示します。
 
-### <a name="input-claims"></a>入力要求
+### <a name="input-claims"></a>入力クレーム
 
 **InputClaims** 要素には、ワンタイム パスワード プロトコル プロバイダーに送信する必要がある要求の一覧が含まれています。 要求の名前を以下に定義されている名前にマップすることもできます。
 
@@ -124,7 +124,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 **InputClaimsTransformations** 要素には、ワンタイム パスワード プロトコル プロバイダーに送信する前に、入力要求を変更するため、または新しい要求を生成するために使用される、**InputClaimsTransformation** 要素のコレクションが含まれる場合があります。
 
-### <a name="output-claims"></a>出力要求
+### <a name="output-claims"></a>出力クレーム
 
 このプロトコル プロバイダーのコード確認中に提供される出力要求はありません。
 
@@ -168,3 +168,10 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
     </InputClaims>
 </TechnicalProfile>
 ```
+
+## <a name="next-steps"></a>次のステップ
+
+カスタム メール確認でのワンタイム パスワードの技術プロファイルの使用例については、次の記事を参照してください。
+
+- [Azure Active Directory B2C のカスタム メール確認](custom-email.md)
+

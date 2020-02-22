@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87f3e815f541ad4cfabc22d917ca9cecba47b50f
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 87224c9e3e697b86aab51d1e922af8ab2130ac40
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077939"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186229"
 ---
 # <a name="building-a-conditional-access-policy"></a>条件付きアクセス ポリシーの構築
 
@@ -26,21 +26,21 @@ ms.locfileid: "71077939"
 
 ![条件付きアクセス (シグナル + 決定 + 適用 = ポリシー)](./media/concept-conditional-access-policies/conditional-access-signal-decision-enforcement.png)
 
-## <a name="assignments"></a>割り当て
+## <a name="assignments"></a>代入
 
 割り当て部分では、条件付きアクセス ポリシーについて、ユーザー、内容、および場所を制御します。
 
 ### <a name="users-and-groups"></a>ユーザーとグループ
 
-ユーザーとグループでは、ポリシーに対して含めるまたは除外するユーザーを割り当てます。 この割り当てには、すべてのユーザー、特定のユーザー グループ、ディレクトリ ロール、または外部のゲスト ユーザーを含めることができます。 
+[ユーザーとグループ](concept-conditional-access-users-groups.md)では、ポリシーに対して含めるまたは除外するユーザーを割り当てます。 この割り当てには、すべてのユーザー、特定のユーザー グループ、ディレクトリ ロール、または外部のゲスト ユーザーを含めることができます。 
 
 ### <a name="cloud-apps-or-actions"></a>クラウド アプリまたはアクション
 
-クラウド アプリまたはアクションでは、ポリシーの対象となるクラウド アプリケーションやユーザー アクションを含めたり除外したりすることができます。
+[クラウド アプリまたはアクション](concept-conditional-access-cloud-apps.md)では、ポリシーの対象となるクラウド アプリケーションやユーザー アクションを含めたり除外したりすることができます。
 
 ### <a name="conditions"></a>条件
 
-ポリシーには複数の条件を含めることができます。
+ポリシーには複数の[条件](concept-conditional-access-conditions.md)を含めることができます。
 
 #### <a name="sign-in-risk"></a>サインイン リスク
 
@@ -70,7 +70,9 @@ ms.locfileid: "71077939"
 
 条件付きアクセス ポリシーのアクセス制御部分では、ポリシーの適用方法を制御します。
 
-### <a name="grant"></a>許可
+### <a name="grant"></a>Grant
+
+[付与](concept-conditional-access-grant.md) によって、管理者は、アクセスをブロックまたは許可するポリシーを適用する手段を得ることができます。
 
 #### <a name="block-access"></a>アクセスのブロック
 
@@ -93,7 +95,7 @@ ms.locfileid: "71077939"
 
 ### <a name="session"></a>Session
 
-セッション コントロールではエクスペリエンスを制限できます 
+[セッション コントロール](concept-conditional-access-session.md)でエクスペリエンスを制限できます。 
 
 - アプリによって適用される制限を使用する
    - 現在、Exchange Online と SharePoint Online でのみ機能します。
@@ -121,11 +123,11 @@ ms.locfileid: "71077939"
 
 ![空の条件付きアクセス ポリシー](./media/concept-conditional-access-policies/conditional-access-blank-policy.png)
 
-## <a name="next-steps"></a>次の手順
+記事「[一般的な条件付きアクセス ポリシー](concept-conditional-access-policy-common.md)」に、ほとんどの組織にとって役に立つと思われるいくつかのポリシーが含まれています。
+
+## <a name="next-steps"></a>次のステップ
 
 [Simulate sign in behavior using the Conditional Access What If tool](troubleshoot-conditional-access-what-if.md) (条件付きアクセスの What If ツールを使用したサインイン動作のシミュレート)
-
-[一般的な条件付きアクセス ポリシー](concept-conditional-access-policy-common.md)
 
 [クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画](../authentication/howto-mfa-getstarted.md)
 

@@ -6,20 +6,20 @@
   items:
     - name: Data Science Virtual Machine (DSVM) とは
       href: overview.md
-    - name: Geo AI DSVM とは
+    - name: Geo AI Data Science Virtual Machine とは
       href: geo-ai-dsvm-overview.md
-    - name: DSVM に含まれているツール
+    - name: Data Science Virtual Machine に含まれるツール
       href: tools-included.md
 - name: クイックスタート
   expanded: true
   items:
-    - name: Windows DSVM の作成
+    - name: Windows Data Science Virtual Machine を作成する
       href: provision-vm.md
-    - name: Ubuntu DSVM の作成
+    - name: Ubuntu Data Science Virtual Machine を作成する
       href: dsvm-ubuntu-intro.md
-    - name: CentOS DSVM の作成
+    - name: CentOS データ サイエンス仮想マシンを作成する
       href: linux-dsvm-intro.md
-    - name: Geo AI DSVM の作成
+    - name: Geo AI Data Science Virtual Machine を作成する
       href: provision-geo-ai-dsvm.md
 - name: 概念
   items:
@@ -43,13 +43,13 @@
   href: dsvm-samples-and-walkthroughs.md
 - name: 操作方法ガイド
   items:
-    - name: Windows DSVM の使用
+    - name: Windows Data Science Virtual Machine を使用する
       href: vm-do-ten-things.md
-    - name: Linux DSVM の使用
+    - name: Linux Data Science Virtual Machine を使用する
       href: linux-dsvm-walkthrough.md
-    - name: Geo AI DSVM の使用
+    - name: Geo AI Data Science Virtual Machine を使用する
       href: use-geo-ai-dsvm.md
-    - name: 自動スケーリングされる DSVM プールの作成
+    - name: 自動スケール Data Science Virtual Machine プールを作成する
       href: dsvm-pools.md
     - name: Active Directory と連係する。
       href: dsvm-common-identity.md
@@ -65,9 +65,9 @@
       href: /azure/architecture/data-guide/technology-choices/r-developers-guide?context=azure/machine-learning/data-science-virtual-machine/context/ml-context
 - name: リファレンス
   items:
-    - name: Ubuntu DSVM
+    - name: Ubuntu Data Science Virtual Machine
       href: reference-ubuntu-vm.md
-    - name: CentOS DSVM
+    - name: CentOS Data Science Virtual Machine
       href: reference-centos-vm.md
     - name: リリース ノート
       href: release-notes.md

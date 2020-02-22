@@ -1,5 +1,5 @@
 ---
-title: Azure RBAC と REST API を使用してロールの割り当てを追加または削除する
+title: RBAC と REST API を使用してロールの割り当てを追加または削除する
 description: Azure のロールベースのアクセス制御 (RBAC) と REST API を使用して、ユーザー、グループ、サービス プリンシパル、またはマネージド ID に対して Azure リソースへのアクセス権を付与する方法について説明します。
 services: active-directory
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3c7b7dac649548b8b21cc13761009c11609c8904
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ae6fce5ab962637fe477ade75cf81b6ac237bdd2
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981047"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138307"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-rest-api"></a>Azure RBAC と REST API を使用してロールの割り当てを追加または削除する
 
@@ -57,7 +57,7 @@ RBAC でアクセス権を付与するには、ロールの割り当てを追加
 
 1. URI の *{scope}* をロールの割り当てのスコープに変更します。
 
-    | スコープ | 種類 |
+    | Scope | Type |
     | --- | --- |
     | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理グループ |
     | `subscriptions/{subscriptionId1}` | サブスクリプション |
@@ -68,7 +68,7 @@ RBAC でアクセス権を付与するには、ロールの割り当てを追加
 
 1. 要求本文内で、 *{scope}* をロールの割り当てのスコープに変更します。
 
-    | スコープ | 種類 |
+    | Scope | Type |
     | --- | --- |
     | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理グループ |
     | `subscriptions/{subscriptionId1}` | サブスクリプション |
@@ -93,7 +93,7 @@ RBAC では、アクセス権を削除するにはロールの割り当てを削
 
 1. URI の *{scope}* を、ロールの割り当てを削除するためのスコープに変更します。
 
-    | スコープ | 種類 |
+    | Scope | Type |
     | --- | --- |
     | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理グループ |
     | `subscriptions/{subscriptionId1}` | サブスクリプション |

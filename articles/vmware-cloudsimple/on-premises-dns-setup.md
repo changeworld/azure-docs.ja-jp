@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: eadedcea7e6010cf93d118b3781630053609d29f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 12c4362ae1b075af132d5971f4fe0461c9d91733
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019606"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083092"
 ---
 # <a name="configure-dns-for-name-resolution-for-avs-private-cloud-vcenter-access-from-on-premises-workstations"></a>オンプレミスのワークステーションから AVS プライベート クラウド上の vCenter にアクセスできるように名前解決に DNS を構成する
 
@@ -32,10 +32,10 @@ ms.locfileid: "77019606"
 
 DNS の構成には、次のどちらかのオプションを使用します。
 
-* [*.AVS.io に対応するゾーンを DNS サーバー上に作成する](#create-a-zone-on-a-microsoft-windows-dns-server)
-* [条件付きフォワーダーをオンプレミスの DNS サーバー上に作成して *.AVS.io を解決する](#create-a-conditional-forwarder)
+* [*.cloudsimple.io に対応するゾーンを DNS サーバー上に作成する](#create-a-zone-on-a-microsoft-windows-dns-server)
+* [条件付きフォワーダーをオンプレミスの DNS サーバー上に作成して *.cloudsimple.io を解決する](#create-a-conditional-forwarder)
 
-## <a name="create-a-zone-on-the-dns-server-for-avsio"></a>*.AVS.io に対応するゾーンを DNS サーバー上に作成する
+## <a name="create-a-zone-on-the-dns-server-for-cloudsimpleio"></a>*.cloudsimple.io に対応するゾーンを DNS サーバー上に作成する
 
 スタブ ゾーンとしてゾーンをセットアップし、名前解決のためにプライベート クラウド上の DNS サーバーをポイントすることができます。 ここでは、BIND DNS サーバーまたは Microsoft Windows DNS サーバーの使用に関する情報を提供します。
 
@@ -78,7 +78,7 @@ zone "az.cloudsimple.io"
 
 ## <a name="create-a-conditional-forwarder"></a>条件付きフォワーダーの作成
 
-条件付きフォワーダーは、すべての DNS 名前解決要求を指定されたサーバーに転送します。 このセットアップでは、*.AVS.io への要求は、AVS プライベート クラウド上に位置する DNS サーバーに転送されます。 次の例は、さまざまな種類の DNS サーバー上でフォワーダーを設定する方法を示しています。
+条件付きフォワーダーは、すべての DNS 名前解決要求を指定されたサーバーに転送します。 このセットアップでは、*.cloudsimple.io への要求は、AVS プライベート クラウド上に位置する DNS サーバーに転送されます。 次の例は、さまざまな種類の DNS サーバー上でフォワーダーを設定する方法を示しています。
 
 ### <a name="create-a-conditional-forwarder-on-a-bind-dns-server"></a>BIND DNS サーバー上に条件付きフォワーダーを作成する
 

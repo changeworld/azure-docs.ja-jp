@@ -105,8 +105,10 @@
     - name: イベント ドメイン
       href: event-domains.md
     - name: イベント ソース
+      displayName: 'Azure subscriptions, Container registry, Custom topics, Event Hubs, IoT Hub, Key Vault, Media Services, Resource groups, Service Bus, Storage, Maps, App Configuration, Signal R, Machine Learning'
       href: event-sources.md
     - name: イベント ハンドラー
+      displayName: 'Azure Automation, Functions, Event Hubs, Hybrid Connections, Logic Apps, Service Bus, Queue Storage, Webhooks'
       href: event-handlers.md
     - name: geo ディザスター リカバリー
       href: geo-disaster-recovery.md

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: a6c333da0e88af25e3907af23f792a210002477f
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 7cfa6e9810057493cc3007eec7fd1668a70c727e
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902048"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77179091"
 ---
 スポット VM を使うと、非常に低コストで未使用の容量を利用できます。 Azure で容量の回復が必要になると常に、Azure インフラストラクチャはスポット VM を削除します。 したがって、スポット VM は、バッチ処理ジョブ、開発/テスト環境、大規模なコンピューティング ワークロードなど、中断してもかまわないワークロードに最適です。
 
@@ -23,16 +23,12 @@ ms.locfileid: "75902048"
 > スポット インスタンスは現在、パブリック プレビューの段階にあります。
 > このプレビュー バージョンは運用環境のワークロードにはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 >
-> パブリック プレビューの初期段階では、スポット インスタンスに固定価格が設定されているため、価格ベースの削除は行われません。
 
 ## <a name="eviction-policy"></a>削除ポリシー
 
 VM は、容量または設定した最大価格に基づいて削除できます。 仮想マシンの場合、削除ポリシーは *割り当てを解除する*に設定されます。これにより、削除された VM が停止済みの割り当て解除済みの状態に移行し、後で削除された VM を再デプロイできるようになります。 ただし、スポット VM の再割り当ては、使用可能なスポット容量に依存します。 割り当てを解除された VM は、スポット vCPU クォータを基にカウントされ、構成しているディスクの料金が課金されます。 
 
 ユーザーは、[Azure Scheduled Events](../articles/virtual-machines/linux/scheduled-events.md) を通じて VM 内通知を受け取ることができます。 これにより、VM が排除されつつある場合には通知が送られ、排除される前にジョブを完了し、タスクのシャットダウンを実行するために 30 秒が与えられます。 
-
-> [!IMPORTANT]
-> パブリック プレビューの初期段階では、最大価格を設定できますが、これは無視されます。 スポット VM は固定価格であるため、価格ベースの削除は行われません。
 
 
 | オプション | 結果 |
@@ -54,7 +50,7 @@ VM は、容量または設定した最大価格に基づいて削除できま�
 
 現在、スポット VM では、一時 OS ディスクを使用できません。
 
-スポット VM は、Azure Government リージョンのMicrosoft Azure China 21Vianet および国防省 (DoD) Microsoft Azure を除く任意のリージョンにデプロイできます。
+スポット VM は、Microsoft Azure China 21Vianet を除き、任意のリージョンにデプロイできます。
 
 ## <a name="pricing"></a>価格
 

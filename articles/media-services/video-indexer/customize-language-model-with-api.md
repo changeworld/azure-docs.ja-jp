@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 01/14/2020
+ms.date: 02/04/2020
 ms.author: anzaman
-ms.openlocfilehash: e8df7ffd285b0d49f5d4a87585e769b5b0bbafe9
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 01ea4d9ef943183f09baa86b729ec69344d4309e
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513152"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049044"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-apis"></a>Video Indexer API を使用して言語モデルをカスタマイズする
 
@@ -105,9 +105,8 @@ Video Indexer では、カスタム言語モデルを作成し、適応テキス
 }
 ```
 
-返された言語モデルの **id** 値は、[インデックスを作成するビデオのアップロード](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)時に **linguisticModelId** パラメーターとして使用し、[ビデオ インデックスの再作成](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)時に **languageModelId** パラメーターとして使用します。
+返された **id** は、言語モデルを区別するために使用される一意の ID です。一方、**languageModelId** は、[インデックスを作成するビデオのアップロード](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API と、[ビデオのインデックスの再作成](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) API の両方に使用されます (Video Indexer のアップロード/インデックスの再作成 API では **linguisticModelId** とも呼ばれます)。
 
- 
 ## <a name="delete-a-language-model"></a>言語モデルの削除
 
 [言語モデルの削除](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete) API により、指定されたアカウントからカスタム言語モデルが削除されます。 削除された言語モデルを使用していたビデオでは、ユーザーがビデオのインデックスを再作成するまで、同じインデックスが保持されます。 ビデオのインデックスを再作成すると、ビデオに新しい言語モデルを割り当てることができます。 それ以外の場合は、Video Indexer により、既定のモデルを使用してビデオのインデックスが再作成されます。

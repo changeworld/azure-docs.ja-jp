@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9e03ba960ab6542198372d75de7e0d34bf8d9e1b
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: aec46a1914fa2361ea15ba34dd1510cfe53a4dc0
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513322"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443841"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
@@ -67,12 +67,12 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 
 ### <a name="supported-client-types"></a>サポートされているクライアントの種類
 
-次の表は、更新プログラムの評価でサポートされているオペレーティング システムの一覧です。 修正プログラムを適用するには、Hybrid Runbook Worker が必要です。 Hybrid Runbook Worker の要件の詳細については、[Windows Hybrid Runbook Worker](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) のインストールと [Linux Hybrid Runbook Worker](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker) のインストールに関するインストール ガイドを参照してください。
+次の表は、更新プログラムの評価でサポートされているオペレーティング システムの一覧です。 修正プログラムを適用するには、Hybrid Runbook Worker が必要です。 Hybrid Runbook Worker の要件の詳細については、[Windows Hybrid Runbook Worker](automation-windows-hrw-install.md) のインストールと [Linux Hybrid Runbook Worker](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker) のインストールに関するインストール ガイドを参照してください。
 
-|オペレーティング システム  |メモ  |
+|オペレーティング システム  |Notes  |
 |---------|---------|
 |Windows Server 2019 (Datacenter、Datacenter Core、Standard)<br><br>Windows Server 2016 (Datacenter、Datacenter Core、Standard)<br><br>Windows Server 2012 R2 (Datacenter、Standard)<br><br>Windows Server 2012 || 
-|Windows Server 2008 R2 (RTM および SP1 Standard)| Update Management は、このオペレーティング システムの評価のみをサポートしています。[Hybrid Runbook Worker](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) は Windows Server 2008 R2 ではサポートされていないため、修正プログラムの適用はサポートされていません。 |
+|Windows Server 2008 R2 (RTM および SP1 Standard)| Update Management は、このオペレーティング システムの評価のみをサポートしています。[Hybrid Runbook Worker](automation-windows-hrw-install.md) は Windows Server 2008 R2 ではサポートされていないため、修正プログラムの適用はサポートされていません。 |
 |CentOS 6 (x86/x64) および 7 (x64)      | Linux エージェントは、更新リポジトリへのアクセスが必要です。 分類に基づく修正プログラムでは、CentOS の RTM リリースには含まれていないセキュリティ データを返すための `yum` が必須です。 分類に基づく CentOS への修正プログラムの適用の詳細については、[Linux の更新プログラムの分類](automation-view-update-assessments.md#linux-2)に関する記事を参照してください。          |
 |Red Hat Enterprise 6 (x86/x64) および 7 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
 |SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
@@ -86,7 +86,7 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 
 次の表は、サポートされていないオペレーティング システムの一覧です。
 
-|オペレーティング システム  |メモ  |
+|オペレーティング システム  |Notes  |
 |---------|---------|
 |Windows クライアント     | クライアント オペレーティング システム (Windows 7 や Windows 10 など) はサポートされません。        |
 |Windows Server 2016 Nano Server     | サポートされていません。       |

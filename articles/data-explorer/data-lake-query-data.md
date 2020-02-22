@@ -7,27 +7,27 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: 1e5af0b45b8d2e2eceac1b653a5219a236c25467
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 8240b1a01aa39e53b9ae41f73543ccf9774290b2
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512914"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161751"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer"></a>Azure Data Explorer を使用して Azure Data Lake でデータのクエリを実行する
 
 Azure Data Lake Storage は、スケーラビリティが高く拡張性と費用対効果に優れた、ビッグ データ分析用のデータ レイク ソリューションです。 ハイパフォーマンス ファイル システムの能力に加えて、非常に高いスケーラビリティと効率性を兼ね備えており、お客様が分析情報を得るまでの時間を短縮するのに役立ちます。 Data Lake Storage Gen2 は Azure BLOB ストレージの機能を拡張するもので、分析ワークロード用に最適化されています。
  
-Azure Data Explorer は、Azure BLOB ストレージおよび Azure Data Lake Storage Gen2 と統合され、レイク内のデータへの高速でキャッシュされたインデックス付きのアクセスを提供します。 レイク内のデータは、Azure Data Explorer に事前に取り込まずに分析およびクエリを実行できます。 また、取り込んだデータと取り込んでいないネイティブ　レイク データに対して同時にクエリを実行することもできます。  
+Azure Data Explorer は、Azure Blob Storage および Azure Data Lake Storage (Gen1 および Gen2) と統合され、レイク内のデータへの高速でキャッシュされたインデックス付きのアクセスを提供します。 レイク内のデータは、Azure Data Explorer に事前に取り込まずに分析およびクエリを実行できます。 また、取り込んだデータと取り込んでいないネイティブ　レイク データに対して同時にクエリを実行することもできます。  
 
 > [!TIP]
-> 最良のクエリ パフォーマンスを得るには、Azure Data Explorer へのデータの取り込みが必要です。 事前に取り込まずに Azure Data Lake Storage Gen2 内のデータのクエリを実行する機能は、履歴データか、ほとんどクエリが実行されないデータに対してのみ使用してください。 最高の結果を得るために、[レイク内でのクエリのパフォーマンスを最適化](#optimize-your-query-performance)してください。
+> 最良のクエリ パフォーマンスを得るには、Azure Data Explorer へのデータの取り込みが必要です。 事前に取り込まずに外部データのクエリを実行する機能は、履歴データか、ほとんどクエリが実行されないデータに対してのみ使用してください。 最高の結果を得るために、[レイク内でのクエリのパフォーマンスを最適化](#optimize-your-query-performance)してください。
  
 
 ## <a name="create-an-external-table"></a>外部テーブルを作成する
 
  > [!NOTE]
- > 現在サポートされているストレージ アカウントは、Azure BLOB ストレージまたは Azure Data Lake Storage Gen2 です。 現在サポートされているデータ形式は、json、csv、tsv、および txt です。
+ > 現在サポートされているストレージ アカウントは、Azure Blob Storage または Azure Data Lake Storage (Gen1 および Gen2) です。
 
 1. `.create external table` コマンドを使用して、Azure Data Explorer に外部テーブルを作成します。 `.show`、`.drop`、および `.alter` などの追加の外部テーブル コマンドについては、「[外部テーブル コマンド](/azure/kusto/management/externaltables)」に記載されています。
 
@@ -46,6 +46,7 @@ Azure Data Explorer は、Azure BLOB ストレージおよび Azure Data Lake St
     > * パーティションを使用する外部テーブルを定義するときは、ストレージ構造が同一であると想定します。
 たとえば、テーブルが yyyy/MM/dd 形式 (既定) の DateTime パーティションで定義されている場合、URI ストレージ ファイルのパスは *container1/yyyy/MM/dd/all_exported_blobs* である必要があります。 
     > * 外部テーブルが datetime 列によってパーティション分割されている場合は、閉じた範囲の時間フィルターをクエリに含めるようにしてください (たとえば、範囲が閉じていないこちらの `ArchivedProducts | where Timestamp > ago(1h)` よりも、クエリ `ArchivedProducts | where Timestamp between (ago(1h) .. 10m)` の方がパフォーマンスが良くなります)。 
+    > * 外部テーブルを使用して、すべての[サポートされているインジェスト形式](ingest-data-overview.md#supported-data-formats)のクエリを実行できます。
 
 1. 外部テーブルは Web UI の左側のウィンドウに表示されます
 

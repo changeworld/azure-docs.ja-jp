@@ -2,21 +2,18 @@
 title: Microsoft 顧客契約の Azure クレジット残高を追跡する
 description: Microsoft 顧客契約の Azure クレジット残高を追跡する方法を説明します。
 author: bandersmsft
-manager: amberb
+ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/13/2019
 ms.author: banders
-ms.openlocfilehash: c8ea083e216331904c9d5741b97f69b7f5a8249a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e65637f20d14b93c212b1af2f20695ff5dfeb350
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75985455"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199689"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Microsoft 顧客契約の Azure クレジット残高を追跡する
 
@@ -28,7 +25,7 @@ Microsoft 顧客契約の課金アカウントでは、クレジットが課金�
 
 ## <a name="check-your-credit-balance"></a>クレジット残高を確認する
 
-### <a name="azure-portaltabportal"></a>[Azure Portal](#tab/portal)
+### <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
@@ -99,7 +96,7 @@ Microsoft 顧客契約の課金アカウントでは、クレジットが課金�
 
     ![課金アカウントのクレジット一覧のスクリーンショット](./media/mca-check-azure-credits-balance/mca-account-credit-list.png)
 
-### <a name="rest-apitabrest"></a>[REST API](#tab/rest)
+### <a name="rest-api"></a>[REST API](#tab/rest)
 
 [Azure Billing](https://docs.microsoft.com/rest/api/billing/) API と [Consumption](https://docs.microsoft.com/rest/api/consumption/) API を使用すると、課金アカウントのクレジット残高をプログラムから取得できます。
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 1ba7fca7576c6f015ad7bbcb47909b90c3065d58
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 7d897b9f85ce6565cbdc1a253a0e20b989539cae
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045958"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048655"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>新しい Dynamics 365 for Operations オファーを作成する
 
@@ -109,19 +109,9 @@ Dynamics 365 for Operations オファーの作成を開始するには、確実�
 
 オファーのバージョン番号を入力します。 顧客にはオファーの詳細ページにこのバージョンが表示されます。
 
-### <a name="standard-contract"></a>標準契約
+### <a name="terms-and-conditions"></a>使用条件
 
-顧客の調達プロセスを簡略化し、ソフトウェア ベンダーの法的な複雑さを軽減するために、Microsoft では、マーケットプレースでの取引の促進に役立つ標準契約テンプレートを用意しています。
-
-カスタムの使用条件を作成するのではなく、標準契約の下でソフトウェアを提供することを選択できます。顧客は、それを入念に調べて一度承認するだけで済みます。
-
-標準契約はこちら (https://go.microsoft.com/fwlink/?linkid=2041178 ) で見つけることができます。
-
-標準契約を使用するには、 **[標準契約を使用しますか?]** チェックボックスをオンにします。
-
-#### <a name="terms-of-use"></a>使用条件
-
-**[標準契約を使用しますか?]** チェックボックスをオンにしない場合は、 **[使用条件]** フィールドに独自の法律条項を入力する必要があります。 最大 10,000 文字のテキストを入力するか、使用条件にもっと長い説明が必要な場合は、追加のライセンス条項が記載された場所への URL を入力します。 顧客は、アプリを試す前にこれらの条件を承諾する必要があります。
+**[使用条件]** フィールドに、独自の法的な使用条件を入力します。 使用条件を見つけることができる URL を指定することもできます。 顧客は、オファーを試す前にこれらの条件を承諾する必要があります。
 
 ## <a name="offer-listing"></a>オファーのリスト登録
 

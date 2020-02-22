@@ -1,5 +1,5 @@
 ---
-title: Azure portal を使用して Azure リソースの拒否割り当てを一覧表示する | Microsoft Docs
+title: Azure portal を使用して Azure リソースの拒否割り当てを一覧表示する
 description: Azure portal を使用して、特定のスコープの特定の Azure リソース アクションへのアクセスが拒否されているユーザー、グループ、サービス プリンシパル、およびマネージド ID を一覧表示する方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 21ffb1a2539a2e724a91dd3b2818270a5e573ef8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4db76e5c6191457346ca1f95678cf73843334d3b
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67127483"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137422"
 ---
 # <a name="list-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Azure portal を使用して Azure リソースの拒否割り当てを一覧表示する
 
@@ -46,7 +46,7 @@ ms.locfileid: "67127483"
 
 1. **[拒否割り当て]** タブをクリックします (または、拒否割り当てを表示しますタイルで **[表示]** ボタンをクリックします)。
 
-    このスコープに拒否割り当てがある場合、またはこのスコープに継承されている場合、表示されます。
+    このスコープに拒否割り当てがある場合、またはこのスコープに継承されている場合は、それが表示されます。
 
     ![アクセス制御 - [拒否割り当て] タブ](./media/deny-assignments-portal/access-control-deny-assignments.png)
 
@@ -107,7 +107,7 @@ ms.locfileid: "67127483"
 
     **[プロパティ]** ブレードには、拒否割り当ての名前、ID、説明およびスコープが表示されます。 **[Does not apply to children**]\(子には適用しない\) スイッチは、拒否割り当てがサブスコープに継承されるかどうかを示します。 **[保護されているシステム]** スイッチは、Azure によって拒否割り当てが管理されるかどうかを示します。 現在、これはすべてのケースにおいて **[はい]** です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure リソースの拒否割り当ての概要](deny-assignments.md)
 * [Azure PowerShell を使用して Azure リソースの拒否割り当てを一覧表示する](deny-assignments-powershell.md)

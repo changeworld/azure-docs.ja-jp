@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: ea37dc9ee6c9249aa9d18f7ee7ab1fdbe1230930
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 26fe995f45a97a5863bfc20fd1564df89124ed88
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975841"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168311"
 ---
 # <a name="speech-to-text-rest-api"></a>Speech to Text REST API
 
@@ -32,9 +32,18 @@ Speech to Text REST API を使用する前に、次のことを理解してく�
 
 ## <a name="regions-and-endpoints"></a>リージョンとエンドポイント
 
-この REST API を使用した音声テキスト変換による文字起こしは、次のリージョンでサポートされます。 必ず、ご利用のサブスクリプションのリージョンと一致するエンドポイントを選択してください。
+REST API のエンドポイントの形式は次のとおりです。
 
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)] 
+```
+https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
+```
+
+次の表に示す、ご利用のサブスクリプションのリージョンと一致する識別子で `<REGION_IDENTIFIER>` を置き換えてください。
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
+
+> [!NOTE]
+> 4xx HTTP エラーを受け取らないためには、URL に言語パラメーターを付加する必要があります。 たとえば、米国西部エンドポイントを使用する米国英語に設定される言語は `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US` です。
 
 ## <a name="query-parameters"></a>クエリ パラメーター
 
@@ -42,9 +51,9 @@ REST 要求のクエリ文字列には、次のパラメーターを含めるこ
 
 | パラメーター | 説明 | 必須/省略可能 |
 |-----------|-------------|---------------------|
-| `language` | 認識の対象として発話された言語を識別します。 [サポートされている言語](language-support.md#speech-to-text)を参照してください。 | 必須 |
-| `format` | 結果の形式を指定します。 指定できる値は、`simple` と `detailed` です。 単純な結果には `RecognitionStatus`、`DisplayText`、`Offset`、`Duration`が含まれます。 詳細な応答には、信頼度の値と 4 つの異なる表現を持った複数の結果が含まれます。 既定の設定は `simple`です。 | 省略可能 |
-| `profanity` | 認識結果内の不適切な表現をどう扱うかを指定します。 指定できる値は、`masked` (不適切な表現をアスタリスクに置き換える)、`removed` (すべての不適切な表現を結果から除去する)、または `raw` (不適切な表現を結果に含める) です。 既定の設定は `masked`です。 | 省略可能 |
+| `language` | 認識の対象として発話された言語を識別します。 [サポートされている言語](language-support.md#speech-to-text)を参照してください。 | Required |
+| `format` | 結果の形式を指定します。 指定できる値は、`simple` と `detailed` です。 単純な結果には `RecognitionStatus`、`DisplayText`、`Offset`、`Duration`が含まれます。 詳細な応答には、信頼度の値と 4 つの異なる表現を持った複数の結果が含まれます。 既定の設定は `simple` です。 | 省略可能 |
+| `profanity` | 認識結果内の不適切な表現をどう扱うかを指定します。 指定できる値は、`masked` (不適切な表現をアスタリスクに置き換える)、`removed` (すべての不適切な表現を結果から除去する)、または `raw` (不適切な表現を結果に含める) です。 既定の設定は `masked` です。 | 省略可能 |
 
 ## <a name="request-headers"></a>要求ヘッダー
 
@@ -54,7 +63,7 @@ REST 要求のクエリ文字列には、次のパラメーターを含めるこ
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | 音声サービスのサブスクリプション キー。 | このヘッダーと `Authorization` のどちらかが必須となります。 |
 | `Authorization` | 単語 `Bearer` が前に付いた認証トークン。 詳細については、[認証](#authentication)に関するページをご覧ください。 | このヘッダーと `Ocp-Apim-Subscription-Key` のどちらかが必須となります。 |
-| `Content-type` | 指定したオーディオ データの形式とコーデックを記述します。 指定できる値は、`audio/wav; codecs=audio/pcm; samplerate=16000` と `audio/ogg; codecs=opus` です。 | 必須 |
+| `Content-type` | 指定したオーディオ データの形式とコーデックを記述します。 指定できる値は、`audio/wav; codecs=audio/pcm; samplerate=16000` と `audio/ogg; codecs=opus` です。 | Required |
 | `Transfer-Encoding` | オーディオを個別のファイルとしてではなくチャンク データとして送信することを指定します。 このヘッダーは、オーディオ データをチャンクにする場合にのみ使用してください。 | 省略可能 |
 | `Expect` | チャンク転送を使用する場合、`Expect: 100-continue` を送信します。 音声サービスは最初の要求を確認し、追加のデータを待ちます。| オーディオのチャンク データを送信する場合は必須となります。 |
 | `Accept` | 指定する場合は、`application/json` とする必要があります。 Speech Service からは、結果が JSON 形式で返されます。Speech Service からは、結果が JSON 形式で返されます。 一部の要求フレームワークでは、互換性のない既定値が提供されます。 常に `Accept` を含めることをお勧めします。 | 省略可能ですが、指定することをお勧めします。 |
@@ -63,13 +72,13 @@ REST 要求のクエリ文字列には、次のパラメーターを含めるこ
 
 オーディオは HTTP `POST` 要求の本文で送信されます。 この表内のいずれかの形式にする必要があります。
 
-| 形式 | コーデック | Bitrate | サンプル レート |
+| Format | コーデック | Bitrate | サンプル レート |
 |--------|-------|---------|-------------|
 | WAV | PCM 0 | 16 ビット | 16 kHz、モノラル |
 | OGG | OPUS | 16 ビット | 16 kHz、モノラル |
 
 >[!NOTE]
->上の形式は、Speech Service の REST API と WebSocket を介してサポートされます。 現在、[Speech SDK](speech-sdk.md) では PCM コーデックの WAV 形式のみがサポートされています。
+>上の形式は、Speech Service の REST API と WebSocket を介してサポートされます。 現在、[Speech SDK](speech-sdk.md) では PCM コーデックの WAV 形式と、[その他の形式](how-to-use-codec-compressed-audio-input-streams.md)がサポートされています。
 
 ## <a name="sample-request"></a>要求のサンプル
 
@@ -92,7 +101,7 @@ Expect: 100-continue
 | HTTP 状態コード | 説明 | 考えられる理由 |
 |------------------|-------------|-----------------|
 | 100 | Continue | 最初の要求が受け付けられました。 残りのデータの送信を続行します。 (チャンク転送で使用されます。) |
-| 200 | OK | 要求は成功しました。応答本文は JSON オブジェクトです。 |
+| 200 | [OK] | 要求は成功しました。応答本文は JSON オブジェクトです。 |
 | 400 | 正しくない要求 | 言語コードが提供されていない、サポートされていない言語、無効な音声ファイルなどです。 |
 | 401 | 権限がありません | サブスクリプション キーまたは認証トークンが指定のリージョンで無効であるか、または無効なエンドポイントです。 |
 | 403 | Forbidden | サブスクリプション キーまたは認証トークンがありません。 |
@@ -215,7 +224,7 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
 - [音響モデルをカスタマイズする](how-to-customize-acoustic-models.md)

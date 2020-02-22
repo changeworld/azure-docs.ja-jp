@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/05/2019
 tags: connectors
-ms.openlocfilehash: 232b17852e89ebdfa6f81b5aadcdbcd9c83d4055
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 9c1b2af8d06c9466ed6c82308de941b43510238a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888143"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117967"
 ---
 # <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して HTTP または HTTPS エンドポイントに発信呼び出しを送信する
 
@@ -40,7 +40,7 @@ ms.locfileid: "75888143"
 
 この組み込みトリガーは、エンドポイントに指定された URL に対して HTTP 呼び出しを実行し、応答を返します。
 
-1. [Azure portal](https://portal.azure.com) にサインインする ロジック アプリ デザイナーで空のロジック アプリを開きます。
+1. [Azure portal](https://portal.azure.com) にサインインします。 ロジック アプリ デザイナーで空のロジック アプリを開きます。
 
 1. **[アクションを選択してください]** の下の検索ボックス内に、フィルターとして「http」と入力します。 **[トリガー]** の一覧から、 **[HTTP]** トリガーを選択します。
 
@@ -50,9 +50,12 @@ ms.locfileid: "75888143"
 
 1. ターゲット エンドポイントへの呼び出しに含める [HTTP トリガー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)の値を指定します。 トリガーでターゲット エンドポイントを確認する頻度を設定します。
 
-   **[なし]** 以外の認証の種類を選択した場合、認証設定は、選択に基づいて変化します。 詳しくは、「[送信呼び出しに認証を追加する](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)」をご覧ください。
-
    ![HTTP トリガー パラメーターを入力する](./media/connectors-native-http/http-trigger-parameters.png)
+
+   **[なし]** 以外の認証の種類を選択した場合、認証設定は、選択に基づいて変化します。 HTTP に使用できる認証の種類の詳細については、以下のトピックを参照してください。
+
+   * [送信呼び出しに認証を追加する](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+   * [マネージド ID を利用してリソースへのアクセスを認証する](../logic-apps/create-managed-service-identity.md)
 
 1. その他の使用可能なパラメーターを追加するには、 **[新しいパラメーターの追加]** リストを開き、必要なパラメーターを選択します。
 
@@ -64,7 +67,7 @@ ms.locfileid: "75888143"
 
 この組み込みアクションは、エンドポイントに指定された URL に対して HTTP 呼び出しを実行し、応答を返します。
 
-1. [Azure portal](https://portal.azure.com) にサインインする ロジック アプリ デザイナーでロジック アプリを開きます。
+1. [Azure portal](https://portal.azure.com) にサインインします。 ロジック アプリ デザイナーでロジック アプリを開きます。
 
    この例では、最初のステップとして HTTP トリガーを使用します。
 
@@ -80,9 +83,12 @@ ms.locfileid: "75888143"
 
 1. ターゲット エンドポイントへの呼び出しに含める [HTTP アクション パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)の値を指定します。
 
-   **[なし]** 以外の認証の種類を選択した場合、認証設定は、選択に基づいて変化します。 詳しくは、「[送信呼び出しに認証を追加する](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)」をご覧ください。
-
    ![HTTP アクションのパラメーターを入力する](./media/connectors-native-http/http-action-parameters.png)
+
+   **[なし]** 以外の認証の種類を選択した場合、認証設定は、選択に基づいて変化します。 HTTP に使用できる認証の種類の詳細については、以下のトピックを参照してください。
+
+   * [送信呼び出しに認証を追加する](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+   * [マネージド ID を利用してリソースへのアクセスを認証する](../logic-apps/create-managed-service-identity.md)
 
 1. その他の使用可能なパラメーターを追加するには、 **[新しいパラメーターの追加]** リストを開き、必要なパラメーターを選択します。
 
@@ -145,7 +151,7 @@ HTTP 要求に `multipart/form-data` 型を含むコンテンツを処理する�
 
 ここでは、以下の情報を返す HTTP トリガーまたはアクションからの出力の詳細情報を示します。
 
-| プロパティ名 | 種類 | 説明 |
+| プロパティ名 | Type | 説明 |
 |---------------|------|-------------|
 | headers | object | 要求のヘッダー |
 | body | object | JSON オブジェクト | 要求の本文の内容を含むオブジェクト |

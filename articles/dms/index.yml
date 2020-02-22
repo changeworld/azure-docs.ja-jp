@@ -8,12 +8,12 @@ metadata:
   ms.date: 12/19/2019
   ms.service: dms
   ms.topic: landing-page
-  ms.openlocfilehash: 8ca7f2618c6415dd3dbe22cada35bccb56be50ee
-  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.openlocfilehash: 1228c9f645ddb100e74c95cd13eef4ee4d70f248
+  ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/25/2019
-  ms.locfileid: "75437881"
+  ms.lasthandoff: 02/20/2020
+  ms.locfileid: "77484827"
 landingContent:
 - title: Azure Database Migration Service について
   linkLists:
@@ -55,41 +55,43 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: SQL Database 単一データベースに移行する - オンライン
+    - text: SQL DB 単一データベースに移行する - オンライン
       url: tutorial-sql-server-azure-sql-online.md
-    - text: SQL Database 単一データベースに移行する - オフライン
+    - text: SQL DB 単一データベースに移行する - オフライン
       url: tutorial-sql-server-to-azure-sql.md
-    - text: SQL Database マネージド インスタンスに移行する - オンライン
+    - text: SQL DB マネージ インスタンスに移行する - オンライン
       url: tutorial-sql-server-managed-instance-online.md
-    - text: SQL Database マネージド インスタンスに移行する - オフライン
+    - text: SQL DB マネージ インスタンスに移行する - オフライン
       url: tutorial-sql-server-to-managed-instance.md
-    - text: RDS SQL Server を SQL Database 単一データベース / マネージド インスタンスに移行する - オンライン
+    - text: RDS SQL Server を SQL DB 単一データベース/マネージド インスタンスに移行する - オンライン
       url: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
   - linkListType: reference
     links:
-    - text: 既知の問題 - SQL Database 単一データベースへのオンライン移行
+    - text: 既知の問題 - SQL DB 単一データベースへのオンライン移行
       url: known-issues-azure-sql-online.md
-    - text: 既知の問題 -SQL Database マネージド インスタンスへのオンライン移行
+    - text: 既知の問題 - SQL DB マネージド インスタンスへのオンライン移行
       url: known-issues-azure-sql-db-managed-instance-online.md
-    - text: SQL Database マネージド インスタンスを移行するためのネットワーク トポロジ
+    - text: SQL DB マネージド インスタンスの移行のためのネットワーク トポロジ
       url: resource-network-topologies.md
-    - text: SQL Server から SQL Database マネージド インスタンスへオンライン移行するためのカスタム ロール
+    - text: SQL Server から SQL DB マネージド インスタンスへオンライン移行するためのカスタム ロール
       url: resource-custom-roles-sql-db-managed-instance.md
   - linkListType: video
     links:
-    - text: SQL Server 2008 を SQL Database マネージド インスタンスに移行する
+    - text: SQL Server 2008 を SQL DB マネージド インスタンスに移行する
       url: https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/
 - title: オープンソース データベースを Azure に移行する
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Azure Database for PostgreSQL に移行する - 単一サーバー - オンライン
+    - text: ポータルを使用してオンラインで Azure DB for PostgreSQL に移行する
+      url: tutorial-postgresql-azure-postgresql-online-portal.md
+    - text: CLI を使用してオンラインで Azure DB for PostgreSQL に移行する
       url: tutorial-postgresql-azure-postgresql-online.md
-    - text: RDS PostgreSQL を Azure Database for PostgreSQL に移行する - 単一サーバー - オンライン
+    - text: RDS PostgreSQL を Azure DB for PostgreSQL に移行する
       url: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
-    - text: Azure Database for MySQL に移行する - オンライン
+    - text: Azure DB for MySQL に移行する - オンライン
       url: tutorial-mysql-azure-mysql-online.md
-    - text: RDS MySQL を Azure Database for MySQL に移行する - オンライン
+    - text: RDS MySQL を Azure DB for MySQL に移行する - オンライン
       url: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
     - text: Azure Cosmos DB Mongo API に移行する - オンライン
       url: tutorial-mongodb-cosmos-db-online.md
@@ -97,13 +99,13 @@ landingContent:
       url: tutorial-mongodb-cosmos-db.md
   - linkListType: reference
     links:
-    - text: 既知の問題 - Azure Database for PostgreSQL へのオンライン移行 - 単一サーバー
+    - text: 既知の問題 - Azure DB for PostgreSQL へのオンライン移行
       url: known-issues-azure-postgresql-online.md
-    - text: 既知の問題 - Azure Database for MySQL へのオンライン移行
+    - text: 既知の問題 - Azure DB for MySQL へのオンライン移行
       url: known-issues-azure-mysql-online.md
   - linkListType: video
     links:
-    - text: PostgreSQL を Azure Database for PostgreSQL に移行する - 単一サーバー
+    - text: PostgreSQL を Azure DB for PostgreSQL 単一サーバーに移行する
       url: https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/
     - text: Azure Cosmos DB Mongo API に移行する
       url: https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/

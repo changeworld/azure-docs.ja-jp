@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 02/06/2019
+ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: a71751ba8dde2152a00a1455a51d13a3dedb792a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 51b69e8b7f6c980fd851cdf3e60ecfe0ade29e71
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437173"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187340"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>イベント ハブを含む名前空間を作成し、テンプレートを使用してキャプチャを有効にします
 
@@ -235,7 +235,7 @@ Azure Storage を保存先として選ぶ場合は、次のパラメーターを
 }
 ```
 
-Azure Data Lake Store を保存先として選ぶ場合は、次のパラメーターを使用します。 キャプチャしたイベントの保存先となる Data Lake Store パスには、アクセス許可を設定する必要があります。 アクセス許可の設定については、[こちらの記事](event-hubs-capture-enable-through-portal.md#capture-data-to-an-azure-data-lake-store-account)を参照してください。
+Azure Data Lake Store Gen1 を保存先として選ぶ場合は、次のパラメーターを使用します。 キャプチャしたイベントの保存先となる Data Lake Store パスには、アクセス許可を設定する必要があります。 アクセス許可を設定するには、「[Azure Data Lake Storage Gen 1 へのデータのキャプチャ](event-hubs-capture-enable-through-portal.md#capture-data-to-azure-data-lake-storage-gen-1)」を参照してください。
 
 ### <a name="subscriptionid"></a>subscriptionId
 

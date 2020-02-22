@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
-ms.date: 01/25/2019
-ms.openlocfilehash: 6b70eb1a6e51c98311ae51648b1a9618f9c3349d
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 02/07/2020
+ms.openlocfilehash: c228f3d6591cd72845101c00188f3fc4a55be644
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861338"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087353"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Transact-SQL (T-SQL) を使用して Elastic Database ジョブを作成および管理する
 
@@ -189,10 +189,13 @@ CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
 
 次の例では、複数のデータベースからパフォーマンス データを収集する新しいジョブを作成します。
 
-既定では、ジョブ エージェントは返された結果を格納するテーブルを作成しようとします。 そのため、出力資格情報に使用される資格情報に関連付けられたログインには、これを実行できる十分なアクセス許可が必要です。 事前にテーブルを手動で作成する場合は、次のプロパティが必要です。
+既定では、ジョブ エージェントは返された結果を格納する出力テーブルを作成します。 そのため、出力資格情報に関連付けられているデータベース プリンシパルには、少なくとも次の権限が必要です。データベースでは `CREATE TABLE`、出力テーブルまたはそのスキーマでは `ALTER`、`SELECT`、`INSERT`、`DELETE`、および [sys.indexes](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql) カタログ ビューでは `SELECT`。
+
+事前にテーブルを手動で作成する場合は、次のプロパティが必要です。
 1. 結果セットの正しい名前とデータ型を含む列。
 2. データ型が uniqueidentifier である internal_execution_id 用の追加の列。
 3. internal_execution_id 列上の `IX_<TableName>_Internal_Execution_ID` という名前の非クラスター化インデックス。
+4. 上記のすべての権限 (データベースに対する `CREATE TABLE` 権限を除く)。
 
 "[*ジョブ データベース*](sql-database-job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
@@ -405,7 +408,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 
 
 
-|ストアド プロシージャ  |[説明]  |
+|ストアド プロシージャ  |説明  |
 |---------|---------|
 |[sp_add_job](#sp_add_job)     |     新しいジョブを追加します。    |
 |[sp_update_job](#sp_update_job)    |      既存のジョブを更新します。   |
@@ -1192,7 +1195,7 @@ GO
 [ジョブ データベース](sql-database-job-automation-overview.md#job-database)では次のビューを使用できます。
 
 
-|表示  |[説明]  |
+|表示  |説明  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  ジョブの実行履歴を表示します。      |
 |[jobs](#jobs-view)     |   すべてのジョブを表示します。      |
@@ -1210,7 +1213,7 @@ GO
 ジョブの実行履歴を表示します。
 
 
-|列名|   データ型   |[説明]|
+|列名|   データ型   |説明|
 |---------|---------|---------|
 |**job_execution_id**   |UNIQUEIDENTIFIER|  ジョブ実行のインスタンスの一意の ID。
 |**job_name**   |nvarchar(128)  |ジョブの名前。
@@ -1238,7 +1241,7 @@ GO
 
 すべてのジョブを表示します。
 
-|列名|   データ型|  [説明]|
+|列名|   データ型|  説明|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |ジョブの名前。|
 |**job_id**|    UNIQUEIDENTIFIER    |ジョブの一意の ID。|
@@ -1256,7 +1259,7 @@ GO
 
 すべてのジョブのバージョンを表示します。
 
-|列名|   データ型|  [説明]|
+|列名|   データ型|  説明|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |ジョブの名前。|
 |**job_id**|    UNIQUEIDENTIFIER    |ジョブの一意の ID。|
@@ -1269,7 +1272,7 @@ GO
 
 各ジョブの現在のバージョンのすべてのステップを表示します。
 
-|列名    |データ型| [説明]|
+|列名    |データ型| 説明|
 |------|------|-------|
 |**job_name**   |nvarchar(128)| ジョブの名前。|
 |**job_id** |UNIQUEIDENTIFIER   |ジョブの一意の ID。|
@@ -1310,7 +1313,7 @@ GO
 
 すべてのターゲット グループを一覧表示します。
 
-|列名|データ型| [説明]|
+|列名|データ型| 説明|
 |-----|-----|-----|
 |**target_group_name**| nvarchar(128)   |ターゲット グループ (データベースのコレクション) の名前。 
 |**target_group_id**    |UNIQUEIDENTIFIER   |ターゲット グループの一意の ID。
@@ -1321,7 +1324,7 @@ GO
 
 すべてのターゲット グループのすべてのメンバーを表示します。
 
-|列名|データ型| [説明]|
+|列名|データ型| 説明|
 |-----|-----|-----|
 |**target_group_name**  |nvarchar(128)|ターゲット グループ (データベースのコレクション) の名前。 |
 |**target_group_id**    |UNIQUEIDENTIFIER   |ターゲット グループの一意の ID。|

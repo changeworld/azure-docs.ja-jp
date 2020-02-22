@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/26/2019
 ms.author: helohr
-ms.openlocfilehash: 41b0c1ced9e66bd58d73683865b2c40afc16c5d3
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: de875ca9db9716e59c3c6efc0d7fb34e31f0c1d2
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605850"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367547"
 ---
 # <a name="connect-with-the-android-client"></a>Android クライアントに接続する
 
@@ -47,6 +47,6 @@ ms.locfileid: "73605850"
 
 フィードをサブスクライブすると、フィードのコンテンツが自動で定期的に更新されます。 管理者によって行われる変更に基づいて、リソースが追加、変更、または削除されることがあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Android クライアントの使用方法の詳細については、「[Android クライアントの概要](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-android)」を参照してください。
+Android クライアントの使用方法の詳細については、「[Android クライアントの概要](/windows-server/remote/remote-desktop-services/clients/remote-desktop-android/)」を参照してください。

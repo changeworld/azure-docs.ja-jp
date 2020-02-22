@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3cd57c09c08ab4c86feeca27915639123b439d0
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: d63aaa0103715a928cdd5332de738a473b329f2e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180039"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186085"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode-preview"></a>レポートのみモードで条件付きアクセス ポリシーを構成する (プレビュー)
 
@@ -40,6 +40,9 @@ ms.locfileid: "73180039"
 1. **[Azure Active Directory]**  >  **[サインイン]** の順に移動します。
 1. 1 つのサインインを選択するか、フィルターを追加して結果を絞り込みます。
 1. **[詳細]** ドロワーで、 **[レポート専用 (プレビュー)]** タブを選択して、サインイン中に評価されたポリシーを表示します。
+
+> [!NOTE]
+> サインイン ログをダウンロードする場合は、条件付きアクセスの レポート専用の結果データを含めるための JSON 形式を選択します。
 
 ## <a name="set-up-azure-monitor-integration-with-azure-ad"></a>Azure Monitor と Azure AD の統合をセットアップする
 
@@ -79,7 +82,7 @@ Azure AD ログと Azure Monitor を統合したら、分析情報への条件�
 
 [条件付きアクセスポリシー] ドロップダウンは、4 時間以内の最新のサインインを照会して設定されます。 過去 4 時間以内にテナントにサインインがない場合は、ドロップダウンが空になることがあります。 サインインの頻度が低い小規模のテナントなど、この遅延が永続的な問題である場合、管理者は [条件付きアクセスポリシー] ドロップダウンのクエリを編集して、クエリの時間を 4 時間より長い時間に延長できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Conditional Access common policies](concept-conditional-access-policy-common.md) (条件付きアクセスの一般的なポリシー)
 

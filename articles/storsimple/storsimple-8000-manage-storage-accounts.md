@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure StorSimple 8000 シリーズ デバイスの StorSimple ストレージ アカウント資格情報を管理する | Microsoft Docs
+title: ストレージ アカウントの資格情報、StorSimple 8000 シリーズのデバイスの管理
 description: StorSimple デバイス マネージャーの [構成] ページを使用してストレージ アカウントを追加、編集、または削除する方法や、ストレージ アカウントのセキュリティ キーのローテーションを行う方法について説明します。
 services: storsimple
 documentationcenter: NA
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 53aa442b86f5c82ded2f212a64f43852e6b3d2c5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 11bc97be7ff8d924f7ccd0b4672a8f4cb0a178ff
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60632693"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116327"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>StorSimple デバイス マネージャー サービスを使用してストレージ アカウント資格情報を管理する
 
@@ -176,7 +176,7 @@ StorSimple デバイス マネージャー サービスにこの変更を認識�
    2. ストレージ アクセス キーは、StorSimple デバイス マネージャー サービスで更新する必要があります。 この場合は、ストレージ アクセス キーを見ることができます。 **[ストレージ アカウントのアクセス キー]** ボックスに新しいキーを入力します。 
    3. 変更を保存します。 ストレージ アカウント アクセス キーが更新されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [StorSimple のセキュリティの詳細](storsimple-8000-security.md)
 * [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理](storsimple-8000-manager-service-administration.md)の詳細
 

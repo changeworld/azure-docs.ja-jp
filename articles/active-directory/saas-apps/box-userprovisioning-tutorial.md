@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 01/26/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd7826455624ca4a84d668455f522cbde411ac8b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c1397b4189a9c2c15e3878687ea8c67c1da7567f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60431758"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058571"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>チュートリアル:Box を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、Azure AD から Box にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するうえで Box と Azure AD で実行する必要がある手順について説明します。
 
 > [!NOTE]
-> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。
+> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -101,11 +101,11 @@ Azure Portal の **[Box] > [ユーザーとグループ]** タブでは、Box �
 
 6. **[Box へのアクセスを許可するにはログインしてください]** ページで、必要な資格情報を入力し、 **[認証する]** をクリックします。 
    
-    ![Enable automatic user provisioning](./media/box-userprovisioning-tutorial/IC769546.png "Enable automatic user provisioning")
+    ![自動ユーザー プロビジョニングの有効化](./media/box-userprovisioning-tutorial/IC769546.png "自動ユーザー プロビジョニングの有効化")
 
 7. **[Box のアクセス許可]** をクリックしてこの操作を承認し、Azure Portal に戻ります。 
    
-    ![Enable automatic user provisioning](./media/box-userprovisioning-tutorial/IC769549.png "Enable automatic user provisioning")
+    ![自動ユーザー プロビジョニングの有効化](./media/box-userprovisioning-tutorial/IC769549.png "自動ユーザー プロビジョニングの有効化")
 
 8. Azure Portal で、 **[テスト接続]** をクリックして Azure AD が Box アプリに接続できることを確認します。 接続が失敗した場合、使用中の Box アカウントに Team Admin アクセス許可があることを確認して、 **"承認"** の手順をもう一度試してください。
 
@@ -123,11 +123,11 @@ Azure Portal の **[Box] > [ユーザーとグループ]** タブでは、Box �
 
 [ユーザーとグループ] セクションで Box に割り当てたユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ ログを取得できます。このログには、プロビジョニング サービスによって Box アプリに対して実行されたすべてのアクションが記載されています。
 
-Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
+Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」をご覧ください。
 
 Box テナントでは、同期済みのユーザーは、 **[管理コンソール]** の **[管理対象のユーザー]** に表示されます。
 
-![Integration status](./media/box-userprovisioning-tutorial/IC769556.png "Integration status")
+![統合の状態](./media/box-userprovisioning-tutorial/IC769556.png "統合状態")
 
 
 ## <a name="additional-resources"></a>その他のリソース

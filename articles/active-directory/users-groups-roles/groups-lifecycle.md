@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b49b10acb7f2deaed217bb28478d2c98a033eab9
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 83133fed401dac51a8dd6a653ccfd86117e956ed
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768684"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046454"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Office 365 グループの有効期限ポリシーの構成
 
@@ -30,8 +30,8 @@ ms.locfileid: "75768684"
 
 - ユーザー アクティビティがあるグループは、有効期限が近づくと自動的に更新されます。
 - グループが自動更新されない場合、グループの所有者には、グループを更新するように通知されます。
-- 更新されないグループはすべて削除されます
-- 削除された Office 365 グループは、30 日以内であればグループの所有者または管理者が復元できます
+- 更新されないグループはすべて削除されます。
+- 削除された Office 365 グループは、30 日以内であればグループの所有者または管理者が復元できます。
 
 現在、Azure AD 組織内のすべての Office 365 グループに対して構成できる有効期限ポリシーは 1 つのみです。
 
@@ -42,7 +42,7 @@ Azure AD PowerShell コマンドレットをダウンロードしてインスト
 
 ## <a name="activity-based-automatic-renewal"></a>アクティビティベースの自動更新
 
-Azure AD インテリジェンスを使うと、最近使用されたかどうかに基づいてグループは自動的に更新されるようになります。 この機能は、Outlook、SharePoint、Teams、Yammer などの Office 365 サービス全体のグループに含まれるユーザー アクティビティに基づいているため、グループ所有者による手動操作は不要になります。 たとえば、所有者またはグループ メンバーが、SharePoint でドキュメントをアップロードする、Teams チャンネルにアクセスする、Outlook でグループにメールを送信するなどの操作を行うと、グループは自動的に更新され、所有者には更新通知が送信されません。
+Azure AD インテリジェンスを使うと、最近使用されたかどうかに基づいてグループが自動的に更新されるようになります。 この機能は、Outlook、SharePoint、Teams、Yammer などの Office 365 サービス全体のグループに含まれるユーザー アクティビティに基づいているため、グループ所有者による手動操作は不要になります。 たとえば、所有者またはグループ メンバーが、SharePoint でドキュメントをアップロードする、Teams チャンネルにアクセスする、Outlook でグループにメールを送信するなどの操作を行うと、グループは自動的に更新され、所有者には更新通知が送信されません。
 
 ### <a name="activities-that-automatically-renew-group-expiration"></a>グループの有効期限を自動的に更新するアクティビティ
 
@@ -55,6 +55,8 @@ Azure AD インテリジェンスを使うと、最近使用されたかどう�
 ### <a name="auditing-and-reporting"></a>監査とレポート
 
 管理者は、Azure AD のアクティビティ監査ログから自動的に更新されたグループの一覧を取得できます。
+
+![アクティビティに基づくグループの自動更新](./media/groups-lifecycle/audit-logs-autorenew-group.png)
 
 ## <a name="roles-and-permissions"></a>ロールとアクセス許可
 

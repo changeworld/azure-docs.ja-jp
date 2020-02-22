@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: dapine
-ms.openlocfilehash: d5ecc104c7845a1881cbcdecfbccb75148f6e070
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ca7e7f7460db82a357ed8aa240467a6894254217
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "74815365"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086998"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Speech サービス コンテナーをインストールして実行する (プレビュー)
 
@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Speech コンテナーを使用する前の前提条件は次のとおりです。
 
-| 必須 | 目的 |
+| Required | 目的 |
 |--|--|
 | Docker エンジン | [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br> |
 | Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。 |
@@ -73,25 +73,25 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 次の表に、各 Speech コンテナーに割り当てるリソースの最小値と推奨値を示します。
 
-# <a name="speech-to-texttabstt"></a>[音声テキスト変換](#tab/stt)
+# <a name="speech-to-text"></a>[音声テキスト変換](#tab/stt)
 
 | コンテナー | 最小値 | 推奨 |
 |-----------|---------|-------------|
 | 音声テキスト変換 | 2 コア、2 GB のメモリ | 4 コア、4 GB メモリ |
 
-# <a name="custom-speech-to-texttabcstt"></a>[カスタム音声変換](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[カスタム音声変換](#tab/cstt)
 
 | コンテナー | 最小値 | 推奨 |
 |-----------|---------|-------------|
 | カスタム音声変換 | 2 コア、2 GB のメモリ | 4 コア、4 GB メモリ |
 
-# <a name="text-to-speechtabtts"></a>[テキスト読み上げ](#tab/tts)
+# <a name="text-to-speech"></a>[テキスト読み上げ](#tab/tts)
 
 | コンテナー | 最小値 | 推奨 |
 |-----------|---------|-------------|
 | テキスト読み上げ | 1 コア、2 GB メモリ | 2 コア、3 GB のメモリ |
 
-# <a name="custom-text-to-speechtabctts"></a>[カスタム テキスト読み上げ](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[カスタム テキスト読み上げ](#tab/ctts)
 
 | コンテナー | 最小値 | 推奨 |
 |-----------|---------|-------------|
@@ -110,25 +110,25 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 Speech のコンテナー イメージは、次のコンテナー レジストリで入手できます。
 
-# <a name="speech-to-texttabstt"></a>[音声テキスト変換](#tab/stt)
+# <a name="speech-to-text"></a>[音声テキスト変換](#tab/stt)
 
 | コンテナー | リポジトリ |
 |-----------|------------|
 | 音声テキスト変換 | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest` |
 
-# <a name="custom-speech-to-texttabcstt"></a>[カスタム音声変換](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[カスタム音声変換](#tab/cstt)
 
 | コンテナー | リポジトリ |
 |-----------|------------|
 | カスタム音声変換 | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text:latest` |
 
-# <a name="text-to-speechtabtts"></a>[テキスト読み上げ](#tab/tts)
+# <a name="text-to-speech"></a>[テキスト読み上げ](#tab/tts)
 
 | コンテナー | リポジトリ |
 |-----------|------------|
 | テキスト読み上げ | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
 
-# <a name="custom-text-to-speechtabctts"></a>[カスタム テキスト読み上げ](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[カスタム テキスト読み上げ](#tab/ctts)
 
 | コンテナー | リポジトリ |
 |-----------|------------|
@@ -140,7 +140,7 @@ Speech のコンテナー イメージは、次のコンテナー レジスト�
 
 ### <a name="docker-pull-for-the-speech-containers"></a>Speech コンテナー用の docker pull
 
-# <a name="speech-to-texttabstt"></a>[音声テキスト変換](#tab/stt)
+# <a name="speech-to-text"></a>[音声テキスト変換](#tab/stt)
 
 #### <a name="docker-pull-for-the-speech-to-text-container"></a>Speech-to-text コンテナー用の docker pull
 
@@ -169,7 +169,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 
 **音声テキスト変換**コンテナーのサポートされている全ロケールについては、「[音声テキスト変換イメージ タグ](../containers/container-image-tags.md#speech-to-text)」を参照してください。
 
-# <a name="custom-speech-to-texttabcstt"></a>[カスタム音声変換](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[カスタム音声変換](#tab/cstt)
 
 #### <a name="docker-pull-for-the-custom-speech-to-text-container"></a>カスタム音声変換コンテナー用の docker pull
 
@@ -182,7 +182,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-spee
 > [!NOTE]
 > Custom Speech コンテナーの `locale` と `voice` は、コンテナーによって取り込まれるカスタム モデルによって決定されます。
 
-# <a name="text-to-speechtabtts"></a>[テキスト読み上げ](#tab/tts)
+# <a name="text-to-speech"></a>[テキスト読み上げ](#tab/tts)
 
 #### <a name="docker-pull-for-the-text-to-speech-container"></a>Text-to-speech コンテナー用の docker pull
 
@@ -214,7 +214,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 > [!IMPORTANT]
 > *標準 Text-to-speech* HTTP POST を構築するとき、[Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md) メッセージには、`name` 属性を含む `voice` 要素が必要になります。 値はそれに対応するコンテナーのロケールと音声であり、["短い名前"](language-support.md#standard-voices) とも呼ばれています。 たとえば、`latest` タグには `en-US-JessaRUS` という音声名が与えられます。
 
-# <a name="custom-text-to-speechtabctts"></a>[カスタム テキスト読み上げ](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[カスタム テキスト読み上げ](#tab/ctts)
 
 #### <a name="docker-pull-for-the-custom-text-to-speech-container"></a>カスタム テキスト読み上げコンテナー用の docker pull
 
@@ -240,7 +240,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-text
 
 コンテナーを実行するには、[docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドを使用します。 `{Endpoint_URI}` と `{API_Key}` の値を取得する方法の詳細については、「[必須パラメーターの収集](#gathering-required-parameters)」を参照してください。 `docker run` コマンドの追加[例](speech-container-configuration.md#example-docker-run-commands)も利用できます。
 
-# <a name="speech-to-texttabstt"></a>[音声テキスト変換](#tab/stt)
+# <a name="speech-to-text"></a>[音声テキスト変換](#tab/stt)
 
 *Speech-to-text* コンテナーを実行するには、次の `docker run` コマンドを実行します。
 
@@ -259,7 +259,7 @@ ApiKey={API_KEY}
 * TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます。
 * コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
 
-# <a name="custom-speech-to-texttabcstt"></a>[カスタム音声変換](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[カスタム音声変換](#tab/cstt)
 
 *カスタム音声変換* コンテナーは Custom Speech モデルに依存します。 カスタム モデルは、[Custom Speech ポータル](https://speech.microsoft.com/customspeech)を利用して[トレーニング](how-to-custom-speech-train-model.md)されている必要があります。 コンテナーを実行するには、Custom **Speech モデル ID** が必須です。 Custom Speech ポータルの **[トレーニング]** ページにあります。 Custom Speech ポータルから、 **[トレーニング]** ページに移動し、モデルを選択します。
 <br>
@@ -302,7 +302,7 @@ ApiKey={API_KEY}
 * カスタム モデルが以前にダウンロードされた場合、`ModelId` は無視されます。
 * コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
 
-# <a name="text-to-speechtabtts"></a>[テキスト読み上げ](#tab/tts)
+# <a name="text-to-speech"></a>[テキスト読み上げ](#tab/tts)
 
 *Text-to-speech* コンテナーを実行するには、次の `docker run` コマンドを実行します。
 
@@ -321,7 +321,7 @@ ApiKey={API_KEY}
 * TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます。
 * コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
 
-# <a name="custom-text-to-speechtabctts"></a>[カスタム テキスト読み上げ](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[カスタム テキスト読み上げ](#tab/ctts)
 
 *カスタム テキスト読み上げ* コンテナーはカスタム音声モデルに依存します。 カスタム モデルは、[カスタム音声ポータル](https://aka.ms/custom-voice-portal)を利用して[トレーニング](how-to-custom-voice-create-voice.md)されている必要があります。 コンテナーを実行するには、カスタム音声**モデル ID** が必須です。 カスタム音声ポータルの **[トレーニング]** ページにあります。 カスタム音声ポータルから、 **[トレーニング]** ページに移動し、モデルを選択します。
 <br>
@@ -425,7 +425,7 @@ Speech コンテナーは、Azure アカウントの *Speech* リソースを使
   * *カスタム テキスト読み上げ*
 * コンテナー イメージは、Azure のコンテナー レジストリからダウンロードされます。
 * コンテナー イメージを Docker で実行します。
-* REST API または SDK を使用して、コンテナーのホスト URI を指定することによって、Speech コンテナーの操作を呼び出すことができます。
+* REST API (テキスト読み上げのみ) を使用するか、SDK (音声変換またはテキスト読み上げ) を使用するかにかかわらず、コンテナーのホスト URI を指定します。 
 * コンテナーをインスタンス化するときは、課金情報を指定するように要求されます。
 
 > [!IMPORTANT]

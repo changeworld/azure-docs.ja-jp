@@ -1,99 +1,80 @@
 ---
 title: チュートリアル:Insight4GRC を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
-description: Azure Active Directory を構成して、ユーザー アカウントを Insight4GRC に自動的にプロビジョニングまたはプロビジョニング解除する方法を説明します。
+description: Azure AD から Insight4GRC に対してユーザー アカウントを自動的にプロビジョニング、またはプロビジョニング解除する方法を説明します。
 services: active-directory
 documentationcenter: ''
-author: zchia
-writer: zchia
+author: Zhchia
+writer: Zhchia
 manager: beatrizd
-ms.assetid: 34718201-4f0e-4260-9af0-b3b70a1e8265
+ms.assetid: d0eab8a0-571b-4609-96b1-bdbc761a25de
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2019
-ms.author: zhchia
-ms.openlocfilehash: 7e8c6c2277f29fc114033aac24844e9e85816b78
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.date: 02/04/2020
+ms.author: Zhchia
+ms.openlocfilehash: 0ca9ed8781a13f9ab5e949e0e5f019a851dc75f4
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950760"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057483"
 ---
-# <a name="tutorial-configure-insight4grc--for-automatic-user-provisioning"></a>チュートリアル:Insight4GRC を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>チュートリアル:Insight4GRC を構成し、自動ユーザー プロビジョニングに対応させる
 
-このチュートリアルの目的は、Insight4GRC に対してユーザー、グループ、またはその両方のプロビジョニングまたはプロビジョニング解除を自動的に実行するように Azure Active Directory (Azure AD) を構成するために Insight4GRC と Azure AD 内で実行される手順を示すことです。
+このチュートリアルでは、自動ユーザー プロビジョニングを構成するために Insight4GRC と Azure Active Directory (Azure AD) の両方で実行する必要がある手順について説明します。 構成すると、Azure AD では、ユーザーとグループの [Insight4GRC](https://www.rsmuk.com/) へのプロビジョニングおよびプロビジョニング解除が Azure AD プロビジョニング サービスを使って自動的に行われるようになります。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。 
 
-> [!NOTE]
-> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。
->
-> 現在、このコネクタはパブリック プレビュー段階にあります。 プレビュー機能を使用するための一般的な Microsoft Azure 使用条件の詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
+## <a name="capabilities-supported"></a>サポートされる機能
+> [!div class="checklist"]
+> * Insight4GRC でユーザーを作成する
+> * アクセスが不要になった場合に Insight4GRC のユーザーを削除する
+> * Azure AD と Insight4GRC の間でユーザー属性の同期を維持する
+> * Insight4GRC でグループとグループ メンバーシップをプロビジョニングする
+> * Insight4GRC に[シングル サインオンする](https://docs.microsoft.com/azure/active-directory/saas-apps/insight4grc-tutorial) (推奨)
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
-* Azure AD テナント。
-* [Insight4GRC テナント](https://www.rsmuk.com/)。
+* [Azure AD テナント](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* プロビジョニングを構成するための[アクセス許可](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。 
 * 管理者アクセス許可がある Insight4GRC のユーザー アカウント。
 
-## <a name="assigning-users-to-insight4grc"></a>Insight4GRC へのユーザーの割り当て 
+## <a name="step-1-plan-your-provisioning-deployment"></a>手順 1. プロビジョニングのデプロイを計画する
+1. [プロビジョニング サービスのしくみ](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)を確認します。
+2. [プロビジョニングの対象](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)となるユーザーを決定します。
+3. [Azure AD と Insight4GRC の間でマップする](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)データを決定します。 
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
-
-自動ユーザー プロビジョニングを構成して有効にする前に、Insight4GRC へのアクセスが必要な Azure AD 内のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを Insight4GRC に割り当てることができます。
-
-* [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
-
-## <a name="important-tips-for-assigning-users-to-insight4grc"></a>ユーザーを Insight4GRC に割り当てる際の重要なヒント 
-
-* 1 名の Azure AD ユーザーを Insight4GRC に割り当てて、自動ユーザー プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
-
-* Insight4GRC にユーザーを割り当てるときは、割り当てダイアログで、有効なアプリケーション固有ロール (使用可能な場合) を選択する必要があります。 **既定のアクセス** ロールのユーザーは、プロビジョニングから除外されます。
-
-## <a name="setup-insight4grc-for-provisioning"></a>プロビジョニングのための Insight4GRC の設定
+## <a name="step-2-configure-insight4grc-to-support-provisioning-with-azure-ad"></a>手順 2. Azure AD でのプロビジョニングをサポートするように Insight4GRC を構成する
 
 Azure AD での自動ユーザー プロビジョニング用に Insight4GRC を構成する前に、Insight4GRC で SCIM プロビジョニングを有効にする必要があります。
 
-1. ベアラー トークンを取得するには、エンドカスタマーが[サポート チーム](mailto:support.ss@rsmuk.com)に連絡する必要があり、このチームがカスタマーにベアラー トークンを提供します。
-
+1. ベアラー トークンを取得するには、エンド ユーザーが [サポート チーム](mailto:support.ss@rsmuk.com)に連絡する必要があります。
 2. SCIM エンドポイント URL を取得するには、SCIM エンドポイント URL の作成に使用される Insight4GRC ドメイン名を準備しておく必要があります。 Insight4GRC ドメイン名は、Insight4GRC を使用した最初のソフトウェア購入の一部として取得できます。
 
+## <a name="step-3-add-insight4grc-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから Insight4GRC を追加する
 
-## <a name="add-insight4grc--from-the-gallery"></a>ギャラリーから Insight4GRC を追加する
+Azure AD アプリケーション ギャラリーから Insight4GRC を追加して、Insight4GRC へのプロビジョニングの管理を開始します。 SSO のために Insight4GRC を以前に設定している場合は、その同じアプリケーションを使用することができます。 ただし、統合を初めてテストするときは、別のアプリを作成することをお勧めします。 ギャラリーからアプリケーションを追加する方法の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)を参照してください。 
 
-Azure AD で自動ユーザー プロビジョニング用に Insight4GRC を構成するには、Azure AD アプリケーション ギャラリーから Insight4GRC をマネージド SaaS アプリケーションの一覧に追加する必要があります。
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>手順 4. プロビジョニングの対象となるユーザーを定義する 
 
-**Azure AD アプリケーション ギャラリーから Insight4GRC を追加するには、次の手順を実行します。**
+Azure AD プロビジョニング サービスを使用すると、アプリケーションへの割り当て、ユーザーまたはグループの属性に基づいてプロビジョニングされるユーザーのスコープを設定できます。 割り当てに基づいてアプリにプロビジョニングされるユーザーのスコープを設定する場合、以下の[手順](../manage-apps/assign-user-or-group-access-portal.md)を使用して、ユーザーとグループをアプリケーションに割り当てることができます。 ユーザーまたはグループの属性のみに基づいてプロビジョニングされるユーザーのスコープを設定する場合、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)で説明されているスコープ フィルターを使用できます。 
 
-1. **[Azure portal](https://portal.azure.com)** の左側のナビゲーション パネルで、 **[Azure Active Directory]** を選択します。
+* Insight4GRC にユーザーとグループを割り当てるときは、**既定のアクセス**以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)してロールを追加することができます。 
 
-    ![Azure Active Directory のボタン](common/select-azuread.png)
+* 小さいところから始めましょう。 全員にロールアウトする前に、少数のユーザーとグループでテストします。 プロビジョニングのスコープが割り当て済みユーザーとグループに設定される場合、これを制御するには、1 つまたは 2 つのユーザーまたはグループをアプリに割り当てます。 スコープがすべてのユーザーとグループに設定されている場合は、[属性ベースのスコープ フィルター](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)を指定できます。 
 
-2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+## <a name="step-5-configure-automatic-user-provisioning-to-insight4grc"></a>手順 5. Insight4GRC への自動ユーザー プロビジョニングを構成する 
 
-3. 新しいアプリケーションを追加するには、ウィンドウの上部にある **[新しいアプリケーション]** ボタンを選びます。
+このセクションでは、Azure AD でのユーザー、グループ、またはその両方の割り当てに基づいて、TestApp でユーザー、グループ、またはその両方が作成、更新、および無効化されるように Azure AD プロビジョニング サービスを構成する手順について説明します。
 
-    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
+### <a name="to-configure-automatic-user-provisioning-for-insight4grc-in-azure-ad"></a>Azure AD 内で Insight4GRC の自動ユーザー プロビジョニングを構成するには、次の操作を実行します。
 
-4. 検索ボックスに「**Insight4GRC**」と入力し、結果ウィンドウで **[Insight4GRC]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
-
-    ![結果一覧の Insight4GRC](common/search-new-app.png)
-
-## <a name="configuring-automatic-user-provisioning-to-insight4grc"></a>Insight4GRC への自動ユーザー プロビジョニングの構成  
-
-このセクションでは、Azure AD でのユーザーやグループの割り当てに基づいて Insight4GRC のユーザーやグループを作成、更新、無効化するように Azure AD プロビジョニング サービスを構成する手順について説明します。
-
-> [!TIP]
-> Insight4GRC で SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Insight4GRC シングル サインオンのチュートリアル](insight4grc-tutorial.md)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
-
-### <a name="to-configure-automatic-user-provisioning-for-insight4grc--in-azure-ad"></a>Azure AD 内で Insight4GRC の自動ユーザー プロビジョニングを構成するには、次の操作を実行します。
-
-1. [Azure Portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. [Azure portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -109,39 +90,48 @@ Azure AD で自動ユーザー プロビジョニング用に Insight4GRC を構
 
     ![[プロビジョニング] タブ](common/provisioning-automatic.png)
 
-5.  [管理者資格情報] セクションで、以前に取得した {Insight4GRC Domain Name} の値を使用して、 **[テナント URL]** に「`https://{Insight4GRC Domain Name}.insight4grc.com/public/api/scim/v2`」と入力します。 以前に取得した**トークン値**を **[シークレット トークン]** に入力します。 **[テスト接続]** をクリックして、Azure AD から Insight4GRC への接続を確保します。 接続できない場合は、使用中の Insight4GRC アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクションで、Insight4GRC 管理者の資格情報とユーザー名を入力します。 **[テスト接続]** をクリックして、Azure AD から Insight4GRC への接続を確保します。 接続できない場合は、使用中の Insight4GRC アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
-    ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
+    ![プロビジョニング](./media/insight4grc-provisioning-tutorial/provisioning.png)
 
 6. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
     ![通知用メール](common/provisioning-notification-email.png)
 
-7. **[Save]** をクリックします。
+7. **[保存]** を選択します。
 
 8. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Insight4GRC]\(Azure Active Directory ユーザーを Insight4GRC に同期する\)** を選択します。
 
-    ![Insight4GRC とユーザーのマッピング](media/insight4grc-provisioning-tutorial/usermapping.png)
+9. **[属性マッピング]** セクションで、Azure AD から Insight4GRC に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Insight4GRC のユーザー アカウントとの照合に使用されます。 [一致する対象の属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)を変更する場合は、その属性に基づいたユーザーのフィルター処理が確実に Insight4GRC API でサポートされているようにする必要があります。 **[保存]** ボタンをクリックして変更をコミットします。
 
-9. **[属性マッピング]** セクションで、Azure AD から Insight4GRC に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Insight4GRC のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
+   |Attribute|Type|
+   |---|---|
+   |userName|String|
+   |externalId|String|
+   |active|Boolean|
+   |title|String|
+   |name.givenName|String|
+   |name.familyName|String|
+   |emails[type eq "work"].value|String|
+   |phoneNumbers[type eq "work"].value|String|
 
-    ![Insight4GRC とユーザーのマッピング](media/insight4grc-provisioning-tutorial/userattribute.png)
+10. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to Insight4GRC]\(Azure Active Directory グループを Insight4GRC に同期する\)** を選択します。
 
-10. **[マッピング]** セクションの **[Synchronize Azure Active Directory Group to Insight4GRC]\(Azure Active Directory グループを Insight4GRC に同期する\)** を選択します。
+11. **[属性マッピング]** セクションで、Azure AD から Insight4GRC に同期されるグループ属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Insight4GRC のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![Insight4GRC とグループのマッピング](media/insight4grc-provisioning-tutorial/groupmapping.png)
+      |Attribute|Type|
+      |---|---|
+      |displayName|String|
+      |externalId|String|
+      |members|リファレンス|
 
-11. **[属性マッピング]** セクションで、Azure AD から Insight4GRC に同期されるグループ属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Insight4GRC のグループ アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
+10. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
-    ![Insight4GRC とグループのマッピング](media/insight4grc-provisioning-tutorial/groupattribute.png)
-
-10. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
-
-11. Insight4GRC に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+13. Insight4GRC に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
     ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
 
-12. **[設定]** セクションの **[スコープ]** で目的の値を選択して、Insight4GRC にプロビジョニングするユーザーやグループを定義します。
+14. **[設定]** セクションの **[スコープ]** で目的の値を選択して、Insight4GRC にプロビジョニングするユーザーやグループを定義します。
 
     ![プロビジョニングのスコープ](common/provisioning-scope.png)
 
@@ -149,16 +139,20 @@ Azure AD で自動ユーザー プロビジョニング用に Insight4GRC を構
 
     ![プロビジョニング構成の保存](common/provisioning-configuration-save.png)
 
-これにより、 **[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Insight4GRC に対して実行されたすべてのアクションが記載されています。
+この操作により、 **[設定]** セクションの **[スコープ]** で定義したすべてのユーザーとグループの初期同期サイクルが開始されます。 初期サイクルは後続の同期よりも実行に時間がかかります。後続のサイクルは、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 
 
-Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
+## <a name="step-6-monitor-your-deployment"></a>手順 6. デプロイを監視する
+プロビジョニングを構成したら、次のリソースを使用してデプロイを監視します。
 
+* [プロビジョニング ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
+* [進行状況バー](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
+* プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)。
+* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)。
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)
+* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)
