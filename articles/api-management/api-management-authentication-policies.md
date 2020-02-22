@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 572d8c4b59622156e8b3aca4565bbc206367f6d4
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 5ca153f0d52b65aa1ee56d5757381f1f31c7eeb5
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514841"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120828"
 ---
 # <a name="api-management-authentication-policies"></a>API Management の認証ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
@@ -48,16 +48,16 @@ ms.locfileid: "72514841"
 
 ### <a name="elements"></a>要素
 
-|名前|説明|必須|
+|Name|説明|Required|
 |----------|-----------------|--------------|
 |authentication-basic|ルート要素。|はい|
 
 ### <a name="attributes"></a>属性
 
-|名前|説明|必須|Default|
+|Name|説明|Required|Default|
 |----------|-----------------|--------------|-------------|
 |username|基本認証の資格情報のユーザー名を指定します。|はい|該当なし|
-|password|基本認証の資格情報のパスワードを指定します。|はい|該当なし|
+|パスワード|基本認証の資格情報のパスワードを指定します。|はい|該当なし|
 
 ### <a name="usage"></a>使用法
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
@@ -88,13 +88,13 @@ ms.locfileid: "72514841"
 
 ### <a name="elements"></a>要素  
   
-|名前|説明|必須|  
+|Name|説明|Required|  
 |----------|-----------------|--------------|  
 |authentication-certificate|ルート要素。|はい|  
   
 ### <a name="attributes"></a>属性  
   
-|名前|説明|必須|Default|  
+|Name|説明|Required|Default|  
 |----------|-----------------|--------------|-------------|  
 |thumbprint|クライアント証明書のサムプリント。|`thumbprint` または `certificate-id` のいずれかが存在しなければなりません。|該当なし|  
 |証明書 ID|証明書リソースの名前。|`thumbprint` または `certificate-id` のいずれかが存在しなければなりません。|該当なし|  
@@ -147,17 +147,17 @@ ms.locfileid: "72514841"
 
 ### <a name="elements"></a>要素  
   
-|名前|説明|必須|  
+|Name|説明|Required|  
 |----------|-----------------|--------------|  
 |authentication-managed-identity |ルート要素。|はい|  
   
 ### <a name="attributes"></a>属性  
   
-|名前|説明|必須|Default|  
+|Name|説明|Required|Default|  
 |----------|-----------------|--------------|-------------|  
-|resource|文字列 をオンにします。 Azure Active Directory におけるターゲット Web API のアプリ ID の URI (セキュリティで保護されたリソース)。|はい|該当なし|  
+|resource|文字列 をオンにします。 Azure Active Directory におけるターゲット Web API のアプリ ID (セキュリティで保護されたリソース)。|はい|該当なし|  
 |output-token-variable-name|文字列 をオンにします。 オブジェクトの種類 `string` としてトークン値を受け取るコンテキスト変数の名前。 |いいえ|該当なし|  
-|ignore-error|ブール値。 `true` に設定された場合、アクセス トークンが取得されなかったとしても、ポリシー パイプラインは引き続き実行されます。|いいえ|false|  
+|ignore-error|Boolean です。 `true` に設定された場合、アクセス トークンが取得されなかったとしても、ポリシー パイプラインは引き続き実行されます。|いいえ|false|  
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
@@ -166,7 +166,7 @@ ms.locfileid: "72514841"
   
 -   **ポリシー スコープ:** すべてのスコープ
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ポリシーを使用する方法の詳細については、次のトピックを参照してください。
 
 + [API Management のポリシー](api-management-howto-policies.md)

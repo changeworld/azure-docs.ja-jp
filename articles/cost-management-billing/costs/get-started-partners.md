@@ -62,7 +62,7 @@ Azure Cost Management には、課金アカウントまたはサブスクリプ�
 
 ## <a name="manage-costs-with-partner-tenant-billing-scopes"></a>パートナー テナントの課金スコープを使ってコストを管理する
 
-顧客を Microsoft 顧客契約にオンボードした後、次の_課金スコープ_をテナントで利用できます。 スコープを使用して Cost Management でコストを管理します。
+顧客を Microsoft 顧客契約にオンボードした後、次の _課金スコープ_ をテナントで利用できます。 スコープを使用して Cost Management でコストを管理します。
 
 ### <a name="billing-account-scope"></a>課金アカウントのスコープ
 

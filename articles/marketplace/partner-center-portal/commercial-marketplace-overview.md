@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: f6ba5c240a9ad74d9a2fab41496ce519f25fc4dc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/06/2020
+ms.openlocfilehash: 2e5ae90cf6ee8bccc9919c88bc695bf944f58a67
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812071"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069440"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>パートナー センターでの商業マーケットプレース ポータルの概要
 
@@ -29,11 +29,12 @@ Microsoft パートナー センターの商業マーケットプレース ポ�
 
 ## <a name="migration-from-cloud-partner-portal"></a>Cloud パートナー ポータルからの移行
 
-パートナー センターは、Microsoft とソフトウェア パブリッシャーとの関係のあらゆる側面をより適切に統合するように進化しています。 この進化の一部として Microsoft は、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)の関数をパートナー センターに移行します。 
+パートナー センターは、Microsoft とソフトウェア パブリッシャーとの関係のあらゆる側面をより適切に統合するように進化しています。 この進化の一部として Microsoft は、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)の関数をパートナー センターに移行します。
 
-**現在、パートナー センターでは、サービスとしてのソフトウェア (SaaS) オファーの作成と管理のみをサポートしています。**
+>[!NOTE]
+>現在パートナー センターでは、サービスとしてのソフトウェア (SaaS) オファー、Azure アプリケーション プラン、Dynamics 365 for Customer オファー、Engagement & PowerApps オファー、Dynamics 365 for Operations オファー、および Dynamics 365 for Business Central オファーの作成と管理がサポートされています。 より多くのオファーがまもなくサポートされます。
 
-既存のマーケットプレース パブリッシャーは、馴染みがありながら改善された直観的なインターフェイスを使ったユーザー エクスペリエンスを目にするでしょう。 ポータル内およびメール経由での通知で、移行についてパブリッシャーに通知されます。 ユーザーはシームレスに適切な場所に転送されます。 このパートナーのエクスペリエンスのアップグレードによって顧客が影響を受けることはありません。 
+既存のマーケットプレース パブリッシャーは、馴染みがありながら改善された直観的なインターフェイスを使ったユーザー エクスペリエンスを目にするでしょう。 ポータル内およびメール経由での通知で、移行についてパブリッシャーに通知されます。 ユーザーはシームレスに適切な場所に転送されます。 このパートナーのエクスペリエンスのアップグレードによって顧客が影響を受けることはありません。
 
 ### <a name="improvements-on-user-experience-and-billing"></a>ユーザー エクスペリエンスと課金の改善
 
@@ -55,7 +56,7 @@ Microsoft パートナー センターの商業マーケットプレース ポ�
 
 [マーケットプレースのロードマップ](https://aka.ms/publicmarketplaceroadmap)に関するページにアクセスして、最近のリリースと将来のリリースに関する詳細を参照するか、「[Microsoft Partner Community](https://www.microsoftpartnercommunity.com/)」 (Microsoft パートナー コミュニティ) の会話に参加します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - マーケットプレースへの SaaS オファーの公開に関心があるまったく新しい Microsoft パートナーの場合、[パートナー センターで商業マーケットプレース アカウントを作成します](./create-account.md)。
 - Cloud パートナー ポータルで以前にオファーを公開している既存のパートナーの場合、[パートナー センターで商業マーケットプレース アカウントを管理します](./manage-account.md)。 

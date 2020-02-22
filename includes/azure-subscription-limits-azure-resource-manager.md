@@ -1,49 +1,30 @@
 ---
 title: インクルード ファイル
 description: インクルード ファイル
-services: billing
-author: rothja
+services: azure-resource-manager
+author: tfitzmac
 ms.service: cost-management-billing
 ms.topic: include
-ms.date: 07/22/2019
-ms.author: jroth
+ms.date: 02/10/2020
+ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: d94937a738034904413eac8b256121f14221d1ac
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 32d39493e526a4b95369e2998d3f9ade9f2964dc
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845960"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133707"
 ---
 | リソース | 既定の制限 | 上限 |
 | --- | --- | --- |
-| [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md) |リージョンあたり 25,000<sup>1</sup>。 |リージョンあたり 25,000。 |
-| [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりの VM の合計コア数 |リージョンあたり 20<sup>1</sup>。 | サポートにお問い合せください。 |
-| [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりの Azure Spot VM の合計コア数 |リージョンあたり 20<sup>1</sup>。 | サポートにお問い合せください。 |
-| [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりのシリーズ (Dv2 や F など) ごとの VM のコア数 |リージョンあたり 20<sup>1</sup>。 | サポートにお問い合せください。 |
-| サブスクリプションあたりのリージョンごとの[ストレージ アカウント数](../articles/storage/common/storage-account-create.md) |250 |250 |
-| サブスクリプションあたりの[可用性セット](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)数 |リージョンあたり 2,000。 |リージョンあたり 2,000。 |
-| [アフィニティ グループ](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) 数 |該当なし<sup>3</sup> |該当なし<sup>3</sup> |
-| [クラウド サービス](../articles/cloud-services/cloud-services-choose-me.md) 数 |該当なし<sup>3</sup> |該当なし<sup>3</sup> |
 | サブスクリプションあたりの[リソース グループ数](../articles/azure-resource-manager/management/overview.md) |980 |980 |
 | Azure Resource Manager API 要求サイズ |4,194,304 バイト。 |4,194,304 バイト。 |
-| サブスクリプションあたりのタグ数<sup>2</sup> |無制限。 |無制限。 |
-| サブスクリプションあたりの一意のタグの計算<sup>2</sup> | 10,000 | 10,000 |
-| 場所あたりの[サブスクリプション レベルのデプロイ](../articles/azure-resource-manager/templates/deploy-to-subscription.md)数 | 800<sup>4</sup> | 800 |
+| サブスクリプションあたりのタグ数<sup>1</sup> |無制限。 |無制限。 |
+| サブスクリプションあたりの一意のタグの計算<sup>1</sup> | 10,000 | 10,000 |
+| 場所あたりの[サブスクリプション レベルのデプロイ](../articles/azure-resource-manager/templates/deploy-to-subscription.md)数 | 800<sup>2</sup> | 800 |
 | Azure Active Directory テナントごとのサブスクリプション | 無制限。 | 無制限。 |
 | サブスクリプションあたりの[共同管理者](../articles/cost-management-billing/manage/add-change-subscription-administrator.md)数 |無制限。 |無制限。 |
 
-<sup>1</sup>既定の制限は、オファー カテゴリの種類 (無料試用版や従量課金制など) とシリーズ (Dv2、F、G など) によって異なります。たとえば、Enterprise Agreement サブスクリプションの既定値は 350 です。
+<sup>1</sup> 1 つのサブスクリプションで適用できるタグの数に制限はありません。 リソースまたはリソース グループあたりのタグの数は、50 に制限されています。 サブスクリプションに存在する[一意のタグ名と値のリスト](/rest/api/resources/tags)が Resource Manager から返されるのは、タグの数が 10,000 以下の場合に限られます。 タグの数が 10,000 を超える場合でも、タグでリソースを検出することはできます。  
 
-<sup>2</sup>1 つのサブスクリプションで適用できるタグの数に制限はありません。 リソースまたはリソース グループあたりのタグの数は、50 に制限されています。 サブスクリプションに存在する[一意のタグ名と値のリスト](/rest/api/resources/tags)が Resource Manager から返されるのは、タグの数が 10,000 以下の場合に限られます。 タグの数が 10,000 を超える場合でも、タグでリソースを検出することはできます。  
-
-<sup>3</sup>これらの機能は、Azure リソース グループと Resource Manager では必要なくなりました。
-
-<sup>4</sup> デプロイ数の上限 800 に達した場合、履歴から、不要になったデプロイを削除します。 サブスクリプション レベルのデプロイを削除するには、[Remove-AzDeployment](/powershell/module/az.resources/Remove-AzDeployment) または [az deployment delete](/cli/azure/deployment?view=azure-cli-latest#az-deployment-delete) を使用します。
-
-> [!NOTE]
-> 仮想マシンのコア数には、リージョン別総数の制限があります。 さらに、リージョンごとにサイズ シリーズ (Dv2 や F など) あたりの制限もあります。これらの制限は別々に適用されます。 たとえば、米国東部で VM のコア上限が 30、A シリーズのコア上限が 30、D シリーズのコア上限が 30 のサブスクリプションがあるとします。 このサブスクリプションでは、30 個の A1 VM、または 30 台の D1 VM、または合計 30 個のコア数を超えないようにこれらの 2 つを組み合わせでデプロイすることができます。 組み合わせの例としては、10 個の A1 VM と 20 個の D1 VM が考えられます。  
-> <!-- -->
-> 
-> 
-
+<sup>2</sup> デプロイ数の上限 800 に達した場合、履歴から、不要になったデプロイを削除します。 サブスクリプション レベルのデプロイを削除するには、[Remove-AzDeployment](/powershell/module/az.resources/Remove-AzDeployment) または [az deployment delete](/cli/azure/deployment?view=azure-cli-latest#az-deployment-delete) を使用します。

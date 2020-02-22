@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: helohr
-ms.openlocfilehash: c201df03bb156bac3f63d03cc4ca35215792f65c
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: f38fc45411c89351eb9a50a48f22d22905ee34e6
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77061518"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367256"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Azure Automation を使用してセッション ホストをスケーリングする
 
@@ -35,7 +35,7 @@ ms.locfileid: "77061518"
 ピーク時の使用時間帯は、このジョブによって現在のセッション数と現在実行中のセッション ホストの VM 容量が、ホスト プールごとにチェックされます。 この情報を使用して、実行中のセッション ホスト VM が既存のセッションをサポートできるかどうかが、**createazurelogicapp.ps1** ファイルに定義された *SessionThresholdPerCPU* パラメーターに基づいて計算されます。 セッション ホスト VM が既存のセッションをサポートできない場合は、このジョブによってホスト プール内の追加のセッション ホスト VM が起動されます。
 
 >[!NOTE]
->*SessionThresholdPerCPU* では、VM 上のセッション数は制限されません。 このパラメーターは、接続を負荷分散するために、どのタイミングで新しい VM を起動する必要があるかを決めるだけのものです。 セッションの数を制限するには、「[Set-RdsHostPool](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/set-rdshostpool)」の手順に従って、*MaxSessionLimit* パラメーターを適切に構成する必要があります。
+>*SessionThresholdPerCPU* では、VM 上のセッション数は制限されません。 このパラメーターは、接続を負荷分散するために、どのタイミングで新しい VM を起動する必要があるかを決めるだけのものです。 セッションの数を制限するには、「[Set-RdsHostPool](/powershell/module/windowsvirtualdesktop/set-rdshostpool/)」の手順に従って、*MaxSessionLimit* パラメーターを適切に構成する必要があります。
 
 ピーク時以外の使用時間帯は、*MinimumNumberOfRDSH* パラメーターに基づいて、シャットダウンすべきセッション ホスト VM がジョブによって特定されます。 新しいセッションがホストに接続できないよう、セッション ホスト VM はドレイン モードに設定されます。 *LimitSecondsToForceLogOffUser* パラメーターを 0 以外の正の値に設定した場合は、スクリプトによって、現在サインインしているユーザーは作業内容を保存するよう通知され、構成された時間待機した後、強制的にサインアウトされます。セッション ホスト VM 上のすべてのユーザー セッションがサインアウトされると、スクリプトによって VM がシャットダウンされます。
 
@@ -126,7 +126,7 @@ Azure アカウントで実行アカウントを作成するには、次の操�
 
 次に、AzureRunAsConnection が Windows Virtual Desktop と対話できるように、ロールの割り当てを作成する必要があります。 必ず PowerShell を使用して、ロールの割り当てを作成するアクセス許可を持つアカウントでサインインしてください。
 
-まず、PowerShell セッション内で使用する [Windows Virtual Desktop PowerShell モジュール](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)をダウンロードしてインポートします (まだ行っていない場合)。 次の PowerShell コマンドレットを実行して、Windows Virtual Desktop に接続し、テナントを表示します。
+まず、PowerShell セッション内で使用する [Windows Virtual Desktop PowerShell モジュール](/powershell/windows-virtual-desktop/overview/)をダウンロードしてインポートします (まだ行っていない場合)。 次の PowerShell コマンドレットを実行して、Windows Virtual Desktop に接続し、テナントを表示します。
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"

@@ -381,7 +381,7 @@
         - name: 更新プログラムとパッチ
           items:
             - name: Red Hat Update Infrastructure
-              href: update-infrastructure-redhat.md
+              href: ../workloads/redhat/redhat-rhui.md
         - name: Azure VM エージェント
           items:
             - name: 概要

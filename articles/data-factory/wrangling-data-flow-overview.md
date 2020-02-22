@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 56c2d96e6e4a5900770aaefcabb424eddb1cbde6
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 8f91ed926c733b211443805722b6817b1ce005b6
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531389"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048354"
 ---
 # <a name="what-are-wrangling-data-flows"></a>ラングリング データ フローとは
 
@@ -42,9 +42,9 @@ Azure Data Factory のラングリング データ フローを使用すると�
 
 | コネクタ | データ形式 | 認証の種類 |
 | -- | -- | --|
-| [Azure Blob Storage](connector-azure-blob-storage.md) | CSV | アカウント キー |
+| [Azure Blob Storage](connector-azure-blob-storage.md) | CSV、Parquet | アカウント キー |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV | サービス プリンシパル |
-| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV | アカウント キー、サービス プリンシパル |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV、Parquet | アカウント キー、サービス プリンシパル |
 | [Azure SQL Database](connector-azure-sql-database.md) | - | SQL 認証 |
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) | - | SQL 認証 |
 
@@ -62,6 +62,6 @@ Azure Data Factory のラングリング データ フローを使用すると�
 
 現在、ラングリング データ フローでは、1 つのシンクへの書き込みのみがサポートされています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ラングリング データ フローの作成](wrangling-data-flow-tutorial.md)方法について確認します。

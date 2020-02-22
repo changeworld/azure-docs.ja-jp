@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/27/2019
+ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1f55b8963ad9f940202816704c5818c6853ffcde
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 25bc25d9ec12804cc20baa558dce67fb3f8269a1
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75353697"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149163"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>RADIUS 認証を使用して VNet へのポイント対サイト接続を構成する:PowerShell
 
@@ -43,8 +43,6 @@ P2S 接続には、以下のものが必要です。
 * ユーザー認証を処理する RADIUS サーバー。 RADIUS サーバーは、オンプレミスまたは Azure VNet にデプロイできます。
 * VNet に接続する Winodows デバイスの VPN クライアント構成パッケージ。 VPN クライアント構成パッケージには、VPN クライアントが P2S を介して接続するために必要な設定が含まれています。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="aboutad"></a>P2S VPN の Active Directory (AD) ドメイン認証について
 
 AD ドメイン認証では、ユーザーは組織のドメイン資格情報を使用して Azure にサインインできます。 これには AD サーバーと統合する RADIUS サーバーが必要です。 また、組織は既存の RADIUS デプロイを利用することもできます。
@@ -63,6 +61,8 @@ RADIUS サーバーは、Active Directory とは別に、その他の外部 ID �
 ## <a name="before"></a>作業を開始する前に
 
 Azure サブスクリプションを持っていることを確認します。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)を有効にするか、[無料アカウント](https://azure.microsoft.com/pricing/free-trial)にサインアップしてください。
+
+### <a name="working-with-azure-powershell"></a>Azure PowerShell を使用する
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
@@ -87,12 +87,7 @@ Azure サブスクリプションを持っていることを確認します。 A
 * **パブリック IP 名:VNet1GWPIP**
 * **VPN の種類:RouteBased**
 
-
-## <a name="signin"></a>サインインと変数の設定
-
-[!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
-
-### <a name="declare-variables"></a>変数の宣言
+## <a name="signin"></a>1.変数を設定する
 
 使用する変数を宣言します。 次のサンプルを使用し、必要に応じて独自の値で置き換えます。 演習中の任意の時点で PowerShell/Cloud Shell セッションを閉じた場合は、値をもう一度コピーして貼り付けるだけで、変数を再宣言します。
 
@@ -114,7 +109,7 @@ Azure サブスクリプションを持っていることを確認します。 A
   $GWIPconfName = "gwipconf"
   ```
 
-## 1.<a name="vnet"></a>リソース グループ、VNet、パブリック IP アドレスの作成
+## 2.<a name="vnet"></a>リソース グループ、VNet、パブリック IP アドレスの作成
 
 次の手順では、1 つのリソース グループを作成し、3 つのサブネットと共に仮想ネットワークをそのリソース グループに作成します。 値を代入する場合は、ゲートウェイ サブネットの名前を必ず "GatewaySubnet" にすることが重要です。 別の名前にすると、ゲートウェイの作成は失敗します。
 
@@ -148,7 +143,7 @@ Azure サブスクリプションを持っていることを確認します。 A
    $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name "gwipconf" -Subnet $subnet -PublicIpAddress $pip
    ```
 
-## 2.<a name="radius"></a>RADIUS サーバーの設定
+## 3.<a name="radius"></a>RADIUS サーバーの設定
 
 仮想ネットワーク ゲートウェイを作成して構成する前に、RADIUS サーバーを認証用に正しく構成しておく必要があります。
 
@@ -158,7 +153,7 @@ Azure サブスクリプションを持っていることを確認します。 A
 
 記事「[ネットワーク ポリシー サーバー (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)」では、AD ドメイン認証用に Windows RADIUS サーバー (NPS) を構成する方法についてのガイダンスが示されています。
 
-## 3.<a name="creategw"></a>VPN ゲートウェイの作成
+## 4.<a name="creategw"></a>VPN ゲートウェイの作成
 
 VPN ゲートウェイを VNet 用に構成して作成します。
 
@@ -171,7 +166,7 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1
 ```
 
-## 4.<a name="addradius"></a>RADIUS サーバーおよびクライアント アドレス プールの追加
+## 5.<a name="addradius"></a>RADIUS サーバーおよびクライアント アドレス プールの追加
  
 * -RadiusServer は名前または IP アドレスで指定できます。 サーバーがオンプレミスに存在する場合に名前を指定すると、VPN ゲートウェイはその名前を解決できない可能性があります。 この場合、サーバーの IP アドレスを指定することをお勧めします。 
 * -RadiusSecret は、RADIUS サーバーで構成したものと一致している必要があります。
@@ -228,11 +223,11 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
     ```
 
-## 5.<a name="vpnclient"></a>VPN クライアント構成パッケージのダウンロードと VPN クライアントの設定
+## 6.<a name="vpnclient"></a>VPN クライアント構成パッケージのダウンロードと VPN クライアントの設定
 
 VPN クライアント構成を使用すると、デバイスは P2S 接続を介して VNet に接続できます。 VPN クライアント構成パッケージを生成して VPN クライアントを設定するには、[RADIUS 認証用の VPN クライアント構成の作成](point-to-site-vpn-client-configuration-radius.md)に関するページを参照してください。
 
-## <a name="connect"></a>6.Azure に接続する
+## <a name="connect"></a>7.Azure に接続する
 
 ### <a name="to-connect-from-a-windows-vpn-client"></a>Windows VPN クライアントから接続するには
 

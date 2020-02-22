@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: d56504c96c5e039f2563a1bfee577fe9b15e8563
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 9364c344c58d17f9f6e6404dd8aa850af032cee9
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715567"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138369"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>センサー パートナーからセンサー データを取得する
 
@@ -40,27 +40,32 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
 上記の情報を生成するには、次の手順を行います (これらの手順は Azure で実行する必要があるため、FarmBeats がデプロイされている Azure サブスクリプションにアクセスする必要があることに注意してください)。
 
 1. [zip ファイル](https://aka.ms/farmbeatspartnerscriptv2)をダウンロードし、ローカル ドライブに展開します。 ZIP ファイル内には 1 つのファイルがあります。
-2. https://portal.azure.com/ にサインインし、[Azure Active Directory]、[アプリの登録] の順に進みます。
 
-3. FarmBeats デプロイの一部として作成された [アプリの登録] をクリックします。 それは、FarmBeats データ ハブと同じ名前になります。
+2. https://portal.azure.com/ にサインインします。
 
-4. [API の公開] をクリックし、[クライアント アプリケーションの追加] をクリックし、「**04b07795-8ddb-461a-bbee-02f9e1bf7b46**」と入力し、[Authorize Scope]\(スコープの承認\) をオンにします。 これにより、Azure CLI (Cloud Shell) にアクセスして、次の手順を実行することができます。
+3. **FarmBeats バージョン 1.2.7 以降を使用している場合は、手順 3a、3b、3c をスキップし、手順 4 に進みます。** 。 FarmBeats のバージョンを確認するには、FarmBeats UI の右上にある設定アイコンをクリックします。
 
-5. Cloud Shell を開きます。 このオプションは、Azure portal の右上隅にあるツール バーで使用できます。
+3a. [Azure Active Directory] > [アプリの登録] に移動します
+
+3b. FarmBeats デプロイの一部として作成された [アプリの登録] をクリックします。 それは、FarmBeats データ ハブと同じ名前になります。
+
+3c. [API の公開] をクリックし、[クライアント アプリケーションの追加] をクリックし、「**04b07795-8ddb-461a-bbee-02f9e1bf7b46**」と入力し、[Authorize Scope]\(スコープの承認\) をオンにします。 これにより、Azure CLI (Cloud Shell) にアクセスして、次の手順を実行することができます。
+
+4. Cloud Shell を開きます。 このオプションは、Azure portal の右上隅にあるツール バーで使用できます。
 
     ![Azure portal のツール バー](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-6. 環境が **[PowerShell]** に設定されていることを確認します。 既定では、[Bash] に設定されています。
+5. 環境が **[PowerShell]** に設定されていることを確認します。 既定では、[Bash] に設定されています。
 
     ![PowerShell ツール バーの設定](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-7. 手順 1 のファイルを Cloud Shell インスタンスでアップロードします。
+6. 手順 1 のファイルを Cloud Shell インスタンスでアップロードします。
 
     ![ツール バーの [アップロード] ボタン](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
 
-8. ファイルがアップロードされたディレクトリに移動します。 既定では、ファイルはユーザー名の下のホーム ディレクトリにアップロードされます。
+7. ファイルがアップロードされたディレクトリに移動します。 既定では、ファイルはユーザー名の下のホーム ディレクトリにアップロードされます。
 
-9. 次のスクリプトを実行します。 このスクリプトは、[Azure Active Directory] の [概要] ページから取得できるテナント ID を要求します。
+8. 次のスクリプトを実行します。 このスクリプトは、[Azure Active Directory] の [概要] ページから取得できるテナント ID を要求します。
 
     ```azurepowershell-interactive 
 
@@ -68,7 +73,7 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
 
     ```
 
-10. 画面の指示に従って、**API エンドポイント**、**テナント ID**、**クライアント ID**、**クライアント シークレット**、および **EventHub 接続文字列**の値をキャプチャします。
+9. 画面の指示に従って、**API エンドポイント**、**テナント ID**、**クライアント ID**、**クライアント シークレット**、および **EventHub 接続文字列**の値をキャプチャします。
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>生成された資格情報を使用してデバイス データを統合する
 

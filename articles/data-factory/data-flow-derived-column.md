@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2019
-ms.openlocfilehash: c2d4c9b089a6673a5cff716d2901cc2b9483ede1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 66396de52b3709c1d9357f32a375a29a8dcdbd1d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972253"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048744"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>マッピング データ フローの派生列変換
 
@@ -34,7 +34,7 @@ ms.locfileid: "74972253"
 
 ![サブ列の追加](media/data-flow/addsubcolumn.png "サブ列の追加")
 
-データ フローでの複合型の処理に関する詳細については、「[マッピング データ フローでの JSON の処理](concepts-data-flow-json.md)」を参照してください
+データ フローでの複合型の処理の詳細については、[マッピング データ フローでの JSON の処理](format-json.md#mapping-data-flow-properties)に関する記事を参照してください。
 
 ![複合列の追加](media/data-flow/complexcolumn.png "列の追加")
 
@@ -75,6 +75,6 @@ MoviesYear derive(
             ) ~> CleanData
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 「[Mapping Data Flow の式言語](data-flow-expression-functions.md)」で詳細を確認します。

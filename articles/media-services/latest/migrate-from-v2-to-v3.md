@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 05/01/2019
+ms.date: 10/02/2019
 ms.author: juliako
-ms.openlocfilehash: 5b5956094da497cfbb72608587b2e0389ceec8fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3520b7d6b0fd67fdbff3e1dd78d038f36ad5f0af
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427123"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133430"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Media Services v2 から v3 への移行のガイダンス
 
@@ -115,7 +115,7 @@ v3 API には v2 API に関して次の機能ギャップがあります。 ギ�
 * 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-sdk)、CLI、またはサポートされている SDK のいずれかを使用します。
 * ジョブ (特にビデオまたはオーディオ分析を伴うもの) のコンカレンシーとパフォーマンスを制御するには、アカウントでメディア占有ユニット (MRU) をプロビジョニングする必要があります。 詳細については、[メディア処理のスケール設定](../previous/media-services-scale-media-processing-overview.md)に関するページを参照してください。 MRU の管理には、[CLI 2.0 for Media Services v3](media-reserved-units-cli-how-to.md)、[Azure portal](../previous/media-services-portal-scale-media-processing.md)、または [v2 API](../previous/media-services-dotnet-encoding-units.md) を使用できます。 Media Services v2 と v3 のどちらの API を使用する場合でも、MRU をプロビジョニングする必要があります。
 * v3 API を使用して作成された Media Services エンティティは v2 API で管理できません。  
-* v2 API で作成されたエンティティを v3 API 経由で管理することは推奨されません。 2 つのバージョンのエンティティの違いによって互換性がなくなる例を次に示します。   
+* V2 API 内のすべてのエンティティが V3 API に自動的に表示されるわけではありません。  2 つのバージョンで互換性のないエンティティの例を次に示します。  
     * v2 で作成されたジョブと タスクは変換に関連付けられていないため、v3 で表示されません。 v3 の変換およびジョブに切り替えることをお勧めします。 切り替え中は、処理中の v2 ジョブを比較的短い期間でモニターする必要があります。
     * v2 で作成されたチャンネルとプログラム (v3 でライブ イベントとライブ出力にマップされる) は、v3 での管理を続行できません。 適切なタイミングでチャンネルを停止して、v3 のライブ イベントとライブ出力に切り替えることをお勧めします。<br/>現時点では、実行を継続中のチャネルを移行することはできません。  
 

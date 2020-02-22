@@ -3,16 +3,17 @@ title: Azure Kubernetes Service (AKS) での可用性ゾーンの使用
 description: Azure Kubernetes Service (AKS) で複数の可用性ゾーンにノードを分散させるクラスターを作成する方法について説明します。
 services: container-service
 author: mlearned
+ms.custom: fasttrack-edit
 ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 3790511bf3f71cdeb01853e4051a013719502d9f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: b73cb09f95fa2b23fb23fb719fe57143e1731ceb
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605085"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086528"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>可用性ゾーンを使用する Azure Kubernetes Service (AKS) クラスターを作成する
 
@@ -60,7 +61,7 @@ Azure マネージド ディスクを使用するボリュームは、現在、�
 
 ## <a name="overview-of-availability-zones-for-aks-clusters"></a>AKS クラスターの可用性ゾーンの概要
 
-Availability Zones は高可用性を備えたサービスで、アプリケーションとデータをデータセンターの障害から保護します。 ゾーンは、Azure リージョン内の一意の物理的な場所です。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 回復性を確保するため、有効になっているリージョンにはいずれも最低 3 つのゾーンが別個に存在しています。 Availability Zones は 1 リージョン内で物理的に分離されているため、データセンターで障害が発生した場合でもアプリケーションとデータを保護できます。 ゾーン冗長サービスによって、単一障害点から保護されるように Availability Zones 全体でアプリケーションとデータがレプリケートされます。
+可用性ゾーンとは高可用性を提供するサービスで、アプリケーションとデータをデータセンターの障害から保護します。 ゾーンは、Azure リージョン内の一意の物理的な場所です。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 回復性を確保するため、有効になっているリージョンにはいずれも最低 3 つのゾーンが別個に存在しています。 可用性ゾーンはリージョン内で物理的に分離されているため、データセンターで障害が発生してもアプリケーションとデータは保護されます。 ゾーン冗長サービスによってアプリケーションとデータが可用性ゾーン全体にレプリケートされ、単一障害点から保護されます。
 
 詳しくは、「[Azure の可用性ゾーンの概要][az-overview]」をご覧ください。
 
@@ -122,7 +123,54 @@ Name:       aks-nodepool1-28993262-vmss000002
 
 エージェント プールにさらにノードを追加すると、Azure Platform は、基になる VM を指定の複数の可用性ゾーンに自動的に分散させます。
 
-## <a name="next-steps"></a>次の手順
+新しい Kubernetes バージョン (1.17.0 以降以降) では、AKS では非推奨の `failure-domain.beta.kubernetes.io/zone` に加えて新しいラベル `topology.kubernetes.io/zone` が使用されていることに注意してください。
+
+## <a name="verify-pod-distribution-across-zones"></a>複数のゾーンへのポッドの分散を確認する
+
+「[有名なラベル、注釈、およびテイント][kubectl-well_known_labels]」に記載されているように、Kubernetes は `failure-domain.beta.kubernetes.io/zone` ラベルを使用して、使用可能なさまざまなゾーンにわたってレプリケーション コントローラーまたはサービス内のポッドを自動的に分散します。 これをテストするには、クラスターを 3 ノードから 5 ノードにスケールアップして、正しいポッド拡散を確認します。
+
+```azurecli-interactive
+az aks scale \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --node-count 5
+```
+
+数分後にスケール操作が完了すると、コマンド `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` によって、次の例のような出力が得られます。
+
+```console
+Name:       aks-nodepool1-28993262-vmss000000
+            failure-domain.beta.kubernetes.io/zone=eastus2-1
+Name:       aks-nodepool1-28993262-vmss000001
+            failure-domain.beta.kubernetes.io/zone=eastus2-2
+Name:       aks-nodepool1-28993262-vmss000002
+            failure-domain.beta.kubernetes.io/zone=eastus2-3
+Name:       aks-nodepool1-28993262-vmss000003
+            failure-domain.beta.kubernetes.io/zone=eastus2-1
+Name:       aks-nodepool1-28993262-vmss000004
+            failure-domain.beta.kubernetes.io/zone=eastus2-2
+```
+
+ご覧のとおり、ゾーン 1 とゾーン 2 に 2 つのノードが追加されました。 3 つのレプリカで構成されるアプリケーションをデプロイできます。 例として NGINX を使用します。
+
+```console
+kubectl run nginx --image=nginx --replicas=3
+```
+
+ポッドが実行されているノードを確認すると、3 つの異なる可用性ゾーンに対応するポッド上でポッドが実行されていることがわかります。 たとえば、コマンド `kubectl describe pod | grep -e "^Name:" -e "^Node:"` を使用すると、次のような出力が表示されます。
+
+```console
+Name:         nginx-6db489d4b7-ktdwg
+Node:         aks-nodepool1-28993262-vmss000000/10.240.0.4
+Name:         nginx-6db489d4b7-v7zvj
+Node:         aks-nodepool1-28993262-vmss000002/10.240.0.6
+Name:         nginx-6db489d4b7-xz6wj
+Node:         aks-nodepool1-28993262-vmss000004/10.240.0.8
+```
+
+前の出力からわかるように、最初のポッドは、可用性ゾーン `eastus2-1` にあるノード 0 で実行されています。 2 つ目のポッドは、`eastus2-3` に対応するノード 2 で実行されています。また、3 つ目のポッドは、`eastus2-2` のノード 4 で実行されています。 追加の構成を行うことなく、Kubernetes は 3 つの可用性ゾーンすべてにわたってポッドを正しく分散します。
+
+## <a name="next-steps"></a>次のステップ
 
 この記事では、可用性ゾーンを使用する AKS クラスターの作成方法について詳しく説明します。 高可用性クラスターの考慮事項について詳しくは、「[AKS での事業継続とディザスター リカバリーに関するベスト プラクティス][best-practices-bc-dr]」をご覧ください。
 
@@ -144,3 +192,4 @@ Name:       aks-nodepool1-28993262-vmss000002
 
 <!-- LINKS - external -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
+[kubectl-well_known_labels]: https://kubernetes.io/docs/reference/kubernetes-api/labels-annotations-taints/

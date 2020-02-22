@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 309af904f0dbfc0664c4341803cb6a4dc8a2c8a4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 02/05/2020
+ms.openlocfilehash: c67fb21783a926f813d165528520b9d088154412
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839284"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162397"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Data Lake Storage Gen1 を使用する
 
@@ -40,7 +40,7 @@ HDInsight クラスターでは、2 つの方法で Data Lake Storage Gen1 を�
 
 現時点では、Data Lake Storage Gen1 を既定ストレージおよび追加のストレージ アカウントとして使うことができるのは、HDInsight クラスターの一部の種類/バージョンのみです。
 
-| HDInsight クラスターの種類 | 既定のストレージとしての Data Lake Storage Gen1 | 追加のストレージとしての Data Lake Storage Gen1| メモ |
+| HDInsight クラスターの種類 | 既定のストレージとしての Data Lake Storage Gen1 | 追加のストレージとしての Data Lake Storage Gen1| Notes |
 |------------------------|------------------------------------|---------------------------------------|------|
 | HDInsight バージョン 4.0 | いいえ | いいえ |ADLS Gen1 は、HDInsight 4.0 ではサポートされていません |
 | HDInsight Version 3.6 | はい | はい | HBase は例外|
@@ -108,13 +108,13 @@ New-AzResourceGroupDeployment `
 
 ## <a name="use-data-lake-storage-gen1-as-additional-storage"></a>追加のストレージとして Data Lake Storage Gen1 を使用する
 
-Data Lake Storage Gen1 を、クラスターの追加のストレージとして使用することもできます。 この場合、クラスターの既定のストレージとしては、Azure Storage Blob アカウントまたは Data Lake Storage アカウントを使うことができます。 追加のストレージとしての Data Lake Storage に格納されているデータに対して HDInsight ジョブを実行する場合は、ファイルへの完全修飾パスを使う必要があります。 例:
+Data Lake Storage Gen1 を、クラスターの追加のストレージとして使用することもできます。 この場合、クラスターの既定のストレージとしては、Azure Storage Blob アカウントまたは Data Lake Storage アカウントを使うことができます。 追加のストレージとしての Data Lake Storage に格納されているデータに対して HDInsight ジョブを実行する場合は、ファイルへの完全修飾パスを使う必要があります。 次に例を示します。
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
 URL に **cluster_root_path** がないことに注意してください。 これは、Data Lake Storage が既定のストレージでないためです。必要な操作は、ファイルへのパスを指定することだけです。
 
-追加のストレージとして Data Lake Storage Gen1 を使うには、ファイルが保存されているパスへのアクセスをサービス プリンシパルに許可することだけが必要です。  例:
+追加のストレージとして Data Lake Storage Gen1 を使うには、ファイルが保存されているパスへのアクセスをサービス プリンシパルに許可することだけが必要です。  次に例を示します。
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
@@ -130,6 +130,8 @@ HDInsight クラスターから Data Lake Storage へのアクセスを構成す
 
 > [!NOTE]  
 > Azure Data Lake Storage Gen1 を HDInsight クラスターの追加のストレージとして使用する場合は、この記事で説明されているように、クラスターを作成するときにそうすることを強くお勧めします。 Azure Data Lake Storage Gen1 を既存の HDInsight クラスターに追加のストレージとして追加することは、サポートされていないシナリオです。
+
+Data Lake Storage Gen1 のアクセス制御モデルの基本の詳細については、「[Azure Data Lake Storage Gen1 のアクセス制御](../data-lake-store/data-lake-store-access-control.md)」を参照してください。
 
 ## <a name="access-files-from-the-cluster"></a>クラスターからファイルにアクセスする
 
@@ -210,7 +212,7 @@ LOCATION 'adl:///example/data/';
 LOCATION '/example/data/';
 ```
 
-## <a name="identify-storage-path-from-abmari"></a>Abmari からストレージ パスを特定する
+## <a name="identify-storage-path-from-ambari"></a>Ambari からストレージ パスを特定する
 
 構成済みの既定のストアへの完全なパスを特定するには、 **[HDFS]**  >  **[Configs]\(構成\)** の順に移動し、フィルター入力ボックスに `fs.defaultFS` と入力します。
 
@@ -297,14 +299,14 @@ Invoke-AzResourceAction `
     -Force
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、HDInsight で HDFS と互換性のある Azure Data Lake Storage Gen1 を使う方法について説明しました。 これにより、収集したデータを長期にわたって格納できるスケーラブルなソリューションを構築できます。さらに HDInsight を使用すると、格納されている構造化データと非構造化データから有益な情報を得ることができます。
 
 詳細については、次を参照してください。
 
 * [Azure HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [クイック スタート:HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+* [クイック スタート: HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * [Azure PowerShell を使用して、Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [HDInsight へのデータのアップロード](hdinsight-upload-data.md)
 * [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)

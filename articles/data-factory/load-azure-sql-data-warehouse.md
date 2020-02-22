@@ -41,7 +41,7 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
 * Azure サブスクリプション:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 * Azure SQL Data Warehouse: SQL データベースからコピーされたデータは、データ ウェアハウスに格納されます。 Azure SQL Data Warehouse がない場合は、[SQL Data Warehouse の作成](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md)に関する記事の手順をご覧ください。
 * Azure SQL Database:このチュートリアルでは、Adventure Works LT サンプル データを使って Azure SQL データベースからデータをコピーします。 SQL データベースを作成するには、[Azure SQL データベースの作成](../sql-database/sql-database-get-started-portal.md)に関する記事の手順に従います。
-* Azure ストレージ アカウント:Azure Storage は、一括コピー操作の_ステージング_ BLOB として使用されます。 Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」の手順をご覧ください。
+* Azure ストレージ アカウント:Azure Storage は、一括コピー操作の _ステージング_ BLOB として使用されます。 Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」の手順をご覧ください。
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 

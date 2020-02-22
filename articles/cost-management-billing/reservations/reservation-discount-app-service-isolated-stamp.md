@@ -32,7 +32,7 @@ App Service Isolated スタンプ料金の割引は、1 時間ごとのIsolated 
 
 その結果、スタンプの有効期間中、スタンプの測定は Windows と Linux とで変わる可能性があります。 一方、予約はオペレーティング システム固有です。 スタンプにデプロイする予定の worker をサポートする予約を購入する必要があります。 Windows 専用スタンプと混合スタンプには、Windows 予約を使用します。 Linux worker のみのスタンプには、Linux 予約を使用します。
 
-Linux 予約を購入する必要があるのは、スタンプに Linux worker _のみ_を使用する予定の場合だけです。
+Linux 予約を購入する必要があるのは、スタンプに Linux worker _のみ_ を使用する予定の場合だけです。
 
 ## <a name="discount-examples"></a>割引の例
 

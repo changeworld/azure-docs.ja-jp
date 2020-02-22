@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/19/2017
-ms.openlocfilehash: cbeaa3e148d6fbe20d7ddb4d04cd00d6300f9818
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/06/2020
+ms.openlocfilehash: 9a7cb80b5510ff0ac4a2491d896aded866180c19
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402445"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062134"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Azure Monitor での Agent Health ソリューション
 Azure において Agent Health ソリューションを使用すると、Azure Monitor の Log Analytics ワークスペースに対して、または Azure Monitor に接続された System Center Operations Manager 管理グループに対して直接報告を行うすべてのエージェントの中で、応答していないエージェントと運用データを送信しているエージェントを把握するのに役立ちます。  また、デプロイされているエージェントの数や地理的な分布を追跡できるほか、Azure を初めとする各種クラウド環境やオンプレミスにデプロイされているエージェントの分布を把握するためのその他のクエリを実行することができます。    
@@ -79,7 +79,7 @@ Log Analytics ワークスペースに Agent Health ソリューションを追�
 | `Version` | Log Analytics エージェントまたは Operations Manager エージェントのバージョン。|
 | `SCAgentChannel` | *Direct* と *SCManagementServer* のいずれかの値になります。|
 | `IsGatewayInstalled` | Log Analytics ゲートウェイがインストールされている場合、値は *true* です。それ以外の場合は *false* になります。|
-| `ComputerIP` | コンピューターの IP アドレス。|
+| `ComputerIP` | コンピューターのパブリック IP アドレス。 Azure VM では、パブリック IP が使用可能な場合はそれが表示されます。 プライベート IP を使用している VM の場合、Azure SNAT アドレス (プライベート IP アドレスではありません) が表示されます。 |
 | `RemoteIPCountry` | コンピューターがデプロイされている地理的位置。|
 | `ManagementGroupName` | Operations Manager 管理グループの名前。|
 | `SourceComputerId` | コンピューターの一意の ID。|

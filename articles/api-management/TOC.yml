@@ -123,6 +123,8 @@
       items:
         - name: Azure AD で API を保護する
           href: api-management-howto-protect-backend-with-aad.md
+        - name: Azure AD B2C を使用した SPA バックエンド API を保護する
+          href: howto-protect-backend-frontend-azure-ad-b2c.md
         - name: 仮想ネットワークに接続する
           href: api-management-using-with-vnet.md
         - name: 内部仮想ネットワークに接続する

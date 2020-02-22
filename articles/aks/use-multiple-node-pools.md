@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: mlearned
-ms.openlocfilehash: 62be78df28d65c2ed16a9f45295edec8c5c360c4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: bbfb65c31bf6fd46cc18c9eee66086afbbff1d5f
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901526"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157976"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のクラスターで複数のノード プールを作成および管理する
 
@@ -31,13 +31,12 @@ Azure CLI バージョン 2.0.76 以降がインストールされて構成さ�
 
 複数のノード プールをサポートする AKS クラスターを作成および管理する場合には、次の制限があります。
 
+* 「[Azure Kubernetes Service (AKS) のクォータ、仮想マシンのサイズの制限、およびリージョンの可用性][quotas-skus-regions]」を参照してください。
 * 既定の (最初の) ノード プールは削除できません。
 * HTTP アプリケーションのルーティング アドオンは使用できません。
 * AKS クラスターが複数のノード プールを使用するためには、Standard SKU のロード バランサーを使用する必要があります。Basic SKU のロード バランサーでは、この機能がサポートされません。
 * AKS クラスターでは、ノードに仮想マシン スケール セットを使用する必要があります。
 * ノード プールの名前は、小文字の英数字のみを含めることができ、小文字で始める必要があります。 Linux ノード プールの場合、長さは 1 から 12 文字である必要があります。Windows ノード プールの場合、長さは 1 から 6 文字である必要があります。
-* AKS クラスターでは、最大で 10 のノード プールを作成できます。
-* AKS クラスターには、これらの 10 のノード プールにまたがる最大 1,000 個のノードを含めることができます。
 * すべてのノード プールは、同じ VNET およびサブネット内に存在する必要があります。
 * クラスターの作成時に複数のノード プールを作成する場合は、ノード プールで使用されるすべての Kubernetes のバージョンが、コントロール プレーンに設定されたバージョンと一致している必要があります。 これは、ノード プールごとの操作を使用してクラスターがプロビジョニングされた後で更新できます。
 
@@ -565,7 +564,7 @@ Resource Manager テンプレートで定義するノード プール設定お�
 ## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>ノード プール内のノードごとにパブリック IP を割り当てる
 
 > [!WARNING]
-> ノードごとにパブリック IP を割り当てるとき、プレビュー中、その IP は *AKS の Standard Load Balancer* で使用できません。ロード バランサーの規則と VM プロビジョニングが競合する可能性があるためです。 プレビューの間、ノードごとにパブリック IP を割り当てる必要がある場合は、*Basic Load Balancer SKU* を使用する必要があります。
+> ノードごとにパブリック IP を割り当てるとき、プレビュー中、その IP は *AKS の Standard Load Balancer* で使用できません。ロード バランサーの規則と VM プロビジョニングが競合する可能性があるためです。 この制限のため、このプレビュー機能では Windows エージェント プールはサポートされていません。 プレビューの間、ノードごとにパブリック IP を割り当てる必要がある場合は、*Basic Load Balancer SKU* を使用する必要があります。
 
 AKS ノードは、通信用に独自のパブリック IP アドレスを必要としません。 ただし、一部のシナリオでは、ノード プール内のノードが独自のパブリック IP アドレスを備えることが必要な場合があります。 たとえば、ゲームで、ホップを最小限にするためにクラウド仮想マシンにコンソールが直接接続する必要がある場合です。 これは、別のプレビュー機能であるノード パブリック IP (プレビュー) に登録することで実現できます。
 
@@ -604,6 +603,7 @@ Windows Server コンテナー ノード プールを作成して使用するに
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 
 <!-- INTERNAL LINKS -->
+[quotas-skus-regions]: quotas-skus-regions.md
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-group-create]: /cli/azure/group#az-group-create
 [az-aks-create]: /cli/azure/aks#az-aks-create
