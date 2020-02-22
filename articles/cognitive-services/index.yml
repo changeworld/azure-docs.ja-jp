@@ -1,22 +1,22 @@
 ### YamlMime:Hub
 title: Azure Cognitive Services のドキュメント
 summary: ユーザーのニーズを見たり、聞いたり、話したり、理解したり、解釈したりするために、サポートされているインテリジェントなアルゴリズムをアプリ、Web サイト、ボットに組み込む方法を学習します。
+brand: azure
 metadata:
   title: Azure Cognitive Services のドキュメント
   description: ユーザーのニーズを見たり、聞いたり、話したり、理解したり、解釈したりするために、サポートされているインテリジェントなアルゴリズムをアプリ、Web サイト、ボットに組み込む方法を学習します。
   ms.service: cognitive-services
   ms.topic: hub-page
-  brand: azure
   author: nitinme
   ms.author: nitinme
   manager: nitinme
-  ms.date: 11/04/2019
-  ms.openlocfilehash: e0fc6aaaedc5eff98017eb62187575ab9afbba59
-  ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+  ms.date: 01/21/2020
+  ms.openlocfilehash: f39f2a6360363131eb346f613cf0f7a25910404a
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/14/2020
-  ms.locfileid: "75945194"
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77560764"
 highlightedContent:
   items:
   - title: Cognitive Services とは
@@ -66,12 +66,12 @@ conceptualContent:
     - url: ../media-services/video-indexer/index.yml
       itemType: overview
       text: Video Indexer
-  - title: 言語
+  - title: Language
     summary: お使いのアプリが、構築済みスクリプトで自然言語を処理し、センチメントを評価し、ユーザーの求めるものを認識する方法を学習できるようにします。
     links:
     - url: ./immersive-reader/index.yml
       itemType: overview
-      text: Immersive Reader
+      text: Immersive Reader (プレビュー)
     - url: ./luis/index.yml
       itemType: overview
       text: Language Understanding (LUIS)
@@ -87,7 +87,7 @@ conceptualContent:
   - title: 音声
     summary: 音声をテキストに変換し、テキストを自然な音声に変換します。 ある言語を別の言語に翻訳し、話者の認証と認識を可能にします。
     links:
-    - url: ./speech-service/index.md
+    - url: ./speech-service/index.yml
       itemType: overview
       text: Speech サービス
     - url: ./speaker-recognition/home.md

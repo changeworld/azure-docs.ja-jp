@@ -13,7 +13,7 @@
 - name: チュートリアル
   items:
     - name: Azure Multi-Factor Authentication を必須とする
-      href: /authentication/tutorial-enable-azure-mfa.md?toc=/azure/conditional-access/toc.json&bc=/azure/conditional-access/breadcrumb/toc.json
+      href: ../authentication/tutorial-enable-azure-mfa.md?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json
 - name: 概念
   expanded: false
   items:
