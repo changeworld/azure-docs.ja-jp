@@ -397,8 +397,6 @@
       items:
         - name: 既存のプレーヤーを使用したメディアの再生
           href: media-services-playback-content-with-existing-players.md
-        - name: Media Player を使用したメディアの再生
-          href: media-services-develop-video-players.md
         - name: その他の再生オプション
           items:
             - name: Smooth Streaming Windows ストア アプリケーション

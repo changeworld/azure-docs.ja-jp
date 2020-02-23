@@ -350,8 +350,6 @@
         - name: Azure Monitor
           href: azure-monitor.md
           displayName: 'log, logs, logging, usage, events'
-        - name: 使用状況レポートのエクスポート
-          href: view-usage-reports.md
         - name: アカウント管理
           href: manage-user-accounts-graph-api.md
         - name: Azure Pipelines を使用したデプロイ
