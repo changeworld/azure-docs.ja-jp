@@ -87,7 +87,7 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 | cloud_graph_host_name |
 | cloud_instance_name |
 | cnf |
-| コード |
+| code |
 | controls |
 | credential_keys |
 | csr |
@@ -98,7 +98,7 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 | domain_netbios_name |
 | e_exp |
 | email |
-| エンドポイント (endpoint) |
+| endpoint |
 | enfpolids |
 | exp |
 | expires_on |
@@ -142,7 +142,7 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 | onprem_sam_account_name |
 | onprem_sid |
 | openid2_id |
-| パスワード |
+| password |
 | platf |
 | polids |
 | pop_jwk |
@@ -157,12 +157,12 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 | refreshtoken |
 | request_nonce |
 | resource |
-| ロール (role) |
+| role |
 | roles |
 | scope |
 | scp |
 | sid |
-| 署名 |
+| signature |
 | signin_state |
 | src1 |
 | src2 |
@@ -286,7 +286,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 | source | id | 説明 |
 |-----|-----|-----|
-| User | 姓 | 姓 |
+| User | surname | 姓 |
 | User | givenname | 名 |
 | User | displayName | 表示名 |
 | User | objectid | ObjectID |
@@ -321,7 +321,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 | User | othermail | その他のメール |
 | User | country | Country |
 | User | city | City |
-| User | 状態 | State |
+| User | state | State |
 | User | jobtitle | 役職 |
 | User | employeeid | 従業員 ID |
 | User | facsimiletelephonenumber | ファックスの電話番号 |
@@ -360,7 +360,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 |TransformationMethod|想定される入力|想定される出力|説明|
 |-----|-----|-----|-----|
-|結合|string1, string2, separator|outputClaim|入力文字列の間に区切り記号を使用して、その文字列を結合します。 例: string1:"foo@bar.com" , string2:"sandbox" , separator:"." の結果は outputClaim:"foo@bar.com.sandbox" になります|
+|Join|string1, string2, separator|outputClaim|入力文字列の間に区切り記号を使用して、その文字列を結合します。 例: string1:"foo@bar.com" , string2:"sandbox" , separator:"." の結果は outputClaim:"foo@bar.com.sandbox" になります|
 |ExtractMailPrefix|mail|outputClaim|メール アドレスのローカル部分を抽出します。 例: mail:"foo@bar.com" の結果は outputClaim:"foo" になります。 \@ 記号がない場合、元の入力文字列がそのまま返されます。|
 
 **InputClaims:** InputClaims 要素を使用して、要求スキーマ エントリから変換にデータを渡します。 この要素には 2 つの属性があります。**ClaimTypeReferenceId** と **TransformationClaimType** です。
@@ -411,7 +411,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 | TransformationMethod | 制限 |
 | ----- | ----- |
 | ExtractMailPrefix | なし |
-| 結合 | 結合されているサフィックスは、リソース テナントの確認済みドメインである必要があります。 |
+| Join | 結合されているサフィックスは、リソース テナントの確認済みドメインである必要があります。 |
 
 ### <a name="custom-signing-key"></a>カスタム署名キー
 
