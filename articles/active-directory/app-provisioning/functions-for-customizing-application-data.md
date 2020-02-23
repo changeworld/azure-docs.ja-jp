@@ -300,7 +300,7 @@ Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager])
 Item([proxyAddresses], 1)
 
 ---
-### <a name="join"></a>結合
+### <a name="join"></a>Join
 **関数:**<br> Join(separator, source1, source2, …)
 
 **説明:**<br> Join() は Append() によく似ていますが、Join() では複数の **source** 文字列値を 1 つの文字列に結合できます。文字列値は **separator** で区切って指定します。
