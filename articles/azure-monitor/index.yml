@@ -10,12 +10,12 @@ metadata:
   author: rboucher
   ms.author: robb
   ms.date: 10/08/2019
-  ms.openlocfilehash: 328c6c6e0afe3c1efaa498d591be87426f0c6685
-  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.openlocfilehash: e099b61e168de05e6a81ca166cbedd56837303a3
+  ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/25/2019
-  ms.locfileid: "75406127"
+  ms.lasthandoff: 02/21/2020
+  ms.locfileid: "77544149"
 landingContent:
 - title: Azure Monitor について
   linkLists:
@@ -24,7 +24,7 @@ landingContent:
     - text: Azure Monitor とは
       url: overview.md
     - text: Azure Monitor ログ/Log Analytics とは
-      url: overview.md
+      url: platform/data-platform-logs.md
     - text: Azure Monitor ログ/Log Analytics のコンテンツ ハブ ページ
       url: azure-monitor-log-hub.md
     - text: Application Insights とは何か?

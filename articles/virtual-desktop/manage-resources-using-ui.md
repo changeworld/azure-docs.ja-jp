@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: 187c92f8e5b0148577f204f68077c58ea9ab9a3d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 032062dd200781b6d1f5abeb2391ae75c4c43e6a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887361"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367296"
 ---
 # <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して管理ツールをデプロイする
 
@@ -36,7 +36,7 @@ ms.locfileid: "75887361"
 
 - Azure Multi-Factor Authentication (MFA) が無効になっている
 - ご使用の Azure サブスクリプション内にリソースを作成するためのアクセス許可を持っている
-- Azure AD アプリケーションを作成するためのアクセス許可を持っている 次のステップに従い、あなたのユーザーが[「必要なアクセス許可」](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)の指示に従って必要なアクセス許可を保持しているかどうかを確認します。
+- Azure AD アプリケーションを作成するためのアクセス許可を持っている 次のステップに従い、あなたのユーザーが[「必要なアクセス許可」](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)の指示に従って必要なアクセス許可を保持しているかどうかを確認します。
 
 管理ツールをデプロイして構成した後は、管理 UI を起動し、すべてが動作することを確認することを推奨します。 管理 UI を起動するユーザーには、Windows Virtual Desktop テナントを表示/編集できるロールの割り当てが必要です。
 
