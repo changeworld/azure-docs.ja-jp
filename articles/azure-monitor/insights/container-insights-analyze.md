@@ -20,7 +20,7 @@ Azure Monitor for containers を有効にする方法については、[Azure Mo
 
 Azure Monitor には、ご使用のサブスクリプション内のリソース グループにデプロイされ、Linux および Windows Server 2019 を実行しているすべての監視対象 Kubernetes クラスターの正常性状態が表示される複数クラスター ビューが用意されています。 ここでは、ソリューションによって監視されない、すべての環境にわたって検出されたクラスターが表示されます。 すぐにクラスターの正常性を把握することができ、ここからは、ノードとコントローラーのパフォーマンス ページにドリルダウンしたり、クラスターのパフォーマンス グラフを表示したりできます。 検出され、監視対象外として識別された AKS クラスターについては、いつでも監視を有効にできます。 
 
-Azure Monitor for containers を使用して Windows Server クラスターを監視する場合の、Linux クラスターとの主な相違点については、概要のアーティクルの[こちら](container-insights-overview.md#what-does-azure-monitor-for-containers-provide)を参照してください。
+Azure Monitor for containers を使用して Windows Server クラスターを監視する場合の、Linux クラスターとの主な相違点については、[こちら](container-insights-overview.md#what-does-azure-monitor-for-containers-provide)から概要についての記事を参照してください。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 

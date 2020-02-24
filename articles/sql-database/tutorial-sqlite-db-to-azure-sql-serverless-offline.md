@@ -17,7 +17,7 @@ ms.lasthandoff: 01/09/2020
 ms.locfileid: "75780755"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>SQLite データベースを Azure SQL Database サーバーレスに移行する
-SQLite は、多くのユーザーにとって初めて触れるデータベースと SQL プログラミングです。 多くのオペレーティング システムに組み込まれており、一般的なアプリケーションにおいて、SQLite は、世界中で最も広く導入され使用されているデータベース エンジンとなっています。 また、多くの開発者にとって初めてのデータベース エンジンである可能性が高いため、多くの場合、プロジェクトまたはアプリケーションの中心部となることがあります。 プロジェクトまたはアプリケーション規模が初期の SQLite 実装を超えた場合、開発者はデータを信頼性の高い一元化されたデータ ストアに移行することが必要になる場合があります。
+SQLite は、多くのユーザーにとって初めて触れるデータベース、および SQL プログラミングです。 多くのオペレーティング システムや一般的なアプリケーションに組み込まれている SQLite は、世界中で最も広く導入され使用されているデータベース エンジンとなっています。 また、これは多くのユーザー初めて使用するデータベース エンジンである可能性が高いため、多くの場合、プロジェクトやアプリケーションの中心部となることがあります。 プロジェクトやアプリケーションの規模が初期の SQLite 実装を超えた場合、開発者はデータを信頼性の高い一元化されたデータ ストアに移行することが必要になる場合があります。
 
 Azure SQL Database サーバーレスは、ワークロードの需要に基づいてコンピューティングが自動的にスケーリングされ、1 秒あたりのコンピューティング使用量に対して請求されるコンピューティング レベルです。 またサーバーレス コンピューティング レベルでは、アイドル期間にデータベースを自動的に一時停止します。このときはストレージのみに課金され、再びアクティブになると自動的にデータベースが再開されます。
 
@@ -27,11 +27,11 @@ Azure SQL Database サーバーレスは、ワークロードの需要に基づ�
 - Azure サブスクリプション
 - 移行する SQLite2 または SQLite3 データベース
 - Windows 環境
-  - ローカル Windows 環境がない場合は、移行に Azure の Windows VM を使用できます。 Azure Files と Storage Explorer を使用して、SQLite データベース ファイルを移動して VM で使用できるようにします。
+  - ローカルの Windows 環境がない場合は、移行に Azure の Windows VM を使用できます。 Azure Files と Storage Explorer を使用して、SQLite データベース ファイルを移動して VM で使用できるようにします。
 
 ## <a name="steps"></a>手順
 
-1. サーバーレス コンピューティング層で新しい Azure SQL Database をプロビジョニングします。
+1. サーバーレス コンピューティング レベルで新しい Azure SQL Database をプロビジョニングします。
 
     ![Azure SQL database サーバーレスのプロビジョニング例を示す Azure portal のスクリーンショット](./media/tutorial-sqlite-db-to-azure-sql-serverless-offline/provision-serverless.png)
 
@@ -41,18 +41,18 @@ Azure SQL Database サーバーレスは、ワークロードの需要に基づ�
 
     - 使用している環境で ODBC データ ソース アドミニストレーターを開きます。
     - [システム DSN] タブをクリックし、[追加] をクリックします
-    - インストールした SQLite ODBC コネクタを選択し、わかりやすい接続名を付けます (たとえば、sqlitemigrationsource)
+    - インストールした SQLite ODBC コネクタを選択し、わかりやすい接続名 (sqlitemigrationsource など) を付けます
     - データベース名を .db ファイルに設定します
-    - 保存して終了
+    - 保存して終了します
 
-4. セルフホステッド統合ランタイムのダウンロードとインストール。 これを行う最も簡単な方法は、ドキュメントで詳しく説明されているように、簡易インストール オプションを選択することです。 手動インストールを選択した場合は、アプリケーションに認証キーを提供する必要があります。認証キーは、次の方法で Data Factory インスタンスで検索します。
+4. セルフホステッド統合ランタイムのダウンロードとインストール。 これを行う最も簡単な方法は、ドキュメントで詳しく説明されているように、簡易インストール オプションを使用することです。 手動インストールを行う場合は、アプリケーションに認証キーを提供する必要があります。認証キーは、次の方法で Data Factory インスタンスで検索します。
 
-    - ADF を起動する (Azure portal でサービスから作成および監視する)
-    - 左側の [作成] タブ (青い鉛筆) をクリックします
+    - ADF を起動します (Azure portal でサービスから作成および監視する)
+    - 左側の "作成" タブ (青い鉛筆) をクリックします
     - [接続] (左下)、[統合ランタイム] の順にクリックします
     - 新しいセルフホステッド統合ランタイムを追加し、名前を付けてから *[オプション 2]* を選択します。
 
-5. Data Factory にソース SQLite データベース用の新しいリンクされたサービスを作成します。
+5. Data Factory で、ソース SQLite データベース用の新しいリンクされたサービスを作成します。
 
     ![Azure Data Factory の空の [リンクされたサービス] ブレードを示すスクリーンショット](./media/tutorial-sqlite-db-to-azure-sql-serverless-offline/linked-services-create.png)
 
@@ -63,7 +63,7 @@ Azure SQL Database サーバーレスは、ワークロードの需要に基づ�
 
     ![Azure Data Factory の [リンクされたサービス] ブレードの ODBC コネクタのロゴを示すスクリーンショット](./media/tutorial-sqlite-db-to-azure-sql-serverless-offline/linked-services-odbc.png)
 
-8. リンクされたサービスにわかりやすい名前 (たとえば、"sqlite_odbc" など) を付けます。 [Connect via integration runtime]\(統合ランタイム経由で接続\) ドロップダウンから使用する統合ランタイムを選択します。 接続文字列に次を入力し、初期カタログ変数を .db ファイルのファイル パスに、DSN をシステム DSN 接続の名前に置き換えます。 
+8. リンクされたサービスにわかりやすい名前 (たとえば、"sqlite_odbc" など) を付けます。 [Connect via integration runtime]\(統合ランタイム経由で接続\) ドロップダウンから、使用する統合ランタイムを選択します。 接続文字列に次を入力し、Initial Catalog 変数を .db ファイルのファイル パスに、DSN をシステム DSN 接続の名前に置き換えます。 
 
     ```
     Connection string: Provider=MSDASQL.1;Persist Security Info=False;Mode=ReadWrite;Initial Catalog=C:\sqlitemigrationsource.db;DSN=sqlitemigrationsource

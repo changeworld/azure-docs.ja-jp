@@ -31,7 +31,7 @@ Azure Data Explorer C# クライアントを使用してマネージド ID を�
 
 * [Azure Data Explorer (Kusto) NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)をインストールします。
 * 認証用に、[Microsoft.IdentityModel.Clients.ActiveDirectory NuGet パッケージ](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)をインストールします。
-* 次の例を実行するには、[Azure AD アプリケーションを作成し](/azure/active-directory/develop/howto-create-service-principal-portal)、リソースにアクセスできるサービス プリンシパルも作成します。 サブスクリプションのスコープでロールの割り当てを追加して、必要な `Directory (tenant) ID`、`Application ID`、および `Client Secret` を取得できます。
+* 次の例を実行するには、[Azure AD アプリケーションを作成](/azure/active-directory/develop/howto-create-service-principal-portal)し、リソースにアクセスできるサービス プリンシパルも作成します。 サブスクリプションのスコープでロールの割り当てを追加して、必要な `Directory (tenant) ID`、`Application ID`、および `Client Secret` を取得できます。
 
 #### <a name="create-or-update-your-cluster"></a>クラスターを作成または更新します
 
@@ -78,7 +78,7 @@ Azure Data Explorer C# クライアントを使用してマネージド ID を�
     var tenantId = cluster.Identity.TenantId;
     ```
 
-    `PrincipalId` と `TenantId` は GUID で置き換えられます。 `TenantId` プロパティは、ID が属している AAD テナントを特定します。 `PrincipalId` は、クラスターの新しい ID の一意の識別子です。 AAD でのサービス プリンシパルの名前は、App Service または Azure Functions のインスタンスに指定したものと同じです。
+    `PrincipalId` と `TenantId` は GUID で置き換えられます。 `TenantId` プロパティは、ID が属している AAD テナントを特定します。 `PrincipalId` は、クラスターの新しい ID の一意識別子です。 AAD でのサービス プリンシパルの名前は、App Service または Azure Functions のインスタンスに指定したものと同じです。
 
 ### <a name="add-a-system-assigned-identity-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して、システム割り当て ID を追加する
 
@@ -123,11 +123,11 @@ Azure Resource Manager テンプレートを使って、Azure リソースのデ
 }
 ```
 
-`<TENANTID>` と `<PRINCIPALID>` は GUID で置き換えられます。 `TenantId` プロパティは、ID が属している AAD テナントを特定します。 `PrincipalId` は、クラスターの新しい ID の一意の識別子です。 AAD でのサービス プリンシパルの名前は、App Service または Azure Functions のインスタンスに指定したものと同じです。
+`<TENANTID>` と `<PRINCIPALID>` は GUID で置き換えられます。 `TenantId` プロパティは、ID が属している AAD テナントを特定します。 `PrincipalId` は、クラスターの新しい ID の一意識別子です。 AAD でのサービス プリンシパルの名前は、App Service または Azure Functions のインスタンスに指定したものと同じです。
 
 ## <a name="remove-an-identity"></a>ID を削除する
 
-システム割り当て ID を削除すると、AAD からも削除されます。 クラスター リソースが削除されると、システム割り当て ID も AAD から自動的に削除されます。 システム割り当て ID を削除するには、機能を無効にします。
+システム割り当て ID を削除すると、AAD からも削除されます。 クラスター リソースが削除されると、システム割り当て ID も AAD から自動的に削除されます。 システム割り当て ID を削除するには、次の機能を無効にします。
 
 ```json
 "identity": {

@@ -26,7 +26,7 @@ Application Insights のスマート検出ルールは、[Azure Resource Manager
 - ルールが有効になっているかどうか (既定値は **true**)。
 - 検出が見つかったときに、メールがサブスクリプションの [[閲覧者の監視]](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) ロールと [[共同作成者の監視]](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) ロールに関連付けられたユーザーに送信される必要がある場合 (既定値は **true**)。
 - 検出が見つかったときに通知を受ける必要があるその他の電子メール受信者。
-    -  メールの構成は、_プレビュー_ とマークされたスマート検出ルールで使用できません。
+    -  メールの構成は、_プレビュー_とマークされたスマート検出ルールで使用できません。
 
 Azure Resource Manager を使用してルールの設定を構成できるように、スマート検出ルールの構成は、Application Insights リソース内で **ProactiveDetectionConfigs** という名前の内部リソースとして使用できるようになりました。
 柔軟性を最大化するために、各スマート検出ルールを一意の通知設定で構成できます。
@@ -133,12 +133,12 @@ Application Insights リソース名を置換し、関連するスマート検�
 
 ```
 
-### <a name="failure-anomalies-alert-rule"></a>エラーの異常のアラート ルール
+### <a name="failure-anomalies-alert-rule"></a>失敗の異常の警告ルール
 
-この Azure Resource Manager テンプレートでは、重大度が 2 のエラーの異常のアラート ルールの構成について示しています。 この新しいバージョンのエラーの異常のアラート ルールは、新しい Azure のアラート プラットフォームの一部であり、[従来のアラートの回収プロセス](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/)の一環として廃止される従来のバージョンに置き換わります。
+この Azure Resource Manager テンプレートでは、重大度が 2 の失敗の異常警告ルールの構成について示しています。 この新しいバージョンのエラーの異常のアラート ルールは、新しい Azure のアラート プラットフォームの一部であり、[従来のアラートの回収プロセス](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/)の一環として廃止される従来のバージョンに置き換わります。
 
 > [!NOTE]
-> エラーの異常はグローバル サービスであるため、ルールの場所はグローバルな場所に作成されます。
+> 失敗の異常はグローバル サービスであるため、ルールはグローバルな場所に作成されます。
 
 ```json
 {
@@ -169,14 +169,14 @@ Application Insights リソース名を置換し、関連するスマート検�
 ```
 
 > [!NOTE]
-> この Azure Resource Manager テンプレートは、エラーの異常のアラート ルールに固有のものであり、この記事で説明されている他の従来のスマート検出ルールとは異なります。
+> この Azure Resource Manager テンプレートは、失敗の異常の警告ルールに固有のものであり、この記事で説明されている他の従来のスマート検出ルールとは異なります。
 
 ## <a name="smart-detection-rule-names"></a>スマート検出ルール名
 
 Azure Resource Manager テンプレートで使用する必要がある、ポータルに表示されるスマート検出ルール名とその内部名の表を次に示します。
 
 > [!NOTE]
-> _プレビュー_ としてマークされているスマート検出ルールでは、メール通知がサポートされません。 そのため、これらのルールに対して _有効な_ プロパティのみを設定できます。 
+> _プレビュー_としてマークされているスマート検出ルールでは、メール通知がサポートされません。 そのため、これらのルールに対して_有効な_プロパティのみを設定できます。 
 
 | Azure portal ルール名 | 内部名
 |:---|:---|

@@ -75,7 +75,7 @@ Azure Time Series Insights プレビューは、ご利用のタイム シリー�
 * **タイム シリーズ モデルの階層**:階層は、データの体系的な編成です。 階層は、Time Series Insights データ内のさまざまなエンティティ間のリレーションシップを示しています。
 * **タイム シリーズ モデルのインスタンス**:インスタンスは、タイム シリーズ自体を表します。 ほとんどの場合は、環境内での資産の一意識別子である **DeviceID** または **AssetID** を持っています。
 
-タイム シリーズ モデルの詳細については、[「タイム シリーズ モデル」](./time-series-insights-update-tsm.md)に関するページをご覧ください。
+タイム シリーズ モデルの詳細については、[タイム シリーズ モデル](./time-series-insights-update-tsm.md)に関するページをご覧ください。
 
 ## <a name="3-hierarchy-tree-and-search-panel"></a>3.階層ツリーと検索パネル
 
@@ -122,7 +122,7 @@ Azure Time Series Insights プレビューは、ご利用のタイム シリー�
 
 1. **マーカー要素**:現在選択されているデータ要素とそれに関連する詳細です。
 
-現在のグラフ上にあるデータ ポイントを**左クリック**したまま、選択領域を任意のエンドポイントまでドラッグすることで特定のデータ スライスの詳細を表示できます。 下の画像のように、青い選択領域を**右クリック**し、 **[ズーム]** を選択します。 選択期間にある利用統計情報イベントを表示したり、ダウンロードしたりすることもできます。
+現在のグラフ上にあるデータ ポイントを**左クリック**したまま、選択領域を任意のエンドポイントまでドラッグすることで特定のデータ スライスの詳細を表示できます。 以下に示されるとおり、青い選択領域を**右クリック**し、 **[ズーム]** を選択します。 選択期間にある利用統計情報イベントを表示したり、ダウンロードしたりすることもできます。
 
   [![プレビューのグラフのズーム](media/v2-update-explorer/preview-chart-zoom.png)](media/v2-update-explorer/preview-chart-zoom.png#lightbox)
 
@@ -134,11 +134,11 @@ Azure Time Series Insights プレビューは、ご利用のタイム シリー�
 
   [![重複グラフのオプション](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png)](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png#lightbox)
 
-**[その他の操作]** ボタンをクリックすると、画面が展開され、 **[CSV としてダウンロードする]** 、 **[Power BI に接続]** 、 **[グラフ データをテーブルとして表示します]** 、および **[生イベントの探索]** オプションが表示されます。
+**[その他の操作]** ボタンをクリックすると、画面が展開され、 **[CSV としてダウンロードする]** 、 **[Power BI に接続する]** 、 **[Show chart data as a table]\(グラフ データをテーブルとして表示する\)** 、および **[生イベントの探索]** オプションが表示されます。
 
   [![[その他の操作] オプション](media/v2-update-explorer/more-actions-icon.png)](media/v2-update-explorer/more-actions-icon.png#lightbox)
 
-[Time Series Insights ネイティブ Power BI コネクタ](concepts-power-bi.md)の **[Power BI に接続]** の詳細を参照してください。
+**[Power BI に接続]** オプションの詳細については、[Time Series Insights ネイティブ Power BI コネクタ](concepts-power-bi.md)に関する記事を参照してください。
 
 ## <a name="6-time-editor-panel"></a>6.期間編集パネル
 
@@ -207,7 +207,7 @@ Azure Time Series Insights プレビューでは、2 つのテーマがサポー
 
 このセクションは、更新された UI でのエクスプローラーの使用を試みる既存の S1/S2 環境のみに適用されます。 一般提供製品とプレビューを組み合わせて使用できます。 既存の UI から更新されたエクスプローラーにいくつかの機能が追加されていますが、既存の Time Series Insights エクスプローラーで S1/S2 環境向けの完全な UI エクスペリエンスを利用できます。 
 
-階層の代わりに、Time Series Insights 条件パネルが表示されます。 条件パネルでは、環境でのクエリを定義できます。 述語に基づいてデータをフィルター処理するために使用することもできます。
+階層の代わりに、Time Series Insights 条件パネルが表示されます。 条件パネルでは、環境内でのクエリを定義できます。 これは、述語に基づいてデータをフィルター処理するために使用することもできます。
 
   [![Where クエリ パネル](media/v2-update-explorer/s1-s2-preview-query.png)](media/v2-update-explorer/s1-s2-preview-query.png#lightbox)
 
@@ -222,7 +222,7 @@ Time Series Insights プレビュー条件編集パネルには、次のパラ�
 | `IN` | String、Bool、Double、DateTime、TimeSpan、NULL | すべてのオペランドは同じ型か NULL 定数である必要があります。 |
 | `HAS` | String | 右側で使用できるのは定数文字列リテラルのみです。 空の文字列や NULL は許可されません。 |
 
-サポートされているクエリ操作とデータ型の詳細については、[タイム シリーズ式 (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) に関する記事を参照してください。
+サポートされているクエリ操作とデータ型の詳細については、[Time Series 式 (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) に関する記事を参照してください。
 
 ### <a name="examples-of-where-clauses"></a>Where 句の例
 

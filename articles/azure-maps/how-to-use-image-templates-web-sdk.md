@@ -1,6 +1,6 @@
 ---
 title: Azure Maps Web SDK の画像テンプレート | Microsoft Azure Maps
-description: この記事では、HTML マーカーおよび Microsoft Azure Maps Web SDK のさまざまなレイヤーで、画像テンプレートを使用する方法について説明します。
+description: この記事では、Microsoft Azure Maps Web SDK で、HTML マーカーやさまざまなレイヤーとともに画像テンプレートを使用する方法について説明します。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 8/6/2019
@@ -18,7 +18,7 @@ ms.locfileid: "75911568"
 ---
 # <a name="how-to-use-image-templates"></a>イメージ テンプレートの使用方法
 
-画像は、HTML マーカーおよび Azure Maps Web SDK 内のさまざまなレイヤーで使用できます。
+画像は、Azure Maps Web SDK 内の HTML マーカーおよび のさまざまなレイヤーで使用できます。
 
  - シンボル レイヤーでは、画像アイコンを使用してマップ上にポイントをレンダリングできます。 線のパスに沿ってシンボルをレンダリングすることもできます。
  - 塗りつぶしパターン画像を使用して多角形レイヤーをレンダリングできます。 

@@ -93,7 +93,7 @@ RBAC ロールが Azure AD セキュリティ プリンシパルに割り当て�
 **閲覧者**ロールを割り当てる必要があるのは、Azure portal を使用して BLOB またはキューにアクセスする必要があるユーザーに対してのみです。
 
 > [!IMPORTANT]
-> Azure portal の Storage Explorer のプレビュー バージョンでは、BLOB またはキューのデータを表示および変更するための Azure AD 資格情報の使用はサポートされていません。 Azure portal の Storage Explorer は、常にアカウント キーを使用してデータにアクセスします。 Azure portal で Storage Explorer を使用するには、**Microsoft. Storage/storageAccounts/listkeys/action** を含むロールが割り当てられている必要があります。
+> Azure portal の Storage Explorer のプレビュー バージョンでは、BLOB またはキュー データを表示および変更するための Azure AD 資格情報の使用はサポートされていません。 Azure portal の Storage Explorer では、データは常にアカウント キーを使用してアクセスされます。 Azure portal で Storage Explorer を使用するには、**Microsoft. Storage/storageAccounts/listkeys/action** を含むロールが割り当てられている必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

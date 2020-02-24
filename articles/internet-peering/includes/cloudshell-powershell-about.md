@@ -27,6 +27,6 @@ ms.locfileid: "75773626"
 
 Azure CloudShell を使用しない場合は、代わりにローカルに PowerShell をインストールできます。 PowerShell をローカルにインストールして使用する場合は、必ず最新版の Resource Manager PowerShell コマンドレットをインストールしてください。 PowerShell コマンドレットは頻繁に更新されるため、最新の機能を利用するには、通常、PowerShell コマンドレットを更新する必要があります。更新しない場合、問題が発生する可能性があります。
 
-ローカルで実行している PowerShell のバージョンを確認するには、'Get-Module -ListAvailable Az' コマンドレットを使用します。 更新するには、「[Install the Azure PowerShell module (Azure PowerShell モジュールのインストール)](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)」を参照してください。 詳細については、「 [Azure PowerShell のインストールと構成の方法](https://docs.microsoft.com/powershell/azure/azurerm/overview)」を参照してください。
+ローカルで実行されている PowerShell のバージョンを確認するには、'Get-Module -ListAvailable Az' コマンドレットを使用します。 更新するには、「[Install the Azure PowerShell module (Azure PowerShell モジュールのインストール)](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)」を参照してください。 詳細については、「 [Azure PowerShell のインストールと構成の方法](https://docs.microsoft.com/powershell/azure/azurerm/overview)」を参照してください。
 
 macOS で PowerShell を使用する場合は、「[macOS への PowerShell Core のインストール](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-macos?view=powershell-6)」の手順に従ってください。

@@ -132,8 +132,8 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 | パブリック | 西ヨーロッパ | https:\//kailani6.one.microsoft.com | 北ヨーロッパ | https:\//tm-kailani6.one.microsoft.com |
 | パブリック | 米国西部 | https:\//kailani.one.microsoft.com | East US | https:\//tm-kailani.one.microsoft.com |
 | パブリック | 米国西部 2 | https:\//westus201.afs.azure.net | 米国中西部 | https:\//tm-westus201.afs.azure.net |
-| Government | 米国政府アリゾナ | https:\//usgovarizona01.afs.azure.us | 米国政府テキサス | https:\//tm-usgovarizona01.afs.azure.us |
-| Government | 米国政府テキサス | https:\//usgovtexas01.afs.azure.us | 米国政府アリゾナ | https:\//tm-usgovtexas01.afs.azure.us |
+| Government | US Gov アリゾナ | https:\//usgovarizona01.afs.azure.us | US Gov テキサス | https:\//tm-usgovarizona01.afs.azure.us |
+| Government | US Gov テキサス | https:\//usgovtexas01.afs.azure.us | US Gov アリゾナ | https:\//tm-usgovtexas01.afs.azure.us |
 
 - 使用しているストレージ アカウントがローカル冗長 (LRS) またはゾーン冗長 (ZRS) の場合、有効にする必要があるのは、"プライマリ エンドポイント URL" に記載された URL だけです。
 

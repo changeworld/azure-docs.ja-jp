@@ -67,7 +67,7 @@ Node.js アプリ向けの Azure App Service の既定の構成は、最も一�
 
 
 ## <a name="next-steps"></a>次の手順
-ベスト プラクティスの詳細については、[App Service 診断](https://docs.microsoft.com/azure/app-service/overview-diagnostics)にアクセスして、リソース専用の実行可能なベスト プラクティスを確認してください。
+ベスト プラクティスの詳細については、[App Service 診断](https://docs.microsoft.com/azure/app-service/overview-diagnostics)に関するページにアクセスして、お使いのリソースに固有の実行可能なベスト プラクティスを確認してください。
 
 - [Azure portal](https://portal.azure.com) で Web App に移動します。
 - 左側のナビゲーションで **[問題の診断と解決]** をクリックすると、App Service 診断が開きます。

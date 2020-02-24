@@ -18,7 +18,7 @@ ms.locfileid: "75773986"
 このセクションでは、Direct ピアリングで次の変更操作を実行する方法について説明します。
 
 ### <a name="add-direct-peering-connections"></a>Direct ピアリング接続を追加する
-1. 上部にある **[+ Add connections]\(+ 接続の追加\)** ボタンをクリックし、新しいピアリング接続を構成します。
+1. 上部にある **[+ Add connections]\ (+ 接続の追加\)** ボタンをクリックし、新しいピアリング接続を構成します。
     > [!div class="mx-imgBorder"]
     > ![ピアリング リソース ビュー](../media/setup-direct-modify-addconnection.png)
 1. **[Direct peering Connection]\(Direct ピアリング接続\)** フォームに入力して、 **[保存]** をクリックします。 ピアリング接続の構成の詳細については、上記の Direct ピアリングを作成およびプロビジョニングする方法に関するセクションで手順を確認してください。
