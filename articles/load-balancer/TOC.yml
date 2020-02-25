@@ -64,6 +64,8 @@
   items:
     - name: Basic パブリック Load Balancer をStandard パブリック Load Balancer にアップグレードする
       href: upgrade-basic-standard.md
+    - name: Basic Internal Load Balancer を Standard Internal Load Balancer にアップグレードする
+      href: upgrade-basicInternal-standard.md
     - name: 送信の規則を構成する
       items:
         - name: Azure CLI
