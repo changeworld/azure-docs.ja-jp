@@ -45,7 +45,7 @@ Azure Cognitive Services は、開発者が直接的な AI またはデータ �
 > [Azure Cognitive Search](https://docs.microsoft.com/azure/search/) をお探しですか? 一部のタスクに Cognitive Services が使用されますが、他のシナリオをサポートする異なる検索テクノロジです。
 
 
-## <a name="language-apis"></a>言語 API
+## <a name="language-apis"></a>Language API
 
 |サービス名|サービスの説明|
 |:-----------|:------------------|
