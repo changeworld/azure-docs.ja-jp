@@ -130,10 +130,14 @@
       items:
         - name: パスワードレスのデプロイ
           href: howto-authentication-passwordless-deployment.md
-        - name: パスワードレスのセキュリティ キー
-          href: howto-authentication-passwordless-security-key.md
-        - name: パスワードレスの Windows 10
-          href: howto-authentication-passwordless-security-key-windows.md
+        - name: パスワードレスの FIDO2 セキュリティ キー
+          items:
+            - name: テナントの FIDO2 セキュリティ キーを有効にする
+              href: howto-authentication-passwordless-security-key.md
+            - name: Windows 10 デバイスへのサインイン
+              href: howto-authentication-passwordless-security-key-windows.md
+            - name: オンプレミスのリソースへの SSO
+              href: howto-authentication-passwordless-security-key-on-premises.md
         - name: パスワードレスの電話によるサインイン
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello for Business
