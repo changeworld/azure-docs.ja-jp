@@ -1,5 +1,5 @@
 ---
-title: 仮想ネットワーク ピアリングを使用して仮想ネットワークを接続する - チュートリアル - Azure Portal | Microsoft Docs
+title: VNet ピアリングを使用して仮想ネットワークを接続する - チュートリアル - Azure portal
 description: このチュートリアルでは、Azure Portal を使って仮想ネットワーク ピアリングで仮想ネットワークを接続する方法を説明します。
 services: virtual-network
 documentationcenter: virtual-network
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/22/2020
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 65749182bf93e84c8712409cd16bd3a60184c7ca
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e95441aab6c8ce7de37ba5f6b08d5f7d54e13347
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016053"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201300"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して仮想ネットワーク ピアリングで仮想ネットワークを接続する
 
@@ -34,7 +34,7 @@ ms.locfileid: "77016053"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="log-in-to-azure"></a>Azure にログインする 
+## <a name="log-in-to-azure"></a>Azure にログインする
 
 Azure Portal (https://portal.azure.com ) にログインします。
 
@@ -49,7 +49,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
     |サブスクリプション| サブスクリプションを選択します。|
     |Resource group| **[新規作成]** を選択し、「*myResourceGroup*と入力します。|
     |リージョン| **[米国東部]** を選択します。|
-    |Name|myVirtualNetwork1|
+    |名前|myVirtualNetwork1|
 
 4. **[IP アドレス]** タブで、 **[アドレス空間]** フィールドに「10.0.0.0/16」と入力します。 下の **[サブネットの追加]** ボタンをクリックし、 **[サブネット名]** に「*Subnet1*」と入力し、 **[サブネット アドレス範囲]** に「10.0.0.0/24」と入力します。
 5. **[確認および作成]** を選択し、次に **[作成]** を選択します。
@@ -58,7 +58,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
 
     |設定|Value|
     |---|---|
-    |Name|myVirtualNetwork2|
+    |名前|myVirtualNetwork2|
     |アドレス空間|10.1.0.0/16|
     |Resource group| **[既存のものを使用]** 、 **[myResourceGroup]** の順に選択します。|
     |サブネット名 | Subnet2|
@@ -101,7 +101,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
     |設定|Value|
     |---|---|
     |Resource group| **[既存のものを使用]** 、 **[myResourceGroup]** の順に選択します。|
-    |Name|myVm1|
+    |名前|myVm1|
     |Location| **[米国東部]** を選択します。|
     |ユーザー名| 任意のユーザー名を入力します。|
     |Password| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
@@ -124,7 +124,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
 
 |設定|Value|
 |---|---|
-|Name | myVm2|
+|名前 | myVm2|
 |仮想ネットワーク | myVirtualNetwork2|
 
 VM の作成には数分かかります。 両方の VM の作成が完了するまで、以降の手順に進まないでください。

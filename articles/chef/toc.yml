@@ -8,7 +8,7 @@
       href: ./chef-habitat-overview.md
     - name: Azure 上の InSpec について
       href: ./chef-inspec-overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: Chef
@@ -21,7 +21,7 @@
     - name: Chef
       items:
         - name: Windows VM の作成
-          href: /azure/virtual-machines/windows/chef-automation
+          href: ./chef-automation.md
 - name: リファレンス
   items:
     - name: Azure Chef 拡張機能

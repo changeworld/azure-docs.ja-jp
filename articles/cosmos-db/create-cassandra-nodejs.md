@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 429b8845e49158c906c02773f654c9487ff98d1e
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: ffc2681e487a51ce630d9433d6ded86961b5276c
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134750"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210363"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>クイック スタート:Node.js SDK と Azure Cosmos DB を使用して Cassandra アプリを構築する
 
@@ -28,9 +28,11 @@ ms.locfileid: "77134750"
 
 ## <a name="prerequisites"></a>前提条件
 
-- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 または、Azure サブスクリプションなしで、[Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)こともできます。
-- [Node.js 0.10.29 以降](https://nodejs.org/)。
-- [Git](https://www.git-scm.com/downloads).
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]または、Azure サブスクリプションを使わず、課金も契約もなしで [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。
+
+さらに、次のものが必要です。
+* [Node.js](https://nodejs.org/dist/v0.10.29/x64/node-v0.10.29-x64.msi) バージョン v0.10.29 以降
+* [Git](https://git-scm.com/)
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 
@@ -110,42 +112,54 @@ GitHub から Cassandra API アプリを複製し、接続文字列を設定し�
 * キー/値エンティティが挿入されます。
 
     ```javascript
-    ...
-       {
-          query: 'INSERT INTO  uprofile.user  (user_id, user_name , user_bcity) VALUES (?,?,?)',
-          params: [5, 'IvanaV', 'Belgaum']
-        }
-    ];
-    client.batch(queries, { prepare: true}, next);
+        function insert(next) {
+            console.log("\insert");
+            const arr = ['INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (1, \'AdrianaS\', \'Seattle\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (2, \'JiriK\', \'Toronto\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (3, \'IvanH\', \'Mumbai\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (4, \'IvanH\', \'Seattle\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (5, \'IvanaV\', \'Belgaum\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (6, \'LiliyaB\', \'Seattle\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (7, \'JindrichH\', \'Buenos Aires\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (8, \'AdrianaS\', \'Seattle\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (9, \'JozefM\', \'Seattle\')'];
+            arr.forEach(element => {
+            client.execute(element);
+            });
+            next();
+        },
     ```
 
 * クエリを実行して、すべてのキー値を取得します。
 
     ```javascript
-   var query = 'SELECT * FROM uprofile.user';
-    client.execute(query, { prepare: true}, function (err, result) {
-      if (err) return next(err);
-      result.rows.forEach(function(row) {
-        console.log('Obtained row: %d | %s | %s ',row.user_id, row.user_name, row.user_bcity);
-      }, this);
-      next();
-    });
+        function selectAll(next) {
+            console.log("\Select ALL");
+            var query = 'SELECT * FROM uprofile.user';
+            client.execute(query, function (err, result) {
+            if (err) return next(err);
+            result.rows.forEach(function(row) {
+                console.log('Obtained row: %d | %s | %s ',row.user_id, row.user_name, row.user_bcity);
+            }, this);
+            next();
+            });
+        },
     ```  
     
 * クエリを実行して、キーの値を取得します。
 
     ```javascript
-    function selectById(next) {
-        console.log("\Getting by id");
-        var query = 'SELECT * FROM uprofile.user where user_id=1';
-        client.execute(query, { prepare: true}, function (err, result) {
-        if (err) return next(err);
+        function selectById(next) {
+            console.log("\Getting by id");
+            var query = 'SELECT * FROM uprofile.user where user_id=1';
+            client.execute(query, function (err, result) {
+            if (err) return next(err);
             result.rows.forEach(function(row) {
-            console.log('Obtained row: %d | %s | %s ',row.user_id, row.user_name, row.user_bcity);
-        }, this);
-        next();
-        });
-    }
+                console.log('Obtained row: %d | %s | %s ',row.user_id, row.user_name, row.user_bcity);
+            }, this);
+            next();
+            });
+        }
     ```  
 
 ## <a name="update-your-connection-string"></a>接続文字列を更新する
@@ -190,19 +204,41 @@ GitHub から Cassandra API アプリを複製し、接続文字列を設定し�
 
 3. `uprofile.js` を保存します。
 
+> [!NOTE]
+> Windows マシン上で実行中に、後の手順で証明書関連のエラーが発生した場合は、次のように .crt ファイルを Microsoft .cer 形式に適切に変換する手順に従っていることを確認してください。
+> 
+> .crt ファイルをダブルクリックして、証明書の表示に開きます。 
+>
+> ![出力を表示して検証する](./media/create-cassandra-nodejs/crtcer1.gif)
+>
+> 証明書ウィザードで [次へ] を押します。 [Base-64 encoded X.509 (.CER)]、[次へ] の順に選択します。
+>
+> ![出力を表示して検証する](./media/create-cassandra-nodejs/crtcer2.gif)
+>
+> [参照] を選択して変換先を見つけ、ファイル名を入力します。
+> [次へ] を選択して終了します。
+>
+> これで、適切に書式設定された .cer ファイルが作成されました。 `uprofile.js` のパスがこのファイルを指していることを確認します。
+
 ## <a name="run-the-nodejs-app"></a>Node.js アプリを実行する
 
-1. git ターミナル ウィンドウで `npm install` を実行して、必要な npm モジュールをインストールします。
+1. git ターミナル ウィンドウで、先ほどクローンしたサンプル ディレクトリにいることを確認します。
 
-2. `node uprofile.js` を実行して、node アプリケーションを起動します。
+    ```bash
+    cd azure-cosmos-db-cassandra-nodejs-getting-started
+    ```
 
-3. コマンド ラインから予想される結果を確認します。
+2. `npm install` を実行して、必要な npm モジュールをインストールします。
+
+3. `node uprofile.js` を実行して、node アプリケーションを起動します。
+
+4. コマンド ラインから予想される結果を確認します。
 
     ![出力を表示して検証する](./media/create-cassandra-nodejs/output.png)
 
     Ctrl + C キーを押してプログラムの実行を停止し、コンソール ウィンドウを閉じます。 
 
-4. Azure portal で **Data Explorer** を開き、この新しいデータのクエリ、変更、操作を行います。 
+5. Azure portal で **Data Explorer** を開き、この新しいデータのクエリ、変更、操作を行います。 
 
     ![データ エクスプローラーでのデータの表示](./media/create-cassandra-nodejs/data-explorer.png) 
 
@@ -220,5 +256,3 @@ GitHub から Cassandra API アプリを複製し、接続文字列を設定し�
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB への Cassandra データのインポート](cassandra-import-data.md)
-
-

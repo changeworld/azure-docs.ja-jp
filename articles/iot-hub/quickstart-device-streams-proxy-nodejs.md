@@ -9,65 +9,60 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 7f2b98f196a0889406e7821c60db7066a21b9178
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: f7dfa1bf391e4affba52fc40a8c22ea9b5f4b4df
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084278"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470685"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>クイック スタート:Node.js プロキシ アプリケーションを使用して IoT Hub デバイス ストリーム経由で SSH および RDP を有効にする (プレビュー)
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
 
-Microsoft Azure IoT Hub は現在、[プレビュー機能](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)としてデバイス ストリームをサポートしています。
-
-[IoT Hub デバイス ストリーム](./iot-hub-device-streams-overview.md)を使用すると、サービス アプリケーションとデバイス アプリケーションが、安全でファイアウォールに対応した方法で通信できます。 
-
-このクイックスタートでは、デバイス ストリームを介して Secure Shell (SSH) およびリモート デスクトップ プロトコル (RDP) トラフィックをデバイスに送信できるようにするためのサービス側での Node.js プロキシ アプリケーションの実行について説明します。 設定の概要については、[ローカル プロキシのサンプル](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)に関するページを参照してください。 
-
-パブリック プレビュー中、Node.js SDK ではサービス側のみでデバイス ストリームがサポートされます。 そのため、このクイックスタートでは、サービスローカルのプロキシ アプリケーションのみを実行する手順について説明しています。 デバイスローカルのプロキシ アプリケーションを実行するには、以下を参照してください。  
-
-   * [C プロキシ アプリケーションを使用して IoT Hub デバイス ストリーム経由で SSH および RDP を有効にする](./quickstart-device-streams-proxy-c.md)
-   * [C# プロキシ アプリケーションを使用して IoT Hub デバイス ストリーム経由で SSH および RDP を有効にする](./quickstart-device-streams-proxy-csharp.md)
-
-この記事では、SSH の設定 (ポート 22 を使用) について説明し、次に RDP の設定 (ポート 3389 を使用) を変更する方法について説明します。 デバイス ストリームはアプリケーションやプロトコルに依存しないため、通常は通信ポートを変更することによって、同じサンプルを他の種類のクライアント/サーバー アプリケーション トラフィックに対応するように変更できます。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+このクイックスタートでは、デバイス ストリームを介して Secure Shell (SSH) およびリモート デスクトップ プロトコル (RDP) トラフィックをデバイスに送信できるようにします。 Azure IoT Hub デバイス ストリームを使用すると、サービス アプリケーションとデバイス アプリケーションが、安全でファイアウォールに対応した方法で通信できます。 このクイックスタートでは、サービス側での Node.js プロキシ アプリケーションの実行について説明します。 パブリック プレビュー中、Node.js SDK ではサービス側のみでデバイス ストリームがサポートされます。 そのため、このクイックスタートでは、サービスローカルのプロキシ アプリケーションのみを実行する手順について説明しています。
 
 ## <a name="prerequisites"></a>前提条件
 
-* デバイス ストリームのプレビューは現在、以下のリージョンで作成された IoT ハブに対してのみサポートされています。
+* [C プロキシ アプリケーションを使用して IoT Hub デバイス ストリーム経由で SSH および RDP を有効にする](./quickstart-device-streams-proxy-c.md)クイックスタートまたは [C# プロキシ アプリケーションを使用して IoT Hub デバイス ストリーム経由で SSH および RDP を有効にする](./quickstart-device-streams-proxy-csharp.md)クイックスタートが完了していること。
 
-  * 米国中部
-  * 米国中部 EUAP
-  * 東南アジア
-  * 北ヨーロッパ
+* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+
+* [Node.js 10 以上](https://nodejs.org)。
+
+* [サンプル Node.js プロジェクト](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip)。
+
+開発マシンに現在インストールされている Node.js のバージョンは、次のコマンドを使って確認できます。
+
+```cmd/sh
+node --version
+```
+
+Microsoft Azure IoT Hub は現在、[プレビュー機能](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)としてデバイス ストリームをサポートしています。
+
+> [!IMPORTANT]
+> デバイス ストリームのプレビューは現在、次のリージョンで作成された IoT Hub に対してのみサポートされています。
+>
+> * 米国中部
+> * 米国中部 EUAP
+> * 北ヨーロッパ
+> * 東南アジア
   
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-* このクイックスタートのサービスローカルのアプリケーションを実行するには、開発マシンに Node.js v10.x.x 以降が必要です。
-  * 複数のプラットフォームに対応する [Node.js](https://nodejs.org) をダウンロードします。
-  * 開発マシン上の Node.js の現在のバージョンを、次のコマンドを使って確認します。
+### <a name="add-azure-iot-extension"></a>Azure IoT 拡張機能を追加する
 
-   ```
-   node --version
-   ```
+次のコマンドを実行して、Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
 
-* 次のコマンドを実行して、Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
-
-    ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
-    ```
-
-* まだ行っていない場合は、[サンプル Node.js プロジェクトをダウンロード](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip)し、ZIP アーカイブを抽出します。
+```azurecli-interactive
+az extension add --name azure-cli-iot-ext
+```
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
 前出の[デバイスから IoT ハブへの利用統計情報の送信に関するクイック スタート](quickstart-send-telemetry-node.md)を完了した場合は、この手順を省略できます。
 
-[!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>デバイスの登録
 
@@ -109,9 +104,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    * [C プロキシ アプリケーションを使用して IoT Hub デバイス ストリーム経由で SSH および RDP を有効にする](./quickstart-device-streams-proxy-c.md)
    * [C# プロキシ アプリケーションを使用して IoT Hub デバイス ストリーム経由で SSH および RDP を有効にする](./quickstart-device-streams-proxy-csharp.md) 
 
-次の手順に進む前に、デバイスローカルのプロキシ アプリケーションが実行されていることを確認します。
+次の手順に進む前に、デバイスローカルのプロキシ アプリケーションが実行されていることを確認します。 設定の概要については、[ローカル プロキシのサンプル](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)に関するページを参照してください。
 
 ### <a name="run-the-service-local-proxy-application"></a>サービスローカルのプロキシ アプリケーションの実行
+
+この記事では、SSH の設定 (ポート 22 を使用) について説明し、次に RDP の設定 (ポート 3389 を使用) を変更する方法について説明します。 デバイス ストリームはアプリケーションやプロトコルに依存しないため、通常は通信ポートを変更することによって、同じサンプルを他の種類のクライアント/サーバー アプリケーション トラフィックに対応するように変更できます。
 
 デバイスローカルのプロキシ アプリケーションを実行しつつ、ローカル ターミナル ウィンドウで次の手順に従って、Node.js で記述されたサービスローカルのプロキシ アプリケーションを実行します。
 
@@ -165,11 +162,11 @@ SSH クライアント アプリケーションのコンソール出力 (SSH ク
 
 ![RDP クライアントがサービスローカルのプロキシ アプリケーションに接続する](./media/quickstart-device-streams-proxy-nodejs/rdp-screen-capture.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources-device-streams.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、IoT ハブの設定、デバイスの登録、およびサービス プロキシ アプリケーションのデプロイによる IoT デバイスへの RDP および SSH の有効化を行いました。 RDP および SSH トラフィックは、IoT ハブを介したデバイス ストリームを通じてトンネリングされます。 このプロセスにより、デバイスへの直接接続の必要性がなくなります。
 

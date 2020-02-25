@@ -3,14 +3,15 @@ author: MashaMSFT
 ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 02/14/2020
 ms.author: mathoma
-ms.openlocfilehash: 0fad326107fa101cbba869311724710bd3f5307b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.reviewer: vanto
+ms.openlocfilehash: 3e2c8a424c9a3744bfb91d03632965c15613a424
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496170"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252140"
 ---
 この手順では、Azure SQL Database の単一データベースを作成します。 
 
@@ -19,30 +20,30 @@ ms.locfileid: "73496170"
 >
 > 詳細については、[データベース レベルのファイアウォール規則の作成](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)に関するページを参照してください。ご利用のコンピューターのサーバーレベルのファイアウォール規則に使用する IP アドレスを調べる場合は、[サーバーレベルのファイアウォールの作成](../sql-database-server-level-firewall-rule.md)に関するページを参照してください。  
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal を使用して、リソース グループと単一データベースを作成します。
 
-1. [Azure portal](https://portal.azure.com) の左側のメニューで **[Azure SQL]** を選択します。 **[Azure SQL]** が一覧にない場合は、 **[すべてのサービス]** を選択し、検索ボックスに「*Azure SQL*」と入力します。 (オプション) **[Azure SQL]** の横にある星を選択してお気に入りに追加し、左側のナビゲーションに項目として追加します。 
+1. [Azure portal](https://portal.azure.com) の左側のメニューで **[Azure SQL]** を選択します。 **[Azure SQL]** が一覧にない場合は、 **[すべてのサービス]** を選択し、検索ボックスに「*Azure SQL*」と入力します。 (省略可能) **[Azure SQL]** の横にある星を選択してお気に入りに追加し、左側のナビゲーションに項目として追加します。 
 2. **[+ 追加]** を選択して、 **[Select SQL deployment option]\(SQL デプロイ オプションの選択\)** ページを開きます。 **[データベース]** タイルで **[詳細の表示]** を選択すると、さまざまなデータベースに関する追加情報を表示できます。
 3. **[作成]** を選択します。
 
    ![単一データベースの作成](../media/sql-database-get-started-portal/create-single-database.png)
 
-3. **[基本]** タブの **[プロジェクトの詳細]** セクションで、次の値を入力または選択します。
+4. **[基本]** タブの **[プロジェクトの詳細]** セクションで、次の値を入力または選択します。
 
    - **サブスクリプション**:表示されていない場合は、ドロップ ダウンして適切なサブスクリプションを選択します。
    - **[リソース グループ]** : **[新規作成]** を選択し、「`myResourceGroup`」と入力して、 **[OK]** を選択します。
 
      ![新しい SQL データベース - 基本タブ](../media/sql-database-get-started-portal/new-sql-database-basics.png)
 
-4. **[データベースの詳細]** セクションで、次の値を入力または選択します。
+5. **[データベースの詳細]** セクションで、次の値を入力または選択します。
 
-   - **データベース名**: 「 `mySampleDatabase` 」を入力します。
-   - **サーバー**: **[新規作成]** を選択して次の値を入力し、 **[選択]** を選択します。
-       - **サーバー名**: 一意性を確保するためにいくつかの数字とともに「`mysqlserver`」と入力します。
-       - **サーバー管理者ログイン**:「 `azureuser`」と入力します。
-       - **Password**:パスワードの要件を満たす複雑なパスワードを入力します。
+   - **データベース名**: 「`mySampleDatabase`」と入力します。
+   - **[サーバー]** : **[新規作成]** を選択して次の値を入力し、 **[選択]** を選択します。
+       - **[サーバー名]** : 一意性を確保するためにいくつかの数字とともに「`mysqlserver`」と入力します。
+       - **サーバー管理者ログイン**:「`azureuser`.
+       - **パスワード**:パスワードの要件を満たす複雑なパスワードを入力します。
        - **[場所]** :ドロップダウンから場所 (`West US` など) を選択します。
 
          ![新しいサーバー](../media/sql-database-get-started-portal/new-server.png)
@@ -63,20 +64,24 @@ Azure portal を使用して、リソース グループと単一データベー
      - 必要に応じて、 **[構成の変更]** を選択して、ハードウェアの世代を変更することもできます。
    - **[適用]** を選択します。
 
-5. **[追加設定]** タブを選択します。 
-6. **[データ ソース]** セクションの **[既存のデータを使用します]** で、`Sample` を選択します。
+6. **[ネットワーク]** タブを選択し、[ **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** ](../sql-database-networkaccess-overview.md)かどうか、または[プライベート エンドポイント](../../private-link/private-endpoint-overview.md)を追加するかどうかを決定します。
+
+   ![[ネットワーク] タブ](../media/sql-database-get-started-portal/create-database-networking.png)
+
+7. **[追加設定]** タブを選択します。 
+8. **[データ ソース]** セクションの **[既存のデータを使用します]** で、`Sample` を選択します。
 
    ![追加の SQL DB 設定](../media/sql-database-get-started-portal/create-sql-database-additional-settings.png)
 
    > [!IMPORTANT]
    > このクイック スタートとこのデータを使用する他の Azure SQL Database クイック スタートを簡単に実行できるように、必ず **Sample (AdventureWorksLT)** を選択します。
 
-7. 残りの値は既定値のままにして、フォームの下部にある **[確認および作成]** を選択します。
-8. 最終設定を確認し、 **[作成]** を選択します。
+9. 残りの値は既定値のままにして、フォームの下部にある **[確認および作成]** を選択します。
+10. 最終設定を確認し、 **[作成]** を選択します。
 
-9. **[SQL Database]** フォームで **[作成]** を選択して、リソース グループ、サーバー、データベースをデプロイし、プロビジョニングします。
+11. **[SQL Database]** フォームで **[作成]** を選択して、リソース グループ、サーバー、データベースをデプロイし、プロビジョニングします。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -144,14 +149,14 @@ PowerShell を使用して、リソース グループと単一データベー�
 
 この記事のこの部分では、次の PowerShell コマンドレットを使用します。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 単一データベースとエラスティック プールをホストする SQL Database サーバーを作成します。 |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | 論理サーバー用のファイアウォール規則を作成します。 | 
 | [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Azure SQL Database の新しい単一データベースを作成します。 | 
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 AZ CLI を使用して、リソース グループと単一データベースを作成します。
 
@@ -219,7 +224,7 @@ AZ CLI を使用して、リソース グループと単一データベースを
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | サブスクリプションを現在のアクティブなサブスクリプションとして設定します。 | 
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |

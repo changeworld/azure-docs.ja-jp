@@ -1,41 +1,38 @@
 ---
-title: チュートリアル:Azure Firewall Manager Preview を使用し、Azure portal を使ってクラウド ネットワークをセキュリティで保護する
-description: このチュートリアルでは、Azure portal を使用して Azure Firewall Manager でクラウド ネットワークをセキュリティで保護する方法を学習します。
+title: チュートリアル:Azure Firewall Manager プレビューを使用して仮想 WAN をセキュリティで保護する
+description: このチュートリアルでは、Azure portal を使用して Azure Firewall Manager で仮想 WAN にセキュリティを確保する方法について説明します。
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 10/27/2019
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: d2ebfd6003c0bc2b47636be1e38f47e554cc6988
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3dc94a8be265682fbe2128f2e5870dfdf5850a2d
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510036"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443059"
 ---
-# <a name="tutorial-secure-your-cloud-network-with-azure-firewall-manager-preview-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Firewall Manager Preview でクラウド ネットワークをセキュリティで保護する
+# <a name="tutorial-secure-your-virtual-wan-using-azure-firewall-manager-preview"></a>チュートリアル:Azure Firewall Manager プレビューを使用して仮想 WAN をセキュリティで保護する 
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Azure Firewall Manager Preview を使用して、セキュリティで保護されたハブを作成し、プライベート IP アドレス、Azure PaaS、およびインターネットに宛てたクラウド ネットワーク トラフィックをセキュリティで保護することができます。 ファイアウォールへのトラフィックのルーティングは自動化されているため、ユーザー定義ルート (UDR) を作成する必要はありません。
+Azure Firewall Manager Preview を使用して、セキュリティ保護付き仮想ハブを作成し、プライベート IP アドレス、Azure PaaS、およびインターネットに宛てたクラウド ネットワーク トラフィックをセキュリティで保護することができます。 ファイアウォールへのトラフィックのルーティングは自動化されているため、ユーザー定義ルート (UDR) を作成する必要はありません。
 
 ![クラウド ネットワークをセキュリティで保護する](media/secure-cloud-network/secure-cloud-network.png)
 
-## <a name="prerequisites"></a>前提条件
+Firewall Manager では、ハブ仮想ネットワーク アーキテクチャもサポートされます。 セキュリティ保護付き仮想ハブとハブ仮想ネットワーク アーキテクチャの種類の比較については、「[Azure Firewall Manager のアーキテクチャ オプション](vhubs-and-vnets.md)」を参照してください。
 
-> [!IMPORTANT]
-> `Register-AzProviderFeature` PowerShell コマンドを使用して、Azure Firewall Manager Preview を明示的に有効にする必要があります。
+このチュートリアルでは、以下の内容を学習します。
 
-PowerShell コマンド プロンプトから、次のコマンドを実行します。
-
-```azure-powershell
-connect-azaccount
-Register-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network
-```
-機能の登録が完了するまで、最長で 30 分かかります。 次のコマンドを実行して、登録状態を確認します。
-
-`Get-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network`
+> [!div class="checklist"]
+> * スポーク仮想ネットワークを作成する
+> * セキュリティ保護付き仮想ハブを作成する
+> * ハブとスポーク VNet を接続する
+> * ファイアウォール ポリシーを作成してハブをセキュリティで保護する
+> * ハブにトラフィックをルーティングする
+> * ファイアウォールをテストする
 
 ## <a name="create-a-hub-and-spoke-architecture"></a>ハブとスポークのアーキテクチャを作成する
 
@@ -112,7 +109,7 @@ Firewall Manager を使用して、セキュリティ保護付き仮想ハブを
 13. **送信先の種類が **[FQDN]** であることを確認します。
 14. **[送信先]** に、「 **\*.microsoft.com**」と入力します。
 15. **[追加]** を選択します。
-16. **[次へ:セキュリティで保護された仮想ハブ]** を選択します。
+16. **セキュリティで保護された仮想ハブ** を選択します。
 17. **[セキュリティで保護された仮想ハブ]** タブで、 **[Hub-01]** を選択します。
 19. **[Review + create]\(レビュー + 作成\)** を選択します。
 20. **作成** を選択します。
@@ -145,13 +142,13 @@ Firewall Manager を使用して、セキュリティ保護付き仮想ハブを
 2. **[人気順]** の一覧で **[Windows Server 2016 Datacenter]** を選択します。
 3. 次の仮想マシンの値を入力します。
 
-   |Setting  |値  |
+   |設定  |Value  |
    |---------|---------|
    |Resource group     |**FW-Manager**|
    |仮想マシン名     |**Jump-Srv**|
    |リージョン     |**(米国) 米国東部**|
    |管理者のユーザー名     |**azureuser**|
-   |パスワード     |**Azure123456!**|
+   |Password     |パスワードを入力|
 
 4. **[受信ポートの規則]** の **[パブリック受信ポート]** で、 **[選択したポートを許可する]** を選択します。
 5. **[受信ポートを選択]** で、 **[RDP (3389)]** を選択します。
@@ -166,7 +163,7 @@ Firewall Manager を使用して、セキュリティ保護付き仮想ハブを
 
 次の表の情報を使用して、**Workload-Srv** という名前の別の仮想マシンを構成します。 残りの構成は、Srv-Jump 仮想マシンと同じです。
 
-|Setting  |値  |
+|設定  |Value  |
 |---------|---------|
 |Subnet|**Workload-SN**|
 |パブリック IP|**なし**|
@@ -200,12 +197,12 @@ Jump-Srv へのインターネット接続を許可するには、ルート テ�
 1. Azure portal から、**Workload-Srv** 仮想マシンのネットワーク設定を確認し、プライベート IP アドレスをメモします。
 2. リモート デスクトップを **Jump-Srv** 仮想マシンに接続し、サインインします。 そこから、**Workload-Srv** のプライベート IP アドレスへのリモート デスクトップ接続を開きます。
 
-3. Internet Explorer を開き、 [https://www.google.com](https://www.microsoft.com ) を参照します。
+3. Internet Explorer を開き、 https://www.microsoft.com を参照します。
 4. Internet Explorer のセキュリティ アラートで、 **[OK]**  >  **[閉じる]** の順に選択します。
 
    Microsoft のホーム ページが表示されるはずです。
 
-5. [https://www.microsoft.com](https://www.google.com ) を参照します。
+5. https://www.google.com を参照します。
 
    ファイアウォールによってブロックされます。
 
@@ -215,7 +212,7 @@ Jump-Srv へのインターネット接続を許可するには、ルート テ�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [信頼されたセキュリティ パートナーについて学習する](trusted-security-partners.md)

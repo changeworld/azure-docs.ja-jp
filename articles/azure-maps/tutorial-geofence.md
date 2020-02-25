@@ -1,20 +1,20 @@
 ---
 title: チュートリアル:マップにジオフェンスを作成してデバイスを追跡する |Microsoft Azure Maps
 description: Microsoft Azure Maps 空間サービスを使用して、ジオフェンスを設定し、そのジオフェンスを基準にしてデバイスを追跡する方法について説明します。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 932dfb9624177c299997c4f9f184dc5c973d0fa0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e0e918a2508bb65de176b030a73598e221aff676
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899220"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370184"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用してジオフェンスを設定する
 
@@ -176,7 +176,7 @@ Postman アプリがインストールされたら、次の手順に従い、Azu
 
 ここでは、enter イベントと exit イベントを処理するための 2 つの [Logic Apps](https://docs.microsoft.com/azure/event-grid/event-handlers#logic-apps) サービスを作成します。 Logic Apps 内のイベントがトリガーされると、その他のイベントが順にトリガーされます。 Operations Manager にアラート (この場合はメール) を送信することがその考えです。 次の図は、ジオフェンスの enter イベントに使用するロジック アプリの作成を示します。 同様に、exit イベント用にもう 1 つ作成できます。 詳細については、[サポートされているすべてのイベント ハンドラー](https://docs.microsoft.com/azure/event-grid/event-handlers)に関するページを参照してください。
 
-1. Azure portal でロジック アプリを作成します。
+1. Azure portal でロジック アプリを作成します。 Azure Marketplace でロジック アプリを選択します。 次に、 **[作成]** ボタンを選択します。
 
    ![ジオフェンス イベントを処理する Azure Logic Apps を作成する](./media/tutorial-geofence/logic-app.png)
 

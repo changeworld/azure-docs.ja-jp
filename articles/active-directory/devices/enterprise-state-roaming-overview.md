@@ -1,22 +1,22 @@
 ---
-title: Azure Active Directory の Enterprise State Roaming とは | Microsoft Docs
-description: Enterprise State Roaming によって複数の Windows デバイスの使用環境が統一され、新しいデバイスを構成するために必要な時間が短縮されます。
+title: Azure Active Directory の Enterprise State Roaming とは
+description: Enterprise State Roaming は、複数の Windows デバイス全体で統一されたエクスペリエンスをユーザーに提供します
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: overview
-ms.date: 06/28/2019
+ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5b60970592180a2353860369e637d4b9a9bb8f9
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: c22baf0a08718883f0c0c9844cc395f607b5b20d
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481903"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194281"
 ---
 # <a name="what-is-enterprise-state-roaming"></a>Enterprise State Roaming とは
 
@@ -28,14 +28,14 @@ Windows 10 では、 [Azure Active Directory (Azure AD)](../fundamentals/active-
 
 複数の Azure リージョンで Enterprise State Roaming を使用できます。 利用できるリージョンの更新された一覧については、Azure Active Directory の [リージョン別の Azure サービス](https://azure.microsoft.com/regions/#services) に関するページをご覧ください。
 
-| 記事 | 説明 |
+| [アーティクル] | 説明 |
 | --- | --- |
-| [Azure Active Directory の Enterprise State Roaming を有効にする](enterprise-state-roaming-enable.md) |Enterprise State Roaming は、Azure Active Directory (Azure AD) の Premium サブスクリプションを所有しているすべての組織が利用できます。 Azure AD サブスクリプションの取得方法について詳しくは、 [Azure AD の製品ページ](https://azure.microsoft.com/services/active-directory) を参照してください。 |
-| [設定とデータのローミングに関する FAQ](enterprise-state-roaming-faqs.md) |このトピックでは、設定とアプリ データの同期に関する質問とその答えを IT 管理者向けに紹介しています。 |
+| [Azure Active Directory の Enterprise State Roaming を有効にする](enterprise-state-roaming-enable.md) |Enterprise State Roaming は、Azure Active Directory (Azure AD) の Premium サブスクリプションを所有しているすべての組織が利用できます。 Azure AD サブスクリプションの取得方法の詳細については、[Azure AD の製品ページ](https://azure.microsoft.com/services/active-directory)を参照してください。 |
+| [設定とデータのローミングに関する FAQ](enterprise-state-roaming-faqs.md) |この記事では、IT 管理者が設定やアプリ データの同期に関して抱く可能性のあるいくつかの疑問に答えます。 |
 | [設定を同期させるためのグループ ポリシーと MDM の設定](enterprise-state-roaming-group-policy-settings.md) |Windows 10 では、グループ ポリシーとモバイル デバイス管理 (MDM) のポリシー設定を通じて、設定の同期を制限することができます。 |
-| [Windows 10 ローミング設定リファレンス](enterprise-state-roaming-windows-settings-reference.md) |Windows 10 でローミングまたはバックアップされる全設定の一覧が掲載されています。 |
-| [トラブルシューティング](enterprise-state-roaming-troubleshooting.md) |このトピックでは、トラブルシューティングの基本的な手順について説明します。既知の問題の一覧も含まれています。 |
+| [Windows 10 ローミング設定リファレンス](enterprise-state-roaming-windows-settings-reference.md) |Windows 10 でローミングまたはバックアップされる設定の一覧です。 |
+| [トラブルシューティング](enterprise-state-roaming-troubleshooting.md) |この記事では、トラブルシューティングの基本的な手順について説明します。既知の問題の一覧も含まれています。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Enterprise State Roaming を有効にする方法については、「[Enterprise State Roaming を有効にする](enterprise-state-roaming-enable.md)」を参照してください。

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/04/2019
-ms.openlocfilehash: e6ee75f4a7e00e8c21079e1336756db20221750f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6d75e48443fd8622ca2ae7ff05fe81184c4b2b16
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76838005"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472436"
 ---
 # <a name="introduction-to-ai-in-azure-cognitive-search"></a>Azure Cognitive Search における AI の概要
 
@@ -131,7 +131,7 @@ Azure Cognitive Search のコグニティブ スキルは、Cognitive Services A
 + [チュートリアル (HTTP 要求)](cognitive-search-tutorial-blob.md)
 + [例:AI エンリッチメント用のカスタム スキルを作成する (C#)](cognitive-search-create-custom-skill-example.md)
 
-学習目的には無料のサービスをお勧めしますが、無料のトランザクションの数は 1 日あたり 20 のドキュメントまでに制限されます。 1 日でクイックスタートとチュートリアルの両方を実行するには、両方の演習が制限内に収まるように、より小さなファイル セット (10 ドキュメント) を使用するか、クイックスタートまたはチュートリアルで使用したインデクサーを削除してカウンターをゼロにリセットしてください。
+学習目的には無料のサービスをお勧めしますが、無料のトランザクションの数は 1 日あたり 20 のドキュメントまでに制限されます。 レッスンを複数回実行する場合は、インデクサーを削除してから再度作成し、カウンターをゼロにリセットしてください。
 
 **ステップ 3:API を確認する**
 

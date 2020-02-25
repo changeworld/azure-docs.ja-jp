@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 10/24/2019
+ms.date: 02/13/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: f9277fae00471bf67682015e017ae6dfa351ad65
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 35ca071cd8495611f0f350511ef9406f82c5be23
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422868"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209428"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>チュートリアル:Azure Virtual WAN を使用して ExpressRoute の関連付けを作成する
 
@@ -39,6 +39,8 @@ ms.locfileid: "74422868"
 * 仮想ネットワークに仮想ネットワーク ゲートウェイが存在しないこと。 仮想ネットワークにゲートウェイ (VPN または ExpressRoute のどちらか) が存在する場合は、すべてのゲートウェイを削除する必要があります。 代わりに、この構成では、仮想ネットワークが Virtual WAN ハブ ゲートウェイに接続されている必要があります。
 
 * ハブ リージョンの IP アドレス範囲を取得します。 このハブは、Virtual WAN によって作成および使用される仮想ネットワークです。 ハブに指定するアドレス範囲が、接続先の既存の仮想ネットワークと重複することはできません。 さらに、オンプレミスで接続するアドレス範囲と重複することもできません。 オンプレミス ネットワーク構成に含まれている IP アドレス範囲になじみがない場合は、それらの詳細を提供できるだれかと調整してください。
+
+* ハブ ゲートウェイに接続するには、ExpressRoute 回線は Premium 回線でなければなりません。
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
@@ -103,7 +105,7 @@ ExpressRoute ゲートウェイを作成したら、ゲートウェイの詳細�
 
 ## <a name="connectcircuit"></a>回線をハブ ゲートウェイに接続する
 
-ゲートウェイが作成されたら、[ExpressRoute 回線](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) をそれに接続できます。 ExpressRoute Global Reach 対応の場所にある ExpressRoute Premium カイロは Virtual WAN ExpressRoute ゲートウェイに接続できます。
+ゲートウェイが作成されたら、[ExpressRoute 回線](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) をそれに接続できます。 ExpressRoute Global Reach 対応の場所にある ExpressRoute Premium 回線は、Virtual WAN ExpressRoute ゲートウェイに接続できます。
 
 ### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>回線をハブ ゲートウェイに接続するには
 
@@ -151,6 +153,6 @@ Azure 仮想ハブで既定ルート 0.0.0.0/0 を ExpressRoute エンド ポイ
 
    ![既定ルートの伝達](./media/virtual-wan-expressroute-portal/defaultroute2.png "既定ルートの伝達")
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Virtual WAN の詳細については、[Virtual WAN の概要](virtual-wan-about.md)に関するページを参照してください。

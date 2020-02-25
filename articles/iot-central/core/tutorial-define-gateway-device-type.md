@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 04f9a067e0b7df1f90d181d42bc4dd562aca56b0
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8020abf3f8ab153d0143ff50d837ebcfbf5bdfba
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026335"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77423728"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションで新しい種類の IoT ゲートウェイ デバイスを定義する
 
@@ -40,7 +40,7 @@ ms.locfileid: "77026335"
 
 **S1 センサー** デバイスのデバイス テンプレートを作成するには、次の手順を実行します。
 
-1. 左側のナビゲーションで、 **[Device Templates]\(デバイス テンプレート\)** を選択します。 次に、 **+** を選択して、テンプレートの追加を開始します。
+1. 左側のペインで **[デバイス テンプレート]** を選択します。 次に、 **+** を選択して、テンプレートの追加を開始します。
 
 1. **S1 センサー** デバイスのタイルが表示されるまで、下にスクロールします。 タイルを選択し、 **[次のステップ: カスタマイズ]** を選択します。
 
@@ -48,7 +48,7 @@ ms.locfileid: "77026335"
 
 ***RS40 混雑状況センサー** デバイスのデバイス テンプレートを作成するには、次の手順を実行します。
 
-1. 左側のナビゲーションで、 **[Device Templates]\(デバイス テンプレート\)** を選択します。 次に、 **+** を選択して、テンプレートの追加を開始します。
+1. 左側のペインで **[デバイス テンプレート]** を選択します。 次に、 **+** を選択して、テンプレートの追加を開始します。
 
 1. **RS40 混雑状況センサー** デバイスのタイルが表示されるまで、下にスクロールします。 タイルを選択し、 **[次のステップ: カスタマイズ]** を選択します。
 
@@ -65,7 +65,7 @@ ms.locfileid: "77026335"
 
 新しいゲートウェイ デバイス テンプレートをアプリケーションに追加するには、次の手順を実行します。
 
-1. 左側のナビゲーションで、 **[Device Templates]\(デバイス テンプレート\)** を選択します。 次に、 **+** を選択して、テンプレートの追加を開始します。
+1. 左側のペインで **[デバイス テンプレート]** を選択します。 次に、 **+** を選択して、テンプレートの追加を開始します。
 
 1. **[テンプレートの種類の選択]** ページで **[IoT デバイス]** タイルを選択し、 **[次へ: カスタマイズ]** を選択します。
 

@@ -1,24 +1,24 @@
 ---
 title: チュートリアル:IoT 空間分析を実装する | Microsoft Azure Maps
 description: IoT ハブを Microsoft Azure Maps サービスの API と統合します。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 24295e27a3b94f6960777a8704fdf448697da4e1
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 48d148256fe69bbdfd188f1d8472c2de80b0fa64
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987282"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208371"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>チュートリアル:Azure Maps を使用した IoT 空間分析の実装
 
-空間と時間に生じる関連イベントを追跡およびキャプチャすることは、一般的な IoT シナリオです。 たとえば、フリート管理、資産の追跡、モビリティ、スマート シティ アプリケーションのシナリオです。 このチュートリアルでは、Azure Maps API シリーズを使用するためのソリューション パターンについて説明します。 関連イベントは、Event Grid によって提供されるイベント サブスクリプション モデルを使用して、IoT Hub によってキャプチャされます。
+IoT シナリオでは、空間と時間に生じる関連イベントをキャプチャして追跡するのが一般的です。 たとえば、フリート管理、資産の追跡、モビリティ、スマート シティ アプリケーションのシナリオです。 このチュートリアルでは、Azure Maps API シリーズを使用したソリューション パターンについて説明します。 関連イベントは、Event Grid によって提供されるイベント サブスクリプション モデルを使用して、IoT Hub によってキャプチャされます。
 
 このチュートリアルでは、次のことについて説明します。
 
@@ -34,9 +34,9 @@ ms.locfileid: "76987282"
 
 ## <a name="use-case"></a>使用事例
 
-このソリューションは、レンタカー会社が、貸し出した車両に関するイベントの監視と記録を計画するシナリオを例示します。 多くの場合、レンタカー会社は、特定の地域向けに車両を貸し出し、貸し出し中に車両の行方を追跡する必要があります。 選択された地域を車両が離れる事例をログに記録する必要があります。 データをログに記録すれば、ポリシーや料金などのビジネス要素が適切に処理されることにつながるでしょう。
+このソリューションは、レンタカー会社が、貸し出した車両に関するイベントの監視と記録を計画するシナリオを例示します。 レンタカー会社は、通常、特定の地域に車両を貸し出します。 貸し出し中は、車両の所在を追跡する必要があります。 選択された地域を車両が離れる事例をログに記録する必要があります。 データをログに記録すれば、ポリシーや料金などのビジネス要素が適切に処理されることにつながるでしょう。
 
-このユース ケースでは、レンタカーには、テレメトリ データを Azure IoT Hub に定期的に送信する IoT デバイスが装備されています。 テレメトリには現在の場所が含まれ、車両のエンジンが作動中であるかどうかが示されます。 デバイスの場所スキーマは、[地理空間データ用の IoT プラグ アンド プレイ スキーマ](https://github.com/Azure/IoTPlugandPlay/blob/master/Schemas/geospatial.md)に準拠しています。 レンタカーのデバイス テレメトリ スキーマは次のようになります。
+このユース ケースでは、レンタカーには、利用統計情報を Azure IoT Hub に定期的に送信する IoT デバイスが搭載されています。 テレメトリには現在の場所が含まれ、車両のエンジンが作動中であるかどうかが示されます。 デバイスの場所スキーマは、[地理空間データ用の IoT プラグ アンド プレイ スキーマ](https://github.com/Azure/IoTPlugandPlay/blob/master/Schemas/geospatial.md)に準拠しています。 レンタカーのデバイス テレメトリ スキーマは次のようになります。
 
 ```JSON
 {
@@ -63,9 +63,13 @@ ms.locfileid: "76987282"
 }
 ```
 
-目的を達成するために、車載デバイスのテレメトリを使用しましょう。 ジオフェンシング ルールを実行し、車両が移動されたことを示すイベントを受信するたびに応答を返す必要があります。 そのために、IoT Hub から Event Grid を介してデバイス テレメトリ イベントをサブスクライブします。 Event Grid をサブスクライブするにはいくつかの方法があります。このチュートリアルでは、Azure Functions を使用します。 Azure Functions は、Event Grid で発行されたイベントに反応します。 また、Azure Maps の空間分析に基づくレンタカー ビジネス ロジックも実装します。 車両がジオフェンスを離れたかどうかは、Azure 関数内のコードで確認します。 車両がジオフェンスを離れた場合、Azure 関数は、現在の場所に関連付けられている住所などの追加情報を収集します。 また、この関数では、イベントの状況を説明するのに役立つ、意味のあるイベント データをデータ BLOB ストレージに格納するロジックも実装します。 レンタカー会社やレンタル利用者にとって、イベントの状況は有益な情報となります。
+目的を達成するために、車載デバイスのテレメトリを使用しましょう。 この場合、ジオフェンシング ルールを実行します。 さらに、車両が移動したことを示すイベントを受信するたびに応答を返す必要があります。 そのために、IoT Hub から Event Grid を介してデバイス テレメトリ イベントをサブスクライブします。 
 
-次の図は、システムの大まかな概要を示しています。
+Event Grid をサブスクライブするにはいくつかの方法があります。このチュートリアルでは、Azure Functions を使用します。 Azure Functions は、Event Grid で発行されたイベントに反応します。 また、Azure Maps の空間分析に基づくレンタカー ビジネス ロジックも実装します。 
+
+車両がジオフェンスを離れたかどうかは、Azure 関数内のコードで確認します。 車両がジオフェンスを離れた場合、Azure 関数は、現在の場所に関連付けられている住所などの追加情報を収集します。 また、この関数では、イベントの状況を説明するのに役立つ、意味のあるイベント データをデータ BLOB ストレージに格納するロジックも実装します。 
+
+レンタカー会社やレンタル利用者にとって、イベントの状況は有益な情報となります。 次の図は、システムの大まかな概要を示しています。
 
  
   <center>
@@ -74,7 +78,7 @@ ms.locfileid: "76987282"
   
   </center>
 
-次の図では、ジオフェンス エリアが青色で強調表示され、レンタル車両のルートが緑色の線で示されています。
+次の図では、ジオフェンス領域が青で強調表示されています。 レンタル車両のルートは、緑色の線で示されます。
 
   ![ジオフェンス ルート](./media/tutorial-iot-hub-maps/geofence-route.png)
 
@@ -106,13 +110,13 @@ ms.locfileid: "76987282"
 
 ### <a name="create-an-azure-maps-account"></a>Azure Maps アカウントを作成する 
 
-Azure Maps 空間分析に基づいてビジネス ロジックを実装するには、作成したリソース グループに Azure Maps アカウントを作成する必要があります。 [アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)に関するページの手順に従って、Azure Maps アカウントのサブスクリプションを S1 価格レベルで 作成します。さらに、[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従って、お使いのアカウントの主キーを取得します。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
+Azure Maps 空間分析に基づいてビジネス ロジックを実装するには、作成したリソース グループに Azure Maps アカウントを作成する必要があります。 [アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)手順に従い、S1 価格レベルで Azure Maps アカウントのサブスクリプションを作成します。 [プライマリ キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するセクションの手順に従って、お使いのアカウントのプライマリ キーを取得します。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
 
 
 
 ### <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-イベント データをログに記録するには、"ContosoRental" リソース グループに、データを BLOB として格納するための汎用 **v2storage** アカウントを作成します。 ストレージ アカウントを作成するには、「[ストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)」の手順に従います。 次に、BLOB を格納するコンテナーを作成する必要があります。 これを行うには、以下の手順に従います。
+イベント データをログに記録するには、"ContosoRental" リソース グループに、データを BLOB として格納するための汎用 **v2storage** アカウントを作成します。 ストレージ アカウントを作成するには、「[ストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)」の手順に従います。 次に、BLOB を格納するためのコンテナーを作成する必要があります。 これを行うには、以下の手順に従います。
 
 1. 自分のストレージ アカウントで、コンテナーに移動します。
 
@@ -131,7 +135,7 @@ Azure Maps 空間分析に基づいてビジネス ロジックを実装する�
 
 ### <a name="create-an-iot-hub"></a>IoT Hub の作成
 
-IoT ハブは、クラウド内のマネージド サービスであり、IoT アプリケーションとそれによって管理されるデバイスとの間で双方向通信を行うための中央メッセージ ハブとして機能します。 デバイス テレメトリ メッセージを Event Grid にルーティングするために、"ContosoRental" リソース グループ内に IoT ハブを作成します。 メッセージ ルート統合を設定し、車両のエンジン状態に基づいてメッセージをフィルター処理します。 また、車両が移動しているときは常にデバイス テレメトリ メッセージを Event Grid に送信します。
+IoT Hub は、クラウド内のマネージド サービスです。 IoT Hub は、IoT アプリケーションとそれが管理するデバイスの間の双方向通信のための中央メッセージ ハブとして機能します。 デバイス テレメトリ メッセージを Event Grid にルーティングするために、"ContosoRental" リソース グループ内に IoT ハブを作成します。 メッセージ ルート統合を設定し、車両のエンジン状態に基づいてメッセージをフィルター処理します。 また、車両が移動しているときは常にデバイス テレメトリ メッセージを Event Grid に送信します。
 
 > [!Note] 
 > Event Grid でデバイス テレメトリ イベントを発行する IoT Hub の機能は、パブリック プレビュー段階です。 パブリック プレビュー機能は、**米国東部、米国西部、西ヨーロッパ、Azure Government、Azure China 21Vianet**、および **Azure Germany** を除くすべてのリージョンで利用できます。 
@@ -204,7 +208,11 @@ Azure Maps の Data Upload API を使用してジオフェンスをアップロ�
 
 ## <a name="create-an-azure-function-and-add-an-event-grid-subscription"></a>Azure 関数を作成して Event Grid サブスクリプションを追加する
 
-Azure Functions は、コンピューティング インフラストラクチャを明示的にプロビジョニングまたは管理することなく、オンデマンドでコードを実行できるサーバーレス コンピューティング サービスです。 Azure Functions の詳細については、[Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) のドキュメントを参照してください。 関数で実装するロジックでは、車載デバイスのテレメトリから取得した位置情報データを使用して、ジオフェンスの状態を評価します。 指定の車両がジオフェンスの外に出た場合、この関数では、指定の位置座標を人間が理解できる住所に変換する [Get Search Address Reverse API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) を介して、場所の住所などの追加情報を収集します。 すべての関連イベント情報は、BLOB ストアに格納されます。 下の手順 5 は、そのようなロジックを実装する実行可能コードを示しています。 以下の手順に従って、ストレージ アカウントの BLOB コンテナーにデータ ログを送信する Azure 関数を作成し、それに Event Grid サブスクリプションを追加します。
+Azure Functions は、コンピューティング インフラストラクチャを明示的にプロビジョニングまたは管理することなく、オンデマンドでコードを実行できるサーバーレス コンピューティング サービスです。 Azure Functions の詳細については、[Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) のドキュメントを参照してください。 
+
+関数で実装するロジックでは、車載デバイスのテレメトリから取得した位置情報データを使用して、ジオフェンスの状態を評価します。 特定の車両がジオフェンスの外に出た場合、この関数は [Get Search Address Reverse API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) を介して、その場所の住所などの詳細情報を収集します。 この API は、特定の位置座標を人間が理解できる住所に変換します。 
+
+その後、すべての関連イベント情報が BLOB ストアに保持されます。 下の手順 5 は、そのようなロジックを実装する実行可能コードを示しています。 以下の手順に従って、BLOB ストレージ アカウントの BLOB コンテナーにデータ ログを送信する Azure 関数を作成し、それに Event Grid サブスクリプションを追加します。
 
 1. Azure portal のダッシュボードで、[リソースの作成] を選択します。 使用可能なリソースの種類の一覧から **[Compute]** を選択し、 **[Function App]** を選択します。
 
@@ -216,7 +224,7 @@ Azure Functions は、コンピューティング インフラストラクチャ
 
 2. 関数アプリの詳細を確認し、[作成] を選択します。
 
-3. アプリが作成されたら、それに関数を追加する必要があります。 関数アプリに移動し、 **[新しい関数]** をクリックして関数を追加します。開発環境として **[ポータル内]** を選択し、 **[続行]** を選択します。
+3. アプリが作成されたら、それに関数を追加する必要があります。 Function App に移動します。 **[新しい関数]** をクリックして関数を追加し、開発環境として **[ポータル内]** を選択します。 その後、 **[続行]** を選択します。
 
     ![create-function](./media/tutorial-iot-hub-maps/function.png)
 
@@ -231,20 +239,20 @@ Azure Functions は、コンピューティング インフラストラクチャ
 7. C# スクリプト内で、次のパラメーターを置き換えます。
     * **SUBSCRIPTION_KEY** を、自分の Azure Maps アカウントのプライマリ サブスクリプション キーに置き換えます。
     * **UDID** を、自分がアップロードしたジオフェンスの udId に置き換えます。 
-    * スクリプト内の **CreateBlobAsync** 関数では、データ ストレージ アカウントでイベントごとに BLOB を作成します。 **ACCESS_KEY**、**ACCOUNT_NAME**、および **STORAGE_CONTAINER_NAME** を、自分のストレージ アカウントのアクセス キー、アカウント名、およびデータ ストレージ コンテナーに置き換えます。
+    * スクリプト内の **CreateBlobAsync** 関数では、データ ストレージ アカウントでイベントごとに BLOB を作成します。 **ACCESS_KEY**、**ACCOUNT_NAME**、**STORAGE_CONTAINER_NAME** を、自分のストレージ アカウントのアクセス キー、アカウント名、データ ストレージ コンテナーに置き換えます。
 
 10. **[Event Grid サブスクリプションの追加]** をクリックします。
     
     ![add-event-grid](./media/tutorial-iot-hub-maps/add-egs.png)
 
-11. サブスクリプションの詳細を入力します。 **[イベント サブスクリプションの詳細]** で自分のサブスクリプションに名前を付け、[イベント スキーマ] で [イベント グリッド スキーマ] を選択します。 **[トピックの詳細]** で [トピックの種類] として [Azure IoT Hub Accounts]\(Azure IoT Hub アカウント\) を選択します。 リソース グループの作成に使用したのと同じサブスクリプションを選択します。[リソース グループ] として "ContosoRental" を選択し、[リソース] として、作成した IoT ハブを選択します。 [イベントの種類] として **[Device Telemetry]\(デバイス テレメトリ\)** を選択します。 これらのオプションを選択すると、[トピックの種類] が [IoT Hub] に自動的に変更されます。
+11. サブスクリプションの詳細を入力します。 **[イベント サブスクリプションの詳細]** で自分のサブスクリプションに名前を付け、[イベント スキーマ] で [イベント グリッド スキーマ] を選択します。 **[トピックの詳細]** で [トピックの種類] として [Azure IoT Hub Accounts]\(Azure IoT Hub アカウント\) を選択します。 リソース グループの作成に使用したのと同じサブスクリプションを選択し、[リソース グループ] として "ContosoRental" を選択します。 "リソース" として作成した IoT ハブを選択します。 [イベントの種類] として **[Device Telemetry]\(デバイス テレメトリ\)** を選択します。 これらのオプションを選択すると、[トピックの種類] が [IoT Hub] に自動的に変更されます。
 
     ![event-grid-subscription](./media/tutorial-iot-hub-maps/af-egs.png)
  
 
 ## <a name="filter-events-using-iot-hub-message-routing"></a>IoT Hub のメッセージ ルーティングを使用してイベントをフィルター処理する
 
-Event Grid サブスクリプションを Azure 関数に追加すると、IoT Hub の **[メッセージ ルーティング]** ブレードに Event Grid への既定のメッセージ ルートを表示できるようになります。 メッセージ ルーティングを使用すると、種類の異なるデータ (デバイス テレメトリ メッセージ、デバイス ライフサイクル イベント、デバイス ツイン変更イベントなど) を、さまざまなエンドポイントにルーティングできます。 IoT ハブのメッセージ ルーティングの詳細については、[IoT Hub メッセージ ルーティングの使用](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)に関するページを参照してください。
+Event Grid サブスクリプションを Azure 関数に追加すると、IoT Hub の **[メッセージ ルーティング]** ブレードに Event Grid への既定のメッセージ ルートが表示されます。 メッセージ ルーティングを使用すると、各種データ型をさまざまなエンドポイントにルーティングできます。 たとえば、デバイス テレメトリのメッセージ、デバイスのライフサイクル イベント、デバイス ツインの変更イベントをルーティングできます。 IoT ハブのメッセージ ルーティングの詳細については、[IoT Hub メッセージ ルーティングの使用](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)に関するページを参照してください。
 
 ![hub-EG-route](./media/tutorial-iot-hub-maps/hub-route.png)
 

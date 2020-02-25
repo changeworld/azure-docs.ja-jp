@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/28/2019
+ms.date: 02/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 727d4ec79b142595e59ff63a4afbcbe4a51c2a6d
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e7911f52d71501324a1b05c290402cc2ee33a706
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057443"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370419"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lessonly"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Lesson.ly の統合
 
@@ -31,7 +30,7 @@ ms.locfileid: "77057443"
 * ユーザーが自分の Azure AD アカウントで自動的に Lesson.ly にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,6 +45,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * Lesson.ly では、**SP** Initiated SSO がサポートされます
 * Lesson.ly では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Lesson.ly を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を強制することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-lessonly-from-the-gallery"></a>ギャラリーからの Lesson.ly の追加
 
@@ -83,14 +83,14 @@ Lesson.ly で Azure AD SSO を構成してテストするには、次の構成�
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-     a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<companyname>.lessonly.com/signin`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<companyname>.lessonly.com/auth/saml`
 
     > [!NOTE]
     > 一般名を参照するときは、この **companyname** を実際の名前に置き換える必要があります。
     
-     b. **[応答 URL (Assertion Customer Service URL)]** ボックスに、次のパターンを使用して URL を入力します: `https://<companyname>.lessonly.com/auth/saml/callback`
+    b. **[応答 URL (Assertion Customer Service URL)]** ボックスに、次のパターンを使用して URL を入力します: `https://<companyname>.lessonly.com/auth/saml/callback`
 
-     c. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<companyname>.lessonly.com/auth/saml/metadata`
+    c. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<companyname>.lessonly.com/auth/saml/metadata`
     
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値を実際のサインオン URL、応答 URL、識別子で更新してください。 これらの値を取得するには、[Lessonly.com クライアント サポート チーム](mailto:support@lessonly.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -101,7 +101,7 @@ Lesson.ly で Azure AD SSO を構成してテストするには、次の構成�
 
 1. その他に、Lesson.ly アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | Name | ソース属性|
+    | 名前 | ソース属性|
     | ---------------  | ----------------|
     | urn:oid:2.5.4.42 | User.givenname |
     | urn:oid:2.5.4.4  | User.surname |
@@ -169,7 +169,7 @@ Lesson.ly で Azure AD SSO を構成してテストするには、次の構成�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

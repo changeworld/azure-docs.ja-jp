@@ -5,32 +5,32 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: sample
-ms.date: 05/08/2018
+ms.date: 02/12/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 794a13a3f863c732d4e7ed8cedcbd73f7cbc0d0b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: cfa67f529408efcc2a703a4f80b15143c774f0b9
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272105"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77195795"
 ---
-# <a name="self-service-portal-for-azure-ad-b2b-collaboration-sign-up"></a>Azure AD B2B コラボレーションのサインアップ用のセルフ サービス ポータル
+# <a name="self-service-for-azure-ad-b2b-collaboration-sign-up"></a>Azure AD B2B コラボレーションのサインアップのためのセルフサービス
 
-お客様は、[Azure portal](https://portal.azure.com) とエンド ユーザー向けの[アプリケーション アクセス パネル](https://myapps.microsoft.com)を通して公開される組み込み機能を使用して、さまざまな操作を実行できます。 ただし、ユーザーの組織のニーズに合わせて、B2B ユーザー向けのオンボード ワークフローをカスタマイズすることが必要な場合があります。 これは、[招待 API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) を使って行うことができます。
+お客様は、[Azure portal](https://portal.azure.com) とエンド ユーザー向けの[アプリケーション アクセス パネル](https://myapps.microsoft.com)を通して公開される組み込み機能を使用して、さまざまな操作を実行できます。 ただし、ユーザーの組織のニーズに合わせて、B2B ユーザー向けのオンボード ワークフローをカスタマイズすることが必要な場合があります。
 
-招待する側の組織は、誰が社外のコラボレーターであり、誰が企業のリソースへのアクセスを必要としているのが事前にわからないことがあります。 招待する側の組織によって制御されるポリシーのセットに従って、パートナー企業のユーザーがサインアップするための方法が必要です。 このシナリオは、API を使って実現できます。 それを行う[サンプル プロジェクトが GitHub](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web) にあります。
+## <a name="azure-ad-entitlement-management-for-b2b-guest-user-sign-up"></a>B2B ゲスト ユーザーのサインアップのための Azure AD のエンタイトルメント管理
 
-この GitHub プロジェクトでは、招待する組織が API を使って、信頼できるパートナーがアクセスできるアプリを決定するルールを作成し、パートナーに対してポリシー ベースのセルフサービス サインアップ機能を提供する方法が示されています。 パートナーのユーザーは、必要に応じてリソースにアクセスできます。 パートナーは安全にこれを行うことができ、招待する側の組織が手動でオンボードする必要はありません。 プロジェクトは、選択した Azure サブスクリプションに簡単にデプロイできます。
+招待する側の組織は、だれが社外のコラボレーターであり、だれ企業のリソースへのアクセスを必要としているのが事前にわからないことがあります。 招待側の組織には、組織で制御するポリシーに従ってパートナー企業のユーザーがサインアップできるようにする方法が必要です。 他の組織のユーザーがアクセスを要求し、それが承認されたらゲスト アカウントが提供され、グループ、アプリ、および SharePoint Online サイトに割り当てられるようにする場合、[Azure AD のエンタイトルメント管理](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview)を使用して、[外部ユーザーのアクセスを管理](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users)するポリシーを構成できます。
 
-## <a name="as-is-code"></a>現況コード
+## <a name="azure-active-directory-b2b-invitation-api"></a>Azure Active Directory B2B の招待 API
 
-このコードは、Azure Active Directory B2B 招待 API の使用法を示すサンプルとして利用できます。 開発チームまたはパートナーはカスタマイズして、運用シナリオにデプロイする前に確認する必要があります。
+組織は、[Microsoft Graph 招待マネージャー API](https://docs.microsoft.com/graph/api/resources/invitation?view=graph-rest-1.0) を使用して、B2B ゲスト ユーザー向けの独自のオンボード エクスペリエンスを構築できます。 セルフサービス B2B ゲスト ユーザーのサインアップを提供する場合は、[Azure AD のエンタイトルメント管理](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview)を使用することをお勧めします。 ただし、独自のエクスペリエンスを構築する場合は、[招待状の作成 API](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-1.0&tabs=http) を使用して、たとえば、カスタマイズされた招待メールを自動的に B2B ユーザーに直接送信できます。 また、アプリは、作成応答で返された inviteRedeemUrl を使用して、(選択した通信メカニズムを介して) 招待するユーザーに対して独自の招待状を作成できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure AD B2B コラボレーションとは](what-is-b2b.md)
 * [Azure AD B2B コラボレーションのライセンス](licensing-guidance.md)

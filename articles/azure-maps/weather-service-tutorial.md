@@ -1,20 +1,20 @@
 ---
 title: チュートリアル:Azure Notebooks (Python) を使用して天気予報データにセンサー データを結合する | Microsoft Azure Maps
 description: このチュートリアルでは、Azure Notebooks (Python) を使用して、Microsoft Azure Maps Weather Service の天気予報データにセンサー データを結合する方法について説明します。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/29/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 6d49a305a9b2e02d9e9d743ff8f076f453a08fcb
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: d6b82ec0662745fd9c9a05db28595ff84f57f330
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989622"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208031"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>チュートリアル:Azure Notebooks (Python) を使用して天気予報データにセンサー データを結合する
 
@@ -68,7 +68,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>毎日の予報データを要求する
 
-このシナリオでは、センサーの設置場所ごとの毎日の予報を要求します。 以下のスクリプトでは、Azure Maps Weather Service の [Daily Forecast API](https://aka.ms/AzureMapsWeatherDailyForecast) を呼び出して、現在の日付から 15 日間の日単位の天気予報を、それぞれの風力タービンについて取得します。
+このシナリオでは、センサーの設置場所ごとの毎日の予報を要求します。 次のスクリプトでは、Azure Maps Weather Service の[毎日の予報 API](https://aka.ms/AzureMapsWeatherDailyForecast) を呼び出します。 この API は、現在の日付から 15 日間の天気予報を、それぞれの風力タービンについて返します。
 
 
 ```python
@@ -129,7 +129,7 @@ display(Image(poi_range_map))
 ![タービンの場所](./media/weather-service-tutorial/location-map.png)
 
 
-ここでは気象データ センターのステーション ID に基づいて、予測データとデモ データをグループ化します。 グループ化によって、デモ データを予測データで強化します。 
+ここでは、ステーション ID に基づいて、予測データとデモ データをグループ化します。 ステーション ID は、気象データ センターのものです。 グループ化によって、デモ データを予測データで強化します。
 
 ```python
 # Group forecasted data for all locations

@@ -1,24 +1,24 @@
 ---
 title: チュートリアル:Azure Notebooks を使用して電気自動車のルートを案内する (Python) | Microsoft Azure Maps
 description: Microsoft Azure Maps のルート指定 API シリーズと Azure Notebooks を使用して、電気自動車のルートを案内します。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: dfc9c045af5347ebd3f15df48d5a5756dd2a9e05
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 22a8561d69dd0eeb22f9fe025f5b792422db2c17
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844753"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208167"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>チュートリアル:Azure Notebooks を使用して電気自動車のルートを案内する (Python)
 
-Azure Maps は、Azure にネイティブに統合された地理空間サービス API シリーズのポートフォリオです。 これらの API シリーズを使用すると、開発者、企業、ISV は、場所を認識するアプリと、IoT、モビリティ、物流、資産追跡のソリューションを作成できます。 
+Azure Maps は、Azure にネイティブに統合された地理空間サービス API シリーズのポートフォリオです。 これらの API シリーズを使用すると、開発者、企業、ISV は、場所を認識するアプリと、IoT、モビリティ、物流、資産追跡のソリューションを開発できます。 
 
 Azure Maps REST API シリーズを Python や R などの言語で呼び出して、地理空間データ解析や機械学習のシナリオを実現できます。 Azure Maps に用意された堅牢な[ルート案内 API シリーズ](https://docs.microsoft.com/rest/api/maps/route)のセットを使用することで、ユーザーは、複数のデータ ポイント間のルートを計算できます。 計算は、車両の種類や到達可能な範囲などのさまざまな条件に基づいています。 
 
@@ -74,7 +74,7 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
 
 1. アップロードが正常に完了すると、プロジェクト ページにファイルが表示されます。 ファイルをダブルクリックし、Jupyter ノートブックとして開きます。
 
-ノートブック ファイルで実装される機能についての理解を深めるため、ノートブックのコードを一度に 1 セルずつ実行してください。 Notebook アプリの上部にある **[実行]** ボタンを選択して、各セルのコードを実行できます。
+ノートブック ファイルに実装される機能を見ていきましょう。 ノートブック ファイルのコードを一度に 1 セルずつ実行します。 Notebook アプリの上部にある **[実行]** ボタンを選択して、各セルのコードを実行できます。
 
   ![[実行] ボタン](./media/tutorial-ev-routing/run.png)
 
@@ -156,7 +156,7 @@ boundsData = {
 
 電気自動車の到達可能範囲 (等時線) を特定した後は、その範囲内にある充電スタンドを検索できます。 
 
-次のスクリプトでは、Azure Maps の [Post Search Inside Geometry API](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry) が呼び出されます。 それでは、自動車の最大到達可能範囲の境界内にある電気自動車充電スタンドが検索され、応答が解析されて、到達可能な場所の配列が取得されます。
+次のスクリプトでは、Azure Maps の [Post Search Inside Geometry API](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry) が呼び出されます。 自動車の最大到達可能範囲の境界内にある電気自動車の充電スタンドが検索されます。 次に、応答が解析されて、到達可能な場所の配列が取得されます。
 
 到達可能範囲内にある電気自動車充電スタンドを検索するには、次のスクリプトを実行します。
 

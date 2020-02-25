@@ -1,5 +1,6 @@
 ---
-title: 'チュートリアル: REST API 経由で Azure Data Box BLOB ストレージにデータをコピーする | Microsoft Docs'
+title: チュートリアル:REST API を使用して Blob Storage にコピーする
+titleSuffix: Azure Data Box
 description: REST API 経由でお客様の Azure Data Box BLOB ストレージにデータをコピーする方法について説明します
 services: databox
 author: alkohli
@@ -8,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 05/09/2019
 ms.author: alkohli
-ms.openlocfilehash: fcd6fc95adc892885fd8471e622ce3b04258d8b5
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b7d58bb13644c992894510f26a4848ea80c9df00
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800535"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471841"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>チュートリアル:REST API 経由で Azure Data Box BLOB ストレージにデータをコピーする  
 
@@ -31,7 +32,7 @@ ms.locfileid: "65800535"
 開始する前に次の点を確認します。
 
 1. [Azure Data Box の設定に関するチュートリアル](data-box-deploy-set-up.md)を完了していること。
-2. お客様の Data Box の受け取りが済んでいて、ポータルで注文の状態が **[配送済み]** であること。
+2. Data Box の受け取りが済んでいて、ポータル内での注文の状態が **[配信済み]** であること。
 3. [Data Box BLOB ストレージのシステム要件](data-box-system-requirements-rest.md)を確認済みであり、API、SDK、ツールのサポートされているバージョンを熟知していること。
 4. Data Box に対してコピーしたいデータがあるホスト コンピューターにアクセスできること。 このホスト コンピューターは次の条件を満たしている必要があります。
     - [サポート対象のオペレーティング システム](data-box-system-requirements.md)が実行されていること。
@@ -96,7 +97,7 @@ HTTPS 経由で Data Box BLOB ストレージにアクセスするには、デ�
 
 次の手順に従って、`.cer` ファイルを Windows または Linux クライアントのルート ストアにインポートします。 Windows システムでは、Windows PowerShell または Windows Server UI を使用して、証明書をシステムにインポートしてインストールできます。
 
-#### <a name="use-windows-powershell"></a>Windows PowerShell を使用する
+#### <a name="use-windows-powershell"></a>Windows PowerShell の使用
 
 1. Windows PowerShell セッションを管理者として開始します。
 2. コマンド プロンプトに、次のコマンドを入力します。
@@ -127,7 +128,7 @@ HTTPS 経由で Data Box BLOB ストレージにアクセスするには、デ�
 Ubuntu や Debian などのいくつかのディストリビューションでは、`update-ca-certificates` コマンドを使用します。  
 
 - Base64 エンコードの証明書ファイルの名前を変更して拡張子 `.crt` を付け、それを `/usr/local/share/ca-certificates directory` にコピーします。
-- コマンド `update-ca-certificates`を実行します。
+- コマンド `update-ca-certificates` を実行します。
 
 RHEL、Fedora、および CentOS の最近のバージョンでは、`update-ca-trust` コマンドを使用します。
 
@@ -213,7 +214,7 @@ AzCopy を使用して、最終更新時刻に基づいてファイルをアッ�
     --recursive \
     --exclude-older
 
-#### <a name="windows"></a> Windows
+#### <a name="windows"></a>Windows
 
     AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
 
@@ -221,7 +222,7 @@ AzCopy を使用して、最終更新時刻に基づいてファイルをアッ�
 
 次に、発送するデバイスを準備します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Data Box に関する次のようなトピックについて説明しました。
 

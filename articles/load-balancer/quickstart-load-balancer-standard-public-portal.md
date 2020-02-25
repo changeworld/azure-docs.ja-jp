@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 4a5775be66f95fb69db761c2356a61f80068bc75
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: eab8298362bfb3ad790d13fcbf47e0fe624ed3fd
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843873"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470192"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>クイック スタート:VM の負荷を分散するロード バランサーを Azure portal を使用して作成する
 
@@ -43,13 +43,17 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
     | ---                     | ---                                                |
     | サブスクリプション               | サブスクリプションを選択します。    |    
     | Resource group         | **[新規作成]** を選択して、テキスト ボックスに「*myResourceGroupSLB*」と入力します。|
-    | Name                   | *myLoadBalancer*                                   |
+    | 名前                   | *myLoadBalancer*                                   |
     | リージョン         | **[西ヨーロッパ]** を選択します。                                        |
-    | 種類          | **[パブリック]** を選択します。                                        |
-    | SKU           | **[Standard]** または **[Basic]** を選択します。 Microsoft では、運用環境のワークロードに Standard をお勧めします。  |
+    | Type          | **[パブリック]** を選択します。                                        |
+    | SKU           | **[Standard]** または **[Basic]** を選択します。 Microsoft では、運用環境のワークロードに Standard をお勧めします。 |
     | パブリック IP アドレス | **[新規作成]** を選択します。 使用したいパブリック IP が既にある場合は、 **[既存のものを使用]** を選択します。 |
-    | パブリック IP アドレス名              | テキスト ボックスに「*myPublicIP*」と入力します。   |
+    | パブリック IP アドレス名              | テキスト ボックスに「*myPublicIP*」と入力します。   Basic パブリック IP を作成するには、```-SKU Basic``` を使用します。 Basic パブリック IP は、**Standard** Load Balancer と共に利用することはできません。 運用環境のワークロードには **Standard** の使用をお勧めします。|
     | 可用性ゾーン | 回復性があるロード バランサーを作成するには、「*ゾーン冗長*」と入力します。 ゾーンのロード バランサーを作成するには、1、2、3 の中から特定のゾーンを選択します。 |
+
+> [!IMPORTANT]
+> 以降このクイックスタートでは、前の SKU 選択プロセスで **Standard** SKU が選択されたことを前提に話を進めます。
+
 
 3. **[確認および作成]** タブで、 **[作成]** を選択します。   
 
@@ -76,7 +80,7 @@ Load Balancer でアプリの状態を監視するには、正常性プローブ
     
     | 設定 | Value |
     | ------- | ----- |
-    | Name | 「*myHealthProbe*」と入力します。 |
+    | 名前 | 「*myHealthProbe*」と入力します。 |
     | Protocol | **[HTTP]** を選択します。 |
     | Port | 「*80*」と入力します。|
     | Interval | プローブの試行の**間隔**を示す秒数として、「*15*」を入力します。 |
@@ -93,7 +97,7 @@ Load Balancer でアプリの状態を監視するには、正常性プローブ
     
     | 設定 | Value |
     | ------- | ----- |
-    | Name | 「*myHTTPRule*」と入力します。 |
+    | 名前 | 「*myHTTPRule*」と入力します。 |
     | Protocol | **[TCP]** を選択します。 |
     | Port | 「*80*」と入力します。|
     | バックエンド ポート | 「*80*」と入力します。 |
@@ -113,7 +117,7 @@ Load Balancer でアプリの状態を監視するには、正常性プローブ
 
     | 設定 | Value |
     | ------- | ----- |
-    | Name | 「*myVNet*」と入力します。 |
+    | 名前 | 「*myVNet*」と入力します。 |
     | アドレス空間 | 「*10.1.0.0/16*」を入力します。 |
     | サブスクリプション | サブスクリプションを選択します。|
     | Resource group | 既存のリソース *[myResourceGroupSLB]* を選択します。 |
@@ -155,7 +159,7 @@ Load Balancer でアプリの状態を監視するには、正常性プローブ
 
     | 設定 | VM 2| VM 3|
     | ------- | ----- |---|
-    | Name |  *myVM2* |*myVM3*|
+    | 名前 |  *myVM2* |*myVM3*|
     | 可用性ゾーン | 2 |3|
     |パブリック IP| **Standard** SKU|**Standard** SKU|
     | パブリック IP - 可用性ゾーン| **ゾーン冗長** |**ゾーン冗長**|

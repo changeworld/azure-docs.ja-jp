@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 60378632a55fe4578bb376a3a00de5efffc5d275
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 870064406c86e9cef6a45dfbe47c61cdaa9ecab0
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976954"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426311"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault のファイアウォールと仮想ネットワークを構成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "68976954"
 Azure portal を使用して Key Vault ファイアウォールと仮想ネットワークを構成する方法を次に示します。
 
 1. セキュリティで保護するキー コンテナーに移動します。
-2. **[ファイアウォールと仮想ネットワーク]** を選択します。
+2. **[ネットワーク]** を選択してから、 **[ファイアウォールと仮想ネットワーク]** タブを選択します。
 3. **[許可するアクセス元]** の **[選択されたネットワーク]** を選択します。
 4. 既存の仮想ネットワークをファイアウォールと仮想ネットワークの規則に追加するには、 **[+ 既存の仮想ネットワークを追加]** を選択します。
 5. 表示される新しいブレードで、このキー コンテナーへのアクセスを許可するサブスクリプション、仮想ネットワーク、サブネットを選択します。 選択する仮想ネットワークとサブネットでサービス エンドポイントが有効になっていない場合は、サービス エンドポイントを有効にする必要があることを確認して、 **[有効]** を選択します。 有効になるまでに最大 15 分かかることがあります。
@@ -112,12 +112,12 @@ PowerShell を使用して Key Vault ファイアウォールと仮想ネット�
    Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -DefaultAction Deny
    ```
 
-## <a name="references"></a>参照
+## <a name="references"></a>References
 
 * Azure CLI コマンド: [az keyvault network-rule](https://docs.microsoft.com/cli/azure/keyvault/network-rule?view=azure-cli-latest)
 * Azure PowerShell コマンドレット:[Get-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvault)、[Add-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule)、[Remove-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule)、[Update-AzKeyVaultNetworkRuleSet](https://docs.microsoft.com/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Key Vault の仮想ネットワーク サービス エンドポイント](key-vault-overview-vnet-service-endpoints.md)
 * [キー コンテナーのセキュリティ保護](key-vault-secure-your-key-vault.md)

@@ -1,24 +1,19 @@
 ---
-title: Azure App Configuration の動的構成を .NET Framework アプリで使用するためのチュートリアル | Microsoft Docs
-description: このチュートリアルでは、.NET Framework アプリの構成データを動的に更新する方法を学習します
+title: '.NET Framework チュートリアル: Azure App Configuration の動的構成'
+description: このチュートリアルでは、Azure App Configuration を使用して、.NET Framework アプリの構成データを動的に更新する方法について説明します。
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: maiye
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
-ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 7cb76d5836055ce352373fa13449e27d81e84022
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 7ba3eae4ea5557b4bb1b1be4e2c79eab8f6e7988
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185250"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484878"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>チュートリアル:.NET Framework アプリで動的な構成を使用する
 
@@ -45,7 +40,7 @@ App Configuration .NET クライアント ライブラリでは、アプリケ�
 
 6. **[Configuration Explorer]\(構成エクスプローラー)**  >  **[+ 作成]** の順に選択して、次のキーと値のペアを追加します。
 
-    | Key | 値 |
+    | Key | Value |
     |---|---|
     | TestApp:Settings:Message | Azure App Configuration からのデータ |
 
@@ -134,11 +129,11 @@ App Configuration .NET クライアント ライブラリでは、アプリケ�
 
     ![ローカルでのアプリの起動](./media/dotnet-app-run.png)
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 **[すべてのリソース]** を選択し、クイック スタートで作成した App Configuration ストア インスタンスを選択します。
+1. [Azure portal](https://portal.azure.com) にサインインします。 **[すべてのリソース]** を選択し、クイック スタートで作成した App Configuration ストア インスタンスを選択します。
 
 1. **[Configuration Explorer]\(構成エクスプローラー)** を選択して次のキーの値を更新します。
 
-    | Key | 値 |
+    | Key | Value |
     |---|---|
     | TestApp:Settings:Message | Azure App Configuration からのデータ - 更新済み |
 
@@ -149,11 +144,11 @@ App Configuration .NET クライアント ライブラリでは、アプリケ�
     > [!NOTE]
     > 更新操作の構成を指定するときに `SetCacheExpiration` メソッドを使ってキャッシュの有効期限を 10 秒に設定したため、構成設定の値は、その設定の前回の更新から少なくとも 10 秒が経過した場合にのみ更新されます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、App Configuration から動的に構成設定を更新できるように .NET Framework アプリを設定しました。 App Configuration へのアクセスを効率化する Azure マネージド ID を使用する方法については、次のチュートリアルに進んでください。
 

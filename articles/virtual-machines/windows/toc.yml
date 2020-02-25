@@ -352,7 +352,7 @@
         - name: 'テンプレートと C# の使用'
           href: csharp-template.md
         - name: Chef を使用した VM の作成
-          href: chef-automation.md
+          href: ../../chef/chef-automation.md
         - name: Java の使用
           href: java.md
         - name: Python の使用

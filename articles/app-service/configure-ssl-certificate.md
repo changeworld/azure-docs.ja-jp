@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 5df8ae89c16a453b008afed9ee9f8881a0ac4750
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 310bf168b701ba6c37f71bc968da8e9114458e6f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046416"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425309"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Azure App Service で SSL 証明書を追加する
 
@@ -39,7 +39,7 @@ ms.locfileid: "77046416"
 ## <a name="private-certificate-requirements"></a>プライベート証明書の要件
 
 > [!NOTE]
-> Azure Web Apps では、AES256 がサポート**されません**。pfx ファイルはすべて TrippleDES で暗号化する必要があります。
+> Azure Web Apps では、AES256 がサポート**されません**。pfx ファイルはすべて TripleDES で暗号化する必要があります。
 
 [無料の App Service マネージド証明書](#create-a-free-certificate-preview)または [App Service 証明書](#import-an-app-service-certificate)は、あらかじめ App Service の要件を満たしています。 App Service にプライベート証明書をアップロードまたはインポートする場合、証明書は次の要件を満たしている必要があります。
 
@@ -115,7 +115,7 @@ App Service 証明書を購入するには、「[証明書の注文を開始す�
 
 | 設定 | 説明 |
 |-|-|
-| Name | App Service 証明書のフレンドリ名。 |
+| 名前 | App Service 証明書のフレンドリ名。 |
 | ネイキッド ドメインのホスト名 | ルート ドメインはここで指定します。 発行された証明書によって、ルート ドメインと `www` サブドメインの "*両方*" が保護されます。 発行された証明書の [共通名] フィールドにはルート ドメインが含まれ、[サブジェクトの別名] フィールドには `www` ドメインが含まれています。 任意のサブドメインのみをセキュリティで保護するには、ここでサブドメインの完全修飾ドメイン名 を指定します (例: `mysubdomain.contoso.com`)。|
 | サブスクリプション | 証明書が格納されるサブスクリプション。 |
 | Resource group | 証明書が格納されるリソース グループ。 新しいリソース グループを使用するか、App Service アプリと同じリソース グループなどを選択できます。 |
@@ -136,7 +136,7 @@ App Service 証明書を購入するには、「[証明書の注文を開始す�
 
 | 設定 | 説明 |
 |-|-|
-| Name | 英数字とダッシュで構成される一意の名前。 |
+| 名前 | 英数字とダッシュで構成される一意の名前。 |
 | Resource group | 推奨事項として、App Service 証明書と同じリソース グループを選択します。 |
 | Location | App Service アプリと同じ場所を選択します。 |
 | Pricing tier | 詳しくは、[Azure Key Vault の価格の詳細](https://azure.microsoft.com/pricing/details/key-vault/)に関するページをご覧ください。 |

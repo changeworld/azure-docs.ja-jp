@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.localizationpriority: high
 ms.date: 09/04/2019
 ms.author: alkohli
-ms.openlocfilehash: e2851f7087151b09b5f859b7142aa28e5b18a4e5
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3f89d713003f1f4265a7ab7c467454af750fab48
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514087"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200131"
 ---
 ::: zone target="docs"
 
@@ -56,7 +56,7 @@ Azure データセンター内のサーバーにディスクが接続される�
   - ブロック BLOB およびページ BLOB の場合: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
   - Azure Files の場合: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
 
-    あるいは、Azure Portal で Azure ストレージ アカウントにアクセスし、そこから移動することもできます。
+    あるいは、Azure portal でお使いの Azure ストレージ アカウントにアクセスし、そこから移動することもできます。
 
 - マネージド ディスク リソース グループ。 マネージド ディスクを作成するとき、VHD はページ BLOB としてアップロードされた後、マネージド ディスクに変換されます。 マネージド ディスクは、注文の作成時に指定されたリソース グループに接続されています。
 
@@ -100,7 +100,7 @@ Azure にデータがアップロードされたことを確認するには、�
 
 ## <a name="erasure-of-data-from-data-box-disk"></a>Data Box Disk からデータを消去する
 
-コピーが完了し、Azure Storage アカウントにデータが存在することをお客様が確認した後、ディスクは NIST 標準に従って確実に消去されます。
+Azure へのアップロードが完了すると、Data Box Disk は、[NIST SP 800-88](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi) 標準に従ってディスク上のデータを消去します。
 
 ::: zone target="docs"
 
