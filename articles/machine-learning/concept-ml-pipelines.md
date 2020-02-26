@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: 840c5cf061658f3210fec963b82b490185b92a4b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: fd10a3e62bcbe438eb17edfc71a5285ad071e29a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905717"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366220"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Azure Machine Learning パイプラインとは
 
@@ -40,11 +40,12 @@ Azure Machine Learning パイプラインを使用すると、機械学習プロ
 
 Azure クラウドでは、目的が異なるさまざまなパイプラインが提供されています。 次の表に、それらのさまざまなパイプラインとその用途を示します。
 
-| パイプライン | 実行内容 | Canonical パイプ |
-| ---- | ---- | ---- |
-| Azure Machine Learning パイプライン | 機械学習シナリオ用のテンプレートとして使用できる、再利用可能な機械学習ワークフローを定義します。 | データ -> モデル |
-| [Azure Data Factory のパイプライン](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | 1 つのタスクを実行するために必要なデータ移動、変換、および制御アクティビティをグループ化します。  | データ -> データ |
-| [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) | 任意のプラットフォーム/任意のクラウドへの自分のアプリケーションの継続的インテグレーションとデリバリー  | コード -> アプリ/サービス |
+| シナリオ | プライマリ ペルソナ | Azure オファリング | OSS オファリング | Canonical パイプ | 長所 | 
+| -------- | --------------- | -------------- | ------------ | -------------- | --------- | 
+| モデル オーケストレーション (機械学習) | データ サイエンティスト | Azure Machine Learning パイプライン | Kubeflow パイプライン | データ -> モデル | 分散、キャッシュ、コード優先、再利用 | 
+| データのオーケストレーション (データ準備) | データ エンジニア | [Azure Data Factory のパイプライン](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Apache Airflow | データ -> データ | 厳密に型指定された移動。 データ中心のアクティビティ。 |
+| コードとアプリのオーケストレーション (CI/CD) | アプリ開発者/Ops | [Azure DevOps Pipelines](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | コード + モデル -> アプリとサービス | ほとんどのオープンで柔軟なアクティビティのサポート、承認キュー、ゲートを使用したフェーズ | 
+
 
 ## <a name="what-can-azure-ml-pipelines-do"></a>Azure ML パイプラインでできること
 
@@ -52,7 +53,7 @@ Azure Machine Learning パイプラインは、独立して実行できる完全
 
 + インポート、検証、クリーンアップ、マンジングと変換、正規化、ステージングなどのデータ準備
 + 引数のパラメーター化、ファイルパス、ログ/レポートの構成などのトレーニング構成
-+ 特定のデータ サブセットの指定、さまざまなハードウェアのコンピューティング リソース、分散処理、進行状況の監視など、効率的かつ繰り返しのトレーニングと検証
++ 効率的かつ反復的なトレーニングと検証。 特定のデータ サブセット、異なるハードウェア コンピューティング リソース、分散処理、および進行状況の監視を指定することで効率が向上する場合があります。
 + バージョン管理、スケーリング、プロビジョニング、アクセス制御などのデプロイ 
 
 個別のステップにより、複数のデータ サイエンティストが、コンピューティング リソースを過剰に使用することなく、同じパイプラインで同時に作業を行うことができます。 また、個別のステップにより、ステップごとに異なるコンピューティングの種類/サイズを使用することが容易になります。

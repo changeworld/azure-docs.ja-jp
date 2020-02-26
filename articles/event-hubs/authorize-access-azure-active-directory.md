@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: 021d00b9fb02f2f5ea2560038741efec11b8cbc0
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 16d8faa1f20227241d1a582dd4d80e0123f7a31e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169183"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368498"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Azure Active Directory を使用して Event Hubs リソースへのアクセスを承認する
 Azure Event Hubs は、Azure Active Directory (Azure AD) を使用して Event Hubs リソースへの要求を承認することをサポートしています。 Azure AD では、ロールベースのアクセス制御 (RBAC) を使用して、サービス プリンシパル (ユーザーまたはアプリケーションのサービス プリンシパルである可能性があります) にアクセス許可を付与します。 ロールとロールの割り当ての詳細については、[各種ロールの理解](../role-based-access-control/overview.md)に関するページを参照してください。
@@ -54,9 +54,13 @@ Azure には、Event Hubs データへの Azure AD と OAuth を使ったアク�
 - **サブスクリプション**:ロールの割り当ては、サブスクリプションのすべてのリソース グループ内のすべての Event Hubs リソースに適用されます。
 
 > [!NOTE]
-> RBAC ロールの割り当ての反映には最大で 5 分かかる場合があることに留意してください。 
+> - RBAC ロールの割り当ての反映には最大で 5 分かかる場合があることに留意してください。 
+> - このコンテンツは、Event Hubs と Apache Kafka 用 Event Hubs の両方を対象としています。 Kafka 用 Event Hubs のサポートの詳細については、[Kafka 用 Event Hubs のセキュリティと認証](event-hubs-for-kafka-ecosystem-overview.md#security-and-authentication)に関するセクションを参照してください。
+
 
 組み込みのロールの定義方法の詳細については、[ロール定義](../role-based-access-control/role-definitions.md#management-and-data-operations)に関するページを参照してください。 カスタム RBAC ロールの作成の詳細については、[Azure のロールベースのアクセス制御のためにカスタム ロールを作成する方法](../role-based-access-control/custom-roles.md)に関するページを参照してください。
+
+
 
 ## <a name="samples"></a>サンプル
 - [Microsoft.Azure.EventHubs サンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)。 
@@ -65,6 +69,8 @@ Azure には、Event Hubs データへの Azure AD と OAuth を使ったアク�
 - [ Azure.Messaging.EventHubs サンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
 
     このサンプルは、最新の **Azure.Messaging.EventHubs** ライブラリを使用するように更新されています。
+- [Kafka 用 Event Hubs - OAuth サンプル](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth)。 
+
 
 ## <a name="next-steps"></a>次のステップ
 - 組み込みの RBAC ロールをセキュリティ プリンシパルに割り当てる方法については、[Azure Active Directory を使用して Event Hubs リソースへのアクセスを認証する](authenticate-application.md)方法に関する記事を参照してください。

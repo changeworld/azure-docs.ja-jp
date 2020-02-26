@@ -1,16 +1,16 @@
 ---
 title: Durable Functions のパフォーマンスとスケーリング - Azure
-description: Azure Functions の Durable Functions 拡張機能の紹介。
+description: Azure Functions の Durable Functions 拡張機能の概要です。
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 15302eb4f89c854210d4fc1aba292c57d4757278
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ee35f26f9433f6ab342c7dce105638122b9d7717
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231339"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486262"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions のパフォーマンスとスケーリング (Azure Functions)
 
@@ -246,12 +246,12 @@ Azure Functions では、1 つのアプリ インスタンス内での複数の�
 * **アクティビティの並列実行**: このシナリオでは、[ファンアウト/ファンイン](durable-functions-cloud-backup.md) パターンを使用して多数のアクティビティ関数を並列実行するオーケストレーター関数を記述します。
 * **並列応答処理**: このシナリオは、[ファンアウト/ファンイン](durable-functions-cloud-backup.md) パターンの後半部分です。 ファンインのパフォーマンスが重視されます。 ファンアウトとは異なり、ファンインは 1 つのオーケストレーター関数インスタンスによって実行されるため、ファンインを実行できる VM は 1 台だけであることに注意してください。
 * **外部イベント処理**: このシナリオは、一度に 1 つの[外部イベント](durable-functions-external-events.md)を待機する単一のオーケストレーター関数インスタンスを表します。
-* **エンティティ操作の処理**:このシナリオでは、_単一_ の[カウンター エンティティ](durable-functions-entities.md)で操作の一定のストリームを処理する速度をテストします。
+* **エンティティ操作の処理**:このシナリオでは、_単一_の[カウンター エンティティ](durable-functions-entities.md)で操作の一定のストリームを処理する速度をテストします。
 
 > [!TIP]
 > ファンアウトとは異なり、ファンイン操作は 1 台の VM に制限されます。 アプリケーションでファンアウト/ファンイン パターンを使用しており、ファンインのパフォーマンスを懸念している場合は、アクティビティ関数のファンアウトを複数の[サブオーケストレーション](durable-functions-sub-orchestrations.md)に分けることを検討してください。
 
-次の表に、前述のシナリオで予想される "*最大*" スループットの数値を示します。 "インスタンス" は、Azure App Service の単一のサイズの小さい ([A1](../../virtual-machines/windows/sizes-previous-gen.md#a-series)) VM で実行されるオーケストレーター関数の単一のインスタンスを指します。 どの場合も、[延長セッション](#orchestrator-function-replay)が有効になっていることを前提としています。 実際の結果は、関数コードで実行される CPU または I/O の処理によって異なる可能性があります。
+次の表に、前述のシナリオで予想される "*最大*" スループットの数値を示します。 "インスタンス" は、Azure App Service の単一のサイズの小さい ([A1](../../virtual-machines/sizes-previous-gen.md)) VM で実行されるオーケストレーター関数の単一のインスタンスを指します。 どの場合も、[延長セッション](#orchestrator-function-replay)が有効になっていることを前提としています。 実際の結果は、関数コードで実行される CPU または I/O の処理によって異なる可能性があります。
 
 | シナリオ | 最大スループット |
 |-|-|
@@ -266,7 +266,7 @@ Azure Functions では、1 つのアプリ インスタンス内での複数の�
 
 予想されるスループットの数値が得られず、CPU 使用率とメモリ使用量が正常と思われる場合は、原因が[ストレージ アカウントの正常性](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance)に関係していないかどうかを確認してください。 Durable Functions 拡張機能は Azure ストレージ アカウントに大きな負荷をかける可能性があり、負荷が非常に高くなると、ストレージ アカウントのスロットルが発生する場合があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [ディザスター リカバリーと地理的分散について学習する](durable-functions-disaster-recovery-geo-distribution.md)

@@ -2,19 +2,21 @@
 title: テンプレート関数
 description: 値の取得、文字列の処理、デプロイ情報の取得のために、Azure リソース マネージャーのテンプレートで使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: aef813595df96449d5dd59ad1e95e77c4c198d0f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/13/2020
+ms.openlocfilehash: a9d10ad4899f35acd45069cb3d351a60632fed3a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476213"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207044"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager テンプレートの関数
 
 この記事では、Azure Resource Manager テンプレートで使用できるすべての関数について説明します。 ご自分のテンプレート内で関数を使用する方法の詳細については、[テンプレートの構文](template-expressions.md)に関するセクションを参照してください。
 
 独自の関数を作成するには、[ユーザー定義関数](template-syntax.md#functions)に関するページをご覧ください。
+
+ほとんどの関数は、リソース グループ、サブスクリプション、管理グループ、またはテナントにデプロイされた場合に、同じように動作します。 いくつかの関数は、すべてのスコープでは使用できません。 これらは以下の一覧に記載されています。
 
 <a id="array" aria-hidden="true" />
 <a id="coalesce" aria-hidden="true" />
@@ -35,6 +37,7 @@ ms.locfileid: "75476213"
 <a id="union" aria-hidden="true" />
 
 ## <a name="array-and-object-functions"></a>配列とオブジェクトの関数
+
 Resource Manager には、配列とオブジェクトを操作する関数がいくつか用意されています。
 
 * [array](template-functions-array.md#array)
@@ -62,6 +65,7 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 <a id="greaterorequals" aria-hidden="true" />
 
 ## <a name="comparison-functions"></a>比較関数
+
 Resource Manager には、テンプレートで比較を行うための関数がいくつか用意されています。
 
 * [equals](template-functions-comparison.md#equals)
@@ -75,6 +79,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 <a id="variables" aria-hidden="true" />
 
 ## <a name="deployment-value-functions"></a>デプロイの値関数
+
 リソース マネージャーには、テンプレートのセクションから値を取得し、デプロイに関連する値を取得する次の関数が用意されています。
 
 * [デプロイ](template-functions-deployment.md#deployment)
@@ -89,6 +94,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 <a id="or" aria-hidden="true" />
 
 ## <a name="logical-functions"></a>論理関数
+
 リソース マネージャーには、論理の条件を操作する次の関数が用意されています。
 
 * [and](template-functions-logical.md#and)
@@ -109,6 +115,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 <a id="sub" aria-hidden="true" />
 
 ## <a name="numeric-functions"></a>数値関数
+
 リソース マネージャーには、整数を操作する次の関数が用意されています。
 
 * [add](template-functions-numeric.md#add)
@@ -134,6 +141,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 <a id="tenantResourceId" aria-hidden="true" />
 
 ## <a name="resource-functions"></a>リソース関数
+
 リソース マネージャーには、リソース値を取得する次の関数が用意されています。
 
 * [extensionResourceId](template-functions-resource.md#extensionresourceid)
@@ -143,9 +151,9 @@ Resource Manager には、テンプレートで比較を行うための関数が
 * [list*](template-functions-resource.md#list)
 * [providers](template-functions-resource.md#providers)
 * [reference](template-functions-resource.md#reference)
-* [resourceGroup](template-functions-resource.md#resourcegroup)
-* [resourceId](template-functions-resource.md#resourceid)
-* [subscription](template-functions-resource.md#subscription)
+* [resourceGroup](template-functions-resource.md#resourcegroup) - リソース グループへのデプロイでのみ使用できます。
+* [resourceId](template-functions-resource.md#resourceid) - 任意のスコープで使用できますが、有効なパラメーターはスコープに応じて変わります。
+* [subscription](template-functions-resource.md#subscription) - リソース グループまたはサブスクリプションへのデプロイでのみ使用できます。
 * [subscriptionResourceId](template-functions-resource.md#subscriptionresourceid)
 * [tenantResourceId](template-functions-resource.md#tenantresourceid)
 
@@ -181,6 +189,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 <a id="uricomponenttostring" aria-hidden="true" />
 
 ## <a name="string-functions"></a>文字列関数
+
 リソース マネージャーには、文字列を操作する次の関数が用意されています。
 
 * [base64](template-functions-string.md#base64)
@@ -221,5 +230,5 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 * Azure リソース マネージャー テンプレートのセクションの説明については、「 [Azure リソース マネージャーのテンプレートの作成](template-syntax.md)
 * 複数のテンプレートをマージするには、 [Azure リソース マネージャーでのリンクされたテンプレートの使用](linked-templates.md)
-* 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](create-multiple-instances.md)
+* 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](copy-resources.md)」を参照してください。
 * 作成したテンプレートをデプロイする方法を確認するには、[Azure Resource Manager のテンプレートを使用したアプリケーションのデプロイ](deploy-powershell.md)に関するページを参照してください。

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 90be5b407708f6cca3748dd6d6fa09c28ab7fcdc
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: fcdbf0d56b79662cccd90380489ede672e6a0a66
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840436"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484113"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのユーザー アクセスの管理
 
@@ -46,7 +46,7 @@ ms.locfileid: "76840436"
 
 保護者の同意を得るためのユーザー フローの例を次に示します。
 
-1. [Azure Active Directory Graph API](/previous-versions/azure/ad/graph/api/api-catalog) の操作によって、ユーザーは未成年者として識別され、ユーザー データが無署名の JSON トークンの形式でアプリケーションに返されます。
+1. [Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) の操作によって、ユーザーは未成年者として識別され、ユーザー データが無署名の JSON トークンの形式でアプリケーションに返されます。
 
 2. アプリケーションによって JSON トークンが処理され、この未成年者に対して、保護者の同意が必要であることを通知する画面が表示されます。また、この画面では、オンラインでの保護者の同意が求められます。
 
@@ -54,9 +54,9 @@ ms.locfileid: "76840436"
 
 4. 同意を取り消すオプションがアプリケーションによって未成年者に提供されます。
 
-5. 未成年者または成人が同意を取り消すと、Azure AD Graph API を使用して、**consentProvidedForMinor** を **denied** に変更できます。 または、アプリケーションで、同意が取り消された未成年者を削除することも選択できます。 必要に応じて、認証された未成年者が (または保護者が未成年者のアカウントを使用して) 同意を取り消すことができるように、ユーザー フローをカスタマイズすることもできます。 Active Directory B2C では、**consentProvidedForMinor** を **denied** として記録します。
+5. 未成年者または成人が同意を取り消すと、Microsoft Graph API を使用して、**consentProvidedForMinor** を **denied** に変更できます。 または、アプリケーションで、同意が取り消された未成年者を削除することも選択できます。 必要に応じて、認証された未成年者が (または保護者が未成年者のアカウントを使用して) 同意を取り消すことができるように、ユーザー フローをカスタマイズすることもできます。 Active Directory B2C では、**consentProvidedForMinor** を **denied** として記録します。
 
-**legalAgeGroupClassification**、**consentProvidedForMinor**、および **ageGroup** の詳細については、「[User resource type (ユーザー リソースの種類)](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user)」を参照してください。 カスタム属性の詳細については、[カスタム属性を使用したコンシューマー情報の収集](user-flow-custom-attributes.md)に関するページをご覧ください。 Azure AD Graph API を使用して拡張属性を処理する場合、*extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*:*2011-01-01T00:00:00Z* などの長いバージョンの属性を使用する必要があります。
+**legalAgeGroupClassification**、**consentProvidedForMinor**、および **ageGroup** の詳細については、「[User resource type (ユーザー リソースの種類)](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user)」を参照してください。 カスタム属性の詳細については、[カスタム属性を使用したコンシューマー情報の収集](user-flow-custom-attributes.md)に関するページをご覧ください。 Microsoft Graph API を使用して拡張属性を処理する場合、*extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*:*2011-01-01T00:00:00Z* などの長いバージョンの属性を使用する必要があります。
 
 ## <a name="gather-date-of-birth-and-countryregion-data"></a>生年月日と国/地域のデータを収集する
 

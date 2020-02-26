@@ -12,12 +12,12 @@ ms.date: 12/27/2019
 ms.author: mimart
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 528aff73b931776ef9a6542437db271bb214c7fb
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 0451fe18629a572c9b49f14924bfa50293f42a2b
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290701"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367839"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>アプリケーションの同意の管理と同意要求の評価
 
@@ -100,7 +100,7 @@ Microsoft は、エンドユーザーによるアプリケーションの同意�
 
 ### <a name="granting-consent-on-behalf-of-a-specific-user"></a>特定のユーザーに代わって同意を許可する
 
-管理者は、組織全体に同意を許可するのではなく、[Azure AD Graph API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api) を使用して、1 人のユーザーに代わって委任されたアクセス許可に同意を許可することもできます。 これを行うには、`POST` 要求を送信して `consentType` が "Principal" に設定され、`principalId` に同意が許可されているユーザーのオブジェクト ID が設定されている [OAuth2PermissionGrant](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#oauth2permissiongrant-entity) エンティティを作成します。
+管理者は、組織全体に同意を許可するのではなく、[Microsft Graph API](https://docs.microsoft.com/graph/use-the-api) を使用して、1 人のユーザーに代わって委任されたアクセス許可に同意を許可することもできます。 詳細については、「[ユーザーの代わりにアクセスを取得](https://docs.microsoft.com/graph/auth-v2-user)」を参照してください。
 
 ## <a name="limiting-user-access-to-applications"></a>アプリケーションへのユーザー アクセスを制限する
 

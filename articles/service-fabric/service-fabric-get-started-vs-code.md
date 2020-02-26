@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: d7d3182ad00d0ce151c6d327b29584c7e2ff1323
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 67846293257661a4f7a907d76402d2e98c339225
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457865"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251636"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Visual Studio Code 用の Service Fabric
 
@@ -69,7 +69,7 @@ VS Code の Service Fabric Reliable Services 拡張機能には、開発者が S
 
 **[Service Fabric:Create Application]\(Service Fabric: アプリケーションの作成\)** コマンドで、現在のワークスペースに新しい Service Fabric アプリケーションを作成します。 開発マシンにインストールされている Yeoman ジェネレーターに応じて、Java、C#、コンテナー、ゲスト プロジェクトなど、複数種類の Service Fabric アプリケーションを作成できます。 
 
-1.  **[Service Fabric:Add Service]\(サービスの追加\)** コマンドを選択します
+1.  **[Service Fabric:アプリケーションの作成]** コマンドを選択します
 2.  新しい Service Fabric アプリケーションの種類を選択します。 
 3.  作成するアプリケーションの名前を入力します。
 3.  Service Fabric アプリケーションに追加するサービスの種類を選択します。 

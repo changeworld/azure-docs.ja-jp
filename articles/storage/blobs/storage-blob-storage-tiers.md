@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: c402d47f40a351d70f688aa93c5e1501c93b39dd
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: f2f6be1022a7100a23f49534f2c18fc951d56284
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779878"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368708"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: ホット、クール、アーカイブ ストレージ層
 
@@ -26,7 +26,7 @@ Azure Storage からはさまざまなアクセス層が提供され、最もコ
 次の考慮事項は、さまざまなアクセス層に当てはまります。
 
 - アカウント レベルで設定できるのはホット アクセス層とクール アクセス層だけです。 アーカイブ アクセス層はアカウント レベルでは使用できません。
-- ホット、クール、アーカイブの層は、いずれも BLOB レベルで設定できます。
+- ホット、クール、アーカイブの層は、アップロード中またはアップロード後に BLOB レベルで設定できます。
 - クール アクセス層に格納されるデータについては、可用性が若干低くても許容できますが、ホット データと同程度の高い持続性、取得待ち時間、およびスループット特性が必要です。 クール データの場合、ホット データと比較して可用性のサービス レベル アグリーメント (SLA) が若干低く、アクセス コストが高めであっても、ストレージ コストが低ければ許容できます。
 - アーカイブ ストレージは、データをオフラインで格納し、ストレージ コストは最も低くなりますが、データのリハイドレート コストおよびアクセス コストが最も高くなります。
 
@@ -77,7 +77,7 @@ BLOB がアーカイブ ストレージ内にある間、BLOB データはオフ
 
 ## <a name="blob-level-tiering"></a>BLOB レベルの階層制御
 
-BLOB レベルの階層制御では、[Set Blob Tier](/rest/api/storageservices/set-blob-tier) と呼ばれる 1 つの操作を使用して、オブジェクト レベルでデータの層を変更できます。 使用パターンの変化に応じて、アカウント間でデータを移動することなく、BLOB のアクセス層をホット、クール、またはアーカイブに簡単に変更することができます。 すべての階層変更要求はすぐに発生し、ホットとクール間の層の変更は瞬時に行われます。 ただし、アーカイブからの BLOB のリハイドレートには、数時間かかる場合があります。
+BLOB レベルの階層制御では、[Put Blob](/rest/api/storageservices/put-blob) または [Put Block List](/rest/api/storageservices/put-block-list) 操作を使用して、選択したアクセス層にデータをアップロードし、[Set Blob Tier](/rest/api/storageservices/set-blob-tier) 操作または[ライフサイクル管理](#blob-lifecycle-management)機能を使用して、オブジェクト レベルでデータの層を変更できます。 必要なアクセス層にデータをアップロードし、その後、使用パターンの変化に応じて、アカウント間でデータを移動することなく、BLOB のアクセス層をホット、クール、アーカイブに簡単に変更することができます。 すべての階層変更要求はすぐに発生し、ホットとクール間の層の変更は瞬時に行われます。 ただし、アーカイブからの BLOB のリハイドレートには、数時間かかる場合があります。
 
 BLOB 層が最後に変更された時間は、BLOB の**アクセス層変更時間**プロパティを介して公開されます。 ホット層またはクール層の BLOB を上書きするとき、作成時に新しい BLOB アクセス層を明示的に設定しない限り、新しく作成された BLOB では上書きされた BLOB の階層を引き継ぎます。 BLOB がアーカイブ層にあると、上書きできないため、このシナリオでは、同じ BLOB をアップロードすることは許可されません。 
 
@@ -95,9 +95,11 @@ Blob Storage のライフサイクル管理には優れたルールベースの�
 
 ### <a name="blob-level-tiering-billing"></a>BLOB レベルの階層制御の課金
 
+BLOB がホット、クール、またはアーカイブ層にアップロードまたは移動されると、階層の変更直後に対応する料金が請求されます。
+
 BLOB をよりクールな層 (ホットからクール、ホットからアーカイブ、またはクールからアーカイブ) に移動するとき、この操作は移動先の層への書き込み操作として課金され、移動先の層の書き込み操作 (10,000 件単位) およびデータ書き込み (GB 単位) の料金が適用されます。
 
-BLOB をよりホットな層 (アーカイブからクール、アーカイブからホット、またはクールからホット) に移動するとき、この操作は移動元の層からの読み取りとして課金され、移動元の層の読み取り操作 (10,000 件単位) およびデータ取得 (GB 単位) の料金が適用されます。 クール層またはアーカイブ層から移動された BLOB については、早期削除料金も適用される場合があります。 次の表には、各層の変更料金をまとめてあります。
+BLOB をよりホットな層 (アーカイブからクール、アーカイブからホット、またはクールからホット) に移動するとき、この操作は移動元の層からの読み取りとして課金され、移動元の層の読み取り操作 (10,000 件単位) およびデータ取得 (GB 単位) の料金が適用されます。 クール層またはアーカイブ層から移動された BLOB については、早期削除料金も適用される場合があります。 [アーカイブからのデータのリハイドレート](storage-blob-rehydration.md)には時間がかかり、データがオンラインに復元され、BLOB 層がホットまたはクールに変更されるまで、データにはアーカイブ料金が課金されます。 次の表には、各層の変更料金をまとめてあります。
 
 | | **書き込み料金 (操作 + アクセス)** | **読み取り料金 (操作 + アクセス)**
 | ---- | ----- | ----- |
@@ -138,10 +140,10 @@ BLOB をよりホットな層 (アーカイブからクール、アーカイブ�
 
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>GPv2 または Blob Storage アカウントの既定のアクセス層を変更する
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-1. Azure portal で、 **[すべてのリソース]** を探して選択します。
+1. Azure portal で、 **[すべてのリソース]** を検索して選択します。
 
 1. 使うストレージ アカウントを選びます。
 
@@ -153,7 +155,7 @@ BLOB をよりホットな層 (アーカイブからクール、アーカイブ�
 
 ![ストレージ アカウント層を変更する](media/storage-tiers/account-tier.png)
 
-# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 次の PowerShell スクリプトを使用すると、アカウント層を変更できます。 `$rgName` 変数は、ご自身のリソース グループ名で初期化する必要があります。 `$accountName` 変数は、ご自身のストレージ アカウント名で初期化する必要があります。 
 ```powershell
 #Initialize the following with your resource group and storage account names
@@ -166,14 +168,14 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 ---
 
 ### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>GPv2 または BLOB ストレージ アカウントの BLOB のアクセス層を変更する
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-1. Azure portal で、 **[すべてのリソース]** を探して選択します。
+1. Azure portal で、 **[すべてのリソース]** を検索して選択します。
 
 1. 使うストレージ アカウントを選びます。
 
-1. コンテナーを選択し、お使いの BLOB を選択します。
+1. コンテナーを選択し、お使いのBLOB を選択します。
 
 1. **[BLOB のプロパティ]** で、 **[層の変更]** を選択します。
 
@@ -183,7 +185,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 ![ストレージ アカウント層を変更する](media/storage-tiers/blob-access-tier.png)
 
-# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 次の PowerShell スクリプトを使用すると、BLOB 層を変更できます。 `$rgName` 変数は、ご自身のリソース グループ名で初期化する必要があります。 `$accountName` 変数は、ご自身のストレージ アカウント名で初期化する必要があります。 `$containerName` 変数は、ご自身のコンテナー名で初期化する必要があります。 `$blobName` 変数は、ご自身の BLOB 名で初期化する必要があります。 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names

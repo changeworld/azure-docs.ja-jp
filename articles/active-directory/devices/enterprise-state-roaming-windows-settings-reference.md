@@ -1,27 +1,29 @@
 ---
-title: Windows 10 ローミング設定リファレンス | Microsoft Docs
-description: Windows 10 でローミングまたはバックアップされる全設定の一覧です。
+title: Windows 10 ローミング設定リファレンス - Azure Active Directory
+description: ESR 対応の Windows 10 でローミングまたはバックアップされる設定
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: troubleshooting
-ms.date: 06/28/2019
+ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9489228b6ba81ae8d09e0f6880634532d0c836c6
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 54a75b662fabcce8ffa64f1b705e86a1c1dde625
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481804"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194332"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 ローミング設定リファレンス
-以下に示したのは、Windows 10 でローミングまたはバックアップされる全設定の一覧です。 
+
+Windows 10 でローミングまたはバックアップされる設定の一覧を次に示します。 
 
 ## <a name="devices-and-endpoints"></a>デバイスとエンドポイント
+
 次の表は、Windows 10 における同期、バックアップ、復元のフレームワークでサポートされるデバイスとアカウントの種類をまとめたものです。
 
 | アカウントの種類と操作 | デスクトップ | モバイル |
@@ -32,10 +34,12 @@ ms.locfileid: "67481804"
 | Microsoft アカウント: バックアップ/復元 |いいえ |はい |
 
 ## <a name="what-is-backup"></a>バックアップとは
+
 一般に Windows の設定は既定で同期されますが、デバイスにインストールされているアプリケーションの一覧など、バックアップにのみ対応している設定もあります。 バックアップはモバイル デバイス向けのみで、Enterprise State Roaming ユーザーは現在使用できません。 バックアップには Microsoft アカウントが使用され、OneDrive に設定とアプリケーション データが保存されます。 ユーザーが設定アプリを使ってデバイス上の同期を無効にした場合、通常であれば同期されるアプリケーション データがバックアップのみになります。 バックアップ データは、新しいデバイスの初回実行時に復元操作を通じてのみアクセスできます。 バックアップは、デバイスの設定で無効にできるほか、ユーザーの OneDrive アカウントを通じて管理したり削除したりすることができます。
 
 ## <a name="windows-settings-overview"></a>Windows 設定の概要
-Windows 10 デバイス上の設定に対する同期操作は、エンド ユーザーが次の設定グループを使って有効/無効にすることができます。
+
+エンドユーザーは、次の設定グループを使用して、Windows 10 デバイスでの設定の同期を有効または無効にすることができます。
 
 * テーマ: デスクトップの背景、ユーザー タイル、タスク バーの位置など 
 * Internet Explorer の設定: 閲覧の履歴、入力された URL、お気に入りなど 
@@ -47,6 +51,9 @@ Windows 10 デバイス上の設定に対する同期操作は、エンド ユ�
 
 ![設定の同期](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
+> [!NOTE]
+> この記事は、2015 年 7 月に Windows 10 で提供が開始された Microsoft Edge レガシ HTML ベースのブラウザーに適用されます。 この記事は、2020 年 1 月 15 日にリリースされた新しい Microsoft Edge Chromium ベースのブラウザーには適用されません。 新しい Microsoft Edge の同期動作の詳細については、「[Microsoft Edge の同期](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync)」を参照してください。
+
 Microsoft Edge ブラウザーの設定グループ (お気に入り、リーディング リスト) の同期は、Microsoft Edge ブラウザーの [設定] メニュー オプションを通じてエンド ユーザーが有効/無効にできます。
 
 ![Account](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-edge.png)
@@ -56,21 +63,22 @@ Windows 10 バージョン 1803 またはそれ以降では、Internet Explorer 
 ![設定](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-ie.png)
 
 ## <a name="windows-settings-details"></a>Windows 設定の詳細
-以下の表で "設定" の "グループ" 列に記載した "その他" という項目は、[設定]、[アカウント]、[設定の同期]、[その他の Windows の設定] の順にアクセスして無効にできる設定を表します。 
+
+以下の表で "設定グループ" 列の "その他" という項目は、[設定]、[アカウント]、[設定の同期]、[その他の Windows の設定] の順にアクセスして無効にできる設定を表します。 
 
 「設定」の「グループ」列に "内部" と書かれている設定とアプリは、アプリ本体の同期機能から無効にするか、モバイル デバイス管理 (MDM) またはグループ ポリシーの設定を使いデバイス全体の同期を無効にすることによってのみ無効にすることができます。
 所属グループの記載がない設定は、ローミングも同期もされない設定です。
 
-| 設定 | デスクトップ | モバイル | Group |
+| 設定 | デスクトップ | モバイル | グループ |
 | --- | --- | --- | --- |
 | **アカウント**: アカウントの画像 |sync |X |テーマ |
 | **アカウント**: その他のアカウントの設定 |X |X | |
-| **高度なモバイル ブロードバンド**: インターネット接続の共有のネットワーク名 (Bluetooth を介したモバイル Wi-Fi ホットスポットの自動検出に必要) |X |X |パスワード |
+| **高度なモバイル ブロードバンド**: インターネット接続の共有のネットワーク名 (Bluetooth を介したモバイル Wi-Fi ホットスポットの自動検出を有効にします) |X |X |パスワード |
 | **アプリ データ**: 個々のアプリでデータを同期可能 |同期バックアップ |同期バックアップ |内部 |
-| **アプリの一覧**: インストールされているアプリの一覧 |X |backup |その他 |
+| **アプリの一覧**: インストールされているアプリの一覧 |X |バックアップ (backup) |その他 |
 | **Bluetooth**: Bluetooth のすべての設定 |X |X | |
 | **コマンド プロンプト**: コマンド プロンプトの "既定" 設定 |sync |X |内部 |
-| **資格情報**:資格情報保管ボックス |sync |sync |password |
+| **資格情報**:資格情報保管ボックス |sync |sync |パスワード |
 | **日付、時刻、地域**: 時刻の自動同期 (インターネット時刻同期) |sync |sync |language |
 | **日付、時刻、地域**: 24 時間形式 |sync |X |language |
 | **日付、時刻、地域**: 日付と時刻 |sync |X |language |
@@ -81,12 +89,12 @@ Windows 10 バージョン 1803 またはそれ以降では、Internet Explorer 
 | **日付、時刻、地域**: 地域設定 (ロケール) |sync |X |language |
 | **日付、時刻、地域**: 日付 (短い形式) |sync |X |language |
 | **日付、時刻、地域**: 日付 (長い形式) |sync |X |language |
-| **日付、時刻、地域**: 時刻 (短い形式) |sync |X |言語 |
+| **日付、時刻、地域**: 時刻 (短い形式) |sync |X |language |
 | **日付、時刻、地域**: 時刻 (長い形式) |sync |X |language |
 | **デスクトップの個人設定**: デスクトップ テーマ (背景、システム カラー、既定のシステム音、スクリーン セーバー) |sync |X |テーマ |
 | **デスクトップの個人設定**: スライドショーの壁紙 |sync |X |テーマ |
 | **デスクトップの個人設定**: タスク バーの設定 (位置、自動的に隠す、など) |sync |X |テーマ |
-| **デスクトップの個人設定**: スタート画面のレイアウト |X |backup | |
+| **デスクトップの個人設定**: スタート画面のレイアウト |X |バックアップ (backup) | |
 | **デバイス**: 接続済みの共有プリンター |X |X |その他 |
 | **Microsoft Edge ブラウザー**: リーディング リスト |sync |sync |内部 |
 | **Microsoft Edge ブラウザー**: お気に入り |sync |sync |内部 |
@@ -117,27 +125,27 @@ Windows 10 バージョン 1803 またはそれ以降では、Internet Explorer 
 | **キーボード**: 固定キー機能を有効にする (既定ではオフ) |sync |X |簡単操作 |
 | **キーボード**: フィルター キー機能を有効にする (既定ではオフ) |sync |X |簡単操作 |
 | **キーボード**: 切り替えキー機能を有効にする (既定ではオフ) |sync |X |簡単操作 |
-| **Internet Explorer**: ドメイン言語: 中国語 (CHS) QWERTY - 自己学習を有効にする |sync |X |言語 |
-| **言語**: CHS QWERTY - Dynamic candidate ranking を有効にする |sync |X |言語 |
-| **言語**: CHS QWERTY - 文字セット簡体中国語 |sync |X |言語 |
-| **言語**: CHS QWERTY - 文字セット繁体字中国語 |sync |X |言語 |
-| **言語**: CHS QWERTY - Fuzzy Pinyin |sync |backup |言語 |
-| **言語**: CHS QWERTY - Fuzzy Pairs |sync |backup |言語 |
-| **言語**: CHS QWERTY - Full Pinyin |sync |X |言語 |
-| **言語**: CHS QWERTY - Double Pinyin |sync |X |言語 |
-| **言語**: CHS QWERTY - 読みの自動修正 |sync |X |言語 |
-| **言語**: CHS QWERTY - C/E 切り替えキー、Shift |sync |X |言語 |
-| **言語**: CHS QWERTY - C/E 切り替えキー、Ctrl |sync |X |言語 |
-| **言語**: CHS WUBI - 1 文字入力モード |sync |X |言語 |
-| **言語**: CHS WUBI - candidate の残りのコーディングを表示 |sync |X |言語 |
-| **言語**: CHS WUBI - 4 コーディングが無効な場合に音を鳴らす |sync |X |言語 |
-| **言語**: CHT Bopomofo - CJK 統合漢字拡張 A を含める |sync |X |言語 |
-| **言語**: 日本語 IME - 予測入力とカスタムの単語 |sync |sync |言語 |
-| **言語**: 韓国語 (KOR) IME |X |X |言語 |
-| **言語**: 手書き認識 |X |X |言語 |
-| **言語**: 言語プロファイル |sync |backup |言語 |
-| **言語**: スペル チェック - スペルミスの自動修正と強調表示 |sync |backup |言語 |
-| **言語**: キーボードの一覧 |sync |backup |言語 |
+| **Internet Explorer**: ドメイン言語: 中国語 (CHS) QWERTY - 自己学習を有効にする |sync |X |Language |
+| **言語**: CHS QWERTY - Dynamic candidate ranking を有効にする |sync |X |Language |
+| **言語**: CHS QWERTY - 文字セット簡体中国語 |sync |X |Language |
+| **言語**: CHS QWERTY - 文字セット繁体字中国語 |sync |X |Language |
+| **言語**: CHS QWERTY - Fuzzy Pinyin |sync |バックアップ (backup) |Language |
+| **言語**: CHS QWERTY - Fuzzy Pairs |sync |バックアップ (backup) |Language |
+| **言語**: CHS QWERTY - Full Pinyin |sync |X |Language |
+| **言語**: CHS QWERTY - Double Pinyin |sync |X |Language |
+| **言語**: CHS QWERTY - 読みの自動修正 |sync |X |Language |
+| **言語**: CHS QWERTY - C/E 切り替えキー、Shift |sync |X |Language |
+| **言語**: CHS QWERTY - C/E 切り替えキー、Ctrl |sync |X |Language |
+| **言語**: CHS WUBI - 1 文字入力モード |sync |X |Language |
+| **言語**: CHS WUBI - candidate の残りのコーディングを表示 |sync |X |Language |
+| **言語**: CHS WUBI - 4 コーディングが無効な場合に音を鳴らす |sync |X |Language |
+| **言語**: CHT Bopomofo - CJK 統合漢字拡張 A を含める |sync |X |Language |
+| **言語**: 日本語 IME - 予測入力とカスタムの単語 |sync |sync |Language |
+| **言語**: 韓国語 (KOR) IME |X |X |Language |
+| **言語**: 手書き認識 |X |X |Language |
+| **言語**: 言語プロファイル |sync |バックアップ (backup) |Language |
+| **言語**: スペル チェック - スペルミスの自動修正と強調表示 |sync |バックアップ (backup) |Language |
+| **言語**: キーボードの一覧 |sync |バックアップ (backup) |Language |
 | **ロック画面**: すべてのロック画面設定 |X |X | |
 | **拡大鏡**: オン/オフ (マスター設定の切り替え) |X |X |簡単操作 |
 | **拡大鏡**: 色反転のオン/オフ (既定ではオフ) |sync |X |簡単操作 |
@@ -160,21 +168,22 @@ Windows 10 バージョン 1803 またはそれ以降では、Internet Explorer 
 | **簡単操作**: 背景のイメージを削除 (既定ではオフ) |sync |X |簡単操作 |
 | **電源とスリープ**: すべての設定 |X |X | |
 | **スタート画面の個人用設定**: アクセント カラー (電話のみ) |X |sync |テーマ |
-| **入力**: スペル チェック辞書 |sync |backup |言語 |
-| **入力**: スペル ミスの語句を自動修正する |sync |backup |言語 |
-| **入力**: スペル ミスの語句を強調表示する |sync |backup |言語 |
-| **入力**: 入力時に入力ヒントを表示する |sync |backup |言語 |
-| **入力**: 入力ヒントを選んだ後にスペースを追加する |sync |backup |言語 |
-| **入力**: Space キーをダブルタップした後にピリオドを追加する |sync |backup |言語 |
-| **入力**: 各文の最初の文字を大文字にする |sync |backup |言語 |
-| **入力**: Shift キーをダブルタップしたときにすべて大文字の文字を使う |sync |backup |言語 |
-| **入力**: 入力時にキー音を鳴らす |sync |backup |言語 |
-| **入力**: タッチ キーボードの個人用設定データ |sync |backup |言語 |
+| **入力**: スペル チェック辞書 |sync |バックアップ (backup) |Language |
+| **入力**: スペル ミスの語句を自動修正する |sync |バックアップ (backup) |Language |
+| **入力**: スペル ミスの語句を強調表示する |sync |バックアップ (backup) |Language |
+| **入力**: 入力時に入力ヒントを表示する |sync |バックアップ (backup) |Language |
+| **入力**: 入力ヒントを選んだ後にスペースを追加する |sync |バックアップ (backup) |Language |
+| **入力**: Space キーをダブルタップした後にピリオドを追加する |sync |バックアップ (backup) |Language |
+| **入力**: 各文の最初の文字を大文字にする |sync |バックアップ (backup) |Language |
+| **入力**: Shift キーをダブルタップしたときにすべて大文字の文字を使う |sync |バックアップ (backup) |Language |
+| **入力**: 入力時にキー音を鳴らす |sync |バックアップ (backup) |Language |
+| **入力**: タッチ キーボードの個人用設定データ |sync |バックアップ (backup) |Language |
 | **Wi-Fi**: Wi-Fi プロファイル (WPA のみ) |sync |sync |パスワード |
 
 ###### <a name="footnote-1"></a>脚注 1
+
 サポートされる Windows Creators Update の最小 OS バージョン (ビルド 15063)。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-概要については、「[Enterprise State Roaming の概要](enterprise-state-roaming-overview.md)」を参照してください。
+概要については、[Enterprise State Roaming の概要](enterprise-state-roaming-overview.md)に関するページを参照してください。

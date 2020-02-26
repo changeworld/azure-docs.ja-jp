@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 04cc45956fc5aedc4c14dfb138be5db02ddec500
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c2361192a612cfd92003b1e3c36e85dbbd9090bb
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850498"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482770"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C:カスタム プロファイル編集ポリシーでカスタム属性を使用する
 
@@ -34,7 +34,7 @@ Azure AD B2C ディレクトリには、組み込みの属性セットが付属�
 * ID プロバイダーは、**uniqueUserGUID** のような、保存する必要がある一意のユーザー識別子を保持しています。
 * カスタム ユーザー体験は、**migrationStatus** のような、ユーザーの状態に対して維持される必要があります。
 
-Azure AD B2C では、各ユーザー アカウントで保存される属性セットを拡張できます。 また、 [Azure AD Graph API](manage-user-accounts-graph-api.md)を使用してこれらの属性を読み書きすることもできます。
+Azure AD B2C では、各ユーザー アカウントで保存される属性セットを拡張できます。 また、[Microsoft Graph API](manage-user-accounts-graph-api.md) を使用してこれらの属性を読み書きすることもできます。
 
 拡張プロパティは、ディレクトリ内のユーザー オブジェクトのスキーマを拡張します。 用語の*拡張機能プロパティ*、*カスタム属性*、および*カスタム要求*では、この記事のコンテキストと同じ内容を参照します。 名前は、アプリケーション、オブジェクト、ポリシーなどのコンテキストによって異なります。
 
@@ -297,7 +297,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 
 ## <a name="reference"></a>リファレンス
 
-拡張プロパティの詳細については、記事「[ディレクトリ スキーマ拡張機能 | Graph API の概念](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions)」を参照してください。
+拡張プロパティの詳細については、「[拡張機能を使用してカスタム データをリソースに追加する](https://docs.microsoft.com/graph/extensibility-overview)」という記事を参照してください。
 
 > [!NOTE]
 > * **TechnicalProfile** は、エンドポイントの名前、メタデータ、およびプロトコルを定義する要素の種類 (または関数) です。 **TechnicalProfile** には、Identity Experience Framework によって実行される要求の交換が詳細に示されています。 この関数がオーケストレーションの手順または別の **TechnicalProfile** から呼び出されると、**InputClaims** と **OutputClaims** が呼び出し元によってパラメーターとして指定されます。

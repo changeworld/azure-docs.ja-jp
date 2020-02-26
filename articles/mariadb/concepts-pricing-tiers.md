@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 36563e11d7a5fb7cfd5878294c3b83977f6bb619
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 084c1b4163ac7f0f595fadba93a7905ea7f96dd0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772399"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485456"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB の価格レベル
 
@@ -23,7 +23,6 @@ Azure Database for MariaDB サーバーは、次の 3 つの価格レベルの�
 | 仮想コア | 1、2 | 2、4、8、16、32、64 |2、4、8、16、32 |
 | 仮想コアあたりのメモリ | 2 GB | 5 GB | 10 GB |
 | ストレージ サイズ | 5 GB ～ 1 TB | 5 GB ～ 4 TB | 5 GB ～ 4 TB |
-| ストレージの種類 | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
 | データベース バックアップのリテンション期間 | 7 ～ 35 日間 | 7 ～ 35 日間 | 7 ～ 35 日間 |
 
 価格レベルを選択する場合は、まず次の表を参考にしてください。
@@ -31,7 +30,7 @@ Azure Database for MariaDB サーバーは、次の 3 つの価格レベルの�
 | Pricing tier | 対象のワークロード |
 |:-------------|:-----------------|
 | Basic | 低負荷なコンピューティングと I/O パフォーマンスを必要とするワークロード。 たとえば、開発やテスト、使用頻度の低い小規模なアプリケーションに使用するサーバーがこれに該当します。 |
-| 汎用 | 負荷分散されたコンピューティングとメモリ、およびスケーラブルな I/O スループットを必要とする大部分のビジネス ワークロード。 たとえば、Web アプリやモバイル アプリ、その他のエンタープライズ アプリケーションをホストするためのサーバーが挙げられます。|
+| General Purpose | 負荷分散されたコンピューティングとメモリ、およびスケーラブルな I/O スループットを必要とする大部分のビジネス ワークロード。 たとえば、Web アプリやモバイル アプリ、その他のエンタープライズ アプリケーションをホストするためのサーバーが挙げられます。|
 | メモリ最適化 | 高速トランザクション処理と高いコンカレンシーを実現するためのインメモリ パフォーマンスを必要とする、高パフォーマンス データベース ワークロード。 たとえば、リアルタイム データと高パフォーマンスなトランザクション アプリや分析アプリを処理するためのサーバーが挙げられます。|
 
 サーバーを作成したら、仮想コア数、および価格レベル (Basic への変更と Basic からの変更を除く) を数秒で増やしたり減らしたりできます。 また、アプリケーションのダウンタイムなしでストレージ (増量のみ) とバックアップのリテンション期間 (増減) を個別に調整できます。 バックアップ ストレージの種類は、サーバーの作成後に変更することはできません。 詳細については、「[リソースのスケール](#scale-resources)」セクションを参照してください。
@@ -40,13 +39,13 @@ Azure Database for MariaDB サーバーは、次の 3 つの価格レベルの�
 
 コンピューティング リソースは仮想コアとして提供されます。仮想コアは、基礎となるハードウェアの論理 CPU を表します。 Gen 5 論理 CPU は、Intel E5-2673 v4 (Broadwell) 2.3 GHz のプロセッサを基盤とします。
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>ストレージ
 
 プロビジョニングするストレージは、使用している Azure Database for MariaDB サーバーで使用可能なストレージ容量です。 ストレージは、データベース ファイル、一時ファイル、トランザクション ログ、および MariaDB サーバー ログに使用されます。 プロビジョニングするストレージの合計容量によって、ご利用のサーバーで使用できる I/O 容量も決まります。
 
 |    | **Basic** | **汎用** | **メモリ最適化** |
 |:---|:----------|:--------------------|:---------------------|
-| ストレージの種類 | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
+| ストレージの種類 | 基本的なストレージ | 汎用のストレージ | 汎用のストレージ |
 | ストレージ サイズ | 5 GB ～ 1 TB | 5 GB ～ 4 TB | 5 GB ～ 4 TB |
 | ストレージの増分サイズ | 1 GB | 1 GB | 1 GB |
 | IOPS | 変数 |3 IOPS/GB<br/>最小 100 IOPS<br/>最大 6000 IOPS | 3 IOPS/GB<br/>最小 100 IOPS<br/>最大 6000 IOPS |
@@ -96,7 +95,7 @@ Basic レベルでは、IOPS 保証は提供されません。 汎用および�
 
 最新の料金情報については、サービスの[料金ページ](https://azure.microsoft.com/pricing/details/mariadb/)を参照してください。 必要な構成のコストについては、[Azure Portal](https://portal.azure.com/#create/Microsoft.MariaDBServer) で、選択したオプションに基づいて表示される **[価格レベル]** タブの月額コストを確認します。 Azure サブスクリプションを取得していない場合は、Azure 料金計算ツールを使用して見積もり価格を確認できます。 [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)の Web サイトで **[項目の追加]** を選択し、 **[データベース]** カテゴリを展開し、 **[Azure Database for MariaDB]** を選択してオプションをカスタマイズします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [サービスの制限事項](concepts-limits.md)を確認します。
 - [Azure portal で MariaDB サーバーを作成](quickstart-create-mariadb-server-database-using-azure-portal.md)する方法を確認します。
 

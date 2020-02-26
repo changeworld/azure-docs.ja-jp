@@ -6,20 +6,15 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 741d286126bedb8b92828486927283fa9887658e
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 1c9fba3c13cc6e5476377d59130a95a2edaa324d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668476"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459193"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Azure Mobile Apps 用の管理されたクライアントの使用方法
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
-
-> [!NOTE]
-> Visual Studio App Center は、モバイル アプリ開発の中心となるエンドツーエンドの統合サービスをサポートしています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーと関わることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。
->
-> モバイル アプリケーションにクラウド サービスを統合することを検討している場合は、今すぐ [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) にサインアップしてください。
 
 ## <a name="overview"></a>概要
 このガイドでは、Windows および Xamarin アプリで Azure App Service Mobile Apps 用の管理されたクライアント ライブラリを使用する一般的なシナリオの実行方法を示します。 Mobile Apps を初めて使用する場合は、まず、 [Azure Mobile Apps のクイックスタート][1] チュートリアルを完了することを検討してください。 このガイドでは、クライアント側の管理された SDK に重点を置いています。 Mobile Apps 用のサーバー側 SDK の詳細については、[.NET Server SDK][2] または [Node.js Server SDK][3] に関するドキュメントを参照してください。
@@ -59,13 +54,13 @@ public class TodoItem
 
 [JsonPropertyAttribute][6] を使用して、クライアントのフィールドとテーブルのフィールド間の *PropertyName* のマッピングが定義されます。
 
-Mobile Apps バックエンドにテーブルを作成する方法については、[.NET Server SDK に関するトピック][7]または [Node.js Server SDK に関するトピック][8]を参照してください。 Azure ポータルでクイックスタートを使用してモバイル アプリ バックエンドを作成した場合は、 [Azure ポータル] で **Easy Tables**設定を使用することもできます。
+Mobile Apps バックエンドにテーブルを作成する方法については、[.NET Server SDK に関するトピック][7]または [Node.js Server SDK に関するトピック][8]を参照してください。 Azure ポータルでクイックスタートを使用してモバイル アプリ バックエンドを作成した場合は、 [Azure Portal] で **Easy Tables**設定を使用することもできます。
 
 ### <a name="how-to-install-the-managed-client-sdk-package"></a>方法:マネージド クライアント SDK パッケージをインストールする
 [NuGet][9]から、Mobile Apps 用の管理されたクライアント SDK パッケージをインストールするには、次のいずれかの方法を使用します。
 
 * **Visual Studio** でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。`Microsoft.Azure.Mobile.Client` パッケージを見つけ、 **[インストール]** をクリックします。
-* **Xamarin Studio** でプロジェクトを右クリックし、 **[Add]\(追加\)** 、> **[Add NuGet Packages]\(NuGet パッケージの追加\)** の順にクリックします。`Microsoft.Azure.Mobile.Client` パッケージを見つけ、 **[Add Package]\(パッケージの追加\)** をクリックします。
+* **Xamarin Studio** でプロジェクトを右クリックし、 **[Add]\(追加\)** > **[Add NuGet Packages]\(NuGet パッケージの追加\)** の順にクリックします。`Microsoft.Azure.Mobile.Client` パッケージを見つけ、 **[Add Package]\(パッケージの追加\)** をクリックします。
 
 メイン アクティビティ ファイルに、次の **using** ステートメントを必ず追加してください。
 
@@ -76,7 +71,7 @@ using Microsoft.WindowsAzure.MobileServices;
 > [!NOTE]
 > Android プロジェクトで参照されるすべてのサポート パッケージのバージョンが同じである必要があることに注意してください。 SDK には、Android プラットフォームに関して `Xamarin.Android.Support.CustomTabs` の依存関係があるため、プロジェクトで新しいサポート パッケージを使用する場合は、必要なバージョンを使用してこのパッケージを直接インストールし、競合を回避する必要があります。
 
-### <a name="symbolsource"></a>方法: Visual Studio でデバッグ シンボルを使用する
+### <a name="symbolsource"></a>Visual Studio でデバッグ シンボルを使用する
 Microsoft.Azure.Mobile 名前空間用のシンボルは、 [SymbolSource][10]で入手できます。  SymbolSource を Visual Studio と統合する場合は、 [SymbolSource の説明][11] をご覧ください。
 
 ## <a name="create-client"></a>Mobile Apps クライアントの作成
@@ -86,10 +81,10 @@ Microsoft.Azure.Mobile 名前空間用のシンボルは、 [SymbolSource][10]�
 var client = new MobileServiceClient("MOBILE_APP_URL");
 ```
 
-上記のコードで、`MOBILE_APP_URL` をモバイル アプリ バックエンドの URL に置き換えます。この URL は、[Azure ポータル]のモバイル アプリ バックエンドのブレードで確認できます。 MobileServiceClient オブジェクトはシングルトンである必要があります。
+上記のコードで、`MOBILE_APP_URL` をモバイル アプリ バックエンドの URL に置き換えます。この URL は、[Azure Portal]のモバイル アプリ バックエンドのブレードで確認できます。 MobileServiceClient オブジェクトはシングルトンである必要があります。
 
 ## <a name="work-with-tables"></a>テーブルの操作
-以下のセクションでは、レコードを検索し、取得する方法や、テーブル内のデータを変更する方法について詳しく説明します。  次のトピックについて説明します。
+以下のセクションでは、レコードを検索し、取得する方法や、テーブル内のデータを変更する方法について詳しく説明します。  次のトピックが含まれています。
 
 * [テーブル参照を作成する](#instantiating)
 * [データのクエリを実行する](#querying)
@@ -106,7 +101,7 @@ var client = new MobileServiceClient("MOBILE_APP_URL");
 * [Windows ユーザー インターフェイスへのバインド](#binding)
 * [ページ サイズを変更する](#pagesize)
 
-### <a name="instantiating"></a>方法: テーブル参照を作成する
+### <a name="instantiating"></a>テーブル参照を作成する
 バックエンド テーブルのデータへのアクセスまたはデータの変更を行うすべてのコードで、 `MobileServiceTable` オブジェクトに対して関数を呼び出します。 次のように、 [GetTable] メソッドを呼び出して、テーブルへの参照を取得します。
 
 ```csharp
@@ -122,7 +117,7 @@ IMobileServiceTable untypedTodoTable = client.GetTable("TodoItem");
 
 型指定されていないクエリでは、基になる OData クエリ文字列を指定する必要があります。
 
-### <a name="querying"></a>方法: Mobile App のデータを照会する
+### <a name="querying"></a>Mobile App のデータを照会する
 このセクションでは、モバイル アプリ バックエンドにクエリを発行する方法について説明します。これには次の機能が含まれます。
 
 * [返されるデータをフィルター処理する](#filtering)
@@ -134,8 +129,8 @@ IMobileServiceTable untypedTodoTable = client.GetTable("TodoItem");
 > [!NOTE]
 > すべての行が返されるのを防ぐために、サーバー側で設定されたページ サイズが適用されます。  ページングは、大きなデータ セットの既定の要求がサービスに悪影響を与えるのを防ぎます。  50 行を超える行を返すには、「[ページにデータを返す](#paging)」で説明するように、`Skip` メソッドと `Take` メソッドを使用します。
 
-### <a name="filtering"></a>方法: 返されるデータをフィルター処理する
-次のコードは、クエリに `Where` 句を含めることによってデータをフィルター処理する方法を示しています。 このコードは、`Complete` プロパティが `false` に等しい `todoTable` からすべての項目を返します。 [where] 関数は、テーブルに対するクエリに行のフィルタリング述語を適用します。
+### <a name="filtering"></a>返されるデータをフィルター処理する
+次のコードは、クエリに `Where` 句を含めることによってデータをフィルター処理する方法を示しています。 このコードは、`Complete` プロパティが `false` に等しい `todoTable` からすべての項目を返します。 [Where] 関数は、テーブルに対するクエリに行のフィルタリング述語を適用します。
 
 ```csharp
 // This query filters out completed TodoItems and items without a timestamp.
@@ -185,7 +180,7 @@ List<TodoItem> items = await todoTable
     .ToListAsync();
 ```
 
-この 2 つの方法は等価であり、区別しないで使用できます。  複数の述語を 1 つのクエリに連結する前のオプション &mdash; のほうが、&mdash;よりコンパクトでありお勧めです。
+この 2 つの方法は等価であり、区別しないで使用できます。  複数の述語を 1 つのクエリに連結する前のオプション のほうが、よりコンパクトでありお勧めです。
 
 `Where` 句は、OData サブセットに変換される操作をサポートします。 操作には以下が含まれます。
 
@@ -199,7 +194,7 @@ List<TodoItem> items = await todoTable
 
 Server SDK のサポート対象については、 [OData v3 のドキュメント]をご覧ください。
 
-### <a name="sorting"></a>方法: 返されるデータを並べ替える
+### <a name="sorting"></a>返されるデータを並べ替える
 次のコードは、クエリに [OrderBy] 関数または [OrderByDescending] 関数を含めることによってデータを並べ替える方法を示しています。 次のコードは、`todoTable` から、`Text` フィールドの値に基づいて昇順に並べ替えられた項目を返します。
 
 ```csharp
@@ -214,7 +209,7 @@ MobileServiceTableQuery<TodoItem> query = todoTable
 List<TodoItem> items = await query.ToListAsync();
 ```
 
-### <a name="paging"></a>方法: ページにデータを返す
+### <a name="paging"></a>ページにデータを返す
 既定では、バックエンドは最初の 50 行のみを返します。 [Take] メソッドを呼び出すことによって、返される行の数を増やすことができます。 [Skip] メソッドと共に `Take` を使用して、クエリによって返されるデータセット全体のうち特定の "ページ" を要求します。 次のクエリを実行すると、テーブルの最初の上位 3 つの項目が返されます。
 
 ```csharp
@@ -245,7 +240,7 @@ query = query.IncludeTotalCount();
 > `[EnableQuery(MaxTop=1000)]`
 
 
-### <a name="selecting"></a>方法: 特定の列を選択する
+### <a name="selecting"></a>特定の列を選択する
 クエリに [Select] 句を追加することで、結果に含める一連のプロパティを指定できます。 たとえば、次のコードでは、1 つのフィールドだけを選択する方法と、複数のフィールドを選択し、フォーマットする方法も示しています。
 
 ```csharp
@@ -273,7 +268,7 @@ MobileServiceTableQuery<TodoItem> query = todoTable
 List<string> items = await query.ToListAsync();
 ```
 
-### <a name="lookingup"></a>方法: ID でデータを検索する
+### <a name="lookingup"></a>ID でデータを検索する
 [LookupAsync] 関数を使用すると、特定の ID でデータベースのオブジェクトを検索できます。
 
 ```csharp
@@ -281,7 +276,7 @@ List<string> items = await query.ToListAsync();
 TodoItem item = await todoTable.LookupAsync("37BBF396-11F0-4B39-85C8-B319C729AF6D");
 ```
 
-### <a name="untypedqueries"></a>方法: 型指定されていないクエリを実行する
+### <a name="untypedqueries"></a>型指定されていないクエリを実行する
 型指定されていないテーブル オブジェクトを使用してクエリを実行するときは、次の例のように [ReadAsync]を呼び出して、OData クエリ文字列を明示的に指定する必要があります。
 
 ```csharp
@@ -291,7 +286,7 @@ JToken untypedItems = await untypedTodoTable.ReadAsync("$filter=complete eq 0&$o
 
 プロパティ バッグのように使用できる JSON 値が返されます。 JToken と Newtonsoft Json.NET の詳細については、 [Json.NET] サイトをご覧ください。
 
-### <a name="inserting"></a>方法: モバイル アプリ バックエンドにデータを挿入する
+### <a name="inserting"></a>モバイル アプリ バックエンドにデータを挿入する
 クライアントのすべての型には、**Id** という名前のメンバーが含まれる必要があります。その既定値は文字列です。 この **Id** は、オフライン同期で CRUD 操作を実行するために必要となります。次のコードは、[InsertAsync] メソッドを使用してテーブルに新しい行を挿入する方法を示しています。 パラメーターには、挿入するデータが .NET オブジェクトとして含まれます。
 
 ```csharp
@@ -334,7 +329,7 @@ JObject jo = new JObject();
 jo.Add("id", Guid.NewGuid().ToString("N"));
 ```
 
-### <a name="modifying"></a>方法: モバイル アプリ バックエンドのデータを変更する
+### <a name="modifying"></a>モバイル アプリ バックエンドのデータを変更する
 次のコードは、 [UpdateAsync] メソッドを使用して、同じ ID を持つ既存のレコードを新しい情報で更新する方法を示しています。 パラメーターには、更新するデータが .NET オブジェクトとして含まれます。
 
 ```csharp
@@ -353,7 +348,7 @@ var inserted = await table.UpdateAsync(jo);
 
 更新を行うときは、 `id` フィールドを指定する必要があります。 バックエンドでは、 `id` フィールドを使用して更新する行を識別します。 `id` フィールドは、`InsertAsync` 呼び出しの結果から取得できます。 `id` 値を指定せずに項目を更新しようとすると、`ArgumentException` が発生します。
 
-### <a name="deleting"></a>方法: モバイル アプリ バックエンドのデータを削除する
+### <a name="deleting"></a>モバイル アプリ バックエンドのデータを削除する
 次のコードは、 [DeleteAsync] メソッドを使用して既存のインスタンスを削除する方法を示しています。 インスタンスは、`todoItem` に設定した `id` フィールドで識別されます。
 
 ```csharp
@@ -370,12 +365,12 @@ await table.DeleteAsync(jo);
 
 削除要求を行うときは、ID を指定する必要があります。 それ以外のプロパティは、サービスに渡されないか、またはサービスで無視されます。 通常、`DeleteAsync` の呼び出しの結果は `null` です。 渡す ID は、 `InsertAsync` の呼び出しの結果から取得できます。 `id` フィールドを指定せずに項目を削除しようとすると、`MobileServiceInvalidOperationException` がスローされます。
 
-### <a name="optimisticconcurrency"></a>方法: 競合の解決にオプティミスティック同時実行制御を使用する
+### <a name="optimisticconcurrency"></a>競合の解決にオプティミスティック同時実行制御を使用する
 複数のクライアントが同じ項目に対して同時に変更を書き込む場合があります。 競合を検出しない場合、最後に行われた書き込みによってそれ以前の更新がすべて上書きされます。 **オプティミスティック コンカレンシー** では、それぞれのトランザクションがコミットでき、そのためリソース ロックが一切使用されないことを前提としています。  オプティミスティック コンカレンシーではトランザクションをコミットする前に、他のトランザクションがそのデータを変更していないことを確認します。 データが変更されている場合、トランザクションのコミットはロール バックされます。
 
 Mobile Apps はオプティミスティック コンカレンシーをサポートしており、モバイル アプリ バックエンドで各テーブルに定義されている `version` システム プロパティ列を使用して各項目の変更を追跡します。 レコードが更新されるたびに、Mobile Apps はそのレコードの `version` プロパティを新しい値に設定します。 各更新要求の際に、要求に含まれているレコードの `version` プロパティが、サーバー上のレコードの同じプロパティと比較されます。 要求で渡されたバージョンがバックエンドと一致しない場合、クライアント ライブラリは `MobileServicePreconditionFailedException<T>` 例外を生成します。 例外に含まれている型は、レコードのサーバー側のバージョンを含んでいるバックエンドのレコードです。 アプリケーションはこの情報を使用して、バックエンドからの正しい `version` 値で更新要求をもう一度実行して変更をコミットするかどうかを判断できます。
 
-オプティミスティック コンカレンシーを有効にするには、テーブル クラスに `version` システム プロパティ用の列を定義します。 例:
+オプティミスティック コンカレンシーを有効にするには、テーブル クラスに `version` システム プロパティ用の列を定義します。 次に例を示します。
 
 ```csharp
 public class TodoItem
@@ -461,7 +456,7 @@ private async Task ResolveConflict(TodoItem localItem, TodoItem serverItem)
 
 詳細については、「 [Azure Mobile Apps でのオフライン データ同期] 」をご覧ください。
 
-### <a name="binding"></a>方法: Mobile Apps のデータを Windows ユーザー インターフェイスにバインドする
+### <a name="binding"></a>Mobile Apps のデータを Windows ユーザー インターフェイスにバインドする
 このセクションでは、Windows アプリで UI 要素を使用して、返されたデータ オブジェクトを表示する方法について説明します。  次のコード例では、不完全な項目のクエリによってリストのソースにバインドします。 [MobileServiceCollection] は、Mobile Apps 対応のバインディング コレクションを作成します。
 
 ```csharp
@@ -613,7 +608,7 @@ var result = await client.InvokeApiAsync<MarkAllResult>("completeAll", System.Ne
 この形式は型指定されたメソッド呼び出しであり、**MarkAllResult** の戻り値の型が定義されている必要があります。 型指定および型指定のないメソッドの両方がサポートされます。
 
 API が "/" で始まっていない限り、InvokeApiAsync() メソッドは API の先頭に "/api/" を追加します。
-例:
+次に例を示します。
 
 * `InvokeApiAsync("completeAll",...)` はバックエンドで /api/completeAll を呼び出します
 * `InvokeApiAsync("/.auth/me",...)` はバックエンドで /.auth/me を呼び出します
@@ -651,7 +646,7 @@ Active Directory Authentication Library (ADAL) を使うと、クライアント
 2. Visual Studio または Xamarin Studio でプロジェクトを開き、 `Microsoft.IdentityModel.Clients.ActiveDirectory` NuGet パッケージへの参照を追加します。 検索時に、プレリリース版を含めます。
 3. ご使用のプラットフォームに応じて、以下のコードをアプリケーションに追加します。 それぞれで、次の置換を行います。
 
-   * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は https://login.microsoftonline.com/contoso.onmicrosoft.com である必要があります。 この値は、[Azure ポータル] の Azure Active Directory の [ドメイン] タブからコピーできます。
+   * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は https://login.microsoftonline.com/contoso.onmicrosoft.com である必要があります。 この値は、[Azure Portal] の Azure Active Directory の [ドメイン] タブからコピーできます。
    * **INSERT-RESOURCE-ID-HERE** を、モバイル アプリ バックエンドのクライアント ID に置き換えます。 クライアント ID は、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブで入手できます。
    * **INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
    * **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの */.auth/login/done* エンドポイントに置き換えます。 これは、 *https://contoso.azurewebsites.net/.auth/login/done* のような値である必要があります。
@@ -882,7 +877,7 @@ await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
 * [Microsoft Store のパッケージ SID を取得する](#package-sid)
 * [クロスプラットフォームのテンプレートで登録する](#register-xplat)
 
-### <a name="register-for-push"></a>方法: プッシュ通知に登録する
+### <a name="register-for-push"></a>プッシュ通知に登録する
 Mobile Apps クライアントでは、Azure Notification Hubs によるプッシュ通知に登録できます。 登録する場合、プラットフォーム固有のプッシュ通知サービス (PNS) からハンドルを取得します。 この値は、登録を作成するときに、任意のタグと一緒に指定します。 次のコードは、Windows Notification Service (WNS) によるプッシュ通知用の Windows アプリを登録します。
 
 ```csharp
@@ -901,7 +896,7 @@ WNS に対するプッシュを行う場合は、[Microsoft Store パッケー�
 クライアントからのタグ要求はサポートされていません。  タグ要求は、通告なく登録から削除されます。
 タグと共にデバイスを登録したい場合は、Notification Hubs API を使用するカスタム API を作成し、登録を代行させます。  `RegisterNativeAsync()` メソッドの代わりに、カスタム API を呼び出します。
 
-### <a name="package-sid"></a>方法:Microsoft Store のパッケージ SID を取得する
+### <a name="package-sid"></a>Microsoft Store のパッケージ SID を取得する
 Microsoft Store アプリでプッシュ通知を有効にするには、パッケージ SID が必要です。  パッケージ SID を受け取るには、Microsoft Store　にアプリケーションを登録します。
 
 この値を取得するには:
@@ -919,7 +914,7 @@ Xamarin アプリでは、iOS または Android プラットフォームで実�
 * [Xamarin.Android](app-service-mobile-xamarin-android-get-started-push.md#add-push)
 * [Xamarin.iOS](app-service-mobile-xamarin-ios-get-started-push.md#add-push-notifications-to-your-app)
 
-### <a name="register-xplat"></a>方法: プッシュ テンプレートを登録してクロス プラットフォーム通知を送信する
+### <a name="register-xplat"></a>プッシュ テンプレートを登録してクロス プラットフォーム通知を送信する
 テンプレートを登録するには、次のようにテンプレートで `RegisterAsync()` メソッドを使用します。
 
 ```csharp
@@ -963,7 +958,7 @@ MobileService.GetPush().RegisterAsync(string channelUri, JObject templates, JObj
 これらの登録済みテンプレートを使用して通知を送信する方法については、 [Notification Hubs API]に関するページをご覧ください。
 
 ## <a name="misc"></a>その他のトピック
-### <a name="errors"></a>方法: エラーを処理する
+### <a name="errors"></a>エラーを処理する
 バックエンドでエラーが発生すると、クライアント SDK が `MobileServiceInvalidOperationException`を生成します。  次の例では、バックエンドによって返される例外を処理する方法を示します。
 
 ```csharp
@@ -985,7 +980,7 @@ private async void InsertTodoItem(TodoItem todoItem)
 
 エラー状況を処理する別の例については、 [Mobile Apps ファイル サンプル]で確認できます。 [LoggingHandler] の例では、ログ記録代理ハンドラーを使用して、バックエンドに対する要求を記録します。
 
-### <a name="headers"></a>方法: 要求ヘッダーをカスタマイズする
+### <a name="headers"></a>要求ヘッダーをカスタマイズする
 特定のアプリケーション シナリオをサポートするには、モバイル アプリ バックエンドとの通信をカスタマイズすることが必要な場合があります。 たとえば、すべての送信要求にカスタム ヘッダーを追加したり、応答のステータス コードを変更したりすることが必要な場合がります。 次の例のように、カスタムの [DelegatingHandler]を使用できます。
 
 ```csharp
@@ -1065,7 +1060,7 @@ public class MyHandler : DelegatingHandler
 [UpdateAsync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
 [UserID]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
 [Where]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
-[Azure ポータル]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
 [Guid.NewGuid]: https://msdn.microsoft.com/library/system.guid.newguid(v=vs.110).aspx
 [ISupportIncrementalLoading]: https://msdn.microsoft.com/library/windows/apps/Hh701916.aspx

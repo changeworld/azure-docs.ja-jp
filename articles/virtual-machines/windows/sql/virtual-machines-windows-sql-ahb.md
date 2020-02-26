@@ -14,20 +14,21 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 00262b48b8fa2fd1292554155e8ec8e933d886e6
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 502d1fe599accb29ccc99c9e527f8d1c8e1d52b8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690906"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201826"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Azure での SQL Server 仮想マシンのライセンス モデルを変更する
 この記事では、新しい SQL VM リソース プロバイダーである **Microsoft.SqlVirtualMachine** を使用して Azure 内の SQL Server 仮想マシン (VM) のライセンス モデルを変更する方法について説明します。
 
-SQL Server をホストする VM には、従量課金制と Azure ハイブリッド特典の 2 種類のライセンス モデルがあります。 ご利用の SQL Server VM のライセンス モデルは、Azure portal、Azure CLI、または PowerShell を使用して変更することができます。 
+SQL Server をホストする VM には、従量課金制、Azure ハイブリッド特典、およびディザスター リカバリー (DR) の 3 種類のライセンス モデルがあります。 ご利用の SQL Server VM のライセンス モデルは、Azure portal、Azure CLI、または PowerShell を使用して変更することができます。 
 
-従量課金制モデルでは、Azure VM を実行する秒単位のコストに SQL Server ライセンスのコストが含まれます。
-[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)では、SQL Server を実行する VM に対して独自の SQL Server ライセンスを使用することができます。 
+- **従量課金制**モデルでは、Azure VM を実行する秒単位のコストに、SQL Server ライセンスのコストが含まれています。
+- [Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)では、SQL Server を実行する VM に対して独自の SQL Server ライセンスを使用することができます。 
+- **ディザスター リカバリー** ライセンスは、Azure での[無料 DR レプリカ](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure)に使用します。 
 
 Azure ハイブリッド特典では、Azure 仮想マシン上で SQL Server ライセンスをソフトウェア アシュアランス ("条件を満たしたライセンス") 付きで使用できます。 Azure ハイブリッド特典の場合、VM 上での SQL Server ライセンスの使用に対してお客様は課金されません。 ただし、基になるクラウド コンピューティング (基本料金)、ストレージ、およびバックアップのコストについては、引き続き料金を支払う必要があります。 また、サービスの使用に関連付けられている I/O についても支払う必要があります (該当する場合)。
 
@@ -50,9 +51,9 @@ SQL Server VM のライセンスモデルを変更するには、次の要件が
 - [ソフトウェアアシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) は、[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を利用するための要件です。 
 
 
-## <a name="change-the-license-for-vms-already-registered-with-the-resource-provider"></a>リソース プロバイダーに既に登録されている VM のライセンスを変更する 
+## <a name="vms-already-registered-with-the-resource-provider"></a>リソースプロバイダーに登録済みの VM 
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
@@ -66,11 +67,12 @@ SQL Server VM のライセンスモデルを変更するには、次の要件が
 ![ポータル内の Azure ハイブリッド特典](media/virtual-machines-windows-sql-ahb/ahb-in-portal.png)
 
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLI を使用して、ご利用のライセンス モデルを変更することができます。  
 
-次のコード スニペットでは、従量課金制ライセンス モデルをライセンス持ち込み (または Azure ハイブリッド特典の使用) に切り替えます。
+
+**Azure ハイブリッド特典**
 
 ```azurecli-interactive
 # Switch your SQL Server VM license from pay-as-you-go to bring-your-own
@@ -79,7 +81,7 @@ Azure CLI を使用して、ご利用のライセンス モデルを変更する
 az sql vm update -n <VMName> -g <ResourceGroupName> --license-type AHUB
 ```
 
-次のコード スニペットは、BYOL モデルを従量課金制に切り替えます。 
+**従量課金制**: 
 
 ```azurecli-interactive
 # Switch your SQL Server VM license from bring-your-own to pay-as-you-go
@@ -88,28 +90,45 @@ az sql vm update -n <VMName> -g <ResourceGroupName> --license-type AHUB
 az sql vm update -n <VMName> -g <ResourceGroupName> --license-type PAYG
 ```
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+**ディザスター リカバリー (DR)**
+
+```azurecli-interactive
+# Switch your SQL Server VM license from bring-your-own to pay-as-you-go
+# example: az sql vm update -n AHBTest -g AHBTest --license-type DR
+
+az sql vm update -n <VMName> -g <ResourceGroupName> --license-type DR
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 PowerShell を使用して、ご利用のライセンス モデルを変更できます。
 
-次のコード スニペットでは、従量課金制ライセンス モデルをライセンス持ち込み (または Azure ハイブリッド特典の使用) に切り替えます。
+**Azure ハイブリッド特典**
 
 ```powershell-interactive
 # Switch your SQL Server VM license from pay-as-you-go to bring-your-own
 Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -LicenseType AHUB
 ```
 
-次のコード スニペットは、BYOL モデルを従量課金制に切り替えます。
+**従量課金制**
 
 ```powershell-interactive
 # Switch your SQL Server VM license from bring-your-own to pay-as-you-go
 Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -LicenseType PAYG
 ```
 
+**ディザスター リカバリー** 
+
+```powershell-interactive
+# Switch your SQL Server VM license from bring-your-own to pay-as-you-go
+Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -LicenseType DR
+```
+
 ---
 
-## <a name="change-the-license-for-vms-not-registered-with-the-resource-provider"></a>リソース プロバイダーに登録されていない VM 用のライセンスを変更する
+## <a name="vms-not-registered-with-the-resource-provider"></a>リソースプロバイダーに未登録の VM
 
-従量課金制 Azure Marketplace イメージから SQL Server VM をプロビジョニングした場合、SQL Server ライセンスの種類は従量課金制になります。 Azure Marketplace からのライセンス持ち込みイメージを使用して SQL Server VM をプロビジョニングした場合、ライセンスの種類は AHUB になります。 既定 (従量課金制) またはライセンス持ち込み Azure Marketplace イメージからプロビジョニングされた SQL Server VM はすべて、SQL VM リソース プロバイダーに自動的に登録されます。その結果、[ライセンスの種類](#change-the-license-for-vms-already-registered-with-the-resource-provider)の変更が可能になります。
+従量課金制 Azure Marketplace イメージから SQL Server VM をプロビジョニングした場合、SQL Server ライセンスの種類は従量課金制になります。 Azure Marketplace からのライセンス持ち込みイメージを使用して SQL Server VM をプロビジョニングした場合、ライセンスの種類は AHUB になります。 既定 (従量課金制) またはライセンス持ち込み Azure Marketplace イメージからプロビジョニングされた SQL Server VM はすべて、SQL VM リソース プロバイダーに自動的に登録されます。その結果、[ライセンスの種類](#vms-already-registered-with-the-resource-provider)の変更が可能になります。
 
 SQL Server については、Azure ハイブリッド特典を介して Azure VM にセルフインストールすることのみが可能です。 Microsoft 製品の利用規約に従って Azure ハイブリッド特典の使用状況を示すには、SQL Server ライセンスを Azure ハイブリッド特典に設定して、[これらの VM を SQL VM リソース プロバイダーに登録](virtual-machines-windows-sql-register-with-resource-provider.md)する必要があります。
 

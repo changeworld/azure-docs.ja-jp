@@ -8,14 +8,14 @@ manager: timlt
 ms.service: event-hubs
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: d3271d6e8cb7d423e1dccd235b244688e7ab5683
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: fc81226e754178ad0edfff96a494dd7522662261
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555794"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368509"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Apache Kafka アプリケーションから Azure Event Hubs を使用する
 Event Hubs は、独自の Kafka クラスターを実行する代わりに、既存の Kafka ベースのアプリケーションが使用できる Kafka エンドポイントを提供します。 Event Hubs は、[Apache Kafka 1.0 以降](https://kafka.apache.org/documentation/)をサポートしており、MirrorMaker を含む既存の Kafka アプリケーションに対応します。  
@@ -43,8 +43,38 @@ Kafka と Event Hubs は、概念的にはほぼ同じものです。これら�
 Event Hubs のスケールは、購入するスループット単位の数によって制御されます。各スループット単位では、1 秒あたり 1 MB、または受信の 1 秒あたり 1,000 イベントを利用できます。 既定では、Event Hubs は上限に達すると[自動インフレ](event-hubs-auto-inflate.md)機能によってスループット ユニットをスケールアップします。この機能は Kafka 機能用 Event Hubs でも働きます。 
 
 ### <a name="security-and-authentication"></a>セキュリティと認証
+Kafka 用 Event Hubs からイベントを発行または使用するたびに、クライアントでは、Event Hubs リソースへのアクセスが試行されます。 認可されたエンティティを使用してリソースがアクセスされていることを確認する必要があります。 クライアントで Apache Kafka プロトコルを使用している場合、SASL のメカニズムを使用して認証と暗号化のための構成を設定できます。 Kafka 用 Event Hubs を使用するには、TLS 暗号化が必要となります (Event Hubs では転送中のデータがすべて TLS で暗号化されるため)。 これは、構成ファイルで SASL_SSL オプションを指定することによって実現できます。 
 
-Azure Event Hubs は、すべての通信に対して SSL または TLS を要求し、認証のために Shared Access Signatures (SAS) を使用します。 この要件は、Event Hubs 内の Kafka エンドポイントにも適用されます。 Kafka との互換性のため、Event Hubs は認証用には SASL PLAIN を、トランスポート セキュリティのためには SASL SSL を使用します。 Event Hubs でのセキュリティに関する詳細については、「[Event Hubs の認証とセキュリティ](event-hubs-authentication-and-security-model-overview.md)」をご覧ください。
+Azure Event Hubs には、セキュリティで保護されたリソースへのアクセスを承認するためのオプションが複数用意されています。 
+
+- OAuth
+- Shared Access Signature (SAS)
+
+#### <a name="oauth"></a>OAuth
+Event Hubs は、Azure Active Directory (Azure AD) と連携するため、Azure AD の **OAuth** 2.0 に準拠した一元的な承認サーバーを利用できます。 Azure AD では、ロールベースのアクセス制御 (RBAC) を使用して、粒度の細かいアクセス許可をクライアントの ID に与えることができます。 protocol に **SASL_SSL** を、mechanism に **OAUTHBEARER** を指定すれば、この機能を Kafka クライアントで使用することができます。 RBAC のロールとレベルを使用したアクセスのスコープ設定について詳しくは、[Azure AD によるアクセスの承認](authorize-access-azure-active-directory.md)に関するページを参照してください。
+
+```xml
+bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
+security.protocol=SASL_SSL
+sasl.mechanism=OAUTHBEARER
+sasl.jaas.config=org.apache.kafka.common.security.oauthbearer.OAuthBearerLoginModule required;
+sasl.login.callback.handler.class=CustomAuthenticateCallbackHandler;
+```
+
+#### <a name="shared-access-signature-sas"></a>Shared Access Signature (SAS)
+Event Hubs には、**Shared Access Signature (SAS)** も用意されており、Kafka 用 Event Hubs リソースへの委任アクセスを実現することができます。 OAuth 2.0 トークンベースのメカニズムを使用したアクセス承認の方が、SAS よりもセキュリティが高く、使いやすさの点でも有利です。 また、ACL ベースの承認はユーザーが維持、管理する必要がありますが、組み込みロールであれば ACL ベースの承認は必要ありません。 protocol に **SASL_SSL** を、mechanism に **PLAIN** を指定すれば、この機能を Kafka クライアントで使用することができます。 
+
+```xml
+bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
+security.protocol=SASL_SSL
+sasl.mechanism=PLAIN
+sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
+```
+
+#### <a name="samples"></a>サンプル 
+Kafka 対応のイベント ハブを作成して、SAS または OAuth でアクセスする手順の**チュートリアル**については、「[クイックスタート: Kafka プロトコルを使用した Event Hubs によるデータ ストリーミング](event-hubs-quickstart-kafka-enabled-event-hubs.md)」を参照してください。
+
+Kafka 用 Event Hubs で OAuth を使用する方法を紹介したその他の**例**については、[GitHub 上のサンプル](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth)を参照してください。
 
 ## <a name="other-event-hubs-features-available-for-kafka"></a>Kafka で使用できるその他の Event Hubs 機能
 
@@ -63,7 +93,7 @@ Kafka 機能用 Event Hubs では、あるプロトコルで書き込みを、�
 *   HTTP Kafka API のサポート
 *   Kafka Streams
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Kafka 用 Event Hubs の概要について説明しました。 詳細については、以下のリンクをご覧ください。
 

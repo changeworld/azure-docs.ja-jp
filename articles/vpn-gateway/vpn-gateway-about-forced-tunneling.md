@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: cherylmc
-ms.openlocfilehash: 6b31555215f4f2efc63d0e1df0a7b4bf13a43924
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: fe06257127ff352f68fb27d3507cee0229e31498
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834582"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201579"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>クラシック デプロイ モデルを使用した 強制トンネリングの構成
 
@@ -39,7 +39,7 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 * ユーザー定義ルートをリリースすることにより、既定のルートを追加するルーティング テーブルを作成し、そのルーティング テーブルを VNet サブネットに関連付け、それらのサブネットでの強制トンネリングを有効にすることができます。
 * 仮想ネットワークに接続されたクロスプレミス ローカル サイト間で「既定のサイト」を設定する必要があります。
 * 強制トンネリングは、動的ルーティング VPN ゲートウェイ (静的ゲートウェイではない) を持つ VNet に関連付ける必要があります。
-* ExpressRoute の強制トンネリングは、このメカニズムを使用して構成されていませんが、代わりに ExpressRoute BGP ピアリング セッションを介して既定のルートを通知することで有効化されます。 詳細については、 [ExpressRoute Documentation](https://azure.microsoft.com/documentation/services/expressroute/) を参照してください。
+* ExpressRoute の強制トンネリングは、このメカニズムを使用して構成されていませんが、代わりに ExpressRoute BGP ピアリング セッションを介して既定のルートを通知することで有効化されます。 詳細については、「[ExpressRoute のドキュメント](https://azure.microsoft.com/documentation/services/expressroute/)」を参照してください。
 
 ## <a name="configuration-overview"></a>構成の概要
 次の例では、フロントエンドのサブネットは、トンネリングを強制されません。 フロントエンドのサブネット内のワークロードは、直接、インターネットから顧客の要求を承認し応答し続けることができます。 Mid-tier および Backend のサブネットは、トンネリングを強制されます。 これら 2 つのサブネットからのインターネットへのオウトバウンド接続は、S2S VPN トンネルの 1 つを介して、オンプレミス サイトに ”強制” リダイレクトされます。
@@ -49,11 +49,24 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 ![強制トンネリング](./media/vpn-gateway-about-forced-tunneling/forced-tunnel.png)
 
 ## <a name="before-you-begin"></a>開始する前に
-構成を開始する前に、以下がそろっていることを確認します。
+構成を開始する前に、以下が揃っていることを確認します。
 
 * Azure サブスクリプション。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 * 構成済みの仮想ネットワーク。 
-* 最新バージョンの Azure PowerShell コマンドレット。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview) 」を参照してください。
+* [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
+
+### <a name="to-sign-in"></a>サインインするには
+
+1. 管理者特権で PowerShell コンソールを開きます。 サービス管理に切り替えるには、このコマンドを使用します。
+
+   ```powershell
+   azure config mode asm
+   ```
+2. アカウントに接続します。 接続については、次の例を参考にしてください。
+
+   ```powershell
+   Add-AzureAccount
+   ```
 
 ## <a name="configure-forced-tunneling"></a>強制トンネリングについて
 次の手順は、仮想ネットワークで強制トンネリングを指定するのに役立ちます。 構成手順は、VNet ネットワーク構成ファイルに対応します。

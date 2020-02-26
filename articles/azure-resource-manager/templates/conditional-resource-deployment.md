@@ -3,12 +3,12 @@ title: テンプレートを使用した条件付きデプロイ
 description: Azure Resource Manager テンプレート内のリソースを条件付きでデプロイする方法について説明します。
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: b4ee733e81f3a923f268f33f5826387059923bcb
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 83aa22ba57e0111d060665778922437723481c69
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122000"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207793"
 ---
 # <a name="conditional-deployment-in-resource-manager-templates"></a>Resource Manager テンプレートでの条件付きデプロイ
 
@@ -88,4 +88,4 @@ ms.locfileid: "76122000"
 ## <a name="next-steps"></a>次のステップ
 
 * テンプレート作成に関する推奨事項については、「[Azure Resource Manager テンプレートのベスト プラクティス](template-best-practices.md)」を参照してください。
-* リソースの複数のインスタンスを作成するには、「[Azure Resource Manager テンプレートでのリソース、プロパティ、または変数の反復](create-multiple-instances.md)」を参照してください。
+* 複数のインスタンスのリソースを作成する方法については、「[Azure Resource Manager テンプレートのリソースのイテレーション](copy-resources.md)」を参照してください。

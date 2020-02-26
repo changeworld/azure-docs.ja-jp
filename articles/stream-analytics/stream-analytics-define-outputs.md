@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/18/2010
-ms.openlocfilehash: 9fae39f8c03206a7a63338890101b820a585595b
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/14/2020
+ms.openlocfilehash: cfd4c113391f2ead238f5288c255b599e91b7e3a
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190617"
+ms.locfileid: "77201460"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics からの出力を理解する
 
@@ -193,6 +193,8 @@ Datetime | String | String |  Datetime | String
 ## <a name="service-bus-queues"></a>Service Bus キュー
 
 [Service Bus キュー](../service-bus-messaging/service-bus-queues-topics-subscriptions.md)では、競合している 1 つ以上のコンシューマーへのメッセージ配信に FIFO が使用されます。 通常、メッセージはキューに追加された時間的順序で受信者によって受信され、処理されます。 各メッセージを受信し、処理するメッセージ コンシューマーは 1 つのみです。
+
+[互換性レベル 1.2](stream-analytics-compatibility-level.md) では、Azure Stream Analytics は [Advanced Message Queuing Protocol (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md) メッセージング プロトコルを使用して Service Bus キューおよびトピックに書き込みます。 AMQP を使用すると、オープンな標準プロトコルを使用したクロス プラットフォームのハイブリッド アプリケーションをビルドできます。
 
 次の表に、キューの出力を作成するためのプロパティの名前とその説明を示します。
 

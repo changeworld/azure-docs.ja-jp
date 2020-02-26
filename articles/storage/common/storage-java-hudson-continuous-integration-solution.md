@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: tarcher
 ms.subservice: common
-ms.openlocfilehash: f8cdd7b950a11045f795ac93d4a0904f2dc526fa
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a89439f49dd53f09d5cd40be0bf2e4981e9235d4
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970193"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201387"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Hudson 継続的インテグレーション ソリューションでの Azure Storage の使用
 ## <a name="overview"></a>概要
@@ -42,7 +42,7 @@ Hudson CI ソリューションで Blob service を使用するには、次の�
   
     Hudson CI ソリューションがない場合には、次の方法によって Hudson CI ソリューションを実行できます。
   
-  1. Java が有効なコンピューターで、<http://hudson-ci.org/> から Hudson WAR をダウンロードします。
+  1. Java が有効なマシンに [Hudson WAR ファイルをダウンロード](https://www.eclipse.org/hudson/download.php)します。
   2. コマンド プロンプトを開いて Hudson WAR が格納されているフォルダーに移動し、Hudson WAR を実行します。 たとえば、version 3.1.2 をダウンロードした場合は、次のコマンドを実行します。
      
       `java -jar hudson-3.1.2.war`
@@ -116,7 +116,7 @@ Hudson で Blob service を使用するには、Azure Storage プラグインを
 13. Hudson ダッシュボードで、 **[Build Now]** をクリックして **MyJob** を実行します。 コンソール出力でステータスを確認します。 ビルド後のアクションによってビルド アーティファクトのアップロードが開始されると、コンソール出力に Azure Storage に関するステータス メッセージが表示されます。
 14. ジョブが正常に完了すると、パブリック BLOB を開いてビルド アーティファクトを確認できます。
     
-    a. [Azure portal](https://portal.azure.com) にサインインする
+    a. [Azure portal](https://portal.azure.com) にサインインします。
     
     b. **[Storage]** をクリックします。
     

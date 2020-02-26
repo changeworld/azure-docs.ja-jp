@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 47adda38bb39a95fe9abc0775a1822d677f19dab
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 0a4d7f152e555ed89bd0a6aee0a7bc83b9815492
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513849"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469138"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -64,6 +64,7 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 
 - この問題は、復旧ポイントの自動クリーンアップを妨げる、復旧ポイント リソース グループに対するロックが存在する場合に発生することがあります。
 - この問題は、1 日に複数のバックアップがトリガーされる場合にも発生することがあります。 現時点では、インスタント復元ポイントは設定されているスナップショット保有期間に基づき 1 日から 5 日間保持され、任意の時点で VM に関連付けることができるインスタント RP は 18 個だけであるため、1 日に 1 回だけのバックアップをお勧めします。 <br>
+- VM の復元ポイント コレクションとリソース グループ全体の復元ポイントの数は、18 個以下にする必要があります。 新しい復元ポイントを作成するには、既存の復元ポイントを削除してください。
 
 推奨される操作:<br>
 この問題を解決するには、VM のリソース グループに対するロックを解除して、クリーンアップをトリガーする操作を再試行します。

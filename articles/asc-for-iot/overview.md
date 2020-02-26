@@ -7,7 +7,6 @@ documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
-ms.assetid: 2cf6a49b-5d35-491f-abc3-63ec24eb4bc2
 ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
@@ -15,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 6a4fc842113218294b3e2ab449e27cfa94c5cfd3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 1c85f0205f568f065a7959a9b33890b2117e45a0
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766519"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462226"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Azure Security Center for IoT の概要
 
 ハイブリッド クラウド ワークロードおよび Azure IoT ソリューション全体で、セキュリティ管理を統合し、エンド ツー エンドの脅威の検出と分析を可能にします。 
 
-## <a name="secure-your-entire-iot-solution-from-iot-devices-to-azure-cloud"></a>IoT デバイスから Azure クラウドまで IoT ソリューション全体を保護します。
+## <a name="secure-your-entire-iot-solution-from-iot-devices-to-azure-cloud"></a>IoT デバイスから Azure クラウドまでの IoT ソリューション全体をセキュリティで保護する
 
 Microsoft のシームレスなエージェントレス ソリューションから選択するか、エージェント ベースの包括的なセキュリティを利用してください。Azure Security Center for IoT は、ご利用の IoT アセット全体で、すべてのデバイス、IoT Edge およびIoT Hub に対して脅威の防止と分析を提供します。
 

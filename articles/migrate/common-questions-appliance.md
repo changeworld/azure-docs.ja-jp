@@ -2,45 +2,50 @@
 title: Azure Migrate アプライアンスに関する一般的な質問
 description: Azure Migrate アプライアンスに関する一般的な質問の回答を示します
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.openlocfilehash: de9583b7983dda904e06ea258ecb0d202644586b
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/17/2020
+ms.openlocfilehash: 3bb066b08447a951665e629da5ebcb75714b9f1e
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064701"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425357"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate アプライアンス:一般的な質問
 
-この記事では、Azure Migrate アプライアンスに関する一般的な質問の回答を示します。 この記事の内容についてさらに質問がある場合は、[Azure Migrate フォーラム](https://aka.ms/AzureMigrateForum)に投稿してください。 その他の質問については、次の記事を確認してください：
+この記事では、Azure Migrate アプライアンスに関する一般的な質問の回答を示します。 その他の質問については、次の記事を確認してください。
 
 - Azure Migrate に関する[一般的な質問](resources-faq.md)
 - 検出、評価、依存関係の視覚化に関する[質問](common-questions-discovery-assessment.md)
 - サーバー移行に関する[質問](common-questions-server-migration.md)
+- [Azure Migrate フォーラム](https://aka.ms/AzureMigrateForum)で質問への回答を得る。 
 
 
 ## <a name="what-is-the-azure-migrate-appliance"></a>Azure Migrate アプライアンスとは何ですか。
 
-Azure Migrate アプライアンスは、Azure Migrate によって使用される軽量アプライアンスです。オンプレミスのサーバーを検出して評価するためのサーバー評価ツールであり、Azure Migrate によって使用されます。オンプレミス VMware VM のエージェントレス移行を行うためのサーバー移行ツールです。 
+Azure Migrate アプライアンスは、オンプレミス サーバーを検出および評価するために Azure Migrate: Server Assessment ツールによって使用される軽量アプライアンスです。 このアプライアンスは、オンプレミスの VMware VM のエージェントレス移行のために、Azure Migrate: Server Migration ツールでも使用されます。 
 
-アプライアンスは、VM または物理マシンとしてオンプレミスにデプロイされます。 アプライアンスはオンプレミスのマシンを検出し、マシンのメタデータとパフォーマンス データを Azure Migrate に継続的に送信します。 アプライアンスによる検出はエージェントレスです。 検出されたマシンには何もインストールされません。 アプライアンスの[詳細をご覧ください](migrate-appliance.md)。
+- アプライアンスは、VM または物理マシンとしてオンプレミスにデプロイされます。
+- アプライアンスはオンプレミスのマシンを検出し、マシンのメタデータとパフォーマンス データを Azure Migrate に継続的に送信します。
+- アプライアンスによる検出はエージェントレスです。 検出されたマシンには何もインストールされません。
+
+アプライアンスの[詳細をご覧ください](migrate-appliance.md)。
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>アプライアンスはどのように Azure に接続しますか。
 
-インターネット経由の接続、または Azure ExpressRoute とパブリック/Microsoft ピアリングを使用した接続が可能です。
+アプライアンスはインターネット経由で接続できます。または、Azure ExpressRoute をパブリックまたは Microsoft ピアリングで使用できます。
 
 ## <a name="does-appliance-analysis-impact-performance"></a>アプライアンス分析はパフォーマンスに影響しますか。
 
-Azure Migrate アプライアンスでは、VM のパフォーマンス データを測定するために、オンプレミスのマシンが継続的にプロファイルされます。 このプロファイルは、Hyper-V/ESXi ホストや VMware vCenter Server のパフォーマンスにほとんど影響しません。
+Azure Migrate アプライアンスでは、パフォーマンス データを測定するために、オンプレミスのマシンが継続的にプロファイルされます。 このプロファイル作成は、プロファイル対象のコンピューターのパフォーマンスにほとんど影響を与えません。
 
 ### <a name="can-i-harden-the-appliance-vm"></a>アプライアンス VM を強化することはできますか。
 
-ダウンロードしたテンプレートを使用してアプライアンス VM を作成する場合、Azure Migrate アプライアンスに必要な通信およびファイアウォール規則をそのままにしておく限り、コンポーネント (ウイルス対策など) をテンプレートに追加できます。
+ダウンロードしたテンプレートを使用してアプライアンス VM を作成する場合、Azure Migrate アプライアンスに必要な通信規則およびファイアウォール規則を設定したままにしておく限り、コンポーネント (ウイルス対策など) をテンプレートに追加できます。
 
 
 ## <a name="what-network-connectivity-is-needed"></a>どのようなネットワーク接続が必要ですか。
 
-次の項目を確認してください。
+ネットワーク接続に関する情報を確認します。
 - Azure Migrate アプライアンスを使用した VMware 評価: [URL](migrate-appliance.md#url-access) と[ポート](migrate-support-matrix-vmware.md#port-access)のアクセス要件。
 - Azure Migrate アプライアンスを使用した VMware エージェントレス移行: [URL](migrate-appliance.md#url-access) と[ポート](migrate-support-matrix-vmware-migration.md#agentless-ports)のアクセス要件。
 - Azure Migrate アプライアンスを使用した Hyper-V 評価: [URL](migrate-appliance.md#url-access) と[ポート](migrate-support-matrix-hyper-v.md#port-access)のアクセス要件。
@@ -56,14 +61,14 @@ Azure Migrate アプライアンスでは、VM のパフォーマンス デー�
 
 ## <a name="how-is-data-stored"></a>データをどのように格納するか
 
-Azure Migrate アプライアンスによって収集されたデータは、移行プロジェクトを作成するときに選択した Azure の場所に格納されます。 
+Azure Migrate アプライアンスによって収集されたデータは、Azure Migrate プロジェクトを作成した Azure の場所に格納されます。 
 
 - データは Microsoft サブスクリプションに安全に格納され、Azure Migrate プロジェクトを削除すると削除されます。
 - [依存関係の視覚化](concepts-dependency-visualization.md)を使用する場合、収集されたデータは、Azure サブスクリプションで作成された米国の Log Analytics ワークスペースに格納されます。 サブスクリプションの Log Analytics ワークスペースを削除すると、このデータは削除されます。
 
 ## <a name="how-much-data-is-uploaded-in-continuous-profiling"></a>継続的プロファイリングでアップロードされるデータの量はどのくらいですか。
 
-Azure Migrate に送信されるデータの量は、いくつかのパラメーターによって変わります。 量の概要を説明すると、10 台のマシン (それぞれ 1 台のディスクと 1 つの NIC を搭載) の Azure Migrate プロジェクトからは、1 日あたり約 50 MB が送信されます。 この値は概算で、NIC とディスクのデータ ポイント数に基づいて変化します。 マシン、NIC、またはディスクの数が増加した場合、送信されるデータの増加は非線形です。
+Azure Migrate に送信されるデータの量は、いくつかのパラメーターによって変わります。 概要を説明すると、10 台のマシン (それぞれ 1 台のディスクと 1 つの NIC を搭載) の Azure Migrate プロジェクトからは、1 日あたり約 50 MB が送信されます。 この値は概算で、NIC とディスクのデータ ポイント数に基づいて変化します。 マシン、NIC、またはディスクの数が増加した場合、送信されるデータの増加は非線形です。
 
 ## <a name="is-data-encrypted-at-restin-transit"></a>保存時/転送中のデータは暗号化されますか。
 
@@ -84,9 +89,9 @@ Azure Migrate に送信されるデータの量は、いくつかのパラメー
 
 いいえ。 アプライアンスと vCenter Server との間には一対一のマッピングが存在します。 複数の vCenter Server インスタンス上の VM を検出する場合は、複数のアプライアンスをデプロイする必要があります。
 
-### <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>1 つのアプライアンスで検出できる VM またはサーバーの数を教えてください
+## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>1 つのアプライアンスで検出できる VM またはサーバーの数を教えてください
 
-1 つのアプライアンスで最大 10,000 までの VMware VM、最大 5,000 までの Hyper-V VM、および最大 250 までのサーバーを検出できます。 オンプレミス環境にさらに多くのマシンがある場合は、[Hyper-V](scale-hyper-v-assessment.md) 評価、[VMware](scale-vmware-assessment.md) 評価、および[物理](scale-physical-assessment.md)評価のスケーリングに関する記事を参照してください。
+1 つのアプライアンスで最大 10,000 までの VMware VM、最大 5,000 までの Hyper-V VM、および最大 250 までの物理サーバーを検出できます。 オンプレミス環境にさらに多くのマシンがある場合は、[Hyper-V](scale-hyper-v-assessment.md) 評価、[VMware](scale-vmware-assessment.md) 評価、および[物理](scale-physical-assessment.md)評価のスケーリングに関する記事を参照してください。
 
 ## <a name="can-i-delete-an-appliance"></a>アプライアンスを削除できますか。
 
@@ -98,17 +103,17 @@ Azure Migrate に送信されるデータの量は、いくつかのパラメー
 
 ## <a name="can-i-use-the-appliance-with-a-different-subscriptionproject"></a>別のサブスクリプションまたはプロジェクトでアプライアンスを使用できますか。
 
-アプライアンスを使用して検出を開始した後、別の Azure サブスクリプションまたは別の Azure Migrate プロジェクトでアプライアンスを再構成することはできません。 また、別の vCenter Server 上の VM を検出することもできません。 これらのタスクには新しいアプライアンスを設定してください。
+アプライアンスを使用して検出を開始した後、別の Azure サブスクリプションでアプライアンスを再構成したり、別の Azure Migrate プロジェクトでアプライアンスを使用したりすることはできません。 また、別の vCenter Server 上の VM を検出することもできません。 これらのタスクには新しいアプライアンスを設定してください。
 
 ## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>Azure VM 上にアプライアンスを設定できますか。
-現在はサポートされていません。 
+いいえ。 これは現在サポートされていません。 
 
 ## <a name="can-i-discover-on-an-esxi-host"></a>ESXi ホスト上で検出できますか。
-VMware VM を検出するのに vCenter Server は必要ありません。
+いいえ。 VMware VM を検出するには vCenter Server が必要です。
 
 ## <a name="how-do-i-update-the-appliance"></a>アプライアンスを更新するにはどうすればよいですか。
 
-既定では、アプライアンスとそのインストール済みエージェントは自動的に更新されます。 アプライアンスでは、24 時間ごとに 1 回、更新プログラムがチェックされます。 更新プロセス中になんらかのエラーが発生した場合は、再試行プロセスがあります。 自動更新では、アプライアンスとアプライアンス エージェントのみが更新されます。 オペレーティング システムは更新されません。 オペレーティング システムを最新の状態に保つには、Microsoft Update を使用してください。
+既定では、アプライアンスとそのインストール済みエージェントは自動的に更新されます。 アプライアンスでは、24 時間ごとに 1 回、更新プログラムがチェックされます。 更新プロセスが失敗した場合は、再試行されます。 自動更新では、アプライアンスとアプライアンス エージェントのみが更新されます。 オペレーティング システムは更新されません。 オペレーティング システムを最新の状態に保つには、Microsoft Update を使用してください。
 
 ## <a name="can-i-check-agent-health"></a>エージェントの正常性を確認できますか。
 

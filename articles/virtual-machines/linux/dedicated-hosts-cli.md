@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: b301012425e0a2590fa5ac22985abe9c96fbd419
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: ab9d7128748e99b75b7e1a7187a7958e18300759
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834936"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483484"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Azure CLI を使用して専用ホストに VM をデプロイする
  
@@ -27,7 +27,7 @@ Azure CLI バージョン2.0.70 以降がインストールされていること
 ## <a name="limitations"></a>制限事項
 
 - 仮想マシン スケール セットは、現在、専用ホストではサポートされていません。
-- 初期リリースでは、次の VM シリーズがサポートされています。DSv3 と ESv3。 
+- 初期リリースでは、次の VM シリーズがサポートされています。DSv3、ESv3、FSv2、LSv2、および MSv2。 
  
 
 ## <a name="create-resource-group"></a>リソース グループの作成 

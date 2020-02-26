@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: bbb0992eaeef7892e5940130131ac139a339b47d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: fa73cb690fafb67f75abafab1b0dd27ffa0b8e32
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77083241"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210501"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -584,6 +584,20 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 [!INCLUDE [aml-local-deploy-config](../../includes/machine-learning-service-local-deploy-config.md)]
 
 詳細については、[az ml model deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) のドキュメントを参照してください。
+
+### <a name="understanding-service-state"></a>サービスの状態について
+
+モデルのデプロイ中に、完全にデプロイされるまでの間に、サービスの状態が変化することがあります。
+
+次の表で、サービスの各状態について説明します。
+
+| Web サービスの状態 | 説明 | 最終的な状態
+| ----- | ----- | ----- |
+| 移行中 | サービスはデプロイ処理中です。 | いいえ |
+| 異常 | サービスはデプロイされましたが、現在アクセスできません。  | いいえ |
+| スケジュール不可 | リソースが不足しているため、現時点ではサービスをデプロイできません。 | いいえ |
+| 失敗 | エラーまたはクラッシュが発生したため、サービスをデプロイできませんでした。 | はい |
+| Healthy | サービスは正常であり、エンドポイントを使用できます。 | はい |
 
 ### <a id="notebookvm"></a> コンピューティング インスタンス Web サービス (開発/テスト)
 

@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 05b099eebcbb7b8f77357c9dcf3a4d567d3886d6
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 3b423a25b6b13ad543ef4a74bc0335ce19f5766d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75553071"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461810"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Azure SQL Database のフェールオーバー グループを構成する
 
@@ -33,7 +33,7 @@ Azure portal または PowerShell を使用して、フェールオーバー グ
 
 ### <a name="create-failover-group"></a>フェールオーバー グループの作成
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 フェールオーバー グループを作成し、Azure portal を使用して単一データベースを追加します。
 
 
@@ -53,7 +53,7 @@ Azure portal または PowerShell を使用して、フェールオーバー グ
         
     ![フェールオーバー グループへの SQL DB の追加](media/sql-database-single-database-failover-group-tutorial/add-sqldb-to-failover-group.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 フェールオーバー グループを作成し、PowerShell を使用して単一データベースを追加します。 
 
    ```powershell-interactive
@@ -107,7 +107,7 @@ Azure portal または PowerShell を使用して、フェールオーバー グ
 
 Azure portal または PowerShell を使用して、フェールオーバー グループのフェールオーバーをテストします。 
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal を使用して、フェールオーバー グループのフェールオーバーをテストします。 
 
@@ -129,7 +129,7 @@ Azure portal を使用して、フェールオーバー グループのフェー
 1. 現在、どのサーバーがプライマリで、どのサーバーがセカンダリかを確認します。 フェールオーバーが成功すると、2 つのサーバー ロールがスワップされているはずです。 
 1. サーバーを元のロールにフェールバックするには、もう一度 **[フェールオーバー]** を選択します。 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell を使用してフェールオーバー グループのフェールオーバーをテストします。  
 
@@ -200,7 +200,7 @@ Azure portal または PowerShell を使用して、フェールオーバー グ
 
 Azure portal または PowerShell を使用して、エラスティック プールのフェールオーバー グループを作成します。 
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 Azure portal を使用して、フェールオーバー グループを作成し、エラスティック プールを追加します。
 
 1. [Azure portal](https://portal.azure.com) の左側のメニューで **[Azure SQL]** を選択します。 **[Azure SQL]** が一覧にない場合は、 **[すべてのサービス]** を選択し、検索ボックスに「Azure SQL」と入力します。 (省略可能) **[Azure SQL]** の横にある星を選択してお気に入りに追加し、左側のナビゲーションに項目として追加します。 
@@ -221,7 +221,7 @@ Azure portal を使用して、フェールオーバー グループを作成し
         
 1. **[選択]** を選択してエラスティック プール設定をフェールオーバー グループに適用した後、 **[作成]** を選択してフェールオーバー グループを作成します。 フェールオーバー グループにエラスティック プールを追加すると、geo レプリケーション プロセスが自動的に開始されます。 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 フェールオーバー グループを作成し、PowerShell を使用してエラスティック プールを追加します。 
 
@@ -271,7 +271,7 @@ Azure portal を使用して、フェールオーバー グループを作成し
 
 Azure portal または PowerShell を使用して、エラスティック プールのフェールオーバーをテストします。 
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 フェールオーバー グループをセカンダリ サーバーにフェールオーバーしてから、Azure portal を使用してフェールバックします。 
 
@@ -293,7 +293,7 @@ Azure portal または PowerShell を使用して、エラスティック プー
 1. どのサーバーがプライマリで、どのサーバーがセカンダリかを確認します。 フェールオーバーが成功すると、2 つのサーバー ロールがスワップされているはずです。 
 1. フェールオーバー グループを元の設定に戻すには、 **[フェールオーバー]** をもう一度選択します。 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell を使用してフェールオーバー グループのフェールオーバーをテストします。
 
@@ -353,7 +353,7 @@ Azure portal または PowerShell を使用して、2 つのマネージド イ�
 
 [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) を構成していない場合は、Azure portal または PowerShell を使用して、プライマリ仮想ネットワーク ゲートウェイを作成できます。 
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal を使用して、プライマリ仮想ネットワーク ゲートウェイを作成します。 
 
@@ -370,7 +370,7 @@ Azure portal を使用して、プライマリ仮想ネットワーク ゲート
 
    次の表には、プライマリ マネージド インスタンスのゲートウェイに必要な値が示されています。
  
-    | **フィールド** | 値 |
+    | **フィールド** | Value |
     | --- | --- |
     | **サブスクリプション** |  プライマリ マネージド インスタンスがあるサブスクリプション。 |
     | **Name** | 仮想ネットワーク ゲートウェイの名前。 | 
@@ -378,7 +378,7 @@ Azure portal を使用して、プライマリ仮想ネットワーク ゲート
     | **ゲートウェイの種類** | **[VPN]** を選択します。 |
     | **VPN の種類** | **[ルート ベース]** を選択します |
     | **SKU**| 既定値の `VpnGw1` のままにします。 |
-    | **Location**| セカンダリ マネージド インスタンスおよびセカンダリ仮想ネットワークがある場所。   |
+    | **場所**| セカンダリ マネージド インスタンスおよびセカンダリ仮想ネットワークがある場所。   |
     | **Virtual Network**| セカンダリ マネージド インスタンスの仮想ネットワークを選択します。 |
     | **パブリック IP アドレス**| **[新規作成]** を選択します。 |
     | **パブリック IP アドレス名**| IP アドレスの名前を入力します。 |
@@ -390,7 +390,7 @@ Azure portal を使用して、プライマリ仮想ネットワーク ゲート
 
 1. **[作成]** を選択して、新しい仮想ネットワーク ゲートウェイを作成します。 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell を使用してプライマリ仮想ネットワーク ゲートウェイを作成します。 
 
@@ -426,12 +426,12 @@ PowerShell を使用してプライマリ仮想ネットワーク ゲートウ�
 
 Azure portal または PowerShell を使用して、セカンダリ仮想ネットワーク ゲートウェイを作成します。 
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 前のセクションの手順を繰り返し、セカンダリ マネージド インスタンスの仮想ネットワーク サブネットとゲートウェイを作成します。 セカンダリ マネージド インスタンスのゲートウェイを構成するために必要なフィールドに入力します。 
 
    次の表には、セカンダリ マネージド インスタンスのゲートウェイに必要な値が示されています。
 
-   | **フィールド** | 値 |
+   | **フィールド** | Value |
    | --- | --- |
    | **サブスクリプション** |  セカンダリ マネージド インスタンスがあるサブスクリプション。 |
    | **Name** | 仮想ネットワーク ゲートウェイの名前 (`secondary-mi-gateway` など)。 | 
@@ -439,7 +439,7 @@ Azure portal または PowerShell を使用して、セカンダリ仮想ネッ�
    | **ゲートウェイの種類** | **[VPN]** を選択します。 |
    | **VPN の種類** | **[ルート ベース]** を選択します |
    | **SKU**| 既定値の `VpnGw1` のままにします。 |
-   | **Location**| セカンダリ マネージド インスタンスおよびセカンダリ仮想ネットワークがある場所。   |
+   | **場所**| セカンダリ マネージド インスタンスおよびセカンダリ仮想ネットワークがある場所。   |
    | **Virtual Network**| セクション 2 で作成された仮想ネットワーク (`vnet-sql-mi-secondary` など) を選択します。 |
    | **パブリック IP アドレス**| **[新規作成]** を選択します。 |
    | **パブリック IP アドレス名**| IP アドレスの名前 (`secondary-gateway-IP` など) を入力します。 |
@@ -447,7 +447,7 @@ Azure portal または PowerShell を使用して、セカンダリ仮想ネッ�
 
    ![セカンダリ ゲートウェイの設定](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell を使用して、セカンダリ仮想ネットワーク ゲートウェイを作成します。 
 
@@ -488,7 +488,7 @@ Azure portal または PowerShell を使用して、2 つのゲートウェイ�
 
 両方の接続に使用される共有キーは、各接続で同じである必要があります。 
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 Azure portal を使用して、2 つのゲートウェイ間の接続を作成します。 
 
 1. [Azure portal](https://portal.azure.com) から **[リソースの作成]** を選択します。
@@ -510,7 +510,7 @@ Azure portal を使用して、2 つのゲートウェイ間の接続を作成�
 
 1. **[概要]** タブで双方向接続の設定を確認し、 **[OK]** を選択して接続を作成します。 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell を使用して 2 つのゲートウェイ間の接続を作成します。 
 
@@ -546,7 +546,7 @@ PowerShell を使用して 2 つのゲートウェイ間の接続を作成しま
 ### <a name="create-the-failover-group"></a>フェールオーバー グループを作成する 
 Azure portal または PowerShell を使用して、マネージド インスタンスのフェールオーバー グループを作成します。 
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal を使用して、マネージド インスタンスのフェールオーバー グループを作成します。 
 
@@ -562,7 +562,7 @@ Azure portal を使用して、マネージド インスタンスのフェール
 
 1. フェールオーバー グループのデプロイが完了すると、 **[フェールオーバー グループ]** ページに戻ります。 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell を使用して、マネージド インスタンスのフェールオーバー グループを作成します。 
 
@@ -588,11 +588,11 @@ PowerShell を使用して、マネージド インスタンスのフェール�
 
 Azure portal または PowerShell を使用して、フェールオーバー グループのフェールオーバーをテストします。 
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal を使用して、フェールオーバー グループのフェールオーバーをテストします。 
 
-1. [Azure portal](https://portal.azure.com) 内のマネージド インスタンスに移動し、[設定] で **[インスタンスのフェールオーバー グループ]** を選択します。 
+1. [Azure portal](https://portal.azure.com) 内の_セカンダリ_ マネージド インスタンスに移動し、[設定] で **[インスタンスのフェールオーバー グループ]** を選択します。 
 1. どのマネージド インスタンスがプライマリであり、どのマネージド インスタンスがセカンダリであるかを確認します。 
 1. **[フェールオーバー]** を選択し、切断中の TDS セッションに関する警告で **[はい]** を選択します。 
 
@@ -602,9 +602,9 @@ Azure portal を使用して、フェールオーバー グループのフェー
 
    ![フェールオーバー後にマネージド インスタンスのロールが切り替わっている](media/sql-database-managed-instance-failover-group-tutorial/mi-switched-after-failover.png)
 
-1. もう一度 **[フェールオーバー]** を選択し、プライマリ インスタンスをプライマリ ロールにフェールバックします。 
+1. 新しい "_セカンダリ_" マネージド インスタンスに移動し、もう一度 **[フェールオーバー]** を選択して、プライマリ インスタンスをプライマリの役割にフェールバックします。 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell を使用してフェールオーバー グループのフェールオーバーをテストします。 
 

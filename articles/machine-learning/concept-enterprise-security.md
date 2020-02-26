@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: bc083a95ebf6c7ecfabfef87e606f99053ba58bb
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 7b6bd33346df9496c4c30353b68c11bdd7fad7a2
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312415"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486395"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning のエンタープライズ セキュリティ
 
@@ -112,6 +112,7 @@ Azure Machine Learning は、コンピューティング リソースに関し�
 > [!IMPORTANT]
 > ワークスペースに機密データが含まれている場合は、ワークスペースの作成時に [hbi_workspace フラグ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)を設定することをお勧めします。 これにより Microsoft が診断目的で収集するデータの量が制御され、Microsoft が管理する環境での追加の暗号化が可能になります。
 
+Azure での保存時の暗号化のしくみについて詳しくは、[保存時の Azure データの暗号化](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)を参照してください。
 
 #### <a name="azure-blob-storage"></a>Azure BLOB ストレージ
 
@@ -189,7 +190,9 @@ Azure Storage に格納されている各コンピューティング ノード�
 
 各仮想マシンにも、OS 操作用にローカルな一時ディスクがあります。 必要に応じて、ディスクを使用してトレーニング データをステージできます。 `hbi_workspace` パラメーターが `TRUE` に設定されているワークスペースでは、ディスクは既定で暗号化されます。 この環境は、実行中だけ有効期間が短く、暗号化のサポートはシステム管理キーのみに制限されています。
 
-Azure での保存時の暗号化のしくみについて詳しくは、[保存時の Azure データの暗号化](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)を参照してください。
+#### <a name="azure-databricks"></a>Azure Databricks
+
+Azure Databricks は Azure Machine Learning パイプラインで使用できます。 既定では、Azure Databricks によって使用される Databricks ファイル システム (DBFS) は、Microsoft が管理するキーを使用して暗号化されます。 顧客が管理するキーを使用するように Azure Databricks を構成するには、「[既定 (ルート) の DBFS で顧客が管理するキーを構成する](/azure/databricks/security/customer-managed-keys-dbfs)」を参照してください。
 
 ### <a name="encryption-in-transit"></a>転送中の暗号化
 
@@ -215,7 +218,7 @@ Azure HDInsight や VM などのコンピューティング先に対する SSH �
 
 Microsoft は、リソース名 (データセット名や機械学習の実験名など)、または診断目的でのジョブ環境変数など、ユーザー以外を識別する情報を収集する場合があります。 このようなデータはすべて、Microsoft が所有するサブスクリプションでホストされているストレージに Microsoft が管理するキーを使用して保存され、[Microsoft の標準のプライバシー ポリシーとデータ処理規格](https://privacy.microsoft.com/privacystatement)に従います。
 
-また、機密情報 (アカウント キー シークレットなど) を環境変数に保存しないこともお勧めしています。 環境変数は、Microsoft によってログに記録され、暗号化され、保存されます。
+また、機密情報 (アカウント キー シークレットなど) を環境変数に保存しないこともお勧めしています。 環境変数は、Microsoft によってログに記録され、暗号化され、保存されます。 同様に、[runid](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) に名前を付けるときは、ユーザー名や秘密のプロジェクト名などの機密情報を含めないようにしてください。 この情報は、Microsoft サポート エンジニアがアクセスできるテレメトリ ログに表示されることがあります。
 
 ワークスペースのプロビジョニング中に `hbi_workspace` パラメーターを `TRUE` に設定して、収集される診断データをオプトアウトすることができます。 この機能は、AzureML Python SDK、CLI、REST API、または Azure Resource Manager のテンプレートを使用する場合にサポートされます。
 

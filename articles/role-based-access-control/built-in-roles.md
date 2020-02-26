@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 01/17/2020
+ms.date: 02/13/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 04a3af7c85a361878e37cf3ee210e8a5c9f3cd30
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 9858f7ac25f2063e62dce0322f1859a0a7fcf83b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121979"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198668"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure リソースの組み込みロール
 
@@ -422,7 +422,8 @@ ms.locfileid: "77121979"
 > | **Id** | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | 従来のアラート ルールの作成と管理 |
+> | Microsoft.Insights/metricAlerts/* | 新しいアラート ルールの作成と管理 |
 > | Microsoft.Insights/components/* | Insights コンポーネントの作成と管理 |
 > | Microsoft.Insights/webtests/* | Web テストの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |

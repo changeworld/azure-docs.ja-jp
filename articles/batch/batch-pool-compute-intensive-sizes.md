@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: labrenne
-ms.openlocfilehash: 17cd9db1e86a66630d3b93c8295915933abb1ec2
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 22ee4aad6d2aabcc26dd97e50a2c716cb14be67a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023601"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483586"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Batch プールで RDMA または GPU インスタンスを使用する
 
@@ -44,7 +44,7 @@ Batch のコンピューティング集中型サイズの RDMA または GPU の
 
 | Size | 機能 | オペレーティング システム | 必要なソフトウェア | プールの設定 |
 | -------- | -------- | ----- |  -------- | ----- |
-| [H16r、H16mr、A8、A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r、NC24rs_v2、NC24rs_v3、ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16.04 LTS、または<br/>CentOS-based HPC<br/>(Azure Marketplace) | Intel MPI 5<br/><br/>Linux RDMA ドライバー | ノード間通信を有効にし、同時実行タスクの実行を無効にする |
+| [H16r、H16mr、A8、A9](../virtual-machines/linux/sizes-hpc.md)<br/>[NC24r、NC24rs_v2、NC24rs_v3、ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16.04 LTS、または<br/>CentOS-based HPC<br/>(Azure Marketplace) | Intel MPI 5<br/><br/>Linux RDMA ドライバー | ノード間通信を有効にし、同時実行タスクの実行を無効にする |
 | [NC、NCv2、NCv3、NDv2 シリーズ](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla GPU (シリーズによって異なります) | Ubuntu 16.04 LTS、または<br/>CentOS 7.3 または 7.4<br/>(Azure Marketplace) | NVIDIA CUDA または CUDA Toolkit ドライバー | 該当なし | 
 | [NV、NVv2 シリーズ](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS、または<br/>CentOS 7.3<br/>(Azure Marketplace) | NVIDIA GRID ドライバー | 該当なし |
 
@@ -54,7 +54,7 @@ Batch のコンピューティング集中型サイズの RDMA または GPU の
 
 | Size | 機能 | オペレーティング システム | 必要なソフトウェア | プールの設定 |
 | -------- | ------ | -------- | -------- | ----- |
-| [H16r、H16mr、A8、A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r、NC24rs_v2、NC24rs_v3、ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Windows Server 2016、2012 R2、または<br/>2012 (Azure Marketplace) | Microsoft MPI 2012 R2 以降または<br/> Intel MPI 5<br/><br/>Windows RDMA ドライバー | ノード間通信を有効にし、同時実行タスクの実行を無効にする |
+| [H16r、H16mr、A8、A9](../virtual-machines/sizes-hpc.md)<br/>[NC24r、NC24rs_v2、NC24rs_v3、ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Windows Server 2016、2012 R2、または<br/>2012 (Azure Marketplace) | Microsoft MPI 2012 R2 以降または<br/> Intel MPI 5<br/><br/>Windows RDMA ドライバー | ノード間通信を有効にし、同時実行タスクの実行を無効にする |
 | [NC、NCv2、NCv3、ND、NDv2 シリーズ](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU (シリーズによって異なります) | Windows Server 2016 または <br/>2012 R2 (Azure Marketplace) | NVIDIA CUDA または CUDA Toolkit ドライバー| 該当なし | 
 | [NV、NVv2 シリーズ](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 または<br/>2012 R2 (Azure Marketplace) | NVIDIA GRID ドライバー | 該当なし |
 
@@ -68,7 +68,7 @@ Batch のコンピューティング集中型サイズの RDMA または GPU の
 
 | Size | 機能 | オペレーティング システム | 必要なソフトウェア | プールの設定 |
 | -------- | ------- | -------- | -------- | ----- |
-| [H16r、H16mr、A8、A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2016、2012 R2、2012、または<br/>2008 R2 (ゲスト OS ファミリ) | Microsoft MPI 2012 R2 以降または<br/>Intel MPI 5<br/><br/>Windows RDMA ドライバー | ノード間通信を有効にし、<br/> 同時実行タスクの実行を無効にする |
+| [H16r、H16mr、A8、A9](../virtual-machines/sizes-hpc.md) | RDMA | Windows Server 2016、2012 R2、2012、または<br/>2008 R2 (ゲスト OS ファミリ) | Microsoft MPI 2012 R2 以降または<br/>Intel MPI 5<br/><br/>Windows RDMA ドライバー | ノード間通信を有効にし、<br/> 同時実行タスクの実行を無効にする |
 
 ## <a name="pool-configuration-options"></a>プール構成オプション
 
@@ -139,8 +139,7 @@ Linux NC ノードのプールで CUDA アプリケーションを実行する�
 Azure H16r VM ノードのプールで Windows MPI アプリケーションを実行するには、HpcVmDrivers 拡張機能を構成し、[Microsoft MPI](https://docs.microsoft.com/message-passing-interface/microsoft-mpi) をインストールする必要があります。 必要なドライバーとソフトウェアがインストールされたカスタムの Windows Server 2016 イメージをデプロイする手順の例を次に示します。
 
 1. Windows Server 2016 を実行する Azure H16r VM をデプロイします。 たとえば、米国西部リージョンに VM を作成します。 
-2. Azure サブスクリプションに接続するクライアント コンピューターから [Azure PowerShell コマンドを実行して](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances
-)、または Azure Cloud Shell を使用して、HpcVmDrivers 拡張機能を VM に追加します。 
+2. Azure サブスクリプションに接続するクライアント コンピューターから [Azure PowerShell コマンドを実行して](../virtual-machines/sizes-hpc.md)、または Azure Cloud Shell を使用して、HpcVmDrivers 拡張機能を VM に追加します。 
 1. VM へのリモート デスクトップ接続を作成します。
 1. 最新バージョンの Microsoft MPI の[セットアップ パッケージ](https://www.microsoft.com/download/details.aspx?id=57467) (MSMpiSetup.exe) をダウンロードし、Microsoft MPI をインストールします。
 1. 次の手順に従って、Batch 用の [Shared Image Gallery イメージ](batch-sig-images.md)を作成します。

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: 146dbdbf2f4e107e81515ce83188fa48c52aef36
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 355909052a711773545114179cd5d1ca01811cec
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714859"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485082"
 ---
 # <a name="application-gateway-configuration-overview"></a>アプリケーション ゲートウェイ構成の概要
 
@@ -210,7 +210,7 @@ v2 SKU の場合、完全一致が URL パス マップ内のパスの順序よ�
 
 基本規則でリダイレクトが構成されている場合、関連付けられているリスナーのすべての要求はターゲットにリダイレクトされます。 これは "*グローバル*" なリダイレクトです。 パスベースの規則に対してリダイレクトが構成されている場合は、特定のサイト領域内の要求のみがリダイレクトされます。 たとえば、 */cart/\** で示されるショッピング カート領域です。 これが*パスベース*のリダイレクトです。
 
-リダイレクトの詳細については、「[Application Gateway のリダイレクトの概要](https://docs.microsoft.com/azure/application-gateway/redirect-overview)」を参照してください。
+リダイレクトの詳細については、「[Application Gateway のリダイレクトの概要](redirect-overview.md)」を参照してください。
 
 #### <a name="redirection-type"></a>リダイレクトの種類
 
@@ -227,24 +227,24 @@ v2 SKU の場合、完全一致が URL パス マップ内のパスの順序よ�
 ![Application Gateway コンポーネントのダイアログ ボックス](./media/configuration-overview/configure-redirection.png)
 
 HTTP から HTTPS へのリダイレクトの詳細については、以下を参照してください。
-- [Azure portal を使用して HTTP から HTTPS にリダイレクトする](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal)
-- [PowerShell を使用して HTTP から HTTPS にリダイレクトする](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-powershell)
-- [Azure CLI を使用して HTTP から HTTPS にリダイレクトする](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-cli)
+- [Azure portal を使用して HTTP から HTTPS にリダイレクトする](redirect-http-to-https-portal.md)
+- [PowerShell を使用して HTTP から HTTPS にリダイレクトする](redirect-http-to-https-powershell.md)
+- [Azure CLI を使用して HTTP から HTTPS にリダイレクトする](redirect-http-to-https-cli.md)
 
 ##### <a name="external-site"></a>外部サイト
 
 この規則に関連付けられたリスナーに対するトラフィックを外部サイトにリダイレクトするときに、外部サイトを選択します。 元の要求のクエリ文字列を、リダイレクト ターゲットに転送される要求に含めることができます。 元の要求内のパスを外部サイトに転送することはできません。
 
 リダイレクトの詳細については、以下を参照してください。
-- [PowerShell を使用して外部サイトにトラフィックをリダイレクトする](https://docs.microsoft.com/azure/application-gateway/redirect-external-site-powershell)
-- [CLI を使用して外部サイトにトラフィックをリダイレクトする](https://docs.microsoft.com/azure/application-gateway/redirect-external-site-cli)
+- [PowerShell を使用して外部サイトにトラフィックをリダイレクトする](redirect-external-site-powershell.md)
+- [CLI を使用して外部サイトにトラフィックをリダイレクトする](redirect-external-site-cli.md)
 
 #### <a name="rewrite-the-http-header-setting"></a>HTTP ヘッダー設定を書き換える
 
 この設定で、要求パケットと応答パケットがクライアントとバックエンド プール間を移動する間に、HTTP 要求および応答ヘッダーが追加、削除、または更新されます。 詳細については、次を参照してください。
 
- - [HTTP ヘッダーの書き換えの概要](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
- - [HTTP ヘッダーの書き換えの構成](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
+ - [HTTP ヘッダーの書き換えの概要](rewrite-http-headers.md)
+ - [HTTP ヘッダーの書き換えの構成](rewrite-http-headers-portal.md)
 
 ## <a name="http-settings"></a>HTTP 設定
 
@@ -252,7 +252,18 @@ HTTP から HTTPS へのリダイレクトの詳細については、以下を�
 
 ### <a name="cookie-based-affinity"></a>Cookie ベースのアフィニティ
 
-この機能は、同じサーバー上にユーザー セッションを保持する場合に便利です。 ゲートウェイで管理される Cookie を使用すると、アプリケーション ゲートウェイは、ユーザー セッションの後続のトラフィックを処理のために同じサーバーに送信します。 この機能は、ユーザー セッションのためにセッションの状態をサーバー上でローカルに保存する場合に重要です。 アプリケーションが Cookie ベースのアフィニティを処理できない場合は、この機能を使用できません。 使用するには、クライアントが Cookie をサポートしている必要があります。
+Azure Application Gateway では、ユーザー セッションを維持するために、ゲートウェイで管理される Cookie を使用します。 ユーザーが最初の要求を Application Gateway に送信すると、セッションの詳細を含むハッシュ値を使用して、応答にアフィニティ Cookie が設定されます。これにより、このアフィニティ Cookie を伝送する後続の要求は、持続性を維持するために同じバックエンド サーバーにルーティングされるようになります。 
+
+この機能は、ユーザー セッションを同じサーバー上に維持する必要があり、ユーザー セッションのセッション状態がサーバー上にローカル保存される場合に便利です。 アプリケーションが Cookie ベースのアフィニティを処理できない場合は、この機能を使用できません。 使用するには、クライアントが Cookie をサポートしている必要があります。
+
+**2020 年 2 月 17 日**以降、[Chromium](https://www.chromium.org/Home) [v80 の更新](https://chromiumdash.appspot.com/schedule) では、SameSite 属性のない HTTP Cookie を SameSite=Lax として扱うことが必須になっています。 CORS (クロス オリジン リソース共有) 要求のケースで、Cookie をサードパーティのコンテキストで送信する必要がある場合は、"SameSite=None; Secure" 属性を使用する必要があり、HTTPS 経由でのみ送信する必要があります。 それ以外の場合、HTTP のみのシナリオでは、ブラウザーはサードパーティのコンテキストで Cookie を送信しません。 Chrome のこの更新の目的は、セキュリティを強化し、クロスサイト リクエスト フォージェリ (CSRF) 攻撃を回避することです。 
+
+この変更をサポートするために、Application Gateway (すべての SKU の種類) は、既存の **ApplicationGatewayAffinity** Cookie に加えて、**ApplicationGatewayAffinityCORS** という名前の類似の別の Cookie を挿入します。この Cookie は似ていますが、 **"SameSite=None; Secure"** という 2 つの別の属性が追加されているため、クロス オリジン要求の場合でもスティッキー セッションを維持することができます。
+
+既定のアフィニティ Cookie 名は **ApplicationGatewayAffinity** であり、ユーザーがこれを変更できることに注意してください。 カスタムのアフィニティ Cookie 名を使用している場合は、**CustomCookieNameCORS** などのように、CORS をサフィックスとして別の Cookie が追加されます。
+
+> [!NOTE]
+> 属性 **SameSite=None** が設定されている場合は、Cookie に **Secure** フラグも含まれていること、および Cookie を **HTTPS** 経由で送信することが必須です。 そのため、CORS 経由のセッション アフィニティが必要な場合は、ワークロードを HTTPS に移行する必要があります。 Application Gateway での SSL オフロードとエンドツーエンド SSL のドキュメントについては、[概要](ssl-overview.md)、[SSL オフロードの構成方法](create-ssl-portal.md)、[エンドツーエンド SSLの構成方法](end-to-end-ssl-portal.md)に関するページを参照してください。
 
 ### <a name="connection-draining"></a>接続のドレイン
 
@@ -262,7 +273,7 @@ HTTP から HTTPS へのリダイレクトの詳細については、以下を�
 
 Application Gateway では、要求のバックエンド サーバーへのルーティングに対して HTTP と HTTPS の両方がサポートされます。 HTTP を選択した場合、バックエンド サーバーへのトラフィックは暗号化されません。 暗号化されていない通信を許容できない場合は、HTTPS を選択してください。
 
-リスナーで HTTPS と組み合わせたこの設定は、[エンド ツー エンド SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview) をサポートします。 これによって、機密データを暗号化して安全にバックエンドに送信することができます。 エンド ツー エンド SSL が有効になったバックエンド プール内の各バックエンド サーバーは、セキュリティで保護された通信を許可するように証明書で構成する必要があります。
+リスナーで HTTPS と組み合わせたこの設定は、[エンド ツー エンド SSL](ssl-overview.md) をサポートします。 これによって、機密データを暗号化して安全にバックエンドに送信することができます。 エンド ツー エンド SSL が有効になったバックエンド プール内の各バックエンド サーバーは、セキュリティで保護された通信を許可するように証明書で構成する必要があります。
 
 ### <a name="port"></a>Port
 
@@ -301,7 +312,7 @@ Application Gateway では、要求のバックエンド サーバーへのル�
 
 ### <a name="use-custom-probe"></a>[カスタム プローブの使用]
 
-この設定で、[カスタム プローブ](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe)が HTTP 設定と関連付けられます。 カスタム プローブを 1 つだけ HTTP 設定と関連付けることができます。 カスタム プローブを明示的に関連付けないと、バックエンドの正常性を監視するために[既定のプローブ](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe-settings)が使用されます。 バック エンドの正常性監視をきめ細かく制御するには、カスタム プローブを作成することをお勧めします。
+この設定で、[カスタム プローブ](application-gateway-probe-overview.md#custom-health-probe)が HTTP 設定と関連付けられます。 カスタム プローブを 1 つだけ HTTP 設定と関連付けることができます。 カスタム プローブを明示的に関連付けないと、バックエンドの正常性を監視するために[既定のプローブ](application-gateway-probe-overview.md#default-health-probe-settings)が使用されます。 バック エンドの正常性監視をきめ細かく制御するには、カスタム プローブを作成することをお勧めします。
 
 > [!NOTE]
 > 対応する HTTP 設定が明示的にリスナーに関連付けられていない限り、カスタム プローブはバックエンド プールの正常性を監視しません。
@@ -335,7 +346,7 @@ Application Gateway では、要求のバックエンド サーバーへのル�
 
 ## <a name="health-probes"></a>正常性プローブ
 
-アプリケーション ゲートウェイは、既定でバック エンドのすべてのリソースの正常性を監視します。 ただし、正常性の監視をきめ細かく制御するには、バックエンドの HTTP 設定ごとにカスタム プローブを作成することを強くお勧めします。 カスタム プローブを構成する方法については、「[カスタムの正常性プローブの設定](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe-settings)」を参照してください。
+アプリケーション ゲートウェイは、既定でバック エンドのすべてのリソースの正常性を監視します。 ただし、正常性の監視をきめ細かく制御するには、バックエンドの HTTP 設定ごとにカスタム プローブを作成することを強くお勧めします。 カスタム プローブを構成する方法については、「[カスタムの正常性プローブの設定](application-gateway-probe-overview.md#custom-health-probe-settings)」を参照してください。
 
 > [!NOTE]
 > カスタムの正常性プローブを作成したら、バックエンド HTTP 設定に関連付ける必要があります。 対応する HTTP 設定が、規則を使用してリスナーに明示的に関連付けられていない限り、カスタム プローブはバックエンド プールの正常性を監視しません。

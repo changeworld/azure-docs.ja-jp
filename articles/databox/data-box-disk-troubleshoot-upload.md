@@ -1,5 +1,6 @@
 ---
-title: Azure Data Box Disk でのデータのアップロードに関する問題のログを使用したトラブルシューティング | Microsoft Docs
+title: ログを使用したデータのアップロードに関するトラブルシューティング
+titleSuffix: Azure Data Box Disk
 description: ログの使用方法、および Azure Data Box Disk にデータをアップロードするときに見られる問題のトラブルシューティングを行う方法について説明します。
 services: databox
 author: alkohli
@@ -8,12 +9,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: alkohli
-ms.openlocfilehash: deaa9a220ee4d765650779b40742225e300ffdb7
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 7c14988706ef193ef5da868c55f6c4f55e7d98f9
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807520"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471977"
 ---
 # <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>Azure Data Box Disk でデータのアップロードに関する問題をトラブルシューティングするためのログを理解する
 
@@ -180,6 +181,6 @@ ms.locfileid: "67807520"
 |`DiskRenamed` |これらのファイルは Azure の名前付け規則に準拠していなかったため、名前が変更されました。 `BlobPath` フィールドで新しい名前を確認してください。 |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Data Box Disk の問題に関するサポート チケットを開きます](data-box-disk-contact-microsoft-support.md)。

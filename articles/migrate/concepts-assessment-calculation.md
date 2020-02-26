@@ -2,17 +2,17 @@
 title: Azure Migrate での評価
 description: Azure Migrate での評価について説明します。
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: 5fc61d9987c9e728a5d83cb3ab3f91b8e8f5f740
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/17/2020
+ms.openlocfilehash: 0cf933dd1c8c61edfcea20ea954c5813f3848b28
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76833330"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425699"
 ---
 # <a name="about-assessments-in-azure-migrate"></a>Azure Migrate での評価について
 
-この記事では [Azure Migrate: Server Assessment で評価を計算する方法について説明します。Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) でクリックします。 オンプレミス マシンのグループに対して評価を実行し、Azure Migrate への移行の準備ができているかどうかを確認します。
+この記事では [Azure Migrate: Server Assessment で評価を計算する方法について説明します。Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) を使用した評価と依存関係の視覚化に関する問題のトラブルシューティングに役立ちます。 オンプレミス マシンのグループに対して評価を実行し、Azure Migrate への移行の準備ができているかどうかを確認します。
 
 ## <a name="how-do-i-run-an-assessment"></a>評価を実行する方法
 評価を実行するには、Azure Migrate:Server Assessment、または別の Azure ツールやサードパーティー製ツールを使用できます。 Azure Migrate プロジェクトを作成したら、必要なツールを追加します。 [詳細情報](how-to-add-tool-first-time.md)
@@ -149,7 +149,7 @@ Windows Client 7、8、10 | Azure は、[Visual Studio サブスクリプショ�
 Windows 10 Pro デスクトップ | Azure は、[マルチ テナント ホスティング権限](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)にサポートを提供します。 | Azure に条件付きで対応
 Windows Vista、XP Professional | これらのオペレーティング システムは、サポート終了日を過ぎています。 マシンは Azure で起動する場合がありますが、OS は Azure ではサポートされていません。 | Azure に条件付きで対応。 Azure に移行する前に OS をアップグレードすることをお勧めします。
 Linux | Azure はこれらの [Linux オペレーティング システム](../virtual-machines/linux/endorsed-distros.md)をサポートしています。 他の Linux オペレーティング システムも Azure で起動する可能性はありますが、Azure に移行する前に、サポート対象バージョンへの OS のアップグレードをお勧めします。 | Azure に対応 (バージョンがサポートされている場合)。<br/><br/>条件付きで対応 (バージョンがサポートされていない場合)。
-他のオペレーティング システム<br/><br/> 例: Oracle Solaris、Apple Mac OS、FreeBSD など | Azure では、これらのオペレーティング システムはサポートされません。 マシンは Azure で起動する場合がありますが、OS は Azure ではサポートされていません。 | Azure に条件付きで対応。 Azure に移行する前に、サポートする OS をインストールすることをお勧めします。  
+他のオペレーティング システム<br/><br/> 例: Oracle Solaris、Apple macOS、FreeBSD など | Azure では、これらのオペレーティング システムはサポートされません。 マシンは Azure で起動する場合がありますが、OS は Azure ではサポートされていません。 | Azure に条件付きで対応。 Azure に移行する前に、サポートする OS をインストールすることをお勧めします。  
 vCenter Server で **[Other]\(その他\)** と指定された OS | この場合、Azure Migrate は OS を識別できません。 | 対応不明。 VM で実行している OS が Azure でサポートされることを確認します。
 32 ビット オペレーティング システム | マシンは Azure で起動できますが、Azure がフル サポートを提供しない可能性があります。 | Azure に条件付きで対応。 Azure に移行する前に、マシンの OS を 32 ビット OS から 64 ビット OS にアップグレードすることをご検討ください。
 

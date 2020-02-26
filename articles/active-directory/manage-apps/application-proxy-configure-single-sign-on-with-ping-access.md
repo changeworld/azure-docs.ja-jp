@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec115e0fa76e695809ba140202d5f13a319d33dd
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: f3fb94629262519f8cfa5da72ee343726aa7d1c1
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062709"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367983"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>アプリケーション プロキシと PingAccess を使用したシングル サインオン用のヘッダーベースの認証
 
@@ -57,7 +57,7 @@ PingAccess for Azure AD を使用すると、認証にヘッダーを使用す�
 
    ![アプリケーション プロキシ コネクタのダウンロード](./media/application-proxy-configure-single-sign-on-with-ping-access/application-proxy-connector-download.png)
 
-1. 画面の指示に従ってインストールしてください。
+1. インストール手順に従います。
 
 通常、コネクタをダウンロードすれば、ディレクトリに対してアプリケーション プロキシが自動的に有効になります。有効にならなかった場合は、 **[アプリケーション プロキシの有効化]** を選択してください。
 
@@ -161,21 +161,7 @@ PingAccess でアプリケーションを設定するには、次の 3 つの情
 1. **[追加]** を選択します。 クライアント シークレットのテーブルに PingAccess キーが、**VALUE** フィールドに自動入力されるランダム文字列で表示されます。
 1. PingAccess キーの **VALUE** フィールドの横で **[クリップボードにコピー]** アイコンを選択し、それをコピーして保存します。 この値は、後から PingAccess のクライアント シークレットとして指定します。
 
-### <a name="update-graphapi-to-send-custom-fields-optional"></a>GraphAPI を更新してカスタム フィールドを送信する (省略可能)
-
-PingAccess で消費される access_token 内のその他のトークンを送信するカスタム要求が必要な場合、`acceptMappedClaims` アプリケーション フィールドを `True` に設定します。 Graph エクスプローラーまたは Azure AD ポータルのアプリケーション マニフェストを使用して、この変更を行うことができます。
-
-**次の例では、Graph Explorer を使用しています。**
-
-```
-PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_your_application>
-
-{
-  "acceptMappedClaims":true
-}
-```
-
-**次の例では、[Azure Active Directory ポータル](https://aad.portal.azure.com/)を使用して `acceptMappedClaims` フィールドを更新します。**
+**`acceptMappedClaims` フィールドを更新する:**
 
 1. アプリケーション管理者として [Azure Active Directory ポータル](https://aad.portal.azure.com/)にサインインします。
 1. **[Azure Active Directory]**  >  **[アプリの登録]** の順に選択します。 アプリケーションの一覧を表示します。
@@ -213,7 +199,7 @@ AzureAD に存在しない属性に対する[要求のマッピング ポリシ�
 > [!NOTE]
 > カスタム要求を使用するには、カスタム ポリシーも定義し、アプリケーションに割り当てる必要があります。 このポリシーには、すべての必要なカスタム属性を含めます。
 >
-> PowerShell、Azure AD Graph Explorer、または Microsoft Graph から、ポリシーの定義と割り当てを行えます。 PowerShell でこの処理を実行するには、必要に応じてまず `New-AzureADPolicy` を使用してから、`Add-AzureADServicePrincipalPolicy` でアプリケーションに割り当てます。 詳細については、「[要求のマッピング ポリシーの割り当て](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment)」を参照してください。
+> PowerShell または Microsoft Graph から、ポリシーの定義と割り当てを行うことができます。 PowerShell でこの処理を実行するには、必要に応じてまず `New-AzureADPolicy` を使用してから、`Add-AzureADServicePrincipalPolicy` でアプリケーションに割り当てます。 詳細については、「[要求のマッピング ポリシーの割り当て](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment)」を参照してください。
 
 例:
 ```powershell
@@ -240,7 +226,7 @@ PingAccess でカスタム要求を使用できるようにすることは省略
 
 以上の手順がすべて完了すれば、アプリケーションは正常に動作します。 正しく動作するか確認するために、ブラウザーを起動し、Azure にアプリケーションを発行したときに作成した外部 URL にアクセスしてみてください。 サインインには、アプリケーションに割り当てたテスト アカウントを使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Microsoft Azure AD アプリケーション プロキシを使用した発行されたアプリケーションを保護するための PingAccess for Azure AD の構成](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=agents/azure/pa_c_PAAzureSolutionOverview.html)
 - [Azure Active Directory でのアプリケーションへのシングル サインオン](what-is-single-sign-on.md)

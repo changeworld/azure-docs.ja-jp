@@ -9,41 +9,48 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3c3c9950aab9a5a422ebc9e858daded2888fd82e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: dcd0371d275c3a46fe9bf07c96516a2d0820abb7
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834271"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430535"
 ---
 # <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>Azure Automation Desired State Configuration (DSC) の問題をトラブルシューティングする
 
 この記事では、Desired State Configuration (DSC) の問題のトラブルシューティングに関する情報を説明します。
 
-## <a name="steps-to-troubleshoot-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) をトラブルシューティングする手順
+## <a name="diagnosing-an-issue"></a>問題の診断
 
-Azure State Configuration で構成をコンパイルまたはデプロイするときにエラーが発生した場合は、以下の手順が問題を診断するのに役立ちます。
+Azure State Configuration 上で構成をコンパイルまたはデプロイするときにエラーが発生した場合に、問題を診断するには、以下の手順が役立ちます。
 
-1. **ローカル コンピューターで構成が正常にコンパイルされていることを確認する:** Azure State Configuration は、PowerShell DSC 上に構築されます。 DSC の言語と構文については、[PowerShell DSC のドキュメント](https://docs.microsoft.com/powershell/scripting/overview)を参照してください。
+### <a name="1-ensure-that-your-configuration-compiles-successfully-on-the-local-machine"></a>1.ローカル コンピューター上で構成が正常にコンパイルされていることを確認する
 
-   お使いのローカル コンピューターでお使いの DSC の構成をコンパイルすると、次のような一般的なエラーを検出して解決できます。
+Azure State Configuration は、PowerShell DSC 上に構築されます。 DSC の言語と構文については、[PowerShell DSC のドキュメント](https://docs.microsoft.com/powershell/scripting/overview)を参照してください。
 
-   - **モジュールの不足**
-   - **構文エラー**
-   - **論理エラー**
+お使いのローカル コンピューター上で DSC の構成をコンパイルすると、次のような一般的なエラーを検出して解決できます。
 
-2. **ノードで DSC のログを表示する:** 構成のコンパイルは正常に行われても、ノードに適用されるときに失敗する場合は、ログで詳細情報を確認できます。 DSC ログを探す場所については、「[DSC イベント ログの場所](/powershell/scripting/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs)」を参照してください。
+   - モジュールの不足
+   - 構文エラー
+   - 論理エラー
 
-   また、[xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) は、DSC ログから詳細な情報を解析するのに役立ちます。 サポートに問い合わせる場合、ご自分の問題の診断にこれらのログが求められます。
+### <a name="2-view-dsc-logs-on-your-node"></a>2.ノード上で DSC ログを表示する
 
-   ご利用のローカル コンピューターに **xDscDiagnostics** をインストールする手順については、[安定バージョンのモジュールのインストール](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module)に関するページをご覧ください。
+構成のコンパイルは正常に行われても、ノードに適用されるときに失敗する場合は、DSC ログで詳細情報を確認できます。 これらのログを探す場所については、「[DSC イベント ログの場所](/powershell/scripting/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs)」を参照してください。
 
-   ご利用の Azure マシンに **xDscDiagnostics** をインストールするには、[az vm run-command](/cli/azure/vm/run-command) または [Invoke-AzVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) を使用できます。 また、「[実行コマンドを使用して Windows VM で PowerShell スクリプトを実行する](../../virtual-machines/windows/run-command.md)」の手順に従って、ポータルから **[実行コマンド]** オプションを使うこともできます。
+[xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) モジュールは、DSC ログからの詳細情報を解析するのに役立つ可能性があります。 サポートに問い合わせる場合、ご自分の問題を診断するために、これらのログが必要になります。
 
-   **xDscDiagnostics** の使い方については、「[xDscDiagnostics を使用した DSC ログの分析](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs)」と [xDscDiagnostics のコマンドレット](https://github.com/PowerShell/xDscDiagnostics#cmdlets)に関するページをご覧ください。
-3. **ノードと Automation ワークスペースに必要なモジュールがあることを確認する:** Desired State Configuration は、ノードにインストールされているモジュールに依存します。  Azure Automation State Configuration を使うときは、「[モジュールをインポートする](../shared-resources/modules.md#import-modules)」の手順に従って、必要なモジュールを Automation アカウントにインポートします。 構成が特定のバージョンのモジュールに依存することもあります。  詳細については、[モジュールのトラブルシューティング](shared-resources.md#modules)に関するページを参照してください。
+[安定バージョンのモジュールのインストール](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module)に関するページに示された手順を使用して、ローカル コンピューター上に xDscDiagnostics モジュールをインストールできます。
 
-## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) の使用時に発生する一般的なエラー
+Azure のコンピューター上に xDscDiagnostics モジュールをインストールするには、[Invoke-AzVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) を使用します。 また、「[実行コマンドを使用して Windows VM で PowerShell スクリプトを実行する](../../virtual-machines/windows/run-command.md)」の手順に従って、ポータルから **[実行コマンド]** オプションを使うこともできます。
+
+xDscDiagnostics の使用方法については、「[xDscDiagnostics を使用した DSC ログの分析](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs)」を参照してください。 また、[xDscDiagnostics コマンドレット](https://github.com/PowerShell/xDscDiagnostics#cmdlets)に関するページも参照してください。
+
+### <a name="3-ensure-that-nodes-and-the-automation-workspace-have-required-modules"></a>3.ノードと Automation ワークスペースに必要なモジュールがあることを確認する
+
+DSC は、ノード上にインストールされているモジュールに依存します。 Azure Automation State Configuration を使うときは、「[モジュールをインポートする](../shared-resources/modules.md#import-modules)」に示された手順に従って、必要なモジュールを Automation アカウントにインポートします。 構成が特定のバージョンのモジュールに依存することもあります。 詳細については、[モジュールのトラブルシューティング](shared-resources.md#modules)に関するページを参照してください。
+
+## <a name="common-errors-when-working-with-dsc"></a>DSC の使用時に発生する一般的なエラー
 
 ### <a name="unsupported-characters"></a>シナリオ:特殊文字を含む構成を、ポータルから削除できません。
 
@@ -97,7 +104,7 @@ ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-
 State Configuration (DSC) によってノードを登録すると、次のいずれかのエラー メッセージが表示される
 
 ```error
-The attempt to send status report to the server https://{your automation account url}/accounts/xxxxxxxxxxxxxxxxxxxxxx/Nodes(AgentId='xxxxxxxxxxxxxxxxxxxxxxxxx')/SendReport returned unexpected response code Unauthorized.
+The attempt to send status report to the server https://{your Automation account URL}/accounts/xxxxxxxxxxxxxxxxxxxxxx/Nodes(AgentId='xxxxxxxxxxxxxxxxxxxxxxxxx')/SendReport returned unexpected response code Unauthorized.
 ```
 
 ```error
@@ -114,7 +121,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 第一に、以下の手順を使用してノードを登録解除します。
 
-1. Azure portal から、 **[ホーム]** 下  ->  **[Automation アカウント]** -> {ご自身の Automation アカウント} -> **[State configuration (DSC)]\(State configuration (DSC)\)** の順に移動します
+1. Azure portal から、 **[ホーム]** 下  ->  **[Automation アカウント]** -> {ご自身の Automation アカウント} -> **[状態の構成 (DSC)]** の順に移動します
 2. [ノード] をクリックし、問題が発生しているノードをクリックします。
 3. ノードの登録を解除するために、[登録解除] をクリックします。
 
@@ -146,7 +153,7 @@ If (($certs.Count) -gt 0)
 
 最後に、以下の手順を使用して、失敗したノードを再登録します。
 
-1. Azure portal から、 **[ホーム]** 下  ->  **[Automation アカウント]** -> {ご自身の Automation アカウント} -> **[State configuration (DSC)]\(State configuration (DSC)\)** の順に移動します
+1. Azure portal から、 **[ホーム]** 下  ->  **[Automation アカウント]** -> {ご自身の Automation アカウント} -> **[状態の構成 (DSC)]** の順に移動します
 2. [ノード] をクリックします。
 3. [追加] ボタンをクリックします。
 4. 失敗したノードを選択します。
@@ -229,7 +236,7 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 #### <a name="resolution"></a>解決策
 
-* 上記の構成の各ノード構成について **PSDscAllowPlainTextPassword** を true に設定するために、適切な **ConfigurationData** を渡してください。 詳細については、[Azure Automation DSC の資産](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation)に関するページをご覧ください。
+* 上記の構成の各ノード構成について **PSDscAllowPlainTextPassword** を true に設定するために、適切な **ConfigurationData** を渡してください。 詳細については、「[Azure Automation State Configuration での DSC 構成のコンパイル](../automation-dsc-compile.md)」を参照してください。
 
 ### <a name="failure-processing-extension"></a>シナリオ:DSC 拡張機能からのオンボード、"エラーの処理拡張機能" のエラー
 

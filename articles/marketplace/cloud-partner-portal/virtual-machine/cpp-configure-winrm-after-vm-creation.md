@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: pabutler
-ms.openlocfilehash: ae5a55c6d640852cbd873bc6b36e502b5fe17165
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7d050b32b212f66623a24bcf87d40111fc5973a5
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817947"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77481376"
 ---
 # <a name="configure-winrm-after-virtual-machine-creation"></a>仮想マシンの作成後に WinRM を構成する
 
@@ -25,7 +25,7 @@ ms.locfileid: "73817947"
 
 ## <a name="enabling-port-traffic"></a>ポートのトラフィックを有効にする
 
-HTTPS プロトコル経由の WinRM では、ポート 5896 が使用されます。このポートは、Azure Marketplace で提供される事前構成済みの Windows VM では、既定では有効になっていません。 このプロトコルを有効にするには、[Azure portal](https://portal.azure.com) で次の手順を使用してネットワーク セキュリティ グループ (NSG) に新しい規則を追加します。  NSG について詳しくは、「[セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview)」をご覧ください。
+HTTPS プロトコル経由の WinRM では、ポート 5986 が使用されます。このポートは、Azure Marketplace で提供される事前構成済みの Windows VM では、既定では有効になっていません。 このプロトコルを有効にするには、[Azure portal](https://portal.azure.com) で次の手順を使用してネットワーク セキュリティ グループ (NSG) に新しい規則を追加します。  NSG について詳しくは、「[セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview)」をご覧ください。
 
 1.  **[Virtual Machines] >**   <*VM 名*>   **> [Settings/Networking]\(設定/ネットワーク\)** ブレードに移動します。
 2.  NSG の名前 (この例では **testvm11002**) をクリックして、そのプロパティを表示します。
@@ -60,6 +60,6 @@ Windows VM で Windows リモート管理機能を有効にして構成するに
     このスクリプトを使用するには、他の 2 つのファイルが同じフォルダーに存在する必要があります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 WinRM の構成が済むと、[その構成要素である VHD から VM をデプロイする](./cpp-deploy-vm-vhd.md)準備が整いました。

@@ -1,17 +1,17 @@
 ---
-title: Azure で StorSimple 8000 デバイス マネージャー サービスの新しい認証を使用する
+title: デバイス マネージャーでの StorSimple 8000 の Azure AD 認証
 description: サービスに対して AAD ベースの認証を使用して、新しい登録キーを生成し、デバイスの手動登録を実行する方法について説明します。
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 798b3bf054d5ade2a441bbef5875bb014f526aee
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: b16132c24d35ee2c9902fa2b21c44416d8376b4d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276955"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470906"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>StorSimple の新しい認証を使用する
 

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.openlocfilehash: 75811382867b93c778641ece42971018eff39949
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: hdinsightactive
+ms.date: 02/18/2020
+ms.openlocfilehash: c5c8a41aef92876ceaa66fb23c01c6ece1609f91
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664616"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484810"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight 上の Apache Spark クラスターで Apache Zeppelin Notebook を使用する
 
@@ -21,9 +21,8 @@ HDInsight Spark クラスターには、[Apache Spark](https://spark.apache.org/
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 * HDInsight での Apache Spark クラスター。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。
-* クラスターのプライマリ ストレージの URI スキーム。 Azure Blob Storage では `wasb://`、Azure Data Lake Storage Gen2 では `abfs://`、Azure Data Lake Storage Gen1 では `adl://` です。 Blob Storage で安全な転送が有効になっている場合、URI は `wasbs://` になります。  詳細については、「[Azure Storage で安全な転送が必要](../../storage/common/storage-require-secure-transfer.md)」も参照してください。
+* クラスターのプライマリ ストレージの URI スキーム。 Azure Blob Storage では `wasb://`、Azure Data Lake Storage Gen2 では `abfs://`、Azure Data Lake Storage Gen1 では `adl://` です。 Blob Storage で安全な転送が有効になっている場合、URI は `wasbs://` になります。  詳細については、「[Azure Storage で安全な転送が必要](../../storage/common/storage-require-secure-transfer.md)」を参照してください。
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>Apache Zeppelin Notebook を起動する
 
@@ -168,9 +167,44 @@ Zeppelin Notebook は、クラスターのヘッドノードに保存されま�
 
 3. 既存の Zeppelin Notebook からコードのセルを実行します。 これにより、HDInsight クラスター内に新しい Livy セッションが作成されます。
 
-## <a name="seealso"></a>関連項目
+## <a name="general-information"></a>一般情報
 
-* [概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)
+### <a name="validate-service"></a>サービスの検証
+
+Ambari からサービスを検証するには、`https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary` に移動します。ここで、CLUSTERNAME はクラスターの名前です。
+
+コマンド ラインからサービスを検証するには、ヘッド ノードに SSH 接続します。 コマンド `sudo su zeppelin` を使用して、ユーザーを zeppelin に切り替えます。 状態コマンド:
+
+|command |説明 |
+|---|---|
+|`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh status`|サービスの状態。|
+|`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh --version`|サービスのバージョン。|
+|`ps -aux | grep zeppelin`|PID を識別します。|
+
+### <a name="log-locations"></a>ログの場所
+
+|サービス |Path |
+|---|---|
+|zeppelin-server|/usr/hdp/current/zeppelin-server/|
+|サーバー ログ|/var/log/zeppelin|
+|構成インタープリター、Shiro、site.xml、log4j|/usr/hdp/current/zeppelin-server/conf または /etc/zeppelin/conf|
+|PID ディレクトリ|/var/run/zeppelin|
+
+### <a name="enable-debug-logging"></a>デバッグ ログの有効化
+
+1. `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary` に移動します。ここで、CLUSTERNAME はクラスターの名前です。
+
+1. **[CONFIGS]\(構成\)**  >  **[Advanced zeppelin-log4j-properties]\(詳細 zeppelin-log4j-properties\)**  >  **[log4j_properties_content]** に移動します。
+
+1. `log4j.appender.dailyfile.Threshold = INFO` を `log4j.appender.dailyfile.Threshold = DEBUG` に変更します。
+
+1. `log4j.logger.org.apache.zeppelin.realm=DEBUG`を追加します。
+
+1. 変更を保存し、サービスを再起動します。
+
+## <a name="next-steps"></a>次のステップ
+
+[概要:Azure HDInsight での Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>シナリオ
 

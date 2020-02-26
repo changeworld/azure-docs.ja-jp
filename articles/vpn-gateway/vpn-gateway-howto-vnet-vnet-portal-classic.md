@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/09/2020
+ms.date: 02/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: ddcc7fcc14c7958e8c0d012c2395ad2b6c422f4f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 63c6329ad62289cd127902c1438073b28fc8683e
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157909"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201851"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>VNet 間の接続の構成 (クラシック)
 
@@ -61,9 +61,9 @@ VPN Gateway を使用したクラシック デプロイ モデルでの仮想ネ
 
 VNet 間接続の詳細については、この記事の最後にある「[VNet 間の考慮事項](#faq)」を参照してください。
 
-### <a name="before-you-begin"></a>開始する前に
+### <a name="powershell"></a>Azure PowerShell を使用する
 
-この演習を開始する前に、Azure サービス管理 (SM) PowerShell コマンドレットの最新バージョンをダウンロードしてインストールします。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。 ほとんどの手順でポータルを使用しますが、VNet 間の接続を確立する場合は、PowerShell を使う必要があります。 Azure Portal を使用して接続を確立することはできません。
+ほとんどの手順でポータルを使用しますが、VNet 間の接続を確立する場合は、PowerShell を使う必要があります。 Azure Portal を使用して接続を確立することはできません。 [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ## <a name="plan"></a>手順 1 - IP アドレス範囲を決める
 
@@ -75,7 +75,7 @@ VNet の定義の例を下表に示します。 範囲はあくまでも参考�
 
 | Virtual Network | アドレス空間 | リージョン | ローカル ネットワーク サイトへの接続 |
 |:--- |:--- |:--- |:--- |
-| TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |East US |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
+| TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |米国東部 |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |米国西部 |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
 
 ## <a name="vnetvalues"></a>手順 2 - 仮想ネットワークを作成する
@@ -98,7 +98,7 @@ VNet の定義の例を下表に示します。 範囲はあくまでも参考�
 サブネット名: 既定<br>
 サブネットのアドレス範囲: 10.11.0.1/24<br>
 リソース グループ: ClassicRG<br>
-場所:East US<br>
+場所:米国東部<br>
 GatewaySubnet: 10.11.1.0/27
 
 **TestVNet4 の値**
@@ -137,7 +137,7 @@ Azure では、各ローカル ネットワーク サイトで指定されてい
 
 | Virtual Network | アドレス空間 | リージョン | ローカル ネットワーク サイトへの接続 |
 |:--- |:--- |:--- |:--- |
-| TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |East US |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
+| TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |米国東部 |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |米国西部 |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
 
 1. Azure Portal で TestVNet1 を見つけます。 ページの **[VPN 接続]** セクションで、 **[ゲートウェイ]** をクリックします。
@@ -209,37 +209,34 @@ Azure Portal でクラシック VNets を作成するときに表示される名
 
 次の手順では、Azure アカウントに接続し、ネットワーク構成ファイルをダウンロードして表示し、接続に必要な値を取得します。
 
-1. Azure サービス管理 (SM) PowerShell コマンドレットの最新バージョンをダウンロードしてインストールします。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
+1. Azure サービス管理 (SM) PowerShell コマンドレットの最新バージョンをダウンロードしてインストールします。 詳細については、「[Azure PowerShell を使用する](#powershell)」をご覧ください。
 
-2. 管理者特権で PowerShell コンソールを開き、アカウントに接続します。 接続については、次の例を参考にしてください。
-
-   ```powershell
-   Connect-AzAccount
-   ```
-
-   アカウントのサブスクリプションを確認します。
+2. 管理者特権で PowerShell コンソールを開きます。 接続するには、次の例を参照してください。 これらのコマンドは、PowerShell サービス管理モジュールを使用してローカルで実行する必要があります。 サービス管理に切り替えるには、このコマンドを使用します。
 
    ```powershell
-   Get-AzSubscription
+   azure config mode asm
    ```
-
-   複数のサブスクリプションがある場合は、使用するサブスクリプションを選択します。
-
-   ```powershell
-   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
-   ```
-
-   次に、次のコマンドレットを使用して、Azure サブスクリプションをクラシック デプロイ モデルの PowerShell に追加します。
+3. アカウントに接続します。 接続については、次の例を参考にしてください。
 
    ```powershell
    Add-AzureAccount
    ```
-3. ネットワーク構成ファイルをエクスポートして、表示します。 コンピューターにディレクトリを作成し、ネットワーク構成ファイルをそのディレクトリにエクスポートします。 この例では、ネットワーク構成ファイルは **C:\AzureNet** にエクスポートされます。
+4. アカウントのサブスクリプションを確認します。
+
+   ```powershell
+   Get-AzureSubscription
+   ```
+5. 複数のサブスクリプションがある場合は、使用するサブスクリプションを選択します。
+
+   ```powershell
+   Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"
+   ```
+6. ネットワーク構成ファイルをエクスポートして、表示します。 コンピューターにディレクトリを作成し、ネットワーク構成ファイルをそのディレクトリにエクスポートします。 この例では、ネットワーク構成ファイルは **C:\AzureNet** にエクスポートされます。
 
    ```powershell
    Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
    ```
-4. テキスト エディターでファイルを開き、VNet とサイトの名前を確認します。 接続を作成するときには、これらの名前を使用します。<br>VNet 名は **VirtualNetworkSite name =** と示されています<br>サイト名は **LocalNetworkSiteRef name =** と示されています
+7. テキスト エディターでファイルを開き、VNet とサイトの名前を確認します。 これらの名前は、接続を作成する際に使用する名前となります。<br>VNet 名は **VirtualNetworkSite name =** と示されています<br>サイト名は **LocalNetworkSiteRef name =** と示されています
 
 ## <a name="createconnections"></a>手順 8 - VPN ゲートウェイ接続を作成する
 
@@ -273,7 +270,7 @@ Azure Portal でクラシック VNets を作成するときに表示される名
 ## <a name="faq"></a>クラシック VNet での VNet 間の考慮事項
 * 仮想ネットワークが属しているサブスクリプションは異なっていてもかまいません。
 * 仮想ネットワークが属している Azure リージョン (場所) は異なっていてもかまいません。
-* クラウド サービスや負荷分散エンドポイントは、仮にそれらが相互に接続されていたとしても、仮想ネットワークの境界を越えることはできません。
+* クラウド サービスや負荷分散エンドポイントは、仮想ネットワークが相互に接続されていても、仮想ネットワークの境界を越えることはできません。
 * 複数の仮想ネットワークを接続する場合は、VPN デバイスは必要ありません。
 * VNet 間接続でサポートされるのは、Azure Virtual Network の接続です。 仮想ネットワークにデプロイされていない仮想マシンやクラウド サービスを接続することはできません。
 * VNet 対 VNet 通信には、動的ルーティング ゲートウェイが必要です。 Azure 静的ルーティング ゲートウェイはサポートされません。

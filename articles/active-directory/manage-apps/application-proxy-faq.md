@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 47c1ce3391129525237566fb92cec2e9b33ca08f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: de2b40ea0339b564b97d17601415d1071bdc6a6e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443412"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367918"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問
 
@@ -146,6 +146,8 @@ PrincipalsAllowedToDelegateToAccount メソッドは、コネクタ サーバー
 ### <a name="does-websocket-support-work-for-applications-other-than-qliksense"></a>WebSocket のサポートは、QlikSense 以外のアプリケーションでも有効ですか。
 
 現在、WebSocket プロトコルのサポートはパブリック プレビュー段階であり、他のアプリケーションでは機能しない可能性があります。 一部のお客様は、他のアプリケーションと WebSocket プロトコルを組み合わせることで成功した事例もあります。 このようなシナリオをテストする場合は、ぜひ結果についてご報告ください。 フィードバックについては、aadapfeedback@microsoft.comまでご連絡ください。
+
+Windows Admin Center (WAC) または Remote Desktop Web クライアントの機能 (イベント ログ、Powershell、リモート デスクトップ サービス) は現在、Azure AD アプリケーション プロキシ経由では動作しません。
 
 ## <a name="link-translation"></a>リンク変換
 

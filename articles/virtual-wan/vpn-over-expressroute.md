@@ -1,21 +1,20 @@
 ---
-title: Azure Virtual WAN で ExpressRoute プライベート ピアリング経由のサイト間 VPN 接続を作成する | Microsoft Docs
+title: ExpressRoute の暗号化を構成する:Azure Virtual WAN 向けの ExpressRoute 経由の IPsec
 description: このチュートリアルでは、Azure Virtual WAN を使用して、ExpressRoute プライベート ピアリング経由のサイト間 VPN 接続を作成する方法を学習します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: article
-ms.date: 10/11/2019
+ms.date: 02/18/2020
 ms.author: cherylmc
-Customer intent: I want to connect my on-premises networks to my virtual networks by using an S2S VPN connection over my ExpressRoute private peering through Azure Virtual WAN.
-ms.openlocfilehash: ae971bad47d84b6928ebea64e416d21af25528ad
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: c74f703927999bf35dd2d8292b8fa0a6d3c55065
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896624"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459788"
 ---
-# <a name="create-a-site-to-site-vpn-connection-over-expressroute-private-peering-by-using-azure-virtual-wan"></a>Azure Virtual WAN を使用して ExpressRoute プライベート ピアリング経由のサイト間 VPN 接続を作成する
+# <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute の暗号化:Virtual WAN 向けの ExpressRoute 経由の IPsec
 
 この記事では、Azure Virtual WAN を使用して、Azure ExpressRoute 回線のプライベート ピアリング経由で、オンプレミス ネットワークから Azure への IPsec/IKE VPN 接続を確立する方法を示します。 この手法により、パブリック インターネットを経由したり、パブリック IP アドレスを使用したりすることなく、ExpressRoute を経由してオンプレミス ネットワークと Azure 仮想ネットワークの間で暗号化されたトランジットを提供できます。
 
@@ -88,7 +87,7 @@ ExpressRoute の関連付けを使用して Azure 仮想 WAN とハブを作成�
    * **Border Gateway Protocol**:オンプレミス ネットワークで BGP が使用されている場合は、[有効] を選択します。
    * **プライベート アドレス空間**:オンプレミス サイトにある IP アドレス空間を入力します。 このアドレス空間宛てのトラフィックは、VPN ゲートウェイ経由でオンプレミス ネットワークにルーティングされます。
    * **ハブ**:この VPN サイトを接続する 1 つ以上のハブを選択します。 選択したハブには、既に VPN ゲートウェイが作成されている必要があります。
-1. **[次へ:リンク >]** をクリックして VPN リンクを設定します。
+1. **リンク >** をクリックして VPN リンクを設定します。
    * **リンク名**:この接続を参照するときに使用する名前。
    * **プロバイダー名**:このサイトのインターネット サービス プロバイダーの名前。 オンプレミスの ExpressRoute ネットワークの場合、これは ExpressRoute サービス プロバイダーの名前です。
    * **速度**:インターネット サービス リンクまたは ExpressRoute 回線の速度。
@@ -98,7 +97,7 @@ ExpressRoute の関連付けを使用して Azure 仮想 WAN とハブを作成�
    
    オンプレミスの BGP ピア アドレスをデバイス側のご使用の VPN または VPN サイトの仮想ネットワーク アドレス空間の IP アドレスと同じにすることは "*できません*"。 VPN デバイスでは BGP ピア IP に別の IP アドレスを使用してください。 デバイスのループバック インターフェイスに割り当てられたアドレスを使用できます。 ただし、APIPA (169.254.*x*.*x*) アドレスにすることは "*できません*"。 この場所を表している、対応するローカル ネットワーク ゲートウェイにこのアドレスを指定します。 BGP の前提条件については、「[BGP と Azure VPN Gateway について](../vpn-gateway/vpn-gateway-bgp-overview.md)」を参照してください。
 
-1. **[次へ:確認および作成 >]** をクリックして設定値を確認し、VPN サイトを作成します。 接続する **[ハブ]** を選択した場合、接続はオンプレミス ネットワークとハブ VPN ゲートウェイの間で確立されます。
+1. **確認および作成 >** をクリックして設定値を確認し、VPN サイトを作成します。 接続する **[ハブ]** を選択した場合、接続はオンプレミス ネットワークとハブ VPN ゲートウェイの間で確立されます。
 
 ## <a name="hub"></a>3.ExpressRoute を使用するように VPN 接続設定を更新する
 
@@ -235,7 +234,7 @@ VPN デバイス構成をダウンロードして、ハブ VPN ゲートウェ�
 
 Azure 仮想マシン (VM) とリモート サイト間の通信を監視するための接続を作成します。 接続モニターを設定する方法については、[ネットワーク通信の監視](~/articles/network-watcher/connection-monitor.md)に関するページを参照してください。 ソース フィールドは Azure の VM IP で、宛先 IP はサイト IP です。
 
-## <a name="cleanup"></a>8.リソースのクリーンアップ
+## <a name="cleanup"></a>8.リソースをクリーンアップする
 
 これらのリソースが不要になったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。 次の PowerShell コマンドを実行し、`myResourceGroup` を実際のリソース グループの名前に置き換えます。
 
@@ -243,6 +242,6 @@ Azure 仮想マシン (VM) とリモート サイト間の通信を監視する�
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Virtual WAN を使用して ExpressRoute プライベート ピアリング経由の VPN 接続を作成する方法を説明しました。 Virtual WAN とその他の関連機能の詳細については、[Virtual WAN の概要](virtual-wan-about.md)に関するページを参照してください。

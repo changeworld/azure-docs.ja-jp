@@ -3,16 +3,16 @@ title: ハイブリッド Kubernetes クラスターに Azure Monitor for contai
 description: この記事では、Azure Stack などの環境でホストしている Kubernetes クラスターを監視することを目的として Azure Monitor for containers を構成する方法を説明します。
 ms.topic: conceptual
 ms.date: 01/24/2020
-ms.openlocfilehash: 7796cc7300f34a7a412495754c083b112ba05041
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 6d03716b988b1139e01d41120f48ea9a9bf34be1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759894"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198056"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>ハイブリッド Kubernetes クラスターに Azure Monitor for containers を構成する
 
-Azure Monitor for containers は、Azure Kubernetes Service (AKS) と Azure でホストしている AKS エンジン クラスター用の監視エクスペリエンスを提供するものです。 この記事では、Azure の外部でホストしている Kubernetes クラスターの監視を有効にし、Azure と同等の監視エクスペリエンスを実現する方法について説明します。
+Azure Monitor for containers は、Azure Kubernetes Service (AKS) と、Azure でホストされている自己管理型 Kubernetes クラスターである [Azure 上の AKS エンジン](https://github.com/Azure/aks-engine)用の監視エクスペリエンスを提供するものです。 この記事では、Azure の外部でホストしている Kubernetes クラスターの監視を有効にし、Azure と同等の監視エクスペリエンスを実現する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 

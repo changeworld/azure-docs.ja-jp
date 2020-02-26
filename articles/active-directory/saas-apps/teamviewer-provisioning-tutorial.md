@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0602757fad0eb4424e10fb0c1cf0272826ed0024
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: dc33cf9249a5b804ef46e75ff1822eaa5c6f9d6a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77150699"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366439"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>チュートリアル:TeamViewer を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -101,7 +101,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
     ![[プロビジョニング] タブ](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションで、TeamViewer 管理者の資格情報とユーザー名を入力します。 **[テスト接続]** をクリックして、Azure AD から TeamViewer への接続を確保します。 接続できない場合は、使用中の TeamViewer アカウントで管理者アクセス許可を確保してから、もう一度試します。
+5. **[管理者資格情報]** セクションの **[Tentant URL]\(テナントの URL\)** フィールドに「`ttps://webapi.teamviewer.com/scim/v2`」と入力し、 **[シークレット トークン]** に前の手順で作成したスクリプト トークンを入力します。 **[テスト接続]** をクリックして、Azure AD から TeamViewer への接続を確保します。 接続できない場合は、使用中の TeamViewer アカウントで管理者アクセス許可を確保してから、もう一度試します。
 
     ![プロビジョニング](./media/teamViewer-provisioning-tutorial/provisioning.png)
 
@@ -115,7 +115,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 9. **[属性マッピング]** セクションで、Azure AD から TeamViewer に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で TeamViewer のユーザー アカウントとの照合に使用されます。 [一致する対象の属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)を変更する場合は、その属性に基づいたユーザーのフィルター処理が確実に TeamViewer API でサポートされているようにする必要があります。 **[保存]** ボタンをクリックして変更をコミットします。
 
-   |Attribute|Type|
+   |属性|Type|
    |---|---|
    |userName|String|
    |displayName|String|

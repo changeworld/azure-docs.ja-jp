@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: f1379202fc59e9cca7a3543be201f8ebff276bef
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 560575ca7f51218e472abecb4319f4a3db69b1ff
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168353"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431164"
 ---
 # <a name="speech-service-supported-regions"></a>Speech サービスがサポートされているリージョン
 
@@ -38,20 +38,20 @@ Speech サービスは、以下のリージョンで**音声認識**、**テキ�
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
-[Speech SDK](speech-sdk.md) を使用する場合、リージョンは**リージョン識別子**として (たとえば、`SpeechConfig.FromSubscription` へのパラメーターとして) 指定されます。 リージョンがサブスクリプションのリージョンと一致していることを確認してください。
+[Speech SDK](speech-sdk.md) を使用する場合、リージョンは**リージョン識別子**によって (たとえば、`SpeechConfig.FromSubscription` へのパラメーターとして) 指定されます。 リージョンがサブスクリプションのリージョンと一致していることを確認してください。
 
 ### <a name="intent-recognition"></a>意図認識
 
 Speech SDK を介して**意図認識**を使用できるリージョンは以下の通りです。
 
-| グローバル リージョン | リージョン           | Speech SDK パラメーター |
+| グローバル リージョン | リージョン           | リージョン識別子 |
 | ------------- | ---------------- | -------------------- |
 | Asia          | 東アジア        | `eastasia`           |
 | Asia          | 東南アジア   | `southeastasia`      |
 | オーストラリア     | オーストラリア東部   | `australiaeast`      |
 | ヨーロッパ        | 北ヨーロッパ     | `northeurope`        |
 | ヨーロッパ        | 西ヨーロッパ      | `westeurope`         |
-| 北米 | East US          | `eastus`             |
+| 北米 | 米国東部          | `eastus`             |
 | 北米 | 米国東部 2        | `eastus2`            |
 | 北米 | 米国中南部 | `southcentralus`     |
 | 北米 | 米国中西部  | `westcentralus`      |
@@ -65,11 +65,11 @@ Speech SDK を介して**意図認識**を使用できるリージョンは以�
 
 [Speech SDK](speech-sdk.md) は、以下のリージョンで**音声アシスタント**機能をサポートしています。
 
-| リージョン         | Speech SDK パラメーター |
+| リージョン         | リージョン識別子 |
 | -------------- | -------------------- |
 | 米国西部        | `westus`             |
 | 米国西部 2      | `westus2`            |
-| East US        | `eastus`             |
+| 米国東部        | `eastus`             |
 | 米国東部 2      | `eastus2`            |
 | 西ヨーロッパ    | `westeurope`         |
 | 北ヨーロッパ   | `northeurope`        |

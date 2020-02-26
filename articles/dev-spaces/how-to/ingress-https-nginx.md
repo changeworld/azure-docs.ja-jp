@@ -5,12 +5,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Azure Dev Spaces をカスタム NGINX イングレス コントローラーを使用するように構成し、そのイングレス コントローラーを使用して HTTPS を構成する方法を説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: a6fcc6bfd7f3bd682cd67b58312a83c23e2a3b1b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 39f17636779c4160867311af67ebc621b685f2d3
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475965"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486204"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>カスタム NGINX イングレス コントローラーの使用と HTTPS の構成
 
@@ -53,6 +53,13 @@ NGINX イングレス コントローラー用に Kubernetes 名前空間を作�
 kubectl create ns nginx
 helm install nginx stable/nginx-ingress --namespace nginx --version 1.27.0
 ```
+
+> [!NOTE]
+> 上の例では、イングレス コントローラーのパブリック エンドポイントを作成します。 代わりに、イングレス コントローラーのプライベート エンドポイントを使用する必要がある場合は、*helm install* コマンドに *--set controller.service.annotations."service\\.beta\\.kubernetes\\.io/azure-load-balancer-internal"=true* パラメーターを追加します。 次に例を示します。
+> ```console
+> helm install nginx stable/nginx-ingress --namespace nginx --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.27.0
+> ```
+> このプライベート エンドポイントは、AKS クラスターがデプロイされている仮想ネットワーク内で公開されます。
 
 [kubectl get][kubectl-get] を使用して、NGINX イングレス コントローラー サービスの IP アドレスを取得します。
 
@@ -121,7 +128,7 @@ azds space select -n dev -y
 `helm install` を使用してサンプル アプリケーションをデプロイします。
 
 ```console
-helm install bikesharing . --dependency-update --namespace dev --atomic
+helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
 ```
 
 サンプル アプリケーションは、上記の例では、*dev* 名前空間にデプロイされます。

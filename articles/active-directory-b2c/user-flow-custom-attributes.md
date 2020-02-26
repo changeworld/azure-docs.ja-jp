@@ -10,22 +10,18 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 433eff8f7ec22a3484e8e7f38dab2bb1c24e2fcc
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7a65eb19c5694f399e806d0f6ce99717436931c6
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850810"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484351"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム属性を定義する
 
  すべての顧客向けアプリケーションには、収集する必要のある情報についての固有の要件があります。 Azure Active Directory B2C (Azure AD B2C) テナントには、名、姓、市区町村、郵便番号などの属性に格納された組み込みの一連の情報が用意されています。 Azure AD B2C では、各顧客アカウントに関して格納されている一連の属性を拡張できます。
 
- [Azure portal](https://portal.azure.com/) でカスタム属性を作成し、それらをサインアップ ユーザー フロー、サインアップまたはサインイン ユーザー フロー、プロファイル編集ユーザー フローなどで使用できます。 また、 [Azure AD Graph API](manage-user-accounts-graph-api.md)を使用してこれらの属性を読み書きすることもできます。 Azure AD B2C のカスタム属性では、[Azure AD Graph API ディレクトリ スキーマ拡張機能](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions)が使用されます。
-
-> [!NOTE]
-> Azure AD B2C テナントのクエリを実行するための新しい [Microsoft Graph API](https://docs.microsoft.com/graph/overview?view=graph-rest-1.0) のサポートはまだ開発中です。
->
+ [Azure portal](https://portal.azure.com/) でカスタム属性を作成し、それらをサインアップ ユーザー フロー、サインアップまたはサインイン ユーザー フロー、プロファイル編集ユーザー フローなどで使用できます。 また、[Microsoft Graph API](manage-user-accounts-graph-api.md) を使用してこれらの属性を読み書きすることもできます。
 
 ## <a name="create-a-custom-attribute"></a>カスタム属性を作成する
 
@@ -47,14 +43,12 @@ ms.locfileid: "76850810"
 
 これで、このカスタム属性が **[ユーザー属性]** の一覧やユーザー フローで使用できるようになります。 カスタム属性が作成されるのは、いずれかのユーザー フローで初めて使用されるときだけであり、 **[ユーザー属性]** の一覧に追加されるときではありません。
 
-
 ## <a name="use-a-custom-attribute-in-your-user-flow"></a>ユーザー フローでカスタム属性を使用する
 
 1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
-2. ポリシー ("B2C_1_SignupSignin" など) を選択して開きます。
-4. **[ユーザー属性]** 、カスタム属性 ("ShoeSize" など) の順に選択します。 **[保存]** をクリックします。
-5. **[アプリケーションの要求]** 、カスタム属性の順に選択します。
-6. **[保存]** をクリックします。
+1. ポリシー ("B2C_1_SignupSignin" など) を選択して開きます。
+1. **[ユーザー属性]** 、カスタム属性 ("ShoeSize" など) の順に選択します。 **[保存]** をクリックします。
+1. **[アプリケーションの要求]** 、カスタム属性の順に選択します。
+1. **[保存]** をクリックします。
 
-新しく作成したカスタム属性を使用するユーザー フローを使用して新しいユーザーを作成したら、[Azure AD Graph Explorer](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api-quickstart) でオブジェクトのクエリを実行できます。 または、ユーザー フローに対して [ **[ユーザー フローを実行します]** ](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows) 機能を使用して、カスタマー エクスペリエンスを確認できます。 これで、**ShoeSize** がサインアップ中に収集される属性の一覧や、アプリケーションに送り返されるトークンに表示されるようになります。
-
+新しく作成したカスタム属性を使用するユーザー フローを使用して新しいユーザーを作成したら、[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) でオブジェクトのクエリを実行できます。 または、ユーザー フローに対して [[ユーザー フローを実行します]](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows) 機能を使用して、カスタマー エクスペリエンスを確認できます。 これで、**ShoeSize** がサインアップ中に収集される属性の一覧や、アプリケーションに送り返されるトークンに表示されるようになります。

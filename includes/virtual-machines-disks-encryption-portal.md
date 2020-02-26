@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0912316d1c41f46e5dba74b58017f4fd5e8ed529
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 8d68d2e83bba055e92b99ee9294daf6f2395d8dc
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76909169"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206304"
 ---
 ### <a name="portal"></a>ポータル
 
@@ -34,18 +34,18 @@ ms.locfileid: "76909169"
 1. キー コンテナー名を入力し、リージョンを選択して、価格レベルを選択します。
 1. **[確認および作成]** を選択し、選択内容を確認してから、 **[作成]** を選択します。
 
-    ![sse-create-a-key-vault.png](media/virtual-machines-disk-encryption-portal/sse-create-a-key-vault.png)
+    ![Azure キー コンテナーの作成エクスペリエンスのスクリーンショット。 作成する個々の値が表示された状態](media/virtual-machines-disk-encryption-portal/sse-create-a-key-vault.png)
 
 1. キー コンテナーのデプロイが完了したら、それを選択します。
 1. **[設定]** で **[キー]** を選択します。
 1. **[生成/インポート]** を選択します。
 
-    ![sse-key-vault-generate-settings.png](media/virtual-machines-disk-encryption-portal/sse-key-vault-generate-settings.png)
+    ![Key Vault のリソース設定ペインのスクリーンショット。 設定内で [生成/インポート] ボタンが表示されています。](media/virtual-machines-disk-encryption-portal/sse-key-vault-generate-settings.png)
 
 1. **[キーの種類]** は **[RSA]** 、 **[RSA キー サイズ]** は **[2080]** に設定されているので、どちらもそのままにしておきます。
 1. 必要に応じて残りの選択項目を入力したら、 **[作成]** を選択します。
 
-    ![sse-create-a-key-generate.png](media/virtual-machines-disk-encryption-portal/sse-create-a-key-generate.png)
+    ![[生成/インポート] ボタンを選択すると表示される [Create a key]\(キーを作成します\) ブレードのスクリーンショット](media/virtual-machines-disk-encryption-portal/sse-create-a-key-generate.png)
 
 #### <a name="setting-up-your-disk-encryption-set"></a>ディスク暗号化セットを設定する
 
@@ -54,7 +54,7 @@ ms.locfileid: "76909169"
 1. [ディスク暗号化セットのリンク](https://aka.ms/diskencryptionsets)を開きます。
 1. **[+追加]** を選択します。
 
-    ![sse-create-disk-encryption-set.png](media/virtual-machines-disk-encryption-portal/sse-create-disk-encryption-set.png)
+    ![ディスク暗号化ポータルのメイン画面のスクリーンショット。 [追加] ボタンが強調表示されています](media/virtual-machines-disk-encryption-portal/sse-create-disk-encryption-set.png)
 
 1. リソース グループを選択し、暗号化セットに名前を付け、キー コンテナーと同じリージョンを選択します。
 1. **[キー コンテナーとキー]** を選択します。
@@ -62,15 +62,15 @@ ms.locfileid: "76909169"
 1. **[選択]** を選択します。
 1. **[確認および作成]** 、 **[作成]** の順に選択します。
 
-    ![sse-disk-enc-set-blade-key.png](media/virtual-machines-disk-encryption-portal/sse-disk-enc-set-blade-key.png)
+    ![ディスク暗号化作成ブレードのスクリーンショット。 サブスクリプション、リソース グループ、ディスク暗号化セット名、リージョン、キー コンテナーとキーのセレクターが表示されています。](media/virtual-machines-disk-encryption-portal/sse-disk-enc-set-blade-key.png)
 
 1. 作成が完了したら、ディスク暗号化セットを開き、ポップアップ表示されるアラートを選択します。
 
-    ![sse-disk-enc-alert-fix.png](media/virtual-machines-disk-encryption-portal/sse-disk-enc-alert-fix.png)
+    ![アラート ポップアップ "このディスク暗号化セットにディスク、イメージ、またはスナップショットを関連付けるには、キー コンテナーにアクセス許可を付与する必要があります。" のスクリーンショット。 このアラートを選択して続行します](media/virtual-machines-disk-encryption-portal/sse-disk-enc-alert-fix.png)
 
 2 つの通知がポップアップ表示され、成功します。 これで、キー コンテナーでディスク暗号化セットを使用できるようになります。
 
-![disk-enc-notification-success.png](media/virtual-machines-disk-encryption-portal/disk-enc-notification-success.png)
+![キー コンテナーに対するアクセス許可の付与とロールの割り当てが成功したことを示すスクリーンショット。](media/virtual-machines-disk-encryption-portal/disk-enc-notification-success.png)
 
 #### <a name="deploy-a-vm"></a>VM をデプロイする
 
@@ -82,13 +82,13 @@ VM のデプロイ プロセスは標準的なデプロイ プロセスと似て
 1. **[基本]** タブで、ディスク暗号化セットおよび Azure Key Vault と同じリージョンを選択します。
 1. **[基本]** タブで、必要に応じてその他の値を入力します。
 
-    ![sse-create-a-vm-region.png](media/virtual-machines-disk-encryption-portal/sse-create-a-vm-region.png)
+    ![リージョンの値が強調表示されている、VM 作成エクスペリエンスのスクリーンショット。](media/virtual-machines-disk-encryption-portal/sse-create-a-vm-region.png)
 
 1. **[ディスク]** タブで、 **[顧客が管理するキーを使用した保存時の暗号化]** を選択します。
 1. **[ディスク暗号化セット]** ボックスの一覧で、使用するディスク暗号化セットを選択します。
 1. 必要に応じて、残りの選択を行います。
 
-    ![sse-create-vm-select-cmk-encryption-set.png](media/virtual-machines-disk-encryption-portal/sse-create-vm-select-cmk-encryption-set.png)
+    ![VM 作成エクスペリエンスの [ディスク] ブレードのスクリーンショット。 [ディスク暗号化セット] ドロップダウンが強調表示された状態です。](media/virtual-machines-disk-encryption-portal/sse-create-vm-select-cmk-encryption-set.png)
 
 #### <a name="enable-on-an-existing-disk"></a>既存のディスクで有効にする
 
@@ -101,16 +101,16 @@ VM のデプロイ プロセスは標準的なデプロイ プロセスと似て
 1. 使用しているディスク暗号化セットのいずれかと同じリージョンにある VM に移動します。
 1. VM を開き、 **[停止]** を選択します。
 
-    ![sse-stop-VM-to-encrypt-disk.png](media/virtual-machines-disk-encryption-portal/sse-stop-VM-to-encrypt-disk.png)
+    ![サンプル VM のメイン オーバーレイのスクリーンショット。 [停止] ボタンが強調表示されています](media/virtual-machines-disk-encryption-portal/sse-stop-VM-to-encrypt-disk.png)
 
 1. VM の停止が完了した後に、 **[ディスク]** を選択し、暗号化するディスクを選択します。
 
-    ![sse-existing-disk-select.png](media/virtual-machines-disk-encryption-portal/sse-existing-disk-select.png)
+    ![[ディスク] ブレードが開いた状態のサンプル VM のスクリーンショット。 選択するディスクの例として、OS ディスクが強調表示されています。](media/virtual-machines-disk-encryption-portal/sse-existing-disk-select.png)
 
 1. **[暗号化]** を選択し、 **[顧客が管理するキーを使用した保存時の暗号化]** を選択してから、ボックスの一覧で、ディスク暗号化セットを選択します。
 1. **[保存]** を選択します。
 
-    ![sse-encrypt-existing-disk-customer-managed-key.png](media/virtual-machines-disk-encryption-portal/sse-encrypt-existing-disk-customer-managed-key.png)
+    ![サンプル OS ディスクのスクリーンショット。 [暗号化] ブレードが開いており、[顧客が管理するキーを使用した保存時の暗号化] が選択され、Azure Key Vault の例が表示されている。 これらの選択を行った後、[保存] ボタンを選択します。](media/virtual-machines-disk-encryption-portal/sse-encrypt-existing-disk-customer-managed-key.png)
 
 1. 暗号化する VM にアタッチされている他のすべてのディスクに対して、このプロセスを繰り返します。
 1. 使用するディスクでカスタマー マネージド キーへの切り替えが完了し、暗号化するアタッチ済みディスクが他になくなったら、VM を起動することができます。

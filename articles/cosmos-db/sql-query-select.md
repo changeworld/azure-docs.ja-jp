@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: girobins
-ms.openlocfilehash: b90fc6f1f50ec2ea75619188cca36f78061f28df
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 013ebdcdbac41825c10a1362f73ab4c94052400d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326788"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469937"
 ---
 # <a name="select-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での SELECT 句
 
@@ -169,9 +169,53 @@ SELECT <select_specification>
       }
     }]
 ```
+## <a name="reserved-keywords-and-special-characters"></a>予約済みキーワードと特殊文字
 
-## <a name="next-steps"></a>次の手順
+データに "order" や "Group" などの予約済みキーワードと同じ名前のプロパティが含まれている場合、これらのドキュメントに対するクエリは構文エラーになります。 クエリを正常に実行するには、プロパティを `[]` 文字で明示的に囲む必要があります。
 
-- [使用の開始](sql-query-getting-started.md)
+たとえば、`order` という名前のプロパティと、特殊文字を含むプロパティ `price($)` を持つドキュメントを次に示します。
+
+```json
+{
+  "id": "AndersenFamily",
+  "order": [
+     {
+         "orderId": "12345",
+         "productId": "A17849",
+         "price($)": 59.33
+     }
+  ],
+  "creationDate": 1431620472,
+  "isRegistered": true
+}
+```
+
+`order` プロパティまたは `price($)` プロパティを含むクエリを実行すると、構文エラーが発生します。
+
+```sql
+SELECT * FROM c where c.order.orderid = "12345"
+```
+```sql
+SELECT * FROM c where c.order.price($) > 50
+```
+結果は次のとおりです。
+
+`
+Syntax error, incorrect syntax near 'order'
+`
+
+同じクエリを次のように書き換える必要があります。
+
+```sql
+SELECT * FROM c WHERE c["order"].orderId = "12345"
+```
+
+```sql
+SELECT * FROM c WHERE c["order"]["price($)"] > 50
+```
+
+## <a name="next-steps"></a>次のステップ
+
+- [作業の開始](sql-query-getting-started.md)
 - [Azure Cosmos DB .NET のサンプル](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [WHERE 句](sql-query-where.md)

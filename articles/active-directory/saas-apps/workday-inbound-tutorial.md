@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acc458c59858196ea110d0ff2030ccd7f7b6fc58
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: feedce112110b1c944e3cb0af79e76fe1bda4778
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121745"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77365637"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル:Workday を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -801,7 +801,7 @@ Workday プロビジョニング アプリの構成が完了したら、Azure po
 
 #### <a name="does-the-solution-support-assigning-on-premises-ad-groups-to-the-user"></a>ソリューションは、オンプレミスの AD グループをユーザーに割り当てることをサポートしていますか。
 
-現在、この機能はサポートされていません。 推奨される回避策は、Azure AD Graph API エンドポイントに監査ログ データのクエリを実行し、それを使用してグループの割り当てなどのシナリオをトリガーする PowerShell スクリプトをデプロイすることです。 この PowerShell スクリプトは、タスク スケジューラにアタッチして、プロビジョニング エージェントを実行している同じボックスにデプロイできます。  
+現在、この機能はサポートされていません。 推奨される回避策は、Microsoft Graph API エンドポイントに[監査ログ データ](https://docs.microsoft.com/graph/api/resources/azure-ad-auditlog-overview?view=graph-rest-beta)のクエリを実行し、それを使用してグループの割り当てなどのシナリオをトリガーする PowerShell スクリプトをデプロイすることです。 この PowerShell スクリプトは、タスク スケジューラにアタッチして、プロビジョニング エージェントを実行している同じボックスにデプロイできます。  
 
 #### <a name="which-workday-apis-does-the-solution-use-to-query-and-update-workday-worker-profiles"></a>Workday の従業員プロファイルのクエリと更新にこのソリューションが使用する Workday API はどれですか。
 

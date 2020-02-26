@@ -3,12 +3,12 @@ title: ファイルとフォルダーのバックアップに関する一般的�
 description: Azure Backup を使用したファイルとフォルダーのバックアップに関する一般的な質問に対応します。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 45c01a08151060b60b0f3e3b27b2fcc16ec8e60b
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 7b80932d49038bb42fa93f71b3ac0194c2869489
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720363"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425070"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>ファイルとフォルダーのバックアップに関する一般的な質問
 
@@ -90,7 +90,7 @@ MARS エージェントは NTFS に依存しており、ファイルの名前/�
 キャッシュ フォルダーのサイズによって、バックアップするデータ量が決まります。
 
 * キャッシュ フォルダー ボリュームには、バックアップ データの合計サイズの少なくとも 5 から 10% に相当する空き領域が必要になります。
-* ボリュームの空き領域が 5% 未満の場合は、ボリューム サイズを増やすか、十分な容量があるボリュームにキャッシュ フォルダーを移動します。
+* ボリュームの空き領域が 5% 未満の場合は、[こちらの手順](#how-do-i-change-the-cache-location-for-the-mars-agent)に従って、ボリューム サイズを増やすか、十分な容量があるボリュームにキャッシュ フォルダーを移動します。
 * Windows のシステム状態をバックアップする場合は、キャッシュ フォルダーを含むボリューム内に 30 から 35 GB の追加の空き領域が必要になります。
 
 ### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>スクラッチ フォルダーが有効でアクセス可能かどうかを確認する方法
@@ -98,35 +98,35 @@ MARS エージェントは NTFS に依存しており、ファイルの名前/�
 1. 既定では、スクラッチ フォルダーは `\Program Files\Microsoft Azure Recovery Services Agent\Scratch` にあります。
 2. スクラッチ フォルダーの場所のパスが、次に示すレジストリ キー エントリの値と一致していることを確認します。
 
-  | レジストリ パス | レジストリ キー | 値 |
-  | --- | --- | --- |
-  | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*新しいキャッシュ フォルダーの場所* |
-  | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*新しいキャッシュ フォルダーの場所* |
+    | レジストリ パス | レジストリ キー | Value |
+    | --- | --- | --- |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*新しいキャッシュ フォルダーの場所* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*新しいキャッシュ フォルダーの場所* |
 
 ### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>MARS エージェント用のキャッシュの場所を変更する方法を教えてください。
 
 1. 管理者特権のコマンド プロンプトで次のコマンドを実行して、Backup エンジンを停止します。
 
     ```Net stop obengine```
-
 2. システム状態のバックアップを構成している場合は、[ディスクの管理] を開き、`"CBSSBVol_<ID>"` という形式の名前を持つディスクをマウント解除します。
-3. ファイルを移動しないでください。 代わりに、十分な容量がある別のドライブにキャッシュ領域フォルダーをコピーします。
-4. 新しいキャッシュ フォルダーのパスを使って、次のレジストリ エントリを更新します。
+3. 既定では、スクラッチ フォルダーは `\Program Files\Microsoft Azure Recovery Services Agent\Scratch` にあります。
+4. 十分な容量がある別のドライブに `\Scratch`フォルダー全体をコピーします。 コンテンツがコピーされ、移動されていないことを確認します。
+5. 新しく移動されたスクラッチ フォルダーのパスを使って、次のレジストリ エントリを更新します。
 
-    | レジストリ パス | レジストリ キー | 値 |
+    | レジストリ パス | レジストリ キー | Value |
     | --- | --- | --- |
-    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*新しいキャッシュ フォルダーの場所* |
-    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*新しいキャッシュ フォルダーの場所* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*新しいスクラッチ フォルダーの場所* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*新しいスクラッチ フォルダーの場所* |
 
-5. 管理者特権のコマンド プロンプトで、Backup エンジンを再開します。
+6. 管理者特権のコマンド プロンプトで、Backup エンジンを再開します。
 
-  ```command
-  Net stop obengine
+    ```command
+    Net stop obengine
 
-  Net start obengine
-  ```
+    Net start obengine
+    ```
 
-6. オンデマンド バックアップを実行します。 新しい場所を使ってバックアップが正常に終了した後は、元のキャッシュ フォルダーを削除できます。
+7. オンデマンド バックアップを実行します。 新しい場所を使ってバックアップが正常に終了した後は、元のキャッシュ フォルダーを削除できます。
 
 ### <a name="where-should-the-cache-folder-be-located"></a>キャッシュ フォルダーはどこに配置する必要がありますか。
 

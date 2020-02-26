@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c3c0aea6ecaccc972702a8c87e4d127c71c75d6
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: a3b1b38063dcef1c61fbfb6fec529aeeed40a662
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121373"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367781"
 ---
 # <a name="how-provisioning-works"></a>プロビジョニングのしくみ
 
@@ -91,7 +91,7 @@ Azure AD ユーザー プロビジョニング サービスを使って、Azure 
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>プロビジョニング サイクル:初回と増分
 
-Azure AD がソース システムである場合、プロビジョニング サービスは、[Azure AD Graph API の差分クエリ機能](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-differential-query)を使用してユーザーとグループを監視します。 プロビジョニング サービスは、ソース システムとターゲット システムに対して初回サイクルを実行した後、増分サイクルを定期的に行います。
+Azure AD がソース システムである場合、プロビジョニング サービスは「[デルタ クエリを使用して、Microsoft Graph データの変更を追跡する](https://docs.microsoft.com/graph/delta-query-overview)」を使用してユーザーとグループを監視します。 プロビジョニング サービスは、ソース システムとターゲット システムに対して初回サイクルを実行した後、増分サイクルを定期的に行います。
 
 ### <a name="initial-cycle"></a>初回サイクル
 
@@ -142,8 +142,8 @@ ServiceNow、G Suite、Box など、アプリケーションの中には、ユ�
 
 プロビジョニング サービスでは、バックツーバック増分サイクルが、[各アプリケーションに固有のチュートリアル](../saas-apps/tutorial-list.md)で定義された間隔で無期限に実行され続けます。 増分サイクルは、次のいずれかのイベントが発生するまで続行されます。
 
-- Azure Portal または適切な Graph API コマンドを使用してサービスが手動で停止された 
-- Azure portal の **[Clear state and restart]\(状態を消去して再開\)** オプション、または適切な Graph API コマンドを使用して、新しい初回サイクルがトリガーされた。 この操作では、保存された基準値がクリアされ、すべてのソース オブジェクトが再評価されます。
+- Azure portal または適切な Microsoft Graph API コマンドを使用してサービスが手動で停止された。
+- Azure portal の **[Clear state and restart]\(状態を消去して再開\)** オプション、または適切な Microsoft Graph API コマンドを使用して、新しい初回サイクルがトリガーされた。 この操作では、保存された基準値がクリアされ、すべてのソース オブジェクトが再評価されます。
 - 属性マッピングまたはスコープ フィルターの変更によって、新しい初回サイクルがトリガーされた。 また、この操作では、保存された基準値がクリアされ、すべてのソース オブジェクトが再評価されます。
 - 高いエラー率によりプロビジョニング プロセスが検疫に移行し (以下を参照)、そのまま 4 週間を超えて検疫にとどまっている。 この場合、サービスは自動的に無効になります。
 
