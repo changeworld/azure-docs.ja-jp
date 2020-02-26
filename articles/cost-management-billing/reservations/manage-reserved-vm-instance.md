@@ -6,14 +6,14 @@ author: bandersmsft
 ms.reviewer: yashesvi
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/18/2020
 ms.author: banders
-ms.openlocfilehash: 82bf250a7902cfe4b905991809fd4bbe5dea102a
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 8ee683501346f0ee99b513ad966db1cc06b2737a
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188516"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470975"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Azure リソースに対する予約を管理する
 
@@ -121,8 +121,10 @@ Azure Reserved Virtual Machine Instances を購入した場合は、予約の最
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[すべてのサービス]**  >  **[予約]** を選択します。
 3. 予約を選択します。
-4. **[設定]**  >  **[構成]** を選択します。
-5. **[最適化の対象]** 設定を変更します。
+4. **[設定]**  >  **[構成]** を選択します。  
+  ![[構成] 項目を示す例](./media/manage-reserved-vm-instance/add-product03.png)
+5. **[最適化の対象]** 設定を変更します。  
+  ![[最適化の対象] 設定を示す例](./media/manage-reserved-vm-instance/instance-size-flexibility-option.png)
 
 ## <a name="optimize-reservation-use"></a>予約の使用を最適化する
 

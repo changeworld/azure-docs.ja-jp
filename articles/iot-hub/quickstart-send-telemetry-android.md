@@ -10,40 +10,38 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/15/2019
 ms.author: wesmc
-ms.openlocfilehash: 6d1a011f2aa446d8d6f9a7a474b174e3005aa1d9
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 6c7428a4f34f0be64423c42efc06667cb18aa025
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110346"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471280"
 ---
 # <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>クイック スタート:IoT の利用統計情報を Android デバイスから送信する
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
-IoT Hub は、保管や処理のために IoT デバイスから大量のテレメトリをクラウドに取り込むことを可能にする Azure サービスです。 このクイック スタートでは、物理デバイスまたはシミュレートされたデバイス上で実行されている Android アプリケーションから IoT ハブに利用統計情報を送信します。
-
-このクイック スタートでは、あらかじめ作成されている Android アプリケーションを使って利用統計情報を送信します。 Azure Cloud Shell を使用して、利用統計情報を IoT ハブから読み取ります。 このアプリケーションを実行する前に、IoT ハブを作成し、デバイスをハブに登録します。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+このクイックスタートでは、物理デバイスまたはシミュレートされたデバイス上で実行されている Android アプリケーションから Azure IoT ハブに利用統計情報を送信します。 IoT Hub は、保管や処理のために IoT デバイスから大量のテレメトリをクラウドに取り込むことを可能にする Azure サービスです。 このクイックスタートでは、あらかじめ作成されている Android アプリケーションを使って利用統計情報を送信します。 Azure Cloud Shell を使用して、利用統計情報を IoT ハブから読み取ります。 このアプリケーションを実行する前に、IoT ハブを作成し、デバイスをハブに登録します。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Android Studio (https://developer.android.com/studio/ )。 Android Studio のインストールの詳細については、[Android のインストール](https://developer.android.com/studio/install)に関するページを参照してください。
+* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-* この記事のサンプルでは、Android SDK 27 を使用しています。
+* [Android Studio と Android SDK 27](https://developer.android.com/studio/)。 詳細については、[Android のインストール](https://developer.android.com/studio/install)に関するページを参照してください。 この記事のサンプルでは、Android SDK 27 を使用しています。
 
-* 次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
+* [サンプル Android アプリケーション](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample)。 このサンプルは、[azure-iot-samples-java](https://github.com/Azure-Samples/azure-iot-samples-java) リポジトリに含まれています。
 
-   ```azurecli-interactive
-   az extension add --name azure-cli-iot-ext
-   ```
+* ファイアウォールでポート 8883 が開放されていること。 このクイックスタートのデバイス サンプルでは、ポート 8883 を介して通信する MQTT プロトコルを使用しています。 このポートは、企業や教育用のネットワーク環境によってはブロックされている場合があります。 この問題の詳細と対処方法については、[IoT Hub への接続 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub) に関するセクションを参照してください。
 
-* このクイック スタートで実行する[サンプル Android アプリケーション](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample)は、GitHub 上の azure-iot-samples-java リポジトリに含まれています。 [azure-iot-samples-java](https://github.com/Azure-Samples/azure-iot-samples-java) リポジトリをダウンロードまたは複製してください。
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-* ポート 8883 がファイアウォールで開放されていることを確認してください。 このクイックスタートのデバイス サンプルでは、ポート 8883 を介して通信する MQTT プロトコルを使用しています。 このポートは、企業や教育用のネットワーク環境によってはブロックされている場合があります。 この問題の詳細と対処方法については、[IoT Hub への接続 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub) に関するセクションを参照してください。
+### <a name="add-azure-iot-extension"></a>Azure IoT 拡張機能を追加する
+
+次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
+
+```azurecli-interactive
+az extension add --name azure-cli-iot-ext
+```
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 

@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 10/25/2019
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: df87e652d2969d4ae12e97a2b455648cf39382c3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c3a94cea838609f65511a21ee2f64e8782a6adea
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488258"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443127"
 ---
 # <a name="azure-firewall-manager-preview-deployment-overview"></a>Azure Firewall Manager プレビューのデプロイの概要
 
@@ -20,23 +20,32 @@ ms.locfileid: "73488258"
 
 Azure Firewall Manager プレビューをデプロイする方法は複数ありますが、次の一般的な手順をお勧めします。
 
-## <a name="prerequisites"></a>前提条件
-
-> [!IMPORTANT]
-> `Register-AzProviderFeature` PowerShell コマンドを使用して、Azure Firewall Manager Preview を明示的に有効にする必要があります。
->PowerShell コマンド プロンプトから、次のコマンドを実行します。
->
->```azure-powershell
->connect-azaccount
->Register-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network
->```
->機能の登録が完了するまで、最長で 30 分かかります。 次のコマンドを実行して、登録状態を確認します。
->
->`Get-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network`
-
-
-
 ## <a name="general-deployment-process"></a>一般的なデプロイ プロセス
+
+### <a name="hub-virtual-networks"></a>ハブ仮想ネットワーク
+
+1.  ファイアウォール ポリシーを作成する
+
+    - 新しいポリシーの作成
+<br>*or*<br>
+    - 基本ポリシーを派生させてローカル ポリシーをカスタマイズします。
+<br>*or*<br>
+    - 既存の Azure Firewall から規則をインポートします。 複数のファイアウォールにわたって適用すべき NAT 規則はポリシーから削除してください。
+1. ハブとスポークのアーキテクチャを作成する
+   - Azure Firewall Manager を使用してハブ仮想ネットワークを作成し、仮想ネットワーク ピアリングを使用して、そこにスポーク仮想ネットワークをピアリングします。
+<br>*or*<br>
+    - 仮想ネットワークを作成して仮想ネットワーク接続を追加し、仮想ネットワーク ピアリングを使用して、そこにスポーク仮想ネットワークをピアリングします。
+
+3. セキュリティ プロバイダーを選択し、ファイアウォール ポリシーを関連付ける。 現在、サポートされるプロバイダーは Azure Firewall だけです。
+
+   - これは、ハブ仮想ネットワークの作成時に行います。
+<br>*or*<br>
+    - 既存の仮想ネットワークをハブ仮想ネットワークに変換します。 複数の仮想ネットワークを変換することもできます。
+
+4. ハブ仮想ネットワーク ファイアウォールへのトラフィックをルーティングするユーザー定義ルートを構成する。
+
+
+### <a name="secured-virtual-hubs"></a>セキュリティ保護付き仮想ハブ
 
 1. ハブとスポークのアーキテクチャを作成する
 
@@ -59,6 +68,6 @@ Azure Firewall Manager プレビューをデプロイする方法は複数あり
 > - vWAN のハブの IP 空間を重複させることはできません。
 > - ハブ VNet 接続は、ハブと同じリージョンにある必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [チュートリアル:Azure portal を使用して Azure Firewall Manager Preview でクラウド ネットワークをセキュリティで保護する](secure-cloud-network.md)

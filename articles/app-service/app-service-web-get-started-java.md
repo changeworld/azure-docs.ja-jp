@@ -1,6 +1,6 @@
 ---
 title: 'クイック スタート: Windows で Java アプリを作成する'
-description: Azure App Service on Windows に、初めての Java の Hello World を数分でデプロイします。 Java アプリのデプロイには、App Service 用の Maven プラグインが便利です。
+description: Azure App Service on Windows に、初めての Java の Hello World を数分でデプロイします。 Java アプリのデプロイには、Azure Web App Plugin for Maven が便利です。
 keywords: Azure, App Service, Web アプリ, Windows, Java, Maven, クイック スタート
 author: msangapu-msft
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: c511ed3f432c8e54a820c01839269712271774bd
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 3cf759294a31fcf90c5a3f4a6cdc68e3c35882e0
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672156"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425386"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>クイック スタート:Azure App Service on Windows で Java アプリを作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "74672156"
 > この記事では、Windows 上の App Service にアプリをデプロイします。 _Linux_ 上の App Service にデプロイするには、[Linux での Java Web アプリの作成](./containers/quickstart-java.md)に関するページを参照してください。
 >
 
-[Azure App Service](overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。  このクイック スタートでは、[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を [Azure App Service 用の Maven プラグイン](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)と共に使用して Java Web アーカイブ (WAR) ファイルをデプロイする方法を示します。
+[Azure App Service](overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。  このクイックスタートでは、[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を [Azure Web App Plugin for Maven](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) と共に使用して Java Web アーカイブ (WAR) ファイルをデプロイする方法を示します。
 
 > [!NOTE]
 > IntelliJ や Eclipse のような一般的な IDE を使っても同じことができます。 [Azure Toolkit for IntelliJ のクイック スタート](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app)または [Azure Toolkit for Eclipse のクイック スタート](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app)で類似するドキュメントを確認してください。
@@ -118,7 +118,7 @@ mvn package azure-webapp:deploy
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Java 開発者向けの Azure リソース](/java/azure/)

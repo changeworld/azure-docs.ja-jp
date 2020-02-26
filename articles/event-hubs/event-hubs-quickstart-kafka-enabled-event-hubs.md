@@ -7,13 +7,13 @@ ms.author: shvija
 ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 11/05/2019
-ms.openlocfilehash: 2222345054982799f9f9e0b84961271a3cc04ddf
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 02/12/2020
+ms.openlocfilehash: 25c1cf00a418767209467c973b7a4755f62eb16f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717808"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368378"
 ---
 # <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>クイック スタート:Kafka プロトコルを使用した Event Hubs によるデータ ストリーミング
 このクイック スタートでは、プロトコル クライアントを変更したり、独自のクラスターを実行したりせずに、Kafka 対応 Event Hubs にストリーム配信する方法を示します。 プロデューサーとコンシューマーを使用して、アプリケーションの構成変更だけで Kafka 対応 Event Hubs と通信する方法を説明します。 Azure Event Hubs では、[Apache Kafka バージョン 1.0](https://kafka.apache.org/10/documentation.html) がサポートされています。
@@ -33,28 +33,7 @@ ms.locfileid: "73717808"
 * [Kafka 対応 Event Hubs 名前空間](event-hubs-create.md)
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Kafka 対応 Event Hubs 名前空間の作成
-
-1. [Azure portal](https://portal.azure.com) にサインインし、画面の左上にある **[リソースの作成]** をクリックします。
-
-2. Event Hubs を検索し、以下に示すオプションを選択します。
-    
-    ![ポータルでの Event Hubs の検索](./media/event-hubs-create-kafka-enabled/event-hubs-create-event-hubs.png)
- 
-3. 一意の名前を指定し、名前空間で Kafka を有効にします。 **Create** をクリックしてください。 注:Kafka 用 Event Hubs は、Standard および Dedicated レベルの Event Hubs でのみサポートされます。 Basic レベルの Event Hubs では、Kafka の操作に対してトピックの認可エラーが返されます。
-    
-    ![名前空間の作成](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.jpg)
- 
-4. 名前空間が作成されたら、 **[設定]** タブで **[共有アクセス ポリシー]** をクリックして接続文字列を取得します。
-
-    ![[共有アクセス ポリシー] をクリックする](./media/event-hubs-create/create-event-hub7.png)
-
-5. 既定値の **RootManageSharedAccessKey** を選択することも、新しいポリシーを追加することもできます。 ポリシー名をクリックして、接続文字列をコピーします。 
-    
-    ![ポリシーの選択](./media/event-hubs-create/create-event-hub8.png)
- 
-6. この接続文字列を Kafka アプリケーション構成に追加します。
-
-これで、Kafka プロトコルを使用するアプリケーションからイベントを Event Hubs にストリーミングできます。
+Standard レベルの Event Hubs 名前空間を作成すると、名前空間の Kafka エンドポイントが自動的に有効になります。 Kafka プロトコルを使用するアプリケーションから Standard レベルの Event Hubs にイベントをストリーム配信できます。 Basic レベルの Event Hubs 名前空間については有効になっていません。 
 
 ## <a name="send-and-receive-messages-with-kafka-in-event-hubs"></a>Event Hubs で Kafka を使用してメッセージを送受信する
 
@@ -64,14 +43,26 @@ ms.locfileid: "73717808"
 
 3. `src/main/resources/producer.config` で次のようにプロデューサーの構成の詳細を更新します。
 
+    **SSL:**
+
     ```xml
-    bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
+    bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
     security.protocol=SASL_SSL
     sasl.mechanism=PLAIN
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
     ```
-    
-4. プロデューサー コードを実行し、Kafka 対応 Event Hubs にストリーム配信します。
+    **OAuth:**
+
+    ```xml
+    bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
+    security.protocol=SASL_SSL
+    sasl.mechanism=OAUTHBEARER
+    sasl.jaas.config=org.apache.kafka.common.security.oauthbearer.OAuthBearerLoginModule required;
+    sasl.login.callback.handler.class=CustomAuthenticateCallbackHandler;
+    ```    
+
+    サンプル ハンドラー クラス CustomAuthenticateCallbackHandler のソース コードは、GitHub の[こちら](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/appsecret/producer/src/main/java)にあります。
+4. プロデューサー コードを実行し、Kafka 対応 Event Hubs にイベントをストリーム配信します。
    
     ```shell
     mvn clean package
@@ -82,13 +73,28 @@ ms.locfileid: "73717808"
 
 6. `src/main/resources/consumer.config` で次のようにコンシューマーの構成の詳細を更新します。
    
+    **SSL:**
+
     ```xml
-    bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
+    bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
     security.protocol=SASL_SSL
     sasl.mechanism=PLAIN
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
     ```
 
+    **OAuth:**
+
+    ```xml
+    bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
+    security.protocol=SASL_SSL
+    sasl.mechanism=OAUTHBEARER
+    sasl.jaas.config=org.apache.kafka.common.security.oauthbearer.OAuthBearerLoginModule required;
+    sasl.login.callback.handler.class=CustomAuthenticateCallbackHandler;
+    ``` 
+
+    サンプル ハンドラー クラス CustomAuthenticateCallbackHandler のソース コードは、GitHub の[こちら](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/appsecret/consumer/src/main/java)にあります。
+
+    Kafka 用 Event Hubs の OAuth サンプルはすべて[こちら](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth)にあります。
 7. Kafka クライアントを使用して、Kafka 対応 Event Hubs からコンシューマー コードとプロセスを実行します。
 
     ```java
@@ -98,11 +104,11 @@ ms.locfileid: "73717808"
 
 Event Hubs Kafka クラスターにイベントがある場合は、コンシューマーからそれらの受信を開始します。
 
-## <a name="next-steps"></a>次の手順
-この記事では、プロトコル クライアントを変更したり、独自のクラスターを実行したりせずに、Kafka 対応 Event Hubs にストリーム配信する方法を紹介しました。 さらに学習するには、次のチュートリアルに進んでください。
+## <a name="next-steps"></a>次のステップ
+この記事では、プロトコル クライアントを変更したり、独自のクラスターを実行したりせずに、Kafka 対応 Event Hubs にストリーム配信する方法を紹介しました。 詳細については、以下の記事とサンプルを参照してください。
 
-* [Event Hubs について確認する](event-hubs-what-is-event-hubs.md)
-* [Kafka 用 Event Hubs について確認する](event-hubs-for-kafka-ecosystem-overview.md)
-* [GitHub で Kafka 用 Event Hubs の他のサンプルを調べる](https://github.com/Azure/azure-event-hubs-for-kafka)
-* [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) を使用して[オンプレミスの Kafka からクラウドの Kafka 対応 Event Hubs にイベントをストリーム配信する。](event-hubs-kafka-mirror-maker-tutorial.md)
-* [Apache Flink](event-hubs-kafka-flink-tutorial.md) または [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md) を使用して Kafka 対応 Event Hubs にストリーム配信する方法について確認する
+- [Kafka 用 Event Hubs について確認する](event-hubs-for-kafka-ecosystem-overview.md)
+- [GitHub の Kafka 用 Event Hubs のクイックスタート](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart)
+- [GitHub の Kafka 用 Event Hubs のチュートリアル](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials)
+- [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) を使用して[オンプレミスの Kafka からクラウドの Kafka 対応 Event Hubs にイベントをストリーム配信する。](event-hubs-kafka-mirror-maker-tutorial.md)
+- [Apache Flink](event-hubs-kafka-flink-tutorial.md) または [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md) を使用して Kafka 対応 Event Hubs にストリーム配信する方法について確認する

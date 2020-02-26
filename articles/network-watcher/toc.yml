@@ -8,7 +8,7 @@
   expanded: true
   items:
     - name: 接続モニター (プレビュー)
-      href: connection-monitor-2-preview.md
+      href: connection-monitor-preview.md
     - name: VM トラフィック フィルターに関する問題を診断する - ポータル
       href: diagnose-vm-network-traffic-filtering-problem.md
     - name: VM トラフィック フィルターに関する問題を診断する - PowerShell

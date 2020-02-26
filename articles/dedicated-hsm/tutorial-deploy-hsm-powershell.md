@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2f605d5adda913fa465b43a85bd027458959c122
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 63c531cc0e600d82df74154adb212be76ba9b4de
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928090"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368546"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>チュートリアル - PowerShell を使用して既存の仮想ネットワークに HSM をデプロイする
 
@@ -245,17 +245,18 @@ SSH を使用して HSM デバイスに接続されている場合、HSM が動�
 
 ## <a name="delete-or-clean-up-resources"></a>リソースの削除またはクリーンアップ
 
-HSM デバイスだけでの作業を完了したら、それをリソースとして削除し、空きプールに戻すことができます。 これを行う際の明らかな問題は、デバイス上にあるお客様の機密データです。 お客様の機密データを削除するには、Gemalto クライアントを使用して、デバイスを出荷時の状態にリセットする必要があります。 SafeNet Network Luna 7 デバイスの Gemalto 管理者ガイドを参照して、以下のコマンドを順番に検討してください。
-
-1. `hsm factoryReset -f`
-2. `sysconf config factoryReset -f -service all`
-3. `my file clear -f`
-4. `my public-key clear -f`
-5. `syslog rotate`
-
+HSM デバイスだけでの作業を完了したら、それをリソースとして削除し、空きプールに戻すことができます。 これを行う際の明らかな問題は、デバイス上にあるお客様の機密データです。 デバイスを "ゼロにする" 最善の方法は、HSM 管理者パスワードを 3 回間違えることです (注: これはアプライアンス管理者ではなく、実際の HSM 管理者です)。 キー マテリアルを保護するための安全対策として、デバイスがゼロの状態になるまでは、そのデバイスを Azure リソースとして削除することはできません。
 
 > [!NOTE]
 > Gemalto デバイスの構成に問題がある場合は、[Gemalto カスタマー サポート](https://safenet.gemalto.com/technical-support/)に問い合わせる必要があります。
+
+Azure 内で HSM リソースのみを削除する場合は、次のコマンドを使用できます。"$" 変数を一意のパラメーターで置き換えてください。
+
+```powershel
+
+Remove-AzureRmResource -Resourceid ` /subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/$resourceName
+
+```
 
 このリソース グループ内のリソースでの作業が完了したら、次のコマンドでそれらをすべて削除できます。
 
@@ -268,12 +269,12 @@ Remove-AzResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGrou
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 チュートリアルの手順を完了した後、Dedicated HSM リソースはお客様の仮想ネットワークにプロビジョニングされ、利用可能になります。 これで、お客様にとって望ましいデプロイ アーキテクチャに必要なリソースを追加し、このデプロイを補完できるようになりました。 お客様のデプロイの計画に役立つ詳細情報については、概念に関する各ドキュメントを参照してください。 プライマリ リージョンの 2 つの HSM によってラック レベルの可用性に対処し、セカンダリ リージョンの 2 つの HSM によってリージョンの可用性に対処する設計をお勧めします。 このチュートリアルで使用されたテンプレート ファイルは、2 つの HSM のデプロイに土台として簡単に使用できますが、お客様の要件に合わせてパラメーターを変更する必要があります。
 
 * [高可用性](high-availability.md)
 * [物理的なセキュリティ](physical-security.md)
 * [ネットワーク](networking.md)
-* [監視](monitoring.md)
+* [Monitoring](monitoring.md)
 * [サポート可能性](supportability.md)

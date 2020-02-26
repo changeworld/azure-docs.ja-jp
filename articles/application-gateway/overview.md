@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 11/23/2019
 ms.author: victorh
-ms.openlocfilehash: a72e98341ecafcda98cc2fde34cf1f9d4eaff94c
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 1e80fa23519104c3c62f6a0bf5d65cbbe0848ae2
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658272"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443824"
 ---
 # <a name="what-is-azure-application-gateway"></a>Azure Application Gateway とは
 
@@ -61,7 +61,7 @@ Web アプリケーションが、一般的な既知の脆弱性を悪用した�
 ## <a name="ingress-controller-for-aks"></a>AKS のイングレス コントローラー
 Application Gateway イングレス コントローラー (AGIC) を使うと、[Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) クラスターに対するイングレスとして Application Gateway を使用できます。 
 
-イングレス コントローラーは AKS クラスター内でポッドとして実行され、[Kubernetes イングレス リソース](https://kubernetes.io/docs/concepts/services-networking/ingress/)を消費し、そのリソースを Application Gateway 構成に変換します。これにより、ゲートウェイは、Kubernetes ポッドへのトラフィックを負荷分散できます。 イングレス コントローラーでは、Application Gateway V2 SKU のみがサポートされています。 
+イングレス コントローラーは AKS クラスター内でポッドとして実行され、[Kubernetes イングレス リソース](https://kubernetes.io/docs/concepts/services-networking/ingress/)を消費し、そのリソースを Application Gateway 構成に変換します。これにより、ゲートウェイは、Kubernetes ポッドへのトラフィックを負荷分散できます。 イングレス コントローラーでは、Application Gateway Standard_v2 SKU および WAF_v2 SKU のみがサポートされています。 
 
 詳細については、[Application Gateway イングレス コントローラー (AGIC)](ingress-controller-overview.md) に関するページをご覧ください。
 
@@ -155,6 +155,6 @@ Application Gateway Standard_v2 および WAF_v2 SKU は、自動スケーリン
 
 要件と環境に応じて、Azure Portal、Azure PowerShell、または Azure CLI のいずれかを使用してテスト Application Gateway を作成できます。
 
-- [クイック スタート:Azure Application Gateway による Web トラフィックのルーティング - Azure portal](quick-create-portal.md)
-- [クイック スタート:Azure Application Gateway による Web トラフィックのルーティング - Azure PowerShell](quick-create-powershell.md)
-- [クイック スタート:Azure Application Gateway による Web トラフィックのルーティング - Azure CLI](quick-create-cli.md)
+- [クイック スタート: Azure Application Gateway による Web トラフィックのルーティング - Azure portal](quick-create-portal.md)
+- [クイック スタート: Azure Application Gateway による Web トラフィックのルーティング - Azure PowerShell](quick-create-powershell.md)
+- [クイック スタート: Azure Application Gateway による Web トラフィックのルーティング - Azure CLI](quick-create-cli.md)

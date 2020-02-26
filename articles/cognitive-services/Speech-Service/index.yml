@@ -1,0 +1,211 @@
+### YamlMime:Hub
+title: Speech Service のドキュメント
+summary: 音声認識、音声合成、リアルタイムのトランザクションの取得、会話の文字起こし、ボットへの音声の統合を行います。
+brand: azure
+metadata:
+  title: Speech Service のドキュメント - チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  description: 音声認識、音声合成、リアルタイムのトランザクションの取得、会話の文字起こし、ボットへの音声の統合を行います。
+  author: IEvangelist
+  manager: nitinme
+  ms.service: speech-service
+  ms.topic: hub-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: 26979b2d9ffdd80676ca9162b30ae17db20b1129
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77563025"
+highlightedContent:
+  items:
+  - title: 音声サービスとは
+    itemType: overview
+    url: overview.md
+  - title: Speech SDK リリース ノート
+    itemType: whats-new
+    url: releasenotes.md
+  - title: 音声サービスの言語サポート
+    itemType: reference
+    url: language-support.md
+  - title: 音声サービスのリソースを作成する
+    itemType: how-to-guide
+    url: get-started.md
+conceptualContent:
+  items:
+  - title: 音声テキスト変換
+    links:
+    - itemType: quickstart
+      text: マイク入力を使用して音声を認識する
+      url: quickstarts/speech-to-text-from-microphone.md
+    - itemType: quickstart
+      text: オーディオ ファイルから音声を認識する
+      url: quickstarts/speech-to-text-from-file.md
+    - itemType: quickstart
+      text: Blob Storage に格納された音声を認識する
+      url: quickstarts/from-blob.md
+    footerLink:
+      text: 詳細情報
+      url: index-speech-to-text.yml
+  - title: テキスト読み上げ
+    links:
+    - itemType: quickstart
+      text: スピーカーに音声を合成する
+      url: quickstarts/text-to-speech.md
+    - itemType: quickstart
+      text: オーディオ ファイルに音声を合成する
+      url: quickstarts/text-to-speech-audio-file.md
+    - itemType: quickstart
+      text: 長い形式の音声で音声を合成する
+      url: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
+    footerLink:
+      text: 詳細情報
+      url: index-text-to-speech.yml
+  - title: 音声翻訳
+    links:
+    - itemType: quickstart
+      text: 音声テキスト変換の翻訳
+      url: quickstarts/translate-speech-to-text.md
+    - itemType: quickstart
+      text: 音声を複数のターゲット言語に翻訳する
+      url: quickstarts/translate-speech-to-text-multiple-languages.md
+    - itemType: quickstart
+      text: 音声間翻訳
+      url: quickstarts/translate-speech-to-speech.md
+    footerLink:
+      text: 詳細情報
+      url: index-speech-translation.yml
+  - title: 意図認識
+    links:
+    - itemType: quickstart
+      text: 音声、意図、エンティティを認識する
+      url: quickstarts/intent-recognition.md
+    - itemType: how-to-guide
+      text: LUIS と C# を使用して音声から意図を認識する
+      url: how-to-recognize-intents-from-speech-csharp.md
+    - itemType: reference
+      text: Language Understanding (LUIS) ポータル
+      url: https://www.luis.ai
+    footerLink:
+      text: 詳細情報
+      url: index-intent-recognition.yml
+  - title: 会話のシナリオ
+    links:
+    - itemType: overview
+      text: 会話の文字起こしについて
+      url: conversation-transcription.md
+    - itemType: overview
+      text: マルチデバイスの会話について
+      url: multi-device-conversation.md
+    - itemType: how-to-guide
+      text: コール センターの文字起こし
+      url: call-center-transcription.md
+    footerLink:
+      text: 詳細情報
+      url: index-conversation-scenarios.yml
+  - title: 音声アシスタント
+    links:
+    - itemType: overview
+      text: 音声アシスタントについて
+      url: voice-assistants.md
+    - itemType: quickstart
+      text: カスタム コマンドを使用して音声アシスタントを作成する
+      url: custom-commands.md
+    - itemType: get-started
+      text: Bot Framework を使用して音声アシスタントを作成する
+      url: direct-line-speech.md
+    footerLink:
+      text: 詳細情報
+      url: index-voice-assistants.yml
+  - title: Hosting
+    links:
+    - itemType: how-to-guide
+      text: 音声サービス コンテナー
+      url: speech-container-howto.md
+    - itemType: how-to-guide
+      text: Kubernetes と音声サービス コンテナー
+      url: speech-container-howto-on-premises.md
+    - itemType: how-to-guide
+      text: Azure Container Instances 上の音声サービス コンテナー
+      url: deploy-speech-on-container-instances.md
+    footerLink:
+      text: 詳細情報
+      url: index-hosting.yml
+  - title: デバイス
+    links:
+    - itemType: overview
+      text: Speech Devices SDK について
+      url: speech-devices-sdk.md
+    - itemType: how-to-guide
+      text: Speech Devices SDK を取得する
+      url: get-speech-devices-sdk.md
+    - itemType: quickstart
+      text: Speech Devices SDK を使用する
+      url: speech-devices-sdk-quickstart.md
+    footerLink:
+      text: 詳細情報
+      url: index-devices.yml
+  - title: 移行
+    links:
+    - itemType: how-to-guide
+      text: Bing Speech から移行する
+      url: how-to-migrate-from-bing-speech.md
+    - itemType: how-to-guide
+      text: Custom Speech Service から移行する
+      url: how-to-migrate-from-custom-speech-service.md
+    - itemType: how-to-guide
+      text: Translator Speech API から移行する
+      url: how-to-migrate-from-translator-speech-api.md
+tools:
+  title: ソフトウェア開発キット (SDK)
+  summary: Speech SDK をお好きなプログラミング言語で使い始めましょう。
+  items:
+  - title: C#
+    imageSrc: https://docs.microsoft.com/media/logos/logo_Csharp.svg
+    url: https://aka.ms/csspeech/csharpref
+  - title: C++
+    imageSrc: https://docs.microsoft.com/media/logos/logo_Cplusplus.svg
+    url: https://aka.ms/csspeech/cppref
+  - title: Java
+    imageSrc: https://docs.microsoft.com/media/logos/logo_java.svg
+    url: https://aka.ms/csspeech/javaref
+  - title: JavaScript
+    imageSrc: https://docs.microsoft.com/media/logos/logo_js.svg
+    url: https://aka.ms/csspeech/javascriptref
+  - title: Objective-C と Swift
+    imageSrc: https://docs.microsoft.com/media/logos/logo_ios.svg
+    url: https://aka.ms/csspeech/objectivecref
+  - title: Python
+    imageSrc: https://docs.microsoft.com/media/logos/logo_python.svg
+    url: https://aka.ms/csspeech/pythonref
+additionalContent:
+  sections:
+  - items:
+    - title: REST API
+      links:
+      - text: 音声テキスト変換
+        url: rest-speech-to-text.md
+      - text: バッチ文字起こし
+        url: batch-transcription.md
+      - text: テキスト読み上げ
+        url: rest-text-to-speech.md
+      - text: 会話の文字起こし
+        url: https://signature.centralus.cts.speech.microsoft.com/UI/index.html
+    - title: リソース
+      links:
+      - text: 価格
+        url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
+      - text: リージョン
+        url: regions.md
+      - text: 学習する
+        url: https://docs.microsoft.com/learn/browse/?products=azure-cognitive-services&term=Speech
+    - title: サポート
+      links:
+      - text: サポートとヘルプ
+        url: support.md
+      - text: GitHub のイシュー
+        url: https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues
+      - text: スタック オーバーフロー
+        url: https://aka.ms/SOspeechquestions

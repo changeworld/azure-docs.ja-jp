@@ -7,12 +7,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 6b8458ce41a1bdacddc4102e8282bbc638d4c01c
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 274d725a0e7987c8cb15363ba276aec7ebc541d5
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016495"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426362"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>チュートリアル:IoT Central で接続された廃棄物管理アプリケーションを作成する
 
@@ -129,7 +129,7 @@ Azure IoT Central のデバイス テンプレートは、デバイスの機能�
 
 デバイス テンプレートを表示するには:
 
-1. IoT Central で、アプリケーションの左側のナビゲーション ウィンドウにある **[デバイス テンプレート]** をクリックします。 
+1. IoT Central で、アプリケーションの左側のペインにある **[デバイス テンプレート]** をクリックします。 
 
     ![デバイス テンプレート](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
 
@@ -177,7 +177,7 @@ IoT Central では、シミュレートされたデバイスを作成して、�
 
 ### <a name="to-view-the-devices"></a>デバイスを表示するには:
 
-1. IoT Central の左側のナビゲーション ウィンドウから **[デバイス]** に移動します。 
+1. IoT Central の左側のペインから **[デバイス]** に移動します。 
 
    ![デバイス](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices.png)
 
@@ -202,7 +202,7 @@ Azure IoT Central では、ルールを作成して、デバイスのテレメ�
 **Connected waste management (接続された廃棄物管理)** アプリケーションには、4 つのサンプル ルールがあります。
 
 ### <a name="to-view-rules"></a>ルールを表示するには:
-1. IoT Central の左側のナビゲーション ウィンドウから **[ルール]** に移動します。
+1. IoT Central の左側のペインから **[ルール]** に移動します
 
    ![ルール](./media/tutorial-connectedwastemanagement/connectedwastemanagement-rules.png)
 
@@ -231,13 +231,13 @@ Azure IoT Central では、ルールを作成して、デバイスのテレメ�
 > アプリケーションから、条件が満たされるたびにメールが送信されます。 自動ルールからのメールの受信を停止するには、ルールを**無効**にします。 
   
 新しいルールを作成するには: 
-1. 左側のナビゲーション ウィンドウにある **[ルール]** で **[+ 新規]** を選択します。
+1. 左側のペインの **[ルール]** で、 **[+ 新規]** を選択します。
 
 ## <a name="configure-jobs"></a>ジョブの構成
 
 IoT Central では、ジョブを使用して、複数のデバイスで、デバイスまたはクラウドのプロパティの更新をトリガーできます。 プロパティに加えて、ジョブを使用して、複数のデバイスでデバイス コマンドをトリガーすることもできます。 IoT Central によって、ワークフローが自動化されます。 
 
-1. 左側のナビゲーション ウィンドウから **[ジョブ]** に移動します。 
+1. 左側のペインから **[ジョブ]** に移動します。 
 2. **[+ 新規]** をクリックし、1 つまたは複数のジョブを構成します。 
 
 

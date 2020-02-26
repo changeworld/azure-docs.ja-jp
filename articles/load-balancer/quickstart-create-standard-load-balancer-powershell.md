@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 50a7854688164383bff08bfe55d356fe32239812
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 0cd2bb54bb436beaa933195b88bc6f13a1b23e6f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846521"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470447"
 ---
 # <a name="quickstart-create-a-load-balancer-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用してロード バランサーを作成する
 
@@ -68,7 +68,10 @@ $publicIp = New-AzPublicIpAddress `
  -zone 1
 ```
 
-Basic パブリック IP を作成するには、```-SKU Basic``` を使用します。 運用環境のワークロードには Standard の使用をお勧めします。
+Basic パブリック IP を作成するには、```-SKU Basic``` を使用します。 Basic パブリック IP は、**Standard** Load Balancer と共に利用することはできません。 運用環境のワークロードには **Standard** の使用をお勧めします。
+
+> [!IMPORTANT]
+> 以降このクイックスタートでは、前の SKU 選択プロセスで **Standard** SKU が選択されたことを前提に話を進めます。
 
 ## <a name="create-load-balancer"></a>Load Balancer の作成
 
@@ -161,6 +164,9 @@ $lb = New-AzLoadBalancer `
 ```
 
 Basic Load Balancer を作成するには、```-SKU Basic``` を使用します。 運用環境のワークロードには Standard の使用をお勧めします。
+
+> [!IMPORTANT]
+> 以降このクイックスタートでは、前の SKU 選択プロセスで **Standard** SKU が選択されたことを前提に話を進めます。
 
 ## <a name="create-network-resources"></a>ネットワーク リソースを作成する
 一部の VM を展開してバランサーをテストする前に、サポート ネットワーク リソース (仮想ネットワークと仮想 NIC) を作成する必要があります。 

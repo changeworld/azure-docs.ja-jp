@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 11/14/2019
+ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 8ab673c1a268f5ab663e8f423dd9b60cdfde14ab
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 812680e587ac5c5c8b3d949199a615fcd85fa610
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118380"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485354"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>サンプル ラベル付けツールを使用したラベルによる Form Recognizer モデルのトレーニング
 
@@ -28,10 +28,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - 同じ種類の少なくとも 6 つのフォームのセット。 このデータを使用して、モデルのトレーニングとフォームのテストを行います。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)を使用できます。 Azure Storage アカウントの BLOB ストレージ コンテナーのルートにトレーニング ファイルをアップロードします。
 
+## <a name="create-a-form-recognizer-resource"></a>Form Recognizer リソースを作成する
+
+[!INCLUDE [create resource](../includes/create-resource.md)]
+
 ## <a name="set-up-the-sample-labeling-tool"></a>サンプル ラベル付けツールを設定する
 
 サンプル ラベル付けツールを実行するには、Docker エンジンを使用します。 次の手順に従って、Docker コンテナーを設定します。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。
-1. まず、ホスト コンピューターに Docker をインストールします。 ホスト コンピューターには、ローカル コンピューター ([Windows](https://docs.docker.com/docker-for-windows/)、[MacOS](https://docs.docker.com/docker-for-mac/)、または [Linux](https://docs.docker.com/install/)) を使用できます。 あるいは、[Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/index)、[Azure Container Instances](https://docs.microsoft.com/azure/container-instances/index)、または [Azure Stack にデプロイされている](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy?view=azs-1910) Kubernetes クラスターなど、Azure 内の Docker ホスティング サービスを使用することもできます。 ホスト コンピューターは、次のハードウェア要件を満たしている必要があります。
+1. まず、ホスト コンピューターに Docker をインストールします。 ホスト コンピューターには、ローカル コンピューター ([Windows](https://docs.docker.com/docker-for-windows/)、[macOS](https://docs.docker.com/docker-for-mac/)、または [Linux](https://docs.docker.com/install/)) を使用できます。 あるいは、[Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/index)、[Azure Container Instances](https://docs.microsoft.com/azure/container-instances/index)、または [Azure Stack にデプロイされている](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy?view=azs-1910) Kubernetes クラスターなど、Azure 内の Docker ホスティング サービスを使用することもできます。 ホスト コンピューターは、次のハードウェア要件を満たしている必要があります。
 
     | コンテナー | 最小値 | 推奨|
     |:--|:--|:--|
@@ -89,7 +93,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 サンプル ラベル付けツールでは、プロジェクトに構成と設定が保存されます。 新しいプロジェクトを作成し、フィールドに次の値を入力します。
 
 * **[表示名]** - プロジェクトの表示名
-* **[セキュリティ トークン]** - 一部のプロジェクト設定には、API キーや他の共有シークレットなどの機密性の高い値を含めることができます。 各プロジェクトでは、機密性の高いプロジェクト設定の暗号化または暗号化解除に使用できるセキュリティ トークンが生成されます。 セキュリティ トークンは、左側のナビゲーション バーの下部にある歯車アイコンをクリックすると、[アプリケーション設定] に表示されます。
+* **[セキュリティ トークン]** - 一部のプロジェクト設定には、API キーや他の共有シークレットなどの機密性の高い値を含めることができます。 各プロジェクトでは、機密性の高いプロジェクト設定の暗号化または暗号化解除に使用できるセキュリティ トークンが生成されます。 セキュリティ トークンは、左側のナビゲーション バーの下隅にある歯車アイコンをクリックすると、[アプリケーション設定] に表示されます。
 * **[基になる接続]** - このプロジェクトに使用する、前の手順で作成した Azure Blob Storage 接続。
 * **[フォルダー パス]** (省略可能) - ソース フォームが BLOB コンテナー上のフォルダーに配置されている場合は、ここにフォルダー名を指定します。
 * **[Form Recognizer Service Uri]\(Form Recognizer サービスの URI\)** - Form Recognizer のエンドポイント URL。
@@ -165,7 +169,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 プロジェクトの設定ページ (スライダー アイコン) に移動し、セキュリティ トークンの名前を書き留めます。 次に、アプリケーション設定 (歯車アイコン) に移動します。ここには、現在のブラウザー インスタンスのセキュリティ トークンがすべて表示されます。 プロジェクトのセキュリティ トークンを検索し、その名前とキー値を安全な場所にコピーします。
 
 ### <a name="restore-project-credentials"></a>プロジェクトの資格情報を復元する
-プロジェクトを再開する場合は、まず、同じ Blob Storage コンテナーへの接続を作成する必要があります。 これを行うには、前述の手順に従います。 次に、アプリケーション設定ページ (歯車アイコン) に移動し、プロジェクトのセキュリティ トークンがそこにあるかどうかを確認します。 ない場合は、新しいセキュリティ トークンを追加し、前の手順で保存したトークン名とキーをコピーします。 その後、[設定の保存] をクリックします。 
+プロジェクトを再開する場合は、まず、同じ Blob Storage コンテナーへの接続を作成する必要があります。 これを行うには、前述の手順を繰り返します。 次に、アプリケーション設定ページ (歯車アイコン) に移動し、プロジェクトのセキュリティ トークンがそこにあるかどうかを確認します。 ない場合は、新しいセキュリティ トークンを追加し、前の手順で保存したトークン名とキーをコピーします。 その後、[設定の保存] をクリックします。 
 
 ### <a name="resume-a-project"></a>プロジェクトを再開する
 最後に、メイン ページ (家のアイコン) に移動し、[Open Cloud Project]\(クラウド プロジェクトを開く\) をクリックします。 その後、Blob Storage 接続を選択し、プロジェクトの *.vott* ファイルを選択します。 これにはセキュリティ トークンが含まれているため、アプリケーションによってプロジェクトの設定がすべて読み込まれます。

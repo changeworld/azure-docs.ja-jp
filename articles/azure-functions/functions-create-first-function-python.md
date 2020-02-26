@@ -4,12 +4,12 @@ description: Azure Functions を使用してサーバーレスの Python コー�
 ms.date: 02/11/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: a781e10cee4cf433de5e837490d901020a875205
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 16d4d5627ea297d825092009511915f5b6e734b6
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157892"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212431"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-that-responds-to-http-requests"></a>クイック スタート:HTTP 要求に応答する Python 関数を Azure で作成する
 
@@ -97,7 +97,7 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
     cd LocalFunctionProj
     ```
     
-1. 次のコマンドを使用して、関数を自分のプロジェクトに追加します。ここで、`--name` 引数は関数の一意の名前で、`--template` 引数は関数のトリガーを指定するものです。 `func new` によって、関数と同じ名前のサブフォルダーが作成されます。ここには、プロジェクト用に選択した言語に適したコード ファイルと、*function.json* という名前の構成ファイルが含まれます。
+1. 次のコマンドを使用して、関数を自分のプロジェクトに追加します。ここで、`--name` 引数は関数の一意の名前 (この場合は HttpExample) を指定し、`--template` 引数は関数のトリガー (HTTP trigger) を指定します。 この `func new` コマンドによって、関数と同じ名前のサブフォルダーが作成されます。ここには、プロジェクト用に選択した言語に適したコード ファイルと、*function.json* という名前の構成ファイルが含まれます。
 
     ```
     func new --name HttpExample --template "HTTP trigger"
@@ -167,7 +167,7 @@ HTTP トリガーの場合、この関数は、*function.json* に定義され�
 }
 ```
 
-各バインディングは、方向、型、一意の名前を必要とします。 HTTP トリガーには、[`httpTrigger`](functions-bindings-http-webhook.md#trigger) 型の入力バインディングと、[`http`](functions-bindings-http-webhook.md#output) 型の出力バインディングが与えられます。
+各バインディングは、方向、型、一意の名前を必要とします。 HTTP トリガーには、[`httpTrigger`](functions-bindings-http-webhook-trigger.md) 型の入力バインディングと、[`http`](functions-bindings-http-webhook-output.md) 型の出力バインディングが与えられます。
 
 
 ## <a name="run-the-function-locally"></a>関数をローカルで実行する

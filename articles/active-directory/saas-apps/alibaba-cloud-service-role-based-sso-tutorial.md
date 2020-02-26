@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99b9173c817cc3ecf4b9a34ec6906af0b4de70e6
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: e22bec224d185d0306f2b0032aef929f627c910e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71120764"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367925"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Alibaba Cloud Service (ロールベースの SSO) の統合
 
@@ -29,7 +29,7 @@ ms.locfileid: "71120764"
 
 * Alibaba Cloud Service (ロールベースの SSO) にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントで自動的に Alibaba Cloud Service (ロールベースの SSO) にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -165,7 +165,7 @@ Alibaba Cloud Service (ロールベースの SSO) で Azure AD SSO を構成し�
 
 7. Alibaba Cloud RAM ロール (AADrole) と Azure AD ユーザー (u2) を関連付けます。RAM ロールと Azure AD ユーザーを関連付けるには、次の手順で Azure AD でロールを作成する必要があります。
 
-    a. [Azure AD Graph Explorer](https://developer.microsoft.com/graph/graph-explorer?spm=a2c63.p38356.879954.9.7d904e167h6Yg9) にサインオンします。
+    a. [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) にサインオンします。
 
     b. **[アクセス許可の変更]** をクリックし、ロールの作成に必要なアクセス許可を取得します。
 

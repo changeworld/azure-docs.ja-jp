@@ -10,34 +10,30 @@ ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc, seo-java-august2019, seo-java-september2019
 ms.date: 06/21/2019
-ms.openlocfilehash: 2c07bbb868f1b1afc19be8d1ce68ca28292affb9
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: e693257efb19f1220e346ebfeff1cb875db82b78
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77109014"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471195"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>クイック スタート:Azure IoT ハブに接続されたデバイスを Java で制御する
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
-IoT Hub は、クラウドから IoT デバイスを管理し、大量のデバイス テレメトリを格納または処理のためにクラウドに取り込むことができるようにする Azure サービスです。 このクイックスタートでは、"*ダイレクト メソッド*" を使って、Azure IoT ハブに接続されているシミュレートされたデバイスを Java アプリケーションで制御します。 ダイレクト メソッドを使うと、IoT ハブに接続されたデバイスの動作をリモートで変更できます。 
-
-このクイック スタートでは、あらかじめ作成されている次の 2 つの Java アプリケーションを使います。
-
-* シミュレートされたデバイス アプリケーションは、バックエンド アプリケーションから呼び出されたダイレクト メソッドに応答します。 ダイレクト メソッドの呼び出しを受け取るため、このアプリケーションは IoT ハブ上のデバイス固有のエンドポイントに接続します。
-
-* バックエンド アプリケーションは、シミュレートされたデバイスでダイレクト メソッドを呼び出します。 デバイスでダイレクト メソッドを呼び出すため、このアプリケーションは IoT ハブ上のサービス側エンドポイントに接続します。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+このクイックスタートでは、ダイレクト メソッドを使って、Azure IoT Hub に接続されているシミュレートされたデバイスを Java アプリケーションで制御します。 IoT Hub は、クラウドから IoT デバイスを管理し、大量のデバイス テレメトリを格納または処理のためにクラウドに取り込むことができるようにする Azure サービスです。 ダイレクト メソッドを使うと、IoT ハブに接続されたデバイスの動作をリモートで変更できます。 このクイックスタートでは、2 つの Java アプリケーションを使用します。バックエンド アプリケーションから呼び出されたダイレクト メソッドに応答するシミュレートされたデバイスのアプリケーションと、シミュレートされたデバイスのダイレクト メソッドを呼び出すサービス アプリケーションです。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートで実行する 2 つのサンプル アプリケーションは、Java を使って書かれています。 開発用マシン上に Java SE 8 が必要です。
+* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-複数のプラットフォーム向けの Java SE Development Kit 8 を「[Azure および Azure Stack の Java 長期サポート](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)」からダウンロードできます。 JDK 8 のダウンロードを利用するには、「**長期サポート**」の「**Java 8**」を選択します。
+* Java SE Development Kit 8。 「[Azure および Azure Stack の Java 長期サポート](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)」の「**長期サポート**」で「**Java 8**」を選択します。
+
+* [Apache Maven 3](https://maven.apache.org/download.cgi)。
+
+* [サンプル Java プロジェクト](https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip)。
+
+* ファイアウォールでポート 8883 が開放されていること。 このクイックスタートのデバイス サンプルでは、ポート 8883 を介して通信する MQTT プロトコルを使用しています。 このポートは、企業や教育用のネットワーク環境によってはブロックされている場合があります。 この問題の詳細と対処方法については、[IoT Hub への接続 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub) に関するセクションを参照してください。
 
 開発コンピューターに現在インストールされている Java のバージョンは、次のコマンドを使って確認できます。
 
@@ -45,23 +41,21 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 java -version
 ```
 
-サンプルをビルドするには、Maven 3 をインストールする必要があります。 複数のプラットフォームに対応する Maven を [Apache Maven](https://maven.apache.org/download.cgi) からダウンロードできます。
-
 開発コンピューターに現在インストールされている Maven のバージョンは、次のコマンドを使って確認できます。
 
 ```cmd/sh
 mvn --version
 ```
 
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+### <a name="add-azure-iot-extension"></a>Azure IoT 拡張機能を追加する
+
 次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
 
 ```azurecli-interactive
 az extension add --name azure-cli-iot-ext
 ```
-
-まだ行っていない場合は、 https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip からサンプル Java プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
-
-ポート 8883 がファイアウォールで開放されていることを確認してください。 このクイックスタートのデバイス サンプルでは、ポート 8883 を介して通信する MQTT プロトコルを使用しています。 このポートは、企業や教育用のネットワーク環境によってはブロックされている場合があります。 この問題の詳細と対処方法については、[IoT Hub への接続 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub) に関するセクションを参照してください。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 

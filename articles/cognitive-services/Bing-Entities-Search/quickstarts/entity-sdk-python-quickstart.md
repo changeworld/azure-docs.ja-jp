@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 02/11/2020
 ms.author: aahi
-ms.openlocfilehash: 33ab516b5b501a79ba84c5aba9c3231634f3c662
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a6b62f7ab95f7b2720434c0cf59cce33b0adb1b4
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448694"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201239"
 ---
 # <a name="quickstart-bing-entity-search-sdk-with-python"></a>クイック スタート:Bing Entity Search SDK (Python)
 
@@ -47,16 +47,17 @@ python -m pip install azure-cognitiveservices-search-entitysearch
 1. お気に入りの IDE またはエディターで新しい Python ファイルを作成し、次の import ステートメントを追加します。 
 
     ```python
-    from azure.cognitiveservices.search.entitysearch import EntitySearchAPI
+    from azure.cognitiveservices.search.entitysearch import EntitySearchClient
     from azure.cognitiveservices.search.entitysearch.models import Place, ErrorResponseException
     from msrest.authentication import CognitiveServicesCredentials
     ```
 
-2. サブスクリプション キー用の変数を作成し、それで新しい `CognitiveServicesCredentials` オブジェクトを作成することによってクライアントをインスタンス化します。
+2. 対象のサブスクリプション キーとエンドポイントの変数を作成します。 対象のキーを使用して新しい `CognitiveServicesCredentials` オブジェクトを作成して、クライアントをインスタンス化します。
     
     ```python
     subscription_key = "YOUR-SUBSCRIPTION-KEY"
-    client = EntitySearchAPI(CognitiveServicesCredentials(subscription_key))
+    endpoint = "YOUR-ENDPOINT"
+    client = EntitySearchclient(endpoint=endpoint, credentials=CognitiveServicesCredentials(subscription_key))
     ```
 
 ## <a name="send-a-search-request-and-receive-a-response"></a>検索要求を送信して応答を受信する

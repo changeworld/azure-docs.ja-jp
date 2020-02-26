@@ -99,6 +99,8 @@
         - name: ストリーミング エンドポイント
           displayName: 'origin, packager, cdn'
           href: streaming-endpoint-concept.md
+        - name: CDN を使用したストリーミングのスケーリング
+          href: scale-streaming-cdn.md
         - name: ストリーミング ロケーター
           displayName: URLs
           href: streaming-locators-concept.md
@@ -228,6 +230,8 @@
           href: cli-create-transform.md
         - name: ジョブの作成 - CLI
           href: cli-create-jobs.md
+        - name: 複数の変換出力を含むジョブ
+          href: job-multiple-transform-outputs.md
     - name: コンテンツのエンコード
       items:
         - name: ジョブ入力としての HTTPS - .NET

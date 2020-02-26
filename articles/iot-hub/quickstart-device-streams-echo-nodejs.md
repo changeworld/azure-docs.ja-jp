@@ -9,49 +9,28 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 538e04d7ae4f6528c26762a8efac06d02b4f86bc
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 3bc5dc754509260591acf7c5d5809d5e85794d9b
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083728"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471926"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>クイック スタート:IoT Hub デバイス ストリームを介して Node.js でデバイス アプリケーションと通信する (プレビュー)
 
 [!INCLUDE [iot-hub-quickstarts-3-selector](../../includes/iot-hub-quickstarts-3-selector.md)]
 
-Microsoft Azure IoT Hub は現在、[プレビュー機能](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)としてデバイス ストリームをサポートしています。
-
-[IoT Hub デバイス ストリーム](./iot-hub-device-streams-overview.md)を使用すると、サービス アプリケーションとデバイス アプリケーションが、安全でファイアウォールに対応した方法で通信できます。 パブリック プレビュー中、Node.js SDK ではサービス側のデバイス ストリームのみがサポートされます。 そのため、このクイック スタートでは、サービス側アプリケーションを実行する手順についてのみ説明しています。 次のクイック スタートのいずれかに記載されている、対応するデバイス側アプリケーションも実行する必要があります。
-
-* [IoT Hub デバイス ストリームを介して C でデバイス アプリと通信する](./quickstart-device-streams-echo-c.md)
-
-* [IoT Hub デバイス ストリームを介して C# でデバイス アプリと通信する](./quickstart-device-streams-echo-csharp.md)。
-
-このクイック スタートのサービス側 Node.js アプリケーションには、以下の機能があります。
-
-* IoT デバイスへのデバイス ストリームを作成します。
-
-* コマンド ラインから入力を読み込み、それをデバイス アプリケーションに送信します。デバイス アプリケーションは、それをエコーバックします。
-
-コードは、デバイス ストリームの開始プロセスと、それを使用してデータを送受信する方法を示しています。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+このクイックスタートでは、サービス側アプリケーションを実行し、デバイス ストリームを使用して、デバイスとサービスとの間の通信を設定します。 Azure IoT Hub デバイス ストリームを使用すると、サービス アプリケーションとデバイス アプリケーションが、安全でファイアウォールに対応した方法で通信できます。 パブリック プレビュー中、Node.js SDK ではサービス側のデバイス ストリームのみがサポートされます。 そのため、このクイック スタートでは、サービス側アプリケーションを実行する手順についてのみ説明しています。
 
 ## <a name="prerequisites"></a>前提条件
 
-デバイス ストリームのプレビューは現在、次のリージョンで作成された IoT Hub に対してのみサポートされています。
+* [IoT Hub デバイス ストリームを介して C でデバイス アプリと通信する](./quickstart-device-streams-echo-c.md)クイックスタートまたは [IoT Hub デバイス ストリームを介して C# でデバイス アプリと通信する](./quickstart-device-streams-echo-csharp.md)クイックスタートが完了していること。
 
-  * 米国中部
-  * 米国中部 EUAP
-  * 北ヨーロッパ
-  * 東南アジア
+* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-このクイックスタートのサービス側アプリケーションを実行するには、開発用マシンに Node.js v10.x.x 以降が必要です。
+* [Node.js 10 以上](https://nodejs.org)。
 
-複数のプラットフォームに対応する Node.js を [Nodejs.org](https://nodejs.org) からダウンロードできます。
+* [サンプル Node.js プロジェクト](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip)。
 
 開発コンピューターに現在インストールされている Node.js のバージョンは、次のコマンドを使って確認できます。
 
@@ -59,19 +38,31 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 node --version
 ```
 
+Microsoft Azure IoT Hub は現在、[プレビュー機能](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)としてデバイス ストリームをサポートしています。
+
+> [!IMPORTANT]
+> デバイス ストリームのプレビューは現在、次のリージョンで作成された IoT Hub に対してのみサポートされています。
+>
+> * 米国中部
+> * 米国中部 EUAP
+> * 北ヨーロッパ
+> * 東南アジア
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+### <a name="add-azure-iot-extension"></a>Azure IoT 拡張機能を追加する
+
 次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、および IoT Device Provisioning Service (DPS) のコマンドが Azure CLI に追加されます。
 
 ```azurecli-interactive
 az extension add --name azure-cli-iot-ext
 ```
 
-まだ行っていない場合は、 https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip からサンプル Node.js プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
-
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
 前出の[デバイスから IoT ハブへの利用統計情報の送信に関するクイック スタート](quickstart-send-telemetry-node.md)を完了した場合は、この手順を省略できます。
 
-[!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>デバイスの登録
 
@@ -91,7 +82,7 @@ az extension add --name azure-cli-iot-ext
 
 2. また、バックエンド アプリケーションが IoT ハブに接続してメッセージを取得できるようにするには、"*サービス接続文字列*" が必要です。 次のコマンドを実行すると、IoT ハブのサービス接続文字列が取得されます。
 
-    **YourIoTHubName**:このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
+    **YourIoTHubName**: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
     az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
@@ -109,13 +100,20 @@ az extension add --name azure-cli-iot-ext
 
 前述のように、IoT Hub Node.js SDK ではサービス側のデバイス ストリームのみがサポートされます。 デバイス側アプリケーションについては、以下のクイックスタートに記載されている、対応するいずれかのデバイス プログラムを使用してください。
 
-   * [IoT Hub デバイス ストリームを介して C でデバイス アプリと通信する](./quickstart-device-streams-echo-c.md)
+* [IoT Hub デバイス ストリームを介して C でデバイス アプリと通信する](./quickstart-device-streams-echo-c.md)
 
-   * [IoT Hub デバイス ストリームを介して C# でデバイス アプリと通信する](./quickstart-device-streams-echo-csharp.md)
+* [IoT Hub デバイス ストリームを介して C# でデバイス アプリと通信する](./quickstart-device-streams-echo-csharp.md)
 
 次の手順に進む前に、デバイス側アプリケーションが実行されていることを確認します。
 
 ### <a name="run-the-service-side-application"></a>サービス側アプリケーションの実行
+
+このクイック スタートのサービス側 Node.js アプリケーションには、以下の機能があります。
+
+* IoT デバイスへのデバイス ストリームを作成します。
+* コマンド ラインから入力を読み込み、それをデバイス アプリケーションに送信します。デバイス アプリケーションは、それをエコーバックします。
+
+コードは、デバイス ストリームの開始プロセスと、それを使用してデータを送受信する方法を示しています。
 
 デバイス側アプリケーションが実行されているとして、Node.js でサービス側アプリケーションを実行するには、ローカルのターミナル ウィンドウで次の手順に従います。
 
@@ -151,11 +149,11 @@ az extension add --name azure-cli-iot-ext
 
 その後、もう一度 Enter キーを押すと、プログラムを終了することができます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources-device-streams](../../includes/iot-hub-quickstarts-clean-up-resources-device-streams.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、IoT ハブの設定、デバイスの登録、デバイス側とサービス側のアプリケーション間のデバイス ストリームの確立、そのストリームを使用したアプリケーション間のデータのやり取りを行いました。
 

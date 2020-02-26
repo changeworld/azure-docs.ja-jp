@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 8bf4039ac968883628a72974b64d90faf707c9af
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 6280f3784247b671521a4994be1f233d4913d90c
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700296"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194502"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Microsoft ID プラットフォーム (v2.0) の概要
 
@@ -42,7 +42,11 @@ Microsoft ID プラットフォームでは、一度コードを記述すれば�
 
 ## <a name="getting-started"></a>作業の開始
 
-ID の処理は難しくありません。 自身に当てはまる[シナリオ](authentication-flows-app-scenarios.md)を選択します。それぞれのシナリオ パスにはクイックスタートと概要ページが用意されており、数分で起動し実行できます。
+ID の処理は難しくありません。 
+
+[Microsoft ID プラットフォームのビデオ](identity-videos.md)を見て、基本を学習してください。 
+
+自身に当てはまる[シナリオ](authentication-flows-app-scenarios.md)を選択します。それぞれのシナリオ パスにはクイックスタートと概要ページが用意されており、数分で起動し実行できます。
 
 - [単一ページのアプリを構築する](scenario-spa-overview.md)
 - [ユーザーをサインインさせる Web アプリを構築する](scenario-web-app-sign-user-overview.md)

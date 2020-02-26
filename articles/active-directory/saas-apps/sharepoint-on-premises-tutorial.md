@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 7feb62bb3e38452a441c505107569457d7c90a3f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 60ff8769192191ba112008e7baee23740147dfe9
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233447"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367036"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>チュートリアル:Azure Active Directory と SharePoint オンプレミスの統合
 
@@ -176,7 +176,7 @@ SharePoint オンプレミスで Azure AD シングル サインオンを構成�
 
     d. サインイン ページの URL 設定で、 **[カスタム サインイン ページ]** を選択し、値 "/_trust/" を指定します。
 
-    e. Click **OK**.
+    e. **[OK]** をクリックします。
 
     ![認証プロバイダーを構成する](./media/sharepoint-on-premises-tutorial/fig10-configauthprovider.png)
 
@@ -263,7 +263,7 @@ SharePoint オンプレミスで Azure AD シングル サインオンを構成�
 
 9. 次に、[必要なアクセス許可] で、 **[アクセス許可の付与]** をクリックしてから、[はい] をクリックしてアクセス許可を付与します。
 
-    ![アクセス許可の付与](./media/sharepoint-on-premises-tutorial/grantpermission.png)
+    ![権限の許可](./media/sharepoint-on-premises-tutorial/grantpermission.png)
 
     > [!NOTE]
     > 通知を調べて、アクセス許可が正常に付与されたかどうかを確認します。  されていない場合、AzureCP は正しく機能せず、Azure Active Directory セキュリティ グループでオンプレミスの SharePoint を構成することはできません。
@@ -330,7 +330,7 @@ Azure AD からの ID を使用して SharePoint 2016 にユーザーがサイ�
 
 検索条件値の検証機能がないため、スペル ミスや、ユーザーが誤って正しくない種類の要求を選択して、たとえば **[姓]** 要求を割り当てる可能性があります。 これにより、ユーザーがリソースにアクセスできない可能性があります。
 
-このシナリオのために、[AzureCP](https://yvand.github.io/AzureCP/) と呼ばれるオープン ソース ソリューションがあり、SharePoint 2016 のカスタム クレーム プロバイダーを提供します。 このソリューションは、Azure AD Graph を使用してユーザー入力を解決し、検証します。 詳細については [AzureCP](https://yvand.github.io/AzureCP/) を参照してください。
+このシナリオのために、[AzureCP](https://yvand.github.io/AzureCP/) と呼ばれるオープン ソース ソリューションがあり、SharePoint 2016 のカスタム クレーム プロバイダーを提供します。 このソリューションは、Microsoft Graph API を使用してユーザー入力を解決し、検証します。 詳細については [AzureCP](https://yvand.github.io/AzureCP/) を参照してください。
 
 ### <a name="assign-the-azure-ad-security-group-in-the-azure-portal"></a>Azure portal で Azure AD セキュリティ グループを割り当てる
 

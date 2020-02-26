@@ -150,6 +150,8 @@
               href: sql-database-managed-instance-public-endpoint-securely.md
             - name: マネージド インスタンスの監査
               href: sql-database-managed-instance-auditing.md
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: 接続とクエリ
       href: sql-database-connect-query.md
       items:

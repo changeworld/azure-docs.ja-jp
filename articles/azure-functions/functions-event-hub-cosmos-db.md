@@ -5,12 +5,12 @@ author: KarlErickson
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
-ms.openlocfilehash: cef1d09f3365350240cb2ed879e4d41edec74aef
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b6d7b2c60e777266b1cab578b8970c1fa1c6bc50
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849838"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425325"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>チュートリアル:イベント ハブ トリガーと Azure Cosmos DB 出力バインドを使用して Java で関数を作成する
 
@@ -36,6 +36,8 @@ ms.locfileid: "74849838"
 
 > [!IMPORTANT]
 > このチュートリアルを完了するには、`JAVA_HOME` 環境変数を JDK のインストール場所に設定する必要があります。
+
+このチュートリアルのコードを直接使用する場合は、[java-functions-eventhub-cosmosdb](https://github.com/Azure-Samples/java-functions-eventhub-cosmosdb) サンプル リポジトリを参照してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -71,7 +73,7 @@ LOCATION=<value>
 
 このチュートリアルの残りの部分では、これらの変数を使用します。 これらの変数は、現在の Azure CLI または Cloud Shell セッションの間のみ持続することに注意してください。 別のローカル ターミナル ウィンドウを使用するか、Cloud Shell セッションがタイムアウトした場合は、これらのコマンドを再度実行する必要があります。
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 Azure では、リソース グループを使ってアカウント内のすべての関連リソースが収集されます。 そのため、それらをユニットとして表示し、作業が完了したら 1 つのコマンドを使用してそれらを削除できます。
 
@@ -201,7 +203,7 @@ az functionapp config appsettings set \
 
 ## <a name="create-and-test-your-functions"></a>関数を作成してテストする
 
-次に、ローカル コンピューターにプロジェクトを作成し、Java コードを追加してテストします。 Azure Functions および Azure Functions Core Tools 用の Maven プラグインで動作するコマンドを使用します。 関数はローカルで実行されますが、作成したクラウドベースのリソースが使用されます。 関数をローカルで実行した後は、Maven を使用してそれらをクラウドにデプロイし、データと分析が蓄積されていることを確認できます。
+次に、ローカル コンピューターにプロジェクトを作成し、Java コードを追加してテストします。 Maven 用 Azure Functions プラグインおよび Azure Functions Core Tools で動作するコマンドを使用します。 関数はローカルで実行されますが、作成したクラウドベースのリソースが使用されます。 関数をローカルで実行した後は、Maven を使用してそれらをクラウドにデプロイし、データと分析が蓄積されていることを確認できます。
 
 Cloud Shell を使用してリソースを作成した場合、ローカルで Azure に接続することはできません。 この場合は、`az login` コマンドを使用してブラウザーベースのログイン プロセスを起動します。 必要に応じて、`az account set --subscription` に続けてサブスクリプション ID を指定して既定のサブスクリプションを設定します。 最後に、次のコマンドを実行して、ローカル コンピューター上でいくつかの環境変数を再作成します。 `<value>` プレースホルダーを以前に使用したものと同じ値に置き換えます。
 
@@ -433,7 +435,7 @@ mvn azure-functions:deploy
 
 ![Application Insights の [パフォーマンス] ブレード](media/functions-event-hub-cosmos-db/application-insights-performance.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルで作成した Azure リソースの使用が完了したら、次のコマンドを使用して削除できます。
 
@@ -441,7 +443,7 @@ mvn azure-functions:deploy
 az group delete --name $RESOURCE_GROUP
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、イベント ハブ イベントを処理し、Cosmos DB を更新する Azure 関数を作成する方法を学習しました。 詳細については、「[Azure Functions の Java 開発者向けガイド](/azure/azure-functions/functions-reference-java)」を参照してください。 使用する注釈の詳細については、[com.microsoft.azure.functions.annotation](/java/api/com.microsoft.azure.functions.annotation) のリファレンスを参照してください。
 

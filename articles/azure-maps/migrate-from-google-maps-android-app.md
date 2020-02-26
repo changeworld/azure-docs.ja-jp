@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 855036a5a8e87bd10e9a4d524a1e8ea8bcdccf50
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 9514398ec6a84becd1283e4b0975804101b64086
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086304"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209734"
 ---
 # <a name="migrate-an-android-app-from-google-maps"></a>Google Maps から Android アプリを移行する
 
@@ -338,7 +338,7 @@ getBaseContext().getResources().updateConfiguration(config,
 
 **後: Azure Maps**
 
-Azure Maps には、マップの言語と地域ビューを設定するための 3 つの異なる方法が用意されています。 1 つ目は、言語と地域ビューの情報を `AzureMaps` クラスに渡す方法です。 この方法では、静的な `setLanguage` メソッドと `setView` メソッドをグローバルに使用します。 つまり、アプリに読み込まれたすべての Azure Maps コントロールに対して、既定の言語と地域ビューが設定されます。 この例では、"fr-FR" 言語コードを使用してフランス語を設定しています。
+Azure Maps には、マップの言語と地域ビューを設定するための 3 つの異なる方法が用意されています。 1 つ目は、言語と地域ビューの情報を `AzureMaps` クラスに渡す方法です。 この方法では、静的な `setLanguage` メソッドと `setView` メソッドをグローバルに使用します。 つまり、アプリに読み込まれたすべての Azure Maps コントロールに対して、既定の言語と地域のビューが設定されます。 この例では、"fr-FR" 言語コードを使用してフランス語を設定しています。
 
 ```java
 static {
@@ -384,7 +384,7 @@ mapControl.onReady(map -> {
 
 ## <a name="setting-the-map-view"></a>マップ ビューの設定
 
-Azure Maps および Google Maps の両方の動的マップは、適切なメソッドを呼び出すことによって、プログラムで新しい地理的な場所に移動できます。 マップに衛星航空映像を表示し、特定の座標位置をマップの中心に設定して、ズーム レベルを変更してみましょう。 この例では、緯度 35.0272、経度 -111.0225、ズーム レベル 15 を使用します。
+Azure Maps および Google Maps の両方の動的マップは、適切なメソッドを呼び出すことによって、プログラムで新しい地理的な場所に移動できます。 マップに衛星航空映像を表示し、特定の座標位置をマップの中心に設定して、ズーム レベルを変更してみましょう。 この例では、緯度は 35.0272、経度は -111.0225、ズーム レベルは 15 です。
 
 **前: Google Maps**
 
@@ -725,7 +725,7 @@ public void onMapReady(GoogleMap googleMap) {
 他のレイヤーと同じような方法で、タイル レイヤーをマップに追加できます。 x、y、ズーム プレースホルダー(`{x}`、`{y}`、`{z}`) の書式設定された URL はそれぞれ、タイルにアクセスする場所をレイヤーに指示するために使用されます。 また、Azure Maps のタイル レイヤーでは、`{quadkey}`、`{bbox-epsg-3857}`、`{subdomain}` のプレースホルダーがサポートされます。 タイル レイヤーを半透明にするには、不透明度の値 0.8 を使用します。 不透明度と透明度は似ていますが、逆の値を使用します。 2 つのオプション間で変換するには、その値を 1 から減算します。
 
 > [!TIP]
-> Azure Maps では、レイヤーを他のレイヤー (基準マップ レイヤーを含む) の下にレンダリングすると便利です。 多くの場合、読みやすいようにタイル レイヤーをマップ ラベルの下にレンダリングすることをお勧めします。 `map.layers.add` メソッドでは、2 番目のパラメーターを受け取ります。これは、下に新しいレイヤーを挿入するレイヤーの ID です。 マップ ラベルの下にタイル レイヤーを挿入する場合は、次のコードを使用できます: `map.layers.add(myTileLayer, "labels");`
+> Azure Maps では、レイヤーを他のレイヤー (基準マップ レイヤーを含む) の下にレンダリングすると便利です。 また、多くの場合、読みやすいようにタイル レイヤーをマップ ラベルの下にレンダリングすることをお勧めします。 `map.layers.add` メソッドでは、2 番目のパラメーターを受け取ります。これは、下に新しいレイヤーを挿入するレイヤーの ID です。 マップ ラベルの下にタイル レイヤーを挿入する場合は、次のコードを使用できます: `map.layers.add(myTileLayer, "labels");`
 
 ```java
 mapControl.onReady(map -> {

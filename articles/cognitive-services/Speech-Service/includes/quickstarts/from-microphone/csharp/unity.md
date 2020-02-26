@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: 894c9d34f3e9874a51f5939021f908ac4ecaaaa9
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 531e9dbec55c5a6a305b321df7a11067c0ade92a
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156660"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77445920"
 ---
 > [!NOTE]
 > Unity 用 Speech SDK では、Windows デスクトップ (x86 および x64) またはユニバーサル Windows プラットフォーム (x86、x64、ARM、ARM64)、Android (x86、ARM32、ARM64)、および iOS (x64 シミュレーター、ARM32 および ARM64) がサポートされています
@@ -90,7 +90,7 @@ Unity プロジェクトにサンプル スクリプト コードを追加する
 
 1. `YourSubscriptionKey` という文字列を探し、実際の Speech サービスのサブスクリプション キーに置き換えます。
 
-1. `YourServiceRegion` という文字列を見つけ、実際のサブスクリプションに関連付けられている[リージョン](https://aka.ms/speech/sdkregion)の "Speech SDK パラメーター" で置き換えます。 たとえば、無料試用版を使用している場合、リージョンは `westus` になります。
+1. `YourServiceRegion` という文字列を見つけて、自分のサブスクリプションに関連付けられている[リージョン](https://aka.ms/speech/sdkregion)の**リージョン識別子**に置き換えます。 たとえば、無料試用版を使用している場合、リージョンは `westus` になります。
 
 1. スクリプトへの変更を保存します。
 

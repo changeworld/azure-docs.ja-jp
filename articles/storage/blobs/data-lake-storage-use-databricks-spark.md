@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: e26ae4d384b1718b1cdb12abbda82aad22afde4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0c18c39ced40505a87af8907a65aa16aae978838
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462580"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471875"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>チュートリアル:Azure Data Lake Storage Gen2、Azure Databricks、および Spark
 
@@ -76,8 +76,8 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     |**ワークスペース名**     | Databricks ワークスペースの名前を指定します。  |
     |**サブスクリプション**     | ドロップダウンから Azure サブスクリプションを選択します。        |
     |**リソース グループ**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../../azure-resource-manager/management/overview.md)に関するページをご覧ください。 |
-    |**Location**     | **[米国西部 2]** を選択します。 使用可能な他のリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。       |
-    |**Pricing Tier**     |  **[Standard]** を選択します。     |
+    |**場所**     | **[米国西部 2]** を選択します。 使用可能な他のリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。       |
+    |**価格レベル**     |  **[Standard]** を選択します。     |
 
     ![Azure Databricks ワークスペースを作成します](./media/data-lake-storage-use-databricks-spark/create-databricks-workspace.png "Azure Databricks サービスを作成する")
 
@@ -129,7 +129,7 @@ AzCopy を使用して *.csv* ファイルから Data Lake Storage Gen2 アカ�
 
    * `<storage-account-name>` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
 
-   * `<container-name>` プレースホルダーを、ご自身のコンテナーに付ける名前に置き換えます。
+   * `<container-name>` プレースホルダーは、実際のストレージ アカウントにあるコンテナーの名前に置き換えます。
 
 ## <a name="create-a-container-and-mount-it"></a>コンテナーを作成してマウントする
 
@@ -161,20 +161,7 @@ AzCopy を使用して *.csv* ファイルから Data Lake Storage Gen2 アカ�
     extra_configs = configs)
     ```
 
-18. このコード ブロックでは、`appId`、`password`、`tenant`、および `storage-account-name` のプレースホルダー値を、このチュートリアルの前提条件の実行中に収集した値で置き換えます。 `container-name` プレースホルダーの値は、前の手順でコンテナーに付けた名前に置き換えます。
-
-これらの値で、説明したプレース ホルダーを置き換えます。
-
-   * `appId` および `password` は、サービス プリンシパルの作成の一環として Active Directory に登録したアプリのものです。
-
-   * `tenant-id` は、自分のサブスクリプションのものです。
-
-   * `storage-account-name` は、Azure Data Lake Storage Gen2 ストレージ アカウントの名前です。
-
-   * `container-name` プレースホルダーを、ご自身のコンテナーに付ける名前に置き換えます。
-
-   > [!NOTE]
-   > 運用設定では、パスワードを Azure Databricks に格納することを検討してください。 次に、パスワードではなくルック アップ キーをコード ブロックに追加します。 このクイック スタートの完了後、Azure Databricks Web サイトの記事「[Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)」で、このアプローチの例を参照してください。
+18. このコード ブロックでは、`appId`、`password`、`tenant`、および `storage-account-name` のプレースホルダー値を、このチュートリアルの前提条件の実行中に収集した値で置き換えます。 プレースホルダー `container-name` の値は、コンテナーの名前に置き換えます。
 
 19. **Shift + Enter** キーを押して、このブロック内のコードを実行します。
 

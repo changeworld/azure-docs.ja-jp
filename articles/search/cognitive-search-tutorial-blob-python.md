@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: c7c4da97101ae1277474e62466d78ffbc66b1ce0
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: d9ae7f4b7dd8b0f45ae02bd2a90aca78127fd3d3
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563277"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472402"
 ---
 # <a name="tutorial-create-an-ai-enrichment-pipeline-using-rest-and-python"></a>チュートリアル:REST および Python を使用して AI エンリッチメント パイプラインを作成する
 
@@ -31,7 +31,7 @@ ms.locfileid: "75563277"
 
 出力は、Azure Cognitive Search のフルテキスト検索可能なインデックスです。 インデックスは、[シノニム](search-synonyms.md)、[スコアリング プロファイル](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)、[アナライザー](search-analyzers.md)、および[フィルター](search-filters.md)などの他の標準的な機能を使って強化できます。 
 
-このチュートリアルは無料のサービスで実行されますが、無料のトランザクションの数は 1 日あたり 20 のドキュメントまでに制限されます。 このチュートリアルを同じ日に複数回実行する場合は、より小さなファイル セットを使用して、より多くの実行が制限内に収まるようにします。
+このチュートリアルは無料のサービスで実行されますが、無料のトランザクションの数は 1 日あたり 20 のドキュメントまでに制限されます。 同じ日に複数回このチュートリアルを実行したい場合は、インデクサーを削除してカウンターをリセットしてください。
 
 > [!NOTE]
 > 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure Cognitive Search のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。

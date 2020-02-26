@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 11/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 882904ec09014df821c648bb4823d7a0930abba5
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 6348d09351cf627624340083e2c419def38dfc01
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156600"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77445618"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -58,7 +58,7 @@ ms.locfileid: "77156600"
 
 1. 同じファイル内で、文字列 `YourSubscriptionKey` をサブスクリプション キーに置き換えます。
 
-1. また、`YourServiceRegion` という文字列を見つけて、自分のサブスクリプションに関連付けられている[リージョン](https://aka.ms/speech/sdkregion)の "Speech SDK パラメーター" で置き換えます。 たとえば、無料試用版サブスクリプションの場合は `westus` を使用します。
+1. また、`YourServiceRegion` という文字列を見つけて、自分のサブスクリプションに関連付けられている[リージョン](https://aka.ms/speech/sdkregion)の**リージョン識別子**に置き換えます。 たとえば、無料試用版サブスクリプションの場合は `westus` を使用します。
 
 ## <a name="build-and-run-the-app"></a>アプリのビルドと実行
 

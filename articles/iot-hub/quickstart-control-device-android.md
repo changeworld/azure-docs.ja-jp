@@ -10,44 +10,42 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: 4b31b1ee77e6bcafc4981c85f0118d02de00a964
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 765379068b7a02a8d3cca17a34699a1883881793
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108927"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471246"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>クイック スタート:IoT ハブに接続されたデバイスを制御する (Android)
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
-IoT Hub は、クラウドから IoT デバイスを管理し、大量のデバイス テレメトリを格納または処理のためにクラウドに取り込むことができるようにする Azure サービスです。 このクイック スタートでは、"*ダイレクト メソッド*" を使って、IoT ハブに接続されているシミュレートされたデバイスを制御します。 ダイレクト メソッドを使うと、IoT ハブに接続されたデバイスの動作をリモートで変更できます。
-
-このクイック スタートでは、あらかじめ作成されている次の 2 つの Java アプリケーションを使います。
-
-* バックエンド サービス アプリケーションから呼び出されたダイレクト メソッドに応答するシミュレートされたデバイスのアプリケーション。 ダイレクト メソッドの呼び出しを受け取るため、このアプリケーションは IoT ハブ上のデバイス固有のエンドポイントに接続します。
-
-* Android デバイス上でダイレクト メソッドを呼び出すサービス アプリケーション。 デバイスでダイレクト メソッドを呼び出すため、このアプリケーションは IoT ハブ上のサービス側エンドポイントに接続します。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+このクイックスタートでは、ダイレクト メソッドを使って、Azure IoT Hub に接続されているシミュレートされたデバイスを制御します。 IoT Hub は、クラウドから IoT デバイスを管理し、大量のデバイス テレメトリを格納または処理のためにクラウドに取り込むことができるようにする Azure サービスです。 ダイレクト メソッドを使うと、IoT ハブに接続されたデバイスの動作をリモートで変更できます。 このクイックスタートでは、2 つのアプリケーションを使用します。バックエンド サービス アプリケーションから呼び出されたダイレクト メソッドに応答するシミュレートされたデバイスのアプリケーションと、Android デバイスのダイレクト メソッドを呼び出すサービス アプリケーションです。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Android Studio (https://developer.android.com/studio/ )。 Android Studio のインストールの詳細については、[Android のインストール](https://developer.android.com/studio/install)に関するページを参照してください。
+* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-* この記事のサンプルでは、Android SDK 27 を使用しています。
+* [Android Studio と Android SDK 27](https://developer.android.com/studio/)。 詳細については、「[Android Studio のインストール](https://developer.android.com/studio/install)」を参照してください。
 
-* 次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
+* [Git](https://git-scm.com/download/).
 
-   ```azurecli-interactive
-   az extension add --name azure-cli-iot-ext
-   ```
+* [Device SDK のサンプル Android アプリケーション](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample)。[Azure IoT サンプル (Java)](https://github.com/Azure-Samples/azure-iot-samples-java) に含まれています。
 
-* このクイック スタートでは、2 つのサンプル アプリケーションが必要です ([Device SDK サンプル Android アプリケーション](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample)と [Service SDK サンプル Android アプリケーション](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/service/AndroidSample))。 どちらのサンプルも、GitHub 上の azure-iot-samples-java リポジトリに含まれています。 [azure-iot-samples-java](https://github.com/Azure-Samples/azure-iot-samples-java) リポジトリをダウンロードまたは複製してください。
+* [Service SDK のサンプル Android アプリケーション](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/service/AndroidSample)。Azure IoT サンプル (Java) に含まれています。
 
-* ポート 8883 がファイアウォールで開放されていることを確認してください。 このクイックスタートのデバイス サンプルでは、ポート 8883 を介して通信する MQTT プロトコルを使用しています。 このポートは、企業や教育用のネットワーク環境によってはブロックされている場合があります。 この問題の詳細と対処方法については、[IoT Hub への接続 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub) に関するセクションを参照してください。
+* ファイアウォールでポート 8883 が開放されていること。 このクイックスタートのデバイス サンプルでは、ポート 8883 を介して通信する MQTT プロトコルを使用しています。 このポートは、企業や教育用のネットワーク環境によってはブロックされている場合があります。 この問題の詳細と対処方法については、[IoT Hub への接続 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub) に関するセクションを参照してください。
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+### <a name="add-azure-iot-extension"></a>Azure IoT 拡張機能を追加する
+
+次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
+
+```azurecli-interactive
+az extension add --name azure-cli-iot-ext
+```
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
@@ -106,6 +104,8 @@ az iot hub show-connection-string --policy-name service --name {YourIoTHubName} 
 この値は、このクイック スタートの後の方で使います。 このサービス接続文字列は、前の手順でメモしたデバイス接続文字列とは異なります。
 
 ## <a name="listen-for-direct-method-calls"></a>ダイレクト メソッドの呼び出しをリッスンする
+
+このクイックスタートでは、どちらのサンプルも、GitHub 上の azure-iot-samples-java リポジトリに含まれています。 [azure-iot-samples-java](https://github.com/Azure-Samples/azure-iot-samples-java) リポジトリをダウンロードまたは複製してください。
 
 このデバイス SDK サンプル アプリケーションは、物理 Android デバイスまたは Android Emulator 上で実行することができます。 このサンプルは、IoT ハブ上のデバイス固有エンドポイントに接続し、シミュレートされた利用統計情報を送信して、ハブからのダイレクト メソッド呼び出しをリッスンします。 このクイック スタートでは、ハブからのダイレクト メソッド呼び出しは、利用統計情報の送信間隔を変更するようデバイスに指示します。 シミュレートされたデバイスでは、ダイレクト メソッドを実行した後、ハブに受信確認が返送されます。
 

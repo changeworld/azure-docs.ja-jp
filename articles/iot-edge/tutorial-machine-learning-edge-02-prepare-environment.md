@@ -8,12 +8,12 @@ ms.date: 1/23/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a36427616691b0a0d400dadb4e35c2f7fbf23b22
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 572441fe13dfeff550e2e541c3d775bd4c3d433e
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722292"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482906"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>チュートリアル:IoT Edge 上に機械学習用の環境を設定する
 
@@ -26,7 +26,7 @@ ms.locfileid: "76722292"
 
 この手順は、通常はクラウド開発者によって実行されます。 一部のソフトウェアはデータ サイエンティストの役にも立ちます。
 
-前提条件の多くが既に構成済みになっている Azure 仮想マシンを作成するための PowerShell スクリプトを作成しました。 作成する VM では、[入れ子になった仮想化](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)を処理できる必要があります。このため、マシン サイズとして [Standard_D8s_v3](../virtual-machines/windows/sizes-general.md#dsv3-series-1) が選択されています。
+前提条件の多くが既に構成済みになっている Azure 仮想マシンを作成するための PowerShell スクリプトを作成しました。 作成する VM では、[入れ子になった仮想化](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)を処理できる必要があります。このため、マシン サイズとして [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) が選択されています。
 
 開発用 VM の設定には次のものが必要です。
 
@@ -35,7 +35,7 @@ ms.locfileid: "76722292"
 * [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop)
 * [Git for Windows](https://gitforwindows.org/)
 * [Git Credential Manager for Windows](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)
-* [.Net Core SDK](https://dotnet.microsoft.com/)
+* [.NET Core SDK](https://dotnet.microsoft.com/)
 * [Python 3](https://www.python.org/)
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0)

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 02/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc99e23e1b885de25bd2159d7916790cad851108
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 1d83dbe756e8e6acdb58861ac359801bc13a63c4
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77150286"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373210"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>チュートリアル:Azure Active Directory SSO と Jamf Pro の統合
 
@@ -31,7 +31,7 @@ ms.locfileid: "77150286"
 * ユーザーが自分の Azure AD アカウントを使用して Jamf Pro に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、[Azure Active Directory でのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)に関するページを参照してください。
+SaaS アプリと Azure AD の統合の詳細については、[Azure Active Directory でのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,7 +42,10 @@ SaaS アプリと Azure AD の統合の詳細については、[Azure Active Dir
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Jamf Pro では、**SP Initiated** SSO と **IdP Initiated** SSO がサポートされます。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 
+
+* Jamf Pro では、**SP Initiated** SSO と **IdP Initiated** SSO がサポートされます。
+* Jamf Pro を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="add-jamf-pro-from-the-gallery"></a>ギャラリーからの Jamf Pro の追加
 
@@ -147,20 +150,20 @@ B. Simon というテスト ユーザーを使用して、Jamf Pro に対する 
 
     ![Jamf Pro の [Single Sign-On]\(シングル サインオン\) ページ](./media/jamfprosamlconnector-tutorial/configure3.png)
 
-  a. **[編集]** を選択します。
+    a. **[編集]** を選択します。
 
-  b. **[Enable Single Sign-On Authentication]\(シングル サインオン認証を有効にする\)** チェック ボックスをオンにします。
+    b. **[Enable Single Sign-On Authentication]\(シングル サインオン認証を有効にする\)** チェック ボックスをオンにします。
 
-    c. **[Identity Provider]\(ID プロバイダー\)** ドロップダウン メニューからオプションとして **[Azure]** を選択します。
+  c. **[Identity Provider]\(ID プロバイダー\)** ドロップダウン メニューからオプションとして **[Azure]** を選択します。
 
-    d. **[ENTITY ID]\(エンティティ ID\)** の値をコピーして、Azure portal の **[基本的な SAML 構成]** セクションにある **[識別子 (エンティティ ID)]** フィールドに貼り付けます。
+  d. **[ENTITY ID]\(エンティティ ID\)** の値をコピーして、Azure portal の **[基本的な SAML 構成]** セクションにある **[識別子 (エンティティ ID)]** フィールドに貼り付けます。
 
-    > [!NOTE]
-    > `<SUBDOMAIN>` フィールドの値を使用して、Azure portal の **[基本的な SAML 構成]** セクションにおけるサインオン URL と応答 URL を完成させる必要があります。
+> [!NOTE]
+> `<SUBDOMAIN>` フィールドの値を使用して、Azure portal の **[基本的な SAML 構成]** セクションにおけるサインオン URL と応答 URL を完成させる必要があります。
 
-    e. **[Identity Provider Metadata Source]\(ID プロバイダー メタデータ ソース\)** ドロップダウン メニューから **[Metadata URL]\(メタデータ URL\)** を選択します。 表示されたフィールドに、Azure portal からコピーした **[アプリのフェデレーション メタデータ URL]** の値を貼り付けます。
+  e. **[Identity Provider Metadata Source]\(ID プロバイダー メタデータ ソース\)** ドロップダウン メニューから **[Metadata URL]\(メタデータ URL\)** を選択します。 表示されたフィールドに、Azure portal からコピーした **[アプリのフェデレーション メタデータ URL]** の値を貼り付けます。
 
-    f. (任意) トークンの有効期限の値を編集するか、[Disable SAML token expiration]\(SAML トークンの有効期限を無効にする\) を選択します。
+  f. (任意) トークンの有効期限の値を編集するか、[Disable SAML token expiration]\(SAML トークンの有効期限を無効にする\) を選択します。
 
 7. 同じページで下へスクロールし、 **[User Mapping]\(ユーザー マッピング\)** セクションを表示します。 その後、次の手順を行います。
 
@@ -228,8 +231,8 @@ Azure AD ユーザーが Jamf Pro にサインインできるようにするに�
 
 - [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 - [Azure AD で Jamf を試す](https://aad.portal.azure.com/)

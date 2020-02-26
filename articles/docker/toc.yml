@@ -12,8 +12,8 @@
     - name: Docker Swarm と Azure DevOps を使用した CI/CD
       href: /azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine
     - name: Docker、Jenkins、Linux を使用した CI/CD
-      href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
-- name: ハウツー ガイド
+      href: /azure/jenkins/tutorial-jenkins-github-docker-cicd
+- name: 操作方法ガイド
   items:
     - name: Docker VM 拡張機能
       href: /azure/virtual-machines/linux/dockerextension

@@ -109,7 +109,7 @@ Cognitive Services では、ユーザーに対してトレーニング済みの�
 |[音声翻訳](speech-service/speech-translation.md)|x|||
 |[Text Analytics](./text-analytics/overview.md)|x|||
 |[Translator Text](./translator/translator-info-overview.md)|x|||
-|[Translator Text - カスタム翻訳ツール](./translator/custom-translator/overview.md)||x||
+|[Translator Text - custom translator](./translator/custom-translator/overview.md)||x||
 
 *Personalizer は、(リアルタイムで動作するため) サービスが収集したトレーニング データだけでユーザーのポリシーとデータを評価します。 Personalizer の事前トレーニングやバッチ トレーニングには、大量の履歴データセットが必要ありません。 
 

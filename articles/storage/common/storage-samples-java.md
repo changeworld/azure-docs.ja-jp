@@ -3,95 +3,457 @@ title: Java を使用した Azure Storage サンプル | Microsoft Docs
 description: Azure Storage のサンプル コードとアプリケーションを表示、ダウンロード、実行します。 Java のストレージ クライアント ライブラリを使用して、BLOB、キュー、テーブル、ファイルのサンプルの概要について説明します。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/06/2019
+ms.date: 02/13/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: dfdde1ae981dcd2d539dec3667e44e90cef4d1c8
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 46f19748ea56777bd1c23b3cf066fa28787d8882
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748030"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486102"
 ---
-# <a name="azure-storage-samples-using-java"></a>Java を使用した Azure Storage サンプル
+# <a name="azure-storage-samples-using-v12-java-client-libraries"></a>v12 Java クライアント ライブラリを使用した Azure Storage サンプル
 
 次の表は、各サンプルで扱っているサンプル リポジトリとシナリオの概要を示したものです。 リンクをクリックすると、対応するサンプル コードが GitHub で表示されます。
 
 > [!NOTE]
-> これらのサンプルでは、Azure Storage Java v11 ライブラリが使用されます。 v12 コードについては、GitHub リポジトリの[サンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)を参照してください。
+> これらのサンプルには、最新の Azure Storage Java v12 ライブラリが使用されています。 従来の v8 コードについては、GitHub リポジトリの「[Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started)」を参照してください。
 
-## <a name="blob-samples-v11"></a>BLOB のサンプル (v11)
+## <a name="blob-samples"></a>BLOB のサンプル
 
-| **シナリオ** | **サンプル コード** |
-|--------------|-----------------|
-| Append Blob | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
-| ブロック BLOB | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
-| クライアント側の暗号化 | [Java での Azure クライアント側暗号化の概要](https://github.com/Azure-Samples/storage-java-client-side-encryption) |
-| BLOB のコピー | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
-| コンテナーの作成 | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
-| Delete Blob | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
-| Delete Container | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
-| BLOB のメタデータ/プロパティ/統計 | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java) |
-| コンテナーの ACL/メタデータ/プロパティ | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java) |
-| ページ範囲の取得 | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java#L399) |
-| BLOB/コンテナーのリース | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
-| BLOB/コンテナーのリスト | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
-| ページ BLOB | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
-| SAS | [SAS テストのサンプル](https://github.com/Azure/azure-storage-java/blob/89540f018f1160ce55619c6fe7b5f5ff57d0ce10/src/test/java/com/microsoft/azure/storage/Samples.java#L513) |
-| サービスのプロパティ | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java) |
-| Snapshot Blob | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
+### <a name="authentication"></a>認証
 
-## <a name="file-samples-v11"></a>ファイルのサンプル (v11)
+:::row:::
+   :::column span="":::
+      [共有キーの資格情報を使用して認証する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L38)
+   :::column-end:::
+   :::column span="":::
+      [Azure Identity を使用して認証する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/AzureIdentityExample.java#L10)
+   :::column-end:::
+:::row-end:::
 
-| **シナリオ** | **サンプル コード** |
-|--------------|-----------------|
-| 共有/ディレクトリ/ファイルの作成 | [Java での Azure File サービスの概要](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
-| 共有/ディレクトリ/ファイルの削除 | [Java での Azure File サービスの概要](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
-| ディレクトリのプロパティ/メタデータ | [Java での Azure File サービスの概要](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java) |
-| ファイルのダウンロード | [Java での Azure File サービスの概要](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
-| ファイルのプロパティ/メタデータ/メトリック | [Java での Azure File サービスの概要](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java) |
-| ファイル サービスのプロパティ | [Java での Azure File サービスの概要](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java) |
-| ディレクトリとファイルのリスト | [Java での Azure File サービスの概要](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
-| 共有のリスト | [Java での Azure File サービスの概要](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
-| 共有のプロパティ/メタデータ/統計 | [Java での Azure File サービスの概要](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java) |
+### <a name="blob-service"></a>Blob service
 
-## <a name="queue-samples-v11"></a>キューのサンプル (v11)
+:::row:::
+   :::column span="":::
+      [Blob service クライアントを作成する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L49)
+   :::column-end:::
+   :::column span="":::
+      [コンテナーをリストする](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/ListContainersExample.java#L10)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [コンテナーを削除する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/ListContainersExample.java#L52)
+   :::column-end:::
+:::row-end:::
 
-| **シナリオ** | **サンプル コード** |
-|--------------|-----------------|
-| メッセージの追加 | [Java での Azure Queue サービスの概要](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java#L63) |
-| クライアント側の暗号化 | [Java での Azure クライアント側暗号化の概要](https://github.com/Azure-Samples/storage-java-client-side-encryption/blob/master/src/gettingstarted/KeyVaultGettingStarted.java) |
-| キューの作成 | [Java での Azure Queue サービスの概要](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java) |
-| メッセージ/キューの削除 | [Java での Azure Queue サービスの概要](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java) |
-| メッセージのピーク | [Java での Azure Queue サービスの概要](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java) |
-| キューの ACL/メタデータ/統計 | [Java での Azure Queue サービスの概要](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java) |
-| キュー サービスのプロパティ | [Java での Azure Queue サービスの概要](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java) |
-| 更新メッセージ | [Java での Azure Queue サービスの概要](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java)
-|
+### <a name="batching"></a>バッチ処理
+
+:::row:::
+   :::column span="":::
+      [BLOB バッチ クライアントを作成する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob-batch/src/samples/java/com/azure/storage/blob/batch/ReadmeSamples.java#L41)
+   :::column-end:::
+   :::column span="":::
+      [BLOB を一括削除する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob-batch/src/samples/java/com/azure/storage/blob/batch/ReadmeSamples.java#L45)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [一連の BLOB に対してアクセス層を設定する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob-batch/src/samples/java/com/azure/storage/blob/batch/ReadmeSamples.java#L51)
+   :::column-end:::
+:::row-end:::
+
+### <a name="container"></a>コンテナー
+
+:::row:::
+   :::column span="":::
+      [コンテナー クライアントを作成する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L57)
+   :::column-end:::
+   :::column span="":::
+      [コンテナーの作成](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L64)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [BLOB をリストする](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L112)
+   :::column-end:::
+   :::column span="":::
+      [コンテナーの削除](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L123)
+   :::column-end:::
+:::row-end:::
+
+### <a name="blob"></a>BLOB
+
+:::row:::
+   :::column span="":::
+      [BLOB をアップロードする](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L79)
+   :::column-end:::
+   :::column span="":::
+      [BLOB をダウンロードする](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L86)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [BLOB を削除する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L118)
+   :::column-end:::
+   :::column span="":::
+      [大きなファイルから BLOB をアップロードする](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/FileTransferExample.java#L95)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [大きな BLOB をファイルにダウンロードする](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/FileTransferExample.java#L100)
+   :::column-end:::
+:::row-end:::
+
+### <a name="troubleshooting"></a>トラブルシューティング
+:::row:::
+   :::column span="2":::
+      [コンテナー クライアントを使用して回復可能なエラーをトリガーする](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/StorageErrorHandlingExample.java#L11)
+   :::column-end:::
+:::row-end:::
+
+## <a name="data-lake-storage-gen2-samples"></a>Data Lake Storage Gen2 のサンプル
+
+### <a name="data-lake-service"></a>Data Lake サービス
+:::row:::
+   :::column span="":::
+      [Data Lake サービス クライアントを作成する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L48)
+   :::column-end:::
+   :::column span="":::
+      [ファイル システム クライアントを作成する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L57)
+   :::column-end:::
+:::row-end:::
+
+### <a name="file-system"></a>ファイル システム
+:::row:::
+   :::column span="":::
+      [ファイル システムを作成する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L64)
+   :::column-end:::
+   :::column span="":::
+      [ディレクトリを作成する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L68)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [ファイルとサブディレクトリを作成する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L73)
+   :::column-end:::
+   :::column span="":::
+      [ファイル クライアントを作成する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L83)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [ファイル システム内のパスをリストする](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L131)
+   :::column-end:::
+   :::column span="":::
+      [ファイル システムを削除する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L142)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [Azure ストレージ アカウントのファイル システムをリストする](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/ListFileSystemsExample.java#L10)
+   :::column-end:::
+:::row-end:::
+
+### <a name="directory"></a>ディレクトリ
+
+:::row:::
+   :::column span="":::
+      [ディレクトリ クライアントを作成する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L31)
+   :::column-end:::
+   :::column span="":::
+      [親ディレクトリを作成する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L37)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [子ディレクトリを作成する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L44)
+   :::column-end:::
+   :::column span="":::
+      [子ディレクトリにファイルを作成する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L52)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [ディレクトリのプロパティを取得する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L68)
+   :::column-end:::
+   :::column span="":::
+      [子ディレクトリを削除する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L83)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [親フォルダーを削除する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L90)
+   :::column-end:::
+:::row-end:::
+
+### <a name="file"></a>ファイル
+
+:::row:::
+   :::column span="":::
+      [ファイル クライアントを使用してファイルを作成する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L93)
+   :::column-end:::
+   :::column span="":::
+      [ファイルを削除する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L137)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [ファイルに対するアクセスの制御を設定する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/GetSetAccessControlExample.java#L82)
+   :::column-end:::
+   :::column span="":::
+      [ファイルに対するアクセスの制御を取得する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/GetSetAccessControlExample.java#L104)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Data Lake ファイル クライアントを使用してファイルを作成する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/UploadDownloadExample.java#L67)
+   :::column-end:::
+   :::column span="":::
+      [ファイルにデータを追加する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/UploadDownloadExample.java#L85)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [ファイルをダウンロードする](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/UploadDownloadExample.java#L127)
+   :::column-end:::
+:::row-end:::
+
+## <a name="azure-file-samples"></a>Azure File のサンプル
+
+### <a name="authentication"></a>認証
+
+:::row:::
+   :::column span="2":::
+      [接続文字列を使用して認証する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L27)
+   :::column-end:::
+:::row-end:::
+
+### <a name="file-service"></a>File service
+
+:::row:::
+   :::column span="":::
+      [ファイル共有を作成する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L31)
+   :::column-end:::
+   :::column span="":::
+      [プロパティを取得する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L40)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [共有をリストする](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L49)
+   :::column-end:::
+   :::column span="":::
+      [共有を削除する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L49)
+   :::column-end:::
+:::row-end:::
+
+### <a name="file-share"></a>ファイル共有
+
+:::row:::
+   :::column span="":::
+      [共有クライアントを作成する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L29)
+   :::column-end:::
+   :::column span="":::
+      [共有を作成する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L40)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [共有スナップショットを作成する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L55)
+   :::column-end:::
+   :::column span="":::
+      [共有クライアントを使用してディレクトリを作成する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L63)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [共有のプロパティを取得する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L72)
+   :::column-end:::
+   :::column span="":::
+      [ルート ディレクトリを取得してディレクトリをリストする](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L100)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [共有を削除する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L151)
+   :::column-end:::
+:::row-end:::
+
+### <a name="directory"></a>ディレクトリ
+
+:::row:::
+   :::column span="":::
+      [親ディレクトリを作成する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L35)
+   :::column-end:::
+   :::column span="":::
+      [子ディレクトリを作成する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L42)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [子ディレクトリにファイルを作成する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L50)
+   :::column-end:::
+   :::column span="":::
+      [ディレクトリとファイルをリストする](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L66)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [子フォルダーを削除する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L90)
+   :::column-end:::
+   :::column span="":::
+      [親フォルダーを削除する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L97)
+   :::column-end:::
+:::row-end:::
+
+### <a name="file"></a>ファイル
+
+:::row:::
+   :::column span="":::
+      [ファイル クライアントを作成する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/FileSample.java#L45)
+   :::column-end:::
+   :::column span="":::
+      [ファイルをアップロードする](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/FileSample.java#L90)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [ファイルをダウンロードする](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/FileSample.java#L100)
+   :::column-end:::
+   :::column span="":::
+      [ファイルのプロパティを取得する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/FileSample.java#L120)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [ファイルを削除する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/FileSample.java#L128)
+   :::column-end:::
+:::row-end:::
+
+
+## <a name="queue-samples"></a>キューのサンプル
+
+### <a name="authentication"></a>認証
+
+:::row:::
+   :::column span="2":::
+      [SAS トークンを使用して認証する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/QueueServiceSamples.java#L17)
+   :::column-end:::
+:::row-end:::
+
+### <a name="queue-service"></a>Queue サービス
+
+:::row:::
+   :::column span="":::
+      [キューを作成する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/QueueServiceSamples.java#L20)
+   :::column-end:::
+   :::column span="":::
+      [キューをリストする](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/QueueServiceSamples.java#L22)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [キューを削除する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/QueueServiceSamples.java#L27)
+   :::column-end:::
+:::row-end:::
+
+### <a name="queue"></a>キュー
+
+:::row:::
+   :::column span="":::
+      [キュー クライアントを作成する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L25)
+   :::column-end:::
+   :::column span="":::
+      [メッセージをキューに追加する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L27)
+   :::column-end:::
+:::row-end:::
+
+### <a name="message"></a>Message
+
+:::row:::
+   :::column span="":::
+      [メッセージ数を取得する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L34)
+   :::column-end:::
+   :::column span="":::
+      [メッセージをピークする](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L37)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [メッセージを受信する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L41)
+   :::column-end:::
+   :::column span="":::
+      [メッセージを更新する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L45)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [1 つ目のメッセージを削除する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L50)
+   :::column-end:::
+   :::column span="":::
+      [すべてのメッセージを削除する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L59)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [キューを削除する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L64)
+   :::column-end:::
+:::row-end:::
+
 ## <a name="table-samples-v11"></a>テーブルのサンプル (v11)
 
-| **シナリオ** | **サンプル コード** |
-|--------------|-----------------|
-| テーブルの作成 | [Java での Azure Table service の概要](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
-| エンティティ/テーブルの削除 | [Java での Azure Table service の概要](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
-| エンティティの挿入/マージ/置換 | [Java での Azure Table service の概要](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
-| エンティティのクエリ | [Java での Azure Table service の概要](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
-| テーブルの照会 | [Java での Azure Table service の概要](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
-| テーブルの ACL/プロパティ | [Java での Azure Table service の概要](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableAdvanced.java) |
-| エンティティの更新 | [Java での Azure Table service の概要](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
-## <a name="azure-code-samples-library"></a>Azure のコード サンプル ライブラリ
+:::row:::
+   :::column span="":::
+      [テーブルを作成する](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L50)
+   :::column-end:::
+   :::column span="":::
+      [エンティティまたはテーブルを削除する](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L109)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [エンティティを挿入、マージ、置換する](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L195)
+   :::column-end:::
+   :::column span="":::
+      [エンティティを照会する](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L234)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [テーブルを照会する](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L262)
+   :::column-end:::
+   :::column span="":::
+      [テーブルの ACL またはプロパティ](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableAdvanced.java#L49)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [エンティティを更新する](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L76)
+   :::column-end:::
+:::row-end:::
 
-完全なサンプル ライブラリを表示するには、[Azure のコード サンプル](https://azure.microsoft.com/resources/samples/?service=storage) ライブラリにアクセスしてください。このライブラリには、ダウンロードしてローカルで実行できる Azure Storage のサンプルが用意されています。 コード サンプル ライブラリでは、サンプル コードが .zip 形式で提供されます。 また、各サンプルの GitHub リポジトリを参照して複製することもできます。
+## <a name="azure-code-sample-libraries"></a>Azure のコード サンプル ライブラリ
 
-[!INCLUDE [storage-java-samples-include](../../../includes/storage-java-samples-include.md)]
+完全な Java サンプル ライブラリをご覧いただくには、次のページにアクセスしてください。
+
+* [Azure BLOB のコード サンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
+* [Azure Data Lake のコード サンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake)
+* [Azure Files のコード サンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share)
+* [Azure Queue のコード サンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue)
+
+各ライブラリの GitHub リポジトリを参照してクローンすることができます。
 
 ## <a name="getting-started-guides"></a>概要ガイド
 
 Azure Storage ライブラリのインストール方法と概要については、以下のガイドをご覧ください。
 
 * [Java での Azure Blob service の概要](../blobs/storage-quickstart-blobs-java.md)
-* [Java での Azure Queue サービスの概要](../queues/storage-java-how-to-use-queue-storage.md)
+* [Java での Azure Queue サービスの概要](../queues/storage-quickstart-queues-java.md)
 * [Java での Azure Table service の概要](../../cosmos-db/table-storage-how-to-use-java.md)
 * [Java での Azure File サービスの概要](../files/storage-java-how-to-use-file-storage.md)
 
@@ -100,6 +462,6 @@ Azure Storage ライブラリのインストール方法と概要については
 他の言語のサンプルについては、以下のページをご覧ください。
 
 * .NET:[.NET を使用した Azure Storage サンプル](storage-samples-dotnet.md)
-* JavaScript/Node.js: [JavaScript を使用した Azure Storage サンプル](storage-samples-javascript.md)
 * Python: [Python を使用した Azure Storage サンプル](storage-samples-python.md)
+* JavaScript/Node.js: [JavaScript を使用した Azure Storage サンプル](storage-samples-javascript.md)
 * その他すべての言語: [Azure Storage のサンプル](storage-samples.md)
