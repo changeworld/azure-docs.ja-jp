@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: f7a2e78ed2b1de770f7a60f1312e069dc1757cb6
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 2869384d4f4072e1e71ab0a69af81edc68e7a5b7
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191208"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366250"
 ---
 # <a name="what-is-automated-machine-learning"></a>自動化された機械学習とは
 
@@ -211,22 +211,71 @@ ms.locfileid: "77191208"
 
 Azure Machine Learning では、自動化された ML を使用して Python モデルを構築し、それを ONNX 形式に変換できます。 ONNX は C# に対応しています。そのため、コードを書き直す必要がなく、また、REST エンドポイントで発生するネットワークの遅延なく、C# アプリで自動的に構築されたモデルを使用できます。 [この Jupyter ノートブックで](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)このフローのサンプルをお試しください。
 
-## <a name="automated-ml-across-microsoft"></a>Microsoft ソリューション全体で自動化された ML
+## <a name="automated-ml-in-azure-machine-learning"></a>Azure Machine Learning の自動 ML
 
-自動化された ML は次のような他の Microsoft ソリューションでも利用できます。
+Azure Machine Learning には、自動 ML を使用するための 2 つのエクスペリエンスが用意されています。
 
-|統合|説明|
-|------------|-----------|
-|[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Visual Studio および Visual Studio Code と ML.NET 自動 ML を使用した .NET アプリでの自動モデル選択およびトレーニング。|
-|[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|並列にしてある HDInsight クラスターの Spark で自動化された ML トレーニング ジョブをスケールアウトします。|
-|[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Power BI での機械学習モデルの直接呼び出し。|
-|[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|SQL Server 2019 ビッグ データ クラスターのデータに対して新しい機械学習モデルを作成します。|
+* コードの経験がある場合は、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py) に関する記事を参照してください 
+
+* コードの経験があまりない、またはない場合は、Azure Machine Learning Studio ([https://ml.azure.com](https://ml.azure.com/)) に関する記事を参照してください。  
+
+各経験レベルでサポートされる高レベルの自動 ML 機能を以下にまとめます。
+
+<a name="parity"></a>
+
+### <a name="experiment-settings"></a>実験の設定 
+
+次の設定を使用して、自動 ML の実験を構成できます。 
+
+| | Python SDK| studio
+----|:----:|:----:
+データをトレーニングおよび検証セットに分割する| ✓|✓
+ML タスクのサポート: 分類、回帰、予測| ✓| ✓
+プライマリ メトリックに基づいて最適化する| ✓| ✓
+AML コンピューティングをコンピューティング ターゲットとしてサポートする | ✓|✓
+予測期間、ターゲットのラグ、ローリング期間を構成する|✓|✓
+終了条件を設定する |✓|✓ 
+コンカレント イテレーションを設定する| ✓|✓
+列の削除| ✓|✓
+ブロック アルゴリズム|✓|✓
+クロス検証 |✓|✓
+Azure Databricks クラスターでのトレーニングをサポートする| ✓|
+エンジニアリング機能の名前を表示する|✓|
+特徴付けの概要| ✓|
+休日の特徴付け|✓|
+ログ ファイルの詳細レベル| ✓|
+
+### <a name="model-settings"></a>モデルの設定
+
+これらの設定は、自動 ML 実験の結果として最適なモデルに適用できます。
+
+||Python SDK|studio
+----|:----:|:----:
+最適なモデルの登録| ✓|✓
+最適なモデル デプロイ| ✓| ✓
+最適なモデル説明| ✓|✓
+投票アンサンブルとスタック アンサンブル モデルを有効にする| ✓|✓
+プライマリ メトリック以外に基づいて最適なモデルを表示する|✓|ONNX モデルの互換性を有効または無効にする|✓|
+モデルのテスト | ✓| |
+
+### <a name="run-control-settings"></a>コントロール設定を実行する
+
+これらの設定を使用すると、実験の実行とその子の実行を確認し、制御することができます。 
+
+||Python SDK| studio
+----|:----:|:----:
+実行の概要テーブル| ✓|✓
+実行の取り消し| ✓|✓
+子の実行の取り消し| ✓| ✓
+ガードレールを取得する| ✓|✓
+実行を一時停止する| ✓| 
+実行を再開する| ✓| 
 
 ## <a name="next-steps"></a>次のステップ
 
 例を参照して、自動化された機械学習を使用してモデルを構築する方法を学習してください。
 
-+ 次のチュートリアルを修了してください。[チュートリアル:Azure Automated Machine Learning で回帰モデルを自動的にトレーニングする](tutorial-auto-train-models.md)
++ 次のチュートリアルを修了してください。[チュートリアル:Azure Machine Learning で回帰モデルを自動的にトレーニングする](tutorial-auto-train-models.md)
 
 + 自動トレーニング実験の設定を構成してください。
   + Azure Machine Learning Studio で、[こちらの手順](how-to-create-portal-experiments.md)を使用します。
@@ -235,3 +284,5 @@ Azure Machine Learning では、自動化された ML を使用して Python モ
 + [こちらの手順](how-to-auto-train-forecast.md)を使用し、時系列データを使用して自動トレーニングする方法について学習してください。
 
 + [自動化された機械学習の Jupyter Notebook のサンプル](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)をお試しください。
+
+* 自動 ML は、[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)、[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)、[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)、[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/) などの他の Microsoft ソリューションでも使用できます

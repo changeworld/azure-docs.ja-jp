@@ -4,15 +4,15 @@ description: 完全に管理されたサービスとしてのプラットフォ�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 01/17/2020
+ms.date: 02/20/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f72da87ae53039e825f2102bebb12e59821706f8
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: a61bc852d3042d0bd8828bf89dce6ab6b760d092
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274787"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459686"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 
@@ -81,7 +81,7 @@ Azure Analysis Services は、世界中のリージョンでサポートされ�
 |---------|---------|:---------:|
 |ブラジル南部     |    B1、B2、S0、S1、S2、S4、D1     |     1    |
 |カナダ中部    |     B1、B2、S0、S1、S2、S4、D1    |     1    |
-|East US     |     B1、B2、S0、S1、S2、S4、D1    |    1     |
+|米国東部     |     B1、B2、S0、S1、S2、S4、D1    |    1     |
 |米国東部 2     |     B1、B2、S0、S1、S2、S4、D1   |    7    |
 |米国東部 2     |     S8、S9、S8v2、S9v2   |    1    |
 |米国中北部     |     B1、B2、S0、S1、S2、S4、D1     |    1     |
@@ -138,7 +138,7 @@ Azure Analysis Services には、SQL Server Analysis Services Enterprise Edition
 
 インメモリと DirectQuery モードの両方で表形式モデルがサポートされます。 インメモリ モード (既定値) の表形式モデルでは、複数のデータ ソースがサポートされます。 モデル データは高度に圧縮され、インメモリでキャッシュされるため、このモードは、大量のデータに対するクエリの応答を最速で提供します。 複雑なデータセットとクエリに対する最大の柔軟性も備えています。 パーティション分割によって増分読み込みが可能になり、並列処理が増加し、メモリの消費量が減少します。 計算テーブルなどの高度なデータ モデリング機能と、すべての DAX 関数がサポートされます。 データ ソースからキャッシュされたデータを更新するには、インメモリ モデルを更新 (処理) する必要があります。 Azure サービス プリンシパルのサポートによる PowerShell、TOM、TMSL、および REST を使用した無人の更新操作によって、モデル データが常に最新であることを柔軟に保証できます。 
 
-DirectQuery モード* では、ストレージとクエリの実行でバックエンドのリレーショナル データベースを活用します。 1 つの SQL Server、SQL Server Data Warehouse、Azure SQL Database、Azure SQL Data Warehouse、Oracle、および Teradata データ ソース内の非常に大きなデータ セットがサポートされます。 バックエンド データ セットは、利用可能なサーバー リソースのメモリを超えることができます。 複雑なデータ モデルの更新シナリオは必要ありません。 また、データ ソースの種類や DAX 式などに制限があり、一部の高度なデータ モデリング機能もサポートされていません。 最適なモードを決定する前に、[DirectQuery モード](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular)に関する記事を参照してください。
+DirectQuery モード* では、ストレージとクエリの実行でバックエンドのリレーショナル データベースを活用します。 1 つの SQL Server、SQL Server Data Warehouse、Azure SQL Database、Azure Synapse Analytics (SQL Data Warehouse)、Oracle、および Teradata データ ソース内の非常に大きなデータ セットがサポートされます。 バックエンド データ セットは、利用可能なサーバー リソースのメモリを超えることができます。 複雑なデータ モデルの更新シナリオは必要ありません。 また、データ ソースの種類や DAX 式などに制限があり、一部の高度なデータ モデリング機能もサポートされていません。 最適なモードを決定する前に、[DirectQuery モード](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular)に関する記事を参照してください。
 
 \* 利用できる機能はレベルによって異なります。
 

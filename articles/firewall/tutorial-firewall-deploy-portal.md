@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/28/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: be39449c1c11acdbdc99bd96f917c51eebda44ae
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 38ee180fa59fec6619010a3ded1f6837a5ca5239
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195789"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77371335"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Firewall をデプロイして構成する
 
@@ -52,7 +52,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 最初に、ファイアウォールをデプロイするために必要なリソースを含めるリソース グループを作成します。 次に、VNet、サブネット、およびテスト サーバーを作成します。
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 このリソース グループには、このチュートリアルのすべてのリソースが含まれます。
 
@@ -70,7 +70,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > [!NOTE]
 > AzureFirewallSubnet サブネットのサイズは /26 です。 サブネットのサイズの詳細については、「[Azure Firewall に関する FAQ](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size)」を参照してください。
 
-1. Azure portal メニューまたは **[ホーム]** ページから、 **[リソースの作成]** を選択します。
+1. Azure portal メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。
 1. **[ネットワーク]**  >  **[仮想ネットワーク]** を選びます。
 1. **[名前]** に「**Test-FW-VN**」と入力します。
 1. **[アドレス空間]** に「**10.0.0.0/16**」と入力します。
@@ -98,17 +98,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 次に、ジャンプおよびワークロード仮想マシンを作成し、適切なサブネットに配置します。
 
-1. Azure portal メニューまたは **[ホーム]** ページから、 **[リソースの作成]** を選択します。
+1. Azure portal メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。
 2. **[Compute]** をクリックし、おすすめのリストで **[Windows Server 2016 Datacenter]** を選択します。
 3. 次の仮想マシンの値を入力します。
 
-   |Setting  |値  |
+   |設定  |Value  |
    |---------|---------|
    |Resource group     |**Test-FW-RG**|
    |仮想マシン名     |**Srv-Jump**|
    |リージョン     |前と同じ|
    |管理者のユーザー名     |**azureuser**|
-   |パスワード     |**Azure123456!**|
+   |Password     |**Azure123456!**|
 
 4. **[受信ポートの規則]** の **[パブリック受信ポート]** で、 **[選択したポートを許可する]** を選択します。
 5. **[受信ポートを選択]** で、 **[RDP (3389)]** を選択します。
@@ -123,7 +123,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 次の表の情報を使用して、**Srv-Work** という名前の別の仮想マシンを構成します。 残りの構成は、Srv-Jump 仮想マシンと同じです。
 
-|Setting  |値  |
+|設定  |Value  |
 |---------|---------|
 |Subnet|**Workload-SN**|
 |パブリック IP|**なし**|
@@ -133,19 +133,19 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 VNet にファイアウォールをデプロイします。
 
-1. Azure portal メニューまたは **[ホーム]** ページから、 **[リソースの作成]** を選択します。
+1. Azure portal メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。
 2. 検索ボックスに「**ファイアウォール**」と入力し、**Enter** キーを押します。
 3. **[ファイアウォール]** を選択し、 **[作成]** を選択します。
 4. **[ファイアウォールの作成]** ページで、次の表を使用してファイアウォールを構成します。
 
-   |Setting  |値  |
+   |設定  |Value  |
    |---------|---------|
-   |Subscription     |\<該当するサブスクリプション\>|
+   |サブスクリプション     |\<該当するサブスクリプション\>|
    |Resource group     |**Test-FW-RG** |
    |名前     |**Test-FW01**|
    |Location     |以前使用したのと同じ場所を選択します|
    |仮想ネットワークの選択     |**[Use Existing]\(既存の使用\)** : **Test-FW-VN**|
-   |パブリック IP アドレス     |**新規作成**。 パブリック IP アドレスは、Standard SKU タイプであることが必要です。|
+   |パブリック IP アドレス     |**[新規追加]** 。 パブリック IP アドレスは、Standard SKU タイプであることが必要です。|
 
 5. **[Review + create]\(レビュー + 作成\)** を選択します。
 6. 概要を確認し、 **[作成]** を選択してファイアウォールを作成します。
@@ -250,11 +250,11 @@ Azure Firewall には、既定で許可されるインフラストラクチャ F
 * 1 つの許可された FQDN は参照できますが、それ以外は参照できません。
 * 構成された外部 DNS サーバーを使用して DNS 名を解決できます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 ファイアウォール リソースは、次のチュートリアルのために残しておいてもかまいませんが、不要であれば、**Test-FW-RG** リソース グループを削除して、ファイアウォール関連のすべてのリソースを削除してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [チュートリアル:Azure Firewall のログを監視する](./tutorial-diagnostics.md)

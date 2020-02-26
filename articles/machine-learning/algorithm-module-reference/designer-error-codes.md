@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 12/03/2019
-ms.openlocfilehash: cf343773695275bc5600ab59e1cd719374d65700
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: ea132578a08b9f0002084374838c615a01fa820f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152365"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425801"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>デザイナーの例外とエラー コード (プレビュー)
 
@@ -74,7 +74,7 @@ ms.locfileid: "77152365"
 |例外メッセージ|
 |------------------------|
 |One or more of inputs are null or empty. (1 つまたは複数の入力が null または空です。)|
-|Input "{0}" is null or empty. (入力 "\{0\}" が null または空です。)|
+|Input "{name}" is null or empty. (入力 "{name}" が null または空です。)|
 
 
 ## <a name="error-0004"></a>エラー 0004  
@@ -87,8 +87,8 @@ ms.locfileid: "77152365"
 |例外メッセージ|
 |------------------------|
 |Parameter should be greater than boundary value. (パラメーターは、境界値より大きい値にする必要があります。)|
-|Parameter "{0}" value should be greater than {1}. (パラメーター "\{0\}" の値は "{1}" より大きくする必要があります。)|
-|Parameter "{0}" has value "{1}" which should be greater than {2}. (パラメーター "\{0\}" の値は "{1}" ですが、"{2}" より大きくする必要があります。)|
+|Parameter "{arg_name}" value should be greater than {lower_boundary}. (パラメーター "{arg_name}" の値は {lower_boundary} より大きくする必要があります。)|
+|Parameter "{arg_name}" has value "{actual_value}" which should be greater than {lower_boundary}. (パラメーター "{arg_name}" には値 "{actual_value}" が含まれていますが、これは {lower_boundary} より大きくする必要があります。)|
 
 
 ## <a name="error-0005"></a>エラー 0005  
@@ -101,8 +101,8 @@ ms.locfileid: "77152365"
 |例外メッセージ|
 |------------------------|
 |Parameter should be greater than or equal to boundary value. (パラメーターは、境界値以上にする必要があります。)|
-|Parameter "{arg_name}" value should be greater than or equal to {target_val}. (パラメーター "{arg_name}" の値は {target_val} 以上である必要があります。)|
-|Parameter "{arg_name}" has value "{true_val}" which should be greater than or equal to {target_val}. (パラメーター "{arg_name}" の値 "{true_val}" は {target_val} 以上にする必要があります。)|
+|Parameter "{arg_name}" value should be greater than or equal to {lower_boundary}. (パラメーター "{arg_name}" の値は {lower_boundary} 以上とする必要があります。)|
+|Parameter "{arg_name}" has value "{value}" which should be greater than or equal to {lower_boundary}. (パラメーター "{arg_name}" には値 "{value}" が含まれていますが、これは {lower_boundary} 以上とする必要があります。)|
 
 
 ## <a name="error-0006"></a>エラー 0006  
@@ -115,8 +115,8 @@ ms.locfileid: "77152365"
 |例外メッセージ|
 |------------------------|
 |Parameters mismatch. (パラメーターが一致しません。) One of the parameters should be less than another. (パラメーターの 1 つは他より小さくする必要があります。)|
-|Parameter "{0}" value should be less than parameter "{1}" value. (パラメーター "\{0\}" の値はパラメーター "{1}" の値より小さくする必要があります。)|
-|Parameter "{0}" has value "{1}" which should be less than {2}. (パラメーター "\{0\}" の値は "{1}" ですが、"{2}" より小さくする必要があります。)|
+|Parameter "{arg_name}" value should be less than parameter "{upper_boundary_parameter_name}" value. (パラメーター "{arg_name}" の値は、パラメーター "{upper_boundary_parameter_name}" の値より小さくする必要があります。)|
+|Parameter "{arg_name}" has value "{value}" which should be less than {upper_boundary_parameter_name}. (パラメーター "{arg_name}" には値 "{value}" が含まれていますが、これは {upper_boundary_parameter_name} より小さくする必要があります。)|
 
 
 ## <a name="error-0007"></a>エラー 0007  
@@ -137,8 +137,9 @@ ms.locfileid: "77152365"
 |例外メッセージ|
 |------------------------|
 |Parameters mismatch. (パラメーターが一致しません。) One of the parameters should be less than another. (パラメーターの 1 つが他より小さい必要があります。)|
-|Parameter "{0}" value should be less than or equal to parameter "{1}" value. (パラメーター "\{0\}" の値はパラメーター "{1}" の値以下である必要があります。)|
-|Parameter "{0}" has value "{1}" which should be less than or equal to {2}. (パラメーター "\{0\}" の値は "{1}" ですが、{2} 以下にする必要があります。)|
+|Parameter "{arg_name}" value should be less than or equal to parameter "{upper_boundary_parameter_name}" value. (パラメーター "{arg_name}" の値は、パラメーター "{upper_boundary_parameter_name}" の値以下とする必要があります。)|
+|Parameter "{arg_name}" has value "{actual_value}" which should be less than or equal to {upper_boundary}. (パラメーター "{arg_name}" には値 "{actual_value}" が含まれていますが、これは {upper_boundary} 以下とする必要があります。)|
+|Parameter "{arg_name}" value {actual_value} should be less than or equal to parameter "{upper_boundary_parameter_name}" value {upper_boundary}. (パラメーター "{arg_name}" の値 {actual_value} は、パラメーター "{upper_boundary_parameter_name}" の値 {upper_boundary} 以下とする必要があります。)|
 
 
 ## <a name="error-0008"></a>エラー 0008  
@@ -154,8 +155,8 @@ ms.locfileid: "77152365"
 |------------------------|
 |Parameter value is not in the specified range. (パラメーターの値が、指定された範囲内ではありません。)|
 |Parameter "{arg_name}" value is not in range. (パラメーター "{arg_name}" の値が範囲内ではありません。)|
-|Parameter "{arg_name}" value should be in the range of [{a}, {b}]. (パラメーター "{arg_name}" の値は [{a}, {b}] の範囲内である必要があります。)|
-|Parameter "{arg_name}" value is not in range.{reason} (パラメーター "{arg_name}" の値が範囲内ではありません。{reason})|
+|Parameter "{arg_name}" value should be in the range of [{lower_boundary}, {upper_boundary}]. (パラメーター "{arg_name}" の値は、[{lower_boundary}, {upper_boundary}] の範囲内に収める必要があります。)|
+|Parameter "{arg_name}" value is not in range. (パラメーター "{arg_name}" の値が範囲内ではありません。) {reason}|
 
 
 ## <a name="error-0009"></a>エラー 0009  
@@ -187,7 +188,7 @@ BLOB への完全なパスを指定した場合は、パスが "**コンテナ�
 |例外メッセージ|
 |------------------------|
 |The Azure storage account name or container name is incorrect. (Azure ストレージ アカウント名またはコンテナー名が正しくありません。)|
-|The Azure storage account name "{0}" or container name "{1}" is incorrect; a container name of the format container/blob was expected. (Azure ストレージ アカウント名 "\{0\}" またはコンテナー名 "{1}" が正しくありません。コンテナー名は "コンテナー/BLOB" の形式であると予想されます。)|
+|The Azure storage account name "{account_name}" or container name "{container_name}" is incorrect; a container name of the format container/blob was expected. (Azure ストレージ アカウント名 "{account_name}" またはコンテナー名 "{container_name}" が正しくありません。コンテナー名は "コンテナー/BLOB" の形式であることが予想されていました。)|
 
 
 ## <a name="error-0010"></a>エラー 0010  
@@ -200,7 +201,7 @@ BLOB への完全なパスを指定した場合は、パスが "**コンテナ�
 |例外メッセージ|
 |------------------------|
 |Columns with corresponding index in input datasets have different names. (入力データセット内の対応するインデックスに伴う列の名前が異なります。)|
-|Column names are not the same for column {0} (zero-based) of input datasets ({1} and {2} respectively). (入力データセット ({1} と {2}) それぞれの列 \{0\} (ゼロ ベース) に対する列の名前が同じではありません。)|
+|Column names are not the same for column {col_index} (zero-based) of input datasets ({dataset1} and {dataset2} respectively). (入力データセット ({dataset1} と {dataset2}) それぞれの列 {col_index} (ゼロ ベース) に対する列の名前が同じではありません。)|
 
 
 ## <a name="error-0011"></a>エラー 0011  
@@ -219,7 +220,7 @@ BLOB への完全なパスを指定した場合は、パスが "**コンテナ�
 |例外メッセージ|
 |------------------------|
 |Specified column set does not apply to any of dataset columns. (指定された列セットは、データセットのどの列にも適用されません。)|
-|Specified column set "{0}" does not apply to any of dataset columns. (指定された列セット "\{0\}" は、データセットのどの列にも適用されません。)|
+|Specified column set "{column_set}" does not apply to any of dataset columns. (指定された列セット "{column_set}" が、データセットのどの列にも適用されません。)|
 
 
 ## <a name="error-0012"></a>エラー 0012  
@@ -301,7 +302,7 @@ BLOB への完全なパスを指定した場合は、パスが "**コンテナ�
 |例外メッセージ|
 |------------------------|
 |Error making database connection. (データベースとの接続でエラーが発生しました。)|
-|Error making database connection: {0}. (データベースとの接続でエラーが発生しました: \{0\}。)|
+|Error making database connection: {connection_str}. (データベースとの接続中にエラーが発生しました: {connection_str}。)|
 
 
 ## <a name="error-0016"></a>エラー 0016  
@@ -384,8 +385,8 @@ BLOB への完全なパスを指定した場合は、パスが "**コンテナ�
 |例外メッセージ|
 |------------------------|
 |Values in column are not sorted. (列の値が並べ替えられていません。)|
-|Values in column "{0}" are not sorted. (列 "\{0\}" の値が並べ替えられていません。)|
-|Values in column "{0}" of dataset "{1}" are not sorted. (データセット "{1}" の列 "\{0\}" の値が並べ替えられていません。)|
+|Values in column "{col_index}" are not sorted. (列 "{col_index}" の値が並べ替えられていません。)|
+|Values in column "{col_index}" of dataset "{dataset}" are not sorted. (データセット "{dataset}" の列 "{col_index}" の値が並べ替えられていません。)|
 
 
 ## <a name="error-0020"></a>エラー 0020  
@@ -398,6 +399,7 @@ BLOB への完全なパスを指定した場合は、パスが "**コンテナ�
 |例外メッセージ|
 |------------------------|
 |Number of columns in input dataset is less than allowed minimum. (入力データセット内の列数が、許容される最少数未満です。)|
+|Number of columns in input dataset "{arg_name}" is less than allowed minimum. (入力データセット "{arg_name}" 内の列数が、許容される最小値を下回っています。)|
 |Number of columns in input dataset is less than allowed minimum of {required_columns_count} column(s). (入力データセットの列数が、許容される最小数の {required_columns_count} 列未満です。)|
 |Number of columns in input dataset "{arg_name}" is less than allowed minimum of {required_columns_count} column(s). (入力データセット "{arg_name}" の列数が、許容される最小数の {required_columns_count} 列未満です。)|
 
@@ -450,9 +452,9 @@ BLOB への完全なパスを指定した場合は、パスが "**コンテナ�
 |例外メッセージ|
 |------------------------|
 |Number of selected columns in input dataset does not equal to the expected number. (入力データセットで選択された列の数が、予想される数と等しくありません。)|
-|Number of selected columns in input dataset does not equal to {0}. (入力データセットで選択された列の数が、\{0\} と等しくありません。)|
-|Column selection pattern "{0}" provides number of selected columns in input dataset not equal to {1}. (列選択パターン "\{0\}" で提供される入力データセット内で選択される列の数が、{1} と等しくありません。)|
-|Column selection pattern "{0}" is expected to provide {1} column(s) selected in input dataset, but {2} column(s) is/are actually provided. (列選択パターン "\{0\}" は入力データセットで選択された "{1}" 列を提供すると予期されていますが、実際には "{2}" 列が提供されています。)|
+|Number of selected columns in input dataset does not equal to {expected_col_count}. (入力データセットで選択された列の数が、{expected_col_count} と等しくありません。)|
+|Column selection pattern "{selection_pattern_friendly_name}" provides number of selected columns in input dataset not equal to {expected_col_count}. (列選択パターン "{selection_pattern_friendly_name}" で提供される入力データセット内で選択された列の数が、{expected_col_count} と等しくありません。)|
+|Column selection pattern "{selection_pattern_friendly_name}" is expected to provide {expected_col_count} column(s) selected in input dataset, but {selected_col_count} column(s) is/are actually provided. (列選択パターン "{selection_pattern_friendly_name}" では入力データセット内で選択された {expected_col_count} 列が指定される必要がありますが、実際には {selected_col_count} 列が指定されています。)|
 
 
 ## <a name="error-0023"></a>エラー 0023  
@@ -466,8 +468,8 @@ Azure Machine Learning では、(モジュールのパラメーターで選択�
 |例外メッセージ|
 |------------------------|
 |Input dataset has unsupported target column. (入力データセットにサポートされていないターゲット列があります。)|
-|Input dataset has unsupported target column "{0}". (入力データセットにサポートされていないターゲット列 "\{0\}" があります。)|
-|Input dataset has unsupported target column "{0}" for learner of type {1}. (入力データセットに "{1}" 型の学習器に対してサポートされていないターゲット列 "\{0\}" があります。)|
+|Input dataset has unsupported target column "{column_index}". (入力データセットにサポートされていないターゲット列 "{column_index}" があります。)|
+|Input dataset has unsupported target column "{column_index}" for learner of type {learner_type}. (入力データセットに {learner_type} 型の学習器に対してサポートされていないターゲット列 "{column_index}" があります。)|
 
 
 ## <a name="error-0024"></a>エラー 0024  
@@ -500,8 +502,8 @@ Azure Machine Learning では、(モジュールのパラメーターで選択�
 |例外メッセージ|
 |------------------------|
 |There is no score column in dataset. (データセットにスコア列がありません。)|
-|There is no score column in "{0}". ("\{0\}" にスコア列がありません。)|
-|There is no score column in "{0}" that is produced by a "{1}". ("{1}" によって生成されたスコア列が "\{0\}" にありません。) Score the dataset using the correct type of learner. (適切な種類の学習器を使用してデータセットをスコアリングしてください。)|
+|There is no score column in "{dataset_name}". ("{dataset_name}" にスコア列がありません。)|
+|There is no score column in "{dataset_name}" that is produced by a "{learner_type}". ("{learner_type}" によって生成されたスコア列が "{dataset_name}" にありません。) Score the dataset using the correct type of learner. (適切な種類の学習器を使用してデータセットをスコアリングしてください。)|
 
 
 ## <a name="error-0026"></a>エラー 0026  
@@ -514,7 +516,7 @@ Azure Machine Learning では、(モジュールのパラメーターで選択�
 |例外メッセージ|
 |------------------------|
 |Equal column names are specified in arguments. (同じ列名が引数で指定されています。) Equal column names are not allowed by module. (モジュールでは同じ列名は許可されません。)|
-|Equal column names in arguments "{0}" and "{1}" are not allowed. (引数 "\{0\}" と "{1}" での同じ列名は許可されません。) Please specify different names. (別の名前を指定してください。)|
+|Equal column names in arguments "{arg_name_1}" and "{arg_name_2}" are not allowed. (引数 "{arg_name_1}" と "{arg_name_2}" での同じ列名は許可されません。) Please specify different names. (別の名前を指定してください。)|
 
 
 ## <a name="error-0027"></a>エラー 0027  
@@ -533,7 +535,7 @@ Azure Machine Learning では、(モジュールのパラメーターで選択�
 |例外メッセージ|
 |------------------------|
 |The size of passed objects is inconsistent. (渡されたオブジェクトのサイズが一致していません。)|
-|The size of "{0}" is inconsistent with size of "{1}". ("\{0\}" のサイズが "{1}" のサイズと異なります。)|
+|The size of "{friendly_name1}" is inconsistent with size of "{friendly_name2}". ("{friendly_name1}" のサイズが "{friendly_name2}" のサイズと一致していません。)|
 
 
 ## <a name="error-0028"></a>エラー 0028  
@@ -571,7 +573,7 @@ Azure Machine Learning では、(モジュールのパラメーターで選択�
 |例外メッセージ|
 |------------------------|
 |Invalid Uri is passed. (無効な URI が渡されました。)|
-|The Uri "{0}" is invalid. (Uri "\{0\}" は無効です。)|
+|The Uri "{invalid_url}" is invalid. (URI "{invalid_url}" が無効です。)|
 
 
 ## <a name="error-0030"></a>エラー 0030  
@@ -584,7 +586,7 @@ Azure Machine Learning では、(モジュールのパラメーターで選択�
 |例外メッセージ|
 |------------------------|
 |Unable to download a file. (ファイルをダウンロードできません。)|
-|Error while downloading the file: {0}. (ファイル \{0\} のダウンロードでエラーが発生しました。)|
+|Error while downloading the file: {file_url} (ファイルのダウンロード中にエラーが発生しました: {file_url}。)|
 
 
 ## <a name="error-0031"></a>エラー 0031  
@@ -597,7 +599,8 @@ Azure Machine Learning では、(モジュールのパラメーターで選択�
 |例外メッセージ|
 |------------------------|
 |Number of columns in column set is less than required. (列セット内の列の数が必要な数に達していません。)|
-|At least {0} column(s) should be specified. (少なくとも "\{0\}" 列を指定する必要があります。) The actual number of specified columns is {1}. (実際に指定された列の数は {1} です。)|
+|At least {required_columns_count} column(s) should be specified for input argument "{arg_name}". (入力引数 "{arg_name}" には、少なくとも {required_columns_count} 個の列を指定する必要があります。)|
+|At least {required_columns_count} column(s) should be specified for input argument "{arg_name}". (入力引数 "{arg_name}" には、少なくとも {required_columns_count} 個の列を指定する必要があります。) The actual number of specified columns is {input_columns_count}. (実際に指定された列の数は {input_columns_count} です。)|
 
 
 ## <a name="error-0032"></a>エラー 0032  
@@ -610,7 +613,7 @@ Azure Machine Learning では、(モジュールのパラメーターで選択�
 |例外メッセージ|
 |------------------------|
 |Argument is not a number. (引数が数値ではありません。)|
-|"{0}" is not a number. ("\{0\}" が数値ではありません。)|
+|"{arg_name}" is not a number. ("{arg_name}" が数値ではありません。)|
 
 
 ## <a name="error-0033"></a>エラー 0033  
@@ -623,7 +626,7 @@ Azure Machine Learning では、(モジュールのパラメーターで選択�
 |例外メッセージ|
 |------------------------|
 |Argument must be finite. (引数は有限である必要があります。)|
-|"{0}" is not finite. ("\{0\}" が有限ではありません。)|
+|"{arg_name}" is not finite. ("{arg_name}" が有限ではありません。)|
 
 
 ## <a name="error-0034"></a>エラー 0034  
@@ -663,7 +666,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |例外メッセージ|
 |------------------------|
 |No features were provided for a required user or item. (必要なユーザーまたは項目に特徴が提供されませんでした。)|
-|Features for {0} required but not provided. (\{0\} の特徴が必要ですが提供されていません。)|
+|Features for {required_feature_name} required but not provided. ({Required_feature_name} に特徴が必須ですが、指定されていません。)|
 
 
 ## <a name="error-0036"></a>エラー 0036  
@@ -676,7 +679,6 @@ For general information about how the Matchbox recommendation algorithm works, a
 |例外メッセージ|
 |------------------------|
 |Duplicate feature definition for a user or item. (ユーザーまたは項目に対する特徴の定義が重複しています。)|
-|Duplicate feature definition for {0}. (\{0\} に対する特徴の定義が重複しています。)|
 
 
 ## <a name="error-0037"></a>エラー 0037  
@@ -742,9 +744,9 @@ For general information about how the Matchbox recommendation algorithm works, a
 |例外メッセージ|
 |------------------------|
 |Not allowed conversion. (変換は許可されていません。)|
-|Could not convert column of type {0} to column of type {1}. (\{0\} 型の列を {1} 型の列に変換できませんでした。)|
-|Could not convert column "{2}" of type {0} to column of type {1}. (\{0\} 型の列 "{2}" を {1} 型の列に変換できませんでした。)|
-|Could not convert column "{2}" of type {0} to column "{3}" of type {1}. (\{0\} 型の列 "{2}" を {1} 型の列 "{3}" に変換できませんでした。)|
+|Could not convert column of type {type1} to column of type {type2}. (型 {type1} の列を型 {type2} の列に変換できませんでした。)|
+|Could not convert column "{col_name1}" of type {type1} to column of type {type2}. (型 {type1} の列 "{col_name1}" を型 {type2} の列に変換できませんでした。)|
+|Could not convert column "{col_name1}" of type {type1} to column "{col_name2}" of type {type2}. (型 {type1} の列 "{col_name1}" を型 {type2} の列 "{col_name2}" に変換できませんでした。)|
 
 
 ## <a name="error-0044"></a>エラー 0044  
@@ -757,8 +759,8 @@ For general information about how the Matchbox recommendation algorithm works, a
 |例外メッセージ|
 |------------------------|
 |Cannot derive element type of the column. (列の要素型を派生できません。)|
-|Cannot derive element type for column "{0}" -- all the elements are null references. (列 "\{0\}" の要素型を派生できません -- すべての要素が null 参照です。)|
-|Cannot derive element type for column "{0}" of dataset "{1}" -- all the elements are null references. (データセット "{1}" の列 "\{0\}" の要素型を派生できません -- すべての要素が null 参照です。)|
+|Cannot derive element type for column "{column_name}" -- all the elements are null references. (列 "{column_name}" の要素型を派生できません -- すべての要素が null 参照です。)|
+|Cannot derive element type for column "{column_name}" of dataset "{dataset_name}" -- all the elements are null references. (データセット "{dataset_name}" の列 "{column_name}" の要素型を派生できません -- すべての要素が null 参照です。)|
 
 
 ## <a name="error-0045"></a>エラー 0045  
@@ -771,8 +773,8 @@ For general information about how the Matchbox recommendation algorithm works, a
 |例外メッセージ|
 |------------------------|
 |Cannot create column with mixed element types. (混合要素型の列は作成できません。)|
-|Cannot create column with id "{column_id}" of mixed element types:\n\tType of data[{row_1}, {column_id}] is "{type_1}". (混合要素型の ID "{column_id}" の列は作成できません。data[{row_1}、{column_id}] の型は "{type_1}" です。) Type of data[{row_2}, {column_id}] is "{type_2}". (data[{row_2}、{column_id}] の型は "{type_2}" です。)|
-|Cannot create column with id "{column_id}" of mixed element types:\n\tType in chunk {chunk_id_1} is "{type_1}". (混合要素型の ID "{column_id}" の列は作成できません。chunk {chunk_id_1} の型は "{type_1}" です。) Type in chunk {chunk_id_2} is "{type_2}" with chunk size: {chunk_size}. (chunk {chunk_id_2} の型は chunk size: {chunk_size} の "{type_2}" です。)|
+|Cannot create column with id "{column_id}" of mixed element types: (混合要素型の ID "{column_id}" の列を作成できません:)<br />Type of data[{row_1}, {column_id}] is "{type_1}". (data[{row_1}、{column_id}] の型は "{type_1}" です。) <br />Type of data[{row_2}, {column_id}] is "{type_2}". (data[{row_2}、{column_id}] の型は "{type_2}" です。)|
+|Cannot create column with id "{column_id}" of mixed element types: (混合要素型の ID "{column_id}" の列を作成できません:)<br />Type in chunk {chunk_id_1} is "{type_1}". (チャンク {chunk_id_1} の型は "{type_1}" です。) <br />Type in chunk {chunk_id_2} is "{type_2}" with chunk size: {chunk_size}. (chunk {chunk_id_2} の型は chunk size: {chunk_size} の "{type_2}" です。)|
 
 
 ## <a name="error-0046"></a>エラー 0046  
@@ -785,7 +787,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |例外メッセージ|
 |------------------------|
 |Please specify a valid output directory. (有効な出力ディレクトリを指定してください。)|
-|Directory: {0} cannot be created. (ディレクトリ \{0\} は作成できません。) Please specify valid path. (有効なパスを指定してください。)|
+|Directory: {path} cannot be created. (ディレクトリ: {path} を作成できません。) Please specify valid path. (有効なパスを指定してください。)|
 
 
 ## <a name="error-0047"></a>エラー 0047  
@@ -824,8 +826,8 @@ For general information about how the Matchbox recommendation algorithm works, a
 |例外メッセージ|
 |------------------------|
 |Unable to open a file. (ファイルを開くことができません。)|
-|Error while opening the file: {0}. (ファイルを開くときにエラーが発生しました: \{0\}。)|
-|Error while opening the file: {0}. (ファイルを開くときにエラーが発生しました: \{0\}。) Storage exception message: {1}. (ストレージの例外メッセージ: {1}。)|
+|Error while opening the file: {file_name}. (ファイルを開くときにエラーが発生しました: {file_name}。)|
+|Error while opening the file: {file_name}. (ファイルを開くときにエラーが発生しました: {file_name}。) Storage exception message: {exception}. (ストレージの例外メッセージ: {exception}。)|
 
 
 ## <a name="error-0049"></a>エラー 0049  
@@ -910,7 +912,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |例外メッセージ|
 |------------------------|
 |File or Blob already exists. (ファイルまたは BLOB は既に存在しています。)|
-|File or Blob "{0}" already exists. (ファイルまたは BLOB "\{0\}" は既に存在しています。)|
+|File or Blob "{file_path}" already exists. (ファイルまたは BLOB "{file_path}" は既に存在しています。)|
 
 
 ## <a name="error-0058"></a>エラー 0058  
@@ -945,7 +947,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |例外メッセージ|
 |------------------------|
 |One or more specified column indexes or index ranges could not be parsed. (指定された 1 つまたは複数の列インデックスまたはインデックス範囲を解析できませんでした。)|
-|Column index or range "{0}" could not be parsed. (列インデックスまたは範囲 "\{0\}" を解析できませんでした。)|
+|Column index or range "{column_index_or_range}" could not be parsed. (列のインデックスまたは範囲 "{column_index_or_range}" を解析できませんでした。)|
 
 
 ## <a name="error-0060"></a>エラー 0060  
@@ -958,7 +960,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |例外メッセージ|
 |------------------------|
 |Invalid or out of range column index range specified. (無効または範囲外の列インデックス範囲が指定されました。)|
-|Column range "{0}" is invalid or out of range. (列範囲 "\{0\}" は無効または範囲外です。)|
+|Column range "{column_range}" is invalid or out of range. (列範囲 "{column_range}" が無効または範囲外です。)|
 
 
 ## <a name="error-0061"></a>エラー 0061  
@@ -1035,7 +1037,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |例外メッセージ|
 |------------------------|
 |The resource could not be uploaded to Azure storage. (リソースを Azure Storage にアップロードできませんでした。)|
-|The file "{0}" could not be uploaded to Azure storage as "{1}". (ファイル "\{0\}" を "{1}" として Azure Storage にアップロードできませんでした。)|
+|The file "{source_path}" could not be uploaded to Azure storage as "{dest_path}". (ファイル "{source_path}" を Azure Storage に "{dest_path}" としてアップロードできませんでした。)|
 
 
 ## <a name="error-0067"></a>エラー 0067  
@@ -1079,7 +1081,6 @@ For general information about how the Matchbox recommendation algorithm works, a
 |例外メッセージ|
 |------------------------|
 |Hive script is incorrect. (Hive スクリプトが正しくありません。)|
-|Hive script {0} is not correct. (Hive スクリプト \{0\} が正しくありません。)|
 
 
 ## <a name="error-0069"></a>エラー 0069  
@@ -1101,8 +1102,8 @@ For general information about how the Matchbox recommendation algorithm works, a
 |例外メッセージ|
 |------------------------|
 |SQL script is incorrect. (SQL スクリプトが正しくありません。)|
-|SQL query "{0}" is not correct. (SQL クエリ "\{0\}" が正しくありません。)|
-|SQL query "{0}" is not correct:{1}. (SQL クエリ "\{0\}" が正しくありません:"{1}"。)|
+|SQL query "{sql_query}" is not correct. (SQL クエリ "{sql_query}" が正しくありません。)|
+|SQL query "{sql_query}" is not correct. (SQL クエリ "{sql_query}" が正しくありません。) Exception message: {exception}. (例外メッセージ: {exception}。)|
 
 
 ## <a name="error-0070"></a>エラー 0070  
@@ -1115,7 +1116,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |例外メッセージ|
 |------------------------|
 |Azure table does not exist. (Azure のテーブルが存在しません。)|
-|Azure table "{0}" does not exist. (Azure のテーブル "\{0\}" が存在しません。)|
+|Azure table "{table_name}" does not exist. (Azure のテーブル "{table_name}" が存在しません。)|
 
 
 ## <a name="error-0072"></a>エラー 0072  
@@ -1140,7 +1141,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |例外メッセージ|
 |------------------------|
 |Failed to convert column. (列を変換できませんでした。)|
-|Failed to convert column to {0}. (列を \{0\} に変換できませんでした。)|
+|Failed to convert column to {target_type}. (列を {target_type} に変換できませんでした。)|
 
 
 ## <a name="error-0075"></a>エラー 0075  
@@ -1169,7 +1170,7 @@ Azure Machine Learning では、サポートされていない方法を使って
 |例外メッセージ|
 |------------------------|
 |Unsupported blob write mode. (サポートされていない BLOB 書き込みモードです。)|
-|Unsupported blob write mode: {0}. (サポートされていない BLOB 書き込みモードです: "\{0\}"。)|
+|Unsupported blob write mode: {blob_write_mode}. (サポートされていない BLOB 書き込みモードです: {blob_write_mode}。)|
 
 
 ## <a name="error-0078"></a>エラー 0078  
@@ -1194,7 +1195,7 @@ Azure Machine Learning では、サポートされていない方法を使って
 |例外メッセージ|
 |------------------------|
 |The Azure storage container name is incorrect. (Azure ストレージ コンテナーの名前が正しくありません。)|
-|The Azure storage container name "{0}" is incorrect; a container name of the format container/blob was expected. (Azure ストレージ コンテナー名 "\{0\}" が正しくありません。コンテナー名は "コンテナー/BLOB" の形式であることが予想されていました。)|
+|The Azure storage container name "{container_name}" is incorrect; a container name of the format container/blob was expected. (Azure ストレージ コンテナー名 "{container_name}" が正しくありません。コンテナー名は、コンテナー/BLOB 形式であると予想されていました。)|
 
 
 ## <a name="error-0080"></a>エラー 0080  
@@ -1207,7 +1208,7 @@ Azure Machine Learning では、サポートされていない方法を使って
 |例外メッセージ|
 |------------------------|
 |Columns with all values missing are not allowed. (すべて欠損値の列は許可されません。)|
-|Column {0} has all values missing. (列 \{0\} はすべての値が欠損しています。)|
+|Column {col_index_or_name} has all values missing. (列 {col_index_or_name} では、すべての値が欠落しています。)|
 
 
 ## <a name="error-0081"></a>エラー 0081  
@@ -1244,9 +1245,9 @@ Azure Machine Learning では、サポートされていない方法を使って
 |例外メッセージ|
 |------------------------|
 |Dataset used for training is invalid. (トレーニングに使用されているデータセットが無効です。)|
-|{0} contains invalid data for training. (\{0\} には、トレーニングに無効なデータが含まれます。)|
-|{0} contains invalid data for training. (\{0\} には、トレーニングに無効なデータが含まれます。) Learner type: {1}. (学習器の種類: {1}。)|
-|{0} contains invalid data for training. (\{0\} には、トレーニングに無効なデータが含まれます。) Learner type: {1}. (学習器の種類: {1}。) Reason: {2}. (理由: "\{0\}"。)|
+|{data_name} contains invalid data for training. ({data_name} には、トレーニング用の無効なデータが含まれます。)|
+|{data_name} contains invalid data for training. ({data_name} には、トレーニング用の無効なデータが含まれます。) Learner type: {learner_type}. (学習器の種類: {learner_type}。)|
+|{data_name} contains invalid data for training. ({data_name} には、トレーニング用の無効なデータが含まれます。) Learner type: {learner_type}. (学習器の種類: {learner_type}。) Reason: {reason}. (理由: {reason}。)|
 
 
 ## <a name="error-0084"></a>エラー 0084  
@@ -1271,7 +1272,7 @@ Azure Machine Learning では、サポートされていない方法を使って
 |例外メッセージ|
 |------------------------|
 |Error during evaluation of script. (スクリプトの評価中にエラーが発生しました。)|
-|The following error occurred during script evaluation, please view the output log for more information:---------- Start of error message from {script_language} interpreter ----------{message}---------- End of error message from {script_language}  interpreter  ---------- (スクリプトの評価中に次のエラーが発生しました。詳細については、出力ログを参照してください:---------- {script_language} インタープリターからのエラー メッセージの開始 ----------{message}---------- {script_language} インタープリターからのエラー メッセージの終了  ---------- )|
+|The following error occurred during script evaluation, please view the output log for more information: (スクリプトの評価中に次のエラーが発生しました。詳細については、出力ログを参照してください:)<br />---------- Start of error message from {script_language} interpreter ---------- (---------- {Script_language} インタープリターからのエラー メッセージの開始 ----------)<br />{message}<br />---------- End of error message from {script_language}  interpreter  ---------- (---------- {Script_language} インタープリターからのエラー メッセージの終わり ----------)|
 
 
 ## <a name="error-0090"></a>エラー 0090  
@@ -1284,8 +1285,8 @@ Azure Machine Learning では、サポートされていない方法を使って
 |例外メッセージ|
 |------------------------|
 |The Hive table could not be created. (Hive テーブルを作成できませんでした。) For a HDInsight cluster, ensure the Azure storage account name associated with cluster is the same as what is passed in through the module parameter. (HDInsight クラスターでは、クラスターに関連付けられた Azure ストレージ アカウント名が、モジュールのパラメーターで渡されたものと同じであることを確認してください。)|
-|The Hive table "{0}" could not be created. (Hive テーブル "\{0\}" を作成できませんでした。) For a HDInsight cluster, ensure the Azure storage account name associated with cluster is the same as what is passed in through the module parameter. (HDInsight クラスターでは、クラスターに関連付けられた Azure ストレージ アカウント名が、モジュールのパラメーターで渡されたものと同じであることを確認してください。)|
-|The Hive table "{0}" could not be created. (Hive テーブル "\{0\}" を作成できませんでした。) For a HDInsight cluster, ensure the Azure storage account name associated with cluster is "{1}". (HDInsight クラスターでは、クラスターに関連付けられた Azure ストレージ アカウント名が "{1}" であることを確認してください。)|
+|The Hive table "{table_name}" could not be created. (Hive テーブル "{table_name}" を作成できませんでした。) For a HDInsight cluster, ensure the Azure storage account name associated with cluster is the same as what is passed in through the module parameter. (HDInsight クラスターでは、クラスターに関連付けられた Azure ストレージ アカウント名が、モジュールのパラメーターで渡されたものと同じであることを確認してください。)|
+|The Hive table "{table_name}" could not be created. (Hive テーブル "{table_name}" を作成できませんでした。) For a HDInsight cluster, please ensure the Azure storage account name associated with cluster is "{cluster_name}". (HDInsight クラスターでは、クラスターに関連付けられた Azure ストレージ アカウント名を確実に "{cluster_name}" としてください。)|
 
 
 ## <a name="error-0102"></a>エラー 0102  
@@ -1317,6 +1318,19 @@ Azure Machine Learning では、サポートされていない方法を使って
 |Unsupported parameter type '{0}' specified. (サポートされていないパラメーターの型 '\{0\}' が指定されています。)|  
 
 
+## <a name="error-0107"></a>エラー 0107  
+ モジュール定義ファイルで、サポートされていない出力の型が定義されている場合、スローされます。  
+  
+ Azure Machine Learning では、カスタム モジュールの xml 定義の出力ポートの型がサポートされている型と一致しない場合、このエラーが生成されます。  
+  
+**解決策:** カスタム モジュールの xml 定義ファイル内の Output 要素の type プロパティが、サポートされている型であることを確認します。  
+  
+|例外メッセージ|  
+|------------------------|  
+|Unsupported output type. (出力の型がサポートされていません。)|  
+|Unsupported output type '{output_type}' specified. (サポートされていない出力の型 '{output_type}' が指定されています。)|  
+
+
 ## <a name="error-0125"></a>エラー 0125  
  複数のデータセットのスキーマが一致しない場合、スローされます。  
 
@@ -1342,7 +1356,7 @@ Azure Machine Learning では、サポートされていない方法を使って
 |例外メッセージ|
 |------------------------|
 |Image pixel size exceeds allowed limit. (画像のピクセル サイズが許容される上限を超えています。)|
-|Image pixel size in the file '{0}' exceeds allowed limit: '{1}'. (ファイル '"\{0\}"' の画像のピクセル サイズが、許容される上限を超えています: '"{1}"'。)|
+|Image pixel size in the file '{file_path}' exceeds allowed limit: '{size_limit}'. (ファイル '{file_path}' 内の画像のピクセル サイズが、許容される上限を超えています: '{size_limit}'。)|
 
 
 ## <a name="error-0128"></a>エラー 0128  
@@ -1353,7 +1367,7 @@ Azure Machine Learning では、サポートされていない方法を使って
 |例外メッセージ|
 |------------------------|
 |カテゴリ列の条件付き確率の値が制限を超えています。|
-|カテゴリ列の条件付き確率の値が制限を超えています。 Columns '{0}' and '{1}' are the problematic pair. (列 '\{0\}' と '{1}' が問題を起こしているペアです。)|
+|カテゴリ列の条件付き確率の値が制限を超えています。 Columns '{column_name_or_index_1}' and '{column_name_or_index_2}' are the problematic pair. (列 '{column_name_or_index_1}' および '{column_name_or_index_2}' が問題のあるペアです。)|
 
 
 ## <a name="error-0129"></a>エラー 0129  
@@ -1424,7 +1438,7 @@ Exception occurs when label column is missing or has insufficient number of labe
 |例外メッセージ|
 |------------------------|
 |The number of the selected numerical columns and unique values in the categorical and string columns is too small. (選択された数値列の数およびカテゴリ列と文字列列の一意の値の数が少なすぎます。)|
-|The total number of the selected numerical columns and unique values in the categorical and string columns (currently {0}) should be at least {1}. (選択された数値列およびカテゴリ列と文字列列の一意の値の総数 (現在 "\{0\}") は、"{1}" 以上である必要があります。)|
+|The total number of the selected numerical columns and unique values in the categorical and string columns (currently {actual_num}) should be at least {lower_boundary}. (選択された数値列およびカテゴリ列と文字列列の一意の値の総数 (現在 {actual_num}) は、{lower_boundary} 以上である必要があります。)|
 
 
 ## <a name="error-0154"></a>エラー 0154  
@@ -1473,6 +1487,6 @@ Exception occurs when label column is missing or has insufficient number of labe
 |例外メッセージ|
 |------------------------|
 |Library exception. (ライブラリ例外。)|
-|Library exception: {0}. (ライブラリ例外: "\{0\}"。)|
-|Unknown library exception: {0}. (不明なライブラリ例外: "\{0\}"。) {1}|
+|Library exception: {exception}. (ライブラリの例外: {exception}。)|
+|Unknown library exception: {exception}. (不明なライブラリの例外: {exception}。) {customer_support_guidance}。|
 

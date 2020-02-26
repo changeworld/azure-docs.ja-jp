@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: b65b7a9fd38b690729fafd86fe213ff56760a1bb
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 280851b2fea0b8100a7d0f8ec8105109a41c8c83
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169836"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252078"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスとは
 
@@ -141,11 +141,11 @@ Azure Machine Learning Studio 内のご利用のワークスペースで、 **[�
 
 ## <a name="notebookvm"></a>Notebook VM はどうなったのか
 
-Notebook VM は、コンピューティング インスタンスに置き換えられつつあります。  コンピューティング インスタンスがまだ利用できないリージョンでは、Notebook VM を引き続きフル機能で使用したり、新しい Notebook VM を作成することができます。
+Notebook VM は、コンピューティング インスタンスに置き換えられつつあります。  
 
 ワークスペースのファイル共有に格納されているノートブック ファイルと、ワークスペースのデータストア内にあるデータには、コンピューティング インスタンスからアクセスできます。 ただし、以前に Notebook VM にインストールしたカスタム パッケージは、コンピューティング インスタンスに再インストールする必要があります。 コンピューティング クラスターの作成に適用されるクォータ制限は、コンピューティング インスタンスの作成にも適用されます。 
 
-コンピューティング インスタンスが使用可能なリージョンでは、新しい Notebook VM を作成することはできません。 ただし、既に作成した Notebook VM には引き続きアクセスでき、フル機能で使用することができます。 コンピューティング インスタンスは、既存の Notebook VM と同じワークスペース内に作成できます。 
+新しい Notebook VM を作成できません。 ただし、既に作成した Notebook VM には引き続きアクセスでき、フル機能で使用することができます。 コンピューティング インスタンスは、既存の Notebook VM と同じワークスペース内に作成できます。 
 
 
 ## <a name="next-steps"></a>次のステップ

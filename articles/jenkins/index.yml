@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: TomArcherMsft
   ms.author: tarcher
-  ms.date: 09/17/2019
-  ms.openlocfilehash: 10e6c6bcd5f596b56a1c31e62b3a60b3ba573c3f
-  ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+  ms.date: 02/24/2020
+  ms.openlocfilehash: af0418ae45d84fd79348e181b9bad52e9b340564
+  ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/08/2020
-  ms.locfileid: "75732367"
+  ms.lasthandoff: 02/26/2020
+  ms.locfileid: "77616680"
 landingContent:
 - title: Azure 上の Jenkins について
   linkLists:
@@ -46,7 +46,7 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Azure Container Instances でのスケーリング
-      url: /azure/container-instances/container-instances-jenkins?toc=/azure/jenkinstoc.json&bc=/azure/bread/toc.json
+      url: container-instances-jenkins.md
     - text: Azure VM エージェントでのスケーリング
       url: jenkins-azure-vm-agents.md
 - title: Azure Functions への CI/CD
@@ -82,7 +82,7 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Azure DevOps Services を使用した Linux VM へのデプロイ
-      url: /azure/virtual-machines/linux/tutorial-build-deploy-jenkins?toc=/azure/jenkinstoc.json&bc=/azure/bread/toc.json
+      url: tutorial-build-deploy-jenkins.md
 - title: Azure Storage への CI/CD
   linkLists:
   - linkListType: tutorial
@@ -94,7 +94,7 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Linux VM での開発インフラストラクチャの作成
-      url: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd?toc=/azure/jenkinstoc.json&bc=/azure/bread/toc.json
+      url: tutorial-jenkins-github-docker-cicd.md
 - title: Service Fabric への CI/CD
   linkLists:
   - linkListType: tutorial

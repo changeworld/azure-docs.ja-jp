@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bf06fe7d4e529eb04b156a2d61011198a6fe0978
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: fbc1d59ac401adedcf897d0c16edb6904c89acc3
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949425"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193440"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで要求変換技術プロファイルを定義する
 
@@ -26,7 +26,7 @@ ms.locfileid: "74949425"
 
 ## <a name="protocol"></a>Protocol
 
-**Protocol** 要素の **Name** 属性は、`Proprietary` に設定する必要があります。 **handler** 属性には、Azure AD B2C により使用される、プロトコルハンドラー アセンブリの完全修飾名が存在する必要があります `Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
+**Protocol** 要素の **Name** 属性は `Proprietary` に設定する必要があります。 **handler** 属性には、Azure AD B2C により使用される、プロトコルハンドラー アセンブリの完全修飾名が存在する必要があります `Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
 
 次の例は、要求変換技術プロファイルを示してます。
 
@@ -37,7 +37,7 @@ ms.locfileid: "74949425"
   ...
 ```
 
-## <a name="output-claims"></a>出力要求
+## <a name="output-claims"></a>出力クレーム
 
 **OutputClaims** 要素は必須です。 技術プロファイルにより返される出力要求を、少なくとも 1 つを指定するようにしてください。 次の例は、出力要求で既定値を設定する方法を示しています。
 
@@ -99,6 +99,12 @@ TransformationClaimType="collection" />
   </OrchestrationSteps>
 </UserJourney>
 ```
+
+## <a name="metadata"></a>Metadata
+
+| 属性 | Required | 説明 |
+| --------- | -------- | ----------- |
+| IncludeClaimResolvingInClaimsHandling  | いいえ | 入力要求と出力要求の場合、[要求の解決](claim-resolver-overview.md) が技術プロファイルに含まれるかどうかを指定します。 指定できる値: `true` または `false`  (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
 
 ## <a name="use-a-validation-technical-profile"></a>検証技術プロファイルの使用
 

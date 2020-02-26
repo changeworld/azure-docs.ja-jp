@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 607b65d6a6893901ce23cd48c277c14209128866
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 0622aca5579c64c6d840761abb151665af559eea
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137966"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367643"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Text Analytics で名前付きエンティティの認識を使用する方法
 
@@ -28,7 +28,9 @@ Text Analytics API を使用すると、構造化されていないテキスト�
 
 ### <a name="named-entity-recognition-ner"></a>名前付きエンティティの認識 (NER)
 
-名前付きエンティティの認識 (NER) は、テキスト形式のさまざまなエンティティを識別して、事前に定義したクラスまたは種類に分類する機能です。 たとえば、人や場所、組織が該当します。
+名前付きエンティティの認識 (NER) とは、人、場所、イベント、製品や組織などの事前に定義されているさまざまなテキスト形式のエンティティを、クラスまたは種類に分類する機能です。  
+
+Text Analytics API のこの機能では、バージョン 3 以降、電話番号、社会保障番号、電子メール アドレス、銀行の口座番号など、個人情報や機密情報の種類も識別できるようになりました。  これらのエンティティの識別は、機密文書の分類や、個人情報の解決に役立ちます。
 
 ## <a name="named-entity-recognition-versions-and-features"></a>名前付きエンティティの認識のバージョンと機能
 

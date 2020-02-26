@@ -4,14 +4,14 @@ description: このクイックスタートでは、Azure CLI でサンプル �
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: adb5b64456de743142ffb464ebb2c5e9f8dc8f86
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 1e30da0844efa48f64a5e2501c79d2167ca4be92
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190771"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431259"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Java Spring アプリケーションを起動する
 
@@ -143,28 +143,34 @@ az spring-cloud app deploy -n auth-service --jar-path ./auth-service/target/auth
 
 ## <a name="assign-public-endpoint-to-gateway"></a>ゲートウェイにパブリック エンドポイントを割り当てる
 
-Web ブラウザーを介してアプリケーションにアクセスする手段が必要です。 ゲートウェイ アプリケーションには、パブリックに公開されているエンドポイントが必要です。それは、次のコマンドを使用して割り当てることができます。
+Web ブラウザーを介してアプリケーションにアクセスする手段が必要です。 ゲートウェイ アプリケーションには、パブリックに公開されているエンドポイントが必要です。
+
+1. 次のコマンドを使用してエンドポイントを割り当ててください。
 
 ```azurecli
 az spring-cloud app update -n gateway --is-public true
 ```
+2. アプリケーションが実行されていることを確認できるように、**gateway** アプリケーションに対してパブリック IP を求めるクエリを実行します。
 
-最後に、アプリケーションが実行されていることを確認できるように、**gateway** アプリケーションに対してパブリック IP を求めるクエリを実行します。
-
+Linux:
 ```azurecli
 az spring-cloud app show --name gateway | grep url
 ```
-
-前のコマンドによって提供された URL に移動し、PiggyMetrics アプリケーションを実行します。
+Windows:
+```azurecli
+az spring-cloud app show --name gateway | findstr url
+```
+3. 前のコマンドによって提供された URL に移動し、PiggyMetrics アプリケーションを実行します。
     ![PiggyMetrics が実行中のスクリーンショット](media/spring-cloud-quickstart-launch-app-cli/launch-app.png)
 
 また、Azure portal に移動して URL を検索することもできます。 
 1. サービスに移動します
-1. **[アプリ]** を選択します
-1. **[gateway]** を選択します
+2. **[アプリ]** を選択します
+3. **[gateway]** を選択します
 
     ![PiggyMetrics が実行中のスクリーンショット](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
-1. **gateway の概要** ページで、URL を見つけます![PiggyMetrics が実行中のスクリーンショット](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
+    
+4. **gateway の概要** ページで、URL を見つけます![PiggyMetrics が実行中のスクリーンショット](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
 
 > [!div class="nextstepaction"]
 > [問題が発生しました](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=public-endpoint)

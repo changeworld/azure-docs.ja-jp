@@ -4,15 +4,15 @@ description: Azure Analysis Services の表形式 1200 以上のデータ モデ
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 02/20/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4a99bfe8d8235400f9122423aa4592fc6898abc1
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: f65d8fa2c2e522c718c637e32defc4c56fca8364
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922284"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461659"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services でサポートされるデータ ソース
 
@@ -20,10 +20,10 @@ Analysis Services プロジェクトを使用した Visual Studio の [データ
 
 ## <a name="azure-data-sources"></a>Azure データ ソース
 
-|データ ソース  |メモリ内  |DirectQuery  |メモ |
+|データ ソース  |メモリ内  |DirectQuery  |Notes |
 |---------|---------|---------|---------|
 |Azure SQL データベース      |   はい      |    はい      |<sup>[2](#azprovider)</sup>、<sup>[3](#azsqlmanaged)</sup>|
-|Azure SQL Data Warehouse      |   はい      |   はい       |<sup>[2](#azprovider)</sup>|
+|Azure Synapse Analytics (SQL Data Warehouse)      |   はい      |   はい       |<sup>[2](#azprovider)</sup>|
 |Azure Blob Storage      |   はい       |    いいえ      | <sup>[1](#tab1400a)</sup> |
 |Azure Table Storage     |   はい       |    いいえ      | <sup>[1](#tab1400a)</sup>|
 |Azure Cosmos DB     |  はい        |  いいえ        |<sup>[1](#tab1400a)</sup> |
@@ -42,7 +42,7 @@ Analysis Services プロジェクトを使用した Visual Studio の [データ
 
 ## <a name="other-data-sources"></a>他のデータ ソース
 
-|データ ソース | メモリ内 | DirectQuery |メモ   |
+|データ ソース | メモリ内 | DirectQuery |Notes   |
 |  --- | --- | --- | --- |
 |Access データベース     |  はい | いいえ |  |
 |Active Directory     |  はい | いいえ | <sup>[6](#tab1400b)</sup>  |
@@ -120,7 +120,7 @@ Visual Studio で [テーブルのインポート ウィザード] を使用す�
 
 ## <a name="oauth-credentials"></a>OAuth 資格情報
 
-インメモリ モードを使用する 1400 以上の互換性レベルの表形式モデルでは、Azure SQL Database、Azure SQL Data Warehouse、Dynamics 365、SharePoint リストで OAuth 資格情報がサポートされています。 Azure Analysis Services では、実行時間の長い更新操作のタイムアウトを避けるために、OAuth データ ソースのトークン更新を管理します。 有効なトークンを生成するには、SSMS を使用して資格情報を設定します。
+インメモリ モードを使用する 1400 以上の互換性レベルの表形式モデルでは、Azure SQL Database、Azure Synapse Analytics (SQL Data Warehouse)、Dynamics 365、SharePoint リストで OAuth 資格情報がサポートされています。 Azure Analysis Services では、実行時間の長い更新操作のタイムアウトを避けるために、OAuth データ ソースのトークン更新を管理します。 有効なトークンを生成するには、SSMS を使用して資格情報を設定します。
 
 直接クエリモードは OAuth 資格情報ではサポートされていません。
 

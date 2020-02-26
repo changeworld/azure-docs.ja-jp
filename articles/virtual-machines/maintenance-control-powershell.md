@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 58bdbdfcb82806dfa0b2779967bddf1242a8b702
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 7e4586a5fba91fbc7432aa352b9608be728e8654
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77115707"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251942"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-azure-powershell"></a>プレビュー:メンテナンス コントロールと Azure PowerShell による更新をコントロールする
 
@@ -216,6 +216,7 @@ ute/virtualMachines/DXT-test-04-iso/providers/Microsoft.Maintenance/applyUpdates
 Name           : default
 Type           : Microsoft.Maintenance/applyUpdates
 ```
+LastUpdateTime は、セルフ メンテナンス期間を使用せずにユーザーまたはプラットフォームが開始した、更新が完了した時刻になります。 今までメンテナンス コントロールによって更新プログラムが適用されたことがない場合は、既定値が表示されます。
 
 ### <a name="isolated-vm"></a>分離された VM
 

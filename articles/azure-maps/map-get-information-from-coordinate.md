@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0b1ab7b2c233eb1e6e231b0ae7935b6c24363948
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 1a6b3b4665e6141fb4c95508a8d8405268de6d19
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988534"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208524"
 ---
 # <a name="get-information-from-a-coordinate"></a>座標から情報を取得する
 
@@ -37,7 +37,7 @@ ms.locfileid: "76988534"
 
 5 番目のコード ブロックでは、クリックされた座標位置の応答アドレスを表示する HTML ポップアップ コンテンツが設定されます。
 
-座標情報を取得する前にマップが完全に読み込まれるように、カーソルの変更、popup オブジェクト、およびクリック イベントはすべてマップの[ロード イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)で作成されます。
+カーソルの変更、ポップアップ オブジェクト、およびクリック イベントは、いずれもマップの[ロード イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)で作成されます。 このコード構造により、座標情報を取得する前にマップ全体が確実に読み込まれます。
 
 ## <a name="make-a-reverse-search-request-via-fetch-api"></a>Fetch API　を使用して逆方向の検索要求を行う
 
@@ -52,7 +52,7 @@ ms.locfileid: "76988534"
 
 3 つ目のコード ブロックでは、マウス クリック用のイベント リスナーが追加されます。 マウスをクリックすると、[Fetch API](https://fetch.spec.whatwg.org/) を使用して、クリックした座標アドレスを見つけるために [Azure Maps Reverse Address Search API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) に対してクエリが実行されます。 応答が成功すると、クリックされた場所のアドレスが収集されます。 これにより、popup クラスの [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) 関数を使用して、ポップアップのコンテンツと位置が定義されます。
 
-座標情報を取得する前にマップが完全に読み込まれるように、カーソルの変更、popup オブジェクト、およびクリック イベントはすべてマップの[ロード イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)で作成されます。
+カーソルの変更、ポップアップ オブジェクト、およびクリック イベントは、いずれもマップの[ロード イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)で作成されます。 このコード構造により、座標情報を取得する前にマップ全体が確実に読み込まれます。
 
 ## <a name="next-steps"></a>次のステップ
 

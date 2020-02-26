@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 10/03/2019
-ms.openlocfilehash: 8c5fe1970857a04c7b237a101ac228dea024815b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive,mvc
+ms.date: 02/12/2020
+ms.openlocfilehash: 5eb6788a558e4429296731f1693edd18bf92f98f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494498"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198890"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight での Apache Spark クラスターへのデータの読み込みとクエリの実行
 
@@ -60,7 +60,9 @@ Jupyter Notebook は、さまざまなプログラミング言語をサポート
 
     ![対話型の Spark SQL クエリの状態](./media/apache-spark-load-data-run-query/hdinsight-spark-interactive-spark-query-status.png "対話型の Spark SQL クエリの状態")
 
-2. 次のコードを実行してデータフレームと一時テーブル (**hvac**) を作成します。
+1. 返されたセッション ID をメモしておきます。 上の図では、セッション ID は 0 です。 必要に応じて、`https://CLUSTERNAME.azurehdinsight.net/livy/sessions/ID/statements` に移動してセッションの詳細を取得できます。ここで、CLUSTERNAME は Spark クラスターの名前、ID はセッション ID 番号です。
+
+1. 次のコードを実行してデータフレームと一時テーブル (**hvac**) を作成します。
 
     ```python
     # Create a dataframe and table from sample data
@@ -91,7 +93,7 @@ Jupyter Notebook は、さまざまなプログラミング言語をサポート
 
 4. [次のチュートリアル](apache-spark-use-bi-tools.md)をすぐに開始する場合は、Notebook を開いたままにしておきます。 開始しない場合は、ノートブックのメニュー バーから **[ファイル]**  >   **[Close and Halt]\(閉じて停止)** に移動し、ノートブックをシャットダウンしてクラスター リソースを解放します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 HDInsight を使用すると、データと Jupyter Notebook は Azure Storage または Azure Data Lake Storage に格納されるため、クラスターは、使用されていない場合に安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。 すぐに次のチュートリアルに取り掛かる場合は、クラスターを保持することができます。
 
@@ -101,7 +103,7 @@ Azure Portal で、クラスターを開き、 **[削除]** を選択します�
 
 リソース グループ名を選び、リソース グループ ページを開いて、 **[リソース グループの削除]** を選ぶこともできます。 リソース グループを削除すると、HDInsight Spark クラスターと既定のストレージ アカウントの両方が削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、csv ファイルからデータフレームを作成する方法と、Azure HDInsight で Apache Spark クラスターに対して対話型の Spark SQL クエリを実行する方法を説明しました。 次の記事に進んで、Apache Spark に登録したデータを Power BI などの BI 分析ツールに取り込む方法を確認してください。
 

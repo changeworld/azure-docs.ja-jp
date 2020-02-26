@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: b373691a6b9649a43d68c9da93b49fd20536c42b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 81db0889294360f74cb42d388e5d875de91c1019
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024638"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212469"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions の Premium プラン
 
@@ -57,7 +57,7 @@ Premium プランにデプロイされた Azure Functions では、[Web アプ�
 
 Premium プランで関数アプリにサブネットを割り当てるときは、個々の潜在的インスタンスのための十分な IP アドレスがあるサブネットが必要です。 使用可能なアドレスが 100 以上の IP ブロックが必要です。
 
-詳細については、[関数アプリと VNet の統合](functions-create-vnet.md)に関するページを参照してください。
+詳細については、[お使いの関数アプリと VNet の統合](functions-create-vnet.md)に関するページを参照してください。
 
 ### <a name="rapid-elastic-scale"></a>高速エラスティック スケール
 
@@ -94,6 +94,11 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 |EP2|2|7 GB|250 GB|
 |EP3|4|14 GB|250 GB|
 
+### <a name="memory-utilization-considerations"></a>メモリ使用率に関する注意点
+メモリの多いコンピューターでお使いの関数アプリを実行しても、利用可能なすべてのメモリを使用できるとは限りません。
+
+たとえば、JavaScript 関数アプリには、Node.js の既定のメモリ上限の制限があります。 この固定のメモリ制限を増やすには、値に `--max-old-space-size=<max memory in MB>` を使用して `languageWorkers:node:arguments` のアプリ設定を追加します。
+
 ## <a name="regions"></a>リージョン
 
 各 OS で現在サポートされているリージョンは次のとおりです。
@@ -108,7 +113,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 |カナダ中部| ✔ |  |
 |米国中部| ✔ |  |
 |東アジア| ✔ |  |
-|East US | ✔ | ✔<sup>1</sup> |
+|米国東部 | ✔ | ✔<sup>1</sup> |
 |米国東部 2| ✔ |  |
 |フランス中部| ✔ |  |
 |ドイツ中西部| ✔ | |

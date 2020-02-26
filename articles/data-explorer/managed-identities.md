@@ -7,16 +7,16 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 3b0bb62de4a96a45d607e05b32a87feec692e4d4
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: e76ae2e072bb780ac9788902e9157db871e4f09d
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75722204"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373381"
 ---
 # <a name="configure-managed-identities-for-your-azure-data-explorer-cluster"></a>Azure Data Explorer クラスターのマネージド ID の構成
 
-[Azure Active Directory のマネージド ID](/azure/active-directory/managed-identities-azure-resources/overview) を使用すると、クラスターは AAD で保護された他のリソース (Azure Key Vault など) に簡単にアクセスできます。 ID は Azure プラットフォームによって管理され、シークレットをプロビジョニングまたはローテーションする必要はありません。 この記事では、Azure Data Explorer クラスターのマネージド ID を作成する方法について説明します。 
+[Azure Active Directory のマネージド ID](/azure/active-directory/managed-identities-azure-resources/overview) を使用すると、クラスターは AAD で保護された他のリソース (Azure Key Vault など) に簡単にアクセスできます。 ID は Azure プラットフォームによって管理され、シークレットをプロビジョニングまたはローテーションする必要はありません。 この記事では、Azure Data Explorer クラスターのマネージド ID を作成する方法について説明します。 マネージド ID の構成は、現在、[お使いのクラスターに対して、お客様が管理するキーを有効にする](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault)場合にのみサポートされています。
 
 > [!Note]
 > アプリがサブスクリプションやテナント間で移行された場合、Azure Data Explorer のマネージド ID は想定されたとおりに動作しません。 アプリは新しい ID を取得する必要があります。これは、[ID の削除](#remove-an-identity)を使用して機能を無効にしてから再度有効にすることで実行できます。 新しい ID を使用するには、ダウンストリーム リソースのアクセス ポリシーも更新する必要があります。

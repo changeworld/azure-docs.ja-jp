@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: e534754e46e6f2ad9b99b67d24d9f7da63a51a4f
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: cd30803735c5453c286788b8669a3d2f02c418a5
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258379"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468050"
 ---
 # <a name="metrics-in-azure-monitor"></a>Azure Monitor のメトリック
 
@@ -37,7 +37,7 @@ Azure Monitor のログは軽量であり、ほぼリアルタイムのシナリ
 | 視覚化 | メトリックス エクスプローラーのグラフを [Azure ダッシュボード](../learn/tutorial-app-dashboards.md)にピン留めします。<br>[ブック](../app/usage-workbooks.md)を作成して、複数のデータのセットを対話型のレポートにまとめます。クエリの結果を [Grafana](grafana-plugin.md) にエクスポートし、そのダッシュボードを利用して他のデータ ソースと組み合わせます。 |
 | アラート: | メトリックがしきい値を超えたときに、通知を送信または[自動化されたアクション](action-groups.md)を実行する[メトリック アラート ルール](alerts-metric.md)を構成します。 |
 | 自動化 |  [自動スケーリング](autoscale-overview.md)を使用して、しきい値を超えるメトリック値に基づいてリソースを増加または減少させます。 |
-| エクスポート | [メトリックをログにルーティング](resource-logs-collect-storage.md)して、Azure Monitor メトリックのデータと Azure Monitor ログのデータを一緒に分析し、93 日間より長くメトリック値を保存します。<br>メトリックを [Event Hub](stream-monitoring-data-event-hubs.md) にストリーミングして、外部システムにルーティングします。 |
+| [エクスポート] | [メトリックをログにルーティング](resource-logs-collect-storage.md)して、Azure Monitor メトリックのデータと Azure Monitor ログのデータを一緒に分析し、93 日間より長くメトリック値を保存します。<br>メトリックを [Event Hub](stream-monitoring-data-event-hubs.md) にストリーミングして、外部システムにルーティングします。 |
 | 取得 | [PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.applicationinsights)を使用して、コマンド ラインからメトリック値にアクセスします。<br>[REST API](rest-api-walkthrough.md) を使用して、カスタム アプリケーションからメトリック値にアクセスします。<br>[CLI](/cli/azure/monitor/metrics) を使用して、コマンド ラインからメトリック値にアクセスします。 |
 | アーカイブ | コンプライアンス、監査、オフライン レポートの目的で、リソースのパフォーマンスや正常性の履歴を[アーカイブ](..//learn/tutorial-archive-data.md)します。 |
 
@@ -52,9 +52,9 @@ Azure Monitor メトリックによって収集されるデータは、タイム
 * 「[多次元メトリック](#multi-dimensional-metrics)」で説明されているように、一部のメトリックは複数のディメンションを持ちます。 カスタム メトリックは最大 10 個のディメンションを持つことができます。
 
 ## <a name="multi-dimensional-metrics"></a>多次元メトリック
-メトリック データの課題の 1 つは、収集された値のコンテキストを提供するための情報が限定されている場合が多いことです。 Azure Monitor では、多次元メトリックを使用してこの課題に対処します。 メトリックのディメンションは、メトリックの値を記述するための追加データを保持する名前と値のペアです。 たとえば、_使用可能なディスク領域_ メトリックは、_C:_ 、_D:_ という値がある _ドライブ_と呼ばれるディメンションを持つことができ、これらの値を使用して、すべてのドライブまたは個別のドライブで使用可能なディスク領域を表示できます。
+メトリック データの課題の 1 つは、収集された値のコンテキストを提供するための情報が限定されている場合が多いことです。 Azure Monitor では、多次元メトリックを使用してこの課題に対処します。 メトリックのディメンションは、メトリックの値を記述するための追加データを保持する名前と値のペアです。 たとえば、_使用可能なディスク領域_ メトリックは、_C:_ 、_D:_ という値がある _ドライブ_ と呼ばれるディメンションを持つことができ、これらの値を使用して、すべてのドライブまたは個別のドライブで使用可能なディスク領域を表示できます。
 
-次の例は、_ネットワーク スループット_という名前の架空のメトリック用の 2 つのデータセットを示しています。 最初のデータセットにはディメンションがありません。 2 番目のデータセットは、_IP アドレス_と_方向_という 2 つのディメンションの値を示しています。
+次の例は、_ネットワーク スループット_ という名前の架空のメトリック用の 2 つのデータセットを示しています。 最初のデータセットにはディメンションがありません。 2 番目のデータセットは、_IP アドレス_ と _方向_ という 2 つのディメンションの値を示しています。
 
 ### <a name="network-throughput"></a>ネットワーク スループット
 
@@ -102,7 +102,7 @@ Azure の多くのリソースでは、メトリックは 93 日間保存され�
 
 **ゲスト OS メトリック**
 -   **クラシック ゲストの OS メトリック**。 これらは [Windows Diagnostic Extension (WAD)](../platform/diagnostics-extension-overview.md) または [Linux Diagnostic Extension (LAD)](../../virtual-machines/extensions/diagnostics-linux.md) によって収集され、Azure ストレージ アカウントにルーティングされるパフォーマンス カウンターです。 これらのメトリックの保有期間は 14 日です。
--   **Azure Monitor メトリックに送信されるゲスト OS メトリック**。 これらは Windows Diagnostic Extension (WAD) によって収集され、[Azure Monitor シンク](diagnostics-extension-overview.md#data-storage)に送信されるか、Linux マシン上の [InfluxData Telegraf エージェント](https://www.influxdata.com/time-series-platform/telegraf/)を介して収集されるパフォーマンス カウンターです。 これらのメトリックの保有期間は 93 日です。
+-   **Azure Monitor メトリックに送信されるゲスト OS メトリック**。 これらは [Windows Diagnostic 拡張機能 (WAD)](diagnostics-extension-overview.md) によって収集され、[Azure Monitor データ シンク](diagnostics-extension-overview.md#data-destinations)に送信されるか、Linux マシン上の [InfluxData Telegraf エージェント](https://www.influxdata.com/time-series-platform/telegraf/)を介して収集されるパフォーマンス カウンターです。 これらのメトリックの保有期間は 93 日です。
 -   **Log Analytics エージェントによって収集されるゲスト OS メトリック**。 これらは、Log Analytics エージェントによって収集され、Log Analytics ワークスペースに送信されるパフォーマンス カウンターです。 これらのメトリックの保有期間は 31 日で、最大 2 年間まで延長できます。
 
 **Application Insights ログベースのメトリック** 
@@ -116,7 +116,7 @@ Azure の多くのリソースでは、メトリックは 93 日間保存され�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Monitor データ プラットフォーム](data-platform.md)の詳細を確認します。
 - [Azure Monitor のログ データ](data-platform-logs.md)について確認します。

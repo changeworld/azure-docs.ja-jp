@@ -41,6 +41,10 @@
       href: cli-samples.md
 - name: 概念
   items:
+    - name: Security
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: 開発者向け機能
       href: batch-api-basics.md
     - name: API とツール

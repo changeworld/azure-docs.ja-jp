@@ -1,5 +1,6 @@
 ---
-title: 'チュートリアル: Azure Data Box を使用して VHD からマネージド ディスクにデータをコピーする| Microsoft Docs'
+title: チュートリアル:VHD からマネージド ディスクにコピーする
+titleSuffix: Azure Data Box
 description: オンプレミスの VM ワークロードの VHD から Azure Data Box にデータをコピーする方法について説明します
 services: databox
 author: alkohli
@@ -8,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 4b7182d1fa70a146da1c01273ffe1032f2982546
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 8f076deaafd938dc93800cf351bf471cead5f009
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240459"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471229"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>チュートリアル:Data Box を使用して Azure のマネージド ディスクとしてデータをインポートする
 
@@ -33,10 +34,10 @@ ms.locfileid: "70240459"
 
 1. [Azure Data Box の設定に関するチュートリアル](data-box-deploy-set-up.md)を完了していること。
 2. Data Box の受け取りが済んでいて、ポータル内での注文の状態が **[配信済み]** であること。
-3. 高速ネットワークに接続していること。 10 GbE 接続を少なくとも 1 つ利用することを強くお勧めします。 10 GbE 接続を利用できない場合は、1 GbE データ リンクを使用します。ただし、コピー速度は低下します。
+3. 高速ネットワークに接続していること。 10 GbE 接続を少なくとも 1 つ利用することを強くお勧めします。 10 GbE 接続を利用できない場合は、1 GbE データ リンクを使用します。ただし、コピー速度に影響があります。
 4. 次の事項を確認済みであること。
 
-    - [Azure オブジェクトのサイズ制限におけるサポート対象のマネージド ディスク サイズ](data-box-limits.md#azure-object-size-limits)。
+    - [「Azure オブジェクトのサイズ制限」のマネージド ディスク サイズ](data-box-limits.md#azure-object-size-limits)のサポート状況。
     - [Azure マネージド ディスクの概要](/azure/virtual-machines/windows/managed-disks-overview)。 
 
 ## <a name="connect-to-data-box"></a>Data Box に接続する
@@ -68,18 +69,18 @@ Data Box の共有への接続に SMB と NFS のどちらを使用するかに�
 
 Windows Server ホスト コンピューターを使用している場合は、次の手順に従って Data Box に接続します。
 
-1. 最初に、認証を行ってセッションを開始します。 **[接続とコピー]** に移動します。 **[資格情報の取得]** をクリックして、リソース グループに関連付けられている共有用のアクセス資格情報を取得します。 Azure portal の **[デバイスの詳細]** からアクセス資格情報を取得することもできます。
+1. 最初に、認証を行ってセッションを開始します。 **[接続とコピー]** に移動します。 **[資格情報の取得]** をクリックして、お使いのリソース グループに関連付けられている共有用のアクセス資格情報を取得します。 Azure portal の **[デバイスの詳細]** からアクセス資格情報を取得することもできます。
 
     > [!NOTE]
     > マネージド ディスクのすべての共有の資格情報は同じです。
 
     ![共有の資格情報を取得する 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
-2. [共有にアクセスしてデータをコピーする] ダイアログ ボックスで、共有の **[ユーザー名]** と **[パスワード]** をコピーします。 Click **OK**.
+2. [共有にアクセスしてデータをコピーする] ダイアログ ボックスで、共有の **[ユーザー名]** と **[パスワード]** をコピーします。 **[OK]** をクリックします。
     
     ![共有の資格情報を取得する 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
-3. リソースに関連付けられている共有 (以下の例の場合は、*mydbmdrg1*) にホスト コンピューターからアクセスするため、コマンド ウィンドウを開きます。 コマンド プロンプトに、次のコマンドを入力します。
+3. ご自分のリソースに関連付けられている共有 (以下の例の場合は、*mydbmdrg1*) にホスト コンピューターからアクセスするため、コマンド ウィンドウを開きます。 コマンド プロンプトに、次のコマンドを入力します。
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -114,7 +115,7 @@ Linux ホスト コンピューターを使用している場合は、次の手�
 
     ![NFS のクライアント アクセスを構成する 1](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
 
-2. NFS クライアントの IP アドレスを指定して、 **[追加]** をクリックします。 この手順を繰り返すことにより、複数の NFS クライアントに対するアクセスを構成できます。 Click **OK**.
+2. NFS クライアントの IP アドレスを指定して、 **[追加]** をクリックします。 この手順を繰り返すことにより、複数の NFS クライアントに対するアクセスを構成できます。 **[OK]** をクリックします。
 
     ![NFS のクライアント アクセスを構成する 2](media/data-box-deploy-copy-data-from-vhds/nfs-client-access2.png)
 
@@ -135,10 +136,10 @@ Linux ホスト コンピューターを使用している場合は、次の手�
 
 データのコピーを開始する前に、次の考慮事項を確認してください。
 
-- VHD は必ず、事前に作成されたフォルダーの 1 つにコピーします。 これらのフォルダー以外または自分で作成したフォルダーに VHD をコピーすると、VHD はマネージド ディスクではなく、ページ BLOB として Azure Storage アカウントにアップロードされます。
-- マネージド ディスクを作成するためにアップロードできるのは、容量固定の VHD のみです。 VHDX ファイル、動的 VHD、差分 VHD はサポートされていません。
+- VHD は必ず、事前に作成されたフォルダーの 1 つにコピーします。 これらのフォルダー以外または自分で作成したフォルダーに VHD をコピーすると、VHD はマネージド ディスクではなく、ページ BLOB として Azure ストレージ アカウントにアップロードされます。
+- マネージド ディスクを作成するためにアップロードできるのは、容量固定の VHD のみです。 VHDX ファイル、動的および差分 VHD はサポートされていません。
 - 事前に作成されたすべてのフォルダーにわたって 1 つのリソース グループ内で特定の名前を持つマネージド ディスクを 1 つだけ保持できます。 これは、事前に作成されたフォルダーにアップロードされた VHD は一意の名前でなければならないことを意味します。 指定した名前が、リソース グループ内の既存のマネージド ディスクと一致しないようにしてください。
-- [Azure オブジェクトのサイズ制限](data-box-limits.md#azure-object-size-limits)におけるマネージド ディスク制限を確認します。
+- 「[Azure オブジェクトのサイズ制限](data-box-limits.md#azure-object-size-limits)」のマネージド ディスク制限を確認します。
 
 SMB と NFS のどちらを経由して接続するかに応じて、次の方法を使用できます。
 
@@ -166,7 +167,7 @@ SMB と NFS のどちらを経由して接続するかに応じて、次の方�
 コピー ジョブが完了したら、**発送準備**に進むことができます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Data Box に関する次のようなトピックについて説明しました。
 

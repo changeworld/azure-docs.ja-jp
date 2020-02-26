@@ -1,5 +1,5 @@
 ---
-title: 再起動中、シャットダウン中、またはサービスの停止中に Azure Virtual Machines の再起動が停止する | Microsoft Docs
+title: 再起動中、シャットダウン中、またはサービスの停止中に Azure Virtual Machines のシャットダウンが停止する | Microsoft Docs
 description: この記事は、Azure Windows Virtual Machines のサービス エラーのトラブルシューティングに役立ちます。
 services: virtual-machines-windows
 documentationCenter: ''
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
-ms.openlocfilehash: db7b26402170236843891799738088b9229e4693
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5d6396efc9ab25baa0d32e7c33c7715863516249
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474193"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77371359"
 ---
-# <a name="azure-windows-vm-restart-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>"再起動中"、"シャットダウン中"、または "サービスの停止中" に Azure Windows VM の再起動が停止する
+# <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>"再起動中"、"シャットダウン中"、または "サービスの停止中" に Azure Windows VM のシャットダウンが停止する
 
-この記事では、Microsoft Azure で Windows 仮想マシン (VM) を再起動するときに、"再起動中"、"シャットダウン中"、または "サービスを停止しています" というメッセージが表示される可能性がある問題を解決する手順について説明します。
+この記事では、Microsoft Azure で Windows 仮想マシン (VM) を再起動するときに、"再起動中"、"シャットダウン中"、または "サービスを停止しています" というメッセージが表示される可能性がある問題を解決する手順を示します。
 
 ## <a name="symptoms"></a>現象
 

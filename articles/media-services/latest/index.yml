@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Azure Media Services v3 のクラウドベース プラットフォームについて説明します
+title: Azure Media Services v3 のクラウドベース プラットフォームのドキュメント
 summary: Media Services v3 を使用して、コンテンツのエンコードとパッケージ化、オンデマンドでのビデオのストリーム配信、ライブ ブロードキャスト、ビデオの分析を行う方法を説明します。 チュートリアルや API リファレンスなどのドキュメントでは、ビデオ ストリーミングやオーディオ ストリーミングをオンデマンドやライブで安全に行い、数百万規模のユーザーに拡張する方法を紹介します。
 metadata:
-  title: Azure Media Services v3 のドキュメント
+  title: Azure Media Services v3 のクラウドベース プラットフォームのドキュメント
   description: Media Services v3 を使用して、コンテンツのエンコードとパッケージ化、オンデマンドでのビデオのストリーム配信、ライブ ブロードキャスト、ビデオの分析を行う方法を説明します。
   services: media-services
   ms.service: media-services
@@ -12,12 +12,12 @@ metadata:
   author: Juliako
   ms.author: juliako
   ms.date: 10/07/2019
-  ms.openlocfilehash: 5b46cb4faa1b18d9b1902e760b2905f59f42f19d
-  ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+  ms.openlocfilehash: 02d1e00d6aa70c406049fe09adbab32d55114c81
+  ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/01/2020
-  ms.locfileid: "76938990"
+  ms.lasthandoff: 02/25/2020
+  ms.locfileid: "77586106"
 landingContent:
 - title: Media Services について
   linkLists:

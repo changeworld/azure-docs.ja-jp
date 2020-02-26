@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/24/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: e833ca92004c678808ec5e294de2df7c90121be7
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: ce2b4200496938e6cffb935207df8c7027eaf37a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835109"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486136"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Azure CLI を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する (プレビュー)
 
@@ -77,7 +77,7 @@ ms.locfileid: "75835109"
 この例では、`my-file-system` という名前のファイル システムを作成します。
 
 ```azurecli
-az storage container create --name my-file-system
+az storage container create --name my-file-system --account-name mystorageaccount
 ```
 
 ## <a name="create-a-directory"></a>ディレクトリを作成する
@@ -239,6 +239,12 @@ az storage blob access show -b my-directory/upload.txt -c my-file-system --accou
 az storage blob directory access set -a "user::rw-,group::rw-,other::-wx" -d my-directory -c my-file-system --account-name mystorageaccount
 ```
 
+この例では、所有ユーザー、所有グループ、またはその他のユーザーのディレクトリに*既定の* ACL を設定し、その ACL をコンソールに出力します。
+
+```azurecli
+az storage blob directory access set -a "default:user::rw-,group::rw-,other::-wx" -d my-directory -c my-file-system --account-name mystorageaccount
+```
+
 `az storage blob access set` コマンドを使用して、**ファイル**の ACL を設定します。 
 
 この例では、所有ユーザー、所有グループ、またはその他のユーザーのファイルに ACL を設定し、その ACL をコンソールに出力します。
@@ -299,7 +305,7 @@ az storage blob directory metadata update --metadata tag1=value1 tag2=value2 -c 
 az storage blob directory metadata show -c my-file-system -d my-directory --account-name mystorageaccount
 ```
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * [サンプル](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview)
 * [Gen1 から Gen2 へのマッピング](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)

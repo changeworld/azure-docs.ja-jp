@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure StorSimple Virtual Array アラートを表示して管理する | Microsoft Docs
+title: StorSimple Virtual Array のアラートを表示し、管理する
 description: StorSimple Virtual Array アラートの状態と重大度について、また StorSimple Manager サービスを使用してアラートを管理する方法について説明します。
 services: storsimple
 documentationcenter: NA
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bb6ef5a87c5610d90188471db961ef20dfb18835
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a7c469be4a1d8aba23857b1ba52ee829c126a431
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60302815"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77466945"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャーを使用して StorSimple Virtual Array のアラートを管理する
 
@@ -165,6 +165,6 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 |:--- |:--- |:--- |
 | <*デバイス名*\> のパスワードが <*数*\> 日後に有効期限切れとなります。 |パスワードの警告。 |パスワードは <*数*\> 日後に有効期限切れとなります。 パスワードの変更を検討してください。 詳細については、「[StorSimple Virtual Array デバイス管理者パスワードを変更する](storsimple-virtual-array-change-device-admin-password.md)」を参照してください。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [StorSimple Virtual Array の詳細](storsimple-ova-overview.md)

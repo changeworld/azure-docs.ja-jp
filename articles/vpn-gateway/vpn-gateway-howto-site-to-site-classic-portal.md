@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 02/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: 298d720d3848f27b18aa24897357dfaa47a12a70
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: e386e5fc9c4d62266e0ca23869bf30ccaffeb91d
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863725"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201562"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Azure Portal を使用してサイト間接続を作成する (クラシック)
 
@@ -39,7 +39,7 @@ ms.locfileid: "75863725"
 * 互換性のある VPN デバイスがあり、デバイスを構成できる人員がいることを確認します。 互換性のある VPN デバイスとデバイスの構成の詳細については、[VPN デバイスの概要](vpn-gateway-about-vpn-devices.md)に関する記事を参照してください。
 * VPN デバイスの外部接続用パブリック IPv4 アドレスがあることを確認します。
 * オンプレミス ネットワーク構成の IP アドレス範囲を把握していない場合は、詳細な情報を把握している担当者と協力して作業を行ってください。 この構成を作成する場合は、Azure がオンプレミスの場所にルーティングする IP アドレス範囲のプレフィックスを指定する必要があります。 オンプレミス ネットワークのサブネットと接続先の仮想ネットワーク サブネットが重複しないようにしなければなりません。
-* 現時点では、共有キーの指定と VPN ゲートウェイ接続の作成に PowerShell が必要です。 Azure サービス管理 (SM) PowerShell コマンドレットの最新版をインストールしてください。 コマンドレットをインストールするには、[サービス管理](/powershell/azure/servicemanagement/install-azure-ps)に関するページをご覧ください。 一般的な PowerShell のインストールの詳細については、[Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)に関するページをご覧ください。 この構成に PowerShell を使用する場合は、必ず管理者として実行するようにしてください。
+* 共有キーの指定と VPN ゲートウェイ接続の作成を行うには、PowerShell が必要です。 [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ### <a name="values"></a>この演習のサンプル構成値
 
@@ -54,7 +54,7 @@ ms.locfileid: "75863725"
   * BackEnd: 10.12.0.0/24 (この演習では省略可能)
 * **GatewaySubnet:** 10.11.255.0/27
 * **[リソース グループ]:** TestRG1
-* **[場所]:** East US
+* **[場所]:** 米国東部
 * **DNS サーバー:** 10.11.0.3 (この演習では省略可能)
 * **ローカル サイト名:** Site2
 * **[クライアント アドレス空間]:** オンプレミスのサイトにあるアドレス空間。
@@ -72,7 +72,7 @@ S2S 接続に使用する仮想ネットワークを作成する際には、指�
 1. ブラウザーから [Azure Portal](https://portal.azure.com) に移動します。必要であれば Azure アカウントでサインインします。
 2. * *[+ リソースの作成]* をクリックします。 **[Marketplace を検索]** フィールドに「仮想ネットワーク」と入力します。 検索結果の一覧から **[仮想ネットワーク]** を探してクリックし、 **[仮想ネットワーク]** ページを開きます。
 3. **[(change to Classic)]\((クラシックに変更)\)** をクリックしてから、 **[作成]** をクリックします。
-4. **[仮想ネットワーク (クラシック) の作成]** ページで、VNet の設定を構成します。 このページでは、最初のアドレス空間と 1 つのサブネット アドレスの範囲を追加します。 VNet の作成が完了したら、戻って、さらにサブネットとアドレス空間を追加できます。
+4. **[仮想ネットワーク (クラシック) の作成]** ページで、VNet の設定を構成します。 このページでは、最初のアドレス空間と 1 つのサブネット アドレスの範囲を追加します。 VNet を作成したら、戻って、さらにサブネットとアドレス空間を追加できます。
 
    ![[仮想ネットワークの作成]](./media/vpn-gateway-howto-site-to-site-classic-portal/createvnet.png "[仮想ネットワークの作成] ページ") ページ
 5. **サブスクリプション** が正しいものであることを確認します。 ドロップダウンを使用して、サブスクリプションを変更できます。
@@ -159,23 +159,24 @@ VPN ゲートウェイのゲートウェイ サブネットを作成する必要
 
 ### <a name="step-1-connect-to-your-azure-account"></a>手順 1. Azure アカウントに接続する
 
-これらのコマンドは、PowerShell サービス管理モジュールを使用してローカルで実行する必要があります。 サービス管理に切り替えるには、このコマンドを使用します。
+これらのコマンドは、PowerShell サービス管理モジュールを使用してローカルで実行する必要があります。 
 
-```powershell
-azure config mode asm
-```
+1. 管理者特権で PowerShell コンソールを開きます。 サービス管理に切り替えるには、このコマンドを使用します。
 
-1. 管理者特権で PowerShell コンソールを開き、アカウントに接続します。 接続については、次の例を参考にしてください。
+   ```powershell
+   azure config mode asm
+   ```
+2. アカウントに接続します。 接続については、次の例を参考にしてください。
 
    ```powershell
    Add-AzureAccount
    ```
-2. アカウントのサブスクリプションを確認します。
+3. アカウントのサブスクリプションを確認します。
 
    ```powershell
    Get-AzureSubscription
    ```
-3. 複数のサブスクリプションがある場合は、使用するサブスクリプションを選択します。
+4. 複数のサブスクリプションがある場合は、使用するサブスクリプションを選択します。
 
    ```powershell
    Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"

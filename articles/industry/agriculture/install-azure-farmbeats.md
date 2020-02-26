@@ -5,12 +5,12 @@ author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
-ms.openlocfilehash: b7d99c3bf61de17f9cebba834234cc8ea52f30d6
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 701e42caba5325df34bdbb2381389708b9b5a03f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77131876"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198856"
 ---
 # <a name="install-azure-farmbeats"></a>Azure FarmBeats をインストールする
 
@@ -58,7 +58,7 @@ Azure FarmBeats のコストは、基になる Azure サービスのコストを
 
 - オーストラリア東部
 - 米国中部
-- East US
+- 米国東部
 - 米国東部 2
 - 米国西部
 - 米国西部 2
@@ -83,7 +83,9 @@ Azure FarmBeats をインストールするには、Azure テナントで次の�
 - サブスクリプション - 所有者
 - FarmBeats がインストールされるリソース グループ - 所有者
 
-[AAD アプリケーションの作成](#create-an-aad-application)の手順では、最初の 2 つのアクセス許可が必要です。 必要に応じて、AAD アプリケーションを作成するために、適切なアクセス許可を持つユーザーを用意します。 FarmBeats をインストールするユーザーは、FarmBeats がインストールされるリソース グループの所有者である必要があります。
+[AAD アプリケーションの作成](#create-an-aad-application)の手順では、最初の 2 つのアクセス許可が必要です。 必要に応じて、AAD アプリケーションを作成するために、適切なアクセス許可を持つユーザーを用意します。
+
+FarmBeats をマーケットプレースからインストールするユーザーは、FarmBeats がインストールされるリソース グループの所有者である必要があります。 サブスクリプションの所有者については、リソース グループの作成時にこの内容が自動的に発生します。 その他については、リソース グループを事前に作成し、リソース グループの所有者になるようにサブスクリプションの所有者に依頼してください。
 
 Azure portal でアクセス許可を確認するには、[ロール ベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/check-access)の手順に従います。
 
@@ -120,7 +122,15 @@ PowerShell 環境を使用して、Cloud Shell インスタンスで次の手順
         ./create_aad_script.ps1
     ```
 
-4. 実行時間は約 2 分です。この AAD スクリプトでは、画面上と、同じディレクトリ内の json ファイルに値が出力されます。 他のユーザーがスクリプトを実行していた場合は、その出力を共有するよう依頼してください。
+4. このスクリプトでは、次の 3 つの入力を求められます。
+
+    - FarmBeats Web サイト名:これは FarmBeats Web アプリケーションの一意の URL プレフィックスです。 プレフィックスが既に取得されている場合、スクリプトはエラーを表示します。インストールが完了すると、お使いの FarmBeats のデプロイは https://\<FarmBeats-website-name>.azurewebsites.net からアクセスできるようになります。また、swagger API は、 https://\<FarmBeats-website-name>-api.azurewebsites.net にあります。
+
+    - Azure ログイン ID:FarmBeats の管理者として追加するユーザーに Azure ログイン ID を入力します。 その後、このユーザーは、FarmBeats Web アプリケーションへのアクセス権を他のユーザーに付与することができます。 ログイン ID は、通常、john.doe@domain.comの形式となります。 Azure UPN もサポートされています。
+
+    - Subscription ID (サブスクリプション ID):これは、Azure FarmBeats をインストールするサブスクリプションの ID です。
+
+5. 実行時間は約 2 分です。この AAD スクリプトでは、画面上と、同じディレクトリ内の json ファイルに値が出力されます。 他のユーザーがスクリプトを実行していた場合は、その出力を共有するよう依頼してください。
 
 ### <a name="create-sentinel-account"></a>Sentinel アカウントを作成する
 

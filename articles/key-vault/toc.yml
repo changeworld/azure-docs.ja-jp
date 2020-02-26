@@ -72,12 +72,12 @@
       items:
         - name: セキュリティの概要
           href: overview-security.md
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
         - name: セキュリティ ワールド
           href: key-vault-ovw-security-worlds.md
         - name: キー コンテナーのセキュリティ保護
           href: key-vault-secure-your-key-vault.md
-        - name: 組み込みのセキュリティ制御
-          href: key-vault-security-controls.md
     - name: 論理的な削除
       href: key-vault-ovw-soft-delete.md
     - name: Key Vault イベントの監視

@@ -3,12 +3,12 @@ title: MABS で Hyper-V 仮想マシンをバックアップする
 description: この記事では、Microsoft Azure Backup Server (MABS) を使用した仮想マシンのバックアップと回復の手順について説明します。
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 3bca1b46a867c2967dfcebe4bc8477d5f9c9447d
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 69e415b5aef179c2b64bb04e933593010c8b47d3
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173531"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444062"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Azure Backup Server を使用して Hyper-V 仮想マシンをバックアップする
 
@@ -64,7 +64,7 @@ MABS で Hyper-V 仮想マシンをバックアップするための前提条件
 |------------|-------|
 |MABS の前提条件|- 仮想マシンの項目レベルの回復を実行する (ファイル、フォルダー、ボリュームを回復する) 場合は、MABS サーバーに Hyper-V ロールをインストールする必要があります。  項目レベルではなく仮想マシンを回復するだけの場合、ロールは必要ありません。<br />- 1 台の MABS サーバー上でそれぞれ 100 GB の仮想マシンを 800 台まで保護できます。また、より大きなクラスターをサポートする複数の MABS サーバーを許可できます。<br />- MABS では、仮想マシンのバックアップ パフォーマンスを向上させるために、増分バックアップからページ ファイルが除外されます。<br />- MABS では、MABS サーバーと同じドメイン内、または子ドメインや信頼されたドメイン内の Hyper-V サーバーまたはクラスターをバックアップできます。 ワークグループまたは信頼されていないドメインで Hyper-V をバックアップする場合は、認証を設定する必要があります。 単一の Hyper-V サーバーの場合は、NTLM 認証または証明書認証を使用できます。 クラスターの場合は、証明書認証のみを使用できます。<br />- ホストレベルのバックアップを使用してパススルー ディスク上の仮想マシン データをバックアップすることはサポートされていません。 このシナリオでは、ホストレベルのバックアップを使用して VHD ファイルをバックアップし、ゲストレベルのバックアップを使用してホスト上では表示されない他のデータをバックアップすることをお勧めします。<br />   \- 重複除去されたボリュームに格納されている VM をバックアップできます。|
 |Hyper-V VM の前提条件|- 仮想マシン上で実行されている統合コンポーネントのバージョンは、Hyper-V ホストのバージョンと同じである必要があります。 <br />- 仮想マシンの各バックアップのために、仮想ハード ディスク ファイルをホストしているボリューム上に、バックアップ時に Hyper-V が差分ディスク (AVHD) 用の十分な領域を確保できる空き領域が必要です。 この領域は、**最初のディスク サイズ \* チャーン率 \* バックアップ**期間という計算結果以上である必要があります。 クラスター上で複数のバックアップを実行している場合は、この計算を使用して各仮想マシンで AVHD に対応できる十分なストレージ容量が必要になります。<br />- Windows Server 2012 R2 を実行している Hyper-V ホスト サーバーに配置されている仮想マシンをバックアップするには、たとえ何も接続されていなくても、仮想マシンに SCSI コントローラーを指定する必要があります (Windows Server 2012 R2 のオンライン バックアップでは、Hyper-V ホストで新しい VHD を VM にマウントしてからマウントを解除します。 SCSI コントローラーのみがこれをサポートしているため、仮想マシンのオンライン バックアップに必要です。  この設定がない場合、仮想マシンをバックアップしようとするとイベント ID 10103 が発行されます)。|
-|Linux の前提条件|- MABS 2012 R2 を使用して Linux 仮想マシンをバックアップできます。 ファイル整合性のあるスナップショットのみがサポートされます。|
+|Linux の前提条件|- MABS を使用して Linux 仮想マシンをバックアップできます。 ファイル整合性のあるスナップショットのみがサポートされます。|
 |CSV ストレージを使用して VM をバックアップする|- CSV ストレージの場合、Hyper-V サーバーにボリューム シャドウ コピー サービス (VSS) ハードウェア プロバイダーをインストールします。 VSS ハードウェア プロバイダーについては、記憶域ネットワーク (SAN) ベンダーにお問い合わせください。<br />- CSV クラスター内で 1 つのノードが突然シャットダウンした場合、MABS では、そのノードで実行されていた仮想マシンに対して整合性チェックが実行されます。<br />- CSV クラスター上で BitLocker ドライブ暗号化が有効な Hyper-V サーバーを再起動する必要がある場合は、Hyper-V 仮想マシンの整合性チェックを実行する必要があります。|
 |SMB ストレージを使用して VM をバックアップする|- Hyper-V を実行しているサーバー上で自動マウントをオンにして、仮想マシンの保護を有効にします。<br />   - TCP Chimney Offload を無効にします。<br />- すべての Hyper-V machine$ アカウントに、特定のリモート SMB ファイル共有に対する完全なアクセス許可があることを確認します。<br />- 代替の場所への回復時にすべての仮想マシン コンポーネントのファイル パスが 260 文字未満であることを確認します。 そうでない場合、回復は成功する可能性がありますが、Hyper-V で仮想マシンをマウントできません。<br />- 以下のシナリオはサポートされていません。<br />     仮想マシンの一部のコンポーネントがローカル ボリュームにあり、一部のコンポーネントがリモート ボリュームにあるデプロイ、保管場所のファイル サーバーの IPv4 または IPv6 アドレス、およびリモートの SMB 共有を使用するコンピューターへの仮想マシンの回復。<br />- 各 SMB サーバーでファイル サーバー VSS エージェント サービスを有効にする必要があります。 **[役割と機能の追加]**  >  **[サーバーの役割の選択]**  >  **[ファイル サービスと記憶域サービス]**  >  **[ファイル サービス]**  >  **[ファイル サービス]**  >  **[ファイル サーバー VSS エージェント サービス]** で追加します。|
 
@@ -132,7 +132,7 @@ MABS で Hyper-V 仮想マシンをバックアップするための前提条件
 
     1. **HKLM\Software\Microsoft\Microsoft Data Protection Manager\Configuration** に移動します。
     2. 次の 32 ビットの DWORD 値を作成します。DpmVmmHelperServicePort。また、レジストリ キーの一部として新しいポート番号を書き込みます。
-    3. ```<Install directory>\Azure Backup Server\DPM\DPM\VmmHelperService\VmmHelperServiceHost.exe.config``` を開き、ポート番号を 6070 から新しいポートに変更します。 次に例を示します。```<add baseAddress="net.tcp://localhost:6080/VmmHelperService/" />```
+    3. ```<Install directory>\Azure Backup Server\DPM\DPM\VmmHelperService\VmmHelperServiceHost.exe.config``` を開き、ポート番号を 6070 から新しいポートに変更します。 例: ```<add baseAddress="net.tcp://localhost:6080/VmmHelperService/" />```
     4. DPM-VMM ヘルパー サービスを再起動し、DPM サービスを再起動します。
 
 ### <a name="set-up-protection-for-live-migration"></a>ライブ マイグレーション用の保護を設定する
@@ -230,6 +230,6 @@ Windows Server 2012 R2 以降で MABS が実行されている場合は、レプ
 
 7. **[回復状態]** 画面には、回復ジョブに関する情報が表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Backup Server からのデータ復旧](https://docs.microsoft.com/azure/backup/backup-azure-alternate-dpm-server)

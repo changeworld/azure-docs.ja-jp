@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b45277c89193c51f70836bcef8a21636fc9c7973
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1717897261404a2ab8df723c280c9be6a2dacea4
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113122"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77196135"
 ---
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Azure AD B2B コラボレーションの制限
 現在、Azure Active Directory (Azure AD) B2B コラボレーションには、この記事に記載されている制限が適用されます。
@@ -33,7 +33,23 @@ Azure AD B2B は、Azure AD サービス ディレクトリの制限に従いま
 ## <a name="national-clouds"></a>各国のクラウド
 [国内クラウド](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud) は、物理的に分離された Azure のインスタンスです。 国内クラウドの境界を越えた B2B Collaboration はサポートされません。 たとえば、ご利用の Azure テナントがパブリックのグローバル クラウドに存在する場合、アカウントが国内クラウドにあるユーザーを招待することはできません。 ユーザーと共同作業を行うには、そのユーザーに別のメール アドレスを要求するか、またはご利用のディレクトリ内にメンバー ユーザー アカウントを作成してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="azure-us-government-clouds"></a>Azure US Government クラウド
+Azure US Government クラウド内では、現在、B2B コラボレーションは、両方が Azure US Government クラウド内にあるテナント間と、両方が B2B コラボレーションをサポートしているテナント間でのみサポートされています。 Azure US Government クラウドの一部ではないテナント、または B2B コラボレーションをまだサポートしていないテナントにユーザーを招待すると、その招待は失敗するか、またはその招待を履行できなくなります。 その他の制限事項の詳細については、「[Azure Active Directory Premium P1 と P2 のバリエーション](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2)」を参照してください。
+
+### <a name="how-can-i-tell-if-b2b-collaboration-is-available-in-my-azure-us-government-tenant"></a>B2B コラボレーションが Azure US Government テナントで利用可能かどうかを確認するにはどうすればよいですか？
+Azure US Government クラウド テナントが B2B コラボレーションをサポートしているかどうかを確認するには、次に従います。
+
+1. ブラウザーで次の URL にアクセスし、 *&lt;tenantname&gt;* のテナント名に置き換えます。
+
+   `https://login.microsoftonline.com/<tenantname>/v2.0/.well-known/openid-configuration`
+
+2. JSON の応答で `"tenant_region_scope"` を検索します。
+
+   - `"tenant_region_scope":"USGOV”` が表示される場合は、B2B がサポートされています。
+   - `"tenant_region_scope":"USG"` が表示される場合、B2B はサポートされていません。
+ 
+
+## <a name="next-steps"></a>次のステップ
 
 Azure AD B2B コラボレーションに関する以下の記事を参照してください。
 

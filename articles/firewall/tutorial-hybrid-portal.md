@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/18/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: b0847cda78c2e6d1df87eeaedc35850103840151
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: e9ca891d2d92b6760d37108b66afc54c81ac125c
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264731"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77442583"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する
 
@@ -62,7 +62,7 @@ Azure Firewall を使用すれば、許可するネットワーク トラフィ�
 >[!NOTE]
 >Azure Firewall には、インターネットへの直接接続が必要です。 AzureFirewallSubnet が BGP 経由のオンプレミス ネットワークへの既定のルートを学習する場合は、インターネットへの直接接続を保持するために、**NextHopType** の値を **Internet** に設定した 0.0.0.0/0 UDR でこれを上書きする必要があります。
 >
->Azure Firewall では、現在、強制的なトンネリングはサポートされていません。 使用する構成でオンプレミスのネットワークへの強制的なトンネリングが必要であり、インターネット上のアクセス先のターゲット IP プレフィックスを決定できる場合は、AzureFirewallSubnet 上のユーザー定義のルートを介して、次のホップとしてオンプレミスのネットワークに対してこれらの範囲を構成することができます。 または、BGP を使用してこれらのルートを定義することもできます。
+>Azure Firewall は、強制トンネリングをサポートするように構成できます。 詳細については、「[Azure Firewall 強制トンネリング](forced-tunneling.md)」を参照してください。
 
 >[!NOTE]
 >直接ピアリングされた VNets 間のトラフィックは、UDR が既定のゲートウェイとして Azure Firewall をポイントしている場合でも、直接ルーティングされます。 このシナリオでサブネット間トラフィックをファイアウォールに送信するには、UDR に両方のサブネットのターゲットのサブネット ネットワーク プレフィックスを明示的に含める必要があります。
@@ -151,11 +151,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 2. 左側の列で **[ネットワーク]** を選択してから、 **[ファイアウォール]** を選択します。
 4. **[ファイアウォールの作成]** ページで、次の表を使用してファイアウォールを構成します。
 
-   |設定  |値  |
+   |設定  |Value  |
    |---------|---------|
    |サブスクリプション     |\<該当するサブスクリプション\>|
    |Resource group     |**FW-Hybrid-Test** |
-   |Name     |**AzFW01**|
+   |名前     |**AzFW01**|
    |Location     |以前使用したのと同じ場所を選択します|
    |仮想ネットワークの選択     |**[Use Existing]\(既存の使用\)** :<br> **VNet-hub**|
    |パブリック IP アドレス     |[新規作成]: <br>**名前** - **fw-pip**。 |

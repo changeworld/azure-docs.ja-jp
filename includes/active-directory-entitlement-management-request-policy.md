@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/11/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: d89240467d5ea5172d04c8eb187fe85d1b702723
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c73a62b2d5feeae42a5ea35c88073dd5fcc0d78c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980780"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193083"
 ---
 ## <a name="for-users-in-your-directory"></a>ディレクトリ内のユーザーの場合
 
@@ -25,7 +25,7 @@ ms.locfileid: "74980780"
 
     ![アクセス パッケージ - 要求 - ディレクトリ内のユーザー](./media/active-directory-entitlement-management-request-policy/for-users-in-your-directory.png)
 
-1. 次のいずれかのオプションを選択します。
+1. 以下のオプションの 1 つを選択します。
 
     |  |  |
     | --- | --- |
@@ -60,7 +60,7 @@ ms.locfileid: "74980780"
 
     ![アクセス パッケージ - 要求 - ディレクトリ内にいないユーザー](./media/active-directory-entitlement-management-request-policy/for-users-not-in-your-directory.png)
 
-1. 次のいずれかのオプションを選択します。
+1. 以下のオプションの 1 つを選択します。
 
     |  |  |
     | --- | --- |
@@ -198,7 +198,7 @@ ms.locfileid: "74980780"
 
 ## <a name="enable-requests"></a>要求の有効化
 
-1. アクセス パッケージを要求ポリシー内のユーザーが要求のためにすぐに利用できるようにするには、 **[はい]** をクリックして有効にします。
+1. アクセス パッケージを要求ポリシー内のユーザーが要求のためにすぐに利用できるようにするには、有効トグルを **[はい]** に設定します。
 
     アクセス パッケージの作成が完了した後は、これをいつでも有効にすることができます。
 

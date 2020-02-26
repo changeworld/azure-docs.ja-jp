@@ -3,12 +3,12 @@ title: Azure Functions 2.x の host.json のリファレンス
 description: Azure Functions の v2 ランタイムの host.json ファイルのリファレンス ドキュメント。
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 3ad3682e301eb98d48372c3955c6ff049422c517
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: b9c57378df1510179c5a45b6aa669bab804aca5e
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024672"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484436"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 以降の host.json のリファレンス 
 
@@ -21,9 +21,9 @@ ms.locfileid: "77024672"
 > [!NOTE]
 > この記事は、Azure Functions 2.x 以降のバージョンを対象としています。  Functions 1.x の host.json のリファレンスについては、「[host.json reference for Azure Functions 1.x (Azure Functions 1.x の host.json のリファレンス)](functions-host-json-v1.md)」を参照してください。
 
-関数アプリの他の構成オプションは、[アプリの設定](functions-app-settings.md)で管理されます。
+その他の関数アプリの構成オプションは、[アプリ設定](functions-app-settings.md) (デプロイされているアプリの場合) または [local.settings.json](functions-run-local.md#local-settings-file) ファイル (ローカル開発の場合) で管理されます。
 
-host.json の一部の設定は、[local.settings.json](functions-run-local.md#local-settings-file) ファイルでローカルに実行するときにのみ使用されます。
+バインドに関連する host.json 内の構成は、関数アプリの各関数に均等に適用されます。 
 
 ## <a name="sample-hostjson-file"></a>サンプル host.json ファイル
 
@@ -69,11 +69,11 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
               "isEnabled": true,
               "maxTelemetryItemsPerSecond" : 20,
               "evaluationInterval": "01:00:00",
-              "initialSamplingPercentage": 1.0, 
+              "initialSamplingPercentage": 100.0, 
               "samplingPercentageIncreaseTimeout" : "00:00:01",
               "samplingPercentageDecreaseTimeout" : "00:00:01",
               "minSamplingPercentage": 0.1,
-              "maxSamplingPercentage": 0.1,
+              "maxSamplingPercentage": 100.0,
               "movingAverageRatio": 1.0,
               "excludedTypes" : "Dependency;Event",
               "includedTypes" : "PageView;Trace"
@@ -278,7 +278,7 @@ Premium プランの有効な範囲は 1 秒から 60 分で、既定値は 30 �
 
 ## <a name="http"></a>http
 
-構成設定は、[HTTP トリガーとバインディング](functions-bindings-http-webhook.md#hostjson-settings)に関する記事に記載されています。
+構成設定は、[HTTP トリガーとバインディング](functions-bindings-http-webhook-output.md#hostjson-settings)に関する記事に記載されています。
 
 ## <a name="logging"></a>logging
 
@@ -341,7 +341,7 @@ Application Insights など、関数アプリのログの動作を制御しま�
 
 ## <a name="queues"></a>queues
 
-構成設定は、[Storage キュー トリガーとバインディング](functions-bindings-storage-queue.md#host-json)に関する記事に記載されています。  
+構成設定は、[Storage キュー トリガーとバインディング](functions-bindings-storage-queue-output.md#host-json)に関する記事に記載されています。  
 
 ## <a name="sendgrid"></a>sendGrid
 
@@ -349,7 +349,7 @@ Application Insights など、関数アプリのログの動作を制御しま�
 
 ## <a name="servicebus"></a>serviceBus
 
-構成設定は、[Service Bus のトリガーとバインディング](functions-bindings-service-bus.md#host-json)に関する記事に記載されています。
+構成設定は、[Service Bus のトリガーとバインディング](functions-bindings-service-bus-output.md#host-json)に関する記事に記載されています。
 
 ## <a name="singleton"></a>singleton
 

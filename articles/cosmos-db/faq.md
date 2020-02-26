@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: ac93d1f4f0f148e1f0ce3d0f21ac9a694f2e896d
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 322d1c9ead1e7591c359c35c445fa32529db22ef
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310018"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462481"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB のさまざまな API についてよく寄せられる質問
 
@@ -79,12 +79,13 @@ Azure を初めてお使いの場合は、[Azure の無料アカウント](https
 
 ## <a id="try-cosmos-db"></a>Azure Cosmos DB サブスクリプションを試す
 
-現在、一定期間に限り、サブスクリプション不要で、課金も契約もなしで Azure Cosmos DB をご利用いただけます。 Try Azure Cosmos DB サブスクリプションにサインアップするには、「[Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)」にアクセスしてください。 このサブスクリプションは [Azure 無料試用版](https://azure.microsoft.com/free/)とは別のものであり、Azure 無料試用版または Azure 有料サブスクリプションと併用できます。
+現在、一定期間に限り、サブスクリプション不要で、課金も契約もなしで Azure Cosmos DB をご利用いただけます。 Try Azure Cosmos DB サブスクリプションにサインアップするには、「[Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)」にアクセスし、個人用 Microsoft アカウント (MSA) を使用してください。 このサブスクリプションは [Azure 無料試用版](https://azure.microsoft.com/free/)とは別のものであり、Azure 無料試用版または Azure 有料サブスクリプションと併用できます。
 
 Try Azure Cosmos DB サブスクリプションは、Azure Portal で、ユーザー ID に関連付けられた他のサブスクリプションの横に表示されます。
 
 Try Azure Cosmos DB サブスクリプションには、次の条件が適用されます。
 
+* アカウント アクセスは、個人用 Microsoft アカウント (MSA) に許可することができます。 Active Directory (AAD) アカウントや会社の AAD テナントに属するアカウントは使用しないでください。これらのアカウントには、アクセスの許可をブロックする制限が設定されている場合があります。
 * SQL、Gremlin API、Table アカウントのサブスクリプションあたり 1 つの[プロビジョニング スループットのコンテナー](./set-throughput.md#set-throughput-on-a-container)。
 * MongoDB アカウントのサブスクリプションあたり最大 3 つの[プロビジョニング スループットのコレクション](./set-throughput.md#set-throughput-on-a-container)。
 * サブスクリプションあたり 1 つの[プロビジョニング スループットのデータベース](./set-throughput.md#set-throughput-on-a-database)。 プロビジョニング スループットのデータベースには、任意の数のコンテナーを含めることができます。

@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 01/24/2020
 ms.author: jgao
-ms.openlocfilehash: f18c9c6efb17f84446b9fee3d2df2c0977bed0c4
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: a67f360aa08f306d6462342d96f59e06a4d3b501
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76757305"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251857"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>テンプレートでデプロイ スクリプトを使用する (プレビュー)
 
@@ -30,7 +30,7 @@ Azure Resource テンプレートでデプロイ スクリプトを使用する�
 
 - 簡単にコーディング、使用、デバッグができます。 デプロイ スクリプトは、好みの開発環境で開発できます。 スクリプトは、テンプレートまたは外部スクリプト ファイルに埋め込むことができます。
 - スクリプト言語とプラットフォームを指定できます。 現時点では、Linux 環境での Azure PowerShell デプロイ スクリプトのみがサポートされています。
-- スクリプトの実行に使用する ID を指定できるようにします。 現時点では、[Azure ユーザー割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) のみがサポートされています。
+- スクリプトの実行に使用する ID を指定できるようにします。 現時点では、[Azure ユーザー割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) のみがサポートされています。
 - スクリプトにコマンド ライン引数を渡すことを許可します。
 - スクリプトの出力を指定して、デプロイに渡すことができます。
 
@@ -59,7 +59,7 @@ Azure Resource テンプレートでデプロイ スクリプトを使用する�
 
 - **Azure PowerShell バージョン 2.7.0、2.8.0 または 3.0.0**。 これらのバージョンは、テンプレートのデプロイには必要ありません。 ただし、これらのバージョンは、デプロイ スクリプトをローカルでテストするために必要です。 [Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 事前構成済みの Docker イメージを使用できます。  「[開発環境の設定](#configure-development-environment)」を参照してください。
 
-## <a name="resource-schema"></a>リソース スキーマ
+## <a name="sample-template"></a>サンプル テンプレート
 
 次の JSON はサンプルです。  最新のテンプレートのスキーマについては、[こちら](/azure/templates/microsoft.resources/deploymentscripts)をご覧ください。
 
@@ -87,7 +87,7 @@ Azure Resource テンプレートでデプロイ スクリプトを使用する�
       $DeploymentScriptOutputs = @{}
       $DeploymentScriptOutputs['text'] = $output
     ",
-    "primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.json",
+    "primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
     "supportingScriptUris":[],
     "timeout": "PT30M",
     "cleanupPreference": "OnSuccess",
@@ -122,7 +122,7 @@ Azure Resource テンプレートでデプロイ スクリプトを使用する�
 > [!NOTE]
 > インライン デプロイ スクリプトは二重引用符で囲まれているため、デプロイ スクリプト内の文字列は、代わりに単一引用符で囲む必要があります。 PowerShell のエスケープ文字は **&#92;** です。 前の JSON サンプルに示されているように、文字列の置換を使用することを検討することもできます。 名前パラメーターの既定値を表示します。
 
-このスクリプトは、1 つのパラメーターを受け取り、パラメーター値を出力します。 **DeploymentScriptOutputs** は、出力を格納するために使用されます。  出力セクションの**値**の線は、格納されている値にアクセスする方法を示しています。 `Write-Output` はデバッグ目的で使用されます。 出力ファイルにアクセスする方法については、「[デプロイ スクリプトのデバッグ](#debug-deployment-scripts)」を参照してください。  プロパティの説明については、「[リソース スキーマ](#resource-schema)」を参照してください。
+このスクリプトは、1 つのパラメーターを受け取り、パラメーター値を出力します。 **DeploymentScriptOutputs** は、出力を格納するために使用されます。  出力セクションの**値**の線は、格納されている値にアクセスする方法を示しています。 `Write-Output` はデバッグ目的で使用されます。 出力ファイルにアクセスする方法については、「[デプロイ スクリプトのデバッグ](#debug-deployment-scripts)」を参照してください。  プロパティの説明については、「[サンプル テンプレート](#sample-template)」を参照してください。
 
 スクリプトを実行するには、 **[試してみる]** を選択して Cloud shell を開き、次のコードをシェル ウィンドウに貼り付けます。
 

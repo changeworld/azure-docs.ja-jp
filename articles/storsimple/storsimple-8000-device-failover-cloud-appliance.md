@@ -1,5 +1,5 @@
 ---
-title: StorSimple Cloud Appliance への StorSimple のフェールオーバー、ディザスター リカバリー |Microsoft Docs
+title: StorSimple クラウド アプライアンスへのフェールオーバーとディザスター リカバリー
 description: クラウド アプライアンスに StorSimple 8000 シリーズ物理デバイスをフェールオーバーする方法を説明します。
 services: storsimple
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 45c521fd044fa258b8052a3f0de48784cf4160e8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 347b899608d4322a7873b9f80f38ca1c767194d7
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60584391"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468747"
 ---
 # <a name="fail-over-to-your-storsimple-cloud-appliance"></a>StorSimple Cloud Appliance にフェールオーバーする
 
@@ -41,7 +41,7 @@ StorSimple 物理デバイスを別の物理デバイスにフェールオーバ
 
 ターゲットの StorSimple Cloud Appliance にデバイスを復元するには、次の手順を実行します。
 
-1.  フェールオーバーするボリューム コンテナーにクラウド スナップショットが関連付けられていることを確認します。 詳しくは、「[Use StorSimple Device Manager service to create backups](storsimple-8000-manage-backup-policies-u2.md)」(StorSimple デバイス マネージャー サービスを使用してバックアップを作成する) を参照してください。
+1.  フェールオーバーするボリューム コンテナーにクラウド スナップショットが関連付けられていることを確認します。 詳細については、「[Use StorSimple Device Manager service to create backups](storsimple-8000-manage-backup-policies-u2.md)」(StorSimple デバイス マネージャー サービスを使用してバックアップを作成する) を参照してください。
 2. StorSimple デバイス マネージャー サービスに移動し、 **[デバイス]** をクリックします。 **[デバイス]** ブレードで、サービスに接続されているデバイスの一覧に移動します。
     ![デバイスの選択](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev1.png)
 3. ソース デバイスを選択し、クリックします。 ソース デバイスには、フェールオーバーするボリューム コンテナーがあります。 **[設定]、[ボリューム コンテナー]** の順に移動します。
@@ -90,7 +90,7 @@ StorSimple 物理デバイスを別の物理デバイスにフェールオーバ
        ![ターゲットのボリューム コンテナーを表示する](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev17.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * フェールオーバーの実行後、必要に応じて [StorSimple デバイスを非アクティブ化または削除](storsimple-8000-deactivate-and-delete-device.md)します。
 

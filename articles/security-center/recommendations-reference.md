@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/18/2019
 ms.author: memildin
-ms.openlocfilehash: 3c0fb29c5a4dd73135aa8352c97df29474c36caf
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 1e3f80310e990f0710ed12a774fba117cfca58d6
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904122"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443569"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>セキュリティの推奨事項 - リファレンス ガイド
 
@@ -36,8 +36,8 @@ ms.locfileid: "76904122"
 |**インターネットに接続する仮想マシンは、ネットワーク セキュリティ グループを使用して保護する必要があります**|仮想マシンのネットワーク アクセスを制御するネットワーク セキュリティ グループを有効にします。<br>(関連ポリシー:インターネットに接続する仮想マシンは、ネットワーク セキュリティ グループを使用して保護する必要があります)|高/中|N|仮想マシン|
 |**すべてのネットワーク ポートは、VM に関連付けられた NSG で制限する必要があります**|既存の許可ルールのアクセスを制限することで、インターネットに接続する VM のネットワーク セキュリティ グループを強化します。<br>この推奨事項は、*すべて*のリソースに対して任意のポートが開かれたときにトリガーされます (ポート 22、3389、5985、5986、80、および1443 を除く)。<br>(関連ポリシー:インターネットに接続するエンドポイント経由のアクセスを制限する必要がある)|高|N|仮想マシン|
 |**アダプティブ ネットワーク強化の推奨事項をインターネット接続仮想マシンに適用する必要がある**|標準価格レべルのお客様は、アダプティブ ネットワークのセキュリティ強化機能によって、許容範囲を超えた NSG ルールが検出されると、この推奨事項が表示されます。<br>(関連ポリシー:アダプティブ ネットワーク強化の推奨事項をインターネット接続仮想マシンに適用する必要がある)|高|N|仮想マシン|
-|**IaaS NSG 上の Web アプリケーションに対する規則を強化する必要がある**|Web アプリケーションを実行していて、Web アプリケーション ポートに関する NSG 規則の制限が緩すぎる仮想マシンのネットワーク セキュリティ グループ (NSG) を強化します。<br>(関連ポリシー:IaaS 上の Web アプリケーションに対する NSG 規則を強化する必要がある)|高|N|仮想マシン|
-|**App Services へのアクセスを制限する必要がある**|ネットワーク構成を変更することによって App Services へのアクセスを制限し、広すぎる範囲からの受信トラフィックを拒否します。<br>(関連ポリシー: [プレビュー]App Services へのアクセスを制限する必要がある)|高|N|App Service|
+|**IaaS NSG 上の Web アプリケーションに対する規則を強化する必要がある<br/> (非推奨)**|Web アプリケーションを実行していて、Web アプリケーション ポートに関する NSG 規則の制限が緩すぎる仮想マシンのネットワーク セキュリティ グループ (NSG) を強化します。<br>(関連ポリシー:IaaS 上の Web アプリケーションに対する NSG 規則を強化する必要がある)|高|N|仮想マシン|
+|**App Services へのアクセスを制限する必要がある<br/> (非推奨)**|ネットワーク構成を変更することによって App Services へのアクセスを制限し、広すぎる範囲からの受信トラフィックを拒否します。<br>(関連ポリシー: [プレビュー]App Services へのアクセスを制限する必要がある)|高|N|App Service|
 |**仮想マシンの管理ポートを閉じておく必要がある**|管理ポートへのアクセスを制限するために、仮想マシンのネットワーク セキュリティ グループを強化します。<br>(関連ポリシー:仮想マシンの管理ポートを閉じておく必要がある)|高|N|仮想マシン|
 |**DDoS Protection Standard を有効にする必要がある**|DDoS Protection Standard を有効にすることで、パブリック IP を使用するアプリケーションが含まれる仮想ネットワークを保護します。 DDoS 保護は、ネットワークに対する帯域幅消費型攻撃およびプロトコル攻撃の軽減を有効にします。<br>(関連ポリシー:DDoS Protection Standard を有効にする必要がある)|高|N|仮想ネットワーク|
 |**仮想マシンでの IP 転送を無効にする必要がある**|IP 転送を無効にします。 仮想マシンの NIC で IP 転送が有効になっていると、そのマシンはその他の宛先へのトラフィックを受信できます。 IP 転送が必要な状況は (VM をネットワーク仮想アプライアンスとして使用する場合などに) 限られているため、ネットワーク セキュリティ チームはこのことを確認する必要があります。<br>(関連ポリシー: [プレビュー]仮想マシンでの IP 転送を無効にする必要がある)|Medium|N|仮想マシン|
@@ -51,11 +51,11 @@ ms.locfileid: "76904122"
 
 |推奨|説明および関連するポリシー|重大度|クイック修正は有効か?([詳細](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|リソースの種類|
 |----|----|----|----|----|
-|**Kubernetes Service クラスターへのアクセスを制限するには、ロールベースの Access Control を使用する必要があります (プレビュー)**|ユーザーが実行できるアクションを詳細にフィルター処理するには、ロールベースのアクセス制御 (RBAC) を使用して、Kubernetes サービス クラスター内のアクセス許可を管理し、関連する認可ポリシーを構成します。 詳細については、[Azure のロールベースのアクセス制御](https://docs.microsoft.com/azure/aks/concepts-identity#role-based-access-controls-rbac)に関するページを参照してください。<br>(関連ポリシー: [プレビュー]Kubernetes サービスでロールベースのアクセス制御 (RBAC) を使用する必要がある)|Medium|N|コンピューティング リソース (コンテナー)|
-|**The Kubernetes Service should be upgraded to the latest Kubernetes version\(Kubernetes サービスを最新の Kubernetes バージョンにアップグレードする必要がある\) (プレビュー)**|最新の脆弱性の修正プログラムの恩恵を受けるには、Azure Kubernetes Service クラスターを最新の Kubernetes バージョンにアップグレードする必要があります。 Kubernetes の特定の脆弱性の詳細については、[Kubernetes CVE](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=kubernetes) のページを参照してください。<br>(関連ポリシー: [プレビュー]Kubernetes Service を脆弱性のない Kubernetes バージョンにアップグレードする必要があります)|高|N|コンピューティング リソース (コンテナー)|
+|**Kubernetes Service クラスターへのアクセスを制限するには、ロールベースの Access Control を使用する必要がある**|ユーザーが実行できるアクションを詳細にフィルター処理するには、ロールベースのアクセス制御 (RBAC) を使用して、Kubernetes サービス クラスター内のアクセス許可を管理し、関連する認可ポリシーを構成します。 詳細については、[Azure のロールベースのアクセス制御](https://docs.microsoft.com/azure/aks/concepts-identity#role-based-access-controls-rbac)に関するページを参照してください。<br>(関連ポリシー: [プレビュー]Kubernetes サービスでロールベースのアクセス制御 (RBAC) を使用する必要がある)|Medium|N|コンピューティング リソース (コンテナー)|
+|**Kubernetes サービスを最新の Kubernetes バージョンにアップグレードする必要がある**|最新の脆弱性の修正プログラムの恩恵を受けるには、Azure Kubernetes Service クラスターを最新の Kubernetes バージョンにアップグレードする必要があります。 Kubernetes の特定の脆弱性の詳細については、[Kubernetes CVE](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=kubernetes) のページを参照してください。<br>(関連ポリシー: [プレビュー]Kubernetes Service を脆弱性のない Kubernetes バージョンにアップグレードする必要があります)|高|N|コンピューティング リソース (コンテナー)|
 |**Pod Security Policies should be defined to reduce the attack vector by removing unnecessary application privileges\(不要なアプリケーション特権を削除してポッドのセキュリティ ポリシーを定義し攻撃ベクトルを減らす必要がある\) (プレビュー)**|不要なアプリケーション特権を削除してポッドのセキュリティ ポリシーを定義し、攻撃ベクトルを減らす必要があります。 アクセスが許可されているリソースにのみポッドがアクセスできるようポッドのセキュリティ ポリシーを定義し、構成することが推奨されます。<br>(関連ポリシー: [プレビュー]Kubernetes Services ではポッドのセキュリティ ポリシーを定義する必要がある)|Medium|N|コンピューティング リソース (コンテナー)|
-|**Access to a Kubernetes service management API should be limited by authorizing specific IP ranges only\(Kubernetes サービス管理 API へのアクセスは特定の IP 範囲のみに許可して制限する必要がある\) (プレビュー)**|Kubernetes サービス管理 API へのアクセスは、特定の範囲の IP にのみ API アクセスに許可して制限する必要があります。 許可されたネットワークのアプリケーションのみがクラスターにアクセスできるよう、許可する IP の範囲を構成することをお勧めします。<br>(関連ポリシー: [プレビュー]Kubernetes Services では許可された IP 範囲を定義する必要がある)|高|N|コンピューティング リソース (コンテナー)|
-|**Azure Container Registry イメージの脆弱性を修復する必要があります (Qualys を利用) (プレビュー)**|コンテナー イメージの脆弱性評価では、プッシュされた各コンテナー イメージのセキュリティ脆弱性をご自身のレジストリからスキャンし、各イメージの詳細な結果を公開します。 脆弱性を解決することで、お使いのコンテナーのセキュリティ体制が大幅に向上し、それらを攻撃から保護できます。<br>(関連ポリシーはありません)|高|N|コンピューティング リソース (コンテナー)|
+|**Kubernetes サービス管理 API へのアクセスは特定の IP 範囲のみに許可して制限する必要がある**|Kubernetes サービス管理 API へのアクセスは、特定の範囲の IP にのみ API アクセスに許可して制限する必要があります。 許可されたネットワークのアプリケーションのみがクラスターにアクセスできるよう、許可する IP の範囲を構成することをお勧めします。<br>(関連ポリシー: [プレビュー]Kubernetes Services では許可された IP 範囲を定義する必要がある)|高|N|コンピューティング リソース (コンテナー)|
+|**Azure Container Registry イメージの脆弱性を修復する必要がある (Qualys を利用)**|コンテナー イメージの脆弱性評価では、プッシュされた各コンテナー イメージのセキュリティ脆弱性をご自身のレジストリからスキャンし、各イメージの詳細な結果を公開します。 脆弱性を解決することで、お使いのコンテナーのセキュリティ体制が大幅に向上し、それらを攻撃から保護できます。<br>(関連ポリシーはありません)|高|N|コンピューティング リソース (コンテナー)|
 ||||||
 
 

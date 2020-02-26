@@ -10,14 +10,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 07/11/2019
+ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: c8901dccb67e91c608e999f823cf7d2e757da08b
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: c1e9be605a6f01695f2472ae76a9e5a786388aa0
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186014"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206108"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure Media Services のストリーミング エンドポイント (配信元)
 
@@ -47,7 +47,7 @@ Media Services アカウントを作成すると、**既定**のストリーミ�
 
 次の表で、型について説明します。
 
-|種類|スケール ユニット|説明|
+|Type|スケール ユニット|説明|
 |--------|--------|--------|  
 |**Standard**|0|既定のストリーミング エンドポイントは **Standard** 型です。これは、`scaleUnits` を調整することによって Premium 型に変更できます。|
 |**Premium**|>0|**Premium** ストリーミング エンドポイントは高度なワークロードに適しており、専用のスケーラブルな帯域幅容量を提供します。 **Premium** 型には、`scaleUnits` (ストリーミング ユニット) を調整することで移行します。 `scaleUnits` は 200 Mbps 単位で購入できる専用の送信容量を提供します。 **Premium** 型を使用している場合は、有効になっている各ユニットがアプリに追加の帯域幅容量を提供します。 |
@@ -73,7 +73,7 @@ IP フィルタリング/G20/カスタム ホスト <sup>1</sup>|はい|はい
 
 <sup>1</sup> エンドポイントで CDN が有効になっていない場合にのみ、ストリーミング エンドポイントで直接使用されます。<br/>
 
-## <a name="properties"></a>properties
+## <a name="properties"></a>Properties
 
 このセクションでは、ストリーミング エンドポイントの一部のプロパティについて詳しく説明します。 新しいストリーミング エンドポイントを作成する方法の例と全プロパティの説明については、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)に関する記事をご覧ください。
 
@@ -147,25 +147,34 @@ CDN が有効になっているストリーミング エンドポイントに必
 
 ### <a name="enable-azure-cdn-integration"></a>Azure CDN 統合を有効にする
 
+> [!IMPORTANT]
+> 試用版または学生向けの Azure アカウントに対して CDN を有効にすることはできません。
+>
+> CDN 統合は、連邦政府および中国地域を除くすべての Azure データ センターで有効になります。
+
 CDN が有効になった状態でストリーミング エンドポイントがプロビジョニングされた後、ストリーミング エンドポイントを CDN エンドポイントにマップするために DNS の更新が実行される前に、Media Services には定義された待機時間が存在します。
 
 後で CDN を有効/無効にする場合は、ストリーミング エンドポイントを**停止**状態にする必要があります。 Azure CDN 統合が有効になり、すべての CDN POP で変更がアクティブになるまでに、最大で 2 時間かかる場合があります。 ただし、ストリーミング エンドポイントを開始し、そのストリーミング エンドポイントからの中断なしでストリーミングすることができ、統合が完了するとストリームは CDN から配信されます。 プロビジョニング期間中、ストリーミング エンドポイントは**開始中**の状態になり、パフォーマンスが低下する可能性があります。
 
 Standard ストリーミング エンドポイントは作成されるとき、既定では Standard Verizon で構成されます。 REST API を使用して、Premium Verizon または Standard Akamai プロバイダーを構成することができます。
 
-CDN 統合は、中国および連邦政府地域を除くすべての Azure データ センターで有効になります。
+Azure CDN との Azure Media Services 統合は、Standard ストリーミング エンドポイント用の **Azure CDN from Verizon** で実装されます。 Premium ストリーミング エンドポイントは、すべての **Azure CDN 価格レベルとプロバイダー**を使用して構成できます。 
 
-> [!IMPORTANT]
-> Azure CDN との Azure Media Services 統合は、Standard ストリーミング エンドポイント用の **Azure CDN from Verizon** で実装されます。 Premium ストリーミング エンドポイントは、すべての **Azure CDN 価格レベルとプロバイダー**を使用して構成できます。 Azure CDN 機能の詳細については、「 [CDN の概要](../../cdn/cdn-overview.md)」を参照してください。
+> [!NOTE]
+> Azure CDN の詳細については、[CDN の概要](../../cdn/cdn-overview.md)を参照してください。
 
 ### <a name="determine-if-dns-change-was-made"></a>DNS の変更が行われたかどうかを確認する
 
 ストリーミング エンドポイントで DNS の変更が行われた (トラフィックが Azure CDN に転送されている) かどうかは、 https://www.digwebinterface.com を使用して確認できます。 その結果に azureedge.net domain の名前が含まれていれば、トラフィックは現在 CDN に配信されています。
 
-## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの提供、最新情報の入手
+## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
 
 「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="see-also"></a>関連項目
+
+[CDN の概要](../../cdn/cdn-overview.md)
+
+## <a name="next-steps"></a>次のステップ
 
 [このリポジトリ](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs)のサンプルは、既定のストリーミング エンドポイントを .NET を使用して開始する方法について示します。

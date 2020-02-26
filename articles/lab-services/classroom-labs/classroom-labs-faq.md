@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2020
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: 551167cda28a2bb6007e66c1b4b458a0a7b2e396
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 8d1ed128181d036af0026ae273c2c5bf1d3a066e
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718014"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443501"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Azure Lab Services のクラスルーム ラボ — よく寄せられる質問 (FAQ)
 Azure Lab Services のクラスルーム ラボについて特に多く寄せられる質問にお答えします。 
@@ -27,6 +27,9 @@ Azure Lab Services のクラスルーム ラボについて特に多く寄せら
 
 ### <a name="is-the-quota-per-user-or-per-week-or-per-entire-duration-of-the-lab"></a>クォータは、ユーザーごと、1 週間ごと、またはラボの全期間のいずれに対して指定されますか。 
 ラボに設定するクォータは、ラボの全期間について、各学生を対象としています。 また、[スケジュールされている VM の実行時間](how-to-create-schedules.md)は、ユーザーに割り当てられるクォータにカウントされません。 クォータは、学生が VM で消費することをスケジュールされている時間以外の時間です。  クォータの詳細については、「[ユーザーのクォータを設定する](how-to-configure-student-usage.md#set-quotas-for-users)」を参照してください。
+
+### <a name="if-professor-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>教授が学生の VM をオンにすると、学生のクォータに影響しますか？ 
+いいえ。 影響しません。 教授が学生の VM をオンにすると、学生に割り当てられたクォータには影響しません。 
 
 ## <a name="schedules"></a>スケジュール
 
@@ -42,10 +45,18 @@ Azure Lab Services のクラスルーム ラボについて特に多く寄せら
 
 ### <a name="what-port-ranges-should-i-open-on-my-organizations-firewall-setting-to-connect-to-lab-virtual-machines-via-rdpssh"></a>RDP/SSH 経由でラボ仮想マシンに接続するために組織のファイアウォール設定で開く必要があるのは、どのポート範囲ですか。
 
-ポートは、49152 ～ 65535 です。 クラスルーム ラボはロード バランサーの背後に配置されるため、ラボ内のすべての仮想マシンには単一の IP アドレスが割り当てられていて、ラボ内の各仮想マシンには一意のポートがあります。 ポート番号とパブリック IP アドレスは、ラボが再公開されるたびに変更される可能性があります。
+ポートは、49152 ～ 65535 です。 クラスルーム ラボは、ロード バランサーの背後にあります。 各ラボには 1 つのパブリック IP アドレスがあり、ラボ内の各仮想マシンには一意のポートがあります。 
+
+各仮想マシンのプライベート IP アドレスは、Azure portal のラボのホームページの **[仮想マシンプール]** タブにも表示されます。 ラボを再発行しても、ラボのパブリック IP アドレスは変更されませんが、ラボ内の各仮想マシンのプライベート IP とポート番号は変更される可能性があります。 詳細については、次の記事を参照してください。[Azure Lab Services のファイアウォール設定](how-to-configure-firewall-settings.md)。
 
 ### <a name="what-public-ip-address-range-should-i-open-on-my-organizations-firewall-settings-to-connect-to-lab-virtual-machines-via-rdpssh"></a>RDP/SSH 経由でラボ仮想マシンに接続するために組織のファイアウォール設定で開く必要があるのは、どのパブリック IP アドレス範囲ですか。
 「[Azure IP Ranges and Service Tags — Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519)」を参照してください。Azure のデータセンターのパブリック IP アドレス範囲が記載されています。 ラボ アカウントが存在するリージョンの IP アドレスを開くことができます。
+
+## <a name="virtual-machine-images"></a>仮想マシン イメージ
+
+### <a name="as-a-lab-creator-why-cant-i-enable-additional-image-options-in-the-virtual-machine-images-dropdown-when-creating-a-new-lab"></a>ラボの作成者として、新しいラボの作成時に仮想マシンイメージのドロップダウンで追加のイメージオプションを有効にできないのはなぜですか？
+
+管理者がラボ アカウントにラボ作成者として追加すると、ラボを作成するためのアクセス許可が付与されます。 ただし、有効な仮想マシンイメージの一覧を含む、ラボ アカウント内の任意の設定を編集するアクセス許可がありません。 追加のイメージを有効にするには、ラボ アカウント管理者に連絡して追加のイメージを有効にしてもらうか、ラボ アカウントに共同作成者ロールとして追加するよう管理者に依頼してください。 共同作成者ロールによって、ラボ アカウントの仮想マシンイメージの一覧を編集するためのアクセス許可が付与されます。
 
 ## <a name="users"></a>ユーザー
 

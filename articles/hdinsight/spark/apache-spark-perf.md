@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/01/2019
-ms.openlocfilehash: 0d8890eeba7fcb53517d6ee653c8dd09866805ef
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.date: 02/12/2020
+ms.openlocfilehash: 3d8f4a28961be7e0ece517e00026d9711d8f67e9
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177373"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198873"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>HDInsight で Apache Spark ジョブを最適化する
 
-[Apache Spark](https://spark.apache.org/) クラスター構成を特定のワークロード用に最適化する方法を説明します。  最もよくある課題は、不適切な構成 (特に不適切なサイズの実行プログラム)、実行時間の長い操作、およびデカルト演算を生じるタスクが原因の、メモリ不足です。 ジョブは、適切なキャッシュを使用し、[データ スキュー](#optimize-joins-and-shuffles)を可能にすることで、高速化することができます。 最適なパフォーマンスを得るためには、実行時間が長くリソースを多く消費する Spark ジョブの実行を監視し、確認します。
+[Apache Spark](https://spark.apache.org/) クラスター構成を特定のワークロード用に最適化する方法を説明します。  最もよくある課題は、不適切な構成 (特に不適切なサイズの実行プログラム)、実行時間の長い操作、およびデカルト演算を生じるタスクが原因の、メモリ不足です。 ジョブは、適切なキャッシュを使用し、[データ スキュー](#optimize-joins-and-shuffles)を可能にすることで、高速化することができます。 最適なパフォーマンスを得るためには、実行時間が長くリソースを多く消費する Spark ジョブの実行を監視し、確認します。 HDInsight 上の Apache Spark の概要については、[Azure portal を使用した Apache Spark クラスターの作成](apache-spark-jupyter-spark-sql-use-portal.md)に関する記事を参照してください。
 
 次のセクションでは、一般的な Spark ジョブの最適化と推奨事項について説明します。
 
@@ -57,13 +57,15 @@ Spark では、csv、json、xml、parquet、orc、avro など、多くの形式�
 
 新しい Spark クラスターを作成する際は、クラスターの既定のストレージとして Azure Blob Storage または Azure Data Lake Storage を選択することができます。 どちらのオプションにも一時的なクラスター用の長期ストレージの利点があるため、クラスターを削除しても、データは自動的には削除されません。 一時的なクラスターを再作成して、引き続きデータにアクセスできます。
 
-| ストアの種類 | ファイル システム | 速度 | 一時的 | ユース ケース |
+| ストアの種類 | ファイル システム | 速度 | 一時的 | 例 |
 | --- | --- | --- | --- | --- |
 | Azure Blob Storage | **wasb:** //url/ | **Standard** | はい | 一時的なクラスター |
 | Azure Blob Storage (セキュア) | **wasbs:** //url/ | **Standard** | はい | 一時的なクラスター |
 | Azure Data Lake Storage Gen 2| **abfs:** //url/ | **より高速** | はい | 一時的なクラスター |
 | Azure Data Lake Storage Gen 1| **adl:** //url/ | **より高速** | はい | 一時的なクラスター |
 | ローカルの HDFS | **hdfs:** //url/ | **最も高速** | いいえ | 24 時間 365 日の対話型クラスター |
+
+HDInsight クラスターに使用できるストレージ オプションの詳細については、「[Azure HDInsight クラスターで使用するストレージ オプションを比較する](../hdinsight-hadoop-compare-storage-options.md)」を参照してください。
 
 ## <a name="use-the-cache"></a>キャッシュの使用
 
@@ -74,7 +76,7 @@ Spark は、`.persist()`、`.cache()`、`CACHE TABLE` などのさまざまな�
     * パーティション分割では機能しない (Spark の将来の リリースで変更の可能性あり)。
 
 * ストレージ レベルのキャッシュ (推奨)
-    * [Alluxio](https://www.alluxio.io/) を使用して実装可能。
+    * [IO キャッシュ](apache-spark-improve-performance-iocache.md)機能を使用して HDInsight に実装できます。
     * メモリ内と SSD のキャッシュを使用。
 
 * ローカルの HDFS (推奨)
@@ -106,6 +108,8 @@ Spark はデータをメモリ内に配置することで動作するため、�
 * 実行プログラムやパーティションでより多くの操作を実行する `TreeReduce` を、すべての操作をドライバーで実行する `Reduce` より優先します。
 * 下位レベルの RDD オブジェクトではなく、DataFrames を利用します。
 * "上位 N"、各種の集計、ウィンドウ化操作などのアクションをカプセル化する、ComplexTypes を作成します。
+
+その他のトラブルシューティングの手順については、「[Azure HDInsight での Apache Spark の OutOfMemoryError 例外](apache-spark-troubleshoot-outofmemory.md)」を参照してください。
 
 ## <a name="optimize-data-serialization"></a>データのシリアル化の最適化
 
@@ -193,7 +197,11 @@ Spark クラスターのワークロードによっては、既定以外の Spar
 3. クエリを並列アプリケーション全体に分散します。
 4. 試運転と、GC オーバーヘッドなどの上記の要因の両方に基づいて、サイズを変更します。
 
-タイムライン ビュー、SQL グラフ、ジョブの統計情報などを調べることで、外れ値やその他のパフォーマンスの問題に対するクエリのパフォーマンスを監視します。 場合によっては、1 つまたは 2、3 の実行プログラムが他よりも遅くなり、タスクの実行にかなり長くかかることがあります。 これは大きいクラスター (ノードが 30 より多い) で頻繁に発生します。 この場合は、スケジューラが低速のタスクを補正できるよう、より多くのタスクに操作を分割します。 たとえば、タスクの数を、少なくとも 2 回、アプリケーション内の実行プログラムのコア数と同数にします。 また、`conf: spark.speculation = true` を使用してタスクの予測実行を有効にすることもできます。
+Ambari を使用してエグゼキュータを構成する方法の詳細については、[Apache Spark の設定の Spark エグゼキュータ](apache-spark-settings.md#configuring-spark-executors)に関する記事を参照してください。
+
+タイムライン ビュー、SQL グラフ、ジョブの統計情報などを調べることで、外れ値やその他のパフォーマンスの問題に対するクエリのパフォーマンスを監視します。 YARN と Spark History サーバーを使用した Spark ジョブのデバッグの詳細については、「[Azure HDInsight で実行される Apache Spark ジョブのデバッグ](apache-spark-job-debugging.md)」を参照してください。 YARN Timeline Server を使う際のヒントについては、[Apache Hadoop YARN アプリケーション ログへのアクセス](../hdinsight-hadoop-access-yarn-app-logs-linux.md)に関する記事を参照してください。
+
+場合によっては、1 つまたは 2、3 の実行プログラムが他よりも遅くなり、タスクの実行にかなり長くかかることがあります。 これは大きいクラスター (ノードが 30 より多い) で頻繁に発生します。 この場合は、スケジューラが低速のタスクを補正できるよう、より多くのタスクに操作を分割します。 たとえば、タスクの数を、少なくとも 2 回、アプリケーション内の実行プログラムのコア数と同数にします。 また、`conf: spark.speculation = true` を使用してタスクの予測実行を有効にすることもできます。
 
 ## <a name="optimize-job-execution"></a>ジョブ実行の最適化
 
@@ -212,10 +220,10 @@ Spark 2.x クエリのパフォーマンスに重要なものは、ステージ�
 MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure HDInsight で実行される Apache Spark ジョブのデバッグ](apache-spark-job-debugging.md)
-* [Azure HDInsight での Apache Spark クラスターのリソースの管理](apache-spark-resource-manager.md)
+* [HDInsight 上の Apache Spark クラスターのリソースを管理する](apache-spark-resource-manager.md)
 * [Apache Spark REST API を使用してリモート ジョブを Apache Spark クラスターに送信する](apache-spark-livy-rest-interface.md)
 * [Apache Spark のチューニング](https://spark.apache.org/docs/latest/tuning.html)
 * [Apache Spark を適切に機能させるための実際のチューニング方法](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)

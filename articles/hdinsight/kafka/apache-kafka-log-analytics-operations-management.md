@@ -7,19 +7,31 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/04/2019
-ms.openlocfilehash: d4263b8b338f057893c9dfcda1541fc338c2577f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 02/17/2020
+ms.openlocfilehash: 3f8ff3cbc24f6e3a7e0eccf1b18e01941c9584b9
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894275"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471182"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>HDInsight で Apache Kafka のログを分析する
 
 Azure Monitor ログを使用して、HDInsight 上の Apache Kafka によって生成されたログを分析します。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+## <a name="logs-location"></a>ログの場所
+
+クラスター内の Apache Kafka ログは `/var/log/kafka` にあります。 マネージド ディスクが使用されているかどうかに関係なく、Kafka ログは、クラスターのライフサイクルを超えて保存されることも保持されることもありません。 次の表に、使用可能なログを示します。
+
+|ログ |説明 |
+|---|---|
+|kafka.out|Kafka プロセスの stdout と stderr。 Kafka のスタートアップ ログとシャットダウン ログは、このファイル内にあります。|
+|server.log|メインの Kafka サーバー ログ。 すべての Kafka ブローカー ログは、最終的にここに記録されます。|
+|controller.log|ブローカーがコントローラーとして機能している場合のコントローラー ログ。|
+|statechange.log|ブローカーに対するすべての状態変更イベントは、このファイルに記録されます。|
+|kafka-gc.log|Kafka ガベージ コレクションの統計。|
 
 ## <a name="enable-azure-monitor-logs-for-apache-kafka"></a>Apache Kafka の Azure Monitor ログを有効にする
 
@@ -90,7 +102,7 @@ HDInsight の Azure Monitor ログを有効にする手順は、すべての HDI
 
     ![Apache Kafka の Log Analytics の CPU 使用率](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Monitor の詳細については、「[Azure Monitor の概要](../../log-analytics/log-analytics-get-started.md)」および「[Azure Monitor ログでクエリを実行して HDInsight クラスターを監視する](../hdinsight-hadoop-oms-log-analytics-use-queries.md)」をご覧ください。
 

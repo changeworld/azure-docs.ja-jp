@@ -1,5 +1,5 @@
 ---
-title: Windows 用の Azure Monitor 仮想マシン拡張機能
+title: Windows 用の Log Analytics 仮想マシン拡張機能
 description: 仮想マシン拡張機能を使用して、Windows 仮想マシンに Log Analytics エージェントをデプロイします。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,18 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/30/2020
 ms.author: akjosh
-ms.openlocfilehash: 604be42ec74f75e3aa9c790092ed83aee4ad25e1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 85b97f31e77736603bd0dc7003d4dbfb91a694dc
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76907012"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470702"
 ---
-# <a name="azure-monitor-virtual-machine-extension-for-windows"></a>Windows 用の Azure Monitor 仮想マシン拡張機能
+# <a name="log-analytics-virtual-machine-extension-for-windows"></a>Windows 用の Log Analytics 仮想マシン拡張機能
 
-Azure Monitor ログでは、クラウドとオンプレミスの資産全体にわたって監視機能を提供します。 Windows 用の Log Analytics エージェント仮想マシン拡張機能は、Microsoft によって発行およびサポートされています。 この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Log Analytics ワークスペースに登録されます。 このドキュメントでは、Windows 用の Azure Monitor 仮想マシン拡張機能でサポートされているプラットフォーム、構成、デプロイ オプションについて詳しく説明します。
-
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+Azure Monitor ログでは、クラウドとオンプレミスの資産全体にわたって監視機能を提供します。 Windows 用の Log Analytics エージェント仮想マシン拡張機能は、Microsoft によって発行およびサポートされています。 この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Log Analytics ワークスペースに登録されます。 このドキュメントでは、Windows 用の Log Analytics 仮想マシン拡張機能でサポートされているプラットフォーム、構成、デプロイ オプションについて詳しく説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,9 +32,9 @@ Azure Monitor ログでは、クラウドとオンプレミスの資産全体に
 サポートされる Windows オペレーティング システムの詳細については、[Log Analytics エージェントの概要](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)に関する記事を参照してください。
 
 ### <a name="agent-and-vm-extension-version"></a>エージェントおよび VM 拡張機能のバージョン
-次の表は、Windows Azure Monitor VM 拡張機能と Log Analytics エージェント バンドルのバージョンのマッピングをリリースごとに示しています。 
+次の表は、Windows Log Analytics VM 拡張機能と Log Analytics エージェント バンドルのバージョンのマッピングをリリースごとに示しています。 
 
-| Log Analytics Windows Agent バンドルのバージョン | Azure Monitor Windows VM 拡張機能のバージョン | リリース日 | リリース ノート |
+| Log Analytics Windows Agent バンドルのバージョン | Log Analytics Windows VM 拡張機能のバージョン | リリース日 | リリース ノート |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
 | 10.20.18018 | 1.0.18018 | 2019 年 10 月 | <ul><li> 軽微なバグの修正と安定性の改善 </li></ul> |
 | 10.20.18011 | 1.0.18011 | 2019 年 7 月 | <ul><li> 軽微なバグの修正と安定性の改善 </li><li> MaxExpressionDepth を 10000 に引き上げ </li></ul> |
@@ -85,18 +83,19 @@ Windows 用の Log Analytics エージェント拡張機能では、ターゲッ
 ```
 ### <a name="property-values"></a>プロパティ値
 
-| Name | 値/例 |
+| 名前 | 値/例 |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.EnterpriseCloud.Monitoring |
-| 型 | MicrosoftMonitoringAgent |
+| type | MicrosoftMonitoringAgent |
 | typeHandlerVersion | 1.0 |
 | workspaceId (例)* | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (例) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
 \* Log Analytics API では、workspaceId は consumerId という名称になります。
 
-> 注: その他のプロパティについては、Azure の「[Windows コンピューターを Azure Monitor に接続する](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows)」を参照してください。
+> [!NOTE]
+> その他のプロパティについては、Azure の「[Windows コンピューターを Azure Monitor に接続する](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows)」を参照してください。
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 
@@ -107,7 +106,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 
 仮想マシン拡張機能の JSON は、仮想マシン リソース内に入れ子にすることも、Resource Manager JSON テンプレートのルートまたは最上位レベルに配置することもできます。 JSON の配置は、リソースの名前と種類の値に影響します。 詳細については、[子リソースの名前と種類の設定](../../azure-resource-manager/templates/child-resource-name-type.md)に関する記事を参照してください。 
 
-次の例では、Azure Monitor 拡張機能が仮想マシン リソース内で入れ子になっていることを前提としています。 拡張機能リソースを入れ子にすると、JSON は仮想マシンの `"resources": []` オブジェクトに配置されます。
+次の例では、Log Analytics 拡張機能が仮想マシン リソース内で入れ子になっていることを前提としています。 拡張機能リソースを入れ子にすると、JSON は仮想マシンの `"resources": []` オブジェクトに配置されます。
 
 
 ```json

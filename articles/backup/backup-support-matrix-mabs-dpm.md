@@ -3,12 +3,12 @@ title: MABS と System Center DPM のサポート マトリックス
 description: この記事では、Microsoft Azure Backup Server (MABS) または System Center DPM を使用してオンプレミスおよび Azure VM のリソースをバックアップする場合の、Azure Backup のサポートについてまとめます。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 211a7e39dc9cda9e4bd96e3a66924b2195524be7
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: 9441f7ce9069cd85475877f37abe669f3c4fd516
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111470"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444028"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server または System Center DPM を使用したバックアップのサポート マトリックス
 
@@ -70,9 +70,9 @@ Azure Backup は、次のいずれかのオペレーティング システムを
 
 **シナリオ** | **DPM/MABS**
 --- | ---
-**Azure VM 上の MABS** | Windows Server 2012 R2 です。<br/><br/> Windows 2016 Datacenter。<br/><br/> Windows 2019 Datacenter。<br/><br/> マーケットプレースのイメージから始めることをお勧めします。<br/><br/> 2 つのコアと 3.5 GB の RAM を備えた最小の A2 Standard。
-**Azure VM 上の DPM** | 更新プログラム 3 以降が適用された System Center 2012 R2。<br/><br/> [System Center](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server) で必要とされる Windows オペレーティング システム。<br/><br/> マーケットプレースのイメージから始めることをお勧めします。<br/><br/> 2 つのコアと 3.5 GB の RAM を備えた最小の A2 Standard。
-**MABS オンプレミス** | サポートされている 64 ビット オペレーティング システム:<br/><br/> MABS v3 以降: Windows Server 2019 (Standard、Datacenter、Essentials)。 <br/><br/> MABS v2 以降: Windows Server 2016 (Standard、Datacenter、Essentials)。<br/><br/> MABS のすべてのバージョン:  Windows Server 2012 R2 です。<br/><br/>MABS のすべてのバージョン: Windows Storage Server 2012 R2。
+**Azure VM 上の MABS** |  Windows 2016 Datacenter。<br/><br/> Windows 2019 Datacenter。<br/><br/> マーケットプレースのイメージから始めることをお勧めします。<br/><br/> 4 つのコアと 8 GB の RAM を持つ最小の Standard_A4_v2 です。
+**Azure VM 上の DPM** | 更新プログラム 3 以降が適用された System Center 2012 R2。<br/><br/> [System Center](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server) で必要とされる Windows オペレーティング システム。<br/><br/> マーケットプレースのイメージから始めることをお勧めします。<br/><br/> 4 つのコアと 8 GB の RAM を持つ最小の Standard_A4_v2 です。
+**MABS オンプレミス** |  MABS v3 以降: Windows Server 2016 または Windows Server 2019
 **DPM オンプレミス** | 物理サーバー/Hyper-V VM: System Center 2012 SP1 以降。<br/><br/> VMware VM: 更新プログラム 5 以降が適用された System Center 2012 R2。
 
 >[!NOTE]

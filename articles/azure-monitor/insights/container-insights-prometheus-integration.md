@@ -19,7 +19,7 @@ ms.locfileid: "75931419"
 >[!NOTE]
 >Prometheus メトリックのスクレーピングでサポートされているエージェントの最小バージョンは ciprod07092019 以降であり、`KubeMonAgentEvents` テーブルへの構成エラーおよびエージェント エラーの書き込みでサポートされているエージェント バージョンは ciprod10112019 です。 エージェント バージョンおよび各リリースに含まれている内容の詳細については、「[エージェントのリリース ノート](https://github.com/microsoft/Docker-Provider/tree/ci_feature_prod)」を参照してください。 お使いのエージェントのバージョンを確認するには、 **[ノード]** タブでノードを選択し、プロパティ ウィンドウで **[エージェント イメージ タグ]** プロパティの値に注目します。
 
-Prometheus メトリックのスクレ―ピングは、次にホストされている Kubernetes クラスターでサポートされています。
+Prometheus メトリックのスクレーピングは、次にホストされている Kubernetes クラスターでサポートされています。
 
 - Azure Kubernetes Service (AKS)
 - Azure Container Instances
@@ -27,12 +27,12 @@ Prometheus メトリックのスクレ―ピングは、次にホストされて
 - Azure Red Hat OpenShift
 
 >[!NOTE]
->Azure Red Hat OpenShift では、テンプレートの ConfigMap ファイルが *openshift-Azure-logging* 名前空間に作成されます。 これは、エージェントからアクティブにメトリックをスクレ―ピングしたり、データ収集したりするようには構成されていません。
+>Azure Red Hat OpenShift では、テンプレートの ConfigMap ファイルが *openshift-Azure-logging* 名前空間に作成されます。 これは、エージェントからアクティブにメトリックをスクレーピングしたり、データ収集したりするようには構成されていません。
 >
 
 ## <a name="azure-red-hat-openshift-prerequisites"></a>Azure Red Hat OpenShift の前提条件
 
-コンテナー化されたエージェントと Prometheus スクレ―ピング設定を構成するために、開始する前に Azure Red Hat OpenShift クラスターの顧客クラスター管理者ロールのメンバーであることを確認します。 *osa-customer-admins* グループのメンバーであることを確認するには、次のコマンドを実行します。
+コンテナー化されたエージェントと Prometheus スクレーピング設定を構成するために、開始する前に Azure Red Hat OpenShift クラスターの顧客クラスター管理者ロールのメンバーであることを確認します。 *osa-customer-admins* グループのメンバーであることを確認するには、次のコマンドを実行します。
 
 ``` bash
   oc get groups
@@ -175,7 +175,7 @@ Kubernetes クラスター用の ConfigMap 構成ファイルを構成するに�
     
     例: `kubectl apply -f container-azm-ms-agentconfig.yaml`. 
 
-    Azure Red Hat OpenShift では、エディターの変更内容を保存します。
+    Azure Red Hat OpenShift では、エディターに変更内容を保存します。
 
 構成の変更が有効になるまでに数分かかる場合があり、クラスター内のすべての omsagent ポッドが再起動されます。 すべての omsagent ポッドが同時に再起動されるのではなく、ローリング再起動で行われます。 再起動が完了すると、次のような結果を含むメッセージが表示されます: `configmap "container-azm-ms-agentconfig" created`。
 
@@ -219,7 +219,7 @@ config::unsupported/missing config schema version - 'v21' , using defaults
     2019-07-08T18:55:00Z E! [inputs.prometheus]: Error in plugin: error making HTTP request to http://invalidurl:1010/metrics: Get http://invalidurl:1010/metrics: dial tcp: lookup invalidurl on 10.0.0.10:53: no such host
     ```
 
-- Log Analytics ワークスペースの **KubeMonAgentEvents** テーブルから。 スクレーピング エラーの場合は "*警告*" の重大度、構成エラーの場合は "*エラー*" の重大度で 1 時間ごとにデータが送信されます。 エラーがない場合、テーブルのエントリには "*情報*" の重大度のデータが含まれ、エラーは報告されません。 **[タグ]** プロパティには、エラーが発生したポッドとコンテナー ID に関する詳細情報のほか、直近 1 時間の最初の発生、最後の発生、および発生回数も含まれます。
+- Log Analytics ワークスペースの **KubeMonAgentEvents** テーブルから。 スクレーピング エラーの場合は "*警告*" の重大度、構成エラーの場合は "*エラー*" の重大度で 1 時間ごとにデータが送信されます。 エラーがない場合、テーブルのエントリには "*情報*" の重大度のデータが含まれ、エラーは報告されません。 **Tags** プロパティには、エラーが発生したポッドとコンテナー ID に関する詳細情報のほか、直近 1 時間の最初の発生、最後の発生、および発生回数も含まれます。
 
 - Azure Red Hat OpenShift の場合は、openshift-azure-logging のログ収集が有効になっているかどうかを確認するために、**ContainerLog** テーブルを検索して omsagent ログを確認します。
 

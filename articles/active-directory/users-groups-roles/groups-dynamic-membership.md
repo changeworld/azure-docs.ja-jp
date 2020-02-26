@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1df823776208418eae3e465693dd51e108c5a8bb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: da983f87977de922ec547c3ade2972dfb4d69363
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841031"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206261"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 
@@ -114,7 +114,7 @@ user.department -eq "Sales"
 | postalCode |任意の文字列値または *null* |(user.postalCode -eq "value") |
 | preferredLanguage |ISO 639-1 コード |(user.preferredLanguage -eq "en-US") |
 | sipProxyAddress |任意の文字列値または *null* |(user.sipProxyAddress -eq "value") |
-| 状態 |任意の文字列値または *null* |(user.state -eq "value") |
+| state |任意の文字列値または *null* |(user.state -eq "value") |
 | streetAddress |任意の文字列値または *null* |(user.streetAddress -eq "value") |
 | 姓 |任意の文字列値または *null* |(user.surname -eq "value") |
 | telephoneNumber |任意の文字列値または *null* |(user.telephoneNumber -eq "value") |
@@ -341,13 +341,13 @@ device.objectId -ne null
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>拡張機能プロパティとカスタム拡張機能プロパティ
 
-拡張機能属性とカスタム拡張機能プロパティは、動的メンバーシップ ルールで文字列プロパティとしてサポートされています。 拡張属性はオンプレミスの Window Server AD から同期され、"ExtensionAttributeX" という形式です (X は 1 ～ 15)。 プロパティとして拡張機能属性を使用するルールの例を示します。
+拡張機能属性とカスタム拡張機能プロパティは、動的メンバーシップ ルールで文字列プロパティとしてサポートされています。 [拡張属性](https://docs.microsoft.com/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0)はオンプレミスの Window Server AD から同期され、"ExtensionAttributeX" という形式です (X は 1 ～ 15)。 プロパティとして拡張機能属性を使用するルールの例を示します。
 
 ```
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-カスタム拡張機能プロパティはオンプレミス Windows Server AD または接続されている SaaS アプリケーションから同期され、形式は `user.extension_[GUID]_[Attribute]` になります。
+[カスタム拡張機能プロパティ](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions)はオンプレミス Windows Server AD または接続されている SaaS アプリケーションから同期され、形式は `user.extension_[GUID]_[Attribute]` になります。
 
 * [GUID] は Azure AD でプロパティを作成したアプリケーションの Azure AD における一意の識別子です
 * [Attribute] は作成されたプロパティの名前です

@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 9cf65edc3bdd5f675ba1972501139b9ecebcfafd
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 1439383598517f57bc77e718d4ded7f53941d3bb
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964398"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444198"
 ---
 # <a name="create-an-event-grid-data-connection-for-azure-data-explorer-by-using-python"></a>Python を使用して Azure Data Explorer 用に Event Grid データ接続を作成する
 
@@ -22,15 +22,21 @@ ms.locfileid: "76964398"
 > * [Python](data-connection-event-grid-python.md)
 > * [Azure Resource Manager テンプレート](data-connection-event-grid-resource-manager.md)
 
-Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure Data Explorer では、BLOB コンテナーに書き込まれた Event Hubs、IoT Hub、BLOB からのインジェスト (データの読み込み) を提供します。 この記事では、Python を使用して Azure Data Explorer 用に Event Grid データ接続を作成します。
+この記事では、Python を使用して Azure Data Explorer 用に Event Grid データ接続を作成します。 Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure Data Explorer では、Event Hubs、IoT Hub、および BLOB コンテナーに書き込まれた BLOB からの取り込み (データの読み込み) が提供されます。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
-* [クラスターとデータベース](create-cluster-database-python.md)を作成します
-* [テーブルと列のマッピング](python-ingest-data.md#create-a-table-on-your-cluster)を作成します
-* [データベースとテーブルのポリシー](database-table-policies-python.md) (オプション) を設定します
-* [Event Grid サブスクリプションでストレージ アカウント](ingest-data-event-grid.md#create-an-event-grid-subscription-in-your-storage-account)を作成します
+* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+
+* [Python 3.4 以上](https://www.python.org/downloads/)。
+
+* [クラスターとデータベース](create-cluster-database-python.md)。
+
+* [テーブルと列のマッピング](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)。
+
+* [データベースとテーブルのポリシー](database-table-policies-csharp.md) (省略可能)。
+
+* [Event Grid サブスクリプションのあるストレージ アカウント](ingest-data-event-grid.md#create-an-event-grid-subscription-in-your-storage-account)。
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](../../includes/data-explorer-data-connection-install-package-python.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: StorSimple での 8000 シリーズ デバイスのフェールオーバーとディザスター リカバリー | Microsoft Docs
+title: 同じ StorSimple 8000 デバイスに対するフェールオーバーとディザスター リカバリー
 description: StorSimple デバイスを同じデバイスにフェールオーバーする方法について説明します。
 services: storsimple
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2017
 ms.author: alkohli
-ms.openlocfilehash: dd207eaad1a3e821724d51a890d0882bfffda131
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c8fe2d7ec7649f47f6cb9c8ae2c83f19c15691b6
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60577383"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471807"
 ---
 # <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>StorSimple 物理デバイスを同じデバイスにフェールオーバーする
 
@@ -29,7 +29,7 @@ ms.locfileid: "60577383"
 
 デバイスのフェールオーバーと災害から復旧するための使用方法の詳細については、「[Failover and disaster recovery for StorSimple 8000 series devices](storsimple-8000-device-failover-disaster-recovery.md)」(StorSimple 8000 シリーズ デバイスのフェールオーバーとディザスター リカバリー) を参照してください。
 
-物理デバイスを別の物理デバイスにフェールオーバーするには、「[Fail over to a StorSimple 8000 series physical device](storsimple-8000-device-failover-physical-device.md)」(StorSimple 物理デバイスにフェールオーバーする) を参照してください。 StorSimple 物理デバイスを StorSimple Cloud Appliance にフェールオーバーするには、「[Fail over to a StorSimple Cloud Appliance](storsimple-8000-device-failover-cloud-appliance.md)」(StorSimple クラウド アプライアンスにフェールオーバーする) を参照してください。
+物理デバイスを別の物理デバイスにフェールオーバーするには、「[Fail over to a StorSimple 8000 series physical device](storsimple-8000-device-failover-physical-device.md)」(StorSimple 物理デバイスにフェールオーバーする) を参照してください。 StorSimple 物理デバイスを StorSimple Cloud Appliance にフェールオーバーするには、「[Fail over to a StorSimple Cloud Appliance](storsimple-8000-device-failover-cloud-appliance.md)」(StorSimple Cloud Appliance にフェールオーバーする) を参照してください。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -79,7 +79,7 @@ ms.locfileid: "60577383"
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * フェールオーバーの実行後、必要に応じて [StorSimple デバイスを非アクティブ化または削除](storsimple-8000-deactivate-and-delete-device.md)します。
 * StorSimple デバイス マネージャー サービスを使用する方法の詳細については、「[Use the StorSimple Device Manager service to administer your StorSimple device](storsimple-8000-manager-service-administration.md)」(StorSimple デバイス マネージャーを使用して StorSimple デバイスを管理する) を参照してください。

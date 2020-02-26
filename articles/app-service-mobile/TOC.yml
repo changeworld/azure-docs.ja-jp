@@ -1,5 +1,5 @@
 - name: Mobile Apps ドキュメント
-  href: index.md
+  href: index.yml
 - name: 概要
   items:
     - name: Mobile Apps とは

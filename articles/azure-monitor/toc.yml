@@ -890,8 +890,8 @@
                   href: log-query/examples.md
                 - name: スマート分析の例
                   href: log-query/smart-analytics.md
-                - name: 効率的なクエリの記述
-                  href: log-query/log-query-performance.md
+                - name: クエリの最適化
+                  href: log-query/query-optimization.md
                 - name: テキスト データの解析
                   href: log-query/parse-text.md
         - name: Flow および Logic Apps
@@ -1235,8 +1235,6 @@
           href: platform/monitoring-classic-retirement.md
         - name: ログ アラートの API 設定の切り替え
           href: platform/alerts-log-api-switch.md
-        - name: HockeyApp データ
-          href: app/hockeyapp-bridge-app.md
         - name: Web アプリ分析ソリューション
           href: insights/azure-web-apps-analytics.md
         - name: Application Insights コネクタ

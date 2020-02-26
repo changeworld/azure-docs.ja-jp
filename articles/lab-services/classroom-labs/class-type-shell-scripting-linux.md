@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 226c9ae1c42c85db57dab3fd1911943e167a6288
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 100a485588c77f6977001dae984b30ebcb1de557
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133673"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443552"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Linux でのシェル スクリプト作成を教えるためのラボを設定する
 この記事では、Linux でのシェル スクリプトの作成を教えるためのラボを設定する方法について説明します。 スクリプトの作成は、管理者がタスクを繰り返さなくて済むようにできる、システム管理の役に立つ部分です。 このサンプル シナリオのクラスでは、従来の bash スクリプトと拡張スクリプトについて説明します。 拡張スクリプトは、bash コマンドと Ruby を組み合わせたスクリプトです。 このアプローチにより、Ruby でデータを渡すことができ、bash コマンドでシェルと対話することができます。 
@@ -32,7 +32,7 @@ ms.locfileid: "77133673"
 
 | ラボ アカウントの設定 | Instructions |
 | ----------- | ------------ |  
-| マーケットプレースの画像 | ラボ アカウント内で使用する [Ubuntu Server 18.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) イメージを有効にします。 詳細については、「[ラボ作成者が利用できる Marketplace イメージを指定する](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators)」を参照してください | 
+| マーケットプレースの画像 | ラボ アカウント内で使用する [Ubuntu Server 18.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) イメージを有効にします。 詳細については、「[ラボ作成者が利用できる Marketplace イメージを指定する](specify-marketplace-images.md)」を参照してください | 
 
 [このチュートリアル](tutorial-setup-classroom-lab.md)に従って、新しいラボを作成し、次の設定を適用します。
 

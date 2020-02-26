@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/10/2019
+ms.date: 02/19/2020
 ms.author: ryanwi
-ms.reviewer: jmprieur, lenalepa, sureshja
+ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 7e19e9067052c516427391adcc615767446c4049
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: b3338edf644aee8409cfca05d4ac801594cbf66b
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697151"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467761"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>方法:すべての Azure Active Directory ユーザーがマルチテナント アプリケーション パターンを使用してサインインする
 
@@ -37,7 +37,7 @@ ms.locfileid: "76697151"
 3. [複数の issuer 値を処理するようにコードを更新する](#update-your-code-to-handle-multiple-issuer-values)
 4. [ユーザーおよび管理者の同意について理解し、コードに適切な変更を加える](#understand-user-and-admin-consent)
 
-それでは、各手順の詳細を見ていきましょう。 すぐに、[このマルチテナント サンプルのリスト](https://docs.microsoft.com/samples/browse/?products=azure-active-directory)を参照することもできます。
+それでは、各手順の詳細を見ていきましょう。 また、サンプル「[Azure AD と OpenID Connect を使用して Microsoft Graph を呼び出すマルチテナント SaaS Web アプリケーションを構築する](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/2-WebApp-graph-user/2-3-Multi-Tenant/README.md)」に直接移動することもできます。
 
 ## <a name="update-registration-to-be-multi-tenant"></a>登録をマルチテナントに更新する
 
@@ -176,7 +176,7 @@ API が Microsoft 以外の組織によって作成されている場合、こ�
 
 ## <a name="related-content"></a>関連コンテンツ
 
-* [マルチテナント アプリケーションのサンプル](https://docs.microsoft.com/samples/browse/?products=azure-active-directory)
+* [マルチテナント アプリケーションのサンプル](https://github.com/mspnp/multitenant-saas-guidance)
 * [アプリケーションのブランド化ガイドライン][AAD-App-Branding]
 * [アプリケーション オブジェクトとサービス プリンシパル オブジェクト][AAD-App-SP-Objects]
 * [Azure Active Directory とアプリケーションの統合][AAD-Integrating-Apps]

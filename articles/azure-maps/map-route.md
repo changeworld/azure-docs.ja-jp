@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: 359f2b42ca6f56087be53a5aeb328fe43a478d63
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 63f7eac52a555be1877f235bd2f7f1d9315d53d5
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988286"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208507"
 ---
 # <a name="show-directions-from-a-to-b"></a>A から B までのルートを表示する
 
@@ -43,7 +43,7 @@ ms.locfileid: "76988286"
 
 最後のコード ブロックでは、マップの [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) プロパティを使用してマップの境界が設定されます。
 
-ルート クエリ、データ ソース、シンボル、線レイヤー、およびカメラの境界が作成され、マップの[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)内に設定されます。 このコード構造を使用すると、マップが完全に読み込まれた後にのみ結果が表示されるようになります。
+ルート クエリ、データ ソース、シンボル、線レイヤー、カメラの境界が、[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)内に作成されます。 このコード構造を使用すると、マップが完全に読み込まれた後にのみ結果が確実に表示されるようになります。
 
 ## <a name="query-the-route-via-fetch-api"></a>Fetch API を介してルートのクエリを実行する
 
@@ -54,7 +54,7 @@ ms.locfileid: "76988286"
 
 2 つ目のコード ブロックでは、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) オブジェクトが作成され、マップに追加されます。
 
-3 つ目のコード ブロックでは、ルートの開始点と終了点が作成され、データ ソースに追加されます。 [addPins](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) の使用方法については、[マップにピンを追加する](map-add-pin.md)に関する記事を参照してください。
+3 つ目のコード ブロックでは、ルートの開始点と終了点が作成されます。 その後、データ ソースに追加されます。 [addPins](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) の使用方法については、[マップにピンを追加する](map-add-pin.md)に関する記事を参照してください。
 
 [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) によって、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) にラップされた線オブジェクトがマップ上に線としてレンダリングされます。 4 つ目のコード ブロックでは、線レイヤーが作成され、マップに追加されます。 線レイヤーのプロパティについては、[LinestringLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest) に関するページを参照してください。
 
@@ -64,7 +64,7 @@ ms.locfileid: "76988286"
 
 最後のコード ブロックでは、[Fetch API](https://fetch.spec.whatwg.org/) を使用して、[Azure Maps Route API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) に対して検索要求を行います。 その後、応答が解析されます。 成功応答の場合は、緯度と経度の情報を使用し、それらのポイントを結んで線の配列が作成されます。 その線データがデータ ソースに追加されて、マップ上にルートがレンダリングされます。 手順については、「[線を追加する](map-add-line-layer.md)」をご覧ください。
 
-ルート クエリ、データ ソース、シンボル、線レイヤー、およびカメラの境界が作成され、マップの[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)内に設定されます。 この場合も、マップが完全に読み込まれた後に結果が表示されるようにします。
+ルート クエリ、データ ソース、シンボル、線レイヤー、カメラの境界が、[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)内に作成されます。 この場合も、マップが完全に読み込まれた後に結果が表示されるようにします。
 
 ## <a name="next-steps"></a>次のステップ
 

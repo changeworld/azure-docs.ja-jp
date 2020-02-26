@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: a8ccda88239a150a24c9abaf6ebb172f0fd01dba
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: dd8ce6d9b4dc63592e491a06a0055a7d065252b5
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278919"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201435"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>クイック スタート:Maven プラグインを使用して Azure Spring Cloud アプリを起動する
 
@@ -63,7 +63,7 @@ Azure Spring Cloud の Maven プラグインを使用すると、自分の Azure
 ## <a name="set-up-your-configuration-server"></a>構成サーバーを設定する
 
 1. サービスの **[概要]** ページで、 **[Config Server]\(構成サーバー\)** を選択します。
-1. **[既定のリポジトリ]** セクションで **[URI]** を **https://github.com/Azure-Samples/piggymetrics** に設定し、 **[ラベル]** を **config** に設定して、 **[適用]** を選択し、変更を保存します。
+1. **[既定のリポジトリ]** セクションで **[URI]** を **https://github.com/Azure-Samples/piggymetrics-config** に設定し、 **[適用]** を選択して変更を保存します。
 
     > [!div class="mx-imgBorder"]
     > ![構成設定を定義して適用する](media/maven-qs-apply-config.jpg)

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/31/2019
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 8c2ae82bae8457a1c715f160994c7a0da94193ff
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: bd7801c84860ddba3c3991bce9352c595adb123f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134492"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469046"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>クイック スタート:Azure Cosmos DB SQL API データを管理する Java アプリを作成する
 
@@ -69,15 +69,17 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 
 この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 それ以外の場合は、「[アプリの実行](#run-the-app)」に進んでください。 
 
+### <a name="managing-database-resources-using-the-synchronous-sync-api"></a>同期 API を使用してデータベース リソースを管理する
+
 * `CosmosClient` の初期化。 `CosmosClient` は、Azure Cosmos データベース サービスのクライアント側の論理表現を提供します。 このクライアントは、サービスに対する要求の構成と実行に使用されます。
     
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateSyncClient)]
 
-* CosmosDatabase の作成。
+* `CosmosDatabase` の作成。
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateDatabaseIfNotExists)]
 
-* CosmosContainer の作成。
+* `CosmosContainer` の作成。
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateContainerIfNotExists)]
 
@@ -85,13 +87,41 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateItem)]
    
-* `getItem` と `read` メソッドを使用してポイント読み取りを実行します。
+* `readItem` メソッドを使用したポイント読み取りの実行。
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=ReadItem)]
 
 * `queryItems` メソッドを使用して JSON に対する SQL クエリを実行します。
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=QueryItems)]
+
+### <a name="managing-database-resources-using-the-asynchronous-async-api"></a>非同期 API を使用してデータベース リソースを管理する
+
+* 非同期 API 呼び出しは、サーバーからの応答を待機することなく直ちに制御を戻します。 この点を踏まえ、非同期 API を使用して、前出のすべての管理タスクを遂行するための適切な設計パターンを示したものが以下のコード スニペットです。
+
+* `CosmosAsyncClient` の初期化。 `CosmosAsyncClient` は、Azure Cosmos データベース サービスのクライアント側の論理表現を提供します。 このクライアントは、サービスに対する非同期要求の構成と実行に使用されます。
+    
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateAsyncClient)]
+
+* `CosmosAsyncDatabase` の作成。
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateDatabaseIfNotExists)]
+
+* `CosmosAsyncContainer` の作成。
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateContainerIfNotExists)]
+
+* 同期 API と同様、項目の作成は `createItem` メソッドを使用して実行されます。 この例は、要求を発行して通知を出力する Reactive Stream をサブスクライブすることによって、多数の非同期 `createItem` 要求を効率よく発行する方法を示しています。 この単純な例は、そのままでは完了まで実行されて終了してしまうため、`CountDownLatch` インスタンスを使用して、項目の作成中はプログラムが終了しないようにしています。 **非同期プログラミングでは、非同期呼び出しをブロックしないことが適切なプラクティスとされています。現実のユースケースでは、無限に実行される main() ループから要求が生成されるので、非同期呼び出しをラッチで待機させる必要はありません。**
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateItem)]
+   
+* 同期 API と同様、ポイント読み取りは `readItem` メソッドを使用して実行されます。
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=ReadItem)]
+
+* 同期 API と同様、JSON に対する SQL クエリは、`queryItems` メソッドを使用して実行されます。
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=QueryItems)]
 
 ## <a name="run-the-app"></a>アプリを実行する
 
@@ -109,10 +139,10 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
     mvn package
     ```
 
-3. Git ターミナル ウィンドウで、次のコマンドを使用して Java アプリケーションを起動します (YOUR_COSMOS_DB_HOSTNAME は引用符で囲んだポータルの URI 値に置き換え、YOUR_COSMOS_DB_MASTER_KEY は引用符で囲んだポータルのプライマリ キーに置き換えます)
+3. Git ターミナル ウィンドウで、次のコマンドを使用して Java アプリケーションを起動します (SYNCASYNCMODE は、実行したいサンプル コードに応じて `sync` または `async` に置き換えます。また、YOUR_COSMOS_DB_HOSTNAME は引用符で囲んだポータルの URI 値に置き換え、YOUR_COSMOS_DB_MASTER_KEY は引用符で囲んだポータルのプライマリ キーに置き換えます)。
 
     ```bash
-    mvn exec:java -DACCOUNT_HOST=YOUR_COSMOS_DB_HOSTNAME -DACCOUNT_KEY=YOUR_COSMOS_DB_MASTER_KEY
+    mvn exec:java@SYNCASYNCMODE -DACCOUNT_HOST=YOUR_COSMOS_DB_HOSTNAME -DACCOUNT_KEY=YOUR_COSMOS_DB_MASTER_KEY
 
     ```
 

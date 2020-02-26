@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 11/07/2019
+ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: e9d5a137247c072516c0b25d7f6147ef48fec248
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 1cf4cc9cf4d98dfca59e01cc264549af3a4d5cb4
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839787"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471790"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>メンテナンス スケジュールを使用してサービスの更新とメンテナンスを管理する
 
@@ -55,7 +55,7 @@ Service Health 通知とリソース ヘルス チェック モニターとの�
 
 データ ウェアハウスに適用されたメンテナンス スケジュールを表示するには、次の手順のようにします。
 
-1.  [Azure Portal](https://portal.azure.com/) にサインインします。
+1.  [Azure portal](https://portal.azure.com/) にサインインします。
 2.  表示するデータ ウェア ハウスを選択します。 
 3.  選択したデータ ウェアハウスが、[概要] ブレードで開きます。 データ ウェアハウスに適用されているメンテナンス スケジュールが、 **[Maintenance schedule]\(メンテナンス スケジュール\)** の下に表示されます。
 
@@ -71,9 +71,9 @@ Service Health 通知とリソース ヘルス チェック モニターとの�
 プライマリ ウィンドウとセカンダリ ウィンドウは別の曜日範囲にする必要があります。 たとえば、プライマリ ウィンドウを火曜日から木曜日にしたら、土曜日から日曜日をセカンダリ ウィンドウにします。
 
 データウェア ハウスに対するメンテナンス スケジュールを変更するには、次の手順のようにします。
-1.  [Azure Portal](https://portal.azure.com/) にサインインします。
+1.  [Azure portal](https://portal.azure.com/) にサインインします。
 2.  更新するデータ ウェア ハウスを選択します。 [概要] ブレードで、ページが開きます。 
-3.  [概要] ブレードの **[Maintenance Schedule (preview)]\(メンテナンス スケジュール (プレビュー)\)** 概要リンクを選択して、メンテナンス スケジュール設定用のページを開きます。 または、左側にあるリソース メニューの **[Maintenance Schedule]\(メンテナンス スケジュール\)** オプションを選択します。  
+3.  [概要] ブレードの **[Maintenance Schedule]\(メンテナンス スケジュール\)** 概要リンクを選択して、メンテナンス スケジュール設定用のページを開きます。 または、左側にあるリソース メニューの **[Maintenance Schedule]\(メンテナンス スケジュール\)** オプションを選択します。  
 
     ![概要ブレードのオプション](media/sql-data-warehouse-maintenance-scheduling/maintenance-change-option.png)
 
@@ -94,7 +94,7 @@ Service Health 通知とリソース ヘルス チェック モニターとの�
 
    ![リージョンの可用性に関するメッセージ](media/sql-data-warehouse-maintenance-scheduling/maintenance-notactive-toast.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Azure Monitor を使用してアラートを作成、表示、管理する方法について[詳しく知る](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-usage)。
 - ログ アラート ルール用の Webhook アクションについて[詳しく知る](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook)。
 - アクション グループの作成と管理について[詳しく知る](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)。

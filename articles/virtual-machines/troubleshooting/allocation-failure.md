@@ -12,12 +12,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: cjiang
-ms.openlocfilehash: 72fbdbcfcd94dd41a67bb81314802dd7314ae463
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b4750ad9fdfa214aa4d7b6a0355c319e7eb1d9c3
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60505814"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484402"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Azure で VM を作成、再起動、またはサイズ変更するときの割り当てエラーのトラブルシューティング
 
@@ -42,7 +42,7 @@ ms.locfileid: "60505814"
 
 VM のサイズの変更、または既存の可用性セットへの VM の追加の要求は、既存の可用性セットをホストしている元のクラスターで試行する必要があります。 要求した VM サイズがクラスターによってサポートされていても、クラスターに現在十分な容量がない可能性があります。 
 
-### <a name="workaround"></a>対処法
+### <a name="workaround"></a>回避策
 
 VM を別の可用性セットに含めることができる場合は、VM を (同じリージョン内の) 別の可用性セットに作成します。 この新しい VM は、同じ仮想ネットワークに追加できます。
 
@@ -57,7 +57,7 @@ VM を別の可用性セットに含めることができる場合は、VM を (
 
 部分的割り当て解除とは、可用性セット内のすべての VM ではなく、1 つ以上の VM を停止 (割り当て解除) したことを意味します。 VM を割り当て解除すると、関連付けられているリソースが解放されます。 部分的に割り当て解除された可用性セットで VM を再起動することは、既存の可用性セットに VM を追加することと同じです。 そのため、割り当て要求は、十分な容量がない可能性のある既存の可用性セットをホストしている元のクラスターに関連付けられている必要があります。
 
-### <a name="workaround"></a>対処法
+### <a name="workaround"></a>回避策
 
 同じ可用性セット内のすべての VM を停止 (割り当て解除) し、それぞれを再起動します。
 停止するには、[リソース グループ] > [対象とするリソース グループ] > [リソース] > [対象とする可用性セット] > [仮想マシン] > [対象とする仮想マシン] > [停止] の順にクリックします。
@@ -70,7 +70,7 @@ VM を別の可用性セットに含めることができる場合は、VM を (
 
 完全割り当て解除とは、可用性セット内のすべての VM を停止 (割り当て解除) したことを意味します。 これらの VM を再起動するための割り当て要求は、リージョンまたはゾーン内の目的のサイズをサポートしているすべてのクラスターを対象とします。 この記事の提案に従って割り当て要求を変更し、要求を再試行して、割り当ての成功の可能性を向上させてください。 
 
-### <a name="workaround"></a>対処法
+### <a name="workaround"></a>回避策
 
 Dv1、DSv1、Av1、D15v2、DS15v2 などの以前の VM シリーズまたはサイズを使用している場合は、新しいバージョンへの移行を検討してください。 特定の VM サイズに関する以下の推奨事項をご覧ください。
 別の VM サイズを使用する選択肢がない場合は、同じ地域内の別のリージョンにデプロイしてみてください。 各リージョンで利用できる VM サイズについて詳しくは、 https://aka.ms/azure-regions をご覧ください
@@ -79,15 +79,17 @@ Dv1、DSv1、Av1、D15v2、DS15v2 などの以前の VM シリーズまたはサ
 
 割り当て要求が大きい (500 コアを超える) 場合は、次のセクションのガイダンスを参照して、要求をより小規模なデプロイに分割してください。
 
+[VM を再デプロイ](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/redeploy-to-new-node-windows)してみてください。 VM を再デプロイすると、そのリージョン内の新しいクラスターに VM が割り当てられます。
+
 ## <a name="allocation-failures-for-older-vm-sizes-av1-dv1-dsv1-d15v2-ds15v2-etc"></a>以前の VM サイズ (Av1、Dv1、DSv1、D15v2、DS15v2 など) での割り当ての失敗
 
 マイクロソフトでは、Azure インフラストラクチャを展開するときに、最新の種類の仮想マシンをサポートするように設計された新しい世代のハードウェアをデプロイします。 一部の旧シリーズの VM は、最新世代のインフラストラクチャで稼働しません。 このため、これらのレガシ SKU で割り当ての失敗が発生することがあります。 この問題を回避するために、レガシ シリーズの仮想マシンを使用しているお客様には、次の推奨事項に従って同等の新しい VM への移行を検討することをお勧めします。これらの VM は、最新のハードウェア用に最適化されており、価格とパフォーマンスが向上しています。 
 
 |レガシ VM シリーズ/サイズ|推奨される新しい VM シリーズ/サイズ|詳細情報|
 |----------------------|----------------------------|--------------------|
-|Av1 シリーズ|[Av2 シリーズ](../windows/sizes-general.md#av2-series)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
-|Dv1 または DSv1 シリーズ (D1 から D5)|[Dv3 または DSv3 シリーズ](../windows/sizes-general.md#dsv3-series-1)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
-|Dv1 または DSv1 シリーズ (D11 から D14)|[Ev3 または ESv3 シリーズ](../windows/sizes-memory.md#ev3-series)|
+|Av1 シリーズ|[Av2 シリーズ](../av2-series.md)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
+|Dv1 または DSv1 シリーズ (D1 から D5)|[Dv3 または DSv3 シリーズ](../dv3-dsv3-series.md)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
+|Dv1 または DSv1 シリーズ (D11 から D14)|[Ev3 または ESv3 シリーズ](../ev3-esv3-series.md)|
 |D15v2 または DS15v2|より大きい VM サイズを利用するために Resource Manager デプロイ モデルを使用している場合は、D16v3/DS16v3 または D32v3/DS32v3 への移行を検討します。 これらは、最新の世代のハードウェア上で稼働するように設計されています。 VM インスタンスが単一の顧客に専用のハードウェアに分離されるように Resource Manager デプロイ モデルを使用している場合は、最新世代のハードウェア上で稼働するように設計された、新しい分離 VM サイズ (E64i_v3 または E64is_v3) への移行を検討してください。 |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/
 
 ## <a name="allocation-failures-for-large-deployments-more-than-500-cores"></a>大規模なデプロイ (500 個を超えるコア) での割り当ての失敗

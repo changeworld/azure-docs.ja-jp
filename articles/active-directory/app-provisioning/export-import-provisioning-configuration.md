@@ -1,6 +1,6 @@
 ---
-title: Graph API を使用してプロビジョニング構成をエクスポートまたはインポートする | Microsoft Docs
-description: Graph API を使用してプロビジョニング構成をエクスポートおよびインポートする方法について説明します。
+title: Microsoft Graph API を使用してお使いのプロビジョニング構成をエクスポートまたはインポートする | Microsoft Docs
+description: Microsoft Graph API を使用してプロビジョニング構成をエクスポートおよびインポートする方法について説明します。
 services: active-directory
 author: cmmdesai
 documentationcenter: na
@@ -15,21 +15,21 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af699fa2201bce5627426dcdefc1b98c1d885ae5
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e2fa80726875c82cfa4b5d4cf6a14f4e0dae1871
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77065762"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367800"
 ---
-# <a name="export-or-import-your-provisioning-configuration-by-using-graph-api"></a>Graph API を使用してプロビジョニング構成をエクスポートまたはインポートする
+# <a name="export-or-import-your-provisioning-configuration-by-using-the-microsoft-graph-api"></a>Microsoft Graph API を使用してお使いのプロビジョニング構成をエクスポートまたはインポートする
 
-Microsoft Graph API と Graph Explorer を使用すると、User Provisioning の属性マッピングとスキーマを JSON ファイルにエクスポートし、それを Azure AD にインポートすることができます。 ここでキャプチャした手順を使用して、プロビジョニング構成のバックアップを作成することもできます。 
+Microsoft Graph API と Microsoft Graph Explorer を使用すると、ご自分のユーザー プロビジョニングの属性マッピングとスキーマを JSON ファイルにエクスポートし、それを Azure AD にインポートし直すことができます。 ここでキャプチャした手順を使用して、プロビジョニング構成のバックアップを作成することもできます。 
 
 ## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>手順 1:プロビジョニング アプリのサービス プリンシパル ID (オブジェクト ID) を取得します
 
 1. [Azure portal](https://portal.azure.com) を起動し、プロビジョニング アプリケーションの [プロパティ] セクションに移動します。 たとえば、"*Workday to AD User Provisioning アプリケーション*" のマッピングをエクスポートする場合は、そのアプリの [プロパティ] セクションに移動します。 
-1. プロビジョニング アプリの [プロパティ] セクションで、"*オブジェクト ID*" フィールドに関連付けられている GUID 値をコピーします。 この値はアプリの **ServicePrincipalId** とも呼ばれ、Graph Explorer の操作で使用されます。
+1. プロビジョニング アプリの [プロパティ] セクションで、"*オブジェクト ID*" フィールドに関連付けられている GUID 値をコピーします。 この値はお使いのアプリの **ServicePrincipalId** とも呼ばれ、Microsoft Graph Explorer の操作で使用されます。
 
    ![Workday アプリのサービス プリンシパル ID](./media/export-import-provisioning-configuration/wd_export_01.png)
 
@@ -38,7 +38,7 @@ Microsoft Graph API と Graph Explorer を使用すると、User Provisioning �
 1. [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) を起動します
 1. [Sign-In with Microsoft]\(Microsoft を使用してサインイン\) ボタンをクリックし、Azure AD 全体管理者またはアプリ管理者の資格情報を使用してサインインします。
 
-    ![Graph のサインイン](./media/export-import-provisioning-configuration/wd_export_02.png)
+    ![Microsoft Graph のサインイン](./media/export-import-provisioning-configuration/wd_export_02.png)
 
 1. サインインに成功すると、左側のウィンドウにユーザー アカウントの詳細が表示されます。
 

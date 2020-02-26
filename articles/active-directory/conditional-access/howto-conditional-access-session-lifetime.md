@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 797475bfe0f1ec077ad39c6fce1f0facdf679802
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: eb094d04a7210d76a98f3e47af750e49b617e493
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483469"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77195064"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>条件付きアクセスを使用して認証セッション管理を構成する
 
@@ -49,7 +49,24 @@ ms.locfileid: "74483469"
 - SharePoint と OneDrive
 - Teams Web クライアント
 - Dynamics CRM Online
-- Azure ポータル
+- Azure portal
+
+### <a name="user-sign-in-frequency-and-device-identities"></a>ユーザーサインインの頻度とデバイス ID
+
+Azure AD 参加済み、ハイブリッド Azure AD 参加済み、または Azure AD 登録済みデバイスがある場合、ユーザーがデバイスのロックを解除するか、対話形式でサインインすると、このイベントはサインイン頻度ポリシーも満たします。 次の 2 つの例では、ユーザーのサインイン頻度が 1 時間に設定されています。
+
+例 1:
+
+- 00:00 では、ユーザーは Windows 10 Azure AD に参加しているデバイスにサインインし、SharePoint Online に格納されているドキュメントで作業を開始します。
+- ユーザーは、デバイス上の同じドキュメントで1時間、作業を継続します。
+- 01:00 では、ユーザーは、管理者によって構成された条件付きアクセス ポリシーのサインイン頻度の要件に基づいて、もう一度サインインするように求められます。
+
+例 2:
+
+- 00:00 では、ユーザーは Windows 10 Azure AD に参加しているデバイスにサインインし、SharePoint Online に格納されているドキュメントで作業を開始します。
+- 00:30 では、ユーザーは立ち上がり、デバイスをロックして休憩します。
+- 00:45 では、ユーザーは休憩から戻り、デバイスのロックを解除します。
+- 01:45 では、前回のサインインが 00:45 で発生したため、管理者によって構成された条件付きアクセスポリシーのサインイン頻度の要件に基づいて、ユーザーはもう一度サインインするように求められます。
 
 ## <a name="persistence-of-browsing-sessions"></a>ブラウズ セッションの永続化
 
@@ -111,7 +128,7 @@ What-If ツールを使用して、ポリシーをどのように構成するか
 
 ポリシーが期待どおりに機能することを確実にするために推奨されるベスト プラクティスは、運用環境にロールアウトする前にポリシーをテストすることです。 テスト テナントを使用して、新しいポリシーが意図したとおりに機能するかどうかを確認するのが理想的です。 詳細については、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)」の記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 条件付きアクセス ポリシーを構成する方法については、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](app-based-mfa.md)」の記事を参照してください。
 * 環境のための条件付きアクセス ポリシーを構成する準備ができている場合は、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)」の記事を参照してください。

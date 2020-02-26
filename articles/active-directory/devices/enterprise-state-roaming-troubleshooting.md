@@ -5,24 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: troubleshooting
-ms.date: 11/21/2019
+ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad897ea73f32327b894558c5c04449c667663dad
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: e81039328aa9382a19412c961e28bc3275c08ec8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379761"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194468"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Azure Active Directory の Enterprise State Roaming の設定のトラブルシューティング
 
 このトピックでは、Enterprise State Roaming の問題のトラブルシューティングと診断の方法について説明するとともに、既知の問題の一覧を示します。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+> [!NOTE]
+> この記事は、2015年7月に Windows 10 で起動された Microsoft Edge レガシ HTML ベースのブラウザーに適用されます。 この記事は、2020年1月15日にリリースされた新しい Microsoft Edge Chromium ベースのブラウザーには適用されません。 新しい Microsoft Edge の同期動作の詳細については、「[Microsoft Edge Sync](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync)」を参照してください。
 
 ## <a name="preliminary-steps-for-troubleshooting"></a>トラブルシューティングのための準備作業 
 
@@ -31,13 +34,13 @@ ms.locfileid: "74379761"
 1. 最新の更新プログラムがインストールされた Windows 10 であり、デバイスには最小バージョン 1511 (OS ビルド 10586 以降) がインストールされている。 
 1. デバイスは Azure AD またはハイブリッド Azure AD に参加しています。 詳細については、[デバイスを Azure AD で管理する方法](overview.md)に関するページをご覧ください。
 1. [Enterprise State Roaming の有効化](enterprise-state-roaming-enable.md)に関するページで説明されているとおりに、Azure AD のテナントで **Enterprise State Roaming** が有効になっていることを確認します。 すべてのユーザーまたは選択したグループのユーザーにだけローミングを有効にできます。
-1. ユーザーには Azure Active Directory Premium のライセンスをあらかじめ割り当てておく必要があります。  
+1. このユーザーには Azure Active Directory Premium のライセンスが割り当てられています。  
 1. デバイスを再起動し、もう一度サインインして Enterprise State Roaming の機能にアクセスする必要があります。
 
 ## <a name="information-to-include-when-you-need-help"></a>ヘルプが必要な場合に含める情報
 以下のガイダンスを使用しても問題を解決できない場合は、サポート エンジニアにお問い合わせください。 サポートにお問い合わせいただく際は、次の情報をお知らせください。
 
-* **エラーの概要**:ユーザーにエラー メッセージは表示されましたか。 エラー メッセージが表示されなかった場合は、気が付いた予期しない動作について詳しく説明してください。 どの機能で同期が有効になっていますか。また、同期することが求められるのはどのような機能ですか。 同期しないのは複数の機能ですか。または 1 つの機能ですか。
+* **エラーの一般的な説明**: ユーザーにエラー メッセージは表示されましたか。 エラー メッセージが表示されなかった場合は、気が付いた予期しない動作について詳しく説明してください。 どの機能で同期が有効になっていますか。また、同期することが求められるのはどのような機能ですか。 同期しないのは複数の機能ですか。または 1 つの機能ですか。
 * **影響を受けるユーザー** – 同期が機能、または機能しないのは、1 人のユーザーですか。それとも複数のユーザーですか。 ユーザー 1 人当たりに関係するデバイスは何台ですか。 すべてのデバイスが同期しませんか。それとも同期するデバイスもあれば、同期しないデバイスもありますか。
 * **ユーザーに関する情報** – ユーザーはどの ID を使用してデバイスにログインしていますか。 どのような方法でデバイスにログインしていますか。 ユーザーは、同期が許可されている選択されたセキュリティ グループの一部ですか。 
 * **デバイスに関する情報** – デバイスは Azure AD に参加していますか。またはドメインに参加していますか。 どのビルドがデバイスにインストールされていますか。 最新の更新プログラムは何ですか。
@@ -46,6 +49,7 @@ ms.locfileid: "74379761"
 これらの情報を含めることで、迅速に問題を解決するのに役立ちます。
 
 ## <a name="troubleshooting-and-diagnosing-issues"></a>問題のトラブルシューティングと診断
+
 このセクションでは、Enterprise State Roaming に関連した問題のトラブルシューティングと診断の方法に関する推奨事項を示します。
 
 ## <a name="verify-sync-and-the-sync-your-settings-settings-page"></a>同期、および "設定の同期" の設定ページを確認する 
@@ -107,7 +111,7 @@ Windows 10 バージョン 1511 のクライアントに、2016 年 7 月にリ�
 データの漏えいを防ぐため、[Windows Information Protection](https://technet.microsoft.com/itpro/windows/keep-secure/protect-enterprise-data-using-wip) で保護されたデータは、Enterprise State Roaming を通じて Windows 10 Anniversary Update を使用するデバイスに同期されることはありません。
 
 **推奨される操作**  
-なし。 この問題は今後、Windows の更新プログラムで解決される可能性があります。
+[なし] : この問題は今後、Windows の更新プログラムで解決される可能性があります。
 
 ---
 
@@ -116,7 +120,7 @@ Windows 10 バージョン 1511 のクライアントに、2016 年 7 月にリ�
 ドメインに参加したデバイスでは、日付、時刻、地域の設定は同期されず、自動時刻が適用されます。 自動時刻を使用すると、他の日付、時刻、地域の設定がオーバーライドされ、これらの設定が同期されない場合があります。 
 
 **推奨される操作**  
-なし。 
+[なし] : 
 
 ---
 
@@ -134,7 +138,7 @@ Windows 10 バージョン 1511 クライアントに、累積的な更新プロ
 スマート カードまたは仮想スマート カードを使用して Windows デバイスにサインインしようとすると、設定の同期機能が停止します。     
 
 **推奨される操作**  
-なし。 この問題は今後、Windows の更新プログラムで解決される可能性があります。
+[なし] : この問題は今後、Windows の更新プログラムで解決される可能性があります。
 
 ---
 
@@ -149,7 +153,7 @@ Windows 10 バージョン 1511 クライアントに、累積的な更新プロ
 
 ### <a name="azure-ad-joined-device-is-not-syncing-and-the-user-has-a-mixed-case-user-principal-name"></a>Azure AD 参加済みデバイスが同期されず、ユーザーのユーザー プリンシパル名に大文字と小文字が混在しています。
 
-ユーザーの UPN に大文字と小文字が混在していて (例: username ではなく UserName )、そのユーザーが Windows 10 ビルド 10586 から 14393 にアップグレードした Azure AD 参加済みデバイスを使用している場合、ユーザーのデバイスは同期に失敗します。 
+ユーザーの UPN に大文字と小文字が混在していて (例: username ではなく UserName )、そのユーザーが Windows 10 ビルド 10586 から 14393 にアップグレードした Azure AD 参加済みデバイスを使用している場合、ユーザーのデバイスは同期に失敗する場合があります。 
 
 **推奨される操作**  
 ユーザーはデバイスをクラウドから離し、デバイスを再度クラウドに参加させる必要があります。 これを行うには、ローカル管理者ユーザーとしてログインし、 **[設定]**  >  **[システム]**  >  **[バージョン情報]** に移動して [職場または学校からの管理または切断] を選択することで、デバイスの参加を解除します。 後述のファイルをクリーンアップし、 **[設定]**  >  **[システム]**  >  **[バージョン情報]** で [職場または学校への接続] を選択して、デバイスを再度 Azure AD に参加させます。 デバイスを Azure Active Directory に参加させ、フローを完了します。
@@ -176,6 +180,6 @@ AAD/操作ログのイベント ビューアーに、イベント 1104 ととも
 **推奨される操作**  
 [KB3196528](https://support.microsoft.com/kb/3196528) に示された手順を実行します。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-概要については、「[Enterprise State Roaming の概要](enterprise-state-roaming-overview.md)」を参照してください。
+概要については、[Enterprise State Roaming の概要](enterprise-state-roaming-overview.md)に関するページを参照してください。

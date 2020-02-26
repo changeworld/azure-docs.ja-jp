@@ -1,19 +1,19 @@
 ---
 title: サポートされているマップ スタイル | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps でサポートされているさまざまなマップ レンダリング スタイルについて説明します。
-author: walsehgal
-ms.author: v-musehg
+description: この記事では、Microsoft Azure Maps でサポートされているさまざまなマップ レンダリング スタイルについて学習します。
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 05/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 92e48486777d82589a56074790dd709c5d525859
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 9cdfd0d029057e36e010203b7c35a5aafee4b574
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910637"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208286"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps でサポートされているマップ スタイル
 Azure Maps は、次に説明するように、いくつかの異なる組み込みマップ スタイルをサポートしています。
@@ -31,7 +31,7 @@ Azure Maps は、次に説明するように、いくつかの異なる組み込
 
 ## <a name="blank-and-blank_accessible"></a>blank と blank_accessible
 
-**blank** と **blank_accessible** のマップ スタイルでは、データを視覚化する空白のキャンバスが提供されます。 基本マップが表示されていない場合でも、**blank_accessible** スタイルでは、マップが配置されている場所の詳細を含むスクリーン リーダーの更新が引き続き提供されます。
+**blank** と **blank_accessible** のマップ スタイルでは、データを視覚化する空白のキャンバスが提供されます。 基本マップが表示されていない場合でも、**blank_accessible** スタイルでは、マップの場所の詳細を含むスクリーン リーダーの更新が引き続き提供されます。
 
 > [!Note]
 > Web SDK では、マップの DIV 要素の CSS `background-color` スタイルを設定することによって、マップの背景色を変更できます。

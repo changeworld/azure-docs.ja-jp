@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: d89d506d8912706bbdb802801b16d01036ecb8e2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 99c6ee5d58655350d14add61530fae647a675508
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583630"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443229"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>仮想マシン プールを設定および管理する 
 この記事では、次のタスクの手順について説明します。
@@ -76,7 +76,7 @@ ms.locfileid: "73583630"
 ### <a name="set-password-at-the-time-of-lab-creation"></a>ラボの作成時にパスワードを設定する
 ラボ所有者 (教師) は、ラボ作成ウィザードの **[Virtual machine credentials]\(仮想マシンの資格情報\)** ページでラボ内の VM のパスワードを設定できます。
 
-![[New Lab]\(新しいラボ\) ウィンドウ](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
+![新しいラボのウィンドウ](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
 
 このページの **[Use same password for all virtual machines]\(すべての仮想マシンに同じパスワードを使用する\)** オプションを有効/無効にすることで、教師はラボ内のすべての VM に同じパスワードを使用するか、学生が自分の VM にパスワードを設定できるようにします。 既定でこの設定は、Ubuntu を除くすべての Windows および Linux オペレーティング システム イメージで有効です。 この設定を無効にすると、学生が初めて VM に接続しようとしたときにパスワードを設定するように求められます。 
 
@@ -97,7 +97,10 @@ ms.locfileid: "73583630"
 
 ![学生用 VM への接続ボタン](../media/how-to-set-virtual-machine-passwords/connect-student-vm.png)
 
-## <a name="next-steps"></a>次の手順
+> [!NOTE]
+> 教授が VM を起動して接続すると、学生のクォータは影響を受けません。 
+
+## <a name="next-steps"></a>次のステップ
 (ラボ所有者として) 構成できる他の学生の使用オプションの詳細については、次の記事を参照してください。[学生の使用の構成](how-to-configure-student-usage.md)
 
 学生が各自の VM のパスワードをリセットする方法については、「[クラスルーム ラボの仮想マシンに対するパスワードを設定またはリセットする (学生)](how-to-set-virtual-machine-passwords-student.md)」を参照してください。

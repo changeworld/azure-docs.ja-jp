@@ -305,7 +305,7 @@ union withsource = tt *
 
 ### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>Azure リソース、リソース グループ、またはサブスクリプションごとのデータ ボリューム
 
-__コンピューター__ごとに取り込まれた課金可能イベントの**サイズ**を取得できる Azure でホストされているノードからのデータについては、次のようにリソースへの完全パスを提供する _ResourceId [プロパティ](log-standard-properties.md#_resourceid)を使用します。
+__コンピューター__ごとに取り込まれた課金可能イベントの**サイズ**を取得できる Azure でホストされているノードからのデータについては、次のようにリソースへの完全パスを提供する _ResourceId_[プロパティ](log-standard-properties.md#_resourceid)を使用します。
 
 ```kusto
 union withsource = tt * 

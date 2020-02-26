@@ -6,21 +6,16 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: fe5ced96a74bfbfbacf3ce1874d64711f6db7449
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 566b6db829c9694a7e5e83cc25695e71ada0bc8d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668755"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461455"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Mobile Apps Node.js SDK の使用方法
 
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
-
-> [!NOTE]
-> Visual Studio App Center は、モバイル アプリ開発の中心となるエンドツーエンドの統合サービスをサポートしています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーと関わることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。
->
->  モバイル アプリケーションにクラウド サービスを統合することを検討している場合は、今すぐ [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) にサインアップしてください。
 
 この記事では、Azure App Service の Mobile Apps 機能で Node.js バックエンドを使用する方法についての詳細な情報と例を提供します。
 
@@ -35,7 +30,7 @@ Mobile Apps は、Web アプリケーションにモバイルに最適化され�
 
 各ユース ケースのサンプルは、 [GitHub の samples ディレクトリ]にあります。
 
-## <a name="supported-platforms"></a>サポートされるプラットフォーム
+## <a name="supported-platforms"></a>サポートされているプラットフォーム
 
 Mobile Apps Node.js SDK は、Node の現在の LTS リリース以降をサポートします。 現在、最新の LTS バージョンは Node v4.5.0 です。 Node の他のバージョンが動作する場合もありますが、サポートされているわけではありません。
 
@@ -369,7 +364,7 @@ azureMobile.js ファイル内のほとんどの設定には、[Azure Portal] �
 
 | アプリ設定 | azureMobile.js setting | 説明 | 有効な値 |
 |:--- |:--- |:--- |:--- |
-| **MS_MobileAppName** |名前 |アプリの名前 |string |
+| **MS_MobileAppName** |name |アプリの名前 |string |
 | **MS_MobileLoggingLevel** |logging.level |ログ記録するメッセージの最小ログ レベル |error、warning、info、verbose、debug、silly |
 | **MS_DebugMode** |debug |デバッグ モードを有効または無効にします |true、false |
 | **MS_TableSchema** |data.schema |SQL テーブルの既定のスキーマ名 |string (既定: dbo) |
@@ -379,7 +374,7 @@ azureMobile.js ファイル内のほとんどの設定には、[Azure Portal] �
 
 アプリ設定を設定するには:
 
-1. [Azure Portal] にサインインします。
+1. [Azure portal] にサインインします。
 1. **[すべてのリソース]** または **[App Services]** を選択し、モバイル アプリの名前をクリックします。
 1. **[設定]** ウィンドウが既定で開きます。 開かない場合は、 **[すべての設定]** を選択します。
 1. **[全般]** メニューの **[アプリケーション設定]** を選択します。
@@ -396,7 +391,7 @@ azureMobile.js ファイル内のほとんどの設定には、[Azure Portal] �
 
 Azure SQL Database をデータ ストアとして使用する方法は、Azure App Service アプリケーションのすべての種類で同じです。 Mobile Apps バックエンドをまだ作成していない場合は、次の手順に従って作成します。
 
-1. [Azure Portal] にサインインします。
+1. [Azure portal] にサインインします。
 1. ウィンドウの左上で、 **[+ 新規]** 、 **[Web + モバイル]** > **[モバイル アプリ]** の順に選択し、Mobile Apps バックエンドの名前を指定します。
 1. **[リソース グループ]** ボックスで、アプリと同じ名前を入力します。
 1. 既定の App Service プランが選択されています。 App Service プランを変更する場合:

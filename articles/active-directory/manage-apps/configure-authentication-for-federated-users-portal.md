@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1300ecff416962bda4da800c5eff134951658846
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 600cd3f3ad8826b52648b51beb8c66a382766b80
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159167"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367881"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>ホーム領域検出ポリシーを使用して、アプリケーションの Azure Active Directory サインイン動作を構成する
 
@@ -100,9 +100,7 @@ Azure Active Directory によってサポートされるドメイン ヒント�
 
 サービス プリンシパル上でアクティブにできる HRD ポリシーは、一度に 1 つだけです。  
 
-HRD ポリシーを作成および管理するには、Microsoft Azure Active Directory Graph API を直接使用する方法と、Azure Active Directory PowerShell コマンドレットを使用する方法があります。
-
-ポリシーを操作する Graph API については、MSDN の記事「[Operations on policy](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations)」(ポリシーに対する操作) をご覧ください。
+Azure Active Directory の PowerShell コマンドレットを使用して、HRD ポリシーを作成および管理できます。
 
 HRD ポリシーの定義の例を次に示します。
     
@@ -209,7 +207,7 @@ Get-AzureADPolicy
 #### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>手順 2:ポリシーを割り当てるサービス プリンシパルを見つける  
 ポリシーを割り当てるサービス プリンシパルの **ObjectID** が必要となります。 サービス プリンシパルの **ObjectID** を検索するには、複数の方法があります。    
 
-ポータルを使うか、[Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) のクエリを行うことができます。 また、[Graph エクスプローラー ツール](https://developer.microsoft.com/graph/graph-explorer)に移動して Azure AD アカウントにサインインし、組織のすべてのサービス プリンシパルを表示することもできます。 
+ポータルを使うか、[Microsoft Graph](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) のクエリを行うことができます。 また、[Graph エクスプローラー ツール](https://developer.microsoft.com/graph/graph-explorer)に移動して Azure AD アカウントにサインインし、組織のすべてのサービス プリンシパルを表示することもできます。 
 
 PowerShell を使用しているため、次のコマンドレットを使用してサービス プリンシパルとその ID を一覧表示できます。
 

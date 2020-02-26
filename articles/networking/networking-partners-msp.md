@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: e61e0477e6687dd54713deea03e2b42774edf0bc
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 38711c9f1cee07b04dad0ccfeff5694e61dd5b53
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77059744"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484963"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Azure ネットワーク MSP パートナーについて
 
@@ -33,6 +33,7 @@ Azure ネットワーク MSP パートナーによって提供されるマネー
 |[ANS Group UK](https://www.ans.co.uk/)|[Azure Managed Svc + ANS Glass 10wk 実装](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.glassms)|||||
 |[Aryaka Networks](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)||[Aryaka Azure Connect](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.cloudconnect_azure_19?tab=Overview)|[Aryaka Azure Virtual WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.aryaka_azure_virtual_wan?tab=Overview) | | |
 |[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|[ネットワーク変換のコンサルティング: 1 時間の評価](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/bt-americas-inc.network-transformation-consulting)|||||
+|[共同進化](https://www.coevolve.com/services/azure-networking-services/)|||[管理された VMware SD-WAN 仮想エッジ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/coevolveptylimited1581027739259.managed-vmware-sdwan-edge?tab=Overview)|||
 |[Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/msp/)|[Azure でのネットワーク最適化: 2 時間の評価](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/colttechnologyservices.azure_networking)|||||
 |[NTT Data](https://us.nttdata.com/en/digital/cloud-transformation)|[マネージド サービス: 10 週間の実装](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/nttdata-2932930.managed_service)|||||
 |[Equinix](https://www.equinix.com/)|[クラウド用に最適化された WAN エンゲージメント: 4 日の評価](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/equinix.cloud_optimized_wan_workshop)|[ExpressRoute 接続方法: 3 日間のワークショップ](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/equinix.eps_expressroute)||||
@@ -49,7 +50,7 @@ Azure ネットワーク MSP パートナーによって提供されるマネー
 |[Vigilant IT](https://vigilant.it/manage-cloud-service/)|[Azure 正常性チェック: 5 日の評価](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute: 5 日間の実装](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)||[Vandis Managed ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Fortinet を利用する Vandis Managed VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview)。[Palo Alto Networks を利用する Vandis Managed VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|
 
-次の Azure Networking MSP パートナーからの新しいマネージド セキュリティ サービスとマネージド MEC サービスを含む Azure Marketplace オファーがロードマップにあります。[Amdocs](https://www.amdocs.com/)、[CenturyLink](https://www.centurylink.com/business/networking/cloud-connectivity.html)、[Coevolve](https://www.coevolve.com/services/azure-networking-services/)、[IX Reach](https://www.ixreach.com/services/sdn-cloud-connect/)、[InterCloud](https://intercloud.com/partners/microsoft-azure/)、[KINX](https://www.kinx.net/service/cloud/?lang=en)、[Megaport](https://www.megaport.com/services/microsoft-expressroute/)、[OmniClouds](https://omniclouds.com/services/)、[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)、[Tech Mahindra](https://networkservices.techmahindra.com/pages/default.aspx)
+次の Azure Networking MSP パートナーからの新しいマネージド セキュリティ サービスとマネージド MEC サービスを含む Azure Marketplace オファーがロードマップにあります。[Amdocs](https://www.amdocs.com/)、[CenturyLink](https://www.centurylink.com/business/networking/cloud-connectivity.html)、[IX Reach](https://www.ixreach.com/services/sdn-cloud-connect/)、[InterCloud](https://intercloud.com/partners/microsoft-azure/)、[KINX](https://www.kinx.net/service/cloud/?lang=en)、[Megaport](https://www.megaport.com/services/microsoft-expressroute/)、[OmniClouds](https://omniclouds.com/services/)、[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)、[Tech Mahindra](https://networkservices.techmahindra.com/pages/default.aspx)
 
 ## <a name="expressroute"></a>ExpressRoute パートナー
 

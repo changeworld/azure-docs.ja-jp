@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 1be6420598e7983ef9014f617da1f87f5550fa6a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: dbc2e08ab131c591d8857e1cf88b5c9f91db9610
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705362"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425240"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Table Storage のバインド
 
@@ -36,11 +36,11 @@ Table ストレージ バインディングは [Microsoft.Azure.WebJobs.Extensio
 
 Azure Table Storage の入力バインドを使用して、Azure Storage アカウントのテーブルを読み取ります。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ### <a name="one-entity"></a>1 つのエンティティ
 
-次の例は、1 つのテーブル行を読み取る [C# 関数](functions-dotnet-class-library.md)を示しています。 
+次の例は、1 つのテーブル行を読み取る [C# 関数](functions-dotnet-class-library.md)を示しています。 テーブルに挿入されるすべてのレコードについて、関数がトリガーされます。
 
 行キー値 "{queueTrigger}" は、行キーがキュー メッセージ文字列から取得されることを示します。
 
@@ -143,7 +143,7 @@ CloudTable オブジェクトの使用方法の詳細については、[Azure Ta
 
 `CloudTable` にバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
 
-# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+# <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
 ### <a name="one-entity"></a>1 つのエンティティ
 
@@ -310,7 +310,7 @@ CloudTable オブジェクトの使用方法の詳細については、[Azure Ta
 `CloudTable` にバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
 
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 次の例は、*function.json* ファイルのテーブル入力バインドと、バインドを使用する [JavaScript コード](functions-reference-node.md)を示しています。 この関数は、キュー トリガーを使用して単一のテーブル行を読み取ります。 
 
@@ -352,7 +352,7 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 1 つのテーブル行 
 
@@ -401,7 +401,7 @@ def main(req: func.HttpRequest, messageJSON) -> func.HttpResponse:
     return func.HttpResponse(f"Table row: {messageJSON}")
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 次の例では、テーブル ストレージ内の指定したパーティション内にある項目の合計数を返す、HTTP によってトリガーされる関数を示します。
 
@@ -423,7 +423,7 @@ public int run(
 
 ## <a name="input---attributes-and-annotations"></a>入力 - 属性と注釈
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
  [C# クラス ライブラリ](functions-dotnet-class-library.md)では、以下の属性を使用してテーブル入力バインディングを構成します。
 
@@ -481,19 +481,19 @@ public int run(
 * クラスに適用される `StorageAccount` 属性。
 * 関数アプリの既定のストレージ アカウント ("AzureWebJobsStorage" アプリ設定)。
 
-# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+# <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
 属性は、C# スクリプトではサポートされていません。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 属性は、JavaScript ではサポートされていません。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 属性は、Python ではサポートされていません。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 [Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値がテーブル ストレージに由来するパラメーターで `@TableInput` 注釈を使用します。  この注釈は、Java のネイティブ型、POJO、または `Optional<T>` を使用した null 許容値で使用できます。
 
@@ -505,9 +505,9 @@ public int run(
 
 |function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
-|**type** | 該当なし | `table` に設定する必要があります。 このプロパティは、Azure Portal でバインドを作成するときに自動で設定されます。|
-|**direction** | 該当なし | `in` に設定する必要があります。 このプロパティは、Azure Portal でバインドを作成するときに自動で設定されます。 |
-|**name** | 該当なし | 関数コード内のテーブルまたはエンティティを表す変数の名前。 | 
+|**type** | 300 | `table` に設定する必要があります。 このプロパティは、Azure Portal でバインドを作成するときに自動で設定されます。|
+|**direction** | 300 | `in` に設定する必要があります。 このプロパティは、Azure Portal でバインドを作成するときに自動で設定されます。 |
+|**name** | 300 | 関数コード内のテーブルまたはエンティティを表す変数の名前。 | 
 |**tableName** | **TableName** | テーブルの名前。| 
 |**partitionKey** | **PartitionKey** |省略可能。 読み取るテーブル エンティティのパーティション キー。 このプロパティを使用する方法のガイダンスについては、「[使用方法](#input---usage)」セクションを参照してください。| 
 |**rowKey** |**RowKey** | 省略可能。 読み取るテーブル エンティティの行キー。 このプロパティを使用する方法のガイダンスについては、「[使用方法](#input---usage)」セクションを参照してください。| 
@@ -519,7 +519,7 @@ public int run(
 
 ## <a name="input---usage"></a>入力 - 使用方法
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 * **1 行の読み取り**
 
@@ -532,7 +532,7 @@ public int run(
   > [!NOTE]
   > `IQueryable` は [Functions v2 ランタイム](functions-versions.md)ではサポートされていません。 代わりに、Azure Storage SDK で [CloudTable paramName メソッド パラメーターを使用](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable)して、テーブルを読み取ります。 `CloudTable` にバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
 
-# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+# <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
 * **1 行の読み取り**
 
@@ -545,15 +545,15 @@ public int run(
   > [!NOTE]
   > `IQueryable` は [Functions v2 ランタイム](functions-versions.md)ではサポートされていません。 代わりに、Azure Storage SDK で [CloudTable paramName メソッド パラメーターを使用](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable)して、テーブルを読み取ります。 `CloudTable` にバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 `filter` と `take` プロパティを設定します。 `partitionKey` と `rowKey` は設定しません。 `context.bindings.<BINDING_NAME>` を使用して入力テーブルの単一のエンティティ (または複数のエンティティ) にアクセスします。 逆シリアル化されたオブジェクトには `RowKey` プロパティと `PartitionKey` プロパティがあります。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 テーブル データは、JSON 文字列として関数に渡されます。 入力[例](#input)に示されているように `json.loads` を呼び出してメッセージを逆シリアル化します。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 [TableInput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.tableinput) 属性を使用すると、関数をトリガーしたテーブル行にアクセスできます。
 
@@ -566,7 +566,7 @@ Azure Table Storage の出力バインドを使用して、Azure Storage アカ�
 > [!NOTE]
 > この出力バインドでは、既存のエンティティの更新はサポートされていません。 既存のエンティティを更新するには、[Azure Storage SDK](../cosmos-db/tutorial-develop-table-dotnet.md#delete-an-entity) の `TableOperation.Replace` 操作を使ってください。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 次の例は、HTTP トリガーを使用して 1 つのテーブル行を書き込む [C# 関数](functions-dotnet-class-library.md)を示しています。 
 
@@ -590,7 +590,7 @@ public class TableStorage
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+# <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
 次の例は、*function.json* ファイルのテーブル出力バインドと、バインドを使用する [C# スクリプト](functions-reference-csharp.md) コードを示しています。 この関数は複数のテーブル エンティティを書き込みます。
 
@@ -645,7 +645,7 @@ public class Person
 
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 次の例は、*function.json* ファイルのテーブル出力バインドと、バインドを使用する [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は複数のテーブル エンティティを書き込みます。
 
@@ -692,7 +692,7 @@ module.exports = function (context) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 次の例では、Table Storage の出力バインドを使用する方法を示します。 `table` バインドは、値を `name`、`tableName`、`partitionKey`、`connection` に割り当てて *function.json* で構成されます。
 
@@ -751,7 +751,7 @@ def main(req: func.HttpRequest, message: func.Out[str]) -> func.HttpResponse:
     return func.HttpResponse(f"Message created with the rowKey: {rowKey}")
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 次の例は、HTTP トリガーを使用して 1 つのテーブル行を書き込む Java 関数を示しています。
 
@@ -831,7 +831,7 @@ public class AddPersons {
 
 ## <a name="output---attributes-and-annotations"></a>出力 - 属性と注釈
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [C# クラス ライブラリ](functions-dotnet-class-library.md)では、[TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables/TableAttribute.cs) を使用します。
 
@@ -865,19 +865,19 @@ public static MyPoco TableOutput(
 
 `StorageAccount` 属性を使用して、クラス、メソッド、またはパラメーターのレベルでストレージ アカウントを指定できます。 詳細については、[入力 - 属性](#input---attributes-and-annotations)を参照してください。
 
-# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+# <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
 属性は、C# スクリプトではサポートされていません。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 属性は、JavaScript ではサポートされていません。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 属性は、Python ではサポートされていません。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 [Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、パラメーターで [TableOutput](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/TableOutput.java/) 注釈を使用し、テーブル ストレージに値を書き込みます。
 
@@ -891,9 +891,9 @@ public static MyPoco TableOutput(
 
 |function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
-|**type** | 該当なし | `table` に設定する必要があります。 このプロパティは、Azure Portal でバインドを作成するときに自動で設定されます。|
-|**direction** | 該当なし | `out` に設定する必要があります。 このプロパティは、Azure Portal でバインドを作成するときに自動で設定されます。 |
-|**name** | 該当なし | テーブルまたはエンティティを表す関数コードに使用される変数の名前。 `$return` に設定して、関数の戻り値を参照します。| 
+|**type** | 300 | `table` に設定する必要があります。 このプロパティは、Azure Portal でバインドを作成するときに自動で設定されます。|
+|**direction** | 300 | `out` に設定する必要があります。 このプロパティは、Azure Portal でバインドを作成するときに自動で設定されます。 |
+|**name** | 300 | テーブルまたはエンティティを表す関数コードに使用される変数の名前。 `$return` に設定して、関数の戻り値を参照します。| 
 |**tableName** |**TableName** | テーブルの名前。| 
 |**partitionKey** |**PartitionKey** | 書き込むテーブル エンティティのパーティション キー。 このプロパティを使用する方法のガイダンスについては、「[使用方法](#output---usage)」セクションを参照してください。| 
 |**rowKey** |**RowKey** | 書き込むテーブル エンティティの行キー。 このプロパティを使用する方法のガイダンスについては、「[使用方法](#output---usage)」セクションを参照してください。| 
@@ -903,23 +903,23 @@ public static MyPoco TableOutput(
 
 ## <a name="output---usage"></a>出力 - 使用方法
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 メソッド パラメーター `ICollector<T> paramName` または `IAsyncCollector<T> paramName` を使用して出力テーブル エンティティにアクセスします。`T` には、`PartitionKey` および `RowKey` のプロパティが含まれています。 多くの場合、これらのプロパティには `ITableEntity` の実装や `TableEntity` の継承が伴います。
 
 代わりに、Azure Storage SDK で `CloudTable` メソッド パラメーターを使用してテーブルに書き込みます。 `CloudTable` にバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
 
-# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+# <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
 メソッド パラメーター `ICollector<T> paramName` または `IAsyncCollector<T> paramName` を使用して出力テーブル エンティティにアクセスします。`T` には、`PartitionKey` および `RowKey` のプロパティが含まれています。 多くの場合、これらのプロパティには `ITableEntity` の実装や `TableEntity` の継承が伴います。 `paramName` 値は *function.json* の `name` プロパティで指定されます。
 
 代わりに、Azure Storage SDK で `CloudTable` メソッド パラメーターを使用してテーブルに書き込みます。 `CloudTable` にバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 `context.bindings.<name>` を使用して出力イベントにアクセスします。`<name>` は *function.json* の `name` プロパティで指定された値です。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 関数から Table Storage 行メッセージを出力するには、次の 2 つのオプションがあります。
 
@@ -927,7 +927,7 @@ public static MyPoco TableOutput(
 
 - **命令型**:[Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) 型として宣言されたパラメーターの [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) メソッドに値を渡します。 `set` に渡された値は、イベント ハブ メッセージとして永続化されます。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 [TableStorageOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet) 注釈を使用して関数から Table Storage 行を出力するには、次の 2 つのオプションがあります。
 

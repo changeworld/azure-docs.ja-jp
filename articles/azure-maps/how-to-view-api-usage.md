@@ -1,23 +1,23 @@
 ---
 title: Azure Maps API の使用状況メトリックを表示する | Microsoft Azure Maps
 description: この記事では、Azure portal で Microsoft Azure Maps API の呼び出しに関するメトリックを表示する方法について説明します。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 7ba50f63fb015a8696904df3decd13c811625459
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: cc9834f4e1df1a68f78230ec587254c72aeabbcf
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911332"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208687"
 ---
 # <a name="view-azure-maps-api-usage-metrics"></a>Azure Maps API の使用状況メトリックを表示する
 
-この記事では、[ポータル](https://portal.azure.com)で Azure Maps アカウントにおける API 使用状況のメトリックを表示する方法について示します。 メトリックは、カスタマイズ可能な時間の長さに従って便利なグラフ形式で示されます。
+この記事では、[Azure portal](https://portal.azure.com) で Azure Maps アカウントにおける API 使用状況のメトリックを表示する方法について示します。 メトリックは、カスタマイズ可能な時間の長さに従って便利なグラフ形式で示されます。
 
 ## <a name="view-metric-snapshot"></a>メトリックのスナップショットを表示する
 
@@ -35,7 +35,7 @@ Maps アカウントの **[概要]** ページでいくつかの共通メトリ�
 
 3. ご利用の Maps アカウントが開いたら、左側の **[メトリック]** メニューをクリックします。
 
-4. **[メトリック]** ウィンドウで、次のいずれかを選びます。
+4. **[メトリック]** ウィンドウで、次のいずれかのオプションを選びます。
 
    1. **[可用性]** : 期間にわたって API 可用性の*平均*を示します。
    2. **[使用状況]** : 使用状況におけるご自分のアカウントの*割合*を示します。
@@ -46,11 +46,11 @@ Maps アカウントの **[概要]** ページでいくつかの共通メトリ�
 
     ![Azure Maps メトリックの時間の範囲](media/how-to-view-api-usage/time-range.png)
 
-6. メトリックを追加すると、そのメトリックに関連するプロパティから**フィルターを追加**して、グラフを表示するプロパティの値を選択することができます。
+6. メトリックを追加すると、そのメトリックに関連するプロパティから**フィルターを追加**できます。 次に、グラフに反映して表示するプロパティの値を選択します。
 
     ![Azure Maps 使用状況メトリック フィルター](media/how-to-view-api-usage/filter.png)
 
-7. また、選択したメトリック プロパティに基づいてメトリックに**分割を適用**することもできます。 これにより、グラフを複数のグラフに分割できます。プロパティの値ごとにグラフ 1 つです。 次の図にある各グラフの色は、グラフの下に表示されるプロパティの値に対応しています。
+7. また、選択したメトリック プロパティに基づいてメトリックに**分割を適用**することもできます。 これにより、グラフをそのプロパティの値ごとに、複数のグラフに分割できます。 次の図にある各グラフの色は、グラフの下に表示されるプロパティの値に対応しています。
 
     ![Azure Maps 使用状況メトリックの分割](media/how-to-view-api-usage/splitting.png)
 

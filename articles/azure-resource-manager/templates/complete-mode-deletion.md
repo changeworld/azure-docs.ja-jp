@@ -2,13 +2,13 @@
 title: 完全モードの削除
 description: リソースの種類に応じて Azure Resource Manager テンプレートで完全モードがどのように処理されるかを示します。
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.openlocfilehash: b24bf2d8076dbaa1975f5444d597647156a31f4f
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/13/2020
+ms.openlocfilehash: 80d2ee356e3bc15a178862c453bf7f1ab8d66c77
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715584"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207810"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>完全モード デプロイでの Azure リソースの削除
 
@@ -121,6 +121,7 @@ ms.locfileid: "76715584"
 > - [Microsoft.Migrate](#microsoftmigrate)
 > - [Microsoft.MixedReality](#microsoftmixedreality)
 > - [Microsoft.NetApp](#microsoftnetapp)
+> - [Microsoft.Notebooks](#microsoftnotebooks)
 > - [Microsoft.Network](#microsoftnetwork)
 > - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
 > - [Microsoft.ObjectStore](#microsoftobjectstore)
@@ -153,6 +154,7 @@ ms.locfileid: "76715584"
 > - [Microsoft.SiteRecovery](#microsoftsiterecovery)
 > - [Microsoft.SoftwarePlan](#microsoftsoftwareplan)
 > - [Microsoft.Solutions](#microsoftsolutions)
+> - [Microsoft.SpoolService](#microsoftspoolservice)
 > - [Microsoft.SQL](#microsoftsql)
 > - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
 > - [Microsoft.Storage](#microsoftstorage)
@@ -372,6 +374,7 @@ ms.locfileid: "76715584"
 > | billingAccounts / billingProfiles / instructions | いいえ |
 > | billingAccounts / billingProfiles / invoices | いいえ |
 > | billingAccounts / billingProfiles / invoices / pricesheet | いいえ |
+> | billingAccounts / billingProfiles / invoices / transactions | いいえ |
 > | billingAccounts / billingProfiles / invoiceSections | いいえ |
 > | billingAccounts / billingProfiles / invoiceSections / billingPermissions | いいえ |
 > | billingAccounts / billingProfiles / invoiceSections / billingRoleAssignments | いいえ |
@@ -489,7 +492,6 @@ ms.locfileid: "76715584"
 > | リソースの種類 | 完全モードの削除 |
 > | ------------- | ----------- |
 > | Redis | はい |
-> | RedisConfigDefinition | いいえ |
 
 ## <a name="microsoftcapacity"></a>Microsoft.Capacity
 
@@ -712,6 +714,9 @@ ms.locfileid: "76715584"
 > | registries / getBuildSourceUploadUrl | いいえ |
 > | registries / GetCredentials | いいえ |
 > | registries / importImage | いいえ |
+> | registries / privateEndpointConnectionProxies | いいえ |
+> | registries / privateEndpointConnectionProxies / validate | いいえ |
+> | registries / privateLinkResources | いいえ |
 > | registries / queueBuild | いいえ |
 > | registries / regenerateCredential | いいえ |
 > | registries / regenerateCredentials | いいえ |
@@ -1397,6 +1402,13 @@ ms.locfileid: "76715584"
 > | netAppAccounts / capacityPools / volumes | はい |
 > | netAppAccounts / capacityPools / volumes / mountTargets | はい |
 > | netAppAccounts / capacityPools / volumes / snapshots | はい |
+
+## <a name="microsoftnotebooks"></a>Microsoft.Notebooks
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | 完全モードの削除 |
+> | ------------- | ----------- |
+> | NotebookProxies | いいえ |
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
@@ -1512,7 +1524,6 @@ ms.locfileid: "76715584"
 > | リソースの種類 | 完全モードの削除 |
 > | ------------- | ----------- |
 > | clusters | はい |
-> | devices | いいえ |
 > | linkTargets | いいえ |
 > | storageInsightConfigs | いいえ |
 > | workspaces | はい |
@@ -1523,6 +1534,7 @@ ms.locfileid: "76715584"
 > | workspaces / privateEndpointConnections | いいえ |
 > | workspaces / privateLinkResources | いいえ |
 > | workspaces / query | いいえ |
+> | workspaces / scopedPrivateLinkProxies | いいえ |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
@@ -1745,8 +1757,10 @@ ms.locfileid: "76715584"
 > | bookmarks | いいえ |
 > | cases | いいえ |
 > | dataConnectors | いいえ |
+> | dataConnectorsCheckRequirements | いいえ |
 > | entities | いいえ |
 > | entityQueries | いいえ |
+> | incidents | いいえ |
 > | officeConsents | いいえ |
 > | settings | いいえ |
 
@@ -1780,6 +1794,8 @@ ms.locfileid: "76715584"
 > | containerGroupSets | はい |
 > | edgeclusters | はい |
 > | edgeclusters / applications | いいえ |
+> | managedclusters | はい |
+> | managedclusters / nodetypes | いいえ |
 > | networks | はい |
 > | secretstores | はい |
 > | secretstores / certificates | いいえ |
@@ -1837,6 +1853,14 @@ ms.locfileid: "76715584"
 > | applicationDefinitions | はい |
 > | applications | はい |
 > | jitRequests | はい |
+
+## <a name="microsoftspoolservice"></a>Microsoft.SpoolService
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | 完全モードの削除 |
+> | ------------- | ----------- |
+> | registeredSubscriptions | いいえ |
+> | spools | はい |
 
 ## <a name="microsoftsql"></a>Microsoft.SQL
 
@@ -1993,6 +2017,7 @@ ms.locfileid: "76715584"
 > | devices | はい |
 > | vendors | いいえ |
 > | vendors / skus | いいえ |
+> | vendors / vnfs | いいえ |
 > | vnfs | はい |
 
 ## <a name="microsoftweb"></a>Microsoft.Web

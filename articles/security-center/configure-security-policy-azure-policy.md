@@ -1,5 +1,5 @@
 ---
-title: REST API を使用して Azure Policy セキュリティ ポリシーを作成および編集する | Microsoft Docs
+title: REST API を使用して Azure Policy セキュリティ ポリシーを作成および編集する
 description: REST API を使用した Azure Policy ポリシー管理について説明します。
 services: security-center
 author: memildin
@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 56c5ca8c4e1d70e002a338c753f9ab1f0b1aa411
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: c218b5dc8ca3bfa0358a9b6a0d4867696762a8d4
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521501"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430943"
 ---
 # <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>REST API を使用して Azure Policy でセキュリティ ポリシーを構成する
 
@@ -121,20 +121,20 @@ Security Center では、そのセキュリティ ポリシーをすべて含ん
 |----|----|----|
 |SQL の暗号化 |暗号化されていない SQL データベースの Azure Security Center での監視 |sqlEncryptionMonitoringEffect| 
 |SQL 監査 |未監査の SQL データベースの Azure Security Center での監視 |sqlAuditingMonitoringEffect|
-|システムの更新プログラム |システムの更新プログラムの不足の Azure Security Center での監視 |systemUpdatesMonitoringEffect|
-|ストレージ暗号化 |ストレージ アカウントでの BLOB 暗号化の不足の監査 |storageEncryptionMonitoringEffect|
+|システムの更新プログラム |システムの更新プログラムの欠落の Azure Security Center での監視 |systemUpdatesMonitoringEffect|
+|ストレージ暗号化 |ストレージ アカウントでの BLOB 暗号化の欠落の監査 |storageEncryptionMonitoringEffect|
 |JIT ネットワーク アクセス |可能なネットワーク Just In Time (JIT) アクセスの Azure Security Center での監視 |jitNetworkAccessMonitoringEffect |
 |アダプティブ アプリケーション制御 |可能なアプリのホワイトリスト登録の Azure Security Center での監視 |adaptiveApplicationControlsMonitoringEffect|
 |ネットワーク セキュリティ グループ |制限が少なすぎるネットワーク アクセスの Azure Security Center での監視 |networkSecurityGroupsMonitoringEffect| 
 |セキュリティ構成 |OS の脆弱性の Azure Security Center での監視 |systemConfigurationsMonitoringEffect| 
-|エンドポイント保護 |Endpoint Protection の不足の Azure Security Center での監視 |endpointProtectionMonitoringEffect |
+|エンドポイント保護 |Endpoint Protection の欠落の Azure Security Center での監視 |endpointProtectionMonitoringEffect |
 |ディスクの暗号化 |暗号化されていない VM ディスクの Azure Security Center での監視 |diskEncryptionMonitoringEffect|
 |脆弱性評価 |VM の脆弱性の Azure Security Center での監視 |vulnerabilityAssessmentMonitoringEffect|
 |Web アプリケーション ファイアウォール |保護されていない Web アプリケーションの Azure Security Center での監視 |webApplicationFirewallMonitoringEffect |
 |次世代のファイアウォール |保護されていないネットワーク エンドポイントの Azure Security Center での監視| |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 その他の関連資料については、次の記事を参照してください。 
 

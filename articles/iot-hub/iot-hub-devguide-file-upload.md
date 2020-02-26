@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/07/2018
-ms.openlocfilehash: 3ae87523e66ae49d17f198a1f70b0f449ca0a713
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 35e10c0f9babca7719ff496e7068ad1564670fee
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080417"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209156"
 ---
 # <a name="upload-files-with-iot-hub"></a>IoT Hub を使用したファイルのアップロード
 
@@ -25,7 +25,7 @@ IoT Hub 自体を介してメッセージをやり取りする代わりに、IoT
 
 その後、デバイスは、[アップロードを開始](iot-hub-devguide-file-upload.md#initialize-a-file-upload)し、アップロードの完了時に [IoT Hub に通知](iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload)できます。 必要に応じて、デバイスがアップロードの完了を IoT Hub に通知するときに、サービスによって[通知メッセージ](iot-hub-devguide-file-upload.md#file-upload-notifications)を生成できます。
 
-### <a name="when-to-use"></a>いつ使用するか
+### <a name="when-to-use"></a>使用する場合
 
 ファイルのアップロードを使用して、断続的に接続されたデバイスでアップロードされた、または帯域幅を節約するために圧縮されたメディア ファイルや大容量のテレメトリ バッチを送信します。
 
@@ -130,6 +130,8 @@ IoT Hub には、ファイルのアップロードをサポートする 2 つの
 | **fileNotifications.lockDuration** |ファイルのアップロード通知キューのロック期間。 |5 ～ 300 秒 (最小 5 秒)。 既定値は60 秒。 |
 | **fileNotifications.maxDeliveryCount** |ファイルのアップロード通知キューの最大配信数。 |1 ～ 100。 既定値は100。 |
 
+IoT ハブ上でこれらのプロパティを設定するには、Azure portal、Azure CLI、または PowerShell を使用します。 詳細については、[ファイル アップロードの構成](iot-hub-configure-file-upload.md)に関する記事を参照してください。
+
 ## <a name="additional-reference-material"></a>参考資料
 
 IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです。
@@ -144,7 +146,7 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 
 * [IoT Hub の MQTT サポート](iot-hub-mqtt-support.md): IoT Hub での MQTT プロトコルのサポートについて詳しく説明します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 IoT Hub を使用してデバイスからファイルをアップロードする方法を理解できたら、次の IoT Hub 開発者ガイドのトピックも参考にしてください。
 

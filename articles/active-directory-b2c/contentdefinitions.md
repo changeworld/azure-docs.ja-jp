@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/11/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3e5fb1ebb763cc5ecd7dfe8724347c03a487bc13
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: fd6a24c768056c949c05b9e2444bd49ef743c0ef
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157875"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425631"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -70,7 +70,7 @@ ms.locfileid: "77157875"
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | コンテンツ定義用の HTML5 ページの URL を含む文字列。 |
-| RecoveryUri | 0:1 | コンテンツ定義に関連するエラーを表示するための HTML ページの URL を含む文字列。 |
+| RecoveryUri | 1:1 | コンテンツ定義に関連するエラーを表示するための HTML ページの URL を含む文字列。 |
 | DataUri | 1:1 | ステップに対して呼び出すユーザー エクスペリエンスを提供する、HTML ファイルの相対 URL を含む文字列。 |
 | Metadata | 0:1 | コンテンツ定義によって利用されるメタデータを含む、キー/値ペアのコレクション。 |
 | LocalizedResourcesReferences | 0:1 | ローカライズされたリソース参照のコレクション。 この要素を使用して、ユーザー インターフェイスと要求属性のローカライズをカスタマイズします。 |
@@ -82,11 +82,11 @@ ms.locfileid: "77157875"
 | ページ識別子 | 説明 |
 | ----- | ----------- |
 | `globalexception` | 例外またはエラーが発生したときにエラー ページを表示します。 |
-| `providerselection` | ユーザーがサインイン時に選択できる ID プロバイダーを一覧表示します。 |
+| `providerselection`, `idpselection` | ユーザーがサインイン時に選択できる ID プロバイダーを一覧表示します。  |
 | `unifiedssp` | 電子メール アドレスまたはユーザー名に基づいたローカル アカウントでサインインするためのフォームを表示します。 またこの値は、「サインインしたままにする機能」および「パスワードを忘れた場合」 のリンクをクリックするように促します。 |
 | `unifiedssd` | 電子メール アドレスまたはユーザー名に基づいたローカル アカウントでサインインするためのフォームを表示します。 |
 | `multifactor` | サインアップ中またはサインイン中にテキストまたは音声を使用して電話番号を確認します。 |
-| `selfasserted` | ユーザーがプロファイルを作成または更新できるフォームを表示します。 |
+| `selfasserted` | ユーザーからデータを収集するためのフォームを表示します。 たとえば、ユーザーがプロファイルを作成または更新できるようにします。 |
 
 ### <a name="select-a-page-layout"></a>ページ レイアウトを選択する
 

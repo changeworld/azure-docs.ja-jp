@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 270b3f0fe7c654d2bf059784e872b7dbe97a6068
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: c93460797fc1cf953d467e2739d71c5a2a9b74ed
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190487"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486170"
 ---
 # <a name="virtual-network-service-tags"></a>仮想ネットワーク サービス タグ 
 <a name="network-service-tags"></a>
@@ -52,7 +52,7 @@ ms.locfileid: "77190487"
 | **AzureBackup** |Azure Backup。<br/><br/>*注:* このタグは、**Storage** タグと **AzureActiveDirectory** タグに依存します。 | 送信 | いいえ | はい |
 | **AzureBotService** | Azure Bot Service。 | 送信 | いいえ | いいえ |
 | **AzureCloud** | すべての[データセンター パブリック IP アドレス](https://www.microsoft.com/download/details.aspx?id=56519)。 | 送信 | はい | はい |
-| **AzureCognitiveSearch** | Azure Cognitive Search (スキルセットでインデクサーを使用する場合)。 | 両方 | いいえ | いいえ |
+| **AzureCognitiveSearch** | Azure Cognitive Search。 <br/><br/>このタグまたはこのタグによってカバーされる IP アドレスは、データ ソースへのセキュリティで保護されたアクセスをインデクサーに付与するために使用できます。 詳細については、[インデクサーの接続に関するドキュメント](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors)を参照してください。 | 受信 | いいえ | いいえ |
 | **AzureConnectors** | プローブ/バックエンド接続用の Azure Logic Apps コネクタ。 | 受信 | はい | はい |
 | **AzureContainerRegistry** | Azure Container Registry。 | 送信 | はい | はい |
 | **AzureCosmosDB** | Azure Cosmos DB。 | 送信 | はい | はい |

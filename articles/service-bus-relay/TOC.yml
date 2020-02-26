@@ -32,7 +32,7 @@
       href: 'https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay'
 - name: 概念
   items:
-    - name: セキュリティ
+    - name: Security
       items:
         - name: 認証と権限承認
           href: relay-authentication-and-authorization.md
@@ -40,8 +40,10 @@
           href: service-bus-relay-security-controls.md
     - name: ハイブリッド接続のプロトコル
       href: relay-hybrid-connections-protocol.md
-- name: 方法
+- name: 操作方法
   items:
+    - name: Azure Service Manager (クラシック) API シリーズから Resource Manager API シリーズへの移行
+      href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json
     - name: 計画と設計
       items:
         - name: ACS から SAS への移行
@@ -55,9 +57,9 @@
           items:
             - name: .NET
               href: relay-hybrid-connections-dotnet-api-overview.md
-            - name: ノード
+            - name: Node
               href: relay-hybrid-connections-node-ws-api-overview.md
-    - name: 管理
+    - name: 管理する
       items:
         - name: Azure 監視による Azure Relay の監視
           href: relay-metrics-azure-monitor.md
@@ -77,7 +79,7 @@
   items:
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=enterprise-integration'
-    - name: FAQ
+    - name: よく寄せられる質問
       href: relay-faq.md
     - name: ブログ
       href: 'https://blogs.msdn.microsoft.com/servicebus/'

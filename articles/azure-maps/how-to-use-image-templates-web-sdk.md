@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: cb182a5db77a517b11fb1863665f8c54d58b254a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: f3b1141ea3c3c8e33b8a2ae12c22b6962a90d32b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911568"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198226"
 ---
 # <a name="how-to-use-image-templates"></a>イメージ テンプレートの使用方法
 
@@ -24,7 +24,7 @@ ms.locfileid: "75911568"
  - 塗りつぶしパターン画像を使用して多角形レイヤーをレンダリングできます。 
  - HTML マーカーでは、画像やその他の HTML 要素を使用してポイントをレンダリングできます。
 
-レイヤーを使用して良いパフォーマンスを確保するには、レンダリングする前に、このような画像をマップ画像スプライト リソースに読み込む必要があります。 SymbolLayer の [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions) では、既定でいくつかの色の数個のマーカー画像をマップ画像スプライトに事前に読み込みます。 このような同じマーカー画像などは SVG テンプレートとして使用できます。また、カスタム スケールを持つ画像の作成や、お客様の第一の色と第二の色に使用できます。 合計で 42 個の画像テンプレートが用意されています。27 個のシンボル アイコンと、15 個の多角形の塗りつぶしパターンです。
+レイヤーを使用して良いパフォーマンスを確保するには、レンダリングする前に、画像をマップ画像スプライト リソースに読み込みます。 SymbolLayer の [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions) では、既定でいくつかの色の数個のマーカー画像をマップ画像スプライトに事前に読み込みます。 これらのマーカー画像などは、SVG テンプレートとして使用できます。 カスタム スケールを使用して画像を作成するために使用したり、顧客の第一および第二の色として使用したりすることができます。 合計で 42 の画像テンプレートが用意されています。27 個の記号アイコンと 15 個の多角形の塗りつぶしパターン。
 
 画像テンプレートをマップ画像スプライト リソースに追加するには、`map.imageSprite.createFromTemplate` 関数を使用します。 この関数では、最大 5 つのパラメーターを渡すことができます。
 
@@ -32,9 +32,9 @@ ms.locfileid: "75911568"
 createFromTemplate(id: string, templateName: string, color?: string, secondaryColor?: string, scale?: number): Promise<void>
 ```
 
-ここで、`id` は、マップ画像スプライトに追加されるときに画像に割り当てられる一意の識別子です。 レイヤーでこの識別子を使用して、レンダリングする画像リソースを指定します。 `templateName` では、使用する画像テンプレートを指定します。 `color` オプションでは画像の原色を設定し、`secondaryColor` オプションでは画像の補色を設定します。 `scale` オプションでは、画像スプライトに適用する前に画像テンプレートを拡大縮小します。 画像が画像スプライトに適用されると、画像は PNG に変換されます。 上質なレンダリングを確保するには、画像テンプレートをレイヤーで拡大するよりも、画像テンプレートを拡大してからスプライトに追加することをお勧めします。
+`id` は、作成する一意の識別子です。 `id` は、マップ画像スプライトに追加されるときに、画像に割り当てられます。 レイヤーでこの識別子を使用して、レンダリングする画像リソースを指定します。 `templateName` では、使用する画像テンプレートを指定します。 `color` オプションでは画像の原色を設定し、`secondaryColor` オプションでは画像の補色を設定します。 `scale` オプションでは、画像スプライトに適用する前に画像テンプレートを拡大縮小します。 画像が画像スプライトに適用されると、これは PNG に変換されます。 上質なレンダリングを確保するには、画像テンプレートをレイヤーで拡大するよりも、拡大してからスプライトに追加することをお勧めします。
 
-この関数では、画像を画像スプライトに非同期的に読み込みます。その結果、この関数が完了するまで待機できる Promise が返されます。
+この関数では、画像が画像スプライトに非同期的に読み込まれます。 したがって、この関数は、それが完了するまで待機できる Promise を返します。
 
 次のコードは、組み込みテンプレートのいずれかから画像を作成し、それをシンボル レイヤーと共に使用する方法を示しています。
 
@@ -106,9 +106,9 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 ## <a name="create-custom-reusable-templates"></a>再利用可能なカスタム テンプレートを作成する
 
-アプリケーションで同じアイコンと異なるアイコンを使用する場合、またはさらに画像テンプレートを追加するモジュールを作成する場合、`atlas` 名前空間上で次の静的関数を使用して、Azure Maps Web SDK からこれらのアイコンを簡単に追加および取得できます。
+アプリケーションで同じアイコンと異なるアイコンを使用する場合、またはさらに画像テンプレートを追加するモジュールを作成する場合、Azure Maps Web SDK からこれらのアイコンを簡単に追加および取得できます。 以下の静的関数は `atlas` 名前空間で使用します。
 
-| Name | 戻り値の型 | 説明 | 
+| 名前 | 戻り値の型 | 説明 | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | カスタム SVG 画像テンプレートを atlas 名前空間に追加します。 |
 |  `getImageTemplate(templateName: string, scale?: number)`| string | 名前を指定して SVG テンプレートを取得します。 |
@@ -133,7 +133,7 @@ SVG 画像テンプレートでは、次のプレースホルダー値がサポ�
 
 ## <a name="list-of-image-templates"></a>画像テンプレートの一覧
 
-次の表は、Azure Maps Web SDK 内で現在使用できるすべての画像テンプレートの一覧です。各画像の上にテンプレート名を示します。 既定では、第一の色は青であり、第二の色は白です。 白の背景で第二の色を見やすくするために、次の画像では第二の色が黒に設定されています。
+次の表は、Azure Maps Web SDK 内で現在使用できるすべての画像テンプレートの一覧です。 各画像の上にテンプレート名が示されています。 既定では、第一の色は青であり、第二の色は白です。 白の背景で第二の色を見やすくするために、次の画像では第二の色が黒に設定されています。
 
 **シンボル アイコン テンプレート**
 

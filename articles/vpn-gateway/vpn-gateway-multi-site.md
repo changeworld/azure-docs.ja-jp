@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 02/11/2020
 ms.author: yushwang
-ms.openlocfilehash: 5bedf5bd6d061d74201dbac3f1f99ed0d4c381aa
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: a95cd6ea85a16b0e0bf5f67f5dfc20d57f11463b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902437"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198099"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>既存の VPN ゲートウェイ接続を使用してサイト間接続を VNet に追加する (クラシック)
 
@@ -55,10 +55,13 @@ ms.locfileid: "75902437"
 
 * 各オンプレミスのロケーションと互換性のある VPN ハードウェア 「[Virtual Network に使用する VPN デバイスについて](vpn-gateway-about-vpn-devices.md)」を参照して、使用するデバイスが互換性のあるものであることを確認してください。
 * 各 VPN デバイスの外部接続用パブリック IPv4 IP アドレス。 IP アドレスを NAT の内側に割り当てることはできません。 これが要件です。
-* Azure PowerShell コマンドレットの最新版をインストールする必要があります。 必ずサービス管理 (SM) バージョンと Resource Manager バージョンをインストールしてください。 詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」ご覧ください。
 * VPN ハードウェアの構成に詳しい作業者 そのため、VPN デバイスの構成に精通している必要があり、そうでなければ精通している人と一緒に作業を行ってください。
 * 仮想ネットワークに使用する予定の IP アドレス範囲 (まだ 1 つも作成していない場合)。
 * 接続する各ローカル ネットワークの IP アドレス範囲。 接続しようとしている各ローカル ネットワーク サイトの IP アドレス範囲が重複しないように確認する必要があります。 そうしないと、構成をアップロードする際に、ポータルまたは REST API によって拒否されます。<br>例えば、2 つのローカル ネットワーク サイトの両方が IP アドレス範囲 10.2.3.0/24 を含んでおり、送信先アドレスが 10.2.3.3 のパッケージを持っている場合、アドレス範囲が重複しているため、Azure はパッケージを送ろうとしているのがどちらのサイトなのかわかりません。 ルーティングの問題を避けるため、Azure は重複した範囲を持つ構成ファイルをアップロードすることを許可しません。
+
+### <a name="working-with-azure-powershell"></a>Azure PowerShell を使用する
+
+[!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ## <a name="1-create-a-site-to-site-vpn"></a>1.サイト間 VPN を作成する
 動的ルーティング ゲートウェイを持つサイト間 VPN が既に存在する場合は、 [仮想ネットワーク構成設定のエクスポート](#export)に進んでください。 まだ作成していない場合は、以下の作業を行います。
@@ -72,6 +75,19 @@ ms.locfileid: "75902437"
 2. 次の手順により動的ルーティング ゲートウェイを構成します: [VPN ゲートウェイの構成](vpn-gateway-configure-vpn-gateway-mp.md)。 必ずゲートウェイ タイプに**動的ルーティング**を選択してください。
 
 ## <a name="export"></a>2.ネットワーク構成ファイルをエクスポートする
+
+昇格された権利で PowerShell コンソールを開きます。 サービス管理に切り替えるには、このコマンドを使用します。
+
+```powershell
+azure config mode asm
+```
+
+アカウントに接続します。 接続については、次の例を参考にしてください。
+
+```powershell
+Add-AzureAccount
+```
+
 次のコマンドを実行して、Azure のネットワーク構成ファイルをエクスポートします。 必要に応じて、ファイルの場所を変更して別の場所にエクスポートすることもできます。
 
 ```powershell

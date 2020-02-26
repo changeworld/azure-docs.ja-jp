@@ -33,7 +33,7 @@ Azure Functions 拡張機能には、次のような利点があります。
 
 この記事の例は、現在、JavaScript (Node.js) と C# クラス ライブラリの関数でのみ使用可能です。  
 
-この記事では、Azure Functions 拡張機能を使って関数を開発して Azure に発行する方法に関する詳細情報を提供します。 この記事を読む前に、[Visual Studio Code を使って最初の関数を作成](functions-create-first-function-vs-code.md)してください。
+この記事では、Azure Functions 拡張機能を使って関数を開発して Azure に発行する方法に関する詳細情報を提供します。 この記事を読む前に、[Visual Studio Code を使って最初の関数を作成](functions-create-first-function-vs-code.md) してください。
 
 > [!IMPORTANT]
 > 1 つの関数アプリにローカル開発とポータル開発を混在させないでください。 ローカル プロジェクトから関数アプリに発行すると、ポータルで開発した関数がデプロイ プロセスによって上書きされます。

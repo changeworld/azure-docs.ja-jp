@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 01/19/2020
-ms.openlocfilehash: 336d2ef471e21e3157c7d8c81b3837bb6a962e2e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 18e9c9d330ffb8cc4e284fc649cff0840ec2c82c
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191307"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366236"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Azure Logic Apps でのトリガーとアクションの種類のスキーマ リファレンス ガイド
 
@@ -2304,7 +2304,7 @@ ID,Product_Name
 | <*action-type*> | String | 実行するアクションの種類 | 
 | <*action-inputs*> | 各種 | アクションを実行するための入力 | 
 | <*condition*> | String | ループ内のすべてのアクションの実行が終了した後に評価する条件または式 | 
-| <*loop-count*> | 整数 | アクションで実行できる最大ループ回数に対する制限。 `count` の既定値は 60 です。 | 
+| <*loop-count*> | 整数 | アクションで実行できる最大ループ回数に対する制限。 既定の制限と上限の詳細については、[Azure Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に関する記事を参照してください。 | 
 | <*loop-timeout*> | String | ループを実行できる最長時間に対する制限。 `timeout` の既定値は `PT1H` です。これは、必須の [ISO 8601 フォーマット](https://en.wikipedia.org/wiki/ISO_8601)です。 |
 |||| 
 

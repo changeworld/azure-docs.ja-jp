@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8a562345caf47540321528560a5ee0b4854c42a9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: edad748bc2192f98b9674b80dada5b03aa9ee2d1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840283"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77197988"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで RESTful 技術プロファイルを定義する
 
@@ -47,7 +47,7 @@ RESTful 技術プロファイルの例を次に示します。
   ...
 ```
 
-## <a name="input-claims"></a>入力要求
+## <a name="input-claims"></a>入力クレーム
 
 **InputClaims** 要素には、REST API に送信する要求の一覧が存在します。 REST API で定義される名前に、要求の名前をマップすることもできます。 次の例は、ポリシーと REST API の間のマッピングを示しています。 **givenName** 要求は **firstName** として、**surname** は **lastName** として、REST API に送信されます。 **email** 要求はそのまま送信されます。
 
@@ -98,7 +98,7 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 </TechnicalProfile>
 ```
 
-## <a name="output-claims"></a>出力要求
+## <a name="output-claims"></a>出力クレーム
 
 **OutputClaims** 要素には、REST API により返される要求の一覧が存在します。 お使いのポリシーで定義される要求の名前を、REST API で定義される名前にマップする必要があるかもしれません。 `DefaultValue` 属性を設定している限り、REST API の ID プロバイダーにより返されない要求を追加することもできます。
 
@@ -121,7 +121,7 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 
 ## <a name="metadata"></a>Metadata
 
-| Attribute | Required | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | ServiceUrl | はい | REST API エンドポイントの URL。 |
 | AuthenticationType | はい | RESTful 要求プロバイダーにより実行されている認証の種類。 指定できる値: `None`、`Basic`、`Bearer`、または `ClientCertificate`。 `None` の値は、REST API が匿名でないことを示します。 `Basic` の値は、REST API が HTTP 基本認証で保護されていることを示します。 Azure AD B2C などの検証されたユーザーのみが API にアクセスできます。 `ClientCertificate` の (推奨) 値は、REST API がクライアント証明書認証を使用してアクセスを制限していることを示します。 Azure AD B2C などの適切な証明書を持つサービスのみが、ご利用の API にアクセスできます。 `Bearer` 値は、REST API ではクライアント OAuth2 ベアラー トークンを使用してアクセスが制限されることを示します。 |
@@ -129,6 +129,7 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 | ClaimsFormat | いいえ | 出力要求の形式を指定します。 可能な値: `Body` (既定)、`Form`、`Header`、または `QueryString`。 `Body` の値は、要求本文で、JSON 形式で送信される出力要求です。 `Form` の値は、要求本文で、キーの値をアンパサンド ' &' で区切った形式で送信される出力要求です。 `Header` の値は、要求本文で送信される出力要求です。 `QueryString` の値は、要求クエリ文字列で送信される出力要求です。 |
 | ClaimUsedForRequestPayload| いいえ | REST API に送信されるペイロードを含む文字列要求の名前。 |
 | DebugMode | いいえ | 技術プロファイルをデバッグ モードで実行します。 指定できる値: `true` または `false` (既定値)。 デバッグ モードでは、REST API はより多くの情報を返すことができます。 [返却エラー メッセージ](#returning-error-message)のセクションを参照してください。 |
+| IncludeClaimResolvingInClaimsHandling  | いいえ | 入力要求と出力要求の場合、[要求の解決](claim-resolver-overview.md)が技術プロファイルに含まれるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 
@@ -148,7 +149,7 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 
 認証の種類が `Basic` に設定されている場合、**CryptographicKeys** には次の属性が存在します。
 
-| Attribute | Required | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | BasicAuthenticationUsername | はい | 認証に使用されるユーザー名。 |
 | BasicAuthenticationPassword | はい | 認証に使用されるパスワード。 |
@@ -173,7 +174,7 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 
 認証の種類が `ClientCertificate` に設定されている場合、**CryptographicKeys** には次の属性が存在します。
 
-| Attribute | Required | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | ClientCertificate | はい | 認証に使用する X509 証明書 (RSA キー セット)。 |
 
@@ -194,7 +195,7 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 
 認証の種類が `Bearer` に設定されている場合、**CryptographicKeys** には次の属性が存在します。
 
-| Attribute | Required | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | BearerAuthenticationToken | いいえ | OAuth 2.0 ベアラー トークン。 |
 
@@ -217,7 +218,7 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 
 REST API は、「そのユーザーは CRM システムでは見つかりませんでした」などの、エラー メッセージを返す必要がある場合があります。 エラーが発生した場合、REST API は次の属性を持つ HTTP 409 エラー メッセージ (応答ステータスコードの競合) を返すことになります。
 
-| Attribute | Required | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | version | はい | 1.0.0 |
 | status | はい | 409 |

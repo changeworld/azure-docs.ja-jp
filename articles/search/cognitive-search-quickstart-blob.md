@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 12/20/2019
-ms.openlocfilehash: a994a72ae57b39dba8025e7636e0f822f483bc8c
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e2e17ba6af60fa495a03e7d46a07cfe6b66f4e68
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720675"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472419"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>クイック スタート:Azure Cognitive Search コグニティブ スキルセットを Azure portal で作成する
 
@@ -27,7 +27,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このクイックスタートでは、Azure Cognitive Search、[Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/)、[Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) を AI に使用します。 
 
-ワークロードは非常に小さいので、インデクサーごとに 1 日あたり最大 20 トランザクションの処理を無料で Azure Cognitive Search から呼び出して使うことができる Cognitive Services を内部で利用しています。 提供されるサンプル データを使用する限り、Cognitive Services リソースの作成とアタッチはスキップしてかまいません。
+ワークロードは非常に小さいので、最大 20 トランザクションの処理を無料で使うことができる Cognitive Services を内部で利用しています。 そのような小さいデータ セットでは、Cognitive Services リソースの作成またはアタッチはスキップしてかまいません。
 
 1. さまざまなタイプの小さいファイル セットで構成されている[サンプル データをダウンロード](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)します。 .zip ファイルを解凍します
 
@@ -170,12 +170,12 @@ Search サービスの概要ページにあるコマンド バーの **[デー�
 
 無料サービスを使っている場合は、3 つのインデックス、インデクサー、およびデータソースに制限されることに注意してください。 ポータルで個別の項目を削除して、制限を超えないようにすることができます。 
 
-> [!Tip]
-> ここに示した手順をもう一度やってみたい場合や、別の AI エンリッチメントに関するチュートリアルに挑戦してみたい場合には、ポータルからインデクサーを削除してください。 インデクサーを削除すると、Cognitive Services の処理に関する 1 日あたりの無料トランザクションのカウンターがリセットされ、ゼロに戻ります。
-
 ## <a name="next-steps"></a>次のステップ
 
 スキルセットは、ポータル、.NET SDK、または REST API を使用して作成できます。 さらに知識を深めたければ、Postman と他のサンプル データを使って REST API を試してみてください。
 
 > [!div class="nextstepaction"]
 > [チュートリアル:REST API を使用して JSON BLOB からテキストと構造を抽出する](cognitive-search-tutorial-blob.md)
+
+> [!Tip]
+> ここに示した手順をもう一度やってみたい場合や、別の AI エンリッチメントに関するチュートリアルに挑戦してみたい場合には、ポータルからインデクサーを削除してください。 インデクサーを削除すると、Cognitive Services の処理に関する 1 日あたりの無料トランザクションのカウンターがリセットされ、ゼロに戻ります。

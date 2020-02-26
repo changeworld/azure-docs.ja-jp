@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 10/18/2019
+ms.date: 01/08/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 14e33bf77144e4cd5728ec85d3012dc0ba717ece
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 37bb28419f23fee2c179171a2e5c0e4e851ac9a0
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945647"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471756"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Azure PowerShell を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する
 
@@ -64,7 +64,7 @@ Azure Firewall を使用すれば、許可するネットワーク トラフィ�
 >[!NOTE]
 >Azure Firewall には、インターネットへの直接接続が必要です。 AzureFirewallSubnet が BGP 経由のオンプレミス ネットワークへの既定のルートを学習する場合は、インターネットへの直接接続を保持するために、**NextHopType** の値を **Internet** に設定した 0.0.0.0/0 UDR でこれを上書きする必要があります。
 >
->Azure Firewall では、現在、強制的なトンネリングはサポートされていません。 使用する構成でオンプレミスのネットワークへの強制的なトンネリングが必要であり、インターネット上のアクセス先のターゲット IP プレフィックスを決定できる場合は、AzureFirewallSubnet 上のユーザー定義のルートを介して、次のホップとしてオンプレミスのネットワークに対してこれらの範囲を構成することができます。 または、BGP を使用してこれらのルートを定義することもできます。
+>Azure Firewall は、強制トンネリングをサポートするように構成できます。 詳細については、「[Azure Firewall 強制トンネリング](forced-tunneling.md)」を参照してください。
 
 >[!NOTE]
 >直接ピアリングされた VNets 間のトラフィックは、UDR が既定のゲートウェイとして Azure Firewall をポイントしている場合でも、直接ルーティングされます。 このシナリオでサブネット間トラフィックをファイアウォールに送信するには、UDR に両方のサブネットのターゲットのサブネット ネットワーク プレフィックスを明示的に含める必要があります。
@@ -367,7 +367,7 @@ Get-AzRouteTable `
   -ResourceGroupName $RG1 `
   -Name UDR-DG `
   | Add-AzRouteConfig `
-  -Name "ToSpoke" `
+  -Name "ToFirewall" `
   -AddressPrefix 0.0.0.0/0 `
   -NextHopType "VirtualAppliance" `
   -NextHopIpAddress $AzfwPrivateIP `

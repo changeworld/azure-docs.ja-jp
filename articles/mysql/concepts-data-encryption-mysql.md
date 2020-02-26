@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 1d4153ac5e02d28d054034f33859332158d5a555
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 552c6b5176babfc1a66f74f1bb6daa9370744b8f
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162363"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210433"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>カスタマー マネージド キーを使用した Azure Database for MySQL のデータの暗号化
 
@@ -53,7 +53,7 @@ MySQL サーバーで DEK の暗号化のために Key Vault に格納されて�
 
 * **get**:Key Vault 内のキーの公開部分とプロパティを取得します。
 * **wrapKey**:DEK を暗号化できるようにします。
-* **unwrapKey**:DEK の暗号を解除できるようにします。
+* **unwrapKey**:DEK の暗号化を解除できるようにします。
 
 Key Vault 管理者は、後で監査できるように、[Key Vault の監査イベントのログ記録を有効](../azure-monitor/insights/azure-key-vault.md)にすることもできます。
 
@@ -108,12 +108,12 @@ Key Vault に対する十分なアクセス権を持つユーザーが、次の�
 
 ## <a name="monitor-the-customer-managed-key-in-key-vault"></a>Key Vault でカスタマーマネージド キーを監視する
 
-データベースの状態を監視したり、透過的なデータ暗号化保護機能にアクセスできなくなった場合のアラートを有効にしたりするには、Azure の次の機能を構成します。
+データベースの状態を監視したり、透過的データ暗号化保護機能アクセスができなくなった場合のアラートを有効にしたりするには、Azure の次の機能を構成します。
 
 * [Azure Resource Health](../service-health/resource-health-overview.md):カスタマー キーにアクセスできなくなったアクセス不可のデータベースでは、データベースへの最初の接続が拒否された後、"アクセス不可" と表示されます。
 * [アクティビティ ログ](../service-health/alerts-activity-log-service-notifications.md):カスタマーマネージド Key Vault 内のカスタマー キーへのアクセスに失敗すると、アクティビティ ログにエントリが追加されます。 これらのイベントに対してアラートを作成した場合は、できるだけ早くアクセスを再開できます。
 
-* [アクション グループ](../azure-monitor/platform/action-groups.md):ユーザー設定に基づいて通知とアラートを送信するように、これらを定義します。
+* [アクション グループ](../azure-monitor/platform/action-groups.md):必要に応じて通知とアラートを送信するように、これらを定義します。
 
 ## <a name="restore-and-replicate-with-a-customers-managed-key-in-key-vault"></a>Key Vault 内の顧客のマネージド キーを使用して復元およびレプリケートする
 

@@ -63,9 +63,9 @@ Cognitive Services は、機械学習ソリューションのコンポーネン�
 
 ## <a name="how-is-a-cognitive-service-different-from-machine-learning"></a>Cognitive Services と機械学習の違い
 
-Cognitive Services では、ユーザーに対してトレーニング済みのモデルが提供されます。 これはデータとアルゴリズムを統合したもので、REST API や SDK から利用できます。 シナリオによっては、このサービスを数分で実装できます。  Cognitive Services は、テキスト内のキー フレーズや画像内の項目識別といった一般的な問題を解決します。 
+Cognitive Services では、ユーザーに対してトレーニング済みのモデルが提供されます。これはデータとアルゴリズムを統合したもので、REST API や SDK から利用できます。シナリオによっては、このサービスを数分で実装できます。Cognitive Services は、テキスト内のキー フレーズや画像内の項目識別といった一般的な問題を解決します。 
 
-機械学習は、通常、適切に実装するために長時間を要するプロセスです。 Cognitive Services と同等の機能を実現するために、この時間を費やしてデータの収集、クリーニング、変換、アルゴリズムの選択、モデルのトレーニング、およびデプロイが行われます。 機械学習では、きわめて特殊な問題や具体的な問題を解決することが可能です。 機械学習の問題では、データ サイエンスの専門知識だけでなく、検討中の問題の特定の主題とデータについて理解する必要があります。
+機械学習は、通常、適切に実装するために長時間を要するプロセスです。Cognitive Services と同等の機能を実現するために、この時間を費やしてデータの収集、クリーニング、変換、アルゴリズムの選択、モデルのトレーニング、およびデプロイが行われます。機械学習では、きわめて特殊な問題や具体的な問題を解決することが可能です。機械学習の問題では、データ サイエンスの専門知識だけでなく、検討中の問題の特定の主題とデータについて理解する必要があります。
 
 ## <a name="what-kind-of-data-do-you-have"></a>保有するデータの種類
 
@@ -89,7 +89,7 @@ Cognitive Services では、ユーザーに対してトレーニング済みの�
 
 次のデータは、各サービスが許可または要求するデータの種類でサービスを分類したものです。
 
-|Cognitive Service|トレーニング データが不要|ユーザーがトレーニング データを一部または全部提供|リアルタイムまたはほぼリアルタイムでデータを収集|
+|Cognitive Services|トレーニング データが不要|ユーザーがトレーニング データを一部または全部提供|リアルタイムまたはほぼリアルタイムでデータを収集|
 |--|--|--|--|
 |[Anomaly Detector](./Anomaly-Detector/overview.md)|x|x|x|
 |Bing Search |x|||
@@ -109,7 +109,7 @@ Cognitive Services では、ユーザーに対してトレーニング済みの�
 |[音声翻訳](speech-service/speech-translation.md)|x|||
 |[Text Analytics](./text-analytics/overview.md)|x|||
 |[Translator Text](./translator/translator-info-overview.md)|x|||
-|[Translator Text - カスタム翻訳ツール](./translator/custom-translator/overview.md)||x||
+|[Translator Text - custom translator](./translator/custom-translator/overview.md)||x||
 
 *Personalizer は、(リアルタイムで動作するため) サービスが収集したトレーニング データだけでユーザーのポリシーとデータを評価します。 Personalizer の事前トレーニングやバッチ トレーニングには、大量の履歴データセットが必要ありません。 
 
@@ -127,7 +127,7 @@ Cognitive Services では、ユーザーに対してトレーニング済みの�
 
 他の機械学習ツールにモデルをエクスポートできる Cognitive Services:
 
-|Cognitive Service|モデル情報|
+|Cognitive Services|モデル情報|
 |--|--|
 |[Custom Vision](./custom-vision-service/home.md)|Tensorflow for Android、CoreML for iOS11、ONNX for Windows ML に対して[エクスポート](./Custom-Vision-Service/export-model-python.md)|
 

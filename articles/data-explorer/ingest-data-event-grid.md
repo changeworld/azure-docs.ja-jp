@@ -1,18 +1,18 @@
 ---
 title: Azure Data Explorer に Azure BLOB を取り込む
 description: この記事では、Event Grid サブスクリプションを使用して Azure Data Explorer にストレージ アカウントのデータを送信する方法を説明します。
-author: radennis
-ms.author: radennis
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: da701dc91781ef72c29e6454e79523073810dbe4
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: a07a5a5956d8ea295d269d81ed264177bc8805f2
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667479"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77424985"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Event Grid の通知をサブスクライブすることで Azure Data Explorer に BLOB を取り込む
 
@@ -93,7 +93,7 @@ Azure Data Explorer で、Event Hubs のデータの送信先となるテーブ�
 
 1. **[データ インジェスト]**  >  **[データ接続の追加]** を選択します。
 
-    ![データの取り込み](media/ingest-data-event-grid/data-ingestion-create.png)
+    ![データ インジェスト](media/ingest-data-event-grid/data-ingestion-create.png)
 
 1.  次の接続の種類を選択します:**Blob Storage**。
 
@@ -158,6 +158,11 @@ Azure Storage リソースを操作するいくつかの基本的な Azure CLI �
     echo "Done"
 ```
 
+> [!NOTE]
+> Azure Data Explorer では、BLOB 投稿の取り込みは削除されません。
+> 3 から 5 日間、BLOB が保持されます。
+> [Azure BLOB ストレージのライフサイクル](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)を使用して、BLOB の削除を管理してください。 
+
 ## <a name="review-the-data-flow"></a>データ フローの確認
 
 > [!NOTE]
@@ -186,7 +191,7 @@ Azure Storage リソースを操作するいくつかの基本的な Azure CLI �
 
     ![メッセージの結果セット](media/ingest-data-event-grid/table-result.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このイベント グリッドを今後使用する予定がない場合は、コストが発生しないように **test-hub-rg** をクリーンアップします。
 
@@ -200,6 +205,6 @@ Azure Storage リソースを操作するいくつかの基本的な Azure CLI �
 
 1. 新しいウィンドウで、削除するリソース グループの名前 (*test-hub-rg*) を入力し、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Data Explorer でデータのクエリを実行する](web-query-data.md)

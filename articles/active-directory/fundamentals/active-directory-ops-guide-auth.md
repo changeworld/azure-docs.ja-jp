@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 934fe8271796ed6196c9e50a0eddd5d7de3d8432
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: bc5824fcb62477d4e6dc6c2b7390b1bfa916094f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76511894"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368045"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory の認証管理の運用リファレンス ガイド
 
@@ -105,7 +105,7 @@ Azure AD のパスワード ハッシュ同期 (PHS) と Azure MFA を使用す�
 
 ### <a name="programmatic-usage-of-credentials"></a>プログラムによる資格情報の使用
 
-PowerShell を使用する Azure AD スクリプトや Graph API を使用するアプリケーションには、セキュリティで保護された認証が必要です。 このようなスクリプトやツールを実行する資格情報の管理が不十分な場合は、資格情報の盗難のリスクが高まります。 ハードコーディングされたパスワードまたはパスワード プロンプトに依存するスクリプトまたはアプリケーションを使用している場合は、まず、構成ファイルまたはソース コード内のパスワードを確認してから、それらの依存関係を置き換えて、可能な限り Azure マネージド ID、統合 Windows 認証、または[証明書](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates)を使用する必要があります。 以前のソリューションに可能性がないアプリケーションの場合は、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) の使用を検討してください。
+PowerShell を使用する Azure AD スクリプトや Microsoft Graph API を使用するアプリケーションには、セキュリティで保護された認証が必要です。 このようなスクリプトやツールを実行する資格情報の管理が不十分な場合は、資格情報の盗難のリスクが高まります。 ハードコーディングされたパスワードまたはパスワード プロンプトに依存するスクリプトまたはアプリケーションを使用している場合は、まず、構成ファイルまたはソース コード内のパスワードを確認してから、それらの依存関係を置き換えて、可能な限り Azure マネージド ID、統合 Windows 認証、または[証明書](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates)を使用する必要があります。 以前のソリューションに可能性がないアプリケーションの場合は、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) の使用を検討してください。
 
 パスワード資格情報を持つサービス プリンシパルがあることを確認し、それらのパスワード資格情報がスクリプトやアプリケーションによってどのように保護されているかわからない場合は、アプリケーションの所有者に問い合わせて使用パターンの理解を深めてください。
 
@@ -305,7 +305,7 @@ MFA などの強力な資格情報は、レガシ認証プロトコルを使用�
 | Office 365 Exchange Online | EAS.AccessAsUser.All |
 | | EWS.AccessAsUser.All |
 | | Mail.Read |
-| Microsoft Graph | Mail.Read |
+| Microsoft Graph API | Mail.Read |
 | | Mail.Read.Shared |
 | | Mail.ReadWrite |
 
@@ -313,15 +313,14 @@ MFA などの強力な資格情報は、レガシ認証プロトコルを使用�
 
 |リソース | 権限 |
 | :- | :- |
-| Azure AD グラフ | Directory.AccessAsUser.All |
-| Microsoft Graph | Directory.AccessAsUser.All |
+| Microsoft Graph API| Directory.AccessAsUser.All |
 | Azure REST API | user_impersonation |
 
 このシナリオを回避するには、[Office 365 での不正な同意の付与の検出と修復](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) に関するページを参照して、不正な許可があるアプリケーションや必要以上に許可がされているアプリケーションを特定して修正する必要があります。 次に、[セルフサービスを完全に削除し](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-user-consent)、[ガバナンスプロシージャを確立](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow) します。 最後に、アプリのアクセス許可の定期的なレビューをスケジュールし、不要な場合には削除します。
 
 #### <a name="consent-grants-recommended-reading"></a>同意の付与に関する推奨資料
 
-- [Microsoft Graph のアクセス許可](https://docs.microsoft.com/graph/permissions-reference)
+- [Microsoft Graph API のアクセス許可](https://docs.microsoft.com/graph/permissions-reference)
 
 ### <a name="user-and-group-settings"></a>ユーザーとグループの設定
 

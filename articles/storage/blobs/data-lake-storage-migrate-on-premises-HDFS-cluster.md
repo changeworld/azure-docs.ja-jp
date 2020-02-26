@@ -3,17 +3,17 @@ title: Azure Data Box を使用してオンプレミスの HDFS ストアから 
 description: オンプレミス HDFS ストアから Azure Storage にデータを移行する
 author: normesta
 ms.service: storage
-ms.date: 11/19/2019
+ms.date: 02/14/2019
 ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: e82c325ad5ad91e6b4503949e6534b054023f1f2
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 990b4afa6bdb63e626be0272553aea408afb864f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990965"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368681"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Azure Data Box を使用してオンプレミスの HDFS ストアから Azure Storage に移行する
 
@@ -25,19 +25,19 @@ Data Box デバイスを使用することにより、Hadoop クラスターの�
 > * データの移行を準備します。
 > * データを Data Box または Data Box Heavy デバイスにコピーします。
 > * Microsoft にデバイスを返送します。
-> * データを Data Lake Storage Gen2 に移動します。
+> * ファイルとディレクトリにアクセス許可を適用します (Data Lake Storage Gen2 のみ)
 
 ## <a name="prerequisites"></a>前提条件
 
 移行を完了するには、以下が必要です。
 
-* 2 つのストレージ アカウント。階層型名前空間が有効なものと、有効ではないものです。
+* Azure Storage のアカウント
 
 * ソース データを含むオンプレミス Hadoop クラスター。
 
 * [Azure Data Box デバイス](https://azure.microsoft.com/services/storage/databox/)。
 
-  * [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) または [Data Box Heavy を注文します](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered)。 デバイスを注文するときに、階層型名前空間が有効になって**いない**ストレージ アカウントを必ず選択してください。 これは、Data Box デバイスは、Azure Data Lake Storage Gen2 への直接のインジェストをサポートしていないためです。 ストレージ アカウントにコピーしてから、ADLS Gen2 アカウントへの第 2 のコピーを行う必要があります。 これに関する方法は以下の手順で与えられます。
+  * [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) または [Data Box Heavy を注文します](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered)。 
 
   * オンプレミス ネットワークに [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) または [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up) をケーブル接続します。
 
@@ -173,36 +173,14 @@ Data Box デバイスを使用することにより、Hadoop クラスターの�
 
     * Data Box Heavy デバイスの場合は、[Data Box Heavy の送付](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up)に関するページを参照してください。
 
-5. Microsoft がデバイスを受け取ると、データ センター ネットワークに接続され、デバイスを注文したときに (階層型名前空間を無効にして) 指定したストレージ アカウントにデータがアップロードされます。 すべてのデータが Azure にアップロードされたことを BOM ファイルに対して確認します。 Data Lake Storage Gen2 ストレージ アカウントに、このデータを移動できますようになりました。
+5. Microsoft がデバイスを受け取ると、データ センター ネットワークに接続され、デバイスを注文したときに指定したストレージ アカウントにデータがアップロードされます。 すべてのデータが Azure にアップロードされたことを BOM ファイルに対して確認します。 
 
-## <a name="move-the-data-into-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 にデータを移動する
+## <a name="apply-access-permissions-to-files-and-directories-data-lake-storage-gen2-only"></a>ファイルとディレクトリにアクセス許可を適用します (Data Lake Storage Gen2 のみ)
 
-Azure Storage アカウントに既にデータがあります。 次は、データを Azure Data Lake ストレージ アカウントにコピーし、ファイルとディレクトリへのアクセス許可を適用します。
+Azure Storage アカウントに既にデータがあります。 次に、ファイルとディレクトリにアクセス許可を適用します。
 
 > [!NOTE]
-> この手順は、データ ストアとして Azure Data Lake Storage Gen2 を使用している場合に必要です。 階層型名前空間を持たない BLOB ストレージ アカウントだけをデータ ストアとして使用している場合は、このセクションをスキップできます。
-
-### <a name="copy-data-to-the-azure-data-lake-storage-gen-2-account"></a>Azure Data Lake Storage Gen 2 アカウントにデータをコピーする
-
-Azure Data Factory を使用するか、Azure ベースの Hadoop クラスターを使用してデータをコピーできます。
-
-* Azure Data Factory を使用するには、[Azure Data Factory で ADLS Gen2 にデータを移動する](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2)方法に関するページを参照してください。 必ずソースとして **Azure Blob Storage** を指定します。
-
-* Azure ベースの Hadoop クラスターを使用するには、次の DistCp コマンドを実行します。
-
-    ```bash
-    hadoop distcp -Dfs.azure.account.key.<source_account>.dfs.windows.net=<source_account_key> abfs://<source_container> @<source_account>.dfs.windows.net/<source_path> abfs://<dest_container>@<dest_account>.dfs.windows.net/<dest_path>
-    ```
-
-    * `<source_account>` と `<dest_account>` のプレースホルダーは、ソースと宛先のストレージ アカウントの名前に置き換えます。
-
-    * `<source_container>` と `<dest_container>` のプレースホルダーは、ソースと宛先のコンテナーの名前に置き換えます。
-
-    * `<source_path>` と `<dest_path>` のプレースホルダーは、ソースと宛先のディレクトリ パスに置き換えます。
-
-    * `<source_account_key>` プレースホルダーは、データを含むストレージ アカウントのアクセス キーに置き換えます。
-
-    このコマンドは、データとメタデータの両方を、ストレージ アカウントから Data Lake Storage Gen2 ストレージ アカウントにコピーします。
+> この手順は、データ ストアとして Azure Data Lake Storage Gen2 を使用している場合にのみ必要です。 階層型名前空間を持たない BLOB ストレージ アカウントだけをデータ ストアとして使用している場合は、このセクションをスキップできます。
 
 ### <a name="create-a-service-principal-for-your-azure-data-lake-storage-gen2-account"></a>Azure Data Lake Storage Gen2 アカウントのサービス プリンシパルを作成します。
 

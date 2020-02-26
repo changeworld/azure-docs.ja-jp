@@ -2,22 +2,23 @@
 title: コンテナー用 Azure Monitor のライブ データ (プレビュー) の設定 | Microsoft Docs
 description: この記事では、コンテナー用 Azure Monitor で kubectl を使用せずに、コンテナーのログ (stdout/stderr) とイベントのリアルタイム ビューを設定する方法について説明します。
 ms.topic: conceptual
-ms.date: 10/16/2019
-ms.openlocfilehash: cf42eea99e437a76bb437b23f6eaffae1f1f3bc6
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/14/2019
+ms.openlocfilehash: f19071ca642cd229cbd7d49b4eab90c970672eee
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063766"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459924"
 ---
-# <a name="how-to-setup-the-live-data-preview-feature"></a>ライブ データ (プレビュー) 機能を設定する方法
+# <a name="how-to-set-up-the-live-data-preview-feature"></a>ライブ データ (プレビュー) 機能を設定する方法
 
 Azure Kubernetes Service (AKS) クラスターから、コンテナー用 Azure Monitor でライブ データ (プレビュー) を表示するには、Kubernetes データにアクセスするためのアクセス許可を付与する認証を構成する必要があります。 このセキュリティ構成により、Azure portal で直接 Kubernetes API を介してデータにリアルタイムでアクセスできるようになります。
 
-この機能では、ログ、イベント、メトリックへのアクセスを制御する次の 3 種類の方法がサポートされています。
+この機能では、ログ、イベント、メトリックへのアクセスを制御する次の方法がサポートされています。
 
 - Kubernetes RBAC 認証なしの AKS が有効
 - Kubernetes RBAC 認証を使って AKS が有効
+    - クラスタロールのバインディング **[clusterMonitoringUser](https://docs.microsoft.com/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0)** で構成された AKS
 - Azure Active Directory (AD) SAML ベースのシングル サインオンを使って AKS が有効
 
 これらの手順では、Kubernetes クラスターへの管理アクセスと、Azure Active Directory (AD) への管理アクセス (ユーザー認証に Azure AD を使用するように構成する場合) が必要です。  
@@ -35,7 +36,7 @@ Azure Kubernetes Service (AKS) クラスターから、コンテナー用 Azure 
 
 ## <a name="authentication-model"></a>認証モデル
 
-ライブ データ (プレビュー) 機能では Kubernetes API を利用します。これは、`kubectl` コマンド ライン ツールと同じです。 Kubernetes API エンドポイントは、ブラウザーが検証できない自己署名証明書を利用します。 この機能では内部プロキシを使用して AKS サービスで証明書を検証し、トラフィックが信頼できることを確認します。
+ライブ データ (プレビュー) 機能では Kubernetes API を利用します。これは、`kubectl` コマンド ライン ツールと同じです。 Kubernetes API エンドポイントは、ブラウザーが検証できない自己署名証明書を利用します。 この機能では、内部プロキシを使用して AKS サービスで証明書を検証し、トラフィックが信頼できることを確認します。
 
 Azure portal では、Azure Active Directory クラスターのログイン資格情報を検証し、クラスターの作成時にクライアント登録の設定 (この記事では再構成) にリダイレクトするよう求められます。 この動作は、`kubectl` で必要な認証プロセスに似ています。 
 
@@ -45,11 +46,19 @@ Azure portal では、Azure Active Directory クラスターのログイン資�
 >[!IMPORTANT]
 >この機能のユーザーには、`kubeconfig` をダウンロードしてこの機能を使用するために、クラスターに対する [Azure Kubernetes クラスター ユーザー ロール](../../azure/role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role permissions)が必要です。 この機能を利用するユーザーには、クラスターに対する共同作成者アクセス権は**不要**です。 
 
+## <a name="using-clustermonitoringuser-with-rbac-enabled-clusters"></a>RBAC が有効なクラスターで clusterMonitoringUser を使用する
+
+[RBAC 承認を有効化](#configure-kubernetes-rbac-authorization)した後に、Kubernetes ユーザーロールのバインディング**clusterUser**でライブデータ (プレビュー) 機能へのアクセスを許可するために、追加の構成変更を適用する必要がないようにするため、AKS には **clusterMonitoringUser**と呼ばれる新しい Kubernetes クラスター ロール バインディングが追加されました。 このクラスターロールのバインディングには、Kubernetes API にアクセスするために必要なすべてのアクセス許可と、ライブデータ (プレビュー) 機能を利用するためのエンドポイントが含まれています。
+
+この新しいユーザーでライブデータ (プレビュー) 機能を利用するには、AKS クラスターリソースの [共同作成者](../../role-based-access-control/built-in-roles.md#contributor) ロールのメンバーである必要があります。 コンテナーの Azure Monitor (有効化されている場合) は、既定でこのユーザーを使用して認証するように構成されます。 クラスターに clusterMonitoringUser ロールのバインドが存在しない場合は、代わりに **clusterUser** が認証に使用されます。
+
+AKS は 2020年1月にこの新しいロールバインドをリリースしたため、2020年1月より前に作成されたクラスターには存在しません。 2020年の1月より前に作成されたクラスターがある場合、クラスター上でPUT操作を実行するか、クラスターのバージョンの更新など、クラスター上でPUT操作を実行するその他の操作を実行することで、新しい **clusterMonitoringUser** を既存のクラスターに追加できます。
+
 ## <a name="kubernetes-cluster-without-rbac-enabled"></a>RBAC なしの Kubernetes クラスターが有効
 
 お使いの Kubernetes クラスターが Kubernetes RBAC 認証で構成されていない場合、または Azure AD シングル サインオンと統合されていない場合は、これらの手順に従う必要はありません。 非 RBAC 構成では、管理アクセス許可が既定で付与されるためです。
 
-## <a name="configure-kubernetes-rbac-authentication"></a>Kubernetes RBAC 認証の構成
+## <a name="configure-kubernetes-rbac-authorization"></a>Kubernetes RBAC 認証の構成
 
 Kubernetes RBAC 認証を有効にすると、Kubernetes API にアクセスするために **clusterUser** と **clusterAdmin** の 2 つのユーザーが使用されます。 これは、管理オプションなしで `az aks get-credentials -n {cluster_name} -g {rg_name}` 実行する場合と同様です。 つまり、**clusterUser** に Kubernetes API のエンドポイントへのアクセスを許可する必要があります。
 
@@ -124,7 +133,7 @@ Kubernetes での高度なセキュリティ設定の詳細については、[Ku
 
 ## <a name="grant-permission"></a>アクセス許可を付与する
 
-ライブ データ (プレビュー) 機能にアクセスするには、各 Azure AD アカウントに Kubernetes の適切な API へのアクセス許可を付与する必要があります。 Azure Active Directory アカウントに付与する手順は、[Kubernetes RBAC 認証](#configure-kubernetes-rbac-authentication)のセクションで説明する手順と似ています。 yaml 構成テンプレートをクラスターに適用する前に、**ClusterRoleBinding** の **clusterUser** を目的のユーザーに置き換えます。 
+ライブ データ (プレビュー) 機能にアクセスするには、各 Azure AD アカウントに Kubernetes の適切な API へのアクセス許可を付与する必要があります。 Azure Active Directory アカウントに付与する手順は、[Kubernetes RBAC 認証](#configure-kubernetes-rbac-authorization)のセクションで説明する手順と似ています。 yaml 構成テンプレートをクラスターに適用する前に、**ClusterRoleBinding** の **clusterUser** を目的のユーザーに置き換えます。 
 
 >[!IMPORTANT]
 >RBAC のバインドを付与するユーザーが同じ Azure AD テナントに存在する場合は、userPrincipalName に基づいてアクセス許可を割り当てます。 ユーザーが別の Azure AD テナントに存在する場合は、objectId プロパティを照会して使用します。

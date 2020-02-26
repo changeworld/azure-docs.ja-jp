@@ -1,5 +1,5 @@
 ---
-title: デザイナーでユーザー補助機能を使用する
+title: デザイナーでユーザー補助機能を使用する (プレビュー)
 titleSuffix: Azure Machine Learning
 description: デザイナーで使用できるキーボード ショートカットとスクリーン リーダーのユーザー補助機能について説明します。
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 ms.author: peterlu
 author: peterclu
 ms.date: 01/09/2020
-ms.openlocfilehash: 7d5c8047fea8e9081de08b582c537711714ea463
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 59199291589a81d0a0d96b7867078b8196be086f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314234"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366202"
 ---
-# <a name="use-a-keyboard-to-use-azure-machine-learning-designer"></a>キーボードを使用して Azure Machine Learning デザイナーを使用する
+# <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>キーボードを使用して Azure Machine Learning デザイナーを使用する (プレビュー)
 
 キーボード ショートカットとスクリーン リーダーのユーザー補助機能を使用して Azure Machine Learning デザイナーを使用する方法について説明します。 Azure portal のすべての場所で使用できるキーボード ショートカットの一覧については、「[Azure Portal のキーボード ショートカット](../azure-portal/azure-portal-keyboard-shortcuts.md)」を参照してください。
 
@@ -24,7 +24,7 @@ ms.locfileid: "76314234"
 
 ## <a name="navigate-the-pipeline-graph"></a>パイプライン グラフ内を移動する
 
-パイプライン グラフは、リストのリストとしてまとめられています。 最上位のモジュール リストには、パイプライン内のすべてのモジュールが含まれます。 モジュール リストの各項目には、そのすべての接続が記述された接続リストが含まれます。 
+パイプライン グラフは、入れ子になったリストとして構成されます。 外側のリストは、パイプライン グラフ内のすべてのモジュールが記述されたモジュール リストです。 内側のリストは、特定のモジュールのすべての接続が記述された接続リストです。  
 
 1. モジュール リスト内でモジュールを切り替えるには、方向キーを使用します。
 1. ターゲット モジュールの接続リストを開くには、Tab キーを使用します。

@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Beekeeper Azure AD Data Connector の統合 | Microsoft Docs
-description: Azure Active Directory と Beekeeper Azure AD Data Connector の間でシングル サインオンを構成する方法について説明します。
+title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Beekeeper Azure AD SSO の統合 | Microsoft Docs
+description: Azure Active Directory と Beekeeper Azure AD SSO の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,22 +12,22 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 02/04/2020
+ms.date: 02/14/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7484d71c6032b97341537a0564d8d52b3996cc8e
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: bbac5f6b26ff5df9114eebdf850faff263f7cd78
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050218"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373174"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beekeeper-azure-ad-data-connector"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Beekeeper Azure AD Data Connector の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beekeeper-azure-ad-sso"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Beekeeper Azure AD SSO の統合
 
-このチュートリアルでは、Beekeeper Azure AD Data Connector と Azure Active Directory (Azure AD) を統合する方法について説明します。 Beekeeper Azure AD Data Connector と Azure AD を統合すると、次のことができます。
+このチュートリアルでは、Beekeeper Azure AD SSO と Azure Active Directory (Azure AD) を統合する方法について説明します。 Beekeeper Azure AD SSO と Azure AD を統合すると、次のことができます。
 
-* Beekeeper Azure AD Data Connector にアクセスするユーザーを Azure AD で制御できます。
-* ユーザーが自分の Azure AD アカウントを使用して Beekeeper Azure AD Data Connector に自動的にサインインするようにできます。
+* Beekeeper Azure AD SSO にアクセスできるユーザーを Azure AD で制御する。
+* ユーザーが自分の Azure AD アカウントを使用して Beekeeper Azure AD SSO に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
@@ -37,46 +37,45 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 開始するには、次が必要です。
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-* Beekeeper Azure AD Data Connector でのシングル サインオン (SSO) が有効なサブスクリプション。
+* Beekeeper Azure AD SSO でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Beekeeper Azure AD Data Connector では、**SP と IDP** によって開始される SSO がサポートされます
-* Beekeeper Azure AD Data Connector では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
-* Beekeeper Azure AD Data Connector を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Beekeeper Azure AD SSO では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Beekeeper Azure AD SSO では、**Just In Time** ユーザー プロビジョニングがサポートされます
+* Beekeeper Azure AD SSO を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
-## <a name="adding-beekeeper-azure-ad-data-connector-from-the-gallery"></a>ギャラリーからの Beekeeper Azure AD Data Connector の追加
+## <a name="adding-beekeeper-azure-ad-sso-from-the-gallery"></a>ギャラリーからの Beekeeper Azure AD SSO の追加
 
-Azure AD への Beekeeper Azure AD Data Connector の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Beekeeper Azure AD Data Connector を追加する必要があります。
+Azure AD への Beekeeper Azure AD SSO の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Beekeeper Azure AD SSO を追加する必要があります。
 
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Beekeeper Azure AD Data Connector**」と入力します。
-1. 結果のパネルから **[Beekeeper Azure AD Data Connector]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Beekeeper Azure AD SSO**」と入力します。
+1. 結果のパネルから **[Beekeeper Azure AD SSO]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
+## <a name="configure-and-test-azure-ad-single-sign-on-for-beekeeper-azure-ad-sso"></a>Beekeeper Azure AD SSO の Azure AD シングル サインオンの構成とテスト
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-beekeeper-azure-ad-data-connector"></a>Beekeeper Azure AD Data Connector の Azure AD シングル サインオンの構成とテスト
+**B.Simon** というテスト ユーザーを使用して、Beekeeper Azure AD SSO に対する Azure AD SSO を構成してテストします。 SSO を機能させるためには、Azure AD ユーザーと Beekeeper Azure AD SSO の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-**B.Simon** というテスト ユーザーを使用して、Beekeeper Azure AD Data Connector に対する Azure AD SSO を構成してテストします。 SSO を機能させるためには、Azure AD ユーザーと Beekeeper Azure AD Data Connector の関連ユーザーとの間にリンク関係を確立する必要があります。
-
-Beekeeper Azure AD Data Connector で Azure AD の SSO を構成してテストするには、次の構成要素を完了する必要があります。
+Beekeeper Azure AD SSO で Azure AD SSO を構成してテストするには、次の構成要素を完了します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
     * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[Beekeeper Azure AD Data Connector SSO の構成](#configure-beekeeper-azure-ad-data-connector-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    * **[Beekeeper Azure AD Data Connector のテスト ユーザーの作成](#create-beekeeper-azure-ad-data-connector-test-user)** - Beekeeper Azure AD Data Connector で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+1. **[Beekeeper Azure AD SSO の構成](#configure-beekeeper-azure-ad-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    * **[Beekeeper Azure AD SSO のテスト ユーザーの作成](#create-beekeeper-azure-ad-sso-test-user)** - Beekeeper Azure AD SSO で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Beekeeper Azure AD Data Connector** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Beekeeper Azure AD SSO** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -104,15 +103,15 @@ Beekeeper Azure AD Data Connector で Azure AD の SSO を構成してテスト�
     **[サインオン URL]** ボックスに、`https://<your_company>.beekeeper.io/login` という形式で URL を入力します。
 
     > [!NOTE]
-    > サインオン URL は実際の値ではありません。 この値を実際のサインオン URL で更新してください。 この値を取得するには、[Beekeeper Azure AD Data Connector クライアント サポート チーム](mailto:support@beekeeper.io)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > サインオン URL は実際の値ではありません。 この値を実際のサインオン URL で更新してください。 この値を取得するには、[Beekeeper Azure AD SSO クライアント サポート チーム](mailto:support@beekeeper.io)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. Beekeeper Azure AD Data Connector アプリケーションでは、特定の形式の SAML アサーションが求められます。そのため、カスタム属性マッピングを SAML トークン属性構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
+1. Beekeeper Azure AD SSO アプリケーションは特定の形式の SAML アサーションを予測しているため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
     ![image](common/default-attributes.png)
 
-1. その他に、Beekeeper Azure AD Data Connector アプリケーションでは、さらにいくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
+1. その他に、Beekeeper Azure AD SSO アプリケーションでは、さらにいくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | Name | ソース属性|
+    | 名前 | ソース属性|
     | ------------ | --------- |
     | firstname | User.givenname |
     | lastname | User.surname |
@@ -124,7 +123,7 @@ Beekeeper Azure AD Data Connector で Azure AD の SSO を構成してテスト�
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-1. **[Beekeeper Azure AD Data Connector のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
+1. **[Beekeeper Azure AD SSO のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
@@ -142,10 +141,10 @@ Beekeeper Azure AD Data Connector で Azure AD の SSO を構成してテスト�
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Beekeeper Azure AD Data Connector へのアクセスを許可することで、B.Simon が Azure シングル サインオンを使用できるようにします。
+このセクションでは、B.Simon に Beekeeper Azure AD SSO へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
-1. アプリケーションの一覧で、 **[Beekeeper Azure AD Data Connector]** を選択します。
+1. アプリケーションの一覧で、 **[Beekeeper Azure AD SSO]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 
    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
@@ -158,19 +157,19 @@ Beekeeper Azure AD Data Connector で Azure AD の SSO を構成してテスト�
 1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name="configure-beekeeper-azure-ad-data-connector-sso"></a>Beekeeper Azure AD Data Connector SSO の構成
+## <a name="configure-beekeeper-azure-ad-sso"></a>Beekeeper Azure AD SSO の構成
 
-**Beekeeper Azure AD Data Connector** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Beekeeper Azure AD Data Connector サポート チーム](mailto:support@beekeeper.io)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Beekeeper Azure AD SSO** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Beekeeper Azure AD SSO サポート チーム](mailto:support@beekeeper.io)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
-### <a name="create-beekeeper-azure-ad-data-connector-test-user"></a>Beekeeper Azure AD Data Connector のテスト ユーザーの作成
+### <a name="create-beekeeper-azure-ad-sso-test-user"></a>Beekeeper Azure AD SSO のテスト ユーザーの作成
 
-このセクションでは、Britta Simon というユーザーを Beekeeper Azure AD Data Connector に作成します。 Beekeeper Azure AD Data Connector では、Just-In-Time ユーザー プロビジョニングがサポートされています。これは既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Beekeeper Azure AD Data Connector にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
+このセクションでは、Beekeeper Azure AD SSO で Britta Simon というユーザーを作成します。 Beekeeper Azure AD SSO では、Just-In-Time ユーザー プロビジョニングがサポートされています。これは既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Beekeeper Azure AD SSO にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Beekeeper Azure AD Data Connector] タイルをクリックすると、SSO を設定した Beekeeper Azure AD Data Connector に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Beekeeper Azure AD SSO] タイルをクリックすると、SSO を設定した Beekeeper Azure AD SSO に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
@@ -180,6 +179,6 @@ Beekeeper Azure AD Data Connector で Azure AD の SSO を構成してテスト�
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD で Beekeeper Azure AD Data Connector を試す](https://aad.portal.azure.com/)
+- [Azure AD で Beekeeper Azure AD SSO を試す](https://aad.portal.azure.com/)
 
 - [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

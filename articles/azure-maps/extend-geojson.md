@@ -8,17 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 75ad83411edfdfe7545e8f80df17fea56e317ee0
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 98db10f0fc7a417f39d4bb00e77af6bdea034a03
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911626"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198277"
 ---
 # <a name="extended-geojson-geometries"></a>拡張された GeoJSON ジオメトリ
 
-Azure Maps は、地理機能内で、または地理機能を併用して検索に役立つ API を提供します。
-これらの API は、地理的な特徴 (州の境界、高速道路など) を表すための [GeoJSON 仕様][1]を標準化します。  
+Azure Maps は、地理機能内で、または地理機能を併用して検索に役立つ API のリストを提供します。 これらの API は、地理的機能を表すための標準 [GeoJSON 仕様][1] に準拠しています。  
 
 [GeoJSON 仕様][1]では、次のジオメトリのみがサポートされています。
 
@@ -30,7 +29,7 @@ Azure Maps は、地理機能内で、または地理機能を併用して検索
 * ポイント
 * 多角形
 
-Azure Maps API ([Search Inside Geometry](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry) など) の中には、[GeoJSON 仕様][1]に含まれない "Circle" などのジオメトリが使用できるものもあります。
+一部の Azure Maps API は、[GeoJSON spec][1]の一部ではないジオメトリを受け入れます。たとえば、[Geometry API 内の検索](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)では、円と多角形が受け入れられます。
 
 この記事では、特定のジオメトリを表すために、Azure Maps が [GeoJSON 仕様][1]をどのように拡張するかについて詳細に説明します。
 
@@ -38,7 +37,7 @@ Azure Maps API ([Search Inside Geometry](https://docs.microsoft.com/rest/api/map
 
 `Circle` ジオメトリは、[GeoJSON 仕様][1]ではサポートされていません。円を表すには、`GeoJSON Point Feature` オブジェクトが使用されます。
 
-`GeoJSON Feature` オブジェクトを使用して表現される `Circle` ジオメトリは、以下を含む __必要があります__ 。
+`GeoJSON Feature`オブジェクトを使用して表される`Circle`ジオメトリには、次の座標とプロパティが含まれている__必要があります__。
 
 - Center
 
@@ -54,7 +53,7 @@ Azure Maps API ([Search Inside Geometry](https://docs.microsoft.com/rest/api/map
 
 #### <a name="example"></a>例
 
-円を表す方法は次のとおりです。中心は (緯度:47.639754、経度: -122.126986) であり、半径は 100 m で `GeoJSON Feature` オブジェクトを使用します。
+`GeoJSON Feature` オブジェクトを使用して円を表す方法は次のとおりです。: 円の中心を緯度:47.639754 と経度 :-122.126986 に設定し、100メートルに等しい半径を割り当てます。
 
 ```json            
 {
@@ -74,15 +73,15 @@ Azure Maps API ([Search Inside Geometry](https://docs.microsoft.com/rest/api/map
 
 `Rectangle` ジオメトリは、[GeoJSON 仕様][1]ではサポートされていません。四角形を表すには、`GeoJSON Polygon Feature` オブジェクトが使用されます。 四角形の拡張機能は、主に Web SDK の描画ツール モジュールによって使用されます。
 
-`GeoJSON Polygon Feature` オブジェクトを使用して表現される `Rectangle` ジオメトリは、以下を含む __必要があります__ 。
+`GeoJSON Polygon Feature`オブジェクトを使用して表される`Rectangle`ジオメトリには、次の座標とプロパティが含まれている__必要があります__。
 
 - Corners
 
-    四角形の角は、`GeoJSON Polygon` オブジェクトの座標を使用して表されます。 5 つの座標 (角ごとに 1 つと、多角形リングを閉じるための、1 番目の座標と同じ 5 番目の座標) が必要です。 これらの座標は、開発者が望むように整列および回転されると想定されます。
+    四角形の角は、`GeoJSON Polygon` オブジェクトの座標を使用して表されます。 コーナーごとに1つずつ、5つの座標を指定する必要があります。 とは、最初の座標と同じ5番目の座標です。多角形リングを閉じます。 これらの座標が調整され、開発者が必要に応じて回転できることが前提となります。
 
 - SubType
 
-    四角形ジオメトリには、`subType` プロパティも含める必要があります。 このプロパティは、`GeoJSON Feature` のプロパティに含まれ、その値は _Rectangle_ である必要があります。
+    四角形ジオメトリには、`subType` プロパティも含める必要があります。 このプロパティは`GeoJSON Feature`のプロパティの一部である必要があり、その値は_四角形_である必要があります。
 
 ### <a name="example"></a>例
 

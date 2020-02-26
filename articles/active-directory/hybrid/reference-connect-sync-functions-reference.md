@@ -77,15 +77,15 @@ Azure AD Connect では、同期時の属性値を操作するために関数を
 | **算術** | | | | |
 | [BitAnd](#bitand) |[BitOr](#bitor) |[RandomNum](#randomnum) | | |
 | **複数値** | | | | |
-| [指定値を含む](#contains) |[カウント](#count) |[項目](#item) |[ItemOrNull](#itemornull) | |
-| [Join](#join) |[RemoveDuplicates](#removeduplicates) |[分割](#split) | | |
+| [Contains](#contains) |[Count](#count) |[Item](#item) |[ItemOrNull](#itemornull) | |
+| [Join](#join) |[RemoveDuplicates](#removeduplicates) |[Split](#split) | | |
 | **プログラム フロー** | | | | |
-| [エラー](#error) |[IIF](#iif) |[選択肢](#select) |[Switch](#switch) | |
+| [Error](#error) |[IIF](#iif) |[Select](#select) |[Switch](#switch) | |
 | [Where](#where) |[With](#with) | | | |
 | **Text** | | | | |
 | [GUID](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
 | [Left](#left) |[Len](#len) |[LTrim](#ltrim) |[Mid](#mid) | |
-| [PadLeft](#padleft) |[PadRight](#padright) |[PCase](#pcase) |[*Views\\Home\\AllDates.cshtml*](#replace) | |
+| [PadLeft](#padleft) |[PadRight](#padright) |[PCase](#pcase) |[Replace](#replace) | |
 | [ReplaceChars](#replacechars) |[Right](#right) |[RTrim](#rtrim) |[Trim](#trim) | |
 | [UCase](#ucase) |[Word](#word) | | | |
 
@@ -846,7 +846,7 @@ ItemOrNull 関数は複数値の属性内の項目に対するインデックス
 インデックスが範囲外にある場合は、Null 値を返します。
 
 ---
-### <a name="join"></a>結合
+### <a name="join"></a>Join
 **説明:**  
 Join 関数は、複数値の文字列を受け取り、指定した区切り記号が項目間に挿入された、単一値の文字列を返します。
 
@@ -1072,7 +1072,7 @@ RemoveDuplicates 関数は複数値の文字列を受け取り、各値が一意
 重複する値がすべて削除された、校正済みの proxyAddress 属性を返します。
 
 ---
-### <a name="replace"></a>*Views\\Home\\AllDates.cshtml*
+### <a name="replace"></a>Replace
 **説明:**  
 Replace 関数は、見つかった文字列をすべて別の文字列に置き換えます。
 
@@ -1166,7 +1166,7 @@ RTrim 関数は文字列の末尾の空白文字を削除します。
 " Test" を返します。
 
 ---
-### <a name="select"></a>選択
+### <a name="select"></a>Select
 **説明:**  
 指定された関数に基づいて、複数値の属性 (または式の出力) 内のすべての値を処理します。
 
@@ -1184,7 +1184,7 @@ RTrim 関数は文字列の末尾の空白文字を削除します。
 ハイフン (-) の削除後に、複数値の属性 otherPhone 内のすべての値を返します。
 
 ---
-### <a name="split"></a>分割
+### <a name="split"></a>Split
 **説明:**  
 Split 関数は区切り記号で区切られた文字列を受け取り、複数値の文字列にします。
 

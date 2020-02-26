@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: d3f6acef7491a07f94eec0b2c3b2f3bcd9c01a33
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5e013011f81542aa279ba9276a6a1aac01eb9e41
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701666"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443196"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Azure Lab Services でラボのネットワークとピア仮想ネットワークを接続する 
 この記事では、ラボのネットワークと別のネットワークのピアリングに関する情報を提供します。 
@@ -34,7 +34,7 @@ ms.locfileid: "74701666"
 特定のオンプレミスのネットワークは [ExpressRoute](../../expressroute/expressroute-introduction.md) または [Virtual Network ゲートウェイ](../../vpn-gateway/vpn-gateway-about-vpngateways.md)のどちらかを使用して Azure Virtual Network に接続しています。 これらのサービスは、Azure Lab Services の外部で設定する必要があります。 ExpressRoute を使用してオンプレミスネットワークを Azure に接続する方法の詳細については、[ExpressRoute の概要](../../expressroute/expressroute-introduction.md)を参照してください。 Virtual Network ゲートウェイを使用してオンプレミスと接続するには、ゲートウェイ、指定された仮想ネットワーク、ラボのアカウントがすべて同じリージョンにある必要があります。
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>ラボ アカウントの作成時に構成する
-新しいラボ アカウントの作成中に、 **[仮想ネットワークのピアリング]** ドロップダウン リストに表示される既存の仮想ネットワークを選択することができます。 選択した仮想ネットワークが、そのラボ アカウントによって作成されたラボに接続 (ピアリング) されます。 この変更を行った後に作成されるラボのすべての仮想マシンが、ピアリングされた仮想ネットワーク上のリソースにアクセスできます。 
+新しいラボ アカウントの作成中に、**詳細** タブの **[仮想ネットワークのピアリング]** ドロップダウン リストに表示される既存の仮想ネットワークを選択することができます。選択した仮想ネットワークが、そのラボ アカウントによって作成されたラボに接続 (ピアリング) されます。 この変更を行った後に作成されるラボのすべての仮想マシンが、ピアリングされた仮想ネットワーク上のリソースにアクセスできます。 
 
 ![ピアリングする VNet を選択する](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer.png)
 
@@ -53,11 +53,11 @@ ms.locfileid: "74701666"
 > この設定の変更は、変更後に作成されたラボにのみ適用され、既存のラボには適用されません。 
 
 
-## <a name="next-steps"></a>次の手順
-次の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+次の記事をご覧ください。
 
-- [管理者としてラボ アカウントを作成および管理する](how-to-manage-lab-accounts.md)
-- [ラボ所有者としてラボを作成および管理する](how-to-manage-classroom-labs.md)
-- [ラボ所有者としてテンプレートを設定および発行する](how-to-create-manage-template.md)
-- [ラボ ユーザーとしてクラスルーム ラボにアクセスする](how-to-use-classroom-lab.md)
-
+- [ラボ作成者にラボの場所の選択を許可する](allow-lab-creator-pick-lab-location.md)
+- [ラボに共有イメージ ギャラリーをアタッチする](how-to-attach-detach-shared-image-gallery.md)
+- [ユーザーをラボ所有者として追加する](how-to-add-user-lab-owner.md)
+- [ラボのファイアウォール設定の表示](how-to-configure-firewall-settings.md)
+- [ラボのその他設定を構成する](how-to-configure-lab-accounts.md)

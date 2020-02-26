@@ -2,20 +2,16 @@
 title: Azure の予約のセルフサービスによる交換と払戻
 description: Azure の予約を交換または払い戻す方法について説明します。
 author: yashesvi
-manager: yashesvi
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/24/2020
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 5f0c0c50ffd639109fdbb90c76e4ec036a8bc975
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 393db5d2e14e047ade04e0b688582e272c6ca44f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76773879"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200437"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure の予約のセルフサービスによる交換と払戻
 
@@ -72,12 +68,10 @@ Azure には、キャンセル、交換、払戻に関して次のポリシー�
 - 交換に対するペナルティや年間制限はありません。
 
 **払戻ポリシー**
-- 予約をキャンセルする場合は、12% の中途解約料が発生する可能性があります。
-- キャンセルに対しては、日割り計算によって算出された金額から 12% の中途解約料を差し引いた金額が払い戻されます。 キャンセルするには、Azure portal の予約に移動し、 **[払い戻し]** を選択します。
+- 今後、キャンセルに対して 12% の中途解約料が発生する可能性があります。 現在、この違約金は課されていません。
 - 12 か月間のローリング ウィンドウ内に合計払戻金額が 50,000 米国ドルを超えることはできません。
 - 払い戻し額は、購入価格または予約の現在の価格のいずれかの最低価格に基づいて計算されます。
-- 払戻を処理できるのは、予約の所有者のみです。 [予約を管理できるユーザーを追加または変更する](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)方法を参照してください。
-- Microsoft は、すべての返品に対して 12% のペナルティを請求する権利を留保します。 ペナルティは現在請求されていませんが、将来、請求されます。
+- 払戻を処理できるのは、予約注文の所有者のみです。 [予約を管理できるユーザーを追加または変更する](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)方法を参照してください。
 
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>Premium Storage 以外のストレージを Premium Storage と交換する
 

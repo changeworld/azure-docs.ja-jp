@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 8ef24630d255876c45d9cbc072fc989288f2ac5f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: fdbd002ac946f3ac3a1a67980905d4ed6f5510c5
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76837257"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470345"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>クイック スタート:Azure CLI を使用して VM の負荷を分散する Standard Load Balancer を作成する
 
@@ -58,7 +58,10 @@ CLI をローカルにインストールして使用する場合、このチュ�
   az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku standard --zone 1
 ```
 
- Basic パブリック IP を作成するには、```--sku basic``` を使用します。 Basic では、可用性ゾーンはサポートされません。 Microsoft では、運用環境のワークロードに Standard SKU をお勧めします。
+Basic パブリック IP を作成するには、```-SKU Basic``` を使用します。 Basic パブリック IP は、**Standard** Load Balancer と共に利用することはできません。 運用環境のワークロードには **Standard** の使用をお勧めします。
+
+> [!IMPORTANT]
+> 以降このクイックスタートでは、前の SKU 選択プロセスで **Standard** SKU が選択されたことを前提に話を進めます。
 
 ## <a name="create-azure-load-balancer"></a>Azure Load Balancer の作成
 
@@ -81,6 +84,9 @@ CLI をローカルにインストールして使用する場合、このチュ�
     --frontend-ip-name myFrontEnd \
     --backend-pool-name myBackEndPool       
   ```
+
+> [!IMPORTANT]
+> 以降このクイックスタートでは、前の SKU 選択プロセスで **Standard** SKU が選択されたことを前提に話を進めます。
 
 ### <a name="create-the-health-probe"></a>正常性プローブを作成する
 

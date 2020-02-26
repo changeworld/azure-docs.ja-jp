@@ -1,11 +1,9 @@
 ---
-title: 仮想ネットワーク ピアリングを使用して仮想ネットワークを接続する - PowerShell | Microsoft Docs
+title: VNet ピアリングを使用して仮想ネットワークを接続する - Azure PowerShell
 description: この記事では、Azure PowerShell を使って仮想ネットワーク ピアリングで仮想ネットワークを接続する方法を説明します。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
 tags: azure-resource-manager
 Customer intent: I want to connect two virtual networks so that virtual machines in one virtual network can communicate with virtual machines in the other virtual network.
 ms.assetid: ''
@@ -17,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 18a252e1e169aeb094e4aa6a507ff1e3d5ee931f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: caa620c2389bb6e2387636bc262ceb2de99d8e34
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022071"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201290"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>PowerShell を使用して仮想ネットワーク ピアリングで仮想ネットワークを接続する
 

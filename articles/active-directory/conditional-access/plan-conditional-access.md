@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 266fa2403ef96e808a0c1f1eb46b4f7065c06252
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 3c8c5e3c2552101437bfed17906f94861e676568
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185902"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468439"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>方法:Azure Active Directory の条件付きアクセスの展開を計画する
 
@@ -31,6 +31,9 @@ ms.locfileid: "77185902"
 条件付きアクセス ポリシーには、ベースラインと標準の 2 種類があります。 [ベースライン ポリシー](baseline-protection.md)は、定義済みの条件付きアクセス ポリシーです。 これらのポリシーの目標は、少なくともベースライン レベルのセキュリティを有効にすることです。 ベースライン ポリシー。 ベースライン ポリシーは Azure AD のすべてのエディションで使用できます。限られたカスタマイズ オプションのみを利用できます。 さらに柔軟性が必要なシナリオの場合は、ベースライン ポリシーを無効にして、カスタム標準ポリシーで要件を実装します。
 
 標準の条件付きアクセス ポリシーでは、すべての設定をカスタマイズして、ビジネス要件に合わせてポリシーを調整できます。 標準ポリシーには Azure AD Premium P1 ライセンスが必要です。
+
+>[!NOTE]
+> Azure AD デバイスベースの条件付きアクセス ポリシーを使用して、初期デバイス認証後に最適な実施を行うことをお勧めします。 これには、デバイスが準拠していない場合のセッションの終了とデバイス コード フローが含まれます。
 
 ## <a name="draft-policies"></a>ドラフト ポリシー
 

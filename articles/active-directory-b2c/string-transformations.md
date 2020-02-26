@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/05/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 69091fbcc2b6789abc7825632a56197427d34e4c
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: d2ef446e10620895fff77e8160adc4a566929650
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77045369"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484368"
 ---
 # <a name="string-claims-transformations"></a>文字列要求変換
 
@@ -122,7 +122,7 @@ ms.locfileid: "77045369"
 
 ## <a name="createstringclaim"></a>CreateStringClaim
 
-ポリシーで指定された入力パラメーターから文字列要求を作成します。
+変換で指定された入力パラメーターから文字列要求を作成します。
 
 | Item | TransformationClaimType | データ型 | Notes |
 |----- | ----------------------- | --------- | ----- |
@@ -523,9 +523,9 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 
 | Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
-| OutputClaim | claim_to_null | string | 値が NULL になる要求。 |
+| OutputClaim | claim_to_null | string | 要求の値を Null に設定します。 |
 
-この要求変換は、要求のプロパティ バッグから不要なデータを削除するために使用します。 そのため、セッション cookie は小さくなります。 次の例では、`TermsOfService` 要求の種類の値を削除します。
+この要求変換を使用して、不要なデータを要求プロパティ バッグから削除し、セッション Cookie のサイズを縮小します。 次の例では、`TermsOfService` 要求の種類の値を削除します。
 
 ```XML
 <ClaimsTransformation Id="SetTOSToNull" TransformationMethod="NullClaim">

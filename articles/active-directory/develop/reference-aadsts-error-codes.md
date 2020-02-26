@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 12/18/2019
+ms.date: 02/19/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7798cb86606c206f027a1014802770a74aba909a
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: ba5af060a02e8525320f005b5d1c80534c5ca4ea
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160379"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483926"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 認証と承認のエラー コード
 
@@ -133,7 +133,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS50180 | WindowsIntegratedAuthMissing - 統合 Windows 認証が必要です。 シームレス SSO に対してテナントを有効にしてください。 |
 | AADSTS50187 | DeviceInformationNotProvided - サービスはデバイス認証を実行できませんでした。 |
 | AADSTS50196 | LoopDetected - クライアント ループが検出されました。 アプリのロジックを調べて、確実にトークンのキャッシュが実装されていて、エラー状態が正しく処理されるようにします。  アプリが非常に短期間にあまりにも多くの同じ要求を行いました。これは、障害がある状態にあるか、またはトークンを不正に要求していることを示しています。 |
-| AADSTS50199 | CmsiInterrupt - この認証にはユーザーの操作が必要です。  これは "interaction_required" エラーであるため、クライアントでは対話型認証を行う必要があります。これが発生した理由は、システム Web ビューを使用してネイティブ アプリケーションのトークンが要求されたことにあります。これが実際にサインインしようとしたアプリであったかどうかをたずねるプロンプトをユーザーに表示する必要があります。|
+| AADSTS50199 | CmsiInterrupt - セキュリティ上の理由から、この要求にはユーザー確認が必要です。  これは "interaction_required" エラーであるため、クライアントでは対話型認証を行う必要があります。これが発生した理由は、システム Web ビューを使用してネイティブ アプリケーションのトークンが要求されたことにあります。これが実際にサインインしようとしたアプリであったかどうかをたずねるプロンプトをユーザーに表示する必要があります。|
 | AADSTS51000 | RequiredFeatureNotEnabled - 機能が無効になっています。 |
 | AADSTS51001 | DomainHintMustbePresent - ドメイン ヒントは、オンプレミスのセキュリティ識別子またはオンプレミスの UPN とともに存在している必要があります。 |
 | AADSTS51004 | UserAccountNotInDirectory - ディレクトリにユーザー アカウントが存在しません。 |

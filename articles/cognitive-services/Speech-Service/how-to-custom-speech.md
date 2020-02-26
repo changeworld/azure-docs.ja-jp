@@ -1,25 +1,25 @@
 ---
 title: Custom Speech の概要 - 音声サービス
 titleSuffix: Azure Cognitive Services
-description: Custom Speech は、ご利用のアプリケーション、ツール、製品に使用する音声テキスト変換の正確性を評価して改善することのできる一連のオンライン ツールです。 作業を始めるにあたって必要なのは、少数のテスト オーディオ ファイルだけです。 以下のリンクに従って、カスタム音声テキスト変換エクスペリエンスを作成してみましょう。
+description: Custom Speech は、ご利用のアプリケーション、ツール、製品に使用する音声テキスト変換の正確性を評価して改善することのできる一連のオンライン ツールです。 作業を始めるにあたって必要なのは、少数のテスト オーディオ ファイルだけです。 以下のリンクに従って、カスタム音声テキスト変換エクスペリエンスの作成を開始しましょう。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/06/2019
-ms.author: erhopf
-ms.openlocfilehash: c8c849cb83ecb1db5e972c660d94c795092c458e
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 02/17/2020
+ms.author: dapine
+ms.openlocfilehash: 4a2887ef8b264628128872730422fd38d6b0ac0f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806013"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425002"
 ---
 # <a name="what-is-custom-speech"></a>Custom Speech とは
 
-[Custom Speech](https://aka.ms/customspeech) は、ご利用のアプリケーション、ツール、製品に使用する Microsoft の音声テキスト変換の正確性を評価して改善することのできる一連のオンライン ツールです。 作業を始めるにあたって必要なのは、少数のテスト オーディオ ファイルだけです。 以下のリンクに従って、カスタム音声テキスト変換エクスペリエンスを作成してみましょう。
+[Custom Speech](https://aka.ms/customspeech) は、ご利用のアプリケーション、ツール、製品に使用する Microsoft の音声テキスト変換の正確性を評価して改善することのできる一連のオンライン ツールです。 作業を始めるにあたって必要なのは、少数のテスト オーディオ ファイルだけです。 以下のリンクに従って、カスタム音声テキスト変換エクスペリエンスの作成を開始しましょう。
 
 ## <a name="whats-in-custom-speech"></a>Custom Speech の内容
 
@@ -61,7 +61,10 @@ Azure アカウントと音声サービス サブスクリプションを作成�
 
 初めてのプロジェクトを作成するには、 **[音声テキスト変換/Custom Speech]** を選択し、 **[新しいプロジェクト]** をクリックします。 ウィザードの手順に従ってプロジェクトを作成します。 プロジェクトの作成後、4 つのタブが表示されます ( **[データ]** 、 **[テスト中]** 、 **[トレーニング]** 、 **[デプロイ]** )。 それぞれのタブの使い方については、「[次の手順](#next-steps)」に記載のリンクを使用してください。
 
-## <a name="next-steps"></a>次の手順
+> [!IMPORTANT]
+> [Custom Speech ポータル](https://aka.ms/custom-speech)は最近更新されました。 CRIS.ai ポータルで、または API を使用して以前のデータ、モデル、テスト、および公開されたエンドポイントを作成した場合は、新しいポータルで新しいプロジェクトを作成して、これらの古いエンティティに接続する必要があります。
+
+## <a name="next-steps"></a>次のステップ
 
 * [データを準備してテストする](how-to-custom-speech-test-data.md)
 * [データを検査する](how-to-custom-speech-inspect-data.md)

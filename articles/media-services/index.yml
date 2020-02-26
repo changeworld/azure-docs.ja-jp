@@ -1,49 +1,110 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Hub
 title: Azure Media Services のドキュメント
+summary: Azure Media Services はクラウドベースのメディアワークフロープラットフォームであり、エンコード・パッケージ化・コンテンツ保護・ライブ配信など必要なソリューションが提供されています。
+brand: azure
 metadata:
-  title: Azure Media Services のドキュメント | Microsoft Docs
-  description: クラウドベースのプラットフォームである Azure Media Services では、ブロードキャスト品質のビデオ ストリーミングを実現し、アクセス性と配信を強化し、コンテンツを分析するソリューションを構築できます。
+  title: Azure Media Services のドキュメント
+  description: Azure Media Services はクラウドベースのメディア ワークフロー プラットフォームで、エンコード、パッケージ化、コンテンツ保護、ライブ イベントの配信を必要とするソリューションを作成できます。
   services: media-services
-  author: juliako
-  manager: femila
   ms.service: media-services
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 03/11/2019
+  ms.subservice: 
+  ms.topic: hub-page
+  ms.collection: collection
+  author: Juliako
   ms.author: juliako
-abstract:
-  description: Azure Media Services はクラウドベースのメディアワークフロープラットフォームであり、エンコード・パッケージ化・コンテンツ保護・ライブ配信など必要なソリューションが提供されています。 Azure Media Services では、 Azure CDN とシームレスに統合されており、 CDN を横断したロードバランシングも可能で、Akamai 及び Verizon の CDN サービスによるスケーラブルな配信を行うことが出来ます。 Azure Media Services Video Indexer では、AI と組み込みのビデオおよびオーディオ アナライザー プリセットを使用して、メタデータと分析情報を抽出できます。 Video Indexer API を使用して所与の AI モデルを独自のコンテンツでトレーニングして、精度を簡単に向上させることができます。
-sections:
+  ms.date: 07//2020
+  ms.openlocfilehash: ff7c361b402f38160b2693f2d22670a96881045b
+  ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 02/25/2020
+  ms.locfileid: "77587670"
+highlightedContent:
+  items:
+  - title: Azure Media Services v3 について
+    itemType: overview
+    url: ./latest/media-services-overview.md
+  - title: Azure Media Services v3 の概念
+    itemType: concept
+    url: ./latest/concepts-overview.md
+  - title: Azure Media Services Video Indexer について
+    itemType: overview
+    url: ./video-indexer/video-indexer-overview.md
+  - title: Media Services v3 プリセットと Video Indexer の比較
+    itemType: concept
+    url: ./video-indexer/compare-video-indexer-with-media-services-presets.md
+  - title: Azure Media Services v2 について (レガシ)
+    itemType: overview
+    url: ./previous/media-services-overview.md
+  - title: Media Services v2 を v3 に移行する
+    itemType: concept
+    url: ./latest/migrate-from-v2-to-v3.md
+  - title: Azure Media Services の仕様
+    itemType: concept
+    url: media-services-specifications-live-timed-metadata.md
+conceptualContent:
+  items:
+  - title: Media Services v3 API を使用した開発
+    links:
+    - url: ./latest/media-services-apis-overview.md
+      itemType: concept
+      text: Media Services v3 を使用した開発
+    - url: https://docs.microsoft.com/samples/browse/?products=azure-media-services
+      itemType: sample
+      text: コード サンプル
+  - title: ライブ ストリーム配信
+    links:
+    - url: ./latest/live-streaming-overview.md
+      itemType: concept
+      text: ライブ ストリーミング
+    - url: ./latest/recommended-on-premises-live-encoders.md
+      itemType: concept
+      text: おすすめのライブ ストリーミング エンコーダー
+    - url: ./latest/stream-live-tutorial-with-api.md
+      itemType: tutorial
+      text: ライブ ストリーム配信
+  - title: オンデマンドでのストリーム配信
+    links:
+    - url: ./latest/assets-concept.md
+      itemType: concept
+      text: アップロード
+    - url: ./latest/encoding-concept.md
+      itemType: concept
+      text: エンコード
+    - url: ./latest/stream-files-tutorial-with-rest.md
+      itemType: tutorial
+      text: リモート ファイルのエンコードとストリーム配信
+    - url: ./latest/stream-files-tutorial-with-api.md
+      itemType: tutorial
+      text: アップロードされたファイルのエンコードとストリーム配信
+  - title: コンテンツの暗号化
+    links:
+    - url: ./latest/content-protection-overview.md
+      itemType: concept
+      text: 保護
+    - url: ./latest/protect-with-aes128.md
+      itemType: tutorial
+      text: AES-128 を使用した動的な暗号化
+    - url: ./latest/protect-with-drm.md
+      itemType: tutorial
+      text: DRM を使用した動的な暗号化
+  - title: コンテンツの分析
+    links:
+    - url: ./latest/analyzing-video-audio-files-concept.md
+      itemType: concept
+      text: メディア分析
+    - url: ./latest/analyze-videos-tutorial-with-api.md
+      itemType: tutorial
+      text: ビデオを分析する
+additionalContent:
+  sections:
   - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 2
-        items:
-          - href: /azure/media-services/latest/
-            html: <p>Media Services v3 を使用して、コンテンツのエンコード、パッケージ化、保護に加えてオンデマンドでのビデオのストリーム配信、ライブ ブロードキャスト、分析を行います。</p>
-            image:
-              src: /azure/media-services/latest/media/index/AMSIcons-encoding.svg
-            title: Azure Media Services v3
-          - href: /azure/media-services/previous/
-            html: <p>エンコード、パッケージ化、保護など。 これはメンテナンス中のレガシ サービスです。 お客様は、新しい機能の作成と機能強化の実施が行われている Media Services v3 への移行を推奨されます。</p>
-            image:
-              src: null
-            title: Azure Media Services v2 (legacy)
-          - href: /azure/cdn/
-            html: <p>Azure CDN の機能を使って、Akamai および Verizon のサービスを利用してコンテンツを大規模にストリーム配信したり、複数のコンテンツ配信ネットワーク全体に負荷分散したりします。</p>
-            image:
-              src: /azure/cdn/media/index/cdn.svg
-            title: CDN
-          - href: 'https://amp.azure.net/libs/amp/latest/docs/index.html'
-            html: <p>さまざまなブラウザーやデバイス上で Microsoft Azure Media Services からメディア コンテンツを再生します。</p>
-            image:
-              src: /azure/media-services/latest/media/index/AMSIcons-Player.svg
-            title: Azure Media Player
-          - href: /azure/media-services/video-indexer/
-            html: <p>Video Indexer を使用してビデオ ファイルやオーディオ ファイルから分析情報を抽出します。</p>
-            image:
-              src: media/index/AMSIcons-media_analytics.svg
-            title: Azure Media Services Video Indexer
+    - title: Azure Storage
+      summary: ブロック BLOB とコンテナーについて学習する
+      url: https://docs.microsoft.com/azure/storage/
+    - title: CDN
+      summary: Azure CDN の機能を使用すると、Akamai および Verizon のサービスを利用してコンテンツを大規模にストリーム配信したり、複数のコンテンツ配信ネットワークに負荷を分散したりできます
+      url: https://docs.microsoft.com/azure/cdn
+    - title: Event Grid
+      summary: Azure Event Grid を使用して関連するイベントに対応する方法について説明します
+      url: https://docs.microsoft.com/azure/event-grid/

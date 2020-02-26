@@ -28,3 +28,15 @@
       href: security-control-incident-response.md
     - name: 侵入テストとレッド チーム演習
       href: security-control-penetration-tests-red-team-exercises.md
+- name: セキュリティ ベースライン
+  items:
+    - name: Azure セキュリティ ベースラインの概要
+      href: security-baselines-overview.md
+    - name: Batch のセキュリティ ベースライン
+      href: ../../batch/security-baseline.md
+    - name: Key Vault のセキュリティ ベースライン
+      href: ../../key-vault/security-baseline.md
+    - name: HDInsight のセキュリティ ベースライン
+      href: ../../hdinsight/security-baseline.md
+    - name: SQL Database のセキュリティ ベースライン
+      href: ../../sql-database/security-baseline.md

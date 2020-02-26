@@ -1,22 +1,22 @@
 ---
-title: Azure Firewall のコンプライアンス認定資格
-description: PCI、SOC、および ISO に関する Azure Firewall のコンプライアンス認定資格の一覧
+title: Azure Firewall の認定資格
+description: PCI、SOC、ISO、および ICSA Labs に対する Azure Firewall の認定資格の一覧
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 01/17/2020
+ms.date: 02/19/2020
 ms.author: victorh
-ms.openlocfilehash: f7e235a4212cf14f851c0c58eb087970c8f8d137
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: b1e7dce6f652d8c9e0fcf5974c3e72be9e1e7844
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157780"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482184"
 ---
-# <a name="azure-firewall-compliance-certifications"></a>Azure Firewall のコンプライアンス認定資格
+# <a name="azure-firewall-certifications"></a>Azure Firewall の認定資格
 
-Azure Firewall は、Payment Card Industry (PCI)、Service Organization Controls (SOC)、国際標準化機構 (ISO)、および HITRUST に準拠しています。
+Azure Firewall は、Payment Card Industry (PCI)、Service Organization Controls (SOC)、国際標準化機構 (ISO)、ICSA Labs、および HITRUST に準拠しています。
 
 次の認定資格は、グローバル Azure と Azure Government を対象としています。
 
@@ -103,6 +103,14 @@ Azure Firewall は、Payment Card Industry (PCI)、Service Organization Controls
 - SOC 3
 - SOX (米国)
 - 第 508 条 VPAT
+
+## <a name="icsa-labs-corporate-firewall-certification"></a>ICSA Labs の企業のファイアウォール認定資格
+
+![ICSA 認定資格](media/overview/icsa-cert-firewall-small.png)
+
+ICSA Labs は、セキュリティと正常性の IT 製品およびネットワークに接続されたデバイスに対してサードパーティのテストと認定を行う主要なベンダーです。 世界有数のテクノロジ ベンダーの多くを対象に、製品のコンプライアンス、信頼性、パフォーマンスを測定します。
+
+Azure Firewall は、ICSA Labs の企業のファイアウォール認定資格を獲得した最初のクラウド ファイアウォール サービスです。 Azure Firewall の認定レポートについては、[ICSA Labs の認定テストおよび監査レポート](https://aka.ms/ICSALabsCertification)を参照してください。 詳細については、[ICSA Labs ファイアウォール認定プログラム](https://www.icsalabs.com/technology-program/firewalls)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

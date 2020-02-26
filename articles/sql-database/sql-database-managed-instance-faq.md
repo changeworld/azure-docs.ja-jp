@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 81f776428303ad5e6486ba52c1acdf70d051563e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 1c1995b4daf3b76abf7663d8d6c1f4cb7b1d6e2b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835007"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201681"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database マネージド インスタンスに関してよく寄せられる質問 (FAQ)
 
@@ -82,21 +82,11 @@ Azure SQL Database マネージド インスタンスとオンプレミス SQL S
 
 データベースが 100 GB 未満の場合は、これが推奨される方法です。 データベース内のすべてのテーブルに主キーがある場合は、トランザクション レプリケーションを使用できます。
 
-## <a name="gen-4-vs-gen-5"></a>Gen 4 と Gen 5 
-
-**マネージド インスタンス用にハードウェアの世代の Gen 4 と Gen 5 のどちらかを、どのように選択すればよいですか?**
-
-ハードウェアの世代によっては、他の種類よりも特定の種類のワークロードに適している場合があるので、これはワークロードに応じて決まります。 パフォーマンスは単純に比較するのが難しいテーマですが、ワークロードのパフォーマンスに影響するハードウェアの世代間の違いには以下のようなものがあります。
-- Gen 4 は物理プロセッサをベースにしているので、仮想コア プロセッサ ベースの Gen 5 に比べてコンピューティングのサポートが優れています。 この点は、コンピューティング集中型ワークロードにとって有利な場合があります。
-- Gen 5 では高速ネットワークがサポートされているので、リモート ストレージへの IO 帯域幅が向上します。 これは、General Purpose サービス レベルでの IO 集中型ワークロードにとって有利な場合があります。 Gen 5 では、Gen 4 と比較してより高速の SSD ローカル ディスクが使用されます。 これは、Business Critical サービス レベルでの IO 集中型ワークロードにとって有利な場合があります。
-
-特定のケースでどちらのハードウェアの世代がより適切に機能するのかを見極めるために、運用を目的とした実際のワークロードのパフォーマンス テストを運用開始前に実施することを強くお勧めします。
-
 ## <a name="switch-hardware-generation"></a>ハードウェアの世代の切り替え 
 
 **マネージド インスタンスのハードウェア世代の Gen 4 と Gen 5 をオンラインで切り替えることはできますか?**
 
-マネージド インスタンスがプロビジョニングされているリージョンでハードウェアの世代が両方とも利用可能になっている場合は、ハードウェアの世代間のオンライン切り替えを自動で行うことができます。 この場合、ハードウェア世代を切り替える方法が説明してある[こちら](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Change-hardware-generation-on-Managed-Instance/ba-p/699824)のブログ記事にあるスクリプトを利用できます。
+マネージド インスタンスがプロビジョニングされているリージョンでハードウェアの世代が両方とも利用可能になっている場合は、ハードウェアの世代間のオンライン切り替えを自動で行うことができます。 この場合は、「[仮想コア モデルの概要](sql-database-service-tiers-vcore.md)」ページでハードウェアの世代間を切り替える方法を参照してください。
 
 これは、新しいマネージド インスタンスがバックグラウンドでプロビジョニングされ、データベースがプロセスの最後の迅速なフェールオーバーによって古いインスタンスと新しいインスタンスの間で自動的に転送されるため、時間のかかる操作です。 
 
@@ -108,8 +98,6 @@ Azure SQL Database マネージド インスタンスとオンプレミス SQL S
 **マネージド インスタンスのパフォーマンスを調整するには、どうすればよいですか?**
 
 General Purpose マネージド インスタンスでは、データおよびログ ファイルのサイズがパフォーマンスにとって重要であるため、リモート ストレージが使用されます。 詳しくは、「[General Purpose Managed Instance のパフォーマンスに対するログ ファイルのサイズの影響](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e)」をご覧ください。
-
-IO 集中型のワークロードには Gen 5 ハードウェア、コンピューティング集中型のワークロードには Gen 4 ハードウェアを使用することを検討してください。 詳しくは、[Gen 4 と Gen 5 のどちらかを選択する方法](#gen-4-vs-gen-5)に関する説明をご覧ください。
 
 ワークロードが多数の小さなトランザクションで構成されている場合は、接続の種類をプロキシからリダイレクト モードに切り替えることを検討してください。
 

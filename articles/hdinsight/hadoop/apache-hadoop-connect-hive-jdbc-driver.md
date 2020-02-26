@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.openlocfilehash: 2250e41bffc26bd9ae59dfc652a06d08016d227a
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 02/17/2020
+ms.openlocfilehash: 016107248399e84b7a82a656c9d590c3cbe0cdbe
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053810"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77466928"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>HDInsight 上で JDBC ドライバーを使用して Apache Hive のクエリを実行する
 
@@ -25,7 +25,7 @@ Hive JDBC インターフェイスの詳細については、 [HiveJDBCInterface
 
 ## <a name="prerequisites"></a>前提条件
 
-* HDInsight Hadoop クラスター。 その作成方法については、[Azure HDInsight の概要](apache-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。
+* HDInsight Hadoop クラスター。 その作成方法については、[Azure HDInsight の概要](apache-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。 サービス HiveServer2 が実行されていることを確認します。
 * [Java Developer Kit (JDK) バージョン 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html) 以降。
 * [SQuirreL SQL](http://squirrel-sql.sourceforge.net/)。 SQuirreL は、JDBC クライアント アプリケーションです。
 
@@ -71,7 +71,7 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
 
 5. [Add Driver\(ドライバーの追加\)] ダイアログで、次の情報を追加します。
 
-    |プロパティ | 値 |
+    |プロパティ | Value |
     |---|---|
     |名前|Hive|
     |Example URL (URL の例)|jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2|
@@ -88,13 +88,13 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
 
 7. **[Add Alias]\(エイリアスの追加\)** ダイアログでは次の値を使用します。
 
-    |プロパティ |値 |
+    |プロパティ |Value |
     |---|---|
     |名前|HDInsight の Hive|
-    |ドライバー|ドロップダウンを使用して、**Hive** ドライバーを選択します。|
+    |Driver|ドロップダウンを使用して、**Hive** ドライバーを選択します。|
     |URL|jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2 **CLUSTERNAME** を、使用する HDInsight クラスターの名前に置き換えます。|
-    |ユーザー名|HDInsight クラスターのクラスター ログイン アカウント名。 既定値は **admin** です。|
-    |パスワード|クラスター ログイン アカウントのパスワード。|
+    |[ユーザー名]|HDInsight クラスターのクラスター ログイン アカウント名。 既定値は **admin** です。|
+    |Password|クラスター ログイン アカウントのパスワード。|
 
     ![パラメーターを含むエイリアスの追加ダイアログ](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png)
 
@@ -123,7 +123,7 @@ Java クライアントを使って HDInsight の Hive をクエリする例は�
 
 ### <a name="unexpected-error-occurred-attempting-to-open-an-sql-connection"></a>SQL 接続を開こうとしたときに、予期しないエラーが発生した
 
-**症状**:バージョン 3.3 以上の HDInsight クラスターに接続するときに、予期しないエラーが発生したというエラーを受け取る場合があります。 このエラーのスタック トレースは、次の行で始まります。
+**現象**:バージョン 3.3 以上の HDInsight クラスターに接続するときに、予期しないエラーが発生したというエラーを受け取る場合があります。 このエラーのスタック トレースは、次の行で始まります。
 
 ```java
 java.util.concurrent.ExecutionException: java.lang.RuntimeException: java.lang.NoSuchMethodError: org.apache.commons.codec.binary.Base64.<init>(I)V
@@ -133,13 +133,13 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
 **原因**:このエラーは、SQuirreL に付属する commons-codec.jar ファイルのバージョンが古いために発生します。
 
-**解決策**:このエラーを解決するには、次の手順を使用します。
+**解決方法**:このエラーを解決するには、次の手順を使用します。
 
 1. SQuirreL を終了し、SQuirreL がインストールされているシステム上のディレクトリに移動します (`C:\Program Files\squirrel-sql-4.0.0\lib` など)。 SquirreL ディレクトリ内の `lib` ディレクトリにある既存の commons-codec jar を、HDInsight クラスターからダウンロードしたファイルに置き換えます。
 
 1. SQuirreL を再起動します。 これで、HDInsight の Hive に接続するときにエラーが発生しなくなります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、JDBC を使用して Hive を操作する方法に関する説明は終わりです。次のリンクを使用して、Azure HDInsight を操作するその他の方法について調べることもできます。
 

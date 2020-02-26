@@ -1,5 +1,5 @@
 ---
-title: Linux 用の Azure Monitor 仮想マシン拡張機能
+title: Linux 用の Log Analytics 仮想マシン拡張機能
 description: 仮想マシン拡張機能を使用して、Linux 仮想マシンに Log Analytics エージェントをデプロイします。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,20 +12,20 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/06/2019
+ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: a431ae8130e258664328fa32a364eb76c28ea811
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 9ddac229fc38a91a8b97b24dc2807080b2295758
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544737"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468781"
 ---
-# <a name="azure-monitor-virtual-machine-extension-for-linux"></a>Linux 用の Azure Monitor 仮想マシン拡張機能
+# <a name="log-analytics-virtual-machine-extension-for-linux"></a>Linux 用の Log Analytics 仮想マシン拡張機能
 
 ## <a name="overview"></a>概要
 
-Azure Monitor ログは、クラウドとオンプレミスの資産全体にまたがる監視、アラート、アラート修復の機能を提供します。 Linux 用の Log Analytics Agent 仮想マシン拡張機能は、Microsoft によって発行およびサポートされています。 この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Log Analytics ワークスペースに登録されます。 このドキュメントでは、Linux 用の Azure Monitor 仮想マシン拡張機能でサポートされているプラットフォーム、構成、デプロイ オプションについて詳しく説明します。
+Azure Monitor ログは、クラウドとオンプレミスの資産全体にまたがる監視、アラート、アラート修復の機能を提供します。 Linux 用の Log Analytics 仮想マシン拡張機能は、Microsoft によって発行およびサポートされています。 この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Log Analytics ワークスペースに登録されます。 このドキュメントでは、Linux 用の Log Analytics 仮想マシン拡張機能でサポートされているプラットフォーム、構成、デプロイ オプションについて詳しく説明します。
 
 >[!NOTE]
 >現在 Microsoft Operations Management Suite (OMS) から Azure Monitor への移行作業が進行していますが、その一環として、OMS エージェント for Windows と OMS エージェント for Linux は、それぞれ Log Analytics エージェント for Windows および Log Analytics エージェント for Linux という名称になります。
@@ -39,11 +39,11 @@ Azure Monitor ログは、クラウドとオンプレミスの資産全体にま
 サポートされている Linux ディストリビューションの詳細については、[Log Analytics エージェントの概要](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)の記事を参照してください。
 
 ### <a name="agent-and-vm-extension-version"></a>エージェントおよび VM 拡張機能のバージョン
-次の表は、Azure Monitor VM 拡張機能と Log Analytics エージェント バンドルのバージョンのマッピングをリリースごとに示しています。 Log Analytics エージェント バンドルのバージョンのリリース ノートへのリンクが含まれます。 リリース ノートには、特定のエージェント リリースでのバグ修正と利用可能な新機能の詳細が記載されています。  
+次の表は、Log Analytics VM 拡張機能と Log Analytics エージェント バンドルのバージョンのマッピングをリリースごとに示しています。 Log Analytics エージェント バンドルのバージョンのリリース ノートへのリンクが含まれます。 リリース ノートには、特定のエージェント リリースでのバグ修正と利用可能な新機能の詳細が記載されています。  
 
-| Azure Monitor Linux VM 拡張機能のバージョン | Log Analytics Agent バンドルのバージョン | 
+| Log Analytics Linux VM 拡張機能のバージョン | Log Analytics Agent バンドルのバージョン | 
 |--------------------------------|--------------------------|
-| 1.12.15 | [1.12.15-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.12.15-0) |
+| 1.12.25 | [1.12.15-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.12.15-0) |
 | 1.11.15 | [1.11.0-9](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-9) |
 | 1.10.0 | [1.10.0-1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
 | 1.9.1 | [1.9.0-0](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.9.0-0) |
@@ -100,15 +100,14 @@ Linux 用の Log Analytics Agent 拡張機能では、ターゲットの仮想�
 
 >[!NOTE]
 >上のスキーマは、テンプレートのルート レベルに配置されると仮定しています。 テンプレートの仮想マシン リソース内に配置する場合は、[後で](#template-deployment)説明するように、`type` および `name` プロパティを変更する必要があります。
->
 
 ### <a name="property-values"></a>プロパティ値
 
-| Name | 値/例 |
+| 名前 | 値/例 |
 | ---- | ---- |
 | apiVersion | 2018-06-01 |
 | publisher | Microsoft.EnterpriseCloud.Monitoring |
-| 型 | OmsAgentForLinux |
+| type | OmsAgentForLinux |
 | typeHandlerVersion | 1.7 |
 | workspaceId (例) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (例) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |

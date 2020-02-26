@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 03daafd383810a5e6cf086ca8e546981b06fa6eb
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: b15c60d5436feada8558c83cb14efd7e21a22493
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025709"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212423"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Standard SKU ロード バランサーを使用する
 
@@ -57,7 +57,10 @@ CLI をローカルにインストールして使用する場合、この記事�
 
 ## <a name="use-the-standard-sku-load-balancer"></a>*Standard* SKU のロード バランサーを使用する
 
-AKS クラスターを作成すると、既定では、そのクラスターでサービスを実行するときに、*Standard* SKU ロード バランサーが使用されます。 たとえば、[Azure CLI を使用したクイックスタート][aks-quickstart-cli]では、*Standard* SKU ロード バランサーを使用してサンプル アプリケーションをデプロイしています。 
+AKS クラスターを作成すると、既定では、そのクラスターでサービスを実行するときに、*Standard* SKU ロード バランサーが使用されます。 たとえば、[Azure CLI を使用したクイックスタート][aks-quickstart-cli]では、*Standard* SKU ロード バランサーを使用してサンプル アプリケーションをデプロイしています。
+
+> [!IMPORTANT]
+> パブリック IP アドレスを回避するには、ユーザー定義ルート (UDR) をカスタマイズします。 AKS クラスターの送信の種類を UDR に指定すると、AKS で作成された Azure ロード バランサーの IP プロビジョニングとバックエンド プールの設定をスキップできます。 [クラスターの `outboundType` を 'userDefinedRouting' に設定する](egress-outboundtype.md)方法に関する記事を参照してください。
 
 ## <a name="configure-the-load-balancer-to-be-internal"></a>ロード バランサーを内部として構成する
 

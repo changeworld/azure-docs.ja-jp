@@ -1,20 +1,20 @@
 ---
-title: Azure Firewall 構成を Azure Firewall ポリシーに移行する方法 (プレビュー)
+title: PowerShell を使用して Azure Firewall の構成を Azure Firewall ポリシー (プレビュー) に移行する
 description: Azure Firewall 構成を Azure Firewall ポリシーに移行する方法 (プレビュー) について説明します。
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: f23c9c030b94fe6f563b4e850a78d2d11db7ec25
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 498863c98f308a9fd9b47f80328d572187475901
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511360"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443110"
 ---
-# <a name="how-to-migrate-azure-firewall-configurations-to-azure-firewall-policy-preview"></a>Azure Firewall 構成を Azure Firewall ポリシーに移行する方法 (プレビュー)
+# <a name="migrate-azure-firewall-configurations-to-azure-firewall-policy-preview-using-powershell"></a>PowerShell を使用して Azure Firewall の構成を Azure Firewall ポリシー (プレビュー) に移行する
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
@@ -159,6 +159,6 @@ If ($azfw.NatRuleCollections.Count -gt 0) {
     Write-Host "Created NatRuleCollectionGroup "  $natRuleGroup.Name
 }
 ```
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Firewall Manager のデプロイについて、詳細を学習します。[Azure Firewall Manager プレビューのデプロイの概要](deployment-overview.md)を確認してください。
