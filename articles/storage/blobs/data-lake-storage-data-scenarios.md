@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 02/14/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: d6347d75e0a3883f23fdf76016080c8b7b330163
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: b0ebe6cb505fa2a145dd3cbb94398912f2933a4b
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580805"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77369719"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Data Lake Storage Gen2 を使用してビッグ データの要件に対応する
 
@@ -25,67 +25,11 @@ ms.locfileid: "73580805"
 > * データのダウンロード
 > * データの視覚化
 
-最初に、ストレージ アカウントとコンテナーを作成します。 次に、データへのアクセス権を付与します。 この記事の最初の数セクションは、これらのタスクを実行するのに役立ちます。 残りのセクションでは、各処理フェーズのオプションとツールに注目します。
+この記事では、各処理フェーズのオプションとツールについて説明します。
 
 Azure Data Lake Storage Gen2 で使用できる Azure サービスの完全な一覧については、「[Integrate Azure Data Lake Storage with Azure services](data-lake-storage-integrate-with-azure-services.md)」 (Azure Data Lake Storage と Azure サービスを統合する) を参照してください
 
-## <a name="create-a-data-lake-storage-gen2-account"></a>Data Lake Storage Gen2 アカウントを作成する
-
-Data Lake Storage Gen2 アカウントは、階層型名前空間を持つストレージ アカウントです。 
-
-作成方法については、「[クイック スタート: Azure Data Lake Storage Gen2 ストレージ アカウントを作成する](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
-
-## <a name="create-a-container"></a>コンテナーを作成する
-
-お使いのファイル用のコンテナーの作成に使用できるツールの一覧を次に示します。
-
-|ツール | ガイダンス |
-|---|--|
-|Azure ストレージ エクスプローラー | [Storage Explorer を使用してコンテナーを作成する](data-lake-storage-explorer.md#create-a-container) |
-|AzCopy | [AzCopyV10 を使用して BLOB コンテナーまたはファイル共有を作成する](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10#transfer-files)|
-|Hadoop コンテナー (HDFS) コマンド ライン インターフェイス (CLI) と HDInsight |[HDFS と HDInsight を使用してコンテナーを作成する](data-lake-storage-use-hdfs-data-lake-storage.md#create-a-container) |
-|Azure Databricks ノートブックでのコード|[ストレージ アカウント コンテナーを作成する (Scala)](data-lake-storage-quickstart-create-databricks-account.md#create-storage-account-container) <br><br> [コンテナーを作成してマウントする (Python)](data-lake-storage-use-databricks-spark.md#create-a-container-and-mount-it)|
-
-Storage Explorer または AzCopy を使用してファイル システムを作成するのが最も簡単です。 HDInsight および Databricks を使用してファイル システムを作成する場合は、もう少し手間がかかります。 ただし、HDInsight クラスターまたは Databricks クラスターを使用してデータを処理することを計画している場合は、クラスターを最初に作成してから、HDFS CLI を使用してファイル システムを作成できます。  
-
-## <a name="grant-access-to-the-data"></a>データへのアクセス権を付与する
-
-データの取り込みを始める前に、アカウントおよびアカウント内のデータへの適切なアクセス許可を設定します。
-
-アクセス権を付与するには 3 つの方法があります。
-
-* ユーザー、グループ、ユーザー マネージド ID、またはサービス プリンシパルに、次のいずれかのロールを割り当てます。
-
-  [ストレージ BLOB データ閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)
-
-  [ストレージ BLOB データ共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)
-
-  [ストレージ BLOB データ所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
-
-* Shared Access Signature (SAS) トークンを使用します。
-
-* ストレージ アカウント キーを使用します。
-
-次の表では、各 Azure サービスまたはツールに対するアクセス権を付与する方法を示します。
-
-|ツール | アクセス権を付与する方法 | ガイダンス |
-|---|--|---|
-|ストレージ エクスプローラー| ユーザーおよびグループにロールを割り当てる | [Azure Active Directory を使ってユーザーに管理者と管理者以外のロールを割り当てる](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal) |
-|AzCopy| ユーザーおよびグループにロールを割り当てる <br>**or**<br> SAS トークンを使用する| [Azure Active Directory を使ってユーザーに管理者と管理者以外のロールを割り当てる](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)<br><br>[SAS を簡単に作成して Azure Storage からファイルをダウンロードする – Azure Storage Explorer の使用](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/)|
-|Apache DistCp | ユーザー割り当てマネージド ID にロールを割り当てる | [Data Lake Storage Gen2 を使用する HDInsight クラスターの作成](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
-|Azure Data Factory| ユーザー割り当てマネージド ID にロールを割り当てる<br>**or**<br> サービス プリンシパルにロールを割り当てる<br>**or**<br> ストレージ アカウント キーを使用する | [リンクされたサービスのプロパティ](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#linked-service-properties) |
-|Azure HDInsight| ユーザー割り当てマネージド ID にロールを割り当てる | [Data Lake Storage Gen2 を使用する HDInsight クラスターの作成](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)|
-|Azure Databricks| サービス プリンシパルにロールを割り当てる | [方法: リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)|
-
-特定のファイルやフォルダーへのアクセス権を付与するには、次の記事をご覧ください。
-
-* [Azure Data Lake Storage Gen2 で Azure Storage Explorer を使用してファイルとディレクトリ レベルのアクセス許可を設定する](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
-
-* [ファイルとディレクトリのアクセス制御リスト](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control#access-control-lists-on-files-and-directories)
-
-セキュリティの他の側面を設定する方法については、「[Azure Data Lake Storage Gen2 セキュリティ ガイド](https://docs.microsoft.com/azure/storage/common/storage-data-lake-storage-security-guide?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。
-
-## <a name="ingest-the-data"></a>データを取り込む
+## <a name="ingest-the-data-into-data-lake-storage-gen2"></a>Data Lake Storage Gen2 にデータを取り込む
 
 このセクションでは、さまざまなデータ ソースと、そのデータを Data Lake Storage Gen2 アカウントに取り込む各種方法について説明します。
 
@@ -97,9 +41,9 @@ Storage Explorer または AzCopy を使用してファイル システムを作
 
 アドホック データの取り込みに使用できるツールの一覧を次に示します。
 
-| データ ソース | 取り込みに使用するツール |
+| Data Source | 取り込みに使用するツール |
 | --- | --- |
-| ローカル コンピューター |[Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)<br><br>[AzCopy ツール](../common/storage-use-azcopy-v10.md)|
+| ローカル コンピューター |[Azure PowerShell](data-lake-storage-directory-file-acl-powershell.md)<br><br>[Azure CLI](data-lake-storage-directory-file-acl-cli.md)<br><br>[Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)<br><br>[AzCopy ツール](../common/storage-use-azcopy-v10.md)|
 | Azure Storage BLOB |[Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md)<br><br>[AzCopy ツール](../common/storage-use-azcopy-v10.md)<br><br>[HDInsight クラスター上で実行されている DistCp](data-lake-storage-use-distcp.md)|
 
 ### <a name="streamed-data"></a>ストリーミングされたデータ
@@ -110,6 +54,7 @@ Storage Explorer または AzCopy を使用してファイル システムを作
 
 |ツール | ガイダンス |
 |---|--|
+|Azure Stream Analytics|[クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal) <br> [Azure Data Lake Gen2 に出力する](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-outputs#blob-storage-and-azure-data-lake-gen2)|
 |Azure HDInsight Storm | [HDInsight 上の Apache Storm から Apache Hadoop HDFS に書き込む](https://docs.microsoft.com/azure/hdinsight/storm/apache-storm-write-data-lake-store) |
 
 ### <a name="relational-data"></a>リレーショナル データ
@@ -131,6 +76,8 @@ Web サーバー ログ データの取り込みに使用できるツールの�
 |ツール | ガイダンス |
 |---|--|
 |Azure Data Factory | [Azure Data Factory の Copy アクティビティ](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)  |
+|Azure CLI|[Azure CLI](data-lake-storage-directory-file-acl-cli.md)|
+|Azure PowerShell|[Azure PowerShell](data-lake-storage-directory-file-acl-powershell.md)|
 
 Web サーバー ログ データをアップロードする場合、または他の種類のデータ (ソーシャル センチメント データなど) をアップロードする場合には、独自のカスタム スクリプトやカスタム アプリケーションを記述することをお勧めします。 これにより、データをアップロードするコンポーネントをより大規模なビッグ データ アプリケーションの一部として含める柔軟性が得られるためです。 このコードは、スクリプトまたは単純なコマンド ライン ユーティリティの形をとる場合もあれば、ビッグ データの処理をビジネス アプリケーションまたはビジネス ソリューションに統合するために使用される場合もあります。
 
@@ -172,16 +119,11 @@ Data Lake Storage Gen2 に格納されているデータに対してデータ分
 |ツール | ガイダンス |
 |---|--|
 |Azure HDInsight | [Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
-|Azure Databricks | [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)<br><br>[クイック スタート:Azure Databricks を使用して Azure Data Lake Storage Gen2 のデータを分析する](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[チュートリアル:Azure Databricks を使用してデータの抽出、変換、読み込みを行う](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure Databricks | [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)<br><br>[クイック スタート: Azure Databricks を使用して Azure Data Lake Storage Gen2 のデータを分析する](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[チュートリアル:Azure Databricks を使用してデータの抽出、変換、読み込みを行う](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 
 ## <a name="visualize-the-data"></a>データの視覚化
 
-複数のサービスを組み合わせて使用することで、Data Lake Storage Gen2 に格納されたデータを視覚的に表現することができます。
-
-![Data Lake Storage Gen2 のデータを視覚化する](./media/data-lake-storage-data-scenarios/visualize-data.png "Data Lake Storage Gen2 のデータを視覚化する")
-
-* まず、[Azure Data Factory を使って、Data Lake Storage Gen2 から Azure SQL Data Warehouse にデータを移動](../../data-factory/copy-activity-overview.md)することができます。
-* その後、 [Power BI を Azure SQL Data Warehouse と統合](../../sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) して、データを視覚的に表現することができます。
+Data Lake Storage Gen2 に格納されたデータを視覚的に表現するには、Power BI コネクタを使用します。 「[Power BI を使用して Azure Data Lake Storage Gen2 のデータを分析する](https://docs.microsoft.com/power-query/connectors/datalakestorage)」を参照してください。
 
 ## <a name="download-the-data"></a>データをダウンロードする
 
@@ -199,3 +141,5 @@ Data Lake Storage Gen2 からのデータのダウンロードに使用できる
 |---|--|
 |Azure Data Factory | [Azure Data Factory の Copy アクティビティ](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
 |Apache DistCp | [Distcp を使用して Azure Storage Blob と Azure Data Lake Storage Gen2 の間でデータをコピーする](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
+|Azure ストレージ エクスプローラー|[Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-explorer.md)|
+|AzCopy ツール|[AzCopy と Blob Storage でデータを転送する](../common/storage-use-azcopy-blobs.md)|

@@ -1,6 +1,6 @@
 ---
-title: MS Graph API を使用してプロビジョニングを構成する - Azure Active Directory | Microsoft Docs
-description: アプリケーションの複数のインスタンスを対象にプロビジョニングを設定する必要がありますか? MS Graph API を使用して自動プロビジョニングの構成を自動化し、時間を節約する方法について説明します。
+title: Microsoft Graph API を使用してプロビジョニングを構成する - Azure Active Directory | Microsoft Docs
+description: アプリケーションの複数のインスタンスを対象にプロビジョニングを設定する必要がありますか? Microsoft Graph API を使用して自動プロビジョニングの構成を自動化し、時間を節約する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,12 +16,12 @@ ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f19f6e4add9bd677b05e09c627532a7a48354ce
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: f5780227274e8f9574fcdfcd388d75e333cc3d42
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77065938"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367828"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Microsoft Graph API を使用してプロビジョニングを構成する
 

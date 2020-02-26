@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 76e9526ab39cbccd45a48d2cd24e05867c953774
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 67b045ff0661e8d0f8e20656a012e85d01e83d7b
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280834"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425920"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-portal"></a>ポータルを使用して Azure Database for MariaDB (プレビュー) 用のプライベート リンクを作成および管理する
 
@@ -35,9 +35,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[仮想ネットワーク]** の順に選択します。
 2. **[仮想ネットワークの作成]** に次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
-    | Name | 「*MyVirtualNetwork*」と入力します。 |
+    | 名前 | 「*MyVirtualNetwork*」と入力します。 |
     | アドレス空間 | 「*10.1.0.0/16*」を入力します。 |
     | サブスクリプション | サブスクリプションを選択します。|
     | Resource group | **[新規作成]** を選択し、「*myResourceGroup*」と入力して、 **[OK]** を選択します。 |
@@ -53,7 +53,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 2. **[仮想マシンの作成 - 基本]** に次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
     | サブスクリプション | サブスクリプションを選択します。 |
@@ -80,7 +80,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[仮想マシンの作成 - ネットワーク]** で次の情報を選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | 仮想ネットワーク | 既定値 **[MyVirtualNetwork]** のままにします。  |
     | アドレス空間 | 既定値 **[10.1.0.0/24]** のままにします。|
@@ -103,7 +103,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[Azure Database for MariaDB]** で、次の情報を入力します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
     | サブスクリプション | サブスクリプションを選択します。 |
@@ -133,19 +133,19 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[Create a private endpoint (Preview) - Basics]\(プライベート エンドポイント (プレビュー) の作成 - 基本\)** で次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
     | サブスクリプション | サブスクリプションを選択します。 |
     | Resource group | **[myResourceGroup]** を選択します。 これは前のセクションで作成しました。|
     | **インスタンスの詳細** |  |
-    | Name | 「*myPrivateEndpoint*」と入力します。 この名前を取得する場合は、一意の名前を作成します。 |
+    | 名前 | 「*myPrivateEndpoint*」と入力します。 この名前を取得する場合は、一意の名前を作成します。 |
     |リージョン|**[西ヨーロッパ]** を選択します。|
     |||
 5. **リソース** を選択します。
 6. **[プライベート エンドポイントの作成 - リソース]** で、次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     |接続方法  | 自分のディレクトリ内の Azure リソースに接続するように選択します。|
     | サブスクリプション| サブスクリプションを選択します。 |
@@ -156,7 +156,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 7. **構成** を選択します。
 8. **[Create a private endpoint (Preview) - Configuration]\(プライベート エンドポイント (プレビュー) の作成 - 構成\)** で次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     |**ネットワーク**| |
     | 仮想ネットワーク| *[MyVirtualNetwork]* を選択します。 |
@@ -210,34 +210,35 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     Non-authoritative answer:
     Name:    mydemoMariaDBserver.privatelink.mariadb.database.azure.com
     Address:  10.1.3.4
+    ```
 
-3. Test the private link connection for the MariaDB server using any available client. In the example below I have used [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
+3. 利用可能な任意のクライアントを使用して、MariaDB サーバーのプライベート リンク接続をテストします。 次の例では、[MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) を使用して操作を行いました。
 
 
-4. In **New connection**, enter or select this information:
+4. **[新しい接続]** で、この情報を入力または選択します。
 
-    | Setting | Value |
+    | 設定 | Value |
     | ------- | ----- |
-    | Server type| Select **MariaDB**.|
-    | Server name| Select *mydemoserver.privatelink.mariadb.database.azure.com* |
-    | User name | Enter username as username@servername which is provided during the MariaDB server creation. |
-    |Password |Enter a password provided during the MariaDB server creation. |
-    |SSL|Select **Required**.|
+    | サーバーの種類| **[MariaDB]** を選択します。|
+    | サーバー名| *mydemoserver.privatelink.mariadb.database.azure.com* を選択します。 |
+    | ユーザー名 | MariaDB サーバーの作成時に指定したユーザー名を username@servername 形式で入力します。 |
+    |Password |MariaDB サーバーの作成時に指定したパスワードを入力します。 |
+    |SSL|**[必須]** を選択します。|
     ||
 
-5. Select **Test Connection** or **OK**.
+5. **[テスト接続]** または **[OK]** を選択します。
 
-6. (Optionally) Browse databases from left menu and Create or query information from the MariaDB database
+6. (省略可能) 左側のメニューからデータベースを参照して、MariaDB データベースからの情報を作成または照会します
 
-7. Close the remote desktop connection to myVm.
+7. myVm へのリモート デスクトップ接続を閉じます。
 
-## Clean up resources
-When you're done using the private endpoint, MariaDB server, and the VM, delete the resource group and all of the resources it contains:
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+プライベート エンドポイント、MariaDB サーバー、VM を使い終えたら、リソース グループとそこに含まれるすべてのリソースを削除します。
 
-1. Enter *myResourceGroup* in the **Search** box at the top of the portal and select *myResourceGroup* from the search results.
-2. Select **Delete resource group**.
-3. Enter myResourceGroup for **TYPE THE RESOURCE GROUP NAME** and select **Delete**.
+1. ポータルの上部にある**検索**ボックスに「 *myResourceGroup*」と入力し、検索結果から  *myResourceGroup* を選択します。
+2. **[リソース グループの削除]** を選択します。
+3. **[TYPE THE RESOURCE GROUP NAME]\(リソース グループ名を入力してください\)** に「myResourceGroup」と入力し、 **[削除]** を選択します。
 
-## Next steps
+## <a name="next-steps"></a>次のステップ
 
-In this how-to, you created a VM on a virtual network, an Azure Database for MariaDB, and a private endpoint for private access. You connected to one VM from the internet and securely communicated to the MariaDB server using Private Link. To learn more about private endpoints, see [What is Azure private endpoint](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
+この記事では、仮想ネットワーク上の VM、Azure Database for MariaDB、およびプライベート アクセス用のプライベート エンドポイントを作成しました。 インターネットから 1 台の VM に接続し、Private Link を使用して MariaDB サーバーと安全に通信を行いました。 プライベート エンドポイントの詳細については、「[Azure プライベート エンドポイントとは](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)」を参照してください。

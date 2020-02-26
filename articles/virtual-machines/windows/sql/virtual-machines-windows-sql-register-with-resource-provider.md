@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 148ded0eba61221a2bdf0b8a50392da47a4c5f20
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 01e683e31905281d25fdcf976bc58397c052a6c3
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122493"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201630"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Azure 内の SQL Server 仮想マシンを SQL VM リソースプロバイダーに登録する
 
@@ -126,7 +126,9 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 ### <a name="lightweight-management-mode"></a>軽量管理モード
 
-[SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)が VM にインストールされていない場合は、軽量モードで SQL VM リソース プロバイダーに登録することをお勧めします。 これにより、SQL IaaS 拡張機能は[軽量モード](#management-modes)でインストールされ、SQL Server サービスの再起動が回避されます。 その後、いつでもフル モードにアップグレードできますが、これを行うと SQL Server サービスが再起動されるので、予定メンテナンス期間まで待つことをお勧めします。 SQL Server ライセンスの種類 (使用量ごとに支払う場合は従量課金制 (`PAYG`)、独自のライセンスを使用する場合は Azure ハイブリッド特典 (`AHUB`)) を指定する必要があります。
+[SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)が VM にインストールされていない場合は、軽量モードで SQL VM リソース プロバイダーに登録することをお勧めします。 これにより、SQL IaaS 拡張機能は[軽量モード](#management-modes)でインストールされ、SQL Server サービスの再起動が回避されます。 その後、いつでもフル モードにアップグレードできますが、これを行うと SQL Server サービスが再起動されるので、予定メンテナンス期間まで待つことをお勧めします。 
+
+SQL Server のライセンスの種類として、使用した分を支払う従量課金制 (`PAYG`)、独自のライセンスを使用する Azure ハイブリッド特典 (`AHUB`)、または [無料の DR レプリカ ライセンス](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure)をアクティブ化するディザスター リカバリー (`DR`) のいずれかを指定します。
 
 フェールオーバー クラスター インスタンスとマルチインスタンス デプロイは、軽量モードでのみ SQL VM リソース プロバイダーに登録できます。 
 
@@ -176,7 +178,7 @@ SQL Server VM をフル モードで直接登録するには (さらに、場合
 
 Windows Server 2008 (_R2 ではない_) にインストールされている SQL Server 2008 および 2008 R2 は、[NoAgent](#management-modes) モードで SQL VM リソース プロバイダーに登録できます。 このオプションにより、コンプライアンスが確保され、SQL Server VM を Azure portal の限られた機能で監視できるようになります。
 
-**sqlLicenseType** として `AHUB` または `PAYG`、**sqlImageOffer** として `SQL2008-WS2008` または `SQL2008R2-WS2008` を指定します。 
+**sqlLicenseType** として `AHUB`、`PAYG`、または `DR`、**sqlImageOffer** として `SQL2008-WS2008` または `SQL2008R2-WS2008` を指定します。 
 
 Windows Server 2008 インスタンス上の SQL Server 2008 または 2008 R2 インスタンスを登録するには、次の Az CLI または PowerShell のコード スニペットを使用します。 
 

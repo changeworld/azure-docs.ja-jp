@@ -11,32 +11,32 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/20/2019
+ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: b7e5b0286cdd15834b84e4fd3e619c6555054823
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: bcf92838483fbb6b54802cc0d44cc44ea086d705
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75553003"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430655"
 ---
 # <a name="protect-your-machines-and-applications"></a>マシンとアプリケーションを保護する
 Azure Security Center によって潜在的なセキュリティの脆弱性が識別されると、リソースを堅牢化および保護するために必要な管理を構成するプロセスを説明する推奨事項が作成されます。
 
 この記事では、Security Center のリソース セキュリティ セクションの **[計算とアプリ]** ページについて説明します。
 
-このページに表示される可能性のある推奨事項の完全な一覧については、「[データとストレージに関する推奨事項](recommendations-reference.md#recs-computeapp)」を参照してください。
+このページに表示される可能性のある推奨事項の完全な一覧については、「[コンピューティングとアプリの推奨事項](recommendations-reference.md#recs-computeapp)」を参照してください。
 
 
 ## <a name="view-the-security-of-your-compute-and-apps-resources"></a>計算とアプリ リソースのセキュリティを表示する
 
-[![Security Center ダッシュボード](./media/security-center-virtual-machine-recommendations/overview.png)](./media/security-center-virtual-machine-recommendations/overview.png#lightbox)
+[![Security Center ダッシュボード](./media/security-center-virtual-machine-recommendations/compute-and-apps-recs-overview.png)](./media/security-center-virtual-machine-recommendations/compute-and-apps-recs-overview.png#lightbox)
 
-計算とアプリ リソースの状態を表示するには、Security Center のサイドバーの **[リソース]** で **[計算とアプリ]** を選択します。 次のタブを使用できます。
+計算とアプリ リソースの状態を表示するには、Security Center の左側のウィンドウで **[計算とアプリ]** を選択します。 次のタブを使用できます。
 
 * **概要**: すべての計算とアプリ リソースに関する推奨事項と、それらの現在のセキュリティ状態を一覧表示します 
 
-* [**VM およびコンピューター**](#vms-and-computers): VM およびコンピューターに関する推奨事項と、それぞれの現在のセキュリティ状態を一覧表示します
+* [**VM およびサーバー**](#vms-and-computers): VM およびコンピューターに関する推奨事項と、それぞれの現在のセキュリティ状態を一覧表示します
 
 * [**VM スケール セット**](#vmscale-sets): スケール セットに関する推奨事項を一覧表示します 
 
@@ -44,7 +44,7 @@ Azure Security Center によって潜在的なセキュリティの脆弱性が�
 
 * [**App Service**](#app-services): App Service 環境に関する推奨事項と、それぞれの現在のセキュリティ状態を一覧表示します
 
-* **コンテナー**: コンテナーに関する推奨事項と、その構成のセキュリティ評価を一覧表示します
+* [**コンテナー**](#containers): コンテナーに関する推奨事項と、その構成のセキュリティ評価を一覧表示します
 
 * **計算リソース**: Service Fabric クラスターやイベント ハブなど、計算リソースに関する推奨事項を一覧表示します
 
@@ -60,7 +60,10 @@ Azure Security Center によって潜在的なセキュリティの脆弱性が�
 > セキュリティに関する推奨事項は、 **[推奨事項]** ページにあるものと同じですが、ここでは選択した特定のリソースの種類に合わせてフィルタリングされています。 推奨事項の解決方法の詳細については、[Azure Security Center でのセキュリティに関する推奨事項の実装](security-center-recommendations.md)に関するページを参照してください。
 >
 
-### <a name="vms-and-computers"></a>VM およびコンピューター
+
+
+
+### <a name="vms-and-computers"></a>VM およびサーバー
 [VM およびコンピューター] セクションには、VM とコンピューターに関するすべてのセキュリティ推奨事項の概要が表示されます。 4 種類のマシンが含まれます。
 
 ![Azure 以外のコンピューター](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon1.png) Azure 以外のコンピューター。
@@ -78,6 +81,35 @@ Azure Security Center によって潜在的なセキュリティの脆弱性が�
 
 [![クラウド サービス](./media/security-center-virtual-machine-recommendations/recommendation-list.png)](./media/security-center-virtual-machine-recommendations/recommendation-list.png#lightbox)
 
+
+
+
+### <a name="vmscale-sets"></a>仮想マシン スケール セット
+Security Center は、スケール セットがあるかどうかを自動的に検出し、それらに Microsoft Monitoring Agent をインストールすることを推奨します。
+
+Microsoft Monitoring Agent をインストールするには 
+
+1. 推奨事項 **[仮想マシン スケール セットに監視エージェントをインストールする]** を選択します。 監視されていないスケール セットの一覧が表示されます。
+
+1. 異常なスケール セットを選択します。 既存の挿入済みのワークスペースを使用して監視エージェントをインストールするか、または新しいものを作成するという指示に従います。 ワークスペースの[価格レベル](security-center-pricing.md)が設定されていない場合は設定します。
+
+   ![MMS のインストール](./media/security-center-virtual-machine-recommendations/install-mms.png)
+
+新しいスケール セットを設定して自動的に Microsoft Monitoring Agent をインストールするには:
+1. Azure Policy に移動して、 **[定義]** をクリックします。
+
+1. **Windows 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ** ポリシーを検索してクリックします。
+
+1. **[割り当て]** をクリックします。
+
+1. **[スコープ]** と **[Log Analytics ワークスペース]** を設定して **[割り当て]** をクリックします。
+
+既存のスケール セットをすべて設定して Microsoft Monitoring Agent をインストールする場合は、Azure Policy で、 **[修復]** に移動し、既存のポリシーを既存のスケール セットに適用します。
+
+
+
+
+
 ### <a name="cloud-services"></a>クラウド サービス
 クラウド サービスについては、オペレーティング システムのバージョンが最新でないときに、推奨事項が作成されます。
 
@@ -85,9 +117,13 @@ Azure Security Center によって潜在的なセキュリティの脆弱性が�
 
 推奨事項があるシナリオでは、推奨事項の手順に従ってオペレーティング システムを更新してください。 更新プログラムが利用できる場合は、アラートが表示されます (問題の重大度により、赤またはオレンジになります)。 この推奨事項に関する完全な説明を確認する場合は、 **[説明]** 列の **[OS バージョンの更新]** をクリックしてください。
 
+
+
+
+
+
 ### <a name="app-services"></a>App Service
 App Service 情報を表示するには、Security Center の Standard 価格レベルを使用し、サブスクリプションでApp Service を有効にする必要があります。 この機能を有効にする方法については、「[Azure Security Center で App Service を保護する](security-center-app-services.md)」を参照してください。
-
 
 **[App Service]** には、App Service 環境の一覧と、Security Center によって実行された評価に基づく正常性についての概要が表示されます。
 
@@ -117,27 +153,49 @@ Web アプリケーションを選択すると、次の 3 つのタブがある�
 
    - 一覧から合格した評価を選択すると、評価の説明、正常でないリソース、正常なリソース、およびスキャンされていないリソースの一覧が表示されます。 正常でないリソース用のタブがありますが、評価に合格しているため、その一覧は常に空です。
 
-### <a name="vmscale-sets"></a>仮想マシン スケール セット
-Security Center は、スケール セットがあるかどうかを自動的に検出し、それらに Microsoft Monitoring Agent をインストールすることを推奨します。
 
-Microsoft Monitoring Agent をインストールするには 
 
-1. 推奨事項 **[仮想マシン スケール セットに監視エージェントをインストールする]** を選択します。 監視されていないスケール セットの一覧が表示されます。
 
-1. 異常なスケール セットを選択します。 既存の挿入済みのワークスペースを使用して監視エージェントをインストールするか、または新しいものを作成するという指示に従います。 ワークスペースの[価格レベル](security-center-pricing.md)が設定されていない場合は設定します。
 
-   ![MMS のインストール](./media/security-center-virtual-machine-recommendations/install-mms.png)
+### <a name="containers"></a>コンテナー
 
-新しいスケール セットを設定して自動的に Microsoft Monitoring Agent をインストールするには:
-1. Azure Policy に移動して、 **[定義]** をクリックします。
+環境に応じて **[コンテナー]** タブを開くと、次の 3 種類のリソースのいずれかが表示されます。
 
-1. **Windows 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ** ポリシーを検索してクリックします。
+![コンテナー ホスト](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png) コンテナーホスト - Docker を実行している VM 
 
-1. **[割り当て]** をクリックします。
+![Kubernetes サービス](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png) Azure Kubernetes Service (AKS) クラスター
 
-1. **[スコープ]** と **[Log Analytics ワークスペース]** を設定して **[割り当て]** をクリックします。
+![コンテナー レジストリ](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png) Azure Container Registry (ACR) レジストリ - 標準価格レベルを使用していて、Azure Container Registry バンドルが有効になっている場合にのみ表示されます。
 
-既存のスケール セットをすべて設定して Microsoft Monitoring Agent をインストールする場合は、Azure Policy で、 **[修復]** に移動し、既存のポリシーを既存のスケール セットに適用します。
+コンテナーのセキュリティ機能を使用する方法については、「[コンテナーのセキュリティを監視する](monitor-container-security.md)」を参照してください。
+
+Azure Container Registry バンドルの利点については、[こちら](azure-container-registry-integration.md)を参照してください
+
+Kubernetes Services バンドルの利点については、[こちら](azure-kubernetes-service-integration.md)を参照してください
+
+[![[コンテナー] タブ](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png)](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png#lightbox)
+
+リスト内の特定のリソースに関する推奨事項を表示するには、そのリソースをクリックします。
+
+#### <a name="visibility-into-container-registries"></a>コンテナー レジストリの可視性
+
+たとえば、上の画面に示されている一覧から、asc-demo ACR レジストリをクリックすると、次の詳細ページが表示されます。
+
+[![特定の ACR レジストリに関する推奨事項](./media/security-center-virtual-machine-recommendations/acr-registry-recs-list.png)](./media/security-center-virtual-machine-recommendations/acr-registry-recs-list.png#lightbox)
+
+
+#### <a name="visibility-into-containers-hosted-on-iaas-linux-machines"></a>IaaS Linux マシンでホストされているコンテナーの可視性
+
+Docker を実行している VM のいずれかをクリックすると、詳細ページに、Docker のバージョンやホストで実行されているイメージの数など、コンピューターのコンテナーに関連する情報が表示されます。
+
+![Docker を実行している VM の推奨事項](./media/security-center-virtual-machine-recommendations/docker-recommendation.png)
+
+
+#### <a name="security-recommendations-based-on-cis-benchmark-for-docker"></a>Docker の CIS ベンチマークに基づくセキュリティに関する推奨事項
+
+Security Center は、Docker 構成をスキャンし、評価されたすべての失敗したルールの一覧を提供することによって、構成の誤りに対する可視性を提供します。 これらの問題を迅速に解決して時間を節約するのに役立つガイドラインが Security Center から提供されます。 Security Center は、Docker 構成を継続的に評価し、それらの最新の状態をユーザーに提供します。
+
+![[コンテナー] タブ](./media/security-center-container-recommendations/container-cis-benchmark.png)
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -1,6 +1,6 @@
 ---
 title: マップに画像レイヤーを追加する | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps Web SDK を使用して、マップ上に画像をオーバーレイする方法を示します。
+description: この記事では、Microsoft Azure Maps Web SDK を使用してマップ上に画像をオーバーレイする方法を示します。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: cfdf7dfd4c16f70065e338f8983d2124d3f6f0ef
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 69bf41f9d88081b9a416b9bee91e8650a84f12c7
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933214"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209717"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>イメージ レイヤーをマップに追加する
 
-この記事では、マップ上の固定された一連の座標に画像をオーバーレイする方法について説明します。 以下に、マップによくオーバーレイされる画像の種類をいくつか挙げます。
+この記事では、固定された一連の座標に画像をオーバーレイする方法について説明します。 以下、マップでオーバーレイできるさまざまな種類の画像のうち、いくつか例を挙げます。
 
 * ドローンからキャプチャされた画像
 * ビルのフロアプラン
@@ -62,9 +62,9 @@ map.layers.add(new atlas.layer.ImageLayer({
 
 ## <a name="import-a-kml-file-as-ground-overlay"></a>KML ファイルをグラウンド オーバーレイとしてインポートする
 
-この次のサンプルは、KML グラウンド オーバーレイ情報を画像レイヤーとしてマップにオーバーレイする方法を示しています。 KML グラウンド オーバーレイでは、東西南北の座標と反時計回りの回転が提供されます。一方、イメージ レイヤーには、画像の四隅の座標を指定する必要があります。 このサンプルの KML グラウンド オーバーレイは、シャルトル大聖堂のもので、その出典は [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml) です。
+このサンプルからは、KML グラウンド オーバーレイ情報を画像レイヤーとしてマップに追加する方法がわかります。 KML グランド オーバーレイからは、東西南北の座標が反時計回りで与えられます。 しかしながら、画像レイヤーでは、画像の四隅の座標が求められます。 このサンプルの KML グラウンド オーバーレイはシャルトル大聖堂のものであり、その出典は [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml) です。
 
-次のコードでは、[ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) クラスの静的 `getCoordinatesFromEdges` 関数が使用されます。 KML グラウンド オーバーレイから得られる東西南北の情報と回転情報から画像の四隅を計算しています。
+このコードでは、[ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) クラスの静的 `getCoordinatesFromEdges` 関数が使用されています。 KML グラウンド オーバーレイの東西南北と回転の情報が利用され、画像の四隅が計算されます。
 
 <br/>
 

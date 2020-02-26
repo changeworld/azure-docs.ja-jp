@@ -3,12 +3,12 @@ title: サブスクリプションにリソースをデプロイする
 description: Azure Resource Manager テンプレートでリソース グループを作成する方法について説明します。 Azure サブスクリプション スコープでリソースをデプロイする方法も示します。
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: c53d274303a203a427a36f8f729f6b43cee44e40
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 50db0b4d46ff4e367411829aa75fa017a168372f
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120619"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207657"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>サブスクリプション レベルでリソース グループとリソースを作成する
 
@@ -135,7 +135,7 @@ Azure Resource Manager テンプレートでリソース グループを作成�
 }
 ```
 
-複数のリソース グループを作成するには、リソース グループで [copy 要素](create-multiple-instances.md)を使用します。
+複数のリソース グループを作成するには、リソース グループで [copy 要素](copy-resources.md)を使用します。
 
 ```json
 {
@@ -170,7 +170,7 @@ Azure Resource Manager テンプレートでリソース グループを作成�
 }
 ```
 
-リソースのイテレーションについては、「[Azure Resource Manager テンプレートでリソースまたはプロパティの複数のインスタンスをデプロイする](./create-multiple-instances.md)」と、「[チュートリアル:Resource Manager テンプレートを使用した複数のリソース インスタンスの作成](./template-tutorial-create-multiple-instances.md)」を参照してください。
+リソースの反復については、[Azure Resource Manager テンプレートでリソースの複数のインスタンスをデプロイする](./copy-resources.md)ことに関するページと、「[チュートリアル: Resource Manager テンプレートを使用した複数のリソース インスタンスの作成](./template-tutorial-create-multiple-instances.md)」を参照してください。
 
 ## <a name="resource-group-and-resources"></a>リソース グループとリソース
 

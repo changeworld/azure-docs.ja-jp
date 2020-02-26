@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: reference
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: dd9ac9654f916653af974e816485630423466ae5
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: fcc43caf895dadfaf832a47c3254f9b828bcb71a
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815431"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430807"
 ---
 # <a name="swagger-documentation"></a>Swagger ドキュメント
 
@@ -28,7 +28,7 @@ ms.locfileid: "74815431"
 
 [Swagger 仕様](https://cris.ai/swagger/ui/index)には、さまざまなパスをすばやくテストできるオプションが用意されています。 ただし、すべてのパスのコードを生成し、今後のソリューションの基盤にできる呼び出しの 1 つのライブラリを作成することが望ましい場合があります。 Python ライブラリを生成するプロセスを見てみましょう。
 
-ご利用の音声サービス サブスクリプションと同じリージョンに Swagger を設定する必要があります。 Azure portal 内のご利用の音声サービス リソースの下でご利用のリージョンを確認できます。 サポートされているリージョンの完全な一覧については、[リージョン](regions.md)に関するページをご覧ください。
+ご利用の音声サービス サブスクリプションと同じリージョンに Swagger を設定する必要があります。 Azure portal 内のご利用の音声サービス リソースの下でご利用のリージョンを確認できます。 サポートされているリージョンの完全な一覧については、「[リージョン](regions.md)」をご覧ください。
 
 1. [https://resources.azure.com](https://editor.swagger.io ) に移動します
 2. **[File]\(ファイル\)** 、 **[Import]\(インポート\)** の順にクリックします
@@ -44,7 +44,7 @@ ms.locfileid: "74815431"
 * [REST API: 音声テキスト変換](rest-speech-to-text.md)
 * [REST API: テキスト読み上げ](rest-text-to-speech.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [GitHub 上の音声サービス サンプル](https://aka.ms/csspeech/samples)。
 * [Speech サービスのサブスクリプション キーを無料で取得する](get-started.md)

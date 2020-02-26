@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: baa44481c4641f69ead5335298316c837062d2c0
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 6842338bd27e4bea3436f0b249380ab773d60de6
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186048"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368077"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory の条件付きアクセスに関する FAQ
 
@@ -40,7 +40,7 @@ ms.locfileid: "77186048"
 
 条件付きアクセス ポリシーは、すべてのユーザー アカウントに適用されます。 これには、サービス アカウントとして使用されるユーザー アカウントも含まれます。 多くの場合、無人で実行されるサービス アカウントは、条件付きアクセス ポリシーの要件を満たすことができません。 たとえば、多要素認証が必要になる場合があります。 サービス アカウントは、条件付きアクセス ポリシーの管理設定を使用してポリシーから除外できます。 
 
-## <a name="are-graph-apis-available-for-configuring-conditional-access-policies"></a>条件付きアクセス ポリシーの構成に Graph API は利用できますか?
+## <a name="are-microsoft-graph-apis-available-for-configuring-conditional-access-policies"></a>条件付きアクセス ポリシーの構成に Microsoft Graph API は利用できますか?
 
 現時点では利用できません。 
 

@@ -1,5 +1,5 @@
 ---
-title: オーストラリア国内のお客様の識別データの保存 - Azure AD
+title: オーストラリアとニュージーランドのお客様の識別データの保存 - Azure AD
 description: Azure Active Directory によってオーストラリア国内のお客様の識別関連データがどこに保存されるかについて説明します。
 services: active-directory
 author: msaburnley
@@ -12,21 +12,21 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbe4befa824990c2f8b2627e7709913f564c0486
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 850298719d5636e964b0c338d7a2a4cc9bb8aece
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75752528"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370291"
 ---
-# <a name="identity-data-storage-for-australian-customers-in-azure-active-directory"></a>Azure Active Directory でのオーストラリア国内のお客様の識別データの保存
+# <a name="identity-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Azure Active Directory でのオーストラリアとニュージーランドのお客様の識別データの保存
 
 Office 365 や Azure などの Microsoft Online サービスをサブスクライブしている場合、識別データは Azure AD により、組織によって提供されたアドレスに基づく地理的な場所に格納されます。 ご自身の顧客識別データがどこに保存されるかについては、Microsoft セキュリティ センターの「[お客様のデータの場所](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)」セクションを参照してください。
 
 > [!NOTE]
 > 顧客識別データは、Azure AD と統合されるサービスとアプリケーションによってアクセスされます。 使用する各サービスとアプリケーションを評価して、その特定のサービスまたはアプリケーションによる顧客識別データの処理方法と、それらが会社のデータ ストレージ要件を満たしているかどうかを確認してください。 Microsoft サービスのデータ保存場所の詳細については、Microsoft セキュリティ センターのデータの「お客様のデータの場所保存」セクションを参照してください。
 
-オーストラリア国内の住所を提供したお客様の場合、Azure AD では、次のサービスの識別データはオーストラリア国内のデータセンターに保持されます。 
+オーストラリアまたはニュージーランドの住所を提供したお客様の場合、Azure AD では、次のサービスの識別データはオーストラリアのデータセンターに保持されます。 
 - Azure AD Directory の管理 
 - 認証
 

@@ -12,24 +12,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/19/2019
 ms.author: memildin
-ms.openlocfilehash: bb004d536d30d62116866581daeef9b42c23d470
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 7601a5f8abefd88de0f9a3682341c5366eec3fb0
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936359"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431063"
 ---
 # <a name="azure-container-registry-integration-with-security-center-preview"></a>Azure Container Registry と Security Center の統合 (プレビュー)
 
 Azure Container Registry (ACR) は、Azure デプロイ用のコンテナー イメージを中央のレジストリに格納して管理する、プライベートなマネージド Docker レジストリ サービスです。 これは、オープンソースの Docker Registry 2.0 を基にしています。
 
-Azure Security Center の 標準レベルを使用している場合には、Container Registries のバンドルを追加できます。 このオプションの機能を使用すると、ARM ベースのレジストリ内のイメージの脆弱性をより詳しく把握できます。 サブスクリプション レベルでバンドルを有効または無効にし、サブスクリプション内のすべてのレジストリをカバーします。 このフィーチャーは、[価格のページ](security-center-pricing.md)に示されているように、スキャンごとではなくイメージごとに課金されます。 
-
-Container Registries のバンドルを有効にすると、Security Center は、レジストリにプッシュされたイメージをスキャンできるようになります。 このスキャンはイメージレベルで実行されます。Security Center はレジストリをスキャンするのではなく、レジストリに格納されたイメージをスキャンしています。 
+Azure Security Center の 標準レベルを使用している場合には、Container Registries のバンドルを追加できます。 このオプションの機能を使用すると、ARM ベースのレジストリ内のイメージの脆弱性をより詳しく把握できます。 サブスクリプション レベルでバンドルを有効または無効にし、サブスクリプション内のすべてのレジストリをカバーします。 この機能は、[価格のページ](security-center-pricing.md)に示されているように、イメージごとに課金されます。 Container Registries のバンドルを有効にすると、Security Center は、レジストリにプッシュされたイメージをスキャンできるようになります。 
 
 イメージがレジストリにプッシュされるたびに、Security Center はそのイメージを自動的にスキャンします。 イメージのスキャンをトリガーするには、イメージをリポジトリにプッシュしてください。
 
-スキャンが完了すると (通常は約 10 分後)、Security Center の推奨事項で次のような結果が得られます。
+スキャンが完了すると (通常は約 10 分後)、次のような Security Center の推奨事項で結果が得られます。
 
 [![Azure Container Registry (ACR) でホストされるイメージで検出された脆弱性に関する Azure Security Center の推奨事項のサンプル](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 

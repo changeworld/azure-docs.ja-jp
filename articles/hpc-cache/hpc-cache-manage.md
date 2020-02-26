@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: rohogue
-ms.openlocfilehash: 9ad6348e15c8a25f721a89be7eab3e17c58ae17c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: da260074fc69fac9e98d3698bb2d40fdf80d7118
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988873"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252044"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>Azure portal からキャッシュを管理する
 
@@ -73,6 +73,8 @@ Azure portal のキャッシュの概要ページには、お使いのキャッ�
 ソフトウェアの更新は数時間かかることがあります。 スループットが高い構成のキャッシュは、ピーク スループット値が低いキャッシュよりもアップグレードするのに時間がかかります。
 
 ソフトウェア アップグレードが入手可能になった場合、それを手動で適用するには 1 週間程度かかります。 終了日は、アップグレード メッセージに記載されています。 ユーザーがその期間中にアップグレードしないと、Azure が自動的に、更新プログラムをキャッシュに適用します。 自動アップグレードのタイミングは構成可能ではありません。 キャッシュ パフォーマンスへの影響が懸念される場合は、有効期限が切れる前に、ソフトウェアを自分でアップグレードする必要があります。
+
+有効期限が切れ、お使いのキャッシュが停止している場合、次回の起動時にキャッシュによってソフトウェアが自動的にアップグレードされます。 (更新プログラムは直ちに開始されない場合もありますが、最初の 1 時間で開始されます)。
 
 **[アップグレード]** ボタンをクリックしてソフトウェアの更新を開始します。 操作が完了するまで、キャッシュの状態は **[アップグレード中]** に変わります。
 

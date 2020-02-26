@@ -1,20 +1,20 @@
 ---
 title: Android マップ コントロールの概要 | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps Android SDK を使用した Android マップ コントロールの概要を説明します。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: bb9dc16eabbd6065e05d26258c1421aa7a46dbd7
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 57ad9992bec3f070366134d8dfbcdafa8f2e16d4
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911395"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209853"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure Maps Android SDK の概要
 
@@ -103,7 +103,7 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
     </FrameLayout>
     ```
 
-4. **MainActivity.java** ファイルで、次を行う必要があります。
+4. **MainActivity.java** ファイルで、以下の操作を行う必要があります。
     
     * Azure Maps SDK の imports を追加する
     * Azure Maps の認証情報を設定する
@@ -111,7 +111,7 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
 
     `setSubscriptionKey` または `setAadProperties` メソッドを使用して `AzureMaps` クラスにグローバルに認証情報を設定すると、すべてのビューで認証情報を追加する必要がなくなります。 
 
-    マップ コントロールには、Android の OpenGL ライフサイクルを管理するための独自のライフサイクル メソッドが含まれており、含んでいるアクティビティから直接呼び出す必要があります。 アプリがマップ コントロールのライフサイクル メソッドを正しく呼び出すためには、マップ コントロールを含むアクティビティで次のライフサイクル メソッドをオーバーライドし、それぞれのマップ コントロール メソッドを呼び出す必要があります。 
+    マップ コントロールには、Android の OpenGL ライフサイクルを管理するための独自のライフサイクル メソッドが含まれています。 これらのライフサイクル メソッドは、それが含まれているアクティビティから直接呼び出す必要があります。 アプリでマップ コントロールのライフサイクル メソッドを正しく呼び出すためには、マップ コントロールを含むアクティビティで次のライフサイクル メソッドをオーバーライドする必要があります。 また、それぞれのマップ コントロール メソッドを呼び出す必要があります。 
 
     * onCreate(Bundle) 
     * onStart() 

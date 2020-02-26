@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 0f444838c87e14fa88f2785030c29915df637cf8
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 45977f52226fac0a3e23455ce9457a721947a8cc
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552204"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425886"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>MirrorMaker を使用して HDInsight 上の Kafka に Apache Kafka トピックをレプリケートする
 
@@ -305,7 +305,7 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
 このドキュメントでは、[MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) を使用して [Apache Kafka](https://kafka.apache.org/) クラスターのレプリカを作成する方法について説明しました。 次のリンクを使用することで、Kafka のその他の活用方法を知ることができます。
 
 * [Apache Kafka MirrorMaker に関するドキュメント](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) (cwiki.apache.org)
+* [Kafka Mirror Maker のベスト プラクティス](https://community.cloudera.com/t5/Community-Articles/Kafka-Mirror-Maker-Best-Practices/ta-p/249269)
 * [HDInsight での Apache Kafka の使用](apache-kafka-get-started.md)
 * [HDInsight 上の Apache Kafka で Apache Spark を使用する](../hdinsight-apache-spark-with-kafka.md)
-* [HDInsight 上の Apache Kafka で Apache Storm を使用する](../hdinsight-apache-storm-with-kafka.md)
 * [Azure Virtual Network 経由で Apache Kafka に接続する](apache-kafka-connect-vpn-gateway.md)

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: e4213e67d9d752f3fc6450236b41e8bbf61f9957
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: dc4762cbda5ad2877d2d69953d2514dea17c8b46
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169306"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368904"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure のオンデマンド Red Hat Enterprise Linux VM 用 Red Hat Update Infrastructure
  クラウド プロバイダー (Azure など) は、[Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) を使用して、Red Hat でホストされているリポジトリのコンテンツのミラーリング、Azure 固有のコンテンツを使用したカスタム リポジトリの作成、およびエンド ユーザーの VM での使用を実行できます。
@@ -27,6 +27,10 @@ Azure での RHEL イメージに関する追加情報 (公開および保持ポ
 
 すべてのバージョンの RHEL に対する Red Hat のサポート ポリシーに関する情報は、「[Red Hat Enterprise Linux Life Cycle \(Red Hat Enterprise Linux のライフ サイクル\)](https://access.redhat.com/support/policy/updates/errata)」ページに記載されています。
 
+> [!IMPORTANT]
+> RHUI は、従量課金制 (PAYGO) イメージのみを対象としています。 カスタム イメージおよびゴールド イメージ (別名 Bring-Your-Own-Subscription (BYOS)) の場合、更新プログラムを受信するには、システムを RHSM またはサテライトに接続する必要があります。 詳細については、[Red Hat の記事](https://access.redhat.com/solutions/253273) を参照してください。
+
+
 ## <a name="important-information-about-azure-rhui"></a>Azure RHUI に関する重要な情報
 
 * Azure RHUI は、Azure で作成されるすべての RHEL PAYG VM をサポートする更新インフラストラクチャです。 これは、お使いの PAYG RHEL VM を Subscription Manager や Satellite、またはその他の更新ソースに登録することを妨げるものではありませんが、PAYG VM でそれを行うと、間接的に二重請求が発生します。 詳しくは、以下の点を参照してください。
@@ -35,6 +39,7 @@ Azure での RHEL イメージに関する追加情報 (公開および保持ポ
 * Azure での RHEL SAP PAYG イメージ (RHEL for SAP、RHEL for SAP HANA、および RHEL for SAP Business Applications) は、SAP 認定に必要な特定の RHEL マイナー バージョンのままになっている専用の RHUI チャネルに接続されます。
 
 * Azure でホストされている RHUI へのアクセスは、[データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)内の VM に限定されます。 すべての VM トラフィックをオンプレミスのネットワーク インフラストラクチャ経由でプロキシ処理している場合は、RHEL PAYG VM 用のユーザー定義のルートを設定して Azure RHUI にアクセスしなければならない場合があります。 その場合は、_すべての_ RHUI IP アドレスについてユーザー定義のルートを追加する必要があります。
+
 
 ## <a name="image-update-behavior"></a>イメージ更新の動作
 

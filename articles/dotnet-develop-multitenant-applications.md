@@ -14,15 +14,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
-ms.openlocfilehash: 92a0caedca34756228dbf57ec9099fd2ece3d84e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d3e267eab056589ed38c436620dd0db185291da1
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66225981"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425903"
 ---
 # <a name="multitenant-applications-in-azure"></a>Azure 上のマルチテナント アプリケーション
-マルチテナント アプリケーションは共有リソースであり、個別のユーザーつまり "テナント" からは独自のアプリケーションであるかのように見えます。 マルチテナント アプリケーションに適した一般的なシナリオは、アプリケーションのすべてのユーザーがユーザー エクスペリエンスをカスタマイズしたいと考えているが、基本的なビジネス要件は同じというものです。 大規模なマルチテナント アプリケーションの例は、Office 365、Outlook.com、visualstudio.com です。
+マルチテナント アプリケーションは共有リソースであり、"それぞれ異なるテナント内のユーザー" からは独自のアプリケーションであるかのように見えます。 マルチテナント アプリケーションに適した一般的なシナリオは、さまざまなテナントからのアプリケーションのユーザーはすべて、ユーザー エクスペリエンスをカスタマイズしたいと考えているが、基本的なビジネス要件は同じというものです。 大規模なマルチテナント アプリケーションの例は、Office 365、Outlook.com、visualstudio.com です。
 
 アプリケーション プロバイダーの観点から、マルチテナント方式の主なメリットは運用とコストの効率にあります。 アプリケーションの 1 つのバージョンで、多くのテナント/顧客のニーズを満たすことができるため、監視、パフォーマンスのチューニング、ソフトウェアのメンテナンス、データのバックアップなどのシステム管理タスクを統合することが可能です。
 
@@ -42,7 +42,7 @@ ms.locfileid: "66225981"
 
 要するに、拡張性の高いサービスを提供するために必要な考慮事項が多数ある一方で、多くのマルチテナント アプリケーションに共通する目標と要件もまた、多数あります。 一部の目標と要件はシナリオに固有のものではなく、それらの重要性がシナリオによって変わります。 マルチテナント アプリケーションのプロバイダーには、他にも目標と要件が生じます。テナントの目標と要件の達成、収益性、課金、複数のサービス レベル、プロビジョニング、保守容易性の監視、自動化などです。
 
-マルチテナント アプリケーションのその他の設計上の考慮事項の詳細については、「[Azure 上のマルチテナント アプリケーションのホスト][Hosting a Multi-Tenant Application on Azure]」を参照してください。 マルチテナント SaaS (サービスとしてのソフトウェア) データベース アプリケーションの一般的なデータ アーキテクチャ パターンについては、[Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database/sql-database-design-patterns-multi-tenancy-saas-applications.md)に関する記事を参照してください。 
+マルチテナント アプリケーションのその他の設計上の考慮事項の詳細については、「 [Hosting a Multi-Tenant Application on Azure (Azure 上のマルチテナント アプリケーションのホスト)][Hosting a Multi-Tenant Application on Azure]」を参照してください。 マルチテナント SaaS (サービスとしてのソフトウェア) データベース アプリケーションの一般的なデータ アーキテクチャ パターンについては、[Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database/sql-database-design-patterns-multi-tenancy-saas-applications.md)に関する記事を参照してください。 
 
 Azure には、マルチテナント システムの設計時に発生する主要な問題に対処できる、多数の機能が用意されています。
 

@@ -1,22 +1,14 @@
 ---
 title: ベスト プラクティス - QnA Maker
-titleSuffix: Azure Cognitive Services
 description: 以下のベスト プラクティスを利用してナレッジ ベースを改善し、アプリケーション/チャット ボットのエンド ユーザーにより良い情報を提供します。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 01/27/2020
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: 2fd85e43fb2aa53299b4e37eca5163b7da8fc6ec
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/15/2020
+ms.openlocfilehash: fb935aeed7b492a3a0c213d6d7166bd5d80144c1
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843805"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370105"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースのベスト プラクティス
 
@@ -31,8 +23,6 @@ QnA Maker サービスは継続的に、コンテンツから QnA を抽出す�
 ### <a name="configuring-multi-turn"></a>複数ターンの構成
 
 複数ターン抽出を有効にして[ナレッジ ベースを作成](../how-to/multiturn-conversation.md#create-a-multi-turn-conversation-from-a-documents-structure)します。 ナレッジ ベースで質問階層をサポートしている場合や質問階層をサポートする必要がある場合は、この階層を、ドキュメントから抽出するか、ドキュメントの抽出後に作成することができます。
-
-<!--is this a global setting that can only be configured at kb creation time? -->
 
 ## <a name="creating-good-questions-and-answers"></a>優れた質問と回答の作成
 
@@ -104,7 +94,7 @@ QnA Maker でサポートされている優先度付け機能を効果的に活�
 
 ### <a name="choosing-a-threshold"></a>しきい値の選択
 
-しきい値として使用される既定の[信頼度スコア](confidence-score.md)は 50 ですが、ニーズに基づいてナレッジ ベースの[しきい値を変更](confidence-score.md#set-threshold)できます。 すべてのナレッジ ベースは異なっているため、ナレッジ ベースに最も適したしきい値をテストして選択する必要があります。
+しきい値として使用される既定の[信頼度スコア](confidence-score.md)は 0 ですが、ニーズに基づいてナレッジ ベースの[しきい値を変更](confidence-score.md#set-threshold)できます。 すべてのナレッジ ベースは異なっているため、ナレッジ ベースに最も適したしきい値をテストして選択する必要があります。
 
 ### <a name="choosing-ranker-type"></a>ランカーの種類の選択
 既定では、QnA Maker は質問と回答を検索します。 質問のみを検索して、回答を生成する場合、GenerateAnswer 要求の POST 本文で `RankerType=QuestionOnly` を使用します。

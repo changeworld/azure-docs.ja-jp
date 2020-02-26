@@ -3,19 +3,19 @@ title: Custom Voice とは - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: Custom Voice は、ブランド用に認識性の高い固有の音声を作成できる、一連のオンライン ツールです。 作業を始めるにあたって必要なのは、少数のオーディオ ファイルと関連する文字起こしだけです。 以下のリンクに従って、カスタム音声テキスト変換エクスペリエンスの作成を開始しましょう。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 0e40ca55a9cd198e1b086362a2559ab2fc0ba95e
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 02/17/2020
+ms.author: dapine
+ms.openlocfilehash: 15d15ce2d4dfc55a51bf21ba005512606cc4997a
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805962"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77424968"
 ---
 # <a name="get-started-with-custom-voice"></a>Custom Voice の概要
 
@@ -29,13 +29,13 @@ ms.locfileid: "74805962"
 
 ![Custom Voice のアーキテクチャ図](media/custom-voice/custom-voice-diagram.png)
 
-1.  [サブスクライブしてプロジェクトを作成する](#set-up-your-azure-account) - Azure アカウントを作成し、音声サービスのサブスクリプションを作成します。 この一元化されたサブスクリプションを通じて、音声テキスト変換、テキスト読み上げ、音声翻訳、Custom Voice ポータルにアクセスすることができます。 次に、音声サービス サブスクリプションを使用して、最初のカスタム音声プロジェクトを作成します。
+1. [サブスクライブしてプロジェクトを作成する](#set-up-your-azure-account) - Azure アカウントを作成し、音声サービスのサブスクリプションを作成します。 この一元化されたサブスクリプションを通じて、音声テキスト変換、テキスト読み上げ、音声翻訳、Custom Voice ポータルにアクセスすることができます。 次に、音声サービス サブスクリプションを使用して、最初のカスタム音声プロジェクトを作成します。
 
-2.  [データをアップロードする](how-to-custom-voice-create-voice.md#upload-your-datasets) - Custom Voice ポータルまたは Custom Voice API を使用して、データ (オーディオとテキスト) をアップロードします。 ポータルで、発音スコアと信号対雑音比を調査および評価できます。 詳細については、[Custom Voice 用にデータを準備する方法](how-to-custom-voice-prepare-data.md)に関する記事を参照してください。
+2. [データをアップロードする](how-to-custom-voice-create-voice.md#upload-your-datasets) - Custom Voice ポータルまたは Custom Voice API を使用して、データ (オーディオとテキスト) をアップロードします。 ポータルで、発音スコアと信号対雑音比を調査および評価できます。 詳細については、[Custom Voice 用にデータを準備する方法](how-to-custom-voice-prepare-data.md)に関する記事を参照してください。
 
-3.  [モデルをトレーニングする](how-to-custom-voice-create-voice.md#build-your-custom-voice-model) - 自分のデータを使用して、カスタム テキスト読み上げ音声モデルを作成します。 モデルはさまざまな言語でトレーニングできます。 トレーニング後にモデルをテストし、結果に満足したら、モデルをデプロイできます。
+3. [モデルをトレーニングする](how-to-custom-voice-create-voice.md#build-your-custom-voice-model) - 自分のデータを使用して、カスタム テキスト読み上げ音声モデルを作成します。 モデルはさまざまな言語でトレーニングできます。 トレーニング後にモデルをテストし、結果に満足したら、モデルをデプロイできます。
 
-4.  [モデルをデプロイする](how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint) - 自分のテキスト読み上げ音声モデルのカスタム エンドポイントを作成して、自分の製品、ツール、アプリケーションの音声合成にそれを使用します。
+4. [モデルをデプロイする](how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint) - 自分のテキスト読み上げ音声モデルのカスタム エンドポイントを作成して、自分の製品、ツール、アプリケーションの音声合成にそれを使用します。
 
 ## <a name="custom-neural-voices"></a>カスタム ニューラル音声
 
@@ -62,10 +62,13 @@ Azure アカウントと音声サービス サブスクリプションを作成�
 
 データ、モデル、テスト、エンドポイントなどのコンテンツは、Custom Voice ポータルの **[プロジェクト]** にまとめられます。 各プロジェクトは、国と言語、および作成したい音声の性別に固有です。 たとえば、米国の英語 (en-US) を使用するコール センターのチャット ボット用に、女性の音声のプロジェクトを作成できます。
 
-初めてのプロジェクトを作成するには、 **[Text-to-Speech/Custom Voice]\(テキスト読み上げ/Custom Voice\)** タブを選択して、 **[新しいプロジェクト]** をクリックします。 ウィザードの手順に従ってプロジェクトを使用します。 プロジェクトの作成後、4 つのタブが表示されます: **[データ]** 、 **[トレーニング]** 、 **[テスト中]** 、 **[デプロイ]** 。 それぞれのタブの使い方については、「[次の手順](#next-steps)」に記載のリンクを使用してください。
+初めてのプロジェクトを作成するには、 **[Text-to-Speech/Custom Voice]\(テキスト読み上げ/Custom Voice\)** タブを選択して、 **[新しいプロジェクト]** をクリックします。 ウィザードの手順に従ってプロジェクトを作成します。 プロジェクトの作成後、4 つのタブが表示されます: **[データ]** 、 **[トレーニング]** 、 **[テスト中]** 、 **[デプロイ]** 。 それぞれのタブの使い方については、「[次の手順](#next-steps)」に記載のリンクを使用してください。
 
-## <a name="next-steps"></a>次の手順
+> [!IMPORTANT]
+> [カスタム音声ポータル](https://aka.ms/custom-voice)は最近更新されました。 CRIS.ai ポータルで、または API を使用して以前のデータ、モデル、テスト、および公開されたエンドポイントを作成した場合は、新しいポータルで新しいプロジェクトを作成して、これらの古いエンティティに接続する必要があります。
+
+## <a name="next-steps"></a>次のステップ
 
 - [Custom Voice のデータを用意する](how-to-custom-voice-prepare-data.md)
 - [カスタム音声を作成する](how-to-custom-voice-create-voice.md)
-- [ガイド: 音声サンプルを録音する](record-custom-voice-samples.md)
+- [ガイド:音声サンプルを録音する](record-custom-voice-samples.md)

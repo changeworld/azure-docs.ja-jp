@@ -2,13 +2,13 @@
 title: 制限と境界 - QnA Maker
 description: QnA Maker には、ナレッジ ベースとサービスの一部について、メタデータの制限があります。 テストして発行するためには、これらの制限内にナレッジ ベースを維持することが重要です。
 ms.topic: article
-ms.date: 01/23/2020
-ms.openlocfilehash: 32e12d9e983795d2fb403a5b6bc304289ece92c2
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.date: 02/14/2020
+ms.openlocfilehash: 7fdf45a4a22f6d9ffe123f5998592739402be55f
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760234"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252010"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker ナレッジ ベースの制限と境界
 
@@ -55,6 +55,8 @@ URL ページから QnA を抽出するためにクロールできるディー�
 
 ## <a name="metadata-limits"></a>メタデータの制限
 
+メタデータは小文字で格納され、比較されます。
+
 ### <a name="by-azure-cognitive-search-pricing-tier"></a>Azure Cognitive Search の価格レベル
 
 ナレッジ ベースごとのメタデータ フィールドの最大数は、 **[Azure Cognitive Search レベルの制限](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)** に基づきます。
@@ -69,7 +71,7 @@ URL ページから QnA を抽出するためにクロールできるディー�
 
 |Item|使用できる文字|正規表現パターン マッチ|最大文字数|
 |--|--|--|--|
-|Name|以下の文字を使用可能:<br>英数字<br>`_` (アンダースコア)|`^[a-zA-Z0-9_]+$`|100|
+|名前|以下の文字を使用可能:<br>英数字<br>`_` (アンダースコア)|`^[a-zA-Z0-9_]+$`|100|
 |Value|以下を除くすべての文字を使用可能:<br>`:` (コロン)<br>`|` (縦棒)|`^[^:|]+$`|500|
 |||||
 

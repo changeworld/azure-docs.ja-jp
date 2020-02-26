@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 12/20/2019
-ms.openlocfilehash: 069fc83e773c00be41e21e23fc01c589c13d687d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/13/2020
+ms.openlocfilehash: a12738f5de783c8a34718b8d9cb4bbf54f230589
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372705"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201273"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の PostgreSQL 拡張機能
 PostgreSQL では拡張機能を使用してデータベースの機能を拡張することができます。 拡張機能により、関連する複数の SQL オブジェクトを単一のパッケージにまとめて、単一のコマンドでデータベースに対する読み込みや削除を行うことができます。 データベースに読み込まれた後、拡張機能は組み込み機能と同じように機能します。
@@ -204,22 +204,26 @@ Postgres バージョン 9.5 を搭載した Azure Database for PostgreSQL サ�
 
 
 ## <a name="pg_stat_statements"></a>pg_stat_statements
-pg_stat_statements 拡張機能は、すべての Azure Database for PostgreSQL サーバーにプリロードされ、SQL ステートメントの実行統計情報を追跡する手段が提供されています。
+[pg_stat_statements 拡張機能](https://www.postgresql.org/docs/current/pgstatstatements.html)は、すべての Azure Database for PostgreSQL サーバーにプリロードされ、SQL ステートメントの実行統計情報を追跡する手段が提供されています。
 ステートメントをコントロールする設定`pg_stat_statements.track`は、拡張機能と既定値によって`top`にカウントされ、クライアントが直接発行したすべてのステートメントがすべて追跡されます。 その他の 2 つの追跡レベルは`none`と`all`です。 この設定は、[Azure portal](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal)または[Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli)を通じてサーバーのパラメーターとして構成可能です。
 
 各 SQL ステートメントをログに記録する時はPg_stat_statements が提供するクエリの実行情報とサーバーのパフォーマンスに与える影響にトレードオフがあります。 pg_stat_statements 拡張機能を使用していない場合、`pg_stat_statements.track`を`none`に設定することをお勧めします。 一部のサード パーティ監視サービスがクエリ パフォーマンスの分析情報を実行するために Pg_stat_statements に依存することがありますので、そのようなケースに該当するかどうかを確認してください。
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink および postgres_fdw
-dblink および postgres_fdw を使用して、1 つの PostgreSQL サーバーから別のサーバーに、または同一サーバー内の別のデータベースに接続できます。 受信側サーバーでは、ファイアウォールを経由した送信元サーバーからの接続を許可している必要があります。 これらの拡張機能を使用して Azure Database for PostgreSQL サーバー間を接続する場合、[Azure サービスへのアクセスを許可] を [オン] に設定することで実現できます。 拡張機能を使用して同じサーバーにループバックする場合にも、これは必要になります。 [Azure サービスへのアクセスを許可] 設定は、Postgres サーバー向けの Azure portal ページ内の [接続のセキュリティ ] の下にあります。 [Azure サービスへのアクセスを許可] を [オン] にすると、すべての Azure IP が許可リストに設定されます。
+[dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) および [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) を使用して、1 つの PostgreSQL サーバーから別のサーバーに、または同一サーバー内の別のデータベースに接続できます。 受信側サーバーでは、ファイアウォールを経由した送信元サーバーからの接続を許可している必要があります。 これらの拡張機能を使用して Azure Database for PostgreSQL サーバー間を接続する場合、[Azure サービスへのアクセスを許可] を [オン] に設定することで実現できます。 拡張機能を使用して同じサーバーにループバックする場合にも、これは必要になります。 [Azure サービスへのアクセスを許可] 設定は、Postgres サーバー向けの Azure portal ページ内の [接続のセキュリティ ] の下にあります。 [Azure サービスへのアクセスを許可] を [オン] にすると、すべての Azure IP が許可リストに設定されます。
 
 現時点では、Azure Database for PostgreSQL からの送信接続は、他の Azure Database for PostgreSQL サーバーへの接続を除き、サポートされていません。
 
 ## <a name="uuid"></a>uuid
-uuid-ossp 拡張機能の `uuid_generate_v4()` を使用する予定の場合、パフォーマンス上の利点について、pgcrypto 拡張機能の `gen_random_uuid()` と比較することを検討してください。
-
+[uuid-ossp 拡張機能](https://www.postgresql.org/docs/current/uuid-ossp.html)の `uuid_generate_v4()` を使用する予定の場合、パフォーマンス上の利点について、[pgcrypto 拡張機能](https://www.postgresql.org/docs/current/pgcrypto.html)の `gen_random_uuid()` と比較することを検討してください。
 
 ## <a name="pgaudit"></a>pgAudit
-pgAudit 拡張機能では、セッションとオブジェクトの監査ログが提供されます。 Azure Database for PostgreSQL でこの拡張機能を使用する方法については、[監査の概念に関する記事](concepts-audit.md)を参照してください。 
+[pgAudit 拡張機能](https://github.com/pgaudit/pgaudit/blob/master/README.md)では、セッションとオブジェクトの監査ログが提供されます。 Azure Database for PostgreSQL でこの拡張機能を使用する方法については、[監査の概念に関する記事](concepts-audit.md)を参照してください。 
+
+## <a name="pg_prewarm"></a>pg_prewarm
+pg_prewarm 拡張機能により、リレーショナル データがキャッシュに読み込まれます。 キャッシュをプレウォームすると、再起動後に最初に実行したときのクエリの応答時間が向上します。 Postgres 10 以降では、プレウォームは [prewarm 関数](https://www.postgresql.org/docs/10/pgprewarm.html)を使用して手動で実行されます。
+
+Postgres 11 以降では、プレウォームが[自動的に](https://www.postgresql.org/docs/current/pgprewarm.html)発生するように構成することができます。 `shared_preload_libraries` パラメーターの一覧に pg_prewarm を含め、サーバーを再起動して変更を適用する必要があります。 パラメーターは、[Azure portal](howto-configure-server-parameters-using-portal.md)、[CLI](howto-configure-server-parameters-using-cli.md)、REST API、または ARM テンプレートから設定できます。 
 
 ## <a name="timescaledb"></a>TimescaleDB
 TimescaleDB は、PostgreSQL の拡張機能としてパッケージされた時系列データベースです。 TimescaleDB は、時間指向の分析関数、最適化を提供し、時系列ワークロードに合わせて PostgreSQL を拡大縮小します。

@@ -1,20 +1,19 @@
 ---
 title: Apache Hadoop コンポーネントおよびバージョン - Azure HDInsight
 description: Azure HDInsight 内の Apache Hadoop コンポーネントおよびバージョンについて説明します。
-keywords: hadoop バージョン,hadoop エコシステム コンポーネント,hadoop コンポーネント,hadoop バージョンの確認方法
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 11/21/2019
-ms.openlocfilehash: ed4175d55d3c462c75dad7305f95e2ec4f84baf9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/02/2020
+ms.openlocfilehash: 13c064701a5ecae2090a99980249f5daaa8d5395
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76764462"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198958"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight で使用できる Apache Hadoop コンポーネントおよびバージョンとは
 
@@ -75,7 +74,7 @@ HDInsight の最新バージョンに関する追加のリリース ノートは
 | HDInsight 4.0 |Ubuntu 16.0.4 LTS |2018 年 9 月 24 日 | | |はい |はい |
 | HDInsight 3.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日 | 2020 年 12 月 31 日 |2020 年 12 月 31 日 |はい |はい |
 
-Spark 2.1、2.2 & Kafka 1.0 のサポートは、2020 年 6 月 30 日に有効期限が切れます。
+Spark 2.1、2.2 および Kafka 1.0 のサポートは、2020 年 6 月 30 日に有効期限が切れます。
 
 > [!NOTE]  
 > バージョンのサポートが期限切れになると、Microsoft Azure Portal で使用できなくなります。 ただし、クラスター バージョンは、Windows PowerShell [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) コマンドの `Version` パラメーターと .NET SDK を使用することで、バージョンの提供終了日まで利用できます。
@@ -131,6 +130,8 @@ Enterprise セキュリティは、クラスターの作成のワークフロー
 
 - Hadoop (HDInsight 3.6 のみ)
 - Spark
+- Kafka
+- hbase
 - Interactive Query
 
 ### <a name="support-for-azure-data-lake-storage"></a>Azure Data Lake Storage のサポート
@@ -148,10 +149,7 @@ Enterprise セキュリティ パッケージの価格と SLA について詳し
 - 数式 1:HDInsight クラスター バージョン X がリリースされた日に 180 日を加える。
 - 数式 2:HDInsight クラスター バージョン X+1 が Azure portal で使用可能になった日付に 90 日を加える。
 
-_提供終了日_ とは、その日を過ぎると HDInsight でクラスター バージョンを作成できなくなる日付です。 2017 年 7 月 31 日以降は、提供終了日より後に HDInsight クラスターのサイズを変更できません。
-
-> [!NOTE]  
-> Windows 向けの HDInsight クラスター (バージョン 2.1、3.0、3.1、3.2、および 3.3 を含む) は Azure ゲスト OS ファミリ 4 で実行されます。この OS は Windows Server 2012 R2 の 64 ビット版を使用します。 Azure ゲスト OS ファミリ バージョン 4 は、.NET Framework のバージョン 4.0、4.5、4.5.1、および 4.5.2 をサポートします。
+"_提供終了日_" とは、その日を過ぎると HDInsight でクラスター バージョンを作成できなくなる日付です。 2017 年 7 月 31 日以降は、提供終了日より後に HDInsight クラスターのサイズを変更できません。
 
 ## <a name="hortonworks-release-notes-associated-with-hdinsight-versions"></a>HDInsight バージョンに対応する Hortonworks リリース ノート
 

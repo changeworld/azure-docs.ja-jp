@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/07/2019
-ms.openlocfilehash: 9d55d91dbb2e62e87c34dc8ea8a23fb375eb9a53
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: f2602dbee12f82c32ab3a3c2ec0566d8dfbeaa83
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665359"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211828"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Azure Monitor でアプリケーション変更分析 (プレビュー) を使用する
 
@@ -31,7 +31,7 @@ ms.locfileid: "74665359"
 
 ![どのように変更分析で変更データが取得され、クライアント ツールに提供されるかを示すアーキテクチャ図](./media/change-analysis/overview.png)
 
-現在、変更分析は App Service Web アプリの**問題の診断と解決**エクスペリエンスに統合されているほか、Azure portal のスタンドアロンのブレードで確認できます。
+現在、変更分析は App Service Web アプリの**問題の診断と解決**エクスペリエンスに統合されているほか、Azure portal のスタンドアロンのタブで確認できます。
 [変更分析] ブレードにアクセスする方法と、Web アプリ ポータル内で使用する方法については、それぞれこの記事で後述する「*Azure のすべてのリソースに対する変更内容を表示する*」セクションと「*Web アプリ機能の変更分析*」を参照してください。
 
 ### <a name="azure-resource-manager-tracked-properties-changes"></a>Azure Resource Manager の追跡プロパティの変更
@@ -56,8 +56,9 @@ IP 構成ルール、SSL 設定、拡張機能のバージョンなどの設定�
 - Azure SQL
 
 ### <a name="enablement"></a>有効化
-Azure Resource Manager の追跡プロパティとプロキシ設定の変更データが利用できるようになるには、"Microsoft.ChangeAnalysis" リソース プロバイダーがサブスクリプションに登録されている必要があります。 Web アプリの問題の診断と解決に入る、または [変更分析] スタンドアロン ブレードを起動すると、このリソース プロバイダーが自動的に登録されます。 サブスクリプションに対するパフォーマンスとコストの実装はありません。
-Web アプリのゲスト内の変更については、Web アプリ内でコード ファイルをスキャンするには別個の有効化が必要です。 詳細については、この記事の後半の「*問題の診断と解決ツールで変更分析を有効にする*」を参照してください。
+Azure Resource Manager の追跡プロパティとプロキシ設定の変更データが利用できるようになるには、"Microsoft.ChangeAnalysis" リソース プロバイダーがサブスクリプションに登録されている必要があります。 Web アプリの問題の診断と解決ツールに入る、または [変更分析] スタンドアロン タブを起動すると、このリソース プロバイダーが自動的に登録されます。 サブスクリプションに対するパフォーマンスとコストの実装はありません。 Web アプリの変更分析を有効にすると (あるいは、問題の診断と解決ツールを有効にすると)、Web アプリのパフォーマンスに影響が出ますが、それは無視しても構わない程度であり、また、課金コストは発生しません。
+Web アプリのゲスト内の変更については、Web アプリ内でコード ファイルをスキャンするには別個の有効化が必要です。 詳細については、この記事の後半の「[問題の診断と解決ツールで変更分析を有効にする](https://docs.microsoft.com/azure/azure-monitor/app/change-analysis#enable-change-analysis-in-the-diagnose-and-solve-problems-tool)」を参照してください。
+
 
 ## <a name="viewing-changes-for-all-resources-in-azure"></a>Azure のすべてのリソースに対する変更内容を表示する
 Azure Monitor では、変更分析のためのスタンドアロン ブレードがあり、すべての変更内容が分析情報およびアプリケーション依存リソースと一緒に表示されます。
@@ -148,7 +149,7 @@ foreach ($webapp in $webapp_list)
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure App Service アプリ](azure-web-apps.md)の Application Insights を有効にします。
 - [Azure VM と Azure 仮想マシン スケール セットの IIS でホストされたアプリ](azure-vm-vmss-apps.md)の Application Insights を有効にします。

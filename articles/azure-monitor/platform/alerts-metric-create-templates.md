@@ -5,15 +5,15 @@ author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 1/14/2020
+ms.date: 2/17/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 463a389116cd58e50839d717b700b604f545e5f2
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: f402effe40042740e74220d177c54963f6c45916
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190118"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444011"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでのメトリック アラートの作成
 
@@ -107,8 +107,8 @@ Resource Manager テンプレートを使用してアラートを作成するに
             }
         },
         "threshold": {
-            "type": "double",
-            "defaultValue": 0,
+            "type": "string",
+            "defaultValue": "0",
             "metadata": {
                 "description": "The threshold value at which the alert is activated."
             }
@@ -1510,14 +1510,14 @@ az group deployment create \
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>複数のリソースを監視するメトリック アラートのテンプレート
 
-前のセクションでは、1 つのリソースを監視するメトリック アラートを作成する Azure Resource Manager テンプレートのサンプルについて説明しました。 Azure Monitor は、1 つのメトリック アラート ルールによる複数リソースの監視をサポートするようになりました。 現在、この機能は Azure パブリック クラウド内でのみサポートされており、仮想マシン、SQL Database、SQL エラスティック プール、および Databox Edge デバイス専用です。
+前のセクションでは、1 つのリソースを監視するメトリック アラートを作成する Azure Resource Manager テンプレートのサンプルについて説明しました。 Azure Monitor では、同じ Azure リージョンに存在するリソースに対して、メトリック警告ルールが 1 つの (同じ種類の) 複数のリソースの監視をサポートするようになりました。 現在、この機能は Azure パブリック クラウド内でのみサポートされており、仮想マシン、SQL サーバー データベース、SQL エラスティック プール、および Databox エッジ デバイス専用です。 また、この機能はプラットフォーム メトリックでのみ使用でき、カスタム メトリックではサポートされていません。
 
 動的しきい値アラート ルールは、一度に数百のメトリック シリーズ (異なる種類でも) のカスタマイズされたしきい値を作成するためにも役立つことがあります。これにより、管理するアラートが少なくなります。
 
 このセクションでは、1 つのルールで複数のリソースを監視する 3 つのシナリオの Azure Resource Manager テンプレートについて説明します。
 
 - 1 つまたは複数のリソース グループ内の (1 つの Azure リージョン内の) すべての仮想マシンの監視。
-- 1 つのサブスクリプション内の (1 つの Azure リージョン内の) すべての仮想マシンの監視
+- 1 つのサブスクリプション内の (1 つの Azure リージョン内の) すべての仮想マシンの監視。
 - 1 つのサブスクリプション内の (1 つの Azure リージョン内の)、一覧に含まれる仮想マシンの監視。
 
 ### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>1 つまたは複数のリソース グループ内のすべての仮想マシンの静的しきい値アラート
@@ -1657,8 +1657,8 @@ az group deployment create \
             }
         },
         "threshold": {
-            "type": "double",
-            "defaultValue": 0,
+            "type": "string",
+            "defaultValue": "0",
             "metadata": {
                 "description": "The threshold value at which the alert is activated."
             }
@@ -2304,8 +2304,8 @@ az group deployment create \
             }
         },
         "threshold": {
-            "type": "double",
-            "defaultValue": 0,
+            "type": "string",
+            "defaultValue": "0",
             "metadata": {
                 "description": "The threshold value at which the alert is activated."
             }
@@ -2946,8 +2946,8 @@ az group deployment create \
             }
         },
         "threshold": {
-            "type": "double",
-            "defaultValue": 0,
+            "type": "string",
+            "defaultValue": "0",
             "metadata": {
                 "description": "The threshold value at which the alert is activated."
             }

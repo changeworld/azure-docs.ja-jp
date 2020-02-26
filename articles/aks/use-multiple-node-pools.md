@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 01/22/2020
+ms.date: 02/14/2020
 ms.author: mlearned
-ms.openlocfilehash: bbfb65c31bf6fd46cc18c9eee66086afbbff1d5f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: e77710fe446810ec566ebc7088d802f0721806d2
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157976"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443926"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のクラスターで複数のノード プールを作成および管理する
 
@@ -453,6 +453,61 @@ Events:
 
 この taint が適用されたポッドのみが、*gpunodepool* のノードにスケジュールできます。 その他のポッドは、*nodepool1* ノード プールにスケジュールされます。 ノード プールを追加作成した場合、追加の taints と tolerations を使用して、それらのノード リソースにどのようなポッドをスケジュールするか制限できます。
 
+## <a name="specify-a-tag-for-a-node-pool"></a>ノード プールにタグを指定する
+
+AKS クラスター内のノード プールに Azure タグを適用できます。 ノード プールに適用されるタグは、ノード プール内の各ノードに適用され、アップグレードによって保持されます。 また、スケール アウト操作中にノード プールに追加される新しいノードにもタグが適用されます。 タグを追加すると、ポリシーの追跡やコスト見積もりなどのタスクに役立ちます。
+
+> [!IMPORTANT]
+> ノード プール タグを使用するには、*aks-preview* CLI 拡張機能のバージョン 0.4.29 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールし、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムがあるかどうかを確認します。
+> 
+> ```azurecli-interactive
+> # Install the aks-preview extension
+> az extension add --name aks-preview
+> 
+> # Update the extension to make sure you have the latest version installed
+> az extension update --name aks-preview
+> ```
+
+[az aks node pool add][az-aks-nodepool-add] を使用して、ノード プールを作成します。 名前 *tagnodepool* を指定し、`--tag` パラメーターを使用して、*dept = IT* と *costcenter=9999* をタグに指定します。
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name tagnodepool \
+    --node-count 1 \
+    --tags dept=IT costcenter=9999 \
+    --no-wait
+```
+
+> [!NOTE]
+> `--tags` パラメーターは、[az aks nodepool update][az-aks-nodepool-update] コマンドを使用する場合やクラスターの作成時にも使用できます。 クラスターの作成時に、`--tags` パラメーターを指定すると、そのクラスターで作成される最初のノード プールにタグが適用されます。 すべてのタグ名は、「[タグを使用した Azure リソースの整理][tag-limitation]」の制限に従う必要があります。 `--tags` パラメーターを使用してノード プールを更新すると、既存のタグ値が更新され、新しいタグが追加されます。 たとえば、ノード プールにタグの *dept=IT* と *costcenter=9999* があった場合は、タグの *team=dev* と *costcenter=111* で更新すると、ノードプールには、タグの *dept=IT*、*costcenter=111*、*team=dev* が含まれます。
+
+[az aks nodepool list][az-aks-nodepool-list] コマンドの次の出力例は、*tagnodepool* によって、指定した "*タグ*" を使用してノードが *Creating* されていることを示しています。
+
+```console
+$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+
+[
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "tagnodepool",
+    "orchestratorVersion": "1.15.7",
+    ...
+    "provisioningState": "Creating",
+    ...
+    "tags": {
+      "dept": "IT",
+      "costcenter": "9999"
+    },
+    ...
+  },
+ ...
+]
+```
+
 ## <a name="manage-node-pools-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用したノード プールの管理
 
 作成する Azure Resource Manager テンプレートと管理対象リソースを使用する場合、通常、テンプレート内の設定を更新し、再デプロイしてリソースを更新できます。 AKS 内のノード プールでは、AKS クラスターが作成されると、初期ノード プール プロファイルは更新できません。 この動作は、既存の Resource Manager テンプレートの更新、ノード プールへの変更、再デプロイが行えないことを意味します。 代わりに、既存の AKS クラスターのノード プールのみを更新する別の Resource Manager テンプレートを作成する必要があります。
@@ -603,21 +658,25 @@ Windows Server コンテナー ノード プールを作成して使用するに
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 
 <!-- INTERNAL LINKS -->
-[quotas-skus-regions]: quotas-skus-regions.md
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-group-create]: /cli/azure/group#az-group-create
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-nodepool-add]: /cli/azure/ext/aks-preview/aks/nodepool#ext-aks-preview-az-aks-nodepool-add
-[az-aks-nodepool-list]: /cli/azure/ext/aks-preview/aks/nodepool#ext-aks-preview-az-aks-nodepool-list
-[az-aks-nodepool-upgrade]: /cli/azure/ext/aks-preview/aks/nodepool#ext-aks-preview-az-aks-nodepool-upgrade
-[az-aks-nodepool-scale]: /cli/azure/ext/aks-preview/aks/nodepool#ext-aks-preview-az-aks-nodepool-scale
-[az-aks-nodepool-delete]: /cli/azure/ext/aks-preview/aks/nodepool#ext-aks-preview-az-aks-nodepool-delete
-[vm-sizes]: ../virtual-machines/linux/sizes.md
-[taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
-[gpu-cluster]: gpu-cluster.md
-[az-group-delete]: /cli/azure/group#az-group-delete
-[install-azure-cli]: /cli/azure/install-azure-cli
-[supported-versions]: supported-kubernetes-versions.md
-[operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 [aks-windows]: windows-container-cli.md
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-add
+[az-aks-nodepool-list]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-list
+[az-aks-nodepool-update]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-update
+[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-upgrade
+[az-aks-nodepool-scale]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-scale
+[az-aks-nodepool-delete]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-delete
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-group-create]: /cli/azure/group#az-group-create
+[az-group-delete]: /cli/azure/group#az-group-delete
 [az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[gpu-cluster]: gpu-cluster.md
+[install-azure-cli]: /cli/azure/install-azure-cli
+[operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
+[quotas-skus-regions]: quotas-skus-regions.md
+[supported-versions]: supported-kubernetes-versions.md
+[tag-limitation]: ../azure-resource-manager/resource-group-using-tags.md
+[taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
+[vm-sizes]: ../virtual-machines/linux/sizes.md

@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 091cf26a0c18aba0925ad23e61950f8622f6080b
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b9d2bda1d3f01d2bf4bb152c0f62ade87bb61b4c
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989520"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368273"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Python アプリケーション用に Azure Monitor をセットアップする (プレビュー)
 
@@ -42,7 +42,7 @@ Azure Monitor は、[OpenCensus](https://opencensus.io) との統合により、
    | ------------- |:-------------|:-----|
    | **Name**      | グローバルに一意の値 | 監視しているアプリを識別する名前。 |
    | **リソース グループ**     | myResourceGroup      | Application Insights データをホストする新しいリソース グループの名前 |
-   | **地域** | East US | お近くの場所か、アプリがホストされている場所の近く |
+   | **場所** | 米国東部 | お近くの場所か、アプリがホストされている場所の近く |
 
 1. **作成** を選択します。
 
@@ -107,7 +107,7 @@ SDK では 3 つの Azure Monitor エクスポーターを使用して、さま�
     [SpanData(name='test', context=SpanContext(trace_id=8aa41bc469f1a705aed1bdb20c342603, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='f3f9f9ee6db4740a', parent_span_id=None, attributes=BoundedDict({}, maxlen=32), start_time='2019-06-27T18:21:46.157732Z', end_time='2019-06-27T18:21:47.269583Z', child_span_count=0, stack_trace=None, annotations=BoundedList([], maxlen=32), message_events=BoundedList([], maxlen=128), links=BoundedList([], maxlen=32), status=None, same_process_as_parent_span=None, span_kind=0)]
     ```
 
-3. 値の入力はデモとしても有用ですが、最終的には `SpanData` を Azure Monitor に送信するようにします。 前の手順のコードを、次のコード サンプルに基づいて変更します。
+3. 値の入力はデモとしても有用ですが、最終的には `SpanData` を Azure Monitor に送信するようにします。 接続文字列をエクスポーターに直接渡すか、環境変数 `APPLICATIONINSIGHTS_CONNECTION_STRING`で指定することができます。 前の手順のコードを、次のコード サンプルに基づいて変更します。
 
     ```python
     from opencensus.ext.azure.trace_exporter import AzureExporter
@@ -193,7 +193,7 @@ SDK では 3 つの Azure Monitor エクスポーターを使用して、さま�
     Point(value=ValueLong(7), timestamp=2019-10-09 20:58:07.138614)
     ```
 
-3. 値の入力はデモとしても有用ですが、最終的にはメトリック データを Azure Monitor に送信するようにします。 前の手順のコードを、次のコード サンプルに基づいて変更します。
+3. 値の入力はデモとしても有用ですが、最終的にはメトリック データを Azure Monitor に送信するようにします。 接続文字列をエクスポーターに直接渡すか、環境変数 `APPLICATIONINSIGHTS_CONNECTION_STRING`で指定することができます。 前の手順のコードを、次のコード サンプルに基づいて変更します。
 
     ```python
     from datetime import datetime
@@ -277,7 +277,7 @@ SDK では 3 つの Azure Monitor エクスポーターを使用して、さま�
     90
     ```
 
-3. 値の入力はデモとしても有用ですが、最終的にはログ データを Azure Monitor に送信するようにします。 前の手順のコードを、次のコード サンプルに基づいて変更します。
+3. 値の入力はデモとしても有用ですが、最終的にはログ データを Azure Monitor に送信するようにします。 接続文字列をエクスポーターに直接渡すか、環境変数 `APPLICATIONINSIGHTS_CONNECTION_STRING`で指定することができます。 前の手順のコードを、次のコード サンプルに基づいて変更します。
 
     ```python
     import logging

@@ -16,12 +16,12 @@ ms.date: 02/18/2019
 ms.author: mimart
 ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97954123b6fc31dce09282c08c702438cd64c476
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 874d273e26a728afc0a1dc1a16852016797067ca
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159252"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367902"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>フェデレーション シングル サインオン用に構成されたギャラリー アプリケーションへのサインインに関する問題
 
@@ -162,7 +162,7 @@ Azure AD は、シングル サインオン用のアプリケーションによ�
 
 ## <a name="misconfigured-application"></a>アプリケーションが正しく構成されていない
 
-*エラー AADSTS650056:アプリケーションが正しく構成されていないこの場合は、次のいずれかの原因が考えられます。クライアントは、クライアントのアプリケーション登録の要求されたアクセス許可に "AAD グラフ" のアクセス許可を記載していません。あるいは、管理者がテナントで同意していません。あるいは、要求のアプリケーション識別子を見て、構成したクライアント アプリケーション識別子に一致することを確認してください。構成を修正するか、テナントの代わりに同意するように管理者に連絡してください*。
+*エラー AADSTS650056:アプリケーションが正しく構成されていないこの場合は、次のいずれかの原因が考えられます。クライアントが、クライアントのアプリケーション登録の要求されたアクセス許可にアクセス許可を記載していません。あるいは、管理者がテナントで同意していません。あるいは、要求のアプリケーション識別子を見て、構成したクライアント アプリケーション識別子に一致することを確認してください。構成を修正するか、テナントの代わりに同意するように管理者に連絡してください*。
 
 **考えられる原因**
 

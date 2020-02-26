@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 02/01/2020
-ms.openlocfilehash: c4502cc4a808b4a44f70c1f96fe38fd0ddeebdee
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/14/2020
+ms.openlocfilehash: 9c084564fec3faf59317fe9e05f3e850a38454d6
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187708"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251976"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムのセットアップのカスタマイズ
 
@@ -121,8 +121,12 @@ Azure-SQL Server Integration Services 統合ランタイム (Azure-SSIS IR) の�
 
      * **[oh22's HEDDA.IO]\(oh22 の HEDDA.IO\)** コンポーネントを選択した場合は、サービスを購入した後、Azure-SSIS IR に oh22 の [HEDDA.IO](https://hedda.io/ssis-component/) データ品質またはクレンジング コンポーネントをインストールできます。 現在の統合バージョンは **1.0.13** です。
 
-      * **[oh22's SQLPhonetics.NET]\(oh22 の SQLPhonetics.NET\)** コンポーネントを選択した場合は、Azure-SSIS IR に oh22 の [SQLPhonetics.NET](https://sqlphonetics.oh22.is/sqlphonetics-net-for-microsoft-ssis/) データ品質または照合コンポーネントをインストールできます。そのためには、 **[ライセンス キー]** ボックスで購入した製品ライセンス キーを入力します。 現在の統合バージョンは **1.0.43** です。
-   
+     * **[oh22's SQLPhonetics.NET]\(oh22 の SQLPhonetics.NET\)** コンポーネントを選択した場合は、Azure-SSIS IR に oh22 の [SQLPhonetics.NET](https://sqlphonetics.oh22.is/sqlphonetics-net-for-microsoft-ssis/) データ品質または照合コンポーネントをインストールできます。そのためには、 **[ライセンス キー]** ボックスで購入した製品ライセンス キーを入力します。 現在の統合バージョンは **1.0.43** です。
+
+     * **[KingswaySoft's SSIS Integration Toolkit]** \(KingswaySoft の SSIS Integration Toolkit\) コンポーネントを選択した場合は、お使いの Azure-SSIS IR 上の KingswaySoft から、購入した製品ライセンス キーを **[ライセンス キー]** ボックスに入力して、Microsoft Dynamics、SharePoint、Project Server、Oracle、Salesforce Marketing Cloud などの CRM、ERP、マーケティング、コラボレーション アプリ用の [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) という一連のコンポーネントをインストールできます。 現在の統合バージョンは **2019.2** です。
+
+     * **[KingswaySoft's SSIS Productivity Pack]** \(KingswaySoft の SSIS Productivity Pack\) コンポーネントを選択した場合は、お使いの Azure-SSIS IR 上の KingswaySoft から、購入した製品ライセンス キーを **[ライセンス キー]** ボックスに入力して [SSIS Productivity Pack](https://www.kingswaysoft.com/products/ssis-productivity-pack) という一連のコンポーネントをインストールできます。 現在の統合バージョンは **10.0** です。
+
    追加した高速カスタム セットアップは、 **[詳細設定]** セクションに表示されます。 これらを削除する場合は、対応するチェック ボックスをオンにしてから **[削除]** を選択します。
 
    ![カスタム セットアップでの詳細設定](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png)

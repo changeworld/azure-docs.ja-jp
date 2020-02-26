@@ -1,6 +1,6 @@
 ---
-title: Windows でのパスワード リセットのセルフ サービス - Azure Active Directory
-description: Windows のログオン画面で「パスワードを忘れた場合」を使用してパスワード リセットのセルフ サービスを有効にする方法
+title: Windows でのセルフサービス パスワード リセット - Azure Active Directory
+description: Windows のログオン画面で「パスワードを忘れた場合」を使用してセルフサービス パスワード リセットを有効にする方法
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be1c0e93a51064870635d4f06bd5b365bbfe517a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a1f0e5242d87bc68efd92a52619e8d48cff9ac87
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847288"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370076"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>方法:Windows のログイン画面からパスワードをリセットできるようにする
 
@@ -27,6 +27,8 @@ Windows 7、8、8.1、および 10 を実行中のコンピューターでは、
 ## <a name="general-limitations"></a>一般的な制限事項
 
 - リモート デスクトップまたは Hyper-V 拡張セッションからのパスワードのリセットは、現在サポートされていません。
+- サードパーティの一部の資格情報プロバイダーでは、この機能に関する問題が発生することがわかっています。
+- [EnableLUA レジストリ キー](https://docs.microsoft.com/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec)を変更することによって UAC を無効にすると、問題が発生することが確認されています。
 - この機能は、802.1x ネットワーク認証がデプロイされ、[ユーザー ログオンの直前に実行する] オプションが有効になっているネットワークでは動作しません。 802.1x ネットワーク認証がデプロイされているネットワークでこの機能を有効にするには、マシン認証を使用することをお勧めします。
 - ハイブリッド Azure AD 参加済みコンピューターでは、新しいパスワードの使用とキャッシュされた資格情報の更新を行うために、ドメイン コントローラーへの ネットワーク接続経路が必要です。
 - イメージを使用する場合は、sysprep を実行する前に、CopyProfile 手順の実行に先立ってビルトイン Administrator に対する Web キャッシュがクリアされることを確認してください。 この手順の詳細については、[カスタムの既定のユーザー プロファイルを使用した場合のパフォーマンスの低下](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)に関するサポート記事を参照してください。
@@ -47,7 +49,7 @@ Windows 7、8、8.1、および 10 を実行中のコンピューターでは、
 
 ### <a name="windows-10-prerequisites"></a>Windows 10 の前提条件
 
-- 管理者は、Azure portal から Azure AD のパスワード リセットのセルフサービスを有効にする必要があります。
+- 管理者は、Azure portal から Azure AD のセルフサービス パスワード リセット を有効にする必要があります。
 - **ユーザーは、この機能を使用する前に SSPR に登録する必要があります**。
 - ネットワーク プロキシの要件
    - Windows 10 デバイス 
@@ -101,7 +103,7 @@ Azure AD 監査ログには、パスワードのリセットが発生した IP �
 
 ### <a name="windows-7-8-and-81-prerequisites"></a>Windows 7、8、および 8.1 の前提条件
 
-- 管理者は、Azure portal から Azure AD のパスワード リセットのセルフサービスを有効にする必要があります。
+- 管理者は、Azure portal から Azure AD のセルフサービス パスワード リセット を有効にする必要があります。
 - **ユーザーは、この機能を使用する前に SSPR に登録する必要があります**。
 - ネットワーク プロキシの要件
    - Windows 7、8、および 8.1 デバイス
@@ -113,7 +115,7 @@ Azure AD 監査ログには、パスワードのリセットが発生した IP �
 > [!WARNING]
 > TLS 1.2 は、自動ネゴシエートするように設定されているだけでなく、有効になっている必要があります。
 
-### <a name="install"></a>Install
+### <a name="install"></a>インストール
 
 1. 有効にしたい Windows バージョン用の適切なインストーラーをダウンロードします。
    - ソフトウェアは [https://aka.ms/sspraddin](https://aka.ms/sspraddin) にある Microsoft ダウンロード センターで入手できます
@@ -148,11 +150,11 @@ Windows デバイスでのパスワードのリセットの構成が完了しま
 
 ![SSPR リンクが示されている Windows 7 と 10 のログイン画面の例](./media/howto-sspr-windows/windows-reset-password.png)
 
-ユーザーがサインインを試みると、ログイン画面に **[パスワードのリセット]** または **[パスワードを忘れた場合]** リンクが表示されます。これらのリンクを選択することで、ログイン画面でパスワード リセットのセルフ サービス機能が作動します。 ユーザーがパスワードをリセットするには、この機能を使用するだけでよく、別のデバイスを使用して Web ブラウザーにアクセスする必要はありません。
+ユーザーがサインインを試みると、ログイン画面に **[パスワードのリセット]** または **[パスワードを忘れた場合]** リンクが表示されます。これらのリンクを選択することで、ログイン画面でセルフサービス パスワード リセット機能が作動します。 ユーザーがパスワードをリセットするには、この機能を使用するだけでよく、別のデバイスを使用して Web ブラウザーにアクセスする必要はありません。
 
 [職場または学校アカウントのパスワードをリセットする方法](../user-help/active-directory-passwords-update-your-own-password.md)に関するページで、この機能の使い方がユーザー向けに説明されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [許可する認証方法を計画する](concept-authentication-methods.md)
 

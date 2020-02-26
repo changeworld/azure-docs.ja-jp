@@ -7,26 +7,28 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: f109f2dd45fe90884d3947b244b3dafffd547725
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 91401031945d0ec3ac22fc8cbcea8ba73580ee50
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68355935"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77442005"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-python-library"></a>Azure Data Explorer の Python ライブラリを使用してデータを取り込む
 
-Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure Data Explorer では、Python 用のクライアント ライブラリとして、[取り込みライブラリ](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest)と[データ ライブラリ](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)の 2 つが用意されています。 これらのライブラリを使用すると、クラスターにデータを取り込み (読み込み)、コードからデータのクエリを行うことができます。 この記事ではまず、クラスター内にテーブルとデータ マッピングを作成します。 その後、クラスターに対するインジェストをキューに入れて、結果を検証します。
+この記事では、Azure Data Explorer の Python ライブラリを使用してデータを取り込みます。 Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure Data Explorer では、Python 用のクライアント ライブラリとして、[取り込みライブラリ](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest)と[データ ライブラリ](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)の 2 つが用意されています。 これらのライブラリを使用すると、クラスターにデータを取り込み (読み込み)、コードからデータのクエリを行うことができます。
+
+まず、クラスター内にテーブルとデータ マッピングを作成します。 その後、クラスターに対するインジェストをキューに入れて、結果を検証します。
 
 この記事は [Azure Notebook](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb) でも利用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
+* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-* [クラスターとデータベース](create-cluster-database-portal.md)
+* [Python 3.4 以上](https://www.python.org/downloads/)。
 
-* 開発用コンピューターに [Python](https://www.python.org/downloads/) がインストール済み
+* [クラスターとデータベース](create-cluster-database-portal.md)。
 
 ## <a name="install-the-data-and-ingest-libraries"></a>データ ライブラリと取り込みライブラリをインストールする
 
@@ -173,7 +175,7 @@ dataframe_from_result_table(RESPONSE.primary_results[0])
 | summarize arg_max(LastUpdatedOn, *) by OperationId
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 他の記事に進む場合は、作成したリソースをそのままにします。 行わない場合は、データベースで次のコマンドを実行して、StormEvents テーブルをクリーンアップします。
 
@@ -181,6 +183,6 @@ dataframe_from_result_table(RESPONSE.primary_results[0])
 .drop table StormEvents
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Python を使用したデータのクエリ](python-query-data.md)
