@@ -15,18 +15,18 @@ ms.date: 05/13/2019
 ms.author: mimart
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f49fce985484e85bcba2883a66ec0b1e6d032a8
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 12d8e60d3bfeb2e72d52b30dffcec4ad6e6c3f08
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77065586"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368186"
 ---
 # <a name="sync-an-attribute-from-your-on-premises-active-directory-to-azure-ad-for-provisioning-to-an-application"></a>アプリケーションにプロビジョニングするためにオンプレミスの Active Directory から Azure AD に属性を同期する
 
 ユーザー プロビジョニングのために属性マッピングをカスタマイズしているときに、マップ対象の属性が **[ソース属性]** の一覧に表示されないことがあります。 この記事では、オンプレミスの Active Directory (AD) から Azure Active Directory (Azure AD) に属性を同期することによって、表示されていない属性を追加する方法について説明します。
 
-Azure AD から SaaS アプリにユーザー アカウントをプロビジョニングするときに、Azure AD には、ユーザー プロファイルを作成するために必要なすべてのデータが含まれていなければなりません。 場合によっては、データを使用できるようにするために、オンプレミスから Azure AD に属性を同期する必要があります。 Azure AD Connect では自動的に特定の属性が Azure AD に同期されますが、すべての属性が同期されるわけではありません。 さらに、既定で同期される一部の属性 (SAMAccountName など) は、Azure AD Graph API 経由で公開されない可能性があります。 このような場合は、Azure AD Connect ディレクトリ拡張機能を使用して、Azure AD に属性を同期することができます。 これにより、Azure AD Graph API と Azure AD プロビジョニング サービスが属性を認識できるようになります。
+Azure AD から SaaS アプリにユーザー アカウントをプロビジョニングするときに、Azure AD には、ユーザー プロファイルを作成するために必要なすべてのデータが含まれていなければなりません。 場合によっては、データを使用できるようにするために、オンプレミスから Azure AD に属性を同期する必要があります。 Azure AD Connect では自動的に特定の属性が Azure AD に同期されますが、すべての属性が同期されるわけではありません。 さらに、既定で同期される一部の属性 (SAMAccountName など) が、Microsoft Graph API 経由で公開されない可能性があります。 このような場合は、Azure AD Connect ディレクトリ拡張機能を使用して、Azure AD に属性を同期することができます。 これにより、Microsoft Graph API と Azure AD プロビジョニング サービスが属性を認識できるようになります。
 
 プロビジョニングに必要なデータが Active Directory に存在するのに、上記で説明した理由のためにプロビジョニングに使用できない場合は、以下の手順を実行します。
  

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: d8d3204c8a5ace17ae47a17d4c4ffec2ec7977f2
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/14/2020
+ms.openlocfilehash: 0603ad1fbecf33e5880fd7f18d35af51795f8e39
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112257"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251993"
 ---
 # <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-cognitive-search"></a>REST チュートリアル:Azure Cognitive Search での半構造化されたデータ (JSON BLOB) のインデックス作成と検索
 
@@ -45,7 +45,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
 
-1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理者キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
+1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
 ![HTTP エンドポイントとアクセス キーを取得する](media/search-get-started-postman/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
 
@@ -83,7 +83,7 @@ REST クライアントから次の 3 つの API 呼び出しを実行します�
 
 ## <a name="create-a-data-source"></a>データ ソースを作成する
 
-[データ ソースの作成 API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) で、インデックス作成の対象データを指定する Azure Cognitive Search オブジェクトが作成されます。
+[データ ソースの作成 API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) では、インデックス作成の対象データを指定する Azure Cognitive Search オブジェクトが作成されます。
 
 この呼び出しのエンドポイントは `https://[service name].search.windows.net/datasources?api-version=2019-05-06` です。 `[service name]` を検索サービスの名前に置き換えます。 
 
@@ -126,7 +126,7 @@ REST クライアントから次の 3 つの API 呼び出しを実行します�
 
 ## <a name="create-an-index"></a>インデックスを作成する
     
-2 つ目の呼び出しは[インデックスの作成 API](https://docs.microsoft.com/rest/api/searchservice/create-indexer) であり、検索可能なすべてのデータを格納する Azure Cognitive Search インデックスを作成します。 インデックスでは、すべてのパラメーターとその属性を指定します。
+2 つ目の呼び出しは[インデックスの作成 API](https://docs.microsoft.com/rest/api/searchservice/create-index) であり、検索可能なすべてのデータを格納する Azure Cognitive Search インデックスを作成します。 インデックスでは、すべてのパラメーターとその属性を指定します。
 
 この呼び出しの URL は `https://[service name].search.windows.net/indexes?api-version=2019-05-06` です。 `[service name]` を検索サービスの名前に置き換えます。
 
@@ -283,11 +283,11 @@ Azure portal で、検索サービスの **[概要]** ページを開き、 **[�
 
 `$filter` パラメーターは、インデックスの作成時にフィルター可能としてマークされたメタデータでのみ使用できます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 チュートリアルの後で最も速くクリーンアップする方法は、Azure Cognitive Search サービスが含まれているリソース グループを削除することです。 リソース グループを削除することで、そのすべての内容を完全に削除することができます。 ポータルでは、リソース グループ名は Azure Cognitive Search サービスの [概要] ページに表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 JSON BLOB のインデックス作成には、いくつかの方法と複数のオプションがあります。 次の手順では、さまざまなオプションの検討とテストを行い、自分のシナリオに最適なオプションを確認します。
 

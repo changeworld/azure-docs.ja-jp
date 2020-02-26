@@ -36,7 +36,7 @@ ms.locfileid: "74927187"
 
    ![インストールされている Azure App Service の Application Insights 拡張機能を示す App Service 拡張機能のスクリーンショット](./media/snapshot-debugger-upgrade/application-insights-site-extension-to-be-deleted.png)
 
-4. _Azure App Service の Application Insights 拡張機能_ のいずれかのバージョンがインストールされている場合は、それを選択し、[削除] をクリックします。 拡張機能を削除し、削除が完了するのを待ってから次の手順に進むには、 **[はい]** で確定してください。
+4. _Azure App Service の Application Insights 拡張機能_のいずれかのバージョンがインストールされている場合は、それを選択し、[削除] をクリックします。 拡張機能を削除し、削除が完了するのを待ってから次の手順に進むには、 **[はい]** で確定してください。
 
    ![[削除] ボタンが強調表示されている、Azure App Service の Application Insights 拡張機能を示す App Service 拡張機能のスクリーンショット](./media/snapshot-debugger-upgrade/application-insights-site-extension-delete.png)
 

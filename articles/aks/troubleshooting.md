@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: df3ca877570b6b3e3a34dd20d617ce3896f1dd99
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 663a1dc597493c7b534b54eab7ccc4bed0ff0e11
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120963"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209224"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -120,7 +120,7 @@ AKS クラスターを別のサブスクリプションに移したり、サブ�
 
 * クラスター名は 1 ～ 63 文字にする必要があります。 使用できる文字は、文字、数字、ダッシュ、およびアンダースコアのみです。 先頭と末尾の文字は、文字または数字にしてください。
 * AKS *MC_* リソース グループ名は、リソース グループ名とリソース名を結合します。 `MC_resourceGroupName_resourceName_AzureRegion` の自動生成された構文は、80 文字以内にする必要があります。 必要な場合は、リソース グループ名または AKS クラスター名の長さを短くします。
-* *dnsPrefix* の最初と最後は英数字の値にする必要があります。 有効な文字には英数字の値とハイフン (-) が含まれます。 *dnsPrefix* にはピリオド (.) などの特殊文字を含めることはできません。
+* *dnsPrefix* の最初と最後は英数字の値にする必要があり、1 から 54 文字の間にする必要があります。 有効な文字には英数字の値とハイフン (-) が含まれます。 *dnsPrefix* にはピリオド (.) などの特殊文字を含めることはできません。
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>クラスターを作成、更新、スケーリング、削除、またはアップグレードしようとすると、別の操作が進行中のためその操作は許可されませんというエラーを受け取ります。
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: d85f6ba9d50b7d30930322ca34cb15edb30e1472
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 683b35661a41325cfd5baa877acdb0e37529bb94
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775011"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198736"
 ---
 # <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>Azure Marketplace 上の仮想マシン (VM) イメージをマネージド ディスク ストレージに移行します
 
@@ -61,6 +61,6 @@ VM イメージのユーザーへのサービスは停止しません。
 
 いいえ、公開のプロセスは変わりません。 
 
-## <a name="next-steps"></a>次のステップ
+### <a name="can-the-publisher-move-their-offers-to-managed-disk"></a>発行元は、オファーをマネージド ディスクに移動できますか。
 
-「[仮想マシンのオファー発行ガイド](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines)」のページを参照してください。
+いいえ。発行元はオファーをマネージド ディスクに移動できません。 待つと、イメージは自動的に移動されます。 Microsoft 側で変更を加える前に、発行元に通知を送信します。

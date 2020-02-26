@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8be047caf8631cda4e48b7bf10987db616a9b86f
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: d51359896b7a0d03626ead6843d3666f3ad3ef57
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608610"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368100"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B コラボレーションの FAQ
 
@@ -79,7 +79,7 @@ B2B コラボレーション ユーザーは、制限付き管理者のロール
 ### <a name="do-you-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>Azure AD B2B コラボレーション ユーザーのパスワード リセットはサポートされていますか。
 Azure AD テナントがユーザーのホーム ディレクトリである場合、管理者は Azure portal から[ユーザーのパスワードをリセットする](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-reset-password-azure-portal)ことができます。 ただし、別の Azure AD ディレクトリまたは外部の ID プロバイダーによって管理されているアカウントでサインインしているゲスト ユーザーのパスワードを、直接リセットすることはできません。 パスワードをリセットできるのは、ゲスト ユーザーまたはユーザーのホーム ディレクトリの管理者だけです。 ゲスト ユーザーに対するパスワード リセットの動作の例をいくつか次に示します。
  
-* Microsoft アカウント (たとえば guestuser@live.com) でサインインしたゲスト ユーザーは、Microsoft アカウントのセルフサービスのパスワード リセット (SSPR) を使用して、自分のパスワードをリセットすることができます。 「[Microsoft アカウントのパスワードをリセットする方法](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password)」をご覧ください。
+* Microsoft アカウント (たとえば guestuser@live.com) でサインインしたゲスト ユーザーは、Microsoft アカウントのセルフサービス パスワード リセット (SSPR) を使用して、自分のパスワードをリセットすることができます。 「[Microsoft アカウントのパスワードをリセットする方法](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password)」をご覧ください。
 * Google アカウントまたはそれ以外の外部 ID プロバイダーでサインインしたゲスト ユーザーは、ID プロバイダーの SSPR 方法を使用して、自分のパスワードをリセットできます。 たとえば、Google アカウント guestuser@gmail.com のゲスト ユーザーは、「[パスワードを変更または再設定する](https://support.google.com/accounts/answer/41078)」の手順に従って自分のパスワードをリセットできます。
 * ID テナントが Just-In-Time (JIT) テナントまたは "バイラル" テナント (つまり、独立したアンマネージド Azure テナント) である場合は、ゲスト ユーザーだけが自分のパスワードをリセットできます。 場合によっては、組織が、従業員が仕事用メール アドレスを使用してサービスにサインアップするときに作成される[バイラル テナントの管理を引き継ぎます](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover)。 組織がバイラル テナントを引き継いだ後は、その組織の管理者しか、ユーザーのパスワードをリセットしたり SSPR を有効にしたりできなくなります。 必要に応じて、招待側の組織としては、ディレクトリからゲスト ユーザー アカウントを削除し、招待を再送信することができます。
 * ゲスト ユーザーのホーム ディレクトリが Azure AD テナントの場合は、管理者がユーザーのパスワードをリセットできます。 たとえば、管理者がオンプレミスの Active Directory からユーザーを作成または同期し、UserType を Guest に設定したような場合です。 このユーザーは管理者のディレクトリに所属しているため、管理者は Azure portal からユーザーのパスワードをリセットできます。
@@ -97,7 +97,7 @@ Azure AD には、文字、パスワードの強度、およびアカウント �
 フェデレーション アカウントの場合、パスワード ポリシーは、オンプレミス テナントに適用されるポリシーとユーザーの Microsoft アカウント設定に依存します。
 
 ### <a name="an-organization-might-want-to-have-different-experiences-in-their-applications-for-tenant-users-and-guest-users-is-there-standard-guidance-for-this-is-the-presence-of-the-identity-provider-claim-the-correct-model-to-use"></a>組織で、アプリケーションにテナント ユーザーとゲスト ユーザーに対して異なるエクスペリエンスを設定したいと考える場合があります。 これを行うための標準的なガイダンスはありますか。 ID プロバイダー要求の存在は、使用する正しいモデルですか。
-ゲスト ユーザーは、任意の ID プロバイダーを使用して認証できます。 詳細については、[B2B コラボレーション ユーザーのプロパティ](user-properties.md)に関するページをご覧ください。 **UserType** プロパティを使用して、ユーザー エクスペリエンスを決定します。 **UserType 要求**は、現在トークンに含まれていません。 アプリケーションでは、Graph API を使用してディレクトリでユーザーのクエリを実行し、UserType を取得する必要があります。
+ゲスト ユーザーは、任意の ID プロバイダーを使用して認証できます。 詳細については、[B2B コラボレーション ユーザーのプロパティ](user-properties.md)に関するページをご覧ください。 **UserType** プロパティを使用して、ユーザー エクスペリエンスを決定します。 **UserType 要求**は、現在トークンに含まれていません。 アプリケーションで Microsoft Graph API を使用して、ディレクトリでユーザーを照会して、UserType を取得する必要があります。
 
 ### <a name="where-can-i-find-a-b2b-collaboration-community-to-share-solutions-and-to-submit-ideas"></a>ソリューションを共有し、アイデアを提供するための B2B コラボレーション コミュニティにはどこからアクセスできますか。
 B2B コラボレーションを向上させるためのフィードバックは絶えず受け付けています。 ユーザー シナリオ、ベスト プラクティス、また Azure AD B2B コラボレーションに関する意見を提供してください。 [マイクロソフト Tech コミュニティ](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b)のディスカッションにご参加ください。

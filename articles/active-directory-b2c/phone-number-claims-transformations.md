@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/14/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 38763f414b1e5373af79d2501850a44e8e813451
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: c5beef98f03c52ca022a7ab8047d3b392755c0bf
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185468"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212202"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Azure AD B2C で電話番号要求変換を定義する
 
@@ -32,7 +32,8 @@ ms.locfileid: "77185468"
 
 | Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim | string | 変換元である文字列型の要求。 |
+| InputClaim | phoneNumberString | string |  電話番号の文字列要求。 電話番号は国際対応形式で、先頭に "+" と国番号を使用する必要があります。 入力要求 `country` が指定された場合、電話番号は現地形式になります (国コードなし)。 |
+| InputClaim | country | string | [省略可能] ISO3166 形式での電話番号の国コードの文字列要求 (2 文字の ISO-3166 国コード)。 |
 | OutputClaim | outputClaim | phoneNumber | この要求変換の結果。 |
 
 **ConvertStringToPhoneNumberClaim** 要求変換は、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)または[表示コントロール](display-controls.md)によって呼び出される[検証技術プロファイル](validation-technical-profile.md)から常に実行する必要があります。 **UserMessageIfClaimsTransformationInvalidPhoneNumber** セルフアサート技術プロファイル メタデータにより、ユーザーに表示されるエラー メッセージが制御されます。
@@ -44,7 +45,8 @@ ms.locfileid: "77185468"
 ```XML
 <ClaimsTransformation Id="ConvertStringToPhoneNumber" TransformationMethod="ConvertStringToPhoneNumberClaim">
   <InputClaims>
-    <InputClaim ClaimTypeReferenceId="phoneString" TransformationClaimType="inputClaim" />
+    <InputClaim ClaimTypeReferenceId="phoneString" TransformationClaimType="phoneNumberString" />
+    <InputClaim ClaimTypeReferenceId="countryCode" TransformationClaimType="country" />
   </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="outputClaim" />
@@ -63,11 +65,19 @@ ms.locfileid: "77185468"
 </TechnicalProfile>
 ```
 
-### <a name="example"></a>例
+### <a name="example-1"></a>例 1
 
 - 入力要求:
-  - **inputClaim**: +1 (123) 456-7890
+  - **phoneNumberString**:045 456-7890
+  - **国**:DK
 - 出力要求:
+  - **outputClaim**: +450546148120
+
+### <a name="example-2"></a>例 2
+
+- 入力要求:
+  - **phoneNumberString**: +1 (123) 456-7890
+- 出力要求: 
   - **outputClaim**: +11234567890
 
 ## <a name="getnationalnumberandcountrycodefromphonenumberstring"></a>GetNationalNumberAndCountryCodeFromPhoneNumberString

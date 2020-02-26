@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2aa6bc856fc7b7de071a45f3aa11c051e36eca4f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e17e0f1f01e836a7a240100c1c0e1f015da5f00
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475025"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368154"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Azure Active Directory B2B のベスト プラクティス
 この記事には、Azure Active Directory (Azure AD) での企業間 (B2B) コラボレーションに関する推奨事項とベストプラクティスが含まれています。
@@ -33,7 +33,7 @@ ms.locfileid: "75475025"
 | 多要素認証 (MFA) の条件付きアクセス ポリシーを適用する | パートナーの B2B ユーザーと共有するアプリに MFA ポリシーを適用することをお勧めします。 これにより、パートナー組織が MFA を使用しているかどうかに関係なく、テナント内のアプリに MFA が一貫して適用されます。 「[B2B コラボレーション ユーザーの条件付きアクセス](conditional-access.md)」を参照してください。 |
 | デバイスベースの条件付きアクセス ポリシーを適用している場合、除外リストを使用して B2B ユーザーへのアクセスを許可する | 組織でデバイスベースの条件付きアクセス ポリシーが有効になっている場合、B2B ゲスト ユーザーのデバイスは組織で管理されていないため、ブロックされます。 特定のパートナー ユーザーを含む除外リストを作成して、デバイスベースの条件付きアクセス ポリシーから除外することができます。 「[B2B コラボレーション ユーザーの条件付きアクセス](conditional-access.md)」を参照してください。 |
 | B2B ゲスト ユーザーに直接リンクを提供するときにテナント固有の URL を使用する | 招待メールの代わりに、アプリまたはポータルへの直接リンクをゲストに提供することができます。 この直接リンクはテナント固有である必要があります。つまり、共有アプリが配置されているテナントでゲストを認証できるように、テナント ID または確認済みドメインが含まれている必要があります。 [ゲスト ユーザーの利用エクスペリエンス](redemption-experience.md)に関するページを参照してください。 |
-| アプリの開発時に UserType を使用してゲスト ユーザーエクスペリエンスを決定する  | アプリケーションを開発しているときに、テナント ユーザーとゲスト ユーザーに異なるエクスペリエンスを提供する場合は、UserType プロパティを使用します。 UserType 要求は、現在トークンに含まれていません。 アプリケーションでは、Graph API を使用してディレクトリでユーザーのクエリを実行することで、UserType を取得する必要があります。 |
+| アプリの開発時に UserType を使用してゲスト ユーザーエクスペリエンスを決定する  | アプリケーションを開発しているときに、テナント ユーザーとゲスト ユーザーに異なるエクスペリエンスを提供する場合は、UserType プロパティを使用します。 UserType 要求は、現在トークンに含まれていません。 アプリケーションで Microsoft Graph API を使用して、ディレクトリでユーザーを照会して、UserType を取得する必要があります。 |
 | ユーザーと組織の関係が変更された場合*にのみ* UserType プロパティを変更する | PowerShell を使用してユーザーの UserType プロパティをメンバーからゲスト (またはその逆) に変換できますが、ユーザーと組織の関係が変更された場合にのみ、このプロパティを変更するようにしてください。 [B2B ゲスト ユーザーのプロパティ](user-properties.md)に関するページを参照してください。|
 
 ## <a name="next-steps"></a>次のステップ

@@ -7,24 +7,26 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 2c32e67bb2b47a24036a341ea4e1b83037abbaee
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: ebd65f2dcbb0040b764290627bbfd2901aa9a7d3
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827534"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443977"
 ---
 # <a name="query-data-using-the-azure-data-explorer-python-library"></a>Azure Data Explorer の Python ライブラリを使用してデータのクエリを実行する
 
-Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure データ エクスプ ローラーでは、[Python 用のデータ クライアント ライブラリ](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)が提供されています。 このライブラリを使用すると、コードからデータをクエリできます。 この記事では、学習を支援するために設定した*ヘルプ クラスター*上のテーブルに接続します。 次に、そのクラスター上のテーブルをクエリし、結果を返します。
+この記事では、Azure Data Explorer を使用してデータのクエリを実行します。 Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。
+
+Azure データ エクスプ ローラーでは、[Python 用のデータ クライアント ライブラリ](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)が提供されています。 このライブラリを使用すると、コードからデータをクエリできます。 学習を支援するために設定した "*ヘルプ クラスター*" 上のテーブルに接続します。 そのクラスターでテーブルのクエリを実行し、結果を返すことができます。
 
 この記事は [Azure Notebook](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb) でも利用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Active Directory (AAD) のメンバーである、組織の電子メール アカウント
+* [Python 3.4 以降](https://www.python.org/downloads/)
 
-* 開発用コンピューターに [Python](https://www.python.org/downloads/) がインストール済み
+* Azure Active Directory (AAD) のメンバーである、組織の電子メール アカウント
 
 ## <a name="install-the-data-library"></a>データ ライブラリをインストールする
 
@@ -95,7 +97,7 @@ df
 
 StormEvents テーブルの上位 10 件の結果が表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Data Explorer の Python ライブラリを使用してデータを取り込む](python-ingest-data.md)

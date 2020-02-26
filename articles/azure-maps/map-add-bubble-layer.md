@@ -1,6 +1,6 @@
 ---
 title: マップにバブル レイヤーを追加する | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps Web SDK を使用して、マップにバブル レイヤーを追加する方法について説明します。
+description: この記事では、Microsoft Azure Maps Web SDK を使用して、マップにバブル レイヤーを追加する方法について学習します。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,23 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 462d820824ad6c53ad4b93ad5c88c66128619467
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 7ae11734eb804715f3eb1b5edcb02fc328dafec8
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933665"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208558"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>マップにバブル レイヤーを追加する
 
-この記事では、データ ソースからのポイント データをマップ上のバブル レイヤーにレンダリングする方法について説明します。 バブル レイヤーは、決まったピクセル半径を持つ円としてポイントをマップ上にレンダリングするものです。 
+この記事では、データ ソースからのポイント データをマップ上のバブル レイヤーにレンダリングする方法について説明します。 バブル レイヤーは、固定ピクセル半径を持つ円としてポイントをマップ上にレンダリングするものです。 
 
 > [!TIP]
 > バブル レイヤーの既定では、データ ソース内のすべてのジオメトリの座標がレンダリングされます。 ポイント ジオメトリ フィーチャーのみがレンダリングされるようにレイヤーを制限するには、レイヤーの `filter` プロパティを `['==', ['geometry-type'], 'Point']` に設定します。または、MultiPoint フィーチャーも含める場合は、`['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` に設定します。
 
 ## <a name="add-a-bubble-layer"></a>バブル レイヤーを追加する
 
-次のコードでは、ポイントの配列がデータ ソースに読み込まれます。 次に、データ ポイントが[バブル レイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)に接続されます。 バブル レイヤーには、各バブルを 5 ピクセルの半径、白の塗りつぶしの色、青のストロークの色、6 ピクセルのストロークの幅でレンダリングするオプションがあります。 
+次のコードでは、ポイントの配列がデータ ソースに読み込まれます。 次に、データ ポイントが[バブル レイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)に接続されます。 バブル レイヤーでは、各バブルが 5 ピクセルの半径、白の塗りつぶしの色でレンダリングされます。 また、青のストロークの色、6 ピクセルのストロークの幅になります。 
 
 ```javascript
 //Add point locations.
@@ -62,7 +62,7 @@ map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
 
 ## <a name="show-labels-with-a-bubble-layer"></a>バブル レイヤーでラベルを表示する
 
-次のコードは、バブル レイヤーを使用してマップ上にポイントをレンダリングする方法と、シンボル レイヤーを使用してラベルをレンダリングする方法を示しています。 シンボル レイヤーのアイコンを非表示にするには、アイコン オプションの `image` プロパティを `'none'` に設定します。
+このコードは、バブル レイヤーを使用してマップ上にポイントをレンダリングする方法を示しています。 また、シンボル レイヤーを使用して、ラベルをレンダリングする方法を示しています。 シンボル レイヤーのアイコンを非表示にするには、アイコン オプションの `image` プロパティを `'none'` に設定します。
 
 <br/>
 

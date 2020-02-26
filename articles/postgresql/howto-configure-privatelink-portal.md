@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: f7a796408267fda08d765425a3c529895a251782
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: e73f5e578ef498d3c6be8422fbbcfa7ac8856adf
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281106"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425818"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-preview-using-portal"></a>ポータルを使用して Azure Database for PostgreSQL - 単一サーバー (プレビュー) 用のプライベート リンクを作成して管理します
 
@@ -35,9 +35,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[仮想ネットワーク]** の順に選択します。
 2. **[仮想ネットワークの作成]** に次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
-    | Name | 「*MyVirtualNetwork*」と入力します。 |
+    | 名前 | 「*MyVirtualNetwork*」と入力します。 |
     | アドレス空間 | 「*10.1.0.0/16*」を入力します。 |
     | サブスクリプション | サブスクリプションを選択します。|
     | Resource group | **[新規作成]** を選択し、「*myResourceGroup*」と入力して、 **[OK]** を選択します。 |
@@ -53,7 +53,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 2. **[仮想マシンの作成 - 基本]** に次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
     | サブスクリプション | サブスクリプションを選択します。 |
@@ -80,7 +80,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[仮想マシンの作成 - ネットワーク]** で次の情報を選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | 仮想ネットワーク | 既定値 **[MyVirtualNetwork]** のままにします。  |
     | アドレス空間 | 既定値 **[10.1.0.0/24]** のままにします。|
@@ -103,7 +103,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **Azure Database for PostgreSQL の[デプロイ オプション]** で、 **[単一サーバー]** を選択し、次の情報を入力します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
     | サブスクリプション | サブスクリプションを選択します。 |
@@ -129,23 +129,23 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. Azure portal の画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[プライベート リンク センター (プレビュー)]** を選択します。
 2. **[プライベート リンク センター - 概要]** の**サービスへのプライベート接続を構築する**オプションで、 **[開始]** を選択します。
 
-    ![Private Link の概要](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
+    ![Private Link の概要](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
 
 1. **[Create a private endpoint (Preview) - Basics]\(プライベート エンドポイント (プレビュー) の作成 - 基本\)** で次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
     | サブスクリプション | サブスクリプションを選択します。 |
     | Resource group | **[myResourceGroup]** を選択します。 これは前のセクションで作成しました。|
     | **インスタンスの詳細** |  |
-    | Name | 「*myPrivateEndpoint*」と入力します。 この名前を取得する場合は、一意の名前を作成します。 |
+    | 名前 | 「*myPrivateEndpoint*」と入力します。 この名前を取得する場合は、一意の名前を作成します。 |
     |リージョン|**[西ヨーロッパ]** を選択します。|
     |||
 5. **リソース** を選択します。
 6. **[プライベート エンドポイントの作成 - リソース]** で、次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     |接続方法  | 自分のディレクトリ内の Azure リソースに接続するように選択します。|
     | サブスクリプション| サブスクリプションを選択します。 |
@@ -156,7 +156,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 7. **構成** を選択します。
 8. **[Create a private endpoint (Preview) - Configuration]\(プライベート エンドポイント (プレビュー) の作成 - 構成\)** で次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     |**ネットワーク**| |
     | 仮想ネットワーク| *[MyVirtualNetwork]* を選択します。 |
@@ -169,7 +169,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 **[確認および作成]** ページが表示され、Azure によって構成が検証されます。 
 2. "**証に成功しました**" というメッセージが表示されたら、 **[作成]** を選択します。 
 
-    ![作成されたプライベート リンク](media/concepts-data-access-and-security-private-link/show-postgres-private-link.png)
+    ![作成された Private Link](media/concepts-data-access-and-security-private-link/show-postgres-private-link.png)
 
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>リモート デスクトップ (RDP) を使用して VM に接続
 
@@ -210,35 +210,36 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     Non-authoritative answer:
     Name:    mydemopostgresserver.privatelink.postgres.database.azure.com
     Address:  10.1.3.4
+    ```
 
-3. Test the private link connection for the PostgreSQL server using any available client. In the example below I have used [Azure Data studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15) to do the operation.
+3. 使用可能な任意のクライアントを使用して、PostgreSQL サーバーのプライベートリンク接続をテストします。 次の例では、[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15) を使用して操作を行いました。
 
-4. In **New connection**, enter or select this information:
+4. **[新しい接続]** で、この情報を入力または選択します。
 
-    | Setting | Value |
+    | 設定 | Value |
     | ------- | ----- |
-    | Server type| Select **PostgreSQL**.|
-    | Server name| Select *mydemopostgresserver.privatelink.postgres.database.azure.com* |
-    | User name | Enter username as username@servername which is provided during the PostgreSQL server creation. |
-    |Password |Enter a password provided during the PostgreSQL server creation. |
-    |SSL|Select **Required**.|
+    | サーバーの種類| **[PostgreSQL]** を選択します。|
+    | サーバー名| *[mydemopostgresserver.privatelink.postgres.database.azure.com]* を選択します。 |
+    | ユーザー名 | PostgreSQL サーバーの作成時に指定されるユーザー名を「username@servername」として入力します。 |
+    |Password |PostgreSQL サーバーの作成時に指定したパスワードを入力します。 |
+    |SSL|**[必須]** を選択します。|
     ||
 
-5. Select Connect.
+5. [接続] を選択します。
 
-6. Browse databases from left menu.
+6. 左側のメニューでデータベースを参照します。
 
-7. (Optionally) Create or query information from the postgreSQL server.
+7. (省略可能) postgreSQL サーバーから情報を作成またはクエリします。
 
-8. Close the remote desktop connection to myVm.
+8. myVM へのリモート デスクトップ接続を閉じます。
 
-## Clean up resources
-When you're done using the private endpoint, PostgreSQL server, and the VM, delete the resource group and all of the resources it contains:
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+プライベート エンドポイント、PostgreSQL サーバー、VM を使い終えたら、リソース グループとそこに含まれるすべてのリソースを削除します。
 
-1. Enter *myResourceGroup* in the **Search** box at the top of the portal and select *myResourceGroup* from the search results.
-2. Select **Delete resource group**.
-3. Enter myResourceGroup for **TYPE THE RESOURCE GROUP NAME** and select **Delete**.
+1. ポータルの上部にある**検索**ボックスに「 *myResourceGroup*」と入力し、検索結果から  *myResourceGroup* を選択します。
+2. **[リソース グループの削除]** を選択します。
+3. **[TYPE THE RESOURCE GROUP NAME]\(リソース グループ名を入力してください\)** に「myResourceGroup」と入力し、 **[削除]** を選択します。
 
-## Next steps
+## <a name="next-steps"></a>次のステップ
 
-In this how-to, you created a VM on a virtual network, an Azure Database for PostgreSQL - Single server, and a private endpoint for private access. You connected to one VM from the internet and securely communicated to the PostgreSQL server using Private Link. To learn more about private endpoints, see [What is Azure private endpoint](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
+この記事では、仮想ネットワーク上の VM、Azure Database for PostgreSQL - 単一サーバー、およびプライベート アクセス用のプライベート エンドポイントを作成しました。 インターネットから 1 台の VM に接続し、Private Link を使用して PostgreSQL サーバーと安全に通信を行いました。 プライベート エンドポイントの詳細については、「[Azure プライベート エンドポイントとは](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)」を参照してください。

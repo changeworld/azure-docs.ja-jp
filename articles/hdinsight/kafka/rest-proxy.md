@@ -7,36 +7,39 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: bc6859d29a574cea0d97989977ba9a333b20f6c4
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: d99a3b803b80dc41990a63e647d3ba928deb31af
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157137"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198907"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>REST プロキシを使用して Azure HDInsight で Apache Kafka クラスターを操作する
 
-Kafka REST プロキシを使用すると、HTTP 経由の REST API を使用して Kafka クラスターを操作することができます。 これは、Kafka クライアントが仮想ネットワークの外部にある可能性があることを意味します。 さらに、クライアントは、Kafka ライブラリを利用するのではなく、単純な HTTP 呼び出しを使用して Kafka クラスターにメッセージを送受信することができます。  
+Kafka REST プロキシを使用すると、HTTP 経由の REST API を使用して Kafka クラスターを操作することができます。 これは、Kafka クライアントが仮想ネットワークの外部にある可能性があることを意味します。 さらに、クライアントは、Kafka ライブラリを利用するのではなく、単純な HTTP 呼び出しを使用して Kafka クラスターにメッセージを送受信することができます。 このチュートリアルでは、REST プロキシ対応の Kafka クラスターを作成する方法について説明し、REST プロキシを呼び出す方法を示すサンプル コードを紹介します。
+
+## <a name="rest-api-reference"></a>REST API リファレンス
+
+Kafka REST API によってサポートされる操作の詳細については、[HDInsight Kafka REST Proxy の API リファレンス](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy)を参照してください。
 
 ## <a name="background"></a>バックグラウンド
-
-### <a name="architecture"></a>Architecture
-
-REST プロキシを使用しない場合、Kafka クライアントは、Kafka クラスターまたはピアリングされた VNet と同じ VNet に存在する必要があります。 REST プロキシを使用すると、任意の場所に配置されたデータ プロデューサーまたはコンシューマーに接続できます。 REST プロキシをデプロイすると、クラスターの新しいパブリック エンドポイントが作成されます。このエンドポイントは、ポータルの設定で確認できます。
 
 ![Kafka REST プロキシのアーキテクチャ](./media/rest-proxy/rest-proxy-architecture.png)
 
 API でサポートされている操作の詳細については、[Apache Kafka REST プロキシ API](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy) を参照してください。
 
+### <a name="rest-proxy-endpoint"></a>REST プロキシ エンドポイント
+
+REST プロキシを使用して HDInsight Kafka クラスターを作成すると、クラスターの新しいパブリック エンドポイントが作成されます。これは、Azure portal の HDInsight クラスターの [プロパティ] にあります。
+
 ### <a name="security"></a>Security
 
-Kafka REST プロキシへのアクセスは Azure Active Directory セキュリティ グループで管理されます。 詳細については、「[Azure Active Directory グループを使用したアプリとリソース アクセスの管理](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)」を参照してください。
+Kafka REST プロキシへのアクセスは Azure Active Directory セキュリティ グループで管理されます。 REST プロキシが有効な Kafka クラスターを作成する場合は、REST エンドポイントにアクセスする必要がある Azure Active Directory セキュリティ グループを指定します。 REST プロキシにアクセスする必要がある Kafka クライアント (アプリケーション) は、グループの所有者によってこのグループに登録される必要があります。 グループの所有者は、ポータルまたは Powershell を使用してこれを行うことができます。
 
-REST プロキシが有効な Kafka クラスターを作成する場合は、REST エンドポイントにアクセスする必要がある AAD セキュリティ グループを指定します。 REST プロキシにアクセスする必要がある Kafka クライアント (アプリケーション) は、グループの所有者によってこのグループに登録される必要があります。 グループの所有者は、ポータルまたは Powershell を使用してこれを行うことができます。
+REST プロキシ エンドポイントへの要求を行う前に、クライアント アプリケーションは、適切なセキュリティ グループのメンバーシップを確認するために OAuth トークンを取得する必要があります。 OAuth トークンを取得する方法については、後述する「[クライアント アプリケーションのサンプル](#client-application-sample)」を参照してください。 クライアント アプリケーションが OAuth トークンを受け取ると、REST プロキシに対する HTTP 要求でそのトークンを渡す必要があります。
 
-REST プロキシ エンドポイントへの要求を行う前に、クライアント アプリケーションは、適切なセキュリティ グループのメンバーシップを確認するために OAuth トークンを取得する必要があります。 OAuth トークンのしくみについては、「[OAuth 2.0 コード付与フローを使用して Azure Active Directory Web アプリケーションへアクセスを承認する](../../active-directory/azuread-dev/v1-protocols-oauth-code.md)」を参照してください。 Python で OAuth トークンを取得する例については、[クライアント アプリケーションのサンプル](#client-application-sample)に関する記事を参照してください
-
-クライアント アプリケーションが OAuth トークンを受け取ると、REST プロキシに対する HTTP 要求でそのトークンを渡す必要があります。
+> [!NOTE]  
+> AAD セキュリティ グループの詳細については、「[Azure Active Directory グループを使用したアプリとリソース アクセスの管理](../../active-directory/fundamentals/active-directory-manage-groups.md)」を参照してください。 OAuth トークンのしくみについては、「[OAuth 2.0 コード付与フローを使用して Azure Active Directory Web アプリケーションへアクセスを承認する](../../active-directory/develop/v1-protocols-oauth-code.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -61,12 +64,21 @@ REST プロキシ エンドポイントへの要求を行う前に、クライ�
 
 ## <a name="client-application-sample"></a>クライアント アプリケーションのサンプル
 
-次の python コードを使用して、Kafka クラスターで REST プロキシを操作できます。 このコードは、次の処理を実行します。
+次の python コードを使用して、Kafka クラスターで REST プロキシを操作できます。 コード サンプルを使用するには、次のステップを実行します。
+
+1. Python がインストールされているマシンにサンプルコードを保存します。
+1. `pip3 install adal` と `pip install msrestazure` を実行して、必要な python 依存関係をインストールします。
+1. 実際の環境に合わせて *Configure these properties* のコード セクションを変更し、次のプロパティを変更します。
+    1.  *テナント ID* – 該当するサブスクリプションがある Azure テナント。
+    1.  *クライアント ID* – セキュリティ グループに登録したアプリケーションの ID。
+    1.  *クライアント シークレット* – セキュリティ グループに登録したアプリケーションのシークレット
+    1.  *Kafkarest_endpoint* – この値は、[デプロイ セクション](#create-a-kafka-cluster-with-rest-proxy-enabled)の説明に従って、クラスターの概要の [プロパティ] タブから取得します。 `https://<clustername>-kafkarest.azurehdinsight.net` という形式にする必要があります。
+3. コマンド ラインから、`python <filename.py>` を実行して python ファイルを実行します
+
+このコードは、次の処理を実行します。
 
 1. Azure AD から OAuth トークンを取得する
-1. 指定されたトピックを作成する
-1. このトピックにメッセージを送信する
-1. そのトピックからのメッセージを使用する
+1. Kafka REST プロキシに対して要求を行う方法を示します。
 
 Python での OAuth トークンの取得の詳細については、[Python の AuthenticationContext クラス](https://docs.microsoft.com/python/api/adal/adal.authentication_context.authenticationcontext?view=azure-python)に関する記事を参照してください。 Kafka REST プロキシで作成または削除されていないトピックがそこに反映される間、遅延が発生する可能性があります。 この遅延は、キャッシュの更新によるものです。
 
@@ -114,18 +126,6 @@ response = requests.get(request_url, headers={'Authorization': accessToken})
 print(response.content)
 ```
 
-コード サンプルを使用するには、次のステップを実行します。
-
-1. Python がインストールされているマシンにサンプルコードを保存します。
-1. `pip3 install adal` と `pip install msrestazure` を実行して、必要な python 依存関係をインストールします。
-1. コードを変更し、環境に合わせて次のプロパティを更新します。
-    1.  *テナント ID* – 該当するサブスクリプションがある Azure テナント。
-    1.  *クライアント ID* – セキュリティ グループに登録したアプリケーションの ID。
-    1.  *クライアント シークレット* – セキュリティ グループに登録したアプリケーションのシークレット
-    1.  *Kafkarest_endpoint* – この値は、[デプロイ セクション](#create-a-kafka-cluster-with-rest-proxy-enabled)の説明に従って、クラスターの概要の [プロパティ] タブから取得します。 `https://<clustername>-kafkarest.azurehdinsight.net` という形式にする必要があります。
-3. コマンド ラインから、`python <filename.py>` を実行して python ファイルを実行します
-
 ## <a name="next-steps"></a>次のステップ
 
 * [Kafka REST プロキシ API リファレンス ドキュメント](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/)
-* [チュートリアル:Apache Kafka Producer および Consumer API の使用](apache-kafka-producer-consumer-api.md)」)。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: de60b4ea1b09998e84bab4d204e3c8c3bc8779a4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: fe1260982edc877c049716bd74f1bb3e90d33b0f
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050361"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370519"
 ---
 # <a name="tutorial-configure-azure-databricks-scim-connector-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Azure Databricks SCIM Connector を構成する
 
@@ -96,7 +96,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
     ![[プロビジョニング] タブ](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションで、Azure Databricks SCIM Connector 管理者の資格情報とユーザー名を入力します。 **[テスト接続]** をクリックして、Azure AD から Azure Databricks SCIM Connector に接続できることを確認します。 接続できない場合は、使用中の Azure Databricks SCIM Connector アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクションの **[テナント URL]** に、SCIM エンドポイントの値を入力します。 テナントの URL は、`https://<region>.azuredatabricks.net/api/2.0/preview/scim` という形式にする必要があります。**region** は、Azure Databricks のホーム ページの URL で確認できます。 たとえば、**westus** リージョンの SCIM エンドポイントは `https://westus.azuredatabricks.net/api/2.0/preview/scim` になります。 先ほど取得したトークンの値を、 **[シークレット トークン]** に入力します。 **[テスト接続]** をクリックして、Azure AD から Azure Databricks SCIM Connector に接続できることを確認します。 接続できない場合は、使用中の Azure Databricks SCIM Connector アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![プロビジョニング](./media/azure-databricks-scim-provisioning-connector-provisioning-tutorial/provisioning.png)
 
@@ -110,7 +110,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 9. **[属性マッピング]** セクションで、Azure AD から Azure Databricks SCIM Connector に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Azure Databricks SCIM Connector のユーザー アカウントとの照合に使用されます。 [一致する対象の属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)を変更する場合は、その属性に基づいたユーザーのフィルター処理が確実に Azure Databricks SCIM Connector API でサポートされているようにする必要があります。 **[保存]** ボタンをクリックして変更をコミットします。
 
-   |Attribute|Type|
+   |属性|Type|
    |---|---|
    |userName|String|
    |displayName|String|
@@ -120,7 +120,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 11. **[属性マッピング]** セクションで、Azure AD から Azure Databricks SCIM Connector に同期されるグループ属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Azure Databricks SCIM Connector のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-     |Attribute|Type|
+     |属性|Type|
      |---|---|
      |displayName|String|
      |members|リファレンス|

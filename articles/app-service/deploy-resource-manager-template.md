@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: e9647c1833416b9b225be988acaffb4022f655c1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfdfa9f69e00aa644c21fc96cb70e9fa460ca0c1
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422094"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211708"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した Web アプリのデプロイに関するガイダンス
 
@@ -90,7 +90,7 @@ Resource Manager テンプレートで MSDeploy が使用されている場合�
 
 1. サイトの [Kudu コンソール](https://github.com/projectkudu/kudu/wiki/Kudu-console)に移動します。
 2. D:\home\LogFiles\SiteExtensions\MSDeploy のフォルダーを参照します。
-3. appManagerStatus.xml および appManagerLog.xml ファイルを探します。 最初のファイルには、状態が記録されます。 2 番目のファイルには、エラーに関する情報が記録されます。 エラーが明確でない場合は、フォーラムに支援を求めるときに、そのファイルを含めることができます。
+3. appManagerStatus.xml および appManagerLog.xml ファイルを探します。 最初のファイルには、状態が記録されます。 2 番目のファイルには、エラーに関する情報が記録されます。 エラーが明確でない場合は、[フォーラム](https://docs.microsoft.com/answers/topics/azure-webapps.html)に支援を求めるときに、そのファイルを含めることができます。
 
 ## <a name="choose-a-unique-web-app-name"></a>一意の Web アプリ名の選択
 

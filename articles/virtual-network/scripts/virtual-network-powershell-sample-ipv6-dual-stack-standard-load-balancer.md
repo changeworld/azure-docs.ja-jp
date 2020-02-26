@@ -1,25 +1,24 @@
 ---
-title: Azure PowerShell スクリプトのサンプル - Standard Load Balancer を使用して IPv6 仮想ネットワーク エンドポイントを構成する (プレビュー)
+title: Azure PowerShell スクリプトのサンプル - Standard Load Balancer を使用して IPv6 フロントエンドを構成する (プレビュー)
 titlesuffix: Azure Virtual Network
 description: Azure Virtual Network で PowerShell を使用して IPv6 エンドポイントを有効する
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: fc5bc23ffec0956cb53e62f0cd14d7135d5fbcca
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 24d25813a5cafc98f04d3daef2803aa44acc7f69
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68269604"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201324"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-with-standard-load-balancerpreview"></a>Standard Load Balancer を使用して仮想ネットワーク スクリプトのサンプルで IPv6 エンドポイントを構成する (プレビュー)
+# <a name="configure-ipv6-frontend-in-virtual-network-script-sample-with-standard-load-balancerpreview"></a>Standard Load Balancer を使用して仮想ネットワーク スクリプトのサンプルで IPv6 フロントエンドを構成する (プレビュー)
 
 この記事では、Azure 内にデュアル スタック (IPv4 および IPv6) アプリケーションをデプロイする方法を説明します。Azure 内には、デュアル スタック サブネットを持つデュアル スタック仮想ネットワーク、デュアル (IPv4 および IPv6) フロントエンド構成を持つロード バランサー、および NIC を持つ VM が含まれています。NIC は、デュアル IP 構成、デュアル ネットワーク セキュリティ グループのルール、およびデュアル パブリック IP を備えています。
 
@@ -250,7 +249,7 @@ Remove-AzResourceGroup -Name <resourcegroupname> -Force
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、仮想マシン、可用性セット、ロード バランサー、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | サブネット構成を作成します。 この構成は、仮想ネットワークの作成プロセスで使用されます。 |
@@ -267,7 +266,7 @@ Remove-AzResourceGroup -Name <resourcegroupname> -Force
 | [New-AzVM](/powershell/module/az.compute/new-azvm)  | 仮想マシンを作成し、作成したマシンをネットワーク カード、仮想ネットワーク、サブネット、およびNSG に接続します。 このコマンドでは、使用する仮想マシン イメージと管理者の資格情報も指定します。  |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/overview)を参照してください。
 

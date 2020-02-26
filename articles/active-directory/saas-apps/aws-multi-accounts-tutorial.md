@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb528d71b94449b282947a487e4fc79b343df778
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: edd54352b1328c95ae2c3e466003b64eaa0fcfde
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195898"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368003"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>チュートリアル:Azure Active Directory と複数の Amazon Web Services (AWS) アカウントの統合
 
@@ -42,7 +42,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 **次の理由からこのアプローチの使用をお勧めしていません。**
 
-* アプリのすべてのロールにパッチを適用するには、Graph エクスプローラー アプローチを使用する必要があります。 マニフェスト ファイル アプローチの使用はお勧めしません。
+* アプリにすべてのロールを適用するには、Microsoft Graph エクスプローラーを使用する必要があります。 マニフェスト ファイル アプローチの使用はお勧めしません。
 
 * 単一の AWS アプリに対し最高 1200 のアプリ ロールを追加した後にアプリ上で操作すると、サイズに関連したエラーがスローされ始めたと報告するお客様をこれまで見てきました。 アプリケーション オブジェクトにはサイズのハード制限があります。
 
@@ -139,7 +139,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
 6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
 
-    | Name  | ソース属性  | 名前空間 |
+    | 名前  | ソース属性  | 名前空間 |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | https://aws.amazon.com/SAML/Attributes |
     | Role            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
@@ -161,7 +161,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     f. **[OK]** をクリックします。
 
-    g. **[Save]** をクリックします。
+    g. **[保存]** をクリックします。
 
 7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして**フェデレーション メタデータ XML** をダウンロードし、コンピューターに保存します。
 
@@ -247,7 +247,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
 16. すべてのアカウントのすべてのロールに対して上記の手順を実行し、**ロール ARN,信頼済みエンティティ**の形式でメモ帳に記録します。
 
-17. 別のウィンドウで [Azure AD Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) を開きます。
+17. 別のウィンドウで [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) を開きます。
 
     a. テナントのグローバル管理者/共同管理者の資格情報を使用して、Graph Explorer サイトにサインインします。
 
@@ -325,9 +325,9 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
     > [!Note]
     > パッチ操作では、**msiam_access** の後にのみ、新しいロールを追加できます。 また、組織のニーズごとに必要な数のロールを追加することができます。 Azure AD では、SAML 応答の要求値として、これらのロールの**値**を送信します。
 
-    j. Graph Explorer に戻り、メソッドを **GET** から **PATCH** に変更します。 上の例に示されているように appRoles プロパティを更新して、必要なロールを持つようにサービス プリンシパル オブジェクトを修正します。 **[クエリの実行]** をクリックして、パッチ操作を実行します。 成功のメッセージで、Amazon Web Services アプリケーションのロールの作成を確認します。
+    j. Microsoft Graph エクスプローラーに戻り、メソッドを **GET** から **PATCH** に変更します。 上の例に示されているように appRoles プロパティを更新して、必要なロールを持つようにサービス プリンシパル オブジェクトを修正します。 **[クエリの実行]** をクリックして、パッチ操作を実行します。 成功のメッセージで、Amazon Web Services アプリケーションのロールの作成を確認します。
 
-    ![Graph Explorer のダイアログ ボックス](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
+    ![Microsoft Graph エクスプローラーのダイアログ ボックス](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
 
 18. より多くのロールでサービス プリンシパルを修正したら、対応するロールにユーザー/グループを割り当てることができます。 これは、ポータルに移動し、Amazon Web Services アプリケーションに移動することで実行できます。 上部の **[ユーザーとグループ]** タブをクリックします。
 
@@ -363,7 +363,7 @@ SAML 応答を確認し、クレームとして渡されるロールを参照す
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [MS Graph API を使用してプロビジョニングを構成する方法](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-configure-api)
+* [Microsoft Graph API を使用してプロビジョニングを構成する方法](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-configure-api)
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 

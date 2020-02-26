@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell スクリプト サンプル - IPv6 仮想ネットワーク エンドポイント (プレビュー) の構成
+title: Azure PowerShell スクリプトのサンプル - IPv6 エンドポイントを構成する
 titlesuffix: Azure Virtual Network
 description: Azure Virtual Network で PowerShell を使用して IPv6 エンドポイントを有効する
 services: virtual-network
@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 4f07aae0e8baae44ade152cf3fe20facc7fe6770
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 5e8102cbf89d601c027e3b969c1c431da8807018
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248807"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201369"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>仮想ネットワークのサンプル スクリプト (プレビュー) で IPv6 エンドポイントを構成する
 
@@ -250,7 +250,7 @@ Remove-AzResourceGroup -Name <resourcegroupname> -Force
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、仮想マシン、可用性セット、ロード バランサー、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | サブネット構成を作成します。 この構成は、仮想ネットワークの作成プロセスで使用されます。 |
@@ -267,7 +267,7 @@ Remove-AzResourceGroup -Name <resourcegroupname> -Force
 | [New-AzVM](/powershell/module/az.compute/new-azvm)  | 仮想マシンを作成し、作成したマシンをネットワーク カード、仮想ネットワーク、サブネット、およびNSG に接続します。 このコマンドでは、使用する仮想マシン イメージと管理者の資格情報も指定します。  |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/overview)を参照してください。
 

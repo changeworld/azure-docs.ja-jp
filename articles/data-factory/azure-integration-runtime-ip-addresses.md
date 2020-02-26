@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
-ms.openlocfilehash: d64475ce524a3e859ed68a46552fedf30068f71d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 8b1fd7b1962a4d46d38287e5faf8f1ba4cbb40bd
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514784"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77423633"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>Azure Integration Runtime の IP アドレス
 
@@ -48,7 +48,7 @@ Azure Integration Runtime によって使用される IP アドレスは、Azure
 | 南アフリカ   | 南アフリカ北部  | 102.133.124.104/29、</br>102.133.216.128/25、</br>102.133.217.0/26 |
 | イギリス | 英国南部            | 51.104.24.128/25、</br>51.104.25.0/26、</br>51.104.9.32/28     |
 | United States  | 米国中部          | 20.37.154.0/23、</br>20.37.156.0/26、</br>20.44.10.64/28       |
-|                | East US             | 20.42.2.0/23、</br>20.42.4.0/26、</br>40.71.14.32/28           |
+|                | 米国東部             | 20.42.2.0/23、</br>20.42.4.0/26、</br>40.71.14.32/28           |
 |                | 米国東部 2            | 20.41.2.0/23、</br>20.41.4.0/26、</br>20.44.17.80/28           |
 |                | 米国東部 2 EUAP      | 20.39.8.128/26、</br>20.39.8.96/27、</br>40.75.35.144/28       |
 |                | 米国中北部    | 40.80.185.0/25、</br>40.80.185.128/26、</br>52.162.111.48/28   |
@@ -56,6 +56,7 @@ Azure Integration Runtime によって使用される IP アドレスは、Azure
 |                | 米国中西部     | 52.150.137.128/25、</br>52.150.136.192/26、</br>13.71.199.0/28 |
 |                | 米国西部             | 40.82.250.0/23、</br>40.82.249.64/26、</br>13.86.219.208/28    |
 |                | 米国西部 2            | 20.42.132.0/23、</br>20.42.129.64/26、</br>13.66.143.128/28    |
+|                | US Gov バージニア州     | 52.127.45.96/28、</br>52.127.48.128/25、</br>52.127.49.0/26    |
 
 ## <a name="known-issue-with-azure-storage"></a>Azure Storage に関する既知の問題
 

@@ -1,19 +1,19 @@
 ---
 title: ローカライズのサポート | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps のサービス向けにサポートされている言語について説明します。
-author: walsehgal
-ms.author: v-musehg
+description: この記事では、Microsoft Azure Maps のサービス向けにサポートされている言語について学習します。
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: eec8e47e75a6c92be8f893af893761a9ccddc650
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5de04b4e37e79a47f89bb235aad2b0f9cab69e6a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025437"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208150"
 ---
 # <a name="localization-support-in-azure-maps"></a>Azure Maps でのローカライズのサポート
 
@@ -22,10 +22,10 @@ Azure Maps は、さまざまな言語および国/地域に基づくビュー�
 
 ## <a name="azure-maps-supported-languages"></a>Azure Maps でサポートされている言語
 
-Azure Maps は、サービス全体にわたってさまざまな言語にローカライズされています。 次の表は、各サービスでサポートされている言語コードを示しています。  
+Azure Maps は、そのサービス全体にわたってさまざまな言語にローカライズされています。 次の表は、各サービスでサポートされている言語コードを示しています。  
   
 
-| id         | Name                   |  マップ | 検索 | ルーティング | Weather | トラフィック インシデント | JS マップ コントロール |
+| id         | 名前                   |  マップ | 検索 | ルーティング | Weather | トラフィック インシデント | JS マップ コントロール |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | af-ZA      | アフリカーンス語              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | アラビア語                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -142,7 +142,7 @@ Azure Maps は、サービス全体にわたってさまざまな言語にロー
 >    * Azure Maps Web SDK
 >    * Azure Maps Android SDK
 
-要求で定義していない場合でも、既定で View パラメーターは **Unified** に設定されています。 ユーザーの場所を特定し、その場所の **View** パラメーターを正しく設定します。 または、要求の IP アドレスに基づいてマップ データを返す 'View = Auto' を設定することができます。  Azure Maps の **View** パラメーターは、Azure Maps へのアクセスを承認されたマップ、イメージ、およびその他のデータとサード パーティ コンテンツを表示できる国のマッピングに関する法律など、該当する法律に準拠していなければなりません。
+要求で定義していない場合でも、既定で View パラメーターは **Unified** に設定されています。 ユーザーの場所を確認します。 次に、その場所の **View** パラメーターを正しく設定します。 または、要求の IP アドレスに基づいてマップ データを返す 'View = Auto' を設定することができます。  Azure Maps の **View** パラメーターは、Azure Maps へのアクセスを承認されたマップ、イメージ、およびその他のデータとサード パーティ コンテンツを表示できる国のマッピングに関する法律など、該当する法律に準拠していなければなりません。
 
 
 次の表に、サポートされるビューを示します。

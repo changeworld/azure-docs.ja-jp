@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: 695b87540178fb5c1012a095c2a86937a189ef24
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: dfb133f9aa3dd9b76f8b4ea4c6188cfaf9a67b75
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133743"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444113"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Python と Jupyter Notebook を使用してデータ サイエンスを教えるためのラボを設定する
 
@@ -30,7 +30,7 @@ ms.locfileid: "77133743"
 
 ### <a name="lab-account-settings"></a>ラボ アカウントの設定
 
-以下の表に記載されているラボ アカウントの設定を有効にします。 Marketplace イメージを有効にする方法の詳細については、「[ラボ作成者が利用できる Marketplace イメージを指定する](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators)」を参照してください。
+以下の表に記載されているラボ アカウントの設定を有効にします。 マーケットプレース イメージを有効にする方法の詳細については、「[ラボ作成者が利用できる Marketplace イメージを指定する](specify-marketplace-images.md)」を参照してください。
 
 | ラボ アカウントの設定 | Instructions |
 | ------------------- | ------------ |

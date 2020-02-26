@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 00ab3e9c7902e253d39a38eb0e98ee166244bca2
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: b7f837c56214d2d01d0f119e0107a095bcfd782b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048578"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198771"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -173,6 +173,8 @@ automl_config = AutoMLConfig(task = "classification")
     ```
 
 3 つの異なる `task` パラメーター値 (3 つ目の task-type は `forecasting` であり、`regression` タスクと類似のアルゴリズム プールを使用します) によって、適用するモデルの一覧が決まります。 使用可能なモデルを包含または除外してさらにイテレーションを変更するには、`whitelist` または `blacklist` パラメーターを使用します。 サポートされているモデルの一覧については、 ([分類](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification)、[予測](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)、[回帰](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression)用の) [SupportedModels クラス](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels)を参照してください。
+
+自動化された ML の検証サービスでは、実験のタイムアウト エラーを回避するために、`experiment_timeout_minutes` を 15 分以上のタイムアウトに設定する必要があります。
 
 ### <a name="primary-metric"></a>主要メトリック
 主要メトリックによって、モデルのトレーニング中に最適化のために使用されるメトリックが決まります。 選択できるメトリックは、選択したタスクの種類によって決まります。次の表に、各タスクの種類に有効な主要メトリックを示します。

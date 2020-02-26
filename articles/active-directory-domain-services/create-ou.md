@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: e202eed8e3694245b5b4527578c02cfb518723f4
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4db6ad83c44e0c811df0a3b91a473861e4e1ab87
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705340"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367145"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインに組織単位 (OU) を作成する
 
@@ -42,7 +42,7 @@ Azure AD DS マネージド ドメインには、*AADDC Computers* と *AADDC Us
     * 必要に応じて、[Azure Active Directory Domain Services インスタンスを作成して構成する][create-azure-ad-ds-instance]チュートリアルを完了します。
 * Azure AD DS マネージド ドメインに参加している Windows Server 管理 VM。
     * 必要に応じて、[管理 VM を作成する][tutorial-create-management-vm]チュートリアルを完了します。
-* Azure AD テナント内の *Azure AD DC 管理者*グループのメンバーであるユーザー アカウント。
+* Azure AD テナントの *Azure AD DC administrators* グループのメンバーであるユーザー アカウント。
 
 ## <a name="custom-ou-considerations-and-limitations"></a>カスタム OU に関する考慮事項と制限
 
@@ -54,7 +54,7 @@ Azure AD DS マネージド ドメインにカスタム OU を作成すると、
 * Azure AD テナントから同期されたすべてのユーザー アカウントが含まれている、*AADDC Users* の既定の OU が作成されます。
     * *AADDC Users* OU から、作成したカスタム OU にユーザーまたはグループを移動することはできません。 カスタム OU に移動できるのは、Azure AD DS マネージド ドメインに作成されたユーザー アカウントまたはリソースだけです。
 * カスタム OU に作成したユーザー アカウント、グループ、サービス アカウント、およびコンピューター オブジェクトは Azure AD テナントでは使用できません。
-    * これらのオブジェクトは Azure AD Graph API を使用した場合も、あるいは Azure AD UI にも表示されず、Azure AD DS マネージド ドメインでのみ使用できます。
+    * これらのオブジェクトは Microsoft Graph API を使用した場合も、あるいは Azure AD UI にも表示されず、お使いの Azure AD DS マネージド ドメインでのみ使用できます。
 
 ## <a name="create-a-custom-ou"></a>カスタム OU を作成する
 
@@ -82,7 +82,7 @@ Azure AD DS マネージド ドメインにカスタム OU を作成すると、
 
     ![Active Directory 管理センターで使用可能なカスタム OU](./media/active-directory-domain-services-admin-guide/create-ou-done.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 管理ツールの使用またはサービス アカウントの作成と使用の詳細については、次の記事を参照してください。
 

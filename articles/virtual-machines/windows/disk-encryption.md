@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 0ea9da894b9738fff634937294a07cc4b10624f0
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: bc15ee42fd7ef8e41b332104b28af808c336789f
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048871"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430410"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure Managed Disks のサーバー側暗号化
 
@@ -38,7 +38,7 @@ Azure マネージド ディスクの基になっている暗号化モジュー�
 
 次の図は、マネージド ディスクで Azure Active Directory と Azure Key Vault を使用して、カスタマー マネージド キーを使って要求を行う方法を示しています。
 
-![マネージド ディスクのカスタマー マネージド キーのワークフロー](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
+![マネージド ディスクとカスタマー マネージド キーのワークフロー。 管理者は Azure Key Vault を作成し、ディスク暗号化セットを作成してから、ディスク暗号化セットを設定します。 このセットは VM に関連付けられています。これにより、ディスクは Azure AD を使用して認証を行うことができます。](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
 
 
 次の一覧では、図についてさらに詳しく説明します。
@@ -58,7 +58,7 @@ Azure マネージド ディスクの基になっている暗号化モジュー�
 
 現在サポートされているリージョンは次のとおりです。
 
-- 米国東部、米国西部 2、および米国中南部の各リージョンでは GA オファリングとしてご利用いただけます。
+- 米国東部、米国西部 2、米国中南部、英国南部の各リージョンでは GA オファリングとしてご利用いただけます。
 - 米国中西部、米国東部 2、カナダ中部、北ヨーロッパの各リージョンではパブリック プレビューとしてご利用いただけます。
 
 ### <a name="restrictions"></a>制限

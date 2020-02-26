@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: d270d38bce45c45f9323a971ad69dc2b931a9169
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dd7579c97e2166e2822ee5674bbcd5a8ad64d2c7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369849"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201494"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>ストリーミング ユニットの理解と調整
 
@@ -59,6 +59,8 @@ Stream Analytics によって提供されるステートフルな演算子のコ
 複雑なクエリ ロジックを持つジョブは、入力イベントを継続的に受け取らない場合でも、高い SU 使用率 (%) になる可能性があることに注意してください。 これは、入出力イベントが突然急増した後に発生する可能性があります。 ジョブは、クエリが複雑な場合は、メモリ内に状態を保持し続けることがあります。
 
 SU% 使用率は、予想されるレベルに戻る前に、短期間で突然 0 に低下することがあります。 この現象は、一時的なエラーや、システムによって開始されたアップグレードが原因で発生します。 クエリが[完全に並列](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization)になっていない場合は、ジョブのストリーミング ユニットの数を増やしても、SU 使用率 (%) は減少しないことがあります。
+
+一定期間にわたって使用率を比較している間、[イベント率のメトリック](stream-analytics-monitoring.md)を使用します。 InputEvents と OutputEvents のメトリックでは、読み取りおよび処理されたイベント数が示されます。 逆シリアル化エラーなど、エラー イベントの数を示すメトリックもあります。 時間単位あたりのイベント数が増えると、ほとんどの場合、SU 使用率 (%) が増加します。
 
 ## <a name="stateful-query-logicin-temporal-elements"></a>一時的な要素のステートフルなクエリ ロジック
 Azure Stream Analytics ジョブの固有の機能の 1 つに、ウィンドウ集計、一時的な結合、一時的な分析関数などのステートフル処理の実行があります。 これらの各演算子によって状態情報が保持されます。 これらのクエリ要素の最大ウィンドウ サイズは 7 日間です。 
