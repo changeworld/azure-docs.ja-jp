@@ -89,7 +89,7 @@ Cognitive Services では、ユーザーに対してトレーニング済みの�
 
 次のデータは、各サービスが許可または要求するデータの種類でサービスを分類したものです。
 
-|Cognitive Service|トレーニング データが不要|ユーザーがトレーニング データを一部または全部提供|リアルタイムまたはほぼリアルタイムでデータを収集|
+|Cognitive Services|トレーニング データが不要|ユーザーがトレーニング データを一部または全部提供|リアルタイムまたはほぼリアルタイムでデータを収集|
 |--|--|--|--|
 |[Anomaly Detector](./Anomaly-Detector/overview.md)|x|x|x|
 |Bing Search |x|||
