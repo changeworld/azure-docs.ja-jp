@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure AD Connect クラウド プロビジョニングに関するドキュメント
-summary: クラウド プロビジョニングは、あらゆる要素をクラウドで保持することによって、オンプレミス ユーザーの管理の簡素化と自動化に寄与します。
+summary: クラウド プロビジョニングは、クラウドで管理されるルールを使って既存の AD フォレストから Azure AD ユーザーを同期することができ、Azure AD ユーザーの管理の簡素化と自動化に役立ちます。
 metadata:
   author: billmath
   description: クラウド プロビジョニングは、クラウドで管理されるルールを使って既存の AD フォレストから Azure AD ユーザーを同期することができ、Azure AD ユーザーの管理の簡素化と自動化に役立ちます。
@@ -11,12 +11,12 @@ metadata:
   ms.subservice: na
   ms.topic: landing-page
   services: active-directory
-  ms.openlocfilehash: 89f3cf397322be65166e05c20b2e1d978a837581
-  ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+  ms.openlocfilehash: 83beffa0c0eb035c9cd5e30ec4644200b940dd6c
+  ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/03/2019
-  ms.locfileid: "74795243"
+  ms.lasthandoff: 02/26/2020
+  ms.locfileid: "77620906"
 landingContent:
 - title: クラウド プロビジョニングについて
   linkLists:

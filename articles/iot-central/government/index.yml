@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: e778cafcd75cec1f0a763dad4f3f57bbcbec19fd
-  ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+  ms.openlocfilehash: 1ef9e42fca50dcc9fdec9076167816e940cdca7e
+  ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/05/2020
-  ms.locfileid: "77016529"
+  ms.lasthandoff: 02/26/2020
+  ms.locfileid: "77623060"
 landingContent:
 - title: 政府機関ソリューションを構築する
   linkLists:
@@ -37,6 +37,8 @@ landingContent:
     links:
     - text: デバイス テンプレートを設定する
       url: ../core/howto-set-up-template.md
+    - text: デバイスの接続
+      url: ../core/tutorial-connect-device.md
     - text: IoT プラグ アンド プレイ (プレビュー) デバイスを接続する
       url: ../core/tutorial-connect-pnp-device.md
   - linkListType: how-to-guide

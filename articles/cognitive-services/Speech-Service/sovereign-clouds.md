@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 1/14/2020
 ms.author: cbasoglu
-ms.openlocfilehash: 3b96ded52aa2148df9e96d6f1e878d50b821abab
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 00617fc09f471eaf3dc13a5aa691c4aab2e1e2ec
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170457"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77424917"
 ---
 # <a name="speech-services-with-sovereign-clouds"></a>ソブリン クラウドを使用した音声サービス
 
 ## <a name="azure-government-united-states"></a>Azure Government (米国)
 
 米国連邦政府、州政府、地方自治体、部族政府およびそれらのパートナーだけが、審査された米国市民によって運営が管理されているこの専用インスタンスにアクセスすることができます。
-- リージョン:米国政府バージニア州
+- リージョン:US Gov バージニア州
 - SpeechSDK の SR: *config.FromHost("wss://virginia.stt.speech.azure.us", "\<your-key\>");*
 - SpeechSDK の TTS:*config.FromHost("https[]()://virginia.tts.speech.azure.us", "\<your-key\>");*
 - 認証トークン: https[]()://virginia.api.cognitive.microsoft.us/sts/v1.0/issueToken
@@ -54,7 +54,7 @@ ms.locfileid: "76170457"
 - リージョン:中国東部 2 (上海)
 - SpeechSDK の SR: *config.FromHost("wss://chinaeast2.stt.speech.azure.cn", "\<your-key\>");*
 - SpeechSDK の TTS: *config.FromHost("https[]()://chinaeast2.tts.speech.azure.cn", "\<your-key\>");*
-- 認証トークン: https[]()://chinaeast2.api.cognitive.microsoft.cn/sts/v1.0/issueToken
+- 認証トークン: https[]()://chinaeast2.api.cognitive.azure.cn/sts/v1.0/issueToken
 - Azure Portal: https://portal.azure.cn
 - Custom Speech ポータル: https://chinaeast2.cris.azure.cn/Home/CustomSpeech
 - 利用可能な SKU:S0

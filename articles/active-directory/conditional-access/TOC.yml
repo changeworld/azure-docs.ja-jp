@@ -43,7 +43,7 @@
       href: location-condition.md
     - name: What if ツール
       href: what-if-tool.md
-    - name: コントロール
+    - name: カスタム コントロール
       href: controls.md
     - name: クラシック ポリシーの移行
       href: policy-migration.md

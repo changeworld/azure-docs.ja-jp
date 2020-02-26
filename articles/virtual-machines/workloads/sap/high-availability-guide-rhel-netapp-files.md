@@ -1,5 +1,5 @@
 ---
-title: Azure NetApp Files を使用した Red Hat Enterprise Linux 上の SAP NetWeaver 用の Azure Virtual Machines の高可用性 | Microsoft Docs
+title: Azure NetApp Files での RHEL 上の SAP NW 用の Azure VM の高可用性| Microsoft Docs
 description: Red Hat Enterprise Linux での SAP NetWeaver のための Azure Virtual Machines 高可用性
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/10/2020
+ms.date: 02/13/2020
 ms.author: radeltch
-ms.openlocfilehash: 8acb4819c6ef7a1969a85a056dfdde1fd021a5e6
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: ed18928237d19e9fad2548ee502f9a24266f12c0
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894648"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212877"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>SAP アプリケーション用の Azure NetApp Files を使用した Red Hat Enterprise Linux 上の SAP NetWeaver 用の Azure Virtual Machines の高可用性
 
@@ -172,7 +172,7 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
 - 選択した仮想ネットワークには、Azure NetApp Files に委任されているサブネットがある必要があります。
 - Azure NetApp Files の[エクスポート ポリシー](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)では、ユーザーが制御できるのは、許可されたクライアント、アクセスの種類 (読み取りおよび書き込み、読み取り専用など) です。 
 - Azure NetApp Files 機能は、ゾーンにはまだ対応していません。 現在、Azure NetApp Files 機能は、Azure リージョン内のすべての可用性ゾーンにはデプロイされていません。 Azure リージョンによっては、待ち時間が発生する可能性があることに注意してください。 
-- Azure NetApp Files ボリュームは、NFSv3 または NFSv 4.1 ボリュームとしてデプロイできます。 SAP アプリケーション層 (ASCS/ERS、SAP アプリケーション サーバー) では、両方のプロトコルがサポートされています。 
+- Azure NetApp Files ボリュームは、NFSv3 または NFSv4.1 ボリュームとしてデプロイできます。 SAP アプリケーション層 (ASCS/ERS、SAP アプリケーション サーバー) では、両方のプロトコルがサポートされています。 
 
 ## <a name="setting-up-ascs"></a>(A)SCS のセットアップ
 
@@ -264,7 +264,7 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
 
 ## <a name="disable-id-mapping-if-using-nfsv41"></a>ID マッピングを無効にする (NFSv 4.1 を使用する場合)
 
-このセクションの手順は、NFSv 4.1 プロトコルで Azure NetApp Files ボリュームを使用している場合にのみ適用されます。 Azure NetApp Files NFSv 4.1 ボリュームがマウントされるすべての VM で構成を実行します。  
+このセクションの手順は、NFSv4.1 プロトコルで Azure NetApp Files ボリュームを使用している場合にのみ適用されます。 Azure NetApp Files NFSv4.1 ボリュームがマウントされるすべての VM で構成を実行します。  
 
 1. NFS ドメイン設定を確認します。 ドメインが既定の Azure NetApp Files ドメイン (つまり、 **`defaultv4iddomain.com`** ) として構成され、マッピングが **nobody** に設定されていることを確認します。  
 
@@ -462,12 +462,14 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
    sudo pcs node standby anftstsapcl2
    # If using NFSv3
    sudo pcs resource create fs_QAS_ASCS Filesystem device='192.168.24.5:/sapQAS/usrsapQASascs' \
-     directory='/usr/sap/QAS/ASCS00' fstype='nfs' \
+     directory='/usr/sap/QAS/ASCS00' fstype='nfs' force_unmount=safe \
+     op start interval=0 timeout=60 op stop interval=0 timeout=120 op monitor interval=200 timeout=40 \
      --group g-QAS_ASCS
    
    # If using NFSv4.1
    sudo pcs resource create fs_QAS_ASCS Filesystem device='192.168.24.5:/sapQAS/usrsapQASascs' \
-     directory='/usr/sap/QAS/ASCS00' fstype='nfs' options='sec=sys,vers=4.1' \
+     directory='/usr/sap/QAS/ASCS00' fstype='nfs' force_unmount=safe options='sec=sys,vers=4.1' \
+     op start interval=0 timeout=60 op stop interval=0 timeout=120 op monitor interval=200 timeout=40 \
      --group g-QAS_ASCS
    
    sudo pcs resource create vip_QAS_ASCS IPaddr2 \
@@ -523,12 +525,14 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
    
    # If using NFSv3
    sudo pcs resource create fs_QAS_AERS Filesystem device='192.168.24.5:/sapQAS/usrsapQASers' \
-     directory='/usr/sap/QAS/ERS01' fstype='nfs' \
+     directory='/usr/sap/QAS/ERS01' fstype='nfs' force_unmount=safe \
+     op start interval=0 timeout=60 op stop interval=0 timeout=120 op monitor interval=200 timeout=40 \
     --group g-QAS_AERS
    
    # If using NFSv4.1
    sudo pcs resource create fs_QAS_AERS Filesystem device='192.168.24.5:/sapQAS/usrsapQASers' \
-     directory='/usr/sap/QAS/ERS01' fstype='nfs' options='sec=sys,vers=4.1' \
+     directory='/usr/sap/QAS/ERS01' fstype='nfs' force_unmount=safe options='sec=sys,vers=4.1' \
+     op start interval=0 timeout=60 op stop interval=0 timeout=120 op monitor interval=200 timeout=40 \
     --group g-QAS_AERS
    
    sudo pcs resource create vip_QAS_AERS IPaddr2 \
@@ -644,12 +648,15 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
     sudo pcs resource create rsc_sap_QAS_ASCS00 SAPInstance \
     InstanceName=QAS_ASCS00_anftstsapvh START_PROFILE="/sapmnt/QAS/profile/QAS_ASCS00_anftstsapvh" \
     AUTOMATIC_RECOVER=false \
-    meta resource-stickiness=5000 migration-threshold=1 \
+    meta resource-stickiness=5000 migration-threshold=1 failure-timeout=60 \
+    op monitor interval=20 on-fail=restart timeout=60 \
+    op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-QAS_ASCS
    
     sudo pcs resource create rsc_sap_QAS_ERS01 SAPInstance \
     InstanceName=QAS_ERS01_anftstsapers START_PROFILE="/sapmnt/QAS/profile/QAS_ERS01_anftstsapers" \
     AUTOMATIC_RECOVER=false IS_ERS=true \
+    op monitor interval=20 on-fail=restart timeout=60 op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-QAS_AERS
       
     sudo pcs constraint colocation add g-QAS_AERS with g-QAS_ASCS -5000
@@ -669,12 +676,15 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
     sudo pcs resource create rsc_sap_QAS_ASCS00 SAPInstance \
     InstanceName=QAS_ASCS00_anftstsapvh START_PROFILE="/sapmnt/QAS/profile/QAS_ASCS00_anftstsapvh" \
     AUTOMATIC_RECOVER=false \
-    meta resource-stickiness=5000 \
+    meta resource-stickiness=5000 migration-threshold=1 failure-timeout=60 \
+    op monitor interval=20 on-fail=restart timeout=60 \
+    op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-QAS_ASCS
    
     sudo pcs resource create rsc_sap_QAS_ERS01 SAPInstance \
     InstanceName=QAS_ERS01_anftstsapers START_PROFILE="/sapmnt/QAS/profile/QAS_ERS01_anftstsapers" \
     AUTOMATIC_RECOVER=false IS_ERS=true \
+    op monitor interval=20 on-fail=restart timeout=60 op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-QAS_AERS
       
     sudo pcs constraint colocation add g-QAS_AERS with g-QAS_ASCS -5000
@@ -685,6 +695,9 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
     ```
 
    以前のバージョンからアップグレードし、エンキュー サーバー 2 に切り替えている場合は、SAP Note [2641322](https://launchpad.support.sap.com/#/notes/2641322) を参照してください。 
+
+   > [!NOTE]
+   > 上記のタイムアウト構成はほんの一例であり、特定の SAP 設定では調整する必要がある場合があります。 
 
    クラスターの状態が正常であることと、すべてのリソースが起動されていることを確認します。 リソースがどのノードで実行されているかは重要ではありません。
 

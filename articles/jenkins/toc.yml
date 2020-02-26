@@ -31,7 +31,7 @@
         - name: AKS
           items:
             - name: Kubernetes への CI/CD
-              href: /azure/aks/jenkins-continuous-deployment
+              href: jenkins-continuous-deployment.md
               maintainContext: true
             - name: 青/緑パターンを使用した AKS へのデプロイ
               href: jenkins-aks-blue-green-deployment.md
@@ -49,7 +49,7 @@
         - name: Azure Functions へのデプロイ
           href: jenkins-azure-functions-deploy.md
         - name: Azure Storage に発行する
-          href: /azure/storage/storage-java-jenkins-continuous-integration-solution
+          href: storage-java-jenkins-continuous-integration-solution.md
           maintainContext: true
         - name: Linux VM への CI/CD
           href: tutorial-jenkins-github-docker-cicd.md

@@ -142,6 +142,9 @@
             - name: '変数:'
               displayName: 'iteration,copy'
               href: copy-variables.md
+            - name: 出力
+              displayName: 'iteration,copy'
+              href: copy-outputs.md
         - name: サブスクリプション レベルのリソース
           href: deploy-to-subscription.md
         - name: 管理グループ レベルのリソース

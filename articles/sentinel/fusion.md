@@ -3,30 +3,27 @@ title: Azure Sentinel の高度なマルチステージ攻撃の検出
 description: Azure Sentinel の Fusion テクノロジを利用することで、アラートによる疲労を減らし、高度なマルチステージ攻撃の検出に基づいて、すぐに使用可能なインシデント (事象) を作成します。
 services: sentinel
 documentationcenter: na
-author: cabailey
-manager: rkarlin
+author: rkarlin
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 9/24/2019
-ms.author: cabailey
-ms.openlocfilehash: e6ddb1b01b705d2a7857682bd84e9482e064a8db
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.date: 02/12/2020
+ms.author: rkarlin
+ms.openlocfilehash: ada2ad67bc3634d8e6a31d3c8a69fc0c8b08a93a
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241207"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77369691"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Azure Sentinel の高度なマルチステージ攻撃の検出
 
 機械学習を基盤とする Fusion テクノロジを利用することで、Azure Sentinel では、キルチェーンのさまざまな段階で観察される異常な動作と疑わしい行動を組み合わせ、マルチステージ攻撃を自動的に検出することができます。 その後、Azure Sentinel では、Azure Sentinel 以外では検出が非常に困難であろうインシデントが生成されます。 このインシデントには、2 つ以上のアラートまたはアクティビティが含まれています。 設計上、このようなインシデントでは、ボリュームが低、忠実度が高、重大度が高になります。
 
 この検出機能はご利用の環境によってカスタマイズされるため、誤検知率を減らすだけでなく、情報が制限されているか、不足している攻撃も検出できます。
-
-サポートされているシナリオのアラートに関する詳細については、このページの「[マルチステージ攻撃の検出でサポートされているシナリオ](#scenarios-supported-for-advanced-multistage-attack-detection)」セクションを参照してください。
 
 ## <a name="configuration-for-advanced-multistage-attack-detection"></a>高度なマルチステージ攻撃の検出の構成
 
@@ -44,7 +41,17 @@ ms.locfileid: "71241207"
 
 高度なマルチステージ攻撃の検出には、規則テンプレートを使用できません。
 
-## <a name="scenarios-supported-for-advanced-multistage-attack-detection"></a>高度なマルチステージ攻撃の検出でサポートされているシナリオ
+## <a name="fusion-using-palo-alto-networks-and-microsoft-defender-atp"></a>Palo Alto Networks と Microsoft Defender ATP を使用した Fusion
+
+- TOR 匿名化サービスに対するネットワーク要求の後に、Palo Alto Networks ファイアウォールによってフラグが設定された異常なトラフィックが続く
+
+- PowerShell で疑わしいネットワーク接続が行われた後に、Palo Alto Networks ファイアウォールによってフラグが設定された異常なトラフィックが続く
+
+- 承認されていないアクセス試行の履歴がある IP への送信接続の後に、Palo Alto Networks ファイアウォールによってフラグが設定された異常なトラフィックが続く
+
+
+
+## <a name="fusion-using-identity-protection-and-microsoft-cloud-app-security"></a>Identity Protection と Microsoft Cloud App Security を使用した Fusion
 
 高度なマルチステージ攻撃の検出を利用することで、Azure Sentinel では、Azure Active Directory Identity Protection と Microsoft Cloud App Security からの異常なイベントを組み合わせる次のシナリオがサポートされています。
 
@@ -299,7 +306,7 @@ Azure AD Identity Protection で検出された資格情報が漏洩したユー
     
     このアクティビティ パターンはランサムウェア攻撃の可能性を示します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 高度なマルチステージ攻撃の検出に関する詳細を学習したので、自分のデータや潜在的な脅威を視覚化する方法を学習することができる以下のクイックスタートにも関心を持たれるかもしれません。[Azure Sentinel の概要](quickstart-get-visibility.md)
 
