@@ -810,6 +810,8 @@
           href: ./domain-joined/hdinsight-use-oozie-domain-joined-clusters.md
     - name: 概念
       items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
         - name: エンタープライズ セキュリティの一般的なガイドライン
           href: ./domain-joined/general-guidelines.md
         - name: ESP クラスターの計画

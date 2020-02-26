@@ -114,6 +114,8 @@
           href: service-bus-messaging-security-controls.md
 - name: 操作方法ガイド
   items:
+    - name: Azure Service Manager (クラシック) API シリーズから Resource Manager API シリーズへの移行
+      href: deprecate-service-bus-management.md
     - name: 名前空間の作成
       href: service-bus-create-namespace-portal.md
     - name: 開発

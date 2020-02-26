@@ -104,9 +104,9 @@
       href: how-to-assess.md
     - name: アセスメントためのマシンのグループ化
       href: how-to-create-a-group.md
-    - name: 依存関係の視覚化を使用したマシンのグループ化
+    - name: マシンの依存関係の分析 (エージェントベース)
       href: how-to-create-group-machine-dependencies.md
-    - name: エージェントレス依存関係の視覚化を使用したマシンのグループ化
+    - name: マシンの依存関係の分析 (エージェントレス)
       href: how-to-create-group-machine-dependencies-agentless.md
     - name: 評価を作成する
       href: how-to-create-assessment.md

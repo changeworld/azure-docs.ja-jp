@@ -10,12 +10,12 @@ metadata:
   author: TomArcherMsft
   ms.author: tarcher
   ms.date: 02/24/2020
-  ms.openlocfilehash: e510b014db74eec759e10b7d73a959072e1db355
-  ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+  ms.openlocfilehash: af0418ae45d84fd79348e181b9bad52e9b340564
+  ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/25/2020
-  ms.locfileid: "77605714"
+  ms.lasthandoff: 02/26/2020
+  ms.locfileid: "77616680"
 landingContent:
 - title: Azure 上の Jenkins について
   linkLists:
@@ -46,7 +46,7 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Azure Container Instances でのスケーリング
-      url: /azure/container-instances/container-instances-jenkins?toc=/azure/jenkinstoc.json&bc=/azure/bread/toc.json
+      url: container-instances-jenkins.md
     - text: Azure VM エージェントでのスケーリング
       url: jenkins-azure-vm-agents.md
 - title: Azure Functions への CI/CD

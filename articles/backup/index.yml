@@ -9,12 +9,12 @@ metadata:
   author: dcurwin
   ms.author: dacurwin
   ms.date: 12/01/2019
-  ms.openlocfilehash: 607603965b0935941fa5ad06c39110535aa33633
-  ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+  ms.openlocfilehash: 9efc7d3ba072b0281d932b31365e7458034c30f5
+  ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/21/2020
-  ms.locfileid: "76290786"
+  ms.lasthandoff: 02/25/2020
+  ms.locfileid: "77582621"
 landingContent:
 - title: Azure Backup について
   linkLists:
@@ -130,6 +130,16 @@ landingContent:
       url: backup-azure-dpm-azure-server-faq.md
     - text: MABS のインストールとアップグレード
       url: backup-azure-microsoft-azure-backup.md
+- title: 大規模な管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Policy による大規模な管理
+      url: backup-azure-auto-enable-backup.md
+    - text: バックアップ エクスプローラーを使用した大規模な監視と操作
+      url: monitor-azure-backup-with-backup-explorer.md
+    - text: バックアップ レポートを使用した大規模な分析
+      url: configure-reports.md
 - title: Azure Backup のリソースを確認する
   linkLists:
   - linkListType: concept
