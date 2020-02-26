@@ -1,5 +1,5 @@
 ---
-title: StorSimple での 8000 シリーズ デバイスのフェールオーバーとディザスター リカバリー | Microsoft Docs
+title: StorSimple 8000 シリーズ デバイスのフェールオーバーとディザスター リカバリー
 description: StorSimple デバイスを、そのデバイス自体、別の物理デバイス、またはクラウド アプライアンスにフェールオーバーする方法について説明します。
 services: storsimple
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 079a2f153f257040d1899a33c9e255d633e526ad
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c1acc084d5abe3385fe311873dfd64c9009e83f2
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60576374"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468594"
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスのフェールオーバーとディザスター リカバリー
 
@@ -32,7 +32,7 @@ ms.locfileid: "60576374"
 ![[デバイス] ブレード](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev1.png)
 
 
-## <a name="disaster-recovery-dr-and-device-failover"></a>障害復旧 (DR) とデバイスのフェールオーバー
+## <a name="disaster-recovery-dr-and-device-failover"></a>ディザスター リカバリー (DR) とデバイスのフェールオーバー
 
 ディザスター リカバリー (DR) シナリオでは、プライマリ デバイスの機能が停止します。 StorSimple はプライマリ デバイスを _ソース_ として使用し、関連付けられているクラウド データを別の _ターゲット_ デバイスに移動します。 このプロセスを *フェールオーバー*といいます。 次の図は、フェールオーバーのプロセスを示しています。
 
@@ -128,7 +128,7 @@ A.  削除ジョブが失敗した場合は、ボリューム コンテナーを
 
 障害が発生する直前に StorSimple デバイスが登録された場合は、このデバイスを工場出荷時の設定に戻す必要が生じることがあります。 障害発生後、こうした StorSimple デバイスは Azure Portal でオフラインとして表示されます。 このデバイスはポータルから削除する必要があります。 デバイスを工場出荷時の設定にリセットし、もう一度サービスに登録します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 デバイスのフェールオーバーを実行する準備ができたら、次のシナリオのいずれかを選択し、詳細な手順を参照してください。
 

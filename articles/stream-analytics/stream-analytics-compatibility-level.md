@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/03/2020
-ms.openlocfilehash: e1eb852b7cf7aea887dea429e19b0a3b1ac5805a
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.date: 02/14/2020
+ms.openlocfilehash: 14b04f7d6068863c79c7060d29b58232be1f40cb
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989860"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201800"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブの互換性レベル
 
@@ -52,6 +52,10 @@ Azure portal でジョブの互換性レベルを更新するには:
 ## <a name="compatibility-level-12"></a>互換性レベル 1.2
 
 互換性レベル 1.2 では、以下の大きな変更が導入されました。
+
+###  <a name="amqp-messaging-protocol"></a>AMQP メッセージングプロトコル
+
+**1.2 レベル**:Azure Stream Analytics では [Advanced Message Queuing Protocol (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md) メッセージングプロトコルを使用して Service Bus キューおよびトピックに書き込みます。 AMQP を使用すると、オープンな標準プロトコルを使用したクロス プラットフォームのハイブリッド アプリケーションをビルドできます。
 
 ### <a name="geospatial-functions"></a>地理空間の関数
 

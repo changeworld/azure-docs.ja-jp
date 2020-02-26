@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/19/2019
-ms.openlocfilehash: 8f17a3ffbbee2bc702be1c2c690a1d6c85d792cb
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d429a21f409afc9780b3cd90d16d46b4f4671912
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751042"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467353"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure Monitor で使用する監視データのソース
 Azure Monitor は、[ログ](data-platform-logs.md)と[メトリック](data-platform-metrics.md)を含む[一般的な監視データ プラットフォーム](data-platform.md)をベースにしています。 このプラットフォームにデータを収集すれば、Azure Monitor にある共通のツール一式を使用して、複数のリソースからのデータをまとめて分析することができます。 特定のシナリオに対応するために監視データは他の場所に送信されることがあるほか、一部のリソースについては、他の場所に書き込まれた後で、ログやメトリックに収集されることもあります。
@@ -85,7 +85,7 @@ Azure サブスクリプションの正常性と運用に関連したテレメ�
 
 
 ## <a name="azure-resources"></a>Azure リソース
-メトリックおよびリソースのログは、Azure リソースの _内部_ 操作に関する情報を提供します。 これらはほとんどの Azure サービスで利用できます。また、特定のサービスについては、さらに詳しいデータが監視ソリューションおよび Insights によって収集されます。
+メトリックおよびリソースのログは、Azure リソースの_内部_操作に関する情報を提供します。 これらはほとんどの Azure サービスで利用できます。また、特定のサービスについては、さらに詳しいデータが監視ソリューションおよび Insights によって収集されます。
 
 ![Azure リソースの収集](media/data-sources/azure-resources.png)
 
@@ -120,10 +120,11 @@ Azure 仮想マシンに対して Azure Diagnostics 拡張機能を有効にす�
 
 | 宛先 | 説明 | リファレンス |
 |:---|:---|:---|
-| ストレージ | Diagnostics 拡張機能を有効にした場合、その書き込み先は、既定ではストレージ アカウントになります。 | [Azure Storage への診断データの保存と表示](diagnostics-extension-to-storage.md) |
+| ストレージ | Azure 診断拡張機能は、常に Azure Storage アカウントに書き込みます。 | [Windows Azure Diagnostics 拡張機能 (WAD) のインストールと構成](diagnostics-extension-windows-install.md)<br>[Linux Diagnostic Extension を使用して、メトリックとログを監視する](../../virtual-machines/extensions/diagnostics-linux.md) |
 | Azure Monitor メトリック | パフォーマンス カウンターを収集するように Diagnostics 拡張機能を構成した場合、それらは Azure Monitor メトリック データベースに書き込まれます。 | [Windows 仮想マシンの Resource Manager テンプレートを使用してゲスト OS メトリックを Azure Monitor メトリック ストアに送信する](collect-custom-metrics-guestos-resource-manager-vm.md) |
+| Event Hubs | Event Hubs を使用して他の場所にデータをストリーム配信するように Diagnostics 拡張機能を構成します。  | [Event Hubs を使用して、Azure Diagnostics データをストリーミングする](diagnostics-extension-stream-event-hubs.md)<br>[Linux Diagnostic Extension を使用して、メトリックとログを監視する](../../virtual-machines/extensions/diagnostics-linux.md) |
 | Application Insights のログ | アプリケーションをサポートするコンピューティング リソースからログとパフォーマンス カウンターを収集して、他のアプリケーション データと共に分析します。 | [Cloud Services、Virtual Machines、または Service Fabric の診断データを Application Insights に送信する](diagnostics-extension-to-application-insights.md) |
-| Event Hubs | Event Hubs を使用して他の場所にデータをストリーム配信するように Diagnostics 拡張機能を構成します。  | [Event Hubs を利用してホット パスの Azure Diagnostics データをストリーム配信する](diagnostics-extension-stream-event-hubs.md) |
+
 
 ### <a name="log-analytics-agent"></a>Log Analytics エージェント 
 Windows 仮想マシンまたは Linux 仮想マシンを包括的に監視および管理するには、Log Analytics エージェントをインストールします。 仮想マシンは Azure、別のクラウド、またはオンプレミスで実行できます。
@@ -191,7 +192,7 @@ Azure Monitor における詳しいアプリケーションの監視は、さま
 
 ![カスタムの収集](media/data-sources/custom.png)
 
-| 宛先 | 方法 | 説明 | リファレンス |
+| 宛先 | Method | 説明 | リファレンス |
 |:---|:---|:---|:---|
 | Azure Monitor ログ | データ コレクター API | ログ データを任意の REST クライアントから収集して、Log Analytics ワークスペースに格納します。 | [HTTP データ コレクター API を使用して Azure Monitor にログ データを送信する (パブリック プレビュー)](data-collector-api.md) |
 | Azure Monitor メトリック | カスタム メトリックス API | メトリック データを任意の REST クライアントから収集して、Azure Monitor メトリック データベースに格納します。 | [REST API を使用して Azure リソースのカスタム メトリックを Azure Monitor メトリック ストアに送信する](metrics-store-custom-rest-api.md) |

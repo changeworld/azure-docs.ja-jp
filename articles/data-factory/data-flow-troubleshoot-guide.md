@@ -8,12 +8,12 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 02/04/2020
-ms.openlocfilehash: 901868da8ed859a846a507557d383db760f297c9
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: e2e1ddd031041f49107545cd0b3d3de4eaebcd6d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029522"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472130"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Azure Data Factory でのデータ フローのトラブルシューティング
 
@@ -29,8 +29,8 @@ ms.locfileid: "77029522"
 ### <a name="error-code-df-executor-systemimplicitcartesian"></a>エラー コード:DF-Executor-SystemImplicitCartesian
 
 - **メッセージ**:INNER join では暗黙的なデカルト積はサポートされていません。代わりに CROSS JOIN を使用してください。 結合で使用される列は、行に対して一意のキーを作成する必要があります。
-- **原因**:論理プラン間の INNER join では暗黙的なデカルト積はサポートされていません。 結合で使用される列が一意のキーを作成する場合
-- **推奨事項**:非等値ベースの結合では、CROSS JOIN を選択する必要があります。
+- **原因**:論理プラン間の INNER join では暗黙的なデカルト積はサポートされていません。 結合で使用される列が一意のキーを作成する場合は、リレーションシップの両側から少なくとも 1 つの列が必要です。
+- **推奨事項**:非等値ベースの結合では、CUSTOM CROSS JOIN を選択する必要があります。
 
 ### <a name="error-code-df-executor-systeminvalidjson"></a>エラー コード:DF-Executor-SystemInvalidJson
 

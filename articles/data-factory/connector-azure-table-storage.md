@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/27/2019
-ms.openlocfilehash: b64b0f32b7e8d94115facf43646a5a030697d80f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cf79a670db4e2729c6e0a5fb7112cdc6114f465a
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444408"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460707"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Table Storage との間でのデータのコピー
 
@@ -51,9 +51,9 @@ Table Storage には、サポートされているソース データ ストア�
 
 Azure Storage のリンクされたサービスは、アカウント キーを使用して作成できます。 これによりデータ ファクトリは、Storage にグローバルにアクセスすることができます。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | 説明 | Required |
 |:--- |:--- |:--- |
-| 型 | type プロパティを **AzureTableStorage** に設定する必要があります。 |はい |
+| type | type プロパティを **AzureTableStorage** に設定する必要があります。 |はい |
 | connectionString | connectionString プロパティのために Storage に接続するために必要な情報を指定します。 <br/>アカウント キーを Azure Key Vault に格納して、接続文字列から `accountKey` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 |はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
@@ -120,9 +120,9 @@ Shared Access Signature を使用すると、ストレージ アカウント内�
 
 Shared Access Signature 認証を使用するために、次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | 説明 | Required |
 |:--- |:--- |:--- |
-| 型 | type プロパティを **AzureTableStorage** に設定する必要があります。 |はい |
+| type | type プロパティを **AzureTableStorage** に設定する必要があります。 |はい |
 | sasUri | テーブルへの共有アクセス署名 URI の SAS URI を指定します。 <br/>Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 自動ローテーションを活用してトークン部分を削除するために、SAS トークンを Azure Key Vault に配置することもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
@@ -191,9 +191,9 @@ Shared Access Signature の URI を作成する際は、次の点に注意して
 
 Azure Table をコピー先またはコピー元としてデータをコピーするには、データセットの type プロパティを **AzureTable** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | 説明 | Required |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは、**AzureTable** に設定する必要があります。 |はい |
+| type | データセットの type プロパティは、**AzureTable** に設定する必要があります。 |はい |
 | tableName |リンクされたサービスが参照する Table Storage データベース インスタンスのテーブルの名前です。 |はい |
 
 **例:**
@@ -231,21 +231,24 @@ Azure Table などのスキーマのないデータ ストアの場合、Data Fa
 
 Azure Table からデータをコピーする場合は、コピー アクティビティのソースの種類を **AzureTableSource** を設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | 説明 | Required |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティを **AzureTableSource** に設定する必要があります。 |はい |
+| type | コピー アクティビティのソースの type プロパティを **AzureTableSource** に設定する必要があります。 |はい |
 | azureTableSourceQuery |カスタム Table Storage クエリを使用してデータを読み取ります。 次のセクションの例を参照してください。 |いいえ |
 | azureTableSourceIgnoreTableNotFound |テーブルが存在しないという例外を受け入れるかどうかを示します。<br/>使用可能な値: **True**、および **False** (既定値)。 |いいえ |
 
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery の例
 
-Azure Table の列が datetime 型の場合:
+>[!NOTE]
+>Azure Table のクエリ操作は、[Azure Table サービスによって適用される](https://docs.microsoft.com/rest/api/storageservices/setting-timeouts-for-table-service-operations)とおり、30 秒でタイムアウトとなります。 クエリの最適化方法については、「[クエリに対応した設計](../storage/tables/table-storage-design-for-query.md)」という記事をご覧ください。
+
+Azure Data Factory では、datetime 型の列に対してデータをフィルタリングする場合、この例を参照してください。
 
 ```json
 "azureTableSourceQuery": "LastModifiedTime gt datetime'2017-10-01T00:00:00' and LastModifiedTime le datetime'2017-10-02T00:00:00'"
 ```
 
-Azure Table の列が string 型の場合:
+文字列型の列に対してデータをフィルタリングする場合、この例を参照してください。
 
 ```json
 "azureTableSourceQuery": "LastModifiedTime ge '201710010000_0000' and LastModifiedTime le '201710010000_9999'"
@@ -257,9 +260,9 @@ Azure Table の列が string 型の場合:
 
 Azure Table にデータをコピーする場合は、コピー アクティビティのシンクの種類を **AzureTableSink** に設定します。 コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | 説明 | Required |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのシンクの type プロパティを **AzureTableSink** に設定する必要があります。 |はい |
+| type | コピー アクティビティのシンクの type プロパティを **AzureTableSink** に設定する必要があります。 |はい |
 | azureTableDefaultPartitionKeyValue |シンクで使用できる既定のパーティション キー値です。 |いいえ |
 | azureTablePartitionKeyName |値をパーティション キーとして使用する列の名前を指定します。 指定しない場合、AzureTableDefaultPartitionKeyValue がパーティション キーとして使用されます。 |いいえ |
 | azureTableRowKeyName |値を行キーとして使用する列の名前を指定します。 指定しない場合、各行に GUID を使用します。 |いいえ |

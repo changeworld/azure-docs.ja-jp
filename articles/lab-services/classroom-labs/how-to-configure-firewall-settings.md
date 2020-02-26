@@ -3,15 +3,15 @@ title: Azure Lab Services のファイアウォール設定
 description: 情報をファイアウォール規則に追加できるように、ラボ内の仮想マシンのパブリック IP アドレスとポート番号の範囲を特定する方法について説明します。
 author: emaher
 ms.author: enewman
-ms.date: 12/12/2019
+ms.date: 02/14/2020
 ms.topic: article
 ms.service: lab-services
-ms.openlocfilehash: da1614e4a3e02ed91ef2d3c59ac4eb3eac0dcc7c
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: fbd45af0c9b94f04fdaad9d9b5c8214a91a8db91
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75692639"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443459"
 ---
 # <a name="firewall-settings-for-azure-lab-services"></a>Azure Lab Services のファイアウォール設定
 
@@ -24,10 +24,10 @@ ms.locfileid: "75692639"
 
 ## <a name="find-public-ip-for-a-lab"></a>ラボのパブリック IP を見つける
 
-各ラボのパブリック IP アドレスは、Lab Services のラボ アカウントの **[すべてのラボ]** ブレードに一覧表示されます。  **[すべてのラボ]** ブレードを見つける方法については、[ラボ アカウントでラボを管理する方法](how-to-manage-lab-accounts.md#view-and-manage-labs-in-the-lab-account)に関するページを参照してください。  
+各ラボのパブリック IP アドレスは、Lab Services のラボ アカウントの **[すべてのラボ]** ページに一覧表示されます。  **[すべてのラボ]** ページを検索する方法については、「[ラボ アカウントでラボを管理する方法](how-to-manage-lab-accounts.md#view-and-manage-labs-in-the-lab-account)」に関するページを参照してください。  
 
 > [!div class="mx-imgBorder"]
-> ![[すべてのラボ] ブレード](../media/how-to-configure-firewall-settings/all-labs-properties.png)
+> ![[すべてのラボ] ページ](../media/how-to-configure-firewall-settings/all-labs-properties.png)
 
 >[!NOTE]
 >ラボのテンプレート マシンがまだ公開されていない場合、パブリック IP アドレスは表示されません。
@@ -35,3 +35,13 @@ ms.locfileid: "75692639"
 ## <a name="conclusion"></a>まとめ
 
 これでラボのパブリック IP アドレスがわかりました。  パブリック IP アドレスとポート範囲 49152 ～ 65535 について、組織のファイアウォールのインバウンド規則とアウトバウンド規則を作成できます。  ルールが更新されると、学生はネットワーク ファイアウォールでアクセスがブロックされることなく、自分の VM にアクセスできます。
+
+## <a name="next-steps"></a>次のステップ
+次の記事をご覧ください。
+
+- [ラボ作成者にラボの場所の選択を許可する](allow-lab-creator-pick-lab-location.md)
+- [ラボのネットワークとピア仮想ネットワークを接続する](how-to-connect-peer-virtual-network.md)
+- [ラボに共有イメージ ギャラリーをアタッチする](how-to-attach-detach-shared-image-gallery.md)
+- [ユーザーをラボ所有者として追加する](how-to-add-user-lab-owner.md)
+- [ラボのファイアウォール設定の表示](how-to-configure-firewall-settings.md)
+- [ラボのその他設定を構成する](how-to-configure-lab-accounts.md)

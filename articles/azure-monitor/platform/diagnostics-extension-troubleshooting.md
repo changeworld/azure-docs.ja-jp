@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: facd52ea1fdaa2ad30d6b1544cb1f2d6d5833bfa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e2b3ceba7a3673caa38e09f6b4dfa296fd063cfe
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450553"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467915"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure Diagnostics のトラブルシューティング
 この記事では、Azure Diagnostics の使用に関連するトラブルシューティング情報について説明します。 Azure Diagnostics の詳細については、[Azure Diagnostics の概要](diagnostics-extension-overview.md)に関するページを参照してください。
@@ -51,7 +51,7 @@ ms.locfileid: "75450553"
 | **MonAgentHost ログ ファイル** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MonAgentHost.<シーケンシャル番号>.log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>メトリック データが Azure ポータルに表示されない
-Azure Diagnostics には、Azure ポータルに表示できるメトリック データが用意されています。 ポータルでこのデータが表示できない場合、Azure Diagnostics ストレージ アカウントの WADMetrics\* テーブルで、該当するメトリック レコードが存在するかどうかを確認してください。
+Azure Diagnostics には、Azure ポータルに表示できるメトリック データが用意されています。 ポータルでのデータの表示に問題がある場合は、Azure Diagnostics ストレージ アカウントの WADMetrics\* テーブルを調べて、対応するメトリック レコードがそこにあるかどうかを確認し、[リソース プロバイダー](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) Microsoft.Insights を確実に登録します。
 
 ここでは、テーブルの **PartitionKey** がリソース ID、仮想マシン、または仮想マシン スケール セットです。 **RowKey** はメトリック名です (パフォーマンス カウンター名とも呼ばれています)。
 
@@ -297,5 +297,5 @@ System.IO.FileLoadException: Could not load file or assembly 'System.Threading.T
 
 - ストレージ内のデータのカウンター名が英語であるかどうか。 カウンターの名前が英語でない場合、ポータルのメトリック グラフは名前を認識できません。 **対応策**:システム アカウント用に、マシンの言語を英語に変更します。 **[コントロール パネル]**  >  **[地域と言語]**  >  **[管理]**  >  **[設定のコピー]** の順に選択します。 次に、 **[ようこそ画面とシステム アカウント]** の選択を解除し、カスタム言語がシステム アカウントに適用されないようにします。
 
-- パフォーマンス カウンター名にワイルドカード (\*) を使用している場合、パフォーマンス カウンターが Azure Storage シンクに送られるときに、構成済みのカウンターと収集されたカウンターをポータルが関連付けることができなくなります。 **対応策**:ワイルドカードを使用でき、ポータルで (\*) を展開できることを確認するために、パフォーマンス カウンターを ["Azure Monitor" シンク](diagnostics-extension-schema.md#diagnostics-extension-111)にルーティングします。
+- パフォーマンス カウンター名にワイルドカード (\*) を使用している場合、パフォーマンス カウンターが Azure Storage シンクに送られるときに、構成済みのカウンターと収集されたカウンターをポータルが関連付けることができなくなります。 **対応策**:ワイルドカードを使用でき、ポータルで (\*) を展開できることを確認するために、ご自分のパフォーマンス カウンターを Azure Monitor シンクにルーティングします。
 

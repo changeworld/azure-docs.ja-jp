@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 2cce9cbe20121376ad77692773df1d58fcf5257f
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 940ac7b0a2720283b669fc7ea5a9dbc163ddbe64
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759774"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460213"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB サービスのクォータ
 
@@ -77,7 +77,8 @@ Cosmos DB は、データのバックアップを一定の間隔で自動的に�
 | リソース | 既定の制限 |
 | --- | --- |
 | データベースの最大数 | 無制限 |
-| データベース (またはアカウント) あたりのコンテナーの最大数 | 無制限 |
+| データベースあたりのコンテナーの最大数 (共有スループット) |25 |
+| データベースまたはアカウントあたりのコンテナーの最大数 (専用スループット)  |無制限 |
 | リージョンの最大数 | 制限なし (すべての Azure リージョン) |
 
 ## <a name="per-container-limits"></a>コンテナーあたりの制限
@@ -103,7 +104,7 @@ Cosmos DB は、データのバックアップを一定の間隔で自動的に�
 | --- | --- |
 | 項目の最大サイズ | 2 MB (JSON 表現の UTF-8 の長さ) |
 | パーティション キー値の最大長 | 2048 バイト |
-| ID 値の最大長 | 1024 バイト |
+| ID 値の最大長 | 1023 バイト |
 | 項目あたりのプロパティの最大数 | 実質的に無制限 |
 | 最大の入れ子の深さ | 実質的に無制限 |
 | プロパティ名の最大長 | 実質的に無制限 |

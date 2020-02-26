@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.date: 12/23/2019
-ms.openlocfilehash: 57b4440a29dde470f91bbaae091bf65a0d2a1b51
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.date: 02/14/2020
+ms.openlocfilehash: 0b746963cea5a950ba47d8b4dfeb074cb0910436
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552272"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471025"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>HDInsight クラスターを作成するときにカスタム Apache Hive ライブラリを追加する
 
@@ -33,7 +33,7 @@ HDInsight で [Apache Hive](https://hive.apache.org/) ライブラリを事前�
 
 [https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
 
-**必要条件**
+### <a name="requirements"></a>必要条件
 
 * このスクリプトは、**ヘッド ノード**と**ワーカー ノード**の両方に適用する必要があります。
 
@@ -50,19 +50,22 @@ HDInsight で [Apache Hive](https://hive.apache.org/) ライブラリを事前�
 
 ## <a name="create-a-cluster-using-the-script"></a>スクリプトを使用してクラスターを作成する
 
-1. [Linux での HDInsight クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)に関するページの手順を使用してクラスターのプロビジョニングを開始しますが、プロビジョニングを完了しないでください。 Azure PowerShell または HDInsight .NET SDK を使用し、このスクリプトを使用してクラスターを作成することもできます。 これらの方法の詳細については、 [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)に関するページを参照してください。 Azure portal の場合は、 **[従来の作成エクスペリエンスに移動]** オプションを選択してから、 **[Custom(size, settings, apps)] (カスタム (サイズ、設定、アプリ))** を選択する必要があります。
+1. [Linux での HDInsight クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)に関するページの手順を使用してクラスターのプロビジョニングを開始しますが、プロビジョニングを完了しないでください。 Azure PowerShell または HDInsight .NET SDK を使用し、このスクリプトを使用してクラスターを作成することもできます。 これらの方法の詳細については、 [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)に関するページを参照してください。 Azure portal の場合は、 **[構成と価格]** タブで、 **[+ スクリプト アクションの追加]** を選択します。
 
 1. **[ストレージ]** で、jar ファイルのライブラリが含まれているストレージ アカウントがクラスターに使用されるアカウントと異なる場合は、 **[Additional storage accounts] (追加のストレージ アカウント)** に入力します。
 
 1. **[スクリプト アクション]** では、次の情報を指定します。
 
-    |プロパティ |値 |
+    |プロパティ |Value |
     |---|---|
     |スクリプトの種類|- Custom|
-    |Name|ライブラリ |
+    |名前|ライブラリ |
     |Bash スクリプト URI|`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`|
     |ノードの種類|ヘッド、ワーカー|
     |パラメーター|jar が格納されているコンテナーとストレージ アカウントの WASB アドレスを入力します。 たとえば、「 `wasbs://libs@mystorage.blob.core.windows.net/` 」のように入力します。|
+
+    > [!NOTE]
+    > Apache Spark 2.1 の場合は、次の bash スクリプト URI を使用します。`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v00.sh`
 
 1. 「[Linux の HDInsight クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)」の説明に従って、クラスターのプロビジョニングを続行します。
 

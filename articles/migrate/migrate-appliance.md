@@ -2,13 +2,13 @@
 title: Azure Migrate アプライアンス
 description: サーバーの評価と移行に使用される Azure Migrate アプライアンスの概要について説明します。
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: 652fe9d379d6e2ba50e9e282f384905e154368d8
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.date: 02/17/2020
+ms.openlocfilehash: d02227747be4bc7d994e2ea84cd74e7f2fd2531f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031665"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425461"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate アプライアンス
 
@@ -55,7 +55,7 @@ Hyper-V VM | Azure Migrate: Server Assessment | Hyper-V VM を検出する<br/><
 **ハッシュ値** | MD5: 29a7531f32bcf69f32d964fa5ae950bc<br/><br/> SHA256: 37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
 **Hyper-V ホスト** | Windows Server 2012 R2 以降を実行します。
 **Azure Migrate プロジェクト** | 単一のプロジェクトにアプライアンスを関連付けることができます。 <br/> 任意の数のアプライアンスを 1 つのプロジェクトに関連付けることができます。<br/> 
-**検出** | 1 つのアプライアンスで、vCenter Server 上の VMware VM を最大 5,000 台検出できます。<br/> アプライアンスは、最大 300 個の Hyper-V ホストに接続できます。
+**検出** | アプライアンスは、最大 5000 個の Hyper-V ホストを検出できます。<br/> アプライアンスは、最大 300 個の Hyper-V ホストに接続できます。
 **アプライアンスのコンポーネント** | 管理アプリ: デプロイ時のユーザー入力用のアプライアンスの Web アプリ。<br/> 検出エージェント: マシン構成データを収集します。<br/> 評価エージェント: パフォーマンス データを収集します。<br/>  自動更新サービス: コンポーネントを更新します (24 時間ごとに実行されます)。
 
 
@@ -159,7 +159,7 @@ IPv6 アドレス | vm.Guest.Net
 読み取りのスループット (MB/秒) | net.received.average
 書き込みのスループット (MB/秒) | net.transmitted.average
 **インベントリ パスの詳細** | 
-Name | container.GetType().Name
+名前 | container.GetType().Name
 子オブジェクトの型 | container.ChildType
 参照の詳細 | container.MoRef
 親の詳細 | Container.Parent

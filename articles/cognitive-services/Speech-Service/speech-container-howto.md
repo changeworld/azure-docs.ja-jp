@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: dapine
-ms.openlocfilehash: ca7e7f7460db82a357ed8aa240467a6894254217
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 5d30693eb13104504d1cf27ffdbfb8d098d4ef9e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086998"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367762"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Speech サービス コンテナーをインストールして実行する (プレビュー)
 
@@ -261,7 +261,16 @@ ApiKey={API_KEY}
 
 # <a name="custom-speech-to-text"></a>[カスタム音声変換](#tab/cstt)
 
-*カスタム音声変換* コンテナーは Custom Speech モデルに依存します。 カスタム モデルは、[Custom Speech ポータル](https://speech.microsoft.com/customspeech)を利用して[トレーニング](how-to-custom-speech-train-model.md)されている必要があります。 コンテナーを実行するには、Custom **Speech モデル ID** が必須です。 Custom Speech ポータルの **[トレーニング]** ページにあります。 Custom Speech ポータルから、 **[トレーニング]** ページに移動し、モデルを選択します。
+*カスタム音声変換* コンテナーは Custom Speech モデルに依存します。 カスタム モデルは、[Custom Speech ポータル](https://speech.microsoft.com/customspeech)を利用して[トレーニング](how-to-custom-speech-train-model.md)されている必要があります。
+
+> [!IMPORTANT]
+> Custom Speech モデルは、次のいずれかのモデルバージョンでトレーニングが必要になります。
+> * **20181201 (v3.3 統合)**
+> * **20190520 (v4.14 統合)**
+> * **20190701 (v4.17 統合)**<br>
+> ![Custom Speech トレーニング コンテナー モデル](media/custom-speech/custom-speech-train-model-container-scoped.png)
+
+コンテナーを実行するには、Custom **Speech モデル ID** が必須です。 Custom Speech ポータルの **[トレーニング]** ページにあります。 Custom Speech ポータルから、 **[トレーニング]** ページに移動し、モデルを選択します。
 <br>
 
 ![[Custom Speech トレーニング] ページ](media/custom-speech/custom-speech-model-training.png)

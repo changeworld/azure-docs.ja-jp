@@ -1,6 +1,6 @@
 ---
-title: Azure Lab Services でユーザーをラボ所有者として追加する方法
-description: この記事では、管理者がユーザーをラボに所有者として追加する方法について説明します。
+title: Azure Lab Services でラボに他の所有者を追加する方法
+description: この記事では、Azure Lab Services で管理者がユーザーをラボに所有者として追加する方法について説明します。
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,20 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2019
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: 9e007ee6c95843b7e8ef9d7a701237034811489e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9302cadf0b900c9faac382bad86b51cea7d828fb
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475253"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443518"
 ---
-# <a name="how-to-add-a-user-as-an-owner-of-a-classroom-lab-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボの所有者としてユーザーを追加する方法
-この記事では、Azure Lab Services でラボの所有者としてユーザーを追加する方法について説明します。
+# <a name="how-to-add-additional-owners-to-an-existing-lab-in-azure-lab-services"></a>Azure Lab Services で既存のラボに所有者を追加する方法
+この記事では、管理者が既存のラボに所有者を追加する方法について説明します。
 
 ## <a name="add-user-to-the-reader-role-for-the-lab-account"></a>ラボ アカウントの閲覧者ロールにユーザーを追加する
-1. [Azure portal](https://portal.azure.com) にサインインする
+既存のラボに追加の所有者としてユーザーを追加するには、まず、ラボ アカウントに対する**読み取り** アクセス許可をユーザーに付与する必要があります。
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 左側のメニューから、 **[すべてのサービス]** を選択します。 **[Lab Services]** を探して選択します。
 3. 一覧からお使いの**ラボ アカウント**を選択します。 
 2. **[ラボ アカウント]** ページで、左側のメニューから **[アクセス制御 (IAM)]** を選択します。 

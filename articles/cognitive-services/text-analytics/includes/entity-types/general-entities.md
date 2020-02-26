@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: f95d7613926cf332a498cca84563dbc0ebcbbe9b
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: ba516a548fc8385ca86526a7f2dd082b27e53208
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086900"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211448"
 ---
 ## <a name="general-entity-types"></a>一般エンティティの種類:
 
@@ -22,7 +22,7 @@ ms.locfileid: "77086900"
 テキスト内の人の名前を認識します。
 
 言語:
-* パブリック プレビュー: `English`
+* パブリックプレビュー: `Arabic`、`Czech`、`Chinese-Simplified`、`Danish`、`Dutch`、`English`、`Finnish`、`French`、`German`、`Hungarian`、`Italian`、`Japanese`、`Korean`、`Norwegian (Bokmål)`、`Polish`、`Portuguese (Portugal)`、`Portuguese (Brazil)`、`Russian`、`Spanish`、`Swedish`、 および `Turkish`
 
 | サブタイプ名 | 説明                                                      | 次のモデル バージョン以降で使用できます |
 |--------------|------------------------------------------------------------------|---------------------------------------|
@@ -44,12 +44,12 @@ ms.locfileid: "77086900"
 
 言語:
 
-* パブリック プレビュー: `English`
+* パブリックプレビュー: `Arabic`、`Czech`、`Chinese-Simplified`、`Danish`、`Dutch`、`English`、`Finnish`、`French`、`German`、`Hungarian`、`Italian`、`Japanese`、`Korean`、`Norwegian (Bokmål)`、`Polish`、`Portuguese (Portugal)`、`Portuguese (Brazil)`、`Russian`、`Spanish`、`Swedish`、 および `Turkish`
 
 | サブタイプ名              | 説明                                                                              | 次のモデル バージョン以降で使用できます |
 |---------------------------|------------------------------------------------------------------------------------------|----------------------------------------|
 | 該当なし                       | 場所 (例、`Atlantic Ocean`、`library`、`Eiffel Tower`、`Statue of Liberty`)  | `2019-10-01`                           |
-| 地政学的実体 (GPE) | 市区町村、国、都道府県 (例: `Seattle`、`Pennsylvania`、`South Africa`、`Tokyo`) | `2020-02-01`                           |
+| 地政学的実体 (GPE) - 英語のみ| 市区町村、国、都道府県 (例: `Seattle`、`Pennsylvania`、`South Africa`、`Tokyo`) | `2020-02-01`                           |
 
 ### <a name="organization"></a>Organization  
 
@@ -57,7 +57,7 @@ ms.locfileid: "77086900"
 
 言語: 
 
-* パブリック プレビュー: `English`
+* パブリックプレビュー: `Arabic`、`Czech`、`Chinese-Simplified`、`Danish`、`Dutch`、`English`、`Finnish`、`French`、`German`、`Hungarian`、`Italian`、`Japanese`、`Korean`、`Norwegian (Bokmål)`、`Polish`、`Portuguese (Portugal)`、`Portuguese (Brazil)`、`Russian`、`Spanish`、`Swedish`、 および `Turkish`
 
 | サブタイプ名 | 説明                                                                                             | 次のモデル バージョン以降で使用できます |
 |--------------|---------------------------------------------------------------------------------------------------------|----------------------------------------|
@@ -156,7 +156,7 @@ ms.locfileid: "77086900"
 
 言語:
 
-* パブリック プレビュー: `English`
+* パブリック プレビュー: `Chinese-Simplified`、`English`、`French`、`German`、および `Spanish`
 
 | サブタイプ名    | 例                     |
 |-------------|------------------------------|
@@ -176,7 +176,7 @@ ms.locfileid: "77086900"
 
 言語:
 
-* パブリック プレビュー: `English`
+* パブリック プレビュー: `Chinese-Simplified`、`English`、`French`、`German`、および `Spanish`
 
 | サブタイプ名    | 例                     |
 |-------------|------------------------------|

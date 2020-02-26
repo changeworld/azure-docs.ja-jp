@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
-ms.openlocfilehash: b7c406c1d7f55b364d72b2b5626b3c17a34d8338
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: bf83155e971061f22e5f5fc33d216b58621c9249
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552765"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462651"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>チュートリアル:SQL Database マネージド インスタンスをフェールオーバー グループに追加する
 
@@ -36,13 +36,13 @@ SQL Database マネージド インスタンスをフェールオーバー グ�
 
 ## <a name="prerequisites"></a>前提条件
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 このチュートリアルを完了するには、以下のものが必要です。 
 
 - Azure サブスクリプション。 [無料のアカウントを作成](https://azure.microsoft.com/free/)します (まだお持ちでない場合)。
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 このチュートリアルを完了するには、次のものが必要です。
 
 - Azure サブスクリプション。 [無料のアカウントを作成](https://azure.microsoft.com/free/)します (まだお持ちでない場合)。
@@ -55,7 +55,7 @@ SQL Database マネージド インスタンスをフェールオーバー グ�
 この手順では、Azure portal または PowerShell を使用して、リソース グループと、フェールオーバー グループのプライマリ マネージド インスタンスを作成します。 
 
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal) 
+# <a name="portal"></a>[ポータル](#tab/azure-portal) 
 
 Azure portal を使用して、リソース グループとプライマリ マネージド インスタンスを作成します。 
 
@@ -75,7 +75,7 @@ Azure portal を使用して、リソース グループとプライマリ マ�
 1. 残りの設定は既定値のままにし、 **[確認と作成]** を選択してマネージド インスタンスの設定を確認します。 
 1. **[作成]** を選択して、プライマリ マネージド インスタンスを作成します。 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell を使用して、リソース グループとプライマリ マネージド インスタンスを作成します。 
 
@@ -382,7 +382,7 @@ PowerShell を使用して、リソース グループとプライマリ マネ�
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Azure リソース グループを作成します。  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | 仮想ネットワークを作成します。  |
@@ -405,7 +405,7 @@ PowerShell を使用して、リソース グループとプライマリ マネ�
 ## <a name="2---create-secondary-virtual-network"></a>2 - セカンダリ仮想ネットワークを作成する
 Azure portal を使用してマネージド インスタンスを作成する場合は、仮想ネットワークを別個に作成する必要があります。これは、プライマリとセカンダリのマネージド インスタンスのサブネットで範囲が重複しないことという要件があるためです。 PowerShell を使用してマネージド インスタンスを構成する場合は、手順 3 に進んでください。 
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal) 
+# <a name="portal"></a>[ポータル](#tab/azure-portal) 
 プライマリ仮想ネットワークのサブネット範囲を確認するには、これらの手順に従います。
 1. [Azure portal](https://portal.azure.com) で、リソース グループに移動し、プライマリ インスタンスの仮想ネットワークを選択します。 
 1. **[設定]** で **[サブネット]** を選択し、**アドレス範囲**を書き留めます。 セカンダリ マネージド インスタンス用の仮想ネットワークのサブネット アドレス範囲は、これと重複することはできません。 
@@ -421,7 +421,7 @@ Azure portal を使用してマネージド インスタンスを作成する場
 
    次の表には、セカンダリ仮想ネットワークに必要な値が示されています。
 
-    | **フィールド** | 値 |
+    | **フィールド** | Value |
     | --- | --- |
     | **Name** |  セカンダリ マネージド インスタンスで使用される仮想ネットワークの名前 (`vnet-sql-mi-secondary` など)。 |
     | **アドレス空間** | 仮想ネットワークのアドレス空間 (`10.128.0.0/16` など)。 | 
@@ -433,7 +433,7 @@ Azure portal を使用してマネージド インスタンスを作成する場
 
     ![セカンダリ仮想ネットワークの値](media/sql-database-managed-instance-failover-group-tutorial/secondary-virtual-network.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 この手順は、Azure portal を使用してマネージド インスタンスをデプロイする場合にのみ必要です。 PowerShell を使用している場合は、手順 3 に進んでください。 
 
@@ -446,7 +446,7 @@ Azure portal を使用してマネージド インスタンスを作成する場
 - 空である。 
 - プライマリ マネージド インスタンスとは異なるサブネットと IP 範囲がある。 
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal) 
+# <a name="portal"></a>[ポータル](#tab/azure-portal) 
 
 Azure portal を使用してセカンダリ マネージド インスタンスを作成します。 
 
@@ -460,7 +460,7 @@ Azure portal を使用してセカンダリ マネージド インスタンス�
 
    次の表には、セカンダリ マネージド インスタンスに必要な値が示されています。
  
-    | **フィールド** | 値 |
+    | **フィールド** | Value |
     | --- | --- |
     | **サブスクリプション** |  プライマリ マネージド インスタンスがあるサブスクリプション。 |
     | **リソース グループ**| プライマリ マネージド インスタンスがあるリソース グループ。 |
@@ -482,7 +482,7 @@ Azure portal を使用してセカンダリ マネージド インスタンス�
 1. **[確認と作成]** を選択して、セカンダリ マネージド インスタンスの設定を確認します。 
 1. **[作成]** を選択して、セカンダリ マネージド インスタンスを作成します。 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell を使用してセカンダリ マネージド インスタンスを作成します。 
 
@@ -708,7 +708,7 @@ PowerShell を使用してセカンダリ マネージド インスタンスを�
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Azure リソース グループを作成します。  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | 仮想ネットワークを作成します。  |
@@ -734,7 +734,7 @@ PowerShell を使用してセカンダリ マネージド インスタンスを�
 この記事では、2 つの VPN ゲートウェイを作成して接続する手順について説明しますが、代わりに ExpressRoute を構成した場合は、フェールオーバー グループの作成に進むことができます。 
 
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal を使用して、プライマリ マネージド インスタンスの仮想ネットワークのゲートウェイを作成します。 
 
@@ -752,7 +752,7 @@ Azure portal を使用して、プライマリ マネージド インスタン�
 
    次の表には、プライマリ マネージド インスタンスのゲートウェイに必要な値が示されています。
  
-    | **フィールド** | 値 |
+    | **フィールド** | Value |
     | --- | --- |
     | **サブスクリプション** |  プライマリ マネージド インスタンスがあるサブスクリプション。 |
     | **Name** | 仮想ネットワーク ゲートウェイの名前 (`primary-mi-gateway` など)。 | 
@@ -760,7 +760,7 @@ Azure portal を使用して、プライマリ マネージド インスタン�
     | **ゲートウェイの種類** | **[VPN]** を選択します。 |
     | **VPN の種類** | **[ルート ベース]** を選択します |
     | **SKU**| 既定値の `VpnGw1` のままにします。 |
-    | **Location**| プライマリ マネージド インスタンスおよびプライマリ仮想ネットワークがある場所。   |
+    | **場所**| プライマリ マネージド インスタンスおよびプライマリ仮想ネットワークがある場所。   |
     | **Virtual Network**| セクション 2 で作成された仮想ネットワーク (`vnet-sql-mi-primary` など) を選択します。 |
     | **パブリック IP アドレス**| **[新規作成]** を選択します。 |
     | **パブリック IP アドレス名**| IP アドレスの名前 (`primary-gateway-IP` など) を入力します。 |
@@ -773,7 +773,7 @@ Azure portal を使用して、プライマリ マネージド インスタン�
 1. **[作成]** を選択して、新しい仮想ネットワーク ゲートウェイを作成します。 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell を使用して、プライマリ マネージド インスタンスの仮想ネットワークのゲートウェイを作成します。 
 
@@ -810,7 +810,7 @@ PowerShell を使用して、プライマリ マネージド インスタンス�
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | リソース グループ内の仮想ネットワークを取得します。 |
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | 仮想ネットワークにサブネット構成を追加します。 | 
@@ -828,13 +828,13 @@ PowerShell を使用して、プライマリ マネージド インスタンス�
 この手順では、Azure portal を使用して、セカンダリ マネージド インスタンスの仮想ネットワークのゲートウェイを作成します。 
 
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal を使用して、前のセクションの手順を繰り返し、セカンダリ マネージド インスタンスの仮想ネットワークのサブネットとゲートウェイを作成します。 セカンダリ マネージド インスタンスのゲートウェイを構成するために必要なフィールドに入力します。 
 
    次の表には、セカンダリ マネージド インスタンスのゲートウェイに必要な値が示されています。
 
-   | **フィールド** | 値 |
+   | **フィールド** | Value |
    | --- | --- |
    | **サブスクリプション** |  セカンダリ マネージド インスタンスがあるサブスクリプション。 |
    | **Name** | 仮想ネットワーク ゲートウェイの名前 (`secondary-mi-gateway` など)。 | 
@@ -842,7 +842,7 @@ Azure portal を使用して、前のセクションの手順を繰り返し、�
    | **ゲートウェイの種類** | **[VPN]** を選択します。 |
    | **VPN の種類** | **[ルート ベース]** を選択します |
    | **SKU**| 既定値の `VpnGw1` のままにします。 |
-   | **Location**| セカンダリ マネージド インスタンスおよびセカンダリ仮想ネットワークがある場所。   |
+   | **場所**| セカンダリ マネージド インスタンスおよびセカンダリ仮想ネットワークがある場所。   |
    | **Virtual Network**| セクション 2 で作成された仮想ネットワーク (`vnet-sql-mi-secondary` など) を選択します。 |
    | **パブリック IP アドレス**| **[新規作成]** を選択します。 |
    | **パブリック IP アドレス名**| IP アドレスの名前 (`secondary-gateway-IP` など) を入力します。 |
@@ -851,7 +851,7 @@ Azure portal を使用して、前のセクションの手順を繰り返し、�
    ![セカンダリ ゲートウェイの設定](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell を使用して、セカンダリ マネージド インスタンスの仮想ネットワークのゲートウェイを作成します。 
 
@@ -891,7 +891,7 @@ PowerShell を使用して、セカンダリ マネージド インスタンス�
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | リソース グループ内の仮想ネットワークを取得します。 |
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | 仮想ネットワークにサブネット構成を追加します。 | 
@@ -908,7 +908,7 @@ PowerShell を使用して、セカンダリ マネージド インスタンス�
 この手順では、2 つの仮想ネットワークの 2 つのゲートウェイ間に双方向接続を作成します。 
 
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal を使用して、2 つのゲートウェイを接続します。 
 
@@ -933,7 +933,7 @@ Azure portal を使用して、2 つのゲートウェイを接続します。
 1. **[概要]** タブで双方向接続の設定を確認し、 **[OK]** を選択して接続を作成します。 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell を使用して、2 つのゲートウェイを接続します。 
 
@@ -956,7 +956,7 @@ PowerShell を使用して、2 つのゲートウェイを接続します。
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [New-AzVirtualNetworkGatewayConnection](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) | 2 つの仮想ネットワーク ゲートウェイ間の接続を作成します。   |
 
@@ -967,7 +967,7 @@ PowerShell を使用して、2 つのゲートウェイを接続します。
 この手順では、フェールオーバー グループを作成し、それに両方のマネージド インスタンスを追加します。 
 
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 Azure portal を使用して、フェールオーバー グループを作成します。 
 
 
@@ -984,7 +984,7 @@ Azure portal を使用して、フェールオーバー グループを作成し
 1. フェールオーバー グループのデプロイが完了すると、 **[フェールオーバー グループ]** ページに戻ります。 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 PowerShell を使用して、フェールオーバー グループを作成します。 
 
    ```powershell-interactive
@@ -998,7 +998,7 @@ PowerShell を使用して、フェールオーバー グループを作成し�
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup)| 新しい Azure SQL Database マネージド インスタンスのフェールオーバー グループを作成します。  |
 
@@ -1010,11 +1010,11 @@ PowerShell を使用して、フェールオーバー グループを作成し�
 この手順では、フェールオーバー グループをセカンダリ サーバーにフェールオーバーしてから、Azure portal を使用してフェールバックします。 
 
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 Azure portal を使用してフェールオーバーをテストします。 
 
 
-1. [Azure portal](https://portal.azure.com) 内のマネージド インスタンスに移動し、[設定] で **[インスタンスのフェールオーバー グループ]** を選択します。 
+1. [Azure portal](https://portal.azure.com)内の_セカンダリ_マネージド インスタンスに移動し、[設定] で **[インスタンスのフェールオーバー グループ]** を選択します。 
 1. どのマネージド インスタンスがプライマリであり、どのマネージド インスタンスがセカンダリであるかを確認します。 
 1. **[フェールオーバー]** を選択し、切断中の TDS セッションに関する警告で **[はい]** を選択します。 
 
@@ -1024,10 +1024,10 @@ Azure portal を使用してフェールオーバーをテストします。
 
    ![フェールオーバー後にマネージド インスタンスのロールが切り替わっている](media/sql-database-managed-instance-failover-group-tutorial/mi-switched-after-failover.png)
 
-1. もう一度 **[フェールオーバー]** を選択し、プライマリ インスタンスをプライマリ ロールにフェールバックします。 
+1. 新しい_セカンダリ_ マネージド インスタンスにアクセスし、もう一度 **[フェールオーバー]** を選択して、プライマリ インスタンスをプライマリの役割にフェイルバックします。 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 PowerShell を使用してフェールオーバーをテストします。 
 
    ```powershell-interactive
@@ -1064,7 +1064,7 @@ PowerShell を使用してフェールオーバーをテストします。
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) | マネージド インスタンスのフェールオーバー グループを取得または一覧表示します。| 
 | [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | マネージド インスタンスのフェールオーバー グループのフェールオーバーを実行します。 | 
@@ -1076,14 +1076,14 @@ PowerShell を使用してフェールオーバーをテストします。
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 リソースをクリーンアップするには、まず、マネージド インスタンス、次に仮想クラスターを削除します。その後、残りのリソース、最後にリソース グループを削除します。 
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 1. [Azure Portal](https://portal.azure.com) で、リソース グループに移動します。 
 1. マネージド インスタンスを選び、 **[削除]** を選択します。 テキスト ボックスに「`yes`」と入力して、リソースを削除することを確認し、 **[削除]** を選択します。 このプロセスがバックグラウンドで完了するまで時間がかかる場合があります。これが完了するまで、"*仮想クラスター*" やその他の依存リソースを削除することはできません。 [アクティビティ] タブで削除を監視して、マネージド インスタンスが削除されたことを確認します。 
 1. マネージド インスタンスが削除されたら、"*仮想クラスター*" を削除します。そのためには、リソース グループでそれを選び、 **[削除]** を選択します。 テキスト ボックスに「`yes`」と入力して、リソースを削除することを確認し、 **[削除]** を選択します。 
 1. 残りのリソースを削除します。 テキスト ボックスに「`yes`」と入力して、リソースを削除することを確認し、 **[削除]** を選択します。 
 1. リソース グループを削除するには、 **[リソース グループの削除]** を選択し、リソース グループの名前 (`myResourceGroup`) を入力して、 **[削除]** を選びます。 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 リソース グループは 2 回削除する必要があります。 最初にリソース グループを削除すると、マネージド インスタンスと仮想クラスターが削除されますが、その後、エラー メッセージ `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'.` が表示されて失敗します。 Remove-AzResourceGroup コマンドをもう一度実行すると、残りのすべてのリソースと、リソース グループが削除されます。
 
@@ -1096,7 +1096,7 @@ Write-host "Removing residual resources and resouce group..."
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | リソース グループを削除します。 |
 
@@ -1104,12 +1104,12 @@ Write-host "Removing residual resources and resouce group..."
 
 ## <a name="full-script"></a>完全なスクリプト
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-managed-instance-to-failover-group-az-ps.ps1 "Add managed instance to a failover group")]
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Azure リソース グループを作成します。  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | 仮想ネットワークを作成します。  |
@@ -1136,7 +1136,7 @@ Write-host "Removing residual resources and resouce group..."
 | [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | マネージド インスタンスのフェールオーバー グループのフェールオーバーを実行します。 | 
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | リソース グループを削除します。 | 
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal) 
+# <a name="portal"></a>[ポータル](#tab/azure-portal) 
 
 Azure portal に使用できるスクリプトはありません。
 

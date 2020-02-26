@@ -5,22 +5,22 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 02/19/2020
 ms.author: helohr
-ms.openlocfilehash: 6bdac3f06834ccb5454efa0d77bec5a5a6c5b5bf
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 426ca10893e6858722b58422400582e4940287e2
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76515107"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484606"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise マルチセッションに関する FAQ
 
 この記事では、よく寄せられる質問に回答し、Windows 10 Enterprise マルチセッションのベスト プラクティスについて説明します。
  
-## <a name="what-is-windows-10-enterprise-multi-session"></a>Windows 10 Enterprise マルチセッションとは 
+## <a name="what-is-windows-10-enterprise-multi-session"></a>Windows 10 Enterprise マルチセッションとは
 
-Windows 10 Enterprise マルチセッション (旧称 Windows 10 Enterprise for Virtual Desktops (EVD)) は、これまで Windows Server でしかできなかった、複数の対話型セッションを同時に実行できる新しいリモート デスクトップ セッション ホストです。 この機能により、ユーザーは使い慣れた Windows 10 エクスペリエンスを利用しつつ、IT はマルチセッションのコスト面での恩恵が受けられ、RDS クライアント アクセス ライセンス (CAL) ではなく、既存のユーザーごとの Windows ライセンスを使用することができます。 ライセンスと価格の詳細については、「[Windows Virtual Desktop の価格](https://azure.microsoft.com/pricing/details/virtual-desktop/)」を参照してください。 
+Windows 10 Enterprise マルチセッション (旧称 Windows 10 Enterprise for Virtual Desktops (EVD)) は、複数の対話型セッションを同時に実行できる新しいリモート デスクトップ セッション ホストです。 以前は、これを行うことができるのは Windows Server だけでした。 この機能により、ユーザーは使い慣れた Windows 10 エクスペリエンスを利用しつつ、IT はマルチセッションのコスト面での恩恵が受けられ、RDS クライアント アクセス ライセンス (CAL) ではなく、既存のユーザーごとの Windows ライセンスを使用することができます。 ライセンスと価格の詳細については、「[Windows Virtual Desktop の価格](https://azure.microsoft.com/pricing/details/virtual-desktop/)」を参照してください。 
  
 ## <a name="how-many-users-can-simultaneously-have-an-interactive-session-on-windows-10-enterprise-multi-session"></a>Windows 10 Enterprise マルチセッションで対話型セッションを同時に実行できるユーザー数はいくつですか?
 
@@ -28,7 +28,7 @@ Windows 10 Enterprise マルチセッション (旧称 Windows 10 Enterprise for
  
 ## <a name="why-does-my-application-report-windows-10-enterprise-multi-session-as-a-server-operating-system"></a>アプリケーションで Windows 10 Enterprise マルチセッションがサーバー オペレーティング システムとして報告されるのはなぜですか?
 
-Windows 10 Enterprise マルチセッションは、Windows 10 Enterprise の仮想エディションです。 違いの 1 つは、このオペレーティング システム (OS) では [ProductType](https://docs.microsoft.com/windows/desktop/cimwin32prov/win32-operatingsystem) の値が Windows Server と同じ 3 として報告されることです。 このプロパティにより、OS で、既存の RDSH 管理ツール、RDSH マルチセッション対応アプリケーション、および RDSH 環境の主に低レベルのシステム パフォーマンスの最適化に対する互換性が維持されます。 一部のアプリケーション インストーラーでは、ProductType がクライアントに設定されていることを検出するかどうかによって、Windows 10 マルチセッションへのインストールをブロックすることができます。 アプリがインストールされない場合は、アプリケーション ベンダーに更新バージョンを問い合わせてください。 
+Windows 10 Enterprise マルチセッションは、Windows 10 Enterprise の仮想エディションです。 違いの 1 つは、このオペレーティング システム (OS) では [ProductType](/windows/win32/cimwin32prov/win32-operatingsystem) の値が Windows Server と同じ 3 として報告されることです。 このプロパティにより、OS で、既存の RDSH 管理ツール、RDSH マルチセッション対応アプリケーション、および RDSH 環境の主に低レベルのシステム パフォーマンスの最適化に対する互換性が維持されます。 一部のアプリケーション インストーラーでは、ProductType がクライアントに設定されていることを検出するかどうかによって、Windows 10 マルチセッションへのインストールをブロックすることができます。 アプリがインストールされない場合は、アプリケーション ベンダーに更新バージョンを問い合わせてください。 
  
 ## <a name="can-i-run-windows-10-enterprise-multi-session-on-premises"></a>Windows 10 Enterprise マルチセッションをオンプレミスで実行できますか?
 
@@ -48,7 +48,7 @@ LOB アプリケーションをインストールしてニーズに合わせて�
  
 ## <a name="can-windows-10-enterprise-multi-session-be-azure-active-directory-ad-joined"></a>Windows 10 Enterprise マルチセッションを Azure Active Directory (AD) に参加させることはできますか?
 
-Windows 10 Enterprise マルチセッションでは、現在、ハイブリッド Azure AD への参加がサポートされています。 Windows 10 Enterprise マルチセッションがドメインに参加したら、既存のグループ ポリシー オブジェクトを使用して、Azure AD の登録を有効にします。 詳細については、「[Hybrid Azure Active Directory 参加の実装を計画する](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)」を参照してください。
+Windows 10 Enterprise マルチセッションでは、現在、ハイブリッド Azure AD への参加がサポートされています。 Windows 10 Enterprise マルチセッションがドメインに参加したら、既存のグループ ポリシー オブジェクトを使用して、Azure AD の登録を有効にします。 詳細については、「[Hybrid Azure Active Directory 参加の実装を計画する](../active-directory/devices/hybrid-azuread-join-plan.md)」を参照してください。
  
 ## <a name="where-can-i-find-the-windows-10-enterprise-multi-session-image"></a>Windows 10 Enterprise マルチセッション イメージはどこで入手できますか?
 
@@ -71,6 +71,31 @@ FSLogix プロファイル コンテナーの構成方法の詳細について�
 ## <a name="which-license-do-i-need-to-access-windows-10-enterprise-multi-session"></a>Windows 10 Enterprise マルチセッションにアクセスするには、どのライセンスが必要ですか?
 
 適用可能なライセンスの完全な一覧については、「[Windows Virtual Desktop の価格](https://azure.microsoft.com/pricing/details/virtual-desktop/)」を参照してください。
+
+## <a name="why-do-my-apps-disappear-after-i-sign-out"></a>サインアウト後にアプリが非表示になるのはなぜですか？
+
+これは、FSLogix などのプロファイル管理ソリューションで Windows 10 Enterprise マルチセッションを使用しているために発生します。 管理者またはプロファイルソリューションは、ユーザーがサインアウトしたときにユーザープロファイルを削除するようにシステムを構成しました。この構成は、サインアウト後にシステムがユーザープロファイルを削除すると、セッション中にインストールしたすべてのアプリも削除されることを意味します。 インストールしたアプリを保持する場合は、Windows Virtual Desktop 環境内のすべてのユーザーに対してこれらのアプリをプロビジョニングするよう管理者に依頼する必要があります。
+
+## <a name="how-do-i-make-sure-apps-dont-disappear-when-users-sign-out"></a>ユーザーがサインアウトしたときにアプリが消えないようにするにはどうすればいいですか？
+
+ほとんどの仮想化環境は、ユーザーが自分のプロファイルに追加のアプリをインストールできないように、既定で構成されています。 ユーザーが Windows Virtual Desktop からサインアウトしたときにアプリが消失しないようにするには、環境内のすべてのユーザープロファイルにそのアプリをプロビジョニングする必要があります。 アプリのプロビジョニングの詳細については、次のリソースをご確認ください。
+
+- [Windows Virtual Desktop で組み込みアプリを発行する](publish-apps.md)
+- [DISM アプリ パッケージ サービスのコマンド ライン オプション](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-app-package--appx-or-appxbundle--servicing-command-line-options)
+- [Add-AppxProvisionedPackage](https://docs.microsoft.com/powershell/module/dism/add-appxprovisionedpackage?view=win10-ps)
+
+## <a name="how-do-i-make-sure-users-dont-download-and-install-apps-from-the-microsoft-store"></a>ユーザーが Microsoft Store からアプリをダウンロードしてインストールしないようにするにはどうすればいいですか？
+
+Microsoft Store アプリを無効にして、ユーザーが既にプロビジョニングしたアプリ以外のアプリをダウンロードしないようにすることができます。
+
+ストア アプリを無効にするには:
+
+1. 新しいグループ ポリシーを作成します。
+2. **[コンピューターの構成]**  >  **[管理用テンプレート]**  >  **[Windows コンポーネント]** を選択します。
+3. **[ストア]** を選択します。
+4. **ストア アプリケーション**を選択します。
+5. **無効**を選択し、 **[OK]** を選択します。
+6. **[適用]** を選択します。
  
 ## <a name="next-steps"></a>次のステップ
 

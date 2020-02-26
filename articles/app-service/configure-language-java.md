@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9ee989a079366a470d086a8b931685a6c1dbc757
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: e5beb60107b3632da336a20f167e1c2f5b53140a
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889347"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461268"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Azure App Service 向けの Windows Java アプリを構成する
 
@@ -24,11 +24,12 @@ Azure App Service を使用すると、Java 開発者は、完全に管理され
 
 ## <a name="deploying-your-app"></a>アプリのデプロイ
 
-[Azure App Service 用 Maven プラグイン](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)を使用して、.war ファイルをデプロイできます。 一般的な IDE を使用したデプロイは、[Azure Toolkit for IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij) または [Azure Toolkit for Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse) でもサポートされています。
+[Maven 用 Azure Web アプリ プラグイン](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)を使用して、.war ファイルをデプロイできます。 一般的な IDE を使用したデプロイは、[Azure Toolkit for IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij) または [Azure Toolkit for Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse) でもサポートされています。
 
 それ以外の場合、デプロイの方法はアーカイブの種類によって異なります。
 
 - .war ファイルを Tomcat にデプロイするには、`/api/wardeploy/` エンドポイントを使用してアーカイブ ファイルを POST します。 この API の詳細については、[このドキュメント](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file)を参照してください。
+- Java SE に .jar ファイルをデプロイするには、Kudu サイトの `/api/zipdeploy/` エンドポイントを使用します。 この API の詳細については、[このドキュメント](https://docs.microsoft.com/azure/app-service/deploy-zip#rest)を参照してください。
 
 FTP を使用して .war をデプロイしないでください。 FTP ツールは、スタートアップ スクリプト、依存関係、またはその他のランタイム ファイルをアップロードするために設計されています。 これは、Web アプリをデプロイするための最適な選択肢ではありません。
 
@@ -128,9 +129,9 @@ App Service で実行される Java アプリケーションは、他のアプ�
 
 **[認証/承認]** オプションを使用して、Azure portal でアプリ認証を設定します。 そこから、Azure Active Directory、または Facebook、Google、GitHub などのソーシャル ログインを使用して、認証を有効にすることができます。 Azure portal の構成は、1 つの認証プロバイダーを構成するときにのみ機能します。 詳細については、「[Azure Active Directory ログインを使用するよう App Service アプリを構成する](configure-authentication-provider-aad.md)」と、他の ID プロバイダーの関連記事を参照してください。 複数のサインイン プロバイダーを有効にする必要がある場合は、[App Service 認証のカスタマイズ](app-service-authentication-how-to.md)に関する記事の手順に従います。
 
-#### <a name="tomcat-and-wildfly"></a>Tomcat と Wildfly
+#### <a name="tomcat"></a>Tomcat
 
-Tomcat または Wildfly アプリケーションでは、Principal オブジェクトを Map オブジェクトにキャストすると、サーブレットから直接ユーザーの要求にアクセスできます。 Map オブジェクトによって、各要求の種類がその種類の要求のコレクションにマップされます。 以下のコードで、`request` は `HttpServletRequest` のインスタンスです。
+ご利用の Tomcat アプリケーションでは、Principal オブジェクトを Map オブジェクトにキャストすることで、サーブレットから直接ユーザーの要求にアクセスできます。 Map オブジェクトによって、各要求の種類がその種類の要求のコレクションにマップされます。 以下のコードで、`request` は `HttpServletRequest` のインスタンスです。
 
 ```java
 Map<String, Collection<String>> map = (Map<String, Collection<String>>) request.getUserPrincipal();
@@ -287,6 +288,10 @@ Tomcat の `server.xml` または他の構成ファイルを編集するには�
 
 最後に、お客様のアプリ サービスを再起動します。 デプロイメントの場所は、以前と同様に `D:\home\site\wwwroot\webapps` になります。
 
+## <a name="configure-java-se"></a>Java SE を構成する
+
+Windows 上の Java SE で JAR アプリケーションを実行している場合、`server.port` は、アプリケーションの起動時にコマンドライン オプションとして渡されます。 HTTP ポートは、環境変数 `HTTP_PLATFORM_PORT` から手動で解決できます。 この環境変数の値は、アプリケーションがリッスンする HTTP ポートになります。 
+
 ## <a name="java-runtime-statement-of-support"></a>Java ランタイムのサポート ステートメント
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK のバージョンとメンテナンス
@@ -300,6 +305,8 @@ Azure でサポートされている Java Development Kit (JDK) は、[Azul Syst
 ### <a name="security-updates"></a>セキュリティ更新プログラム
 
 重大なセキュリティの脆弱性のパッチおよび修正プログラムは、Azul Systems から利用可能になり次第リリースされます。 "重大な" 脆弱性は、[NIST Common Vulnerability Scoring System バージョン 2](https://nvd.nist.gov/cvss.cfm) で 9.0 以上の基本スコアにより定義されます。
+
+Tomcat 8.0 は、[2018 年 9 月 30 日にサポートが終了 (EOL)](https://tomcat.apache.org/tomcat-80-eol.html) しました。 ランタイムは Azure App Service でまだ機能しますが、Azure では Tomcat 8.0 へのセキュリティ更新プログラムは適用されません。 可能であれば、Tomcat 8.5 または 9.0 にアプリケーションを移行してください。 Azure App Service では、Tomcat 8.5 と 9.0 の両方を使用できます。 詳細については、[Tomcat の公式 Web サイト](https://tomcat.apache.org/whichversion.html)を参照してください。 
 
 ### <a name="deprecation-and-retirement"></a>廃止と提供終了
 

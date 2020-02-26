@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 17558b44c91425ce1a06625f8fd5c1806a762ba2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 28724f85ada989cbe3ce754418fb781bb0468de4
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76021115"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77466078"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>ネットワークの制限 - Azure Resource Manager 次の制限は、サブスクリプションごとにリージョン単位で **Azure Resource Manager** デプロイ モデルを通して管理されるネットワーク リソースにのみ適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
 
@@ -51,10 +51,13 @@ ms.locfileid: "76021115"
 #### <a name="publicip-address"></a>パブリック IP アドレスの制限
 | リソース | 既定の制限 | 上限 |
 | --- | --- | --- |
-| パブリック IP アドレス - 動的 | Basic で 1,000。 |サポートにお問い合せください。 |
-| パブリック IP アドレス - 静的 | Basic で 1,000。 |サポートにお問い合せください。 |
-| パブリック IP アドレス - 静的 | Standard で 1,000。|サポートにお問い合せください。 |
+| パブリック IP アドレス<sup>1</sup> | Basic で 10。 | サポートにお問い合せください。 |
+| 静的パブリック IP アドレス<sup>1</sup> | Basic で 10。 | サポートにお問い合せください。 |
+| 標準パブリック IP アドレス<sup>1</sup> | 10 | サポートにお問い合せください。 |
+| パブリック IP プレフィックス | サブスクリプション内の標準パブリック IP の数によって制限されます | サポートにお問い合せください。 |
 | パブリック IP プレフィックス長 | /28 | サポートにお問い合せください。 |
+
+<sup>1</sup> パブリック IP アドレスに対する既定の制限は、無料試用版や従量課金制、CSP などプラン カテゴリの種類によって異なります。 たとえば、Enterprise Agreement サブスクリプションの既定値は 1000 です。
 
 #### <a name="load-balancer"></a>Load Balancer の制限
 次の制限は、サブスクリプションごとにリージョン単位で Azure Resource Manager デプロイメント モデルを通して管理されるネットワーク リソースにのみ適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。

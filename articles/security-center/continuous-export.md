@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: e12fc5d92cfc850e1d049bc11286c0c863e718b0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bad3be86bd85f7e5cebcf9445d14d836c73a87ef
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459188"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470796"
 ---
 # <a name="export-security-alerts-and-recommendations-preview"></a>セキュリティ アラートと推奨事項のエクスポート (プレビュー)
 
@@ -105,7 +105,7 @@ Azure Monitor の Security Center からアラートと推奨事項を表示す�
 
 ## <a name="manual-one-time-export-of-security-alerts"></a>セキュリティ アラートの 1 回限りの手動エクスポート
 
-アラートまたは推奨事項の CSV レポートをダウンロードするには、 **[セキュリティ アラート]** または **[推奨事項]** ページを開き、 **[レポートを CSV にダウンロード (プレビュー)]** ボタンをクリックします。
+アラートまたは推奨事項の CSV レポートをダウンロードするには、 **[セキュリティ アラート]** または **[推奨事項]** ページを開き、 **[レポートを CSV にダウンロード]** ボタンをクリックします。
 
 [![アラート データを CSV ファイルとしてダウンロードする](media/continuous-export/download-alerts-csv.png)](media/continuous-export/download-alerts-csv.png#lightbox)
 

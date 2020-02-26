@@ -1,16 +1,16 @@
 ---
-title: コンテナー グループで SSL を有効にする
-description: Azure Container Instances 内で実行されるコンテナー グループに対する、SSL または TLS エンドポイントを作成します
+title: サイドカー コンテナーで SSL を有効にする
+description: サイドカー コンテナーで Nginx を実行することで、Azure Container Instances 内で実行されるコンテナー グループに対して SSL または TLS エンドポイントを作成します
 ms.topic: article
-ms.date: 04/03/2019
-ms.openlocfilehash: 541d53a9a9530f7ac80227dbae598b3da2691301
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/14/2020
+ms.openlocfilehash: 524e997cf6c7c464cc352048b1abf4be119d2f37
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773067"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460554"
 ---
-# <a name="enable-an-ssl-endpoint-in-a-container-group"></a>コンテナー グループで SSL エンドポイントを有効にする
+# <a name="enable-an-ssl-endpoint-in-a-sidecar-container"></a>サイドカー コンテナーで SSL エンドポイントを有効にする
 
 この記事では、SSL プロバイダーを実行しているアプリケーション コンテナーとサイドカー コンテナーを使用して[コンテナー グループ](container-instances-container-groups.md)を作成する方法について説明します。 コンテナー グループを別の SSL エンドポイントで設定することにより、アプリケーション コードを変更せずにアプリケーションの SSL 接続を有効にすることができます。
 
@@ -18,7 +18,9 @@ ms.locfileid: "76773067"
 * パブリック Microsoft [aci-helloworld](https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld) イメージを使用してシンプルな Web アプリを実行する、アプリケーション コンテナー。 
 * SSL を使用するよう構成されたパブリック [Nginx](https://hub.docker.com/_/nginx) イメージを実行するサイドカー コンテナー。 
 
-この例ではコンテナー グループにより、Nginx 用のポート 443 のみがそのパブリック IP アドレスで公開されます。 Nginx により HTTPS 要求がコンパニオン Web アプリにルーティングされます。コンパニオン Web アプリはポート 80 で内部的にリッスンします。 他のポートをリッスンするコンテナー アプリの例を適応させることもできます。 コンテナー グループで SSL を有効にするその他の方法については、「[次のステップ](#next-steps)」を参照してください。
+この例ではコンテナー グループにより、Nginx 用のポート 443 のみがそのパブリック IP アドレスで公開されます。 Nginx により HTTPS 要求がコンパニオン Web アプリにルーティングされます。コンパニオン Web アプリはポート 80 で内部的にリッスンします。 他のポートをリッスンするコンテナー アプリの例を適応させることもできます。 
+
+コンテナー グループで SSL を有効にするその他の方法については、「[次のステップ](#next-steps)」を参照してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -85,7 +87,7 @@ http {
 
         # Protect against the BEAST attack by not using SSLv3 at all. If you need to support older browsers (IE6) you may need to add
         # SSLv3 to the list of protocols below.
-        ssl_protocols              TLSv1 TLSv1.1 TLSv1.2;
+        ssl_protocols              TLSv1.2;
 
         # Ciphers set to best allow protection from Beast, while providing forwarding secrecy, as defined by Mozilla - https://wiki.mozilla.org/Security/Server_Side_TLS#Nginx
         ssl_ciphers                ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:ECDHE-RSA-RC4-SHA:ECDHE-ECDSA-RC4-SHA:AES128:AES256:RC4-SHA:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!3DES:!MD5:!PSK;
@@ -125,9 +127,9 @@ http {
 Nginx 構成ファイル、SSL 証明書、SSL キーを Base64 でエンコードします。 次のセクションで、エンコードされたコンテンツを、コンテナー グループのデプロイに使用される YAML ファイルに入力します。
 
 ```console
-cat nginx.conf | base64 -w 0 > base64-nginx.conf
-cat ssl.crt | base64 -w 0 > base64-ssl.crt
-cat ssl.key | base64 -w 0 > base64-ssl.key
+cat nginx.conf | base64 > base64-nginx.conf
+cat ssl.crt | base64 > base64-ssl.crt
+cat ssl.key | base64 > base64-ssl.key
 ```
 
 ## <a name="deploy-container-group"></a>コンテナー グループをデプロイする
@@ -216,17 +218,18 @@ az container show --resource-group <myResourceGroup> --name app-with-ssl --outpu
 ```console
 Name          ResourceGroup    Status    Image                                                    IP:ports             Network    CPU/Memory       OsType    Location
 ------------  ---------------  --------  -------------------------------------------------------  -------------------  ---------  ---------------  --------  ----------
-app-with-ssl  myresourcegroup  Running   mcr.microsoft.com/azuredocs/nginx, aci-helloworld        52.157.22.76:443     Public     1.0 core/1.5 gb  Linux     westus
+app-with-ssl  myresourcegroup  Running   nginx, mcr.microsoft.com/azuredocs/aci-helloworld        52.157.22.76:443     Public     1.0 core/1.5 gb  Linux     westus
 ```
 
 ## <a name="verify-ssl-connection"></a>SSL 接続を確認する
 
-実行中のアプリケーションを表示するには、ご利用のブラウザーでその IP アドレスにアクセスします。 たとえば、この例の IP アドレスは `52.157.22.76` です。 Nginx サーバーの構成により、実行中のアプリケーションを表示するには `https://<IP-ADDRESS>` を使用する必要があります。 `http://<IP-ADDRESS>` で接続しようとすると、失敗します。
+ブラウザーを使用し、コンテナー グループのパブリック IP アドレスに移動します。 この例の IP アドレスは `52.157.22.76` です。そのため、URL は **https://52.157.22.76** です。 Nginx サーバーの構成により、実行中のアプリケーションを表示するには HTTPS を使用する必要があります。 HTTP 経由で接続すると失敗します。
 
 ![Azure コンテナー インスタンスで実行されているアプリケーションを示すブラウザー スクリーンショット](./media/container-instances-container-group-ssl/aci-app-ssl-browser.png)
 
 > [!NOTE]
-> この例では証明機関の証明書ではなく、自己署名証明書を使用するため、HTTPS 経由でサイトに接続しようとするとブラウザにセキュリティの警告が表示されます。 これは正しい動作です。
+> この例では証明機関の証明書ではなく、自己署名証明書を使用するため、HTTPS 経由でサイトに接続しようとするとブラウザにセキュリティの警告が表示されます。 警告を受け入れるか、ブラウザーまたは証明書の設定を調整してページに進みます。 これは正しい動作です。
+
 >
 
 ## <a name="next-steps"></a>次のステップ
@@ -239,6 +242,4 @@ app-with-ssl  myresourcegroup  Running   mcr.microsoft.com/azuredocs/nginx, aci-
 
 * [Azure Functions プロキシ](../azure-functions/functions-proxies.md)
 * [Azure API Management](../api-management/api-management-key-concepts.md)
-* [Azure Application Gateway](../application-gateway/overview.md)
-
-アプリケーション ゲートウェイを使用するには、サンプルの[デプロイ テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet)をご覧ください。
+* [Azure Application Gateway](../application-gateway/overview.md) - サンプルの[デプロイ テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet)をご覧ください。

@@ -5,21 +5,20 @@ description: Azure AD によって発行されたトークンの有効期間を�
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 06f5b317-053e-44c3-aaaa-cf07d8692735
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 02/19/2020
 ms.author: ryanwi
-ms.custom: aaddev, annaba, identityplatformtop40
-ms.reviewer: hirsin
-ms.openlocfilehash: 55c7ee6711c6001745053b850c1b4e1859af5dbe
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.custom: aaddev, identityplatformtop40
+ms.reviewer: hirsin, jlu, annaba
+ms.openlocfilehash: 0b2b9dbe52a5696f21b287402fc4cbaa32b29c73
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699021"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461200"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Active Directory における構成可能なトークンの有効期間 (プレビュー)
 
@@ -33,9 +32,8 @@ Azure AD では、ポリシー オブジェクトは、組織の個々のアプ�
 組織の既定のポリシーとして、ポリシーを指定できます。 ポリシーは、優先度が高いポリシーによってオーバーライドされない限り、組織内のすべてのアプリケーションに適用されます。 ポリシーを特定のアプリケーションに割り当てることもできます。 優先順位の順序は、ポリシーの種類によって異なります。
 
 > [!NOTE]
-> SharePoint Online では、構成可能なトークンの有効期間ポリシーをサポートしていません。  PowerShell を使用してこのポリシーを作成することはできますが、SharePoint Online はこのポリシーを認識しません。 アイドル状態のセッションのタイムアウトの構成に関する詳細については、[SharePoint Online のブログ](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208)を参照してください。
->* SharePoint Online のアクセス トークンの既定の有効期間は 1 時間です。 
->* SharePoint Online の更新トークンの既定の最大非アクティブ時間は 90 日間です。
+> 構成可能なトークン ライフタイム ポリシーは、SharePoint Online リソースと OneDrive for Business リソースにアクセスするモバイル クライアントとデスクトップ クライアントにのみ適用され、Web ブラウザー セッションには適用されません。
+> SharePoint Online と OneDrive for Business の Web ブラウザー セッションのライフタイムを管理するには、[条件付きアクセス セッション ライフタイム](../conditional-access/howto-conditional-access-session-lifetime.md)機能を使用します。 アイドル状態のセッションのタイムアウトの構成に関する詳細については、[SharePoint Online のブログ](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208)を参照してください。
 
 ## <a name="token-types"></a>トークンの種類
 

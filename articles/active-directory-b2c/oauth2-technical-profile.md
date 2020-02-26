@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 53190eda66347c23b981c5d6e0631630e9989deb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: d0fc5e6b5cafa22da6707a8f34675dcbdf5af8cc
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840368"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198022"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OAuth2 技術プロファイルを定義する
 
@@ -35,7 +35,7 @@ Azure Active Directory B2C (Azure AD B2C) では、OAuth2 プロトコルの ID 
   ...
 ```
 
-## <a name="input-claims"></a>入力要求
+## <a name="input-claims"></a>入力クレーム
 
 **InputClaims** と **InputClaimsTransformations** の要素は不要です。 ただし、追加のパラメーターを ID プロバイダーに送信する場合があります。 次の例では、値が `contoso.com` である **domain_hint** クエリ文字列パラメーターを認可要求に追加しています。
 
@@ -45,7 +45,7 @@ Azure Active Directory B2C (Azure AD B2C) では、OAuth2 プロトコルの ID 
 </InputClaims>
 ```
 
-## <a name="output-claims"></a>出力要求
+## <a name="output-claims"></a>出力クレーム
 
 **OutputClaims** 要素には、OAuth2 ID プロバイダーにより返される要求の一覧が存在します。 お使いのポリシーに定義されている要求の名前を、ID プロバイダーで定義されている名前にマップする必要があるかもしれません。 `DefaultValue` 属性を設定している限り、ID プロバイダーにより返されない要求を追加することもできます。
 
@@ -77,7 +77,7 @@ Azure Active Directory B2C (Azure AD B2C) では、OAuth2 プロトコルの ID 
 
 ## <a name="metadata"></a>Metadata
 
-| Attribute | Required | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | client_id | はい | ID プロバイダーのアプリケーション識別子。 |
 | IdTokenAudience | いいえ | id_token の対象ユーザー。 指定される場合、Azure AD B2C は、トークンが ID プロバイダーにより返された要求内にあり、そして指定されたものと等しいかどうかをチェックします。 |
@@ -96,12 +96,13 @@ Azure Active Directory B2C (Azure AD B2C) では、OAuth2 プロトコルの ID 
 | ResponseErrorCodeParamName | いいえ | HTTP 200 (Ok) 経由で返されるエラー メッセージを収納するパラメーターの名前。 |
 | ExtraParamsInAccessTokenEndpointResponse | いいえ | **AccessTokenEndpoint** からの応答に、一部の ID プロバイダーにより返される可能性がある余分なパラメーターが存在します。 たとえば、**AccessTokenEndpoint** からの応答には、`openid` のような余分なパラメーターがあります。これは、access_token を除けば、**ClaimsEndpoint** 要求クエリ文字列での必須パラメーターです。 複数のパラメーター名をエスケープし、コンマ ',' 区切り記号で区切るようにしてください。 |
 | ExtraParamsInClaimsEndpointRequest | いいえ | **ClaimsEndpoint** 要求に、一部の ID プロバイダーにより返される可能性がある余分なパラメーターが存在します。 複数のパラメーター名をエスケープし、コンマ ',' 区切り記号で区切るようにしてください。 |
+| IncludeClaimResolvingInClaimsHandling  | いいえ | 入力要求と出力要求の場合、[要求の解決](claim-resolver-overview.md) が技術プロファイルに含まれるかどうかを指定します。 指定できる値: `true` または `false`  (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 
 **CryptographicKeys** 要素には次の属性が存在します。
 
-| Attribute | Required | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | client_secret | はい | ID プロバイダー アプリケーションのクライアント シークレット。 **response_types** メタデータが `code` に設定されている場合にのみ、暗号化キーが必要です。 この場合、Azure AD B2C は、アクセス トークンの認証コードを交換するために、別の呼び出しを行います。 メタデータが `id_token` に設定されている場合は、暗号化キーを省略できます。 |
 

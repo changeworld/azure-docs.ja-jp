@@ -3,21 +3,22 @@ title: コンテナー用 Azure Monitor の概要 | Microsoft Docs
 description: この記事では、AKS Container Insights ソリューションを監視するコンテナーに対する Azure Monitor と、Azure の AKS クラスターと Container Instances の正常性を監視することによって提供される価値について説明します。
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 341dd28f6c1523e4b4c06da30a0a8ffc61b1c6f4
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 3ff2c35ae9f5838447ce90e2a020649427920a43
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75730738"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198039"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>コンテナーに対する Azure Monitor の概要
 
 Azure Monitor for containers は、以下にデプロイされているコンテナー ワークロードのパフォーマンスを監視するために設計された機能です。
 
-- Azure Kubernetes Service (AKS) にホストされているマネージド Kubernetes クラスター
-- Azure Container Instances
-- Azure Stack またはオンプレミスでホストされた自己管理の Kubernetes クラスター
-- Azure Red Hat OpenShift
+- [Azure Kubernetes Service (AKS)](../../aks/intro-kubernetes.md) にホストされているマネージド Kubernetes クラスター
+- [AKS エンジン](https://github.com/Azure/aks-engine)を使用して、Azure でホストされた自己管理の Kubernetes クラスター
+- [Azure Container Instances](../../container-instances/container-instances-overview.md)
+- [Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910)またはオンプレミスでホストされた自己管理の Kubernetes クラスター
+- [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
 
 コンテナー向けの Azure Monitor は、Linux および Windows Server 2019 オペレーティングシステムを実行しているクラスターをサポートします。 
 
@@ -38,7 +39,7 @@ Azure Monitor for containers は、以下にデプロイされているコンテ
 * 平均的な負荷、および最大の負荷がかかったときのクラスターの動作を理解します。 この知識は、容量ニーズを特定し、クラスターが維持できる最大負荷を判断するのに役立ちます。 
 * ノードまたはコンテナーの CPU およびメモリの使用率がしきい値を超えた場合や、インフラストラクチャまたはノードの正常性ロールアップで正常性状態の変更がクラスターで発生した場合に、事前に通知または記録するようにアラートを構成します。
 * [Prometheus](https://prometheus.io/docs/introduction/overview/) と統合して、[クエリ](container-insights-log-search.md)を使用してノードと Kubernetes から収集したアプリケーションとワークロードのメトリックを表示し、カスタム アラート、ダッシュボード、詳細な分析を作成します。
-* オンプレミスの [AKS エンジンにデプロイされた](https://github.com/microsoft/OMS-docker/tree/aks-engine)コンテナー ワークロードおよび [Azure Stack の AKS エンジン](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)を監視します。
+* オンプレミスの [AKS エンジンにデプロイされた](https://github.com/Azure/aks-engine)コンテナー ワークロードおよび [Azure Stack の AKS エンジン](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)を監視します。
 * [Azure Red Hat OpenShift にデプロイされた](../../openshift/intro-openshift.md)コンテナー ワークロードを監視します。
 
     >[!NOTE]

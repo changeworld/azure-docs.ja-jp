@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5f5522201534a54f5d132257553469eed5addab3
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 70d843f5773f66e6e17c40d0441553e3cb096c64
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169868"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462158"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning のしくみ:アーキテクチャと概念
 
@@ -54,24 +54,25 @@ Azure Machine Learning 用のこれらのツールを使用します。
 > この記事では、Azure Machine Learning で使用される用語と概念を定義しますが、Azure プラットフォームに関する用語と概念は定義しません。 Azure プラットフォームの用語について詳しくは、[Microsoft Azure 用語集](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)に関するページを参照してください。
 
 ## <a name="glossary"></a>用語集
-+ <a href="#activities">アクティビティ</a>
-+ <a href="#compute-targets">コンピューティング先</a>
-+ <a href="#datasets-and-datastores">データセットとデータストア</a>
-+ <a href="#endpoints">エンドポイント</a>
-+ <a href="#environments">環境</a>
-+ [Estimator](#estimators)
-+ <a href="#experiments">実験</a>
-+ <a href="#github-tracking-and-integration">Git の追跡</a>
-+ <a href="#iot-module-endpoints">IoT モジュール</a>
-+ <a href="#logging">Logging</a>
-+ <a href="#ml-pipelines">ML パイプライン</a>
-+ <a href="#models">モデル</a>
-+ <a href="#runs">[実行]</a>
-+ <a href="#run-configurations">実行構成</a>
-+ <a href="#snapshots">スナップショット</a>
-+ <a href="#training-scripts">トレーニング スクリプト</a>
-+ <a href="#web-service-endpoint">Web サービス</a>
-+ <a href="#workspaces">ワークスペース</a>
+
+* [アクティビティ](#activities)
+* [ワークスペース](#workspaces)
+    * [実験](#experiments)
+        * [[実行]](#runs) 
+            * [実行構成](#run-configurations)
+            * [スナップショット](#snapshots)
+            * [Git の追跡](#github-tracking-and-integration)
+            * [Logging](#logging)
+    * [ML パイプライン](#ml-pipelines)
+    * [モデル](#models)
+        * [環境](#environments)
+        * [トレーニング スクリプト](#training-scripts)
+        * [Estimator](#estimators)
+    * [エンドポイント](#endpoints)
+        * [Web サービス](#web-service-endpoint)
+        * [IoT モジュール](#iot-module-endpoints)
+    * [データセットとデータストア](#datasets-and-datastores)
+    * [コンピューティング先](#compute-targets)
 
 ### <a name="activities"></a>Activities
 
@@ -82,71 +83,9 @@ Azure Machine Learning 用のこれらのツールを使用します。
 
 アクティビティでは、ユーザーがこれらの操作の進行状況を簡単に監視できるように、SDK または Web UI 経由で通知を提供できます。
 
-### <a name="compute-instance"></a>コンピューティング インスタンス (プレビュー)
+### <a name="workspaces"></a>Workspaces
 
-
-**Azure Machine Learning コンピューティング インスタンス** (旧称 Notebook VM) は、機械学習用にインストールされた複数のツールと環境を含む、フル マネージドのクラウドベースのワークステーションです。 コンピューティング インスタンスは、トレーニング ジョブと推論ジョブのコンピューティング ターゲットとして使用できます。 大規模なタスクの場合、マルチノード スケーリング機能を備える [Azure Machine Learning コンピューティング クラスター](how-to-set-up-training-targets.md#amlcompute)は、コンピューティング ターゲットの選択肢として適しています。
-
-[コンピューティング インスタンス](concept-compute-instance.md)の詳細を参照してください。
-
-### <a name="compute-targets"></a>コンピューティング ターゲット
-
-[コンピューティング先](concept-compute-target.md)では、トレーニング スクリプトを実行したり、サービスのデプロイをホストしたりする場所であるコンピューティング リソースを指定できます。 この場所は、ローカル コンピューターでも、クラウドベースのコンピューティング リソースでもかまいません。
-
-詳細については、[トレーニングおよびデプロイ用の利用可能なコンピューティング先](concept-compute-target.md)に関するページを参照してください。
-
-### <a name="datasets-and-datastores"></a>データセットとデータストア
-
-**Azure Machine Learning Datasets (プレビュー)** によって、データへのアクセスと操作がより容易になります。 データセットは、モデルのトレーニングやパイプラインの作成など、さまざまなシナリオでデータを管理します。 Azure Machine Learning SDK を使用すると、基礎となるストレージへのアクセス、データの探索、異なるデータセット定義のライフ サイクルの管理が可能になります。
-
-データセットには、`from_delimited_files()` や `to_pandas_dataframe()` を使用するなど、一般的な形式のデータを操作するメソッドが用意されています。
-
-詳細については、[Azure Machine Learning Datasets の作成と登録](how-to-create-register-datasets.md)に関するページを参照してください。  データセットのその他の使用例については、[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets)を参照してください。
-
-**データストア**は、Azure ストレージ アカウントに対するストレージの抽象化です。 データストアでは、バックエンド ストレージとして Azure BLOB コンテナーまたは Azure ファイル共有を使用できます。 各ワークスペースには既定のデータストアがあり、ユーザーは追加のデータストアを登録できます。 データストアのファイルを格納および取得するには、Python SDK API または Azure Machine Learning CLI を使用します。
-
-### <a name="endpoints"></a>エンドポイント
-
-エンドポイントは、クラウドでホストできる Web サービスまたは統合デバイス デプロイ用 IoT モジュールへのモデルのインスタンス化です。
-
-#### <a name="web-service-endpoint"></a>Web サービス エンドポイント
-
-Web サービスとしてモデルをデプロイする場合、エンドポイントを Azure Container Instances、Azure Kubernetes Service、または FPGA にデプロイできます。 モデル、スクリプト、および関連ファイルからサービスを作成します。 これらは、モデルの実行環境を含むベース コンテナー イメージに配置されます。 イメージには、Web サービスに送信されるスコアリング要求を受け取る、負荷分散された HTTP エンドポイントがあります。
-
-Azure には Application Insights のテレメトリやモデルのテレメトリを収集する機能があり、それを有効にすると、Web サービスを監視するのに役立ちます。 利用統計情報にアクセスできるのは機能を有効にしたユーザーだけであり、情報はそのユーザーの Application Insights インスタンスとストレージ アカウント インスタンスに格納されます。
-
-自動スケールを有効にしてある場合は、Azure でデプロイが自動的にスケーリングされます。
-
-Web サービスとしてのモデルのデプロイ例については、[Azure Container Instances での画像分類モデルのデプロイ](tutorial-deploy-models-with-aml.md)に関するページを参照してください。
-
-#### <a name="iot-module-endpoints"></a>IoT モジュール エンドポイント
-
-デプロイされる IoT モジュール エンドポイントは Docker コンテナーであり、モデルとそれに関連付けられているスクリプトまたはアプリケーション、および追加の依存関係が含まれます。 エッジ デバイス上の Azure IoT Edge を使用して、これらのモジュールをデプロイします。
-
-監視を有効にしてある場合、Azure では Azure IoT Edge モジュール内のモデルから利用統計情報を収集します。 利用統計情報にアクセスできるのは機能を有効にしたユーザーだけであり、情報はそのユーザーのストレージ アカウント インスタンスに格納されます。
-
-Azure IoT Edge ではモジュールが実行されるのを保証し、モジュールをホストしているデバイスを監視します。
-
-### <a name="environments"></a>環境
-
-Azure ML 環境は、データの準備、モデルのトレーニング、モデルのサービスの提供のための再現可能な環境を作成するために使用される構成 (Docker、Python、Spark など) を指定するために使用されます。 これらは、Azure Machine Learning ワークスペース内で管理およびバージョン管理されるエンティティであり、さまざまなコンピューティング ターゲット間で再現、監査、移植が可能な機械学習ワークフローを実現します。
-
-ローカル コンピューティング上の環境オブジェクトを使用してトレーニング スクリプトを開発し、Azure Machine Learning コンピューティング上で同じ環境を再利用して大規模なモデル トレーニングを行うことができ、その同じ環境を使用してモデルをデプロイすることもできます。 
-
-トレーニングと推論のために[再利用可能な ML 環境を作成して管理する方法](how-to-use-environments.md)を学習します。
-
-### <a name="estimators"></a>Estimator
-
-一般的なフレームワークでのモデルのトレーニングを容易にするため、Estimator クラスを使用すると実行構成を簡単に構築できます。 汎用の [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) を作成し、それを使用して、自分で選択した任意の学習フレームワーク (scikit-learn など) を使用するトレーニング スクリプトを送信できます。
-
-PyTorch、TensorFlow、Chainer タスクの場合、Azure Machine Learning には、これらのフレームワークを簡単に使用するための [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)、および [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) Estimator が用意されています。
-
-詳細については、次の記事を参照してください。
-
-* [Estimator を使用して ML モデルをトレーニングする](how-to-train-ml-models.md)。
-* [Azure Machine Learning を使用して PyTorch ディープ ラーニング モデルを大規模にトレーニングする](how-to-train-pytorch.md)。
-* [Azure Machine Learning を使用して TensorFlow モデルを大規模にトレーニングおよび登録する](how-to-train-tensorflow.md)。
-* [Azure Machine Learning を使用して大規模な Chainer モデルをトレーニングし、登録する](how-to-train-chainer.md)。
+[ワークスペース](concept-workspace.md)は、Azure Machine Learning の最上位のリソースです。 Azure Machine Learning を使用するときに作成する、すべての成果物を操作するための一元的な場所が提供されます。 他のユーザーとワークスペースを共有できます。 ワークスペースの詳細については、「[Azure Machine Learning ワークスペースとは](concept-workspace.md)」をご覧ください。
 
 ### <a name="experiments"></a>実験
 
@@ -154,6 +93,33 @@ PyTorch、TensorFlow、Chainer タスクの場合、Azure Machine Learning に�
 
 実験の使用例については、「[チュートリアル:最初のモデルをトレーニングする](tutorial-1st-experiment-sdk-train.md)」を参照してください。
 
+### <a name="runs"></a>実行
+
+実行とは、トレーニング スクリプトの 1 回の実行です。 実験には、通常、複数の実行が含まれます。
+
+Azure Machine Learning では、すべての実行を記録して、実験に次の情報を保存します。
+
+* 実行に関するメタデータ (タイムスタンプ、期間など)
+* スクリプトによって記録されるメトリック
+* 実験によって自動収集される、またはユーザーによって明示的にアップロードされる、出力ファイル
+* 実行前の、スクリプトを含むディレクトリのスナップショット
+
+モデルをトレーニングするためにスクリプトを送信するときに実行を生成します。 実行は、0 個以上の子実行を持つことができます。 たとえば、最上位レベルの実行は 2 つの子実行を持つ可能性があり、それぞれが独自の子実行を持つ場合があります。
+
+### <a name="run-configurations"></a>実行構成
+
+実行構成は、指定されたコンピューティング先でのスクリプトの実行方法を定義する一連の命令です。 構成には、既存の Python 環境を使用するかどうかや、仕様から構築される Conda 環境を使用するかどうかなど、広範な動作の定義セットが含まれます。
+
+実行構成は、トレーニング スクリプトが含まれるディレクトリ内のファイルに保持することも、メモリ内オブジェクトとして構築して実行の送信に使用することもできます。
+
+実行構成の例については、[モデルをトレーニングするためのコンピューティング先の選択と使用](how-to-set-up-training-targets.md)に関するページを参照してください。
+
+### <a name="snapshots"></a>スナップショット
+
+実行を送信するときに、Azure Machine Learning によって、スクリプトが含まれているディレクトリが zip ファイルとして圧縮され、コンピューティング先に送られます。 その後、zip ファイルが抽出され、そこでスクリプトが実行されます。 Azure Machine Learning では、zip ファイルもスナップショットとして実行レコード内に格納されます。 ワークスペースにアクセスできるすべてのユーザーは、実行レコードを参照し、スナップショットをダウンできます。
+
+> [!NOTE]
+> 不要なファイルがスナップショットに含まれないようにするため、無視ファイル (.gitignore または .amlignore) を作成します。 このファイルをスナップショット ディレクトリに配置し、無視するファイルの名前をその中に追加します。 .amlignore ファイルには、[.gitignore ファイルと同じ構文とパターン](https://git-scm.com/docs/gitignore)が使用されます。 両方のファイルが存在する場合、.amlignore ファイルが優先されます。
 
 ### <a name="github-tracking-and-integration"></a>GitHub の追跡と統合
 
@@ -196,30 +162,13 @@ Scikit-learn と Estimator を使用したモデルのトレーニングの例�
 
 モデルの登録例については、[Azure Machine Learning での画像分類モデルのトレーニング](tutorial-train-models-with-aml.md)に関するページを参照してください。
 
-### <a name="runs"></a>実行
+### <a name="environments"></a>環境
 
-実行とは、トレーニング スクリプトの 1 回の実行です。 Azure Machine Learning は、すべての実行を記録して、次の情報を保存します。
+Azure ML 環境は、データの準備、モデルのトレーニング、モデルのサービスの提供のための再現可能な環境を作成するために使用される構成 (Docker、Python、Spark など) を指定するために使用されます。 これらは、Azure Machine Learning ワークスペース内で管理およびバージョン管理されるエンティティであり、さまざまなコンピューティング ターゲット間で再現、監査、移植が可能な機械学習ワークフローを実現します。
 
-* 実行に関するメタデータ (タイムスタンプ、期間など)
-* スクリプトによって記録されるメトリック
-* 実験によって自動収集される、またはユーザーによって明示的にアップロードされる、出力ファイル
-* 実行前の、スクリプトを含むディレクトリのスナップショット
+ローカル コンピューティング上の環境オブジェクトを使用してトレーニング スクリプトを開発し、Azure Machine Learning コンピューティング上で同じ環境を再利用して大規模なモデル トレーニングを行うことができ、その同じ環境を使用してモデルをデプロイすることもできます。 
 
-モデルをトレーニングするためにスクリプトを送信するときに実行を生成します。 実行は、0 個以上の子実行を持つことができます。 たとえば、最上位レベルの実行は 2 つの子実行を持つ可能性があり、それぞれが独自の子実行を持つ場合があります。
-
-### <a name="run-configurations"></a>実行構成
-
-実行構成は、指定されたコンピューティング先でのスクリプトの実行方法を定義する一連の命令です。 構成には、既存の Python 環境を使用するかどうかや、仕様から構築される Conda 環境を使用するかどうかなど、広範な動作の定義セットが含まれます。
-
-実行構成は、トレーニング スクリプトが含まれるディレクトリ内のファイルに保持することも、メモリ内オブジェクトとして構築して実行の送信に使用することもできます。
-
-実行構成の例については、[モデルをトレーニングするためのコンピューティング先の選択と使用](how-to-set-up-training-targets.md)に関するページを参照してください。
-### <a name="snapshots"></a>スナップショット
-
-実行を送信するときに、Azure Machine Learning によって、スクリプトが含まれているディレクトリが zip ファイルとして圧縮され、コンピューティング先に送られます。 その後、zip ファイルが抽出され、そこでスクリプトが実行されます。 Azure Machine Learning では、zip ファイルもスナップショットとして実行レコード内に格納されます。 ワークスペースにアクセスできるすべてのユーザーは、実行レコードを参照し、スナップショットをダウンできます。
-
-> [!NOTE]
-> 不要なファイルがスナップショットに含まれないようにするため、無視ファイル (.gitignore または .amlignore) を作成します。 このファイルをスナップショット ディレクトリに配置し、無視するファイルの名前をその中に追加します。 .amlignore ファイルには、[.gitignore ファイルと同じ構文とパターン](https://git-scm.com/docs/gitignore)が使用されます。 両方のファイルが存在する場合、.amlignore ファイルが優先されます。
+トレーニングと推論のために[再利用可能な ML 環境を作成して管理する方法](how-to-use-environments.md)を学習します。
 
 ### <a name="training-scripts"></a>トレーニング スクリプト
 
@@ -227,9 +176,63 @@ Scikit-learn と Estimator を使用したモデルのトレーニングの例�
 
 例については、「[Tutorial:Azure Machine Learning でイメージ分類モデルをトレーニングする](tutorial-train-models-with-aml.md)」を参照してください。
 
-### <a name="workspaces"></a>Workspaces
+### <a name="estimators"></a>Estimator
 
-[ワークスペース](concept-workspace.md)は、Azure Machine Learning の最上位のリソースです。 Azure Machine Learning を使用するときに作成する、すべての成果物を操作するための一元的な場所が提供されます。 他のユーザーとワークスペースを共有できます。 ワークスペースの詳細については、「[Azure Machine Learning ワークスペースとは](concept-workspace.md)」をご覧ください。
+一般的なフレームワークでのモデルのトレーニングを容易にするため、Estimator クラスを使用すると実行構成を簡単に構築できます。 汎用の [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) を作成し、それを使用して、自分で選択した任意の学習フレームワーク (scikit-learn など) を使用するトレーニング スクリプトを送信できます。
+
+PyTorch、TensorFlow、Chainer タスクの場合、Azure Machine Learning には、これらのフレームワークを簡単に使用するための [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)、および [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) Estimator が用意されています。
+
+詳細については、次の記事を参照してください。
+
+* [Estimator を使用して ML モデルをトレーニングする](how-to-train-ml-models.md)。
+* [Azure Machine Learning を使用して PyTorch ディープ ラーニング モデルを大規模にトレーニングする](how-to-train-pytorch.md)。
+* [Azure Machine Learning を使用して TensorFlow モデルを大規模にトレーニングおよび登録する](how-to-train-tensorflow.md)。
+* [Azure Machine Learning を使用して大規模な Chainer モデルをトレーニングし、登録する](how-to-train-chainer.md)。
+
+### <a name="endpoints"></a>エンドポイント
+
+エンドポイントは、クラウドでホストできる Web サービスまたは統合デバイス デプロイ用 IoT モジュールへのモデルのインスタンス化です。
+
+#### <a name="web-service-endpoint"></a>Web サービス エンドポイント
+
+Web サービスとしてモデルをデプロイする場合、エンドポイントを Azure Container Instances、Azure Kubernetes Service、または FPGA にデプロイできます。 モデル、スクリプト、および関連ファイルからサービスを作成します。 これらは、モデルの実行環境を含むベース コンテナー イメージに配置されます。 イメージには、Web サービスに送信されるスコアリング要求を受け取る、負荷分散された HTTP エンドポイントがあります。
+
+Azure には Application Insights のテレメトリやモデルのテレメトリを収集する機能があり、それを有効にすると、Web サービスを監視するのに役立ちます。 利用統計情報にアクセスできるのは機能を有効にしたユーザーだけであり、情報はそのユーザーの Application Insights インスタンスとストレージ アカウント インスタンスに格納されます。
+
+自動スケールを有効にしてある場合は、Azure でデプロイが自動的にスケーリングされます。
+
+Web サービスとしてのモデルのデプロイ例については、[Azure Container Instances での画像分類モデルのデプロイ](tutorial-deploy-models-with-aml.md)に関するページを参照してください。
+
+#### <a name="iot-module-endpoints"></a>IoT モジュール エンドポイント
+
+デプロイされる IoT モジュール エンドポイントは Docker コンテナーであり、モデルとそれに関連付けられているスクリプトまたはアプリケーション、および追加の依存関係が含まれます。 エッジ デバイス上の Azure IoT Edge を使用して、これらのモジュールをデプロイします。
+
+監視を有効にしてある場合、Azure では Azure IoT Edge モジュール内のモデルから利用統計情報を収集します。 利用統計情報にアクセスできるのは機能を有効にしたユーザーだけであり、情報はそのユーザーのストレージ アカウント インスタンスに格納されます。
+
+Azure IoT Edge ではモジュールが実行されるのを保証し、モジュールをホストしているデバイスを監視します。
+
+
+### <a name="compute-instance"></a>コンピューティング インスタンス (プレビュー)
+
+**Azure Machine Learning コンピューティング インスタンス** (旧称 Notebook VM) は、機械学習用にインストールされた複数のツールと環境を含む、フル マネージドのクラウドベースのワークステーションです。 コンピューティング インスタンスは、トレーニング ジョブと推論ジョブのコンピューティング ターゲットとして使用できます。 大規模なタスクの場合、マルチノード スケーリング機能を備える [Azure Machine Learning コンピューティング クラスター](how-to-set-up-training-targets.md#amlcompute)は、コンピューティング ターゲットの選択肢として適しています。
+
+[コンピューティング インスタンス](concept-compute-instance.md)の詳細を参照してください。
+
+### <a name="datasets-and-datastores"></a>データセットとデータストア
+
+**Azure Machine Learning Datasets (プレビュー)** によって、データへのアクセスと操作がより容易になります。 データセットは、モデルのトレーニングやパイプラインの作成など、さまざまなシナリオでデータを管理します。 Azure Machine Learning SDK を使用すると、基礎となるストレージへのアクセス、データの探索、異なるデータセット定義のライフ サイクルの管理が可能になります。
+
+データセットには、`from_delimited_files()` や `to_pandas_dataframe()` を使用するなど、一般的な形式のデータを操作するメソッドが用意されています。
+
+詳細については、[Azure Machine Learning Datasets の作成と登録](how-to-create-register-datasets.md)に関するページを参照してください。  データセットのその他の使用例については、[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets)を参照してください。
+
+**データストア**は、Azure ストレージ アカウントに対するストレージの抽象化です。 データストアでは、バックエンド ストレージとして Azure BLOB コンテナーまたは Azure ファイル共有を使用できます。 各ワークスペースには既定のデータストアがあり、ユーザーは追加のデータストアを登録できます。 データストアのファイルを格納および取得するには、Python SDK API または Azure Machine Learning CLI を使用します。
+
+### <a name="compute-targets"></a>コンピューティング ターゲット
+
+[コンピューティング先](concept-compute-target.md)では、トレーニング スクリプトを実行したり、サービスのデプロイをホストしたりする場所であるコンピューティング リソースを指定できます。 この場所は、ローカル コンピューターでも、クラウドベースのコンピューティング リソースでもかまいません。
+
+詳細については、[トレーニングおよびデプロイ用の利用可能なコンピューティング先](concept-compute-target.md)に関するページを参照してください。
 
 ### <a name="next-steps"></a>次のステップ
 

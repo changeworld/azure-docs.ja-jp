@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 11/27/2019
-ms.openlocfilehash: 90f39a5edd32225b7fed259ca48dcf4802d0ced3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: eed0ed96efdc84697797c50578e11eee37d4d495
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443825"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201732"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL Database マネージド インスタンスのリソース制限の概要
 
@@ -38,8 +38,8 @@ ms.locfileid: "75443825"
 | インスタンスの予約済み最大ストレージ |  汎用:8 TB<br/>Business Critical:1 TB (テラバイト) | 汎用:8 TB<br/> Business Critical: コアの数に応じて 1 TB、2 TB、または 4 TB |
 
 > [!IMPORTANT]
-> - Gen4 ハードウェアは段階的に廃止されています。Gen5 ハードウェアに新しいマネージド インスタンスをデプロイすることをお勧めします。
-> - 現時点で、Gen4 ハードウェアは引き続き次のリージョンでのみ利用できます。北ヨーロッパ、西ヨーロッパ、米国東部、米国中南部、米国中北部、米国西部 2、米国中部、カナダ中部、インド南部、東南アジア、韓国中部。
+> - Gen4 ハードウェアは段階的に廃止されており、新しいデプロイでは利用できなくなりました。 すべての新しいマネージド インスタンスを Gen5 ハードウェアにデプロイする必要があります。
+> - [マネージド インスタンスを Gen 5](sql-database-service-tiers-vcore.md) のハードウェアに移行して、広範な仮想コアとストレージのスケーラビリティ、高速ネットワーク、最高の IO パフォーマンス、最小待機時間を体験することを検討してください。
 
 ### <a name="in-memory-oltp-available-space"></a>使用可能なインメモリ OLTP 領域 
 

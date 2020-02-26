@@ -1,5 +1,5 @@
 ---
-title: StorSimple 5000-7000 シリーズのデータを移行するためのオプションを評価する | Microsoft Docs
+title: StorSimple 5000-7000 シリーズデバイスからのデータ移行オプション
 description: StorSimple 5000-7000 シリーズのデータを移行するためのオプションの概要を示します。
 services: storsimple
 documentationcenter: NA
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: d51891c076f1784fbddb88bfaed28ac1d889afdc
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 44a05ecb273bdf7582300c3b6a9110e2ada0994c
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227761"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471824"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>StorSimple 5000-7000 シリーズのデータを移行するためのオプション 
 
@@ -39,7 +39,7 @@ StorSimple 8000 シリーズにアップグレードして、StorSimple プラ�
 
 StorSimple 8000 シリーズを使用してデータを移行する方法の詳細については、「[StorSimple 5000-7000 シリーズ デバイスのデータを 8000 シリーズ デバイスに移行する](storsimple-8000-migrate-from-5000-7000.md)」を参照してください。
 
-#### <a name="migrate-to-azure-file-sync"></a>Azure File Sync に移行する
+#### <a name="migrate-to-azure-file-sync"></a>Azure File Sync への移行
 
 この新しい移行オプションを使用すると、お客様は、所属する組織のファイル共有を Azure Files に格納することができます。 その後、これらのファイル共有は、オンプレミス アクセスのために Azure File Sync (AFS) を使用して一元化されます。 AFS は Windows Server ホストにデプロイできます。 以降、実際のデータ移行は、ホスト コピーとして、または移行ツールを使用して実行されます。
 
@@ -125,6 +125,6 @@ A. データの移行にかかる時間は、データ量と選択したアッ�
 A. StorSimple 8000 シリーズのサポート終了日については、[こちら](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series)で公開されています。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
  - [StorSimple 5000-7000 シリーズ デバイスのデータを 8000 シリーズ デバイスに移行する](storsimple-8000-migrate-from-5000-7000.md)。
  - [StorSimple 5000-7000 シリーズ デバイスのデータを Azure File Sync に移行する](storsimple-5000-7000-afs-migration.md)

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/26/2019
-ms.openlocfilehash: 4cc315b91b5dbedcb22091149ca37061ff956efa
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 02/18/2020
+ms.openlocfilehash: 4c265cb0cdc665ef52f4dc6e69440e83c22db449
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74913428"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460979"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする
 
@@ -44,7 +44,7 @@ Azure Data Explorer コネクタを使用すると、次のことができます
 * ソースとして、KQL (Kusto) クエリを使用してデータを取得する。
 * シンクとして、コピー先テーブルにデータを追加する。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 >[!TIP]
 >Azure Data Explorer コネクタのチュートリアルについては、「[Azure Data Factory を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする](../data-explorer/data-factory-load-data.md)」と、[データベースから Azure Data Explorer への一括コピー](../data-explorer/data-factory-template.md)に関するページを参照してください。
@@ -73,10 +73,10 @@ Azure Data Explorer のコネクタでは、サービス プリンシパル認�
 
 Azure Data Explorer のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | 説明 | Required |
 |:--- |:--- |:--- |
 | type | **type** プロパティは、**AzureDataExplorer** に設定する必要があります。 | はい |
-| endpoint | Azure Data Explorer クラスターのエンドポイント URL。形式は `https://<clusterName>.<regionName>.kusto.windows.net` です。 | はい |
+| エンドポイント (endpoint) | Azure Data Explorer クラスターのエンドポイント URL。形式は `https://<clusterName>.<regionName>.kusto.windows.net` です。 | はい |
 | database | データベースの名前。 | はい |
 | tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 これは、[Kusto 接続文字列](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)の "機関 ID" として知られています。 これは、Azure portal の右上隅にマウス ポインターを合わせることで取得できます。 | はい |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 これは、[Kusto 接続文字列](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)の "AAD アプリケーション クライアント ID" として知られています。 | はい |
@@ -111,7 +111,7 @@ Azure Data Explorer にデータをコピーするには、データセットの
 
 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | 説明 | Required |
 |:--- |:--- |:--- |
 | type | **type** プロパティは、**AzureDataExplorerTable** に設定する必要があります。 | はい |
 | table | リンクされたサービスが参照するテーブルの名前。 | シンクの場合は Yes、ソースの場合は No |
@@ -143,7 +143,7 @@ Azure Data Explorer にデータをコピーするには、データセットの
 
 Azure Data Explorer からデータをコピーするには、コピー アクティビティ ソースの **type** プロパティを **AzureDataExplorerSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | 説明 | Required |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの **type** プロパティを、次の値に設定する必要があります:**AzureDataExplorerSource** | はい |
 | query | [KQL 形式](/azure/kusto/query/)で指定された読み取り専用要求。 参照としてカスタム KQL クエリを使用します。 | はい |
@@ -190,10 +190,11 @@ Azure Data Explorer からデータをコピーするには、コピー アク�
 
 Azure Data Explorer にデータをコピーするには、コピー アクティビティ シンクの type プロパティを **AzureDataExplorerSink** に設定します。 コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | 説明 | Required |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのシンクの **type** プロパティは、次のように設定する必要があります:**AzureDataExplorerSink** | はい |
 | ingestionMappingName | Kusto テーブルで事前作成済みの[マッピング](/azure/kusto/management/mappings#csv-mapping)の名前。 ソースから Azure Data Explorer に列をマッピングするには (CSV/JSON/Avro 形式など、[サポートされているすべてのソース ストアや形式](copy-activity-overview.md#supported-data-stores-and-formats)に適用されます)、コピー アクティビティの[列マッピング](copy-activity-schema-and-type-mapping.md) (名前で暗黙的に、または構成で明示的に) や Azure Data Explorer のマッピングを使用できます。 | いいえ |
+| additionalProperties | Azure Data Explorer Sink でまだ設定されていないインジェスト プロパティを指定する目的で使用できるプロパティ バッグ。 具体的には、インジェスト タグの指定に便利です。 詳細については [Azure Data Explore データ インジェスト ドキュメント](https://kusto.azurewebsites.net/docs/management/data-ingestion/index.html)でご覧ください。 | いいえ |
 
 **例:**
 
@@ -208,7 +209,8 @@ Azure Data Explorer にデータをコピーするには、コピー アクテ�
             },
             "sink": {
                 "type": "AzureDataExplorerSink",
-                "ingestionMappingName": "<optional Azure Data Explorer mapping name>"
+                "ingestionMappingName": "<optional Azure Data Explorer mapping name>",
+                "additionalProperties": {<additional settings for data ingestion>}
             }
         },
         "inputs": [
@@ -231,7 +233,7 @@ Azure Data Explorer にデータをコピーするには、コピー アクテ�
 
 プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)をご覧ください。
 

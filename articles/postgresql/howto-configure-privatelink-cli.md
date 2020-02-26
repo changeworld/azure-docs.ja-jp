@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 19dd0051985231a0274baf550755cc61782ce740
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: d982771d5c7ebc864991026e399e9648d333cc8f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281310"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425529"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-preview-using-cli"></a>CLI を使用して Azure Database for PostgreSQL 単一サーバー (プレビュー) 用のプライベート リンクを作成および管理する
 
@@ -131,7 +131,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 1. **[RDP ファイルのダウンロード]** を選択します。 リモート デスクトップ プロトコル ( *.rdp*) ファイルが作成され、お使いのコンピューターにダウンロードされます。
 
-1. ダウンロードした .rdp* ファイルを開きます。
+1. *downloaded.rdp* ファイルを開きます。
 
     1. メッセージが表示されたら、 **[Connect]** を選択します。
 
@@ -159,30 +159,31 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
     Non-authoritative answer:
     Name:    mydemopostgresserver.privatelink.postgres.database.azure.com
     Address:  10.1.3.4
+    ```
 
-3. Test the private link connection for the PostgreSQL server using any available client. In the example below I have used [Azure Data studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15) to do the operation.
+3. 使用可能な任意のクライアントを使用して、PostgreSQL サーバーのプライベートリンク接続をテストします。 次の例では、[Azure Data スタジオ](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15) を使用して操作を行いました。
 
-4. In **New connection**, enter or select this information:
+4. **新しい接続** で、この情報を入力または選択します。
 
-    | Setting | Value |
+    | 設定 | Value |
     | ------- | ----- |
-    | Server type| Select **PostgreSQL**.|
-    | Server name| Select *mydemopostgresserver.privatelink.postgres.database.azure.com* |
-    | User name | Enter username as username@servername which is provided during the PostgreSQL server creation. |
-    |Password |Enter a password provided during the PostgreSQL server creation. |
-    |SSL|Select **Required**.|
+    | サーバーの種類| **PostgreSQL** を選択します。|
+    | サーバー名| *mydemopostgresserver.privatelink.postgres.database.azure.com* の選択 |
+    | ユーザー名 | PostgreSQL サーバーの作成時に指定したusername@servernameユーザ名を入力します。 |
+    |Password |PostgreSQL サーバーの作成時に指定したパスワードを入力します。 |
+    |SSL|**必須**を選択します。|
     ||
 
-5. Select Connect.
+5. [接続] を選択します。
 
-6. Browse databases from left menu.
+6. 左側のメニューでデータベースを参照します。
 
-7. (Optionally) Create or query information from the postgreSQL server.
+7. (省略可能) 情報を作成するか、postgreSQL に対して情報のクエリを実行します。
 
-8. Close the remote desktop connection to myVm.
+8. myVM へのリモート デスクトップ接続を閉じます。
 
-## Clean up resources 
-When no longer needed, you can use az group delete to remove the resource group and all the resources it has: 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする 
+不要になったら、az group delete を使用して、リソース グループとそのすべてのリソースを削除できます。 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes 

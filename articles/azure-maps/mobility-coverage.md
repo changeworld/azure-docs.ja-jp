@@ -1,25 +1,25 @@
 ---
 title: モビリティ (輸送) の対象範囲 | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps のモビリティの対象範囲について説明します
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 06/05/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8dcbfe7a47dba5a1783d6010d41e33073bc0bb20
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 04804f28b2b0b5c45ed8f523d2f465f81b6ab151
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048918"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208252"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Azure Maps のモビリティ範囲
 
-Azure Maps では [Mobility Service](https://aka.ms/AzureMapsMobilityService) を利用することができます。 Mobility Service を使用すると、公共輸送機関、自転車シェアリング、スクーター シェアリングの機能を備えたアプリケーションの開発期間を短縮することができます。 このサービスには、マルチモーダルな旅行計画オプションでルート検索する機能が用意されています。 たとえば、公共輸送機関に関して、近くの駅や停留所、路線を検索したり、時刻表情報を取得したり、到着時刻をリアルタイムで取得したり、停留所を一覧表示したり、ルート案内を提供したりする機能が利用できます。 このサービスは、自動車、バイク、スクーターなど、シェアリングされた車両の静的な空き状況についての情報をリアルタイムに返します。 詳細でマルチモーダルなステップ バイ ステップの旅程とサービス アラートを、この API から取得することができます。
+Azure Maps では [Mobility Service](https://aka.ms/AzureMapsMobilityService) を利用することができます。 Mobility Service を使用すると、公共輸送機関、自転車シェアリング、スクーター シェアリングの機能を備えたアプリケーションの開発期間を短縮することができます。 たとえば、公共輸送機関に関して、近くの駅や停留所、路線を検索したり、時刻表情報を取得したり、到着時刻をリアルタイムで取得したり、停留所を一覧表示したり、ルート案内を一覧表示したりする機能が利用できます。 このサービスは、自動車、バイク、スクーターなど、シェアリングされた車両の静的な空き状況についての情報をリアルタイムに返します。 さらに、Mobility Service は、マルチモーダルな旅行計画オプションでルーティング機能を提供します。 マルチモーダルな旅行計画には、サイクリング、配車、および輸送のオプションがすべて 1 回の旅行に組み込まれています。 ユーザーは、詳細でマルチモーダルなステップ バイ ステップの旅程とサービス アラートにアクセスすることができます。
 
-Azure Maps は、すべての都市と国 (または地域) に対して同じレベルの情報と精度を備えているわけではありません。 輸送データを呼び出す機能は、都市によって異なります。 データには都市にサービスを提供するすべての公共輸送機関のオプションと機関が含まれているとは限りません。
+Azure Maps は、すべての都市と国 (または地域) に対して同じレベルの情報と精度を備えているわけではありません。 輸送データを呼び出す機能は、都市によって異なります。 また、データには都市にサービスを提供するすべての公共輸送機関のオプションと機関が含まれているとは限りません。
 
 次の表は、Azure Maps Mobility サービスの対象範囲情報を提供しています。
 

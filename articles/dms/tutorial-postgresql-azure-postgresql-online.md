@@ -1,7 +1,7 @@
 ---
-title: チュートリアル:オンラインで PostgreSQL を Azure Database for PostgreSQL に移行する
+title: チュートリアル:Azure CLI を介してオンラインで PostgreSQL を Azure Database for PostgreSQL に移行する
 titleSuffix: Azure Database Migration Service
-description: Azure Database Migration Service を使用して、オンプレミスの PostgreSQL から Azure Database for PostgreSQL にオンライン移行を実行する方法を説明します。
+description: CLI を介して、Azure Database Migration Service を使用して、オンプレミスの PostgreSQL から Azure Database for PostgreSQL にオンライン移行を実行する方法を説明します。
 services: dms
 author: HJToland3
 ms.author: jtoland
@@ -11,15 +11,15 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: ee5863497ce067d2ff056c3fc1c64b00d3004cd8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/17/2020
+ms.openlocfilehash: c9cea6041c7f4d91295072121c62ba028e5ad937
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76903923"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470940"
 ---
-# <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>チュートリアル:DMS を使用して PostgreSQL をオンラインで Azure Database for PostgreSQ に移行する
+# <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>チュートリアル:Azure CLI を介して DMS を使用してオンラインで PostgreSQL を Azure DB for PostgreSQL に移行する
 
 Azure Database Migration Service を使用して、最小限のダウンタイムでデータベースをオンプレミスの PostgreSQL インスタンスから [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) に移行できます。 つまり、アプリケーションにとって最小限のダウンタイムで移行を実現できます。 このチュートリアルでは、Azure Database Migration Service のオンライン移行アクティビティを使用して、**DVD Rental** サンプル データベースを PostgreSQL 9.6 のオンプレミス インスタンスから Azure Database for PostgreSQL に移行します。
 
@@ -46,8 +46,8 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
     また、オンプレミスの PostgreSQL のバージョンが、Azure Database for PostgreSQL のバージョンと一致する必要があります。 たとえば、PostgreSQL 9.5.11.5 は Azure Database for PostgreSQL 9.5.11 にのみ移行でき、 バージョン 9.6.7 には移行できません。
 
-* [Azure Database for PostgreSQL のインスタンスを作成します](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)。  
-* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure Virtual Network を作成します。これにより、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続が提供されます。 仮想ネットワークの作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
+* [Azure Database for PostgreSQL のインスタンスを作成](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)するか、[Azure Database for PostgreSQL - Hyperscale (Citus) サーバーを作成](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)します。
+* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure 仮想ネットワークを作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。 仮想ネットワークの作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
 
     > [!NOTE]
     > 仮想ネットワークのセットアップ中、Microsoft へのネットワーク ピアリングに ExpressRoute を使用する場合は、サービスのプロビジョニング先となるサブネットに、次のサービス [エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を追加してください。
@@ -100,7 +100,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 2. ターゲット環境に空のデータベース (Azure Database for PostgreSQL) を作成します。
 
-    データベースの接続と作成の詳細については、「[Azure Portal で Azure Database for PostgreSQL サーバーを作成する](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)」の記事を参照してください。
+    データベースの接続および作成方法の詳細については、「[Azure portal で Azure Database for PostgreSQL サーバーを作成する](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)」または「[Azure portal で Azure Database for PostgreSQL - Hyperscale (Citus) を作成する](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)」を参照してください。
 
 3. スキーマ ダンプ ファイルを復元して作成したターゲット データベースに、スキーマをインポートします。
 
@@ -189,6 +189,9 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
        ---------------  ------
        whl              dms
        ```
+
+      > [!IMPORTANT]
+      > 拡張機能のバージョンが 0.11.0 より上であることを確認します。
 
    * DMS でサポートされているすべてのコマンドを表示するには、次のコマンドを実行します。
 
@@ -374,7 +377,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 出力ファイルには、移行の進行状況を示すいくつかのパラメーターがあります。 たとえば、次の出力ファイルを参照してください。
 
-    ```
+  ```
     "output": [                                 Database Level
           {
             "appliedChanges": 0,        //Total incremental sync applied after full load
@@ -449,7 +452,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
       },
       "resourceGroup": "PostgresDemo",
       "type": "Microsoft.DataMigration/services/projects/tasks"
-    ```
+  ```
 
 ## <a name="cutover-migration-task"></a>一括移行タスク
 

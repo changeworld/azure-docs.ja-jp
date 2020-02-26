@@ -6,17 +6,19 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 02/18/2020
+ms.date: 02/19/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 6a045a55772d1d9266663571fc2ecc6911aa5125
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 2d931ed61cc3880a6158fd82f015e663ddb669c3
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442890"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485286"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Firewall とは
+
+![ICSA 認定資格](media/overview/icsa-cert-firewall-small.png)
 
 Azure Firewall は、Azure Virtual Network リソースを保護するクラウドベースのマネージド ネットワーク セキュリティ サービスです。 組み込みの高可用性とクラウドの無制限のスケーラビリティを備えた、完全にステートフルなサービスとしてのファイアウォールです。
 
@@ -92,9 +94,9 @@ FQDN のタグにより、ファイアウォール経由の既知の Azure サ�
 
 すべてのイベントは Azure Monitor と統合されます。そのため、ログをストレージ アカウントにアーカイブしたり、イベントをイベント ハブにストリーム配信したり、それらを Azure Monitor ログに送信したりできます。
 
-## <a name="compliance-certifications"></a>コンプライアンス認定
+## <a name="certifications"></a>認定
 
-Azure Firewall は、Payment Card Industry (PCI)、Service Organization Controls (SOC)、国際標準化機構 (ISO) に準拠しています。 詳細については、「[Azure Firewall のコンプライアンス認定資格](compliance-certifications.md)」を参照してください。
+Azure Firewall は、Payment Card Industry (PCI)、Service Organization Controls (SOC)、国際標準化機構 (ISO)、および ICSA Labs に準拠しています。 詳細については、「[Azure Firewall のコンプライアンス認定資格](compliance-certifications.md)」を参照してください。
 
 
 ## <a name="known-issues"></a>既知の問題
@@ -114,8 +116,8 @@ TCP/UDP 以外のプロトコル (ICMP など) に関するネットワーク �
 |Availability Zones は、デプロイ時にのみ構成できます。|Availability Zones は、デプロイ時にのみ構成できます。 ファイアウォールがデプロイされた後、Availability Zones を構成することはできません。|これは仕様です。|
 |受信接続での SNAT|DNAT に加えて、ファイアウォールのパブリック IP アドレスを使用した (受信) 接続は SNAT によっていずれかのファイアウォールのプライベート IP に変換されます。 対称的なルーティングを実現するために、現在このような要件が (アクティブ/アクティブ NVA に対しても) 適用されます。|HTTP/S の元の送信元を保持するには、[XFF](https://en.wikipedia.org/wiki/X-Forwarded-For) ヘッダーを使用することを検討します。 たとえば、ファイアウォールの直前に [Azure Front Door](../frontdoor/front-door-http-headers-protocol.md#front-door-service-to-backend) や [Azure Application Gateway](../application-gateway/rewrite-http-headers.md) などのサービスを使用します。 Azure Front Door とチェーンの一部としてファイアウォールに WAF を追加することもできます。
 |SQL の FQDN のフィルター処理がプロキシ モードでのみサポートされる (ポート 1433)|Azure SQL Database、Azure SQL Data Warehouse、Azure SQL Managed Instance の場合:<br><br>プレビュー期間中、SQL の FQDN のフィルター処理は、プロキシ モードでのみサポートされます (ポート 1433)。<br><br>Azure SQL IaaS の場合:<br><br>標準以外のポートを使っている場合は、アプリケーション ルールでそれらのポートを指定できます。|リダイレクト モードの SQL では (Azure 内から接続する場合の既定)、代わりに Azure Firewall ネットワーク ルールの一部として SQL サービス タグを使ってアクセスをフィルター処理できます。
-|TCP ポート 25 でアウトバウンド トラフィックが許可されない| TCP ポート 25 を使用するアウトバウンド SMTP 接続はブロックされます。 ポート 25 は主に、認証されていないメール配信で使用されます。 仮想マシンでは、これがプラットフォームの既定の動作となります。 詳細については、「[Azure でのアウトバウンド SMTP 接続に関する問題のトラブルシューティング](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)」を参照してください。 ただし、仮想マシンとは異なり、Azure Firewall でこの機能を有効にすることは現在できません。|SMTP のトラブルシューティング記事に記載されている推奨される方法に従ってメールを送信してください。 または、アウトバウンド SMTP アクセスを必要とする仮想マシンについては、ファイアウォールへの既定のルートから除外し、代わりにインターネットへの直接アウトバウンド アクセスを構成します。
-|アクティブ FTP はサポートされていない|Azure Firewall では、FTP ポート コマンドを使用した FTP バウンス攻撃から保護するために、アクティブ FTP が無効になっています。|代わりに、パッシブ FTP を使用できます。 その場合も、ファイアウォールで TCP ポート 20 と 21 を明示的に開く必要があります。
+|TCP ポート 25 でアウトバウンド トラフィックが許可されない| TCP ポート 25 を使用するアウトバウンド SMTP 接続はブロックされます。 ポート 25 は主に、認証されていないメール配信で使用されます。 仮想マシンでは、これがプラットフォームの既定の動作となります。 詳細については、「[Azure でのアウトバウンド SMTP 接続に関する問題のトラブルシューティング](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)」を参照してください。 ただし、仮想マシンとは異なり、Azure Firewall でこの機能を有効にすることは現在できません。|SMTP のトラブルシューティング記事に記載されている推奨される方法に従ってメールを送信してください。 または、アウトバウンド SMTP アクセスを必要とする仮想マシンをファイアウォールへの既定のルートから除外し、代わりにインターネットへの直接アウトバウンド アクセスを構成します。
+|アクティブ FTP がサポートされていない|Azure Firewall では、FTP ポート コマンドを使用した FTP バウンス攻撃から保護するために、アクティブ FTP が無効になっています。|代わりに、パッシブ FTP を使用できます。 その場合も、ファイアウォールで TCP ポート 20 と 21 を明示的に開く必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

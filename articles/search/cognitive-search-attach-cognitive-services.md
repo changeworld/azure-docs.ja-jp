@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 7ec18cab74d683e4547843f965d22026e7ba22aa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 254c912114e3f1c7a495f389bc6a6416cbde7e11
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461147"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472453"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Azure Cognitive Search で Cognitive Services リソースをスキルセットにアタッチする 
 
@@ -48,7 +48,7 @@ Azure Cognitive Search と Azure Cognitive Services は同一リージョン内�
 
 AI エンリッチメントのチュートリアルとクイック スタートの演習を完了するため、制限された無料の処理オプションを使用することができます。
 
-無料 (制限付きのエンリッチメント) リソースは、サブスクリプションごとに、1 日あたり 20 ドキュメントに制限されます。
+無料 (制限付きのエンリッチメント) リソースは、インデクサーごとに、1 日あたり 20 ドキュメントに制限されます。 インデクサーを削除および再作成して、カウンターをリセットすることができます。
 
 1. [データのインポート] ウィザードを開きます。
 

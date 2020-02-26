@@ -1,5 +1,5 @@
 ---
-title: Azure 仮想ネットワーク ピアリングを作成する - Resource Manager - 異なるサブスクリプション
+title: VNet ピアリングの作成 - 異なるサブスクリプション
 titlesuffix: Azure Virtual Network
 description: Resource Manager で作成されて異なる Azure サブスクリプションに存在する仮想ネットワーク間に仮想ネットワーク ピアリングを作成する方法を説明します。
 services: virtual-network
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: anavin
-ms.openlocfilehash: da85d8904fcd44788d6a87a22ea14d683982e333
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d085279167b498b13cfb79b97703cfdff7d6dd8a
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020014"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201766"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>仮想ネットワーク ピアリングを作成する - Resource Manager、異なるサブスクリプション
 

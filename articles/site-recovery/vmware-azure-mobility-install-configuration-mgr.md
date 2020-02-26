@@ -3,14 +3,14 @@ title: Azure Site Recovery でインストールのディザスター リカバ�
 description: Azure Site Recovery で、VMware/物理サーバーのディザスター リカバリー用のモビリティ サービスのインストールを自動化する方法。
 author: Rajeswari-Mamilla
 ms.topic: how-to
-ms.date: 12/22/2019
+ms.date: 2/5/2020
 ms.author: ramamill
-ms.openlocfilehash: 235b96cfd2da0c097bc576c63f5bd1c8ed224781
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f24d321e882024d324435498adf11694037547f7
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896014"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252229"
 ---
 # <a name="automate-mobility-service-installation"></a>モビリティ サービスのインストールを自動化する
 
@@ -18,8 +18,8 @@ ms.locfileid: "76896014"
 
 オンプレミスの VMware VM と物理サーバーのディザスター リカバリーのために Site Recovery を Azure に展開する場合、複製する各マシンに Mobility Service エージェントをインストールします。 モビリティサービスは、マシン上のデータ書き込みをキャプチャし、複製のために Site Recovery プロセスサーバーに転送します。 Mobility Service はいくつかの方法で展開できます。
 
-- **プッシュ インストール**:Azure portal でマシンのレプリケーションを有効にするときに、Site Recovery に Mobility Service エージェントをインストールさせます。
-- **手動インストール**:各マシンに Mobility Service を手動でインストールします。 プッシュ インストールと手動インストールの[詳細情報](vmware-physical-mobility-service-overview.md)を参照してください。
+- **プッシュ インストール**:Azure portal でマシンのレプリケーションを有効にする場合に、Site Recovery によってモビリティ サービス エージェントをインストールします。
+- **手動インストール**:各マシンにモビリティ サービスを手動でインストールします。 プッシュ インストールと手動インストールの[詳細情報](vmware-physical-mobility-service-overview.md)を参照してください。
 - **自動デプロイ**:Microsoft Endpoint Configuration Manager などのソフトウェア デプロイ ツールや、Intigua JetPatch などのサード パーティ ツールなどで、インストールを自動化します。
 
 インストールと更新を自動化することで、以下の場合の解決策が得られます。

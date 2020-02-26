@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 01/09/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 77eb54f5d7194f3006ce463fc5f905165bdfc659
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 0e7a814c1607b15e3af0e76a5ae6dfad1594a3b3
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833931"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77474227"
 ---
 ## <a name="limitations"></a>制限事項
 
 - 仮想マシン スケール セットは、現在、専用ホストではサポートされていません。
-- 初期リリースでは、次の VM シリーズがサポートされています。DSv3 と ESv3。 
+- 初期リリースでは、次の VM シリーズがサポートされています。DSv3、ESv3、FSv2、LSv2、MSv2。 
 
 ## <a name="create-a-host-group"></a>ホスト グループを作成する
 
@@ -54,7 +54,7 @@ ms.locfileid: "75833931"
 
 ## <a name="create-a-dedicated-host"></a>専用ホストを作成する
 
-次に、ホスト グループに専用ホストを作成します。 ホストの名前に加えて、ホストの SKU を指定する必要があります。 ホスト SKU では、専用ホストに対してサポートされている VM シリーズとハードウェアの世代がキャプチャされます。 次のホスト SKU 値がサポートされています。DSv3_Type1 と ESv3_Type1。
+次に、ホスト グループに専用ホストを作成します。 ホストの名前に加えて、ホストの SKU を指定する必要があります。 ホスト SKU では、専用ホストに対してサポートされている VM シリーズとハードウェアの世代がキャプチャされます。
 
 ホスト SKU の詳細と価格については、「[Azure 専用ホストの価格](https://aka.ms/ADHPricing)」を参照してください。
 

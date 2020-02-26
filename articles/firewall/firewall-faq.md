@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 01/29/2020
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: 8b55f31f12ab1057ac2e0f625a0285b6518cc44a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 39c08a568a60c905394eec23dd27d5dd32ff0112
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845776"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460469"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall に関する FAQ
 
@@ -125,11 +125,13 @@ Azure Firewall サービスの制限については、「[Azure サブスクリ�
 
 ## <a name="does-azure-firewall-outbound-snat-between-private-networks"></a>Azure Firewall で、プライベート ネットワーク間のアウトバウンド SNAT は実行されますか?
 
-宛先 IP アドレスが [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) のプライベート IP 範囲である場合、Azure Firewall は SNAT を行いません。 組織でプライベート ネットワークに対してパブリック IP アドレス範囲を使用している場合、Azure Firewall は、SNAT を使用して、トラフィックのアドレスを AzureFirewallSubnet のいずれかのファイアウォール プライベート IP アドレスに変換します。
+宛先 IP アドレスが [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) のプライベート IP 範囲である場合、Azure Firewall は SNAT を行いません。 組織でプライベート ネットワークに対してパブリック IP アドレス範囲を使用している場合、Azure Firewall は、SNAT を使用して、トラフィックのアドレスを AzureFirewallSubnet のいずれかのファイアウォール プライベート IP アドレスに変換します。 パブリック IP アドレス範囲の SNAT が**行われない**ように、Azure Firewall を構成することができます。 詳細については、「[Azure Firewall の SNAT プライベート IP アドレス範囲](snat-private-range.md)」を参照してください。
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>サポートされているネットワーク仮想アプライアンスに、トンネリング/チェーンが強制されますか。
 
-強制トンネリングは現在サポートされていません。 Azure Firewall には、インターネットへの直接接続が必要です。 AzureFirewallSubnet が BGP 経由のオンプレミス ネットワークへの既定のルートを学習する場合は、インターネットへの直接接続を保持するために、**NextHopType** の値を **Internet** に設定した 0.0.0.0/0 UDR でこれを上書きする必要があります。
+強制トンネリングがサポートされています。 詳細については、「[Azure Firewall 強制トンネリング (プレビュー)](forced-tunneling.md)」を参照してください。 
+
+Azure Firewall には、インターネットへの直接接続が必要です。 AzureFirewallSubnet が BGP 経由のオンプレミス ネットワークへの既定のルートを学習する場合は、インターネットへの直接接続を保持するために、**NextHopType** の値を **Internet** に設定した 0.0.0.0/0 UDR でこれを上書きする必要があります。
 
 使用する構成でオンプレミスのネットワークへの強制的なトンネリングが必要であり、インターネット上のアクセス先のターゲット IP プレフィックスを決定できる場合は、AzureFirewallSubnet 上のユーザー定義のルートを介して、次のホップとしてオンプレミスのネットワークに対してこれらの範囲を構成することができます。 または、BGP を使用してこれらのルートを定義することもできます。
 
@@ -166,7 +168,7 @@ Azure Firewall では、スケールの際により多くの仮想マシン イ�
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>ファイアウォールのスループットを増やすにはどうすればよいですか。
 
-Azure Firewall の初期スループット容量は 2.5 から 3 Gbps です。 現時点では、スケール アウトは CPU 使用率のみに基づいています。 一部のケースでは、ネットワーク ルールが CPU 使用率に大きな影響を与えないことから、ネットワーク ルールが設定されたファイアウォールだけは、スループットを向上させるためにスケールアップされません。 ファイアウォールに対してより高いスループットが必要な場合は、サポートに連絡して、ファイアウォールの初期スループット容量を増やしてください。
+Azure Firewall の初期スループット容量は 2.5 から 3 Gbps です。 現時点では、スケール アウトは CPU 使用率とスループットに基づいています。 一部のケースでは、ネットワーク ルールが CPU 使用率に大きな影響を与えないことから、ネットワーク ルールが設定されたファイアウォールだけは、スループットを向上させるためにスケールアップされません。 ファイアウォールに対してより高いスループットが必要な場合は、サポートに連絡して、ファイアウォールの初期スループット容量を増やしてください。
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Azure Firewall のスケールアウトにはどのくらいの時間がかかりますか。
 

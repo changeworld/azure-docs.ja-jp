@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 48d148256fe69bbdfd188f1d8472c2de80b0fa64
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: a49f641561aa7a293628e914c964020145e0ae62
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208371"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486431"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>チュートリアル:Azure Maps を使用した IoT 空間分析の実装
 
@@ -116,9 +116,9 @@ Azure Maps 空間分析に基づいてビジネス ロジックを実装する�
 
 ### <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-イベント データをログに記録するには、"ContosoRental" リソース グループに、データを BLOB として格納するための汎用 **v2storage** アカウントを作成します。 ストレージ アカウントを作成するには、「[ストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)」の手順に従います。 次に、BLOB を格納するためのコンテナーを作成する必要があります。 これを行うには、以下の手順に従います。
+イベント データをログに記録するには、すべての Azure Storage サービス (BLOB、ファイル、キュー、テーブル、ディスク) へのアクセスを提供する汎用 **v2storage** を作成します。  データを BLOB として格納するには、このストレージ アカウントを "ContosoRental" リソース グループに配置する必要があります。 ストレージ アカウントを作成するには、「[ストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)」の手順に従います。 次に、BLOB を格納するためのコンテナーを作成する必要があります。 これを行うには、以下の手順に従います。
 
-1. 自分のストレージ アカウントで、コンテナーに移動します。
+1. 自分の "ストレージ アカウント - BLOB、ファイル、テーブル、キュー" で、[コンテナー] に移動します。
 
     ![BLOB](./media/tutorial-iot-hub-maps/blobs.png)
 
@@ -155,6 +155,9 @@ IoT ハブに接続するには、デバイスを登録する必要がありま�
     
     ![register-device](./media/tutorial-iot-hub-maps/register-device.png)
 
+3. デバイスの **[プライマリ接続文字列]** を後の手順で使用するために保存します。後の手順では、プレースホルダーをこの接続文字列に変更する必要があります。
+
+    ![add-device](./media/tutorial-iot-hub-maps/connectionString.png)
 
 ## <a name="upload-geofence"></a>ジオフェンスをアップロードする
 
@@ -188,7 +191,7 @@ Azure Maps の Data Upload API を使用してジオフェンスをアップロ�
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-6. 自分の状態 URI をコピーし、自分の Azure Maps アカウントのサブスクリプション キーを値として備える `subscription-key` パラメーターを追加します。 状態 URI の形式は次のようになります。
+6. 状態 URI をコピーし、それに `subscription-key` を追加します。 Azure Maps アカウントのサブスクリプション キーの値を `subscription-key` パラメーターに割り当てます。 ステータス URI の形式は次のようになります。`{Subscription-key}` は実際のサブスクリプション キーに置き換えられます。
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
@@ -214,11 +217,11 @@ Azure Functions は、コンピューティング インフラストラクチャ
 
 その後、すべての関連イベント情報が BLOB ストアに保持されます。 下の手順 5 は、そのようなロジックを実装する実行可能コードを示しています。 以下の手順に従って、BLOB ストレージ アカウントの BLOB コンテナーにデータ ログを送信する Azure 関数を作成し、それに Event Grid サブスクリプションを追加します。
 
-1. Azure portal のダッシュボードで、[リソースの作成] を選択します。 使用可能なリソースの種類の一覧から **[Compute]** を選択し、 **[Function App]** を選択します。
+1. Azure portal のダッシュボードで、[リソースの作成] を選択します。 使用可能なリソースの種類の一覧から **[Compute]** を選択し、 **[関数アプリ]** を選択します。
 
     ![create-resource](./media/tutorial-iot-hub-maps/create-resource.png)
 
-2. **[関数アプリ]** 作成ページで、関数アプリに名前を付けます。 **[リソース グループ]** で **[既存のものを使用]** を選択し、ドロップダウン リストから "ContosoRental" を選択します。 [ランタイム スタック] には ".NET Core" を選択します。 **[ストレージ]** で **[既存のものを使用]** を選択し、ドロップダウン リストから "contosorentaldata" を選択して、 **[レビュー + 作成]** を選択します。
+2. **[関数アプリ]** 作成ページで、関数アプリに名前を付けます。 **[リソース グループ]** で **[既存のものを使用]** を選択し、ドロップダウン リストから "ContosoRental" を選択します。 [ランタイム スタック] には ".NET Core" を選択します。 **[ホスティング]** の **[ストレージ アカウント]** で、前の手順のストレージ アカウント名を選択します。 前の手順では、ストレージ アカウントに **v2storage** という名前を付けました。  その後、 **[確認および作成]** を選択します。
     
     ![create-app](./media/tutorial-iot-hub-maps/rental-app.png)
 
@@ -233,10 +236,12 @@ Azure Functions は、コンピューティング インフラストラクチャ
 5. **Azure Event Grid トリガー**が含まれているテンプレートを選択します。 プロンプトが表示されたら拡張機能をインストールし、関数に名前を付け、 **[作成]** を選択します。
 
     ![function-template](./media/tutorial-iot-hub-maps/eventgrid-funct.png)
+    
+    **Azure Event Hub トリガー**と **Azure Event Grid トリガー**のアイコンは似ています。 **Azure Event Grid トリガー**を選択していることを確認します。
 
-6. [C# コード](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx)を自分の関数にコピーし、 **[保存]** をクリックします。
+6. [C# コード](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx)を自分の関数にコピーします。
  
-7. C# スクリプト内で、次のパラメーターを置き換えます。
+7. C# スクリプト内で、次のパラメーターを置き換えます。 **[保存]** をクリックします。 まだ **[実行]** をクリックしないでください。
     * **SUBSCRIPTION_KEY** を、自分の Azure Maps アカウントのプライマリ サブスクリプション キーに置き換えます。
     * **UDID** を、自分がアップロードしたジオフェンスの udId に置き換えます。 
     * スクリプト内の **CreateBlobAsync** 関数では、データ ストレージ アカウントでイベントごとに BLOB を作成します。 **ACCESS_KEY**、**ACCOUNT_NAME**、**STORAGE_CONTAINER_NAME** を、自分のストレージ アカウントのアクセス キー、アカウント名、データ ストレージ コンテナーに置き換えます。
@@ -245,7 +250,7 @@ Azure Functions は、コンピューティング インフラストラクチャ
     
     ![add-event-grid](./media/tutorial-iot-hub-maps/add-egs.png)
 
-11. サブスクリプションの詳細を入力します。 **[イベント サブスクリプションの詳細]** で自分のサブスクリプションに名前を付け、[イベント スキーマ] で [イベント グリッド スキーマ] を選択します。 **[トピックの詳細]** で [トピックの種類] として [Azure IoT Hub Accounts]\(Azure IoT Hub アカウント\) を選択します。 リソース グループの作成に使用したのと同じサブスクリプションを選択し、[リソース グループ] として "ContosoRental" を選択します。 "リソース" として作成した IoT ハブを選択します。 [イベントの種類] として **[Device Telemetry]\(デバイス テレメトリ\)** を選択します。 これらのオプションを選択すると、[トピックの種類] が [IoT Hub] に自動的に変更されます。
+11. サブスクリプションの詳細を入力します。 **[イベント サブスクリプションの詳細]** で自分のサブスクリプションに名前を付けます。 [イベント スキーマ] では、[イベント グリッド スキーマ] を選択します。 **[トピックの詳細]** で [トピックの種類] として [Azure IoT Hub Accounts]\(Azure IoT Hub アカウント\) を選択します。 リソース グループの作成に使用したのと同じサブスクリプションを選択し、[リソース グループ] として "ContosoRental" を選択します。 "リソース" として作成した IoT ハブを選択します。 [イベントの種類] として **[Device Telemetry]\(デバイス テレメトリ\)** を選択します。 これらのオプションを選択すると、[トピックの種類] が [IoT Hub] に自動的に変更されます。
 
     ![event-grid-subscription](./media/tutorial-iot-hub-maps/af-egs.png)
  
@@ -263,7 +268,7 @@ Event Grid サブスクリプションを Azure 関数に追加すると、IoT H
 
 ## <a name="send-telemetry-data-to-iot-hub"></a>テレメトリ データを IoT Hub に送信する
 
-Azure 関数が起動したら、テレメトリ データを IoT Hub に送信します。それにより、テレメトリ データは Event Grid にルーティングされます。 C# アプリケーションを使用して、レンタカーの車載デバイスの位置情報データをシミュレートします。 アプリケーションを実行するには、自分の開発用マシン上に .NET Core SDK 2.1.0 以上が必要です。 以下の手順に従って、シミュレートされたテレメトリ データを IoT Hub に送信します。
+Azure 関数が起動したら、テレメトリ データを IoT Hub に送信します。それにより、テレメトリ データは Event Grid にルーティングされます。 C# アプリケーションを使用して、レンタカーの車載デバイスの位置情報データをシミュレートしましょう。 アプリケーションを実行するには、自分の開発用マシン上に .NET Core SDK 2.1.0 以上が必要です。 以下の手順に従って、シミュレートされたテレメトリ データを IoT Hub に送信します。
 
 1. [rentalCarSimulation](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/tree/master/src/rentalCarSimulation) C# プロジェクトをダウンロードします。 
 

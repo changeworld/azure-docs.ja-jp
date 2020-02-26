@@ -1,21 +1,21 @@
 ---
 title: Azure Container Registry からコンテナー イメージをデプロイする
-description: Azure コンテナー レジストリのコンテナー イメージを使用して、Azure Container Instances のコンテナーをデプロイする方法を紹介します。
+description: Azure コンテナー レジストリからコンテナー イメージをプルして、Azure Container Instances にコンテナーをデプロイする方法について説明します。
 services: container-instances
 ms.topic: article
-ms.date: 12/30/2019
+ms.date: 02/18/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 0d39c83646357cf9426239d28e445c4791ddceb0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bcb1b02b8a2605a42acbe7f33973bef315ca6f54
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981687"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468917"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Container Registry から Azure Container Instances へのデプロイ
 
-[Azure Container Registry](../container-registry/container-registry-intro.md) は、プライベート Docker コンテナー イメージを格納するために使用される、Azure ベースの管理されたコンテナー レジストリ サービスです。 この記事では、Azure コンテナー レジストリ に格納されているコンテナー イメージを Azure Container Instances にデプロイする方法について説明します。
+[Azure Container Registry](../container-registry/container-registry-intro.md) は、プライベート Docker コンテナー イメージを格納するために使用される、Azure ベースの管理されたコンテナー レジストリ サービスです。 この記事では、Azure Container Instances にデプロイするときに、Azure コンテナー レジストリに格納されているコンテナー イメージをプルする方法について説明します。 レジストリ アクセスを構成するには、Azure Active Directory サービス プリンシパルとパスワードを作成し、ログイン資格情報を Azure キー コンテナーに格納することをお勧めします。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,6 +28,9 @@ ms.locfileid: "75981687"
 "ヘッドレス" サービスとアプリケーションへのアクセスを提供する運用シナリオでは、[サービス プリンシパル](../container-registry/container-registry-auth-service-principal.md)を使用して、レジストリ アクセスを構成することをお勧めします。 サービス プリンシパルを使用すると、コンテナー イメージに[ロールベースのアクセス制御](../container-registry/container-registry-roles.md)を提供できます。 たとえば、レジストリに対するプルのみのアクセス権を持つサービス プリンシパルを設定できます。
 
 Azure Container Registry は、追加の[認証オプション](../container-registry/container-registry-authentication.md)を提供します。
+
+> [!NOTE]
+> コンテナー グループのデプロイ時に、イメージをプルするために、同じコンテナー グループに構成されている[マネージド ID](container-instances-managed-identity.md) を使用して Azure Container Registry に対して認証を行うことはできません。
 
 次のセクションでは、Azure キー コンテナーとサービス プリンシパルを作成し、サービス プリンシパルの資格情報をコンテナーに格納します。 
 

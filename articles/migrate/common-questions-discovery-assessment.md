@@ -2,21 +2,22 @@
 title: よく寄せられる質問 - Azure Migrate での検出、評価、および依存関係分析
 description: Azure Migrate での検出、評価、および依存関係分析に関してよく寄せられる質問への回答を取得します。
 ms.topic: conceptual
-ms.date: 12/29/2019
-ms.openlocfilehash: 201d67c38e9583de16cb6075cc1c4bf826c204fd
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/17/2020
+ms.openlocfilehash: 2ae534e50cbee3ebd17d703f957aa7200460dbfe
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77059489"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426294"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>検出、評価、および依存関係分析に関してよく寄せられる質問
 
-この記事では、Azure Migrate の検出、評価、および依存関係分析に関してよく寄せられる質問に回答します。 この記事の内容についてさらに質問がある場合は、[Azure Migrate フォーラム](https://aka.ms/AzureMigrateForum)に投稿してください。 その他の質問については、次の記事を確認してください：
+この記事では、Azure Migrate の検出、評価、および依存関係分析に関してよく寄せられる質問に回答します。 その他の質問については、次の記事を確認してください。
 
 - Azure Migrate に関する[一般的な質問](resources-faq.md)。
 - Azure Migrate アプライアンスに関する[一般的な質問](common-questions-appliance.md)。
 - サーバー移行に関する[質問](common-questions-server-migration.md)
+- [Azure Migrate フォーラム](https://aka.ms/AzureMigrateForum)に質問を投稿してください。
 
 
 

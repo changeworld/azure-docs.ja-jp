@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 01/13/2020
+ms.date: 02/18/2020
 ms.author: juliako
-ms.openlocfilehash: e457fbe5b8dd23c93110fb8ccc7d8857128de82c
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 245eabdf4d77682c87062c2581239a554112d748
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169375"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468764"
 ---
 # <a name="upload-and-index-your-videos"></a>ビデオのアップロードとインデックス作成  
 
@@ -47,7 +47,7 @@ Video Indexer API でビデオをアップロードする場合、次のアッ�
 
     プライベート URL の場合は、要求でアクセス トークンが提供される必要があります。
 - URL では、Web ページ (`www.youtube.com` へのリンクなど) ではなく、有効なメディア ファイルを指す必要があります。
-- 1 分あたり最大 60 本の映画をアップロードできます。
+- 有料アカウントでは、1 分あたり最大 50 個のムービーをアップロードできます。試用版アカウントでは、1 分あたり最大 5 個のムービーです。
 
 > [!Tip]
 > .NET Framework バージョン 4.6.2 以上を使用することをお勧めします。 これは、それ以前の .NET Framework では既定で TLS 1.2 に設定されていないためです。
@@ -93,15 +93,15 @@ Video Indexer で使用できるファイル形式の一覧については、「
 - インデックス状態の変更: 
     - プロパティ:    
     
-        |Name|説明|
+        |名前|説明|
         |---|---|
         |id|ビデオ ID|
-        |状態|ビデオの状態|  
+        |state|ビデオの状態|  
     - 例: https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
 - ビデオで特定された人物:
   - Properties
     
-      |Name|説明|
+      |名前|説明|
       |---|---|
       |id| ビデオ ID|
       |faceId|ビデオ インデックスに表示される顔 ID|
@@ -110,7 +110,7 @@ Video Indexer で使用できるファイル形式の一覧については、「
         
     - 例: https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
-##### <a name="notes"></a>メモ
+##### <a name="notes"></a>Notes
 
 - Video Indexer では、元の URL で指定された既存のすべてのパラメーターが返されます。
 - 指定される URL は、エンコードする必要があります。
@@ -123,6 +123,10 @@ Video Indexer で使用できるファイル形式の一覧については、「
 - `VideoOnly` – ビデオのみを使用 (オーディオは無視) して、分析情報のインデックス作成と抽出を行います
 - `Default` – オーディオとビデオの両方を使用して、分析情報のインデックス作成と抽出を行います
 - `DefaultWithNoiseReduction` – オーディオ ストリームにノイズ低減アルゴリズムを適用しながら、オーディオとビデオの両方からインデックス作成と抽出を行います
+
+> [!NOTE]
+> Video Indexer では、最大 2 つのオーディオ トラックがカバーされます。 ファイル内にこれより多いオーディオ トラックがある場合、それらは 1 つのトラックとして扱われます。<br/>
+トラックに個別にインデックスを付ける場合は、関連するオーディオ ファイルを抽出し、それに `AudioOnly` とインデックスを付ける必要があります。
 
 料金は、選択したインデックス作成オプションによって異なります。  
 
@@ -348,6 +352,7 @@ public class AccountContractSlim
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|指定されたアカウントで既に同じビデオの処理が進行中です。|
 |400|VIDEO_ALREADY_FAILED|指定されたアカウントで 2 時間以内に同じビデオの処理に失敗しました。 API クライアントは、ビデオを再アップロードする前に少なくとも 2 時間待つ必要があります。|
+|429||試用版アカウントでは、1 分あたり 5 回のアップロードが許可されます。 有料アカウントでは、1 分あたり 50 回のアップロードが許可されます。|
 
 ## <a name="next-steps"></a>次のステップ
 

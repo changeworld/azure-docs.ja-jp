@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 846819c3a05baf4ef1174d4e086f09893e834b2a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: fdc7d9fce3ebce4603369262f164ba72b1e39499
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850726"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484317"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー フロー
 
@@ -81,10 +81,8 @@ Azure portal では、[ユーザー フローの新しいバージョン](user-f
 
 これらのいずれの場合でも、メール アドレスが検証される保証はありません。 テナント管理者は、ローカル アカウントの基本ポリシーで電子メールの検証を無効にできます。 メール アドレスの検証が有効になっている場合でも、アドレスがソーシャル ID プロバイダーから提供されているもので、変更されていない場合は、検証されません。
 
-**otherMails** プロパティと **signInNames** プロパティのみが Active Directory Graph API を介して公開されます。 強力な認証の詳細プロパティ内のメール アドレスは使用できません。
+**otherMails** プロパティと **signInNames** プロパティのみが Microsoft Graph API を介して公開されます。 強力な認証の詳細プロパティ内のメール アドレスは使用できません。
 
 ## <a name="next-steps"></a>次のステップ
 
 推奨されるユーザー フローを作成する手順については、[チュートリアル:ユーザー フローの作成](tutorial-create-user-flows.md)の指示に従います。
-
-
