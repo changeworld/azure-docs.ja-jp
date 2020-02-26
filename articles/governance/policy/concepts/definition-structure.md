@@ -3,12 +3,12 @@ title: ポリシー定義の構造の詳細
 description: ポリシー定義を使用し、組織の Azure リソースの規則を確立する方法について説明します。
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: b98702161753a996cd8a6751670308a78dc36b7c
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: d30097badd3ab9ee5a328f17d0e3e91254a89185
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169764"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462004"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -111,6 +111,12 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 - `metadata`:Azure portal によって主に使用されるサブプロパティを定義して、ユーザー フレンドリな情報を表示します。
   - `description`:パラメーターが何に使用されるかの説明。 許可される値の例を提示するために使用できます。
   - `displayName`:ポータル内に表示されるパラメーターのフレンドリ名。
+  - `version`:(省略可) ポリシー定義の内容のバージョンに関する詳細を追跡します。
+
+    > [!NOTE]
+    > Azure Policy サービスは、`version`、`preview`、`deprecated` の各プロパティを使用して、組み込みのポリシー定義に対する変更のレベルや取り組み、状態を伝えます。 `version` の形式は `{Major}.{Minor}.{Patch}` です。 特定の状態 (_deprecated_、_preview_ など) は、`version` プロパティに追加されるほか、別のプロパティに **boolean** として追加されます。
+
+  - `category`:(省略可) ポリシー定義が表示される Azure portal 内のカテゴリを指定します。
   - `strongType`:(省略可能) ポータル経由でポリシー定義を割り当てるときに使用されます。 コンテキスト対応の一覧を提供します。 詳しくは、[strongType](#strongtype) に関するページをご覧ください。
   - `assignPermissions`:(省略可能) ポリシーの割り当て中に Azure portal にロールの割り当てを作成させるには、_true_ に設定します。 このプロパティは、割り当てスコープ外でアクセス許可を割り当てたい場合に便利です。 ロールの割り当ては、ポリシーのロール定義ごと (またはイニシアチブのすべてのポリシーのロール定義ごとに) 1 つあります。 パラメーター値は、有効なリソースまたはスコープである必要があります。
 - `defaultValue`:(省略可能) 値が指定されていない場合、割り当ての中でパラメーターの値を設定します。
@@ -322,7 +328,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 **value** は、サポートされる任意の[条件](#conditions)と組み合わせられます。
 
 > [!WARNING]
-> _テンプレート関数_ 結果がエラーの場合、ポリシーの評価は失敗します。 評価の失敗は、暗黙的な **deny** です。 詳細については、「[テンプレート エラーの回避](#avoiding-template-failures)」を参照してください。
+> _テンプレート関数_の結果がエラーの場合、ポリシーの評価は失敗します。 評価の失敗は、暗黙的な **deny** です。 詳細については、「[テンプレート エラーの回避](#avoiding-template-failures)」を参照してください。
 
 #### <a name="value-examples"></a>値の例
 
@@ -366,7 +372,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 #### <a name="avoiding-template-failures"></a>テンプレート エラーの回避
 
-**value** で _テンプレート関数_ を使用することにより、入れ子になった多数の複雑な関数が可能になります。 _テンプレート関数_ の結果がエラーの場合、ポリシーの評価は失敗します。 評価の失敗は、暗黙的な **deny** です。 特定のシナリオでエラーが発生する **value** の例は、以下のとおりです。
+**value** で_テンプレート関数_を使用することにより、入れ子になった多数の複雑な関数が可能になります。 _テンプレート関数_の結果がエラーの場合、ポリシーの評価は失敗します。 評価の失敗は、暗黙的な **deny** です。 特定のシナリオでエラーが発生する **value** の例は、以下のとおりです。
 
 ```json
 {

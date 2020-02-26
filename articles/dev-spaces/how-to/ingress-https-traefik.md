@@ -5,12 +5,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Azure Dev Spaces をカスタム traefik イングレス コントローラーを使用するように構成し、そのイングレス コントローラーを使用して HTTPS を構成する方法を説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: db9afc3a5e33d1a12246c2af80428137043aa242
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4fc9dfbb4c437210de3ab9a88aafca2680dd363c
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438483"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486187"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>カスタム traefik イングレス コントローラーの使用と HTTPS の構成
 
@@ -53,6 +53,13 @@ traefik イングレス コントローラー用に Kubernetes 名前空間を�
 kubectl create ns traefik
 helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --version 1.85.0
 ```
+
+> [!NOTE]
+> 上の例では、イングレス コントローラーのパブリック エンドポイントを作成します。 代わりに、イングレス コントローラーのプライベート エンドポイントを使用する必要がある場合は、*helm install* コマンドに *--set service.annotations."service\\.beta\\.kubernetes\\.io/azure-load-balancer-internal"=true* パラメーターを追加します。
+> ```console
+> helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --set service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.85.0
+> ```
+> このプライベート エンドポイントは、AKS クラスターがデプロイされている仮想ネットワーク内で公開されます。
 
 [kubectl get][kubectl-get] を使用して、traefik イングレス コントローラー サービスの IP アドレスを取得します。
 
@@ -120,7 +127,7 @@ azds space select -n dev -y
 `helm install` を使用してサンプル アプリケーションをデプロイします。
 
 ```console
-helm install bikesharing . --dependency-update --namespace dev --atomic
+helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
 ```
 
 サンプル アプリケーションは、上記の例では、*dev* 名前空間にデプロイされます。

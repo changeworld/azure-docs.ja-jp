@@ -1,20 +1,20 @@
 ---
 title: ラスター マップ上にカスタム データをレンダリングする | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps の静的画像サービスを使用して、ラスター マップ上にカスタム データをレンダリングする方法について説明します。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/23/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f036847a9d46231d65d150cd4e0a76471d1ad612
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 78068a8deda68434daaeb18cc994099d74d9ccdf
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766020"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209955"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>ラスター マップ上にカスタム データをレンダリングする
 
@@ -43,7 +43,7 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
 
 1. 要求を格納するコレクションを作成します。 Postman アプリ内で **[新規]** を選択します。 **[新規作成]** ウィンドウで **[コレクション]** を選択します。 コレクションに名前を付け、 **[作成]** ボタンを選択します。 
 
-2. 要求を作成するには、 **[新規]** をもう一度選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 プッシュピンの **[要求名]** を入力します。 前の手順で要求の保存場所として作成したコレクションを選択し、 **[保存]** を選択します。
+2. 要求を作成するには、 **[新規]** をもう一度選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 プッシュピンの **[要求名]** を入力します。 前の手順で要求の保存場所として作成したコレクションを選択します。 次に、 **[保存]** を選択します。
     
     ![Postman での要求の作成](./media/how-to-render-custom-data/postman-new.png)
 
@@ -148,7 +148,7 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-6. udId を取得するには、Postman アプリで新しいタブを開き、[ビルダー] タブで GET HTTP メソッドを選択し、状態 URI で GET 要求を行います。 データのアップロードが成功した場合は、応答本文で udId が返されます。 udId をコピーします。
+6. udId を取得するには、Postman アプリで新しいタブを開きます。 [builder]\(ビルダー\) タブで GET HTTP メソッドを選択します。状態 URI で GET 要求を行います。 データのアップロードが成功した場合は、応答本文で udId が返されます。 udId をコピーします。
 
    ```JSON
    {

@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/18/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7f0218ee701f60caa7df75bfe749a41d69ff3dba
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 409e73f05366065f1c4159e9f1cd7e5bf8bb5ceb
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500039"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486245"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Azure Virtual Machines における SQL Server のパフォーマンスに関するガイドライン
 
@@ -40,7 +40,7 @@ Azure Virtual Machines で SQL Server の最適なパフォーマンスを実現
 
 | 領域 | 最適化 |
 | --- | --- |
-| [VM サイズ](#vm-size-guidance) | - [E4S_v3](../sizes-general.md) 以上や [DS12_v2](../sizes-memory.md#dsv2-series-11-15) 以上などの vCPU が 4 個以上の VM サイズを使用します。<br/><br/> - [Es、Eas、Ds、および Das シリーズ](../sizes-general.md)は、OLTP ワークロードのパフォーマンスに必要な最適なメモリと vCPU の比率を提供します。 <br/><br/> - [M シリーズ](../sizes-general.md)は、ミッション クリティカルなパフォーマンスに必要な最も高いメモリと vCPU の比率を提供し、データ ウェアハウスのワークロードに最適です。 <br/><br/> - [アプリケーションのパフォーマンス要件チェックリスト](../premium-storage-performance.md#application-performance-requirements-checklist)に従ってピーク時のターゲット ワークロードの [IOPS](../premium-storage-performance.md#iops)、[スループット](../premium-storage-performance.md#throughput)、および[待機時間](../premium-storage-performance.md#latency)の要件を収集した後、ワークロードのパフォーマンス要件にスケーリングできる [VM サイズ](../sizes-general.md)を選択します。|
+| [VM サイズ](#vm-size-guidance) | - [E4S_v3](../../ev3-esv3-series.md) 以上や [DS12_v2](../../dv2-dsv2-series-memory.md) 以上などの vCPU が 4 個以上の VM サイズを使用します。<br/><br/> - [Es、Eas、Ds、および Das シリーズ](../../sizes-general.md)は、OLTP ワークロードのパフォーマンスに必要な最適なメモリと vCPU の比率を提供します。 <br/><br/> - [M シリーズ](../../m-series.md)は、ミッション クリティカルなパフォーマンスに必要な最も高いメモリと vCPU の比率を提供し、データ ウェアハウスのワークロードに最適です。 <br/><br/> - [アプリケーションのパフォーマンス要件チェックリスト](../premium-storage-performance.md#application-performance-requirements-checklist)に従ってピーク時のターゲット ワークロードの [IOPS](../premium-storage-performance.md#iops)、[スループット](../premium-storage-performance.md#throughput)、および[待機時間](../premium-storage-performance.md#latency)の要件を収集した後、ワークロードのパフォーマンス要件にスケーリングできる [VM サイズ](../sizes-general.md)を選択します。|
 | [Storage](#storage-guidance) | - TPC-E および TPC_C ベンチマークによる Azure VM 上の SQL Server のパフォーマンスの詳細なテストについては、[OLTP のパフォーマンスの最適化](https://techcommunity.microsoft.com/t5/SQL-Server/Optimize-OLTP-Performance-with-SQL-Server-on-Azure-VM/ba-p/916794)に関するブログを参照してください。 <br/><br/> - 最適な価格/パフォーマンス比の利点を得るために [Premium SSD](https://techcommunity.microsoft.com/t5/SQL-Server/Optimize-OLTP-Performance-with-SQL-Server-on-Azure-VM/ba-p/916794) を使用します。 データ ファイルに対しては[読み取り専用キャッシュ](../premium-storage-performance.md#disk-caching)を、ログ ファイルに対してはキャッシュなしを構成します。 <br/><br/> - ワークロードで 1 ミリ秒未満のストレージ待機時間が必要な場合は、[Ultra ディスク](../disks-types.md#ultra-disk)を使用します。 <br/><br/> - ディスクの種類を選択する前に、[アプリケーションを監視](../premium-storage-performance.md#application-performance-requirements-checklist)することによって、SQL Server データ、ログ、および Temp DB ファイルのストレージ待機時間の要件を収集します。 1 ミリ秒未満のストレージ待機時間が必要な場合は Ultra ディスクを使用し、それ以外の場合は Premium SSD を使用します。 短い待機時間がログ ファイルにのみ必要であり、データ ファイルには必要ない場合は、ログ ファイルに対してのみ、必要な IOPS とスループットのレベルで [Ultra ディスクをプロビジョニング](../disks-enable-ultra-ssd.md)します。 <br/><br/> -  [Premium ファイル共有](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md)は、SQL Server フェールオーバー クラスター インスタンスの共有ストレージとして推奨されます。 Premium ファイル共有ではキャッシュがサポートされず、Premium SSD ディスクと比較して提供されるパフォーマンスが制限されます。 スタンドアロンの SQL インスタンスには、Premium ファイル共有より Premium SSD マネージド ディスクを選択します。ただし、メンテナンスの容易性や柔軟なスケーラビリティのために、フェールオーバー クラスター インスタンスの共有ストレージには Premium ファイル共有を利用してください。 <br/><br/> - 標準ストレージは、開発とテストの目的またはバックアップ ファイルにのみ推奨されます。運用ワークロードには使用しないでください。 <br/><br/> - [ストレージ アカウント](../../../storage/common/storage-create-storage-account.md)と SQL Server VM を同じリージョンに保持します。<br/><br/> - ストレージ アカウントで [Azure geo 冗長ストレージ](../../../storage/common/storage-redundancy.md) (geo レプリケーション) を無効にします。  |
 | [ディスク](#disks-guidance) | - 少なくとも 2 つの [Premium SSD ディスク](../disks-types.md#premium-ssd) (ログ ファイル用に 1 つとデータ ファイル用に 1 つ) を使用します。 <br/><br/> - 1 ミリ秒未満の IO 待機時間が必要なワークロードの場合は、M シリーズの書き込みアクセラレータを有効にし、Es および DS シリーズでの Ultra SSD ディスクの使用を考慮します。 <br/><br/> - データ ファイルをホストするディスクで[読み取り専用キャッシュ](../premium-storage-performance.md#disk-caching)を有効にします。<br/><br/> - [SQL Server データ、ログ、および TempDB ファイルのストレージを構成](virtual-machines-windows-sql-server-storage-configuration.md)するときに、ワークロードに必要な追加の 20% Premium IOPS/スループット容量を追加します。 <br/><br/> - データベース ストレージまたはログに、オペレーティング システム ディスクまたは一時ディスクを使用することは避けてください。<br/><br/> - ログ ファイルをホストするディスクでは、キャッシュを有効にしないでください。  **重要**:Azure VM ディスクのキャッシュ設定を変更するときには、SQL Server サービスを停止してください。<br/><br/> - 複数の Azure データ ディスクをストライプして、ストレージ スループットを向上させます。<br/><br/> - ドキュメントに記載されている割り当てサイズでフォーマットします。 <br/><br/> - ミッション クリティカルな SQL Server ワークロードのために、TempDB をローカル SSD の `D:\` ドライブに配置します (適切な VM サイズを選択した後に行います)。 Azure portal または Azure クイックスタート テンプレートから VM を作成し、[ローカル ディスクに Temp DB を配置する](https://techcommunity.microsoft.com/t5/SQL-Server/Announcing-Performance-Optimized-Storage-Configuration-for-SQL/ba-p/891583)場合は、それ以上のアクションは必要ありません。その他のすべての場合は、再起動後の障害を防止するために、[SSD を使用した TempDB の格納](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)のブログにある手順に従ってください。 ローカル ドライブの容量が Temp DB サイズに対して十分でない場合は、[読み取り専用キャッシュ](../premium-storage-performance.md#disk-caching)を備えた Premium SSD ディスク上に[切り離された](../premium-storage-performance.md)記憶域プールに Temp DB を配置します。 |
 | [I/O](#io-guidance) |- データベース ページの圧縮を有効にします。<br/><br/> - データ ファイルの瞬時初期化を有効にします。<br/><br/> - データベースの自動拡張を制限します。<br/><br/> - データベースの自動圧縮を無効にします。<br/><br/> - システム データベースも含め、すべてのデータベースをデータ ディスクに移動します。<br/><br/> - SQL Server エラー ログとトレース ファイルのディレクトリをデータ ディスクに移動します。<br/><br/> - 既定のバックアップとデータベース ファイルの場所を構成します。<br/><br/> - [メモリ内のロックされたページを有効にします](/sql/database-engine/configure-windows/enable-the-lock-pages-in-memory-option-windows?view=sql-server-2017)。<br/><br/> - SQL Server パフォーマンス修正プログラムを適用します。 |
@@ -50,7 +50,7 @@ Azure Virtual Machines で SQL Server の最適なパフォーマンスを実現
 
 ## <a name="vm-size-guidance"></a>VM サイズのガイダンス
 
-最初に、ピーク時のワークロードの CPU、メモリ、およびストレージのスループット要件を収集します。 \LogicalDisk\Disk Reads/Sec および \LogicalDisk\Disk Writes/Sec パフォーマンス カウンターを使用すると、読み取りと書き込みの IOPS 要件を収集でき、\LogicalDisk\Disk Bytes/Sec カウンターを使用すると、データ、ログ、および Temp DB ファイルの[ストレージのスループット要件](../premium-storage-performance.md#disk-caching)を収集できます。 ピーク時の IOPS とスループット要件が定義されたら、VM サイズによってその容量が提供されるかどうかを評価します。 たとえば、ワークロードがピーク時に 20 K の読み取り IOPS と 10K の書き込み IOPS を必要としている場合は、E16s_v3 (最大 32 K のキャッシュあり IOPS と 25600 のキャッシュなし IOPS)、または 2 つの P30 ディスクを備えた M16_s (最大 20 K のキャッシュあり IOPS と 10K のキャッシュなし IOPS) のどちらかを選択できます。 VM には IOPS とスループットに対して異なるスケールの制限があるため、ワークロードのスループット要件と IOPS 要件の両方を把握するようにしてください。<br/><br/>[DSv_3 および Es_v3 シリーズ](../sizes-general.md#dsv2-series)は、Intel Haswell または Broadwell プロセッサを備えた汎用ハードウェアでホストされます。 [M シリーズ](../sizes-memory.md#m-series)は、最大の SQL Server ワークロードのための最も多い vCPU 数とメモリを提供し、Skylake プロセッサ ファミリを備えたメモリ最適化ハードウェアでホストされます。 これらの VM シリーズは、ホスト レベルの読み取りキャッシュによる最適なパフォーマンスのために推奨される Premium Storage をサポートしています。 また、Es_v3 シリーズと M シリーズはどちらも、[制約されたコア サイズ](../../windows/constrained-vcpu.md)で使用できます。これにより、コンピューティングの要求が低く、ストレージ容量の要求が高い場合はワークロードの費用が節約されます。 
+最初に、ピーク時のワークロードの CPU、メモリ、およびストレージのスループット要件を収集します。 \LogicalDisk\Disk Reads/Sec および \LogicalDisk\Disk Writes/Sec パフォーマンス カウンターを使用すると、読み取りと書き込みの IOPS 要件を収集でき、\LogicalDisk\Disk Bytes/Sec カウンターを使用すると、データ、ログ、および Temp DB ファイルの[ストレージのスループット要件](../premium-storage-performance.md#disk-caching)を収集できます。 ピーク時の IOPS とスループット要件が定義されたら、VM サイズによってその容量が提供されるかどうかを評価します。 たとえば、ワークロードがピーク時に 20 K の読み取り IOPS と 10K の書き込み IOPS を必要としている場合は、E16s_v3 (最大 32 K のキャッシュあり IOPS と 25600 のキャッシュなし IOPS)、または 2 つの P30 ディスクを備えた M16_s (最大 20 K のキャッシュあり IOPS と 10K のキャッシュなし IOPS) のどちらかを選択できます。 VM には IOPS とスループットに対して異なるスケールの制限があるため、ワークロードのスループット要件と IOPS 要件の両方を把握するようにしてください。<br/><br/>[DSv_3](../../dv3-dsv3-series.md) および [Es_v3 シリーズ](../../ev3-esv3-series.md)は、Intel Haswell または Broadwell プロセッサを備えた汎用ハードウェアでホストされます。 [M シリーズ](../../m-series.md)は、最大の SQL Server ワークロードのための最も多い vCPU 数とメモリを提供し、Skylake プロセッサ ファミリを備えたメモリ最適化ハードウェアでホストされます。 これらの VM シリーズは、ホスト レベルの読み取りキャッシュによる最適なパフォーマンスのために推奨される Premium Storage をサポートしています。 また、Es_v3 シリーズと M シリーズはどちらも、[制約されたコア サイズ](../../windows/constrained-vcpu.md)で使用できます。これにより、コンピューティングの要求が低く、ストレージ容量の要求が高い場合はワークロードの費用が節約されます。 
 
 ## <a name="storage-guidance"></a>ストレージのガイダンス
 
@@ -61,7 +61,7 @@ Premium SSD を使用した Azure BLOB キャッシュは、すべての運用�
 > [!WARNING]
 > Standard HDD と SSD には、さまざまな待機時間や帯域幅があり、開発/テスト ワークロードにのみ推奨されます。 運用環境のワークロードでは、Premium SSD を使用する必要があります。
 
-さらに、転送遅延を低減するために、SQL Server 仮想マシンと同じデータ センターで Azure ストレージ アカウントを作成することをお勧めします。 ストレージ アカウントの作成時に、geo レプリケーションを無効にします。複数のディスクでの一貫性のある書き込み順序が保証されないためです。 代わりに、2 つの Azure データ センター間で SQL Server ディザスター リカバリー テクノロジを構成することを検討します。 詳細については、「[Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](virtual-machines-windows-sql-high-availability-dr.md)」をご覧ください。
+さらに、転送遅延を低減するために、SQL Server 仮想マシンと同じデータ センターで Azure ストレージ アカウントを作成することをお勧めします。 ストレージ アカウントの作成時に、geo レプリケーションを無効にします。複数のディスクでの一貫性のある書き込み順序が保証されないためです。 代わりに、2 つの Azure データ センター間で SQL Server ディザスター リカバリー テクノロジを構成することを検討します。 詳細については、「[Azure Virtual Machines での SQL Server の高可用性とディザスター リカバリー](virtual-machines-windows-sql-high-availability-dr.md)」を参照してください。
 
 ## <a name="disks-guidance"></a>ディスクのガイダンス
 
@@ -156,7 +156,7 @@ Premium SSD をサポートする VM の場合は、読み取りキャッシュ�
 
 * パフォーマンスに悪影響を及ぼすおそれのある不要なオーバーヘッドを回避するために、 **自動圧縮** が無効になっていることを確認します。
 
-* システム データベースも含め、すべてのデータベースをデータ ディスクに移動します。 詳細については、「 [システム データベースの移動](https://msdn.microsoft.com/library/ms345408.aspx)」をご覧ください。
+* システム データベースも含め、すべてのデータベースをデータ ディスクに移動します。 詳細については、「 [システム データベースの移動](https://msdn.microsoft.com/library/ms345408.aspx)」を参照してください。
 
 * SQL Server エラー ログとトレース ファイルのディレクトリをデータ ディスクに移動します。 これは、SQL Server インスタンスを右クリックしてプロパティを選択することにより、SQL Server 構成マネージャーで実行できます。 エラー ログとトレース ファイルの設定は、 **[起動時のパラメーター]** タブで変更できます。ダンプ ディレクトリは、 **[詳細設定]** タブで指定します。次のスクリーンショットでは、エラー ログの起動時のパラメーターを検索する場所を示します。
 
@@ -192,7 +192,7 @@ SQL Server 2012 より前のバージョンでは、 [SQL Server Backup to Azure
 
 記憶域スペースを使っている場合に、 **[使用可能な記憶域をすべてクラスターに追加する]** をオフにしないと、Windows はクラスター作成処理中に仮想ディスクをデタッチします。 その結果、記憶域スペースがクラスターから削除され、PowerShell を使って再アタッチされるまで、仮想ディスクはディスク マネージャーやエクスプローラーに表示されなくなります。 記憶域スペースは、複数のディスクを記憶域プールにグループ化します。 詳細については、[記憶域スペース](/windows-server/storage/storage-spaces/overview)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ストレージとパフォーマンスの詳細については、「[Storage Configuration Guidelines for SQL Server on Azure VM (Azure VM の SQL Server 用ストレージ構成ガイドライン)](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/25/storage-configuration-guidelines-for-sql-server-on-azure-vm/)」を参照してください
 

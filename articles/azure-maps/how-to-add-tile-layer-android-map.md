@@ -1,25 +1,25 @@
 ---
 title: Android マップへのタイル レイヤーの追加 | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps Android SDK を使用して、マップにタイル レイヤーをレンダリングする方法を示します。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e54eeaa6dafd60e5fc481f2f4b45929edda77c44
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 8e1a77ae83783b2841a2600654a9775e9ceb6ada
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911524"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209938"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Azure Maps Android SDK を使用してマップにタイル レイヤーを追加する
 
 この記事では、Azure Maps Android SDK を使用してマップにタイル レイヤーをレンダリングする方法を示します。 タイル レイヤーを使用すると、Azure Maps ベース マップ タイルの上に画像を重ねることができます。 Azure Maps のタイル システムの詳細については、[ズーム レベルとタイル グリッド](zoom-levels-and-tile-grid.md)のドキュメントを参照してください。
 
-タイル レイヤーでは、サーバーからタイルが読み込まれます。 これらの画像は、タイル レイヤーが認識できる名前付け規則を使用するか、画像をその場で生成する動的サービスを使用して、サーバー上の他の画像と同様に事前にレンダリングし、保存することができます。 Azure Maps の TileLayer クラスでは、3 種類のタイル サービスの名前付け規則がサポートされています。 
+タイル レイヤーでは、サーバーからタイルが読み込まれます。 これらの画像は事前にレンダリングし、タイル レイヤーが認識する名前付け規則を使用して、サーバー上の他の画像と同様に保存できます。 または、画像をほぼリアルタイムに生成する動的サービスを使用して、これらの画像をレンダリングすることもできます。 Azure Maps の TileLayer クラスでは、次の 3 種類のタイル サービスの名前付け規則がサポートされています。
 
 * X、Y、ズーム表記 - ズーム レベルに基づいた、タイル グリッド内のタイルの列 (x)、行 (x) の位置です。
 * quadkey 表記 - x、y、ズーム情報を組み合わせて、タイルの一意の識別子である 1 つの文字列値にします。
@@ -35,7 +35,7 @@ ms.locfileid: "75911524"
 * `{z}` - タイルのズーム レベル。 `{x}` と `{y}` も必要です。
 * `{quadkey}` - Bing Maps タイル システムの名前付け規則に基づくタイルの quadkey 識別子。
 * `{bbox-epsg-3857}` - EPSG 3857 空間参照系の `{west},{south},{east},{north}` 形式の境界ボックス文字列。
-* `{subdomain}` - プレースホルダー。サブドメインの値が指定されると、ここに追加されます。
+* `{subdomain}` - サブドメインの値のプレースホルダー (サブドメインの値が指定される場合)。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,7 +44,7 @@ ms.locfileid: "75911524"
 
 ## <a name="add-a-tile-layer-to-the-map"></a>マップにタイル レイヤーを追加する
 
- このサンプルは、x、y、ズーム タイル システムを使用するタイルのセットを指すタイル レイヤーを作成する方法を示しています。 このタイル レイヤーのソースは、[アイオワ州立大学の Iowa Environmental Mesonet](https://mesonet.agron.iastate.edu/ogc/) の気象レーダー オーバーレイです。 
+ このサンプルは、タイルのセットを指すタイル レイヤーを作成する方法を示しています。 これらのタイルでは、"x、y、ズーム" のタイル システムが使用されます。 このタイル レイヤーのソースは、[アイオワ州立大学の Iowa Environmental Mesonet](https://mesonet.agron.iastate.edu/ogc/) の気象レーダー オーバーレイです。 
 
 次の手順に従って、マップにタイル レイヤーを追加できます。
 

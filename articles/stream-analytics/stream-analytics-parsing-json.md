@@ -6,12 +6,12 @@ author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 01/29/2020
-ms.openlocfilehash: ac06521df38bdc91ca717d888c73cd541576014d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 73905483850a47a9d036bef1b9e1ee60d3484555
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905453"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484589"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Azure Stream Analytics で JSON データと Avro データを解析する
 
@@ -167,6 +167,38 @@ WITH Stage0 AS
 
 SELECT DeviceID, PropertyValue AS Temperature INTO TemperatureOutput FROM Stage0 WHERE PropertyName = 'Temperature'
 SELECT DeviceID, PropertyValue AS Humidity INTO HumidityOutput FROM Stage0 WHERE PropertyName = 'Humidity'
+```
+
+### <a name="parse-json-record-in-sql-reference-data"></a>SQL 参照データの JSON レコードを解析する
+ジョブで参照データとして Azure SQL Database を使用する場合、JSON 形式のデータを含む列を持つことができます。 次に例を示します。
+
+|DeviceID|Data|
+|-|-|
+|12345|{"key" : "value1"}|
+|54321|{"key" : "value2"}|
+
+単純な JavaScript ユーザー定義関数を記述することで、*Data* 列の JSON レコードを解析できます。
+
+```javascript
+function parseJson(string) {
+return JSON.parse(string);
+}
+```
+
+次に、以下に示すように Stream Analytics クエリのステップを作成して、JSON レコードのフィールドにアクセスできます。
+
+ ```SQL
+ WITH parseJson as
+ (
+ SELECT DeviceID, udf.parseJson(sqlRefInput.Data) as metadata,
+ FROM sqlRefInput
+ )
+ 
+ SELECT metadata.key
+ INTO output
+ FROM streamInput
+ JOIN parseJson 
+ ON streamInput.DeviceID = parseJson.DeviceID
 ```
 
 ## <a name="array-data-types"></a>配列データ型

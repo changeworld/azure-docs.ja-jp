@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d8bdae5a860eb19741aa321606feb3f0825740a9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6451c5d32fffc0290592a2489c9cdc99be1b7b7c
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850574"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483297"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C:よく寄せられる質問 (FAQ)
 
@@ -86,15 +86,17 @@ Azure ポータルの左側にあるメニューの [Azure AD B2C] を開く前�
 
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>既存のユーザー名、パスワード、およびプロファイルを自分のデータベースから Azure AD B2C に移行するにはどのようにすればいいですか。
 
-Azure AD Graph API を使用して、移行ツールを作成できます。 詳細については[ユーザーの移行ガイド](user-migration.md)を参照してください。
+Microsoft Graph API を使用して、移行ツールを作成できます。 詳細については[ユーザーの移行ガイド](user-migration.md)を参照してください。
 
 ### <a name="what-password-user-flow-is-used-for-local-accounts-in-azure-ad-b2c"></a>Azure AD B2C のローカル アカウントに使用されるパスワード ユーザー フローはどのようなものですか。
 
-Azure AD B2C のローカル アカウントのパスワード ユーザー フローは Azure AD のポリシーに基づいています。 Azure AD B2C のサインアップ、サインアップまたはサインイン、パスワード リセットの各ユーザー フローでは、"強力な" パスワード強度を使用しており、いずれのパスワードにも有効期限がありません。 詳細については、 [Azure AD のパスワード ポリシー](/previous-versions/azure/jj943764(v=azure.100)) に関するページを参照してください。 アカウントのロックアウトとパスワードについては、「[Azure Active Directory B2C: 脅威の管理](threat-management.md)」を参照してください。
+Azure AD B2C のローカル アカウントのパスワード ユーザー フローは Azure AD のポリシーに基づいています。 Azure AD B2C のサインアップ、サインアップまたはサインイン、パスワード リセットの各ユーザー フローでは、"強力な" パスワード強度を使用しており、いずれのパスワードにも有効期限がありません。 詳細については、「[Azure Active Directory のパスワード ポリシーと制限](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy)」を参照してください。
+
+アカウントのロックアウトとパスワードについては、「[Azure Active Directory B2C: 脅威の管理](threat-management.md)」を参照してください。
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Azure AD Connect を使用して、自分のオンプレミス Active Directory に保存されているお客様の ID を Azure AD B2C に移行できますか。
 
-いいえ。Azure AD Connect は Azure AD B2C と連携するようには設計されていません。 ユーザーの移行には、[Azure AD Graph API](manage-user-accounts-graph-api.md) を使用することを検討してください。 詳細については[ユーザーの移行ガイド](user-migration.md)を参照してください。
+いいえ。Azure AD Connect は Azure AD B2C と連携するようには設計されていません。 ユーザーの移行には、[Microsoft Graph API](manage-user-accounts-graph-api.md) を使用することを検討してください。 詳細については[ユーザーの移行ガイド](user-migration.md)を参照してください。
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>アプリで Azure AD B2C ページを iFrame 内で開くことはできますか。
 
@@ -134,7 +136,7 @@ Azure AD B2C テナントを削除するには、次の手順に従います。
 
 現在の**アプリケーション** エクスペリエンス、または新しく統合された**アプリの登録 (プレビュー)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregintro)。
 
-#### <a name="applicationstabapplications"></a>[アプリケーション](#tab/applications/)
+#### <a name="applications"></a>[アプリケーション](#tab/applications/)
 
 1. *サブスクリプション管理者*として [Azure portal](https://portal.azure.com/) にサインインします。 Azure へのサインアップに使用したものと同じ職場または学校アカウント、または同じ Microsoft アカウントを使用します。
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
@@ -155,7 +157,7 @@ Azure AD B2C テナントを削除するには、次の手順に従います。
 1. 左側のメニューで、 **[Azure Active Directory]** を選択します。
 1. **[概要]** ページで **[ディレクトリの削除]** を選択します。 画面の指示に従って、プロセスを完了します。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
 
 1. *サブスクリプション管理者*として [Azure portal](https://portal.azure.com/) にサインインします。 Azure へのサインアップに使用したものと同じ職場または学校アカウント、または同じ Microsoft アカウントを使用します。
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。

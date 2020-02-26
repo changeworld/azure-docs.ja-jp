@@ -13,12 +13,12 @@ ms.author: mimart
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4e2e25189b35f7d17ef42536aa7cd86ac92ec82
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: d4d5c91966f8c490e056a84c89073e4da7cfdfd6
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185861"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484487"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報のアーカイブ
 
@@ -1117,7 +1117,7 @@ Active Directory Domain Services (AD DS) オブジェクトが同期範囲から
 |フィールド名|変更箇所|古い値|新しい値|
 |----------|------------|----------|----------|
 |カテゴリ|以前は **[サービス名]** フィールドでした。 現在は **[監査カテゴリ]** フィールドです。 **[サービス名]** は **loggedByService** フィールドに名前が変更されました。|<ul><li>アカウント プロビジョニング</li><li>Core Directory (コア ディレクトリ)</li><li>セルフサービス パスワード リセット</li></ul>|<ul><li>[ユーザー管理]</li><li>グループ管理</li><li>アプリの管理</li></ul>|
-|targetResources|**TargetResourceType** を最上位レベルに含みます。|&nbsp;|<ul><li>ポリシー</li><li>アプリ</li><li>User</li><li>Group</li></ul>|
+|targetResources|**TargetResourceType** を最上位レベルに含みます。|&nbsp;|<ul><li>ポリシー</li><li>アプリ</li><li>User</li><li>グループ</li></ul>|
 |loggedByService|監査ログを生成したサービスの名前を提供します。|[Null]|<ul><li>アカウント プロビジョニング</li><li>Core Directory (コア ディレクトリ)</li><li>セルフサービス パスワード リセット</li></ul>|
 |結果|監査ログの結果を提供します。 以前は、これは列挙されていましたが、実際の値を示すようになります。|<ul><li>0</li><li>1</li></ul>|<ul><li>Success</li><li>障害</li></ul>|
 
@@ -1426,7 +1426,7 @@ Azure portal の **[サインイン]** ページの **[トラブルシューテ�
 **サービス カテゴリ:** 条件付きアクセス  
 **製品の機能:** ID のセキュリティと保護
 
-以下のアプリが、[承認されたクライアント アプリ](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference#approved-client-app-requirement)の一覧に示されます。
+以下のアプリが、[承認されたクライアント アプリ](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)の一覧に示されます。
 
 - Microsoft To-Do
 
@@ -1698,7 +1698,7 @@ Azure AD アクティビティ ログは、Azure Monitor (Azure のプラット�
 **サービス カテゴリ:** レポーティング  
 **製品の機能:** 監視とレポート
  
-サインイン アクティビティ ログに **[クライアント アプリ]** フィールドを導入することで、お客様がレガシ認証を使用しているユーザーを確認できるようになりました。 この情報にアクセスするには、Sign-ins MS Graph API を使用するか、Azure AD ポータルのサインイン アクティビティ ログで **[クライアント アプリ]** コントロールを使用してレガシー認証をフィルター処理します。 詳細については、ドキュメントをご覧ください。
+サインイン アクティビティ ログに **[クライアント アプリ]** フィールドを導入することで、お客様がレガシ認証を使用しているユーザーを確認できるようになりました。 この情報にアクセスするには、Sign-ins Microsoft Graph API を使用するか、Azure AD ポータルのサインイン アクティビティ ログで **[クライアント アプリ]** コントロールを使用してレガシー認証をフィルター処理します。 詳細については、ドキュメントをご覧ください。
 
 ---
 
@@ -2092,7 +2092,7 @@ Azure AD ギャラリーにある、ユーザー プロビジョニングをサ�
 **サービス カテゴリ:** レポーティング  
 **製品の機能:** 監視とレポート
  
-Azure AD アクティビティ ログ (サインイン ログと監査ログを含みます) を MS Graph から利用できるようになりました。 これらのログにアクセスするための MS Graph 経由の 2 つのエンドポイントが公開されています。 Azure AD Reporting API を開始するためのプログラムによるアクセスについては、こちらの[ドキュメント](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal)を参照してください。 
+Azure AD アクティビティ ログ (サインイン ログと監査ログを含みます) を Microsoft Graph API から利用できるようになりました。 これらのログにアクセスするための Microsoft Graph API 経由の 2 つのエンドポイントが公開されています。 Azure AD Reporting API を開始するためのプログラムによるアクセスについては、こちらの[ドキュメント](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal)を参照してください。 
 
 ---
  
@@ -2596,7 +2596,7 @@ Azure AD 管理センターが更新されて、この機能がサポートさ�
 **サービス カテゴリ:** レポーティング  
 **製品の機能:** 監視とレポート
 
-Azure AD のアクティビティ ログに非管理者ロールでアクセスできるようにするというカスタマー フィードバックの一環として、"レポート リーダー" ロールのユーザーを対象に、Azure Portal 内のサインイン アクティビティや監査アクティビティにアクセスしたり、Graph API を使用したりする機能を用意しました。 
+Azure AD のアクティビティ ログに非管理者ロールでアクセスできるようにするというカスタマー フィードバックの一環として、"レポート リーダー" ロールのユーザーを対象に、Azure portal 内のサインイン アクティビティや監査アクティビティにアクセスしたり、Microsoft Graph API を使用したりする機能を用意しました。 
 
 レポートの使い方について詳しくは、「[Azure Active Directory レポート](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)」をご覧ください。 
 
@@ -2753,7 +2753,7 @@ Azure AD とオンプレミス データ ソース (Windows Server Active Direct
 
 詳細については、次を参照してください。
 
-- [承認されたクライアント アプリケーションの要件](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [承認されたクライアント アプリケーションの要件](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [Azure AD のアプリベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
@@ -3044,14 +3044,14 @@ Intune Managed Browser を承認されたアプリとして使用することで
 **サービス カテゴリ:** 条件付きアクセス  
 **製品の機能:** ID のセキュリティと保護
 
-以下のアプリが、[承認されたクライアント アプリ](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)の一覧に示されます。
+以下のアプリが、[承認されたクライアント アプリ](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)の一覧に示されます。
 
 - [Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
 - Microsoft StaffHub
 
 詳細については、次を参照してください。
 
-- [承認されたクライアント アプリケーションの要件](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [承認されたクライアント アプリケーションの要件](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [Azure AD のアプリベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
@@ -3089,7 +3089,7 @@ Intune Managed Browser を承認されたアプリとして使用することで
 **サービス カテゴリ:** Azure AD  
 **製品の機能:** ID のセキュリティと保護
 
-[Azure AD のアプリベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)を使用することで、Office 365 などの Azure AD 接続クラウド アプリへのアクセスを、Intune App Protection ポリシーがサポートされる[承認されたクライアント アプリ](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)に限定できるようになりました。 Intune App Protection ポリシーは、これらのクライアント アプリケーション上にある企業データの構成と保護に使用されます。
+[Azure AD のアプリベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)を使用することで、Office 365 などの Azure AD 接続クラウド アプリへのアクセスを、Intune App Protection ポリシーがサポートされる[承認されたクライアント アプリ](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)に限定できるようになりました。 Intune App Protection ポリシーは、これらのクライアント アプリケーション上にある企業データの構成と保護に使用されます。
 
 [アプリベース](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)の条件付きアクセス ポリシーを[デバイスベース](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications)の条件付きアクセス ポリシーと組み合わせることで、個人および会社のデバイスのデータを柔軟に保護できます。
 
@@ -3189,14 +3189,14 @@ Azure AD 管理センターで以下の操作が可能になりました。
 **サービス カテゴリ:** 条件付きアクセス  
 **製品の機能:** ID のセキュリティと保護
 
-以下のアプリが、[承認されたクライアント アプリ](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)の一覧に追加されました。
+以下のアプリが、[承認されたクライアント アプリ](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)の一覧に追加されました。
 
 - Microsoft Planner
 - Azure Information Protection 
 
 詳細については、次を参照してください。
 
-- [承認されたクライアント アプリケーションの要件](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [承認されたクライアント アプリケーションの要件](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [Azure AD のアプリベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---

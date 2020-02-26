@@ -8,12 +8,12 @@ ms.date: 02/10/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 34f5de01df72b48d275448e028ab0f8cb71e51f8
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: aae11facd2fea5413b2996b3088cb2edc23f0dc1
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132061"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77424934"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Azure Cosmos DB を使用する場合のクエリの問題のトラブルシューティング
 
@@ -302,7 +302,7 @@ tags 配列の 1 つの項目のみがフィルターに一致し、nutrients �
 
 Azure Cosmos DB では[パーティション分割](partitioning-overview.md)を使用して、要求ユニットとデータ ストレージのニーズの増加に応じて個々のコンテナーをスケーリングします。 各物理パーティションには、区切られて独立したインデックスがあります。 クエリにコンテナーのパーティション キーに一致する等値フィルターがある場合、確認する必要があるのは関連するパーティションのインデックスのみです。 この最適化により、クエリが必要とする RU の合計数が減少します。
 
-プロビジョニングされた RU 使用量の数が多い (3 万以上) 場合や、大量のデータ (100 GB 以上) が格納されている場合は、おそらく、クエリ RU の使用量を大幅に削減するために必要なコンテナーがあります。
+プロビジョニングされた RU 使用量の数が多い (3 万以上) 場合や、大量のデータ (約 100 GB 以上) が格納されている場合は、おそらく、クエリ RU の使用量の大幅な削減を確認するのに十分な大きさなのコンテナーがあります。
 
 たとえば、foodGroup というパーティション キーを持つコンテナーを作成する場合、次のクエリでは 1 つの物理パーティションのみを確認する必要があります。
 
@@ -383,7 +383,7 @@ Azure Cosmos DB アカウントとは異なるリージョンから実行され�
 
 ## <a name="increase-provisioned-throughput"></a>プロビジョニングされたスループットの増加
 
-Azure Cosmos DB では、プロビジョニングされたスループットは要求ユニット (RU) で測定されます。 5 RU のスループットを使用するクエリがあると仮定します。 たとえば、1,000 RU をプロビジョニングする場合、そのクエリは 1 秒あたり 200 回実行できます。 スループットが十分でないときにクエリを実行しようとすると、Azure Cosmos DB によって HTTP 429 エラーが返されます。 現在のコア (SQL) API SDK では、短時間待機した後に、このクエリを自動的に再試行します。 スロットルされた要求にはさらに時間がかかるため、プロビジョニングされたスループットを増やすとクエリの待機時間が改善します。 Azure portal のメトリック ブレードで、[スロットルされた要求の合計数](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors)を確認できます。
+Azure Cosmos DB では、プロビジョニングされたスループットは要求ユニット (RU) で測定されます。 5 RU のスループットを使用するクエリがあると仮定します。 たとえば、1,000 RU をプロビジョニングする場合、そのクエリは 1 秒あたり 200 回実行できます。 スループットが十分でないときにクエリを実行しようとすると、Azure Cosmos DB によって HTTP 429 エラーが返されます。 現在のコア (SQL) API SDK では、短時間待機した後に、このクエリを自動的に再試行します。 スロットルされた要求にはさらに時間がかかるため、プロビジョニングされたスループットを増やすとクエリの待機時間が改善します。 Azure portal のメトリック ブレードで、[調整された要求の合計数](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors)を確認できます。
 
 ## <a name="increase-maxconcurrency"></a>MaxConcurrency の増加
 

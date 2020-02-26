@@ -16,12 +16,12 @@ ms.date: 01/22/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c1b6f5ebffa39d3b735e85df794e37329e3aa2e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 1ecf3a8819518c674a3d8bd7af55d1a3c6393c42
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548902"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483858"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Azure AD のエンタイトルメント管理で接続されている組織を追加する
 
@@ -96,6 +96,23 @@ Azure AD ディレクトリまたはドメインのユーザーの認証方法�
 1. **[確認および作成]** タブで自分の組織の設定を確認し、 **[作成]** をクリックします。
 
     ![パッケージへのアクセス - ポリシー - [接続された組織の追加] - [確認および作成] タブ](./media/entitlement-management-organization/organization-review-create.png)
+
+## <a name="update-a-connected-organization"></a>接続されている組織の更新 
+
+接続されている組織が別のドメインに変更された場合、その組織に新しい名前を付ける場合、またはスポンサーを変更する場合は、接続されている組織を更新できます。
+
+**事前に必要なロール:** 全体管理者、ユーザー管理者、またはゲスト招待元
+
+1. Azure portal で **[Azure Active Directory]** をクリックし、 **[Identity Governance]** をクリックします。
+
+1. 左側のメニューで、 **[接続されている組織]** をクリックした後、接続されている組織をクリックして開きます。
+
+1. [概要] ページで、 **[編集]** をクリックして、組織の名前または説明を変更します。  
+
+1. [ディレクトリとドメイン] ページで、 **[Update directory + domain]\(ディレクトリとドメインの更新\)** をクリックして、別のディレクトリまたはドメインに変更します。
+
+1. [スポンサー] ページで、 **[Add internal sponsors]\(内部スポンサーの追加\)** または **[Add external sponsors]\(外部スポンサーの追加\)** をクリックして、ユーザーをスポンサーとして追加します。  スポンサーを削除するには、スポンサーをクリックし、右側のメニューで **[削除]** をクリックします。
+
 
 ## <a name="delete-a-connected-organization"></a>接続されている組織の削除
 

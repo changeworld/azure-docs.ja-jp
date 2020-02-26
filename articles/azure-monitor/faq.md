@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/23/2020
-ms.openlocfilehash: 9f377f93ab8fef2c1ad713da6fcd6c6f14107c3f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 33af9c8f3fbe4de57d65be432f249d4aeb5d3e27
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986820"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485337"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor についてよくあるご質問
 
@@ -697,7 +697,10 @@ Windows VM を対象とする正常性基準のしきい値は変更できませ
 各正常性基準に対して定義されているアラート ルールは、Azure portal には表示されません。 [Workload Monitor API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) でのみ、正常性アラート ルールを有効または無効にすることができます。 また、正常性アラート用の [Azure Monitor アクション グループ](platform/action-groups.md)を Azure portal 内で割り当てることはできません。 正常性アラートが発生するたびにトリガーされるアクション グループを構成するには、通知設定 API を使用する必要があります。 現在、VM に対して発生したすべての*正常性アラート*によって同じアクション グループがトリガーされるように、VM に対してアクション グループを割り当てることができます。 従来の Azure アラートとは異なり、正常性アラート ルールごとに個別のアクション グループが存在するという概念はありません。 さらに、正常性アラートがトリガーされたときに、電子メールまたは SMS 通知を提供するように構成されたアクション グループのみがサポートされます。 
 
 ### <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>パフォーマンス グラフに VM のデータが表示されません
+パフォーマンス グラフは、*InsightsMetrics* テーブルに格納されているデータを使用するように更新されました。  これらのグラフのデータを表示するには、新しい VM Insights ソリューションを使用するようにアップグレードする必要があります。  追加情報については、[一般提供についての FAQ](insights/vminsights-ga-release-faq.md) に関する記事を参照してください。
+
 ディスク テーブルまたは一部のパフォーマンス グラフにパフォーマンス データが表示されない場合、ワークスペースでパフォーマンス カウンターが構成されていない可能性があります。 これを解決するには、こちらの [PowerShell スクリプト](insights/vminsights-enable-at-scale-powershell.md#enable-with-powershell)を実行してください。
+
 
 ### <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Azure Monitor for VMs のマップ機能は Service Map とどのように異なるのですか?
 Azure Monitor for VMs のマップ機能は Service Map に基づいていますが、次の点が異なります。

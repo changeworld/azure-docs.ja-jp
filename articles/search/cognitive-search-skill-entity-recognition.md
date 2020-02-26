@@ -8,28 +8,28 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 559d8cb25624c1d8bebb2969fbeeb80bdcc020e6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6393c1eeaaa72d653704fcc52442bfb326dc2cdd
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73479740"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472334"
 ---
 #   <a name="entity-recognition-cognitive-skill"></a>エンティティ認識の認知スキル
 
 **エンティティ認識**スキルによってテキストからさまざまな種類のエンティティが抽出されます。 このスキルでは、Cognitive Services の [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) によって提供される機械学習モデルが使用されます。
 
 > [!NOTE]
-> 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure コグニティブ検索のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
+> 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure Cognitive Search のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
 >
-> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure コグニティブ検索の価格](https://go.microsoft.com/fwlink/?linkid=2042400)に関するページで説明されています。
+> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Cognitive Search の価格](https://go.microsoft.com/fwlink/?linkid=2042400)に関するページで説明されています。
 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.EntityRecognitionSkill
 
 ## <a name="data-limits"></a>データ制限
-レコードの最大サイズは、[`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) によって測定されるため、50,000 文字にする必要があります。 データをキー フレーズ エクストラクターに送信する前に分割する必要がある場合は、[テキスト分割スキル](cognitive-search-skill-textsplit.md)の使用を検討してください。
+レコードのサイズは、[`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) で測定して 50,000 文字以下にする必要があります。 データをキー フレーズ エクストラクターに送信する前に分割する必要がある場合は、[テキスト分割スキル](cognitive-search-skill-textsplit.md)の使用を検討してください。
 
 ## <a name="skill-parameters"></a>スキルのパラメーター
 
@@ -38,9 +38,9 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 | パラメーター名     | 説明 |
 |--------------------|-------------|
 | categories    | 抽出する必要があるカテゴリの配列。  可能なカテゴリの型は、`"Person"`、`"Location"`、`"Organization"`、`"Quantity"`、`"Datetime"`、`"URL"`、`"Email"` です。 カテゴリが指定されていない場合、すべての型が返されます。|
-|defaultLanguageCode |  入力テキストの言語コード。 次の言語がサポートされます。`de, en, es, fr, it`|
+|defaultLanguageCode |  入力テキストの言語コード。 次の言語がサポートされます。`ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans` すべての言語ですべてのエンティティ カテゴリがサポートされているわけではありません。以下の注意事項を参照してください。|
 |minimumPrecision | 0 から 1 の値。 (`namedEntities` 出力の) 信頼度スコアがこの値よりも小さい場合は、エンティティは返されません。 既定値は 0 です。 |
-|includeTypelessEntities | 現在のカテゴリに当てはまらない既知のエンティティを認識するには、`true` に設定します。 認識されたエンティティは、`entities` 複合出力フィールドに返されます。 たとえば、"Windows 10" は既知のエンティティ (製品) ですが、"製品" はサポートされているカテゴリではないため、このエンティティはエンティティ出力フィールドに含まれます。 既定値は `false` です。 |
+|includeTypelessEntities | 現在のカテゴリに当てはまらない既知のエンティティを認識するには、`true` に設定します。 認識されたエンティティは、`entities` 複合出力フィールドに返されます。 たとえば、"Windows 10" は既知のエンティティ (製品) ですが、"製品" はサポートされているカテゴリではないため、このエンティティはエンティティ出力フィールドに含まれます。 既定値は `false` です |
 
 
 ## <a name="skill-inputs"></a>スキルの入力
@@ -53,7 +53,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 ## <a name="skill-outputs"></a>スキルの出力
 
 > [!NOTE]
-> 言語によっては、一部のエンティティ カテゴリがサポートされていません。 _en_ と _es_ でのみ、`"Quantity"`、`"Datetime"`、`"URL"`、`"Email"` を抽出できます。
+> 言語によっては、一部のエンティティ カテゴリがサポートされていません。 `"Person"`、`"Location"`、および `"Organization"` エンティティ カテゴリの種類は、上記の言語のすべてでサポートされています。 `"Quantity"`、`"Datetime"`、`"URL"`、および `"Email"` の種類の抽出をサポートするのは、_de_、_en_、_es_、_fr_、および _zh-hans_ のみです。 詳細については、「[Text Analytics API の言語と地域のサポート](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support)」を参照してください。  
 
 | 出力名     | 説明                   |
 |---------------|-------------------------------|

@@ -13,18 +13,18 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 9760f09f2588f09263c96cf8c1be74129b117009
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 6e14284b5d653af01631d56acf954f9c2a1f10ab
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77085383"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194997"
 ---
 # <a name="authentication-basics"></a>認証の基本
 
 ## <a name="what-is-authentication"></a>認証とは
 
-この記事では、保護された Web アプリ、Web API、または保護された Web API を呼び出すアプリを作成するために理解する必要がある認証の概念の多くについて説明します。 よく知らない用語がある場合は、[用語集](developer-glossary.md)をお試しください。
+この記事では、保護された Web アプリ、Web API、または保護された Web API を呼び出すアプリを作成するために理解する必要がある認証の概念の多くについて説明します。 よく知らない用語がある場合は、[用語集](developer-glossary.md)または基本的な概念を説明する [Microsoft ID プラットフォームの動画](identity-videos.md)をご覧ください。
 
 **認証**は、ユーザーが身元を証明するプロセスです。 認証は AuthN と短縮される場合があります。
 

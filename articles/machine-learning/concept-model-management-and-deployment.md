@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: f6819ddce777a5740ef1f5f9ab887a0646c4e464
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: e53db645875646b1e021cc0d3d760677e1128c0c
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122340"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486378"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps:Azure Machine Learning を使用したモデル管理、デプロイおよび監視
 
@@ -89,7 +89,7 @@ Azure Machine Learning での ONNX の詳細については、「[ML モデル�
 
 イメージが作成されると、Azure Machine Learning で必要なコンポーネントも追加されます。 たとえば、Web サービスを実行し、IoT Edge を操作するために必要なアセットです。
 
-#### <a name="batch-scoring"></a>Batch スコアリング
+#### <a name="batch-scoring"></a>バッチ スコアリング
 Batch スコアリングは、ML パイプライン経由でサポートされます。 詳細については、[ビッグ データでのバッチ予測](how-to-use-parallel-run-step.md)に関するページをご覧ください。
 
 #### <a name="real-time-web-services"></a>リアルタイム Web サービス
@@ -138,6 +138,19 @@ Azure ML では、Azure EventGrid に重要なイベントが発行され、ML �
 この情報は、自分のモデルがどのように使用されているかを理解するのに役立ちます。 収集された入力データは、モデルの将来のバージョンのトレーニングにも役立つ可能性があります。
 
 詳細については、[モデル データ収集を有効にする方法](how-to-enable-data-collection.md)に関するページを参照してください。
+
+## <a name="retrain-your-model-on-new-data"></a>新しいデータでモデルを再トレーニングする
+
+新しい情報を受け取るときに、モデルを更新したり、最初から再トレーニングしたりすることが必要になる場合がよくあります。 新しいデータを受信することが、そのドメインで想定される部分であることもあります。 また、「[データセットでデータ ドリフトを検出する (プレビュー)](how-to-monitor-datasets.md)」で説明されているように、モデルのパフォーマンスは、特定のセンサーの変化、季節的影響などのデータの自然な変化、または他の機能との関係で変化する機能などの要因によって低下する可能性があります。 
+
+"再トレーニングの必要性をどのように判断するのか" という問いに対する一般的な回答はありませんが、 前述の Azure ML イベントおよび監視ツールは、自動化の出発点として適しています。 再トレーニングすることを決定したら、次のことを行う必要があります。 
+
+- 反復可能な自動化されたプロセスを使用して、データを前処理する
+- 新しいモデルをトレーニングする
+- 新しいモデルの出力を古いモデルのものと比較する
+- 定義済みの条件を使用して、古いモデルを置き換えるかどうかを選択する 
+
+上記の手順のテーマは、再トレーニングはアドホックではなく自動化する必要があるということです。 [Azure Machine Learning パイプライン](concept-ml-pipelines.md)に関する記事では、データの準備、トレーニング、検証、およびデプロイに関連するワークフローを作成するための適切な答えが示されています。 パイプラインと Azure Machine Learning デザイナーが再トレーニング シナリオにどのように適しているかを確認するには、「[Azure Machine Learning デザイナーを使用してモデルを再トレーニングする (プレビュー)](how-to-retrain-designer.md)」を参照してください。 
 
 ## <a name="automate-the-ml-lifecycle"></a>ML ライフサイクルを自動化する 
 

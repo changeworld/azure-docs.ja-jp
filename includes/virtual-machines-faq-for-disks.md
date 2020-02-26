@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 39bcaac2ca94eedebd991a1c4e93f324ef651888
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 2bfdf1046c67ed1651f792191923bf4c533d0299
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76961437"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77205715"
 ---
 この記事では、Azure Managed Disks と Azure Premium SSD ディスクについてよく寄せられるいくつかの質問に回答します。
 
@@ -160,6 +160,44 @@ Azure ディスク予約は、特定のリージョンと SKU (米国東部 2 �
 
 **Azure ディスク予約の有効期限が切れるとどうなりますか?**    
 有効期限の 30 日前と有効期限当日に通知メールが送信されます。 予約の期限が切れると、デプロイされたディスクは引き続き実行され、最新の[従量課金制料金](https://azure.microsoft.com/pricing/details/managed-disks/)で課金されます。
+
+### <a name="azure-shared-disks"></a>Azure 共有ディスク
+
+**アンマネージド ディスクまたはページ BLOB では、共有ディスク機能はサポートされていますか?**
+
+いいえ、Premium SSD マネージド ディスクでのみサポートされています。
+
+**共有ディスクはどのリージョンでサポートされていますか?**
+
+現在は米国中西部のみです。
+
+**共有ディスクを OS ディスクとして使用できますか?**
+
+いいえ、共有ディスクはデータ ディスクでのみサポートされています。
+
+**どのディスク サイズで共有ディスクがサポートされますか?**
+
+P15 以上の Premium SSD でのみ共有ディスクがサポートされます。
+
+**既存の Premium SSD がある場合、そこで共有ディスクを有効にできますか?**
+
+API バージョン 2019-07-01 以上を使用して作成されたすべてのマネージド ディスクで共有ディスクを有効にできます。 このためには、接続されているすべての VM からディスクをマウント解除する必要があります。 次に、ディスクの `maxShares` プロパティを編集します。
+
+**ディスクを共有モードで使用する必要がなくなったら、どのようにして無効にできますか?**
+
+接続されているすべての VM からディスクをマウント解除します。 次に、ディスクの maxShare プロパティを 1 に編集します。
+
+**共有ディスクをサイズ変更できますか?**
+
+はい。
+
+**共有ディスクが有効になっているディスクで書き込みアクセラレータも有効にできますか?**
+
+いいえ。
+
+**共有ディスクが有効になっているディスクでホスト キャッシュを有効にできますか?**
+
+唯一サポートされるホスト キャッシュのオプションは 'None' です。
 
 ## <a name="ultra-disks"></a>Ultra ディスク
 

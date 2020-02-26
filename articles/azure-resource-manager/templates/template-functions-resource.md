@@ -3,12 +3,12 @@ title: テンプレート関数 - リソース
 description: Azure Resource Manager テンプレートで、リソースに関する値を取得するために使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: cc8976b714549f7442e22b341b34e81d717c8742
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 10476f5a29c12d7437beb9a9f707feda815d7ba1
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120530"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207010"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのリソース関数
 
@@ -124,7 +124,7 @@ list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
 
 ### <a name="valid-uses"></a>有効な使用方法
 
-list 関数は、リソース定義のプロパティと、テンプレートまたはデプロイの出力セクションでのみ使用できます。 [プロパティの反復処理](create-multiple-instances.md#property-iteration)で使用する場合には、式がリソース プロパティに割り当てられるため、`input` に対して list 関数を使用できます。 これらを `count` と一緒に使用することはできません。カウントは、list 関数が解決される前に決定される必要があるためです。
+list 関数は、リソース定義のプロパティと、テンプレートまたはデプロイの出力セクションでのみ使用できます。 [プロパティの反復処理](copy-properties.md)で使用する場合には、式がリソース プロパティに割り当てられるため、`input` に対して list 関数を使用できます。 これらを `count` と一緒に使用することはできません。カウントは、list 関数が解決される前に決定される必要があるためです。
 
 ### <a name="implementations"></a>実装
 
@@ -496,7 +496,7 @@ reference 関数は、以前にデプロイされたリソースまたは現在�
 
 ### <a name="valid-uses"></a>有効な使用方法
 
-reference 関数は、リソース定義のプロパティと、テンプレートまたはデプロイの出力セクションでのみ使用できます。 [プロパティの反復処理](create-multiple-instances.md#property-iteration)で使用する場合には、式がリソース プロパティに割り当てられるため、`input` に対して reference 関数を使用できます。 これを `count` と一緒に使用することはできません。カウントは、reference 関数が解決される前に決定される必要があるためです。
+reference 関数は、リソース定義のプロパティと、テンプレートまたはデプロイの出力セクションでのみ使用できます。 [プロパティの反復処理](copy-properties.md)で使用する場合には、式がリソース プロパティに割り当てられるため、`input` に対して reference 関数を使用できます。 これを `count` と一緒に使用することはできません。カウントは、reference 関数が解決される前に決定される必要があるためです。
 
 [入れ子になったテンプレート](linked-templates.md#nested-template)の出力に reference 関数を使用して、入れ子になったテンプレートにデプロイされたリソースを返すことはできません。 その場合は、[リンク済みテンプレート](linked-templates.md#linked-template)を使用してください。
 
@@ -758,7 +758,7 @@ resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [
 
 | パラメーター | Required | Type | 説明 |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |いいえ |文字列 (GUID 形式) |既定値は、現在のサブスクリプションです。 別のサブスクリプション内のリソースを取得する必要がある場合は、この値を指定します。 |
+| subscriptionId |いいえ |文字列 (GUID 形式) |既定値は、現在のサブスクリプションです。 別のサブスクリプション内のリソースを取得する必要がある場合は、この値を指定します。 リソース グループまたはサブスクリプションのスコープでデプロイする場合にのみ、この値を指定します。 |
 | resourceGroupName |いいえ |string |既定値は、現在のリソース グループです。 別のリソース グループ内のリソースを取得する必要がある場合は、この値を指定します。 リソース グループのスコープでデプロイする場合にのみ、この値を指定します。 |
 | resourceType |はい |string |リソース プロバイダーの名前空間を含むリソースの種類。 |
 | resourceName1 |はい |string |リソースの名前。 |
@@ -896,7 +896,7 @@ ID を他の形式で取得するには、以下を参照してください。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | Value |
+| 名前 | Type | Value |
 | ---- | ---- | ----- |
 | sameRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
@@ -1064,6 +1064,6 @@ tenantResourceId(resourceType, resourceName1, [resourceName2], ...)
 
 * Azure Resource Manager テンプレートのセクションの説明については、[Azure Resource Manager テンプレートの作成](template-syntax.md)に関するページを参照してください。
 * 複数のテンプレートをマージするには、[Azure Resource Manager でのリンクされたテンプレートの使用](linked-templates.md)に関するページを参照してください。
-* 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](create-multiple-instances.md)」を参照してください。
+* 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](copy-resources.md)」を参照してください。
 * 作成したテンプレートをデプロイする方法を確認するには、[Azure Resource Manager のテンプレートを使用したアプリケーションのデプロイ](deploy-powershell.md)に関するページを参照してください。
 

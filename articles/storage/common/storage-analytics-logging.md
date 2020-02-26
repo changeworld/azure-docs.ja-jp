@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 3b61e8680ef2484b1ad42837711adef171fdde25
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 25c047dc9b2ce08ca39e69c6f106e41c5d9bd0dc
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882633"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484895"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics のログ
 
@@ -88,15 +88,15 @@ Storage Analytics は、ストレージ サービスに対する要求の成功�
 
  以下の表は、ログ名内の各属性を説明しています。
 
-|Attribute|説明|
+|属性|説明|
 |---------------|-----------------|
 |`<service-name>`|ストレージ サービスの名前。 たとえば、`blob`、`table`、`queue` などがあります。|
-|`YYYY`|ログの 4 桁表記の年。 次に例を示します。`2011`|
-|`MM`|ログの 2 桁表記の月。 次に例を示します。`07`|
-|`DD`|ログの 2 桁表記の日。 次に例を示します。`31`|
-|`hh`|ログの開始時刻 (時) を示す 2 桁の数字 (24 時間制 UTC 形式)。 次に例を示します。`18`|
+|`YYYY`|ログの 4 桁表記の年。 例: `2011`|
+|`MM`|ログの 2 桁表記の月。 例: `07`|
+|`DD`|ログの 2 桁表記の日。 例: `31`|
+|`hh`|ログの開始時刻 (時) を示す 2 桁の数字 (24 時間制 UTC 形式)。 例: `18`|
 |`mm`|ログの開始時刻 (分) を示す 2 桁の数字。 **注:** 現在のバージョンの Storage Analytics ではこの値はサポートされず、常に `00` になります。|
-|`<counter>`|1 時間おきにストレージ サービスに対して生成されるログ BLOB の数を示す 0 から始まる 6 桁のカウンター。 このカウンターの初期値は `000000` です。 次に例を示します。`000001`|
+|`<counter>`|1 時間おきにストレージ サービスに対して生成されるログ BLOB の数を示す 0 から始まる 6 桁のカウンター。 このカウンターの初期値は `000000` です。 例: `000001`|
 
  上記の例をすべて組み合わせたサンプルのログ名は、以下のようになります。
 
@@ -112,11 +112,11 @@ Storage Analytics は、ストレージ サービスに対する要求の成功�
 
  すべてのログ BLOB はメタデータと共に格納されます。このメタデータを使って、BLOB に含まれるログ データを特定できます。 それぞれのメタデータ属性について以下の表で説明します。
 
-|Attribute|説明|
+|属性|説明|
 |---------------|-----------------|
 |`LogType`|読み取り、書き込み、削除の各操作に関連した情報がログに含まれているかどうかを表します。 この値には、操作の種類が 1 つだけ含まれている場合もあれば、3 つすべてがコンマ区切りで記録されている場合もあります。<br /><br /> 例 1: `write`<br /><br /> 例 2: `read,write`<br /><br /> 例 3: `read,write,delete`|
-|`StartTime`|ログに含まれる最も古いエントリの時刻です (`YYYY-MM-DDThh:mm:ssZ` 形式)。 次に例を示します。`2011-07-31T18:21:46Z`|
-|`EndTime`|ログに含まれる最も新しいエントリの時刻です (`YYYY-MM-DDThh:mm:ssZ` 形式)。 次に例を示します。`2011-07-31T18:22:09Z`|
+|`StartTime`|ログに含まれる最も古いエントリの時刻です (`YYYY-MM-DDThh:mm:ssZ` 形式)。 例: `2011-07-31T18:21:46Z`|
+|`EndTime`|ログに含まれる最も新しいエントリの時刻です (`YYYY-MM-DDThh:mm:ssZ` 形式)。 例: `2011-07-31T18:22:09Z`|
 |`LogVersion`|ログのフォーマットのバージョン。|
 
  上記の例を使用したサンプル メタデータを以下に示します。
@@ -180,6 +180,9 @@ queueClient.SetServiceProperties(serviceProperties);
 ## <a name="download-storage-logging-log-data"></a>ストレージ ログのログ データのダウンロード
 
  ログ データを表示して分析するには、対象のログ データを含む BLOB をローカル マシンにダウンロードする必要があります。 多くのストレージ閲覧ツールを使用して、ストレージ アカウントから BLOB をダウンロードできます。また、Azure Storage チームが提供するコマンドライン用の Azure Copy Tool ([AzCopy](storage-use-azcopy-v10.md)) を使用して、ログ データをダウンロードすることもできます。  
+ 
+>[!NOTE]
+> `$logs` コンテナーは Event Grid と統合されていないため、ログ ファイルが書き込まれたときにユーザーは通知を受信しません。 
 
  対象のログ データをダウンロードし、同じログ データを複数回ダウンロードしないためには、以下のようにします。  
 
@@ -199,7 +202,7 @@ azcopy copy 'https://mystorageaccount.blob.core.windows.net/$logs/queue' 'C:\Log
 
 ログ データのダウンロードが完了すると、ファイル内のログ エントリを表示できます。 これらのログ ファイルは、区切り記号付きテキスト形式が使用されているため、Microsoft Message Analyzer などの多くのログ読み取りツールで解析できます (詳細については、「[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」を参照してください)。 ログ ファイルの内容を書式設定、フィルタリング、並べ替え、AD 検索するために、各種のツールがさまざまな機能を提供しています。 ストレージ ログのログ ファイルの形式および内容の詳細については、「[Storage Analytics Log Format (Storage Analytics のログ形式)](/rest/api/storageservices/storage-analytics-log-format)」および「[Storage Analytics Logged Operations and Status Message (Storage Analytics によって記録される操作および状態メッセージ)](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Storage Analytics のログの形式](/rest/api/storageservices/storage-analytics-log-format)
 * [Storage Analytics によって記録される操作やステータス メッセージ](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)

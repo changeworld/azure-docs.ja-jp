@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: dc65d368eb4c1beb57099cb6c16fb33bbe5c1f79
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8bb00c770c61a0a5462a01ae552bd7e40a7cdb36
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981506"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470651"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Azure DevTest Labs インフラストラクチャのガバナンス - リソース
 この記事では、組織内での DevTest Labs 用リソースの調整と管理について説明します。 

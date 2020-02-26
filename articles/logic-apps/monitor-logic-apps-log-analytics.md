@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 1948151dfa07e565a929b4506273e3f88f5408c4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3e41f92f9e41f7a05102e8c0e1c2edb81fa50bf3
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76907238"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426328"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>Azure Monitor ログを設定し、Azure Logic Apps の診断データを収集する
 
@@ -145,7 +145,7 @@ ms.locfileid: "76907238"
    ![ロジック アプリの追跡対象プロパティを表示する](./media/monitor-logic-apps-log-analytics/logic-app-tracked-properties.png)
 
    > [!NOTE]
-   > 追跡対象プロパティまたは完了したイベントが Log Analytics ワークスペースに表示されるまでに、10-15 分の遅延が発生する場合があります。
+   > 追跡対象プロパティまたは完了したイベントが Log Analytics ワークスペースに表示されるまでに、10 から 15 分の遅延が発生する場合があります。
    > また、このページの**再送信**機能は現在使用できません。
 
 1. 結果をフィルター処理するには、クライアント側とサーバー側の両方でフィルター処理を実行します。

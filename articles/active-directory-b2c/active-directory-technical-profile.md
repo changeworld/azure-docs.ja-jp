@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e27288f95f07c481ab98a112ed9f02a34046600a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 9f00bebfbab7b3726930e212893ae9dd2f5c17c8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76835795"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193447"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで Azure Active Directory 検証技術プロファイルを定義します。
 
@@ -56,7 +56,7 @@ Azure Active Directory B2C (Azure AD B2C) は、Azure Active Directory ユーザ
 </TechnicalProfile>
 ```
 
-## <a name="input-claims"></a>入力要求
+## <a name="input-claims"></a>入力クレーム
 
 以下の技術プロファイルには、ソーシャル アカウントとローカル アカウントの **InputClaims** が含まれています。
 
@@ -66,7 +66,7 @@ Azure Active Directory B2C (Azure AD B2C) は、Azure Active Directory ユーザ
 
 **InputClaimsTransformations** 要素には、入力要求を変更したり新しい要求を生成するために使用される、**InputClaimsTransformation** 要素のコレクションが含まれている場合があります。
 
-## <a name="output-claims"></a>出力要求
+## <a name="output-claims"></a>出力クレーム
 
 **OutputClaims** 要素には、Azure AD 技術プロファイルによって返された要求の一覧が含まれています。 ポリシーに定義されている要求の名前を、Azure Active Directory で定義されている名前にマップすることが必要になる場合があります。 また、`DefaultValue` 属性を設定している限り、Azure Active Directory によって返されない要求を含めることもできます。
 
@@ -253,7 +253,7 @@ Azure Active Directory B2C (Azure AD B2C) は、Azure Active Directory ユーザ
 ```
 ## <a name="metadata"></a>Metadata
 
-| Attribute | Required | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | Operation | はい | 実行する操作。 指定できる値: `Read`、`Write`、`DeleteClaims`、または `DeleteClaimsPrincipal`。 |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | いいえ | ユーザー オブジェクトがディレクトリに存在しない場合、エラーを発生させます。 指定できる値: `true` または `false`。 |
@@ -262,6 +262,7 @@ Azure Active Directory B2C (Azure AD B2C) は、Azure Active Directory ユーザ
 | UserMessageIfClaimsPrincipalAlreadyExists | いいえ | エラーが発生する場合 (RaiseErrorIfClaimsPrincipalAlreadyExists 属性の説明を参照)、ユーザー オブジェクトが既に存在する場合にユーザーに表示するメッセージを指定します。 値を[ローカライズ](localization.md)することができます。|
 | ApplicationObjectId | いいえ | 拡張属性のアプリケーション オブジェクト識別子。 値:アプリケーションの ObjectId。 詳細については、「[カスタム プロファイル編集ポリシーのカスタム属性を使用](custom-policy-custom-attributes.md)」を参照してください。 |
 | ClientId | いいえ | サード パーティとしてテナントにアクセスするためのクライアント識別子。 詳細については、「[カスタム プロファイル編集ポリシーのカスタム属性を使用](custom-policy-custom-attributes.md)」を参照してください。 |
+| IncludeClaimResolvingInClaimsHandling  | いいえ | 入力要求と出力要求の場合、[要求の解決](claim-resolver-overview.md)が技術プロファイルに含まれるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
 
 
 

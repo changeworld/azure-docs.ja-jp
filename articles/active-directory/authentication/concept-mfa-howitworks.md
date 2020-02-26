@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0982f6fb70cd6866af48feab640d5dc36bcb6b28
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 39948214f5bd080be417ed515bea6bff87d3b303
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848682"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484062"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>動作のしくみ: Azure Multi-Factor Authentication
 
@@ -38,7 +38,7 @@ Multi-Factor Authentication は以下のサービスに付属します。
 
 * **Azure Active Directory Premium** または **Microsoft 365 Business** - Azure Multi-Factor Authentication のすべての機能と条件付きアクセス ポリシーを使用して、多要素認証を要求します。
 
-* **Azure AD Free**、またはスタンドアロンの **Office 365** ライセンス - [作成済みの条件付きアクセス ベースライン保護ポリシー](../conditional-access/concept-baseline-protection.md)を使用して、ユーザーと管理者に多要素認証を要求します。
+* **Azure AD Free**、またはスタンドアロンの **Office 365** ライセンス - [セキュリティの既定値群](../fundamentals/concept-fundamentals-security-defaults.md)を使用して、ユーザーと管理者に多要素認証を要求します。
 
 * **Azure Active Directory 全体管理者** - Azure Multi-Factor Authentication の一部の機能を集めたものであり、全体管理者アカウントを保護するための手段として利用されます。
 
@@ -54,6 +54,6 @@ Multi-Factor Authentication は以下のサービスに付属します。
 * 2 段階認証の要求を最小限に抑える方法として、条件付きアクセスのネームド ロケーションを使用することを検討します。 この機能を使用して、管理者は、新しいユーザーのオンボードで使用されるセキュリティで保護された信頼できるネットワークの場所 (ネットワーク セグメントなど) からサインインしているユーザーの 2 段階認証をバイパスすることができます。
 * [Azure AD Identity Protection](../active-directory-identityprotection.md) をデプロイし、リスク検出に基づいて 2 段階検証をトリガーします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Multi-Factor Authentication のデプロイ手順](howto-mfa-getstarted.md)

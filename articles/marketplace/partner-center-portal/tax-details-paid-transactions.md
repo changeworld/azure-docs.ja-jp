@@ -1,18 +1,18 @@
 ---
 Description: 価格の選択、支払いの内訳、納税責任に関連した税金についての考慮事項を理解するには、配布を行う国/地域を以下の表でご覧ください。
 title: 税の詳細 | Azure Marketplace
-ms.date: 12/10/2019
+ms.date: 2/13/2020
 ms.topic: article
 author: MaggiePucciEvans
 manager: evansma
 ms.author: evansma
 ms.service: marketplace
-ms.openlocfilehash: a5d11216b43a1361e4f8d108ce6d289e67e31e0a
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: cd580c43aa25dd4cc33ceb7138785a94a021b771
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933566"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210450"
 ---
 # <a name="tax-details-for-commercial-marketplace-publishers"></a>コマーシャル マーケットプレース発行元向けの税の詳細
 
@@ -22,7 +22,7 @@ ms.locfileid: "75933566"
 > 限られた一部の国/地域では、商取引拡大調整が支払いに影響を及ぼす場合があります。 商取引拡大調整とそれが適用される市場の詳細については、「[Microsoft Azure Marketplace 発行者契約](https://go.microsoft.com/fwlink/p/?LinkID=699560)」と影響を受ける国/地域の一覧をご覧ください。
 
 > [!IMPORTANT]
-> 再販業者の国/地域および状況 ([後述](#reseller-countriesregions)のとおり) に応じた納税責任は、以下の表に記載されている情報にかかわらず、「[Microsoft Azure Marketplace 発行者契約](https://go.microsoft.com/fwlink/p/?LinkID=699560)」の付属資料 C に記載されています。
+> 再販業者の国/地域および状況 ([後述](#reseller-countriesregions)のとおり) に応じた納税責任は、以下の表に記載されている情報にかかわらず、「[Microsoft Azure Marketplace 発行者契約](https://go.microsoft.com/fwlink/p/?LinkID=699560)」の付属資料 A に記載されています。
 > 「**支払いの内訳**」列は発行元のみに適用されることに注意してください。 この列に示されている税率は、いつでも変更される可能性があります。Microsoft では、以下の表の料金が常に正確であることを保証いたしかねます。
 
 

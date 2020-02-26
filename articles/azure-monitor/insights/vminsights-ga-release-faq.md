@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: ea7c695ddb92d441018503839b974c1f4bb33473
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 673cda4005d9c985d8d6ee5ef1d28a3d8c241ac0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047838"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482886"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Azure Monitor for VMs の一般提供 (GA) についてよく寄せられる質問
 
@@ -24,7 +24,9 @@ ms.locfileid: "77047838"
 
 このアップグレードを使用すると、Azure Monitor for VMs のパフォーマンス データは、[コンテナーの Azure Monitor](container-insights-overview.md) と同じ *InsightsMetrics* テーブルに格納されるため、2 つのデータ セットのクエリを簡単に実行することができます。 また、以前に使用したテーブルには格納できなかったより多様なデータ セットを格納することもできます。 
 
-数週間以内に、この新しいテーブルを使用するように、パフォーマンス ビューも更新されます。
+パフォーマンス ビューでは、*InsightsMetrics* テーブルに格納しているデータが使用されています。  ワークスペースで最新の VMInsights ソリューションを使用するようにアップグレードしていない場合は、グラフに情報が表示されなくなります。  次に示すように、 **[Get Started]\(開始\)** ページからアップグレードすることができます。
+
+このアップグレードを使用すると、Azure Monitor for VMs のパフォーマンス データは、[コンテナーに対する Azure Monitor](container-insights-overview.md) と同じ *InsightsMetrics* テーブルに格納されるため、2 つのデータ セットのクエリを簡単に実行できます。 また、以前に使用されていたテーブルには格納できなかった、より多様なデータ セットを格納することもできます。 
 
 Microsoft では、既存のお客様にアップグレードをお願いすることで、お客様のワークフローの中断が生じることを認識しています。これが、GA の後ではなく、パブリック プレビュー中の今、アップグレードをお願いする理由です。
 
@@ -34,6 +36,8 @@ Microsoft では、既存のお客様にアップグレードをお願いする�
 VMInsights という名前の新しいソリューションがリリースされました。これには、データ収集のための追加機能と、ご利用の Log Analytics ワークスペースにこのデータを格納するための新しい場所が含まれています。 
 
 以前は、ワークスペースで ServiceMap ソリューションを有効にし、Log Analytics ワークスペースでパフォーマンス　カウンターを設定して、*Perf* テーブルにデータを送信していました。 この新しいソリューションでは、コンテナーの Azure Monitor によっても使用される *InsightsMetrics* という名前のテーブルにデータが送信されます。 このテーブル スキーマを使用すると、*Perf* テーブル形式と互換性のない追加のメトリックとサービス データ セットを格納できます。
+
+パフォーマンス グラフは、*InsightsMetrics* テーブルに格納されているデータを使用するように更新されました。 次に示すように、 **[Get Started]\(開始\)** ページから *InsightsMetrics* テーブルを使用するようにアップグレードできます。
 
 
 ## <a name="how-do-i-upgrade"></a>アップグレード方法を教えてください。

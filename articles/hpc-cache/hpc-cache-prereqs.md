@@ -4,14 +4,14 @@ description: Azure HPC Cache を使用するための前提条件
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 02/12/2020
 ms.author: rohogue
-ms.openlocfilehash: 90b84d936bda4e3a974e60934e82ac6c3389d85a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 135c231f84d95ea2418fab4647d715473378e41c
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645771"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251959"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC Cache の前提条件
 
@@ -70,12 +70,6 @@ Azure 仮想ネットワークと DNS サーバーの構成について詳しく
 
 ストレージの種類ごとに特定の前提条件があります。
 
-### <a name="nfs-storage-requirements"></a>NFS ストレージの要件
-
-オンプレミスのハードウェア ストレージを使用する場合、キャッシュのサブネットとデータセンターとの間に高帯域幅のネットワーク アクセスが必要です。 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) または同様のアクセスが推奨されます。
-
-NFS バックエンド ストレージは、互換性のあるハードウェア プラットフォームおよびソフトウェア プラットフォームである必要があります。 詳細については、Azure HPC Cache チームにお問い合わせください。
-
 ### <a name="blob-storage-requirements"></a>Blob Storage の要件
 
 お使いのキャッシュで Azure Blob Storage の使用を希望する場合、互換性のあるストレージ アカウントに加え、空の BLOB コンテナーか、Azure HPC Cache フォーマットのデータが事前設定されたコンテナーが必要です ([Azure Blob Storage にデータを移動する](hpc-cache-ingest.md)方法を参照)。
@@ -93,6 +87,52 @@ NFS バックエンド ストレージは、互換性のあるハードウェア
 <!-- clarify location - same region or same resource group or same virtual network? -->
 
 また、「[アクセス許可](#permissions)」で前述のように、キャッシュ アプリケーションには、Azure Storage アカウントへのアクセス権を与える必要があります。 「[ストレージ ターゲットの追加](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)」の手順に従い、必要なアクセス ロールをキャッシュに与えます。 ストレージ アカウント所有者ではない場合は、この手順を所有者に依頼してください。
+
+### <a name="nfs-storage-requirements"></a>NFS ストレージの要件
+
+NFS ストレージ システム (たとえば、オンプレミスのハードウェア NAS システム) を使用している場合は、次の要件を満たしていることを確認します。 これらの設定を確認するには、ストレージ システム (またはデータ センター) のネットワーク管理者またはファイアウォール マネージャーとの協力が必要な場合があります。
+
+> [!NOTE]
+> キャッシュが NFS ストレージ システムに対して十分なアクセス権を持っていない場合、ストレージ ターゲットの作成は失敗します。
+
+* **ネットワーク接続:** Azure HPC Cache には、キャッシュ サブネットと NFS システムのデータ センター間の高帯域幅ネットワーク アクセスが必要です。 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) または同様のアクセスが推奨されます。 VPN を使用している場合は、TCP MSS を 1350 でクランプして大きなパケットがブロックされないように構成する必要があります。
+
+* **ポート アクセス:** キャッシュには、ストレージ システム上の特定の TCP/UDP ポートへのアクセスが必要です。 ストレージの種類によってポート要件は異なります。
+
+  ストレージ システムの設定を確認するには、次の手順を実行します。
+
+  * ストレージ システムに `rpcinfo` コマンドを発行して、必要なポートを確認します。 次のコマンドを使って、ポートを一覧表示し、関連する結果の書式を設定します ( *<storage_IP>* という表現の部分にはシステムの IP アドレスを使用してください)。
+
+    このコマンドは、NFS インフラストラクチャがインストールされている任意の Linux クライアントから発行できます。 クラスター サブネット内のクライアントを使用する場合は、サブネットとストレージ システム間の接続を検証するためにも役立ちます。
+
+    ```bash
+    rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
+    ```
+
+  * `rpcinfo` コマンドから返されるポートに加えて、これらの一般的に使用されるポートで受信トラフィックと送信トラフィックが許可されていることを確認します:
+
+    | Protocol | Port  | サービス  |
+    |----------|-------|----------|
+    | TCP/UDP  | 111   | rpcbind  |
+    | TCP/UDP  | 2049  | NFS      |
+    | TCP/UDP  | 4045  | nlockmgr |
+    | TCP/UDP  | 4046  | mountd   |
+    | TCP/UDP  | 4047  | status   |
+
+  * ファイアウォール設定で、これらのすべての必要なポートでトラフィックが許可されていることを確認します。 Azure で使用されているファイアウォールとデータ センターのオンプレミス ファイアウォールを必ず確認してください。
+
+* **ディレクトリ アクセス:** ストレージ システム上で `showmount` コマンドを有効にします。 Azure HPC Cache でこのコマンドを使用して、ストレージ ターゲット構成が有効なエクスポートを指していることを確認します。また、複数のマウントが同じサブディレクトリにアクセスしないようにします (ファイルの競合が発生するリスクがあります)。
+
+  > [!NOTE]
+  > NFS ストレージ システムが NetApp の ONTAP 9.2 オペレーティング システムを使用している場合は、 **`showmount` を有効にしないでください**。 [Microsoft サービスおよびサポートに問い合わせてください](hpc-cache-support-ticket.md)。
+
+* **ルート アクセス:** キャッシュからは、ユーザー ID 0 としてバックエンド システムに接続されます。 ストレージ システムで次の設定を確認します。
+  
+  * `no_root_squash`を有効にする: このオプションを選択すると、リモート ルート ユーザーは、ルートによって所有されているファイルにアクセスできるようになります。
+
+  * エクスポート ポリシーをチェックして、キャッシュのサブネットからのルート アクセスに制限がないことを確認してください。
+
+* NFS バックエンド ストレージは、互換性のあるハードウェア プラットフォームおよびソフトウェア プラットフォームである必要があります。 詳細については、Azure HPC Cache チームにお問い合わせください。
 
 ## <a name="next-steps"></a>次のステップ
 

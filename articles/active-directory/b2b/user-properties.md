@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa282afdf910c2449b5d5ea0bc5e38a396f3aa02
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 70156335d0d5617b4c1ccb2d11ce8e9f8dc9d036
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608858"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368123"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B コラボレーション ユーザーのプロパティ
 
@@ -73,7 +73,7 @@ ms.locfileid: "75608858"
 
 - ユーザーが招待されました:このユーザーは招待されましたが、まだ招待に応じていません。
 
-- 外部 Active Directory:このユーザーは外部組織に所属し、他の組織に属している Azure AD アカウントを使用して認証を行います。 この種類のサインインは、状態 1 に対応しています。
+- 外部の Azure Active Directory:このユーザーは外部組織に所属し、他の組織に属している Azure AD アカウントを使用して認証を行います。 この種類のサインインは、状態 1 に対応しています。
 
 - Microsoft アカウント:このユーザーは Microsoft アカウントに所属し、Microsoft アカウントを使用して認証を行います。 この種類のサインインは、状態 2 に対応しています。
 

@@ -6,17 +6,17 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: c55894bff9501d3ffb9aa843a9eaa240a213180e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 9f18eef607a5f655aecc0b6ebe1c85a239b34192
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671735"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482974"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>クラウド フォルダーから Azure App Service へのコンテンツの同期
 この記事では、Dropbox と OneDrive のコンテンツを [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) と同期する方法を示します。 
 
-オンデマンド コンテンツ同期デプロイでは、App Service の [Kudu デプロイ エンジン](https://github.com/projectkudu/kudu/wiki) を利用しています。 指定したクラウド フォルダーのアプリ コードとコンテンツを操作した後、ボタンのクリックで App Service に同期できます。 コンテンツの同期では、Kudu ビルド サーバーが使用されます。 
+オンデマンド コンテンツ同期デプロイでは、App Service の [Kudu デプロイ エンジン](https://github.com/projectkudu/kudu/wiki) を利用しています。 指定したクラウド フォルダーのアプリ コードとコンテンツを操作した後、ボタンをクリックして App Service に同期できます。 コンテンツの同期では、Kudu ビルド サーバーが使用されます。 
 
 ## <a name="enable-content-sync-deployment"></a>コンテンツ同期デプロイを有効にする
 
@@ -60,7 +60,7 @@ OneDrive または Dropbox の承認は、1 回のみ実行する必要があり
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [ローカル Git リポジトリからデプロイする](deploy-local-git.md)

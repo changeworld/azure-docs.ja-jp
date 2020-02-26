@@ -5,17 +5,17 @@ author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 68a830f344023967f07ab809d67833f99e4e2958
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 2/18/2020
+ms.openlocfilehash: 0e2eb4ab13319779ae209e58253c6a5f2ccb75da
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977609"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462430"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>Azure portal を使用して Azure Database for PostgreSQL でのメトリックに対するアラートを設定する - Hyperscale (Citus)
 
-この記事では、Azure Portal を使用して Azure Database for PostgreSQL のアラートを設定する方法について説明します。 お使いの Azure のサービスの監視メトリックに基づいてアラートを受け取ることができます。
+この記事では、Azure Portal を使用して Azure Database for PostgreSQL のアラートを設定する方法について説明します。 お使いの Azure のサービスの[監視メトリック](concepts-hyperscale-monitoring.md)に基づいて、アラートを受け取ることができます。
 
 指定したメトリックの値がしきい値を超えた場合に、アラートがトリガーされるように設定します。 条件が最初に一致したときにアラートがトリガーされ、その後も引き続きトリガーが行われます。
 
@@ -81,7 +81,7 @@ ms.locfileid: "74977609"
 
     数分後にアラートがアクティブになり、前述のようにトリガーされます。
 
-## <a name="manage-your-alerts"></a>アラートの管理
+### <a name="managing-alerts"></a>アラートの管理
 
 アラートを作成したら、それを選択して次のアクションを実行できます。
 
@@ -89,6 +89,24 @@ ms.locfileid: "74977609"
 * アラート ルールを**編集**または**削除**する。
 * アラートを**無効**にしてアラートを一時的に停止する、または**有効**にして通知の受け取りを再開する。
 
-## <a name="next-steps"></a>次の手順
+## <a name="suggested-alerts"></a>推奨されるアラート
+
+### <a name="disk-space"></a>ディスク領域
+
+監視とアラートは、すべての運用環境の Hyperscale (Citus) サーバー グループにとって重要です。 正常に動作するには、基になる PostgreSQL データベースに空きディスク領域が必要です。 ディスクがいっぱいになると、データベース サーバー ノードはオフラインになり、領域が使用可能になるまで起動できません。 その時点で、この状況を解決するには、Microsoft にサポートを要求する必要があります。
+
+運用環境以外で使用する場合であっても、すべてのサーバー グループのすべてのノードでディスク領域アラートを設定することをお勧めします。 ディスク領域使用量アラートでは、介入してノードを正常な状態に保つために必要な事前警告が提供されます。 最良の結果を得るには、75%、85%、95% の使用率で一連のアラートを試してみてください。 データ インジェストが速いほどディスクがいっぱいになるのも速いため、選択するパーセンテージは、データ インジェストの速度に依存します。
+
+ディスクが容量制限に近づいたら、次の方法で空き領域を増やしてみます。
+
+* データ保持ポリシーを検討します。 可能であれば、古いデータをコールド ストレージに移動します。
+* サーバー グループに[ノードを追加](howto-hyperscale-scaling.md#add-worker-nodes)し、シャードを再調整することを検討します。 再調整を行うと、より多くのコンピューターにデータが分散されます。
+* ワーカー ノードの[容量を増やす](howto-hyperscale-scaling.md#increase-vcores)ことを検討します。 各ワーカーに許されるストレージの最大量は 2 TiB です。 ただし、ノードを追加する方が短時間で完了するため、ノードのサイズを変更する前に、ノードを追加する必要があります。
+
+### <a name="cpu-usage"></a>CPU 使用率
+
+CPU 使用率の監視は、パフォーマンスのベースラインを確立するのに役立ちます。 たとえば、CPU 使用率が通常は約 40 - 60% であるとします。 CPU 使用率が急に 95% 程度まで上昇し始めたら、異常があることがわかります。 CPU 使用率は、有機的成長を反映する場合もありますが、不適切なクエリを示していることもあります。 CPU アラートを作成するときは、長期間の増加が検出されて、瞬間的な急増が無視されるように、集計単位を長く設定します。
+
+## <a name="next-steps"></a>次のステップ
 * [アラートでの webhook の構成](../azure-monitor/platform/alerts-webhooks.md)に関する詳細情報を確認します。
 * [メトリック収集の概要](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) 情報を入手して、サービスの可用性と応答性を確認します。

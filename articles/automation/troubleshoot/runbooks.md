@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 65006b8357db44c3e1b8f8d9e819615b5dd9db6e
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 571be831d337c71a084780da18b480cdd1e42d20
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031750"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77365212"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook のエラーをトラブルシューティングする
 
@@ -569,53 +569,77 @@ Linux 用 Log Analytics エージェントの nxautomationuser アカウント�
 
 * sudoers ファイル内の nxautomationuser アカウントの構成を確認します。 「[Hybrid Runbook Worker での Runbook の実行](../automation-hrw-run-runbooks.md)」を参照してください
 
+## <a name="scenario-cmdlet-failing-in-pnp-powershell-runbook-on-azure-automation"></a>シナリオ:Azure Automation 上の PnP PowerShell Runbook でコマンドレットが失敗する
+
+### <a name="issue"></a>問題
+
+PnP PowerShell で生成されたオブジェクトが Runbook から Azure Automation の出力に直接書き込まれると、コマンドレットの出力をオートメーションにストリーム バックすることができません。
+
+### <a name="cause"></a>原因
+
+この問題が発生する最も一般的な状況は、Azure Automation で、**add-pnplistitem** などの PnP PowerShell コマンドレットを呼び出す Runbook を、戻りオブジェクトをキャッチせずに処理する場合です。
+
+### <a name="resolution"></a>解決策
+
+スクリプトを編集して戻り値を変数に割り当て、コマンドレットからオブジェクト全体が標準出力に書き出されないようにします。 次に示すように、スクリプトを使って出力ストリームをコマンドレットにリダイレクトできます。
+
+```azurecli
+  $null = add-pnplistitem
+```
+スクリプトを使ってコマンドレットの出力を解析する場合は、単に出力をストリーミングするのではなく、スクリプトで出力を変数に格納し、変数を操作する必要があります。
+
+```azurecli
+$SomeVariable = add-pnplistitem ....
+if ($SomeVariable.someproperty -eq ....
+```
+
 ## <a name="other"></a>問題が上記の一覧にない
 
 以降の各セクションでは、その他の一般的なエラーと問題の解決に役立つ関連ドキュメントを掲載しています。
 
-## <a name="hybrid-runbook-worker-doesnt-run-jobs-or-isnt-responding"></a>Hybrid Runbook Worker がジョブを実行しないか、応答していない
+### <a name="hybrid-runbook-worker-doesnt-run-jobs-or-isnt-responding"></a>Hybrid Runbook Worker がジョブを実行しないか、応答していない
 
 Azure Automation ではなく Hybrid Worker を使用してジョブを実行している場合は、[Hybrid Worker 自体のトラブルシューティング](https://docs.microsoft.com/azure/automation/troubleshoot/hybrid-runbook-worker)が必要になることがあります。
 
-## <a name="runbook-fails-with-no-permission-or-some-variation"></a>Runbook が "アクセス許可なし"、または類似した問題によって失敗する
+### <a name="runbook-fails-with-no-permission-or-some-variation"></a>Runbook が "アクセス許可なし"、または類似した問題によって失敗する
 
 実行アカウントの Azure リソースに対するアクセス許可が、お使いの現在のアカウントと同じでない可能性があります。 ご自身の実行アカウントに、お使いのスクリプトで使用されている[リソースにアクセスするためのアクセス許可がある](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)ことを確認してください。
 
-## <a name="runbooks-were-working-but-suddenly-stopped"></a>以前は動作していた Runbook が突然停止した
+### <a name="runbooks-were-working-but-suddenly-stopped"></a>以前は動作していた Runbook が突然停止した
 
 * 以前は動作していた Runbook が停止した場合は、[実行アカウント](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal)の有効期限が切れていないことを確認します。
 * Webhook を使用して Runbook を開始している場合は、[Webhook](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook) の有効期限が切れていないことを確認します。
 
-## <a name="issues-passing-parameters-into-webhooks"></a>パラメーターを Webhook に渡すときに問題が発生する
+### <a name="issues-passing-parameters-into-webhooks"></a>パラメーターを Webhook に渡すときに問題が発生する
 
 パラメーターを Webhook に渡す場合のヘルプについては、「[Webhook から Runbook を開始する](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters)」を参照してください。
 
-## <a name="issues-using-az-modules"></a>Az モジュールを使用するときに問題が発生する
+### <a name="issues-using-az-modules"></a>Az モジュールを使用するときに問題が発生する
 
 Az モジュールと AzureRM モジュールを同じ Automation アカウントで使用することはできません。 詳細については、[Runbook の Az モジュール](https://docs.microsoft.com/azure/automation/az-modules)に関するページを参照してください。
 
-## <a name="inconsistent-behavior-in-runbooks"></a>Runbook 内の一貫性のない動作
+### <a name="inconsistent-behavior-in-runbooks"></a>Runbook 内の一貫性のない動作
 
 [Runbook の実行](https://docs.microsoft.com/azure/automation/automation-runbook-execution#runbook-behavior)に関するガイダンスに従って、Runbook での同時実行ジョブ、リソースの複数回の作成、またはその他のタイミングに依存するロジックに関する問題を回避してください。
 
-## <a name="runbook-fails-with-the-error-no-permission-forbidden-403-or-some-variation"></a>Runbook が、アクセス許可なし、禁止 (403)、または類似したエラーによって失敗する
+### <a name="runbook-fails-with-the-error-no-permission-forbidden-403-or-some-variation"></a>Runbook が、アクセス許可なし、禁止 (403)、または類似したエラーによって失敗する
 
 実行アカウントの Azure リソースに対するアクセス許可が、お使いの現在のアカウントと同じでない可能性があります。 ご自身の実行アカウントに、お使いのスクリプトで使用されている[リソースにアクセスするためのアクセス許可がある](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)ことを確認してください。
 
-## <a name="runbooks-were-working-but-suddenly-stopped"></a>以前は動作していた Runbook が突然停止した
+### <a name="runbooks-were-working-but-suddenly-stopped"></a>以前は動作していた Runbook が突然停止した
 
 * 以前は動作していた Runbook が停止した場合は、実行アカウントの有効期限が切れていないことを確認します。 [証明書の更新](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal)に関するセクションを参照してください。
 * Webhook を使用して Runbook を開始している場合は、Webhook の[有効期限が切れていないこと](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook)を確認してください。
 
-## <a name="passing-parameters-into-webhooks"></a>パラメーターをスクリプトに渡す
+### <a name="passing-parameters-into-webhooks"></a>パラメーターをスクリプトに渡す
 
 パラメーターを Webhook に渡す場合のヘルプについては、「[Webhook から Runbook を開始する](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters)」を参照してください。
 
-## <a name="using-az-modules"></a>Az モジュールの使用
+### <a name="using-az-modules"></a>Az モジュールの使用
 
 Az モジュールと AzureRM モジュールを同じ Automation アカウントで使用することはできません。 [Runbook 内の Az モジュール](https://docs.microsoft.com/azure/automation/az-modules)に関するページを参照してください。
 
-## <a name="using-self-signed-certificates"></a>自己署名証明書の使用
+### <a name="using-self-signed-certificates"></a>自己署名証明書の使用
 
 自己署名証明書を使用するには、「[新しい証明書の作成](https://docs.microsoft.com/azure/automation/shared-resources/certificates#creating-a-new-certificate)」を参照してください。
 

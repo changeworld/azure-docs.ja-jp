@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf1515bcf2223ae730a47f7105d51206ba638cd7
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: bfc5c24b1ba3d623e148e0da5b38a869d056996a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161615"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367804"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ
 
@@ -112,7 +112,7 @@ ServiceNow、Box、G Suite などいくつかのアプリケーションでは�
 - Salesforce
 - ServiceNow
 - Workday
-- Azure Active Directory ([Azure AD Graph API の既定の属性](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity)とカスタム ディレクトリ拡張機能がサポートされる)
+- Azure Active Directory ([Microsoft Graph REST API v1.0 リファレンス](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)とカスタム ディレクトリ拡張機能がサポートされる)
 - [SCIM 2.0](https://tools.ietf.org/html/rfc7643) をサポートするアプリ ([コア スキーマ](https://tools.ietf.org/html/rfc7643)に定義された属性を追加する必要がある)
 
 > [!NOTE]
@@ -133,7 +133,7 @@ ServiceNow、Box、G Suite などいくつかのアプリケーションでは�
 - **[Multi-value?]\(複数値\)** - 属性が複数値をサポートするかどうか。
 - **[Exact case?]\(大文字小文字の区別\)** - 大文字と小文字を区別して属性値を評価するかどうか。
 - **[API 式]** - 特定のプロビジョニング コネクタ (Workday など) のドキュメントで指示されていない限り、使用しないでください。
-- **[Referenced Object Attribute]** (参照オブジェクト属性) - これが Reference 型属性の場合は、このメニューを使用して、この属性に関連付けられている値を含むターゲット アプリケーションのテーブルと属性を選択できます。 たとえば、"Department" という名前の属性があるとき、そこに格納されている値が別の "Departments" テーブルのオブジェクトを参照する場合は、"Departments.Name" を選択します。 特定のアプリケーションでサポートされる参照テーブルとプライマリ ID フィールドは事前に構成されます。現在、Azure portal を使用して編集することはできませんが、[Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes) を使用すると編集できます。
+- **[Referenced Object Attribute]** (参照オブジェクト属性) - これが Reference 型属性の場合は、このメニューを使用して、この属性に関連付けられている値を含むターゲット アプリケーションのテーブルと属性を選択できます。 たとえば、"Department" という名前の属性があるとき、そこに格納されている値が別の "Departments" テーブルのオブジェクトを参照する場合は、"Departments.Name" を選択します。 特定のアプリケーションでサポートされる参照テーブルとプライマリ ID フィールドは事前に構成されます。現在、Azure portal を使用して編集することはできませんが、[Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes) を使用すると編集できます。
 
 #### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>SCIM 準拠アプリケーションへカスタム拡張属性をプロビジョニングする
 SCIM RFC ではコア ユーザーとグループ スキーマが定義されているだけでなく、スキーマの拡張をアプリケーションのニーズに合わせて使用することもできます。 カスタム属性を SCIM アプリケーションに追加するには、次の手順に従います。
@@ -300,7 +300,7 @@ phoneNumbers や emails のように、一部の属性は複数の値を持ち�
 
 ## <a name="restoring-the-default-attributes-and-attribute-mappings"></a>既定の属性と属性マッピングの復元
 
-最初からやり直すために、既存のマッピングを既定の状態にリセットする必要がある場合は、 **[既定のマッピングを復元する]** チェック ボックスをオンにして構成を保存します。 そうすると、アプリケーションがアプリケーション ギャラリーから Azure AD テナントに追加された直後のようにすべてのマッピングが設定されます。
+最初からやり直すために、既存のマッピングを既定の状態にリセットする必要がある場合は、 **[既定のマッピングを復元する]** チェック ボックスをオンにして構成を保存します。 そうすると、アプリケーションがアプリケーション ギャラリーから Azure AD テナントに追加された直後のようにすべてのマッピングとスコープ フィルターが設定されます。
 
 このオプションを選択すると、プロビジョニング サービスを実行している際に、すべてのユーザーの再同期が実際に強制されます。
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2020
 ms.author: Zhchia
-ms.openlocfilehash: b0b5147faf82fedb6dc3c2eea54dcff1b9343f7a
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 119690b9046821ab538d879e1209c6ef77277370
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77088935"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370688"
 ---
 # <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>チュートリアル:PureCloud by Genesys を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -90,7 +90,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
     ![[プロビジョニング] タブ](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナントの URL]** フィールドと **[シークレット トークン]** フィールドに、それぞれ PureCloud by Genesys API の URL と OAuth トークンを入力します。 **[テスト接続]** をクリックして、Azure AD から PureCloud by Genesys への接続を確保します。 接続できない場合は、使用中の PureCloud by Genesys アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクションの **[テナントの URL]** フィールドと **[シークレット トークン]** フィールドに、それぞれ PureCloud by Genesys API の URL と OAuth トークンを入力します。 API URL は、[PureCloud Developer Center](https://developer.mypurecloud.com/api/rest/index.html) の PureCloud リージョンの API URL を使用して、`{{API Url}}/api/v2/scim/v2` の構造になります。 **[テスト接続]** をクリックして、Azure AD から PureCloud by Genesys への接続を確保します。 接続できない場合は、使用中の PureCloud by Genesys アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![プロビジョニング](./media/purecloud-by-genesys-provisioning-tutorial/provisioning.png)
 
@@ -104,7 +104,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 9. **[属性マッピング]** セクションで、Azure AD から PureCloud by Genesys に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性を使用して、更新処理で PureCloud by Genesys のユーザー アカウントとの照合が行われます。 [一致する対象の属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)を変更する場合は、その属性に基づいたユーザーのフィルター処理が確実に PureCloud by Genesys API でサポートされているようにする必要があります。 **[保存]** ボタンをクリックして変更をコミットします。
 
-     |Attribute|Type|
+     |属性|Type|
      |---|---|
      |userName|String|
      |active|Boolean|
@@ -120,7 +120,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 11. **[属性マッピング]** セクションで、Azure AD から PureCloud by Genesys に同期されるグループ属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新操作で PureCloud by Genesys のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。 PureCloud by Genesys では、グループの作成と削除はサポートされません。サポートされるのはグループの更新のみです。
 
-      |Attribute|Type|
+      |属性|Type|
       |---|---|
       |displayName|String|
       |externalId|String|

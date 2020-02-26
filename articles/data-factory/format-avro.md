@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 02/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 9e962a0e76cdc0d51a87df3c33927c34db991fc7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6d867ccd8704d4aba4627e7b81638394b7e1e8d3
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927411"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77423781"
 ---
 # <a name="avro-format-in-azure-data-factory"></a>Azure Data Factory での Avro 形式
 
@@ -26,11 +26,11 @@ Avro 形式は次のコネクタでサポートされています。[Amazon S3](
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、Avro データセットでサポートされるプロパティの一覧を示します。
 
-| プロパティ         | 説明                                                  | 必須 |
+| プロパティ         | 説明                                                  | Required |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | データセットの type プロパティは、**Avro** に設定する必要があります。 | はい      |
 | location         | ファイルの場所の設定。 ファイル ベースの各コネクタには、固有の場所の種類と `location` でサポートされるプロパティがあります。 **詳細については、コネクタの記事でデータセットのプロパティに関するセクションを参照してください**。 | はい      |
-| avroCompressionCodec | Avro ファイルへの書き込み時に使用する圧縮コーデック。 Avro ファイルから読み取る場合、Data Factory では、ファイルのメタデータに基づいて圧縮コーデックが自動的に判別されます。<br>サポートされる型は "**none**" (既定値)、"**deflate**"、"**snappy**" です。 | いいえ       |
+| avroCompressionCodec | Avro ファイルへの書き込み時に使用する圧縮コーデック。 Avro ファイルから読み取る場合、Data Factory では、ファイルのメタデータに基づいて圧縮コーデックが自動的に判別されます。<br>サポートされる型は "**none**" (既定値)、"**deflate**"、"**snappy**" です。 Avro ファイルの読み取りおよび書き込みの場合、コピー アクティビティでは現在、Snappy がサポートされていないことに注意してください。 | いいえ       |
 
 > [!NOTE]
 > Avro ファイルでは、列名に空白文字はサポートされません。
@@ -67,7 +67,7 @@ Azure Blob Storage の Avro データセットの例を次に示します。
 
 コピー アクティビティの ***\*source\**** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ      | 説明                                                  | 必須 |
+| プロパティ      | 説明                                                  | Required |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | コピー アクティビティのソースの type プロパティを **AvroSource** に設定する必要があります | はい      |
 | storeSettings | データ ストアからデータを読み取る方法を指定するプロパティのグループ。 ファイル ベースの各コネクタには、`storeSettings` に、固有のサポートされる読み取り設定があります。 **詳細については、コネクタの記事でコピー アクティビティのプロパティに関するセクションを参照してください**。 | いいえ       |
@@ -76,7 +76,7 @@ Azure Blob Storage の Avro データセットの例を次に示します。
 
 コピー アクティビティの ***\* sink \**** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ      | 説明                                                  | 必須 |
+| プロパティ      | 説明                                                  | Required |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | コピー アクティビティのソースの type プロパティを **AvroSink** に設定する必要があります。 | はい      |
 | storeSettings | データ ストアにデータを書き込む方法を指定するプロパティのグループ。 ファイル ベースの各コネクタには、`storeSettings` に、固有のサポートされる書き込み設定があります。 **詳細については、コネクタの記事でコピー アクティビティのプロパティに関するセクションを参照してください**。 | いいえ       |
@@ -85,7 +85,7 @@ Azure Blob Storage の Avro データセットの例を次に示します。
 
 Avro の[複合データ型](https://avro.apache.org/docs/current/spec.html#schema_complex)はサポートされていません (レコード、列挙型、配列、マップ、共用体、および固定)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [コピー アクティビティの概要](copy-activity-overview.md)
 - [Lookup アクティビティ](control-flow-lookup-activity.md)

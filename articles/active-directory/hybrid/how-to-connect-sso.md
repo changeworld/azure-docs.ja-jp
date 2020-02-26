@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7791e7b50a963d2f92a2cbc460e36f9e83bb1b52
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: f1b7e4716e731e6b73e3ac60b64baa71043906fc
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025707"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483756"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオン
 
@@ -36,13 +36,13 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 ![シームレス シングル サインオン](./media/how-to-connect-sso/sso1.png)
 
 >[!IMPORTANT]
->シームレス SSO では、ユーザーのデバイスを**ドメイン参加済み**にする必要がありますが、[Azure AD 参加済み](../active-directory-azureadjoin-overview.md)にする必要はありません。
+>シームレス SSO では、ユーザーのデバイスが**ドメインに参加している**ことのみが必要ですが、[Azure AD 参加済み](../devices/concept-azure-ad-join.md)デバイスまたは[ハイブリッド Azure AD 参加済み](../devices/concept-azure-ad-join-hybrid.md)デバイスでは使用されません。 Azure AD 参加済みおよびハイブリッド Azure AD 参加済みでの SSO は、[プライマリ更新トークン](../devices/concept-primary-refresh-token.md)に基づいて機能します。
 
 ## <a name="key-benefits"></a>主な利点
 
 - *優れたユーザー エクスペリエンス*
   - ユーザーは、オンプレミスとクラウドベースの両方のアプリケーションに自動的にサインインします。
-  - ユーザーはパスワードを繰り返し入力する必要はありません。
+  - ユーザーは、パスワードを繰り返し入力する必要はありません。
 - *デプロイと管理が容易*
   - オンプレミスでは、この機能の動作のために追加のコンポーネントは不要です。
   - [パスワード ハッシュ同期](how-to-connect-password-hash-synchronization.md)または[パススルー認証](how-to-connect-pta.md)の、どちらのクラウド認証方法でも機能します。
@@ -78,9 +78,9 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 \*\*\*[追加の構成](how-to-connect-sso-quick-start.md#browser-considerations)が必要
 
 >[!NOTE]
->Windows 10 の場合、Azure AD で最適なシングル サインオン エクスペリエンスを実現するために、[Azure AD Join](../active-directory-azureadjoin-overview.md) を使用することをお勧めします。
+>Windows 10 の場合、Azure AD で最適なシングル サインオン エクスペリエンスを実現するために、[Azure AD Join](../devices/concept-azure-ad-join.md) を使用することをお勧めします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [**クイック スタート**](how-to-connect-sso-quick-start.md) - Azure AD シームレス SSO を動作させます。
 - [**デプロイ計画**](https://aka.ms/deploymentplans/sso) - 詳細なデプロイ計画です。

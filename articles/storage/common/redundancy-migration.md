@@ -10,12 +10,12 @@ ms.date: 02/10/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 78a7f3eb920d2f656b91cff187ca22b1e15973b7
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 14ad6dbf139b34f501e0b0ea8c16d8570b2ace5b
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163788"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212568"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>ストレージ アカウントがレプリケートされる方法を変更する
 
@@ -38,10 +38,10 @@ Azure Storage には、以下の種類のレプリケーションが用意され
 
 | 切り替え | 先: LRS | 先: GRS/RA-GRS | 先: ZRS | 先: GZRS/RA-GZRS |
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
-| <b>元: LRS</b> | 該当なし | Azure portal、PowerShell、または CLI を使用してレプリケーション設定を変更する | 手動の移行を実行する <br /><br />ライブ マイグレーションを要求する | 手動の移行を実行する <br /><br />ライブ マイグレーションを要求する |
-| <b>元: GRS/RA-GRS</b> | Azure portal、PowerShell、または CLI を使用してレプリケーション設定を変更する | 該当なし | 手動の移行を実行する <br /><br />ライブ マイグレーションを要求する | 手動の移行を実行する <br /><br />ライブ マイグレーションを要求する |
-| <b>元: ZRS</b> | 手動の移行を実行する <br /><br />ライブ マイグレーションを要求する | 手動の移行を実行する <br /><br />ライブ マイグレーションを要求する | 該当なし | Azure portal、PowerShell、または CLI を使用してレプリケーション設定を変更する |
-| <b>元: GZRS/RA-GZRS</b> | 手動の移行を実行する <br /><br />ライブ マイグレーションを要求する | 手動の移行を実行する <br /><br />ライブ マイグレーションを要求する | Azure portal、PowerShell、または CLI を使用してレプリケーション設定を変更する | 該当なし |
+| <b>元: LRS</b> | 該当なし | Azure portal、PowerShell、または CLI を使用してレプリケーション設定を変更する<sup>1</sup> | 手動の移行を実行する <br /><br />ライブ マイグレーションを要求する | 手動の移行を実行する <br /><br /> OR <br /><br /> まず GRS/RA-GRS に切り替えてから、ライブ マイグレーションを要求する<sup>1</sup> |
+| <b>元: GRS/RA-GRS</b> | Azure portal、PowerShell、または CLI を使用してレプリケーション設定を変更する | 該当なし | 手動の移行を実行する <br /><br /> OR <br /><br /> まず LRS に切り替えてから、ライブ マイグレーションを要求する | 手動の移行を実行する <br /><br /> ライブ マイグレーションを要求する |
+| <b>元: ZRS</b> | 手動の移行を実行する | 手動の移行を実行する | 該当なし | Azure portal、PowerShell、または CLI を使用してレプリケーション設定を変更する<sup>1</sup> |
+| <b>元: GZRS/RA-GZRS</b> | 手動の移行を実行する | 手動の移行を実行する | Azure portal、PowerShell、または CLI を使用してレプリケーション設定を変更する | 該当なし |
 
 <sup>1</sup> 1 回限りのエグレス料金が発生します。
 
@@ -188,7 +188,7 @@ az storage account update -g <resource_group> -n <storage_account> --set kind=St
 > [!IMPORTANT]
 > ストレージ アカウントを RA-GRS から GRS または LRS に移行した場合、そのアカウントは変換日からさらに 30 日間、RA-GRS として課金されることにご注意ください。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - [Azure Storage の冗長性](storage-redundancy.md)
 - [ストレージ アカウントの最終同期時刻プロパティを確認する](last-sync-time-get.md)

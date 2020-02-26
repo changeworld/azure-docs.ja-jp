@@ -8,22 +8,25 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5688bd92e63016e195726488bd9ff9ed039c5795
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 807dde08d6ae88054524cb9e397d36db41324482
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928418"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484572"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Azure Functions でサポートされる Application Insights の機能
 
 Azure Functions では、ILogger インターフェイス経由で使用できる、Application Insights との[組み込みの統合](../../azure-functions/functions-monitoring.md)を提供しています。 現在サポートされている機能の一覧を次に示します。 [概要](../../azure-functions/functions-monitoring.md#enable-application-insights-integration)については、Azure Functions のガイドを確認してください。
 
-## <a name="supported-features"></a>サポートされる機能
+Functions ランタイム バージョンの詳細については、[こちら](../../azure-functions/functions-versions.md)をご覧ください。
 
-| Azure Functions                       | V1                | V2 (Ignite 2018)  | 
+Application Insights の互換性のあるバージョンの詳細については、「[依存関係](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/)」を参照してください。
+
+## <a name="supported-features"></a>サポートされている機能
+
+| Azure Functions                       | V1                | V2 および V3   | 
 |-----------------------------------    |---------------    |------------------ |
-| **Application Insights .NET SDK**   | **2.5.0**       | **2.9.1**         |
 | | | | 
 | **自動収集の対象**        |                 |                   |               
 | &bull; 要求                     | はい             | はい               | 

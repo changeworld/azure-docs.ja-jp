@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
-ms.date: 02/07/2020
-ms.openlocfilehash: 1256575eea7ee80b41a875c6bcd9b281b98aa360
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.date: 02/18/2020
+ms.openlocfilehash: f1707c7f8d6324678c8bf5a470bbded1e58c719e
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163308"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470719"
 ---
 # <a name="debug-wasb-file-operations-in-azure-hdinsight"></a>Azure HDInsight で WASB ファイル操作をデバッグする
 
@@ -26,19 +26,17 @@ ms.locfileid: "77163308"
 
 ## <a name="turn-on-wasb-debug-log-for-file-operations"></a>ファイル操作に関する WASB デバッグ ログを有効にする
 
-1. Web ブラウザーから、`https://CLUSTERNAME.azurehdinsight.net` に移動します。ここで、`CLUSTERNAME` は実際の Spark クラスターの名前です。
+1. Web ブラウザーから、`https://CLUSTERNAME.azurehdinsight.net/#/main/services/SPARK2/configs` に移動します。ここで、`CLUSTERNAME` は実際の Spark クラスターの名前です。
 
-1. **[Spark2]**  >  **[Configs]\(構成\)**  >  **[advanced spark2-log4j-properties]\(高度な spark2-log4j-properties\)** に移動します。
+1. **[advanced spark2-log4j-properties]\(高度な spark2-log4j-properties\)** に移動します。
 
-1. `log4j.appender.console.Threshold=INFO` を `log4j.appender.console.Threshold=DEBUG` に変更します。
+    1. `log4j.appender.console.Threshold=INFO` を `log4j.appender.console.Threshold=DEBUG` に変更します。
+
+    1. `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG`を追加します。
 
 1. **[Advanced livy2-log4j-properties]\(高度な livy2-log4j-properties\)** に移動します。
 
-1. 次のプロパティを追加します。
-
-    ```
-    log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG
-    ```
+    `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG`を追加します。
 
 1. 変更を保存します。
 

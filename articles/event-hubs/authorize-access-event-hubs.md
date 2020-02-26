@@ -6,22 +6,28 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: b5a037eaf310aa28c76d831dc9fe56eefaddbe56
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: d4304abf0ca089fbbea86f12cd03dea836db612e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123470"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368356"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>Azure Event Hubs へのアクセスを承認する
 イベント ハブからイベント/データを発行または使用するたびに、クライアントでは Event Hubs リソースへのアクセスが試行されます。 データの発行または使用に必要なアクセス許可をクライアントが持っていることがサービスにより確保されるように、セキュリティで保護されたリソースに対するすべての要求が承認される必要があります。 
 
 Azure Event Hubs には、セキュリティで保護されたリソースへのアクセスを承認するための次のオプションが用意されています。
 
+- Azure Active Directory
+- 共有アクセス署名
+
+> [!NOTE]
+> この記事は、Event Hubs と [Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) の両方のシナリオを対象としています。 
+
 ## <a name="azure-active-directory"></a>Azure Active Directory
-Azure Active Directory (Azure AD) の Event Hubs リソースの統合により、ロールベースのアクセス制御 (RBAC) を使用して、クライアントのリソースへのアクセスをきめ細かく制御することができます。 ロールベースのアクセス制御 (RBAC) を使用して、サービス プリンシパル (ユーザー、グループ、またはアプリケーションのサービス プリンシパルである可能性があります) にアクセス許可を付与できます。 セキュリティ プリンシパルは、Azure AD によって認証されて、OAuth 2.0 トークンを返します。 トークンは、Event Hubs リソースにアクセスする要求を承認するために使用できます。
+Azure Active Directory (Azure AD) の Event Hubs リソースの統合により、ロールベースのアクセス制御 (RBAC) を使用して、クライアントのリソースへのアクセスをきめ細かく制御することができます。 ロールベースのアクセス制御 (RBAC) を使用して、セキュリティ プリンシパル (ユーザー、グループ、またはアプリケーションのサービス プリンシパルである可能性があります) にアクセス許可を付与できます。 セキュリティ プリンシパルは、Azure AD によって認証されて、OAuth 2.0 トークンを返します。 トークンは、Event Hubs リソースにアクセスする要求を承認するために使用できます。
 
 Azure AD を使用した認証の詳細については、次の記事を参照してください。
 
@@ -37,9 +43,9 @@ Azure AD によって返された OAuth 2.0 トークンを使用するユーザ
 
 SAS を使用した承認の詳細については、「[Shared Access Signature を使用した Event Hubs リソースへのアクセスの承認](authorize-access-shared-access-signature.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - GitHub リポジトリで公開されている [RBAC のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)を参照してください。 
-- 次の記事を参照してください。
+- 次の記事をご覧ください。
     - [Azure Active Directory を使用してアプリケーションから Azure Event Hubs への要求を認証する](authenticate-application.md)
     - [Azure Active Directory を使用して Event Hubs リソースにアクセスするためのマネージド ID を認証する](authenticate-managed-identity.md)
     - [Shared Access Signature を使用して Azure Event Hubs に対する要求を認証する](authenticate-shared-access-signature.md)
