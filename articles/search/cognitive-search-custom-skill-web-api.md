@@ -1,7 +1,7 @@
 ---
 title: スキルセット内のカスタム Web API スキル
 titleSuffix: Azure Cognitive Search
-description: Web API を呼び出すことによって、Azure コグニティブ検索スキルセットの機能を拡張します。 カスタム Web API スキルを使用してカスタム コードを統合します。
+description: Web API を呼び出すことによって、Azure Cognitive Search スキルセットの機能を拡張します。カスタム Web API スキルを使用してカスタム コードを統合します。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -15,7 +15,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74484112"
 ---
-# <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure コグニティブ検索の強化パイプラインのカスタム Web API スキル
+# <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure Cognitive Search の強化パイプラインのカスタム Web API スキル
 
 **カスタム Web API** スキルを使用すると、Web API エンドポイントを呼び出してカスタム操作を提供することで、AI 強化を拡張できます。 組み込みのスキルと同様、**カスタム Web API** スキルには入力と出力があります。 入力に応じて、Web API はインデクサーの実行時に JSON ペイロードを受信し、応答としての JSON ペイロードと成功の状態コードを出力します。 正常な応答には、カスタム スキルによって指定された出力が含まれます。 その他の応答はエラーと見なされ、エンリッチメントは実行されません。
 
