@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 795661912633f0d225aef4de8ea7620a8766e096
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 71c30e0a86f67a2e2826859032144aa491c0cee1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766992"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597033"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure Security Center でのデータ収集
 Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシン (VM)、仮想マシン スケール セット、IaaS コンテナー、非 Azure (オンプレミスを含む) コンピューターからデータを収集します。 データは、Log Analytics エージェントを使用して収集されます。このエージェントは、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。 このようなデータの例として、オペレーティング システムの種類とバージョン、オペレーティング システム ログ (Windows イベント ログ)、実行中のプロセス、マシン名、IP アドレス、ログイン ユーザーなどがあります。 また、Log Analytics エージェントはクラッシュ ダンプ ファイルもワークスペースにコピーします。
@@ -43,7 +43,7 @@ Log Analytics エージェントの自動プロビジョニングを有効にす
 1. Security Center メイン メニューの **[Pricing & settings]\(価格と設定\)** を選択します。
 2. 適切なサブスクリプションをクリックします。
 
-   ![サブスクリプションを選択します。][7]
+   ![サブスクリプションの選択][7]
 
 3. **[データ収集]** を選択します。
 4. **[Auto Provisioning] (自動プロビジョニング)** で **[オン]** を選択して、自動プロビジョニングを有効にします。
@@ -72,7 +72,7 @@ Security Center によって作成されたワークスペースを選択する�
 1. **[既定のワークスペース構成]** で、[Security Center によって作成されたワークスペースを使用] を選択します。
    ![価格レベルの選択][10] 
 
-1. **[Save]** をクリックします。<br>
+1. **[保存]** をクリックします。<br>
     Security Center で新しいリソース グループとその位置情報の既定のワークスペースが作成され、エージェントがそのワークスペースに接続されます。 ワークスペースとリソース グループの名前付け規則は次のとおりです。<br>
    **ワークスペース: DefaultWorkspace-[subscription-ID]-[geo]<br> リソース グループ: DefaultResourceGroup-[geo]**
 
@@ -83,7 +83,7 @@ Security Center によって作成されたワークスペースを選択する�
 > Security Center で作成されたワークスペースの Log Analytics 価格レベルは、Security Center の課金に影響しません。 Security Center の課金は、常に Security Center セキュリティ ポリシーとワークスペースにインストールされているソリューションに基づいています。 Free レベルの場合、既定のワークスペースで *SecurityCenterFree* ソリューションが有効化されます。 Standard レベルの場合、既定のワークスペースで *Security* ソリューションが有効化されます。
 > Log Analytics にデータを格納すると、データ ストレージに対して追加料金が発生する可能性があります。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 
-既存の Log Analytics アカウントの詳細については、「[既存の Log Analytics ユーザー](security-center-faq.md#existingloganalyticscust)」を参照してください。
+既存の Log Analytics アカウントの詳細については、「[既存の Log Analytics ユーザー](./faq-azure-monitor-logs.md)」を参照してください。
 
 ### <a name="using-an-existing-workspace"></a>既存のワークスペースの使用
 
@@ -145,7 +145,7 @@ Azure Security Center 内でデータ収集レベルを選択した場合、そ�
 > 
 > ご利用のワークスペースに格納される 4 つのイベント セットの中から、サブスクリプションとワークスペースに最適なフィルタリング ポリシーを選択できます。 
 
-- **なし** – セキュリティ イベントのストレージを無効にします。 これは、既定の設定です。
+- **なし** – セキュリティ イベントのストレージを無効にします。 これが既定の設定です。
 - **最小** - イベント ボリュームを最小限に抑える必要があるお客様向けの小さなイベント セットです。
 - **共通** - これは、ほとんどのお客様のニーズを満たすイベントのセットです。このセットでは、完全な監査証跡が可能です。
 - **すべてのイベント** - すべてのイベントを格納する必要があるお客様向けです。
@@ -170,7 +170,7 @@ Microsoft では、**共通**イベント セットと**最小**イベント セ
 | --- | --- |
 | 最小限 | 1102,4624,4625,4657,4663,4688,4700,4702,4719,4720,4722,4723,4724,4727,4728,4732,4735,4737,4739,4740,4754,4755, |
 | | 4756,4767,4799,4825,4946,4948,4956,5024,5033,8001,8002,8003,8004,8005,8006,8007,8222 |
-| 一般 | 1,299,300,324,340,403,404,410,411,412,413,431,500,501,1100,1102,1107,1108,4608,4610,4611,4614,4622, |
+| 共通 | 1,299,300,324,340,403,404,410,411,412,413,431,500,501,1100,1102,1107,1108,4608,4610,4611,4614,4622, |
 | |  4624,4625,4634,4647,4648,4649,4657,4661,4662,4663,4665,4666,4667,4688,4670,4672,4673,4674,4675,4689,4697, |
 | | 4700,4702,4704,4705,4716,4717,4718,4719,4720,4722,4723,4724,4725,4726,4727,4728,4729,4733,4732,4735,4737, |
 | | 4738,4739,4740,4742,4744,4745,4746,4750,4751,4752,4754,4755,4756,4757,4760,4761,4762,4764,4767,4768,4771, |
@@ -179,7 +179,7 @@ Microsoft では、**共通**イベント セットと**最小**イベント セ
 | | 6273,6278,6416,6423,6424,8001,8002,8003,8004,8005,8006,8007,8222,26401,30004 |
 
 > [!NOTE]
-> - グループ ポリシー オブジェクト (GPO) を使用している場合は、プロセス作成イベント 4688 の監査ポリシーと、イベント 4688 内の *CommandLine* フィールドを有効にすることをお勧めします。 プロセス作成イベント 4688 の詳細については、Security Center の [FAQ](security-center-faq.md#what-happens-when-data-collection-is-enabled) を参照してください。 これらの監査ポリシーの詳細については、「[Audit Policy Recommendations](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations)」(監査ポリシーの推奨事項) を参照してください。
+> - グループ ポリシー オブジェクト (GPO) を使用している場合は、プロセス作成イベント 4688 の監査ポリシーと、イベント 4688 内の *CommandLine* フィールドを有効にすることをお勧めします。 プロセス作成イベント 4688 の詳細については、Security Center の [FAQ](faq-data-collection-agents.md#what-happens-when-data-collection-is-enabled) を参照してください。 これらの監査ポリシーの詳細については、「[Audit Policy Recommendations](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations)」(監査ポリシーの推奨事項) を参照してください。
 > -  [適応型アプリケーション制御](security-center-adaptive-application.md)のデータ収集を有効にするために、Security Center は、ローカル AppLocker ポリシーを監査モードで構成して、すべてのアプリケーションを許可します。 これをきっかけとして AppLocker がイベントを生成するようになり、そのイベントが Security Center によって収集されて活用されます。 ただし、既に AppLocker ポリシーが構成されているマシンでは、このポリシーが構成されないので注意してください。 
 > - Windows フィルタリング プラットフォーム イベント ([イベント ID 5156](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=5156)) を収集するには、[[フィルタリング プラットフォームの接続の監査]](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-connection) を有効にする必要があります (Auditpol /set /subcategory:"Filtering Platform Connection" /Success:Enable)。
 >
@@ -209,9 +209,9 @@ Security Center によって、Log Analytics エージェント拡張機能は�
 注 - Operations Manager エージェント バージョン 2012 がインストールされている場合は、自動プロビジョニングを有効に**しないでください**。<br>
 
 - 既存の VM 拡張機能が存在する<br>
-    - Monitoring Agent が拡張機能としてインストールされると、拡張機能の構成で 1 つのワークスペースのみにレポートできます。 Security Center は、ユーザー ワークスペースへの既存の接続をオーバーライドしません。 Security Center では、"security" または "securityFree" ソリューションがインストールされているという条件で、既に接続されているワークスペース内の VM からのセキュリティ データを保存します。 Security Center では、このプロセスで拡張機能のバージョンを最新バージョンにアップグレードする可能性があります。  
+    - Monitoring Agent が拡張機能としてインストールされている場合、拡張機能の構成では 1 つのワークスペースにのみレポートできます。 Security Center は、ユーザー ワークスペースへの既存の接続をオーバーライドしません。 Security Center では、"security" または "securityFree" ソリューションがインストールされているという条件で、既に接続されているワークスペース内の VM からのセキュリティ データを保存します。 Security Center では、このプロセスで拡張機能のバージョンを最新バージョンにアップグレードする可能性があります。  
     - 既存の拡張機能がどのワークスペースにデータを送信しているのかを調べるには、[Azure Security Center との接続を確認](https://blogs.technet.microsoft.com/yuridiogenes/2017/10/13/validating-connectivity-with-azure-security-center/)するテストを実行します。 または、Log Analytics ワークスペースを開いてワークスペースを選択し、対象の VM を選択して、Log Analytics エージェント接続を調べることもできます。 
-    - Log Analytics エージェントがクライアント ワークステーションにインストールされ、既存の Log Analytics ワークスペースにレポートする環境が整っている場合は、[Azure Security Center でサポートされるオペレーティング システム](security-center-os-coverage.md)の一覧で、ご利用のオペレーティング システムがサポートされているかどうかを確認します。 詳しくは、「[既存の Log Analytics ユーザー](security-center-faq.md#existingloganalyticscust)」をご覧ください。
+    - Log Analytics エージェントがクライアント ワークステーションにインストールされ、既存の Log Analytics ワークスペースにレポートする環境が整っている場合は、[Azure Security Center でサポートされるオペレーティング システム](security-center-os-coverage.md)の一覧で、ご利用のオペレーティング システムがサポートされているかどうかを確認します。 詳しくは、「[既存の Log Analytics ユーザー](./faq-azure-monitor-logs.md)」をご覧ください。
  
 ### 自動プロビジョニングを無効にする<a name="offprovisioning"></a>
 リソースの自動プロビジョニングは、セキュリティ ポリシーでこの設定をオフにすることで、いつでも無効にすることができます。 
@@ -231,7 +231,7 @@ Security Center によって、Log Analytics エージェント拡張機能は�
 -   Security Center は既定のワークスペースからのデータ収集を停止します。
  
 > [!NOTE]
->  自動プロビジョニングを無効にしても、Log Analytics エージェントがプロビジョニングされている Azure VM からそのエージェントは削除されません。 OMS 拡張機能の削除については、「[Security Center にインストールされている OMS 拡張機能を削除するにはどうすればよいですか](security-center-faq.md#remove-oms)」をご覧ください。
+>  自動プロビジョニングを無効にしても、Log Analytics エージェントがプロビジョニングされている Azure VM からそのエージェントは削除されません。 OMS 拡張機能の削除については、「[Security Center にインストールされている OMS 拡張機能を削除するにはどうすればよいですか](faq-data-collection-agents.md#remove-oms)」をご覧ください。
 >
     
 ## エージェントの手動プロビジョニング <a name="manual-agent"></a>
@@ -311,10 +311,10 @@ Security Center がお使いの VM からセキュリティ データを収集�
     自動プロビジョニングの対象として初期化された VM およびコンピューターを Security Center で正常に監視できない理由について詳しくは、「[エージェントの正常性の監視に関する問題](security-center-troubleshooting-guide.md#mon-agent)」を参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、Security Center のデータ収集と自動プロビジョニングのしくみについて説明しました。 セキュリティ センターの詳細については、次を参照してください。
 
-* 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。
+* 「[Azure Security Center のよく寄せられる質問 (FAQ)](faq-general.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。
 * 「[Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md)」-- Azure リソースの正常性を監視する方法について説明しています。
 
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 6e4c50e5dcc35450463d02bbed040754ea778e70
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 953121a9a15d4fef56d381e3aab85329fadacce2
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093615"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604970"
 ---
 # <a name="how-to-configure-the-connection-policy-used-by-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB 用 Azure Functions トリガーで使用される接続ポリシーを構成する方法
 
@@ -23,7 +23,7 @@ ms.locfileid: "70093615"
 
 ## <a name="changing-the-connection-mode-and-protocol"></a>接続のモードとプロトコルの変更
 
-クライアントの接続ポリシーを構成するために使用できる 2 つの主要な構成設定として、**接続モード**と**接続プロトコル**があります。 Cosmos DB 用 Azure Functions トリガーとすべての [Azure Cosmos DB バインディング](../azure-functions/functions-bindings-cosmosdb-v2.md#output)で使用される既定の接続モードおよびプロトコルは、変更することができます。 既定の設定を変更するには、Azure Functions プロジェクトまたは Azure Functions アプリ内で `host.json` ファイルを見つけて、次の[追加設定](../azure-functions/functions-bindings-cosmosdb-v2.md#hostjson-settings)を行います。
+クライアントの接続ポリシーを構成するために使用できる 2 つの主要な構成設定として、**接続モード**と**接続プロトコル**があります。 Cosmos DB 用 Azure Functions トリガーとすべての [Azure Cosmos DB バインディング](../azure-functions/functions-bindings-cosmosdb-v2-output.md)で使用される既定の接続モードおよびプロトコルは、変更することができます。 既定の設定を変更するには、Azure Functions プロジェクトまたは Azure Functions アプリ内で `host.json` ファイルを見つけて、次の[追加設定](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings)を行います。
 
 ```js
 {
@@ -50,7 +50,7 @@ ms.locfileid: "70093615"
 > [!NOTE]
 > Azure Functions の従量課金プランをホスティング プランとして使用している場合、各インスタンスで維持できるソケット接続量には制限があります。 直接および TCP モードを使用している場合は、設計上、より多くの接続が作成されて[従量課金プランの制限](../azure-functions/manage-connections.md#connection-limit)に達する可能性があります。この場合、ゲートウェイ モードを使用するか、または [App Service モード](../azure-functions/functions-scale.md#app-service-plan)で Azure 関数を実行することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Functions での接続の制限](../azure-functions/manage-connections.md#connection-limit)
 * [Azure Cosmos DB のパフォーマンスに関するヒント](./performance-tips.md)

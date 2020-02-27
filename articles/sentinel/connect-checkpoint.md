@@ -3,7 +3,7 @@ title: Azure Sentinel に Check Point データを接続する | Microsoft Docs
 description: Azure Sentinel に Check Point データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: rkarlin
-ms.openlocfilehash: 94658e34679a4cf99ad0e1ad02e60c6a1d190361
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 70836ec557eff1be035d92e8e7db30a882e05fc6
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610677"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588418"
 ---
 # <a name="connect-check-point-to-azure-sentinel"></a>Check Point を Azure Sentinel に接続する
 
@@ -44,6 +44,6 @@ Syslog エージェントを介して Azure ワークスペースに CEF 形式�
 このドキュメントでは、Check Point アプライアンスを Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - 「[接続の検証](connect-cef-verify.md)」。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用して](tutorial-monitor-your-data.md)データを監視します。
+- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
 
 

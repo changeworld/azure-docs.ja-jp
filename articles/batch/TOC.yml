@@ -59,6 +59,8 @@
       href: high-availability-disaster-recovery.md
     - name: タスク ランタイム環境変数
       href: batch-compute-node-environment-variables.md
+    - name: Azure Policy との統合
+      href: batch-integration-policies.md
 - name: 操作方法ガイド
   items:
     - name: Batch アカウントの管理

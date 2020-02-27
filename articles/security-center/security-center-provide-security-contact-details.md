@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/09/2019
 ms.author: memildin
-ms.openlocfilehash: 1a66ea200082f60a3a763c6a4e2bdea62ec473d8
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 15029c3e0bd3959000786af484a42691f00bb704
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921001"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603572"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>Azure Security Center でセキュリティ連絡先の詳細情報を指定する
 Azure Security Center では、Azure サブスクリプションに対してセキュリティ連絡先の詳細を指定していない場合、それを指定するよう推奨されます。 この情報は、Microsoft セキュリティ レスポンス センター (MSRC) で、不正なユーザーまたは権限のないユーザーによる顧客データへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。 MSRC では、Azure のネットワークとインフラストラクチャの選択的なセキュリティ監視を行い、第三者からの脅威インテリジェンスと不正使用の報告を受け取ります。
@@ -53,7 +53,7 @@ Azure Security Center では、Azure サブスクリプションに対してセ�
    * サブスクリプションの所有者 (従来のサービス管理者と共同管理者、およびサブスクリプションのスコープで RBAC 所有者ロール) に電子メール通知を送信するオプションがあります。
    * **[保存]** を選択して、セキュリティ連絡先の情報をサブスクリプションに適用します。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 セキュリティ センターの詳細については、次を参照してください。
 
 * [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md) 」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
@@ -61,8 +61,6 @@ Azure Security Center では、Azure サブスクリプションに対してセ�
 * [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md) 」-- Azure リソースの正常性を監視する方法について説明しています。
 * [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」-- セキュリティの警告の管理と対応の方法について説明しています。
 * [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) 」-- パートナー ソリューションの正常性状態を監視する方法について説明しています。
-* [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」-- このサービスの使用に関してよく寄せられる質問が記載されています。
-* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
 
 <!--Image references-->
 [1]: ./media/security-center-provide-security-contacts/provide-contacts.png

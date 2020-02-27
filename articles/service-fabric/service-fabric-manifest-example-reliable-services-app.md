@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: d5a03629a134a0b2c7d6ee95dba9ea3ad06e99ba
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: f40e54f5260f827f0b18c833d23d1f57b5ebc3a3
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75609827"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617466"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Reliable Services のアプリケーション マニフェストとサービス マニフェストの例
 ASP.NET Core Web フロント エンドとステートフルなバックエンドを持つ Service Fabric アプリケーションのアプリケーションとサービス マニフェストの例を次に示します。 これらの例の目的は、利用できる設定とその使用方法を示すことです。 これらのアプリケーションとサービス マニフェストは、[Service Fabric .NET クイック スタート](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) のマニフェストに基づいています。
@@ -69,7 +69,7 @@ ASP.NET Core Web フロント エンドとステートフルなバックエン�
                                 MemorySwapInMB="[MemorySwapInMB]"/>
 
       <!-- Share the data package across multiple instances of the VotingData service-->
-      <PackageSharingPolicy PackageRef="VotingDataPkg.Data"/>
+      <PackageSharingPolicy PackageRef="Data"/>
 
       <!-- Give read rights on the "DataEndpoint" endpoint to the Customer2 account.-->
       <SecurityAccessPolicy GrantRights="Read" PrincipalRef="Customer2" ResourceRef="DataEndpoint" ResourceType="Endpoint"/>         

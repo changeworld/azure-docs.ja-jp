@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 20c30a77201c4f728013bdd204eef81294eefb73
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: d32ce79d0c8b26e0e78e2bae0f0335315c1a3a40
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545162"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587330"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>AI を使用してデータベース パフォーマンスの監視とトラブルシューティングを行う Intelligent Insights (プレビュー)
 
@@ -113,7 +113,7 @@ Event Hubs をカスタムの監視とアラートの設定に使用するには
 
 ### <a name="set-up-with-azure-storage"></a>Azure Storage で使用するように設定する
 
-Storage と共に Intelligent Insights を使用するには、Storage に Intelligent Insights ログ データがストリーミングされるように構成します。「[Azure Storage にストリーミングする](sql-database-metrics-diag-logging.md#stream-into-storage)」をご覧ください。
+Storage と共に Intelligent Insights を使用するには、Storage に Intelligent Insights ログ データがストリーミングされるように構成します。「[Azure Storage にストリーミングする](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage)」をご覧ください。
 
 ### <a name="custom-integrations-of-intelligent-insights-log"></a>Intelligent Insights ログのカスタム統合
 

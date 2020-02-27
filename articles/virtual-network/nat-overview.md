@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 1bdd6552c3d418d761ffaf1df4ebb769421693f5
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b27baed20d8e36bf5790036e2fdc0804a94a4ea1
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484997"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589438"
 ---
 # <a name="what-is-virtual-network-nat-public-preview"></a>Virtual Network NAT (パブリック プレビュー) とは
 
@@ -140,9 +140,6 @@ NAT のパブリック側からは、TCP リセット パケットなどのト�
 
 パブリック プレビューに参加するためには、サブスクリプションのご登録が必要です。  参加は 2 つの手順から成るプロセスとなっています。以下に、Azure CLI を使用した手順と Azure PowerShell を使用した手順を記載します。  アクティブ化が完了するまでに数分かかる場合があります。
 
-> [!IMPORTANT]
-> ご利用のサブスクリプションで Virtual Network NAT [プレビューを有効](./nat-overview.md#enable-preview)にした後は、 https://aka.ms/natportal を使用してポータルにアクセスしてください。
-
 ### <a name="azure-cli"></a>Azure CLI
 
 1. サブスクリプションをパブリック プレビューに登録します。
@@ -168,7 +165,7 @@ NAT のパブリック側からは、TCP リセット パケットなどのト�
 2. 登録をアクティブ化します。
 
     ```azurepowershell-interactive
-      Register-AzProviderFeature -ProviderNamespace Microsoft.Network
+      Register-AzResourceProvider -ProviderNamespace Microsoft.Network
     ```
 
 ## <a name="pricing"></a>価格
@@ -197,7 +194,6 @@ NAT のサポートは、通常のサポート チャンネルを通じて提供
 
 - NAT は、Standard SKU のパブリック IP、パブリック IP プレフィックス、ロード バランサーの各リソースと共に利用することができます。   Basic リソース (Basic Load Balancer など) やそれらから派生した製品を NAT と共存させることはできません。  Basic リソースは、NAT が構成されていないサブネットに配置する必要があります。
 - サポートされるアドレス ファミリーは IPv4 です。  IPv6 アドレス ファミリーを NAT で扱うことはできません。
-- サブネットや NIC 上の NSG は、NAT を使用したパブリック エンドポイントへのアウトバウンド フローでは遵守されません。
 - NAT を使用している場合、NSG フロー ログはサポートされません。
 - NAT を複数の仮想ネットワークにまたがって使用することはできません。
 

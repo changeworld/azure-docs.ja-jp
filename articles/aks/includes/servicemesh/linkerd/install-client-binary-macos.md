@@ -1,15 +1,14 @@
 ---
 author: paulbouwer
-ms.service: container-service
 ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
-ms.openlocfilehash: a4090172e926f21db01a8e374d8c4bb1c80402c7
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 876e05d7b18ac193edbc9cf842ea2c1bf0555d54
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74197367"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593730"
 ---
 ## <a name="download-and-install-the-linkerd-linkerd-client-binary"></a>Linkerd の linkerd クライアント バイナリをダウンロードしてインストールする
 

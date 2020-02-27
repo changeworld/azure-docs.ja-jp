@@ -3,13 +3,13 @@ title: Azure サブスクリプションの制限とクォータ
 description: 一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 この記事では、制限を引き上げる方法と、最大値に関する情報について説明します。
 tags: billing
 ms.topic: conceptual
-ms.date: 02/11/2020
-ms.openlocfilehash: 4b36fcf8d3630ffd9008ad9deee8d0945f901f9b
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/24/2020
+ms.openlocfilehash: 1987d444c49bb5e53950c26c43c1607c8a87be6d
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153895"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592427"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 
@@ -295,10 +295,6 @@ Azure Resource Manager デプロイ モデルではなくクラシック デプ�
 
 [!INCLUDE [role-based-access-control-limits](../../../includes/role-based-access-control-limits.md)]
 
-## <a name="scheduler-limits"></a>Scheduler の制限
-
-[!INCLUDE [scheduler-limits-table](../../../includes/scheduler-limits-table.md)]
-
 ## <a name="service-bus-limits"></a>Service Bus の制限
 
 [!INCLUDE [azure-servicebus-limits](../../../includes/service-bus-quotas-table.md)]
@@ -397,7 +393,7 @@ Standard ストレージ アカウントの制限について詳しくは、[Sta
 
 [!INCLUDE [virtual-machine-scale-sets-limits](../../../includes/azure-virtual-machine-scale-sets-limits.md)]
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * [Azure の制限と増設について](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 * [Azure での仮想マシンとクラウド サービスのサイズ](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

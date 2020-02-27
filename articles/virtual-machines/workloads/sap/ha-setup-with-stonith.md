@@ -4,7 +4,7 @@ description: STONITH を使って SUSE の SAP HANA on Azure (L インスタン�
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0f23fe2aa17934b967e7aecf41687cc555b9552c
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 4060dbe936af8ff1f9dd8c958f64834cb06525de
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71212535"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615084"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>STONITH を使用した SUSE での高可用性のセットアップ
 このドキュメントでは、STONITH デバイスを使って SUSE オペレーティング システムに高可用性をセットアップする詳しい手順について説明します。
@@ -448,7 +448,7 @@ yast2 コントロール センターに高可用性オプションが表示さ�
 
 ![yast2-installation-report.png](media/HowToHLI/HASetupWithStonith/yast2-installation-report.png)
 
-### <a name="scenario-4-hana-installation-fails-with-gcc-assemblies-error"></a>シナリオ 4:HANA のインストールが gcc アセンブリ エラーで失敗する
+### <a name="scenario-4-hana-installation-fails-with-gcc-assemblies-error"></a>シナリオ 4: HANA のインストールが gcc アセンブリ エラーで失敗する
 HANA のインストールが次のエラーで失敗します。
 
 ![Hana-installation-error.png](media/HowToHLI/HASetupWithStonith/Hana-installation-error.png)
@@ -457,7 +457,7 @@ HANA のインストールが次のエラーで失敗します。
 
 ![zypper-install-lib.png](media/HowToHLI/HASetupWithStonith/zypper-install-lib.png)
 
-### <a name="scenario-5-pacemaker-service-fails"></a>シナリオ 5:Pacemaker サービスが失敗する
+### <a name="scenario-5-pacemaker-service-fails"></a>シナリオ 5: Pacemaker サービスが失敗する
 
 Pacemaker サービスの開始中に、次の問題が発生します。
 

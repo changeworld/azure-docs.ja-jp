@@ -1,16 +1,16 @@
 ---
 title: GitHub Actions を使用した Azure Functions のコードの更新
 description: GitHub Actions を使用し、GitHub に Azure Functions プロジェクトをビルドおよびデプロイするワークフローを定義する方法について説明します。
-author: ahmedelnably
+author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/16/2019
-ms.author: aelnably
-ms.openlocfilehash: c34847577b7e83228fafad431f541497be9a21ae
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.author: cshoe
+ms.openlocfilehash: dd74fd5c38e5a8800d2092afc1db1b412b126861
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769151"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649910"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>GitHub Actions を使用した継続的デリバリー
 
@@ -69,7 +69,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 環境のセットアップは、言語固有の発行セットアップアクションを使用して行います。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 次の例は、`actions/setup-node` アクションを使用して環境をセットアップするワークフローの一部を示しています：
 
@@ -84,7 +84,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
         node-version: '10.x'
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 次の例は、`actions/setup-python` アクションを使用して環境をセットアップするワークフローの一部を示しています：
 
@@ -99,7 +99,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
         python-version: 3.6
 ```
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 次の例は、`actions/setup-dotnet` アクションを使用して環境をセットアップするワークフローの一部を示しています：
 
@@ -114,7 +114,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
         dotnet-version: '2.2.300'
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 次の例は、`actions/setup-java` アクションを使用して環境をセットアップするワークフローの一部を示しています：
 
@@ -138,7 +138,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 次の例は、言語固有の関数 アプリを構築するワークフローの一部を示しています：
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```yaml
     - name: 'Run npm'
@@ -153,7 +153,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
         popd
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```yaml
     - name: 'Run pip'
@@ -167,7 +167,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
         popd
 ```
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```yaml
     - name: 'Run dotnet build'
@@ -180,7 +180,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
         popd
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```yaml
     - name: 'Run mvn'

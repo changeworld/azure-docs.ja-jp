@@ -1,16 +1,16 @@
 ---
 title: Azure DevOps を使用して、関数アプリ コードを継続的に更新する
 description: Azure Functions をターゲットとする、Azure DevOps パイプラインを設定する方法について学習します。
-author: ahmedelnably
+author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/18/2019
-ms.author: aelnably
-ms.openlocfilehash: e6ea7edb16aa28428754cbe920e1d350aded0cff
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.author: cshoe
+ms.openlocfilehash: 1d627329a6d5f4c283a4480c1b0b1077a8e856cf
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834021"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649944"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Azure DevOps を使用した継続的デリバリー
 
@@ -29,7 +29,7 @@ YAML ベースのパイプラインを作成するには、まずアプリをビ
 
 Azure Pipelines でアプリをビルドする方法は、アプリのプログラミング言語によって異なります。 言語ごとにデプロイ成果物を作成するための固有のビルド ステップがあります。 デプロイ成果物は、Azure で関数アプリをデプロイするために使用されます。
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 次のサンプルを使用して、.NET アプリをビルドする YAML ファイルを作成できます。
 
@@ -60,7 +60,7 @@ steps:
     artifactName: 'drop'
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 次のサンプルを使用して、JavaScript アプリをビルドする YAML ファイルを作成できます。
 
@@ -88,7 +88,7 @@ steps:
     artifactName: 'drop'
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 次のサンプルのいずれかを使用して、特定の Python バージョン用のアプリをビルドする YAML ファイルを作成できます。 Python は、Linux で実行されている関数アプリでのみサポートされています。
 
@@ -150,7 +150,7 @@ steps:
     artifactName: 'drop'
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 次のサンプルを使用して、PowerShell アプリをパッケージ化する YAML ファイルを作成できます。 PowerShell は、Windows Azure Functions でのみサポートされています。
 

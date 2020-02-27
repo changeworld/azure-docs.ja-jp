@@ -3,12 +3,12 @@ title: Service Fabric クラスターをスケールインまたはスケール�
 description: ノードの種類/仮想マシン スケール セットごとに自動スケール ルールを設定することにより、需要に合わせて Service Fabric クラスターをスケールインまたはスケールアウトします。 Service Fabric クラスターのノードの追加または削除
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: 42193ee06eda3f1d8c56b4db3251763b9dc52076
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 26ef13f38d525e4e493ad933bfb906dd36ed0070
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774459"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587483"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>クラスターをスケールインまたはスケールアウトする
 
@@ -104,7 +104,7 @@ Service Fabric システム サービスは、クラスター内のプライマ�
 Get-ServiceFabricNode | Sort-Object NodeInstanceId -Descending | Select-Object -First 1
 ```
 
-```azurecli
+```shell
 sfctl node list --query "sort_by(items[*], &name)[-1]"
 ```
 
@@ -186,7 +186,7 @@ else
 
 以下の **sfctl** コードでは、コマンド `sfctl node list --query "sort_by(items[*], &name)[-1].name"` を使用して、最後に作成されたノードの **node-name** 値を取得します。
 
-```azurecli
+```shell
 # Inform the node that it is going to be removed
 sfctl node disable --node-name _nt1vm_5 --deactivation-intent 4 -t 300
 

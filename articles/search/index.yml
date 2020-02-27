@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: HeidiSteen
   ms.author: heidist
-  ms.date: 09/20/2019
-  ms.openlocfilehash: 3d011bdf1f0da04efec86adc121326a877532b6f
-  ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+  ms.date: 02/25/2020
+  ms.openlocfilehash: b1df45b155e9c9d1bd4433d7ddc765c126686a07
+  ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/24/2020
-  ms.locfileid: "76721066"
+  ms.lasthandoff: 02/26/2020
+  ms.locfileid: "77614968"
 landingContent:
 - title: Cognitive Search について
   linkLists:
@@ -24,15 +24,29 @@ landingContent:
     links:
     - text: Azure Cognitive Search とは
       url: search-what-is-azure-search.md
-  - linkListType: architecture
-    links:
-    - text: Cognitive Search でのフルテキスト検索のしくみ
-      url: search-lucene-query-architecture.md
+    - text: AI エンリッチメントとは
+      url: cognitive-search-concept-intro.md
+    - text: インデクサーとは
+      url: search-indexer-overview.md
   - linkListType: video
     links:
     - text: Cognitive Search とは (1 分 27 秒)
       url: https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player
-- title: はじめに
+- title: Azure データのインデックス作成
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Blob Storage のインデックス
+      url: search-blob-storage-integration.md
+    - text: Azure SQL Database のインデックス
+      url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+    - text: Cosmos DB のインデックス
+      url: search-howto-index-cosmosdb.md
+  - linkListType: tutorial
+    links:
+    - text: 半構造化 BLOB データのインデックスを作成する
+      url: search-semi-structured-data.md
+- title: 10 分間のクイック スタート
   linkLists:
   - linkListType: quickstart
     links:
@@ -40,64 +54,34 @@ landingContent:
       url: search-create-service-portal.md
     - text: インデックスを作成する
       url: search-get-started-portal.md
-    - text: エンリッチメント パイプラインを作成する
-      url: cognitive-search-quickstart-blob.md
-  - linkListType: tutorial
-    links:
     - text: アプリを作成する
-      url: tutorial-csharp-create-first-app.md
-  - linkListType: learn
-    links:
-    - text: Azure Cognitive Search の概要
-      url: https://docs.microsoft.com/learn/modules/intro-to-azure-search/
-- title: Blob Storage で使用する
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: AI を使用して BLOB データを理解する
-      url: search-blob-ai-integration.md
-    - text: BLOB コンテンツを検索する
-      url: search-blob-storage-integration.md
-    - text: AI エンリッチメントを保存する
-      url: knowledge-store-concept-intro.md
-  - linkListType: tutorial
-    links:
-    - text: 半構造化 BLOB データのインデックスを作成する
-      url: search-semi-structured-data.md
-- title: データにインデックスを付ける
+      url: search-create-app-portal.md
+    - text: 未加工のテキストとイメージの取り込みと抽出
+      url: cognitive-search-quickstart-blob.md
+- title: 任意のデータのインデックス作成
   linkLists:
   - linkListType: concept
     links:
-    - text: インデックスの定義
+    - text: インデックスを定義する
       url: search-what-is-an-index.md
     - text: データのインポート
       url: search-what-is-data-import.md
-    - text: インデクサーを使用する
-      url: search-indexer-overview.md
-  - linkListType: how-to-guide
-    links:
-    - text: Azure SQL Database のインデックス
-      url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-    - text: Cosmos DB データのインデックス
-      url: search-howto-index-cosmosdb.md
   - linkListType: reference
     links:
     - text: インデックスを作成する (REST)
       url: https://docs.microsoft.com/rest/api/searchservice/create-index
     - text: インデクサーを作成する (REST)
       url: https://docs.microsoft.com/rest/api/searchservice/create-indexer
-- title: データを強化する
+- title: AI によるエンリッチ
   linkLists:
   - linkListType: concept
     links:
-    - text: AI エンリッチメント パイプライン
-      url: cognitive-search-concept-intro.md
     - text: スキルセット
       url: cognitive-search-defining-skillset.md
     - text: ナレッジ ストア
       url: knowledge-store-concept-intro.md
     - text: プロジェクション
-      url: knowledge-store-projection-overview.md
+      url: knowledge-store-projections-examples.md
   - linkListType: how-to-guide
     links:
     - text: Cognitive Services をアタッチする
@@ -110,11 +94,11 @@ landingContent:
     links:
     - text: 組み込みのスキル
       url: cognitive-search-predefined-skills.md
-- title: データのクエリ
+- title: クエリ データ
   linkLists:
   - linkListType: concept
     links:
-    - text: 概要
+    - text: クエリの種類と構成
       url: search-query-overview.md
     - text: 単純な構文 (既定)
       url: query-simple-syntax.md

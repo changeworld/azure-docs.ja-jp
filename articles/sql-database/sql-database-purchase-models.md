@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/01/2020
-ms.openlocfilehash: aa7197dc631ea281bd5616b572f4ca01aeb9d45c
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 0b2eafeec27cb92ccb191ec902e8bf1d581a3b4a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964772"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587296"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>仮想コアと DTU の購入モデルから選択する
 
@@ -77,7 +77,7 @@ Business Critical サービス レベルと General Purpose サービス レベ�
 
 > [!IMPORTANT]
 > コンピューティング リソース、I/O、データとログのストレージは、データベースまたはエラスティック プールごとに課金されます。 バックアップ ストレージはデータベースごとに課金されます。 マネージド インスタンスの料金について詳しくは、[マネージド インスタンス](sql-database-managed-instance.md)に関するページを参照してください。
-> **リージョンの制限:** サポートされているリージョンの現在の一覧については、[リージョンで利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)に関するページを参照してください。 現在サポートされていないリージョンでマネージド インスタンスを作成するには、[Azure portal 経由でサポート要求を送信](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance)します。
+> **リージョンの制限:** サポートされているリージョンの現在の一覧については、[リージョンで利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)に関するページを参照してください。 現在サポートされていないリージョンでマネージド インスタンスを作成するには、[Azure portal 経由でサポート要求を送信](quota-increase-request.md)します。
 
 単一データベースまたはエラスティック プールで消費量が 300 DTU を超える場合は、仮想コア ベースの購入モデルに変換すると、コストが減る可能性があります。 任意の API を使用するか、または Azure portal を使用して、ダウンタイムなしで変換できます。 ただし、変換は必須ではなく、自動的には行われません。 DTU ベースの購入モデルが自分のパフォーマンスおよびビジネス要件を満たしている場合は、このモデルを引き続き使用してください。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: memildin
-ms.openlocfilehash: 96efe5271b91f87e30ba26aabe69a0de76e1a791
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b8b8b05f703a3eb05936ca95e2047a13650914cf
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202396"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604263"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>Azure Security Center のコンテナーの推奨事項を理解する
 
@@ -47,7 +47,7 @@ IaaS Linux マシン上でホストされている利用可能なコンテナー
 |コンテナーのセキュリティ構成の脆弱性を修復します |構成のベスト プラクティスに基づいて、コンテナーのセキュリティ構成の脆弱性を修復します。| コンテナーのセキュリティ構成の脆弱性を修復するには:<br>1.失敗した規則の一覧を確認します。<br>2.指定された手順に従って、各ルールを修正します。|
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 その他の Azure リソースの種類に適用される推奨事項の詳細については、次をご覧ください。
 
 * [Azure Security Center での ID とアクセスの監視](security-center-identity-access.md)
@@ -59,5 +59,3 @@ IaaS Linux マシン上でホストされている利用可能なコンテナー
 * [Azure Security Center でのマシンとアプリケーションの保護](security-center-virtual-machine-protection.md)
 * [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md) 」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
 * [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」-- セキュリティの警告の管理と対応の方法について説明しています。
-* [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」-- このサービスの使用に関してよく寄せられる質問が記載されています。
-

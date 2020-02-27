@@ -3,7 +3,7 @@ title: Azure Sentinel でハンティング ライブストリームを使用し
 description: この記事では、Azure Sentinel でハンティング ライブストリームを使用してデータを追跡する方法を説明します。
 services: sentinel
 documentationcenter: na
-author: cabailey
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -14,13 +14,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2019
-ms.author: cabailey
-ms.openlocfilehash: 5b347848c9c6a58a70ab1093a6f9c70b62f3f769
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.author: yelevin
+ms.openlocfilehash: b392644e504fa8187e637278bef8718c9c2caa3f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900453"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582128"
 ---
 # <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Azure Sentinel でハンティング ライブストリームを使用して脅威を検出する
 
@@ -53,7 +53,7 @@ ms.locfileid: "74900453"
 2. ハンティング クエリからライブストリーム セッションを作成するには、次のようにします。
     
     1. **[クエリ]** タブで、使用するハンティング クエリを見つけます。
-    2. クエリを右クリックし、 **[Add to Livestream]\(ライブストリームに追加\)** を選択します。 例:
+    2. クエリを右クリックし、 **[Add to Livestream]\(ライブストリームに追加\)** を選択します。 次に例を示します。
     
     > [!div class="mx-imgBorder"]
     > ![Azure Sentinel ハンティング クエリからライブストリーム セッションを作成する](./media/livestream/livestream-from-query.png)
@@ -83,7 +83,7 @@ ms.locfileid: "74900453"
 
 1. Azure portal で、 **[Sentinel]**  >  **[脅威の管理]**  >  **[Hunting]\(ハンティング\)**  >  **[Livestream]\(ライブストリーム\)** タブの順に移動します。
 
-2. 表示または編集するライブストリーム セッションを選択します。 例:
+2. 表示または編集するライブストリーム セッションを選択します。 次に例を示します。
     
     > [!div class="mx-imgBorder"]
     > ![Azure Sentinel ハンティング クエリからライブストリーム セッションを作成する](./media/livestream/livestream-tab.png)
@@ -92,7 +92,7 @@ ms.locfileid: "74900453"
 
 ## <a name="receive-notifications-when-new-events-occur"></a>新しいイベントが発生したときに通知を受け取る
 
-新しいイベントについてのライブストリーム通知では Azure portal の通知が使用されるため、Azure portal を使用すればいつでもこれらの通知を確認できます。 例:
+新しいイベントについてのライブストリーム通知では Azure portal の通知が使用されるため、Azure portal を使用すればいつでもこれらの通知を確認できます。 次に例を示します。
 
 ![Azure portal のライブストリーム通知](./media/livestream/notification.png)
 
@@ -107,7 +107,7 @@ ms.locfileid: "74900453"
 
 このアクションにより、ルールの作成ウィザードが開きます。このウィザードには、ライブストリーム セッションに関連付けられているクエリが事前に設定されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Azure Sentinel でハンティング ライブストリームを使用する方法を説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 

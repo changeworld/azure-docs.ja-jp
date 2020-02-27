@@ -3,16 +3,15 @@ title: Azure Kubernetes Service (AKS) のサポート ポリシー
 description: Azure Kubernetes Service (AKS) のサポート ポリシー、共同責任、およびプレビュー (アルファまたはベータ) 段階の機能について学習します。
 services: container-service
 author: jnoller
-ms.service: container-service
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: 9a68a0d0a288a27d67a9615385391c06be2b662d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a5d90106a85a61cbf499c4c08130392b922a45f0
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767380"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593582"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes Service のサポート ポリシー
 
@@ -97,7 +96,7 @@ Microsoft とお客様は、次の場合に、Kubernetes ワーカー ノード�
   * Docker または Moby デーモン
 
 > [!NOTE]
-> ワーカー ノード上でコントロール プレーン コンポーネントが動作不能になった場合、AKS チームにより個々のコンポーネントまたはワーカー ノード全体を再起動する必要が生じることがあります。 こうした再起動操作は自動化されており、これにより一般的な問題の自動修復機能が提供されます。 こうした再起動は、緊急のメンテナンスや停止が生じない限り、クラスターではなく _ノード_ レベルでのみ行われます。
+> ワーカー ノード上でコントロール プレーン コンポーネントが動作不能になった場合、AKS チームにより個々のコンポーネントまたはワーカー ノード全体を再起動する必要が生じることがあります。 こうした再起動操作は自動化されており、これにより一般的な問題の自動修復機能が提供されます。 こうした再起動は、緊急のメンテナンスや停止が生じない限り、クラスターではなく_ノード_ レベルでのみ行われます。
 
 ### <a name="customer-responsibilities-for-aks-worker-nodes"></a>AKS ワーカー ノードに対するお客様の責任
 

@@ -3,12 +3,12 @@ title: Recovery Services コンテナーの診断設定を使用する
 description: Azure Backup の新旧の診断イベントの使用方法を説明する記事
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 875adb82aeeb56b378a84ca01e716c7189abc64f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7abf8873aafeb996476d818376057bfd8732d906
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280993"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583947"
 ---
 # <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>Recovery Services コンテナーの診断設定を使用する
 
@@ -21,14 +21,15 @@ Azure portal を使用して Recovery Services コンテナーの診断設定を
 ## <a name="diagnostics-events-available-for-azure-backup-users"></a>Azure Backup ユーザーが利用できる診断イベント
 
 Azure Backup には次の診断イベントが用意されており、それぞれがバックアップ関連成果物の特定のセットに関する詳細なデータを提供します。
+
 * CoreAzureBackup
 * AddonAzureBackupAlerts
 * AddonAzureBackupProtectedInstance
 * AddonAzureBackupJobs
 * AddonAzureBackupPolicy
-* AddonAzureBackupStorage 
+* AddonAzureBackupStorage
 
-[Azure Backup 診断イベントのデータ モデル](https://aka.ms/diagnosticsdatamodel)
+[Azure Backup 診断イベントのデータ モデル](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)
 
 これらのイベントのデータを、ストレージ アカウント、LA ワークスペース、またはイベント ハブに送信できます。 このデータを LA ワークスペースに送信する場合は、 **[診断設定]** 画面の **[リソース固有]** トグルを選択する必要があります (以下のセクションで詳細を参照してください)。
 
@@ -37,6 +38,7 @@ Azure Backup には次の診断イベントが用意されており、それぞ�
 Azure Log Analytics のロードマップに合わせて、Azure Backup を使用して、コンテナーの診断データを Backup 専用の LA テーブルに送信できるようになりました。 これらは、[リソース固有テーブル](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#resource-specific)と呼ばれます。
 
 コンテナーの診断データを LA に送信するには:
+
 1.  お使いのコンテナーに移動し、 **[診断設定]** をクリックします。 **[+ 診断設定の追加]** をクリックします。
 2.  診断設定に名前を付けます。
 3.  **[Log Analytics に送信]** チェックボックスをオンにし、Log Analytics ワークスペースを選択します。
@@ -82,6 +84,6 @@ Azure Backup イベントと Azure Site Recovery イベントは、同じ Recove
 
 ![3 つの設定](./media/backup-azure-diagnostics-events/three-settings-example.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[診断イベント用の Log Analytics データ モデルを確認する](https://aka.ms/diagnosticsdatamodel)
+[診断イベント用の Log Analytics データ モデルを確認する](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)

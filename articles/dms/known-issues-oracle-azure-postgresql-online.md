@@ -3,21 +3,21 @@ title: 既知の問題:Oracle から Azure Database for PostgreSQL への移行
 titleSuffix: Azure Database Migration Service
 description: Azure Database Migration Service を使用した Oracle から Azure Database for PostgreSQL 単一サーバーへのオンライン移行に関する既知の問題と移行の制限事項について説明します。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 11/05/2019
-ms.openlocfilehash: 0a1f46698ddb966c315d08a794dd710a74295f97
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/20/2020
+ms.openlocfilehash: 6ab1050290119a53ee0fb674e6939938a3b855e0
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437813"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648600"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>Oracle から Azure DB for PostgreSQL-Single Server へのオンライン移行に関する既知の問題と移行の制限事項
 
@@ -48,7 +48,7 @@ Azure Database Migration Service では、Azure Database for PostgreSQL-Single S
 - SDO_GEOMETRY
 - 入れ子になったテーブル
 - ユーザー定義データ型
-- メモ
+- Notes
 - 仮想列
 - ROWID 列に基づく具体化されたビュー
 

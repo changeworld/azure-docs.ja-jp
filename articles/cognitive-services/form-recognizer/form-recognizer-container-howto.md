@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 02/25/2020
 ms.author: dapine
-ms.openlocfilehash: f0a707f65ecf17887b4e5d12e3487ba3359a68ec
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 64bd6bb0a1a064f38eae472cb889acb6df7ae4b1
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888313"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605150"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>Form Recognizer コンテナーのインストールと実行 (プレビュー)
 
@@ -35,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Form Recognizer コンテナーを使用する前に、次の前提条件を満たす必要があります。
 
-|必須|目的|
+|Required|目的|
 |--|--|
 |Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> Windows では、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。|
@@ -64,7 +64,7 @@ Form Recognizer コンテナーを使用する前に、次の前提条件を満�
 
 ## <a name="request-access-to-the-container-registry"></a>コンテナー レジストリへのアクセスの要求
 
-コンテナーへのアクセスを要求するには、最初に [Cognitive Services Form Recognizer コンテナー アクセス要求フォーム](https://aka.ms/FormRecognizerRequestAccess)に記入して送信する必要があります。 そうすることで、Computer Vision にサインアップすることにもなります。 Computer Vision 要求フォームに別途サインアップする必要はありません。 
+コンテナーへのアクセスを要求するには、最初に [Cognitive Services Form Recognizer コンテナー アクセス要求フォーム](https://aka.ms/FormRecognizerContainerRequestAccess)に記入して送信する必要があります。 そうすることで、Computer Vision にサインアップすることにもなります。 Computer Vision 要求フォームに別途サインアップする必要はありません。 
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 

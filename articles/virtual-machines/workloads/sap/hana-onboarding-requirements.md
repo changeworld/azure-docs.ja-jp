@@ -3,22 +3,22 @@ title: SAP HANA on Azure (L インスタンス) のオンボードの要件 | Mi
 description: SAP HANA on Azure (L インスタンス) のオンボードの要件。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/31/2019
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 99ad334a526b269879034dcc0e1cd0b1b22f1f7f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 141a75a75a214ff4a6f136df7570d6e81f7f4e82
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101186"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617003"
 ---
 # <a name="onboarding-requirements"></a>オンボードの要件
 
@@ -61,7 +61,7 @@ SAP HANA on Azure (L インスタンス) を実行するための要件を以下
 > Type II ユニットの場合、現時点では SLES 12 SP2 OS バージョンのみがサポートされています。 
 
 
-**データベース**
+**[データベース]**
 
 - SAP HANA (Platform Edition または Enterprise Edition) 用のライセンスとソフトウェア インストール コンポーネント。
 
@@ -82,5 +82,5 @@ SAP HANA on Azure (L インスタンス) を実行するための要件を以下
 - SAP の顧客であり、SAP とサポート契約を結んでいることが望まれます。
 - 特に、Type II クラスの HANA L インスタンス SKU の実装では、SAP HANA のバージョンと、サイズの大きいスケールアップ ハードウェア上での最終的な構成について、SAP に相談してください。
 
-**次のステップ**
+**次の手順**
 - [Azure の SAP HANA (L インスタンス) アーキテクチャ](hana-architecture.md)を参照してください

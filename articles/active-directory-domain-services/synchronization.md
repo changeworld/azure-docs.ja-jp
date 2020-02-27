@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: b2a1bcedcc459a21bbc8a461ba9c8d9a8d65aebe
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 7e0e904b182a57a51b5d76f0acebc13bce5902b2
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132203"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612922"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメイン内でのオブジェクトと資格情報の同期のしくみ
 
@@ -47,9 +47,9 @@ Azure Active Directory Domain Services (AD DS) のマネージド ドメイン�
 | ユーザーとグループの SID 履歴 | オンプレミスのプライマリ ユーザーおよびグループの SID | Azure AD DS 内のユーザーおよびグループの *SidHistory* 属性は、オンプレミスの AD DS 環境内の対応するプライマリ ユーザーまたはグループの SID と一致するように設定されています。 この機能により、リソースを再度 ACL 処理する必要がなくなるため、オンプレミスのアプリケーションを Azure AD DS にリフトアンドシフトすることが簡単になります。 |
 
 > [!TIP]
-> **UPN 形式を使用したマネージド ドメインへのサインイン** Azure AD DS マネージド ドメイン内の一部ユーザー アカウントに対して `CONTOSO\driley` などの *SAMAccountName* 属性が自動生成される場合があります。 ユーザーの自動生成された *SAMAccountName* が、UPN プレフィックスとは異なる場合があるため、常に信頼できるサインイン方法ではありません。
+> **UPN 形式を使用したマネージド ドメインへのサインイン** Azure AD DS マネージド ドメイン内の一部ユーザー アカウントに対して `AADDSCONTOSO\driley` などの *SAMAccountName* 属性が自動生成される場合があります。 ユーザーの自動生成された *SAMAccountName* が、UPN プレフィックスとは異なる場合があるため、常に信頼できるサインイン方法ではありません。
 >
-> たとえば、複数のユーザーで *mailNickname* 属性が同じだったり、ユーザーの UPN プレフィックスが最大文字数を超えている場合は、これらのユーザーの *SAMAccountName* が自動生成されることがあります。 Azure AD DS マネージド ドメインに確実にサインインするには、`driley@contoso.com` などの UPN 形式を使用します。
+> たとえば、複数のユーザーで *mailNickname* 属性が同じだったり、ユーザーの UPN プレフィックスが最大文字数を超えている場合は、これらのユーザーの *SAMAccountName* が自動生成されることがあります。 Azure AD DS マネージド ドメインに確実にサインインするには、`driley@aaddscontoso.com` などの UPN 形式を使用します。
 
 ### <a name="attribute-mapping-for-user-accounts"></a>ユーザー アカウントの属性のマッピング
 
@@ -75,7 +75,7 @@ Azure Active Directory Domain Services (AD DS) のマネージド ドメイン�
 | physicalDeliveryOfficeName |physicalDeliveryOfficeName |
 | postalCode |postalCode |
 | preferredLanguage |preferredLanguage |
-| 状態 |st |
+| state |st |
 | streetAddress |streetAddress |
 | 姓 |sn |
 | telephoneNumber |telephoneNumber |

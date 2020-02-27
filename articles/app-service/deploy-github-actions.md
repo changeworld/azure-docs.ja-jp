@@ -6,16 +6,16 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: e3d6e730846388c4b74cfa0b6361629e836b0517
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 4a8b3cf47235e061e5dbcc08a409fce84d421771
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670190"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562209"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>GitHub Actions を使用した App Service へのデプロイ
 
-[GitHub Actions](https://help.github.com/en/articles/about-github-actions) では、ソフトウェア開発ライフサイクルのワークフローを自動的に柔軟に構築できます。 GitHub 向けの Azure App Service Actions と使用すると、GitHub Actions を使用してご自分のワークフローを自動化して [Azure App Service](overview.md) にデプロイできます。
+[GitHub アクション](https://help.github.com/en/articles/about-github-actions)を使用すると、自動化されたソフトウェア開発ライフサイクル ワークフローを柔軟に構築できます。 GitHub 向けの Azure App Service Actions と使用すると、GitHub Actions を使用してご自分のワークフローを自動化して [Azure App Service](overview.md) にデプロイできます。
 
 > [!IMPORTANT]
 > GitHub Actions は現在ベータ版です。 まず、ご自分の GitHub アカウントを使用し、[新規登録し、プレビューに参加](https://github.com/features/actions)する必要があります。
@@ -25,7 +25,7 @@ ms.locfileid: "74670190"
 
 Azure App Service のワークフロー ファイルには、次の 3 つのセクションがあります。
 
-|Section  |タスク  |
+|Section  |処理手順  |
 |---------|---------|
 |**認証** | 1.サービス プリンシパルを定義します <br /> 2.GitHub シークレットを作成します |
 |**ビルド** | 1.環境をセットアップする <br /> 2.Web アプリを作成します |
@@ -49,7 +49,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 ## <a name="configure-the-github-secret"></a>GitHub シークレットの構成
 
-デプロイには、アプリ レベルの資格情報 (つまり発行プロファイルなど) を使用することもできます。 次の手順に従って、シークレットを構成します。
+デプロイには、アプリ レベルの資格情報 (つまり発行プロファイルなど) を使用することもできます。 次のステップに従って、シークレットを構成します。
 
 1. ポータルで **[発行プロファイルの取得]** オプションを使用して、App Service アプリの発行プロファイルをダウンロードします。
 
@@ -189,7 +189,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 | **app-name** | (必須) App Service アプリの名前 | 
 | **publish-profile** | (オプション) Web 配置のシークレットでプロファイル ファイルの内容を発行する |
 | **package** | (オプション) パッケージまたはフォルダーへのパス。 デプロイする *.zip、*.war、*.jar またはフォルダー |
-| **slot-name** | (オプション) 運用スロット以外の既存のスロットを入力 |
+| **slot-name** | (オプション) 運用スロット以外の既存のスロットを入力します。 |
 
 ### <a name="deploy-using-publish-profile"></a>発行プロファイルを使用したデプロイ
 
@@ -205,7 +205,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     # checkout the repo
-    - name: 'Checkout Github Action' 
+    - name: 'Checkout GitHub Action' 
       uses: actions/checkout@master
     
     - name: Setup Node 10.x
@@ -239,7 +239,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     # checkout the repo
-    - name: 'Checkout Github Action' 
+    - name: 'Checkout GitHub Action' 
       uses: actions/checkout@master
    
     - uses: azure/login@v1
@@ -268,7 +268,7 @@ jobs:
         az logout
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 GitHub には、一連のアクションが別々のリポジトリにあります。それぞれには、CI/CD に GitHub を使用し、ご自身のアプリを Azure にデプロイするときに役立つドキュメントとサンプルが含まれています。
 

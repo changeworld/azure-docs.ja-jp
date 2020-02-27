@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: memildin
-ms.openlocfilehash: 32cc4b01d68ee7a15ae7cfa2259d234cbcd143c4
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: ef1684f11349696c22a290c90469a8d94f922e58
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202048"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604001"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-retired"></a>Azure Security Center でのインシデントとアラートの調査 (廃止)
 このドキュメントは、Azure Security Center の調査機能 (プレビュー) を使用して、セキュリティ インシデントとアラートを調査するときに役立ちます。
@@ -47,7 +47,7 @@ Security Center の調査機能を使用すると、潜在的な[セキュリテ
 ### <a name="investigation-path"></a>調査パス
 ユーザーが別のエンティティに移動する際には、調査のコンテキストを追跡するのに調査パスが役立ちます。これにより、迅速な移動が可能になります。 調査結果が含まれているインシデントは、常に調査パスの左端にあります。
 
-![パス](./media/security-center-investigation/security-center-investigation-fig2.png)
+![Path](./media/security-center-investigation/security-center-investigation-fig2.png)
 
 ### <a name="general-information"></a>一般情報
 グラフにエンティティが表示されると、そのエンティティに関する追加の情報がタブに表示されます。 **[情報]** タブでは、利用可能なさまざまな情報ソースから取得されたエンティティの一般情報が表示されます。
@@ -64,11 +64,11 @@ Security Center の調査機能を使用すると、潜在的な[セキュリテ
 
 ![エンティティ](./media/security-center-investigation/security-center-investigation-fig4.png)
 
-### <a name="search"></a>Search
+### <a name="search"></a>検索
 
 **[検索]** タブでは、エンティティで利用できるすべてのログの種類が表示されます。 ログの種類ごとに、利用できる記録の数を確認できます。 それぞれのログの種類をクリックすると、検索画面に移動します。 検索画面では、検索を絞り込んだり、さまざまな検索機能 (アラート設定など) を使用したりできます。 現在のリリースでは、[検索] タブはユーザーとコンピューターのエンティティにのみ使用できます。
 
-![Search](./media/security-center-investigation/security-center-investigation-fig5.png)
+![検索](./media/security-center-investigation/security-center-investigation-fig5.png)
 
 ### <a name="exploration"></a>探索
 
@@ -118,6 +118,3 @@ Security Center の調査機能を使用すると、潜在的な[セキュリテ
 * [Azure Security Center でのセキュリティの警告の管理と対応](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)。 Security Center でアラートを管理し、セキュリティ インシデントに対応する方法を説明します。
 * [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)。 Azure リソースの正常性を監視する方法について説明しています。
 * [Azure Security Center のセキュリティ アラートの概要](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)。 さまざまな種類のセキュリティ アラートについて説明します。
-* [Azure Security Center トラブルシューティング ガイド](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide)。 Security Center における一般的な問題のトラブルシューティング方法について説明します。
-* [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)。 このサービスの使用に関してよく寄せられる質問が記載されています。
-* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/)。 Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。

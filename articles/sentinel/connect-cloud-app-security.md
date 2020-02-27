@@ -3,7 +3,7 @@ title: Azure Sentinel に Cloud App Security データを接続する | Microsof
 description: Azure Sentinel に Cloud App Security データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 32e7e79465b68caca9a636019f65b9f08284fc72
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.author: yelevin
+ms.openlocfilehash: 348576fbbdd1037f9e2e792218b96bbbecf36668
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928216"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588367"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Microsoft Cloud App Security からデータを接続する 
 
@@ -47,14 +47,14 @@ Cloud App Security がデプロイされていてデータを取り込んでい�
 
 1. Azure Sentinel にストリーミングするログを選択します。 **[アラート]** と **[Cloud Discovery logs]\(Cloud Discovery ログ\)** (プレビュー) を選択できます。 
 
-1. **[接続]** をクリックします。
+1. **[Connect]** をクリックします。
 
 1. Cloud App Security アラートで Log Analytics 内の関連スキーマを使用するには、**SecurityAlert** を検索します。
 
 
 
 
-## <a name="next-steps"></a>次の手順
-このドキュメントでは、Microsoft Cloud App Security を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、以下の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+このドキュメントでは、Microsoft Cloud App Security を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。

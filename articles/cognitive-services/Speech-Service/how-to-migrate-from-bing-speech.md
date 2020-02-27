@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/01/2018
+ms.date: 01/21/2020
 ms.author: nitinme
-ms.openlocfilehash: c0e1cc2fc1b3d4aed82c5442d2d3e23a1272fab5
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: d6d9cb4dda93523b1136c8cc4cd307ae82c8b674
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805945"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560935"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Bing Speech から Speech Service に移行する
 
@@ -61,7 +61,7 @@ Speech Service では､トランザクション ベースではなく時間ベ�
 
 ## <a name="migration-strategies"></a>移行方法
 
-Bing Speech API を使用しているアプリケーションを開発中の場合､あるいはそうしたアプリケーションを運用している場合は､できるかぎり速やかに Speech Service を使用するように更新することをお勧めします｡ 使用できる SDK やサンプル コード､チュートリアルについては､[Speech Service](index.md) のドキュメントをご覧ください。
+Bing Speech API を使用しているアプリケーションを開発中の場合､あるいはそうしたアプリケーションを運用している場合は､できるかぎり速やかに Speech Service を使用するように更新することをお勧めします｡ 使用できる SDK やサンプル コード､チュートリアルについては､[Speech Service](index.yml) のドキュメントをご覧ください。
 
 Speech Service の [REST API](rest-apis.md) Bing Speech の API 互換性があります｡ 現在 Bing Speech REST API をご利用の場合は、REST エンドポイントのみを変更し、Speech Service サブスクリプション キーに切り替えるだけで済みます。
 
@@ -87,10 +87,10 @@ Bing Speech のお客様は[サポート チケット](https://ms.portal.azure.c
 
 Speech Service､SDK､および API サポートについては､Speech Service の[サポート ページ](support.md)をご覧ください｡
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Speech Service を無料で試す](get-started.md)
-* [クイック スタート:UWP アプリで Speech SDK を使用して音声を認識する](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
+* [クイック スタート: UWP アプリで Speech SDK を使用して音声を認識する](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
 
 ## <a name="see-also"></a>関連項目
 * [Speech Service リリース ノート](releasenotes.md)

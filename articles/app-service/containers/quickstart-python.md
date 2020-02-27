@@ -3,15 +3,15 @@ title: クイック スタート:Linux Python アプリを作成する
 description: App Service で Linux コンテナーに初めての Python アプリをデプロイして、Azure App Service での Linux アプリの使用を開始します。
 ms.topic: quickstart
 ms.date: 10/22/2019
-ms.custom: seo-python-october2019
+ms.custom: cli-validate
 experimental: true
 experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: aaf1f5cb6a11e0a5358d6c8a59581b46e57a3274
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 567e87b43c3fc3d7d2fb0c894ced53c89a133978
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045928"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524065"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>クイック スタート:Azure App Service on Linux で Python アプリを作成する
 
@@ -46,7 +46,7 @@ cd python-docs-hello-world
 
 ターミナル ウィンドウで、(お使いのオペレーティング システムに合わせて) 次のコマンドを使用し、必要な依存関係をインストールして、組み込みの開発サーバーを起動します。 
 
-# <a name="bashtabbash"></a>[Bash](#tab/bash)
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```bash
 python3 -m venv venv
@@ -56,7 +56,7 @@ export FLASK_APP=application.py
 flask run
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 py -3 -m venv env
@@ -66,7 +66,7 @@ Set-Item Env:FLASK_APP ".\application.py"
 flask run
 ```
 
-# <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+# <a name="cmd"></a>[Cmd](#tab/cmd)
 
 ```cmd
 py -3 -m venv env

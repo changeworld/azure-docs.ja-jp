@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/12/2020
-ms.openlocfilehash: d030e44f59d41c32c9a76c0b89c0bce1c8c54a69
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: b9d923b3272f9d8b3da39d7cdb771a766eee4eab
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186854"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561784"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure Portal を使用して HDInsight の Apache Hadoop クラスターを管理する
 
@@ -222,25 +222,13 @@ HDInsight クラスターは、2 つのユーザー アカウントを持つこ�
    | フィールド | Value |
    | --- | --- |
    | スクリプトの種類 | ドロップダウン リストから **[- カスタム]** を選択します。|
-   | Name |"SSH パスワードの変更" |
+   | 名前 |"SSH パスワードの変更" |
    | Bash スクリプト URI |changepassword.sh ファイルへの URI |
    | ノードの種類:(ヘッド、ワーカー、Nimbus、スーパーバイザー、または Zookeeper) |表示するすべてのノード型に ✓ |
    | パラメーター |SSH ユーザー名と新しいパスワードを入力します。 ユーザー名とパスワードの間に、スペースを 1 つ入れる必要があります。 |
    | このスクリプト アクションを保持する… |このフィールドはオフのままにします。 |
 
 6. **[作成]** を選択してスクリプトを適用します。 スクリプトの完了後は、新しいパスワードで SSH を使用して、クラスターに接続することができます。
-
-## <a name="grantrevoke-access"></a>アクセス権の付与/取り消し
-
-HDInsight クラスターには、以下の HTTP Web サービスがあります (これらすべてのサービスには、REST ベースのエンドポイントがあります)。
-
-- ODBC
-- JDBC
-- Ambari
-- Oozie
-- Templeton
-
-既定では、これらのサービスへのアクセス許可が付与されます。 [Azure PowerShell](hdinsight-administer-use-powershell.md#grantrevoke-access) を使用して、アクセス許可を取り消すか付与することができます。
 
 ## <a name="find-the-subscription-id"></a>サブスクリプション ID の検索
 

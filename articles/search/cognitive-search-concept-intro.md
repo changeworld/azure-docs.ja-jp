@@ -6,14 +6,14 @@ manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6d75e48443fd8622ca2ae7ff05fe81184c4b2b16
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 14c120af69a94331586f9264a12f5d2333a5d87d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472436"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586752"
 ---
 # <a name="introduction-to-ai-in-azure-cognitive-search"></a>Azure Cognitive Search における AI の概要
 

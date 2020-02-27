@@ -4,7 +4,7 @@ description: Azure VM に SAP S/4HANA または BW/4HANA をデプロイしま�
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: 2fa68d9dc3052263b5354086ee802cc31fa35ace
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c110a4e0429ba52e01c472097a2241f91d504cf5
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101455"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616202"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>Azure に SAP S/4HANA または BW/4HANA をデプロイする
 この記事では、SAP Cloud Appliance Library (SAP CAL) 3.0 を使用して Azure に S/4HANA をデプロイする方法について説明します。 BW/4HANA などの他の SAP HANA ベースのソリューションをデプロイする手順は同じです。

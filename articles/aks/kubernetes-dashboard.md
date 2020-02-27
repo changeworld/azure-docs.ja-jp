@@ -2,17 +2,14 @@
 title: Web ダッシュボードで Azure Kubernetes Service クラスターを管理する
 description: 組み込みの Kubernetes Web UI ダッシュボードを使用して、Azure Kubernetes Service (AKS) クラスターを管理する方法について説明します
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
-ms.author: mlearned
-ms.openlocfilehash: f150103c8e9534bfd1bb93d20e3d65d715767184
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 15fcf765be0a754575713eebcdaa7d68e1c299b9
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996960"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595350"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Kubernetes Web ダッシュボードにアクセスする
 
@@ -128,7 +125,7 @@ Kubernetes ダッシュボードでは、基本的な監視メトリックおよ
 
 ![レプリカ セットに関する情報の表示](./media/kubernetes-dashboard/view-replica-set.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Kubernetes ダッシュボードの詳細については、[Kubernetes Web UI ダッシュボード][kubernetes-dashboard]に関するページを参照してください。
 

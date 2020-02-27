@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 01/17/2020
 ms.author: diberry
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: b1401d7a9ee95d5f9b7c0c742965ef4eb3477720
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 42335c3d2ac5efb8ae1ede0a2076260ac9537eb5
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772437"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524429"
 ---
 # <a name="quickstart-query-v3-prediction-endpoint-with-sdk"></a>クイック スタート:SDK を使用した V3 予測エンドポイントに対するクエリの実行
 
@@ -26,14 +26,13 @@ SDK を使用して、Language Understanding (LUIS) にユーザーの発話を�
 [!INCLUDE [Get prediction with C# SDK](./includes/sdk-csharp-prediction.md)]
 ::: zone-end
 
-::: zone pivot="programming-language-python"
-[!INCLUDE [Get prediction with Python SDK](./includes/sdk-python-prediction.md)]
-::: zone-end
-
-::: zone pivot="programming-language-nodejs"
+::: zone pivot="programming-language-javascript"
 [!INCLUDE [Get prediction with Node.js SDK](./includes/sdk-nodejs-prediction.md)]
 ::: zone-end
 
+::: zone pivot="programming-language-python"
+[!INCLUDE [Get prediction with Python SDK](./includes/sdk-python-prediction.md)]
+::: zone-end
 
 ## <a name="next-steps"></a>次のステップ
 

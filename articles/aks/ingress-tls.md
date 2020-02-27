@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service (AKS) クラスターを使用した HTTPS イングレスの作成
 description: Azure Kubernetes Service (AKS) クラスターで、自動的に TLS 証明書を生成する Let's Encrypt を使用する NGINX イングレス コントローラーをインストールおよび構成する方法について説明します。
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 01/29/2020
-ms.author: mlearned
-ms.openlocfilehash: 661ed72265b81f47cbe8e9cf26595632360ec352
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6b465aeb08f14e48249be9587e5fdee1f4b08ba4
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898814"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595537"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で HTTPS イングレス コントローラーを作成する
 

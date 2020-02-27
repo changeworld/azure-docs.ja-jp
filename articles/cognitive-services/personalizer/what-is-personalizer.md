@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: 685e4f841ba077c81f46a27af8040fa6c57c0021
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: bf0710ebef21226d8d8582a920d64027bb015d34
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846221"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622723"
 ---
 # <a name="what-is-personalizer"></a>Personalizer とは
 
@@ -63,7 +63,7 @@ Personalizer の **Reward** [API](https://westus2.dev.cognitive.microsoft.com/do
 
 Personalizer は、対象のコンテンツが次の条件を満たす場合に使用します。
 
-* 選択肢となる一連の項目数が限られている (最大約 50 個)。 リストがそれよりも大きい場合は、[レコメンデーション エンジンを使用](where-can-you-use-personalizer.md#use-personalizer-with-recommendation-engines)して、項目を 50 個まで減らしてください。
+* 選択肢となる一連の項目数が限られている (最大約 50 個)。 リストがそれよりも大きい場合は、[レコメンデーション エンジンを使用](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution)して、項目を 50 個まで減らしてください。
 * ランク付けしたいコンテンツを説明する情報がある ("_アクションと特徴_" および "_コンテキストの特徴_")。
 * Personalizer で効果を発揮するために、コンテンツに関連したイベントが 1 日あたり少なくとも約 1,000 件発生する。 最低限必要なトラフィックが Personalizer に送信されなかった場合、このサービスでは、最適なコンテンツ項目を 1 つ割り出すために、さらに時間がかかります。
 

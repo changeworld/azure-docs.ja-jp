@@ -21,6 +21,8 @@
   items:
     - name: 接続する
       items:
+        - name: デバイスの接続
+          href: tutorial-connect-device.md
         - name: プラグ アンド プレイ (プレビュー) デバイスの接続
           href: tutorial-connect-pnp-device.md
         - name: ゲートウェイ デバイス テンプレートの作成

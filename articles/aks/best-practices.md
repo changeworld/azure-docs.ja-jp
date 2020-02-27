@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service (AKS) に関するベスト プラクティス
 description: Azure Kubernetes Service (AKS) でのアプリケーションの構築および管理のためのクラスター オペレーターと開発者のベスト プラクティス集
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 12/07/2018
-ms.author: mlearned
-ms.openlocfilehash: 7127894b364ac8f0fe1d87e13150d5522f5473e2
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 627eeffd18a479486e5a682da06bf89cd5f8f0e1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67615958"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596319"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションの構築および管理のためのクラスター オペレーターと開発者のベスト プラクティス
 
@@ -76,6 +73,6 @@ Azure Kubernetes Service (AKS) でのアプリケーションを構築して実�
 * [ストレージ オプション](concepts-storage.md)
 * [スケーリング オプション](concepts-scale.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 AKS を使用する必要がある場合は、いずれかのクイック スタートに従って、[Azure CLI](kubernetes-walkthrough.md) または [Azure portal](kubernetes-walkthrough-portal.md) を使用して Azure Kubernetes Service (AKS) クラスターをデプロイしてください。

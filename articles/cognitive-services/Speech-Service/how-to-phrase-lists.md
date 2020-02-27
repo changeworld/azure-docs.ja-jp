@@ -3,20 +3,20 @@ title: フレーズ リスト - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: 音声テキスト変換の認識結果を向上させるために、`PhraseListGrammar` オブジェクトを使用して音声サービスにフレーズ リストを提供する方法について説明します。
 services: cognitive-services
-author: rhurey
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
-ms.author: rhurey
+ms.date: 02/04/2020
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 2ceb53b50810aef501278710ae990c57fc45030c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f84ea6b2b0f1e8246e1d765e54f663cd01f29b1d
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971674"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560849"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>音声テキスト変換用のフレーズ リスト
 
@@ -136,6 +136,6 @@ phraseListGrammar.clear();
 > [!NOTE]
 > `PhraseListGrammar` オブジェクトへの変更は、次の認識時、または音声サービスへの再接続後に有効になります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Speech SDK のリファレンス ドキュメント](speech-sdk.md)

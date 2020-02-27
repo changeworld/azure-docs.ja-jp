@@ -141,15 +141,17 @@
       items:
         - name: コンテナー イメージのビルドを自動化する
           items:
-            - name: ソース コンテキストからビルドする
+            - name: 1 - ソース コンテキストからビルドする
               href: container-registry-tutorial-quick-task.md
-            - name: コードのコミット時にビルドする
+            - name: 2a - コードのコミット時にビルドする
               href: container-registry-tutorial-build-task.md
-            - name: コードのコミット時のマルチステップ タスク
+            - name: 2b - コードのコミット時のマルチステップ タスク
               href: container-registry-tutorial-multistep-task.md
-            - name: 基本イメージ更新時にビルドする
+            - name: 3a - 基本イメージ更新時にビルドする
               href: container-registry-tutorial-base-image-update.md
-            - name: タスクのスケジュール設定
+            - name: 3b - プライベート基本イメージ更新時にビルドする
+              href: container-registry-tutorial-private-base-image-update.md
+            - name: 4 - スケジュールに従ってビルドする
               href: container-registry-tasks-scheduled.md
     - name: サンプル
       expanded: false
@@ -160,6 +162,8 @@
       items:
         - name: 複数ステップのタスク
           href: container-registry-tasks-multi-step.md
+        - name: 基本イメージの更新
+          href: container-registry-tasks-base-images.md
     - name: 操作方法ガイド
       expanded: false
       items:

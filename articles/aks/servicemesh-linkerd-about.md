@@ -2,16 +2,15 @@
 title: Linkerd の概要
 description: Linkerd の概要を取得する
 author: paulbouwer
-ms.service: container-service
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
-ms.openlocfilehash: 9d0a65f2cf557120ec5a551494e697c876ad5c59
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 3181be62a14ec1b3450bd181172b5323ca176427
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529775"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593769"
 ---
 # <a name="linkerd"></a>Linkerd
 
@@ -19,9 +18,9 @@ ms.locfileid: "72529775"
 
 [Linkerd][linkerd] は、使いやすく軽量のサービス メッシュです。
 
-## <a name="architecture"></a>アーキテクチャ
+## <a name="architecture"></a>Architecture
 
-Linkerd は、超軽量の [Linkerd ][linkerd-proxy] に特化したプロキシ サイドカーで構成されるデータ プレーンを提供します。 これらのインテリジェント プロキシは、メッシュ化されたアプリとワークロード内外のすべてのネットワーク トラフィックを制御します。 また、プロキシは [Prometheus ][prometheus] メトリック エンドポイントを介してメトリックを公開します。
+Linkerd は、超軽量の [Linkerd ][linkerd-proxy] に特化したプロキシ サイドカーで構成されるデータ プレーンを提供します。 これらのインテリジェント プロキシは、メッシュ化されたアプリとワークロードの内外のすべてのネットワーク トラフィックを制御します。 また、プロキシは [Prometheus ][prometheus] メトリック エンドポイントを介してメトリックを公開します。
 
 コントロール プレーンは、次の[コンポーネント][linkerd-architecture]を使用して、構成と集計されたテレメトリを管理します。
 
@@ -82,7 +81,7 @@ Linkerd は、次のシナリオに適しており、推奨されています。
 - 低待機時間、低オーバーヘッド、可観測性に重点を置いたシンプルなトラフィック管理
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のドキュメントでは、Azure Kubernetes Service (AKS) に Linkerd をインストールする方法について説明しています。
 

@@ -1,15 +1,14 @@
 ---
 author: paulbouwer
-ms.service: container-service
 ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
-ms.openlocfilehash: da4b56fb879ce108e00a40e5a26a441e330793c6
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: e8b94b4adc39de81dbdf17dfd24fcff39532b482
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529899"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593987"
 ---
 ### <a name="add-grafana-secret"></a>Grafana のシークレットを追加する
 

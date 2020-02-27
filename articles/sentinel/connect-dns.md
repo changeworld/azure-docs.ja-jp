@@ -3,7 +3,7 @@ title: Azure Sentinel で DNS データを接続する | Microsoft Docs
 description: Azure Sentinel で DNS データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: 77af84f9-47bc-418e-8ce2-4414d7b58c0c
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
-ms.author: rkarlin
-ms.openlocfilehash: 96515d81668bf172325f88e3e5bac8d8cccfa999
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.author: yelevin
+ms.openlocfilehash: 6d43b82ecd13ac5e082d270ee44ce61fef763d2c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190858"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588316"
 ---
 # <a name="connect-your-domain-name-server"></a>ドメイン ネーム サーバーへの接続
 

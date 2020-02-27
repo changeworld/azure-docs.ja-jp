@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service (AKS) の複数のポッド用の静的ボリュームを作成する
 description: Azure Kubernetes Service (AKS) 上で複数の同時実行ポッドで使用するための Azure Files を含むボリュームを手動で作成する方法について説明します
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.author: mlearned
-ms.openlocfilehash: 7b5f7c25cd1627475d8e37a539956f01ae6151ab
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 084ab5cd6736c9148bcab1faf048d3d9081855d4
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74914017"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596404"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 上で Azure ファイル共有を含むボリュームを手動で作成して使用する
 
@@ -163,7 +160,7 @@ spec:
 
 バージョン 1.8.0 - 1.8.4 のクラスターを使用している場合は、*runAsUser* の値を *0* に設定してセキュリティ コンテキストを指定できます。 ポッドのセキュリティ コンテキストについて詳しくは、[セキュリティ コンテキストの構成][kubernetes-security-context]に関するページを参照してください。
 
-マウント オプションを更新するには、*PersistentVolume* を使用して *azurefile-mount-options-pv.yaml* ファイルを作成します。 例:
+マウント オプションを更新するには、*PersistentVolume* を使用して *azurefile-mount-options-pv.yaml* ファイルを作成します。 次に例を示します。
 
 ```yaml
 apiVersion: v1
@@ -189,7 +186,7 @@ spec:
   - nobrl
 ```
 
-*PersistentVolume* を使用する *PersistentVolumeClaim* を使って *azurefile-mount-options-pvc.yaml* ファイルを作成します。 例:
+*PersistentVolume* を使用する *PersistentVolumeClaim* を使って *azurefile-mount-options-pvc.yaml* ファイルを作成します。 次に例を示します。
 
 ```yaml
 apiVersion: v1
@@ -221,7 +218,7 @@ NAME        STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
 ```
 
-*PersistentVolumeClaim* を参照してポッドを更新するようにコンテナーの仕様を更新します。 例:
+*PersistentVolumeClaim* を参照してポッドを更新するようにコンテナーの仕様を更新します。 次に例を示します。
 
 ```yaml
 ...
@@ -231,9 +228,9 @@ azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
       claimName: azurefile
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-関連するベスト プラクティスについては、[AKS のストレージとバックアップに関するベスト プラクティス][operator-best-practices-storage]に関するページを参照してください。
+関連するベスト プラクティスについては、[AKS のストレージとバックアップに関するベスト プラクティス][operator-best-practices-storage]に関する記事を参照してください。
 
 AKS クラスターと Azure Files の操作について詳しくは、[Azure Files 対応の Kubernetes プラグイン][kubernetes-files]に関するページを参照してください。
 

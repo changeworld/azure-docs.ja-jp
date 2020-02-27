@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service (AKS) のネットワーク ポリシーによるポッドの保護
 description: Azure Kubernetes Service (AKS) の Kubernetes ネットワーク ポリシーを使用して、ポッドとの間で送受信されるトラフィックをセキュリティ保護する方法について説明します。
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: mlearned
-ms.openlocfilehash: 350e553563aa152c61c922727fb87937bedd14b5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 92e726529f2c81b169dc5ad485148ad8118bbc81
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72928487"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592868"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のネットワーク ポリシーを使用したポッド間のトラフィックの保護
 
@@ -54,12 +51,12 @@ Azure には、ネットワーク ポリシーを実装する 2 つの方法が�
 
 | 機能                               | Azure                      | Calico                      |
 |------------------------------------------|----------------------------|-----------------------------|
-| サポートされるプラットフォーム                      | Linux                      | Linux                       |
+| サポートされているプラットフォーム                      | Linux                      | Linux                       |
 | サポートされているネットワーク オプション             | Azure CNI                  | Azure CNI と Kubernetes       |
 | Kubernetes 仕様の準拠 | サポートされているすべてのポリシーの種類 |  サポートされているすべてのポリシーの種類 |
 | その他の機能                      | なし                       | グローバル ネットワーク ポリシー、グローバル ネットワーク セット、およびホスト エンドポイントで構成される拡張ポリシー モデル。 `calicoctl` CLI を使用した拡張機能の管理の詳細については、[calicoctl ユーザー リファレンス][calicoctl]を参照してください。 |
 | サポート                                  | Azure のサポートとエンジニアリング チームによってサポートされる | Calico コミュニティ サポート。 その他の有料サポートの詳細については、[Project Calico support options][calico-support] を参照してください。 |
-| ログの記録                                  | IPTable で追加/削除されたルールは、すべてのホストにおいて */var/log/azure-npm.log* に記録されます | 詳しくは、[Calico のコンポーネント ログ][calico-logs]に関するページをご覧ください |
+| ログ記録                                  | IPTable で追加/削除されたルールは、すべてのホストにおいて */var/log/azure-npm.log* に記録されます | 詳しくは、[Calico のコンポーネント ログ][calico-logs]に関するページをご覧ください |
 
 ## <a name="create-an-aks-cluster-and-enable-network-policy"></a>AKS クラスターを作成してネットワーク ポリシーを有効にする
 
@@ -444,7 +441,7 @@ wget -qO- http://backend
 exit
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この記事では、2 つの名前空間を作成し、ネットワーク ポリシーを適用しました。 これらのリソースをクリーンアップするには、[kubectl delete][kubectl-delete] コマンドを使用し、リソース名を指定します。
 
@@ -453,7 +450,7 @@ kubectl delete namespace production
 kubectl delete namespace development
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ネットワーク リソースの詳細については、「[Azure Kubernetes Service (AKS) でのアプリケーションに対するネットワークの概念][concepts-network]」を参照してください。
 

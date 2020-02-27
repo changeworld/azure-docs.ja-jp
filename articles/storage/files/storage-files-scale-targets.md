@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: dcb0ffef0cf48a7bcbfbdb0107999f7e90333559
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 1a74ec3610367193b5eee53ea0e0818901433e96
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77151991"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598573"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure Files のスケーラビリティおよびパフォーマンスのターゲット
 
@@ -51,8 +51,8 @@ Azure Files については、ストレージ アカウント、共有、ファ�
 ### <a name="file-share-and-file-scale-targets"></a>ファイル共有とファイルのスケール ターゲット
 
 > [!NOTE]
-> 5 TiB を超える標準ファイル共有は、いくつかの制限事項があります。
-> 制限事項の一覧と、地域に関する制限、およびこれらの大きなファイル共有サイズを有効にするための手順については、計画ガイドの「[大きなファイル共有へのオンボード](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier)」セクションを参照してください。
+> 5 TiB を超える標準ファイル共有には、特定の制限事項と地域に関する制限があります。
+> 制限事項の一覧と、地域に関する制限、およびこれらの大きなファイル共有サイズを有効にするための手順については、計画ガイドの「[大きなファイル共有へのオンボード](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib)」セクションを参照してください。
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
@@ -111,7 +111,7 @@ Azure File Sync の場合、2 つのステージで重要です。
 - オブジェクトのスループットは、サーバー上の同期グループの数にほぼ比例して増減します。 サーバー上の複数の同期グループにデータを分割するとスループットが向上しますが、サーバーとネットワークによっても制限されます。
 - オブジェクトのスループットは、1 秒あたりの MiB のスループットに反比例します。 小さいファイルの場合、1 秒間に処理されるオブジェクト数に関するスループットは高くなりますが、1 秒間の MiB のスループットは低下します。 逆に、大きいファイルでは、1 秒間に処理されるオブジェクトの数は減りますが、1 秒間の MiB のスループットは高くなります。 MiB/秒のスループットは、Azure Files のスケール ターゲットによって制限されます。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - [Azure Files のデプロイの計画](storage-files-planning.md)
 - [Azure File Sync のデプロイの計画](storage-sync-files-planning.md)

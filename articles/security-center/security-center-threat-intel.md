@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 97975d72214426907a2ab91f0d3cd98d0ce6734b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 39835d9d73adcbe474d3b70dfced313e18d1a3b3
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693772"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603420"
 ---
 # <a name="security-alerts-map-and-threat-intelligence"></a>セキュリティ アラート マップと脅威インテリジェンス
 この記事は、Azure Security Center のセキュリティ アラート マップとセキュリティ イベント ベースの脅威インテリジェンス マップを使用して、セキュリティ関連の問題を解決するのに役立ちます。
@@ -64,5 +64,3 @@ Security Center のセキュリティ アラート マップを使用して、�
 * [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)。 Azure リソースの正常性を監視する方法について説明しています。
 * [Azure Security Center のセキュリティ アラートの概要](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)。 さまざまな種類のセキュリティ アラートについて説明します。
 * [Azure Security Center トラブルシューティング ガイド](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide)。 Security Center における一般的な問題のトラブルシューティング方法について説明します。
-* [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)。 このサービスの使用に関してよく寄せられる質問とその回答を紹介しています。
-* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/)。 Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。

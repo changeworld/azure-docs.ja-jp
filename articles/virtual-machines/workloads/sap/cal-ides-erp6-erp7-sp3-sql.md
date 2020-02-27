@@ -1,10 +1,10 @@
 ---
 title: Azure に SAP ERP 6.0 向け SAP IDES EHP7 SP3 をデプロイする | Microsoft Docs
-description: Azure に SAP ERP 6.0 向け SAP IDES EHP7 SP3 をデプロイします
+description: Azure に SAP ERP 6.0 向け SAP IDES EHP7 SP3 をデプロイする
 services: virtual-machines-windows
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: 66921280403027d1723b27f104b42d2c83271213
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3efd92226b7c69590f3960458ffec49b63b8364f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100066"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616705"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Azure に SAP ERP 6.0 向け SAP IDES EHP7 SP3 をデプロイする
 この記事では、SAP Cloud Appliance Library (SAP CAL) 3.0 を使用して、SQL Server および Windows オペレーティング システムで実行されている SAP IDES システムを Azure にデプロイする方法について説明します。 手順をスクリーンショットに示します。 別のソリューションをデプロイするには、同じ手順に従います。

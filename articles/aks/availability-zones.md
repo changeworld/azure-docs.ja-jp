@@ -2,18 +2,15 @@
 title: Azure Kubernetes Service (AKS) での可用性ゾーンの使用
 description: Azure Kubernetes Service (AKS) で複数の可用性ゾーンにノードを分散させるクラスターを作成する方法について説明します。
 services: container-service
-author: mlearned
 ms.custom: fasttrack-edit
-ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
-ms.author: mlearned
-ms.openlocfilehash: b73cb09f95fa2b23fb23fb719fe57143e1731ceb
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 5693d9e90de9ba68e7b76e0f2bd5b75141dbda71
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086528"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596812"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>可用性ゾーンを使用する Azure Kubernetes Service (AKS) クラスターを作成する
 
@@ -33,7 +30,7 @@ Azure CLI バージョン 2.0.76 以降がインストールされて構成さ�
 
 * 米国中部
 * 米国東部 2
-* East US
+* 米国東部
 * フランス中部
 * 東日本
 * 北ヨーロッパ

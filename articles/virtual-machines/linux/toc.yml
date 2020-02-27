@@ -534,7 +534,7 @@
             - name: Azure VM エージェントでスケーリングする
               href: ../../jenkins/jenkins-azure-vm-agents.md
             - name: アーティファクトをストレージに発行する
-              href: ../../storage/common/storage-java-jenkins-continuous-integration-solution.md
+              href: ../../jenkins/storage-java-jenkins-continuous-integration-solution.md
             - name: Jenkins をセキュリティ保護する
               href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
     - name: コンテナーの実行

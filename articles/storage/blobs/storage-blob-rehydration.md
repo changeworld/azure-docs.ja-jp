@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 1c06c1d0403e526e1ed58a193cfe9b57bb9fe561
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 0a7012d9daa808933a51ac05862a8a9aa4cfcf77
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780243"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614798"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>アーカイブ層から BLOB データをリハイドレートする
 
@@ -51,8 +51,8 @@ BLOB はアーカイブ アクセス層に含まれていますが、オフラ�
 ## <a name="quickstart-scenarios"></a>クイックスタート シナリオ
 
 ### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>アーカイブ BLOB をオンライン層にリハイドレートする
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
-1. [Azure portal](https://portal.azure.com) にサインインする
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. Azure portal で、 **[すべてのリソース]** を検索して選択します。
 
@@ -70,14 +70,14 @@ BLOB はアーカイブ アクセス層に含まれていますが、オフラ�
 
 ![ストレージ アカウント層を変更する](media/storage-tiers/blob-access-tier.png)
 
-# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 次の PowerShell スクリプトを使用すると、アーカイブ BLOB の BLOB 層を変更できます。 `$rgName` 変数は、ご自身のリソース グループ名で初期化する必要があります。 `$accountName` 変数は、ご自身のストレージ アカウント名で初期化する必要があります。 `$containerName` 変数は、ご自身のコンテナー名で初期化する必要があります。 `$blobName` 変数は、ご自身の BLOB 名で初期化する必要があります。 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
 $rgName = ""
 $accountName = ""
 $containerName = ""
-$blobName == ""
+$blobName = ""
 
 #Select the storage account and get the context
 $storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName
@@ -99,8 +99,8 @@ $rgName = ""
 $accountName = ""
 $srcContainerName = ""
 $destContainerName = ""
-$srcBlobName == ""
-$destBlobName == ""
+$srcBlobName = ""
+$destBlobName = ""
 
 #Select the storage account and get the context
 $storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: aa03e388019bf696324ea7af6062ec98386df5fa
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 0585ced3bc53f216ab203b4686b5800b5e14bbbd
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827045"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612750"
 ---
 # <a name="troubleshoot-account-sign-in-problems-with-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services マネージド ドメインのアカウント サインイン問題を解決する
 
@@ -59,7 +59,7 @@ Azure AD Connect を使用してオンプレミス AD DS 環境から同期す�
     * [アカウントのパスワードを変更して][enable-user-accounts]必要なパスワード ハッシュを生成してから 15 分待ち、それから再びサインインをお試しください。
     * Azure AD DS を無効にし、再び有効にした場合、各アカウントで手順をもう一度実行してパスワードを変更し、必要なパスワード ハッシュを生成する必要があります。
 * **はい。パスワードは変更されています。**
-    * `CONTOSO\deeriley` のような *SAMAccountName* 形式ではなく、`driley@contoso.com` のように *UPN* 形式を利用してサインインをお試しください。
+    * `AADDSCONTOSO\deeriley` のような *SAMAccountName* 形式ではなく、`driley@aaddscontoso.com` のように *UPN* 形式を利用してサインインをお試しください。
     * UPN プレフィックスが極端に長いか、マネージド ドメイン上の別のユーザーと同じであるユーザーに対して *SAMAccountName* を自動的に生成できます。 *UPN* 形式の場合、Azure AD テナント内で確実に一意になります。
 
 ## <a name="the-account-is-locked-out"></a>アカウントがロックアウトされています
@@ -70,7 +70,7 @@ Azure AD Connect を使用してオンプレミス AD DS 環境から同期す�
 
 アカウント ロックアウト問題の詳細と解決方法については、[Azure AD DS のアカウント ロックアウト問題を解決する][troubleshoot-account-lockout]方法に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 VM を Azure AD DS マネージド ドメインに参加させる際の問題が解決しない場合は、[ヘルプを参照し、Azure Active Directory のサポート チケットを開いてください][azure-ad-support]。
 

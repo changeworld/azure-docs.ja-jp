@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
-ms.openlocfilehash: c389fd72d9b185bc920ffeefdfb84e05b3d13001
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 10e1081c7a91c65c21ffcb3da66930fb7c6e73bb
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200717"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603452"
 ---
 # <a name="azure-security-center-threat-intelligence-report"></a>Azure Security Center の脅威インテリジェンス レポート
 このドキュメントでは、セキュリティ アラートが生成される原因となった脅威に関して詳しい情報を確認するにあたり、Azure Security Center の脅威インテリジェンス レポートがどのような点で役に立つかを説明します。
@@ -68,8 +68,6 @@ Security Center には、攻撃の種類に応じて 3 種類の脅威レポー�
 ## <a name="see-also"></a>関連項目
 このドキュメントでは、セキュリティ アラートに関する調査にあたり Azure Security Center の脅威のインテリジェント レポートがどのような点で有用であるかを学習しました。 Azure セキュリティ センターの詳細については、次を参照してください。
 
-* [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)。 このサービスの使用に関してよく寄せられる質問が記載されています。
 * [Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)。 Azure Security Center を導入するための設計上の考慮事項を計画し、理解する方法について説明しています。
 * [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)。 セキュリティの警告の管理と対応の方法について説明しています。
 * [Azure Security Center でのセキュリティ インシデントの処理](security-center-incident.md)
-* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/)。 Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。

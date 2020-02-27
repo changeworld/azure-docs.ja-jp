@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 709ac3a9f5e7cf0bd13a6e387f0b80caf2608fe0
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 10ea15168d61d5e73aff976ef641e07b6327dbca
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748467"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604569"
 ---
 # <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Azure Security Center でのアラートの検証 (EICAR テスト ファイル)
 このドキュメントは、Azure Security Center のアラートに対してシステムが適切に構成されているかどうかを確認する方法を学ぶのに役立ちます。
@@ -72,12 +72,11 @@ Azure Kubernetes Service を統合する Security Center のプレビュー機�
 
 Azure Kubernetes Service と Azure Security Center の統合について詳しくは、[こちらの記事](azure-kubernetes-service-integration.md)をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、アラートの検証プロセスについて説明しました。 この検証について理解できたら、次の記事をお読みください。
 
 * [Azure Security Center でのセキュリティ アラートの管理と対応](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts) - Security Center で、アラートの管理とセキュリティ インシデントへの対応を行う方法について説明しています。
 * 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」 - Azure リソースの正常性を監視する方法について説明しています。
 * [Azure Security Center のセキュリティ アラートの概要](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) - さまざまな種類のセキュリティ アラートについて説明しています。
 * [Azure Security Center トラブルシューティング ガイド](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide) - Security Center の一般的な問題をトラブルシューティングする方法について説明しています。
-* 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」 - このサービスの使用に関してよく寄せられる質問が記載されています。
 * [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/) - Azure のセキュリティとコンプライアンスに関するブログ記事を確認できます。

@@ -3,12 +3,12 @@ title: Azure Stack への Azure Backup Server のインストール
 description: この記事では、Azure Backup Server を使用してワークロードを保護し、Azure Stack にバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 396621b43db2500ca9107979fca9d4d2c0646e6d
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b78e5a662bdcf23ad38cb33292658d4d2455e579
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172394"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583437"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Stack への Azure Backup Server のインストール
 
@@ -29,9 +29,9 @@ Azure Backup Server は、以下の Azure Stack 仮想マシン ワークロー�
 | Windows Server 2012 R2 - Datacenter/Enterprise/Standard | ボリューム、ファイル、フォルダー |
 | Windows Server 2012 - Datacenter/Enterprise/Standard | ボリューム、ファイル、フォルダー |
 | Windows Server 2008 R2 - Datacenter/Enterprise/Standard | ボリューム、ファイル、フォルダー |
-| SQL Server 2016 | Database |
-| SQL Server 2014 | Database |
-| SQL Server 2012 SP1 | Database |
+| SQL Server 2016 | データベース |
+| SQL Server 2014 | データベース |
+| SQL Server 2012 SP1 | データベース |
 | SharePoint 2016 | ファーム、データベース、フロントエンド、Web サーバー |
 | SharePoint 2013 | ファーム、データベース、フロントエンド、Web サーバー |
 | SharePoint 2010 | ファーム、データベース、フロントエンド、Web サーバー |
@@ -91,7 +91,7 @@ Azure Backup Server の仮想マシンは、ドメインに参加させる必要
 
 Azure Backup Server のサーバーを選ぶときは、Windows Server 2012 R2 Datacenter または Windows Server 2016 Datacenter のギャラリー イメージから開始します。 推奨される仮想マシンの作成方法については、[Azure Portal で初めての Windows 仮想マシンを作成する方法](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。 サーバー仮想マシン (VM) に推奨される最小要件はA2 Standard (2 コア、3.5 GB RAM) です。
 
-Azure Backup Server を使用したワークロードの保護には、数多くの注意点があります。 これらの注意点については、「 [Azure Virtual Machine として DPM をインストールする](https://technet.microsoft.com/library/jj852163.aspx)」の記事で説明されています。 マシンをデプロイする前に、この記事によく目を通してください。
+Azure Backup Server を使用したワークロードの保護には、数多くの注意点があります。 これらの注意点については、「 [Azure Virtual Machine として DPM をインストールする](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj852163(v=sc.12))」の記事で説明されています。 マシンをデプロイする前に、この記事によく目を通してください。
 
 > [!NOTE]
 > Azure Backup Server は、単一目的の専用の仮想マシンで動作するように設計されています。 Azure Backup Server を次の場所にインストールすることはできません。
@@ -123,7 +123,7 @@ Azure Backup Server インストーラーをダウンロードする方法は 2 
 1. Azure Stack 仮想マシンから、[Azure Portal 内の Azure サブスクリプションにサインイン](https://portal.azure.com/)します。
 2. 左側のメニューで、 **[すべてのサービス]** を選択します。
 
-    ![メイン メニューの [すべてのサービス] オプションを選択する](./media/backup-mabs-install-azure-stack/click-all-services.png)
+    ![メイン メニューで、[すべてのサービス] オプションを選択する](./media/backup-mabs-install-azure-stack/click-all-services.png)
 
 3. **[すべてのサービス]** ダイアログ に、「*Recovery Services*」と入力します。 入力を開始すると、リソースのリストが絞り込まれます。 **[Recovery Services コンテナー]** が表示されたら、それを選択します。
 
@@ -243,7 +243,7 @@ Azure Backup Server は Data Protection Manager とコードを共有します�
 
     ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
-    Azure にバックアップするにはスクラッチ場所が必要です。 スクラッチ場所のサイズが、Azure にバックアップする予定のデータの 5% 以上であることを確認します。 ディスクを保護するために、インストールが完了した後で個別のディスクを構成する必要があります。 記憶域プールの詳細については、「 [記憶域プールおよびディスク記憶域の構成](https://technet.microsoft.com/library/hh758075.aspx)」を参照してください。
+    Azure にバックアップするにはスクラッチ場所が必要です。 スクラッチ場所のサイズが、Azure にバックアップする予定のデータの 5% 以上であることを確認します。 ディスクを保護するために、インストールが完了した後で個別のディスクを構成する必要があります。 記憶域プールの詳細については、「 [記憶域プールおよびディスク記憶域の構成](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12))」を参照してください。
 
 6. **[セキュリティの設定]** で、制限付きのローカル ユーザー アカウント用に強力なパスワードを指定し、 **[次へ]** をクリックします。
 
@@ -357,7 +357,7 @@ Azure サブスクリプションの状態が "*有効期限切れ*" または "
 Microsoft Azure Backup Server がセットアップ段階 (またはバックアップや復元) でエラーにより失敗した場合は、[エラー コードのドキュメント](https://support.microsoft.com/kb/3041338)を参照してください。
 [Azure Backup 関連の FAQ](backup-azure-backup-faq.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [DPM 環境の準備](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1801)の関する記事には、サポートされている Azure Backup Server の構成についての情報が含まれています。
 

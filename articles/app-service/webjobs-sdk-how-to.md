@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 715415929afaad36e4854e75a2b7b5360d22a6bf
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: c606f6e60b1c906a0d5c29992287d126aaa37b7b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486344"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602941"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法
 
@@ -395,7 +395,7 @@ static async Task Main()
 }
 ```
 
-詳しくは、[Azure CosmosDB のバインド](../azure-functions/functions-bindings-cosmosdb-v2.md#hostjson-settings)に関する記事をご覧ください。
+詳しくは、[Azure CosmosDB のバインド](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings)に関する記事をご覧ください。
 
 ### <a name="event-hubs-trigger-configuration-version-3x"></a>Event Hubs トリガーの構成 (バージョン 3.*x*)
 
@@ -423,7 +423,7 @@ static async Task Main()
 }
 ```
 
-詳しくは、[Event Hubs のバインド](../azure-functions/functions-bindings-event-hubs.md#hostjson-settings)に関する記事をご覧ください。
+詳しくは、[Event Hubs のバインド](../azure-functions/functions-bindings-event-hubs-output.md#hostjson-settings)に関する記事をご覧ください。
 
 ### <a name="queue-storage-trigger-configuration"></a>Queue Storage トリガーの構成
 

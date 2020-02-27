@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 71a256b0350742f0e7a7b95519fafff5bc32f58b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a2b775afcd9e603a11b560bb7c42d6cf76be9b34
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928782"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597917"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>クイック スタート:.NET SDK を使用してデータ ファクトリとパイプラインを作成する
 
@@ -33,7 +33,7 @@ ms.locfileid: "74928782"
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
-### <a name="visual-studio"></a>Visual Studio
+### <a name="visual-studio"></a>Visual Studio
 
 この記事のチュートリアルでは、Visual Studio 2019 を使用します。 Visual Studio 2013、2015、または 2017 での手順は少し異なります。
 
@@ -48,7 +48,7 @@ ms.locfileid: "74928782"
 1. 「[Azure Active Directory アプリケーションを作成する](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)」で、このチュートリアルで作成している .NET アプリケーションを表すアプリケーションを作成します。 サインオン URL については、この記事に示されているようにダミーの URL (`https://contoso.org/exampleapp`) を指定できます。
 2. 「[サインインするための値を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)」で、**アプリケーション ID** と**テナント ID** を取得し、それらの値をメモしておいてください。このチュートリアルで後ほど使用します。 
 3. 「[証明書とシークレット](../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets)」で、**認証キー**を取得し、その値をメモしておいてください。このチュートリアルで後ほど使用します。
-4. 「[アプリケーションをロールに割り当てる](../active-directory/develop/howto-create-service-principal-portal.md#assign-the-application-to-a-role)」で、アプリケーションがサブスクリプションにデータ ファクトリを作成できるように、サブスクリプション レベルでアプリケーションを**共同作成者**ロールに割り当てます。
+4. 「[アプリケーションをロールに割り当てる](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)」で、アプリケーションがサブスクリプションにデータ ファクトリを作成できるように、サブスクリプション レベルでアプリケーションを**共同作成者**ロールに割り当てます。
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
@@ -434,7 +434,7 @@ Press any key to exit...
 2. フォルダー一覧で、 **[output]** を選択します。
 3. **emp.txt** が output フォルダーにコピーされていることを確認します。 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 プログラムによってデータ ファクトリを削除するには、次のコード行をプログラムに追加します。 
 
@@ -443,6 +443,6 @@ Console.WriteLine("Deleting the data factory");
 client.Factories.Delete(resourceGroup, dataFactoryName);
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このサンプルのパイプラインは、Azure BLOB ストレージ内のある場所から別の場所にデータをコピーするものです。 より多くのシナリオで Data Factory を使用する方法については、[チュートリアル](tutorial-copy-data-dot-net.md)を参照してください。 

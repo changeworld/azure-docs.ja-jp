@@ -3,16 +3,15 @@ title: Azure Kubernetes Service (AKS) のポッドで使用する目的で NFS (
 description: Azure Kubernetes Service (AKS) のポッドで使用するための NFS Ubuntu Linux Server ボリュームを手動で作成する方法について説明します
 services: container-service
 author: ozboms
-ms.service: container-service
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
-ms.openlocfilehash: 9b9c4b326596887774d9dfc0dd792052ec672be2
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e5676710bc47557318f3e2adcf36ec0ed13d47de
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063817"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596625"
 ---
 # <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>NFS (Network File System) Linux Server ボリュームを手動で作成し、Azure Kubernetes Service (AKS) と共に使用する
 コンテナー間のデータ共有はしばしば、コンテナーを基盤とするサービスやアプリケーションで必要となります。 一般的に、外部の永続ボリューム上の同じ情報にさまざまなポットでアクセスする必要があります。    

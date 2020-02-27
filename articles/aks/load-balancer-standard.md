@@ -3,16 +3,15 @@ title: Azure Kubernetes Service (AKS) で Standard SKU ロード バランサー
 description: Standard SKU でロード バランサーを使用して、Azure Kubernetes Service (AKS) でサービスを公開する方法について説明します。
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: b15c60d5436feada8558c83cb14efd7e21a22493
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 9c414572e1c3b2f046ae9a14139885e9927ab3bb
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212423"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622180"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Standard SKU ロード バランサーを使用する
 
@@ -40,7 +39,7 @@ CLI をローカルにインストールして使用する場合、この記事�
 
 たとえば、`load-balancer-sku` 型のクラスターをクラスターの作成時にのみ定義できる場合、一般的に blue/green のデプロイでクラスターを移行します。 しかしながら、*Basic SKU* ロード バランサーでは、*Standard SKU* IP アドレスが必須の *Standard SKU* ロード バランサーとの間に互換性がない *Basic SKU* IP アドレスが使用されます。 クラスターを移行してロード バランサー SKU をアップグレードするとき、IP アドレス SKU に互換性がある新しい IP アドレスが必須となります。
 
-クラスターの移行方法に関して他に注意すべき事項については、[移行時の考慮事項に関するドキュメント](acs-aks-migration.md)を参照してください。移行時に考慮すべき重要なトピックが一覧表示されています。 以下の制限事項も、AKS で Standard SKU ロード バランサーを使用するときに注意すべき、動作上の重要な違いです。
+クラスターの移行方法に関して他に注意すべき事項については、[移行時の考慮事項に関するドキュメント](aks-migration.md)を参照してください。移行時に考慮すべき重要なトピックが一覧表示されています。 以下の制限事項も、AKS で Standard SKU ロード バランサーを使用するときに注意すべき、動作上の重要な違いです。
 
 ### <a name="limitations"></a>制限事項
 

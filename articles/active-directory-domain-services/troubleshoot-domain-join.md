@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: 73a76c4442bb8af70168e54a294f2cb100ff653c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 286e2ad460e98cfeceab52a3ac21bcba8da2cc7f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703655"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612810"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services マネージド ドメインに対するドメイン参加の問題のトラブルシューティング
 
@@ -32,7 +32,7 @@ VM が Azure AD DS マネージド ドメインを見つけられない場合は
 
 1. Azure AD DS に対して有効になっているのと同じ、またはピアリングされた仮想ネットワークに VM が接続されていることを確認します。 それ以外の場合、VM は参加するためのドメインを見つけて接続することができません。
     * VM が同じ仮想ネットワークに接続されていない場合は、トラフィックが正常に流れるように、仮想ネットワーク ピアリングまたは VPN 接続が *[Active]\(有効\)* または *[Connected]\(接続済み\)* になっていることを確認します。
-1. Azure AD DS マネージド ドメインのドメイン名を使用して、ドメインの ping を試行してください (例: `ping aadds.contoso.com`)。
+1. Azure AD DS マネージド ドメインのドメイン名を使用して、ドメインの ping を試行してください (例: `ping aaddscontoso.com`)。
     * ping 応答が失敗した場合は、Azure AD DS マネージド ドメインの、ポータルの概要ページに表示されるドメインの IP アドレスに対して ping を実行します (`ping 10.0.0.4` など)。
     * ドメインではなく IP アドレスを ping できた場合、DNS が正しく構成されていない可能性があります。 Azure AD DS マネージド ドメインの DNS サーバーを仮想ネットワークの DNS サーバーとして構成したことを確認してください。
 1. 仮想マシンの DNS リゾルバー キャッシュのフラッシュを試行します (`ipconfig /flushdns` など)。
@@ -53,12 +53,12 @@ Azure AD DS マネージド ドメインに参加するための資格情報を�
 
 資格情報に関連するイシューのトラブルシューティングを行うには、次のトラブルシューティングのステップを確認してください。
 
-1. UPN 形式を使用して資格情報を指定します (例: `dee@contoso.onmicrosoft.com`)。 この UPN が Azure AD で正しく構成されていることを確認してください。
+1. UPN 形式を使用して資格情報を指定します (例: `dee@aaddscontoso.onmicrosoft.com`)。 この UPN が Azure AD で正しく構成されていることを確認してください。
     * 複数のユーザーがテナントで同じ UPN プレフィックスを使用していたり、使用する UPN プレフィックスが最大文字数を超えている場合は、アカウントの *SAMAccountName* が自動生成されることがあります。 そのため、お使いのアカウントの *SAMAccountName* 形式が想定した形式やオンプレミス ドメインで使用する形式と異なる可能性があります。
 1. "*AAD DC 管理者*" グループに属するユーザー アカウントの資格情報を使用して、VM を Azure AD DS マネージド ドメインに参加させます。
 1. [パスワード同期が有効になっている][enable-password-sync]ことを確認し、最初のパスワード同期が完了するまで十分な時間待機します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Active Directory プロセスのうち、ドメイン参加操作の詳細については、「[参加と認証のイシュー][join-authentication-issues]」を参照してください。
 

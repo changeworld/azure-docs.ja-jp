@@ -3,8 +3,8 @@ title: SAP HANA on Azure (L インスタンス) の概要 | Microsoft Docs
 description: SAP HANA on Azure (L インスタンス) をデプロイする方法の概要。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ea337101a5fe44e42ce85c17fec32028c75d3b85
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 39fcf5d0fe2273c4debd3ae5ebe5fd1190ddc959
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101182"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616947"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (L インスタンス) とは
 
@@ -39,7 +39,7 @@ SAP HANA on Azure (L インスタンス) は、Azure 独自のソリューショ
 - "リビジョン 3" (Rev 3):2019 年 7 月より前にお客様がデプロイに使用できたスタンプ
 - "リビジョン 4" (Rev 4):Azure VM ホストに近接する場所にデプロイされる新しいスタンプ設計。これまでに次の Azure リージョンでリリースされています。
     -  米国西部 2 
-    -  East US 
+    -  米国東部 
     -  西ヨーロッパ
     -  北ヨーロッパ
 
@@ -57,5 +57,5 @@ HANA L インスタンス ガイダンスの別のドキュメントでは、次
 - [STONITH を使用した SUSE での高可用性のセットアップ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/ha-setup-with-stonith)
 - [リビジョン 3 スタンプの Type II SKU の OS バックアップと復元](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
 
-**次のステップ**
+**次の手順**
 - [用語の確認](hana-know-terms.md)を参照してください

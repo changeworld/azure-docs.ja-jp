@@ -3,7 +3,7 @@ title: F5 BIG IP データを Azure Sentinel に接続する | Microsoft Docs
 description: F5 BIG IP データを Azure Sentinel に接続する方法について説明します。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: d068223f-395e-46d6-bb94-7ca1afd3503c
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: rkarlin
-ms.openlocfilehash: 273bea7fa8629dd907c228416d06dac087b0ec85
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: ae361c74b261bdd6a5673040f868392282b573ef
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610592"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588282"
 ---
 # <a name="connect-your-f5-big-ip-appliance"></a>F5 BIG-IP アプライアンスを接続する 
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: 673cda4005d9c985d8d6ee5ef1d28a3d8c241ac0
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 883f24e529f9479f0c6ee6597c1324a0089ece7b
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482886"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620378"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Azure Monitor for VMs の一般提供 (GA) についてよく寄せられる質問
 
@@ -25,8 +25,6 @@ ms.locfileid: "77482886"
 このアップグレードを使用すると、Azure Monitor for VMs のパフォーマンス データは、[コンテナーの Azure Monitor](container-insights-overview.md) と同じ *InsightsMetrics* テーブルに格納されるため、2 つのデータ セットのクエリを簡単に実行することができます。 また、以前に使用したテーブルには格納できなかったより多様なデータ セットを格納することもできます。 
 
 パフォーマンス ビューでは、*InsightsMetrics* テーブルに格納しているデータが使用されています。  ワークスペースで最新の VMInsights ソリューションを使用するようにアップグレードしていない場合は、グラフに情報が表示されなくなります。  次に示すように、 **[Get Started]\(開始\)** ページからアップグレードすることができます。
-
-このアップグレードを使用すると、Azure Monitor for VMs のパフォーマンス データは、[コンテナーに対する Azure Monitor](container-insights-overview.md) と同じ *InsightsMetrics* テーブルに格納されるため、2 つのデータ セットのクエリを簡単に実行できます。 また、以前に使用されていたテーブルには格納できなかった、より多様なデータ セットを格納することもできます。 
 
 Microsoft では、既存のお客様にアップグレードをお願いすることで、お客様のワークフローの中断が生じることを認識しています。これが、GA の後ではなく、パブリック プレビュー中の今、アップグレードをお願いする理由です。
 

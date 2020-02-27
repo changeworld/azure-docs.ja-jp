@@ -7,19 +7,17 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9bbeda33f25aec15124bacb605513a3c52c3f07e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 2656716560b981481273c3032fc0c7b1a06be8a2
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699269"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597645"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Azure File Sync に登録されたサーバーの管理
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
 
 この記事では、サーバーをトレージ同期サービスに登録して管理する方法について説明します。 Azure File Sync をエンドツーエンドでデプロイする方法の詳細については、[Azure File Sync をデプロイする方法](storage-sync-files-deployment-guide.md)に関するページを参照してください。
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>サーバーをストレージ同期サービスに登録/登録解除する
 サーバーを Azure File Sync に登録すると、Windows Server と Azure の間に信頼関係が確立されます。 この関係を使用して、サーバーに "*サーバー エンドポイント*" を作成できます。サーバー エンドポイントは、Azure ファイル共有 ("*クラウド エンドポイント*" とも呼ばれます) と同期する必要がある特定のフォルダーを表します。 
@@ -27,7 +25,7 @@ Azure ファイル同期を使用すると、オンプレミスのファイル �
 ### <a name="prerequisites"></a>前提条件
 サーバーをストレージ同期サービスに登録するには、まず必要な前提条件を満たすようにサーバーを準備する必要があります。
 
-* サーバーでは、サポートされているバージョンの Windows Server を実行している必要があります。 詳細については、[Azure File Sync のシステム要件との相互運用性](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability)に関する記事を参照してください。
+* サーバーでは、サポートされているバージョンの Windows Server を実行している必要があります。 詳細については、[Azure File Sync のシステム要件との相互運用性](storage-sync-files-planning.md#windows-file-server-considerations)に関する記事を参照してください。
 * ストレージ同期サービスがデプロイされていること。 ストレージ同期サービスのデプロイ方法の詳細については、「[How to deploy Azure File Sync](storage-sync-files-deployment-guide.md)」(Azure ファイル同期をデプロイする方法) を参照してください。
 * サーバーがインターネットに接続され、Azure にアクセスできること。
 * サーバー マネージャーの UI を使用して、管理者の [IE セキュリティ強化の構成] を無効にします。

@@ -3,8 +3,8 @@ title: 既知の問題:Azure Database for MySQL への オンライン移行
 titleSuffix: Azure Database Migration Service
 description: Azure Database Migration Service を使用するときの、Azure Database for MySQL へのオンライン移行に関する既知の問題と移行の制限事項について説明します。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -13,13 +13,13 @@ ms.custom:
 - seo-lt-2019
 - seo-dt-2019
 ms.topic: article
-ms.date: 11/08/2019
-ms.openlocfilehash: 905a14bd78d120e27ebc4d44ede86e9f0e3783cf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/20/2020
+ms.openlocfilehash: afbff1c0b001d00f2791a869850729171782701c
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437851"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650250"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Azure Database Migration Service を使用した Azure DB for MySQL へのオンライン移行の問題と制限事項
 

@@ -4,24 +4,24 @@ description: SAP HANA のバックアップ ガイドでは、Azure 仮想マシ
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
-ms.author: rclaus
-ms.openlocfilehash: 05a4b8e8034e1c354a4209244694aeb2fc2c6007
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: hermannd
+ms.openlocfilehash: 8de83cbb7060e6ca5390720a4a241be71bb9dc92
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078745"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617427"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SAP HANA のバックアップ ガイド
 
-## <a name="getting-started"></a>Getting Started (概要)
+## <a name="getting-started"></a>作業の開始
 
 Azure Virtual Machines で実行されている SAP HANA のバックアップ ガイドでは、Azure 固有のトピックのみを取り上げます。 SAP HANA のバックアップに関する一般的事項については、SAP HANA のドキュメントを参照してください (この記事の後半の「_SAP HANA のバックアップに関するドキュメント_」を参照)。
 
@@ -131,7 +131,7 @@ HANA 管理ガイドには例の一覧があります。 管理ガイドによ�
 2. 差分バックアップ
 3. 増分バックアップ 1
 4. 増分バックアップ 2
-5. ログ バックアップ
+5. ログのバックアップ
 
 特定のタイプのバックアップを行う適切なタイミングと頻度の正確なスケジュールについて、一般的なガイドラインはありません。これは、スケジュールがお客様固有のものであり、システム内で行われるデータ変更の回数に依存するためです。 SAP は HANA の完全バックアップを週一回行うことを基本として推奨しており、これを一般的なガイダンスと見なすことができます。
 ログ バックアップについては、SAP HANA ドキュメント「[Log Backups (ログ バックアップ)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/bb7e33bb571014a03eeabba4e37541/content.htm)」を参照してください。
@@ -230,7 +230,7 @@ HANA Studio バックアップ コンソールでは、HANA バックアップ �
 |Azure Backup サービス                               | BLOB スナップショットに基づいた VM のバックアップが可能 | ファイル レベルの復元を使用しない場合、復元プロセスで新しい VM の作成が必要 (つまり、新しい SAP HANA ライセンス キーが必要)|
 |手動の BLOB スナップショット                              | 一意の VM ID を変更することなく特定の VM ディスクを作成して復元できる柔軟性|すべての作業がお客様による手動操作|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * 「[ファイル レベルの SAP HANA Azure バックアップ](sap-hana-backup-file-level.md)」では、ファイルベースのバックアップ方法について説明されています。
 * 「[ストレージ スナップショットに基づいた SAP HANA のバックアップ](sap-hana-backup-storage-snapshots.md)」では、ストレージ スナップショットベースのバックアップ方法について説明されています。
 * SAP HANA on Azure (L インスタンス) の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、「[Azure での SAP HANA (L インスタンス) の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md)」を参照してください。

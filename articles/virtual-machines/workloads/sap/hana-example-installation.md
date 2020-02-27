@@ -4,21 +4,21 @@ description: SAP HANA on Azure (Large Instances) に HANA をインストール�
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
-ms.author: rclaus
+ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d266f458894d93540977c995ff7e8ab71414083f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 023f32fce01ffbd974b182fa89fd604e62332936
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101280"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617206"
 ---
 # <a name="install-hana-on-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (Large Instances) に HANA をインストールする
 
@@ -130,7 +130,7 @@ rpm –qa | grep gtk2
 SAP HANA インスタンスが起動して稼働状態になり、使用する準備が整いました。 SAP HANA インスタンスには、SAP HANA Studio から接続することもできます。 また、最新の更新プログラムを必ず確認して適用してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure での SAP HANA Large Instances の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md)
 

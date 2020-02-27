@@ -3,7 +3,7 @@ title: Azure Sentinel の削除 | Microsoft Docs
 description: Azure Sentinel インスタンスを削除する方法
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
-ms.author: rkarlin
-ms.openlocfilehash: d71a9fc21cca75312696a1bc17c4896c2e5bce2d
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 4042f7b9d0f6fdf293f338c89d5783fe266c4edf
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610363"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581686"
 ---
 # <a name="remove-azure-sentinel-from-your-workspace"></a>ワークスペースから Azure Sentinel を削除する
 

@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 81db0889294360f74cb42d388e5d875de91c1019
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: cf70124f2e310dd62fd32de0e17edb40c047a318
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212469"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615676"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions の Premium プラン
 
@@ -107,28 +107,29 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 |--| -- | -- |
 |オーストラリア中部| ✔<sup>1</sup> | |
 |オーストラリア中部 2| ✔<sup>1</sup> | |
-|オーストラリア東部| ✔ | |
+|オーストラリア東部| ✔ | ✔<sup>1</sup> |
 |オーストラリア南東部 | ✔ | ✔<sup>1</sup> |
 |ブラジル南部| ✔<sup>2</sup> |  |
-|カナダ中部| ✔ |  |
+|カナダ中部| ✔ | ✔<sup>1</sup> |
 |米国中部| ✔ |  |
 |東アジア| ✔ |  |
 |米国東部 | ✔ | ✔<sup>1</sup> |
-|米国東部 2| ✔ |  |
+|米国東部 2| ✔ | ✔<sup>1</sup> |
 |フランス中部| ✔ |  |
 |ドイツ中西部| ✔ | |
 |東日本| ✔ | ✔<sup>1</sup> |
-|西日本| ✔ | |
-|韓国中部| ✔ |  |
+|西日本| ✔ | ✔<sup>1</sup> |
+|韓国中部| ✔ | ✔<sup>1</sup> |
 |米国中北部| ✔ |  |
 |北ヨーロッパ| ✔ | ✔<sup>1</sup> |
 |米国中南部| ✔ | ✔<sup>1</sup> |
 |インド南部 | ✔ | |
 |東南アジア| ✔ | ✔<sup>1</sup> |
-|英国南部| ✔ | |
+|英国南部| ✔ | ✔<sup>1</sup> |
 |英国西部| ✔ |  |
 |西ヨーロッパ| ✔ | ✔<sup>1</sup> |
 |インド西部| ✔ |  |
+|米国中西部| | ✔<sup>1</sup> |
 |米国西部| ✔ | ✔<sup>1</sup> |
 |米国西部 2| ✔ |  |
 

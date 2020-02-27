@@ -329,23 +329,18 @@
           href: how-to-deploy-existing-model.md
         - name: トラブルシューティングとデバッグ
           href: how-to-troubleshoot-deployment.md
-    - name: Web サービスを使用する
-      items:
-        - name: リアルタイムで使用する
+        - name: クライアントの作成
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
-        - name: デザイナーによるバッチ予測
-          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
-          href: how-to-run-batch-predictions-designer.md
-    - name: モデルを監視する
-      items:
-        - name: モデルのデータを収集して評価する
-          displayName: track production
-          href: how-to-enable-data-collection.md
-        - name: データの誤差を検出する
-          href: how-to-monitor-data-drift.md
-        - name: Application Insights での監視
-          href: how-to-enable-app-insights.md
+        - name: モデルを監視する
+          items:
+            - name: モデルのデータを収集して評価する
+              displayName: track production
+              href: how-to-enable-data-collection.md
+            - name: データの誤差を検出する
+              href: how-to-monitor-data-drift.md
+            - name: Application Insights での監視
+              href: how-to-enable-app-insights.md
     - name: ML パイプラインの作成と使用
       displayName: pipelines
       items:
@@ -372,6 +367,9 @@
         - name: 並列実行ステップのデバッグとトラブルシューティング
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md
+        - name: デザイナーによるバッチ予測
+          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
+          href: how-to-run-batch-predictions-designer.md
     - name: リソース クォータを管理する
       displayName: limits
       href: how-to-manage-quotas.md

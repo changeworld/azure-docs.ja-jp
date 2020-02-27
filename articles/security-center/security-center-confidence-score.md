@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
 ms.author: memildin
-ms.openlocfilehash: ca2afaa9f4e01ac56657681ce71e32e3c5375fdf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8aa17f473c550c99d91862754e6a746575aca202
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355646"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604382"
 ---
 # <a name="alert-confidence-score-preview"></a>アラート信頼度スコア (プレビュー)
 
@@ -47,14 +47,6 @@ Security Center の信頼度スコア (現在はプレビュー段階) は、チ
   ![疑わしい信頼度スコア][2]
 
 Security Center の信頼度スコアを使用して、環境内のアラート トリアージの優先度付けを行います。 信頼度スコアは、業界のベスト プラクティスとインテリジェント アルゴリズムを適用して自動的にアラートを調査し、仮想アナリストとして機能して実際の脅威と注目すべき対象を判定することで、ユーザーの時間と労力を節約します。
-
-
-## <a name="next-steps"></a>次のステップ
-この記事では、信頼度スコアを使用してアラート調査の優先度付けを行う方法について説明しました。 セキュリティ センターの詳細については、次を参照してください。
-
-* 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。
-* 「[Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md)」-- Azure リソースの正常性を監視する方法について説明しています。
-
 
 
 <!--Image references-->

@@ -2,17 +2,14 @@
 title: Azure Active Directory と Azure Kubernetes Service を統合する
 description: Azure Active Directory 対応の Azure Kubernetes Service (AKS) クラスターを作成する方法
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 02/02/2019
-ms.author: mlearned
-ms.openlocfilehash: 956cfbafeebadaa23ba3a48f7d38c6f95b412bd9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 0476acadf5af3a3e2c470fe6c08ebbd355653e22
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77158215"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596591"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Azure Active Directory と Azure Kubernetes Service を統合する
 

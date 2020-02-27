@@ -5,12 +5,12 @@ ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: feab990f1d9b0e26ff134a7232a358fd2bca7cc2
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 7608c10f2d101a3c24209a5e09bccc6dc31401ca
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687539"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524106"
 ---
 # <a name="create-a-php-app-in-app-service-on-linux"></a>App Service on Linux での PHP アプリの作成
 
@@ -156,7 +156,7 @@ git push azure master
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [チュートリアル:PHP アプリと MySQL](tutorial-php-mysql-app.md)

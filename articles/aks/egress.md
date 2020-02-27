@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service (AKS) におけるエグレス トラフィックの静的 IP アドレス
 description: Azure Kubernetes Service (AKS) クラスターでエグレス トラフィックの静的パブリック IP アドレスを作成して使用する方法を説明します
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.author: mlearned
-ms.openlocfilehash: 67471d688e64244067a7537bc87c379da4a69c03
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 5850f8dfc08ed80dfe5e5e13f49808c3fd9338c1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696357"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595758"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でエグレス トラフィックに静的パブリック IP アドレスを使用する
 
@@ -121,7 +118,7 @@ $ curl -s checkip.dyndns.org
 <html><head><title>Current IP Check</title></head><body>Current IP Address: 40.121.183.52</body></html>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Load Balancer に複数のパブリック IP アドレスを保持しないようしたい場合は、イングレス コントローラーの使用を検討してください。 イングレス コントローラーを使用すると、負荷分散、SSL/TLS の終了、URI 書き換えサポート、アップストリーム SSL/TLS 暗号化などの利点があります。 詳細は、[AKS での基本的なイングレス コント ローラーの作成][ingress-aks-cluster]を参照してください。
 

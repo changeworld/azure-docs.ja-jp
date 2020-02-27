@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 6ec818ff77664fcc038412f79fffc1e3e05b82f0
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 089fcc89f330e47a09187b5338176bf23fd801bb
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294254"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603754"
 ---
 # <a name="supported-platforms"></a>サポートされているプラットフォーム 
 
@@ -127,5 +127,3 @@ Azure Stack に存在する Virtual Machines の保護もサポートされて�
 - [Azure Security Center を導入するための設計上の考慮事項を計画し、理解する](security-center-planning-and-operations-guide.md)方法について説明しています。
 - [さまざまなクラウド環境で使用できる機能](security-center-services.md)について確認します。
 - [Azure Security Center での VM と サーバーの脅威検出](security-center-alerts-iaas.md)の詳細を確認します。
-- [Azure Security Center の使用に関してよく寄せられる質問](security-center-faq.md)が記載されています。
-- [Azure のセキュリティとコンプライアンスについてのブログ記事](https://blogs.msdn.com/b/azuresecurity/)を確認できます。

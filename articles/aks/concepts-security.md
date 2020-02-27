@@ -2,17 +2,14 @@
 title: 概念 - Azure Kubernetes Service (AKS) におけるセキュリティ
 description: Azure Kubernetes Service (AKS) におけるセキュリティ (マスターとノードの通信、ネットワーク ポリシー、Kubernetes シークレットなど) について説明します。
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.author: mlearned
-ms.openlocfilehash: e461f9de8b20e4f6c8f027b1ae81ae21e54ece86
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 7238e6cd7ab3625e2953a4408c82802d43372256
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547933"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595945"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションとクラスターに対するセキュリティの概念
 

@@ -3,12 +3,12 @@ title: Azure ファイル共有を復元する
 description: Azure portal を使用して、Azure Backup によって作成された復元ポイントからファイル共有全体または特定のファイルを復元する方法について説明します。
 ms.topic: conceptual
 ms.date: 01/12/2020
-ms.openlocfilehash: 8ecb5850c90e5a92e59d17f7949bd5b6cd6205f5
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: c22078ebd89f5f6f8299e1424d4d9e21edce8b92
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76930926"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586953"
 ---
 # <a name="restore-azure-file-shares"></a>Azure ファイル共有を復元する
 
@@ -21,6 +21,7 @@ ms.locfileid: "76930926"
 * 復元操作の状態を追跡する。
 
 ## <a name="steps-to-perform-a-restore-operation"></a>復元操作を実行する手順
+
 復元操作を実行するには、次の手順を実行します。
 
 ### <a name="select-the-file-share-to-restore"></a>復元するファイル共有を選択する
@@ -110,7 +111,7 @@ ms.locfileid: "76930926"
 
     ![項目レベルの回復の元の場所](./media/restore-afs/original-location-item-level.png)
 
-2. **[ファイルの選択]** を選択して、復元するファイルまたはフォルダーを選択します。
+1. **[ファイルの選択]** を選択して、復元するファイルまたはフォルダーを選択します。
 
     ![[ファイルの選択] を選択する](./media/restore-afs/select-file.png)
 

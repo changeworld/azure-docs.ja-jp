@@ -23,9 +23,11 @@
     - name: Personalizer のしくみ
       href: how-personalizer-works.md
       displayName: 'rank, reward, api, explore, exploit, score, design, research, loop, action, context, feature, JSON, event, inactive, model'
-    - name: Personalizer を使用できる状況
+    - name: Personalizer の用途
       href: where-can-you-use-personalizer.md
       displayName: 'checklist, considerations, effectiveness, recommendation engine'
+    - name: 用語
+      href: terminology.md
     - name: 倫理および責任ある使用
       href: ethics-responsible-use.md
       displayName: 'best practice, design'
@@ -34,9 +36,11 @@
         - name: '特徴: アクションとコンテキスト'
           href: concepts-features.md
           displayName: 'action, context, feature, namespace, JSON, best practice, set, ID, guid, event id,'
-        - name: アクティブなイベントと非アクティブなイベント
+        - name: 学習ポリシー
           href: concept-active-learning.md
           displayName: 'active, inactive'
+        - name: アクティブなイベントと非アクティブなイベント
+          href: concept-active-inactive-events.md
         - name: 報酬
           href: concept-rewards.md
           displayName: 'reward, wait time, default reward'
@@ -56,15 +60,15 @@
       href: concepts-scalability-performance.md
 - name: 操作方法ガイド
   items:
-    - name: Personalizer の作成と構成
+    - name: Personalizer リソースの作成
+      href: how-to-create-resource.md
+    - name: 学習ループの構成
       href: how-to-settings.md
       displayName: 'azure, portal, settings, evaluation, offline, policy, export, model, configure'
-    - name: 学習ポリシーの管理
-      href: how-to-learning-policy.md
-    - name: 分析
-      items:
-        - name: オフライン評価
-          href: how-to-offline-evaluation.md
+    - name: モデルと学習設定の管理
+      href: how-to-manage-model.md
+    - name: オフライン評価による分析
+      href: how-to-offline-evaluation.md
 - name: リファレンス
   items:
     - name: サンプル

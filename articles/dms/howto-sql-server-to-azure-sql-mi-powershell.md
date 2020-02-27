@@ -3,21 +3,21 @@ title: PowerShell:SQL Server から SQL マネージド インスタンスに移
 titleSuffix: Azure Database Migration Service
 description: Azure PowerShell と Azure Database Migration Service を使用して、オンプレミスの SQL Server から Azure SQL Database マネージド インスタンスに移行する方法について説明します。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: 3b434bc8a495f47f7fb2de8429069283821cf397
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/20/2020
+ms.openlocfilehash: 9ea9f55681b93e79eec836f5808d2c6feaa6bb29
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746634"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650726"
 ---
 # <a name="migrate-sql-server-to-sql-database-managed-instance-with-powershell--azure-database-migration-service"></a>PowerShell と Azure Database Migration Service を使用して SQL Server から SQL Database マネージド インスタンスに移行する
 

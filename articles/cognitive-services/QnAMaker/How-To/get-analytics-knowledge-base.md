@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: diberry
-ms.openlocfilehash: 72d2598c1ff17f80fc264e6d547a799ab74a163f
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: e769bde39bc796b5b598109328b468b15385f38a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621973"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650403"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>ナレッジ ベースに関する分析の取得
 
@@ -56,7 +56,7 @@ ms.locfileid: "73621973"
 //Total Traffic
 requests
 | where url endswith "generateAnswer" and name startswith "POST"
-| parse kind = regex url with *"(?i)knowledgebases/"KbId"/generateAnswer" 
+| parse kind = regex url with *"(?i)knowledgebases/"KbId"/generateAnswer"
 | summarize ChatCount=count() by bin(timestamp, 1d), KbId
 ```
 
@@ -68,8 +68,8 @@ let startDate = todatetime('2019-01-01');
 let endDate = todatetime('2020-12-31');
 requests
 | where timestamp <= endDate and timestamp >=startDate
-| where url endswith "generateAnswer" and name startswith "POST" 
-| parse kind = regex url with *"(?i)knowledgebases/"KbId"/generateAnswer" 
+| where url endswith "generateAnswer" and name startswith "POST"
+| parse kind = regex url with *"(?i)knowledgebases/"KbId"/generateAnswer"
 | summarize ChatCount=count() by KbId
 ```
 
@@ -82,7 +82,7 @@ requests
 | project timestamp, id, url, resultCode, duration
 | parse kind = regex url with *"(?i)knowledgebases/"KbId"/generateAnswer"
 | join kind= inner (
-traces | extend id = operation_ParentId 
+traces | extend id = operation_ParentId
 ) on id
 | extend UserId = tostring(customDimensions['UserId'])
 | summarize ChatCount=count() by bin(timestamp, 1d), UserId, KbId
@@ -114,11 +114,11 @@ traces | extend id = operation_ParentId
 | extend answer = tostring(customDimensions['Answer'])
 | extend score = tostring(customDimensions['Score'])
 | where  score  == "0"
-| project timestamp, KbId, question, answer, score 
+| project timestamp, KbId, question, answer, score
 | order  by timestamp  desc
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [容量の選択](../tutorials/choosing-capacity-qnamaker-deployment.md)
+> [容量の選択](./improve-knowledge-base.md)

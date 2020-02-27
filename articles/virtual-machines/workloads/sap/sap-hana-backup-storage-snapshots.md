@@ -4,20 +4,20 @@ description: Azure 仮想マシン上の SAP HANA をバックアップする方
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
-ms.author: rclaus
-ms.openlocfilehash: 8bcfdefa2ea9de12ca6029839a41c91111a5c61c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: hermannd
+ms.openlocfilehash: c977bc7db5608e5718e98a26ed594e5ebf2be998
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078594"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617410"
 ---
 # <a name="sap-hana-backup-based-on-storage-snapshots"></a>ストレージ スナップショットに基づいた SAP HANA のバックアップ
 
@@ -146,7 +146,7 @@ Azure Backup サービスを使用するのではなく、PowerShell を使用�
 
 もし BLOB スナップショットの前に SAP HANA をシャットダウンできるのであれば、手順の複雑さは減少します。 その場合 HANA スナップショットをスキップできます。また、システム内で他に何も行われない場合、ファイル システムのフリーズもスキップできます。 すべてが稼働している間にスナップショットを実行する必要がある場合、手順の複雑さは増加します。 関連記事「[Azure Virtual Machines 上の SAP HANA のバックアップ ガイド](sap-hana-backup-guide.md)」の「_ストレージ スナップショットを作成する際の SAP HANA データの整合性_」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * 「[Azure Virtual Machines 上の SAP HANA のバックアップ ガイド](sap-hana-backup-guide.md)」には、概要と基本的な情報が記載されています。
 * 「[ファイル レベルの SAP HANA Azure バックアップ](sap-hana-backup-file-level.md)」では、ファイルベースのバックアップ オプションについて説明しています。
 * SAP HANA on Azure (L インスタンス) の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、「[Azure での SAP HANA (L インスタンス) の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md)」を参照してください。

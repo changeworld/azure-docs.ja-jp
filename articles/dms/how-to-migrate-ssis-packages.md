@@ -3,21 +3,21 @@ title: SSIS パッケージを SQL 単一データベースに再配置する
 titleSuffix: Azure Database Migration Service
 description: Azure Database Migration Service と Data Migration Assistant を使用して、SQL Server Integration Services パッケージとプロジェクトを Azure SQL Database 単一データベースに移行または再配置する方法について説明します。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 06/08/2019
-ms.openlocfilehash: b1889410a6c6925ebba5632a08c34bc967ced627
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/20/2020
+ms.openlocfilehash: 90a39b8fe3604a05f1d35a875ae4e34491b47d72
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437969"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648531"
 ---
 # <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>Azure Database Migration Service を使用して SSIS パッケージを Azure SQL Database に再配置する
 

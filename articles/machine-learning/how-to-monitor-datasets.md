@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 4efdc47e65f0f29f74f1477b02efdc6b8767ffb2
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 401019c537cb0eb51fa6002637e170a79210f7d2
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264765"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617631"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>データセットでデータ ドリフトを検出する (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -131,7 +131,7 @@ Azure Machine Learning Studio を使用してデータセットを作成する�
 
 | 設定 | 説明 | ヒント | 変更可能 | 
 | ------- | ----------- | ---- | ------- | 
-| Name | データセット モニターの名前。 | | いいえ |
+| 名前 | データセット モニターの名前。 | | いいえ |
 | ベースライン データセット | 時間の経過に沿ってターゲット データセットと比較するベースラインとして使用される表形式のデータセット。 | ベースライン データセットには、ターゲット データセットと共通の特徴が含まれている必要があります。 一般に、ベースラインは、モデルのトレーニング データセットか、ターゲット データセットのスライスに設定する必要があります。 | いいえ |
 | ターゲット データセット | データ ドリフトの分析対象となる、タイムライン列が指定された表形式のデータセット。 | ターゲット データセットは、ベースライン データセットと共通の特徴を備え、かつ、新しいデータが追加される `timeseries` データセットである必要があります。 ターゲット データセット内の履歴データを分析することも、新しいデータを監視することもできます。 | いいえ | 
 | 頻度 | バックフィルを実行する場合にパイプライン ジョブをスケジュールし、履歴データを分析するために使用される頻度。 オプションには、毎日、毎週、毎月があります。 | この設定を調整して、比較可能なデータ サイズをベースラインに含めます。 | いいえ | 
@@ -326,6 +326,6 @@ Azure Machine Learning Studio では、グラフ内のデータ ポイントを�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Machine Learning Studio](https://ml.azure.com) または [Python ノートブック](https://aka.ms/datadrift-notebook)に移動して、データセット モニターを設定する。
+* [Azure Machine Learning Studio](https://ml.azure.com) または [Python ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datadrift-tutorial/datadrift-tutorial.ipynb)に移動して、データセット モニターを設定する。
 * [Azure Kubernetes Service にデプロイされたモデル](how-to-monitor-data-drift.md)でデータ ドリフトを設定する方法を確認する。
 * [Event Grid](how-to-use-event-grid.md) を使用してデータセット ドリフト モニターを設定する。 

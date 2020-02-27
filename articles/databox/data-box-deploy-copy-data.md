@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: c82a67bbbf8f1a4f77db6ca965031e85e69ee100
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 804b46cd5238c189063608d067c0b40fcd3e306d
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514172"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505677"
 ---
-::: zone target="docs"
+::: zone target="docs" 
 
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>チュートリアル:Azure Data Box に SMB 経由でデータをコピーする
 
@@ -130,7 +130,7 @@ SMB 共有に接続した後、データのコピーを開始します。 Roboco
   
  属性については次の表で説明します。
     
-|Attribute  |説明  |
+|属性  |説明  |
 |---------|---------|
 |/e     |サブディレクトリをコピーします (空のディレクトリを含む)。         |
 |/r:     |失敗したコピーの再試行回数を指定します。         |

@@ -1,16 +1,16 @@
 ---
 title: Azure Monitor ログを使用した Azure Functions の監視
 description: Azure Functions で Azure Monitor ログを使用して関数の実行を監視する方法について説明します。
-author: ahmedelnably
+author: craigshoemaker
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.author: aelnably
-ms.openlocfilehash: f4af646569edc8a9274af752e7e4f2a36585ae4d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.author: cshoe
+ms.openlocfilehash: 13c72a1cf8a0dd4a1124e51b9ceee04ae04bf261
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769100"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649876"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Monitor ログを使用した Azure Functions の監視
 
@@ -38,31 +38,31 @@ Azure Monitor では、Azure Data Explorer で使用される [Kusto クエリ�
 カスタム ログを生成するには、言語に応じて特定のログ ステートメントを使用できます。サンプル コード スニペットを次に示します。
 
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 log.LogInformation("My app logs here.");
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```java
 context.getLogger().info("My app logs here.");
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 context.log('My app logs here.');
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 Write-Host "My app logs here."
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```python
 logging.info('My app logs here.')

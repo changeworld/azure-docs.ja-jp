@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service (AKS) での基本的なイングレス コントローラーの作成
 description: Azure Kubernetes Service (AKS) クラスターで基本的な NGINX イングレス コントローラーをインストールして構成する方法について説明します。
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 12/20/2019
-ms.author: mlearned
-ms.openlocfilehash: 4299846f48524799084efa5456c169d18af4185d
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: e37f7aa677be129aa9fe568880c53cc860947e30
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75728873"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595639"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でイングレス コントローラーを作成する
 

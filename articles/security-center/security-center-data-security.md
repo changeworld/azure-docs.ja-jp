@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
-ms.openlocfilehash: 9dfed5ec14460c3c6213d528f59b86eda15aa1a7
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: a25bbd0f14d38a70624dbc58755c0e814753a181
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520894"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604184"
 ---
 # <a name="azure-security-center-data-security"></a>Azure Security Center のデータ セキュリティ
 Azure Security Center では、脅威に対する防御と検出、対応を支援するために、構成情報、メタデータ、イベント ログ、クラッシュ ダンプ ファイルなど、セキュリティに関連するさまざまなデータを収集、処理しています。 Microsoft ではコーディングからサービスの運用まで、厳密なコンプライアンスとセキュリティのガイドラインに準拠しています。
@@ -47,8 +47,8 @@ Azure Security Center は、セキュリティ状態の可視化、脆弱性の�
 
 | VM Geo                              | ワークスペース Geo |
 |-------------------------------------|---------------|
-| 米国、ブラジル、南アフリカ | 米国 |
-| カナダ                              | カナダ        |
+| 米国、ブラジル、南アフリカ | United States |
+| Canada                              | Canada        |
 | ヨーロッパ (英国を除く)   | ヨーロッパ        |
 | イギリス                      | イギリス |
 | アジア (インド、日本、韓国、中国を除く)   | アジア太平洋  |
@@ -94,5 +94,4 @@ Security Center に関連したデータは、以下に示した各種のデー�
 * [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md) 」 -- Azure リソースの正常性を監視する方法について説明しています。
 * [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」 -- セキュリティの警告の管理と対応の方法について説明しています。
 * [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) 」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
-* [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
 * [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。

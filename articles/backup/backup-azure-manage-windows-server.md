@@ -3,12 +3,12 @@ title: Azure Recovery Services コンテナーとサーバーの管理
 description: この記事では、Recovery Services コンテナーの [概要] ダッシュボードを使用して Recovery Services コンテナーを監視および管理する方法を説明します。
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: f043d50a2b0e4efbda957a9c4ccb8f1d472dce15
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 5ae875b2e767768e90a9fbc6ff4ecfc6efb239c5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173041"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586446"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services コンテナーの監視と管理
 
@@ -73,15 +73,15 @@ Recovery Services コンテナーの **[概要]** ダッシュボードでは、
 
 ![[バックアップ アラート]](./media/backup-azure-manage-windows-server/backup-alerts.png)
 
-### <a name="alerts"></a>アラート
+### <a name="alerts"></a>警告
 
 バックアップ アラートの一覧には、フィルター処理されたアラートについての選択された情報が表示されます。 [バックアップ アラート] メニューでは、重大アラートまたは警告アラートでフィルター処理できます。
 
 | アラート レベル | アラートを生成するイベント |
 | ----------- | ----------- |
-| 重大 | 重要アラートを受け取るのは、バックアップ ジョブが失敗したとき、回復ジョブが失敗したとき、およびサーバーでの保護を停止したのにデータが保持されているときです。|
+| Critical | 重要アラートを受け取るのは、バックアップ ジョブが失敗したとき、回復ジョブが失敗したとき、およびサーバーでの保護を停止したのにデータが保持されているときです。|
 | 警告 | 警告アラートを受け取るのは、バックアップ ジョブが警告で完了したとき (たとえば、破損の問題のために 100 個未満のファイルがバックアップされていないとき、または 1,000,000 個より多くのファイルが正常にバックアップされたとき) です。 |
-| 情報 | 現在、情報アラートは使用されていません。 |
+| Informational | 現在、情報アラートは使用されていません。 |
 
 ### <a name="viewing-alert-details"></a>アラートの詳細を表示する
 
@@ -215,10 +215,10 @@ Recovery Services コンテナーには、多くの種類のバックアップ �
 1 つの操作またはすべての操作を表示することができます。 2 つまたは 3 つの操作を選択することはできません。 使用可能な操作は次のとおりです。
 
 * すべての操作
-* Register
+* [登録]
 * バックアップの構成
 * バックアップ
-* 復元
+* [復元]
 * バックアップを無効にする
 * バックアップ データの削除
 
@@ -268,8 +268,8 @@ Recovery Services コンテナーには、多くの種類のバックアップ �
    `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*`次に例を示します。<br/>
    `C:\Program Files\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider0.errlog`
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure からの Windows Server または Windows クライアントの復元](backup-azure-restore-windows-server.md)
 * Azure Backup の詳細については、「 [Azure Backup の概要](backup-introduction-to-azure-backup.md)
-* [Azure Backup フォーラム](https://go.microsoft.com/fwlink/p/?LinkId=290933)
+

@@ -3,22 +3,22 @@ title: SAP HANA on Azure (L インスタンス) 向け追加のネットワー�
 description: SAP HANA on Azure (L インスタンス) 向け追加のネットワーク要件。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
-ms.author: rclaus
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6fc4e797bd74c28fc741bf2a3928b46f0984b1b9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 66bbd8b462ac35756be0fae6eba940ba0aba6c4b
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099939"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614574"
 ---
 # <a name="additional-network-requirements-for-large-instances"></a>L インスタンス向け追加のネットワーク要件
 
@@ -66,6 +66,6 @@ SAP HANA on Microsoft サービス管理により、SAP HANA on Azure (L イン�
 
 SAP HANA on Azure (L インスタンス) の追加の ExpressRoute 回線を削除するには、SAP HANA on Microsoft サービス管理で Azure サポート要求を開きます。 回線の削除を要求します。 Azure サブスクリプション内では、必要に応じて仮想ネットワークを削除または保持することができます。 ただし、HANA L インスタンスの ExpressRoute 回線と、そのリンク先仮想ネットワーク ゲートウェイとを結ぶ接続は削除する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [SAP HANA on Azure (L インスタンス) のインストールと構成の方法](hana-installation.md)

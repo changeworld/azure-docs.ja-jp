@@ -1,17 +1,19 @@
 ---
 title: ストレージ アカウント コンテナーの回復
 description: ストレージ アカウント コンテナーの回復
+services: storage
 author: v-miegge
 ms.topic: troubleshooting
 ms.author: kartup
 ms.date: 10/30/2019
 ms.service: storage
-ms.openlocfilehash: f095bdfe7bbb5777a2ad2aabb3bda92d0974457d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: dcscontentpm
+ms.openlocfilehash: 8b9b69fb32edab54fb2df558ea292df264e00cbb
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693800"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562277"
 ---
 # <a name="storage-account-container-recovery"></a>ストレージ アカウント コンテナーの回復
 
@@ -39,7 +41,7 @@ Azure Storage は、自動レプリカによるデータ回復性を備えてい
 
    |コンテンツの種類|LRS|ZRS|GRS|RA - GRS| 
    |---|---|---|---|---|
-   |ストレージ コンテナー|いいえ|いいえ|可能|はい| 
+   |ストレージ コンテナー|いいえ|いいえ|はい|はい| 
 
    * ストレージ アカウント コンテナーの復元を試みることができますが、保証されません。 
 
@@ -54,7 +56,7 @@ Azure Storage は、自動レプリカによるデータ回復性を備えてい
 
 2. また、[スナップショット](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)機能もお勧めします。
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この機能の 2 つのサンプル コードを次に示します。
 

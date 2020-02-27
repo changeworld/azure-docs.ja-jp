@@ -3,22 +3,22 @@ title: SAP HANA on Azure (L インスタンス) の運用モデル | Microsoft D
 description: SAP HANA on Azure (L インスタンス) の運用モデル。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9a8ea845dd53048766abc337a1351a408ea7f1bb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e147e4a5f104ca4cd1a10a776c907e3f9f1d6128
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099691"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616969"
 ---
 # <a name="operations-model-and-responsibilities"></a>運用モデルと責任
 
@@ -34,7 +34,7 @@ SAP HANA on Azure (L インスタンス) が提供するサービスは Azure Ia
 
 **ネットワーク**:SAP HANA を実行する L インスタンス スタンプのすべての内部ネットワーク。 お客様の責任には、ストレージへのアクセス、インスタンス間の接続 (スケールアウトと他の機能用)、ランドスケープへの接続、仮想マシンで SAP アプリケーション層がホストされる Azure への接続が含まれます。 また、ディザスター リカバリーのためのレプリケーションに使用する、Azure データ センター間の WAN 接続も含まれます。 すべてのネットワークはテナントによってパーティション分割され、サービス品質が適用されます。
 
-**ストレージ**:SAP HANA サーバーで必要なすべてのボリュームおよびスナップショットに対応した、仮想化およびパーティション分割されたストレージ。 
+**ストレージ**: SAP HANA サーバーで必要なすべてのボリュームおよびスナップショットに対応した、仮想化およびパーティション分割されたストレージ。 
 
 **サーバー**:テナントに割り当てられている SAP HANA DB を実行する専用の物理サーバー。 Type I クラスの SKU のサーバーは、抽象化されたハードウェアです。 この種のサーバーでは、サーバー構成が収集され、物理ハードウェア間で移動できるプロファイルに保持されます。 操作によるプロファイルのこのような (手動の) 移動は、Azure のサービス復旧に少し似ています。 Type II クラスの SKU のサーバーには、このような機能はありません。
 
@@ -57,7 +57,7 @@ HANA L インスタンスの基になるインフラストラクチャは、OS �
 
 **ミドルウェア**: 主に SAP HANA インスタンスです。 管理、運用、監視はお客様が担当します。 お客様は、ストレージ スナップショットを使用してバックアップ/復元とディザスター リカバリーを実行するために提供される機能をご利用いただけます。 これらの機能はインフラストラクチャから提供されます。 お客様の責任には、これらの機能を使用した高可用性またはディザスター リカバリーの設計、それらの活用、ストレージ スナップショットが正常に実行されたかどうかを確認するための監視も含まれます。
 
-**データ**:SAP HANA で管理されるデータおよびその他のデータ (ボリュームやファイル共有上のバックアップ ファイルなど)。 お客様の責任には、ディスクの空き領域の監視とボリューム上のコンテンツの管理が含まれます。 また、ディスク ボリュームとストレージ スナップショットのバックアップが正常に実行されたかどうかの監視もお客様が行う必要があります。 ディザスター リカバリー サイトへのデータ レプリケーションの正常な実行は Microsoft の責任となります。
+**Data**:SAP HANA で管理されるデータおよびその他のデータ (ボリュームやファイル共有上のバックアップ ファイルなど)。 お客様の責任には、ディスクの空き領域の監視とボリューム上のコンテンツの管理が含まれます。 また、ディスク ボリュームとストレージ スナップショットのバックアップが正常に実行されたかどうかの監視もお客様が行う必要があります。 ディザスター リカバリー サイトへのデータ レプリケーションの正常な実行は Microsoft の責任となります。
 
 **アプリケーション:** SAP アプリケーション インスタンス。SAP 以外のアプリケーションの場合は、それらのアプリケーションのアプリケーション層。 お客様の責任には、それらのアプリケーションのデプロイ、管理、運用、監視が含まれます。 仮想ネットワーク内でのCPU リソース使用量、メモリ使用量、Azure Storage 使用量、ネットワーク帯域幅の使用量の容量計画はお客様の責任になります。 仮想ネットワークから SAP HANA on Azure (L インスタンス) へのリソース使用量の容量計画もお客様の責任になります。
 
@@ -67,5 +67,5 @@ HANA L インスタンスの基になるインフラストラクチャは、OS �
 
 「[Azure 上の SAP HANA の L インスタンスの SLA](https://azure.microsoft.com/support/legal/sla/sap-hana-large/)」を参照してください。
 
-**次のステップ**
+**次の手順**
 - [Azure の SAP HANA (L インスタンス) アーキテクチャ](hana-architecture.md)を参照してください

@@ -1,17 +1,17 @@
 ---
 title: Kubernetes 上でアプリケーションを開発する
 services: azure-dev-spaces
-ms.date: 07/08/2019
+ms.date: 02/20/2020
 ms.topic: quickstart
 description: このクイックスタートでは、Azure Dev Spaces とコマンド ラインを使用し、Azure Kubernetes Service 上でアプリケーションを開発する方法について説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 553c316587d27e0921fbbbf78b02ddb048532c43
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 2d3a498d72264d3084e45202b7daa99806d45ce3
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867242"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602615"
 ---
 # <a name="quickstart-develop-an-application-on-kubernetes---azure-dev-spaces"></a>クイック スタート:Kubernetes 上でアプリケーションを開発する - Azure Dev Spaces
 このガイドでは、以下の方法について説明します。
@@ -30,7 +30,7 @@ ms.locfileid: "75867242"
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 ```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>AKS クラスターで Azure Dev Spaces を有効にする
@@ -76,7 +76,7 @@ Azure Dev Spaces でアプリケーションを実行するには、Dockerfile �
 `azds prep` コマンドを使用して、Kubernetes でアプリケーションを実行するための Docker 資産と Helm チャート資産を生成します。
 
 ```cmd
-azds prep --public
+azds prep --enable-ingress
 ```
 
 Docker 資産と Helm チャート資産を正しく生成するには、*dev-spaces/samples/nodejs/getting-started/webfrontend* ディレクトリから `prep` コマンドを実行する必要があります。

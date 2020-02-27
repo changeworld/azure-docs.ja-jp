@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/27/2019
-ms.openlocfilehash: 86ade45cd00e82e8787a117c23003d2a74750cf0
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.date: 02/24/2020
+ms.openlocfilehash: e9cdfd40a9672d19ef32dede0baadcdd56266bab
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552170"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589098"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>Azure Digital Twins 管理 API の使用方法
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 01/23/2020
+ms.date: 02/24/2020
 ms.author: aahi
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: 87cf5f226a8b2d1efcc0ee967d84f6e0002cb03d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: c6883b9b79adfc4f91af354147d45ea27d806d78
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987909"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614487"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>クイック スタート:Text Analytics クライアント ライブラリを使用する
 
@@ -37,17 +37,6 @@ Text Analytics クライアント ライブラリを使って次のことを実�
 > * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 運用環境のシナリオでは、パフォーマンスとスケーラビリティを確保するために、バッチ処理された非同期メソッドを使用することをお勧めします。 以下のリファレンス ドキュメントを参照してください。
 
 [!INCLUDE [C# quickstart](../includes/quickstarts/csharp-sdk.md)]
-
-::: zone-end
-
-::: zone pivot="programming-language-python"
-
-> [!IMPORTANT]
-> * Text Analytics API の最新のプレビュー バージョンは `3.0-preview` です。これには、強化された[感情分析](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)および[名前付きエンティティの認識 (NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) のパブリック プレビューが含まれています。 最新の安定バージョンは `2.1` です。
->    * 必ず、使用するバージョンの手順にのみ従ってください。
-> * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 運用環境のシナリオでは、パフォーマンスとスケーラビリティを確保するために、バッチ処理された非同期メソッドを使用することをお勧めします。 以下のリファレンス ドキュメントを参照してください。 
-
-[!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
 
 ::: zone-end
 
@@ -73,6 +62,17 @@ Text Analytics クライアント ライブラリを使って次のことを実�
 
 ::: zone-end
 
+::: zone pivot="programming-language-python"
+
+> [!IMPORTANT]
+> * Text Analytics API の最新のプレビュー バージョンは `3.0-preview` です。これには、強化された[感情分析](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)および[名前付きエンティティの認識 (NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) のパブリック プレビューが含まれています。 最新の安定バージョンは `2.1` です。
+>    * 必ず、使用するバージョンの手順にのみ従ってください。
+> * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 運用環境のシナリオでは、パフォーマンスとスケーラビリティを確保するために、バッチ処理された非同期メソッドを使用することをお勧めします。 以下のリファレンス ドキュメントを参照してください。 
+
+[!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
+
+::: zone-end
+
 ::: zone pivot="programming-language-other"
 
 ## <a name="additional-language-support"></a>言語サポートの追加
@@ -81,8 +81,8 @@ Text Analytics クライアント ライブラリを使って次のことを実�
 
 | Language | 利用可能なバージョン | 
 |----------|------------------------|
-| Ruby     | [バージョン 2.1](ruby-sdk.md)          | 
-| Go       | [バージョン 2.1](go-sdk.md)          | 
+| Ruby     | [バージョン 2.1](ruby-sdk.md) | 
+| Go       | [バージョン 2.1](go-sdk.md) | 
 
 ::: zone-end
 

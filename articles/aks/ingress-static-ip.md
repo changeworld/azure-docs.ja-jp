@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service (AKS) の静的 IP アドレスを使用して HTTP イングレス コントローラーを作成する
 description: Azure Kubernetes Service (AKS) クラスターの静的パブリック IP アドレスを使用して NGINX イングレス コントローラーをインストールして構成する方法を説明します。
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.author: mlearned
-ms.openlocfilehash: 73798bf496f600e2ef98940051070a0ee117bdb3
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: a72312e2921b4721a4a5944cf62241b513da1e0a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261859"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595520"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の静的パブリック IP アドレスを使用してイングレス コントローラーを作成する
 

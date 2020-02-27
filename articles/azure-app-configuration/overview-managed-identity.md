@@ -3,16 +3,16 @@ title: Azure App Configuration でマネージド ID を構成する
 description: マネージド ID が Azure App Configuration でどのように機能するのかと、マネージド ID の構成方法について説明します
 author: jpconnock
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 02/25/2020
 ms.author: jeconnoc
 ms.reviewer: lcozzens
 ms.service: azure-app-configuration
-ms.openlocfilehash: 751b10c0d80412671028e85debb2dcd4422c8459
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: fe66466395a100221e6a3cdebdef870bdf195afc
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492428"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623037"
 ---
 # <a name="how-to-use-managed-identities-for-azure-app-configuration"></a>Azure App Configuration でマネージド ID を使用する方法
 

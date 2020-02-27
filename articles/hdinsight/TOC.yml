@@ -69,7 +69,7 @@
               href: ./hdinsight-hadoop-create-linux-clusters-portal.md
             - name: テンプレートを使用してクラスターを作成する
               href: ./hdinsight-hadoop-create-linux-clusters-arm-templates.md
-            - name: コマンド ラインを使用してクラスターを作成する
+            - name: Azure CLI を使用してクラスターを作成する
               href: ./hdinsight-hadoop-create-linux-clusters-azure-cli.md
             - name: PowerShell を使用してクラスターを作成する
               href: ./hdinsight-hadoop-create-linux-clusters-azure-powershell.md

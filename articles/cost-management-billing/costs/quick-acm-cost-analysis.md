@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: bc19c6358ff116b3d7299673783e8fbd6e8cd4f5
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 82cd596f08136f6d9b327fc83122c0f32d8f9914
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201052"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649298"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>クイック スタート:コスト分析を使用してコストを調査および分析する
 
@@ -50,7 +50,7 @@ Azure Cost Management データに対するアクセス権の割り当てにつ�
 
 **実際のコスト**: 当月の合計使用量と購入コストが表示されます。この値が計上されて請求書で示されます。
 
-**予測**: 選択した期間に対する合計予想コストが表示されます。 (予測はプレビューです。)
+**予測**: 選択した期間に対する合計予想コストが表示されます。
 
 **予算**: 選択したスコープの計画的な使用制限が示されます (使用可能な場合)。
 

@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9220d3adb31005551b6358034207f1071065b1a7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: da06112b0990898227191c919b209c8a95d15197
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692388"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616531"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのテーブルの設計
 
@@ -41,10 +41,10 @@ CREATE SCHEMA wwi;
 
 SQL Data Warehouse 内のテーブルの構成を表示するには、テーブル名のプレフィックスとして fact、dim、および int を使用できます。 次の表に、WideWorldImportersDW のスキーマ名とテーブル名の一部を示します。  
 
-| WideWorldImportersDW テーブル  | テーブルの種類 | SQL Data Warehouse |
+| WideWorldImportersDW テーブル  | テーブルの種類です。 | SQL Data Warehouse |
 |:-----|:-----|:------|:-----|
 | City | Dimension | wwi.DimCity |
-| 順序 | ファクト | wwi.FactOrder |
+| Order | ファクト | wwi.FactOrder |
 
 
 ## <a name="table-persistence"></a>テーブルの永続性 
@@ -65,7 +65,7 @@ CREATE TABLE MyTable (col1 int, col2 int );
 ### <a name="external-table"></a>外部テーブル
 外部テーブルは、Azure Storage BLOB または Azure Data Lake Store にあるデータを指します。 CREATE TABLE AS SELECT ステートメントと組み合わせて使用する場合は、外部テーブルから選択するとデータが SQL Data Warehouse にインポートされます。 このため、外部テーブルはデータを読み込むのに役立ちます。 読み込みのチュートリアルについては、「[PolyBase を使用して Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)」をご覧ください。
 
-## <a name="data-types"></a>データの種類
+## <a name="data-types"></a>データ型
 SQL Data Warehouse では、最もよく使用されるデータ型がサポートされています。 サポートされるデータ型の一覧については、CREATE TABLE ステートメントの「[data types in CREATE TABLE reference (CREATE TABLE 内のデータ型のリファレンス)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes)」を参照してください。 データ型の使用に関するガイダンスについては、「[データ型](sql-data-warehouse-tables-data-types.md)」を参照してください。
 
 ## <a name="distributed-tables"></a>分散テーブル
@@ -135,7 +135,7 @@ SQL Data Warehouse では他のデータベースで提供されるテーブル�
 - 外部キー、CHECK [テーブル制約](/sql/t-sql/statements/alter-table-table-constraint-transact-sql)
 - [計算列](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql)
 - [インデックス付きビュー](/sql/relational-databases/views/create-indexed-views)
-- [シーケンス](/sql/t-sql/statements/create-sequence-transact-sql)
+- [Sequence](/sql/t-sql/statements/create-sequence-transact-sql)
 - [スパース列](/sql/relational-databases/tables/use-sparse-columns)
 - 代理キー。 [Identity](sql-data-warehouse-tables-identity.md)で実装されます。
 - [シノニム](/sql/t-sql/statements/create-synonym-transact-sql)
@@ -213,6 +213,7 @@ LEFT OUTER JOIN (select * from sys.pdw_column_distribution_properties where dist
 LEFT OUTER JOIN sys.columns c
     ON cdp.[object_id] = c.[object_id]
     AND cdp.[column_id] = c.[column_id]
+WHERE pn.[type] = 'COMPUTE'
 )
 , size
 AS
@@ -342,5 +343,5 @@ ORDER BY    distribution_id
 ;
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 データ ウェアハウスにテーブルを作成した後、次の手順はテーブルへのデータの読み込みです。  読み込みのチュートリアルについては、「[Azure SQL Data Warehouse へのデータの読み込み](load-data-wideworldimportersdw.md)」を参照してください。

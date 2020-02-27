@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 525eba8a5a4e891526eb32a24287ea3887ee6743
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 9cbc48d8bca2f7491d0464be1c5bd64054927dc9
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77474161"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77608743"
 ---
 Azure の仮想マシン (VM) を一貫した方法で大規模に作成および管理するには、一般的に、何らかの形で自動化することが必要です。 Azure インフラストラクチャのデプロイと管理のライフサイクル全体を自動化できるツールやソリューションはたくさんあります。 この記事では、Azure で使用できるインフラストラクチャ自動化ツールの一部を紹介します。 これらのツールは、一般的に、次のいずれかのアプローチに適しています。
 
@@ -40,7 +40,7 @@ Azure の仮想マシン (VM) を一貫した方法で大規模に作成およ�
 具体的には、次の方法を学習します。
 
 - [Azure Marketplace から Chef Automate をデプロイする](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate?tab=Overview)。
-- [Windows に Chef をインストールし、Azure VM を作成する](../articles/virtual-machines/windows/chef-automation.md)。
+- [Windows に Chef をインストールし、Azure VM を作成する](../articles/chef/chef-automation.md)。
 
 
 ## <a name="puppet"></a>Puppet
@@ -128,7 +128,7 @@ DSC 構成では、マシンにインストールするものと、ホストを�
 
 具体的には、次の方法を学習します。
 
-- [Jenkins、GitHub、および Docker を使用して、Azure 内の Linux VM に開発インフラストラクチャを作成する](../articles/virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md)。
+- [Jenkins、GitHub、および Docker を使用して、Azure 内の Linux VM に開発インフラストラクチャを作成する](../articles/jenkins/tutorial-jenkins-github-docker-cicd.md)。
 
 
 ## <a name="next-steps"></a>次のステップ

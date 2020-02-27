@@ -4,12 +4,12 @@ description: Azure で Jenkins ビルドをホストし、オートメーショ�
 keywords: Jenkins, Azure, 開発, 概要
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 84d9a62c432208893ac5ff960a5f7aec743680d1
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: a9297ebc116d75cfe1d4f37d4e9ada7d5198beae
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479336"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620181"
 ---
 # <a name="azure-and-jenkins"></a>Azure と Jenkins
 
@@ -22,7 +22,7 @@ ms.locfileid: "74479336"
 Azure で Jenkins をホストすることで、ビルドの自動化を集中管理し、ソフトウェア プロジェクト拡大のニーズに合わせてデプロイを拡大縮小します。 Azure への Jenkins のデプロイには以下を使用できます。
  
 - Azure Marketplace の [Jenkins ソリューション テンプレート](install-jenkins-solution-template.md)。
-- [Azure 仮想マシン](/azure/virtual-machines/linux/overview)。 VM で Jenkins を作成するには、[チュートリアル](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd)を参照してください。
+- [Azure 仮想マシン](/azure/virtual-machines/linux/overview)。 VM で Jenkins を作成するには、[チュートリアル](tutorial-jenkins-github-docker-cicd.md)を参照してください。
 - [Azure Container Service](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough) で実行されている Kubernetes クラスターについては、こちらの[手順](/azure/container-service/kubernetes/container-service-kubernetes-jenkins)を参照してください。
 
 Azure Jenkins のデプロイは、[Azure Monitor ログ](/azure/log-analytics/log-analytics-overview)と [Azure CLI](/cli/azure) を使用して監視および管理します。
@@ -33,7 +33,7 @@ Azure Jenkins のデプロイは、[Azure Monitor ログ](/azure/log-analytics/l
 
 [Azure サービス プリンシパル](/azure/azure-resource-manager/resource-group-overview)で構成したら、Jenkins のジョブとパイプラインでは、その資格情報を使用することで次が実現します。
 
-- [Azure Storage プラグイン](https://plugins.jenkins.io/windows-azure-storage)を使用して、ビルド アーティファクトを [Azure Storage](/azure/storage/common/storage-introduction) に安全に格納およびアーカイブする。 詳細については、[Jenkins ストレージの操作方法](/azure/storage/common/storage-java-jenkins-continuous-integration-solution)に関するページをご覧ください。
+- [Azure Storage プラグイン](https://plugins.jenkins.io/windows-azure-storage)を使用して、ビルド アーティファクトを [Azure Storage](/azure/storage/common/storage-introduction) に安全に格納およびアーカイブする。 詳細については、[Jenkins ストレージの操作方法](storage-java-jenkins-continuous-integration-solution.md)に関するページをご覧ください。
 - [Azure CLI](/azure/jenkins/execute-cli-jenkins-pipeline) を使用して Azure リソースを管理および構成する。
 
 ## <a name="deploy-your-code-into-azure-services"></a>Azure サービスにコードをデプロイする

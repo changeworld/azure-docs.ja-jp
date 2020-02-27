@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 69d08af9fd34728860343db3578f7283802f1611
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 4eb212cb6122803f78b13e6c17a55bac5bc48286
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544754"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587874"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows 用の仮想マシン拡張機能とその機能
 
@@ -36,7 +36,7 @@ Azure 仮想マシン (VM) 拡張機能は、Azure VM でのデプロイ後の�
 
 - Windows 用の DSC 拡張機能を使って、VM に PowerShell Desired State Configuration を適用します。 詳細については、「[Azure Desired State configuration extension](dsc-overview.md)」(Azure Desired State Configuration 拡張機能) を参照してください。
 - Log Analytics エージェント VM 拡張機能を使用して VM の監視を構成します。 詳しくは、[Azure VM の Azure Monitor ログへの接続](../../log-analytics/log-analytics-azure-vm-extension.md)に関するページを参照してください。
-- Chef を使用して Azure VM を構成します。 詳しくは、「[Chef で Azure VM の展開を自動化する](../windows/chef-automation.md)」を参照してください。
+- Chef を使用して Azure VM を構成します。 詳しくは、「[Chef で Azure VM の展開を自動化する](../../chef/chef-automation.md)」を参照してください。
 - Datadog 拡張機能を使って Azure インフラストラクチャの監視を構成します。 詳細については、[Datadog のブログ](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)を参照してください。
 
 

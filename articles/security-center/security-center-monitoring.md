@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: 57d47712fe20fac0bf370a9a100a07a37d7aa753
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 40352b7ae1f3fb6b1178f2dfe70cdca9871c76b7
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996669"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603775"
 ---
 # <a name="strengthen-your-security-posture-with-azure-security-center"></a>Azure Security Center を使用してセキュリティ体制を強化する
 この記事は、セキュリティ体制を強化するために役立ちます。 リソースのセキュリティを可能な限り厳密にしたり、ポリシーへの準拠を監視したりするには、Azure Security Center の監視機能を使用します。
@@ -48,8 +48,6 @@ ms.locfileid: "71996669"
 ## <a name="see-also"></a>関連項目
 この記事では、Azure Security Center での監視機能の使用方法について説明しました。 Azure セキュリティ センターの詳細については、次を参照してください。
 
-* [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md): Azure Security Center でセキュリティ設定を構成する方法について説明します。
-* [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md): セキュリティの警告の管理と対応の方法について説明しています。
+* [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md):Azure Security Center でセキュリティ設定を構成する方法について説明します。
+* [Azure Security Center でのセキュリティ アラートの管理と対応](security-center-managing-and-responding-alerts.md): セキュリティの警告の管理と対応の方法について説明しています。
 * [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md): パートナー ソリューションの正常性状態を監視する方法について説明しています。
-* [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md): このサービスの使用に関してよく寄せられる質問が記載されています。
-* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/): Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。

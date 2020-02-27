@@ -1,5 +1,6 @@
 ---
 title: 機械学習ツールとデータ サイエンス ツール
+titleSuffix: Azure Data Science Virtual Machine
 description: Data Science Virtual Machine にあらかじめインストールされている機械学習ツールとフレームワークについて学習します。
 keywords: データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス
 services: machine-learning
@@ -9,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: c77e1834804dba0d2e5fd6eaec574ffce19d1d45
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: c6b7e3da6cb6fd87e3b43d6f310e3b76f8fc4d30
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771208"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526095"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Azure Data Science Virtual Machine 上の機械学習ツールとデータ サイエンス ツール
 Azure Data Science Virtual Machine (DSVM) には、Python、R、Julia などの一般的な言語で使用できる、機械学習のための豊富な一連のツールやライブラリが備わっています。

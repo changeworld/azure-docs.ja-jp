@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 009a480add9d808115f24a69a400118fec7cb293
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 458012982531e228f7c4968f29e79e8b2e29aa48
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790579"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651435"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Azure Virtual Machines の自動バックアップ v2 (Resource Manager)
 
@@ -61,7 +61,7 @@ ms.locfileid: "74790579"
 
 ### <a name="basic-settings"></a>基本設定
 
-| Setting | 範囲 (既定値) | 説明 |
+| 設定 | 範囲 (既定値) | 説明 |
 | --- | --- | --- |
 | **自動化されたバックアップ** | 有効/無効 (無効) | SQL Server 2016/2017 Developer、Standard、または Enterprise を実行している Azure VM の自動バックアップを有効または無効にします。 |
 | **保有期間** | 1 ～ 30 日 (30 日) | バックアップを保持する日数。 |
@@ -71,7 +71,7 @@ ms.locfileid: "74790579"
 
 ### <a name="advanced-settings"></a>詳細設定
 
-| Setting | 範囲 (既定値) | 説明 |
+| 設定 | 範囲 (既定値) | 説明 |
 | --- | --- | --- |
 | **システム データベースのバックアップ** | 有効/無効 (無効) | 有効にすると、この機能によりシステム データベース (マスター、MSDB、およびモデル) もバックアップされます。 ログのバックアップを作成する場合は、MSDB とモデル データベースが完全復旧モードであることを確認します。 マスターのログのバックアップは作成されません。 また TempDB のバックアップは一切作成されません。 |
 | **バックアップ スケジュール** | 手動/自動 (自動) | 既定では、バックアップ スケジュールはログの増加に基づいて自動的に決定されます。 手動のバックアップ スケジュールでは、ユーザーはバックアップの時間枠を指定することができます。 この場合、バックアップは指定された頻度で、特定の日の指定された時間枠内でのみ行われます。 |
@@ -101,7 +101,7 @@ ms.locfileid: "74790579"
 
 このシナリオは、自動バックアップが指定された時間枠内でのみ動作し、各データベースは 週 1 回バックアップされることを示しています。 また、すべてのバックアップを 1 日で完了できない場合は、バックアップが数日にまたがる可能性があることを示しています。
 
-### <a name="scenario-2-daily-backups"></a>シナリオ 2:毎日のバックアップ
+### <a name="scenario-2-daily-backups"></a>シナリオ 2: 毎日のバックアップ
 いくつかの大規模なデータベースを含む SQL Server VM が存在します。
 
 月曜日に、次の設定で自動バックアップ v2 を有効にします。
@@ -118,11 +118,7 @@ ms.locfileid: "74790579"
 > [!IMPORTANT]
 > 毎日のバックアップをスケジュールする場合は、すべてのデータベースが設定された時間内に確実にバックアップされるよう、時間枠に余裕を持たせることをお勧めします。 これは、大量のデータをバックアップする場合に特に重要です。
 
-## <a name="configure-in-the-portal"></a>ポータルで構成する
-
-Azure Portal を使用すると、プロビジョニング中に、または既存の SQL Server 2016/2017 VM の自動バックアップ v2 を構成できます。
-
-## <a name="configure-for-new-vms"></a>新しい VM 用に構成する
+## <a name="configure-new-vms"></a>新しい VM を構成する
 
 Resource Manager デプロイメント モデルで新しい SQL Server 2016 または 2017 仮想マシンを作成する場合は、Azure Portal を使用して自動バックアップ v2 を構成します。
 
@@ -146,7 +142,7 @@ Resource Manager デプロイメント モデルで新しい SQL Server 2016 ま
 
 自動バックアップを初めて有効にすると、バックグラウンドで SQL Server IaaS エージェントが構成されます。 この間、自動バックアップが構成されていることは、Azure ポータルに示されない可能性があります。 エージェントがインストールされ、構成されるまで数分待ちます。 その後、Azure ポータルに新しい設定が反映されます。
 
-## <a name="configure-with-powershell"></a>PowerShell を使用して構成する
+## <a name="configure-with-powershell"></a>PowerShell での構成
 
 PowerShell を使用して自動バックアップ v2 を構成できます。 開始する前に、次の操作を行う必要があります。
 
@@ -329,7 +325,7 @@ SQL Server 2016/2017 上で自動バックアップを監視するには、主�
 1. [データベース メールを使用するように SQL Server エージェントを構成します](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-sql-server-agent-mail-to-use-database-mail)。
 1. SMTP ポートがローカルの VM ファイアウォールと、その VM のネットワーク セキュリティ グループの両方で許可されていることを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 自動バックアップ v2 では、Azure VM でマネージド バックアップが構成されます。 そのため、 [マネージド バックアップに関するドキュメント](https://msdn.microsoft.com/library/dn449496.aspx) を見直して、動作と影響を理解することが重要です。
 
 Azure VM の SQL Server のバックアップと復元に関するその他のガイダンスについては、「[Azure Virtual Machines おける SQL Server のバックアップと復元](virtual-machines-windows-sql-backup-recovery.md)」の記事をご覧ください。

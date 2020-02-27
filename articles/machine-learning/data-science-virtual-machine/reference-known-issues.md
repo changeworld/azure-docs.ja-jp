@@ -1,5 +1,5 @@
 ---
-title: 既知の問題とトラブルシューティング
+title: 'リファレンス: 既知の問題とトラブルシューティング'
 titleSuffix: Azure Data Science Virtual  Machine
 description: Azure Data Science Virtual Machine に関する既知の問題、回避策、トラブルシューティングの一覧を示します
 services: machine-learning
@@ -9,12 +9,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: reference
 ms.date: 10/10/2019
-ms.openlocfilehash: a0b22326a429edfa2f2b8741453215b42910891c
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: d022b1124146a1e506401e6cee257805e3a38fd3
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72302200"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526551"
 ---
 # <a name="known-issues-and-troubleshooting-the-azure-data-science-virtual-machine"></a>Azure Data Science Virtual Machine の既知の問題とトラブルシューティング
 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 0ba1e1cc4f470e24922fc3cf3be2bf6833696982
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 07fd984f72628ac4f6d6736bf0ab903619e96c72
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118841"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525160"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary"></a>クイック スタート:2 か国語辞書で単語を検索する
 
@@ -25,36 +25,26 @@ ms.locfileid: "77118841"
 このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Translator Text リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
 
 ::: zone pivot="programming-language-csharp"
-
 [!INCLUDE [C# quickstart](includes/dictionary-csharp.md)]
-
-::: zone-end
-
-::: zone pivot="programming-language-java"
-
-[!INCLUDE [Java quickstart](includes/dictionary-java.md)]
-
-::: zone-end
-
-::: zone pivot="programming-language-python"
-
-[!INCLUDE [Python quickstart](includes/dictionary-python.md)]
-
-::: zone-end
-
-::: zone pivot="programming-language-nodejs"
-
-[!INCLUDE [Node.js quickstart](includes/dictionary-nodejs.md)]
-
 ::: zone-end
 
 ::: zone pivot="programming-language-go"
-
 [!INCLUDE [Go quickstart](includes/dictionary-go.md)]
-
 ::: zone-end
 
-## <a name="see-also"></a>参照
+::: zone pivot="programming-language-java"
+[!INCLUDE [Java quickstart](includes/dictionary-java.md)]
+::: zone-end
+
+::: zone pivot="programming-language-javascript"
+[!INCLUDE [Node.js quickstart](includes/dictionary-nodejs.md)]
+::: zone-end
+
+::: zone pivot="programming-language-python"
+[!INCLUDE [Python quickstart](includes/dictionary-python.md)]
+::: zone-end
+
+## <a name="see-also"></a>関連項目
 
 * [テキストを翻訳する](quickstart-translate.md)
 * [テキストを表記変換する](quickstart-transliterate.md)

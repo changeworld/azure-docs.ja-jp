@@ -3,12 +3,12 @@ title: よく寄せられる質問 - Azure Migrate での検出、評価、お�
 description: Azure Migrate での検出、評価、および依存関係分析に関してよく寄せられる質問への回答を取得します。
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 2ae534e50cbee3ebd17d703f957aa7200460dbfe
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 179be4f5b39806c717e94789c9fe52842d2a07d8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77426294"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589234"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>検出、評価、および依存関係分析に関してよく寄せられる質問
 
@@ -92,7 +92,7 @@ Azure Migrate アプライアンスは、オンプレミス環境の情報を継
 
 ## <a name="can-i-use-an-existing-workspace"></a>既存のワークスペースを使用できますか?
 
-はい。既存のワークスペースを移行プロジェクトにアタッチして依存関係の視覚化に活用できます。 [詳細については、こちらを参照してください](concepts-dependency-visualization.md#how-does-it-work)。
+はい。既存のワークスペースを移行プロジェクトにアタッチして依存関係の視覚化に活用できます。 
 
 ## <a name="can-i-export-the-dependency-visualization-report"></a>依存関係の視覚化のレポートはエクスポートできますか。
 

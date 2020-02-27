@@ -3,16 +3,15 @@ title: Azure Kubernetes Service でサポートされている Kubernetes のバ
 description: Azure Kubernetes Service (AKS) の Kubernetes バージョン サポート ポリシーとクラスターのライフサイクルを理解する
 services: container-service
 author: sauryadas
-ms.service: container-service
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: saudas
-ms.openlocfilehash: 625b44ae3f8a1d5d474d980693d92840b1317f09
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 77d64391888957a1697a5823a1485413686682d1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425767"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593446"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でサポートされている Kubernetes のバージョン
 

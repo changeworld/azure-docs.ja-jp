@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: b0a8deb5f656fafde358dbcf2e1a2724f1a84113
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: ff439083ca9c648ceec95b89b041bb5b60785c91
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "64727617"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603012"
 ---
 # <a name="linux-virtual-machines-documentation"></a>Linux 仮想マシンのドキュメント
 
@@ -27,7 +27,7 @@ Ubuntu を実行している仮想マシン内で NGINX Web サーバーをデ�
 - [Azure PowerShell](/azure/virtual-machines/virtual-machines-linux-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Azure CLI](/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## <a name="step-by-step-tutorials"></a>ステップバイステップのチュートリアル
+## <a name="step-by-step-tutorials"></a>ステップバイステップ チュートリアル
 
 Azure で Linux VM のデプロイ、管理、スケーリングを行う方法について説明します。
 
@@ -42,7 +42,7 @@ Azure で Linux VM のデプロイ、管理、スケーリングを行う方法�
 - [VM のバックアップ](/azure/virtual-machines/linux/tutorial-backup-vms)
 - [VM の監視](/azure/virtual-machines/linux/tutorial-monitoring)
 - [VM のセキュリティの管理](/azure/virtual-machines/linux/tutorial-azure-security)
-- [Jenkins、Docker、GitHub を使用した CI/CD インフラストラクチャの作成](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd)
+- [Jenkins、Docker、GitHub を使用した CI/CD インフラストラクチャの作成](/azure/jenkins/tutorial-jenkins-github-docker-cicd)
 
 ## <a name="free-pluralsight-video-training"></a>無料の Pluralsight ビデオ トレーニング
 

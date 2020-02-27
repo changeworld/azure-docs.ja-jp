@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: f76b5443d6c1e3fd2cebf87cba39ba0a6bbdeaee
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: cfa39799e44cee0a2d36efccd454ccf8ca15157f
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521429"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603234"
 ---
 # <a name="update-to-dynamic-compliance-packages-in-your-regulatory-compliance-dashboard-preview"></a>規制コンプライアンス ダッシュボードでの動的コンプライアンス パッケージへの更新 (プレビュー)
 
@@ -65,16 +65,15 @@ Azure CIS ベンチマークの動的コンプライアンス パッケージで
     [![古い Azure CIS と新しい Azure CIS が表示された規制コンプライアンス ダッシュボード](media/update-regulatory-compliance-packages/security-center-dynamic-regulatory-compliance-cis-old-and-new.png)](media/update-regulatory-compliance-packages/security-center-dynamic-regulatory-compliance-cis-old-and-new.png#lightbox)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事で学習した内容は次のとおりです。
 
 * 規制コンプライアンス ダッシュボードに表示される標準を、新しい "*動的*" パッケージに**アップグレード**する方法
 * **コンプライアンス パッケージを追加**して、その他の標準への準拠を監視する方法 
 
-その他の関連資料については、次の記事をご覧ください。 
+その他の関連資料については、次の記事を参照してください。 
 
 - [Security Center の規制コンプライアンス ダッシュ ボード](security-center-compliance-dashboard.md)
 - [セキュリティ ポリシーの操作](tutorial-security-policy.md)
-- [Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md) - Azure Security Center の推奨事項を使用して、Azure リソースを保護する方法を説明します。
-- [Azure Security Center の FAQ](security-center-faq.md): Security Center の使用に関してよく寄せられる質問への回答を紹介します。
+- 「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」 - Azure Security Center の推奨事項をお客様の Azure リソースの保護に役立てる方法について説明しています。

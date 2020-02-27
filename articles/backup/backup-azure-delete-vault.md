@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services コンテナーを削除する
 description: この記事では、依存関係を削除してから、Microsoft Azure Backup Recovery Services (MARS) コンテナーを削除する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 23e0d2874229616037c44800639411f66bc4d1b6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 172c632ae27c789f96e2e5cc1bdef492ef09f667
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173169"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586463"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services コンテナーを削除する
 
@@ -28,7 +28,7 @@ ms.locfileid: "74173169"
 
   ![保護されたサーバーの削除エラー。](./media/backup-azure-delete-vault/error-message.jpg)
 
-- バックアップ項目が論理的に削除された状態になっている場合は、以下の警告メッセージが表示されるので、完全に削除されるまで待つ必要があります。 詳細については、[こちらの記事](https://aka.ms/SoftDeleteCloudWorkloads)を参照してください。
+- バックアップ項目が論理的に削除された状態になっている場合は、以下の警告メッセージが表示されるので、完全に削除されるまで待つ必要があります。 詳細については、[こちらの記事](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud)を参照してください。
 
    ![コンテナーの削除エラー。](./media/backup-azure-delete-vault/error-message-soft-delete.png)
   
@@ -347,7 +347,7 @@ ARMClient コマンドの詳細については、[ARMClient の README](https://
 
 3. Azure portal で、値が削除されていることを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Recovery Services コンテナーの詳細情報](backup-azure-recovery-services-vault-overview.md)<br/>
 [Recovery Services コンテナーの監視と管理の詳細情報](backup-azure-manage-windows-server.md)

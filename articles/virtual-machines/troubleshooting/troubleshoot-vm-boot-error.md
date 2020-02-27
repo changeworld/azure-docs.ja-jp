@@ -6,20 +6,19 @@ documentationcenter: ''
 author: v-miegge
 manager: dcscontentpm
 editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
-ms.openlocfilehash: 29242b802dbbff4218506422293082a495c4d21e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c24a840716841d04537ac5b77bcaf26fca4b78cf
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685134"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561951"
 ---
 # <a name="linux-vm-boots-to-grub-rescue"></a>Grub の復旧への Linux VM の起動
 
@@ -66,7 +65,7 @@ ms.locfileid: "73685134"
 
    * 不足しているファイルが `/boot/grub/menu.lst` の場合、このエラーは以前の OS バージョン (**RHEL 6.x**、**Centos 6.x** と **Ubuntu 14.04**) に対するものであり、コマンドが遅れることがあります。 古いサーバーを起動し、正しいコマンドが入力されていることを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure 仮想マシン エージェントの概要](../extensions/agent-windows.md)
 * [Windows 用の仮想マシン拡張機能とその機能](../extensions/features-windows.md)

@@ -4,12 +4,12 @@ description: Azure のバックアップから Windows Server のシステム状
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 08/18/2017
-ms.openlocfilehash: 8e256fbac0651b4c237c540151b3377927989d36
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 6d46a091a4e620e26d05735f12a201009663e65d
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172816"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602458"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Windows Server へのシステム状態の復元
 
@@ -89,7 +89,7 @@ Windows Server が破損したり、アクセス不能になったりしたと�
 6. [バックアップ サーバーの選択] ウィンドウで、表示されているコンピューターの一覧から*ソース コンピューター*を選択します。
 7. [回復モードの選択] ウィンドウで、 **[システム状態]** を選択し、 **[次へ]** をクリックします。
 
-    ![Search](./media/backup-azure-restore-system-state/recover-type-selection.png)
+    ![検索](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
 8. **[ボリュームと日付の選択]** ウィンドウのカレンダーで回復ポイントを選択します。 任意の時点の回復ポイントから復元できます。 **太字**になっている日付では、少なくとも 1 つの回復ポイントを利用できます。 選択した日付で複数の回復ポイントを利用できる場合は、 **[時間]** ドロップダウン メニューから特定の回復ポイントを選択します。
 
@@ -159,7 +159,7 @@ Azure Recovery Services エージェントを使用してシステム状態を�
 システム状態バックアップには、Active Directory のデータが含まれています。 Active Directory Domain Services (AD DS) を現在の状態から以前の状態に復元するには、次の手順に従います。
 
 1. ディレクトリ サービス復元モード (DSRM) でドメイン コントローラーを再起動します。
-2. [ここ](https://technet.microsoft.com/library/cc794755(v=ws.10).aspx)での手順に従い、Windows Server バックアップ コマンドレットを使用して、AD DS を回復します。
+2. [ここ](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore)での手順に従い、Windows Server バックアップ コマンドレットを使用して、AD DS を回復します。
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>システム状態の復元に失敗した場合のトラブルシューティング
 
@@ -203,6 +203,6 @@ Azure Recovery Services エージェントを使用してシステム状態を�
 
      ![システム状態バックアップのバージョンを取得する](./media/backup-azure-restore-system-state/winre-6.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * ファイルとフォルダーを回復したので、 [バックアップを管理](backup-azure-manage-windows-server.md)できます。

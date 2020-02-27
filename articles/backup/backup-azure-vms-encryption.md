@@ -3,12 +3,12 @@ title: 暗号化された Azure VM をバックアップおよび復元する
 description: Azure Backup サービスを使用して、暗号化された Azure VM をどのようにバックアップおよび復元するかについて説明します。
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 754a0899d25f2672c6a66eeafe5013f98b7a8f4d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3719f26211677a1b726d3c3dc1d217fb58db1fb2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513781"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583176"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>暗号化された Azure VM をバックアップおよび復元する
 
@@ -30,7 +30,7 @@ Azure Backup では、次の表にまとめたように、Azure AD アプリの�
 **アンマネージド** | はい | はい
 **マネージド**  | はい | はい
 
-- [ADE](../security/azure-security-disk-encryption-overview.md)、[Key Vault](../key-vault/key-vault-overview.md)、[KEK](https://blogs.msdn.microsoft.com/cclayton/2017/01/03/creating-a-key-encrypting-key-kek/) に関する詳細を参照してください。
+- [ADE](../security/azure-security-disk-encryption-overview.md)、[Key Vault](../key-vault/key-vault-overview.md)、[KEK](https://docs.microsoft.com/azure/virtual-machine-scale-sets/disk-encryption-key-vault#set-up-a-key-encryption-key-kek/) に関する詳細を参照してください。
 - Azure VM ディスクの暗号化については、[よくあるご質問](../security/azure-security-disk-encryption-faq.md)に関するページを参照してください。
 
 ### <a name="limitations"></a>制限事項

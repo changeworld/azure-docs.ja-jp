@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service (AKS) クラスター ノードへの SSH 接続
 description: トラブルシューティングやメンテナンスのタスクのために Azure Kubernetes Service (AKS) クラスター ノードとの SSH 接続を作成する方法について説明します。
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 07/31/2019
-ms.author: mlearned
-ms.openlocfilehash: 5ff79dc597571f4e6ef3d7c2c20bce61c0d061ad
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: dfdcda40a24142f85bbeb360aacf0971d72d181f
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926370"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593633"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>メンテナンスまたはトラブルシューティングのために SSH を使用して Azure Kubernetes Service (AKS) クラスター ノードに接続する
 
@@ -199,7 +196,7 @@ AKS ノードへの SSH 接続を作成するには、AKS クラスターでヘ�
 
 終了したら、SSH セッションを `exit` し、対話型のコンテナー セッションを `exit` します。 このコンテナー セッションを終了すると、AKS クラスターからの SSH アクセスに使用されたポッドが削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 トラブルシューティングのデータがさらに必要な場合は、[kubelet ログを表示][view-kubelet-logs]するか、[Kubernetes マスター ノードのログを表示][view-master-logs]することができます。
 

@@ -14,12 +14,12 @@ ms.date: 01/14/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7d096f721869e43e9a860733d0f6893f224a6776
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: bd9622d3e34198402bc45e5d855d05b0c8e35eb8
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772570"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605448"
 ---
 # <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>Azure VM での SQL Server エディションのインプレース変更
 
@@ -35,7 +35,7 @@ SQL Server のエディションのインプレース変更を行うには、以
 
 - [Azure サブスクリプション](https://azure.microsoft.com/free/)。
 - [SQL VM リソース プロバイダー](virtual-machines-windows-sql-register-with-resource-provider.md)に登録された [Windows 上の SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。
-- SQL Server の**目的のエディション**が収められたセットアップ メディア。 [ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)をお持ちのお客様は、[ボリューム ライセンス サービス センター](https://www.microsoft.com/Licensing/servicecenter/default.aspx)からインストール メディアを入手できます。 ソフトウェア アシュアランスをお持ちでないお客様は、目的のエディション (通常、`c:\SQLInstalls` にある) を含む Azure Marketplace の SQL Server VM イメージから、セットアップ メディアを使用できます。 
+- SQL Server の**目的のエディション**が収められたセットアップ メディア。 [ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)をお持ちのお客様は、[ボリューム ライセンス サービス センター](https://www.microsoft.com/Licensing/servicecenter/default.aspx)からインストール メディアを入手できます。 ソフトウェア アシュアランスをお持ちでないお客様は、目的のエディション (通常、`C:\SQLServerFull` にある) を含む Azure Marketplace の SQL Server VM イメージから、セットアップ メディアを使用できます。 
 
 
 ## <a name="upgrade-an-edition"></a>エディションをアップグレードする

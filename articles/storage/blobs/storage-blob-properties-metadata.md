@@ -8,12 +8,12 @@ ms.date: 08/09/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 03171e395bb23da05ee5420f60abca9a16ffb774
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 395210c582ba7f5e8170a96a46e2816336e33b2d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72599913"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624033"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>.NET を使用した BLOB プロパティとメタデータの管理
 
@@ -163,4 +163,4 @@ public static async Task ReadBlobMetadataAsync(CloudBlob blob)
 - [Set Blob Properties 操作](/rest/api/storageservices/set-blob-properties)
 - [Get Blob Properties 操作](/rest/api/storageservices/get-blob-properties)
 - [Set Blob Metadata 操作](/rest/api/storageservices/set-blob-metadata)
-- [Get Blob Metadata 操作](/rest/api/storageservices/set-blob-metadata)
+- [Get Blob Metadata 操作](/rest/api/storageservices/get-blob-metadata)

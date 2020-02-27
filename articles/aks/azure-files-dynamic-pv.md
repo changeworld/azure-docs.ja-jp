@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service (AKS) で複数のポッドのファイル ボリュームを動的に作成する
 description: Azure Kubernetes Service (AKS) で複数の同時実行ポッドで使用するための Azure Files を含む永続ボリュームを動的に作成する方法について説明します
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 09/12/2019
-ms.author: mlearned
-ms.openlocfilehash: 999e106240a8a1d95c35d098062d474a0b57228d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a6e46433354be0d9d958ec69da4529e94a4edd75
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231752"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596422"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Azure Files を含む永続ボリュームを動的に作成して使用する
 
@@ -188,7 +185,7 @@ parameters:
 
 バージョン 1.8.0 - 1.8.4 のクラスターを使用している場合は、*runAsUser* の値を *0* に設定してセキュリティ コンテキストを指定できます。 ポッドのセキュリティ コンテキストについて詳しくは、[セキュリティ コンテキストの構成][kubernetes-security-context]に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 関連するベスト プラクティスについては、[AKS のストレージとバックアップに関するベスト プラクティス][operator-best-practices-storage]に関する記事を参照してください。
 

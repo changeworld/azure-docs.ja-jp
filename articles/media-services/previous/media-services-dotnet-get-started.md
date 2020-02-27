@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 11754e8e98e13cffefaf4a8c1fa08bc60d650105
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 7dd49df782115c8c328eed819395209ee7217fd3
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69016548"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566065"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>.NET SDK を使用したオンデマンド コンテンツ配信の概要  
 
@@ -31,19 +31,19 @@ ms.locfileid: "69016548"
 
 チュートリアルを完了するには次のものが必要です。
 
-* Azure アカウント。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+* Azure アカウント。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
 * Media Services アカウント。 Media Services アカウントを作成するには、[Media Services アカウントを作成する方法](media-services-portal-create-account.md)に関するページを参照してください。
 * .NET Framework 4.0 以降。
 * 見ることができます。
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
-1. (Azure Portal を使用した) ストリーミング エンドポイントの開始
+1. (Azure Portal を使用して) ストリーミング エンドポイントを開始する。
 2. Visual Studio プロジェクトの作成と構成
 3. Media Services アカウントに接続します。
 2. ビデオ ファイルをアップロードする
 3. 一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードします。
-4. 資産を発行してストリーミング URL とプログレッシブ ダウンロード URL を取得する  
+4. アセットを発行してストリーミング URL とプログレッシブ ダウンロード URL を取得する  
 5. コンテンツの再生
 
 ## <a name="overview"></a>概要
@@ -152,11 +152,11 @@ Media Services を .NET で使用するとき、Media Services に関連した�
 
 ## <a name="create-a-new-asset-and-upload-a-video-file"></a>新しいアセットの作成とビデオ ファイルのアップロード
 
-Media Services で、デジタル ファイルを資産にアップロードし (取り込み) ます。 **Asset** エンティティには、ビデオ、オーディオ、画像、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。ファイルをアップロードすると、クラウドにコンテンツが安全に保存され、処理したりストリーミングしたりできるようになります。 アセット内のこれらのファイルを **アセットファイル**といいます。
+Media Services で、デジタル ファイルをアセットにアップロードし (取り込み) ます。 **Asset** エンティティには、ビデオ、オーディオ、画像、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。ファイルをアップロードすると、クラウドにコンテンツが安全に保存され、処理したりストリーミングしたりできるようになります。 アセット内のこれらのファイルを **アセットファイル**といいます。
 
 以下に定義した **UploadFile** メソッドは、(.NET SDK Extensions で定義されている) **CreateFromFile** を呼び出します。 **CreateFromFile** によって、指定されたソース ファイルのアップロード先となる新しいアセットが作成されます。
 
-**CreateFromFile** メソッドの **AssetCreationOptions** 引数には、次のいずれかの資産作成オプションを指定できます。
+**CreateFromFile** メソッドの **AssetCreationOptions** 引数には、次のいずれかのアセット作成オプションを指定できます。
 
 * **None** : 暗号化は使用されません。 これが既定値です。 このオプションを使用した場合、送信経路上とストレージ内のいずれにおいてもコンテンツが保護されないので注意してください。
   プログレッシブ ダウンロードを使用して MP4 を配信する場合はこのオプションを使用します。
@@ -166,7 +166,7 @@ Media Services で、デジタル ファイルを資産にアップロードし 
 
 **CreateFromFile** メソッドには、ファイルのアップロードの進行状況をレポートするためのコールバックも指定できます。
 
-次の例では、資産のオプションに **None** を指定しています。
+次の例では、アセットのオプションに **None** を指定しています。
 
 次のメソッドを Program クラスに追加します。
 
@@ -188,7 +188,7 @@ Media Services で、デジタル ファイルを資産にアップロードし 
 ```
 
 ## <a name="encode-the-source-file-into-a-set-of-adaptive-bitrate-mp4-files"></a>一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードする
-Media Services に取り込んだ資産には、メディアのエンコード、再パッケージ化、透かしの追加などをクライアントへの配信前に適用できます。 高いパフォーマンスと可用性を確保するために、これらの作業は、複数のバックグラウンド ロール インスタンスに対してスケジューリングされて実行されます。 これらのアクティビティはジョブと呼ばれ、各ジョブは、資産ファイルの実際の作業を実行するアトミック タスクで構成されます。
+Media Services に取り込んだアセットには、メディアのエンコード、再パッケージ化、透かしの追加などをクライアントへの配信前に適用できます。 高いパフォーマンスと可用性を確保するために、これらの作業は、複数のバックグラウンド ロール インスタンスに対してスケジューリングされて実行されます。 これらのアクティビティはジョブと呼ばれ、各ジョブは、アセットファイルの実際の作業を実行するアトミック タスクで構成されます。
 
 冒頭で述べたように、Azure Media Services の代表的な用途の 1 つは、クライアントに対するアダプティブ ビットレート ストリーミング配信です。 Media Services は、一連のアダプティブ ビットレート MP4 ファイルを次のいずれかの形式に動的にパッケージ化できます:HTTP ライブ ストリーミング (HLS)、Smooth Streaming、および MPEG DASH。
 
@@ -236,7 +236,7 @@ Media Services に取り込んだ資産には、メディアのエンコード�
     }
 ```
 
-## <a name="publish-the-asset-and-get-urls-for-streaming-and-progressive-download"></a>資産を発行してストリーミング URL とプログレッシブ ダウンロード URL を取得する
+## <a name="publish-the-asset-and-get-urls-for-streaming-and-progressive-download"></a>アセットを発行してストリーミング URL とプログレッシブ ダウンロード URL を取得する
 
 アセットをストリーミングまたはダウンロードするにはまず、ロケーターを作成してアセットを「発行」する必要があります。 アセットに含まれているファイルには、ロケーターを通じてアクセスできます。 Media Services では、2 種類のロケーターがサポートされています。メディアをストリーミングする (MPEG DASH、HLS、Smooth Streaming など) ために使用される OnDemandOrigin ロケーター、およびメディア ファイルをダウンロードするために使用される Access Signature (SAS) ロケーター。
 
@@ -259,9 +259,9 @@ Media Services に取り込んだ資産には、メディアのエンコード�
 
 #### <a name="a-sas-url-used-to-download-files-has-the-following-format"></a>ファイルをダウンロードするための SAS URL の形式は次のとおりです。
 
-{BLOB コンテナー名}/{資産名}/{ファイル名}/{SAS 署名}
+{BLOB コンテナー名}/{アセット名}/{ファイル名}/{SAS 署名}
 
-Media Services .NET SDK Extensions には、発行済みの資産の URL を正しい形式で取得できるヘルパー メソッドが用意されています。
+Media Services .NET SDK Extensions には、発行済みのアセットの URL を正しい形式で取得できるヘルパー メソッドが用意されています。
 
 次のコードでは、.NET SDK Extensions を使用してロケーターを作成し、ストリーミング URL と プログレッシブ ダウンロード URL を取得しています。 また、ローカル フォルダーにファイルをダウンロードする方法もこのコードで確認できます。
 
@@ -378,7 +378,6 @@ MPEG DASH
 詳細については、次のトピックを参照してください。
 
 - [既存のプレーヤーによるコンテンツの再生](media-services-playback-content-with-existing-players.md)
-- [ビデオ プレーヤー アプリケーションの開発](media-services-develop-video-players.md)
 - [DASH.js を使用した HTML5 アプリケーションへの MPEG-DASH アダプティブ ストリーミング ビデオの埋め込み](media-services-embed-mpeg-dash-in-html5.md)
 
 ## <a name="download-sample"></a>サンプルのダウンロード

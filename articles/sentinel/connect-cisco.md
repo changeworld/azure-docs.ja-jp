@@ -3,7 +3,7 @@ title: Azure Sentinel に Cisco データを接続する | Microsoft Docs
 description: Azure Sentinel に Cisco データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: 62029b5c-29d3-4336-8a22-a9db8214eb7e
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: rkarlin
-ms.openlocfilehash: 67a76f1fcd4cfcdd372407ae62eb03d5905cda68
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 264dab4fabc890ffe03d911f8ee3c08ef51375d8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610660"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588401"
 ---
 # <a name="connect-cisco-asa-to-azure-sentinel"></a>Cisco ASA を Azure Sentinel に接続する
 
@@ -40,7 +40,7 @@ Cisco ASA は CEF をサポートしていないため、ログは Syslog とし
 
 1. Log Analytics で Cisco イベントに関連するスキーマを使用するために、`CommonSecurityLog` を検索します。
 
-1. 次に、「[手順 3:接続を検証する](connect-cef-verify.md)」に進みます。
+1. 次に、「[手順 3:接続の検証](connect-cef-verify.md)」に進みます。
 
 
 

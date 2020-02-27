@@ -9,12 +9,13 @@ author: v-miegge
 ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
-ms.openlocfilehash: e1638c9779ca50507a1ce30dd3bbc9c18248964a
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+manager: dcscontentpm
+ms.openlocfilehash: ed80482147d415ed890bb50ee70be9457c9c5211
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807070"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562294"
 ---
 # <a name="azure-sql-database-importexport-service-takes-a-long-time-to-import-or-export-a-database"></a>Azure SQL Database Import/Export サービスでのデータベースのインポートまたはエクスポートに時間がかかる
 

@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターに安全に接続する
 description: Service Fabric クラスターへのクライアント アクセスを認証する方法、およびクライアントとクラスター間の通信をセキュリティで保護する方法について説明します。
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 89d9f67ba1a202b3830df7a5b960c6ef01091bf2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a1f4abbabe428a09492efefca4a8da9801b9f68d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458273"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587058"
 ---
 # <a name="connect-to-a-secure-cluster"></a>セキュリティ保護されたクラスターに接続する
 
@@ -24,7 +24,7 @@ Service Fabric CLI (sfctl) を使用してセキュリティで保護された�
 
 証明書とキーのペアとして、または単一の PFX ファイルとして、2 つの異なる方法でクライアント証明書を指定できます。 パスワードで保護された PEM ファイルの場合、自動的にパスワードの入力が求められます。 クライアント証明書を PFX ファイルとして入手した場合は、最初に次のコマンドを使用して PFX ファイルを PEM ファイルに変換します。 
 
-```bash
+```shell
 openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pass:your-pfx-password
 ```
 
@@ -32,7 +32,7 @@ openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pas
 
 クライアント証明書を pem ファイルとして指定するには、`--pem` 引数でファイル パスを指定します。 次に例を示します。
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
 ```
 
@@ -40,7 +40,7 @@ sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./clie
 
 証明書を指定するために、キー ペアは `--cert` および `--key` 引数を使用して、各ファイルにファイル パスを指定します。
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
@@ -49,13 +49,13 @@ sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./cli
 > [!WARNING]
 > 運用環境の Service Fabric クラスターに接続するときに `no-verify` オプションを使用しないでください。
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
 さらに、信頼された CA 証明書のディレクトリ、または個々の証明書へのパスを指定することもできます。 これらのパスを指定するには、`--ca` 引数を使用します。 次に例を示します。
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca
 ```
 

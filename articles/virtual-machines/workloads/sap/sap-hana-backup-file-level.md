@@ -4,20 +4,20 @@ description: Azure 仮想マシン上の SAP HANA をバックアップする方
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
-ms.author: rclaus
-ms.openlocfilehash: e8ad1a9468c52fd120360827ed3a08f8f53ec3d1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: hermannd
+ms.openlocfilehash: d1044e4cbfd59cdf58af1a132a64e7143083905c
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425999"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616149"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>ファイル レベルの SAP HANA Azure バックアップ
 

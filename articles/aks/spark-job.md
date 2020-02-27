@@ -2,17 +2,16 @@
 title: Apache Spark ジョブを Azure Kubernetes Service (AKS) で実行する
 description: Azure Kubernetes Service (AKS) を使用して Apache Spark job を実行します
 author: lenadroid
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 72e87acf418d5085a76f18c595bf31d43b0d64ac
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 7465f8eb4357fcb6faa1d0fee0173837b6cb019b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274661"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593651"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>AKS での Apache Spark ジョブの実行
 

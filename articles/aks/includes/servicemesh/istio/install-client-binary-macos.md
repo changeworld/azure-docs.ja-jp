@@ -1,15 +1,14 @@
 ---
 author: paulbouwer
-ms.service: container-service
 ms.topic: include
 ms.date: 11/15/2019
 ms.author: pabouwer
-ms.openlocfilehash: d812baa15380b7824deaed081d2857fbc6e0b1b6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 74f5b22ccc822a188059b29d9c661a15cf8412bf
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170798"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593986"
 ---
 ## <a name="download-and-install-the-istio-istioctl-client-binary"></a>Istio istioctl クライアント バイナリをダウンロードしてインストールする
 

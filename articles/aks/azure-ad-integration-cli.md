@@ -2,17 +2,14 @@
 title: Azure Active Directory と Azure Kubernetes Service を統合する
 description: Azure CLI を使用して Azure Active Directory 対応の Azure Kubernetes Service (AKS) クラスターを作成する方法を学習する
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.author: mlearned
-ms.openlocfilehash: 520557c80bf2630a359188dd86ec0987e0d5326b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: fef22b1b2d81f76e95a15c0e3a746440b95df8ca
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77158147"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596608"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Azure CLI を使用して Azure Active Directory と Azure Kubernetes Service を統合する
 
@@ -123,7 +120,7 @@ oAuthPermissionId=$(az ad app show --id $serverApplicationId --query "oauth2Perm
 [az ad app permission add][az-ad-app-permission-add] コマンドを使用して、クライアント アプリケーションおよびサーバー アプリケーション コンポーネントが oAuth2 通信フローを使用するためのアクセス許可を追加します。 次に、[az ad app permission grant][az-ad-app-permission-grant] コマンドを使用して、サーバー アプリケーションと通信するためのアクセス許可をクライアント アプリケーションに付与します。
 
 ```azurecli-interactive
-az ad app permission add --id $clientApplicationId --api $serverApplicationId --api-permissions $oAuthPermissionId=Scope
+az ad app permission add --id $clientApplicationId --api $serverApplicationId --api-permissions ${oAuthPermissionId}=Scope
 az ad app permission grant --id $clientApplicationId --api $serverApplicationId
 ```
 

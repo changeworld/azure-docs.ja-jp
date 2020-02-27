@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service (AKS) でエグレス トラフィックを制限する
 description: Azure Kubernetes Service (AKS) でエグレス トラフィックを制御するために必要なポートとアドレスについて説明します。
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 01/21/2020
-ms.author: mlearned
-ms.openlocfilehash: 1206c20ec4f547dd591ac711d546d1dad0b7a19a
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: a76f4eb8680d07193feb29450fdba7bb2a710a68
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251602"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595010"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でクラスター ノードに対するエグレス トラフィックを制御する
 

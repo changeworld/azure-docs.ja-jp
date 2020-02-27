@@ -4,7 +4,7 @@ description: Azure Virtual Machines に単一インスタンスの SAP HANA を�
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 630f094ffc6c57a0137d1abc46476f5abe64f616
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0090ffe977dee3e493d726c9eb4d151bcbeb503f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750379"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617243"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-virtual-machines"></a>クイック スタート:Azure Virtual Machines への単一インスタンスの SAP HANA の手動インストール
 ## <a name="introduction"></a>はじめに
@@ -85,7 +85,7 @@ Azure での SAP の監視方法については、以下を参照してくださ
 ### <a name="azure-vm-types"></a>Azure VM の種類
 Azure VM の種類と SAP HANA に関連して SAP でサポートされるワークロード シナリオは、「[SAP certified IaaS Platforms (SAP の認定 IaaS プラットフォーム)](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html)」に記載されています。 
 
-SAP NetWeaver または S/4HANA アプリケーション レイヤーに関して SAP によって認定されている Azure VM の種類は以下に記載されています: 「[SAP Note 1928533:SAP applications on Azure:Supported products and Azure VM types (SAP サポート ノート #1928533 - Azure 上の SAP アプリケーション: サポート対象の製品と Azure VM の種類)](https://launchpad.support.sap.com/#/notes/1928533/E)」。
+SAP NetWeaver または S/4HANA アプリケーション レイヤーに関して SAP によって認定されている Azure VM の種類は以下に記載されています: 「[SAP Note 1928533:SAP applications on Azure: Supported products and Azure VM types (SAP サポート ノート #1928533 - Azure 上の SAP アプリケーション: サポート対象の製品と Azure VM の種類)](https://launchpad.support.sap.com/#/notes/1928533/E)」。
 
 > [!NOTE]
 > SAP-Linux-Azure 統合は、Azure Resource Manager でのみサポートされ、クラシック デプロイ モデルではサポートされません。 
@@ -93,7 +93,7 @@ SAP NetWeaver または S/4HANA アプリケーション レイヤーに関し�
 ## <a name="manual-installation-of-sap-hana"></a>SAP HANA の手動インストール
 
 > [!IMPORTANT]
-> 選択した OS が、使用している特定の VM の種類の SAP HANA に対して認定されていることを確認してください。 SAP HANA 認定 VM の種類と、それらの VM の種類に対応する OS リリースの一覧は、[SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)に関するページに記載されています。 表示されている VM の種類をクリックすると、特定の VM の種類に対して SAP HANA でサポートされている OS のリリースの一覧が表示され、詳細を確認できます。 このドキュメントの例では、M シリーズの VM で SAP HANA がサポートしていない SUSE Linux Enterprise Server (SLES) OS リリースが使用されています。
+> 選択した OS が、使用する特定の VM の種類で SAP HANA に対して SAP から認定されていることを確認してください。 SAP HANA 認定 VM の種類と、それらの VM の種類に対応する OS リリースの一覧は、[SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)に関するページに記載されています。 表示されている VM の種類をクリックすると、特定の VM の種類に対して SAP HANA でサポートされている OS のリリースの一覧が表示され、詳細を確認できます。 このドキュメントの例では、M シリーズの VM で SAP HANA がサポートしていない SUSE Linux Enterprise Server (SLES) OS リリースが使用されています。
 >
 
 このガイドでは、Azure VM に SAP HANA を手動でインストールする方法を 2 とおり説明します。
@@ -175,7 +175,7 @@ Linux ベンダーの Linux サブスクリプションに OS のデプロイを
  `sudo zypper list-patches`
 
 問題の種類に基づいて、パッチはカテゴリ別および重大度別に分類されます。 カテゴリで一般的に使用される値は次のとおりです。 
-- セキュリティ
+- Security
 - 推奨
 - 省略可能
 - 機能
@@ -184,7 +184,7 @@ Linux ベンダーの Linux サブスクリプションに OS のデプロイを
 
 重大度で一般的に使用される値は次のとおりです。
 
-- 重大
+- Critical
 - 重要
 - 中
 - 低

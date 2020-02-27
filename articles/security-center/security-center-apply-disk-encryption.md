@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: aa4e8f165320327788255605470bda789047c347
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: d0f96fe758966a435f8fb8e448e75cbb18b85122
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592496"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604513"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Azure Security Center で Disk Encryption を適用する
 お使いの Windows または Linux VM ディスクが Azure Disk Encryption を使用して暗号化されていない場合、Azure Security Center により、ディスク暗号化を適用することが推奨されます。 Disk Encryption を使用すると、Windows および Linux IaaS VM ディスクを暗号化できます。  VM 上の OS とデータ ボリュームの両方を暗号化することをお勧めします。
@@ -55,11 +55,10 @@ Azure Virtual Machines に使用できる方法はたくさんあります。 �
 
 セキュリティ センターの詳細については、次を参照してください。
 
-* [Azure セキュリティ センターでのセキュリティ ポリシーの設定](tutorial-security-policy.md) 」 -- セキュリティ ポリシーの構成方法について説明しています。
-* [Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md) 」 -- Azure リソースの正常性を監視する方法について説明しています。
-* [Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」 -- セキュリティの警告の管理と対応の方法について説明しています。
+* [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md) 」-- セキュリティ ポリシーの構成方法について説明しています。
+* [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md) 」-- Azure リソースの正常性を監視する方法について説明しています。
+* [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」-- セキュリティの警告の管理と対応の方法について説明しています。
 * [Azure セキュリティ センターでのセキュリティに関する推奨事項の管理](security-center-recommendations.md) 」 -- 推奨事項に従って Azure リソースを保護する方法について説明しています。
-* [Azure セキュリティ センターのよく寄せられる質問 (FAQ)](security-center-faq.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
 * [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 
 <!--Image references-->

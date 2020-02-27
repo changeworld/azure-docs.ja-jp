@@ -4,14 +4,14 @@ ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 87dd3680aae3e87f78ab2dbe70c44b2008706747
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 09fa612e7e5c681da16bf19e94c626ae14a3b8a1
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181196"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590777"
 ---
-データ ディスクを Linux VM に追加するときに、LUN 0 にディスクが存在しないと、エラーが発生することがあります。 `azure vm disk attach-new` コマンドを使用して手動でディスクを追加していて、Azure プラットフォームに適切な LUN を判定させるのではなく、LUN を指定する (`--lun`) 場合は、LUN 0 にディスクが既に存在するようにするか、今後存在するようにしてください。 
+データ ディスクを Linux VM に追加するときに、LUN 0 にディスクが存在しないと、エラーが発生することがあります。 `az vm disk attach -new` コマンドを使用して手動でディスクを追加していて、Azure プラットフォームに適切な LUN を判定させるのではなく、LUN を指定する (`--lun`) 場合は、LUN 0 にディスクが既に存在するようにするか、今後存在するようにしてください。 
 
 `lsscsi`からの出力のスニペットを示す次の例を考えてみましょう。
 

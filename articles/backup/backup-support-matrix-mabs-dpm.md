@@ -3,12 +3,12 @@ title: MABS と System Center DPM のサポート マトリックス
 description: この記事では、Microsoft Azure Backup Server (MABS) または System Center DPM を使用してオンプレミスおよび Azure VM のリソースをバックアップする場合の、Azure Backup のサポートについてまとめます。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9441f7ce9069cd85475877f37abe669f3c4fd516
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 6664f7b226b75b364fd1c83f2abc56b5a275eff9
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444028"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582655"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server または System Center DPM を使用したバックアップのサポート マトリックス
 
@@ -113,11 +113,34 @@ Azure Backup は、次のいずれかのオペレーティング システムを
 
 DPM サーバー/MABS は、次の URL にアクセスできる必要があります。
 
-- http://www.msftncsi.com/ncsi.txt
+- `http://www.msftncsi.com/ncsi.txt`
 - *.Microsoft.com
 - *.WindowsAzure.com
 - *.microsoftonline.com
 - *.windows.net
+
+### <a name="azure-expressroute-support"></a>Azure ExpressRoute のサポート
+
+パブリック ピアリング (古い回線で使用可能) と Microsoft ピアリングを使用して、Azure ExpressRoute 経由でデータをバックアップできます。 プライベート ピアリング経由のバックアップはサポートされていません。
+
+パブリック ピアリングを使用して、次のドメインまたはアドレスへのアクセスを確保します。
+
+* `http://www.msftncsi.com/ncsi.txt`
+* `microsoft.com`
+* `.WindowsAzure.com`
+* `.microsoftonline.com`
+* `.windows.net`
+
+Microsoft ピアリングを使用して、次のサービスまたはリージョン、および関連するコミュニティ値を選択してください。
+
+* Azure Active Directory (12076:5060)
+* Microsoft Azure リージョン (Recovery Services コンテナーの場所による)
+* Azure Storage (Recovery Services コンテナーの場所による)
+
+詳細については、「[ExpressRoute ルーティングの要件](https://docs.microsoft.com/azure/expressroute/expressroute-routing)」を参照してください。
+
+>[!NOTE]
+>パブリック ピアリングは、新しい回線では非推奨です。
 
 ### <a name="dpmmabs-connectivity-to-azure-backup"></a>Azure Backup への DPM/MABS 接続
 

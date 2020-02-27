@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: af5399a6e1a76a6020448b2e91d76a1d2e1f0ed8
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: d74fd2e3f6b5cc090c6313aba67a1e139c713b85
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186948"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598053"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開発者向けファースト ステップ ガイド
 
@@ -33,7 +33,7 @@ Azure でアプリケーションをホストすると、アプリケーショ�
 
 ## <a name="where-do-i-start"></a>どこから始めるか
 
-Azure が提供しているどのサービスでも、ソリューション アーキテクチャのサポートに必要なサービスをなかなか見つけ出せないことがあります。 ここでは、開発者が一般的に使用する Azure サービスを取り上げます。 すべての Azure サービスの一覧については、[Azure のドキュメント](../../index.md)を参照してください。
+Azure が提供しているどのサービスでも、ソリューション アーキテクチャのサポートに必要なサービスをなかなか見つけ出せないことがあります。 ここでは、開発者が一般的に使用する Azure サービスを取り上げます。 すべての Azure サービスの一覧については、[Azure のドキュメント](../../index.yml)を参照してください。
 
 まず、Azure でアプリケーションをホストする方法を決める必要があります。 インフラストラクチャ全体を仮想マシン (VM) として管理する必要はありますか。 Azure が提供するプラットフォーム管理施設を使用できますか。 それとも、コードの実行をホストする用途でのみサーバーレス フレームワークが必要でしょうか。
 

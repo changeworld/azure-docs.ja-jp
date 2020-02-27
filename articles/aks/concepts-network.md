@@ -1,18 +1,15 @@
 ---
 title: 概念 - Azure Kubernetes サービス (AKS) におけるネットワーク
 description: Azure Kubernetes Service (AKS) におけるネットワークについて説明します。kubenet と Azure CNI ネットワーク、イングレス コントローラー、ロード バランサー、静的 IP アドレスの説明が含まれます。
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.custom: fasttrack-edit
-ms.author: mlearned
-ms.openlocfilehash: 06825f184365cfc439167be15580eb19bf5ecb38
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 5800254ab44b5b0f1048ce2200f90c06a8d1666a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084269"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596166"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションに対するネットワークの概念
 

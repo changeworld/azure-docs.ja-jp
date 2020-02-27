@@ -1,15 +1,14 @@
 ---
 author: paulbouwer
-ms.service: container-service
 ms.topic: include
 ms.date: 11/15/2019
 ms.author: pabouwer
-ms.openlocfilehash: f9f8c1957bba5cbf95336e0719f5952872e3e344
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 055951a7b6b21e24af9dbfcc273e1503708c0080
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170862"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593982"
 ---
 シークレットを削除するには、次のコマンドを実行します。
 

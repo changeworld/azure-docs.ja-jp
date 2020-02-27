@@ -2,18 +2,15 @@
 title: 'クイック スタート: Azure Kubernetes Service (AKS) クラスターの作成'
 description: Azure Resource Manager テンプレートを使用して Kubernetes クラスターを迅速に作成し、Azure Kubernetes Service (AKS) にアプリケーションをデプロイする方法を学ぶ
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: quickstart
 ms.date: 04/19/2019
-ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 307074618cae75ba57be219b4f975e2aec279682
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 5fe82dbce2069b0ae1a88599d020f4ba6b116027
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255506"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595304"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して Azure Kubernetes Service (AKS) クラスターをデプロイする
 
@@ -67,7 +64,7 @@ az ad sp create-for-rbac --skip-assignment
 
 *appId* と *password* を書き留めておいてください。 これらの値は、以降の手順で使用します。
 
-## <a name="create-an-aks-cluster"></a>AKS クラスターの作成
+## <a name="create-an-aks-cluster"></a>AKS クラスターを作成する
 
 このクイック スタートで使用されるテンプレートは、[Azure Kubernetes Service クラスターをデプロイする](https://azure.microsoft.com/resources/templates/101-aks/)ためのものです。 他の AKS サンプルについては、[AKS クイック スタートのテンプレート][aks-quickstart-templates]に関するサイトを参照してください。
 
@@ -96,7 +93,7 @@ az ad sp create-for-rbac --skip-assignment
 
 AKS クラスターの作成には数分かかります。 クラスターが正常にデプロイされるのを待ってから、次の手順に進みます。
 
-## <a name="connect-to-the-cluster"></a>クラスターへの接続
+## <a name="connect-to-the-cluster"></a>クラスターに接続する
 
 Kubernetes クラスターを管理するには、Kubernetes のコマンドライン クライアントである [kubectl][kubectl] を使用します。 Azure Cloud Shell を使用している場合、`kubectl` は既にインストールされています。 `kubectl` をローカルにインストールするには、[az aks install-cli][az-aks-install-cli] コマンドを使用します。
 
@@ -110,7 +107,7 @@ Kubernetes クラスターに接続するように `kubectl` を構成するに�
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-クラスターへの接続を確認するには、[kubectl get][kubectl-get] コマンドを使用して、クラスター ノードの一覧を返します。
+クラスターへの接続を確認するには、クラスター ノードの一覧を返す [kubectl get][kubectl-get] コマンドを使用します。
 
 ```azurecli-interactive
 kubectl get nodes
@@ -278,7 +275,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 [https://github.com/Azure-Samples/azure-voting-app-redis][azure-vote-app]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Kubernetes クラスターをデプロイし、そこに複数コンテナー アプリケーションをデプロイしました。 作成したクラスターの [Kubernetes Web ダッシュボードにアクセス][kubernetes-dashboard]します。
 

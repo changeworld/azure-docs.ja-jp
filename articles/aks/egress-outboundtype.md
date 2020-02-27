@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service (AKS) でユーザー定義ルート (UDR) をカスタマイズする
 description: Azure Kubernetes Service (AKS) でカスタム エグレス ルートを定義する方法について説明します
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 01/31/2020
-ms.author: mlearned
-ms.openlocfilehash: bd55c7fbf017aec55cee4c9121ede606278a7334
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: d108c6f49a8f483dc489fd644db6b480fc0e74fc
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212908"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595809"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>ユーザー定義ルートを使用してクラスターのエグレスをカスタマイズする (プレビュー)
 

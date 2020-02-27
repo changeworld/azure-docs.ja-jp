@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fb36b81d1b2a343da334d63d9c0555ed537ef122
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c4ff3ebf6239f9b62409ff0885f23115711e33cb
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024655"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584543"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions のスケールとホスティング
 
@@ -158,7 +158,7 @@ Azure Functions のスケールの単位は関数アプリです。 関数アプ
 
 次の記事に記載されているように、トリガーごとにスケーリングの上限が異なる場合もあります。
 
-* [イベント ハブ](functions-bindings-event-hubs.md#trigger---scaling)
+* [イベント ハブ](functions-bindings-event-hubs-trigger.md#scaling)
 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>スケーラブルなアプリのベスト プラクティスとパターン
 

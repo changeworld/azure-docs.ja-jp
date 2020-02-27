@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service (AKS) のポッド用の静的ボリュームを作成する
 description: Azure Kubernetes Service (AKS) のポッドで使用するための Azure ディスクを含むボリュームを手動で作成する方法について説明します
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.author: mlearned
-ms.openlocfilehash: 9017c8cf721fbb9c493dc18da769b9d6e83ddf05
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: b84f62dd02aa29a4c1aa64e3235c0a1e7cc66522
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "67616131"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596744"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Azure ディスクを含むボリュームの手動での作成および使用
 
@@ -124,9 +121,9 @@ Events:
 [...]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-関連するベスト プラクティスについては、[AKS のストレージとバックアップに関するベスト プラクティス][operator-best-practices-storage]に関するページを参照してください。
+関連するベスト プラクティスについては、[AKS のストレージとバックアップに関するベスト プラクティス][operator-best-practices-storage]に関する記事を参照してください。
 
 AKS クラスターと Azure ディスクの操作の詳細については、[Azure ディスク対応の Kubernetes プラグイン][kubernetes-disks]に関するページを参照してください。
 

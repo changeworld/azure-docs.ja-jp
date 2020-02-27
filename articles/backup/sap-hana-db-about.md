@@ -3,18 +3,18 @@ title: Azure VM での SAP HANA データベースバックアップについて
 description: この記事では、Azure 仮想マシン上で実行されている SAP HANA データベースをバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: aad9e7e89c54100f460a7f348702d0a59e88f519
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a1be572d6462ed8f8a86db0f5cbfeaaa37c219ab
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474825"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586565"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>Azure VM での SAP HANA データベースバックアップについて
 
 SAP HANA データベースは、復旧ポイント目標 (RPO) と目標復旧時間を (RTO) の必要性が低い極めて重要なワークロードです。 [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) を使用して、[Azure VM 上で実行されている SAP HANA データベースをバックアップ](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db)できるようになりました。
 
-Azure Backup は、SAP による [Backint 認定](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5) がされています。これにより、SAP HANA のネイティブ API を活用したネイティブバックアップサポートを提供します。 Azure Backup は、Azure Backup の **ゼロインフラストラクチャ** バックアップの理念に沿っており、バックアップ インフラストラクチャのデプロイおよび管理を軽減します。 Azure VＭ 上で実行されている SAP HANA データベースをシームレスにバックアップおよび復元できるようになりました ([M シリーズの VM](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#m-series) もサポートされるようになりました！)。また、Azure Backup が提供するエンタープライズ管理機能を活用できます。
+Azure Backup は、SAP による [Backint 認定](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5) がされています。これにより、SAP HANA のネイティブ API を活用したネイティブバックアップサポートを提供します。 Azure Backup は、Azure Backup の **ゼロインフラストラクチャ** バックアップの理念に沿っており、バックアップ インフラストラクチャのデプロイおよび管理を軽減します。 Azure VＭ 上で実行されている SAP HANA データベースをシームレスにバックアップおよび復元できるようになりました ([M シリーズの VM](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory) もサポートされるようになりました！)。また、Azure Backup が提供するエンタープライズ管理機能を活用できます。
 
 ## <a name="added-value"></a>付加価値
 

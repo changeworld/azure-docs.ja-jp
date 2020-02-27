@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: 2869384d4f4072e1e71ab0a69af81edc68e7a5b7
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 2ef3cbc83cd67647709a53fee2c32b444c5d86f4
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77366250"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526129"
 ---
 # <a name="what-is-automated-machine-learning"></a>自動化された機械学習とは
 
@@ -215,7 +215,7 @@ Azure Machine Learning では、自動化された ML を使用して Python モ
 
 Azure Machine Learning には、自動 ML を使用するための 2 つのエクスペリエンスが用意されています。
 
-* コードの経験がある場合は、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py) に関する記事を参照してください 
+* コードの経験がある場合は、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) に関する記事を参照してください 
 
 * コードの経験があまりない、またはない場合は、Azure Machine Learning Studio ([https://ml.azure.com](https://ml.azure.com/)) に関する記事を参照してください。  
 

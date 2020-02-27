@@ -6,14 +6,14 @@ manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
-ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: e73e69f90b1228154d7f209c54c6b52cc03d5eb4
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.topic: conceptual
+ms.date: 02/25/2020
+ms.openlocfilehash: d2b25fb93a1e35ffa82cf49c60d181b841b1692d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76837792"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616192"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search の AI エンリッチメントのドキュメント リソース
 
@@ -63,7 +63,7 @@ AI エンリッチメントは、Azure Cognitive Search のインデックス作
   + [スキルセットの作成 (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
   + [インデクサーの作成 (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 + [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/)
 + [Azure Cognitive Search のインデクサー](search-indexer-overview.md)

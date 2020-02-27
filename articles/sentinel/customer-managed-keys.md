@@ -3,7 +3,7 @@ title: Azure Sentinel でカスタマー マネージド キーを設定する |
 description: Azure Sentinel でカスタマー マネージド キー (CMK) を設定する方法について説明します。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
-ms.author: rkarlin
-ms.openlocfilehash: 4858e2099baa82226766ecfce32b39471c3b96cd
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.author: yelevin
+ms.openlocfilehash: bc2fa02925e7f5c671085eb87ca0431d3fca7691
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845308"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587959"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Azure Sentinel のカスタマー マネージド キーの設定
 
@@ -130,5 +130,5 @@ Azure Sentinel と Log Analytics で同じキーを使用している場合は�
 このドキュメントでは、Azure Sentinel でカスタマー マネージド キーを設定する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
-- [ブックを使用して](tutorial-monitor-your-data.md)データを監視します。
+- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
 

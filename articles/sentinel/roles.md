@@ -4,7 +4,7 @@ description: この記事では、Azure Sentinel でロールベースのアク�
 services: sentinel
 cloud: na
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: angrobe
 ms.assetid: ''
 ms.service: azure-sentinel
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.author: rkarlin
-ms.openlocfilehash: 0479eba13fd747ea1bcab2672fce1df2156802e8
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.author: yelevin
+ms.openlocfilehash: e7629a53190433c6c331ce372476b0ed768fc5eb
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74947588"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587177"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel のアクセス許可
 
@@ -76,7 +76,7 @@ Azure Sentinel 専用 RBAC ロールに加えて、Azure Sentinel ワークス�
   
 Azure Sentinel ワークスペースのデータに対して、Log Analytics の高度なロールベースのアクセス制御を使用できます。 これには、データ型ごとのロールベースのアクセス制御と、リソース中心のロールベースのアクセス制御の両方が含まれます。 Log Analytics ロールの詳細については、 [Azure Monitor でのログ データとワークスペースの管理](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Azure Sentinel ユーザーのロールと、各ロールでユーザーが実行できる操作について学習しました。
 
 * [Azure Sentinel ブログ](https://aka.ms/azuresentinelblog)。 Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。

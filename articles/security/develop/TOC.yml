@@ -45,7 +45,7 @@
       displayName: stride
       href: threat-modeling-tool.md
       items:
-        - name: 使用の開始
+        - name: 作業の開始
           href: threat-modeling-tool-getting-started.md
         - name: 機能の概要
           href: threat-modeling-tool-feature-overview.md
@@ -62,10 +62,12 @@
               href: threat-modeling-tool-releases-71601261.md
             - name: Threat Modeling Tool 更新プログラム リリース 7.1.60408.1 - 2019 年 4 月 9 日
               href: threat-modeling-tool-releases-71604081.md
-            - name: Threat Modeling Tool 更新プログラム リリース 7.1.60702.1 - 7/02/2019
+            - name: Threat Modeling Tool 更新プログラム リリース 7.1.60702.1 - 2019 年 7 月 2 日
               href: threat-modeling-tool-releases-71607021.md
             - name: Threat Modeling Tool 更新プログラム リリース 7.1.61015.1 - 2019 年 10 月 16 日
               href: threat-modeling-tool-releases-71610151.md
+            - name: Threat Modeling Tool 更新プログラム リリース 7.3.00206.1 - 2020 年 2 月 11 日
+              href: threat-modeling-tool-releases-73002061.md
         - name: 軽減策
           href: threat-modeling-tool-mitigations.md
           items:
@@ -73,13 +75,13 @@
               href: threat-modeling-tool-auditing-and-logging.md
             - name: 認証
               href: threat-modeling-tool-authentication.md
-            - name: Authorization
+            - name: 承認
               href: threat-modeling-tool-authorization.md
             - name: 通信のセキュリティ
               href: threat-modeling-tool-communication-security.md
             - name: 構成管理
               href: threat-modeling-tool-configuration-management.md
-            - name: 暗号化
+            - name: Cryptography
               href: threat-modeling-tool-cryptography.md
             - name: 例外管理
               href: threat-modeling-tool-exception-management.md

@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 598fdd5e3682226253ef8f2611ede2bbeba596f7
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: afa3b0f3ed345ccc7f4c627ec485351838ab2bee
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190433"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649280"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure の Web Apps の構成と管理に関する FAQ
 
@@ -199,7 +199,7 @@ Azure ExpressRoute に接続されている仮想ネットワークに Azure Web
 
 現時点では、静的ルーティング (ポリシー ベース) ゲートウェイを持つ仮想ネットワークへの App Service Web アプリの接続はサポートしていません。 ターゲットの仮想ネットワークが既に存在している場合は、そのネットワークで動的ルーティング ゲートウェイによるポイント対サイト VPN が有効になっていないと、アプリに接続できません。 ゲートウェイが静的ルーティングに設定されている場合は、ポイント対サイト VPN を有効にすることはできません。 
 
-詳細については、「[アプリを Azure 仮想ネットワークに統合する](web-sites-integrate-with-vnet.md#getting-started)」を参照してください。
+詳細については、「[アプリを Azure 仮想ネットワークに統合する](web-sites-integrate-with-vnet.md)」を参照してください。
 
 ## <a name="in-my-app-service-environment-why-can-i-create-only-one-app-service-plan-even-though-i-have-two-workers-available"></a>App Service Environment で、使用できるワーカーが 2 つある場合でも、App Service プランを 1 つしか作成できないのはなぜですか?
 

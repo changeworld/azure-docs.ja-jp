@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: 5bb02edce4a3aef30f8f9528a846c99d6d8d3b39
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: b1cce6d1aafabda62b71ecd38ff5ac7df1033b26
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77170496"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561988"
 ---
 # <a name="azure-monitor-view-designer-tile-conversions"></a>Azure Monitor ビュー デザイナーでのタイル変換
 [ビュー デザイナー](view-designer.md)は Azure Monitor の機能で、Log Analytics ワークスペース内のデータを、グラフ、リスト、およびタイムラインを使用して視覚化するのに役立つカスタム ビューを作成できます。 これらは段階的に廃止中であり、追加の機能を提供するブックに置き換えられています。 この記事では、さまざまなタイルをブックに変換することの詳細を説明します。
@@ -62,8 +62,9 @@ search *
 ```KQL
 search * 
 | summarize AggregatedValue = count() by Type
+```
 
-Updated query
+更新されたクエリ
 ```KQL
 search * 
 | make-series Count = count() default=0 on TimeGenerated from {TimeRange:start} to {TimeRange:end} step {TimeRange:grain} by Type

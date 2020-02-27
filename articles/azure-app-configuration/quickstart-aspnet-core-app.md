@@ -6,14 +6,14 @@ author: lisaguthrie
 ms.service: azure-app-configuration
 ms.devlang: csharp
 ms.topic: quickstart
-ms.date: 01/21/2020
+ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 657edbac67a53952ab79aee74b63c59a44b7de18
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: ee50d180c579e117c16f1a956871068f0a46e976
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898648"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498571"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して ASP.NET Core アプリを作成する
 
@@ -63,7 +63,7 @@ dotnet new mvc --no-https
 > [!IMPORTANT]
 > `CreateHostBuilder` により、.NET Core 3.0 の `CreateWebHostBuilder` が置き換えられます。  お使いの環境に応じて適切な構文を選択します。
 
-#### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+#### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -81,7 +81,7 @@ dotnet new mvc --no-https
 </Project>
 ```
 
-#### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+#### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -102,7 +102,7 @@ dotnet new mvc --no-https
 1. 次のコマンドを実行して、`Microsoft.Azure.AppConfiguration.AspNetCore` NuGet パッケージへの参照を追加します。
 
     ```dotnetcli
-    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 3.0.0-preview-011100002-1192
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore
     ```
 
 1. 次のコマンドを実行して、プロジェクトのパッケージを復元します。
@@ -139,7 +139,7 @@ dotnet new mvc --no-https
     > [!IMPORTANT]
     > `CreateHostBuilder` により、.NET Core 3.0 の `CreateWebHostBuilder` が置き換えられます。  お使いの環境に応じて適切な構文を選択します。
 
-    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -152,7 +152,7 @@ dotnet new mvc --no-https
             .UseStartup<Startup>();
     ```
 
-    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>

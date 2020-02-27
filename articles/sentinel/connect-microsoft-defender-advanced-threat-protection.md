@@ -3,7 +3,7 @@ title: Microsoft Defender ATP データを Azure Sentinel に接続する | Micr
 description: Microsoft Defender Advanced Threat Protection データを Azure Sentinel に接続する方法について説明します。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
-ms.author: rkarlin
-ms.openlocfilehash: 19d496ebb61a3ceb47f69f661e30ab529dc64f3d
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.author: yelevin
+ms.openlocfilehash: ee2c917d02a442ebabc0e1b40bc245982af794f8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72257308"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588214"
 ---
 # <a name="connect-alerts-from-microsoft-defender-advanced-threat-protection"></a>Microsoft Defender Advanced Threat Protection からアラートを接続する 
 
@@ -44,13 +44,13 @@ Microsoft Defender Advanced Threat Protection がデプロイされ、データ�
 
 
 1. Azure Sentinel で、 **[Data connectors]\(データ コネクタ\)** を選択し、 **[Microsoft Defender Advanced Threat Protection]** タイルをクリックし、 **[Open connector page]\(コネクタ ページを開く\)** を選択します。
-1. **[接続]** をクリックします。 
+1. **[Connect]** をクリックします。 
 1. Defender ATP のアラートで Log Analytics の関連スキーマを使用するには、**SecurityAlert** を検索します。**プロバイダ名**は **MDATP** です。
 
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Microsoft Defender ATP を Azure Sentinel に接続する方法を学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。

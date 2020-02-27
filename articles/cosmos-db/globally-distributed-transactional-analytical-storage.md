@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 18cf43ba137c92fc00d5f8e82e13501d03b4b6a3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1c2b79f8d0641b1a1386329a2add14ded766bf5a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445400"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623394"
 ---
 # <a name="globally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Azure Cosmos コンテナー用のグローバルに分散されたトランザクション ストレージと分析ストレージ
 
@@ -30,7 +30,7 @@ Azure Cosmos コンテナーは、トランザクション ストレージ エ�
 |機能  |トランザクション ストレージ  |分析ストレージ |
 |---------|---------|---------|
 |Azure Cosmos コンテナーあたりの最大ストレージ容量 |   無制限      |    無制限     |
-|論理パーティション キーあたりの最大ストレージ容量   |   10 GB      |   無制限      |
+|論理パーティション キーあたりの最大ストレージ容量   |   20 GB      |   無制限      |
 |ストレージのエンコード  |   行指向 (内部形式を使用)。   |   列指向 (Apache Parquet 形式を使用)。 |
 |ストレージの場所 |   ローカル/クラスター内 SSD によってサポートされるレプリケートされたストレージ。 |  低コストのリモート/クラスター外 SSD によってサポートされるレプリケートされたストレージ。       |
 |Durability  |    99.99999 (7 から 9 秒)     |  99.99999 (7 から 9 秒)       |

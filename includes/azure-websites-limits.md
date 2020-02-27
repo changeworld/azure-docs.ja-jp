@@ -4,12 +4,12 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 08/09/2019
 ms.author: jroth
-ms.openlocfilehash: 17d6947efcbaf8a01aeca70bf7a88dcc7b65cd0a
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 83bf357fff8fd3cfb8c0e69af92b36710287898f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548218"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586728"
 ---
 | リソース | 無料 | 共有 | Basic | Standard | Premium (v2) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -35,7 +35,6 @@ ms.locfileid: "76548218"
 | [スケジュールされたバックアップ](../articles/app-service/manage-backup.md) | | | | 2 時間ごとにスケジュールされたバックアップ。1 日あたり最大 12 回のバックアップ (手動 + スケジュール済み) | 1 時間ごとにスケジュールされたバックアップ。1 日あたり最大 50 回のバックアップ (手動 + スケジュール済み) | 1 時間ごとにスケジュールされたバックアップ。1 日あたり最大 50 回のバックアップ (手動 + スケジュール済み) |
 | [Autoscale](../articles/app-service/manage-scale-up.md) | | | |X |X |X |
 | [WebJobs](../articles/app-service/webjobs-create.md)<sup>11</sup> |X |X |X |X |X |X |
-| [Azure Scheduler](https://azure.microsoft.com/services/scheduler/) のサポート | |X |X |X |X |X |
 | [エンドポイントの監視](../articles/app-service/web-sites-monitor.md) | | |X |X |X |X |
 | [ステージング スロット](../articles/app-service/deploy-staging-slots.md) | | | |5 |20 |20 |
 | SLA | |  |99.95%|99.95%|99.95%|99.95%|  
@@ -50,4 +49,4 @@ ms.locfileid: "76548218"
 <sup>8</sup>最大 IP 接続数はインスタンス単位の数であり、インスタンスのサイズによって異なります。B1/S1/P1V2 インスタンスあたり 1,920、B2/S2/P2V2 インスタンスあたり 3,968、B3/S3/P3V2 インスタンスあたり 8,064。  
 <sup>9</sup> サブスクリプションあたりの App Service 証明書のクォータ制限は、サポート要求によって最大上限 200 まで増やすことができます。  
 <sup>10</sup>App Service Isolated SKU では、Azure Load Balancer を使用した内部負荷分散 (ILB) が可能です。そのため、インターネットからパブリック接続が発生しません。 そのため、ILB 分離 App Service の一部の機能は、ILB ネットワーク エンドポイントに直接アクセスできるマシンから使用する必要があります。  
-<sup>11</sup> カスタムの実行可能ファイルやスクリプトを、オンデマンドやスケジュールで、または App Service インスタンス内のバックグラウンド タスクとして継続的に実行します。 Web ジョブを継続的に実行するには、常時接続が必要です。 スケジュールされた Web ジョブの実行には、Azure Scheduler Free または Standard が必要です。 App Service インスタンスで実行できる Web ジョブの数に定義済みの制限はありません。 実際にはアプリケーション コードの処理に依存する限界があります。  
+<sup>11</sup> カスタムの実行可能ファイルやスクリプトを、オンデマンドやスケジュールで、または App Service インスタンス内のバックグラウンド タスクとして継続的に実行します。 Web ジョブを継続的に実行するには、常時接続が必要です。 App Service インスタンスで実行できる Web ジョブの数に定義済みの制限はありません。 実際にはアプリケーション コードの処理に依存する限界があります。  

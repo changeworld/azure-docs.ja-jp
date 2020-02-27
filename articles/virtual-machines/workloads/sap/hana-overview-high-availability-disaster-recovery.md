@@ -4,7 +4,7 @@ description: 高可用性を確立し、SAP HANA on Azure (L インスタンス)
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d0150aeace3960d075bbf61c1dd0bba4865aaf2b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0585c1251ba18e1390f3eee28a989edee6eb8591
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099721"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616944"
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Azure での SAP HANA L インスタンスの高可用性とディザスター リカバリー 
 
@@ -85,7 +85,7 @@ HANA L インスタンスでのディザスター リカバリー セットア�
 - ディザスター リカバリー サイトで復旧する SAP HANA on Azure (L インスタンス) SKU ごとに、DR サイトの追加のストレージを指定する必要があります。 追加のストレージを購入すると、ストレージ ボリュームを割り当てることができます。 運用 Azure リージョンからディザスター リカバリー Azure リージョンへのストレージ レプリケーションのターゲットとなるボリュームを割り当てることができます。
 - プライマリで HSR をセットアップし、DR サイトへのストレージ ベースのレプリケーションをセットアップする場合は、DR サイトにストレージを追加購入して、プライマリ ノードとセカンダリ ノードの両方のデータが DR サイトにレプリケートされるようにする必要があります。
 
-  **次のステップ**
+  **次の手順**
 - 「[バックアップおよび復元作業](hana-backup-restore.md)」を参照してください。
 
 

@@ -62,10 +62,14 @@
       href: load-balancer-security-controls.md
 - name: 方法
   items:
-    - name: Basic パブリック Load Balancer をStandard パブリック Load Balancer にアップグレードする
-      href: upgrade-basic-standard.md
-    - name: Basic Internal Load Balancer を Standard Internal Load Balancer にアップグレードする
-      href: upgrade-basicInternal-standard.md
+    - name: Basic Load Balancer を Standard Load Balancer にアップグレードする
+      items:
+        - name: Basic Public Load Balancer のアップグレード
+          href: upgrade-basic-standard.md
+        - name: Basic Internal Load Balancer のアップグレード - 送信接続は不要
+          href: upgrade-basicInternal-standard.md
+        - name: Basic Internal Load Balancer のアップグレード - 送信接続が必要
+          href: upgrade-InternalBasic-To-PublicStandard.md
     - name: 送信の規則を構成する
       items:
         - name: Azure portal

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 88062c2134600d5b1460858c3799cfc8daa83744
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: fc441ef64f98ace04b7b847c03d575215656f9db
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775224"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611842"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Web API を呼び出すデーモン アプリ - コードの構成
 
@@ -59,7 +59,7 @@ MSAL ライブラリでは、クライアントの資格情報 (シークレッ�
 - アプリケーションの登録から返されたクライアント ID。
 - クライアント シークレットまたは証明書のいずれか。
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 [.NET Core コンソール デーモン](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)のサンプルからの [appsettings.json](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json)。
 
@@ -75,7 +75,7 @@ MSAL ライブラリでは、クライアントの資格情報 (シークレッ�
 
 `ClientSecret` または `CertificateName` のいずれかを指定します。 両方を同時に設定することはできません。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 クライアント シークレットを使用して機密クライアントをビルドしているとき、[Python デーモン](https://github.com/Azure-Samples/ms-identity-python-daemon) サンプルの [parameters.json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json) 構成ファイルは次のようになります。
 
@@ -102,18 +102,13 @@ MSAL ライブラリでは、クライアントの資格情報 (シークレッ�
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
-
-[TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java) は、MSAL Java 開発サンプルの構成に使用されるクラスです。
+# <a name="java"></a>[Java](#tab/java)
 
 ```Java
-public class TestData {
-
-    final static String TENANT_SPECIFIC_AUTHORITY = "https://login.microsoftonline.com/<TenantId>/";
-    final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default";
-    final static String CONFIDENTIAL_CLIENT_ID = "";
-    final static String CONFIDENTIAL_CLIENT_SECRET = "";
-}
+ private final static String CLIENT_ID = "";
+ private final static String AUTHORITY = "https://login.microsoftonline.com/<tenant>/";
+ private final static String CLIENT_SECRET = "";
+ private final static Set<String> SCOPE = Collections.singleton("https://graph.microsoft.com/.default");
 ```
 
 ---
@@ -128,7 +123,7 @@ MSAL アプリケーションをインスタンス化するには、(言語に�
 
 アプリケーション コードで MSAL パッケージを参照します。
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 [Microsoft.IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet パッケージをアプリケーションに追加します。
 MSAL.NET では、機密クライアント アプリケーションは `IConfidentialClientApplication` インターフェイスによって表されます。
@@ -139,19 +134,22 @@ using Microsoft.Identity.Client;
 IConfidentialClientApplication app;
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```python
 import msal
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```java
 import com.microsoft.aad.msal4j.ClientCredentialFactory;
 import com.microsoft.aad.msal4j.ClientCredentialParameters;
 import com.microsoft.aad.msal4j.ConfidentialClientApplication;
 import com.microsoft.aad.msal4j.IAuthenticationResult;
+import com.microsoft.aad.msal4j.IClientCredential;
+import com.microsoft.aad.msal4j.MsalException;
+import com.microsoft.aad.msal4j.SilentParameters;
 ```
 
 ---
@@ -160,7 +158,7 @@ import com.microsoft.aad.msal4j.IAuthenticationResult;
 
 クライアント シークレットを使用して機密クライアント アプリケーションをインスタンス化するコードを次に示します。
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 ```csharp
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
@@ -169,7 +167,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
            .Build();
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 config = json.load(open(sys.argv[1]))
@@ -184,14 +182,16 @@ app = msal.ConfidentialClientApplication(
     )
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```Java
-ConfidentialClientApplication app = ConfidentialClientApplication.builder(
-        TestData.CONFIDENTIAL_CLIENT_ID,
-        ClientCredentialFactory.create(TestData.CONFIDENTIAL_CLIENT_SECRET))
-        .authority(TestData.TENANT_SPECIFIC_AUTHORITY)
-        .build();
+IClientCredential credential = ClientCredentialFactory.createFromSecret(CLIENT_SECRET);
+
+ConfidentialClientApplication cca =
+        ConfidentialClientApplication
+                .builder(CLIENT_ID, credential)
+                .authority(AUTHORITY)
+                .build();
 ```
 
 ---
@@ -200,7 +200,7 @@ ConfidentialClientApplication app = ConfidentialClientApplication.builder(
 
 証明書を使用してアプリケーションをビルドするコードを次に示します。
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 ```csharp
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);
@@ -210,7 +210,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
     .Build();
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 config = json.load(open(sys.argv[1]))
@@ -225,7 +225,7 @@ app = msal.ConfidentialClientApplication(
     )
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 MSAL Java では、証明書を使用して機密クライアント アプリケーションをインスタンス化するには、次の 2 つのビルダーがあります。
 
@@ -234,11 +234,13 @@ MSAL Java では、証明書を使用して機密クライアント アプリケ
 InputStream pkcs12Certificate = ... ; /* Containing PCKS12-formatted certificate*/
 string certificatePassword = ... ;    /* Contains the password to access the certificate */
 
-ConfidentialClientApplication app = ConfidentialClientApplication.builder(
-        TestData.CONFIDENTIAL_CLIENT_ID,
-        ClientCredentialFactory.create(pkcs12Certificate, certificatePassword))
-        .authority(TestData.TENANT_SPECIFIC_AUTHORITY)
-        .build();
+IClientCredential credential = ClientCredentialFactory.createFromCertificate(pkcs12Certificate, certificatePassword);
+
+ConfidentialClientApplication cca =
+        ConfidentialClientApplication
+                .builder(CLIENT_ID, credential)
+                .authority(AUTHORITY)
+                .build();
 ```
 
 or
@@ -247,18 +249,20 @@ or
 PrivateKey key = getPrivateKey(); /* RSA private key to sign the assertion */
 X509Certificate publicCertificate = getPublicCertificate(); /* x509 public certificate used as a thumbprint */
 
-ConfidentialClientApplication app = ConfidentialClientApplication.builder(
-        TestData.CONFIDENTIAL_CLIENT_ID,
-        ClientCredentialFactory.create(rsaPrivateKey, publicKeyCertificate))
-        .authority(TestData.TENANT_SPECIFIC_AUTHORITY)
-        .build();
+IClientCredential credential = ClientCredentialFactory.createFromCertificate(key, publicCertificate);
+
+ConfidentialClientApplication cca =
+        ConfidentialClientApplication
+                .builder(CLIENT_ID, credential)
+                .authority(AUTHORITY)
+                .build();
 ```
 
 ---
 
 #### <a name="advanced-scenario-instantiate-the-confidential-client-application-with-client-assertions"></a>高度なシナリオ: クライアント アサーションを使用して機密クライアント アプリケーションをインスタンス化する
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 機密クライアント アプリケーションでは、クライアント シークレットまたは証明書ではなく、クライアント アサーションを使用してその ID を証明することもできます。
 
@@ -291,7 +295,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 ここでも、詳細については、[クライアント アサーション](msal-net-client-assertions.md)に関するページを参照してください。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 MSAL Python では、この `ConfidentialClientApplication` の秘密キーによって署名される要求を使用して、クライアント要求を提供できます。
 
@@ -311,25 +315,33 @@ app = msal.ConfidentialClientApplication(
 
 詳細については、[ConfidentialClientApplication](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.__init__) に関する MSAL Python のリファレンス ドキュメントを参照してください。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-MSAL Java はパブリック プレビュー段階にあります。 署名付きアサーションはまだサポートされていません。
+```Java
+IClientCredential credential = ClientCredentialFactory.createFromClientAssertion(assertion);
+
+ConfidentialClientApplication cca =
+        ConfidentialClientApplication
+                .builder(CLIENT_ID, credential)
+                .authority(AUTHORITY)
+                .build();
+```
 
 ---
 
 ## <a name="next-steps"></a>次のステップ
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
 > [デーモン アプリ - アプリのトークンの取得](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=dotnet)
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
 > [デーモン アプリ - アプリのトークンの取得](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=python)
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
 > [デーモン アプリ - アプリのトークンの取得](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=java)

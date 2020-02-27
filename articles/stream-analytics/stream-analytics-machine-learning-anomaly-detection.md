@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: e29ac6671d71ea02b432c9843541796984737c8b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 51b9c827d453eef2e2e75e1aa5222204eaa38d0e
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459617"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525534"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure Stream Analytics での異常検出
 
@@ -21,6 +21,12 @@ ms.locfileid: "75459617"
 機械学習モデルでは、均等にサンプリングされたタイム シリーズを想定しています。 タイム シリーズが均等でない場合は、異常検出を呼び出す前に、タンブリング ウィンドウを使って集計手順を挿入してもかまいません。
 
 現時点で、機械学習の処理は、季節性の傾向や多変量の相関関係には対応していません。
+
+## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>Azure Stream Analytics で機械学習を使用した異常検出
+
+次の動画では、Azure Stream Analytics の機械学習機能を使ってリアルタイムで異常を検出する方法を示します。 
+
+> [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Real-Time-ML-Based-Anomaly-Detection-In-Azure-Stream-Analytics/player]
 
 ## <a name="model-behavior"></a>モデルの動作
 
@@ -147,12 +153,6 @@ FROM AnomalyDetectionStep
 
 ### <a name="identifying-bottlenecks"></a>ボトルネックの特定
 Azure Stream Analytics ジョブの [メトリックス] ウィンドウを使用して、パイプラインのボトルネックを特定します。 スループットについての **[Input/Output Events]\(入出力イベント\)** および [[透かしの遅延]](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) または **[Backlogged Events]\(バックログされたイベント\)** を確認して、ジョブが入力速度に対応しているかどうかを確認します。 イベント ハブのメトリックスについては、 **[Throttled Requests] (スロットルされた要求数)** を検索し、必要に応じてしきい値ユニットを調整します。 Cosmos DB メトリックスについては、スループットの下の **[パーティション キーの範囲ごとの使用された最大 RU/秒]** を確認して、パーティション キーの範囲が均一に消費されていることを確認します。 Azure SQL DB については、 **[ログ IO]** および **[CPU]** を監視します。
-
-## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>Azure Stream Analytics で機械学習を使用した異常検出
-
-次の動画では、Azure Stream Analytics の機械学習機能を使ってリアルタイムで異常を検出する方法を示します。 
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Anomaly-detection-using-machine-learning-in-Azure-Stream-Analytics/player]
 
 ## <a name="next-steps"></a>次のステップ
 

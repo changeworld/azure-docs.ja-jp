@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service (AKS) 上で Azure ディスクを含む永続ボリュームを動的に作成して使用する
 description: Azure Kubernetes Service (AKS) 上で Azure ディスクを含む永続ボリュームを動的に作成する方法について説明する
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.author: mlearned
-ms.openlocfilehash: 1c7a406f0b06b94aaa6d8b4af63b1416b11c7c56
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 37fea36567866af69e832a1f7e3caff2a68477a9
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847330"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596965"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 上で Azure ディスクを含む永続ボリュームを動的に作成して使用する
 
@@ -251,9 +248,9 @@ Volumes:
 [...]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-関連するベスト プラクティスについては、[AKS のストレージとバックアップに関するベスト プラクティス][operator-best-practices-storage]に関するページを参照してください。
+関連するベスト プラクティスについては、[AKS のストレージとバックアップに関するベスト プラクティス][operator-best-practices-storage]に関する記事を参照してください。
 
 Azure ディスクを使った Kubernetes 永続ボリュームについて、さらに詳しい情報を確認します。
 

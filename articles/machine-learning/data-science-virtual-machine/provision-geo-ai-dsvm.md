@@ -1,5 +1,6 @@
 ---
-title: クイック スタート:Geo AI DSVM の作成
+title: クイック スタート:Geo AI Data Science Virtual Machine を作成する
+titleSuffix: Azure Data Science Virtual Machine
 description: 地理空間の分析と機械学習を行うために、Azure で Geo AI Data Science Virtual Machine を構成および作成します。
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -7,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/13/2019
-ms.openlocfilehash: 6b32d1f76091d7bbb8f870402020d0ac247d425b
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: f3ff9bd64f54d8f83fd1889078e8a4c01827d135
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170732"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525891"
 ---
 # <a name="quickstart-set-up-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>クイック スタート:Azure で Geo Artificial Intelligence Virtual Machine を設定する 
 
@@ -43,15 +44,15 @@ Geo AI Data Science VM のインスタンスを作成するには、次の手順
 
 - **Name**:作成するデータ サイエンス サーバーの名前です。
     
-- **[ユーザー名]** : 管理者アカウントのサインイン ID です。
+- **ユーザー名**:管理者アカウントのサインイン ID です。
     
-- **Password**:管理者アカウントのパスワードです。
+- **パスワード**:管理者アカウントのパスワードです。
     
 - **サブスクリプション**:複数のサブスクリプションがある場合は、マシンが作成されて課金されるサブスクリプションを選択します。
     
 - **[リソース グループ]** :新しいリソース グループを作成するか、サブスクリプション内にある**空**の既存の Azure リソース グループを使用することができます。
     
-- **場所**: 最適なデータ センターを選択します。 通常は、データの大半が存在するデータ センターか、ネットワーク アクセスを最速にするために物理的に最も近いデータ センターになります。 GPU でディープ ラーニングを実行する場合は、Azure 内の場所のうち、NC シリーズ GPU VM インスタンスがある場所を選択する必要があります。 現時点で該当する場所は、**米国東部、米国中北部、米国中南部、米国西部 2、北ヨーロッパ、西ヨーロッパ**です。 最新の一覧については、[リージョン別の Azure 製品](https://azure.microsoft.com/regions/services/)に関するページを確認して、**コンピューティング**の **NC シリーズ**を探してください。 
+- **[場所]** :最適なデータ センターを選択します。 通常は、データの大半が存在するデータ センターか、ネットワーク アクセスを最速にするために物理的に最も近いデータ センターになります。 GPU でディープ ラーニングを実行する場合は、Azure 内の場所のうち、NC シリーズ GPU VM インスタンスがある場所を選択する必要があります。 現時点で該当する場所は、**米国東部、米国中北部、米国中南部、米国西部 2、北ヨーロッパ、西ヨーロッパ**です。 最新の一覧については、[リージョン別の Azure 製品](https://azure.microsoft.com/regions/services/)に関するページを確認して、**コンピューティング**の **NC シリーズ**を探してください。 
     
     
 **設定**:Geo DSVM 上の GPU でディープ ラーニングを実行する場合は、NC シリーズ GPU 仮想マシン サイズを選択します。 それ以外の場合は、CPU ベースのインスタンスを選択できます。 VM のストレージ アカウントを作成します。 
@@ -83,7 +84,7 @@ ArcGIS の標準アカウントまたは無料試用版にサインアップし�
 
 ArcGIS アカウントを使用して ArcGIS Pro デスクトップにサインインしたら、VM にインストールされた構成済みのデータ サイエンス ツールを、地理空間分析や機械学習のプロジェクトに使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のリソースのガイダンスに従って、Geo AI Data Science VM の使用を開始しましょう。
 

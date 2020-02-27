@@ -3,22 +3,22 @@ title: SAP HANA on Azure (L インスタンス) のアーキテクチャ | Micro
 description: SAP HANA on Azure (L インスタンス) をデプロイする方法のアーキテクチャ。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/25/2019
-ms.author: rclaus
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1373221502db5b2d511bc6f32bd529090caa9e60
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 041da4198b0bdd040a4916008a1135aa2e2a5f7d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101292"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614517"
 ---
 # <a name="sap-hana-large-instances-architecture-on-azure"></a>Azure の SAP HANA (L インスタンス) のアーキテクチャ
 
@@ -50,7 +50,7 @@ Azure L インスタンス スタンプ自体は次のコンポーネントを�
 
 - **コンピューティング**: 必要なコンピューティング能力を提供し、SAP HANA 認定を取得している各世代の Intel Xeon プロセッサに基づいたサーバー。
 - **ネットワーク**:コンピューティング、ストレージ、および LAN コンポーネントを相互接続する統合された高速ネットワーク ファブリック。
-- **ストレージ**:統合されたネットワーク ファブリック経由でアクセスされるストレージ インフラストラクチャ。 デプロイする SAP HANA on Azure (L インスタンス) 構成に応じて、特定のストレージ容量が提供されます。 追加の月額料金をお支払いいただくと、ストレージ容量を増やすことができます。
+- **ストレージ**: 統合されたネットワーク ファブリック経由でアクセスされるストレージ インフラストラクチャ。 デプロイする SAP HANA on Azure (L インスタンス) 構成に応じて、特定のストレージ容量が提供されます。 追加の月額料金をお支払いいただくと、ストレージ容量を増やすことができます。
 
 L インスタンス スタンプのマルチテナント インフラストラクチャ内では、分離されたテナントとしてお客様の環境がデプロイされます。 テナントのデプロイ時に、Azure 加入契約内で Azure サブスクリプションに名前を付けます。 これが、HANA L インスタンスの課金対象となる Azure サブスクリプションになります。 これらのテナントには Azure サブスクリプションとの 1 対 1 の関係があります。 ネットワークについては、異なる Azure サブスクリプションに属する異なる仮想ネットワークから、1 つの Azure リージョン内の 1 つのテナントにデプロイされた HANA L インスタンス ユニットにアクセスできます。 それらの Azure サブスクリプションが同じ Azure 加入契約に属している必要があります。 
 
@@ -60,5 +60,5 @@ Azure Virtual Machines でさまざまな VM の種類の中から選択でき�
 
 利用可能な SKU を検索できます[HLI で利用可能な SKU](hana-available-skus.md)。
 
-**次のステップ**
+**次の手順**
 - [SAP HANA (L インスタンス) のネットワーク アーキテクチャ](hana-network-architecture.md)を参照する

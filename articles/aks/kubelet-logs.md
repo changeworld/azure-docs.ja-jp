@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service (AKS) で kubelet ログを表示する
 description: Azure Kubernetes Service (AKS) ノードから kubelet ログのトラブルシューティング情報を表示する方法について説明します
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 03/05/2019
-ms.author: mlearned
-ms.openlocfilehash: 65b16b3ddc209ef5d2f6287a04cfe402c3b205c6
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: b7a74803af916f9e9de72dd528273007ce37832f
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67615177"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595384"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Azure Kubernetes Service (AKS) クラスター ノードから kubelet ログを取得する
 
@@ -62,7 +59,7 @@ I0508 12:28:48.321952    8672 kubelet_node_status.go:497] Using Node Hostname fr
 I0508 12:28:58.344656    8672 kubelet_node_status.go:497] Using Node Hostname from cloudprovider: "aks-agentpool-11482510-0"
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Kubernetes マスターからさらにトラブルシューティング情報が必要な場合は、[AKS での Kubernetes マスター ノード ログの表示][aks-master-logs]に関するページをご覧ください。
 

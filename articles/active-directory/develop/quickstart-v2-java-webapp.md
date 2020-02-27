@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 3e1369901e259af6722d9e5a14fababac80f1d02
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 59c2b3b910a9585362643bfcf7cdf9fa2df977bc
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160561"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611991"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>クイック スタート:Java Web アプリに "Microsoft でサインイン" を追加する
 
@@ -97,6 +97,7 @@ ms.locfileid: "77160561"
     aad.secretKey=Enter_the_Client_Secret_Here
     aad.redirectUriSignin=https://localhost:8080/msal4jsample/secure/aad
     aad.redirectUriGraph=https://localhost:8080/msal4jsample/graph/me
+    aad.msGraphEndpointHost="https://graph.microsoft.com/"
     ```
 
     > [!div renderon="docs"]
@@ -109,13 +110,13 @@ ms.locfileid: "77160561"
  1. localhost で https を使用するには、server.ssl.key プロパティを入力します。 自己署名証明書を生成するには、keytool ユーティリティ (JRE に含まれています) を使用します。
 
    ```
-   Example: 
+   Example:
    keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
 
    server.ssl.key-store-type=PKCS12  
    server.ssl.key-store=classpath:keystore.p12  
    server.ssl.key-store-password=password  
-   server.ssl.key-alias=testCert 
+   server.ssl.key-alias=testCert
    ```
 
    生成されたキーストア ファイルを "resources" フォルダーに配置します。

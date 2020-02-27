@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b05eefb2a0e516772390f898c22e723b08973338
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 3f07105c14d4dafeb689eaaf7d679f93e5f235fe
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484453"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605340"
 ---
 # <a name="protected-web-api-code-configuration"></a>保護された Web API: コード構成
 
@@ -109,7 +109,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 ```csharp
  services.AddAuthentication(AzureADDefaults.JwtBearerAuthenticationScheme)
-         .AddAzureAdBearer(options => Configuration.Bind("AzureAd", options));
+         .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
 ```
 
  現在、ASP.NET Core テンプレートでは、ご自分の組織または任意の組織内のユーザーのサインインを行う、Azure Active Directory (Azure AD) Web API が作成されます。 個人アカウントを使用してユーザーをサインインさせることはありません。 ただし、次のコードを Startup.cs に追加することで、Microsoft ID プラットフォーム エンドポイントを使用するようにテンプレートを変更できます。

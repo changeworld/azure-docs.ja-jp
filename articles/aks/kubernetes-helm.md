@@ -3,16 +3,15 @@ title: Helm を使用して Azure の Kubernetes にコンテナーをデプロ�
 description: Helm パッケージ化ツールを使用して、Azure Kubernetes Service (AKS) クラスターにコンテナーをデプロイする方法について説明します
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: zarhoads
-ms.openlocfilehash: 849f4e182d4bd9255ca8e60b69b6ad6c8a8e0fc7
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 4a9ccaff0e3425c365a64ecb4fbadf3c7aa8dcfb
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74869376"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595180"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール
 
@@ -181,7 +180,7 @@ NAME                NAMESPACE   REVISION    UPDATED                             
 my-nginx-ingress    default     1           2019-11-22 10:08:06.048477 -0600 CST    deployed    nginx-ingress-1.25.0    0.26.1 
 ```
 
-### <a name="clean-up-resources"></a>リソースのクリーンアップ
+### <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Helm グラフをデプロイすると、多数の Kubernetes リソースが作成されます。 これらのリソースには、ポッド、デプロイ、およびサービスが含まれます。 これらのリソースをクリーンアップするには、[helm uninstall][helm-cleanup] コマンドを使用し、前の `helm list` コマンドで見つかったリリース名を指定します。
 
@@ -366,7 +365,7 @@ NAME                REVISION    UPDATED                     STATUS      CHART   
 flailing-alpaca   1         Thu May 23 12:55:21 2019    DEPLOYED    nginx-ingress-1.6.13    0.24.1      default
 ```
 
-### <a name="clean-up-resources"></a>リソースのクリーンアップ
+### <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Helm グラフをデプロイすると、多数の Kubernetes リソースが作成されます。 これらのリソースには、ポッド、デプロイ、およびサービスが含まれます。 これらのリソースをクリーンアップするには、`helm delete` コマンドを使用し、上記の `helm list` コマンドで確認したリリース名を指定します。 次の例では、*flailing-alpaca* という名前のリリースが削除されます。
 
@@ -376,7 +375,7 @@ $ helm delete flailing-alpaca
 release "flailing-alpaca" deleted
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Kubernetes アプリケーションのデプロイの管理について詳しくは、Helm のドキュメントを参照してください。
 

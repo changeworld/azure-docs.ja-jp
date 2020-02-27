@@ -3,7 +3,7 @@ title: Citrix Analytics (セキュリティ) の接続 | Microsoft Docs
 description: Azure Sentinel に Citrix Analytics (セキュリティ) を接続する方法について説明します。
 services: sentinel
 documentationcenter: na
-author: cabailey
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: cabailey
-ms.openlocfilehash: b4a720702cdadf641665c4c8dc3754edd1c42361
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: bbc77340375b22f137045d68b7449dd1e8adc4b7
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610626"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588384"
 ---
 # <a name="connect-citrix-analytics-security"></a>Citrix Analytics (セキュリティ) の接続 
 
@@ -46,6 +46,6 @@ Citrix Analytics (セキュリティ) と Azure Sentinel の統合により、�
 このドキュメントでは、Citrix Analytics (セキュリティ) を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視します。
+- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
 
 

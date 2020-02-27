@@ -2,21 +2,21 @@
 title: よくあるご質問 - Azure Database Migration Service
 description: データベース移行を実行するための Azure Database Migration Service の使用に関するよく寄せられる質問。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: f27d398af723a54443f531c05a503a5f2fbe13f6
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/20/2020
+ms.openlocfilehash: a664f12843585ac7524cf8d51aef156d15d32504
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064837"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650983"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Azure Database Migration Service の使用に関する FAQ。
 

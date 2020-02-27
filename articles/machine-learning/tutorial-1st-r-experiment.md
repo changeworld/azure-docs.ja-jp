@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: 37f2f98e594f558a9cd3c3e5994bf17a71ff1899
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 09c976f3076ea41a0441ea62a14ba4d45395a1d4
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191244"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648293"
 ---
 # <a name="tutorial-create-a-logistic-regression-model-in-r-with-azure-machine-learning"></a>チュートリアル:Azure Machine Learning を使用して R でロジスティック回帰モデルを作成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -51,7 +51,7 @@ Azure Machine Learning ワークスペースは、機械学習モデルを実験
 
 ## <a name="azure"></a>ノートブック フォルダーの複製
 
-この例では、インストール不要であらかじめ構成されているエクスペリエンスを実現するために、お使いのワークスペースでクラウド ノートブック サーバーを使用します。 お使いの環境、パッケージ、および依存関係を制御したい場合は、[独自の環境](how-to-configure-environment.md#local)を使用してください。
+この例では、インストール不要であらかじめ構成されているエクスペリエンスを実現するために、お使いのワークスペースでクラウド ノートブック サーバーを使用します。 お使いの環境、パッケージ、および依存関係を制御したい場合は、[独自の環境](https://azure.github.io/azureml-sdk-for-r/articles/installation.html)を使用してください。
 
 Azure Machine Learning Studio で、次の実験の設定を完了し、ステップを実行します。Azure Machine Learning Studio は、あらゆるスキル レベルのデータ サイエンス実務者がデータ サイエンス シナリオを実行するための機械学習ツールを含む統合インターフェイスです。
 

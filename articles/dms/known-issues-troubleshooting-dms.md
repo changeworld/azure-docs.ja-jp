@@ -2,21 +2,21 @@
 title: 一般的な問題 - Azure Database Migration Service
 description: Azure Database Migration Service の使用に関連した一般的な既知の問題やエラーのトラブルシューティング方法について説明します。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 06/18/2019
-ms.openlocfilehash: 5bed7935f673ef824037cb5641ac8e8577fee550
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/20/2020
+ms.openlocfilehash: c5d2ad481124f5ae048d010cdf632ee661bbd6ec
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437785"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649109"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Azure Database Migration Service の一般的な問題やエラーのトラブルシューティング
 

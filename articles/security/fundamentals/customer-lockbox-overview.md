@@ -1,19 +1,19 @@
 ---
 title: Microsoft Azure 用カスタマー ロックボックス
 description: Microsoft Azure 用カスタマー ロックボックスの技術の概要。Microsoft が顧客データにアクセスする必要がある場合にクラウド プロバイダーのアクセスを制御する機能があります。
-author: cabailey
+author: TerryLanfear
 ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
-ms.author: cabailey
-manager: barbkess
+ms.author: terrylan
+manager: rkarlin
 ms.date: 11/04/2019
-ms.openlocfilehash: 7c0409d48876a0f830366381c2a46821c4aa03a0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: abc16ae7f7ab8bf15173248a6e7668e689e127de
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466410"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561971"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure 用カスタマー ロックボックス
 
@@ -42,37 +42,37 @@ Microsoft Azure 用カスタマー ロックボックスには、お客様が顧
     - リソースのスコープ
     - 要求送信者が分離 ID か、多要素認証を使用しているか
     - アクセス許可レベル
-    
+
     JIT ルールに基づき、この要求には Microsoft 社内承認者からの承認も含まれる場合があります。 たとえば、承認者は、カスタマー サポートのリーダーや DevOps マネージャーの場合があります。
 
 6. 要求に顧客データへの直接アクセスが必要な場合、カスタマー ロックボックス要求が開始されます。 たとえば、お客様の仮想マシンへのリモート デスクトップ アクセスです。
-    
+
     要求が **[Customer Notified]\(お客様に通知済み\)** 状態になり、アクセスを許可する前のお客様の承認待ちになります。
 
 7. お客様の組織で、Azure サブスクリプションの[所有者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles)を持つユーザーに、保留中のアクセス要求について通知するメールが Microsoft から送信されます。 カスタマー ロックボックス要求では、このユーザーが承認者に指定されます。
-    
+
     電子メールの例:
-    
+
     ![Azure カスタマー ロックボックス - メール通知](./media/customer-lockbox-overview/customer-lockbox-email-notification.png)
 
 8. メール通知には、Azure portal の**カスタマー ロックボックス** ブレードへのリンクが記載されます。 指定された承認者は、このリンクを使用し、Azure portal にサインインして、組織がカスタマー ロックボックスについて保留しているすべての要求を表示します。
-    
+
     ![Azure カスタマー ロックボックス - ランディング ページ](./media/customer-lockbox-overview/customer-lockbox-landing-page.png)
-    
+
    要求は、カスタマー キューに 4 日間残ります。 この時間が経過すると、アクセス要求は自動的に期限切れになり、Microsoft のエンジニアにはアクセスが許可されません。
 
 9. 保留中の要求の詳細を取得するにために、指定された承認者は **[保留中の要求]** からロックボックス要求を選択できます。
-    
+
     ![Azure カスタマー ロックボックス - 保留中の要求を表示する](./media/customer-lockbox-overview/customer-lockbox-pending-requests.png)
 
-10. 指定された承認者は **[サービス要求 ID]** を選択して、元のユーザーが作成したサポート チケット要求を表示することもできます。 この情報には、Microsoft サポートが対応している理由と、報告された問題の履歴に関する状況が提供されます。 例:
-    
+10. 指定された承認者は **[サービス要求 ID]** を選択して、元のユーザーが作成したサポート チケット要求を表示することもできます。 この情報には、Microsoft サポートが対応している理由と、報告された問題の履歴に関する状況が提供されます。 次に例を示します。
+
     ![Azure カスタマー ロックボックス - サポート チケット要求を表示する](./media/customer-lockbox-overview/customer-lockbox-support-ticket.png)
 
 11. 要求を確認した後、指定された承認者は **[承認]** または **[拒否]** を選択します。
-    
+
     ![Azure カスタマー ロックボックス - [承認] または [拒否] を選択する](./media/customer-lockbox-overview/customer-lockbox-approval.png)
-    
+
     選択の結果は次のようになります。
     - **承認**:Microsoft のエンジニアにアクセスが許可されます。 アクセスが許可されるのは既定の 8 時間です。
     - **拒否**:Microsoft のエンジニアによる管理者特権のアクセス要求は拒否され、以降の操作は行われません。
@@ -113,13 +113,13 @@ Microsoft Azure 用カスタマー ロックボックスには、お客様が顧
 
 カスタマー ロックボックスのプレビューで現在提供されているサービスは次のとおりです。
 
-- Azure Storage 
+- Azure Storage
 
-- Azure SQL DB 
+- Azure SQL DB
 
-- Azure Data Explorer 
+- Azure Data Explorer
 
-- 仮想マシン (現在、メモリ ダンプとマネージド ディスクへのアクセスも含まれます) 
+- 仮想マシン (現在、メモリ ダンプとマネージド ディスクへのアクセスも含まれます)
 
 - Azure サブスクリプションの譲渡
 
@@ -134,7 +134,7 @@ Microsoft Azure 用カスタマー ロックボックスには、お客様が顧
 
 - Microsoft のエンジニアは、トラブルシューティングの一環として Azure プラットフォームにアクセスし、意図せずに顧客データへのアクセス権を持ちます。 たとえば、Azure Network チームはトラブルシューティングを行い、その結果、ネットワーク デバイスでパケット キャプチャが行われます。 ただし、お客様が送信中のデータを暗号化した場合、エンジニアはデータを読み取ることができません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 カスタマー ロックボックスは、**Developer** レベル以上の [Azure サポート プラン](https://azure.microsoft.com/support/plans/)をお持ちのすべてのお客様が自動的に利用できます。
 

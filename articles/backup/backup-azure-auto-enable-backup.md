@@ -3,12 +3,12 @@ title: Azure Policy を使用して VM 作成時のバックアップを自動�
 description: Azure Policy を使用して、特定のスコープで作成されたすべての VM のバックアップを自動的に有効化する方法を説明する記事
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 7a3b526d654936d4e7ec89127a9074146c1b0179
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1d423371788f87155328e8f5c9334e47349a68e8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450131"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584270"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Azure Policy を使用して VM 作成時のバックアップを自動的に有効にする
 
@@ -16,9 +16,9 @@ ms.locfileid: "75450131"
 
 現在、Azure Backup には、**サブスクリプションまたはリソース グループ内の指定された場所にあるすべての Azure VM** に割り当てることができる組み込みのポリシー (Azure Policy を使用) が用意されています。 このポリシーが特定のスコープに割り当てられると、そのスコープ内に作成されたすべての新しい VM は、**同じ場所およびサブスクリプション内の既存のコンテナー**にバックアップするように自動的に構成されます。 ユーザーは、バックアップされた VM を関連付けるコンテナーとリテンション期間ポリシーを指定できます。
 
-## <a name="supported-scenarios"></a>サポートされるシナリオ 
+## <a name="supported-scenarios"></a>サポートされるシナリオ
 
-* 組み込みのポリシーは、現在、Azure VM でのみサポートされています。 ユーザーは、割り当て時に指定されたリテンション期間ポリシーが VM リテンション期間ポリシーであることを確認する必要があります。 このポリシーでサポートされているすべての VM SKU については、[この](https://aka.ms/PolicySupportedSKUs)ドキュメントを参照してください。
+* 組み込みのポリシーは、現在、Azure VM でのみサポートされています。 ユーザーは、割り当て時に指定されたリテンション期間ポリシーが VM リテンション期間ポリシーであることを確認する必要があります。 このポリシーでサポートされているすべての VM SKU については、[この](https://docs.microsoft.com/azure/backup/backup-azure-policy-supported-skus)ドキュメントを参照してください。
 
 * ポリシーは、一度に 1 つの場所とサブスクリプションに割り当てることができます。 場所とサブスクリプションの全体で VM のバックアップを有効にするには、場所とサブスクリプションの組み合わせごとに 1 つずつ、ポリシー割り当ての複数のインスタンスを作成する必要があります。
 
