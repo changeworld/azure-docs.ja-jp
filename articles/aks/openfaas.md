@@ -2,17 +2,16 @@
 title: Azure Kubernetes Service (AKS) での OpenFaaS の使用
 description: Azure Kubernetes Service (AKS) での OpenFaaS のデプロイと使用
 author: justindavies
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: 7949735eff4478d2d04700e1c6df69d28fe25979
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: e684aee1469f855ec651567b805262c71aaf32e5
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278474"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594925"
 ---
 # <a name="using-openfaas-on-aks"></a>AKS での OpenFaaS の使用
 

@@ -2,18 +2,15 @@
 title: Kubernetes on Azure のチュートリアル - アプリケーションの更新
 description: この Azure Kubernetes Service (AKS) チュートリアルでは、AKS にデプロイされている既存のアプリケーションを新しいバージョンのアプリケーション コードで更新する方法について説明します。
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: b645fc9f67229d087a5d1655f733e2f3e50d4471
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: d5457d790cd3c95bb23ec0c517097b443a2389ed
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614373"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593378"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションの更新
 
@@ -53,7 +50,7 @@ VOTE2VALUE = 'Purple'
 SHOWHOST = 'false'
 ```
 
-ファイルを保存して閉じます。 `vi` で `:wq` を使用します。
+ファイルを保存して閉じます。 `vi` では、`:wq` を使用します。
 
 ## <a name="update-the-container-image"></a>コンテナー イメージを更新する
 
@@ -150,9 +147,9 @@ kubectl get service azure-vote-front
 
 ![Azure 上の Kubernetes クラスターの図](media/container-service-kubernetes-tutorials/vote-app-updated-external.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、アプリケーションを更新し、この更新を AKS クラスターにロールアウトしました。 以下の方法について学習しました。
+このチュートリアルでは、アプリケーションを更新し、この更新を AKS クラスターにロールアウトしました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * フロントエンド アプリケーションのコードを更新する

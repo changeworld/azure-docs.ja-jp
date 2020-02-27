@@ -8,12 +8,12 @@ ms.topic: tutorial
 description: このチュートリアルでは、Azure Dev Spaces と Visual Studio Code を使用して、Azure Kubernetes Service 上で Java アプリケーションのデバッグと迅速な反復型開発を行う方法を示します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 47948b0ce4ac0cb9a78552891e42d7634335839e
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 2c086c952528d5521ace44d56eaf11c14ac1cabb
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121748"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602831"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-java-with-azure-dev-spaces"></a>Kubernetes 開発空間を作成する: Azure Dev Spaces での Visual Studio Code と Java
 
@@ -64,7 +64,7 @@ az group create --name MyResourceGroup --location <region>
 以下のコマンドを使用して Kubernetes クラスターを作成します。
 
 ```cmd
-az aks create -g MyResourceGroup -n MyAKS --location <region> --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-keys
 ```
 
 クラスターの作成には数分かかります。
@@ -103,7 +103,7 @@ GitHub からコードをダウンロードするために、[https://github.com
 1. このコマンドを実行します (**webfrontend** が現在のフォルダーであることを確認します)。
 
     ```cmd
-    azds prep --public
+    azds prep --enable-ingress
     ```
 
 Azure CLI の `azds prep` コマンドにより、既定の設定で Docker と Kubernetes のアセットが生成されます。

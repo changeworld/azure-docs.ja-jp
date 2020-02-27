@@ -2,17 +2,14 @@
 title: オペレーターのベスト プラクティス - Azure Kubernetes Services (AKS) のネットワーク接続
 description: Azure Kubernetes Service (AKS) での仮想ネットワーク リソースと接続に関するクラスター オペレーターのベスト プラクティスについて説明します
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.author: mlearned
-ms.openlocfilehash: 5b138849538cb9bbd6af6cbcf3e7a11b0cf66395
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 93659a0891b09c83db9f63fe0756fcf4d7e87f6a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549123"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594687"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのネットワーク接続とセキュリティに関するベスト プラクティス
 

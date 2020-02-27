@@ -2,17 +2,14 @@
 title: オペレーターのベスト プラクティス - Azure Kubernetes Services (AKS) の基本的なスケジューラ機能
 description: Azure Kubernetes Service (AKS) でリソース クォータやポッド中断バジェットなどの基本的なスケジューラ機能を使用するための、クラスター オペレーターのベスト プラクティスについて説明します
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: mlearned
-ms.openlocfilehash: 3661f435b5c2dd88aa8e17ca396f9af43aea5224
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: cccc476a944b28d24c53a947e434d465c94f94ee
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293608"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594653"
 ---
 # <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での基本的なスケジューラ機能に関するベスト プラクティス
 

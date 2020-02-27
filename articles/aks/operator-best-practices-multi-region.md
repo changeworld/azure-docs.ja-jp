@@ -3,17 +3,16 @@ title: Azure Kubernetes Services (AKS) での高可用性とディザスター �
 description: Azure Kubernetes Services (AKS) でアプリケーションの最大アップタイムを達成して、高可用性を提供し、ディザスター リカバリーに備えるための、クラスター オペレーターのベスト プラクティスについて説明します。
 services: container-service
 author: lastcoolnameleft
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 855d40f9c20f966f6fa2b89949e47c943704bf2b
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 894ec4e543f0c68cc652141d2c1578cda61d7f42
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549157"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594749"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での事業継続とディザスター リカバリーに関するベスト プラクティス
 

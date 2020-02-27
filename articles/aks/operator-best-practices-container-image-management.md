@@ -2,17 +2,14 @@
 title: オペレーターのベスト プラクティス - Kubernetes Services (AKS) でのコンテナー イメージの管理
 description: Azure Kubernetes Service (AKS) でコンテナー イメージを管理およびセキュリティで保護する方法に関するクラスター オペレーターのベスト プラクティス
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: mlearned
-ms.openlocfilehash: cd859a4009782ca39732ec004a3d3e05edd377b0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: efe72157f598c336248e407c57bce92fe87da23a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442896"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594747"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) でのコンテナー イメージの管理とセキュリティに関するベスト プラクティス
 

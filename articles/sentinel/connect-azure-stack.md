@@ -3,7 +3,7 @@ title: Azure Stack 仮想マシンを Azure Sentinel にオンボードする | 
 description: この記事では、Azure Monitor, Update, and Configuration Management 仮想マシン拡張機能を Azure Stack 仮想マシン上にプロビジョニングし、Sentinel を使用したそれらの監視を開始する方法を示します。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: fb306ec3f8abe2eedb97f83d01836745779db914
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.author: yelevin
+ms.openlocfilehash: a8213bd57936f95870324950204dbd6c1473739a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240770"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588520"
 ---
 # <a name="connect-azure-stack-virtual-machines-to-azure-sentinel"></a>Azure Stack 仮想マシンを Azure Sentinel に接続する
 
@@ -55,7 +55,7 @@ Windows 用エージェントのインストールと構成の詳細について
 
 Azure の Azure Sentinel ポータルの **[Virtual Machines]** に、すべての VM とコンピューターの概要がその状態と共に表示されます。 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 不要になったら、拡張機能は Azure Stack ポータルを使用して仮想マシンから削除できます。
 
 拡張機能を削除するには:
@@ -65,7 +65,7 @@ Azure の Azure Sentinel ポータルの **[Virtual Machines]** に、すべて�
 3. **[拡張機能]** を選択し、拡張機能 **Microsoft.EnterpriseCloud.Monitoring** を選択します。
 4. **[アンインストール]** をクリックし、選択内容を確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 10/02/2019
 ms.author: juliako
-ms.openlocfilehash: 3520b7d6b0fd67fdbff3e1dd78d038f36ad5f0af
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: dc3b122ab7f4a243f3a4ecd6f220caa00beb044e
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133430"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505778"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Media Services v2 から v3 への移行のガイダンス
 
@@ -79,7 +79,7 @@ ms.locfileid: "77133430"
 * v2 では、XML の[入力](../previous/media-services-input-metadata-schema.md)と[出力](../previous/media-services-output-metadata-schema.md)のメタデータ ファイルは、エンコード ジョブの結果として生成されます。 v3 では、メタデータの形式が XML から JSON に変更されました。 
 
 > [!NOTE]
-> [Media Services v3 リソース](media-services-apis-overview.md#naming-conventions)に適用される名前付け規則をご確認ください。 [BLOB の名前付け](assets-concept.md#naming-blobs)についてもご確認ください。
+> [Media Services v3 リソース](media-services-apis-overview.md#naming-conventions)に適用される名前付け規則をご確認ください。 [BLOB の名前付け](assets-concept.md#naming)についてもご確認ください。
 
 ## <a name="feature-gaps-with-respect-to-v2-apis"></a>v2 API に関する機能のギャップ
 

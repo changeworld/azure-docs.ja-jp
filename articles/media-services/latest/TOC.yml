@@ -148,6 +148,8 @@
           href: live-event-states-billing.md
         - name: Latency
           href: live-event-latency.md
+        - name: ライブ イベントのエラー コード
+          href: live-event-error-codes.md
     - name: 監視
       items:
         - name: Event Grid を使用したイベント
@@ -175,6 +177,8 @@
           items:
             - name: ストリーミング エンドポイントのエラー コード
               href: streaming-endpoint-error-codes.md
+            - name: ライブ イベントのエラー コード
+              href: live-event-error-codes.md
             - name: ジョブ エラー コード
               href: job-error-codes.md
     - name: v2 から v3 への移行ガイダンス
@@ -325,6 +329,8 @@
       items:
         - name: ストリーミング エンドポイントのエラー コード
           href: streaming-endpoint-error-codes.md
+        - name: ライブ イベントのエラー コード
+          href: live-event-error-codes.md
         - name: ジョブ エラー コード
           href: job-error-codes.md
 - name: リソース

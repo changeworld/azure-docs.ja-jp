@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: REST API 経由で Azure Data Box Heavy BLOB ストレージにデータをコピーする | Microsoft Docs'
+title: チュートリアル:REST API 経由で Azure Data Box BLOB ストレージにデータをコピーする
 description: REST API 経由でお客様の Azure Data Box Heavy BLOB ストレージにデータをコピーする方法について説明します
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: adc48acbadaef56958587dc79be377b76a21fdc0
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 43f6404a483cad8377e70591f5454180f0dd07a6
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606290"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560339"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>チュートリアル:REST API 経由で Azure Data Box BLOB ストレージにデータをコピーする  
 
@@ -104,7 +104,7 @@ HTTPS 経由で Data Box BLOB ストレージにアクセスするには、デ�
 
 次の手順に従って、`.cer` ファイルを Windows または Linux クライアントのルート ストアにインポートします。 Windows システムでは、Windows PowerShell または Windows Server UI を使用して、証明書をシステムにインポートしてインストールできます。
 
-#### <a name="use-windows-powershell"></a>Windows PowerShell を使用する
+#### <a name="use-windows-powershell"></a>Windows PowerShell の使用
 
 1. Windows PowerShell セッションを管理者として開始します。
 2. コマンド プロンプトに、次のコマンドを入力します。
@@ -138,7 +138,7 @@ HTTPS 経由で Data Box BLOB ストレージにアクセスするには、デ�
 Ubuntu や Debian などのいくつかのディストリビューションでは、`update-ca-certificates` コマンドを使用します。  
 
 - Base64 エンコードの証明書ファイルの名前を変更して拡張子 `.crt` を付け、それを `/usr/local/share/ca-certificates directory` にコピーします。
-- コマンド `update-ca-certificates`を実行します。
+- コマンド `update-ca-certificates` を実行します。
 
 RHEL、Fedora、および CentOS の最近のバージョンでは、`update-ca-trust` コマンドを使用します。
 
@@ -236,7 +236,7 @@ AzCopy を使用して、最終更新時刻に基づいてファイルをアッ�
 
 次に、発送するデバイスを準備します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Data Box に関する次のようなトピックについて説明しました。
 

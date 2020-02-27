@@ -2,18 +2,15 @@
 title: Kubernetes on Azure のチュートリアル - コンテナー レジストリを作成する
 description: この Azure Kubernetes Service (AKS) チュートリアルでは、Azure Container Registry インスタンスを作成し、サンプルのアプリケーション コンテナー イメージをアップロードします。
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 04fbea9714224f0ecbac0e14618caaf39fa3cedf
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 6b8d520a539f69889b1e1bd23d255f3fe19b8717
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291143"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593208"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>チュートリアル:Azure Container Registry をデプロイして使用する
 

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
-ms.openlocfilehash: abb73f93116fae217f527e0a9faaf61e2b42ba6c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ace953fcb278604cb64eef463753f0f2622d3d24
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433369"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523341"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Azure Cache for Redis のクライアント側の問題に関するトラブルシューティング
 
@@ -51,7 +51,7 @@ ms.locfileid: "75433369"
 - `IOCP` セクションと `WORKER` セクションに、`Busy` 値が `Min` 値より大きいことが示されていることに注目してください。 この違いは、`ThreadPool` 設定に調整が必要なことを示します。
 - `in: 64221`にも注目してください。 この値は、64,211 バイトがクライアントのカーネル ソケット レイヤーで受信されたが、まだアプリケーションによって読み取られていないことを示します。 この違いは、通常、アプリケーション (StackExchange.Redis など) がネットワークからデータを読み取る速度がサーバーのデータ送信速度より遅いことを示します。
 
-バースト シナリオのもとでスレッド プールがすばやくスケールアップするように [`ThreadPool` 設定を構成](https://gist.github.com/JonCole/e65411214030f0d823cb)できます。
+バースト シナリオのもとでスレッド プールがすばやくスケールアップするように [`ThreadPool` 設定を構成](cache-faq.md#important-details-about-threadpool-growth)できます。
 
 ## <a name="high-client-cpu-usage"></a>クライアントでの高い CPU 使用率
 

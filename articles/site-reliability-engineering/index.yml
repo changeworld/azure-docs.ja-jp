@@ -1,0 +1,302 @@
+### YamlMime:Hub
+title: サイト信頼性エンジニアリングのドキュメント
+summary: サイト信頼性エンジニアリングとは、組織がシステム、サービス、および製品に対して適切なレベルの信頼性を持続的に達成できるようにすることを目的としたエンジニアリング分野です。
+brand: azure
+metadata:
+  title: サイト信頼性エンジニアリングのドキュメント
+  description: サイト信頼性エンジニアリングとは、組織がシステム、サービス、および製品に対して適切なレベルの信頼性を持続的に達成できるようにすることを目的としたエンジニアリング分野です。
+  services: site-reliability-engineering
+  ms.service: site-reliability-engineering
+  ms.topic: hub-page
+  author: dnblankedelman
+  ms.author: dnb
+  ms.date: 02/18/2020
+  ms.openlocfilehash: a89b50cb23d87c9495b24e4ac2ae562b637ec6fa
+  ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 02/25/2020
+  ms.locfileid: "77598937"
+highlightedContent:
+  items:
+  - title: SRE の概要:SRE とは (1/3)
+    itemType: video
+    url: https://channel9.msdn.com/Shows/IT-Ops-Talk/Introduction-to-Site-Reliability-Engineering--Part-1/player
+  - title: SRE の概要:中心となる原則と実践 (2/3)
+    itemType: video
+    url: https://channel9.msdn.com/Shows/IT-Ops-Talk/Introduction-to-Site-Reliability-Engineering--Part-2/player
+  - title: SRE の概要:開始方法 (3/3)
+    itemType: video
+    url: https://channel9.msdn.com/Shows/IT-Ops-Talk/Introduction-to-Site-Reliability-Engineering--Part-3/player
+productDirectory:
+  items:
+  - title: 最新の運用方法による信頼性の向上
+    imageSrc: ./media/index/video.svg
+    links:
+    - url: https://myignite.techcommunity.microsoft.com/sessions/82996
+      text: '最新の運用の基礎を構築する: 監視'
+    - url: https://myignite.techcommunity.microsoft.com/sessions/82997
+      text: インシデントへの対応
+    - url: https://myignite.techcommunity.microsoft.com/sessions/82998
+      text: 失敗から学ぶ
+    - url: https://myignite.techcommunity.microsoft.com/sessions/82999
+      text: 信頼性を高めるための展開プラクティス
+    - url: https://myignite.techcommunity.microsoft.com/sessions/83001
+      text: '拡張の準備: 容量計画とスケーリング'
+  - title: SRE オンライン コースの概要
+    imageSrc: ./media/index/learn.svg
+    links:
+    - url: https://docs.microsoft.com/learn/modules/intro-to-site-reliability-engineering/
+      text: 無料のオンライン コースで SRE の基礎を学ぶ
+  - title: SRE のリソース
+    imageSrc: ./media/index/reference.svg
+    links:
+    - url: resources/books.md
+      text: 書籍
+    - url: resources/events.md
+      text: events
+    - url: resources/links.md
+      text: リンクと要約
+conceptualContent:
+  title: Azure での SRE
+  summary: SRE のドキュメント
+  items:
+  - title: Architecture
+    links:
+    - url: https://docs.microsoft.com/azure/architecture/framework/
+      itemType: reference
+      text: Azure Architecture Framework
+    - url: https://docs.microsoft.com/azure/architecture/guide
+      itemType: reference
+      text: Azure アプリケーション アーキテクチャ ガイド
+    - url: https://docs.microsoft.com/azure/architecture/architectures/?filter=reference-architecture
+      itemType: reference
+      text: 参照アーキテクチャ
+    - url: https://docs.microsoft.com/azure/architecture/cloud-adoption/
+      itemType: reference
+      text: Azure 向けの Microsoft Cloud 導入フレームワーク
+    - url: https://docs.microsoft.com/azure/architecture/architectures/?filter=example-workload
+      itemType: reference
+      text: ワークロードの例
+    - url: https://docs.microsoft.com/azure/architecture/microservices
+      itemType: reference
+      text: Azure でのマイクロサービスの構築
+    - url: https://docs.microsoft.com/azure/architecture/data-guide/
+      itemType: reference
+      text: Azure データ アーキテクチャ ガイド
+    - url: https://docs.microsoft.com/azure/architecture/best-practices/
+      itemType: reference
+      text: クラウド ベスト プラクティス
+    - url: https://docs.microsoft.com/azure/architecture/framework/resiliency/overview
+      itemType: reference
+      text: 信頼性の高い Azure アプリケーションの設計
+    - url: https://docs.microsoft.com/azure/architecture/patterns
+      itemType: reference
+      text: クラウド設計パターン
+    - url: https://docs.microsoft.com/azure/architecture/aws-professional
+      itemType: reference
+      text: AWS プロフェッショナルのための Azure
+    - url: https://docs.microsoft.com/azure/architecture/performance
+      itemType: reference
+      text: パフォーマンスのチューニング
+    footerLink:
+      url: https://docs.microsoft.com/azure/architecture/
+      text: 詳細については、Azure アーキテクチャ センターを参照してください
+  - title: 監視
+    links:
+    - url: https://docs.microsoft.com/azure/azure-monitor/overview
+      itemType: get-started
+      text: Azure Monitor の概要
+    - url: https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics
+      itemType: get-started
+      text: Azure Monitor でのメトリック
+    - url: https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs
+      itemType: get-started
+      text: Azure Monitor でのログ
+    - url: https://docs.microsoft.com/azure/azure-monitor/azure-monitor-app-hub
+      itemType: get-started
+      text: Application Insights を使用したアプリケーションのパフォーマンス管理
+    - url: https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing
+      itemType: get-started
+      text: Azure Monitor を使用した分散トレース
+    footerLink:
+      url: https://docs.microsoft.com/en-us/azure/azure-monitor/
+      text: Azure Monitor の詳細を確認する
+  - title: プロビジョニングとデリバリー
+    links:
+    - url: https://docs.microsoft.com/azure/azure-resource-manager/
+      itemType: get-started
+      text: Azure Resource Manager
+    - url: https://docs.microsoft.com/azure/terraform/
+      itemType: get-started
+      text: Azure での Terraform
+    - url: https://help.github.com/actions
+      itemType: get-started
+      text: GitHub のアクション
+    - url: https://docs.microsoft.com/azure/devops/pipelines/index?view=azure-devops
+      itemType: get-started
+      text: Azure Pipelines
+  - title: Scaling
+    links:
+    - url: https://docs.microsoft.com/azure/azure-monitor/platform/autoscale-overview
+      itemType: get-started
+      text: 自動スケーリングの概要
+    - url: https://docs.microsoft.com/azure/architecture/best-practices/auto-scaling
+      itemType: get-started
+      text: 自動スケール ガイダンス
+    - url: https://www.pluralsight.com/courses/microsoft-azure-autoscaling-developing
+      itemType: get-started
+      text: 自動スケーリング用の開発
+    - url: https://docs.microsoft.com/azure/architecture/framework/scalability/overview
+      itemType: get-started
+      text: Azure アーキテクチャのスケーラビリティの柱
+    - url: https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out
+      itemType: get-started
+      text: スケールアウトのための設計
+    - url: https://docs.microsoft.com/en-us/azure/architecture/patterns/category/performance-scalability
+      itemType: get-started
+      text: パフォーマンスとスケーラビリティのパターン
+additionalContent:
+  sections:
+  - title: Microsoft からの SRE に関する話題
+    items:
+    - title: カルチャ
+      links:
+      - text: サイト信頼性エンジニアリングの進化
+        url: https://www.usenix.org/conference/srecon18asia/presentation/purgason
+      - text: SRE の構築:外部のカルチャを取り込む
+        url: https://www.usenix.org/conference/srecon18asia/presentation/palino
+      - text: 多分化チームにおける文化的な差異と効果的なコラボレーション
+        url: https://www.usenix.org/conference/srecon18asia/presentation/ravindran
+      - text: SRE の進化と SRE 促進のニーズの増加
+        url: https://www.usenix.org/conference/srecon18asia/presentation/ganeriwal
+      - text: フィードバック ループ:SRE のベネフィットとその可能性を実現するために必要なもの
+        url: https://www.usenix.org/conference/srecon17americas/program/presentation/tangi
+      - text: ビジネス メトリックを理解することで、SRE を向上させることができます
+        url: https://www.usenix.org/conference/srecon19asia/presentation/suley
+      - text: サイト信頼性についての終わりのない話
+        url: https://www.usenix.org/conference/srecon17europe/conference-program/presentation/andersen
+      - text: 運用では毎日が月曜日
+        url: https://www.usenix.org/conference/srecon17americas/program/presentation/purgason
+    - title: インシデント対応とインシデント後のレビュー
+      links:
+      - text: 回復力の構築:インシデントからさらに学ぶ方法
+        url: https://www.usenix.org/conference/srecon19emea/presentation/stenning
+      - text: 2 つの事後検証に関する物語:人的要因の観点
+        url: https://www.usenix.org/conference/srecon19asia/presentation/lund-postmortem
+      - text: オートメーションの皮肉3 部構成のコメディ
+        url: https://www.usenix.org/conference/srecon19asia/presentation/lund-comedy
+      - text: オンコールに対して:論争
+        url: https://www.usenix.org/conference/srecon18europe/presentation/murphy
+      - text: ワン オン ワン SRE
+        url: https://www.usenix.org/conference/srecon19americas/presentation/tobey
+    - title: 監視と可観測性
+      links:
+      - text: 6 億を超えるメンバーと数百のマイクロ サービス:監視システムをどのように拡張して対応したか
+        url: https://www.usenix.org/conference/srecon19asia/presentation/lamba
+      - text: 常識から外れる:監視の焦点をサービスから顧客に移す
+        url: https://www.usenix.org/conference/lisa19/presentation/suley
+      - text: すべては測定から。メトリックが重要な理由
+        url: https://www.usenix.org/conference/srecon18asia/presentation/srinivasamurthy-metrics
+      - text: 嵐を乗り切る:早期警告によってどのように農場が救われたか
+        url: https://www.usenix.org/conference/srecon19emea/presentation/sherwin
+      - text: オーバーヘッドを発生させずに数百万のクエリをキャプチャして分析する
+        url: https://www.usenix.org/conference/srecon17europe/program/presentation/appigatla
+      - text: イベントの相関関係:MTTR を減らすための新しいアプローチ
+        url: https://www.usenix.org/conference/srecon17asia/program/presentation/rajan
+      - text: LinkedIn フィードの高可用性を実現する堅牢な監視のしくみ
+        url: https://www.usenix.org/conference/srecon17americas/program/presentation/barot
+      - text: MTTR と間違ったエスカレーションの削減:Linkedin でのイベントの相関関係
+        url: https://www.usenix.org/conference/srecon17europe/program/presentation/kehoe-0
+    - title: プラクティスと原則
+      links:
+      - text: 可用性 - 数値を超える検討
+        url: https://www.usenix.org/conference/srecon19asia/presentation/srinivasamurthy
+      - text: SRE のメンタル モデル
+        url: https://www.usenix.org/conference/srecon18asia/presentation/suley-mental
+      - text: アプリケーション作成時の信頼の優先順位付け
+        url: https://www.usenix.org/conference/srecon19emea/presentation/davis
+      - text: Java は Linux が嫌い。 対処する。
+        url: https://www.usenix.org/conference/srecon17americas/program/presentation/banks
+      - text: SRE 実践の各フェーズの特性付けと理解
+        url: https://www.usenix.org/conference/srecon18asia/presentation/andersen
+      - text: セキュリティと SRE:自然な力の倍増
+        url: https://www.usenix.org/conference/srecon18americas/presentation/scott
+      - text: 運用環境向上のレビュー:修繕の負債を味わう
+        url: https://www.usenix.org/conference/srecon16europe/program/presentation/check
+      - text: 高パフォーマンス アプリケーションの信頼性を確保する
+        url: https://www.usenix.org/conference/srecon18asia/presentation/nayak
+      - text: サービス スコア カード - 運用上のエクセレンスのゲーミフィケーション
+        url: https://www.usenix.org/conference/srecon17americas/program/presentation/lawrence
+      - text: サービスを酷評することによって改善する方法
+        url: https://www.usenix.org/conference/srecon16/program/presentation/dickson
+    - title: チームと管理
+      links:
+      - text: コード - 黄:最も負荷の高い運用チームをスマートな方法で支援
+        url: https://www.usenix.org/conference/srecon19americas/presentation/kehoe
+      - text: 管理せずに先導する:SRE の技術リーダーになる
+        url: https://www.usenix.org/conference/srecon19asia/presentation/palino-leading
+      - text: 企業間の SRE 実装の違い
+        url: https://www.usenix.org/conference/srecon19americas/presentation/andersen
+      - text: 100 のチーム、100 とおりの失敗
+        url: https://www.usenix.org/conference/srecon17europe/program/presentation/keiser
+      - text: SRE エンゲージメントの開始に関する理由、対象、手段
+        url: https://www.usenix.org/conference/srecon17europe/program/presentation/clawson
+      - text: SRE チームの構築と稼働
+        url: https://www.usenix.org/conference/srecon16europe/program/presentation/andersen
+      - text: 大学生から SRE へ:入門レベルの人をオンボードする
+        url: https://www.usenix.org/conference/srecon16/program/presentation/kehoe
+      - text: LinkedIn SRE:開始からグローバル規模へ
+        url: https://www.usenix.org/conference/srecon17asia/program/presentation/connelly
+      - text: 世界最大のソフトウェア会社で SRE の DNA シーケンスをつなぎ合わせる
+        url: https://www.usenix.org/conference/srecon16europe/program/presentation/splicing-sre-dna-sequences-biggest-software-company
+      - text: 第一階層のいも虫を蝶に変換する
+        url: https://www.usenix.org/conference/srecon16/program/presentation/mushiana
+    - title: ツールとテクノロジ
+      links:
+      - text: Azure SREBot:チャットボットを超える - 軽減時間を劇的に削減するインテリジェント ボット
+        url: https://www.usenix.org/conference/srecon17asia/program/presentation/guimaraes
+      - text: TrafficShift:大規模災害の回避
+        url: https://www.usenix.org/conference/srecon17americas/program/presentation/kehoe_trafficshift
+      - text: 分散ファイル システムを構築しましょう
+        url: https://www.usenix.org/conference/srecon19asia/presentation/patel
+      - text: TCP - アーキテクチャ、強化、およびチューニング
+        url: https://www.usenix.org/conference/srecon19asia/presentation/dhakal
+      - text: BGP - インターネットのバックボーン
+        url: https://www.usenix.org/conference/srecon19asia/presentation/kehoe
+      - text: サーバーレスでの運用
+        url: https://www.usenix.org/conference/srecon19americas/presentation/davis
+      - text: Kafka を使用してデータベース インフラストラクチャをスケーリングする方法
+        url: https://www.usenix.org/conference/srecon19asia/presentation/thambara
+      - text: SRE のネットワーク:アプリケーションのトラブルシューティングに必要な情報
+        url: https://www.usenix.org/conference/srecon17europe/program/presentation/kehoe
+      - text: Ambry - LinkedIn の変更不可能な分散オブジェクト ストア
+        url: https://www.usenix.org/conference/srecon17americas/program/presentation/shenoy
+      - text: BPerf - 運用環境での Bing.com クラウド プロファイル
+        url: https://www.usenix.org/conference/srecon17americas/program/presentation/sabharwal
+      - text: DNS:最新の問題に対する古いソリューション
+        url: https://www.usenix.org/conference/srecon16europe/program/presentation/jackson
+      - text: LinkedIn での Rum DNS を使用したトラフィックのステアリング
+        url: https://www.usenix.org/conference/srecon17europe/program/presentation/rastogi
+    - title: Scaling
+      links:
+      - text: トラフィック予測とストレス テストのインフラストラクチャ
+        url: https://www.usenix.org/conference/srecon19asia/presentation/sulakhe
+      - text: 大規模な学習は困難 停止パターン分析とダーティ データ
+        url: https://www.usenix.org/conference/srecon18americas/presentation/lund
+      - text: 分散ステートフル システムのスケーリング:LinkedIn のケース スタディ
+        url: https://www.usenix.org/conference/srecon18asia/presentation/kanuri
+      - text: 大規模なデバッグ - 1 つの箱から運用環境へ
+        url: https://www.usenix.org/conference/srecon18asia/presentation/srinivasamurthy-debugging
+      - text: 大規模な一元化されたキャッシュ インフラストラクチャの構築
+        url: https://www.usenix.org/conference/srecon19asia/presentation/won
+      - text: スケーラブルなコーディング - エラーを見つける
+        url: https://www.usenix.org/conference/srecon18europe/presentation/ebner-de-carvalho
+      - text: LinkedIn での容量の管理
+        url: https://www.usenix.org/conference/srecon17asia/program/presentation/harkare
+      - text: InStream:BitTorrent、Python、Salt、Kafka を使用した大規模な配信
+        url: https://www.usenix.org/conference/srecon17europe/program/presentation/sharma
+      - text: 容量の牢獄を回避して抜け出す
+        url: https://www.usenix.org/conference/srecon17europe/program/presentation/welch
+      - text: グローバルなトラフィック ルーティングとフェールオーバーの進化
+        url: https://www.usenix.org/conference/srecon16/program/presentation/heady

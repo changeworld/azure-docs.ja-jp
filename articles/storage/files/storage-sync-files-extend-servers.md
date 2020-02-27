@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e3154b9635da889ed7f0484fc04c565c27e9241b
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: eb00234fb7522c763dbaa910bee99cf327bebaf1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031511"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597900"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>チュートリアル:Azure File Sync を使用して Windows ファイル サーバーを拡張する
 
@@ -27,8 +27,6 @@ ms.locfileid: "77031511"
 > * サーバー エンドポイントを作成する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -219,10 +217,10 @@ Azure File Sync をデプロイするには、最初に、お客様が選択し�
 
    | Value | 説明 |
    | ----- | ----- |
-   | **Name** | ストレージ同期サービスの (サブスクリプションごとに) 一意の名前。<br><br>このチュートリアルでは _afssyncservice02_ を使用します。 |
+   | **名前** | ストレージ同期サービスの (サブスクリプションごとに) 一意の名前。<br><br>このチュートリアルでは _afssyncservice02_ を使用します。 |
    | **サブスクリプション** | お客様がこのチュートリアルに使用する Azure サブスクリプション。 |
    | **リソース グループ** | ストレージ同期サービスを含むリソース グループ。<br><br>このチュートリアルでは、_afsresgroup101918_ を使用します。 |
-   | **地域** | East US |
+   | **場所** | 米国東部 |
 
 1. 完了したら、 **[作成]** を選択して、**ストレージ同期サービス**をデプロイします。
 1. **[通知]** タブ、 **[リソースに移動]** の順に選択します。
