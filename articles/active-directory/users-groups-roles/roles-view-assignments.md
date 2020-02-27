@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d989a515a1a3c1dc12ca357a3ab2126e78800ffa
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f04bd7788a9cc9657e14aedfb153182d6e53eb95
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024413"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562243"
 ---
 # <a name="view-custom-role-assignments-in-azure-active-directory"></a>Azure Active Directory でカスタム ロールの割り当てを表示する
 
@@ -85,7 +85,7 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId | Get-AzureADUser
 GET
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal&$filter=roleDefinitionId eq ‘<object-id-or-template-id-of-role-definition>’
+https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments&$filter=roleDefinitionId eq ‘<object-id-or-template-id-of-role-definition>’
 ```
 
 Response
@@ -117,7 +117,7 @@ HTTP/1.1 200 OK
 
     ![アプリの登録のプロパティから、アプリの登録のロールの割り当てを表示する](./media/roles-view-assignments/appreg-assignments-2.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure AD 管理ロール フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)でご意見をお寄せください。
 * ロールと管理者ロールの割り当ての詳細については、[管理者ロールの割り当て](directory-assign-admin-roles.md)に関するページを参照してください。

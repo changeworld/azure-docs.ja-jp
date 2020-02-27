@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3ce754a67643f4506fa825f0780969dc4a06f826
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 38339defc9d06f3e809bc24f957ebbb30abb46d3
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299584"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598784"
 ---
 # <a name="how-to-deploy-azure-files"></a>Azure Files のデプロイ方法
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の SMB プロトコルを介してアクセスできる、フル マネージドのファイル共有を提供します。 この記事では、実際に組織内で Azure Files をデプロイする方法を示します。
@@ -26,7 +26,7 @@ ms.locfileid: "72299584"
 - ストレージ アカウントに、目的のクォータで Azure ファイル共有を作成していること。 ファイル共有の詳しい作成手順については、[ファイル共有の作成](storage-how-to-create-file-share.md)に関するページを参照してください。
 
 ## <a name="transfer-data-into-azure-files"></a>Azure Files へのデータ転送
-新しい Azure ファイル共有に、オンプレミスに保存されているファイル共有などの既存のファイル共有を移行したい場合があります。 このセクションでは、[計画ガイド](storage-files-planning.md#data-transfer-method)に記載されているいくつかの一般的な方法を使用して、Azure ファイル共有にデータを移行する方法を示します
+新しい Azure ファイル共有に、オンプレミスに保存されているファイル共有などの既存のファイル共有を移行したい場合があります。 このセクションでは、[計画ガイド](storage-files-planning.md#migration)に記載されているいくつかの一般的な方法を使用して、Azure ファイル共有にデータを移行する方法を示します
 
 ### <a name="azure-file-sync"></a>Azure File Sync
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
@@ -147,7 +147,7 @@ do
 done
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure ファイル同期のデプロイの計画](storage-sync-files-planning.md)
 - [Azure Files のトラブルシューティング - Windows](storage-troubleshoot-windows-file-connection-problems.md)
 - [Azure Files のトラブルシューティング - Linux](storage-troubleshoot-linux-file-connection-problems.md)

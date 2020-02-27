@@ -1,5 +1,6 @@
 ---
-title: クイック スタート:Windows DSVM の作成
+title: クイック スタート:Windows Data Science Virtual Machine を作成する
+titleSuffix: Azure Data Science Virtual Machine
 description: 分析と機械学習を行うために、Azure でデータ サイエンス用仮想マシンを構成および作成します。
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -7,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: f498c2cd6906d1966ab5dfd1f7547686163fe2ce
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 1fdf8eae5d19a2d43499d1984f4dea834d8a61d8
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611919"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525874"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>クイック スタート:Windows 用データ サイエンス仮想マシンを設定する
 

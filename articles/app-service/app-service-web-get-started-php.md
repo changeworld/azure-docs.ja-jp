@@ -5,12 +5,12 @@ ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: fb6451ce5e1e00bffc9195410125eb61b34555e4
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 59e59fdf7fc6207a77bbe9923899570eeaa06a87
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672095"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500137"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Azure に PHP Web アプリを作成する
 
@@ -173,11 +173,11 @@ git push azure master
 
 ## <a name="manage-your-new-azure-app"></a>新しい Azure アプリの管理
 
-1. <a href="https://portal.azure.com" target="_blank">Azure Portal</a> に移動し、作成した Web アプリを管理します。 **App Services** を検索して選択します。
+1. <a href="https://portal.azure.com" target="_blank">Azure Portal</a> に移動し、作成した Web アプリを管理します。 **[App Services]** を検索して選択します。
 
     ![App Services の検索、Azure portal、PHP Web アプリの作成](media/app-service-web-get-started-php/navigate-to-app-services-in-the-azure-portal.png)
 
-2. Azure アプリの名前を選択します。
+2. 使用する Azure アプリの名前を選択します。
 
     ![Azure アプリへのポータル ナビゲーション](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
 
@@ -189,7 +189,7 @@ git push azure master
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [PHP と MySQL](app-service-web-tutorial-php-mysql.md)

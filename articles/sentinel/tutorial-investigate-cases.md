@@ -3,7 +3,7 @@ title: Azure Sentinel でインシデントを調査する | Microsoft Docs
 description: このチュートリアルでは、Azure Sentinel でインシデントを調査する方法について説明します。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: fbab3eff3d7f742c2542e4264ef1b2124c5f15e5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.author: yelevin
+ms.openlocfilehash: ecd8c508d05bfeb541a6cb5efbcdf2fffd3c78d3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024614"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587194"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>チュートリアル:Azure Sentinel でインシデントを調査する
 
@@ -109,7 +109,7 @@ ms.locfileid: "72024614"
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure Sentinel を使用して、インシデントの調査を開始する方法について説明しました。 [自動プレイブックを使用した脅威への対応](tutorial-respond-threats-playbook.md)に関するチュートリアルに進んでください。
 > [!div class="nextstepaction"]
 > [[Respond to threats]](tutorial-respond-threats-playbook.md) (脅威への対応) を行って、脅威への対応を自動化します。

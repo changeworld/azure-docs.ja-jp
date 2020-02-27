@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service (AKS) コントローラー ログの表示
 description: Azure Kubernetes Service (AKS) で Kubernetes マスター ノードのログを有効にし、それらを表示する方法について説明します
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
-ms.author: mlearned
-ms.openlocfilehash: dc72a8d448a189918def35da0250d83c81da7fa0
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: f759f15cf98546cb95ba0adb5890885f85ca6aa1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812816"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592790"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Kubernetes マスター ノード ログの有効化とレビュー
 
@@ -126,7 +123,7 @@ AzureDiagnostics
 | *masterclient*           | az aks get-credentials から取得する証明書 MasterClientCertificate に対する監査ログの表示名 |
 | *nodeclient*             | エージェント ノードによって使用される ClientCertificate に対する表示名 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、AKS クラスターの Kubernetes マスター コンポーネントのログを有効にして表示する方法について説明しました。 さらに詳細な監視方法やトラブルシューティング方法については、[Kubelet ログの表示][kubelet-logs]と [SSH ノード アクセスの有効化][aks-ssh]に関する記事をご覧ください。
 

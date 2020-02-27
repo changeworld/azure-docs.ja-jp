@@ -3,12 +3,12 @@ title: Microsoft Azure Backup Server の新機能
 description: Microsoft Azure Backup Server には、VM、ファイルとフォルダー、ワークロードなどを保護するための高度なバックアップ機能があります。 Azure Backup Server V3 をインストールまたはアップグレードする方法を説明します。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 564b11ebf14652166733c226485dfab94e69dfbb
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 61430ce06d3e441fcfe0443eaaf5de3755b04624
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172217"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582808"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Microsoft Azure Backup Server の新機能
 
@@ -18,7 +18,7 @@ MABS V3 には、次の機能が含まれています。
 
 ## <a name="volume-to-volume-migration"></a>ボリュームからボリュームへの移行
 
-MABS V2 の Modern Backup Storage (MBS) では、ワークロード対応ストレージが発表されており、ストレージのプロパティに基づいて、特定のワークロードを特定のストレージにバックアップするように構成することができます。 ただし、構成後に、リソースの使用状況を最適化するために、特定のデータ ソースのバックアップを他のストレージに移動する処理が必要になることがあります。 MABS V3 には、[3 つの手順](https://blogs.technet.microsoft.com/dpm/2017/10/24/storage-migration-with-dpm-2016-mbs/)で、バックアップを移行し、別のボリュームに格納するように構成する機能があります。
+MABS V2 の Modern Backup Storage (MBS) では、ワークロード対応ストレージが発表されており、ストレージのプロパティに基づいて、特定のワークロードを特定のストレージにバックアップするように構成することができます。 ただし、構成後に、リソースの使用状況を最適化するために、特定のデータ ソースのバックアップを他のストレージに移動する処理が必要になることがあります。 MABS V3 には、[3 つの手順](https://techcommunity.microsoft.com/t5/system-center-blog/sc-2016-dpm-ur4-migrate-backup-storage-in-3-simple-steps/ba-p/351842)で、バックアップを移行し、別のボリュームに格納するように構成する機能があります。
 
 ## <a name="prevent-unexpected-data-loss"></a>予想外のデータ損失を防ぐ
 
@@ -59,7 +59,7 @@ MABS のインストールまたはアップグレード手順の詳細につい
 >
 > MABS には、System Center Data Protection Manager と同じコード ベースがあります。 MABS v3 は Data Protection Manager 1807 と同等です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 サーバーを準備する方法、またはワークロードの保護を開始する方法を説明します。
 

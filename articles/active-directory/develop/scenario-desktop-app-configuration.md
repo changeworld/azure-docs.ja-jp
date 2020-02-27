@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b2a5a66f2801804b354dd8945ea7d8eb565e82cb
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 2ba69e6447c686230412c33e74196c4bb594e0de
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702217"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611815"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Web API を呼び出すデスクトップ アプリ:コード構成
 
@@ -40,7 +40,7 @@ ms.locfileid: "76702217"
 
 コードの観点から、デスクトップ アプリケーションは、パブリック クライアント アプリケーションです。 対話型認証を使用するかどうかによって、構成は少し異なります。
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 MSAL.NET `IPublicClientApplication` を作成して操作する必要があります。
 
@@ -185,17 +185,17 @@ var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.Pub
 
 `.Build()` メソッドを呼び出す前に、前述のように `.WithXXX` メソッドを呼び出すことで構成を上書きできます。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 MSAL Java 開発サンプルでその構成に使用されているクラスを次に示します。[TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java)。
 
 ```Java
-PublicClientApplication app = PublicClientApplication.builder(TestData.PUBLIC_CLIENT_ID)
-        .authority(TestData.AUTHORITY_COMMON)
+PublicClientApplication pca = PublicClientApplication.builder(CLIENT_ID)
+        .authority(AUTHORITY)
         .build();
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 config = json.load(open(sys.argv[1]))
@@ -208,7 +208,7 @@ app = msal.PublicClientApplication(
     )
 ```
 
-# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
 以下のコードでは、パブリック クライアント アプリケーションをインスタンス化して、職場または学校アカウントあるいは個人用 Microsoft アカウントを使用して、Microsoft Azure のパブリック クラウドにユーザーをサインインさせます。
 

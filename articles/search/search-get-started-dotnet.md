@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 02/10/2020
-ms.openlocfilehash: e9f43f729fc9e08054cd160b82945ee4bcd5821c
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 3d0006a3c77050c1bb21a0da8d6be51e659f933d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121649"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589217"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-c-using-the-net-sdk"></a>クイック スタート:.NET SDK を使用して C# で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -215,7 +215,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     namespace AzureSearchQuickstart
     {
-        class Program
+        class Program {
             // Demonstrates index delete, create, load, and query
             // Commented-out code is uncommented in later steps
             static void Main(string[] args)

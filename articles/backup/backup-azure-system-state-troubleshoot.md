@@ -4,12 +4,12 @@ description: この記事では、オンプレミスの Windows Server のシス
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: fde5fd9f2464c2aff9a7a34ffa440ab9a6a1ca51
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: f311de435d813cb0e6f8a2c3d932e05d695603f3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665039"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583301"
 ---
 # <a name="troubleshoot-system-state-backup"></a>システム状態のバックアップをトラブルシューティングする
 
@@ -20,11 +20,11 @@ ms.locfileid: "75665039"
 システム状態のバックアップのトラブルシューティングを開始する前に、以下の検証を実行することをお勧めします。
 
 - [Microsoft Azure Recovery Services (MARS) エージェントが最新であることを確認する](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
-- [MARS エージェントと Azure の間にネットワーク接続が存在することを確認する](https://aka.ms/AB-A4dp50)
+- [MARS エージェントと Azure の間にネットワーク接続が存在することを確認する](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - Microsoft Azure Recovery Services が (サービス コンソールで) 実行されていることを確認します。 必要に応じて、再起動して操作をやり直します
-- [スクラッチ フォルダーの場所に 5 から 10% の空きボリューム領域があることを確認する](https://aka.ms/AB-AA4dwtt)
-- [別のプロセスまたはウイルス対策ソフトウェアによって Azure Backup が妨げられているかどうかを確認する](https://aka.ms/AB-AA4dwtk)
-- [スケジュールされたバックアップが失敗したが、手動バックアップは機能する](https://aka.ms/ScheduledBackupFailManualWorks)
+- [スクラッチ フォルダーの場所に 5 から 10% の空きボリューム領域があることを確認する](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#whats-the-minimum-size-requirement-for-the-cache-folder)
+- [別のプロセスまたはウイルス対策ソフトウェアによって Azure Backup が妨げられているかどうかを確認する](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)
+- [スケジュールされたバックアップが失敗したが、手動バックアップは機能する](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#backups-dont-run-according-to-schedule)
 - OS に最新の更新プログラムが適用されていることを確認する
 - [サポートされていない属性を持つサポートされていないドライブとファイルはバックアップから除外されることを確認する](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)
 - 保護されているシステム上の**システム クロック**が適切なタイム ゾーンに構成されていることを確認します <br>
@@ -33,7 +33,7 @@ ms.locfileid: "75665039"
   - エージェントがサーバーからアンインストールされていることと、ポータルから削除されていることを確認します。 <br>
   - 最初にサーバーの登録に使用したのと同じパスフレーズを使用します <br>
 - これがオフライン バックアップの場合は、ソース コンピューターとコピー用コンピューターの両方に Azure PowerShell バージョン 3.7.0 がインストールされていることを確認します
-- [Azure 仮想マシン (VM) 上で Backup エージェントが実行されている場合の考慮事項](https://aka.ms/AB-AA4dwtr)
+- [Azure 仮想マシン (VM) 上で Backup エージェントが実行されている場合の考慮事項](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-backup-agent-running-on-an-azure-virtual-machine)
 
 ### <a name="limitation"></a>制限事項
 

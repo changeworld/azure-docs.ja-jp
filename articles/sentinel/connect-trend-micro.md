@@ -3,7 +3,7 @@ title: Trend Micro Deep Security を Azure Sentinel に接続する | Microsoft 
 description: Trend Micro Deep Security を Azure Sentinel に接続する方法について説明します。
 services: sentinel
 documentationcenter: na
-author: cabailey
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: cabailey
-ms.openlocfilehash: ba5b560f068d453f07e2dbbfdf5140ca1f4ac2b8
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: a25d76b4b8a6f516de70604146bd1b236ba3ca1e
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610439"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588027"
 ---
 # <a name="connect-trend-micro-deep-security"></a>Trend Micro Deep Security の接続
 
@@ -42,6 +42,6 @@ Trend Micro Deep Security コネクタを使用すると、Deep Security のロ�
 このドキュメントでは、Trend Micro Deep Security を Azure Sentinel に接続する方法を説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用して](tutorial-monitor-your-data.md)データを監視します。
+- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
 
 

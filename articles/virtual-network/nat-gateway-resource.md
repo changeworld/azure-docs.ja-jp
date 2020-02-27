@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/19/2020
+ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: a118d560541595e26c80547dd641968c518aa353
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 9d9033689472fbc462eefd3d31c2b36a19add81a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485014"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589472"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>NAT ゲートウェイ リソースを使用した仮想ネットワークの設計 (パブリック プレビュー)
 
@@ -35,9 +35,6 @@ NAT ゲートウェイ リソースは、[Virtual Network NAT](nat-overview.md) 
 
 >[!NOTE] 
 >Virtual Network NAT は、現時点ではパブリック プレビューとして提供されています。 現在は、ご利用いただける[リージョン](nat-overview.md#region-availability)が限られています。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.comsupport/legal/preview-supplemental-terms)」をご覧ください。
-
-> [!IMPORTANT]
-> ご利用のサブスクリプションで Virtual Network NAT [プレビューを有効](./nat-overview.md#enable-preview)にした後は、 https://aka.ms/natportal を使用してポータルにアクセスしてください。
 
 ## <a name="how-to-deploy-nat"></a>NAT をデプロイする方法
 
@@ -339,7 +336,6 @@ SNAT ポートは、同じ送信先 IP アドレスおよび同じ送信先ポ�
 
 - NAT は、Standard SKU のパブリック IP、パブリック IP プレフィックス、ロード バランサーの各リソースと共に利用することができます。   Basic リソース (Basic Load Balancer など) やそれらから派生した製品を NAT と共存させることはできません。  Basic リソースは、NAT が構成されていないサブネットに配置する必要があります。
 - サポートされるアドレス ファミリーは IPv4 です。  IPv6 アドレス ファミリーを NAT で扱うことはできません。
-- サブネットや NIC 上の NSG は、NAT を使用したパブリック エンドポイントへのアウトバウンド フローでは遵守されません。
 - NAT を使用している場合、NSG フロー ログはサポートされません。
 - NAT を複数の仮想ネットワークにまたがって使用することはできません。
 

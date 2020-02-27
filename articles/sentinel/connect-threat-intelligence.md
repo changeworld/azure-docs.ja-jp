@@ -2,7 +2,7 @@
 title: Azure Sentinel に脅威インテリジェンス データを接続する | Microsoft Docs
 description: 脅威インテリジェンス データを Azure Sentinel に接続する方法について説明します。
 documentationcenter: na
-author: cabailey
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: security-center
@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
-ms.author: cabailey
-ms.openlocfilehash: 33edeb04e88a01efafaf69b850ed87120671ed11
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.author: yelevin
+ms.openlocfilehash: 5c79642d287224cd15531701d7cc87ebfd72eb69
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384136"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588044"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>脅威インテリジェンス プロバイダーからデータを接続する
 
@@ -104,7 +104,7 @@ Azure Sentinel を使用すると、組織で使用されている脅威イン�
 
 6. Azure Sentinel にインポートされた脅威インジケーターを表示するには、 **[Azure Sentinel - ログ]**  >  **[SecurityInsights]** に移動し、 **[ThreatIntelligenceIndicator]** を展開します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このドキュメントでは、Azure Sentinel に脅威インテリジェンス プロバイダーを接続する方法を説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 

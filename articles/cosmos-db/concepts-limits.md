@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 940ac7b0a2720283b669fc7ea5a9dbc163ddbe64
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 5681efc202df511745532e4a314e88b319e9880a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460213"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623402"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB サービスのクォータ
 
@@ -26,7 +26,7 @@ ms.locfileid: "77460213"
 | コンテナーあたりの最大 RU ([専用スループット プロビジョニング モード](databases-containers-items.md#azure-cosmos-containers)) | 既定では 1,000,000。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ことによって増やすことができます |
 | データベースあたりの最大 RU ([共有スループット プロビジョニング モード](databases-containers-items.md#azure-cosmos-containers)) | 既定では 1,000,000。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ことによって増やすことができます |
 | (論理) パーティション キーあたりの最大 RU | 10,000 |
-| (論理) パーティション キーあたりのすべての項目にまたがる最大ストレージ| 10 GB |
+| (論理) パーティション キーあたりのすべての項目にまたがる最大ストレージ| 20 GB |
 | 個別の (論理) パーティション キーの最大数 | 無制限 |
 | コンテナーあたりの最大ストレージ | 無制限 |
 | データベースあたりの最大ストレージ | 無制限 |

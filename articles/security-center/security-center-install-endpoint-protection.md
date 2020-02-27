@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
 ms.author: memildin
-ms.openlocfilehash: 70b7f511c32013a5dbc9369a2dfba2b8cd5f9145
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: e1ed403babe66b465fb1800dc8c5a90c7a8f1a08
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558609"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604116"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Azure Security Center での Endpoint Protection の問題の管理
 Azure Security Center では、マルウェア保護の状態を監視し、[Endpoint protection issues]\(Endpoint Protection の問題\) ページでこれを報告します。 Security Center では、仮想マシン (VM) やコンピューターをマルウェアの脅威に対して脆弱にする可能性のある問題 (検出された脅威や不十分な保護など) が示されます。 **[Endpoint protection issues]\(Endpoint Protection の問題\)** に表示される情報を使用して、特定された問題に対処する計画を立てることができます。
@@ -54,7 +54,7 @@ Endpoint Protection の問題は、Security Center に推奨事項として表�
 
    ![[Endpoint protection issues]\(Endpoint Protection の問題\) を選択する][2]
 
-   ダッシュボードの上部に次の情報が表示されます。
+   ダッシュボードの上部には、次の情報が表示されます。
 
    - [Installed endpoint protection providers]\(インストール済みの Endpoint Protection プロバイダー\) - Security Center によって特定された各種プロバイダーが表示されます。
    - [Installed endpoint protection health state]\(インストール済みの Endpoint Protection の正常性状態\) - Endpoint Protection ソリューションがインストールされている VM とコンピューターの正常性状態が表示されます。 グラフには、正常な VM とコンピューターの数、および保護が不十分な VM とコンピューターの数が示されます。
@@ -96,7 +96,7 @@ Endpoint Protection の問題は、Security Center に推奨事項として表�
 >
 >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、"Endpoint Protection をインストールします" という Security Center の推奨事項を実装する方法について説明しました。 Azure での Microsoft マルウェア対策の有効化の詳細については、次のドキュメントを参照してください。
 
 * [Cloud Services および Virtual Machines 向け Microsoft マルウェア対策](../security/fundamentals/antimalware.md) - Microsoft マルウェア対策をデプロイする方法を説明しています。
@@ -104,12 +104,10 @@ Endpoint Protection の問題は、Security Center に推奨事項として表�
 Security Center の詳細については、次のドキュメントを参照してください。
 
 * [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md) 」-- セキュリティ ポリシーの構成方法について説明しています。
-* [Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md) 」-- 推奨事項に従って Azure リソースを保護する方法について説明しています。
+* [Azure セキュリティ センターでのセキュリティに関する推奨事項の管理](security-center-recommendations.md) 」 -- 推奨事項に従って Azure リソースを保護する方法について説明しています。
 * [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md) 」-- Azure リソースの正常性を監視する方法について説明しています。
 * [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」-- セキュリティの警告の管理と対応の方法について説明しています。
 * [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) 」-- パートナー ソリューションの正常性状態を監視する方法について説明しています。
-* [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」-- このサービスの使用に関してよく寄せられる質問が記載されています。
-* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 
 <!--Image references-->
 [1]:./media/security-center-install-endpoint-protection/compute.png

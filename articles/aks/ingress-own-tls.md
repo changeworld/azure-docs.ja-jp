@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service (AKS) クラスターを使用したイングレス用の独自の TLS 証明書の使用
 description: Azure Kubernetes Service (AKS) クラスターで独自の証明書を使用する NGINX イングレス コントローラーをインストールして構成する方法を説明します。
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.author: mlearned
-ms.openlocfilehash: fc7f2180e4166070fe44863aed2b12135b0db8ee
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: e567f5384cdd1e40ea67284713a29a92ee87af7e
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097853"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595503"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で HTTPS イングレス コントローラーを作成し、独自の TLS 証明書を使用する
 
@@ -20,7 +17,7 @@ ms.locfileid: "71097853"
 
 この記事では、Azure Kubernetes Service (AKS) クラスターに [NGINX イングレス コントローラー][nginx-ingress]を展開する方法について説明します。 独自の証明書を生成し、イングレス ルートで使用する Kubernetes シークレットを作成します。 最後に、それぞれが 1 つの IP アドレスでアクセスできる、2 つのアプリケーションを AKS クラスターで実行します。
 
-さらに、以下を実行できます。
+次のこともできます。
 
 - [外部のネットワーク接続を使用して基本的なイングレス コントローラーを作成する][aks-ingress-basic]
 - [HTTP アプリケーションのルーティング アドオンを有効にする][aks-http-app-routing]
@@ -224,7 +221,7 @@ $ curl -v -k --resolve demo.azure.com:443:137.117.36.18 https://demo.azure.com/h
 [...]
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この記事では、Helm を使用して、イングレス コンポーネントおよびサンプル アプリをインストールしました。 Helm グラフをデプロイすると、多数の Kubernetes リソースが作成されます。 これらのリソースには、ポッド、デプロイ、およびサービスが含まれます。 これらのリソースをクリーンアップするには、サンプルの名前空間全体を削除するか、またはリソースを個々に削除します。
 
@@ -289,14 +286,14 @@ kubectl delete secret aks-ingress-tls
 kubectl delete namespace ingress-basic
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事には、AKS への外部コンポーネントが含まれています。 これらのコンポーネントの詳細については、次のプロジェクト ページを参照してください。
 
 - [Helm CLI][helm-cli]
 - [NGINX イングレス コントローラー][nginx-ingress]
 
-さらに、以下を実行できます。
+次のこともできます。
 
 - [外部のネットワーク接続を使用して基本的なイングレス コントローラーを作成する][aks-ingress-basic]
 - [HTTP アプリケーションのルーティング アドオンを有効にする][aks-http-app-routing]

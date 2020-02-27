@@ -3,12 +3,12 @@ title: Azure Stack 上の SharePoint ファームのバックアップ
 description: Azure Backup Server を使用して、Azure Stack 上の SharePoint データをバックアップおよび復元します。 この記事では、目的のデータを Azure に保存できるように SharePoint ファームを構成するための情報を提供します。 ディスクまたは Azure から保護対象の SharePoint データを復元できます。
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: 06d64be4f09c6fb6ed9dee34a0c7ba0b1bd785e6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: c503ac7a76872e71d1920765656610dd462d4db3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172491"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583216"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Azure Stack 上の SharePoint ファームのバックアップ
 
@@ -18,7 +18,7 @@ Microsoft Azure Backup Server (MABS) を使用して Azure Stack 上の SharePoi
 
 MABS 用 Azure Backup は、次のシナリオをサポートします。
 
-| ワークロード | バージョン | SharePoint のデプロイ | 保護と回復 |
+| ワークロード | Version | SharePoint のデプロイ | 保護と回復 |
 | --- | --- | --- | --- |
 | SharePoint |SharePoint 2016、SharePoint 2013、SharePoint 2010 |Azure Stack 仮想マシンとしてデプロイされた SharePoint <br> -------------- <br> SQL AlwaysOn | SharePoint ファームの保護の回復オプション: ディスク復旧ポイントからのファーム、データベース、およびファイルまたはリスト項目の回復。  Azure の回復ポイントからのファームとデータベースの回復。 |
 
@@ -32,7 +32,7 @@ SharePoint ファームを Azure にバックアップする前に、確認す�
 
 ### <a name="protection-agent"></a>保護エージェント
 
-Azure Backup エージェントを、SharePoint を実行するサーバー、SQL Server を実行するサーバー、および SharePoint ファームを構成するその他のすべてのサーバーにインストールする必要があります。 保護エージェントのセットアップ方法の詳細については、「[保護エージェントの設定](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx)」をご覧ください。  唯一の例外は、1 台の Web フロント エンド (WFE) サーバーにだけエージェントをインストールすることです。 Azure Backup Server が保護のエントリ ポイントとして使用するためにエージェントをインストールする必要がある WFE サーバーは 1 台だけです。
+Azure Backup エージェントを、SharePoint を実行するサーバー、SQL Server を実行するサーバー、および SharePoint ファームを構成するその他のすべてのサーバーにインストールする必要があります。 保護エージェントのセットアップ方法の詳細については、「[保護エージェントの設定](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019)」をご覧ください。  唯一の例外は、1 台の Web フロント エンド (WFE) サーバーにだけエージェントをインストールすることです。 Azure Backup Server が保護のエントリ ポイントとして使用するためにエージェントをインストールする必要がある WFE サーバーは 1 台だけです。
 
 ### <a name="sharepoint-farm"></a>SharePoint ファーム
 
@@ -238,7 +238,7 @@ A:はい、元の SharePoint サイトにアイテムを回復できます。
 Q:SharePoint が SQL AlwaysOn を使用して構成されている場合、SharePoint データベースを元の場所に回復できますか?<br>
 A:SharePoint データベースは SQL AlwaysOn で構成されているので、可用性グループを削除しない限り、変更することはできません。 結果として、MABS は元の場所にデータベースを復元できません。 SQL Server データベースを別の SQL Server インスタンスに回復することはできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ファイルとアプリケーションのバックアップ](backup-mabs-files-applications-azure-stack.md)に関する記事をご覧ください。
 [Azure Stack での SQL Server のバックアップ](backup-mabs-sql-azure-stack.md)に関する記事をご覧ください。

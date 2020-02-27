@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service (AKS) でポッド セキュリティ ポリシーを使用する
 description: Azure Kubernetes Service (AKS) で PodSecurityPolicy を使用してポッドのアドミッションを制御する方法について学習する
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 04/17/2019
-ms.author: mlearned
-ms.openlocfilehash: 5aec645c19ee5f813fdefb57d728c14688da8712
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: bc22a577777e50724fbafa04cf01f28362113cc7
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926407"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592834"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>プレビュー - Azure Kubernetes Service (AKS) でポッド セキュリティ ポリシーを使用してクラスターのセキュリティを保護する
 
@@ -47,7 +44,7 @@ az extension update --name aks-preview
 ポッド セキュリティ ポリシーを使用するために AKS クラスターを作成または更新するには、まず自分のサブスクリプションで機能フラグを有効にします。 *PodSecurityPolicyPreview* 機能フラグを登録するには、次の例に示すように [az feature register][az-feature-register] コマンドを使用します。
 
 > [!CAUTION]
-> サブスクリプションで機能を登録する場合、現時点ではその機能の登録解除を行うことができません。 一部のプレビュー機能を有効にした後、すべての AKS クラスターに対して既定値が使用され、サブスクリプション内に作成されます。 運用サブスクリプションではプレビュー機能を有効にしないでください。 プレビュー機能をテストし、フィードバックを集めるには、別のサブスクリプションを使用してください。
+> サブスクリプションで機能を登録する場合、現時点ではその機能を登録解除することはできません。 一部のプレビュー機能を有効にした後、すべての AKS クラスターに対して既定値が使用され、サブスクリプション内に作成されます。 運用サブスクリプションではプレビュー機能を有効にしないでください。 プレビュー機能をテストし、フィードバックを集めるには、別のサブスクリプションを使用してください。
 
 ```azurecli-interactive
 az feature register --name PodSecurityPolicyPreview --namespace Microsoft.ContainerService
@@ -73,7 +70,7 @@ Kubernetes クラスターでは、リソースが作成されるときに API �
 
 AKS クラスターでポッド セキュリティ ポリシーを有効にすると、いくつかの既定のポリシーが適用されます。 これらの既定のポリシーには、どのようなポッドをスケジュールできるかを定義するための、すぐに使えるエクスペリエンスが用意されています。 ただし、独自のポリシーを定義するまでは、クラスター ユーザーはポッドのデプロイで問題に遭遇する可能性があります。 推奨される方法:
 
-* AKS クラスターの作成
+* AKS クラスターを作成する
 * 独自のポッド セキュリティ ポリシーを定義する
 * ポッド セキュリティ ポリシー機能を有効にする
 
@@ -131,7 +128,7 @@ subjects:
   name: system:authenticated
 ```
 
-独自のセキュリティ ポリシーの作成を開始する前に、これらの既定のポリシーがポッドをスケジュールするためにどのようにユーザー要求とやり取りしているかを理解することが重要です。 次のいくつかのセクションでは、これらの既定のポリシーの動作を確認するために、いくつかポッドをスケジュールしてみましょう。
+独自のセキュリティ ポリシーの作成を開始する前に、これらの既定のポリシーがポッドをスケジュールするためにどのようにユーザー要求に作用するかを理解することが重要です。 次のいくつかのセクションでは、これらの既定のポリシーの動作を確認するために、いくつかポッドをスケジュールしてみましょう。
 
 ## <a name="create-a-test-user-in-an-aks-cluster"></a>AKS クラスターでテスト ユーザーを作成する
 
@@ -468,7 +465,7 @@ nginx-unprivileged   1/1     Running   0          7m14s
 kubectl-nonadminuser delete -f nginx-unprivileged.yaml
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 ポッド セキュリティ ポリシーを無効にするには、再び [az aks update][az-aks-update] コマンドを使用します。 次の例は、*myResourceGroup* という名前のリソース グループ内のクラスター名 *myAKSCluster* でポッド セキュリティ ポリシーを無効にします。
 
@@ -498,7 +495,7 @@ kubectl delete -f psp-deny-privileged.yaml
 kubectl delete namespace psp-aks
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、特権アクセスの使用を防止するためのポッド セキュリティ ポリシーを作成する方法を示しました。 ボリュームの種類や RunAs ユーザーなど、ポリシーが適用できるたくさんの機能があります。 利用可能なオプションの詳細については、[Kubernetes ポッド セキュリティ ポリシーの参照ドキュメント][kubernetes-policy-reference]に関するページを参照してください。
 
