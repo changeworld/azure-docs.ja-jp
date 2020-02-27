@@ -93,7 +93,7 @@ Azure Machine Learning ワークスペースの仮想ネットワーク内で Da
 
 仮想ネットワーク内で Data Lake Storage Gen 2 と共に Azure Machine Learning を使用する場合は、次のガイダンスを使用します。
 
-* __SDK を使用してデータセットを作成__し、コードを実行しているシステムが__仮想ネットワークにない__場合は、`validate=False` パラメーターを使用します。 このパラメーターは、システムがストレージ アカウントと同じ仮想ネットワーク内にない場合に失敗する検証をスキップします。 詳細については、[from_files()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) メソッドを参照してください。
+* __SDK を使用してデータセットを作成__ し、コードを実行しているシステムが __仮想ネットワークにない__ 場合は、`validate=False` パラメーターを使用します。 このパラメーターは、システムがストレージ アカウントと同じ仮想ネットワーク内にない場合に失敗する検証をスキップします。 詳細については、[from_files()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) メソッドを参照してください。
 
 * Azure Machine Learning コンピューティング インスタンスまたはコンピューティング クラスターを使用し、データセットを使用してモデルをトレーニングする場合は、ストレージ アカウントと同じ仮想ネットワーク内に存在する必要があります。
 
@@ -176,14 +176,14 @@ Azure portal 内での NSG 規則の構成は、次の画像に示したとお�
 
 - NSG 規則を使用して、アウトバウンドのインターネット接続を拒否します。
 
-- __コンピューティング インスタンス__または__コンピューティング クラスター__の場合は、次の項目への送信トラフィックを制限します。
-   - Azure Storage (__Storage.RegionName__ の__サービス タグ__を使用)。 ここで、`{RegionName}` は Azure リージョンの名前です。
-   - Azure Container Registry (__AzureContainerRegistry.RegionName__ の__サービス タグ__を使用)。 ここで、`{RegionName}` は Azure リージョンの名前です。
+- __コンピューティング インスタンス__ または __コンピューティング クラスター__ の場合は、次の項目への送信トラフィックを制限します。
+   - Azure Storage (__Storage.RegionName__ の __サービス タグ__ を使用)。 ここで、`{RegionName}` は Azure リージョンの名前です。
+   - Azure Container Registry (__AzureContainerRegistry.RegionName__ の __サービス タグ__ を使用)。 ここで、`{RegionName}` は Azure リージョンの名前です。
    - Azure Machine Learning (__AzureMachineLearning__ の __サービス タグ__ を使用)
    
-- __コンピューティング インスタンス__については、次の項目も追加します。
+- __コンピューティング インスタンス__ については、次の項目も追加します。
    - Azure Resource Manager (__AzureResourceManager__ の __サービス タグ__ を使用)
-   - Azure Active Directory (__AzureActiveDirectory__ の__サービス タグ__を使用)
+   - Azure Active Directory (__AzureActiveDirectory__ の __サービス タグ__ を使用)
 
 Azure portal 内での NSG 規則の構成は、次の画像に示したとおりです。
 
@@ -504,7 +504,7 @@ Azure Firewall を使用する場合は、次のアドレスとの間で送受�
 
 ## <a name="use-azure-container-registry"></a>Azure Container Registry の使用
 
-Azure Machine Learning で仮想ネットワークを使用する場合は、ワークスペース用の Azure Container Registry を仮想ネットワーク内に配置__しないでください__。 この構成はサポートされていません。
+Azure Machine Learning で仮想ネットワークを使用する場合は、ワークスペース用の Azure Container Registry を仮想ネットワーク内に配置 __しないでください__。 この構成はサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 
