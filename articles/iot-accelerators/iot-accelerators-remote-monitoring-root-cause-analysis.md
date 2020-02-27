@@ -1,21 +1,21 @@
 ---
 title: アラートの根本原因分析を実施する - Azure | Microsoft Docs
 description: このチュートリアルでは、Azure Time Series Insights を使ってアラートの根本原因分析を実施する方法について説明します。
-author: aditidugar
-ms.author: adugar
+author: Philmea
+ms.author: philmea
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 70d29359d4a4bcf9f5badbbf0c553d7bed88a02b
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: c3cb940583677d813873c07fbfa679fdcc1dff59
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284566"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565470"
 ---
-# <a name="tutorial-conduct-a-root-cause-analysis-on-an-alert"></a>チュートリアル: アラートの根本原因分析を実施する
+# <a name="tutorial-conduct-a-root-cause-analysis-on-an-alert"></a>チュートリアル:アラートでの根本原因分析の実施
 
 このチュートリアルでは、リモート監視ソリューション アクセラレータを使用してアラートの根本原因を診断する方法を説明します。 リモート監視ソリューション ダッシュボードでアラートがトリガーされたことを確認し、Azure Time Series Insights エクスプローラーを使って根本原因を調査します。
 
@@ -48,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [![トラックの高度テレメトリのプロット](./media/iot-accelerators-remote-monitoring-root-cause-analysis/trucks-moving-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/trucks-moving-expanded.png#lightbox)
 
-トラックの温度テレメトリを表示するには、**[テレメトリ]** パネルで **[温度]** をクリックします。 両方のトラックの温度が過去 15 分間にどのように変化したかを見ることができます。 アラート ウィンドウでは delivery-truck-02 に対して低温のアラートがトリガーされたこともわかります。
+トラックの温度テレメトリを表示するには、 **[テレメトリ]** パネルで **[温度]** をクリックします。 両方のトラックの温度が過去 15 分間にどのように変化したかを見ることができます。 アラート ウィンドウでは delivery-truck-02 に対して低温のアラートがトリガーされたこともわかります。
 
 [![低温アラートが表示された RM ダッシュボード](./media/iot-accelerators-remote-monitoring-root-cause-analysis/low-temp-alert-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/low-temp-alert-expanded.png#lightbox)
 
@@ -74,7 +74,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [![TSI エクスプローラーの新しいウィンドウ](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-pane-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-pane-expanded.png#lightbox)
 
-新しいウィンドウで、新しいラベルの名前を「**デバイス**」に変更して前のものと一致するようにします。 **[メジャー]** として**高度**を選択し、**[次で分割]** の値として **iothub-connection-device-id** を選択して、高度テレメトリをビューに追加します。
+新しいウィンドウで、新しいラベルの名前を「**デバイス**」に変更して前のものと一致するようにします。 **[メジャー]** として**高度**を選択し、 **[次で分割]** の値として **iothub-connection-device-id** を選択して、高度テレメトリをビューに追加します。
 
 [![温度と高度が表示された TSI エクスプローラー](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-altitude-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-altitude-expanded.png#lightbox)
 
@@ -82,7 +82,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 現在のビューのストリームを見ると、2 台のトラックの高度プロファイルが異なることがわかります。 また、トラックの高度が高くなると **delivery-truck-02** の温度が低下しています。 トラックは同じルートをたどるようにスケジュールされていたため、オペレータは驚きます。
 
-トラックが異なる経路を走ったかどうかを確認するため、**[追加]** ボタンを使用してサイド パネルに別のウィンドウを追加します。 新しいウィンドウで、新しいラベルの名前を「**デバイス**」に変更して前のものと一致するようにします。 **[メジャー]** として**経度**を選択し、**[次で分割]** の値として **iothub-connection-device-id** を選択して、経度テレメトリをビューに追加します。 **経度**ストリームの違いを見ることで、トラックが別の道を通ったことがわかります。
+トラックが異なる経路を走ったかどうかを確認するため、 **[追加]** ボタンを使用してサイド パネルに別のウィンドウを追加します。 新しいウィンドウで、新しいラベルの名前を「**デバイス**」に変更して前のものと一致するようにします。 **[メジャー]** として**経度**を選択し、 **[次で分割]** の値として **iothub-connection-device-id** を選択して、経度テレメトリをビューに追加します。 **経度**ストリームの違いを見ることで、トラックが別の道を通ったことがわかります。
 
 [![温度、高度、経度が表示された TSI エクスプローラー](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-longitude-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-longitude-expanded.png#lightbox)
 
@@ -96,7 +96,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、リモート監視ソリューション アクセラレータで Time Series Insights エクスプローラーを使用してアラートの根本原因を診断する方法を説明します。 ソリューション アクセラレータを使用して接続されているデバイスの問題を特定して修正する方法について学習するには、次のチュートリアルに進んでください。
 

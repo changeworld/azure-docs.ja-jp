@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: d734553dd8eaf51d42cc31304f6a42c9cad5bbcd
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: bb75631beed73a6ebd9d1cf2c00c375726fed387
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429083"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586990"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-powershell-and-test-the-nat-service"></a>チュートリアル:Azure PowerShell を使用した NAT ゲートウェイの作成と NAT サービスのテスト
 
@@ -35,8 +35,6 @@ ms.locfileid: "77429083"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-> [!IMPORTANT]
-> ご利用のサブスクリプションで Virtual Network NAT [プレビューを有効](./nat-overview.md#enable-preview)にした後、 https://aka.ms/natportal を使用してポータルにアクセスします。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -104,7 +102,7 @@ New-AzNatGateway -Name $nnm -ResourceGroupName $rsg -PublicIpAddress $publicIPso
 
 ## <a name="prepare-the-source-for-outbound-traffic"></a>送信トラフィックのソースの準備
 
-ここでは、完全なテスト環境のセットアップ手順を説明します。 オープンソース ツールを使用して NAT ゲートウェイを検証するテストをセットアップします。 まず、ソースの作業から始めます。先ほど作成した NAT ゲートウェイが使用されます。
+ここでは、完全なテスト環境のセットアップ手順を説明します。 オープンソース ツールを使用して、NAT ゲートウェイを検証するテストをセットアップしましょう。 まず、ソースの作業から始めます。先ほど作成した NAT ゲートウェイが使用されます。
 
 ### <a name="configure-virtual-network-for-source"></a>ソースの仮想ネットワークの構成
 
@@ -394,7 +392,7 @@ Get-AzPublicIpAddress -ResourceGroupName $rsg -Name $pipn | select IpAddress
 
 ### <a name="sign-in-to-destination-vm"></a>宛先 VM へのサインイン
 
-SSH 資格情報は、前の操作で Cloud Shell に格納されているはずです。  ご使用のブラウザーで [Azure Cloud Shell](https://shell.azure.com) を開きます。 前の手順で取得した IP アドレスを使用して、仮想マシンに SSH 接続します。 
+Cloud Shell には、前の操作で生成した SSH の資格情報が格納されているはずです。  ご使用のブラウザーで [Azure Cloud Shell](https://shell.azure.com) を開きます。 前の手順で取得した IP アドレスを使用して、仮想マシンに SSH 接続します。 
 
 ```bash
 ssh azureuser@<ip-address-destination>
@@ -477,7 +475,7 @@ curl http://<ip-address-destination>/100k --output /dev/null
 hey -n 100 -c 10 -t 30 --disable-keepalive http://<ip-address-destination>/100k
 ```
 
-このコマンドは、100 の要求を同時に 10 生成し、タイムアウトは 30 秒です。 TCP 接続は再利用されません。  それぞれの要求で 100 キロバイトが取得されます。  実行の最後に、NAT サービスの稼動状態についていくつかの統計情報が **hey** からレポートされます。
+このコマンドは、100 件の要求を生成するものです。一度に 10 件ずつ生成し、タイムアウトは 30 秒とします。 TCP 接続は再利用されません。  それぞれの要求で 100 キロバイトが取得されます。  実行の最後に、NAT サービスの稼動状態についていくつかの統計情報が **hey** からレポートされます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -490,7 +488,7 @@ Remove-AzResourceGroup -Name myResourceGroupNAT
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、NAT ゲートウェイを作成し、ソース VM と宛先 VM を作成した後、NAT ゲートウェイをテストしました。
 
-Azure Monitor でメトリックを見て、NAT サービスの稼動状態を確認しましょう。 利用可能な SNAT ポートのリソース枯渇などの問題を診断します。  SNAT ポートのリソース枯渇は、追加のパブリック IP アドレス リソースかパブリック IP プレフィックス リソース、またはその両方を追加することで簡単に解決できます。
+Azure Monitor でメトリックを見て、NAT サービスの稼動状態を確認しましょう。 利用可能な SNAT ポートのリソース枯渇などの問題を診断します。  SNAT ポートのリソース枯渇は、新しいパブリック IP アドレス リソースかパブリック IP プレフィックス リソース、またはその両方を追加することで簡単に解決できます。
 
 - [Virtual Network NAT](./nat-overview.md) について学習する。
 - [NAT ゲートウェイ リソース](./nat-gateway-resource.md)について学習する。

@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
-ms.date: 07/26/2019
-ms.openlocfilehash: ea4abada259c929f387b1477c127824ac6269319
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.date: 01/31/2020
+ms.openlocfilehash: 287933de6403d680c5aa5b6c78df49abe5f2ac56
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939159"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591372"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストに Azure Cosmos Emulator を使用する
 

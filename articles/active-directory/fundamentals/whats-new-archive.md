@@ -13,12 +13,12 @@ ms.author: mimart
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4d5c91966f8c490e056a84c89073e4da7cfdfd6
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: a2249be583f10aaf7ddda039fbd6d71729b06c36
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484487"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565487"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報のアーカイブ
 
@@ -1510,7 +1510,7 @@ SAML ベースのアプリの構成 UI が更新された一部として、以�
 
 - SAML アプリの NameID 形式を設定する方法と、ディレクトリ拡張機能として NameID 値を設定する方法。
 
-この更新されたビューをオンにするには、 **[シングル サインオン]** ページ上部の **[Try out our new experience] (新しいエクスペリエンスを試す)** リンクをクリックします。 詳細については、「[チュートリアル:Azure Active Directory による SAML ベースのシングル サインオンをアプリケーションに構成する](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal)」を参照してください。
+この更新されたビューをオンにするには、 **[シングル サインオン]** ページ上部の **[Try out our new experience] (新しいエクスペリエンスを試す)** リンクをクリックします。 詳細については、「[チュートリアル:Azure Active Directory による SAML ベースのシングル サインオンをアプリケーションに構成する](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications)」を参照してください。
 
 ---
 

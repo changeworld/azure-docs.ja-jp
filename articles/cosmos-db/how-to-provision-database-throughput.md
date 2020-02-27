@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 8b64d933057b3ddb07f5f99889c7d7c23c74f545
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 6b7ceca196831484e8f49482b8a18ac8648cac6e
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873660"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585477"
 ---
 # <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Azure Cosmos DB のデータベースのスループットをプロビジョニングする
 
@@ -21,7 +21,7 @@ ms.locfileid: "74873660"
 
 ### <a id="portal-sql"></a>SQL (Core) API
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. [新しい Azure Cosmos アカウントを作成する](create-sql-api-dotnet.md#create-account)か、既存の Azure Cosmos アカウントを選択します。
 
@@ -65,7 +65,7 @@ await client.CreateDatabaseIfNotExistsAsync(
 
 ### <a name="net-v3-sdk"></a>.Net V3 SDK
 
-[!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/DatabaseDocsSampleCode.cs?name=DatabaseCreateWithThroughput)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/DatabaseDocsSampleCode.cs" id="DatabaseCreateWithThroughput":::
 
 ### <a id="dotnet-cassandra"></a>Cassandra API
 同様のコマンドは、CQL に準拠している任意のドライバーを使用して実行できます。 
@@ -74,7 +74,7 @@ await client.CreateDatabaseIfNotExistsAsync(
 session.Execute("CREATE KEYSPACE IF NOT EXISTS myKeySpace WITH cosmosdb_provisioned_throughput=400");
 ```
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Cosmos DB のプロビジョニングされたスループットについては、次の記事を参照してください。
 

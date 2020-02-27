@@ -1,19 +1,19 @@
 ---
 title: Time Series Insights とリモート監視の統合 - Azure | Microsoft Docs
 description: このハウツーでは、Time Series Insights がまだ含まれていない既存のリモート監視ソリューションに Time Series Insights を構成する方法を説明します。
-author: aditidugar
+author: Philmea
 manager: timlt
-ms.author: adugar
+ms.author: philmea
 ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 4cc9b0051eaa12eee07f067352126ad159107a83
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 752529454a5b6293d9cbfdf8378b46947aed5a0e
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61442924"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564646"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Azure Time Series Insights とリモート監視の統合
 
@@ -49,7 +49,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
 次に、追加のリソースとして Time Series Insights をリモート監視ソリューションにデプロイし、IoT ハブに接続します。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. **[リソースの作成]**  >  **[モノのインターネット (IoT)]**  >  **[Time Series Insights]** を選択します。
 
@@ -57,11 +57,11 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
 1. Time Series Insights 環境を作成するには、次の表の値を使用します。
 
-    | Setting | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | 環境名 | 次のスクリーン ショットでは、**contorosrmtsi** という名前を使用しています。 この手順を完了したら、独自の一意の名前を選択してください。 |
     | サブスクリプション | ドロップダウンから Azure サブスクリプションを選択します。 |
-    | リソース グループ | **既存のものを使用します**。 既存のリモート監視リソース グループの名前を選択します。 |
+    | Resource group | **既存のものを使用します**。 既存のリモート監視リソース グループの名前を選択します。 |
     | Location | **[米国東部]** を使用します。 可能な場合は、リモート監視ソリューションと同じリージョンに環境を作成します。 |
     | Sku |**S1** |
     | 容量 | **1** |
@@ -86,7 +86,7 @@ IoT Hub に接続する新しいイベント ソースを作成します。 必�
 
 1. IoT Hub を新しいイベント ソースとして構成するには、次の表の値を使用します。
 
-    | Setting | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | イベント ソース名 | 次のスクリーン ショットでは、**contosorm-iot-hub** という名前を使用しています。 この手順を完了したら、独自の一意の名前を使用してください。 |
     | source | **IoT Hub** |
@@ -121,7 +121,7 @@ IoT Hub に接続する新しいイベント ソースを作成します。 必�
 
 1. **[ロール]** ドロップダウン リストで、 **[閲覧者]** や **[共同作成者]** などのロールを選択します。
 
-1. **[選択]** の一覧で、ユーザー、グループ、またはアプリケーションを選択します。 一覧にセキュリティ プリンシパルが表示されない場合には、 **[選択]** ボックスに表示名、メール アドレス、オブジェクト識別子を入力してディレクトリを検索します。
+1. **[選択]** の一覧で、ユーザー、グループ、またはアプリケーションを選択します。 [選択] 一覧で、ユーザー、グループ、サービス プリンシパル、またはマネージド ID を選択します。 一覧にセキュリティ プリンシパルが表示されない場合には、 **[選択]**  ボックスに表示名、メール アドレス、オブジェクト識別子を入力してディレクトリを検索します。
 
 1. **[保存]** を選択して、ロールの割り当てを作成します。 何分か待つと、セキュリティ プリンシパルにデータ アクセス ポリシー内のロールが割り当てられます。
 
@@ -296,7 +296,7 @@ Time Series Insights の統合を完了するには、更新されたマイク�
             key: telemetry.storage.type
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Time Series Insights エクスプローラーで、データを探索し、アラートを診断する方法については、[根本原因分析の実施](iot-accelerators-remote-monitoring-root-cause-analysis.md)に関するチュートリアルを参照してください。
 

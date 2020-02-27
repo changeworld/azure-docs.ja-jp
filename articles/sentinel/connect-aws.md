@@ -3,7 +3,7 @@ title: AWS CloudTrail を Azure Sentinel に接続する | Microsoft Docs
 description: Azure Sentinel に AWS CloudTrail のデータを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: rkarlin
-ms.openlocfilehash: 2913ef93d610b1d6a0ea57d79b27aee329838d25
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.author: yelevin
+ms.openlocfilehash: 5cbef1f31ea7088d4fab4888f5630af1b765a910
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75610745"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588656"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Azure Sentinel を AWS CloudTrail に接続する
 
@@ -83,5 +83,5 @@ Azure Sentinel ワークスペースへの書き込みアクセス許可が必�
 このドキュメントでは、AWS CloudTrail を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視します。
+- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
 

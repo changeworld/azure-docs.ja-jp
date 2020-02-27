@@ -181,6 +181,20 @@
   items:
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/securitycenter/'
+    - name: Azure Security Center の FAQ
+      items:
+        - name: 一般的な質問
+          href: faq-general.md
+        - name: 課金に関する質問
+          href: faq-billing.md
+        - name: アクセス許可に関する質問
+          href: faq-permissions.md
+        - name: データ収集とエージェントに関する質問
+          href: faq-data-collection-agents.md
+        - name: Virtual Machines に関する質問
+          href: faq-vms.md
+        - name: Azure Log Analytics の既存のユーザー
+          href: faq-azure-monitor-logs.md
     - name: リリース ノート
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: 機能と API の廃止 (2019 年 7 月)
@@ -195,8 +209,6 @@
       href: security-center-privacy.md
     - name: Azure Security Center for IoT のドキュメント
       href: 'https://docs.microsoft.com/azure/asc-for-iot/'
-    - name: よく寄せられる質問
-      href: security-center-faq.md
     - name: Azure のセキュリティのドキュメント
       href: /azure/security/
     - name: Azure の更新情報

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a01ebde09517cbe7f093dd56a8a4116e76e64e38
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 987c3ee7c90eb0bb793b96eb2771efbb258f16a4
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736771"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565504"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Azure AD とのアカウントの共有
 
@@ -51,7 +51,7 @@ Azure AD 管理者は、アクセス パネルを使用して、ユーザーが�
 
 共有アカウントは、管理作業の強化、使いやすさの向上だけでなく、セキュリティも強化します。 資格情報の使用権限を持つユーザーには、共有パスワードが表示されるのではなく、パスワードを調整された認証フローの一部として使用する権限が与えられます。 さらに、一部のパスワード SSO アプリケーションには、Azure AD を使って定期的にパスワードをロールオーバー (更新) するオプションがあります。 システムは、大規模で複雑なパスワードを使って、アカウントのセキュリティを強化します。 管理者は、アプリケーションへのアクセス権の付与または取り消しを簡単に行うことができ、アカウントへのアクセス権を持つユーザーおよび過去にアプリケーションにアクセスしたユーザーを把握できます。
 
-Azure AD では、あらゆる種類のパスワード シングル サインオン アプリケーションについて、Enterprise Mobility Suite (EMS) または Azure AD Premium ライセンス プランを対象とする共有アカウントがサポートされます。 アプリケーション ギャラリーに事前に統合された何千ものアプリケーションのいずれについてもアカウントを共有することができると共に、 [カスタム SSO アプリケーション](../manage-apps/configure-single-sign-on-portal.md)を使用して独自のパスワード認証アプリケーションを追加することができます。
+Azure AD では、あらゆる種類のパスワード シングル サインオン アプリケーションについて、Enterprise Mobility Suite (EMS) または Azure AD Premium ライセンス プランを対象とする共有アカウントがサポートされます。 アプリケーション ギャラリーに事前に統合された何千ものアプリケーションのいずれについてもアカウントを共有することができると共に、 [カスタム SSO アプリケーション](../manage-apps/configure-single-sign-on-non-gallery-applications.md)を使用して独自のパスワード認証アプリケーションを追加することができます。
 
 アカウントの共有を有効にする Azure AD の機能は、次のとおりです。
 
@@ -62,7 +62,7 @@ Azure AD では、あらゆる種類のパスワード シングル サインオ
 * [アプリケーションの使用状況に関するダッシュボード/レポート](../active-directory-passwords-get-insights.md)
 * エンド ユーザー アクセス ポータル
 * [アプリケーション プロキシ](../manage-apps/application-proxy.md)
-* [Azure Active Directory アプリケーション](https://azure.microsoft.com/marketplace/active-directory/all/)
+* [Active Directory マーケットプレース](https://azure.microsoft.com/marketplace/active-directory/all/)
 
 ## <a name="sharing-an-account"></a>アカウントの共有
 
@@ -74,7 +74,7 @@ Azure AD を使ってアカウントを共有するには、次の操作が必�
 
 Multi-Factor Authentication (MFA) で共有アカウントの安全性を強化 (詳細については「[Azure AD によるアプリケーションのセキュリティ保護](../authentication/concept-mfa-whichversion.md)」を参照) すると共に、[Azure AD のセルフ サービス](groups-self-service-management.md) グループ管理を使用してアプリケーションへのアクセス権限を有するユーザーを管理する機能を委任することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Active Directory のアプリケーション管理](../manage-apps/what-is-application-management.md)
 * [条件付きアクセスを使用したアプリケーションの保護](../active-directory-conditional-access-azure-portal.md)

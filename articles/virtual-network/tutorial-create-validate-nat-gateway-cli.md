@@ -13,16 +13,16 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: bc815281a005f750072176015a937547ff6d4670
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 26a427baddc99fa702b638c36b5378750364c849
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429073"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587024"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli-and-test-the-nat-service"></a>チュートリアル:Azure CLI を使用した NAT ゲートウェイの作成と、NAT サービスのテスト
 
-このチュートリアルでは、Azure 内の仮想マシンにアウトバウンド接続を提供する NAT ゲートウェイを作成します。 NAT ゲートウェイをテストするために、送信元の仮想マシンと送信先の仮想マシンをデプロイします。 パブリック IP アドレスへのアウトバウンド接続を行うことにより、NAT ゲートウェイをテストすることになります。 それらの接続は、送信元から送信先の仮想マシンに対して確立されます。 このチュートリアルでは、単純化のみを目的に、同じリソース グループ内の 2 つの異なる仮想ネットワークに送信元と送信先をデプロイします。
+このチュートリアルでは、Azure 内の仮想マシンにアウトバウンド接続を提供する NAT ゲートウェイを作成します。 NAT ゲートウェイをテストするために、ソースと宛先の仮想マシンをデプロイします。 パブリック IP アドレスへの送信接続を行って、NAT ゲートウェイをテストします。 それらの接続は、送信元から送信先の仮想マシンに対して確立されます。 このチュートリアルでは、単純化のみを目的に、同じリソース グループ内の 2 つの異なる仮想ネットワークに送信元と送信先をデプロイします。
 
 >[!NOTE] 
 >Azure Virtual Network NAT は、現時点ではパブリック プレビューとして提供され、ご利用いただける[リージョン](./nat-overview.md#region-availability)が限られています。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms)」をご覧ください。
@@ -34,8 +34,6 @@ ms.locfileid: "77429073"
 
 これらのコマンドをローカルで実行する場合は、CLI をインストールする必要があります。  このチュートリアルでは、Azure CLI バージョン 2.0.71 以降のバージョンが実行されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
-> [!IMPORTANT]
-> ご利用のサブスクリプションで Virtual Network NAT [プレビューを有効](./nat-overview.md#enable-preview)にした後は、 https://aka.ms/natportal を使用してポータルにアクセスしてください。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -75,8 +73,8 @@ NAT ゲートウェイでは、1 つまたは複数のパブリック IP アド�
 
 ### <a name="create-a-nat-gateway-resource"></a>NAT ゲートウェイ リソースの作成
 
-このセクションでは、NAT ゲートウェイ リソースを使用して、次の NAT サービス コンポーネントを作成、構成する方法について詳しく説明します。
-  - NAT ゲートウェイ リソースによって変換されるアウトバウンド フローに使用される、パブリック IP プールとパブリック IP プレフィックス。
+このセクションでは、NAT ゲートウェイ リソースを使用して、次の NAT サービスのコンポーネントを作成して構成する方法について説明します。
+  - NAT ゲートウェイ リソースによって変換される送信フローに使用する、パブリック IP プールとパブリック IP プレフィックス。
   - アイドル タイムアウトを既定値の 4 分から 10 分に変更します。
 
 [az network nat gateway create](https://docs.microsoft.com/cli/azure/network/nat?view=azure-cli-latest) を使用して、**myNATgateway** というグローバル Azure NAT ゲートウェイを作成します。 このコマンドでは、パブリック IP アドレス **myPublicIP** とパブリック IP プレフィックス **myPublicIPprefix** の両方を使用します。 さらに、アイドル タイムアウトを 10 分に変更します。
@@ -92,9 +90,9 @@ NAT ゲートウェイでは、1 つまたは複数のパブリック IP アド�
 
 この時点で、NAT ゲートウェイは機能する状態となっていますが、仮想ネットワークのどのサブネットでそれを使用するかを構成する作業だけ残っています。
 
-## <a name="prepare-the-source-for-outbound-traffic"></a>アウトバウンド トラフィックの送信元の準備
+## <a name="prepare-the-source-for-outbound-traffic"></a>送信トラフィックのソースの準備
 
-ここでは、完全なテスト環境のセットアップ手順を説明します。 オープンソース ツールを使用して、NAT ゲートウェイを検証するテストをセットアップしましょう。 まず、先ほど作成した NAT ゲートウェイを使用することになる送信元の作業から始めます。
+ここでは、完全なテスト環境のセットアップ手順を説明します。 オープンソース ツールを使用して、NAT ゲートウェイを検証するテストをセットアップしましょう。 まず、ソースの作業から始めます。先ほど作成した NAT ゲートウェイが使用されます。
 
 ### <a name="configure-virtual-network-for-source"></a>送信元用の仮想ネットワークの構成
 
@@ -126,7 +124,7 @@ VM をデプロイして NAT ゲートウェイをテストする前に、仮想
 
 これで、インターネットを宛先とするすべてのアウトバウンド トラフィックでこの NAT サービスが使用されるようになります。  UDR を構成する必要はありません。
 
-NAT ゲートウェイをテストする前に、送信元 VM を作成する必要があります。  この VM に外部からアクセスするためのインスタンスレベルのパブリック IP として、パブリック IP アドレス リソースを割り当てます。 このアドレスは、テストのためのアクセスのみを目的としたものです。  NAT サービスが他のアウトバウンド オプションよりも優先されるようすをデモンストレーションしていきます。
+NAT ゲートウェイをテストする前に、送信元 VM を作成する必要があります。  この VM に外部からアクセスするためのインスタンスレベルのパブリック IP として、パブリック IP アドレス リソースを割り当てます。 このアドレスは、テストのためのアクセスのみを目的としたものです。  NAT サービスが他の送信オプションよりも優先される方法を示します。
 
 演習として、この VM をパブリック IP なしで作成し、ジャンプボックスとして使用する別の VM をパブリック IP なしで作成することもできます。
 
@@ -198,11 +196,11 @@ Standard パブリック IP アドレスは "既定でセキュリティ保護" 
 
 コマンドからはすぐに制御が戻りますが、VM がデプロイされるまでには数分かかる場合があります。
 
-## <a name="prepare-destination-for-outbound-traffic"></a>アウトバウンド トラフィックの送信先の準備
+## <a name="prepare-destination-for-outbound-traffic"></a>送信トラフィックの宛先の準備
 
-次に、NAT サービスをテストできるよう、NAT サービスによって変換されたアウトバウンド トラフィックの送信先を作成しましょう。
+今度は、NAT サービスをテストできるよう、NAT サービスによって変換された送信トラフィックの宛先を作成しましょう。
 
-### <a name="configure-virtual-network-for-destination"></a>送信先用の仮想ネットワークの構成
+### <a name="configure-virtual-network-for-destination"></a>宛先の仮想ネットワークの構成
 
  送信先の仮想マシンを配置することになる仮想ネットワークを作成する必要があります。  そのコマンドの手順は送信元 VM と同じですが、送信先エンドポイントを公開するために少し変更を加えます。
 
@@ -306,7 +304,7 @@ Standard パブリック IP アドレスは "既定でセキュリティ保護" 
 ```
 コマンドからはすぐに制御が戻りますが、VM がデプロイされるまでには数分かかる場合があります。
 
-## <a name="prepare-a-web-server-and-test-payload-on-destination-vm"></a>送信先 VM における Web サーバーの準備とペイロードのテスト
+## <a name="prepare-a-web-server-and-test-payload-on-destination-vm"></a>宛先 VM における Web サーバーの準備とペイロードのテスト
 
 まず、送信先 VM の IP アドレスを検出する必要があります。  送信先 VM のパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) を使用します。 
 
@@ -319,9 +317,9 @@ Standard パブリック IP アドレスは "既定でセキュリティ保護" 
 ``` 
 
 >[!IMPORTANT]
->パブリック IP アドレスをコピーしたら、後続の手順で使用できるようメモ帳に貼り付けます。 これが送信先の仮想マシンであることがわかるようにしておいてください。
+>パブリック IP アドレスをコピーしたら、後続の手順で使用できるようメモ帳に貼り付けます。 これが宛先の仮想マシンであることがわかるようにしておいてください。
 
-### <a name="sign-in-to-destination-vm"></a>送信先 VM へのサインイン
+### <a name="sign-in-to-destination-vm"></a>宛先 VM へのサインイン
 
 Cloud Shell には、前の操作で生成した SSH の資格情報が格納されているはずです。  ご使用のブラウザーで [Azure Cloud Shell](https://shell.azure.com) を開きます。 前の手順で取得した IP アドレスを使用して、仮想マシンに SSH 接続します。 
 
@@ -344,11 +342,11 @@ sudo rm /var/www/html/index.nginx-debian.html && \
 sudo dd if=/dev/zero of=/var/www/html/100k bs=1024 count=100
 ```
 
-これらのコマンドによって仮想マシンが更新され、nginx がインストールされて、100 キロバイトのファイルが作成されます。 送信元 VM から NAT サービスを使用してこのファイルを取得することになります。
+これらのコマンドによって仮想マシンが更新され、nginx がインストールされて、100 キロバイトのファイルが作成されます。 このファイルは、NAT サービスを使用してソース VM から取得されます。
 
-送信先 VM との SSH セッションを閉じます。
+宛先 VM との SSH セッションを閉じます。
 
-## <a name="prepare-test-on-source-vm"></a>送信元 VM におけるテストの準備
+## <a name="prepare-test-on-source-vm"></a>ソース VM におけるテストの準備
 
 まず、送信元 VM の IP アドレスを検出する必要があります。  送信元 VM のパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) を使用します。 
 
@@ -393,15 +391,15 @@ go get -u github.com/rakyll/hey
 
 ## <a name="validate-nat-service"></a>NAT サービスの検証
 
-送信元 VM にログインしている間、**curl** と **hey** を使用して、送信先 IP アドレスへの要求を生成できます。
+ソース VM にログインしている間、**curl** と **hey** を使用して、宛先 IP アドレスへの要求を生成できます。
 
-curl を使用して 100 キロバイトのファイルを取得します。  下の例の **\<ip-address-destination>** は、先ほどコピーした送信先 IP アドレスに置き換えてください。  取得したファイルは破棄するよう、 **--output** パラメーターで指定します。
+curl を使用して 100 キロバイトのファイルを取得します。  下の例の **\<ip-address-destination>** は、先ほどコピーした宛先 IP アドレスに置き換えてください。  **--output** パラメーターは、取得したファイルが破棄されることを示します。
 
 ```bash
 curl http://<ip-address-destination>/100k --output /dev/null
 ```
 
-**hey** を使用して、一連の要求を生成することもできます。 この場合も、 **\<ip-address-destination>** は、先ほどコピーした送信先 IP アドレスに置き換えてください。
+**hey** を使用して、一連の要求を生成することもできます。 この場合も、 **\<ip-address-destination>** は、先ほどコピーした宛先 IP アドレスに置き換えてください。
 
 ```bash
 hey -n 100 -c 10 -t 30 --disable-keepalive http://<ip-address-destination>/100k
@@ -418,7 +416,7 @@ hey -n 100 -c 10 -t 30 --disable-keepalive http://<ip-address-destination>/100k
 ```
 
 ## <a name="next-steps"></a>次のステップ
-このチュートリアルでは、NAT ゲートウェイを作成し、送信元 VM と送信先 VM を作成した後、NAT ゲートウェイをテストしました。
+このチュートリアルでは、NAT ゲートウェイを作成し、ソース VM と宛先 VM を作成した後、NAT ゲートウェイをテストしました。
 
 Azure Monitor でメトリックを見て、NAT サービスの稼動状態を確認しましょう。 利用可能な SNAT ポートのリソース枯渇などの問題を診断します。  SNAT ポートのリソース枯渇は、新しいパブリック IP アドレス リソースかパブリック IP プレフィックス リソース、またはその両方を追加することで簡単に解決できます。
 

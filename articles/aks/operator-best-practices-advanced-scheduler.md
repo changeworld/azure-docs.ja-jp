@@ -2,17 +2,14 @@
 title: オペレーターのベスト プラクティス - Azure Kubernetes Services (AKS) の高度なスケジューラ機能
 description: テイントと容認、ノード セレクターとアフィニティ、ポッド間アフィニティと非アフィニティなど、Azure Kubernetes Service (AKS) の高度なスケジューラ機能の使用に関する、クラスター オペレーターのベスト プラクティスについて説明します
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: mlearned
-ms.openlocfilehash: 2ac66e46d449100fcdd004627820252473f6e2f3
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 546c1d6ae25a33c6df93469ccf8c230b4b1c474b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293659"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594993"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での高度なスケジューラ機能に関するベスト プラクティス
 

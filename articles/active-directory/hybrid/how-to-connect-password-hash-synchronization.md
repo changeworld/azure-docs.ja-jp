@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3a76b06c08d670cfb3ab0757e8c46dac0988c5f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 405b2fb9d9b8ef3bce17a9370ac87592a3437026
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025182"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585953"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装
 この記事では、オンプレミスの Active Directory インスタンスから、クラウドベースの Azure Active Directory (Azure AD) インスタンスへの、ユーザー パスワードの同期に必要な情報を提供します。
@@ -99,14 +99,15 @@ Azure AD 統合サービスのみを操作し、パスワードの有効期限�
 
 
 EnforceCloudPasswordPolicyForPasswordSyncedUsers 機能を有効にするには、下に示すように、MSOnline PowerShell モジュールを使用して次のコマンドを実行します。 場合によっては、下に示すように、Enable パラメーターに「yes」と入力する必要があります。
+
 ```
-`Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers`
-`cmdlet Set-MsolDirSyncFeature at command pipeline position 1`
-`Supply values for the following parameters:`
-`Enable: yes`
-`Confirm`
-`Continue with this operation?`
-`[Y] Yes [N] No [S] Suspend [?] Help (default is "Y"): y`
+Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers
+cmdlet Set-MsolDirSyncFeature at command pipeline position 1
+Supply values for the following parameters:
+Enable: yes
+Confirm
+Continue with this operation?
+[Y] Yes [N] No [S] Suspend [?] Help (default is "Y"): y
 ```
 
 有効にすると、Azure AD では、PasswordPolicies 属性から `DisablePasswordExpiration` 値を削除するために、同期済みの各ユーザーに移動することがなくなります。 代わりに、オンプレミス AD 上で次にパスワードを変更するときに、次のパスワードの同期中に、ユーザーごとに値が `None` に設定されます。  

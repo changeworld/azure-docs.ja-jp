@@ -3,17 +3,16 @@ title: AKS 仮想マシン ホストでのセキュリティ強化
 description: AKS VM ホスト OS でのセキュリティの強化について説明します。
 services: container-service
 author: saudas
-ms.service: container-service
 ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 8b7e50fdc02ab47c50cecb95073f1b51393db898
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d4105a9fba3c40c563198040afb811625727ead0
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73885646"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594382"
 ---
 # <a name="security-hardening-in-aks-virtual-machine-hosts"></a>AKS 仮想マシン ホストでのセキュリティ強化 
 
@@ -83,7 +82,7 @@ AKS クラスターは、セキュリティが最適化された OS が実行さ
 
 * セキュリティが強化された OS は、AKS プラットフォーム以外ではサポートされていません。 
 
-## <a name="next-steps"></a>次の手順  
+## <a name="next-steps"></a>次のステップ  
 
 AKS のセキュリティについて詳しくは、次の記事をご覧ください。 
 

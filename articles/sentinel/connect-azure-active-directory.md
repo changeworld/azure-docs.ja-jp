@@ -3,7 +3,7 @@ title: Azure AD データを Azure Sentinel に接続する | Microsoft Docs
 description: Azure Sentinel に Azure Active Directory データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: 0a8f4a58-e96a-4883-adf3-6b8b49208e6a
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: f08cd731e40b204d042e5df418b03626b9082c3b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.author: yelevin
+ms.openlocfilehash: be9241a6156621d3f90dbab2da5bebeb463b4232
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894653"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588622"
 ---
 # <a name="connect-data-from-azure-active-directory"></a>Azure Active Directory からデータを接続する
 
@@ -50,7 +50,7 @@ Azure Sentinel では、[Azure Active Directory](../active-directory/fundamental
 
 
 
-## <a name="next-steps"></a>次の手順
-このドキュメントでは、Azure AD を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、以下の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+このドキュメントでは、Azure AD を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。

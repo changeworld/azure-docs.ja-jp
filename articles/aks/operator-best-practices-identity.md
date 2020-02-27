@@ -2,17 +2,14 @@
 title: オペレーターのベスト プラクティス - Azure Kubernetes Services (AKS) の ID
 description: Azure Kubernetes Service (AKS) でクラスターの認証と認可を管理する方法に関するクラスター オペレーター ベスト プラクティスについて説明します
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: mlearned
-ms.openlocfilehash: 35cded14977988c80455a9c28a0e01e7913d58f4
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.openlocfilehash: 5ff5bdaced46a20dec3e7c5d7fb029f9428a12f2
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77069508"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594772"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の認証と認可のベスト プラクティス
 

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: b0da9f2f2d14c0487e61c1927b5456d09052cff3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6af5f4c3ab028f8f0c6945eba86ec79dd6027680
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444926"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587466"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>チュートリアル:Azure Cosmos DB で .NET SDK を使用して ASP.NET Core MVC Web アプリケーションを開発する
 
@@ -110,7 +110,7 @@ ms.locfileid: "75444926"
 
 1. *Item.cs* クラスの内容を次のコードに置き換えます。
 
-   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Models/Item.cs)]
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Models/Item.cs":::
 
 Azure Cosmos DB では、データの移動と格納に JSON が使用されます。 `JsonProperty` 属性を使って、JSON でのオブジェクトのシリアル化と逆シリアル化の方法を制御できます。 `Item` クラスは、`JsonProperty` 属性を示します。 このコードによって、JSON に入るプロパティ名の形式が制御されます。 また、.NET プロパティ `Completed` の名前が変更されます。
 
@@ -183,7 +183,7 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 1. *ItemController.cs* の内容を次のコードに置き換えます。
 
-   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Controllers/ItemController.cs)]
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Controllers/ItemController.cs":::
 
 **ValidateAntiForgeryToken** 属性は、クロスサイト リクエスト フォージェリ攻撃に対してこのアプリケーションを保護するためにここで使用されます。 ビューもまた、この偽造防止トークンで使用されます。 詳細と例については、「[ASP.NET MVC アプリケーションでのクロスサイト リクエスト フォージェリ (CSRF) 攻撃の防止][Preventing Cross-Site Request Forgery]」をご覧ください。 [GitHub][GitHub] で提供されるソース コードには、完全な実装が組み込まれています。
 
@@ -203,11 +203,11 @@ MVC の標準的な構成要素を準備できたので、次は Azure Cosmos DB
 
 1. *CosmosDBService.cs* の内容を次のコードに置き換えます。
 
-   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs)]
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
 
 1. 前の 2 つの手順を繰り返しますが、今回は *ICosmosDBService* という名前を使用し、次のコードを使用します。
 
-   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs)]
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
 
 1. **ConfigureServices** ハンドラーに、次の行を追加します。
 
@@ -219,7 +219,7 @@ MVC の標準的な構成要素を準備できたので、次は Azure Cosmos DB
 
 1. 同じファイル内で、次のメソッド **InitializeCosmosClientInstanceAsync** を追加します。このメソッドにより、構成が読み取られ、クライアントが初期化されます。
 
-    [!code-csharp[](~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs?name=InitializeCosmosClientInstanceAsync)]
+    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="InitializeCosmosClientInstanceAsync":::
 
 1. この構成は、プロジェクトの *appsettings.json* ファイル内で定義します。 ファイルを開き、**CosmosDb** という名前のセクションを追加します。
 

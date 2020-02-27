@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 64df1188692ae9f1b6200ad880a2bf1eafd98844
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b53405d199072211304e21b681de646c4e41243c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77483229"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585630"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Microsoft Graph を使用して Azure AD B2C ユーザー アカウントを管理する
 
@@ -180,7 +180,7 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 }
 ```
 
-[Microsoft Graph SDK を使用した API 呼び出し](https://docs.microsoft.comgraph/sdks/create-requests)に関する記事には、Microsoft Graph から情報を読み書きする方法、`$select` を使用して返されるプロパティを制御する方法、カスタム クエリ パラメーターを指定する方法、`$filter` および `$orderBy` のクエリ パラメーターを使用する方法に関する情報が含まれています。
+[Microsoft Graph SDK を使用した API 呼び出し](https://docs.microsoft.com/graph/sdks/create-requests)に関する記事には、Microsoft Graph から情報を読み書きする方法、`$select` を使用して返されるプロパティを制御する方法、カスタム クエリ パラメーターを指定する方法、`$filter` および `$orderBy` のクエリ パラメーターを使用する方法に関する情報が含まれています。
 
 ## <a name="next-steps"></a>次のステップ
 

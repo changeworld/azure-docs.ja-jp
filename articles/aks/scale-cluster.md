@@ -3,16 +3,15 @@ title: Azure Kubernetes Service (AKS) クラスターのスケーリング
 description: Azure Kubernetes Service (AKS) クラスターでノードの数をスケーリングする方法について説明します。
 services: container-service
 author: iainfoulds
-ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 719f45aeeb5c7aa7e9b5e597ed461808c9d2b005
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2071ba93e826fabc4778426e2b4404b7475d1bd2
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472581"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594399"
 ---
 # <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターでノードの数をスケーリングする
 
@@ -72,7 +71,7 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、AKS クラスターを手動でスケールしてノード数を増減しました。 [クラスターの自動スケーラー][cluster-autoscaler]を使用してクラスターを自動的にスケーリングすることもできます。
 

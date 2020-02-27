@@ -2,18 +2,16 @@
 title: Azure Kubernetes のデプロイ センター
 description: Azure DevOps のデプロイ センターを利用すると、アプリケーションの信頼性の高い Azure DevOps パイプラインを容易に設定できます
 ms.author: puagarw
-ms.prod: devops
-ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
 monikerRange: vsts
-ms.openlocfilehash: 5384180720d391c6b4ae830f9316a70e80003063
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 84e5533a17dc70fb5c835089f3a3cec1a86e35bf
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972974"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596081"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Azure Kubernetes のデプロイ センター
 
@@ -33,7 +31,7 @@ Azure DevOps のデプロイ センターを利用すると、アプリケーシ
 
 * Azure Kubernetes Service (AKS) クラスター。
 
-## <a name="create-an-aks-cluster"></a>AKS クラスターの作成
+## <a name="create-an-aks-cluster"></a>AKS クラスターを作成する
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
@@ -136,10 +134,10 @@ Azure DevOps のデプロイ センターを利用すると、アプリケーシ
 
 1. **[ログ]** を選択します。 ログには、有用なデプロイ情報が含まれています。デプロイ中でもデプロイ後も、それらを見ることができます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 作成した関連リソースが必要なくなったら、削除してかまいません。 DevOps Projects ダッシュボードで削除機能を使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 チームのニーズを満たすようにこれらのビルドおよびリリース パイプラインを変更できます。 また、この CI/CD モデルをご自身の他のパイプラインのテンプレートとして使用することもできます。

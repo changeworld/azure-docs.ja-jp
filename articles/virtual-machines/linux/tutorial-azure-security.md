@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4046aac5e8362bf315eca11d9cd96a6e862e2c55
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 5c5a8bc06c676121c20f6e1f83a26dd9343e6847
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034604"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605527"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>チュートリアル:Azure Security Center を使用して Linux 仮想マシンを監視する
 
@@ -122,8 +122,8 @@ Security Center には、リソースの構成に関する推奨事項を提示�
 
 ![RDP 攻撃](./media/tutorial-azure-security/rdp-attack.png)
 
-## <a name="next-steps"></a>次の手順
-このチュートリアルでは、Azure Security Center を設定した後、Security Center で VM を確認しました。 以下の方法について学習しました。
+## <a name="next-steps"></a>次のステップ
+このチュートリアルでは、Azure Security Center を設定した後、Security Center で VM を確認しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * データ収集を設定する
@@ -134,5 +134,5 @@ Security Center には、リソースの構成に関する推奨事項を提示�
 次のチュートリアルに進み、Jenkins、GitHub、Docker を使った CI/CD パイプラインの作成について理解を深めてください。
 
 > [!div class="nextstepaction"]
-> [Jenkins、GitHub、Docker を使用した CI/CD インフラストラクチャの作成](tutorial-jenkins-github-docker-cicd.md)
+> [Jenkins、GitHub、Docker を使用した CI/CD インフラストラクチャの作成](../../jenkins/tutorial-jenkins-github-docker-cicd.md)
 

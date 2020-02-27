@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 69e6b7beecb95c0e89b60640353155fc7802a881
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: d0a5790e84364bf34072977d5d3976fd880996bb
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982944"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620591"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C のサンプル コード
 
@@ -39,7 +39,6 @@ ms.locfileid: "76982944"
 | [dotnet-webapp-and-webapi](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi) | Azure AD B2C を使用してセキュリティで保護された、.NET Web API を呼び出す .NET Web アプリケーション用の結合されたサンプル。 |
 | [dotnetcore-webapp](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp) | Azure AD B2C を使用してユーザーのサインインを処理し、MSAL.NET を使用してアクセス トークンを取得して API を呼び出す ASP.NET Core Web アプリケーション。 |
 | [openidconnect-nodejs](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS) | OpenID Connect を使用して、Web アプリケーションを Express ですばやく簡単にセットアップできるようにする Node.js アプリ。 |
-| [javascript-nodejs-webapp](https://github.com/AzureADQuickStarts/active-directory-b2c-javascript-nodejs-webapp) | OAuth2 プロトコルを使用して、REST API サービスをすばやく簡単にセットアップできるようにする node.js サーバー。 |
 | [javascript-nodejs-webapi](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) | passport.js を使用して Web API を保護し、B2C アクセス トークンを受け入れる方法を示す、Azure AD B2C 用の小さな node.js Web API。 |
 | [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/README_B2C.md) | Microsoft ID プラットフォームの B2C を Python Web アプリケーションに統合する方法を説明します。  |
 

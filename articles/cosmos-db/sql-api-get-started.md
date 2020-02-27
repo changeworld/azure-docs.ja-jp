@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
-ms.openlocfilehash: 78b88f4e4e60d1f79263bfd9d7dfaf0cabc70de6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: ba8b097dc852ba97d4223ba09f78d1f2cdb568e0
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173905"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587449"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>チュートリアル:.NET コンソール アプリをビルドして Azure Cosmos DB SQL API アカウントのデータを管理する
 
@@ -21,7 +21,7 @@ ms.locfileid: "74173905"
 > * [.NET](sql-api-get-started.md)
 > * [Java](sql-api-java-get-started.md)
 > * [Async Java](sql-api-async-java-get-started.md)
-> * [Node.JS](sql-api-nodejs-get-started.md)
+> * [Node.js](sql-api-nodejs-get-started.md)
 >
 
 Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへようこそ。 このチュートリアルに従うことで、Azure Cosmos DB リソースを作成し、クエリするコンソール アプリケーションを準備することができます。
@@ -52,7 +52,7 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 
 * [!INCLUDE [cosmos-db-emulator-vs](../../includes/cosmos-db-emulator-vs.md)]
 
-## <a name="step-1-create-an-azure-cosmos-db-account"></a>手順 1: Azure Cosmos DB アカウントを作成する
+## <a name="step-1-create-an-azure-cosmos-db-account"></a>手順 1:Azure Cosmos DB アカウントを作成する
 
 それでは、Azure Cosmos DB アカウントを作成してみましょう。 使用するアカウントが既にある場合は、このセクションをスキップします。 Azure Cosmos DB エミュレーターを使用するには、[Azure Cosmos DB エミュレーター](local-emulator.md)に関する記事に記載されている手順に従ってエミュレーターを設定してください。 その後、「[手順 2:Visual Studio プロジェクトをセットアップする](#SetupVS)」に進みます。
 
@@ -146,7 +146,7 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 
 1. 次のコードを追加して、**Main** メソッドから **GetStartedDemoAsync** 非同期タスクを実行します。 **Main** メソッドは例外をキャッチし、コンソールに書き込みます。
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=Main)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="Main":::
 
 1. F5 キーを押してアプリケーションを実行します。
 
@@ -160,7 +160,7 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 
 1. `CreateDatabaseAsync` メソッドをコピーし、`GetStartedDemoAsync` メソッドの下に貼り付けます。
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=CreateDatabaseAsync&highlight=7)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="CreateDatabaseAsync":::
 
     `CreateDatabaseAsync` によって、`databaseId` フィールドに指定された ID で新しいデータベース (ID `FamilyDatabase`) が作成されます (このデータベースがまだ存在していない場合)。
 
@@ -281,7 +281,7 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 
 1. `CreateContainerAsync` メソッドをコピーし、`CreateDatabaseAsync` メソッドの下に貼り付けます。 `CreateContainerAsync` によって、`LastName` プロパティによってパーティション化されている `containerId` フィールドに指定された ID で新しいコンテナー (ID `FamilyContainer`) が作成されます (このコンテナーがまだ存在していない場合)。
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=CreateContainerAsync&highlight=9)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="CreateContainerAsync&highlight":::
 
 1. CosmosClient をインスタンス化したところに、次のコードをコピーして貼り付けて、追加した **CreateContainer** メソッドを呼び出します。
 
@@ -313,11 +313,13 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 
 1. `Family`、`Parent`、`Child`、`Pet`、および `Address` クラスをコピーして `Family.cs` に貼り付けます。
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Family.cs)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Family.cs":::
+
 
 1. *Program.cs* に戻り、`AddItemsToContainerAsync` メソッドを `CreateContainerAsync` メソッドの後に追加します。
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=AddItemsToContainerAsync)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="AddItemsToContainerAsync":::
+
 
     コードによって、同じ ID を持つ項目が存在していないことが確認されます。 2 つの項目を挿入します。1 つは *Andersen Family* の項目、もう 1 つは *Wakefield Family* の項目です。
 
@@ -346,7 +348,7 @@ Azure Cosmos DB では、各コンテナーに格納された JSON ドキュメ�
 
 1. `QueryItemsAsync` メソッドをコピーし、`AddItemsToContainerAsync` メソッドの後に貼り付けます。
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=QueryItemsAsync&highlight=10-11,17-18)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="QueryItemsAsync":::
 
 1. ``GetStartedDemoAsync`` メソッドに ``QueryItemsAsync`` への呼び出しを追加します。
 
@@ -374,7 +376,7 @@ Azure Cosmos DB では、各コンテナーに格納された JSON ドキュメ�
 
 1. `ReplaceFamilyItemAsync` メソッドをコピーし、`QueryItemsAsync` メソッドの後に貼り付けます。
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=ReplaceFamilyItemAsync&highlight=15)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="ReplaceFamilyItemAsync":::
 
 1. `GetStartedDemoAsync` メソッドに `ReplaceFamilyItemAsync` への呼び出しを追加します。
 
@@ -403,7 +405,7 @@ Azure Cosmos DB では、各コンテナーに格納された JSON ドキュメ�
 
 1. `DeleteFamilyItemAsync` メソッドをコピーし、`ReplaceFamilyItemAsync` メソッドの後に貼り付けます。
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=DeleteFamilyItemAsync&highlight=10)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="DeleteFamilyItemAsync":::
 
 1. `GetStartedDemoAsync` メソッドに `DeleteFamilyItemAsync` への呼び出しを追加します。
 
@@ -433,11 +435,11 @@ Azure Cosmos DB では、各コンテナーに格納された JSON ドキュメ�
 
 1. `DeleteDatabaseAndCleanupAsync` メソッドをコピーし、`DeleteFamilyItemAsync` メソッドの後に貼り付けます。
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=DeleteDatabaseAndCleanupAsync)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="DeleteDatabaseAndCleanupAsync":::
 
 1. ``GetStartedDemoAsync`` メソッドに ``DeleteDatabaseAndCleanupAsync`` への呼び出しを追加します。
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=GetStartedDemoAsync&highlight=14)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="GetStartedDemoAsync":::
 
 1. F5 キーを押してアプリケーションを実行します。
 
@@ -490,9 +492,9 @@ Visual Studio で Azure Cosmos DB .NET SDK への参照を復元するには、*
 
 以上です。ビルドすれば完了です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* さらに詳しい ASP.NET MVC チュートリアルが必要な場合には、 手順については、「[チュートリアル: Azure Cosmos DB で .NET SDK を使用して ASP.NET Core MVC Web アプリケーションを開発する](sql-api-dotnet-application.md)」を参照してください。
+* さらに詳しい ASP.NET MVC チュートリアルが必要な場合には、 「[チュートリアル:Azure Cosmos DB で .NET SDK を使用して ASP.NET Core MVC Web アプリケーションを開発する](sql-api-dotnet-application.md)」を参照してください。
 * Azure Cosmos DB のスケーリングとパフォーマンスをテストする方法については、 「[Azure Cosmos DB のパフォーマンスとスケールのテスト](performance-testing.md)」を参照してください。
 * Azure Cosmos DB の要求、使用状況、およびストレージを監視する方法については、「[Azure Cosmos DB でパフォーマンスとストレージのメトリックを監視する](monitor-accounts.md)」を参照してください。
 * サンプル データセットに対してクエリを実行するには、「[Query Playground](https://www.documentdb.com/sql/demo)」を参照してください。

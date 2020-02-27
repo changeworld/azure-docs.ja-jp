@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: thweiss
-ms.openlocfilehash: c5699bb851bd0a818a987228155c62683e93f51a
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 86e9854cb5a522a56cca09a6e1ea155fd8a62f14
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240782"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585902"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>Azure Cosmos DB の要求ユニット使用量を確認する
 
@@ -25,7 +25,7 @@ SQL API を使用している場合、Azure Cosmos コンテナーに対する�
 
 現在のところ、SQL クエリについてのみ、Azure portal で要求の使用量を確認できます。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. [新しい Azure Cosmos アカウントを作成](create-sql-api-dotnet.md#create-account)してデータを取り込むか、既にデータが存在する既存の Azure Cosmos アカウントを選択します。
 
@@ -79,7 +79,7 @@ while (query.HasMoreResults)
 
 [.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) から返されたオブジェクトにより `RequestCharge` プロパティが公開されます。
 
-[!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/CustomDocsSampleCode.cs?name=GetRequestCharge)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/CustomDocsSampleCode.cs" id="GetRequestCharge":::
 
 詳細については、「[クイック スタート: Azure Cosmos DB の SQL API アカウントを使用して .NET Web アプリをビルドする](create-sql-api-dotnet.md)」を参照してください。
 
@@ -172,7 +172,7 @@ RU 使用量は、`getLastRequestStatistics` という名前のカスタム [デ
 
 現在のところ、クエリについてのみ、Azure portal で要求の使用量を確認できます。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. [新しい Azure Cosmos アカウントを作成](create-mongodb-dotnet.md#create-a-database-account)してデータを取り込むか、既にデータが存在する既存のアカウントを選択します。
 
@@ -301,7 +301,7 @@ if (tableResult.RequestCharge.HasValue) // would be false when using Azure Stora
 
 詳細については、「[クイック スタート: .NET SDK と Azure Cosmos DB を使用して Table API アプリをビルドする](create-table-dotnet.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 RU 使用量を最適化する方法については、次の記事をご覧ください。
 

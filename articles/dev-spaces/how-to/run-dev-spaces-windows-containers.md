@@ -5,12 +5,12 @@ ms.date: 01/16/2020
 ms.topic: conceptual
 description: Windows コンテナーを持つ既存のクラスターでの Azure Dev Spaces の実行方法について説明します
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Windows コンテナー
-ms.openlocfilehash: 882cdaa8a7b01578b2f04cf939aa14fe4aee7e2e
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: d376aca45778060c8913924fd2a44031109390d2
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720369"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538791"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Azure Dev Spaces を使用した Windows コンテナーの操作
 
@@ -134,11 +134,11 @@ helm upgrade windows-service . --namespace dev
 
 ```console
 cd ../../webfrontend-linux/
-azds prep --public
+azds prep --enable-ingress
 azds up
 ```
 
-`azds prep --public` コマンドでは、アプリケーションの Helm チャートと Dockerfile が生成されます。
+`azds prep --enable-ingress` コマンドでは、アプリケーションの Helm チャートと Dockerfile が生成されます。
 
 > [!TIP]
 > プロジェクトの [Dockerfile と Helm チャート](../how-dev-spaces-works.md#prepare-your-code)は、コードをビルドして実行するために Azure Dev Spaces によって使用されますが、プロジェクトのビルドおよび実行方法を変更する場合は、これらのファイルを変更することができます。

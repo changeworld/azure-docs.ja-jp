@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: f3af350c96d1dd9eaf4773db503acb10d8a08a8f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f382406d164aa7378631753c2cfc85bc69003a4f
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441119"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605078"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB 用 Azure Functions トリガーを使用するときの問題の診断とトラブルシューティングを行う
 
@@ -66,7 +66,7 @@ Azure portal を使用していて、トリガーを使用する Azure 関数を
 
 1. Azure 関数は、Azure Cosmos アカウントと同じリージョンにデプロイされていますか。 ネットワーク待機時間を最適にするには、Azure 関数と Azure Cosmos アカウントの両方を、同じ Azure リージョンに併置する必要があります。
 2. Azure Cosmos コンテナーでの変更の発生は、連続的ですか、それとも散発的ですか。
-後者の場合、変更が格納されてから Azure 関数がそれを取得するまでの間に、若干の遅延がある可能性があります。 これは、トリガーは、Azure Cosmos コンテナー内の変更を調べて、読み取る必要のある保留中の変更がないことを確認すると、RU の消費が増えるのを避けるため、新しい変更を確認する前に、構成可能な時間 (既定では 5 秒) だけスリープ状態になるという、内部的な動作のためです。 このスリープ時間は、トリガーの[構成](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)の `FeedPollDelay/feedPollDelay` の設定を使用して構成できます (値はミリ秒単位)。
+後者の場合、変更が格納されてから Azure 関数がそれを取得するまでの間に、若干の遅延がある可能性があります。 これは、トリガーは、Azure Cosmos コンテナー内の変更を調べて、読み取る必要のある保留中の変更がないことを確認すると、RU の消費が増えるのを避けるため、新しい変更を確認する前に、構成可能な時間 (既定では 5 秒) だけスリープ状態になるという、内部的な動作のためです。 このスリープ時間は、トリガーの[構成](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)の `FeedPollDelay/feedPollDelay` の設定を使用して構成できます (値はミリ秒単位)。
 3. お使いの Azure Cosmos コンテナーが、[レート制限されている](./request-units.md)可能性があります。
 4. トリガーの `PreferredLocations` 属性を使用して Azure リージョンのコンマ区切りリストを指定し、ユーザー設定の優先接続順序を定義することができます。
 
@@ -93,10 +93,10 @@ Azure 関数では、多くの場合、受け取った変更の処理が行わ�
 コンテナーにあるすべての項目を最初から再処理するには、次の手順を実行します。
 1. 現在実行中の場合は、Azure 関数を停止します。 
 1. リース コレクション内のドキュメントを削除します (または、空になるようにリース コレクションを削除して再作成します)。
-1. 関数内の [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) CosmosDBTrigger 属性を true に設定します。 
+1. 関数内の [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) CosmosDBTrigger 属性を true に設定します。 
 1. Azure 関数を再起動します。 これですべての変更が最初から読み取られ、処理されるようになります。 
 
-[StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) を true に設定すると、現在の時刻ではなく、コレクションの履歴の最初から変更の読み取りを開始するように、Azure 関数が指示されます。 これは、リースがまだ作成されていないとき (つまり、リース コレクションにドキュメントがあるとき) にのみ機能します。 既に作成されているリースがある場合は、このプロパティを true に設定しても影響はありません。このシナリオでは、関数を停止して再起動すると、リース コレクションで定義されている最後のチェックポイントから読み取りが開始されます。 最初から再処理するには、上記の手順1 から 4 に従います。  
+[StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) を true に設定すると、現在の時刻ではなく、コレクションの履歴の最初から変更の読み取りを開始するように、Azure 関数が指示されます。 これは、リースがまだ作成されていないとき (つまり、リース コレクションにドキュメントがあるとき) にのみ機能します。 既に作成されているリースがある場合は、このプロパティを true に設定しても影響はありません。このシナリオでは、関数を停止して再起動すると、リース コレクションで定義されている最後のチェックポイントから読み取りが開始されます。 最初から再処理するには、上記の手順1 から 4 に従います。  
 
 ### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>バインディングを実行するには、IReadOnlyList\<Document> または JArray を使用する必要があります。
 
@@ -106,7 +106,7 @@ Azure 関数では、多くの場合、受け取った変更の処理が行わ�
 
 ### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>変更を検出するための Azure 関数のポーリング間隔を変更する
 
-前の「[変更の受信に時間がかかりすぎる](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received)」で説明したように、Azure 関数は、(高い RU 消費を避けるため) 新しい変更を確認する前に、構成可能な時間 (既定では 5 秒) だけスリープ状態になります。 このスリープ時間は、トリガーの[構成](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)の `FeedPollDelay/feedPollDelay` の設定を使用して構成できます (値はミリ秒単位)。
+前の「[変更の受信に時間がかかりすぎる](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received)」で説明したように、Azure 関数は、(高い RU 消費を避けるため) 新しい変更を確認する前に、構成可能な時間 (既定では 5 秒) だけスリープ状態になります。 このスリープ時間は、トリガーの[構成](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)の `FeedPollDelay/feedPollDelay` の設定を使用して構成できます (値はミリ秒単位)。
 
 ## <a name="next-steps"></a>次のステップ
 

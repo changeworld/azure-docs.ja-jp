@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: aec46a1914fa2361ea15ba34dd1510cfe53a4dc0
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: e7a86f3a709566bcf18241ce3c329c0355be2743
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443841"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539554"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
@@ -115,7 +115,7 @@ Linux コンピューターには、更新リポジトリへのアクセスが�
 
 Linux 用 Log Analytics エージェントをインストールして最新バージョンをダウンロードする方法の詳細については、[Linux 用 Log Analytics エージェント](https://github.com/microsoft/oms-agent-for-linux)に関するページを参照してください。 Windows 用 Log Analytics エージェントをインストールする方法については、「[Windows コンピューターを Azure Monitor に接続する](../log-analytics/log-analytics-windows-agent.md)」を参照してください。
 
-Azure Marketplace から入手できるオンデマンドの Red Hat Enterprise Linux (RHEL) イメージから作成した VM は、Azure にデプロイされた [Red Hat Update Infrastructure (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) にアクセスするよう登録されています。 その他の Linux ディストリビューションは、そのディストリビューションのサポートされている方法を使用して、ディストリビューションのオンライン ファイル リポジトリから更新する必要があります。
+Azure Marketplace から入手できるオンデマンドの Red Hat Enterprise Linux (RHEL) イメージから作成した VM は、Azure にデプロイされた [Red Hat Update Infrastructure (RHUI)](../virtual-machines/workloads/redhat/redhat-rhui.md) にアクセスするよう登録されています。 その他の Linux ディストリビューションは、そのディストリビューションのサポートされている方法を使用して、ディストリビューションのオンライン ファイル リポジトリから更新する必要があります。
 
 ## <a name="permissions"></a>アクセス許可
 
@@ -184,7 +184,7 @@ Update Management には次のアドレスが明示的に必要です。 この�
 
 Windows マシンでは、Windows Update で必要なすべてのエンドポイントへのトラフィックも許可する必要があります。 必要なエンドポイントの更新された一覧は、「[HTTP またはプロキシに関連する問題](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)」で確認できます。 ローカル環境に [Windows Update サーバー](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)がある場合は、[WSUS キー](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)で指定されているサーバーへのトラフィックも許可する必要があります。
 
-Red Hat Linux マシンで必要なエンドポイントについては、「[RHUI コンテンツ配信サーバーの IP アドレス](../virtual-machines/linux/update-infrastructure-redhat.md#the-ips-for-the-rhui-content-delivery-servers)」をご覧ください。 他の Linux ディストリビューションについては、プロバイダーのドキュメントをご覧ください。
+Red Hat Linux マシンで必要なエンドポイントについては、「[RHUI コンテンツ配信サーバーの IP アドレス](../virtual-machines/workloads/redhat/redhat-rhui.md#the-ips-for-the-rhui-content-delivery-servers)」をご覧ください。 他の Linux ディストリビューションについては、プロバイダーのドキュメントをご覧ください。
 
 Hybrid Runbook Worker で必要なポートの詳細については、[ハイブリッド worker ロールのポート](automation-hybrid-runbook-worker.md#hybrid-worker-role)に関するページをご覧ください。
 

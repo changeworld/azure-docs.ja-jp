@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: このチュートリアルでは、Azure Dev Spaces と Visual Studio Code を使用して、Azure Kubernetes Service 上で Node.js アプリケーションのデバッグと迅速な反復型開発を行う方法を示します
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: de60a45126539cdd39b951eeb503fc349004797a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 1ad30a5dd7504c7e224e4b2d26d1f5a4fe1da38a
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121354"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602878"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>Kubernetes 開発空間を作成する: Azure Dev Spaces での Visual Studio Code と Node.js
 
@@ -61,7 +61,7 @@ az group create --name MyResourceGroup --location <region>
 以下のコマンドを使用して Kubernetes クラスターを作成します。
 
 ```cmd
-az aks create -g MyResourceGroup -n MyAKS --location <region> --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-keys
 ```
 
 クラスターの作成には数分かかります。
@@ -98,7 +98,7 @@ VS Code を使用する .NET Core および Node.js の開発者は、Kubernetes
 1. このコマンドを実行します (**webfrontend** が現在のフォルダーであることを確認します)。
 
     ```cmd
-    azds prep --public
+    azds prep --enable-ingress
     ```
 
 Azure CLI の `azds prep` コマンドにより、既定の設定で Docker と Kubernetes のアセットが生成されます。

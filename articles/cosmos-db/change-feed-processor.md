@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 3e7f5e46068844da538864fdfaa03ca7023e4372
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f8ae85ffc16bd953f04f1c3d7790231939c1f2cf
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445577"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588909"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB の変更フィード プロセッサ 
 
@@ -41,13 +41,13 @@ ms.locfileid: "75445577"
 
 エントリ ポイントは常に監視対象コンテナーであり、`Container` インスタンスから `GetChangeFeedProcessorBuilder` を呼び出します。
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=DefineProcessor)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs" id="DefineProcessor":::
 
 1 番目のパラメーターは、このプロセッサの目的を説明する一意の名前です。2番目の名前は、変更を処理するデリゲートの実装です。 
 
 デリゲートの例を次に示します。
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=Delegate)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs" id="Delegate":::
 
 最後に、このプロセッサ インスタンスの名前を `WithInstanceName` で定義します。これは、`WithLeaseContainer` でリース状態を保持するコンテナーです。
 

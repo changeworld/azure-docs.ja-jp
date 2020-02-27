@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: cafa9d6100e03d8315bf5dd19d863ca90aadd4bb
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: e0db8edfdfa380697a1d8d7e262a7a84da2fb7d2
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190887"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565538"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>ID インフラストラクチャをセキュリティ保護する 5 つのステップ
 
@@ -35,7 +35,7 @@ ms.locfileid: "77190887"
 このチェックリストの確認時に、どの機能と手順が完了しているかを必ず追跡しておいてください。
 
 > [!NOTE]
-> このドキュメントの推奨事項の多くは、Azure Active Directory を ID プロバイダーとして使用するよう構成されたアプリケーションにのみ適用されます。 シングル サインオンを使用するようアプリを構成すると、資格情報ポリシーや脅威の検出、監査、ログの記録などの機能がこれらのアプリケーションに追加されるという様々な利点があります。 [Azure Active Directory を通じたシングル サインオン](../../active-directory/manage-apps/configure-single-sign-on-portal.md)は、これらのすべての推奨事項の基礎となります。
+> このドキュメントの推奨事項の多くは、Azure Active Directory を ID プロバイダーとして使用するよう構成されたアプリケーションにのみ適用されます。 シングル サインオンを使用するようアプリを構成すると、資格情報ポリシーや脅威の検出、監査、ログの記録などの機能がこれらのアプリケーションに追加されるという様々な利点があります。 [Azure Active Directory を通じたシングル サインオン](../../active-directory/manage-apps/configure-single-sign-on-non-gallery-applications.md)は、これらのすべての推奨事項の基礎となります。
 
 このドキュメントの推奨事項は、Azure AD テナントの ID セキュリティ構成の自動化された評価である [ID セキュリティ スコア](../../active-directory/fundamentals/identity-secure-score.md)と一致しています。 組織は Azure AD ポータルの ID セキュリティ スコア ページを使用して、現在のセキュリティ構成におけるギャップを探し、セキュリティに関する最新の Microsoft の[ベスト プラクティス](identity-management-best-practices.md)に従っていることを確認できます。 セキュリティ スコア ページで各推奨事項を実装すると、スコアが上がり、進行状況を追跡することができ、さらに他の似た規模の組織や業界と実装を比較するのに役立ちます。
 

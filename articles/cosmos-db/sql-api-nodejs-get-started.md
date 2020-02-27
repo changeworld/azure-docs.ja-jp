@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: a273b89d864d97d9bc71acff476371f77cfff066
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 5204c7cf80a5b52b0c30b3165d522aa2648cd95c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754836"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587432"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>チュートリアル:JavaScript SDK を使用して、Azure Cosmos DB SQL API データを管理するための Node.js コンソール アプリを構築する
 
@@ -22,17 +22,17 @@ ms.locfileid: "72754836"
 > * [.NET](sql-api-get-started.md)
 > * [Java](sql-api-java-get-started.md)
 > * [Async Java](sql-api-async-java-get-started.md)
-> * [Node.JS](sql-api-nodejs-get-started.md)
+> * [Node.js](sql-api-nodejs-get-started.md)
 > 
 
-開発者であれば、NoSQL ドキュメント データを使用するアプリケーションをお持ちかもしれません。 Azure Cosmos DB の SQL API アカウントを使用して、このドキュメント データを格納し、それにアクセスできます。 このチュートリアルでは、Azure Cosmos DB リソースを作成してそれらに対するクエリを実行する Node.js コンソール アプリケーションを構築する方法について説明します。
+お客様は開発者として、NoSQL ドキュメント データが使用されるアプリケーションをお持ちかもしれません。 Azure Cosmos DB の SQL API アカウントを使用して、このドキュメント データを格納し、それにアクセスできます。 このチュートリアルでは、Azure Cosmos DB リソースを作成してそれらに対するクエリを実行する Node.js コンソール アプリケーションを構築する方法について説明します。
 
 このチュートリアルでは、次のことについて説明します。
 
 > [!div class="checklist"]
 > * Azure Cosmos DB アカウントを作成して接続する。
 > * アプリケーションを設定する。
-> * データベースを作成する。
+> * データベースを作成します。
 > * コンテナーを作成します。
 > * コンテナーに項目を追加する。
 > * 項目、コンテナー、およびデータベースに対する基本的な操作を実行する。
@@ -95,7 +95,7 @@ ms.locfileid: "72754836"
 
 1. ```database```、```container```、および ```items``` データをコピーして ```config``` オブジェクトに貼り付けます。```config.endpoint``` プロパティと ```config.key``` プロパティの設定に続けて追加してください。 データベースに保存するデータが既にある場合は、データをここに定義する代わりに、Azure Cosmos DB のデータ移行ツールを使用できます。 config.js ファイルには、次のコードが必要です。
 
-   [!code-javascript[nodejs-get-started](~/cosmosdb-nodejs-get-started/config.js)]
+   :::code language="javascript" source="~/cosmosdb-nodejs-get-started/config.js":::
 
    JavaScript SDK では、*コンテナー*と*項目*という一般的な用語を使用しています。 コンテナーは、コレクション、グラフ、またはテーブルを表します。 項目は、ドキュメント、エッジ/頂点、行など、コンテナー内の内容を表します。 
    
@@ -602,7 +602,7 @@ Azure Cosmos DB は、JSON 項目の削除をサポートします。
 
 全体的なコードは次のようになります。
 
-[!code-javascript[nodejs-get-started](~/cosmosdb-nodejs-get-started/app.js)]
+:::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js":::
 
 ターミナルで、```app.js``` ファイルを見つけ、コマンドを実行します。 
 
@@ -670,11 +670,11 @@ npm でプロジェクトの依存関係をインストールします。 次の
 node app.js 
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-これらのリソースが必要なくなったら、リソース グループ、Azure Cosmos DB アカウント、およびすべての関連リソースを削除できます。 そうするには、Azure Cosmos DB アカウントのために使用したリソース グループを選択し、 **[削除]** を選択した後、削除するリソース グループの名前を確認します。
+これらのリソースが必要なくなったら、リソース グループ、Azure Cosmos DB アカウント、およびすべての関連リソースを削除できます。 そうするには、Azure Cosmos DB アカウントのためにお客様が使用したリソース グループを選択し、 **[削除]** を選択した後、削除するリソース グループの名前を確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB アカウントの監視](monitor-accounts.md)

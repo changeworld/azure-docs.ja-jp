@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ef8596d8dcc9502f590c55223f207e71f5b91cf6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 4766f22cd84b2aab00f6dcc4064dbeea8018f694
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843941"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564976"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Media Services のシナリオとデータ センターにおける機能の可用性
 
@@ -137,7 +137,7 @@ Media Analytics は音声および視覚コンポーネントの集合体であ�
 
 ## <a name="consuming-content"></a>コンテンツの使用
 
-Azure Media Services には、ほとんどのプラットフォーム (iOS デバイス、Android デバイス、Windows、Windows Phone、Xbox、セットトップ ボックスなど) 向けのリッチで動的なクライアント再生アプリケーションの作成に必要なツールが用意されています。 次のトピックには、Media Services からのストリーミング メディアを使用する独自のクライアント アプリケーションの開発に使用できる、SDK とプレーヤー フレームワークへのリンクがあります。 詳細については、「[ビデオ プレーヤー アプリケーションの開発](media-services-develop-video-players.md)」を参照してください。
+Azure Media Services には、ほとんどのプラットフォーム (iOS デバイス、Android デバイス、Windows、Windows Phone、Xbox、セットトップ ボックスなど) 向けのリッチで動的なクライアント再生アプリケーションの作成に必要なツールが用意されています。 
 
 ## <a name="enabling-azure-cdn"></a>Azure CDN を有効にする
 
@@ -177,7 +177,7 @@ Media Services のお客様は、**Standard** と **Premium** のいずれかの
 
 #### <a name="availability"></a>可用性
 
-|Name|Status|データ センター
+|名前|Status|データ センター
 |---|---|---|
 |Standard|GA|All|
 |Premium|GA|All|
