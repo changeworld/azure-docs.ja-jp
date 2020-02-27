@@ -3,7 +3,7 @@ title: Azure Sentinel に Azure アクティビティ データを接続する |
 description: Azure Sentinel に Azure アクティビティ データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: 8c25baa8-b93b-41da-9e6c-15bb7b5c5511
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 107bbed8aea692a76f6d5bf6bbf1da26277b2c85
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.author: yelevin
+ms.openlocfilehash: 28d5acd80deef193c7d2fea46f682f26abd756aa
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156575"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588605"
 ---
 # <a name="connect-data-from-azure-activity-log"></a>Azure アクティビティ ログからデータを接続する
 
@@ -40,7 +40,7 @@ ms.locfileid: "76156575"
 
 2. [Azure アクティビティ ログ] ウィンドウで、Azure Sentinel にストリーミングするサブスクリプションを選択します。 
 
-3. **[接続]** をクリックします。
+3. **[Connect]** をクリックします。
 
 4. Activity アクティビティのアラートで Log Analytics の関連スキーマを使用するには、**AzureActivity** を検索します。
 

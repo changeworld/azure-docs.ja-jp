@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: juliako
-ms.openlocfilehash: a91305f1c5bfb50e0354dc0054d1a149182d921f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: c5acda0ccec409ec06d0f3f2226b9819e3f130c7
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888446"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538415"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>ローカル ファイルからジョブの入力を作成する
 
@@ -27,14 +27,14 @@ Media Services v3 では、ビデオを処理するジョブを送信すると�
 次のコードは、入力資産を作成してジョブの入力として使用する方法を示しています。 CreateInputAsset 関数は、次のアクションを行います。
 
 * 資産を作成する
-* 書き込み可能な [SAS URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) を資産の[ストレージ内のコンテナー](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container)に取得します。
+* 書き込み可能な [SAS URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) をアセットの[ストレージ内のコンテナー](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container)に取得する
 * SAS URL を使用してストレージ内のコンテナーにファイルをアップロードする
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
 
 次のコード スニペットでは、出力アセットがまだ存在しない場合、出力アセットを作成します。
 
-[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateOutputAssetAsync)]
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateOutputAsset)]
 
 次のコード スニペットでは、エンコーディング ジョブを送信します。
 
@@ -44,6 +44,6 @@ Media Services v3 では、ビデオを処理するジョブを送信すると�
 
 [エラー コード](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [HTTPS URL からジョブの入力を作成する](job-input-from-http-how-to.md)

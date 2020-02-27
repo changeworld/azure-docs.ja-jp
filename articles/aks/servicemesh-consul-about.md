@@ -2,16 +2,15 @@
 title: Consul の概要
 description: Consul の概要を取得する
 author: paulbouwer
-ms.service: container-service
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
-ms.openlocfilehash: 7ffbd2386cd0e50cec8976e6bdd6c5778aa014d7
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: c518985b360fa3264bd5ac1e3fe76d61b2810b9b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928440"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594211"
 ---
 # <a name="consul"></a>Consul
 
@@ -19,9 +18,9 @@ ms.locfileid: "73928440"
 
 [Consul][consul] は、ランタイム プラットフォーム全体にサービスを接続してセキュリティで保護するための、複数のデータ センターに対応したサービスのネットワーク ソリューションです。 [接続][consul-features]は、サービス メッシュ機能を提供するコンポーネントです。
 
-## <a name="architecture"></a>アーキテクチャ
+## <a name="architecture"></a>Architecture
 
-Consul では、既定では [Envoy][envoy-proxy] ベースの[サイドカー][consul-sidecar]から成るデータ プレーンが提供されます。 Consul には、プラグ可能なプロキシ アーキテクチャがあります。 これらのインテリジェント プロキシは、メッシュ化されたアプリとワークロード内外のすべてのネットワーク トラフィックを制御します。
+Consul では、既定では [Envoy][envoy-proxy] ベースの[サイドカー][consul-sidecar]から成るデータ プレーンが提供されます。 Consul には、プラグ可能なプロキシ アーキテクチャがあります。 これらのインテリジェント プロキシは、メッシュ化されたアプリとワークロードの内外のすべてのネットワーク トラフィックを制御します。
 
 コントロール プレーンは、次の[コンポーネント][consul-architecture]を使用して、構成およびポリシーを管理します。
 
@@ -85,7 +84,7 @@ Consul は、次のシナリオに適しており、推奨されています。
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のドキュメントでは、Azure Kubernetes Service (AKS) に Consul をインストールする方法について説明しています。
 

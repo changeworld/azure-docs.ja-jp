@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 67ea11b2e1457bf4a788f54664ed54ff7ca9c8d9
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 9012f09f75c60ebd0b3743d030b83c0a3aa78648
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688928"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524089"
 ---
 # <a name="build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux での ASP.NET Core および SQL Database アプリの作成
 
@@ -19,7 +19,7 @@ ms.locfileid: "74688928"
 > この記事では、Linux 上の App Service にアプリをデプロイします。 _Windows_ 上の App Service にデプロイするには、[Azure App Service での .NET Core および SQL Database のアプリの作成](../app-service-web-tutorial-dotnetcore-sqldb.md)に関するページを参照してください。
 >
 
-[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、.NET Core アプリを作成し、SQL Database に接続する方法について説明します。 完了すると、.NET Core MVC アプリが App Service on Linux で実行されます。
+[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、.NET Core アプリを作成して SQL Database に接続する方法について説明します。 完了すると、.NET Core MVC アプリが App Service on Linux で実行されます。
 
 ![App Service on Linux で実行されるアプリ](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
@@ -83,7 +83,7 @@ dotnet run
 
 SQL Database については、このチュートリアルでは [Azure SQL Database](/azure/sql-database/) を使用します。
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)]
 
@@ -389,7 +389,7 @@ ASP.NET Core のログのカスタマイズの詳細については、「[ASP.NE
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
 <a name="next"></a>
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここで学習した内容は次のとおりです。
 

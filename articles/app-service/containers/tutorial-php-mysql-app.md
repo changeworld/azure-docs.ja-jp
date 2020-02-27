@@ -5,12 +5,12 @@ ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: be8bbfde7e9873f9cef3a85cacc2dfcf4db9039b
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 89b8d9fb1d929e0598469ba582049c61216e923a
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687433"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524024"
 ---
 # <a name="build-a-php-and-mysql-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で PHP と MySQL アプリを構築する
 
@@ -147,7 +147,7 @@ PHP を停止するには、ターミナルで `Ctrl + C` キーを押します�
 
 この手順では、MySQL データベースを [Azure Database for MySQL](/azure/mysql) に作成します。 その後、このデータベースに接続するように PHP アプリケーションを構成します。
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)] 
 
@@ -188,7 +188,7 @@ az mysql server firewall-rule create --name allAzureIPs --server <mysql-server-n
 > [アプリで使用する送信 IP アドレスのみを使用する](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips)ことで、ファイアウォール規則による制限をさらに厳しくすることができます。
 >
 
-Cloud Shell 内で *\<your-ip-address>* を[ローカル IPv4 IP アドレス](https://www.whatsmyip.org/)に置き換えてコマンドを再び実行し、ローカル コンピューターからアクセスできるようにします。
+Cloud Shell 内で *\<you_ip_address>* を [ローカル IPv4 IP アドレス](https://www.whatsmyip.org/)に置き換えてコマンドを再び実行し、ローカル コンピューターからアクセスできるようにします。
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name AllowLocalClient --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address>
@@ -294,7 +294,7 @@ php artisan serve --env=production
 
 `http://localhost:8000` に移動します。 エラーなしでページが読み込まれれば、PHP アプリケーションは Azure の MySQL データベースに接続しています。
 
-ページにいくつかのタスクを追加します。
+ページで、いくつかのタスクを追加します。
 
 ![PHP が Azure Database for MySQL に正常にデータベースに接続されている](./media/tutorial-php-mysql-app/mysql-connect-success.png)
 
@@ -585,7 +585,7 @@ git push azure master
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

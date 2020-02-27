@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 409931076c7e86125e2ee71cae5e57c475799363
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 8649537a2992ba11a2b664a9b36207e06c8b1274
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484164"
+ms.locfileid: "77498555"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Azure Pipelines を使用してカスタム ポリシーをデプロイする
 
@@ -33,7 +33,7 @@ Azure Pipelines を有効にして Azure AD B2C 内でカスタム ポリシー�
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Azure AD B2C テナント](tutorial-create-tenant.md)、および [B2C IEF ポリシー管理者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator)ロールを持つディレクトリ内のユーザーの資格情報
+* [Azure AD B2C テナント](tutorial-create-tenant.md)、および [B2C IEF ポリシー管理者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator)ロールを持つディレクトリー内のユーザーの資格情報
 * テナントにアップロード済みの[カスタム ポリシー](custom-policy-get-started.md)
 * Microsoft Graph API のアクセス許可 *Policy.ReadWrite.TrustFramework* でテナントに登録されている[管理アプリ](microsoft-graph-get-started.md)
 * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)、および [Azure DevOps Services プロジェクト][devops-create-project]へのアクセス
@@ -165,7 +165,7 @@ Azure Pipelines を有効にして Azure AD B2C 内でカスタム ポリシー�
 
         ```PowerShell
         # After
-        -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -PolicyId B2C_1A_TrustFrameworkBase -PathToFile $(System.DefaultWorkingDirectory)/contosob2cpolicies/B2CAssets/TrustFrameworkBase.xml
+        -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -PolicyId B2C_1A_TrustFrameworkBase -PathToFile $(System.DefaultWorkingDirectory)/policyRepo/B2CAssets/TrustFrameworkBase.xml
         ```
 
 1. **[保存]** を選択して、エージェント ジョブを保存します。

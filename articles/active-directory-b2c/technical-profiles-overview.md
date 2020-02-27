@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/11/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f3a9265c1f9a5c6c63931798718e4d0679cd126b
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 3b0e59912d740e30b0e29fb882542f1995ab6f54
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136256"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505659"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C カスタム ポリシーでの技術プロファイルについて
 
@@ -39,7 +39,7 @@ ms.locfileid: "77136256"
 - [SAML2](saml-technical-profile.md) - 任意の SAML プロトコル ID プロバイダーとのフェデレーション。
 - [セルフアサート](self-asserted-technical-profile.md) - ユーザーとやりとりします。 たとえば、ユーザーの資格情報を収集してサインインし、サインアップ ページまたはパスワードのリセットをレンダリングします。
 - [セッション管理](custom-policy-reference-sso.md) - さまざまな種類のセッションを処理します。
-- **Application Insights**
+- [Application Insights](../azure-monitor/app/usage-overview.md)
 - [ワンタイム パスワード](one-time-password-technical-profile.md) - ワンタイム パスワードの生成と確認を管理するためのサポートが提供されています。 
 
 ## <a name="technical-profile-flow"></a>技術プロファイルのフロー

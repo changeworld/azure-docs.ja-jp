@@ -16,18 +16,19 @@ ms.date: 12/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69c633dd3e28047d542e16a58211f997669188f0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3f7bc881cee362103fc611cbf8a094e07ad50699
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896434"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499041"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management での Azure AD ロールの管理機能
 
 Privileged Identity Management での Azure AD ロールの管理機能が更新され、Azure AD ロールと Azure リソース ロールの管理方法が統合されました。 以前は、Azure リソース ロール向けの Privileged Identity Management には Azure AD ロールでは利用できないいくつかの重要な機能がありました。
 
 最近ロール アウトされた更新では、これらの 2 つを単一の管理エクスペリエンスに統合し、Azure AD ロールでも Azure リソース ロールと同じ機能を利用できるようになりました。 この記事では、更新された機能と要件を説明します。
+
 
 ## <a name="time-bound-assignments"></a>期限付き割り当て
 

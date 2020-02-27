@@ -4,14 +4,14 @@ description: Azure App Service で CORS サポートを使用して RESTful API 
 ms.assetid: a820e400-06af-4852-8627-12b3db4a8e70
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 11/21/2018
+ms.date: 02/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: e2eca624fabf30eae86c480ede6c4bdffc2226bc
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 28848d8b676bb5f4182a887f5efdd48c6221041a
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671124"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500059"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>チュートリアル:Azure App Service で CORS を使用して RESTful API をホストする
 
@@ -81,7 +81,7 @@ dotnet run
 
 [!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-no-h.md)]
 
@@ -123,7 +123,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
 ```
 
-### <a name="browse-to-the-azure-app"></a>Azure アプリの参照
+### <a name="browse-to-the-azure-app"></a>Azure アプリを参照する
 
 ブラウザーで `http://<app_name>.azurewebsites.net/swagger` に移動して、Swagger UI を起動します。
 
@@ -149,7 +149,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 dotnet run
 ```
 
-`http://localhost:5000` でブラウザー アプリに移動します。 ブラウザーで開発者ツール ウィンドウを開き (Windows 用の Chrome では `Ctrl` + `Shift` + `i`)、 **[Console]\(コンソール\)** タブを確認します。`No 'Access-Control-Allow-Origin' header is present on the requested resource` というエラー メッセージが表示されています。
+`http://localhost:5000` でブラウザー アプリに移動します。 ブラウザーで開発者ツール ウィンドウを開き (Windows 用の Chrome では `Ctrl`+`Shift`+`i`)、 **[Console]\(コンソール\)** タブを確認します。`No 'Access-Control-Allow-Origin' header is present on the requested resource` というエラー メッセージが表示されています。
 
 ![ブラウザー クライアントでの CORS エラー](./media/app-service-web-tutorial-rest-api/azure-app-service-cors-error.png)
 
@@ -190,7 +190,7 @@ App Service CORS ではなく独自の CORS ユーティリティを使用して
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 <a name="next"></a>
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここで学習した内容は次のとおりです。
 
@@ -202,4 +202,4 @@ App Service CORS ではなく独自の CORS ユーティリティを使用して
 次のチュートリアルに進み、ユーザーを認証および承認する方法を学習してください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: エンドツーエンドでのユーザーの認証と承認](app-service-web-tutorial-auth-aad.md)
+> [チュートリアル:エンドツーエンドでのユーザーの認証と承認](app-service-web-tutorial-auth-aad.md)

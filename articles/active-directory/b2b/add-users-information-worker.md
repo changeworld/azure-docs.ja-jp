@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37dc4a618f01022f4963a14aba921edcce9f4b60
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: abb5c6939d8c88db35a776aa8f2c075a4bdcc609
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74268849"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565419"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>組織内のユーザーがゲスト ユーザーをアプリに招待する方法
 
@@ -105,7 +105,7 @@ ms.locfileid: "74268849"
 2. ナビゲーション ペインで、 **[Azure Active Directory]** を選択します。
 3. **[管理]** で、 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** を選択します。
 4. アプリケーションの一覧で、アプリを検索して開きます。
-5. **[管理]** で、 **[シングル サインオン]** を選択して、シングル サインオン用にアプリケーションを構成します (詳細については、[エンタープライズ アプリのシングル サインオンの管理方法](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal)に関するページを参照してください)。
+5. **[管理]** で、 **[シングル サインオン]** を選択して、シングル サインオン用にアプリケーションを構成します (詳細については、[エンタープライズ アプリのシングル サインオンの管理方法](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications)に関するページを参照してください)。
 6. **[管理]** で、 **[セルフサービス]** を選択して、セルフサービス アプリ アクセスを設定します (詳細については、[セルフサービス アプリ アクセスの使用方法](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to)に関するページを参照してください)。 
 
     > [!NOTE]
@@ -113,7 +113,7 @@ ms.locfileid: "74268849"
 7. **[管理]** で、 **[Users and groups]\(ユーザーとグループ\)** を選択して、作成したセルフサービス グループが一覧に表示されていることを確認します。
 8. グループ所有者のアクセス パネルにアプリを追加するには、 **[ユーザーの追加]**  >  **[Users and groups]\(ユーザーとグループ\)** の順に選択します。 グループ所有者を検索し、ユーザーを選択して **[選択]** をクリックし、 **[割り当て]** をクリックしてユーザーをアプリに追加します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure AD B2B コラボレーションに関する以下の記事を参照してください。
 

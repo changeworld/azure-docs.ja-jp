@@ -2,15 +2,15 @@
 title: チュートリアル - テンプレートにリソースを追加する
 description: Azure Resource Manager テンプレートを初めて作成する際の手順について説明します。 テンプレート ファイルの構文とストレージ アカウントのデプロイ方法について説明します。
 author: mumian
-ms.date: 10/04/2019
+ms.date: 02/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8686b15501e267ab23efe654d28a3e67369a8d03
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: af571b6503f04c809b62c530f6d6254082b838be
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765584"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586684"
 ---
 # <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>チュートリアル:Resource Manager テンプレートにリソースを追加する
 
@@ -26,7 +26,10 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 既存のテンプレートにストレージ アカウントの定義を追加するには、次の例で強調表示されている JSON をご覧ください。 テンプレートの一部をコピーするのではなく、ファイル全体をコピーして、既存のテンプレートの内容を置き換えてください。
 
-**{provide-unique-name}** は、一意のストレージ アカウント名に置き換えます。 ストレージ アカウント名は Azure 内で一意である必要があります。 名前に使用できるのは、小文字と数字だけです。 24 文字以内にする必要があります。 名前付けパターンとして、プレフィックスに **store1** を使用し、自分のイニシャルと今日の日付を追加する形が考えられます。 たとえば、**store1abc09092019** のような名前を使用できます。
+**{provide-unique-name}** は、一意のストレージ アカウント名に置き換えます。
+
+> [!IMPORTANT]
+> ストレージ アカウント名は Azure 内で一意である必要があります。 名前に使用できるのは、小文字と数字だけです。 24 文字以内にする必要があります。 名前付けパターンとして、プレフィックスに **store1** を使用し、自分のイニシャルと今日の日付を追加する形が考えられます。 たとえば、**store1abc09092019** のような名前を使用できます。
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json" range="1-19" highlight="5-17":::
 
@@ -58,7 +61,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 まだリソース グループを作成していない場合は、「[リソース グループの作成](template-tutorial-create-first-template.md#create-resource-group)」を参照してください。 この例では、**templateFile** 変数にテンプレート ファイルのパスが設定済みであることを想定しています ([1 つ目のチュートリアル](template-tutorial-create-first-template.md#deploy-template)を参照)。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -67,7 +70,7 @@ New-AzResourceGroupDeployment `
   -TemplateFile $templateFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group deployment create \

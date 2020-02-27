@@ -2,19 +2,18 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/13/2020
+ms.date: 02/19/2020
 ms.author: dacoulte
-ms.openlocfilehash: c87713b4354415b12ed86cbc6a1c1d73265342fb
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 786075b4641675f7b36df427fff69f33c9cfc2c5
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77371134"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77495117"
 ---
 |名前 |説明 |効果 |Version |source |
 |---|---|---|---|
 |[\[プレビュー\] Virtual Machines で脆弱性評価を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F501541f7-f7e7-4cd6-868c-4190fdad3ac9) |Virtual Machines での Azure Security Center 脆弱性評価によって検出された脆弱性を監視します |AuditIfNotExists、Disabled |1.0.0-preview |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ServerVulnerabilityAssessment_Audit.json)
-|[\[プレビュー\]: App Services へのアクセスを制限する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1a833ff1-d297-4a0f-9944-888428f8e0ff) |一部のアプリ サービスのネットワーク構成は制限が少なすぎ、受信トラフィックを許可する範囲が広すぎることが Azure Security Center によって検出されました |AuditIfNotExists、Disabled |1.0.0-preview |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_PermissiveNetworkAccessToAppServices_Audit.json)
 |[\[プレビュー\]: Kubernetes Services では許可された IP 範囲を定義する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0e246bcf-5f6f-4f87-bc6f-775d4712c7ea) |Kubernetes Service Management API へのアクセスは、特定の範囲の IP にのみ API アクセスに許可して制限する必要があります。 許可されたネットワークのアプリケーションのみがクラスターにアクセスできるよう、許可する IP 範囲にアクセスを制限することをお勧めします。 |Audit、Disabled |1.0.0-preview |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableIpRanges_KubernetesService_Audit.json)
 |[\[プレビュー\]: 仮想マシンでの IP 転送を無効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbd352bd5-2853-4985-bf0d-73806b4a5744) |仮想マシンの NIC で IP 転送を有効にすると、そのマシンはその他の宛先へのトラフィックを受信できます。 IP 転送が必要な状況は (VM をネットワーク仮想アプライアンスとして使用する場合などに) 限られているため、ネットワーク セキュリティ チームはこのことを確認する必要があります。 |AuditIfNotExists、Disabled |1.0.0-preview |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_IPForwardingOnVirtualMachines_Audit.json)
 |[\[プレビュー\]: Kubernetes Service を脆弱性のない Kubernetes バージョンにアップグレードする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb893a29-21bb-418c-a157-e99480ec364c) |現在の Kubernetes バージョンの既知の脆弱性から保護するため、Kubernetes Service クラスターを新しい Kubernetes バージョンにアップグレードしてください。 脆弱性 CVE-2019-9946 は、Kubernetes バージョン 1.11.9 以上、1.12.7 以上、1.13.5 以上、および 1.14.0 以上でパッチが適用されています |Audit、Disabled |1.0.0-preview |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UpgradeVersion_KubernetesService_Audit.json)
@@ -56,4 +55,3 @@ ms.locfileid: "77371134"
 |[仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3c735d8a-a4ba-4a3a-b7cf-db7754cf57f4) |攻撃から保護するため、お使いの仮想マシン スケール セットの OS 脆弱性を監査します。 |AuditIfNotExists、Disabled |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VmssOSVulnerabilities_Audit.json)
 |[SQL データベースの脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffeedbf84-6b99-488c-acc2-71c829aa5ffc) |脆弱性評価スキャン結果と、データベースの脆弱性を修正する方法についての推奨事項を監視します。 |AuditIfNotExists、Disabled |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_SQLDbVulnerabilities_Audit.json)
 |[脆弱性評価ソリューションによって脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F760a85ff-6162-42b3-8d70-698e268f648c) |脆弱性評価ソリューションによって検出された脆弱性と、脆弱性評価ソリューションを使用していない VM を、推奨設定として Azure Security Center で監視します。 |AuditIfNotExists、Disabled |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VMVulnerabilities_Audit.json)
-|[Web ポートは VM に関連付けられたネットワーク セキュリティ グループで制限する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F201ea587-7c90-41c3-910f-c280ae01cfd6) |お使いの仮想マシンの一部で Web アプリケーションが実行されていること、およびこれらの仮想マシンに関連付けられている NSG は Web アプリケーション ポートに関して制限が少なすぎることが Azure Security Center によって検出されました |AuditIfNotExists、Disabled |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnprotectedWebApps_Audit.json)

@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: d2df67479d8b6ab490bf06bda1ec033f9bf7866e
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: fadf42e7bd7d754dea64542f06866a439eb460ec
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429123"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588775"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用した NAT ゲートウェイの作成
 
 このクイックスタートでは、Azure Virtual Network NAT サービスを使用する方法について説明します。 Azure 内の仮想マシンに送信接続を提供する NAT ゲートウェイを作成しましょう。 
 
 >[!NOTE] 
->Azure Virtual Network NAT は、現時点ではパブリック プレビューとして提供され、限られた[リージョン](https://azure.microsoft.com/global-infrastructure/regions/)でのみご利用いただけます。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms)」をご覧ください。
+>Azure Virtual Network NAT は、現時点ではパブリック プレビューとして提供され、ご利用いただける[リージョン](https://azure.microsoft.com/global-infrastructure/regions/)が限られています。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms)」をご覧ください。
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -34,9 +34,6 @@ ms.locfileid: "77429123"
 このチュートリアルは、Azure Cloud Shell を使用して行うか、コマンドをローカルで実行して行うことができます。  Azure Cloud Shell を使用したことがない場合は、[今すぐサインイン](https://shell.azure.com)してください。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-> [!IMPORTANT]
-> ご利用のサブスクリプションで Virtual Network NAT [プレビューを有効](./nat-overview.md#enable-preview)にした後、 https://aka.ms/natportal を使用してポータルにアクセスします。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -268,7 +265,7 @@ Get-AzPublicIpAddress -ResourceGroupName $rsg -Name $nmn | select IpAddress
 
 ### <a name="sign-in-to-vm"></a>VM へのサインイン
 
-SSH 資格情報は、前の操作で Cloud Shell に格納されているはずです。  ご使用のブラウザーで [Azure Cloud Shell](https://shell.azure.com) を開きます。 前の手順で取得した IP アドレスを使用して、仮想マシンに SSH 接続します。
+Cloud Shell には、前の操作で生成した SSH の資格情報が格納されているはずです。  ご使用のブラウザーで [Azure Cloud Shell](https://shell.azure.com) を開きます。 前の手順で取得した IP アドレスを使用して、仮想マシンに SSH 接続します。
 
 ```bash
 ssh azureuser@<ip-address-destination>

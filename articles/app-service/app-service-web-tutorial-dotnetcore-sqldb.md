@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7f444ad9b32ca5da923ce5ac711c9947971c4d1e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 28dc5131366c54db30e9233ea1061cc9bc7a54ce
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672010"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500070"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>チュートリアル:Azure App Service での ASP.NET Core および SQL Database アプリの作成
 
@@ -82,7 +82,7 @@ dotnet run
 
 SQL Database については、このチュートリアルでは [Azure SQL Database](/azure/sql-database/) を使用します。
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-no-h.md)]
 
@@ -393,7 +393,7 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 ログのストリーミングが開始されたら、ブラウザーで Azure アプリを最新の情報に更新して、Web トラフィックを取得します。 ターミナルにパイプされたコンソール ログが表示されます。 コンソール ログがすぐに表示されない場合は、30 秒以内にもう一度確認します。
 
-任意のタイミングでログのストリーミングを停止するには、`Ctrl` + `C` と入力します。
+任意のタイミングでログのストリーミングを停止するには、`Ctrl`+`C` と入力します。
 
 ASP.NET Core のログのカスタマイズの詳細については、「[ASP.NET Core でのログ記録](https://docs.microsoft.com/aspnet/core/fundamentals/logging)」を参照してください。
 
@@ -414,7 +414,7 @@ ASP.NET Core のログのカスタマイズの詳細については、「[ASP.NE
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 <a name="next"></a>
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここで学習した内容は次のとおりです。
 

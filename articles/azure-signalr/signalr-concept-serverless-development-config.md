@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: f86a63315798d982f7e78fd1ff293061daf50132
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e1157a695d34c75b237391427b37365421366ef8
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786777"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523172"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure SignalR Service を使用した Azure Functions の開発と構成
 
@@ -36,21 +36,21 @@ Azure Functions および Azure SignalR Service で構築されたサーバー�
 
 ### <a name="negotiate-function"></a>negotiate 関数
 
-クライアント アプリケーションでは、Azure SignalR Service に接続するために、有効なアクセス トークンが必要になります。 アクセス トークンは匿名でも特定のユーザー ID に認証することもできます。 サーバーレスの SignalR Service アプリケーションでは、トークンと、SignalR Service エンドポイント URL などの他の接続情報を取得するために「negotiate」という名前の HTTP エンドポイントが必要です。
+クライアント アプリケーションでは、Azure SignalR Service に接続するために、有効なアクセス トークンが必要になります。 アクセス トークンは匿名か、または特定のユーザー ID に認証済みのものを使用できます。 サーバーレスの SignalR Service アプリケーションでは、トークンと、SignalR Service エンドポイント URL などの他の接続情報を取得するために「negotiate」という名前の HTTP エンドポイントが必要です。
 
 HTTP によってトリガーされる Azure 関数と *SignalRConnectionInfo* 入力バインドを使用して、接続情報オブジェクトを生成します。 関数には、`/negotiate` で終わる HTTP ルートが必要です。
 
-negotiate 関数を作成する方法の詳細については、[*SignalRConnectionInfo* 入力バインドのリファレンス](../azure-functions/functions-bindings-signalr-service.md#input)に関するページを参照してください。
+negotiate 関数を作成する方法の詳細については、[*SignalRConnectionInfo* 入力バインドのリファレンス](../azure-functions/functions-bindings-signalr-service-input.md)に関するページを参照してください。
 
 認証トークンを作成する方法の詳細については、[App Service 認証の使用](#using-app-service-authentication)に関するページを参照してください。
 
 ### <a name="sending-messages-and-managing-group-membership"></a>メッセージの送信とグループ メンバーシップの管理
 
-*SignalR* 出力バインドを使用して、Azure SignalR Service に接続したクライアントにメッセージを送信します。 すべてのクライアントにメッセージをブロードキャストすることも、特定のユーザー ID で認証されるか、特定のグループに追加されていたクライアントのサブセットにそれらを送信することもできます。
+*SignalR* 出力バインドを使用して、Azure SignalR Service に接続したクライアントにメッセージを送信します。 すべてのクライアントにメッセージをブロードキャストすることも、特定のユーザー ID で認証されたか、特定のグループに追加されたクライアントのサブセットにそれらを送信することもできます。
 
 ユーザーは、1 つ以上のグループに追加できます。 *SignalR* 出力バインドを使用して、グループに対してユーザーを追加または削除することもできます。
 
-詳細については、[*SignalR* 出力バインド リファレンス](../azure-functions/functions-bindings-signalr-service.md#output)に関するページを参照してください。
+詳細については、[*SignalR* 出力バインド リファレンス](../azure-functions/functions-bindings-signalr-service-output.md)に関するページを参照してください。
 
 ### <a name="signalr-hubs"></a>SignalR Hubs
 
@@ -205,6 +205,6 @@ public static Task SendMessage(
 
 その他の言語の詳細については、Azure Functions のリファレンスの [Azure SignalR Service のバインド](../azure-functions/functions-bindings-signalr-service.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Azure Functions を使用して、サーバーレスの SignalR Service アプリケーションを開発および構成する方法について説明しました。 [SignalR Service 概要ページ](index.yml)のクイック スタートまたはチュートリアルのいずれかを使用して自身でアプリケーションを作成してみてください。

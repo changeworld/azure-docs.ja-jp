@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: fdcaa7d8eec0065ad9acd76df9918ed7bccc081b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 07537d3d67e41f7e1179a709ffa19f3d84aa4539
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895872"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565827"
 ---
 # <a name="playing-your-content-with-existing-players"></a>既存のプレーヤーによるコンテンツの再生
 Azure Media Services は、スムーズ ストリーミング、HTTP ライブ ストリーミング、Mpeg-dash など、人気のある多くのストリーミング形式をサポートします。 このトピックでは、ストリームのテストに使用できる既存のプレーヤーを示します。
@@ -65,9 +65,6 @@ Azure Media Services は、スムーズ ストリーミング、HTTP ライブ �
 
 * **Safari** (iOS デバイス) または
 * **3ivx HLS Player** (Windows)
-
-## <a name="developing-video-players"></a>ビデオ プレーヤーの開発
-独自のプレーヤーの開発方法については、「 [ビデオ プレーヤーの開発](media-services-develop-video-players.md)
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

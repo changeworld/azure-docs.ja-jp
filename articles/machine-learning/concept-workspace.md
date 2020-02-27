@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
-ms.openlocfilehash: 82ae0cab2d3dd7c65371e7a5bfec506e484fcdd2
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 03bc49c24e3c2d32e97f3e5e03bd39da63428a6e
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169783"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505582"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースとは
 
@@ -77,6 +77,9 @@ ms.locfileid: "77169783"
 | Enterprise Edition へのアップグレード    | **&check;** | **&check;**  | |     |
 | コンピューティング リソースを作成して管理する    | **&check;**   | **&check;** | **&check;** |  **&check;**   |
 | ノートブック VM を作成する |   | **&check;** | |     |
+
+> [!WARNING]
+> Azure Machine Learning ワークスペースを別のサブスクリプションに移動したり、所有するサブスクリプションを新しいテナントに移動したりすることは、サポートされていません。 エラーの原因になります。
 
 ## <a name='create-workspace'></a> ワークスペースを作成する
 

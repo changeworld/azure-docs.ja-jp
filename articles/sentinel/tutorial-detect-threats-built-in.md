@@ -3,7 +3,7 @@ title: Azure Sentinel でアラートを調査する | Microsoft Docs
 description: このチュートリアルでは、Azure Sentinel でアラートを調査する方法について説明します。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 6d61b94a50716966ac0b3c75551ddd9d8e291965
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.author: yelevin
+ms.openlocfilehash: df855aa768fdeb279482b8407259be1a644322d9
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024463"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585205"
 ---
 # <a name="tutorial-detect-threats-out-of-the-box"></a>チュートリアル:難しい設定なしで脅威を検出する
 
@@ -41,7 +41,7 @@ Azure Sentinel に [データ ソースを接続した](quickstart-onboard.md)�
 
 難しい設定の要らない検出機能をすべて表示するには、 **[Analytics]** 、 **[Rule templates]\(ルール テンプレート\)** の順に選択します。 このタブには、すべての Azure Sentinel 組み込み規則が含まれています。
 
-   ![Azure Sentinel の組み込み検出機能を利用して脅威を検出する](media/tutorial-detect-built-in/view-oob-detections.png)
+   ![Azure Sentinel の組み込みの検出機能を利用して脅威を検出する](media/tutorial-detect-built-in/view-oob-detections.png)
 
 次の種類のテンプレートを使用できます。
 
@@ -54,7 +54,7 @@ Azure Sentinel に [データ ソースを接続した](quickstart-onboard.md)�
 
 1. 組み込みテンプレートを使用するには、 **[ルールの作成]** をクリックし、そのテンプレートを基礎として新しい有効なルールを作成します。 エントリごとに与えられる必須のデータ ソースの一覧は自動的にチェックされます。その結果、 **[ルールの作成]** が無効になる場合があります。
   
-   ![Azure Sentinel の組み込み検出機能を利用して脅威を検出する](media/tutorial-detect-built-in/use-built-in-template.png)
+   ![Azure Sentinel の組み込みの検出機能を利用して脅威を検出する](media/tutorial-detect-built-in/use-built-in-template.png)
  
 1. 選択したテンプレートに基づいてルール作成ウィザードが開きます。 項目にはすべて、データが自動入力されます。 **[Scheduled rules]\(スケジュール付きルール\)** と **[Microsoft セキュリティ規則]** については、組織に合わせてロジックをカスタマイズしたり、組み込みテンプレートに基づいて追加ルールを作成したりできます。 ルール作成ウィザードの手順を行い、テンプレートに基づくルールの作成を完了すると、 **[Active rules]\(有効なルール\)** タブに新しいルールが表示されます。
 
@@ -62,7 +62,7 @@ Azure Sentinel に [データ ソースを接続した](quickstart-onboard.md)�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure Sentinel を使用して、脅威の検出を開始する方法について説明しました。 
 
 脅威への対応を自動化する方法については、「[Azure Sentinel で脅威への自動対応を設定する](tutorial-respond-threats-playbook.md)」を参照してください。

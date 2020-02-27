@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 05/04/2017
 ms.custom: seodec18
-ms.openlocfilehash: 7d0a1d89b0547b1cd982b2717ac7548bec848a77
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 2ab67743a349c33000d4b6f8b8566ff48e5e1d24
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671313"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500032"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>チュートリアル:Azure で Node.js と MongoDB のアプリを構築する
 
@@ -120,7 +120,7 @@ MEAN.js サンプル アプリケーションでは、ユーザー データを�
 
 このチュートリアルでは、MongoDB に [Azure Cosmos DB](/azure/documentdb/) を使用します。 Cosmos DB は MongoDB のクライアント接続をサポートします。
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-no-h.md)] 
 
@@ -311,7 +311,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 
 この方法を使用して、Git ベースのデプロイに任意の手順を追加できます。 任意の時点で Azure アプリを再起動しても、これらの自動タスクが App Service によって再び実行されることはありません。
 
-### <a name="browse-to-the-azure-app"></a>Azure アプリの参照 
+### <a name="browse-to-the-azure-app"></a>Azure アプリを参照する 
 
 Web ブラウザーを使用して、デプロイされたアプリを参照します。 
 
@@ -475,7 +475,7 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 `Ctrl+C` キーを押して、任意のタイミングでログのストリーミングを停止します。 
 
-## <a name="manage-your-azure-app"></a>Azure アプリの管理
+## <a name="manage-your-azure-app"></a>Azure アプリを管理する
 
 [Azure portal](https://portal.azure.com) に移動し、お客様が作成したアプリを表示します。
 
@@ -490,7 +490,7 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 <a name="next"></a>
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここで学習した内容は次のとおりです。
 

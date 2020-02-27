@@ -7,19 +7,19 @@ documentationcenter: na
 manager: jodadzie
 ms.assetid: afb77f2d-5ddd-4c2e-a840-09021b0efef1
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: 6f7497e62be0036c13d5c33fa82301469df16f26
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 00b16f969525e7b802c008ba247ecba015875689
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77065630"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522358"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>SAP SuccessFactors 属性のリファレンス
 
@@ -65,7 +65,7 @@ ms.locfileid: "77065630"
 | 32 | User                                   | homePhone                    | Read           |
 | 33 | User                                   | jobFamily                    | Read           |
 | 34 | User                                   | nickname                     | Read           |
-| 35 | User                                   | 状態                        | Read           |
+| 35 | User                                   | state                        | Read           |
 | 36 | User                                   | timeZone                     | Read           |
 | 37 | User                                   | username                     | Read           |
 | 38 | User                                   | zipCode                      | Read           |
@@ -126,7 +126,7 @@ ms.locfileid: "77065630"
 | 6  | User                                   | addressLine1             | streetAddress                           | NA                                                                                           |
 | 7  | User                                   | city                     | l                                       | NA                                                                                           |
 | 8  | User                                   | country                  | co                                      | NA                                                                                           |
-| 9  | User                                   | 状態                    | st                                      | NA                                                                                           |
+| 9  | User                                   | state                    | st                                      | NA                                                                                           |
 | 10 | User                                   | username                 | samAccountName                          | NA                                                                                           |
 | 11 | User                                   | zipCode                  | postalCode                              | NA                                                                                           |
 | 12 | PerEmail                               | emailAddress             | mail                                    | NA                                                                                           |

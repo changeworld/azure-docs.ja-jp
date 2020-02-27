@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: banders
-ms.openlocfilehash: c6a8547235c302f52aacd0e6ae4a8fbf08b538b8
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: c1cced862bee1ec4579f3e6e5145968dec7613e4
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443637"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500570"
 ---
 # <a name="what-are-azure-reservations"></a>Azure の予約とは
 
@@ -20,7 +20,7 @@ Azure の予約は、仮想マシン、Azure BLOB ストレージまたは Azure
 
 予約の支払いは、前払いとすることも、月払いとすることもできます。 前払いも月払いも予約の総コストは同じであり、月払いを選んだとしても追加料金を支払う必要はありません。 毎月の支払いは、サードパーティ製品ではなく、Azure の予約で利用できます。
 
-予約は [Azure portal](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) で購入できます。
+予約は [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) で購入できます。
 
 ## <a name="why-buy-a-reservation"></a>予約を購入する理由
 

@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: ca73c7e610b8bd818355f30b9d08bceffeddfc73
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: a68392d003e4e2a81801a903302badd99c1e9e87
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688881"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523970"
 ---
 # <a name="build-a-nodejs-and-mongodb-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で Node.js および MongoDB のアプリを構築する
 
@@ -114,7 +114,7 @@ MEAN.js サンプル アプリケーションでは、ユーザー データを�
 
 この手順では、Azure Cosmos DB の MongoDB 用 API を使用してデータベース アカウントを作成します。 アプリを Azure にデプロイすると、このクラウド データベースがアプリで使用されます。
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)]
 
@@ -462,7 +462,7 @@ git push azure master
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここで学習した内容は次のとおりです。
 

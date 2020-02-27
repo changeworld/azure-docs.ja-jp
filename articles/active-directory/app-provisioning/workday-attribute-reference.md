@@ -7,25 +7,25 @@ documentationcenter: na
 manager: jodadzie
 ms.assetid: afb77f2d-5ddd-4c2e-a840-09021b0efef1
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: d193fdd5336ab32b10038ee170aee22a7cea88fd
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 54b4eaf483fd6817fe73c87962d5f26533a2b507
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77065590"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77521933"
 ---
 # <a name="workday-attribute-reference"></a>Workday 属性のリファレンス
 
 下の表は、Workday 受信プロビジョニング アプリ コネクタに付属する Workday 属性とそれに対応する XPATH 式を一覧にしたものです。 
 
-| \# | Name                                  | Workday API 式                                                                                                                                                                                                                                                                                                                                                                                       |
+| \# | 名前                                  | Workday API 式                                                                                                                                                                                                                                                                                                                                                                                       |
 |----|---------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1  | アクティブ                                | wd:Worker/wd:Worker\_Data/wd:Employment\_Data/wd:Worker\_Status\_Data/wd:Active/text\(\)                                                                                                                                                                                                                                                                                                                     |
 | 2  | AddressLine2Data                      | wd:Worker/wd:Worker\_Data/wd:Employment\_Data/wd:Position\_Data/wd:Business\_Site\_Summary\_Data/wd:Address\_Data/wd:Address\_Line\_Data\[@wd:Type='ADDRESS\_LINE\_2'\]/text\(\)                                                                                                                                                                                                                             |

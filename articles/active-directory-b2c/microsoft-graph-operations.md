@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/14/2020
+ms.date: 02/20/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1f23d3ffa14deccae9825568dee2f3c8b9ac7e7e
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 5eeae1ab6866435311eeec944b4a51ecf2793dee
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492368"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522970"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>Azure AD B2C に使用可能な Microsoft Graph 操作
 
@@ -57,7 +57,7 @@ Azure AD B2C テナントのユーザーフローで使用できる ID プロバ
 
 次の操作を使用すると、[カスタムポリシー](custom-policy-overview.md)と呼ばれる Azure AD B2C 信頼フレームワーク ポリシーを管理できます。
 
-- [テナントで構成されているすべての信頼フレームワーク ポリシーを一覧表示する](https://docs.microsoft.com/graph/api/trustframework-list-trustframeworkpolicies.md)
+- [テナントで構成されているすべての信頼フレームワーク ポリシーを一覧表示する](https://docs.microsoft.com/graph/api/trustframework-list-trustframeworkpolicies)
 - [信頼フレームワーク ポリシーの作成](https://docs.microsoft.com/graph/api/trustframework-post-trustframeworkpolicy)
 - [既存の信頼フレームワーク ポリシーのプロパティの読み取り](https://docs.microsoft.com/graph/api/trustframeworkpolicy-get)
 - [信頼フレームワーク ポリシーを更新または作成します。](https://docs.microsoft.com/graph/api/trustframework-put-trustframeworkpolicy)

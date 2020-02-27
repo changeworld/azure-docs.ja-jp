@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: ce9ca202ee57fe9c42906ebeb62a44c724bd1a52
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 72a87c3b23e0eed6cfbf1614388702443f4e99d0
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978726"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588789"
 ---
 # <a name="manage-azure-cosmos-db-sql-core-api-resources-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Azure Cosmos DB SQL (コア) API リソースを管理する
 
@@ -39,7 +39,7 @@ Azure Cosmos DB リソースを作成するには、次のテンプレート例�
 > * アカウント名は、44 文字 (すべて小文字) に制限されています。
 > * スループットの値を変更するには、RU/秒を更新したテンプレートを再送信します。
 
-[!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json":::
 
 > [!NOTE]
 > 大きいパーティション キーを持つコンテナーを作成するには、前のテンプレートを変更して、`partitionKey` オブジェクト内に `"version":2` プロパティを含めます。
@@ -136,7 +136,7 @@ Azure Resource Manager テンプレートを使用することで、ストアド
 * 必要に応じて、[Azure クイック スタート ギャラリー](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-container-sprocs/)にアクセスし、Azure portal からテンプレートをデプロイできます。
 * テンプレートをローカル コンピューターにダウンロードするか、新しいテンプレートを作成して、`--template-file` パラメーターでローカル パスを指定することもできます。
 
-[!code-json[create-cosmosdb-sql-sprocs](~/quickstart-templates/101-cosmosdb-sql-container-sprocs/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql-container-sprocs/azuredeploy.json":::
 
 ### <a name="deploy-with-powershell"></a>PowerShell でデプロイする
 

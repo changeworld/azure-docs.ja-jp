@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: mjbrown
-ms.openlocfilehash: bfd18a009ed9ab5edffafcd0327b1d846cae02d8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 6d163609d505516514f078e5d5374c20b5a24e89
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75643850"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585585"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>Azure Cosmos コンテナー上でのスループットをプロビジョニングする
 
@@ -19,7 +19,7 @@ ms.locfileid: "75643850"
 
 ## <a name="azure-portal"></a>Azure portal
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. [新しい Azure Cosmos アカウントを作成する](create-sql-api-dotnet.md#create-account)か、既存の Azure Cosmos アカウントを選択します。
 
@@ -64,7 +64,8 @@ await client.CreateDocumentCollectionAsync(
 ```
 
 ### <a name="net-v3-sdk"></a>.Net V3 SDK
-[!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/ContainerDocsSampleCode.cs?name=ContainerCreateWithThroughput)]
+
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/ContainerDocsSampleCode.cs" id="ContainerCreateWithThroughput":::
 
 ## <a name="javascript-sdk"></a>JavaScript SDK
 

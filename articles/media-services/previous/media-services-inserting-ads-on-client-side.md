@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f56c897fd6f5ce7e5129a4500ecaacbaf0a75f3b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 274ee09ae98dd229b255e58261f462e322be9f89
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895962"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565742"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>クライアント側での広告の挿入
 この記事では、クライアント側でさまざまな種類の広告を挿入する方法について説明します。
@@ -366,7 +366,7 @@ VPAID は、実行可能広告ユニットがビデオ プレーヤーとやり�
 実行可能広告は、VAST 応答で `<Linear>` 要素または `<NonLinear>` 要素内の `<AdParameters>` 要素を使用して初期化できます。 `<AdParameters>` 要素の詳細については、「[VAST 3.0](https://www.iab.net/media/file/VASTv3.0.pdf)」をご覧ください。 Graph API の詳細については、「 [VPAID 2.0](https://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf)」をご覧ください。
 
 ## <a name="implementing-a-windows-or-windows-phone-8-player-with-ad-support"></a>広告をサポートする Windows または Windows Phone 8 プレーヤーの実装
-Microsoft Media Platform:Player Framework for Windows 8 and Windows Phone 8 には、このフレームワークを使用してビデオ プレーヤー アプリケーションを実装する方法を示すサンプル アプリケーションのコレクションが含まれています。 Player Framework とサンプルは、 [Player Framework for Windows 8 and Windows Phone 8](https://playerframework.codeplex.com)サイトからダウンロードできます。
+Microsoft Media Platform: Player Framework for Windows 8 and Windows Phone 8 には、このフレームワークを使用してビデオ プレーヤー アプリケーションを実装する方法を示すサンプル アプリケーションのコレクションが含まれています。 Player Framework とサンプルは、 [Player Framework for Windows 8 and Windows Phone 8](https://playerframework.codeplex.com)サイトからダウンロードできます。
 
 Microsoft.PlayerFramework.Xaml.Samples ソリューションを開くと、多数のフォルダーがプロジェクト内に表示されます。 Advertising フォルダーには、広告をサポートするビデオ プレーヤーの作成に関連するサンプル コードが含まれています。 Advertising フォルダーには、広告を挿入するさまざまな方法を示した XAML/CS ファイルが含まれています。 次の一覧で、これらのファイルについて説明します。
 
@@ -848,7 +848,3 @@ Microsoft Media Platform: Player Framework for iOS には、このフレーム�
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-
-## <a name="see-also"></a>関連項目
-[ビデオ プレーヤー アプリケーションの開発](media-services-develop-video-players.md)
-

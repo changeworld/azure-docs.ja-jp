@@ -4,12 +4,12 @@ description: Azure PowerShell を使用して Azure Blockchain Service コンソ
 ms.date: 10/14/2019
 ms.topic: article
 ms.reviewer: zeyadr
-ms.openlocfilehash: 4eb35838394d3324f460b5e83cfbcb47b8114221
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: e819dd39481b58d446384a5e2253c548ce0c267c
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455502"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505988"
 ---
 # <a name="manage-consortium-members-in-azure-blockchain-service-using-powershell"></a>PowerShell を使用して Azure Blockchain Service のコンソーシアム メンバーを管理する
 
@@ -59,7 +59,7 @@ $ContractConnection = Import-ConsortiumManagementContracts -RootContractAddress 
 
 他の値は Azure portal で探します。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 既定の Blockchain Service メンバーの **[概要]** ページに移動します。
 
     ![メンバーの概要](./media/manage-consortium-powershell/member-overview.png)
@@ -83,7 +83,7 @@ $ContractConnection = Import-ConsortiumManagementContracts -RootContractAddress 
 
 `Import-ConsortiumManagementContracts -RootContractAddress <String> -Web3Client <IClient>`
 
-| パラメーター | 説明 | 必須 |
+| パラメーター | 説明 | Required |
 |-----------|-------------|:--------:|
 | RootContractAddress | コンソーシアム管理スマート コントラクトのルート コントラクト アドレス | はい |
 | Web3Client | New-Web3Connection から取得した Web3Client オブジェクト | はい |
@@ -100,7 +100,7 @@ Import-ConsortiumManagementContracts -RootContractAddress '<RootContract address
 
 `Import-Web3Account -ManagedAccountAddress <String> -ManagedAccountPassword <String>`
 
-| パラメーター | 説明 | 必須 |
+| パラメーター | 説明 | Required |
 |-----------|-------------|:--------:|
 | ManagedAccountAddress | ブロックチェーン メンバーのアカウント アドレス | はい |
 | ManagedAccountPassword | アカウント アドレスのパスワード | はい |
@@ -117,7 +117,7 @@ Import-Web3Account -ManagedAccountAddress '<Member account address>'  -ManagedAc
 
 `New-Web3Connection [-RemoteRPCEndpoint <String>]`
 
-| パラメーター | 説明 | 必須 |
+| パラメーター | 説明 | Required |
 |-----------|-------------|:--------:|
 | RemoteRPCEndpoint | ブロックチェーン メンバーのエンドポイント アドレス | はい |
 
@@ -137,10 +137,10 @@ New-Web3Connection -RemoteRPCEndpoint '<Endpoint address>'
 
 `Get-BlockchainMember [[-Name] <String>] -Members <IContract> -Web3Client <IClient>`
 
-| パラメーター | 説明 | 必須 |
+| パラメーター | 説明 | Required |
 |-----------|-------------|:--------:|
-| Name | 詳細を取得する Blockchain Service メンバーの名前。 名前を入力すると、そのメンバーの詳細が返されます。 名前を省略すると、すべてのコンソーシアム メンバーの一覧が返されます。 | いいえ |
-| Members | Import-ConsortiumManagementContracts で取得したメンバー オブジェクト | はい |
+| 名前 | 詳細を取得する Blockchain Service メンバーの名前。 名前を入力すると、そのメンバーの詳細が返されます。 名前を省略すると、すべてのコンソーシアム メンバーの一覧が返されます。 | いいえ |
+| メンバー | Import-ConsortiumManagementContracts で取得したメンバー オブジェクト | はい |
 | Web3Client | New-Web3Connection から取得した Web3Client オブジェクト | はい |
 
 #### <a name="example"></a>例
@@ -168,10 +168,10 @@ Role           : ADMIN
 
 `Remove-BlockchainMember -Name <String> -Members <IContract> -Web3Account <IAccount> -Web3Client <IClient>`
 
-| パラメーター | 説明 | 必須 |
+| パラメーター | 説明 | Required |
 |-----------|-------------|:--------:|
-| Name | 削除するメンバーの名前 | はい |
-| Members | Import-ConsortiumManagementContracts で取得したメンバー オブジェクト | はい |
+| 名前 | 削除するメンバーの名前 | はい |
+| メンバー | Import-ConsortiumManagementContracts で取得したメンバー オブジェクト | はい |
 | Web3Account | Import-Web3Account で取得した Web3Account オブジェクト | はい |
 | Web3Client | New-Web3Connection から取得した Web3Client オブジェクト | はい |
 
@@ -194,12 +194,12 @@ Set-BlockchainMember -Name <String> [-DisplayName <String>] [-AccountAddress <St
  -Members <IContract> -Web3Account <IAccount> -Web3Client <IClient>
 ```
 
-| パラメーター | 説明 | 必須 |
+| パラメーター | 説明 | Required |
 |-----------|-------------|:--------:|
-| Name | ブロックチェーン メンバーの名前 | はい |
+| 名前 | ブロックチェーン メンバーの名前 | はい |
 | DisplayName | 新しい表示名 | いいえ |
 | AccountAddress | アカウント アドレス | いいえ |
-| Members | Import-ConsortiumManagementContracts で取得したメンバー オブジェクト | はい |
+| メンバー | Import-ConsortiumManagementContracts で取得したメンバー オブジェクト | はい |
 | Web3Account | Import-Web3Account で取得した Web3Account オブジェクト | はい |
 | Web3Client |  New-Web3Connection から取得した Web3Client オブジェクト| はい |
 
@@ -224,11 +224,11 @@ New-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members 
  -Web3Account <IAccount> -Web3Client <IClient>
 ```
 
-| パラメーター | 説明 | 必須 |
+| パラメーター | 説明 | Required |
 |-----------|-------------|:--------:|
 | SubscriptionId | 招待するメンバーの Azure サブスクリプション ID | はい |
 | Role | コンソーシアムのロール。 使用できる値は ADMIN または USER です。 ADMIN は、コンソーシアムの管理者ロールです。 USER は、コンソーシアムのメンバー ロールです。 | はい |
-| Members | Import-ConsortiumManagementContracts で取得したメンバー オブジェクト | はい |
+| メンバー | Import-ConsortiumManagementContracts で取得したメンバー オブジェクト | はい |
 | Web3Account | Import-Web3Account で取得した Web3Account オブジェクト | はい |
 | Web3Client | New-Web3Connection から取得した Web3Client オブジェクト | はい |
 
@@ -246,10 +246,10 @@ $ContractConnection | New-BlockchainMemberInvitation -SubscriptionId <Azure Subs
 
 `Get-BlockchainMemberInvitation [[-SubscriptionId] <String>] -Members <IContract> -Web3Client <IClient>`
 
-| パラメーター | 説明 | 必須 |
+| パラメーター | 説明 | Required |
 |-----------|-------------|:--------:|
 | SubscriptionId | 招待するメンバーの Azure サブスクリプション ID。 サブスクリプション ID を指定した場合は、サブスクリプション ID の招待の詳細が返されます。 サブスクリプション ID を省略すると、すべてのメンバーの招待の一覧が返されます。 | いいえ |
-| Members | Import-ConsortiumManagementContracts で取得したメンバー オブジェクト | はい |
+| メンバー | Import-ConsortiumManagementContracts で取得したメンバー オブジェクト | はい |
 | Web3Client | New-Web3Connection から取得した Web3Client オブジェクト | はい |
 
 #### <a name="example"></a>例
@@ -257,7 +257,7 @@ $ContractConnection | New-BlockchainMemberInvitation -SubscriptionId <Azure Subs
 [Web3 接続を確立](#establish-a-web3-connection)し、$ContractConnection 変数を設定します。
 
 ```powershell-interactive
-$ContractConnection | Get-BlockchainMemberInvitation – SubscriptionId <Azure subscription ID>
+$ContractConnection | Get-BlockchainMemberInvitation –SubscriptionId <Azure subscription ID>
 ```
 
 #### <a name="example-output"></a>出力例
@@ -277,10 +277,10 @@ Remove-BlockchainMemberInvitation -SubscriptionId <String> -Members <IContract> 
  -Web3Client <IClient>
 ```
 
-| パラメーター | 説明 | 必須 |
+| パラメーター | 説明 | Required |
 |-----------|-------------|:--------:|
 | SubscriptionId | 取り消すメンバーの Azure サブスクリプション ID | はい |
-| Members | Import-ConsortiumManagementContracts で取得したメンバー オブジェクト | はい |
+| メンバー | Import-ConsortiumManagementContracts で取得したメンバー オブジェクト | はい |
 | Web3Account | Import-Web3Account で取得した Web3Account オブジェクト | はい |
 | Web3Client | New-Web3Connection から取得した Web3Client オブジェクト | はい |
 
@@ -301,11 +301,11 @@ Set-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members 
  -Web3Account <IAccount> -Web3Client <IClient>
 ```
 
-| パラメーター | 説明 | 必須 |
+| パラメーター | 説明 | Required |
 |-----------|-------------|:--------:|
 | SubscriptionId | 招待するメンバーの Azure サブスクリプション ID | はい |
 | Role | 招待の新しいコンソーシアム ロール。 使用できる値は、**USER** または **ADMIN** です。 | はい |
-| Members |  Import-ConsortiumManagementContracts で取得したメンバー オブジェクト | はい |
+| メンバー |  Import-ConsortiumManagementContracts で取得したメンバー オブジェクト | はい |
 | Web3Account | Import-Web3Account で取得した Web3Account オブジェクト | はい |
 | Web3Client | New-Web3Connection から取得した Web3Client オブジェクト | はい |
 
@@ -317,6 +317,6 @@ Set-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members 
 $ContractConnection | Set-BlockchainMemberInvitation -SubscriptionId <Azure subscription ID> -Role USER -Web3Account $MemberAccount
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 コンソーシアム、メンバー、ノードについて詳しくは、「[Azure Blockchain Service のコンソーシアム](consortium.md)」をご覧ください

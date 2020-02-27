@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: a49f641561aa7a293628e914c964020145e0ae62
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: f0367a195ca0aa5f26ff0819b00c50fabae1d271
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486431"
+ms.locfileid: "77505821"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>チュートリアル:Azure Maps を使用した IoT 空間分析の実装
 
@@ -157,7 +157,7 @@ IoT ハブに接続するには、デバイスを登録する必要がありま�
 
 3. デバイスの **[プライマリ接続文字列]** を後の手順で使用するために保存します。後の手順では、プレースホルダーをこの接続文字列に変更する必要があります。
 
-    ![add-device](./media/tutorial-iot-hub-maps/connectionString.png)
+    ![add-device](./media/tutorial-iot-hub-maps/connection-string.png)
 
 ## <a name="upload-geofence"></a>ジオフェンスをアップロードする
 
