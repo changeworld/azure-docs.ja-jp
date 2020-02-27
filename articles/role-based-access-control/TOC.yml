@@ -78,6 +78,8 @@
       items:
         - name: 概要
           href: custom-roles.md
+        - name: ポータル
+          href: custom-roles-portal.md
         - name: PowerShell
           href: custom-roles-powershell.md
         - name: Azure CLI

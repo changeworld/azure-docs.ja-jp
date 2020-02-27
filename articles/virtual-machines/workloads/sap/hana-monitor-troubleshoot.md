@@ -3,22 +3,22 @@ title: SAP HANA on Azure (L インスタンス) での HANA 側からの監視�
 description: SAP HANA on Azure (L インスタンス) での HANA 側からの監視とトラブルシューティング
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
-ms.author: rclaus
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e2c596a876817f0a501025c37e463a7eebb55cf2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 047ea4d07f2b497ac8c7deb90c056d63976094f4
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099838"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617075"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>HANA 側からの監視とトラブルシューティング
 
@@ -105,7 +105,7 @@ SAP HANA データベースによって割り当てられたメモリの量が�
 
 トラブルシューティングの詳細な手順については、[SAP HANA トラブルシューティングのネットワークのパフォーマンスと接続の問題](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a3/ccdff1aedc4720acb24ed8826938b6/content.htm?frameset=/en/dc/6ff98fa36541e997e4c719a632cbd8/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=142&amp;show_children=false) に関するサイトを参照してください。
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>ストレージ
 
 I/O パフォーマンスに問題がある場合、エンドユーザーからは、アプリケーション (またはシステム全体) が遅い、反応しない、さらには反応が停止しているように感じられる場合があります。 SAP HANA Studio の **[Volumes (ボリューム)]** タブでは、接続されているボリュームと、各サービスによってどのボリュームが使用されているかを確認できます。
 
@@ -167,6 +167,6 @@ SAP HANA パラメーターをチェックする **HANA\_Configuration\_Paramete
 
 ![SAP HANA パラメーターをチェックする HANA\_Configuration\_Parameters\_Rev70+](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
 
-**次のステップ**
+**次の手順**
 
 - 「[STONITH を使用した SUSE での高可用性のセットアップ](ha-setup-with-stonith.md)」を参照してください。

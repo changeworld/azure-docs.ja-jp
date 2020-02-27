@@ -4,12 +4,12 @@ description: Azure Backup Server を使用して Exchange サーバーを Azure 
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 73dcc190446a71498dee3f12a5225a56c9f4ddc7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: dbd37bbb7418560a0426ed47d7869bf9d949d2e2
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173122"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617568"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Azure Backup Server を使用して Exchange サーバーを Azure にバックアップする
 
@@ -23,8 +23,8 @@ Azure Backup Server を[インストールして準備](backup-azure-microsoft-a
 
 Exchange サーバーに MABS 保護エージェントをインストールするには、次の手順に従います。
 
-1. ファイアウォールが正しく構成されていることを確認します。 「 [エージェントに対するファイアウォール例外の構成](https://technet.microsoft.com/library/Hh758204.aspx)」を参照してください。
-2. MABS 管理者コンソールで **[管理]、[エージェント]、[インストール]** の順にクリックし、Exchange サーバーにエージェントをインストールします。 詳細な手順については、「[MABS 保護エージェントのインストール](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396)」を参照してください。
+1. ファイアウォールが正しく構成されていることを確認します。 「 [エージェントに対するファイアウォール例外の構成](h https://docs.microsoft.com/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019)」を参照してください。
+2. MABS 管理者コンソールで **[管理]、[エージェント]、[インストール]** の順にクリックし、Exchange サーバーにエージェントをインストールします。 詳細な手順については、「[MABS 保護エージェントのインストール](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019)」を参照してください。
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Exchange サーバーの保護グループを作成する
 
@@ -34,7 +34,7 @@ Exchange サーバーに MABS 保護エージェントをインストールす�
 4. 保護する Exchange サーバー データベースを選択し、 **[次へ]** をクリックします。
 
    > [!NOTE]
-   > Exchange 2013 を保護する場合は、「 [Exchange 2013 の前提条件](https://technet.microsoft.com/library/dn751029.aspx)」を確認してください。
+   > Exchange 2013 を保護する場合は、「 [Exchange 2013 の前提条件](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn751029(v=sc.12))」を確認してください。
    >
    >
 
@@ -68,10 +68,10 @@ Exchange サーバーに MABS 保護エージェントをインストールす�
 11. 使用可能なディスク領域を確認し、 **[次へ]** をクリックします。
 12. MAB サーバーで初期レプリケーションを作成する時刻を選択し、 **[次へ]** をクリックします。
 13. 整合性チェック オプションを選択し、 **[次へ]** をクリックします。
-14. Azure にバックアップするデータベースを選択し、 **[次へ]** をクリックします。 例:
+14. Azure にバックアップするデータベースを選択し、 **[次へ]** をクリックします。 次に例を示します。
 
     ![オンライン保護データの指定](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
-15. **Azure Backup** のスケジュールを定義し、 **[次へ]** をクリックします。 例:
+15. **Azure Backup** のスケジュールを定義し、 **[次へ]** をクリックします。 次に例を示します。
 
     ![オンライン バックアップ スケジュールの指定](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 
@@ -105,6 +105,6 @@ Exchange サーバーに MABS 保護エージェントをインストールす�
 
     ![オンライン レプリケーションの選択](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Backup FAQ](backup-azure-backup-faq.md)

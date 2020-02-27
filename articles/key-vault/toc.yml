@@ -23,8 +23,8 @@
       href: quick-create-net.md
     - name: .NET (SDK v3)
       href: quick-create-net-v3.md
-    - name: Azure Resource Manager テンプレート
-      displayName: 'resource manager, resource manager template, arm'
+    - name: Resource Manager テンプレート
+      displayName: ARM
       href: quick-create-template.md
 - name: チュートリアル
   items:
@@ -58,6 +58,7 @@
       href: ../container-instances/container-instances-managed-identity.md
     - name: Azure Resource Manager テンプレート
       href: ../azure-resource-manager/templates/key-vault-parameter.md
+      displayName: ARM
     - name: キー ローテーションと監査を設定する
       href: key-vault-key-rotation-log-monitoring.md
 - name: サンプル
@@ -170,6 +171,7 @@
       href: key-vault-best-practices.md
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.keyvault/allversions
+      displayName: ARM
     - name: 認証、要求、応答
       href: authentication-requests-and-responses.md
     - name: 一般的なパラメーターとヘッダー

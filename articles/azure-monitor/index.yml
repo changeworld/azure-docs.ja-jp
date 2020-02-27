@@ -4,18 +4,16 @@ summary: Azure とオンプレミスのサービスを監視します。 メト�
 metadata:
   title: Azure Monitor のドキュメント
   description: 今回 Log Analytics と Application Insights が追加された Azure Monitor は、利用統計情報を収集して分析するための高度なツールです。このツールでは、ご利用のクラウドとオンプレミスのリソースおよびアプリケーションのパフォーマンスと可用性を最大限に高めることができます。
-  services: azure-monitor
-  ms.service: azure-monitor
   ms.topic: landing-page
   author: rboucher
   ms.author: robb
   ms.date: 10/08/2019
-  ms.openlocfilehash: e099b61e168de05e6a81ca166cbedd56837303a3
-  ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+  ms.openlocfilehash: 15a9b1cdbe46baca85959d3e9e5124f706027ec5
+  ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/21/2020
-  ms.locfileid: "77544149"
+  ms.lasthandoff: 02/27/2020
+  ms.locfileid: "77667127"
 landingContent:
 - title: Azure Monitor について
   linkLists:

@@ -9,16 +9,16 @@ author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: carlrab,vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 9ee43533532f51f6f0d2aa9d0d4e8d3993ccadb4
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 6baf9d4edba9ba8db008c5c6a8d7af6832ba3273
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027733"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591236"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-microsoft-azure-sql-database"></a>Microsoft Azure SQL Database の接続に関する問題とその他のエラーのトラブルシューティング
 
-Azure SQL Database への接続に失敗すると、エラー メッセージが表示されます。 これらの接続の問題は、Azure SQL Database の再構成、ファイアウォールの設定、接続のタイムアウト、正しくないログイン情報、または[アプリケーション設計](sql-database-develop-overview.md)プロセスの間にベスト プラクティスと設計ガイドラインを適用しなかったことが原因で、発生する可能性があります。 また、一部の Azure SQL Database リソースの上限に達した場合、Azure SQL Database に接続できません。
+Azure SQL Database への接続に失敗すると、エラー メッセージが表示されます。 これらの接続の問題は、Azure SQL Database の再構成、ファイアウォールの設定、接続のタイムアウト、正しくないログイン情報、または[アプリケーション設計] (sql-database-develop-overview.md)プロセスの間にベスト プラクティスと設計ガイドラインを適用しなかったことが原因で、発生する可能性があります。 また、一部の Azure SQL Database リソースの上限に達した場合、Azure SQL Database に接続できません。
 
 ## <a name="transient-fault-error-messages-40197-40613-and-others"></a>一時的な障害のエラー メッセージ (40197、40613、その他)
 
@@ -230,8 +230,8 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
    ```sql
    SELECT o.name,
-    a.SUM(p.row_count) AS 'Row Count',
-    b.SUM(p.reserved_page_count) * 8.0 / 1024 AS 'Table Size (MB)'
+    SUM(p.row_count) AS 'Row Count',
+    SUM(p.reserved_page_count) * 8.0 / 1024 AS 'Table Size (MB)'
    FROM sys.objects o
    JOIN sys.dm_db_partition_stats p on p.object_id = o.object_id
    GROUP BY o.name

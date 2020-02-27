@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: 1688e85c6e6ed57892ccdffdf0813c8628127cc5
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 3f27753b0775f44cbdf9d4c478a19e423b8e1f19
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202503"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604557"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Azure Security Center でシステムの更新プログラムを適用する
 Azure Security Center では、オペレーティング システムに不足している更新プログラムがないかどうかを確認するために、Windows および Linux 仮想マシン (VM) およびコンピューターの監視が毎日行われています。 Security Center は、Windows コンピューターに構成されているサービスに応じて、Windows Update または Windows Server Update Services (WSUS) から利用可能なセキュリティ更新プログラムと重要な更新プログラムの一覧を取得します。 また、Linux システムにおける最新の更新プログラムについても確認します。 VM またはコンピューターでシステムの更新プログラムが不足している場合、Security Center は、それらを適用することを推奨します。
@@ -44,19 +44,19 @@ Azure Security Center では、オペレーティング システムに不足し
 
    ダッシュボードの下部には、VM とコンピューターのすべての不足している更新プログラムと、インストールされていない更新プログラムの重要度が一覧表示されます。  一覧には次の項目が含まれています。
 
-    - [名前]:不足している更新プログラムの名前。
-    - なし [VM とコンピューターの数]:この更新プログラムが適用されていない VM とコンピューターの合計台数です。
-    - [状態]:推奨事項の現在の状態。
+    - 名前: 不足している更新プログラムの名前。
+    - なし [VM とコンピューターの数]\:この更新プログラムが適用されていない VM とコンピューターの合計台数です。
+    - [状態]:推奨事項の現在の状態:
 
-      - [オープン]:推奨事項への対処がまだ行われていない。
-      - [処理中]:現在、リソースへの推奨事項の適用を進めており、ユーザーのアクションは不要。
-      - [解決]:推奨事項が既に完了済み (問題が解決されていると、エントリが灰色表示になります)。
+      - [オープン]\:推奨事項への対処がまだ行われていない。
+      - [処理中]\:現在、リソースへの推奨事項の適用を進めており、ユーザーのアクションは不要。
+      - [解決]\:推奨事項が既に完了済み (問題が解決されていると、エントリが灰色表示になります)。
 
-    - [重大度]:特定の推奨事項の重大度を示します。
+    - 重大度: 特定の推奨事項の重要度を示します。
 
-      - [高]:重要なリソース (アプリケーション、仮想マシン、ネットワーク セキュリティ グループ) に脆弱性が存在しており、注意が必要。
-      - [中]:プロセスを完了または脆弱性を排除するために重大ではないまたは追加の手順が必要。
-      - [低]:対処する必要はあるものの、直ちに注意する必要はない脆弱性が存在する (既定では、重要度の低い推奨事項は表示されないが、重要度の低い推奨事項にフィルターを適用すると表示できる)。
+      - [高]\:重要なリソース (アプリケーション、仮想マシン、ネットワーク セキュリティ グループ) に脆弱性が存在しており、注意が必要。
+      - 中程度:プロセスを完了または脆弱性を排除するために重大ではないまたは追加の手順が必要。
+      - [低]\:対処する必要はあるものの、直ちに注意する必要はない脆弱性が存在する (既定では、重要度の低い推奨事項は表示されないが、重要度の低い推奨事項にフィルターを適用すると表示できる)。
 
 3. 一覧で不足している更新プログラムを選択して詳細を表示します。
 
@@ -70,15 +70,14 @@ Azure Security Center では、オペレーティング システムに不足し
 
     ![Azure Monitor ログ検索][5]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 セキュリティ センターの詳細については、次を参照してください。
 
 * [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md) 」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
-* [Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md) 」-- 推奨事項に従って Azure リソースを保護する方法について説明しています。
+* [Azure セキュリティ センターでのセキュリティに関する推奨事項の管理](security-center-recommendations.md) 」 -- 推奨事項に従って Azure リソースを保護する方法について説明しています。
 * [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md) 」-- Azure リソースの正常性を監視する方法について説明しています。
 * [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」-- セキュリティの警告の管理と対応の方法について説明しています。
 * [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) 」-- パートナー ソリューションの正常性状態を監視する方法について説明しています。
-* [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」-- このサービスの使用に関してよく寄せられる質問が記載されています。
 * [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 
 <!--Image references-->
