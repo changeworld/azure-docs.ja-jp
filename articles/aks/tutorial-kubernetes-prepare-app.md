@@ -2,18 +2,15 @@
 title: Kubernetes on Azure のチュートリアル - アプリケーションの準備
 description: この Azure Kubernetes Service (AKS) チュートリアルでは、Docker Compose を使用して複数コンテナー アプリを準備およびビルドする方法を説明します。その後、AKS にデプロイすることができます。
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 3ff93d006b7599eaa3f97c33efb047ce480c301c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: feab8495536b3306fd96793323d51644570b401b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71264470"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593162"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) 用のアプリケーションの準備
 
@@ -93,7 +90,7 @@ b68fed4b66b6        redis             "docker-entrypoint..."   57 seconds ago   
 
 ![Azure 上の Kubernetes クラスターの図](./media/container-service-tutorial-kubernetes-prepare-app/azure-vote.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 アプリケーションの機能を検証したので、実行中のコンテナーを停止して削除できます。 コンテナー イメージを削除しないでください。次のチュートリアルで、*azure-vote-front* イメージは Azure Container Registry インスタンスにアップロードされます。
 
@@ -105,9 +102,9 @@ docker-compose down
 
 ローカル アプリケーションが削除されると、Azure Vote アプリケーション *azure-vote-front* を含む Docker イメージが作成され、次のチュートリアルで使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、アプリケーションをテストし、アプリケーション用のコンテナー イメージを作成しました。 以下の方法について学習しました。
+このチュートリアルでは、アプリケーションをテストし、アプリケーション用のコンテナー イメージを作成しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * GitHub からサンプル アプリケーション ソースを複製する

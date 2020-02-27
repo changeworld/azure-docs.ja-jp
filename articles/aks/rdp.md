@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service (AKS) クラスターの Windows Server ノードへの RDP 接続
 description: トラブルシューティングやメンテナンスのタスクのために Azure Kubernetes Service (AKS) クラスターの Windows Server ノードとの RDP 接続を作成する方法について説明します。
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 06/04/2019
-ms.author: mlearned
-ms.openlocfilehash: e3a4ea2e81e6c428b51d164336282f8f929d414b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 897504aa9902d0feaf4245c719d3a4a3c6fd2241
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639808"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594483"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>メンテナンスまたはトラブルシューティングのために RDP を使用して Azure Kubernetes Service (AKS) クラスターの Windows Server ノードに接続する
 
@@ -151,7 +148,7 @@ NSG_NAME=$(az network nsg list -g $CLUSTER_RG --query [].name -o tsv)
 az network nsg rule delete --resource-group $CLUSTER_RG --nsg-name $NSG_NAME --name tempRDPAccess
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 トラブルシューティング データがさらに必要な場合は、[Kubernetes マスター ノードのログ][view-master-logs]または [Azure Monitor][azure-monitor-containers] を表示できます。
 

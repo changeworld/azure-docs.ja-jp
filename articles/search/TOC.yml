@@ -109,6 +109,8 @@
           href: search-capacity-planning.md
         - name: パフォーマンスのためのスケール
           href: search-performance-optimization.md
+        - name: リージョン間でのサービスの移動
+          href: search-howto-move-across-regions.md
         - name: マルチテナント アーキテクチャ
           href: search-modeling-multitenant-saas-applications.md
     - name: Security

@@ -4,12 +4,12 @@ description: Azure Backup のセキュリティ機能を使用してバックア
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: c3c62f8ea7813c14fa6e19d825a5253de18f6639
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 7213f26493a118c2cb32f8f9935b4954176b99a2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172688"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586395"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Azure Backup を使用したハイブリッド バックアップを保護するためのセキュリティ機能
 
@@ -88,7 +88,7 @@ Azure Backup では削除されたバックアップ データが 14 日間保�
 
 この PIN を受け取るには次のようにします。
 
-1. Azure ポータルにサインインします。
+1. Azure portal にサインインします。
 2. **[Recovery Services コンテナー]**  >  **[設定]**  >  **[プロパティ]** の順に参照します。
 3. **[セキュリティ PIN]** の下にある **[生成]** をクリックします。 これにより、Azure Recovery Services エージェントのユーザー インターフェイスに入力する PIN が含まれたブレードが開きます。
     この PIN が有効なのは 5 分間のみであり、その期間が過ぎると別のものが自動生成されます。
@@ -116,9 +116,9 @@ Azure Backup では削除されたバックアップ データが 14 日間保�
 | パスフレーズの変更 |入力されたセキュリティ PIN が正しくありません。 (ID: 100130) この操作を完了するには、正しいセキュリティ PIN を指定してください。 |**原因:**<br/> このエラーは、重大な操作 (パスフレーズの変更など) を実行している間に、無効または有効期限の切れたセキュリティ PIN を入力すると発生します。 <br/>**推奨される操作:**<br/> 操作を完了するには、有効なセキュリティ PIN を入力する必要があります。 PIN を取得するには、Azure portal にサインインし、Recovery Services コンテナーで [設定]、[プロパティ]、[セキュリティ PIN の生成] の順に移動します。 パスフレーズの変更にはこの PIN を使用します。 |
 | パスフレーズの変更 |操作に失敗しました。 ID: 120002 |**原因:**<br/>このエラーは、セキュリティ設定が有効になっており、パスフレーズを変更しようとしたものの、サポートされていないバージョンを使用していると発生します (サポート対象のバージョンはこの記事の最初のメモに記載されています)。<br/>**推奨される操作:**<br/> パスフレーズを変更するには、まずバックアップ エージェントを 2.0.9052 以上、Azure Backup Server を update 1 以上、DPM を 2012 R2 UR12 または DPM 2016 UR2 (以下のリンクからダウンロード) に更新してから有効なセキュリティ PIN を入力する必要があります。 PIN を取得するには、Azure portal にサインインし、Recovery Services コンテナーで [設定]、[プロパティ]、[セキュリティ PIN の生成] の順に移動します。 パスフレーズの変更にはこの PIN を使用します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Recovery Services コンテナーの使用を開始](backup-azure-vms-first-look-arm.md)して、これらの機能を有効にします。
 - [最新の Azure Recovery Services Agent をダウンロード](https://aka.ms/azurebackup_agent)して、Windows コンピューターを保護し、バックアップ データに対する攻撃を防ぎます。
-- [最新の Azure Backup Server をダウンロード](https://aka.ms/latest_azurebackupserver)して、ワークロードを保護し、攻撃からバックアップ データを保護します。
+- [最新の Azure Backup Server をダウンロード](https://support.microsoft.com/help/4457852/microsoft-azure-backup-server-v3)して、ワークロードを保護し、攻撃からバックアップ データを保護します。
 - [System Center 2012 R2 Data Protection Manager の UR12 をダウンロード](https://support.microsoft.com/help/3209592/update-rollup-12-for-system-center-2012-r2-data-protection-manager)するか、[System Center 2016 Data Protection Manager の UR2 をダウンロード](https://support.microsoft.com/help/3209593/update-rollup-2-for-system-center-2016-data-protection-manager)して、ワークロードを保護し、バックアップ データに対する攻撃を防ぎます。

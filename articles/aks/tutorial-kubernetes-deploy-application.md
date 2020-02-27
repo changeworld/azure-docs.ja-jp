@@ -2,18 +2,15 @@
 title: Kubernetes on Azure のチュートリアル - アプリケーションのデプロイ
 description: この Azure Kubernetes Service (AKS) チュートリアルでは、Azure Container Registry に格納されているカスタム イメージを使用して、複数コンテナーのアプリケーションをクラスターにデプロイします。
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: cc01b12e493f3e0d3cd63786c27819d4704f97f4
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 3b614fcb6692f35884af2fc4e19210267ab8ab04
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263876"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593276"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションの実行
 
@@ -70,7 +67,7 @@ containers:
 
 ファイルを保存して閉じます。 `vi` では、`:wq` を使用します。
 
-## <a name="deploy-the-application"></a>アプリケーションのデプロイ
+## <a name="deploy-the-application"></a>アプリケーションの配置
 
 ご利用になるアプリケーションをデプロイするには、[kubectl apply][kubectl-apply] コマンドを使用します。 このコマンドは、マニフェスト ファイルを解析し、定義されている Kubernetes オブジェクトを作成します。 次の例に示すように、サンプルのマニフェスト ファイルを指定します。
 
@@ -117,9 +114,9 @@ azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   6
 
 アプリケーションが読み込まれなかった場合、イメージ レジストリに関する承認の問題が原因になっている可能性があります。 コンテナーのステータスを表示するには、`kubectl get pods` コマンドを使用します。 コンテナー イメージがプルできない場合は、「[Azure Kubernetes Service から Azure Container Registry の認証を受ける](cluster-container-registry-integration.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、サンプルの Azure vote アプリケーションを AKS の Kubernetes クラスターにデプロイしました。 以下の方法について学習しました。
+このチュートリアルでは、サンプルの Azure vote アプリケーションを AKS の Kubernetes クラスターにデプロイしました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * Kubernetes マニフェスト ファイルを更新する

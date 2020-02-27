@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solutions (AVS) - AVS プライベート クラウドで vCenter ID ソースを設定する
-description: vCenter にアクセスする VMware 管理者を Active Directory で認証するように、ご利用の AVS プライベート クラウドの vCenter を設定する方法について説明します
+title: Azure VMware Solution by CloudSimple - プライベート クラウドで vCenter の ID ソースを設定する
+description: vCenter にアクセスする VMware 管理者を Active Directory で認証するようにプライベート クラウドの vCenter を設定する方法について説明します
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,27 +8,27 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ad4a7b2bc67b7d50d9e9a5f8337a09dbe77366ea
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5355e43ca6ac075e76a76ceb51be135cf4b62b0a
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77014217"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564025"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Active Directory を使用するための vCenter ID ソースの設定
 
 ## <a name="about-vmware-vcenter-identity-sources"></a>VMware vCenter の ID ソースについて
 
-VMware vCenter は、vCenter にアクセスするユーザーを認証するためのさまざまな ID ソースをサポートしています。 vCenter にアクセスする VMware 管理者を Active Directory で認証するように、ご利用の AVS プライベート クラウドの vCenter を設定することができます。 設定が完了したら、**cloudowner** ユーザーは ID ソースから vCenter にユーザーを追加できます。 
+VMware vCenter は、vCenter にアクセスするユーザーを認証するためのさまざまな ID ソースをサポートしています。  vCenter にアクセスする VMware 管理者を Active Directory で認証するように、CloudSimple プライベート クラウドの vCenter を設定することができます。 設定が完了したら、**cloudowner** ユーザーは ID ソースから vCenter にユーザーを追加できます。  
 
 Active Directory ドメインとドメイン コントローラーは、次のいずれかの方法で設定できます。
 
 * オンプレミスで実行される Active Directory ドメインとドメイン コントローラー
 * ご利用の Azure サブスクリプションで仮想マシンとして Azure 上で実行される Active Directory ドメインとドメイン コントローラー
-* ご利用の AVS プライベート クラウドで実行される新しい Active Directory ドメインとドメイン コントローラー
+* プライベート クラウドで実行される新しい Active Directory ドメインとドメイン コントローラー
 * Azure Active Directory サービス
 
-このガイドでは、オンプレミスで実行される、またはご利用のサブスクリプションで仮想マシンとして実行される Active Directory ドメインとドメイン コントローラーを設定するタスクについて説明します。 Azure AD を ID ソースとして使用する場合、ID ソースの設定の詳細な手順については、「[AVS プライベート クラウド上で vCenter の ID プロバイダーとして Azure AD を使用する](azure-ad.md)」を参照してください。
+このガイドでは、オンプレミスで実行される、またはご利用のサブスクリプションで仮想マシンとして実行される Active Directory ドメインとドメイン コントローラーを設定するタスクについて説明します。  Azure AD を ID ソースとして使用する場合、ID ソースの設定の詳細な手順については、[CloudSimple プライベート クラウドで vCenter の ID プロバイダーとして Azure AD を使用する](azure-ad.md)方法に関する記事を参照してください。
 
 [ID ソースを追加](#add-an-identity-source-on-vcenter)する前に、一時的に [vCenter 特権をエスカレート](escalate-private-cloud-privileges.md)します。
 
@@ -39,23 +39,23 @@ Active Directory ドメインとドメイン コントローラーは、次の�
 ## <a name="identity-source-options"></a>ID ソースのオプション
 
 * [オンプレミスの Active Directory をシングル サインオンの ID ソースとして追加する](#add-on-premises-active-directory-as-a-single-sign-on-identity-source)
-* [AVS プライベート クラウド上で新しい Active Directory を設定する](#set-up-new-active-directory-on-an-avs-private-cloud)
+* [プライベート クラウド上で新しい Active Directory を設定する](#set-up-new-active-directory-on-a-private-cloud)
 * [Azure 上で Active Directory を設定する](#set-up-active-directory-on-azure)
 
 ## <a name="add-on-premises-active-directory-as-a-single-sign-on-identity-source"></a>オンプレミスの Active Directory をシングル サインオンの ID ソースとして追加する
 
 オンプレミスの Active Directory をシングル サインオンの ID ソースとして設定するには、次のものが必要です。
 
-* ご利用のオンプレミスのデータセンターからご利用の AVS プライベート クラウドへの[サイト間 VPN 接続](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)。
+* オンプレミスのデータセンターからプライベート クラウドへの[サイト間 VPN 接続](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)。
 * vCenter と Platform Services Controller (PSC) に追加されるオンプレミスの DNS サーバーの IP。
 
 Active Directory ドメインを設定するときは、次の表の情報を使用します。
 
 | **オプション** | **説明** |
 |------------|-----------------|
-| **Name** | ID ソースの名前。 |
+| **名前** | ID ソースの名前。 |
 | **Base DN for users** (ユーザーのベース DN) | ユーザーのベース識別名。 |
-| **ドメイン名** | ドメインの FDQN (例: example.com)。 このテキスト ボックスには IP アドレスを指定しないでください。 |
+| **ドメイン名** | ドメインの FQDN (例: example.com)。 このテキスト ボックスには IP アドレスを指定しないでください。 |
 | **Domain alias** (ドメイン エイリアス) | ドメインの NetBIOS 名。 SSPI 認証を使用している場合は、Active Directory ドメインの NetBIOS 名を ID ソースのエイリアスとして追加します。 |
 | **Base DN for groups** (グループのベース DN) | グループのベース識別名。 |
 | **Primary Server URL** (プライマリ サーバーの URL) | ドメインのプライマリ ドメイン コントローラー LDAP サーバー。<br><br> `ldap://hostname:port`  または  `ldaps://hostname:port` の形式を使用します。 このポートは通常、LDAP 接続の場合は 389、LDAPS 接続の場合は 636 です。 Active Directory マルチドメイン コントローラー デプロイでは、ポートは通常、LDAP の場合は 3268、LDAPS の場合は 3269 です。<br><br>プライマリまたはセカンダリの LDAP URL で  `ldaps://`  を使用するときは、Active Directory サーバーの LDAPS エンドポイントに対して信頼を確立する証明書が必要です。 |
@@ -69,9 +69,9 @@ Active Directory ドメインを設定するときは、次の表の情報を使
 > [!TIP]
 > シングル サインオンの ID ソースの詳細については、[VMware のドキュメント ページ](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html)を参照してください。
 
-## <a name="set-up-new-active-directory-on-an-avs-private-cloud"></a>AVS プライベート クラウド上で新しい Active Directory を設定する
+## <a name="set-up-new-active-directory-on-a-private-cloud"></a>プライベート クラウド上で新しい Active Directory を設定する
 
-ご利用の AVS プライベート クラウド上で新しい Active Directory ドメインを設定し、シングル サインオンの ID ソースとして使用することができます。 Active Directory ドメインは、既存の Active Directory フォレストの一部にすることも、独立したフォレストとして設定することもできます。
+プライベート クラウド上で新しい Active Directory ドメインを設定し、シングル サインオンの ID ソースとして使用することができます。  Active Directory ドメインは、既存の Active Directory フォレストの一部にすることも、独立したフォレストとして設定することもできます。
 
 ### <a name="new-active-directory-forest-and-domain"></a>新しい Active Directory フォレストとドメイン
 
@@ -100,15 +100,15 @@ Active Directory ドメインを設定した後、新しい Active Directory に
 
 ## <a name="set-up-active-directory-on-azure"></a>Azure で Active Directory を設定する
 
-Azure で実行される Active Directory は、オンプレミスで実行される Active Directory に似ています。 Azure で実行されている Active Directory を vCenter でシングル サインオンの ID ソースとして設定するには、vCenter サーバーと PSC に、Active Directory サービスが稼働している Azure Virtual Network へのネットワーク接続が必要です。 この接続を確立するには、Active Directory Services が実行されている Azure 仮想ネットワークと AVS プライベート クラウドとの間で、[ExpressRoute を用いた Azure 仮想ネットワーク接続](azure-expressroute-connection.md)を使用します。
+Azure で実行される Active Directory は、オンプレミスで実行される Active Directory に似ています。  Azure で実行されている Active Directory を vCenter でシングル サインオンの ID ソースとして設定するには、vCenter サーバーと PSC に、Active Directory サービスが稼働している Azure Virtual Network へのネットワーク接続が必要です。  この接続を確立するには、Active Directory Services が実行されている Azure 仮想ネットワークと CloudSimple プライベート クラウドを結ぶ、[ExpressRoute を用いた Azure Virtual Network Connection](azure-expressroute-connection.md) を使用します。
 
-ネットワーク接続が確立されたら、[オンプレミスの Active Directory をシングル サインオンの ID ソースとして追加する](#add-on-premises-active-directory-as-a-single-sign-on-identity-source)方法に関するページの手順を参照して、その接続を ID ソースとして追加します。 
+ネットワーク接続が確立されたら、[オンプレミスの Active Directory をシングル サインオンの ID ソースとして追加する](#add-on-premises-active-directory-as-a-single-sign-on-identity-source)方法に関するページの手順を参照して、その接続を ID ソースとして追加します。  
 
 ## <a name="add-an-identity-source-on-vcenter"></a>vCenter 上の ID ソースを追加する
 
-1. ご利用の AVS プライベート クラウドに対する[特権をエスカレート](escalate-private-cloud-privileges.md)します。
+1. プライベート クラウドに対する[特権をエスカレート](escalate-private-cloud-privileges.md)します。
 
-2. ご利用の AVS プライベート クラウドの vCenter にサインインします。
+2. プライベート クラウドの vCenter にサインインします。
 
 3. **[ホーム] > [管理]** を選択します。
 

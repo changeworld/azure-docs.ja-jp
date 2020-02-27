@@ -3,12 +3,12 @@ title: Azure Functions 2.x の host.json のリファレンス
 description: Azure Functions の v2 ランタイムの host.json ファイルのリファレンス ドキュメント。
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: b9c57378df1510179c5a45b6aa669bab804aca5e
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 949d4f2c5d8c1d8034ccc392915bc40f1f2fddda
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484436"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605125"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 以降の host.json のリファレンス 
 
@@ -208,7 +208,7 @@ ms.locfileid: "77484436"
 
 ## <a name="cosmosdb"></a>cosmosDb
 
-構成設定は、[Cosmos DB のトリガーとバインディング](functions-bindings-cosmosdb-v2.md#host-json)に関する記事に記載されています。
+構成設定は、[Cosmos DB のトリガーとバインディング](functions-bindings-cosmosdb-v2-output.md#host-json)に関する記事に記載されています。
 
 ## <a name="durabletask"></a>durableTask
 
@@ -216,7 +216,7 @@ ms.locfileid: "77484436"
 
 ## <a name="eventhub"></a>eventHub
 
-構成設定は、[Event Hub のトリガーとバインディング](functions-bindings-event-hubs.md#host-json)に関する記事に記載されています。 
+構成設定は、[Event Hub のトリガーとバインディング](functions-bindings-event-hubs-output.md#host-json)に関する記事に記載されています。 
 
 ## <a name="extensions"></a>拡張機能
 

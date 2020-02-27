@@ -13,16 +13,16 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 816dc9c4460792b56a7dbf0c5d77f92afd257e73
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: df1e363f31aa8c88be54454c9dc060f4ed6b7ca1
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429153"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588894"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-azure-cli"></a>クイック スタート:Azure CLI を使用した NAT ゲートウェイの作成
 
-このクイックスタートでは、Azure Virtual Network NAT サービスを使用する方法について説明します。 Azure 内の仮想マシンにアウトバウンド接続を提供する NAT ゲートウェイを作成しましょう。 
+このクイックスタートでは、Azure Virtual Network NAT サービスを使用する方法について説明します。 Azure 内の仮想マシンに送信接続を提供する NAT ゲートウェイを作成しましょう。 
 
 >[!NOTE] 
 >Azure Virtual Network NAT は、現時点ではパブリック プレビューとして提供され、ご利用いただける[リージョン](https://azure.microsoft.com/global-infrastructure/regions/)が限られています。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms)」をご覧ください。
@@ -33,8 +33,6 @@ ms.locfileid: "77429153"
 このチュートリアルは、Azure Cloud Shell を使用して行うことができます。また、それぞれのコマンドをローカルで実行してもかまいません。  Azure Cloud Shell を使用したことがない場合は、[今すぐサインイン](https://shell.azure.com)して初期設定を行ってください。
 これらのコマンドをローカルで実行する場合は、CLI をインストールする必要があります。  このチュートリアルでは、Azure CLI バージョン 2.0.71 以降のバージョンが実行されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
-> [!IMPORTANT]
-> ご利用のサブスクリプションで Virtual Network NAT [プレビューを有効](./nat-overview.md#enable-preview)にした後は、 https://aka.ms/natportal を使用してポータルにアクセスしてください。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -74,8 +72,8 @@ NAT ゲートウェイでは、1 つまたは複数のパブリック IP アド�
 
 ### <a name="create-a-nat-gateway-resource"></a>NAT ゲートウェイ リソースの作成
 
-このセクションでは、NAT ゲートウェイ リソースを使用して、次の NAT サービス コンポーネントを作成、構成する方法について詳しく説明します。
-  - NAT ゲートウェイ リソースによって変換されるアウトバウンド フローに使用される、パブリック IP プールとパブリック IP プレフィックス。
+このセクションでは、NAT ゲートウェイ リソースを使用して、次の NAT サービスのコンポーネントを作成して構成する方法について説明します。
+  - NAT ゲートウェイ リソースによって変換される送信フローに使用する、パブリック IP プールとパブリック IP プレフィックス。
   - アイドル タイムアウトを既定値の 4 分から 10 分に変更します。
 
 [az network nat gateway create](https://docs.microsoft.com/cli/azure/network/nat?view=azure-cli-latest) を使用して、**myNATgateway** というグローバル Azure NAT ゲートウェイを作成します。 このコマンドでは、パブリック IP アドレス **myPublicIP** とパブリック IP プレフィックス **myPublicIPprefix** の両方を使用します。 アイドル タイムアウトは **10** 分に変更します。
@@ -123,9 +121,9 @@ VM をデプロイして NAT ゲートウェイを使用する前に、仮想ネ
 
 ## <a name="create-a-vm-to-use-the-nat-service"></a>NAT サービスを使用する VM の作成
 
-今度は、NAT サービスを使用する VM を作成します。  この VM には、インスタンスレベルのパブリック IP として使用するパブリック IP が割り当てられます。そのパブリック IP を使用して、VM にアクセスすることができます。  NAT サービスでフロー方向が認識され、この NAT サービスが、サブネットの既定のインターネット宛先に取って代わることになります。 VM のパブリック IP アドレスは、アウトバウンド接続には使用されません。
+今度は、NAT サービスを使用する VM を作成します。  この VM には、ユーザーが VM にアクセスできるようにするための、インスタンスレベルのパブリック IP として使用するパブリック IP があります。  NAT サービスはフロー方向を認識し、サブネットの既定のインターネットの宛先を置き換えます。 VM のパブリック IP アドレスは、送信接続には使用されません。
 
-### <a name="create-public-ip-for-source-vm"></a>送信元 VM 用のパブリック IP の作成
+### <a name="create-public-ip-for-source-vm"></a>ソース VM のパブリック IP の作成
 
 VM へのアクセスに使用するパブリック IP を作成します。  [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) を使用して、**myResourceGroupNAT** に **myPublicIPVM** というパブリック IP アドレス リソースを作成します。
 
@@ -230,7 +228,7 @@ ssh <ip-address-destination>
 
 このチュートリアルでは、NAT ゲートウェイとそれを使用する VM を作成しました。 
 
-Azure Monitor でメトリックを見て、NAT サービスの稼動状態を確認しましょう。 利用可能な SNAT ポートのリソース枯渇などの問題を診断します。  SNAT ポートのリソース枯渇は、新しいパブリック IP アドレス リソースかパブリック IP プレフィックス リソース、またはその両方を追加することで解決できます。
+Azure Monitor でメトリックを見て、NAT サービスの稼動状態を確認しましょう。 利用可能な SNAT ポートのリソース枯渇などの問題を診断します。  SNAT ポートのリソース枯渇は、追加のパブリック IP アドレス リソースかパブリック IP プレフィックス リソース、またはその両方を追加することで解決できます。
 
 
 - [Azure Virtual Network NAT](./nat-overview.md) について学習する。

@@ -42,9 +42,9 @@
     - name: 13 - VM のセキュリティの管理
       href: tutorial-azure-security.md
     - name: 14a - Jenkins でビルドする
-      href: tutorial-jenkins-github-docker-cicd.md
+      href: ../../jenkins/tutorial-jenkins-github-docker-cicd.md
     - name: 14b - Jenkins を Azure DevOps と統合する
-      href: tutorial-build-deploy-jenkins.md
+      href: ../../jenkins/tutorial-build-deploy-jenkins.md
     - name: 15a - Azure での IaaS と PaaS の DevOps
       href: tutorial-devops-azure-pipelines-classic.md
     - name: 15b - Azure Pipelines を使用した CI/CD (YAML)
@@ -91,8 +91,8 @@
               href: ../av2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: 負荷の急増に対応できる B シリーズ
               href: ../sizes-b-series-burstable.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-            - name: DC シリーズ
-              href: ../dc-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: DCv2 シリーズ
+              href: ../dcv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Dv2 および DSv2 シリーズ
               href: ../dv2-dsv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Dv3 および Dsv3 シリーズ
