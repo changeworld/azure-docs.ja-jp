@@ -6,12 +6,12 @@ ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: d827270c89160097f76a7fdb36f9a6f97525064b
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 9375a59fedcd134a64cfa3bf8b92e33d326ee925
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671987"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500051"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure"></a>チュートリアル:Azure で PHP と MySQL アプリを構築する
 
@@ -148,7 +148,7 @@ PHP サーバーを停止するには、ターミナルに「`Ctrl + C`」と入
 
 この手順では、MySQL データベースを [Azure Database for MySQL](/azure/mysql) に作成します。 その後、このデータベースに接続するように PHP アプリケーションを構成します。
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-no-h.md)] 
 
@@ -306,7 +306,7 @@ php artisan serve --env=production
 
 `http://localhost:8000` に移動します。 エラーなしでページが読み込まれれば、PHP アプリケーションは Azure の MySQL データベースに接続しています。
 
-ページにいくつかのタスクを追加します。
+ページで、いくつかのタスクを追加します。
 
 ![PHP が Azure Database for MySQL に正常にデータベースに接続されている](./media/app-service-web-tutorial-php-mysql/mysql-connect-success.png)
 
@@ -424,7 +424,7 @@ remote: Running deployment command...
 > この方法を使用して、App Service に対する Git ベースのデプロイに対して任意の手順を追加できます。 詳細については、「[Custom Deployment Script (カスタム デプロイ スクリプト)](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)」を参照してください。
 >
 
-### <a name="browse-to-the-azure-app"></a>Azure アプリの参照
+### <a name="browse-to-the-azure-app"></a>Azure アプリを参照する
 
 `http://<app_name>.azurewebsites.net` を参照し、一覧にいくつかのタスクを追加します。
 
@@ -586,7 +586,7 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 ログのストリーミングが開始されたら、ブラウザーで Azure アプリを最新の情報に更新して、Web トラフィックを取得します。 ターミナルにパイプされたコンソール ログが表示されます。 コンソール ログがすぐに表示されない場合は、30 秒以内にもう一度確認します。
 
-任意のタイミングでログのストリーミングを停止するには、`Ctrl` + `C` キーを押します。
+任意のタイミングでログのストリーミングを停止するには、`Ctrl`+`C` キーを押します。
 
 > [!TIP]
 > PHP アプリケーションは、標準の [error_log()](https://php.net/manual/function.error-log.php) を使用してコンソールに出力できます。 サンプル アプリケーションでは、_app/Http/routes.php_ でこの方法を使用しています。
@@ -613,7 +613,7 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 12/26/2019
+ms.date: 02/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: bebc7dde30dad57157d0abee7f2294d9da58fd5c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: af15a7366fd07cecb376ff76ad383f784202a887
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861814"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526818"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>チュートリアル:Azure Time Series Insights プレビューの環境を設定する
 
@@ -90,14 +90,14 @@ ms.locfileid: "75861814"
     | **環境名** | Azure Time Series Insights プレビュー環境の一意名を入力します。 |
     | **サブスクリプション** | Azure Time Series Insights プレビュー環境を作成するサブスクリプションを入力します。 ベスト プラクティスとしては、デバイス シミュレーターによって作成される他の IoT リソースと同じサブスクリプションを使用します。 |
     | **リソース グループ** | Azure Time Series Insights プレビュー環境リソースに既存のリソース グループを選択するか、新しいリソース グループを作成します。 リソース グループとは、Azure リソース用のコンテナーです。 ベスト プラクティスとしては、デバイス シミュレーターによって作成される他の IoT リソースと同じリソース グループを使用します。 |
-    | **Location** | Azure Time Series Insights プレビュー環境のデータ センター リージョンを選択します。 待ち時間の増加を防ぐために、デバイス シミュレーターによって作成された IoT ハブと同じリージョン内に Azure Time Series Insights プレビュー環境を作成することをお勧めします。 |
+    | **場所** | Azure Time Series Insights プレビュー環境のデータ センター リージョンを選択します。 待ち時間の増加を防ぐために、デバイス シミュレーターによって作成された IoT ハブと同じリージョン内に Azure Time Series Insights プレビュー環境を作成することをお勧めします。 |
     | **レベル** |  **[PAYG]** (*従量課金制*) を選択します。 これは、Azure Time Series Insights プレビュー製品の SKU です。 |
     | **プロパティ名** | ご自分の時系列インスタンスを一意に識別できる値を入力します。 **[プロパティ ID]** ボックスに入力する値は後で変更できません。 このチュートリアルでは、「***iothub-connection-device-id***」と入力します。Time Series ID の詳細については、[時系列 ID の選択のベスト プラクティス](./time-series-insights-update-how-to-id.md)に関するページを参照してください。 |
     | **Storage account name \(ストレージ アカウント名\)** | 新しいストレージ アカウント用のグローバルな一意名を入力します。|
     |**Enable warm store (\ウォーム ストアを有効にする\)**|**[はい]** を選択して、ウォーム ストアを有効にします。 後で戻ってこの設定を有効にすることができます。 |
     |**Data retention (in days) \(データ保有期間 (日数)\)**|既定のオプションである 7 日を選択します。 |
 
-    **[次へ:Event Source]\(次へ: イベント ソース\)** をクリックします。
+    **Event Source\(次へ: イベント ソース\)** をクリックします。
 
    [![新しい Time Series Insights の環境構成。](media/v2-update-provision/tsi-environment-configuration.png)](media/v2-update-provision/tsi-environment-configuration.png#lightbox)
 
@@ -108,7 +108,7 @@ ms.locfileid: "75861814"
    | パラメーター | アクション |
    | --- | --- |
    | **Create an Event Source? \(イベント ソースを作成しますか\)** | **[はい]** を選択します。|
-   | **Name** | イベント ソース名に一意の値を入力します。 |
+   | **名前** | イベント ソース名に一意の値を入力します。 |
    | **ソースの種類** | **[IoT Hub]** を選択します。 |
    | **ハブを選択** | **[既存のものを選択]** を選択します。 |
    | **サブスクリプション** | デバイス シミュレーターに使用したサブスクリプションを選択します。 |
@@ -159,7 +159,7 @@ Time Series Insights 環境をデプロイできたので、分析のために�
 
     | パラメーター | アクション |
     | --- | --- |
-    | **Name** | シミュレーターの一意名を入力します。 |
+    | **名前** | シミュレーターの一意名を入力します。 |
     | **説明** | 定義を入力します。 |
     | **[Simulation duration]\(シミュレーション期間\)** | **[Run indefinitely]\(無期限に実行する\)** に設定します。 |
     | **[デバイス モデル]** | **[+ Add a device type]\(+ デバイスの種類の追加\)** をクリックします <br />**Name**:「**Elevator**」と入力します。 <br />**[Amount]\(量\)** :「**3**」と入力します。 <br /> 他の既定値はそのまま使用します |
@@ -217,7 +217,7 @@ Time Series Insights 環境をデプロイできたので、分析のために�
 
     | パラメーター | アクション |
     | --- | ---|
-    | **Name** | 「**Elevator**」と入力します |
+    | **名前** | 「**Elevator**」と入力します |
     | **説明** | 「**This is a type definition for Elevator (これはエレベーターのタイプ定義です)** 」と入力します |
 
 1. 次に、 **[変数]** タブを選択します。 
@@ -226,7 +226,7 @@ Time Series Insights 環境をデプロイできたので、分析のために�
 
     | パラメーター | アクション |
     | --- | --- |
-    | **Name** | 「**Avg Temperature**」と入力します。 |
+    | **名前** | 「**Avg Temperature**」と入力します。 |
     | **種類** | **[数値]** を選択します |
     | **Value** | プリセットから選択します。 **[temperature (Double)]\(温度 (Double)\)** を選択します。 <br /> 注:Azure Time Series Insights プレビューでイベントの受信が開始されてから **[値]** が自動的に入力されるまで、数分かかる場合があります。|
     | **Aggregation Operation (集計操作)** | **[詳細オプション]** を展開します。 <br /> **[AVG]** を選択します。 |
@@ -235,7 +235,7 @@ Time Series Insights 環境をデプロイできたので、分析のために�
 
     | パラメーター | アクション |
     | --- | --- |
-    | **Name** | 「**Avg Vibration**」と入力します。 |
+    | **名前** | 「**Avg Vibration**」と入力します。 |
     | **種類** | **[数値]** を選択します |
     | **Value** | プリセットから選択します。 **[vibration (Double)]\(振動 (Double)\)** を選択します。 <br /> 注:Azure Time Series Insights プレビューでイベントの受信が開始されてから **[値]** が自動的に入力されるまで、数分かかる場合があります。|
     | **Aggregation Operation (集計操作)** | **[詳細オプション]** を展開します。 <br /> **[AVG]** を選択します。 |
@@ -244,7 +244,7 @@ Time Series Insights 環境をデプロイできたので、分析のために�
 
     | パラメーター | アクション |
     | --- | --- |
-    | **Name** | 「**Floor**」と入力します。 |
+    | **名前** | 「**Floor**」と入力します。 |
     | **種類** | **[カテゴリ別]** を選択します |
     | **Value** | プリセットから選択します。 **[Floor (Double)]\(フロア (Double)\)** を選択します。 <br /> 注:Azure Time Series Insights プレビューでイベントの受信が開始されてから **[値]** が自動的に入力されるまで、数分かかる場合があります。|
     | **Categories (カテゴリ)** | <span style="text-decoration: underline">ラベル</span>  - <span style="text-decoration: underline">値</span> <br /> Lower:1,2,3,4 <br /> Middle:5,6,7,8,9 <br /> Upper:10,11,12,13,14,15 |
@@ -264,7 +264,7 @@ Time Series Insights 環境をデプロイできたので、分析のために�
 
    | パラメーター | アクション |
    | --- | ---|
-   | **Name** | 「**Location Hierarchy**」と入力します。 |
+   | **名前** | 「**Location Hierarchy**」と入力します。 |
    |**レベル**| 最初のレベルの名前として「**Country**」を入力します <br> **[+ レベルの追加]** を選択します <br> 2 つ目のレベルとして「**City**」を入力し、 **[+ レベルの追加]** を選択します <br> 3 つ目の最後のレベルの名前として「**Building**」を入力します |
 
    **[保存]** を選択します。
@@ -276,7 +276,7 @@ Time Series Insights 環境をデプロイできたので、分析のために�
     | パラメーター | アクション |
     | --- | --- |
     | **Type** | **[Elevator]** を選択します。 |
-    | **Name** | 「**Elevator 1**」と入力します|
+    | **名前** | 「**Elevator 1**」と入力します|
     | **説明** | 「**Instance for Elevator 1**」と入力します |
 
     **[インスタンス フィールド]** に移動し、次の値を入力します。
@@ -297,7 +297,7 @@ Time Series Insights 環境をデプロイできたので、分析のために�
     | パラメーター | アクション |
     | --- | --- |
     | **Type** | **[Elevator]** を選択します。 |
-    | **Name** | 「**Elevator 2**」と入力します|
+    | **名前** | 「**Elevator 2**」と入力します|
     | **説明** | 「**Instance for Elevator 2**」と入力します |
     | **Hierarchies (階層)** | **[Location Hierarchy]\(場所の階層\)** を選択します |
     | **Country (国)** | 「**USA**」と入力します |
@@ -309,7 +309,7 @@ Time Series Insights 環境をデプロイできたので、分析のために�
     | パラメーター | アクション |
     | --- | --- |
     | **Type** | **[Elevator]** を選択します。 |
-    | **Name** | 「**Elevator 3**」と入力します|
+    | **名前** | 「**Elevator 3**」と入力します|
     | **説明** | 「**Instance for Elevator 3**」と入力します |
     | **Hierarchies (階層)** | **[Location Hierarchy]\(場所の階層\)** を選択します |
     | **Country (国)** | 「**USA**」と入力します |

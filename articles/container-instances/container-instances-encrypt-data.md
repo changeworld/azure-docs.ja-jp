@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: 14a51ce103d831bcf1dfd52c892102f72531a4c8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 41c7fc7380ca2b58326c4a35a3b5fdab1c64c4a3
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934317"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544319"
 ---
 # <a name="encrypt-deployment-data"></a>デプロイ データの暗号化
 
@@ -89,7 +89,7 @@ ACI サービスによるキーへのアクセスを許可するための、新�
 > カスタマー マネージド キーによるデプロイ データの暗号化は、現在ロールアウト中の最新の API バージョン (2019-12-01) で使用できます。デプロイ テンプレートでこの API バージョンを指定してください。 これに関して何か問題がある場合は、Azure サポートにご連絡ください。
 
 キー コンテナーのキーとアクセス ポリシーを設定した後は、次のプロパティを ACI のデプロイ テンプレートに追加します。 テンプレートを使用した ACI リソースのデプロイについて詳しくは、「[チュートリアル: Resource Manager テンプレートを使用してマルチコンテナー グループをデプロイする](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)」のテンプレートを編集した完全なテンプレートです。 
-* `resources` の下で、`apiVersion` を `2012-12-01` に設定します。
+* `resources` の下で、`apiVersion` を `2019-12-01` に設定します。
 * デプロイ テンプレートのコンテナー グループ プロパティ セクションに、次の値を含む `encryptionProperties` を追加します。
   * `vaultBaseUrl`: お使いのキー コンテナーの DNS 名。ポータルのキー コンテナー リソースの概要ブレードで確認できます。
   * `keyName`: 前に生成したキーの名前。
