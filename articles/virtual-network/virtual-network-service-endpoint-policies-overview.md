@@ -22,7 +22,7 @@ ms.locfileid: "77056701"
 
 Virtual Network (VNet) のサービス エンドポイント ポリシーでは、サービス エンドポイント経由での Azure サービスへの仮想ネットワーク トラフィックをフィルター処理し、特定の Azure サービス リソースのみを許可することができます。 エンドポイント ポリシーでは、Azure サービスへの仮想ネットワーク トラフィックに対する詳細なアクセス制御が提供されます。
 
-この機能は、Azure Storage のすべてのパブリック Azure リージョンで__プレビュー__として利用できます。
+この機能は、Azure Storage のすべてのパブリック Azure リージョンで __プレビュー__ として利用できます。
 
 プレビューに関する最新の通知については、[Azure Virtual Network の更新情報](https://azure.microsoft.com/updates/?product=virtual-network)ページをご覧ください。
 
