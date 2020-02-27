@@ -1,7 +1,7 @@
 ---
 title: スキルセットの概念とワークフロー
 titleSuffix: Azure Cognitive Search
-description: スキルセットは、Azure コグニティブ検索で AI エンリッチメント パイプラインを作成する場所です。 スキルセットの作成に関する重要な概念と詳細について説明します。
+description: スキルセットは、Azure Cognitive Search で AI エンリッチメント パイプラインを作成する場所です。 スキルセットの作成に関する重要な概念と詳細について説明します。
 manager: nitinme
 author: vkurpad
 ms.author: vikurpad
@@ -18,11 +18,11 @@ ms.locfileid: "77191025"
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Azure Cognitive Search でのスキルセットの概念と構成
 
 この記事の対象者は、エンリッチメント パイプラインの動作をより深く理解する必要がある開発者であり、AI エンリッチメント プロセスの概念を理解していることが前提です。 この概念を初めて知った場合は、次の方法で開始します。
-+ [Azure コグニティブ検索における AI エンリッチメント](cognitive-search-concept-intro.md)
++ [Azure Cognitive Search における AI エンリッチメント](cognitive-search-concept-intro.md)
 + [ナレッジ ストア (プレビュー)](knowledge-store-concept-intro.md)
 
 ## <a name="specify-the-skillset"></a>スキルセットを指定する
-スキルセットは Azure コグニティブ検索の再利用可能なリソースであり、スキルセットではインデックス作成時にテキストや画像の内容を分析、変換、および強化するために使用されるコグニティブ スキルのコレクションが指定されています。 スキルセットを作成すると、データ インジェスト フェーズでテキストや画像の強化をアタッチし、生コンテンツから新しい情報や構造を抽出して作成することができます。
+スキルセットは Azure Cognitive Search の再利用可能なリソースであり、スキルセットではインデックス作成時にテキストや画像の内容を分析、変換、および強化するために使用されるコグニティブ スキルのコレクションが指定されています。 スキルセットを作成すると、データ インジェスト フェーズでテキストや画像の強化をアタッチし、生コンテンツから新しい情報や構造を抽出して作成することができます。
 
 スキルセットには、次の 3 つのプロパティがあります。
 
