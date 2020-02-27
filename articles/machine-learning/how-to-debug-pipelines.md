@@ -162,8 +162,8 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 * __Azure Virtual Network__ を使用するように構成された __Azure Machine Learning ワークスペース__。
 * パイプライン ステップの一部として Python スクリプトを使用する __Azure Machine Learning パイプライン__。 たとえば、PythonScriptStep です。
-* Azure Machine Learning コンピューティング クラスター。これは__仮想ネットワーク内__にあり、__パイプラインによってトレーニングのために使用されます__。
-* __仮想ネットワーク内__に存在する__開発環境__。 開発環境は、次のいずれかになります。
+* Azure Machine Learning コンピューティング クラスター。これは __仮想ネットワーク内__ にあり、__パイプラインによってトレーニングのために使用されます__。
+* __仮想ネットワーク内__ に存在する __開発環境__。 開発環境は、次のいずれかになります。
 
     * 仮想ネットワーク内の Azure 仮想マシン
     * 仮想ネットワーク内の Notebook VM のコンピューティング インスタンス
