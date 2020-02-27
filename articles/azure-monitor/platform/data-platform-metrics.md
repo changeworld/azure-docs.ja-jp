@@ -93,7 +93,7 @@ Azure Monitor によって収集されるメトリックのソースには、基
 
 **ゲスト OS メトリック**は、仮想マシンのゲスト オペレーティング システムから収集されます。 Windows 仮想マシンの場合は [Windows Diagnostic Extension (WAD)](../platform/diagnostics-extension-overview.md) を使用し、Linux 仮想マシンの場合は [InfluxData Telegraf エージェント](https://www.influxdata.com/time-series-platform/telegraf/)を使用して、ゲスト OS メトリックを有効にします。
 
-**アプリケーション メトリック**は、監視対象のアプリケーションについて Application Insights によって作成され、パフォーマンスの問題を検出し、アプリケーションがどのように使用されているかの傾向を追跡する助けになります。 これには、_サーバー応答時間_と_ブラウザー例外_などの値が含まれます。
+**アプリケーション メトリック**は、監視対象のアプリケーションについて Application Insights によって作成され、パフォーマンスの問題を検出し、アプリケーションがどのように使用されているかの傾向を追跡する助けになります。 これには、_サーバー応答時間_ と _ブラウザー例外_ などの値が含まれます。
 
 **カスタム メトリック**は、自動的に利用できる標準メトリックに加えて、ユーザーが定義するメトリックです。 Application Insights によって監視される[カスタム メトリックをアプリケーション内で定義](../app/api-custom-events-metrics.md)したり、[カスタム メトリック API](metrics-store-custom-rest-api.md) を使用して Azure サービスのカスタム メトリックを作成したりできます。
 
