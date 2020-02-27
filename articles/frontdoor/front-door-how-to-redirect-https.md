@@ -40,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
      ![Front Door 構成デザイナー](./media/front-door-url-redirect/front-door-designer.png)
 
-6. _フロントエンド ホスト_ の ' **+** ' アイコンをクリックしてフロントエンド ホストを作成し、Front Door の既定のフロントエンド ホストに対するグローバルで一意な名前を入力します (`\<**name**\>.azurefd.net`)。 **[追加]** をクリックして次の手順に進みます。
+6. _フロントエンド ホスト_の ' **+** ' アイコンをクリックしてフロントエンド ホストを作成し、Front Door の既定のフロントエンド ホストに対するグローバルで一意な名前を入力します (`\<**name**\>.azurefd.net`)。 **[追加]** をクリックして次の手順に進みます。
 
      ![フロントエンド ホストを追加する](./media/front-door-url-redirect/front-door-create-fehost.png)
 

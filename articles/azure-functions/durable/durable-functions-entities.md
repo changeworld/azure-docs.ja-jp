@@ -55,7 +55,7 @@ ms.locfileid: "76262998"
 
 **クラスベースの構文 (.NET のみ)** : エンティティおよび操作はクラスおよびメソッドによって表されます。 この構文では、より読みやすいコードが生成され、タイプ セーフな方法で操作を呼び出すことができます。 クラスベースの構文は、関数ベースの構文の上にあるシン レイヤーであるため、同じアプリケーションで両方のバリアントを同じ意味で使用できます。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ### <a name="example-function-based-syntax---c"></a>例:関数ベースの構文 - C#
 
@@ -109,7 +109,7 @@ public class Counter
 
 クラスベースの構文とその使用方法の詳細については、「[エンティティ クラスの定義](durable-functions-dotnet-entities.md#defining-entity-classes)」を参照してください。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ### <a name="example-javascript-entity"></a>例:JavaScript のエンティティ
 
@@ -171,7 +171,7 @@ module.exports = df.entity(function(context) {
 
 通常の Azure 関数 (クライアント関数とも呼ばれます) からエンティティにアクセスするには、[エンティティ クライアントのバインド](durable-functions-bindings.md#entity-client)を使用します。 次の例では、このバインドを使用してエンティティにシグナル通知する、キューによってトリガーされた関数を示します。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 > [!NOTE]
 > わかりやすくするために、次の例では、エンティティにアクセスするための緩やかに型指定された構文を示しています。 一般に、より多くの型チェックが提供されるので、[インターフェイスを介してエンティティにアクセスする](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces)ことをお勧めします。
@@ -189,7 +189,7 @@ public static Task Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -209,7 +209,7 @@ module.exports = async function (context) {
 
 次の例に示すように、クライアント関数では、エンティティの状態についてクエリを実行することもできます。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("QueryCounter")]
@@ -223,7 +223,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -244,7 +244,7 @@ module.exports = async function (context) {
 
 オーケストレーター関数では、[オーケストレーション トリガー バインド](durable-functions-bindings.md#orchestration-trigger)に対する API を使用して、エンティティにアクセスできます。 次のコード例では、オーケストレーター関数による `Counter` エンティティの呼び出しとシグナル通知を示します。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CounterOrchestration")]
@@ -263,7 +263,7 @@ public static async Task Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -291,7 +291,7 @@ module.exports = df.orchestrator(function*(context){
 エンティティ関数は、操作の実行中に他のエンティティ (またはそれ自体) にシグナルを送信することができます。
 たとえば、前の `Counter` エンティティの例を変更して、カウンターが値 100 に達したときに "マイルストーン到達" シグナルを一部の監視エンティティに送信することができます。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
    case "add":
@@ -306,7 +306,7 @@ module.exports = df.orchestrator(function*(context){
         break;
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
     case "add":

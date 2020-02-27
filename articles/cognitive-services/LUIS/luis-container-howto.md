@@ -243,7 +243,7 @@ ApiKey={API_KEY}
 
 コンテナーの API のホストとしては `http://localhost:5000` を使用します。
 
-# <a name="v3-prediction-endpointtabv3"></a>[V3 予測エンドポイント](#tab/v3)
+# <a name="v3-prediction-endpoint"></a>[V3 予測エンドポイント](#tab/v3)
 
 |パッケージの種類|HTTP 動詞|ルート|クエリ パラメーター|
 |--|--|--|--|
@@ -259,7 +259,7 @@ ApiKey={API_KEY}
 |`log`|boolean|クエリをログします。これは後で[アクティブ ラーニング](luis-how-to-review-endpoint-utterances.md)に使用できます。 既定値は false です。|
 |`show-all-intents`|boolean|すべての意図を返すか、上位のスコアリングの意図のみを返すかを示すブール値。 既定値は false です。|
 
-# <a name="v2-prediction-endpointtabv2"></a>[V2 予測エンドポイント](#tab/v2)
+# <a name="v2-prediction-endpoint"></a>[V2 予測エンドポイント](#tab/v2)
 
 |パッケージの種類|HTTP 動詞|ルート|クエリ パラメーター|
 |--|--|--|--|
@@ -282,7 +282,7 @@ ApiKey={API_KEY}
 
 発行済みアプリのコンテナーに対してクエリを実行するためのサンプル CURL コマンド:
 
-# <a name="v3-prediction-endpointtabv3"></a>[V3 予測エンドポイント](#tab/v3)
+# <a name="v3-prediction-endpoint"></a>[V3 予測エンドポイント](#tab/v3)
 
 スロット内のモデルに対してクエリを実行するには、次の API を使用します。
 
@@ -308,7 +308,7 @@ curl -G \
 "http://localhost:5000/luis/v3.0/apps/{APP_ID}/versions/{APP_VERSION}/predict"
 ```
 
-# <a name="v2-prediction-endpointtabv2"></a>[V2 予測エンドポイント](#tab/v2)
+# <a name="v2-prediction-endpoint"></a>[V2 予測エンドポイント](#tab/v2)
 
 スロット内のモデルに対してクエリを実行するには、次の API を使用します。
 
