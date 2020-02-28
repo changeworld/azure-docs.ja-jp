@@ -205,7 +205,7 @@ az webapp deployment source config-local-git --name <app_name> --resource-group 
 
 ### <a name="deploy-your-project"></a>プロジェクトのデプロイ
 
-_ローカル ターミナル ウィンドウ_で、ローカル Git リポジトリに Azure リモートを追加します。 _\<url >_ を、「[Kudu でローカル Git を有効にする](#enable-local-git-with-kudu)」で取得した Git リモートの URL に置換します。
+_ローカル ターミナル ウィンドウ_ で、ローカル Git リポジトリに Azure リモートを追加します。 _\<url >_ を、「[Kudu でローカル Git を有効にする](#enable-local-git-with-kudu)」で取得した Git リモートの URL に置換します。
 
 ```bash
 git remote add azure <url>
