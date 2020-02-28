@@ -80,7 +80,7 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
 
 ### <a name="create-a-change-based-schedule"></a>変更ベースのスケジュールを作成する
 
-ファイルの変更によってトリガーされるパイプラインは、時間ベースのスケジュールよりも効率的な場合があります。 たとえば、ファイルが変更されたとき、または新しいファイルがデータ ディレクトリに追加されたときに、前処理手順を実行することもできます。 データストアまたはデータストア内の特定のディレクトリ内の変更に対する変更を監視できます。 特定のディレクトリを監視する場合、そのディレクトリのサブディレクトリ内の変更は、実行をトリガー_しません_。
+ファイルの変更によってトリガーされるパイプラインは、時間ベースのスケジュールよりも効率的な場合があります。 たとえば、ファイルが変更されたとき、または新しいファイルがデータ ディレクトリに追加されたときに、前処理手順を実行することもできます。 データストアまたはデータストア内の特定のディレクトリ内の変更に対する変更を監視できます。 特定のディレクトリを監視する場合、そのディレクトリのサブディレクトリ内の変更は、実行をトリガー _しません_。
 
 ファイルに対応する `Schedule` を作成するには、[Schedule.create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-) の呼び出しに `datastore` パラメーターを設定する必要があります。 フォルダーを監視するには、`path_on_datastore` 引数を設定します。
 
