@@ -4,6 +4,8 @@
   items:
     - name: Automation とは
       href: automation-intro.md
+    - name: よく寄せられる質問
+      href: automation-faq.md
 - name: Automation アカウント
   items:
     - name: Automation アカウントを作成する
@@ -136,6 +138,8 @@
       displayName: 'dynamic groups, pre scripts, post scripts, reboot control, first party, pre download, inclusion'
     - name: オンボード
       items:
+        - name: Resource Manager テンプレートの使用
+          href: automation-update-management-deploy-template.md
         - name: 複数の VM のポータルからのオンボード
           href: automation-onboard-solutions-from-browse.md
         - name: Azure VM からのオンボード

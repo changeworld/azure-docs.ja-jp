@@ -150,7 +150,7 @@
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける
-      href: /learn/browse/?products=azure-virtual-machines
+      href: /learn/browse/?products=azure-load-balancer
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Azure Load Balancer のフィードバック

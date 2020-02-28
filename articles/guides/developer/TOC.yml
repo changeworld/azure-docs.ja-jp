@@ -3,7 +3,7 @@
     - name: 開発者ガイド
       href: azure-developer-guide.md
     - name: SDK とツール
-      href: 'https://docs.microsoft.com/azure/index#pivot=sdkstools'
+      href: 'https://aka.ms/azsdkpackages'
 - name: クイック スタート
   items:
     - name: Web Apps
