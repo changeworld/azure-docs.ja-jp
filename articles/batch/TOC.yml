@@ -123,6 +123,8 @@
           href: large-number-tasks.md
         - name: ジョブとタスクのエラーを確認する
           href: batch-job-task-error-checking.md
+        - name: Batch サービスのエラーの検出と処理
+          href: batch-retry-after-errors.md
     - name: リソース ファイルを作成する
       href: resource-files.md
     - name: ジョブとタスク出力を保持する

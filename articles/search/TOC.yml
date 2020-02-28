@@ -1,23 +1,23 @@
 - name: Azure Cognitive Search のドキュメント
   href: index.yml
 - name: 概要
-  expanded: true
   items:
     - name: Azure Cognitive Search とは
       href: search-what-is-azure-search.md
     - name: 新機能
       href: whats-new.md
 - name: クイックスタート
+  expanded: true
   items:
-    - name: サービスの作成
-      href: search-create-service-portal.md
     - name: ポータル
       items:
+        - name: サービスの作成
+          href: search-create-service-portal.md
         - name: インデックスを作成する
           href: search-get-started-portal.md
         - name: アプリを作成する
           href: search-create-app-portal.md
-        - name: コグニティブ スキルセットの作成
+        - name: スキルセットを作成する
           href: cognitive-search-quickstart-blob.md
         - name: ナレッジ ストアの作成
           href: knowledge-store-create-portal.md
@@ -99,61 +99,7 @@
       href: cognitive-search-incremental-indexing-conceptual.md
 - name: 操作方法ガイド
   items:
-    - name: 計画
-      items:
-        - name: レベルの選択
-          href: search-sku-tier.md
-        - name: サービスの制限
-          href: search-limits-quotas-capacity.md
-        - name: 容量の調整
-          href: search-capacity-planning.md
-        - name: パフォーマンスのためのスケール
-          href: search-performance-optimization.md
-        - name: リージョン間でのサービスの移動
-          href: search-howto-move-across-regions.md
-        - name: マルチテナント アーキテクチャ
-          href: search-modeling-multitenant-saas-applications.md
-    - name: Security
-      items:
-        - name: セキュリティの概要
-          href: search-security-overview.md
-        - name: プライベート エンドポイントの作成
-          href: service-create-private-endpoint.md
-        - name: サービス キーの管理
-          href: search-security-api-keys.md
-        - name: ロール ベースの管理者アクセス
-          href: search-security-rbac.md
-        - name: セキュリティ フィルター
-          href: search-security-trimming-for-azure-search.md
-        - name: AAD の ID のフィルター処理
-          href: search-security-trimming-for-azure-search-with-aad.md
-        - name: 暗号化キーの管理
-          href: search-security-manage-encryption-keys.md
-    - name: 開発
-      items:
-        - name: API のバージョン
-          href: search-api-versions.md
-        - name: プレビュー機能一覧
-          href: search-api-preview.md
-        - name: .NET での開発
-          href: search-howto-dotnet-sdk.md
-        - name: SDK をアップグレードする
-          items:
-            - name: .NET SDK 10.0
-              href: search-dotnet-sdk-migration-version-10.md
-            - name: .NET SDK 9.0
-              href: search-dotnet-sdk-migration-version-9.md
-            - name: .NET SDK 5.0
-              href: search-dotnet-sdk-migration-version-5.md
-            - name: .NET SDK 3.0
-              href: search-dotnet-sdk-migration.md
-            - name: .NET SDK 1.1
-              href: search-dotnet-sdk-migration-version-1.md
-            - name: .NET Management SDK
-              href: search-dotnet-mgmt-sdk-migration.md
-        - name: REST API をアップグレードする
-          href: search-api-migration.md
-    - name: インデックスを作成する
+    - name: インデックスとコンストラクトの作成
       items:
         - name: 基本インデックスの作成
           href: search-what-is-an-index.md
@@ -185,7 +131,7 @@
           href: search-howto-complex-data-types.md
         - name: リレーショナル データをモデル化する
           href: index-sql-relational-data.md
-    - name: インデックス作成 (インポート)
+    - name: データの取り込み
       items:
         - name: データ インポートの概要
           href: search-what-is-data-import.md
@@ -197,16 +143,16 @@
           href: search-howto-large-index.md
         - name: 同時更新を処理する
           href: search-howto-concurrency.md
-    - name: インデクサーを使用する
+    - name: Azure データの取り込み
       items:
         - name: インデクサーを構成する
           href: search-indexer-overview.md
-        - name: フィールドのマッピング
-          href: search-indexer-field-mappings.md
         - name: インデクサーの監視
           href: search-howto-monitor-indexers.md
         - name: インデクサーのスケジュール設定
           href: search-howto-schedule-indexers.md
+        - name: フィールドのマッピング
+          href: search-indexer-field-mappings.md
         - name: データ ソース
           items:
             - name: Azure BLOB
@@ -223,19 +169,19 @@
                   href: search-howto-index-csv-blobs.md
                 - name: JSON BLOB のインデックス作成
                   href: search-howto-index-json-blobs.md
+            - name: Azure テーブル
+              href: search-howto-indexing-azure-tables.md
             - name: Azure Cosmos DB
               href: search-howto-index-cosmosdb.md
             - name: Azure Data Lake Storage Gen2
               href: search-howto-index-azure-data-lake-storage.md
-            - name: Azure SQL データベース
+            - name: SQL Database
               href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-            - name: Azure Table Storage
-              href: search-howto-indexing-azure-tables.md
             - name: SQL マネージド インスタンス
               href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
             - name: SQL Server VM
               href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
-    - name: AI エンリッチメント
+    - name: AI を使用した取り込み
       items:
         - name: Cognitive Services リソースをアタッチする
           href: cognitive-search-attach-cognitive-services.md
@@ -275,7 +221,7 @@
               href: knowledge-store-connect-power-bi.md
             - name: プロジェクションの例
               href: knowledge-store-projections-examples.md
-    - name: ドキュメントにクエリを実行する
+    - name: クエリ
       items:
         - name: クエリの種類と構成
           href: search-query-overview.md
@@ -295,7 +241,7 @@
               href: query-lucene-syntax.md
             - name: moreLikeThis (プレビュー)
               href: search-more-like-this.md
-    - name: フィルターを適用する
+    - name: Assert
       items:
         - name: フィルターの概要
           href: search-filters.md
@@ -309,24 +255,80 @@
           href: search-query-understand-collection-filters.md
         - name: 多層構造ファセットの例
           href: search-example-adventureworks-multilevel-faceting.md
-    - name: 結果を処理する
+    - name: '[結果]'
       items:
         - name: ページ関連の機能
           href: search-pagination-page-layout.md
         - name: 関連性のチューニング (スコアリング プロファイル)
           href: index-add-scoring-profiles.md
-    - name: サービスの管理
+    - name: プラン
+      items:
+        - name: レベルの選択
+          href: search-sku-tier.md
+        - name: サービスの制限
+          href: search-limits-quotas-capacity.md
+        - name: 容量の調整
+          href: search-capacity-planning.md
+        - name: パフォーマンスのためのスケール
+          href: search-performance-optimization.md
+        - name: マルチテナント アーキテクチャ
+          href: search-modeling-multitenant-saas-applications.md
+    - name: 開発
+      items:
+        - name: API のバージョン
+          href: search-api-versions.md
+        - name: プレビュー機能一覧
+          href: search-api-preview.md
+        - name: .NET での開発
+          href: search-howto-dotnet-sdk.md
+        - name: SDK をアップグレードする
+          items:
+            - name: .NET SDK 10.0
+              href: search-dotnet-sdk-migration-version-10.md
+            - name: .NET SDK 9.0
+              href: search-dotnet-sdk-migration-version-9.md
+            - name: .NET SDK 5.0
+              href: search-dotnet-sdk-migration-version-5.md
+            - name: .NET SDK 3.0
+              href: search-dotnet-sdk-migration.md
+            - name: .NET SDK 1.1
+              href: search-dotnet-sdk-migration-version-1.md
+            - name: .NET Management SDK
+              href: search-dotnet-mgmt-sdk-migration.md
+        - name: REST API をアップグレードする
+          href: search-api-migration.md
+    - name: セキュリティで保護
+      items:
+        - name: セキュリティの概要
+          href: search-security-overview.md
+        - name: プライベート エンドポイントの作成
+          href: service-create-private-endpoint.md
+        - name: サービス キーの管理
+          href: search-security-api-keys.md
+        - name: ロール ベースの管理者アクセス
+          href: search-security-rbac.md
+        - name: セキュリティ フィルター
+          href: search-security-trimming-for-azure-search.md
+        - name: AAD の ID のフィルター処理
+          href: search-security-trimming-for-azure-search-with-aad.md
+        - name: 暗号化キーの管理
+          href: search-security-manage-encryption-keys.md
+    - name: 管理する
       items:
         - name: ポータル
           href: search-manage.md
         - name: PowerShell
           href: search-manage-powershell.md
-    - name: 監視とログ記録
+        - name: リージョン間でのサービスの移動
+          href: search-howto-move-across-regions.md
+    - name: モニター
       items:
         - name: 基礎
           href: search-monitor-usage.md
         - name: 診断ログ
           href: search-monitor-logs.md
+        - name: 診断ログの視覚化
+          href: search-monitor-logs-powerbi.md
         - name: クエリ アクティビティの監視
           href: search-monitor-queries.md
         - name: 検索トラフィックの分析

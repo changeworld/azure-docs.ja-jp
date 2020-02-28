@@ -515,6 +515,8 @@
           href: data-flow-unpivot.md
         - name: ウィンドウ
           href: data-flow-window.md
+        - name: フラット化
+          href: data-flow-flatten.md
     - name: パラメーター化
       items:
         - name: リンクされたサービスをパラメーター化する

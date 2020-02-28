@@ -49,7 +49,7 @@
           href: azure-container-registry-integration.md
         - name: Azure Kubernetes Service との統合
           href: azure-kubernetes-service-integration.md
-    - name: 脅威検出アラートとインシデント
+    - name: 脅威の防止とセキュリティ アラート
       items:
         - name: セキュリティ アラートの概要
           href: security-center-alerts-overview.md
@@ -59,16 +59,8 @@
           href: security-center-managing-and-responding-alerts.md
         - name: セキュリティ インシデントを管理する
           href: security-center-incident.md
-        - name: VM とサーバーの脅威検出
-          href: security-center-alerts-iaas.md
-        - name: クラウド アプリとコンテナーの脅威検出
-          href: security-center-alerts-compute.md
-        - name: データ サービスの脅威検出
-          href: security-center-alerts-data-services.md
-        - name: Azure サービス レイヤーの脅威検出
-          href: security-center-alerts-service-layer.md
-        - name: Azure WAF と Azure DDoS Protection の脅威検出アラート
-          href: security-center-alerts-integration.md
+        - name: Azure Security Center での脅威の防止
+          href: threat-protection.md
         - name: クラウドのスマート アラートの関連付け (インシデント)
           href: security-center-alerts-cloud-smart.md
         - name: セキュリティ アラート マップと脅威インテリジェンス

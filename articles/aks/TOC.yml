@@ -105,8 +105,8 @@
               href: developer-best-practices-pod-security.md
     - name: クォータと地域の制限
       href: quotas-skus-regions.md
-    - name: ACS から AKS への移行
-      href: acs-aks-migration.md
+    - name: AKS への移行
+      href: aks-migration.md
     - name: サポートされている Kubernetes バージョン
       href: supported-kubernetes-versions.md
     - name: ホスト OS でのセキュリティ強化

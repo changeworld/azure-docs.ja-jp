@@ -14,12 +14,12 @@ metadata:
   author: aahill
   ms.author: aahi
   ms.date: 11/06/2019
-  ms.openlocfilehash: a425aab2f9f2fb8bf8ffcff5ec91aa1f43078250
-  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.openlocfilehash: f47d69574097e5fd85a4a9aedbf5df7d830fb139
+  ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/25/2019
-  ms.locfileid: "75448312"
+  ms.lasthandoff: 02/27/2020
+  ms.locfileid: "77650267"
 highlightedContent:
   items:
   - title: Bing Search API を比較する
@@ -40,16 +40,16 @@ conceptualContent:
   items:
   - title: Bing Web Search
     links:
-    - url: web-search-sdk-quickstart.md
+    - url: ./quickstarts/client-libraries.md?pivots=programming-language-csharp
       itemType: quickstart
       text: C# の使用
-    - url: web-sdk-java-quickstart.md
+    - url: ./quickstarts/client-libraries.md?pivots=programming-language-java
       itemType: quickstart
       text: Java の使用
-    - text: Node.js の使用
+    - url: ./quickstarts/client-libraries.md?pivots=programming-language-javascript
       itemType: quickstart
-      url: web-search-sdk-node-quickstart.md
-    - url: web-sdk-python-quickstart.md
+      text: JavaScript の使用
+    - url: ./quickstarts/client-libraries.md?pivots=programming-language-python
       itemType: quickstart
       text: Python の使用
     - url: tutorial-bing-web-search-single-page-app.md

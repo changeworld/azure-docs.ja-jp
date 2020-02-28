@@ -8,7 +8,7 @@
   items:
     - name: 集約された名前空間を計画する
       href: hpc-cache-namespace.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: 前提条件
       href: hpc-cache-prereqs.md
@@ -42,6 +42,8 @@
       href: hpc-cache-support-ticket.md
     - name: BLOB ストレージ アカウントのファイアウォール設定を回避する
       href: hpc-cache-blob-firewall-fix.md
+    - name: NFS ストレージ ターゲットの作成のトラブルシューティング
+      href: troubleshoot-nas.md
     - name: リージョンの障害から復旧する
       href: hpc-region-recovery.md
     - name: Azure HPC Cache で Azure NetApp Files を使用する

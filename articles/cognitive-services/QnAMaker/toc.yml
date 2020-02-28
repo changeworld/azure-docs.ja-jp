@@ -100,28 +100,20 @@
       displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
 - name: 操作方法ガイド
   items:
-    - name: ナレッジ ベースの編集
+    - name: Azure のリソースを管理する
       items:
-        - name: ナレッジ ベースの編集
-          href: How-To/edit-knowledge-base.md
-        - name: フォローアップ プロンプトを使用した複数ターンの会話の作成
-          href: How-To/multiturn-conversation.md
-          displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'
-        - name: おしゃべりの追加
-          href: How-to/chit-chat-knowledge-base.md
-        - name: セキュリティで保護された SharePoint ファイルの追加
-          href: How-To/add-sharepoint-datasources.md
-          displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
+        - name: リソースの管理
+          href: How-To/set-up-qnamaker-service-azure.md
+          displayName: 'azure, resource, key, upgrade, pricing, tier,'
+        - name: 分析の取得
+          href: How-To/get-analytics-knowledge-base.md
+        - name: ビジネス継続性計画の作成
+          href: How-To/business-continuity-plan.md
     - name: ナレッジ ベースの管理
       items:
         - name: ナレッジ ベースの作成と公開
           href: Quickstarts/create-publish-knowledge-base.md
           displayName: 'create bot, bot, publish to bot, test, edit'
-        - name: メタデータを使用した回答の取得
-          href: How-To/metadata-generateanswer-usage.md
-          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
-        - name: 既定の回答の設定
-          href: How-to/change-default-answer.md
         - name: QnA Maker と LUIS を使用したボットの作成
           href: Tutorials/integrate-qnamaker-luis.md
         - name: 言語の選択
@@ -136,17 +128,27 @@
         - name: アクティブ ラーニングを使用してナレッジ ベースを改善する
           href: How-to/improve-knowledge-base.md
           displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
-    - name: サービスの管理
+        - name: ナレッジ ベースの編集
+          href: How-To/edit-knowledge-base.md
+        - name: フォローアップ プロンプトを使用した複数ターンの会話の作成
+          href: How-To/multiturn-conversation.md
+          displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'
+        - name: おしゃべりの追加
+          href: How-to/chit-chat-knowledge-base.md
+        - name: セキュリティで保護された SharePoint ファイルの追加
+          href: How-To/add-sharepoint-datasources.md
+          displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
+        - name: ナレッジ ベースの照会
+          href: How-To/metadata-generateanswer-usage.md
+          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
+    - name: クライアント アプリケーションとの併用
       items:
-        - name: リソースの管理
-          href: How-To/set-up-qnamaker-service-azure.md
-          displayName: 'azure, resource, key, upgrade, pricing, tier,'
-        - name: 分析の取得
-          href: How-To/get-analytics-knowledge-base.md
-        - name: 容量の選択
-          href: Tutorials/choosing-capacity-qnamaker-deployment.md
-        - name: ビジネス継続性計画の作成
-          href: How-To/business-continuity-plan.md
+        - name: Bot Framework
+          href: Tutorials/create-qna-bot.md
+        - name: LUIS と QnA Maker
+          href: Tutorials/integrate-qnamaker-luis.md
+    - name: 分析とテレメトリ
+      href: How-To/get-analytics-knowledge-base.md
 - name: リファレンス
   items:
     - name: Languages
@@ -155,12 +157,20 @@
       href: limits.md
     - name: トラブルシューティング
       href: troubleshooting.md
-    - name: ファイル形式
+    - name: サービス構成
+      href: reference-app-service.md
+    - name: コンテンツとデータの形式
       items:
-        - name: Markdown リファレンス
-          href: reference-markdown-format.md
-        - name: TSV のバッチ テスト
-          href: reference-tsv-format-batch-testing.md
+        - name: コンテンツ形式のガイドライン
+          href: reference-document-format-guidelines.md
+        - name: URL
+          href: reference-document-type-url.md
+        - name: データのインポートとエクスポートのガイドライン
+          href: reference-data-guidelines.md
+    - name: '[表示形式]'
+      href: reference-markdown-format.md
+    - name: Batch のテスト形式
+      href: reference-tsv-format-batch-testing.md
     - name: REST API リファレンス
       items:
         - name: API の作成
@@ -169,7 +179,6 @@
           href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer'
         - name: Train API
           href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train'
-      href: 'https://go.microsoft.com/fwlink/?linkid=2092179'
     - name: サンプル
       items:
         - name: QnA Maker のヘルプ ボット
@@ -197,7 +206,7 @@
             - name: リファレンス ドキュメント
               href: 'https://docs.microsoft.com/javascript/api/%40azure/cognitiveservices-qnamaker/index?view=azure-node-latest'
             - name: NPM
-              href: 'https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker'
+              href: 'https://www.npmjs.com/package/azure-cognitiveservices-qnamaker'
             - name: サンプル
               href: 'https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs'
         - name: Python
