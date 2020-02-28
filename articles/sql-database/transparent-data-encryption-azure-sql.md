@@ -72,7 +72,7 @@ Transparent Data Encryption で保護されたデータベースをエクスポ�
 
 
 ## <a name="manage-transparent-data-encryption"></a>Transparent Data Encryption の管理
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 Azure portal で Transparent Data Encryption を管理します。
 
 Azure portal を使用して Transparent Data Encryption を構成するには、Azure の所有者、共同作成者、または SQL セキュリティ管理者として接続する必要があります。
@@ -85,7 +85,7 @@ Transparent Data Encryption マスター キー (Transparent Data Encryption 保
 
 ![Bring Your Own Key をサポートする Transparent Data Encryption](./media/transparent-data-encryption-azure-sql/tde-byok-support.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 PowerShell を使用して Transparent Data Encryption を管理します。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -113,7 +113,7 @@ Azure SQL Database と Data Warehouse には次のコマンドレットを使用
 > [!IMPORTANT]
 > Azure SQL Managed Instance の場合、T-SQL [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database) コマンドを使用し、データベース レベルで Transparent Data Encryption のオン/オフを切り替え、[サンプル PowerShell スクリプト](transparent-data-encryption-byok-azure-sql-configure.md)を確認してインスタンス レベルで Transparent Data Encryption を管理します。
 
-# <a name="transact-sqltabazure-transactsql"></a>[Transact-SQL](#tab/azure-TransactSQL)
+# <a name="transact-sql"></a>[Transact-SQL](#tab/azure-TransactSQL)
 Transact-SQL を使用して Transparent Data Encryption を管理します。
 
 master データベースの **dbmanager** ロールの管理者またはメンバーであるログインを使用してデータベースに接続します。
@@ -127,7 +127,7 @@ master データベースの **dbmanager** ロールの管理者またはメン�
 
 Transact-SQL を使用して、Transparent Data Encryption 保護機能を Key Vault のキーに切り替えることはできません。 PowerShell または Azure portal を使用してください。
 
-# <a name="rest-apitabazure-restapi"></a>[REST API](#tab/azure-RESTAPI)
+# <a name="rest-api"></a>[REST API](#tab/azure-RESTAPI)
 REST API を使用して Transparent Data Encryption を管理します。
 
 REST API を使用して Transparent Data Encryption を構成するには、Azure の所有者、共同作成者、または SQL セキュリティ管理者として接続する必要があります。

@@ -286,7 +286,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 | source | id | 説明 |
 |-----|-----|-----|
-| User | surname | 姓 |
+| User | surname | surname |
 | User | givenname | 名 |
 | User | displayName | 表示名 |
 | User | objectid | ObjectID |

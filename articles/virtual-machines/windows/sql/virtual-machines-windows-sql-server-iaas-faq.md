@@ -88,7 +88,7 @@ ms.locfileid: "76835166"
 
 1. **ライセンス モデルの切り替えには、SQL Server のダウンタイムが必要ですか。**
 
-   いいえ。 [ライセンス モデルの変更](virtual-machines-windows-sql-ahb.md)は、即座に有効になり、VM を再起動する必要はないため、SQL Server のダウンタイムは必要ありません。 ただし、SQL Server VM を SQL Server VM リソース プロバイダーに登録するには、[SQL IaaS 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)が前提条件です。SQL IaaS 拡張機能を _完全_ モードでインストールすると、SQL Server サービスが再起動します。 そのため、SQL IaaS 拡張機能をインストールする必要がある場合、機能が制限される _軽量_ モードでインストールするか、メンテナンス期間中であれば _完全_ モードでインストールしてください。 _軽量_ モードでインストールされた SQL IaaS 拡張機能はいつでも _完全_ モードにアップグレードできますが、SQL Server サービスを再起動する必要があります。 
+   いいえ。 [ライセンス モデルの変更](virtual-machines-windows-sql-ahb.md)は、即座に有効になり、VM を再起動する必要はないため、SQL Server のダウンタイムは必要ありません。 ただし、SQL Server VM を SQL Server VM リソース プロバイダーに登録するには、[SQL IaaS 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)が前提条件です。SQL IaaS 拡張機能を_完全_モードでインストールすると、SQL Server サービスが再起動します。 そのため、SQL IaaS 拡張機能をインストールする必要がある場合、機能が制限される_軽量_モードでインストールするか、メンテナンス期間中であれば_完全_モードでインストールしてください。 _軽量_モードでインストールされた SQL IaaS 拡張機能はいつでも_完全_モードにアップグレードできますが、SQL Server サービスを再起動する必要があります。 
    
 1. **クラシック モデルを使用してデプロイされた SQL Server VM でライセンス モデルを切り替えることはできますか。**
 
@@ -190,7 +190,7 @@ ms.locfileid: "76835166"
 
 1. **SQL Server 2008 / 2008 R2 インスタンスを SQL Server VM リソース プロバイダーに登録した後にアップグレードできますか?**
 
-   はい。 セットアップ メディアを利用し、SQL Server のバージョンやエディションをアップグレードできます。その後、[SQL IaaS 拡張機能モード](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes)を _エージェントなし_ から _完全_ にアップグレードできます。 アップグレードにより SQL IaaS 拡張機能のあらゆる特典を利用できるようになります。たとえば、ポータルが使いやすくなり、バックアップや修正プログラムの適用を自動化できます。 
+   はい。 セットアップ メディアを利用し、SQL Server のバージョンやエディションをアップグレードできます。その後、[SQL IaaS 拡張機能モード](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes)を_エージェントなし_から_完全_にアップグレードできます。 アップグレードにより SQL IaaS 拡張機能のあらゆる特典を利用できるようになります。たとえば、ポータルが使いやすくなり、バックアップや修正プログラムの適用を自動化できます。 
 
 1. **サポートが終了した SQL Server 2008 および SQL Server 2008 R2 インスタンスの無料の延長セキュリティ更新プログラムを取得するどうすればよいですか?**
 

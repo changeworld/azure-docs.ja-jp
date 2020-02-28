@@ -73,7 +73,7 @@ Azure Policy アドオンをインストールするか、このサービスの�
 
 ## <a name="azure-policy-add-on"></a>Azure Policy アドオン
 
-Kubernetes 用の _Azure Policy アドオン_を使って、Azure Policy サービスを Gatekeeper アドミッション コントローラーに接続します。 このアドオンは _kube-system_ 名前空間にインストールされ、次の機能が実行されます。
+Kubernetes 用の _Azure Policy アドオン_ を使って、Azure Policy サービスを Gatekeeper アドミッション コントローラーに接続します。 このアドオンは _kube-system_ 名前空間にインストールされ、次の機能が実行されます。
 
 - AKS エンジン クラスターへの割り当てを Azure ポリシーで確認します
 - ポリシーの詳細、制約テンプレート、および制約をダウンロードしてインストールします

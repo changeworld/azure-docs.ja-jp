@@ -150,7 +150,7 @@ Copy a snapshot over the base blob:
 
 次の手順では、論理的な削除の基本的な使用方法について説明します。
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal を使用して、ストレージアカウントの BLOB の論理的な削除を有効にします：
 
@@ -190,7 +190,7 @@ BLOB のスナップショットの削除を取り消した後は、 **[レベ�
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-promote-snapshot.png)
 
-# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -227,7 +227,7 @@ $Blobs.ICloudBlob.Undelete()
    Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context
 ```
 
-# <a name="clitabazure-cli"></a>[CLI](#tab/azure-CLI)
+# <a name="cli"></a>[CLI](#tab/azure-CLI)
 
 論理的な削除を有効にするには、BLOB クライアントのサービスのプロパティを更新します。
 
@@ -241,7 +241,7 @@ az storage blob service-properties delete-policy update --days-retained 7  --acc
 az storage blob service-properties delete-policy show --account-name mystorageaccount 
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 論理的な削除を有効にするには、BLOB クライアントのサービスのプロパティを更新します。
 
@@ -259,7 +259,7 @@ block_blob_service.set_blob_service_properties(
     delete_retention_policy=DeleteRetentionPolicy(enabled=True, days=7))
 ```
 
-# <a name="nettabnet"></a>[.NET](#tab/net)
+# <a name="net"></a>[.NET](#tab/net)
 
 論理的な削除を有効にするには、BLOB クライアントのサービスのプロパティを更新します。
 
