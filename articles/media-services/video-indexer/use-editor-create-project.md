@@ -83,7 +83,7 @@ Video Indexer Web サイトでは、ビデオの詳細な分析情報を使用�
     
     ![Include (含める)](./media/video-indexer-view-edit/include.png)
     
-    GitHub に言及していて Donovan Brown が画面に_映っていない_クリップが必要な場合は、ドロップダウンを使用して "include" フィルターを "exclude" フィルターに変更するだけです。 
+    GitHub に言及していて Donovan Brown が画面に _映っていない_ クリップが必要な場合は、ドロップダウンを使用して "include" フィルターを "exclude" フィルターに変更するだけです。 
 
 1. 追加するセグメントを選択して、クリップをプロジェクトに追加します。 セグメントをもう一度クリックすると、このクリップを選択解除できます。
     
