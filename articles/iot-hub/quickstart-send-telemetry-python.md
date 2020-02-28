@@ -61,7 +61,7 @@ az extension add --name azure-cli-iot-ext
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyPythonDevice
     ```
 
-1. Azure Cloud Shell で次のコマンドを実行して、登録したデバイスの_デバイス接続文字列_を取得します。
+1. Azure Cloud Shell で次のコマンドを実行して、登録したデバイスの _デバイス接続文字列_ を取得します。
 
     **YourIoTHubName**: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
 
