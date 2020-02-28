@@ -79,7 +79,7 @@ Azure リソースにポリシー ルールへのコンプライアンス違反�
 
 ### <a name="compliance-reasons"></a>コンプライアンスの理由
 
-次のマトリックスは、可能性のある各_理由_と、ポリシー定義内でのその[条件](../concepts/definition-structure.md#conditions)の対応を示しています。
+次のマトリックスは、可能性のある各 _理由_ と、ポリシー定義内でのその[条件](../concepts/definition-structure.md#conditions)の対応を示しています。
 
 |理由 | 条件 |
 |-|-|
