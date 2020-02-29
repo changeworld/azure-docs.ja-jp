@@ -211,14 +211,14 @@ az group deployment create \
 
 | テンプレートの種類 | スコープ | 解決策 |
 | ------------- | ----- | ---------- |
-| 入れ子        | 外側 (既定) | 親リソース グループ |
-| 入れ子        | 内部 (inner) | サブ リソース グループ |
+| 入れ子        | outer (既定) | 親リソース グループ |
+| 入れ子        | inner | サブ リソース グループ |
 | リンク済み        | 該当なし   | サブ リソース グループ |
 
 次の[テンプレートの例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json)は、次のものを示しています。
 
-* 既定の (外側の) スコープを持つ入れ子になったテンプレート
-* 内側のスコープを持つ入れ子になったテンプレート
+* 既定の (outer) スコープを持つ入れ子になったテンプレート
+* inner スコープを持つ入れ子になったテンプレート
 * リンク済みテンプレート
 
 ```json

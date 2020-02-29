@@ -101,15 +101,15 @@ Azure Resource テンプレートでデプロイ スクリプトを使用する�
 
 プロパティ値の詳細:
 
-- **ID**:デプロイ スクリプト サービスは、ユーザー割り当てのマネージド ID を使用してスクリプトを実行します。 現時点では、ユーザー割り当てマネージド ID のみがサポートされています。
-- **種類**:スクリプトの種類を指定します。 現在は、Azure PowerShell スクリプトのみがサポートされています。 値は **AzurePowerShell** です。
+- **identity**:デプロイ スクリプト サービスは、ユーザー割り当てのマネージド ID を使用してスクリプトを実行します。 現時点では、ユーザー割り当てマネージド ID のみがサポートされています。
+- **kind**:スクリプトの種類を指定します。 現在は、Azure PowerShell スクリプトのみがサポートされています。 値は **AzurePowerShell** です。
 - **forceUpdateTag**:テンプレートのデプロイ間でこの値を変更すると、デプロイ スクリプトが強制的に再実行されます。 パラメーターの defaultValue として設定する必要がある newGuid() 関数または utcNow() 関数を使用します。 詳細については、「[スクリプトを複数回実行する](#run-script-more-than-once)」を参照してください。
 - **azPowerShellVersion**:使用する Azure PowerShell モジュールのバージョンを指定します。 デプロイ スクリプトでは、現在バージョン 2.7.0、2.8.0、3.0.0 がサポートされています。
-- **引数**:パラメーター値を指定します。 値はスペースで区切ります。
+- **arguments**:パラメーター値を指定します。 値はスペースで区切ります。
 - **scriptContent**:スクリプトの内容を指定します。 外部スクリプトを実行するには、代わりに `primaryScriptUri` を使用します。 例については、「[インライン スクリプトを使用する](#use-inline-scripts)」および「[外部スクリプトを使用する](#use-external-scripts)」を参照してください。
 - **primaryScriptUri**:サポートされている PowerShell ファイル拡張子を使用して、プライマリ powershell スクリプトへのパブリックにアクセス可能な URL を指定します。
 - **supportingScriptUris**:`ScriptContent` または `PrimaryScriptUri` で呼び出される powershell ファイルをサポートするには、パブリックにアクセス可能な URL の配列を指定します。
-- **タイムアウト**:[ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)で指定される、スクリプトの許容最長実行時間を指定します。 既定値は **P1D** です。
+- **timeout**:[ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)で指定される、スクリプトの許容最長実行時間を指定します。 既定値は **P1D** です。
 - **cleanupPreference**。 スクリプトの実行がターミナル状態になった際の、デプロイ リソースのクリーンアップ設定を指定します。 既定の設定は、**Always** です。これは、ターミナル状態 (Succeeded、Failed、Canceled) に関係なくリソースを削除することを意味します。 詳細については、「[デプロイ スクリプト リソースのクリーンアップ](#clean-up-deployment-script-resources)」を参照してください。
 - **retentionInterval**:デプロイ スクリプトの実行が終了状態に達した後、サービスがデプロイ スクリプト リソースを保持する間隔を指定します。 この期間が経過すると、デプロイ スクリプト リソースは削除されます。 期間は [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) のパターンに基づきます。 既定値は 7 日を意味する **P1D** です。 このプロパティは、cleanupPreference が *OnExpiration* に設定されている場合に使用されます。 *OnExpiration* プロパティは、現在有効になっていません。 詳細については、「[デプロイ スクリプト リソースのクリーンアップ](#clean-up-deployment-script-resources)」を参照してください。
 
