@@ -30,6 +30,8 @@
           href: functions-add-output-binding-storage-queue-vs-code.md
         - name: "Visual\_Studio"
           href: functions-add-output-binding-storage-queue-vs.md
+        - name: コマンド ライン
+          href: functions-add-output-binding-storage-queue-cli.md
         - name: Maven (Java)
           href: functions-add-output-binding-storage-queue-java.md
 - name: チュートリアル
