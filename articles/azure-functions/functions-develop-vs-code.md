@@ -436,7 +436,7 @@ Azure Functions 拡張機能には、Azure の関数アプリと対話するた�
 | **Rename Settings** | Azure の既存の関数アプリ設定のキー名を変更します。 このコマンドは、local.settings.json ファイルの設定に影響を与えません。 Azure で設定の名前を変更したら、[それらの変更をローカル プロジェクトにダウンロードする](#download-settings-from-azure)必要があります。 |
 | **Restart** | Azure で関数アプリを再起動します。 更新をデプロイしても関数アプリが再起動されます。 |
 | **Set AzureWebJobsStorage**| `AzureWebJobsStorage` アプリケーション設定の値を設定します。 この設定は、Azure Functions によって必要になります。 これは、Azure で関数アプリが作成されるときに設定されます。 |
-| **[開始]** | Azure の停止された関数アプリを起動します。 |
+| **Start** | Azure の停止された関数アプリを起動します。 |
 | **Start Streaming Logs** | Azure の関数アプリのストリーミング ログを開始します。 ロギング情報をほぼリアルタイムで確認する必要がある場合は、Azure でのリモート トラブルシューティング中にストリーミング ログを使用します。 詳細については、「[ストリーミング ログ](#streaming-logs)」を参照してください。 |
 | **Stop** | Azure で実行されている関数アプリを停止します。 |
 | **Stop Streaming Logs** | Azure の関数アプリのストリーミング ログを停止します。 |
