@@ -619,6 +619,7 @@
                   href: cassandra-spark-table-copy-ops.md
             - name: Resource Manager テンプレートを使用して管理する
               href: manage-cassandra-with-resource-manager.md
+              displayName: ARM
             - name: PowerShell を使用して管理する
               href: powershell-samples-cassandra.md
             - name: Azure CLI を使用して管理する
@@ -706,6 +707,7 @@
               displayName: custom commands
             - name: Resource Manager テンプレートを使用して管理する
               href: manage-mongodb-with-resource-manager.md
+              displayName: ARM
             - name: PowerShell を使用して管理する
               href: powershell-samples-mongodb.md
             - name: Azure CLI を使用して管理する
@@ -767,6 +769,7 @@
               href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
             - name: Resource Manager テンプレートを使用して管理する
               href: manage-gremlin-with-resource-manager.md
+              displayName: ARM
             - name: PowerShell を使用して管理する
               href: powershell-samples-gremlin.md
             - name: Azure CLI を使用して管理する
@@ -823,6 +826,7 @@
               href: table-storage-design-guide.md
             - name: Resource Manager テンプレートを使用して管理する
               href: manage-table-with-resource-manager.md
+              displayName: ARM
             - name: PowerShell を使用して管理する
               href: powershell-samples-table.md
             - name: Azure CLI を使用して管理する
@@ -859,6 +863,7 @@
           href: manage-with-cli.md
         - name: Resource Manager テンプレートの使用
           href: manage-sql-with-resource-manager.md
+          displayName: ARM
     - name: グローバル配信
       items:
         - name: マルチマスターを構成する
@@ -1110,6 +1115,7 @@
       href: /rest/api/cosmos-db-resource-provider/
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.documentdb/allversions
+      displayName: ARM
     - name: エミュレーターのリリース ノート
       href: local-emulator-release-notes.md
 - name: リソース
