@@ -83,11 +83,11 @@ Visual Studio 2019 を既にインストールしている場合:
 
 1. **[ホスティング プランの構成]** ダイアログで、次の表の値を入力し、 **[OK]** を選択します。
 
-   | Setting | 推奨値 | 説明 |
+   | 設定 | 推奨値 | 説明 |
    |-|-|-|
    |App Service プラン| myAppServicePlan | App Service プランの名前です。 |
-   | Location | 西ヨーロッパ | Web アプリがホストされているデータ センターです。 |
-   | Size | 無料 | [価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)によって、ホスティング機能が決まります。 |
+   | 場所 | 西ヨーロッパ | Web アプリがホストされているデータ センターです。 |
+   | サイズ | Free | [価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)によって、ホスティング機能が決まります。 |
 
    ![Create App Service plan](./media/app-service-web-get-started-dotnet/app-service-plan-vs2019.png)
 
@@ -103,7 +103,7 @@ Visual Studio 2019 を既にインストールしている場合:
 
 **App Service の [新規作成]** ページで指定したアプリ名が、`http://<app_name>.azurewebsites.net` 形式の URL プレフィックスとして使用されます。
 
-**お疲れさまでした。** ASP.NET Core Web アプリを Azure App Service でライブ実行することができました。
+**お疲れさまでした。** Azure App Service で ASP.NET Core Web アプリをライブ実行することができました。
 
 ## <a name="update-the-app-and-redeploy"></a>アプリを更新して再デプロイする
 

@@ -30,7 +30,7 @@ Azure SQL Database は、データベースを管理し、高可用性を保証�
 
 ## <a name="sql-features"></a>SQL 機能
 
-次の表は、SQL Server の主要な機能を一覧にして、その機能が Managed Instance または Single Database およびエラスティック プールで一部または完全にサポートされるかに関する情報と、機能に関する詳細情報へのリンクを示します。
+次の表は、SQL Server の主要な機能を一覧にして、その機能が Managed Instance または Single Database および Elastic Pool で一部または完全にサポートされるかどうかについての情報と、機能に関する詳細情報へのリンクを示します。
 
 | **SQL の機能** | **単一データベースとエラスティック プール** | **マネージド インスタンスとインスタンス プール** |
 | --- | --- | --- |

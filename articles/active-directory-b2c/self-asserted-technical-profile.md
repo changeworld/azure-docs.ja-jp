@@ -36,7 +36,7 @@ ms.locfileid: "77425597"
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
 ```
 
-## <a name="input-claims"></a>入力クレーム
+## <a name="input-claims"></a>入力要求
 
 セルフアサート技術プロファイルでは、**InputClaims** と **InputClaimsTransformations** 要素を使用して、セルフアサート ページ (表示要求) に表示される要求の値を事前入力することができます。 たとえば、プロファイルの編集ポリシーでは、ユーザージャーニーはまず Azure AD B2C ディレクトリ サービスからユーザー プロファイルを読み取り、セルフ アサート技術プロファイルは、ユーザー プロファイルに格納されているユーザー データで入力要求を設定します。 これらの要求はユーザー プロファイルから収集され、後で既存のデータを編集できるユーザーに提示されます。
 
@@ -116,7 +116,7 @@ ms.locfileid: "77425597"
 
 基本ポリシーの `age` 要求は、ユーザーの画面に表示されなくなり、事実上 "非表示" になります。 `age` 要求を表示し、ユーザーから年齢の値を収集するには、`age` **DisplayClaim** を追加する必要があります。
 
-## <a name="output-claims"></a>出力クレーム
+## <a name="output-claims"></a>出力要求
 
 **OutputClaims** 要素には、次のオーケストレーション手順に返される要求の一覧が含まれます。 **DefaultValue** 属性は、要求が設定されてない場合にのみ有効です。 前のオーケストレーション手順で設定されていた場合は、ユーザーが値を空白にした場合でも、既定値が有効になることはありません。 既定値の使用を強制するには、 **AlwaysUseDefaultValue** 属性を`true`に設定します。
 

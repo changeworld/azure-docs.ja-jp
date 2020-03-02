@@ -35,7 +35,7 @@ Azure Active Directory B2C (Azure AD B2C) では、[OpenID Connect](https://open
   ...
 ```
 
-## <a name="input-claims"></a>入力クレーム
+## <a name="input-claims"></a>入力要求
 
 **InputClaims** と **InputClaimsTransformations** の要素は不要です。 ただし、追加のパラメーターを ID プロバイダーに送信する場合があります。 次の例では、値が `contoso.com` である **domain_hint** クエリ文字列パラメーターを認可要求に追加しています。
 
@@ -45,7 +45,7 @@ Azure Active Directory B2C (Azure AD B2C) では、[OpenID Connect](https://open
 </InputClaims>
 ```
 
-## <a name="output-claims"></a>出力クレーム
+## <a name="output-claims"></a>出力要求
 
 **OutputClaims** 要素には、OpenID Connect ID プロバイダーにより返される要求の一覧が存在します。 お使いのポリシーに定義されている要求の名前を、ID プロバイダーで定義されている名前にマップする必要があるかもしれません。 `DefaultValue` 属性を設定している限り、ID プロバイダーにより返されない要求を追加することもできます。
 
