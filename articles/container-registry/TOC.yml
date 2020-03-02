@@ -116,6 +116,8 @@
           items:
             - name: 診断と監査ログ (プレビュー)
               href: container-registry-diagnostics-audit-logs.md
+            - name: Azure Policy を使用したコンプライアンスの監査 (プレビュー)
+              href: container-registry-azure-policy.md
         - name: '[トラブルシューティング]'
           expanded: false
           items:

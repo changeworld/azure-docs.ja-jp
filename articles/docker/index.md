@@ -10,12 +10,12 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: gwallace
-ms.openlocfilehash: 4f4849139f0e5c5a8672b9364f7acc03cff6c948
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 429494b829d1307b4f89dbf746d24135a4322a97
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605571"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164459"
 ---
 <div class="content">
    <h1>Azure 上の Docker</h1>   
@@ -31,9 +31,8 @@ Docker は人気のあるコンテナー管理およびイメージング プラ
 <h2>ステップバイステップ チュートリアル</h2>
 <p>アプリケーションで CI/CD パイプラインの一部として Docker を使用する方法を学習します。</p>
 <ol>
-  <li><a href="/azure/app-service/containers/tutorial-python-postgresql-app">Docker による Python と PostgreSQL の構築</a></li>
-  <li><a href="/azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine">Docker Swarm と Azure DevOps Services を使用した CI/CD</a></li>
-  <li><a href="/azure/jenkins/tutorial-jenkins-github-docker-cicd">Docker、Jenkins、Linux VM の統合</a></li>
+  <li><a href="/azure/app-service/containers/tutorial-python-postgresql-app">Azure App Service で PostgreSQL を使用して Python (Django) Web アプリを実行する</a></li>
+  <li><a href="/azure/jenkins/tutorial-jenkins-github-docker-cicd">Jenkins、GitHub、Docker を使用して、Azure 内の Linux VM に開発インフラストラクチャを作成する</a></li>
 </ol>
 <h2>リソース</h2>
 <p>Azure 上の Docker を操作するためのその他の参考資料やツールについては、次のリンクを参照してください。</p>

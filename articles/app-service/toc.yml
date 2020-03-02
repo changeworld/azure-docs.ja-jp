@@ -203,10 +203,14 @@
           href: app-service-web-restore-snapshots.md
         - name: アプリの複製
           href: app-service-web-app-cloning.md
-        - name: リソースの移動
-          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations'
         - name: 削除された App Service を復元する
           href: app-service-undelete.md
+    - name: アプリの移動
+      items:
+        - name: リージョン間の移動
+          href: manage-move-across-regions.md
+        - name: サブスクリプションの移動
+          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations'
     - name: バックグラウンド タスクの実行
       items:
         - name: Web ジョブの作成

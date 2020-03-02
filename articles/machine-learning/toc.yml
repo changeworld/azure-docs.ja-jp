@@ -77,6 +77,8 @@
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
     - name: エンドツーエンドの MLOps の例
       href: 'https://github.com/microsoft/MLOps'
+    - name: デザイナー サンプル データセット
+      href: designer-sample-datasets.md
 - name: 概念
   items:
     - name: ワークスペース

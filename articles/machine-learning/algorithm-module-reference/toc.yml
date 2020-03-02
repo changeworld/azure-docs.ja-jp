@@ -46,6 +46,8 @@
       href: select-columns-transform.md
     - name: データセット内の列の選択
       href: select-columns-in-dataset.md
+    - name: データの分割
+      href: split-data.md
 - name: 特徴選択
   items:
     - name: フィルターに基づく特徴選択
@@ -142,5 +144,11 @@
       href: score-svd-recommender.md
     - name: SVD レコメンダーのトレーニング
       href: train-svd-recommender.md
+- name: 異常検出
+  items:
+    - name: PCA ベースの異常検出
+      href: pca-based-anomaly-detection.md
+    - name: 異常検出モデルのトレーニング
+      href: train-anomaly-detection-model.md
 - name: モジュールのエラーとトラブルシューティング
   href: designer-error-codes.md

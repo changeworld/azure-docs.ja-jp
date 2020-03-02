@@ -88,6 +88,8 @@
         - name: 開発ライフサイクル
           href: Concepts/development-lifecycle-knowledge-base.md
           displayName: 'version control, test, index, publish, monitor usage, create'
+        - name: アクティブ ラーニングの提案による改善
+          href: Concepts/active-learning-suggestions.md
     - name: ナレッジ ベースの照会
       items:
         - name: 回答の取得

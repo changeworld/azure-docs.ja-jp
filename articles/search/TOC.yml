@@ -35,7 +35,7 @@
       href: search-get-started-python.md
 - name: チュートリアル
   items:
-    - name: '最初の C# アプリを作成する'
+    - name: 'C# アプリの作成'
       items:
         - name: 1 - 基本的な検索ページ
           href: tutorial-csharp-create-first-app.md
@@ -47,13 +47,15 @@
           href: tutorial-csharp-facets.md
         - name: 5 - 結果の順序付けの追加
           href: tutorial-csharp-orders.md
-    - name: Azure SQL Database のインデックスを作成する
-      href: search-indexer-tutorial.md
-    - name: Azure JSON BLOB のインデックスを作成する
-      href: search-semi-structured-data.md
-    - name: 複数の Azure データ ソースのインデックスを作成する
-      href: tutorial-multiple-data-sources.md
-    - name: AI によるエンリッチ (コグニティブ検索)
+    - name: Azure データのインデックス作成
+      items:
+        - name: Azure SQL Database のインデックスを作成する
+          href: search-indexer-tutorial.md
+        - name: Azure JSON BLOB のインデックスを作成する
+          href: search-semi-structured-data.md
+        - name: 複数の Azure データ ソースのインデックスを作成する
+          href: tutorial-multiple-data-sources.md
+    - name: AI を使用してコンテンツを作成する
       items:
         - name: 'C#'
           href: cognitive-search-tutorial-blob-dotnet.md

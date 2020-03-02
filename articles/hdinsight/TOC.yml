@@ -504,6 +504,8 @@
           href: ./kafka/apache-kafka-quickstart-resource-manager-template.md
     - name: チュートリアル
       items:
+        - name: Apache Kafka クラスターの作成 - Azure CLI
+          href: ./kafka/tutorial-cli-rest-proxy.md
         - name: Apache Kafka Producer API と Consumer API を使用する
           href: ./kafka/apache-kafka-producer-consumer-api.md
         - name: Apache Kafka Streams API を使用してアプリを開発する
@@ -548,8 +550,6 @@
               href: ./kafka/apache-kafka-mirroring.md
             - name: Apache Kafka ログを分析する
               href: ./kafka/apache-kafka-log-analytics-operations-management.md
-            - name: Bring Your Own Key
-              href: ./kafka/apache-kafka-byok.md
             - name: SSL 暗号化および認証
               href: ./kafka/apache-kafka-ssl-encryption-authentication.md
         - name: '[トラブルシューティング]'

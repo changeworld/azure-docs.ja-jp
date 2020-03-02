@@ -247,11 +247,11 @@
           href: virtual-machine-scale-sets-networking.md
         - name: OS の自動アップグレード
           href: virtual-machine-scale-sets-automatic-upgrade.md
-        - name: インスタンス保護 (プレビュー)
+        - name: インスタンス保護
           href: virtual-machine-scale-sets-instance-protection.md
-        - name: スケールイン ポリシー (プレビュー)
+        - name: スケールイン ポリシー
           href: virtual-machine-scale-sets-scale-in-policy.md
-        - name: 削除時の終了通知 (プレビュー)
+        - name: 削除時の終了通知
           href: virtual-machine-scale-sets-terminate-notification.md
         - name: 共有イメージ ギャラリー
           items:

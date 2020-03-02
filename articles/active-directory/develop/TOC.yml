@@ -29,9 +29,9 @@
           href: quickstart-v2-javascript.md
     - name: Web Apps
       items:
-        - name: ASP .NET
+        - name: ASP.NET
           href: quickstart-v2-aspnet-webapp.md
-        - name: ASP .NET Core
+        - name: ASP.NET Core
           href: quickstart-v2-aspnet-core-webapp.md
         - name: NodeJS
           href: quickstart-v2-nodejs-webapp.md
@@ -42,9 +42,9 @@
           href: quickstart-v2-python-webapp.md
     - name: Web API
       items:
-        - name: ASP .NET
+        - name: ASP.NET
           href: quickstart-v2-dotnet-native-aspnet.md
-        - name: ASP .NET Core
+        - name: ASP.NET Core
           href: 'https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2'
     - name: モバイル アプリとデスクトップ アプリ
       items:
@@ -70,7 +70,7 @@
           href: tutorial-v2-javascript-spa.md
     - name: Web Apps
       items:
-        - name: ASP .NET
+        - name: ASP.NET
           href: tutorial-v2-asp-webapp.md
     - name: モバイル アプリとデスクトップ アプリ
       items:
@@ -242,13 +242,15 @@
           href: brokered-auth.md
         - name: 移行
           items:
+            - name: 概要
+              href: msal-migration.md
             - name: MSAL.NET への移行
               href: msal-net-migration.md
             - name: MSAL.js への移行
               href: msal-compare-msal-js-and-adal-js.md
             - name: MSAL.Android への移行
               href: migrate-android-adal-msal.md
-            - name: MSAL.iOS / MacOS への移行
+            - name: MSAL.iOS/macOS への移行
               href: migrate-objc-adal-msal.md
             - name: MSAL Python への移行
               href: migrate-python-adal-msal.md
@@ -403,6 +405,8 @@
           href: v2-admin-consent.md
         - name: アプリケーションの同意エクスペリエンス
           href: application-consent-experience.md
+    - name: 条件付きアクセス
+      href: v2-conditional-access-dev-guide.md
     - name: 各国のクラウド
       items:
         - name: 概要

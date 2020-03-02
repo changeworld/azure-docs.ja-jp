@@ -50,6 +50,8 @@
       items:
         - name: カスタム規則
           href: ./afds/waf-front-door-custom-rules.md
+        - name: 除外リスト
+          href: ./afds/waf-front-door-exclusion.md
         - name: ポリシー設定
           href: ./afds/waf-front-door-policy-settings.md
         - name: geo フィルタリング

@@ -77,6 +77,8 @@
           href: known-issues-azure-postgresql-online.md
         - name: 既知の問題 - Oracle から Azure DB for PostgreSQL 単一サーバーへのオンライン移行
           href: known-issues-oracle-azure-postgresql-online.md
+        - name: 既知の問題 - MongoDB から Azure Cosmos DB の MongoDB 用 API への移行
+          href: tutorial-mongodb-cosmos-db.md
         - name: 既知の問題 - ハイブリッド モードの使用
           href: known-issues-dms-hybrid-mode.md
     - name: ビデオ

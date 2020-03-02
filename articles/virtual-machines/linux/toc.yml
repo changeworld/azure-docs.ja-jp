@@ -272,6 +272,24 @@
               href: spot-template.md
             - name: エラー コード
               href: ../error-codes-spot.md?toc=/azure/virtual-machines/linux/toc.json
+    - name: クラシックから Azure Resource Manager に移行する
+      items:
+        - name: 2023 年 3 月 1 日以降の提供終了
+          href: ../classic-vm-deprecation.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: 概要
+          href: migration-classic-resource-manager-overview.md
+        - name: 移行の詳細
+          href: migration-classic-resource-manager-deep-dive.md
+        - name: 移行の計画
+          href: migration-classic-resource-manager-plan.md
+        - name: CLI を使用して移行する
+          href: migration-classic-resource-manager-cli.md
+        - name: 移行の一般的なエラー
+          href: migration-classic-resource-manager-errors.md
+        - name: 移行用のコミュニティ ツール
+          href: ../windows/migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: よく寄せられる質問
+          href: migration-classic-resource-manager-faq.md
     - name: VM のセキュリティ保護
       items:
         - name: Recommendations
@@ -713,21 +731,6 @@
               href: upload-vhd.md
             - name: Azure Site Recovery を使用する
               href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-        - name: クラシックから Azure Resource Manager に移行する
-          href: migration-classic-resource-manager-overview.md
-          items:
-            - name: 移行の詳細
-              href: migration-classic-resource-manager-deep-dive.md
-            - name: 移行の計画
-              href: migration-classic-resource-manager-plan.md
-            - name: CLI を使用して移行する
-              href: migration-classic-resource-manager-cli.md
-            - name: 移行の一般的なエラー
-              href: migration-classic-resource-manager-errors.md
-            - name: 移行用のコミュニティ ツール
-              href: ../windows/migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-            - name: よく寄せられる質問
-              href: migration-classic-resource-manager-faq.md
 - name: リファレンス
   items:
     - name: Azure CLI

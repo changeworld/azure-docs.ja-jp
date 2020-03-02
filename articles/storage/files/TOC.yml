@@ -121,6 +121,10 @@
           href: storage-sync-offline-data-transfer.md
         - name: StorSimple から Azure File Sync への移行
           href: storage-sync-files-storsimple-migration.md
+        - name: StorSimple 8100 および 8600 の移行ガイド
+          href: storage-files-migration-storsimple-8000.md
+        - name: StorSimple 1200 の移行ガイド
+          href: storage-files-migration-storsimple-1200.md
     - name: 開発
       items:
         - name: 接続文字列の構成

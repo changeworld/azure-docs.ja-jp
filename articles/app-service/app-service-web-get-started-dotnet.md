@@ -15,10 +15,10 @@ ms.locfileid: "74672109"
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Azure に ASP.NET Core Web アプリを作成する
 
 > [!NOTE]
-> この記事では、Windows 上の App Service にアプリをデプロイします。 _Linux_ 上の App Service にデプロイするには、「[App Service on Linux での .NET Core Web アプリの作成](./containers/quickstart-dotnetcore.md)」をご覧ください。
+> この記事では、Windows 上の App Service にアプリをデプロイします。 _Linux_ 上の App Service にデプロイするには、「[App Service on Linux で ASP.NET Core アプリを作成する](./containers/quickstart-dotnetcore.md)」をご覧ください。
 >
 
-[Azure App Service](overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。
+[Azure App Service](overview.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。
 
 このクイック スタートでは、Azure App Service に初めての ASP.NET Core Web アプリをデプロイする方法について説明します。 完了すると、デプロイされた Web アプリケーションを含む App Service アプリと App Service プランで構成されるリソース グループが完成します。
 
@@ -45,7 +45,7 @@ Visual Studio 2019 を既にインストールしている場合:
 
    ![Web アプリ プロジェクトを構成する](./media/app-service-web-get-started-dotnet/configure-web-app-project.png)
 
-1. このクイックスタートでは、 **[Web アプリケーション]** テンプレートを選択します。 認証が **[認証なし]** に設定されていること、また、その他のオプションがオフになっていることを確認します。 **作成** を選択します。
+1. このクイックスタートでは、 **[Web アプリケーション]** テンプレートを選択します。 認証が **[認証なし]** に設定されていること、また、その他のオプションがオフになっていることを確認します。 **［作成］** を選択します
 
    ![このチュートリアルでは ASP.NET Core Razor Pages を選択](./media/app-service-web-get-started-dotnet/aspnet-razor-pages-app.png)
 

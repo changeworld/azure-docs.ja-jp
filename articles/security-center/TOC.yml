@@ -6,8 +6,16 @@
       href: security-center-intro.md
     - name: サポートされているプラットフォーム
       href: security-center-os-coverage.md
-    - name: サポートされている機能
-      href: security-center-services.md
+    - name: Security Center の機能
+      items:
+        - name: VM を対象とする機能
+          href: security-center-services.md
+        - name: Azure PaaS リソースを対象とする機能
+          href: features-paas.md
+    - name: セキュリティに関する推奨事項
+      href: recommendations-reference.md
+    - name: セキュリティ アラートと意図のキル チェーン
+      href: alerts-reference.md
 - name: クイックスタート
   expanded: true
   items:
