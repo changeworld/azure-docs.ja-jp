@@ -29,6 +29,8 @@
       href: tutorial-r-doazureparallel.md
     - name: Batch と Functions を使用した OCR
       href: tutorial-batch-functions.md
+    - name: Data Factory を使用した Python スクリプト
+      href: tutorial-run-python-batch-azure-data-factory.md
 - name: サンプル
   items:
     - name: コード サンプル

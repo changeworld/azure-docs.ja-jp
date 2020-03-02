@@ -31,7 +31,7 @@
           href: manage-user-access-with-access-reviews.md
         - name: 条件付きアクセスから除外されたユーザーの管理
           href: conditional-access-exclusion.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   expanded: true
   items:
     - name: エンタイトルメント管理
@@ -48,7 +48,9 @@
               href: entitlement-management-external-users.md
             - name: レポートとログを表示する
               href: entitlement-management-reports.md
-            - name: トラブルシューティング
+            - name: ログとレポートのアーカイブ
+              href: entitlement-management-logs-and-reporting.md
+            - name: '[トラブルシューティング]'
               href: entitlement-management-troubleshoot.md
         - name: カタログ所有者
           items:

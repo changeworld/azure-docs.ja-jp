@@ -2,7 +2,7 @@
 documentType: LandingData
 title: Azure Data Explorerのドキュメント
 metadata:
-  title: クイックスタート、チュートリアル、言語と API のドキュメント - Azure Data Explorer
+  title: Azure Data Explorer のクイックスタート、チュートリアル、クエリ言語と API のドキュメント
   description: Azure Data Explorerは、アドホック ビッグ データ クエリに最適化されたログ分析クラウド プラットフォームです。
   author: orspod
   ms.author: orspodek

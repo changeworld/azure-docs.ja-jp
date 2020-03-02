@@ -1,14 +1,14 @@
 ---
 title: ブループリント サンプルの一覧
 description: Azure Blueprints を使用して環境、ポリシー、クラウド導入フレームワークの基礎をデプロイするためのコンプライアンスおよび標準サンプルのインデックス。
-ms.date: 02/11/2020
+ms.date: 02/26/2020
 ms.topic: sample
-ms.openlocfilehash: 88dde10efefd8153eff9aa6ad2ea47a1e00e2c87
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 703c383f41cd833fb47ca489682258158f9fe179
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77150461"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196826"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints サンプル
 
@@ -28,6 +28,7 @@ ms.locfileid: "77150461"
 | [ISO 27001](./iso27001/index.md) | ISO 27001 に準拠するための規定を提供します。 |
 | [ISO 27001 共有サービス](./iso27001-shared/index.md) | ISO 27001 構成証明に役立つ一連の準拠インフラストラクチャ パターンおよびポリシー ガードレールを提供します。 |
 | [ISO 27001 App Service Environment/SQL Database ワークロード](./iso27001-ase-sql-workload/index.md) | [ISO 27001 共有サービス](./iso27001-shared/index.md) ブルー プリントのサンプルへの追加のインフラストラクチャを提供します。 |
+| [メディア](./media/index.md) | メディア MPAA への準拠に役立つ一連のポリシーを提供します。 |
 | [NIST SP 800-53 R4](./nist-sp-800-53-rev4/index.md) | NIST SP 800-53 R4 に準拠するための規定を提供します。 |
 | [PCI-DSS v3.2.1](./pci-dss-3.2.1/index.md) | PCI-DSS v3.2.1 へのコンプライアンスに役立つ一連のポリシーを提供します。 |
 | [SWIFT CSP-CSCF v2020](./swift-2020/index.md) | SWIFT CSP-CSCF v2020 へのコンプライアンスに役立ちます。 |
