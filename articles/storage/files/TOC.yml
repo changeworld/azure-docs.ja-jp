@@ -161,7 +161,7 @@
           href: storage-files-identity-auth-active-directory-domain-service-enable.md
         - name: Azure Storage クライアントのセキュリティで保護された TLS の有効化
           href: ../common/storage-security-tls.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: Azure Files のトラブルシューティング - Windows
           href: storage-troubleshoot-windows-file-connection-problems.md
