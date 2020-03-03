@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4b3e51b5e8d0ee9b62a7e7bc39955396f327c7e7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 237846ec3adda208126aeb22e7900cbf5118ee95
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209548"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598665"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Premium Azure ファイル共有を作成する方法
 Premium ファイル共有は、ソリッド ステート ディスク (SSD) ストレージ メディアで提供され、データベースのホスティングやハイパフォーマンス コンピューティング (HPC) など、IO 集中型のワークロードに役立ちます。 Premium ファイル共有は、FileStorage アカウントと呼ばれる、特殊用途のストレージ アカウントの種類でホストされます。 Premium ファイル共有は、ハイ パフォーマンスおよびエンタープライズ規模のアプリケーション向けに設計され、一貫性のある待機時間の短縮、高 IOPS、高スループット共有を提供します。
@@ -27,7 +27,7 @@ Premium Azure ファイル共有などの Azure リソースにアクセスす�
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure Portal](https://portal.azure.com/) にサインインします。
+[Azure portal](https://portal.azure.com/) にサインインします。
 
 ### <a name="create-a-filestorage-storage-account"></a>FileStorage ストレージ アカウントを作成する
 
@@ -67,7 +67,7 @@ Premium Azure ファイル共有などの Azure リソースにアクセスす�
 
    ![Premium ファイル共有を作成する](media/storage-how-to-create-premium-fileshare/create-premium-file-share.png)
 
-### <a name="clean-up-resources"></a>リソースのクリーンアップ
+### <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この記事で作成したリソースをクリーンアップしたい場合は、リソース グループを削除するだけです。 リソース グループを削除すると、関連付けられているストレージ アカウント、およびリソース グループに関連付けられているその他のリソースも削除されます。
 
@@ -77,7 +77,7 @@ Premium Azure ファイル共有などの Azure リソースにアクセスす�
 
 最初に、[PowerShellGet](/powershell/scripting/gallery/installing-psget) モジュールの最新バージョンをインストールします。
 
-次に、PowerShell モジュールをアップグレードして、お使いの Azure サブスクリプションにサインインし、リソース グループを作成してから、ストレージ アカウントを作成します。
+次に、PowerShell モジュールをアップグレードし、お使いの Azure サブスクリプションにサインインし、リソース グループを作成してから、ストレージ アカウントを作成します。
 
 ### <a name="upgrade-your-powershell-module"></a>PowerShell モジュールのアップグレード
 
@@ -99,7 +99,7 @@ Install-Module Az.Storage -Repository PSGallery -AllowClobber -Force
 Connect-AzAccount
 ```
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 PowerShell で新しいリソース グループを作成するには、[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドを使用します。
 
@@ -132,7 +132,7 @@ New-AzStorageShare `
    -Context $storageAcct.Context
 ```
 
-### <a name="clean-up-resources"></a>リソースのクリーンアップ
+### <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソース グループとそれに関連付けられているリソース (新しいストレージ アカウントを含む) を削除するには、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使用します。 
 
@@ -150,7 +150,7 @@ CLI のローカル インストールにログインする場合は、まず最
 az login
 ```
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 Azure CLI で新しいリソース グループを作成するには、[az group create](/cli/azure/group) コマンドを使用します。
 
@@ -198,7 +198,7 @@ az storage share create \
     --name "myshare" 
 ```
 
-### <a name="clean-up-resources"></a>リソースのクリーンアップ
+### <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソース グループと関連付けられているリソース (新しいストレージ アカウントを含む) を削除するには、[az group delete](/cli/azure/group) コマンドを使用します。
 
@@ -206,9 +206,9 @@ az storage share create \
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Premium ファイル共有を作成しました。 このアカウントで提供されるパフォーマンスの詳細については、続けて計画ガイドのパフォーマンス レベル セクションをご覧ください。
 
 > [!div class="nextstepaction"]
-> [ファイル共有のパフォーマンス レベル](storage-files-planning.md#file-share-performance-tiers)
+> [ファイル共有レベル](storage-files-planning.md#storage-tiers)

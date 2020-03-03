@@ -5,16 +5,16 @@ services: logic-apps
 ms.suite: integration
 author: preetikr
 ms.author: preetikr
-ms.reviewer: klam, estfan, logicappspm
+ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
-ms.date: 12/12/2019
+ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: f9aa88934d67d98fce43763c6c8fac7c384d765d
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: b4f51b192d1a7c0ee14a769321793753e8217dea
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313792"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598835"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>セキュリティ操作を Microsoft Graph Security および Azure Logic Apps と統合することで脅威の防止能力を強化する
 
@@ -38,7 +38,7 @@ Microsoft Graph Security の詳細については、「[Microsoft Graph Security
 
 * Microsoft Graph Security コネクタを使用するには、Azure Active Directory (AD) テナント管理者によって "*明示的に与えられた*" 同意が必要です。これは [Microsoft Graph Security の認証要件](https://aka.ms/graphsecurityauth)の一部です。 この同意には、Microsoft Graph Security コネクタのアプリケーション ID と名前が必要です。これらは [Azure portal](https://portal.azure.com) でも見つけることができます。
 
-  | プロパティ | 値 |
+  | プロパティ | Value |
   |----------|-------|
   | **アプリケーション名** | `MicrosoftGraphSecurityConnector` |
   | **アプリケーション ID** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
@@ -91,7 +91,7 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
 1.  トリガーには、監視するアラートに関する情報を提供します。 その他のプロパティについては、 **[新しいパラメーターの追加]** 一覧を開き、パラメーターを選択して、そのプロパティをトリガーに追加します。
 
-   | プロパティ | プロパティ (JSON) | 必須 | 種類 | 説明 |
+   | プロパティ | プロパティ (JSON) | Required | Type | 説明 |
    |----------|-----------------|----------|------|-------------|
    | **間隔** | `interval` | はい | 整数 | ワークフローの実行間隔を、[頻度] に指定された単位に基づいて表す正の整数。 間隔の最小値と最大値は次のとおりです。 <p><p>- Month: 1 から 16 か月 <br>- Day: 1 から 500 日 <br>- Hour: 1 から 12,000 時間 <br>- Minute: 1 から 72,000 分 <br>- Second: 1 から 9,999,999 秒 <p>たとえば間隔が 6 で、頻度が "月" である場合は、繰り返しは 6 か月ごとになります。 |
    | **頻度** | `frequency` | はい | String | 繰り返しの時間の単位: **[秒]** 、 **[分]** 、 **[時間]** 、 **[日]** 、 **[週]** 、または **[月]** |
@@ -117,9 +117,9 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
 | アクション | 説明 |
 |--------|-------------|
-| **アラートの取得** | 1 つまたは複数の[アラートのプロパティ](https://docs.microsoft.com/graph/api/resources/alert)に基づいてフィルター処理されたアラートを取得します。例: <p>`Provider eq 'Azure Security Center' or 'Palo Alto Networks'` | 
+| **アラートの取得** | 1 つまたは複数の[アラートのプロパティ](https://docs.microsoft.com/graph/api/resources/alert)に基づいてフィルター処理されたアラートを取得します。例: `Provider eq 'Azure Security Center' or 'Palo Alto Networks'`。 | 
 | **ID によるアラートの取得** | アラート ID に基づいて特定のアラートを取得します。 | 
-| **アラートの更新** | アラート ID に基づいて特定のアラートを更新します。 <p>必須のプロパティと編集可能なプロパティを要求に確実に渡すには、[アラートの編集可能なプロパティ](https://docs.microsoft.com/graph/api/alert-update)を参照してください。 たとえば、アラートをセキュリティ分析に割り当てて調査できるようにするには、アラートの **Assigned to** プロパティを更新できます。 |
+| **アラートの更新** | アラート ID に基づいて特定のアラートを更新します。 必須のプロパティと編集可能なプロパティを要求に確実に渡すには、[アラートの編集可能なプロパティ](https://docs.microsoft.com/graph/api/alert-update)を参照してください。 たとえば、アラートをセキュリティ分析に割り当てて調査できるようにするには、アラートの **Assigned to** プロパティを更新できます。 |
 |||
 
 ### <a name="manage-alert-subscriptions"></a>アラート サブスクリプションを管理する
@@ -135,6 +135,27 @@ Microsoft Graph では、"[*サブスクリプション*](https://docs.microsoft
 | **サブスクリプションを更新する** | サブスクリプション ID を指定して、[サブスクリプションを更新します](https://docs.microsoft.com/graph/api/subscription-update)。 たとえば、サブスクリプションを延長するには、サブスクリプションの `expirationDateTime` プロパティを更新できます。 | 
 | **サブスクリプションを削除する** | サブスクリプション ID を指定して、[サブスクリプションを削除します](https://docs.microsoft.com/graph/api/subscription-delete)。 | 
 ||| 
+
+### <a name="manage-threat-intelligence-indicators"></a>脅威インテリジェンス インジケーターを管理する
+
+フィルター処理、並べ替え、または最新の結果の取得を行うには、[Microsoft Graph でサポートされている ODATA クエリ パラメーター](https://docs.microsoft.com/graph/query-parameters) "*だけ*" を指定します。 完全なベース URL または HTTP アクション (`https://graph.microsoft.com/beta/security/tiIndicators`、`GET` 操作、`PATCH` 操作など) は "*指定しないでください*"。 脅威の種類が `DDoS` であるインジケーターの一覧を取得する場合の**脅威インテリジェンス インジケーターの取得**アクションのパラメーターの具体例を次に示します。
+
+`Filter threat intelligence indicator value as threatType eq 'DDoS'`
+
+このコネクタで使用できるクエリの詳細については、[Microsoft Graph セキュリティ脅威インテリジェンス インジケーター リファレンス ドキュメントの「オプションのクエリ パラメーター」](https://docs.microsoft.com/graph/api/tiindicators-list?view=graph-rest-beta&tabs=http)を参照してください。 このコネクタを使用して強化されたエクスペリエンスを構築するには、コネクタでサポートされている[スキーマ プロパティの脅威インテリジェンス インジケーター](https://docs.microsoft.com/graph/api/resources/tiindicator?view=graph-rest-beta)の詳細を確認してください。
+
+| アクション | 説明 |
+|--------|-------------|
+| **脅威インテリジェンス インジケーターを取得する** | 1 つまたは複数の[脅威インテリジェンス インジケーターのプロパティ](https://docs.microsoft.com/graph/api/resources/tiindicator?view=graph-rest-beta)に基づいてフィルター処理された脅威インテリジェンス インジケーターを取得します。例: `threatType eq 'MaliciousUrl' or 'DDoS'` |
+| **脅威インテリジェンス インジケーターを ID で取得する** | 脅威インテリジェンス インジケーター ID に基づいて特定の脅威インテリジェンス インジケーターを取得します。 | 
+| **脅威インテリジェンス インジケーターを作成する** | 脅威インテリジェンス インジケーター コレクションに投稿することで、新しい 脅威インテリジェンス インジケーターを作成します。 必須プロパティを要求に確実に渡すには、[脅威インテリジェンス インジケーターを作成するための必須プロパティ](https://docs.microsoft.com/graph/api/tiindicators-post?view=graph-rest-beta&tabs=http)に関する記事を参照してください。 |
+| **複数の脅威インテリジェンス インジケーターを送信する** | 脅威インテリジェンス インジケーターのコレクションを投稿することで、複数の新しい脅威インテリジェンス インジケーターを作成します。 必須プロパティを要求に確実に渡すには、[複数の脅威インテリジェンス インジケーターを送信するための必須プロパティ](https://docs.microsoft.com/graph/api/tiindicator-submittiindicators?view=graph-rest-beta&tabs=http)に関する記事を参照してください。 |
+| **脅威インテリジェンス インジケーターを更新する** | 脅威インテリジェンス インジケーター ID に基づいて特定の脅威インテリジェンス インジケーターを更新します。 必須プロパティと編集可能なプロパティを要求に確実に渡すには、[脅威インテリジェンス インジケーターの編集可能なプロパティ](https://docs.microsoft.com/graph/api/tiindicator-update?view=graph-rest-beta&tabs=http)に関する記事を参照してください。 たとえば、targetProduct セキュリティ ツール内でインジケーターが一致した場合に適用するアクションを更新するには、脅威インテリジェンス インジケーターの **action** プロパティを更新します。 |
+| **複数の脅威インテリジェンス インジケーターを更新する** | 複数の脅威インテリジェンス インジケーターを更新します。 必須プロパティを要求に確実に渡すには、[複数の脅威インテリジェンス インジケーターを更新するための必須プロパティ](https://docs.microsoft.com/graph/api/tiindicator-updatetiindicators?view=graph-rest-beta&tabs=http)に関する記事を参照してください。 |
+| **脅威インテリジェンス インジケーターを ID で削除する** | 脅威インテリジェンス インジケーター ID に基づいて特定の脅威インテリジェンス インジケーターを削除します。 |
+| **複数の脅威インテリジェンス インジケーターを ID で削除する** | 複数の脅威インテリジェンス インジケーターを ID で削除します。 必須プロパティを要求に確実に渡すには、[複数の脅威インテリジェンス インジケーターを ID で削除するための必須プロパティ](https://docs.microsoft.com/graph/api/tiindicator-deletetiindicators?view=graph-rest-beta&tabs=http)に関する記事を参照してください。 |
+| **複数の脅威インテリジェンス インジケーターを外部 ID で削除する** | 複数の脅威インテリジェンス インジケーターを外部 ID で削除します。 必須プロパティを要求に確実に渡すには、[複数の脅威インテリジェンス インジケーターを外部 ID で削除するための必須プロパティ](https://docs.microsoft.com/graph/api/tiindicator-deletetiindicatorsbyexternalid?view=graph-rest-beta&tabs=http)に関する記事を参照してください。 |
+|||
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 

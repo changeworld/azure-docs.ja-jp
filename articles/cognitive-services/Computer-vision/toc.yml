@@ -5,6 +5,8 @@
   items:
     - name: Computer Vision とは
       href: Home.md
+    - name: 新機能
+      href: whats-new.md
 - name: クイックスタート
   items:
     - name: クライアント SDK の使用

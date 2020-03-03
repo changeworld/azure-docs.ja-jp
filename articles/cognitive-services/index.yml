@@ -11,12 +11,12 @@ metadata:
   ms.author: nitinme
   manager: nitinme
   ms.date: 01/21/2020
-  ms.openlocfilehash: f39f2a6360363131eb346f613cf0f7a25910404a
-  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.openlocfilehash: 6f49c2e645ba0ecf48c8c111b9afd7c12722f4ad
+  ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/22/2020
-  ms.locfileid: "77560764"
+  ms.lasthandoff: 02/28/2020
+  ms.locfileid: "77919330"
 highlightedContent:
   items:
   - title: Cognitive Services とは
@@ -114,36 +114,6 @@ conceptualContent:
     - url: ./Bing-web-search/index.yml
       itemType: overview
       text: Bing Search API のハブ ページ
-    - url: ./Bing-Autosuggest/get-suggested-search-terms.md
-      itemType: overview
-      text: Autosuggest Search
-    - url: ./bing-custom-search/overview.md
-      itemType: overview
-      text: カスタム検索
-    - url: ./bing-entities-search/overview.md
-      itemType: overview
-      text: Entity Search
-    - url: ./bing-image-search/overview.md
-      itemType: overview
-      text: Image Search
-    - url: ./bing-local-business-search/overview.md
-      itemType: overview
-      text: Local Business Search (プレビュー)
-    - url: ./bing-news-search/search-the-web.md
-      itemType: overview
-      text: News Search
-    - url: ./bing-spell-check/overview.md
-      itemType: overview
-      text: スペル チェック
-    - url: ./Bing-Video-Search/overview.md
-      itemType: overview
-      text: Video Search
-    - url: ./bing-visual-search/overview.md
-      itemType: overview
-      text: Visual Search
-    - url: ./bing-web-search/overview.md
-      itemType: overview
-      text: Web Search
   - title: Cognitive Service コンテナー
     summary: Azure Cognitive Services でのコンテナーのサポートを使用すると、開発者は Azure 内で利用できるものと同じリッチな API シリーズを使用できます。Docker コンテナーに付随するサービスをデプロイおよびホストできる柔軟性もあります。
     links:

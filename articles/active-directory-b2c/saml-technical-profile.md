@@ -86,7 +86,7 @@ SAML 応答のアサーションを暗号化する場合:
 
 Protocol 要素の **Name** 属性は `SAML2` に設定する必要があります。
 
-## <a name="output-claims"></a>出力クレーム
+## <a name="output-claims"></a>出力要求
 
 **OutputClaims** 要素には、`AttributeStatement` セクション下に SAML ID プロバイダーにより返される要求の一覧が存在します。 お使いのポリシーに定義されている要求の名前を、ID プロバイダーで定義されている名前にマップする必要があるかもしれません。 `DefaultValue` 属性を設定している限り、ID プロバイダーにより返されない要求を追加することもできます。
 

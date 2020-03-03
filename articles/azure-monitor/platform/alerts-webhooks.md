@@ -86,7 +86,7 @@ POST 操作には、すべてのメトリックベースのアラートについ
 | windowSize |メトリック アラートの場合 | |しきい値に基づいてアラート アクティビティを監視するために使用される期間。 値は 5 分～ 1 日の範囲で指定する必要があります。 値は ISO 8601 の期間の形式である必要があります。 |
 | timeAggregation |メトリック アラートの場合 |"Average"、"Last"、"Maximum"、"Minimum"、"None"、"Total" |収集されたデータの経時的な結合方法。 既定値は Average です。 [使用できる値](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx)を参照してください。 |
 | operator |メトリック アラートの場合 | |設定したしきい値と現在のメトリック データを比較するために使用される演算子。 |
-| subscriptionId |Y | |Azure サブスクリプション ID です。 |
+| subscriptionId |Y | |Azure サブスクリプション ID。 |
 | resourceGroupName |Y | |影響を受けるリソースのリソース グループの名前。 |
 | resourceName |Y | |影響を受けるリソースのリソース名。 |
 | resourceType |Y | |影響を受けるリソースの種類。 |

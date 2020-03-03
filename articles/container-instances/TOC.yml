@@ -111,7 +111,7 @@
           href: container-instances-get-logs.md
         - name: Azure Monitor ログでのログ記録
           href: container-instances-log-analytics.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: 一般的な問題のトラブルシューティング
           href: container-instances-troubleshooting.md

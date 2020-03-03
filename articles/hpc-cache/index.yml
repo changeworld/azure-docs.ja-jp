@@ -10,12 +10,12 @@ metadata:
   author: ekpgh
   ms.author: rohogue
   ms.date: 11/07/2019
-  ms.openlocfilehash: 07a161066cdea57d42050986bc9e16d98a9310a6
-  ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+  ms.openlocfilehash: 3cee41dd9cb4852eab884345404ba89eff8d9d91
+  ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/19/2019
-  ms.locfileid: "74166499"
+  ms.lasthandoff: 02/27/2020
+  ms.locfileid: "77651034"
 landingContent:
 - title: Azure HPC Cache について
   linkLists:
@@ -23,7 +23,7 @@ landingContent:
     links:
     - text: Azure HPC Cache とは
       url: hpc-cache-overview.md
-- title: 作業開始
+- title: はじめに
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -53,7 +53,11 @@ landingContent:
       url: hpc-cache-edit-storage.md
     - text: ファイアウォール設定を回避して BLOB ストレージ ターゲットを作成する
       url: hpc-cache-blob-firewall-fix.md
+    - text: NFS ストレージ ターゲットの作成のトラブルシューティング
+      url: troubleshoot-nas.md
   - linkListType: concept
     links:
     - text: リージョンの障害から復旧する
       url: hpc-region-recovery.md
+    - text: Azure NetApp Files のストレージ ターゲットを使用する
+      url: hpc-cache-netapp.md

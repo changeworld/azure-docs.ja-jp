@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f0d6d74271cc4ff0be4a653b389cc70ad5c56ef9
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 130fca4d5894316e7684270ff9d6361e9d9f9dd3
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983080"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620830"
 ---
 # <a name="boolean-claims-transformations"></a>ブール値要求変換
 
@@ -120,9 +120,9 @@ ms.locfileid: "76983080"
 
 | Item | TransformationClaimType  | データ型  | Notes |
 | ---- | ------------------------ | ---------- | ----- |
-| inputClaim | inputClaim | boolean | アサートされる ClaimType。 |
+| InputClaim | inputClaim | boolean | アサートされる ClaimType。 |
 | InputParameter |valueToCompareTo | boolean | 比較される値 (true または false)。 |
-| OutputClaim | inputClaim | boolean | この ClaimsTransformation が呼び出された後に生成される ClaimType。 |
+| OutputClaim | compareResult | boolean | この ClaimsTransformation が呼び出された後に生成される ClaimType。 |
 
 
 次の要求変換は、`true` 値でブール値 ClaimType の値をチェックする方法を示しています。 `IsAgeOver21Years` ClaimType の値が `true` と等しい場合、要求変換では `true` を返します。それ以外の場合は `false` を返します。

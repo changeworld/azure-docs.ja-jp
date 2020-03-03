@@ -2,17 +2,14 @@
 title: オペレーターのベスト プラクティス - Azure Kubernetes Services (AKS) のストレージ
 description: Azure Kubernetes Service (AKS) のストレージ、データの暗号化、およびバックアップに関するクラスター オペレーターのベスト プラクティスについて説明します
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.author: mlearned
-ms.openlocfilehash: 8e5f394987de06feaeb9a635face643eecc97cb9
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: a58a42f65472a9c4b495e0cb964eefa40bf82041
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174219"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649621"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) のストレージとバックアップに関するベスト プラクティス
 
@@ -34,11 +31,11 @@ Azure Kubernetes Service (AKS) でクラスターを作成して管理する際�
 
 次の表に、使用可能なストレージの種類とその機能の概要を示します。
 
-| ユース ケース | ボリューム プラグイン | 読み取り/書き込み (1 回のみ) | 読み取り専用 (複数回) | 読み取り/書き込み (複数回) | Windows Server コンテナーのサポート |
+| 使用事例 | ボリューム プラグイン | 読み取り/書き込み (1 回のみ) | 読み取り専用 (複数回) | 読み取り/書き込み (複数回) | Windows Server コンテナーのサポート |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
 | 共有構成       | Azure Files   | はい | はい | はい | はい |
 | 構造化されたアプリ データ        | Azure ディスク   | はい | いいえ  | いいえ  | はい |
-| 非構造化データ、ファイル システム操作 | [BlobFuse (プレビュー)][blobfuse] | はい | はい | はい | いいえ |
+| 非構造化データ、ファイル システム操作 | [BlobFuse][blobfuse] | はい | はい | はい | いいえ |
 
 AKS のボリュームに対して提供される、2 つの主な種類のストレージが、Azure ディスクまたは Azure ファイルでサポートされます。 セキュリティを向上させるため、両方の種類のストレージでは既定で Azure Storage Service Encryption (SSE) が使用され、保存データが暗号化されます。 ディスクは現在、AKS ノード レベルで Azure Disk Encryption を使用して暗号化することはできません。
 
@@ -96,7 +93,7 @@ AKS ノードは Azure VM として実行されます。 さまざまな種類�
 
 データ バックアップのさまざまな方法の制限事項、またスナップショットを作成する前にデータを静止する必要がある場合の制限事項を理解します。 データ バックアップで、クラスター デプロイのアプリケーション環境を必ずしも復元できるとは限りません。 このようなシナリオの詳細については、「[Azure Kubernetes Service (AKS) での事業継続とディザスター リカバリーに関するベスト プラクティス][best-practices-multi-region]」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、AKS のストレージのベスト プラクティスに重点を置きました。 Kubernetes のストレージの基本の詳細については、[AKS におけるアプリケーションのストレージの概念][aks-concepts-storage]に関するページを参照してください。
 

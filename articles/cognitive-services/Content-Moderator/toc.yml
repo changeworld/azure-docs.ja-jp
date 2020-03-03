@@ -1,11 +1,12 @@
 - name: Content Moderator のドキュメント
   href: index.yml
 - name: 概要
+  expanded: true
   items:
     - name: Content Moderator とは
       href: overview.md
       expanded: true
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: Web 上で Content Moderator を試す
       href: quick-start.md
@@ -37,7 +38,7 @@
       href: Review-Tool-User-Guide/human-in-the-loop.md
     - name: レビュー、ワークフロー、ジョブ
       href: review-api.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: コンテンツの調整
       items:

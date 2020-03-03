@@ -105,8 +105,8 @@
               href: developer-best-practices-pod-security.md
     - name: クォータと地域の制限
       href: quotas-skus-regions.md
-    - name: ACS から AKS への移行
-      href: acs-aks-migration.md
+    - name: AKS への移行
+      href: aks-migration.md
     - name: サポートされている Kubernetes バージョン
       href: supported-kubernetes-versions.md
     - name: ホスト OS でのセキュリティ強化
@@ -337,7 +337,7 @@
           items:
             - name: Istio について
               href: servicemesh-istio-about.md
-            - name: '[インストールと構成]'
+            - name: インストールと構成
               href: servicemesh-istio-install.md
             - name: シナリオ - インテリジェントなルーティングとカナリア リリース
               href: servicemesh-istio-scenario-routing.md
@@ -345,13 +345,13 @@
           items:
             - name: Linkerd について
               href: servicemesh-linkerd-about.md
-            - name: '[インストールと構成]'
+            - name: インストールと構成
               href: servicemesh-linkerd-install.md
         - name: Consul の使用
           items:
             - name: Consul について
               href: servicemesh-consul-about.md
-            - name: '[インストールと構成]'
+            - name: インストールと構成
               href: servicemesh-consul-install.md
     - name: DevOps
       items:
@@ -367,7 +367,7 @@
           href: deployment-center-launcher.md
         - name: Kubernetes 向けの GitHub Actions
           href: ../aks/kubernetes-action.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: 一般的な問題
           href: troubleshooting.md
@@ -375,6 +375,8 @@
           href: kube-advisor-tool.md
         - name: SSH ノード アクセス
           href: ssh.md
+        - name: Linux のパフォーマンス ツール
+          href: troubleshoot-linux.md
 - name: リファレンス
   items:
     - name: Azure CLI

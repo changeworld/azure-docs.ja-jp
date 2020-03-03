@@ -103,7 +103,7 @@
   items:
     - name: 計画と構成
       items:
-        - name: 仮想ネットワーク
+        - name: 仮想ネットワークを計画する
           href: virtual-network-vnet-plan-design-arm.md
         - name: VM とクラウド サービスの名前解決
           href: virtual-networks-name-resolution-for-vms-and-role-instances.md
@@ -209,41 +209,64 @@
               href: virtual-network-public-ip-address.md
             - name: パブリック IP プレフィックスの管理
               href: manage-public-ip-address-prefix.md
-            - name: IP アドレスの追加または NIC からの削除
+            - name: NIC の IP アドレスの追加または削除
               href: virtual-network-network-interface-addresses.md
     - name: Security
       items:
-        - name: DDoS 保護の管理
-          href: manage-ddos-protection.md
-        - name: ネットワーク セキュリティ グループの管理
-          href: manage-network-security-group.md
-        - name: DDoS Protection Standard へのパートナーのオンボード
-          href: ddos-protection-partner-onboarding.md
-        - name: ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング
+        - name: ネットワーク セキュリティ グループを使用したアクセスの制限
           items:
+            - name: Azure portal
+              href: tutorial-restrict-network-access-to-resources.md
+            - name: Azure PowerShell
+              href: tutorial-restrict-network-access-to-resources-powershell.md
+            - name: Azure CLI
+              href: tutorial-restrict-network-access-to-resources-cli.md
+            - name: ネットワーク セキュリティ グループの管理
+              href: manage-network-security-group.md
+        - name: ネットワーク トラフィックのフィルター処理
+          items:
+            - name: Azure portal
+              href: tutorial-filter-network-traffic.md
             - name: Azure PowerShell
               href: tutorial-filter-network-traffic-powershell.md
             - name: Azure CLI
               href: tutorial-filter-network-traffic-cli.md
-        - name: NVA を使用したトラフィックのルーティング
+        - name: ネットワークの分離
           items:
+            - name: プライベート エンドポイントの使用
+              items:
+                - name: Azure portal
+                  href: ../private-link/create-private-endpoint-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+                - name: Azure PowerShell
+                  href: ../private-link/create-private-endpoint-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+                - name: Azure CLI
+                  href: ../private-link/create-private-endpoint-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+            - name: サービス エンドポイントの使用
+              items:
+                - name: Azure portal
+                  href: tutorial-restrict-network-access-to-resources.md
+                - name: Azure PowerShell
+                  href: tutorial-restrict-network-access-to-resources-powershell.md
+                - name: Azure CLI
+                  href: tutorial-restrict-network-access-to-resources-cli.md
+            - name: エンドポイント ポリシーの作成
+              href: virtual-network-service-endpoint-policies-portal.md
+        - name: ネットワーク トラフィックのルーティング
+          items:
+            - name: Azure portal
+              href: tutorial-create-route-table-portal.md
             - name: Azure PowerShell
               href: tutorial-create-route-table-powershell.md
             - name: Azure CLI
               href: tutorial-create-route-table-cli.md
             - name: Ansible
               href: /azure/ansible/ansible-create-configure-route-table
-              maintainContext: true
-        - name: ルート テーブルの管理
-          href: manage-route-table.md
-        - name: サービス エンドポイントの使用
-          items:
-            - name: Azure PowerShell
-              href: tutorial-restrict-network-access-to-resources-powershell.md
-            - name: Azure CLI
-              href: tutorial-restrict-network-access-to-resources-cli.md
-        - name: サービス エンドポイント ポリシーの作成 - ポータル
-          href: virtual-network-service-endpoint-policies-portal.md
+            - name: ルート テーブルの管理
+              href: manage-route-table.md
+        - name: DDoS 保護の管理
+          href: manage-ddos-protection.md
+        - name: DDoS Protection Standard へのパートナーのオンボード
+          href: ddos-protection-partner-onboarding.md
         - name: セキュリティのシナリオ
           items:
             - name: 仮想アプライアンスでネットワークをセキュリティで保護する
@@ -272,6 +295,12 @@
               href: virtual-networks-static-private-ip-arm-ps.md
             - name: Azure CLI
               href: virtual-networks-static-private-ip-arm-cli.md
+        - name: VM の作成 - 静的プライベート IP (クラシック)
+          items:
+            - name: Azure portal
+              href: virtual-networks-static-private-ip-classic-pportal.md
+            - name: Azure PowerShell
+              href: virtual-networks-static-private-ip-classic-ps.md
         - name: VM の作成 - 複数の IP
           items:
             - name: Azure portal

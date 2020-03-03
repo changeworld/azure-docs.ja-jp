@@ -76,7 +76,7 @@ Azure CLI を使用するには、Azure アカウントにログインする必�
 
 1. [az iot hub create](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-create) コマンドを実行して、IoT ハブを作成します。 IoT ハブの作成には数分かかることがあります。 
 
-    *YourIotHubName*。 このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。 IoT ハブ名は Azure でグローバルに一意である必要があります。 このプレースホルダーは、このクイックスタートの残りの部分で、IoT ハブの名前を表すために使用されます。
+    *YourIotHubName*: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。 IoT ハブ名は Azure でグローバルに一意である必要があります。 このプレースホルダーは、このクイックスタートの残りの部分で、IoT ハブの名前を表すために使用されます。
 
     ```azurecli
     az iot hub create --resource-group MyResourceGroup --name {YourIoTHubName}
@@ -88,7 +88,7 @@ Azure CLI を使用するには、Azure アカウントにログインする必�
 シミュレートされたデバイスを作成し開始するには以下を行います。
 1. 最初の CLI セッションで [az iot hub device-identity create](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create) コマンドを実行します。 これにより、シミュレートされたデバイスを作成します。 
 
-    *YourIotHubName*。 このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。 
+    *YourIotHubName*: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。 
 
     *simDevice*。 このクイックスタートの残りの部分では、この名前をシミュレートされたデバイスに対して直接使用できます。 別の名前を使用することもできます。 
 
@@ -98,7 +98,7 @@ Azure CLI を使用するには、Azure アカウントにログインする必�
 
 1. 最初の CLI セッションで [az iot device simulate](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/device?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-device-simulate) コマンドを実行します。  これにより、シミュレートされたデバイスが起動します。 デバイスは、IoT ハブにテレメトリを送信し、そこからメッセージを受信します。  
 
-    *YourIotHubName*。 このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。 
+    *YourIotHubName*: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。 
 
     ```azurecli
     az iot device simulate -d simDevice -n {YourIoTHubName}
@@ -107,7 +107,7 @@ Azure CLI を使用するには、Azure アカウントにログインする必�
 デバイスを監視するには以下を行います。
 1. 2 つ目の CLI セッションで、[az iot hub monitor-events](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-monitor-events) コマンドを実行します。 これにより、シミュレートされたデバイスの監視が開始されます。 出力には、シミュレートされたデバイスから IoT hub に送信されたテレメトリが表示されます。
 
-    *YourIotHubName*。 このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。 
+    *YourIotHubName*: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。 
 
     ```azurecli
     az iot hub monitor-events --output table --hub-name {YourIoTHubName}
@@ -122,7 +122,7 @@ Azure CLI を使用するには、Azure アカウントにログインする必�
 
 1. 最初の CLI セッションで、シミュレートされたデバイスが実行されていることを確認します。 デバイスが停止している場合は、次のコマンドを実行して開始します。
 
-    *YourIotHubName*。 このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。 
+    *YourIotHubName*: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。 
 
     ```azurecli
     az iot device simulate -d simDevice -n {YourIoTHubName}
@@ -130,7 +130,7 @@ Azure CLI を使用するには、Azure アカウントにログインする必�
 
 1. 2 つ目の CLI セッションで、[az iot device c2d-message send](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/device/c2d-message?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-device-c2d-message-send) コマンドを実行します。 これにより、cloud-to-device メッセージが IoT ハブからシミュレートされたデバイスに送信されます。 メッセージには、文字列と 2 つのキー/値ペアが含まれます。  
 
-    *YourIotHubName*。 このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。 
+    *YourIotHubName*: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。 
 
     ```azurecli
     az iot device c2d-message send -d simDevice --data "Hello World" --props "key0=value0;key1=value1" -n {YourIoTHubName}

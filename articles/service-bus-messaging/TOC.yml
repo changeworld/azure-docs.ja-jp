@@ -209,7 +209,7 @@
       items:
         - name: 保存時の暗号化向けに顧客管理キーを構成する
           href: configure-customer-managed-key.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: トラブルシューティング ガイド
           href: service-bus-messaging-exceptions.md

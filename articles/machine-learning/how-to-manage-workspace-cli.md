@@ -98,7 +98,7 @@ az group create --name <resource-group-name> --location <location>
 
 ### <a name="automatically-create-required-resources"></a>必要なリソースを自動的に作成する
 
-__サービスが自動的に作成__される新しいワークスペースを作成するには、次のコマンドを使用します。
+__サービスが自動的に作成__ される新しいワークスペースを作成するには、次のコマンドを使用します。
 
 > [!TIP]
 > このセクションのコマンドでは、Basic エディションのワークスペースが作成されます。 Enterprise ワークスペースを作成するには、`az ml workspace create` コマンドで `--sku enterprise` スイッチを使用します。 Azure Machine Learning のエディションについて詳しくは、「[Azure Machine Learning とは](overview-what-is-azure-ml.md#sku)」を参照してください。

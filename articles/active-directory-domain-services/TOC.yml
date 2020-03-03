@@ -109,7 +109,7 @@
           href: deploy-azure-app-proxy.md
         - name: SharePoint Server のプロファイルの同期を有効にする
           href: deploy-sp-profile-sync.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: 一般的なエラー
           href: troubleshoot.md

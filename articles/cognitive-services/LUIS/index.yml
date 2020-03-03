@@ -47,7 +47,7 @@ landingContent:
     links:
     - text: 意図
       url: luis-concept-intent.md
-    - text: '[エンティティ]'
+    - text: エンティティ
       url: luis-concept-entity-types.md
     - text: 発話
       url: luis-concept-utterance.md

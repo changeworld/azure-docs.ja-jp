@@ -488,7 +488,7 @@
             - name: テンプレートの使用
               displayName: 'Azure Resource Manager template, ARM'
               href: sql-database-single-database-get-started-template.md
-        - name: '[構成]'
+        - name: 構成
           items:
             - name: サーバーレベルの IP ファイアウォール規則
               href: sql-database-server-level-firewall-rule.md
@@ -542,7 +542,7 @@
           items:
             - name: データ同期エージェント
               href: sql-database-data-sync-agent.md
-            - name: '[スキーマ変更のレプリケート]'
+            - name: スキーマ変更のレプリケート
               href: sql-database-update-sync-schema.md
             - name: OMS で監視する
               href: sql-database-sync-monitor-oms.md
@@ -556,7 +556,7 @@
               href: sql-database-query-performance.md
         - name: T-SQL の相違点
           href: sql-database-transact-sql-information.md
-        - name: '[機能]'
+        - name: 機能
           items:
             - name: SQL データ同期
               href: sql-database-sync-data.md
@@ -711,7 +711,7 @@
               href: scripts/sql-database-create-configure-managed-instance-powershell.md
             - name: インスタンス プールの作成
               href: sql-database-instance-pools-how-to.md
-        - name: '[構成]'
+        - name: 構成
           items:
             - name: パブリック エンドポイント
               href: sql-database-managed-instance-public-endpoint-configure.md
@@ -749,7 +749,7 @@
           href: sql-database-managed-instance-connectivity-architecture.md
         - name: T-SQL の相違点
           href: sql-database-managed-instance-transact-sql-information.md
-        - name: '[機能]'
+        - name: 機能
           items:
             - name: リンク サーバー
               href: 'https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine?toc=/azure/sql-database/toc.json'
@@ -852,7 +852,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
     - name: スタック オーバーフロー
       href: 'https://stackoverflow.com/questions/tagged/sql-azure'
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: 接続に関する問題
           href: troubleshoot-connectivity-issues-microsoft-azure-sql-database.md

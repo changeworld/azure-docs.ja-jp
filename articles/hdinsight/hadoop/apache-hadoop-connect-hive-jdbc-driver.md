@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 016107248399e84b7a82a656c9d590c3cbe0cdbe
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 7d1a77800093ae01bc4eb1e1269d1e9a60f9ce26
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77466928"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616641"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>HDInsight 上で JDBC ドライバーを使用して Apache Hive のクエリを実行する
 
@@ -36,6 +36,18 @@ Azure の HDInsight クラスターに対する JDBC 接続はポート 443 を�
     jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2
 
 `CLUSTERNAME` を、使用する HDInsight クラスターの名前に置き換えます。
+
+または、**Ambari UI で [Hive] > [Configs]\(構成\) > [ Advanced]\(詳細\)** を選択して、接続を取得できます。
+
+![Ambari を使用して JDBC 接続文字列を取得する](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-get-connection-string-through-ambari.png)
+
+### <a name="host-name-in-connection-string"></a>接続文字列のホスト名
+
+接続文字列のホスト名 'CLUSTERNAME.azurehdinsight.net' は、お使いのクラスターの URL と同じです。 Azure portal を使用してそれを取得できます。 
+
+### <a name="port-in-connection-string"></a>接続文字列のポート
+
+Azure 仮想ネットワークの外部にある場所からクラスターに接続するには、**ポート 443** のみを使用できます。 HDInsight はマネージド サービスです。これは、クラスターへのすべての接続がセキュリティで保護されたゲートウェイ経由で管理されることを意味します。 ポート 10001 または 10000 は外部には公開されていないため、これらのポートで HiveServer 2 に直接接続することはできません。 
 
 ## <a name="authentication"></a>認証
 
@@ -138,6 +150,15 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 1. SQuirreL を終了し、SQuirreL がインストールされているシステム上のディレクトリに移動します (`C:\Program Files\squirrel-sql-4.0.0\lib` など)。 SquirreL ディレクトリ内の `lib` ディレクトリにある既存の commons-codec jar を、HDInsight クラスターからダウンロードしたファイルに置き換えます。
 
 1. SQuirreL を再起動します。 これで、HDInsight の Hive に接続するときにエラーが発生しなくなります。
+
+### <a name="connection-disconnected-by-hdinsight"></a>HDInsight によって接続が切断される
+
+**現象**:JDBC/ODBC を使用して膨大な量 (たとえば数 GB) のデータをダウンロードしようとすると、ダウンロード中に HDInsight によって接続が予期せず切断されます。 
+
+**原因**:このエラーは、ゲートウェイ ノードの制限が原因で発生します。 JDBC/ODBC からデータを取得する場合、すべてのデータがゲートウェイ ノードを通過する必要があります。 ただし、ゲートウェイは膨大な量のデータをダウンロードするように設計されていないため、トラフィックを処理できない場合は、ゲートウェイによって接続が閉じられる可能性があります。
+
+**解決方法**:大量のデータをダウンロードする場合は、JDBC/ODBC ドライバーを使用しないようにします。 代わりに、BLOB ストレージから直接データをコピーします。
+
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -167,7 +167,7 @@
               href: migrate-adfs-apps-to-azure.md
             - name: AD FS アプリケーション アクティビティ レポートの使用 (プレビュー)
               href: migrate-adfs-application-activity.md
-        - name: '[トラブルシューティング]'
+        - name: トラブルシューティング
           items:
             - name: アプリの追加のトラブルシューティング
               items:

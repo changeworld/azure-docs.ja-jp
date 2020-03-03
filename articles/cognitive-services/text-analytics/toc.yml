@@ -42,6 +42,8 @@
     - name: Flask によるテキストの翻訳、センチメントの分析、音声の合成
       maintainContext: true
       href: 'https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis'
+    - name: Power Automate を使用して Excel に情報を抽出する
+      href: tutorials/extract-excel-information.md
 - name: 操作方法ガイド
   items:
     - name: Text Analytics API を呼び出す

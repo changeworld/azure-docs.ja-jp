@@ -132,7 +132,7 @@
           href: how-to-migrate-at-scale.md
         - name: 移行の例 (Contoso シリーズ)
           href: contoso-migration-overview.md
-- name: '[トラブルシューティング]'
+- name: トラブルシューティング
   items:
     - name: Azure Migrate のトラブルシューティング
       href: troubleshoot-general.md

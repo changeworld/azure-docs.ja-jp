@@ -117,7 +117,7 @@
       items:
         - name: プライベート DNS ゾーンとレコードを保護する
           href: dns-protect-private-zones-recordsets.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: トラブルシューティング ガイド
           href: dns-troubleshoot.md

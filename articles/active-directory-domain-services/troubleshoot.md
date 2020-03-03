@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 2c6f594b16aac40abf885e0d058c7aba48d32f9c
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3cb57fae2b1c67ece321a294e56612f49358405a
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512625"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612722"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services の一般的なエラーとトラブルシューティングの手順
 
@@ -30,7 +30,7 @@ Azure AD DS の有効化で問題が発生した場合は、以下の一般的�
 
 | **サンプルのエラー メッセージ** | **解決策** |
 | --- |:--- |
-| *名前 contoso.com はこのネットワーク上で既に使用されています。使用されていない名前を指定してください。* " |[仮想ネットワーク内のドメイン名の競合](troubleshoot.md#domain-name-conflict) |
+| *addscontoso.com という名前 はこのネットワーク上で既に使用されています。使用されていない名前を指定してください。* " |[仮想ネットワーク内のドメイン名の競合](troubleshoot.md#domain-name-conflict) |
 | *Domain Services could not be enabled in this Azure AD tenant. (この Azure AD テナントでは Domain Services を有効にできませんでした。)The service does not have adequate permissions to the application called 'Azure AD Domain Services Sync'. (アプリケーション "Azure AD Domain Services Sync" への適切なアクセス許可がサービスにありません。)Delete the application called 'Azure AD Domain Services Sync' and then try to enable Domain Services for your Azure AD tenant. (アプリケーション "Azure AD Domain Services Sync" を削除してから、Azure AD テナントの Domain Services を有効にしてください。)* ) |[Azure AD Domain Services Sync アプリケーションに対する適切な権限が Domain Services にない](troubleshoot.md#inadequate-permissions) |
 | *Domain Services could not be enabled in this Azure AD tenant. (この Azure AD テナントでは Domain Services を有効にできませんでした。)The Domain Services application in your Azure AD tenant does not have the required permissions to enable Domain Services. (Domain Services を有効にするために必要なアクセス許可が Azure AD テナントの Domain Services アプリケーションにありません。)Delete the application with the application identifier d87dcbc6-a371-462e-88e3-28ad15ec4e64 and then try to enable Domain Services for your Azure AD tenant. (アプリケーション識別子が d87dcbc6-a371-462e-88e3-28ad15ec4e64 のアプリケーションを削除してから、Azure AD テナントの Domain Services を有効にしてください。)* |[Azure AD テナント内で Domain Services アプリケーションが適切に構成されていない](troubleshoot.md#invalid-configuration) |
 | *Domain Services could not be enabled in this Azure AD tenant. (この Azure AD テナントでは Domain Services を有効にできませんでした。)The Microsoft Azure AD application is disabled in your Azure AD tenant. (Azure AD テナントで Microsoft Azure AD アプリケーションが無効になっています。)Enable the application with the application identifier 00000002-0000-0000-c000-000000000000 and then try to enable Domain Services for your Azure AD tenant. (アプリケーション識別子が 00000002-0000-0000-c000-000000000000 のアプリケーションを有効にしてから、Azure AD テナントの Domain Services を有効にしてください。)* |[Azure AD テナントで Microsoft Graph アプリケーションが無効になっている](troubleshoot.md#microsoft-graph-disabled) |
@@ -39,11 +39,11 @@ Azure AD DS の有効化で問題が発生した場合は、以下の一般的�
 
 **エラー メッセージ**
 
-*名前 contoso.com はこのネットワーク上で既に使用されています。使用されていない名前を指定してください。* "
+*aaddscontoso.com という名前 はこのネットワーク上で既に使用されています。使用されていない名前を指定してください。* "
 
 **解決策**
 
-同じ、またはピアリングされた仮想ネットワーク上に同じドメイン名の既存の AD DS 環境が存在しないことを確認します。 たとえば、Azure VM 上で実行されている *contoso.com* という名前の AD DS ドメインがあるとします。 その仮想ネットワーク上で *contoso.com* という同じ名前を持つ Azure AD DS のマネージド ドメインを有効にしようとすると、要求した操作は失敗します。
+同じ、またはピアリングされた仮想ネットワーク上に同じドメイン名の既存の AD DS 環境が存在しないことを確認します。 たとえば、Azure VM 上で実行されている *aaddscontoso.com* という名前の AD DS ドメインがあるとします。 その仮想ネットワーク上で *aaddscontoso.com* という同じ名前を持つ Azure AD DS のマネージド ドメインを有効にしようとすると、要求した操作は失敗します。
 
 このエラーは、仮想ネットワーク上のドメイン名での名前の競合が原因です。 DNS 参照では、既存の AD DS 環境が、要求されたドメイン名に対して応答するかどうかが確認されます。 このエラーを解決するには、別の名前を使用して Azure AD DS マネージド ドメインを設定するか、既存の AD DS ドメインのプロビジョニングを解除してから、Azure AD DS の有効化を再試行してください。
 
@@ -128,9 +128,9 @@ if ($sp -ne $null)
 
 Azure AD テナント内の 1 人以上のユーザーが Azure AD DS マネージド ドメインにサインインできない場合は、次のトラブルシューティングの手順を実行します。
 
-* **資格情報の形式** - UPN 形式を使用して資格情報を指定してみます (例: `dee@contoso.onmicrosoft.com`)。 UPN 形式は、Azure AD DS で資格情報を指定するための推奨される方法です。 この UPN が Azure AD で正しく構成されていることを確認してください。
+* **資格情報の形式** - UPN 形式を使用して資格情報を指定してみます (例: `dee@aaddscontoso.onmicrosoft.com`)。 UPN 形式は、Azure AD DS で資格情報を指定するための推奨される方法です。 この UPN が Azure AD で正しく構成されていることを確認してください。
 
-    同じ UPN プレフィックスを使用する複数のユーザーがテナント内に存在する場合や、使用する UPN プレフィックスが最大文字数を超えている場合は、お使いのアカウントの *SAMAccountName* (*CONTOSO\driley* など) が自動生成されることがあります。 そのため、お使いのアカウントの *SAMAccountName* 形式が想定した形式やオンプレミス ドメインで使用する形式と異なる可能性があります。
+    同じ UPN プレフィックスを使用する複数のユーザーがテナント内に存在する場合や、使用する UPN プレフィックスが長すぎる場合は、お使いのアカウントの *SAMAccountName* (*AADDSCONTOSO\driley* など) が自動生成されることがあります。 そのため、お使いのアカウントの *SAMAccountName* 形式が想定した形式やオンプレミス ドメインで使用する形式と異なる可能性があります。
 
 * **パスワード同期** - [クラウド専用ユーザー][cloud-only-passwords]または [Azure AD Connect を使用するハイブリッド環境][hybrid-phs]のパスワード同期が有効になっていることを確認します。
     * **ハイブリッド同期済みアカウント:** 影響を受けているユーザー アカウントがオンプレミスのディレクトリから同期されている場合は、以下の領域を確認します。

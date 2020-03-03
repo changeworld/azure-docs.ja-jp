@@ -331,7 +331,7 @@ Base64 文字列として証明書を渡す動作をエミュレートするに�
 
 詳細については、[Microsoft セキュリティ センター](https://www.microsoft.com/TrustCenter/Compliance/PCI)を参照してください。
 
-### <a name="does-managed-identities-for-azure-resourceshttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-virtual-machine-scale-sets"></a>[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/active-directory/msi-overview) は仮想マシン スケール セットで機能しますか。
+### <a name="does-managed-identities-for-azure-resources-work-with-virtual-machine-scale-sets"></a>[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/active-directory/msi-overview) は仮想マシン スケール セットで機能しますか。
 
 はい。 [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) および [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) 用の Azure Quickstart テンプレートで、いくつかのサンプル MSI テンプレートを確認できます。
 

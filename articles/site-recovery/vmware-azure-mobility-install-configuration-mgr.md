@@ -56,8 +56,8 @@ ms.locfileid: "77252229"
 1. Configuration Manager で、モビリティサービスをインストールまたは更新する[サーバーをカテゴリー化します](/sccm/core/clients/manage/collections/automatically-categorize-devices-into-collections)。 1 つのコレクションにはすべての Windows サーバが含まれ、もう 1 つのコレクションにはすべての Linux サーバが含まれます。
 1. ネットワーク共有で、次のフォルダーを作成します。
 
-   - Windows マシンにインストールする場合は、_MobSvcWindows_という名前のフォルダーを作成してください。
-   - Linux マシンにインストールする場合は、_MobSvcLinux_という名前のフォルダーを作成します。
+   - Windows マシンにインストールする場合は、_MobSvcWindows_ という名前のフォルダーを作成してください。
+   - Linux マシンにインストールする場合は、_MobSvcLinux_ という名前のフォルダーを作成します。
 
 1. 構成サーバー マシンにサインインします。
 1. 構成サーバーマシンで、管理コマンド プロンプトを開きます。
@@ -77,8 +77,8 @@ ms.locfileid: "77252229"
 
 1. これらのインストール ファイルをネットワーク共有にコピーします。
 
-   - Windows の場合、_Microsoft-ASR_UA_version_Windows_GA_date_Release.exe_を_MobSvcWindows_にコピーします。
-   - Linux の場合、次のファイルを_MobSvcLinux_にコピーします。
+   - Windows の場合、 _Microsoft-ASR_UA_version_Windows_GA_date_Release.exe_ を _MobSvcWindows_ にコピーします。
+   - Linux の場合、次のファイルを _MobSvcLinux_ にコピーします。
      - _Microsoft-ASR_UARHEL6-64release.tar.gz_
      - _Microsoft-ASR_UARHEL7-64release.tar.gz_
      - _Microsoft-ASR_UASLES11-SP3-64release.tar.gz_
@@ -198,7 +198,7 @@ IF NOT %ERRORLEVEL% EQU 0 (
 
 次のコードをコピーします。
 
-- _MobSvcLinux_フォルダーにコードを_install_linux.sh_として保存します。
+- _MobSvcLinux_ フォルダーにコードを _install_linux.sh_ として保存します。
 - このスクリプトの`[CSIP]`プレースホルダーを、構成サーバーのIPアドレスの実際の値に置き換えます。
 - このスクリプトは、Mobility Service エージェントの新規インストールと、すでにインストールされているエージェントの更新をサポートしています。
 
@@ -342,7 +342,7 @@ cd /tmp
 1. **[パッケージ]** を右クリックして **[パッケージの作成]** に進みます。
 1. 名前、説明、製造元、言語、バージョンなど、パッケージの詳細を指定します。
 1. **[このパッケージはソース ファイルを含む]** を選択します。
-1. **参照**をクリックし、関連するインストーラー（ _MobSvcWindows_または_MobSvcLinux_）を含むネットワーク共有とフォルダーを選択します。 次に、 **[次へ]** を選択します。
+1. **参照**をクリックし、関連するインストーラー（ _MobSvcWindows_ または _MobSvcLinux_）を含むネットワーク共有とフォルダーを選択します。 次に、 **[次へ]** を選択します。
 
    ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package.png)
 

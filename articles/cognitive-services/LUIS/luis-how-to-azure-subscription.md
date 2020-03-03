@@ -87,13 +87,13 @@ LUIS ポータルにサインインすると、進む手順を選択できます
 
     ブラウザー開いたら、正しいアカウントを選択し、認証できます。
 
-1. **LUIS オーサリング リソース**を作成します。種類に `LUIS.Authoring`、名前に `my-luis-authoring-resource`、_既存_リソース グループに `my-resource-group`、リージョンに `westus` を指定します。 
+1. **LUIS オーサリング リソース**を作成します。種類に `LUIS.Authoring`、名前に `my-luis-authoring-resource`、_既存_ リソース グループに `my-resource-group`、リージョンに `westus` を指定します。 
 
     ```console
     az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
     ```
 
-1. **LUIS 予測エンドポイント リソース**を作成します。種類に `LUIS`、名前に `my-luis-prediction-resource`、_既存_リソース グループに `my-resource-group`、リージョンに `westus` を指定します。 無料レベル以上のスループットが必要であれば、`F0` を `S0` に変更します。 詳細は、[価格レベルとスループット](luis-boundaries.md#key-limits)に関するページをご覧ください。
+1. **LUIS 予測エンドポイント リソース**を作成します。種類に `LUIS`、名前に `my-luis-prediction-resource`、_既存_ リソース グループに `my-resource-group`、リージョンに `westus` を指定します。 無料レベル以上のスループットが必要であれば、`F0` を `S0` に変更します。 詳細は、[価格レベルとスループット](luis-boundaries.md#key-limits)に関するページをご覧ください。
 
     ```console
     az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes

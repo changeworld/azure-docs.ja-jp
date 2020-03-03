@@ -126,7 +126,7 @@
           href: cdn-app-dev-net.md
         - name: Node.js
           href: cdn-app-dev-node.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: 404 状態
           href: cdn-troubleshoot-endpoint.md

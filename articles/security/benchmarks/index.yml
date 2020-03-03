@@ -27,7 +27,7 @@ landingContent:
       url: introduction.md
     - text: Azure セキュリティ制御の概要
       url: overview.md
-- title: '[シングル サインオンの設定]'
+- title: シングル サインオンの設定
   linkLists:
   - linkListType: overview
     links:

@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/27/2019
 ms.author: memildin
-ms.openlocfilehash: 81ef598c846d98548be2d3e7647166d655398921
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: 2d81e1a1218add504e1e35015276b6924da0e3e3
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912806"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616476"
 ---
 # <a name="protect-your-azure-app-service-web-apps-and-apis"></a>Azure App Service Web アプリと API を保護する
 
@@ -29,7 +29,7 @@ Azure App Service プランの Advanced Threat Protection を有効にするに�
 
 App Service プランを有効にすると、Security Center では、App Service プランの対象となるリソースが評価され、その結果に基づき、セキュリティ上の推奨事項が生成されます。 Security Center では、App Service が実行されている VM インスタンスと管理インターフェイスが保護されます。 App Service で実行されているアプリとの間で送受信される要求と応答も監視されます。
 
-Security Center では、Web 上のアプリに対する一般的な攻撃を監視する目的で、クラウドの規模と、クラウド プロバイダーとしての Azure に与えられる視界が活用されます。 Security Center では、Azure でホストされる複数のアプリケーションをスキャンし、脆弱性を特定することで、攻撃者が偵察段階でも、アプリケーションに対する攻撃を発見したり、新しい攻撃を特定したりできます。 Security Center はまた、Azure ネイティブ サービスとして、この PaaS の計算ノードをカバーするホストベースのセキュリティ分析を提供するというユニークな位置にもあります。Security Center では、既に悪用されている、Web アプリケーションに対する攻撃を検出できます。 Azure App Service からの Security Center の脅威検出アラートの詳細については、[クラウド ネイティブ コンピューティングの脅威検出](security-center-alerts-compute.md#azure-app-service-)に関する記事を参照してください。
+Security Center では、Web 上のアプリに対する一般的な攻撃を監視する目的で、クラウドの規模と、クラウド プロバイダーとしての Azure に与えられる視界が活用されます。 Security Center では、Azure でホストされる複数のアプリケーションをスキャンし、脆弱性を特定することで、攻撃者が偵察段階でも、アプリケーションに対する攻撃を発見したり、新しい攻撃を特定したりできます。 Security Center はまた、Azure ネイティブ サービスとして、この PaaS の計算ノードをカバーするホストベースのセキュリティ分析を提供するというユニークな位置にもあります。Security Center では、既に悪用されている、Web アプリケーションに対する攻撃を検出できます。 詳細については、[Azure App Service に対する脅威保護](threat-protection.md#app-services)に関する記事を参照してください。
 
 
 ## <a name="enabling-monitoring-and-protection-of-app-service"></a>App Service の監視と保護を有効にする
@@ -57,12 +57,11 @@ App Service の監視と推奨を無効にするには、このプロセスを�
 
 
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 この記事では、Azure Security Center での監視機能の使用方法について説明しました。 Azure Security Center の詳細については、次の記事をご覧ください。
 
 * [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md):Azure Security Center でセキュリティ設定を構成する方法について説明します。
 * [Azure Security Center でのセキュリティ アラートの管理と対応](security-center-managing-and-responding-alerts.md): セキュリティの警告の管理と対応の方法について説明しています。
 * [App Service](security-center-virtual-machine-protection.md#app-services):App Service Environment と正常性の概要を一覧で表示します。
 * [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md): パートナー ソリューションの正常性状態を監視する方法について説明しています。
-* [Azure Security Center に関する FAQ](security-center-faq.md): このサービスの使用に関してよく寄せられる質問が記載されています。
 * [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/):Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。

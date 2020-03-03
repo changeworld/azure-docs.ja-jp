@@ -190,7 +190,7 @@
           href: event-hubs-tutorial-virtual-networks-firewalls.md
         - name: 保存データの暗号化のために顧客管理キーを構成する
           href: configure-customer-managed-key.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: トラブルシューティング ガイド
           href: event-hubs-messaging-exceptions.md

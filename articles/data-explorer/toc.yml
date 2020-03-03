@@ -242,7 +242,7 @@
           href: kqlmagic.md
         - name: Azure Pipelines
           href: devops.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: クラスターを作成する
           href: troubleshoot-create-cluster.md

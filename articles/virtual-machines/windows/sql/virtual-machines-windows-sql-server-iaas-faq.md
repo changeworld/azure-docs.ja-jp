@@ -190,7 +190,7 @@ ms.locfileid: "76835166"
 
 1. **SQL Server 2008 / 2008 R2 インスタンスを SQL Server VM リソース プロバイダーに登録した後にアップグレードできますか?**
 
-   はい。 セットアップ メディアを利用し、SQL Server のバージョンやエディションをアップグレードできます。その後、[SQL IaaS 拡張機能モード](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes)を_エージェントなし_から_完全_にアップグレードできます。 アップグレードにより SQL IaaS 拡張機能のあらゆる特典を利用できるようになります。たとえば、ポータルが使いやすくなり、バックアップや修正プログラムの適用を自動化できます。 
+   はい。 セットアップ メディアを利用し、SQL Server のバージョンやエディションをアップグレードできます。その後、[SQL IaaS 拡張機能モード](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes)を _エージェントなし_ から _完全_ にアップグレードできます。 アップグレードにより SQL IaaS 拡張機能のあらゆる特典を利用できるようになります。たとえば、ポータルが使いやすくなり、バックアップや修正プログラムの適用を自動化できます。 
 
 1. **サポートが終了した SQL Server 2008 および SQL Server 2008 R2 インスタンスの無料の延長セキュリティ更新プログラムを取得するどうすればよいですか?**
 
@@ -205,7 +205,7 @@ ms.locfileid: "76835166"
    はい。 フェールオーバー クラスター インスタンスは、記憶域サブシステムに [Premium ファイル共有 (PFS)](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md) または[記憶域スペース ダイレクト (S2D)](virtual-machines-windows-portal-sql-create-failover-cluster.md) を使用してインストールできます。 Premium ファイル共有は、多くのワークロードのニーズを満たす IOPS とスループット容量を提供します。 IO 集中型ワークロードの場合は、マネージド Premium または Ultra ディスクに基づいて記憶域スペース ダイレクトを使用することを検討してください。 または、[Azure 仮想マシンでの SQL Server の高可用性とディザスター リカバリー](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions)に関する記事の説明に従って、サードパーティのクラスタリング ソリューションまたは記憶域ソリューションを使用できます。
 
    > [!IMPORTANT]
-   > 現時点では、Azure 上の SQL Server FCI では_完全な_ [SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)がサポートされていません。 FCI に参加している VM から _完全な_ 拡張機能をアンインストールし、代わりに _軽量_ モードで拡張機能をインストールすることをお勧めします。 この拡張機能では、自動バックアップ、修正プログラムの自動適用、SQL Server のポータル機能の一部などの機能に対応しています。 このような機能は、_完全_ なエージェントのアンインストール後、SQL Server VM では動作しません。
+   > 現時点では、Azure 上の SQL Server FCI では _完全な_ [SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)がサポートされていません。 FCI に参加している VM から _完全な_ 拡張機能をアンインストールし、代わりに _軽量_ モードで拡張機能をインストールすることをお勧めします。 この拡張機能では、自動バックアップ、修正プログラムの自動適用、SQL Server のポータル機能の一部などの機能に対応しています。 このような機能は、_完全_ なエージェントのアンインストール後、SQL Server VM では動作しません。
 
 1. **SQL Server VM と SQL Database サービスの違いは何ですか?**
 

@@ -71,7 +71,7 @@ Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲ�
 ## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration 要素
  *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration*
 
- Required
+ 必須
 
 |属性|説明|  
 |----------------|-----------------|  
@@ -88,7 +88,7 @@ Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲ�
 |**DiagnosticInfrastructureLogs**|Azure Diagnostics によって生成されたログの収集を有効にします。 診断インフラストラクチャ ログは、診断システム自体のトラブルシューティングに役に立ちます。 オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - 収集されたログの最小重大度レベルを構成します。<br /><br /> - **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。 |  
 |**Directories**|このページの他の場所の説明を参照してください。|  
 |**EtwProviders**|このページの他の場所の説明を参照してください。|  
-|**メトリック**|このページの他の場所の説明を参照してください。|  
+|**Metrics**|このページの他の場所の説明を参照してください。|  
 |**PerformanceCounters**|このページの他の場所の説明を参照してください。|  
 |**WindowsEventLog**|このページの他の場所の説明を参照してください。|
 |**DockerSources**|このページの他の場所の説明を参照してください。 |
@@ -171,7 +171,7 @@ Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲ�
 |子要素|説明|  
 |--------------------|-----------------|  
 |**DefaultEvents**|オプションの属性:<br/><br/> **eventDestination** - イベントを保存するテーブルの名前|  
-|**イベント**|必須属性:<br /><br /> **id** - イベントの ID。<br /><br /> オプションの属性:<br /><br /> **eventDestination** - イベントを保存するテーブルの名前|  
+|**Event**|必須属性:<br /><br /> **id** - イベントの ID。<br /><br /> オプションの属性:<br /><br /> **eventDestination** - イベントを保存するテーブルの名前|  
 
 
 
@@ -181,7 +181,7 @@ Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲ�
 |子要素|説明|  
 |--------------------|-----------------|  
 |**DefaultEvents**|オプションの属性:<br /><br /> **eventDestination** - イベントを保存するテーブルの名前|  
-|**イベント**|必須属性:<br /><br /> **id** - イベントの ID。<br /><br /> オプションの属性:<br /><br /> **eventDestination** - イベントを保存するテーブルの名前|  
+|**Event**|必須属性:<br /><br /> **id** - イベントの ID。<br /><br /> オプションの属性:<br /><br /> **eventDestination** - イベントを保存するテーブルの名前|  
 
 
 
@@ -259,7 +259,7 @@ Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲ�
 
 |要素名|説明|  
 |------------------|-----------------|  
-|**シンク**|このページの他の場所の説明を参照してください。|  
+|**Sink**|このページの他の場所の説明を参照してください。|  
 
 ## <a name="sink-element"></a>Sink 要素
  *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink*

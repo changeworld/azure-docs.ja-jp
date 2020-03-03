@@ -86,7 +86,7 @@ landingContent:
       url: /powershell/module/az.rediscache
     - text: Azure CLI
       url: /cli/azure/redis
-- title: '[トラブルシューティング]'
+- title: トラブルシューティング
   linkLists:
   - linkListType: how-to-guide
     links:

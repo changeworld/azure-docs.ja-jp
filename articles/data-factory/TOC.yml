@@ -491,7 +491,7 @@
           href: data-flow-exists.md
         - name: Assert
           href: data-flow-filter.md
-        - name: 結合
+        - name: Join
           href: data-flow-join.md
         - name: 参照
           href: data-flow-lookup.md
@@ -499,7 +499,7 @@
           href: data-flow-new-branch.md
         - name: ピボット
           href: data-flow-pivot.md
-        - name: 選択
+        - name: Select
           href: data-flow-select.md
         - name: シンク
           href: data-flow-sink.md
@@ -515,6 +515,8 @@
           href: data-flow-unpivot.md
         - name: ウィンドウ
           href: data-flow-window.md
+        - name: フラット化
+          href: data-flow-flatten.md
     - name: パラメーター化
       items:
         - name: リンクされたサービスをパラメーター化する
@@ -623,7 +625,7 @@
           href: solution-template-migration-s3-azure.md
         - name: ファイルの移動
           href: solution-template-move-files.md
-        - name: Databricks を使用したデータ変換
+        - name: Azure Databricks による変換
           href: solution-template-databricks-notebook.md
     - name: トラブルシューティング ガイド
       items:

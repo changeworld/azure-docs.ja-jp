@@ -1,7 +1,7 @@
 ---
 title: スキルセット内のカスタム Web API スキル
 titleSuffix: Azure Cognitive Search
-description: Web API を呼び出すことによって、Azure Cognitive Search スキルセットの機能を拡張します。カスタム Web API スキルを使用してカスタム コードを統合します。
+description: Web API を呼び出すことによって、Azure Cognitive Search スキルセットの機能を拡張します。 カスタム Web API スキルを使用してカスタム コードを統合します。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca

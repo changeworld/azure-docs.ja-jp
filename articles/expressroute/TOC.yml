@@ -183,7 +183,7 @@
           href: expressroute-asymmetric-routing.md
         - name: ExpressRoute の NAT
           href: expressroute-nat.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: ExpressRoute 接続の検証
           href: expressroute-troubleshooting-expressroute-overview.md

@@ -56,7 +56,7 @@ Azure Active Directory B2C (Azure AD B2C) は、Azure Active Directory ユーザ
 </TechnicalProfile>
 ```
 
-## <a name="input-claims"></a>入力クレーム
+## <a name="input-claims"></a>入力要求
 
 以下の技術プロファイルには、ソーシャル アカウントとローカル アカウントの **InputClaims** が含まれています。
 
@@ -66,7 +66,7 @@ Azure Active Directory B2C (Azure AD B2C) は、Azure Active Directory ユーザ
 
 **InputClaimsTransformations** 要素には、入力要求を変更したり新しい要求を生成するために使用される、**InputClaimsTransformation** 要素のコレクションが含まれている場合があります。
 
-## <a name="output-claims"></a>出力クレーム
+## <a name="output-claims"></a>出力要求
 
 **OutputClaims** 要素には、Azure AD 技術プロファイルによって返された要求の一覧が含まれています。 ポリシーに定義されている要求の名前を、Azure Active Directory で定義されている名前にマップすることが必要になる場合があります。 また、`DefaultValue` 属性を設定している限り、Azure Active Directory によって返されない要求を含めることもできます。
 
