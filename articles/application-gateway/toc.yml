@@ -207,7 +207,7 @@
           href: application-gateway-create-probe-classic-ps.md
         - name: Resource Manager PowerShell
           href: application-gateway-create-probe-ps.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: ILB と App Service Environment
           href: create-gateway-internal-load-balancer-app-service-environment.md
