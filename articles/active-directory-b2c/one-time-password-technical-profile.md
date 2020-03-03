@@ -47,7 +47,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 この技術プロファイルの最初のモードでは、コードを生成します。 このモードで構成できるオプションを以下に示します。
 
-### <a name="input-claims"></a>入力クレーム
+### <a name="input-claims"></a>入力要求
 
 **InputClaims** 要素には、ワンタイム パスワード プロトコル プロバイダーに送信する必要がある要求の一覧が含まれています。 要求の名前を以下に定義されている名前にマップすることもできます。
 
@@ -57,7 +57,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 **InputClaimsTransformations** 要素には、ワンタイム パスワード プロトコル プロバイダーに送信する前に、入力要求を変更するため、または新しい要求を生成するために使用される、**InputClaimsTransformation** 要素のコレクションが含まれる場合があります。
 
-### <a name="output-claims"></a>出力クレーム
+### <a name="output-claims"></a>出力要求
 
 **OutputClaims** 要素には、ワンタイム パスワード プロトコル プロバイダーによって生成される要求の一覧が含まれています。 要求の名前を以下に定義されている名前にマップすることもできます。
 
@@ -113,7 +113,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 この技術プロファイルの 2 番目のモードでは、コードを確認します。 このモードで構成できるオプションを以下に示します。
 
-### <a name="input-claims"></a>入力クレーム
+### <a name="input-claims"></a>入力要求
 
 **InputClaims** 要素には、ワンタイム パスワード プロトコル プロバイダーに送信する必要がある要求の一覧が含まれています。 要求の名前を以下に定義されている名前にマップすることもできます。
 
@@ -124,7 +124,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 **InputClaimsTransformations** 要素には、ワンタイム パスワード プロトコル プロバイダーに送信する前に、入力要求を変更するため、または新しい要求を生成するために使用される、**InputClaimsTransformation** 要素のコレクションが含まれる場合があります。
 
-### <a name="output-claims"></a>出力クレーム
+### <a name="output-claims"></a>出力要求
 
 このプロトコル プロバイダーのコード確認中に提供される出力要求はありません。
 

@@ -191,7 +191,7 @@
           href: how-to-ci-cd.md
         - name: Jenkins 用の IoT Edge プラグイン
           href: how-to-devops-plugins.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       href: troubleshoot.md
 - name: 関連項目
   items:

@@ -77,6 +77,8 @@
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
     - name: エンドツーエンドの MLOps の例
       href: 'https://github.com/microsoft/MLOps'
+    - name: デザイナー サンプル データセット
+      href: designer-sample-datasets.md
 - name: 概念
   items:
     - name: ワークスペース
@@ -360,18 +362,21 @@
         - name: CI/CD 用の Azure Pipelines
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
-        - name: 'デザイナー: 公開済みパイプラインを使用して再トレーニングする'
+        - name: デザイナーによる発行されたパイプラインを使用した再トレーニング
           displayName: 'retrain, designer, published pipeline'
           href: how-to-retrain-designer.md
+        - name: デザイナーによるバッチ予測
+          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
+          href: how-to-run-batch-predictions-designer.md
+        - name: デザイナーによる Python コードの実行
+          displayName: 'feature extraction, feature engineering'
+          href: how-to-designer-python.md
         - name: 並列実行ステップの使用
           displayName: score scoring batch consume pipeline parallelrunstep inference
           href: how-to-use-parallel-run-step.md
         - name: 並列実行ステップのデバッグとトラブルシューティング
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md
-        - name: デザイナーによるバッチ予測
-          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
-          href: how-to-run-batch-predictions-designer.md
     - name: リソース クォータを管理する
       displayName: limits
       href: how-to-manage-quotas.md

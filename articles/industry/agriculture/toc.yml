@@ -33,7 +33,7 @@
       href: configure-rules-alerts-in-azure-farmbeats.md
     - name: ドローンの画像を取得する
       href: get-drone-imagery-in-azure-farmbeats.md
-- name: '[トラブルシューティング]'
+- name: トラブルシューティング
   items:
     - name: Azure FarmBeats のトラブルシューティング
       href: troubleshoot-azure-farmbeats.md

@@ -125,7 +125,7 @@
           href: diagnostics-extension-to-storage.md
         - name: 診断を使用したクラウド サービスのトレース
           href: cloud-services-dotnet-diagnostics-trace-flow.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: デバッグ
           items:

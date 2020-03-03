@@ -7,7 +7,7 @@
       expanded: true
     - name: Bing Search API を比較する
       href: ../Bing-Web-Search/bing-api-comparison.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: REST API
       items:
@@ -27,14 +27,8 @@
           href: quickstarts/ruby.md
     - name: SDK
       items:
-        - name: 'C#'
-          href: web-search-sdk-quickstart.md
-        - name: Java
-          href: web-sdk-java-quickstart.md
-        - name: Node.js
-          href: web-search-sdk-node-quickstart.md
-        - name: Python
-          href: web-sdk-python-quickstart.md
+        - name: Bing Web Search クライアント ライブラリ
+          href: ./quickstarts/client-libraries.md
 - name: チュートリアル
   items:
     - name: シングルページ Web アプリの作成
@@ -45,7 +39,7 @@
       href: 'https://github.com/Azure-Samples/cognitive-services-REST-api-samples'
     - name: SDK のサンプル
       href: sdk-samples.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: 回答のフィルター処理
       href: filter-answers.md

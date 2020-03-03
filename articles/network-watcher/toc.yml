@@ -138,7 +138,7 @@
           href: network-watcher-nsg-auditing-powershell.md
     - name: VPN ゲートウェイと接続を診断する
       items:
-        - name: '[トラブルシューティング]'
+        - name: トラブルシューティング
           items:
             - name: Azure PowerShell
               href: network-watcher-troubleshoot-manage-powershell.md

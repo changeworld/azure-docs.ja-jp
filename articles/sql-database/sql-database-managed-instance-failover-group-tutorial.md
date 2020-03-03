@@ -474,7 +474,7 @@ Azure portal を使用してセカンダリ マネージド インスタンス�
 
    ![セカンダリ MI ネットワーク](media/sql-database-managed-instance-failover-group-tutorial/networking-settings-for-secondary-mi.png)
 
-1. **[追加設定]** タブの **[geo レプリケーション]** で、 **[はい]** を選択し、_フェールオーバー セカンダリとして使用する_ようにします。 ドロップダウンからプライマリ マネージド インスタンスを選択します。 
+1. **[追加設定]** タブの **[geo レプリケーション]** で、 **[はい]** を選択し、_フェールオーバー セカンダリとして使用する_ ようにします。 ドロップダウンからプライマリ マネージド インスタンスを選択します。 
     1. 照合順序とタイム ゾーンがプライマリ マネージド インスタンスのものと一致していることを確認します。 このチュートリアルで作成されたプライマリ マネージド インスタンスでは、既定値の `SQL_Latin1_General_CP1_CI_AS` 照合順序および `(UTC) Coordinated Universal Time` タイム ゾーンが使用されていました。 
 
    ![セカンダリ MI ネットワーク](media/sql-database-managed-instance-failover-group-tutorial/secondary-mi-failover.png)
@@ -1014,7 +1014,7 @@ PowerShell を使用して、フェールオーバー グループを作成し�
 Azure portal を使用してフェールオーバーをテストします。 
 
 
-1. [Azure portal](https://portal.azure.com)内の_セカンダリ_マネージド インスタンスに移動し、[設定] で **[インスタンスのフェールオーバー グループ]** を選択します。 
+1. [Azure portal](https://portal.azure.com)内の _セカンダリ_ マネージド インスタンスに移動し、[設定] で **[インスタンスのフェールオーバー グループ]** を選択します。 
 1. どのマネージド インスタンスがプライマリであり、どのマネージド インスタンスがセカンダリであるかを確認します。 
 1. **[フェールオーバー]** を選択し、切断中の TDS セッションに関する警告で **[はい]** を選択します。 
 
@@ -1024,7 +1024,7 @@ Azure portal を使用してフェールオーバーをテストします。
 
    ![フェールオーバー後にマネージド インスタンスのロールが切り替わっている](media/sql-database-managed-instance-failover-group-tutorial/mi-switched-after-failover.png)
 
-1. 新しい_セカンダリ_ マネージド インスタンスにアクセスし、もう一度 **[フェールオーバー]** を選択して、プライマリ インスタンスをプライマリの役割にフェイルバックします。 
+1. 新しい _セカンダリ_ マネージド インスタンスにアクセスし、もう一度 **[フェールオーバー]** を選択して、プライマリ インスタンスをプライマリの役割にフェイルバックします。 
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)

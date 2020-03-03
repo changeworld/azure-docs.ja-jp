@@ -4085,12 +4085,12 @@ ms.locfileid: "76264901"
 > | アクション | Microsoft.Network/azurefirewalls/delete | Azure Firewall を削除します |
 > | アクション | Microsoft.Network/azurefirewalls/read | Azure Firewall を取得します |
 > | アクション | Microsoft.Network/azurefirewalls/write | Azure Firewall を作成または更新します |
-> | アクション | Microsoft.Network/bastionHosts/createbsl/action | 要塞内の VM の共有可能な URL を作成し、URL を返します |
+> | アクション | Microsoft.Network/bastionHosts/createbsl/action | 踏み台内の VM の共有可能な URL を作成し、URL を返します |
 > | アクション | Microsoft.Network/bastionHosts/delete | 踏み台ホストを削除します |
-> | アクション | Microsoft.Network/bastionHosts/deletebsl/action | 要塞内の指定された VM の共有可能な URL を削除します |
+> | アクション | Microsoft.Network/bastionHosts/deletebsl/action | 踏み台内の指定された VM の共有可能な URL を削除します |
 > | アクション | Microsoft.Network/bastionHosts/disconnectactivesessions/action | 踏み台ホストで特定のアクティブなセッションを切断します |
 > | アクション | Microsoft.Network/bastionHosts/getactivesessions/action | 踏み台ホストでアクティブなセッションを取得します |
-> | アクション | Microsoft.Network/bastionHosts/getbsl/action | URL が作成された場合に、要塞サブネット内の指定された VM の共有可能な URL を返します |
+> | アクション | Microsoft.Network/bastionHosts/getbsl/action | URL が作成された場合に、踏み台サブネット内の指定された VM の共有可能な URL を返します |
 > | アクション | Microsoft.Network/bastionHosts/read | 踏み台ホストを取得します |
 > | アクション | Microsoft.Network/bastionHosts/write | 踏み台ホストを作成または更新します |
 > | アクション | Microsoft.Network/bgpServiceCommunities/read | BGP サービス コミュニティを取得します。 |

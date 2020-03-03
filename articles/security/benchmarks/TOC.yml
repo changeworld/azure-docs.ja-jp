@@ -2,7 +2,7 @@
   href: index.yml
 - name: はじめに
   href: introduction.md
-- name: '[シングル サインオンの設定]'
+- name: シングル サインオンの設定
   items:
     - name: Azure セキュリティ制御の概要
       href: overview.md

@@ -1,9 +1,12 @@
 - name: Custom Vision Service のドキュメント
   href: index.yml
 - name: 概要
+  expanded: true
   items:
     - name: Custom Vision とは
       href: home.md
+    - name: 新機能
+      href: whats-new.md
 - name: クイックスタート
   items:
     - name: Web ポータルの使用

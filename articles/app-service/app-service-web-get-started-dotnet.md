@@ -15,10 +15,10 @@ ms.locfileid: "74672109"
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Azure に ASP.NET Core Web アプリを作成する
 
 > [!NOTE]
-> この記事では、Windows 上の App Service にアプリをデプロイします。 _Linux_ 上の App Service にデプロイするには、「[App Service on Linux での .NET Core Web アプリの作成](./containers/quickstart-dotnetcore.md)」をご覧ください。
+> この記事では、Windows 上の App Service にアプリをデプロイします。 _Linux_ 上の App Service にデプロイするには、「[App Service on Linux で ASP.NET Core アプリを作成する](./containers/quickstart-dotnetcore.md)」をご覧ください。
 >
 
-[Azure App Service](overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。
+[Azure App Service](overview.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。
 
 このクイック スタートでは、Azure App Service に初めての ASP.NET Core Web アプリをデプロイする方法について説明します。 完了すると、デプロイされた Web アプリケーションを含む App Service アプリと App Service プランで構成されるリソース グループが完成します。
 
@@ -45,7 +45,7 @@ Visual Studio 2019 を既にインストールしている場合:
 
    ![Web アプリ プロジェクトを構成する](./media/app-service-web-get-started-dotnet/configure-web-app-project.png)
 
-1. このクイックスタートでは、 **[Web アプリケーション]** テンプレートを選択します。 認証が **[認証なし]** に設定されていること、また、その他のオプションがオフになっていることを確認します。 **作成** を選択します。
+1. このクイックスタートでは、 **[Web アプリケーション]** テンプレートを選択します。 認証が **[認証なし]** に設定されていること、また、その他のオプションがオフになっていることを確認します。 **［作成］** を選択します
 
    ![このチュートリアルでは ASP.NET Core Razor Pages を選択](./media/app-service-web-get-started-dotnet/aspnet-razor-pages-app.png)
 
@@ -83,11 +83,11 @@ Visual Studio 2019 を既にインストールしている場合:
 
 1. **[ホスティング プランの構成]** ダイアログで、次の表の値を入力し、 **[OK]** を選択します。
 
-   | Setting | 推奨値 | 説明 |
+   | 設定 | 推奨値 | 説明 |
    |-|-|-|
    |App Service プラン| myAppServicePlan | App Service プランの名前です。 |
-   | Location | 西ヨーロッパ | Web アプリがホストされているデータ センターです。 |
-   | Size | 無料 | [価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)によって、ホスティング機能が決まります。 |
+   | 場所 | 西ヨーロッパ | Web アプリがホストされているデータ センターです。 |
+   | サイズ | Free | [価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)によって、ホスティング機能が決まります。 |
 
    ![Create App Service plan](./media/app-service-web-get-started-dotnet/app-service-plan-vs2019.png)
 
@@ -103,7 +103,7 @@ Visual Studio 2019 を既にインストールしている場合:
 
 **App Service の [新規作成]** ページで指定したアプリ名が、`http://<app_name>.azurewebsites.net` 形式の URL プレフィックスとして使用されます。
 
-**お疲れさまでした。** ASP.NET Core Web アプリを Azure App Service でライブ実行することができました。
+**お疲れさまでした。** Azure App Service で ASP.NET Core Web アプリをライブ実行することができました。
 
 ## <a name="update-the-app-and-redeploy"></a>アプリを更新して再デプロイする
 

@@ -225,6 +225,8 @@
               href: sap-ascs-ha-multi-sid-wsfc-file-share.md
             - name: (A)SCS インスタンス用の Pacemaker マルチ SID を使用した SLES
               href: high-availability-guide-suse-multi-sid.md
+            - name: A(SCS) インスタンス用の Pacemaker マルチ SID を使用した RHEL
+              href: high-availability-guide-rhel-multi-sid.md
     - name: SAP のディザスター リカバリーのための Azure Site Recovery
       href: '../../../site-recovery/site-recovery-workload.md#protect-sap'
     - name: SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ

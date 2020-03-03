@@ -47,6 +47,8 @@
       items:
         - name: 機能更新プログラム
           href: azure-ad-roles-features.md
+        - name: Azure AD ロール用の PowerShell
+          href: powershell-for-azure-ad-roles.md
         - name: ロールを割り当てる
           href: pim-how-to-add-role-to-user.md
         - name: 要求の承認

@@ -12,6 +12,8 @@
           href: prepay-sql-data-warehouse-charges.md
         - name: 仮想マシンの予約を購入する
           href: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+        - name: 専用ホストの予約を購入する
+          href: ../../virtual-machines/prepay-dedicated-hosts-reserved-instances.md
         - name: Azure Disk Storage
           href: ../../virtual-machines/linux/disks-reserved-capacity.md?toc=/azure/billing/TOC.json
         - name: Azure Storage の予約を購入する
@@ -42,10 +44,12 @@
           href: view-reservations.md
     - name: 概念
       items:
-        - name: 予約 VM インスタンスの割引
-          href: ../manage/understand-vm-reservation-charges.md
         - name: 予約の推奨事項を作成する方法
           href: reserved-instance-purchase-recommendations.md
+        - name: 予約 VM インスタンスの割引
+          href: ../manage/understand-vm-reservation-charges.md
+        - name: 予約済み専用ホストの割引
+          href: billing-understand-dedicated-hosts-reservation-charges.md
         - name: Azure Storage の予約容量の割引
           href: understand-storage-charges.md
         - name: Azure Disk Storage の予約割引

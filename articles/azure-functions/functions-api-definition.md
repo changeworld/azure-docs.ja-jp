@@ -53,7 +53,7 @@ Azure Functions での OpenAPI 2.0 (旧称 Swagger) メタデータ サポート
 |[Host](https://swagger.io/specification/#fixed-fields-15)|**関数アプリの設定** > **App Service の設定** > **概要** > **URL**|*存在しない*
 |[Paths](https://swagger.io/specification/#paths-object-29)|**統合** > **選択した HTTP メソッド**|バインディング: ルート
 |[Path Item](https://swagger.io/specification/#path-item-object-32)|**統合** > **ルート テンプレート**|バインディング: メソッド
-|[セキュリティ](https://swagger.io/specification/#security-scheme-object-112)|**キー**|*存在しない*|
+|[Security](https://swagger.io/specification/#security-scheme-object-112)|**キー**|*存在しない*|
 |operationID*|**ルート + 使用できる動詞**|ルート + 使用できる動詞|
 
 \*Operation ID は PowerApps + Flow と統合する場合のみ必要です。

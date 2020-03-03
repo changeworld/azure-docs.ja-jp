@@ -6,22 +6,18 @@
       href: private-link-overview.md
 - name: クイックスタート
   items:
-    - name: プライベート エンドポイントを作成する
-      items:
-        - name: Azure portal
-          href: create-private-endpoint-portal.md
-        - name: Azure CLI
-          href: create-private-endpoint-cli.md
-        - name: Azure PowerShell
-          href: create-private-endpoint-powershell.md
-    - name: Private Link サービスを作成する
-      items:
-        - name: Azure portal
-          href: create-private-link-service-portal.md
-        - name: Azure PowerShell
-          href: create-private-link-service-powershell.md
-        - name: Azure CLI
-          href: create-private-link-service-cli.md
+    - name: プライベート エンドポイントの作成 - ポータル
+      href: create-private-endpoint-portal.md
+    - name: プライベート エンドポイントの作成 - PowerShell
+      href: create-private-endpoint-powershell.md
+    - name: プライベート エンドポイントの作成 - Azure CLI
+      href: create-private-endpoint-cli.md
+    - name: プライベート リンク サービスの作成 - ポータル
+      href: create-private-link-service-portal.md
+    - name: プライベート リンク サービスの作成 - PowerShell
+      href: create-private-link-service-powershell.md
+    - name: プライベート リンク サービスの作成 - Azure CLI
+      href: create-private-link-service-cli.md
 - name: 概念
   items:
     - name: プライベート エンドポイント
@@ -40,7 +36,7 @@
       href: disable-private-link-service-network-policy.md
     - name: プライベート エンドポイントを管理する
       href: manage-private-endpoint.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: プライベート エンドポイントの接続に関する問題のトラブルシューティング
           href: troubleshoot-private-endpoint-connectivity.md

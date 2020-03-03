@@ -43,6 +43,8 @@
       href: active-directory-data-storage-australia-newzealand.md
     - name: Microsoft 365 Government の最新情報
       href: whats-new-microsoft-365-government.md
+    - name: Azure AD と ADDS の比較
+      href: active-directory-compare-azure-ad-to-ad.md
     - name: Azure AD 操作のリファレンス
       items:
         - name: はじめに

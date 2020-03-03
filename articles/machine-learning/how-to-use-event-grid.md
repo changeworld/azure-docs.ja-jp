@@ -94,7 +94,7 @@ az eventgrid event-subscription create \
 
     ![select-event-runcomplete](./media/how-to-use-event-grid/select-event-runcomplete.png)
 
-1. また、フィルターを追加して、イベントの種類のサブセットでロジック アプリのみトリガーすることもできます。 次のスクリーンショットでは、 __/datadriftID/runs/__ の__プレフィックス フィルター__が使用されています。
+1. また、フィルターを追加して、イベントの種類のサブセットでロジック アプリのみトリガーすることもできます。 次のスクリーンショットでは、 __/datadriftID/runs/__ の __プレフィックス フィルター__ が使用されています。
 
     ![filter-events](./media/how-to-use-event-grid/filtering-events.png)
 

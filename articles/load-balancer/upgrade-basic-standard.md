@@ -7,14 +7,14 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 179d0ff8143b526e100b89cffbbac0bbc29ca3e1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 83cac961eb3cd700451f16c684c64185b35e9bd3
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776184"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616751"
 ---
-# <a name="upgrade-azure-public-load-balancer-from-basic-sku-to-standard-sku"></a>Basic SKU から Standard SKU への Azure Public Load Balancer のアップグレード
+# <a name="upgrade-azure-public-load-balancer"></a>Azure Public Load Balancer をアップグレードする
 [Azure Standard Load Balancer](load-balancer-overview.md) では、豊富な機能とゾーンの冗長性による高可用性が提供されます。 Load Balancer SKU の詳細については、[比較表](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)を参照してください。
 
 アップグレードには、次の 2 つの段階があります。
@@ -28,8 +28,8 @@ ms.locfileid: "76776184"
 
 次の処理を行う Azure PowerShell スクリプトが用意されています。
 
-* 指定したリソース グループと場所に Standard Public SKU Load Balancer を作成します。
-* Basic SKU Public Load Balancer の構成を、新しく作成された Standard Public Load Balancer にシームレスにコピーします。
+* 指定したリソース グループと場所に Standard SKU ロード バランサーを作成します。
+* 新しく作成した Standard SKU ロード バランサーに Basic SKU ロード バランザーの構成をシームレスにコピーします。
 
 ### <a name="caveatslimitations"></a>注意事項と制限事項
 
@@ -70,18 +70,9 @@ Azure Az モジュールがインストールされていて、それらをア�
 
 1. `Import-Module Az` を使用して Az モジュールをインポートします。
 
-1. `Get-Help AzureLBUpgrade.ps1` を実行して必要なパラメーターを調べます。
+1. 必要なパラメーターを確認します。
 
-   ```
-   AzurePublicLBUpgrade.ps1
-    -oldRgName <name of the Resource Group where Basic Load Balancer exists>
-    -oldLBName <name of existing Basic Load Balancer>
-    -newrgName <Name of the Resource Group where the new Standard Load Balancer will be created>
-    -newlocation <Name of the location where the new Standard Load Balancer will be created>
-    -newLBName <Name of the Standard Load Balancer to be created>
-   ```
-   スクリプトのパラメーターは次のとおりです。
-   * **oldRgName: [文字列]:必須** – アップグレードする既存の Basic Load Balancer のリソース グループです。 この文字列値を検索するには、Azure portal に移動し、Basic Load Balancer ソースを選択して、ロードバランサーの **[概要]** をクリックします。 そのページにリソース グループがあります。
+   * **oldRgName: [文字列]:必須** – アップグレードする既存の Basic Load Balancer のリソース グループです。 この文字列値を検索するには、Azure portal に移動し、Basic Load Balancer のソースを選択し、ロード バランサーの **[概要]** をクリックします。 そのページにリソース グループがあります。
    * **oldLBName: [文字列]:必須** – アップグレードする既存の Basic Balancer の名前です。 
    * **newrgName: [文字列]:必須** – Standard Load Balancer が作成されるリソース グループです。 新しいリソース グループまたは既存のものを指定できます。 既存のリソース グループを選択する場合は、Load Balancer の名前がリソース グループ内で一意でなければならないことに注意してください。 
    * **newlocation: [文字列]:必須** – Standard Load Balancer が作成される場所です。 他の既存のリソースとの関連付けを強化するために、選択した Basic Load Balancer の同じ場所を Standard Load Balancer に継承することをお勧めします。

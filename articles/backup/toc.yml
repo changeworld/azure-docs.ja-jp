@@ -92,7 +92,7 @@
           href: backup-create-rs-vault.md
         - name: 削除
           href: backup-azure-delete-vault.md
-        - name: '[詳細ビュー]'
+        - name: 詳細ビュー
           href: backup-azure-move-recovery-services-vault.md
         - name: 管理する
           href: backup-azure-manage-windows-server.md
@@ -114,7 +114,7 @@
               href: backup-azure-vms-encryption.md
             - name: Linux を実行中の Azure VM のアプリ整合性バックアップを構成する
               href: backup-azure-linux-app-consistent.md
-        - name: '[復元]'
+        - name: 復元
           items:
             - name: ポータルで Azure VM を復元する
               href: backup-azure-arm-restore-vms.md
@@ -134,7 +134,7 @@
           href: backup-azure-sql-database.md
         - name: バックアップ
           href: backup-sql-server-database-azure-vms.md
-        - name: '[復元]'
+        - name: 復元
           href: restore-sql-database-azure-vm.md
         - name: 管理する
           href: manage-monitor-sql-database-backup.md
@@ -148,7 +148,7 @@
               href: backup-configure-vault.md
             - name: Windows Server のシステム状態のバックアップ
               href: backup-azure-system-state.md
-        - name: '[復元]'
+        - name: 復元
           items:
             - name: Azure から Windows Server へのファイルの回復
               href: backup-azure-restore-windows-server.md
@@ -162,7 +162,7 @@
           items:
             - name: バックアップ
               href: backup-afs.md
-            - name: '[復元]'
+            - name: 復元
               href: restore-afs.md
             - name: 管理する
               href: manage-afs-backup.md
@@ -170,7 +170,7 @@
           items:
             - name: バックアップ
               href: backup-afs-cli.md
-            - name: '[復元]'
+            - name: 復元
               href: restore-afs-cli.md
             - name: 管理する
               href: manage-afs-backup-cli.md
@@ -178,7 +178,7 @@
           items:
             - name: バックアップ
               href: backup-azure-afs-automation.md
-            - name: '[復元]'
+            - name: 復元
               href: restore-afs-powershell.md
             - name: 管理する
               href: manage-afs-powershell.md
@@ -186,7 +186,7 @@
           items:
             - name: バックアップ
               href: backup-azure-file-share-rest-api.md
-            - name: '[復元]'
+            - name: 復元
               href: restore-azure-file-share-rest-api.md
             - name: 管理する
               href: manage-azure-file-share-rest-api.md
@@ -196,7 +196,7 @@
           href: sap-hana-db-about.md
         - name: バックアップ
           href: backup-azure-sap-hana-database.md
-        - name: '[復元]'
+        - name: 復元
           href: sap-hana-db-restore.md
         - name: 管理する
           href: sap-hana-db-manage.md
@@ -336,7 +336,7 @@
           href: backup-azure-security-feature.md
         - name: 組み込みのセキュリティ制御
           href: backup-security-controls.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: Azure VM
           href: backup-azure-vms-troubleshoot.md

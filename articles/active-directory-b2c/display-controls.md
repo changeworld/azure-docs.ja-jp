@@ -22,7 +22,7 @@ ms.locfileid: "77136337"
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**表示コントロール**は、特別な機能を備え、Azure Active Directory B2C (Azure AD B2C) バックエンド サービスと作用するユーザー インターフェイス要素です。 これにより、ユーザーがバックエンドで[検証技術プロファイル](validation-technical-profile.md)を呼び出すページで操作を実行できるようになります。 ページに表示コントロールが表示され、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって参照されます。
+**表示コントロール**は、特別な機能を備え、Azure Active Directory B2C (Azure AD B2C) バックエンド サービスと作用するユーザー インターフェイス要素です。 これにより、バックエンドで[検証技術プロファイル](validation-technical-profile.md)が呼び出されるページで、ユーザーがアクションを実行できるようになります。 ページに表示コントロールが表示され、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって参照されます。
 
 次の図は、プライマリとセカンダリの電子メール アドレスを検証する 2 つの表示コントロールを含むセルフアサート サインアップ ページを示しています。
 
@@ -60,7 +60,7 @@ ms.locfileid: "77136337"
 | OutputClaims | 0:1 | **OutputClaims** は、この **DisplayControl** のために一時的に保存されるクレームを表すために使用されます。 |
 | Actions | 0:1 | **Actions** は、フロントエンドで発生しているユーザー アクションに対して呼び出す検証技術プロファイルを一覧表示するために使用されます。 |
 
-### <a name="input-claims"></a>入力クレーム
+### <a name="input-claims"></a>入力要求
 
 表示コントロールでは、**InputClaims** 要素を使用して、ユーザーから収集するクレームの値をページ上に事前入力できます。 この表示コントロールを参照するセルフアサート技術プロファイルでは、どのような **InputClaimsTransformations** でも定義することができます。
 
@@ -86,7 +86,7 @@ ms.locfileid: "77136337"
 <DisplayClaim ClaimTypeReferenceId="otpCode" ControlClaimType="VerificationCode" Required="true" />
 ```
 
-### <a name="output-claims"></a>出力クレーム
+### <a name="output-claims"></a>出力要求
 
 表示コントロールの**クレーム出力**は、次のオーケストレーション ステップには送信されません。 これらは、現在の表示コントロール セッションに対してのみ一時的に保存されます。 これらの一時的なクレームは、同じ表示コントロールの異なるアクション間で共有できます。
 

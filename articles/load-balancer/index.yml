@@ -72,7 +72,7 @@ landingContent:
       url: load-balancer-get-started-internet-availability-zones-zonal-portal.md
     - text: 複数の IP 構成での負荷分散
       url: load-balancer-multiple-ip.md
-- title: '[トラブルシューティング]'
+- title: トラブルシューティング
   linkLists:
   - linkListType: concept
     links:

@@ -72,7 +72,7 @@ landingContent:
       url: traffic-manager-point-internet-domain.md
     - text: パフォーマンスに関する考慮事項
       url: traffic-manager-performance-considerations.md
-- title: '[トラブルシューティング]'
+- title: トラブルシューティング
   linkLists:
   - linkListType: how-to-guide
     links:

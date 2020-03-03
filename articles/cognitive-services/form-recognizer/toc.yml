@@ -1,6 +1,7 @@
 - name: Form Recognizer のドキュメント
   href: index.yml
 - name: 概要
+  expanded: true
   items:
     - name: Form Recognizer とは
       href: overview.md
@@ -45,6 +46,8 @@
   items:
     - name: トレーニング データ セットの作成
       href: build-training-data-set.md
+    - name: サンプル ラベル付けツールのデプロイ
+      href: deploy-label-tool.md
     - name: コンテナーの使用
       items:
         - name: コンテナーのインストールと実行

@@ -23,7 +23,7 @@
           href: azure-to-azure-tutorial-failover-failback.md
         - name: フェールバックを実行する
           href: azure-to-azure-tutorial-failback.md
-    - name: '[詳細ビュー]'
+    - name: 詳細ビュー
       items:
         - name: Azure VM を別のリージョンに移動する
           href: azure-to-azure-tutorial-migrate.md

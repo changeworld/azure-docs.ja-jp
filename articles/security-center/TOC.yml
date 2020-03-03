@@ -6,8 +6,16 @@
       href: security-center-intro.md
     - name: サポートされているプラットフォーム
       href: security-center-os-coverage.md
-    - name: サポートされている機能
-      href: security-center-services.md
+    - name: Security Center の機能
+      items:
+        - name: VM を対象とする機能
+          href: security-center-services.md
+        - name: Azure PaaS リソースを対象とする機能
+          href: features-paas.md
+    - name: セキュリティに関する推奨事項
+      href: recommendations-reference.md
+    - name: セキュリティ アラートと意図のキル チェーン
+      href: alerts-reference.md
 - name: クイックスタート
   expanded: true
   items:
@@ -49,7 +57,7 @@
           href: azure-container-registry-integration.md
         - name: Azure Kubernetes Service との統合
           href: azure-kubernetes-service-integration.md
-    - name: 脅威検出アラートとインシデント
+    - name: 脅威の防止とセキュリティ アラート
       items:
         - name: セキュリティ アラートの概要
           href: security-center-alerts-overview.md
@@ -59,16 +67,8 @@
           href: security-center-managing-and-responding-alerts.md
         - name: セキュリティ インシデントを管理する
           href: security-center-incident.md
-        - name: VM とサーバーの脅威検出
-          href: security-center-alerts-iaas.md
-        - name: クラウド アプリとコンテナーの脅威検出
-          href: security-center-alerts-compute.md
-        - name: データ サービスの脅威検出
-          href: security-center-alerts-data-services.md
-        - name: Azure サービス レイヤーの脅威検出
-          href: security-center-alerts-service-layer.md
-        - name: Azure WAF と Azure DDoS Protection の脅威検出アラート
-          href: security-center-alerts-integration.md
+        - name: Azure Security Center での脅威の防止
+          href: threat-protection.md
         - name: クラウドのスマート アラートの関連付け (インシデント)
           href: security-center-alerts-cloud-smart.md
         - name: セキュリティ アラート マップと脅威インテリジェンス

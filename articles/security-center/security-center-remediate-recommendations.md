@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 325c68e5e4531e5519596bea00c370c26460a8ed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 6863f4bbfc6aabc4e7bf4314ad26dd4590d31362
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981910"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603506"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Azure Security Center の修復レコメンデーション
 
@@ -38,7 +38,7 @@ ms.locfileid: "75981910"
 
 ## クイック修復のレコメンデーション<a name="one-click"></a>
 
-クイック修復を使用すると、複数のリソースに関するレコメンデーションを迅速に修復できます。 これは、特定のレコメンデーションにのみ使用できます。 クイック修復によってレコメンデーションが簡単になり、セキュリティ スコアをすばやく向上させ、環境内のセキュリティを強化することができます。
+クイック修復を使用すると、複数のリソースに関するレコメンデーションを迅速に修復できます。 これは、特定のレコメンデーションにのみ使用できます。 クイック修復によって修復が簡単になり、セキュリティ スコアをすばやく向上させ、環境内のセキュリティを強化することができます。
 
 クイック修復レコメンデーションを実装するには、次の手順に従います。
 
