@@ -1,7 +1,7 @@
 ---
 title: AI エンリッチメントの設計に関するヒント
 titleSuffix: Azure Cognitive Search
-description: Azure コグニティブ検索で AI エンリッチメント パイプラインをセットアップするためのヒントとトラブルシューティング。
+description: Azure Cognitive Search で AI エンリッチメント パイプラインをセットアップするためのヒントとトラブルシューティング。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -17,7 +17,7 @@ ms.locfileid: "74113833"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search における AI エンリッチメントに関するヒント
 
-この記事では、Azure コグニティブ検索で AI エンリッチメント機能を使い始めてから利用を続けるためのヒントやコツの一覧を示します。 
+この記事では、Azure Cognitive Search で AI エンリッチメント機能を使い始めてから利用を続けるためのヒントやコツの一覧を示します。 
 
 まだ[AI エンリッチメント API を呼び出す方法を学習するチュートリアル](cognitive-search-quickstart-blob.md)を行っていない場合は、AI エンリッチメントを BLOB データ ソースに適用する練習のために、このチュートリアルを実行してください。
 
@@ -30,7 +30,7 @@ ms.locfileid: "74113833"
 
 ## <a name="tip-2-make-sure-your-data-source-credentials-are-correct"></a>ヒント 2: データ ソースの資格情報が正しいことを確認する
 データ ソース接続は、それを使用するインデクサーを定義するまでは検証されません。 インデクサーがデータにアクセスできないというエラーが表示される場合は、次の点を確認してください。
-- 接続文字列正しい。 特に、SAS トークンを作成している場合は、Azure コグニティブ検索の所定の形式を使用するようにしてください。 サポートされているさまざまなフォーマットについては、「[資格情報を指定する方法](
+- 接続文字列正しい。 特に、SAS トークンを作成している場合は、Azure Cognitive Search の所定の形式を使用するようにしてください。 サポートされているさまざまなフォーマットについては、「[資格情報を指定する方法](
 https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage#how-to-specify-credentials)」のセクションを参照してください。
 - インデクサー内のコンテナー名が正しい。
 
