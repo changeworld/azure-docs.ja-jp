@@ -54,7 +54,7 @@
       href: configure-webhook-subscriber-auth.md
     - name: ID 認証の構成
       href: configure-identity-auth.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       href: troubleshoot.md
 - name: リファレンス
   items:
