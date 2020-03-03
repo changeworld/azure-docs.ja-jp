@@ -240,7 +240,7 @@
         - name: Jenkins プラグインを使用したデプロイ
           href: /azure/jenkins/jenkins-azure-functions-deploy
           maintainContext: true
-    - name: '[構成]'
+    - name: 構成
       items:
         - name: 関数アプリの管理
           href: functions-how-to-use-azure-function-app-settings.md
@@ -312,7 +312,7 @@
           href: functions-create-serverless-api.md
         - name: オンプレミスのリソースの管理
           href: functions-hybrid-powershell.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: ストレージのトラブルシューティング
           href: functions-recover-storage-account.md
