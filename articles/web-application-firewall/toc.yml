@@ -110,7 +110,7 @@
           href: ./afds/waf-front-door-tutorial-geo-filtering.md
         - name: 監視とログ記録
           href: ./afds/waf-front-door-monitor.md
-- name: '[トラブルシューティング]'
+- name: トラブルシューティング
   items:
     - name: Application Gateway
       items:
