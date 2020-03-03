@@ -429,7 +429,7 @@
           href: media-services-dotnet-check-job-progress-with-queues.md
         - name: Webhook を使用したジョブ通知の監視
           href: media-services-dotnet-check-job-progress-with-webhooks.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: よく寄せられる質問
           href: media-services-frequently-asked-questions.md
