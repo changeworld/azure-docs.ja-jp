@@ -255,7 +255,7 @@
       items:
         - name: 概要
           href: ../windows/disk-encryption-overview.md
-        - name: '[トラブルシューティング]'
+        - name: トラブルシューティング
           href: ../windows/disk-encryption-troubleshooting.md
         - name: よく寄せられる質問
           href: ../windows/disk-encryption-faq.md
@@ -263,7 +263,7 @@
       items:
         - name: 概要
           href: ../linux/disk-encryption-overview.md
-        - name: '[トラブルシューティング]'
+        - name: トラブルシューティング
           href: ../linux/disk-encryption-troubleshooting.md
         - name: よく寄せられる質問
           href: ../linux/disk-encryption-faq.md
