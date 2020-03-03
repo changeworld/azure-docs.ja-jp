@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 12/05/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 6615f166ced4a93115f9cbaae1c6ce5b57cf57bc
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: a7b2627b5837a124ebbcd76783bb49679cbe6313
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892993"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650284"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Bing Web Search API とは
 
@@ -26,7 +26,7 @@ Bing Web Search API は、ユーザーのクエリにすぐに回答する RESTf
 
 しくみを確認するには、 [Bing Web Search API のデモ](https://azure.microsoft.com/services/cognitive-services/bing-web-search-api/)を試してください。
 
-## <a name="features"></a>機能  
+## <a name="features"></a>[機能]  
 
 Bing Web Search では、インスタント アンサーにアクセスできるだけではありません。 ユーザーの検索結果をカスタマイズできるさまざまな機能も利用できます。
 
@@ -40,15 +40,15 @@ Bing Web Search では、インスタント アンサーにアクセスできる
 
 ## <a name="workflow"></a>ワークフロー
 
-Bing Web Search API は、HTTP 要求を作成して JSON 応答を解析できる任意プログラミング言語から簡単に呼び出すことができます。 このサービスには、[REST API](quickstarts/python.md) または [Bing Web Search SDK](web-sdk-python-quickstart.md) を使用してアクセスできます。
+Bing Web Search API は、HTTP 要求を作成して JSON 応答を解析できる任意プログラミング言語から簡単に呼び出すことができます。 このサービスには、[REST API](quickstarts/python.md) または [Bing Web Search クライアント ライブラリ](./quickstarts/client-libraries.md)を使用してアクセスできます。
 
 1. Bing Search API に使用する [Azure リソース](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を作成します。 Azure サブスクリプションをお持ちでない場合は、[無料のアカウント](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)を作成できます。  
 2. [要求を Bing Web Search API](quickstarts/python.md) に送信します。
 3. JSON 応答を解析します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* Bing Web Search API を初めて呼び出す場合は、[Python のクイック スタート](quickstarts/python.md)を参照してください。  
+* Bing Web Search API を初めて呼び出す場合は、[Python のクイック スタート](./quickstarts/client-libraries.md?pivots=programming-language-python)を参照してください。  
 * [シングルページ Web アプリの作成](tutorial-bing-web-search-single-page-app.md)。
 * [Web Search API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)のドキュメントを参照してください。  
 * Bing Web Search の[使用と表示に関する要件](UseAndDisplayRequirements.md)の詳細を参照してください。  

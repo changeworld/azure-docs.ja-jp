@@ -1,5 +1,5 @@
 ---
-title: Azure portal 内で Azure Data Box Gateway を接続、構成、アクティブ化する | Microsoft Docs
+title: Azure portal で Azure Data Box Gateway を接続、構成、アクティブ化する
 description: Data Box Gateway をデプロイする 3 番目のチュートリアルでは、ご利用の仮想デバイスを接続、設定、およびアクティブ化する方法について説明します。
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 898cb63f8868ce2abaee8784214322edf9a56997
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 33333f8df1e4809a330815e34074d1bca556cd14
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000319"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561835"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>チュートリアル:Azure Data Box Gateway を接続、設定、アクティブ化する
 
@@ -61,7 +61,7 @@ Data Box Gateway を構成および設定する前に、以下のことを確認
 
 ## <a name="set-up-and-activate-the-virtual-device"></a>仮想デバイスを設定してアクティブ化する
  
-ダッシュボードには、仮想デバイスを構成して Data Box Gateway サービスに登録するために必要なさまざまな設定が表示されます。 **デバイス名**、**ネットワーク設定**、**Web プロキシの設定**、**時刻の設定**はオプションです。 必須の設定は、**[クラウド設定]** のみです。
+ダッシュボードには、仮想デバイスを構成して Data Box Gateway サービスに登録するために必要なさまざまな設定が表示されます。 **デバイス名**、**ネットワーク設定**、**Web プロキシの設定**、**時刻の設定**はオプションです。 必須の設定は、 **[クラウド設定]** のみです。
    
 ![ローカル Web UI の [ダッシュボード] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image5.png)
 
@@ -89,9 +89,9 @@ Data Box Gateway を構成および設定する前に、以下のことを確認
    **[Web プロキシ]** ページで、次の操作を行います。
    
    1. **[Web プロキシ URL]**  ボックスに、`http://&lt;host-IP address or FQDN&gt;:Port number` という形式の URL を入力します。 HTTPS URL はサポートされていません。
-   2. **[認証]** で、**[なし]** または **[NTLM]** を選択します。
+   2. **[認証]** で、 **[なし]** または **[NTLM]** を選択します。
    3. 認証を使用している場合は、**ユーザー名**と**パスワード**を入力します。
-   4. 構成された Web プロキシ設定を検証して適用するには、**[適用]** を選択します。
+   4. 構成された Web プロキシ設定を検証して適用するには、 **[適用]** を選択します。
 
 4. (省略可能) 左側のウィンドウで **[時刻の設定]** を選択し、タイム ゾーンとデバイスのプライマリおよびセカンダリ NTP サーバーを構成します。 
 
@@ -107,15 +107,15 @@ Data Box Gateway を構成および設定する前に、以下のことを確認
     2. デバイスの **[プライマリ NTP サーバー]** を指定するか、既定値の `time.windows.com` をそのまま使用します。   
         データ センターからインターネットへの NTP トラフィックがネットワークで許可されていることを確認します。
 
-    3. オプションで、**[セカンダリ NTP サーバー]** ボックスにデバイスのセカンダリ サーバーを入力します。
+    3. オプションで、 **[セカンダリ NTP サーバー]** ボックスにデバイスのセカンダリ サーバーを入力します。
 
-    4. 構成された時刻の設定を検証および適用するには、**[適用]** を選択します。
+    4. 構成された時刻の設定を検証および適用するには、 **[適用]** を選択します。
 
 6. 左側のウィンドウで **[クラウド設定]** を選択し、Azure portal の Data Box Gateway サービスでデバイスをアクティブ化します。
     
     1. **[アクティブ化キー]** ボックスに、Data Box Gateway の [[アクティブ化キーの取得]](data-box-gateway-deploy-prep.md#get-the-activation-key) で取得した**アクティブ化キー**を入力します。
 
-    2. **[アクティブ化]** を選択します。
+    2. **[アクティブ化]** を選びます。
        
          ![ローカル Web UI の [クラウド設定] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image10a.png)
     
@@ -132,7 +132,7 @@ Data Box Gateway を構成および設定する前に、以下のことを確認
 
 デバイスの設定が完了しました。 これで、デバイスで共有を追加できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

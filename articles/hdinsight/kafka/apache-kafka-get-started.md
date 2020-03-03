@@ -5,21 +5,21 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: mvc
 ms.topic: quickstart
-ms.date: 10/01/2019
-ms.openlocfilehash: 76360ec8de645d926daec0db878906c73d0da948
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.custom: mvc
+ms.date: 02/24/2020
+ms.openlocfilehash: 286b16d850b1c1c26069c50cd4045bf7f3dd3c14
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030025"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623498"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure HDInsight 内に Apache Kafka クラスターを作成する
 
-Apache Kafka は、オープンソースの分散ストリーミング プラットフォームです。 発行/サブスクライブ メッセージ キューと同様の機能を備えているため、メッセージ ブローカーとして多く使われています。
+[Apache Kafka](./apache-kafka-introduction.md) は、オープンソースの分散ストリーミング プラットフォームです。 発行/サブスクライブ メッセージ キューと同様の機能を備えているため、メッセージ ブローカーとして多く使われています。
 
-このクイックスタートでは、Azure Portal を使用して [Apache Kafka](https://kafka.apache.org) クラスターを作成する方法について説明します。 Apache Kafka を使って、付属のユーティリティでメッセージを送受信する方法についても説明します。
+このクイックスタートでは、Azure portal を使用して Apache Kafka クラスターを作成する方法について説明します。 Apache Kafka を使って、付属のユーティリティでメッセージを送受信する方法についても説明します。 使用できる構成の詳細については、[HDInsight でクラスターを設定する方法](../hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。 ポータルを使用したクラスター作成の詳細については、[ポータルでクラスターを作成する方法](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照してください。
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -33,23 +33,25 @@ SSH クライアント 詳細については、[SSH を使用して HDInsight (A
 
 ## <a name="create-an-apache-kafka-cluster"></a>Apache Kafka クラスターを作成する
 
-HDInsight クラスターで Apache Kafka を作成するには、次の手順に従います。
+HDInsight で Apache Kafka クラスターを作成するには、次の手順に従います。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-1. 左側のメニューから、 **[+ リソースの作成]**  >  **[Analytics]**  >  **[HDInsight]** に移動します。
+1. 上部のメニューで、 **[+ リソースの作成]** を選択します。
 
-    ![Azure portal での HDInsight リソースの作成](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
+    ![Azure portal での HDInsight リソースの作成](./media/apache-kafka-get-started/azure-portal-create-resource.png)
 
-1. **[基本]** で次の値を入力または選択します。
+1. **[分析]**  >  **[Azure HDInsight]** の順に選択して **[HDInsight クラスターの作成]** ページに移動します。
+
+1. **[基本]** タブで次の情報を指定します。
 
     |プロパティ  |説明  |
     |---------|---------|
-    |サブスクリプション    |  Azure サブスクリプションを選択します。 |
+    |サブスクリプション    |  ドロップダウン リストから、このクラスターに使用する Azure サブスクリプションを選択します。 |
     |Resource group     | リソース グループを作成するか、既存のリソース グループを選択します。  リソース グループとは、Azure コンポーネントのコンテナーです。  この場合、リソース グループには、HDInsight クラスターおよび依存する Azure ストレージ アカウントが含まれています。 |
-    |クラスター名   | Hadoop クラスターの名前を入力します。 HDInsight のすべてのクラスターでは同じ DNS 名前空間が共有されるため、この名前は一意である必要があります。 この名前は、文字、数字、ハイフンを含む最大 59 文字で構成できます。 名前の先頭と末尾の文字をハイフンにすることはできません。 |
-    |Location    | クラスターを作成する Azure の場所を選択します。  パフォーマンスを向上させるため、お近くの場所を選択してください。 |
-    |クラスターの種類| **[クラスターの種類の選択]** を選択します。 クラスターの種類として **[Kafka]** を選択します。|
+    |クラスター名   | グローバルに一意の名前を入力します。 この名前は、文字、数字、ハイフンを含む最大 59 文字で構成できます。 名前の先頭と末尾の文字をハイフンにすることはできません。 |
+    |リージョン    | クラスターの作成先となるリージョンをドロップダウン リストから選択します。  パフォーマンスを向上させるため、お近くのリージョンを選択してください。 |
+    |クラスターの種類| **[クラスターの種類の選択]** を選択して一覧を開きます。 その一覧から、クラスターの種類として **[Kafka]** を選択します。|
     |Version|クラスターの種類には、既定のバージョンが指定されます。 異なるバージョンを指定したい場合は、ドロップダウン リストから選択してください。|
     |クラスター ログイン ユーザー名とパスワード    | 既定のログイン名は **admin** です。パスワードは 10 文字以上で、数字、大文字、小文字、英数字以外の文字 (' " ` を除く\) が少なくとも 1 つずつ含まれる必要があります。 "Pass@word1" などのよく使われるパスワードを**指定していない**ことを確認してください。|
     |Secure Shell (SSH) ユーザー名 | 既定のユーザー名は **sshuser** です。  SSH ユーザー名に別の名前を指定できます。 |
@@ -100,15 +102,13 @@ HDInsight クラスターで Apache Kafka を作成するには、次の手順�
 
 ## <a name="connect-to-the-cluster"></a>クラスターに接続する
 
-1. Apache Kafka クラスターのプライマリ ヘッド ノードに接続するには、次のコマンドを使用します。 `sshuser` を SSH ユーザー名で置き換えます。 `mykafka` を実際の Apache Kafka クラスターの名前に置き換えます。
+1. [ssh コマンド](../hdinsight-hadoop-linux-use-ssh-unix.md)を使用してクラスターに接続します。 次のコマンドを編集して CLUSTERNAME をクラスターの名前に置き換えてから、そのコマンドを入力します。
 
-    ```bash
-    ssh sshuser@mykafka-ssh.azurehdinsight.net
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. クラスターに初めて接続すると、ホストの信頼性を確立できないという警告が SSH クライアントに表示されることがあります。 プロンプトが表示されたら、「__yes__」と入力して、__Enter__ キーを押し、SSH クライアントの信頼済みサーバーの一覧にこのホストを追加します。
-
-3. メッセージが表示されたら、SSH ユーザーのパスワードを入力します。
+1. メッセージが表示されたら、SSH ユーザーのパスワードを入力します。
 
     接続されると、次のテキストのような情報が表示されます。
 
@@ -155,6 +155,7 @@ Kafka を使うときは、*Apache Zookeeper* ホストと "*ブローカー*" �
     ```bash
     export clusterName=$(curl -u admin:$password -sS -G "http://headnodehost:8080/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
     ```
+
     > [!Note]  
     > クラスターの外部からこのプロセスを実行している場合は、クラスター名を格納するための別の手順があります。 Azure portal からクラスター名を小文字で取得します。 その後、次のコマンドの `<clustername>` をクラスター名に置き換えて、`export clusterName='<clustername>'` を実行します。
 
@@ -295,9 +296,7 @@ Azure Portal を使用してリソース グループを削除するには:
 3. __[リソース グループの削除]__ を選択し、確認します。
 
 > [!WARNING]  
-> HDInsight クラスターの課金は、クラスターが作成されると開始し、クラスターが削除されると停止します。 課金は分単位なので、クラスターを使わなくなったら必ず削除してください。
->
-> HDInsight クラスター上の Apache Kafka を削除すると、Kafka に格納されているすべてのデータが削除されます。
+> HDInsight 上の Apache Kafka クラスターを削除すると、Kafka に格納されているすべてのデータが削除されます。
 
 ## <a name="next-steps"></a>次のステップ
 

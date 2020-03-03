@@ -5,17 +5,17 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 02/06/2020
-ms.openlocfilehash: 1449b34a9bbeb5692d25a5f84c4ee38e6c4e0a33
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.date: 02/16/2020
+ms.openlocfilehash: 1d0264a0b7ac4e97d9a2811ba61ab64fcedd6fb9
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460537"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587551"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>マッピング データ フローのビデオ チュートリアル
 
-以下に示すのは、Azure Data Factory チームによって作成された、マッピング データ フローのチュートリアル ビデオの一覧です。
+以下に示すのは、Azure Data Factory チームによって作成された、マッピング データ フローのチュートリアル ビデオの一覧です。 
 
 製品は常に更新されているため、現在の Azure Data Factory のユーザー エクスペリエンスでは、いくつかの機能が追加されたり異なったりしています。
 
@@ -32,6 +32,8 @@ ms.locfileid: "77460537"
 [Data preview quick actions (データ プレビューのクイック アクション)](https://www.youtube.com/watch?v=CP0TnNmaLA0)
 
 [Monitor and manage mapping data flow performance (マッピング データ フローのパフォーマンスの監視と管理)](https://www.youtube.com/watch?v=fktIWdJiqTk)
+
+[Benchmark timings (ベンチマークのタイミング)](http://youtu.be/6CSbWm4lRhw?hd=1)
 
 ## <a name="transformation-overviews"></a>変換の概要
 
@@ -100,6 +102,8 @@ ms.locfileid: "77460537"
 [Decrease start-up times (起動時間の短縮)](https://youtu.be/FFCbU4ujCiY?t=528)
 
 [SQL DB performance (SQL DB のパフォーマンス)](https://youtu.be/iyZT5CY3V_4)
+
+[ログ記録と監査](https://www.youtube.com/watch?v=UC__LOyuf8M)
 
 ## <a name="mapping-data-flow-scenarios"></a>マッピング データ フローのシナリオ
 

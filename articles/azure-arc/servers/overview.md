@@ -7,14 +7,14 @@ ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
 keywords: azure automation, DSC, powershell, 望ましい状態の構成, 更新管理, 変更追跡, インベントリ, Runbook, Python, グラフィカル, ハイブリッド
-ms.date: 02/12/2020
+ms.date: 02/24/2020
 ms.topic: overview
-ms.openlocfilehash: 33681d5c9e296d7c292dabbd64560e3d95c45af2
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 57b44db9c1bb9a607ad8478b7208df40441020c2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190324"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586242"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Azure Arc for servers (プレビュー) とは
 
@@ -49,8 +49,12 @@ Azure Arc for servers (プレビュー) では、特定のリージョンのみ�
 
 Azure Connected Machine エージェントでは、次のバージョンの Windows および Linux オペレーティング システムが正式にサポートされています。 
 
-- Windows Server 2012 R2 以降
+- Windows Server 2012 R2 以上 (Windows Server Core を含む)
 - Ubuntu 16.04 および 18.04
+- CentOS Linux 7
+- SUSE Linux Enterprise Server (SLES) 15
+- Red Hat Enterprise Linux (RHEL) 7
+- Amazon Linux 7
 
 >[!NOTE]
 >このプレビュー リリースの Windows 用 Connected Machine エージェントでサポートされるのは、英語を使用するように構成された Windows Server だけです。
@@ -65,6 +69,15 @@ Azure Connected Machine エージェントでは、次のバージョンの Wind
 ### <a name="azure-subscription-and-service-limits"></a>Azure サブスクリプションとサービスの制限
 
 Azure Arc for servers (プレビュー) を使用してマシンを構成する前に、Azure Resource Manager の[サブスクリプションの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)と[リソース グループの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)を確認して、接続するマシンの数を計画する必要があります。
+
+## <a name="tls-12-protocol"></a>TLS 1.2 プロトコル
+
+Azure に転送中のデータのセキュリティを確保するには、トランスポート層セキュリティ (TLS) 1.2 を使用するようにマシンを構成することを強くお勧めします。 以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。 
+
+|プラットフォーム/言語 | サポート | 詳細情報 |
+| --- | --- | --- |
+|Linux | Linux ディストリビューションでは、TLS 1.2 のサポートに関して [OpenSSL](https://www.openssl.org) に依存する傾向があります。 | [OpenSSL の Changelog](https://www.openssl.org/news/changelog.html) を参照して、使用している OpenSSL のバージョンがサポートされていることを確認してください。|
+| Windows Server 2012 R2 以降 | サポートされています。既定で有効になっています。 | [既定の設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには。|
 
 ### <a name="networking-configuration"></a>ネットワーク構成
 
@@ -122,13 +135,19 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
 ## <a name="connected-machine-agent"></a>Connected Machine エージェント
 
-Windows および Linux 用の Azure Connected Machine Agent パッケージは、以下の場所からダウンロードできます。
+Windows および Linux 用の Azure Connected Machine エージェント パッケージは、以下の場所からダウンロードできます。
 
 - Microsoft ダウンロード センターから [Windows エージェント Windows インストーラー パッケージ](https://aka.ms/AzureConnectedMachineAgent)。
 - Linux エージェント パッケージは、Microsoft の[パッケージ リポジトリ](https://packages.microsoft.com/)から、ディストリビューションに適切なパッケージ形式 (.RPM または .DEB) を使用して配布されます。
 
 >[!NOTE]
 >本プレビュー中は、Ubuntu 16.04 または 18.04 に適したパッケージが 1 つだけリリースされました。
+
+Windows および Linux 用の Azure Connected Machine エージェントは、要件に応じて、手動または自動で最新リリースにアップグレードできます。 Windows の場合は Windows Update を使用して、また、Ubuntu の場合は [apt](https://help.ubuntu.com/lts/serverguide/apt.html) コマンドライン ツールを使用して、エージェントの更新を自動的に実行できます。
+
+### <a name="agent-status"></a>エージェントの状態
+
+Connected Machine エージェントは、5 分間隔でハートビート メッセージをサービスに送信します。 15 分間受信していない場合、マシンはオフラインと見なされ、ポータルで状態が自動的に **[切断]** に変更されます。 その後、Connected Machine エージェントからハートビート メッセージを受信すると、状態は自動的に **[接続]** に変更されます。
 
 ## <a name="install-and-configure-agent"></a>エージェントをインストールして構成する
 
@@ -138,7 +157,6 @@ Windows および Linux 用の Azure Connected Machine Agent パッケージは�
 |--------|-------------|
 | 対話型 | [Azure portal からマシンを接続する方法](onboard-portal.md)に関するページの手順に従って、1 台のマシンまたは少数のマシンにエージェントを手動でインストールします。<br> Azure portal からスクリプトを生成し、マシン上で実行することによって、エージェントのインストールおよび構成手順を自動化することができます。|
 | 大規模 | [サービス プリンシパルを使用したマシンの接続](onboard-service-principal.md)に関するページに従って、複数のマシン用にエージェントをインストールして構成します。<br> この方法では、非対話形式でマシンを接続するためのサービス プリンシパルが作成されます。|
-
 
 ## <a name="next-steps"></a>次のステップ
 

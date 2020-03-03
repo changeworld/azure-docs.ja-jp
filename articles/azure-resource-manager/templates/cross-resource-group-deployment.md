@@ -119,7 +119,7 @@ ms.locfileid: "76154212"
 
 前のテンプレートをテストし、その結果を確認するには、PowerShell または Azure CLI を使用します。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 2 つのストレージ アカウントを**同じ サブスクリプション**内の 2 つのリソース グループにデプロイするには、次を使用します。
 
@@ -162,7 +162,7 @@ New-AzResourceGroupDeployment `
   -secondSubscriptionID $secondSub
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 2 つのストレージ アカウントを**同じ サブスクリプション**内の 2 つのリソース グループにデプロイするには、次を使用します。
 
@@ -317,7 +317,7 @@ az group deployment create \
 
 前のテンプレートをテストし、その結果を確認するには、PowerShell または Azure CLI を使用します。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name parentGroup -Location southcentralus
@@ -340,7 +340,7 @@ New-AzResourceGroupDeployment `
  linkedRG         String                     Linked resource group is linkedgroup
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az group create --name parentGroup --location southcentralus

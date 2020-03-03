@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 8598be504f62089cf20123918779c310b2fb8ec8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ee8dec821e8cbb4657323c167a463b94b7935ab1
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445639"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623428"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB の Cassandra API でサポートされる Apache Cassandra の機能 
 
@@ -96,7 +96,7 @@ Azure Cosmos DB の Cassandra API では、次の CQL 関数がサポートさ�
 
 ## <a name="cassandra-api-limits"></a>Cassandra API の制限
 
-Azure Cosmos DB の Cassandra API には、テーブルに格納されるデータのサイズに制限がありません。 パーティション キーの制限を確実に適用しながら、数百テラバイトまたはペタバイトのデータを格納することができます。 同様に、すべてのエンティティまたは同等の行に列数の制限はありません。 ただし、エンティティの合計サイズが 2 MB を超えることはできません。 他のすべての API の場合と同様に、パーティション キーあたりのデータが 10 GB を超えることはできません。
+Azure Cosmos DB の Cassandra API には、テーブルに格納されるデータのサイズに制限がありません。 パーティション キーの制限を確実に適用しながら、数百テラバイトまたはペタバイトのデータを格納することができます。 同様に、すべてのエンティティまたは同等の行に列数の制限はありません。 ただし、エンティティの合計サイズが 2 MB を超えることはできません。 他のすべての API の場合と同様に、パーティション キーあたりのデータが 20 GB を超えることはできません。
 
 ## <a name="tools"></a>ツール 
 

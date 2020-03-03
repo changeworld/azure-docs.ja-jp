@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3cbf0fa4a32145add0a5475f22ea0d936584c9bf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 37a82c4001dd42a4cfbbb9dabec29f28359afd75
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465198"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615399"
 ---
 # <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用して Unity iOS アプリを作成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "75465198"
 
 このクイック スタートを実行するには、以下が必要です。
 
-- <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1 以上</a>、最新バージョンの <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a>、および <a href="https://cocoapods.org" target="_blank">CocoaPods</a> がインストールされた macOS コンピューター。
+- <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1 または 2019.2</a>、最新バージョンの <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a>、および <a href="https://cocoapods.org" target="_blank">CocoaPods</a> がインストールされた macOS マシン。
 - HomeBrew を介してインストールされた Git。 `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` コマンドをターミナルに 1 行で入力します。 続けて、`brew install git` および `brew install git-lfs` を実行します。
 - 開発者向けの <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">ARKit 対応</a> iOS デバイス。
 
@@ -81,6 +81,10 @@ brew update
 brew install cocoapods --build-from-source
 brew link --overwrite cocoapods
 ```
+
+### <a name="unity-20193"></a>Unity 2019.3
+
+破壊的変更のため、Unity 2019.3 は現在、サポートされていません。 Unity 2019.1 または 2019.2 を使用してください。
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

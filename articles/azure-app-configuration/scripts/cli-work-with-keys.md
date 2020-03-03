@@ -1,36 +1,34 @@
 ---
 title: Azure CLI のサンプル スクリプト - Azure App Configuration ストアに格納されているキー/値を操作する
 titleSuffix: Azure App Configuration
-description: Azure App Configuration ストアに格納されているキー/値の操作について取り上げます。
+description: Azure CLI スクリプトを使用して、App Configuration ストアのキー値を作成、表示、更新、および削除します
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: maiye
-editor: ''
 ms.service: azure-app-configuration
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: azure-app-configuration
-ms.date: 11/08/2019
+ms.date: 02/19/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 931c2f738556404e2d58381f7152acb0613a057b
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 1a4edabe666a554ccd01d110f0f71226221dfc67
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468153"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523651"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Azure App Configuration ストアに格納されているキー/値を操作する
 
-このサンプル スクリプトでは、Azure App Configuration ストアに新しいキー/値を作成します。さらに、既にあるすべてのキー/値をリストし、新しく作成したキーの値を更新して、最後にそれを削除します。
+このサンプル スクリプトは、次の方法を示しています。
+* 新しいキーと値のペアを作成する
+* 既存のすべてのキーと値のペアを一覧表示する
+* 新しく作成されたキーの値を更新する
+* 新しいキーと値のペアを削除する
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+この記事では、Azure CLI バージョン 2.0 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -81,13 +79,13 @@ az appconfig kv list --name $appConfigName
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
-このスクリプトでは、次のコマンドを使用して、App Configuration ストアに格納されているキーと値を操作します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
+次の表に、サンプル スクリプトに使用されているコマンドの一覧を示します。 
 
 | command | Notes |
 |---|---|
-| [az appconfig kv set](/cli/azure/appconfig/kv#az-appconfig-kv-set) | キー/値を作成または更新します。 |
-| [az appconfig kv list](/cli/azure/appconfig/kv#az-appconfig-kv-list) | App Configuration ストアに格納されているキーと値をリストします。 |
-| [az appconfig kv delete](/cli/azure/appconfig/kv#az-appconfig-kv-delete) | キー/値を削除します。 |
+| [az appconfig kv set](/cli/azure/appconfig/kv#az-appconfig-kv-set) | キーと値のペアを作成または更新します。 |
+| [az appconfig kv list](/cli/azure/appconfig/kv#az-appconfig-kv-list) | App Configuration ストア内のキーと値のペアを一覧表示します。 |
+| [az appconfig kv delete](/cli/azure/appconfig/kv#az-appconfig-kv-delete) | キーと値のペアを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

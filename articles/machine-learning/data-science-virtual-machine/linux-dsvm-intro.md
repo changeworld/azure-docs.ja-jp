@@ -1,5 +1,6 @@
 ---
 title: クイック スタート:CentOS データ サイエンス仮想マシンを作成する
+titleSuffix: Azure Data Science Virtual Machine
 description: 分析と機械学習を行うために、Linux (CentOS) 用データ サイエンス仮想マシンの構成と作成を行います。
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -7,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/13/2019
-ms.openlocfilehash: 1761673198b3d8ffc3740d64f525c9e70bda9e3e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 73541b31125ee6e99dc2351e26f6a564a1603487
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204182"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526027"
 ---
 # <a name="quickstart-set-up-a-centos-linux-data-science-virtual-machine-in-azure"></a>クイック スタート:Azure で CentOS (Linux) データ サイエンス仮想マシンを設定する
 
@@ -33,7 +34,7 @@ CentOS データ サイエンス仮想マシンのインスタンスを作成す
 
 1. 次のウィンドウで **[作成]** を選択します。
 
-    [![](media/linux-dsvm-intro/create-centos.png "CentOS マシンを作成するボタン")](media/linux-dsvm-intro/create-centos-expanded.png#lightbox)
+    [![](media/linux-dsvm-intro/create-centos.png "Button to create a CentOS machine")](media/linux-dsvm-intro/create-centos-expanded.png#lightbox)
 
 1. [仮想マシンの作成] ブレードにリダイレクトされます。
    
@@ -48,7 +49,7 @@ CentOS データ サイエンス仮想マシンのインスタンスを作成す
        * **[仮想マシン名]** : 仮想マシンの名前を入力します。 これは Azure portal に表示される名前です。
        * **[リージョン]** :最適なデータ センターを選択します。 ネットワーク アクセスを最速にするために、データの大半が存在するデータセンターか、物理的に最も近くにあるデータセンターを選びます。 詳細については、[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)に関する記事を参照してください。
        * **イメージ**:既定値をそのまま使用します。
-       * **[サイズ]** :これには、一般的なワークロードに適したサイズが自動的に設定されます。 詳細については、[Azure の Linux VM のサイズ](../../virtual-machines/linux/sizes.md)に関する記事を参照してください。
+       * **Size**:これには、一般的なワークロードに適したサイズが自動的に設定されます。 詳細については、[Azure の Linux VM のサイズ](../../virtual-machines/linux/sizes.md)に関する記事を参照してください。
        * **[認証の種類]** : 設定を迅速に行うには、[パスワード] を選択します。 
          
          > [!NOTE]
@@ -59,7 +60,7 @@ CentOS データ サイエンス仮想マシンのインスタンスを作成す
          > [!NOTE]
          > ユーザー名に大文字を使用すると、JupyterHub が機能しなくなり、500 内部サーバー エラーが発生します。
 
-       * **Password**:仮想マシンへのログインに使用するパスワードを入力します。    
+       * **パスワード**:仮想マシンへのログインに使用するパスワードを入力します。    
     
    1. **[Review + create]\(レビュー + 作成\)** を選択します。
    1. **[レビュー + 作成]**
@@ -137,7 +138,7 @@ CentOS DSVM は、マルチユーザーの Jupyter サーバーである [Jupyte
 c.Spawner.default_url = '/lab'
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 学習と調査をどのように続ければよいかを以下に示します。
 

@@ -3,7 +3,7 @@ title: データ ソースを Azure Sentinel に接続する | Microsoft Docs
 description: Azure Sentinel にデータ ソースを接続する方法をについて説明します。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: angrobe
 editor: ''
 ms.service: azure-sentinel
@@ -14,13 +14,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
-ms.author: rkarlin
-ms.openlocfilehash: 33fddcf22793e50287fb590dee3547d5e7be4d2b
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.author: yelevin
+ms.openlocfilehash: 311bb367748be98af704ab11919abea6e38d0ff3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462549"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588333"
 ---
 # <a name="connect-data-sources"></a>データ ソースの接続
 
@@ -45,35 +45,46 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
 
 - **サービス間の統合**:<br> AWS や Microsoft サービスなどの一部のサービスはネイティブに接続されるので、標準統合用の Azure 基盤を利用して、ほんの数回のクリックで次のソリューションを接続できます。
     - [アマゾン ウェブ サービス - CloudTrail](connect-aws.md)
-    - [Office 365](connect-office-365.md)
-    - [Azure AD 監査ログとサインイン](connect-azure-active-directory.md)
     - [Azure アクティビティ](connect-azure-activity.md)
+    - [Azure AD 監査ログとサインイン](connect-azure-active-directory.md)
     - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
-    - [Azure Security Center](connect-azure-security-center.md)
-    - [Azure Information Protection](connect-azure-information-protection.md)
     - [Azure Advanced Threat Protection](connect-azure-atp.md)
+    - [Azure Information Protection](connect-azure-information-protection.md)
+    - [Azure Security Center](connect-azure-security-center.md)
     - [Cloud App Security](connect-cloud-app-security.md)
+    - [ドメイン ネーム サーバー](connect-dns.md)
+    - [Office 365](connect-office-365.md)
+    - [Microsoft Defender ATP](connect-microsoft-defender-advanced-threat-protection.md)
+    - [Microsoft Web アプリケーション ファイアウォール](connect-microsoft-waf.md)
     - [Windows セキュリティ イベント](connect-windows-security-events.md) 
     - [Windows ファイアウォール](connect-windows-firewall.md)
+    - [Windows セキュリティ イベント](connect-windows-security-events.md)
 
 - **API による外部ソリューション**:一部のデータ ソースは、接続されるデータ ソースによって提供される API を使用して接続されます。 通常、ほとんどのセキュリティ テクノロジでは、イベント ログの取得に使用できる API のセットが提供されています。API を使用して、Azure Sentinel に接続し、特定の種類のデータを収集して、Azure Log Analytics に送信します。 API を使用して接続されるアプライアンスは次のとおりです。
     - [Barracuda](connect-barracuda.md)
-    - [Symantec](connect-symantec.md)
+    - [Barracuda CloudGen Firewall](connect-barracuda-cloudgen-firewall.md)
     - [Citrix Analytics (セキュリティ)](connect-citrix-analytics.md)
+    - [F5 BIG-IP](connect-f5-big-ip.md)
+    - [Forcepoint DLP](connect-forcepoint-dlp.md)
+    - [Squadra Technologies secRMM](connect-squadra-secrmm.md)
+    - [Symantec ICDX](connect-symantec.md)
+    - [Zimperium](connect-zimperium-mtd.md)
+
 
 - **エージェントによる外部ソリューション**:Azure Sentinel は、Syslog プロトコルを使用してリアルタイムのログ ストリーミングを実行できる他のすべてのデータ ソースに対し、エージェントを使用して接続できます。 <br>ほとんどのアプライアンスでは、Syslog プロトコルを使用して、ログ自体とログに関するデータが含まれるイベント メッセージが送信されます。 ログの形式は異なりますが、ほとんどのアプライアンスでは、Common Event Format (CEF) に基づくログ データの書式設定がサポートされています。 <br>Log Analytics エージェントに基づく Azure Sentinel エージェントでは、CEF 形式のログが、Log Analytics で取り込むことのできる形式に変換されます。 アプライアンスの種類により、エージェントは、アプライアンス上に直接、または専用の Linux サーバー上にインストールされます。 Linux 用エージェントは、UDP 経由で Syslog デーモンからイベントを受信しますが、Linux マシンで大量の Syslog イベントを収集することが予想される場合は、イベントは TCP 経由で Syslog デーモンからエージェントに送信され、そこから Log Analytics に送信されます。
     - ファイアウォール、プロキシ、エンドポイント:
-        - [F5](connect-f5.md)
         - [Check Point](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
+        - [ExtraHop Reveal(x)](connect-extrahop.md)
+        - [F5](connect-f5.md)
+        - [Forcepoint 製品](connect-forcepoint-casb-ngfw.md)
         - [Fortinet](connect-fortinet.md)
-        - [Palo Alto](connect-paloalto.md)
+        - [Palo Alto Networks](connect-paloalto.md)
+        - [One Identity Safeguard](connect-one-identity.md)
         - [その他の CEF アプライアンス](connect-common-event-format.md)
         - [その他の Syslog アプライアンス](connect-syslog.md)
-        - [Barracuda CloudGen Firewall](connect-barracuda-cloudgen-firewall.md)
-        - [ExtraHop Reveal(x)](connect-extrahop.md)
-        - [One Identity Safeguard](connect-one-identity.md)
         - [Trend Micro Deep Security](connect-trend-micro.md)
+        - [Zscaler](connect-zscaler.md)
     - DLP ソリューション
     - [脅威インテリジェンス プロバイダー](connect-threat-intelligence.md)
     - [DNS マシン](connect-dns.md) - DNS マシンに直接インストールされたエージェント

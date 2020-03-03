@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 01/18/2020
+ms.date: 02/21/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: e9ca891d2d92b6760d37108b66afc54c81ac125c
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 15901186194853aebf3b8222f271203161770380
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442583"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561444"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する
 
@@ -179,9 +179,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 6. **[アクション]** で、 **[許可]** を選択します。
 6. **[ルール]** の下の **[名前]** に「**AllowWeb**」と入力します。
 7. **[プロトコル]** で **[TCP]** を選択します。
-8. **[ソース アドレス]** に「**192.168.1.0/24**」と入力します。
-9. [送信先アドレス] に「**10.6.0.0/16**」と入力します
-10. **[宛先ポート]** に「**80**」と入力します。
+8. **[Source type]\(送信元の種類\)** で、 **[IP アドレス]** を選択します。
+9. **[送信元]** に「**192.168.1.0/24**」と入力します。
+10. **[送信先アドレス]** に「**10.6.0.0/16**」と入力します
+11. **[宛先ポート]** に「**80**」と入力します。
 
 次に、RDP トラフィックを許可するルールを追加します。
 
@@ -189,10 +190,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[名前]** に「**AllowRDP**」と入力します。
 2. **[プロトコル]** で **[TCP]** を選択します。
-3. **[ソース アドレス]** に「**192.168.1.0/24**」と入力します。
-4. [送信先アドレス] に「**10.6.0.0/16**」と入力します
-5. **[宛先ポート]** に「**3389**」と入力します。
-6. **[追加]** を選択します。
+3. **[Source type]\(送信元の種類\)** で、 **[IP アドレス]** を選択します。
+4. **[送信元]** に「**192.168.1.0/24**」と入力します。
+5. **[送信先アドレス]** に「**10.6.0.0/16**」と入力します
+6. **[宛先ポート]** に「**3389**」と入力します。
+7. **[追加]** を選択します。
 
 ## <a name="create-and-connect-the-vpn-gateways"></a>VPN ゲートウェイを作成して接続する
 

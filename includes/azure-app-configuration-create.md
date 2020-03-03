@@ -4,12 +4,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: include
 ms.date: 1/31/2020
-ms.openlocfilehash: 017833403beca6fb8689bd6f90cc8f460d56c65e
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 089a199da08503e13dbd42518970c3b7ed8a984d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76961452"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619329"
 ---
 1. 新しい App Configuration ストアを作成するには、[Azure portal](https://portal.azure.com) にサインインします。 ホーム ページの左上にある **[+ リソースの作成]** を選択します。 **[Marketplace を検索]** ボックスに「**App Configuration**」と入力し、Enter キーを押します。
 
@@ -26,7 +26,8 @@ ms.locfileid: "76961452"
     | **リソース名** | グローバルに一意の名前 | App Configuration ストア リソースに使用する一意のリソース名を入力します。 名前は 5 から 50 文字の文字列で、数字、英字、`-` 文字のみを使用する必要があります。 名前の先頭または末尾を `-` 文字にすることはできません。  |
     | **サブスクリプション** | 該当するサブスクリプション | App Configuration のテストに使用する Azure サブスクリプションを選択します。 アカウントにサブスクリプションが 1 つしかない場合は自動的に選択されるため、 **[サブスクリプション]** の一覧は表示されません。 |
     | **リソース グループ** | *AppConfigTestResources* | App Configuration ストア リソースのリソース グループを選択または作成します。 このグループで複数のリソースをまとめておくと、そのリソース グループを削除することで複数のリソースを同時に削除できるため、便利です。 詳細については、[リソース グループを使用した Azure リソースの管理](/azure/azure-resource-manager/resource-group-overview)に関するページを参照してください。 |
-    | **地域** | *米国中部* | **[場所]** を使用して、アプリ構成ストアがホストされている地理的位置を指定します。 最高のパフォーマンスを得るには、アプリケーションの他のコンポーネントと同じリージョンにリソースを作成します。 |
+    | **場所** | *米国中部* | **[場所]** を使用して、アプリ構成ストアがホストされている地理的位置を指定します。 最高のパフォーマンスを得るには、アプリケーションの他のコンポーネントと同じリージョンにリソースを作成します。 |
+    | **価格レベル** | *Free* | 目的の価格レベルを選択します。 詳細については、[App Configuration の価格のページ](https://azure.microsoft.com/pricing/details/app-configuration/)を参照してください。
 
     ![App Configuration ストア リソースを作成する](media/azure-app-configuration-create/azure-portal-app-configuration-create-settings.png)
 

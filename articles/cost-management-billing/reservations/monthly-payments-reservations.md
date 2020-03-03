@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/24/2020
 ms.author: banders
-ms.openlocfilehash: 2689bdeb003cec0050141374165142a62f9ea337
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 77d663fa01e24acf63acd68d0b8d7cf4cc741055
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200403"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587092"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>月払いで予約を購入する
 
@@ -62,7 +62,7 @@ ms.locfileid: "77200403"
 
 月払いで購入した予約を交換する場合、新たな購入対象の総生涯コストが、予約の返上で取り消される支払残金よりも大きくなければなりません。 交換に関しては、それ以外の制限や料金はありません。 前払いで購入した予約と引き換えに、新しい予約を月払いで購入することができます。 ただし、新しい予約の生涯価値は、返上する予約の実際の量に応じた価値よりも大きくなければなりません。
 
-月払いの予約が取り消された場合、将来支払われることになっていた金額の取り消しに対して、Microsoft はキャンセル料を適用する可能性があります。 確定済み支払い残金の上限は、払戻の上限である 50,000 米国ドルとなります。
+月払いの予約が取り消された場合、支払われることになっていた金額の取り消しに対して、Microsoft は 12% のキャンセル料金を適用する可能性があります。 ただし、Microsoft では現在、ペナルティの課金を行っていません。 支払われることになっていた金額の取り消しの上限は、払戻の上限である 50,000 米国ドルとなります。 取り消しのペナルティが課金された場合でも、払戻の上限には影響しません。
 
 交換と払戻の詳細については、「[Azure の予約のセルフサービスによる交換と払戻](exchange-and-refund-azure-reservations.md)」を参照してください。
 

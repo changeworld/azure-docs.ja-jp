@@ -68,7 +68,7 @@ ms.locfileid: "77252229"
     genpassphrase.exe -v > MobSvc.passphrase
     ```
 
-1. _MobSvc をコピーします。パスフレーズ_ファイルをWindows フォルダと Linux フォルダにコピーします。
+1. _MobSvc をコピーします。パスフレーズ_ ファイルをWindows フォルダと Linux フォルダにコピーします。
 1. インストールファイルを含むフォルダを参照するには、次のコマンドを実行します。
 
     ```Console
@@ -95,7 +95,7 @@ ms.locfileid: "77252229"
 
 次のコードをコピーします。
 
-- _MobSvcWindows_フォルダーにコードを_install.bat_ として保存します。
+- _MobSvcWindows_ フォルダーにコードを _install.bat_ として保存します。
 - このスクリプトの`[CSIP]`プレースホルダーを、構成サーバーのIPアドレスの実際の値に置き換えます。
 - このスクリプトは、Mobility Service エージェントの新規インストールと、すでにインストールされているエージェントの更新をサポートしています。
 

@@ -12,28 +12,25 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 582646b6e1c50c8e6835fafaa8a27c7386b4695c
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: a314af3d53936a58f9dfb3694ec1114ecdc3d521
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429063"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587007"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>チュートリアル:Azure portal を使用した NAT ゲートウェイの作成と NAT サービスのテスト
 
 このチュートリアルでは、Azure 内の仮想マシンに送信接続を提供する NAT ゲートウェイを作成します。 NAT ゲートウェイをテストするために、ソースと宛先の仮想マシンをデプロイします。 ソースから宛先の仮想マシンへのパブリック IP アドレスへの送信接続を行って、NAT ゲートウェイをテストします。  このチュートリアルでは、わかりやすくするために、同じリソース グループ内の 2 つの異なる仮想ネットワークにソースと宛先をデプロイしています。
 
 >[!NOTE] 
->Azure Virtual Network NAT は、現時点ではパブリック プレビューとして提供され、限られた[リージョン](./nat-overview.md#region-availability)でのみご利用いただけます。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms)」をご覧ください。
+>Azure Virtual Network NAT は、現時点ではパブリック プレビューとして提供され、ご利用いただける[リージョン](./nat-overview.md#region-availability)が限られています。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms)」をご覧ください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-> [!IMPORTANT]
-> ご利用のサブスクリプションで Virtual Network NAT [プレビューを有効](./nat-overview.md#enable-preview)にした後、 https://aka.ms/natportal を使用してポータルにアクセスします。
-
-[Azure portal](https://aka.ms/natportal) にサインインします。
+[Azure portal](https://portal.azure.com) にサインインします。
 
 ## <a name="prepare-the-source-for-outbound-traffic"></a>送信トラフィックのソースの準備
 
@@ -147,7 +144,7 @@ NAT ゲートウェイでは、1 つまたは複数のパブリック IP アド�
 3. **[パブリック IP]** タブに次の値を入力するか選択します。
    - **パブリック IP アドレス**: **[myPublicIPsource]** を選択します。
    - **パブリック IP プレフィックス**: **[myPublicIPprefixsource]** を選択します。
-   - **[サブネット]** タブを選択します。または、 **[次へ: サブネット]** を選択します。
+   - **[サブネット]** タブを選択するか、 **[次へ: サブネット]** を選択します。
 
 4. **[サブネット]** タブに次の値を入力するか選択します。
    - **[仮想ネットワーク]** : **[myResourceGroupNAT]**  >  **[myVnetsource]** を選択します。
@@ -285,7 +282,7 @@ go get -u github.com/rakyll/hey
 
 ```
 
-このコマンドによって仮想マシンが更新され、go がインストールされ、GitHub から [hey](https://github.com/rakyll/hey) がインストールされて、シェル環境が更新されます。
+このコマンドによって仮想マシンが更新されます。go がインストールされ、GitHub から [hey](https://github.com/rakyll/hey) がインストールされて、ご利用のシェル環境が更新されます。
 
 これで、NAT サービスをテストする準備が整いました。
 
@@ -314,7 +311,7 @@ hey -n 100 -c 10 -t 30 --disable-keepalive http://<ip-address-destination>/100k
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、NAT ゲートウェイを作成し、ソース VM と宛先 VM を作成した後、NAT ゲートウェイをテストしました。
 
-Azure Monitor でメトリックを見て、NAT サービスの稼動状態を確認しましょう。 利用可能な SNAT ポートのリソース枯渇などの問題を診断します。  SNAT ポートのリソース枯渇は、追加のパブリック IP アドレス リソースかパブリック IP プレフィックス リソース、またはその両方を追加することで簡単に解決できます。
+Azure Monitor でメトリックを見て、NAT サービスの稼動状態を確認しましょう。 利用可能な SNAT ポートのリソース枯渇などの問題を診断します。  SNAT ポートのリソース枯渇は、新しいパブリック IP アドレス リソースかパブリック IP プレフィックス リソース、またはその両方を追加することで簡単に解決できます。
 
 - [Virtual Network NAT](./nat-overview.md) について学習する。
 - [NAT ゲートウェイ リソース](./nat-gateway-resource.md)について学習する。

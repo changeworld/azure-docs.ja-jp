@@ -3,16 +3,16 @@ title: Azure EA Portal の管理
 description: この記事では、Azure EA Portal で管理者が行う一般的なタスクについて説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 02/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 142ef421599cef4083efdf8b9ed700d2baa152b3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 1da26b3a1c028a49655b9089ac0119e3274e37a4
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199774"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598393"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA Portal の管理
 
@@ -118,6 +118,8 @@ Azure エンタープライズ管理者は、組織のアカウント所有者�
 
 アカウントの転送によって、アカウント オーナーが現在の加入契約から別の加入契約に移動されます。 アカウント オーナーの関連サブスクリプションはすべて、転送先の加入契約に移動されます。 これは、複数のアクティブな加入契約があり、選択したアカウント オーナーのみを移動する場合に実行します。
 
+このセクションは情報提供のみを目的としています。エンタープライズ管理者がアクションを実行することはできません。 エンタープライズ アカウントを新しい加入契約に転送するためにはサポート リクエストが必要となります。
+
 エンタープライズ アカウントを新しい登録に転送する場合は、次の点に注意してください。
 
 - 要求で指定されたアカウントのみが転送されます。 すべてのアカウントが選択されている場合、すべてが転送されます。
@@ -147,6 +149,8 @@ Azure エンタープライズ管理者は、組織のアカウント所有者�
 - 現在の加入契約のコミットメント期間終了が終了した。
 - 加入契約の期限が切れているか、延長されており、新しい契約の交渉が行われている。
 - 複数の加入契約があり、すべてのアカウントと課金を 1 つの加入契約にまとめたい。
+
+このセクションは情報提供のみを目的としています。エンタープライズ管理者がアクションを実行することはできません。 エンタープライズ加入契約を新しい加入契約に転送するためにはサポート リクエストが必要となります。
 
 エンタープライズ登録全体を別の登録に転送するよう要求すると、次の操作が行われます。
 

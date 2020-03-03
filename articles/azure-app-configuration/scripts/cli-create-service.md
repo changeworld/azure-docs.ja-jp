@@ -1,23 +1,23 @@
 ---
 title: Azure CLI のサンプル スクリプト - Azure App Configuration ストアの作成
 titleSuffix: Azure App Configuration
-description: Azure CLI のサンプル スクリプト - Azure App Configuration ストアの作成
+description: Azure CLI スクリプトを使用して Azure App Configuration ストアを作成します
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: sample
 ms.date: 01/24/2020
 ms.author: lcozzens
-ms.openlocfilehash: 11f3aec10aed0dc8bc0c9831d563dca2b0c1a6fb
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 667cf9545d87bd9277c59d066933710339b6c079
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468357"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623079"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Azure App Configuration ストアの作成
 
-このサンプル スクリプトでは、ランダムな名前を使って、新しいリソース グループ内に Azure App Configuration の新しいインスタンスを作成します。
+このサンプル スクリプトでは、新しいリソース グループ内に Azure App Configuration の新しいインスタンスを作成します。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -44,7 +44,9 @@ appConfigHostname=$(az appconfig create \
   --location eastus \
   --resource-group $myResourceGroupName \
   --query hostName \
-  -o tsv)
+  --sku free \
+  -o tsv
+  )
 
 # Get the AppConfig connection string 
 appConfigConnectionString=$(az appconfig credential list \

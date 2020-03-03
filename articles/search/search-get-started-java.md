@@ -8,13 +8,13 @@ ms.author: heidist
 ms.devlang: java
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: 5e53167a083b5e89bd88a45452929dd40f0868f2
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 02/25/2020
+ms.openlocfilehash: 0b07e934625b09e7f6249dc00865465147f6f0ba
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406729"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624011"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>クイック スタート:REST API を使用して Java で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -26,13 +26,13 @@ ms.locfileid: "74406729"
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
-[IntelliJ](https://www.jetbrains.com/idea/)、[Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)、[Azure Cognitive Search の REST API](/rest/api/searchservice/) を使用して Azure Cognitive Search インデックスの作成、読み込み、クエリ実行を行う Java コンソール アプリケーションを作成します。この記事では、このアプリケーションを作成するための詳細な手順を説明します。 代わりに、[完全なアプリケーションをダウンロードして実行する](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/)こともできます。
+[IntelliJ](https://www.jetbrains.com/idea/)、[Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)、[Azure Cognitive Search REST API](/rest/api/searchservice/) を使用して検索インデックスの作成、読み込み、クエリを実行する Java コンソール アプリケーションを作成します。 この記事では、アプリケーションを作成するための具体的な手順を紹介します。 代わりに、[完全なアプリケーションをダウンロードして実行する](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/)こともできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このサンプルをビルドしてテストするために次のソフトウェアとサービスを使用しました。
+このクイックスタートをビルドしてテストするために次のソフトウェアとサービスを使用しました。
 
 + [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
@@ -48,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
 
-2. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理者キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
+2. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
    クエリ キーも作成します。 読み取り専用アクセスを使用してクエリ要求を発行することをお勧めします。
 
@@ -56,7 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 サービスに送信される要求ごとに API キーが必要です。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
-## <a name="set-up-your-environment"></a>環境をセットアップする
+## <a name="set-up-your-environment"></a>環境の設定方法
 
 まず、IntelliJ IDEA を開き、新しいプロジェクトを設定します。
 
@@ -817,7 +817,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     各クエリの概要とその結果を確認します。 この実行の完了時には、ビルド成功のメッセージとゼロ (0) 終了コードが表示されます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 所有するサブスクリプションを使用している場合は、プロジェクトの終了時に、不要になったリソースを削除することをお勧めします。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
 
@@ -825,7 +825,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 無料サービスを使っている場合は、3 つのインデックス、インデクサー、およびデータソースに制限されることに注意してください。 ポータルで個別の項目を削除して、制限を超えないようにすることができます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この Java クイックスタートでは、インデックスの作成、ドキュメントを利用した読み込み、およびクエリの実行を行う一連のタスクに取り組みました。 基本的な概念を十分理解している場合は、REST でのインデクサーの操作を一覧にした次の記事をお勧めします。
 

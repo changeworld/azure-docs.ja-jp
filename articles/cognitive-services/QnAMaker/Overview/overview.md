@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 11/22/2019
+ms.date: 02/21/2020
 ms.author: diberry
-ms.openlocfilehash: 7bac2546ac35f5f188a6490c4d9ecb2b86d7bb2d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 91a63e87e937eab4c02d2b86026aa09472cb15ef
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843058"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561097"
 ---
 # <a name="what-is-the-qna-maker-service"></a>QnA Maker サービスとは
 
@@ -77,6 +77,10 @@ QnA Maker では、基本的な質問と回答のセットを改善するため�
 ## <a name="development-lifecycle"></a>開発ライフサイクル
 
 QnA Maker では、完全な開発ライフサイクルに統合するために、コラボレーションと共に、作成、トレーニング、および発行のアクセス許可を提供します。
+
+> [!div class="mx-imgBorder"]
+> ![開発サイクルの概念図](../media/qnamaker-overview-learnabout/development-cycle.png)
+
 
 ## <a name="how-do-i-start"></a>開始方法
 

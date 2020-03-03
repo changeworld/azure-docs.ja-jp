@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/27/2020
+ms.date: 02/26/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 69503968ece5e68b6e4777d72713565158009949
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e5b9b989ed8111e2bf36194ae2c8a333db7e66b4
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843856"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650803"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>クイック スタート:VM の負荷を分散するロード バランサーを Azure Resource Manager テンプレートを使って作成する
 
 負荷分散では、着信要求を複数の仮想マシン (VM) に分散させることで、より高いレベルの可用性とスケールを実現します。 このクイックスタートでは、VM を負荷分散する Standard ロード バランサーを作成する Azure Resource Manager テンプレートを展開する方法を説明します。 Resource Manager テンプレートを使用すると、他のデプロイ方法より手順が減ります。
 
-[Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)は JavaScript Object Notation (JSON) ファイルであり、プロジェクトのインフラストラクチャと構成が定義されています。 このテンプレートでは、デプロイしようとしているものを、それを作成する一連のプログラミング コマンドを記述しなくても記述できる、宣言型の構文を使用しています。 Resource Manager テンプレートの開発に関する詳細を学ぶには、[Resource Manager ドキュメント](/azure/azure-resource-manager/)と[テンプレート リファレンス](/azure/templates/microsoft.network/loadbalancers)を参照してください。
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -34,22 +34,25 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ロード バランサーとパブリック IP の SKU は一致している必要があります。 Standard Load Balancer を作成するときに、Standard Load Balancer のフロントエンドとして構成されている新しい Standard パブリック IP アドレスも作成する必要があります。 Basic Load Balancer を作成したい場合は、[こちらのテンプレート](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/)を使用してください。 運用環境のワークロードには Standard SKU の使用をお勧めします。
 
-このクイックスタートで使用するテンプレートは、[クイックスタート テンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-load-balancer-standard-create/azuredeploy.json)です。
+### <a name="review-the-template"></a>テンプレートを確認する
 
-[!code-json[<Azure Resource Manager template create standard load balancer>](~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json)]
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-load-balancer-standard-create/azuredeploy.json)からのものです。
+
+:::code language="json" source="~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json" range="1-150" highlight="58-122":::
 
 テンプレートでは、複数の Azure リソースが定義されています。
 
-- **Microsoft.Network/loadBalancers**
-- **Microsoft.Network/publicIPAddresses**: ロード バランサー用。
-- **Microsoft.Network/networkSecurityGroups**
-- **Microsoft.Network/virtualNetworks**
-- **Microsoft.Compute/virutalMachines** (そのうちの 3 つ)
-- **Microsoft.Network/publicIPAddresses** (そのうちの 3 つ): 3 台の各仮想マシン用。
-- **Microsoft.Network/networkInterfaces** (そのうちの 3 つ)
-- **Microsoft.Compute/virtualMachine/extensions** (そのうちの 3 つ): IIS と Web ページの構成に使用
+- [**Microsoft.Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers)
+- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses): ロード バランサー用。3 つの仮想マシンそれぞれに使用されます。
+- [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
+- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft.Compute/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines) (そのうちの 3 つ)
+- [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) (そのうちの 3 つ)
+- [**Microsoft.Compute/virtualMachine/extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) (そのうちの 3 つ): IIS と Web ページの構成に使用
 
 Azure Load Balancer に関連するテンプレートをさらに探すには、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular)」を参照してください。
+
+### <a name="deploy-the-template"></a>テンプレートのデプロイ
 
 1. 次のコード ブロックの **[試してみる]** を選択して Azure Cloud Shell を開き、指示に従って Azure にサインインします。
 

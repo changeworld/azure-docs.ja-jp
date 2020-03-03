@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: e212c95a827b01485d4bdfdc557e459a92162c88
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 46bad14978957ab474cfc0eda3e523874246d3f3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263211"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586225"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Databricks 上で Spark ジョブを実行する
 
@@ -55,7 +55,7 @@ ms.locfileid: "76263211"
     |**場所**     | **[米国西部 2]** を選択します。 使用可能な他のリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。        |
     |**価格レベル**     |  **Standard**、**Premium**、**Trial** のいずれかを選択します。 これらのレベルの詳細については、[Databricks の価格に関するページ](https://azure.microsoft.com/pricing/details/databricks/)を参照してください。       |
 
-4. **[確認および作成]** 、 **[作成]** の順に選択します。 ワークスペースの作成には数分かかります。 ワークスペースの作成中に、 **[通知]** でデプロイの状態を表示できます。
+3. **[確認および作成]** 、 **[作成]** の順に選択します。 ワークスペースの作成には数分かかります。 ワークスペースの作成中に、 **[通知]** でデプロイの状態を表示できます。 この処理が完了すると、ユーザー アカウントが管理者ユーザーとして自動的にワークスペースに追加されます。
 
     ![Databricks のデプロイのタイル](./media/quickstart-create-databricks-workspace-portal/databricks-deployment-tile.png "Databricks のデプロイのタイル")
 

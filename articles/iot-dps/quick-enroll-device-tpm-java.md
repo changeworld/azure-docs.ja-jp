@@ -9,21 +9,27 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: df18e721a7400a1e45b7f1fcd74fdafdbfdf026c
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: c199d5be4c103c80a6fcc126af70f48367909f64
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462260"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605373"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>クイック スタート:Java Service SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
+このクイックスタートでは、Java Service SDK とサンプル Java アプリケーションを使用して、Azure IoT Hub Device Provisioning Service へのシミュレートされた TPM デバイスの個別登録をプログラムで作成する方法について説明します。
 
-以下の手順では、[Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/) とサンプル Java アプリケーションを使用して、Azure IoT Hub Device Provisioning Service へのシミュレートされた TPM デバイスの個別登録をプログラムで作成する方法について説明します。 Java Service SDK は Windows および Linux マシンの両方で動作しますが、この記事では、Windows 開発マシンを使用して登録プロセスの手順を説明します。
+## <a name="prerequisites"></a>前提条件
 
-事前に、[Azure Portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)と [TPM デバイスのシミュレート](quick-create-simulated-device.md#simulatetpm)を済ませておいてください。
+- [Azure portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)が完了していること。
+- [TPM デバイスからの暗号化キーの読み取り](quick-create-simulated-device.md#simulatetpm)が完了していること。
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- [Java SE Development Kit 8](https://aka.ms/azure-jdks)。 このクイックスタートの中で、後から [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/) をインストールします。 Windows と Linux のどちらでも使用できます。 このクイックスタートでは Windows を使用します。
+- [Maven 3](https://maven.apache.org/download.cgi)。
+- [Git](https://git-scm.com/download/).
 
 <a id="setupdevbox"></a>
 
@@ -56,7 +62,7 @@ ms.locfileid: "77462260"
 
 ここでは、TPM デバイスのプロビジョニングの詳細をサンプル コードに追加する方法について説明します。 
 
-1. コマンド プロンプトを開きます。 Java Service SDK を使用して、デバイス登録コード サンプルの GitHub リポジトリを複製します。
+1. コマンド プロンプトを開きます。 [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/) を使用して、デバイス登録コード サンプルの GitHub リポジトリを複製します。
     
     ```cmd\sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
@@ -124,7 +130,7 @@ ms.locfileid: "77462260"
     mvn install -DskipTests
     ```
 
-   このコマンドで、Maven パッケージ [`com.microsoft.azure.sdk.iot.provisioning.service`](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) がマシンにダウンロードされます。 このパッケージには、サンプル コードのビルドに必要な Java Service SDK のバイナリが含まれています。 
+   このコマンドで、Maven パッケージ [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) がマシンにダウンロードされます。 このパッケージには、サンプル コードのビルドに必要な [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/) のバイナリが含まれています。 
 
 3. コマンド ウィンドウで次のコマンドを使用してサンプルを実行します。
 

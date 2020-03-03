@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 02/19/2020
 ms.author: iainfou
-ms.openlocfilehash: 4753cc9a98cd59c0c5d446b3d92280aabfb72c12
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d15877107e49c57f8f33b8ec41caeb7d48230b91
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474690"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613870"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>チュートリアル:Windows Server 仮想マシンのマネージド ドメインへの参加
 
@@ -37,10 +37,12 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
     * Azure サブスクリプションをお持ちでない場合は、[アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
 * ご利用のサブスクリプションに関連付けられた Azure Active Directory テナント (オンプレミス ディレクトリまたはクラウド専用ディレクトリと同期されていること)。
     * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
-* Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services マネージド ドメイン。
+* Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
     * 必要であれば、[Azure Active Directory Domain Services インスタンスを作成して構成][create-azure-ad-ds-instance]してください。
 * Azure AD テナントの *Azure AD DC administrators* グループのメンバーであるユーザー アカウント。
-    * アカウントが Azure AD DS マネージド ドメインにサインインできるように、Azure AD Connect のパスワード ハッシュの同期またはパスワード リセットのセルフサービスが実行されていることを確認します。
+    * アカウントが Azure AD DS マネージド ドメインにサインインできるように、Azure AD Connect のパスワード ハッシュの同期またはセルフサービス パスワード リセット が実行されていることを確認します。
+* Azure AD DS 仮想ネットワークにデプロイされた Azure Bastion ホスト。
+    * 必要に応じて [Azure Bastion ホストを作成][azure-bastion]してください。
 
 ドメインに参加させる VM が既にある場合は、「[VM を Azure AD DS マネージド ドメインに参加させる](#join-the-vm-to-the-azure-ad-ds-managed-domain)」に進んでください。
 
@@ -68,15 +70,15 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
     | 仮想マシン名 | VM の名前を入力します (*myVM* など) |
     | リージョン               | VM を作成するリージョンを選択します ("*米国東部*" など) |
     | ユーザー名             | VM 上に作成するローカル管理者アカウントのユーザー名を入力します (*azureuser* など) |
-    | パスワード             | VM 上に作成するローカル管理者の安全なパスワードを入力し、確認します。 ドメイン ユーザー アカウントの資格情報は指定しないでください。 |
+    | Password             | VM 上に作成するローカル管理者の安全なパスワードを入力し、確認します。 ドメイン ユーザー アカウントの資格情報は指定しないでください。 |
 
-1. 既定では、Azure で作成された VM にはインターネットからはアクセスできません。 この構成により、VM のセキュリティが向上し、攻撃される可能性がある領域が減少します。 このチュートリアルの次のステップでは、リモート デスクトップ プロトコル (RDP) を使って VM に接続した後、Windows Server を Azure AD DS マネージド ドメインに参加させる必要があります。
+1. 既定では、Azure に作成された VM にインターネットから RDP を使用してアクセスすることができます。 RDP が有効になっていると、自動サインイン攻撃が発生する可能性があります。これにより、サインインの試行が複数回連続して失敗するため、*admin* や *administrator* などの一般的な名前を持つアカウントが無効になる場合があります。
 
-    RDP が有効になっていると、自動サインイン攻撃が発生する可能性があります。これにより、サインインの試行が複数回連続して失敗するため、*admin* や *administrator* などの一般的な名前を持つアカウントが無効になる場合があります。 RDP は、必要な場合にのみ有効にし、承認された IP 範囲のセットに限定する必要があります。 Azure Security Center の一部である [Azure Just-In-Time VM アクセス][jit-access]を使用すると、これらの有効期間が短い、制限付きの RDP セッションを有効にすることができます。 [Azure Bastion ホスト (現在プレビュー段階) を作成、使用][azure-bastion]して、SSL を介した Azure portal 経由のアクセスのみを許可することもできます。
+    RDP は、必要な場合にのみ有効にし、承認された IP 範囲のセットに限定する必要があります。 この構成により、VM のセキュリティが向上し、攻撃される可能性がある領域が減少します。 または、Azure Bastion ホストを作成、使用して、SSL を介した Azure portal 経由のアクセスのみを許可することもできます。 このチュートリアルの次の手順では、Azure Bastion ホストを使用して安全に VM に接続します。
 
-    このチュートリアルでは、VM への RDP 接続を手動で有効にします。
+    現時点では、VM との直接 RDP 接続は無効にしておきます。
 
-    **[パブリック受信ポート]** で、 **[選択したポートを許可する]** オプションを選択します。 **[受信ポートを選択]** のドロップダウン メニューから、 *[RDP (3389)]* を選択します。
+    **[パブリック受信ポート]** で *[なし]* を選択します。
 
 1. 完了したら、 **[次へ: ディスク]** を選択します。
 1. **[OS ディスクの種類]** のドロップダウン メニューから *[Standard SSD]* を選択し、 **[次へ: ネットワーク]** を選択します。
@@ -120,20 +122,23 @@ VM の作成には数分かかります。 Azure portal に、デプロイの状
 
 ## <a name="connect-to-the-windows-server-vm"></a>Windows Server VM に接続する
 
-次に、新しく作成した Windows Server VM に RDP を使用して接続し、Azure AD DS マネージド ドメインに参加させます。 既存のドメイン資格情報ではなく、前のステップで VM を作成するときに指定したローカル管理者の資格情報を使用します。
+VM に対して安全に接続するために、Azure Bastion ホストを使用します。 Azure Bastion では、仮想ネットワークにマネージド ホストがデプロイされ、VM への Web ベースの RDP 接続または SSH 接続は、そのマネージド ホストによって提供されます。 VM にパブリック IP アドレスは不要であり、外部のリモート トラフィック向けにネットワーク セキュリティ グループの規則を開放する必要もありません。 VM には、Web ブラウザーから Azure portal を使用して接続します。
 
-1. **[概要]** ウィンドウで、 **[接続]** を選択します。
+要塞ホストを使用して VM に接続するには、次の手順を実行します。
 
-    ![Azure portal で Windows 仮想マシンに接続する](./media/join-windows-vm/connect-to-vm.png)
+1. VM の **[概要]** ペインで **[接続]** を選択し、 **[Bastion]** を選択します。
 
-1. *[RDP ファイルのダウンロード]* オプションを選択します。 この RDP ファイルを Web ブラウザーで保存します。
-1. VM に接続するには、ダウンロードした RDP ファイルを開きます。 メッセージが表示されたら、 **[Connect]** を選択します。
-1. 前のステップで VM を作成するために入力したローカル管理者の資格情報を入力します (例: *localhost\azureuser*)
-1. サインイン プロセス中に証明書警告が表示された場合、 **[はい]** または **[続行]** を選択して接続します。
+    ![Azure portal から Bastion を使用して Windows 仮想マシンに接続する](./media/join-windows-vm/connect-to-vm.png)
+
+1. 前のセクションで指定した VM の資格情報を入力し、 **[接続]** を選択します。
+
+   ![Azure portal から Bastion ホストを使用して接続する](./media/join-windows-vm/connect-to-bastion.png)
+
+必要に応じて、ポップアップの表示を Web ブラウザーに許可して、Bastion 接続を表示します。 VM への接続には数秒かかります。
 
 ## <a name="join-the-vm-to-the-azure-ad-ds-managed-domain"></a>VM を Azure AD DS マネージド ドメインに参加させる
 
-VM を作成し、RDP 接続を確立したので、Windows Server 仮想マシンを Azure AD DS マネージド ドメインに参加させましょう。 このプロセスは、通常のオンプレミスの Active Directory Domain Services ドメインに接続しているコンピューターと同じです。
+VM を作成し、Azure Bastion を使用して Web ベースの RDP 接続を確立したので、Windows Server 仮想マシンを Azure AD DS マネージド ドメインに参加させましょう。 このプロセスは、通常のオンプレミスの Active Directory Domain Services ドメインに接続しているコンピューターと同じです。
 
 1. VM にサインインしたときに**サーバー マネージャー**が既定で開かない場合は、 **[スタート]** メニューを選択し、 **[サーバー マネージャー]** を選択します。
 1. **[サーバー マネージャー]** ウィンドウの左側のウィンドウで、 **[ローカル サーバー]** を選択します。 右側のウィンドウの **[プロパティ]** で、 **[ワークグループ]** を選択します。
@@ -144,16 +149,16 @@ VM を作成し、RDP 接続を確立したので、Windows Server 仮想マシ�
 
     ![ワークグループまたはドメイン プロパティの変更を選択する](./media/join-windows-vm/change-domain.png)
 
-1. **[ドメイン]** ボックスで Azure AD DS マネージド ドメインの名前を指定し (例: *contoso.com*)、 **[OK]** を選択します。
+1. **[ドメイン]** ボックスで Azure AD DS マネージド ドメインの名前を指定し (例: *aaddscontoso.com*)、 **[OK]** を選択します。
 
     ![参加する Azure AD DS マネージド ドメインを指定する](./media/join-windows-vm/join-domain.png)
 
 1. ドメインの資格情報を入力してドメインに参加します。 *Azure AD DC administrators* グループに属しているユーザーの資格情報を使用します。 このグループのメンバーだけが、マシンを Azure AD DS マネージド ドメインに参加させるための権限を持っています。 アカウントは Azure AD DS マネージド ドメインまたは Azure AD テナントの一部である必要があります。Azure AD テナントに関連付けられている外部ディレクトリのアカウントが、ドメイン参加プロセス中に正しく認証を行うことはできません。 アカウントの資格情報は、次のいずれかの方法で指定できます。
 
-    * **UPN 形式** (推奨) - Azure AD で構成したように、ユーザー アカウントのユーザー プリンシパル名 (UPN) サフィックスを入力します。 たとえば、ユーザー *contosoadmin* の UPN サフィックスは `contosoadmin@contoso.onmicrosoft.com` になります。 *SAMAccountName* 形式ではなく UPN 形式を使用するとドメインに確実にサインインできる一般的なユースケースが 2 つあります。
+    * **UPN 形式** (推奨) - Azure AD で構成したように、ユーザー アカウントのユーザー プリンシパル名 (UPN) サフィックスを入力します。 たとえば、ユーザー *contosoadmin* の UPN サフィックスは `contosoadmin@aaddscontoso.onmicrosoft.com` になります。 *SAMAccountName* 形式ではなく UPN 形式を使用するとドメインに確実にサインインできる一般的なユースケースが 2 つあります。
         * ユーザーの UPN プレフィックスが長い場合 (例: *deehasareallylongname*)、*SAMAccountName* が自動生成される場合があります。
         * Azure AD テナントで複数のユーザーが同じ UPN プレフィックスを使用していると (例: *dee*)、*SAMAccountName* 形式が自動生成される場合があります。
-    * **SAMAccountName 形式** - *SAMAccountName* 形式でアカウント名を入力します。 たとえば、ユーザー *contosoadmin* の *SAMAccountName* は `CONTOSO\contosoadmin` になります。
+    * **SAMAccountName 形式** - *SAMAccountName* 形式でアカウント名を入力します。 たとえば、ユーザー *contosoadmin* の *SAMAccountName* は `AADDSCONTOSO\contosoadmin` になります。
 
 1. Azure AD DS マネージド ドメインに参加するには数秒かかります。 完了すると、ドメインへの参加を歓迎する次のようなメッセージが表示されます。
 
@@ -164,32 +169,23 @@ VM を作成し、RDP 接続を確立したので、Windows Server 仮想マシ�
 1. Azure AD DS マネージド ドメインに参加するプロセスを完了するには、VM を再起動します。
 
 > [!TIP]
-> PowerShell の [Add-Computer][add-computer] コマンドレットを使用して、VM をドメインに参加させることができます。 次の例では、*CONTOSO* ドメインに参加した後、VM を再起動しています。 要求されたら、*Azure AD DC administrators* グループに属しているユーザーの資格情報を入力します。
+> PowerShell の [Add-Computer][add-computer] コマンドレットを使用して、VM をドメインに参加させることができます。 次の例では、*AADDSCONTOSO* ドメインに参加した後、VM を再起動しています。 要求されたら、*Azure AD DC administrators* グループに属しているユーザーの資格情報を入力します。
 >
-> `Add-Computer -DomainName CONTOSO -Restart`
+> `Add-Computer -DomainName AADDSCONTOSO -Restart`
 >
 > VM に接続したり手動で接続を構成したりすることなく VM をドメインに参加させるには、[Set-AzVmAdDomainExtension][set-azvmaddomainextension] Azure PowerShell コマンドレットを使用できます。
 
 Windows Server VM が再起動すると、Azure AD DS マネージド ドメインで適用されているすべてのポリシーが、VM にプッシュされます。 また、適切なドメイン資格情報を使用して Windows Server VM にサインインすることもできます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-次のチュートリアルでは、この Windows Server VM を使用して、Azure AD DS マネージド ドメインを管理できる管理ツールをインストールします。 このチュートリアル シリーズを続けない場合は、次のクリーンアップ手順を確認して、[RDP を無効にする](#disable-rdp)か、[VM を削除](#delete-the-vm)します。 そうでない場合は、[次のチュートリアルを続けます](#next-steps)。
+次のチュートリアルでは、この Windows Server VM を使用して、Azure AD DS マネージド ドメインを管理できる管理ツールをインストールします。 このチュートリアル シリーズを続けない場合は、次のクリーンアップ手順を確認して、[VM を削除](#delete-the-vm)します。 そうでない場合は、[次のチュートリアルを続けます](#next-steps)。
 
 ### <a name="un-join-the-vm-from-azure-ad-ds-managed-domain"></a>Azure AD DS マネージド ドメインへの VM の参加を解除する
 
 Azure AD DS マネージド ドメインから VM を削除するには、もう一度、[VM をドメインに参加させる](#join-the-vm-to-the-azure-ad-ds-managed-domain)ための手順を実行します。 このとき、Azure AD DS マネージド ドメインに参加させる代わりに、ワークグループ (既定の "*ワークグループ*" など) に参加させることを選択します。 VM が再起動すると、コンピューター オブジェクトが Azure AD DS マネージド ドメインから削除されます。
 
 ドメインへの参加を解除せずに [VM を削除](#delete-the-vm)すると、孤立したコンピューター オブジェクトが Azure AD DS に残されます。
-
-### <a name="disable-rdp"></a>RDP を無効にする
-
-このチュートリアルで作成した Windows Server VM を、独自のアプリケーションやワークロードを実行するために引き続き使用する場合は、インターネット経由で RDP が開かれていることを思い出してください。 セキュリティを強化し、攻撃のリスクを軽減するには、インターネット経由で RDP を無効にする必要があります。 インターネット経由で Windows Server VM への RDP を無効にするには、次の手順のようにします。
-
-1. 左側のメニューから、 **[リソース グループ]** を選択します
-1. お使いのリソース グループを選択します (例: *myResourceGroup*)。
-1. お使いの VM を選択し (例: *myVM*)、 *[ネットワーク]* を選択します。
-1. ネットワーク セキュリティ グループの **[Inbound network security rules]\(受信ネットワーク セキュリティ規則\)** で、RDP を許可する規則を選択し、 **[削除]** を選択します。 受信セキュリティ規則が削除されるまで数秒かかります。
 
 ### <a name="delete-the-vm"></a>VM の削除
 
@@ -211,7 +207,7 @@ Azure AD DS マネージド ドメインから VM を削除するには、もう
 以下の各トラブルシューティング手順を実行した後、Windows Server VM をマネージド ドメインに再度参加させてください。
 
 * Azure AD DS が有効になっているのと同じ仮想ネットワークに VM が接続されていること、または VM にピアリングされたネットワーク接続があることを確認します。
-* マネージド ドメインの DNS ドメイン名に対して ping を実行します (例: `ping contoso.com`)。
+* マネージド ドメインの DNS ドメイン名に対して ping を実行します (例: `ping aaddscontoso.com`)。
     * ping 要求が失敗する場合は、マネージド ドメインの IP アドレスに対して ping を実行します (例: `ping 10.0.0.4`)。 環境の IP アドレスは、Azure リソースの一覧から Azure AD DS マネージド ドメインを選択すると、 *[プロパティ]* ページに表示されます。
     * ドメインではなく IP アドレスを ping できた場合、DNS が正しく構成されていない可能性があります。 マネージド ドメインの IP アドレスが仮想ネットワークの DNS サーバーとして構成されていることを確認します。
 * `ipconfig /flushdns` コマンドを使用して、仮想マシンの DNS リゾルバー キャッシュをフラッシュしてみます。
@@ -224,11 +220,11 @@ Azure AD DS マネージド ドメインから VM を削除するには、もう
 
 * 指定したユーザー アカウントが *AAD DC Administrators* グループに属していることを確認します。
 * アカウントが Azure AD DS マネージド ドメインまたは Azure AD テナントの一部であることを確認してください。 Azure AD テナントに関連付けられている外部ディレクトリのアカウントが、ドメイン参加プロセス中に正しく認証を行うことはできません。
-* UPN 形式を使用して資格情報を指定します (例: `contosoadmin@contoso.onmicrosoft.com`)。 たくさんのユーザーがテナントで同じ UPN プレフィックスを使用している場合、または UPN プレフィックスが最大文字数を超えている場合は、アカウントの *SAMAccountName* が自動生成される可能性があります。 そのような場合、アカウントの *SAMAccountName* 形式が、想定されている形式やオンプレミス ドメインで使用されている形式と異なる可能性があります。
+* UPN 形式を使用して資格情報を指定します (例: `contosoadmin@aaddscontoso.onmicrosoft.com`)。 たくさんのユーザーがテナントで同じ UPN プレフィックスを使用している場合、または UPN プレフィックスが最大文字数を超えている場合は、アカウントの *SAMAccountName* が自動生成される可能性があります。 そのような場合、アカウントの *SAMAccountName* 形式が、想定されている形式やオンプレミス ドメインで使用されている形式と異なる可能性があります。
 * マネージド ドメインとの[パスワード同期を有効にしている][password-sync]ことを確認します。 この構成手順を行わないと、サインインの試行を正しく認証するために必要なパスワード ハッシュが、Azure AD DS マネージド ドメインに存在しません。
 * パスワード同期が完了するまで待ちます。 ユーザー アカウントのパスワードが変更されると、Azure AD からの自動バックグラウンド同期によって、Azure AD DS 内のパスワードが更新されます。 ドメインへの参加にパスワードを使用できるようになるまでに、しばらく時間がかかります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 
@@ -249,6 +245,5 @@ Azure AD DS マネージド ドメインを管理するには、Active Directory
 [vnet-peering]: ../virtual-network/virtual-network-peering-overview.md
 [password-sync]: active-directory-ds-getting-started-password-sync.md
 [add-computer]: /powershell/module/microsoft.powershell.management/add-computer
-[jit-access]: ../security-center/security-center-just-in-time.md
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
 [set-azvmaddomainextension]: /powershell/module/az.compute/set-azvmaddomainextension

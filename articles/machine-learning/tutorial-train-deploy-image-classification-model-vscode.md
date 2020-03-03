@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Machine Learning Visual Studio Code 拡張機能を使用して画像分類 TensorFlow モデルをトレーニングおよびデプロイする
+title: チュートリアル:Visual Studio Code 拡張機能を使用してモデルをトレーニングおよびデプロイする
 titleSuffix: Azure Machine Learning
 description: TensorFlow と Azure Machine Learning Visual Studio Code 拡張機能を使用して、画像分類モデルをトレーニングおよびデプロイする方法について説明します
 services: machine-learning
@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 01/16/2019
-ms.openlocfilehash: 899681f2bb9c3ef2a0368015a58db30a843738f5
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 02/24/2020
+ms.openlocfilehash: ba9cd2e7dc0248aa351cb7bc4519689763f1adda
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157383"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602550"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension"></a>Azure Machine Learning Visual Studio Code 拡張機能を使用して画像分類 TensorFlow モデルをトレーニングおよびデプロイする
 
@@ -56,11 +56,11 @@ Azure Machine Learning でアプリケーションを作成する際に最初に
     > [!div class="mx-imgBorder"]
     > ![ワークスペースを作成する](./media/tutorial-train-deploy-image-classification-model-vscode/create-workspace.png)
 
-1. 既定では、作成日時を含む名前が生成されます。 コマンド パレットで名前を "TeamWorkspace" に変更し、**Enter** キーを押します。
-1. コマンド パレットの **[新しいリソース グループを作成する]** を選択します。 
-1. コマンド パレットのテキスト ボックスに「TeamWorkspace-rg」と入力し、**Enter** キーを押します。 
-1. コマンド パレットで、ワークスペースの場所を選択します。 モデルをデプロイする予定の場所に最も近い場所を選択することをお勧めします。 この例では、 **[米国西部 2]** を選択します。
-1. ワークスペースの SKU を選択するよう求められたら、 **[Basic]** を選択して Basic のワークスペースを作成します。 ワークスペースの各種プランの詳細については、[Azure Machine Learning の概要](./overview-what-is-azure-ml.md#sku)に関するページを参照してください。
+1. 既定では、作成日時を含む名前が生成されます。 テキスト入力ボックスで名前を "TeamWorkspace" に変更し、**Enter** キーを押します。
+1. **[Create a new resource group]\(新しいリソース グループの作成\)** を選択します。 
+1. リソース グループに "TeamWorkspace-rg" という名前を付けて **Enter** キーを押します。 
+1. ワークスペースの場所を選択します。 モデルをデプロイする予定の場所に最も近い場所を選択することをお勧めします。 たとえば "米国西部 2" にします。
+1. ワークスペースの種類を選択するよう求められたら、 **[Basic]** を選択して Basic のワークスペースを作成します。 ワークスペースの各種プランの詳細については、[Azure Machine Learning の概要](./overview-what-is-azure-ml.md#sku)に関するページを参照してください。
 
 この時点で、新しいワークスペースをアカウントに作成するための要求が Azure に送信されます。 数分後、ご利用のサブスクリプションのノードに新しいワークスペースが表示されます。 
 
@@ -77,7 +77,7 @@ Azure Machine Learning でアプリケーションを作成する際に最初に
     > [!div class="mx-imgBorder"]
     > ![実験を作成する](./media/tutorial-train-deploy-image-classification-model-vscode/create-experiment.png)
 
-1. コマンド パレットのプロンプトで、実験に「MNIST」という名前を付け、**Enter** キーを押して新しい実験を作成します。 
+1. 実験に「MNIST」という名前を付け、**Enter** キーを押して新しい実験を作成します。 
 
 ワークスペースと同様、指定した構成で実験を作成するための要求が Azure に送信されます。 数分後、ワークスペースの *[実験]* ノードに新しい実験が表示されます。 
 
@@ -96,8 +96,8 @@ Azure Machine Learning でアプリケーションを作成する際に最初に
     > ![コンピューティング先を作成する](./media/tutorial-train-deploy-image-classification-model-vscode/create-compute.png)
 
 1. **[Azure Machine Learning コンピューティング (AmlCompute)]** を選択します。 Azure Machine Learning コンピューティングとは、マネージド コンピューティング インフラストラクチャで、これにより、ユーザーは、ワークスペース内の他のユーザーと一緒に使用できるシングルノードまたはマルチノードのコンピューティングを簡単に作成できます。
-1. VM のサイズを選択します。 コマンド パレットのプロンプトで、 **[Standard_F2s_v2]** を選択します。 使用する VM のサイズは、モデルのトレーニングの所要時間に影響します。 VM サイズの詳細については、「[Azure の Linux 仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)」を参照してください。
-1. コマンド パレットのプロンプトで、コンピューティングに「TeamWkspc-com」という名前を付け、**Enter** キーを押してコンピューティングを作成します。
+1. VM のサイズを選択します。 オプションの一覧から **[Standard_F2s_v2]** を選択します。 使用する VM のサイズは、モデルのトレーニングの所要時間に影響します。 VM サイズの詳細については、「[Azure の Linux 仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)」を参照してください。
+1. コンピューティングに「TeamWkspc-com」という名前を付け、**Enter** キーを押してコンピューティングを作成します。
 
 数分後、ワークスペースの *[コンピューティング]* ノードに新しいコンピューティング先が表示されます。
 
@@ -115,10 +115,10 @@ Azure Machine Learning でアプリケーションを作成する際に最初に
     > [!div class="mx-imgBorder"]
     > ![実行構成を作成する](./media/tutorial-train-deploy-image-classification-model-vscode/create-run-configuration.png)
 
-1. コマンド パレットのプロンプトで、実行構成に「MNIST-rc」という名前を付け、**Enter** キーを押してコンピューティングを作成します。
+1. コマンド パレットのプロンプトで、実行構成に「MNIST-rc」という名前を付け、**Enter** キーを押して実行構成を作成します。
 1. 次に、トレーニング ジョブの種類として **[TensorFlow Single-Node Training]\(TensorFlow 単一ノード トレーニング\)** を選択します。
 1. **Enter** キーを押して、コンピューティングで実行するスクリプト ファイルを参照します。 この場合、モデルをトレーニングするためのスクリプトは、`vscode-tools-for-ai/mnist-vscode-docs-sample` ディレクトリ内にある `train.py` ファイルです。
-1. コマンド パレットのプロンプトに次のように入力して、必要なパッケージを指定します。
+1. 入力ボックスに次のように入力して、必要なパッケージを指定します。
     
     ```text
     pip: azureml-defaults; conda: python=3.6.2, tensorflow=1.15.0
@@ -192,7 +192,7 @@ Azure Machine Learning 実験を実行するには:
     > [!div class="mx-imgBorder"]
     > ![実験を実行する](./media/tutorial-train-deploy-image-classification-model-vscode/run-experiment.png)
 
-1. コマンド パレットで、**TeamWkspc-com** コンピューティング先を選択します。
+1. コンピューティング先のオプションの一覧から **[TeamWkspc-com]** を選択します。
 1. 次に、**MNIST-rc** 実行構成を選択します。
 1. この時点で、ワークスペースで選択したコンピューティング先で実験を実行するための要求が Azure に送信されます。 このプロセスには数分かかります。 トレーニング ジョブの実行にかかる時間は、コンピューティングの種類やトレーニング データのサイズなど、いくつかの要因によって左右されます。 実験の進行状況を追跡するには、現在の実行ノードを右クリックし、 **[View Run in Azure portal]\(Azure portal で実行を表示する\)** を選択します。
 1. 外部の Web サイトを開くよう要求するダイアログが表示されたら、 **[開く]** を選択します。
@@ -222,9 +222,9 @@ Azure Machine Learning 実験を実行するには:
     > [!div class="mx-imgBorder"]
     > ![モデルを登録する](./media/tutorial-train-deploy-image-classification-model-vscode/register-model.png)
 
-1. コマンド パレットで、モデルに「MNIST-TensorFlow-model」という名前を付けて、**Enter** キーを押します。
-1. TensorFlow モデルは、複数のファイルで構成されています。 コマンド パレットで、モデル パスの形式として **Model フォルダー**を選択します。 
-1. `azureml_outputs/Run_1/outputs/Run_1/outputs/outputs/model` ディレクトリを選択します。
+1. モデルに「MNIST-TensorFlow-model」という名前を付けて、**Enter** キーを押します。
+1. TensorFlow モデルは、複数のファイルで構成されています。 モデル パスの形式として、オプションの一覧から **Model フォルダー**を選択します。 
+1. `azureml_outputs/Run_1/outputs/outputs/model` ディレクトリを選択します。
 
     モデルの構成を含んだファイルが Visual Studio Code に表示されます。これには、次のような内容が記述されています。
 
@@ -234,7 +234,7 @@ Azure Machine Learning 実験を実行するには:
         "tags": {
             "": ""
         },
-        "modelPath": "c:\\Dev\\vscode-tools-for-ai\\mnist-vscode-docs-sample\\azureml_outputs\\Run_1\\outputs\\Run_1\\outputs\\outputs\\model",
+        "modelPath": "c:\\Dev\\vscode-tools-for-ai\\mnist-vscode-docs-sample\\azureml_outputs\\Run_1\\outputs\\outputs\\model",
         "description": ""
     }
     ```
@@ -266,10 +266,10 @@ Web サービスを ACI としてデプロイするには:
     > [!div class="mx-imgBorder"]
     > ![モデルをデプロイする](./media/tutorial-train-deploy-image-classification-model-vscode/register-model.png)。
 
-1. コマンド パレットで **[Azure Container Instances]** を選択します。
-1. コマンド パレットで、サービスに「mnist-tensorflow-svc」という名前を付けて、**Enter** キーを押します。
-1. コマンド パレットで **Enter** キーを押し、`mnist-vscode-docs-sample` ディレクトリ内の `score.py` ファイルを参照して、コンテナーで実行するスクリプトを選択します。
-1. コマンド パレットで **Enter** キーを押し、`mnist-vscode-docs-sample` ディレクトリ内の `env.yml` ファイルを参照して、スクリプトの実行に必要な依存関係を指定します。
+1. **[Azure Container Instances]** を選択します。
+1. サービスに「mnist-tensorflow-svc」という名前を付けて、**Enter** キーを押します。
+1. 入力ボックスで **Enter** キーを押し、`mnist-vscode-docs-sample` ディレクトリ内の `score.py` ファイルを参照して、コンテナーで実行するスクリプトを選択します。
+1. 入力ボックスで **Enter** キーを押し、`mnist-vscode-docs-sample` ディレクトリ内の `env.yml` ファイルを参照して、スクリプトの実行に必要な依存関係を指定します。
 
     モデルの構成を含んだファイルが Visual Studio Code に表示されます。これには、次のような内容が記述されています。
 

@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: tutorial
-ms.date: 02/04/2020
+ms.date: 02/24/2020
 ms.author: banders
-ms.openlocfilehash: 1affe81228b491ea45f610d741d454fa38f2029a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 017f617bff14eb0c031c40240ca6c1ac62c9c941
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199111"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598223"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Azure Enterprise Agreement 請求書を理解する
 
@@ -55,7 +55,7 @@ Enterprise Agreement による Azure カスタマーは、組織のクレジッ�
     - Visual Studio Professional (年払い)
 - **Marketplace の料金**:Azure Marketplace での購入および利用は、組織のクレジットでは対応されません。 そのため、クレジットの残高に関係なく、Marketplace の料金が請求されます。 エンタープライズ管理者は、Enterprise Portal で、Marketplace での購入を有効または無効にできます。
 
-請求書には、Azure のすべての使用量と Marketplace の料金 (ある場合) が示されます。 クレジットの残高がある場合は、Azure の使用量に適用されます。
+請求書には、まず Azure の使用料金とそれに関連するコストが表示され、続けてマーケットプレースの料金が表示されます。 クレジット残高がある場合は、Azure の使用料に適用され、請求書には Azure の使用料とマーケットプレースの使用料は表示されますが、最後のコストは表示されません。
 
 Enterprise Portal の **[レポート]**  >  **[使用状況の要約]** に表示されている合計金額を、お客様が利用したサービスの超過分の請求書と比較してください。 **[使用状況の要約]** の金額には税は含まれません。
 

@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/27/2020
-ms.openlocfilehash: 1797654f290d751eb5c1cb65a77aaa7ca7a35aa1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 837174b3ccc08a74583587cb9efd34f8f720aec5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772888"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589455"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>チュートリアル:Azure Stream Analytics ジョブから Azure Functions を実行する 
 
@@ -191,11 +191,16 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 Azure Functions へのイベントの送信中にエラーが発生した場合、Stream Analytics はほとんどの操作を再試行します。 http エラー 413 (エンティティが大きすぎます) を除き、すべての http 例外は、成功するまで再試行されます。 "エンティティが大きすぎます" エラーは、[再試行またはドロップ ポリシー](stream-analytics-output-error-policy.md)の対象となるデータ エラーとして扱われます。
 
+> [!NOTE]
+> Stream Analytics から Azure Functions への HTTP 要求のタイムアウトは、100 秒に設定されています。 Azure Functions アプリでのバッチ処理に 100 秒以上かかる場合、Stream Analytics でエラーが発生します。
+
 ## <a name="known-issues"></a>既知の問題
 
 Azure Portal では、最大バッチ サイズ/最大バッチ カウントの値を空 (既定値) にリセットしようとしても、保存時には以前に入力した値に戻ります。 この場合は、それらのフィールドに既定値を手動で入力します。
 
 Azure Functions での [HTTP ルーティング](https://docs.microsoft.com/sandbox/functions-recipes/routes?tabs=csharp)の使用は、現在、Stream Analytics ではサポートされていません。
+
+仮想ネットワークでホストされている Azure Functions に接続するためのサポートが、有効になっていません。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

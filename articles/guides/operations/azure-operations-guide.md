@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: e6ef4cc825d40615fa8a6aee7dff8d4542407974
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 4f9da6cbfe8d1e6b92c39148b275de193730c8f1
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970861"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623574"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT オペレーター向けのファースト ステップ
 
@@ -112,7 +112,7 @@ Azure は、そのクラウド コンピューティング プラットフォー
 
 - ビッグ データを処理するための Azure HDInsight
 
-- Azure Scheduler
+- ワークフローの統合とオーケストレーションのための Azure Logic Apps
 
 - Azure Media Services
 
@@ -198,7 +198,7 @@ Azure サービスを利用するには、サブスクリプションが必要�
 
 ### <a name="grant-administrative-access-to-an-azure-subscription"></a>Azure サブスクリプションに管理アクセスを与える
 
-RBAC にはいくつかの組み込みロールがあり、それらを使用して、アクセス許可を割り当てることができます。 ユーザーを Azure サブスクリプションの管理者にするには、サブスクリプション スコープで、そのユーザーに[所有者](../../role-based-access-control/built-in-roles.md#owner)ロールを割り当てます。 これにより、他のユーザーへアクセス権を委任する権限を含め、サブスクリプションにあるすべてのリソースへのフル アクセスがユーザーに付与されます。
+RBAC にはいくつかの組み込みロールがあり、それらを使用して、アクセス許可を割り当てることができます。 ユーザーを Azure サブスクリプションの管理者にするには、サブスクリプションのスコープで、そのユーザーに[所有者](../../role-based-access-control/built-in-roles.md#owner)ロールを割り当てます。 これにより、他のユーザーへアクセス権を委任する権限を含め、サブスクリプションにあるすべてのリソースへのフル アクセスがユーザーに付与されます。
 
 詳細については、「[RBAC と Azure portal を使用してアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 

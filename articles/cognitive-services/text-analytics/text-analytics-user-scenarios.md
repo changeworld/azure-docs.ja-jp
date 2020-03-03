@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 11/29/2019
+ms.date: 02/25/2020
 ms.author: aahi
-ms.openlocfilehash: 027e6ec829e9de9956451e48e5f9e1cdd749f9f7
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 560f34d21a68cecc4950db5dcceb9c8ef7b05a49
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689325"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614432"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Text Analytics API のユーザー シナリオの例
 
@@ -45,7 +45,13 @@ Text Analytics API は、テキストに対する高度な自然言語処理を�
 
 ![キー フレーズ抽出を使用してソーシャル メディアでの商品や企業のフィードバックを監視する方法を説明する画像](media/use-cases/social-feed.svg)
 
-## <a name="next-steps"></a>次の手順
+## <a name="classify-and-redact-documents-that-have-sensitive-information"></a>機密情報を含んだドキュメントを分類、編集する
+
+ドキュメントに含まれる個人情報や機密情報を識別するには、名前付きエンティティの認識を使用します。 そのデータを使用してドキュメントを分類または編集し、それらを安全に共有できるようにします。
+
+![NER を使用して個人情報を検出したりドキュメントを分類、編集したりする方法を説明する画像](media/use-cases/sensitive-docs.jpg)
+
+## <a name="next-steps"></a>次のステップ
 
 * [Text Analytics API とは](overview.md)
 * [クライアント ライブラリを使用して Text Analytics API に要求を送信する](quickstarts/text-analytics-sdk.md)

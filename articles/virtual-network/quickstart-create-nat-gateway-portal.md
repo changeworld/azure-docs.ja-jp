@@ -12,29 +12,25 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 8913c956554fa7bf1d0362b44dc6f8031ffd74f9
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 429c221609005136663d5e64a1b8650027cba411
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429133"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588741"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>クイック スタート:Azure portal を使用した NAT ゲートウェイの作成
 
 このクイックスタートでは、Azure Virtual Network NAT サービスを使用する方法について説明します。 Azure 内の仮想マシンに送信接続を提供する NAT ゲートウェイを作成しましょう。 
 
 >[!NOTE] 
->Azure Virtual Network NAT は、現時点ではパブリック プレビューとして提供され、限られた[リージョン](./nat-overview.md#region-availability)でのみご利用いただけます。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms)」をご覧ください。
+>Azure Virtual Network NAT は、現時点ではパブリック プレビューとして提供され、ご利用いただける[リージョン](./nat-overview.md#region-availability)が限られています。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms)」をご覧ください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-> [!IMPORTANT]
-> ご利用のサブスクリプションで Virtual Network NAT [プレビューを有効](./nat-overview.md#enable-preview)にした後、 https://aka.ms/natportal を使用してポータルにアクセスします。
-
-[Azure portal](https://aka.ms/natportal) にサインインします。
-
+[Azure portal](https://portal.azure.com) にサインインします。
 
 ### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
@@ -140,7 +136,7 @@ VM をデプロイして NAT ゲートウェイを使用する前に、リソー
 3. **[パブリック IP]** タブに次の値を入力するか選択します。
    - **パブリック IP アドレス**: **[myPublicIP]** を選択します。
    - **[パブリック IP プレフィックス]** : **[myPublicIPprefix]** を選択します。
-   - **[サブネット]** タブを選択します。または、 **[次へ: サブネット]** を選択します。
+   - **[サブネット]** タブを選択するか、 **[次へ: サブネット]** を選択します。
 
 4. **[サブネット]** タブに次の値を入力するか選択します。
    - **[仮想ネットワーク]** : **[myResourceGroupNAT]**  >  **[myVnet]** を選択します。
@@ -172,7 +168,7 @@ ssh <username>@<ip-address-destination>
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-必要がなくなったら、リソース グループ、NAT ゲートウェイ、およびすべての関連リソースを削除します。 NAT ゲートウェイを含むリソース グループ **myResourceGroupNAT** を選択し、 **[削除]** を選択します。
+必要がなくなったら、リソース グループ、NAT ゲートウェイ、およびすべての関連リソースを削除します。 NAT ゲートウェイを含むリソース グループ **[myResourceGroupNAT]** を選択し、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

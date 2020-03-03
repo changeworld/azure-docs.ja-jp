@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/26/2020
 ms.author: banders
-ms.openlocfilehash: 9fab4d8ba0cf2e6f684a1b9de177084f8ce31604
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: ef7a7a81ceeeca07e40fab8248889d7e997fbbe3
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462192"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647474"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Azure の Azure Enterprise Agreement 管理者ロールを理解する
 
@@ -22,9 +22,11 @@ ms.locfileid: "77462192"
 - エンタープライズ管理者 (読み取り専用)<sup>1</sup>
 - 部門管理者
 - 部門管理者 (読み取り専用)
-- アカウント所有者
+- アカウント所有者<sup>2</sup>
 
 <sup>1</sup> EA 契約の請求先は、このロールの連絡先になります。
+
+<sup>2</sup> 請求先担当者は、Azure EA Portal で追加したり変更したりすることはできません。契約レベルで請求先担当者として設定されているユーザーに基づいて、EA 加入契約に追加されます。 請求先担当者を変更するには、パートナーまたはソフトウェア アドバイザーを通じて地域オペレーション センター (ROC) に要請する必要があります。
 
 以上のロールは Azure Enterprise Agreement 管理に固有のものであり、リソース アクセスを制御する目的で Azure に与えられる組み込みロールに追加されるものです。 詳細については、「[Azure リソースの組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
 
@@ -38,9 +40,9 @@ ms.locfileid: "77462192"
 |エンタープライズ管理者 (読み取り専用)|無制限|
 |部門管理者|無制限|
 |部門管理者 (読み取り専用)|無制限|
-|アカウント所有者|アカウントにつき 1 つ<sup>2</sup>|
+|アカウント所有者|アカウントにつき 1 つ<sup>3</sup>|
 
-<sup>2</sup> アカウントごとに、重複のない Microsoft アカウントか、職場または学校アカウントを 1 つ必要とします。
+<sup>3</sup> アカウントごとに、重複のない Microsoft アカウントか、職場または学校アカウントを 1 つ必要とします。
 
 ## <a name="organization-structure-and-permissions-by-role"></a>組織の構造とロール別のアクセス許可
 
@@ -48,17 +50,17 @@ ms.locfileid: "77462192"
 |---|---|---|---|---|---|
 |エンタープライズ管理者を表示する|✔|✔|✘|✘|✘|
 |エンタープライズ管理者を追加または削除する|✔|✘|✘|✘|✘|
-|通知の連絡窓口を表示する<sup>3</sup> |✔|✔|✘|✘|✘|
-|通知の連絡窓口を追加または削除する<sup>3</sup> |✔|✘|✘|✘|✘|
+|通知の連絡窓口を表示する<sup>4</sup> |✔|✔|✘|✘|✘|
+|通知の連絡窓口を追加または削除する<sup>4</sup> |✔|✘|✘|✘|✘|
 |部門を作成し、管理する |✔|✘|✘|✘|✘|
 |部門管理者を表示する|✔|✔|✔|✔|✘|
 |部門管理者を追加または削除する|✔|✘|✔|✘|✘|
-|登録済みのアカウントを表示する |✔|✔|✔<sup>4</sup>|✔<sup>4</sup>|✘|
-|登録にアカウントを追加する/アカウント所有者を変更する|✔|✘|✔<sup>4</sup>|✘|✘|
+|登録済みのアカウントを表示する |✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✘|
+|登録にアカウントを追加する/アカウント所有者を変更する|✔|✘|✔<sup>5</sup>|✘|✘|
 |サブスクリプションとサブスクリプション アクセス許可を作成し、管理する|✘|✘|✘|✘|✔|
 
-- <sup>3</sup> 通知の連絡窓口には Azure Enterprise Agreement に関する電子メール通信が送信されます。
-- <sup>4</sup> タスクは部門内のアカウントに制限されます。
+- <sup>4</sup> 通知の連絡窓口には Azure Enterprise Agreement に関する電子メール通信が送信されます。
+- <sup>5</sup> タスクは部門内のアカウントに制限されます。
 
 
 ## <a name="usage-and-costs-access-by-role"></a>ロール別の使用量/コスト アクセス
@@ -69,11 +71,11 @@ ms.locfileid: "77462192"
 |部門の支出クォータを表示する|✔|✔|✘|✘|✘|
 |部門の支出クォータを設定する|✔|✘|✘|✘|✘|
 |組織の EA 価格シートを表示する|✔|✔|✘|✘|✘|
-|使用量とコストの詳細を表示する|✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✔<sup>6</sup>|
+|使用量とコストの詳細を表示する|✔|✔|✔<sup>6</sup>|✔<sup>6</sup>|✔<sup>7</sup>|
 |Azure portal でリソースを管理する|✘|✘|✘|✘|✔|
 
-- <sup>5</sup> エンタープライズ管理者が Enterprise portal で **DA ビューの請求額**ポリシーを有効にする必要があります。 有効にすると、部門管理者は部門のコスト詳細を表示できます。
-- <sup>6</sup> エンタープライズ管理者が Enterprise portal で **AO ビューの請求額**ポリシーを有効にする必要があります。 有効にすると、アカウント所有者はアカウントのコスト詳細を表示できます。
+- <sup>6</sup> エンタープライズ管理者が Enterprise portal で **DA ビューの請求額**ポリシーを有効にする必要があります。 有効にすると、部門管理者は部門のコスト詳細を表示できます。
+- <sup>7</sup> エンタープライズ管理者が Enterprise portal で **AO ビューの請求額**ポリシーを有効にする必要があります。 有効にすると、アカウント所有者はアカウントのコスト詳細を表示できます。
 
 
 ## <a name="pricing-in-azure-portal"></a>Azure portal の価格

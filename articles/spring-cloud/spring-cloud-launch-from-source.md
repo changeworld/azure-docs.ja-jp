@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: brendm
-ms.openlocfilehash: 8edadbf946a28239ae4d28d56b3dccd77b451a71
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: b506fdcdec1ae3e98c1a4afe9c5124e284ed4d99
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277156"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589013"
 ---
 # <a name="quickstart-launch-your-spring-cloud-application-from-source-code"></a>クイック スタート:ソース コードから Spring Cloud アプリケーションを起動する
 
@@ -62,10 +62,16 @@ az account list -o table
 az account set --subscription
 ```
 
-Azure CLI ウィンドウを開き、次のコマンドを実行して、Azure Spring Cloud のインスタンスをプロビジョニングします。 ここで Azure Spring Cloud にパブリック ドメインの割り当てを指示していることにも留意します。
+Azure Spring Cloud サービスが含まれるリソース グループを作成します。 Azure リソース グループの詳細については[こちら](../azure-resource-manager/management/overview.md)をご覧ください。
 
 ```azurecli
-    az spring-cloud create -n <resource name> -g <resource group name> --is-public true
+az group create --location eastus --name <resource group name>
+```
+
+次のコマンドを実行して、Azure Spring Cloud のインスタンスをプロビジョニングします。 Azure Spring Cloud サービスの名前を準備します。 名前の長さは 4 文字から 32 文字で、小文字、数字、およびハイフンのみを使用できます。 サービス名の最初の文字は英字でなければならず、最後の文字は英字または数字でなければなりません。
+
+```azurecli
+az spring-cloud create -n <resource name> -g <resource group name>
 ```
 
 サービス インスタンスのデプロイには約 5 分かかります。

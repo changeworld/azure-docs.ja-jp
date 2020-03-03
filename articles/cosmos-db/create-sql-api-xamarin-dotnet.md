@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: 74d34705a6541b396fa2c2bf5028254f5f2e8d21
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f951daf08590feb6fa1aaad831f8a735db141984
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466309"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586769"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>クイック スタート:Azure Cosmos DB SQL API アカウントを使用して Xamarin で todo アプリを構築する
 
@@ -25,7 +25,7 @@ ms.locfileid: "73466309"
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。
+Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。
 
 > [!NOTE]
 > CosmosDB を含め、さまざまな Azure プランを表示する基本的なサンプル Xamarin アプリのサンプル コードは、[こちら](https://github.com/xamarinhq/app-geocontacts)の GitHub でご覧いただけます。 このアプリでは、地理的に分散した連絡先を確認し、それらの連絡先がその場所を更新できるようにする方法が紹介されています。
@@ -38,7 +38,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 Windows 上で開発しており、Visual Studio 2019 がまだインストールされていない場合は、**無料の** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** と **[.NET によるモバイル開発]** ワークロードを有効にしてください。
 
-Mac を使用している場合は、**無料**の [Visual Studio for Mac](https://www.visualstudio.com/vs/mac/) をダウンロードできます。
+Mac を使用している場合は、**無料の** [Visual Studio for Mac](https://www.visualstudio.com/vs/mac/) をダウンロードできます。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
@@ -128,7 +128,7 @@ ToDoItems ソリューションのコードには、次の項目が含まれて�
 
 * ドキュメントのコンテナーに対するクエリを実行するときは、次の `CosmosDBService.GetToDoItems` 関数に示されているように `DocumentClient.CreateDocumentQuery<T>` メソッドを使用します。
 
-   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=GetToDoItems)] 
+   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="GetToDoItems"::: 
 
     `CreateDocumentQuery<T>` は、前のセクションで作成されたコンテナーを指す URI を受け取ります。 また、`Where` 句のような LINQ 演算子を指定することもできます。 このケースでは、完了していない todo 項目のみが返されます。
 
@@ -141,13 +141,13 @@ ToDoItems ソリューションのコードには、次の項目が含まれて�
 
 * `ComsmosDBService.InsertToDoItem` 関数は、新しいドキュメントを挿入する方法を示しています。
 
-   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=InsertToDoItem)] 
+   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="InsertToDoItem"::: 
 
     項目の URI が、挿入される項目と共に指定されています。
 
 * `CosmosDBService.UpdateToDoItem` 関数は、既存のドキュメントを新しいドキュメントで置き換える方法を示しています。
 
-   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=UpdateToDoItem)] 
+   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="UpdateToDoItem"::: 
 
     ここでは、置き換えるドキュメントを一意に識別するために新しい URI が必要です。これを取得するために、`UriFactory.CreateDocumentUri` を使用し、これにデータベースおよびコンテナー名とドキュメント ID を渡しています。
 
@@ -155,11 +155,11 @@ ToDoItems ソリューションのコードには、次の項目が含まれて�
 
 * 項目を削除する方法は、`CosmosDBService.DeleteToDoItem` 関数に示されています。
 
-   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=DeleteToDoItem)] 
+   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="DeleteToDoItem"::: 
 
     ここでも、一意のドキュメント URI が作成されて `DocumentClient.DeleteDocumentAsync` 関数に渡されていることに注目してください。
 
-## <a name="run-the-app"></a>アプリの実行
+## <a name="run-the-app"></a>アプリを実行する
 
 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。
 
@@ -196,11 +196,11 @@ ToDoItems ソリューションのコードには、次の項目が含まれて�
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Azure Cosmos アカウントを作成し、データ エクスプローラーを使用してコンテナーを作成し、Xamarin アプリを構築およびデプロイする方法を説明しました。 これで、Azure Cosmos アカウントに追加のデータをインポートできるようになりました。
 

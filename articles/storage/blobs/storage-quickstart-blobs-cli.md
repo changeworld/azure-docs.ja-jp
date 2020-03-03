@@ -7,14 +7,14 @@ author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 12/04/2019
+ms.date: 02/26/2020
 ms.author: tamram
-ms.openlocfilehash: c913cb978796abeed5766ffa030aaeb6142320ec
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 57ab56fe3028da9011e86c589209e7505e69e719
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892925"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650915"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>クイック スタート:Azure CLI を使用して BLOB を作成、ダウンロード、一覧表示する
 
@@ -28,18 +28,60 @@ Azure CLI は、Azure リソースを管理するための、Azure のコマン�
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このクイック スタートを実施するには、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 `az --version` を実行して、バージョンを判断します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+Azure CLI をローカルにインストールして使用することを選択した場合、このクイックスタートでは Azure CLI バージョン 2.0.46 以降を実行していることが必要です。 `az --version` を実行して、バージョンを判断します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
-[!INCLUDE [storage-quickstart-tutorial-intro-include-cli](../../../includes/storage-quickstart-tutorial-intro-include-cli.md)]
+Azure CLI をローカルで実行している場合、ログインして認証を行う必要があります。 Azure Cloud Shell を使用している場合、この手順は必要ありません。 Azure CLI にログインするには、`az login` を実行して、ブラウザー ウィンドウで認証を行います。
+
+```azurecli
+az login
+```
+
+## <a name="authorize-access-to-blob-storage"></a>Blob Storage へのアクセスを承認する
+
+Blob Storage へのアクセスは、Azure CLI から Azure AD の資格情報を使用するか、またはストレージ アカウントのアクセス キーを使用して承認することができます。 Azure AD の資格情報を使用することをお勧めします。 この記事では、Azure AD を使用して、Blob Storage の操作を承認する方法について説明します。
+
+Blob Storage を対象とするデータの操作では、Azure CLI コマンドで `--auth-mode` パラメーターがサポートされます。特定の操作を承認する方法をパラメーターで指定できます。 Azure AD の資格情報を使用して承認するには、`--auth-mode` パラメーターを `login` に設定します。 詳細については、[Azure AD 資格情報で Azure CLI コマンドを実行して BLOB またはキューのデータにアクセスする方法](../common/authorize-active-directory-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関するページを参照してください。
+
+`--auth-mode` パラメーターがサポートされるのは、Blob Storage のデータの操作だけです。 リソース グループの作成やストレージ アカウントの作成など、管理操作の承認では自動的に Azure AD の資格情報が使用されます。
+
+## <a name="create-a-resource-group"></a>リソース グループを作成する
+
+[az group create](/cli/azure/group) コマンドで Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+
+山かっこ内のプレースホルダーをお客様独自の値に置き換えてください。
+
+```azurecli
+az group create \
+    --name <resource-group> \
+    --location <location>
+```
+
+## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
+
+[az storage account create](/cli/azure/storage/account) コマンドで汎用のストレージ アカウントを作成します。 汎用のストレージ アカウントは、BLOB、ファイル、テーブル、およびキューという 4 つのサービスすべてに使用できます。
+
+山かっこ内のプレースホルダーをお客様独自の値に置き換えてください。
+
+```azurecli
+az storage account create \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --location <location> \
+    --sku Standard_ZRS \
+    --encryption blob
+```
 
 ## <a name="create-a-container"></a>コンテナーを作成する
 
-BLOB は常にコンテナーにアップロードされます。 コンピューター上のファイルをフォルダーで整理するように、BLOB のグループを整理できます。
+BLOB は常にコンテナーにアップロードされます。 コンピューター上のファイルをフォルダーで整理するように、コンテナー内の BLOB のグループを整理できます。
 
-BLOB を格納するコンテナーは、[az storage container create](/cli/azure/storage/container) コマンドで作成します。
+BLOB を格納するコンテナーは、[az storage container create](/cli/azure/storage/container) コマンドで作成します。 山かっこ内のプレースホルダーをお客様独自の値に置き換えてください。
 
-```azurecli-interactive
-az storage container create --name sample-container
+```azurecli
+az storage container create \
+    --account-name <storage-account> \
+    --name <container> \
+    --auth-mode login
 ```
 
 ## <a name="upload-a-blob"></a>BLOB をアップロードする
@@ -54,13 +96,15 @@ vi helloworld
 
 ファイルが開いたら、 **[挿入]** を押します。 「*Hello world*」と入力し、**Esc** を押します。次に、「 *:x*」と入力し、**Enter** を押します。
 
-この例では、最後のステップで [az storage blob upload](/cli/azure/storage/blob) コマンドを使って作成したコンテナーに BLOB をアップロードします。 ファイルがルート ディレクトリに作成された後でファイル パスを指定する必要はありません。
+この例では、最後のステップで [az storage blob upload](/cli/azure/storage/blob) コマンドを使って作成したコンテナーに BLOB をアップロードします。 ファイルはルート ディレクトリに作成されているので、ファイル パスを指定する必要はありません。 山かっこ内のプレースホルダーをお客様独自の値に置き換えてください。
 
-```azurecli-interactive
+```azurecli
 az storage blob upload \
-    --container-name sample-container \
+    --account-name <storage-account> \
+    --container-name <container> \
     --name helloworld \
-    --file helloworld
+    --file helloworld \
+    --auth-mode login
 ```
 
 この操作では、BLOB がまだ存在しない場合は作成し、既に存在する場合は上書きします。 続行する前に、希望する数のファイルをアップロードします。
@@ -69,48 +113,51 @@ az storage blob upload \
 
 ## <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
 
-コンテナー内の BLOB を一覧表示するには、[az storage blob list](/cli/azure/storage/blob) コマンドを使います。
+コンテナー内の BLOB を一覧表示するには、[az storage blob list](/cli/azure/storage/blob) コマンドを使います。 山かっこ内のプレースホルダーをお客様独自の値に置き換えてください。
 
-```azurecli-interactive
+```azurecli
 az storage blob list \
-    --container-name sample-container \
-    --output table
+    --account-name <storage-account> \
+    --container-name <container> \
+    --output table \
+    --auth-mode login
 ```
 
 ## <a name="download-a-blob"></a>BLOB をダウンロードする
 
-前にアップロードした BLOB をダウンロードするには、[az storage blob download](/cli/azure/storage/blob) コマンドを使います。
+前にアップロードした BLOB をダウンロードするには、[az storage blob download](/cli/azure/storage/blob) コマンドを使います。 山かっこ内のプレースホルダーをお客様独自の値に置き換えてください。
 
-```azurecli-interactive
+```azurecli
 az storage blob download \
-    --container-name sample-container \
+    --account-name <storage-account> \
+    --container-name <container> \
     --name helloworld \
-    --file ~/destination/path/for/file
+    --file ~/destination/path/for/file \
+    --auth-mode login
 ```
 
 ## <a name="data-transfer-with-azcopy"></a>AzCopy でのデータ転送
 
-[AzCopy](../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) ユーティリティは、Azure Storage 用のスクリプト可能な高性能データ転送のためのもう 1 つのオプションです。 AzCopy を使用すると、BLOB、ファイル、およびテーブル ストレージとの間でデータを転送できます。
+AzCopy コマンド ライン ユーティリティは、Azure Storage に対する高速かつスクリプトで制御可能なデータ転送を実現します。 Blob Storage や Azure Files との間のデータ転送に AzCopy を使用できます。 最新バージョンである AzCopy v10 の詳細については、「[AzCopy を使ってみる](../common/storage-use-azcopy-v10.md)」を参照してください。 Blob Storage での AzCopy v10 の使用については、「[AzCopy と Blob Storage でデータを転送する](../common/storage-use-azcopy-blobs.md)」を参照してください。
 
-次の例では、AzCopy を使用して、*myfile.txt* という名前のファイルを *sample-container* コンテナーにアップロードします。 山かっこ内のプレースホルダーをお客様独自の値に置き換えてください。
+次の例では、AzCopy を使用してローカル ファイルを BLOB にアップロードします。 サンプルの値は忘れずに実際の値に置き換えてください。
 
 ```bash
-azcopy \
-    --source /mnt/myfiles \
-    --destination https://<account-name>.blob.core.windows.net/sample-container \
-    --dest-key <account-key> \
-    --include "myfile.txt"
+azcopy login
+azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt'
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このクイックスタートで作成したストレージ アカウントも含め、リソース グループ内のどのリソースも必要なくなった場合は、[az group delete](/cli/azure/group) コマンドでリソース グループを削除します。 山かっこ内のプレースホルダーをお客様独自の値に置き換えてください。
 
-```azurecli-interactive
-az group delete --name <resource-group-name>
+```azurecli
+az group delete \
+    --name <resource-group> \
+    --no-wait
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、ローカル ファイル システムと Azure Blob Storage 内のコンテナーとの間でファイルを転送する方法について学習しました。 Azure Storage の BLOB の他の処理について詳しくは、Azure Blob Storage の使用に関するチュートリアルに進んでください。
 

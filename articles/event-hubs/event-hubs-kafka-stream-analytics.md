@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 12/20/2019
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: b0b48fea308b385fd8c66bf87d708b1c51f7f495
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: d7b060a2b35ca41bf87b69be706284174d7b1012
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977347"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587160"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>チュートリアル:Stream Analytics を使用して Event Hubs イベントの Apache Kafka を処理する 
 この記事では、データを Kafka 対応 Event Hubs にストリームし、Azure Stream Analytics で処理する方法について説明します。 次の手順について説明します。 
@@ -42,34 +42,10 @@ ms.locfileid: "75977347"
 
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Kafka 対応 Event Hubs 名前空間の作成
+**Standard** レベルの Event Hubs 名前空間を作成すると、名前空間の Kafka エンドポイントが自動的に有効になります。 Kafka プロトコルを使用するアプリケーションから Standard レベルの Event Hubs にイベントをストリーム配信できます。 **Standard** レベルの Event Hubs 名前空間を作成するには、[Azure portal を使用したイベント ハブの作成](event-hubs-create.md)に関するページの手順に従います。 
 
-1. [Azure portal](https://portal.azure.com) にサインインし、画面の左上にある **[リソースの作成]** をクリックします。
-2. **Event Hubs** を検索し、以下に示すオプションを選択します。
-    
-    ![ポータルでの Event Hubs の検索](./media/event-hubs-kafka-stream-analytics/select-event-hubs.png) 
-3. **[Event Hubs]** ページで **[作成]** を選択します。
-4. **[名前空間の作成]** ページで、次の操作を行います。 
-    1. 名前空間には一意の**名前**を指定します。 
-    2. **[価格レベル]** を選択します。 
-    3. **[Kafka を有効にする]** を選択します。 これは**重要な**手順です。 
-    4. イベント ハブ名前空間を作成する**サブスクリプション**を選択します。 
-    5. 新しい**リソース グループ**を作成するか、既存のリソース グループを選択します。 
-    6. **場所**を選択します。 
-    7. **Create** をクリックしてください。
-    
-        ![名前空間の作成](./media/event-hubs-kafka-stream-analytics/create-event-hub-namespace-page.png) 
-4. **通知メッセージ**で、**リソース グループ名**を選択します。 
-
-    ![名前空間の作成](./media/event-hubs-kafka-stream-analytics/creation-station-message.png)
-1. リソース グループ内の**イベント ハブ名前空間**を選択します。 
-2. 名前空間が作成されたら、 **[設定]** の **[共有アクセス ポリシー]** を選択します。
-
-    ![[共有アクセス ポリシー] をクリックする](./media/event-hubs-kafka-stream-analytics/shared-access-policies.png)
-5. 既定値の **RootManageSharedAccessKey** を選択することも、新しいポリシーを追加することもできます。 ポリシー名をクリックして、**接続文字列**をコピーします。 接続文字列を使用して Kafka クライアントを構成します。 
-    
-    ![ポリシーの選択](./media/event-hubs-kafka-stream-analytics/connection-string.png)  
-
-これで、Kafka プロトコルを使用するアプリケーションからイベントを Event Hubs にストリーミングできます。
+> [!NOTE]
+> Kafka 用の Event Hubs は、**Standard** および **Dedicated** レベルでのみ使用できます。 **Basic** レベルでは、Event Hubs 上の Kafka はサポートされません。
 
 ## <a name="send-messages-with-kafka-in-event-hubs"></a>Event Hubs で Kafka を使用してメッセージを送信する
 

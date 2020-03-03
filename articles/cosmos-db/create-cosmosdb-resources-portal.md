@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/05/2020
-ms.openlocfilehash: a933caf0b0033cdcd1f27d4f795ba6466f34072a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: bc7e77cc498958b2f8f0c5b2d5ab2d59db97a235
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210345"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560832"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Cosmos のアカウント、データベース、コンテナー、および項目を作成する
 
@@ -100,6 +100,12 @@ Azure portal のデータ エクスプローラーを使用してデータベー
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
+
+データベースのみを削除し、今後 Azure Cosmos アカウントを使用する場合は、次の手順でデータベースを削除できます。
+
+* 自分の Azure Cosmos アカウントにアクセスします。
+* **データ エクスプローラー**を開き、削除するデータベースを右クリックして、 **[データベースを削除する]** を選択します。
+* データベース ID またはデータベース名を入力して、削除操作を確認します。 
 
 ## <a name="next-steps"></a>次のステップ
 

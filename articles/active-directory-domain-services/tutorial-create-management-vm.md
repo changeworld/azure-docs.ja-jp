@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 73402420bdfee7fecbd7901deefe7f4314a76d51
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 0c997fffc1adc60f774e651ed458d253b35a3bdd
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931595"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612204"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメインを構成および管理するための管理 VM を作成する
 
@@ -44,6 +44,8 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 * Azure AD DS のマネージド ドメインに参加している Windows Server VM。
     * 必要に応じて、前のチュートリアルを参照し、[Windows Server VM を作成してマネージド ドメインに参加][create-join-windows-vm]させてください。
 * Azure AD テナントの *Azure AD DC administrators* グループのメンバーであるユーザー アカウント。
+* Azure AD DS 仮想ネットワークにデプロイされた Azure Bastion ホスト。
+    * 必要に応じて [Azure Bastion ホストを作成][azure-bastion]してください。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -84,16 +86,15 @@ Azure AD DS のマネージド ドメインはロックダウンされており�
 まず、次の手順に従って Windows Server VM に接続します。
 
 1. Azure portal で、左側にある **[リソース グループ]** を選択します。 VM の作成先となったリソース グループ (例: *myResourceGroup*) を選択し、VM (例: *myVM*) を選択します。
-1. VM の **[概要]** ウィンドウで **[接続]** を選択します。
+1. VM の **[概要]** ペインで **[接続]** を選択し、 **[Bastion]** を選択します。
 
-    ![Azure portal で Windows 仮想マシンに接続する](./media/tutorial-create-management-vm/connect-vm.png)
+    ![Azure portal から Bastion を使用して Windows 仮想マシンに接続する](./media/join-windows-vm/connect-to-vm.png)
 
-    [Azure Bastion ホスト (現在プレビュー段階) を作成、使用][azure-bastion]して、SSL を介した Azure portal 経由のアクセスのみを許可することもできます。
+1. VM の資格情報を入力し、 **[接続]** を選択します。
 
-1. *[RDP ファイルのダウンロード]* オプションを選択します。 この RDP ファイルを Web ブラウザーで保存します。
-1. VM に接続するには、ダウンロードした RDP ファイルを開きます。 メッセージが表示されたら、 **[Connect]** を選択します。
-1. *Azure AD DC administrators* グループに属しているユーザーの資格情報を入力します (例: *contoso\dee*)。
-1. サインイン プロセス中に証明書警告が表示された場合は、 **[はい]** または **[続行]** を選択して接続します。
+   ![Azure portal から Bastion ホストを使用して接続する](./media/join-windows-vm/connect-to-bastion.png)
+
+必要に応じて、ポップアップの表示を Web ブラウザーに許可して、Bastion 接続を表示します。 VM への接続には数秒かかります。
 
 ## <a name="install-active-directory-administrative-tools"></a>Active Directory 管理ツールをインストールする
 
@@ -105,7 +106,7 @@ Azure AD DS のマネージド ドメインは、Active Directory 管理セン�
 1. **[サーバー マネージャー]** ウィンドウの *[ダッシュボード]* ウィンドウで **[役割と機能の追加]** を選択します。
 1. *[役割と機能の追加]* ウィザードの **[開始する前に]** ページで **[次へ]** を選択します。
 1. *[インストールの種類]* で、 **[役割ベースまたは機能ベースのインストール]** オプションが選択された状態にして **[次へ]** を選択します。
-1. **[サーバーの選択]** ページで、サーバー プールから現在の VM (例: *myvm.aadds.contoso.com*) を選択し、 **[次へ]** を選択します。
+1. **[サーバーの選択]** ページで、サーバー プールから現在の VM (例: *myvm.aaddscontoso.com*) を選択し、 **[次へ]** を選択します。
 1. **[サーバーの役割]** ページで、 **[次へ]** をクリックします。
 1. **[機能]** ページで、 **[リモート サーバー管理ツール]** ノードを展開し、次に **[役割管理ツール]** ノードを展開します。
 
@@ -125,7 +126,7 @@ Azure AD DS のマネージド ドメインは、Active Directory 管理セン�
     ![サーバーにインストールされている管理ツール](./media/tutorial-create-management-vm/list-admin-tools.png)
 
 1. **[Active Directory 管理センター]** を選択します。
-1. Azure AD DS のマネージド ドメインの詳細を確認するために、左ペインでドメイン名を選択します (例: *aadds.contoso.com*)。 一覧の先頭に *AADDC Computers* および *AADDC Users* という名前の 2 つのコンテナーがあります。
+1. Azure AD DS のマネージド ドメインの詳細を確認するために、左ペインでドメイン名を選択します (例: *aaddscontoso.com*)。 一覧の先頭に *AADDC Computers* および *AADDC Users* という名前の 2 つのコンテナーがあります。
 
     ![Azure AD DS のマネージド ドメインで使用できるコンテナーの一覧](./media/tutorial-create-management-vm/active-directory-administrative-center.png)
 

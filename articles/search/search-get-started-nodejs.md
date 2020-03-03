@@ -8,13 +8,13 @@ ms.author: heidist
 ms.devlang: nodejs
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: fd8a053eb4ff0805b95dc11db4206e1dd2edb184
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 02/25/2020
+ms.openlocfilehash: cbef6029b93f134f95ee54aa87ce0dd65bcdf50d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406932"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624007"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>クイック スタート:REST API を使用して Node.js で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -31,19 +31,24 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートでは、次のサービス、ツール、およびデータを使用します。
+このクイックスタートをビルドしてテストするために次のソフトウェアとサービスを使用しました。
 
-+ [Node.js](https://nodejs.org)。
-+ [npm](https://www.npmjs.com) が Node.js によってインストールされている必要があります。
++ [Node.js](https://nodejs.org)
+
++ [NPM](https://www.npmjs.com) が Node.js によってインストールされている必要があります。
+
 + サンプルのインデックス構造と一致ドキュメントは、この記事で用意されます。または、[リポジトリの **quickstart** ディレクトリ](https://github.com/Azure-Samples/azure-search-javascript-samples/)から入手できます。
+
 + [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。
 
 推奨:
 
-* [Visual Studio Code](https://code.visualstudio.com)。
+* [Visual Studio Code](https://code.visualstudio.com)
+
 * VSCode 用の [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) および [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) 拡張機能。
 
 <a name="get-service-info"></a>
+
 ## <a name="get-keys-and-urls"></a>キーと URL を取得する
 
 サービスの呼び出しには、要求ごとに URL エンドポイントとアクセス キーが必要です。 両方を使用して検索サービスが作成されるので、Azure Cognitive Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
@@ -58,7 +63,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 すべての要求で、自分のサービスに送信される各要求のヘッダーに API キーが必要になります。 有効なキーにより、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼が確立されます。
 
-## <a name="set-up-your-environment"></a>環境をセットアップする
+## <a name="set-up-your-environment"></a>環境の設定方法
 
 まず、PowerShell コンソールか、Node.js をインストール済みのその他の環境を開きます。
 
@@ -108,16 +113,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
       }
     }
     ```
-自分の検索サービスのデータを保持する **azure_search_config.json** ファイルを作成します。
 
-```json
-{
-    "serviceName" : "[SERVICE_NAME]",
-    "adminKey" : "[ADMIN_KEY]",
-    "queryKey" : "[QUERY_KEY]",
-    "indexName" : "hotels-quickstart"
-}
-```
+5. 自分の検索サービスのデータを保持する **azure_search_config.json** ファイルを作成します。
+
+    ```json
+    {
+        "serviceName" : "[SEARCH_SERVICE_NAME]",
+        "adminKey" : "[ADMIN_KEY]",
+        "queryKey" : "[QUERY_KEY]",
+        "indexName" : "hotels-quickstart"
+    }
+    ```
 
 `[SERVICE_NAME]` の値は、自分の検索サービスの名前に置き換えます。 `[ADMIN_KEY]` と `[QUERY_KEY]` は、先ほど記録したキー値に置き換えます。 
 
@@ -403,7 +409,7 @@ const AzureSearchClient = require('./AzureSearchClient.js');
 ```javascript
 function getAzureConfiguration() {
     const config = nconf.file({ file: 'azure_search_config.json' });
-    if (config.get('serviceName') === '[SEARCH_SERVICE_NAME' ) {
+    if (config.get('serviceName') === '[SEARCH_SERVICE_NAME]' ) {
         throw new Error("You have not set the values in your azure_search_config.json file. Change them to match your search service's values.");
     }
     return config;
@@ -433,7 +439,7 @@ function sleep(ms) {
 const run = async () => {
     try {
         const cfg = getAzureConfiguration();
-        const client = new AzureSearchClient(cfg.get("serviceName"), cfg.get("adminKey"), cfg.get("queryKey"), cfg.get["serviceName"]);
+        const client = new AzureSearchClient(cfg.get("serviceName"), cfg.get("adminKey"), cfg.get("queryKey"), cfg.get("indexName));
         
         const exists = await client.indexExistsAsync();
         await exists ? client.deleteIndexAsync() : Promise.resolve();
@@ -684,7 +690,7 @@ async queryAsync(searchTerm) {
 
 `run` 関数の全動作は、Azure Cognitive Search インデックスを削除し (存在する場合)、インデックスを作成してデータを追加し、いくつかのクエリを実行することです。  
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
 
@@ -692,7 +698,7 @@ async queryAsync(searchTerm) {
 
 無料サービスを使っている場合は、3 つのインデックス、インデクサー、およびデータソースに制限されることに注意してください。 ポータルで個別の項目を削除して、制限を超えないようにすることができます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この Node.js クイックスタートでは、インデックスの作成、そこへのドキュメントの読み込み、およびクエリの実行という一連のタスクに取り組みました。 構成の読み取りやクエリの定義など、一部の手順についてはできる限り単純な方法で行っています。 実際のアプリケーションでは、これらは別のモジュールに配置することをお勧めします。そうすることで、柔軟性が高まり、カプセル化が可能になります。 
  

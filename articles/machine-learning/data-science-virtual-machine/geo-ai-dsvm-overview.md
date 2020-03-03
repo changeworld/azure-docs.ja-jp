@@ -1,5 +1,5 @@
 ---
-title: Geo Artificial Intelligence DSVM とは
+title: Geo Artificial Intelligence Data Science Virtual Machine とは
 titleSuffix: Azure Data Science Virtual Machine
 description: Geo Artificial Intelligence Data Science Virtual Machine は、地理データを扱うための ArcGIS Pro のほか、ML や AI を扱うための Python、R、データ サイエンス ツールキットを備えています。
 keywords: ディープ ラーニング、AI、データ サイエンス ツール、データ サイエンス仮想マシン、地理空間分析
@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 03/05/2018
-ms.openlocfilehash: 7e2976596ca6b55ea57e00015e53b2721438e990
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: f5a094613b8722f96fccd1d1a6df359fa9b0ebd4
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74899920"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526063"
 ---
 # <a name="what-is-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Geo Artificial Intelligence Data Science Virtual Machine とは
 
@@ -40,7 +40,7 @@ Microsoft の [Data Science Virtual Machine (DSVM)](overview.md) は、Azure で
 Geo AI Data Science VM によって、その予測機能に、Azure クラウドのスケーラビリティや [ESRI](https://www.esri.com) の地理空間分析ソフトウェアが組み合わされます。 この先駆的な統合によって、データ サイエンティストや地理的空間アナリストがデータから新たなインテリジェンスを取得し、新たな機会を特定するための、生産性に優れたプラットフォームが実現されます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Geo AI Data Science VM をプロビジョニングし、次のリソースのガイダンスに従って使用を開始しましょう。
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 02/25/2020
 ms.author: areddish
-ms.openlocfilehash: 2b3c6fc404e9a5fefc15aa7b7162ff5573c3be5a
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: a0cfa49dfe247a71e5c2d546e2bb7e9d9b2efc18
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76166133"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616344"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-sdk-for-java"></a>クイック スタート:Custom Vision SDK for Java を使用して画像分類プロジェクトを作成する
 
@@ -25,14 +25,14 @@ ms.locfileid: "76166133"
 
 - 任意の Java IDE
 - [JDK 7 または 8](https://aka.ms/azure-jdks) がインストールされていること。
-- Maven がインストールされていること
+- [Maven](https://maven.apache.org/) がインストールされていること
 - [!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="get-the-custom-vision-sdk-and-sample-code"></a>Custom Vision SDK とサンプル コードを入手する
 
 Custom Vision を使用する Java アプリを作成するには、Custom Vision maven パッケージが必要となります。 これらのパッケージは、これからダウンロードするサンプル プロジェクトに含まれていますが、ここから個別にアクセスすることもできます。
 
-Maven Central Repository から Custom Vision SDK をインストールできます。
+Custom Vision SDK は、Maven Central Repository にあります。
 
 - [Training SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
 - [Prediction SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)
@@ -43,7 +43,10 @@ Maven Central Repository から Custom Vision SDK をインストールできま
 
 [!INCLUDE [get-keys](includes/get-keys.md)]
 
-このプログラムは、キー データを環境変数として格納するように構成されています。 これらの変数は、PowerShell で **Vision/CustomVision** フォルダーに移動することによって設定します。 次のコマンドを入力してください。
+このプログラムは、キー データを環境変数として参照するように構成されています。 **Vision/CustomVision** フォルダーに移動し、次の PowerShell コマンドを入力して環境変数を設定します。 
+
+> [!NOTE]
+> Windows 以外のオペレーティング システムを使用している場合は、[環境変数の構成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows#configure-an-environment-variable-for-authentication)に関するセクションの手順を参照してください。
 
 ```powershell
 $env:AZURE_CUSTOMVISION_TRAINING_API_KEY ="<your training api key>"
@@ -88,9 +91,9 @@ Java IDE で `Vision/CustomVision` プロジェクトを読み込み、_CustomVi
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
-Maven を使用してソリューションをコンパイルおよび実行するには、PowerShell でプロジェクト ディレクトリから次のコマンドを実行します。
+Maven を使用してソリューションをコンパイル、実行するには、コマンド プロンプトでプロジェクト ディレクトリ (**Vision/CustomVision**) に移動し、次のコマンドを実行します。
 
-```powershell
+```bash
 mvn compile exec:java
 ```
 

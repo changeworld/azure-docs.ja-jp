@@ -3,12 +3,12 @@ title: Azure Kubernetes Service での Jenkins 用の Azure Dev Spaces プラグ
 description: 継続的インテグレーション パイプラインで Azure Dev Spaces プラグインを使用する方法について説明します。
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: 9dba0307db8ebbf07422fd770ea336b2abc031bd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 10dfbdb7d89d6f3870ec3b9dbd87d4d315360815
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209666"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619991"
 ---
 # <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>チュートリアル:Azure Kubernetes Service での Jenkins 用の Azure Dev Spaces プラグインの使用 
 
@@ -257,7 +257,7 @@ Azure Dev Spaces の使用、および Azure Dev Spaces を使用したマルチ
 
    この資格情報の **ID** は、次のセクションにある KUBE_CONFIG_ID の値です。
 
-## <a name="create-a-pipeline"></a>パイプラインを作成する。
+## <a name="create-a-pipeline"></a>パイプラインを作成する
 
 例のパイプラインで選択されているシナリオは、現実のパターンに基づいています。テストとレビューのために、提案された変更をビルドして Azure 開発空間にデプロイする CI パイプラインが pull request によってトリガーされます。 レビューの結果に応じて、変更はマージされて AKS にデプロイされるか、破棄されます。 最後に、開発空間が削除されます。
 
@@ -333,7 +333,7 @@ Jenkins パイプラインの構成と Jenkinsfile では、CI パイプライ�
     }
 ```
 
-1. `mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java` に変更を行って、pull request を作成します。 例:
+1. `mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java` に変更を行って、pull request を作成します。 次に例を示します。
 
     ```java
     public String index() {
@@ -399,7 +399,7 @@ stage('smoketest') {
 }
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 サンプル アプリケーションの使用が完了したら、リソース グループを削除して Azure リソースをクリーンアップします。
 
@@ -407,18 +407,7 @@ stage('smoketest') {
 az group delete -y --no-wait -n MyResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-この記事では、Jenkins 用の Azure Dev Spaces プラグインと Azure Container Registry プラグインを使用して、コードをビルドして開発空間にデプロイする方法について説明しました。
-
-次のリソースの一覧では、Azure Dev Spaces、ACR タスク、Jenkins による CI/CD に関する詳細情報を提供します。
-
-Azure Dev Spaces:
-* [Azure Dev Spaces のしくみと構成方法](https://docs.microsoft.com/azure/dev-spaces/how-dev-spaces-works)
-
-ACR タスク:
-* [ACR タスクを使用して OS とフレームワークの修正プログラムの適用を自動化する](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)
-* [コードのコミット時の自動ビルド](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)
-
-Azure 上の Jenkins による CI/CD:
-* [Jenkins の継続的なデプロイ](https://docs.microsoft.com/azure/aks/jenkins-continuous-deployment)
+> [!div class="nextstepaction"]
+> [Azure 上の Jenkins による CI/CD](jenkins-continuous-deployment.md)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5454d2f80d1febccb0c57ecf2e80d930bb5cb761
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 21725e64bb359b2f11086baceb186605f010b796
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988806"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561461"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>チュートリアル:デプロイ スクリプトを使用して自己署名証明書を作成する (プレビュー)
 
@@ -266,13 +266,13 @@ Azure Resource Manager テンプレートでデプロイ スクリプトを使�
     * **timeout**: [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)で指定される、スクリプトの許容最長実行時間を指定します。 既定値は **P1D** です。
     * **arguments**: パラメーター値を指定します。 値はスペースで区切ります。
     * **scriptContent**:スクリプトの内容を指定します。 外部スクリプトを実行するには、代わりに **primaryScriptURI** を使用します。 詳細については、「[外部関数を使用する](./deployment-script-template.md#use-external-scripts)」を参照してください。
-        **$DeploymentScriptOutputs** の宣言は、ローカル コンピューターでスクリプトをテストする場合にのみ必要です。 変数を宣言すると、変更を加えなくても、ローカル コンピューターと deploymentScript リソースでスクリプトを実行できます。 $DeploymentScriptOutputs に割り当てられた値は、デプロイの出力として使用できます。 詳細については、「[デプロイ スクリプトからの出力を操作する](./deployment-script-template.md#work-with-outputs-from-deployment-scripts)」を参照してください。
-    * **cleanupPreference**: デプロイ スクリプト リソースをいつ削除するかに関する設定を指定します。  既定値は **Always** です。これは、最終状態 (Succeeded、Failed、canceled) にかかわらず、デプロイ スクリプト リソースが削除されることを意味します。 このチュートリアルでは、スクリプトの実行結果が表示されるように **OnSuccess** を使用します。
+        **$DeploymentScriptOutputs** の宣言は、ローカル コンピューターでスクリプトをテストする場合にのみ必要です。 変数を宣言すると、変更を加えなくても、ローカル コンピューターと deploymentScript リソースでスクリプトを実行できます。 $DeploymentScriptOutputs に割り当てられた値は、デプロイの出力として使用できます。 詳細については、[PowerShell デプロイ スクリプトからの出力の操作](./deployment-script-template.md#work-with-outputs-from-powershell-script)に関する説明または [CLI デプロイ スクリプトからの出力の操作](./deployment-script-template.md#work-with-outputs-from-cli-script)に関する説明を参照してください。
+    * **cleanupPreference**:デプロイ スクリプト リソースをいつ削除するかに関する設定を指定します。  既定値は **Always** です。これは、最終状態 (Succeeded、Failed、canceled) にかかわらず、デプロイ スクリプト リソースが削除されることを意味します。 このチュートリアルでは、スクリプトの実行結果が表示されるように **OnSuccess** を使用します。
     * **retentionInterval**: 最終状態に達した後にサービスがスクリプト リソースを保持する期間を指定します。 この期間が経過すると、リソースは削除されます。 期間は ISO 8601 のパターンに基づきます。 このチュートリアルでは、1 日を意味する P1D を使用します。  このプロパティは、**cleanupPreference** が **OnExpiration** に設定されている場合に使用されます。 このプロパティは現在有効ではありません。
 
     デプロイ スクリプトは、3 つのパラメーター (キー コンテナー名、証明書名、サブジェクト名) を受け取ります。  それにより、証明書が作成された後、キー コンテナーにその証明書が追加されます。
 
-    **$DeploymentScriptOutputs** は、出力値を格納するために使用されます。  詳細については、「[デプロイ スクリプトからの出力を操作する](./deployment-script-template.md#work-with-outputs-from-deployment-scripts)」を参照してください。
+    **$DeploymentScriptOutputs** は、出力値を格納するために使用されます。  詳細については、[PowerShell デプロイ スクリプトからの出力の操作](./deployment-script-template.md#work-with-outputs-from-powershell-script)に関する説明または [CLI デプロイ スクリプトからの出力の操作](./deployment-script-template.md#work-with-outputs-from-cli-script)に関する説明を参照してください。
 
     完成したテンプレートは、[こちら](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json)で確認できます。
 

@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 01/30/2020
-ms.openlocfilehash: de9ed700363bd6578ac49f0add0c48dc33356692
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 972f0aa1f6d05c3cc65c62c0991fad87ab4676c4
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982605"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623631"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>チュートリアル:デザイナーを使用して自動車の価格を予測する (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -260,7 +260,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 ## <a name="run-the-pipeline"></a>パイプラインを実行する
 
-パイプラインの設定がすべて完了したら、パイプラインの実行を送信することができます。
+パイプラインの設定がすべて完了したら、パイプラインの実行を送信して機械学習モデルをトレーニングすることができます。 デザイナーでパイプラインを構築している間、いつでもパイプラインの実行を送信することができます。 そうすることで、作業内容を途中でチェックしながら、想定したとおりにパイプラインが機能することを確認できます。
 
 1. キャンバス上部の **[実行]** を選択します。
 

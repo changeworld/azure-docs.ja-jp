@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Visual Studio Code の Azure Machine Learning 拡張機能を設定する
+title: チュートリアル:Visual Studio Code 拡張機能を設定する
 titleSuffix: Azure Machine Learning
 description: Visual Studio Code の Azure Machine Learning 拡張機能を設定する方法について説明します。
 services: machine-learning
@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 01/16/2019
-ms.openlocfilehash: 4000fcc80d507d3b1e871d7f3288fc3b77693c76
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 02/24/2020
+ms.openlocfilehash: 583071ee22e4fb9cffc741520b1583790002a5bf
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157463"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604886"
 ---
 # <a name="set-up-azure-machine-learning-visual-studio-code-extension"></a>Visual Studio Code の Azure Machine Learning 拡張機能を設定する
 
@@ -30,7 +30,8 @@ Visual Studio Code の Azure Machine Learning 拡張機能を使用して、ス�
 ## <a name="prerequisites"></a>前提条件
 
 - Azure のサブスクリプション。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) にサインアップしてお試しください。
-- 軽量なクロスプラットフォーム コード エディターである [Visual Studio Code](https://code.visualstudio.com/docs/setup/setup-overview) をインストールします。 
+- Visual Studio Code。 インストールしていない場合は、[インストール](https://code.visualstudio.com/docs/setup/setup-overview)します。
+- [Python 3](https://www.python.org/downloads/)
 
 ## <a name="install-the-extension"></a>拡張機能をインストールする
 
@@ -38,6 +39,9 @@ Visual Studio Code の Azure Machine Learning 拡張機能を使用して、ス�
 1. **アクティビティ バー**の**拡張機能**アイコンを選択して、拡張機能ビューを開きます。
 1. 拡張機能ビューで、「Azure Machine Learning」を検索します。
 1. **[インストール]** を選択します。
+
+    > [!div class="mx-imgBorder"]
+    > ![Azure Machine Learning VS Code 拡張機能をインストールする](./media/tutorial-setup-vscode-extension/install-aml-vscode-extension.PNG)
 
 > [!NOTE]
 > または、[インストーラーを直接ダウンロード](https://aka.ms/vscodetoolsforai)して、Visual Studio Marketplace 経由で Azure Machine Learning 拡張機能をインストールすることもできます。 
@@ -49,9 +53,9 @@ Visual Studio Code の Azure Machine Learning 拡張機能を使用して、ス�
 Azure でリソースをプロビジョニングし、ワークロードを実行するには、Azure アカウントの資格情報でサインインする必要があります。 アカウント管理を支援するために、Azure Machine Learning では Azure アカウント拡張機能が自動的にインストールされます。 Azure アカウント拡張機能の詳細については、[こちらのサイト](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)を参照してしてください。
 
 1. メニュー バーから **[表示]、[コマンド パレット]** の順に選択して、コマンド パレットを開きます。 
-1. 「Azure: Sign In」コマンドをテキスト ボックスに入力して、サインイン プロセスを開始します。
+1. コマンド パレットに「Azure: Sign In」コマンドを入力して、サインイン プロセスを開始します。
 
-## <a name="run-a-script-in-azure"></a>Azure でスクリプトを実行する
+## <a name="run-a-machine-learning-model-training-script-in-azure"></a>機械学習モデルのトレーニング スクリプトを Azure で実行する
 
 これで、ご自分のアカウント資格情報を使用して Azure にサインインできました。次に、このセクションの手順に従い、拡張機能を使用して機械学習モデルをトレーニングする方法を説明します。
 
@@ -79,16 +83,16 @@ Azure でリソースをプロビジョニングし、ワークロードを実�
 
     ```json
     {
-        "workspace": "WS12191742",
-        "resourceGroup": "WS12191742-rg2",
+        "workspace": "WS01311608",
+        "resourceGroup": "WS01311608-rg1",
         "location": "South Central US",
-        "experiment": "WS12191742-exp2",
+        "experiment": "WS01311608-exp1",
         "compute": {
-            "name": "WS12191742-com2",
+            "name": "WS01311608-com1",
             "vmSize": "Standard_D1_v2, Cores: 1; RAM: 3.5GB;"
         },
         "runConfiguration": {
-            "filename": "WS12191742-com2-rc1",
+            "filename": "WS01311608-com1-rc1",
             "condaDependencies": [
                 "python=3.6.2",
                 "tensorflow=1.15.0"
@@ -100,8 +104,38 @@ Azure でリソースをプロビジョニングし、ワークロードを実�
     }
     ```
 
-1. Azure で実験を実行するには、 **[Submit experiment]\(実験を送信する\)** を選択します。 これにより、`train.py` と構成ファイルが Azure Machine Learning ワークスペースに送信されます。 その後、Azure のコンピューティング リソース上でトレーニング ジョブが開始されます。
-1. 数分後、トレーニング済みの TensorFlow モデルが格納された、`output` という名前のディレクトリがローカルに作成されます。
+1. その構成に問題がなければ、コマンド パレットを開き、次のコマンドを入力して実験を送信してください。
+
+    ```text
+    Azure ML: Submit Experiment
+    ```
+
+    これにより、`train.py` と構成ファイルが Azure Machine Learning ワークスペースに送信されます。 その後、Azure のコンピューティング リソース上でトレーニング ジョブが開始されます。
+
+### <a name="track-the-progress-of-the-training-script"></a>トレーニング スクリプトの進行状況を追跡する
+
+スクリプトの実行には数分かかる場合があります。 進行状況を追跡するには、次の手順に従います。
+
+1. アクティビティ バーから **Azure** アイコンを選択します。
+1. ご利用のサブスクリプションのノードを展開します。
+1. 現在実行している実験のノードを展開します。 その場所は `{workspace}/Experiments/{experiment}` ノード内で、ワークスペースや実験の値は、構成ファイルに定義されているプロパティと同じです。
+1. 実験のすべての実行とその状態が一覧表示されます。 最新の状態を取得するには、Azure Machine Learning ビューの上部にある更新アイコンをクリックします。
+
+    > [!div class="mx-imgBorder"]
+    > ![実験の進行状況を追跡する](./media/tutorial-setup-vscode-extension/track-experiment-progress.PNG)
+
+### <a name="download-the-trained-model"></a>トレーニング済みのモデルをダウンロードする
+
+実験が完了すると、トレーニング済みのモデルが出力として得られます。 その出力をローカルにダウンロードするには、次の手順に従います。
+
+1. 最新の実行を右クリックし、 **[Download Outputs]\(出力のダウンロード\)** を選択します。
+
+    > [!div class="mx-imgBorder"]
+    > ![トレーニング済みのモデルをダウンロードする](./media/tutorial-setup-vscode-extension/download-trained-model.PNG)
+
+1. 出力の保存先を選択します。
+1. 実行の名前のフォルダーがローカルにダウンロードされます。 そこに移動します。
+1. モデル ファイルは、`outputs/outputs/model` ディレクトリに格納されています。
 
 ## <a name="next-steps"></a>次のステップ
 

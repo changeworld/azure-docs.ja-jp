@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/13/2019
-ms.openlocfilehash: 7cf83af52d5bedee5b4d57ee1b4dda2fb34d1b3f
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 543a18ad48384e3502231f85516a092468db2387
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960077"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560101"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight での Apache Kafka の概要
 
@@ -89,11 +89,13 @@ Kafka では、**トピック**にレコード (データ) が格納されます
 
 * **変換**: ストリーム処理を使用して入力された複数のトピックからのデータを結合し、1 つまたは複数の出力トピックに変換することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のリンクを使用することで、HDInsight で Apache Kafka を使用する方法を知ることができます。
 
-* [クイック スタート:HDInsight 上の Apache Kafka を作成する](apache-kafka-get-started.md)
+* [クイック スタート: HDInsight 上の Apache Kafka を作成する](apache-kafka-get-started.md)
+
+* [REST プロキシで Kafka を使用する](rest-proxy.md)
 
 * [チュートリアル:HDInsight 上の Apache Kafka で Apache Spark を使用する](../hdinsight-apache-spark-with-kafka.md)
 

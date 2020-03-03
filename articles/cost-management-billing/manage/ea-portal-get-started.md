@@ -3,16 +3,16 @@ title: Azure エンタープライズ ポータルを使い始める
 description: この記事では、Azure Enterprise Agreement (Azure EA) のお客様が Azure エンタープライズ ポータルを使用する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 02/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: e1c6eac81968ef6ecbc12ec52415c2aa9680f3e1
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: fa55eebe6d051addcb5249908fd52e7e6ce44f12
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200831"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598410"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Azure エンタープライズ ポータルを使い始める
 
@@ -559,7 +559,7 @@ Azure EA 加入契約において、必要な数の部署を作成できます�
 
 部署とサブスクリプションを作成した後、使用状況レポートにデータを表示できます。 この情報は、部署レベルで使用状況を追跡し、コストを管理し、支出を管理するのに役立ちます。
 
-Reporting API を使用して、使用状況データにアクセスすることもできます。 詳細な情報とサンプル コードについては、[Reporting API のドキュメント](https://ea.azure.com/helpdocs/reportingAPI)を参照してください。
+Reporting API を使用して、使用状況データにアクセスすることもできます。 詳細な情報とサンプル コードについては、[Azure Enterprise REST API](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis) に関するページを参照してください。
 
 ### <a name="can-i-set-a-spending-quota-and-get-alerts-as-i-approach-my-limit"></a>利用量クォータを設定して、制限に近づいたらアラートを受け取ることはできますか?
 
@@ -571,7 +571,7 @@ Reporting API を使用して、使用状況データにアクセスすること
 
 "_リソース グループ_" と "_タグ_" を使用している場合、この情報はサービス レベルで追跡され、詳細な使用状況のダウンロード (CSV) ファイルでアクセスできます。 Azure エンタープライズ ポータルの[使用状況レポートのダウンロード](https://ea.azure.com/report/downloadusage)を参照してください。
 
-API で使用状況にアクセスすることもできます。 詳細な情報とサンプル コードについては、Azure エンタープライズ ポータルのドキュメントで [Reporting API](https://ea.azure.com/helpdocs/reportingAPI) を参照してください。
+API で使用状況にアクセスすることもできます。 詳細な情報とサンプル コードについては、[Azure Enterprise REST API](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis) に関するページを参照してください。
 
 > [!NOTE]
 > タグを適用できるのは、Azure Resource Manager の操作をサポートするリソースのみです。 仮想マシン、仮想ネットワーク、またはストレージをクラシック デプロイ モデル (クラシック ポータルなど) を使用して作成した場合、そのリソースにタグを適用することはできません。 タグ付けをサポートするには、Resource Manager を介してこれらのリソースを再デプロイする必要があります。 その他のすべてのリソースでは、タグ付けがサポートされています。

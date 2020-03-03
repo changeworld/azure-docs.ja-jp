@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f0029fcf8e9efdea529212a7cca49cc8660c623f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3b377f87bdba40c90cb3af6caef2c089d7b7de49
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276964"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615487"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>チュートリアル:セッションやデバイス間での Azure Spatial Anchors の共有
 
@@ -44,13 +44,13 @@ Azure Spatial Anchors は、クロスプラットフォーム対応の開発者�
 
 ## <a name="deploy-your-sharing-anchors-service"></a>アンカー共有サービスのデプロイ
 
-## <a name="visual-studiotabvs"></a>[Visual Studio](#tab/VS)
+## <a name="visual-studio"></a>[Visual Studio](#tab/VS)
 
 Visual Studio を開き、`Sharing\SharingServiceSample` フォルダーのプロジェクトを開きます。
 
 [!INCLUDE [Publish Azure](../../../includes/spatial-anchors-publish-azure.md)]
 
-## <a name="visual-studio-codetabvsc"></a>[Visual Studio Code](#tab/VSC)
+## <a name="visual-studio-code"></a>[Visual Studio Code](#tab/VSC)
 
 VS Code でサービスをデプロイする前に、リソース グループと App Service プランを作成する必要があります。
 
@@ -58,7 +58,7 @@ VS Code でサービスをデプロイする前に、リソース グループ�
 
 <a href="https://portal.azure.com/" target="_blank">Azure portal</a> に移動し、自分の Azure サブスクリプションにサインインします。
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 [!INCLUDE [resource group intro text](../../../includes/resource-group.md)]
 
@@ -74,7 +74,7 @@ VS Code でサービスをデプロイする前に、リソース グループ�
 
 **[ホスティング プランの構成]** ダイアログ ボックスで、以下の設定を使用します。
 
-| Setting | 推奨値 | 説明 |
+| 設定 | 推奨値 | 説明 |
 |-|-|-|
 |App Service プラン| MySharingServicePlan | App Service プランの名前です。 |
 | Location | 米国西部 | Web アプリがホストされているデータ センターです。 |
@@ -90,9 +90,15 @@ Visual Studio Code を開き、`Sharing\SharingServiceSample` フォルダーの
 
 [!INCLUDE [Run Share Anchors Sample](../../../includes/spatial-anchors-run-share-sample.md)]
 
+## <a name="troubleshooting"></a>トラブルシューティング
+
+### <a name="unity-20193"></a>Unity 2019.3
+
+破壊的変更のため、Unity 2019.3 は現在、サポートされていません。 Unity 2019.1 または 2019.2 を使用してください。
+
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、ASP.NET Core Web アプリを Azure にデプロイした後、Unity アプリを構成してデプロイしました。 そのアプリで空間アンカーを作成し、ASP.NET Core Web アプリを使用して他のデバイスと共有しました。
 

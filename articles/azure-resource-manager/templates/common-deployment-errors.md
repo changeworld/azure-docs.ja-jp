@@ -29,7 +29,7 @@ ms.locfileid: "76154518"
 | AnotherOperationInProgress | 同時実行操作の完了を待ちます。 | |
 | AuthorizationFailed | お客様のアカウントまたはサービス プリンシパルには、デプロイを完了するために十分なアクセス権がありません。 自分のアカウントが属するロールと、デプロイの範囲に対するアクセス権を確認してください。<br><br>必要なリソース プロバイダーが登録されていないと、このエラーを受け取ることがあります。 | [Azure のロールベースのアクセス制御](../../role-based-access-control/role-assignments-portal.md)<br><br>[登録を解決する](error-register-resource-provider.md) |
 | BadRequest | Resource Manager で予期される値と一致しないデプロイ値を送信しました。 トラブルシューティングの方法については、内部ステータス メッセージを確認してください。 | [テンプレート リファレンス](/azure/templates/)と[サポートされている場所](resource-location.md) |
-| Conflict | リソースの現在の状態では許可されていない操作を要求しています。 たとえば、ディスクのサイズ変更が許可されているのは、VM の作成時と VM の割り当て解除時のみです。 | |
+| Conflict | リソースの現在の状態では許可されていない操作を要求しています。 たとえば、ディスクのサイズ変更が許可されているのは、VM の作成時と VM の割り当て解除時のみです。 | |
 | DeploymentActiveAndUneditable | このリソース グループへの同時実行デプロイが完了するまで待ちます。 | |
 | DeploymentFailedCleanUp | 完全モードでデプロイすると、テンプレートにないすべてのリソースが削除されます。 このエラーは、テンプレートにないすべてのリソースを削除するための適切なアクセス許可がない場合に表示されます。 このエラーを回避するには、デプロイ モードを増分モードに変更します。 | [Azure Resource Manager のデプロイ モード](deployment-modes.md) |
 | DeploymentNameInvalidCharacters | デプロイ名に使用できるのは、文字、数字、'-'、'.' または '_'. のみです。 | |

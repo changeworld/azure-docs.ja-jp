@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e6fbf0e4cbfc44692292c33fc46d9ea0eccec89d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7acff7f0249cdedcebd367fc315be92cafb9ab78
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75370267"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615435"
 ---
 # <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用して Unity Android アプリを作成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "75370267"
 
 このクイック スタートを実行するには、以下が必要です。
 
-- Android Build Support、Android SDK と NDK ツール モジュールを含む <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1 以降</a>がインストールされている Windows または macOS マシン。
+- Android Build Support、Android SDK と NDK ツール モジュールを含む <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1 または 2019.2</a> がインストールされている Windows または macOS マシン。
   - Windows で実行する場合は、<a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> および <a href="https://git-lfs.github.com/">Git LFS</a> も必要になります。
   - MacOS で実行する場合は、HomeBrew から Git をインストールします。 `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` コマンドをターミナルに 1 行で入力します。 続けて、`brew install git` および `brew install git-lfs` を実行します。
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">開発者向け</a>の <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore 対応</a> Android デバイス。
@@ -68,7 +68,13 @@ ms.locfileid: "75370267"
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
+### <a name="rendering-issues"></a>レンダリングに関する問題
+
 アプリを実行したとき、背景としてカメラが表示されない場合は (たとえば、代わりに空白、青、または他のテクスチャが表示される場合)、Unity に資産を再インポートすることが必要な場合があります。 アプリを停止します。 Unity の上部のメニューで、 **[Assets]\(資産\) -> [Reimport all]\(すべて再インポート\)** を選択します。 その後、アプリをもう一度実行します。
+
+### <a name="unity-20193"></a>Unity 2019.3
+
+破壊的変更のため、Unity 2019.3 は現在、サポートされていません。 Unity 2019.1 または 2019.2 を使用してください。
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

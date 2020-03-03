@@ -5,13 +5,13 @@ author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: overview
-ms.date: 02/24/2019
-ms.openlocfilehash: 67a76d3b347ef750b639225a009cc6968cb84c6f
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.date: 02/19/2020
+ms.openlocfilehash: 1f1cec68813d33e7fa19a414a30adfc9a41df91f
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467557"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523477"
 ---
 # <a name="what-is-azure-app-configuration"></a>Azure App Configuration とは
 
@@ -19,9 +19,9 @@ Azure App Configuration は、アプリケーション設定と機能フラグ�
 
 ## <a name="why-use-app-configuration"></a>App Configuration を使用する理由
 
-クラウドベースのアプリケーションは、複数リージョンにわたる複数の仮想マシンまたはコンテナーで実行され、複数の外部サービスを使用することが少なくありません。 そのような分散アプリケーションを堅牢でスケーラブルに作成することは、難しいことです。
+クラウドベースのアプリケーションは、複数リージョンにわたる複数の仮想マシンまたはコンテナーで実行され、複数の外部サービスを使用することが少なくありません。 分散環境で堅牢かつスケーラブルなアプリケーションを作成することは、大きな課題です。
 
-アプリケーション構築の増大する複雑さに取り組む開発者には、さまざまなプログラミング手法が役立ちます。 たとえば、[12 ファクター アプリ](https://12factor.net/)には、クラウド アプリケーションで使用される多くの十分にテストされたアーキテクチャ パターンとベスト プラクティスが示されています。 このガイドの主な推奨事項の 1 つは、コードから構成を切り離すことです。 この場合、アプリケーションの構成設定をその実行可能ファイルとは別の場所に置いておき、その実行環境または外部ソースから読み取るということです。
+アプリケーション構築の増大する複雑さに取り組む開発者には、さまざまなプログラミング手法が役立ちます。 たとえば、[12 ファクター アプリ](https://12factor.net/)には、クラウド アプリケーションで使用される多くの十分にテストされたアーキテクチャ パターンとベスト プラクティスが示されています。 このガイドの主な推奨事項の 1 つは、コードから構成を切り離すことです。 アプリケーションの構成設定をその実行可能ファイルとは別の場所に置いておき、その実行環境または外部ソースから読み取るようにする必要があります。
 
 どのアプリケーションでも App Configuration を利用できますが、以下の例は、それを使用することにメリットがある種類のアプリケーションです。
 
@@ -38,7 +38,7 @@ App Configuration には次の利点があります。
 * 専用の UI で機能フラグを管理
 * 独自に定義したディメンションでの 2 つの構成群の比較
 * Azure のマネージド ID で強化されたセキュリティ
-* 完全なデータ暗号化 (保存データと転送中のデータ)
+* 保存時および転送中の機密情報の暗号化
 * 広く使われているフレームワークとのネイティブ統合
 
 App Configuration は、アプリケーションのシークレットを格納するために使用される [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) を補完します。 App Configuration を使用すると、以下のシナリオを簡単に実装できます。
@@ -49,7 +49,7 @@ App Configuration は、アプリケーションのシークレットを格納�
 
 ## <a name="use-app-configuration"></a>App Configuration の使用
 
-App Configuration ストアを自分のアプリケーションに追加する最も簡単な方法は、Microsoft が提供するクライアント ライブラリを使用することです。 プログラミング言語とフレームワークに基づいて、使用できる最適な方法を次に示します。
+App Configuration ストアを自分のアプリケーションに追加する最も簡単な方法は、Microsoft が提供するクライアント ライブラリを使用することです。 選択した言語とフレームワークに応じて、次の方法を使用して自分のアプリケーションに接続できます
 
 | プログラミング言語とフレームワーク | 接続する方法 |
 |---|---|

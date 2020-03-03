@@ -8,16 +8,21 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: ca2ac62892d1c8d438cc37bffcbfede14058bc23
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 84db3996b49a95d1ef6a9f1e80299605cc31d669
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026375"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602599"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-and-connect-it-to-your-iot-central-application"></a>チュートリアル:デバイス機能モデルを使用して IoT プラグ アンド プレイ (プレビュー) デバイスを作成し、IoT Central アプリケーションに接続する
 
 "_デバイス機能モデル_" (DCM) には、[IoT プラグ アンド プレイ (プレビュー)](../../iot-pnp/overview-iot-plug-and-play.md) デバイスの機能が記述されています。 IoT Central では、デバイスが初めて接続されるときに、DCM の使用によりデバイスのテンプレートとデバイス用の視覚化を作成することができます。
+
+[IoT プラグ アンド プレイ](../../iot-pnp/overview-iot-plug-and-play.md)のサポートはプレビュー段階であり、一部のリージョンでのみサポートされています。
+
+> [!NOTE]
+> IoT プラグ アンド プレイ デバイスをサポートするプレビュー アプリケーションの作成については、サポート チームにお問い合わせください。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -80,7 +85,7 @@ VS Code で Azure IoT Tools 拡張機能パックをインストールするに�
 
 デバイスを IoT Central アプリケーションに接続するためには、デバイス キーが必要です。 デバイス キーを生成するには:
 
-1. 「[Azure IoT Central アプリケーションの作成](./quick-deploy-iot-central.md)」クイックスタートの **[カスタム アプリ] > [プレビュー アプリケーション]** テンプレートを使用して作成した IoT Central アプリケーションにサインインします。
+1. 「[Azure IoT Central アプリケーションの作成](./quick-deploy-iot-central.md)」クイックスタートの **[カスタム アプリケーション]** テンプレートを使用して作成した IoT Central アプリケーションにサインインします。
 
 1. **[管理]** ページに移動し、 **[デバイス接続]** を選択します。
 
@@ -94,7 +99,7 @@ VS Code で Azure IoT Tools 拡張機能パックをインストールするに�
     dps-keygen -di:mxchip-001 -mk:{Primary Key from previous step}
     ```
 
-    生成された _デバイス キー_ をメモしておきます。この値は、このチュートリアルの後の手順で使用します。
+    生成された_デバイス キー_をメモしておきます。この値は、このチュートリアルの後の手順で使用します。
 
 ## <a name="download-your-model"></a>ご利用のモデルのダウンロード
 

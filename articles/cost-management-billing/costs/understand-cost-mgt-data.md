@@ -4,17 +4,17 @@ description: この記事では、Azure Cost Management に含まれるデータ
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 02/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 39f2aab72491ffdf2b583879181a247d3653647f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 44953a3986b5c03afa9cc4668e2563c5c5cd6c46
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199893"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560611"
 ---
 # <a name="understand-cost-management-data"></a>Cost Management のデータを理解する
 
@@ -135,9 +135,9 @@ Cost Management に特定のタグが表示されない場合は、次の点を�
 - Tags API を Query または UsageDetails と共に使用して、現在のタグに基づいてすべてのコストを取得します。
 
 
-**無料試用版から従量課金制へのアップグレード**
+## <a name="free-trial-to-pay-as-you-go-upgrade"></a>無料試用版から従量課金制へのアップグレード
 
-無料試用版プラン (044P) を PAYG プラン (003P) に変換するお客様は、無料試用版期間中、使用状況を確認することができます。 ただし、変換後は、無料試用版の使用状況を表示できなくなります。 変換後、Cost Management には、PAYG の使用状況とコストのみが表示されます。
+無料試用版から従量課金制の価格にアップグレードした後の Free レベル サービスの可用性の詳細については、「[Azure 無料アカウント FAQ](https://azure.microsoft.com/free/free-account-faq/)」を参照してください。
 
 ## <a name="rated-usage-data-refresh-schedule"></a>評価済み使用状況データの更新スケジュール
 
@@ -157,6 +157,17 @@ Enterprise Agreement (EA) サブスクリプション – 請求月が 3 月 31 
 ### <a name="rerated-data"></a>データの再評価
 
 [Cost Management API](../index.yml)、Power BI、Azure portal のどの方法でデータを取得する場合でも、請求書がクローズされるまでは、現在の請求期間の料金が再評価され、その結果変更される可能性があります。
+
+## <a name="cost-rounding"></a>コストの丸め
+
+Cost Management に表示されるコストは丸められます。 クエリ API によって返されるコストは丸められません。 次に例を示します。
+
+- Azure portal でのコスト分析 - 料金は、標準の丸めルールを使用して丸められます。0.5 以上の値は切り上げられます。それ以外の場合、コストは切り捨てられます。 丸め処理は、値が表示されるときにのみ行われます。 データの処理中および集約中は丸め処理は行われません。 たとえば、コスト分析でコストが次のように集計されるとします。
+  - 料金 1: $0.004
+  - 料金 2: $0.004
+  - 表示される集計料金: 0.004 + 0.004 = 0.008。 表示される料金は $0.01 です。
+- クエリ API - 料金は小数点以下 8 桁で表示され、丸めは行われません。
+
 
 ## <a name="usage-data-update-frequency-varies"></a>使用状況データの更新頻度は一定ではない
 

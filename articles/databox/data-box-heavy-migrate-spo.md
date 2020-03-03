@@ -1,5 +1,5 @@
 ---
-title: Azure Data Box Heavy を使用してファイル共有のコンテンツを SharePoint Online に移行する | Microsoft Docs
+title: Azure Data Box Heavy を使用してファイル共有のコンテンツを SharePoint Online に移動する
 description: このチュートリアルでは、Azure Data Box Heavy を使用してファイル共有のコンテンツを Share Point Online に移行する方法について説明します
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 4955b28dff3193a95950912562cc3b6ec789479d
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f97ea17551d4415f7ed6371853172cfde30fe4b6
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325269"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560050"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>Azure Data Box Heavy を使用してファイル共有のコンテンツを SharePoint Online に移行する
 
@@ -90,6 +90,6 @@ Data Box Heavy にデータをコピーするには、次の手順を実行し�
 > - SharePoint Online にデータが取り込まれる速度は、データが既に Azure にあるかどうかに関係なく、さまざまな要因の影響を受けます。 これらの要因を理解することが、移行を計画し、その効率を最大化するのに役立ちます。  詳細については、[SharePoint Online と OneDrive の移行速度](/sharepointmigration/sharepoint-online-and-onedrive-migration-speed)に関する記事をご覧ください。
 > - SharePoint Online にデータを移行すると、ファイルの既存のアクセス許可が失われるおそれがあります。 また、"*作成者*" や "*変更日*" などの特定のメタデータが失われる可能性もあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Data Box Heavy を注文する](./data-box-heavy-deploy-ordered.md)

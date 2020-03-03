@@ -6,12 +6,12 @@ ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
 ms.topic: overview
 ms.date: 01/16/2020
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 1cd7b3db92de339b7614a4271f9e6793cdf8f2ad
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: f0948cb58ba9403a34fbfd61ec43c29bed3440bc
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292895"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621000"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Azure Functions の概要
 

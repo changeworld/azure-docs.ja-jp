@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.openlocfilehash: d1bfad64175ad5b29e4ec158ebe8d8e982b8b100
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 363feda1409d2bb54e60d1b2168cba38f2a8a41c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964449"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621864"
 ---
 # <a name="what-is-azure-data-share"></a>Azure Data Share とは
 

@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2019
 ms.author: memildin
-ms.openlocfilehash: 01c0f1199ab8c376fe5bb5e864f81a2730879ed1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 1a6999c05c0b3dbaf572b376412f666c50c23df7
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112321"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604458"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>チュートリアル:規制に対するコンプライアンスの向上
 ---
 
 Azure Security Center では、**規制コンプライアンス ダッシュボード**を使用して、規制に対するコンプライアンス要件を満たすプロセスを効率化できます。 このダッシュボードでは、お客様の Azure 環境の継続的評価に基づき、お客様のコンプライアンス体制についての分析情報が Security Center から得られます。 Security Center を使うと、セキュリティのベスト プラクティスに従って、ハイブリッド クラウド環境のリスク要因を分析できます。 それらの評価は、サポートされている一連の標準のコンプライアンス制御に対応付けられます。 規制コンプライアンス ダッシュボードでは、お客様の環境におけるすべての評価の状態を、特定の標準または規制のコンテキストで把握することができます。 推奨事項に基づいて行動し、お客様の環境内のリスク要因を減らしていくと、コンプライアンス体制は強化されます。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、次の内容を学習します。
 
 -   [Regulatory compliance]\(規制に対するコンプライアンス\) ダッシュボードを使用して規制に対するコンプライアンスを評価する
 
@@ -62,7 +62,7 @@ Security Center では、お客様のリソースの構成を継続的に評価�
 
     このレポートは、Security Center の評価データに基づいて、選択した標準のコンプライアンス ステータスの概要を提供し、その特定の標準の制御に従って編成されています。 レポートは直接の利害関係者と共有することができ、内部および外部の監査員に対して証拠を提供するために利用できます。
 
-    ![ダウンロード](./media/security-center-compliance-dashboard/download-report.png)
+    ![download](./media/security-center-compliance-dashboard/download-report.png)
 
 ## <a name="improve-your-compliance-posture"></a>コンプライアンス体制を強化する
 
@@ -85,7 +85,7 @@ Security Center では、お客様のリソースの構成を継続的に評価�
     > [!NOTE]
     > 評価は約 12 時間おきに実行されます。そのため、お客様のコンプライアンス データに影響が現れるのは、評価が実行されてからになります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Security Center の [Regulatory compliance]\(規制に対するコンプライアンス\) ダッシュボードを使用して以下を行う方法について説明しました。
 
@@ -104,5 +104,3 @@ Security Center では、お客様のリソースの構成を継続的に評価�
 -   「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」 - Azure Security Center の推奨事項をお客様の Azure リソースの保護に役立てる方法について説明しています。
 
 -   「[Azure Security Center 上のセキュリティ スコアの向上](security-center-secure-score.md)」 - 脆弱性とセキュリティの推奨事項に優先順位を付けて、お客様のセキュリティ体制を最大限に強化する方法について説明しています。
-
--   「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」 - このサービスの使用に関してよく寄せられる質問が記載されています。

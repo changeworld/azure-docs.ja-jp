@@ -5,12 +5,12 @@ author: mumian
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5379bf3c0a5127e5114ac819bd3e0e2ad12e8d69
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 82b6e3c1a3c17c624dec67093379e8a493b7264f
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045258"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561529"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>チュートリアル:Azure Resource Manager テンプレートを使用して仮想マシン拡張機能をデプロイする
 
@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prepare-a-powershell-script"></a>PowerShell スクリプトを準備する
 
-次の内容が含まれた PowerShell スクリプトは、[Github](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1) から共有されます。
+次の内容が含まれた PowerShell スクリプトは、[GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1) から共有されます。
 
 ```azurepowershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools

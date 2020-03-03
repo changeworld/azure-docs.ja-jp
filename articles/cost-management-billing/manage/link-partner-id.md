@@ -7,12 +7,12 @@ ms.author: banders
 ms.date: 02/13/2020
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.openlocfilehash: 4e4b039b6ad6fad8a414fc9703309fa76853ef09
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 761f4345c591864b8158d7216d737ac287692252
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199672"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651385"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Azure アカウントにパートナー ID をリンクする
 
@@ -29,6 +29,8 @@ Microsoft パートナーは、お客様が Microsoft 製品を使用してビ�
 - **ディレクトリ アカウント**: 貴社の顧客は、顧客のディレクトリ内に貴社のユーザー アカウントを作成し、任意の RBAC ロールを割り当てることができます。
 
 - **サービス プリンシパル**: 貴社の顧客は、貴社の組織から顧客のディレクトリ内にアプリまたはスクリプトを追加し、RBAC ロールを割り当てることができます。 アプリまたはスクリプトの ID は、サービス プリンシパルと呼ばれます。
+
+- **Azure Lighthouse**: 貴社の顧客は、ユーザーがテナント内から作業できるように、サブスクリプション (またはリソース グループ) を委任することができます。 詳細については、「[Azure の委任されたリソース管理](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management)」を参照してください。
 
 ## <a name="link-to-a-partner-id"></a>パートナー ID へリンク
 
@@ -154,3 +156,7 @@ C:\ az managementpartner delete --partner-id 12345
 **パートナー ID のリンクは、Azure Stack で動作しますか。**
 
 はい、Azure Stack に対してパートナー ID をリンクできます。
+
+**会社で [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) を使用して顧客のリソースにアクセスする場合、どのようにすればパートナー ID をリンクできますか。**
+
+[マネージド サービス プランを Azure Marketplace に発行する](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)ことによって顧客を Azure の委任されたリソース管理にオンボードすると、自動的に MPN ID が関連付けられます。 [Azure Resource Manager テンプレートをデプロイして顧客をオンボードする](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer)場合は、Microsoft Partner Network (MPN) ID を、オンボードされた各サブスクリプションへのアクセス権を持つ少なくとも 1 つのユーザー アカウントに関連付ける必要があります。 サービス プロバイダー テナントでこれを行う必要があることに注意してください。 簡略化するために、MPN ID に関連付けられているテナントでサービス プリンシパル アカウントを作成し、オンボードするすべての顧客に対する閲覧者アクセス権をこのアカウントに付与することをお勧めします。

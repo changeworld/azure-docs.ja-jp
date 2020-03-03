@@ -4,12 +4,12 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: a306a05899a644f2ee8ea738789b84ee98221531
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2b8d60da507aa1eb312d1a8505f756ff337085ff
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75392376"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592428"
 ---
 次の表は、Azure IoT Hub Device Provisioning Service のリソースに適用される制限の一覧です。
 
@@ -25,6 +25,9 @@ ms.locfileid: "75392376"
 
 > [!NOTE]
 > お使いのプロビジョニング サービスの加入数と登録数を増やすには、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
+
+> [!NOTE]
+> CA の最大数を増やすことはサポートされていません。
 
 Device Provisioning Service は、次のクォータを超えた場合に、要求を調整します。
 

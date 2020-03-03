@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/14/2020
 ms.author: allensu
-ms.openlocfilehash: 341bfddb86885df225874100400a854cf12120db
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: aab6a4de7be57df1f691861533a4528a0bcae571
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76757801"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605649"
 ---
 # <a name="load-balancer-components-and-limitations"></a>Load Balancer のコンポーネントと制限事項
 Azure Load Balancer には、その操作に必要な重要なコンポーネントがいくつか含まれています。  これらのコンポーネントは、サブスクリプションで、Azure portal、Azure CLI、または Azure PowerShell を使用して構成できます。  
@@ -73,7 +73,9 @@ Basic Load Balancer では、アウトバウンド規則がサポートされて
 
 次の図は、ハッシュベースの分散を示しています。
 
-  ![ハッシュベースの分散](./media/load-balancer-overview/load-balancer-distribution.png)
+<p align="center">
+  <img src="./media/load-balancer-overview/load-balancer-distribution.svg" width="512" title="ハッシュベースの分散">
+</p>
 
   *図:ハッシュベースの分散*
 
@@ -132,9 +134,11 @@ Basic Load Balancer では、ゾーンがサポートされていません。
 
 次の図は、Web トラフィック用の負荷分散されたエンドポイントを示しています。このエンドポイントでは、3 台の VM でパブリックと TCP ポート 80 が共有されます。 この 3 台の VM は、1 つの負荷分散セット内にあります。
 
-![パブリック ロード バランサーの例](./media/load-balancer-overview/IC727496.png)
+<p align="center">
+  <img src="./media/load-balancer-overview/load-balancer-http.svg" width="256" title="パブリック ロード バランサー">
+</p>
 
-*図:パブリック ロード バランサー を使った Web トラフィックの負荷分散*
+*図:パブリック ロード バランサーを使った Web トラフィックの負荷分散*
 
 インターネット クライアントは Web ページの要求を、TCP ポート 80 の Web アプリのパブリック IP アドレスに送信します。 Azure Load Balancer は、負荷分散セット内の 3 つの VM 全体に要求を分散させます。 Load Balancer のアルゴリズムの詳細については、[Load Balancer の概念](concepts-limitations.md#load-balancer-concepts)に関するページを参照してください。
 
@@ -151,7 +155,10 @@ Azure Load Balancer は、ネットワーク トラフィックを複数の VM �
 * **多層アプリケーションの場合**: バックエンド層がインターネットに接続しない、インターネットに接続する多層アプリケーションの負荷を分散する。 バックエンド層では、インターネットに接続する層からのトラフィックを負荷分散する必要があります。 次の図を参照してください。
 * **基幹業務アプリケーション**: 負荷分散用のハードウェアやソフトウェアの追加を伴わずに、Azure でホストされている基幹業務アプリケーションの負荷を分散する。 このシナリオには、トラフィックが負荷分散されるコンピューターのセットに含まれるオンプレミスのサーバーが含まれます。
 
-![内部ロード バランサーの例](./media/load-balancer-overview/IC744147.png)
+
+<p align="center">
+  <img src="./media/load-balancer-overview/load-balancer.svg" width="256" title="パブリック ロード バランサー">
+</p>
 
 *図:パブリック ロード バランサーと内部ロード バランサーの両方を使った、多層アプリケーションの負荷分散*
 

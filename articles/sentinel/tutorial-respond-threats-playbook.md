@@ -3,7 +3,7 @@ title: チュートリアル:Azure Sentinel でプレイブックを実行する
 description: チュートリアル:この記事では、Azure Sentinel でプレイブックを実行する方法について説明します。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: e4afc5c8-ffad-4169-8b73-98d00155fa5a
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/12/2019
-ms.author: rkarlin
-ms.openlocfilehash: 7e26e901fdee8cac79cfb55aa0999487e87b8a78
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/18/2019
+ms.author: yelevin
+ms.openlocfilehash: f6adcb978dbe540d3bdd352089d4dde407d0fb4c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113909"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585086"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>チュートリアル:Azure Sentinel で脅威への自動対応を設定する
 
@@ -64,7 +64,7 @@ Azure Sentinel に新しいセキュリティ プレイブックを作成する�
 
    ![ロジック アプリ](./media/tutorial-respond-threats-playbook/playbookimg.png)
 
-3. **[Azure Sentinel - Playbooks (Preview)]\(Azure Sentinel - プレイブック (プレビュー)\)** ページで、 **[追加]** ボタンをクリックします。
+3. **[Azure Sentinel - Playbooks]\(Azure Sentinel - プレイブック\)** ページで、 **[追加]** ボタンをクリックします。
 
    ![ロジック アプリを作成する](./media/tutorial-respond-threats-playbook/create-playbook.png) 
 
@@ -115,7 +115,7 @@ SIEM や SOC チームには、定期的にセキュリティ アラートが殺
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Sentinel でプレイブックを実行する方法を学習しました。 Azure Sentinel を使用して[脅威を予防的に捜索する方法](hunting.md)に進んでください。
 

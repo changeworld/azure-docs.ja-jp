@@ -8,12 +8,12 @@ ms.date: 2/10/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5f576d28d30907f3834600d0a6a5c152025cf912
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: a5c754373ba9437c631e62acbb5d6d246db4c862
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133485"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650760"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>チュートリアル:Azure Machine Learning モデルをトレーニングしてデプロイする
 
@@ -83,7 +83,7 @@ Azure Notebooks プロジェクトにアップロードしたファイルを見�
 * **01-turbofan\_regression.ipynb:** このノートブックは、Machine Learning service ワークスペースを使用して、機械学習実験を作成および実行します。 大まかに言うと、このノートブックは次のステップを実行するものです。
 
   1. デバイス ハーネスによって生成されたデータを Azure Storage アカウントからダウンロードします。
-  1. トレーニング用のデータと分類器 AD モデルを調査して準備します。
+  1. データを調査、準備した後、そのデータを使用して分類器モデルをトレーニングします。
   1. テスト データセット (Test\_FD003.txt) を使用して実験からのモデルを評価します。
   1. 最良の分類器モデルを Machine Learning service ワークスペースに発行します。
 

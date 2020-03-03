@@ -4,17 +4,17 @@ description: このチュートリアルでは、使用する Azure サービス
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/10/2020
+ms.date: 02/23/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 9900a2f7a41a6b35be75326b9412ec628328e39b
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 3b479f85475be6409a6fa6621357400e954d22c8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132099"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582392"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>チュートリアル:Azure の予算を作成して管理する
 
@@ -34,7 +34,7 @@ Cost Management での予算は、組織のアカウンタビリティを計画�
 > [!div class="checklist"]
 > * Azure portal で予算を作成する
 > * PowerShell で予算を作成して編集する
-> * 予算を編集する
+> * Azure Resource Manager テンプレートを使用して予算を作成する
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -160,6 +160,16 @@ $ActionGroupId = (Set-AzureRmActionGroup -ResourceGroupName YourResourceGroup -N
 
 New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -StartDate 2020-02-01 -TimeGrain Monthly -EndDate 2022-12-31 -ContactEmail test@test.com -NotificationKey Key1 -NotificationThreshold 0.8 -NotificationEnabled -ContactGroup $ActionGroupId
 ```
+## <a name="create-a-budget-with-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して予算を作成する
+
+Azure Resource Manager テンプレートを使用して予算を作成できます。 テンプレートを使用すると、リソース グループごとに予算を作成できます。 このテンプレートでは、マイクロソフト エンタープライズ契約のお客様のみがサポートされます。
+
+次のイメージを選択して、Azure portal にサインインし、テンプレートを開きます。
+
+[![予算の作成テンプレートを Azure にデプロイする](./media/tutorial-acm-create-budgets/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fcreate-budget%2fazuredeploy.json)
+
+すべてのテンプレート パラメーターとその説明の一覧を表示するには、[予算の作成](https://azure.microsoft.com/resources/templates/create-budget/)テンプレートを参照してください。
+
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -168,7 +178,7 @@ New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -Star
 > [!div class="checklist"]
 > * Azure portal で予算を作成する
 > * PowerShell で予算を作成して編集する
-> * 予算を編集する
+> * Azure Resource Manager テンプレートを使用して予算を作成する
 
 次のチュートリアルに進んで、コスト管理データの定期的なエクスポートを作成してください。
 

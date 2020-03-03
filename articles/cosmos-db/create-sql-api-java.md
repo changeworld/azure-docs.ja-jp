@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/31/2019
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: bd7801c84860ddba3c3991bce9352c595adb123f
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: f29eeba98e0cc89c65dda814e03d63d2f3493c35
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77469046"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586021"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>クイック スタート:Azure Cosmos DB SQL API データを管理する Java アプリを作成する
 
@@ -35,6 +35,18 @@ ms.locfileid: "77469046"
 - [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk)。 JDK のインストール先フォルダーを指すように `JAVA_HOME` 環境変数を設定してください。
 - [Maven バイナリ アーカイブ](https://maven.apache.org/download.cgi)。 Ubuntu で `apt-get install maven` を実行して Maven をインストールします。
 - [Git](https://www.git-scm.com/downloads). Ubuntu で `sudo apt-get install git` を実行して Git をインストールします。
+
+## <a name="introductory-notes"></a>概要
+
+"*Cosmos DB アカウントの構造:* " API またはプログラミング言語に関係なく、Cosmos DB "*アカウント*" には 0個以上の "*データベース*" が含まれます。"*データベース*" (DB) には 0 個以上の "*コンテナー*" が含まれます。また、次の図に示すように、"*コンテナー*" には 0 個以上の項目が含まれます。
+
+![Azure Cosmos アカウントのエンティティ](./media/databases-containers-items/cosmos-entities.png)
+
+データベース、コンテナー、項目の詳細については、[こちら](databases-containers-items.md)を参照してください。 "*プロビジョニング済みスループット*" や "*パーティション キー*" など、いくつかの重要なプロパティが、コンテナーのレベルで定義されています。 
+
+プロビジョニング済みスループットは要求ユニット (*RU*) 単位で測定されます。RU には通貨価格が設定されており、アカウント運用コストの大きな決定要因となります。 プロビジョニング済みスループットはコンテナー単位またはデータベース単位で選択できますが、通常はコンテナーレベルのスループット仕様が推奨されます。 スループットのプロビジョニングの詳細については、[こちら](set-throughput.md)を参照してください。
+
+Cosmos DB コンテナーに項目を挿入すると、要求を処理するためのストレージとコンピューティングが追加されて、データベースが水平方向に拡張されます。 ストレージとコンピューティングの容量は "*パーティション*" と呼ばれる個別の単位で追加されます。ドキュメント内の 1 つのフィールドを選択し、これを各ドキュメントをパーティションにマップするパーティション キーにする必要があります。 パーティションを管理する方法として、各パーティションに、パーティション キー値の範囲を超えて、ほぼ等しいスライスを割り当てます。そのため、比較的ランダムまたは均等に分散されたパーティション キーを選択することをお勧めします。 そうしないと、一部のパーティションに非常に多くの要求が集中し ("*ホット パーティション*")、他のパーティションは少数の要求しか受け取らない ("*コールド パーティション*") 状況が発生しますが、これは回避する必要があります。 パーティション分割の詳細については、[こちら](partitioning-overview.md)を参照してください。
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 
@@ -73,27 +85,27 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 
 * `CosmosClient` の初期化。 `CosmosClient` は、Azure Cosmos データベース サービスのクライアント側の論理表現を提供します。 このクライアントは、サービスに対する要求の構成と実行に使用されます。
     
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateSyncClient)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java" id="CreateSyncClient":::
 
 * `CosmosDatabase` の作成。
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateDatabaseIfNotExists)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java" id="CreateDatabaseIfNotExists":::
 
 * `CosmosContainer` の作成。
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateContainerIfNotExists)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java" id="CreateContainerIfNotExists":::
 
 * `createItem` メソッドを使用した項目の作成。
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateItem)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java" id="CreateItem":::
    
 * `readItem` メソッドを使用したポイント読み取りの実行。
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=ReadItem)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java" id="ReadItem":::
 
 * `queryItems` メソッドを使用して JSON に対する SQL クエリを実行します。
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=QueryItems)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java" id="QueryItems":::
 
 ### <a name="managing-database-resources-using-the-asynchronous-async-api"></a>非同期 API を使用してデータベース リソースを管理する
 
@@ -101,27 +113,27 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 
 * `CosmosAsyncClient` の初期化。 `CosmosAsyncClient` は、Azure Cosmos データベース サービスのクライアント側の論理表現を提供します。 このクライアントは、サービスに対する非同期要求の構成と実行に使用されます。
     
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateAsyncClient)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java" id="CreateAsyncClient":::
 
 * `CosmosAsyncDatabase` の作成。
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateDatabaseIfNotExists)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java" id="CreateDatabaseIfNotExists":::
 
 * `CosmosAsyncContainer` の作成。
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateContainerIfNotExists)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java" id="CreateContainerIfNotExists":::
 
 * 同期 API と同様、項目の作成は `createItem` メソッドを使用して実行されます。 この例は、要求を発行して通知を出力する Reactive Stream をサブスクライブすることによって、多数の非同期 `createItem` 要求を効率よく発行する方法を示しています。 この単純な例は、そのままでは完了まで実行されて終了してしまうため、`CountDownLatch` インスタンスを使用して、項目の作成中はプログラムが終了しないようにしています。 **非同期プログラミングでは、非同期呼び出しをブロックしないことが適切なプラクティスとされています。現実のユースケースでは、無限に実行される main() ループから要求が生成されるので、非同期呼び出しをラッチで待機させる必要はありません。**
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateItem)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java" id="CreateItem":::
    
 * 同期 API と同様、ポイント読み取りは `readItem` メソッドを使用して実行されます。
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=ReadItem)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java" id="ReadItem":::
 
 * 同期 API と同様、JSON に対する SQL クエリは、`queryItems` メソッドを使用して実行されます。
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=QueryItems)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java" id="QueryItems":::
 
 ## <a name="run-the-app"></a>アプリを実行する
 

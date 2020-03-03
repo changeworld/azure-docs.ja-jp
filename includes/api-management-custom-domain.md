@@ -4,12 +4,12 @@ ms.service: api-management
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: vlvinogr
-ms.openlocfilehash: dff01f8bc4a4cf58d1ed503b69a29dadc367fecb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b9e601c72395b4910850714460321a83a3113e69
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66248924"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649545"
 ---
 ## <a name="how-apim-proxy-server-responds-with-ssl-certificates-in-the-tls-handshake"></a>APIM プロキシ サーバーが SSL 証明書を使用して TLS ハンドシェイクで応答する方法
 
@@ -20,7 +20,7 @@ ms.locfileid: "66248924"
 [SNI](https://tools.ietf.org/html/rfc6066#section-3) ヘッダーを送信しないクライアントを使用している場合、APIM は次のロジックに基づいて応答を作成します。
 
 * このサービスにプロキシ用のカスタム ドメインが 1 つだけ設定されている場合、そのプロキシ カスタム ドメインに発行された証明書が既定の証明書になります。
-* このサービスにプロキシ用のカスタム ドメインが複数設定されている場合 (**Premium** レベルでのみサポート)、お客様は既定の証明書を指定できます。 既定の証明書を設定するには、[defaultSslBinding](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/createorupdate#hostnameconfiguration) プロパティを true に設定する ("defaultSslBinding":"true") 必要があります。 お客様がこのプロパティを設定していない場合、既定の証明書は、*.azure-api.net でホストされる既定のプロキシ ドメインに発行された証明書になります。
+* このサービスにプロキシ用のカスタム ドメインが複数設定されている場合 (**Developer** および **Premium** レベルでサポート)、お客様は既定の証明書を指定できます。 既定の証明書を設定するには、[defaultSslBinding](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/createorupdate#hostnameconfiguration) プロパティを true に設定する ("defaultSslBinding":"true") 必要があります。 お客様がこのプロパティを設定していない場合、既定の証明書は、*.azure-api.net でホストされる既定のプロキシ ドメインに発行された証明書になります。
 
 ## <a name="support-for-putpost-request-with-large-payload"></a>ペイロードの大きい PUT/POST 要求のサポート
 

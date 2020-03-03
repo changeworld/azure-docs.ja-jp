@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: bdb00bfbadec68fa110f747858d264a2c34f8bd1
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 5ea9749c07aadc7037e753160e9b053992bebae2
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120871"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619308"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>クイック スタート:.NET Framework アプリに機能フラグを追加する
 
@@ -31,11 +31,18 @@ ms.locfileid: "76120871"
 
 - Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
-- [.NET Framework 4.7.2](https://dotnet.microsoft.com/download)
+- [.NET Framework 4.8](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>App Configuration ストアを作成する
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
+
+6. **[機能マネージャー]**  >  **[+追加]** を選択して、`Beta` という機能フラグを追加します。
+
+    > [!div class="mx-imgBorder"]
+    > ![Beta という名前の機能フラグを有効にする](media/add-beta-feature-flag.png)
+
+    現時点では `label` を空欄にしておいてください。
 
 ## <a name="create-a-net-console-app"></a>.NET コンソール アプリを作成する
 
@@ -43,7 +50,7 @@ ms.locfileid: "76120871"
 
 1. **[新しいプロジェクトの作成]** で、 **[コンソール]** プロジェクトの種類をフィルターで選択し、 **[コンソール アプリ (.NET Framework)]** をクリックします。 **[次へ]** をクリックします。
 
-1. **[新しいプロジェクトの構成]** で、プロジェクト名を入力します。 **[フレームワーク]** で、 **.NET Framework 4.7.1** 以上を選択します。 **Create** をクリックしてください。
+1. **[新しいプロジェクトの構成]** で、プロジェクト名を入力します。 **[フレームワーク]** で、 **.NET Framework 4.8** 以上を選択します。 **Create** をクリックしてください。
 
 ## <a name="connect-to-an-app-configuration-store"></a>App Configuration ストアに接続する
 
@@ -67,13 +74,8 @@ ms.locfileid: "76120871"
 1. `Main` メソッドを更新してアプリ構成に接続し、`UseFeatureFlags` オプションを指定して機能フラグが取得されるようにします。 `Beta` 機能フラグが有効になっている場合は、メッセージを表示します。
 
     ```csharp
-        public static void Main(string[] args)
-        {
-            AsyncMain().Wait();
-        }
-
-        private static async Task AsyncMain()
-        {
+        public static async Task Main(string[] args)
+        {         
             IConfigurationRoot configuration = new ConfigurationBuilder()
                 .AddAzureAppConfiguration(options =>
                 {

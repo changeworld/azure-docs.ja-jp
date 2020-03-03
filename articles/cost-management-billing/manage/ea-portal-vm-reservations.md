@@ -3,16 +3,16 @@ title: Azure EA VM 予約インスタンス
 description: この記事では、VM 予約インスタンスに対する Azure 予約が、エンタープライズ登録にかかる金額の節約にどのように役立つかについて説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 02/14/2020
+ms.date: 02/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 3eceef9dc0bc29f7e105ac0b110bd2550413fa61
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 53af5e69a90eb376c28ef364e7d9c5b29287790c
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200712"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560579"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA VM 予約インスタンス
 
@@ -57,10 +57,12 @@ EA 加入契約を有効にして、予約インスタンスを追加すると�
 
 ### <a name="how-can-i-change-the-subscription-associated-with-reserved-instance-or-transfer-my-reserved-instance-benefits-to-a-subscription-under-the-same-account"></a>予約インスタンスと関連付けられたサブスクリプションを変更するか、予約インスタンス特典を同じアカウントのサブスクリプションに譲渡するにはどうすればよいですか?
 
-どのような場合でも、予約インスタンス特典を受けることができるサブスクリプションは 1 つのみです。 予約インスタンス特典を受けるサブスクリプションを変更するには、次の手順を行います。
+予約インスタンス特典を受けるサブスクリプションを変更するには、次の手順を行います。
 
-- [Azure portal](https://aka.ms/reservations)にログインします。
+- [Azure portal](https://aka.ms/reservations) にサインインします。
 - 同じアカウントの別のサブスクリプションを関連付けて、提供されるサブスクリプションのスコープを更新します。
+
+予約のスコープの変更の詳細については、「[予約のスコープの変更](../reservations/manage-reserved-vm-instance.md#change-the-reservation-scope)」を参照してください。
 
 ### <a name="how-to-view-reserved-instance-usage-details"></a>予約インスタンスの使用量の詳細を表示する方法
 

@@ -1,239 +1,216 @@
 ---
-title: チュートリアル:Azure Active Directory と 8x8 Virtual Office の統合 | Microsoft Docs
-description: Azure Active Directory と 8x8 Virtual Office の間でシングル サインオンを構成する方法について説明します。
+title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と 8x8 の統合 | Microsoft Docs
+description: Azure Active Directory と 8x8 の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: b34a6edf-e745-4aec-b0b2-7337473d64c5
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/27/2018
+ms.date: 02/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87728a5ff9690df6f47a2721ad4a51b5c2388877
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f49c2b445af9acb0761d01b731250e068cb96a36
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73154593"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562321"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-8x8-virtual-office"></a>チュートリアル:Azure Active Directory と 8x8 Virtual Office の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-8x8"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と 8x8 の統合
 
-このチュートリアルでは、8x8 Virtual Office と Azure Active Directory (Azure AD) を統合する方法について説明します。
-8x8 Virtual Office と Azure AD の統合には、次の利点があります。
+このチュートリアルでは、8x8 と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と 8x8 を統合すると、次のことができます。
 
-* 8x8 Virtual Office にアクセスできる Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントで 8x8 Virtual Office に自動的にサインイン (シングル サインオン) するように設定できます。
-* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* 8x8 にアクセスできるユーザーを Azure AD で制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して 8x8 に自動的にサインインできるように設定できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure AD と 8x8 Virtual Office の統合を構成するには、次のものが必要です。
+開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
-* 8x8 Virtual Office でのシングル サインオンが有効なサブスクリプション
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* 8x8 サブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
+
+* 8x8 では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+
+* 8x8 を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
+
+## <a name="adding-8x8-from-the-gallery"></a>ギャラリーからの 8x8 の追加
+
+Azure AD への 8x8 の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に 8x8 を追加する必要があります。
+
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**8x8**」と入力します。
+1. 結果パネルで **[8x8]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
+
+## <a name="configure-and-test-azure-ad-single-sign-on-for-8x8"></a>8x8 の Azure AD シングル サインオンの構成とテスト
+
+**B.Simon** というテスト ユーザーを使用して、8x8 に対する Azure AD SSO を構成してテストします。 SSO を機能させるために、Azure AD ユーザーと 8x8 の関連ユーザーとの間にリンク関係を確立する必要があります。
+
+8x8 で Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
+    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[8x8 の SSO の構成](#configure-8x8-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    1. **[8x8 のテスト ユーザーの作成](#create-8x8-test-user)** - 8x8 で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
+
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
+
+1. [Azure portal](https://portal.azure.com/) の **8x8** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+
+   ![基本的な SAML 構成を編集する](common/edit-urls.png)
+
+1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
+
+    a. **[識別子]** ボックスに、次のいずれかのパターンで URL を入力します。
+
+    |||
+    |-|-|
+    | `https://sso.8x8.com/saml2`|
+    | `https://sso.8x8pilot.com/saml2`|
+
+    b. **[応答 URL]** ボックスに、次のいずれかのパターンを使用して URL を入力します。
+
+    |||
+    |-|-|
+    | `https://sso.8x8.com/saml2`|
+    | `https://sso.8x8pilot.com/saml2`|
 
 
-* 8x8 Virtual Office では、**IDP** によって開始される SSO がサポートされます
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。 この証明書は、チュートリアルの後半の「**8x8 の SSO の構成**」セクションで使用します。
 
-* 8x8 Virtual Office では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+    ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
-## <a name="adding-8x8-virtual-office-from-the-gallery"></a>ギャラリーからの 8x8 Virtual Office の追加
+1. **[8x8 のセットアップ]** セクションで、URL をコピーします。これらの URL 値は、チュートリアルの後半で使用します。
 
-Azure AD への 8x8 Virtual Office の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に 8x8 Virtual Office を追加する必要があります。
+    ![構成 URL のコピー](./media/8x8virtualoffice-tutorial/copy-configuration-urls.png)
 
-**ギャラリーから 8x8 Virtual Office を追加するには、次の手順に従います。**
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
-    ![Azure Active Directory のボタン](common/select-azuread.png)
+1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
 
-2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+このセクションでは、B.Simon に 8x8 へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. アプリケーションの一覧で **[8x8]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 
-    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
+   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. 検索ボックスに「**8x8 Virtual Office**」と入力し、結果ウィンドウで **[8x8 Virtual Office]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-     ![結果リストの 8x8 Virtual Office](common/search-new-app.png)
+    ![[ユーザーの追加] リンク](common/add-assign-user.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-このセクションでは、**Britta Simon** という名前のテスト ユーザーに基づいて、8x8 Virtual Office で Azure AD のシングル サインオンを構成およびテストします。
-シングル サインオンを機能させるには、Azure AD ユーザーと 8x8 Virtual Office 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
+## <a name="configure-8x8-sso"></a>8x8 の SSO の構成
 
-8x8 Virtual Office で Azure AD のシングル サインオンを構成およびテストするには、次の構成要素を完了する必要があります。
+このチュートリアルの次の部分は、8x8 で使用しているサブスクリプションの種類によって異なります。
 
-1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[8x8 Virtual Office のシングル サインオンの構成](#configure-8x8-virtual-office-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
-3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[8x8 Virtual Office のテスト ユーザーの作成](#create-8x8-virtual-office-test-user)** - 8x8 Virtual Office で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+* 管理に Configuration Manager を使用している 8x8 エディションおよび X シリーズのお客様の場合は、「[8x8 Configuration Manager の構成](#configure-8x8-configuration-manager)」を参照してください。
+* 管理に Account Manager を使用している Virtual Office のお客様の場合は、「[8x8 Account Manager の構成](#configure-8x8-account-manager)」を参照してください。
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+### <a name="configure-8x8-configuration-manager"></a>8x8 Configuration Manager の構成
 
-このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
+1. 8x8 [Configuration Manager](https://vo-cm.8x8.com/) にログインします。
 
-8x8 Virtual Office で Azure AD のシングル サインオンを構成するには、次の手順を実行します。
+1. ホーム ページで、 **[Identity Management]\(ID 管理\)** をクリックします。
 
-1. [Azure portal](https://portal.azure.com/) の **[8x8 Virtual Office]** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. **[Single Sign On (SSO)]\(シングル サインオン (SSO)\)** をオンにし、 **[Microsoft Azure AD]** を選択します。
 
-    ![シングル サインオン構成のリンク](common/select-sso.png)
+1. 3 つの URL と署名証明書を、Azure AD の **[SAML でシングル サインオンをセットアップします]** ページから、8x8 Configuration Manager の **[Microsoft Azure AD SAML Settings]\(Microsoft Azure AD SAML 設定\)** セクションにコピーします。
 
-2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+    a. **ログイン URL** を **[IDP Login URL]\(IDP ログイン URL\)** にコピーします。
 
-    ![シングル サインオン選択モード](common/select-saml-option.png)
+    b. **Azure AD 識別子**を **[IDP Issuer URL/URN]\(IDP 発行者 URL/URN\)** にコピーします。
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+    c. **ログアウト URL** を **[IDP Logout URL]\(IDP ログアウト URL\)** にコピーします。
 
-    ![基本的な SAML 構成を編集する](common/edit-urls.png)
+    d. **証明書 (Base64)** をダウンロードし、 **[Certificate]\(証明書\)** にアップロードします。
 
-4. **[基本的な SAML 構成]** ダイアログ ボックスで、次の手順を実行します。
+    e. **[保存]** をクリックします。
 
-    ![[8x8 Virtual Office のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
-
-    a. **[識別子]** ボックスに、`https://sso.8x8.com/saml2` の形式で URL を入力します。
-
-    b. **[応答 URL]** ボックスに、`https://sso.8x8.com/saml2` のパターンを使用して URL を入力します
-
-4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
-
-    ![証明書のダウンロードのリンク](common/certificateraw.png)
-
-6. **[8x8 Virtual Office の設定]** セクションで、要件に従って適切な URL をコピーします。
-
-    ![構成 URL のコピー](common/copy-configuration-urls.png)
-
-    a. ログイン URL
-
-    b. Azure AD 識別子
-
-    c. ログアウト URL
-
-### <a name="configure-8x8-virtual-office-single-sign-on"></a>8x8 Virtual Office のシングル サインオンの構成
+### <a name="configure-8x8-account-manager"></a>8x8 Account Manager の構成
 
 1. 8x8 Virtual Office テナントに管理者としてサインオンします。
 
 1. アプリケーション パネルで **[Virtual Office Account Mgr (Virtual Office アカウント マネージャー)]** を選択します。
 
-    ![Configure On App Side](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_001.png)
-
 1. 管理する **[Business (ビジネス)]** アカウントを選択し、 **[Sign In (サインイン)]** をクリックします。
-
-    ![Configure On App Side](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_002.png)
 
 1. メニュー リストの **[ACCOUNTS]\(アカウント\)** タブをクリックします。
 
-   ![Configure On App Side](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_003.png)
-
 1. アカウントの一覧で **[Single Sign On (シングル サインオン)]** をクリックします。
-  
-   ![Configure On App Side](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
 
 1. [Authentication methods]\(認証方法\) の **[Single Sign On]\(シングル サインオン\)** を選択し、 **[SAML]** をクリックします。
 
-   ![Configure On App Side](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
-
 1. **[SAML Single Sign-On]\(SAML シングル サインオン\)** セクションで、次の手順に従います。
 
-   ![Configure On App Side](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_006.png)
+    a. **[Sign In URL]\(サインイン URL\)** テキストボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
-   a. **[Sign In URL]\(サインイン URL\)** テキストボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    b. **[Sign Out URL]\(サインアウト URL\)** テキストボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
 
-   b. **[Sign Out URL]\(サインアウト URL\)** テキストボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+    c. **[Issuer URL]\(発行者 URL\)** テキストボックスに、Azure portal からコピーした、**Azure AD ID** の値を貼り付けます。
 
-   c. **[Issuer URL]\(発行者 URL\)** テキストボックスに、Azure portal からコピーした、**Azure AD ID** の値を貼り付けます。
+    d. **[Browse]\(参照\)** ボタンをクリックして、Azure portal からダウンロードした証明書をアップロードします。
 
-   d. **[Browse]\(参照\)** ボタンをクリックして、Azure portal からダウンロードした証明書をアップロードします。
+    e. **[保存]** ボタンをクリックします。
 
-   e. **[保存]** ボタンをクリックします。
+### <a name="create-8x8-test-user"></a>8x8 のテスト ユーザーの作成
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
+このセクションでは、8x8 で Britta Simon というユーザーを作成します。 [8x8 サポート チーム](https://www.8x8.com/about-us/contact-us)と連携して、8x8 プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
-このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
-
-1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
-
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
-
-2. 画面の上部にある **[新しいユーザー]** を選択します。
-
-    ![[新しいユーザー] ボタン](common/new-user.png)
-
-3. [ユーザーのプロパティ] で、次の手順を実行します。
-
-    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
-
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
-    たとえば、BrittaSimon@contoso.com のように指定します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
-
-    d. **Create** をクリックしてください。
-
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-
-このセクションでは、8x8 Virtual Office へのアクセス権を付与することによって、Britta Simon が Azure シングル サインオンを使用できるようにします。
-
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[8x8 Virtual Office]** を選択します。
-
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
-
-2. アプリケーションの一覧で「**8x8 Virtual Office**」と入力して選択します。
-
-    ![アプリケーションの一覧の 8x8 Virtual Office リンク](common/all-applications.png)
-
-3. 左側のメニューで **[ユーザーとグループ]** を選びます。
-
-    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
-4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
-
-5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-
-6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
-
-7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
-
-### <a name="create-8x8-virtual-office-test-user"></a>8x8 Virtual Office のテスト ユーザーの作成
-
-このセクションでは、Britta Simon というユーザーを 8x8 Virtual Office に作成します。 8x8 Virtual Office では、**Just-In-Time ユーザー プロビジョニング**がサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 8x8 Virtual Office にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
-
-> [!NOTE]
-> ユーザーを手動で作成する必要がある場合は、[8x8 Virtual Office サポート チーム](https://www.8x8.com/about-us/contact-us)に問い合わせる必要があります。
-
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [8x8 Virtual Office] タイルをクリックすると、SSO を設定した 8x8 Virtual Office に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [8x8] タイルをクリックすると、SSO を設定した 8x8 に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Azure AD で 8x8 を試す](https://aad.portal.azure.com/)
+
+- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [高度な可視性と制御によって 8x8 を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
