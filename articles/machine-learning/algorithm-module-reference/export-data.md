@@ -8,19 +8,19 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 11f5bd7f01e142273509ae59ddc19a2557464bde
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 40d8e298237b6110fee04aefbb7b79c5f3bac6f0
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152314"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598614"
 ---
 # <a name="export-data-module"></a>データのエクスポート モジュール
 
 この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
-パイプラインの結果や中間データ、作業データを Azure Machine Learning の外部のクラウド ストレージに保存するには、このモジュールを使用します。 
+このモジュールを使用して、パイプラインからの結果、中間データ、および作業データをクラウド ストレージに保存します。 
 
 このモジュールは、次のクラウド データ サービスにデータをエクスポートする作業を支援します。
 
@@ -29,7 +29,7 @@ ms.locfileid: "77152314"
 - Azure Data Lake
 - Azure Data Lake Gen2
 
-データをエクスポートする前に、まずは Azure Machine Learning ワークスペースにデータストアを登録する必要があります。 詳細については、「[Azure ストレージ サービスのデータにアクセスする](../how-to-access-data.md)」を参照してください。
+データをエクスポートする前に、Azure Machine Learning ワークスペースにデータストアを登録する必要があります。 詳細については、「[Azure ストレージ サービスのデータにアクセスする](../how-to-access-data.md)」を参照してください。
 
 ## <a name="how-to-configure-export-data"></a>データのエクスポートを構成する方法
 
@@ -41,7 +41,13 @@ ms.locfileid: "77152314"
 
 1. **[データストア]** では、ドロップダウン リストから既存のデータストアを選択します。 新しいデータストアを作成することもできます。 方法については、「[Azure ストレージ サービスのデータにアクセスする](../how-to-access-data.md)」を参照してください。
 
-1. データを書き込むデータストア内のパスを定義します。 
+1. **[出力の再生成]** チェックボックスを使用して、実行時に出力を再生成するようにモジュールを実行するかどうかを決定します。 
+
+    それは既定ではオフになっています。つまり、モジュールが前と同じパラメーターを使用して実行された場合は、実行時間を短縮するために、最後の実行からの出力が再利用されます。 
+
+    オンにした場合は、モジュールが再び実行されて出力が再生成されます。
+
+1. データが書き込まれるデータストア内のパスを定義します。 このパスは相対パスです。 空のパスまたは URL パスは許可されません。
 
 
 1. **[ファイル形式]** で、データの保存形式を選択します。

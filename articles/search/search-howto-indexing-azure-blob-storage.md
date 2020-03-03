@@ -143,7 +143,7 @@ Shared Access Signature について詳しくは、「[Shared Access Signature �
   * **metadata\_storage\_name** (Edm.String) - BLOB のファイル名。 たとえば、/my-container/my-folder/subfolder/resume.pdf という BLOB がある場合、このフィールドの値は `resume.pdf` になります。
   * **metadata\_storage\_path** (Edm.String) - ストレージ アカウントを含む、BLOB の完全な URI。 たとえば、`https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf` のように指定します。
   * **metadata\_storage\_content\_type** (Edm.String) - BLOB をアップロードするためのコードで指定したコンテンツ タイプ。 たとえば、「 `application/octet-stream` 」のように入力します。
-  * **metadata\_storage\_last\_modified** (Edm.DateTimeOffset) - 前回変更時の BLOB のタイムスタンプ。 インデックスの初回作成後に最初から作成し直さなくても済むよう、変更された BLOB を Azure コグニティブ検索が特定するために、このタイムスタンプが使用されます。
+  * **metadata\_storage\_last\_modified** (Edm.DateTimeOffset) - 前回変更時の BLOB のタイムスタンプ。 インデックスの初回作成後に最初から作成し直さなくても済むよう、変更された BLOB を Azure Cognitive Search が特定するために、このタイムスタンプが使用されます。
   * **metadata\_storage\_size** (Edm.Int64) - BLOB のサイズ (バイト単位)。
   * **metadata\_storage\_content\_md5** (Edm.String) - BLOB コンテンツの MD5 ハッシュ (利用可能な場合)。
   * **metadata\_storage\_sas\_token** (Edm.String) - BLOB に対してアクセスするために、[カスタム スキル](cognitive-search-custom-skill-interface.md)で使用できる一時的な SAS トークン。 このトークンは、有効期限が切れる可能性があるため、後で使用するために保存しないでください。
@@ -342,7 +342,7 @@ BLOB のインデックス作成プロセスは、時間がかかる場合があ
 
 インデックスの複数のソースからドキュメントを「アセンブル」できます。 たとえば、Cosmos DB に格納された他のメタデータを使用して BLOB からテキストをマージすることもできます。 プッシュ インデックス作成 API を各種インデクサーとともに使用して、複数のパーツから検索ドキュメントを構築することもできます。 
 
-これが機能するには、すべてのインデクサーと他のコンポーネントがドキュメント キーに同意する必要があります。 このトピックの詳細については、[複数の Azure データ ソースのインデックスを作成する](https://docs.microsoft.com/azure/search/tutorial-multiple-data-sources)方法に関するページを参照してください。 このソリューションのチュートリアルについて詳しくは、外部資料の[ドキュメントを Azure コグニティブ検索の他のデータと組み合わせる](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)に関するページをご覧ください。
+これが機能するには、すべてのインデクサーと他のコンポーネントがドキュメント キーに同意する必要があります。 このトピックの詳細については、[複数の Azure データ ソースのインデックスを作成する](https://docs.microsoft.com/azure/search/tutorial-multiple-data-sources)方法に関するページを参照してください。 このソリューションのチュートリアルについて詳しくは、外部資料の[ドキュメントを Azure Cognitive Search の他のデータと組み合わせる](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)に関するページをご覧ください。
 
 <a name="IndexingPlainText"></a>
 ## <a name="indexing-plain-text"></a>プレーンテキストのインデックス作成 

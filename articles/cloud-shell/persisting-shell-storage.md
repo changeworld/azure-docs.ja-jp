@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2019
+ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: 0b3b0b2cc97c86fefe37055e0744b747d4f31687
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 15a5770eb2964f0f2039fe93de904af65d4c81ed
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75385558"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598750"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Azure Cloud Shell でファイルを永続化する
 Cloud Shell では Azure File ストレージを使用してセッション間でファイルを維持します。 Cloud Shell の初回起動時に、セッション間でファイルを維持するために新しいまたは既存のファイル共有を関連付けることを求められます。
@@ -62,7 +62,7 @@ Cloud Shell では、指定されたサブスクリプション内のストレ�
 ユーザーは、ストレージ アカウントまたはサブスクリプション レベルでアクセス許可を設定することによって、各自のファイルへのアクセスをロックダウンする必要があります。
 
 ## <a name="supported-storage-regions"></a>サポートされているストレージ リージョン
-マウント先の Cloud Shell マシンと同じリージョンに、関連付けられた Azure ストレージ アカウントが存在する必要があります。 現在のリージョンを確認するには、Bash で `env` を実行し、変数 `ACC_LOCATION` を見つけます。 ファイル共有には、`$Home` ディレクトリの永続化に使用できる 5 GB のイメージが割り当てられます。
+現在のリージョンを確認するには、Bash で `env` を実行して変数 `ACC_LOCATION` を見つけるか、PowerShell から `$env:ACC_LOCATION` を実行します。 ファイル共有には、`$Home` ディレクトリの永続化に使用できる 5 GB のイメージが割り当てられます。
 
 Cloud Shell マシンは、次の各リージョンに存在します。
 
@@ -71,6 +71,16 @@ Cloud Shell マシンは、次の各リージョンに存在します。
 |アメリカ|米国東部、米国中南部、米国西部|
 |ヨーロッパ|北ヨーロッパ、西ヨーロッパ|
 |アジア太平洋|インド中部、東南アジア|
+
+お客様は、保存データを特定のリージョンに格納するという要件がない限り、プライマリ リージョンを選択する必要があります。 このような要件がある場合は、セカンダリ ストレージ リージョンを使用する必要があります。
+
+### <a name="secondary-storage-regions"></a>セカンダリ ストレージ リージョン
+セカンダリ ストレージ リージョンが使用される場合、関連付けられている Azure ストレージ アカウントの配置場所は、マウント先の Cloud Shell マシンとは別のリージョンになります。 たとえば、Jane は、自分のストレージ アカウントをカナダ東部 (セカンダリ リージョン) に配置するように設定できますが、自分がマウントされるコンピューターは依然としてプライマリ リージョンにあります。 保存データはカナダにありますが、処理は米国で行われます。
+
+> [!NOTE]
+> セカンダリ リージョンが使用される場合、Cloud Shell のファイル アクセスと起動時間が遅くなる可能性があります。
+
+ユーザーは、PowerShell で `(Get-CloudDrive | Get-AzStorageAccount).Location` を実行して、ファイル共有の場所を確認できます。
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Azure リソース ポリシーによるリソース作成の制限
 Cloud Shell で作成したストレージ アカウントは `ms-resource-usage:azure-cloud-shell` でタグ付けされます。 Cloud Shell からストレージ アカウントを作成できないようにするには、この固有のタグによってトリガーされる[タグの Azure リソース ポリシー](../azure-policy/json-samples.md)を作成します。

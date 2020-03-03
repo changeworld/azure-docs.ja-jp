@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service (AKS) 用のサービス プリンシパル
 description: Azure Kubernetes Service (AKS) のクラスター用の Azure Active Directory サービス プリンシパルを作成して管理する
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: mlearned
-ms.openlocfilehash: 1b0d3dec3925518922c5f668560889edd6f5de0b
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 523f08ddbf22e175af5b0604b04d4a2460ffd634
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867161"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595078"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのサービス プリンシパル
 
@@ -69,6 +66,9 @@ az aks create \
     --service-principal <appId> \
     --client-secret <password>
 ```
+
+> [!NOTE]
+> カスタマイズされたシークレットがある既存のサービス プリンシパルを使用する場合は、そのシークレットの長さが 190 バイトを超えていないことを確認します。
 
 Azure portal を使用して AKS クラスターをデプロイする場合は、 **[Create Kubernetes cluster]\(Kubernetes クラスターの作成)** ダイアログ ボックスの *[Authentication]\(認証)* ページで、 **[Configure service principal]\(サービス プリンシパルの構成)** を選択します。 **[既存のものを使用]** を選択し、以下の値を指定します。
 

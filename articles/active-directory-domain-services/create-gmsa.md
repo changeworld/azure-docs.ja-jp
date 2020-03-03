@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 9dc7e6341f77fc17ae26f34ea029b3eb5414dcbc
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 58749e4518f6fa73c8641ce38483c101576047aa
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705317"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614081"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>Azure AD Domain Services でグループの管理されたサービス アカウント (gMSA) を作成する
 
@@ -65,37 +65,37 @@ Azure AD DS マネージド ドメインは、Microsoft によってロックダ
 > [!TIP]
 > これらの手順を完了して gMSA を作成するには、[管理 VM 使用します][tutorial-create-management-vm]。 この管理 VM には、必要な AD PowerShell コマンドレットと管理対象ドメインへの接続が既に存在している必要があります。
 
-次の例では、*aadds.contoso.com* という名前の Azure AD DS マネージド ドメインで、*myNewOU* という名前のカスタム OU を作成します。 独自の OU とマネージド ドメイン名を使用します。
+次の例では、*aaddscontoso.com* という名前の Azure AD DS マネージド ドメインで、*myNewOU* という名前のカスタム OU が作成されます。 独自の OU とマネージド ドメイン名を使用します。
 
 ```powershell
-New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=contoso,DC=COM"
+New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=aaddscontoso,DC=COM"
 ```
 
 次に、[New-ADServiceAccount][New-ADServiceAccount] コマンドレットを使用して gMSA を作成します。 次のパラメーターの例が定義されています。
 
 * **-Name** は *WebFarmSvc* に設定されます
 * **-Path** パラメーターは、前の手順で作成された gMSA のカスタム OU を指定します。
-* DNS エントリとサービス プリンシパル名が *WebFarmSvc.aadds.contoso.com* に対して設定されます。
-* *CONTOSO-SERVER$* のプリンシパルでは、ID を使用するパスワードの取得が可能です。
+* DNS エントリとサービス プリンシパル名が *WebFarmSvc.aaddscontoso.com* に対して設定されます。
+* *AADDSCONTOSO-SERVER$* のプリンシパルでは、ID を使用するパスワードの取得が可能です。
 
 独自の名前とドメイン名を指定します。
 
 ```powershell
 New-ADServiceAccount -Name WebFarmSvc `
-    -DNSHostName WebFarmSvc.aadds.contoso.com `
-    -Path "OU=MYNEWOU,DC=contoso,DC=com" `
+    -DNSHostName WebFarmSvc.aaddscontoso.com `
+    -Path "OU=MYNEWOU,DC=aaddscontoso,DC=com" `
     -KerberosEncryptionType AES128, AES256 `
     -ManagedPasswordIntervalInDays 30 `
-    -ServicePrincipalNames http/WebFarmSvc.aadds.contoso.com/aadds.contoso.com, `
-        http/WebFarmSvc.aadds.contoso.com/contoso, `
-        http/WebFarmSvc/aadds.contoso.com, `
-        http/WebFarmSvc/contoso `
-    -PrincipalsAllowedToRetrieveManagedPassword CONTOSO-SERVER$
+    -ServicePrincipalNames http/WebFarmSvc.aaddscontoso.com/aaddscontoso.com, `
+        http/WebFarmSvc.aaddscontoso.com/aaddscontoso, `
+        http/WebFarmSvc/aaddscontoso.com, `
+        http/WebFarmSvc/aaddscontoso `
+    -PrincipalsAllowedToRetrieveManagedPassword AADDSCONTOSO-SERVER$
 ```
 
 これで、必要に応じて gMSA を使用するようにアプリケーションとサービスを構成できるようになりました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 gMSA の詳細については、「[グループの管理されたサービス アカウントの概要][gmsa-start]」を参照してください。
 

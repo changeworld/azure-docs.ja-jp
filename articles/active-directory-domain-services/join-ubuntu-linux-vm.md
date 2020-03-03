@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 1cf1a97ed6350174511d61d924f893bb209736c2
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 09654132b6e10f9905f79d1eb50f9bce220a7ab7
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712585"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613778"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Ubuntu Linux 仮想マシンを Azure AD Domain Services のマネージド ドメインに参加させる
 
@@ -63,13 +63,13 @@ sudo vi /etc/hosts
 
 *hosts* ファイルで、*localhost* アドレスを更新します。 次の例では
 
-* *aadds.contoso.com* は、Azure AD DS マネージド ドメインの DNS ドメイン名です。
+* *aaddscontoso.com* は、Azure AD DS マネージド ドメインの DNS ドメイン名です。
 * *ubuntu* は、マネージド ドメインに参加させる Ubuntu VM のホスト名です。
 
 これらの名前を実際の値に更新します。
 
 ```console
-127.0.0.1 ubuntu.aadds.contoso.com ubuntu
+127.0.0.1 ubuntu.aaddscontoso.com ubuntu
 ```
 
 終わったら、エディターの `:wq` コマンドを使用して、*hosts* ファイルを保存して終了します。
@@ -78,7 +78,7 @@ sudo vi /etc/hosts
 
 VM を Azure AD DS マネージド ドメインに参加させるには、VM にいくつかの追加パッケージが必要です。 これらのパッケージをインストールして構成するには、`apt-get` を使用してドメイン参加ツールを更新およびインストールします
 
-Kerberos のインストールの間に、*krb5-user* パッケージでは、領域名をすべて大文字で入力するように求められます。 たとえば、Azure AD DS マネージド ドメインの名前が *aadds.contoso.com* の場合、領域としては「*AADDS.CONTOSO.COM*」と入力します。 インストールによって、`[realm]` セクションと `[domain_realm]` セクションが */etc/krb5.conf* 構成ファイルに書き込まれます。 領域はすべて大文字で指定します。
+Kerberos のインストールの間に、*krb5-user* パッケージでは、領域名をすべて大文字で入力するように求められます。 たとえば、Azure AD DS マネージド ドメインの名前が *aaddscontoso.com* の場合、「*AADDSCONTOSO.COM*」を領域として入力します。 インストールによって、`[realm]` セクションと `[domain_realm]` セクションが */etc/krb5.conf* 構成ファイルに書き込まれます。 領域はすべて大文字で指定します。
 
 ```console
 sudo apt-get update
@@ -95,10 +95,10 @@ sudo apt-get install krb5-user samba sssd sssd-tools libnss-sss libpam-sss ntp n
     sudo vi /etc/ntp.conf
     ```
 
-1. *ntp.conf* ファイルに、Azure AD DS マネージド ドメインの DNS 名を追加する行を作成します。 次の例では、*aadds.contoso.com* のエントリが追加されています。 独自の DNS 名を使用してください。
+1. *ntp.conf* ファイルに、Azure AD DS マネージド ドメインの DNS 名を追加する行を作成します。 次の例では、*aaddscontoso.com* のエントリが追加されます。 独自の DNS 名を使用してください。
 
     ```console
-    server aadds.contoso.com
+    server aaddscontoso.com
     ```
 
     終わったら、エディターの `:wq` コマンドを使用して、*ntp.conf* ファイルを保存して終了します。
@@ -113,7 +113,7 @@ sudo apt-get install krb5-user samba sssd sssd-tools libnss-sss libpam-sss ntp n
 
     ```console
     sudo systemctl stop ntp
-    sudo ntpdate aadds.contoso.com
+    sudo ntpdate aaddscontoso.com
     sudo systemctl start ntp
     ```
 
@@ -121,30 +121,30 @@ sudo apt-get install krb5-user samba sssd sssd-tools libnss-sss libpam-sss ntp n
 
 必要なパッケージが VM にインストールされ、NTP が構成されたので、VM を Azure AD DS マネージド ドメインに参加させます。
 
-1. `realm discover` コマンドを使用して、Azure AD DS マネージド ドメインを検出します。 次の例では、領域 *AADDS.CONTOSO.COM* を検出しています。 独自の Azure AD DS マネージド ドメイン名を、すべて大文字で指定します。
+1. `realm discover` コマンドを使用して、Azure AD DS マネージド ドメインを検出します。 次の例では、領域 *AADDSCONTOSO.COM* が検出されます。 独自の Azure AD DS マネージド ドメイン名を、すべて大文字で指定します。
 
     ```console
-    sudo realm discover AADDS.CONTOSO.COM
+    sudo realm discover AADDSCONTOSO.COM
     ```
 
    `realm discover` コマンドで Azure AD DS マネージド ドメインが見つからない場合は、次のトラブルシューティング手順を確認してください。
 
-    * ドメインに VM からアクセスできることを確認します。 `ping aadds.contoso.com` を試し、肯定応答が返されるかどうかを確認します。
+    * ドメインに VM からアクセスできることを確認します。 `ping aaddscontoso.com` を試し、肯定応答が返されるかどうかを確認します。
     * VM が、Azure AD DS マネージド ドメインを利用可能な仮想ネットワークと同じ仮想ネットワーク、またはそれとピアリングされた仮想ネットワークに、デプロイされていることを確認します。
     * 仮想ネットワークに対する DNS サーバーの設定が、Azure AD DS マネージド ドメインのドメイン コントローラーを指すように更新されていることを確認します。
 
 1. 次に、`kinit` コマンドを使用して Kerberos を初期化します。 *AAD DC Administrators* グループに属しているユーザーを指定します。 必要に応じて、[Azure AD のグループにユーザー アカウントを追加します](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
 
-    やはり、Azure AD DS マネージド ドメインの名前をすべて大文字で入力する必要があります。 次の例では、`contosoadmin@aadds.contoso.com` という名前のアカウントを使用して Kerberos を初期化しています。 *AAD DC Administrators* グループのメンバーである独自のユーザー アカウントを入力してください。
+    やはり、Azure AD DS マネージド ドメインの名前をすべて大文字で入力する必要があります。 次の例では、`contosoadmin@aaddscontoso.com` という名前のアカウントを使用して Kerberos を初期化しています。 *AAD DC Administrators* グループのメンバーである独自のユーザー アカウントを入力してください。
 
     ```console
-    kinit contosoadmin@AADDS.CONTOSO.COM
+    kinit contosoadmin@AADDSCONTOSO.COM
     ```
 
-1. 最後に、`realm join` コマンドを使用して、マシンを Azure AD DS マネージド ドメインに参加させます。 前の `kinit` コマンドで指定した *AAD DC Administrators* グループのメンバーと同じユーザー アカウントを使用します (`contosoadmin@AADDS.CONTOSO.COM` など)。
+1. 最後に、`realm join` コマンドを使用して、マシンを Azure AD DS マネージド ドメインに参加させます。 前の `kinit` コマンドで指定した *AAD DC Administrators* グループのメンバーと同じユーザー アカウントを使用します (`contosoadmin@AADDSCONTOSO.COM` など)。
 
     ```console
-    sudo realm join --verbose AADDS.CONTOSO.COM -U 'contosoadmin@AADDS.CONTOSO.COM' --install=/
+    sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM' --install=/
     ```
 
 VM を Azure AD DS マネージド ドメインに参加させるにはしばらくかかります。 次の出力例では、VM が Azure AD DS マネージド ドメインに正常に参加したことが示されています。
@@ -248,10 +248,10 @@ VM を Azure AD DS マネージド ドメインに参加させ、認証用に構
 
 VM が Azure AD DS マネージド ドメインに正常に参加したことを確認するには、ドメイン ユーザー アカウントを使用して新しい SSH 接続を開始します。 ホーム ディレクトリが作成されていること、およびドメインのグループ メンバーシップが適用されていることを確認します。
 
-1. コンソールから新しい SSH 接続を作成します。 `ssh -l` コマンドを使用して、マネージド ドメインに属しているドメイン アカウントを使用し (`contosoadmin@aadds.contoso.com` など)、VM のアドレス (*ubuntu.aadds.contoso.com* など) を入力します。 Azure Cloud Shell を使用する場合は、内部 DNS 名ではなく、VM のパブリック IP アドレスを使用します。
+1. コンソールから新しい SSH 接続を作成します。 `ssh -l` コマンドを使用して、マネージド ドメインに属しているドメイン アカウントを使用して (例: `contosoadmin@aaddscontoso.com`)、VM のアドレス (*例: ubuntu.aadds.contoso.com*) を入力します。 Azure Cloud Shell を使用する場合は、内部 DNS 名ではなく、VM のパブリック IP アドレスを使用します。
 
     ```console
-    ssh -l contosoadmin@AADDS.CONTOSO.com ubuntu.aadds.contoso.com
+    ssh -l contosoadmin@AADDSCONTOSO.com ubuntu.aaddscontoso.com
     ```
 
 1. VM に正常に接続したら、ホーム ディレクトリが正しく初期化されていることを確認します。

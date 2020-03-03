@@ -22,7 +22,7 @@ Azure Cognitive Search インデクサーを使用すると、入力データが
 
 フィールド マッピングが役立つシナリオは次のとおりです。
 
-* データ ソースに `_id` というフィールドがあるが、Azure コグニティブ検索でアンダースコアで始まるフィールド名が許可されていない場合。 フィールド マッピングを使用すると、フィールドの名前を効果的に変更できます。
+* データ ソースに `_id` というフィールドがあるが、Azure Cognitive Search でアンダースコアで始まるフィールド名が許可されていない場合。 フィールド マッピングを使用すると、フィールドの名前を効果的に変更できます。
 * 同じデータ ソース データからインデックス内のいくつかのフィールドにデータを入力します。 たとえば、このようなフィールドにさまざまなアナライザーを適用することができます。
 * インデックス フィールドに複数のデータ ソースのデータを入力し、データ ソースはそれぞれ異なるフィールド名が使用されています。
 * Base64 エンコードまたはデータのデコードが必要な場合。 フィールド マッピングは、Base64 エンコードおよびデコードの関数など、**マッピング関数**をいくつかサポートしています。
@@ -123,7 +123,7 @@ api-key: [admin key]
 
 #### <a name="example---document-key-lookup"></a>例 - ドキュメント キーの検索
 
-Azure コグニティブ検索ドキュメント キーには、URL で使用できる文字のみを使用できます ([Lookup API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) を使用してドキュメントのアドレスを指定できるようにする必要があるため)。 URL の安全ではない文字がキーのソース フィールドに含まれている場合は、インデックス作成時に `base64Encode` 関数を使用して変換できます。
+Azure Cognitive Search ドキュメント キーには、URL で使用できる文字のみを使用できます ([Lookup API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) を使用してドキュメントのアドレスを指定できるようにする必要があるため)。 URL の安全ではない文字がキーのソース フィールドに含まれている場合は、インデックス作成時に `base64Encode` 関数を使用して変換できます。
 
 検索時にエンコードされたキーを取得すると、`base64Decode` 関数を使用して元のキー値を取得し、それを使用してソース ドキュメントを取得できます。
 
@@ -235,7 +235,7 @@ Azure Cognitive Search の .NET ライブラリでは、組み込みのエンコ
 
 #### <a name="example---populate-collection-from-relational-data"></a>例 - リレーショナル データからコレクションを設定する
 
-Azure SQL Database には、Azure コグニティブ検索の `Collection(Edm.String)` のフィールドに自然にマップされる組み込みのデータ型がありません。 文字列収集フィールドを設定するには、ソース データを JSON 文字列配列として前処理してから、`jsonArrayToStringCollection` マッピング関数を使用することができます。
+Azure SQL Database には、Azure Cognitive Search の `Collection(Edm.String)` のフィールドに自然にマップされる組み込みのデータ型がありません。 文字列収集フィールドを設定するには、ソース データを JSON 文字列配列として前処理してから、`jsonArrayToStringCollection` マッピング関数を使用することができます。
 
 ```JSON
 
