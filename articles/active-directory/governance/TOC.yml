@@ -50,7 +50,7 @@
               href: entitlement-management-reports.md
             - name: ログとレポートのアーカイブ
               href: entitlement-management-logs-and-reporting.md
-            - name: '[トラブルシューティング]'
+            - name: トラブルシューティング
               href: entitlement-management-troubleshoot.md
         - name: カタログ所有者
           items:
