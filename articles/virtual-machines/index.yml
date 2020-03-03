@@ -113,7 +113,7 @@ additionalContent:
       links:
       - text: クイックスタート テンプレート ギャラリーを参照する
         url: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular
-    - title: '[トラブルシューティング]'
+    - title: トラブルシューティング
       links:
       - text: エラーのトラブルシューティングに関する情報
         url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/
