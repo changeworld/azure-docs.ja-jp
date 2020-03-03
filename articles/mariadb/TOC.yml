@@ -162,7 +162,7 @@
           href: howto-read-replicas-portal.md
         - name: 読み取りレプリカ Azure CLI の作成、REST API
           href: howto-read-replicas-cli.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: 接続エラーのトラブルシューティング
           href: howto-troubleshoot-common-connection-issues.md
