@@ -197,7 +197,7 @@
           href: visual-studio-code-explore-jobs.md
         - name: JobConfig.json のフィールド
           href: job-config-json.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: 入力
           href: stream-analytics-troubleshoot-input.md
