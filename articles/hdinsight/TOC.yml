@@ -370,7 +370,7 @@
                   href: ../cosmos-db/lambda-architecture.md
                 - name: AutoML を使用して Azure ML ワークロードを実行する
                   href: ./spark/apache-spark-run-machine-learning-automl.md
-        - name: '[トラブルシューティング]'
+        - name: トラブルシューティング
           items:
             - name: Jupyter ノートブックを作成できない
               href: ./spark/troubleshoot-jupyter-notebook-convert.md
@@ -437,7 +437,7 @@
           items:
             - name: 空のエッジ ノードを使用する
               href: ./hdinsight-apps-use-edge-node.md
-        - name: '[トラブルシューティング]'
+        - name: トラブルシューティング
           items:
             - name: 一般的な問題
               href: ./hdinsight-troubleshoot-guide.md
@@ -552,7 +552,7 @@
               href: ./kafka/apache-kafka-log-analytics-operations-management.md
             - name: SSL 暗号化および認証
               href: ./kafka/apache-kafka-ssl-encryption-authentication.md
-        - name: '[トラブルシューティング]'
+        - name: トラブルシューティング
           items:
             - name: 障害ドメインの不足
               href: ./kafka/kafka-troubleshoot-insufficient-domains.md
@@ -602,7 +602,7 @@
               href: ./hbase/apache-hbase-phoenix-performance.md
             - name: Azure VNet での Apache HBase クラスターの作成
               href: ./hbase/apache-hbase-provision-vnet.md
-        - name: '[トラブルシューティング]'
+        - name: トラブルシューティング
           items:
             - name: Apache HBase のパフォーマンスに関する問題のトラブルシューティング
               href: ./hbase/troubleshoot-hbase-performance-issues.md
@@ -680,7 +680,7 @@
               href: ./interactive-query/apache-hive-migrate-workloads.md
             - name: Apache Hive クエリの最適化
               href: ./hdinsight-hadoop-optimize-hive-query.md
-        - name: '[トラブルシューティング]'
+        - name: トラブルシューティング
           items:
             - name: Apache Hive の設定によるメモリ不足エラーの解決
               href: ./hdinsight-hadoop-hive-out-of-memory-error-oom.md
@@ -786,7 +786,7 @@
           items:
             - name: トポロジの監視
               href: ./storm/apache-storm-deploy-monitor-topology-linux.md
-        - name: '[トラブルシューティング]'
+        - name: トラブルシューティング
           items:
             - name: Apache STORM のトラブルシューティング
               href: ./storm/apache-troubleshoot-storm.md
@@ -848,7 +848,7 @@
           href: ./domain-joined/ssh-domain-accounts.md
         - name: データのセキュリティ保護
           href: ./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
-        - name: '[トラブルシューティング]'
+        - name: トラブルシューティング
           items:
             - name: ESP 認証の問題
               href: ./domain-joined/domain-joined-authentication-issues.md
