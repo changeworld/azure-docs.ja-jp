@@ -43,7 +43,7 @@ landingContent:
       url: hpc-cache-namespace.md
     - text: データをストレージ ターゲットに移動する (必要な場合)
       url: hpc-cache-ingest.md
-- title: '[トラブルシューティング]'
+- title: トラブルシューティング
   linkLists:
   - linkListType: how-to-guide
     links:
