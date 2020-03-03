@@ -123,5 +123,5 @@
       href: update-linux-agent.md
     - name: 拡張機能のエクスポート
       href: export-templates.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       href: troubleshoot.md
