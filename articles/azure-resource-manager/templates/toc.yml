@@ -107,7 +107,7 @@
           href: template-expressions.md
         - name: パラメーター
           href: template-parameters.md
-        - name: '変数:'
+        - name: 変数
           href: template-variables.md
         - name: ユーザー定義関数
           href: template-user-defined-functions.md
@@ -139,7 +139,7 @@
             - name: Properties
               displayName: 'iteration,copy'
               href: copy-properties.md
-            - name: '変数:'
+            - name: 変数
               displayName: 'iteration,copy'
               href: copy-variables.md
             - name: 出力
