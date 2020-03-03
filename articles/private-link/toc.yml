@@ -36,7 +36,7 @@
       href: disable-private-link-service-network-policy.md
     - name: プライベート エンドポイントを管理する
       href: manage-private-endpoint.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: プライベート エンドポイントの接続に関する問題のトラブルシューティング
           href: troubleshoot-private-endpoint-connectivity.md
