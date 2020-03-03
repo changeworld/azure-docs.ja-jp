@@ -204,7 +204,7 @@
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
     - name: パケット キャプチャの構成
       href: packet-capture.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       href: vpn-gateway-troubleshoot.md
       items:
         - name: コミュニティで推奨される VPN またはファイアウォール デバイスの設定
