@@ -543,7 +543,7 @@
               href: ../linux/image-builder-user-assigned-identity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: テンプレート リファレンス
               href: ../linux/image-builder-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: '[トラブルシューティング]'
+            - name: トラブルシューティング
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: イメージを検索および使用する
           href: cli-ps-findimage.md
@@ -712,7 +712,7 @@
               href: aws-to-azure.md
             - name: Azure Site Recovery を使用する
               href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-- name: '[トラブルシューティング]'
+- name: トラブルシューティング
   href: ../troubleshooting/index.yml
 - name: リファレンス
   items:
