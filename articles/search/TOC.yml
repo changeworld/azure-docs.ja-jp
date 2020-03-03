@@ -257,7 +257,7 @@
           href: search-query-understand-collection-filters.md
         - name: 多層構造ファセットの例
           href: search-example-adventureworks-multilevel-faceting.md
-    - name: '[結果]'
+    - name: 結果
       items:
         - name: ページ関連の機能
           href: search-pagination-page-layout.md
@@ -335,7 +335,7 @@
           href: search-monitor-queries.md
         - name: 検索トラフィックの分析
           href: search-traffic-analytics.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: インデクサーの問題
           href: search-indexer-troubleshooting.md
