@@ -149,7 +149,7 @@
           items:
             - name: パフォーマンス チューニング ガイダンス
               href: performance-tuning-ordered-CCI.md
-            - name: '[テーブルの作成]'
+            - name: テーブルの作成
               href: /sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
             - name: CTAS
               href: /sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
@@ -183,7 +183,7 @@
               href: sql-data-warehouse-tables-index.md
             - name: ID
               href: sql-data-warehouse-tables-identity.md
-            - name: '[メジャー グループ]'
+            - name: メジャー グループ
               href: sql-data-warehouse-tables-partition.md
             - name: レプリケート テーブル
               href: design-guidance-for-replicated-tables.md
@@ -243,7 +243,7 @@
           href: backup-and-restore.md
         - name: Recommendations
           href: sql-data-warehouse-concept-recommendations.md
-        - name: '[トラブルシューティング]'
+        - name: トラブルシューティング
           href: sql-data-warehouse-troubleshoot.md
     - name: メンテナンス スケジュール
       href: maintenance-scheduling.md
@@ -353,7 +353,7 @@
           items:
             - name: Power BI による視覚化
               href: sql-data-warehouse-get-started-visualize-with-power-bi.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: 接続
           href: sql-data-warehouse-troubleshoot-connectivity.md
