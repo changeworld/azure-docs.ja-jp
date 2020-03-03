@@ -175,7 +175,7 @@
           href: howto-mfaserver-deploy-upgrade.md
         - name: PhoneFactor からアップグレードする
           href: howto-mfaserver-deploy-upgrade-pf.md
-        - name: '[Windows 認証]'
+        - name: Windows 認証
           href: howto-mfaserver-windows.md
         - name: IIS Web アプリ
           href: howto-mfaserver-iis.md
@@ -201,7 +201,7 @@
               href: howto-mfaserver-nps-vpn.md
             - name: NPS 拡張機能のエラー
               href: howto-mfa-nps-extension-errors.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: SSPR のトラブルシューティング
           href: active-directory-passwords-troubleshoot.md
