@@ -337,7 +337,7 @@
           items:
             - name: Istio について
               href: servicemesh-istio-about.md
-            - name: '[インストールと構成]'
+            - name: インストールと構成
               href: servicemesh-istio-install.md
             - name: シナリオ - インテリジェントなルーティングとカナリア リリース
               href: servicemesh-istio-scenario-routing.md
@@ -345,13 +345,13 @@
           items:
             - name: Linkerd について
               href: servicemesh-linkerd-about.md
-            - name: '[インストールと構成]'
+            - name: インストールと構成
               href: servicemesh-linkerd-install.md
         - name: Consul の使用
           items:
             - name: Consul について
               href: servicemesh-consul-about.md
-            - name: '[インストールと構成]'
+            - name: インストールと構成
               href: servicemesh-consul-install.md
     - name: DevOps
       items:
@@ -367,7 +367,7 @@
           href: deployment-center-launcher.md
         - name: Kubernetes 向けの GitHub Actions
           href: ../aks/kubernetes-action.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: 一般的な問題
           href: troubleshooting.md
