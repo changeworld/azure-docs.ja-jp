@@ -481,9 +481,9 @@ public HttpResponseMessage<String> HttpTrigger(
 
 |function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
-| **type** | 300| 必須 - `httpTrigger` に設定する必要があります。 |
-| **direction** | 300| 必須 - `in` に設定する必要があります。 |
-| **name** | 300| 必須 - 要求または要求本文の関数コードで使用される変数名。 |
+| **type** | n/a| 必須 - `httpTrigger` に設定する必要があります。 |
+| **direction** | n/a| 必須 - `in` に設定する必要があります。 |
+| **name** | n/a| 必須 - 要求または要求本文の関数コードで使用される変数名。 |
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |関数を呼び出すために、要求にどのキーが存在する必要があるかを決定します。 承認レベルは、次のいずれかの値になります。 <ul><li><code>anonymous</code>&mdash;API キーは必要ありません。</li><li><code>function</code>&mdash;関数固有の API キーが必要です。 何も指定されなかった場合は、これが既定値になります。</li><li><code>admin</code>&mdash;マスター キーが必要です。</li></ul> 詳しくは、[承認キー](#authorization-keys)に関するセクションをご覧ください。 |
 | **methods** |**メソッド** | 関数が応答する HTTP メソッドの配列。 指定しない場合、関数はすべての HTTP メソッドに応答します。 「[HTTP エンドポイントのカスタマイズ](#customize-the-http-endpoint)」をご覧ください。 |
 | **route** | **Route** | 関数がどの要求 URL に応答するかを制御するルート テンプレートを定義します。 何も指定しなかった場合の既定値は `<functionname>` です。 詳しくは、「[HTTP エンドポイントのカスタマイズ](#customize-the-http-endpoint)」をご覧ください。 |

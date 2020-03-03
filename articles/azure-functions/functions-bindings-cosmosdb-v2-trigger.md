@@ -218,9 +218,9 @@ Python コードを次に示します。
 
 |function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
-|**type** | 300 | `cosmosDBTrigger` に設定する必要があります。 |
-|**direction** | 300 | `in` に設定する必要があります。 このパラメーターは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
-|**name** | 300 | 変更されるドキュメントの一覧を表す、関数コードで使用する変数の名前。 |
+|**type** | n/a | `cosmosDBTrigger` に設定する必要があります。 |
+|**direction** | n/a | `in` に設定する必要があります。 このパラメーターは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
+|**name** | n/a | 変更されるドキュメントの一覧を表す、関数コードで使用する変数の名前。 |
 |**connectionStringSetting**|**ConnectionStringSetting** | 監視されている Azure Cosmos DB アカウントに接続するために使用される接続文字列を含めたアプリ設定の名前。 |
 |**databaseName**|**DatabaseName**  | 監視されているコレクションを使用する Azure Cosmos DB データベースの名前。 |
 |**collectionName** |**CollectionName** | 監視されているコレクションの名前。 |
