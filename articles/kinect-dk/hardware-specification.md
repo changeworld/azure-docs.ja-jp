@@ -27,7 +27,7 @@ ms.locfileid: "77619960"
 
 ![Azure Kinect DK](./media/resources/hardware-specs-media/device-wire.png)
 
-## <a name="terms"></a>Terms
+## <a name="terms"></a>用語
 
 この記事全体で、以下の略語が使用されています。
 
@@ -42,7 +42,7 @@ ms.locfileid: "77619960"
 
 Azure Kinect デバイスのサイズと重量は次のとおりです。
 
-- **Dimensions**: 103 x 39 x 126 mm
+- **寸法**: 103 x 39 x 126 mm
 - **重み**:440 g
 
 ![Azure Kinect DK の寸法](./media/resources/hardware-specs-media/dimensions.png)
@@ -51,7 +51,7 @@ Azure Kinect デバイスのサイズと重量は次のとおりです。
 
 Azure Kinect DK は、次の環境条件下で活動する開発者および営利企業を対象としています。
 
-- **Temperature**:10 から 25°C
+- **温度**:10 から 25°C
 - **湿度**: 8 から 90% の相対湿度 (結露がないこと)
 
 > [!NOTE]
@@ -63,7 +63,7 @@ Azure Kinect DK は、次の環境条件下で活動する開発者および営�
 
 Azure Kinect DK には、Microsoft が設計した 1 メガピクセルの ToF (Time-of-Flight) 深度カメラが内蔵されています。これには、[ISSCC 2018 で発表された画像センサー](https://docs.microsoft.com/windows/mixed-reality/ISSCC-2018)が使用されています。 この深度カメラは、以下に示すモードをサポートしています。
 
- | モード            | 解決策 | FoI       | FPS                | 動作範囲* | 露出時間 |
+ | モード            | 解像度 | FoI       | FPS                | 動作範囲* | 露出時間 |
 |-----------------|------------|-----------|--------------------|------------------|---------------|
 | NFOV Unbinned   | 640 x 576    | 75° x 65°   | 0、5、15、30       | 0.5 から 3.86 m       | 12.8 ミリ秒        |
 | NFOV 2x2 Binned (SW) | 320 x 288    | 75° x 65°   | 0、5、15、30       | 0.5 から 5.46 m       | 12.8 ミリ秒        |

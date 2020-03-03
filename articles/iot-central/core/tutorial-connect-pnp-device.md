@@ -99,7 +99,7 @@ VS Code で Azure IoT Tools 拡張機能パックをインストールするに�
     dps-keygen -di:mxchip-001 -mk:{Primary Key from previous step}
     ```
 
-    生成された_デバイス キー_をメモしておきます。この値は、このチュートリアルの後の手順で使用します。
+    生成された _デバイス キー_ をメモしておきます。この値は、このチュートリアルの後の手順で使用します。
 
 ## <a name="download-your-model"></a>ご利用のモデルのダウンロード
 
