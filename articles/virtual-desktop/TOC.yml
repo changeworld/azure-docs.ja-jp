@@ -106,7 +106,7 @@
       href: windows-10-multisession-faq.md
     - name: データの場所
       href: data-locations.md
-- name: '[トラブルシューティング]'
+- name: トラブルシューティング
   items:
     - name: トラブルシューティングの概要、フィードバック、サポート
       href: troubleshoot-set-up-overview.md
