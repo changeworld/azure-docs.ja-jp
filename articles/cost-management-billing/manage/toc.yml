@@ -101,7 +101,7 @@
           href: ea-portal-vm-reservations.md
         - name: Azure EA Portal のアクセスのトラブルシューティング
           href: ea-portal-troubleshoot.md
-- name: '[トラブルシューティング]'
+- name: トラブルシューティング
   items:
     - name: サブスクリプションが見つからない
       href: no-subscriptions-found.md
