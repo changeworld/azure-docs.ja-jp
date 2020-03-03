@@ -130,26 +130,26 @@
               href: ../lsv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: パフォーマンスを最適化する
               href: storage-performance.md
-        - name: 高速コンピューティング
+        - name: GPU - 高速コンピューティング
           items:
-            - name: GPU 最適化
-              items:
-                - name: 概要
-                  href: ../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-                - name: NC シリーズ
-                  href: ../nc-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-                - name: NCv2 シリーズ
-                  href: ../ncv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-                - name: NCv3 シリーズ
-                  href: ../ncv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-                - name: ND シリーズ
-                  href: ../nd-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-                - name: NDv2 シリーズ
-                  href: ../ndv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-                - name: NV シリーズ
-                  href: ../nv-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-                - name: NVv3 シリーズ
-                  href: ../nvv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: 概要
+              href: ../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NC シリーズ
+              href: ../nc-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NCv2 シリーズ
+              href: ../ncv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NCv3 シリーズ
+              href: ../ncv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: ND シリーズ
+              href: ../nd-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NDv2 シリーズ
+              href: ../ndv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NV シリーズ
+              href: ../nv-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NVv3 シリーズ
+              href: ../nvv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NVv4 シリーズ
+              href: ../nvv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: GPU ドライバーの設定
               href: n-series-driver-setup.md
         - name: ハイ パフォーマンス コンピューティング
@@ -169,6 +169,8 @@
           items:
             - name: VM の前払い
               href: prepay-reserved-vm-instances.md
+            - name: 専用ホストの前払い
+              href: ../prepay-dedicated-hosts-reserved-instances.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Azure の予約とは
               href: ../../billing/billing-save-compute-costs-reservations.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: VM インスタンス サイズの柔軟性
@@ -276,7 +278,7 @@
       items:
         - name: 2023 年 3 月 1 日以降の提供終了
           href: ../classic-vm-deprecation.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-        - name: 概要
+        - name: 移行の概要
           href: migration-classic-resource-manager-overview.md
         - name: 移行の詳細
           href: migration-classic-resource-manager-deep-dive.md
@@ -310,6 +312,8 @@
               href: disk-encryption-key-vault.md
             - name: ディスク暗号化のサンプル スクリプト
               href: disk-encryption-sample-scripts.md
+            - name: 分離されたネットワークでのディスク暗号化
+              href: disk-encryption-isolated-network.md
             - name: ディスク暗号化のトラブルシューティング
               href: disk-encryption-troubleshooting.md
             - name: ディスク暗号化の FAQ
@@ -464,7 +468,7 @@
               href: image-builder-gallery.md
             - name: 既存のイメージの更新
               href: image-builder-gallery-update-image-version.md
-            - name: トラブルシューティング
+            - name: '[トラブルシューティング]'
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: イメージを検索および使用する
           href: cli-ps-findimage.md
@@ -516,7 +520,7 @@
       items:
         - name: Ansible
           items:
-            - name: インストールと構成
+            - name: '[インストールと構成]'
               href: ansible-install-configure.md
             - name: Linux VM の作成
               href: ansible-create-vm.md
@@ -524,7 +528,7 @@
               href: ansible-manage-linux-vm.md
         - name: Terraform
           items:
-            - name: インストールと構成
+            - name: '[インストールと構成]'
               href: ../../terraform/terraform-install-configure.md
             - name: 完全な VM の作成
               href: ../../terraform/terraform-create-complete-vm.md
@@ -771,5 +775,5 @@
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'
     - name: よく寄せられる質問
       href: faq.md
-- name: トラブルシューティング
+- name: '[トラブルシューティング]'
   href: ../troubleshooting/index.yml

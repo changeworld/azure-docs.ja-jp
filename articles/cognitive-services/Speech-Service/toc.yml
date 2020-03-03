@@ -133,7 +133,7 @@
       items:
         - name: 責任のあるデプロイ
           items:
-            - name: カスタム音声のゲーティング
+            - name: Custom Voice のゲーティング
               href: concepts-gating-overview.md
             - name: 合成テクノロジのデプロイ
               href: concepts-guidelines-responsible-deployment-synthetic.md
@@ -145,14 +145,14 @@
               href: concepts-disclosure-patterns.md
             - name: 倫理規定
               href: 'https://aka.ms/custom-neural-code-of-conduct'
-        - name: カスタム音声ポータル
+        - name: Custom Voice ポータル
           items:
             - name: Custom Voice の概要
               href: how-to-custom-voice.md
               displayName: 'custom voice, neural voice'
             - name: データを準備する
               href: how-to-custom-voice-prepare-data.md
-            - name: カスタム音声モデルを作成して使用する
+            - name: Custom Voice モデルを作成して使用する
               href: how-to-custom-voice-create-voice.md
             - name: 音声サンプルを録音する
               href: record-custom-voice-samples.md
@@ -193,6 +193,10 @@
           items:
             - name: Text to Speech REST API
               href: rest-text-to-speech.md
+        - name: 音素セットの使用
+          items:
+            - name: Speech API (SAPI) の音素セットの使用
+              href: sapi-phoneset-usage.md
     - name: リソース
       items:
         - name: 音声テキスト変換のよくあるご質問
@@ -377,7 +381,7 @@
               href: quickstart-custom-speech-commands-create-new.md
             - name: パラメーターを使用してカスタム コマンドを作成する (プレビュー)
               href: quickstart-custom-speech-commands-create-parameters.md
-            - name: カスタム音声でカスタム コマンドを使用する (プレビュー)
+            - name: Custom Voice でカスタム コマンドを使用する (プレビュー)
               href: quickstart-custom-speech-commands-select-custom-voice.md
             - name: Speech SDK でカスタム コマンドを使用する (プレビュー)
               href: quickstart-custom-speech-commands-speech-sdk.md
