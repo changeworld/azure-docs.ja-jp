@@ -241,7 +241,7 @@
           items:
             - name: メトリックに基づいたアラートの作成
               href: howto-alert-on-metric.md
-        - name: '[トラブルシューティング]'
+        - name: トラブルシューティング
           items:
             - name: 接続エラーのトラブルシューティング
               href: howto-troubleshoot-common-connection-issues.md
@@ -295,7 +295,7 @@
           items:
             - name: メトリックに基づいたアラートの作成
               href: howto-hyperscale-alert-on-metric.md
-        - name: '[トラブルシューティング]'
+        - name: トラブルシューティング
           items:
             - name: 接続エラーのトラブルシューティング
               href: howto-hyperscale-troubleshoot-common-connection-issues.md
