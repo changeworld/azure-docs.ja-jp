@@ -116,7 +116,7 @@
           href: regional-presence.md
         - name: トランザクションと分析のストレージ
           href: globally-distributed-transactional-analytical-storage.md
-    - name: '[パーティション分割]'
+    - name: パーティション分割
       items:
         - name: 概要
           href: partitioning-overview.md
@@ -282,7 +282,7 @@
                     - name: RAND
                       displayName: 'RAND, random, built-in functions'
                       href: sql-query-rand.md
-                    - name: '[ROUND]'
+                    - name: ROUND
                       displayName: 'ROUND, built-in functions'
                       href: sql-query-round.md
                     - name: SIGN
@@ -346,13 +346,13 @@
                     - name: LENGTH
                       displayName: 'LENGTH, built-in functions'
                       href: sql-query-length.md
-                    - name: '[LOWER]'
+                    - name: LOWER
                       displayName: 'LOWER, built-in functions'
                       href: sql-query-lower.md
-                    - name: '[LTRIM]'
+                    - name: LTRIM
                       displayName: 'LTRIM, left trim, built-in functions'
                       href: sql-query-ltrim.md
-                    - name: '[REPLACE]'
+                    - name: REPLACE
                       displayName: 'REPLACE, built-in functions'
                       href: sql-query-replace.md
                     - name: REPLICATE
@@ -364,7 +364,7 @@
                     - name: RIGHT
                       displayName: 'RIGHT, built-in functions'
                       href: sql-query-right.md
-                    - name: '[RTRIM]'
+                    - name: RTRIM
                       displayName: 'RTRIM, right trim, built-in functions'
                       href: sql-query-rtrim.md
                     - name: STARTSWITH
@@ -385,7 +385,7 @@
                     - name: StringToObject
                       displayName: 'StringToObject, string to object, built-in functions'
                       href: sql-query-stringtoobject.md
-                    - name: '[SUBSTRING]'
+                    - name: SUBSTRING
                       displayName: 'SUBSTRING, built-in functions'
                       href: sql-query-substring.md
                     - name: ToString
@@ -394,7 +394,7 @@
                     - name: TRIM
                       displayName: 'TRIM, built-in functions'
                       href: sql-query-trim.md
-                    - name: '[UPPER]'
+                    - name: UPPER
                       displayName: 'UPPER, built-in functions'
                       href: sql-query-upper.md
                 - name: 型チェック関数
@@ -935,7 +935,7 @@
               href: performance-testing.md
         - name: コスト効率の優れた読み取りと書き込み
           href: key-value-store-cost.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: クエリ パフォーマンスのトラブルシューティング
           href: troubleshoot-query-performance.md
