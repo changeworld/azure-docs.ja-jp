@@ -1,7 +1,7 @@
 ---
 title: Shaper コグニティブ スキル
 titleSuffix: Azure Cognitive Search
-description: 非構造化データからメタデータと構造化された情報を抽出し、Azure コグニティブ検索の AI エンリッチメント パイプライン内で複合型としてシェイプします。
+description: 非構造化データからメタデータと構造化された情報を抽出し、Azure Cognitive Search の AI エンリッチメント パイプライン内で複合型としてシェイプします。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -109,7 +109,7 @@ Microsoft.Skills.Util.ShaperSkill
 
 ### <a name="skill-output"></a>スキルの出力
 
-**Shaper** スキルにより、*text* と *sentiment* の要素が組み合わせられている *analyzedText* という名前の新しい要素が生成されます。 この出力は、インデックス スキーマに準拠します。 Azure コグニティブ検索のインデックスにインポートされ、インデックスが作成されます。
+**Shaper** スキルにより、*text* と *sentiment* の要素が組み合わせられている *analyzedText* という名前の新しい要素が生成されます。 この出力は、インデックス スキーマに準拠します。 Azure Cognitive Search のインデックスにインポートされ、インデックスが作成されます。
 
 ```json
 {
