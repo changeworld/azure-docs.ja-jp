@@ -475,7 +475,7 @@ Free レベルを使用している場合は、次のメッセージが表示さ
    cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2019-05-06
    ```
 
-これらのクエリは、コグニティブ検索によって作成された新しいフィールドでクエリ構文やフィルターを操作するいくつかの方法を示しています。その他のクエリの例については、[Search Documents REST API の例](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples)、[単純構文クエリの例](search-query-simple-examples.md)、および[完全な Lucene クエリの例](search-query-lucene-examples.md)に関するページを参照してください。
+これらのクエリは、Cognitive Search によって作成された新しいフィールドでクエリ構文やフィルターを操作するいくつかの方法を示しています。その他のクエリの例については、[Search Documents REST API の例](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples)、[単純構文クエリの例](search-query-simple-examples.md)、および[完全な Lucene クエリの例](search-query-lucene-examples.md)に関するページを参照してください。
 
 <a name="reset"></a>
 
