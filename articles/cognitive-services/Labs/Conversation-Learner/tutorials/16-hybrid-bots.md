@@ -27,7 +27,7 @@ ms.locfileid: "68703669"
 [![ハイブリッド ボットのチュートリアルのプレビュー](https://aka.ms/cl_Tutorial_v3_Hybrid_Applications_Preview)](https://aka.ms/cl_Tutorial_v3_Hybrid_Applications)
 
 ## <a name="requirements"></a>必要条件
-このチュートリアルでは、[Log Dialog]\(会話記録\) の Web UI ではなく、ボット エミュレーターを使用して会話記録を作成する必要があります。 Bot Framework Emulator のセットアップについて詳しくは、[こちら](https://docs.microsoft.com/azure/bot-service/bot-service-debug-emulator?view=azure-bot-service-4.0)をご覧ください。 
+このチュートリアルでは、[Log Dialog]\(会話記録\) の Web UI ではなく、Bot Framework Emulator を使用して会話記録を作成する必要があります。 Bot Framework Emulator のセットアップについて詳しくは、[こちら](https://docs.microsoft.com/azure/bot-service/bot-service-debug-emulator?view=azure-bot-service-4.0)をご覧ください。 
 
 このチュートリアルでは、hybrid tutorial ボットが実行されている必要があります。
 
