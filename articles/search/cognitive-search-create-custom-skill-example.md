@@ -1,7 +1,7 @@
 ---
 title: Bing Entity Search API を使用したカスタム スキルの例
 titleSuffix: Azure Cognitive Search
-description: Azure コグニティブ検索の AI で強化されたインデックス作成パイプラインにマッピングされたカスタム スキルで、Bing Entity Search サービスを使用する方法を紹介します。
+description: Azure Cognitive Search の AI で強化されたインデックス作成パイプラインにマッピングされたカスタム スキルで、Bing Entity Search サービスを使用する方法を紹介します。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
