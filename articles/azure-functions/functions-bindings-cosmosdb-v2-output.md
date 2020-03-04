@@ -565,9 +565,9 @@ public String cosmosDbQueryById(
 
 |function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
-|**type**     | n/a | `cosmosDB` に設定する必要があります。        |
-|**direction**     | n/a | `out` に設定する必要があります。         |
-|**name**     | n/a | 関数のドキュメントを表すバインド パラメーターの名前。  |
+|**type**     | 該当なし | `cosmosDB` に設定する必要があります。        |
+|**direction**     | 該当なし | `out` に設定する必要があります。         |
+|**name**     | 該当なし | 関数のドキュメントを表すバインド パラメーターの名前。  |
 |**databaseName** | **DatabaseName**|ドキュメントが作成されたコレクションを含むデータベース。     |
 |**collectionName** |**CollectionName**  | ドキュメントが作成されたコレクションの名前。 |
 |**createIfNotExists**  |**CreateIfNotExists**    | コレクションが存在しないときに作成するかどうかを示すブール値。 既定値は *false* です。新しいコレクションは予約済みのスループットで作成され、これが価格に影響を及ぼすためです。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。  |
@@ -615,7 +615,7 @@ public String cosmosDbQueryById(
 |---------|---------|---------|
 |GatewayMode|Gateway|Azure Cosmos DB サービスに接続する際に関数で使用される接続モード。 オプションは `Direct` と `Gateway` です|
 |Protocol|Https|Azure Cosmos DB サービスに接続する際に関数で使用される接続プロトコル。  両方のモードの説明については[こちら](../cosmos-db/performance-tips.md#networking)を参照してください|
-|leasePrefix|n/a|アプリ内のすべての関数で使用するプレフィックスをリースします。|
+|leasePrefix|該当なし|アプリ内のすべての関数で使用するプレフィックスをリースします。|
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -229,9 +229,9 @@ public void run( ExecutionContext context) {
 
 |function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
-| **type** | n/a| 必須 - `warmupTrigger` に設定する必要があります。 |
-| **direction** | n/a| 必須 - `in` に設定する必要があります。 |
-| **name** | n/a| 必須 - 関数コードで使用される変数名。|
+| **type** | 該当なし| 必須 - `warmupTrigger` に設定する必要があります。 |
+| **direction** | 該当なし| 必須 - `in` に設定する必要があります。 |
+| **name** | 該当なし| 必須 - 関数コードで使用される変数名。|
 
 ## <a name="trigger---usage"></a>トリガー - 使用方法
 

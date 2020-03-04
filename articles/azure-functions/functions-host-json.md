@@ -145,15 +145,15 @@ ms.locfileid: "77605125"
 
 | プロパティ | Default | 説明 |
 | --------- | --------- | --------- | 
-| samplingSettings | n/a | 「[applicationInsights.samplingSettings](#applicationinsightssamplingsettings)」を参照してください。 |
+| samplingSettings | 該当なし | 「[applicationInsights.samplingSettings](#applicationinsightssamplingsettings)」を参照してください。 |
 | samplingExcludedTypes | null | サンプリングしない型をセミコロンで区切ったリスト。 認識される型は、Dependency、Event、Exception、PageView、Request、Trace です。 指定された型のすべてのインスタンスが転送されます。指定されていない型はサンプリングされます。 |
 | samplingIncludedTypes | null | サンプリングする型をセミコロンで区切ったリスト。空のリストはすべての型を意味します。 `samplingExcludedTypes` にリストされた型は、ここにリストされた型をオーバーライドします。 認識される型は、Dependency、Event、Exception、PageView、Request、Trace です。 指定された型のすべてのインスタンスが転送されます。指定されていない型はサンプリングされます。 |
 | enableLiveMetrics | true | ライブ メトリックの収集を有効にします。 |
 | enableDependencyTracking | true | 依存関係の追跡を有効にします。 |
 | enablePerformanceCountersCollection | true | Kudu パフォーマンス カウンターの収集を有効にします。 |
 | liveMetricsInitializationDelay | 00:00:15 | 内部使用専用です。 |
-| httpAutoCollectionOptions | n/a | 「[applicationInsights.httpAutoCollectionOptions](#applicationinsightshttpautocollectionoptions)」を参照してください。 |
-| snapshotConfiguration | n/a | 「[applicationInsights.snapshotConfiguration](#applicationinsightssnapshotconfiguration)」を参照してください。 |
+| httpAutoCollectionOptions | 該当なし | 「[applicationInsights.httpAutoCollectionOptions](#applicationinsightshttpautocollectionoptions)」を参照してください。 |
+| snapshotConfiguration | 該当なし | 「[applicationInsights.snapshotConfiguration](#applicationinsightssnapshotconfiguration)」を参照してください。 |
 
 ### <a name="applicationinsightssamplingsettings"></a>applicationInsights.samplingSettings
 
@@ -303,9 +303,9 @@ Application Insights など、関数アプリのログの動作を制御しま�
 |プロパティ  |Default | 説明 |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|どのレベルでファイルのログ記録を有効にするかを定義します。  オプションは、`never`、`always`、`debugOnly` です。 |
-|logLevel|n/a|アプリ内の関数に対するログ カテゴリのフィルター処理を定義するオブジェクト。 バージョン 2.x 以降のログ カテゴリのフィルター処理は、ASP.NET Core のレイアウトに従います。 この設定により、特定の関数についてログをフィルター処理できます。 詳しくは、ASP.NET Core のドキュメントの「[ログのフィルター処理](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)」をご覧ください。 |
-|console|n/a| [console](#console) ログ記録の設定。 |
-|applicationInsights|n/a| [applicationInsights](#applicationinsights) の設定。 |
+|logLevel|該当なし|アプリ内の関数に対するログ カテゴリのフィルター処理を定義するオブジェクト。 バージョン 2.x 以降のログ カテゴリのフィルター処理は、ASP.NET Core のレイアウトに従います。 この設定により、特定の関数についてログをフィルター処理できます。 詳しくは、ASP.NET Core のドキュメントの「[ログのフィルター処理](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)」をご覧ください。 |
+|console|該当なし| [console](#console) ログ記録の設定。 |
+|applicationInsights|該当なし| [applicationInsights](#applicationinsights) の設定。 |
 
 ## <a name="console"></a>console
 
@@ -373,7 +373,7 @@ Application Insights など、関数アプリのログの動作を制御しま�
 |listenerLockPeriod|00:01:00|リスナーのロックの取得期間。| 
 |listenerLockRecoveryPollingInterval|00:01:00|スタートアップ時にリスナーのロックを獲得できなかった場合に、リスナーのロックの回復に使用される時間間隔。| 
 |lockAcquisitionTimeout|00:01:00|ランタイムがロックの獲得を試行する最長時間。| 
-|lockAcquisitionPollingInterval|n/a|ロックの獲得の試行間隔。| 
+|lockAcquisitionPollingInterval|該当なし|ロックの獲得の試行間隔。| 
 
 ## <a name="version"></a>version
 
