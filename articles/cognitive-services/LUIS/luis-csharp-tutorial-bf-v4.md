@@ -24,7 +24,7 @@ C# を使用して、Language Understanding (LUIS) と統合されたチャッ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* [ボット エミュレーター](https://aka.ms/abs/build/emulatordownload)
+* [Bot emulator](https://aka.ms/abs/build/emulatordownload)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)
 
 
