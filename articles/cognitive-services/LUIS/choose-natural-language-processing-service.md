@@ -89,5 +89,5 @@ QnA Maker のナレッジ ベースを構築しているのに、対象ドメイ
 * [Dispatch CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
 * [Bot Framework のサンプル](https://github.com/Microsoft/BotBuilder-Samples)
 * [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
-* [Azure ボット エミュレーター](https://github.com/Microsoft/BotFramework-Emulator)
+* [Azure Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator)
 * [Bot Framework Web チャット](https://github.com/microsoft/BotFramework-WebChat)
