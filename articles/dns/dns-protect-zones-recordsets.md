@@ -2,37 +2,39 @@
 title: DNS ゾーンとレコードを保護する - Azure DNS
 description: このラーニング パスでは、Microsoft Azure DNS で DNS ゾーンとレコード セットの保護を始めます。
 services: dns
-author: rohinkoul
+author: asudbring
 ms.service: dns
 ms.topic: article
-ms.date: 12/4/2018
-ms.author: rohink
-ms.openlocfilehash: 549090f04f4969b00dc1c8ee8d5cc70a50523ca8
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.date: 2/20/2020
+ms.author: allensu
+ms.openlocfilehash: 72c0278c6f13d641b12b205cd8ca0a2f158a454f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983828"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614400"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS ゾーンとレコードを保護する方法
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-DNS ゾーンと DNS レコードは、重要なリソースです。 DNS ゾーンはもちろんのこと、DNS レコードが 1 つ削除されただけで、サービス全体が停止する可能性があります。  そのため、DNS ゾーンと DNS レコードは、承認されていない変更や意図しない変更が加えられないように保護する必要があります。
+DNS ゾーンと DNS レコードは、重要なリソースです。 DNS ゾーンまたは DNS レコードを削除すると、サービス全体が停止する可能性があります。 DNS ゾーンとレコードは、承認されていない変更や意図しない変更が加えられないように保護することが重要です。
 
-この記事では、Azure DNS でこのような変更から DNS ゾーンおよび DNS レコードを保護する方法について説明します。  Azure Resource Manager によって提供される 2 つの強力なセキュリティ機能、[ロールベースのアクセス制御](../role-based-access-control/overview.md)と[リソース ロック](../azure-resource-manager/management/lock-resources.md)を使用します。
+この記事では、Azure DNS でプライベート DNS ゾーンとレコードをこのような変更から保護する方法について説明します。  Azure Resource Manager によって提供される 2 つの強力なセキュリティ機能 ([ロールベースのアクセス制御](../role-based-access-control/overview.md)および[リソース ロック](../azure-resource-manager/management/lock-resources.md)) を適用します。
 
 ## <a name="role-based-access-control"></a>ロールベースのアクセス制御
 
-Azure のロールベースのアクセス制御 (RBAC) では、Azure ユーザー、グループ、およびリソースのアクセス権を詳細に管理できます。 RBAC を使用すると、職務に必要な範囲のアクセス権をユーザーに的確に付与することができます。 RBAC を使用したアクセス管理の詳細については、[ロールベースのアクセス制御の概要](../role-based-access-control/overview.md)に関するページを参照してください。
+Azure のロールベースのアクセス制御 (RBAC) では、Azure ユーザー、グループ、およびリソースのアクセス権を詳細に管理できます。 RBAC を使用すると、ユーザーが必要とするアクセス レベルを付与することができます。 RBAC を使用したアクセス管理の詳細については、[ロールベースのアクセス制御の概要](../role-based-access-control/overview.md)に関するページを参照してください。
 
 ### <a name="the-dns-zone-contributor-role"></a>DNS ゾーン共同作成者ロール
 
-DNS ゾーン共同作成者ロールは、Azure に用意されている DNS リソース管理用の組み込みロールです。  DNS ゾーン共同作成者アクセス許可を割り当てられたユーザーまたはグループは、DNS リソースを管理することができます。他のタイプのリソースは管理できません。
+DNS ゾーンの共同作成者ロールは、プライベート DNS リソースの管理用の組み込みロールです。 このロールをユーザーまたはグループに適用すると、ユーザーまたはグループは DNS リソースを管理できるようになります。
 
-たとえば、リソース グループ *myzones* に Contoso Corporation の 5 つのゾーンが含まれているとします。 このリソース グループに対する DNS ゾーン共同作成者アクセス許可を DNS 管理者に付与すると、管理者はこれらの DNS ゾーンを完全に制御できるようになります。 DNS 管理者が仮想マシンの作成や停止などを実行できないように、必要のないアクセス許可は付与しないようにしてください。
+リソース グループ *myResourceGroup* には、Contoso Corporation の 5 つのゾーンが含まれています。 このリソース グループに対する DNS ゾーン共同作成者アクセス許可を DNS 管理者に付与すると、管理者はこれらの DNS ゾーンを完全に制御できるようになります。 これは、不要なアクセス許可の付与を防ぐことができます。 DNS 管理者は、仮想マシンを作成または停止することはできません。
 
-RBAC アクセス許可の割り当ては、[Azure Portal](../role-based-access-control/role-assignments-portal.md) を使用すると最も簡単に行うことができます。  リソース グループの **[アクセス制御 (IAM)]** を開き、 **[追加]** 、 **[DNS Zone Contributor (DNS ゾーン共同作成者)]** ロールの順に選択し、アクセス許可の付与が必要なユーザーまたはグループを選択します。
+RBAC アクセス許可の割り当ては、[Azure Portal](../role-based-access-control/role-assignments-portal.md) を使用すると最も簡単に行うことができます。  
+
+リソース グループの **[アクセス制御 (IAM)]** を開き、 **[追加]** を選択して、 **[DNS Zone Contributor\(DNS ゾーン共同作成者\)]** ロールを選択します。 アクセス許可を付与する必要があるユーザーまたはグループを選択します。
 
 ![Azure Portal を使用したリソース グループ レベルの RBAC](./media/dns-protect-zones-recordsets/rbac1.png)
 
@@ -40,23 +42,32 @@ RBAC アクセス許可の割り当ては、[Azure Portal](../role-based-access-
 
 ```azurepowershell
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
-New-AzRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>"
+
+$usr = "<user email address>"
+$rol = "DNS Zone Contributor"
+$rsg = "<resource group name>"
+
+New-AzRoleAssignment -SignInName $usr -RoleDefinitionName $rol -ResourceGroupName $rsg
 ```
 
 また、同じ目的を果たせるコマンドを [Azure CLI から実行する](../role-based-access-control/role-assignments-cli.md)こともできます。
 
 ```azurecli
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
-azure role assignment create --signInName "<user email address>" --roleName "DNS Zone Contributor" --resourceGroup "<resource group name>"
+
+az role assignment create \
+--assignee "<user email address>" \
+--role "DNS Zone Contributor" \
+--resource-group "<resource group name>"
 ```
 
 ### <a name="zone-level-rbac"></a>ゾーン レベルの RBAC
 
-Azure RBAC のルールは、サブスクリプション、リソース グループ、または個々のリソースに適用できます。 Azure DNS の場合、このリソースとは、個々の DNS ゾーンか個々のレコード セットを指します。
+Azure RBAC のルールは、サブスクリプション、リソース グループ、または個々のリソースに適用できます。 このリソースは、個々の DNS ゾーンまたは個々のレコード セットのいずれかになります。
 
-たとえば、リソース グループ *myzones* にゾーン *contoso.com* とサブゾーン *customers.contoso.com* が含まれていて、サブゾーンには顧客アカウントごとに CNAME レコードが作成されているとします。  これらの CNAME レコードの管理に使用するアカウントに、*customers.contoso.com* ゾーンにのみレコードを作成できるアクセス許可を割り当て、他のゾーンにはアクセスできないようにするような状況が該当します。
+たとえば、リソース グループ *myResourceGroup* には、ゾーン *contoso.com* とサブゾーン *customers.contoso.com* が含まれています。 顧客アカウントごとに CNAME レコードが作成されています。 これらの CNAME レコードの管理に使用する管理者アカウントに、*customers.contoso.com* ゾーンにレコードを作成できるアクセス許可を割り当てます。 このアカウントでは *customers.contoso.com* のみを管理できます。
 
-ゾーン レベルの RBAC アクセス許可は、Azure Portal から付与できます。  ゾーンの **[アクセス制御 (IAM)]** を開き、 **[追加]** 、 **[DNS Zone Contributor (DNS ゾーン共同作成者)]** ロールの順に選択し、アクセス許可の付与が必要なユーザーまたはグループを選択します。
+ゾーン レベルの RBAC アクセス許可は、Azure Portal から付与できます。  ゾーンの **[アクセス制御 (IAM)]** を開き、 **[追加]** 、 **[DNS Zone Contributor\(DNS ゾーン共同作成者\)]** ロールの順に選択し、アクセス許可の付与が必要なユーザーまたはグループを選択します。
 
 ![Azure Portal を使用した DNS ゾーン レベルの RBAC](./media/dns-protect-zones-recordsets/rbac2.png)
 
@@ -64,21 +75,32 @@ Azure RBAC のルールは、サブスクリプション、リソース グル�
 
 ```azurepowershell
 # Grant 'DNS Zone Contributor' permissions to a specific zone
-New-AzRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>" -ResourceName "<zone name>" -ResourceType Microsoft.Network/DNSZones
+
+$usr = "<user email address>"
+$rol = "DNS Zone Contributor"
+$rsg = "<resource group name>"
+$zon = "<zone name>"
+$typ = "Microsoft.Network/DNSZones"
+
+New-AzRoleAssignment -SignInName $usr -RoleDefinitionName $rol -ResourceGroupName $rsg -ResourceName $zon -ResourceType $typ
 ```
 
 また、同じ目的を果たせるコマンドを [Azure CLI から実行する](../role-based-access-control/role-assignments-cli.md)こともできます。
 
 ```azurecli
 # Grant 'DNS Zone Contributor' permissions to a specific zone
-azure role assignment create --signInName <user email address> --roleName "DNS Zone Contributor" --resource-name <zone name> --resource-type Microsoft.Network/DNSZones --resource-group <resource group name>
+
+az role assignment create \
+--assignee <user email address> \
+--role "DNS Zone Contributor" \
+--scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/DnsZones/<zone name>/"
 ```
 
 ### <a name="record-set-level-rbac"></a>レコード セット レベルの RBAC
 
-RBAC のレベルにはもう 1 つあります。 Contoso Corporation のメール管理者を考えてみましょう。このメール管理者は、"contoso.com" ゾーンの頂点にある MX レコードと TXT レコードへのアクセスを必要としています。  他の MX レコードや TXT レコード、および他のタイプのレコードにはアクセスする必要がありません。  Azure DNS を使用すると、メール管理者がアクセスする必要のあるレコードのみを対象に、レコード セット レベルでアクセス許可を割り当てることができます。  メール管理者は必要な権限のみが付与され、他の変更を加えることはできません。
+アクセス許可は、レコード セット レベルで適用されます。  ユーザーには、必要とするエントリに対する制御が許可され、他の変更を行うことはできません。
 
-レコード セット レベルの RBAC アクセス許可は、Azure portal の [レコード セット] ページにある **[ユーザー]** ボタンを使用して構成できます。
+レコード セット レベルの RBAC アクセス許可は、Azure portal の [レコード セット] ページにある **[アクセス制御 (IAM)]** ボタンを使用して構成できます。
 
 ![Azure Portal を使用したレコード セット レベルの RBAC](./media/dns-protect-zones-recordsets/rbac3.png)
 
@@ -86,21 +108,31 @@ RBAC のレベルにはもう 1 つあります。 Contoso Corporation のメー
 
 ```azurepowershell
 # Grant permissions to a specific record set
-New-AzRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -Scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
+
+$usr = "<user email address>"
+$rol = "DNS Zone Contributor"
+$sco = 
+"/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
+
+New-AzRoleAssignment -SignInName $usr -RoleDefinitionName $rol -Scope $sco
 ```
 
 また、同じ目的を果たせるコマンドを [Azure CLI から実行する](../role-based-access-control/role-assignments-cli.md)こともできます。
 
 ```azurecli
 # Grant permissions to a specific record set
-azure role assignment create --signInName "<user email address>" --roleName "DNS Zone Contributor" --scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
+
+az role assignment create \
+--assignee "<user email address>" \
+--role "DNS Zone Contributor" \
+--scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
 ```
 
 ### <a name="custom-roles"></a>カスタム ロール
 
-組み込みの DNS ゾーン共同作成者ロールでも DNS リソースを完全に制御できます。 カスタム Azure ロールを自分で作成して、さらにきめ細かくリソースを制御することもできます。
+組み込みの DNS ゾーン共同作成者ロールでも DNS リソースを完全に制御できます。 独自のカスタム Azure ロールを作成して、さらにきめ細かくリソースを制御することもできます。
 
-Contoso Corporation が顧客アカウントごとの CNAME レコードをゾーン *customers.contoso.com* に作成している例をもう一度考えてみましょう。  これらの CNAME の管理に使用するアカウントには、CNAME レコードのみを管理できるアクセス許可を付与する必要があります。  MX レコードなどの他のタイプのレコードの変更や、ゾーンの削除などのゾーン レベルの操作は実行できないようにします。
+CNAME の管理に使用するアカウントには、CNAME レコードのみを管理できるアクセス許可を付与します。 そのアカウントは、他の種類のレコードを変更することはできません。 また、ゾーンの削除などのゾーンレベルの操作を行うこともできません。
 
 次の例は、CNAME レコードのみを管理するためのカスタム ロールの定義を示しています。
 
@@ -123,7 +155,7 @@ Contoso Corporation が顧客アカウントごとの CNAME レコードをゾ�
     "NotActions": [
     ],
     "AssignableScopes": [
-        "/subscriptions/ c276fc76-9cd4-44c9-99a7-4fd71546436e"
+        "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e"
     ]
 }
 ```
@@ -149,7 +181,7 @@ New-AzRoleDefinition -InputFile <file path>
 
 ```azurecli
 # Create new role definition based on input file
-azure role create -inputfile <file path>
+az role create -inputfile <file path>
 ```
 
 作成したロールは、この記事で前述した組み込みロールの場合と同じ方法で割り当てることができます。
@@ -158,26 +190,45 @@ azure role create -inputfile <file path>
 
 ## <a name="resource-locks"></a>リソース ロック
 
-Azure Resource Manager は、RBAC に加えて、別のタイプのセキュリティ制御をサポートしています。それはリソースをロックする機能です。 RBAC ルールでは特定のユーザーやグループが行う操作を制御できますが、リソース ロックはリソースに適用され、すべてのユーザーとロールが対象になります。 詳細については、[「Azure Resource Manager によるリソースのロック」](../azure-resource-manager/management/lock-resources.md)を参照してください。
+Azure Resource Manager は、別のタイプのセキュリティ制御をサポートしています。それはリソースをロックする機能です。 リソース ロックはリソースに適用され、すべてのユーザーおよびロールが対象になります。 詳細については、[「Azure Resource Manager によるリソースのロック」](../azure-resource-manager/management/lock-resources.md)を参照してください。
 
-リソースのロックは 2 種類あります｡**CanNotDelete** と **ReadOnly** です。 これらは、DNS ゾーンと個別のレコード セットのいずれかに適用できます。  以降のセクションでは、一般的なシナリオをいくつか紹介し、そのシナリオにリソース ロックを使用して対応する方法について説明します。
+リソースのロックは 2 種類あります｡**CanNotDelete** と **ReadOnly** です。 これらは、プライベート DNS ゾーンまたは個別のレコード セットのいずれかに適用できます。 以降のセクションでは、一般的なシナリオをいくつか紹介し、そのシナリオにリソース ロックを使用して対応する方法について説明します。
 
 ### <a name="protecting-against-all-changes"></a>あらゆる変更に対する保護
 
-一切の変更を防止するには、ゾーンに対して ReadOnly ロックを適用します。  これにより、レコード セットの新規作成と既存のレコード セットに対する変更や削除を防止できます。
+変更を防止するには、ゾーンに ReadOnly ロックを適用します。 このロックにより、レコード セットの新規作成と既存のレコード セットの変更または削除を防止できます。
 
 ゾーン レベルのリソース ロックは、Azure Portal を使用して作成できます。  DNS ゾーン ページから **[ロック]** 、 **[+ 追加]** の順に選択します。
 
 ![Azure Portal を使用したゾーン レベルのリソース ロック](./media/dns-protect-zones-recordsets/locks1.png)
 
-ゾーン レベルのリソース ロックは、Azure PowerShell を使用して作成することもできます。
+ゾーン レベルのリソース ロックは、[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock?view=latest) を使用して作成することもできます。
 
 ```azurepowershell
 # Lock a DNS zone
-New-AzResourceLock -LockLevel <lock level> -LockName <lock name> -ResourceName <zone name> -ResourceType Microsoft.Network/DNSZones -ResourceGroupName <resource group name>
+
+$lvl = "<lock level>"
+$lnm = "<lock name>"
+$rsc = "<zone name>"
+$rty = "Microsoft.Network/DNSZones"
+$rsg = "<resource group name>"
+
+New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rsc -ResourceType $rty -ResourceGroupName $rsg
 ```
 
-現時点では、Azure CLI では Azure リソース ロックの構成はサポートされていません。
+また、同じ目的を果たせるコマンドを [Azure CLI から実行する](https://docs.microsoft.com/cli/azure/lock?view=azure-cli-latest#az-lock-create)こともできます。
+
+```azurecli-interactive
+# Lock a DNS zone
+
+az lock create \
+--lock-type "<lock level>" \
+--name "<lock name>" \
+--resource-name "<zone name>" \
+--namespace "Microsoft.Network" \
+--resource-type "DnsZones" \
+--resource-group "<resource group name>"
+```
 
 ### <a name="protecting-individual-records"></a>個々のレコードの保護
 
@@ -190,29 +241,48 @@ New-AzResourceLock -LockLevel <lock level> -LockName <lock name> -ResourceName <
 
 ```azurepowershell
 # Lock a DNS record set
-New-AzResourceLock -LockLevel <lock level> -LockName "<lock name>" -ResourceName "<zone name>/<record set name>" -ResourceType "Microsoft.Network/DNSZones/<record type>" -ResourceGroupName "<resource group name>"
+
+$lvl = "<lock level>"
+$lnm = "<lock name>"
+$rsc = "<zone name>/<record set name>"
+$rty = "Microsoft.Network/DNSZones/<record type>"
+$rsg = "<resource group name>"
+
+New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rsc -ResourceType $rty -ResourceGroupName $rsg
 ```
 
 ### <a name="protecting-against-zone-deletion"></a>ゾーンの削除に対する保護
 
-Azure DNS ゾーンを削除すると、ゾーン内のレコード セットもすべて削除されます。  この操作を元に戻すことはできません。  誤って重要なゾーンを削除すると、ビジネスに多大な影響を与えるおそれがあります。  そのため、意図せずゾーンが削除されるのを防ぐことが重要です。
+Azure DNS でゾーンを削除すると、ゾーン内のレコード セットもすべて削除されます。  この操作は元に戻すことができません。 誤って重要なゾーンを削除すると、ビジネスに多大な影響を与えるおそれがあります。  ゾーンの誤削除を防止することが重要です。
 
-ゾーンに CanNotDelete ロックを適用することで、ゾーンが削除されるのを防止できます。  ただし、ロックは子リソースに継承されるため、ゾーン内のすべてのレコード セットが削除できないようになりますが、この措置が適切でない場合もあります。  また、上記の注で説明したとおり、既存のレコード セットからレコードを削除できるため、効果的な制御方法とは言えません。
+ゾーンに CanNotDelete ロックを適用することで、ゾーンが削除されるのを防止できます。 ロックは、子リソースによって継承されます。 ロックは、ゾーン内のレコード セットが削除されるのを防止します。 上記の注で説明したとおり、既存のレコード セットからレコードを削除できるため、効果的な制御方法とは言えません。
 
-代わりに、ゾーン内の、SOA レコード セットなどのレコード セットに CanNotDelete ロックを適用することを検討してください。  レコード セットを削除せずにゾーンを削除することはできないため、この措置によってゾーンの削除は防止される一方、ゾーン内のレコード セットは自由に変更できます。 ゾーンを削除しようとすると、この操作によって SOA レコード セットも削除されることが Azure Resource Manager によって検出され、SOA がロックされているため呼び出しがブロックされます。  結果として、レコード セットは削除されません。
+代わりに、ゾーン内のレコード セット (SOA レコード セットなど) に対して CanNotDelete ロックを適用してください。 レコード セットが削除されなければ、ゾーンは削除されません。 このロックは、ゾーンの削除を防止しますが、ゾーン内のレコード セットを自由に変更することができます。 ゾーンを削除しようとすると、削除は、Azure Resource Manager によって検出されます。 この削除により、SOA レコード セットも削除されます。SOA はロックされているため、Azure Resource Manager は、呼び出しをブロックします。  結果として、レコード セットは削除されません。
 
 次の PowerShell コマンドを実行すると、指定されたゾーンの SOA レコードに対する CanNotDelete ロックが作成されます。
 
 ```azurepowershell
 # Protect against zone delete with CanNotDelete lock on the record set
-New-AzResourceLock -LockLevel CanNotDelete -LockName "<lock name>" -ResourceName "<zone name>/@" -ResourceType "Microsoft.Network/DNSZones/SOA" -ResourceGroupName "<resource group name>"
+
+$lvl = "CanNotDelete"
+$lnm = "<lock name>"
+$rsc = "<zone name>/@"
+$rty = "Microsoft.Network/DNSZones/SOA"
+$rsg = "<resource group name>"
+
+New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rsc -ResourceType $rty -ResourceGroupName $rsg
 ```
 
-意図せずゾーンが削除されることを防ぐもう 1 つの方法として、カスタム ロールを使用し、ゾーンの管理に使われるオペレーター アカウントとサービス アカウントにゾーンの削除アクセス許可が付与されないようにするという方法があります。 ゾーンの削除が必要な場合は、まずゾーンの削除アクセス許可を付与 (誤ったゾーンを削除しないように、ゾーン スコープでのアクセス許可を付与) し、次にゾーンを削除するという、2 段階の削除操作を強制することができます。
+ゾーンの誤削除を防止するもう 1 つの方法は、カスタム ロールを使用することです。 このロールにより、ゾーンの管理に使用されるアカウントに、ゾーンの削除アクセス許可が付与されないようにします。 
 
-この 2 つ目の方法には、前述のアカウントがアクセスするすべてのゾーンに有効であり、ロックを作成することを覚えておく必要がないという利点があります。 しかし、この方法でも、サブスクリプション所有者のようなゾーンの削除アクセス許可を持つアカウントは、重要なゾーンを誤って削除する可能性があります。
+ゾーンを削除する必要がある場合は、2 段階の削除操作を強制することができます。
 
-DNS ゾーン保護のための多層防御手法としては、リソースのロックとカスタム ロールという 2 つの方法を同時に使用することも可能です。
+ - まず、ゾーンの削除アクセス許可を付与します。
+ - 次に、ゾーンを削除するアクセス許可を付与します。
+
+カスタム ロールは、これらのアカウントでアクセスされるすべてのゾーンに有効です。 サブスクリプション所有者などのゾーンの削除アクセス許可を持つアカウントは、依然としてゾーンを誤って削除する可能性があります。
+
+DNS ゾーン保護のための多層防御手法として、リソースのロックとカスタム ロールという 2 つの方法を同時に使用することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 

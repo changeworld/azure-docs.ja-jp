@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/09/2019
+ms.date: 02/25/2020
 ms.author: b-juche
-ms.openlocfilehash: 6fcea0aaecb860e07c2066877494c05b51f43ca4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7637d18017f5bdc76c8a271198a88f21a59a6aac
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976249"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604982"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files のリソース制限
 
@@ -36,7 +36,7 @@ Azure NetApp Files のリソース制限を理解すると、ボリュームの�
 |  容量プールあたりのボリュームの数     |    500   |    はい     |
 |  ボリュームあたりのスナップショット数       |    255     |    いいえ        |
 |  Azure Virtual Network あたりの Azure NetApp Files (Microsoft.NetApp/volumes) に委任されたサブネットの数    |   1   |    いいえ    |
-|  Azure NetApp Files にアクセスできる (ピアリング VNet を含む) VNet 内の IP 数   |    1000   |    はい   |
+|  Azure NetApp Files を使用した VNet (直ちにピアリングされた VNet を含む) で使用されている IP の数   |    1000   |    はい   |
 |  単一の容量プールの最小サイズ   |  4 TiB     |    いいえ  |
 |  単一の容量プールの最大サイズ    |  500 TiB   |   いいえ   |
 |  単一のボリュームの最小サイズ    |    100 GiB    |    いいえ    |
@@ -69,7 +69,7 @@ Azure portal ナビゲーション プレーンから:
 1. **[ヘルプとサポート]** をクリックします。
 2. **[+ New support request]** (新しいサポート要求) をクリックします。
 3. [基本] タブで次の情報を指定します。 
-    1. [問題の種類]\: **[サービスとサブスクリプションの制限 (クォータ)]** を選択します。
+    1. 問題の種類: **[サービスとサブスクリプションの制限 (クォータ)]** を選択します。
     2. [サブスクリプション]\:クォータの増加が必要なリソースのサブスクリプションを選択します。
     3. [クォータの種類]\: **[Storage:Azure NetApp Files limits]\(ストレージ: Azure NetApp Files の制限\)** を選択します。
     4. **次へ: 「解決方法」** を参照してください。
@@ -88,7 +88,7 @@ Azure portal ナビゲーション プレーンから:
     3. **[次へ: 確認および作成]** をクリックして要求を作成します。 
 
 
-## <a name="next-steps"></a>次の手順  
+## <a name="next-steps"></a>次のステップ  
 
 - [Azure NetApp Files のストレージ階層を理解する](azure-netapp-files-understand-storage-hierarchy.md)
 - [Azure NetApp Files のコスト モデル](azure-netapp-files-cost-model.md)

@@ -7,18 +7,21 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/11/2020
-ms.openlocfilehash: a093eea8b1961482722211017174018a649e2c4f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.date: 02/21/2020
+ms.openlocfilehash: 6eb8f86d7bfa1c140c6422753840ded8a37ce3c4
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484844"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616089"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターを自動的にスケール調整する
 
 > [!Important]
-> 自動スケーリング機能は、2019 年 5 月 8 日より後に作成された Apache Spark、Apache Hive、LLAP および Apache HBase のクラスターでのみ機能します。 LLAP および HBase の自動スケーリングは、プレビュー段階にあります。
+> Azure HDInsight 自動スケーリング機能は、Spark および Hadoop クラスター向けに 2019 年 11 月 7 日に一般提供され、プレビュー バージョンの機能では利用できない機能強化が追加されました。 2019 年 11 月 7 日より前に Spark クラスターを作成済みで、クラスター上で自動スケーリング機能を使用する場合、推奨されるパスは、新しいクラスターを作成し、新しいクラスター上で自動スケーリングを有効にすることです。 
+>
+>Interactive Query (LLAP) および HBase クラスターの自動スケーリングはまだプレビュー段階です。 自動スケーリングは、Spark、Hadoop、Interactive Query、および HBase クラスター上でのみ使用できます。 
+
 
 Azure HDInsight のクラスター自動スケーリング機能では、クラスター内のワーカー ノードの数が自動的にスケールアップおよびスケールダウンされます。 現在、クラスター内の他の種類のノードはスケーリングできません。  新しい HDInsight クラスターの作成中に、ワーカー ノードの最小数と最大数を設定できます。 その後、自動スケーリングによって分析負荷のリソース要件が監視され、ワーカー ノードの数がスケールアップまたはスケールダウンされます。 この機能に対して追加料金は発生しません。
 

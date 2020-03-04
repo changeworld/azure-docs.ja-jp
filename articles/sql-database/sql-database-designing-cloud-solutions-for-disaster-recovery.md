@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: 8eb115497427338599db08e8c7bbdd55c5a158fc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 348bd2b92801217a5aea2ef4d1426c020085e4c1
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73807947"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624145"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Azure SQL Database を使用して世界規模の可用性を備えたサービスを設計する
 
@@ -68,7 +68,7 @@ Azure SQL Database を使用してクラウド サービスを構築してデプ
 
 主な**トレードオフ**は、ほとんどの期間、リージョン B のアプリケーション リソースの使用率が低いことです。
 
-## <a name="scenario-2-azure-regions-for-business-continuity-with-maximum-data-preservation"></a>シナリオ 2:データが最大限に保存されるビジネス継続性のための Azure リージョン
+## <a name="scenario-2-azure-regions-for-business-continuity-with-maximum-data-preservation"></a>シナリオ 2: データが最大限に保存されるビジネス継続性のための Azure リージョン
 
 この設計パターンは、以下の特性を持ったアプリケーションに最適な選択肢です。
 
@@ -101,7 +101,7 @@ Traffic Manager は、リージョン A への接続障害を検出すると、�
 
 **トレードオフ**は、アプリケーションは読み取り専用モードで動作できなければならないことです。
 
-## <a name="scenario-3-application-relocation-to-a-different-geography-without-data-loss-and-near-zero-downtime"></a>シナリオ 3:データ損失がなくダウンタイムがほぼゼロでの、異なる地理的な場所へのアプリケーションの再配置
+## <a name="scenario-3-application-relocation-to-a-different-geography-without-data-loss-and-near-zero-downtime"></a>シナリオ 3: データ損失がなくダウンタイムがほぼゼロでの、異なる地理的な場所へのアプリケーションの再配置
 
 このシナリオのアプリケーションには次のような特徴があります。
 
@@ -119,18 +119,18 @@ Traffic Manager は、リージョン A への接続障害を検出すると、�
 
 ![シナリオ 3. プライマリが米国東部の構成。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-a.png)
 
-1 日の最後に (たとえば、ローカル時刻で午後 11 時)、アクティブなデータベースを次のリージョン (北ヨーロッパ) に切り替える必要があります。 このタスクは、[Azure のスケジュール サービス](../scheduler/scheduler-intro.md)を使って完全に自動化できます。  このタスクには、次の手順が含まれます。
+1 日の終わりに、たとえば、ローカル時刻の午後 11 時に、アクティブなデータベースを次のリージョン (北ヨーロッパ) に切り替える必要があります。 このタスクは、[Azure Logic Apps](../logic-apps/logic-apps-overview.md) を使って完全に自動化できます。 このタスクには、次の手順が含まれます。
 
 * フェールオーバー グループのプライマリ サーバーを、フレンドリ フェールオーバーを使って北ヨーロッパに切り替えます (1)
 * 米国東部と北ヨーロッパの間のフェールオーバー グループを削除します
-* 同じ名前で、ただし北ヨーロッパとアジア太平洋の間に、新しいフェールオーバー グループを作成します (2)。
-* このフェールオーバー グループに、北ヨーロッパのプライマリとアジア太平洋のセカンダリを追加します (3)。
+* 同じ名前で、ただし北ヨーロッパと東アジアの間に、新しいフェールオーバー グループを作成します (2)。
+* このフェールオーバー グループに、北ヨーロッパのプライマリと東アジアのセカンダリを追加します (3)。
 
 次の図は、予定されたフェールオーバー後の新しい構成を示しています。
 
 ![シナリオ 3. 北ヨーロッパへのプライマリの切り替え。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-b.png)
 
-たとえば、北ヨーロッパの機能が停止すると、フェールオーバー グループによってデータベースの自動フェールオーバーが開始され、結果として、アプリケーションはスケジュールより前に次のリージョンに移動されます (1)。  その場合、北ヨーロッパがオンラインに戻るまで、米国東部のみがセカンダリ リージョンとして残ります。 残っている 2 つのリージョンが、ロールを切り替えることで、3 つの場所すべての顧客にサービスを提供します。 それに応じて Azure Scheduler を調整する必要があります。 残っているリージョンはヨーロッパから追加のユーザー トラフィックを受け取るため、アプリケーションのパフォーマンスは、追加の待機時間だけでなく、エンド ユーザー接続数の増加によっても影響を受けます。 北ヨーロッパの停止していた機能が復旧すると、セカンダリ データベースは現在のプライマリ データベースと直ちに同期されます。 次の図は、北ヨーロッパの機能が停止した場合の例です。
+たとえば、北ヨーロッパの機能が停止すると、フェールオーバー グループによってデータベースの自動フェールオーバーが開始され、結果として、アプリケーションはスケジュールより前に次のリージョンに移動されます (1)。  その場合、北ヨーロッパがオンラインに戻るまで、米国東部のみがセカンダリ リージョンとして残ります。 残っている 2 つのリージョンが、ロールを切り替えることで、3 つの場所すべての顧客にサービスを提供します。 それに応じて、Azure Logic Apps を調整する必要があります。 残っているリージョンはヨーロッパから追加のユーザー トラフィックを受け取るため、アプリケーションのパフォーマンスは、追加の待機時間だけでなく、エンド ユーザー接続数の増加によっても影響を受けます。 北ヨーロッパの停止していた機能が復旧すると、セカンダリ データベースは現在のプライマリ データベースと直ちに同期されます。 次の図は、北ヨーロッパの機能が停止した場合の例です。
 
 ![シナリオ 3. 北ヨーロッパの停止。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-c.png)
 
@@ -160,7 +160,7 @@ Traffic Manager は、リージョン A への接続障害を検出すると、�
 ||読み取り/書き込みアクセス = 0 | 読み取り/書き込みアクセス = 障害検出時間 + データ消失の猶予期間 |
 |||
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * ビジネス継続性の概要およびシナリオについては、[ビジネス継続性の概要](sql-database-business-continuity.md)を参照してください。
 * アクティブ geo レプリケーションについては、[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)に関するページを参照してください。

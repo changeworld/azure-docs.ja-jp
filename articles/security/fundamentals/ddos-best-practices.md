@@ -1,5 +1,5 @@
 ---
-title: Azure DDoS Protection - 回復性の高いソリューションの設計 | Microsoft Docs
+title: Azure DDoS Protection を使用する回復性の高いソリューションの設計
 description: ログ データを使用して、アプリケーションに関する深い洞察を得る方法について説明します。
 services: security
 author: barclayn
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: barclayn
-ms.openlocfilehash: ac36a4c59dbec8bf27850de1565e86b78643148a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 8d3fc809999508bf3d49c3765c90017e89e80fa7
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595418"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624052"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS Protection - 回復性の高いソリューションの設計
 
@@ -266,7 +266,7 @@ Application Gateway WAF SKU (禁止モード) を構成して、レイヤー 7 (
 > [!NOTE]
 > パブリック IP を使用する仮想ネットワーク内での PowerApps 用 Azure App Service 環境または API 管理は、どちらもネイティブにはサポートされていません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [クラウドにおける共同責任](shared-responsibility.md)
 

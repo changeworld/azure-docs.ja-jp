@@ -4,7 +4,7 @@
   items:
     - name: Data Catalog とは
       href: overview.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: Azure データ カタログを作成する
       href: data-catalog-get-started.md
@@ -22,9 +22,9 @@
       href: data-catalog-adopting-data-catalog.md
     - name: 前提条件
       href: data-catalog-prerequisites.md
-    - name: FAQ
+    - name: よく寄せられる質問
       href: data-catalog-frequently-asked-questions.md
-- name: 方法
+- name: 操作方法
   items:
     - name: データ ソースの登録
       href: data-catalog-how-to-register.md
@@ -34,7 +34,7 @@
       href: data-catalog-how-to-annotate.md
     - name: データ ソースの文書化
       href: data-catalog-how-to-documentation.md
-    - name: データ ソースへの接続
+    - name: データ ソースに接続する
       href: data-catalog-how-to-connect.md
     - name: ビッグ データの操作
       href: data-catalog-how-to-big-data.md
@@ -78,5 +78,5 @@
       href: 'https://azure.microsoft.com/updates/?product=data-catalog'
     - name: スタック オーバーフロー
       href: 'https://stackoverflow.com/questions/tagged/azure-data-catalog'
-    - name: 用語集
+    - name: 用語
       href: data-catalog-terminology.md

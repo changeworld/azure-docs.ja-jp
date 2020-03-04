@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: 86e8415cf2076819e23226e5e7878a2c96343f69
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: eb943bfe36be10d1e95d569a5c1bf48563e909c1
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789921"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650863"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Azure Blob Storage に BLOB を作成して管理する
 
@@ -23,7 +23,7 @@ ms.locfileid: "74789921"
 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と[クイック スタートの初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。 コネクタ固有の技術情報については、[Azure Blob Storage コネクタ リファレンス](https://docs.microsoft.com/connectors/azureblobconnector/)に関する記事を参照してください。
 
 > [!IMPORTANT]
-> Azure Logic Apps からファイアウォールの背後にあるストレージ アカウントへのアクセスを有効にするには、このトピックの後半の「[ファイアウォールの背後にあるストレージ アカウントにアクセスする](#storage-firewalls)」を参照してください。
+> 同じリージョンにある場合、ロジック アプリはファイア ウォールの背後にあるストレージ アカウントに直接アクセスできません。 回避策として、お使いのロジック アプリとストレージアカウントを別のリージョンに格納してください。 Azure Logic Apps からファイアウォールの背後にあるストレージ アカウントへのアクセスを有効にする方法の詳細については、このトピックの後半の「[ファイアウォールの背後にあるストレージ アカウントにアクセスする](#storage-firewalls)」を参照してください。
 
 <a name="blob-storage-limits"></a>
 
@@ -31,7 +31,7 @@ ms.locfileid: "74789921"
 
 * 既定では、Azure Blob Storage アクションは *50 MB 以下*のファイルの読み取りまたは書き込みが可能です。 Azure Blob Storage のアクションは、50 MB から 1024 MB までのファイルを処理するため、[メッセージ チャンク](../logic-apps/logic-apps-handle-large-messages.md)をサポートしています。 **BLOB コンテンツの取得**アクションは、暗黙的にチャンクを使用します。
 
-* Azure Blob Storage トリガーではチャンクはサポートされていません。 ファイルのコンテンツを要求する場合、トリガーは 50 MB 以下のファイルのみを選択します。 50 MB より大きいファイルを取得するには、次のパターンに従います。
+* Azure Blob Storage トリガーではチャンクはサポートされていません。 ファイルのコンテンツを要求すると、トリガーによって 50 MB 以下のファイルのみが選択されます。 50 MB より大きいファイルを取得するには、次のパターンに従います。
 
   * ファイルのプロパティを返す Azure Blob Storage トリガーを使用します (**BLOB が追加または変更されたとき (プロパティのみ)** など)。
 
@@ -89,7 +89,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
    ![ロジック アプリのワークフローに新しいステップを追加する](./media/connectors-create-api-azureblobstorage/add-new-step-logic-app-workflow.png) 
 
-   既存のステップの間にアクションを追加するには、接続矢印の上にマウスを移動します。 表示されるプラス ( **+** ) 記号を選択し、 **[アクションの追加]** を選択します。
+   既存のステップの間にアクションを追加するには、接続矢印の上にマウスを移動します。 表示されるプラス記号 ( **+** ) を選択し、 **[アクションの追加]** を選択します。
 
 3. 検索ボックスに、フィルターとして「azure blob」と入力します。 アクションの一覧から、目的のアクションを選択します。
 
@@ -121,15 +121,15 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 1. 接続を作成するよう求められたら、この情報を入力します。
 
-   | プロパティ | 必須 | 値 | 説明 |
+   | プロパティ | Required | Value | 説明 |
    |----------|----------|-------|-------------|
    | **Connection Name** | はい | <*connection-name*> | 作成する接続の名前 |
    | **ストレージ アカウント** | はい | <*storage-account*> | リストからストレージ アカウントを選択します。 |
    ||||
 
-   例:
+   次に例を示します。
 
-   ![Azure BLOB ストレージ アカウント接続を作成する](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png)  
+   ![Azure BLOB ストレージ アカウント接続を作成する](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png) 
 
 1. 準備ができたら、 **[作成]** を選択します
 
@@ -137,7 +137,10 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの Open API (以前の Swagger) ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、[コネクタのリファレンス ページ](https://docs.microsoft.com/connectors/azureblobconnector/)を参照してください。
+コネクタの Swagger ファイルに記述される、トリガー、アクション、制限などのこのコネクタの技術的詳細については、[コネクタの参照ページ](https://docs.microsoft.com/connectors/azureblobconnector/)を参照してください。
+
+> [!NOTE]
+> [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリの場合、このコネクタの ISE のラベルが付いたバージョンでは、代わりに [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)が使用されます。
 
 <a name="storage-firewalls"></a>
 
@@ -159,9 +162,12 @@ Azure Blob Storage コネクタまたは他のソリューションを使用し�
 
 <a name="access-other-regions"></a>
 
-### <a name="access-to-storage-accounts-in-other-regions"></a>他のリージョンにあるストレージ アカウントにアクセスする
+### <a name="problems-accessing-storage-accounts-in-the-same-region"></a>同じリージョンのストレージ アカウントへのアクセスに関する問題
 
-ロジック アプリでは、ファイアウォール規則があって同じリージョン内にある Azure ストレージ アカウントに直接アクセスすることができません。 ただし、[ご利用のリージョン内のマネージド コネクタの送信 IP アドレス](../logic-apps/logic-apps-limits-and-config.md#outbound)へのアクセスを許可している場合、対象のロジック アプリは、Azure Table Storage コネクタまたは Azure Queue Storage コネクタの使用時を除き、別のリージョンにあるストレージ アカウントにアクセスできます。 Table Storage または Queue Storage にアクセスするには、引き続き組み込みの HTTP トリガーとアクションを使用できます。
+ロジック アプリは、同じリージョンにある場合、ファイア ウォールの背後にあるストレージ アカウントに直接アクセスできません。 回避策として、お使いのロジック アプリとお使いのストレージ アカウントを別のリージョンに格納し、[ご自分のリージョンのマネージド コネクタが送信 IP アドレスにアクセス](../logic-apps/logic-apps-limits-and-config.md#outbound)できるようにします。
+
+> [!NOTE]
+> このソリューションは、Azure Table Storage コネクタと Azure Queue Storage コネクタには該当しません。 お使いの Table Storage または Queue Storage にアクセスするには、代わりに組み込みの HTTP トリガーとアクションを使用してください。
 
 <a name="access-trusted-virtual-network"></a>
 
@@ -198,6 +204,6 @@ Microsoft の信頼されたサービスがファイアウォールを介して�
 
 [API Management](../api-management/api-management-key-concepts.md) に専用階層を使用する場合、API Management を使用し、ファイアウォールを介して後者の IP アドレスを許可することで、Storage API に面することができます。 基本的には、API Management によって使用される Azure 仮想ネットワークをストレージ アカウントのファイアウォール設定に追加します。 その後、API Management アクションまたは HTTP アクションを使用し、Azure Storage API を呼び出すことができます。 ただし、このオプションを選択した場合、認証プロセスを自分で処理する必要があります。 詳細については、[単純なエンタープライズ統合アーキテクチャ](https://aka.ms/aisarch)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

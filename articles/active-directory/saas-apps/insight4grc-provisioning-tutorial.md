@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0ca9ed8781a13f9ab5e949e0e5f019a851dc75f4
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 1404854e054c8fc4967ba863486969b8a87db526
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057483"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621526"
 ---
 # <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>チュートリアル:Insight4GRC を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -90,7 +90,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
     ![[プロビジョニング] タブ](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションで、Insight4GRC 管理者の資格情報とユーザー名を入力します。 **[テスト接続]** をクリックして、Azure AD から Insight4GRC への接続を確保します。 接続できない場合は、使用中の Insight4GRC アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクションの **[テナント URL]** に、SCIM エンドポイントの URL を入力します。 エンドポイント URL は `https://<Insight4GRC Domain Name>.insight4grc.com/public/api/scim/v2 ` という形式にする必要があり、**Insight4GRC Domain Name** は前の手順で取得した値です。 **[シークレット トークン]** に、先ほど取得したベアラー トークンの値を入力します。 **[テスト接続]** をクリックして、Azure AD から Insight4GRC への接続を確保します。 接続できない場合は、使用中の Insight4GRC アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![プロビジョニング](./media/insight4grc-provisioning-tutorial/provisioning.png)
 
@@ -104,7 +104,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 9. **[属性マッピング]** セクションで、Azure AD から Insight4GRC に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Insight4GRC のユーザー アカウントとの照合に使用されます。 [一致する対象の属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)を変更する場合は、その属性に基づいたユーザーのフィルター処理が確実に Insight4GRC API でサポートされているようにする必要があります。 **[保存]** ボタンをクリックして変更をコミットします。
 
-   |Attribute|Type|
+   |属性|Type|
    |---|---|
    |userName|String|
    |externalId|String|
@@ -119,7 +119,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 11. **[属性マッピング]** セクションで、Azure AD から Insight4GRC に同期されるグループ属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Insight4GRC のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-      |Attribute|Type|
+      |属性|Type|
       |---|---|
       |displayName|String|
       |externalId|String|

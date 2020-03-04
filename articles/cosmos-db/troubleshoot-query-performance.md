@@ -8,12 +8,12 @@ ms.date: 02/10/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: aae11facd2fea5413b2996b3088cb2edc23f0dc1
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 0dd3cb12c52e23a0a8acd57bf401ba68acfb9925
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424934"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623686"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Azure Cosmos DB を使用する場合のクエリの問題のトラブルシューティング
 
@@ -22,6 +22,20 @@ ms.locfileid: "77424934"
 Azure Cosmos DB では、次のようにクエリ最適化を幅広く分類できます。クエリの要求ユニット (RU) 使用量を削減し、待機時間のみを減らす最適化。 クエリの RU 使用量を減らすことで、待機時間も短くなります。
 
 このドキュメントでは、[栄養](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)データセットを使用して再作成できる例を使用します。
+
+## <a name="important"></a>重要
+
+- 最適なパフォーマンスが得られるように、[パフォーマンスに関するヒント](performance-tips.md)に従ってください。
+    > [!NOTE] 
+    > パフォーマンスを向上させるために、Windows 64 ビットのホスト処理をお勧めします。 SQL SDK には、クエリをローカルで解析および最適化するためのネイティブ ServiceInterop.dll が含まれており、Windows x64 プラットフォームでのみサポートされています。 Linux、および ServiceInterop.dll が使用できないその他のサポートされていないプラットフォームでは、最適化されたクエリを取得するために、ゲートウェイに対する追加のネットワーク呼び出しが行われます。 
+- Cosmos DB クエリでは、最小項目数はサポートされていません。
+    - コードで、0 から最大項目数までのすべてのページ サイズを処理する必要があります
+    - ページ内の項目数は、予告なしで変更される可能性があります。
+- クエリに対して空のページが想定されており、常に表示される可能性があります。 
+    - SDK で空のページが公開される理由は、クエリを取り消す機会を増やせるためです。 また、SDK で複数のネットワーク呼び出しが行われていることが明確になります。
+    - Cosmos DB では物理パーティションが分割されているため、既存のワークロードで空のページが表示されることがあります。 現在、最初のパーティションの結果が 0 であるため、空のページになります。
+    - バックエンドでクエリが優先されると、空のページになります。これは、クエリでは、バックエンドでのドキュメントの取得に一定の時間以上かかるためです。 Cosmos DB でクエリが優先されると、継続トークンが返されます。これにより、クエリを続行することができます。 
+- 必ず、クエリを完全にドレインするようにしてください。 SDK のサンプルを参照し、`FeedIterator.HasMoreResults` で while ループを使用して、クエリ全体をドレインします。
 
 ### <a name="obtaining-query-metrics"></a>クエリ メトリックの取得:
 

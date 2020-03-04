@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 02/26/2020
 ms.author: alkohli
-ms.openlocfilehash: a5fee604a529e9ca6153f6c189f199577ae65426
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 521277b2eed7edfba016f6a80e8f877decfb0ac5
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356150"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651102"
 ---
 # <a name="return-or-replace-your-azure-data-box-edge-device"></a>Azure Data Box Edge デバイスを返却または交換する
 
@@ -72,7 +72,7 @@ ms.locfileid: "68356150"
 3. 電源ケーブルを外して、デバイスからネットワーク ケーブルをすべて取り外します。
 4. 自分の箱または Azure から受け取った空き箱を使用して、出荷パッケージを準備します。 デバイスとそのデバイスに同梱されていた電源コードを箱に入れます。
 5. Azure から受け取った出荷ラベルをパッケージに貼り付けます。
-6. リージョンの運送業者で集荷をスケジュールします。 米国でデバイスを返却する場合、運送業者は UPS です。 集荷のスケジュールを設定するには:
+6. リージョンの運送業者で集荷をスケジュールします。 米国でデバイスを返却する場合、UPS または FedEx の運送業者をご利用になれます。 UPS に集荷をスケジュールするには:
 
     1. 最寄りの UPS (国固有のフリー ダイヤル) に連絡します。
     2. 電話で、印刷ラベルに表示されている返送追跡番号を伝えます。
@@ -122,6 +122,6 @@ Azure portal でデバイスとリソースを削除するには、次の手順�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [帯域幅を管理する](data-box-edge-manage-bandwidth-schedules.md)方法について学習します。

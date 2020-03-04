@@ -14,12 +14,12 @@ ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ce791ee3536b9ab07605787209e59b7e5d60126
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f4eb09ab7fa31af5edf14b113a6a88e08df2d115
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74026290"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562260"
 ---
 # <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>複数の Azure Active Directory テナントが対話する方法を理解する
 
@@ -46,8 +46,8 @@ Azure Active Directory (Azure AD) では、各テナントは完全に独立し�
 Azure Portal で Azure AD テナントを追加するには、Azure AD グローバル管理者のアカウントで [Azure Portal](https://portal.azure.com) にサインインし、左側の **[新規]** を選びます。
 
 > [!NOTE]
-> 他の Azure リソースとは異なり、テナントは Azure サブスクリプションの子リソースではありません。 Azure サブスクリプションが取り消されたり、期限切れになったりした場合でも、Azure PowerShell、Azure Graph API、または Microsoft 365 管理センターを使用してテナント データに引き続きアクセスできます。 また、[テナントに別のサブスクリプションを関連付ける](../fundamentals/active-directory-how-subscriptions-associated-directory.md)こともできます。
+> 他の Azure リソースとは異なり、テナントは Azure サブスクリプションの子リソースではありません。 Azure サブスクリプションが取り消されたり、期限切れになったりした場合でも、Azure PowerShell、Microsoft Graph API、または Microsoft 365 管理センターを使用してテナント データに引き続きアクセスできます。 また、[テナントに別のサブスクリプションを関連付ける](../fundamentals/active-directory-how-subscriptions-associated-directory.md)こともできます。
 >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure AD のライセンスに関する問題およびベスト プラクティスの広範囲にわたる概要については、[Azure Active Directory のテナントのライセンス](../fundamentals/active-directory-licensing-whatis-azure-portal.md)に関するページをご覧ください。

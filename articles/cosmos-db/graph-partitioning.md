@@ -8,18 +8,18 @@ ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4c8761d82c8a735ac9c4bff2e5ac0107b2a57fe0
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 44d3b7c2b9e23b90f696162747d9728b18fb7d3f
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537542"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623367"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Azure Cosmos DB でのパーティション分割されたグラフの使用
 
 Azure Cosmos DB の Gremlin API の主な特長の 1 つとして、水平スケーリングによって大規模なグラフを処理する機能があります。 コンテナーは、ストレージとスループットに応じて個別にスケーリングできます。 グラフ データを格納するために自動的にスケーリングできるコンテナーを Azure Cosmos DB で作成できます。 データは、指定された**パーティション キー**に基づいて自動的に分散されます。
 
-コンテナーに格納されるサイズが 10 GB を超えることが予想される場合、または 1 秒間に 10,000 を超える数の要求ユニット (RU) を割り当てたい場合は、**パーティション分割が必要です**。 [Azure Cosmos DB のパーティション分割メカニズム](partition-data.md)と同じ一般原則が、以下で説明するグラフ固有の最適化でも適用されます。
+コンテナーに格納されるサイズが 20 GB を超えることが予想される場合、または 1 秒間に 10,000 を超える数の要求ユニット (RU) を割り当てたい場合は、**パーティション分割が必要です**。 [Azure Cosmos DB のパーティション分割メカニズム](partition-data.md)と同じ一般原則が、以下で説明するグラフ固有の最適化でも適用されます。
 
 ![グラフのパーティション分割](./media/graph-partitioning/graph-partitioning.png)
 
@@ -82,7 +82,7 @@ Azure Cosmos DB の Gremlin API の主な特長の 1 つとして、水平スケ
 
 - **パーティションの境界内でデータを取得するようにクエリを最適化します**。 最適なパーティション分割方法を決める場合は、クエリ パターンに合わせます。 1 つのパーティションからデータを取得するクエリでは、最大限のパフォーマンスを実現できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次に、以下の記事をお読みください。
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2019
 ms.author: spelluru
-ms.openlocfilehash: 348340516f9332f5492c7ce60c3d164da44a008c
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 15fd3c18d059466c2b2bd5e2431013f393092b4b
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120884"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526231"
 ---
 # <a name="classroom-labs-concepts"></a>クラスルーム ラボの概念
 
@@ -32,7 +32,13 @@ ms.locfileid: "77120884"
 
 ## <a name="schedules"></a>スケジュール
 
-スケジュールは、先生がクラスに対して作成できる時間スロット (1 回のみ、または繰り返し) です。 ラボ内のすべての仮想マシンは、スケジュールの開始時に自動的に開始され、スケジュールの終了時に停止します。 クォータ時間は、スケジュールが実行されているときは使用されません。
+スケジュールとは、教師がクラスに対して作成できる時間帯です。そのため、学生用 VM はクラス時間に使用できます。  スケジュールは、1 回限りまたは繰り返しにすることができます。  クォータ時間は、スケジュールが実行されているときは使用されません。
+
+スケジュールには、次の 3 種類があります。Standard、開始のみ、停止のみ。
+
+- **Standard**。  このスケジュールを使用すると、指定された開始時刻にすべての学生用 VM が開始され、指定された停止時刻にすべての学生用 VM がシャットダウンされます。
+- **開始のみ**。   このスケジュールを使用すると、指定された時刻にすべての学生用 VM が開始されます。  学生が Azure Lab Services ポータルを使用して VM を停止するか、停止のみのスケジュールが設定されるまで、学生用 VM は停止されません。
+- **停止のみ**。  このスケジュールを使用すると、指定された時刻にすべての学生用 VM が停止します。  
 
 ## <a name="template-virtual-machine"></a>テンプレート仮想マシン
 

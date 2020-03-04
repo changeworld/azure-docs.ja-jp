@@ -1,5 +1,6 @@
 ---
-title: 'リファレンス: Ubuntu DSVM'
+title: 'リファレンス: Ubuntu Data Science Virtual Machine'
+titleSuffix: Azure Data Science Virtual Machine
 description: Ubuntu Data Science Virtual Machine に含まれるツールの詳細
 author: gvashishtha
 ms.service: machine-learning
@@ -7,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 97072f1a17f2b0adbe96afae3263dc84aff0f30f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5c184e7f1dc828c3f9ff8d449d29ab3aaa4d1cf6
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497625"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525823"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>リファレンス: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -204,11 +205,11 @@ LaTex は、texlive パッケージによって、[AUCTeX](https://www.gnu.org/s
 
 SQL Server の ODBC ドライバー パッケージには、次の 2 つのコマンド ライン ツールも付属しています。
 
-- **bcp**: bcp ツールでは、Microsoft SQL Server のインスタンスと、ユーザーが指定した形式のデータ ファイルとの間でデータを一括コピーします。 bcp ツールを使用して、SQL Server テーブルに多数の新しい行をインポートしたり、テーブルからデータ ファイルにデータをエクスポートしたりできます。 テーブルにデータをインポートするには、そのテーブル用に作成されたフォーマット ファイルを使用する必要があります。 または、テーブルの構造を把握し、さらに、その列に有効なデータの種類を把握する必要があります。
+- **bcp**:bcp ツールでは、Microsoft SQL Server のインスタンスと、ユーザーが指定した形式のデータ ファイルとの間でデータを一括コピーします。 bcp ツールを使用して、SQL Server テーブルに多数の新しい行をインポートしたり、テーブルからデータ ファイルにデータをエクスポートしたりできます。 テーブルにデータをインポートするには、そのテーブル用に作成されたフォーマット ファイルを使用する必要があります。 または、テーブルの構造を把握し、さらに、その列に有効なデータの種類を把握する必要があります。
 
   詳細については、「 [bcp による接続](https://msdn.microsoft.com/library/hh568446.aspx)」をご覧ください。
 
-- **sqlcmd**: sqlcmd ツールを使用して Transact-SQL ステートメントを入力できます。 または、コマンド プロンプトからシステム プロシージャやスクリプト ファイルを入力することもできます。 このツールは ODBC を使用して、Transact-SQL バッチを実行します。
+- **sqlcmd**:sqlcmd ツールを使用して Transact-SQL ステートメントを入力できます。 または、コマンド プロンプトからシステム プロシージャやスクリプト ファイルを入力することもできます。 このツールは ODBC を使用して、Transact-SQL バッチを実行します。
 
   詳細については、「 [sqlcmd による接続](https://msdn.microsoft.com/library/hh568447.aspx)」をご覧ください。
 
@@ -231,7 +232,7 @@ VM には、次の Azure ツールがインストールされています。
 * **Azure のライブラリ**: プレインストールされているライブラリの一部を次に示します。
   
   * **Python**: Python の Azure 関連ライブラリには、*azure*、*azureml*、*pydocumentdb*、*pyodbc* があります。 最初の 3 つのライブラリを使用すると、Azure Storage サービス、Azure Machine Learning、Azure Cosmos DB (Azure の NoSQL データベース) にアクセスできます。 4 番目のライブラリの pyodbc を (Microsoft ODBC Driver for SQL Server と共に) 使用すると、Python から ODBC インターフェイスを使用して SQL Server、Azure SQL Database、Azure SQL Data Warehouse にアクセスできます。 すべてのライブラリを一覧表示するには、「 **pip list** 」と入力します。 このコマンドは、必ず Python 2.7 と 3.5 の両方の環境で実行してください。
-  * **R**: R の Azure 関連ライブラリは、AzureML と RODBC です。
+  * **R**:R の Azure 関連ライブラリは、AzureML と RODBC です。
   * **Java**: Azure Java ライブラリのリストは、VM の /dsvm/sdk/AzureSDKJava ディレクトリにあります。 主要なライブラリは、Azure Storage と管理 API、Azure Cosmos DB、SQL Server の JDBC ドライバーです。  
 
 [Azure ポータル](https://portal.azure.com) には、プレインストールされている Firefox ブラウザーからアクセスできます。 Azure ポータルでは、Azure リソースを作成、管理、監視できます。
@@ -260,7 +261,7 @@ VM には、プリコンパイルされてローカルにプレインストー�
 * **Rattle**: データ探索とモデリングに役立つ R ベースのグラフィカル ツール。
 * **Python**: Anaconda Python には、Scikit-learn などのライブラリと機械学習アルゴリズムがバンドルされています。 その他のライブラリは、 `pip install` を使用してインストールできます。
 * **LightGBM**: デシジョン ツリー アルゴリズムに基づく、高速で分散型の高パフォーマンスな勾配ブースティング フレームワーク。
-* **R**: R 向けに、機械学習関数の豊富なライブラリが用意されています。プレインストールされているライブラリには、lm、glm、randomForest、rpart などがあります。 その他のライブラリは、次のコマンドを使用してインストールできます。
+* **R**:R 向けに、機械学習関数の豊富なライブラリが用意されています。プレインストールされているライブラリには、lm、glm、randomForest、rpart などがあります。 その他のライブラリは、次のコマンドを使用してインストールできます。
   
         install.packages(<lib name>)
 
@@ -280,7 +281,7 @@ vw house_dataset
 
 このディレクトリには、ほかにも多数のデモが用意されています。 Vowpal Wabbit の詳細については、[GitHub のこちらのセクション](https://github.com/JohnLangford/vowpal_wabbit)と [Vowpal Wabbit の Wiki](https://github.com/JohnLangford/vowpal_wabbit/wiki) を参照してください。
 
-### <a name="xgboost"></a>XGBoost
+### <a name="xgboost"></a>xgboost
 
 xgboost は、ブースト (ツリー) アルゴリズム向けに設計および最適化されたライブラリです。 このライブラリの目的は、コンピューターの計算能力の限界を超えて、スケーラブルで移植できる正確で大規模なツリー ブーストを提供することです。
 
@@ -342,6 +343,6 @@ rattle()
 
 Rattle と R を終了できます。これで、生成された R スクリプトに変更を加えることができます。 または、スクリプトをそのまま使用することもできます。スクリプトをいつでも実行して、Rattle UI 内で実行されたすべての操作を繰り返すことができます。 これは、特に R の初心者向けの方法です。この方法では、シンプルなグラフィカル インターフェイスで分析と機械学習をすばやく実行することができ、変更または学習する R のコードを自動的に生成できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 その他の質問がある場合は、 [サポート チケット](https://azure.microsoft.com/support/create-ticket/)の作成を検討してください。

@@ -136,7 +136,7 @@
           href: provision-throughput-autopilot.md
         - name: オートパイロットについてよく寄せられる質問
           href: autopilot-faq.md
-    - name: SQL クエリのリファレンス
+    - name: SQL クエリ (SQL query)
       items:
         - name: 作業の開始
           displayName: 'sql query, query basics'
@@ -437,6 +437,9 @@
             - name: 地理空間のデータのインデックスを付ける
               displayName: 'geospatial, spatial, index'
               href: sql-query-geospatial-index.md
+        - name: DateTime
+          displayName: 'datetime, date, time'
+          href: working-with-dates.md
         - name: パラメーター化クエリ
           displayName: 'parameterized query, parameterized, parameter, parameters'
           href: sql-query-parameterized-queries.md
@@ -464,10 +467,6 @@
             - name: インデックス作成ポリシー
               displayName: 'consistent, none'
               href: index-policy.md
-        - name: データ型
-          items:
-            - name: DateTime
-              href: working-with-dates.md
         - name: Time to Live
           displayName: 'delete, delete data, ttl'
           href: time-to-live.md

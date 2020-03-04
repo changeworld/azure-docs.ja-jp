@@ -45,6 +45,12 @@
               href: nat-overview.md
             - name: リソース
               href: nat-gateway-resource.md
+            - name: メトリックとアラート
+              href: nat-metrics.md
+            - name: トラブルシューティング
+              href: troubleshoot-nat.md
+        - name: ルーティング
+          href: virtual-networks-udr-overview.md
         - name: バックエンド接続の相互運用性
           items:
             - name: 前書きとテスト セットアップ
@@ -75,20 +81,20 @@
           href: ipv6-public-ip-address-prefix.md
     - name: Security
       items:
-        - name: DDoS 保護
-          href: ddos-protection-overview.md
-        - name: Kubernetes ネットワーク ポリシー
-          href: kubernetes-network-policies.md
-        - name: ルーティング
-          href: virtual-networks-udr-overview.md
-        - name: セキュリティ グループ
+        - name: ネットワーク セキュリティ グループ
           href: security-overview.md
+        - name: アプリケーション セキュリティ グループ
+          href: application-security-groups.md
         - name: サービス タグ
           href: service-tags-overview.md
         - name: サービス エンドポイント
           href: virtual-network-service-endpoints-overview.md
         - name: サービス エンドポイント ポリシー
           href: virtual-network-service-endpoint-policies-overview.md
+        - name: Kubernetes ネットワーク ポリシー
+          href: kubernetes-network-policies.md
+        - name: DDoS 保護
+          href: ddos-protection-overview.md
         - name: 仮想ネットワーク TAP
           href: virtual-network-tap-overview.md
     - name: サブネット
@@ -131,6 +137,18 @@
               href: tutorial-create-validate-nat-gateway-powershell.md
             - name: NAT ゲートウェイの作成と検証 - CLI
               href: tutorial-create-validate-nat-gateway-cli.md
+        - name: ネットワーク トラフィックのルーティング
+          items:
+            - name: Azure portal
+              href: tutorial-create-route-table-portal.md
+            - name: Azure PowerShell
+              href: tutorial-create-route-table-powershell.md
+            - name: Azure CLI
+              href: tutorial-create-route-table-cli.md
+            - name: Ansible
+              href: /azure/ansible/ansible-create-configure-route-table
+            - name: ルート テーブルの管理
+              href: manage-route-table.md
         - name: NIC の管理
           href: virtual-network-network-interface.md
         - name: 仮想ネットワークの管理
@@ -257,18 +275,6 @@
                   href: virtual-network-service-endpoint-policies-powershell.md
                 - name: Azure CLI
                   href: virtual-network-service-endpoint-policies-cli.md
-        - name: ネットワーク トラフィックのルーティング
-          items:
-            - name: Azure portal
-              href: tutorial-create-route-table-portal.md
-            - name: Azure PowerShell
-              href: tutorial-create-route-table-powershell.md
-            - name: Azure CLI
-              href: tutorial-create-route-table-cli.md
-            - name: Ansible
-              href: /azure/ansible/ansible-create-configure-route-table
-            - name: ルート テーブルの管理
-              href: manage-route-table.md
         - name: DDoS 保護の管理
           href: manage-ddos-protection.md
         - name: DDoS Protection Standard へのパートナーのオンボード

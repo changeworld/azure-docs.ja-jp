@@ -8,14 +8,14 @@
   expanded: true
   items:
     - name: Jenkins サーバーを作成する
-      href: install-jenkins-solution-template.md
+      href: install-solution-template-quickstart.md
 - name: チュートリアル
   items:
     - name: 1. インストール
       items:
         - name: Jenkins サーバーを作成する
-          href: install-jenkins-solution-template.md
-    - name: '2. [構成]'
+          href: install-solution-template-tutorial.md
+    - name: 2. 構成
       items:
         - name: Azure Container Instances でのスケーリング
           href: container-instances-jenkins.md

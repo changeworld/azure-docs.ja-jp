@@ -1,10 +1,10 @@
 ---
-title: Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用した SAP の高可用性向けの Azure インフラストラクチャの準備 | Microsoft Docs
+title: WSFC とファイル共有を使用した SAP ASCS および SCS HA 向けの Azure インフラストラクチャ | Microsoft Docs
 description: Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用した SAP の高可用性向けの Azure インフラストラクチャの準備
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cc2295f6151b3cde81c27c8ed1116013e1a3f9a9
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 4abae94ded92aca075fcb41a7cd42491e92d41d6
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647545"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591542"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用して SAP の高可用性向けの Azure インフラストラクチャを準備します
 
@@ -222,8 +222,8 @@ ms.locfileid: "75647545"
 | --- | --- | --- | --- |
 | 最初のクラスター ノードの ASCS/SCS クラスター | ascs-1 | 10.0.6.4 | ascs-as |
 | 2 番目のクラスター ノードの ASCS/SCS クラスター | ascs-2 | 10.0.6.5 | ascs-as |
-| クラスター ネットワーク名 |ascs-cl | 10.0.6.6 | 該当なし |
-| SAP PR1 ASCS クラスターのネットワーク名 |pr1-ascs | 10.0.6.7 | 該当なし |
+| クラスター ネットワーク名 |ascs-cl | 10.0.6.6 | 300 |
+| SAP PR1 ASCS クラスターのネットワーク名 |pr1-ascs | 10.0.6.7 | 300 |
 
 
 **表 1**: ASCS/SCS クラスター
@@ -240,8 +240,8 @@ ms.locfileid: "75647545"
 | 最初のクラスター ノード | sofs-1 | 10.0.6.10 | sofs-as |
 | 2 番目のクラスター ノード | sofs-2 | 10.0.6.11 | sofs-as |
 | 3 番目のクラスター ノード | sofs-3 | 10.0.6.12 | sofs-as |
-| クラスター ネットワーク名 | sofs-cl | 10.0.6.13 | 該当なし |
-| SAP グローバル ホスト名 | sapglobal | すべてのクラスター ノードの IP を使用 | 該当なし |
+| クラスター ネットワーク名 | sofs-cl | 10.0.6.13 | 300 |
+| SAP グローバル ホスト名 | sapglobal | すべてのクラスター ノードの IP を使用 | 300 |
 
 **表 3**: スケールアウト ファイル サーバー クラスター
 

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 01/23/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 099cf74dd27f39a4289397d5178511125d9ebf6f
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 63aef8d2036e442659145e031d384e9677c779a1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720722"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598070"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Azure RBAC と Azure portal を使用してロールの割り当てを一覧表示する
 
@@ -116,7 +116,7 @@ ms.locfileid: "76720722"
 
 ## <a name="list-role-assignments-for-a-user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID のロールの割り当てを一覧表示する
 
-1. Azure portal で、システム割り当てマネージド ID を開きます。
+1. Azure portal で、ユーザー割り当てマネージド ID を開きます。
 
 1. **[Azure リソース]** をクリックします。
 

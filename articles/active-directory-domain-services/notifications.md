@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 140edb3162d4f76c741a5692faa19325581a3ba7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5507579338ad0d87bc6223b56283fe7ed46af7d8
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704488"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613303"
 ---
 # <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services での問題に関するメール通知を構成する
 
@@ -58,7 +58,7 @@ Azure AD DS のメール受信者のリストは、マネージド ドメイン�
 メール通知の既存の受信者を確認したり、他の受信者を追加したりするには、次の手順を実行します。
 
 1. Azure portal で、**Azure AD Domain Services** を検索して選択します。
-1. Azure AD DS マネージド ドメイン ("*aadds.contoso.com*" など) を選択します。
+1. Azure AD DS マネージド ドメイン (*aaddscontoso.com* など) を選択します。
 1. Azure AD DS リソース ウィンドウの左側で、 **[通知設定]** を選択します。 メール通知の既存の受信者が表示されます。
 1. メールの受信者を追加するには、[その他の受信者] テーブルにメール アドレスを入力します。
 1. 終了したら、最上部のナビゲーションで **[保存]** を選択します。
@@ -80,7 +80,7 @@ Azure portal の通知設定ページにアクセスできない場合は、Azur
 
 通知が迷惑メール フォルダーに入っていないことを確認し、`azure-noreply@microsoft.com` を送信者として許可してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 レポートされる可能性があるいくつかの問題のトラブルシューティングの詳細については、[Azure AD DS マネージド ドメインに関するアラートの解決][troubleshoot-alerts]に関するページを参照してください。
 

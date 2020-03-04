@@ -3,12 +3,12 @@ title: 制限と境界 - QnA Maker
 description: QnA Maker には、ナレッジ ベースとサービスの一部について、メタデータの制限があります。 テストして発行するためには、これらの制限内にナレッジ ベースを維持することが重要です。
 ms.topic: article
 ms.date: 02/14/2020
-ms.openlocfilehash: 7fdf45a4a22f6d9ffe123f5998592739402be55f
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: ba53513f21cfc2a4f16fe17decdf0df41570201c
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252010"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650369"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker ナレッジ ベースの制限と境界
 
@@ -55,7 +55,7 @@ URL ページから QnA を抽出するためにクロールできるディー�
 
 ## <a name="metadata-limits"></a>メタデータの制限
 
-メタデータは小文字で格納され、比較されます。
+メタデータは、テキストベースの "キー:値" のペアとして表示されます (`product:windows 10` など)。 これは小文字で格納され、比較されます。
 
 ### <a name="by-azure-cognitive-search-pricing-tier"></a>Azure Cognitive Search の価格レベル
 
@@ -71,8 +71,8 @@ URL ページから QnA を抽出するためにクロールできるディー�
 
 |Item|使用できる文字|正規表現パターン マッチ|最大文字数|
 |--|--|--|--|
-|名前|以下の文字を使用可能:<br>英数字<br>`_` (アンダースコア)|`^[a-zA-Z0-9_]+$`|100|
-|Value|以下を除くすべての文字を使用可能:<br>`:` (コロン)<br>`|` (縦棒)|`^[^:|]+$`|500|
+|名前 (キー)|以下の文字を使用可能:<br>英数字<br>`_` (アンダースコア)<br> スペースを含めることはできません。|`^[a-zA-Z0-9_]+$`|100|
+|Value|以下を除くすべての文字を使用可能:<br>`:` (コロン)<br>`|` (縦棒)<br>使用できる値は 1 つだけです。|`^[^:|]+$`|500|
 |||||
 
 ## <a name="knowledge-base-content-limits"></a>ナレッジ ベースのコンテンツの制限
@@ -103,4 +103,4 @@ URL ページから QnA を抽出するためにクロールできるディー�
 
 ## <a name="next-steps"></a>次のステップ
 
-[サービス価格レベル](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker)を変更するタイミングと方法について学びます。
+[サービス価格レベル](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku)を変更するタイミングと方法について学びます。

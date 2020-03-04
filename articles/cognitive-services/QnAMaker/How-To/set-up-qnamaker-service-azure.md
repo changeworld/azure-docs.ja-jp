@@ -1,37 +1,23 @@
 ---
 title: QnA Maker サービスを設定する - QnA Maker
-titleSuffix: Azure Cognitive Services
 description: QnA Maker のナレッジ ベースを作成する前に、まず Azure で QnA Maker サービスをセットアップしておく必要があります。 QnA Maker サービスは、サブスクリプション内で新しいリソースを作成することが認可されているユーザーであれば、だれでもセットアップできます。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: 00b8e6d44ed8449aa4ddf8716039c8c85c558b8f
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 663cbce0e096c6189d97cf7872d466383d272f06
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901725"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650420"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker のリソースを管理する
 
 QnA Maker のナレッジ ベースを作成する前に、まず Azure で QnA Maker サービスをセットアップしておく必要があります。 QnA Maker サービスは、サブスクリプション内で新しいリソースを作成することが認可されているユーザーであれば、だれでもセットアップできます。
 
-## <a name="types-of-keys-in-qna-maker"></a>QnA Maker でのキーの種類
+リソースを作成する前に、次の概念について十分に理解しておくことをお勧めします。
 
-QnA Maker サービスでは、**サブスクリプション キー**と**エンドポイント キー**の 2 種類のキーを扱います。
-
-![キー管理](../media/qnamaker-how-to-key-management/key-management.png)
-
-|Name|Location|目的|
-|--|--|--|
-|Subscription key|[Azure Portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|これらのキーは、[QnA Maker 管理サービス API](https://go.microsoft.com/fwlink/?linkid=2092179) へのアクセスに使用されます。 これらの API を使用して、ナレッジ ベース内の質問と回答を編集したり、ナレッジ ベースを公開したりできます。 これらのキーは、新しい QnA Maker サービスを作成するときに作成されます。<br><br>これらのキーは、 **[キー]** ページの **Cognitive Services** リソースで確認できます。|
-|エンドポイント キー|[QnA Maker ポータル](https://www.qnamaker.ai)|これらのキーは、公開されたナレッジ ベースのエンドポイントにアクセスして、ユーザーの質問に対する回答を取得する目的で使用されます。 通常、このエンドポイントは、QnA Maker サービスに接続するチャット ボットまたはクライアント アプリケーション コードで使用されます。 これらのキーは、QnA Maker ナレッジ ベースを公開するときに作成されます。<br><br>これらのキーは、 **[サービスの設定]** ページで確認できます。 このページは、ページの右上にあるドロップダウン メニュー内のユーザーのメニューに含まれています。|
+* "[QnA Maker のリソース](../Concepts/azure-resources.md)"
+* [キーの作成と発行](../Concepts/azure-resources.md#keys-in-qna-maker)
 
 ## <a name="create-a-new-qna-maker-service"></a>新しい QnA Maker サービスの作成
 
@@ -63,7 +49,7 @@ QnA Maker サービスでは、**サブスクリプション キー**と**エン
 
     * **Application Insights** を有効にするかどうかを選択します。 **Application Insights** を有効にした場合、トラフィック、チャットのログ、エラーに関するテレメトリが QnA Maker によって収集されます。
     * Application Insights リソースのデプロイ先となる **App Insights の場所**を選択します。
-    * コスト削減対策として、QnA Maker 用に作成する Azure リソースのすべてではなく、一部を[共有](#share-existing-services-with-qna-maker)することができます。
+    * コスト削減対策として、QnA Maker 用に作成する Azure リソースのすべてではなく、一部を[共有](#configure-qna-maker-to-use-different-cognitive-search-resource)することができます。
 
 1. すべてのフィールドを確認した後、 **[作成]** を選択します。 プロセスが完了するまでに数分かかることがあります。
 
@@ -98,67 +84,10 @@ QnA Maker リソースを作成した Azure portal で、サブスクリプシ�
 2. キーを表示またはリセットします。
 
     > [!div class="mx-imgBorder"]
-    > [![サービス設定でのエンドポイントキーの表示、コピー、または設定](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)](../media/qnamaker-how-to-key-management/Endpoint-keys1.png#lightbox)
+    > ![エンドポイント キー マネージャー](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
 
     >[!NOTE]
     >キーが漏えいしていると思われる場合は、キーを更新してください。 それに合わせて、クライアント アプリまたはボットのコードの変更が必要になることがあります。
-
-## <a name="share-existing-services-with-qna-maker"></a>既存のサービスと QnA Maker の共有
-
-QnA Maker はいくつかの Azure リソースを作成します。 管理を軽減し、コスト共有のメリットを得るために、次の表を使用して、共有できるものとできないものを理解してください。
-
-|サービス|共有|理由|
-|--|--|--|
-|Cognitive Services|X|仕様により不可能|
-|App Service プラン|✔|App Service プランに対して固定のディスク領域が割り当てられています。 同じ App Service プランを共有している他のアプリによって大量のディスク領域が使用された場合、QnA Maker App Service インスタンスで問題が発生します。|
-|App Service|X|仕様により不可能|
-|Application Insights|✔|共有できます|
-|検索サービス|✔|1. `testkb` は QnA Maker サービス用の予約された名前です。他のサービスで使用することはできません。<br>2.`synonym-map` という名前のシノニム マップは、QnA Maker サービス用に予約されています。<br>3.公開されるナレッジ ベースの数は、Search サービスのレベルによって制限されます。 使用可能な空きインデックスがある場合は、他のサービスでそれらを使用できます。|
-
-[App Service](../../../app-service/index.yml) と [Search Service](../../../search/index.yml) の詳細をご覧ください。
-
-## <a name="using-a-single-search-service"></a>単一の Search サービスの使用
-
-ポータルを使用して QnA サービスとその依存関係 (Search など) を作成すると、Search サービスが自動的に作成され、QnA Maker サービスにリンクされます。 これらのリソースが作成された後、既存の Search サービスを使用するように App Service 設定を更新して、先ほど作成されたサービスを削除できます。
-
-Azure Resource Manager テンプレートを使用して QnA サービスを作成する場合は、すべてのリソースを作成し、既存の Search サービスを使用するように App Service の作成を制御できます。
-
-
-## <a name="configure-qna-maker-to-use-different-cognitive-search-resource"></a>別の Cognitive Search リソースを使用するように QnA Maker を構成する
-
-ポータルを使用して QnA サービスとその依存関係 (Search など) を作成すると、Search サービスが自動的に作成され、QnA Maker サービスにリンクされます。 これらのリソースが作成された後、既存の Search サービスを使用するように App Service 設定を更新して、先ほど作成されたサービスを削除できます。
-
-QnA Maker の **App Service** リソースには Cognitive Search リソースが使用されます。 QnA Maker に使用される Cognitive Search リソースを変更するには、Azure portal の設定を変更する必要があります。
-
-1. QnA Maker で使用する Cognitive Search リソースの**管理者キー**と**名前**を取得します。
-
-1. [Azure portal](https://portal.azure.com) にサインインし、QnA Maker リソースに関連付けられている**アプリ サービス**を見つけます。 両方とも同じ名前です。
-
-1. **[設定]** 、 **[構成]** の順に選択します。 これで、QnA Maker の App Service の既存の設定がすべて表示されます。
-
-    > [!div class="mx-imgBorder"]
-    > [![App Service の構成設定を表示する Azure portal のスクリーンショット](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png)](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png#lightbox)
-
-1. 次のキーの値を変更します。
-
-    * **AzureSearchAdminKey**
-    * **AzureSearchName**
-
-1. 新しい設定を使用するには、アプリ サービス を再起動する必要があります。 **[概要]** を選択し、 **[再起動]** を選択します。
-
-    > [!div class="mx-imgBorder"]
-    > [![構成設定の変更後に App Service を再起動する Azure portal のスクリーンショット](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)
-
-Azure Resource Manager テンプレートを使用して QnA サービスを作成する場合は、すべてのリソースを作成し、既存の Search サービスを使用するように App Service の作成を制御できます。
-
-## <a name="upgrade-qna-maker"></a>QnA Maker をアップグレードする
-
-|アップグレード|理由|
-|--|--|
-|QnA Maker 管理 SKU の[アップグレード](#upgrade-qna-maker-sku)|ナレッジ ベースにより多くの質問と回答を含めたい。|
-|App Service SKU の[アップグレード](#upgrade-app-service)|ナレッジ ベースでクライアント アプリ (チャット ボットなど) からのより多くの要求に対応する必要がある。|
-|Azure Cognitive Search サービスの[アップグレード](#upgrade-the-azure-cognitive-search-service)|多数のナレッジ ベースを使用する予定である。|
-
 
 ### <a name="upgrade-qna-maker-sku"></a>QnA Maker の SKU をアップグレードする
 
@@ -220,19 +149,45 @@ QnA Maker ランタイムは、Azure portal で [QnA Maker サービスを作成
 
 1. [Azure portal](https://portal.azure.com) で QnA Maker サービス (リソース グループ) に移動します。
 
-    ![QnA Maker Azure リソース グループ](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
+    > [!div class="mx-imgBorder"]
+    > ![QnA Maker Azure リソース グループ](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
 
 1. App Service インスタンスをクリックして、 **[概要]** セクションを開きます。
 
-    ![QnA Maker App Service インスタンス](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-appservice.png)
+    > [!div class="mx-imgBorder"]
+    > ![QnA Maker App Service インスタンス](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-appservice.png)
+
 
 1. App Service を再起動します。 更新プロセスは数秒で完了します。 この再起動中、エンド ユーザーは、この QnA Maker サービスを使用する依存アプリケーションやボットを使用できなくなります。
 
     ![QnA Maker App Service インスタンスの再起動](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
 
-## <a name="management-service-region"></a>管理サービスのリージョン
+## <a name="configure-qna-maker-to-use-different-cognitive-search-resource"></a>別の Cognitive Search リソースを使用するように QnA Maker を構成する
 
-QnA Maker の管理サービスは、QnA Maker ポータルと初期データ処理でのみ使用されます。 このサービスは、米国西部リージョンでのみ利用できます。 この米国西部のサービスでは、顧客データは保存されません。
+ポータルを使用して QnA サービスとその依存関係 (Search など) を作成すると、Search サービスが自動的に作成され、QnA Maker サービスにリンクされます。 これらのリソースが作成された後、既存の Search サービスを使用するように App Service 設定を更新して、先ほど作成されたサービスを削除できます。
+
+QnA Maker の **App Service** リソースには Cognitive Search リソースが使用されます。 QnA Maker に使用される Cognitive Search リソースを変更するには、Azure portal の設定を変更する必要があります。
+
+1. QnA Maker で使用する Cognitive Search リソースの**管理者キー**と**名前**を取得します。
+
+1. [Azure portal](https://portal.azure.com) にサインインし、QnA Maker リソースに関連付けられている**アプリ サービス**を見つけます。 両方とも同じ名前です。
+
+1. **[設定]** 、 **[構成]** の順に選択します。 これで、QnA Maker の App Service の既存の設定がすべて表示されます。
+
+    > [!div class="mx-imgBorder"]
+    > ![App Service の構成設定を表示する Azure portal のスクリーンショット](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png)
+
+1. 次のキーの値を変更します。
+
+    * **AzureSearchAdminKey**
+    * **AzureSearchName**
+
+1. 新しい設定を使用するには、アプリ サービス を再起動する必要があります。 **[概要]** を選択し、 **[再起動]** を選択します。
+
+    > [!div class="mx-imgBorder"]
+    > ![構成設定の変更後に App Service を再起動する Azure portal のスクリーンショット](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)
+
+Azure Resource Manager テンプレートを使用して QnA サービスを作成する場合は、すべてのリソースを作成し、既存の Search サービスを使用するように App Service の作成を制御できます。
 
 ## <a name="next-steps"></a>次のステップ
 

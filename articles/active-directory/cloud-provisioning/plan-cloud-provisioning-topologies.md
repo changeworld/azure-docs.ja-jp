@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 142974423816b07d754a5425017aedc3195e2f4e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 386af46bbee623d37bc914d2ee9130c914c6c885
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795378"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620865"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Azure AD Connect クラウド プロビジョニングがサポートされているトポロジとシナリオ
 この記事では、Azure AD Connect クラウド プロビジョニングを使用する、さまざまなオンプレミス トポロジおよび Azure Active Directory (Azure AD) トポロジについて説明します。 この記事には、サポートされている構成とシナリオのみが含まれています。
@@ -33,12 +33,16 @@ ms.locfileid: "74795378"
 - オブジェクトのソース アンカーは自動的に選択されます。  ms-DS-ConsistencyGuid を使用します (存在する場合)。それ以外の場合は、ObjectGUID が使用されます。
 - ソース アンカーに使用される属性を変更することはできません。
 
+## <a name="single-forest-single-azure-ad-tenant"></a>単一のフォレスト、単一の Azure AD テナント
+![単一のフォレストと単一のテナントのトポロジ](media/plan-cloud-provisioning-topologies/single-forest.png)
+
+最も単純なトポロジは、1 つのオンプレミス フォレスト (1 つまたは複数のドメイン) と、1 つの Azure AD テナントです。  このシナリオの例については、[チュートリアル:単一のフォレストと単一の Azure AD テナント](tutorial-single-forest.md)に関する記事を参照してください
 
 
 ## <a name="multi-forest-single-azure-ad-tenant"></a>複数のフォレスト、単一の Azure AD テナント
 ![複数のフォレストと単一のテナントのトポロジ](media/plan-cloud-provisioning-topologies/multi-forest.png)
 
-最も一般的なトポロジは、複数の AD フォレスト (1 つまたは複数のドメイン) と、1 つの Azure AD テナントです。  
+一般的なトポロジは、複数の AD フォレスト (1 つまたは複数のドメイン) と、1 つの Azure AD テナントです。  
 
 ## <a name="existing-forest-with-azure-ad-connect-new-forest-with-cloud-provisioning"></a>既存のフォレストを使用した Azure AD Connect、クラウド プロビジョニングを使用した新しいフォレスト
 ![単一のフォレストと単一のテナントのトポロジ](media/plan-cloud-provisioning-topologies/existing-forest-new-forest.png)
@@ -50,12 +54,9 @@ ms.locfileid: "74795378"
 
 このシナリオの例については、[チュートリアル:既存の同期済み AD フォレストで Azure AD Connect クラウド プロビジョニングのパイロットを実施する](tutorial-pilot-aadc-aadccp.md)に関する記事を参照してください。
 
-## <a name="single-forest-single-azure-ad-tenant"></a>単一のフォレスト、単一の Azure AD テナント
-![単一のフォレストと単一のテナントのトポロジ](media/plan-cloud-provisioning-topologies/single-forest.png)
 
-最も単純なトポロジは、1 つのオンプレミス フォレスト (1 つまたは複数のドメイン) と、1 つの Azure AD テナントです。  このシナリオの例については、[チュートリアル:単一のフォレストと単一の Azure AD テナント](tutorial-single-forest.md)に関する記事を参照してください
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 
 - [プロビジョニングとは](what-is-provisioning.md)
 - [Azure AD Connect クラウド プロビジョニングとは](what-is-cloud-provisioning.md)

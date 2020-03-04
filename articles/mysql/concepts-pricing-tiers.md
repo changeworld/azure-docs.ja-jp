@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 10eacb9cc1ca4641396212ec9564308d7ef74c3a
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.date: 02/25/2020
+ms.openlocfilehash: 384207f1afdb027ec90a71cbbfe5356d10d87319
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484674"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619511"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL の価格レベル
 
@@ -85,7 +85,7 @@ Basic レベルでは、IOPS 保証は提供されません。 汎用および�
 
 ## <a name="backup"></a>バックアップ
 
-サービスによって、サーバーのバックアップが自動的に取得されます。 バックアップの最小リテンション期間は 7 日です。 最大 35 日のリテンション期間を設定できます。 リテンション期間は、サーバーの有効期間中、任意の時点で調整できます。 ローカル冗長バックアップまたは geo 冗長バックアップのいずれかを選択することができます。 geo 冗長バックアップは、ご利用のサーバーが作成されたリージョンの [geo ペア リージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)内にも保存されます。 この冗長性により、障害発生時に保護が提供されます。 また、geo 冗長バックアップで使用できるサービスが提供されている他の Azure リージョンに、サーバーを復元できるようになります。 サーバーを作成した後に、2 つのバックアップ ストレージ オプションを切り替えることはできません。
+サービスによって、サーバーのバックアップが自動的に取得されます。 7 日間から 35 日間までの保持期間を選択できます。 汎用サーバーとメモリ最適化サーバーでは、バックアップに geo 冗長ストレージを使用することを選択できます。 バックアップの詳細については概念に関する[こちら](concepts-backup.md)の記事をご覧ください。
 
 ## <a name="scale-resources"></a>リソースのスケール
 

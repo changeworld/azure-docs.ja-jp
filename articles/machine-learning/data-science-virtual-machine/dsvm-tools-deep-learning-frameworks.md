@@ -10,17 +10,17 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 3dfb2c201138a65379aa509ce1bf10894ab6819b
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: d8a5cf428f41b130e6faf68ac87a075c15211099
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984712"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587602"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Azure Data Science VM 用のディープ ラーニングと AI のフレームワーク
 以下の一覧では、DSVM でのディープ ラーニング フレームワークを示します。
 
-## <a name="caffehttpsgithubcombvlccaffe"></a>[Caffe](https://github.com/BVLC/caffe)
+## <a name="caffe"></a>[Caffe](https://github.com/BVLC/caffe)
 
 |    |           |
 | ------------- | ------------- |
@@ -29,7 +29,7 @@ ms.locfileid: "76984712"
 | DSVM での構成/インストール方法  | Caffe は `/opt/caffe` にインストールされます。   サンプルは `/opt/caffe/examples` にあります。|
 | 実行方法      | X2Go を使用して VM にサインインした後、新しいターミナルを起動して次のように入力します。<br/>`cd /opt/caffe/examples`<br/>`source activate root`<br/>`jupyter notebook`<br/><br/>新しいブラウザー ウィンドウでサンプルのノートブックが開きます。 バイナリは、/opt/caffe/build/install/bin にインストールされています。<br/><br/>Caffe のインストールされるバージョンは Python 2.7 を必要とします。既定でアクティブ化される Python 3.5 では機能しません。 Python 2.7 に切り替えるには、`source activate root` を実行して Anaconda 環境に切り替えます。|    
 
-## <a name="caffe2httpsgithubcomcaffe2caffe2"></a>[Caffe2](https://github.com/caffe2/caffe2)
+## <a name="caffe2"></a>[Caffe2](https://github.com/caffe2/caffe2)
 
 |    |           |
 | ------------- | ------------- |
@@ -38,7 +38,7 @@ ms.locfileid: "76984712"
 | DSVM での構成/インストール方法  | Caffe2 は、Python 2.7 (ルート) Conda 環境にインストールされます。 |
 | 実行方法      | ターミナル: Python を開始し、Caffe2 をインポートします。 <br/> * JupyterHub: [JupyterHub に接続](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)し、Caffe2 ディレクトリに移動してサンプル ノートブックを見つけます。 一部のノートブックについては、Caffe2 ルートを Python コードで設定する必要があります。/opt/caffe2 と入力します。 |
 
-## <a name="chainerhttpschainerorg"></a>[Chainer](https://chainer.org/)
+## <a name="chainer"></a>[Chainer](https://chainer.org/)
 
 |    |           |
 | ------------- | ------------- |
@@ -47,7 +47,7 @@ ms.locfileid: "76984712"
 | DSVM での構成/インストール方法  | Chainer は、Python 3.5 にインストールされます。 |
 | 実行方法      | ターミナル: Python 3.5 環境をアクティブ化した後、`python` を実行してから、`import chainer` を実行します。 <br/> * JupyterHub: [JupyterHub に接続](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)し、Chainer ディレクトリに移動してサンプル ノートブックを見つけます。| 
 
-## <a name="cuda-cudnn-nvidia-driverhttpsdevelopernvidiacomcuda-toolkit"></a>[CUDA、cuDNN、NVIDIA ドライバー](https://developer.nvidia.com/cuda-toolkit)
+## <a name="cuda-cudnn-nvidia-driver"></a>[CUDA、cuDNN、NVIDIA ドライバー](https://developer.nvidia.com/cuda-toolkit)
 
 |    |           |
 | ------------- | ------------- |
@@ -57,7 +57,7 @@ ms.locfileid: "76984712"
 | 実行方法      | コマンド プロンプト (Windows) またはターミナル (Linux) を開いて、_nvidia-smi_ を実行します。 |
 
 
-## <a name="horovodhttpsgithubcomuberhorovod"></a>[Horovod](https://github.com/uber/horovod)
+## <a name="horovod"></a>[Horovod](https://github.com/uber/horovod)
 
 |    |           |
 | ------------- | ------------- |
@@ -66,7 +66,7 @@ ms.locfileid: "76984712"
 | DSVM での構成/インストール方法  | Horovod は、Python 3.5 にインストールされます |
 | 実行方法      | ターミナルで適切な環境をアクティブ化した後、Python を実行します。 |
 
-## <a name="kerashttpskerasio"></a>[Keras](https://keras.io/)
+## <a name="keras"></a>[Keras](https://keras.io/)
 
 |    |           |
 | ------------- | ------------- |
@@ -75,7 +75,7 @@ ms.locfileid: "76984712"
 | DSVM での構成/インストール方法  | Keras は、Windows では Python 3.6 に、Linux では Python 3.5 にインストールされます |
 | 実行方法      | ターミナルで適切な環境をアクティブ化した後、Python を実行します。 |
 
-## <a name="microsoft-cognitive-toolkit-cntkhttpsdocsmicrosoftcomcognitive-toolkit"></a>[Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/)
+## <a name="microsoft-cognitive-toolkit-cntk"></a>[Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/)
 
 |    |           |
 | ------------- | ------------- |
@@ -84,7 +84,7 @@ ms.locfileid: "76984712"
 | DSVM での構成/インストール方法  | CNTK は、[Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) では Python 3.6 に、[Linux](./dsvm-tools-languages.md#python-linux-edition) では Python 3.5 にインストールされます |
 | 実行方法      | ターミナル: 適切な環境をアクティブ化し、Python を実行します。 <br/>Jupyter: [Jupyter](provision-vm.md) または [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine) に接続し、サンプル用の CNTK ディレクトリを開きます。 |
 
-## <a name="mxnethttpsmxnetapacheorg"></a>[MXNet](https://mxnet.apache.org/)
+## <a name="mxnet"></a>[MXNet](https://mxnet.apache.org/)
 |    |           |
 | ------------- | ------------- |
 | サポートされるバージョン | 1.3.0 |
@@ -92,7 +92,7 @@ ms.locfileid: "76984712"
 | DSVM での構成/インストール方法  | MXNet は、Windows では `C:\dsvm\tools\mxnet` に、Ubuntu では `/dsvm/tools/mxnet` にインストールされます。 Python バインディングは、[Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) では Python 3.6 に、[Linux](./dsvm-tools-languages.md#python-linux-edition) では Python 3.5 にインストールされます。R バインディングは、Ubuntu DSVM にも含まれています。 |
 | 実行方法      | ターミナル: 適切な conda 環境をアクティブ化して、`import mxnet` を実行します。 <br/>Jupyter: [Jupyter](provision-vm.md#access-the-dsvm) または [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine) に接続して、サンプル用の `mxnet` ディレクトリを開きます。 |
 
-## <a name="mxnet-model-serverhttpsgithubcomawslabsmxnet-model-serverquick-start"></a>[MXNet モデル サーバー](https://github.com/awslabs/mxnet-model-server#quick-start)
+## <a name="mxnet-model-server"></a>[MXNet モデル サーバー](https://github.com/awslabs/mxnet-model-server#quick-start)
 
 |    |           |
 | ------------- | ------------- |
@@ -101,7 +101,7 @@ ms.locfileid: "76984712"
 | DSVM での構成/インストール方法  | MXNet モデル サーバーは、[Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) では Python 3.6 に、[Linux](./dsvm-tools-languages.md#python-linux-edition) では Python 3.5 にインストールされます |
 | 実行方法      | ターミナル: まず、`sudo systemctl stop jupyterhub` を実行して、JupyterHub サービスを停止させます。両方とも同じポートでリッスンしているためです。 次に、適切な conda 環境をアクティブ化し、`mxnet-model-server --start --models squeezenet=https://s3.amazonaws.com/model-server/model_archive_1.0/squeezenet_v1.1.mar` を実行します。 |
 
-## <a name="nvidia-system-management-interface-nvidia-smihttpsdevelopernvidiacomnvidia-system-management-interface"></a>[NVidia システム管理インターフェイス (nvidia-smi)](https://developer.nvidia.com/nvidia-system-management-interface)
+## <a name="nvidia-system-management-interface-nvidia-smi"></a>[NVidia システム管理インターフェイス (nvidia-smi)](https://developer.nvidia.com/nvidia-system-management-interface)
 
 |    |           |
 | ------------- | ------------- |
@@ -111,16 +111,16 @@ ms.locfileid: "76984712"
 | DSVM での構成/インストール方法  | `nvidia-smi` はシステム パス上にあります。 |
 | 実行方法      | **GPU を備えた**仮想マシンで、コマンド プロンプト (Windows の場合) またはターミナル (Linux の場合) を開き、`nvidia-smi` を実行します。 |
 
-## <a name="pytorchhttpspytorchorg"></a>[PyTorch](https://pytorch.org/)
+## <a name="pytorch"></a>[PyTorch](https://pytorch.org/)
 
 |    |           |
 | ------------- | ------------- |
-| サポートされるバージョン | 1.2.0 (Ubuntu 16.04、Windows 2016、Windows 2019)、1.4.0 (Ubuntu 18.04) |
+| サポートされるバージョン | 1.2.0 (Ubuntu 16.04、Windows 2016)、1.4.0 (Ubuntu 18.04、Windows 2019) |
 | サポートされている DSVM エディション      | Linux |
 | DSVM での構成/インストール方法  | [Python 3.5](dsvm-tools-languages.md#python-linux-edition) でインストールされます。 サンプルの Jupyter ノートブックが含まれており、サンプルは /dsvm/samples/pytorch にあります。 |
 | 実行方法      | ターミナル: 適切な環境をアクティブ化した後、Python を実行します。<br/>* [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine): 接続した後、サンプル用の PyTorch ディレクトリを開きます。  |
 
-## <a name="tensorflowhttpswwwtensorfloworg"></a>[TensorFlow](https://www.tensorflow.org/)
+## <a name="tensorflow"></a>[TensorFlow](https://www.tensorflow.org/)
 
 |    |           |
 | ------------- | ------------- |
@@ -129,7 +129,7 @@ ms.locfileid: "76984712"
 | DSVM での構成/インストール方法  | [Linux](dsvm-tools-languages.md#python-linux-edition) では Python 3.5 に、[Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) では Python 3.6 でインストールされます |
 | 実行方法      | ターミナル: 適切な環境をアクティブ化した後、Python を実行します。 <br/> * Jupyter: [Jupyter](provision-vm.md) または [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine) に接続し、サンプル用の TensorFlow ディレクトリを開きます。   |
 
-## <a name="tensorflow-servinghttpswwwtensorfloworgserving"></a>[TensorFlow Serving](https://www.tensorflow.org/serving/)
+## <a name="tensorflow-serving"></a>[TensorFlow Serving](https://www.tensorflow.org/serving/)
 
 |    |           |
 | ------------- | ------------- |
@@ -139,7 +139,7 @@ ms.locfileid: "76984712"
 | 実行方法      |  サンプルは[オンラインで](https://www.tensorflow.org/serving/)利用可能   |
 
 
-## <a name="theanohttpsgithubcomtheanotheano"></a>[Theano](https://github.com/Theano/Theano)
+## <a name="theano"></a>[Theano](https://github.com/Theano/Theano)
 
 |    |           |
 | ------------- | ------------- |

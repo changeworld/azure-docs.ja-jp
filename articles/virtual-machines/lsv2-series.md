@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 226611bde6024f98ce6d3660fe18e66dba9a420c
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b10433190ccc7703938bed2a75a5d816f073295e
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492596"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587262"
 ---
 # <a name="lsv2-series"></a>Lsv2 シリーズ
 
@@ -23,7 +23,7 @@ Lsv2 シリーズは、2.55 GHz の全コア ブーストと 3.0 GHz の最大�
 >
 > Lsv2 シリーズの VM は、ローカル ディスクの高スループットと IOPS によって、1 つの VM で障害が発生した場合に複数の VM にデータをレプリケートして永続性を実現する Apache Cassandra や MongoDB などの NoSQL ストアにとって最適なものになっています。
 >
-> 詳細については、[Lsv2 シリーズの仮想マシンでパフォーマンスを最適化する](/linux/storage-performance.md)方法に関するページを参照してください。  
+> 詳細については、[Windows](../virtual-machines/windows/storage-performance.md) または [Linux](../virtual-machines/linux/storage-performance.md) 用の「Lsv2 シリーズの仮想マシン上でパフォーマンスを最適化する」を参照してください。  
 
 ACU: 150 から 175
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: memildin
-ms.openlocfilehash: b2ab769fc2595af9fd1ea41f1ef492944cb5e7fa
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 1a6dbaeac5355d50edb93a7f215d7f8e88231e98
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75665770"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615966"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Azure Security Center でのセキュリティ インシデントの管理
 
@@ -48,20 +48,24 @@ Security Center でのセキュリティ インシデントとは、 [キル チ
 
 次のトピックでは、リソースの種類に応じてさまざまなアラートを説明します。
 
-* [IaaS VM とサーバーのアラート](security-center-alerts-iaas.md)
-* [ネイティブ コンピューティングのアラート](security-center-alerts-compute.md)
-* [データ サービスのアラート](security-center-alerts-data-services.md)
+* [IaaS Windows マシンのアラート](threat-protection.md#windows-machines)
+* [IaaS Linux マシンのアラート](threat-protection.md#linux-machines)
+* [Azure App Service のアラート](threat-protection.md#app-services)
+* [Azure コンテナーのアラート](threat-protection.md#azure-containers)
+* [SQL Database および SQL Data Warehouse のアラート](threat-protection.md#data-sql)
+* [Azure Storage のアラート](threat-protection.md#azure-storage)
+* [Cosmos DB のアラート](threat-protection.md#cosmos-db)
 
 次のトピックでは、Security Center が、Azure にデプロイされたリソースに追加の保護レイヤーを適用するために、Azure インフラストラクチャとの統合から収集したさまざまなテレメトリを活用する方法について説明します。
 
-* [サービス層のアラート](security-center-alerts-service-layer.md)
-* [Azure WAF と Azure DDoS Protection の脅威検出](security-center-alerts-integration.md)
+* [Azure 管理レイヤー (Azure Resource Manager) のアラート (プレビュー)](threat-protection.md#management-layer)
+* [Azure Key Vault のアラート (プレビュー)](threat-protection.md#azure-keyvault)
+* [Azure ネットワーク レイヤーのアラート](threat-protection.md#network-layer)
+* [その他のサービスからのアラート](threat-protection.md#alerts-other)
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 このドキュメントでは、Security Center でのセキュリティ インシデント機能の使用方法について説明しました。 セキュリティ センターの詳細については、次を参照してください。
 
 * [Azure Security Center のセキュリティ アラート](security-center-alerts-overview.md)。
 * [セキュリティ アラートの管理](security-center-managing-and-responding-alerts.md)
 * [Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)
-* 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。
-* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/)-- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。

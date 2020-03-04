@@ -2,18 +2,19 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 08/19/2019
+ms.date: 02/24/2020
 ms.author: tomfitz
-ms.openlocfilehash: b4338560d515289d3e9aedfa716ec7c3ace51131
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c1a52e1bc2dde74289cb270fcae832be24de5a06
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75392422"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592429"
 ---
 | リソース | 既定の制限 | 上限 |
 | --- | --- | --- |
-| リソースの種類ごとの、[リソース グループ](../articles/azure-resource-manager/management/overview.md#resource-groups)あたりのリソース数 |800 |リソースの種類によっては、800 の制限を超えることがあります。 「[リソース グループあたり 800 インスタンスに制限されないリソース](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md)」を参照してください。 |
+| [リソース グループ](../articles/azure-resource-manager/management/overview.md#resource-groups)あたりのリソース数 | 該当なし | リソースはリソース グループによって制限されることはありません。 代わりに、リソース グループのリソースの種類によって制限されます。 次の行を参照してください。 | 
+| リソースの種類ごとのリソース グループあたりのリソース数 |800 |リソースの種類によっては、800 の制限を超えることがあります。 「[リソース グループあたり 800 インスタンスに制限されないリソース](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md)」を参照してください。 |
 | デプロイ履歴でのリソース グループあたりのデプロイ数 |800<sup>1</sup> |800 |
 | デプロイあたりのリソース数 |800 |800 |
 | 一意のスコープあたりの管理ロック数 |20 |20 |
@@ -25,7 +26,7 @@ ms.locfileid: "75392422"
 
 #### <a name="template-limits"></a>テンプレートの制限
 
-| 値 | 既定の制限 | 上限 |
+| Value | 既定の制限 | 上限 |
 | --- | --- | --- |
 | パラメーター |256 |256 |
 | 変数: |256 |256 |

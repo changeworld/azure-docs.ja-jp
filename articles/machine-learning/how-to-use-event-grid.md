@@ -10,12 +10,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 11/04/2019
-ms.openlocfilehash: 0da5fe56bd56d360cd8052976bdde0cdc910c9a5
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 49ee00d43820d5aeb50e44cff1b6c5a448b4ce81
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904284"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623915"
 ---
 # <a name="create-event-driven-machine-learning-workflows-preview"></a>イベント ドリブン Machine Learning ワークフローを作成する (プレビュー)
 
@@ -25,15 +25,15 @@ ms.locfileid: "76904284"
 
 Event Grid を使用すると、次のような一般的なシナリオが有効になります。
 
-* 再トレーニングのためのパイプラインのトリガー
+* 実行完了時に電子メールを送信する
+* モデルの登録後に Azure 関数を使用する
 * Azure Machine Learning からさまざまなエンドポイントへのイベントのストリーミング
+* 誤差が検出されたときに ML パイプラインをトリガーする
 
 ## <a name="prerequisites"></a>前提条件
-
 * イベントを作成する Azure Machine Learning ワークスペースへの共同作成者または所有者アクセス。
-* webhook やイベント ハブなどのイベント ハンドラー エンドポイントを選択します。 詳細は、[イベント ハンドラー](https://docs.microsoft.com/azure/event-grid/event-handlers)に関する記事を参照してください｡ 
 
-## <a name="configure-machine-learning-events-using-the-azure-portal"></a>Azure portal を使用して Machine Learning イベントを構成する
+### <a name="configure-eventgrid-using-the-azure-portal"></a>Azure portal を使用して EventGrid を構成する
 
 1. [Azure portal](https://portal.azure.com) を開き、Azure Machine Learning ワークスペースに移動します。
 
@@ -51,7 +51,7 @@ Event Grid を使用すると、次のような一般的なシナリオが有効
 
 選択内容を確認したら、 __[作成]__ をクリックします。 構成の後、これらのイベントはエンドポイントにプッシュされます。
 
-## <a name="set-up-azure-event-grid-using-cli"></a>CLI を使用して Azure Event Grid を設定する
+### <a name="configure-eventgrid-using-the-cli"></a>CLI を使用して EventGrid を構成する
 
 最新の [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) をインストールするか、Azure サブスクリプションの一部として提供されている Azure Cloud Shell を使用することができます。
 
@@ -61,7 +61,7 @@ Event Grid 拡張機能をインストールするには、CLI から次のコ�
 az add extension --name eventgrid
 ```
 
-次の例は、Azure サブスクリプションを選択し、Azure Machine Learning の新しいイベント サブスクリプションを作成する方法を示しています。
+次の例では、Azure サブスクリプションの選択方法が示されており、Azure Machine Learning の新しいイベント サブスクリプションが作成されます。
 
 ```azurecli-interactive
 # Select the Azure subscription that contains the workspace
@@ -77,6 +77,12 @@ az eventgrid event-subscription create \
 ```
 
 ## <a name="sample-scenarios"></a>サンプル シナリオ
+
+### <a name="use-azure-functions-to-deploy-a-model-based-on-tags"></a>Azure Functions を使用してタグに基づくモデルをデプロイする
+
+Azure Machine Learning モデルオブジェクトには、モデルの名前、バージョン、タグ、プロパティなど、デプロイをピボットできるパラメーターが含まれています。 モデル登録イベントはエンドポイントをトリガーでき、Azure 関数を使用して、これらのパラメーターの値に基づいてモデルを配置できます。
+
+例については、[https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) リポジトリを参照し、**readme** ファイルの手順に従ってください。
 
 ### <a name="use-a-logic-app-to-send-email-alerts"></a>ロジック アプリを使用して電子メール アラートを送信する
 
@@ -94,7 +100,7 @@ az eventgrid event-subscription create \
 
     ![select-event-runcomplete](./media/how-to-use-event-grid/select-event-runcomplete.png)
 
-1. また、フィルターを追加して、イベントの種類のサブセットでロジック アプリのみトリガーすることもできます。 次のスクリーンショットでは、 __/datadriftID/runs/__ の __プレフィックス フィルター__ が使用されています。
+1. また、フィルターを追加して、イベントの種類のサブセットでロジック アプリのみトリガーすることもできます。 次のスクリーンショットでは、 __/datadriftID/runs/__ の__プレフィックス フィルター__が使用されています。
 
     ![filter-events](./media/how-to-use-event-grid/filtering-events.png)
 
@@ -158,12 +164,6 @@ az eventgrid event-subscription create \
 
 ![view-in-workspace](./media/how-to-use-event-grid/view-in-workspace.png)
 
-
-### <a name="use-azure-functions-to-deploy-a-model-based-on-tags"></a>Azure Functions を使用してタグに基づくモデルをデプロイする
-
-Azure Machine Learning モデルオブジェクトには、モデルの名前、バージョン、タグ、プロパティなど、デプロイをピボットできるパラメーターが含まれています。 モデル登録イベントはエンドポイントをトリガーでき、Azure 関数を使用して、これらのパラメーターの値に基づいてモデルを配置できます。
-
-例については、[https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) リポジトリを参照し、**readme** ファイルの手順に従ってください。
 
 ## <a name="next-steps"></a>次のステップ
 

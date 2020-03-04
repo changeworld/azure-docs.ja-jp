@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: d982771d5c7ebc864991026e399e9648d333cc8f
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 0eacf0f65346247d5fda5b26ead924a8cfd94dd9
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425529"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562090"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-preview-using-cli"></a>CLI を使用して Azure Database for PostgreSQL 単一サーバー (プレビュー) 用のプライベート リンクを作成および管理する
 
@@ -121,6 +121,9 @@ az network private-dns record-set a create --name myserver --zone-name privateli
 az network private-dns record-set a add-record --record-set-name myserver --zone-name privatelink.postgres.database.windows.net --resource-group myResourceGroup -a <Private IP Address>
 ```
 
+> [!NOTE] 
+> お客様の DNS 設定の FQDN は、構成されている非公開 IP では解決されません。 [こちら](../dns/dns-operations-recordsets-portal.md)に示されているように、構成された FQDN の DNS ゾーンを設定する必要があります。
+
 ## <a name="connect-to-a-vm-from-the-internet"></a>インターネットから VM に接続する
 
 次のように、インターネットから VM *myVm* に接続します。
@@ -161,24 +164,24 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
     Address:  10.1.3.4
     ```
 
-3. 使用可能な任意のクライアントを使用して、PostgreSQL サーバーのプライベートリンク接続をテストします。 次の例では、[Azure Data スタジオ](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15) を使用して操作を行いました。
+3. 使用可能な任意のクライアントを使用して、PostgreSQL サーバーのプライベートリンク接続をテストします。 次の例では、[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15) を使用して操作を行いました。
 
-4. **新しい接続** で、この情報を入力または選択します。
+4. **[新しい接続]** で、この情報を入力または選択します。
 
     | 設定 | Value |
     | ------- | ----- |
-    | サーバーの種類| **PostgreSQL** を選択します。|
-    | サーバー名| *mydemopostgresserver.privatelink.postgres.database.azure.com* の選択 |
-    | ユーザー名 | PostgreSQL サーバーの作成時に指定したusername@servernameユーザ名を入力します。 |
+    | サーバーの種類| **[PostgreSQL]** を選択します。|
+    | サーバー名| *[mydemopostgresserver.privatelink.postgres.database.azure.com]* を選択します。 |
+    | ユーザー名 | PostgreSQL サーバーの作成時に指定されるユーザー名を「username@servername」として入力します。 |
     |Password |PostgreSQL サーバーの作成時に指定したパスワードを入力します。 |
-    |SSL|**必須**を選択します。|
+    |SSL|**[必須]** を選択します。|
     ||
 
 5. [接続] を選択します。
 
 6. 左側のメニューでデータベースを参照します。
 
-7. (省略可能) 情報を作成するか、postgreSQL に対して情報のクエリを実行します。
+7. (省略可能) postgreSQL サーバーから情報を作成またはクエリします。
 
 8. myVM へのリモート デスクトップ接続を閉じます。
 

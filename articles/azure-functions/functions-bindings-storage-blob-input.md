@@ -302,12 +302,12 @@ public static void Run(
 
 |function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
-|**type** | n/a | `blob` に設定する必要があります。 |
-|**direction** | n/a | `in` に設定する必要があります。 例外は、[使用方法](#usage)のセクションに記載しています。 |
-|**name** | n/a | 関数コード内の BLOB を表す変数の名前。|
+|**type** | 該当なし | `blob` に設定する必要があります。 |
+|**direction** | 該当なし | `in` に設定する必要があります。 例外は、[使用方法](#usage)のセクションに記載しています。 |
+|**name** | 該当なし | 関数コード内の BLOB を表す変数の名前。|
 |**path** |**BlobPath** | BLOB へのパス。 |
 |**connection** |**[接続]**| このバインドに使用する[ストレージ接続文字列](../storage/common/storage-configure-connection-string.md)を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB のみのストレージ アカウント](../storage/common/storage-account-overview.md#types-of-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。|
-|n/a | **Access (アクセス)** | 読み取りと書き込みのどちらを行うかを示します。 |
+|該当なし | **Access (アクセス)** | 読み取りと書き込みのどちらを行うかを示します。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

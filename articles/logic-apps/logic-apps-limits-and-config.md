@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 059894d441897bd89be525abcc7e1c7ab6ba23e7
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 514ead43159b416752f968da3883e644fb0ccc2f
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485048"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650897"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -149,11 +149,13 @@ Azure Logic Apps では、ゲートウェイ経由での挿入や更新などの
 | 受信要求 | 120 秒 <br>(2 分) | 240 秒 <br>(4 分) | 受信要求の例には、要求トリガーと Webhook トリガーによって受信された呼び出しが含まれます。 <p><p>**注**:元の呼び出し元で応答を受け取るには、別のロジック アプリを入れ子のワークフローとして呼び出す場合を除き、応答のすべての手順が制限内に完了する必要があります。 詳細については、「[ロジック アプリを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。 |
 |||||
 
+<a name="message-size-limits"></a>
+
 #### <a name="message-size"></a>メッセージ サイズ
 
 | 名前 | マルチ テナントの制限 | 統合サービス環境の制限 | Notes |
 |------|--------------------|---------------------------------------|-------|
-| メッセージ サイズ | 100 MB | 200 MB | この制限を回避するには、「[Handle large messages with chunking](../logic-apps/logic-apps-handle-large-messages.md)」をご覧ください。 ただし、一部のコネクタおよび API は、チャンクまたは既定の制限をサポートしない場合があります。 |
+| メッセージ サイズ | 100 MB | 200 MB | ISE のラベルが付いたコネクタは、ISE 以外のコネクタの制限ではなく、ISE の制限を使用します。 <p><p>この制限を回避するには、「[Handle large messages with chunking](../logic-apps/logic-apps-handle-large-messages.md)」をご覧ください。 ただし、一部のコネクタおよび API は、チャンクまたは既定の制限をサポートしない場合があります。 |
 | チャンクがある場合のメッセージ サイズ | 1 GB | 5 GB | この制限は、チャンクをネイティブでサポートするアクションに適用されます。または、ランタイム構成でのチャンクを有効にできます。 <p>統合サービス環境の場合、Logic Apps エンジンはこの制限をサポートしますが、コネクタには、エンジンの制限などに応じて独自のチャンク制限があります。例については、[Azure Blob Storage コネクタの API リファレンス](https://docs.microsoft.com/connectors/azureblob/)に関する記事を参照してください。 チャンクの詳細については、[チャンクを使用した大きいサイズのメッセージの処理](../logic-apps/logic-apps-handle-large-messages.md)に関する記事を参照してください。 |
 |||||
 

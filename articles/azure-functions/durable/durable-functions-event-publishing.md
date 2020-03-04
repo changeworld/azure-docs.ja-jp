@@ -3,12 +3,12 @@ title: Azure Event Grid への Durable Functions の発行 (プレビュー)
 description: Durable Functions の Azure Event Grid 自動発行を構成する方法を説明します。
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 768af2e89d6523f50bd9fcc3d13cc84b711cc6f0
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 5ee60dadc90af5a9b941ba890bddb9b96de3f35d
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547474"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562168"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Azure Event Grid への Durable Functions の発行 (プレビュー)
 
@@ -18,24 +18,19 @@ ms.locfileid: "76547474"
 
 * **ブルー/グリーン デプロイなどの DevOps シナリオ**: [並行デプロイ戦略](durable-functions-versioning.md#side-by-side-deployments)を実装する前に、タスクが実行されているかどうかを知ることができます。
 
-* **高度な監視と診断のサポート**: SQL データベースや CosmosDB など、クエリ用に最適化された外部ストアで、オーケストレーションの状態情報を追跡できます。
+* **高度な監視と診断のサポート**: Azure SQL Database や Azure Cosmos DB など、クエリ用に最適化された外部ストアで、オーケストレーションの状態情報を追跡できます。
 
 * **実行時間の長いバック グラウンド アクティビティ**: 実行時間の長いバック グラウンド アクティビティに Durable Functions を使用する場合、この機能は現在の状態を知るのに役立ちます。
-
-[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
 * [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) を Durable Functions プロジェクトにインストールします。
-* [Azure ストレージ エミュレーター](../../storage/common/storage-use-emulator.md)をインストールします。
+* [Azure ストレージ エミュレーター](../../storage/common/storage-use-emulator.md) (Windows のみ) をインストールするか、既存の Azure Storage アカウントを使用します。
 * [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) をインストールするか、[Azure Cloud Shell](../../cloud-shell/overview.md) を使用します
 
-## <a name="create-a-custom-event-grid-topic"></a>カスタムのイベント グリッド トピックの作成
+## <a name="create-a-custom-event-grid-topic"></a>カスタムの Event Grid トピックの作成
 
-Durable Functions からイベントを送信するためのイベント グリッド トピックを作成します。 次の手順は、Azure CLI を使用してトピックを作成する方法を示しています。 PowerShell または Azure Portal を使用して行う方法については、次の記事をご覧ください。
-
-* [EventGrid Quickstarts: カスタム イベントの作成- PowerShell](../../event-grid/custom-event-quickstart-powershell.md)
-* [EventGrid Quickstarts: カスタム イベントの作成 - Azure portal](../../event-grid/custom-event-quickstart-portal.md)
+Durable Functions からイベントを送信するための Event Grid トピックを作成します。 次の手順は、Azure CLI を使用してトピックを作成する方法を示しています。 これは、[PowerShell を使用して](../../event-grid/custom-event-quickstart-powershell.md)、または [Azure portal を使用して](../../event-grid/custom-event-quickstart-portal.md)も実行できます。
 
 ### <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -47,7 +42,7 @@ az group create --name eventResourceGroup --location westus2
 
 ### <a name="create-a-custom-topic"></a>カスタム トピックの作成
 
-イベント グリッドのトピックは、イベントの送信先となるユーザー定義のエンドポイントになります。 `<topic_name>` は、トピックの一意の名前に置き換えてください。 トピック名は、DNS エントリになるため、一意である必要があります。
+Event Grid のトピックは、イベントの送信先となるユーザー定義のエンドポイントになります。 `<topic_name>` は、トピックの一意の名前に置き換えてください。 トピック名は、DNS エントリになるため、一意である必要があります。
 
 ```bash
 az eventgrid topic create --name <topic_name> -l westus2 -g eventResourceGroup
@@ -69,7 +64,7 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 これで、トピックにイベントを送信できます。
 
-## <a name="configure-azure-event-grid-publishing"></a>Azure Event Grid の発行の構成
+## <a name="configure-event-grid-publishing"></a>Event Grid の発行の構成
 
 Durable Functions プロジェクトで、`host.json` ファイルを検索します。
 
@@ -84,7 +79,7 @@ Durable Functions プロジェクトで、`host.json` ファイルを検索し�
 }
 ```
 
-使用できる Azure Event Grid の構成プロパティについては、[host.json のドキュメント](../functions-host-json.md#durabletask)を参照してください。 `host.json` ファイルを構成すると、関数アプリからイベント グリッド トピックにライフサイクル イベントが送信されます。 これは、ローカルと Azure のどちらで関数アプリを実行する場合にも機能します。
+使用できる Azure Event Grid の構成プロパティについては、[host.json のドキュメント](../functions-host-json.md#durabletask)を参照してください。 `host.json` ファイルを構成すると、関数アプリから Event Grid トピックにライフサイクル イベントが送信されます。 これは、ローカルと Azure のどちらで関数アプリを実行する場合にも機能します。
 
 Function App と `local.settings.json` で、トピック キーのアプリ設定を設定します。 次の JSON は、ローカル デバッグ用の `local.settings.json` のサンプルです。 `<topic_key>` はトピック キーで置き換えます。  
 
@@ -99,11 +94,13 @@ Function App と `local.settings.json` で、トピック キーのアプリ設�
 }
 ```
 
-[ストレージ エミュレーター](../../storage/common/storage-use-emulator.md)が動作していることを確認します。 実行する前に `AzureStorageEmulator.exe clear all` コマンドを実行することをお勧めします。
+[ストレージ エミュレーター](../../storage/common/storage-use-emulator.md) (Windows のみ) を使用している場合は、それが動作していることを確認します。 実行する前に `AzureStorageEmulator.exe clear all` コマンドを実行することをお勧めします。
+
+既存の Azure Storage アカウントを使用している場合は、`local.settings.json` の `UseDevelopmentStorage=true` をその接続文字列に置き換えます。
 
 ## <a name="create-functions-that-listen-for-events"></a>イベントをリッスンする関数の作成
 
-Function App を作成します。 イベント グリッド トピックと同じリージョンに配置することをお勧めします。
+Azure portal を使用して、ご使用の Durable Functions アプリによって発行されたイベントをリッスンする別の関数アプリを作成します。 Event Grid トピックと同じリージョンに配置することをお勧めします。
 
 ### <a name="create-an-event-grid-trigger-function"></a>イベント グリッド トリガー関数の作成
 
@@ -111,7 +108,7 @@ Function App を作成します。 イベント グリッド トピックと同�
 
 ![カスタム関数の作成の選択。](./media/durable-functions-event-publishing/functions-portal.png)
 
-イベント グリッド トリガーを選択し、[`C#`] を選択します。
+[Event Grid トリガー] を選択し、言語を選択します。
 
 ![イベント グリッド トリガーの選択。](./media/durable-functions-event-publishing/eventgrid-trigger.png)
 
@@ -121,15 +118,7 @@ Function App を作成します。 イベント グリッド トピックと同�
 
 次のコードを含む関数が作成されます。
 
-#### <a name="precompiled-c"></a>プリコンパイル済み C#
-```csharp
-public static void Run([HttpTrigger] JObject eventGridEvent, ILogger log)
-{
-    log.LogInformation(eventGridEvent.ToString(Formatting.Indented));
-}
-```
-
-#### <a name="c-script"></a>C# スクリプト
+# <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -143,79 +132,30 @@ public static void Run(JObject eventGridEvent, ILogger log)
 }
 ```
 
-[`Add Event Grid Subscription`] を選択します。 この操作では、作成したイベント グリッド トピックのイベント グリッド サブスクリプションを追加します。 詳しくは、「[Azure Event Grid の概念](https://docs.microsoft.com/azure/event-grid/concepts)」をご覧ください
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+module.exports = async function(context, eventGridEvent) {
+    context.log(typeof eventGridEvent);
+    context.log(eventGridEvent);
+}
+```
+
+---
+
+[`Add Event Grid Subscription`] を選択します。 この操作では、作成した Event Grid トピックの Event Grid サブスクリプションを追加します。 詳しくは、「[Azure Event Grid の概念](https://docs.microsoft.com/azure/event-grid/concepts)」をご覧ください
 
 ![[イベント グリッド トリガー] リンクの選択。](./media/durable-functions-event-publishing/eventgrid-trigger-link.png)
 
-**[トピックの種類]** に [`Event Grid Topics`] を選択します。 イベント グリッド トピック用に作成したリソース グループを選択します。 次に、イベント グリッド トピックのインスタンスを選択します。 [`Create`] をクリックします。
+**[トピックの種類]** に [`Event Grid Topics`] を選択します。 Event Grid トピック用に作成したリソース グループを選択します。 次に、Event Grid トピックのインスタンスを選択します。 [`Create`] をクリックします。
 
 ![Event Grid のサブスクリプションを作成する。](./media/durable-functions-event-publishing/eventsubscription.png)
 
 これで、ライフサイクル イベントを受信する準備が整いました。
 
-## <a name="create-durable-functions-to-send-the-events"></a>イベントを送信する Durable Functions を作成する
+## <a name="run-durable-functions-app-to-send-the-events"></a>Durable Functions アプリを実行してイベントを送信する
 
-Durable Functions プロジェクトで、ローカル コンピューターでのデバッグを開始します。  次のコードは、Durable Functions のテンプレート コードと同じです。 ローカル コンピューターに `host.json` と `local.settings.json` を既に構成してあります。
-
-### <a name="precompiled-c"></a>プリコンパイル済み C#
-
-```csharp
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.DurableTask;
-using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.Azure.WebJobs.Host;
-using Microsoft.Extensions.Logging;
-
-namespace LifeCycleEventSpike
-{
-    public static class Sample
-    {
-        [FunctionName("Sample")]
-        public static async Task<List<string>> RunOrchestrator(
-            [OrchestrationTrigger] IDurableOrchestrationContext context)
-        {
-            var outputs = new List<string>();
-
-            // Replace "hello" with the name of your Durable Activity Function.
-            outputs.Add(await context.CallActivityAsync<string>("Sample_Hello", "Tokyo"));
-            outputs.Add(await context.CallActivityAsync<string>("Sample_Hello", "Seattle"));
-            outputs.Add(await context.CallActivityAsync<string>("Sample_Hello", "London"));
-
-            // returns ["Hello Tokyo!", "Hello Seattle!", "Hello London!"]
-            return outputs;
-        }
-
-        [FunctionName("Sample_Hello")]
-        public static string SayHello([ActivityTrigger] string name, ILogger log)
-        {
-            log.LogInformation($"Saying hello to {name}.");
-            return $"Hello {name}!";
-        }
-
-        [FunctionName("Sample_HttpStart")]
-        public static async Task<HttpResponseMessage> HttpStart(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestMessage req,
-            [DurableClient] IDurableOrchestrationClient starter,
-            ILogger log)
-        {
-            // Function input comes from the request content.
-            string instanceId = await starter.StartNewAsync("Sample", null);
-            log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
-            return starter.CreateCheckStatusResponse(req, instanceId);
-        }
-    }
-}
-```
-
-> [!NOTE]
-> 前のコードは Durable Functions 2.x 用です。 Durable Functions 1.x では、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を、`DurableClient` 属性の代わりに `OrchestrationClient` 属性を使用する必要があります。また、`IDurableOrchestrationClient` ではなく `DurableOrchestrationClient` パラメーター型を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
-
-Postman またはブラウザーで `Sample_HttpStart` を呼び出す場合、Durable Function はライフサイクル イベントの送信を開始します。 通常、ローカル デバッグのエンドポイントは `http://localhost:7071/api/Sample_HttpStart` です。
-
-Azure Portal で作成した関数からのログをご覧ください。
+前に構成した Durable Functions プロジェクトで、ご使用のローカル コンピューターでデバッグを開始し、オーケストレーションを開始します。 アプリによって、Durable Functions ライフサイクル イベントが Event Grid に発行されます。 Azure portal でログをチェックして、作成したリスナー関数が Event Grid によってトリガーされることを確認します。
 
 ```
 2019-04-20T09:28:21.041 [Info] Function started (Id=3301c3ef-625f-40ce-ad4c-9ba2916b162d)
@@ -261,7 +201,7 @@ Azure Portal で作成した関数からのログをご覧ください。
 
 次の一覧では、ライフサイクル イベントのスキーマについて説明します。
 
-* **`id`** :イベント グリッド イベントの一意識別子。
+* **`id`** :Event Grid イベントの一意識別子。
 * **`subject`** :イベントの件名へのパス。 `durable/orchestrator/{orchestrationRuntimeStatus}` `{orchestrationRuntimeStatus}` は`Running`、`Completed`、`Failed`、`Terminated` になります。  
 * **`data`** :Durable Functions 固有のパラメーター。
   * **`hubName`** :[TaskHub](durable-functions-task-hubs.md) の名前。

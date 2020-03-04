@@ -3,12 +3,12 @@ title: Azure Migrate アプライアンス
 description: サーバーの評価と移行に使用される Azure Migrate アプライアンスの概要について説明します。
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: d02227747be4bc7d994e2ea84cd74e7f2fd2531f
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 1b1e35c3b7a9d98e57ec4261f6f913c370bbb365
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425461"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597543"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate アプライアンス
 
@@ -34,7 +34,7 @@ Hyper-V VM | Azure Migrate: Server Assessment | Hyper-V VM を検出する<br/><
 **License** | ダウンロードしたアプライアンス テンプレートには、180 日間有効な Windows Server 2016 評価版ライセンスが付属します。 評価期間が期限切れ間近の場合は、新しいアプライアンスをダウンロードしてデプロイするか、アプライアンス VM のオペレーティング システムのライセンスをアクティブ化することをお勧めします。
 **デプロイ** | アプライアンスは VMware VM としてデプロイします。 32 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域、外部仮想スイッチを備えた VM を割り当てるには、vCenter Server に十分なリソースが必要です。<br/> アプライアンスは、直接またはプロキシを介してインターネットにアクセスできる必要があります。<br/> アプライアンスは、1 つの vCenter Server に接続できます。
 **ハードウェア** | 32 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域、外部仮想スイッチを備えた VM を割り当てるための、vCenter 上のリソース。 
-**ハッシュ値** | MD5: c06ac2a2c0f870d3b274a0b7a73b78b1<br/><br/> SHA256: 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
+**ハッシュ値** | [こちら](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware#verify-security)をご覧ください
 **vCenter サーバー/ホスト** | バージョン 5.5 以降が実行されている ESXi ホストにアプライアンス VM をデプロイする必要があります。<br/><br/> 5\.5、6.0、6.5、または 6.7 を実行する vCenter Server。
 **Azure Migrate プロジェクト** | 単一のプロジェクトにアプライアンスを関連付けることができます。 <br/> 任意の数のアプライアンスを 1 つのプロジェクトに関連付けることができます。<br/> 
 **検出** | 1 つのアプライアンスで、vCenter Server 上の VMware VM を最大 10,000 台検出できます。<br/> 1 つのアプライアンスは、1 つの vCenter Server に接続できます。
@@ -52,7 +52,7 @@ Hyper-V VM | Azure Migrate: Server Assessment | Hyper-V VM を検出する<br/><
 **License** | ダウンロードしたアプライアンス テンプレートには、180 日間有効な Windows Server 2016 評価版ライセンスが付属します。 評価期間が期限切れ間近の場合は、新しいアプライアンスをダウンロードしてデプロイするか、アプライアンス VM のオペレーティング システムのライセンスをアクティブ化することをお勧めします。
 **アプライアンスのデプロイ**   |  アプライアンスを Hyper-V VM としてデプロイします。<br/> Azure Migrate によって提供されるアプライアンス VM は、Hyper-V VM バージョン 5.0 です。<br/> Hyper-V ホストで Windows Server 2012 R2 以降が実行されている必要があります。<br/> ホストには、アプライアンス VM に 16 GB の RAM、8 つの vCPU、約 80 GB のストレージ スペース、1 つの外部スイッチを割り当てることができる十分な領域が必要です。<br/> アプライアンスには、静的または動的 IP アドレス、およびインターネット アクセスが必要です。
 **ハードウェア** | アプライアンス VM 用の 16 GB の RAM、8 つの vCPU、約 80 GB の記憶域スペース、外部スイッチを割り当てるための、Hyper-V ホスト上のリソース。
-**ハッシュ値** | MD5: 29a7531f32bcf69f32d964fa5ae950bc<br/><br/> SHA256: 37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
+**ハッシュ値** | [こちら](https://docs.microsoft.com/azure/migrate/tutorial-assess-hyper-v#verify-security)をご覧ください
 **Hyper-V ホスト** | Windows Server 2012 R2 以降を実行します。
 **Azure Migrate プロジェクト** | 単一のプロジェクトにアプライアンスを関連付けることができます。 <br/> 任意の数のアプライアンスを 1 つのプロジェクトに関連付けることができます。<br/> 
 **検出** | アプライアンスは、最大 5000 個の Hyper-V ホストを検出できます。<br/> アプライアンスは、最大 300 個の Hyper-V ホストに接続できます。
@@ -67,7 +67,7 @@ Hyper-V VM | Azure Migrate: Server Assessment | Hyper-V VM を検出する<br/><
 **ダウンロード リンク** | [ダウンロード リンク](https://go.microsoft.com/fwlink/?linkid=2105112)
 **ダウンロード サイズ** | 59.7 MB
 **ハードウェア** | 専用の物理マシン、または仮想マシンを使用します。 アプライアンスを実行するマシンには、16 GB の RAM、8 つの vCPU、約 80 GB の記憶域スペース、および外部スイッチが必要です。<br/> アプライアンスには、静的または動的 IP アドレス、およびインターネット アクセスが必要です。
-**ハッシュ値** | MD5: 1e92ede3e87c03bd148e56a708cdd33f<br/><br/> SHA256: a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+**ハッシュ値** | [こちら](https://docs.microsoft.com/azure/migrate/tutorial-assess-physical#verify-security)をご覧ください
 **オペレーティング システム** | アプライアンス マシンでは、Windows Server 2016 が実行されている必要があります。 
 **アプライアンスのデプロイ**   |  アプライアンス インストーラー スクリプトは、ポータルからダウンロードします (zip 形式のフォルダー)。 <br/> フォルダーを解凍し、PowerShell スクリプト (AzureMigrateInstaller.ps1) を実行します。
 **検出** | 1 つのアプライアンスで最大 250 台の物理サーバーを検出できます。

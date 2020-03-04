@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/18/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 409e73f05366065f1c4159e9f1cd7e5bf8bb5ceb
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 880f1c601cf4132fdec9e5d25b1bf1f2ff175ab7
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486245"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650539"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Azure Virtual Machines における SQL Server のパフォーマンスに関するガイドライン
 
@@ -136,7 +136,7 @@ Premium SSD をサポートする VM の場合は、読み取りキャッシュ�
      > [!WARNING]
      > データベースの破損の可能性を回避するために、Azure VM ディスクのキャッシュ設定を変更するときには、SQL Server サービスを停止してください。
 
-* **NTFS アロケーション ユニット サイズ**:データ ディスクをフォーマットするときは、データ ファイルとログ ファイルに加えて TempDB にも 64 KB アロケーション ユニット サイズを使用することをお勧めします。
+* **NTFS アロケーション ユニット サイズ**:データ ディスクをフォーマットするときは、データ ファイルとログ ファイルに加えて TempDB にも 64 KB アロケーション ユニット サイズを使用することをお勧めします。 TempDB が一時ディスク (D:\ ドライブ) に配置されている場合、このドライブの利用で得られるパフォーマンスのメリットは 64K のアロケーション ユニット サイズの必要性を上回ります。 
 
 * **ディスク管理のベスト プラクティス**:データ ディスクの削除またはキャッシュの種類の変更を行う場合、変更中は SQL Server サービスを停止します。 OS ディスクでキャッシュ設定が変更されると、Azure は VM を停止し、キャッシュの種類を変更して、VM を再起動します。 データ ディスクのキャッシュ設定が変更されても VM は停止されませんが、変更中、データ ディスクが VM から切断され、その後再接続されます。
 

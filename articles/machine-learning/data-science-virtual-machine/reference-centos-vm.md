@@ -1,5 +1,6 @@
 ---
-title: 'リファレンス: CentOS DSVM'
+title: 'リファレンス: CentOS Data Science Virtual Machine'
+titleSuffix: Azure Data Science Virtual Machine
 description: CentOS Data Science Virtual Machine に含まれるツールの詳細
 author: gvashishtha
 ms.service: machine-learning
@@ -7,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 0f71a8af2f7d2cfbfe43c0cfcc84cc7c08109c32
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: db49a9f5e0e6675d93cb58d6af9c92fac21e8b74
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493721"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525840"
 ---
 # <a name="reference-centos-linux-data-science-virtual-machine"></a>リファレンス: CentOS (Linux) Data Science Virtual Machine
 
@@ -48,7 +49,7 @@ Linux DSVM に含まれている主なソフトウェア コンポーネント�
 
 Linux DSVM はそうした問題の大部分を解決します。 Linux DSVM を使うと、分析プロジェクトをすぐに開始し、 R、Python、SQL、Java、C++ など、さまざまな言語でタスクを処理できます。 Eclipse には、コードの開発やテストを行うための使いやすい IDE が用意されています。 DSVM に含まれている Azure SDK を使用すると、Microsoft クラウド プラットフォームのさまざまなサービスを Linux で使用してアプリケーションを構築できます。 また、Ruby、Perl、PHP、Node.js など他の言語もプレインストールされています。
 
-この DSVM イメージではソフトウェアの料金は発生しません。 支払うのは、DSVM イメージでプロビジョニングした仮想マシンのサイズを基に評価された Azure のハードウェアの利用料金のみです。 コンピューティング料金の詳細については、Azure Marketplace で [Linux (CentOS) 用 Data Science Virtual Machine のリスト](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/)を参照してください。
+DSVM イメージではソフトウェアの料金は発生しません。 支払うのは、DSVM イメージでプロビジョニングした仮想マシンのサイズを基に評価された Azure のハードウェアの利用料金のみです。 コンピューティング料金の詳細については、Azure Marketplace で [Linux (CentOS) 用 Data Science Virtual Machine のリスト](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/)を参照してください。
 
 
 ## <a name="machine-learning-server"></a>Machine Learning Server
@@ -186,11 +187,11 @@ SQuirreL SQL は、さまざまなデータベース (SQL Server、PostgresSQL�
 
 SQL Server の ODBC ドライバー パッケージには、次の 2 つのコマンド ライン ツールも付属しています。
 
-* **bcp**: bcp ツールでは、SQL Server のインスタンスと、ユーザーが指定した形式のデータ ファイルとの間でデータを一括コピーします。 bcp ツールを使用して、SQL Server テーブルに多数の新しい行をインポートしたり、テーブルからデータ ファイルにデータをエクスポートしたりできます。 テーブルにデータをインポートするには、そのテーブル用に作成されたフォーマット ファイルを使用する必要があります。 または、テーブルの構造を把握し、さらに、その列に有効なデータの種類を把握する必要があります。
+* **bcp**:bcp ツールでは、SQL Server のインスタンスと、ユーザーが指定した形式のデータ ファイルとの間でデータを一括コピーします。 bcp ツールを使用して、SQL Server テーブルに多数の新しい行をインポートしたり、テーブルからデータ ファイルにデータをエクスポートしたりできます。 テーブルにデータをインポートするには、そのテーブル用に作成されたフォーマット ファイルを使用する必要があります。 または、テーブルの構造を把握し、さらに、その列に有効なデータの種類を把握する必要があります。
 
   詳細については、[bcp による接続](https://msdn.microsoft.com/library/hh568446.aspx)に関するページを参照してください。
 
-* **sqlcmd**: sqlcmd ユーティリティを使用して、Transact-SQL ステートメントやシステム プロシージャ、スクリプト ファイルをコマンド プロンプトから入力することができます。 sqlcmd ユーティリティでは、ODBC を使用して、Transact-SQL バッチを実行します。
+* **sqlcmd**:sqlcmd ユーティリティを使用して、Transact-SQL ステートメントやシステム プロシージャ、スクリプト ファイルをコマンド プロンプトから入力することができます。 sqlcmd ユーティリティでは、ODBC を使用して、Transact-SQL バッチを実行します。
 
   詳細については、[sqlcmd による接続](https://msdn.microsoft.com/library/hh568447.aspx)に関するページを参照してください。
 
@@ -213,7 +214,7 @@ DSVM には、次の Azure ツールがインストールされています。
 * **Azure のライブラリ**: DSVM には、次のライブラリがプレインストールされています。
   
   * **Python**: Python の Azure 関連ライブラリには、*azure*、*azureml*、*pydocumentdb*、*pyodbc* があります。 最初の 3 つのライブラリを使用すると、Azure Storage サービス、Azure Machine Learning、Azure Cosmos DB (Azure の NoSQL データベース) にアクセスできます。 4 番目のライブラリの pyodbc を (Microsoft ODBC Driver for SQL Server と共に) 使用すると、Python から ODBC インターフェイスを使用して SQL Server、Azure SQL Database、Azure SQL Data Warehouse にアクセスできます。 すべてのライブラリを一覧表示するには、「 **pip list** 」と入力します。 このコマンドは、必ず Python 2.7 と 3.5 の両方の環境で実行してください。
-  * **R**: R の Azure 関連ライブラリは、AzureML と RODBC です。
+  * **R**:R の Azure 関連ライブラリは、AzureML と RODBC です。
   * **Java**: Azure Java ライブラリのリストは、DSVM の /dsvm/sdk/AzureSDKJava ディレクトリにあります。 主要なライブラリは、Azure Storage と管理 API、Azure Cosmos DB、SQL Server の JDBC ドライバーです。  
 
 [Azure portal](https://portal.azure.com) には、プレインストールされている Firefox ブラウザーからアクセスできます。 Azure portal で、Azure リソースを作成、管理、監視できます。
@@ -241,7 +242,7 @@ DSVM には、プリコンパイルされてローカルにプレインストー
 * **Vowpal Wabbit**: 高速オンライン学習アルゴリズム。
 * **XGBoost**: 最適化されたブースト ツリー アルゴリズムを提供するツール。
 * **Python**: Anaconda Python には、Scikit-learn などのライブラリと機械学習アルゴリズムがバンドルされています。 その他のライブラリは、 `pip install` を使用してインストールできます。
-* **R**: R 向けに、機械学習関数の豊富なライブラリが用意されています。プレインストールされているライブラリには、lm、glm、randomForest、rpart などがあります。 その他のライブラリは、`install.packages(<lib name>)` を実行してインストールできます。
+* **R**:R 向けに、機械学習関数の豊富なライブラリが用意されています。プレインストールされているライブラリには、lm、glm、randomForest、rpart などがあります。 その他のライブラリは、`install.packages(<lib name>)` を実行してインストールできます。
 
 以降のセクションでは、Microsoft Cognitive Toolkit、Vowpal Wabbit、XGBoost について詳しく取り上げます。
 
@@ -342,6 +343,6 @@ rattle()
 
 Rattle と R を終了できます。これで、生成された R スクリプトに変更を加えることができます。 または、スクリプトをそのまま使用することもできます。スクリプトをいつでも実行して、Rattle UI 内で実行されたすべての操作を繰り返すことができます。 これは、特に R の初心者向けの方法です。この方法では、シンプルなグラフィカル インターフェイスで分析と機械学習をすばやく実行することができ、変更または学習する R のコードを自動的に生成できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 その他の質問がある場合は、 [サポート チケット](https://azure.microsoft.com/support/create-ticket/)の作成を検討してください。

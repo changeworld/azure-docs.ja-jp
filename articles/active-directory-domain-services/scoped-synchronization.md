@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: e6645a131766b7ec055ba1c8bb639f054f50c80b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: cc126af67a0d8627d61e595cee56f3df8973340d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704379"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613046"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>Azure AD から Azure Active Directory Domain Services への範囲指定された同期を構成する
 
@@ -40,7 +40,7 @@ Azure Active Directory Domain Services (Azure AD DS) は、認証サービスを
 
 範囲指定された同期の設定を構成するには、Azure portal または PowerShell を使用します。
 
-| Action | | |
+| アクション | | |
 |--|--|--|
 | Azure AD DS マネージド ドメインを作成し、範囲指定された同期を構成する | [Azure Portal](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
 | 範囲指定された同期を変更する | [Azure Portal](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
@@ -70,7 +70,7 @@ Azure AD DS マネージド ドメインがプロビジョニングを完了し�
 
 Azure AD DS マネージド ドメインにユーザーが同期されるグループの一覧を変更するには、次の手順を実行します。
 
-1. Azure portal で、**Azure AD Domain Services** を検索して選択します。 *aadds.contoso.com* などのインスタンスを選択します。
+1. Azure portal で、**Azure AD Domain Services** を検索して選択します。 *aaddscontoso.com* などのインスタンスを選択します。
 1. 左側のメニューで、 **[同期]** を選択します。
 1. グループを追加するには、上部にある **[+ グループの選択]** を選択し、追加するグループを選択します。
 1. 同期スコープからグループを削除するには、現在同期されているグループの一覧からそのグループを選択し、 **[グループの削除]** を選択します。
@@ -82,7 +82,7 @@ Azure AD DS マネージド ドメインにユーザーが同期されるグル�
 
 Azure AD DS マネージド ドメインのグループベースの範囲指定された同期を無効にするには、次の手順を実行します。
 
-1. Azure portal で、**Azure AD Domain Services** を検索して選択します。 *aadds.contoso.com* などのインスタンスを選択します。
+1. Azure portal で、**Azure AD Domain Services** を検索して選択します。 *aaddscontoso.com* などのインスタンスを選択します。
 1. 左側のメニューで、 **[同期]** を選択します。
 1. 同期スコープを **[範囲指定]** から **[すべて]** に設定してから、 **[同期スコープを保存します]** を選択します。
 
@@ -194,11 +194,11 @@ Write-Output "******************************************************************
 
 1. ここで、Azure AD DS マネージド ドメインを作成し、グループベースの範囲指定された同期を有効にします。 *-Properties* パラメーターに *"filteredSync" = "Enabled"* を含めます。
 
-    お使いの Azure サブスクリプション ID を設定し、マネージド ドメインの名前 (*aadds.contoso.com* など) を指定します。 お使いのサブスクリプション ID は、[Get-AzSubscription][Get-AzSubscription] コマンドレットを使用して取得できます。 サポート対象の Azure リソースを作成するには、リソース グループ名、仮想ネットワーク名、およびリージョンを前の手順で使用した値に設定します。
+    お使いの Azure サブスクリプション ID を設定し、マネージド ドメインの名前 (*aaddscontoso.com* など) を指定します。 お使いのサブスクリプション ID は、[Get-AzSubscription][Get-AzSubscription] コマンドレットを使用して取得できます。 サポート対象の Azure リソースを作成するには、リソース グループ名、仮想ネットワーク名、およびリージョンを前の手順で使用した値に設定します。
 
    ```powershell
    $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-   $ManagedDomainName = "aadds.contoso.com"
+   $ManagedDomainName = "aaddscontoso.com"
    $ResourceGroupName = "myResourceGroup"
    $VnetName = "myVnet"
    $AzureLocation = "westus"
@@ -251,7 +251,7 @@ Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $disableScoped
 
 同期のスコープを変更すると、Azure AD DS マネージド ドメインですべてのデータが再同期されます。 Azure AD DS マネージド ドメインで不要になったオブジェクトは削除されます。また、再同期が完了するまでには時間がかかる場合があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 同期プロセスの詳細については、[Azure AD Domain Services での同期の理解](synchronization.md)に関する記事を参照してください。
 

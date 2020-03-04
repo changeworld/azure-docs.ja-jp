@@ -11,16 +11,16 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 386c44cbf7a86e1a1dc92b918d87d0d8c1e60dd2
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: c4923e43613653bf3dfe8055754039ab0cf57fca
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744706"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587381"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Intelligent Insights を使用した Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング
 
-このページでは、[Intelligent Insights](sql-database-intelligent-insights.md) のデータベース パフォーマンス診断ログによって検出された、Azure SQL Database と Managed Instance のパフォーマンスに関する問題について説明します。 この診断ログ テレメトリを、[Azure Monitor ログ](../azure-monitor/insights/azure-sql.md)、[Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md)、[Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションにストリーム配信できます。
+このページでは、[Intelligent Insights](sql-database-intelligent-insights.md) のデータベース パフォーマンス診断ログによって検出された、Azure SQL Database と Managed Instance のパフォーマンスに関する問題について説明します。 この診断ログ テレメトリを、[Azure Monitor ログ](../azure-monitor/insights/azure-sql.md)、[Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md)、[Azure Storage](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションにストリーム配信できます。
 
 > [!NOTE]
 > Intelligent Insights を使った SQL Database のパフォーマンスのトラブルシューティングに関するクイック ガイドについては、このドキュメントの「[推奨されるトラブルシューティングのフロー](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow)」のフローチャートをご覧ください。
@@ -34,7 +34,7 @@ Intelligent Insights を使用すると、クエリ実行の待機時間、エ�
 | :------------------- | ------------------- | ------------------- |
 | [リソースの上限に到達](sql-database-intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | 監視対象サブスクリプションで使用可能なリソース (DTU)、データベース ワーカー スレッド、またはデータベース ログイン セッションの消費量が制限に達しました。 これは SQL データベースのパフォーマンスに影響しています。 | CPU リソースの消費量が Managed Instance の制限に達しそうです。 これは SQL データベースのパフォーマンスに影響しています。 |
 | [ワークロードの増加](sql-database-intelligent-insights-troubleshoot-performance.md#workload-increase) | データベースでのワークロードの増加またはワークロードの継続的な蓄積が検出されました。 これは SQL データベースのパフォーマンスに影響しています。 | ワークロードの増加が検出されました。 これは SQL データベースのパフォーマンスに影響しています。 |
-| [メモリ不足](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | メモリ許可を要求した worker は、統計的にかなりの時間、メモリの割り当てを待つ必要があります。 または、メモリ許可を要求した worker が大量に蓄積しています。 これは SQL データベースのパフォーマンスに影響しています。 | メモリ許可を要求した worker は、統計的にかなりの時間、メモリの割り当てを待つ必要があります。 これは SQL データベースのパフォーマンスに影響しています。 |
+| [メモリ不足](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | メモリ許可を要求した worker は、統計的にかなりの時間、メモリの割り当てを待つ必要があります。または、メモリ許可を要求した worker の累積が増加します。 これは SQL データベースのパフォーマンスに影響しています。 | メモリ許可を要求した worker は、統計的にかなりの時間、メモリの割り当てを待つ必要があります。 これは SQL データベースのパフォーマンスに影響しています。 |
 | [ロック](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | SQL データベースのパフォーマンスに影響を与える、過剰なデータベースのロックが検出されました。 | データベースのパフォーマンスに影響を与える、過剰なデータベースのロックが検出されました。 |
 | [MAXDOP の増加](sql-database-intelligent-insights-troubleshoot-performance.md#increased-maxdop) | 並列処理の最大限度オプション (MAXDOP) が変更されて、クエリの実行効率に影響を与えています。 これは SQL データベースのパフォーマンスに影響しています。 | 並列処理の最大限度オプション (MAXDOP) が変更されて、クエリの実行効率に影響を与えています。 これは SQL データベースのパフォーマンスに影響しています。 |
 | [ページラッチの競合](sql-database-intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | 複数のスレッドがメモリ内の同じデータ バッファー ページに同時にアクセスしようとしたため、待機時間が延び、ページラッチの競合が発生しています。 これは SQL データベースのパフォーマンスに影響しています。 | 複数のスレッドがメモリ内の同じデータ バッファー ページに同時にアクセスしようとしたため、待機時間が延び、ページラッチの競合が発生しています。 これはデータベースのパフォーマンスに影響しています。 |

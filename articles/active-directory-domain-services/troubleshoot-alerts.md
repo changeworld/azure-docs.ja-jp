@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 0bb02e6436bf9c9ebb9e54efa73aeed03ab44f3e
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c83caf31e25ae2212ed120e77e017ac3849898e8
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512666"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612901"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>既知の問題:Azure Active Directory Domain Services での一般的なアラートと解決策
 
@@ -133,7 +133,7 @@ Azure AD DS では、パブリック IP アドレス、仮想ネットワーク 
 
 このアラートは、これらの必要なリソースのいずれかが削除されたときに生成されます。 リソースが削除されてから 4 時間未満の場合は、削除されたリソースが Azure プラットフォームによって自動的に再作成される可能性があります。 次の手順では、リソースの削除の正常性状態とタイムスタンプを確認する方法について説明します。
 
-1. Azure portal で、**Domain Services** を検索して選択します。 *aadds.contoso.com* などの Azure AD DS 管理対象ドメインを選択します。
+1. Azure portal で、**Domain Services** を検索して選択します。 *aaddscontoso.com* などの Azure AD DS 管理対象ドメインを選択します。
 1. 左側のナビゲーションで、 **[正常性]** を選択します。
 1. 正常性ページで、ID *AADDS109* のアラートを選択します。
 1. アラートには、最初に検出されたときのタイムスタンプがあります。 そのタイムスタンプから 4 時間未満の場合、Azure プラットフォームは、リソースを自動的に再作成して、それ自体でアラートを解決できる可能性があります。

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: e95a0b4b9f071a0fd3949d50eeee17b811dfb8ea
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: b76ef431e4c0ad63929378c1f48c6ab06776cb25
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064820"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616035"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub メッセージ ルーティングのクエリ構文
 
@@ -88,7 +88,7 @@ $contentEncoding = 'UTF-8' AND processingPath = 'hot'
 
 サポートされている演算子と関数の完全な一覧については、「[式と条件](iot-hub-devguide-query-language.md#expressions-and-conditions)」を参照してください。
 
-## <a name="message-routing-query-based-on-message-body"></a>メッセージ本文に基づいたメッセージ ルーティング クエリ 
+## <a name="message-routing-query-based-on-message-body"></a>メッセージ本文に基づいたメッセージ ルーティング クエリ
 
 メッセージ本文に基づいてクエリを実行するには、メッセージが UTF-8、UTF-16、UTF-32 のいずれかでエンコードされた JSON である必要があります。 システム プロパティで、`contentType` は `application/JSON` に、`contentEncoding` はサポートされているいずれかの UTF エンコードに設定する必要があります。 これらのプロパティが指定されていないと、IoT Hub でクエリ式がメッセージ本文に基づいて評価されません。 
 
@@ -140,6 +140,10 @@ deviceClient.sendEvent(message, (err, res) => {
     if (res) console.log('status: ' + res.constructor.name);
 });
 ```
+
+> [!NOTE] 
+> これは、JavaScript の本文のエンコードを処理する方法を示しています。 C# のサンプルを確認するには、[Azure IoT C# のサンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)をダウンロードしてください。 master.zip ファイルを解凍します。 Visual Studio ソリューション *SimulatedDevice* の Program.cs ファイルは、メッセージをエンコードして IoT Hub に送信する方法を示しています。 これは、[メッセージ ルーティングのチュートリアル](tutorial-routing.md)で説明されているように、メッセージ ルーティングのテストに使用されているものと同じサンプルです。 Program.cs の末尾には、エンコードされたファイルの 1 つを読み込んでデコードし、読み取ることができるように ASCII 形式で書き戻すメソッドもあります。 
+
 
 ### <a name="query-expressions"></a>クエリ式
 
@@ -209,6 +213,8 @@ $body.Weather.Temperature = 50 AND $twin.properties.desired.telemetryConfig.send
 ```sql
 $twin.tags.deploymentLocation.floor = 1 
 ```
+
+ペイロードまたはプロパティ名にピリオドが含まれている本文またはデバイス ツインのルーティング クエリはサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/13/2020
+ms.date: 02/25/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83144738124b223e305b6c0d3ad1065f5dae408e
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: c9d287d5bfc091fcbbff46095da5458fa08de73d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212609"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624164"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure を使用して SAP ワークロード シナリオをホストして実行する
 
@@ -34,23 +34,20 @@ Azure for SAP HANA の独自性は、Azure を一線を画すものにしてい�
 また、Azure で SAP ワークロード シナリオをホストすると、ID の統合およびシングル サインオンの要件を作成できます。 この状況は、さまざまな SAP コンポーネントおよび SAP のサービスとしてのソフトウェア (SaaS) またはサービスとしてのプラットフォーム (PaaS) のオファーに接続するために Azure Active Directory (Azure AD) を使用した場合に、発生する可能性があります。 Azure AD と SAP のエンティティを使用したこのような統合とシングル サインオンのシナリオについては、「AAD SAP ID 統合およびシングル サインオン」セクションに一覧と説明があります。
 
 ## <a name="changes-to-the-sap-workload-section"></a>SAP ワークロード セクションの変更
-この記事の最後には、SAP on Azure ワークロード セクションでのドキュメントへの変更が記載されています。
+この記事の最後には、SAP on Azure ワークロード セクションでのドキュメントへの変更が記載されています。 変更ログのエントリは、約 180 日間保持されます。
 
+## <a name="you-want-to-know"></a>お知りになりたい情報について
+ご不明な点がございましたら、スタート ページのこのセクションに示されている特定のドキュメントまたはフローを参照してください。 以下についてお知りになりたい場合は、次のようにしてください。
 
+- SAP ソフトウェアの各リリースとオペレーティング システムの各バージョンでサポートされる、Azure VM および HANA Large Instances ユニット。 回答と情報を検索するプロセスについては、「[Azure デプロイでサポートされている SAP ソフトウェア](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure)」というドキュメントをお読みください
+- Azure VM および HANA Large Instances でサポートされる SAP デプロイ シナリオ。 サポートされるシナリオについては、次のドキュメントを参照してください。
+    - [Azure 仮想マシンの SAP ワークロードでサポートされるシナリオ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-planning-supported-configurations)
+    - [HANA L インスタンスのサポートされるシナリオ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario)
+
+ 
 ## <a name="sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (L インスタンス)
 
-一連のドキュメントでは、SAP HANA on Azure (Large Instances)、略して HANA Large Instances について説明します。 HANA Large Instances の次の分野の情報については、以下をご覧ください。
-
-- [SAP HANA on Azure (Large Instances) の概要](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
-- [SAP HANA on Azure (Large Instances) のアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-architecture)
-- [SAP HANA on Azure (Large Instances) のインフラストラクチャと接続](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity)
-- [SAP HANA on Azure (Large Instances) をインストールする](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-installation)
-- [SAP HANA on Azure (Large Instances) の高可用性とディザスター リカバリー](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)
-- [SAP HANA on Azure (Large Instances) のトラブルシューティングと監視](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/troubleshooting-monitoring)
-
-次のステップ:
-
-- [SAP HANA on Azure (Large Instances) の概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)を確認してください
+一連のドキュメントでは、SAP HANA on Azure (Large Instances)、略して HANA Large Instances について説明します。 HANA Large Instances については、まず、[SAP HANA on Azure (Large Instances) の概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するドキュメントを参照してから、HANA Large Instance セクションの関連ドキュメントを参照してください
 
 
 
@@ -120,7 +117,19 @@ SAP コンポーネントへの Azure サービスの統合については、以
 
 
 ## <a name="change-log"></a>変更履歴
-
+- 2020 年 2 月 25 日:新しい HA 記事へのリンクを追加するための、[SAP のための高可用性のアーキテクチャとシナリオ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)に関する記事での変更
+- 2020 年 2 月 25 日:Standard Azure Load Balancer を使用するパブリック エンドポイントへのアクセスについて説明されているドキュメントを示すための、「[Pacemaker による SUSE Linux Enterprise Server 上の Azure VM での IBM Db2 LUW の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm)」での変更
+- 2020 年 2 月 21 日:「[SAP ワークロードのための SAP ASE Azure Virtual Machines DBMS のデプロイ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sapase)」記事の全面改訂
+- 2020 年 2 月 21 日:/hana/data のストライプ サイズと、I/O スケジューラの設定の追加に関する新しい推奨事項を示すための、「[SAP HANA Azure 仮想マシンのストレージ構成](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)」での変更
+- 2020 年 2 月 21 日:S224 と S224m の新たに認定された SKU を示すための、HANA Large Instance に関するドキュメントでの変更
+- 2020 年 2 月 21 日:エンキュー サーバー レプリケーション 2 アーキテクチャ (ENSA2) に合わせてクラスター制約を調整するための、[RHEL 上の SAP NetWeaver のための Azure VM 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)および [Azure NetApp Files を使用した RHEL 上の SAP NetWeaver のための Azure VM 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)に関する記事での変更
+- 2020 年 2 月 20 日:SUSE マルチ SID クラスター ガイドへのリンクを追加するための、[SLES マルチ SID 上の Azure VM での SAP NetWeaver の高可用性ガイド](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)に関する記事での変更
+- 2020 年 2 月 13 日:新しいドキュメントへのリンクを実装するための、「[SAP NetWeaver のための Azure Virtual Machines の計画と実装](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)」での変更
+- 2020 年 2 月 13 日:「[Azure 仮想マシンの SAP ワークロードでサポートされるシナリオ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-planning-supported-configurations)」という新しいドキュメントの追加
+- 2020 年 2 月 13 日:「[Azure デプロイでサポートされている SAP ソフトウェア](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure)」という新しいドキュメントの追加
+- 2020 年 2 月 13 日:Standard Azure Load Balancer を使用するパブリック エンドポイントへのアクセスについて説明されているドキュメントを示すための、「[Red Hat Enterprise Linux Server 上の Azure VM での IBM Db2 LUW の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-ibm-db2-luw)」での変更
+- 2020 年 2 月 13 日:「[Microsoft Azure で実行されている SAP の認定と構成](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications)」への新しい VM の種類の追加
+- 2020 年 2 月 13 日:「[Azure での SAP ワークロード: 計画とデプロイに関するチェックリスト](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)」への新しい SAP サポート ノートの追加
 - 2020 年 2 月 13 日:クラスター リソースのタイムアウトを Red Hat のタイムアウト推奨値に合わせるために、[Red Hat Enterprise Linux での SAP NetWeaver のための Azure Virtual Machines 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)および [Azure NetApp Files を使用した Red Hat Enterprise Linux 上の SAP NetWeaver 用の Azure Virtual Machines の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)を変更しました
 - 2020 年 2 月 11 日:[SAP HANA on Azure Large Instance の Azure Virtual Machines への移行](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-large-instance-virtual-machine-migration)をリリースしました
 - 2020 年 2 月 7 日:サンプルの NSG スクリーンショットを更新するために、[SAP の HA シナリオにおける Azure ILB を使用した VM のパブリック エンドポイント接続](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)が変更されました
@@ -156,10 +165,5 @@ SAP コンポーネントへの Azure サービスの統合については、以
 - 2019/08/16:Azure Fence Agent の新しいバージョンに更新する場合に、カスタム ロールのアクションを更新するようにお客様に通知するための「[Azure の Red Hat Enterprise Linux に Pacemaker をセットアップする](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker)」の変更  
 - 2019/08/15:Ultra ディスクの一般提供 (旧称 Ultra SSD) を反映するための「[SAP HANA Azure 仮想マシンのストレージ構成](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)」の変更
 - 2019/08/01:「[Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)」を変更して、SLES 15 固有の変更を統合しました 
-- 2019/07/23:[Azure のファイル共有を使用した Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスのクラスター化](sap-high-availability-guide-wsfc-file-share.md)での、Azure Site Recovery による記憶域スペース ダイレクトのサポートを反映するための変更
-- 2019/07/14:[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)のリリース
-- 2019/07/11:HANA Large Instances のリビジョン 4 に対応して、HANA Large Instances に関するさまざまなドキュメントを変更しました
-- 2019/07/09:[Red Hat Enterprise Server の IBM Db2 HADR](high-availability-guide-rhel-ibm-db2-luw.md) に関する新しいガイドのリリース
-- 2019/06/13:[SAP アプリケーション用の Azure NetApp Files を使用した Red Hat Enterprise Linux 上の SAP NetWeaver 用の Azure Virtual Machines](high-availability-guide-rhel-netapp-files.md) のリリース
 
 

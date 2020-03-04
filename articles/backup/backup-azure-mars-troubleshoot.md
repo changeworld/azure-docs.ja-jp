@@ -4,12 +4,12 @@ description: この記事では、Azure Backup エージェントのインスト
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 06c741547e0206059195f481ed29dc8e69aa4dd3
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: fdaad7e12a5f473a368b9249928591daddd68519
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665311"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583811"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントをトラブルシューティングする
 
@@ -20,11 +20,11 @@ ms.locfileid: "75665311"
 Microsoft Azure Recovery Services (MARS) のトラブルシューティングを開始する前に、以下を確認することをお勧めします。
 
 - [MARS エージェントが最新であることを確認します](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)。
-- [MARS エージェントと Azure の間にネットワーク接続が存在することを確認します](https://aka.ms/AB-A4dp50)。
+- [MARS エージェントと Azure の間にネットワーク接続が存在することを確認します](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)。
 - MARS が (サービス コンソールで) 実行されていることを確認します。 必要な場合は、再起動して操作をやり直します。
-- [スクラッチ フォルダーの場所に 5% から 10% の空きボリューム領域があることを確認します](https://aka.ms/AB-AA4dwtt)。
-- [別のプロセスまたはウイルス対策ソフトウェアによって Azure Backup が妨げられているかどうかを確認します](https://aka.ms/AB-AA4dwtk)。
-- スケジュールされたバックアップが失敗したが、手動バックアップは機能する場合は、「[バックアップがスケジュールに従って実行されない](https://aka.ms/ScheduledBackupFailManualWorks)」を参照してください。
+- [スクラッチ フォルダーの場所に 5% から 10% の空きボリューム領域があることを確認します](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#whats-the-minimum-size-requirement-for-the-cache-folder)。
+- [別のプロセスまたはウイルス対策ソフトウェアによって Azure Backup が妨げられているかどうかを確認します](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)。
+- スケジュールされたバックアップが失敗したが、手動バックアップは機能する場合は、「[バックアップがスケジュールに従って実行されない](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#backups-dont-run-according-to-schedule)」を参照してください。
 - OS に最新の更新プログラムが適用されていることを確認します。
 - [サポートされていない属性を持つサポートされていないドライブとファイルはバックアップから除外されることを確認します](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)。
 - 保護されているシステム上のクロックが適切なタイム ゾーンに構成されていることを確認します。
@@ -33,7 +33,7 @@ Microsoft Azure Recovery Services (MARS) のトラブルシューティングを
   - エージェントがサーバーからアンインストールされていることと、ポータルから削除されていることを確認します。
   - 最初にサーバーの登録に使用したのと同じパスフレーズを使用します。
 - オフライン バックアップの場合は、ソース コンピューターとコピー用コンピューターの両方に Azure PowerShell 3.7.0 がインストールされていることを確認します。
-- Azure 仮想マシンで Backup エージェントが実行されている場合は、[こちらの記事](https://aka.ms/AB-AA4dwtr)を参照してください。
+- Azure 仮想マシンで Backup エージェントが実行されている場合は、[こちらの記事](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-backup-agent-running-on-an-azure-virtual-machine)を参照してください。
 
 ## <a name="invalid-vault-credentials-provided"></a>無効なコンテナーの資格情報が指定されました
 
@@ -42,7 +42,7 @@ Microsoft Azure Recovery Services (MARS) のトラブルシューティングを
 | 原因 | 推奨アクション |
 | ---     | ---    |
 | **コンテナーの資格情報が有効ではありません** <br/> <br/> コンテナー資格情報ファイルが壊れているか、期限が切れている可能性があります。 (たとえば、登録の時刻より 48 時間以上前にダウンロードされている可能性があります。)| Azure portal で Recovery Services コンテナーから新しい資格情報をダウンロードします。 (「[MARS エージェントのダウンロード](https://docs.microsoft.com/azure/backup/backup-configure-vault#download-the-mars-agent)」セクションの手順 6 を参照してください。)その後、必要に応じて次の手順に従います。 <ul><li> MARS が既にインストールされ登録されている場合は、Microsoft Azure Backup エージェントの MMC コンソールを開き、 **[アクション]** ウィンドウで **[サーバーの登録]** を選択して、新しい資格情報で登録を完了します。 <br/> <li> 新規インストールに失敗した場合は、新しい資格情報で再度インストールしてみてください。</ul> **注**:複数のコンテナー資格情報ファイルがダウンロードされている場合、次の 48 時間の間は最新のファイルのみが有効になります。 新しいコンテナー資格情報ファイルをダウンロードすることをお勧めします。
-| **プロキシ サーバー/ファイアウォールによって登録がブロックされています** <br/>or <br/>**インターネットに接続されていません** <br/><br/> マシンまたはプロキシ サーバーでインターネット接続が制限されていて、必要な URL へのアクセスが許可されていない場合、登録は失敗します。| 次の手順を実行します。<br/> <ul><li> IT チームと連携して、システムでインターネットに接続できることを確認します。<li> プロキシ サーバーがない場合は、エージェントを登録するときにプロキシのオプションが選択されていないことを確認します。 [プロキシ設定を確認します](#verifying-proxy-settings-for-windows)。<li> ファイアウォール/プロキシ サーバーがある場合は、ネットワーク チームと連携して、以下の URL と IP アドレスにアクセスできることを確認します。<br/> <br> **URL**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP アドレス**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>上記のトラブルシューティングの手順が完了したら、もう一度登録してみてください。
+| **プロキシ サーバー/ファイアウォールによって登録がブロックされています** <br/>or <br/>**インターネットに接続されていません** <br/><br/> マシンまたはプロキシ サーバーでインターネット接続が制限されていて、必要な URL へのアクセスが許可されていない場合、登録は失敗します。| 次の手順を実行します。<br/> <ul><li> IT チームと連携して、システムでインターネットに接続できることを確認します。<li> プロキシ サーバーがない場合は、エージェントを登録するときにプロキシのオプションが選択されていないことを確認します。 [プロキシ設定を確認します](#verifying-proxy-settings-for-windows)。<li> ファイアウォール/プロキシ サーバーがある場合は、ネットワーク チームと連携して、以下の URL と IP アドレスにアクセスできることを確認します。<br/> <br> **URL**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP アドレス**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>上記のトラブルシューティングの手順が完了したら、もう一度登録してみてください。<br></br> Azure ExpressRoute 経由で接続している場合は、「[Azure ExpressRoute のサポート](backup-support-matrix-mars-agent.md#azure-expressroute-support)」の説明に従って設定が構成されていることをご確認ください。
 | **ウイルス対策ソフトウェアによって登録をブロックされています** | サーバーにウイルス対策ソフトウェアがインストールされている場合は、以下のファイルとフォルダーのウイルス対策スキャンに必要な除外ルールを追加します。 <br/><ul> <li> CBengine.exe <li> CSC.exe<li> スクラッチ フォルダー。 この既定の場所は C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch です。 <li> C:\Program Files\Microsoft Azure Recovery Services Agent\Bin にある bin フォルダー。
 
 ### <a name="additional-recommendations"></a>その他の推奨事項

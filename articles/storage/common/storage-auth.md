@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 02/24/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 783e8666e2602f9251d81e976a27fbce099defa2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b0f2ad7566d0204871a9c6441315d6201662d92b
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460533"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616286"
 ---
 # <a name="authorizing-access-to-data-in-azure-storage"></a>Azure Storage 内のデータへのアクセスの承認
 
@@ -23,19 +23,21 @@ ms.locfileid: "75460533"
 
 次の表は、リソースへのアクセスを承認するために Azure Storage に用意されているオプションをまとめたものです。
 
-|  |共有キー (ストレージ アカウント キー)  |Shared Access Signature (SAS)  |Azure Active Directory (Azure AD)  |匿名のパブリック読み取りアクセス  |
-|---------|---------|---------|---------|---------|
-|Azure BLOB     |[サポートされています](/rest/api/storageservices/authorize-with-shared-key/)         |[サポートされています](storage-sas-overview.md)         |[サポートされています](storage-auth-aad.md)         |[サポートされています](../blobs/storage-manage-access-to-resources.md)         |
-|Azure Files (SMB)     |[サポートされています](/rest/api/storageservices/authorize-with-shared-key/)         |サポートされていません         |[AAD ドメイン サービスでのみサポートされています](../files/storage-files-active-directory-overview.md)         |サポートされていません         |
-|Azure Files (REST)     |[サポートされています](/rest/api/storageservices/authorize-with-shared-key/)         |[サポートされています](storage-sas-overview.md)         |サポートされていません         |サポートされていません         |
-|Azure キュー     |[サポートされています](/rest/api/storageservices/authorize-with-shared-key/)         |[サポートされています](storage-sas-overview.md)         |[サポートされています](storage-auth-aad.md)         |サポートされていません         |
-|Azure テーブル     |[サポートされています](/rest/api/storageservices/authorize-with-shared-key/)         |[サポートされています](storage-sas-overview.md)         |サポートされていません         |サポートされていません         |
+|  |共有キー (ストレージ アカウント キー)  |Shared Access Signature (SAS)  |Azure Active Directory (Azure AD)  |Active Directory (プレビュー) |匿名のパブリック読み取りアクセス  |
+|---------|---------|---------|---------|---------|---------|
+|Azure BLOB     |[サポートされています](/rest/api/storageservices/authorize-with-shared-key/)         |[サポートされています](storage-sas-overview.md)         |[サポートされています](storage-auth-aad.md)         |サポートされていません|[サポートされています](../blobs/storage-manage-access-to-resources.md)         |
+|Azure Files (SMB)     |[サポートされています](/rest/api/storageservices/authorize-with-shared-key/)         |サポートされていません         |[AAD ドメイン サービスでのみサポートされています](../files/storage-files-active-directory-overview.md)         |[サポートされています。資格情報を Azure AD と同期する必要があります](../files/storage-files-active-directory-overview.md)|サポートされていません         |
+|Azure Files (REST)     |[サポートされています](/rest/api/storageservices/authorize-with-shared-key/)         |[サポートされています](storage-sas-overview.md)         |サポートされていません         |サポートされていません |サポートされていません         |
+|Azure キュー     |[サポートされています](/rest/api/storageservices/authorize-with-shared-key/)         |[サポートされています](storage-sas-overview.md)         |[サポートされています](storage-auth-aad.md)         |サポートされていません | サポートされていません         |
+|Azure テーブル     |[サポートされています](/rest/api/storageservices/authorize-with-shared-key/)         |[サポートされています](storage-sas-overview.md)         |サポートされていません         |サポートされていません| サポートされていません         |
 
 ここでは、各認証オプションについて簡単に説明します。
 
 - BLOB とキュー用の **Azure Active Directory (Azure AD) 統合**。 Azure AD には、ストレージ アカウント内のリソースに対するクライアントのアクセスをきめ細かく制御するロールベースのアクセス制御 (RBAC) が用意されています。 BLOB とキューに対する Azure AD 統合の詳細については、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](storage-auth-aad.md)」を参照してください。
 
-- ファイルの **Azure AD Domain Services (DS) 統合 (プレビュー)** 。 Azure Files では、Azure AD DS を介したサーバー メッセージ ブロック (SMB) の ID ベースの承認がサポートされています。 RBAC を使用して、ストレージ アカウント内の Azure Files リソースへのクライアントのアクセスを細かく制御できます。 ドメイン サービスを使用したファイルに対する Azure AD 統合の詳細については、「[Azure Files での SMB アクセスに対する Azure Active Directory Domain Services (AAD DS) 認証の概要 (プレビュー)](../files/storage-files-active-directory-overview.md)」を参照してください。
+- Azure Files の **Azure Active Directory Domain Services (Azure AD DS) 認証**。 Azure Files では、Azure AD DS を介したサーバー メッセージ ブロック (SMB) の ID ベースの承認がサポートされています。 RBAC を使用して、ストレージ アカウント内の Azure Files リソースへのクライアントのアクセスを細かく制御できます。 ドメイン サービスを利用した Azure Files 認証に関する詳細については、[概要](../files/storage-files-active-directory-overview.md)を参照してください。
+
+- Azure Files の **Active Directory (AD) 認証 (プレビュー)** 。 Azure Files では、AD を使用した SMB を介した ID ベースの承認がサポートされています。 AD ドメイン サービスは、オンプレミスのコンピューターまたは Azure VM でホストできます。 Files には、オンプレミスまたは Azure で、ドメインに参加しているコンピューターから AD 資格情報を利用することで SMB アクセスできます。 共有レベルのアクセス制御には RBAC を、ディレクトリまたはファイル レベルのアクセス許可適用には NTFS DACL を使用できます。 ドメイン サービスを利用した Azure Files 認証に関する詳細については、[概要](../files/storage-files-active-directory-overview.md)を参照してください。
 
 - BLOB、ファイル、キュー、およびテーブル用の**共有キー認証**。 共有キーを使用するクライアントは、ストレージ アカウントのアクセス キーを使用して署名されたすべての要求にヘッダーを渡します。 詳細については、[共有キーによる承認](/rest/api/storageservices/authorize-with-shared-key/)に関するページを参照してください。
 - BLOB、ファイル、キュー、およびテーブル用の**共有アクセス署名**。 共有アクセス署名 (SAS) には、ストレージ アカウント内のリソースに対する制限付きの委任アクセス機能があります。 署名が有効な期間、または付与するアクセス許可に制約を追加すると、柔軟にアクセスを管理できます。 詳細については、「[Shared Access Signatures (SAS) の使用](storage-sas-overview.md)」をご覧ください。

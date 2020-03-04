@@ -3,12 +3,12 @@ title: Azure VM バックアップについて
 description: この記事では、Azure Backup サービスを使用して Azure 仮想マシンをバックアップする方法と、ベスト プラクティスに従う方法について説明します。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: b38c61adaf334eacb7d85292d4174189d6fddc46
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8ffbf0d0164cbf6f085518d57566b0befde6e124
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75391895"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597254"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM バックアップの概要
 
@@ -58,12 +58,7 @@ BEK もバックアップされます。 そのため、BEK が失われた場�
 
 Azure Backup では、バックアップ スケジュールに従ってスナップショットが取得されます。
 
-- **Windows VM:** Windows VM の場合、Backup サービスは VSS と連携して、VM ディスクのアプリ整合性スナップショットを取得します。
-
-  - 既定では、Azure Backup は完全 VSS バックアップを取得します。 [詳細については、こちらを参照してください](https://blogs.technet.com/b/filecab/archive/2008/05/21/what-is-the-difference-between-vss-full-backup-and-vss-copy-backup-in-windows-server-2008.aspx)。
-  - Azure Backup によって VSS コピー バックアップが作成されるように設定を変更するには、コマンド プロンプトから次のレジストリ キーを設定します。
-
-    **REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgent" /v USEVSSCOPYBACKUP /t REG_SZ /d TRUE /f**
+- **Windows VM:** Windows VM の場合、Backup サービスは VSS と連携して、VM ディスクのアプリ整合性スナップショットを取得します。  既定の Azure Backup では、VSS の完全バックアップが作成されます (アプリケーション レベルで整合性のあるバックアップを取得するため、バックアップ時に、SQL Server などのアプリケーションのログは切り捨てられます)。  Azure VM バックアップで SQL Server データベースを使用している場合は、(ログを保持するため) VSS コピー バックアップを作成するように設定を変更できます。 詳細については、 [こちらの記事](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues)を参照してください。
 
 - **Linux VM:** Linux VM のアプリ整合性スナップショットを取得するには、Linux の事前スクリプトおよび事後スクリプトのフレームワークを使用して、整合性を保証するための独自のカスタム スクリプトを記述します。
 
@@ -85,7 +80,7 @@ Azure Backup では、バックアップ スケジュールに従ってスナッ
 
 **考慮事項** | **詳細**
 --- | ---
-**[ディスク]** | VM ディスクのバックアップは並列です。 たとえば、VM にディスクが 4 つある場合、Backup サービスは 4 つすべてのディスクを並列でバックアップしようとします。 バックアップは増分的 (変更されたデータのみ) です。
+**Disk** | VM ディスクのバックアップは並列です。 たとえば、VM にディスクが 4 つある場合、Backup サービスは 4 つすべてのディスクを並列でバックアップしようとします。 バックアップは増分的 (変更されたデータのみ) です。
 **スケジュール設定** |  バックアップ トラフィックを減らすには、異なる VM を一日の異なる時間帯にバックアップし、時間帯が重ならないようにします。 同時に VM をバックアップすると、トラフィックの渋滞が発生します。
 **バックアップの準備** | バックアップの準備に必要な時間に注意してください。 準備時間には、バックアップ拡張機能のインストールまたは更新と、バックアップ スケジュールに従ったスナップショットのトリガーが含まれます。
 **データ転送** | Azure Backup で前回のバックアップからの増分変更を識別するために必要な時間を考慮してください。<br/><br/> 増分バックアップの Azure Backup では、ブロックのチェックサムを計算することによって、変更が特定されます。 ブロックが変更されている場合は、コンテナーに転送するようにマークされます。 サービスは識別されたブロックを分析して、転送するデータ量をさらに最小化しようとします。 変更されたすべてのブロックが評価された後、Azure Backup によってコンテナーに変更が転送されます。<br/><br/> スナップショットを取得してからコンテナーにコピーするまでの間、ラグが生じる場合があります。<br/><br/> ピーク時には、バックアップの処理に最大 8 時間かかる可能性があります。 毎日のバックアップでは、VM のバックアップ時間は 24 時間未満になります。
@@ -125,7 +120,7 @@ Azure Backup を使用してバックアップされている Azure VM は、[Az
 
 たとえば、最大サイズが各 32 TB のデータ ディスクが 2 台追加で搭載されている A2 Standard サイズの VM があります。 次の表は、これらの各ディスクに格納されている実際のデータです。
 
-**[ディスク]** | **最大サイズ** | **実際のデータ量**
+**Disk** | **最大サイズ** | **実際のデータ量**
 --- | --- | ---
 OS ディスク | 32 TB | 17 GB
 ローカル/一時ディスク | 135 GB | 5 GB (バックアップに含まれない)

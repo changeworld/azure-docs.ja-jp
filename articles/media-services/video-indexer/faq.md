@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: d08c0b8817c0008a0ecfbab1a9d38243ec0bea79
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: eacbeca275192e1a68b6682c3036da2d5c09bd54
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705685"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619889"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Video Indexer に関してよく寄せられる質問
 
@@ -77,6 +77,14 @@ Video Indexer の Web ベース ポータルでは、ファイルのアップロ
 
 Video Indexer を利用できる Azure リージョンについては、[リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all)のページをご覧ください。
 
+### <a name="can-i-customize-video-indexer-models-for-my-specific-use-case"></a>特定のユース ケースに合わせて Video Indexer モデルをカスタマイズできますか。 
+
+はい。 Video Indexer では、使用可能なモデルをニーズに合わせてカスタマイズできます。 
+
+たとえば、Person モデルでは、1,000,000 人の有名人の顔がすぐに認識されますが、そのデータベースにはない他の顔を認識するようにトレーニングすることもできます。 
+
+詳細については、[Person](customize-person-model-overview.md)、[Brands](customize-brands-model-overview.md)、[Language](customize-language-model-overview.md) モデルのカスタマイズに関する記事を参照してください。 
+
 ### <a name="what-is-the-sla-for-video-indexer"></a>Video Indexer の SLA はどうなっていますか?
 
 Video Indexer については Azure Media Service の SLA が適用されます。[SLA](https://azure.microsoft.com/support/legal/sla/media-services/v1_2/) に関するページを参照してください。 SLA は Video Indexer の有料アカウントのみに適用され、無料試用版には適用されません。
@@ -111,13 +119,28 @@ Video Indexer については Azure Media Service の SLA が適用されます�
 
 はい、コンテンツとその分析情報は、その Azure リージョン内に保持されますが、複数の Azure リージョンを使用するように Azure サブスクリプションを手動構成した場合を除きます。 
 
-### <a name="what-is-the-privacy-policy-for-video-indexer"></a>Video Indexer のプライバシー ポリシーとは何ですか?
+### <a name="what-is-the-privacy-policy-for-video-indexer"></a>Video Indexer のプライバシー ポリシーとは何ですか。
 
 Video Indexer には [Microsoft のプライバシーに関する声明](https://privacy.microsoft.com/privacystatement)が適用されます。 プライバシーに関する声明では、Microsoft が処理する個人データ、Microsoft がそれをどのように処理し、何の目的でそれを処理するかについて説明しています。 プライバシーについて詳しくは、[Microsoft Trust Center](https://www.microsoft.com/trustcenter) を参照してください。
 
 ### <a name="what-certifications-does-video-indexer-have"></a>Video Indexer には、どのような認証がありますか?
 
 Video Indexer は、現在のところ SOC 認証を取得しています。 Video Indexer の認証を確認するには、[Microsoft Trust Center](https://www.microsoft.com/trustcenter/compliance/complianceofferings?product=Azure) を参照してください。
+
+### <a name="what-is-the-difference-between-private-and-public-videos"></a>プライベート ビデオとパブリック ビデオの違いは何ですか。 
+
+Video Indexer にビデオをアップロードするとき、プライベートとパブリックという 2 つのプライバシー設定から選択できます。 パブリック ビデオには、匿名ユーザーや身元が不明のユーザーを含め、誰でもアクセスできます。 プライベート ビデオは、アカウント メンバーにのみ限定されます。 
+
+### <a name="i-tried-to-upload-a-video-as-public-and-it-was-flagged-for-inappropriate-or-offensive-content-what-does-that-mean"></a>パブリックとしてビデオをアップロードしたら、不適切または不快なコンテンツのフラグが付けられました。これは何を意味しますか。 
+
+Video Indexer にビデオがアップロードされると、不適切なコンテンツが一般公開されないよう、アルゴリズムとモデルによってコンテンツが自動的に分析されます。 過激な描写のコンテンツが含まれるものとビデオが疑われた場合、パブリックとして設定することができなくなります。 ただし、アカウント メンバーであれば、プライベート ビデオとしてアクセスできます (表示したり、分析情報や抽出された成果物をダウンロードしたり、アカウント メンバーが利用できるその他の操作を実行したりできます)。   
+
+パブリック アクセス用にビデオを設定するには、以下のいずれかを実行します。 
+
+* 独自のインターフェイス レイヤー (アプリや Web サイトなど) を構築し、それを利用して Video Indexer サービスを操作します。 この方法では、ビデオは Microsoft のポータル内でプライベートになり、ユーザーはインターフェイス経由でビデオを操作できます。 たとえば、独自のインターフェイスで分析情報を取得したり、ビデオの視聴を許可したりできます。 
+* コンテンツの人間によるレビューを要求します。過激な描写のコンテンツでなければ、制限が解除されることがあります。 
+
+    ユーザーがインターフェイス レイヤーとして、かつパブリック (認証なし) の視聴目的で Video Indexer Web サイトを直接使用する場合、このオプションを試すことができます。 
 
 ## <a name="api-questions"></a>API に関する質問
 

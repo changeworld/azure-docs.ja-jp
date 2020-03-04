@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2020
+ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: f7d8d28299b662774a8cc0a7d4a28b052a551eab
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 01397ad078bc741977c4928f67d1834f05e1db8d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906326"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623969"
 ---
 # <a name="security-alerts---a-reference-guide"></a>セキュリティ アラート - リファレンス ガイド
 
@@ -33,7 +33,7 @@ ms.locfileid: "76906326"
 
 ## <a name="alerts-windows"></a>Windows マシンのアラート
 
-[詳細な説明と注意](security-center-alerts-iaas.md#windows-)
+[詳細な説明と注意](threat-protection.md#windows-machines)
 
 |アラート:|説明|意図 ([詳細](#intentions))|
 |----|----|:----:|
@@ -124,7 +124,7 @@ ms.locfileid: "76906326"
 
 ## <a name="alerts-linux"></a>Linux マシンのアラート
 
-[詳細な説明と注意](security-center-alerts-iaas.md#linux-)
+[詳細な説明と注意](threat-protection.md#linux-machines)
 
 |アラート:|説明|意図 ([詳細](#intentions))|
 |----|----|:----:|
@@ -213,31 +213,32 @@ ms.locfileid: "76906326"
 
 ## <a name="alerts-azureappserv"></a>Azure App Service のアラート
 
-[詳細な説明と注意](security-center-alerts-compute.md#azure-app-service-)
+[詳細な説明と注意](threat-protection.md#app-services)
 
 |アラート:|説明|意図 ([詳細](#intentions))|
 |----|----|:----:|
-|**Suspicious WordPress theme invocation detected (不審な WordPress テーマの呼び出しが検出されました)**|App Service のアクティビティ ログは、App Service リソースに対するコード インジェクション アクティビティの可能性を示しています。<br>この不審なアクティビティは、WordPress テーマを操作してサーバー側でのコード実行をサポートし、操作されたテーマ ファイルを呼び出すための直接の Web 要求を行うアクティビティに似ています。 この種のアクティビティは、WordPress での攻撃活動の一部である可能性があります。|-|
-|**Web fingerprinting detected (Web フィンガー プリントが検出されました)**<br>(NMAP / Blind Elephant)|App Service のアクティビティ ログは、App Service リソースに対する Web フィンガー プリント アクティビティの可能性を示しています。<br>この不審なアクティビティは、Blind Elephant と呼ばれるツールに関連しています。 このツールは、Web サーバーのフィンガープリントを取得し、インストールされているアプリケーションとそのバージョンを検出しようとします。 攻撃者はこのツールを使用して Web アプリケーションを調べ、脆弱性を見つけることがよくあります。 |-|
-|**Suspicious access to possibly vulnerable web page detected (脆弱な可能性がある Web ページへの不審なアクセスが検出されました)**|App Service のアクティビティ ログは、機密性が高いと思われる Web ページがアクセスされたことを示しています。<br>この不審なアクティビティは、Web スキャナーのアクセス パターンに似たアクセス パターンを持つソース アドレスから発生しています。 この種のアクティビティは、多くの場合、攻撃者がネットワークをスキャンして、機密性が高いか、脆弱な Web ページへのアクセス権を取得しようとする試みと関連しています。 |-|
-|**An IP that connected to your Azure App Service FTP Interface was found in Threat Intelligence (脅威インテリジェンスで、Azure App Service の FTP インターフェイスに接続した IP が見つかりました)**|App Service の FTP ログ分析で、脅威インテリジェンス フィードで見つかったソース アドレスからの接続が検出されました。 この接続中に、ユーザーが、一覧表示されているページにアクセスしました。|-|
 |**An attempt to run Linux commands on a Windows App Service (Windows App Service での Linux コマンドの実行試行)**|App Service のプロセスの分析で、Windows App Service での Linux コマンドの実行試行が検出されました。 このアクションは、Web アプリケーションにより実行されていました。 この動作は、一般的な Web アプリケーションの脆弱性を悪用する活動でよく見られます。|-|
-|**Suspicious PHP execution detected (疑わしい PHP の実行が検出されました)**|マシン ログは、不審な PHP プロセスが実行されていることを示しています。 このアクションには、PHP プロセスを使用してコマンドラインからオペレーティング システム コマンドまたは PHP コードを実行する試みが含まれていました。 この動作は、正当である可能性もありますが、Web アプリケーションでは、この動作は Web シェルで Web サイトを感染させようとするなどの悪意のあるアクティビティを示している可能性があります。|実行|
-|**Attempt to run high privilege command detected (高い特権のコマンドの実行試行が検出されました)**|App Service のプロセスの分析で、高い特権が必要なコマンドの実行試行が検出されました。 このコマンドは、Web アプリケーションのコンテキストで実行されました。 この動作は、正当である可能性もありますが、Web アプリケーションでは、この動作は悪意のあるアクティビティを示している可能性があります。|-|
-|**Saving curl output to disk detected (curl 出力のディスクへの保存が検出されました)**|App Service プロセスの分析により、curl コマンドが実行され、出力がディスクに保存されたことが検出されました。 この動作は、正当である可能性もありますが、Web アプリケーションでは、この動作は Web シェルで Web サイトを感染させようとするなどの悪意のあるアクティビティでも観察されます。|-|
-|**Raw data download detected (生データのダウンロードが検出されました)**|App Service プロセスの分析により、Pastebin などの生データ Web サイトからコードをダウンロードする試行が検出されました。 このアクションは PHP プロセスによって実行されました。 この動作は、Web シェルやその他の悪意のあるコンポーネントを App Service にダウンロードする試行に関連付けられています。|-|
-|**Vulnerability scanner detected (脆弱性スキャナーが検出されました)**<br>(Joomla/WordPress/CMS)|Azure App Service のアクティビティ ログに、App Service リソースで脆弱性スキャナーが使用された可能性が示されています。 検出された疑わしいアクティビティは、Joomla アプリケーション、WordPress アプリケーション、またはコンテンツ管理システム (CMS) をターゲットにしているツールのアクティビティに似ています。|-|
-|**Spam folder referrer detected (スパム フォルダーの参照元が検出されました)**|Azure App Service のアクティビティ ログに、スパム アクティビティに関連付けられている Web サイトが発信元と特定された Web アクティビティが示されています。 これは、Web サイトが侵害され、スパム アクティビティに使用された場合に発生する可能性があります。|-|
-|**Connection to web page from anomalous IP address detected (異常な IP アドレスからの Web ページへの接続が検出されました)**|Azure App Service のアクティビティ ログに、これまで接続したことのないソース IP アドレス (%{Source IP Address}) から機密性の高い Web ページへの接続が示されています。 これは、何者かが Web アプリの管理ページにブルート フォース攻撃を試みていることを示している可能性があります。 正当なユーザーが新しい IP アドレスを使用した結果である可能性もあります。|-|
-|**Suspicious User Agent detected (疑わしいユーザー エージェントが検出されました)**|Azure App Service のアクティビティ ログに、疑わしいユーザー エージェントの要求が示されています。 この動作は、App Service アプリケーションの脆弱性を悪用する試行を示している可能性があります。|-|
-|**PHP file in upload folder (アップロード フォルダー内の PHP ファイル)**|Azure App Service のアクティビティ ログに、アップロード フォルダー内にある不審な PHP ページへのアクセスが示されています。 この種のフォルダーには通常、 PHP ファイルは含まれません。 この種のファイルが存在する場合は、任意のファイル アップロードの脆弱性を利用した悪用を示している可能性があります。|-|
+|**An IP that connected to your Azure App Service FTP Interface was found in Threat Intelligence (脅威インテリジェンスで、Azure App Service の FTP インターフェイスに接続した IP が見つかりました)**|App Service の FTP ログ分析で、脅威インテリジェンス フィードで見つかったソース アドレスからの接続が検出されました。 この接続中に、ユーザーが、一覧表示されているページにアクセスしました。|-|
 |**Anomalous requests pattern detected (異常な要求パターンが検出されました)**|Azure App Service のアクティビティ ログに、%{Source IP} から App Service に対する異常な HTTP アクティビティが示されています。 このアクティビティは、ファジングやブルート フォース アクティビティのパターンに似ています。|-|
+|**Attempt to run high privilege command detected (高い特権のコマンドの実行試行が検出されました)**|App Service のプロセスの分析で、高い特権が必要なコマンドの実行試行が検出されました。 このコマンドは、Web アプリケーションのコンテキストで実行されました。 この動作は、正当である可能性もありますが、Web アプリケーションでは、この動作は悪意のあるアクティビティを示している可能性があります。|-|
+|**Connection to web page from anomalous IP address detected (異常な IP アドレスからの Web ページへの接続が検出されました)**|Azure App Service のアクティビティ ログに、これまで接続されたことのないソース IP アドレス (%{Source IP Address}) から機密性の高い Web ページへの接続が示されています。 これは、何者かが Web アプリの管理ページにブルート フォース攻撃を試みていることを示している可能性があります。 正当なユーザーが新しい IP アドレスを使用した結果である可能性もあります。|-|
+|**Raw data download detected (生データのダウンロードが検出されました)**|App Service プロセスの分析により、Pastebin などの生データ Web サイトからコードをダウンロードする試行が検出されました。 このアクションは PHP プロセスによって実行されました。 この動作は、Web シェルやその他の悪意のあるコンポーネントを App Service にダウンロードする試行に関連付けられています。|-|
+|**Phishing content hosted on Azure Webapps (Azure Webapps でホストされているコンテンツのフィッシング)**|Azure AppServices Web サイトでフィッシング攻撃に使用された URL が検出されました。 この URL は、O365 顧客に送信されたフィッシング攻撃の一部でした。 通常、このコンテンツでは、訪問者が正規に見える Web サイトに自分の会社の資格情報または財務情報を入力するよう誘導します。|コレクション|
+|**PHP file in upload folder (アップロード フォルダー内の PHP ファイル)**|Azure App Service のアクティビティ ログに、アップロード フォルダー内にある不審な PHP ページへのアクセスが示されています。 この種のフォルダーには通常、 PHP ファイルは含まれません。 この種のファイルが存在する場合は、任意のファイル アップロードの脆弱性を利用した悪用を示している可能性があります。|-|
+|**Saving curl output to disk detected (curl 出力のディスクへの保存が検出されました)**|App Service プロセスの分析により、curl コマンドが実行され、出力がディスクに保存されたことが検出されました。 この動作は、正当である可能性もありますが、Web アプリケーションでは、この動作は Web シェルで Web サイトを感染させようとするなどの悪意のあるアクティビティでも観察されます。|-|
+|**Spam folder referrer detected (スパム フォルダーの参照元が検出されました)**|Azure App Service のアクティビティ ログに、スパム アクティビティに関連付けられている Web サイトが発信元と特定された Web アクティビティが示されています。 これは、Web サイトが侵害され、スパム アクティビティに使用された場合に発生する可能性があります。|-|
+|**Suspicious access to possibly vulnerable web page detected (脆弱な可能性がある Web ページへの不審なアクセスが検出されました)**|App Service のアクティビティ ログは、機密性が高いと思われる Web ページがアクセスされたことを示しています。<br>この不審なアクティビティは、Web スキャナーのアクセス パターンに似たアクセス パターンを持つソース アドレスから発生しています。 この種のアクティビティは、多くの場合、攻撃者がネットワークをスキャンして、機密性が高いか、脆弱な Web ページへのアクセス権を取得しようとする試みと関連しています。 |-|
+|**Suspicious PHP execution detected (疑わしい PHP の実行が検出されました)**|マシン ログは、不審な PHP プロセスが実行されていることを示しています。 このアクションには、PHP プロセスを使用してコマンドラインからオペレーティング システム コマンドまたは PHP コードを実行する試みが含まれていました。 この動作は、正当である可能性もありますが、Web アプリケーションでは、この動作は Web シェルで Web サイトを感染させようとするなどの悪意のあるアクティビティを示している可能性があります。|実行|
+|**Suspicious User Agent detected (疑わしいユーザー エージェントが検出されました)**|Azure App Service のアクティビティ ログに、疑わしいユーザー エージェントの要求が示されています。 この動作は、App Service アプリケーションの脆弱性を悪用する試行を示している可能性があります。|-|
+|**Suspicious WordPress theme invocation detected (不審な WordPress テーマの呼び出しが検出されました)**|App Service のアクティビティ ログは、App Service リソースに対するコード インジェクション アクティビティの可能性を示しています。<br>この不審なアクティビティは、WordPress テーマを操作してサーバー側でのコード実行をサポートし、操作されたテーマ ファイルを呼び出すための直接の Web 要求を行うアクティビティに似ています。 この種のアクティビティは、WordPress での攻撃活動の一部である可能性があります。|-|
+|**Vulnerability scanner detected (脆弱性スキャナーが検出されました)**<br>(Joomla/WordPress/CMS)|Azure App Service のアクティビティ ログに、App Service リソースで脆弱性スキャナーが使用された可能性が示されています。 検出された疑わしいアクティビティは、Joomla アプリケーション、WordPress アプリケーション、またはコンテンツ管理システム (CMS) をターゲットにしているツールのアクティビティに似ています。|-|
+|**Web fingerprinting detected (Web フィンガー プリントが検出されました)**<br>(NMAP / Blind Elephant)|App Service のアクティビティ ログは、App Service リソースに対する Web フィンガー プリント アクティビティの可能性を示しています。<br>この不審なアクティビティは、Blind Elephant と呼ばれるツールに関連しています。 このツールは、Web サーバーのフィンガープリントを取得し、インストールされているアプリケーションとそのバージョンを検出しようとします。 攻撃者はこのツールを使用して Web アプリケーションを調べ、脆弱性を見つけることがよくあります。 |-|
 ||||
 
 
 ## <a name="alerts-akscluster"></a>コンテナーのアラート - Azure Kubernetes Service クラスター
 
-[詳細な説明と注意](security-center-alerts-compute.md#azure-containers-)
+[詳細な説明と注意](threat-protection.md#azure-containers)
 
 |アラート:|説明|意図 ([詳細](#intentions))|
 |----|----|:----:|
@@ -252,7 +253,7 @@ ms.locfileid: "76906326"
 
 ## <a name="alerts-containerhost"></a>コンテナーのアラート - ホスト レベル
 
-[詳細な説明と注意](security-center-alerts-compute.md#azure-containers-)
+[詳細な説明と注意](threat-protection.md#azure-containers)
 
 |アラート:|説明|意図 ([詳細](#intentions))|
 |----|----|:----:|
@@ -268,7 +269,7 @@ ms.locfileid: "76906326"
 
 ## <a name="alerts-sql-db-and-warehouse"></a>SQL Database および SQL Data Warehouse のアラート
 
-[詳細な説明と注意](security-center-alerts-data-services.md#sql-database-and-sql-data-warehouse-)
+[詳細な説明と注意](threat-protection.md#data-sql)
 
 |アラート:|説明|意図 ([詳細](#intentions))|
 |----|----|:----:|
@@ -286,7 +287,7 @@ ms.locfileid: "76906326"
 
 ## <a name="alerts-azurestorage"></a>Azure Storage のアラート
 
-[詳細な説明と注意](security-center-alerts-data-services.md#azure-storage-)
+[詳細な説明と注意](threat-protection.md#azure-storage)
 
 |アラート:|説明|意図 ([詳細](#intentions))|
 |----|----|:----:|
@@ -307,7 +308,7 @@ ms.locfileid: "76906326"
 
 ## <a name="alerts-azurecosmos"></a>Azure Cosmos DB のアラート (プレビュー)
 
-[詳細な説明と注意](security-center-alerts-data-services.md#azure-cosmos-db)
+[詳細な説明と注意](threat-protection.md#cosmos-db)
 
 |アラート:|説明|意図 ([詳細](#intentions))|
 |----|----|:----:|
@@ -318,7 +319,7 @@ ms.locfileid: "76906326"
 
 ## <a name="alerts-azurenetlayer"></a>Azure ネットワーク レイヤーのアラート
 
-[詳細な説明と注意](security-center-alerts-service-layer.md#azure-network-layer)
+[詳細な説明と注意](threat-protection.md#network-layer)
 
 |アラート:|説明|意図 ([詳細](#intentions))|
 |----|----|:----:|
@@ -343,12 +344,13 @@ ms.locfileid: "76906326"
 
 ## <a name="alerts-azureresourceman"></a>Azure Resource Manager のアラート (プレビュー)
 
-[詳細な説明と注意](security-center-alerts-service-layer.md#azure-management-layer-azure-resource-manager-preview)
+[詳細な説明と注意](threat-protection.md#management-layer)
 
 |アラート:|説明|意図 ([詳細](#intentions))|
 |----|----|:----:|
 |**PREVIEW - Azurite toolkit run detected (プレビュー - Azurite ツールキットの実行が検出されました)**|ご利用の環境で、既知のクラウド環境偵察ツールキットの実行が検出されました。 [Azurite](https://github.com/mwrlabs/Azurite) ツールは、攻撃者 (または侵入テスター) によって、サブスクリプション リソースのマッピングおよび安全でない構成の特定に使用される恐れがあります。|-|
-|**PREVIEW – MicroBurst toolkit “Get-AzureDomainInfo” function run detected (プレビュー - MicroBurst ツールキット “Get AzureDomainInfo” 関数の実行が検出されました)**|ご利用の環境で、既知のクラウド環境偵察ツールキットの実行が検出されました。 “MicroBurst” ツール (https://github.com/NetSPI/MicroBurst) を参照) は、攻撃者 (または侵入テスター) がサブスクリプション リソースのマッピング、安全でない構成の特定、および機密情報の漏えいに使用することができます。|-||**PREVIEW - Suspicious management session using an inactive account detected (プレビュー - 非アクティブ アカウントを使用する疑わしい管理セッションが検出されました)**|サブスクリプションのアクティビティ ログ分析で、疑わしい動作が検出されました。 長期間使用されなかったプリンシパルでは、現在、攻撃者の永続化をセキュリティで保護できるアクションが実行されています。|永続化|
+|**PREVIEW – MicroBurst toolkit “Get-AzureDomainInfo” function run detected (プレビュー - MicroBurst ツールキット “Get AzureDomainInfo” 関数の実行が検出されました)**|ご利用の環境で、既知のクラウド環境偵察ツールキットの実行が検出されました。 “MicroBurst” ツール (https://github.com/NetSPI/MicroBurst) を参照) は、攻撃者 (または侵入テスター) がサブスクリプション リソースのマッピング、安全でない構成の特定、および機密情報の漏えいに使用することができます。|-|
+|**PREVIEW - Suspicious management session using an inactive account detected (プレビュー - 非アクティブ アカウントを使用する疑わしい管理セッションが検出されました)**|サブスクリプションのアクティビティ ログ分析で、疑わしい動作が検出されました。 長期間使用されなかったプリンシパルでは、現在、攻撃者の永続化をセキュリティで保護できるアクションが実行されています。|永続化|
 |**PREVIEW – MicroBurst toolkit “Get-AzurePasswords” function run detected (プレビュー - MicroBurst ツールキット “Get AzurePasswords” 関数の実行が検出されました)**|ご利用の環境で、既知のクラウド環境偵察ツールキットの実行が検出されました。 “MicroBurst” ツール (https://github.com/NetSPI/MicroBurst) を参照) は、攻撃者 (または侵入テスター) がサブスクリプション リソースのマッピング、安全でない構成の特定、および機密情報の漏えいに使用することができます。|-|
 |**PREVIEW – Suspicious management session using Azure portal detected (プレビュー - Azure portal を使用する疑わしい管理セッションが検出されました)**|サブスクリプションのアクティビティ ログの分析により、疑わしい動作が検出されました。 サブスクリプション環境を管理するために定期的に Azure portal (Ibiza) を使用しない (過去 45 日間、Azure portal を使用して管理していない、またはアクティブに管理しているサブスクリプション) プリンシパルで、現在、Azure portal を使用して、攻撃者の永続化をセキュリティで保護できるアクションが実行されています。|-|
 |**PREVIEW - Suspicious management session using PowerShell detected (プレビュー - PowerShell を使用する疑わしい管理セッションが検出されました)**|サブスクリプションのアクティビティ ログ分析で、疑わしい動作が検出されました。 サブスクリプション環境を管理するために定期的に PowerShell を使用しないプリンシパルでは、現在、PowerShell が使用され、攻撃者の永続化をセキュリティで保護できるアクションが実行されています。|永続化|
@@ -361,7 +363,7 @@ ms.locfileid: "76906326"
 
 ## <a name="alerts-azurekv"></a>Azure Key Vault のアラート (プレビュー)
 
-[詳細な説明と注意](security-center-alerts-service-layer.md#azure-keyvault)
+[詳細な説明と注意](threat-protection.md#azure-keyvault)
 
 |アラート:|説明|意図 ([詳細](#intentions))|
 |----|----|:----:|
@@ -379,7 +381,7 @@ ms.locfileid: "76906326"
 
 ## <a name="alerts-azureddos"></a>Azure DDoS Protection のアラート
 
-[詳細な説明と注意](security-center-alerts-integration.md#azure-ddos)
+[詳細な説明と注意](threat-protection.md#azure-ddos)
 
 |アラート:|説明|意図 ([詳細](#intentions))|
 |----|----|:----:|
@@ -416,6 +418,7 @@ Security Center でサポートされているキル チェーンの意図は、
 ## <a name="next-steps"></a>次のステップ
 アラートの詳細については、以下を参照してください。
 
+* [Azure Security Center での脅威の防止](threat-protection.md)
 * [Security alerts in Azure Security Center](security-center-alerts-overview.md)
 * [Azure Security Center でのセキュリティ アラートの管理と対応](security-center-managing-and-responding-alerts.md)
 * [セキュリティ アラートと推奨事項のエクスポート (プレビュー)](continuous-export.md)

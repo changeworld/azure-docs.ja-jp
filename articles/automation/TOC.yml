@@ -84,7 +84,7 @@
             - name: webhook から Runbook を開始する
               href: automation-webhooks.md
             - name: Runbook の入力パラメーターを構成する
-              href: automation-runbook-input-parameters.md
+              href: runbook-input-parameters.md
             - name: 子 Runbook
               href: automation-child-runbooks.md
             - name: Azure Automation Runbook に JSON オブジェクトを渡す

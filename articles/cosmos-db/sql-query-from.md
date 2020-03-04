@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 4f6d7580ea7ff0e8968c0c3ce4b3ca6111c86ac8
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 3939594064b63c567720378b9d316acca64d3266
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873371"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587687"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での FROM 句
 
@@ -79,9 +79,9 @@ FROM <from_specification>
   
   提供された別名によって定義された他のソースからそのドキュメントを取得する必要があることを指定します。  
   
-- `<container_expression> '.' property_`  
+- `<container_expression> '.' property_name`  
   
-  指定されたコンテナー式によって取得されるすべてのドキュメントの `property_name` プロパティまたは array_index アレイ要素にアクセスすることによって、そのドキュメントを取得する必要があることを指定します。  
+  `property_name` プロパティにアクセスして、そのドキュメントを取得する必要があることを指定します。  
   
 - `<container_expression> '[' "property_name" | array_index ']'`  
   
@@ -163,8 +163,8 @@ FROM 句により、ソースを小さなサブセットに限定することが
     ]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [使用の開始](sql-query-getting-started.md)
+- [作業の開始](sql-query-getting-started.md)
 - [SELECT 句](sql-query-select.md)
 - [WHERE 句](sql-query-where.md)

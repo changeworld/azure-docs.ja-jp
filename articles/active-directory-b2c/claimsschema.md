@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fc01bd5c868cddd448e3a262960af64f50b78d74
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: 2861b882d9b4c00a1c4db87b2dd49d49dfeb53a6
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77372979"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581108"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -175,6 +175,8 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 
 #### <a name="enumeration"></a>Enumeration
 
+**Enumeration** 要素は、ユーザーが要求についてユーザー インターフェイスで選択可能なオプション (`CheckboxMultiSelect`、`DropdownSingleSelect`、または `RadioSingleSelect` の値など) を定義します。 または、[LocalizedCollections](localization.md#localizedcollections) 要素を使用して、使用可能なオプションを定義してローカライズすることもできます。 要求 **Enumeration** コレクションから項目を検索するには、[GetMappedValueFromLocalizedCollection](string-transformations.md#getmappedvaluefromlocalizedcollection) 要求変換を使用します。
+
 **列挙型**要素には、次の属性が含まれています。
 
 | 属性 | Required | 説明 |
@@ -209,7 +211,7 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 | 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | RegularExpression | はい | この種類の要求が有効になるのに一致する必要がある正規表現。 |
-| HelpText | いいえ | この要求のパターンまたは正規表現。 |
+| HelpText | いいえ | 正規表現のチェックが失敗した場合にユーザーに表示されるエラー メッセージ。 |
 
 次の例では、**電子メール**要求を正規表現入力検証とヘルプ テキストとともに設定します。
 
@@ -247,7 +249,7 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
 |段落 | `boolean`､`date`、`dateTime`、`duration`、`int`、`long`、`string`|段落タグ内のテキストのみを表示するフィールド。 |
 |Password | `string` |パスワード テキスト ボックス。|
 |RadioSingleSelect |`string` | ラジオ ボタンのコレクション。 要求の値は、選択された値です。|
-|Readonly | `boolean`､`date`、`dateTime`、`duration`、`int`、`long`、`string`| 読み取り専用テキストボックス。 |
+|Readonly | `boolean`､`date`、`dateTime`、`duration`、`int`、`long`、`string`| 読み取り専用テキスト ボックス。 |
 |TextBox |`boolean`、`int`、`string` |1 行のテキスト ボックス。 |
 
 
@@ -407,5 +409,3 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
   </Restriction>
 </ClaimType>
 ```
-
-**列挙**値の一つを **responseMsg**要求に表示するには、`GetMappedValueFromLocalizedCollection`または`CreateStringClaim`要求の変換を使用します。 詳細については、[文字列要求の変換](string-transformations.md)をご覧ください。

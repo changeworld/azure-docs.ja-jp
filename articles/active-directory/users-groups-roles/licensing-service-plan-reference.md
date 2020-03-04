@@ -16,12 +16,12 @@ ms.author: arjay
 ms.reviewer: arjay
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f500f662db11aaa63548f7d19ace00553d5159af
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: f2a01b74212e51dd7b5c31ffb59707068211c6d4
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547559"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562226"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>ライセンスのための製品名とサービス プラン 識別子
 
@@ -29,7 +29,7 @@ ms.locfileid: "76547559"
 
 - **製品名**:管理ポータルで使用されます。
 - **文字列 ID**:ライセンスでの操作を実行するときに PowerShell v1.0 コマンドレットによって使用されます。
-- **GUID**:Azure AD Graph および Microsoft Graph で使用される GUID です。
+- **GUID**:Microsoft Graph API によって使用される GUID
 - **含まれるサービス プラン**:文字列 ID および GUID に対応する製品のサービス プランの一覧です
 - **含まれるサービス プラン (フレンドリ名)** : 文字列 ID および GUID に対応する製品のサービス プラン (フレンドリ名) の一覧です。
 

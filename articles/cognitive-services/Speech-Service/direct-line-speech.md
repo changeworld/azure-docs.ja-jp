@@ -3,27 +3,27 @@ title: Direct Line Speech - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: Direct Line Speech と Speech SDK (ソフトウェア開発キット) を使用した音声アシスタントの特徴、機能、制限の概要。
 services: cognitive-services
-author: trrwilson
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.author: travisw
-ms.openlocfilehash: cec3131d791d591375fd87d1c080294c9034a815
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 01/31/2020
+ms.author: dapine
+ms.openlocfilehash: 230fbd14ce33b52b1e7a1f9cc9cd530ccdec169a
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806220"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562532"
 ---
 # <a name="about-direct-line-speech"></a>Direct Line Speech について
 
-[音声アシスタント](voice-assistants.md)はユーザーの音声を聞き取り、応答としてアクションを実行します (多くの場合は音声で応答します)。 これは、[音声テキスト変換](speech-to-text.md)を使用してユーザーの音声を文字に変換し、そのテキストの自然言語理解に対してアクションを実行します。 このアクションには、多くの場合、[テキスト読み上げ](text-to-speech.md)で生成されたアシスタントからの音声出力が含まれます。 デバイスは、Speech SDK の `DialogServiceConnector` オブジェクトを使用してアシスタントに接続します。
+**Direct Line Speech** は、柔軟で拡張可能な音声アシスタントを作成するための堅牢なエンドツーエンドのソリューションです。 これは、Bot Framework とその Direct Line Speech チャネル (音声によるボットとの対話のために最適化されています) を利用しています。
 
-**Direct Line Speech** は、柔軟で拡張可能な音声アシスタントを作成するための、堅牢なエンドツーエンドのソリューションです。このようなアシスタントは、Bot Framework とその Direct Line Speech チャネルによって実現され、音声によるボットとの対話のために最適化されます。
+[音声アシスタント](voice-assistants.md)はユーザーの音声を聞き取り、応答としてアクションを実行します (多くの場合は音声で応答します)。 これは、[音声テキスト変換](speech-to-text.md)を使用してユーザーの音声を文字に変換し、そのテキストの自然言語理解に対してアクションを実行します。 このアクションには、多くの場合、[テキスト読み上げ](text-to-speech.md)で生成されたアシスタントからの音声出力が含まれます。
 
-Direct Line Speech は、音声アシスタントのための最高レベルのカスタマイズと精緻化を提供します。 タスクの完了または指示と制御が目的の、自由形式な、自然な、またはその両方の性質を持った会話のシナリオに適しています。 このような高度の柔軟性はさらなる複雑化を伴うため、自然言語入力を使用して十分に定義されたタスクを扱うシナリオでは、ソリューションのエクスペリエンスを簡素化するために、[カスタム コマンド (プレビュー)](custom-commands.md) を検討することができます。
+Direct Line Speech は、音声アシスタントのための最高レベルのカスタマイズと精緻化を提供します。 これは、タスクの完了または指示と制御が目的の、自由形式な、自然な、またはその 2 つの性質を持った会話のシナリオ向けに設計されています。 このような高度の柔軟性はさらなる複雑化を伴うため、自然言語入力を使用して十分に定義されたタスクを扱うシナリオでは、ソリューションのエクスペリエンスを簡素化するために、[カスタム コマンド (プレビュー)](custom-commands.md) を検討することができます。
 
 ## <a name="getting-started-with-direct-line-speech"></a>Direct Line Speech の使用を開始する
 
@@ -33,13 +33,13 @@ Direct Line Speech を使用して音声アシスタントを作成する最初�
 
 Direct Line Speech を使用して簡単な音声アシスタントを作成するための完全なステップ形式ガイドについては、[Speech SDK と Direct Line Speech チャネルを使用してボットを音声対応にするチュートリアル](tutorial-voice-enable-your-bot-speech-sdk.md)を参照してください。
 
-10 分もかからずにコードを実行できるように設計されたクイック スタートも用意されています。 以下の表は、音声アシスタントのクイックスタートの一覧を言語別に整理して示しています。
+また、コードを実行し、API を迅速に学習できるように設計されたクイックスタートも用意しています。 以下の表は、音声アシスタントのクイックスタートの一覧を言語とプラットフォーム別に整理して示しています。
 
 | クイック スタート | プラットフォーム | API リファレンス |
 |------------|----------|---------------|
-| C#、UWP | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| Java | Windows、macOS、Linux | [Browse](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Browse](https://aka.ms/csspeech/javaref) |
+| C#、UWP | Windows | [[参照]](https://aka.ms/csspeech/csharpref) |
+| Java | Windows、macOS、Linux | [[参照]](https://aka.ms/csspeech/javaref) |
+| Java | Android | [[参照]](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>サンプル コード
 
@@ -62,7 +62,7 @@ Direct Line Speech と音声アシスタントのための関連する機能は�
 * [Speech SDK](speech-sdk-reference.md)
 * [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Speech サービスのサブスクリプション キーを無料で取得する](get-started.md)
 * [Speech SDK を取得する](speech-sdk.md)

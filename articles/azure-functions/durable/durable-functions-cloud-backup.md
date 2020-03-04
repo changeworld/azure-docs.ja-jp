@@ -4,18 +4,16 @@ description: Azure Functions の Durable Functions 拡張機能でファンア�
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: a87a4edd544c2f7d8ff9c6415df2f2dda125f2bf
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d61600801286126ea6ffb9a97bc5655b6f233816
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232994"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562192"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Durable Functions のファンアウト/ファンイン シナリオ - クラウド バックアップの例
 
 "*ファンアウト/ファンイン*" は、複数の関数を同時に実行した後、その結果に対して集計を行うパターンを指します。 この記事では、[Durable Functions](durable-functions-overview.md) を使用してファンイン/ファンアウト シナリオを実装するサンプルについて説明します。 このサンプルは、アプリのサイトのコンテンツの一部またはすべてを Azure Storage にバックアップする永続関数です。
-
-[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -23,7 +21,7 @@ ms.locfileid: "74232994"
 
 このサンプルでは、関数は、指定されたディレクトリの下にあるすべてのファイルを BLOB ストレージに再帰的にアップロードします。 さらに、アップロードされたバイトの合計数をカウントします。
 
-すべてを管理する単一の関数を記述できます。 その際に発生する最大の問題は**スケーラビリティ**です。 単一の関数は、単一の VM でのみ実行できるため、スループットは単一の VM のスループットによって制限されます。 別の問題として、**信頼性**があります。 途中でエラーが発生した場合、またはプロセス全体が 5 分以上かかる場合、バックアップは部分的に完了した状態で失敗する可能性があります。 これにより、再起動が必要になることがあります。
+すべてを管理する単一の関数を記述できます。 その際に発生する最大の問題は**スケーラビリティ**です。 単一の関数は、単一の仮想マシンでのみ実行できるため、スループットは単一の VM のスループットによって制限されます。 別の問題として、**信頼性**があります。 途中でエラーが発生した場合、またはプロセス全体が 5 分以上かかる場合、バックアップは部分的に完了した状態で失敗する可能性があります。 これにより、再起動が必要になることがあります。
 
 もっと堅牢な方法は、2 つの標準的な関数 (ファイルを列挙し、ファイル名をキューに追加する関数と、キューからファイルを読み取り、そのファイルを BLOB ストレージにアップロードする関数) を記述することです。 このアプローチにより、スループットと信頼性は向上しますが、キューのプロビジョニングと管理を行う必要があります。 さらに重要なのは、アップロードされた合計バイト数の報告などを行うと、**状態管理**と**調整**が非常に複雑になることです。
 
@@ -33,27 +31,11 @@ Durable Functions を使用する方法は、上記の利点を非常に少な�
 
 この記事では、サンプル アプリで使用されている次の関数について説明します。
 
-* `E2_BackupSiteContent`
-* `E2_GetFileList`
-* `E2_CopyFileToBlob`
+* `E2_BackupSiteContent`:`E2_GetFileList` を呼び出してバックアップするファイルのリストを取得してから、`E2_CopyFileToBlob` を呼び出して各ファイルをバックアップする[オーケストレーター関数](durable-functions-bindings.md#orchestration-trigger)。
+* `E2_GetFileList`:ディレクトリ内のファイルのリストを返す[アクティビティ関数](durable-functions-bindings.md#activity-trigger)。
+* `E2_CopyFileToBlob`:1 つのファイルを Azure Blob Storage にバックアップするアクティビティ関数。
 
-以下のセクションでは、C# スクリプトで使用される構成とコードについて説明します。 Visual Studio 開発用のコードは、この記事の最後に記載されています。
-
-## <a name="the-cloud-backup-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>クラウド バックアップ オーケストレーション (Visual Studio Code と Azure Portal のサンプル コード)
-
-`E2_BackupSiteContent` 関数は、オーケストレーター関数用の標準的な *function.json* を使用します。
-
-[!code-json[Main](~/samples-durable-functions/samples/csx/E2_BackupSiteContent/function.json)]
-
-オーケストレーター関数を実装するコードを次に示します。
-
-### <a name="c"></a>C#
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_BackupSiteContent/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
-
-[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/index.js)]
+### <a name="e2_backupsitecontent-orchestrator-function"></a>E2_BackupSiteContent オーケストレーター関数
 
 このオーケストレーター関数は、基本的に次の操作を行います。
 
@@ -63,54 +45,89 @@ Durable Functions を使用する方法は、上記の利点を非常に少な�
 4. すべてのアップロードが完了するまで待機します。
 5. Azure Blob ストレージにアップロードされたバイト数の合計を返します。
 
-`await Task.WhenAll(tasks);` (C#) および `yield context.df.Task.all(tasks);` (JavaScript) の行に注意してください。 `E2_CopyFileToBlob` 関数への個々の呼び出しがすべて待機されていて並列実行が可能な*わけではありません*。 このタスクの配列を `Task.WhenAll` (C#) または `context.df.Task.all` (JavaScript) に渡すと、*すべてのコピー操作が完了するまで*完了しないタスクが返されます。 .NET のタスク並列ライブラリ (TPL) または JavaScript の [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) に精通していれば、これは目新しいものではありません。 違いは、これらのタスクは複数の VM で同時に実行される可能性があり、エンド ツー エンドの実行がプロセスのリサイクルに柔軟に対応することが Durable Functions 拡張機能によって保証されることです。
+# <a name="c"></a>[C#](#tab/csharp)
+
+オーケストレーター関数を実装するコードを次に示します。
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs?range=16-42)]
+
+`await Task.WhenAll(tasks);` 行に注目してください。 `E2_CopyFileToBlob` 関数への個々の呼び出しがすべて待機されていて並列実行が可能な*わけではありません*。 このタスク配列を `Task.WhenAll` に渡すと、"*すべてのコピー操作が完了するまで*" 完了することがない 1 つのタスクが戻ります。 .NET のタスク並列ライブラリ (TPL) を知っていれば、これは新しい事柄ではありません。 違いは、これらのタスクが複数の仮想マシンで同時に実行される可能性があることと、Durable Functions 拡張機能によって、プロセスのリサイクルに対してエンド ツー エンドの実行が回復することが保証されることです。
+
+`Task.WhenAll` から応答が返ることは、すべての関数呼び出しが完了し、値が戻っていることを意味します。 `E2_CopyFileToBlob` への各呼び出しがアップロードしたバイト数を返しているため、バイト数の合計を計算することは、これらの返された値をすべて合計するだけの操作です。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+この関数では、オーケストレーター関数の標準的な *function.json* が使用されます。
+
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/function.json)]
+
+オーケストレーター関数を実装するコードを次に示します。
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/index.js)]
+
+`yield context.df.Task.all(tasks);` 行に注目してください。 `E2_CopyFileToBlob` 関数への個々の呼び出しがすべて中断され、並列実行が可能になる*わけではありません*。 このタスク配列を `context.df.Task.all` に渡すと、"*すべてのコピー操作が完了するまで*" 完了することがない 1 つのタスクが戻ります。 JavaScript の [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) に慣れている方には、これは目新しいものではないでしょう。 違いは、これらのタスクが複数の仮想マシンで同時に実行される可能性があることと、Durable Functions 拡張機能によって、プロセスのリサイクルに対してエンド ツー エンドの実行が回復することが保証されることです。
 
 > [!NOTE]
 > タスクは概念的には JavaScript の Promise に似ていますが、タスクの並列化を管理するために、オーケストレーター関数は `Promise.all` と `Promise.race` の代わりに `context.df.Task.all` と `context.df.Task.any` を使用する必要があります。
 
-`Task.WhenAll` の待機 (または `context.df.Task.all` の一時停止) の後は、すべての関数呼び出しが完了し、値が返されていることを意味します。 `E2_CopyFileToBlob` への各呼び出しがアップロードしたバイト数を返しているため、バイト数の合計を計算することは、これらの返された値をすべて合計するだけの操作です。
+`context.df.Task.all` が中断した後、すべての関数呼び出しが完了し、戻り値が返されたことがわかります。 `E2_CopyFileToBlob` への各呼び出しがアップロードしたバイト数を返しているため、バイト数の合計を計算することは、これらの返された値をすべて合計するだけの操作です。
 
-## <a name="helper-activity-functions"></a>ヘルパー アクティビティ関数
+---
 
-ヘルパー アクティビティ関数は、他のサンプルと同じように、`activityTrigger` トリガー バインドを使う標準的な関数です。 たとえば、`E2_GetFileList` の *function.json* ファイルは次のようになります。
+### <a name="helper-activity-functions"></a>ヘルパー アクティビティ関数
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/function.json)]
+ヘルパー アクティビティ関数は、他のサンプルと同じように、`activityTrigger` トリガー バインドを使う標準的な関数です。
+
+#### <a name="e2_getfilelist-activity-function"></a>E2_GetFileList アクティビティ関数
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs?range=44-54)]
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+`E2_GetFileList` の *function.json* ファイルは次のようになります。
+
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/function.json)]
 
 その実装を次に示します。
 
-### <a name="c"></a>C#
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
-
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/index.js)]
 
-`E2_GetFileList` の JavaScript 実装では、`readdirp` モジュールを使用してディレクトリ構造を再帰的に読み取ります。
+関数は、`readdirp` モジュール (バージョン 2.x) を使用してディレクトリ構造を再帰的に読み取ります。
+
+---
 
 > [!NOTE]
-> このコードをオーケストレーター関数に直接配置できないことを疑問に思うかもしれません。 配置することは可能ですが、それを行うと、オーケストレーター関数の基本ルールの 1 つである、ローカル ファイル システムへのアクセスを含めて I/O 操作を行うべきではないというルールを破ることになります。
+> このコードをオーケストレーター関数に直接配置できないことを疑問に思うかもしれません。 配置することは可能ですが、それを行うと、オーケストレーター関数の基本ルールの 1 つである、ローカル ファイル システムへのアクセスを含めて I/O 操作を行うべきではないというルールを破ることになります。 詳細については、「[オーケストレーター関数コードの制約](durable-functions-code-constraints.md)」を参照してください。
+
+#### <a name="e2_copyfiletoblob-activity-function"></a>E2_CopyFileToBlob アクティビティ関数
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs?range=56-81)]
+
+> [!NOTE]
+> サンプル コードを実行するには、`Microsoft.Azure.WebJobs.Extensions.Storage` NuGet パッケージをインストールする必要があります。
+
+関数は、Azure Functions のバインドの高度な機能を使用します (つまり、[`Binder` パラメーター](../functions-dotnet-class-library.md#binding-at-runtime) の使用) が、このチュートリアルでは、詳細を気にする必要はありません。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 `E2_CopyFileToBlob` の *function.json* ファイルも同じように単純です。
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/function.json)]
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/function.json)]
 
-C# 実装も簡単です。 Azure Functions のバインドの高度な機能を使用します (`Binder` パラメーターを使用します) が、このチュートリアルでは、詳細を気にする必要はありません。
-
-### <a name="c"></a>C#
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
-
-JavaScript 実装では Azure Functions の `Binder` 機能にアクセスできないため、[Azure Storage SDK for Node](https://github.com/Azure/azure-storage-node) が代わりに使用されます。
+JavaScript の実装では、[Azure Storage SDK for Node](https://github.com/Azure/azure-storage-node) を使用して、ファイルを Azure Blob Storage にアップロードします。
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/index.js)]
+
+---
 
 この実装は、ディスクからファイルを読み込み、"backups" コンテナー内の同じ名前の BLOB に内容を非同期でストリーミングします。 戻り値はストレージにコピーされたバイト数であり、この数値がオーケストレーター関数によって集計の合計を計算するために使用されます。
 
 > [!NOTE]
-> これは、I/O 操作を `activityTrigger` 関数に移動させる完璧な例です。 作業を複数の VM に分散できるだけではなく、進行状況のチェックポイント処理のメリットも得ることができます。 ホスト プロセスが何らかの理由で終了した場合でも、どのアップロードが完了しているかがわかります。
+> これは、I/O 操作を `activityTrigger` 関数に移動させる完璧な例です。 作業をさまざまなマシンに分散できるだけではなく、進行状況のチェックポイント処理のメリットも得ることができます。 ホスト プロセスが何らかの理由で終了した場合でも、どのアップロードが完了しているかがわかります。
 
 ## <a name="run-the-sample"></a>サンプルを実行する
 
@@ -165,16 +182,7 @@ Content-Type: application/json; charset=utf-8
 
 これで、オーケストレーションが完了したこと、完了までにかかったおおよその時間を確認できます。 `output` フィールドの値から、約 450 KB のログがアップロードされたことも確認できます。
 
-## <a name="visual-studio-sample-code"></a>Visual Studio のサンプル コード
-
-Visual Studio プロジェクトの単一の C# ファイルとしてのオーケストレーションを次に示します。
-
-> [!NOTE]
-> 下のサンプル コードを実行するには、`Microsoft.Azure.WebJobs.Extensions.Storage` NuGet パッケージをインストールする必要があります。
-
-[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs)]
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このサンプルでは、ファンアウト/ファンイン パターンの実装方法について説明しました。 次のサンプルでは、[永続的タイマー](durable-functions-timers.md)を使用して監視パターンを実装する方法を示します。
 

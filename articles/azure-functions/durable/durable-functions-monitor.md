@@ -4,18 +4,16 @@ description: Azure Functions の Durable Functions 拡張機能を使って状�
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: f8a589bd4ab4de396c0688f8022515d6fbec96a2
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: ed92156df9d8e1e07b56cea4b1e64edee11d68d9
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769593"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562124"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions のモニター シナリオ - 天気ウォッチャーのサンプル
 
 モニター パターンは、ワークフローの柔軟な "*繰り返し*" プロセスを参照します。たとえば、特定の条件が満たされるまでポーリングします。 この記事では、[Durable Functions](durable-functions-overview.md) を使って監視を実装するサンプルを説明します。
-
-[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -30,11 +28,13 @@ ms.locfileid: "75769593"
 * モニターはスケーラブルです。 各モニターはオーケストレーション インスタンスであるため、新しい関数を作成したり、コードをさらに定義したりしなくても、複数のモニターを作成できます。
 * モニターは、より大規模なワークフローと簡単に統合できます。 モニターは、より複雑なオーケストレーション関数の 1 つのセクション、つまり[サブ オーケストレーション](durable-functions-sub-orchestrations.md)にすることができます。
 
-## <a name="configuring-twilio-integration"></a>Twilio 統合の構成
+## <a name="configuration"></a>構成
+
+### <a name="configuring-twilio-integration"></a>Twilio 統合の構成
 
 [!INCLUDE [functions-twilio-integration](../../../includes/functions-twilio-integration.md)]
 
-## <a name="configuring-weather-underground-integration"></a>Weather Underground 統合の構成
+### <a name="configuring-weather-underground-integration"></a>Weather Underground 統合の構成
 
 このサンプルでは、Weather Underground API を使って、ある場所の現在の気象条件をチェックします。
 
@@ -50,27 +50,29 @@ API キーを入手したら、次の**アプリ設定**を関数アプリに追
 
 この記事では、サンプル アプリで使用されている次の関数について説明します。
 
-* `E3_Monitor`:`E3_GetIsClear` を定期的に呼び出すオーケストレーター関数。 `E3_GetIsClear` が true を返した場合に `E3_SendGoodWeatherAlert` を呼び出します。
-* `E3_GetIsClear`:ある場所の現在の気象条件を確認するアクティビティ関数です。
+* `E3_Monitor`:`E3_GetIsClear` を定期的に呼び出す[オーケストレーター関数](durable-functions-bindings.md#orchestration-trigger)です。 `E3_GetIsClear` が true を返した場合に `E3_SendGoodWeatherAlert` を呼び出します。
+* `E3_GetIsClear`:ある場所の現在の気象条件を確認する[アクティビティ関数](durable-functions-bindings.md#activity-trigger)です。
 * `E3_SendGoodWeatherAlert`:Twilio 経由で SMS メッセージを送信するアクティビティ関数です。
 
-以下のセクションでは、C# スクリプトと JavaScript で使用される構成とコードについて説明します。 Visual Studio 開発用のコードは、この記事の最後に記載されています。
+### <a name="e3_monitor-orchestrator-function"></a>E3_Monitor オーケストレーター関数
 
-## <a name="the-weather-monitoring-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>気象監視オーケストレーション (Visual Studio Code と Azure Portal のサンプル コード)
+# <a name="c"></a>[C#](#tab/csharp)
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=41-78,97-115)]
+
+オーケストレーターには、監視する場所と、その場所が明確になった場合にメッセージを送信する電話番号が必要です。 このデータは、厳密に型指定された `MonitorRequest` オブジェクトとしてオーケストレーターに渡されます。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **E3_Monitor** 関数は、オーケストレーター関数用の標準的な *function.json* を使います。
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E3_Monitor/function.json)]
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/function.json)]
 
 関数を実装するコードを次に示します。
 
-### <a name="c-script"></a>C# スクリプト
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
-
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
+
+---
 
 このオーケストレーター関数は、次のアクションを行います。
 
@@ -79,48 +81,52 @@ API キーを入手したら、次の**アプリ設定**を関数アプリに追
 3. **E3_GetIsClear** を呼び出し、要求された場所が晴れているかどうかを判断します。
 4. 天気が晴れの場合は、**E3_SendGoodWeatherAlert** を呼び出して、要求された電話番号に SMS 通知を送信します。
 5. 持続的タイマーを作成して、次のポーリング間隔でオーケストレーションを再開します。 サンプルでは、簡略化のためにハード コーディングされた値を使います。
-6. `CurrentUtcDateTime` (.NET) または `currentUtcDateTime` (JavaScript) がモニターの有効期限を過ぎるか、SMS アラートが送信されるまで実行を続けます。
+6. 現在の UTC 時間がモニターの有効期限を経過するか SMS アラートが送信されるまで、実行を続けます。
 
-複数の **MonitorRequests** を送信して、複数のオーケストレーター インスタンスを同時に実行できます。 監視する場所と SMS アラートを送信する電話番号を指定することができます。
+オーケストレーター関数を複数回呼び出すことによって、複数のオーケストレーター インスタンスを同時に実行できます。 監視する場所と SMS アラートを送信する電話番号を指定することができます。
 
-## <a name="strongly-typed-data-transfer-net-only"></a>厳密に型指定されたデータ転送 (.NET のみ)
+### <a name="e3_getisclear-activity-function"></a>E3_GetIsClear アクティビティ関数
 
-オーケストレーターにはデータの複数の部分が必要であるため、C# および C# スクリプトにおける厳密に型指定されたデータ転送には[共有 POCO オブジェクト](../functions-reference-csharp.md#reusing-csx-code)が使われます。  
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/MonitorRequest.csx)]
+他のサンプルと同様に、ヘルパー アクティビティ関数は、`activityTrigger` トリガー バインドを使う標準的な関数です。 **E3_GetIsClear** 関数は、Weather Underground API を使って現在の気象条件を取得し、晴れているかどうかを判断します。
 
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/Location.csx)]
+# <a name="c"></a>[C#](#tab/csharp)
 
-JavaScript サンプルでは通常の JSON オブジェクトをパラメーターとして使います。
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=80-85)]
 
-## <a name="helper-activity-functions"></a>ヘルパー アクティビティ関数
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-他のサンプルと同様に、ヘルパー アクティビティ関数は、`activityTrigger` トリガー バインドを使う標準的な関数です。 **E3_GetIsClear** 関数は、Weather Underground API を使って現在の気象条件を取得し、晴れているかどうかを判断します。 *function.json* の定義は次のようになります。
+*function.json* の定義は次のようになります。
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/function.json)]
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/function.json)]
 
-その実装を次に示します。 データ転送に使われる POCO と同様に、API 呼び出しを処理し、応答 JSON を解析するロジックは、C# で共有クラスに抽象化されます。 これは [Visual Studio サンプル コード](#run-the-sample)の一部です。
-
-### <a name="c-script"></a>C# スクリプト
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
+その実装を次に示します。
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
 
-**E3_SendGoodWeatherAlert** 関数は、Twilio バインディングを使って、散歩に適した時間であることをエンド ユーザーに通知する SMS メッセージを送信します。 その *function.json* は単純です。
+---
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/function.json)]
+### <a name="e3_sendgoodweatheralert-activity-function"></a>E3_SendGoodWeatherAlert アクティビティ関数
+
+**E3_SendGoodWeatherAlert** 関数は、Twilio バインディングを使って、散歩に適した時間であることをエンド ユーザーに通知する SMS メッセージを送信します。
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=87-96,140-205)]
+
+> [!NOTE]
+> サンプル コードを実行するには、`Microsoft.Azure.WebJobs.Extensions.Twilio` NuGet パッケージをインストールする必要があります。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+その *function.json* は単純です。
+
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/function.json)]
 
 SMS メッセージを送信するコードを次に示します。
 
-### <a name="c-script"></a>C# スクリプト
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
-
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
+
+---
 
 ## <a name="run-the-sample"></a>サンプルを実行する
 
@@ -168,15 +174,6 @@ RetryAfter: 10
 ```
 POST https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}
 ```
-
-## <a name="visual-studio-sample-code"></a>Visual Studio のサンプル コード
-
-Visual Studio プロジェクトの単一の C# ファイルとしてのオーケストレーションを次に示します。
-
-> [!NOTE]
-> 下のサンプル コードを実行するには、`Microsoft.Azure.WebJobs.Extensions.Twilio` NuGet パッケージをインストールする必要があります。
-
-[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs)]
 
 ## <a name="next-steps"></a>次のステップ
 

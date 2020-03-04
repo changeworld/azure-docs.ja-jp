@@ -3,12 +3,12 @@ title: Azure Migrate での VMware 移行のサポート
 description: Azure Migrate での VMware VM 移行のサポートについて説明します。
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: e5a2f40611f6b358a8b5ff1dfb99cadebae4fab6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: eea2ef1f84e5c31dd18ea4ef65ccf2796231352b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77013996"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597985"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 移行のサポートマトリックス
 
@@ -35,7 +35,7 @@ VMware VM は、次のいくつかの方法で移行できます。
 --- | ---
 **VMware vCenter サーバー** | バージョン 5.5、6.0、6.5、または 6.7。
 **VMware vSphere ESXI ホスト** | バージョン 5.5、6.0、6.5、または 6.7。
-**vCenter Server のアクセス許可** | エージェントレスの移行では、[Migrate Appliance](migrate-appliance.md) を使用します。 アプライアンスには、次のアクセス許可が必要です。<br/><br/> - **Datastore.Browse**:VM のログ ファイルの閲覧を許可して、スナップショットの作成と削除のトラブルシューティングを行います。<br/><br/> **Datastore.LowLevelFileOperations**:データストア ブラウザーでの読み取り、書き込み、削除、名前変更の各操作を許可して、スナップショットの作成と削除のトラブルシューティングを行います。<br/><br/> - **VirtualMachine.Configuration.DiskChangeTracking**:VM ディスクに対する変更のトラッキングの有効化/無効化を許可し、スナップショット間における変更済みのデータ ブロックをプルします。<br/><br/> - **VirtualMachine.Configuration.DiskLease**:VM のディスクのリース操作を許可し、VMware vSphere Virtual Disk Development Kit (VDDK) を使用してディスクを読み取ります。<br/><br/> - **VirtualMachine.Provisioning.AllowReadOnlyDiskAccess**:VM 上のディスクを開くことを許可し、VDDK を使用してディスクを読み取ります。<br/><br/> - **VirtualMachine.Provisioning.AllowVirtualMachineDownload**:VM に関連付けられたファイルの読み取り操作を許可し、エラーが発生した場合にログをダウンロードして、トラブルシューティングを行います。<br/><br/> - **VirtualMachine.SnapshotManagement.***:レプリケーション用に VM スナップショットの作成と管理を許可します。<br/><br/> - **Virtual Machine.Interaction.Power Off**:Azure への移行中に VM の電源をオフにすることを許可します。
+**vCenter Server のアクセス許可** | エージェントレスの移行では、[Migrate Appliance](migrate-appliance.md) を使用します。 アプライアンスには、次のアクセス許可が必要です。<br/><br/> - **Datastore.Browse**:VM のログ ファイルの閲覧を許可して、スナップショットの作成と削除のトラブルシューティングを行います。<br/><br/> - **Datastore.LowLevelFileOperations**: データストア ブラウザーでの読み取り、書き込み、削除、名前変更の各操作を許可して、スナップショットの作成と削除のトラブルシューティングを行います。<br/><br/> - **VirtualMachine.Configuration.DiskChangeTracking**:VM ディスクに対する変更のトラッキングの有効化/無効化を許可し、スナップショット間における変更済みのデータ ブロックをプルします。<br/><br/> - **VirtualMachine.Configuration.DiskLease**:VM のディスクのリース操作を許可し、VMware vSphere Virtual Disk Development Kit (VDDK) を使用してディスクを読み取ります。<br/><br/> - **VirtualMachine.Provisioning.AllowDiskAccess**: (特に vSphere 6.0 以降) VDDK を使用したディスクのランダム読み取りアクセス用に VM 上のディスクを開くことを許可します。<br/><br/> - **VirtualMachine.Provisioning.AllowReadOnlyDiskAccess**:VM 上のディスクを開くことを許可し、VDDK を使用してディスクを読み取ります。<br/><br/>- **VirtualMachine.Provisioning.AllowVirtualMachineDownload**:VM に関連付けられたファイルの読み取り操作を許可し、エラーが発生した場合にログをダウンロードして、トラブルシューティングを行います。<br/><br/> - **VirtualMachine.SnapshotManagement.***:レプリケーション用に VM スナップショットの作成と管理を許可します。<br/><br/> - **Virtual Machine.Interaction.Power Off**:Azure への移行中に VM の電源をオフにすることを許可します。
 
 
 

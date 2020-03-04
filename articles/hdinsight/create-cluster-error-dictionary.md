@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/19/2019
-ms.openlocfilehash: 6e5ed996a0f44bae6c37027bc01f30be85d164f9
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 979e83c0eeaac4555fc5144bca479f0b5656cd28
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905488"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617537"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: クラスター作成時のエラー
 
@@ -172,7 +172,7 @@ ID の管理に必要なアクセス許可を指定しませんでした。 ユ�
 1. Azure portal を開きます。
 1. ストレージ アカウントに移動します。
 1. **[アクセス制御 (IAM)]** を確認します。
-1. ストレージ BLOB データ共同作成者ロールまたはストレージ BLOB データ所有者ロールに、サブスクリプションのユーザー割り当てマネージド ID へのアクセス権が "割り当てられている" ことを確認します。
+1. ストレージ BLOB データ共同作成者ロールまたはストレージ BLOB データ所有者ロールがユーザーに割り当てられていることを確認します。
 
 詳細については、「[Data Lake Storage Gen2 アカウントにマネージド ID のアクセス許可を設定する](hdinsight-hadoop-use-data-lake-storage-gen2.md)」を参照してください。
 

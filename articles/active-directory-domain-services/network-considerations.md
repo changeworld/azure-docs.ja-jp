@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 7c65e1f871fdab2c925f7a5e6747ad23fe8952d9
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 4a5aba6f8a357f33fd921ee12aac7e45f9b581ff
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512778"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613335"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Azure AD Domain Services の仮想ネットワーク設計の考慮事項と構成オプション
 
@@ -105,7 +105,7 @@ Azure AD DS マネージド ドメインでは、デプロイ時にいくつか�
 
 Azure AD DS で認証と管理サービスを提供するには、次のネットワーク セキュリティ グループの規則が必要です。 Azure AD DS マネージド ドメインが展開されている仮想ネットワーク サブネットのネットワーク セキュリティ グループ規則を編集または削除しないでください。
 
-| ポート番号 | Protocol | source                             | 宛先 | アクション | 必須 | 目的 |
+| ポート番号 | Protocol | source                             | 宛先 | アクション | Required | 目的 |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
 | 443         | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | はい      | Azure AD テナントとの同期。 |
 | 3389        | TCP      | CorpNetSaw                         | Any         | Allow  | はい      | ドメインの管理。 |
@@ -146,7 +146,7 @@ Azure AD DS で認証と管理サービスを提供するには、次のネッ�
 
 ## <a name="user-defined-routes"></a>ユーザー定義のルート
 
-ユーザー定義ルートは、既定では作成されず、Azure AD DS が正しく機能するためには必要ありません。 ルート テーブルを使用する必要がある場合は、*0.0.0.0* ルートに変更を加えないようにしてください。 このルートを変更すると、Azure AD Domain Services が中断する可能性があります。
+ユーザー定義ルートは、既定では作成されず、Azure AD DS が正しく機能するためには必要ありません。 ルート テーブルを使用する必要がある場合は、*0.0.0.0* ルートに変更を加えないようにしてください。 このルートを変更すると、Azure AD Domain Services が中断され、マネージド ドメインがサポートされない状態になります。
 
 また、それぞれの Azure サービス タグに含まれる IP アドレスからの受信トラフィックを Azure AD Domain Services サブネットにルーティングする必要があります。 サービス タグとそれに関連付けられている IP アドレスの詳細については、「[Azure の IP 範囲とサービス タグ - パブリック クラウド](https://www.microsoft.com/en-us/download/details.aspx?id=56519)」を参照してください。
 

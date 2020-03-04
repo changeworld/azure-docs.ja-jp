@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: ed477dddeb499023f4803929d9433ed37c302159
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: efee34ddfb2b2f6090d5dc8c43647c7ee1c53ce2
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212484"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562430"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>分散トレース (プレビュー) を使用して Azure IoT の cloud-to-device メッセージをトレースする
 
@@ -131,7 +131,7 @@ IoT Hub に対して分散トレースを有効にすると、次のことを実
 ### <a name="edit-the-send-telemetry-sample-to-enable-distributed-tracing"></a>送信テレメトリ サンプルを編集して分散トレースを有効にする
 
 > [!div class="button"]
-> <a href="https://github.com/Azure-Samples/azure-iot-distributed-tracing-sample/blob/master/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c" target="_blank">Github でのサンプルの入手</a>
+> <a href="https://github.com/Azure-Samples/azure-iot-distributed-tracing-sample/blob/master/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c" target="_blank">GitHub でのサンプルの入手</a>
 
 1. エディターを使用して、`azure-iot-sdk-c/iothub_client/samples/iothub_ll_telemetry_sample/iothub_ll_telemetry_sample.c` ソース ファイルを開きます。
 
@@ -280,7 +280,7 @@ Log Analytics で表示されるログの例
 IoT メッセージのフローを可視化するために、アプリケーション マップのサンプル アプリを設定します。 サンプル アプリでは、Azure Function と Event Hub を使用して[アプリケーション マップ](../application-insights/app-insights-app-map.md)に分散トレース ログが送信されます。
 
 > [!div class="button"]
-> <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">Github でのサンプルの入手</a>
+> <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">GitHub でのサンプルの入手</a>
 
 次の図は、3 つのルーティング エンドポイントがあるアプリケーション マップの分散トレースを示しています。
 
@@ -308,8 +308,8 @@ Microsoft は、分散トレースのより広範な採用をサポートする�
 1. IoT デバイスによって、IoT Hub にメッセージが送信されます。
 1. メッセージが IoT Hub ゲートウェイに到着します。
 1. IoT Hub は、メッセージ アプリケーション プロパティで `tracestate` を探し、それが正しい形式であるかどうか確認します。
-1. 正しい場合、IoT Hub は `trace-id` と `span-id` を生成し、それらをカテゴリ `DiagnosticIoTHubD2C` の Azure Monitor 診断ログに記録します。
-1. メッセージの処理が終了すると、IoT Hub は別の `span-id` を生成し、既存の `trace-id` とともにそれをカテゴリ `DiagnosticIoTHubIngress` に記録します。
+1. そうである場合、IoT Hub によって、メッセージのグローバルに一意の `trace-id` ("ホップ" の場合は `span-id`) が生成され、それらが `DiagnosticIoTHubD2C` の操作で Azure Monitor 診断ログに記録されます。
+1. メッセージの処理が終了すると、IoT Hub によって別の `span-id` が生成され、`DiagnosticIoTHubIngress` の操作で既存の `trace-id` とともにそれが記録されます。
 1. メッセージに対してルーティングが有効になっている場合、IoT Hub はそれをカスタム エンドポイントに書き込み、同じ `trace-id` を持つ別の `span-id` をカテゴリ `DiagnosticIoTHubEgress` に記録します。
 1. 上記の手順は、生成されたメッセージごとに繰り返されます。
 

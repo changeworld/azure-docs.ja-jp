@@ -13,21 +13,21 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: c93460797fc1cf953d467e2739d71c5a2a9b74ed
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 47488403a10a6b955e15b0048d455cc17016f009
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486170"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526248"
 ---
-# <a name="virtual-network-service-tags"></a>仮想ネットワーク サービス タグ 
+# <a name="virtual-network-service-tags"></a>仮想ネットワーク サービス タグ
 <a name="network-service-tags"></a>
 
-サービス タグは、指定された Azure サービスからの IP アドレス プレフィックスのグループを表します。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。これにより、ネットワーク セキュリティ規則に対する頻繁な更新の複雑さを最小限に抑えられます。 
+サービス タグは、指定された Azure サービスからの IP アドレス プレフィックスのグループを表します。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。これにより、ネットワーク セキュリティ規則に対する頻繁な更新の複雑さを最小限に抑えられます。
 
-サービス タグを使用して、 [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) または  [Azure Firewall](https://docs.microsoft.com/azure/firewall/service-tags) でのネットワーク アクセス制御を定義できます。 セキュリティ規則を作成するときに、特定の IP アドレスの代わりにサービス タグを使用します。 規則の適切な " *ソース* " または " *宛先* " フィールドにサービス タグ名 (たとえば  **ApiManagement**) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。 
+サービス タグを使用して、[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) または  [Azure Firewall](https://docs.microsoft.com/azure/firewall/service-tags) でのネットワーク アクセス制御を定義できます。 セキュリティ規則を作成するときに、特定の IP アドレスの代わりにサービス タグを使用します。 規則の適切な "*ソース* " または " *宛先* " フィールドにサービス タグ名 (たとえば **ApiManagement**) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。
 
-サービス タグを使用すると、ネットワーク分離を実現し、パブリック エンドポイントを持つ Azure サービスへのアクセス時に一般のインターネットから Azure リソースを保護できます。 受信/送信ネットワーク セキュリティ グループ規則を作成して、**インターネット**との間のトラフィックを拒否し、**AzureCloud** または他の特定の Azure サービスの[利用可能なサービス タグ](#available-service-tags)との間のトラフィックを許可します。 
+サービス タグを使用すると、ネットワーク分離を実現し、パブリック エンドポイントを持つ Azure サービスへのアクセス時に一般のインターネットから Azure リソースを保護できます。 受信/送信ネットワーク セキュリティ グループ規則を作成して、**インターネット**との間のトラフィックを拒否し、**AzureCloud** または他の特定の Azure サービスの[利用可能なサービス タグ](#available-service-tags)との間のトラフィックを許可します。
 
 ## <a name="available-service-tags"></a>利用可能なサービス タグ
 次の表には、[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)の規則で使用できるすべてのサービス タグが含まれています。

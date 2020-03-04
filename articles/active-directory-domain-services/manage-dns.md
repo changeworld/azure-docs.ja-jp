@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: f47f112991a4fe2e5b245920db98e5ae7617161a
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 2694a5f250b746748a1b42ac4d211aa28ef1ebad
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704927"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613692"
 ---
 # <a name="administer-dns-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services マネージド ドメインで DNS を管理する
 
@@ -41,7 +41,7 @@ Azure Active Directory Domain Services (Azure AD DS) の重要な構成要素の
     * 必要に応じて、[Azure Active Directory Domain Services インスタンスを作成して構成する][create-azure-ad-ds-instance]チュートリアルを完了します。
 * Azure AD DS マネージド ドメインに参加している Windows Server 管理 VM。
     * 必要に応じて、[Windows Server VM を作成してマネージド ドメインに参加させる][create-join-windows-vm]チュートリアルを完了します。
-* Azure AD テナントの "*Azure AD DC 管理者*" グループのメンバーであるユーザー アカウント。
+* Azure AD テナントの *Azure AD DC administrators* グループのメンバーであるユーザー アカウント。
 
 ## <a name="install-dns-server-tools"></a>DNS サーバー ツールのインストール
 
@@ -52,14 +52,14 @@ Azure AD DS に DNS レコードを作成して変更するには、DNS サー�
 1. **[サーバー マネージャー]** ウィンドウの *[ダッシュボード]* ウィンドウで **[役割と機能の追加]** を選択します。
 1. *[役割と機能の追加]* ウィザードの **[開始する前に]** ページで **[次へ]** を選択します。
 1. *[インストールの種類]* で、 **[役割ベースまたは機能ベースのインストール]** オプションが選択された状態にして **[次へ]** を選択します。
-1. **[サーバーの選択]** ページで、サーバー プールから現在の VM (例: *myvm.aadds.contoso.com*) を選択し、 **[次へ]** を選択します。
+1. **[サーバーの選択]** ページで、サーバー プールから現在の VM (例: *myvm.aaddscontoso.com*) を選択し、 **[次へ]** を選択します。
 1. **[サーバーの役割]** ページで、 **[次へ]** をクリックします。
 1. **[機能]** ページで、 **[リモート サーバー管理ツール]** ノードを展開し、次に **[役割管理ツール]** ノードを展開します。 役割管理ツールの一覧から、 **[DNS サーバー ツール]** 機能を選択します。
 
     ![利用できるロール管理ツールの一覧から DNS サーバー ツールのインストールを選択する](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-dns-tools.png)
 
 1. **[確認]** ページで **[インストール]** を選択します。 グループ ポリシーの管理ツールのインストールには、1、2 分かかることがあります。
-1. 機能のインストールが完了したら、 **[閉じる]** を選択して **[役割と機能の追加ウィザード]** を終了します。
+1. 機能のインストールが完了したら、 **[閉じる]** を選択して **[役割と機能の追加]** ウィザードを終了します。
 
 ## <a name="open-the-dns-management-console-to-administer-dns"></a>DNS 管理コンソールを起動して DNS を管理する
 
@@ -69,7 +69,7 @@ DNS サーバー ツールがインストールされたら、Azure AD DS マネ
 > Azure AD DS マネージド ドメインで DNS を管理するには、*AAD DC 管理者*グループのメンバーであるユーザー アカウントにサインインする必要があります。
 
 1. スタート画面で **[管理ツール]** を選択します。 前のセクションでインストールした **DNS** など、利用できる管理ツールの一覧が表示されます。 **[DNS]** を選択し、DNS 管理コンソールを起動します。
-1. **[DNS サーバーに接続]** ダイアログで、 **[次のコンピューター]** を選択し、マネージド ドメインの DNS ドメイン名 (例: *aadds.contoso.com*) を入力します。
+1. **[DNS サーバーに接続]** ダイアログで、 **[次のコンピューター]** を選択し、マネージド ドメインの DNS ドメイン名 (例: *aaddscontoso.com*) を入力します。
 
     ![DNS コンソールで Azure AD DS マネージド ドメインに接続する](./media/active-directory-domain-services-admin-guide/dns-console-connect-to-domain.png)
 
@@ -80,7 +80,7 @@ DNS サーバー ツールがインストールされたら、Azure AD DS マネ
 > [!WARNING]
 > DNS サーバー ツールを使用してレコードを管理するとき、Azure AD DS で使用される組み込み DNS レコードを削除したり、変更したりしないでください。 組み込みの DNS レコードには、ドメインの DNS レコード、ネーム サーバー レコード、および DC の検出に使用されるその他のレコードが含まれます。 これらのレコードを変更すると、仮想ネットワークのドメイン サービスが中断されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 DNS の管理の詳細については、 [Technet の DNS ツールの記事](https://technet.microsoft.com/library/cc753579.aspx)を参照してください。
 

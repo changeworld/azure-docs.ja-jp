@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 02/25/2020
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 20b99cfffdaa0d942ccd4d954909810342cbfcb8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 13d12bfbf64af9e19b66e63c88c9d7e0534571f3
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935338"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617280"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>音声サービスの言語とリージョンのサポート
 
@@ -37,8 +37,8 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
  Locale | Language | サポートされています | カスタマイズ
 ------|------------|-----------|-------------
 `ar-AE` | アラビア語 (UAE) | はい | いいえ
-`ar-BH` | アラビア語 (バーレーン) | はい | 言語モデル
-`ar-EG` | アラビア語 (エジプト)、現代標準 | はい | 言語モデル
+`ar-BH` | アラビア語 (バーレーン)、現代標準 | はい | 言語モデル
+`ar-EG` | アラビア語 (エジプト) | はい | 言語モデル
 `ar-KW` | アラビア語 (クウェート) | はい | いいえ
 `ar-QA` | アラビア語 (カタール) | はい | いいえ
 `ar-SA` | アラビア語 (サウジアラビア) | はい | いいえ
@@ -95,9 +95,10 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 Locale | Language | 性別 | 完全なサービス名のマッピング | 短い音声名
 --------|----------|--------|---------|------------
 `de-DE` | ドイツ語 (ドイツ) | Female | "Microsoft Server Speech Text to Speech Voice (de-DE, KatjaNeural)" | "de-DE-KatjaNeural"
-`en-US` | 英語 (米国) | Male | "Microsoft Server Speech Text to Speech Voice (en-US, GuyNeural)" | "en-US-GuyNeural"
 `en-US` | 英語 (米国) | Female | "Microsoft Server Speech Text to Speech Voice (en-US, JessaNeural)" | "en-US-JessaNeural"
+`en-US` | 英語 (米国) | Male | "Microsoft Server Speech Text to Speech Voice (en-US, GuyNeural)" | "en-US-GuyNeural"
 `it-IT` | イタリア語 (イタリア) | Female |"Microsoft Server Speech Text to Speech Voice (it-IT, ElsaNeural)" | "it-IT-ElsaNeural"
+`pt-BR` | ポルトガル語 (ブラジル) | Female | "Microsoft Server Speech Text to Speech Voice (pt-BR, FranciscaNeural)" | "pt-BR-FranciscaNeural"
 `zh-CN` | 中国語 (大陸) | Female | "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)" | "zh-CN-XiaoxiaoNeural"
 
 ニューラル音声を構成および調整する方法については、「[音声合成マークアップ言語](speech-synthesis-markup.md#adjust-speaking-styles)」を参照してください。
@@ -203,7 +204,7 @@ Locale | Language | 性別 | 完全なサービス名のマッピング | 短い
 音声のカスタマイズは、`de-DE`、`en-GB`、`en-IN`、`en-US`、`es-MX`、`fr-FR`、`it-IT`、`pt-BR`、および `zh-CN` に使用できます。 カスタム音声モデルをトレーニングする必要があるトレーニング データと一致する適切なロケールを選択します。 たとえば、持っている録音データが英国アクセントの英語で話されている場合は、`en-GB` を選択します。
 
 > [!NOTE]
-> カスタム音声では、中国語と英語のバイリンガルを除き、バイリンガル モデル トレーニングはサポートされていません。 英語も話すことができる中国人の音声をトレーニングする場合は、[Chinese-English bilingual]\(中国語 - 英語のバイリンガル\) を選択します。 すべてのロケールの音声トレーニングは、任意のサイズのトレーニング データから始めることができる `en-US` と `zh-CN` を除き、2,000 以上の発話のデータ セットから始まります。
+> Custom Voice では、中国語と英語のバイリンガルを除き、バイリンガル モデル トレーニングはサポートされていません。 英語も話すことができる中国人の音声をトレーニングする場合は、[Chinese-English bilingual]\(中国語 - 英語のバイリンガル\) を選択します。 すべてのロケールの音声トレーニングは、任意のサイズのトレーニング データから始めることができる `en-US` と `zh-CN` を除き、2,000 以上の発話のデータ セットから始まります。
 
 ## <a name="speech-translation"></a>音声翻訳
 

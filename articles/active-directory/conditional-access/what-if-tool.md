@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 02/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeb2e98ad9bbd35f3ec507e36e958c5ce6ad2198
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: dc87b434664ba12cefeb233972e749f631d8a2b4
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185878"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620684"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>What If ツールを使用した条件付きアクセスのトラブルシューティング
 
@@ -98,7 +98,7 @@ IP アドレスは、[場所の条件](location-condition.md)を模倣するた�
 
 選択したクラウド アプリに適用される[クラシック ポリシー](policy-migration.md#classic-policies)が存在する場合は、インジケーターが表示されます。 インジケーターをクリックすると、クラシック ポリシー ページにリダイレクトされます。 クラシック ポリシー ページで、クラシック ポリシーを移行したり、単に無効にしたりできます。 このページを閉じることで、評価結果に戻ることができます。
 
-選択したユーザーに適用されるポリシーの一覧で、ユーザーが満たす必要がある[許可コントロール](controls.md#grant-controls)と[セッション](controls.md#session-controls) コントロールの一覧も確認できます。
+選択したユーザーに適用されるポリシーの一覧で、ユーザーが満たす必要がある[許可コントロール](concept-conditional-access-grant.md)と[セッション](concept-conditional-access-session.md) コントロールの一覧も確認できます。
 
 ユーザーに適用されないポリシーの一覧では、これらのポリシーが適用されない理由も確認できます。 表示されている各ポリシーの理由は、満たされていない最初の条件を表します。 ポリシーは、これ以上評価されないために無効なポリシーであるという理由で、適用されない場合があります。   
 

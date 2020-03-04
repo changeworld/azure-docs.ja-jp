@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 6737b75a955bb12072722f274ac589cb6d525ffb
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 216fdeca9893f4e290474512617f13382d22890f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772536"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614015"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services で Kerberos の制約付き委任 (KCD) を構成する
 
@@ -56,7 +56,7 @@ Windows Server 2012 以降では、サービス管理者はサービスに制約
 
 ## <a name="configure-resource-based-kcd-for-a-computer-account"></a>コンピューター アカウントにリソースベースの KCD を構成する
 
-このシナリオでは、*contoso-webapp.aadds.contoso.com* というコンピューター上で実行されている Web アプリがあるとします。 この Web アプリは、*contoso-api.aadds.contoso.com* という名前のコンピューター上でドメイン ユーザーのコンテキストで実行されている Web API にアクセスする必要があります。 このシナリオを構成するには、以下の手順を実行します。
+このシナリオでは、*contoso-webapp.aaddscontoso.com* というコンピューター上で実行されている Web アプリがあるとします。 この Web アプリは、*contoso-api.aaddscontoso.com* という名前のコンピューター上でドメイン ユーザーのコンテキストで実行されている Web API にアクセスする必要があります。 このシナリオを構成するには、以下の手順を実行します。
 
 1. [カスタム OU を作成します](create-ou.md)。 このカスタム OU を管理するアクセス許可を、Azure AD DS マネージド ドメイン内のユーザーに委任できます。
 1. [仮想マシンをドメイン参加][create-join-windows-vm]させます。Web アプリを実行しているものと Web API を実行しているものの両方を、Azure AD DS マネージド ドメインに参加させます。 前の手順のカスタム OU 内に、これらのコンピューター アカウントを作成します。
@@ -67,8 +67,8 @@ Windows Server 2012 以降では、サービス管理者はサービスに制約
 1. 最後に、[Set-ADComputer][Set-ADComputer] PowerShell コマンドレットを使用して、リソースベースの KCD を構成します。 ドメインに参加している管理 VM で、"*Azure AD DC 管理者*" グループのメンバーであるユーザー アカウントとしてログインし、次のコマンドレットを実行します。 必要に応じて、独自のコンピューター名を指定します。
     
     ```powershell
-    $ImpersonatingAccount = Get-ADComputer -Identity contoso-webapp.aadds.contoso.com
-    Set-ADComputer contoso-api.aadds.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
+    $ImpersonatingAccount = Get-ADComputer -Identity contoso-webapp.aaddscontoso.com
+    Set-ADComputer contoso-api.aaddscontoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
     ```
 
 ## <a name="configure-resource-based-kcd-for-a-user-account"></a>ユーザー アカウントにリソースベースの KCD を構成する

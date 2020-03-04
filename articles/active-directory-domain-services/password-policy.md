@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: b08c3854ef330081b4c55331cb410c5925f00dec
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c4402c1ce2f051c8d1911e7c0332d4cac787ce1d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512761"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613197"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>マネージド ドメインに関するパスワードとアカウントのロックアウト ポリシー
 
@@ -87,7 +87,7 @@ Azure でアプリケーションを構築して実行するときに、カス�
 
 1. スタート画面で **[管理ツール]** を選択します。 [管理 VM を作成する][tutorial-create-management-vm]ためのチュートリアルでインストールされた使用可能な管理ツールの一覧が表示されます。
 1. OU を作成して管理するには、管理ツールの一覧から **[Active Directory 管理センター]** を選択します。
-1. 左側のウィンドウで、Azure AD DS マネージド ドメイン (*aadds.contoso.com* など) を選択します。
+1. 左側のウィンドウで、Azure AD DS マネージド ドメイン (*aaddscontoso.com* など) を選択します。
 1. **[System]/(システム/)** コンテナーを開き、 **[Password Settings Container]/(パスワード設定コンテナ―/)** を開きます。
 
     Azure AD DS 管理対象ドメインの組み込みのパスワード ポリシーが表示されます。 この組み込みのポリシーは変更できません。 代わりに、既定のポリシーを上書きするカスタムのパスワード ポリシーを作成します。
@@ -112,7 +112,7 @@ Azure でアプリケーションを構築して実行するときに、カス�
 
     ![パスワード ポリシーを適用するユーザーとグループを選択する](./media/how-to/fgpp-applies-to.png)
 
-1. パスワード ポリシーはグループにのみ適用できます。 **[場所]** ダイアログで、ドメイン名 (*aadds.contoso.com* など) を展開し、**AADDC Users** などの OU を選択します。 適用するユーザーのグループを含むカスタム OU がある場合は、その OU を選択します。
+1. パスワード ポリシーはグループにのみ適用できます。 **[場所]** ダイアログで、ドメイン名 (*aaddscontoso.com* など) を展開し、**AADDC Users** などの OU を選択します。 適用するユーザーのグループを含むカスタム OU がある場合は、その OU を選択します。
 
     ![グループが属する OU を選択する](./media/how-to/fgpp-container.png)
 

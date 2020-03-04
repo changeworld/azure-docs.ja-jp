@@ -3,12 +3,12 @@ title: Azure Backup Server を使用してワークロードをバックアッ�
 description: この記事では、Microsoft Azure Backup Server (MABS) を使用してワークロードを保護およびバックアップするように環境を準備する方法について説明します。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: efa54eac2e3e134fb285d38242ca1b59727c2c86
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: dd506668f9d75523ff7494bccb2979bf0785990d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425189"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617622"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server のインストールとアップグレード
 
@@ -45,7 +45,7 @@ Azure Backup Server を準備して実行するための最初の手順は、Win
 
 Azure Backup Server の実行に使用するサーバーを選ぶときは、まず Windows Server 2016 Datacenter または Windows Server 2019 Datacenter のギャラリー イメージにアクセスすることをお勧めします。 Azure で推奨される仮想マシンの作成方法については、[Azure Portalで初めての Windows 仮想マシンを作成する方法](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。Azure を使用したことがなくてもわかりやすいように説明されています。 サーバー仮想マシン (VM) に推奨される最小要件は4 つのコアと 8 GB の RAM を持つ Standard_A4_v2 です。
 
-Azure Backup Server を使用したワークロードの保護には、数多くの注意点があります。 これらの注意点については、「 [Azure Virtual Machine として DPM をインストールする](https://technet.microsoft.com/library/jj852163.aspx)」の記事で説明されています。 マシンをデプロイする前に、この記事によく目を通してください。
+Azure Backup Server を使用したワークロードの保護には、数多くの注意点があります。 これらの注意点については、「 [Azure Virtual Machine として DPM をインストールする](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj852163(v=sc.12))」の記事で説明されています。 マシンをデプロイする前に、この記事によく目を通してください。
 
 ### <a name="using-an-on-premises-server"></a>オンプレミスに設置されたサーバーを使用する場合
 
@@ -56,7 +56,7 @@ Azure Backup Server を使用したワークロードの保護には、数多く
 | Windows Server 2019 |64 ビット |Standard、Datacenter、Essentials |
 | Windows Server 2016 と最新 SP |64 ビット |Standard、Datacenter、Essentials  |
 
-Windows Server の重複除去を使用して DPM ストレージの重複を除去することができます。 Hyper-V VM にデプロイするときは、 [DPM と重複除去](https://technet.microsoft.com/library/dn891438.aspx) が連携するしくみの詳細を確認してください。
+Windows Server の重複除去を使用して DPM ストレージの重複を除去することができます。 Hyper-V VM にデプロイするときは、 [DPM と重複除去](https://docs.microsoft.com/system-center/dpm/deduplicate-dpm-storage?view=sc-dpm-2019) が連携するしくみの詳細を確認してください。
 
 > [!NOTE]
 > Azure Backup Server は、単一目的の専用サーバーで動作するように設計されています。 Azure Backup Server を次の場所にインストールすることはできません。
@@ -196,7 +196,7 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
 
     ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
-    スクラッチ場所は、Azure へのバックアップの要件です。 スクラッチ場所が、クラウドにバックアップする予定のデータの 5% 以上であることを確認します。 ディスクを保護するために、インストールが完了した後で個別のディスクを構成する必要があります。 記憶域プールの詳細については、「 [記憶域プールおよびディスク記憶域の構成](https://technet.microsoft.com/library/hh758075.aspx)」を参照してください。
+    スクラッチ場所は、Azure へのバックアップの要件です。 スクラッチ場所が、クラウドにバックアップする予定のデータの 5% 以上であることを確認します。 ディスクを保護するために、インストールが完了した後で個別のディスクを構成する必要があります。 記憶域プールの詳細については、「 [記憶域プールおよびディスク記憶域の構成](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12))」を参照してください。
 5. 制限付きのローカル ユーザー アカウント用に強力なパスワードを指定し、 **[次へ]** をクリックします。
 
     ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/security-screen.png)
@@ -305,6 +305,14 @@ Azure への接続と Azure サブスクリプションの状態がわかれば�
 * \*.microsoftonline.com
 * \*.windows.net
 
+ExpressRoute Microsoft ピアリングを使用している場合、次のサービスまたはリージョンを選択してください。
+
+* Azure Active Directory (12076:5060)
+* Microsoft Azure リージョン (Recovery Services コンテナーの場所による)
+* Azure Storage (Recovery Services コンテナーの場所による)
+
+詳細については、「[ExpressRoute ルーティングの要件](https://docs.microsoft.com/azure/expressroute/expressroute-routing)」を参照してください。
+
 Azure Backup Server マシンが Azure に接続できるようになると、実行可能な操作が Azure サブスクリプションの状態に応じて決まります。 マシンが "接続中" になった場合に許可される操作の詳細は、上記の表に記載されています。
 
 ### <a name="handling-subscription-states"></a>サブスクリプションの状態の処理
@@ -351,7 +359,7 @@ Microsoft Azure Backup Server がセットアップ段階 (またはバックア
 
 ## <a name="next-steps"></a>次のステップ
 
-[DPM 用の環境の準備](https://technet.microsoft.com/library/hh758176.aspx) について、Microsoft TechNet サイトのページで詳細を確認してください。 このページには、Azure Backup Server のデプロイと使用が可能なサポートされる構成も記載されています。 一連の [PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016)を使用して、さまざまな操作を実行できます。
+DPM 用の環境の準備については[こちら](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-2019)に詳細があります。 このページには、Azure Backup Server のデプロイと使用が可能なサポートされる構成も記載されています。 一連の [PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016)を使用して、さまざまな操作を実行できます。
 
 以下の記事により、Microsoft Azure Backup Server を使用したワークロードの保護について理解を深めてください。
 

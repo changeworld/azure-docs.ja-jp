@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: bb8cfae73d84135858733899e6441f564106e9d1
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 456f379e2b3c2ff411b196d45aef4663fddb0fe6
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997226"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604333"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Security Center の機能の廃止 (2019 年 7 月)
 
@@ -189,7 +189,7 @@ Azure Security Center に切り替えることをお勧めします。 複数の
 
 [セキュリティおよび監査] ダッシュボードを事前設定する、元の Log Analytics クエリは Security Center の [GitHub リポジトリ](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards)で入手できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Security Center](https://docs.microsoft.com/azure/security-center/) の詳細について学習します。
 - [Azure Sentinel](https://docs.microsoft.com/azure/sentinel) の詳細について学習します。

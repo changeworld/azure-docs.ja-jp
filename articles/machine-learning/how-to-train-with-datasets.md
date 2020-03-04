@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: f87dbedb1428b5884e20a9f7daabea792387fe88
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 2e48b47967e29a421a96bb09dd17b2cdcdbaff3c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543309"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77580515"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Azure Machine Learning でデータセットを使用してトレーニングする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "76543309"
 
 - オプション 2:非構造化データがある場合、FileDataset を作成し、トレーニングのためにリモート コンピューティングにファイルをマウントまたはダウンロードします。
 
-Azure Machine Learning データセットにより、[ScriptRun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py)、[Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)、[HyperDrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py) などの Azure Machine Learning トレーニング製品とのシームレスな統合が提供されます。
+Azure Machine Learning データセットにより、[ScriptRun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py)、[Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)、[HyperDrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py)、[Azure Machine Learning パイプライン](how-to-create-your-first-pipeline.md)などの Azure Machine Learning トレーニング製品とのシームレスな統合が提供されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -100,11 +100,12 @@ experiment_run = experiment.submit(est)
 experiment_run.wait_for_completion(show_output=True)
 ```
 
+
 ## <a name="option-2--mount-files-to-a-remote-compute-target"></a>オプション 2:リモート コンピューティング先にファイルをマウントする
 
 データ ファイルをトレーニング用のコンピューティング先で使用できるようにする場合は、[FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) を使用して、それによって参照されているファイルをマウントまたはダウンロードします。
 
-### <a name="mount-vs-download"></a>マウントと ダウンロード
+### <a name="mount-vs-download"></a>マウントとダウンロード
 データセットをマウントする場合は、データセットによって参照されているファイルをディレクトリ (マウント ポイント) に接続し、コンピューティング先で使用できるようにします。 Azure Machine Learning コンピューティング、仮想マシン、HDInsight など、Linux ベースのコンピューティングでは、マウントがサポートされています。 データ サイズがコンピューティング ディスクのサイズを超えている場合、または読み込み対象がスクリプト内のデータセットの一部のみの場合は、マウントをお勧めします。 ディスク サイズよりも大きいデータセットのダウンロードは失敗し、マウントしても、処理時にスクリプトで使用されるデータの一部しか読み込まれません。 
 
 データセットをダウンロードするとき、データセットによって参照されるすべてのファイルが、コンピューティング先にダウンロードされます。 すべてのコンピューティングの種類でダウンロードがサポートされています。 データセットによって参照されるファイルすべてのがスクリプトで処理され、コンピューティング ディスクが完全なデータセットに収まる場合は、ダウンロードによって、ストレージ サービスからのデータ ストリーミングのオーバーヘッドを回避することをお勧めします。
@@ -199,4 +200,4 @@ y_test = load_data(y_test, True).reshape(-1)
 
 * FileDatasets を使用して[画像分類モデルをトレーニングする](https://aka.ms/filedataset-samplenotebook)
 
-* [トレーニングとデプロイのための環境の作成と管理](how-to-use-environments.md)
+* [パイプラインを使用してデータセットをトレーニングする](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)

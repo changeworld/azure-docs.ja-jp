@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 02/02/2020
-ms.openlocfilehash: 13c064701a5ecae2090a99980249f5daaa8d5395
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 02/26/2020
+ms.openlocfilehash: 9c801f5c039996ac36c4f4479318d64cccdd204d
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198958"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649995"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight で使用できる Apache Hadoop コンポーネントおよびバージョンとは
 
@@ -62,6 +62,12 @@ HDInsight クラスターのバージョンに関連付けられた Hadoop エ�
 HDInsight の最新バージョンに関する追加のリリース ノートは、 [HDInsight リリース ノート](hdinsight-release-notes.md) を参照してください。
 
 ## <a name="supported-hdinsight-versions"></a>サポートされる HDInsight のバージョン
+
+### <a name="support-expiration-and-retirement-for-hdinsight-versions"></a>HDInsight バージョンのサポートの有効期限と提供終了
+
+**サポートの有効期限**は、Microsoft から指定された HDInsight バージョンのサポートが提供されなくなり、クラスターの作成のために Azure portal で使用できなくなることを意味します。 しかし、これらのバージョンは、Azure CLI またはさまざまな SDK を使用して、引き続き作成することができます。 
+
+HDInsight バージョンの**提供終了**は、既存のクラスターが引き続きそのまま実行されることを意味します。 しかし、このバージョンの新しいクラスターは、(CLI や SDK を含む) どのような方法でも作成することはできません。 その他のコントロール プレーン機能 (手動によるスケーリングや自動スケールなど) は、バージョンの提供終了後に機能しなくなる場合があります。 提供が終了したバージョンでサポートを利用することはできません。
 
 次の表は、HDInsight のバージョンの一覧を示しています。 サポート有効期限と提供終了日も記載されます (これらが既知の場合)。
 

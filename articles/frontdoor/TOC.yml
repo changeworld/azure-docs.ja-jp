@@ -4,7 +4,8 @@
   items:
     - name: Azure Front Door Service とは
       href: front-door-overview.md
-- name: クイック スタート
+- name: クイックスタート
+  expanded: true
   items:
     - name: Front Door を作成する
       href: quickstart-create-front-door.md
@@ -48,7 +49,7 @@
       href: front-door-url-rewrite.md
     - name: URL リダイレクト
       href: front-door-url-redirect.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: トラフィックのリダイレクト
       items:
@@ -64,7 +65,7 @@
           href: front-door-troubleshoot-routing.md
         - name: 許可された証明機関
           href: front-door-troubleshoot-allowed-ca.md
-- name: FAQ
+- name: よく寄せられる質問
   items:
     - name: Front Door に関する FAQ
       href: front-door-faq.md

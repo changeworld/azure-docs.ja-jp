@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2019
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 99c6ee5d58655350d14add61530fae647a675508
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 0af2b5f7d756060d463d2b4f3ef71bdd135710ee
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443229"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591525"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>仮想マシン プールを設定および管理する 
 この記事では、次のタスクの手順について説明します。
@@ -58,6 +58,9 @@ ms.locfileid: "77443229"
 ![選択した VM を開始する](../media/how-to-set-virtual-machine-passwords/start-selected-vms.png)
 
 同様に、 **[状態]** 列のボタンを切り替えるか、ツールバーの **[停止]** を選択して、1 つ以上の VM を停止することができます。 
+
+> [!NOTE]
+> 教師が学生用 VM をオンにしても、学生のクォータは影響を受けません。 ユーザーのクォータによって指定されるのは、スケジュールされたクラス時間外にユーザーが使用できるラボ時間数です。 クォータの詳細については、「[ユーザーのクォータを設定する](how-to-configure-student-usage.md?#set-quotas-for-users)」を参照してください。
 
 ## <a name="reset-vms"></a>VM をリセットする
 1 台以上の VM をリセットするには、一覧からそれらを選択し、次にツールバーの **[Reset]\(リセット\)** を選択します。 

@@ -3,12 +3,12 @@ title: アーキテクチャの概要
 description: Azure Backup サービスによって使用される、アーキテクチャ、コンポーネント、およびプロセスの概要を示します。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: f311f6d49a776a49080675f3c1ccc28a7a27cb92
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: b093c6702bb26fe537622727fe1b623141bf4160
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963939"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584389"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup のアーキテクチャとコンポーネント
 
@@ -135,7 +135,7 @@ DPM/MABS ディスクにバックアップしてから、Azure にバックア�
     - スナップショット データはコンテナーにすぐにコピーされない場合があります。 ピーク時には、バックアップに数時間かかる場合があります。 毎日のバックアップ ポリシーでは、VM のバックアップの合計時間は 24 時間未満になります。
 1. データがコンテナーに送信されると、復旧ポイントが作成されます。 既定では、スナップショットは 2 日間保持されてから削除されます。 この機能では、復元時間を削減して、これらのスナップショットから復元操作を行うことができます。 それにより、コンテナーからデータを変換して元の場所にコピーするために必要な時間が削減されます。 [Azure Backup のインスタント リストア機能](https://docs.microsoft.com/azure/backup/backup-instant-restore-capability)に関するページを参照してください。
 
-Azure VM では制御コマンド用にインターネット アクセスが必要です。 VM 内のワークロードをバックアップしている場合は (SQL Server データベースのバックアップなど)、バックエンド データにもインターネット アクセスが必要です。
+Azure VM をバックアップするために、インターネット接続を明示的に許可する必要はありません。
 
 ![Azure VM のバックアップ](./media/backup-architecture/architecture-azure-vm.png)
 

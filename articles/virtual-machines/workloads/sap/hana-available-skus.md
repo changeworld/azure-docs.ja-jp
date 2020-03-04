@@ -3,29 +3,29 @@ title: SAP HANA on Azure (L インスタンス) の SKU | Microsoft Docs
 description: SAP HANA on Azure (L インスタンス) のSKU。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/03/2019
+ms.date: 02/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5ed903eefea3a8c13bb9e43f5ef71063b453d93
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: aad4e3ff3df8b4aeecbbbee7883ba383b9fd0d9c
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806645"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617259"
 ---
 # <a name="available-skus-for-hli"></a>HLI で利用可能な SKU
 
 リビジョン 3 スタンプに基づく SAP HANA on Azure (L インスタンス) サービスは、次の Azure リージョンで、複数の構成で使用できます。
 
 - 米国西部
-- East US
+- 米国東部
 - オーストラリア東部
 - オーストラリア南東部
 - 西ヨーロッパ
@@ -36,7 +36,7 @@ ms.locfileid: "74806645"
 リビジョン 4 スタンプに基づく SAP HANA on Azure (L インスタンス) サービスは、次の Azure リージョンで、複数の構成で使用できます。
 
 - 米国西部 2
-- East US
+- 米国東部
 - 米国中南部
 - 西ヨーロッパ
 - 北ヨーロッパ
@@ -45,7 +45,7 @@ ms.locfileid: "74806645"
 
 [HANA L インスタンスの SAP HANA 認定 SKU](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) 一覧は次のような内容です。
 
-| SAP ソリューション | CPU | メモリ | Storage | 可用性 |
+| SAP ソリューション | CPU | メモリ | ストレージ | 可用性 |
 | --- | --- | --- | --- | --- |
 | OLAP に合わせて最適化:SAP BW、BW/4HANA<br /> または SAP HANA (一般的な OLAP ワークロード向け) | SAP HANA on Azure S72<br /> – 2 x Intel® Xeon® プロセッサ E7-8890 v3<br /> 36 CPU コアと 72 CPU スレッド |  768 GB |  3 TB | 提供終了 |
 | --- | SAP HANA on Azure S144<br /> – 4 x Intel® Xeon® プロセッサ E7-8890 v3<br /> 72 CPU コアと 144 CPU スレッド |  1.5 TB |  6 TB | 提供終了 |
@@ -55,6 +55,7 @@ ms.locfileid: "74806645"
 | OLTP に合わせて最適化:SAP Business Suite<br /> on SAP HANA または S/4HANA (OLTP)、<br /> 一般的な OLTP | SAP HANA on Azure S72m<br /> – 2 x Intel® Xeon® プロセッサ E7-8890 v3<br /> 36 CPU コアと 72 CPU スレッド |  1.5 TB |  6 TB | 提供終了 |
 |---| SAP HANA on Azure S144m<br /> – 4 x Intel® Xeon® プロセッサ E7-8890 v3<br /> 72 CPU コアと 144 CPU スレッド |  3.0 TB |  12 TB | 提供終了 |
 |---| SAP HANA on Azure S192m<br /> – 4 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 96 CPU コアと 192 CPU スレッド  |  4.0 TB |  16 TB | 提供終了 |
+| --- | SAP HANA on Azure S224m<br /> – 4 x Intel® Xeon® Platinum 8276 プロセッサ (Cascade lake とも呼ばれます)<br /> 112 CPU コアと 224 CPU スレッド |  6.0 TB |  10.5 TB | Revision3 スタンプと Revision4 スタンプで使用可能  |
 |---| SAP HANA on Azure S384m<br /> – 8 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 192 CPU コアと 384 CPU スレッド |  6.0 TB |  18 TB | Revision4 スタンプで使用可能|
 |---| SAP HANA on Azure S384xm<br /> – 8 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 192 CPU コアと 384 CPU スレッド |  8.0 TB |  22 TB |  Revision4 スタンプで使用可能 |
 |---| SAP HANA on Azure S576m<br /> – 12 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 288 CPU コアと 576 CPU スレッド |  12.0 TB |  28 TB | Revision4 スタンプで使用可能|
@@ -69,12 +70,12 @@ SAP HANA TDIv5 の場合、SAP を使用してユーザー固有のサイズと�
 
 多くの場合、このようなユーザー固有のサーバー構成は、SAP で認定されているサーバー ユニットよりも多くのメモリを搭載しています。 ユーザーは SAP と連携して、ユーザー固有のサイズのサーバー構成について SAP のサポートを受け、認定される可能性があります。 Azure では、次の HANA L インスタンス Standard SKU を利用できます。また、このような TDIv5 のユーザー固有のサイズ設定プロジェクトについては、Microsoft の価格表を参照してください。
 
-| SKU|CPU | メモリ | Storage | 可用性 |
+| SKU|CPU | メモリ | ストレージ | 可用性 |
 | ---| --- | --- | --- | --- |
 | S96 | SAP HANA on Azure S96<br /> – 2 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 48 CPU コアと 96 CPU スレッド |  768 GB |  3 TB | Revision3 スタンプと Revision4 スタンプで使用可能|
 
 
-| メモリ内の拡張可能な <br /> 元の SKU | CPU | メモリ | Storage | 可用性 |
+| メモリ内の拡張可能な <br /> 元の SKU | CPU | メモリ | ストレージ | 可用性 |
 | --- | --- | --- | --- | --- |
 | S192m を拡張可能 | SAP HANA on Azure S192xm<br /> – 4 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 96 CPU コアと 192 CPU スレッド |  6.0 TB |  16 TB | 提供終了 |
 | S384xm を拡張可能 | SAP HANA on Azure S384xxm<br /> – 8 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 192 CPU コアと 384 CPU スレッド |  12.0 TB |  28 TB | Revision4 スタンプで使用可能 |
@@ -90,7 +91,7 @@ SAP HANA TDIv5 の場合、SAP を使用してユーザー固有のサイズと�
 
 ユーザー固有のサイズ設定プロジェクトのユニットを除き、オファーのハードウェア ベースは SAP HANA TDI 認定です。 ハードウェアの 2 種類のクラスでは、SKU を次のように分けています。
 
-- S72、S72m、S96、S144、S144m、S192、S192m、S192xm、S224 は、"Type I クラス" の SKU と呼ばれます。
+- S72、S72m、S96、S144、S144m、S192、S192m、S192xm、S224、S224m は、"Type I クラス" の SKU と呼ばれます。
 - S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm、S960m は、"Type II クラス" の SKU と呼ばれます。
 - Optane で 4.5 TB から 9 TB を提供する他の S224 SKU に関心がある場合は、Microsoft アカウント チームに問い合わせて、詳細情報を入手してください。 
 
@@ -98,7 +99,7 @@ SAP HANA TDIv5 の場合、SAP を使用してユーザー固有のサイズと�
 完全な HANA L インスタンス スタンプは、1 件のお客様専用に割り当てられるわけではありません。 これは、Azure にデプロイされたネットワーク ファブリック経由で接続されるコンピューティング リソースとストレージ リソースのラックにも当てはまります。 Azure などの HANA L インスタンス インフラストラクチャでは、次の 3 つのレベルで相互に分離されたお客様のさまざまな &quot;テナント&quot; をデプロイします。
 
 - **ネットワーク**:HANA L インスタンス スタンプ内の仮想ネットワークによって分離します。
-- **ストレージ**:ストレージ ボリュームが割り当てられており、テナント間でストレージ ボリュームを分離するストレージ仮想マシンによって分離します。
+- **ストレージ**: ストレージ ボリュームが割り当てられており、テナント間でストレージ ボリュームを分離するストレージ仮想マシンによって分離します。
 - **コンピューティング**:サーバー ユニットを 1 つのテナント専用に割り当てます。 サーバー ユニットがハード パーティション分割やソフト パーティション分割されることはありません。 1 つのサーバー ユニットやホスト ユニットがテナント間で共有されることもありません。 
 
 異なるテナント間で HANA L インスタンス ユニットのデプロイが相互に表示されることはありません。 異なるテナントにデプロイされた HANA L インスタンス ユニットは、HANA L インスタンス スタンプ レベルで相互に直接通信することはできません。 HANA L インスタンス スタンプ レベルでは、同じテナント内の HANA L インスタンス ユニットだけが相互に通信できます。
@@ -111,5 +112,5 @@ HANA L インスタンスで実行される SAP HANA と、Azure にデプロイ
 - Azure とは異なり、SAP HANA on Azure (L インスタンス) サーバーは特定のお客様に専用のサーバーです。 サーバー ユニットまたはホスト ユニットがハード パーティション分割やソフト パーティション分割されることはありません。 そのため、HANA L インスタンス ユニットは、その全体がテナントに割り当てられ、テナントがお客様に割り当てられて使用されます。 サーバーを再起動またはシャットダウンしても、オペレーティング システムと SAP HANA が別のサーバーに自動的にデプロイされることはありません (Type I クラスの SKU の場合、唯一の例外は、サーバーで問題が発生し、別のサーバーで再デプロイを実行する必要がある場合です)。
 - Azure とは異なり、価格/パフォーマンス比が最も高くなるようにホスト プロセッサの種類を選択する場合は、Intel E7v3 および E7v4 プロセッサ ラインの最もパフォーマンスが高いプロセッサが SAP HANA on Azure (L インスタンス) 用に選択されます。
 
-**次のステップ**
+**次の手順**
 - [HLI Sizing](hana-sizing.md)を参照

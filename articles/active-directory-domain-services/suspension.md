@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 106cd870a8ba52917ecabe6266bbb2c376296d79
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 8a82d2ad3e79633bb930348c6162996e961c4306
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704268"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612963"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services の正常性状態の理解と中断されたドメインの解決
 
@@ -96,7 +96,7 @@ Azure portal の Azure AD DS の正常性ページに、ドメインが中断さ
 "*中断済み*" 状態である Azure AD DS マネージド ドメインの正常性を復元するには、次の手順を実行します。
 
 1. Azure portal で、**Domain services** を検索して選択します。
-1. 一覧から Azure AD DS マネージド ドメイン (*aadds.contoso.com* など) を選択し、 **[正常性]** を選択します。
+1. 一覧から Azure AD DS マネージド ドメイン (*aaddscontoso.com* など) を選択し、 **[正常性]** を選択します。
 1. 中断の原因によって *AADDS503* や *AADDS504* などのアラートを選択します。
 1. アラートで提供される解決リンクを選択し、手順に従ってそれを解決します。
 
@@ -116,7 +116,7 @@ Azure AD DS マネージド ドメインが "*削除済み*" 状態になると�
 * マネージド ドメインを復元することはできず、Azure AD DS を再び使用するには代替マネージド ドメインを作成する必要があります。
 * 削除されたマネージド ドメインに対しては課金されません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure AD DS マネージド ドメインの正常性を維持し、それが中断されるリスクを最小限に抑えるために、[マネージド ドメインのアラートを解決する][resolve-alerts]方法を確認します。
 

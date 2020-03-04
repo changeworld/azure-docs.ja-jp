@@ -1430,9 +1430,9 @@ public class DocsFromRouteSqlQuery {
 
 |function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
-|**type**     | n/a | `cosmosDB` に設定する必要があります。        |
-|**direction**     | n/a | `in` に設定する必要があります。         |
-|**name**     | n/a | 関数のドキュメントを表すバインド パラメーターの名前。  |
+|**type**     | 該当なし | `cosmosDB` に設定する必要があります。        |
+|**direction**     | 該当なし | `in` に設定する必要があります。         |
+|**name**     | 該当なし | 関数のドキュメントを表すバインド パラメーターの名前。  |
 |**databaseName** |**DatabaseName** |ドキュメントを含むデータベース。        |
 |**collectionName** |**CollectionName** | ドキュメントを含むコレクションの名前。 |
 |**id**    | **Id** | 取得するドキュメントの ID。 このプロパティは、[バインド式](./functions-bindings-expressions-patterns.md)をサポートしています。 `id` プロパティと **sqlQuery** プロパティの両方は設定しないでください。 いずれも設定しない場合は、コレクション全体が取得されます。 |

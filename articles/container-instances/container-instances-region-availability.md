@@ -2,14 +2,14 @@
 title: リージョンごとのリソースの可用性
 description: さまざまな Azure リージョンにある Azure Container Instances サービス用のコンピューティング リソースとメモリ リソースの可用性。
 ms.topic: article
-ms.date: 01/31/2020
+ms.date: 02/19/2020
 ms.author: danlep
-ms.openlocfilehash: 3f64a13331658c1360c9d54f6f57a68c2c91fc6f
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: f429a165fe26cc9fc7aa973231f5a77163feef4a
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117836"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525305"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure リージョンの Azure Container Instances のリソースの可用性
 
@@ -24,7 +24,7 @@ ms.locfileid: "77117836"
 
 ## <a name="availability---general"></a>可用性 - 一般提供
 
-次のリージョンとリソースは、Linux および [サポートされている](container-instances-faq.md#what-windows-base-os-images-are-supported) Windows Server 2016 ベースのコンテナーを含むコンテナー グループで使用できます。
+次のリージョンと最大リソースは、Linux および[サポートされている](container-instances-faq.md#what-windows-base-os-images-are-supported) Windows Server 2016 ベースのコンテナーを含むコンテナー グループで使用できます。
 
 | リージョン | OS | Max CPU (最大 CPU) | 最大メモリ (GB) | ストレージ (GB) |
 | -------- | -- | :---: | :-----------: | :---: |
@@ -37,7 +37,7 @@ ms.locfileid: "77117836"
 
 ## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>可用性 - Windows Server 2019 LTSC、1809 デプロイ (プレビュー)
 
-次のリージョンとリソースは、Windows Server 2019 ベースのコンテナー (プレビュー) を含むコンテナー グループで使用できます。
+次のリージョンと最大リソースは、Windows Server 2019 ベースのコンテナー (プレビュー) を含むコンテナー グループで使用できます。
 
 | リージョン | OS | Max CPU (最大 CPU) | 最大メモリ (GB) | ストレージ (GB) |
 | -------- | -- | :---: | :-----------: | :---: |
@@ -47,13 +47,16 @@ ms.locfileid: "77117836"
 
 ## <a name="availability---virtual-network-deployment"></a>可用性 - 仮想ネットワークのデプロイ
 
-次のリージョンとリソースは、[Azure 仮想ネットワーク](container-instances-vnet.md)にデプロイされたコンテナー グループで使用できます。
+次のリージョンと最大リソースは、[Azure 仮想ネットワーク](container-instances-vnet.md)にデプロイされたコンテナー グループで使用できます。
 
 [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 
 ## <a name="availability---gpu-resources-preview"></a>可用性 - GPU リソース (プレビュー)
 
-次のリージョンとリソースは、[GPU リソース](container-instances-gpu.md) (プレビュー) でデプロイされたコンテナー グループで使用できます。
+次のリージョンと最大リソースは、[GPU リソース](container-instances-gpu.md) (プレビュー) でデプロイされたコンテナー グループで使用できます。
+
+> [!IMPORTANT]
+> GPU リソースは、要求時にのみ使用できます。 GPU リソースへのアクセスを要求するには、[Azure サポート要求][azure-support]を送信してください。
 
 [!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
@@ -63,3 +66,6 @@ ms.locfileid: "77117836"
 追加のリージョンやリソースの可用性の増加については、[aka.ms/aci/feedback](https://aka.ms/aci/feedback) でチームにお知らせください。
 
 コンテナー インスタンスのデプロイに関するトラブルシューティングについては、「[Azure Container Instances でのデプロイに関する問題をトラブルシューティングする](container-instances-troubleshooting.md)」を参照してください。
+
+
+[azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

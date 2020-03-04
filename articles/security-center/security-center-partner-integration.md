@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 7174003485d51cf582c798c4b18404b1b72de0fb
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 23a00c766dbb38853c57c91e7f59ec364390c44b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530954"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603813"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Security Center でのセキュリティ ソリューションの統合
 このドキュメントは、既に Azure Security Center に接続されているセキュリティ ソリューションを管理したり、新しいセキュリティ ソリューションを追加したりする際に役立ちます。
@@ -47,7 +47,7 @@ Security Center からデプロイされている Azure セキュリティ ソ�
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>統合された Azure セキュリティ ソリューションとその他のデータ ソースの管理
 
-1. [Azure portal](https://azure.microsoft.com/features/azure-portal/) にサインインする
+1. [Azure portal](https://azure.microsoft.com/features/azure-portal/) にサインインします。
 
 2. **[Microsoft Azure] メニュー**の **[セキュリティ センター]** を選択します。 **[セキュリティ センター - 概要]** が開きます。
 
@@ -129,13 +129,13 @@ Azure Security Center からのすべてのイベントは、Azure Monitor の A
 
 #### <a name="stream-the-azure-activity-log-to-event-hubs"></a>Event Hubs への Azure アクティビティ ログのストリーミング
 
-[アクティビティ ログの Event Hubs へのストリーム](../azure-monitor/platform/activity-logs-stream-event-hubs.md)に関する記事を参照してください
+[アクティビティ ログの Event Hubs へのストリーム](../azure-monitor/platform/activity-logs-stream-event-hubs.md)に関する記事を参照してください。
 
 #### <a name="install-a-partner-siem-connector"></a>パートナー SIEM コネクタをインストールする 
 
 Azure Monitor で監視データを Event Hub にルーティングすると、パートナー SIEM や監視ツールに簡単に統合することができます。
 
-[サポートされる SIEM](../azure-monitor/platform/resource-logs-stream-event-hubs.md#what-you-can-do-with-platform-logs-sent-to-an-event-hub) の一覧に関する記事を参照してください
+[サポートされる SIEM](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration) の一覧に関する記事を参照してください。
 
 ### <a name="example-for-querying-data"></a>データのクエリの例 
 
@@ -153,5 +153,3 @@ Azure Monitor で監視データを Event Hub にルーティングすると、�
 この記事では、Security Center でパートナー ソリューションを統合する方法について説明しました。 Security Center の詳細については、次の記事を参照してください。
 
 * [Security Center でのセキュリティ正常性の監視](security-center-monitoring.md)。 Azure リソースの正常性を監視する方法について説明しています。
-* [Azure Security Center の FAQ](security-center-faq.md)。 Security Center の使用に関してよく寄せられる質問とその回答を紹介しています。
-* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/)。 Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。

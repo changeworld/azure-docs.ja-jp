@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: c8412a01f4a5056b352b1d985f36e5a51a25a649
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: b19dc7a85fafa1a4d875c84db9bbefabb3cd5a7d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76158976"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77651568"
 ---
 次の表に、Azure Service Bus メッセージングに固有のクォータ情報を示します。 Service Bus の価格と他のクォータについては、「[Service Bus の価格](https://azure.microsoft.com/pricing/details/service-bus/)」をご覧ください。
 
-| クォータ名 | スコープ | メモ | 値 |
+| クォータ名 | Scope | Notes | Value |
 | --- | --- | --- | --- |
 | Azure サブスクリプションごとの Basic または Standard 名前空間の最大数 |名前空間 |追加の Basic または Standard 名前空間に関する後続の要求は Azure portal で拒否されます。 |100|
 | Azure サブスクリプションごとの Premium 名前空間の最大数 |名前空間 |追加の Premium 名前空間に関する後続の要求はポータルで拒否されます。 |100 |
@@ -36,7 +36,7 @@ ms.locfileid: "76158976"
 | トピックごとの SQL フィルターの数 |Entity |そのトピックに追加のフィルターを作成するための後続の要求は拒否され、呼び出し元コードが例外を受け取ります。 |2,000 |
 | トピックごとの関連付けフィルターの数 |Entity |そのトピックに追加のフィルターを作成するための後続の要求は拒否され、呼び出し元コードが例外を受け取ります。 |100,000 |
 | SQL フィルターまたはアクションのサイズ |名前空間 |追加のフィルターを作成するための後続の要求は拒否され、呼び出し元コードが例外を受け取ります。 |フィルター条件文字列の最大長:1,024 (1 K)。<br /><br />規則アクション文字列の最大長:1,024 (1 K)。<br /><br />規則アクションごとの式の最大数:32. |
-| 名前空間、キュー、トピックごとの [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 規則の数 |エンティティ、名前空間 |追加の規則を作成するための後続の要求は拒否され、呼び出し元コードが例外を受け取ります。 |規則の最大数:12. <br /><br /> Service Bus 名前空間に構成されている規則は、その名前空間内のすべてのキューおよびトピックに適用されます。 |
+| 名前空間、キュー、トピックごとの [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 規則の数 |エンティティ、名前空間 |追加の規則を作成するための後続の要求は拒否され、呼び出し元コードが例外を受け取ります。 |エンティティ型ごとの規則の最大数:12. <br /><br /> Service Bus 名前空間に構成されている規則は、キューやトピックのすべての型に適用されます。 |
 | トランザクションあたりのメッセージ数 | トランザクション | それ以上の受信メッセージは拒否され、呼び出し元コードが "1 回のトランザクションで 100 個を超えるメッセージを送信することができない" ことを示す例外を受け取ります。 | 100 <br /><br /> **Send()** 操作および **SendAsync()** 操作両方に対して。 |
 | 仮想ネットワークと IP フィルター規則の数 | 名前空間 | &nbsp; | 128 | 
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/24/2017
 ms.author: yurid
-ms.openlocfilehash: 481dbff90ee5368e1581502e612cb5d1993ac89e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: ed2c1f874bd61e846cbdf1f68181a8f374c89524
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200733"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603365"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Azure Security Center と Azure 仮想マシン
 [Azure Security Center](https://azure.microsoft.com/services/security-center/) は、脅威の防御、検出、対応を可能にする機能です。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
@@ -47,7 +47,7 @@ Azure Security Center の使用を開始するには、次のことを理解し�
 
 * Microsoft Azure サブスクリプションを持っている必要があります。 Security Center の Free レベルと Standard レベルの詳細については、「[セキュリティ センターの価格](https://azure.microsoft.com/pricing/details/security-center/)」を参照してください。
 * Security Center の導入を計画します。計画と運用の考慮事項の詳細については、「[Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)」を参照してください。
-* サポートされているオペレーティング システムの情報については、「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」を参照してください。 
+* サポートされているオペレーティング システムの情報については、「[Azure Security Center のよく寄せられる質問 (FAQ)](faq-vms.md)」を参照してください。 
 
 ## <a name="set-security-policy"></a>セキュリティ ポリシーの設定
 Azure Security Center で必要な情報を収集し、構成したセキュリティ ポリシーに基づいて推奨事項と警告を生成できるよう、データ収集を有効にしておく必要があります。 次の図では、 **[データ収集]** が **[オン]** になっていることがわかります。
@@ -98,5 +98,4 @@ Security Center は、真の脅威を検出し、偽陽性を減らすために�
 
 * [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md) 」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
 * [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」-- セキュリティの警告の管理と対応の方法について説明しています。
-* [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」-- このサービスの使用に関してよく寄せられる質問が記載されています。
-
+* [FAQ - 仮想マシンについてよく寄せられる質問](faq-vms.md) -- このサービスの使用に関してよく寄せられる質問が記載されています。

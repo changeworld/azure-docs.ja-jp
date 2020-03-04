@@ -4,12 +4,12 @@ description: JavaScript を使用して関数を開発する方法について�
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
-ms.openlocfilehash: ee6b886c6ed18aad54092005d800b4087280190b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: b0cd9541deac106525cfe80244d1867f513825f0
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714784"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584491"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 
@@ -232,7 +232,7 @@ context.bindings.myOutput = {
 context.bindingData
 ```
 
-トリガーのメタデータと関数呼び出しデータを含む名前付きオブジェクトを返します (`invocationId`、`sys.methodName`、`sys.utcNow`、`sys.randGuid`)。 トリガーのメタデータの例については、こちらの[イベント ハブの例](functions-bindings-event-hubs.md#trigger)をご覧ください。
+トリガーのメタデータと関数呼び出しデータを含む名前付きオブジェクトを返します (`invocationId`、`sys.methodName`、`sys.utcNow`、`sys.randGuid`)。 トリガーのメタデータの例については、こちらの[イベント ハブの例](functions-bindings-event-hubs-trigger.md)をご覧ください。
 
 ### <a name="contextdone-method"></a>context.done メソッド
 
@@ -418,14 +418,17 @@ FUNCTIONS_WORKER_PROCESS_COUNT は、要求に応じてアプリケーション�
 
 ## <a name="node-version"></a>Node バージョン
 
-次の表は、使用される Node.js バージョンを、Functions ランタイムのメジャー バージョンごとに示しています。
+次の表は、Functions ランタイムの各メジャー バージョンに対して現在サポートされている Node.js バージョンをオペレーティング システムごとに示しています。
 
-| Functions バージョン | Node.js バージョン | 
-|---|---|
-| 1.x | 6.11.2 (ランタイムによりロック) |
-| 2.x  | _アクティブ LTS_ および _メンテナンス LTS_ Node.js バージョン (10 以下を推奨)。 WEBSITE_NODE_DEFAULT_VERSION [アプリ設定](functions-how-to-use-azure-function-app-settings.md#settings)を使用して Azure でバージョンを `~10` に設定します。|
+| Functions バージョン | Node バージョン (Windows) | Node バージョン (Linux) |
+|---|---| --- |
+| 1.x | 6.11.2 (ランタイムによりロック) | 300 |
+| 2.x  | ~8<br/>~10 (推奨)<br/>~12<sup>*</sup> | ~8 (推奨)<br/>~10  |
+| 3.x | ~10<br/>~12 (推奨)  | ~10<br/>~12 (推奨) |
 
-ランタイムが使用している現在のバージョンを確認するには、上記のアプリ設定を調べるか、または任意の関数から `process.version` を出力します。
+<sup>*</sup>Node ~12 は現在、Functions ランタイムのバージョン 2.x で許可されています。 ただし、最適なパフォーマンスを得るには、Node ~12 の Functions ランタイム バージョン 3.x を使用することをお勧めします。 
+
+ランタイムが使用している現在のバージョンを確認するには、上記のアプリ設定を調べるか、または任意の関数から `process.version` を出力します。 WEBSITE_NODE_DEFAULT_VERSION [アプリ設定](functions-how-to-use-azure-function-app-settings.md#settings)を、サポートされている LTS バージョン (`~10` など) に設定して、Azure のバージョンをターゲットにします。
 
 ## <a name="dependency-management"></a>依存関係の管理
 JavaScript コードでコミュニティ ライブラリを使用するには、次の例で示すように、Azure 内の関数アプリにすべての依存関係がインストールされている必要があります。

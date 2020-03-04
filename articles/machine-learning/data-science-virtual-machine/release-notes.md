@@ -1,24 +1,29 @@
 ---
 title: Data Science Virtual Machine の新機能
+titleSuffix: Azure Data Science Virtual Machine
 description: Azure Data Science Virtual Machine のリリース ノート
-author: gvashishtha
+author: lobrien
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.author: gopalv
-ms.date: 10/10/2019
+ms.author: laobri
+ms.date: 02/24/2020
 ms.topic: reference
-ms.openlocfilehash: 5ba3cdb74c5d3844a7acad34b4c3d52e9cbd0d0d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: d607e2a45c3a13cdb1b6e107158b04f9f10ae83a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72302132"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582604"
 ---
 # <a name="azure-data-science-virtual-machine-release-notes"></a>Azure Data Science Virtual Machine リリース ノート
 
 この記事では、Azure Data Science Virtual Machine リリースについて説明します。 含まれるツールの完全一覧とバージョン番号については、[こちらのページ](./tools-included.md)をご覧ください。
 
 バグおよび対処法については、[既知の問題のリスト](reference-known-issues.md)を参照してください。
+
+## <a name="2020-02-24"></a>2020-02-24
+
+[Ubuntu 18.04](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804?tab=Overview) および [Windows 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019?tab=Overview) イメージの Data Science Virtual Machine イメージが使用できるようになりました。
 
 ## <a name="2019-10-08"></a>2019-10-08
 

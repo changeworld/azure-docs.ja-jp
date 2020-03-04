@@ -8,20 +8,20 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: bc2067dbde1e99619fb6e384be4e70f606c8518d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2a00405a2100c3e565ca4f8ea4149540a5199b43
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792779"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651408"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Azure Logic Apps でオンプレミスのファイル システムに接続する
 
-ファイル システム コネクタと Azure Logic Apps を使用すると、オンプレミス ファイル共有上のファイルを作成したり管理したりする自動化されたタスクとワークフローを作成できます。  
+Azure Logic Apps とファイル システム コネクタを使用すると、オンプレミスのファイル共有上のファイルを作成および管理する、自動化されたタスクとワークフローを作成できます。
 
 - ファイルを作成、取得、追加、更新、削除する。
 - フォルダーまたはルート フォルダー内のファイルをリストする。
-- ファイルの内容とメタデータを取得する。
+- ファイルの内容とメタデータを取得します。
 
 この記事では、Dropbox にアップロードされているファイルをファイル共有にコピーして電子メールを送信するシナリオを例に、オンプレミスのファイル システムに接続する方法を紹介します。 オンプレミスのシステムに安全に接続してアクセスするために、ロジック アプリでは、[オンプレミス データ ゲートウェイ](../logic-apps/logic-apps-gateway-connection.md)が使用されます。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。 コネクタ固有の技術情報については、[ファイル システム コネクタ リファレンス](/connectors/filesystem/)に関する記事を参照してください。
 
@@ -65,10 +65,10 @@ ms.locfileid: "74792779"
 
    ![接続を作成する](media/logic-apps-using-file-connector/file-system-connection.png)
 
-   | プロパティ | 必須 | 値 | 説明 |
+   | プロパティ | Required | Value | 説明 |
    | -------- | -------- | ----- | ----------- |
    | **Connection Name** | はい | <*connection-name*> | 接続に付ける名前 |
-   | **ルート フォルダー** | はい | <*root-folder-name*> | ファイル システムのルート フォルダー。たとえば、オンプレミスのデータ ゲートウェイをインストールしている場合は、オンプレミスのデータ ゲートウェイがインストールされているコンピューターのローカル フォルダーや、コンピューターがアクセス可能なネットワーク共有のフォルダー。 <p>次に例を示します。`\\PublicShare\\DropboxFiles` <p>ルート フォルダーはメインの親フォルダーで、すべてのファイル関連のアクションの相対パスに使用されます。 |
+   | **ルート フォルダー** | はい | <*root-folder-name*> | ファイル システムのルート フォルダー。たとえば、オンプレミスのデータ ゲートウェイをインストールしている場合は、オンプレミスのデータ ゲートウェイがインストールされているコンピューターのローカル フォルダーや、コンピューターがアクセス可能なネットワーク共有のフォルダー。 <p>例: `\\PublicShare\\DropboxFiles` <p>ルート フォルダーはメインの親フォルダーで、すべてのファイル関連のアクションの相対パスに使用されます。 |
    | **認証の種類** | いいえ | <*auth-type*> | ファイル システムで使用される認証の種類 (**Windows** など) |
    | **ユーザー名** | はい | <*domain*>\\<*username*> | ファイル システムが存在するコンピューターでのユーザー名 |
    | **パスワード** | はい | <*your-password*> | ファイル システムが存在するコンピューターでのパスワード |
@@ -87,15 +87,18 @@ ms.locfileid: "74792779"
 
    ![電子メール送信アクション](media/logic-apps-using-file-connector/send-email.png)
 
-1. ロジック アプリを保存し、 Dropbox にファイルをアップロードして、アプリをテストします。
+1. ロジック アプリを保存します。 Dropbox にファイルをアップロードして、アプリをテストします。
 
    オンプレミスのファイル共有にファイルをコピーし、そのコピーされたファイルについて知らせるメールを特定の受信者に送信するロジック アプリが完成しました。
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、コネクタの[リファレンス ページ](/connectors/fileconnector/)を参照してください。
+コネクタの Swagger ファイルに記述される、トリガー、アクション、制限などのこのコネクタの技術的詳細については、[コネクタの参照ページ](https://docs.microsoft.com/connectors/fileconnector/)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+> [!NOTE]
+> [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリの場合、このコネクタの ISE のラベルが付いたバージョンでは、代わりに [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)が使用されます。
+
+## <a name="next-steps"></a>次のステップ
 
 * [オンプレミス データへの接続方法](../logic-apps/logic-apps-gateway-connection.md)を確認します。 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。
