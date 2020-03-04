@@ -729,9 +729,9 @@ public SignalRGroupAction removeFromGroup(
 
 |function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
-|**type**| 300 | `signalRConnectionInfo` に設定する必要があります。|
-|**direction**| 300 | `in` に設定する必要があります。|
-|**name**| 300 | 接続情報オブジェクトの関数コードで使用される変数名。 |
+|**type**| n/a | `signalRConnectionInfo` に設定する必要があります。|
+|**direction**| n/a | `in` に設定する必要があります。|
+|**name**| n/a | 接続情報オブジェクトの関数コードで使用される変数名。 |
 |**hubName**|**HubName**| この値は、接続情報が生成される SignalR ハブの名前に設定する必要があります。|
 |**userId**|**UserId**| 省略可能:アクセス キー トークンに設定するユーザー識別子要求の値。 |
 |**connectionStringSetting**|**ConnectionStringSetting**| SignalR Service 接続文字列を含むアプリ設定の名前 (既定値は "AzureSignalRConnectionString") |
@@ -742,9 +742,9 @@ public SignalRGroupAction removeFromGroup(
 
 |function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
-|**type**| 300 | `signalR` に設定する必要があります。|
-|**direction**| 300 | `out` に設定する必要があります。|
-|**name**| 300 | 接続情報オブジェクトの関数コードで使用される変数名。 |
+|**type**| n/a | `signalR` に設定する必要があります。|
+|**direction**| n/a | `out` に設定する必要があります。|
+|**name**| n/a | 接続情報オブジェクトの関数コードで使用される変数名。 |
 |**hubName**|**HubName**| この値は、接続情報が生成される SignalR ハブの名前に設定する必要があります。|
 |**connectionStringSetting**|**ConnectionStringSetting**| SignalR Service 接続文字列を含むアプリ設定の名前 (既定値は "AzureSignalRConnectionString") |
 
