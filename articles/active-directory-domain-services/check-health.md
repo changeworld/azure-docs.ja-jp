@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: f0719542eb693e52f9a7996e28699b7425b0e0fe
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: fa1cba2d791cd40a46f8ad182c123a726143faec
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509140"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614244"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services マネージド ドメインの正常性を確認する
 
@@ -29,7 +29,7 @@ Azure Active Directory Domain Services (Azure AD DS) では、いくつかのバ
 Azure AD DS マネージド ドメインの正常性状態は、Azure portal を使用して表示されます。 最後のバックアップ時刻と Azure AD との同期に関する情報が、マネージド ドメインの正常性に関する問題を示すアラートと共に表示されます。 Azure AD DS マネージド ドメインの正常性状態を表示するには、次の手順を完了します。
 
 1. Azure portal で、**Azure AD Domain Services** を検索して選択します。
-1. Azure AD DS マネージド ドメイン (*aadds.contoso.com* など) を選択します。
+1. Azure AD DS マネージド ドメイン (*aaddscontoso.com* など) を選択します。
 1. Azure AD DS リソース ウィンドウの左側で、 **[正常性]** を選択します。 次のスクリーンショット例は、正常な Azure AD DS マネージド ドメインと、最後のバックアップおよび Azure AD 同期の状態を示しています。
 
     ![Azure Active Directory Domain Services の状態を示す、Azure portal の正常性ページの概要](./media/check-health/health-page.png)

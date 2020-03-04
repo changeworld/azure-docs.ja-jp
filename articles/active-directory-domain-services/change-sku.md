@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 46557d802222190c0ed82f6243dd2a9b997ecaa5
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 18395f2b839aef88491f71aeed660eb2ce011e2c
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76960224"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614234"
 ---
 # <a name="change-the-sku-for-an-existing-azure-ad-domain-services-managed-domain"></a>既存の Azure AD Domain Services マネージド ドメインの SKU を変更する
 
@@ -46,7 +46,7 @@ Azure Active Directory Domain Services (Azure AD DS) で使用できるパフォ
 
 Azure portal を使用して Azure AD DS マネージド ドメインの SKU を変更するには、次の手順を実行します。
 
-1. Azure portal の上部で、**Azure AD Domain Services** を検索して選択します。 *aadds.contoso.com* などのマネージド ドメインを一覧から選択します。
+1. Azure portal の上部で、**Azure AD Domain Services** を検索して選択します。 *aaddscontoso.com* などのマネージド ドメインを一覧から選択します。
 1. Azure AD DS ページの左側にあるメニューで、 **[設定] > [SKU]** を選択します。
 
     ![Azure portal で Azure AD DS マネージド ドメインの [SKU] メニュー オプションを選択します。](media/change-sku/overview-change-sku.png)

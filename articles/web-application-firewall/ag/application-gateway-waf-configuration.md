@@ -4,15 +4,15 @@ description: この記事では、Azure portal を使用した Application Gatew
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/17/2019
+ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: cfde1355ef5e5a2f9033456ac4089ce3ca3f9d72
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 7244788bbc7431c7f26363b2852babb72d5697e9
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839973"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526792"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web アプリケーション ファイアウォールの要求サイズの制限と除外リスト
 
@@ -91,10 +91,16 @@ $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
 Web アプリケーション ファイアウォールでは、下限と上限の範囲内に収まる要求サイズ制限を構成することができます。 次の 2 つのサイズ制限の構成を使用できます。
 
 - 最大要求本文サイズ フィールドはキロバイトで指定されます。このフィールドでは、ファイルのアップロードを除く、全体的な要求サイズの制限が制御されます。 このフィールドには、1 KB (最小値) から 128 KB (最大値) までの値を指定することができます。 要求本文のサイズの既定値は 128 KB です。
-- ファイル アップロード制限フィールドは MB 単位で指定され、このフィールドでは、最大許容ファイル アップロード サイズが制御されます。 このフィールドの最小値は 1 MB で、Large SKU のインスタンスには最大 500 MB、Medium SKU には最大 100 MB を指定できます。 ファイル アップロード制限の既定値は 100 MB です。
+- ファイル アップロード制限フィールドは MB 単位で指定され、このフィールドでは、最大許容ファイル アップロード サイズが制御されます。 このフィールドには、1 MB (最小値) から以下の最大値までの値を指定することができます。
+
+   - V1 中間 WAF ゲートウェイ - 100 MB
+   - V1 大型 WAF ゲートウェイ - 500 MB
+   - V2 WAF ゲートウェイ - 750 MB 
+
+ ファイル アップロード制限の既定値は 100 MB です。
 
 WAF には、要求本文の検査を有効または無効にするための構成可能なノブも用意されています。 既定では、要求本文の検査は有効になっています。 要求本文の検査を無効にした場合、HTTP メッセージ本文の内容は WAF によって評価されません。 そのような場合、WAF ではヘッダー、cookie、および URI には WAF 規則が引き続き適用されます。 要求本文の検査を無効にすると、最大要求本文サイズ フィールドは適用できなくなり、設定することもできません。 要求本文の検査をオフにすると、128 KB を超えるメッセージを WAF に送信できるようになりますが、メッセージ本文の脆弱性が検査されません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ご自分の WAF 設定を構成したら、その WAF ログを表示する方法を学習できます。 詳細については、[Application Gateway の診断](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging)に関するトピックを参照してください。

@@ -1,22 +1,22 @@
 ---
-title: Azure App Configuration のキー/値イベントへの反応 | Microsoft Docs
+title: Azure App Configuration のキー値イベントへの反応
 description: App Configuration イベントをサブスクライブするには、Azure Event Grid を使用します。
 services: azure-app-configuration,event-grid
 author: jimmyca
 ms.author: jimmyca
-ms.date: 05/30/2019
+ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
-ms.openlocfilehash: 5da64155f2823712eee7a60427b1c1e80abec068
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: a4f61d147ba1abf73ada6360b8d0d965d8e063a5
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185295"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523800"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Azure App Configuration イベントへの反応
 
-Azure App Configuration イベントを使用すると、アプリケーションでキー/値の変化に反応できます。 これを実行するために、複雑なコードや、高価で非効率的なポーリング サービスは必要ありません。 イベントは、[Azure Event Grid](https://azure.microsoft.com/services/event-grid/) を通して、[Azure Functions](https://azure.microsoft.com/services/functions/)、[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)、またはユーザー独自のカスタム HTTP リスナーにプッシュされ、料金は使ったものだけで済みます。
+Azure App Configuration イベントを使用すると、アプリケーションでキー/値の変化に反応できます。 これを実行するために、複雑なコードや、高価で非効率的なポーリング サービスは必要ありません。 イベントは、[Azure Event Grid](https://azure.microsoft.com/services/event-grid/) を通して、[Azure Functions](https://azure.microsoft.com/services/functions/)、[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) などのサブスクライバー、またはユーザー独自のカスタム HTTP リスナーにプッシュされます。 決定的な点は、使用した分だけ支払うということです。
 
 Azure App Configuration イベントは Azure Event Grid に送信されます。Event Grid Service では豊富な再試行ポリシーおよび配信不能メッセージ配信を使用してご利用のアプリケーションに信頼性の高い配信サービスが提供されます。 詳細については、「[Event Grid のメッセージの配信と再試行](https://docs.microsoft.com/azure/event-grid/delivery-and-retry)」を参照してください。
 
@@ -37,7 +37,7 @@ Event Grid は、[イベント サブスクリプション](../event-grid/concep
 ## <a name="event-schema"></a>イベント スキーマ
 Azure App Configuration イベントには、データの変更に対応するために必要なすべての情報が含まれます。 アプリ構成イベントは、eventType プロパティが "Microsoft.AppConfiguration" で始まるため識別できます。 Event Grid イベントのプロパティの使用法について詳しくは、「[Event Grid イベント スキーマ](../event-grid/event-schema.md)」をご覧ください。  
 
-> |プロパティ|種類|説明|
+> |プロパティ|Type|説明|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
 > |topic|string|イベントを生成するアプリ構成の完全な Azure Resource Manager ID。|
 > |subject|string|イベントの対象であるキー/値の URI です。|
@@ -73,15 +73,16 @@ KeyValueModified イベントの例を次に示します。
 詳細については、[Azure App Configuration イベント スキーマ](../event-grid/event-schema-app-configuration.md)に関する記事を参照してください。
 
 ## <a name="practices-for-consuming-events"></a>イベントの使用に関する手法
-アプリ構成イベントを処理するアプリケーションは、次のいくつかの推奨プラクティスに従う必要があります。
+App Configuration イベントを処理するアプリケーションは、次のいくつかの推奨プラクティスに従う必要があります。
 > [!div class="checklist"]
-> * 複数のサブスクリプションがイベントを同じイベント ハンドラーにルーティングするように構成される場合があるため、イベントが特定のソースからのものであると見なすのではなく、メッセージのトピックをチェックして、予測しているアプリ構成から来ていることを確認することが重要です。
-> * 同様に、受信するすべてのイベントが予期した種類のものであると想定してはならず、イベントの種類が処理できるものであることを確認する必要があります。
-> * メッセージは順不同で到着したり、少し遅れて到着する可能性があるので、etag フィールドを使って、オブジェクトに関する情報がまだ最新の状態かどうかを確認します。  また、sequencer フィールドを使って、特定のオブジェクトに対するイベントの順序を確認します。
+> * 同じイベント ハンドラーにイベントをルーティングするように複数のサブスクリプションを構成できるため、イベントが特定のソースからのものであると想定しないでください。 代わりに、メッセージのトピックを調べて、App Configuration インスタンスからそのイベントが送信されていることを確認します。
+> * eventType を確認し、受信するすべてのイベントが予期した種類のものであると想定しないでください。
+> * etag フィールドを使って、オブジェクトに関する情報が現在も最新かどうかを確認します。  
+> * sequencer フィールドを使って、特定のオブジェクトに対するイベントの順序を確認します。
 > * subject フィールドを使用して、変更されたキー/値にアクセスします。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Event Grid の詳細について理解し、Azure App Configuration イベントを試してみてください。
 

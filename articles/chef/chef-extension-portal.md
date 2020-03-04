@@ -2,14 +2,14 @@
 title: Azure portal から Chef クライアントをインストールする
 description: Azure portal から Chef クライアントをデプロイして構成する方法について説明します
 keywords: azure、chef、devops、クライアント、インストール、ポータル
-ms.date: 05/15/2018
+ms.date: 02/22/2020
 ms.topic: article
-ms.openlocfilehash: f8707c2fe39fb794381af298c24d27704b1ec255
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 6e46133c598c44b314077f2d020852416d3d2745
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158263"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586361"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>Azure portal から Chef クライアントをインストールする
 Azure portal から Linux または Windows マシンに直接、Chef クライアント拡張機能を追加できます。 この記事では、新しい Linux 仮想マシンを使用してそのプロセスを説明します。
@@ -79,29 +79,30 @@ Azure portal から Linux または Windows マシンに直接、Chef クライ�
 1. **[拡張機能のインストール]** タブで次の値を指定し、 **[OK]** を選択します。
 
     - **Chef サーバーの URL**: たとえば *https://api.chef.io/organization/mycompany* のように、組織名を含む Chef サーバーの URL を入力します。
-    - **Chef ノード名**: Chef ノード名を入力します。 任意の値が可能です。
-    - **実行の一覧**: コンピューターに追加する Chef の実行の一覧を入力します。 ここは空白のままにします。
-    - **Validation Client Name (検証クライアント名)** : Chef の検証クライアント名を入力します。 たとえば、 *tarcher-validator* など。
+    - **Chef ノード名**: Chef ノード名を入力します。
+    - **実行の一覧**: マシンに追加する Chef の実行の一覧を入力します。 この値は空白のままにします。
+    - **Validation client name (検証クライアント名)** : Chef の検証クライアント名を入力します。 たとえば、「`tarcher-validator`」のように入力します。
     - **検証キー**: コンピューターをブートストラップするときに使用する検証キーが含まれているファイルを選択します。
-    - **Client Configuration File (クライアント構成ファイル)** : chef クライアントの構成ファイルを選択します。 ここは空白のままにします。
-    - **Chef Client version (Chef クライアントのバージョン)** : インストールする chef クライアントのバージョンを入力します。 ここは空白のままにします。 値が空白の場合は、最新バージョンがインストールされます。
+    - **Client configuration file (クライアント構成ファイル)** : chef クライアントの構成ファイルを選択します。 この値は空白のままにします。
+    - **Chef Client version (Chef クライアントのバージョン)** : インストールする chef クライアントのバージョンを入力します。 この値は空白のままでもかまいません。空白の場合は、最新バージョンがインストールされます。
     - **SSL Verification Mode (SSL 確認モード)** : **[なし]** または **[ピア]** のいずれかを選択します。 デモ用に *None* を選択しました。
-    - **Chef Environment (Chef 環境)** : このノードが属する必要がある Chef 環境を入力します。 ここは空白のままにします。
-    - **Encrypted Databag Secret (Encrypted Databag のシークレット)** : このコンピューターがアクセスする必要がある Encrypted Databag のシークレットが含まれているファイルを選択します。 ここは空白のままにします。
-    - **Chef Server SSL Certificate (Chef サーバー SSL 証明書)** : お使いの Chef サーバーに割り当てられている SSL 証明書を選択します。 ここは空白のままにします。
+    - **Chef Environment (Chef 環境)** : このノードが属する必要がある Chef 環境を入力します。 この値は空白のままにします。
+    - **Encrypted data bag secret (暗号化データ バッグのシークレット)** : このマシンがアクセスする必要がある暗号化データ バッグのシークレットが含まれているファイルを選択します。 この値は空白のままにします。
+    - **Chef Server SSL certificate (Chef サーバー SSL 証明書)** : お使いの Chef サーバーに割り当てられている SSL 証明書を選択します。 この値は空白のままにします。
 
       ![Linux 仮想マシンに Chef サーバーをインストールする](./media/chef-extension-portal/install-extension.png)
 
-1. **[拡張機能]** タブに戻ったら、 **[OK]** を選択します。
+1. **[拡張機能]** タブが表示されたら、 **[OK]** を選択します。
 
-1. **[設定]** タブに戻ったら、 **[OK]** を選択します。
+1. **[設定]** タブが表示されたら、 **[OK]** を選択します。
 
-1. (選択して入力したオプションの概要を表す) **[作成]** タブに戻ったら、情報と**使用条件**を確認し、 **[作成]** を選択します。
+1. **[作成]** タブが表示されると、選択および入力したオプションの概要が表示されます。 それらの情報と**利用規約**を確認し、 **[作成]** を選択します。
 
 Chef 拡張機能を使用した仮想マシンの作成とデプロイのプロセスが完了すると、通知に操作の成否が示されます。 さらに、新しい仮想マシンのリソース ページが作成されると、Azure portal でそれが自動的に開かれます。
 
 ![Linux 仮想マシンに Chef サーバーをインストールする](./media/chef-extension-portal/resource-created.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [Chef を使用して Windows 仮想マシンを Azure 上に作成する](/azure/virtual-machines/windows/chef-automation)
+> [!div class="nextstepaction"] 
+> [Chef を使用して Windows 仮想マシンを Azure 上に作成する](chef-automation.md)

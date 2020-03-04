@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8daa87eca74570f5b1fdf1537b83dae60d292128
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c4898ba62abdc42d95b77b9a77387bfe71fb4771
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849464"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592205"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>Azure Automation の Runbook をスケジュール設定する
 
@@ -143,7 +143,7 @@ Register-AzureRmAutomationScheduledRunbook –AutomationAccountName $automationA
 
 Azure Automation のスケジュールを構成できる最も短い間隔は 1 時間です。 それより頻繁にスケジュールを実行する必要がある場合は、2 つのオプションがあります。
 
-* Runbook 用の [webhook](../automation-webhooks.md) を作成し、[Azure Scheduler](../../scheduler/scheduler-get-started-portal.md) を使って webhook を呼び出します。 Azure Scheduler を使うと、さらに小さい単位でスケジュールを定義できます。
+* Runbook 用の [webhook](../automation-webhooks.md) を作成し、[Azure Logic Apps](../../logic-apps/logic-apps-overview.md) を使って webhook を呼び出します。 Azure Logic Apps を使うと、さらに小さい単位でスケジュールを定義できます。
 
 * 1 時間に 1 回実行する 4 つのスケジュールを、相互の間隔を 15 分以下にして作成します。 このシナリオでは、Runbook は異なるスケジュールにより 15 分ごとに実行できます。
 
@@ -173,7 +173,7 @@ Set-AzureRmAutomationSchedule –AutomationAccountName $automationAccountName `
 –Name $scheduleName –IsEnabled $false -ResourceGroupName "ResourceGroup01"
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Automation の Runbook の使用を開始するには、「 [Azure Automation での Runbook の開始](../automation-starting-a-runbook.md)
 

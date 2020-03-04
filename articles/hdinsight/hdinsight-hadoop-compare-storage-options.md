@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 06/17/2019
-ms.openlocfilehash: b73810b37020bf01c1088f194bd426e93fd95d2c
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.date: 02/25/2020
+ms.openlocfilehash: 593f80583067d28292701353c8a6a62d81282614
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180774"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650828"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで使用するストレージ オプションを比較する
 
@@ -28,7 +28,7 @@ HDInsight クラスターを作成する際、次のいくつかの異なる Azu
 
 | ストレージ サービス | アカウントの種類 | 名前空間の種類 | サポートされているサービス | サポートされているパフォーマンス レベル | サポートされているアクセス層 | HDInsight のバージョン | クラスターの種類 |
 |---|---|---|---|---|---|---|---|
-|Azure Data Lake Storage Gen2| 汎用 v2 | 階層構造 (ファイルシステム) | BLOB | Standard | ホット、クール、アーカイブ | 3.6 以降 | All |
+|Azure Data Lake Storage Gen2| 汎用 v2 | 階層構造 (ファイルシステム) | BLOB | Standard | ホット、クール、アーカイブ | 3.6 以降 | Spark 2.1 を除くすべて |
 |Azure Storage| 汎用 v2 | Object | BLOB | Standard | ホット、クール、アーカイブ | 3.6 以降 | All |
 |Azure Storage| 汎用 v1 | Object | BLOB | Standard | 該当なし | All | All |
 |Azure Storage| Blob Storage** | Object | ブロック BLOB | Standard | ホット、クール、アーカイブ | All | All |
@@ -56,6 +56,9 @@ Azure Storage アクセス層の詳細については、「[Azure Blob Storage:P
 | 4.0 | Data Lake Storage Gen1 | Any | いいえ |
 
 *=すべてがクラスター アクセスに同じマネージド ID を使用するように構成されている限り、これは 1 つ以上の Data Lake Storage Gen2 アカウントの可能性があります。
+
+> [!Note] 
+> Data Lake Storage Gen2 プライマリ ストレージは、Spark 2.1 クラスターではサポートされていません。 
 
 ## <a name="use-azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>Azure HDInsight で Azure Data Lake Storage Gen2 と Apache Hadoop を使用する
 
@@ -241,7 +244,7 @@ Data Lake Storage Gen1 内のデータへのアクセス方法の詳細につい
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Data Lake Storage Gen2 の概要](../storage/blobs/data-lake-storage-introduction.md)
 * [Azure ストレージの概要](../storage/common/storage-introduction.md)

@@ -6,12 +6,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/19/2019
-ms.openlocfilehash: 26bd6c8b31bd16c058c5cb35cab086117b9f8cc5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 8559dc357d34d505d45cd0a6491183345ae5cf61
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845798"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526588"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault の論理的な削除の概要
 
@@ -34,15 +34,13 @@ Azure Key Vault は追跡対象のリソースであり、Azure Resource Manager
 
 ### <a name="soft-delete-behavior"></a>論理的な削除の動作
 
-この機能を使用すると、キー コンテナーまたはキー コンテナー オブジェクトの DELETE 操作は論理的な削除となり、見かけ上はオブジェクトが削除されていても、実際には指定した保持期間 (90 日間) だけリソースが保持されます。 さらに、削除されたオブジェクトを回復する、実質的には削除を元に戻すメカニズムも用意されています。 
+論理削除が有効になっている場合、削除されたリソースとしてマークされたリソースは、指定された期間 (既定では 90 日) 保持されます。 さらに、削除されたオブジェクトを回復する、実質的には削除を元に戻すメカニズムも用意されています。
 
-新しく作成されたキー コンテナーの論理的な削除が既定でオンになるようになりました。 これは、[Azure CLI](key-vault-soft-delete-cli.md) または [Azure Powershell](key-vault-soft-delete-powershell.md) を使用して無効にすることができます。
+新しいキー コンテナーを作成するときに、論理削除は既定でオンになっています。 [Azure CLI](key-vault-soft-delete-cli.md) または [Azure Powershell](key-vault-soft-delete-powershell.md)を使用すれば、論理削除を行わずにキー コンテナーを作成できます。 キー コンテナーで論理削除が有効になると、無効にすることはできません
 
-既定の保有期間は 90 日ですが、Azure portal からアイテム保持ポリシーの期間を 7 から 90 日の値に設定することができます。 保護の削除のアイテム保持ポリシーでは、同じ間隔が使用されます。 
+既定の保有期間は 90 日ですが、キー コンテナーの作成時に、Azure portal を通じて、リテンション期間ポリシーの間隔を 7 から 90 日の値に設定することができます。 保護の削除のアイテム保持ポリシーでは、同じ間隔が使用されます。 設定した場合、保持ポリシーの間隔は変更できません。
 
-論理的な削除がキー コンテナーに設定されている場合は、無効にすることができず、アイテム保持ポリシーの期間を変更することはできません。 
-
-保有期間が経過するまで、論理的に削除されたキー コンテナーの名前を再利用することはできません。 
+保有期間が経過するまで、論理的に削除されたキー コンテナーの名前を再利用することはできません。
 
 ### <a name="purge-protection"></a>消去保護 
 

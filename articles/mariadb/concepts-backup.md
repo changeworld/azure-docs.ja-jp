@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 333e51782fd0dd88b3e8747fb831b841a22c8e6c
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 02/25/2020
+ms.openlocfilehash: 3e10c23aaaef6315e072348d879d5f077e16382a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74773092"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623656"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Azure Database for MariaDB でのバックアップと復元
 
@@ -20,6 +20,8 @@ Azure Database for MariaDB は、サーバーのバックアップを自動的�
 ## <a name="backups"></a>バックアップ
 
 Azure Database for MariaDB では、完全バックアップ、差分バックアップ、およびトランザクション ログ バックアップが作成されます。 これらのバックアップを使用すると、サーバーを、バックアップの構成済みリテンション期間内の任意の時点に復元できます。 バックアップの既定のリテンション期間は 7 日です。 これは、必要に応じて、最大 35 日に設定できます。 すべてのバックアップが、AES 256 ビット暗号化を使用して暗号化されます。
+
+これらのバックアップ ファイルをエクスポートすることはできません。 バックアップは、Azure Database for MariaDB の復元操作にのみ使用できます。 [mysqldump](howto-migrate-dump-restore.md) を使用して、データベースをコピーできます。
 
 ### <a name="backup-frequency"></a>バックアップ頻度
 
@@ -40,7 +42,7 @@ Azure Database for MariaDB は、プロビジョニングされているサー�
 
 バックアップ ストレージのコストの詳細については、[MariaDB の価格のページ](https://azure.microsoft.com/pricing/details/mariadb/)を参照してください。
 
-## <a name="restore"></a>復元
+## <a name="restore"></a>[復元]
 
 Azure Database for MariaDB で復元を実行すると、元のサーバーのバックアップから新しいサーバーが作成されます。
 
@@ -77,7 +79,7 @@ geo リストア中に変更できるサーバー構成は、コンピューテ�
 - 適切なログインとデータベース レベルのアクセス許可が適切に指定されていることを確認する
 - 必要に応じて、アラートを構成する
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - ビジネス継続性の詳細については、 [ビジネス継続性の概要](concepts-business-continuity.md)に関するページをご覧ください。
 - Azure Portal を使用して特定の時点に復元する方法については、 [Azure Portal を使用したデータベースのポイントインタイム リストア](howto-restore-server-portal.md)に関するページをご覧ください。

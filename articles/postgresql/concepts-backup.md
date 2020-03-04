@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: be6b9c30fe462b0754ae5e5c1a7eeac242af00f1
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 02/25/2020
+ms.openlocfilehash: 3e6dfd5882e49ad903e8cff6f0ec7f3d6bd4a8b7
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769865"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619624"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) でのバックアップと復元
 
@@ -20,6 +20,8 @@ Azure Database for PostgreSQL は、サーバーのバックアップを自動�
 ## <a name="backups"></a>バックアップ
 
 Azure Database for PostgreSQL では、データ ファイルとトランザクション ログのバックアップが作成されます。 サポートされている最大ストレージ サイズに応じて、完全バックアップと差分バックアップ (最大 4 TB のストレージ サーバー) またはスナップショット バックアップ (最大 16 TB のストレージ サーバー) を使用します。 これらのバックアップを使用すると、サーバーを、バックアップの構成済みリテンション期間内の任意の時点に復元できます。 バックアップの既定のリテンション期間は 7 日です。 これは、必要に応じて、最大 35 日に設定できます。 すべてのバックアップが、AES 256 ビット暗号化を使用して暗号化されます。
+
+これらのバックアップ ファイルをエクスポートすることはできません。 バックアップは、Azure Database for PostgreSQL の復元操作にのみ使用できます。 [pg_dump](howto-migrate-using-dump-and-restore.md) を使用して、データベースをコピーできます。
 
 ### <a name="backup-frequency"></a>バックアップ頻度
 
@@ -38,7 +40,7 @@ Azure Database for PostgreSQL は、プロビジョニングされているサ�
 
 たとえば、サーバーを 250 GB でプロビジョニングした場合は、250 GB のバックアップ ストレージを追加料金なしで利用できます。 250 GB を超えたストレージ分についてのみ課金されます。
 
-## <a name="restore"></a>復元
+## <a name="restore"></a>[復元]
 
 Azure Database for PostgreSQL で復元を実行すると、元のサーバーのバックアップから新しいサーバーが作成されます。
 
@@ -73,11 +75,11 @@ geo リストア中に変更できるサーバー構成は、コンピューテ�
 いずれかの復旧メカニズムで復元した後、ユーザーとアプリケーションを元に戻して実行するには、次のタスクを実行する必要があります。
 
 - 元のサーバーを新しいサーバーで置き換える場合は、クライアントとクライアント アプリケーションを新しいサーバーにリダイレクトする
-- ユーザーが接続できるように、適切なサーバー レベルのファイアウォール規則が適用されていることを確認する
+- ユーザーが接続できるように、適切なサーバー レベルのファイアウォールと VNet ルールが適用されていることを確認します。 これらのルールは配信元のサーバーからはコピーされません。
 - 適切なログインとデータベース レベルのアクセス許可が適切に指定されていることを確認する
 - 必要に応じて、アラートを構成する
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 -  [Azure portal](howto-restore-server-portal.md) を使用して復元する方法について学習します。
 -  [Azure CLI](howto-restore-server-cli.md) を使用して復元する方法について学習します。

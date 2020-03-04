@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: a6d2e2d912f176a88dc993803d750e37cff1acb6
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 9f3e06f66996be4a2b43b64e6100c62a2fa41381
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443666"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649961"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker をデプロイする
 
@@ -19,6 +19,9 @@ Azure Automation の Hybrid Runbook Worker 機能を使う、ロールをホス�
 Runbook Worker が正常にデプロイされたら、「[Hybrid Runbook Worker での Runbook の実行](automation-hrw-run-runbooks.md)」を参照して、オンプレミスのデータセンターや他のクラウド環境のプロセスを自動化するように Runbook を構成する方法を確認します。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+>[!NOTE]
+>この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
 
 ## <a name="windows-hybrid-runbook-worker-installation-and-configuration"></a>Windows Hybrid Runbook Worker のインストールと構成
 
@@ -50,8 +53,9 @@ Hybrid Runbook Worker のその他のネットワーク要件については、[
 
 ### <a name="server-onboarding-for-management-with-automation-dsc"></a>Automation DSC を使用した管理のためのサーバーのオンボード
 
-DSC による管理のためのサーバーのオンボードの詳細については、「[Azure Automation DSC による管理のためのマシンのオンボード](automation-dsc-onboarding.md)」を参照してください。
-[Update Management ソリューション](../operations-management-suite/oms-solution-update-management.md)を有効にすると、このソリューションに含まれている Runbook をサポートするために、Log Analytics ワークスペースに接続された Windows コンピューターはすべて Hybrid Runbook Worker として自動的に構成されます。 ただし、このコンピューターは、Automation アカウントで既に定義した可能性のあるハイブリッド worker グループには登録されません。 
+DSC による管理のためのサーバーのオンボードについては、[Azure Automation DSC による管理のためのマシンのオンボード](automation-dsc-onboarding.md)に関するページを参照してください。
+
+[Update Management ソリューション](../operations-management-suite/oms-solution-update-management.md)を有効にすると、このソリューションに含まれている Runbook をサポートするために、Log Analytics ワークスペースに接続された Windows コンピューターはすべて Hybrid Runbook Worker として自動的に構成されます。 ただし、このコンピューターは、Automation アカウントで既に定義した可能性のあるハイブリッド worker グループには登録されません。
 
 ### <a name="adding-the-computer-to-a-hybrid-runbook-worker-group"></a>Hybrid Runbook Worker グループへのコンピューターの追加
 
@@ -65,19 +69,17 @@ DSC による管理のためのサーバーのオンボードの詳細につい�
 
 [PowerShell ギャラリー](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker) の New-OnPremiseHybridWorker.ps1 スクリプトを Hybrid Runbook Worker ロールを実行しているコンピューターから、または環境内の別のコンピューターから直接ダウンロードします。 スクリプトを worker にコピーします。 New-OnPremiseHybridWorker.ps1 スクリプトは、実行中に次のパラメーターを必要とします。
 
-   * *AAResourceGroupName* (必須):Automation アカウントに関連付けられているリソース グループの名前。
-   * *OMSResourceGroupName* (省略可能):Log Analytics ワークスペース用のリソース グループの名前。 このリソース グループが指定されていない場合、*AAResourceGroupName* が使用されます。
-   * *SubscriptionID* (必須):Automation アカウントが存在する Azure サブスクリプション ID。
-   * *TenantID* (省略可能): Automation アカウントに関連付けられているテナント組織の識別子。
-   * *WorkspaceName* (省略可能):Log Analytics ワークスペース名。 Log Analytics ワークスペースがない場合は、スクリプトがこれを作成して構成します。
-   * *AutomationAccountName* (必須):Automation アカウントの名前。
-   * *HybridGroupName* (必須):このシナリオをサポートしている Runbook のターゲットとして指定する Hybrid Runbook Worker グループの名前。
-   * *Credential* (省略可能): Azure 環境にログインするときに使用する資格情報。
+* *AAResourceGroupName* (必須):Automation アカウントに関連付けられているリソース グループの名前。
+* *OMSResourceGroupName* (省略可能):Log Analytics ワークスペース用のリソース グループの名前。 このリソース グループが指定されていない場合、*AAResourceGroupName* が使用されます。
+* *SubscriptionID* (必須):Automation アカウントが存在する Azure サブスクリプション ID。
+* *TenantID* (省略可能): Automation アカウントに関連付けられているテナント組織の識別子。
+* *WorkspaceName* (省略可能):Log Analytics ワークスペース名。 Log Analytics ワークスペースがない場合は、スクリプトがこれを作成して構成します。
+* *AutomationAccountName* (必須):Automation アカウントの名前。
+* *HybridGroupName* (必須):このシナリオをサポートしている Runbook のターゲットとして指定する Hybrid Runbook Worker グループの名前。
+* *Credential* (省略可能): Azure 環境にログインするときに使用する資格情報。
   
-   > [!NOTE]
-   > ソリューションを有効にすると、Log Analytics ワークスペースと Automation アカウントをリンクするために特定のリージョンのみがサポートされます。
-   >
-   > サポートされているマッピング ペアの一覧については、[Automation アカウントと Log Analytics ワークスペースのリージョン マッピング](how-to/region-mappings.md)に関する記事をご覧ください。
+> [!NOTE]
+> ソリューションを有効にする際、Log Analytics ワークスペースと Automation アカウントのリンクは特定のリージョンでのみサポートされています。 サポートされているマッピング ペアの一覧については、[Automation アカウントと Log Analytics ワークスペースのリージョン マッピング](how-to/region-mappings.md)に関する記事をご覧ください。
 
 ### <a name="2-open-windows-powershell-command-line-shell"></a>2.Windows PowerShell コマンド ウィンドウを開く
 

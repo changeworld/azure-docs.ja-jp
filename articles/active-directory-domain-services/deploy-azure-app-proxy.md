@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/6/2019
 ms.author: iainfou
-ms.openlocfilehash: c0fcb8c2c5f9afa7fabe2ffa63a715ec24aa4a26
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c6e4e6a45fbbeab64184d8ae4b0684ba055d7735
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720502"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613974"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services マネージド ドメイン内の内部アプリケーションに安全にアクセスするために Azure AD アプリケーション プロキシをデプロイする
 
@@ -74,7 +74,7 @@ VM を Azure AD アプリケーション プロキシ コネクタとして使�
         > [!NOTE]
         > コネクタの登録に使用する全体管理者アカウントは、アプリケーション プロキシ サービスを有効にしたのと同じディレクトリに属している必要があります。
         >
-        > たとえば、Azure AD ドメインが *contoso.com* の場合、全体管理者は `admin@contoso.com` か、そのドメインの別の有効なエイリアスである必要があります。
+        > たとえば、Azure AD ドメインが *aaddscontoso.com* の場合、全体管理者は `admin@aaddscontoso.com` か、そのドメインの別の有効なエイリアスである必要があります。
 
    * コネクタをインストールする VM で [Internet Explorer セキュリティ強化の構成] がオンになっていると、登録画面がブロックされることがあります。 アクセスを許可するには、エラー メッセージの指示に従うか、インストールプロセス中に Internet Explorer のセキュリティ強化をオフにします。
    * コネクタの登録が失敗する場合は、[アプリケーション プロキシのトラブルシューティング](../active-directory/manage-apps/application-proxy-troubleshoot.md)に関する記事をご覧ください。
@@ -99,21 +99,21 @@ VM を Azure AD アプリケーション プロキシ コネクタとして使�
 
 [Get-ADComputer][Get-ADComputer] を使用して、Azure AD アプリケーション プロキシ コネクタがインストールされているコンピューターの設定を取得します。 ドメインに参加している管理 VM で、"*Azure AD DC 管理者*" グループのメンバーであるユーザー アカウントとしてログインし、次のコマンドレットを実行します。
 
-次の例では、*appproxy.contoso.com* という名前のコンピューター アカウントに関する情報を取得します。 前の手順で構成した Azure AD アプリケーション プロキシ VM に独自のコンピューター名を指定します。
+次の例では、*appproxy.aaddscontoso.com* という名前のコンピューター アカウントに関する情報を取得します。 前の手順で構成した Azure AD アプリケーション プロキシ VM に独自のコンピューター名を指定します。
 
 ```powershell
-$ImpersonatingAccount = Get-ADComputer -Identity appproxy.contoso.com
+$ImpersonatingAccount = Get-ADComputer -Identity appproxy.aaddscontoso.com
 ```
 
-Azure AD アプリケーション プロキシの背後にあるアプリを実行するアプリケーション サーバーごとに [Set-ADComputer][Set-ADComputer] PowerShell コマンドレットを使用して、リソースベースの KCD を構成します。 次の例では、Azure AD アプリケーション プロキシ コネクタに *appserver.contoso.com* コンピューターを使用するためのアクセス許可が付与されます。
+Azure AD アプリケーション プロキシの背後にあるアプリを実行するアプリケーション サーバーごとに [Set-ADComputer][Set-ADComputer] PowerShell コマンドレットを使用して、リソースベースの KCD を構成します。 次の例では、Azure AD アプリケーション プロキシ コネクタに *appserver.aaddscontoso.com* コンピューターを使用するためのアクセス許可が付与されます。
 
 ```powershell
-Set-ADComputer appserver.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
+Set-ADComputer appserver.aaddscontoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
 ```
 
 複数の Azure AD アプリケーション プロキシ コネクタをデプロイする場合は、コネクタ インスタンスごとにリソースベースの KCD を構成する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure AD DS と統合された Azure AD アプリケーション プロキシを使用して、ユーザーがアクセスできるようにアプリケーションを発行します。 詳しくは、[Azure AD アプリケーション プロキシを使用したアプリケーションの発行](../active-directory/manage-apps/application-proxy-publish-azure-portal.md)に関する記事をご覧ください。
 

@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 4b738f34ae75478c0120832e7ad2b6a6a83dbf69
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a2ca9a167d50619ed2963b13515c0a772d712570
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61224780"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591270"
 ---
 # <a name="cloud-to-device-communications-guidance"></a>cloud-to-device 通信に関するガイダンス
 
@@ -32,10 +32,10 @@ IoT Hub では、デバイス アプリがバックエンド アプリに機能�
 |  | ダイレクト メソッド | デバイス ツインの必要なプロパティ | クラウドからデバイスへのメッセージ |
 | ---- | ------- | ---------- | ---- |
 | シナリオ | すぐに確認する必要があるコマンド (例: ファンをオンにする)。 | デバイスを特定の状態に置いておくために長時間実行されるコマンド。 たとえば、テレメトリの送信間隔を 30 分に設定します。 | デバイス アプリに対する一方向の通知です。 |
-| データ フロー | 双方向。 デバイス アプリは、メソッドにすぐに応答できます。 ソリューション バックエンドは、コンテキストから要求の結果を受信します。 | 一方向。 デバイス アプリは、プロパティが変更された通知を受信します。 | 一方向。 デバイス アプリは、メッセージを受信します。
-| 持続性 | 切断されているデバイスとは通信しません。 ソリューション バックエンドには、デバイスが接続されていないことが通知されます。 | プロパティの値は、デバイス ツインに保持されます。 デバイスは、次の再接続時にそれを読み取ります。 プロパティの値は [IoT Hub クエリ言語](iot-hub-devguide-query-language.md)を使用して取得できます。 | メッセージは、IoT Hub によって最大 48 時間保持できます。 |
-| ターゲット | **deviceId** を使用する場合は 1 台のデバイス、[jobs](iot-hub-devguide-jobs.md) を使用する場合は複数台のデバイス。 | **deviceId** を使用する場合は 1 台のデバイス、[jobs](iot-hub-devguide-jobs.md) を使用する場合は複数台のデバイス。 | **deviceId** による 1 台のデバイス。 |
-| Size | ダイレクト メソッドの最大ペイロード サイズは 128 KB。 | 必要なプロパティの最大サイズは 8 KB です。 | 最大 64 KB のメッセージ。 |
+| Data flow | 双方向。 デバイス アプリは、メソッドにすぐに応答できます。 ソリューション バックエンドは、コンテキストから要求の結果を受信します。 | 一方向。 デバイス アプリは、プロパティが変更された通知を受信します。 | 一方向。 デバイス アプリは、メッセージを受信します。
+| Durability | 切断されているデバイスとは通信しません。 ソリューション バックエンドには、デバイスが接続されていないことが通知されます。 | プロパティの値は、デバイス ツインに保持されます。 デバイスは、次の再接続時にそれを読み取ります。 プロパティの値は [IoT Hub クエリ言語](iot-hub-devguide-query-language.md)を使用して取得できます。 | メッセージは、IoT Hub によって最大 48 時間保持できます。 |
+| 対象サーバー | **deviceId** を使用する場合は 1 台のデバイス、[jobs](iot-hub-devguide-jobs.md) を使用する場合は複数台のデバイス。 | **deviceId** を使用する場合は 1 台のデバイス、[jobs](iot-hub-devguide-jobs.md) を使用する場合は複数台のデバイス。 | **deviceId** による 1 台のデバイス。 |
+| Size | ダイレクト メソッドの最大ペイロード サイズは 128 KB。 | 必要なプロパティの最大サイズは 32KB です。 | 最大 64 KB のメッセージ。 |
 | 頻度 | 高。 詳細については、[IoT Hub の制限](iot-hub-devguide-quotas-throttling.md)に関するページを参照してください。 | 中。 詳細については、[IoT Hub の制限](iot-hub-devguide-quotas-throttling.md)に関するページを参照してください。 | 低。 詳細については、[IoT Hub の制限](iot-hub-devguide-quotas-throttling.md)に関するページを参照してください。 |
 | Protocol | MQTT または AMQP を使用して利用できます。 | MQTT または AMQP を使用して利用できます。 | すべてのプロトコルで使用できます。 HTTPS を使う場合、デバイスはポーリングを行う必要があります。 |
 

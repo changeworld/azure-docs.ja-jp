@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: dc4762cbda5ad2877d2d69953d2514dea17c8b46
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: d989553dc2248e7e0c830bb8cf169a80354dbab2
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368904"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562549"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure のオンデマンド Red Hat Enterprise Linux VM 用 Red Hat Update Infrastructure
  クラウド プロバイダー (Azure など) は、[Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) を使用して、Red Hat でホストされているリポジトリのコンテンツのミラーリング、Azure 固有のコンテンツを使用したカスタム リポジトリの作成、およびエンド ユーザーの VM での使用を実行できます。
@@ -28,7 +28,7 @@ Azure での RHEL イメージに関する追加情報 (公開および保持ポ
 すべてのバージョンの RHEL に対する Red Hat のサポート ポリシーに関する情報は、「[Red Hat Enterprise Linux Life Cycle \(Red Hat Enterprise Linux のライフ サイクル\)](https://access.redhat.com/support/policy/updates/errata)」ページに記載されています。
 
 > [!IMPORTANT]
-> RHUI は、従量課金制 (PAYGO) イメージのみを対象としています。 カスタム イメージおよびゴールド イメージ (別名 Bring-Your-Own-Subscription (BYOS)) の場合、更新プログラムを受信するには、システムを RHSM またはサテライトに接続する必要があります。 詳細については、[Red Hat の記事](https://access.redhat.com/solutions/253273) を参照してください。
+> RHUI は、従量課金制* (PAYG*) イメージ*のみを対象としています。 カスタム イメージおよびゴールド イメージ (別名 Bring-Your-Own-Subscription (BYOS)) の場合、更新プログラムを受信するには、システムを RHSM またはサテライトに接続する必要があります。 詳細については、[Red Hat の記事](https://access.redhat.com/solutions/253273) を参照してください。
 
 
 ## <a name="important-information-about-azure-rhui"></a>Azure RHUI に関する重要な情報
@@ -105,7 +105,7 @@ RHEL VM を特定のマイナー リリースに固定するには、次の手�
     yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7-eus.config' install 'rhui-azure-rhel7-eus'
     ```
 
-1. releasever 変数をロックします (ルートとして実行):
+1. `releasever` 変数をロックします (ルートとして実行):
     ```bash
     echo $(. /etc/os-release && echo $VERSION_ID) > /etc/yum/vars/releasever
     ```
@@ -120,7 +120,7 @@ RHEL VM を特定のマイナー リリースに固定するには、次の手�
 
 ### <a name="switch-a-rhel-vm-back-to-non-eus-remove-a-version-lock"></a>RHEL VM を非 EUS に再び切り替える (バージョン ロックを削除)
 次をルートとして実行します。
-1. releasever ファイルを削除します。
+1. `releasever` ファイルを削除します。
     ```bash
     rm /etc/yum/vars/releasever
      ```

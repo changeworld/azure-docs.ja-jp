@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: 234c4b0493a4f03ed89162318090d57621740cb0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6662f109f9a8227ec45d44a730abc91ebcd8dd70
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036691"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650846"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Linux VM のコンピューティング ベンチマーク スコア
 次の CoreMark ベンチマーク スコアは、Ubuntu を実行している、Azure の 高パフォーマンス VM ラインアップについてのコンピューティング パフォーマンスを示します。 コンピューティング ベンチマーク スコアは [Windows VM](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)にも利用できます。
@@ -28,7 +28,7 @@ ms.locfileid: "74036691"
 ## <a name="av2---general-compute"></a>Av2 - 一般コンピューティング
 (3/15/2019 12:06:55 AM pbi 3897709)
 
-| VM サイズ | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | 標準偏差 | 標準偏差 % | 実行数 |
+| [VM サイズ] | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | StdDev | 標準偏差 % | 実行数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_A1_v2 | Intel(R) Xeon(R) CPU E5-2660 0 @ 2.20GHz | 1 | 1 | 1.9 | 6,483 | 120 | 1.85% | 273 |
 | Standard_A1_v2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 1 | 1 | 1.9 | 6,059 | 208 | 3.43% | 217 |
@@ -52,10 +52,12 @@ ms.locfileid: "74036691"
 | Standard_A8m_v2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 8 | 1 | 62.9 | 49,838 | 633 | 1.27% | 182 |
 | Standard_A8m_v2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 8 | 1 | 62.9 | 49,123 | 2,483 | 5.05% | 259 |
 
+注:Av2 シリーズの VM は、さまざまな種類のハードウェアとプロセッサにデプロイできます (上を参照)。 Av2 シリーズの VM は、開発とテストのような、エントリ レベルのワークロードに最適な CPU のパフォーマンスとメモリ構成を備えています。 プロセッサがデプロイされるハードウェアに関係なく実行中のインスタンスのプロセッサ パフォーマンスが比較的一定となるようにサイズが調整されます。ただし、特定の新しいプロセッサ最適化を利用するソフトウェアでは、プロセッサの種類によってかなりの変動が生じる場合があります。
+
 ## <a name="b---burstable"></a>B - バースト可能
 (3/15/2019 12:27:08 AM pbi 3897709)
 
-| VM サイズ | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | 標準偏差 | 標準偏差 % | 実行数 |
+| [VM サイズ] | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | StdDev | 標準偏差 % | 実行数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_B1ms | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 1 | 1 | 1.9 | 13,593 | 307 | 2.26% | 28 |
 | Standard_B1ms | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 1 | 1 | 1.9 | 14,069 | 495 | 3.52% | 672 |
@@ -70,10 +72,14 @@ ms.locfileid: "74036691"
 | Standard_B8ms | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 8 | 1 | 31.4 | 111,929 | 1,562 | 1.40% | 35 |
 | Standard_B8ms | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 8 | 1 | 31.4 | 109,537 | 1,354 | 1.24% | 665 |
 
+注:B シリーズの VM は、バースト可能なパフォーマンスが必要なワークロード向けです。 VM インスタンスでは、使用がベースラインを下回る場合、クレジットが累積されます。 VM でクレジットが累積されると、短期の CPU バースト要件に対応するために、VM は最大 100%、ベースラインを上回ってバーストできるようになります。 バースト時間は、VM のサイズと時間の関数である使用可能なクレジットによって異なります。  
+
+CoreMark は、通常、使用可能なバースト クレジット内で完了する実行時間の短いテストです。  そのため、上記の数値は通常、VM のバースト パフォーマンスを表しています。これは、(通常は B シリーズでの) 短時間の集中的ワークロードのパフォーマンスがどのようなものであるかを反映しています。
+
 ## <a name="dsv3---general-compute--premium-storage"></a>DSv3 - 一般コンピューティング + Premium Storage
 (3/12/2019 6:52:03 PM pbi 3897709)
 
-| VM サイズ | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | 標準偏差 | 標準偏差 % | 実行数 |
+| [VM サイズ] | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | StdDev | 標準偏差 % | 実行数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_D2s_v3 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 2 | 1 | 7.8 | 20,153 | 838 | 4.16% | 147 |
 | Standard_D2s_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 2 | 1 | 7.8 | 20,903 | 1,324 | 6.33% | 553 |
@@ -90,7 +96,7 @@ ms.locfileid: "74036691"
 ## <a name="dv3---general-compute"></a>Dv3 - 一般コンピューティング
 (3/12/2019 6:54:27 PM pbi 3897709)
 
-| VM サイズ | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | 標準偏差 | 標準偏差 % | 実行数 |
+| [VM サイズ] | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | StdDev | 標準偏差 % | 実行数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_D2_v3 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 2 | 1 | 7.8 | 20,359 | 799 | 3.93% | 154 |
 | Standard_D2_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 2 | 1 | 7.8 | 20,737 | 1,422 | 6.86% | 546 |
@@ -107,7 +113,7 @@ ms.locfileid: "74036691"
 ## <a name="dsv2---storage-optimized"></a>DSv2 - ストレージ最適化
 (3/15/2019 12:53:13 AM pbi 3897709)
 
-| VM サイズ | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | 標準偏差 | 標準偏差 % | 実行数 |
+| [VM サイズ] | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | StdDev | 標準偏差 % | 実行数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_DS1_v2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 1 | 1 | 3.4 | 14,642 | 600 | 4.10% | 259 |
 | Standard_DS1_v2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 1 | 1 | 3.4 | 14,808 | 904 | 6.10% | 434 |
@@ -147,7 +153,7 @@ ms.locfileid: "74036691"
 ## <a name="dv2---general-compute"></a>Dv2 - 一般コンピューティング
 (3/12/2019 6:53:48 PM pbi 3897709)
 
-| VM サイズ | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | 標準偏差 | 標準偏差 % | 実行数 |
+| [VM サイズ] | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | StdDev | 標準偏差 % | 実行数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_D1_v2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 1 | 1 | 3.4 | 14,730 | 663 | 4.50% | 385 |
 | Standard_D1_v2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 1 | 1 | 3.4 | 15,057 | 1,319 | 8.76% | 322 |
@@ -173,7 +179,7 @@ ms.locfileid: "74036691"
 ## <a name="esv3---memory-optimized--premium-storage"></a>Esv3 - メモリ最適化 + Premium Storage
 (3/12/2019 7:17:33 PM pbi 3897709)
 
-| VM サイズ | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | 標準偏差 | 標準偏差 % | 実行数 |
+| [VM サイズ] | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | StdDev | 標準偏差 % | 実行数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_E2s_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 2 | 1 | 15.7 | 20,957 | 1,200 | 5.73% | 672 |
 | Standard_E4s_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 4 | 1 | 31.4 | 40,420 | 1,993 | 4.93% | 672 |
@@ -192,17 +198,17 @@ ms.locfileid: "74036691"
 | Standard_E64-16s_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 16 | 2 | 425.2 | 169,611 | 3,265 | 1.92% | 42 |
 | Standard_E64-32s_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 32 | 2 | 425.2 | 307,584 | 3,569 | 1.16% | 56 |
 
-## <a name="eisv3---memory-opt--premium-storage-isolated"></a>Eisv3 - メモリ最適化 + Premium Storage (分離)
+## <a name="eisv3---memory-opt--premium-storage-isolated"></a>Eisv3 - メモリ Opt + Premium Storage (分離プロセス)
 (4/11/2019 10:07:29 PM pbi 3897709)
 
-| VM サイズ | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | 標準偏差 | 標準偏差 % | 実行数 |
+| [VM サイズ] | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | StdDev | 標準偏差 % | 実行数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_E64is_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 64 | 2 | 425.2 | 627,745 | 4,062 | 0.65% | 196 |
 
 ## <a name="ev3---memory-optimized"></a>Ev3 - メモリ最適化
 (3/12/2019 6:52:13 PM pbi 3897709)
 
-| VM サイズ | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | 標準偏差 | 標準偏差 % | 実行数 |
+| [VM サイズ] | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | StdDev | 標準偏差 % | 実行数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_E2_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 2 | 1 | 15.7 | 21,171 | 1,772 | 8.37% | 693 |
 | Standard_E4_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 4 | 1 | 31.4 | 41,181 | 3,148 | 7.64% | 700 |
@@ -215,7 +221,7 @@ ms.locfileid: "74036691"
 ## <a name="eiv3---memory-optimized-isolated"></a>Eiv3 - メモリ最適化 (分離)
 (3/12/2019 6:57:51 PM pbi 3897709)
 
-| VM サイズ | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | 標準偏差 | 標準偏差 % | 実行数 |
+| [VM サイズ] | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | StdDev | 標準偏差 % | 実行数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_E64i_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 64 | 2 | 425.2 | 625,855 | 4,881 | 0.78% | 7 |
 | Standard_E64i_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 64 | 2 | 425.2 | 629,151 | 9,756 | 1.55% | 217 |
@@ -223,7 +229,7 @@ ms.locfileid: "74036691"
 ## <a name="fsv2---compute--storage-optimized"></a>Fsv2 - コンピューティング + ストレージ最適化
 (3/12/2019 6:51:35 PM pbi 3897709)
 
-| VM サイズ | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | 標準偏差 | 標準偏差 % | 実行数 |
+| [VM サイズ] | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | StdDev | 標準偏差 % | 実行数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_F2s_v2 | Intel(R) Xeon(R) Platinum 8168 CPU @ 2.70GHz | 2 | 1 | 3.9 | 28,219 | 1,843 | 6.53% | 700 |
 | Standard_F4s_v2 | Intel(R) Xeon(R) Platinum 8168 CPU @ 2.70GHz | 4 | 1 | 7.8 | 53,911 | 1,002 | 1.86% | 707 |
@@ -236,7 +242,7 @@ ms.locfileid: "74036691"
 ## <a name="fs---compute-and-storage-optimized"></a>Fs - コンピューティング + ストレージ最適化
 (3/15/2019 12:12:51 AM pbi 3897709)
 
-| VM サイズ | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | 標準偏差 | 標準偏差 % | 実行数 |
+| [VM サイズ] | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | StdDev | 標準偏差 % | 実行数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_F1s | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 1 | 1 | 1.9 | 14,552 | 504 | 3.46% | 350 |
 | Standard_F1s | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 1 | 1 | 1.9 | 14,784 | 858 | 5.80% | 357 |
@@ -253,7 +259,7 @@ ms.locfileid: "74036691"
 ## <a name="f---compute-optimized"></a>F - コンピューティング最適化
 (3/12/2019 6:53:59 PM pbi 3897709)
 
-| VM サイズ | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | 標準偏差 | 標準偏差 % | 実行数 |
+| [VM サイズ] | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | StdDev | 標準偏差 % | 実行数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_F1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 1 | 1 | 1.9 | 14,937 | 593 | 3.97% | 350 |
 | Standard_F1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 1 | 1 | 1.9 | 15,460 | 1,326 | 8.58% | 350 |
@@ -270,7 +276,7 @@ ms.locfileid: "74036691"
 ## <a name="gs---storage-optimized"></a>GS - ストレージ最適化
 (3/12/2019 10:22:33 PM pbi 3897709)
 
-| VM サイズ | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | 標準偏差 | 標準偏差 % | 実行数 |
+| [VM サイズ] | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | StdDev | 標準偏差 % | 実行数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_GS1 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 2 | 1 | 27.5 | 28,835 | 2,222 | 7.71% | 287 |
 | Standard_GS2 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 4 | 1 | 55.0 | 55,568 | 3,139 | 5.65% | 287 |
@@ -285,7 +291,7 @@ ms.locfileid: "74036691"
 ## <a name="g---compute-optimized"></a>G - コンピューティング最適化
 (3/12/2019 10:23:51 PM pbi 3897709)
 
-| VM サイズ | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | 標準偏差 | 標準偏差 % | 実行数 |
+| [VM サイズ] | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | StdDev | 標準偏差 % | 実行数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_G1 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 2 | 1 | 27.5 | 32,808 | 2,679 | 8.17% | 287 |
 | Standard_G2 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 4 | 1 | 55.0 | 62,907 | 4,465 | 7.10% | 287 |
@@ -296,7 +302,7 @@ ms.locfileid: "74036691"
 ## <a name="h---high-performance-compute-hpc"></a>H - ハイ パフォーマンス コンピューティング (HPC)
 (3/12/2019 10:50:51 PM pbi 3897709)
 
-| VM サイズ | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | 標準偏差 | 標準偏差 % | 実行数 |
+| [VM サイズ] | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | StdDev | 標準偏差 % | 実行数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_H8 | Intel(R) Xeon(R) CPU E5-2667 v3 @ 3.20GHz | 8 | 1 | 55.0 | 149,859 | 734 | 0.49% | 175 |
 | Standard_H8m | Intel(R) Xeon(R) CPU E5-2667 v3 @ 3.20GHz | 8 | 1 | 110.2 | 149,931 | 657 | 0.44% | 147 |
@@ -308,7 +314,7 @@ ms.locfileid: "74036691"
 ## <a name="lv2---storage-optimized"></a>Lv2 - ストレージ最適化
 (3/14/2019 5:49:04 PM pbi 3897709)
 
-| VM サイズ | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | 標準偏差 | 標準偏差 % | 実行数 |
+| [VM サイズ] | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | StdDev | 標準偏差 % | 実行数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_L8s_v2 | AMD EPYC 7551 32 コア プロセッサ | 8 | 1 | 62.9 | 80,528 | 404 | 0.50% | 119 |
 | Standard_L16s_v2 | AMD EPYC 7551 32 コア プロセッサ | 16 | 2 | 125.9 | 154,829 | 3,708 | 2.40% | 119 |
@@ -319,7 +325,7 @@ ms.locfileid: "74036691"
 ## <a name="ls---storage-optimized"></a>Ls - ストレージ最適化
 (3/12/2019 10:22:29 PM pbi 3897709)
 
-| VM サイズ | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | 標準偏差 | 標準偏差 % | 実行数 |
+| [VM サイズ] | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | StdDev | 標準偏差 % | 実行数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_L4s | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 4 | 1 | 31.4 | 56,488 | 2,916 | 5.16% | 287 |
 | Standard_L8s | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 8 | 1 | 62.9 | 107,017 | 2,323 | 2.17% | 287 |
@@ -329,7 +335,7 @@ ms.locfileid: "74036691"
 ## <a name="m---memory-optimized"></a>M - メモリ最適化
 (4/11/2019 7:30:39 PM pbi 3897709)
 
-| VM サイズ | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | 標準偏差 | 標準偏差 % | 実行数 |
+| [VM サイズ] | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | StdDev | 標準偏差 % | 実行数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_M8-2ms | Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz | 2 | 1 | 215.2 | 22,605 | 29 | 0.13% | 42 |
 | Standard_M8-4ms | Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz | 4 | 1 | 215.2 | 44,488 | 183 | 0.41% | 42 |
@@ -360,7 +366,7 @@ ms.locfileid: "74036691"
 ## <a name="ncsv3---gpu-enabled"></a>NCSv3 - GPU 対応
 (3/21/2019 5:48:37 PM pbi 3897709)
 
-| VM サイズ | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | 標準偏差 | 標準偏差 % | 実行数 |
+| [VM サイズ] | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | StdDev | 標準偏差 % | 実行数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_NC6s_v3 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 6 | 1 | 110.2 | 106,929 | 353 | 0.33% | 49 |
 | Standard_NC12s_v3 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 12 | 1 | 220.4 | 213,585 | 875 | 0.41% | 42 |
@@ -370,7 +376,7 @@ ms.locfileid: "74036691"
 ## <a name="ncsv2---gpu-enabled"></a>NCSv2 - GPU 対応
 (3/12/2019 11:19:19 PM pbi 3897709)
 
-| VM サイズ | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | 標準偏差 | 標準偏差 % | 実行数 |
+| [VM サイズ] | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | StdDev | 標準偏差 % | 実行数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_NC6s_v2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 6 | 1 | 110.2 | 107,115 | 321 | 0.30% | 63 |
 | Standard_NC12s_v2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 12 | 1 | 220.4 | 213,814 | 656 | 0.31% | 63 |
@@ -380,7 +386,7 @@ ms.locfileid: "74036691"
 ## <a name="nc---gpu-enabled"></a>NC - GPU 対応
 (3/12/2019 11:08:03 PM pbi 3897709)
 
-| VM サイズ | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | 標準偏差 | 標準偏差 % | 実行数 |
+| [VM サイズ] | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | StdDev | 標準偏差 % | 実行数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_NC6 | Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz | 6 | 1 | 55.0 | 102,211 | 658 | 0.64% | 259 |
 | Standard_NC12 | Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz | 12 | 1 | 110.2 | 203,523 | 2,293 | 1.13% | 259 |
@@ -390,7 +396,7 @@ ms.locfileid: "74036691"
 ## <a name="nds--gpu-enabled"></a>ND - GPU 対応
 (3/12/2019 11:19:10 PM pbi 3897709)
 
-| VM サイズ | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | 標準偏差 | 標準偏差 % | 実行数 |
+| [VM サイズ] | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | StdDev | 標準偏差 % | 実行数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_ND6s | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 6 | 1 | 110.2 | 107,095 | 353 | 0.33% | 63 |
 | Standard_ND12s | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 12 | 1 | 220.4 | 212,298 | 3,457 | 1.63% | 63 |
@@ -400,7 +406,7 @@ ms.locfileid: "74036691"
 ## <a name="nv---gpu-enabled"></a>NV - GPU 対応
 (3/12/2019 11:08:13 PM pbi 3897709)
 
-| VM サイズ | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | 標準偏差 | 標準偏差 % | 実行数 |
+| [VM サイズ] | CPU | vCPU 数 | NUMA ノード数 | メモリ (GiB) | 平均スコア | StdDev | 標準偏差 % | 実行数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_NV6 | Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz | 6 | 1 | 55.0 | 101,728 | 2,094 | 2.06% | 259 |
 | Standard_NV12 | Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz | 12 | 1 | 110.2 | 203,903 | 1,724 | 0.85% | 252 |
@@ -410,7 +416,7 @@ ms.locfileid: "74036691"
 ## <a name="about-coremark"></a>CoreMark について
 Linux の数値は、Ubuntu 上で [CoreMark](https://www.eembc.org/coremark/faq.php) を実行して計算しました。 CoreMark は、スレッド数を仮想 CPU の数に設定し、コンカレンシー数を PThreads に設定して構成しました。 目標の反復の回数は、少なくとも 20 秒 (通常はもっとはるかに長い) のランタイムを提供するために予期されるパフォーマンスに基づいて調整されました。 最終のスコアは、完了した反復の回数をテストの実行にかかった秒数で割った値を表します。 VM ごとに各テストを少なくとも 7 回実行しました。 テストの実行日は上に示されています。 テストは、実行日に VM サポートされていた Azure パブリック リージョン間の複数の VM で実行されました。 基本 A および B (バースト対応) シリーズは、パフォーマンスが可変であるため示されていません。 N シリーズは、GPU 中心であり、Coremark は GPU のパフォーマンスを測定しないため、示されていません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * ストレージの容量、ディスクの詳細、VM のサイズを選択する際のその他の考慮事項については、 [仮想マシンのサイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページをご覧ください。
 * Linux VM 上で CoreMark スクリプトを実行するには、 [CoreMark スクリプト パック](https://download.microsoft.com/download/3/0/5/305A3707-4D3A-4599-9670-AAEB423B4663/AzureCoreMarkScriptPack.zip)をダウンロードします。
 

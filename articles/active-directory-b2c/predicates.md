@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/28/2019
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a09478bd2e32a1ab484b85fec33ae03878ebb10c
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8e38f422189ce001063276ddc7c7f82b2acb5929
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951022"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585766"
 ---
 # <a name="predicates-and-predicatevalidations"></a>述語および PredicateValidations
 
@@ -28,7 +28,7 @@ ms.locfileid: "74951022"
 
 ![述語と述語の検証のリレーションシップを示す図](./media/predicates/predicates.png)
 
-## <a name="predicates"></a>Predicates
+## <a name="predicates"></a>述語
 
 **Predicate**要素によって、要求タイプの値をチェックする基本的な検証が定義され、`true` または `false` が返されます。 検証は、指定された **Method** 要素と、そのメソッドに関連する **Parameter** 要素のセットを使用して行われます。 例えば、述語によって、文字列要求値の長さが、指定された最小および最大パラメーターの範囲内にあるかどうか、または文字列要求の値に文字セットが含まれているかどうかをチェックできます。 **UserHelpText** 要素により、チェックが失敗した場合にユーザーに表示されるエラー メッセージが指定されます。 **UserHelpText** 要素の値を、[言語のカスタマイズ](localization.md)を使用してローカライズできます。
 
@@ -42,23 +42,24 @@ ms.locfileid: "74951022"
 
 **Predicate** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | Id | はい | 述語に使用される識別子です。 その他の要素は、ポリシーでこの識別子を使用することができます。 |
 | Method | はい | 検証に使用するメソッドの型。 指定できる値**IsLengthRange**、**MatchesRegex**、**IncludesCharacters**、または **IsDateRange**。 **IsLengthRange** 値によって、文字列要求値の長さが、指定された最小および最大パラメーターの範囲内にあるかどうかがチェックされます。 **MatchesRegex** 値によって、文字列要求値が正規表現に一致するかどうかがチェックされます。 **IncludesCharacters** 値によって、文字列要求値に文字セットが含まれているかどうかがチェックされます。 **IsDateRange** 値によって、日付要求値が、指定された最小および最大パラメーターの範囲内にあるかどうかがチェックされます。 |
+| HelpText | いいえ | チェックが失敗した場合に、ユーザーに表示されるエラー メッセージ。 この文字列は、[言語カスタマイズ](localization.md)を使ってローカライズすることができます。 |
 
 **Predicate** 要素には、次の要素が含まれています。
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| UserHelpText | 1:1 | チェックが失敗した場合に、ユーザーに表示されるエラー メッセージ。 この文字列は、[言語カスタマイズ](localization.md)を使ってローカライズすることができます。 |
-| parameters | 1:1 | 文字列検証のメソッド タイプのパラメーター。 |
+| UserHelpText | 0:1 | (非推奨) チェックが失敗した場合に、ユーザーに表示されるエラー メッセージ。 |
+| パラメーター | 1:1 | 文字列検証のメソッド タイプのパラメーター。 |
 
 **Parameters** 要素には、次の要素が含まれています。
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| Parameter | 1:n | 文字列検証のメソッド タイプのパラメーター。 |
+| パラメーター | 1:n | 文字列検証のメソッド タイプのパラメーター。 |
 
 **Parameters** 要素には、次の属性が含まれています。
 
@@ -69,11 +70,10 @@ ms.locfileid: "74951022"
 次の例は、文字列の長さ範囲を指定する `Minimum` および `Maximum` パラメーターを持つ `IsLengthRange` メソッドを示しています。
 
 ```XML
-<Predicate Id="IsLengthBetween8And64" Method="IsLengthRange">
-  <UserHelpText>The password must be between 8 and 64 characters.</UserHelpText>
-    <Parameters>
-      <Parameter Id="Minimum">8</Parameter>
-      <Parameter Id="Maximum">64</Parameter>
+<Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
+  <Parameters>
+    <Parameter Id="Minimum">8</Parameter>
+    <Parameter Id="Maximum">64</Parameter>
   </Parameters>
 </Predicate>
 ```
@@ -81,8 +81,7 @@ ms.locfileid: "74951022"
 次の例は、正規表現を指定する `RegularExpression` パラメーターを持つ `MatchesRegex` メソッドを示しています。
 
 ```XML
-<Predicate Id="PIN" Method="MatchesRegex">
-  <UserHelpText>The password must be numbers only.</UserHelpText>
+<Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be numbers only.">
   <Parameters>
     <Parameter Id="RegularExpression">^[0-9]+$</Parameter>
   </Parameters>
@@ -92,8 +91,7 @@ ms.locfileid: "74951022"
 次の例は、文字セットを指定する `CharacterSet` パラメーターを持つ `IncludesCharacters` メソッドを示しています。
 
 ```XML
-<Predicate Id="Lowercase" Method="IncludesCharacters">
-  <UserHelpText>a lowercase letter</UserHelpText>
+<Predicate Id="Lowercase" Method="IncludesCharacters" HelpText="a lowercase letter">
   <Parameters>
     <Parameter Id="CharacterSet">a-z</Parameter>
   </Parameters>
@@ -143,7 +141,7 @@ ms.locfileid: "74951022"
 
 **PredicateValidation** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | Id | はい | 述語の検証に使用される識別子です。 **ClaimType** 要素は、ポリシーにこの識別子を使用できます。 |
 
@@ -161,7 +159,7 @@ ms.locfileid: "74951022"
 
 **PredicateGroups** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | Id | はい | 述語グループに使用される識別子です。  |
 
@@ -169,14 +167,14 @@ ms.locfileid: "74951022"
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| UserHelpText | 1:1 |  ユーザーが入力する必要のある値を把握するのに役立つ、述語の説明。 |
+| UserHelpText | 0:1 |  ユーザーが入力する必要のある値を把握するのに役立つ、述語の説明。 |
 | PredicateReferences | 1:n | 述語参照の一覧。 |
 
 **PredicateReferences** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
-| MatchAtLeast | いいえ | 入力が受け入れられるには、少なくともここに指定した述部定義の数だけ、値が一致する必要があることを指定します。 |
+| MatchAtLeast | いいえ | 入力が受け入れられるには、少なくともここに指定した述部定義の数だけ、値が一致する必要があることを指定します。 指定しなかった場合、値はすべての述語定義と一致する必要があります。 |
 
 **PredicateReferences** 要素には、次の要素が含まれています。
 
@@ -186,7 +184,7 @@ ms.locfileid: "74951022"
 
 **PredicateReference** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | Id | はい | 述語の検証に使用される識別子です。  |
 
@@ -206,58 +204,50 @@ ms.locfileid: "74951022"
 
 ```XML
 <Predicates>
-  <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange">
-    <UserHelpText>The password must be between 8 and 64 characters.</UserHelpText>
+  <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
     <Parameters>
       <Parameter Id="Minimum">8</Parameter>
       <Parameter Id="Maximum">64</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="Lowercase" Method="IncludesCharacters">
-    <UserHelpText>a lowercase letter</UserHelpText>
+  <Predicate Id="Lowercase" Method="IncludesCharacters" HelpText="a lowercase letter">
     <Parameters>
       <Parameter Id="CharacterSet">a-z</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="Uppercase" Method="IncludesCharacters">
-    <UserHelpText>an uppercase letter</UserHelpText>
+  <Predicate Id="Uppercase" Method="IncludesCharacters" HelpText="an uppercase letter">
     <Parameters>
       <Parameter Id="CharacterSet">A-Z</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="Number" Method="IncludesCharacters">
-    <UserHelpText>a digit</UserHelpText>
+  <Predicate Id="Number" Method="IncludesCharacters" HelpText="a digit">
     <Parameters>
       <Parameter Id="CharacterSet">0-9</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="Symbol" Method="IncludesCharacters">
-    <UserHelpText>a symbol</UserHelpText>
+  <Predicate Id="Symbol" Method="IncludesCharacters" HelpText="a symbol">
     <Parameters>
       <Parameter Id="CharacterSet">@#$%^&amp;*\-_+=[]{}|\\:',.?/`~"();!</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="PIN" Method="MatchesRegex">
-    <UserHelpText>The password must be numbers only.</UserHelpText>
+  <Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be numbers only.">
     <Parameters>
       <Parameter Id="RegularExpression">^[0-9]+$</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="AllowedAADCharacters" Method="MatchesRegex">
-    <UserHelpText>An invalid character was provided.</UserHelpText>
+  <Predicate Id="AllowedAADCharacters" Method="MatchesRegex" HelpText="An invalid character was provided.">
     <Parameters>
       <Parameter Id="RegularExpression">(^([0-9A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~"();! ]|(\.(?!@)))+$)|(^$)</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="DisallowedWhitespace" Method="MatchesRegex">
-    <UserHelpText>The password must not begin or end with a whitespace character.</UserHelpText>
+  <Predicate Id="DisallowedWhitespace" Method="MatchesRegex" HelpText="The password must not begin or end with a whitespace character.">
     <Parameters>
       <Parameter Id="RegularExpression">(^\S.*\S$)|(^\S+$)|(^$)</Parameter>
     </Parameters>
@@ -361,8 +351,7 @@ Azure AD B2C にエラー メッセージが表示された場合に、要素が
 
 ```XML
 <Predicates>
-  <Predicate Id="DateRange" Method="IsDateRange">
-    <UserHelpText>The date must be between 01-01-1980 and today.</UserHelpText>
+  <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 01-01-1980 and today.">
     <Parameters>
       <Parameter Id="Minimum">1980-01-01</Parameter>
       <Parameter Id="Maximum">Today</Parameter>

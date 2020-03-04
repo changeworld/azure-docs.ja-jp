@@ -1,0 +1,55 @@
+### YamlMime:Landing
+title: 会話のシナリオのドキュメント
+summary: さまざまな会話シナリオ、会話の文字起こし、またはマルチデバイスの会話について説明します。
+metadata:
+  title: 会話のシナリオのドキュメント - チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: d6ea318c2745f7d80a49e5fcb1b47381a9f276f7
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77562818"
+landingContent:
+- title: 会話の文字起こし
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 会話の文字起こしについて
+      url: conversation-transcription.md
+  - linkListType: how-to-guide
+    links:
+    - text: リアルタイムの会話を文字起こしする
+      url: how-to-use-conversation-transcription.md
+    - text: 会話を非同期的に文字起こしする
+      url: how-to-async-conversation-transcription.md
+    - text: コール センターのシナリオに対応する
+      url: call-center-transcription.md
+- title: マルチデバイスの会話
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: マルチデバイスの会話について
+      url: multi-device-conversation.md
+  - linkListType: quickstart
+    links:
+    - text: 会話を開始して参加する
+      url: quickstarts/multi-device-conversation.md
+- title: リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 会話の文字起こし言語のサポート
+      url: conversation-transcription.md#language-support
+    - text: マルチデバイスの会話言語のサポート
+      url: multi-device-conversation.md#language-support
+    - text: 価格
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/

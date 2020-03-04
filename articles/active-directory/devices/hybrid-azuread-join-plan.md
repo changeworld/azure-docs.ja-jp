@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ad3bb41b6c5faa7bab0e618dd46c48427f364db
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: b7c4a0e64e1f08bb3e80eaf67937da10906bfce0
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167378"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591610"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>方法:Hybrid Azure Active Directory 参加の実装を計画する
 
@@ -73,20 +73,21 @@ Windows デスクトップ オペレーティング システムを実行して�
 
 ## <a name="review-things-you-should-know"></a>知っておくべきことを確認する
 
-ID データを複数の Azure AD テナントに同期する単一 AD フォレストで構成されている環境の場合、ハイブリッド Azure AD 参加は現在サポートされていません。
+### <a name="unsupported-scenarios"></a>サポートされていないシナリオ
+- ID データを複数の Azure AD テナントに同期する単一 AD フォレストで構成されている環境の場合、ハイブリッド Azure AD 参加は現在サポートされていません。
 
-環境で仮想デスクトップ インフラストラクチャ (VDI) を使用する場合は、「[デバイス ID とデスクトップ仮想化](https://docs.microsoft.com/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure)」を参照してください。
+- ハイブリッド Azure AD 参加は、ドメイン コントローラー (DC) ロールを実行している Windows Server ではサポートされていません。
 
-Hybrid Azure AD 参加は、FIPS に準拠している TPM 2.0 でサポートされており、TPM 1.2 ではサポートされていません。 FIPS に準拠している TPM 1.2 がデバイスにある場合は、Hybrid Azure AD 参加を進める前に、それらを無効にする必要があります。 TPM の FIPS モードを無効にするためのツールは、TPM の製造元に依存するため、Microsoft では用意していません。 サポートが必要な場合は、お使いのハードウェアの OEM にお問い合わせください。 Windows 10 1903 リリース以降、TPM 1.2 はハイブリッド Azure AD 結合では使用されず、それらの TPM を含むデバイスは TPM を持っていないものと見なされます。
+- 資格情報のローミングや、ユーザー プロファイルまたは必須のプロファイルのローミングを使用している場合、Hybrid Azure AD 参加は Windows ダウンレベル デバイスではサポートされていません。
 
-ハイブリッド Azure AD 参加は、ドメイン コントローラー (DC) ロールを実行している Windows Server ではサポートされていません。
+### <a name="os-imaging-considerations"></a>OS イメージングの考慮事項
+- システム準備ツール (Sysprep) を使用していて、インストールに **pre-Windows 10 1809** イメージを使用している場合は、そのイメージが既にハイブリッド Azure AD 参加として Azure AD に登録されているデバイスからのものではないことを確認します。
 
-資格情報のローミングや、ユーザー プロファイルまたは必須のプロファイルのローミングを使用している場合、Hybrid Azure AD 参加は Windows ダウンレベル デバイスではサポートされていません。
+- 仮想マシン (VM) のスナップショットを利用して追加の VM を作成する場合は、そのスナップショットが、既にハイブリッド Azure AD 参加として Azure AD に登録されている VM からのものではないことを確認します。
 
-システム準備ツール (Sysprep) を使用していて、インストールに **pre-Windows 10 1809** イメージを使用している場合は、そのイメージが既にハイブリッド Azure AD 参加として Azure AD に登録されているデバイスからのものではないことを確認します。
+- 再起動時にディスクへの変更をクリアする [統合書き込みフィルター](https://docs.microsoft.com/windows-hardware/customize/enterprise/unified-write-filter) および類似のテクノロジーを使用している場合、デバイスが Hybrid Azure AD に結合した後にそれらを適用する必要があります。 Hybrid Azure AD の結合を完了する前にこのようなテクノロジーを有効にすると、再起動のたびにデバイスが切断されることになります
 
-仮想マシン (VM) のスナップショットを利用して追加の VM を作成する場合は、そのスナップショットが、既にハイブリッド Azure AD 参加として Azure AD に登録されている VM からのものではないことを確認します。
-
+### <a name="handling-devices-with-azure-ad-registered-state"></a>Azure AD 登録状態のデバイスの処理
 Windows 10 ドメイン参加済みデバイスが既にテナントへの [Azure AD 登録済み](overview.md#getting-devices-in-azure-ad)である場合、デバイスは、Hybrid Azure AD 参加済みでかつ Azure AD に登録済みの二重状態になる可能性があります。 このシナリオに自動的に対処するには、(KB4489894 が適用された) Windows 10 1803 以上にアップグレードすることをお勧めします。 1803 より前のリリースでは、Hybrid Azure AD 参加を有効にする前に、Azure AD の登録済み状態を手動で削除する必要があります。 1803 以降のリリースでは、この二重状態を回避するために次の変更が行われています。
 
 - "<i>デバイスが Hybrid Azure AD 参加済みになった後</i>"、既存の Azure AD 登録済み状態は自動的に削除されます。
@@ -95,6 +96,11 @@ Windows 10 ドメイン参加済みデバイスが既にテナントへの [Azur
 
 > [!NOTE]
 > Azure AD 登録済みデバイスは、Intune で管理されている場合、自動的に削除されません。
+
+### <a name="additional-considerations"></a>その他の注意点
+- 環境で仮想デスクトップ インフラストラクチャ (VDI) を使用する場合は、「[デバイス ID とデスクトップ仮想化](https://docs.microsoft.com/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure)」を参照してください。
+
+- Hybrid Azure AD 参加は、FIPS に準拠している TPM 2.0 でサポートされており、TPM 1.2 ではサポートされていません。 FIPS に準拠している TPM 1.2 がデバイスにある場合は、Hybrid Azure AD 参加を進める前に、それらを無効にする必要があります。 TPM の FIPS モードを無効にするためのツールは、TPM の製造元に依存するため、Microsoft では用意していません。 サポートが必要な場合は、お使いのハードウェアの OEM にお問い合わせください。 Windows 10 1903 リリース以降、TPM 1.2 はハイブリッド Azure AD 結合では使用されず、それらの TPM を含むデバイスは TPM を持っていないものと見なされます。
 
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加の制御された検証を確認する
 

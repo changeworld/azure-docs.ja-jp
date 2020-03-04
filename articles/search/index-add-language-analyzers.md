@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: ea7a62210f48b216d3f98f6359447eacf15cf821
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a97bee27b74aa211b4d4d56547726555edefa87a
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460801"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539401"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Azure Cognitive Search インデックスの文字列フィールドに言語アナライザーを追加する
 
@@ -51,7 +51,7 @@ Azure Cognitive Search では、Lucene によって提供される 35 個のア�
 言語アナライザーはそのままで使用されます。 インデックス定義の各フィールドについて、言語と言語スタック (Microsoft または Lucene) を指定するアナライザー名を **analyzer** プロパティに設定できます。 そのフィールドに対してインデックスの作成および検索を行う場合は、同じアナライザーが適用されます。 たとえば、英語、フランス語、スペイン語によるホテルの説明を含む個別のフィールドを同じインデックスに同時に作成できます。
 
 > [!NOTE]
-> インデックス作成時とフィールドのクエリ時とで異なる言語アナライザーを使用することはできません。 この機能は、[カスタムアナライザー](index-add-custom-analyzers.md) 用に予約されています。 このため、**searchAnalyzer** プロパティまたは **indexAnalyzer** プロパティを言語アナライザーの名前に設定しようとすると、REST API はエラー応答を返します。 代わりに、**アナライザー** プロパティを使用する必要があります。
+> インデックス作成時とフィールドのクエリ時とで異なる言語アナライザーを使用することはできません。 この機能は、[カスタムアナライザー](index-add-custom-analyzers.md) 用に予約されています。 このため、**searchAnalyzer** プロパティまたは **indexAnalyzer** プロパティを言語アナライザーの名前に設定しようとすると、REST API によってエラー応答が返されます。 代わりに、**アナライザー** プロパティを使用する必要があります。
 
 **searchFields** クエリ パラメーターを使用して、クエリ内で検索対象とする言語固有のフィールドを指定します。 アナライザー プロパティを含むクエリの例は、「[ドキュメントの検索](https://docs.microsoft.com/rest/api/searchservice/search-documents)」で確認できます。 
 
@@ -62,7 +62,7 @@ Azure Cognitive Search では、Lucene によって提供される 35 個のア�
 ## <a name="language-analyzer-list"></a>言語アナライザー一覧 
  サポートされている言語と、Lucene およびマイクロソフトのアナライザーの名前を以下に一覧します。  
 
-|言語|Microsoft のアナライザーの名前|Lucene のアナライザーの名前|  
+|Language|Microsoft のアナライザーの名前|Lucene のアナライザーの名前|  
 |--------------|-----------------------------|--------------------------|  
 |アラビア語|ar.microsoft|ar.lucene|  
 |アルメニア語||hy.lucene|  
@@ -123,9 +123,9 @@ Azure Cognitive Search では、Lucene によって提供される 35 個のア�
 
  名前に **Lucene** が含まれるすべてのアナライザーでは、[Apache Lucene の言語アナライザー](https://lucene.apache.org/core/6_6_1/core/overview-summary.html )が利用されています。
 
-## <a name="see-also"></a>参照  
+## <a name="see-also"></a>関連項目  
 
-+ [インデックスの作成 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
++ [インデックスの作成 &#40;Azure コグニティブ検索 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
 
 + [AnalyzerName クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername)  
 

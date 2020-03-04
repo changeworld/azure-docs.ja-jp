@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 610c3aa486b48b2d29df48d98e93b37cfec4854c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 548163f4c86f4df4d858b31afd95e0e4615f1696
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790374"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587500"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>既存の Azure Service Bus Standard 名前空間を Premium レベルに移行する
 以前は、Azure Service Bus では Standard レベルでのみ名前空間が提供されていました。 名前空間は、低スループット環境と開発者環境用に最適化されたマルチテナントの設定です。 Premium レベルでは、名前空間ごとに専用のリソースが提供され、予測可能な待機時間と固定価格でのスループット向上が実現します。 Premium レベルは、追加のエンタープライズ機能が必要な高スループット環境および実稼働環境向けに最適化されています。
@@ -176,7 +176,7 @@ Standard 名前空間には、移行の進行中に送信されてコミット�
 az servicebus migration abort --resource-group $resourceGroup --name $standardNamespace
 ```
 
-#### <a name="azure-portal"></a>Azure ポータル
+#### <a name="azure-portal"></a>Azure portal
 
 ![フローを中止する - 同期を中止][]
 ![フローを中止する - 中止完了][]
@@ -208,7 +208,7 @@ az servicebus migration abort --resource-group $resourceGroup --name $standardNa
     >
     > 移行が完了した後、受信側アプリケーションは Standard 名前空間から切断され、Premium 名前空間に自動的に接続されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Standard と Premium のメッセージングの違い](./service-bus-premium-messaging.md)についてさらに詳しく学習してください。
 * [Service Bus Premium の高可用性と geo ディザスター リカバリーの側面](service-bus-outages-disasters.md#protecting-against-outages-and-disasters---service-bus-premium)について学びます。

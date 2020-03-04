@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/02/2020
-ms.openlocfilehash: ef136345c7c41c720efd3c79923b6ce646de41e2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d1723b6c5d56554fbff576f6a07e37455845bda4
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75642167"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498626"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Azure Cognitive Search でインデクサーを使用して Cosmos DB データのインデックスを作成する方法 
 
@@ -29,13 +29,13 @@ ms.locfileid: "75642167"
 
 用語が混乱を招く可能性があるため、[Azure Cosmos DB のインデックス作成](https://docs.microsoft.com/azure/cosmos-db/index-overview)と [Azure Cognitive Search のインデックス作成](search-what-is-an-index.md)はそれぞれのサービスに固有の異なる操作であることに注意してください。 Azure Cognitive Search のインデックス作成を開始するには、Azure Cosmos DB データベースが既に存在していて、データが格納されている必要があります。
 
-Azure Cognitive Search の Cosmos DB インデクサーでは、アクセスのためのプロトコルがさまざまに異なる [Azure Cosmos DB 項目](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items)をクロールできます。
+Azure Cognitive Search の Cosmos DB インデクサーでは、アクセスのためのプロトコルがさまざまに異なる [Azure Cosmos DB 項目](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items)をクロールできます。 
 
-+ [SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference) (一般提供開始済み) については、[ポータル](#cosmos-indexer-portal)、[REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)、または [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet) を利用できます。
++ [SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference) (一般提供開始済み) では、データ ソースとインデクサーの作成に[ポータル](#cosmos-indexer-portal)、[REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)、[.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet) を利用できます。
 
-+ [MongoDB API (プレビュー)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) と [Gremlin API (プレビュー)](https://docs.microsoft.com/azure/cosmos-db/graph-introduction) については、[ポータル](#cosmos-indexer-portal)を使用する方法と、インデクサー作成のための[インデクサーの作成 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) 呼び出しで [REST API バージョン 2019-05-06-Preview](search-api-preview.md) を使用する方法のいずれかを利用できます。
++ [MongoDB API (プレビュー)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) では、データ ソースとインデクサーの作成に[ポータル](#cosmos-indexer-portal)または [REST API バージョン 2019-05-06-Preview](search-api-preview.md) を作成できます。
 
-+ [Cassandra API (プレビュー)](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction) については、[インデクサーの作成 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) 呼び出しで [REST API バージョン 2019-05-06-Preview](search-api-preview.md) を使用する方法のみ利用できます。
++ [Cassandra API (プレビュー)](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction) と [Gremlin API (プレビュー)](https://docs.microsoft.com/azure/cosmos-db/graph-introduction) では、データ ソースとインデクサーの作成に使用できるのは [REST API バージョン 2019-05-06-Preview](search-api-preview.md) のみになります。
 
 
 > [!Note]

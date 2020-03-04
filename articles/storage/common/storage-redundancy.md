@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/25/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 038e53251bd81552fd3379f2d7645570fbcda4ef
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 6b36694c2fe1bf264c876944b054d39371db616c
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471348"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614292"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage の冗長性
 
@@ -66,7 +66,7 @@ ZRS をサポートしているストレージ アカウントの種類とリー
 |    FileStorage    | 西ヨーロッパ<br /> 米国東部    |    Azure Files のみ    |
 
 <sup>1</sup> アーカイブ層は、ZRS アカウントでは現在サポートされていません。<br />
-<sup>2</sup> 仮想マシン用 Azure ディスク (マネージド ディスクとアンマネージド ディスクの両方を含む) では、LRS のみがサポートされています。 ZRS または GZRS はサポートされていません。 マネージド ディスクの詳細については、[Azure マネージド ディスクの価格](https://azure.microsoft.com/pricing/details/managed-disks/)に関するページをご覧ください。
+<sup>2</sup> 仮想マシン用の Azure マネージド ディスクを含むストレージ アカウントは、常に LRS を使用します。 Azure のアンマネージド ディスクでは、LRS も使用する必要があります。 GRS を使用する Azure アンマネージド ディスクのストレージ アカウントを作成することはできますが、非同期 geo レプリケーションの整合性に関する潜在的な問題のため、推奨されません。 マネージドとアンマネージド ディスクのどちらも ZRS または GZRS をサポートしていません。 マネージド ディスクの詳細については、[Azure マネージド ディスクの価格](https://azure.microsoft.com/pricing/details/managed-disks/)に関するページをご覧ください。
 
 ZRS をサポートしているリージョンの詳細については、「[Azure の Availability Zones の概要](../../availability-zones/az-overview.md)」の「**リージョン別のサービスのサポート**」を参照してください。
 

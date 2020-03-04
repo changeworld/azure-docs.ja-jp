@@ -8,12 +8,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 02/04/2020
-ms.openlocfilehash: fb576b81adeec99e4080c744749097390d1add1d
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: ff2be6972bb4e8af266d0aa8a56d1879bc1b8b78
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110965"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586157"
 ---
 # <a name="request-quota-increases-for-azure-sql-database"></a>Azure SQL Database のクォータの増加を要求する
 
@@ -90,7 +90,7 @@ SQL Database 用の Azure portal から新しいサポート リクエストを�
 
 詳細については、「[SQL Database のリソース制限およびリソース管理](sql-database-resource-limits-database-server.md)」を参照してください。
 
-### <a name="enable-subscription-access-to-a-region"></a>リージョンへのサブスクリプション アクセスを有効にする
+### <a id="other"></a> リージョンへのサブスクリプション アクセスを有効にする
 
 一部のオファーの種類は、すべてのリージョンで使用できるわけではありません。 次のようなエラーが表示される場合があります。
 

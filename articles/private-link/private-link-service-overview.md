@@ -2,17 +2,17 @@
 title: Azure Private Link サービスとは
 description: Azure Private Link サービスについて学習します。
 services: private-link
-author: malopMSFT
+author: sumeetmittal
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
-ms.author: allensu
-ms.openlocfilehash: d2313bfc47026ed9655d0ca25f0a0fdf3f86d8a5
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.author: sumi
+ms.openlocfilehash: 97515b308323452e88cf6fd8a517c1f169c9ba6f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191080"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587415"
 ---
 # <a name="what-is-azure-private-link-service"></a>Azure Private Link サービスとは
 
@@ -98,7 +98,7 @@ Private Link サービスの公開対象 (可視性設定により制御) のコ
 
 ## <a name="getting-connection-information-using-tcp-proxy-v2"></a>TCP プロキシ v2 を使用した接続情報の取得
 
-プライベート リンク サービスを使用する場合、プライベート エンドポイントから送信されるパケットのソース IP アドレスは、プロバイダーの仮想ネットワークから割り当てられた NAT IP を使用して、サービス プロバイダー側でネットワーク アドレス変換 (NAT) されます。 そのため、アプリケーションでは、サービス コンシューマーの実際のソース IP アドレスではなく、割り当てられた NAT IP アドレスを受け取ります。 アプリケーションでコンシューマー側からの実際のソース IP アドレスが必要な場合は、サービスでプロキシ プロトコルを有効にし、プロキシ プロトコル ヘッダーから情報を取得することができます。 ソース IP アドレスに加えて、プロキシ プロトコル ヘッダーには、プライベート エンドポイントの LinkID も含まれます。 ソース IP アドレスと LinkID の組み合わせにより、サービス プロバイダーはコンシューマーを一意に識別できます。 プロキシ プロトコルの詳細については、こちらを参照してください。 
+プライベート リンク サービスを使用する場合、プライベート エンドポイントから送信されるパケットのソース IP アドレスは、プロバイダーの仮想ネットワークから割り当てられた NAT IP を使用して、サービス プロバイダー側でネットワーク アドレス変換 (NAT) されます。 そのため、アプリケーションでは、サービス コンシューマーの実際のソース IP アドレスではなく、割り当てられた NAT IP アドレスを受け取ります。 アプリケーションでコンシューマー側からの実際のソース IP アドレスが必要な場合は、サービスでプロキシ プロトコルを有効にし、プロキシ プロトコル ヘッダーから情報を取得することができます。 ソース IP アドレスに加えて、プロキシ プロトコル ヘッダーには、プライベート エンドポイントの LinkID も含まれます。 ソース IP アドレスと LinkID の組み合わせにより、サービス プロバイダーはコンシューマーを一意に識別できます。 プロキシ プロトコルの詳細については、[こちら](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt)をご参照ください。 
 
 この情報は、次のようにカスタムの Type-Length-Value (TLV) ベクターを使用してエンコードされます。
 
@@ -111,6 +111,8 @@ Private Link サービスの公開対象 (可視性設定により制御) のコ
 |Value  |1     |PP2_SUBTYPE_AZURE_PRIVATEENDPOINT_LINKID (0x01)|
 |  |4        |プライベート エンドポイントの LINKID を表す UINT32 (4 バイト)。 リトル エンディアン形式でエンコードされます。|
 
+ > [!NOTE]
+ > サービス プロバイダーは、プロキシ プロトコルが非公開リンク サービスで有効になっている場合 [仕様](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) に従って、プロキシ プロトコル ヘッダーを解析するように、標準のロード バランサーの背後にあるサービスが構成されていることを確認します。 プロキシ プロトコル設定が非公開リンク サービスで有効になっていて、サービスがヘッダーを解析するように構成されていない場合、要求は失敗します。 同様に、設定が非公開リンク サービスで有効になっていない場合に、サービスがプロキシ プロトコル ヘッダーを必要とすると、要求は失敗します。 プロキシ プロトコル設定を有効にすると、ヘッダーにクライアント情報が存在しなくても、プロキシ プロトコル ヘッダーは、ホストからバックエンド仮想マシンへの HTTP/TCP 正常性プローブにも含まれます。 
 
 ## <a name="limitations"></a>制限事項
 

@@ -2,17 +2,14 @@
 title: Azure Kubernetes Services (AKS) における Kubernetes の基本概念
 description: Kubernetes の基本のクラスターおよびワークロードについてと、クラスターおよびワークロードが Azure Kubernetes Service (AKS) の機能にどのように関連しているかを説明します。
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.author: mlearned
-ms.openlocfilehash: 9efd053bde11a29c37e3ff6afb7c6fc4492338db
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bcf56aa89a42d65fdb7bf03696faad13c64cbc8a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967548"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596234"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) における Kubernetes の中心概念
 
@@ -106,7 +103,7 @@ kubectl describe node [NODE_NAME]
     - 次の 112 GB のメモリの 6% (最大 128 GB)
     - 128 GB を超えるメモリの 2%
 
-メモリと CPU の割り当てに関する上記の規則は、エージェント ノードを正常な状態に保つために使用されます。一部のホスト システム ポッドはクラスターの正常性にとって重要です。 これらの割り当て規則により、ノードが報告する割り当て可能なメモリと CPU は、Kubernetes クラスターに含まれていない場合よりも少なくなります。 上記のリソースの予約を変更することはできません。
+メモリと CPU の割り当てに関する上記の規則は、クラスターの正常性に不可欠ないくつかのホスティング システム ポッドを含むエージェント ノードを正常な状態に保つために使用されます。 これらの割り当て規則により、ノードが報告する割り当て可能なメモリと CPU は、Kubernetes クラスターに含まれていない場合よりも少なくなります。 上記のリソースの予約を変更することはできません。
 
 たとえば、ノードで 7 GB が提供される場合、750Mi のハード削除しきい値に加えて、メモリの 34% を割り当て不可として報告されます。
 
@@ -224,7 +221,7 @@ Helm を使用するために、Kubernetes クラスターに *Tiller* と呼ば
 
 ### <a name="statefulsets"></a>StatefulSet
 
-最新のアプリケーション開発では、通常、ステートレス アプリケーションを目指しますが、*StatefulSet* はデータベース コンポーネントを含むアプリケーションなど、ステートフル アプリケーションに使用できます。 StatefulSet は、1 つ以上のポッドが作成され管理されるデプロイとほぼ同じです。 デプロイ、スケーリング、アップグレード、および強制終了において、StatefulSet 内のレプリカは、適切な順序付けの手法に従います。 1 つのStatefulSet を使用すると、レプリカが再スケジュールされるときに、名前規則、ネットワーク名、およびストレージが永続化します。
+最新のアプリケーション開発では、通常、ステートレス アプリケーションを目指しますが、*StatefulSet* はデータベース コンポーネントを含むアプリケーションなど、ステートフル アプリケーションに使用できます。 StatefulSet は、1 つ以上のポッドが作成され管理されるデプロイとほぼ同じです。 デプロイ、スケーリング、アップグレード、および強制終了において、StatefulSet 内のレプリカは、適切な順序付けの手法に従います。 StatefulSet では (レプリカが再スケジュールされるときに)、名前規則、ネットワーク名、およびストレージが永続化されます。
 
 `kind: StatefulSet` を使用して YAML 形式でアプリケーションを定義すると、StatefulSet コントローラーは要求されたレプリカのデプロイと管理を処理します。 データは、Azure Managed Disks または Azure Files によって提供された永続的なストレージに書き込まれます。 複数の StatefulSet を使用すると、StatefulSet が削除されても、基本の永続化ストレージは残ります。
 

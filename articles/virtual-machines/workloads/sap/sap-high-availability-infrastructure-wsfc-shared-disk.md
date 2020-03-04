@@ -1,10 +1,10 @@
 ---
-title: SAP ASCS/SCS 用の Windows フェールオーバー クラスターと共有ディスクを使用して SAP HA 向けに Azure インフラストラクチャを準備する | Microsoft Docs
+title: WSFC と共有ディスクを使用した SAP ASCS および SCS 向けの Azure インフラストラクチャ | Microsoft Docs
 description: SAP ASCS/SCS インスタンス用の Windows フェールオーバー クラスターと共有ディスクを使って SAP HA 向けに Azure インフラストラクチャを準備する方法を説明します。
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e4de954d55725f36d48d09ac46ef3700787d937b
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 8a49bc979923bf52d099e30615910c5bdb0601b6
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647647"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591933"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>SAP ASCS/SCS 用の Windows フェールオーバー クラスターと共有ディスクを使用して SAP HA 向けに Azure インフラストラクチャを準備する
 
@@ -223,7 +223,7 @@ _**図 1:** SAP 高可用性 Azure Resource Manager パラメーターを設定�
 >
 
 ## <a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a> 運用環境で使用するための企業ネットワーク接続 (クロスプレミス) を使用する仮想マシンのデプロイ
-運用 SAP システムの場合、Azure VPN Gateway または Azure ExpressRoute を使って、[企業ネットワーク接続 (クロスプレミス)][planning-guide-2.2] を使う Azure Virtual Machines をデプロイします。
+運用 SAP システムの場合、Azure VPN Gateway または Azure ExpressRoute を使って、企業ネットワーク接続を使う Azure Virtual Machines をデプロイします。
 
 > [!NOTE]
 > Azure Virtual Network インスタンスを使用できます。 仮想ネットワークとサブネットは既に作成および準備されています。
@@ -373,7 +373,7 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
 
 1. Azure Portal の **[DNS サーバー]** ウィンドウで、仮想ネットワークの **[DNS サーバー]** オプションが **[カスタム DNS]** に設定されていることを確認します。
 2. ネットワークの種類に基づいて設定を選択します。 詳細については、次のリソースを参照してください。
-   * [企業ネットワーク接続 (クロスプレミス)][planning-guide-2.2]: オンプレミスの DNS サーバーの IP アドレスを追加します。  
+   * オンプレミスの DNS サーバーの IP アドレスを追加します。  
    Azure で実行されている仮想マシンにオンプレミスの DNS サーバーを拡張できます。 その場合、DNS サービスを実行する Azure Virtual Machines の IP アドレスを追加できます。
    * Azure 内の分離された VM デプロイの場合:DNS サーバーとして機能する別の仮想マシンを同じ Virtual Network インスタンスにデプロイします。 DNS サービスを実行するように設定した Azure Virtual Machines の IP アドレスを追加します。
 
@@ -524,7 +524,7 @@ SAP ASCS または SCS インスタンスに別の番号を使う場合は、そ
 1. Azure Portal で、 **\<[\>** SID > -lb-ascs ロード バランサー] **[負荷分散規則]** の順に選びます。
 2. SAP ASCS または SCS インスタンスに属するすべての負荷分散規則について、以下の値を変更します。
 
-   * Name
+   * 名前
    * Port
    * バックエンド ポート
 
@@ -554,7 +554,7 @@ SAP ASCS/SCS インスタンスの両方のクラスター ノードでレジス
 | --- | --- |
 | 変数名 |`KeepAliveTime` |
 | 変数の型 |REG_DWORD (Decimal) |
-| 値 |120000 |
+| Value |120000 |
 | ドキュメントへのリンク |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
 
 **表 3:** 第 1 の TCP/IP パラメーターを変更する
@@ -565,7 +565,7 @@ SAP ASCS/SCS インスタンスの両方のクラスター ノードでレジス
 | --- | --- |
 | 変数名 |`KeepAliveInterval` |
 | 変数の型 |REG_DWORD (Decimal) |
-| 値 |120000 |
+| Value |120000 |
 | ドキュメントへのリンク |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
 
 **表 4:** 第 2 の TCP/IP パラメーターを変更する

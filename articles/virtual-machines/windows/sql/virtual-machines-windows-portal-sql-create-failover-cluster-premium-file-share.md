@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 57dc7bb98bf4c2f733be0f2c94e17481a429be6d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b2d49eeadf068cbaacaa5e147f38025c55f33ff4
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906788"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651363"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Azure Virtual Machines で Premium ファイル共有を使用して SQL Server フェールオーバー クラスター インスタンスを構成する
 
@@ -149,7 +149,7 @@ Filestream は、Premium ファイル共有のフェールオーバー クラス
 
    1. **[次へ]** 、 **[削除]** の順に選択します。
 
-1. <a name="ports"></a>ファイアウォール ポートを開きます。
+1. <span id="ports"> </span>ファイアウォール ポートを開きます。  
 
    各仮想マシンで、Windows ファイアウォールの次のポートを開きます。
 
@@ -369,7 +369,7 @@ Azure 仮想マシンでは、クラスターは、一度に 1 つのクラス�
 
 1. **[追加]** を選択します。
 
-1. **[Add health probe (正常性プローブの追加)]** ブレードで、<a name="probe"></a>次の正常性プローブのパラメーターを設定します。
+1. **[正常性プローブの追加]** ブレードで、<span id="probe"> </span> 次の正常性プローブのパラメーターを設定します。
 
    - **Name**:正常性プローブの名前。
    - **プロトコル**:TCP
@@ -465,7 +465,7 @@ Azure Virtual Machines では、次の理由から、MSDTC は Windows Server 20
 - クラスター化された MSDTC リソースは、共有ストレージを使用するように構成することはできません。 Windows Server 2016 では、MSDTC リソースを作成した場合、ストレージが使用可能であっても、使用可能な共有ストレージは 1 つも表示されません。 この問題は、Windows Server 2019 で修正済みです。
 - Basic Load Balance は、RPC ポートを処理しません。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - [Windows クラスター テクノロジ](/windows-server/failover-clustering/failover-clustering-overview)
 - [SQL Server フェールオーバー クラスター インスタンス](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

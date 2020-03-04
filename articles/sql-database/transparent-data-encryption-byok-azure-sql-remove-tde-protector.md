@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 02/12/2020
-ms.openlocfilehash: be187e34e3232c0755e2613ffffe0647da70079c
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 02/24/2020
+ms.openlocfilehash: 811e3bc206b4d98106bdbb1ce2655cd69c8585a2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201664"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589251"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>PowerShell を使用した Transparent Data Encryption (TDE) 保護機能の削除
 
@@ -43,11 +43,11 @@ ms.locfileid: "77201664"
 
 このハウツー ガイドでは、Azure Key Vault のユーザー管理キーで Bring Your Own Key (BYOK) をサポートする TDE を使用している Azure SQL Database または Data Warehouse の、侵害された可能性がある TDE 保護機能に対応する方法について説明します。 TDE の BYOK サポートの詳細については、[概要ページ](transparent-data-encryption-byok-azure-sql.md)をご覧ください。
 
-以下の手順は、極端な状況またはテスト環境でのみ実行する必要があります。 アクティブに使用されている TDE 保護機能を Azure Key Vault から削除すると、**データが失われる**可能性があるため、このハウツー ガイドを入念に確認してください。
+以下の手順は、極端な状況またはテスト環境でのみ実行する必要があります。 アクティブに使用されている TDE プロテクターを Azure Key Vault から削除すると、**データベースは使用不能**になるため、ハウツーガイドをよく読んでください。
 
 サービスまたはユーザーがキーに不正アクセスしているなど、キーが侵害された疑いがある場合は、キーを削除するのが最善です。
 
-Key Vault の TDE 保護機能を削除すると、**サーバーにある暗号化されたデータベースへのすべての接続がブロックされ、これらのデータベースはオフラインになり、24 時間以内に削除される**ことに注意してください。 侵害されたキーで暗号化された古いバックアップにはアクセスできなくなります。
+Key Vault で TDE プロテクターを削除したら、最大 10 分ですべての暗号化されたデータベースで、対応するエラー メッセージを使用してすべての接続の拒否が開始され、状態が [[アクセス不可]](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-byok-azure-sql#inaccessible-tde-protector) に変更されることに注意してください。
 
 次の手順では、特定のデータベースの仮想ログ ファイル (VLF) でまだ使用されている TDE 保護機能の拇印を確認する方法の概要を示します。
 データベースの現在の TDE 保護機能の拇印、およびデータベース ID は、

@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 340f91fc926c155f95449f7cc49c214f46d1ff35
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 81bbd476cea0472647ca183fb188fc13725d1469
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77423659"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597628"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Azure Data Factory での Parquet 形式
 
@@ -30,7 +30,7 @@ Parquet 形式は次のコネクタでサポートされています。[Amazon S
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | データセットの type プロパティは **Parquet** に設定する必要があります。 | はい      |
 | location         | ファイルの場所の設定。 ファイル ベースの各コネクタには、固有の場所の種類と `location` でサポートされるプロパティがあります。 **詳細については、コネクタの記事でデータセットのプロパティに関するセクションを参照してください**。 | はい      |
-| compressionCodec | Parquet ファイルへの書き込み時に使用する圧縮コーデック。 Parquet ファイルから読み取る場合、Data Factory は、ファイルのメタデータに基づいて圧縮コーデックを自動的に判別します。<br>サポートされている種類は、"**なし**"、"**gzip**"、"**snappy**" (既定)、および "**lzo**" です。 Parquet ファイルの読み取りおよび書き込みの場合、コピー アクティビティでは現在、LZO がサポートされていないことにご注意ください。 | いいえ       |
+| compressionCodec | Parquet ファイルへの書き込み時に使用する圧縮コーデック。 データ ファクトリーは、Parquet ファイルから読み取るときに、ファイルのメタデータに基づいて圧縮コーデックを自動的に決定します。<br>サポートされている種類は、"**なし**"、"**gzip**"、"**snappy**" (既定)、および "**lzo**" です。 Parquet ファイルの読み取りおよび書き込みの場合、コピー アクティビティでは現在、LZO がサポートされていないことにご注意ください。 | いいえ       |
 
 > [!NOTE]
 > Parquet ファイルでは、列名に空白文字はサポートされません。
@@ -92,12 +92,13 @@ Parquet の複合データ型は、現在サポートされていません (MAP�
 ## <a name="using-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムの使用
 
 > [!IMPORTANT]
-> セルフホステッド統合ランタイム を利用するコピー (たとえば、オンプレミスとクラウド データ ストア間) では、Parquet ファイルを**そのまま**コピーしない場合、IR マシン上に **64 ビット JRE 8 (Java Runtime Environment) または OpenJDK** をインストールする必要があります。 詳細については、次の段落を参照してください。
+> オンプレミスとクラウドのデータ ストアの間など、セルフホステッド統合ランタイムを利用したコピーでは、Parquet ファイルを **そのまま**コピーしない場合は、**64-bit JRE 8 (Java Runtime Environment) または OpenJDK** と **Microsoft Visual C++ 2010 再頒布可能パッケージ** を IR マシンにインストールする必要があります。 詳細については、次の段落をご確認ください。
 
 Parquet ファイルのシリアル化/逆シリアル化を使用してセルフホステッド IR 上で実行されるコピーでは、ADF は最初に JRE のレジストリ *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* を調べ、見つからない場合は次に OpenJDK のシステム変数 *`JAVA_HOME`* を調べることで、Java ランタイムを見つけます。
 
 - **JRE を使用する場合**:64 ビット IR には 64 ビット JRE が必要です。 [こちら](https://go.microsoft.com/fwlink/?LinkId=808605)から入手できます。
-- **OpenJDK を使用する場合**: IR バージョン 3.13 以降でサポートされています。 jvm.dll を他のすべての必要な OpenJDK のアセンブリと共にセルフホステッド IR マシンにパッケージ化し、それに応じてシステム環境変数 JAVA_HOME を設定します。
+- **OpenJDK の使用方法**:IR バージョン 3.13 以降でサポートされています。 jvm.dll を他のすべての必要な OpenJDK のアセンブリと共にセルフホステッド IR マシンにパッケージ化し、それに応じてシステム環境変数 JAVA_HOME を設定します。
+- **Microsoft Visual C++ 2010 再頒布可能パッケージのインストール方法**:Visual C++ 2010 再頒布可能パッケージは、セルフホステッド IR インストールではインストールされません。 [こちら](https://www.microsoft.com/download/details.aspx?id=14632)から入手できます。
 
 > [!TIP]
 > セルフホステッド統合ランタイムを使用して、 Parquet 形式をコピー元またはコピー先にしてデータをコピーしたときに、[An error occurred when invoking java, message: **java.lang.OutOfMemoryError:Java heap space** (java の呼び出し中にエラーが発生しました。メッセージ: java.lang.OutOfMemoryError:Java heap space)] というエラーが発生する場合は、まず、セルフホステッド IR のホストであるマシン内に環境変数 `_JAVA_OPTIONS` を追加してください。次に、JVM の最小/最大ヒープ サイズを調整し、コピーを行えるようにしてから、パイプラインを再実行してください。

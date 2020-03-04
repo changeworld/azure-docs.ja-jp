@@ -8,12 +8,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: aschhab
-ms.openlocfilehash: 21a3bfd09e83571e489e15e9351e12220a99e563
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: f852ad70b2eb97e2b8b3e40d086e98b3836c3592
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301996"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598291"
 ---
 # <a name="throttling-operations-on-azure-service-bus"></a>Azure Service Bus でのスロットル操作
 
@@ -55,6 +55,11 @@ Azure Service Bus Standard レベルは、従量課金制の価格モデルを�
 |-----------|-----------|
 | データ操作 (Send、SendAsync、Receive、ReceiveAsync、Peek) |メッセージあたり 1 クレジット |
 | 管理操作 (キュー、トピック、サブスクリプション、フィルターに対する作成、読み取り、更新、削除) | 10 クレジット |
+
+> [!NOTE]
+> トピックに送信する場合は、各メッセージがサブスクリプションで使用可能になる前にフィルターに対して評価されることに注意してください。
+> 各フィルター評価は、クレジット制限 (つまり、フィルター評価ごとに 1 クレジット) に対してもカウントされます。
+>
 
 ### <a name="how-will-i-know-that-im-being-throttled"></a>スロットルされていることを認識するのはどのような状況ですか?
 
@@ -117,11 +122,11 @@ Azure Service Bus は永続化のために最適化されており、Service Bus
 
 ただし、要求がスロットルされている場合、サービスが意味しているのは、リソース制限のためサービスは今すぐに要求を受け入れて処理することはできない、ということです。 これは、Service Bus が単に要求を確認していないという意味であり、いかなる種類のデータ損失も意味**しません**。 この場合、Service Bus SDK の既定の再試行ポリシーに従うことで、要求が最終的には処理されることが保証されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Service Bus のメッセージングの詳細と使用例については、次の詳細トピックをご覧ください。
 
 * [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
-* [クイック スタート:Microsoft Azure portal と .NET を使用してメッセージを送受信する](service-bus-quickstart-portal.md)
+* [クイック スタート: Microsoft Azure portal と .NET を使用してメッセージを送受信する](service-bus-quickstart-portal.md)
 * [チュートリアル:Microsoft Azure portal とトピック/サブスクリプションを使用して在庫を更新する](service-bus-tutorial-topics-subscriptions-portal.md)
 

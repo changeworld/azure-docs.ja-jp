@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 3637a11724c1f0bab049077c5abbd817e168bd44
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 5620d1cdc7dc71bdac17057b9a13a74150b12d5c
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931231"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612522"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>チュートリアル:Azure Active Directory Domain Services (プレビュー) で、オンプレミスのドメインへの送信フォレストの信頼を作成する
 
@@ -89,7 +89,7 @@ Azure AD DS でフォレストの信頼を構成する前に、Azure とオン�
    > [!NOTE]
    > **[信頼]** メニュー オプションが表示されない場合は、 **[プロパティ]** で *フォレストの種類* を確認してください。 信頼を作成できるのは、*リソース* フォレストだけです。 フォレストの種類が*ユーザー*場合、信頼を作成することはできません。 現在、Azure AD DS マネージド ドメインのフォレストの種類を変更する方法はありません。 マネージド ドメインを削除し、リソース フォレストとして作成し直す必要があります。
 
-1. Azure AD DS ドメイン名に対して名前 (*aadds.contoso.com* など) を入力してから、 **[次へ]** を選択します。
+1. Azure AD DS ドメイン名に対して名前 (*aaddscontoso.com* など) を入力してから、 **[次へ]** を選択します
 1. **フォレストの信頼**を作成するオプションを選択して、**一方向: 受信**の信頼を作成します。
 1. **[This domain only]\(このドメインのみ\)** に信頼を作成することを選択します。 次の手順では、Azure portal で Azure AD DS マネージド ドメインに対する信頼を作成します。
 1. **フォレスト全体の認証**を使用することを選択してから、信頼パスワードを入力して確認します。 これと同じパスワードを、次のセクションの Azure portal にも入力します。
@@ -102,7 +102,7 @@ Azure AD DS マネージド ドメインを解決するようにオンプレミ�
 
 Azure portal で Azure AD DS マネージド ドメインに対する送信の信頼を作成するには、次の手順を行います。
 
-1. Azure portal で **Azure AD Domain Services** を検索して選択し、次にご利用のマネージド ドメイン (*aadds.contoso.com* など) を選択します。
+1. Azure portal で **Azure AD Domain Services** を検索して選択し、次にご利用のマネージド ドメイン (*aaddscontoso.com* など) を選択します
 1. Azure AD DS マネージド ドメインの左側にあるメニューで、 **[信頼]** を選択してから、 **[+ 追加]** を選択して信頼を追加します。
 1. ご利用の信頼を識別する表示名を入力し、次にオンプレミスの信頼されたフォレストの DNS 名 (*onprem.contoso.com* など) を入力します。
 1. 前のセクションでオンプレミスの AD DS ドメインに対して受信フォレストの信頼を構成したときに使用したのと同じ信頼パスワードを指定します。
@@ -194,7 +194,7 @@ Azure AD DS リソース フォレストに参加している Windows Server VM 
 #### <a name="validate-cross-forest-authentication-to-a-resource"></a>リソースに対するフォレスト間認証を検証する
 
 1. ご利用のオンプレミスの Active Directory からのユーザー アカウントを使用して、ご利用のオンプレミスの Active Directory に参加している Windows コンピューターにサインインします。
-1. **Windows Explorer** 使用して、完全修飾ホスト名と共有 (`\\fs1.aadds.contoso.com\CrossforestShare` など) を使用して作成した共有に接続します。
+1. **Windows Explorer** 使用して、完全修飾ホスト名と共有 (`\\fs1.aaddscontoso.com\CrossforestShare` など) を使用して作成した共有に接続します。
 1. 書き込みアクセス許可を検証するには、フォルダー内で右クリックし、 **[新規]** を選択してから、 **[テキスト ドキュメント]** を選択します。 既定の名前 **[新しいテキスト ドキュメント]** を使用します。
 
     書き込みアクセス許可が適切に設定されている場合は、新しいテキスト ドキュメントが作成されます。 次の手順では、必要に応じてファイルを開き、編集したり削除したりします。

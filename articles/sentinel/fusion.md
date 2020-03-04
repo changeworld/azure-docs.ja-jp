@@ -3,23 +3,30 @@ title: Azure Sentinel の高度なマルチステージ攻撃の検出
 description: Azure Sentinel の Fusion テクノロジを利用することで、アラートによる疲労を減らし、高度なマルチステージ攻撃の検出に基づいて、すぐに使用可能なインシデント (事象) を作成します。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/12/2020
-ms.author: rkarlin
-ms.openlocfilehash: ada2ad67bc3634d8e6a31d3c8a69fc0c8b08a93a
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.date: 02/18/2020
+ms.author: yelevin
+ms.openlocfilehash: 87ca322cbdfdd8a53a3ecefcb120a961ea1bb936
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77369691"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587925"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Azure Sentinel の高度なマルチステージ攻撃の検出
+
+
+> [!IMPORTANT]
+> Azure Sentinel の一部の Fusion 機能は、現在パブリック プレビュー段階にあります。
+> これらの機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+
 
 機械学習を基盤とする Fusion テクノロジを利用することで、Azure Sentinel では、キルチェーンのさまざまな段階で観察される異常な動作と疑わしい行動を組み合わせ、マルチステージ攻撃を自動的に検出することができます。 その後、Azure Sentinel では、Azure Sentinel 以外では検出が非常に困難であろうインシデントが生成されます。 このインシデントには、2 つ以上のアラートまたはアクティビティが含まれています。 設計上、このようなインシデントでは、ボリュームが低、忠実度が高、重大度が高になります。
 
@@ -41,13 +48,32 @@ ms.locfileid: "77369691"
 
 高度なマルチステージ攻撃の検出には、規則テンプレートを使用できません。
 
+> [!NOTE]
+> 現在、Azure Sentinel では 30 日間の履歴データを使用して機械学習システムをトレーニングしています。 このデータは、機械学習パイプラインを通過するときに、Microsoft のキーを使用して常に暗号化されます。 ただし、Azure Sentinel ワークスペースで CMK を有効にした場合、トレーニング データは[カスタマー マネージド キー (CMK)](customer-managed-keys.md) を使用して暗号化されません。 Fusion をオプトアウトするには、 **[Azure Sentinel]**  \> **[Configuration]**  \> **[Analytics] \> [アクティブな規則] \> [Advanced Multistage Attack Detection]\(高度なマルチステージ攻撃の検出\)** に移動し、 **[状態]** 列で **[無効にする]** を選択します。
+
 ## <a name="fusion-using-palo-alto-networks-and-microsoft-defender-atp"></a>Palo Alto Networks と Microsoft Defender ATP を使用した Fusion
 
-- TOR 匿名化サービスに対するネットワーク要求の後に、Palo Alto Networks ファイアウォールによってフラグが設定された異常なトラフィックが続く
+これらのシナリオは、セキュリティ アナリストが使用する 2 つの基本的なログを組み合わせたものです。Palo Alto Networks のファイアウォール ログと Microsoft Defender ATP のエンドポイント検出ログ。 以下に示すいずれのシナリオでも、外部 IP アドレスを含むエンドポイントの疑わしいアクティビティが検出され、その後、外部 IP アドレスからファイアウォールに異常なトラフィックが戻されます。 Palo Alto ログでは、Azure Sentinel は[脅威ログ](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)に焦点を当てており、脅威 (疑わしいデータ、ファイル、フラッド、パケット、スキャン、スパイウェア、URL、ウイルス、脆弱性、wildfire ウイルス、wildfire) が許可されている場合、トラフィックは疑わしいと見なされます。
 
-- PowerShell で疑わしいネットワーク接続が行われた後に、Palo Alto Networks ファイアウォールによってフラグが設定された異常なトラフィックが続く
+### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>TOR 匿名化サービスに対するネットワーク要求の後に、Palo Alto Networks ファイアウォールによってフラグが設定された異常なトラフィックが続きます。
 
-- 承認されていないアクセス試行の履歴がある IP への送信接続の後に、Palo Alto Networks ファイアウォールによってフラグが設定された異常なトラフィックが続く
+このシナリオの場合、Azure Sentinel では、まず Microsoft Defender Advanced Threat Protection によって異常なアクティビティにつながる TOR 匿名化サービスへのネットワーク要求が検出された、というアラートが検出されます。 これは、{time} に SID ID {sid} のアカウント {account name} で開始されました。 接続に対する発信 IP アドレスは {IndividualIp} でした。
+次に、Palo Alto Networks ファイアウォールによって {TimeGenerated} に異常なアクティビティが検出されました。 これは、悪意のあるトラフィックがネットワークに入ったことを示しています。ネットワーク トラフィックの宛先 IP アドレスは {DestinationIP} です。
+
+現在、このシナリオはパブリック プレビュー段階です。
+
+
+### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>PowerShell で疑わしいネットワーク接続が行われた後に、Palo Alto Networks ファイアウォールによってフラグが設定された異常なトラフィックが続きます。
+
+このシナリオでは、まず、PowerShell で疑わしいネットワーク接続が作成されたことが Microsoft Defender Advanced Threat Protection によって検出された、というアラートが Azure Sentinel によって検出されます。これは、Palo Alto Network Firewall によって検出された異常なアクティビティの原因になるものです。 これは、{time} に SID ID {sid} のアカウント {account name} で開始されました。 接続に対する発信 IP アドレスは {IndividualIp} でした。 次に、Palo Alto Networks ファイアウォールによって {TimeGenerated} に異常なアクティビティが検出されました。 これは、悪意のあるトラフィックがネットワークに入ったことを示します。 ネットワーク トラフィックの宛先 IP アドレスは {DestinationIP} です。
+
+現在、このシナリオはパブリック プレビュー段階です。
+
+### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>承認されていないアクセス試行の履歴がある IP への送信接続の後に、Palo Alto Networks ファイアウォールによってフラグが設定された異常なトラフィックが続く
+
+このシナリオでは、Azure Sentinel によって、Microsoft Defender Advanced Threat Protection で IP アドレスへの送信接続が検出されたというアラートが検出されます。これには、Palo Alto Networks Firewall によって検出される異常なアクティビティにつながる不正アクセスの履歴が含まれます。 これは、{time} に SID ID {sid} のアカウント {account name} で開始されました。 接続に対する発信 IP アドレスは {IndividualIp} でした。 この後、Palo Alto Networks ファイアウォールによって {TimeGenerated} に異常なアクティビティが検出されました。 これは、悪意のあるトラフィックがネットワークに入ったことを示します。 ネットワーク トラフィックの宛先 IP アドレスは {DestinationIP} です。
+
+現在、このシナリオはパブリック プレビュー段階です。
 
 
 

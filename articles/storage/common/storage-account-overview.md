@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 11fdaa0d547e588daa9d264c2393606705554a17
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 2983be507fdc40d033623afa37c72eb2507d99ca
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157272"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597170"
 ---
 # <a name="storage-account-overview"></a>ストレージ アカウントの概要
 
@@ -72,7 +72,7 @@ BlockBlobStorage アカウントは、現在、ホット、クール、または
 
 FileStorage ストレージ アカウントは、Premium ファイル共有の格納と作成に特化したストレージ アカウントです。 この種類のストレージ アカウントでは、ファイルはサポートされますが、ブロック BLOB、追加 BLOB、ページ BLOB、テーブル、およびキューはサポートされません。
 
-FileStorage アカウントでは、IOPS バーストなど、固有のパフォーマンス特性が提供されています。 これらの特性の詳細については、Files の計画に関するガイドの「[ファイル共有のパフォーマンス レベル](../files/storage-files-planning.md#file-share-performance-tiers)」セクションを参照してください。
+FileStorage ストレージ アカウントでは、IOPS バーストなど、固有のパフォーマンスに特化した特性が提供されています。 これらの特性の詳細については、「File プラン ガイド」の「[ファイル共有ストレージ層](../files/storage-files-planning.md#storage-tiers)」セクションをご参照ください。
 
 ## <a name="naming-storage-accounts"></a>ストレージ アカウントの名前付け
 

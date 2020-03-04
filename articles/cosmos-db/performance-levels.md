@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
-ms.openlocfilehash: 06fa98ae4acc2252d8866858ed0e2194ed84ff79
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 40735f91e2ca58cc42f723c7993686d92f0e5ff0
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60928294"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623343"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>S1、S2、および S3 パフォーマンス レベルの提供の中止
 
@@ -26,7 +26,7 @@ ms.locfileid: "60928294"
 - [中断されることなくデータにアクセスできるようにするには何をする必要がありますか?](#uninterrupted-access)
 - [移行後のコレクションはどのように変化しますか?](#collection-change)
 - [単一パーティション コレクションに移行した後の請求はどのように変化しますか?](#billing-change)
-- [10 GB を超えるストレージが必要な場合はどうすればよいですか?](#more-storage-needed)
+- [20 GB を超えるストレージが必要な場合はどうすればよいですか?](#more-storage-needed)
 - [計画移行時期までに S1、S2、S3 パフォーマンス レベルを変更できますか?](#change-before)
 - [どうすれば S1、S2、S3 パフォーマンス レベルから単一パーティション コレクションに自分で移行できますか?](#migrate-diy)
 - [EA を使用している場合どのような影響を受けますか?](#ea-customer)
@@ -47,7 +47,7 @@ S1、S2、S3 パフォーマンス レベルでは、標準の Azure Cosmos DB �
 |---|---|---|---|---|---|
 |最大スループット|無制限|10,000 RU/秒|250 RU/秒|1,000 RU/秒|2,500 RU/秒|
 |最小スループット|2,500 RU/秒|400 RU/秒|250 RU/秒|1,000 RU/秒|2,500 RU/秒|
-|最大ストレージ容量|無制限|10 GB|10 GB|10 GB|10 GB|
+|最大ストレージ容量|無制限|20 GB|20 GB|20 GB|20 GB|
 |料金 (月額)|スループット: 100 RU/秒 あたり 6 ドル<br><br>ストレージ: 1 GB あたり 0.25 ドル|スループット: 100 RU/秒 あたり 6 ドル<br><br>ストレージ: 1 GB あたり 0.25 ドル|25 米ドル|50 米ドル|100 米ドル|
 
 EA をご使用の場合は、 「[EA を使用している場合どのような影響を受けますか?](#ea-customer)」を参照してください。
@@ -80,9 +80,9 @@ S3 コレクションを使用している場合、2500 RU/秒の単一パーテ
 
 <a name="more-storage-needed"></a>
 
-## <a name="what-if-i-need-more-than-10-gb-of-storage"></a>10 GB を超えるストレージが必要な場合はどうすればよいですか?
+## <a name="what-if-i-need-more-than-20-gb-of-storage"></a>20 GB を超えるストレージが必要な場合はどうすればよいですか?
 
-S1、S2、S3 パフォーマンス レベルのコレクションを使用している場合も、単一パーティション コレクションを使用している場合も (いずれも 10 GB のストレージを使用)、Azure Cosmos DB データ移行ツールを使用して、実質的に無制限のストレージがあるパーティション分割コレクションにデータを移行できます。 パーティション分割コレクションのメリットの詳細については、[Azure Cosmos DB でのパーティション分割とスケーリング](sql-api-partition-data.md)に関するページをご覧ください。 
+S1、S2、S3 パフォーマンス レベルのコレクションを使用している場合も、単一パーティション コレクションを使用している場合も (いずれも 20 GB のストレージを使用)、Azure Cosmos DB データ移行ツールを使用して、実質的に無制限のストレージがあるパーティション分割コレクションにデータを移行できます。 パーティション分割コレクションのメリットの詳細については、[Azure Cosmos DB でのパーティション分割とスケーリング](sql-api-partition-data.md)に関するページをご覧ください。 
 
 <a name="change-before"></a>
 
@@ -129,7 +129,7 @@ S1、S2、S3 パフォーマンス レベルから単一パーティション �
 
 EA をご使用の場合は、現在の契約が終了するまで価格は保護されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Cosmos DB の価格設定とデータ管理の詳細については、以下のリソースを参照してください。
 
 1.  [Cosmos DB でのデータのパーティション分割](sql-api-partition-data.md)。 単一パーティション コンテナーとパーティション分割コンテナーの差異と、シームレスにスケーリングするためのパーティション分割戦略の実装に関するヒントについて説明しています。

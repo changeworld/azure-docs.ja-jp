@@ -9,18 +9,18 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.openlocfilehash: 6d6e7d564722d1c2ad4713dd1d39e7cba5ed0605
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 419dbd998abc5cbd2da64a990e13d46f3fb2efbe
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76965264"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77580630"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>REST を使用して Azure ML リソースの作成、実行、削除を行う
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure ML リソースを管理するには、いくつかの方法があります。 [ポータル](https://portal.azure.com/)、[コマンド ライン インターフェイス](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)、または [Python SDK](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py) を使用できます。 または、REST API を選択することもできます。 REST API では、標準的な方法で HTTP 動詞を使用して、リソースの作成、取得、更新、および削除を行います。 REST API は、HTTP 要求を作成できるすべての言語またはツールで使用できます。 REST は構造がわかりやすいため、多くの場合、スクリプト環境や MLOps オートメーションに適しています。 
+Azure ML リソースを管理するには、いくつかの方法があります。 [ポータル](https://portal.azure.com/)、[コマンド ライン インターフェイス](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)、または [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用できます。 または、REST API を選択することもできます。 REST API では、標準的な方法で HTTP 動詞を使用して、リソースの作成、取得、更新、および削除を行います。 REST API は、HTTP 要求を作成できるすべての言語またはツールで使用できます。 REST は構造がわかりやすいため、多くの場合、スクリプト環境や MLOps オートメーションに適しています。 
 
 この記事では、次のことについて説明します。
 
@@ -401,6 +401,23 @@ providers/Microsoft.Storage/storageAccounts/{your-storage-account-name}"
 ```
 
 `202 Accepted` 応答が返され、返されたヘッダーに `Location` URI が含まれているはずです。 この URI を GET して、デプロイに関する情報を取得できます。これには、依存リソースのいずれかに問題がある場合に役立つデバッグ情報が含まれます (たとえば、コンテナー レジストリで管理者アクセスを有効にすることを忘れた場合など)。 
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+### <a name="resource-provider-errors"></a>リソース プロバイダーのエラー
+
+[!INCLUDE [machine-learning-resource-provider](../../includes/machine-learning-resource-provider.md)]
+
+### <a name="moving-the-workspace"></a>ワークスペースの移動
+
+> [!WARNING]
+> Azure Machine Learning ワークスペースを別のサブスクリプションに移動したり、所有するサブスクリプションを新しいテナントに移動したりすることは、サポートされていません。 エラーの原因になります。
+
+### <a name="deleting-the-azure-container-registry"></a>Azure Container Registry の削除
+
+Azure Machine Learning ワークスペースでは、一部の操作に対して Azure Container Registry (ACR) が使用されます。 これにより ACR インスタンスは、最初に必要になったときに自動的に作成されます。
+
+[!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

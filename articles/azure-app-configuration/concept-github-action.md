@@ -3,29 +3,29 @@ title: Azure App Configuration Sync で GitHub Actions を使用する
 description: 定義されたアクションが GitHub リポジトリで実行されたときに、GitHub Actions を使用して App Configuration インスタンスに対する更新をトリガーします
 author: lisaguthrie
 ms.author: lcozzens
-ms.date: 01/14/2020
+ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: ce8d42ec7c37b19378b6f4ae0c81548f2eff5c9c
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 9d60f1885a85fd7d45090f1cb4905a3d95d9d1d6
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190391"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523715"
 ---
 # <a name="sync-your-app-configuration-instance-using-github-actions"></a>GitHub Actions を使用して App Configuration インスタンスを同期する
-Azure App Configuration は、GitHub リポジトリで実行されたアクションによってトリガーされたときに、GitHub Actions を使用して App Configuration インスタンスを更新します。 GitHub ワークフローを利用してアプリ構成を更新し、アプリ コードの更新に使用されているのと同じワークフローにアプリ構成の更新を統合することができます。
+Azure App Configuration は GitHub Actions を使用して、GitHub リポジトリで実行されたアクションに基づいて App Configuration インスタンスの更新をトリガーします。 GitHub ワークフローを利用して構成の更新をトリガーし、アプリ コードの更新に使用されているのと同じワークフローにこれらの更新を統合することができます。
 
-GitHub Actions の[ワークフロー](https://help.github.com/articles/about-github-actions#workflow)とは、GitHub リポジトリに定義されている自動化されたプロセスです。 このプロセスは、GitHub プロジェクトを構築してデプロイする方法を GitHub に指示します。 Azure App Configuration には、ソース リポジトリに変更が加えられたときに App Configuration インスタンスの更新を有効にするための *Azure App Configuration Sync* アクションが用意されています。 
+GitHub Actions の[ワークフロー](https://help.github.com/articles/about-github-actions#workflow)は、GitHub リポジトリの自動化されたプロセスを定義します。 このプロセスは、GitHub プロジェクトを構築してデプロイする方法を GitHub に指示します。 Azure App Configuration には、ソース リポジトリに変更が加えられたときに App Configuration インスタンスの更新を有効にするための *Azure App Configuration Sync* アクションが用意されています。 
 
-ワークフローは、リポジトリの `/.github/workflows/` パスにある YAML (.yml) ファイルによって定義されます。 この定義には、ワークフローを定義するさまざまな手順とパラメーターが含まれています。
+リポジトリの `/.github/workflows/` パスにある YAML (.yml) ファイルによってワークフローが定義されます。 この定義には、ワークフローの手順とパラメーターが含まれています。
 
-GitHub イベント (リポジトリへのプッシュなど) によって、GitHub アクション ワークフローをトリガーできます。  Azure には、指定された GitHub アクションが発生したときに App Configuration インスタンスの更新をトリガーできるようにする *Azure App Configuration Sync* アクションが用意されています。 これにより、チームは、アプリ コードと同様に、アプリ構成ファイルをプッシュ、レビュー、または分岐するときに GitHub のコア機能を利用できます。
+GitHub イベント (リポジトリへのプッシュなど) によって、GitHub アクション ワークフローをトリガーできます。  *Azure App Configuration Sync* アクションを使用すると、指定した GitHub アクションが発生したときに App Configuration インスタンスの更新をトリガーできます。 アプリ コードと同様に、アプリ構成ファイルをプッシュ、レビュー、または分岐するときに構成の更新をトリガーできます。
 
 GitHub の[ドキュメント](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow)では、GitHub ワークフローとアクションについて詳細に説明されています。 
 
 ## <a name="enable-github-actions-in-your-repository"></a>リポジトリで GitHub Actions を有効にする
-この GitHub アクションの使用を開始するには、リポジトリにアクセスし、 **[Actions]\(アクション\)** タブを選択します。[新しいワークフロー]、[Set up a workflow yourself]\(ワークフローを自分で設定する\) の順にクリックします。 そこから、マーケットプレース上で [Azure App Configuration Sync]\(Azure アプリ構成の同期\) を検索します。
+この GitHub アクションの使用を開始するには、リポジトリにアクセスし、 **[Actions]\(アクション\)** タブを選択します。 **[新しいワークフロー]** 、 **[Set up a workflow yourself]\(ワークフローを自分で設定する\)** の順にクリックします。 最後に、マーケットプレース上で "Azure App Configuration Sync" を検索します。
 > [!div class="mx-imgBorder"]
 > ![[Actions]\(アクション\) タブを選択する](media/find-github-action.png)
 
@@ -33,9 +33,9 @@ GitHub の[ドキュメント](https://help.github.com/actions/automating-your-w
 > ![App Configuration Sync アクションを選択する](media/app-configuration-sync-action.png)
 
 ## <a name="sync-configuration-files-after-a-push"></a>プッシュ後に構成ファイルを同期する
-このアクションは、変更が `appsettings.json` にプッシュされたときに Azure App Configuration ファイルを同期します。 開発者が `appsettings.json` に変更を加えてプッシュすると、Azure App Configuration Sync アクションにより、App Configuration インスタンスが新しい値で更新されます。
+このアクションは、変更が `appsettings.json` にプッシュされたときに Azure App Configuration ファイルを同期します。 開発者が `appsettings.json` に対する変更をプッシュすると、Azure App Configuration Sync アクションにより、App Configuration インスタンスが新しい値で更新されます。
 
-このワークフローの最初のセクションは、`appsettings.json` を含む "*プッシュ*" が "*マスター*" ブランチに対して "*行われたとき*" にアクションがトリガーされることを指定しています。 2 番目のセクションは、アクションがトリガーされると実行されるジョブを一覧で示しています。 このアクションは、リポジトリにシークレットとして格納されている接続文字列を使用して、関連するファイルをチェックアウトし、App Configuration インスタンスを更新します。  Github でのシークレットの使用の詳細については、暗号化されたシークレットの作成と使用に関する[こちらの記事](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets)を参照してください。
+このワークフローの最初のセクションは、`appsettings.json` を含む "*プッシュ*" が "*マスター*" ブランチに対して "*行われたとき*" にアクションがトリガーされることを指定しています。 2 番目のセクションは、アクションがトリガーされると実行されるジョブを一覧で示しています。 このアクションは、リポジトリにシークレットとして格納されている接続文字列を使用して、関連するファイルをチェックアウトし、App Configuration インスタンスを更新します。  GitHub でのシークレットの使用の詳細については、暗号化されたシークレットの作成と使用に関する [GitHub の記事](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets)を参照してください。
 
 ```json
 on: 
@@ -62,9 +62,9 @@ jobs:
 ```
 
 ## <a name="use-a-dynamic-label-on-sync"></a>同期時に動的ラベルを使用する
-前のアクションは、`appsettings.json` が更新されるたびに、単に App Configuration インスタンスを更新しました。 このアクションは、同期のたびに動的ラベルを挿入して、各同期を一意に識別できるようにします。  これにより、コード変更をすばやく構成変更にマップすることができます。
+前のアクションは、`appsettings.json` が更新されるたびに App Configuration インスタンスを更新します。 このアクションは、同期のたびに動的ラベルを挿入して、各同期を一意に識別できるようにし、コードの変更を構成の変更にマップできるようにします。
 
-このワークフローの最初のセクションは、`appsettings.json` を含む "*プッシュ*" が "*マスター*" ブランチに対して "*行われたとき*" にアクションがトリガーされることを指定しています。 2番目のセクションは、コミット ハッシュに基づいて構成更新用の一意のラベルを作成するジョブを実行します。 その後ジョブは、新しい値とこの更新用の一意のラベルを使用して、App Configuration インスタンスを更新します。
+このワークフローの最初のセクションは、`appsettings.json` を含む "*プッシュ*" が "*マスター*" ブランチに対して "*行われたとき*" にアクションがトリガーされることを指定しています。 2 番目のセクションでは、コミット ハッシュに基づいて構成更新用の一意のラベルを作成するジョブを実行します。 その後ジョブは、新しい値とこの更新用の一意のラベルを使用して、App Configuration インスタンスを更新します。
 
 ```json
 on: 
@@ -143,6 +143,7 @@ jobs:
     }
 }
 ```
+
 入れ子になったオブジェクトが Configuration インスタンスにプッシュされる値となるよう意図されている場合は、*depth* 値を使用して、適切な深さでフラット化を停止できます。 
 
 ```json
@@ -185,7 +186,7 @@ depth を 2 に指定した場合、上記の例では次のキーと値のペ�
 
 | 入力名 | 必須 | Value |
 |----|----|----|
-| configurationFile | はい | リポジトリ内の構成ファイルへのパス。リポジトリのルートを基準とした相対パスです。  glob パターンがサポートされており、複数のファイルを含めることができます。 |
+| configurationFile | はい | リポジトリ内の構成ファイルへの相対パス。  glob パターンがサポートされており、複数のファイルを含めることができます。 |
 | format | はい | 構成ファイルのファイル形式。  有効な形式:JSON、YAML、properties。 |
 | connectionString | はい | App Configuration インスタンスの接続文字列。 接続文字列は、GitHub リポジトリにシークレットとして格納する必要があります。また、ワークフローではシークレット名のみを使用する必要があります。 |
 | separator | はい | 構成ファイルをキーと値のペアにフラット化するときに使用される区切り記号。  有効な値: , ; : - _ __ / |

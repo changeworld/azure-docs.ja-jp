@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 02/21/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89063cc8131c28f20153c6fe9b4c71b58794e609
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: e5df7eedcd92d338d3f741f7092ff6ef73f3442d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192044"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585885"
 ---
 # <a name="conditional-access-grant"></a>条件付きアクセス:Grant
 
@@ -55,13 +55,17 @@ ms.locfileid: "77192044"
 
 Microsoft Intune をデプロイしている組織では、デバイスから返された情報を使用して、特定の準拠要件を満たすデバイスを識別することができます。 このポリシー準拠情報は Intune から Azure AD に転送され、条件付きアクセスはそこで、リソースへのアクセスを許可するかブロックするかを決定できます。 準拠ポリシーの詳細については、「[Intune を使用して組織内のリソースへのアクセスを許可するように、デバイス上でルールを設定する](https://docs.microsoft.com/intune/protect/device-compliance-get-started)」という記事を参照してください。
 
+デバイスを準拠としてマークするには、Intune (任意のデバイス OS の場合) または Windows 10 デバイス用のサード パーティ製 MDM システムを使用できます。 Windows 10 以外のデバイスの OS の種類のサードパーティ製 MDM システムはサポートされていません。
+
+デバイスを準拠としてマークするには、あらかじめそのデバイスが Azure AD に登録されている必要があります。 デバイス登録の詳細については、「[デバイス ID とは](../devices/overview.md)」を参照してください。
+
 ### <a name="require-hybrid-azure-ad-joined-device"></a>ハイブリッド Azure AD 参加済みのデバイスを必要とする
 
 組織は、条件付きアクセス ポリシーの一部としてデバイス ID を使用することを選択できます。 組織は、このチェックボックスを使用して、デバイスがハイブリッド Azure AD 参加済みであることを必須にすることができます。 デバイス ID の詳細については、「[デバイス ID とは](../devices/overview.md)」の記事を参照してください。
 
 ### <a name="require-approved-client-app"></a>承認済みクライアント アプリを必須にする
 
-組織は、選択したクラウド アプリへのアクセス試行を、承認されたクライアント アプリから行うように要求することができます。
+組織は、選択したクラウド アプリへのアクセス試行を、承認されたクライアント アプリから行うように要求することができます。 これらの承認されたクライアント アプリは、モバイル デバイス管理 (MDM) ソリューションには一切依存せずに、[Intune アプリ保護ポリシー](/intune/app-protection-policy)をサポートします。
 
 この設定は、以下のクライアント アプリに適用されます。
 
@@ -102,9 +106,7 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
 
 ### <a name="require-app-protection-policy"></a>アプリの保護ポリシーを必須にする
 
-条件付きアクセス ポリシー内で、選択したクラウド アプリがアクセスできるようにする前に、クライアント アプリにアプリの保護ポリシーが存在することを要求できます。 
-
-![アプリの保護ポリシーによるアクセスの制御](./media/technical-reference/22.png)
+条件付きアクセス ポリシー内で、選択したクラウド アプリがアクセスできるようにする前に、クライアント アプリに [Intune アプリ保護ポリシー](/intune/app-protection-policy)が存在することを要求できます。 
 
 この設定は、以下のクライアント アプリに適用されます。
 
@@ -119,9 +121,13 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
 - **アプリの保護ポリシーが必要**の要件:
     - デバイス プラットフォームの条件に関しては、iOS と Android のみがサポートされます。
 
+### <a name="terms-of-use"></a>使用条件
+
+社内で利用規約を作成している場合、許可コントロールに追加のオプションが表示されます。 これらのオプションを使用すると、ポリシーによって保護されたリソースにアクセスするための条件として、管理者は利用規約への同意を要求することができます。 利用規約の詳細については、「[Azure Active Directory の利用規約](terms-of-use.md)」を参照してください。
+
 ## <a name="next-steps"></a>次のステップ
 
-- [条件付きアクセス: セッション コントロール](concept-conditional-access-session.md)
+- [条件付きアクセス:セッション コントロール](concept-conditional-access-session.md)
 
 - [Conditional Access common policies](concept-conditional-access-policy-common.md) (条件付きアクセスの一般的なポリシー)
 

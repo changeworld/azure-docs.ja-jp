@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
-ms.openlocfilehash: da8c194b7911d2eeda8e0c903cb7412186aacfcb
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: fa41649e002bd4845b95e787c1d0589ed1987588
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638257"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587245"
 ---
 # <a name="sql-database-resource-limits-and-resource-governance"></a>SQL Database のリソース制限およびリソース管理
 
@@ -37,14 +37,14 @@ ms.locfileid: "75638257"
 | サーバーあたりの最大プール | DTU または仮想コアの数によって制限されます。 たとえば、各プールが 1000 DTU の場合、1 つのサーバーで 54 プールをサポートできます。|
 |||
 
-> [!NOTE]
-> 既定量よりも多い DTU/eDTU クォータ、仮想コア クォータ、またはサーバーを取得する場合は、Azure portal 上でサブスクリプションに対する発行の種類を "クォータ として、新しいサポート リクエストを送信できます。 サーバーあたりの DTU/eDTU クォータとデータベース制限には、サーバーあたりのエラスティック プールの数が含まれます。
-
 > [!IMPORTANT]
 > データベースの数が SQL Database サーバーあたりの制限に近づくと、次の状況が発生します。
 >
 > - マスター データベースに対して実行するクエリの待機時間が増えます。  これには、リソース使用率統計情報のビューも含まれます (sys.resource_stats など)。
 > - サーバー内のデータベースの列挙を要する、管理操作やポータル ビュー ポイント表示の待機時間が長くなります。
+
+> [!NOTE]
+> 既定量よりも多い DTU/eDTU クォータ、仮想コア クォータ、またはサーバーを取得する場合は、Azure portal から新しいサポート リクエストを送信できます。 詳細については、「[Azure SQL Database のクォータの増加を要求する](quota-increase-request.md)」を参照してください。
 
 ### <a name="storage-size"></a>ストレージ サイズ
 
@@ -118,7 +118,7 @@ Azure Storage 内のデータ ファイルを使用する Basic、Standard、Gen
 
 ログ速度ガバナー トラフィックの構成は、次の種類の待機を使用して表示されます ([sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV で公開されます)。
 
-| 待機の種類 | メモ |
+| 待機の種類 | Notes |
 | :--- | :--- |
 | LOG_RATE_GOVERNOR | データベース制限 |
 | POOL_LOG_RATE_GOVERNOR | プール制限 |

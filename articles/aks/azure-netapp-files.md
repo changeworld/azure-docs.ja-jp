@@ -3,16 +3,15 @@ title: Azure NetApp Files と Azure Kubernetes Service を統合する
 description: Azure NetApp Files と Azure Kubernetes Service を統合する方法を確認します
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: article
 ms.date: 09/26/2019
 ms.author: zarhoads
-ms.openlocfilehash: 84192a831e3b1f24e20eb07a6c8695516c28970f
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 42985e57d63c01553532928b2ba04ed5ee3dd8fb
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71328701"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596642"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Azure NetApp Files と Azure Kubernetes Service を統合する
 
@@ -33,7 +32,8 @@ Azure NetApp Files を使用した場合、次の制限が適用されます。
 * Azure NetApp Files は、[選択された Azure リージョン][anf-regions]でのみ利用できます。
 * Azure NetApp Files を使用するには、Azure NetApp Files サービスへのアクセス権が必要です。 アクセスを申請するには、[Azure NetApp Files 順番待ちリスト送信フォーム][anf-waitlist]を使用できます。 Azure NetApp Files サービスには、Azure NetApp Files チームから正式な確認メールが届くまでアクセスすることができません。
 * Azure NetApp Files サービスは、お使いの AKS クラスターと同じ仮想ネットワークに作成する必要があります。
-* Azure NetApp Files の静的プロビジョニングのみが、AKS でサポートされています。
+* AKS クラスターの初期展開後は、Azure NetApp Files の静的プロビジョニングのみがサポートされます。
+* Azure NetApp Files で動的プロビジョニングを使用するには [NetApp Trident](https://netapp-trident.readthedocs.io/) バージョン 19.07 以降をインストールして構成します。
 
 ## <a name="configure-azure-netapp-files"></a>Azure NetApp Files の構成
 
@@ -143,7 +143,7 @@ $ az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $AN
 }
 ```
 
-PersistentVolume を定義する `pv-nfs.yaml` を作成します。 `path` を前のコマンドからの *creationToken* に、`server` を *ipAddress* に置き換えます。 例:
+PersistentVolume を定義する `pv-nfs.yaml` を作成します。 `path` を前のコマンドからの *creationToken* に、`server` を *ipAddress* に置き換えます。 次に例を示します。
 
 ```yaml
 ---
@@ -175,7 +175,7 @@ kubectl describe pv pv-nfs
 
 ## <a name="create-the-persistentvolumeclaim"></a>PersistentVolumeClaim の作成
 
-PersistentVolume を定義する `pvc-nfs.yaml` を作成します。 例:
+PersistentVolume を定義する `pvc-nfs.yaml` を作成します。 次に例を示します。
 
 ```yaml
 apiVersion: v1
@@ -205,7 +205,7 @@ kubectl describe pvc pvc-nfs
 
 ## <a name="mount-with-a-pod"></a>ポッドを使ったマウント
 
-PersistentVolumeClaim を使用するポッドを定義する `nginx-nfs.yaml` を作成します。 例:
+PersistentVolumeClaim を使用するポッドを定義する `nginx-nfs.yaml` を作成します。 次に例を示します。
 
 ```yaml
 kind: Pod
@@ -253,7 +253,7 @@ Filesystem             Size  Used Avail Use% Mounted on
 ...
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure NetApp Files の詳細については、「[Azure NetApp Files とは][anf]」を参照してください。 NFS と AKS の使用について詳しくは、「[NFS (Network File System) Linux Server ボリュームを手動で作成し、Azure Kubernetes Service (AKS) と共に使用する][aks-nfs]」を参照してください。
 

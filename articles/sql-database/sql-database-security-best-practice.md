@@ -1,23 +1,27 @@
 ---
-title: Azure SQL Database のセキュリティに関するベスト プラクティス プレイブック | Microsoft Docs
-description: この記事では、Azure SQL Database でのセキュリティのベスト プラクティスに関する一般的なガイダンスを提供します。
+title: 一般的なセキュリティ要件を解決するためのプレイブック | Microsoft Docs
+titleSuffix: Azure SQL Database
+description: この記事では、Azure SQL Database の一般的なセキュリティ要件とベスト プラクティスについて説明します。
 ms.service: sql-database
 ms.subservice: security
 author: VanMSFT
 ms.author: vanto
 ms.topic: article
-ms.date: 01/22/2020
+ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 095d435b9a595c420821da0813fdfc0893d70d89
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c18e1b1a1feba5c528a692b7d63287b3751b62cf
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845866"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77506215"
 ---
-# <a name="azure-sql-database-security-best-practices-playbook"></a>SQL Database のセキュリティに関するベスト プラクティス プレイブック
+# <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>Azure SQL Database で一般的なセキュリティ要件を解決するためのプレイブック
 
-## <a name="overview"></a>概要
+> [!NOTE]
+> このドキュメントでは、一般的なセキュリティ要件を解決する方法に関するベスト プラクティスを提供します。 一部の要件はすべての環境には適用されないため、どの機能を実装するかについて、ご自分のデータベースおよびセキュリティ チームにご相談ください。
+
+## <a name="solving-common-security-requirements"></a>一般的なセキュリティ要件の解決
 
 このドキュメントでは、Azure SQL Database を使用する新規または既存のアプリケーションの一般的なセキュリティ要件を解決する方法に関するガイダンスを提供します。 これは、高レベルのセキュリティ領域別に整理されています。 特定の脅威の対処については、「[一般的なセキュリティ上の脅威と考えられる軽減策](#common-security-threats-and-potential-mitigations)」セクションを参照してください。 提示されているいくつかの推奨事項は、アプリケーションをオンプレミスから Azure に移行する際に適用できますが、このドキュメントでは移行シナリオには焦点を当てていません。
 
@@ -66,6 +70,9 @@ ms.locfileid: "76845866"
 - SQL 認証
 - Azure Active Directory 認証
 
+> [!NOTE]
+> 一部のツールとサードパーティ アプリケーションでは、Azure Active Directory 認証がサポートされない場合があります。
+
 ### <a name="central-management-for-identities"></a>ID の中央管理
 
 ID の中央管理には、次のような利点があります。
@@ -82,7 +89,7 @@ ID の中央管理には、次のような利点があります。
 
 - Azure AD テナントを作成し、人間のユーザーを表す[ユーザーを作成](../active-directory/fundamentals/add-users-azure-active-directory.md)し、アプリ、サービス、自動化ツールを表す[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)を作成します。 サービス プリンシパルは、Windows および Linux でのサービス アカウントに相当します。 
 
-- グループ割り当てを使用して Azure AD プリンシパルにリソースへのアクセス権を割り当てます。Azure AD グループを作成し、グループにアクセス権を付与し、個々のメンバーをグループに追加します。 データベースに、Azure AD グループをマップする包含データベース ユーザーを作成します。 
+- グループ割り当てを使用して Azure AD プリンシパルにリソースへのアクセス権を割り当てます。Azure AD グループを作成し、グループにアクセス権を付与し、個々のメンバーをグループに追加します。 データベースに、Azure AD グループをマップする包含データベース ユーザーを作成します。 データベース内のアクセス許可を割り当てるには、適切なアクセス許可があるデータベース ロールをユーザーに付与します。
   - 「[SQL による Azure Active Directory 認証の構成と管理](sql-database-aad-authentication-configure.md)」と[Azure AD を使用した SQL の認証](sql-database-aad-authentication.md)に関する記事を参照してください。
   > [!NOTE]
   > マネージド インスタンスでは、マスター データベースの Azure AD プリンシパルにマップされるログインを作成することもできます。 「[CREATE LOGIN (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)」を参照してください。
@@ -204,11 +211,6 @@ SQL 認証とは、ユーザー名とパスワードを使用して Azure SQL Da
 - サーバー管理者として、ログインとユーザーを作成します。 パスワードを持つ包含データベース ユーザーを使用する場合を除いて、すべてのパスワードはマスター データベースに格納されます。
   - 「[SQL Database と SQL Data Warehouse へのデータベース アクセスの制御と許可](sql-database-manage-logins.md)」という記事を参照してください。
 
-- パスワード管理のベスト プラクティスに従います。
-  - 英字の大文字と小文字、数字 (0-9)、および英数字以外の文字 ($、!、#、% など) で構成される複雑なパスワードを指定します。
-  - 短いランダムに選択した文字ではなく、より長いパスフレーズを使用します。
-  - 少なくとも 90 日ごとに手動でパスワードの変更を実施します。
-
 ## <a name="access-management"></a>アクセス管理
 
 アクセス管理とは、承認されたユーザーの Azure SQL Database へのアクセス権と特権を制御および管理するプロセスです。
@@ -250,9 +252,7 @@ SQL 認証とは、ユーザー名とパスワードを使用して Azure SQL Da
 
 - 個々のユーザーにアクセス許可を割り当てないようにします。 代わりに、一貫してロール (データベースまたはサーバーのロール) を使用します。 ロールは、アクセス許可のレポートとトラブルシューティングに非常に役立ちます。 (Azure RBAC では、ロールによるアクセス許可の割り当てのみがサポートされます)。 
 
-- ロールのアクセス許可がユーザーに必要なアクセス許可と完全に一致する場合は、組み込みロールを使用します。 ユーザーは複数のロールに割り当てることができます。 
-
-- 組み込みロールで付与されるアクセス許可が多すぎる場合や十分でない場合は、カスタム ロールを作成して使用します。 実際に使用される一般的なロールは次のとおりです。 
+- 正確に必要な分だけのアクセス許可を備えたカスタム ロールを作成して使用します。 実際に使用される一般的なロールは次のとおりです。 
   - セキュリティ展開 
   - 管理者 
   - Developer 
@@ -260,14 +260,17 @@ SQL 認証とは、ユーザー名とパスワードを使用して Azure SQL Da
   - 監査担当者 
   - 自動プロセス 
   - エンド ユーザー 
+  
+- ロールのアクセス許可がユーザーに必要なアクセス許可と完全に一致する場合にのみ、組み込みロールを使用します。 ユーザーは複数のロールに割り当てることができます。 
 
 - SQL Server データベース エンジンのアクセス許可は、次のスコープで適用できることに注意してください。 スコープが小さくなるほど、付与されるアクセス許可の影響は小さくなります。 
   - Azure SQL Database サーバー (マスター データベースの特別なロール) 
   - データベース 
-  - スキーマ (「[SQL Server のスキーマ設計: セキュリティに配慮したスキーマ設計の推奨事項](http://andreas-wolter.com/en/schema-design-for-sql-server-recommendations-for-schema-design-with-security-in-mind/)」も参照)
+  - スキーマ
+      - データベース内のアクセス許可の付与にはスキーマを使用するのがベスト プラクティスです。 (関連トピック: 「[SQL Server のスキーマ設計: セキュリティに配慮したスキーマ設計の推奨事項](http://andreas-wolter.com/en/schema-design-for-sql-server-recommendations-for-schema-design-with-security-in-mind/)」も参照)
   - オブジェクト (テーブル、ビュー、プロシージャなど) 
   > [!NOTE]
-  > オブジェクト レベルでアクセス許可を適用することは推奨されません。このレベルでは、不必要な複雑さが実装全体に追加されるからです。 オブジェクト レベルのアクセス許可を使用する場合は、それらを明確に文書化する必要があります。 列レベルのアクセス許可も同様です。それらは、同じ理由により、さらにお勧めできません。 [DENY](https://docs.microsoft.com/sql/t-sql/statements/deny-object-permissions-transact-sql) の標準規則は、列には適用されません。
+  > オブジェクト レベルでアクセス許可を適用することは推奨されません。このレベルでは、不必要な複雑さが実装全体に追加されるからです。 オブジェクト レベルのアクセス許可を使用する場合は、それらを明確に文書化する必要があります。 列レベルのアクセス許可も同様です。それらは、同じ理由により、さらにお勧めできません。 また、既定ではテーブルレベルの[拒否](https://docs.microsoft.com/sql/t-sql/statements/deny-object-permissions-transact-sql)によって列レベルの許可がオーバーライドされないことにも注意してください。 このため、[情報セキュリティ国際評価基準に準拠したサーバー構成](https://docs.microsoft.com/sql/database-engine/configure-windows/common-criteria-compliance-enabled-server-configuration-option)をアクティブにする必要があります。
 
 - [脆弱性評価 (VA)](https://docs.microsoft.com/sql/relational-databases/security/sql-vulnerability-assessment) を使用して通常のチェックを実行し、アクセス許可が多すぎるかどうかをテストします。
 
@@ -320,7 +323,7 @@ SQL 認証とは、ユーザー名とパスワードを使用して Azure SQL Da
 
 - セキュリティに関連した操作については、常に監査証跡を取るようにします。 
 
-- 組み込み RBAC ロールの定義を取得して、使用されているアクセス許可を確認し、Powershell を使用してそれらの抜粋と蓄積に基づいてカスタム ロールを作成することができます。 
+- 組み込み RBAC ロールの定義を取得して、使用されているアクセス許可を確認し、PowerShell を使用してそれらの抜粋と蓄積に基づいてカスタム ロールを作成することができます。
 
 - db_owner データベース ロールのメンバーは、Transparent Data Encryption (TDE) のようなセキュリティ設定を変更したり、SLO を変更したりできるため、このメンバーシップの付与は慎重に行う必要があります。 ただし、db_owner 特権を必要とする多くのタスクがあります。 DB オプションの変更など、データベース設定の変更のようなタスク。 どのソリューションでも監査が重要な役割を果たします。
 
@@ -409,6 +412,8 @@ SoD についてより深く知りたい読者には、次のリソースをお�
 
 使用中のデータとは、SQL クエリの実行中にデータベース システムのメモリに格納されたデータです。 データベースに機密データが格納されている場合、組織は、特権の高いユーザーがデータベース内の機密データを表示できないようにすることが必要な場合があります。 組織の Microsoft オペレーターや DBA などの高い特権を持つユーザーは、データベースを管理できる必要がありますが、SQL Server プロセスのメモリから機密データを表示したり、潜在的に盗難したりできないようにする必要があります。
 
+どのデータが機密であるかや、機密データをメモリ内で暗号化して管理者がプレーンテキストで使用できないようにするかどうかを判定するポリシーは、お客様の組織とお客様が準拠する必要がある法令遵守規定に固有です。 関連する要件を確認してください （「[機密データを特定してタグを付ける](#identify-and-tag-sensitive-data)」）。
+
 **実装方法**:
 
 - [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) を使用して、メモリ内にある場合や使用中であっても、機密データが Azure SQL Database にプレーンテキストで公開されないようにします。 Always Encrypted により、データベース管理者 (DBA) とクラウド管理者 (または、高い特権を持つが未承認のユーザーを偽装できる悪意のあるアクター) からデータを保護し、データにアクセスできるユーザーをより細かく制御できます。
@@ -416,6 +421,8 @@ SoD についてより深く知りたい読者には、次のリソースをお�
 **ベスト プラクティス**:
 
 - Always Encrypted は、保存データ (TDE) または転送中のデータ (SSL/TLS) の暗号化の代替ではありません。 パフォーマンスと機能への影響を最小限に抑えるため、機密データ以外のデータには Always Encrypted を使用しないでください。 保存時、転送中、使用中のデータを包括的に保護するには、TDE およびトランスポート層セキュリティ (TLS) と組み合わせて Always Encrypted を使用することをお勧めします。 
+
+- Always Encrypted を運用データベースにデプロイする前に、特定された機密データ列の暗号化による影響を評価します。 Always Encrypted では通常、暗号化された列でクエリの機能性が低下します。また、「[Always Encrypted」の「機能の詳細](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine#feature-details)」に記載されているその他の制限事項があります。 そのため場合によっては、クエリでサポートされていない機能をクライアント側に再実装するためにアプリケーションを再設計したり、ストアド プロシージャ、関数、ビュー、トリガーなど、データベース スキーマをリファクターしたりする必要があります。 Always Encrypted の制約と制限に準拠していない既存のアプリケーションでは、暗号化された列を使用できない場合があります。 Always Encrypted がサポートされる Microsoft のツール、製品、サービスのエコシステムは拡大しつつありますが、それらの一部では暗号化された列を使用できません。 ワークロードの特性によっては、列の暗号化がクエリのパフォーマンスに影響を及ぼす場合もあります。 
 
 - Always Encrypted を使用して悪意のある DBA からデータを保護する場合は、役割の分離を使って Always Encrypted キーを管理します。 役割の分離を使用する場合、セキュリティ管理者が物理キーを作成します。 DBA は、データベースに物理キーを記述する列マスター キーと列暗号化キー メタデータ オブジェクトを作成します。 この処理中、セキュリティ管理者はデータベースにアクセスする必要はなく、DBA はプレーンテキストの物理キーにアクセスする必要はありません。 
   - 詳細については、「[役割の分離を使用したキー管理](https://docs.microsoft.com/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted#managing-keys-with-role-separation)」という記事を参照してください。 
@@ -705,7 +712,7 @@ Advanced Threat Protection を使用すると、異常なアクティビティ�
 
 ### <a name="identify-and-tag-sensitive-data"></a>機密データを特定してタグを付ける 
 
-機密データが含まれている可能性がある列を検出します。 機密度に基づく高度な監査と保護のシナリオを使用するために、列を分類します。 
+機密データが含まれている可能性がある列を検出します。 何が機密データとみなされるかは、お客様や遵守すべき規則などによって大きく異なり、そのデータを所管するユーザーによって評価される必要があります。 機密度に基づく高度な監査と保護のシナリオを使用するために、列を分類します。 
 
 **実装方法**:
 

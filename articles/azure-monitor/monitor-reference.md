@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: d605b852d37af3b1e2ef0868084f3c0b99c24784
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 055ba8b5050aef639bbe6527292a18c8b405065a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765717"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620254"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor によって監視される内容
 この記事では、Azure Monitor によって監視されるさまざまなアプリケーションとサービスについて説明します。 
@@ -53,7 +53,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 - ログ - このサービスは、プラットフォームのログとメトリックを Azure Monitor ログに収集できる診断設定をサポートしています。
 - 分析情報 - サービスで使用可能な分析情報があり、サービスに対するカスタマイズされた監視エクスペリエンスを提供します。
 
-| サービス | メトリック | ログ | 分析情報 | メモ |
+| サービス | メトリック | ログ | 分析情報 | Notes |
 |:---|:---|:---|:---|:---|
 |Active Directory | いいえ | はい | [はい](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) |  |
 |Active Directory B2C | いいえ | いいえ | いいえ |  |
@@ -197,14 +197,14 @@ Insights は、特定のアプリケーションやサービスを監視する�
 
 | 解決策 | 説明 |
 |:---|:---|
-| [Active Directory Assessment](insights/ad-assessment.md) | Active Directory 環境のリスクと正常性を評価します。 |
+| [Active Directory 正常性チェック](insights/ad-assessment.md) | Active Directory 環境のリスクと正常性を評価します。 |
 | [Active Directory Replication Status](insights/ad-replication-status.md) | レプリケーションの失敗について Active Directory 環境を定期的に監視します。 |
 | [Activity Log Analytics](platform/activity-log-view.md#activity-logs-analytics-monitoring-solution) | 定義済みのログ クエリおよびビューを使用して、アクティビティ ログのエントリを分析します。 |
 | [DNS Analytics (プレビュー)](insights/dns-analytics.md) | Windows DNS の分析ログと監査ログおよび他の関連データを DNS サーバーから収集して分析し、関連付けます。 |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | 複数のデプロイにわたって Cloud Foundry システムの正常性とパフォーマンスのメトリックを収集、表示、および分析します。 |
 | [Containers](insights/containers.md) | Docker と Windows のコンテナー ホストを表示および管理します。 |
 | [オンデマンド評価](https://docs.microsoft.com/services-hub/health/getting_started_with_on_demand_assessments) | オンプレミス、ハイブリッド、クラウドの Microsoft テクノロジ環境の可用性、セキュリティ、およびパフォーマンスを評価し、最適化します。 |
-| [SQL Assessment](insights/sql-assessment.md) | SQL Server 環境のリスクと正常性を評価します。  |
+| [SQL 正常性チェック](insights/sql-assessment.md) | SQL Server 環境のリスクと正常性を評価します。  |
 | [ワイヤ データ](insights/wire-data.md) | Log Analytics エージェントを使用して、Windows に接続されたコンピューターおよび Linux に接続されたコンピューターから収集したネットワークとパフォーマンスのデータを統合したものです。 |
 
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 02/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cdff2305914ca6e4144f7784d1a60026a1d27c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0f75dea2cffbe710bf2778ceab5eacc91ffcca9c
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65988675"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523112"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Azure Active Directory の ID セキュリティ スコアとは
 
@@ -48,7 +48,7 @@ ID セキュリティ スコアは、セキュリティに関する Microsoft �
 
 ## <a name="how-do-i-get-my-secure-score"></a>セキュリティ スコアを取得する方法
 
-ID セキュリティ スコアは、Azure AD のすべてのエディションで使用できます。 このスコアにアクセスするには、[Azure AD の概要ダッシュボード](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/IdentitySecureScore)に移動してください。
+ID セキュリティ スコアは、Azure AD のすべてのエディションで使用できます。 組織は、**Azure portal** >  **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[ID セキュリティ スコア]** から ID セキュリティ スコアにアクセスできます。
 
 ## <a name="how-does-it-work"></a>それはどのように機能しますか?
 
@@ -107,13 +107,13 @@ ID セキュリティ スコアは、次のロールが使用できます。
 [Microsoft のセキュリティ スコア](https://docs.microsoft.com/office365/securitycompliance/microsoft-secure-score)には、次の 5 つのコントロールとスコア カテゴリがあります。
 
 - ID
-- データ
+- Data
 - デバイス
 - インフラストラクチャ
 - アプリケーション
 
 ID セキュリティ スコアは、Microsoft のセキュリティ スコアの ID 部分を表しています。 この重複は、ID セキュリティ スコアと Microsoft の ID スコアに関する推奨事項が同じであることを意味します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Microsoft セキュリティ スコアの詳細を確認する](https://docs.microsoft.com/office365/securitycompliance/microsoft-secure-score)

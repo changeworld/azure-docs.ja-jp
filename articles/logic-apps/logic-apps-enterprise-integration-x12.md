@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/31/2017
-ms.openlocfilehash: 77ec5434b83c4246dc448578dcf2902e19f42e95
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: cbf0a1f033ddafc68debab8de26dff29d73cc98e
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792322"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651476"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の X12 メッセージを交換する
 
@@ -34,7 +34,7 @@ Azure Logic Apps の X12 メッセージを交換する前に、X12 契約を作
 
 ## <a name="create-an-x12-agreement"></a>X12 契約の作成
 
-1. [Azure Portal](https://portal.azure.com "Azure ポータル") にサインインします。 
+1. [Azure portal](https://portal.azure.com "Azure portal") にサインインします。 
 
 2. Azure のメイン メニューで、 **[すべてのサービス]** を選びます。 
    検索ボックスに「統合」と入力し、"**統合アカウント**" を選びます。  
@@ -64,7 +64,7 @@ Azure Logic Apps の X12 メッセージを交換する前に、X12 契約を作
 
     ![契約の詳細の指定](./media/logic-apps-enterprise-integration-x12/x12-1.png)  
 
-    | プロパティ | Description |
+    | プロパティ | 説明 |
     | --- | --- |
     | 名前 |契約の名前。 |
     | 契約の種類 | X12 にする必要があります。 |
@@ -146,7 +146,7 @@ Azure Logic Apps の X12 メッセージを交換する前に、X12 契約を作
 | Disallow Group control number duplicates (グループ制御番号の重複を許可しない) |グループ制御番号が重複したインターチェンジを防止します。 |
 | Disallow Transaction set control number duplicates (トランザクション セット制御番号の重複を許可しない) |トランザクション セット制御番号が重複したインターチェンジを防止します。 |
 
-### <a name="validations"></a>Validations (検証)
+### <a name="validation"></a>検証
 
 ![受信したメッセージの検証プロパティの設定](./media/logic-apps-enterprise-integration-x12/x12-36.png) 
 
@@ -154,14 +154,14 @@ Azure Logic Apps の X12 メッセージを交換する前に、X12 契約を作
 
 | プロパティ | 説明 |
 | --- | --- |
-| メッセージの種類 |EDI メッセージの種類を選択します。 |
+| メッセージ型 |EDI メッセージの種類を選択します。 |
 | EDI Validation (EDI の検証) |スキーマの EDI プロパティ、長さ制限、空のデータ要素、および末尾の区切り記号で定義されたデータ型で EDI 検証を実行します。 |
 | 拡張された検証 |データ型が EDI でない場合は、検証はデータ要素の要件と許可された繰り返し、列挙、およびデータ要素の長さの検証 (最小/最大) で実行されます。 |
 | Allow Leading/Trailing Zeroes (先頭および末尾のゼロを許可) |先頭または末尾のゼロと空白文字をすべて保持します。 これらの文字を削除しません。 |
 | 先頭および末尾のゼロをトリミングする |先頭または末尾のゼロと空白文字を削除します。 |
 | 末尾の区切り記号のポリシー |末尾の区切り記号を生成します。 <p>受信したインターチェンジに末尾の区切り記号や区切り文字が含まれないようにする場合は、 **[許可しない]** を選択します。 インターチェンジに末尾の区切り記号や区切り文字が含まれている場合、インターチェンジは無効と宣言されます。 <p>末尾の区切り記号や区切り文字の有無に関係なくインターチェンジを受け入れる場合は、 **[オプション]** を選択します。 <p>インターチェンジに末尾の区切り記号や区切り文字が含まれている必要がある場合は、 **[必須]** を選択します。 |
 
-### <a name="internal-settings"></a>Internal Settings (内部設定)
+### <a name="internal-settings"></a>内部設定
 
 ![内部設定の選択](./media/logic-apps-enterprise-integration-x12/x12-37.png) 
 
@@ -216,7 +216,7 @@ Azure Logic Apps の X12 メッセージを交換する前に、X12 契約を作
 | --- | --- |
 | Version |X12 のバージョンを選択します |
 | トランザクションの種類 (ST01) |トランザクションの種類を選択します |
-| スキーマ |使用するスキーマを選択します。 スキーマは統合アカウント内にあります。 先にスキーマを選択すると、バージョンとトランザクションの種類が自動的に構成されます。  |
+| SCHEMA |使用するスキーマを選択します。 スキーマは統合アカウント内にあります。 先にスキーマを選択すると、バージョンとトランザクションの種類が自動的に構成されます。  |
 
 > [!NOTE]
 > [統合アカウント](../logic-apps/logic-apps-enterprise-integration-accounts.md)にアップロードする必要な[スキーマ](../logic-apps/logic-apps-enterprise-integration-schemas.md)を構成します。
@@ -248,10 +248,10 @@ Azure Logic Apps の X12 メッセージを交換する前に、X12 契約を作
 | インターチェンジ制御番号 (ISA13) |必須。インターチェンジ制御番号の値の範囲を入力します。 1 ～ 999999999 の数値を入力します。 |
 | グループ制御番号 (GS06) |必須。グループ制御番号の値の範囲を入力します。 1 ～ 999999999 の数値を入力します。 |
 | トランザクション セット制御番号 (ST02) |必須。トランザクション セット制御番号の値の範囲を入力します。 1 ～ 999999999 の数値の範囲を入力します。 |
-| Prefix (プレフィックス) |省略可能。受信確認で使用するトランザクション セット制御番号の範囲を指定します。 中間の 2 つのフィールドに数値を、プレフィックスとサフィックスのフィールドに英数字値 (必要な場合) を入力します。 中間のフィールドは必須であり、制御番号の最小値と最大値が含まれます。 |
+| Prefix |省略可能。受信確認で使用するトランザクション セット制御番号の範囲を指定します。 中間の 2 つのフィールドに数値を、プレフィックスとサフィックスのフィールドに英数字値 (必要な場合) を入力します。 中間のフィールドは必須であり、制御番号の最小値と最大値が含まれます。 |
 | サフィックス |省略可能。受信確認で使用するトランザクション セット制御番号の範囲を指定します。 中間の 2 つのフィールドに数値を、プレフィックスとサフィックスのフィールドに英数字値 (必要な場合) を入力します。 中間のフィールドは必須であり、制御番号の最小値と最大値が含まれます。 |
 
-### <a name="character-sets-and-separators"></a>Character Sets and Separators (文字セットと区切り文字)
+### <a name="character-sets-and-separators"></a>文字セットと区切り文字
 
 各メッセージ タイプの文字セットや、異なるセットの区切り文字を入力できます。 特定のメッセージ スキーマで文字セットが指定されていない場合は、既定の文字セットが使用されます。
 
@@ -279,7 +279,7 @@ Azure Logic Apps の X12 メッセージを交換する前に、X12 契約を作
 
 | プロパティ | 説明 |
 | --- | --- |
-| メッセージの種類 |EDI メッセージの種類を選択します。 |
+| メッセージ型 |EDI メッセージの種類を選択します。 |
 | EDI Validation (EDI の検証) |スキーマの EDI プロパティ、長さ制限、空のデータ要素、および末尾の区切り記号で定義されたデータ型で EDI 検証を実行します。 |
 | 拡張された検証 |データ型が EDI でない場合は、検証はデータ要素の要件と許可された繰り返し、列挙、およびデータ要素の長さの検証 (最小/最大) で実行されます。 |
 | Allow Leading/Trailing Zeroes (先頭および末尾のゼロを許可) |先頭または末尾のゼロと空白文字をすべて保持します。 これらの文字を削除しません。 |
@@ -296,9 +296,13 @@ Azure Logic Apps の X12 メッセージを交換する前に、X12 契約を作
 
     ![[契約] タイルの選択](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
 
-## <a name="view-the-swagger"></a>Swagger の表示
-[Swagger の詳細](/connectors/x12/)を参照してください。 
+## <a name="connector-reference"></a>コネクタのレファレンス
 
-## <a name="learn-more"></a>詳細情報
-* [Enterprise Integration Pack についての詳細情報](../logic-apps/logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack について学習する")  
+コネクタの Swagger ファイルに記述される、アクションや制限などのこのコネクタの技術的詳細は、[コネクタの参照ページ](https://docs.microsoft.com/connectors/x12/)を参照してください。 
 
+> [!NOTE]
+> [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリでは、代わりにこのコネクタの ISE のラベルがついたバージョンが [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)を使用します。
+
+## <a name="next-steps"></a>次のステップ
+
+* 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

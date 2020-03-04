@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: c781c5e12f3f678ef640c6017a768e7ac14448f9
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 551703b5dcca082904197010366ee059998dde4b
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871994"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621878"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB でのパーティション分割
 
@@ -37,7 +37,7 @@ Azure Cosmos DB でパーティションを管理する方法の詳細につい�
 
 パーティション キーを選択するための優れたガイダンスを次に示します。
 
-* 1 つの論理パーティションでは、ストレージの上限は 10 GB です。  
+* 1 つの論理パーティションでは、ストレージの上限は 20 GB です。  
 
 * Azure Cosmos コンテナーの最小スループットは、400 要求ユニット/秒 (RU/秒) です。 データベースに関するスループットがプロビジョニングされる場合、コンテナーあたりの最小 RU 数は 100 要求ユニット/秒 (RU/秒) です。 同じパーティション キーへの要求は、パーティションに割り当てられているスループットを超えることはできません。 割り当て済みのスループットを要求が超えている場合、要求ではレートが制限されます。 そのため、アプリケーション内の "ホット スポット" にならないパーティション キーを選択することが重要です。
 
@@ -47,7 +47,7 @@ Azure Cosmos DB でパーティションを管理する方法の詳細につい�
 
 * パーティション キーの候補には、クエリ内でフィルターとして頻繁に出現するプロパティが含まれる場合があります。 フィルターの述語にパーティション キーを含めることで、クエリ呼び出しを効率的にルーティングできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Cosmos DB でのパーティション分割と水平スケーリング](partition-data.md)について理解します。
 * [Azure Cosmos DB におけるスループットのプロビジョニング](request-units.md)について理解します。

@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 1c21a84bd9aaa259d0459b4e16c7a62aabaa615d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 6c7112b6b5944042036fd3e7af6ec6f6dfbde0c0
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896381"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526146"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps の価格モデル
 
@@ -40,13 +40,15 @@ ms.locfileid: "75896381"
 
 ## <a name="fixed-pricing-model"></a>固定価格モデル
 
-"[*統合サービス環境* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)" には、Azure 仮想ネットワーク内のリソースにアクセスできるロジック アプリを作成して実行するための、プライベートな分離された専用の方法が用意されています。 ISE 内で実行される新しいロジック アプリでは、次の機能に対して、[固定の月額料金](https://azure.microsoft.com/pricing/details/logic-apps)を支払います。
+"[*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) には、Azure 仮想ネットワーク内のリソースにアクセスできるロジック アプリを作成して実行するための、分離された方法が用意されています。 ISE 内で実行される新しいロジック アプリでは、次の機能に対して、[固定の月額料金](https://azure.microsoft.com/pricing/details/logic-apps)を支払います。
 
-* [組み込みのトリガーとアクション](../connectors/apis-list.md#built-in)
+* [組み込みの](../connectors/apis-list.md#built-in)トリガーとアクション
 
-* [標準コネクタ](../connectors/apis-list.md#managed-connectors)
+  ISE 内で、組み込みのトリガーとアクションは **Core** というラベルを表示し、ロジック アプリと同じ ISE で実行されます。
 
-* 必要な数の接続がある[エンタープライズ コネクタ](../connectors/apis-list.md#enterprise-connectors)
+* [標準](../connectors/apis-list.md#managed-connectors)コネクタと[エンタープライズ](../connectors/apis-list.md#enterprise-connectors) コネクタ (必要な数のエンタープライズ接続)
+
+   **ISE** というラベルが表示される標準およびエンタープライズ コネクタは、ロジック アプリと同じ ISE で実行されます。 ISE というラベルが表示されないコネクタは、グローバルな Logic Apps サービスで実行されます。 固定月額料金は、グローバル サービスで実行されるコネクタにも適用されます (ISE で実行されるロジック アプリで使用する場合)。
 
 * 追加コストなしの[統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。お使いの [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) に基づきます。
 
@@ -60,12 +62,9 @@ ms.locfileid: "75896381"
 
   * **Developer SKU**:最大 4 つの追加の Standard アカウント、または合計で最大 5 つの標準 Standard アカウント。 Basic アカウントはありません。
 
-統合アカウントの制限については、「[Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)」をご覧ください。 このトピックで後述する[統合アカウントのレベルとそれらの価格モデル](#integration-accounts)で詳細を確認できます。
+  統合アカウントの制限については、「[Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)」をご覧ください。 このトピックで後述する[統合アカウントのレベルとそれらの価格モデル](#integration-accounts)で詳細を確認できます。
 
-Premium ISE SKU では、基本単位の容量は固定されているため、さらにスループットが必要な場合は、作成中または作成後に[スケール ユニットを追加](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity)できます。 Developer ISE SKU には、スケール ユニットを追加する機能はありません。 ISE で実行するロジック アプリでは、データ保持のコストはかかりません。
-
-> [!NOTE]
-> ISE 内で、組み込みのトリガーとアクションは **Core** というラベルを表示し、ロジック アプリと同じ ISE で実行されます。 **ISE** というラベルが表示される標準およびエンタープライズ コネクタは、ロジック アプリと同じ ISE で実行されます。 ISE というラベルが表示されないコネクタは、グローバルな Logic Apps サービスで実行されます。
+Premium ISE SKU を選択した場合、基本単位の容量は固定されています。 さらにスループットが必要な場合は、作成中または作成後に[スケール ユニットをさらに追加](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity)できます。 Developer ISE SKU には、スケール ユニットを追加する機能はありません。 ISE で実行するロジック アプリでは、データ保持のコストはかかりません。
 
 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps)に関する記事を参照してください。
 
@@ -91,7 +90,7 @@ Azure Logic Apps のコネクタを使用すると、ご自身のロジック �
 
 <a name="actions"></a>
 
-## <a name="actions"></a>アクション
+## <a name="actions"></a>Actions
 
 Logic Apps では、HTTP などの "組み込み" アクションはネイティブ アクションとして課金されます。 たとえば、組み込みアクションには、HTTP 呼び出し、Azure Functions または API Management からの呼び出し、Condition、Loop、Switch ステートメントなどの制御フローのステップが含まれます。 各アクションには、独自のアクションの種類があります。 たとえば、[コネクタ](https://docs.microsoft.com/connectors)を呼び出すアクションの種類は "ApiConnection" です。 これらのコネクタは、標準コネクタまたはエンタープライズ コネクタのいずれかに分類され、該当する[価格](https://azure.microsoft.com/pricing/details/logic-apps)に基づいて課金されます。 "*プレビュー*" 段階のエンタープライズ コネクタは、標準コネクタとして課金されます。
 

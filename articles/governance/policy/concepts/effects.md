@@ -3,12 +3,12 @@ title: 効果のしくみを理解する
 description: Azure Policy の定義には、コンプライアンスが管理および報告される方法を決定するさまざまな効果があります。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2b588cfb7c13a63e3fa5d3a65d9ccb24a2e854fd
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 502c8a87c4e915ebd1fd764915daa9c89a307097
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972810"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544132"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
@@ -158,7 +158,7 @@ Modify 効果の **details** プロパティには、修復に必要なアクセ
 
 **operation** プロパティには、次のオプションが用意されています。
 
-|操作 |説明 |
+|Operation |説明 |
 |-|-|
 |addOrReplace |定義済みのタグと値をリソースに追加します (タグに別の値が既に存在する場合でも)。 |
 |追加 |定義済みのタグと値をリソースに追加します。 |
@@ -331,7 +331,8 @@ AuditIfNotExists と同様に、DeployIfNotExists ポリシー定義は条件が
 
 ### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists の評価
 
-DeployIfNotExists は、リソース プロバイダーでリソースの作成または更新要求が処理され、成功を示す状態コードが返された後で実行されます。 関連するリソースがない場合、または **ExistenceCondition** によって定義されたリソースが true と評価されない場合、テンプレートのデプロイが発生します。
+DeployIfNotExists は、リソースプロバイダーでリソースの作成または更新要求が処理され、成功を示す状態コードが返されてから約 15 分後に実行されます。 関連するリソースがない場合、または **ExistenceCondition** によって定義されたリソースが true と評価されない場合、テンプレートのデプロイが発生します。
+デプロイの時間は、テンプレートに含まれるリソースの複雑さによって異なります。
 
 評価サイクル中は、リソースを照合する DeployIfNotExists 効果があるポリシー定義は非準拠としてマークされ、リソースに対するアクションは実行されません。
 

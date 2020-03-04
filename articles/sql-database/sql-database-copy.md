@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 11/14/2019
-ms.openlocfilehash: e1df345fb9a89972ad1857a937c22d6e10ad1fba
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.date: 02/24/2020
+ms.openlocfilehash: f27042679280581dc3a03113d75c5fb787bbf711
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289409"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615997"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>トランザクション上一貫性のある Azure SQL データベースのコピーを作成する
 
@@ -31,13 +31,13 @@ Azure SQL Database では、同じサーバーまたは別のサーバーのい�
 
 ## <a name="logins-in-the-database-copy"></a>データベースのコピーへのログイン
 
-データベースを同じ SQL Database サーバーにコピーすると、両方のデータベースで同じログインを利用できます。 データベースをコピーするために使うセキュリティ プリンシパルが、新しいデータベースのデータベース所有者になります。 すべてのデータベース ユーザー、アクセス許可、セキュリティ識別子 (SID) がデータベースのコピーにコピーされます。  
+データベースを同じ SQL Database サーバーにコピーすると、両方のデータベースで同じログインを利用できます。 データベースをコピーするために使うセキュリティ プリンシパルが、新しいデータベースのデータベース所有者になります。 
 
-別の SQL Database サーバーにデータベースをコピーする場合は、新しいサーバーのセキュリティ プリンシパルが新しいデータベースのデータベース所有者になります。 データのアクセスに[包含データベース ユーザー](sql-database-manage-logins.md)を使う場合は、プライマリとセカンダリの両方のデータベースが常に同じユーザー資格情報を持つようにします。そうすることで、コピーの完了後すぐに同じ資格情報でアクセスできるようになります。
+データベースを別の SQL Database サーバーにコピーすると、ターゲット サーバーでコピー操作を開始したセキュリティ プリンシパルが、新しいデータベースの所有者になります。 
 
-[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) を使用すると、コピーで資格情報を管理する必要がなくなります。 ただし、新しいサーバーにデータベースをコピーする場合、ログインに基づくアクセスは動作しないことがあります。これは、そのログインが新しいサーバーに存在しないためです。 別の SQL Database サーバーにデータベースをコピーする場合のログイン管理の詳細については、[ディザスター リカバリー後に Azure SQL データベース セキュリティを管理する方法](sql-database-geo-replication-security-config.md)に関するページをご覧ください。
+ターゲットサーバーに関係なく、すべてのデータベース ユーザー、そのアクセス許可、およびそれらのセキュリティ識別子 (SID) がデータベースのコピーにコピーされます。 データ アクセスに [包含データベース ユーザー](sql-database-manage-logins.md) を使用すると、コピーしたデータベースのユーザー資格情報が同じであることが確認されます。これにより、コピーの完了後すぐに同じ資格情報でアクセスできるようになります。
 
-コピーが成功した後、他のユーザーが再マップされるまでは、コピーを開始したログイン、つまりデータベース所有者のみが新しいデータベースにログインできます。 コピー操作が完了した後でログインを解決するには、「[ログインの解決](#resolve-logins)」をご覧ください。
+データ アクセスにサーバー レベルのログインを使用し、別のサーバーにデータベースをコピーする場合、ログイン ベースのアクセスが機能しない可能性があります。 これは、ログインがターゲット サーバーに存在しないか、パスワードとセキュリティ識別子 (SID) が異なるために発生する場合があります。 別の SQL Database サーバーにデータベースをコピーする場合のログイン管理の詳細については、[ディザスター リカバリー後に Azure SQL データベース セキュリティを管理する方法](sql-database-geo-replication-security-config.md)に関するページをご覧ください。 別のサーバーへのコピー操作が成功した後、他のユーザーが再マップされる前に、データベース所有者に関連付けられているログインのみ、またはサーバー管理者がコピーしたデータベースにログインできます。 コピー操作の完了後にログインを解決し、データ アクセスを確立する方法については、「[ログインの解決](#resolve-logins)」をご参照ください。
 
 ## <a name="copy-a-database-by-using-the-azure-portal"></a>Azure Portal を使ってデータベースをコピーする
 
@@ -45,11 +45,11 @@ Azure Portal を使ってデータベースをコピーするには、データ�
 
    ![データベースのコピー](./media/sql-database-copy/database-copy.png)
 
-## <a name="copy-a-database-by-using-powershell"></a>PowerShell を使ってデータベースをコピーする
+## <a name="copy-a-database-by-using-powershell-or-azure-cli"></a>PowerShell または Azure CLI を使用してデータベースをコピーする
 
 データベースをコピーするには、次の例を使用します。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell の場合、[New-AzSqlDatabaseCopy](/powershell/module/az.sql/new-azsqldatabasecopy) コマンドレットを使用します。
 
@@ -63,7 +63,9 @@ New-AzSqlDatabaseCopy -ResourceGroupName "<resourceGroup>" -ServerName $sourcese
 
 データベースのコピーは非同期操作ですが、要求が受け入れられた直後にターゲット データベースが作成されます。 まだ進行中のコピー操作を取り消す必要がある場合は、[Remove-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) コマンドレットを使用してターゲット データベースをドロップします。
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+完全な PowerShell のサンプル スクリプトについては、「[新しいサーバーにデータベースをコピーする](scripts/sql-database-copy-database-to-new-server-powershell.md)」をご覧ください。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azure-cli
 az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myResourceGroup" --dest-server $targetserver `
@@ -73,8 +75,6 @@ az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myRes
 データベースのコピーは非同期操作ですが、要求が受け入れられた直後にターゲット データベースが作成されます。 まだ進行中のコピー操作を取り消す必要がある場合は、[az sql db delete](/cli/azure/sql/db#az-sql-db-delete) コマンドを使用してターゲット データベースをドロップします。
 
 * * *
-
-完全なサンプル スクリプトについては、「[新しいサーバーにデータベースをコピーする](scripts/sql-database-copy-database-to-new-server-powershell.md)」をご覧ください。
 
 ## <a name="rbac-roles-to-manage-database-copy"></a>データベースのコピーを管理する RBAC ロール
 
@@ -104,13 +104,17 @@ Azure portal を使用してデータベースのコピーを管理するには�
 
 ## <a name="copy-a-database-by-using-transact-sql"></a>Transact-SQL を使ってデータベースをコピーする
 
-サーバーレベル プリンシパル ログインか、コピーするデータベースを作成したときのログインを使って、マスター データベースにログオンします。 データベースを正常にコピーするには、サーバーレベル プリンシパルではないログインが dbmanager ロールのメンバーである必要があります。 ログインおよびサーバーへの接続の詳細については、 [ログインの管理](sql-database-manage-logins.md)に関するページを参照してください。
+サーバー管理者のログイン、またはコピーするデータベースを作成したログインを使用して、マスター データベースにログインします。 データベースのコピーを成功させるには、サーバー管理者ではないログインが `dbmanager` ロールのメンバーによるものである必要があります。 ログインおよびサーバーへの接続の詳細については、 [ログインの管理](sql-database-manage-logins.md)に関するページを参照してください。
 
-[CREATE DATABASE](https://msdn.microsoft.com/library/ms176061.aspx) ステートメントを使用して、コピー元データベースのコピーを開始します。 このステートメントを実行すると、データベースのコピー処理が始まります。 データベースのコピーは非同期的な処理であるため、CREATE DATABASE ステートメントからは、データベースのコピーが完了する前に戻ります。
+[CREATE DATABASE AS COPY OF ...](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current#copy-a-database) ステートメントを使用して、ソース データベースのコピーを開始します。 T-SQL ステートメントは、データベースのコピー操作が完了するまで実行を続けます。
+
+> [!NOTE]
+> T-SQL ステートメントを終了しても、データベース コピー操作は終了しません。 操作を終了するには、ターゲット データベースを削除します。
+>
 
 ### <a name="copy-a-sql-database-to-the-same-server"></a>同じサーバーへの SQL データベースのコピー
 
-サーバーレベル プリンシパル ログインか、コピーするデータベースを作成したときのログインを使って、マスター データベースにログオンします。 データベースを正常にコピーするには、サーバーレベル プリンシパルではないログインが dbmanager ロールのメンバーである必要があります。
+サーバー管理者のログイン、またはコピーするデータベースを作成したログインを使用して、マスター データベースにログインします。 データベースのコピーを成功させるには、サーバー管理者ではないログインが `dbmanager` ロールのメンバーによるものである必要があります。
 
 このコマンドは、Database1 を、同じサーバー上の Database2 という名前の新しいデータベースにコピーします。 データベースのサイズに応じて、コピー操作の完了に時間がかかる場合があります。
 
@@ -121,7 +125,7 @@ Azure portal を使用してデータベースのコピーを管理するには�
 
 ### <a name="copy-a-sql-database-to-a-different-server"></a>別のサーバーへの SQL データベースのコピー
 
-コピー先サーバー (新しいデータベースを作成する SQL Database サーバー) のマスター データベースにログインします。 コピー元の SQL Database サーバー上のコピー元データベースのデータベース所有者と同じ名前とパスワードを持つログインを使います。 コピー先サーバーでのログインも、dbmanager ロールのメンバーであるか、サーバーレベル プリンシパル ログインである必要があります。
+新しいデータベースを作成するターゲット サーバーのマスター データベースにログインします。 コピー元の サーバーのコピー元データベースのデータベース所有者と同じ名前とパスワードを持つログインを使用します。 また、ターゲット サーバーでのログインは、`dbmanager` ロールのメンバーであるか、またはサーバー管理者のログインである必要があります。
 
 このコマンドは、server1 上の Database1 を、server2 上の Database2 という新しいデータベースにコピーします。 データベースのサイズに応じて、コピー操作の完了に時間がかかる場合があります。
 
@@ -131,33 +135,33 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 ```
 
 > [!IMPORTANT]
-> T-SQL COPY コマンドを発行するクライアントの IP からのインバウンド接続を許可するように、両方のサーバーのファイアウォールを構成する必要があります。
+> 両方のサーバーのファイアウォールは、T-SQL CREATE DATABASE ...AS COPY OF コマンドを発行するクライアントの IP からの受信接続を許可するように構成する必要があります。
 
 ### <a name="copy-a-sql-database-to-a-different-subscription"></a>別のサブスクリプションに SQL データベースをコピーする
 
-前のセクションに示された手順を使用して、別のサブスクリプションの SQL Database サーバーにデータベースをコピーすることができます。 名前とパスワードがソース データベースのデータベース所有者と同じであるログインを使用しており、それが dbmanager ロールのメンバーであるか、サーバーレベルのプリンシパル ログインであることを確認してください。 
+「 [SQL データベースを別のサーバーにコピーする](#copy-a-sql-database-to-a-different-server) 」セクションの手順を使用して、T-SQL を使用して別のサブスクリプションで SQL Database サーバーにデータベースをコピーできます。 ソース データベースのデータベース所有者と同じ名前とパスワードを持つログインを使用していることを確認します。 また、ログインは、ソース サーバーとターゲット サーバーの両方で、`dbmanager` ロールまたはサーバー管理者のメンバーである必要があります。
 
 > [!NOTE]
-> [Azure portal](https://portal.azure.com) では、別のサブスクリプションへのコピーはサポートされていません。ポータルでは ARM API を呼び出し、サブスクリプション資格情報を使用して、geo レプリケーションに関係する両方のサーバーにアクセスするためです。  
+> [Azure portal](https://portal.azure.com)、PowerShell、および Azure CLI は、別のサブスクリプションへのデータベースのコピーをサポートしていません。
 
 ### <a name="monitor-the-progress-of-the-copying-operation"></a>コピー操作の進行状況を監視する
 
-sys.databases ビューと sys.dm_database_copies ビューを照会して、コピー操作を監視します。 コピー操作の進行中は、新しいデータベースの sys.databases ビューの **state_desc** 列が **COPYING** に設定されます。
+[の](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) に対してクエリを実行してコピー処理を監視し、[ sys. dm_database_copies](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database.md)、[dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database.md) を表示します。 コピー操作の進行中は、新しいデータベースの sys.databases ビューの **state_desc** 列が **COPYING** に設定されます。
 
 * コピー操作が失敗すると、新しいデータベースの sys.databases ビューの **state_desc** 列が **SUSPECT** に設定されます。 新しいデータベースに対して DROP ステートメントを実行した後でもう一度やり直してください。
 * コピー操作が成功すると、新しいデータベースの sys.databases ビューの **state_desc** 列が **ONLINE** に設定されます。 コピー操作は完了しています。新しいデータベースは通常のデータベースであり、コピー元データベースから独立して変更することができます。
 
 > [!NOTE]
-> 進行中のコピー操作を取り消すには、新しいデータベースに対して [DROP DATABASE](https://msdn.microsoft.com/library/ms178613.aspx) ステートメントを実行します。 また、コピー元のデータベースに対して DROP DATABASE ステートメントを実行することによっても、コピー操作を取り消すことができます。
+> 進行中のコピー操作を取り消すには、新しいデータベースに対して [DROP DATABASE](https://docs.microsoft.com/sql/t-sql/statements/drop-database-transact-sql) ステートメントを実行します。
 
 > [!IMPORTANT]
-> ソースよりも SLO が非常に小さいコピーを作成する必要がある場合、ターゲット データベースには、シード処理を完了するための十分なリソースがない可能性があります。これにより、コピー操作が失敗する可能性があります。 このシナリオでは、geo リストア要求を使用して、別のサーバーや別のリージョンにコピーを作成します。 詳細については、「[データベースのバックアップを使用した Azure SQL データベースの復旧](sql-database-recovery-using-backups.md#geo-restore)」を参照してください。
+> ソースよりも非常に小さいサービス目標を使用してコピーを作成する必要がある場合、ターゲット データベースには、シード処理を完了するための十分なリソースがない可能性があります。これにより、コピー操作が失敗する可能性があります。 このシナリオでは、geo リストア要求を使用して、別のサーバーや別のリージョンにコピーを作成します。 詳細については、「[データベースのバックアップを使用した Azure SQL データベースの復旧](sql-database-recovery-using-backups.md#geo-restore)」を参照してください。
 
 ## <a name="resolve-logins"></a>ログインの解決
 
-新しいデータベースがコピー先サーバーでオンラインになった後、 [ALTER USER](https://msdn.microsoft.com/library/ms176060.aspx) ステートメントを使用して、ユーザーを新しいデータベースからコピー先サーバーのログインに再マップします。 孤立したユーザーを解決するには、「 [孤立ユーザーのトラブルシューティング](https://msdn.microsoft.com/library/ms175475.aspx)」をご覧ください。 「 [障害復旧後にセキュリティを管理する方法](sql-database-geo-replication-security-config.md)」もご覧ください。
+新しいデータベースがターゲット サーバーでオンラインになった後、 [ALTER USER](https://docs.microsoft.com/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-current) ステートメントを使用して、ユーザーを新しいデータベースからターゲット サーバーのログインに再マップします。 孤立したユーザーを解決するには、「 [孤立ユーザーのトラブルシューティング](https://docs.microsoft.com/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server)」をご覧ください。 「 [障害復旧後にセキュリティを管理する方法](sql-database-geo-replication-security-config.md)」もご覧ください。
 
-新しいデータベースのすべてのユーザーのアクセス許可は、コピー元データベースで保持していたものと同じです。 データベースのコピーを開始したユーザーが新しいデータベースのデータベース所有者になり、新しいセキュリティ識別子 (SID) が割り当てられます。 コピーが成功した後、他のユーザーが再マップされるまでは、コピーを開始したログイン、つまりデータベース所有者のみが新しいデータベースにログインできます。
+新しいデータベースのすべてのユーザーのアクセス許可は、コピー元データベースで保持していたものと同じです。 データベースのコピーを開始したユーザーが、新しいデータベースのデータベース所有者になります。 コピーが成功した後、他のユーザーが再マップされる前に、データベース所有者のみが新しいデータベースにログインできます。
 
 別の SQL Database サーバーにデータベースをコピーする場合のユーザーとログインの管理の詳細については、[ディザスター リカバリー後に Azure SQL データベース セキュリティを管理する方法](sql-database-geo-replication-security-config.md)に関する方法をご覧ください。
 

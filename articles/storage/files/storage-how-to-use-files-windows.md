@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 831c771da385ef6faeba194878ca53ede34ccc0a
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 4bd9c64e1b9219f6752172d9dc518af71ad67e70
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816641"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598587"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Windows で Azure ファイル共有を使用する
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows と Windows Server でシームレスに使うことができます。 この記事では、Windows と Windows Server で Azure ファイル共有を使う際の注意点について取り上げます。
@@ -22,25 +22,23 @@ Azure ファイル共有がホストされている Azure リージョンの外�
 Azure ファイル共有は、Azure VM とオンプレミスのどちらかで実行されている Windows インストール済み環境で使用できます。 次の表は、ファイル共有へのアクセスがサポートされる環境を OS バージョンごとに示したものです。
 
 | Windows のバージョン        | SMB のバージョン | Azure VM でマウント可能 | オンプレミスでマウント可能 |
-|------------------------|-------------|-----------------------|----------------------|
-| Windows Server 2019    | SMB 3.0 | はい | はい |
+|------------------------|-------------|-----------------------|-----------------------|
+| Windows Server 2019 | SMB 3.0 | はい | はい |
 | Windows 10<sup>1</sup> | SMB 3.0 | はい | はい |
 | Windows Server 半期チャネル<sup>2</sup> | SMB 3.0 | はい | はい |
-| Windows Server 2016    | SMB 3.0     | はい                   | はい                  |
-| Windows 8.1            | SMB 3.0     | はい                   | はい                  |
-| Windows Server 2012 R2 | SMB 3.0     | はい                   | はい                  |
-| Windows Server 2012    | SMB 3.0     | はい                   | はい                  |
-| Windows 7              | SMB 2.1     | はい                   | いいえ                   |
-| Windows Server 2008 R2 | SMB 2.1     | はい                   | いいえ                   |
+| Windows Server 2016 | SMB 3.0 | はい | はい |
+| Windows 8.1 | SMB 3.0 | はい | はい |
+| Windows Server 2012 R2 | SMB 3.0 | はい | はい |
+| Windows Server 2012 | SMB 3.0 | はい | はい |
+| Windows 7<sup>3</sup> | SMB 2.1 | はい | いいえ |
+| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | はい | いいえ |
 
-<sup>1</sup> Windows 10 バージョン 1507、1607、1703、1709、1803、1809、1903。  
-<sup>2</sup>Windows Server バージョン 1803、1809、1903。
+<sup>1</sup>Windows 10 バージョン 1507、1607、1709、1803、1809、1903、および 1909。  
+<sup>2</sup>Windows Server バージョン 1809、1903、および 1909。  
+<sup>3</sup>Windows 7 および Windows Server 2008 R2 に対する Microsoft の通常のサポートは終了しました。 [拡張セキュリティ更新 (ESU) プログラム](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates)を介してのみ、セキュリティ更新プログラムの追加サポートを購入できます。 これらのオペレーティング システムから移行することを強くお勧めします。
 
 > [!Note]  
 > 常に、各 Windows バージョンの最新のサポート技術情報を参照することをお勧めします。
-
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件 
 * **ストレージ アカウント名**: Azure ファイル共有をマウントするには、ストレージ アカウントの名前が必要です。
@@ -82,7 +80,7 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 ## <a name="using-an-azure-file-share-with-windows"></a>Windows で Azure ファイル共有を使用する
 Windows で Azure ファイル共有を使用するには、Azure ファイル共有にドライブ文字 (マウント ポイントのパス) を割り当ててマウントするか、または対応する [UNC パス](https://msdn.microsoft.com/library/windows/desktop/aa365247.aspx)経由でアクセスする必要があります。 
 
-Windows Server や Linux Samba サーバー、NAS デバイスをホストとするような従来からある SMB 共有とは異なり、Azure ファイル共有は現在、Active Directory (AD) または Azure Active Directory (AAD) の ID を使った Kerberos 認証をサポートしていません。この認証機能については現在、対応に向けて[作業中](https://feedback.azure.com/forums/217298-storage/suggestions/6078420-acl-s-for-azurefiles)です。 Azure ファイル共有には、それが格納されているストレージ アカウントのストレージ アカウント キーを使ってアクセスする必要があります。 ストレージ アカウント キーは、アクセスするファイル共有内のファイルとフォルダーすべてに対する管理者アクセス許可を含んだストレージ アカウントの管理者キーであると共に、ストレージ アカウントに格納されているすべてのファイル共有および他のストレージ リソース (BLOB、キュー、テーブルなど) の管理者キーでもあります。 それで対応できないワークロードについては、Kerberos 認証と ACL サポートの不足を [Azure File Sync](storage-files-planning.md#data-access-method) で解決できる可能性があります。AAD ベースの Kerberos 認証および ACL サポートが一般提供されるまでの一時的な措置としてご利用ください。
+Windows Server や Linux Samba サーバー、NAS デバイスをホストとするような従来からある SMB 共有とは異なり、Azure ファイル共有は現在、Active Directory (AD) または Azure Active Directory (AAD) の ID を使った Kerberos 認証をサポートしていません。この認証機能については現在、対応に向けて[作業中](https://feedback.azure.com/forums/217298-storage/suggestions/6078420-acl-s-for-azurefiles)です。 Azure ファイル共有には、それが格納されているストレージ アカウントのストレージ アカウント キーを使ってアクセスする必要があります。 ストレージ アカウント キーは、アクセスするファイル共有内のファイルとフォルダーすべてに対する管理者アクセス許可を含んだストレージ アカウントの管理者キーであると共に、ストレージ アカウントに格納されているすべてのファイル共有および他のストレージ リソース (BLOB、キュー、テーブルなど) の管理者キーでもあります。 それで対応できないワークロードについては、Kerberos 認証と ACL サポートの不足を [Azure File Sync](storage-sync-files-planning.md) で解決できる可能性があります。AAD ベースの Kerberos 認証および ACL サポートが一般提供されるまでの一時的な措置としてご利用ください。
 
 SMB ファイル共有が想定されている基幹業務 (LOB) アプリケーションを Azure にリフトアンドシフトする一般的なパターンは、専用の Windows ファイル サーバーを Azure VM で実行する代わりとして Azure ファイル共有を使うことです。 基幹業務アプリケーションで Azure ファイル共有を使うための移行に関して、その作業を成功させるうえで重要な考慮事項があります。多くの基幹業務アプリケーションは、VM の管理者アカウントではなく、制限されたシステム アクセス許可を与えられた専用のサービス アカウントのコンテキストで実行されるということです。 そのため、Azure ファイル共有の資格情報をマウント/保存する際は、自分の管理者アカウントからではなく、必ずサービス アカウントのコンテキストから行う必要があります。
 
@@ -233,9 +231,9 @@ Windows で Azure ファイル共有をマウントするには、ポート 445 
 
 | Windows のバージョン                           | SMB 1 の既定の状態 | 無効化/削除の方法       | 
 |-------------------------------------------|----------------------|-----------------------------|
-| Windows Server 2019                       | Disabled             | Windows の機能を使って削除 |
-| Windows Server バージョン 1709 以降            | Disabled             | Windows の機能を使って削除 |
-| Windows 10 バージョン 1709 以降                | Disabled             | Windows の機能を使って削除 |
+| Windows Server 2019                       | 無効             | Windows の機能を使って削除 |
+| Windows Server バージョン 1709 以降            | 無効             | Windows の機能を使って削除 |
+| Windows 10 バージョン 1709 以降                | 無効             | Windows の機能を使って削除 |
 | Windows Server 2016                       | Enabled              | Windows の機能を使って削除 |
 | Windows 10 バージョン 1507、1607、1703 | Enabled              | Windows の機能を使って削除 |
 | Windows Server 2012 R2                    | Enabled              | Windows の機能を使って削除 | 
@@ -302,7 +300,7 @@ SMB 1 を無効にするには、このレジストリ キーを作成した後�
 - [DSCEA で環境内の SMB 1 を検出する](https://blogs.technet.microsoft.com/ralphkyttle/2017/04/07/discover-smb1-in-your-environment-with-dscea/)
 - [グループ ポリシーで SMB 1 を無効にする](https://blogs.technet.microsoft.com/secguide/2017/06/15/disabling-smbv1-through-group-policy/)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Files の詳細については、次のリンクをご覧ください。
 - [Azure Files のデプロイの計画](storage-files-planning.md)
 - [FAQ](../storage-files-faq.md)

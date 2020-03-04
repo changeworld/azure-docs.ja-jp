@@ -6,7 +6,7 @@ documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a01f7f48dd93983edf4be4b797f62afede273c66
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: cc41a18063202bfefb9ddf7238de17fc691984af
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77065778"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612145"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory における属性マッピングの式の書き方
 SaaS アプリケーションに対してプロビジョニングを構成するときに指定できる属性マッピングの種類の 1 つは、式マッピングです。 この場合は、ユーザーのデータを SaaS アプリケーションが許容可能な形式に変換することができる、スクリプトのような式を記述する必要があります。
@@ -38,7 +38,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 * 文字列定数では、文字列に円記号 (\) または引用符 (") を含める必要がある場合は、円記号 (\) でエスケープする必要があります。 次に例を示します。"会社名:\\"Contoso\\""
 
 ## <a name="list-of-functions"></a>関数の一覧
-[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [NumFromDate](#numfromdate) &nbsp;&nbsp;&nbsp;&nbsp;[RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [IIF](#iif) &nbsp;&nbsp;&nbsp;&nbsp;[InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
 
 ---
 ### <a name="append"></a>Append
@@ -48,7 +48,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **source** |Required |String |通常は、source オブジェクトの属性の名前。 |
 | **suffix** |Required |String |source 値の末尾に追加する文字列。 |
@@ -66,7 +66,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **value1** |Required |num |value2 と共に AND で処理する数値|
 | **value2** |Required |num |value1 と共に AND で処理する数値|
@@ -83,7 +83,7 @@ BitAnd(&HF, &HF7)
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **式 (expression)** |Required | expression | 任意の有効な式 |
 
@@ -99,7 +99,7 @@ CBool([attribute1] = [attribute2])
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **source1  … sourceN** | Required | String |必須、回数は可変。 通常は、source オブジェクトの属性の名前。 |
 | **defaultValue** | 省略可能 | String | すべてのソース値が NULL の場合に使用される既定値。 空の文字列 ("") を指定できます。
@@ -112,7 +112,7 @@ CBool([attribute1] = [attribute2])
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **source** |Required |String |base 64 に変換される文字列|
 
@@ -128,7 +128,7 @@ ConvertToBase64("Hello world!")
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **source** |Required |String |UTF8 Hex に変換される文字列|
 
@@ -144,7 +144,7 @@ ConvertToUTF8Hex("Hello world!")
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **attribute** |Required |属性 (attribute) |要素がカウントされる複数値の属性|
 
@@ -156,7 +156,7 @@ ConvertToUTF8Hex("Hello world!")
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **value** |Required | 数値、参照、またはブール値 | 数値、参照属性、ブール値を指定できます。 |
 
@@ -172,7 +172,7 @@ CStr([dn])
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **value** |Required | Date | DateTime 型に変換される AD 日付 |
 
@@ -189,7 +189,7 @@ DateFromNum(129699324000000000)
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **source** |Required |String |通常は、source オブジェクトの属性の名前。 |
 | **inputFormat** |Required |String |有効な形式の source 値。 サポートされる形式については、[https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) をご覧ください。 |
@@ -202,6 +202,23 @@ DateFromNum(129699324000000000)
 **説明:**<br> GUID 関数は、新しいランダムな GUID を生成します。
 
 ---
+### <a name="iif"></a>IIF
+**関数:**<br> IIF(condition,valueIfTrue,valueIfFalse)
+
+**説明:**<br> IIF 関数は、指定した条件に基づいて、使用できる一連の値のうち、いずれかを返します。
+
+**パラメーター:**<br> 
+
+| 名前 | 必須/繰り返し | Type | Notes |
+| --- | --- | --- | --- |
+| **condition** |Required |変数または式 |true または false に評価できる任意の値または式。 |
+| **valueIfTrue** |Required |変数または文字列 | 条件の評価結果が true の場合に返される値。 |
+| **valueIfFalse** |Required |変数または文字列 |条件の評価結果が false の場合に返される値。|
+
+**例:**<br>
+IIF([country]="USA",[country],[department])
+
+---
 ### <a name="instr"></a>InStr
 **関数:**<br> InStr(value1,value2,start,compareType)
 
@@ -209,7 +226,7 @@ DateFromNum(129699324000000000)
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **value1** |Required |String |検索対象の文字列 |
 | **value2** |Required |String |検索する文字列 |
@@ -231,7 +248,7 @@ InStr("repEated","e",3,vbBinaryCompare)
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **式 (expression)** |Required |expression |評価の対象となる式 |
 
@@ -248,7 +265,7 @@ IsNull([displayName])
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **式 (expression)** |Required |expression |評価の対象となる式 |
 
@@ -264,7 +281,7 @@ IsNullOrEmpty([displayName])
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **式 (expression)** |Required |expression |評価の対象となる式 |
 
@@ -279,7 +296,7 @@ Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager])
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **式 (expression)** |Required |expression |評価の対象となる式 |
 
@@ -291,9 +308,9 @@ Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager])
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
-| **attribute** |Required |Attribute |検索対象の複数値の属性 |
+| **attribute** |Required |属性 |検索対象の複数値の属性 |
 | **インデックス** |Required |整数 | 複数値の文字列内の項目のインデックス|
 
 **例:**<br>
@@ -309,7 +326,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **separator** |Required |String |source 値を 1 つの文字列に連結するときに、各値を区切るのに使用する文字列。 区切り記号が必要ない場合は、“” とすることができます。 |
 | **source1  … sourceN** |必須、回数は可変 |String |結合する文字列値。 |
@@ -325,9 +342,9 @@ string に含まれる文字数が numChars で指定した数より少ない場
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
-| **String** |Required |Attribute | 返される文字を含む文字列 |
+| **String** |Required |属性 | 返される文字を含む文字列 |
 | **NumChars** |Required |整数 | 文字列の先頭 (左端) から取得する文字数を示す値|
 
 **例:**<br>
@@ -342,7 +359,7 @@ Left("John Doe", 3)
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **source** |Required |String |通常、属性の名前。 |
 | **start** |Required |整数 (integer) |部分文字列が始まる **source** 文字列のインデックス。 文字列内の最初の文字のインデックスは 1、2 番目の文字のインデックスは 2です (以降同様)。 |
@@ -356,7 +373,7 @@ Left("John Doe", 3)
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **source** |Required |String | 通常は、名または姓の属性です。 |
 
@@ -368,7 +385,7 @@ Left("John Doe", 3)
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **source** |Required |Boolean String |有効な **source** 値は "True" または "False" です。 |
 
@@ -380,7 +397,7 @@ Left("John Doe", 3)
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **value** |Required | String | サポートされる形式の日付と時刻の文字列。 サポートされる形式については、 https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx をご覧ください。 |
 
@@ -402,7 +419,7 @@ Left("John Doe", 3)
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **attribute** |Required |複数値の属性 |重複が削除される複数値の属性|
 
@@ -436,7 +453,7 @@ RemoveDuplicates([proxyAddresses])
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **source** |Required |String |通常は、**source** オブジェクトの属性の名前。 |
 | **oldValue** |省略可能 |String |**source** または **template** に含まれる置換前の値。 |
@@ -461,7 +478,7 @@ RemoveDuplicates([proxyAddresses])
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **uniqueValueRule1  … uniqueValueRuleN** |2 つ以上必要であり、上限はありません |String | 評価する一意値生成ルールの一覧。 |
 
@@ -474,7 +491,7 @@ RemoveDuplicates([proxyAddresses])
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **[appRoleAssignments]** |Required |String |**[appRoleAssignments]** オブジェクト |
 
@@ -486,7 +503,7 @@ RemoveDuplicates([proxyAddresses])
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **source** |Required |String |**source** 値。 |
 | **delimiter** |Required |String |文字列の分割に使用される文字を指定します (例: ",") |
@@ -499,7 +516,7 @@ RemoveDuplicates([proxyAddresses])
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **source** |Required |String |**source** 値。 |
 
@@ -511,7 +528,7 @@ RemoveDuplicates([proxyAddresses])
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **source** |Required |String |**Source** 値。 |
 | **defaultValue** |省略可能 |String |source がどの key とも一致しないときに使用される既定値。 空の文字列 ("") を指定できます。 |
@@ -526,7 +543,7 @@ RemoveDuplicates([proxyAddresses])
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **source** |Required |String |通常は、source オブジェクトの属性の名前。 |
 | **culture** |省略可能 |String |RFC 4646 に基づくカルチャ名の形式は、*languagecode2-country/regioncode2* です。ここで、*languagecode2* は 2 文字の言語コードで、*country/regioncode2* は 2 文字のサブカルチャ コードです。 例には、日本語 (日本) の場合の ja-JP と英語 (米国) の場合の en-US が含まれています。 2 文字の言語コードが使用できない場合は、ISO 639-2 から派生した 3 文字のコードが使用されます。|
@@ -539,7 +556,7 @@ RemoveDuplicates([proxyAddresses])
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **source** |Required |String |通常は、source オブジェクトの属性の名前。 |
 | **culture** |省略可能 |String |RFC 4646 に基づくカルチャ名の形式は、*languagecode2-country/regioncode2* です。ここで、*languagecode2* は 2 文字の言語コードで、*country/regioncode2* は 2 文字のサブカルチャ コードです。 例には、日本語 (日本) の場合の ja-JP と英語 (米国) の場合の en-US が含まれています。 2 文字の言語コードが使用できない場合は、ISO 639-2 から派生した 3 文字のコードが使用されます。|
@@ -556,7 +573,7 @@ string に含まれる単語の数が指定より少ないか、区切り記号�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **String** |Required |複数値の属性 |返される単語を含む文字列|
 | **WordNumber** |Required | 整数 | 返すべき単語の番号を指定する数値|

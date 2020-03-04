@@ -8,7 +8,7 @@
     - name: Bing Search API を比較する
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: カスタム検索インスタンスの作成
@@ -27,12 +27,8 @@
               href: call-endpoint-python.md
         - name: SDK
           items:
-            - name: 'C# の使用'
-              href: sdk-csharp-quick-start.md
-            - name: Python の使用
-              href: sdk-python-quickstart.md
-            - name: Java の使用
-              href: sdk-java-quickstart.md
+            - name: Bing Custom Search クライアント ライブラリ
+              href: ./quickstarts/client-libraries.md
 - name: チュートリアル
   items:
     - name: Custom Search Web ページの作成
@@ -41,7 +37,7 @@
   items:
     - name: コード サンプル
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Custom+Search'
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: カスタム検索エクスペリエンスの構成
       href: define-your-custom-view.md

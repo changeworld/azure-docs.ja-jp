@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12803e2f65e17155e8bbcaf4842789adc101b0dd
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7acd76ff45f783f614b2a1d3f0d5c10d800a1ea9
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024403"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77559047"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>クイック スタート:無制限のアプリの登録を作成するアクセス許可を付与する
 
-このクイックスタートでは、無制限の数のアプリの登録を作成するアクセス許可を持つカスタム ロールを作成した後、そのロールをユーザーに割り当てます。 その後、割り当てられたユーザーは、Azure AD ポータル、Azure AD PowerShell、Azure AD Graph API、または Microsoft Graph API を使用して、アプリの登録を作成できます。 組み込みのアプリケーション開発者ロールとは異なり、このカスタム ロールには、無制限の数のアプリの登録を作成する権限が付与されます。 アプリケーション開発者ロールにもこの権限は付与されますが、[ディレクトリ全体のオブジェクトのクォータ](directory-service-limits-restrictions.md)に達することがないように、作成されるオブジェクトの合計数は 250 に制限されています。
+このクイックスタートでは、無制限の数のアプリの登録を作成するアクセス許可を持つカスタム ロールを作成した後、そのロールをユーザーに割り当てます。 その後、割り当てられたユーザーは、Azure AD ポータル、Azure AD PowerShell、または Microsoft Graph API を使用して、アプリの登録を作成できます。 組み込みのアプリケーション開発者ロールとは異なり、このカスタム ロールには、無制限の数のアプリの登録を作成する権限が付与されます。 アプリケーション開発者ロールにもこの権限は付与されますが、[ディレクトリ全体のオブジェクトのクォータ](directory-service-limits-restrictions.md)に達することがないように、作成されるオブジェクトの合計数は 250 に制限されています。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -93,7 +93,7 @@ $customRole = New-AzureAdRoleDefinition -RolePermissions $rolePermissions -Displ
 
 #### <a name="prepare-powershell"></a>PowerShell を準備する
 
-最初に、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17)から Azure AD PowerShell モジュールをインストールします。 その後、次のコマンドを使用して、Azure AD PowerShell プレビュー モジュールを開きます。
+最初に、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17)から Azure AD PowerShell モジュールをインストールします。 その後、次のコマンドを使用して、Azure AD PowerShell プレビュー モジュールをインポートします。
 
 ```powershell
 import-module azureadpreview
@@ -188,7 +188,7 @@ Body
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure AD 管理ロール フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)でご意見をお寄せください。
 - ロールと管理者ロールの割り当ての詳細については、[管理者ロールの割り当て](directory-assign-admin-roles.md)に関するページを参照してください。

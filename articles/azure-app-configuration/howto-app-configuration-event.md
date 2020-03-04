@@ -1,28 +1,24 @@
 ---
-title: チュートリアル:Azure App Configuration を使用してイベントを Web エンドポイントに送信する
-titleSuffix: Azure App Configuration
-description: このチュートリアルでは、Web エンドポイントにキーと値の変更イベントを送信するように Azure App Configuration のイベント サブスクリプションを設定する方法について説明します。
+title: Azure App Configuration を使用して web エンドポイントにイベントを送信する
+description: Azure App Configuration イベントサブスクリプションを使用して、キー値の変更イベントを web エンドポイントに送信する方法について説明します
 services: azure-app-configuration
-documentationcenter: ''
-author: jimmyca
-editor: ''
+author: lisaguthrie
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.devlang: csharp
-ms.topic: tutorial
-ms.date: 05/30/2019
+ms.topic: how-to
+ms.date: 02/25/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 2a80f931f2060d421483b9e26940985091c9bb5c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 93700af5e7fb3a4a1253424996ed04532c01f88c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899683"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619604"
 ---
-# <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure App Configuration イベントを Web エンドポイントにルーティングする
+# <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Azure CLI を使用して Azure App Configuration イベントを Web エンドポイントにルーティングする
 
-このクイックスタートでは、Web エンドポイントにキーと値の変更イベントを送信するように Azure App Configuration のイベント サブスクリプションを設定する方法について説明します。 Azure App Configuration ユーザーは、キーと値が変更されたときに発行されるイベントにサブスクライブできます。 これらのイベントは、Webhook、Azure Functions、Azure Storage キュー、または Azure Event Grid でサポートされている他の任意のイベント ハンドラーをトリガーできます。 通常は、イベント データを処理し、アクションを実行するエンドポイントにイベントを送信します。 ただし、この記事では、単純化するために、メッセージを収集して表示する Web アプリにイベントを送信します。
+このアーティクルでは、Web エンドポイントにキー値の変更イベントを送信するように Azure App Configuration のイベント サブスクリプションを設定する方法について説明します。 Azure App Configuration ユーザーは、キー値が変更されたときに発行されるイベントにサブスクライブできます。 これらのイベントは、Web hook、Azure Functions、Azure Storage キュー、または Azure Event Grid でサポートされている他の任意のイベント ハンドラーをトリガーできます。 通常は、イベント データを処理し、アクションを実行するエンドポイントにイベントを送信します。 ただし、この記事では、単純化するために、メッセージを収集して表示する Web アプリにイベントを送信します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,15 +42,16 @@ Event Grid のトピックは Azure リソースであり、Azure リソース �
 az group create --name <resource_group_name> --location westus
 ```
 
-## <a name="create-an-app-configuration"></a>App Configuration の作成
+## <a name="create-an-app-configuration-store"></a>App Configuration ストアを作成する
 
-`<appconfig_name>` を App Configuration の一意の名前に置き換え、`<resource_group_name>` を先ほど作成したリソース グループに置き換えます。 名前は、DNS 名として使用されるため、一意である必要があります。
+`<appconfig_name>` を構成ストアの一意の名前に置き換え、`<resource_group_name>` を先ほど作成したリソース グループに置き換えます。 名前は、DNS 名として使用されるため、一意である必要があります。
 
 ```azurecli-interactive
 az appconfig create \
   --name <appconfig_name> \
   --location westus \
-  --resource-group <resource_group_name>
+  --resource-group <resource_group_name> \
+  --sku free
 ```
 
 ## <a name="create-a-message-endpoint"></a>メッセージ エンドポイントの作成
@@ -78,7 +75,7 @@ az group deployment create \
 
 [!INCLUDE [event-grid-register-provider-cli.md](../../includes/event-grid-register-provider-cli.md)]
 
-## <a name="subscribe-to-your-app-configuration"></a>App Configuration へのサブスクライブ
+## <a name="subscribe-to-your-app-configuration-store"></a>App Configuration ストアへのサブスクライブ
 
 どのイベントを追跡し、どこにイベントを送信するかは、トピックをサブスクライブすることによって Event Grid に伝えます。 次の例では、作成した App Configuration をサブスクライブし、Web アプリの URL をイベント通知のエンドポイントとして渡しています。 `<event_subscription_name>` をイベント サブスクリプションの名前に置き換えます。 `<resource_group_name>` と `<appconfig_name>` には、先ほど作成した値を使用します。
 
@@ -122,7 +119,6 @@ az appconfig kv set --name <appconfig_name> --key Foo --value Bar --yes
   "dataVersion": "1",
   "metadataVersion": "1"
 }]
-
 ```
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする

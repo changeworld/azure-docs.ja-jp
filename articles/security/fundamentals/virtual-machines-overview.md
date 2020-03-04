@@ -1,5 +1,6 @@
 ---
-title: Azure 仮想マシンで使用するセキュリティ機能 - Azure セキュリティ | Microsoft Docs
+title: Azure VM で使用されるセキュリティ機能
+titleSuffix: Azure security
 description: この記事では、Azure 仮想マシンで使用できる Azure のコア セキュリティ機能の概要について説明します。
 services: security
 documentationcenter: na
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: 6c01df071f263f7080f6c89b539d9a40aeff282f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 3cbe7788ca7486022513fabdca682cbb78615281
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792618"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500381"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 仮想マシンのセキュリティの概要
 この記事では、仮想マシンで使用できるコアの Azure セキュリティ機能の概要を示します。
@@ -90,7 +91,7 @@ Azure Disk Encryption は、Windows および Linux 仮想マシン ディスク
 詳細情報:
 
 * [IaaS VM の Azure Disk Encryption](/azure/security/azure-security-disk-encryption-overview)
-* [クイック スタート:Azure PowerShell を使用して Windows IaaS VM を暗号化する](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
+* [クイック スタート: Azure PowerShell を使用して Windows IaaS VM を暗号化する](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
 
 ## <a name="virtual-machine-backup"></a>仮想マシンのバックアップ
 
@@ -168,6 +169,6 @@ TEE によって、外部からは、デバッガーを使用しても内部の�
 * [Azure Confidential Computing の概要](https://azure.microsoft.com/blog/introducing-azure-confidential-computing/)  
 * [Azure Confidential Computing](https://azure.microsoft.com/blog/azure-confidential-computing/)  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 VM とオペレーティング システムの[セキュリティに関するベスト プラクティス](iaas.md)について説明します。

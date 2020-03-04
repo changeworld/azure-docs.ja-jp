@@ -5,13 +5,13 @@ author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 05/29/2019
-ms.openlocfilehash: 889699ab184b82a7c194043d15358ecdaab5d03d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/20/2020
+ms.openlocfilehash: 96ef09ac081aa328014217592a7fcd3ed6314c0e
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899640"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523766"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>回復性とディザスター リカバリー
 
@@ -27,9 +27,9 @@ ms.locfileid: "76899640"
 
 ## <a name="failover-between-configuration-stores"></a>構成ストア間のフェールオーバー
 
-技術的には、ご利用のアプリケーションでフェールオーバーは実行されていません。 2 つの App Configuration ストアから、同じ構成データのセットを同時に取得することが試みられています。 最初にセカンダリ ストアから、次にプライマリ ストアから読み込みを行うようにご自分のコードを調整します。 このアプローチにより、プライマリ ストア内の構成データが使用可能なときは常にそちらが確実に優先されます。 次のコード スニペットは、.NET Core CLI でのこの配置の実装方法を示しています。
+技術的には、ご利用のアプリケーションでフェールオーバーは実行されていません。 2 つの App Configuration ストアから、同じ構成データのセットを同時に取得することが試みられています。 最初にセカンダリ ストアから、次にプライマリ ストアから読み込みを行うようにご自分のコードを調整します。 このアプローチにより、プライマリ ストア内の構成データが使用可能なときは常にそちらが確実に優先されます。 次のコード スニペットは、.NET Core でのこの配置の実装方法を示しています。
 
-#### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+#### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
 ```csharp
 public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -44,7 +44,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
     
 ```
 
-#### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+#### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -70,17 +70,18 @@ Azure portal からは、次の手順に従って、別の構成ストアに変�
 
 1. **[Import/Export]** タブに移動し、 **[エクスポート]**  >  **[App Configuration]**  >  **[ターゲット]**  >  **[リソースの選択]** の順に選択します。
 
-2. 開いている新しいブレードで、ご利用のセカンダリ ストアのサブスクリプション、リソース グループ、リソース名を指定して、 **[適用]** を選択します。
+1. 開いた新しいブレードで、ご利用のセカンダリ ストアのサブスクリプション、リソース グループ、リソース名を指定して、 **[適用]** を選択します。
 
-3. UI が更新され、そのセカンダリ ストアにエクスポートする構成データを選択できるようになります。 時刻値は既定のままにし、 **[元のラベル]** と **[新しいラベル]** の両方を同じ値に設定できます。 **[適用]** を選択します。
+1. UI が更新され、そのセカンダリ ストアにエクスポートする構成データを選択できるようになります。 時刻値は既定のままにし、 **[元のラベル]** と **[新しいラベル]** の両方を同じ値に設定できます。 **[適用]** を選択します。
 
-4. すべての構成の変更について、前述の手順を繰り返します。
+1. すべての構成の変更について、前述の手順を繰り返します。
 
 このエクスポート プロセスを自動化するには、Azure CLI を使用します。 次のコマンドは、1 つの構成変更をプライマリ ストアからセカンダリにエクスポートする方法を示しています。
 
+```azurecli
     az appconfig kv export --destination appconfig --name {PrimaryStore} --label {Label} --dest-name {SecondaryStore} --dest-label {Label}
+```
 
 ## <a name="next-steps"></a>次のステップ
 
 この記事では、アプリケーションを拡張して App Configuration の実行時に地理的な回復性を実現する方法について説明しました。 ビルド時またはデプロイ時に、App Configuration から構成データを埋め込むこともできます。 詳細については、[「CI/CD パイプラインとの統合」](./integrate-ci-cd-pipeline.md)を参照してください。
-

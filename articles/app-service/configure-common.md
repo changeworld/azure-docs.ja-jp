@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 021941339bbbf72112628c54f5b05d5fd305bd0f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: ce0a170a629f347e2687a2e9f63fb3438fe2bd2f
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198583"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592528"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Azure portal で App Service アプリを構成する
 
@@ -168,6 +168,8 @@ ASP.NET および ASP.NET Core 開発者の場合、App Service での接続文�
     - **[ビット]** : 32 ビットまたは 64 ビット。
     - **[WebSocket プロトコル]** : [ASP.NET SignalR] や [socket.io](https://socket.io/) など。
     - **[常時接続]** : トラフィックがない場合も、アプリを読み込まれたままにします。 継続的な Web ジョブや、CRON 式を使用してトリガーされる Web ジョブに対して有効にする必要があります。
+      > [!NOTE]
+      > Always On 機能では、エンドポイントをコントロールできません。 常に要求をアプリケーション ルートに送信します。
     - **[Managed pipeline version] (マネージド パイプライン バージョン)** : IIS の[パイプライン モード]。 以前のバージョンの IIS を必要とするレガシ アプリがある場合は、これを **[Classic] (クラシック)** に設定します。
     - **[HTTP version] (HTTP バージョン)** :[HTTPS/2](https://wikipedia.org/wiki/HTTP/2) プロトコルのサポートを有効にするには、 **[2.0]** に設定します。
     > [!NOTE]

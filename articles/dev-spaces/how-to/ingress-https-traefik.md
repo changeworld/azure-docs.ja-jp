@@ -5,12 +5,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Azure Dev Spaces をカスタム traefik イングレス コントローラーを使用するように構成し、そのイングレス コントローラーを使用して HTTPS を構成する方法を説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: 4fc9dfbb4c437210de3ab9a88aafca2680dd363c
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 9e0c726d97fc87a25d559ecc3478d3f85df4eeb8
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486187"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623173"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>カスタム traefik イングレス コントローラーの使用と HTTPS の構成
 
@@ -49,15 +49,18 @@ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 
 traefik イングレス コントローラー用に Kubernetes 名前空間を作成し、それを `helm` を使用してインストールします。
 
+> [!NOTE]
+> ご使用の AKS で RBAC を有効にしない場合は、 *--set rbac.enabled=true* パラメーターを削除します。
+
 ```console
 kubectl create ns traefik
-helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --version 1.85.0
+helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set rbac.enabled=true --set fullnameOverride=customtraefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --version 1.85.0
 ```
 
 > [!NOTE]
 > 上の例では、イングレス コントローラーのパブリック エンドポイントを作成します。 代わりに、イングレス コントローラーのプライベート エンドポイントを使用する必要がある場合は、*helm install* コマンドに *--set service.annotations."service\\.beta\\.kubernetes\\.io/azure-load-balancer-internal"=true* パラメーターを追加します。
 > ```console
-> helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --set service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.85.0
+> helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set rbac.enabled=true --set fullnameOverride=customtraefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --set service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.85.0
 > ```
 > このプライベート エンドポイントは、AKS クラスターがデプロイされている仮想ネットワーク内で公開されます。
 
@@ -95,7 +98,11 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
-[values.yaml][values-yaml] を開き、*MY_CUSTOM_DOMAIN* には自分自身のドメインを使用し、 *<REPLACE_ME_WITH_HOST_SUFFIX>* のすべてのインスタンスを *traefik.MY_CUSTOM_DOMAIN* に置き換えます。 また、*kubernetes.io/ingress.class: traefik  # Custom Ingress* を *kubernetes.io/ingress.class: traefik-azds  # Dev Spaces-specific* に置き換えます。 更新された `values.yaml` ファイルの例を次に示します。
+[values.yaml][values-yaml] を開き、以下の更新を加えます。
+* *<REPLACE_ME_WITH_HOST_SUFFIX>* のすべてのインスタンスを *traefik.MY_CUSTOM_DOMAIN* で置き換えます (ここで、*MY_CUSTOM_DOMAIN* にはご自身のドメインを使用してください)。 
+* *kubernetes.io/ingress.class: traefik  # Custom Ingress* を *kubernetes.io/ingress.class: traefik-azds  # Dev Spaces-specific* で置き換えます。 
+
+更新された `values.yaml` ファイルの例を次に示します。
 
 ```yaml
 # This is a YAML-formatted file.
@@ -148,6 +155,9 @@ http://dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 ```
 
 `azds list-uris` コマンドからパブリック URL を開いて、*bikesharingweb* サービスに移動します。 上記の例では、*bikesharingweb* サービスのパブリック URL は `http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/` です。
+
+> [!NOTE]
+> *bikesharingweb* サービスではなくエラー ページが表示される場合は、*values.yaml* ファイル内で *kubernetes.io/ingress.class* 注釈とホストの**両方**を更新したことを確認してください。
 
 `azds space select` コマンドを使用すると、*dev* の下に子空間を作成し、子開発空間にアクセスするための URL を列挙できます。
 

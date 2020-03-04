@@ -1,10 +1,10 @@
 ---
-title: SAP NetWeaver のための Azure Virtual Machines 高可用性のアーキテクチャとシナリオ | Microsoft Docs
+title: SAP NetWeaver での Azure VM の HA アーキテクチャとシナリオ | Microsoft Docs
 description: Azure Virtual Machines での SAP NetWeaver のための高可用性のアーキテクチャとシナリオ
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/21/2019
-ms.author: rclaus
+ms.date: 02/25/2020
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c04726bf3b4166255ada7c9f1252be0471dcc761
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: b974869d1462f449e8a241a5925ef345170b493a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291483"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623870"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver のための高可用性のアーキテクチャとシナリオ
 
@@ -391,6 +391,8 @@ WSFC ソリューションを使用して、SAP ASCS/SCS インスタンスを�
 
 * **ファイル共有を使用した SAP ASCS/SCS インスタンスのクラスタリング**: このアーキテクチャの詳細については、[ファイル共有を使用した Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスのクラスタリング][sap-high-availability-guide-wsfc-file-share]に関するページを参照してください。
 
+* **ANF SMB 共有を使用した SAP ASCS/SCS インスタンスのクラスタリング**:このアーキテクチャの詳細については、[ANF SMB 共有を使用した Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスのクラスタリング](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)に関するページをご参照ください。
+
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Linux での SAP ASCS/SCS インスタンスの高可用性アーキテクチャ
 
 > ![Linux][Logo_Linux] Linux
@@ -404,13 +406,20 @@ Red Hat クラスター フレームワークを使用した SAP ASCS/SCS イン
 
 > ![Windows][Logo_Windows] Windows
 > 
-> 現在、マルチ SID は WSFC でのみサポートされます。 マルチ SID は、ファイル共有と共有ディスクを使用してサポートされます。
+> マルチ SID は、ファイル共有と共有ディスクを使用して WSFC でサポートされます。
 > 
-> マルチ SID 高可用性アーキテクチャについて詳しくは、次をご覧ください。
+> Windows のマルチ SID 高可用性アーキテクチャについての詳細は、次をご覧ください。
 
 * [Windows Server フェールオーバー クラスタリングとファイル共有を使用する SAP ASCS/SCS インスタンス マルチ SID の高可用性に関するページ][sap-ascs-ha-multi-sid-wsfc-file-share]
 
 * [Windows Server フェールオーバー クラスタリングと共有ディスクを使用する SAP ASCS/SCS インスタンス マルチ SID の高可用性に関するページ][sap-ascs-ha-multi-sid-wsfc-shared-disk]
+
+> ![Linux][Logo_Linux] Linux
+> 
+> マルチ SID クラスタリングは、SAP ASCS/Pacemaker の Linux クラスターでサポートされており、同じクラスター上で **5 つ** の SAP SID に制限されています。
+> Linux のマルチ SID 高可用性アーキテクチャについての詳細は、次をご覧ください。
+
+* [Azure VM での SAP NW の HA SLES for SAP アプリケーション のマルチ SID ガイド](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
 
 ### <a name="high-availability-dbms-instance"></a>高可用性の DBMS インスタンス
 

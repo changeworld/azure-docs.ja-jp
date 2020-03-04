@@ -1,31 +1,26 @@
 ---
-title: Azure App Configuration の FAQ | Microsoft Docs
+title: Azure App Configuration の FAQ
 description: Azure App Configuration に関してよく寄せられる質問
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: maiye
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 02/19/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 4bcd8f042563fa381832fd629061a822f71e844a
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 60ba0a7723861d6e642a23418dda6a1daa57f14e
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467591"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523494"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure App Configuration の FAQ
 
-この記事では、Azure App Configuration についてよく寄せられる質問にお答えします。
+この記事では、Azure App Configuration についてよく寄せられる質問に回答します。
 
 ## <a name="how-is-app-configuration-different-from-azure-key-vault"></a>App Configuration と Azure Key Vault は何が違うのですか?
 
-App Configuration は、開発者がアプリケーションの設定を管理したり機能の利用の可否を制御したりできるよう支援するという、明確なユース ケースを意図して設計されています。 複雑な構成データの扱いに伴うさまざまなタスクを単純化することを目的としています。
+App Configuration は、開発者がアプリケーション設定を管理したり機能の利用の可否を制御したりするのに役立ちます。 複雑な構成データの扱いに伴うさまざまなタスクを単純化することを目的としています。
 
 App Configuration では、以下がサポートされています。
 
@@ -62,7 +57,7 @@ App Service と App Configuration の間で設定をインポート/エクスポ
 
 ## <a name="how-should-i-store-configurations-for-multiple-environments-test-staging-production-and-so-on"></a>複数の環境 (テスト、ステージング、本番など) の構成は、どのように格納すべきでしょうか?
 
-現在、ストアごとのレベルで App Configuration にアクセスできるユーザーを制御しています。 異なるアクセス許可を必要とする環境ごとに、個別のストアを使用してください。 セキュリティ分離上、このアプローチが最も優れています。
+ストアごとのレベルで App Configuration にアクセスできるユーザーを制御します。 異なるアクセス許可を必要とする環境ごとに、個別のストアを使用してください。 セキュリティ分離上、このアプローチが最も優れています。
 
 ## <a name="what-are-the-recommended-ways-to-use-app-configuration"></a>App Configuration のおすすめの使い方を教えてください。
 
@@ -70,9 +65,14 @@ App Service と App Configuration の間で設定をインポート/エクスポ
 
 ## <a name="how-much-does-app-configuration-cost"></a>App Configuration にはどのぐらいのコストがかかりますか?
 
-次の 2 つの価格レベルがあります。1) Free レベル、2) Standard レベル。
+次の 2 つの価格レベルがあります。 
 
-Standard レベルの導入前にストアを作成した場合、それは一般公開時に自動的に Free レベルに移行されます。 Standard レベルへのアップグレードを選択できます。ご自分のニーズが満たされている場合は Free レベルのままにしておくこともできます。
+- Free レベル
+- Standard レベル
+
+Standard レベルの導入前にストアを作成した場合、それは一般公開時に自動的に Free レベルに移行されます。 Standard レベルへのアップグレードか Free レベルの維持を選択できます。
+
+ストアを Standard レベルから Free レベルにダウングレードすることはできません。 Free レベルで新しいストアを作成してから、そのストアに構成データをインポートすることができます。
 
 ## <a name="which-app-configuration-tier-should-i-use"></a>どの App Configuration レベルを使用すればよいですか?
 

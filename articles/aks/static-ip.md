@@ -1,20 +1,17 @@
 ---
-title: Azure Kubernetes Service (AKS) ロード バランサーで静的 IP アドレスを使用する
+title: Azure Kubernetes Service (AKS) ロード バランサーで静的 IP アドレスと DNS ラベルを使用する
 description: Azure Kubernetes Service (AKS) ロード バランサーで静的 IP アドレスを使用する方法を説明します｡
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 11/06/2019
-ms.author: mlearned
-ms.openlocfilehash: 8457f1c0c5b6107c4b44f6f00236a33f7c67452a
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: d5177494ecdd112342b2cd719e9305bfab97902c
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325436"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593599"
 ---
-# <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Azure Kubernetes Service (AKS) ロード バランサーで静的 IP アドレスを使用する
+# <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Azure Kubernetes Service (AKS) ロード バランサーで静的パブリック IP アドレスと DNS ラベルを使用する
 
 既定では、AKS クラスターによって作成されたロード バランサーのリソースに割り当てられているパブリック IP アドレスは､そのリソースの有効期間の間のみ有効です。 Kubernetes サービスを削除すると、関連付けられているロード バランサーと IP アドレスも削除されます。 デプロイし直された Kubernetes サービスに対して特定の IP アドレスを割り当てるか､あるいは IP アドレスを保持する場合は、静的パブリック IP アドレスを作成して､使用することができます。
 
@@ -65,7 +62,7 @@ $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicI
 
 ## <a name="create-a-service-using-the-static-ip-address"></a>静的 IP アドレスを使用してサービスを作成する
 
-サービスを作成する前に、AKS クラスターで使用されるサービス プリンシパルに、該当する他のリソース グループへの委任されたアクセス許可が含まれていることを確認してください。 例:
+サービスを作成する前に、AKS クラスターで使用されるサービス プリンシパルに、該当する他のリソース グループへの委任されたアクセス許可が含まれていることを確認してください。 次に例を示します。
 
 ```azurecli-interactive
 az role assignment create \
@@ -98,7 +95,31 @@ spec:
 kubectl apply -f load-balancer-service.yaml
 ```
 
-## <a name="troubleshoot"></a>トラブルシューティング
+## <a name="apply-a-dns-label-to-the-service"></a>サービスに DNS ラベルを適用する
+
+サービスで動的または静的パブリック IP アドレスを使用している場合は、サービス注釈 `service.beta.kubernetes.io/azure-dns-label-name` を使用して、公開 DNS ラベルを設定できます。 これにより、Azure のパブリック DNS サーバーとトップ レベル ドメインを使用して、サービスの完全修飾ドメイン名が発行されます。 注釈の値は Azure の場所内で一意である必要があるため、十分に修飾されたラベルを使用することをお勧めします。   
+
+その後、Azure は`<location>.cloudapp.azure.com` （場所は選択した地域）などの規定のサブネットを、指定した名前に自動的に追加して、完全修飾 DNS 名を作成します。 次に例を示します。
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.beta.kubernetes.io/azure-dns-label-name: myserviceuniquelabel
+  name: azure-load-balancer
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: azure-load-balancer
+```
+
+> [!NOTE] 
+> 独自のドメインでサービスを発行するには、[Azure DNS][azure-dns-zone] と [外部 DNS][external-dns] プロジェクトをご参照ください。
+
+## <a name="troubleshoot"></a>[トラブルシューティング]
 
 Kubernetes のサービス マニフェストの *loadBalancerIP* プロパティに定義されている静的 IP アドレスが存在しないか､ノード リソース グループ内に作成されておらず、追加の委任も構成されていない場合、ロード バランサーのサービスの作成は失敗します。 トラブルシューティングを行うには、[kubectl describe][kubectl-describe] コマンドを使用してサービス作成イベントを確認します。 次の例に示すように、YAML マニフェストで指定されているサービス名を指定します。
 
@@ -130,12 +151,14 @@ Events:
   Warning  CreatingLoadBalancerFailed  6s (x2 over 12s)  service-controller  Error creating load balancer (will retry): Failed to create load balancer for service default/azure-load-balancer: user supplied IP Address 40.121.183.52 was not found
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 アプリケーションへのネットワーク トラフィックに対する制御を強化することを目的として、[イングレス コント ローラーを作成][aks-ingress-basic]することもできます。 また[静的パブリック IP アドレスを使用してイングレス コント ローラーを作成する][aks-static-ingress]こともできます。
 
 <!-- LINKS - External -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
+[azure-dns-zone]: https://azure.microsoft.com/services/dns/
+[external-dns]: https://github.com/kubernetes-sigs/external-dns
 
 <!-- LINKS - Internal -->
 [aks-faq-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks

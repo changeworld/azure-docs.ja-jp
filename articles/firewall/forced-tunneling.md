@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 02/24/2020
 ms.author: victorh
-ms.openlocfilehash: 4093f91e55272a32ce7df4a78e2ee8b3ebed5fde
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: e51f6de370a5340082f64a0ca15c61583f75962b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444836"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597280"
 ---
 # <a name="azure-firewall-forced-tunneling-preview"></a>Azure Firewall の強制トンネリング (プレビュー)
 
@@ -27,11 +27,15 @@ ms.locfileid: "77444836"
 
 ## <a name="forced-tunneling-configuration"></a>強制トンネリング構成
 
-強制トンネリングをサポートするため、サービス管理のトラフィックは顧客のトラフィックから分離されます。 *AzureFirewallManagementSubnet* という名前の追加の専用サブネットと、それ自体に関連付けられているパブリック IP アドレスが必要です。 このサブネットで許可される唯一のルートはインターネットへの既定のルートであり、BGP ルート伝達は無効になっている必要があります。
+強制トンネリングをサポートするため、サービス管理のトラフィックは顧客のトラフィックから分離されます。 *AzureFirewallManagementSubnet* (最小サブネット サイズ /26) という名前の追加の専用サブネットと、それ自体に関連付けられているパブリック IP アドレスが必要です。 このサブネットで許可される唯一のルートはインターネットへの既定のルートであり、BGP ルート伝達は無効になっている必要があります。
 
-オンプレミスへのトラフィックを強制するために BGP 経由でアドバタイズされる既定のルートがある場合は、ファイアウォールを展開する前に *AzureFirewallSubnet* と *AzureFirewallManagementSubnet* を作成し、インターネットへの既定のルートを持つ UDR を作成して、仮想ネットワーク ゲートウェイのルート伝達を無効にする必要があります。
+オンプレミスへのトラフィックを強制するために BGP 経由でアドバタイズされる既定のルートがある場合は、ファイアウォールをデプロイする前に *AzureFirewallSubnet* と *AzureFirewallManagementSubnet* を作成し、インターネットへの既定のルートを持つ UDR を作成して、**仮想ネットワーク ゲートウェイのルート伝達**を無効にする必要があります。
 
-この構成では、インターネットに渡される前にトラフィックを処理するため、オンプレミスのファイアウォールまたは NVA へのルートを *AzureFirewallSubnet* に含めることができます。 また、このサブネットで仮想ネットワーク ゲートウェイのルート伝達が有効になっている場合は、BGP を使用してこれらのルートを *AzureFirewallSubnet* に公開することもできます。
+この構成では、インターネットに渡される前にトラフィックを処理するため、オンプレミスのファイアウォールまたは NVA へのルートを *AzureFirewallSubnet* に含めることができます。 また、このサブネットで**仮想ネットワーク ゲートウェイのルート伝達**が有効になっている場合は、BGP を使用してこれらのルートを *AzureFirewallSubnet* に公開することもできます。
+
+たとえば、お使いのオンプレミスのデバイスに到達するための次ホップとして VPN ゲートウェイを使用して、*AzureFirewallSubnet* に既定のルートを作成できます。 または、**仮想ネットワーク ゲートウェイのルート伝達**を有効にして、オンプレミス ネットワークへの適切なルートを取得することもできます。
+
+![仮想ネットワーク ゲートウェイのルート伝達](media/forced-tunneling/route-propagation.png)
 
 強制トンネリングをサポートするように Azure Firewall を構成した後は、構成を元に戻すことはできません。 ファイアウォールで他のすべての IP 構成を削除すると、管理 IP 構成も削除され、ファイアウォールの割り当てが解除されます。 管理 IP 構成に割り当てられているパブリック IP アドレスを削除することはできませんが、異なるパブリック IP アドレスを割り当てることはできます。
 

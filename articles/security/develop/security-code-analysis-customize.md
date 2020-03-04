@@ -1,5 +1,6 @@
 ---
-title: Microsoft Azure Security Code Analysis タスク カスタマイズ ガイド
+title: Microsoft Security Code Analysis タスクのカスタマイズ
+titleSuffix: Azure
 description: この記事では、Microsoft Security Code Analysis 拡張機能のタスクのカスタマイズについて説明します
 author: vharindra
 manager: sukhans
@@ -12,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6c88fec4e6bea34dd3cf2e45300ae2c1ac15a1c6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6cdf892651407defc21f359a8e3b326b4af63b62
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851538"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499997"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>ビルド タスクを構成およびカスタマイズする
 
@@ -61,7 +62,7 @@ Windows Update のエラーとその軽減策について詳しくは、「[コ�
     - 複数のターゲットを指定するには、セミコロン (;) で区切る必要があります。
     - 指定子は、単一のファイルでも、ワイルドカードが含まれていてもかまいません。
     - ディレクトリの指定は、常に \\* で終わる必要があります。
-    - 次に例を示します。
+    - 例 :
 
            *.dll;*.exe
            $(BUILD_STAGINGDIRECTORY)\*
@@ -219,7 +220,7 @@ Security Report の構成の詳細については、次のスクリーンショ�
 
 このタスクの YAML 構成については、[Post Analysis YAML オプション](yaml-configuration.md#post-analysis-task)に関するセクションを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 YAML ベースの構成については、[YAML 構成ガイド](yaml-configuration.md)に関するページを参照してください。
 

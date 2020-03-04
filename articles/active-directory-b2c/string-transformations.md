@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/05/2020
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d2ef446e10620895fff77e8160adc4a566929650
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: e220009ec04ce732d99a53432077d681707e28d1
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484368"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585732"
 ---
 # <a name="string-claims-transformations"></a>文字列要求変換
 
@@ -34,7 +34,8 @@ ms.locfileid: "77484368"
 | InputClaim | inputClaim2 | string | 比較する 2 番目の要求の種類。 |
 | InputParameter | stringComparison | string | 文字列比較で、次のいずれかの値です。序数、OrdinalIgnoreCase。 |
 
-**AssertStringClaimsAreEqual** 要求変換は、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって呼び出される[検証技術プロファイル](validation-technical-profile.md)から常に実行する必要があります。 **UserMessageIfClaimsTransformationStringsAreNotEqual** セルフアサート技術プロファイル メタデータにより、ユーザーに表示されるエラー メッセージが制御されます。
+**AssertStringClaimsAreEqual** 要求変換は常に、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって呼び出される[検証技術プロファイル](validation-technical-profile.md) (つまり [DisplayConrtol](display-controls.md)) から実行されます。 ユーザーに表示されるエラー メッセージは、セルフアサート技術プロファイルの `UserMessageIfClaimsTransformationStringsAreNotEqual` メタデータによって制御されます。
+
 
 ![AssertStringClaimsAreEqual の実行](./media/string-transformations/assert-execution.png)
 
@@ -126,7 +127,7 @@ ms.locfileid: "77484368"
 
 | Item | TransformationClaimType | データ型 | Notes |
 |----- | ----------------------- | --------- | ----- |
-| InputParameter | value | string | 設定する文字列 |
+| InputParameter | value | string | 設定する文字列。 この入力パラメーターは、[文字列要求変換式](string-transformations.md#string-claim-transformations-expressions)をサポートします。 |
 | OutputClaim | createdClaim | string | この要求変換が呼び出された後に生成される ClaimType は、入力パラメーターに指定された値で呼び出されています。 |
 
 この要求変換を使用して、文字列 ClaimType 値を設定します。
@@ -296,7 +297,7 @@ ms.locfileid: "77484368"
 | Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim |string |文字列形式 {0} パラメーターとして機能する ClaimType。 |
-| InputParameter | stringFormat | string | {0} パラメーターを含む文字列の形式。 |
+| InputParameter | stringFormat | string | {0} パラメーターを含む文字列の形式。 この入力パラメーターは、[文字列要求変換式](string-transformations.md#string-claim-transformations-expressions)をサポートします。  |
 | OutputClaim | outputClaim | string | この要求変換が呼び出された後に生成される ClaimType。 |
 
 この要求変換を使用して 1 つのパラメーター {0} を持つ任意の文字列の書式を設定します。 次の例では、**userPrincipalName** を作成します。 `Facebook-OAUTH` などのすべてのソーシャル ID プロバイダーの技術プロファイルは、**CreateUserPrincipalName** を呼び出して **userPrincipalName** を生成します。
@@ -332,7 +333,7 @@ ms.locfileid: "77484368"
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim |string | 文字列形式 {0} パラメーターとして機能する ClaimType。 |
 | InputClaim | inputClaim | string | 文字列形式 {1} パラメーターとして機能する ClaimType。 |
-| InputParameter | stringFormat | string | {0} および {1} パラメーターを含む文字列の形式。 |
+| InputParameter | stringFormat | string | {0} および {1} パラメーターを含む文字列の形式。 この入力パラメーターは、[文字列要求変換式](string-transformations.md#string-claim-transformations-expressions)をサポートします。   |
 | OutputClaim | outputClaim | string | この要求変換が呼び出された後に生成される ClaimType。 |
 
 この要求変換を使用して 2 つのパラメーター {0} および {1} を持つ任意の文字列の書式を設定します。 次の例では、指定した形式で **displayName** を作成します。
@@ -516,6 +517,42 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
     - **errorOnFailedLookup**: false
 - 出力要求:
     - **outputClaim**:  c7026f88-4299-4cdb-965d-3f166464b8a9
+
+`errorOnFailedLookup` 入力パラメーターが `true` に設定されると、**LookupValue** 要求変換は常に、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって呼び出される[検証技術プロファイル](validation-technical-profile.md) (つまり [DisplayConrtol](display-controls.md)) から実行されます。 ユーザーに表示されるエラー メッセージは、セルフアサート技術プロファイルの `LookupNotFound` メタデータによって制御されます。
+
+![AssertStringClaimsAreEqual の実行](./media/string-transformations/assert-execution.png)
+
+次の例では、inpuParameters コレクションの 1 つからドメイン名を検索します。 要求変換では、識別子内のドメイン名を検索し、その値 (アプリケーション ID) を返します。つまり、エラー メッセージが生成されます。
+
+```XML
+ <ClaimsTransformation Id="DomainToClientId" TransformationMethod="LookupValue">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="domainName" TransformationClaimType="inputParameterId" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="contoso.com" DataType="string" Value="13c15f79-8fb1-4e29-a6c9-be0d36ff19f1" />
+    <InputParameter Id="microsoft.com" DataType="string" Value="0213308f-17cb-4398-b97e-01da7bd4804e" />
+    <InputParameter Id="test.com" DataType="string" Value="c7026f88-4299-4cdb-965d-3f166464b8a9" />
+    <InputParameter Id="errorOnFailedLookup" DataType="boolean" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="domainAppId" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>例
+
+- 入力要求:
+    - **inputParameterId**: live.com
+- 入力パラメーター:
+    - **contoso.com**:13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
+    - **microsoft.com**:0213308f-17cb-4398-b97e-01da7bd4804e
+    - **test.com**: c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **errorOnFailedLookup**: true
+- エラー:
+    - 一連の入力パラメーターの ID に入力要求値との一致が見つかりませんでした。また、errorOnFailedLookup は true になっています。
+
 
 ## <a name="nullclaim"></a>NullClaim
 
@@ -888,3 +925,12 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
   - **delimiter**: ","
 - 出力要求:
   - **outputClaim**: [ "Admin", "Author", "Reader" ]
+  
+## <a name="string-claim-transformations-expressions"></a>文字列要求変換式
+Azure AD B2C のカスタム ポリシーにおける要求変換式は、テナント ID と技術プロファイル ID についてのコンテキスト情報を提供します。
+
+  | 式 | 説明 | 例 |
+ | ----- | ----------- | --------|
+ | `{TechnicalProfileId}` | 技術プロファイル ID の名前。 | Facebook-OAUTH |
+ | `{RelyingPartyTenantId}` | 証明書利用者ポリシーのテナント ID。 | your-tenant.onmicrosoft.com |
+ | `{TrustFrameworkTenantId}` | 信頼フレームワークのテナント ID。 | your-tenant.onmicrosoft.com |

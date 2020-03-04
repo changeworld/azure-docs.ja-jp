@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: c6ea57ac30a1b4d228a19c3be6a794b3d2175171
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8b95bb45436f45dc0e62fb12d6ab1b24c37372e1
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973026"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562566"
 ---
 # <a name="virtual-network-traffic-routing"></a>仮想ネットワーク トラフィックのルーティング
 
@@ -77,7 +77,7 @@ Azure では、Azure のさまざまな機能を有効にした場合に限り�
 
 ### <a name="user-defined"></a>ユーザー定義
 
-Azure でカスタム (ユーザー定義) ルートを作成して、Azure の既定のシステム ルートをオーバーライドしたり、サブネットのルート テーブルにルートを追加したりできます。 Azure では、ルート テーブルを作成し、0 個以上の仮想ネットワーク サブネットに関連付けます。 各サブネットには、0 個または 1 個のルート テーブルを関連付けることができます。 ルート テーブルに追加できるルートの最大数と、Azure サブスクリプションごとに作成できるユーザー定義ルート テーブルの最大数については、[Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)に関する記事をご覧ください。 ルート テーブルを作成し、サブネットに関連付けると、テーブル内のルートが、Azure によって既定でサブネットに追加される既定のルートと結合されます (つまり、既定のルートがオーバーライドされます)。
+Azure でカスタムまたはユーザー定義（静的）のルートを作成して、Azure の既定のシステム ルートをオーバーライドしたり、サブネットのルート テーブルにルートを追加したりできます。 Azure では、ルート テーブルを作成し、0 個以上の仮想ネットワーク サブネットに関連付けます。 各サブネットには、0 個または 1 個のルート テーブルを関連付けることができます。 ルート テーブルに追加できるルートの最大数と、Azure サブスクリプションごとに作成できるユーザー定義ルート テーブルの最大数については、[Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)に関する記事をご覧ください。 ルート テーブルを作成し、サブネットに関連付けると、テーブル内のルートが、Azure によって既定でサブネットに追加される既定のルートと結合されます (つまり、既定のルートがオーバーライドされます)。
 
 ユーザー定義ルートを作成するときは、次のネクストホップの種類を指定できます。
 

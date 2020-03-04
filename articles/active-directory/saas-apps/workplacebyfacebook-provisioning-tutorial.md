@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7d8a7881c00427023e5f174461b3d8b24d83444
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 22576be8dec021f0f18a6e2dda16891ce70d4f13
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121450"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603211"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>チュートリアル:Workplace by Facebook を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -51,7 +51,7 @@ https://portal.azure.com/?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOve
 
  
 #### <a name="when-will-these-changes-happen"></a>これらの変更はいつ行われるのですか?
-Workplace の新しいインスタンスはすべて、既に新しい統合/承認方法を使用することになっています。 既存の統合は 2 月に段階的に移行されます。 すべてのテナントの移行は、この月の終わりまでに完了する予定です。 
+Workplace の新しいインスタンスはすべて、既に新しい統合/承認方法を使用することになっています。 既存の統合は 5 月に段階的に移行されます。 Workplace チームは、2月28日から5月1日までの期間限定で拡張機能を提供しています。 
 
 ## <a name="capabilities-supported"></a>サポートされる機能
 > [!div class="checklist"]
@@ -133,7 +133,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 9. **[属性マッピング]** セクションで、Azure AD から Workplace by Facebook に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Workplace by Facebook のユーザー アカウントとの照合に使用されます。 [一致する対象の属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)を変更する場合は、その属性に基づいたユーザーのフィルター処理が確実に Workplace by Facebook API によってサポートされている必要があります。 **[保存]** ボタンをクリックして変更をコミットします。
 
-   |Attribute|Type|
+   |属性|Type|
    |---|---|
    |userName|String|
    |displayName|String|

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 7bf01eea71134d932305cce7665c68d4dcc655cb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e3dffca1d5e98de60941aab4400469810c9cfc30
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712556"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613761"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure Active Directory Domain Services マネージド ドメインに Windows Server 仮想マシンを参加させる
 
@@ -93,8 +93,8 @@ Windows Server VM を作成して、それを Azure AD DS マネージド ドメ
     | 既存のサブネットの名前      | 既存の仮想ネットワーク サブネットの名前 (*Workloads* など)。 |
     | DNS ラベル プレフィックス          | VM に使用する DNS 名を入力します (*myvm* など)。 |
     | VM サイズ                   | VM サイズを指定します (*Standard_DS2_v2* など)。 |
-    | 参加するドメイン            | Azure AD DS マネージド ドメインの DNS 名 (*aadds.contoso.com* など)。 |
-    | ドメイン ユーザー名           | `contosoadmin@aadds.contoso.com` など、VM をマネージド ドメインに参加させるために使用する必要がある、Azure AD DS マネージド ドメインでのユーザー アカウント。 このアカウントは、 *[Azure AD DC administrators]\(Azure AD DC 管理者\)* グループのメンバーになっている必要があります。 |
+    | 参加するドメイン            | Azure AD DS マネージド ドメインの DNS 名 (*aaddscontoso.com* など)。 |
+    | ドメイン ユーザー名           | `contosoadmin@aaddscontoso.com` など、VM をマネージド ドメインに参加させるために使用する必要がある、Azure AD DS マネージド ドメインでのユーザー アカウント。 このアカウントは、 *[Azure AD DC administrators]\(Azure AD DC 管理者\)* グループのメンバーになっている必要があります。 |
     | ドメイン パスワード           | 前の設定で指定したユーザー アカウントのパスワード。 |
     | オプションの OU パス          | VM を追加するカスタム OU。 このパラメーターに値を指定しない場合、VM は既定の *[AAD DC Computers]\(AAD DC コンピューター\)* の OU に追加されます。 |
     | VM 管理者のユーザー名         | VM 上に作成するためのローカル管理者アカウントを指定します。 |
@@ -123,7 +123,7 @@ Azure AD DS マネージド ドメインへの参加を検討している既存�
     | Resource group            | 既存の VM に使用するリソース グループを選択します。 |
     | Location                  | 既存の VM の場所を選択します。 |
     | VM リスト                   | Azure AD DS マネージド ドメインに参加させるために、*MyVM1,myVM2* のように、既存の VM のコンマ区切りリストを入力します。 |
-    | ドメイン参加ユーザー名     | `contosoadmin@aadds.contoso.com` など、VM をマネージド ドメインに参加させるために使用する必要がある、Azure AD DS マネージド ドメインでのユーザー アカウント。 このアカウントは、 *[Azure AD DC administrators]\(Azure AD DC 管理者\)* グループのメンバーになっている必要があります。 |
+    | ドメイン参加ユーザー名     | `contosoadmin@aaddscontoso.com` など、VM をマネージド ドメインに参加させるために使用する必要がある、Azure AD DS マネージド ドメインでのユーザー アカウント。 このアカウントは、 *[Azure AD DC administrators]\(Azure AD DC 管理者\)* グループのメンバーになっている必要があります。 |
     | ドメイン参加ユーザー パスワード | 前の設定で指定したユーザー アカウントのパスワード。 |
     | オプションの OU パス          | VM を追加するカスタム OU。 このパラメーターに値を指定しない場合、VM は既定の *[AAD DC Computers]\(AAD DC コンピューター\)* の OU に追加されます。 |
 

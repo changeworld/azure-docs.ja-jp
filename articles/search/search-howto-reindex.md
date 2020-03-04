@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 8cebe02ebc638ba62fceec80dff2c6724ccf92c8
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 58b60a0eee8ab407709f33911d3c6b13ffbf301a
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212296"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498378"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Azure Cognitive Search のインデックスを再構築する方法
 
@@ -33,7 +33,7 @@ ms.locfileid: "77212296"
 | アナライザーをフィールドに割り当てる | [アナライザー](search-analyzers.md)はインデックスで定義されてからフィールドに割り当てられます。 新しいアナライザー定義はいつでもインデックスに追加できますが、アナライザーを "*割り当てる*" ことができるのはフィールドの作成時のみです。 これは **analyzer** と **indexAnalyzer** の両方のプロパティに当てはまります。 **searchAnalyzer** プロパティは例外です (このプロパティは既存のフィールドに割り当てることができます)。 |
 | インデックス内のアナライザー定義を更新または削除する | インデックス全体を再構築しない限り、インデックス内の既存のアナライザー構成 (アナライザー、トークナイザー、トークン フィルター、文字フィルター) を削除または変更することはできません。 |
 | サジェスタにフィールドを追加する | フィールドが既に存在していて、それを [Suggesters](index-add-suggesters.md) コンストラクトに追加する場合は、インデックスを再構築する必要があります。 |
-| フィールドの削除 | フィールドのすべてのトレースを物理的に削除するには、インデックスを再構築する必要があります。 すぐに再構築できない場合は、"削除された" フィールドにアクセスしないようにアプリケーションのコードを変更することができます。 物理的には、そのフィールドを無視するスキーマを適用すると、次に再構築が行われるまでフィールドの定義と内容はインデックスに維持されます。 |
+| フィールドの削除 | フィールドのすべてのトレースを物理的に削除するには、インデックスを再構築する必要があります。 直ちに再構築するのが現実的でない場合は、アプリケーション コードを変更し、"削除" フィールドへのアクセスを無効にするか、[$select クエリ パラメーター](search-query-odata-select.md)を使用して、結果セットに表示されるフィールドを選択できます。 物理的には、そのフィールドを無視するスキーマを適用すると、次に再構築が行われるまでフィールドの定義と内容はインデックスに維持されます。 |
 | 階層を切り替える | より多くの容量が必要な場合、Azure portal にはインプレース アップグレードはありません。 新しいサービスを作成し、その新しいサービスで最初からインデックスを構築する必要があります。 このプロセスを自動化するには、こちらの [Azure Cognitive Search .NET サンプル リポジトリ](https://github.com/Azure-Samples/azure-search-dotnet-samples)にある **index-backup-restore** サンプル コードを使用します。 このアプリでは、一連の JSON ファイルにインデックスをバックアップし、指定した検索サービスでインデックスを再作成します。|
 
 ## <a name="update-conditions"></a>条件を更新する
@@ -52,9 +52,11 @@ ms.locfileid: "77212296"
 
 ## <a name="how-to-rebuild-an-index"></a>インデックスを再構築する方法
 
-開発中、インデックス スキーマが頻繁に変更されます。 インデックス スキーマは、小規模の代表的データ セットで簡単に削除、再作成、再読み込みできるインデックスを作成することで計画できます。 
+開発中、インデックス スキーマが頻繁に変更されます。 インデックス スキーマは、小規模の代表的データ セットで簡単に削除、再作成、再読み込みできるインデックスを作成することで計画できます。
 
 既に運用環境で使用されているアプリケーションの場合は、クエリのダウンタイムを回避するため、既存のインデックスと並行して実行する新しいインデックスを作成することをお勧めします。 アプリケーション コードによって新しいインデックスにリダイレクトされます。
+
+インデックス作成はバックグラウンドでは実行されません。追加のインデックス作成と進行中のクエリの間で自動的にバランスが取られます。 インデックス作成中、クエリがタイムリーに完了するようポータルで[クエリ要求を監視](search-monitor-queries.md)できます。
 
 1. 再構築が必要かどうかが判断されます。 フィールドを追加するか、フィールドに関連付けられていないインデックスの一部を変更するだけであれば、削除、再作成、完全再読み込みせず、単純に[定義を更新](https://docs.microsoft.com/rest/api/searchservice/update-index)できることがあります。
 
@@ -78,6 +80,10 @@ ms.locfileid: "77212296"
 ## <a name="check-for-updates"></a>更新プログラムをチェックする
 
 最初のドキュメントが読み込まれたらすぐに、インデックスのクエリを始めることができます。 ドキュメントの ID がわかっている場合、[Lookup Document REST API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) では特定のドキュメントが返されます。 さらに範囲の広いテストでは、インデックスが完全に読み込まれるまで待ってから、クエリを使用して表示されるはずのコンテキストを確認する必要があります。
+
+[Search エクスプローラー](search-explorer.md)または Web テスト ツール ([Postman](search-get-started-postman.md) など) を使用して、更新されたコンテンツをチェックできます。
+
+フィールドを追加したり名前変更したりした場合は、[$select](search-query-odata-select.md) を使用してこのフィールドを返します。`search=*&$select=document-id,my-new-field,some-old-field&$count=true`
 
 ## <a name="see-also"></a>関連項目
 

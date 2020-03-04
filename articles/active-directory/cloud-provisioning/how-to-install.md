@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f4e8450593b8ff0f73c09f236f17eb4ef09334c
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: e4581ab89f74425682f569425f62714ead2c27c5
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549504"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620946"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Azure AD Connect クラウド プロビジョニング エージェントのインストール
 このドキュメントでは、Azure Active Directory (Azure AD) Connect プロビジョニング エージェントのインストール プロセスと、それを Azure portal で最初に構成する方法について説明します。
@@ -96,7 +96,7 @@ https://aadap-portcheck.connectorporttest.msappproxy.net/
     ![[サービス] 画面](media/how-to-troubleshoot/troubleshoot1.png)
 
 >[!IMPORTANT]
->エージェントはインストールされていますが、それはユーザーの同期を開始する前に構成され、有効になっている必要があります。 新しいエージェントを構成するには、「[Azure AD Connect クラウド プロビジョニングの新しいエージェント構成](how-to-configure.md)」を参照してください。
+>エージェントはインストールされていますが、それはユーザーの同期を開始する前に構成され、有効になっている必要があります。 新しいエージェントを構成するには、「[Azure AD Connect クラウドベース プロビジョニングの新しい構成を作成する](how-to-configure.md)」を参照してください。
 
 
 

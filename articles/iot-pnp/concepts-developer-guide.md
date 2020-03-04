@@ -7,12 +7,12 @@ ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 55f3e42687c90936c33208684b58792b3e2b9f85
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5fda51e6d2f62b9cbef0fcac22d5bb2ea0df905b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905797"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605212"
 ---
 # <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>IoT プラグ アンド プレイ プレビュー モデリング開発者ガイド
 
@@ -182,26 +182,26 @@ result = DigitalTwin_DeviceClient_RegisterInterfacesAsync(
 
 IoT プラグ アンド プレイでは、IoT ハブに機能を登録したデバイスを使用できます。 たとえば、デバイスのプロパティとコマンドに直接アクセスできます。
 
-IoT ハブに接続されている IoT プラグ アンド プレイ デバイスを使用するには、IoT Hub REST API またはいずれかの IoT 言語 SDK を使用します。 次の例では、IoT Hub REST API を使用します。
+IoT ハブに接続されている IoT プラグ アンド プレイ デバイスを使用するには、IoT Hub REST API またはいずれかの IoT 言語 SDK を使用します。 次の例では、IoT Hub REST API を使用します。 API の最新バージョンは `2019-07-01-preview` です。 REST PI 呼び出しに `?api-version=2019-07-01-preview` を追加してください。
 
 サーモスタットの `DeviceInformation` インターフェイスのファームウェア バージョン (`fwVersion`) などのデバイス プロパティの値を取得するには、Digital Twins REST API を使用します。
 
-サーモスタット デバイスが `t-123` の場合、REST API GET 呼び出しにより、デバイスによって実装されているすべてのプロパティを取得します。
+サーモスタット デバイスが `t-123` の場合、次の REST API GET 呼び出しにより、デバイスによって実装されているすべてのインターフェイス上のすべてのプロパティが取得されます。
 
 ```REST
 GET /digitalTwins/t-123/interfaces
 ```
 
-より一般的に、すべてのプロパティにはこの REST API テンプレートを使用してアクセスできます。ここで、`{device-id}` はデバイスの識別子です。
+より一般的には、次の REST API テンプレートを使用することで、すべてのインターフェイス上のすべてのプロパティにアクセスできます。ここで、`{device-id}` はデバイスの識別子です。
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces
 ```
 
-インターフェイスの名前がわかっていて、その特定のインターフェイスのプロパティを取得する必要がある場合は、名前を指定して要求の範囲を特定のインターフェイスに設定します。
+インターフェイスの名前 (`deviceInformation` など) がわかっていて、その特定のインターフェイスのプロパティを取得する必要がある場合は、次のように名前を指定して要求の範囲を特定のインターフェイスに設定します。
 
 ```REST
-GET /digitalTwins/t-123/interfaces/info
+GET /digitalTwins/t-123/interfaces/deviceInformation
 ```
 
 より一般的に、特定のインターフェイスのプロパティは、この REST API テンプレートを使用してアクセスできます。ここで、`device-id` はデバイスの識別子で、`{interface-name}` はインターフェイスの名前です。

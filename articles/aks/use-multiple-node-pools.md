@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service (AKS) で複数のノード プールを使用する
 description: Azure Kubernetes Service (AKS) のクラスターで複数のノード プールを作成および管理する方法について学習します
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 02/14/2020
-ms.author: mlearned
-ms.openlocfilehash: e77710fe446810ec566ebc7088d802f0721806d2
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 3e0890a0e8600526da2047cabc0b50af8177ea37
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443926"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615689"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のクラスターで複数のノード プールを作成および管理する
 
@@ -32,8 +29,7 @@ Azure CLI バージョン 2.0.76 以降がインストールされて構成さ�
 複数のノード プールをサポートする AKS クラスターを作成および管理する場合には、次の制限があります。
 
 * 「[Azure Kubernetes Service (AKS) のクォータ、仮想マシンのサイズの制限、およびリージョンの可用性][quotas-skus-regions]」を参照してください。
-* 既定の (最初の) ノード プールは削除できません。
-* HTTP アプリケーションのルーティング アドオンは使用できません。
+* システム ノード プール (既定では、最初のノード プール) を削除することはできません。
 * AKS クラスターが複数のノード プールを使用するためには、Standard SKU のロード バランサーを使用する必要があります。Basic SKU のロード バランサーでは、この機能がサポートされません。
 * AKS クラスターでは、ノードに仮想マシン スケール セットを使用する必要があります。
 * ノード プールの名前は、小文字の英数字のみを含めることができ、小文字で始める必要があります。 Linux ノード プールの場合、長さは 1 から 12 文字である必要があります。Windows ノード プールの場合、長さは 1 から 6 文字である必要があります。

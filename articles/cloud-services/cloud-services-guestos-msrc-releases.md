@@ -10,17 +10,57 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 02/07/2020
+ms.date: 02/20/2020
 ms.author: raiye
-ms.openlocfilehash: cca79946c0537b75335eb2e64ae1fa429f2c8d18
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 5411e47494668341a952a97268affe4157e85a9a
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087239"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77506032"
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
+
+## <a name="february-2020-guest-os"></a>2020 年 2 月のゲスト OS
+
+>[!NOTE]
+>2 月のゲスト OS は、現在、自動更新が構成されているクラウド サービス VM にロールアウトされているところです。 ロールアウトが完了すると、このバージョンは Azure portal と構成ファイルを通した手動更新で使用できるようになります。 2 月のゲスト OS には、以下の修正プログラムが含まれています。 この一覧は変更されることがあります。
+
+| 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+|  Rel 20-02 |  [4537767]  |  Internet Explorer | 2.85、3.82、4.75 | 2020 年 2 月 11 日 |
+|  Rel 20-02 |  [4537813]  |  Windows セキュリティ | 2.85 | 2020 年 2 月 11 日 |
+|  Rel 20-02 |  [4537794]  |  Windows セキュリティ | 3.82 | 2020 年 2 月 11 日 |
+|  Rel 20-02 |  [4537803]  |  Windows セキュリティ | 4.75 | 2020 年 2 月 11 日 |
+|  Rel 20-02 |  [4537764]  |  最新の累積的な更新プログラム (LCU) | 5.4 | 2020 年 2 月 11 日 |
+|  Rel 20-02 |  [4532691]  |  最新の累積的な更新プログラム (LCU) | 6.16 | 2020 年 2 月 11 日 |
+|  Rel 20-02 |  [4534310]  |  マンスリー ロールアップ | 2.85 | 2020 年 1 月 14 日 |
+|  Rel 20-02 |  [4536952]  |  サービス スタック更新プログラム (SSU) | 2.85 | 2020 年 1 月 14 日 |
+|  Rel 20-02 |  [4537829]  |  サービス スタック更新プログラム (SSU) | 2.85 | 2020 年 2 月 11 日 |
+|  Rel 20-02 |  [4538483]  |  拡張セキュリティ更新プログラム (ESU) | 2.85 | 2020 年 2 月 11 日 |
+|  Rel 20-02 |  [4537820]  |  マンスリー ロールアップ | 2.85 | 2020 年 2 月 11 日 |
+|  Rel 20-02 |  [4537759]  |  セキュリティ更新プログラム (Flash) | 3.82、4.75 | 2020 年 2 月 11 日 |
+|  Rel 20-02 |  [4534283]  |  マンスリー ロールアップ | 3.82 | 2020 年 1 月 14 日 |
+|  Rel 20-02 |  [4532920]  |  サービス スタック更新プログラム (SSU) | 3.82 | 2020 年 12 月 10 日 |
+|  Rel 20-02 |  [4534297]  |  セキュリティ以外 | 4.75 | 2020 年 1 月 14 日 |
+
+[4537767]: https://support.microsoft.com/kb/4537767
+[4537813]: https://support.microsoft.com/kb/4537813
+[4537794]: https://support.microsoft.com/kb/4537794
+[4537803]: https://support.microsoft.com/kb/4537803
+[4537764]: https://support.microsoft.com/kb/4537764
+[4532691]: https://support.microsoft.com/kb/4532691
+[4534310]: https://support.microsoft.com/kb/4534310
+[4536952]: https://support.microsoft.com/kb/4536952
+[4537829]: https://support.microsoft.com/kb/4537829
+[4538483]: https://support.microsoft.com/kb/4538483
+[4537820]: https://support.microsoft.com/kb/4537820
+[4537759]: https://support.microsoft.com/kb/4537759
+[4534283]: https://support.microsoft.com/kb/4534283
+[4532920]: https://support.microsoft.com/kb/4532920
+[4534297]: https://support.microsoft.com/kb/4534297
+
 
 ## <a name="january-2020-guest-os"></a>2020 年 1 月のゲスト OS
 

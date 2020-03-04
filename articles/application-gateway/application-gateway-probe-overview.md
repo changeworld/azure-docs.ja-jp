@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 01/28/2020
+ms.date: 02/20/2020
 ms.author: victorh
-ms.openlocfilehash: 5c25f591d1011d2efd66851cafd67ceef8b56637
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a4427c05d16a42879d37fdbd2e8b8be9095fcc9b
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766825"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505898"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway による正常性監視の概要
 
@@ -87,7 +87,7 @@ Application Gateway のすべてのインスタンスは、互いに独立して
 
 | プローブのプロパティ | 説明 |
 | --- | --- |
-| Name |プローブの名前。 この名前は、バックエンドの HTTP 設定でプローブを参照するために使用されます。 |
+| 名前 |プローブの名前。 この名前は、バックエンドの HTTP 設定でプローブを参照するために使用されます。 |
 | Protocol |プローブを送信するために使用するプロトコル。 プローブでは、バックエンドの HTTP 設定で定義されているプロトコルを使用します |
 | Host |プローブを送信するホスト名。 Application Gateway でマルチサイトが構成されている場合にのみ適用されます。それ以外の場合は、"127.0.0.1" を使用します。 この値は VM ホスト名とは異なります。 |
 | Path |プローブの相対パス。 パスは、先頭が '/' である必要があります。 |
@@ -101,9 +101,11 @@ Application Gateway のすべてのインスタンスは、互いに独立して
 
 ## <a name="nsg-considerations"></a>NSG に関する考慮事項
 
-アプリケーション ゲートウェイ サブネット上にネットワーク セキュリティ グループ (NSG) がある場合は、アプリケーション ゲートウェイ サブネットで 65503 - 65534 のポート範囲をインバウンド トラフィック用に開く必要があります。 これらのポートは、バックエンドの正常性 API が機能するために必要です。
+Application Gateway v1 SKU の TCP ポート 65503 ～ 65534 と、v2 SKU の TCP ポート 65200 ～ 65535 で、宛先サブネットが **[すべて]** 、ソースが **GatewayManager** サービス タグである着信インターネット トラフィックを許可する必要があります。 このポート範囲は、Azure インフラストラクチャの通信に必要です。
 
-さらに、送信インターネット接続はブロックできないため、AzureLoadBalancer タグから送信された受信トラフィックを許可する必要があります。
+さらに、送信インターネット接続はブロックできないため、**AzureLoadBalancer** タグから送信された受信トラフィックを許可する必要があります。
+
+詳細については、「[アプリケーション ゲートウェイ構成の概要](configuration-overview.md#network-security-groups-on-the-application-gateway-subnet)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 Application Gateway による正常性監視について学習した後は、Azure Portal で[カスタム正常性プローブ](application-gateway-create-probe-portal.md)を構成することも、PowerShell と Azure Resource Manager デプロイ モデルを使用して[カスタム正常性プローブ](application-gateway-create-probe-ps.md)を構成することもできます。

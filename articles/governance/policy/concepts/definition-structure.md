@@ -3,12 +3,12 @@ title: ポリシー定義の構造の詳細
 description: ポリシー定義を使用し、組織の Azure リソースの規則を確立する方法について説明します。
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: d30097badd3ab9ee5a328f17d0e3e91254a89185
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 1e90009a0c34bf166a18659a19988ea5a0c9ab07
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462004"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587126"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -328,7 +328,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 **value** は、サポートされる任意の[条件](#conditions)と組み合わせられます。
 
 > [!WARNING]
-> _テンプレート関数_ の結果がエラーの場合、ポリシーの評価は失敗します。 評価の失敗は、暗黙的な **deny** です。 詳細については、「[テンプレート エラーの回避](#avoiding-template-failures)」を参照してください。
+> _テンプレート関数_結果がエラーの場合、ポリシーの評価は失敗します。 評価の失敗は、暗黙的な **deny** です。 詳細については、「[テンプレート エラーの回避](#avoiding-template-failures)」を参照してください。 新しいポリシーの定義をテストしたり検証したりしている間、失敗となった評価の影響が新しいリソースや更新されたリソースに波及するのを避けるには、[enforcementMode](./assignment-structure.md#enforcement-mode) として **DoNotEnforce** を使用してください。
 
 #### <a name="value-examples"></a>値の例
 
@@ -372,7 +372,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 #### <a name="avoiding-template-failures"></a>テンプレート エラーの回避
 
-**value** で _テンプレート関数_ を使用することにより、入れ子になった多数の複雑な関数が可能になります。 _テンプレート関数_ の結果がエラーの場合、ポリシーの評価は失敗します。 評価の失敗は、暗黙的な **deny** です。 特定のシナリオでエラーが発生する **value** の例は、以下のとおりです。
+**value** で _テンプレート関数_ を使用することにより、入れ子になった多数の複雑な関数が可能になります。 _テンプレート関数_結果がエラーの場合、ポリシーの評価は失敗します。 評価の失敗は、暗黙的な **deny** です。 特定のシナリオでエラーが発生する **value** の例は、以下のとおりです。
 
 ```json
 {
@@ -580,13 +580,22 @@ Azure Policy では、次の種類の効果をサポートしています。
 
 ポリシー規則では、次の関数をすべて使用できますが、Azure Resource Manager テンプレートでの使用方法とは異なります。
 
-- addDays(dateTime, numberOfDaysToAdd)
+- `addDays(dateTime, numberOfDaysToAdd)`
   - **dateTime**: [必須] 文字列 - ユニバーサル ISO 8601 日時形式 'yyyy-MM-ddTHH:mm:ss.fffffffZ' の文字列
   - **numberOfDaysToAdd**: [必須] 整数 - 追加する日数
-- utcNow() - Resource Manager テンプレートとは異なり、これは defaultValue 外で使用できます。
+- `utcNow()` - Resource Manager テンプレートとは異なり、これは defaultValue 外で使用できます。
   - 現在の日時に設定されているユニバーサル ISO 8601 日時形式 'yyyy-MM-ddTHH:mm:ss.fffffffZ' の文字列が返されます。
 
-さらに、`field` 関数もポリシー規則で使用できます。 `field` は、主に **AuditIfNotExists** と **DeployIfNotExists** で、評価されるリソースのフィールドを参照するために使用されます。 使用例については、「[DeployIfNotExists の例](effects.md#deployifnotexists-example)」をご覧ください。
+次の関数は、ポリシー ルールでのみ使用できます。
+
+- `field(fieldName)`
+  - **fieldName**: [必須] 文字列 - 取得する[フィールド](#fields)の名前
+  - そのフィールドの値を、If 条件による評価の対象となっているリソースから返します。
+  - `field` は、主に **AuditIfNotExists** と **DeployIfNotExists** で、評価されるリソースのフィールドを参照するために使用されます。 使用例については、「[DeployIfNotExists の例](effects.md#deployifnotexists-example)」をご覧ください。
+- `requestContext().apiVersion`
+  - ポリシーの評価をトリガーした要求の API バージョンを返します (例: `2019-09-01`)。 これは、PUT または PATCH 要求で、リソースの作成または更新時の評価に使用された API バージョンになります。 既存のリソースに対するコンプライアンスの評価中は、常に最新バージョンの API が使用されます。
+  
+
 
 #### <a name="policy-function-example"></a>ポリシー関数の例
 

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: 39c08a568a60c905394eec23dd27d5dd32ff0112
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 4792c0bce7d9119f5198490d62f49f000e1567d3
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460469"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621962"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall に関する FAQ
 
@@ -50,11 +50,11 @@ Azure Firewall は、ルールとルール コレクションをサポートし�
 
 * "*アプリケーション ルール*": サブネットからアクセスできる完全修飾ドメイン名 (FQDN) を構成します。
 * "*ネットワーク ルール*": 送信元アドレス、プロトコル、宛先ポート、および送信先アドレスを含むルールを構成します。
-* *NAT ルール*:着信接続を許可する DNAT ルールを構成します。
+* *NAT ルール*:着信インターネット接続を許可する DNAT ルールを構成します。
 
 ## <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Azure Firewall は受信トラフィック フィルター処理をサポートしていますか?
 
-Azure Firewall は受信と送信のフィルター処理をサポートしています。 受信保護は、通常、非 HTTP/S プロトコルに使用されます。 たとえば、RDP、SSH、および FTP プロトコルです。 最適な受信 HTTP/S を保護するには、[Azure Application Gateway 上の Azure Web アプリケーション ファイアウォール](../web-application-firewall/ag/ag-overview.md)などの Web アプリケーション ファイアウォールを使用します。
+Azure Firewall は受信と送信のフィルター処理をサポートしています。 受信保護は、通常、非 HTTP/S プロトコルに使用されます。 たとえば、RDP、SSH、および FTP プロトコルです。 インバウンド HTTP/S を最適に保護するには、[Azure Web アプリケーション ファイアウォール (WAF)](../web-application-firewall/overview.md) などの Web アプリケーション ファイアウォールを使用します。
 
 ## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Azure Firewall では、どのログ記録および分析サービスがサポートされていますか?
 
@@ -117,7 +117,7 @@ Azure Firewall サービスの制限については、「[Azure サブスクリ�
 
 ## <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>Azure Firewall では、ハブ仮想ネットワークで 2 つのスポーク仮想ネットワーク間のネットワーク トラフィックを転送したりフィルター処理したりできますか?
 
-はい。ハブ仮想ネットワークで Azure Firewall を使用して、2 つのスポーク仮想ネットワーク間のトラフィックをルーティングしたりフィルター処理したりできます。 各スポーク仮想ネットワークのサブネットを正常に動作させるためには、このシナリオで既定のゲートウェイとして Azure Firewall をポイントする UDR が必要です。
+はい。ハブ仮想ネットワークで Azure Firewall を使用して、2 つのスポーク仮想ネットワーク間のトラフィックをルーティングしたりフィルター処理したりできます。 このシナリオが適切に機能するためには、各スポーク仮想ネットワークのサブネットの UDR が、既定のゲートウェイとして Azure Firewall をポイントしている必要があります。
 
 ## <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Azure Firewall では、同じ仮想ネットワーク (またはピアリングされた仮想ネットワーク) のサブネット間のネットワーク トラフィックを転送したりフィルター処理したりできますか?
 
@@ -137,9 +137,9 @@ Azure Firewall には、インターネットへの直接接続が必要です�
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>ファイアウォール リソース グループの制限はありますか。
 
-はい。 ファイアウォール、サブネット、VNet、パブリック IP アドレスすべては同じリソース グループに属していなければなりません。
+はい。 ファイアウォール、VNet、パブリック IP アドレスすべては同じリソース グループに属していなければなりません。
 
-## <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>インバウンド ネットワーク トラフィックの DNAT を構成する際、そのトラフィックを許可するための、対応するネットワーク ルールも構成しなければならないのでしょうか。
+## <a name="when-configuring-dnat-for-inbound-internet-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>インバウンド インターネット ネットワーク トラフィックの DNAT を構成する際、そのトラフィックを許可するために、対応するネットワーク ルールも構成しなければならないのでしょうか。
 
 いいえ。 NAT ルールは、変換されたトラフィックを許可するための対応するネットワーク ルールを暗黙的に追加します。 この動作は、変換されたトラフィックに一致する拒否ルールを使用してネットワーク ルール コレクションを明示的に追加することで、オーバーライドすることができます。 Azure Firewall ルール処理ロジックの詳細については、「[Azure Firewall ルール処理ロジック](rule-processing.md)」を参照してください。
 
@@ -168,11 +168,11 @@ Azure Firewall では、スケールの際により多くの仮想マシン イ�
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>ファイアウォールのスループットを増やすにはどうすればよいですか。
 
-Azure Firewall の初期スループット容量は 2.5 から 3 Gbps です。 現時点では、スケール アウトは CPU 使用率とスループットに基づいています。 一部のケースでは、ネットワーク ルールが CPU 使用率に大きな影響を与えないことから、ネットワーク ルールが設定されたファイアウォールだけは、スループットを向上させるためにスケールアップされません。 ファイアウォールに対してより高いスループットが必要な場合は、サポートに連絡して、ファイアウォールの初期スループット容量を増やしてください。
+Azure Firewall の初期スループット容量は 2.5 から 3 Gbps で、30 Gbps までスケールアウトします。 スケールアウトは CPU 使用率とスループットに基づきます。 ファイアウォールがニーズを満たすようにスケールアウトされていない場合や、より多くのスループット容量が必要な場合は、サポートに問い合わせてファイアウォールのスループット容量を増やしてください。
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Azure Firewall のスケールアウトにはどのくらいの時間がかかりますか。
 
-現時点では、Azure Firewall のスケールアウトには 5 から 7 分かかります。より高速な自動スケーリングを必要とする急激な上昇がある場合は、サポートに連絡して、ファイアウォールの初期スループット容量を増やしてください。
+Azure Firewall のスケールアウトには 5 から 7 分かかります。より高速な自動スケーリングを必要とするバーストが発生している場合は、サポートに連絡して、ファイアウォールの初期スループット容量を増やしてください。
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Azure Firewall では Active Directory へのアクセスが既定で許可されますか。
 

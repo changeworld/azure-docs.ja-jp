@@ -1,27 +1,29 @@
 ---
-title: サブスクリプション、リソース グループ、またはリージョン間でロジック アプリを移動する
+title: サブスクリプション、リソース グループ、またはリージョン間でロジック アプリを移行する
 description: ロジック アプリまたは統合アカウントを別の Azure サブスクリプション、リソース グループ、または場所 (リージョン) に移行する
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: d6250238edd15126e7a56bd821fbd1c736ebda07
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f5944accb185f1311c811cf65a8ea8348fd569db
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965888"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605613"
 ---
 # <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>ロジック アプリのリソースを別の Azure サブスクリプション、リソース グループ、またはリージョンに移動する
 
-ロジック アプリや関連リソースを別の Azure サブスクリプション、リソース グループ、またはリージョンに移動するタスクを完了する方法として、Azure portal、Azure PowerShell、Azure CLI、REST API など、さまざまな方法が用意されています。 リソースを移動する前に、次の考慮事項を確認してください。 
+ロジック アプリや関連リソースを別の Azure サブスクリプション、リソース グループ、またはリージョンに移行するタスクを完了する方法として、Azure portal、Azure PowerShell、Azure CLI、REST API など、さまざまな方法が用意されています。 リソースを移動する前に、次の考慮事項を確認してください。 
 
 * Azure のリソース グループまたはサブスクリプション間では、[特定の種類のロジック アプリのリソース](../azure-resource-manager/management/move-support-resources.md#microsoftlogic)のみを移動できます。
 
 * Azure サブスクリプションと各 Azure リージョンで使用できるロジック アプリのリソース数の[制限](../logic-apps/logic-apps-limits-and-config.md)を確認します。 これらの制限は、サブスクリプションまたはリソース グループ間でリージョンが同じままである場合に、特定のリソースの種類を移動できるかどうかに影響します。 たとえば、Free レベル統合アカウントは、各 Azure サブスクリプションの各 Azure リージョンに対して、1 つだけ設定できます。
 
-* リソースを移動すると、Azure によって新しいリソース ID が作成されます。 このため、代わりに新しい ID を使用して、移動したリソースに関連付けられているスクリプトまたはツールを更新してください。 サブスクリプション、リソース グループ、またはリージョン間でロジックアプリを移動した後は、OAuth ベースの接続を再作成または再認証する必要があります。
+* サブスクリプション、リソース グループ、またはリージョン間でロジック アプリを移行した後は、Open Authorization (OAuth) を必要とするすべての接続を再作成または再認可する必要があります。
+
+* リソースを移動するたびに、Azure によって新しいリソース ID が作成されます。 このため、代わりに新しい ID を使用して、移動したリソースに関連付けられているスクリプトまたはツールを更新してください。
 
 ## <a name="prerequisites"></a>前提条件
 

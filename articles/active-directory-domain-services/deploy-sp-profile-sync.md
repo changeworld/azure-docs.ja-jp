@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: f51744d79d34b734c9cc24cf72785a076a91a4f5
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 9d983015927d2635f69a327a9c5b168056542519
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509055"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613855"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>SharePoint Server のユーザー プロファイルの同期をサポートするように Azure Active Directory Domain Services を構成します。
 
@@ -62,7 +62,7 @@ Azure AD DS 管理 VM から、次の手順を実行します。
 
 1. スタート画面で **[管理ツール]** を選択します。 [管理 VM を作成する][tutorial-create-management-vm]ためのチュートリアルでインストールされた使用可能な管理ツールの一覧が表示されます。
 1. グループのメンバーシップを管理するには、管理ツールの一覧から **[Active Directory 管理センター]** を選択します。
-1. 左側のウィンドウで、Azure AD DS マネージド ドメイン (*aadds.contoso.com* など) を選択します。 既存の OU とリソースの一覧が表示されます。
+1. 左側のペインで、Azure AD DS マネージド ドメイン (例: *aaddscontoso.com*) を選択します。 既存の OU とリソースの一覧が表示されます。
 1. **[ユーザー]** OU を選択し、 *[AAD DC Service Accounts]\(AAD DC サービス アカウント\)* セキュリティ グループを選択します。
 1. **[メンバー]** を選択し、 **[追加]** を選択します。
 1. SharePoint サービス アカウントの名前を入力し、 **[OK]** を選択します。 次の例では、SharePoint サービス アカウントに *spadmin* という名前が付けられています。

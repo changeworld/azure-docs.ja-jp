@@ -13,6 +13,8 @@
       href: tutorial-enable-azure-mfa.md
     - name: オンプレミスへのパスワード ライトバックを有効にする
       href: tutorial-enable-sspr-writeback.md
+    - name: カスタムの禁止パスワード リストを構成する
+      href: tutorial-configure-custom-password-protection.md
     - name: Azure Identity Protection を統合する
       href: tutorial-risk-based-sspr-mfa.md
 - name: 概念
@@ -108,8 +110,6 @@
           href: howto-registration-mfa-sspr-combined-troubleshoot.md
     - name: Azure AD のパスワード保護
       items:
-        - name: 禁止パスワード リストを構成する
-          href: howto-password-ban-bad-configure.md
         - name: オンプレミスの統合
           items:
             - name: Azure AD のパスワード保護をデプロイする
@@ -175,7 +175,7 @@
           href: howto-mfaserver-deploy-upgrade.md
         - name: PhoneFactor からアップグレードする
           href: howto-mfaserver-deploy-upgrade-pf.md
-        - name: Windows 認証
+        - name: '[Windows 認証]'
           href: howto-mfaserver-windows.md
         - name: IIS Web アプリ
           href: howto-mfaserver-iis.md

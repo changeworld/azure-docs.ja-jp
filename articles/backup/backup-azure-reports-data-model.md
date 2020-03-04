@@ -1,201 +1,224 @@
 ---
-title: Power BI のデータ モデル
-description: この記事では、Azure Backup レポートに使用する Power BI データ モデルの詳細について説明します。
+title: Azure Backup 診断イベントのデータ モデル
+description: このデータ モデルは、Log Analytics (LA) に診断イベントを送信するリソース固有モードを参照しています。
 ms.topic: conceptual
-ms.date: 06/26/2017
-ms.openlocfilehash: a2f06da16280070448d7b42dc5e1dcfc46354cfa
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.date: 10/30/2019
+ms.openlocfilehash: 267753ee1647739e36d92b64f50d8a8be87537d9
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172801"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583386"
 ---
-# <a name="data-model-for-azure-backup-reports"></a>Azure Backup レポートのデータ モデル
+# <a name="data-model-for-azure-backup-diagnostics-events"></a>Azure Backup 診断イベントのデータ モデル
 
-この記事では、Azure Backup レポートの作成に使用する Power BI データ モデルについて説明します。 このデータ モデルを使用すると、関連するフィールドに基づく既存のレポートをフィルター処理し、さらに重要なことに、モデルのテーブルとフィールドを使用して独自のレポートを作成できます。
+## <a name="coreazurebackup"></a>CoreAzureBackup
 
-## <a name="creating-new-reports-in-power-bi"></a>Power BI で新しいレポートを作成する
+次の表に、コンテナーやバックアップ項目などの主要なバックアップ項目に関する情報を示します。
 
-Power BI には、[データ モデルを使用してレポートを作成できる](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/)カスタマイズ機能が備わっています。
+| **フィールド**                         | **[データ型]** | **説明**                                              |
+| --------------------------------- | ------------- | ------------------------------------------------------------ |
+| ResourceId                        | Text          | 収集されるデータのリソース識別子。 たとえば、Recovery Services コンテナーのリソース ID。 |
+| OperationName                     | Text          | このフィールドは現在の操作の名前 (BackupItem、BackupItemAssociation、または ProtectedContainer) を表します。 |
+| カテゴリ                          | Text          | このフィールドは Azure Monitor ログにプッシュされた診断データのカテゴリを表します。 たとえば、CoreAzureBackup のようになります。 |
+| AgentVersion                      | Text          | エージェント バックアップまたは保護エージェント (SC DPM および MABS の場合) のバージョン番号 |
+| AzureBackupAgentVersion           | Text          | バックアップ管理サーバーの Azure Backup エージェントのバージョン |
+| AzureDataCenter                   | Text          | コンテナーが配置されるデータ センター                       |
+| BackupItemAppVersion              | Text          | バックアップ項目のアプリケーションのバージョン                       |
+| BackupItemFriendlyName            | Text          | バックアップ項目のフレンドリ名                             |
+| BackupItemName                    | Text          | バックアップ項目の名前                                      |
+| BackupItemProtectionState         | Text          | バックアップ項目の保護状態                          |
+| BackupItemFrontEndSize            | Text          | バックアップ項目のフロント エンドのサイズ                            |
+| BackupItemType                    | Text          | バックアップ項目の種類。 次に例を示します。VM、FileFolder             |
+| BackupItemUniqueId                | Text          | バックアップ項目の一意の識別子                         |
+| BackupManagementServerType        | Text          | バックアップ管理サーバーの種類 (MABS、SC DPM)     |
+| BackupManagementServerUniqueId    | Text          | バックアップ管理サーバーを一意に識別するフィールド      |
+| BackupManagementType              | Text          | バックアップ ジョブを実行しているサーバーのプロバイダーの種類。 たとえば、IaaSVM や FileFolder |
+| BackupManagementServerName        | Text          | バックアップ管理サーバーの名前                         |
+| BackupManagementServerOSVersion   | Text          | バックアップ管理サーバーの OS のバージョン                   |
+| BackupManagementServerVersion     | Text          | バックアップ管理サーバーのバージョン                      |
+| LatestRecoveryPointLocation       | Text          | バックアップ項目の最新の復旧ポイントの場所    |
+| LatestRecoveryPointTime           | DateTime      | バックアップ項目の最新の復旧ポイントの日時   |
+| OldestRecoveryPointLocation       | Text          | バックアップ項目の最も古い復旧ポイントの場所    |
+| OldestRecoveryPointTime           | DateTime      | バックアップ項目の最新の復旧ポイントの日時   |
+| PolicyUniqueId                    | Text          | ポリシーを識別する一意の ID                             |
+| ProtectedContainerFriendlyName    | Text          | 保護されるサーバーのフレンドリ名                        |
+| ProtectedContainerLocation        | Text          | 保護されたコンテナーの配置場所 (オンプレミスまたは Azure 内) |
+| ProtectedContainerName            | Text          | 保護されたコンテナーの名前                            |
+| ProtectedContainerOSType          | Text          | 保護されたコンテナーの OS の種類                          |
+| ProtectedContainerOSVersion       | Text          | 保護されたコンテナーの OS のバージョン                        |
+| ProtectedContainerProtectionState | Text          | 保護されたコンテナーの保護の状態                  |
+| ProtectedContainerType            | Text          | 保護されたコンテナーがサーバーかコンテナーか  |
+| ProtectedContainerUniqueId        | Text          | DPM、MABS を使用してバックアップされた VM 以外のすべてに対して保護されたコンテナーの識別に使用される一意 ID |
+| ProtectedContainerWorkloadType    | Text          | 保護されたコンテナーのバックアップの種類。 たとえば、IaaSVMContainer |
+| ProtectionGroupName               | Text          | 該当する場合、SC DPM、および MABS で、バックアップ項目が保護されている保護グループの名前 |
+| ResourceGroupName                 | Text          | 収集されるデータのリソースのリソース グループ (例: Recovery Services コンテナー) |
+| SchemaVersion                     | Text          | このフィールドは、スキーマの現在のバージョン (**V2**) を表します |
+| SecondaryBackupProtectionState    | Text          | バックアップ項目の二次的な保護が有効になっているかどうか  |
+| State                             | Text          | バックアップ項目オブジェクトの状態。 たとえば、アクティブ、削除済み |
+| StorageReplicationType            | Text          | コンテナーのストレージ レプリケーションの種類。 例: GeoRedundant |
+| SubscriptionId                    | Text          | データが収集されるリソースのサブスクリプション識別子 (例: Recovery Services コンテナー名) |
+| VaultName                         | Text          | コンテナーの名前                                            |
+| VaultTags                         | Text          | コンテナー リソースに関連付けられているタグ                    |
+| VaultUniqueId                     | Text          | コンテナーの一意の識別子                             |
+| SourceSystem                      | Text          | 現在のデータのソース システム (Azure)                  |
 
-## <a name="using-azure-backup-data-model"></a>Azure Backup データ モデルを使用する
+## <a name="addonazurebackupalerts"></a>AddonAzureBackupAlerts
 
-レポートを作成したり、既存のレポートをカスタマイズしたりするには、データ モデルの一部として提供される次のフィールドを使用できます。
+次の表は、アラートに関連するフィールドの詳細を示しています。
 
-### <a name="alert"></a>アラート:
+| **フィールド**                      | **[データ型]** | **説明**                                              |
+| :----------------------------- | ------------- | ------------------------------------------------------------ |
+| ResourceId                     | Text          | データの収集対象のリソースの一意の識別子。 たとえば、Recovery Services コンテナーのリソース ID |
+| OperationName                  | Text          | 現在の操作の名前。 例: アラート            |
+| カテゴリ                       | Text          | Azure Monitor ログにプッシュされた診断データのカテゴリ (AddonAzureBackupAlerts) |
+| AlertCode                      | Text          | アラートの種類を一意に識別するコード                     |
+| AlertConsolidationStatus       | Text          | アラートが統合されたアラートかどうかを識別します         |
+| AlertOccurrenceDateTime        | DateTime      | アラートが作成された日付と時刻                     |
+| AlertRaisedOn                  | Text          | アラートが発生したエンティティの種類                        |
+| AlertSeverity                  | Text          | アラートの重大度。 例: 重大                 |
+| AlertStatus                    | Text          | アラートの状態。 例: アクティブ                     |
+| AlertTimeToResolveInMinutes    | Number        | アラートの解決に要した時間。 アクティブなアラートの場合は空白。     |
+| AlertType                      | Text          | アラートの種類。 例: バックアップ                           |
+| AlertUniqueId                  | Text          | 生成されたアラートの一意の識別子                    |
+| BackupItemUniqueId             | Text          | アラートに関連付けられているバックアップ項目の一意の識別子 |
+| BackupManagementServerUniqueId | Text          | 該当する場合、バックアップ項目の保護に使用されるバックアップ管理サーバーを一意に識別するフィールド |
+| BackupManagementType           | Text          | バックアップ ジョブを行うサーバーのプロバイダーの種類 (例: IaaSVM、FileFolder) |
+| CountOfAlertsConsolidated      | Number        | 統合されたアラートである場合の、統合されたアラートの数  |
+| ProtectedContainerUniqueId     | Text          | アラートに関連付けられている保護されるサーバーの一意の識別子 |
+| RecommendedAction              | Text          | アラートを解決するために推奨されているアクション                      |
+| SchemaVersion                  | Text          | スキーマの現在のバージョン (例: **V2**)            |
+| State                          | Text          | アラート オブジェクトの現在の状態 (例: アクティブ、削除済み) |
+| StorageUniqueId                | Text          | ストレージ エントリの識別に使用される一意 ID                |
+| VaultUniqueId                  | Text          | アラートに関連するコンテナーの識別に使用される一意の ID    |
+| SourceSystem                   | Text          | 現在のデータのソース システム (Azure)                    |
 
-次の表は、さまざまなアラートに関連するフィールドの基本フィールドと集計を示しています。
+## <a name="addonazurebackupprotectedinstance"></a>AddonAzureBackupProtectedInstance
 
-| フィールド | データ型 | 説明 |
-| --- | --- | --- |
-| #AlertsCreatedInPeriod |整数 |選択した期間に作成されるアラートの数 |
-| %ActiveAlertsCreatedInPeriod |割合 |選択した期間のアクティブなアラートの割合 |
-| %CriticalAlertsCreatedInPeriod |割合 |選択した期間の重大なアラートの割合 |
-| AlertOccurrenceDate |Date |アラートが作成された日付 |
-| AlertSeverity |Text |アラートの重大度。 例: 重大 |
-| AlertStatus |Text |アラートの状態。 例: アクティブ |
-| AlertType |Text |生成されたアラートの種類。 例: バックアップ |
-| AlertUniqueId |Text |生成されたアラートの一意の ID |
-| AsOnDateTime |日付/時刻 |選択した行の最新の更新時刻 |
-| AvgResolutionTimeInMinsForAlertsCreatedInPeriod |10 進数 |選択した期間のアラートを解決するための平均時間 (分) |
-| EntityState |Text |アラート オブジェクトの現在の状態。 たとえば、アクティブ、削除済み |
+次の表は、保護されたインスタンスに関連する基本フィールドを示しています。
 
-### <a name="backup-item"></a>バックアップ項目
+| **フィールド**                      | **[データ型]** | **説明**                                              |
+| ------------------------------ | ------------- | ------------------------------------------------------------ |
+| ResourceId                     | Text          | データの収集対象のリソースの一意の識別子。 たとえば、Recovery Services コンテナーのリソース ID |
+| OperationName                  | Text          | 操作の名前 (例: ProtectedInstance)         |
+| カテゴリ                       | Text          | Azure Monitor ログにプッシュされた診断データのカテゴリ - AddonAzureBackupProtectedInstance |
+| BackupItemUniqueId             | Text          | バックアップ項目の一意の ID                                 |
+| BackupManagementServerUniqueId | Text          | 該当する場合、バックアップ項目の保護に使用されるバックアップ管理サーバーを一意に識別するフィールド |
+| BackupManagementType           | Text          | バックアップ ジョブを行うサーバーのプロバイダーの種類 (例: IaaSVM、FileFolder) |
+| ProtectedContainerUniqueId     | Text          | ジョブが実行される保護されたコンテナーを識別する、一意の ID |
+| ProtectedInstanceCount         | Text          | 関連付けられているバックアップ項目または該当の日付/時刻で保護されたコンテナーの、保護されたインスタンスの数 |
+| SchemaVersion                  | Text          | スキーマの現在のバージョン (例: **V2**)            |
+| State                          | Text          | バックアップ項目オブジェクトの状態 (例: アクティブ、削除済み) |
+| VaultUniqueId                  | Text          | 保護されたインスタンスに関連付けられている保護されるコンテナーの一意の識別子 |
+| SourceSystem                   | Text          | 現在のデータのソース システム (Azure)                    |
 
-次の表は、さまざまなバックアップ項目に関連するフィールドの基本フィールドと集計を示しています。
+## <a name="addonazurebackupjobs"></a>AddonAzureBackupJobs
 
-| フィールド | データ型 | 説明 |
-| --- | --- | --- |
-| #BackupItems |整数 |バックアップ項目の数 |
-| #UnprotectedBackupItems |整数 |保護のために停止されたか、バックアップを構成されているが、バックアップが開始されていないバックアップ項目の数|
-| AsOnDateTime |日付/時刻 |選択した行の最新の更新時刻 |
-| BackupItemFriendlyName |Text |バックアップ項目のフレンドリ名 |
-| BackupItemId |Text |バックアップ項目の ID |
-| BackupItemName |Text |バックアップ項目の名前 |
-| BackupItemType |Text |バックアップ項目の種類。 例: VM、FileFolder |
-| EntityState |Text |バックアップ項目オブジェクトの現在の状態。 たとえば、アクティブ、削除済み |
-| LastBackupDateTime |日付/時刻 |選択したバックアップ項目の最後のバックアップの時刻 |
-| LastBackupState |Text |選択したバックアップ項目の最後のバックアップの状態。 例: 成功、失敗 |
-| LastSuccessfulBackupDateTime |日付/時刻 |選択したバックアップ項目の最後に成功したバックアップの時刻 |
-| ProtectionState |Text |バックアップ項目の現在の保護状態。 例: 保護、ProtectionStopped |
+次の表は、ジョブに関連するフィールドの詳細を示しています。
 
-### <a name="calendar"></a>Calendar
+| **フィールド**                      | **[データ型]** | **説明**                                              |
+| ------------------------------ | ------------- | ------------------------------------------------------------ |
+| ResourceId                     | Text          | 収集されるデータのリソース識別子。 たとえば、Recovery Services コンテナーのリソース ID |
+| OperationName                  | Text          | このフィールドは現在の操作の名前 (Job) を表します。    |
+| カテゴリ                       | Text          | このフィールドは Azure Monitor ログにプッシュされた診断データのカテゴリ (AddonAzureBackupJobs) を表します |
+| AdhocOrScheduledJob            | Text          | ジョブがアドホックかスケジュール済みかを指定するフィールド           |
+| BackupItemUniqueId             | Text          | ストレージ エントリに関連するバックアップ項目の識別に使用される一意の ID |
+| BackupManagementServerUniqueId | Text          | ストレージ エントリに関連するバックアップ管理サーバーの識別に使用される一意の ID |
+| BackupManagementType           | Text          | バックアップを実行するためのプロバイダーの種類 (例: IaaSVM、このアラートが属する FileFolder) |
+| DataTransferredInMB            | Number        | このジョブで転送されたデータ (MB)                          |
+| JobDurationInSecs              | Number        | 合計ジョブ期間 (秒単位)                                |
+| JobFailureCode                 | Text          | ジョブ エラーが発生したことによるエラー コードの文字列    |
+| JobOperation                   | Text          | ジョブを実行する対象の操作 (例: バックアップ、復元、バックアップの構成) |
+| JobOperationSubType            | Text          | ジョブ操作のサブタイプ。 たとえば、ログ バックアップ ジョブの場合の "Log" |
+| JobStartDateTime               | DateTime      | ジョブの実行を開始した日付と時刻                       |
+| JobStatus                      | Text          | 完了したジョブの状態 (例: 完了、失敗)   |
+| JobUniqueId                    | Text          | ジョブを識別する一意の ID                                |
+| ProtectedContainerUniqueId     | Text          | アラートに関連付けられている保護されるサーバーの一意の識別子 |
+| RecoveryJobDestination         | Text          | 回復ジョブの宛先 (データが回復される場所)   |
+| RecoveryJobRPDateTime          | DateTime      | 回復する復旧ポイントが作成された日付、時刻 |
+| RecoveryJobLocation            | Text          | 回復する復旧ポイントが作成された場所 |
+| RecoveryLocationType           | Text          | 回復する場所の種類                                |
+| SchemaVersion                  | Text          | スキーマの現在のバージョン (例: **V2**)            |
+| State                          | Text          | アラート オブジェクトの現在の状態 (例: アクティブ、削除済み) |
+| VaultUniqueId                  | Text          | アラートに関連付けられている保護されるコンテナーの一意の識別子 |
+| SourceSystem                   | Text          | 現在のデータのソース システム (Azure)                    |
 
-次の表は、カレンダーに関連するフィールドを示しています。
+## <a name="addonazurebackuppolicy"></a>AddonAzureBackupPolicy
 
-| フィールド | データ型 | 説明 |
-| --- | --- | --- |
-| Date |Date |データをフィルター処理するために選択した日付 |
-| DateKey |Text |各日付項目の一意のキー |
-| DayDiff |10 進数 |データのフィルター処理に使用する日単位の差。 たとえば、0 は現在の日付のデータを示し、-1 は前日のデータを示し、0 および -1 は現在の日付と前日のデータを示します  |
-| 月 |Text |データをフィルター処理するために選択した月。月は 1 日から始まり、31 日で終わります |
-| MonthDate | Date |データをフィルター処理するために選択した、月が終わる日付 |
-| MonthDiff |10 進数 |データのフィルター処理に使用する月単位の差。 たとえば、0 は現在の月のデータを示し、-1 は前月のデータを示し、0 および-1 は現在の月と前月のデータを示します |
-| 週 |Text |データをフィルター処理するために選択した週。週は日曜日から始まり、土曜日で終わります |
-| WeekDate |Date |データをフィルター処理するために選択した、週が終わる曜日 |
-| WeekDiff |10 進数 |データのフィルター処理に使用する週単位の差。 たとえば、0 は現在の週のデータを示し、-1 は前の週のデータを示し、0 および -1 は現在と前の週のデータを示します |
-| 年 |Text |データをフィルター処理するために選択したカレンダーの年 |
-| YearDate |Date |データをフィルター処理するために選択した、年が終わる日付 |
+次の表は、ポリシーに関連するフィールドの詳細を示しています。
 
-### <a name="job"></a>ジョブ
+| **フィールド**                       | **[データ型]**  | **説明**                                              |
+| ------------------------------- | -------------- | ------------------------------------------------------------ |
+| ResourceId                      | Text           | データの収集対象のリソースの一意の識別子。 たとえば、Recovery Services コンテナーのリソース ID |
+| OperationName                   | Text           | 操作の名前 (Policy、PolicyAssociation など) |
+| カテゴリ                        | Text           | Azure Monitor ログにプッシュされた診断データのカテゴリ - AddonAzureBackupPolicy |
+| BackupDaysOfTheWeek             | Text           | バックアップがスケジュールされている曜日            |
+| BackupFrequency                 | Text           | バックアップを実行する頻度。 例: 毎日、毎週 |
+| BackupManagementType            | Text           | バックアップ ジョブを実行しているサーバーのプロバイダーの種類。 例: IaaSVM、FileFolder |
+| BackupManagementServerUniqueId  | Text           | 該当する場合、バックアップ項目の保護に使用されるバックアップ管理サーバーを一意に識別するフィールド |
+| BackupTimes                     | Text           | バックアップがスケジュールされている日付と時刻                     |
+| DailyRetentionDuration          | 整数   | 構成されたバックアップに使用される合計リテンション期間 (日数)      |
+| DailyRetentionTimes             | Text           | 毎日のリテンション期間が構成された日付と時刻            |
+| DiffBackupDaysOfTheWeek         | Text           | Azure VM バックアップの SQL の差分バックアップの曜日 |
+| DiffBackupFormat                | Text           | Azure VM バックアップの SQL の差分バックアップの形式   |
+| DiffBackupRetentionDuration     | 10 進数 | Azure VM バックアップの SQL の差分バックアップのリテンション期間 |
+| DiffBackupTime                  | Time           | Azure VM バックアップの SQL の差分バックアップの時刻     |
+| LogBackupFrequency              | 10 進数 | SQL のログ バックアップの頻度                            |
+| LogBackupRetentionDuration      | 10 進数 | Azure VM バックアップの SQL のログ バックアップのリテンション期間 |
+| MonthlyRetentionDaysOfTheMonth  | Text           | 毎月のリテンション期間が構成されたときの月の週  例: 最初、最後など |
+| MonthlyRetentionDaysOfTheWeek   | Text           | 毎月のリテンション期間に選択された曜日              |
+| MonthlyRetentionDuration        | Text           | 構成されたバックアップに使用される合計のリテンション期間 (月単位)    |
+| MonthlyRetentionFormat          | Text           | 毎月のリテンション期間に対する構成の種類。 例: 日単位の毎日、週単位の毎週 |
+| MonthlyRetentionTimes           | Text           | 毎月のリテンション期間が構成される日付と時刻           |
+| MonthlyRetentionWeeksOfTheMonth | Text           | 毎月のリテンション期間が構成されたときの月の週   例: 最初、最後など |
+| PolicyName                      | Text           | 定義されたポリシーの名前                                   |
+| PolicyUniqueId                  | Text           | ポリシーを識別する一意の ID                             |
+| PolicyTimeZone                  | Text           | ポリシー時間フィールドがログで指定されているタイムゾーン |
+| RetentionDuration               | Text           | 構成されたバックアップに使用されるリテンション期間                    |
+| RetentionType                   | Text           | リテンションの種類                                            |
+| SchemaVersion                   | Text           | このフィールドは、スキーマの現在のバージョン (**V2**) を表します |
+| State                           | Text           | ポリシー オブジェクトの現在の状態。 例: アクティブ、削除済み |
+| SynchronisationFrequencyPerDay  | 整数   | SC DPM および MABS でファイルのバックアップが 1 日に同期される回数 |
+| VaultUniqueId                   | Text           | ポリシーが属しているコンテナーの一意の ID          |
+| WeeklyRetentionDaysOfTheWeek    | Text           | 毎週のリテンション期間に選択された曜日               |
+| WeeklyRetentionDuration         | 10 進数 | 構成されたバックアップの毎週の合計リテンション期間 (週単位) |
+| WeeklyRetentionTimes            | Text           | 毎週のリテンション期間が構成される日付と時刻            |
+| YearlyRetentionDaysOfTheMonth   | Text           | 毎年のリテンション期間に選択された月の日数             |
+| YearlyRetentionDaysOfTheWeek    | Text           | 毎年のリテンション期間に選択された曜日               |
+| YearlyRetentionDuration         | 10 進数 | 構成されたバックアップに使用される合計リテンション期間 (年単位)     |
+| YearlyRetentionFormat           | Text           | 毎年のリテンション期間に使用する構成の種類 (例: 日単位の毎日、週単位の毎週) |
+| YearlyRetentionMonthsOfTheYear  | Text           | 毎年のリテンション期間に選択された月             |
+| YearlyRetentionTimes            | Text           | 毎年のリテンション期間が構成される日付と時刻            |
+| YearlyRetentionWeeksOfTheMonth  | Text           | 毎年のリテンション期間に選択された月の週数             |
+| SourceSystem                    | Text           | 現在のデータのソース システム (Azure)                    |
 
-次の表は、さまざまなジョブに関連するフィールドの基本フィールドと集計を示しています。
+## <a name="addonazurebackupstorage"></a>AddonAzureBackupStorage
 
-| フィールド | データ型 | 説明 |
-| --- | --- | --- |
-| #JobsCreatedInPeriod |整数 |選択した期間に作成されるジョブの数 |
-| %FailuresForJobsCreatedInPeriod |割合 |選択された期間の全体的なジョブ エラーの割合 |
-| 80thPercentileDataTransferredInMBForBackupJobsCreatedInPeriod |10 進数 |選択した期間に作成された**バックアップ** ジョブに対して転送されるデータの80 パーセンタイル値 (MB) |
-| AsOnDateTime |日付/時刻 |選択した行の最新の更新時刻 |
-| AvgBackupDurationInMinsForJobsCreatedInPeriod |10 進数 |選択した期間に作成された**完了したバックアップ** ジョブの平均時間 (分) |
-| AvgRestoreDurationInMinsForJobsCreatedInPeriod |10 進数 |選択した期間に作成された**完了した復元**ジョブの平均時間 (分) |
-| BackupStorageDestination |Text |バックアップ ストレージの保存先。 例: クラウド、ディスク  |
-| EntityState |Text |ジョブ オブジェクトの現在の状態。 たとえば、アクティブ、削除済み |
-| JobFailureCode |Text |ジョブ エラーが発生したことによるエラー コードの文字列 |
-| JobOperation |Text |ジョブが実行される操作。 例: バックアップ、復元、バックアップの構成 |
-| JobStartDate |Date |ジョブの実行開始日 |
-| JobStartTime |Time |ジョブの実行開始時刻 |
-| JobStatus |Text |完了したジョブの状態。 例: 完了、失敗 |
-| JobUniqueId |Text |ジョブを識別する一意の ID |
+次の表は、ストレージに関連するフィールドの詳細を示しています。
 
-### <a name="policy"></a>ポリシー
+| **フィールド**                      | **[データ型]** | **説明**                                              |
+| ------------------------------ | ------------- | ------------------------------------------------------------ |
+| ResourceId                     | Text          | 収集されるデータのリソース識別子。 たとえば、Recovery Services コンテナーのリソース ID |
+| OperationName                  | Text          | このフィールドは現在の操作の名前 (Storage または StorageAssociation) を表します |
+| カテゴリ                       | Text          | このフィールドは Azure Monitor ログにプッシュされた診断データのカテゴリ (AddonAzureBackupStorage) を表します |
+| BackupItemUniqueId             | Text          | DPM、MABS を使用してバックアップされた VM のバックアップ項目の識別に使用される一意の ID |
+| BackupManagementServerUniqueId | Text          | 該当する場合、バックアップ項目の保護に使用されるバックアップ管理サーバーを一意に識別するフィールド |
+| BackupManagementType           | Text          | バックアップ ジョブを実行しているサーバーのプロバイダーの種類。 例: IaaSVM、FileFolder |
+| PreferredWorkloadOnVolume      | Text          | このボリュームが優先ストレージとなるワークロード      |
+| ProtectedContainerUniqueId     | Text          | アラートに関連付けられている保護されるサーバーの一意の識別子 |
+| SchemaVersion                  | Text          | スキーマのバージョン。 例: **V2**                   |
+| State                          | Text          | バックアップ項目オブジェクトの状態。 例: アクティブ、削除済み |
+| StorageAllocatedInMBs          | Number        | 種類が Disk の対応するストレージ内の対応するバックアップ項目によって割り当てられたストレージのサイズ |
+| StorageConsumedInMBs           | Number        | 対応するストレージ内の対応するバックアップ項目によって使用されるストレージのサイズ |
+| StorageName                    | Text          | ストレージ エンティティの名前。 例: E:\                      |
+| StorageTotalSizeInGBs          | Text          | ストレージ エンティティによって消費されたストレージの合計サイズ (GB 単位)     |
+| StorageType                    | Text          | ストレージの種類 (クラウド、ボリューム、ディスクなど)             |
+| StorageUniqueId                | Text          | ストレージ エントリの識別に使用される一意 ID                |
+| VaultUniqueId                  | Text          | ストレージ エントリに関連するコンテナーの識別に使用される一意の ID |
+| VolumeFriendlyName             | Text          | ストレージ ボリュームのフレンドリ名                          |
+| SourceSystem                   | Text          | 現在のデータのソース システム (Azure)                    |
 
-次の表は、さまざまなポリシーに関連するフィールドの基本フィールドと集計を示しています。
+## <a name="next-steps"></a>次のステップ
 
-| フィールド | データ型 | 説明 |
-| --- | --- | --- |
-| #Policies |整数 |システム内に存在するバックアップ ポリシーの数 |
-| #PoliciesInUse |整数 |現在、バックアップを構成するために使用されているポリシーの数 |
-| AsOnDateTime |日付/時刻 |選択した行の最新の更新時刻 |
-| BackupDaysOfTheWeek |Text |バックアップがスケジュールされている曜日 |
-| BackupFrequency |Text |バックアップを実行する頻度。 例: 毎日、毎週 |
-| BackupTimes |Text |バックアップがスケジュールされている日付と時刻 |
-| DailyRetentionDuration |整数 |構成されたバックアップに使用される合計リテンション期間 (日数) |
-| DailyRetentionTimes |Text |毎日のリテンション期間が構成された日付と時刻 |
-| EntityState |Text |ポリシー オブジェクトの現在の状態。 たとえば、アクティブ、削除済み |
-| MonthlyRetentionDaysOfTheMonth |Text |毎月のリテンション期間に選択された月の日数 |
-| MonthlyRetentionDaysOfTheWeek |Text |毎月のリテンション期間に選択された曜日 |
-| MonthlyRetentionDuration |10 進数 |構成されたバックアップに使用される合計のリテンション期間 (月単位) |
-| MonthlyRetentionFormat |Text |毎月のリテンション期間に対する構成の種類。 例: 日単位の毎日、週単位の毎週 |
-| MonthlyRetentionTimes |Text |毎月のリテンション期間が構成される日付と時刻 |
-| MonthlyRetentionWeeksOfTheMonth |Text |毎月のリテンション期間が構成されたときの月の週 例: 最初、最後など |
-| PolicyName |Text |定義されたポリシーの名前 |
-| PolicyUniqueId |Text |ポリシーを識別する一意の ID |
-| RetentionType |Text |リテンション ポリシーの種類。 例: 毎日、毎週、毎月、毎年 |
-| WeeklyRetentionDaysOfTheWeek |Text |毎週のリテンション期間に選択された曜日 |
-| WeeklyRetentionDuration |10 進数 |構成されたバックアップの毎週の合計リテンション期間 (週単位) |
-| WeeklyRetentionTimes |Text |毎週のリテンション期間が構成される日付と時刻 |
-| YearlyRetentionDaysOfTheMonth |Text |毎年のリテンション期間に選択された月の日数 |
-| YearlyRetentionDaysOfTheWeek |Text |毎年のリテンション期間に選択された曜日 |
-| YearlyRetentionDuration |10 進数 |構成されたバックアップに使用される合計リテンション期間 (年単位) |
-| YearlyRetentionFormat |Text |毎年のリテンション期間に対する構成の種類。 例: 日単位の毎日、週単位の毎週 |
-| YearlyRetentionMonthsOfTheYear |Text |毎年のリテンション期間に選択された月 |
-| YearlyRetentionTimes |Text |毎年のリテンション期間が構成される日付と時刻 |
-| YearlyRetentionWeeksOfTheMonth |Text |毎年のリテンション期間が構成されたときの月の週 例: 最初、最後など |
-
-### <a name="protected-server"></a>保護されるサーバー
-
-次の表は、さまざまな保護されるサーバーに関連するフィールドの基本フィールドと集計を示しています。
-
-| フィールド | データ型 | 説明 |
-| --- | --- | --- |
-| #ProtectedServers |整数 |保護されるサーバーの数 |
-| AsOnDateTime |日付/時刻 |選択した行の最新の更新時刻 |
-| AzureBackupAgentOSType |Text |Azure Backup エージェントの OS の種類 |
-| AzureBackupAgentOSVersion |Text |Azure Backup エージェントの OS バージョン |
-| AzureBackupAgentUpdateDate |Text |Azure Backup エージェントが更新された日付 |
-| AzureBackupAgentVersion |Text |エージェント バックアップ バージョンのバージョン番号 |
-| BackupManagementType |Text |バックアップを実行するためのプロバイダーの種類。 たとえば、IaaSVM や FileFolder |
-| EntityState |Text |保護されるサーバー オブジェクトの現在の状態。 たとえば、アクティブ、削除済み |
-| ProtectedServerFriendlyName |Text |保護されるサーバーのフレンドリ名 |
-| ProtectedServerName |Text |保護されるサーバーの名前 |
-| ProtectedServerType |Text |バックアップされた保護されるサーバーの種類。 たとえば、IaaSVMContainer |
-| ProtectedServerName |Text |バックアップ項目が属している保護されるサーバーの名前 |
-| RegisteredContainerId |Text |バックアップ用に登録されたコンテナーの ID |
-
-### <a name="storage"></a>Storage
-
-次の表は、さまざまなストレージに関連するフィールドの基本フィールドと集計を示しています。
-
-| フィールド | データ型 | 説明 |
-| --- | --- | --- |
-| #ProtectedInstances |10 進数 |選択した時刻の最新の値に基づいて計算された、課金されるフロントエンド ストレージの計算に使用する保護されるインスタンスの数 |
-| AsOnDateTime |日付/時刻 |選択した行の最新の更新時刻 |
-| CloudStorageInMB |10 進数 |選択した時刻の最新の値に基づいて計算された、バックアップによって使用されるクラウド バックアップ ストレージ |
-| EntityState |Text |オブジェクトの現在の状態。 たとえば、アクティブ、削除済み |
-| LastUpdatedDate |Date |選択した行が最後に更新された日付 |
-
-### <a name="time"></a>Time
-
-次の表は、時刻に関連するフィールドを示しています。
-
-| フィールド | データ型 | 説明 |
-| --- | --- | --- |
-| Hour |Time |1 日の時刻。 例: 1:00:00 PM |
-| HourNumber |10 進数 |1 日の時間の数値。 例: 13.00 |
-| 分 |10 進数 |分 |
-| PeriodOfTheDay |Text |1 日の期間スロット。 例: 12-3 AM |
-| Time |Time |1 日の時間。 例: 12:00:01 AM |
-| TimeKey |Text |時刻を表すキー値 |
-
-### <a name="vault"></a>コンテナー
-
-次の表は、さまざまなコンテナーに関連するフィールドの基本フィールドと集計を示しています。
-
-| フィールド | データ型 | 説明 |
-| --- | --- | --- |
-| #Vaults |整数 |コンテナーの数 |
-| AsOnDateTime |日付/時刻 |選択した行の最新の更新時刻 |
-| AzureDataCenter |Text |コンテナーが配置されるデータ センター |
-| EntityState |Text |コンテナー オブジェクトの現在の状態。 たとえば、アクティブ、削除済み |
-| StorageReplicationType |Text |コンテナーのストレージ レプリケーションの種類。 例: GeoRedundant |
-| SubscriptionId |Text |レポートを生成するために選択された顧客のサブスクリプション ID |
-| VaultName |Text |コンテナーの名前 |
-| VaultTags |Text |コンテナーに関連付けられるタグ |
-
-## <a name="next-steps"></a>次の手順
-
-Azure Backup のレポートを作成するためのデータ モデルを確認した時点で、Power BI レポートの作成および表示に関する詳細について、次の記事を参照してください。
-
-* [Power BI でレポートを作成する](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/)
-* [Power BI でレポートをフィルター処理する](https://powerbi.microsoft.com/documentation/powerbi-service-about-filters-and-highlighting-in-reports/)
+- [Log Analytics に診断データを送信する方法について学習してください](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events)
+- [リソース固有のテーブルにクエリを記述する方法について説明します](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor#sample-kusto-queries)

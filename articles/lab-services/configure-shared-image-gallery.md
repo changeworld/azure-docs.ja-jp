@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 6e0c1419e5656f184d27dce8d185a86bea71d173
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 9593d60f76802cd515ca85616bce028cf3aa0d49
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389947"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589319"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Azure DevTest Labs での共有イメージ ギャラリーの構成
 DevTest Labs で[共有イメージ ギャラリー](../virtual-machines/windows/shared-image-galleries.md)機能がサポートされるようになりました。 ラボ ユーザーは、ラボ リソースの作成中に共有の場所からイメージにアクセスできます。 また、カスタム マネージド VM イメージに関連する構造および組織を構築できます。 共有イメージ ギャラリー機能では、次がサポートされています。
@@ -38,12 +38,13 @@ DevTest Labs で[共有イメージ ギャラリー](../virtual-machines/windows
 
 ## <a name="considerations"></a>考慮事項
 - ラボにアタッチできる共有イメージ ギャラリーは一度に 1 つだけです。 別のギャラリーをアタッチする場合は、既存のものをデタッチして別のものをアタッチする必要があります。 
+- 現在、DevTest Labs は、共有イメージ ギャラリーの一般化されたイメージのみをサポートしています。
 - DevTest Labs は現在、ラボを介したギャラリーへのイメージのアップロードをサポートしていません。 
 - 共有イメージ ギャラリーのイメージを使用して仮想マシンを作成している間、DevTest Labs は常に、このイメージの最も新しく公開されたバージョンを使用します。 ただし、イメージに複数のバージョンがある場合、ユーザーは、仮想マシンの作成時に [詳細設定] タブに移動して、以前のバージョンからコンピューターを作成することもできます。  
 - ラボが存在するリージョンに共有イメージ ギャラリーがイメージをレプリケートすることを確実にするために、DevTest Labs は自動的に最善の試みをしますが、それが常に可能とは限りません。 これらのイメージから VM を作成するときにユーザーが問題に遭遇しないよう、イメージがラボのリージョンにレプリケート済みであることを確認してください。
 
 ## <a name="use-azure-portal"></a>Azure Portal の使用
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左側のナビゲーション メニューで、 **[すべてのサービス]** を選択します。
 1. 一覧で **[DevTest Labs]** を選択します。
 1. ラボの一覧で、目的の**ラボ**を選択します。
@@ -115,5 +116,5 @@ GET  https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 アタッチされている共有イメージ ギャラリーのイメージを使用して VM を作成する方法については、次の記事を参照してください。[ギャラリーから共有イメージを使用して VM を作成する](add-vm-use-shared-image.md)

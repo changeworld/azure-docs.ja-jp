@@ -428,7 +428,7 @@
             - name: 入力
               href: functions-bindings-signalr-service-input.md
               displayName: SignalR Service
-            - name: Output
+            - name: 出力
               href: functions-bindings-signalr-service-output.md
               displayName: SignalR Service
         - name: テーブル ストレージ

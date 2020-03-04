@@ -4,14 +4,14 @@ description: Azure HPC Cache を使用するための前提条件
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/20/2020
 ms.author: rohogue
-ms.openlocfilehash: 135c231f84d95ea2418fab4647d715473378e41c
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 40d282ad30a800a5e5a36a8d2211ec8da7ce63ec
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251959"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651068"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC Cache の前提条件
 
@@ -95,7 +95,9 @@ NFS ストレージ システム (たとえば、オンプレミスのハード�
 > [!NOTE]
 > キャッシュが NFS ストレージ システムに対して十分なアクセス権を持っていない場合、ストレージ ターゲットの作成は失敗します。
 
-* **ネットワーク接続:** Azure HPC Cache には、キャッシュ サブネットと NFS システムのデータ センター間の高帯域幅ネットワーク アクセスが必要です。 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) または同様のアクセスが推奨されます。 VPN を使用している場合は、TCP MSS を 1350 でクランプして大きなパケットがブロックされないように構成する必要があります。
+詳細については「 [NAS 構成と NFS ストレージ ターゲットの問題のトラブルシューティング](troubleshoot-nas.md) 」をご参照ください。
+
+* **ネットワーク接続:** Azure HPC Cache には、キャッシュ サブネットと NFS システムのデータ センター間の高帯域幅ネットワーク アクセスが必要です。 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) または同様のアクセスが推奨されます。 VPN を使用している場合は、TCP MSS を 1350 でクランプして大きなパケットがブロックされないように構成する必要があります。 VPN 設定のトラブルシューティングの詳細については、[VPN のパケット サイズの制限](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions) に関する追加ヘルプをご参照ください。
 
 * **ポート アクセス:** キャッシュには、ストレージ システム上の特定の TCP/UDP ポートへのアクセスが必要です。 ストレージの種類によってポート要件は異なります。
 
@@ -108,6 +110,8 @@ NFS ストレージ システム (たとえば、オンプレミスのハード�
     ```bash
     rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
     ```
+
+  ``rpcinfo`` クエリによって返されるすべてのポートで、Azure HPC Cache のサブネットからの無制限のトラフィックが許可されていることを確認します。
 
   * `rpcinfo` コマンドから返されるポートに加えて、これらの一般的に使用されるポートで受信トラフィックと送信トラフィックが許可されていることを確認します:
 
@@ -126,11 +130,15 @@ NFS ストレージ システム (たとえば、オンプレミスのハード�
   > [!NOTE]
   > NFS ストレージ システムが NetApp の ONTAP 9.2 オペレーティング システムを使用している場合は、 **`showmount` を有効にしないでください**。 [Microsoft サービスおよびサポートに問い合わせてください](hpc-cache-support-ticket.md)。
 
+  NFS ストレージ ターゲットの [トラブルシューティングのアーティクル](troubleshoot-nas.md#enable-export-listing) でディレクトリ リスト アクセスの詳細をご覧ください。
+
 * **ルート アクセス:** キャッシュからは、ユーザー ID 0 としてバックエンド システムに接続されます。 ストレージ システムで次の設定を確認します。
   
   * `no_root_squash`を有効にする: このオプションを選択すると、リモート ルート ユーザーは、ルートによって所有されているファイルにアクセスできるようになります。
 
   * エクスポート ポリシーをチェックして、キャッシュのサブネットからのルート アクセスに制限がないことを確認してください。
+
+  * ストレージに別のエクスポートのサブディレクトリであるエクスポートがある場合、キャッシュにパスの最下位セグメントへのルート アクセスがあることをご確認ください。 詳細については、NFS ストレージ ターゲットのトラブルシューティングに関するアーティクルに記載されている[ディレクトリ パスのルートアクセス](troubleshoot-nas.md#allow-root-access-on-directory-paths) をご参照ください。
 
 * NFS バックエンド ストレージは、互換性のあるハードウェア プラットフォームおよびソフトウェア プラットフォームである必要があります。 詳細については、Azure HPC Cache チームにお問い合わせください。
 

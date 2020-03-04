@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: damendo
-ms.openlocfilehash: ee44dda7a7ca2f7e1ad386498798191fe792cef0
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 47d927f9f17580767526ec6683e819256fc5e994
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840844"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619925"
 ---
 # <a name="read-nsg-flow-logs"></a>NSG フロー ログの読み取り
 
@@ -186,6 +186,9 @@ A","1497646742,10.0.0.4,168.62.32.14,44942,443,T,O,A","1497646742,10.0.0.4,52.24
 
 ## <a name="next-steps"></a>次のステップ
 
+
 [Elastic Stack の使用](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)、[Grafana の使用](network-watcher-nsg-grafana.md)、[Graylog の使用](network-watcher-analyze-nsg-flow-logs-graylog.md)に関する記事を参照し、NSG フロー ログの表示方法の詳細を理解します。 BLOB を直接使用して各種のログ分析コンシューマーを出力するためのオープン ソースの Azure 関数アプローチについては、[Azure Network Watcher NSG Flow Logs Connector](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector) に関するページを参照してください。
+
+[Azure Traffic Analytics](https://docs.microsoft.com/azure/network-watcher/traffic-analytics) を使用して、トラフィック フローに関する分析情報を得ることができます。 Traffic Analytics は [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) を使用して、トラフィック フローをクエリ可能にします。
 
 BLOB ストレージの詳細については、[Azure Functions における Blob Storage のバインディング](../azure-functions/functions-bindings-storage-blob.md)に関するページを参照してください。

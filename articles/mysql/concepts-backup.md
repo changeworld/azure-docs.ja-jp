@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d5941ef7ac2236137fada7202a8dd3cf2ebcc120
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 47fa4083c26f18149b0b69b05f2cfd0b227de868
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74776292"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619588"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Azure Database for MySQL でのバックアップと復元
 
@@ -20,6 +20,8 @@ Azure Database for MySQL は、サーバーのバックアップを自動的に�
 ## <a name="backups"></a>バックアップ
 
 Azure Database for MySQL では、データ ファイルとトランザクション ログのバックアップが作成されます。 サポートされている最大ストレージ サイズに応じて、完全バックアップと差分バックアップ (最大 4 TB のストレージ サーバー) またはスナップショット バックアップ (最大 16 TB のストレージ サーバー) を使用します。 これらのバックアップを使用すると、サーバーを、バックアップの構成済みリテンション期間内の任意の時点に復元できます。 バックアップの既定のリテンション期間は 7 日です。 [必要に応じて](howto-restore-server-portal.md#set-backup-configuration)最大 35 日に設定できます。 すべてのバックアップが、AES 256 ビット暗号化を使用して暗号化されます。
+
+これらのバックアップ ファイルをエクスポートすることはできません。 バックアップは、Azure Database for MySQL の復元操作にのみ使用できます。 [mysqldump](concepts-migrate-dump-restore.md) を使用して、データベースをコピーできます。
 
 ### <a name="backup-frequency"></a>バックアップ頻度
 
@@ -38,7 +40,7 @@ Azure Database for MySQL は、プロビジョニングされているサーバ�
 
 たとえば、サーバーを 250 GB でプロビジョニングした場合は、250 GB のバックアップ ストレージを追加料金なしで利用できます。 250 GB を超えたストレージ分についてのみ課金されます。
 
-## <a name="restore"></a>復元
+## <a name="restore"></a>[復元]
 
 Azure Database for MySQL で復元を実行すると、元のサーバーのバックアップから新しいサーバーが作成されます。
 
@@ -77,7 +79,7 @@ geo リストア中に変更できるサーバー構成は、コンピューテ�
 - 適切なログインとデータベース レベルのアクセス許可が適切に指定されていることを確認する
 - 必要に応じて、アラートを構成する
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - ビジネス継続性の詳細については、 [ビジネス継続性の概要](concepts-business-continuity.md)に関するページをご覧ください。
 - Azure Portal を使用して特定の時点に復元する方法については、 [Azure Portal を使用したデータベースのポイントインタイム リストア](howto-restore-server-portal.md)に関するページをご覧ください。
