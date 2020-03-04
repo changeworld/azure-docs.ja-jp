@@ -24,7 +24,7 @@ Node.js を使用して、Language Understanding (LUIS) と統合されたチャ
 
 ## <a name="prerequisites"></a>前提条件
 
-* [ボット エミュレーター](https://aka.ms/abs/build/emulatordownload)
+* [Bot emulator](https://aka.ms/abs/build/emulatordownload)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 
 
