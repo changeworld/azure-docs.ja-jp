@@ -213,9 +213,9 @@ Event Grid 出力バインディングは、Java では使用できません。
 
 |function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
-|**type** | 300 | "eventGrid" に設定する必要があります。 |
-|**direction** | 300 | "out" に設定する必要があります。 このパラメーターは、Azure Portal でバインドを作成するときに自動で設定されます。 |
-|**name** | 300 | イベントを表す関数コードに使用される変数の名前。 |
+|**type** | n/a | "eventGrid" に設定する必要があります。 |
+|**direction** | n/a | "out" に設定する必要があります。 このパラメーターは、Azure Portal でバインドを作成するときに自動で設定されます。 |
+|**name** | n/a | イベントを表す関数コードに使用される変数の名前。 |
 |**topicEndpointUri** |**TopicEndpointUri** | カスタム トピックの URI を含むアプリ設定の名前 (例: `MyTopicEndpointUri`)。 |
 |**topicKeySetting** |**TopicKeySetting** | カスタム トピックのアクセス キーを含むアプリ設定の名前。 |
 
