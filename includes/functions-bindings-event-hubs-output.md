@@ -319,5 +319,5 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 |プロパティ  |Default | 説明 |
 |---------|---------|---------|
 |`maxBatchSize`|10|受信ループあたりで受信される最大イベント数。|
-|`prefetchCount`|300|基となる `EventProcessorHost` によって使用される既定のプリフェッチ カウント。|
+|`prefetchCount`|該当なし|基となる `EventProcessorHost` によって使用される既定のプリフェッチ カウント。|
 |`batchCheckpointFrequency`|1|EventHub カーソル チェックポイントを作成する前に処理するイベント バッチ数。|
