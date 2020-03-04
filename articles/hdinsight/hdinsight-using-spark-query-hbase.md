@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/02/2019
-ms.openlocfilehash: fdfd026be1a10410cd7c875dbdf0de9660c8412c
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.custom: hdinsightactive
+ms.date: 02/24/2020
+ms.openlocfilehash: 888f24e13ce67c878592068927383dd8cbfefa60
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937633"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623105"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Apache Spark を使用した Apache HBase データの読み取り/書き込み
 
@@ -21,11 +21,11 @@ ms.locfileid: "71937633"
 
 ## <a name="prerequisites"></a>前提条件
 
-* 2 つの異なる HDInsight クラスターが、同じ仮想ネットワークにデプロイされていること。 一方は HBase で、もう一方は Spark 2.1 (HDInsight 3.6) 以降がインストールされた Spark です。 詳細については、「[Azure Portal を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-portal.md)」をご覧ください。
+* 2 つの異なる HDInsight クラスターが、同じ[仮想ネットワーク](./hdinsight-plan-virtual-network-deployment.md)にデプロイされていること。 一方は HBase で、もう一方は Spark 2.1 (HDInsight 3.6) 以降がインストールされた Spark です。 詳細については、「[Azure Portal を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-portal.md)」をご覧ください。
 
 * SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-* クラスターのプライマリ ストレージの [URI スキーム](hdinsight-hadoop-linux-information.md#URI-and-scheme)。 Azure Blob Storage では wasb://、Azure Data Lake Storage Gen2 では abfs://、Azure Data Lake Storage Gen1 では adl:// です。 Blob Storage で安全な転送が有効になっている場合、URI は `wasbs://` になります。  [安全な転送](../storage/common/storage-require-secure-transfer.md)に関するページも参照してください。
+* クラスターのプライマリ ストレージの [URI スキーム](hdinsight-hadoop-linux-information.md#URI-and-scheme)。 このスキーマは、Azure Blob Storage では wasb://、Azure Data Lake Storage Gen2 では abfs://、Azure Data Lake Storage Gen1 では adl:// になります。 Blob Storage で安全な転送が有効になっている場合、URI は `wasbs://` になります。  [安全な転送](../storage/common/storage-require-secure-transfer.md)に関するページも参照してください。
 
 ## <a name="overall-process"></a>全体的なプロセス
 
@@ -95,9 +95,17 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
 
 次に、HBase クラスターへの SSH 接続を終了します。
 
+```bash
+exit
+```
+
 ## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>Spark クラスターに hbase-site.xml を配置する
 
-1. SSH を使用して、Spark クラスターのヘッド ノードに接続します。
+1. SSH を使用して、Spark クラスターのヘッド ノードに接続します。 次のコマンドの `SPARKCLUSTER` を Spark クラスターの名前に置き換えて編集した後、コマンドを入力します。
+
+    ```cmd
+    ssh sshuser@SPARKCLUSTER-ssh.azurehdinsight.net
+    ```
 
 2. 以下のコマンドを入力して、Spark クラスターの既定のストレージから、クラスターのローカル ストレージの Spark 2 構成フォルダーに `hbase-site.xml` をコピーします。
 
@@ -128,7 +136,7 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
     import spark.sqlContext.implicits._
     ```  
 
-2. 以下のコマンドを入力して、HBase で作成した Contacts テーブルのカタログを定義します。
+1. 以下のコマンドを入力して、HBase で作成した Contacts テーブルのカタログを定義します。
 
     ```scala
     def catalog = s"""{
@@ -150,7 +158,7 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
      b. rowkey を `key` として指定し、Spark で使用されている列名を、HBase で使用されている列ファミリ、列名、列タイプにマップします。  
      c. また、rowkey を、`rowkey` の特定の列ファミリ `cf` を持つ名前付きの列 (`rowkey`) として詳細に定義する必要があります。  
 
-3. 以下のコマンドを入力して、HBase で `Contacts` テーブルの DataFrame を提供するメソッドを定義します。
+1. 以下のコマンドを入力して、HBase で `Contacts` テーブルの DataFrame を提供するメソッドを定義します。
 
     ```scala
     def withCatalog(cat: String): DataFrame = {
@@ -162,40 +170,42 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
      }
     ```
 
-4. DataFrame のインスタンスを作成します。
+1. DataFrame のインスタンスを作成します。
 
     ```scala
     val df = withCatalog(catalog)
     ```  
 
-5. DataFrame のクエリを実行します。
+1. DataFrame のクエリを実行します。
 
     ```scala
     df.show()
     ```
 
-6. 2 行のデータが表示されます。
+    2 行のデータが表示されます。
 
-        +------+--------------------+--------------+-------------+--------------+
-        |rowkey|       officeAddress|   officePhone| personalName| personalPhone|
-        +------+--------------------+--------------+-------------+--------------+
-        |  1000|1111 San Gabriel Dr.|1-425-000-0002|    John Dole|1-425-000-0001|
-        |  8396|5415 San Gabriel Dr.|  230-555-0191|  Calvin Raji|  230-555-0191|
-        +------+--------------------+--------------+-------------+--------------+
+    ```output
+    +------+--------------------+--------------+-------------+--------------+
+    |rowkey|       officeAddress|   officePhone| personalName| personalPhone|
+    +------+--------------------+--------------+-------------+--------------+
+    |  1000|1111 San Gabriel Dr.|1-425-000-0002|    John Dole|1-425-000-0001|
+    |  8396|5415 San Gabriel Dr.|  230-555-0191|  Calvin Raji|  230-555-0191|
+    +------+--------------------+--------------+-------------+--------------+
+    ```
 
-7. 一時テーブルを登録して、Spark SQL を使用して HBase テーブルのクエリを実行できるようにします。
+1. 一時テーブルを登録して、Spark SQL を使用して HBase テーブルのクエリを実行できるようにします。
 
     ```scala
     df.createTempView("contacts")
     ```
 
-8. `contacts` テーブルに対して SQL クエリを発行します。
+1. `contacts` テーブルに対して SQL クエリを発行します。
 
     ```scala
     spark.sqlContext.sql("select personalName, officeAddress from contacts").show
     ```
 
-9. 次のような結果が表示されます。
+    次のような結果が表示されます。
 
     ```output
     +-------------+--------------------+
@@ -220,7 +230,7 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
         )
     ```
 
-2. `ContactRecord` のインスタンスを作成し、配列に挿入します。
+1. `ContactRecord` のインスタンスを作成し、配列に挿入します。
 
     ```scala
     val newContact = ContactRecord("16891", "40 Ellis St.", "674-555-0110", "John Jackson","230-555-0194")
@@ -229,19 +239,19 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
     newData(0) = newContact
     ```
 
-3. 新しいデータの配列を HBase に保存します。
+1. 新しいデータの配列を HBase に保存します。
 
     ```scala
     sc.parallelize(newData).toDF.write.options(Map(HBaseTableCatalog.tableCatalog -> catalog, HBaseTableCatalog.newTable -> "5")).format("org.apache.spark.sql.execution.datasources.hbase").save()
     ```
 
-4. 結果を確認します。
+1. 結果を確認します。
 
     ```scala  
     df.show()
     ```
 
-5. 次のような出力結果が表示されます。
+    次のような出力結果が表示されます。
 
     ```output
     +------+--------------------+--------------+------------+--------------+
@@ -253,12 +263,12 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
     +------+--------------------+--------------+------------+--------------+
     ```
 
-6. 次のコマンドを入力して、Spark シェルを閉じます。
+1. 次のコマンドを入力して、Spark シェルを閉じます。
 
     ```scala
     :q
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Apache Spark HBase コネクタ](https://github.com/hortonworks-spark/shc)

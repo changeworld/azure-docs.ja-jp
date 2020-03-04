@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 01/03/2020
-ms.openlocfilehash: aeb86823ddb25bbe0340630b55360806faef59e9
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/20/2020
+ms.openlocfilehash: d711cc7e58fb055eda62cfc364a5552a7d10f7bd
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186878"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623142"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する
 
@@ -82,20 +82,18 @@ Azure Data Lake Storage Gen2 ストレージ アカウントを作成します�
     ![RBAC ロールの割り当て方法を示すスクリーンショット](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
 
 1. **[保存]** を選択します。 選択したユーザー割り当て ID が、選択されたロールの下に表示されるようになります。
-1. この初期セットアップを完了すると、ポータルを通じてクラスターを作成できます。 クラスターは、ストレージ アカウントと同じ Azure リージョンに存在する必要があります。 クラスターの作成メニューの **[ストレージ]** セクションで、次のオプションを選択します。
+1. この初期セットアップを完了すると、ポータルを通じてクラスターを作成できます。 クラスターは、ストレージ アカウントと同じ Azure リージョンに存在する必要があります。 クラスターの作成メニューの **[ストレージ]** タブで、次のオプションを選択します。
 
     * **[プライマリ ストレージの種類]** で、 **[Azure Data Lake Storage Gen2]** を選択します。
-    * **[ストレージ アカウントの選択]** から、新しく作成した Data Lake Storage Gen2 ストレージ アカウントを探して選択します。
+    * **[プライマリ ストレージ アカウント]** から、新しく作成された Data Lake Storage Gen2 ストレージ アカウントを探して選択します。
 
-        ![Azure HDInsight で Data Lake Storage Gen2 を使用するためのストレージ設定](./media/hdinsight-hadoop-use-data-lake-storage-gen2/primary-storage-type-adls-gen2.png)
+    * **[ID]** から、新しく作成されたユーザー割り当てマネージド ID を選択します。
 
-    * **[ID]** から、正しいサブスクリプションと新しく作成されたユーザー割り当てマネージド ID を選択します。
+        ![Azure HDInsight で Data Lake Storage Gen2 を使用するためのストレージ設定](./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-portal-cluster-storage-gentwo.png)
 
-        ![HDInsight で Data Lake Storage Gen2 を使用するための ID 設定](./media/hdinsight-hadoop-use-data-lake-storage-gen2/managed-identity-cluster-creation.png)
-
-> [!NOTE]
-> * セカンダリ Data Lake Storage Gen2 アカウントを追加するには、ストレージ アカウント レベルで、追加する新しい Data Lake Storage Gen2 ストレージ アカウントに、作成済みのマネージド ID を割り当てるだけです。 HDInsight の [追加のストレージ アカウント] ブレードを使用したセカンダリ Data Lake Storage Gen2 アカウントの追加はサポートされていないことに注意してください。
-> * HDInsight で使用する Azure ストレージ アカウントで、RA-GRS または RA-ZRS を有効にすることができます。 ただし、RA-GRS または RA-ZRS セカンダリ エンドポイントに対するクラスターの作成はサポートされていません。
+    > [!NOTE]
+    > * セカンダリ Data Lake Storage Gen2 アカウントを追加するには、ストレージ アカウント レベルで、追加する新しい Data Lake Storage Gen2 ストレージ アカウントに、作成済みのマネージド ID を割り当てるだけです。 HDInsight の [追加のストレージ アカウント] ブレードを使用したセカンダリ Data Lake Storage Gen2 アカウントの追加はサポートされていないことに注意してください。
+    > * HDInsight で使用する Azure ストレージ アカウントで、RA-GRS または RA-ZRS を有効にすることができます。 ただし、RA-GRS または RA-ZRS セカンダリ エンドポイントに対するクラスターの作成はサポートされていません。
 
 
 ## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-cli"></a>Data Lake Storage Gen2 を使用して Azure CLI からクラスターを作成する
@@ -159,7 +157,7 @@ PowerShell を使用して、Azure Data Lake Storage Gen2 を使用する HDInsi
 
 Data Lake Storage Gen2 では、ロール ベースのアクセス制御 (RBAC) と POSIX のようなアクセス制御リスト (ACL) の両方をサポートするアクセス制御モデルを使用します。 Data Lake Storage Gen1 では、データへのアクセス制御の場合のみアクセス制御リストがサポートされていました。
 
-RBAC では、ロールの割り当てを使用して、Azure リソースのユーザー、グループ、サービス プリンシパルにアクセス許可のセットを効果的に適用します。 通常、これらの Azure リソースは、最上位のリソース (例: Azure のストレージ アカウント) に制約されます。 Azure Storage および Data Lake Storage Gen2 の場合、このメカニズムがファイル システムのリソースにまで拡張されています。
+RBAC では、ロールの割り当てを使用して、Azure リソースのユーザー、グループ、サービス プリンシパルにアクセス許可のセットを効果的に適用します。 通常、これらの Azure リソースは、最上位のリソース (例: Azure Storage アカウント) に制約されます。 Azure Storage および Data Lake Storage Gen2 の場合、このメカニズムがファイル システムのリソースにまで拡張されています。
 
  RBAC を使用したファイルのアクセス許可の詳細については、「[Azure のロールベースのアクセス制御 (RBAC)](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control-rbac)」を参照してください。
 
@@ -205,7 +203,7 @@ Azure サービスには、システム割り当てとユーザー割り当て�
 
 #### <a name="a-few-hdfs-commands"></a>いくつかの hdfs コマンド
 
-1. ローカル ストレージで単純なファイルを作成します。
+1. ローカル ストレージにファイルを作成します。
 
     ```bash
     touch testFile.txt

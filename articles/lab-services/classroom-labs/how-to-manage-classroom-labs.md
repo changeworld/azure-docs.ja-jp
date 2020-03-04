@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: ad7fd664f0dce08e4482b4fb2cba2831208396fc
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: ac990141ccc694ed7460763e84126d9fefdbb609
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264833"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539452"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボを管理する 
 この記事では、クラスルーム ラボの作成および削除方法について説明します。 また、ラボ アカウントのすべてのクラスルーム ラボを表示する方法についても説明します。 
@@ -41,6 +41,9 @@ ms.locfileid: "76264833"
     6. **[保存]** を選択します。
 
         ![新しいラボのウィンドウ](../media/tutorial-setup-classroom-lab/new-lab-window.png)
+
+        > [!NOTE]
+        > ラボ アカウントが [[ラボ作成者にラボの場所の選択を許可する]](allow-lab-creator-pick-lab-location.md) オプションに構成されている場合、ラボの場所を選択するオプションが表示されます。 
 4. **[Virtual machine credentials]\(仮想マシンの資格情報\)** ページで、ラボ内のすべての VM 用の既定の資格情報を指定します。
     1. ラボ内のすべての VM に使う**ユーザーの名前**を指定します。
     2. ユーザーの**パスワード**を指定します。 
@@ -52,12 +55,14 @@ ms.locfileid: "76264833"
         教師は、ラボ内のすべての VM に同じパスワードを使用するか、学生に自分の VM のパスワードを設定させるかを選択できます。 既定では、この設定は、Ubuntu を除き、すべての Windows と Linux のイメージで有効になっています。 **Ubuntu** VM を選択すると、この設定は無効になり、初めてサインインしたときに、パスワードを設定するよう求めるプロンプトが学生に表示されます。  
 
         ![新しいラボのウィンドウ](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
-        > [!IMPORTANT]
-        > ユーザー名とパスワードはメモしておいてください。 これらは再表示されません。    
     4. 次に、 **[Virtual machine credentials]\(仮想マシンの資格情報\)** ページで **[次へ]** を選択します。 
-5. **[Lab policies]\(ラボのポリシー\)** ページで、ラボに対してスケジュールされた時間以外に各ユーザーに割り当てられる時間数を入力し ( **[Quota for each user]\(各ユーザーのクォータ\)** )、 **[完了]** を選択します。 
+5. **[ラボ ポリシー]** ページで、次の手順を実行します。
+    1. ラボのスケジュールされたクラス時間外の各ユーザー (**各ユーザーのクォータ**) に割り当てる時間数を入力します。 
+    2. **[仮想マシンの自動シャットダウン]** オプションで、ユーザーの接続が切断されたときに VM を自動的にシャットダウンするかどうかを指定します。 VM が自動的にシャットダウンされる前にユーザーの再接続を待つ時間の長さを指定することもできます。 詳細については、「[切断時の VM の自動シャットダウンを有効にする](how-to-enable-shutdown-disconnect.md)」を参照してください。
+    3. 次に、 **[完了]** を選択します。 
 
-    ![[Quota for each user]\(各ユーザーのクォータ\)](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
+        ![[Quota for each user]\(各ユーザーのクォータ\)](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
+    
 5. テンプレート VM の作成の状態を示す次の画面が表示されます。 ラボ内のテンプレートの作成には、最大 20 分がかかります。 
 
     ![テンプレート VM の作成の状態](../media/tutorial-setup-classroom-lab/create-template-vm-progress.png)

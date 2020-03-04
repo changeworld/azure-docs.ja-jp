@@ -1,5 +1,5 @@
 ---
-title: Azure Data Box、Azure Data Box Heavy を使用してホット、コールド、アーカイブ BLOB 層にデータを送信する | データ内の Microsoft Docs
+title: Azure Data Box または Azure Data Box Heavy を使用してホット、コールド、アーカイブ BLOB 層にデータを送信する
 description: Azure Data Box または Azure Data Box Heavy を使用して、適切なブロック BLOB ストレージ層 (ホット、コールド、アーカイブなど) にデータを送信する方法について説明します
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: ea208c395e2ef69ce8f28052351643e963cceb05
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 31178284313ad7dafb094b109a75d4550cabd39c
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427876"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560373"
 ---
 # <a name="use-azure-data-box-or-azure-data-box-heavy-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Azure Data Box または Azure Data Box Heavy を使用して適切な Azure Storage BLOB 層にデータを送信する
 
@@ -114,7 +114,7 @@ Data Box デバイスのデータを既定の層にアップロードした後�
    > [!TIP]
    > 取り込み時にデータをアーカイブする場合は、既定のアカウント層をホットに設定します。 既定の層がクールの場合、データが直ちにアーカイブに移動すると、30 日早期削除ペナルティが課されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 -  [ライフ サイクル ポリシー ルールを使用して一般的なデータ階層制御シナリオ](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts#examples)に対処する方法を学びます。
 

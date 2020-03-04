@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31d84d5bf43bac55769a6479917794a51c1ccd0c
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: d92c3e51aae70c66dcf9b7ca6dfd631650ace574
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999114"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561750"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory Terms of Use
 
@@ -42,7 +42,7 @@ Azure AD Terms of Use では、以下のことができます。
 - 従業員やゲストに、すべてのデバイスでアクセス前に利用規約への同意を求める。
 - 従業員やゲストに、定期的に利用規約への同意を求める。
 - 従業員やゲストに、Azure Multi-factor Authentication (MFA) でセキュリティ情報を登録する前に利用規約への同意を求める。
-- 従業員やゲストに、Azure AD のセルフサービスによるパスワードのリセット (SSPR) でセキュリティ情報を登録する前に利用規約への同意を求める。
+- 従業員やゲストに、Azure AD のセルフサービス パスワード リセット (SSPR) でセキュリティ情報を登録する前に利用規約への同意を求める。
 - 組織内のすべてのユーザーに一般的な利用規約を提示する。
 - ユーザーの属性 (例: [動的グループ](../users-groups-roles/groups-dynamic-membership.md)を使用して、医師と看護師や、国内従業員と国際従業員など) に基づいて特定の使用条件を提示する。
 - ビジネスへの影響が大きいアプリケーション (Salesforce など) にアクセスする際に特定の利用規約を提示する。
@@ -85,7 +85,7 @@ Azure AD Terms of Use は、PDF 形式で内容を提示します。 この PDF 
 1. **[利用規約のドキュメント]** で、完成した利用規約の PDF を参照して選びます。
 1. 利用規約のドキュメントの言語を選択します。 言語オプションを使用して、言語が異なる複数の使用条件をアップロードできます。 エンドユーザーに表示される使用条件のバージョンは、ブラウザーの設定に基づきます。
 1. エンド ユーザーが同意する前に利用規約を表示しなければならないようにする場合、 **[ユーザーは利用規約を展開する必要があります]** を **[オン]** に設定します。
-1. エンド ユーザーがアクセスするすべてのデバイスで利用規約に同意しなければならないようにする場合、 **[各デバイスでユーザーによる同意が必要]** を **[オン]** にします。 詳しくは、「[デバイスごとの利用規約](#per-device-terms-of-use)」をご覧ください。
+1. エンド ユーザーがアクセスするすべてのデバイスで利用規約に同意しなければならないようにする場合、 **[各デバイスでユーザーによる同意が必要]** を **[オン]** にします。 このオプションが有効な場合、追加のアプリケーションのインストールがユーザーに要求される可能性があります。 詳しくは、「[デバイスごとの利用規約](#per-device-terms-of-use)」をご覧ください。
 1. 定期的に利用規約への同意を期限切れにする場合、 **[期限切れの同意]** を **[オン]** にします。 オンに設定すると、2 つのスケジュール設定が追加表示されます。
 
    ![開始日、頻度、および期間を設定するための [期限切れの同意] 設定](./media/terms-of-use/expire-consents.png)
@@ -277,6 +277,10 @@ Azure AD 監査ログを使い始める手順は次のとおりです。
 
 Chrome を使用している場合、[Windows 10 アカウント拡張機能](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)のインストールを求められます。
 
+### <a name="join-an-android-device"></a>Android デバイスに参加する
+
+ユーザーが Android デバイスを使用している場合、[Microsoft Authenticator アプリ](https://play.google.com/store/apps/details?id=com.azure.authenticator)をインストールするように求められます。
+
 ### <a name="browsers"></a>ブラウザー
 
 ユーザーがサポートされていないブラウザーを使用している場合、別のブラウザーを使用するように依頼されます。
@@ -381,7 +385,7 @@ A:Azure AD の利用規約と [Intune の利用規約](/intune/terms-and-conditi
 **Q:利用規約サービスにはどのエンドポイントが認証に使用されますか?**<br />
 A:利用規約では、認証に https://tokenprovider.termsofuse.identitygovernance.azure.com と https://account.activedirectory.windowsazure.com のエンドポイントを利用します。 組織に登録用の URL の許可リストがある場合は、サインイン用の Azure AD エンドポイントと共に、これらのエンドポイントを許可リストに追加する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [クイック スタート:クラウド アプリにアクセスする前に利用規約への同意を要求する](require-tou.md)
+- [クイック スタート: クラウド アプリにアクセスする前に利用規約への同意を要求する](require-tou.md)
 - [Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)

@@ -3,22 +3,22 @@ title: SAP HANA on Azure (L インスタンス) のアーキテクチャの用�
 description: SAP HANA on Azure (L インスタンス) のアーキテクチャの用語を確認します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/03/2019
+ms.date: 02/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2ea6a8963d0905036f759fbab792492cc63d551c
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 6785ae821f701121185f0064c6317c69d50191ab
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806747"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617062"
 ---
 # <a name="know-the-terms"></a>用語の確認
 
@@ -38,7 +38,7 @@ ms.locfileid: "74806747"
    オンプレミス ドメインのドメイン ユーザーは、サーバーにアクセスし、それらの VM 上でサービス (DBMS サービスなど) を実行できます。 オンプレミスにデプロイした VM と Azure にデプロイした VM 間での通信と名前解決が可能です。 このシナリオが、ほとんどの SAP 資産をデプロイする際の一般的な方法です。 詳しくは、[Azure VPN Gateway ](../../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事、および[Azure Portal を使用したサイト間接続の仮想ネットワークの作成](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。
 - **Tenant**: HANA L インスタンス スタンプにデプロイされたお客様は、"*テナント*" に分離されます。 テナントは、ネットワーク、ストレージ、およびコンピューティング レイヤーで他のテナントから分離されます。 別のテナントに割り当てられているストレージ ユニットやコンピューティング ユニットは、HANA L インスタンス スタンプ レベルで相互に認識したり通信したりすることはできません。 同じお客様が別々のテナントにデプロイを置くこともありますが、 その場合でも HANA L インスタンス スタンプ レベルでテナント間が通信することはありません。
 - **SKU カテゴリ**:HANA L インスタンスの場合、次の 2 つの SKU のカテゴリが提供されます。
-    - **Type I クラス**:S72、S72m、S96、S144、S144m、S192、S192m、S192xm および S224
+    - **Type I クラス**:S72、S72m、S96、S144、S144m、S192、S192m、S192xm、S224、および S224m
     - **Type II クラス**:S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm、S960m
 - **スタンプ**:HANA L インスタンスの Microsoft 内部デプロイ サイズを定義します。 HANA L インスタンス ユニットをデプロイするは、コンピューティング、ネットワーク、およびストレージ ラックで構成されている HANA L インスタンス スタンプをデータセンターの場所に事前にデプロイする必要があります。 このようなデプロイは HANA L インスタンス スタンプと呼ばれます。またはリビジョン 4 以降では (下記参照) **ラージ インスタンス行**の用語の代わりに使用しています。
 - **リビジョン**:HANA L インスタンス スタンプには、2 つの異なるスタンプ リビジョンがあります。 これらは、アーキテクチャと Azure 仮想マシン ホストとの近接性の点で異なります。
@@ -47,5 +47,5 @@ ms.locfileid: "74806747"
 
 クラウドに SAP ワークロードをデプロイする方法については、他のさまざまなリソースが用意されています。 Azure への SAP HANA のデプロイを計画する場合、Azure IaaS の原則と Azure IaaS での SAP ワークロードのデプロイに関する知識と経験が必要です。 作業を続行する前に、[Azure 仮想マシンでの SAP ソリューションの使用](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事で詳細を確認してください。 
 
-**次のステップ**
+**次の手順**
 - [HLI 認定](hana-certification.md)を参照してください

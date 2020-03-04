@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: a0ba747fcc3015df961aa40de794071828d73a33
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32fa54ef0d8eccaf8745ee37cb028d4f3c6d73eb
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446165"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650880"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Azure Event Hubs および Azure Logic Apps でイベントを監視および送受信する
 
@@ -33,7 +33,7 @@ ms.locfileid: "75446165"
 
 ロジック アプリでイベント ハブにアクセスできるようにするには、アクセス許可を確認し、Event Hubs 名前空間の接続文字列を取得します。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. 特定のイベント ハブではなく、Event Hubs "*名前空間*" に移動します。 
 
@@ -74,7 +74,7 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
    ![トリガーのプロパティ](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger.png)
 
-   | プロパティ | 必須 | 説明 |
+   | プロパティ | Required | 説明 |
    |----------|----------|-------------|
    | **イベント ハブ名** | はい | 監視するイベント ハブの名前 |
    | **コンテンツの種類** | いいえ | イベントのコンテンツの種類 既定では、 `application/octet-stream`です。 |
@@ -86,7 +86,7 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
    **追加のプロパティ**
 
-   | プロパティ | 必須 | 説明 |
+   | プロパティ | Required | 説明 |
    |----------|----------|-------------|
    | **コンテンツ スキーマ** | いいえ | イベント ハブから読み取るイベントの JSON コンテンツ スキーマ たとえば、コンテンツのスキーマを指定する場合は、スキーマと一致するイベントのみのロジック アプリをトリガーできます。 |
    | **最小パーティション キー** | いいえ | 読み取る最小の[パーティション](../event-hubs/event-hubs-features.md#partitions) ID を入力します。 既定では、すべてのパーティションが読み取られます。 |
@@ -130,7 +130,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
    ![イベント ハブ名を選択し、イベントの内容を入力する](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action.png)
 
-   | プロパティ | 必須 | 説明 |
+   | プロパティ | Required | 説明 |
    |----------|----------|-------------|
    | **イベント ハブ名** | はい | イベントの送信先となるイベント ハブを選択します |
    | **コンテンツ** | いいえ | 送信するイベントのコンテンツ |
@@ -152,7 +152,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 1. 接続情報の入力を求められたら、次の詳細を入力します。
 
-   | プロパティ | 必須 | 値 | 説明 |
+   | プロパティ | Required | Value | 説明 |
    |----------|----------|-------|-------------|
    | **Connection Name** | はい | <*connection-name*> | 作成する接続の名前 |
    | **イベント ハブの名前空間** | はい | <*event-hubs-namespace*> | 使用する場合は、Event Hubs 名前空間を選択します。 |
@@ -173,8 +173,11 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの Open API (以前の Swagger) ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、[コネクタのリファレンス ページ](/connectors/eventhubs/)を参照してください。
+コネクタの Swagger ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、[コネクタのリファレンス ページ](https://docs.microsoft.com/connectors/eventhubs/)を参照してください。
+
+> [!NOTE]
+> [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリでは、このコネクタの ISE のラベルがついたバージョンで [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)が代わりに使用されます。
 
 ## <a name="next-steps"></a>次のステップ
 
-他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。
+* 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

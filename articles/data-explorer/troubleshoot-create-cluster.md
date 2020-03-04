@@ -7,18 +7,18 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 9e6b3f53f07ac86d6b648a8562be4ef45879c37e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 863d9ecedf095e0ab284a0d7fd86363b69ae5658
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60829278"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562413"
 ---
 # <a name="troubleshoot-failed-cluster-creation-of-azure-data-explorer"></a>トラブルシューティング:Azure Data Explorer のクラスターの作成が失敗した
 
 めったにないことですが、もし Azure データ エクスプローラーのクラスターを作成できない場合、次の手順に従ってください。
 
-1. 適切なアクセス許可を確保します。 クラスターを作成するには、Azure サブスクリプションの*共同作成者*または*所有者*という役割に属している必要があります。 必要であれば、サブスクリプション管理者に問い合わせ、適切な役割を割り当ててもらいます。
+1. 適切なアクセス許可を持っていることを確認します。 クラスターを作成するには、Azure サブスクリプションの*共同作成者*または*所有者*という役割に属している必要があります。 必要であれば、サブスクリプション管理者に問い合わせて、適切なロールに追加してもらいます。
 
 1. Azure portal の **[クラスターの作成]** で入力したクラスター名に関連して確実に検証エラーが出ないようにします。
 
@@ -26,4 +26,4 @@ ms.locfileid: "60829278"
 
     状態が**良好** (緑色のチェック マーク) でない場合は、状態が改善されてから、クラスターの作成をもう一度お試しください。
 
-1. 問題解決にさらに手助けが必要な場合、[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) でサポート リクエストを作成してください。
+1. 問題解決にさらに手助けが必要な場合は、[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) でサポート リクエストを作成してください。

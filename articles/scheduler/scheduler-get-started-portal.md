@@ -1,36 +1,35 @@
 ---
-title: Azure Scheduler でスケジュールされたジョブを作成する - Azure portal | Microsoft Docs
-description: Azure portal で Azure Scheduler を使用して初めての自動化されたジョブを作成、スケジュール、実行する方法を説明します
+title: スケジュールされたジョブを作成する - Azure portal
+description: Azure スケジューラを使用して Azure portal で初めての自動ジョブを作成、スケジュール、および実行する
 services: scheduler
 ms.service: scheduler
 ms.suite: infrastructure-services
 author: derek1ee
-ms.author: deli
-ms.reviewer: klam
-ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
+ms.author: estfan
+ms.reviewer: klam, estfan, logicappspm
 ms.topic: conceptual
-ms.date: 09/17/2018
-ms.openlocfilehash: 48e03f41fa0a39642330288fc05ef709179b4c62
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 02/29/2020
+ms.openlocfilehash: a9f7169f4b54dfc08612b1d53bfde48154ee2d1d
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300983"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524803"
 ---
-# <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>Azure Scheduler で初めてのジョブを作成してスケジュールする - Azure portal
+# <a name="create-and-schedule-your-first-job-by-using-azure-scheduler---azure-portal"></a>Azure Scheduler で初めてのジョブを作成してスケジュールする - Azure portal
 
 > [!IMPORTANT]
 > [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、[廃止される予定](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)の Azure Scheduler の後継です。 Scheduler で設定したジョブを使用し続けるには、できるだけ早く [Azure Logic Apps に移行](../scheduler/migrate-from-scheduler-to-logic-apps.md)してください。
 
-このチュートリアルでは、ジョブを簡単に作成してスケジュールし、そのジョブを監視および管理する方法を示します。 
+このチュートリアルでは、ジョブを簡単に作成してスケジュールし、そのジョブを監視および管理する方法を示します。
 
-Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。
+Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
 ## <a name="create-job"></a>ジョブを作成する
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。  
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
-1. Azure のメイン メニューで **[リソースの作成]** を選択します。 検索ボックスに「scheduler」と入力します。 結果の一覧から **Scheduler** を選択し、 **[作成]** を選択します。
+1. Azure の検索ボックスで、フィルターとして「`scheduler`」と入力します。 結果の一覧で **[スケジューラ ジョブ コレクション]** を選択し、 **[作成]** を選択します。
 
    ![Scheduler リソースを作成する](./media/scheduler-get-started-portal/scheduler-v2-portal-marketplace-create.png)
 
@@ -40,7 +39,7 @@ Azure サブスクリプションがない場合は、<a href="https://azure.mic
 
    | プロパティ | 値の例 | 説明 |
    |----------|---------------|-------------| 
-   | **Name** | getMicrosoft | ジョブの名前です | 
+   | **名前** | getMicrosoft | ジョブの名前です | 
    | **ジョブ コレクション** | <*job-collection-name*> | ジョブ コレクションを作成するか、既存のコレクションを選択します。 | 
    | **サブスクリプション** | <*Azure サブスクリプション名*> | Azure サブスクリプションの名前 | 
    |||| 
@@ -49,9 +48,9 @@ Azure サブスクリプションがない場合は、<a href="https://azure.mic
 
    | プロパティ | 値の例 | 説明 |
    |----------|---------------|-------------| 
-   | **アクション** | **Http** | 実行するアクションの種類です | 
-   | **メソッド** | **Get** | 呼び出すメソッドです | 
-   | **URL** | **https://www.microsoft.com** | 送信先の URL です | 
+   | **操作** | **Http** | 実行するアクションの種類です | 
+   | **方法** | **Get** | 呼び出すメソッドです | 
+   | **[URL]** | **https://www.microsoft.com** | 送信先の URL です | 
    |||| 
    
    ![ジョブを定義する](./media/scheduler-get-started-portal/scheduler-v2-portal-action-settings.png)
@@ -93,7 +92,7 @@ Azure サブスクリプションがない場合は、<a href="https://azure.mic
 
 <a name="properties"></a>
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Properties
 
 ジョブの管理メタデータを記述する読み取り専用のプロパティを表示するには、 **[プロパティ]** を選択します。
 
@@ -144,7 +143,7 @@ Azure サブスクリプションがない場合は、<a href="https://azure.mic
 
 Azure のロールベースのアクセス制御 (RBAC) を使用して、細かなレベルで各ユーザーの Azure Scheduler へのアクセスを管理できます。 ロールに基づくアクセスを設定する方法については、[RBAC を使用したアクセスの管理](../role-based-access-control/role-assignments-portal.md)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [概念、用語、エンティティ階層](scheduler-concepts-terms.md)について学習する
 * [複雑なスケジュールと高度な繰り返しを作成する](scheduler-advanced-complexity.md)

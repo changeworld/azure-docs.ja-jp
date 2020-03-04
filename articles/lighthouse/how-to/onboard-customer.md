@@ -3,12 +3,12 @@ title: Azure の委任されたリソース管理に顧客をオンボードす�
 description: Azure の委任されたリソース管理に顧客をオンボードする方法について説明します。これにより、自分のテナントからそれらのリソースにアクセスして管理できるようになります。
 ms.date: 01/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: b3868987fa76d4ce0d4c34e81b46301ea106203d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 33cf880098e174c2c230a3d78e125ad8df7d894a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543411"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649791"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Azure の委任されたリソース管理に顧客をオンボードする
 
@@ -16,7 +16,7 @@ ms.locfileid: "76543411"
 
 このプロセスは、複数の顧客のリソースを管理している場合に繰り返すことができます。 その後、許可されているユーザーが自分のテナントにサインインすると、そのユーザーは、個々の顧客テナントにサインインしなくても管理操作を実行することが顧客のテナント スコープ全体で承認されます。
 
-顧客エンゲージメント全体における自分の影響を追跡して評価を得るには、オンボードされたサブスクリプションに自分の Microsoft Partner Network (MPN) ID を関連付けます。 詳しくは、「[Azure アカウントにパートナー ID をリンクする](../../billing/billing-partner-admin-link-started.md)」をご覧ください。 サービス プロバイダー テナントでこの関連付けを実行する必要があることに注意してください。
+顧客エンゲージメント全体におけるご自身の影響を追跡して評価を受けるには、オンボードされた各サブスクリプションにアクセスできる少なくとも 1 つのユーザー アカウントに Microsoft Partner Network (MPN) ID を関連付けます。 サービス プロバイダー テナントでこの関連付けを実行する必要があることに注意してください。 簡略化するために、MPN ID に関連付けられているテナントでサービス プリンシパル アカウントを作成し、オンボードするすべての顧客に対する閲覧者アクセス権をこのアカウントに付与することをお勧めします。 詳しくは、「[Azure アカウントにパートナー ID をリンクする](../../billing/billing-partner-admin-link-started.md)」をご覧ください。 
 
 > [!NOTE]
 > また、Azure Marketplace に公開したマネージド サービス オファー (パブリックまたはプライベート) を顧客が購入したときに、顧客をオンボードすることもできます。 詳細については、「[Azure Marketplace にマネージド サービス オファーを公開する](publish-managed-services-offers.md)」を参照してください。 また、ここで説明されているオンボード プロセスは、Azure Marketplace に公開されているオファーと共に使用できます。
@@ -120,10 +120,7 @@ az role definition list --name "<roleName>" | grep name
 |**managedByTenantId**     |テナント ID。          |
 |**authorizations**     |**principalId** 値はテナントのユーザー、グループ、または SPN を表し、それぞれに、顧客が承認の目的を理解するのに役立つ **principalIdDisplayName** が指定されているほか、アクセス レベルを指定するための組み込みの **roleDefinitionId** 値がマップされています。      |
 
-> [!TIP]
-> **managedByTenantID**、**principalIdDisplayName**、**roleDefinitionId** の各エントリが Azure で使用される値と同じであることを確認してください。 これらの値には大文字を使用しないでください。
-
-オンボード プロセスには、[サンプル リポジトリ](https://github.com/Azure/Azure-Lighthouse-samples/)で提供されている Azure Resource Manager テンプレートと、対応するパラメーター ファイルが必要です。これは、自分の構成に合わせて自分の承認を定義するように変更します。
+オンボード プロセスには、Azure Resource Manager テンプレート ([サンプル リポジトリ](https://github.com/Azure/Azure-Lighthouse-samples/)に提供されています) と、お使いの構成に合わせるための変更と承認の定義を行う、対応するパラメーター ファイルが必要です。
 
 選択するテンプレートは、オンボードの対象がサブスクリプション全体、リソース グループ、サブスクリプション内の複数のリソース グループのいずれであるかによって異なります。 また、この方法でサブスクリプションをオンボードしたい方のために、Azure Marketplace に公開したマネージド サービス オファーを購入した顧客に使用できるテンプレートも用意されています。
 

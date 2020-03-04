@@ -6,14 +6,14 @@ ms.service: service-bus
 documentationcenter: ''
 author: axisc
 ms.topic: conceptual
-ms.date: 11/15/2019
+ms.date: 02/25/2020
 ms.author: aschhab
-ms.openlocfilehash: 6d20d4031f0ed4d1be4dddf9e33946251d6dd523
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: aeb9a9730ddc61793e49c9e042906457e0068d9a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903319"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624084"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Azure portal を使用して Azure Service Bus 保存データの暗号化用のカスタマー マネージド キーを構成する
 Azure Service Bus Premium では、Azure Storage Service Encryption (Azure SSE) による保存データの暗号化が提供されます。 Service Bus Premium では、データを格納するために Azure Storage が使用されます。既定では、Azure Storage を使用して格納されるすべてのデータは、Microsoft のマネージド キーを使用して暗号化されます。 
@@ -78,22 +78,22 @@ Azure portal でカスタマー マネージド キーを有効にするには�
     1. キーの詳細を入力し、 **[選択]** をクリックします。 これにより、カスタマー マネージド キーを使用して、名前空間の保存データを暗号化できるようになります。 
 
 
-> [!IMPORTANT]
-> カスタマー マネージド キー を geo ディザスター リカバリーと共に使用する場合は、以下を確認してください。 
->
-> カスタマー マネージド キーを使用して保存時の暗号化を有効にするために、指定された Azure KeyVault の Service Bus のマネージド ID に対して[アクセス ポリシー](../key-vault/key-vault-secure-your-key-vault.md)が設定されます。 これにより、Azure Service Bus 名前空間から Azure Key Vault へのアクセスが制御されます。
->
-> これにより:
-> 
->   * Service Bus 名前空間に対して [geo ディザスター リカバリー](service-bus-geo-dr.md)が既に有効になっているときに、カスタマー マネージド キーを有効化する場合は、以下を行います。 
->     * ペアリングを解除します。
->     * キー コンテナーに対して、プライマリとセカンダリの名前空間の両方のマネージド ID を対象とする[アクセス ポリシー を設定](../key-vault/managed-identity.md)します。
->     * プライマリ名前空間に暗号化を設定します。
->     * プライマリとセカンダリの名前空間を再びペアリングします。
-> 
->   * カスタマー マネージド キーが既に設定されている Service Bus 名前空間で Geo DR を有効にする場合は、以下を実行します。
->     * キー コンテナーに対して、セカンダリ名前空間のマネージド ID を対象とする[アクセス ポリシー を設定](../key-vault/managed-identity.md)します。
->     * プライマリとセカンダリの名前空間をペアリングします。
+    > [!IMPORTANT]
+    > カスタマー マネージド キー を geo ディザスター リカバリーと共に使用する場合は、以下を確認してください。 
+    >
+    > カスタマー マネージド キーを使用して保存時の暗号化を有効にするために、指定された Azure KeyVault の Service Bus のマネージド ID に対して[アクセス ポリシー](../key-vault/key-vault-secure-your-key-vault.md)が設定されます。 これにより、Azure Service Bus 名前空間から Azure Key Vault へのアクセスが制御されます。
+    >
+    > これにより:
+    > 
+    >   * Service Bus 名前空間に対して [geo ディザスター リカバリー](service-bus-geo-dr.md)が既に有効になっているときに、カスタマー マネージド キーを有効化する場合は、以下を行います。 
+    >     * ペアリングを解除します。
+    >     * キー コンテナーに対して、プライマリとセカンダリの名前空間の両方のマネージド ID を対象とする[アクセス ポリシー を設定](../key-vault/managed-identity.md)します。
+    >     * プライマリ名前空間に暗号化を設定します。
+    >     * プライマリとセカンダリの名前空間を再びペアリングします。
+    > 
+    >   * カスタマー マネージド キーが既に設定されている Service Bus 名前空間で Geo DR を有効にする場合は、以下を実行します。
+    >     * キー コンテナーに対して、セカンダリ名前空間のマネージド ID を対象とする[アクセス ポリシー を設定](../key-vault/managed-identity.md)します。
+    >     * プライマリとセカンダリの名前空間をペアリングします。
 
 
 ## <a name="rotate-your-encryption-keys"></a>暗号化キーのローテーション
@@ -105,6 +105,224 @@ Azure Key Vault のローテーション メカニズムを使用して、キー
 暗号化キーへのアクセスを取り消しても、Service Bus からデータが消去されることはありません。 ただし、Service Bus 名前空間からデータにアクセスすることはできません。 暗号化キーは、アクセス ポリシーを使用して、またはキーを削除することで取り消すことができます。 アクセス ポリシーと、キー コンテナーのセキュリティ保護の詳細については、「[キー コンテナーへのアクセスをセキュリティで保護する](../key-vault/key-vault-secure-your-key-vault.md)」を参照してください。
 
 暗号化キーを取り消すと、暗号化されている名前空間で Service Bus サービスが機能しなくなります。 キーへのアクセスを有効にするか、削除済みのキーを復元すると、Service Bus サービスによってキーが選択され、暗号化された Service Bus 名前空間からデータにアクセスできるようになります。
+
+## <a name="use-resource-manager-template-to-enable-encryption"></a>Resource Manager テンプレートを使用して暗号化を有効にする
+このセクションでは、**Azure Resource Manager テンプレート**を使用して次のタスクを実行する方法を示します。 
+
+1. **マネージド サービス ID** がある **Premium** Service Bus 名前空間を作成する。
+2. **キー コンテナー**を作成し、サービス ID にキー コンテナーへのアクセス権を付与する。 
+3. キー コンテナー情報 (キー/値) を使用して、Service Bus 名前空間を更新する。 
+
+
+### <a name="create-a-premium-service-bus-namespace-with-managed-service-identity"></a>マネージド サービス ID がある Premium Service Bus 名前空間を作成する
+このセクションでは、Azure Resource Manager テンプレートと PowerShell を使用して、マネージド サービス ID がある Azure Service Bus 名前空間を作成する方法について説明します。 
+
+1. マネージド サービス ID がある Service Bus Premium レベルの名前空間を作成するための Azure Resource Manager テンプレートを作成します。 ファイルに次の名前を付けます。**CreateServiceBusPremiumNamespace.json** 
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "namespaceName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Namespace."
+             }
+          },
+          "location":{
+             "type":"string",
+             "defaultValue":"[resourceGroup().location]",
+             "metadata":{
+                "description":"Specifies the Azure location for all resources."
+             }
+          }
+       },
+       "resources":[
+          {
+             "type":"Microsoft.ServiceBus/namespaces",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('namespaceName')]",
+             "location":"[parameters('location')]",
+             "identity":{
+                "type":"SystemAssigned"
+             },
+             "sku":{
+                "name":"Premium",
+                "tier":"Premium",
+                "capacity":1
+             },
+             "properties":{
+    
+             }
+          }
+       ],
+       "outputs":{
+          "ServiceBusNamespaceId":{
+             "type":"string",
+             "value":"[resourceId('Microsoft.ServiceBus/namespaces',parameters('namespaceName'))]"
+          }
+       }
+    }
+    ```
+2. 次の名前のテンプレート パラメーター ファイルを作成します。**CreateServiceBusPremiumNamespaceParams.json** 
+
+    > [!NOTE]
+    > 次の値を置き換えます。 
+    > - `<ServiceBusNamespaceName>` - お使いの Service Bus 名前空間の名前
+    > - `<Location>` - お使いの Service Bus 名前空間の場所
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "namespaceName":{
+             "value":"<ServiceBusNamespaceName>"
+          },
+          "location":{
+             "value":"<Location>"
+          }
+       }
+    }
+    ```
+3. 次の PowerShell コマンドを実行して、Premium Service Bus 名前空間を作成するテンプレートをデプロイします。 次に、後で使用するために Service Bus 名前空間の ID を取得します。 コマンドを実行する前に、`{MyRG}` をリソース グループの名前に置き換えます。  
+
+    ```powershell
+    $outputs = New-AzResourceGroupDeployment -Name CreateServiceBusPremiumNamespace -ResourceGroupName {MyRG} -TemplateFile ./CreateServiceBusPremiumNamespace.json -TemplateParameterFile ./CreateServiceBusPremiumNamespaceParams.json
+    
+    $ServiceBusNamespaceId = $outputs.Outputs["serviceBusNamespaceId"].value
+    ```
+ 
+### <a name="grant-service-bus-namespace-identity-access-to-key-vault"></a>Service Bus 名前空間の ID にキー コンテナーへのアクセス権を付与する
+
+1. 次のコマンドを実行して、**消去保護**と**論理的な削除**が有効なキー コンテナーを作成します。 
+
+    ```powershell
+    New-AzureRmKeyVault -Name "{keyVaultName}" -ResourceGroupName {RGName}  -Location "{location}" -EnableSoftDelete -EnablePurgeProtection    
+    ```
+    
+    (または)
+    
+    次のコマンドを実行して、**既存のキー コンテナー**を更新します。 コマンドを実行する前に、リソース グループとキー コンテナー名の値を指定します。 
+    
+    ```powershell
+    ($updatedKeyVault = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -ResourceGroupName {RGName} -VaultName {keyVaultName}).ResourceId).Properties| Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"-Force | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true" -Force
+    ``` 
+2. キー コンテナーのアクセス ポリシーを設定して、Service Bus 名前空間のマネージド ID で、キー コンテナー内のキー値にアクセスできるようにします。 前のセクションの Service Bus 名前空間の ID を使用します。 
+
+    ```powershell
+    $identity = (Get-AzureRmResource -ResourceId $ServiceBusNamespaceId -ExpandProperties).Identity
+    
+    Set-AzureRmKeyVaultAccessPolicy -VaultName {keyVaultName} -ResourceGroupName {RGName} -ObjectId $identity.PrincipalId -PermissionsToKeys get,wrapKey,unwrapKey,list
+    ```
+
+### <a name="encrypt-data-in-service-bus-namespace-with-customer-managed-key-from-key-vault"></a>Service Bus 名前空間のデータをキー コンテナーのユーザーが管理するキーを使用して暗号化する
+ここまで、次の手順を実行しました。 
+
+1. マネージド ID がある Premium 名前空間を作成しました。
+2. キー コンテナーを作成し、マネージド ID にキー コンテナーへのアクセス権を付与しました。 
+
+この手順では、キー コンテナー情報を使用して、Service Bus 名前空間を更新します。 
+
+1. 次の内容の **UpdateServiceBusNamespaceWithEncryption.json** という名前の JSON ファイルを作成します。 
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "namespaceName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Namespace to be created in cluster."
+             }
+          },
+          "location":{
+             "type":"string",
+             "defaultValue":"[resourceGroup().location]",
+             "metadata":{
+                "description":"Specifies the Azure location for all resources."
+             }
+          },
+          "keyVaultUri":{
+             "type":"string",
+             "metadata":{
+                "description":"URI of the KeyVault."
+             }
+          },
+          "keyName":{
+             "type":"string",
+             "metadata":{
+                "description":"KeyName."
+             }
+          }
+       },
+       "resources":[
+          {
+             "type":"Microsoft.ServiceBus/namespaces",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('namespaceName')]",
+             "location":"[parameters('location')]",
+             "identity":{
+                "type":"SystemAssigned"
+             },
+             "sku":{
+                "name":"Premium",
+                "tier":"Premium",
+                "capacity":1
+             },
+             "properties":{
+                "encryption":{
+                   "keySource":"Microsoft.KeyVault",
+                   "keyVaultProperties":[
+                      {
+                         "keyName":"[parameters('keyName')]",
+                         "keyVaultUri":"[parameters('keyVaultUri')]"
+                      }
+                   ]
+                }
+             }
+          }
+       ]
+    }
+    ``` 
+
+2. 次のテンプレート パラメーター ファイルを作成します。**UpdateServiceBusNamespaceWithEncryptionParams.json**
+
+    > [!NOTE]
+    > 次の値を置き換えます。 
+    > - `<ServiceBusNamespaceName>` - お使いの Service Bus 名前空間の名前
+    > - `<Location>` - お使いの Service Bus 名前空間の場所
+    > - `<KeyVaultName>` - お使いのキー コンテナーの名前
+    > - `<KeyName>` - キー コンテナー内のキーの名前  
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "namespaceName":{
+             "value":"<ServiceBusNamespaceName>"
+          },
+          "location":{
+             "value":"<Location>"
+          },
+          "keyName":{
+             "value":"<KeyName>"
+          },
+          "keyVaultUri":{
+             "value":"https://<KeyVaultName>.vault.azure.net"
+          }
+       }
+    }
+    ```             
+3. 次の PowerShell コマンドを実行して、Resource Manager テンプレートをデプロイします。 コマンドを実行する前に、`{MyRG}` をお使いのリソース グループの名前に置き換えます。 
+
+    ```powershell
+    New-AzResourceGroupDeployment -Name UpdateServiceBusNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateServiceBusNamespaceWithEncryption.json -TemplateParameterFile ./UpdateServiceBusNamespaceWithEncryptionParams.json
+    ```
+    
 
 ## <a name="next-steps"></a>次のステップ
 次の記事をご覧ください。

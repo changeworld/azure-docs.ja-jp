@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 50d12a0aba9018b1ecb30c018249e8f94ebe6d95
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 43e626355feaf1e51fc840f82506c559a1859b84
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903283"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621999"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Azure portal を使用して Azure Event Hubs 保存データの暗号化用にカスタマー マネージド キーを構成する
 Azure Event Hubs では、Azure Storage Service Encryption (Azure SSE) による保存データの暗号化が提供されます。 Event Hubs では、データを格納するために Azure Storage が使用されます。既定では、Azure Storage を使用して格納されるすべてのデータは、Microsoft のマネージド キーを使用して暗号化されます。 
@@ -99,7 +99,7 @@ BYOK が有効になっている名前空間に対して診断ログを設定す
 ## <a name="log-schema"></a>ログのスキーマ 
 すべてのログは、JavaScript Object Notation (JSON) 形式で格納されます。 各エントリには、以下の表で説明している形式を使用する文字列フィールドがあります。 
 
-| Name | 説明 |
+| 名前 | 説明 |
 | ---- | ----------- | 
 | TaskName | 失敗したタスクの説明。 |
 | ActivityId | 追跡のために使用される内部 ID。 |
@@ -109,7 +109,7 @@ BYOK が有効になっている名前空間に対して診断ログを設定す
 | key | Event Hubs 名前空間の暗号化に使用されるキー名。 |
 | version | 使用されているキーのバージョン。 |
 | operation | キー コンテナー内のキーに対して実行される操作。 たとえば、キーの無効化/有効化、ラップ、またはラップ解除 |
-| コード | 操作に関連付けられたコード。 例:エラー コード 404 は、キーが見つからなかったことを示します。 |
+| code | 操作に関連付けられたコード。 例:エラー コード 404 は、キーが見つからなかったことを示します。 |
 | message | 操作に関連付けられたエラー メッセージ |
 
 カスタマー マネージド キーのログの例を次に示します。
@@ -143,6 +143,262 @@ BYOK が有効になっている名前空間に対して診断ログを設定す
    "message": "",
 }
 ```
+
+## <a name="use-resource-manager-template-to-enable-encryption"></a>Resource Manager テンプレートを使用して暗号化を有効にする
+このセクションでは、**Azure Resource Manager テンプレート**を使用して次のタスクを実行する方法を示します。 
+
+1. マネージド サービス ID がある **Event Hubs 名前空間**を作成する。
+2. **キー コンテナー**を作成し、サービス ID にキー コンテナーへのアクセス権を付与する。 
+3. キー コンテナー情報 (キー/値) を使用して、Event Hubs 名前空間を更新する。 
+
+
+### <a name="create-an-event-hubs-cluster-and-namespace-with-managed-service-identity"></a>マネージド サービス ID がある Event Hubs クラスターと名前空間を作成する。
+このセクションでは、Azure Resource Manager テンプレートと PowerShell を使用して、マネージド サービス ID がある Azure Event Hubs 名前空間を作成する方法について説明します。 
+
+1. マネージド サービス ID がある Azure Event Hubs 名前空間を作成するための Azure Resource Manager テンプレートを作成します。 ファイルに次の名前を付けます。**CreateEventHubClusterAndNamespace.json** 
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "clusterName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Event Hub cluster."
+             }
+          },
+          "namespaceName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Namespace to be created in cluster."
+             }
+          },
+          "location":{
+             "type":"string",
+             "defaultValue":"[resourceGroup().location]",
+             "metadata":{
+                "description":"Specifies the Azure location for all resources."
+             }
+          }
+       },
+       "resources":[
+          {
+             "type":"Microsoft.EventHub/clusters",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('clusterName')]",
+             "location":"[parameters('location')]",
+             "sku":{
+                "name":"Dedicated",
+                "capacity":1
+             }
+          },
+          {
+             "type":"Microsoft.EventHub/namespaces",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('namespaceName')]",
+             "location":"[parameters('location')]",
+             "identity":{
+                "type":"SystemAssigned"
+             },
+             "sku":{
+                "name":"Standard",
+                "tier":"Standard",
+                "capacity":1
+             },
+             "properties":{
+                "isAutoInflateEnabled":false,
+                "maximumThroughputUnits":0,
+                "clusterArmId":"[resourceId('Microsoft.EventHub/clusters', parameters('clusterName'))]"
+             },
+             "dependsOn":[
+                "[resourceId('Microsoft.EventHub/clusters', parameters('clusterName'))]"
+             ]
+          }
+       ],
+       "outputs":{
+          "EventHubNamespaceId":{
+             "type":"string",
+             "value":"[resourceId('Microsoft.EventHub/namespaces',parameters('namespaceName'))]"
+          }
+       }
+    }
+    ```
+2. 次の名前のテンプレート パラメーター ファイルを作成します。**CreateEventHubClusterAndNamespaceParams.json** 
+
+    > [!NOTE]
+    > 次の値を置き換えます。 
+    > - `<EventHubsClusterName>` - お使いの Event Hubs クラスターの名前    
+    > - `<EventHubsNamespaceName>` - お使いの Event Hubs 名前空間の名前
+    > - `<Location>` - お使いの Event Hubs 名前空間の場所
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "clusterName":{
+             "value":"<EventHubsClusterName>"
+          },
+          "namespaceName":{
+             "value":"<EventHubsNamespaceName>"
+          },
+          "location":{
+             "value":"<Location>"
+          }
+       }
+    }
+    
+    ```
+3. 次の PowerShell コマンドを実行して、Event Hubs 名前空間を作成するテンプレートをデプロイします。 次に、後で使用するために Event Hubs 名前空間の ID を取得します。 コマンドを実行する前に、`{MyRG}` をリソース グループの名前に置き換えます。  
+
+    ```powershell
+    $outputs = New-AzResourceGroupDeployment -Name CreateEventHubClusterAndNamespace -ResourceGroupName {MyRG} -TemplateFile ./CreateEventHubClusterAndNamespace.json -TemplateParameterFile ./CreateEventHubClusterAndNamespaceParams.json
+
+    $EventHubNamespaceId = $outputs.Outputs["eventHubNamespaceId"].value
+    ```
+ 
+### <a name="grant-event-hubs-namespace-identity-access-to-key-vault"></a>Event Hubs 名前空間の ID にキー コンテナーへのアクセス権を付与する
+
+1. 次のコマンドを実行して、**消去保護**と**論理的な削除**が有効なキー コンテナーを作成します。 
+
+    ```powershell
+    New-AzureRmKeyVault -Name {keyVaultName} -ResourceGroupName {RGName}  -Location {location} -EnableSoftDelete -EnablePurgeProtection    
+    ```     
+    
+    (または)    
+    
+    次のコマンドを実行して、**既存のキー コンテナー**を更新します。 コマンドを実行する前に、リソース グループとキー コンテナー名の値を指定します。 
+    
+    ```powershell
+    ($updatedKeyVault = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -ResourceGroupName {RGName} -VaultName {keyVaultName}).ResourceId).Properties| Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"-Force | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true" -Force
+    ``` 
+2. キー コンテナーのアクセス ポリシーを設定して、Event Hubs 名前空間のマネージド ID で、キー コンテナー内のキー値にアクセスできるようにします。 前のセクションの Event Hubs 名前空間の ID を使用します。 
+
+    ```powershell
+    $identity = (Get-AzureRmResource -ResourceId $EventHubNamespaceId -ExpandProperties).Identity
+    
+    Set-AzureRmKeyVaultAccessPolicy -VaultName {keyVaultName} -ResourceGroupName {RGName} -ObjectId $identity.PrincipalId -PermissionsToKeys get,wrapKey,unwrapKey,list
+    ```
+
+### <a name="encrypt-data-in-event-hubs-namespace-with-customer-managed-key-from-key-vault"></a>Event Hubs 名前空間のデータをキー コンテナーのユーザーが管理するキーを使用して暗号化する
+ここまで、次の手順を実行しました。 
+
+1. マネージド ID がある Premium 名前空間を作成しました。
+2. キー コンテナーを作成し、マネージド ID にキー コンテナーへのアクセス権を付与しました。 
+
+この手順では、キー コンテナー情報を使用して、Event Hubs 名前空間を更新します。 
+
+1. 次の内容の **CreateEventHubClusterAndNamespace.json** という名前の JSON ファイルを作成します。 
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "clusterName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Event Hub cluster."
+             }
+          },
+          "namespaceName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Namespace to be created in cluster."
+             }
+          },
+          "location":{
+             "type":"string",
+             "defaultValue":"[resourceGroup().location]",
+             "metadata":{
+                "description":"Specifies the Azure location for all resources."
+             }
+          },
+          "keyVaultUri":{
+             "type":"string",
+             "metadata":{
+                "description":"URI of the KeyVault."
+             }
+          },
+          "keyName":{
+             "type":"string",
+             "metadata":{
+                "description":"KeyName."
+             }
+          }
+       },
+       "resources":[
+          {
+             "type":"Microsoft.EventHub/namespaces",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('namespaceName')]",
+             "location":"[parameters('location')]",
+             "identity":{
+                "type":"SystemAssigned"
+             },
+             "sku":{
+                "name":"Standard",
+                "tier":"Standard",
+                "capacity":1
+             },
+             "properties":{
+                "isAutoInflateEnabled":false,
+                "maximumThroughputUnits":0,
+                "clusterArmId":"[resourceId('Microsoft.EventHub/clusters', parameters('clusterName'))]",
+                "encryption":{
+                   "keySource":"Microsoft.KeyVault",
+                   "keyVaultProperties":[
+                      {
+                         "keyName":"[parameters('keyName')]",
+                         "keyVaultUri":"[parameters('keyVaultUri')]"
+                      }
+                   ]
+                }
+             }
+          }
+       ]
+    }
+    ``` 
+
+2. 次のテンプレート パラメーター ファイルを作成します。**UpdateEventHubClusterAndNamespaceParams.json** 
+
+    > [!NOTE]
+    > 次の値を置き換えます。 
+    > - `<EventHubsClusterName>` - お使いの Event Hubs クラスターの名前        
+    > - `<EventHubsNamespaceName>` - お使いの Event Hubs 名前空間の名前
+    > - `<Location>` - お使いの Event Hubs 名前空間の場所
+    > - `<KeyVaultName>` - お使いのキー コンテナーの名前
+    > - `<KeyName>` - キー コンテナー内のキーの名前
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "clusterName":{
+             "value":"<EventHubsClusterName>"
+          },
+          "namespaceName":{
+             "value":"<EventHubsNamespaceName>"
+          },
+          "location":{
+             "value":"<Location>"
+          },
+          "keyName":{
+             "value":"<KeyName>"
+          },
+          "keyVaultUri":{
+             "value":"https://<KeyVaultName>.vault.azure.net"
+          }
+       }
+    }
+    ```             
+3. 次の PowerShell コマンドを実行して、Resource Manager テンプレートをデプロイします。 コマンドを実行する前に、`{MyRG}` をお使いのリソース グループの名前に置き換えます。 
+
+    ```powershell
+    New-AzResourceGroupDeployment -Name UpdateEventHubNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateEventHubClusterAndNamespace.json -TemplateParameterFile ./UpdateEventHubClusterAndNamespaceParams.json 
+    ```
 
 ## <a name="troubleshoot"></a>[トラブルシューティング]
 ベスト プラクティスとして、前のセクションで示したように、ログは常に有効にしてください。 BYOK 暗号化が有効になっている場合にアクティビティを追跡するのに役立ちます。 また、問題の範囲を絞り込むのにも役立ちます。

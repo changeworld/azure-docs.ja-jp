@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Data Box Gateway デバイスのアクセス、電源、接続モード | Microsoft Docs
+title: Azure Data Box Gateway デバイスのアクセス、電源、接続モード
 description: Azure へのデータ転送に役立つ Azure Data Box Gateway デバイスのアクセス、電源、および接続モードを管理する方法について説明します
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 38662fc8dda935d5f000aee6609fd9b2e42de17f
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: e2e82c551117f2ae96e026b39c08ccf56e7ce8e2
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68253172"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561818"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>Azure Data Box Gateway のアクセス、電源、接続モードを管理する
 

@@ -1,10 +1,10 @@
 ---
-title: Azure 仮想マシン上での SLES 12 SP3 による SAP HANA 2.0 スケールアウトの HSR と Pacemaker のセットアップに対するトラブルシューティング | Microsoft Docs
+title: Azure VM 上の SLES での SAP HANA の HSR-Pacemaker のスケールアウトに関するトラブルシューティング | Microsoft Docs
 description: Azure 仮想マシンで実行されている SLES 12 SP3 での SAP HANA システム レプリケーション (HSR) と Pacemaker に基づく複雑な SAP HANA スケールアウトの高可用性構成の確認とトラブルシューティングのガイド
 services: virtual-machines-linux
 documentationcenter: ''
-author: hermannd
-manager: gwallace
+author: hermanndms
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: 299fba8a082f19f17ab581a6ac2bfac9fd3f8cf1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e93b3412785817050ac53030be9ff2172a678c06
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099657"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617123"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>SLES 12 SP3 での SAP HANA スケールアウトの高可用性セットアップの確認とトラブルシューティング 
 
@@ -976,7 +976,7 @@ https://&ltnode&gt:7630
 ![Hawk の 1 つの遷移](media/hana-vm-scale-out-HA-troubleshooting/hawk-5.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このトラブルシューティング ガイドでは、スケールアウト構成での SAP HANA の高可用性について説明しました。 データベースに加え、SAP ランドスケープ内のもう 1 つの重要なコンポーネントは、SAP NetWeaver スタックです。 [SUSE Enterprise Linux Server を使用した Azure の仮想マシン上の SAP NetWeaver の高可用性][sap-nw-ha-guide-sles]について学習します。
 

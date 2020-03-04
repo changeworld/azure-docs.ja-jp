@@ -3,18 +3,18 @@ title: 変数の複数のインスタンスを定義する
 description: 変数を作成するときに、Azure Resource Manager テンプレートで copy 操作を使用して、複数回、反復処理を行います。
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 9e252a0b9721ffec99535c5d30e609e12e9e67eb
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: ea4caf3553b3cd14eec194b8cef0db59499a4f4c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210656"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622876"
 ---
 # <a name="variable-iteration-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでの変数の反復
 
 この記事では、Azure Resource Manager テンプレートで 1 つの変数に対して複数の値を作成する方法について説明します。 テンプレートの変数セクションに **copy** 要素を追加することにより、デプロイ時に変数の項目数を動的に設定できます。 テンプレートの構文を繰り返す必要もありません。
 
-また、[リソース](copy-resources.md)と[リソース内のプロパティ](copy-properties.md)で copy を使用することもできます。
+[リソース](copy-resources.md)、[リソース内のプロパティ](copy-properties.md)、および[出力](copy-outputs.md)でもコピーを使用できます。
 
 ## <a name="variable-iteration"></a>変数の反復処理
 
@@ -313,7 +313,10 @@ count は負の数値にすることはできません。 Azure PowerShell 2.6 �
 ## <a name="next-steps"></a>次のステップ
 
 * チュートリアルについては、「[チュートリアル: Resource Manager テンプレートを使用した複数のリソース インスタンスの作成](template-tutorial-create-multiple-instances.md)」を参照してください。
-* copy 要素のその他の用途については、「[Azure Resource Manager テンプレートでのリソースの反復](copy-resources.md)」および「[Azure Resource Manager テンプレートでのプロパティの反復](copy-properties.md)」を参照してください。
+* copy 要素のその他の使用方法については、以下を参照してください。
+  * [Azure Resource Manager テンプレートでのリソースの反復](copy-resources.md)
+  * [Azure Resource Manager テンプレートでのプロパティの反復](copy-properties.md)
+  * [Azure Resource Manager テンプレートでの出力の反復](copy-outputs.md)
 * テンプレートのセクションについては、「[Azure Resource Manager のテンプレートの作成](template-syntax.md)」を参照してください。
 * テンプレートをデプロイする方法については、「 [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](deploy-powershell.md)」を参照してください。
 

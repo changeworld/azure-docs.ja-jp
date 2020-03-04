@@ -3,22 +3,22 @@ title: プロパティの複数のインスタンスを定義する
 description: Azure Resource Manager テンプレートで copy 操作を使用して、リソースのプロパティを作成する際に複数回反復処理する方法について説明します。
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: b1e31f981f361b4cfbe7e7930f2c70bfce8b8656
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b759389cd1065c399658bd8d0c1ddd263054697c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210672"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622857"
 ---
 # <a name="property-iteration-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでのプロパティ反復
 
-この記事では、Azure Resource Manager テンプレートでプロパティの複数のインスタンスを作成する方法について説明します。 テンプレート内のリソースの properties セクションに **copy** 要素を追加することにより、デプロイ時にプロパティの項目数を動的に設定できます。 また、テンプレートの構文を繰り返す必要もありません。
+この記事では、Azure Resource Manager テンプレートでプロパティの複数のインスタンスを作成する方法について説明します。 テンプレート内のリソースの properties セクションに **copy** 要素を追加することにより、デプロイ時にプロパティの項目数を動的に設定できます。 テンプレートの構文を繰り返す必要もありません。
 
-また、[リソース](copy-resources.md) と [変数](copy-variables.md)を使用することもできます。
+[リソース](copy-resources.md)、[変数](copy-variables.md)、および [出力](copy-outputs.md)でもコピーを使用できます。
 
 ## <a name="property-iteration"></a>プロパティの反復処理
 
-この copy 要素には、次の一般的な形式があります。
+このコピー要素には、次の一般的な形式があります。
 
 ```json
 "copy": [
@@ -30,9 +30,9 @@ ms.locfileid: "77210672"
 ]
 ```
 
-**name**には、作成するリソース プロパティの名前を指定します。 **count** プロパティは、プロパティに対して必要な反復の数を指定します。
+**名**には、作成するリソース プロパティの名前を指定します。 **count** プロパティは、プロパティに対して必要な反復の数を指定します。
 
-**input** プロパティは、繰り返すプロパティを指定します。 **input** プロパティの値から構築された要素の配列を作成します。
+**入力** プロパティは、繰り返すプロパティを指定します。 **入力** プロパティの値から構築された要素の配列を作成します。
 
 次の例は、仮想マシンで dataDisks プロパティに `copy` を適用する方法を示しています。
 
@@ -192,7 +192,10 @@ count は負の数値にすることはできません。 Azure PowerShell 2.6 �
 ## <a name="next-steps"></a>次のステップ
 
 * チュートリアルについては、「[チュートリアル: Resource Manager テンプレートを使用した複数のリソース インスタンスの作成](template-tutorial-create-multiple-instances.md)」を参照してください。
-* copy 要素のその他の用途については、「[Azure Resource Manager テンプレートでのリソースの反復](copy-resources.md)」および「[Azure Resource Manager テンプレートでの変数の反復](copy-variables.md)」を参照してください。
+* copy 要素のその他の使用方法については、以下を参照してください。
+  * [Azure Resource Manager テンプレートでのリソースの反復](copy-resources.md)
+  * [Azure Resource Manager テンプレートでの変数の反復](copy-variables.md)
+  * [Azure Resource Manager テンプレートでの出力の反復](copy-outputs.md)
 * テンプレートのセクションについては、「[Azure Resource Manager のテンプレートの作成](template-syntax.md)」を参照してください。
 * テンプレートをデプロイする方法については、「 [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](deploy-powershell.md)」を参照してください。
 

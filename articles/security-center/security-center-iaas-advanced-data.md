@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: memildin
-ms.openlocfilehash: 068fb9f61b7dcb3948e4f03c284ddfa680522c85
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: a2970ea3f5ad360deaedd7efc82154cd3bc50337
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907078"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617103"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview"></a>Azure Virtual Machines の SQL Server 向け Advanced Data Security (プレビュー)
 Azure Virtual Machines の SQL サーバー向け Advanced Data Security は、高度な SQL セキュリティ機能のための統合パッケージです。 このプレビュー機能には、データベースの潜在的な脆弱性を識別し、軽減する機能や、データベースに対する脅威を示す異常な行動を検出する機能が含まれています。 
@@ -61,7 +61,7 @@ Azure VM の SQL 向け Advanced Data Security (パブリック プレビュー)
 SQL Server のホストをワークスペースに接続するには、「[Windows コンピューターを Azure Monitor に接続する](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows)」の手順に従います。
 
 
-## <a name="set-up-email-notification-for-atp-alerts"></a>ATP アラートのメール通知を設定する 
+## <a name="set-up-email-notification-for-security-alerts"></a>セキュリティ アラートのメール通知を設定する 
 
 Security Center アラートの生成時にメール通知を受け取る受信者の一覧を設定できます。 メールには、Azure Security Center におけるアラートの直接リンクと関連するすべての詳細が含まれます。 
 
@@ -158,7 +158,7 @@ Security Center アラートの生成時にメール通知を受け取る受信�
     * セキュリティ体制を強化するには、各アラートに示されているホスト マシンに関する Security Center の推奨事項を使用します。 これにより、将来の攻撃のリスクが軽減されます。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 関連資料については、次の記事をご覧ください。
 

@@ -3,18 +3,18 @@ title: リソースの複数のインスタンスをデプロイする
 description: Azure Resource Manager テンプレートで copy 操作と配列を使用して、リソースの種類を複数回デプロイします。
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 38b5bcd38e0dc8ba8c758e9aa8371857541ba55e
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: e90673504ceaccdc25a477e856defa77eed37d86
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210660"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620232"
 ---
 # <a name="resource-iteration-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでのリソースの反復
 
-この記事では、Azure Resource Manager テンプレートでリソースの複数のインスタンスを作成する方法について説明します。 テンプレートのリソース セクションに **copy** 要素を追加することで、デプロイするリソースの数を動的に設定できます。 また、テンプレートの構文を繰り返す必要もありません。
+この記事では、Azure Resource Manager テンプレートでリソースの複数のインスタンスを作成する方法について説明します。 テンプレートのリソース セクションに **コピー** 要素を追加することで、デプロイするリソースの数を動的に設定できます。 テンプレートの構文を繰り返す必要もありません。
 
-また、[プロパティ](copy-properties.md) と [変数](copy-variables.md)を使用することもできます。
+[プロパティ](copy-properties.md)、[変数](copy-variables.md)、および[出力](copy-outputs.md)でもコピーを使用できます。
 
 リソースをデプロイするかどうかを指定する必要がある場合は、[condition 要素](conditional-resource-deployment.md)に関する記述を参照してください。
 
@@ -130,6 +130,8 @@ ms.locfileid: "77210660"
   "outputs": {}
 }
 ```
+
+デプロイされたリソースから値を返す場合は、[outputs セクション内で copy](copy-outputs.md) を使用できます。
 
 ## <a name="serial-or-parallel"></a>シリアルまたは並列
 
@@ -279,7 +281,10 @@ count は負の数値にすることはできません。 Azure PowerShell 2.6 �
 ## <a name="next-steps"></a>次のステップ
 
 * チュートリアルについては、「[チュートリアル: Resource Manager テンプレートを使用した複数のリソース インスタンスの作成](template-tutorial-create-multiple-instances.md)」を参照してください。
-* copy 要素のその他の用途については、「[Azure Resource Manager テンプレートでのプロパティの反復](copy-properties.md)」および「[Azure Resource Manager テンプレートでの変数の反復](copy-variables.md)」を参照してください。
+* copy 要素のその他の使用方法については、以下を参照してください。
+  * [Azure Resource Manager テンプレートでのプロパティの反復](copy-properties.md)
+  * [Azure Resource Manager テンプレートでの変数の反復](copy-variables.md)
+  * [Azure Resource Manager テンプレートでの出力の反復](copy-outputs.md)
 * 入れ子になったテンプレートで copy を使用する方法については、「[copy の使用](linked-templates.md#using-copy)」を参照してください。
 * テンプレートのセクションについては、「[Azure Resource Manager のテンプレートの作成](template-syntax.md)」を参照してください。
 * テンプレートをデプロイする方法については、「 [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](deploy-powershell.md)」を参照してください。

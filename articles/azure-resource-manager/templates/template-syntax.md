@@ -2,13 +2,13 @@
 title: テンプレートの構造と構文
 description: 宣言型 JSON 構文を使用した Azure Resource Manager テンプレートの構造とプロパティについて説明します。
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.openlocfilehash: 9cd602644ecf803e97254189cfc157d60713cc6c
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 02/25/2020
+ms.openlocfilehash: 08c688da3e812a4a67070c926cf11512bfc60667
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209462"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622895"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの構造と構文の詳細
 
@@ -95,7 +95,7 @@ ms.locfileid: "77209462"
 
 データ型の書式設定のサンプルについては、「[パラメーターの型の形式](parameter-files.md#parameter-type-formats)」を参照してください。
 
-## <a name="variables"></a>変数
+## <a name="variables"></a>変数:
 
 テンプレート内で使用できる値は、variables セクションで構築します。 必ずしも変数を定義する必要はありませんが、変数を定義することによって複雑な式が減り、テンプレートが単純化されることはよくあります。
 
@@ -248,7 +248,7 @@ resources セクションでは、デプロイまたは更新されるリソー�
 | sku | いいえ | 一部のリソースでは、デプロイする SKU を定義する値が許可されます。 たとえば、ストレージ アカウントの冗長性の種類を指定することができます。 |
 | kind | いいえ | 一部のリソースでは、デプロイするリソースの種類を定義する値が許可されます。 たとえば、作成する Cosmos DB の種類を指定することができます。 |
 | copy |いいえ |複数のインスタンスが必要な場合に作成するリソースの数。 既定のモードはパラレルです。 すべてのリソースを同時にデプロイする必要がない場合は、シリアル モードを指定します。 詳しくは、「[Azure Resource Manager でリソースの複数のインスタンスを作成する](copy-resources.md)」をご覧ください。 |
-| plan | いいえ | 一部のリソースでは、デプロイするプランを定義する値が許可されます。 たとえば、仮想マシンのマーケットプレース イメージを指定することができます。 |
+| プラン | いいえ | 一部のリソースでは、デプロイするプランを定義する値が許可されます。 たとえば、仮想マシンのマーケットプレース イメージを指定することができます。 |
 | properties |いいえ |リソース固有の構成設定。 properties の値は、リソースを作成するために REST API 操作 (PUT メソッド) の要求本文に指定した値と同じです。 コピー配列を指定して、1 つのプロパティの複数のインスタンスを作成することもできます。 使用可能な値を確認するには、[テンプレートのリファレンス](/azure/templates/)に関する記事をご覧ください。 |
 | resources |いいえ |定義されているリソースに依存する子リソース。 親リソースのスキーマで許可されているリソースの種類のみを指定します。 親リソースへの依存関係は示されません。 この依存関係は明示的に定義する必要があります。 [子リソースの名前と種類の設定](child-resource-name-type.md)に関する記事を参照してください。 |
 
@@ -260,10 +260,14 @@ resources セクションでは、デプロイまたは更新されるリソー�
 
 ```json
 "outputs": {
-  "<output-name>" : {
+  "<output-name>": {
     "condition": "<boolean-value-whether-to-output-value>",
-    "type" : "<type-of-output-value>",
-    "value": "<output-value-expression>"
+    "type": "<type-of-output-value>",
+    "value": "<output-value-expression>",
+    "copy": {
+      "count": <number-of-iterations>,
+      "input": <values-for-the-variable>
+    }
   }
 }
 ```
@@ -273,7 +277,8 @@ resources セクションでは、デプロイまたは更新されるリソー�
 | output-name |はい |出力値の名前。 有効な JavaScript 識別子で指定する必要があります。 |
 | condition |いいえ | この出力値が返されたかどうかを示すブール値。 `true` の場合、値はデプロイの出力に含まれています。 `false` の場合、このデプロイでは、出力値はスキップされます。 指定しない場合、既定値は `true` です。 |
 | type |はい |出力値の型。 出力値では、テンプレート入力パラメーターと同じ型がサポートされています。 出力の種類に **securestring** を指定した場合、値はデプロイ履歴に表示されず、他のテンプレートから取得できません。 複数のテンプレートでシークレット値を使用するには、シークレットをキー コンテナーに格納し、パラメーター ファイルでそのシークレットを参照します。 詳細については、「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](key-vault-parameter.md)」を参照してください |
-| value |はい |評価され、出力値として返されるテンプレート言語式。 |
+| value |いいえ |評価され、出力値として返されるテンプレート言語式。 **値** または **copy** を指定します。 |
+| copy |いいえ | 出力に対して複数の値を返すために使用されます。 **値** または **copy** を指定します。 詳細については、「[Azure Resource Manager テンプレートでの出力の反復](copy-outputs.md)」を参照してください。 |
 
 出力の使用方法の例については、「[Azure Resource Manager テンプレートの出力](template-outputs.md)」を参照してください。
 
@@ -379,7 +384,7 @@ Visual Studio Code では、[Azure Resource Manager ツール拡張機能](use-v
 
 ## <a name="multi-line-strings"></a>複数行の文字列
 
-文字列を複数の行に分割することができます。 たとえば、次の JSON の例では、location プロパティとコメントの 1 つです。
+文字列を複数の行に分割することができます。 例として、次の JSON の例の location プロパティといずれかのコメントを参照してください。
 
 ```json
 {

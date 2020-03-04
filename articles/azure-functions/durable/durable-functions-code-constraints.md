@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5013457aca99a63808077b86f5674460e83fdc41
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4ed604302ca187ad4953e865d68dc73030a37c02
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232975"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562141"
 ---
 # <a name="orchestrator-function-code-constraints"></a>オーケストレーター関数コードの制約
 
@@ -28,7 +28,7 @@ Durable Functions は、ステートフル アプリの構築を可能にする�
 
 次の表に、決定論的 "*ではない*" ために回避する必要がある API の例を示します。 これらの制限は、オーケストレーター関数にのみ適用されます。 その他の関数の種類には、このような制限はありません。
 
-| API のカテゴリ | 理由 | 対処法 |
+| API のカテゴリ | 理由 | 回避策 |
 | ------------ | ------ | ---------- |
 | 日付と時刻  | 現在の日付または時刻を返す API は、再生ごとに異なる値が返されるため、非決定論的です。 | .NET の `CurrentUtcDateTime` API または JavaScript の `currentUtcDateTime` API を使用します。これらは再生時に安全です。 |
 | GUID と UUID  | ランダムな GUID または UUID を返す API は、再生のたびに異なる値が生成されるため、非決定論的です。 | ランダムな GUID を安全に生成するには、.NET の `NewGuid` または JavaScript の `newGuid` を使用します。 |
@@ -38,7 +38,7 @@ Durable Functions は、ステートフル アプリの構築を可能にする�
 | ブロック API | .Net の `Thread.Sleep` などのブロック API や他の類似する API は、オーケストレーター関数のパフォーマンスやスケールに関する問題を発生させる可能性があるため、回避する必要があります。 これにより、Azure Functions 従量課金プランで不要な実行時間の料金が発生することもあります。 | 使用可能な場合は、ブロック API に代わる手段を使用してください。 たとえば、`CreateTimer` を使用してオーケストレーションの実行に遅延を組み込みます。 [持続的タイマー](durable-functions-timers.md)の遅延は、オーケストレーター関数の実行時間にカウントされません。 |
 | 非同期 API | `IDurableOrchestrationContext` API または `context.df` オブジェクトの API を使用する場合以外は、オーケストレーター コードで非同期操作を開始しないでください。 たとえば、.NET では `Task.Run`、`Task.Delay`、および `HttpClient.SendAsync` を、JavaScript では `setTimeout` および `setInterval` を使用できません。 Durable Task Framework では、1 つのスレッドでオーケストレーター コードが実行されます。 他の非同期 API によって呼び出される可能性のある他のスレッドとは対話できません。 | オーケストレーター関数によって実行されるのは、持続的な非同期呼び出しのみです。 その他の非同期 API の呼び出しは、アクティビティ関数から実行する必要があります。 |
 | 非同期 JavaScript 関数 | 非同期関数が決定論的であることが node.js ランタイムで確保されないため、JavaScript オーケストレーター関数を `async` として宣言することはできません。 | JavaScript オーケストレーター関数は、同期ジェネレーター関数として宣言します。 |
-| スレッド API | Durable Task Framework では、1 つのスレッドでオーケストレーター コードが実行され、他のスレッドと対話することはできません。 オーケストレーションの実行に新しいスレッドを導入すると、非決定論的な実行またはデッドロックが発生する可能性あります。 | ほとんどの場合、オーケストレーター関数ではスレッド API を使用できません。 そのような API が必要な場合は、その使用をアクティビティ関数のみに制限します。 |
+| スレッド API | Durable Task Framework では、1 つのスレッドでオーケストレーター コードが実行され、他のスレッドと対話することはできません。 オーケストレーションの実行に新しいスレッドを導入すると、非決定論的な実行またはデッドロックが発生する可能性あります。 | ほとんどの場合、オーケストレーター関数ではスレッド API を使用できません。 たとえば、.NET では `ConfigureAwait(continueOnCapturedContext: false)` を使用しないようにします。これで、オーケストレーター関数の元の `SynchronizationContext` でタスクの継続が実行されます。 そのような API が必要な場合は、その使用をアクティビティ関数のみに制限します。 |
 | 静的変数 | 非定数の静的変数は、時間の経過と共に値が変化し、結果として非決定論的なランタイム動作が生じる可能性があるため、オーケストレーター関数では使用しないでください。 | アクティビティ関数には定数を使用するか、静的変数の使用を制限します。 |
 | 環境変数 | オーケストレーター関数では環境変数を使用しないでください。 これらの値は時間の経過と共に変化し、結果として非決定論的なランタイム動作が生じる可能性があります。 | 環境変数は、クライアント関数またはアクティビティ関数内からのみ参照する必要があります。 |
 | 無限ループ | オーケストレーター関数の無限ループが発生しなようにしてください。 Durable Task Framework では、オーケストレーション関数の進行状況に応じて実行履歴が保存されるため、無限ループが発生すると、オーケストレーター インスタンスによってメモリが不足する可能性があります。 | 無限ループ シナリオの場合、.NET では `ContinueAsNew`、JavaScript では `continueAsNew` などの API を使用して関数の実行を再開し、以前の実行履歴を破棄してください。 |
@@ -66,7 +66,7 @@ Durable Task Framework は上記の規則の違反を検出しようと試みま
 
 Durable Task Framework がオーケストレーター関数を実行する方法の詳細については、[GitHub の持続的なタスクのソース コード](https://github.com/Azure/durabletask)を確認してください。 特に、[TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) と [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs) を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [サブオーケストレーションを呼び出す方法](durable-functions-sub-orchestrations.md)

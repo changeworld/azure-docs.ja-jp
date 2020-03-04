@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 025a31c08ac97783ddf1a608c2899eadd9b89725
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: be331f36a6305b05ce83a2b2d5fdfb73a154ce3d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561769"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623116"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>抽出、変換、読み込み (ETL) ツールとして Apache Hive を使用する
 
@@ -81,13 +81,13 @@ ETL モデルは、通常、次の場合に使用されます。
 
 * 外部ソースから既存のデータベースまたは情報システムに、ストリーム データまたは大量の半構造化データもしくは非構造化データを読み込む。
 * 多くの場合クラスターの中で複数の変換パスを使用して、読み込む前にデータのクリーニング、変換、検証を行う。
-* 定期的に更新されるレポートと視覚化を生成する。  たとえば、日中に生成するには時間がかかりすぎるレポートの場合、夜間に作成されるようにレポートをスケジュールすることができます。  Azure Scheduler と PowerShell を使用して、Hive クエリを自動的に実行することができます。
+* 定期的に更新されるレポートと視覚化を生成する。 たとえば、日中に生成するには時間がかかりすぎるレポートの場合、夜間に作成されるようにレポートをスケジュールすることができます。 Hive クエリを自動的に実行するために、[Azure Logic Apps](../../logic-apps/logic-apps-overview.md) と PowerShell を使用できます。
 
 データのターゲットがデータベースでない場合、クエリ内で適切な形式 (CSV など) でファイルを生成することができます。 このファイルは、Excel または Power BI にインポートすることができます。
 
 ETL プロセスの一環として、データに対して複数の操作を実行する必要がある場合は、該当する操作の管理方法を検討してください。 操作をソリューション内でワークフローとして制御するのでなく、外部プログラムによって制御する場合は、いくつかの操作を並列に実行できるかどうかを判断し、各ジョブの完了のタイミングを検出する必要があります。 Hadoop 内で Oozie などのワークフロー メカニズムを使用する方法は、外部スクリプトまたはカスタム プログラムを使用して一連の操作の調整を試みるよりも簡単である可能性があります。 Oozie の詳細については、「[Workflow and job orchestration](https://msdn.microsoft.com/library/dn749829.aspx)」 (ワークフローおよびジョブ オーケストレーション) を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [大規模な ETL](apache-hadoop-etl-at-scale.md)
 * [データ パイプラインを運用化する](../hdinsight-operationalize-data-pipeline.md)

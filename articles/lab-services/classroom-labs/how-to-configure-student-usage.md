@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 80e8bc47f6e6293d70bbc9fae888abdf5527fe93
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 9fda1295bcdcd44b8a92c101c2aa445197ce6d4a
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169223"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539197"
 ---
 # <a name="add-and-manage-lab-users"></a>ラボ ユーザーを追加および管理する
 この記事では、ラボへのユーザーの追加、それらのユーザーのラボへの登録、ユーザーが VM を使用できる時間数の制御などの方法について説明します。 
@@ -35,7 +35,7 @@ ms.locfileid: "76169223"
     ![ユーザーのメール アドレスを追加](../media/how-to-configure-student-usage/add-users-email-addresses.png)
 4. **[保存]** を選択します。 ユーザーのメール アドレスとそのステータス (登録または未登録) がリストに表示されます。 
 
-    ![ユーザー リスト](../media/how-to-configure-student-usage/users-list-new.png)
+    ![ユーザー リスト](../media/how-to-configure-student-usage/list-of-added-users.png)
 
     > [!NOTE]
     > ラボに登録されたユーザーの名前が一覧に表示されます。 一覧に表示される名前は、Azure Active Directory 内のユーザーの姓と名を使用して作成されます。 
@@ -101,11 +101,14 @@ ms.locfileid: "76169223"
 2. **[ユーザー登録]** ダイアログ ボックスの **[完了]** を選択します。 
 4. 学生がクラスに登録できるように、**登録リンク**を学生に送信します。 
 
-## <a name="view-users-registered-with-the-lab"></a>ラボに登録されているユーザーを確認する
+## <a name="view-registered-users"></a>登録されているユーザーを表示する
 
-左側のメニューで **[ユーザー]** を選択して、ラボに登録されているユーザーの一覧を表示します。 
+1. [Azure Lab Services Web サイト](https://labs.azure.com)に移動します。 
+2. **[サインイン]** を選択して、資格情報を入力します。 Azure Lab Services では、組織アカウントと Microsoft アカウントがサポートされています。
+3. **[My labs]\(自分のラボ\)** ページで、使用状況を追跡するラボを選択します。 
+4. 左側のメニューまたは **[ユーザー]** タイルの **[ユーザー]** を選択します。 ラボに登録されている学生が表示されます。  
 
-![ラボに登録されているユーザーの一覧](../media/how-to-configure-student-usage/students-registered.png)
+    ![登録されているユーザー](../media/tutorial-track-usage/registered-users.png)
 
 ## <a name="set-quotas-for-users"></a>ユーザーのクォータを設定する
 次の手順を使用して、ユーザーごとのクォータを設定できます。 
@@ -115,7 +118,7 @@ ms.locfileid: "76169223"
 3. **[ユーザーあたりのクォータ]** ページで、予定されている授業時間外で各ユーザー (学生) に与える時間数を指定し、 **[保存]** を選択します。
 
     ![ユーザーあたりのクォータ](../media/how-to-configure-student-usage/quota-per-user.png)    
-5. ツールバーに変更後の値が表示されます。 **[ユーザーあたりのクォータ: \<時間数>** ]。 
+5. ツールバーに変更後の値が表示されます。 **[ユーザーあたりのクォータ: \<時間数>]** とユーザー一覧にも表示されます。
 
     ![ユーザーあたりのクォータ - 後](../media/how-to-configure-student-usage/quot-per-user-after.png)
 

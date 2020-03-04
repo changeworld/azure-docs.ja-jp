@@ -1,5 +1,5 @@
 ---
-title: PowerShell を使用して Azure Data Explorer クラスターとデータベースを作成する
+title: PowerShell を使用して Azure Data Explorer クラスターと DB を作成する
 description: PowerShell を使用して Azure Data Explorer クラスターとデータベースを作成する方法を学習します
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: d4561d49c37298a2b1a7f6c6542d78c3e19a145c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 690c3e281e65f54f240c70f7a6e5038f54102c99
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978334"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560594"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>PowerShell を使用して Azure Data Explorer クラスターとデータベースを作成する
 
@@ -67,7 +67,7 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
 
    |**設定** | **推奨値** | **フィールドの説明**|
    |---|---|---|
-   | Name | *mykustocluster* | クラスターの任意の名前。|
+   | 名前 | *mykustocluster* | クラスターの任意の名前。|
    | Sku | *D13_v2* | クラスターに使用される SKU。 |
    | ResourceGroupName | *testrg* | クラスターが作成されるリソース グループの名前。 |
 
@@ -92,7 +92,7 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
    |**設定** | **推奨値** | **フィールドの説明**|
    |---|---|---|
    | ClusterName | *mykustocluster* | データベースの作成先となるクラスターの名前。|
-   | Name | *mykustodatabase* | データベースの名前。|
+   | 名前 | *mykustodatabase* | データベースの名前。|
    | ResourceGroupName | *testrg* | クラスターが作成されるリソース グループの名前。 |
    | SoftDeletePeriod | *3650:00:00:00* | データをクエリに使用できるようにしておく時間。 |
    | HotCachePeriod | *3650:00:00:00* | データをキャッシュに保持する時間。 |

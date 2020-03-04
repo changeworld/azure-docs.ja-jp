@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/27/2019
-ms.openlocfilehash: 8e265b592bebfc506ae0116c955403dd1070ad3f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: dece5b0bb0508e2d83ee184e71ef0b4364d25ac8
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164589"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622971"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>Azure Monitor for Azure Cosmos DB (プレビュー) の詳細
 
@@ -35,12 +35,39 @@ Azure Monitor for Azure Cosmos DB (プレビュー) では、全 Azure Cosmos DB
 >[!NOTE]
 >この機能へのアクセスに対して料金はかからず、構成または有効にした Azure Monitor の基本機能に対してのみ課金されます。[Azure Monitor の価格の詳細](https://azure.microsoft.com/pricing/details/monitor/)に関するページをご覧ください。
 
+## <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Azure Cosmos DB の操作レベルのメトリックを表示する
 
-## <a name="accessing-azure-monitor-for-azure-cosmos-db"></a>Azure Monitor for Azure Cosmos DB へのアクセス
+1. [Azure portal](https://portal.azure.com/) にサインインします。
+
+1. 左側のナビゲーション バーから **[監視]** を選択し、 **[メトリック]** を選択します。
+
+   ![Azure Monitor のメトリック ウィンドウ](./media/cosmosdb-insights-overview/monitor-metrics-blade.png)
+
+1. **[メトリック]** ウィンドウから、 **[リソースの選択]** を選択し、必要な**サブスクリプション**と**リソース グループ**を選択します。 **[リソースの種類]** で、 **[Azure Cosmos DB accounts]\(Azure Cosmos DB アカウント\)** を選択し、既存の Azure Cosmos アカウントの一つを選択し、 **[適用]** を選択します。
+
+   ![メトリックを表示する Cosmos DB アカウントの選択](./media/cosmosdb-insights-overview/select-cosmosdb-account.png)
+
+1. 次に、使用可能なメトリックの一覧からメトリックを選択できます。 要求ユニット、ストレージ、待機時間、可用性、Cassandra などに固有のメトリックを選択できます。 この一覧で使用可能なすべてのメトリックの詳細については、「[カテゴリ別のメトリック](../../cosmos-db/monitor-cosmos-db-reference.md)」の記事を参照してください。 この例では、 **[要求ユニット]** および集計値として **[Avg]** を選択します。
+
+   これらの詳細に加えて、メトリックの **[時間の範囲]** と **[時間の粒度]** を選択することもできます。 最大で、過去 30 日間のメトリックを表示できます。  フィルターを適用すると、そのフィルターに基づいてグラフが表示されます。 選択した期間に消費された要求ユニットの 1 分あたりの平均数を確認できます。  
+
+   ![Azure portal からのメトリックの選択](./media/cosmosdb-insights-overview/metric-types.png)
+
+### <a name="add-filters-to-metrics"></a>メトリックにフィルターを追加する
+
+メトリックと、特定の **CollectionName**、**DatabaseName**、**OperationType**、**Region**、および **StatusCode** によって表示されるグラフをフィルターすることもできます。 メトリックにフィルターを適用するには、 **[フィルターの追加]** を選択し、**OperationType** などの必要なプロパティを選択し、**Query** などの値を選択します。 その後グラフには、選択した期間のクエリ操作で消費された要求ユニットが表示されます。 ストアド プロシージャを介して実行された操作は、ログに記録されないため、OperationType メトリックでは使用できません。
+
+![メトリック細分性を選択するためのフィルターの追加](./media/cosmosdb-insights-overview/add-metrics-filter.png)
+
+**[Apply splitting]\(分割の適用\)** オプションを使用すると、メトリックをグループ化できます。 たとえば、次の図に示すように、要求ユニットを操作の種類ごとにグループ化し、すべての操作のグラフを一度に表示できます。
+
+![分割の適用フィルターの追加](./media/cosmosdb-insights-overview/apply-metrics-splitting.png)
+
+## <a name="view-utilization-and-performance-metrics-for-azure-cosmos-db"></a>Azure Cosmos DB の使用率とパフォーマンスのメトリックを表示する
 
 所有するすべてのサブスクリプションのストレージ アカウントの使用状況とパフォーマンスを確認するには、次の手順を実行します。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. 「**監視**」を検索し、 **[監視]** を選択します。
 
@@ -90,7 +117,7 @@ Azure Monitor for Azure Cosmos DB (プレビュー) では、全 Azure Cosmos DB
 
 概要ブックと同様、 **[サブスクリプション]** 列で Azure Cosmos DB リソースの横にあるドロップダウンを選択すると、データベースを構成する個々のコンテナーごとの内訳が表示されます。
 
-### <a name="operations"></a>Operations 
+### <a name="operations"></a>操作 
 
 ページの上部にある **[操作]** を選択すると、ブック テンプレートの**操作**部分が表示されます。 送信された要求の種類ごとに要求の内訳を確認できます。 
 
@@ -122,7 +149,7 @@ Azure Monitor for Azure Cosmos DB (プレビュー) では、全 Azure Cosmos DB
 
 ![コマンド バーからブック ギャラリーを起動する](./media/cosmosdb-insights-overview/gallery.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [メトリック アラート](../platform/alerts-metric.md)と[サービス正常性通知](../../service-health/alerts-activity-log-service-notifications.md)を構成して、問題の検出に役立つ自動アラートを設定します。
 

@@ -5,133 +5,141 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/13/2019
-ms.openlocfilehash: 820ddb8d06cfd2aac2b053305f23ad330e4fd7c3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.custom: hdinsightactive
+ms.date: 02/19/2020
+ms.openlocfilehash: bcc71b7244ba3498b2fcde023d372e67f41d6117
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74215912"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623268"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure portal を使用して HDInsight で Linux ベースのクラスターを作成する
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Azure Portal は、Microsoft Azure クラウドでホストされるサービスやリソースの Web ベースの管理ツールです。 この記事では、ポータルを使用して Linux ベースの Azure HDInsight クラスターを作成する方法について説明します。
+Azure Portal は、Microsoft Azure クラウドでホストされるサービスやリソースの Web ベースの管理ツールです。 この記事では、ポータルを使用して Linux ベースの Azure HDInsight クラスターを作成する方法について説明します。 追加の詳細については、[HDInsight クラスターの作成](./hdinsight-hadoop-provision-linux-clusters.md)に関する記事を参照してください。
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="prerequisites"></a>前提条件
+Azure Portal には、ほとんどのクラスターのプロパティが公開されます。 Azure Resource Manager テンプレートを使用すると、多くの詳細を非表示にできます。 詳しくは、「[Resource Manager テンプレートを使用して HDInsight で Apache Hadoop クラスターを作成する](hdinsight-hadoop-create-linux-clusters-arm-templates.md)」をご覧ください。
 
-* **Azure サブスクリプション**。 「[How to get Azure Free trial for testing Hadoop in HDInsight (HDInsight で Hadoop をテストするために Azure の無料試用版を入手する方法)](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)」をご覧ください。
-* **最新の Web ブラウザー**。 Azure portal では、HTML5 と JavaScript が使用されます。 古い Web ブラウザーでは正常に機能しない可能性があります。
+Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 ## <a name="create-clusters"></a>クラスターの作成
 
-Azure Portal には、ほとんどのクラスターのプロパティが公開されます。 Azure Resource Manager テンプレートを使用すると、多くの詳細を非表示にできます。 詳しくは、「[Resource Manager テンプレートを使用して HDInsight で Apache Hadoop クラスターを作成する](hdinsight-hadoop-create-linux-clusters-arm-templates.md)」をご覧ください。
-
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
-1. 左側のメニューから、 **[+ リソースの作成]**  >   **[Analytics]**  >  **[Azure HDInsight]** に移動します。
+1. 上部のメニューで、 **[+ リソースの作成]** を選択します。
 
-    ![Azure portal で新しいクラスターを作成する](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster.png "Azure Portal での新しいクラスターの作成")
+    ![Azure portal で新しいクラスターを作成する](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-create-resource.png "Azure Portal での新しいクラスターの作成")
 
-1. **[HDInsight クラスターの作成]** ページで、 **[Go to classic create experience]\(従来の作成エクスペリエンスに移動\)** を選択します。
+1. **[分析]**  >  **[Azure HDInsight]** を選択して **[HDInsight クラスターの作成]** ページに移動します。
 
-    ![従来の作成エクスペリエンスに移動](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-create-classic.png)
+## <a name="basics"></a>基本
 
-1. **[HDInsight]** ページで、 **[カスタム (サイズ、設定、アプリ)]** を選択します。
+![HDInsight でのクラスター作成の基本](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-basics.png "Azure Portal での新しいクラスターの作成")
 
-1. **[1 基本]** を選択します。 そして、次の情報を入力します。
+**[基本]** タブで次の情報を指定します。
 
-    |プロパティ |説明 |
-    |---|---|
-    |クラスター名|この名前はグローバルに一意である必要があります。|
-    |Subscription|ドロップダウン リストから、このクラスターに使用する Azure サブスクリプションを選択します。|
-    |クラスターの種類|作成するクラスターの種類を選択します。 たとえば、Hadoop や Apache Spark です。 **[オペレーティング システム]** は **[Linux]** になります。 次に、クラスターの種類のバージョンを選択します。 どれを選択すべきかわからない場合は、既定のバージョンを使用します。 詳細については、「 [HDInsight クラスターのバージョン](hdinsight-component-versioning.md)」をご覧ください。|
-    |クラスター ログイン ユーザー名|ユーザー名を指定します。既定値は **admin** です。|
-    |クラスター ログイン パスワード|パスワードを指定します。|
-    |Secure Shell (SSH) ユーザー名|既定値は **sshuser** です。 SSH パスワードを前に指定した管理者パスワードと同じにする場合は、 **[SSH にクラスター ログイン パスワードを使用する]** チェック ボックスをオンします。 そうでない場合は、SSH ユーザーを認証するための **[パスワード]** または **[公開キー]** を指定します。 公開キーを使用することをお勧めします。 下部にある **[選択]** を選択して、資格情報の構成を保存します。  詳しくは、「[SSH を使用して HDInsight (Apache Hadoop) に接続する](hdinsight-hadoop-linux-use-ssh-unix.md)」をご覧ください。|
-    |Resource group|新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。|
-    |Location|クラスターを作成するデータセンターを指定します。|
+|プロパティ |説明 |
+|---|---|
+|サブスクリプション|ドロップダウン リストから、このクラスターに使用する Azure サブスクリプションを選択します。|
+|Resource group|ドロップダウン リストから既存のリソース グループを選択するか、 **[新規作成]** を選択します。|
+|クラスター名|グローバルに一意の名前を入力します。|
+|リージョン|ドロップダウン リストから、クラスターの作成先となるリージョンを選択します。|
+|クラスターの種類|**[クラスターの種類の選択]** を選択して一覧を開きます。 一覧から目的のクラスターの種類を選択します。 HDInsight クラスターにはさまざまな種類があります。 それぞれに対応するワークロードやテクノロジがあり、それに合わせてクラスターが調整されます。 複数の種類を組み合わせたクラスターを作成する方法はサポートされていません。|
+|Version|ドロップダウン リストから**バージョン**を選択します。 どれを選択すべきかわからない場合は、既定のバージョンを使用します。 詳細については、「 [HDInsight クラスターのバージョン](hdinsight-component-versioning.md)」をご覧ください。|
+|クラスター ログイン ユーザー名|ユーザー名を指定します。既定値は **admin** です。|
+|クラスター ログイン パスワード|パスワードを指定します。|
+|クラスター ログイン パスワードを確認する|パスワードを再入力します。|
+|Secure Shell (SSH) ユーザー名|ユーザー名を指定します。既定値は **sshuser** です。|
+|SSH にクラスター ログイン パスワードを使用する|SSH パスワードを前に指定した管理者パスワードと同じにする場合は、 **[SSH にクラスター ログイン パスワードを使用する]** チェック ボックスをオンします。 そうでない場合は、SSH ユーザーを認証するための **[パスワード]** または **[公開キー]** を指定します。 公開キーを使用することをお勧めします。 下部にある **[選択]** を選択して、資格情報の構成を保存します。  詳しくは、「[SSH を使用して HDInsight (Apache Hadoop) に接続する](hdinsight-hadoop-linux-use-ssh-unix.md)」をご覧ください。|
 
-    ![HDInsight でのクラスター作成の基本](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-basics.png "Azure Portal での新しいクラスターの作成")
+**[次へ: ストレージ >>]** を選択して、次のタブに進みます。
 
-    > [!IMPORTANT]  
-    > HDInsight クラスターにはさまざまな種類があります。 それぞれに対応するワークロードやテクノロジがあり、それに合わせてクラスターが調整されます。 複数の種類を組み合わせたクラスターを作成する方法はサポートされていません。 たとえば、Storm と HBase を 1 つのクラスターにするような場合です。
+## <a name="storage"></a>ストレージ
 
-    **[次へ]** を選択して、次のページに進みます。
+![HDInsight でのクラスター ストレージの作成](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-storage.png "Azure portal での新しいクラスターの作成 - ストレージ")
 
-1. **[2 セキュリティとネットワーク]** で、表示されているドロップダウン メニューを使用してクラスターを仮想ネットワークに接続できます。 クラスターを仮想ネットワークに配置する場合は、Azure Virtual Network とサブネットを選択します。 仮想ネットワークでの HDInsight の使用については、[Azure HDInsight クラスター用の仮想ネットワーク デプロイの計画](hdinsight-plan-virtual-network-deployment.md)に関するページを参照してください。 その記事には、仮想ネットワークの具体的な構成要件が含まれます。
+### <a name="primary-storage"></a>プライマリ ストレージ
 
-    **Enterprise セキュリティ パッケージ**を使用する場合は、「[Azure Active Directory Domain Services を使用して、Enterprise セキュリティ パッケージで HDInsight クラスターを構成する](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds)」の手順に従うこともできます。
+**[プライマリ ストレージの種類]** ドロップダウン リストから、既定のストレージの種類を選択します。 次に完了するフィールドは、選択内容によって異なります。 **Azure Storage** の場合:
 
-    **[次へ]** を選択して、次のページに進みます。
+1. **[選択方法]** については、 **[一覧から選択する]** または **[アクセス キーを使用する]** を選択します。
+    * **[一覧から選択する]** では、ドロップダウン リストからお使いの**プライマリ ストレージ アカウント**を選択するか、 **[新規作成]** を選択します。
+    * **[アクセス キーを使用する]** では、お使いの**ストレージ アカウント名**を入力します。 次に、**アクセス キー**を指定します。
 
-1. **[3 ストレージ]** の **[ストレージ アカウントの設定]** で、既定のストレージとして Azure Storage と Azure Data Lake Storage のどちらを使用するかを指定します。 詳細については、後の表を参照してください。
+1. **[コンテナー]** では、既定値をそのまま使用するか、新しい値を入力します。
 
-    | プライマリ ストレージの種類 | 説明 |
-    |------------------|-------------|
-    | Azure Storage   |  * **[選択方法]** では、自分の Azure サブスクリプションの一部であるストレージ アカウントを指定する場合は、 **[個人用サブスクリプション]** を選択します。 次に、ストレージ アカウントを選択します。 それ以外の場合は、 **[アクセス キー]** を選択します。 次に、自分の Azure サブスクリプションの外部から選択するストレージ アカウントの情報を指定します。</br></br> * **[既定のコンテナー]** では、ポータルによって示された既定のコンテナー名を使用するか、独自の名前を指定します。</br></br> * Azure Blob ストレージが既定のストレージである場合は、 **[追加のストレージ アカウント]** を選択して、クラスターに関連付ける追加のストレージ アカウントを指定することもできます。 **[Azure Storage キー]** では、 **[ストレージ キーの追加]** を選択します。 その後、自分の Azure サブスクリプションまたは他のサブスクリプションから、ストレージ アカウントを指定できます。 ストレージ アカウントのアクセス キーを指定します。</br></br> * BLOB ストレージが既定のストレージである場合は、 **[Data Lake Storage access]\(Data Lake Storage アクセス\)** を選択し、追加のストレージとして Azure Data Lake Storage を指定することもできます。 詳細については、「[クイック スタート: HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。</li></ul> |
-    | Azure Data Lake Storage | **[Azure Data Lake Storage Gen1]** または **[Azure Data Lake Storage Gen2]** を選択します。 その後、「[クイック スタート:HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」の手順を参照してください。 |
+### <a name="additional-azure-storage"></a>追加の Azure Storage
 
-    **metastore の設定 (省略可能)**
+省略可能:追加のクラスター ストレージに対する **[Azure Storage の追加]** を選択します。 HDInsight クラスター以外のリージョンでの追加のストレージ アカウントの使用はサポートされていません。
 
-    必要に応じて、クラスターに関連付けられた Apache Hive と Apache Oozie のメタデータを保存するための SQL データベースを指定します。 **[Hive 用の SQL データベースを選択する]** で、SQL データベースを選択します。 次に、データベースのユーザー名とパスワードを指定します。 以上の手順を Oozie メタデータについても行います。
+### <a name="metastore-settings"></a>メタストアの設定
 
-    メタストアに Azure SQL データベースを使用する場合の考慮事項は次のとおりです。
-    * メタストアに使用される Azure SQL データベースは、Azure HDInsight などの他の Azure サービスに接続できる必要があります。 Azure SQL データベース ダッシュボードの右側で、サーバー名を選択します。 これは SQL データベース インスタンスが実行されているサーバーです。 サーバー ビューに移動した後、 **[構成]** を選択します。 次に、 **[Azure サービス]** で **[はい]** を選択します。 次に、 **[保存]** を選択します。
-    * メタストアを作成するとき、データベース名にダッシュやハイフンを使用しないでください。 これらの文字が含まれると、クラスター作成プロセスが失敗する可能性があります。
+省略可能:既存の SQL Database を指定して、クラスターの外部に Apache Hive、Apache Oozie、または Apache Ambari メタデータを保存します。 メタストアに使用される Azure SQL データベースでは、Azure HDInsight を含む他の Azure サービスに接続できる必要があります。 メタストアを作成するとき、データベース名にダッシュやハイフンを使用しないでください。 これらの文字が含まれると、クラスター作成プロセスが失敗する可能性があります。
 
-    ![HDInsight でのクラスター ストレージの作成](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-storage.png "Azure Portal での新しいクラスターの作成")
+**[次へ: セキュリティとネットワーク >>]** を選択して、次のタブに進みます。
 
-    > [!WARNING]  
-    > HDInsight クラスター以外の場所で追加のストレージ アカウントを使用することはできません。
+## <a name="security--networking"></a>セキュリティとネットワーク
 
-    **[次へ]** を選択して、次のページに進みます。
+![HDInsight でのクラスター セキュリティ ネットワークの作成](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-security-networking.png "HDInsight でのクラスター セキュリティ ネットワークの作成")
 
-1. **[4 アプリケーション (オプション)]** で、必要なアプリケーションを選択します。 これらのアプリケーションは、Microsoft、独立系ソフトウェア ベンダー (ISV)、またはご自身が独自に開発できます。 詳しくは、「[クラスター作成時のアプリケーションのインストール](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation)」をご覧ください。
+**[セキュリティとネットワーク]** タブで、次の情報を入力します。
 
-    **[次へ]** を選択して、次のページに進みます。
+|プロパティ |説明 |
+|---|---|
+|Enterprise セキュリティ パッケージ|省略可能:**Enterprise セキュリティ パッケージ**を使用するには、このチェックボックスをオンにします。 詳細については、[Azure Active Directory Domain Services を使用した HDInsight クラスターの Enterprise セキュリティ パッケージを含む構成](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)に関する記事を参照してください。|
+|TLS|省略可能:ドロップダウン リストから TLS バージョンを選択します。 詳細については、「[トランスポート層セキュリティ](./hdinsight-plan-virtual-network-deployment.md#transport-layer-security)」を参照してください。|
+|仮想ネットワーク|省略可能:ドロップダウン リストから既存の仮想ネットワークとサブネットを選択します。 詳細については、[Azure HDInsight クラスター用の仮想ネットワークのデプロイ計画](hdinsight-plan-virtual-network-deployment.md)に関する記事を参照してください。 その記事には、仮想ネットワークの具体的な構成要件が含まれます。|
+|ディスク暗号化設定|省略可能:暗号化を使用するには、このチェックボックスをオンにします。 詳細については、「[お客様が管理するキー ディスクの暗号化](./disk-encryption.md)」を参照してください。|
+|Kafka REST プロキシ|この設定は、Kafka のクラスターの種類にのみ使用できます。 詳細については、[REST プロキシの使用](./kafka/rest-proxy.md)に関する記事を参照してください。|
+|ID|省略可能:ドロップダウン リストから、ユーザーが割り当てた既存のサービス ID を選択します。 詳細については、「[Azure HDInsight のマネージド ID](./hdinsight-managed-identities.md)」を参照してください。|
 
-1. **[5 クラスター サイズ]** に、このクラスターのために使用されるノードに関する情報が表示されます。 クラスターで必要な worker ノードの数を設定します。 クラスター実行の推定コストが表示されます。
+**[次へ: 構成と価格 >>]** を選択して、次のタブに進みます。
 
-    ![HDInsight でのクラスター ノードの作成](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-nodes.png "クラスター ノードの数を指定する")
+## <a name="configuration--pricing"></a>構成と価格
 
-   > [!IMPORTANT]  
-   > 32 個を超えるワーカー ノードを予定している場合、コア数が 8 個以上で RAM が 14 GB 以上のサイズのヘッド ノードを選択します。 クラスターの作成時に、または作成後にクラスターのスケーリングで、ノードを計画します。
-   >
-   > ノードのサイズと関連コストについて詳しくは、「[Azure HDInsight の料金](https://azure.microsoft.com/pricing/details/hdinsight/)」をご覧ください。
+![HDInsight でのクラスターの構成の作成](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-configuration.png "[構成と価格] タブ")
 
-    **[次へ]** を選択して、次のページに進みます。
+**[構成と価格]** タブで、次の情報を入力します。
 
-1. **[6 スクリプト操作]** で、カスタム コンポーネントをインストールするようにクラスターをカスタマイズできます。 このオプションは、クラスターを作成するときに、カスタム スクリプトを使用してクラスターをカスタマイズする場合に使用します。 スクリプト アクションについて詳しくは、「[スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」をご覧ください。
+|プロパティ |説明 |
+|---|---|
+|+ アプリケーションの追加|省略可能:目的のアプリケーションを選択します。 これらのアプリケーションは、Microsoft、独立系ソフトウェア ベンダー (ISV)、またはご自身が独自に開発できます。 詳しくは、「[クラスター作成時のアプリケーションのインストール](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation)」をご覧ください。|
+|ノード サイズ|省略可能:別のサイズのノードを選択します。|
+|ノードの数|省略可能:指定したノードの種類のノードの数を入力します。 32 個を超えるワーカー ノードを計画する場合は、コア数が 8 個以上で RAM が 14 GB 以上のサイズのヘッド ノードを選択します。 クラスターの作成時に、または作成後にクラスターのスケーリングで、ノードを計画します。|
+|自動スケールの有効化|省略可能:この機能を有効にするには、チェックボックスをオンにします。 詳細については、「[Azure HDInsight クラスターを自動的にスケール調整する](./hdinsight-autoscale-clusters.md)」を参照してください。|
+|+ スクリプト アクションの追加|省略可能:このオプションは、クラスターを作成するときに、カスタム スクリプトを使用してクラスターをカスタマイズする場合に使用します。 スクリプト アクションについて詳しくは、「[スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」をご覧ください。|
 
-   **[次へ]** を選択して、次のページに進みます。
+**[確認と作成 >>]** を選択してクラスターの構成を検証し、最後のタブに進みます。
 
-1. **[7 概要]** で、これまでに入力した情報を確認します。 **[作成]** を選択します。
+## <a name="review--create"></a>確認と作成
 
-    ![HDInsight でのクラスター作成の概要](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-summary.png "クラスター ノードの数を指定する")
+![HDInsight でのクラスター作成の概要](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-review-create-hadoop.png "クラスター ノードの数を指定する")
 
-    > [!NOTE]  
-    > クラスターが作成されるまで、通常は約 20 分かかります。 **[通知]** を監視して、プロビジョニング プロセスをチェックします。
+設定を確認します。 **[作成]** を選択して、クラスターを作成します。
 
-1. 作成プロセスが完了したら、 **[デプロイが成功しました]** という通知から **[リソースに移動]** を選択します。 クラスター ウィンドウには、次の情報が表示されます。
+クラスターが作成されるまで、通常は約 20 分かかります。 **[通知]** を監視して、プロビジョニング プロセスをチェックします。
 
-    ![HDI Azure portal クラスターの概要](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-completed.png "クラスターのプロパティ")
+## <a name="post-creation"></a>投稿の作成
 
-    ウィンドウのいくつかのアイコンの説明は以下のとおりです。
+作成プロセスが完了したら、 **[デプロイが成功しました]** という通知から **[リソースに移動]** を選択します。 クラスター ウィンドウには、次の情報が表示されます。
 
-    |プロパティ | 説明 |
-    |---|---|
-    |概要|クラスターに関するすべての重要な情報が提供されます。 たとえば、名前、属しているリソース グループ、場所、オペレーティング システム、クラスター ダッシュボードの URL などです。|
-    |クラスター ダッシュボード|クラスターに関連付けられている Ambari ポータルに移動します。|
-    |SSH およびクラスターのログイン|SSH を使用してクラスターにアクセスするために必要な情報が提供されます。|
-    |削除|HDInsight クラスターを削除します。|
+![HDI Azure portal クラスターの概要](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-completed.png "クラスターのプロパティ")
+
+ウィンドウのいくつかのアイコンの説明は以下のとおりです。
+
+|プロパティ | 説明 |
+|---|---|
+|概要|クラスターに関するすべての重要な情報が提供されます。 たとえば、名前、属しているリソース グループ、場所、オペレーティング システム、クラスター ダッシュボードの URL などです。|
+|クラスター ダッシュボード|クラスターに関連付けられている Ambari ポータルに移動します。|
+|SSH およびクラスターのログイン|SSH を使用してクラスターにアクセスするために必要な情報が提供されます。|
+|削除|HDInsight クラスターを削除します。|
 
 ## <a name="customize-clusters"></a>クラスターのカスタマイズ
 
@@ -140,13 +148,13 @@ Azure Portal には、ほとんどのクラスターのプロパティが公開�
 
 ## <a name="delete-the-cluster"></a>クラスターを削除する
 
-[!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+「[ブラウザー、PowerShell、または Azure CLI を使用して HDInsight クラスターを削除する](./hdinsight-delete-cluster.md)」を参照してください。
 
-## <a name="troubleshoot"></a>トラブルシューティング
+## <a name="troubleshoot"></a>[トラブルシューティング]
 
-HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](hdinsight-hadoop-create-linux-clusters-portal.md)」を参照してください。
+HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](./hdinsight-hadoop-customize-cluster-linux.md#access-control)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 HDInsight クラスターが正常に作成されました。 次に、クラスターを操作する方法を学習してください。
 

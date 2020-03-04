@@ -9,16 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: ee8b166077c64ae5e0f2cce18ee0bc77e8c996f4
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 171219c001f43137a52f29b282fb1705b3d836aa
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210125"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649825"
 ---
 # <a name="authentication-with-azure-maps"></a>Azure Maps による認証
 
 Azure Maps には、要求の認証方法が 2 つあります。共有キー認証と Azure Active Directory 認証です。 この記事では、Azure Maps サービスの実装の参考になるように、これらの認証方法について説明します。
+
+> [!NOTE]
+> Azure Maps とのセキュリティで保護された通信を強化するために、TLS (トランスポート層セキュリティ) 1.2 がサポートされるようになりました。TLS 1.0 と1.1 のサポートは廃止されます。 サービスの中断を回避するために、**2020 年 4 月 2 日より前に、TLS 1.2 を使用するようにサーバーとアプリケーションを更新してください**。  現在 TLS 1.x を使用している場合は、[TLS 1.0 の問題の解決](https://docs.microsoft.com/security/solving-tls1-problem)に関する記事で説明されているテストを使用して、TLS 1.2 の準備を評価し、移行計画を作成します。
 
 ## <a name="shared-key-authentication"></a>共有キー認証
 

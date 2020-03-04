@@ -1,5 +1,5 @@
 ---
-title: Azure CLI を使用して Azure Data Explorer クラスターとデータベースを作成する
+title: Azure CLI を使用して Azure Data Explorer クラスターと DB を作成する
 description: Azure CLI を使用して Azure Data Explorer クラスターとデータベースを作成する方法を学習します
 author: radennis
 ms.author: radennis
@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: bd53a8e29254af617b6cfa68935a191a50fc526c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 6b8c2924e50da095c3bc5c7db2d2bf48ef5a27c2
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326761"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561937"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>Azure CLI を使用して Azure Data Explorer クラスターとデータベースを作成する
 
@@ -98,7 +98,7 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
 
 クラスターとデータベースが作成されました。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 * 他の記事に進む場合は、作成したリソースをそのままにします。
 * リソースをクリーンアップするには、クラスターを削除します。 クラスターを削除するときに、その中に含まれるデータベースもすべて削除されます。 クラスターを削除するには次のコマンドを使います。
@@ -107,6 +107,6 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
     az kusto cluster delete --name azureclitest --resource-group testrg
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Data Explorer の Python ライブラリを使用してデータを取り込む](python-ingest-data.md)
