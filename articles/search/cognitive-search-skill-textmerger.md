@@ -1,7 +1,7 @@
 ---
 title: テキスト マージ コグニティブ スキル
 titleSuffix: Azure Cognitive Search
-description: フィールドのコレクションからテキストを 1 つの統合されたフィールドにマージします。 Azure コグニティブ検索の AI エンリッチメント パイプラインでこのコグニティブ スキルを使用します。
+description: フィールドのコレクションからテキストを 1 つの統合されたフィールドにマージします。 Azure Cognitive Search の AI エンリッチメント パイプラインでこのコグニティブ スキルを使用します。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
