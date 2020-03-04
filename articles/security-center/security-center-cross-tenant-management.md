@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 3dc7ebe224f1edb1b0fabc40441bd399fda6c133
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 482154a37334b056719a18355f87b467d4fe95c7
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355585"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604241"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Security Center でのテナント間の管理
 
@@ -56,5 +56,5 @@ ms.locfileid: "75355585"
 この記事では、Security Center でのテナント間の管理のしくみについて説明します。 セキュリティ センターの詳細については、次を参照してください。
 
 * 「[Azure Security Center を使用してセキュリティ体制を強化する](security-center-monitoring.md)」-- Azure リソースの正常性を監視する方法について説明しています。
-* 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」 - このサービスの使用に関してよく寄せられる質問が記載されています。
+* 「[Azure Security Center のよく寄せられる質問 (FAQ)](faq-general.md)」 - このサービスの使用に関してよく寄せられる質問が記載されています。
 * 「[エンタープライズ シナリオにおける Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/enterprise)」 - Azure Lighthouse によって、複数の Azure AD テナントを使用するエンタープライズ内でのクロス テナント管理がどのように簡素化されるかを説明しています。

@@ -1,5 +1,6 @@
 ---
-title: Azure App Service を使用して PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティ保護する | Microsoft Docs
+title: PaaS の Web およびモバイル アプリケーションをセキュリティで保護する
+titleSuffix: Azure App Service
 description: 'PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、Azure App Service のセキュリティ ベスト プラクティスについて説明します。 '
 services: security
 documentationcenter: na
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2019
 ms.author: terrylan
-ms.openlocfilehash: 4967f6f7831f1f09a502b935342fcd752af72fce
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c3f3c7fbaa043a03b70ab770c06e493716c70daf
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999147"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500277"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>Azure App Service を使用して PaaS の Web アプリケーションを保護するベスト プラクティス
 
@@ -43,7 +44,7 @@ App Service は、ID プロバイダーに対して OAuth 2.0 サービスを提
 Windows 上の App Service の場合、web.config を構成して IP アドレスを動的に制限することもできます。詳細については、「[動的 IP セキュリティ](/iis/configuration/system.webServer/security/dynamicIpSecurity/)」を参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、App Service の一連のセキュリティ ベスト プラクティスについて説明しました。 PaaS デプロイのセキュリティ保護の詳細については、次のリンク先をご覧ください。
 
 - [PaaS デプロイをセキュリティで保護する](paas-deployments.md)

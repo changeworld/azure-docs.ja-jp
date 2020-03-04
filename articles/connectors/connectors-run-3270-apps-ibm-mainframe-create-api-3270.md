@@ -9,12 +9,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: 309cf59c4b27c2a5906acfc519edd5306dece2d5
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: a9d3d0287e7839d6396553d532ba6f293fb19b68
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789241"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647667"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Azure Logic Apps と IBM 3270 コネクタを使用して IBM メインフレーム上の 3270 画面駆動型アプリを Azure と統合する
 
@@ -184,8 +184,8 @@ Design Tool では、Screen Recognition エディターを使用して、"*認�
 
    | プランの種類 | 説明 |
    |-----------|-------------|
-   | **プロセス** | スタンドアロン プランまたは結合プランの場合 |
-   | **接続** | 接続プランの場合 |
+   | **[処理]** | スタンドアロン プランまたは結合プランの場合 |
+   | **のインスタンスに接続するときには、** | 接続プランの場合 |
    | **Disconnect (切断)** | 切断プランの場合 |
    |||
 
@@ -290,7 +290,7 @@ Design Tool では、Screen Recognition エディターを使用して、認識�
 
    | プロパティ名 | 指定できる値 | 
    |---------------|-----------------|
-   | **データ型** | Byte、Date Time、Decimal、Int、Long、Short、String |
+   | **[データ型]** | Byte、Date Time、Decimal、Int、Long、Short、String |
    | **Field Fill Technique (フィールドの入力方法)** | パラメーターでは次の入力方法がサポートされており、必要に応じて空白が埋められます。 <p><p>-  **[Type]\(入力\)** : フィールドに順番に文字を入力します。 <p>-  **[Fill]\(埋める\)** : フィールドの内容を文字で置き換え、必要に応じて空白で埋めます。 <p>-  **[EraseEofType]\(EOF を消去して入力\)** : フィールドをクリアしてから、フィールドに順番に文字を入力します。 |
    | **Format String (書式設定文字列)** | 一部のパラメーターのデータ型では、書式設定文字列が使用されます。これは、画面から .NET データ型に変換する方法を 3270 コネクタに指示します。 <p><p>-  **[DateTime]\(日時\)** : DateTime 書式設定文字列は、[.NET カスタム日付/時刻の書式設定文字列](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)に従います。 たとえば、日付 `06/30/2019` では、書式設定文字列 `MM/dd/yyyy` を使用します。 <p>-  **[Decimal]\(10 進\)** : 10 進形式の文字列では、[COBOL Picture 句](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html)を使用します。 たとえば、数値 `100.35` では、書式設定文字列 `999V99` を使用します。 |
    |||
@@ -358,13 +358,13 @@ Design Tool では、Screen Recognition エディターを使用して、認識�
 
 1. まだ接続が存在しない場合は、接続に必要な情報を指定し、 **[作成]** を選択します。
 
-   | プロパティ | 必須 | 値 | 説明 |
+   | プロパティ | Required | Value | 説明 |
    |----------|----------|-------|-------------|
    | **Connection Name** | はい | <*connection-name*> | 接続の名前 |
    | **統合アカウント ID** | はい | <*integration-account-name*> | 統合アカウントの名前 |
    | **統合アカウント SAS URL** | はい | <*integration-account-SAS-URL*> | 統合アカウントの Shared Access Signature (SAS) URL。これは、Azure portal で統合アカウントの設定から生成できます。 <p>1.統合アカウント メニューの **[設定]** で、 **[コールバック URL]** を選択します。 <br>2.右側のウィンドウで、 **[生成されたコールバック URL]** の値をコピーします。 |
-   | **サーバー** | はい | <*TN3270-server-name*> | TN3270 サービスのサーバー名 |
-   | **ポート** | いいえ | <*TN3270-server-port*> | TN3270 サーバーによって使用されるポート。 空白のままにすると、コネクタでは既定値として `23` が使用されます。 |
+   | **[サーバー]** | はい | <*TN3270-server-name*> | TN3270 サービスのサーバー名 |
+   | **[ポート]** | いいえ | <*TN3270-server-port*> | TN3270 サーバーによって使用されるポート。 空白のままにすると、コネクタでは既定値として `23` が使用されます。 |
    | **デバイスの種類** | いいえ | <*IBM-terminal-model*> | エミュレートする IBM 端末のモデルの名前または番号。 空白のままにすると、コネクタでは既定値が使用されます。 |
    | **コード ページ** | いいえ | <*code-page-number*> | ホストのコード ページ番号。 空白のままにすると、コネクタでは既定値として `37` が使用されます。 |
    | **論理ユニット名** | いいえ | <*logical-unit-name*> | ホストから要求する特定の論理ユニット名 |
@@ -372,19 +372,19 @@ Design Tool では、Screen Recognition エディターを使用して、認識�
    | **Validate host ssl certificate? (ホストの SSL 証明書を検証しますか?)** | いいえ | [オン] または [オフ] | サーバーの証明書の検証を有効または無効にします。 |
    ||||
 
-   例:
+   次に例を示します。
 
    ![接続のプロパティ](./media/connectors-create-api-3270/connection-properties.png)
 
 1. アクションに必要な情報を指定します。
 
-   | プロパティ | 必須 | 値 | 説明 |
+   | プロパティ | Required | Value | 説明 |
    |----------|----------|-------|-------------|
    | **hidx 名** | はい | <*HIDX-file-name*> | 使用する 3270 HIDX ファイルを選択します。 |
    | **メソッド名** | はい | <*method-name*> | 使用する HIDX ファイル内のメソッドを選択します。 メソッドを選択すると、 **[新しいパラメーターの追加]** の一覧が表示されるので、そのメソッドで使用するパラメーターを選択できます。 |
    ||||
 
-   例:
+   次に例を示します。
 
    **HIDX ファイルを選択する**
 
@@ -409,8 +409,11 @@ Design Tool では、Screen Recognition エディターを使用して、認識�
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、[コネクタのリファレンス ページ](/connectors/si3270/)を参照してください。
+コネクタの Swagger ファイルに記述される、トリガー、アクション、制限などのこのコネクタの技術的詳細は、[コネクタの参照ページ](https://docs.microsoft.com/connectors/si3270/)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+> [!NOTE]
+> [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリでは、代わりにこのコネクタの ISE のラベルがついたバージョンが [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)を使用します。
+
+## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 3a79db11ff05bcc9d18619c7f508a9864c17c3b8
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 5b2ee8b5bf19f16d7f7f04e9515fe591db7132f1
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012793"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647518"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>キー値ストアとしての Azure Cosmos DB - コストの概要
 
@@ -26,7 +26,7 @@ Azure Cosmos DB のパフォーマンスは、[要求ユニット](request-units
 
 グローバル分散データベース システムである Cosmos DB は、待機時間、スループット、整合性、高可用性を含む包括的な SLA を提供している唯一の Azure サービスです。 お客様がプロビジョニングするスループットは、ご利用の Cosmos アカウントに関連付けられている各リージョンに適用されます。 読み取りに関しては、Cosmos DB では明確に定義された複数の[整合性レベル](consistency-levels.md)が用意されており、その中から選択できます。 
 
-次の表では、データ項目のサイズ (1 KB と 100 KB) に基づいて、読み取りおよび書き込み操作を実行するのに必要な RU 数を示しています。
+次の表は、既定の自動インデックス作成をオフにした状態で、1 KB と 100 KB のサイズのデータ項目に基づいて読み取りおよび書き込み操作を実行するのに必要な RU 数を示しています。 
 
 |アイテムのサイズ|読み取り 1 回|書き込み 1 回|
 |-------------|------|-------|
@@ -45,7 +45,7 @@ Azure Cosmos DB のパフォーマンスは、[要求ユニット](request-units
 
 基本的な BLOB またはオブジェクト ストア サービスの多くでは、読み取りトランザクション 100 万回につき 0.40 ドル、書き込みトランザクション 100 万回につき 5 ドルが課金されます。 最適な方法で使用した場合は、Cosmos DB では他のソリューションと比べて最大で 98% のコストを削減できます (1 KB のトランザクションの場合)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [RU 計算ツール](https://cosmos.azure.com/capacitycalculator/)を使用して、ワークロードのスループットを見積もります。
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: b2c59fd6ee925d531a5a5ff3bb26fdebea025b83
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c5acc9637fe5afe8f7dd32d23fbdbb80373b4f61
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513560"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539384"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>VMware VM と物理サーバーのためのモビリティ サービスについて
 
@@ -21,6 +21,9 @@ ms.locfileid: "76513560"
 - [プッシュ インストール](#push-installation):Azure portal で保護が有効になっている場合、Site Recovery ではサーバーにモビリティ エージェントがインストールされます。
 - 手動インストール:[UI](#install-mobility-agent-through-ui) または[コマンド プロンプト](#install-mobility-agent-through-command-prompt)を使用して、各マシンにモビリティ サービスを手動でインストールできます。
 - [自動デプロイ](vmware-azure-mobility-install-configuration-mgr.md):Configuration Manager など、ソフトウェア デプロイ ツールでインストールを自動化できます。
+
+> [!NOTE]
+> モビリティ エージェントは、VMware VM または物理マシンのソース マシンで約 6% から 10% のメモリを使用します。
 
 ## <a name="anti-virus-on-replicated-machines"></a>レプリケートされるマシンでのウイルス対策
 
@@ -35,7 +38,7 @@ ms.locfileid: "76513560"
 
 プッシュ インストールのワークフローの詳細は、以降のセクションで説明します。
 
-### <a name="from-923-versionhttpssupportmicrosoftcomen-inhelp4494485update-rollup-35-for-azure-site-recovery-onwards"></a>[9.23 バージョン](https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery)以降
+### <a name="from-923-version-onwards"></a>[9.23 バージョン](https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery)以降
 
 モビリティ エージェントのプッシュ インストール中に、次の手順が実行されます
 
@@ -73,7 +76,7 @@ ms.locfileid: "76513560"
 
     ![モビリティ サービスの登録ページ](./media/vmware-physical-mobility-service-install-manual/mobility3.png)
 
-5. **[Configuration Server Details]\(構成サーバーの詳細\)** で、構成した IP アドレスとパスフレーズを指定します。  
+5. **[Configuration Server Details]\(構成サーバーの詳細\)** で、構成した IP アドレスとパスフレーズを指定します。
 
     ![モビリティ サービスの登録ページ](./media/vmware-physical-mobility-service-install-manual/mobility4.png)
 

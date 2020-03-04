@@ -11,28 +11,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: spelluru
-ms.openlocfilehash: 4ca17bece33107de756eb221e14eaab851660a99
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fbac5a2fab91cdac8ebf626e324f12f209cfade5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76992022"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588707"
 ---
 # <a name="security-alerts-for-environments-in-azure-devtest-labs"></a>Azure DevTest Labs での環境のセキュリティの警告
-この記事では、DevTest Labs で環境のセキュリティの警告を表示する方法について説明します。 
+ラボ ユーザーは、ラボ環境の Azure Security Center の警告を表示できるようになりました。 Security Center は、真の脅威を検出し、偽陽性を減らすために、Azure のリソースやネットワークのほか、接続されているパートナー ソリューション (ファイアウォールやエンドポイント保護ソリューションなど) から、自動的にログ データを収集、分析、統合します。 Security Center には、優先順位の付いたセキュリティの警告の一覧が表示されます。また、すぐに問題を調査する必要がある情報や、攻撃を受けたものを修復する方法についての推奨事項も表示されます。 [Azure Security Center のセキュリティの警告の詳細についてご覧ください](../security-center//security-center-alerts-overview.md)。  
+
 
 ## <a name="prerequisites"></a>前提条件
-現在、ご利用のラボにデプロイされている環境についてのみ、セキュリティの警告を表示することができます。 この機能をテストまたは使用するには、ご利用のラボに環境をデプロイします。 
+現在、ご利用のラボにデプロイされている、サービスとしてのプラットフォーム (PaaS) 環境についてのみ、セキュリティの警告を表示することができます。 この機能をテストまたは使用するには、[ご利用のラボに環境をデプロイします](devtest-lab-create-environment-from-arm.md)。 
 
 ## <a name="view-security-alerts-for-an-environment"></a>環境のセキュリティの警告を表示する
 
-1. ご利用のラボのホームページで、左側のメニューにある **[セキュリティの警告]** を選択します。 セキュリティの警告 (高、中、低) の数が表示されるはずです。
+1. ご利用のラボのホームページで、左側のメニューにある **[セキュリティの警告]** を選択します。 セキュリティの警告 (高、中、低) の数が表示されるはずです。 [警告が分類される方法](../security-center/security-center-alerts-overview.md#how-are-alerts-classified)について詳細を確認してください。
 
     ![セキュリティの警告 - 概要](./media/environment-security-alerts/security-alerts-overview-page.png)
 2. 最後の列の 3 つのドット (...) を右クリックし、 **[セキュリティの警告の表示]** を選択します。 
 
     ![セキュリティの警告の表示](./media/environment-security-alerts/view-security-alerts-menu.png)
-3. 警告と Advisor の推奨事項の詳細が表示されます。 
+    
+3. 警告と Advisor の推奨事項の詳細が表示されます。 [Azure Security Center でのセキュリティの警告の管理と対応](../security-center/security-center-managing-and-responding-alerts.md)について詳細を確認してください。
 
     ![セキュリティの警告の表示](./media/environment-security-alerts/advisor-recommendations.png)
 

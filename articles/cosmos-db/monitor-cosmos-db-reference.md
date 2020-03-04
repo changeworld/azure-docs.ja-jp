@@ -9,12 +9,12 @@ ms.date: 11/11/2019
 ms.author: bwren
 ms.custom: subject-monitoring
 ms.subservice: logs
-ms.openlocfilehash: d131523e3031f55a818bb1919f39119bf073cb75
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: d243224192b5761af45d387690f5fb41b84481e6
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456536"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588724"
 ---
 # <a name="azure-cosmos-db-monitoring-data-reference"></a>Azure Cosmos DB 監視データのリファレンス
 この記事では、Azure Cosmos DB のパフォーマンスと可用性を分析する目的で収集されるログとメトリック データのリファレンスを提供します。 Azure Cosmos DB の監視データの収集と分析の詳細については、[Cosmos DB の監視](monitor-cosmos-db.md)に関するページを参照してください。
@@ -29,7 +29,7 @@ ms.locfileid: "74456536"
 | **resourceId** | **リソース** | ログが有効になっている Azure Cosmos DB アカウント。|
 | **category** | **カテゴリ** | Azure Cosmos DB ログの場合、利用できるログの種類には **DataPlaneRequests**、**MongoRequests**、**QueryRuntimeStatistics**、**PartitionKeyStatistics**、**PartitionKeyRUConsumption**、**ControlPlaneRequests** があります。 |
 | **operationName** | **OperationName** | 操作の名前。 この値は、Create、Update、Read、ReadFeed、Delete、Replace、Execute、SqlQuery、Query、JSQuery、Head、HeadFeed、または Upsert 操作のいずれかです。   |
-| **properties** | 該当なし | このフィールドの内容については、以下の行を参照してください。 |
+| **properties** | 300 | このフィールドの内容については、以下の行を参照してください。 |
 | **activityId** | **activityId_g** | ログに記録された操作の一意の GUID。 |
 | **userAgent** | **userAgent_s** | 要求を実行するクライアント ユーザー エージェントを示す文字列。 {ユーザー エージェント名}/{バージョン} という形式です。|
 | **requestResourceType** | **requestResourceType_s** | アクセスされたリソースの種類。 この値は、リソースの種類 Database、Container、Document、Attachment、User、Permission、StoredProcedure、Trigger、UserDefinedFunction、または Offer のいずれかです。 |
@@ -81,6 +81,8 @@ ms.locfileid: "74456536"
 |メトリック (メトリックの表示名)|ユニット (集計の種類)|説明|Dimensions| 時間の細分性| 使用法 |
 |---|---|---|---| ---| ---|
 | ReplicationLatency (レプリケーションの待機時間)| ミリ秒 (最小、最大、平均) | geo 対応アカウントのソースおよびターゲット リージョン全体の P99 のレプリケーション待機時間| SourceRegion、TargetRegion| All | geo レプリケートされたアカウントの任意の 2 つのリージョン間で P99 のレプリケーション待機時間を監視するために使用されます。 |
+| サーバー側の待機時間| ミリ秒 (平均) | サーバーが要求の処理に要した時間。 | CollectionName、ConnectionMode、DatabaseName、OperationType、PublicAPIType、Region | All | Azure Cosmos DB サーバーでの要求の待機時間の監視に使用されます。 |
+
 
 
 #### <a name="availability-metrics"></a>可用性のメトリック
@@ -98,7 +100,7 @@ ms.locfileid: "74456536"
 | CassandraRequestCharges (Cassandra 要求の料金) | カウント (Sum、Min、Max、Avg) | Cassandra API 要求によって使用される要求ユニット数| DatabaseName、CollectionName、Region、OperationType、ResourceType| All| Cassandra API アカウントによって 1 分あたりで使用される RU を監視するために使用されます。|
 | CassandraConnectionClosures (Cassandra 接続の終了) |カウント (カウント) |終了した Cassandra 接続の数| ClosureReason、Region| All | クライアントと Azure Cosmos DB Cassandra API の間の接続を監視するために使用されます。|
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - Azure Cosmos DB 監視の詳細については、「[Azure Cosmos DB の監視](monitor-cosmos-db.md)」を参照してください。
 - Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../azure-monitor/insights/monitor-azure-resource.md)」を参照してください。

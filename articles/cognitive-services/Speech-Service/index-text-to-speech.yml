@@ -1,0 +1,85 @@
+### YamlMime:Landing
+title: テキスト読み上げのドキュメント
+summary: 音声サービスのテキスト読み上げを使用すると、アプリケーション、ツール、またはデバイスで、テキストを人間のような合成音声に変換できます。
+metadata:
+  title: テキスト読み上げのドキュメント - チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: 64d8c636aa4b0f8b75ba3a6f92d7792c91a9271d
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77562798"
+landingContent:
+- title: はじめに
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: テキスト読み上げの概要
+      url: text-to-speech.md
+  - linkListType: quickstart
+    links:
+    - text: スピーカーに音声を合成する
+      url: quickstarts/text-to-speech.md
+    - text: オーディオ ファイルに音声を合成する
+      url: quickstarts/text-to-speech-audio-file.md
+    - text: 長い形式の音声で音声を合成する
+      url: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
+- title: ステップバイステップ ガイド
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: SSML を使用して合成を改善する
+      url: speech-synthesis-markup.md
+    - text: Custom Voice を使用して合成を改善する
+      url: how-to-custom-voice.md
+    - text: Long Audio API を使用して音声を合成する
+      url: long-audio-api.md
+    - text: REST を使用して音声のリストを取得する (Python)
+      url: quickstart-python-get-text-to-speech-voices.md
+    - text: REST を使用してテキストを音声に変換する (Python)
+      url: quickstart-python-text-to-speech.md
+    - text: Audio Content Creation を使用して合成を向上させる
+      url: how-to-audio-content-creation.md
+  - linkListType: concept
+    links:
+    - text: Custom Voice の概要
+      url: how-to-custom-voice.md
+    - text: カスタム音声のデータを用意する
+      url: how-to-custom-voice-prepare-data.md
+    - text: Custom Voice モデルを作成して使用する
+      url: how-to-custom-voice-create-voice.md
+    - text: 音声サンプルを録音する
+      url: record-custom-voice-samples.md
+    - text: カスタム キーワードの名前付けのガイドライン
+      url: speech-devices-sdk-kws-guidelines.md
+    - text: カスタム キーワード認識
+      url: speech-devices-sdk-create-kws.md
+    - text: Custom Voice のゲーティング
+      url: concepts-gating-overview.md
+    - text: 合成テクノロジのデプロイ
+      url: concepts-guidelines-responsible-deployment-synthetic.md
+    - text: 開示設計のガイドライン
+      url: concepts-disclosure-guidelines.md
+    - text: 設計パターンを開示する
+      url: concepts-disclosure-patterns.md
+- title: リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 言語のサポート
+      url: language-support.md#text-to-speech
+    - text: 価格
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+    - text: 倫理規定
+      url: https://aka.ms/custom-neural-code-of-conduct
+    - text: ボイス タレント向けの開示
+      url: https://aka.ms/disclosure-voice-talent

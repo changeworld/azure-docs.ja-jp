@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 02/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9fe24e4a2b25b1ef3f0da2b1a5e1c0f29251df1
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: dff80d849268c770e4227ff8c99b8f4d133c4d78
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192080"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620724"
 ---
 # <a name="conditional-access-conditions"></a>条件付きアクセス:条件
 
@@ -52,7 +52,9 @@ Azure AD 条件付きアクセスは、次のデバイス プラットフォー�
 
 **任意の場所**を含める場合、このオプションには、構成された名前付きの場所ではなく、インターネット上の任意の IP アドレスが含まれます。 **任意の場所**を選択するときには、管理者は、**信頼されているすべての場所**または**選択した場所**を除外することを選択できます。
 
-たとえば、組織によっては、物理的な本社のように、信頼できる場所のネットワークにユーザーが接続されているときは多要素認証を要求しないことを選択する可能性もあります。 管理者は、すべての場所を含むが、本社ネットワーク用に選択された場所を除外するポリシーを作成することも可能です
+たとえば、組織によっては、物理的な本社のように、信頼できる場所のネットワークにユーザーが接続されているときは多要素認証を要求しないことを選択する可能性もあります。 管理者は、本社ネットワーク用に選択された場所を除いて、すべての場所を含むポリシーを作成することも可能です。
+
+場所に関する詳細については、「[Azure Active Directory 条件付きアクセスの場所の条件の概要](location-condition.md)」の記事を参照してください。
 
 ## <a name="client-apps-preview"></a>クライアント アプリ (プレビュー)
 
@@ -64,9 +66,21 @@ Azure AD 条件付きアクセスは、次のデバイス プラットフォー�
    - 先進認証クライアント
       - このオプションには、Office デスクトップや Phone アプリケーションなどのアプリケーションが含まれます。
    - Exchange ActiveSync クライアント
+      - 既定では、これには Exchange ActiveSync (EAS) プロトコルのすべての使用が含まれます。 **[サポートされているプラットフォームにのみポリシーを適用する]** を選択すると、iOS、Android、Windows などのサポートされているプラットフォームに限定されます。
       - ポリシーによって Exchange ActiveSync の使用がブロックされると、影響を受けるユーザーには 1 通の検疫電子メールが送信されます。 この電子メールには、ブロックされた理由に関する情報が記載され、可能な場合は修復の手順が含められます。
    - その他のクライアント
-      - このオプションには、最新の認証をサポートしていない IMAP、MAPI、POP、SMTP、レガシ Office アプリケーションなどの、基本/レガシ認証プロトコルを使用するクライアントが含まれます。
+      - このオプションには、最新の認証をサポートしていない基本またはレガシ認証プロトコルを使用するクライアントが含まれます。
+         - 認証済み SMTP - 電子メール メッセージを送信するために POP および IMAP クライアントで使用されます。
+         - 自動検出 - Exchange Online でメールボックスを検索して接続するために Outlook および EAS のクライアントで使用されます。
+         - Exchange Online PowerShell - リモート PowerShell を使用して Exchange Online に接続するために使用されます。 Exchange Online PowerShell の基本認証をブロックする場合は、Exchange Online PowerShell モジュールを使用して接続する必要があります。 手順については、「[多要素認証を使用して Exchange Online PowerShell に接続する](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)」を参照してください。
+         - Exchange Web サービス (EWS) - Outlook、Outlook for Mac、およびサードパーティ製アプリによって使用されるプログラミング インターフェイスです。
+         - IMAP4 - IMAP 電子メール クライアントで使用されます。
+         - MAPI over HTTP (MAPI/HTTP) - Outlook 2010 以降で使用されます。
+         - オフライン アドレス帳 (OAB) - Outlook によってダウンロードおよび使用されるアドレス一覧コレクションのコピーです。
+         - Outlook Anywhere (RPC over HTTP) - Outlook 2016 以前で使用されます。
+         - Outlook サービス - Windows 10 用のメール/カレンダー アプリで使用されます。
+         - POP3 - POP 電子メール クライアントで使用されます。
+         - レポート Web サービス - Exchange Online でレポート データを取得するために使用されます。
 
 これらの条件がよく使用されるのは、マネージド デバイスを要求する場合、レガシ認証をブロックする場合、Web アプリケーションをブロックするがモバイル アプリやデスクトップ アプリは許可する場合です。
 
@@ -101,7 +115,7 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 |    |    |
 | --- | --- |
 | Path | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| Name | 1 |
+| 名前 | 1 |
 | Type | REG_SZ (文字列) |
 | Data | ppnbnpeolgkicgegkbkbjmhlideopiji;https\://clients2.google.com/service/update2/crx |
 
@@ -110,7 +124,7 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 |    |    |
 | --- | --- |
 | Path | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| Name | 1 |
+| 名前 | 1 |
 | Type | REG_SZ (文字列) |
 | Data | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
 
@@ -139,7 +153,7 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 | Outlook 2016、Outlook 2013 (先進認証を使用)、Skype for Business (先進認証を使用) | Office 365 Exchange Online | Windows 8.1、Windows 7 |
 | Outlook Mobile アプリ | Office 365 Exchange Online | Android、iOS |
 | Power BI アプリ | Power BI サービス | Windows 10、Windows 8.1、Windows 7、Android、iOS |
-| Skype for Business | Office 365 Exchange Online| Android、IOS |
+| Skype for Business | Office 365 Exchange Online| Android、iOS |
 | Visual Studio Team Services アプリ | Visual Studio Team Services | Windows 10、Windows 8.1、Windows 7、iOS、Android |
 
 ### <a name="exchange-activesync-clients"></a>Exchange ActiveSync クライアント

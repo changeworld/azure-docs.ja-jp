@@ -4,12 +4,12 @@ description: Azure Monitor を使用して、Azure Backup ワークロードを�
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 4ff51080d675c53e53397a070c1f6f1766aa9e85
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 0673291ac6bd1692c6ebe07540e05077e3025d55
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989588"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583872"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Azure Monitor を使用した大規模な監視
 
@@ -29,11 +29,11 @@ Azure Monitor では、Log Analytics ワークスペースで独自のアラー�
 > [!IMPORTANT]
 > このクエリの作成コストについては、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」を参照してください。
 
-いずれかのグラフを選択して、Log Analytics ワークスペースの **[ログ]** セクションを開きます。 **[ログ]** セクションで、クエリを編集し、それらに対するアラートを作成します。
+Log Analytics ワークスペースの **[ログ]** セクションを開き、独自のログにクエリを記述します。 **[新しいアラート ルール]** を選択すると、次の図に示すように、Azure Monitor のアラート作成ページが開きます。
 
-![Log Analytics ワークスペースでアラートを作成する](media/backup-azure-monitoring-laworkspace/la-azurebackup-customalerts.png)
+![Log Analytics ワークスペースでアラートを作成する](media/backup-azure-monitoring-laworkspace/custom-alert.png)
 
-**[新しいアラート ルール]** を選択すると、次の図に示すように、Azure Monitor のアラート作成ページが開きます。 ここではリソースが既に Log Analytics ワークスペースとしてマークされており、アクション グループの統合が提供されています。
+ここではリソースが既に Log Analytics ワークスペースとしてマークされており、アクション グループの統合が提供されています。
 
 ![Log Analytics のアラート作成ページ](media/backup-azure-monitoring-laworkspace/inkedla-azurebackup-createalert.jpg)
 
@@ -63,65 +63,85 @@ Azure Monitor では、Log Analytics ワークスペースで独自のアラー�
 
     ````Kusto
     AddonAzureBackupJobs
-| where JobOperation=="Backup"
-| where JobStatus=="Completed"
+    | where JobOperation=="Backup"
+    | where JobStatus=="Completed"
     ````
 
 - 失敗したすべてのバックアップ ジョブ
 
     ````Kusto
     AddonAzureBackupJobs
-| where JobOperation=="Backup"
-| where JobStatus=="Failed"
+    | where JobOperation=="Backup"
+    | where JobStatus=="Failed"
     ````
 
 - 成功したすべての Azure VM バックアップ ジョブ
 
     ````Kusto
     AddonAzureBackupJobs
-| where JobOperation=="Backup"
-| where JobStatus=="Completed"
-| join kind=inner
-(
-    CoreAzureBackup
-    | where OperationName == "BackupItem"
-    | where BackupItemType=="VM" and BackupManagementType=="IaaSVM"
-    | distinct BackupItemUniqueId, BackupItemFriendlyName
-)
-on BackupItemUniqueId
+    | where JobOperation=="Backup"
+    | where JobStatus=="Completed"
+    | join kind=inner
+    (
+        CoreAzureBackup
+        | where OperationName == "BackupItem"
+        | where BackupItemType=="VM" and BackupManagementType=="IaaSVM"
+        | distinct BackupItemUniqueId, BackupItemFriendlyName
+    )
+    on BackupItemUniqueId
     ````
 
 - 成功したすべての SQL ログ バックアップ ジョブ
 
     ````Kusto
     AddonAzureBackupJobs
-| where JobOperation=="Backup" and JobOperationSubType=="Log"
-| where JobStatus=="Completed"
-| join kind=inner
-(
-    CoreAzureBackup
-    | where OperationName == "BackupItem"
-    | where BackupItemType=="SQLDataBase" and BackupManagementType=="AzureWorkload"
-    | distinct BackupItemUniqueId, BackupItemFriendlyName
-)
-on BackupItemUniqueId
+    | where JobOperation=="Backup" and JobOperationSubType=="Log"
+    | where JobStatus=="Completed"
+    | join kind=inner
+    (
+        CoreAzureBackup
+        | where OperationName == "BackupItem"
+        | where BackupItemType=="SQLDataBase" and BackupManagementType=="AzureWorkload"
+        | distinct BackupItemUniqueId, BackupItemFriendlyName
+    )
+    on BackupItemUniqueId
     ````
 
 - 成功したすべての Azure Backup エージェント ジョブ
 
     ````Kusto
     AddonAzureBackupJobs
-| where JobOperation=="Backup"
-| where JobStatus=="Completed"
-| join kind=inner
-(
-    CoreAzureBackup
-    | where OperationName == "BackupItem"
-    | where BackupItemType=="FileFolder" and BackupManagementType=="MAB"
-    | distinct BackupItemUniqueId, BackupItemFriendlyName
-)
-on BackupItemUniqueId
+    | where JobOperation=="Backup"
+    | where JobStatus=="Completed"
+    | join kind=inner
+    (
+        CoreAzureBackup
+        | where OperationName == "BackupItem"
+        | where BackupItemType=="FileFolder" and BackupManagementType=="MAB"
+        | distinct BackupItemUniqueId, BackupItemFriendlyName
+    )
+    on BackupItemUniqueId
     ````
+
+- バックアップ項目ごとに使用されるバックアップ ストレージ
+
+    ````Kusto
+    CoreAzureBackup
+    //Get all Backup Items
+    | where OperationName == "BackupItem"
+    //Get distinct Backup Items
+    | distinct BackupItemUniqueId, BackupItemFriendlyName
+    | join kind=leftouter
+    (AddonAzureBackupStorage
+    | where OperationName == "StorageAssociation"
+    //Get latest record for each Backup Item
+    | summarize arg_max(TimeGenerated, *) by BackupItemUniqueId 
+    | project BackupItemUniqueId , StorageConsumedInMBs)
+    on BackupItemUniqueId
+    | project BackupItemUniqueId , BackupItemFriendlyName , StorageConsumedInMBs 
+    | sort by StorageConsumedInMBs desc
+    ````
+
 
 ### <a name="diagnostic-data-update-frequency"></a>診断データの更新頻度
 
@@ -173,4 +193,4 @@ Azure Backup で保護されるすべてのワークロードでは、大規模�
 
 ## <a name="next-steps"></a>次のステップ
 
-カスタム クエリを作成するには、[Log Analytics データ モデル](backup-azure-log-analytics-data-model.md)に関する記事を参照してください。
+カスタム クエリを作成するには、[Log Analytics データ モデル](backup-azure-reports-data-model.md)に関する記事を参照してください。

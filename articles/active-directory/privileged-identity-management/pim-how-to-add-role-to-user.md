@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 01/05/2020
+ms.date: 02/07/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bec73ee7286ea831920fc20bd46cf43c2874081
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 5048cefaae10cd55091dd72f0b73a3cf9d731a35
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047098"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498839"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールを割り当てる
 
@@ -33,7 +33,7 @@ ms.locfileid: "77047098"
 1. [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)のロールであるユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
 1. **[Azure AD Privileged Identity Management]** を開きます。 概要ページの上部にバナーが表示されている場合は、この記事の **[新しいバージョン]** タブの指示に従ってください。 それ以外の場合は、 **[以前のバージョン]** タブの指示に従ってください。
 
-    ![Azure AD ロールの新しいバージョン](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+  [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 # <a name="new-version"></a>[新しいバージョン](#tab/new)
 
@@ -75,11 +75,11 @@ ms.locfileid: "77047098"
 
 1. 特定の割り当て期間を指定するには、チェック ボックスの選択を解除して、開始または終了日時フィールドを変更します。 終わったら、 **[Done]\(完了\)** を選択します。
 
-    ![メンバー シップ設定 - 日付と時刻](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
+    ![メンバー シップ設定 - 日付と時刻](./media/pim-how-to-add-role-to-user/start-and-end-dates.png)
 
 1. 新しいロールの割り当てを作成するには、 **[追加]** を選択します。 状態の通知が表示されます。
 
-    ![新しい割り当て - 通知](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
+    ![新しい割り当て - 通知](./media/pim-how-to-add-role-to-user/assignment-notification.png)
 
 ## <a name="update-or-remove-an-existing-role-assignment"></a>既存のロールの割り当てを更新または削除する
 
@@ -87,21 +87,17 @@ ms.locfileid: "77047098"
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 
-1. **[Azure リソース]** を選択します。
+1. **[Azure AD ロール]** を選択します。
 
-1. サブスクリプションや管理グループなど、管理するリソースを選択します。
-
-1. [管理] で **[ロール]** を選択して、Azure リソースのロール一覧を表示します。
+1. **[ロール]** を選択して、Azure AD のロール一覧を表示します。
 
 1. 更新または削除するロールを選択します。
 
 1. **[資格のあるロール]** タブまたは **[アクティブなロール]** タブでロールの割り当てを見つけます。
 
-    ![ロールの割り当ての更新または削除](./media/pim-resource-roles-assign-roles/resources-update-remove.png)
+    ![ロールの割り当ての更新または削除](./media/pim-how-to-add-role-to-user/remove-update-assignments.png)
 
 1. **[更新]** または **[削除]** を選択して、ロールの割り当てを更新または削除します。
-
-    ロールの割り当てを延長する方法については、[Privileged Identity Management で Azure リソース ロールを延長または更新する方法](pim-resource-roles-renew-extend.md)に関するページを参照してください。
 
 # <a name="previous-version"></a>[以前のバージョン](#tab/previous)
 

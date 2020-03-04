@@ -1,27 +1,22 @@
 ---
 title: 報酬スコア - Personalizer
-titleSuffix: Azure Cognitive Services
 description: 報酬スコアは、パーソナル化の選択肢である RewardActionID がユーザーに対してどれほどの結果を生み出したかを示します。 報酬スコアの値は、ユーザーの動作の観測値に基づくビジネス ロジックによって判断されます。 Personalizer は、報酬を評価することにより、機械学習モデルをトレーニングします。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: personalizer
+ms.date: 02/20/2020
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.author: diberry
-ms.openlocfilehash: a47d6014e51dce81c9caf82f8624896c439f050d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 734e4d0fdcec25884f8535ec61ccd10569fa8890
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490882"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623779"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>報酬スコアは、パーソナル化の成功を示します
 
 報酬スコアは、パーソナル化の選択肢である [RewardActionID](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/rank/rank#response) がユーザーに対してどれほどの結果を生み出したかを示します。 報酬スコアの値は、ユーザーの動作の観測値に基づくビジネス ロジックによって判断されます。
 
-Personalizer は、報酬を評価することにより、機械学習モデルをトレーニングします。 
+Personalizer は、報酬を評価することにより、機械学習モデルをトレーニングします。
+
+Azure portal で Personalizer リソースの既定の報酬スコアを構成する[方法](how-to-settings.md#configure-rewards-for-the-feedback-loop)について説明します。
 
 ## <a name="use-reward-api-to-send-reward-score-to-personalizer"></a>Reward API を使用した Personalizer への報酬スコアの送信
 
@@ -47,16 +42,16 @@ Personalizer は、報酬を評価することにより、機械学習モデル�
 
 報酬スコアはビジネス ロジックで計算する必要があります。 スコアは、次のように表すことができます。
 
-* 1 度送信された単一の数値 
+* 1 度送信された単一の数値
 * 即座に送信されたスコア (0.8 など) と後から送信された追加スコア (通常 0.2)。
 
 ## <a name="default-rewards"></a>既定の報酬
 
 Rank 呼び出し以降の期間である[報酬の待機時間](#reward-wait-time)以内に報酬が受信されていない場合、Personalizer は、**既定の報酬**をその Rank イベントに暗黙的に適用します。
 
-## <a name="building-up-rewards-with-multiple-factors"></a>複数の要因による報酬の作成  
+## <a name="building-up-rewards-with-multiple-factors"></a>複数の要因による報酬の作成
 
-有効なパーソナル化には、複数の要因に基づいて報酬スコアを作成できます。 
+有効なパーソナル化には、複数の要因に基づいて報酬スコアを作成できます。
 
 たとえば、ビデオ コンテンツの一覧をパーソナライズするために以下の規則を適用できます。
 
@@ -93,8 +88,8 @@ Rank 呼び出し以降の期間である[報酬の待機時間](#reward-wait-ti
 * **意図しない結果を考慮する**:[倫理と責任ある使用](ethics-responsible-use.md)での責任ある結果をもたらす報酬関数を作成します。
 
 * **増分報酬を使用する**:ユーザーのより小さな動作に対して部分的な報酬を追加することは、Personalizer がより適切な報酬を達成する場合に役立ちます。 この増分報酬により、アルゴリズムは、最終的な目的の動作へのユーザーのエンゲージメントに近づいていることがわかります。
-    * 映画の一覧を表示している場合、ユーザーが最初の映画にしばらくカーソルを置いて詳細を見ていれば、何らかのユーザー エンゲージメントが起きたと判断できます。 動作は、0.1 の報酬スコアでカウントできます。 
-    * ユーザーがページを開いた後に終了した場合、報酬は 0.2 になります。 
+    * 映画の一覧を表示している場合、ユーザーが最初の映画にしばらくカーソルを置いて詳細を見ていれば、何らかのユーザー エンゲージメントが起きたと判断できます。 動作は、0.1 の報酬スコアでカウントできます。
+    * ユーザーがページを開いた後に終了した場合、報酬は 0.2 になります。
 
 ## <a name="reward-wait-time"></a>Reward wait time (報酬の待機時間)
 
@@ -106,12 +101,12 @@ Personalizer は、Rank 呼び出しの情報を、モデルをトレーニン�
 
 より優れた結果を得るために、以下の推奨事項に従ってください。
 
-* 報酬の待機時間はできるだけ短くしますが、ユーザーのフィードバックを得るための時間は十分に取っておきます。 
+* 報酬の待機時間はできるだけ短くしますが、ユーザーのフィードバックを得るための時間は十分に取っておきます。
 
 * フィードバックの取得に必要な時間よりも短い期間を選択しないでください。 たとえば、ユーザーが 1 分間ビデオを観た後でいくつかの報酬が到着した場合、実験の長さは少なくともその 2 倍にする必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [強化学習](concepts-reinforcement-learning.md) 
+* [強化学習](concepts-reinforcement-learning.md)
 * [Rank API を試す](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank/console)
 * [Reward API を試す](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward)

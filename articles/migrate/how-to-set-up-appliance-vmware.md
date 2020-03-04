@@ -3,12 +3,12 @@ title: VMware 向け Azure Migrate アプライアンスを設定する
 description: Azure Migrate アプライアンスを設定して VMware VM を評価し移行する方法について説明します。
 ms.topic: article
 ms.date: 11/18/2019
-ms.openlocfilehash: 139b694bafb9d67192e6f182ff879e86e2b73ce4
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: e331d45d3e87f8007642675a0349839e7494958c
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291942"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598155"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>VMware VM のアプライアンスを設定する
 
@@ -35,7 +35,7 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 2. **[マシンの検出]**  >  **[マシンは仮想化されていますか?]** で、 **[はい。VMware vSphere Hypervisor を使用します]** をクリックします。
 3. **[ダウンロード]** をクリックして、.OVA テンプレート ファイルをダウンロードします。
 
-
+  ![OVA ファイルをダウンロードするための選択](./media/tutorial-assess-vmware/download-ova.png)
 
 ### <a name="verify-security"></a>セキュリティを確認する
 
@@ -45,12 +45,8 @@ OVA ファイルをデプロイする前に、それが安全であることを�
 2. 次のコマンドを実行して、OVA のハッシュを生成します。
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 使用例: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. アプライアンスの最新のバージョンでは、生成されたハッシュがこれらの設定と一致する必要があります。
+3. アプライアンスの最新のバージョンでは、生成されたハッシュがこれらの[設定](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware#verify-security)と一致する必要があります。
 
-  **アルゴリズム** | **ハッシュ値**
-  --- | ---
-  MD5 | c06ac2a2c0f870d3b274a0b7a73b78b1
-  SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 
 
 ## <a name="create-the-appliance-vm"></a>アプライアンス VM を作成する
@@ -58,6 +54,8 @@ OVA ファイルをデプロイする前に、それが安全であることを�
 ダウンロードしたファイルをインポートし、VM を作成します。
 
 1. vSphere Client コンソールで、 **[File]\(ファイル\)**  >  **[Deploy OVF Template]\(OVF テンプレートのデプロイ\)** の順にクリックします。
+![OVF テンプレートをデプロイするためのメニュー コマンド](./media/tutorial-assess-vmware/deploy-ovf.png)
+
 2. [Deploy OVF Template]\(OVF テンプレートのデプロイ\) ウィザードで **[Source]\(ソース\)** を選択し、OVA ファイルの場所を指定します。
 3. **[名前]** と **[場所]** で、VM のフレンドリ名を指定します。 VM がホストされるインベントリ オブジェクトを選択します。
 5. **[Host/Cluster]\(ホスト/クラスター\)** で、VM が実行されるホストまたはクラスターを指定します。

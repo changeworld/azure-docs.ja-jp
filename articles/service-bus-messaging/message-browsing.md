@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 7ad10ad2d4393c1d25a835d0ff8cd0b98ed25879
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 6156557d10210535b287aa516070c0b5da416512
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756398"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539367"
 ---
 # <a name="message-browsing"></a>メッセージの読み取り
 
@@ -34,7 +34,7 @@ Service Bus クライアントは、メッセージを読み取るか、ピー�
 
 ## <a name="peek-apis"></a>Peek API
 
-[Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) および [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) メソッドはすべての .NET および Java クライアント ライブラリおよびすべての受信オブジェクトのメソッド、**MessageReceiver**、**MessageSession**、**QueueClient**、および **SubscriptionClient** に存在します。 ピークは、すべてのキュー、サブスクリプション、およびそれらに対応する配信不能キューに動作します。
+[Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) および [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) メソッドはすべての .NET および Java クライアント ライブラリおよびすべての受信オブジェクトのメソッド、**MessageReceiver**、**MessageSession**。 ピークは、すべてのキュー、サブスクリプション、およびそれらに対応する配信不能キューに動作します。
 
 繰り返し呼び出されると、Peek メソッドは、最小から最大のシーケンス番号の順序で、キューまたはサブスクリプションのログ内に存在するすべてのメッセージを列挙します。 これは、メッセージがエンキューされる順序であり、メッセージが最終的に取得される順序ではありません。
 

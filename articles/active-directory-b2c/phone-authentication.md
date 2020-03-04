@@ -1,24 +1,24 @@
 ---
-title: カスタム ポリシーを使用した電話のサインアップとサインイン
+title: カスタム ポリシーを使用した電話でのサインアップとサインイン (プレビュー)
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C でカスタム ポリシーを使用して、アプリケーション ユーザーの電話にワンタイム パスワードをテキスト メッセージで送信する方法について説明します。
+description: Azure Active Directory B2C でカスタム ポリシーを使用して、アプリケーション ユーザーの電話にワンタイム パスワード (OTP) をテキスト メッセージで送信します。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/17/2019
+ms.date: 02/25/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8cb0340d9e04db2bfbf088bce9505351d7588cd9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 50e7d66fef67e2728c95790947393de8d58398c2
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840334"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647525"
 ---
-# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Azure AD B2C でカスタム ポリシーを使用した電話のサインアップとサインインを設定する
+# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>Azure AD B2C でカスタム ポリシーを使用した電話でのサインアップとサインインを設定する (プレビュー)
 
 Azure Active Directory B2C (Azure AD B2C) での電話のサインアップとサインインを使用すると、ユーザーは、テキスト メッセージで電話に送信されたワンタイム パスワード (OTP) を使用して、アプリケーションにサインアップしてサインインできます。 ワンタイム パスワードを使用すると、ユーザーがパスワードを忘れたり、パスワードが侵害されたりするリスクを最小限に抑えることができます。
 
@@ -26,7 +26,13 @@ Azure Active Directory B2C (Azure AD B2C) での電話のサインアップと�
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
+## <a name="pricing"></a>価格
+
+ワンタイム パスワードは SMS テキスト メッセージを使用してお客様のユーザーに送信されるため、お客様は送信されたメッセージごとに課金される場合があります。 価格情報については、「[Azure Active Directory B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)」の「**別料金**」セクションを参照してください。
+
 ## <a name="prerequisites"></a>前提条件
+
+OTP を設定する前に、次のリソースを用意しておく必要があります。
 
 * [Azure AD B2C テナント](tutorial-create-tenant.md)
 * ご利用のテナントに[登録済みの Web アプリケーション](tutorial-register-applications.md)
@@ -69,6 +75,22 @@ Azure Active Directory B2C (Azure AD B2C) での電話のサインアップと�
 1. **[応答 URL の選択]** で、`https://jwt.ms` を選択します。
 1. **[今すぐ実行]** を選択し、電子メール アドレスまたは電話番号を使用してサインアップします。
 1. もう一度 **[今すぐ実行]** を選択し、同じアカウントでサインインして、構成が正しく行われていることを確認します。
+
+## <a name="get-user-account-by-phone-number"></a>電話番号でユーザー アカウントを取得する
+
+電話番号でサインアップするが、回復メール アドレスを提供しないユーザーは、サインイン名として電話番号を使用して Azure AD B2C ディレクトリに記録されます。 その後、ユーザーが電話番号の変更を希望する場合は、まずヘルプ デスクまたはサポート チームが彼らのアカウントを見つけて、次にその電話番号を更新する必要があります。
+
+[Microsoft Graph](manage-user-accounts-graph-api.md) を使用すれば、電話番号 (サインイン名) でユーザーを検索することができます。
+
+```http
+GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.onmicrosoft.com')
+```
+
+次に例を示します。
+
+```http
+GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+450334567890' and c/issuer eq 'contosob2c.onmicrosoft.com')
+```
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -6,19 +6,16 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 99ccd00dbcea7f8eaed2e8e51a64b89c1e0b42a2
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: b60a30e5e30ee81cbaca7d5e4691ccedac2462b6
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028837"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598172"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>物理サーバー用にアプライアンスを設定する
 
 この記事では、Azure Migrate で物理サーバーを評価する場合に、Azure Migrate アプライアンスを設定する方法について説明します。Server Assessment ツールを追加済みであることを確認してください。
-
-> [!NOTE]
-> ここで言及されている機能がまだ Azure Migrate ポータルに表示されない場合は、しばらくお待ちください。 来週あたりに表示されるようになります。
 
 Azure Migrate アプライアンスは、次の操作を行うために Azure Migrate Server Assessment によって使用される軽量アプライアンスです。
 
@@ -44,7 +41,7 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 2. **[マシンの検出]**  >  **[マシンは仮想化されていますか?]** で、 **[非仮想化/その他]** をクリックします。
 3. **[ダウンロード]** をクリックして、ZIP ファイルをダウンロードします。
 
-    ![VM をダウンロードする](./media/how-to-set-up-appliance-hyper-v/download-appliance-hyperv.png)
+    ![VM をダウンロードする](./media/tutorial-assess-physical/download-appliance.png)
 
 
 ### <a name="verify-security"></a>セキュリティを確認する
@@ -55,12 +52,7 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 2. 次のコマンドを実行して、VHD のハッシュを生成します
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 使用例: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3.  アプライアンスの最新のバージョンでは、生成されたハッシュがこれらの設定と一致する必要があります。
-
-  **アルゴリズム** | **ハッシュ値**
-  --- | ---
-  MD5 | 96fd99581072c400aa605ab036a0a7c0
-  SHA256 | f5454beef510c0aa38ac1c6be6346207c351d5361afa0c9cea4772d566fcdc36
+3.  アプライアンスの最新のバージョンでは、生成されたハッシュがこれらの[設定](https://docs.microsoft.com/azure/migrate/tutorial-assess-physical#verify-security)と一致する必要があります。
 
 
 
@@ -80,13 +72,16 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 1. アプライアンスをホストするサーバー上のフォルダーに ZIP ファイルを抽出します。
 2. 管理 (昇格された) 特権を使用して上記のサーバーで PowerShell を起動します。
 3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルの内容が抽出されたフォルダーに変更します。
-4. 次のコマンドを実行してスクリプトを実行します。
+4. 次のコマンドを実行して、**AzureMigrateInstaller.ps1** という名前のスクリプトを実行します。
     ```
-    AzureMigrateInstaller.ps1
+    PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
     ```
 スクリプトが正常に終了すると、アプライアンス Web アプリケーションが起動します。
 
+問題が発生した場合は、トラブルシューティングのために、C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log のスクリプト ログにアクセスできます。
 
+> [!NOTE]
+> 既存の Azure Migrate アプライアンスで Azure Migrate インストーラー スクリプトを実行しないでください。
 
 ### <a name="verify-appliance-access-to-azure"></a>アプライアンスによる Azure へのアクセスを確認する
 

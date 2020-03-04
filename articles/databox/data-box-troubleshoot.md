@@ -1,5 +1,5 @@
 ---
-title: Azure Data Box、Azure Data Box Heavy に関する問題のトラブルシューティング | Microsoft Docs
+title: Azure Data Box、Azure Data Box Heavy に関する問題のトラブルシューティング
 description: Azure Data Box と Azure Data Box Heavy にデータをアップロードするときにこれらのデバイスで見られる問題のトラブルシューティングを行う方法について説明します。
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 83f6f7c7f8cd5155669f12fd6e426f86ef1c7baa
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 51935516e26f263e44a926bf9b7d7ec24a5eeb9e
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848510"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560067"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box と Azure Data Box Heavy に関連する問題のトラブルシューティング
 
@@ -25,10 +25,10 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 
 | エラー カテゴリ*        | 説明        | 推奨される操作    |
 |----------------------------------------------|---------|--------------------------------------|
-| コンテナーまたは共有の名前 | コンテナーまたは共有名が、Azure の名前付け規則に従っていません。  |エラー一覧をダウンロードします。 <br> コンテナーまたは共有の名前を変更します。 [詳細情報](#container-or-share-name-errors)。  |
-| コンテナーまたは共有のサイズ制限 | コンテナーまたは共有内のデータの合計が、Azure の制限を超えています。   |エラー一覧をダウンロードします。 <br> コンテナーまたは共有内のデータの総量を削減します。 [詳細情報](#container-or-share-size-limit-errors)。|
-| オブジェクトまたはファイルのサイズ制限 | コンテナーまたは共有内のオブジェクトまたはファイルが、Azure の制限を超えています。|エラー一覧をダウンロードします。 <br> コンテナーまたは共有内のファイルのサイズを削減します。 [詳細情報](#object-or-file-size-limit-errors)。 |    
-| データまたはファイルの種類 | データの形式またはファイルの種類がサポートされていません。 |エラー一覧をダウンロードします。 <br> ページ BLOB またはマネージド ディスクの場合は、データが 512 バイト アラインであり、事前に作成されたフォルダーにコピーされていることを確認します。 [詳細情報](#data-or-file-type-errors)。 |
+| コンテナーまたは共有の名前 | コンテナーまたは共有名が、Azure の名前付け規則に従っていません。  |エラー一覧をダウンロードします。 <br> コンテナーまたは共有の名前を変更します。 [詳細については、こちらを参照してください](#container-or-share-name-errors)。  |
+| コンテナーまたは共有のサイズ制限 | コンテナーまたは共有内のデータの合計が、Azure の制限を超えています。   |エラー一覧をダウンロードします。 <br> コンテナーまたは共有内のデータの総量を削減します。 [詳細については、こちらを参照してください](#container-or-share-size-limit-errors)。|
+| オブジェクトまたはファイルのサイズ制限 | コンテナーまたは共有内のオブジェクトまたはファイルが、Azure の制限を超えています。|エラー一覧をダウンロードします。 <br> コンテナーまたは共有内のファイルのサイズを削減します。 [詳細については、こちらを参照してください](#object-or-file-size-limit-errors)。 |    
+| データまたはファイルの種類 | データの形式またはファイルの種類がサポートされていません。 |エラー一覧をダウンロードします。 <br> ページ BLOB またはマネージド ディスクの場合は、データが 512 バイト アラインであり、事前に作成されたフォルダーにコピーされていることを確認します。 [詳細については、こちらを参照してください](#data-or-file-type-errors)。 |
 | BLOB またはファイルの重大ではないエラー  | BLOB またはファイルの名前が Azure の名前付け規則に従っていないか、ファイルの種類がサポートされていません。 | これらの BLOB またはファイルはコピーされない場合、または名前を変更される場合があります。 [これらのエラーを修正する方法](#non-critical-blob-or-file-errors)。 |
 
 \* 最初の 4 つのエラー カテゴリは重大なエラーであり、発送準備に進む前に修正する必要があります。
@@ -243,6 +243,6 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 詳細については、[マネージド ディスクへのコピー](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box)に関するページを参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Data Box Blob ストレージのシステム要件](data-box-system-requirements-rest.md)を確認します。

@@ -3,16 +3,16 @@ title: Azure Files についてよく寄せられる質問 (FAQ) | Microsoft Doc
 description: Azure Files についてよく寄せられる質問とその回答を紹介します。
 author: roygara
 ms.service: storage
-ms.date: 07/30/2019
+ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: e5b1880a12cda440a5772de80b8ec67b8f7ed5c3
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 5cbb819ef1300f16a40dbdd0da52a35bdf578e59
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665373"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598189"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の [Server Message Block (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)を介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
@@ -85,7 +85,7 @@ ms.locfileid: "75665373"
 
 * <a id="afs-region-availability"></a>
   **Azure File Sync は、どのリージョンでサポートされていますか。**  
-    提供されているリージョンの一覧は、Azure File Sync プランニング ガイドの「[利用可能なリージョン](storage-sync-files-planning.md#region-availability)」セクションでご覧いただけます。 パブリック リージョン以外のリージョンも含め、今後サポート対象リージョンを拡大していく予定です。
+    提供されているリージョンの一覧は、Azure File Sync プランニング ガイドの「[利用可能なリージョン](storage-sync-files-planning.md#azure-file-sync-region-availability)」セクションでご覧いただけます。 パブリック リージョン以外のリージョンも含め、今後サポート対象リージョンを拡大していく予定です。
 
 * <a id="cross-domain-sync"></a>
   **同じ同期グループ内にドメイン参加とドメイン非参加のサーバーを保持することはできますか。**  
@@ -151,13 +151,17 @@ ms.locfileid: "75665373"
 * <a id="afs-ntfs-acls"></a>
   **Azure File Sync では、Azure Files の格納データと共にディレクトリ レベルまたはファイル レベルの NTFS ACL が保持されますか。**
 
-    オンプレミスのファイル サーバーから伝達された NTFS ACL は、Azure File Sync によってメタデータとして保持されます。 Azure Files では、Azure File Sync サービスによって管理されているファイル共有へのアクセスに、Azure AD 資格情報による認証を使用することはできません。
+    2020 年2 月 24 日の時点で、Azure File Sync によって階層化された新規および既存の ACL は NTFS 形式で保存され、Azure ファイル共有に直接加えられた ACL の変更は、同期グループ内のすべてのサーバーに同期されます。 Azure Files に対して行われた ACL の変更は、Azure File Sync 経由で同期されます。Azure Files にデータをコピーするときは、SMB を使用して共有にアクセスし、ACL を保持する必要があります。 AzCopy や Storage Explorer などの既存の REST ベースのツールは、ACL を保持しません。
+
+    File Sync で管理されているファイル共有に対して Azure Backup を有効にした場合、ファイル ACL をバックアップ復元ワークフローの一部として引き続き復元できます。 これは、共有全体または個々のファイル/ディレクトリに対して機能します。
+
+    File Sync によって管理されるファイル共有の自己管理型バックアップ ソリューションの一部としてスナップショットを使用している場合、2020 年 2 月 24 日より前に作成された ACL が NTFS ACL に正しく復元されないことがあります。 この問題が発生した場合は、Azure サポートに連絡することを検討してください。
     
 ## <a name="security-authentication-and-access-control"></a>セキュリティ、認証、およびアクセス制御
 * <a id="ad-support"></a>
 **Azure Files では、ID ベースの認証とアクセス制御はサポートされていますか。**  
     
-    はい。Azure Files では、Azure AD Domain Service (Azure AD DS) を活用した ID ベースの認証およびアクセス制御がサポートされています。 Azure Files での SMB 経由の Azure AD DS 認証により、Azure AD DS ドメイン参加 Windows VM は Azure AD 資格情報を使用して共有、ディレクトリ、およびファイルにアクセスできるようになります。 詳細については、「[Azure Files での SMB アクセスに対する Azure Active Directory Domain Services (AAD DS) 認証の概要](storage-files-active-directory-overview.md)」を参照してください。 
+    はい。Azure Files では、ID ベースの認証とアクセス制御がサポートされています。 ID ベースのアクセス制御を使用するには、次の 2 つの方法のいずれかを選択できます。Active Directory (AD) (プレビュー) または Azure Active Directory Domain Services (Azure AD DS) (GA)。 AD は、AD ドメインに参加しているマシン (オンプレミスまたは Azure) を使用した認証をサポートし、SMB 経由で Azure ファイル共有にアクセスします。 Azure Files での SMB 経由の Azure AD DS 認証により、Azure AD DS ドメイン参加 Windows VM は Azure AD 資格情報を使用して共有、ディレクトリ、およびファイルにアクセスできるようになります。 詳細については、「[ SMB アクセスに対する Azure Files ID ベース認証サポートの概要](storage-files-active-directory-overview.md)」を参照してください。 
 
     Azure Files では、その他 2 つの方法でアクセス制御を管理できます。
 
@@ -168,14 +172,14 @@ ms.locfileid: "75665373"
     Azure Storage サービスでサポートされているすべてのプロトコルの包括的な表記については、「[Azure Storage へのアクセスを承認する](https://docs.microsoft.com/azure/storage/common/storage-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。 
 
 * <a id="ad-support-devices"></a>
-**Azure Files の Azure AD DS 認証では、Azure AD に参加済みまたは登録済みのデバイスからの Azure AD 資格情報を使用した SMB アクセスはサポートされていますか。**
+**Azure Files の Azure Active Directory Domain Services (Azure AD DS) 認証では、Azure AD に参加済みまたは登録済みのデバイスからの Azure AD 資格情報を使用した SMB アクセスはサポートされていますか?**
 
     いいえ。このシナリオはサポートされていません。
 
 * <a id="ad-support-rest-apis"></a>
 **ディレクトリまたはファイルの NTFS ACL の取得、設定、またはコピーをサポートする REST API はありますか。**
 
-    現時点では、ディレクトリまたはファイルの NTFS ACL を取得、設定、またはコピーするための REST API はサポートされていません。
+    はい、[2019-02-02](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-02-02) (またはそれ以降) の REST API を使用する際は、ディレクトリまたはファイルの NTFS ACL を取得、設定、またはコピーする REST API がサポートされます。
 
 * <a id="ad-vm-subscription"></a>
 **異なるサブスクリプションの VM から Azure AD 資格情報を使用して Azure Files にアクセスすることはできますか。**
@@ -183,19 +187,29 @@ ms.locfileid: "75665373"
     ファイル共有のデプロイ元であるサブスクリプションが、VM のドメイン参加先である Azure AD Domain Services デプロイと同じ Azure AD テナントに関連付けられている場合は、同じ Azure AD 資格情報を使用して Azure Files にアクセスできます。 制限は、サブスクリプションにではなく、関連付けられている Azure AD テナントに課せられます。    
     
 * <a id="ad-support-subscription"></a>
-**ファイル共有が関連付けられているプライマリ テナントとは異なる Azure AD テナントを使用して、Azure Files の Azure AD DS 認証を有効にすることはできますか。**
+**ファイル共有が関連付けられているプライマリ テナントとは異なる Azure AD テナントを使用して、Azure Files の Azure AD DS 認証または AD 認証のいずれかを有効にすることはできますか?**
 
-    いいえ。Azure Files では、ファイル共有と同じサブスクリプションに存在する Azure AD テナントとの Azure AD DS 統合のみがサポートされます。 Azure AD テナントに関連付けることができるサブスクリプションは 1 つだけです。
+    いいえ。Azure Files では、ファイル共有と同じサブスクリプションに存在する Azure AD テナントとの Azure AD DS または AD 統合のみがサポートされます。 Azure AD テナントに関連付けることができるサブスクリプションは 1 つだけです。 この制限は、Azure AD DS と AD の両方の認証方法に適用されます。 認証に AD を使用する場合は、ストレージ アカウントが関連付けられている Azure AD に AD 資格情報を同期する必要があります。
 
 * <a id="ad-linux-vms"></a>
-**Azure Files の Azure AD DS 認証は Linux VM をサポートしていますか。**
+**Azure Files Azure AD DS または AD 認証では Linux VM はサポートされていますか?**
 
     いいえ。Linux VM からの認証はサポートされていません。
 
-* <a id="ad-aad-smb-afs"></a>
-**Azure Files の Azure AD DS 認証は、Azure File Sync によって管理されているファイル共有で利用できますか。**
+* <a id="ad-multiple-forest"></a>
+**Azure Files AD 認証では、複数のフォレストを使用する AD 環境との統合をサポートしていますか?**    
 
-    いいえ。Azure Files では、Azure File Sync によって管理されているファイル共有での NTFS ACL の保持がサポートされていません。オンプレミスのファイル サーバーから伝達されたファイル ACL は、Azure File Sync によって保持されます。Azure Files に対してネイティブに構成された NTFS ACL は、Azure File Sync サービスによって上書きされます。 さらに Azure Files では、Azure File Sync サービスによって管理されているファイル共有へのアクセスに、Azure AD 資格情報による認証を使用することはできません。
+    Azure Files AD 認証は、ストレージ アカウントが登録されている AD Domain Services のフォレストにのみ統合されます。 別の AD フォレストからの認証をサポートするには、環境でフォレストの信頼が適切に構成されている必要があります。 Azure Files が AD Domain Services に登録される方法は、通常のファイル サーバーとほぼ同じです。このサーバーでは、認証のために AD で ID (コンピューターまたはサービスのログオン アカウント) が作成されます。 唯一の違いは、ストレージ アカウントの登録済み SPN が、ドメイン サフィックスと一致しない "file.core.windows.net" で終了することです。 ドメインの管理者に問い合わせて、ドメイン サフィックスが異なることで、複数のフォレスト認証を有効にするために DNS ルーティング ポリシーの更新が必要かどうかを確認してください。
+
+* <a id=""></a>
+**Azure Files AD 認証 (プレビュー) はどのリージョンで利用できますか?**
+
+    詳細については、[AD のリージョン別の提供状況](storage-files-identity-auth-active-directory-enable.md#regional-availability) を参照してください。
+
+* <a id="ad-aad-smb-afs"></a>
+**Azure File Sync によって管理されているファイル共有で Azure Files Azure AD DS 認証または Active Directory (AD) 認証 (プレビュー) を利用できますか?**
+
+    はい。Azure File Sync によって管理されるファイル共有で Azure AD DS または AD 認証を有効にすることができます。ローカル ファイル サーバー上のディレクトリまたはファイルの NTFS ACL への変更は、Azure Files に階層化され、その逆も行われます。
 
 * <a id="encryption-at-rest"></a>
 **Azure ファイル共有に保存時の暗号化を確保するには、どうすればよいですか。**  
@@ -331,7 +345,7 @@ ms.locfileid: "75665373"
 
 * <a id="need-larger-share"></a>
 **Azure ファイル共有に使用できるサイズ**  
-    Azure ファイル共有のサイズ (Premium および Standard) は最大 100 TiB までスケールアップできます。 Standard レベルの大きいファイル共有のオンボード手順については、この計画ガイドの「[大きなファイル共有へのオンボード (Standard レベル)](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier)」セクションを参照してください。
+    Azure ファイル共有のサイズ (Premium および Standard) は最大 100 TiB までスケールアップできます。 Standard レベルの大きいファイル共有のオンボード手順については、この計画ガイドの「[大きなファイル共有へのオンボード (Standard レベル)](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib)」セクションを参照してください。
 
 * <a id="lfs-performance-impact"></a>
 **ファイル共有のクォータを拡張すると、ワークロードや Azure File Sync に影響しますか。**
@@ -371,7 +385,7 @@ ms.locfileid: "75665373"
 **IBM MQ での Azure Files の使用方法**  
     IBM MQ ユーザーが IBM のサービスで Azure Files を構成する際に役立つドキュメントが IBM から提供されています。 詳細については、「[How to set up IBM MQ Multi instance queue manager with Microsoft Azure Files Service (IBM MQ マルチ インスタンス キュー マネージャーを Microsoft Azure Files サービスで設定する方法)](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service)」を参照してください。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 * [Windows での Azure Files に関する問題のトラブルシューティング](storage-troubleshoot-windows-file-connection-problems.md)
 * [Linux での Azure Files に関する問題のトラブルシューティング](storage-troubleshoot-linux-file-connection-problems.md)
 * [Azure File Sync のトラブルシューティング](storage-sync-files-troubleshoot.md)

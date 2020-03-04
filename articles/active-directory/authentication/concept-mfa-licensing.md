@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/24/2020
+ms.date: 02/20/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0d37b0cd042e6e11f8b2029b51c589c96154065
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e74a7ab0c003aaf9d90211484b39f8322cd9c329
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76909093"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648004"
 ---
 # <a name="features-and-licenses-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の機能とライセンス
 
@@ -34,16 +34,16 @@ Azure Multi-Factor Authentication は、組織のニーズに応じて、いく�
 | EMS または Microsoft 365 E3 および E5 | EMS E3 または Microsoft 365 E3 (EMS および Office 365 を含む) には、Azure AD Premium P1 が含まれています。 EMS E5 または Microsoft 365 E5 には、Azure AD Premium P2 が含まれています。 次のセクションに記載されている同じ条件付きアクセス機能を使用して、ユーザーに多要素認証を提供できます。 |
 | Azure AD Premium P1 | [Azure AD 条件付きアクセス](../conditional-access/overview.md)を使用して、ビジネス要件に合わせて特定のシナリオやイベントの際に多要素認証をユーザーに求めることができます。 |
 | Azure AD Premium P2 | 最も強力なセキュリティのポジションと、向上したユーザー エクスペリエンスを提供します。 [リスク ベースの条件付きアクセス](../conditional-access/howto-conditional-access-policy-risk.md)を Azure AD Premium P1 の機能に追加することで、ユーザーのパターンに適応し、多要素認証の回数を最小限に抑えます。 |
-| Office Premium、E3、または E5 | Azure Multi-Factor Authentication は、すべてのユーザーの、すべてのサインイン イベントに対して有効にするか無効にするかのどちらかとなります。 ユーザーのサブセットに対してのみ、もしくは特定のシナリオでのみ多要素認証を有効にすることはできません。 管理は Office 365 ポータルを介して行われます。 ユーザー エクスペリエンスを向上させるには、Azure AD Premium P1 または P2 にアップグレードし、条件付きアクセスを使用します。 詳細については、[多要素認証を使用した Office 365 リソースのセキュリティ保護](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6)に関するページを参照してください。 |
+| Office 365 Business Premium、E3、または E5 | Azure Multi-Factor Authentication は、すべてのユーザーの、すべてのサインイン イベントに対して有効にするか無効にするかのどちらかとなります。 ユーザーのサブセットに対してのみ、もしくは特定のシナリオでのみ多要素認証を有効にすることはできません。 管理は Office 365 ポータルを介して行われます。 ユーザー エクスペリエンスを向上させるには、Azure AD Premium P1 または P2 にアップグレードし、条件付きアクセスを使用します。 詳細については、[多要素認証を使用した Office 365 リソースのセキュリティ保護](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6)に関するページを参照してください。 |
 | Azure AD Free | [セキュリティの既定値群](../fundamentals/concept-fundamentals-security-defaults.md)を使用して、認証要求が送信されるたびに、すべてのユーザーに対して多要素認証を有効にすることができます。 有効となるユーザーまたはシナリオをきめ細かく制御することはできませんが、追加のセキュリティ措置を提供することはできます。<br /> すべてのユーザーの多要素認証を有効にするセキュリティの既定値群が使用されていない場合でも、*Azure AD 全体管理者*ロールに割り当てられたユーザーは、多要素認証を使用するように構成できます。 Free レベルのこの機能により、重要な管理者アカウントが多要素認証によって保護されます。 |
 
 ## <a name="feature-comparison-of-versions"></a>バージョンごとの機能の比較
 
 次の表に、さまざまなバージョンの Azure Multi-Factor Authentication で使用できる機能の一覧を示します。 ユーザー認証のセキュリティ保護に必要なものを詳しく検討し、その要件を満たす方法を決定します。 たとえば、Azure AD Free は Azure Multi-Factor Authentication を提供するセキュリティの既定値群を提供しますが、認証プロンプトに使用できるのはモバイル認証アプリだけであり、電話や SMS は使用できません。 モバイル認証アプリがユーザーの個人のデバイスにインストールされていることを保証できない場合、この方法は制約を受けるかもしれません。
 
-| 機能 | Azure AD Free - セキュリティの既定値群 | Azure AD Free - Azure AD 全体管理者 | Office Premium、E3、または E5 | Azure AD Premium P1 または P2 |
+| 機能 | Azure AD Free - セキュリティの既定値群 | Azure AD Free - Azure AD 全体管理者 | Office 365 Business Premium、E3、または E5 | Azure AD Premium P1 または P2 |
 | --- |:---:|:---:|:---:|:---:|
-| MFA で Azure AD 管理者アカウントを保護する | ● | ● (*Azure AD 全体管理者*アカウントの場合のみ) | ● | ● |
+| MFA で Azure AD テナント管理者アカウントを保護する | ● | ● (*Azure AD 全体管理者*アカウントの場合のみ) | ● | ● |
 | モバイル アプリを 2 番目の要素にする | ● | ● | ● | ● |
 | 音声通話を 2 番目の要素にする | | ● | ● | ● |
 | SMS を 2 番目の要素にする | | ● | ● | ● |
@@ -57,11 +57,11 @@ Azure Multi-Factor Authentication は、組織のニーズに応じて、いく�
 | オンプレミス アプリケーション用の MFA | | | | ● |
 
 > [!IMPORTANT]
-> 2019 年 3 月の時点で、Azure AD Free / 試用版のテナントでは、Azure Multi-Factor Authentication と Azure セルフサービス パスワード リセットのユーザーは電話オプションを利用できなくなりました。 この変更は、SMS メッセージには影響しません。 電話は、Azure AD Premium P1 か P2 のテナントの、またはそれを使用するユーザー、もしくは Office Premium、E3、または E5 のユーザーは継続して利用可能です。
+> 2019 年 3 月の時点で、Azure AD Free / 試用版のテナントでは、Azure Multi-Factor Authentication と Azure セルフサービス パスワード リセットのユーザーは電話オプションを利用できなくなりました。 この変更は、SMS メッセージには影響しません。 Azure AD Premium P1 または P2 のテナントのユーザー、あるいは Office 365 Business Premium、E3、または E5 を使用しているユーザーは、引き続き電話をご利用いただけます。
 
 ## <a name="purchase-and-enable-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication を購入して有効にする
 
-Azure Multi-Factor Authentication を使用するには、資格のある Azure AD のレベルに登録するか、ご購入ください。 Azure AD には、Free、Office 365 アプリ エディション (Office 365 Premium E3、または E5 の顧客向け)、Premium P1、Premium P2 の 4 つのエディションが用意されています。
+Azure Multi-Factor Authentication を使用するには、資格のある Azure AD のレベルに登録するか、ご購入ください。 Azure AD には、Free、Office 365 アプリ エディション (Office 365 Business Premium、E3、または E5 の顧客向け)、Premium P1、および Premium P2 の 4 つのエディションが用意されています。
 
 Free エディションは、Azure サブスクリプションに含まれます。 セキュリティの既定値群を使用する方法、または *Azure AD 全体管理者*ロールでアカウントを保護する方法についての情報は、[下記のセクション](#azure-ad-free-tier)を参照してください。
 

@@ -7,52 +7,40 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 01/22/2020
-ms.openlocfilehash: a8176cc07296b7de7b6aba5356485280ef5ebde1
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.date: 02/18/2020
+ms.openlocfilehash: c1e5ca8b0bb828e5e8ce896bba6a5278266b118e
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548817"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560084"
 ---
-# <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Azure HDInsight の安全な転送のストレージ アカウントで Apache Hadoop クラスターを作成する
+# <a name="apache-hadoop-clusters-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Azure HDInsight の安全な転送のストレージ アカウントを使用した Apache Hadoop クラスター
 
 "[安全な転送が必須](../storage/common/storage-require-secure-transfer.md)" 機能は、アカウントへのすべての要求にセキュリティで保護された接続を経由するように強制することで、Azure ストレージ アカウントのセキュリティを強化します。 この機能と wasbs スキーマは、HDInsight クラスター バージョン 3.6 以降でのみサポートされます。
 
-**クラスターの作成後にセキュリティで保護されたストレージ転送を有効にすると、ストレージ アカウントを使用する際にエラーが発生する可能性があるため、推奨されません。プロパティを有効にして新しいクラスターを作成することをお勧めします。**
+> [!IMPORTANT]
+> クラスターの作成後にセキュリティで保護されたストレージ転送を有効にすると、ストレージ アカウントを使用する際にエラーが発生する可能性があるため、推奨されません。 セキュリティで保護された転送が既に有効になっているストレージ アカウントを使用して新しいクラスターを作成することをお勧めします。
 
-## <a name="prerequisites"></a>前提条件
+## <a name="storage-accounts"></a>ストレージ アカウント
 
-この記事を読み始める前に、以下を用意する必要があります。
+### <a name="azure-portal"></a>Azure portal
 
-* Azure サブスクリプション:1 か月間の無料試用版アカウントを [azure.microsoft.com/free](https://azure.microsoft.com/free) で作成できます。
-* 安全な転送が有効になっている Azure Storage アカウント。 手順については、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」と「[安全な転送が必須](../storage/common/storage-require-secure-transfer.md)」を参照してください。 
-* ストレージ アカウント上の BLOB コンテナー。
+既定では、Azure portal でストレージ アカウントを作成すると、"安全な転送が必須" プロパティが有効になります。
 
-## <a name="create-cluster"></a>クラスターの作成
+Azure portal で既存のストレージ アカウントを更新するには、「[Azure portal で安全な転送を要求する](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-for-an-existing-storage-account)」を参照してください。
 
-[!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+### <a name="powershell"></a>PowerShell
 
-このセクションでは、[Azure Resource Manager テンプレート](../azure-resource-manager/templates/deploy-powershell.md)を利用して、HDInsight で Hadoop クラスターを作成します。 テンプレートは、[GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-existing-default-storage-account/) にあります。 この記事に従うために、Resource Manager テンプレートの使用経験は必要ありません。 その他のクラスター作成方法と、この記事で使うプロパティの詳細については、[HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
+PowerShell コマンドレット [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) の場合、パラメーター `-EnableHttpsTrafficOnly` が `1` に設定されていることを確認してください。
 
-1. 次の画像をクリックして Azure にサインインし、Azure Portal で Resource Manager テンプレートを開きます。
+PowerShell で既存のストレージ アカウントを更新するには、「[PowerShell を使用して安全な転送を要求する](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-powershell)」を参照してください。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-existing-default-storage-account%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
+### <a name="azure-cli"></a>Azure CLI
 
-2. 手順に従って、以下の仕様のクラスターを作成します。
+Azure CLI コマンド [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) の場合、パラメーター `--https-only` が `true` に設定されていることを確認してください。
 
-    * HDInsight バージョン 3.6 を指定します。 バージョン 3.6 以降が必須です。
-    * 安全な転送が有効になっているストレージ アカウントを指定します。
-    * ストレージ アカウントの短い名前を使用します。
-    * ストレージ アカウントと BLOB コンテナーのどちらも、事前に作成しておく必要があります。
-
-      手順については、「[クラスターの作成](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)」を参照してください。
-
-独自の構成ファイルを指定するためにスクリプト アクションを使用する場合は、以下の設定で wasbs を使用する必要があります。
-
-* fs.defaultFS (コア サイト)
-* spark.eventLog.dir
-* spark.history.fs.logDirectory
+Azure CLI で既存のストレージ アカウントを更新するには、「[Azure CLI を使用して安全な転送を要求する](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-azure-cli)」を参照してください。
 
 ## <a name="add-additional-storage-accounts"></a>追加のストレージ アカウントの追加
 
@@ -64,25 +52,6 @@ ms.locfileid: "76548817"
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、HDInsight クラスターを作成し、ストレージ アカウントへの安全な転送を有効にする方法について説明しました。
-
-HDInsight でデータを分析する方法の詳細については、次の記事を参照してください。
-
-* Visual Studio から [Apache Hive](https://hive.apache.org/) クエリを実行する方法など、HDInsight で Hive を使用する方法の詳細については、[HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)に関する記事を参照してください。
-* Hadoop 上のデータを処理するプログラムを作成する方法の 1 つである [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) の詳細については、[HDInsight での Apache Hadoop MapReduce の使用](hadoop/hdinsight-use-mapreduce.md)に関する記事を参照してください。
-* HDInsight Tools for Visual Studio を使用して HDInsight 上のデータを分析する方法については、[HDInsight Apache Hadoop Tools for Visual Studio の使用開始](hadoop/apache-hadoop-visual-studio-tools-get-started.md)に関するページを参照してください。
-
-HDInsight のデータの格納方法や HDInsight にデータを取り込む方法の詳細については、以下の記事を参照してください。
-
+* 既定のデータ ストアとして、[Apache Hadoop HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) ではなく Azure Storage (WASB) を使用する
 * HDInsight で Azure Storage を使用する方法の詳細については、[HDInsight での Azure Storage の使用](hdinsight-hadoop-use-blob-storage.md)に関するページを参照してください。
 * データを HDInsight にアップロードする方法については、[データを HDInsight にアップロードする方法](hdinsight-upload-data.md)に関する記事を参照してください。
-
-HDInsight クラスターの作成または管理の詳細については、以下の記事を参照してください。
-
-* Linux ベースの HDInsight クラスターを管理する方法については、[Apache Ambari を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)に関するページを参照してください。
-* HDInsight クラスターの作成時に選択できるオプションの詳細については、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
-* Linux と Apache Hadoop に精通しているが、HDInsight 上の Hadoop に関する詳細を知りたい場合は、[Linux での HDInsight の使用](hdinsight-hadoop-linux-information.md)に関するページを参照してください。 この記事では、次のような情報を提供します。
-
-  * クラスターでホストされる URL ([Apache Ambari](https://ambari.apache.org/) や [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) など)
-  * [Apache Hadoop](https://hadoop.apache.org/) ファイルの場所とローカル ファイル システムの例
-  * 既定のデータ ストアとして、[Apache Hadoop HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) ではなく Azure Storage (WASB) を使用する

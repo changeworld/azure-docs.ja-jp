@@ -1,5 +1,5 @@
 ---
-title: 'Power BI にインポートされたクエリを使用して Azure Data Explorer のデータを視覚化する '
+title: Power BI にインポートされたクエリを使用して Azure Data Explorer のデータを視覚化する
 description: この記事では、Power BI でデータを視覚化するための 3 つのオプションのうち 1 つ (Azure Data Explorer からのクエリのインポート) を使用する方法について説明します。
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 6c2c8457cee004bf1288656ec9746b703d41aee1
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: ff156ab3fe74115bce8f7d6bdd3ba47b514f5ff5
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806404"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562481"
 ---
 # <a name="visualize-data-using-a-query-imported-into-power-bi"></a>Power BI にインポートされたクエリを使用してデータを視覚化する
 
@@ -76,10 +76,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [data-explorer-power-bi-visualize-basic](../../includes/data-explorer-power-bi-visualize-basic.md)]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この記事で作成したレポートが不要になったら、Power BI Desktop (.pbix) ファイルを削除してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Power BI 用 Azure Data Explorer コネクタを使用してデータを視覚化する](power-bi-connector.md)

@@ -12,7 +12,7 @@ ms.locfileid: "77620232"
 ---
 # <a name="resource-iteration-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでのリソースの反復
 
-この記事では、Azure Resource Manager テンプレートでリソースの複数のインスタンスを作成する方法について説明します。 テンプレートのリソース セクションに **コピー** 要素を追加することで、デプロイするリソースの数を動的に設定できます。 テンプレートの構文を繰り返す必要もありません。
+この記事では、Azure Resource Manager テンプレートでリソースの複数のインスタンスを作成する方法について説明します。 テンプレートのリソース セクションに **copy** 要素を追加することで、デプロイするリソースの数を動的に設定できます。 テンプレートの構文を繰り返す必要もありません。
 
 [プロパティ](copy-properties.md)、[変数](copy-variables.md)、および[出力](copy-outputs.md)でもコピーを使用できます。
 

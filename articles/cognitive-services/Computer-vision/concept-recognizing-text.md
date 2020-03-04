@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e37b4c02692575f76582e8f62c3aff00b57424ed
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a4c90ed12c8023e0b9ebc509b20d8d9224b49f1b
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946293"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566252"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>印刷されたテキストと手書きのテキストの認識
 
@@ -26,10 +26,10 @@ Computer Vision では、画像に出現する印刷されたテキストまた�
 
 Read API では、最新の認識モデルを使用して画像内のテキスト コンテンツが検出され、識別されたテキストはコンピューターで読み取り可能な文字ストリームに変換されます。 これは、テキストが多く含まれる画像 (デジタル スキャンされたドキュメントなど) や、視覚ノイズが多く含まれる画像向けに最適化されています。 各テキスト行に対してどの認識モデルを使用するかが決定されるため、印刷されたテキストと手書きのテキストの両方を含む画像がサポートされます。 大きなドキュメントは結果を返すまでに数分かかる場合があるため、Read API は非同期的に実行されます。
 
-読み取り操作では、認識された単語の元の行グループが出力で維持されます。 各行は境界ボックスの座標を持ち、行内の各単語もそれ自体の座標を持っています。 単語が低い信頼度で認識された場合は、その情報も伝えられます。 詳しくは、[Read API のリファレンス ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)をご覧ください。
+読み取り操作では、認識された単語の元の行グループが出力で維持されます。 各行は境界ボックスの座標を持ち、行内の各単語もそれ自体の座標を持っています。 単語が低い信頼度で認識された場合は、その情報も伝えられます。 詳細については、[Read API のリファレンス ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)と [Read API プレビューのリファレンス ドキュメント](https://go.microsoft.com/fwlink/?linkid=2118322)をご覧ください。
 
 > [!NOTE]
-> この機能は、英語のテキストに対してのみ使用できます。
+> この機能は、英語とスペイン語 (プレビュー) のテキストでのみ使用できます。
 
 ### <a name="image-requirements"></a>イメージの要件
 
@@ -92,6 +92,6 @@ Recognize Text API は、次の要件を満たす画像で動作します。
 * 単語の先頭の大文字のサイズが大きすぎるか欠落している。
 * 下付き、上付き、または取り消し線テキスト。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[印刷されたテキストの抽出 (OCR)](./quickstarts/csharp-print-text.md) に関するクイック スタートに従って、簡単な C# アプリにテキストの認識を実装します。
+[テキストの抽出 (読み取り)](./QuickStarts/CSharp-hand-text.md) に関するクイック スタートに従って、簡単な C# アプリにテキスト認識を実装します。

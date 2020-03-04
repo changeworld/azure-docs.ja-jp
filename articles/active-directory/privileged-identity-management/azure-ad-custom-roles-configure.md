@@ -16,16 +16,21 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6251c1576d38b191ca1cba48075cc869c48d004
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 3f087ffe824a198c578f076857cca7fdf0f0a60c
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048123"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498690"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD のカスタム ロールを構成する
 
 特権ロール管理者は、ユーザーがカスタム ロールに対する自身の割り当てをアクティブ化したときに適用されるロールの設定を変更したり、カスタム ロールを割り当てる側の他のアプリケーション管理者のロールの設定を変更したりすることができます。
+
+> [!NOTE]
+> プレビュー段階では、Azure AD のカスタム ロールがビルトイン ディレクトリ ロールと連携していません。 その機能の一般提供が開始されれば、ビルトイン ロールのエクスペリエンスでロールの管理が行えるようになります。 次のバナーが表示される場合は、これらのロールは[組み込みロールのエクスペリエンスで](pim-how-to-activate-role.md)管理する必要があり、この記事は適用されません。
+>
+> [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 ## <a name="open-role-settings"></a>ロールの設定を開く
 
@@ -95,7 +100,7 @@ Privileged Identity Management では、2 つの異なるシナリオで、必�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure AD のカスタム ロールをアクティブ化する](azure-ad-custom-roles-assign.md)
+- [Azure AD のカスタム ロールをアクティブ化する](azure-ad-custom-roles-activate.md)
 - [Azure AD のカスタム ロールを割り当てる](azure-ad-custom-roles-assign.md)
 - [Azure AD のカスタム ロールの割り当てを削除または更新する](azure-ad-custom-roles-update-remove.md)
 - [Azure AD のロールの定義](../users-groups-roles/directory-assign-admin-roles.md)

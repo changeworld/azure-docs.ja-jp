@@ -1,18 +1,18 @@
 ---
 title: Azure HDInsight での Apache Ambari の古いアラート
-description: HDInsight での Apache Ambari の古いアラートについて、考えられる理由と解決策を説明し、分析します。
+description: HDInsight での Apache Ambari の古いアラートについて、考えられる原因と解決策を説明し、分析します。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: f19d499b5e50fbb5030a0f396296eed46fc6eee3
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f9dfcb930e3fe4f862f9f51ff00270d0eb0c66ca
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722667"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539112"
 ---
 # <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>シナリオ:Azure HDInsight での Apache Ambari の古いアラート
 
@@ -20,64 +20,70 @@ ms.locfileid: "76722667"
 
 ## <a name="issue"></a>問題
 
-Apache Ambari UI から、次の図のようなアラートが表示される場合があります。
+Apache Ambari UI では、次のようなアラートが表示される場合があります。
 
 ![Apache Ambari の古いアラートの例](./media/apache-ambari-troubleshoot-stale-alerts/ambari-stale-alerts-example.png)
 
 ## <a name="cause"></a>原因
 
-多くのリソースの正常性を監視するために、Ambari エージェントによって、正常性チェックが継続的に実行されます。 各アラートは、事前に定義された間隔で実行するように構成されています。 各アラートの実行後、Ambari エージェントから Ambari サーバーに状態が報告されます。 この時点で、アラートが適切なタイミングで実行されなかったことが Ambari サーバーによって検出された場合は、"Ambari サーバー アラート" がトリガーされます。 定義された間隔で正常性チェックが実行されない理由はさまざまです。
+Ambari エージェントでは、多くのリソースの正常性が継続的に監視されます。 *アラート*は、特定のクラスターのプロパティが事前に定義されたしきい値内にあるかどうかを通知するように構成できます。 各リソース チェックが実行された後、アラートの条件が満たされている場合、Ambari エージェントから Ambari サーバーへ状態が報告され、アラートがトリガーされます。 アラート プロファイルの間隔に従ってアラートが確認されていない場合、サーバーでは *Ambari Server Stale Alerts* アラートがトリガーされます。
 
-* ホストの使用率が高い (高い CPU 使用率) 場合、Ambari エージェントによるアラートの適時実行に十分なシステム リソースが取得できなかった可能性があります。
+定義された間隔で正常性チェックが実行されない原因はいくつかあります。
 
-* クラスターでは、大きな負荷がかかっている最中に多くのジョブやサービスが実行されます。
+* ホストの使用率が高い (CPU 使用率が高くなっている) ため、Ambari エージェントがアラートを時間通りに実行するのに十分なシステム リソースを取得できません。
 
-* クラスター内で多数のコンポーネントをホストするホストは少ないため、多くのアラートを実行する必要があります。 コンポーネントの数が多い場合は、アラート ジョブがスケジュールされた間隔で実行されない可能性があります。
+* クラスターでは負荷の高い期間中に多くのジョブまたはサービスを実行しているため、ビジー状態です。
+
+* クラスター内の少数のホストが多数のコンポーネントをホストしているため、多くのアラートの実行を要求されています。 コンポーネントの数が多い場合、アラート ジョブがスケジュールされた間隔で実行されない可能性があります。
 
 ## <a name="resolution"></a>解決策
 
-### <a name="increase-alert-interval-time"></a>アラート間隔の時間を増やす
+Ambari の古いアラートに関する問題を解決するには、次の方法を試してください。
 
-クラスターの応答時間と負荷に基づいて、個々のアラート間隔の値を増やすことができます。
+### <a name="increase-the-alert-interval-time"></a>アラート間隔の時間を長くする
 
-1. Apache Ambari UI で、 **[Alerts]\(アラート\)** タブを選択します。
+個々のアラート間隔の値を、クラスターの応答時間と負荷に基づいて大きくすることができます。
+
+1. Apache Ambari UI で、 **[アラート]** タブを選択します。
 1. 目的のアラート定義名を選択します。
 1. 定義から、 **[Edit]\(編集\)** を選択します。
-1. 必要に応じて **[Check Interval]\(チェック間隔\)** の値を変更し、 **[Save]\(保存\)** を選択します。
+1. **[Check Interval]\(チェック間隔\)** の値を大きくし、 **[保存]** を選択します。
 
-### <a name="increase-alert-interval-time-for-ambari-server-alerts"></a>Ambari サーバー アラートのアラート間隔の時間を増やす
+### <a name="increase-the-alert-interval-time-for-ambari-server-alerts"></a>Ambari Server Alerts のアラート間隔の時間を長くする
 
-1. Apache Ambari UI で、 **[Alerts]\(アラート\)** タブを選択します。
+1. Apache Ambari UI で、 **[アラート]** タブを選択します。
 1. **[Groups]\(グループ\)** ドロップダウン リストで、 **[AMBARI Default]\(AMBARI の既定値\)** を選択します。
-1. **[Ambari Server Alerts]\(Ambari サーバー アラート\)** というアラートを選択します。
+1. **[Ambari Server Alerts]** アラートを選択します。
 1. 定義から、 **[Edit]\(編集\)** を選択します。
-1. 必要に応じて、 **[Check Interval]\(チェック間隔\)** 値を変更します。
-1. 必要に応じて **[Interval Multiplier]\(間隔の乗数\)** 値を変更し、 **[Save]\(保存\)** を選択します。
+1. **[Check Interval]\(チェック間隔\)** の値を大きくします。
+1. **[Interval Multiplier]\(間隔の乗数\)** の値を大きくし、 **[保存]** を選択します。
 
-### <a name="disable-and-enable-the-alert"></a>アラートを無効にしてから有効にする
+### <a name="disable-and-reenable-the-alert"></a>アラートを無効にしてから再度有効にする
 
-アラートを無効にしてから再度有効にして、古いアラートを破棄することができます。
+古いアラートを破棄するには、それを無効にしてから再度有効にします。
 
-1. Apache Ambari UI で、 **[Alerts]\(アラート\)** タブを選択します。
+1. Apache Ambari UI で、 **[アラート]** タブを選択します。
 1. 目的のアラート定義名を選択します。
-1. 定義から、右端にある **[Enabled]\(有効\)** を選択します。
-1. **[Confirmation]\(確認\)** ポップアップで、 **[Confirm Disable]\(無効化の確認\)** を選択します。
-1. ページに表示されているすべてのアラート "インスタンス" がクリアされるまで数秒待ちます。
-1. 定義から、右端にある **[Disabled]\(無効\)** を選択します。
-1. **[Confirmation]\(確認\)** ポップアップで、 **[Confirm Enable]\(有効化の確認\)** を選択します。
+1. 定義から、UI の右端にある **[有効]** を選択します。
+1. **[確認]** ポップアップ ウィンドウで、 **[無効化の確認]** を選択します。
+1. ページに表示されているすべてのアラート "インスタンス" が消去されるまで数秒待ちます。
+1. 定義から、UI の右端にある **[無効]** を選択します。
+1. **[確認]** ポップアップ ウィンドウで、 **[有効化の確認]** を選択します。
 
-### <a name="increase-alert-grace-time"></a>アラートの猶予時間を増やす
+### <a name="increase-the-alert-grace-period"></a>アラートの猶予期間を長くする
 
-Ambari エージェントには、構成されたアラートがスケジュールどおりに実行されなかったことを報告する前に、猶予時間が適用されます。 アラートがスケジュールされた時刻に実行されなくても、アラートの猶予時間内にトリガーされた場合は、古いアラートは発生しません。
+Ambari エージェントには、構成されたアラートがスケジュールどおりに実行されなかったことが報告されるまでに、猶予期間があります。 アラートがスケジュールどおりの時刻に実行されなかったが、猶予期間内に実行された場合、古いアラートは生成されません。
 
-既定の `alert_grace_period` 値は 5 秒です。 この `alert_grace_period` の設定は `/etc/ambari-agent/conf/ambari-agent.ini` 内で構成できます。 古いアラートが一定の間隔で発生するホストについては、値を 10 に増やします。 その後、Ambari エージェントを再起動します。
+既定の `alert_grace_period` 値は 5 秒です。 /etc/ambari-agent/conf/ambari-agent.ini でこの設定を構成できます。 一定の間隔で古いアラートが発生しているホストについては、値を 10 に増やしてみてください。 その後、Ambari エージェントを再起動します。
 
 ## <a name="next-steps"></a>次のステップ
 
-問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルでサポートを受けてください。
+ここで問題が説明されていない場合、または解決できない場合は、次のいずれかのチャネルを参照してください。
 
-* [Azure コミュニティのサポート](https://azure.microsoft.com/support/community/)を通じて Azure エキスパートから回答を得る。
+* [Azure コミュニティ サポート](https://azure.microsoft.com/support/community/)で、Azure の専門家からの回答をご確認ください。
 
-* [@AzureSupport](https://twitter.com/azuresupport) (カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウント) に連絡する。 Azure コミュニティで適切なリソース (回答、サポート、エキスパートなど) につながる。
+* Twitter で [@AzureSupport](https://twitter.com/azuresupport) と繋がります。 これは、カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウントです。 Azure コミュニティを適切なリソース (回答、サポート、エキスパート) と結び付けます。
 
-* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。
+* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信します。 表示するには、ポータル メニューから [ヘルプ] ( **?** ) を選択するか、 **[Help + support]\(ヘルプとサポート\)** ウィンドウを開きます。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)」を参照してください。 
+
+  サブスクリプションの管理と課金のサポートは、Microsoft Azure サブスクリプションに含まれています。 テクニカル サポートは、[Azure サポート プラン](https://azure.microsoft.com/support/plans/)を通じて提供されます。

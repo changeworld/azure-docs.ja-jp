@@ -1,22 +1,15 @@
 ---
 title: トラブルシューティング - QnA Maker
-titleSuffix: Azure Cognitive Services
 description: QnA Maker サービスについてきわめて多く寄せられる質問を精選した一覧です。サービスの採用にかかる期間を短縮し、成果を上げるためにお役立てください。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/28/2020
+ms.date: 02/21/2020
 ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: 18d7e02689cc9c5fe9282a6a2456b8b1574ec85e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9032f2cdc134289fef6c0cbc2e874198aefa90ee
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901637"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650386"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker のトラブルシューティング
 
@@ -24,9 +17,10 @@ QnA Maker サービスについてきわめて多く寄せられる質問を精�
 
 <a name="how-to-get-the-qnamaker-service-hostname"></a>
 
-## <a name="how-to-get-the-qnamaker-service-endpoint"></a>QnA Maker サービス エンドポイントを取得する方法
+<details>
+<summary><b>QnA Maker サービス エンドポイントを取得する方法</b></summary>
 
-QnA Maker サービス エンドポイントは、デバッグ目的で QnA Maker サポートや UserVoice に問い合わせる場合に役立ちます。 エンドポイントは、次の形式の URL です: https://your-resource-name.azurewebsites.net 。
+**回答**: QnA Maker サービス エンドポイントは、デバッグ目的で QnA Maker サポートや UserVoice に問い合わせる場合に役立ちます。 エンドポイントは、次の形式の URL です: https://your-resource-name.azurewebsites.net 。
 
 1. [Azure portal](https://portal.azure.com) で QnA Maker サービス (リソース グループ) に移動します。
 
@@ -40,41 +34,65 @@ QnA Maker サービス エンドポイントは、デバッグ目的で QnA Make
 
     ![QnA Maker のエンドポイント](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-gethostname.png)
 
+</details>
+
 ## <a name="manage-the-knowledge-base"></a>ナレッジ ベースの管理
 
-### <a name="i-accidentally-deleted-a-part-of-my-qna-maker-what-should-i-do"></a>自分の QnA Maker の一部を誤って削除しました。どうしたらいいでしょうか。
+<details>
+<summary><b>自分の QnA Maker の一部を誤って削除しました。どうしたらいいでしょうか。</b></summary>
 
-Search や Web App など、QnA Maker リソースと一緒に作成される Azure サービスは削除しないでください。 QnA Maker が正常に機能するために必要であり、削除すると QnA Maker が正しく動作しなくなります。
+**回答**: Search や Web App など、QnA Maker リソースと一緒に作成される Azure サービスは削除しないでください。 QnA Maker が正常に機能するために必要であり、削除すると QnA Maker が正しく動作しなくなります。
 
 質問と回答のペア、ファイル、URL、カスタムの質問と回答、ナレッジ ベース、Azure リソースを含め、削除はすべて永続的です。 ナレッジ ベースの一部を削除する前に、 **[設定]** ページから確実にナレッジ ベースをエクスポートしてください。
 
-### <a name="why-is-my-urlsfiles-not-extracting-question-answer-pairs"></a>指定した URL/ファイルから質問とその回答のペアが抽出されません。なぜでしょうか。
+</details>
 
-QnA Maker は、有効な FAQ URL であっても、一部の Q&A (QnA) コンテンツを自動抽出できない場合があります。 そのような場合は、QnA コンテンツを .txt ファイルに貼り付けて、ツールによる取り込みが可能かどうかを確認できます。 または、[QnA Maker ポータル](https://qnamaker.ai)経由でナレッジ ベースに編集という形でコンテンツを追加することもできます。
+<details>
+<summary><b>指定した URL/ファイルから質問とその回答のペアが抽出されません。なぜでしょうか。</b></summary>
 
-### <a name="how-large-a-knowledge-base-can-i-create"></a>作成できるナレッジ ベースの最大サイズはどれくらいですか。
+**回答**: QnA Maker は、有効な FAQ URL であっても、一部の Q&A (QnA) コンテンツを自動抽出できない場合があります。 そのような場合は、QnA コンテンツを .txt ファイルに貼り付けて、ツールによる取り込みが可能かどうかを確認できます。 または、[QnA Maker ポータル](https://qnamaker.ai)経由でナレッジ ベースに編集という形でコンテンツを追加することもできます。
 
-ナレッジ ベースのサイズは、QnA Maker サービスの作成時に選択した Azure Search の SKU により異なります。 詳細については、[こちら](./Tutorials/choosing-capacity-qnamaker-deployment.md)を参照してください。
+</details>
 
-### <a name="why-cant-i-see-anything-in-the-drop-down-when-i-try-to-create-a-new-knowledge-base"></a>新しいナレッジ ベースを作成しようとしたときに、ドロップダウンに選択肢が表示されません。なぜでしょうか?
+<details>
+<summary><b>作成できるナレッジ ベースの最大サイズはどれくらいですか。</b></summary>
 
-まだ Azure に QnA Maker サービスが作成されていません。 その方法については、[こちら](./How-To/set-up-qnamaker-service-azure.md)を参照してください。
+**回答**: ナレッジ ベースのサイズは、QnA Maker サービスの作成時に選択した Azure Search の SKU により異なります。 詳細については、[こちら](./Tutorials/choosing-capacity-qnamaker-deployment.md)を参照してください。
 
-### <a name="how-do-i-share-a-knowledge-base-with-others"></a>複数人でナレッジ ベースを共有するにはどうすればよいですか?
+</details>
 
-共有は、QnA Maker サービス レベルで行われます。つまり、サービス内のすべてのナレッジ ベースが共有されます。 ナレッジ ベースの共同作業の方法については、[こちら](./How-To/collaborate-knowledge-base.md)を参照してください。
+<details>
+<summary><b>新しいナレッジ ベースを作成しようとしたときに、ドロップダウンに選択肢が表示されません。なぜでしょうか?</b></summary>
 
-### <a name="can-you-share-a-knowledge-base-with-a-contributor-that-is-not-in-the-same-aad-tenant-to-modify-a-knowledge-base"></a>ナレッジ ベースを変更するために、同じ AAD テナントに含まれない共同作成者とナレッジ ベースを共有できますか。
+**回答**: まだ Azure に QnA Maker サービスが作成されていません。 その方法については、[こちら](./How-To/set-up-qnamaker-service-azure.md)を参照してください。
 
-共有は Azure ロールベースのアクセス制御 (RBAC) に基づきます。 Azure で他のユーザーと _任意の_ リソースを共有できる場合、QnA Maker を共有することもできます。
+</details>
 
-### <a name="if-you-have-an-app-service-plan-with-5-qnamaker-knowledge-bases-can-you-assign-readwrite-rights-to-5-different-users-so-each-of-them-can-access-only-1-qnamaker-knowledge-base"></a>5 つの QnAMaker ナレッジ ベースがある 1 つの App Service プランがある場合、 5 人のユーザーに、それぞれが 1 つだけの QnAMaker ナレッジ ベースにアクセスできるように、読み取り/書き込み権限を割り当てることができますか。
+<details>
+<summary><b>複数人でナレッジ ベースを共有するにはどうすればよいですか?</b></summary>
 
-個々のナレッジ ベースではなく、QnAMaker サービス全体を共有できます。
+**回答**: 共有は、QnA Maker サービス レベルで行われます。つまり、サービス内のすべてのナレッジ ベースが共有されます。 ナレッジ ベースの共同作業の方法については、[こちら](./How-To/collaborate-knowledge-base.md)を参照してください。
 
-### <a name="how-can-i-change-the-default-message-when-no-good-match-is-found"></a>適切な一致が見つからなかったときの既定のメッセージを変更するにはどうすればよいですか?
+</details>
 
-既定のメッセージは、App Service の設定に含まれています。
+<details>
+<summary><b>ナレッジ ベースを変更するために、同じ AAD テナントに含まれない共同作成者とナレッジ ベースを共有できますか。</b></summary>
+
+**回答**: 共有は Azure ロールベースのアクセス制御 (RBAC) に基づきます。 Azure で他のユーザーと _任意の_ リソースを共有できる場合、QnA Maker を共有することもできます。
+
+</details>
+
+<details>
+<summary><b>5 つの QnAMaker ナレッジ ベースがある 1 つの App Service プランがある場合、5 人のユーザーに、それぞれが 1 つだけの QnAMaker ナレッジ ベースにアクセスできるように、読み取り/書き込み権限を割り当てることができますか。</b></summary>
+
+**回答**: 個々のナレッジ ベースではなく、QnAMaker サービス全体を共有できます。
+
+</details>
+
+<details>
+<summary><b>適切な一致が見つからなかったときの既定のメッセージを変更するにはどうすればよいですか?</b></summary>
+
+**回答**: 既定のメッセージは、App Service の設定に含まれています。
 - Azure portal の App Service リソースに移動します
 
 ![QnA Maker App Service](./media/qnamaker-faq/qnamaker-resource-list-appservice.png)
@@ -86,15 +104,27 @@ QnA Maker は、有効な FAQ URL であっても、一部の Q&A (QnA) コン�
 
 ![QnA Maker App Service の再起動](./media/qnamaker-faq/qnamaker-appservice-restart.png)
 
-### <a name="why-is-my-sharepoint-link-not-getting-extracted"></a>SharePoint リンクが抽出されません。なぜでしょうか?
 
-詳細については、「[Data source locations (データ ソースの場所)](./Concepts/knowledge-base.md#data-source-locations)」を参照してください。
+</details>
 
-### <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>ナレッジ ベースに対して行った更新が発行時に反映されません。 表示されない
+<details>
+<summary><b>SharePoint リンクが抽出されません。なぜでしょうか?</b></summary>
 
-編集内容を公開するには、テーブルの更新、テスト、設定のいずれであってもすべて保存する必要があります。 編集操作後は、必ず **[Save and train]\(保存してトレーニング\)** ボタンをクリックしてください。
+**回答**: 詳細については、「[Data source locations (データ ソースの場所)](./Concepts/knowledge-base.md#data-source-locations)」を参照してください。
 
-### <a name="does-the-knowledge-base-support-rich-data-or-multimedia"></a>ナレッジ ベースは、リッチ データやマルチメディアに対応していますか?
+</details>
+
+<details>
+<summary><b>ナレッジ ベースに対して行った更新が発行時に反映されません。なぜ表示されないのですか?</b>"</summary>
+
+**回答**: 編集内容を公開するには、テーブルの更新、テスト、設定のいずれであってもすべて保存する必要があります。 編集操作後は、必ず **[Save and train]\(保存してトレーニング\)** ボタンをクリックしてください。
+
+</details>
+
+<details>
+<summary><b>ナレッジ ベースは、リッチ データやマルチメディアに対応していますか?</b></summary>
+
+**回答**:
 
 #### <a name="multimedia-auto-extraction-for-files-and-urls"></a>ファイルと URL のマルチメディア自動抽出
 
@@ -104,41 +134,66 @@ QnA Maker は、有効な FAQ URL であっても、一部の Q&A (QnA) コン�
 #### <a name="answer-text-in-markdown"></a>マークダウンの回答テキスト
 QnA セットをナレッジ ベースに追加すると、回答のマークダウン テキストを編集して、パブリック URL から使用できるメディアへのリンクを含めることができます。
 
-### <a name="does-qna-maker-support-non-english-languages"></a>QnA Maker では英語以外の言語もサポートされますか。
 
-詳細については、[サポートされている言語](./Overview/languages-supported.md)に関するページを参照してください。
+</details>
+
+<details>
+<summary><b>QnA Maker では英語以外の言語もサポートされますか。</b></summary>
+
+**回答**: 詳細については、[サポートされている言語](./Overview/languages-supported.md)に関するページを参照してください。
 
 多言語コンテンツが含まれる場合は、言語ごとにサービスを作成してください。
 
+</details>
+
 ## <a name="manage-service"></a>サービスの管理
 
-### <a name="when-should-i-restart-my-app-service"></a>いつアプリ サービスを再起動するべきですか。
+<details>
+<summary><b>いつアプリ サービスを再起動するべきですか。</b></summary>
 
-**[ユーザー設定]** [ページ](https://www.qnamaker.ai/UserSettings)の **[エンドポイント キー]** で、ナレッジ ベースのバージョン値の隣に注意のアイコンが表示されているときは、アプリ サービスを更新してください。
+**回答**: **[ユーザー設定]** [ページ](https://www.qnamaker.ai/UserSettings)の **[エンドポイント キー]** で、ナレッジ ベースのバージョン値の隣に注意のアイコンが表示されているときは、アプリ サービスを更新してください。
 
-### <a name="i-deleted-my-existing-search-service-how-can-i-fix-this"></a>既存の検索サービスを削除してしまいました。 どうしたらいいですか。
+</details>
 
-Azure Cognitive Search インデックスを削除した場合、この操作は最終的なものであり、インデックスを復旧することはできません。
+<details>
+<summary><b>既存の Search Service を削除してしまいました。どうしたらいいですか。</b></summary>
 
-### <a name="i-deleted-my-testkb-index-in-my-search-service-how-can-i-fix-this"></a>検索サービスの `testkb` インデックスを削除してしまいました。 どうしたらいいですか。
+**回答**: Azure Cognitive Search インデックスを削除した場合、この操作は最終的なものであり、インデックスを復旧することはできません。
 
-古いデータを回復することはできません。 新しい QnA Maker リソースを作成し、ナレッジ ベースを再度作成してください。
+</details>
 
-### <a name="when-should-i-refresh-my-endpoint-keys"></a>エンドポイント キーは、どのようなときに更新すべきでしょうか?
+<details>
+<summary><b>Search Service の `testkb` インデックスを削除してしまいました。どうしたらいいですか。</b></summary>
 
-エンドポイント キーの更新は、鍵漏えいのおそれがある場合に行ってください。
+**回答**: 古いデータを回復することはできません。 新しい QnA Maker リソースを作成し、ナレッジ ベースを再度作成してください。
 
-### <a name="can-i-use-the-same-azure-cognitive-search-resource-for-knowledge-bases-using-multiple-languages"></a>複数の言語を使用したナレッジ ベースに同じ Azure Cognitive Search リソースを使用できますか?
+</details>
 
-複数の言語と複数のナレッジ ベースを使用するには、言語ごとに QnA Maker リソースを作成する必要があります。 これにより、言語ごとに個別の Azure Search サービスが作成されます。 1 つの Azure Search サービスに異なる言語のナレッジ ベースを混在させると、結果の関連性が低下します。
+<details>
+<summary><b>エンドポイント キーは、どのようなときに更新すべきでしょうか?</b></summary>
 
-### <a name="how-can-i-change-the-name-of-the-azure-cognitive-search-resource-used-by-qna-maker"></a>QnA Maker で使用される Azure Cognitive Search リソースの名前を変更するには、どうすればよいですか?
+**回答**: エンドポイント キーの更新は、鍵漏えいのおそれがある場合に行ってください。
 
-Azure Cognitive Search リソースの名前は、QnA Maker リソース名の後にいくつかのランダムな文字が追加されたものです。 そのため、QnA Maker の複数の Search リソースを識別することが難しくなります。 別の検索サービスを作成し (任意の方法で名前を付け)、それを QnA サービスに接続します。 手順は、[Azure Search をアップグレードする](How-To/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service)ために必要な手順と同様です。
+</details>
 
-### <a name="when-qna-maker-returns-runtime-core-is-not-initialized-how-do-i-fix-it"></a>QnA Maker から `Runtime core is not initialized,` が返された場合は、どのように解決すればよいですか?
+<details>
+<summary><b>複数の言語を使用したナレッジ ベースに同じ Azure Cognitive Search リソースを使用できますか?</b></summary>
 
-App Service のディスク領域がいっぱいになっている可能性があります。 ディスク領域を修正する手順は次のとおりです。
+**回答**: 複数の言語と複数のナレッジ ベースを使用するには、言語ごとに QnA Maker リソースを作成する必要があります。 これにより、言語ごとに個別の Azure Search サービスが作成されます。 1 つの Azure Search サービスに異なる言語のナレッジ ベースを混在させると、結果の関連性が低下します。
+
+</details>
+
+<details>
+<summary><b>QnA Maker で使用される Azure Cognitive Search リソースの名前を変更するには、どうすればよいですか?</b></summary>
+
+**回答**: Azure Cognitive Search リソースの名前は、QnA Maker リソース名の後にいくつかのランダムな文字が追加されたものです。 そのため、QnA Maker の複数の Search リソースを識別することが難しくなります。 別の検索サービスを作成し (任意の方法で名前を付け)、それを QnA サービスに接続します。 手順は、[Azure Search をアップグレードする](How-To/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service)ために必要な手順と同様です。
+
+</details>
+
+<details>
+<summary><b>QnA Maker から `Runtime core is not initialized,` が返された場合は、どのように解決すればよいですか?</b></summary>
+
+**回答**: App Service のディスク領域がいっぱいになっている可能性があります。 ディスク領域を修正する手順は次のとおりです。
 
 1. [Azure portal](https://portal.azure.com) で、QnA Maker の App Service を選択し、サービスを停止します。
 1. この App Service で、 **[開発ツール]** 、 **[高度なツール]** 、 **[移動]** の順に選択します。 これで新しいブラウザー ウィンドウが開きます。
@@ -155,20 +210,28 @@ App Service のディスク領域がいっぱいになっている可能性が�
 1. App Service を開始します。
 1. ナレッジ ベースにアクセスして動作していることを確認します。
 
+</details>
 
 ## <a name="integrate-with-other-services-including-bots"></a>ボットなどの他のサービスとの統合
 
-### <a name="do-i-need-to-use-bot-framework-in-order-to-use-qna-maker"></a>QnA Maker を利用するには Bot Framework を使う必要がありますか?
+<details>
+<summary><b>QnA Maker を利用するには Bot Framework を使う必要がありますか?</b></summary>
 
-いいえ。QnA Maker に関して [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) を使用する必要はありません。 ただし、QnA Maker は  [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0) に用意されているいくつかのテンプレートの 1 つとして提供されています。 Bot Service では、Microsoft Bot Framework を使用してインテリジェントなボットを迅速に開発し、サーバーレス環境で実行することができます。
+**回答**: いいえ。QnA Maker に関して [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) を使用する必要はありません。 ただし、QnA Maker は  [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0) に用意されているいくつかのテンプレートの 1 つとして提供されています。 Bot Service では、Microsoft Bot Framework を使用してインテリジェントなボットを迅速に開発し、サーバーレス環境で実行することができます。
 
-### <a name="how-can-i-create-a-new-bot-with-qna-maker"></a>QnA Maker で新しいボットを作成するにはどうすればよいですか?
+</details>
 
-Azure Bot Service でボットを作成するには、[こちら](./Tutorials/create-qna-bot.md)のドキュメントの手順に従ってください。
+<details>
+<summary><b>QnA Maker で新しいボットを作成するにはどうすればよいですか?</b></summary>
 
-### <a name="how-do-i-use-a-different-knowledge-base-with-an-existing-azure-bot-service"></a>既存の Azure Bot Service で別のナレッジ ベースを使用する方法
+**回答**: Azure Bot Service でボットを作成するには、[こちら](./Tutorials/create-qna-bot.md)のドキュメントの手順に従ってください。
 
-次のナレッジ ベースに関する情報が必要です。
+</details>
+
+<details>
+<summary><b>既存の Azure Bot Service で別のナレッジ ベースを使用するにはどうすればよいですか?</b></summary>
+
+**回答**: 次のナレッジ ベースに関する情報が必要です。
 
 * ナレッジ ベース ID。
 * ナレッジ ベースの公開されたエンドポイント カスタム サブドメイン名 (`host` と呼ばれます)。公開後に **[設定]** ページで見つかります。
@@ -178,19 +241,32 @@ Azure Bot Service でボットを作成するには、[こちら](./Tutorials/cr
 
 ナレッジ ベースのエンドポイント キーは、ABS サービスで `QnAAuthkey` としてラベルが付けられます。
 
-### <a name="can-two-or-more-client-applications-share-a-knowledge-base"></a>2 つ以上のクライアント アプリケーションでナレッジ ベースを共有できますか?
+</details>
 
-はい。ナレッジ ベースには、任意の数のクライアントからクエリを実行できます。 ナレッジ ベースからの応答が低速であるか、タイムアウトになっている場合は、ナレッジ ベースに関連付けられているアプリ サービスのサービス レベルをアップグレードすることを検討してください。
+<details>
+<summary><b>2 つ以上のクライアント アプリケーションでナレッジ ベースを共有できますか?</b></summary>
 
-### <a name="how-do-i-embed-the-qna-maker-service-in-my-website"></a>QnA Maker サービスを Web サイトに埋め込むにはどうすればよいですか?
+**回答**: はい。ナレッジ ベースには、任意の数のクライアントからクエリを実行できます。 ナレッジ ベースからの応答が低速であるか、タイムアウトになっている場合は、ナレッジ ベースに関連付けられているアプリ サービスのサービス レベルをアップグレードすることを検討してください。
 
-Web サイトに QnA Maker サービスを Web チャット コントロールとして埋め込むには、次の手順に従ってください。
+</details>
+
+<details>
+<summary><b>QnA Maker サービスを Web サイトに埋め込むにはどうすればよいですか?</b></summary>
+
+**回答**: Web サイトに QnA Maker サービスを Web チャット コントロールとして埋め込むには、次の手順に従ってください。
 
 1. [こちら](./Tutorials/create-qna-bot.md)の手順に従って、FAQ ボットを作成します。
 2. [こちら](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat)の手順に従って、Web チャットを有効にします。
 
+</details>
+
 ## <a name="data-storage"></a>データ ストレージ
 
-### <a name="what-data-is-stored-and-where-is-it-stored"></a>どのようなデータが、どこに保存されますか。
+<details>
+<summary><b>どのようなデータが、どこに保存されますか。</b></summary>
+
+**回答**:
 
 QnA Maker サービスを作成するときに、Azure リージョンを選択しました。 ナレッジ ベースとログ ファイルが、このリージョンに格納されます。
+
+</details>

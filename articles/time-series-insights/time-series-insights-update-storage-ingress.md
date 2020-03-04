@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0c7f2de0a454dceeff1946a93801c20ad81ab0ab
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 44c942e43cd4be1d04f56e828e3e17c58713a706
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122528"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77559846"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューのデータ ストレージおよびイングレス
 
@@ -171,7 +171,7 @@ Time Series Insights プレビューを使うと、コールド ストア デー
 
 ### <a name="data-availability"></a>データの可用性
 
-Azure Time Series Insights プレビューでは、最適なクエリ パフォーマンスのために、データのパーティション分割とインデックス付けが行われます。 インデックス付けが済むと、クエリでデータを使用できるようになります。 取り込まれたされるデータの量は、この可用性に影響を与える可能性があります。
+Azure Time Series Insights プレビューでは、最適なクエリ パフォーマンスのために、データのパーティション分割とインデックス付けが行われます。 データは、インデックスが作成された後、ウォーム ストア (有効な場合) とコールド ストアの両方からクエリを実行できるようになります。 取り込まれたされるデータの量は、この可用性に影響を与える可能性があります。
 
 > [!IMPORTANT]
 > プレビュー中は、データが利用可能になるまでに最大 60 秒の期間が発生することがあります。 待機時間が 60 秒を大きく上回る場合は、Azure portal を通じてサポート チケットを送信してください。

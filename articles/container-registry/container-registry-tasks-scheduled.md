@@ -3,12 +3,12 @@ title: チュートリアル - ACR タスクをスケジュールする
 description: このチュートリアルでは、1 つ以上のタイマー トリガーを設定して、定義したスケジュールに基づき、Azure Container Registry タスクを実行する方法を説明します。
 ms.topic: article
 ms.date: 06/27/2019
-ms.openlocfilehash: 37247289ef11873ac37dc78ad56548994220f894
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 4c0962a38cca73e4a03a7417baaa595cf0d97009
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454679"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617456"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>定義したスケジュールで ACR タスクを実行する
 
@@ -175,7 +175,7 @@ Cron 式で使われるタイム ゾーンは、協定世界時 (UTC) です。 
 
 各フィールドは、次の種類の値のいずれかを持つことができます。
 
-|種類  |例  |トリガーのタイミング  |
+|Type  |例  |トリガーのタイミング  |
 |---------|---------|---------|
 |特定の値 |<nobr>`"5 * * * *"`</nobr>|毎時、正時から 5 分後|
 |すべての値 (`*`)|<nobr>`"* 5 * * *"`</nobr>|5:00 UTC からの 1 時間の毎分 (1 日に 60 回 )|
@@ -197,8 +197,16 @@ Cron 式で使われるタイム ゾーンは、協定世界時 (UTC) です。 
 |`"30 9 * * 1-5"`|毎平日 9:30 UTC|
 |`"30 9 * Jan Mon"`|1 月の毎週月曜日の 9:30 UTC|
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-## <a name="next-steps"></a>次の手順
+このチュートリアル シリーズで作成したすべてのリソース (コンテナー レジストリ、コンテナー インスタンス、キー コンテナー、サービス プリンシパルなど) を削除するには、次のコマンドを実行します。
+
+```azurecli-interactive
+az group delete --resource-group $RES_GROUP
+az ad sp delete --id http://$ACR_NAME-pull
+```
+
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、タイマーによって自動的にトリガーされる Azure Container Registry タスクを作成する方法について学習しました。 
 

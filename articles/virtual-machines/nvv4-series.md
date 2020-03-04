@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 82720a99128facee2d1617d69f1ed852b232de43
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 3b1deceb8d5c6e2a22254b2719449e5adb069def
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492468"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565399"
 ---
 # <a name="nvv4-series-preview"></a>NVv4 シリーズ (プレビュー)
 
@@ -40,11 +40,11 @@ Premium Storage キャッシュ:サポートされています
 
 Windows を実行している Azure N シリーズ VM の GPU 機能を利用するには、NVIDIA または AMD GPU ドライバーがインストールされている必要があります。
 
-[NVIDIA GPU ドライバー拡張機能](/extensions/hpccompute-gpu-windows.md)は、N シリーズ VM 上に適切な NVIDIA CUDA または GRID ドライバーをインストールします。 この拡張機能は、Azure Portal または Azure PowerShell や Azure Resource Manager テンプレートなどのツールを使用してインストールまたは管理します。 サポートされるオペレーティング システムおよびデプロイ手順については、[NVIDIA GPU ドライバー拡張機能のドキュメント](/extensions/hpccompute-gpu-windows.md)を参照してください。 VM 拡張機能の一般情報については、「[Azure 仮想マシンの拡張機能と機能](/extensions/overview.md)」をご覧ください。
+[NVIDIA GPU ドライバー拡張機能](/extensions/hpccompute-gpu-windows.md)は、Windows N シリーズ VM 上に適切な NVIDIA CUDA または GRID ドライバーをインストールします。 この拡張機能は、Azure Portal または Azure PowerShell や Azure Resource Manager テンプレートなどのツールを使用してインストールまたは管理します。 サポートされるオペレーティング システムおよびデプロイ手順については、[NVIDIA GPU ドライバー拡張機能のドキュメント](/extensions/hpccompute-gpu-windows.md)を参照してください。 VM 拡張機能の一般情報については、「[Azure 仮想マシンの拡張機能と機能](/extensions/overview.md)」をご覧ください。
 
-NVIDIA GPU ドライバーを手動でインストールすることを選択した場合、サポートされるオペレーティング システム、ドライバー、およびインストールと検証の手順については、[Windows 用 N シリーズ GPU ドライバーのセットアップ](/windows/n-series-driver-setup.md)または [Linux 用 N シリーズ GPU ドライバーのセットアップ](/linux/n-series-driver-setup)に関する記事を参照してください。
+NVIDIA GPU ドライバーを手動でインストールすることを選択した場合、サポートされるオペレーティング システム、ドライバー、インストール、および検証手順については、「[Windows 用 N シリーズ GPU ドライバーのセットアップ](/windows/n-series-driver-setup.md)」を参照してください。
 
-AMD GPU ドライバーを手動でインストールする場合、サポートされるオペレーティング システム、ドライバー、インストールおよび検証手順については、[Windows 用 N シリーズ AMD GPU ドライバーのセットアップ](/windows/n-series-driver-setup.md)に関する記事を参照してください。
+AMD GPU ドライバーを手動でインストールする場合、サポートされるオペレーティング システム、ドライバー、インストールおよび検証手順については、[Windows 用 N シリーズ AMD GPU ドライバーのセットアップ](/windows/n-series-amd-driver-setup.md)に関する記事を参照してください。
 
 ## <a name="other-sizes"></a>その他のサイズ
 

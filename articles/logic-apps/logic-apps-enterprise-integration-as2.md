@@ -7,15 +7,18 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 08/22/2019
-ms.openlocfilehash: 9f72edecc07c34a0f176e52f6b70644f9ceb16e0
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.date: 02/27/2020
+ms.openlocfilehash: 0ce813e91750db3cdfa1e651a68fbb82d593eb32
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666705"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650566"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の AS2 メッセージを交換する
+
+> [!IMPORTANT]
+> 元の AS2 コネクタは非推奨になっているため、代わりに **AS2 (v2)** コネクタを使用するようにしてください。 このバージョンでは、元のバージョンと同じ機能が提供され、Logic Apps ランタイムにとってネイティブであり、スループットとメッセージ サイズに関して大幅なパフォーマンスの向上を実現します。 また、ネイティブ v2 コネクタでは、統合アカウントへの接続を作成する必要はありません。 代わりに、前提条件で説明されているように、コネクタを使用する予定のロジック アプリに統合アカウントがリンクされていることを確認してください。
 
 Azure Logic Apps で AS2 メッセージを操作するには、AS2 コネクタを使用できます。これには、AS2 通信を管理するためのトリガーとアクションが用意されています。 たとえば、メッセージの送信時にセキュリティと信頼性を確立するには、以下のアクションを使用できます。
 
@@ -46,9 +49,6 @@ Azure Logic Apps で AS2 メッセージを操作するには、AS2 コネクタ
 
 この記事では、AS2 エンコード アクションとデコード アクションを既存のロジック アプリに追加する方法について説明します。
 
-> [!IMPORTANT]
-> 元の AS2 コネクタは非推奨になるため、代わりに **AS2 (v2)** コネクタを使用するようにしてください。 このバージョンでは、元のバージョンと同じ機能が提供され、Logic Apps ランタイムにとってネイティブであり、スループットとメッセージ サイズに関して大幅なパフォーマンスの向上を実現します。 また、ネイティブ v2 コネクタでは、統合アカウントへの接続を作成する必要はありません。 代わりに、前提条件で説明されているように、コネクタを使用する予定のロジック アプリに統合アカウントがリンクされていることを確認してください。
-
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
@@ -63,9 +63,9 @@ Azure Logic Apps で AS2 メッセージを操作するには、AS2 コネクタ
 
 * 証明書の管理に [ Azure Key Vault ](../key-vault/key-vault-overview.md) を使用する場合は、ご利用のコンテナー キーで**暗号化**操作および**暗号化の解除**操作が許可されていることを確認してください。 そのようになっていない場合、エンコードとデコードのアクションは失敗します。
 
-  Azure portal で、ご利用のキー コンテナーに移動し、そのコンテナー キーの**許可された**操作を表示し、**暗号化**操作と**暗号化の解除**操作が選択されていることを確認します。
+  Azure portal で、ご利用のキー コンテナーのキーに移動し、そのキーの**許可された**操作を表示し、**暗号化**操作と**暗号化の解除**操作が選択されていることを確認します。例：
 
-  ![コンテナー キーの操作を確認する](media/logic-apps-enterprise-integration-as2/vault-key-permitted-operations.png)
+  ![コンテナー キーの操作を確認する](media/logic-apps-enterprise-integration-as2/key-vault-permitted-operations.png)
 
 <a name="encode"></a>
 
@@ -92,6 +92,9 @@ Azure Logic Apps で AS2 メッセージを操作するには、AS2 コネクタ
 
    ![メッセージのエンコード プロパティ](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
 
+> [!TIP]
+> 署名または暗号化されたメッセージの送信中に問題が発生した場合は、異なる SHA256 アルゴリズム フォームを試すことを検討してください。 AS2 の仕様では SHA256 フォームに関する情報は提供されないため、各プロバイダーでは独自の実装または形式が使用されます。
+
 <a name="decode"></a>
 
 ## <a name="decode-as2-messages"></a>AS2 メッセージをデコードする
@@ -116,8 +119,11 @@ Azure Logic Apps で AS2 メッセージを操作するには、AS2 コネクタ
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの Open API (以前の Swagger) ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、[コネクタのリファレンス ページ](/connectors/as2/)を参照してください。
+コネクタの Swagger ファイルに記述される、アクションや制限などのこのコネクタの技術的詳細は、[コネクタの参照ページ](https://docs.microsoft.com/connectors/as2/)を参照してください。 
+
+> [!NOTE]
+> [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリでは、代わりにこのコネクタの元の ISE のラベルがついたバージョンが [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 
-[Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md) について詳細を確認する
+* 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

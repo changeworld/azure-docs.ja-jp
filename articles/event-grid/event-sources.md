@@ -1,18 +1,18 @@
 ---
 title: Azure Event Grid のイベント ソース
-description: この記事では、Azure Event Grid でサポートされるイベント ソースについて説明します。 イベント ソースは、イベントの発生場所です。
+description: Azure サブスクリプション、Container Registry、カスタム トピック、Event Hubs、IoT Hub、Key Vault、Media Services、リソース グループ、Service Bus、ストレージ、マップ、App Configuration、Signal R、Machine Learning。
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 3a52d906d958fdfd1d7e09c6229b12af3204bc52
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: d4a426ea1432d0266b7ae9344afefe8ddac1d030
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846386"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561767"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure Event Grid のイベント ソース
 
@@ -134,7 +134,7 @@ Key Vault と Event Grid の統合は現在プレビュー段階です。
 BLOB の作成および削除のイベントに対応するために、Blob Storage のイベントをサブスクライブします。
 
 >[!NOTE]
-> イベントの統合をサポートしているのは、**StorageV2 (汎用 v2)** と **BlobStorage** の種類のストレージ アカウントだけです。 **Storage (汎用 v1)** では、Event Grid との統合はサポート*されていません*。
+> イベントの統合をサポートしているのは、**StorageV2 (汎用 v2)** と **BlobStorage** の種類のストレージ アカウントだけです。 **Storage (汎用 v1)** では、Event Grid との統合はサポート "*されていません*"。
 
 |タイトル  |説明  |
 |---------|---------|

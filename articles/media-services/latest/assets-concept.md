@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ab4eebf56abd2d328ccf86929a043d4354ca157c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 3860823787b860f2504d6fb13b9479d1feec9d28
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186308"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505820"
 ---
 # <a name="assets-in-azure-media-services"></a>Azure Media Services のアセット
 
@@ -28,7 +28,13 @@ Azure Media Services では、[アセット](https://docs.microsoft.com/rest/api
 
 **アーカイブ** ストレージ層は、既にエンコードされ、エンコード ジョブの出力が出力 BLOB コンテナーに配置されている非常に大きなソース ファイルの場合のみ推奨されます。 アセットに関連付け、コンテンツのストリーム配信や分析に使用する出力コンテナー内の BLOB は、**ホット**または**クール** ストレージ層に存在する必要があります。
 
-### <a name="naming-blobs"></a>BLOB の名前付け
+### <a name="naming"></a>名前を付ける 
+
+#### <a name="assets"></a>アセット
+
+アセット名は一意である必要があります。 Media Services v3 のリソース名 (アセット、ジョブ、変換など) には、Azure Resource Manager の名前付け規則が適用されます。 詳細については、「[名前付け規則](media-services-apis-overview.md#naming-conventions)」を参照してください。
+
+#### <a name="blobs"></a>BLOB
 
 アセット内のファイルまたは BLOB の名前は、[BLOB 名の要件](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)と[NTFS 名の要件](https://docs.microsoft.com/windows/win32/fileio/naming-a-file)の両方に従っている必要があります。 これらの要件は、ファイルが BLOB ストレージからローカルの NTFS ディスクにコピーされて処理できるようにするためのものです。
 
@@ -129,7 +135,7 @@ curl -X PUT \
 
 「[Media Services エンティティのフィルター処理、順序付け、ページング](entities-overview.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ファイルのストリーミング](stream-files-dotnet-quickstart.md)
 * [クラウド DVR の使用](live-event-cloud-dvr.md)

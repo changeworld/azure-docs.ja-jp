@@ -6,7 +6,7 @@ documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41a4eb565f49b75b64cc072d3017c41000154e2a
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 12ba93a7e3de3c290d5952227b67843c0a9846d3
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77065826"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544268"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>スコープ フィルターを使用した属性ベースのアプリケーション プロビジョニング
 この記事では、スコープ フィルターを使用して属性ベースのルールを定義する方法について説明します。このルールで、アプリケーションに対してプロビジョニングするユーザーを指定します。
@@ -98,10 +98,12 @@ Azure AD プロビジョニング サービスによって処理されるユー�
    i. **Greater_Than**。 評価される属性が値よりも大きい場合、句は "true" を返します。 スコープ フィルターに指定する値は整数である必要があり、ユーザーの属性は整数 [0,1,2,...] である必要があります。 
    
    j. **Greater_Than_OR_EQUALS**。 評価された属性が値以上の場合、句は "true" を返します。 スコープ フィルターに指定する値は整数である必要があり、ユーザーの属性は整数 [0,1,2,...] である必要があります。 
+   
+   k. **Includes**。 評価される属性に、[こちら](https://docs.microsoft.com/dotnet/api/system.string.contains?view=netframework-4.8)で説明されている文字列値が含まれる場合 (大文字と小文字を区別します)、句は "true" を返します。 
 
 
 >[!IMPORTANT] 
-> Includes フィルターと IsMemberOf フィルターはサポートされていません。 これらは間もなく UI から削除されます。
+> IsMemberOf フィルターは現在サポートされていません。
 
 9. 必要に応じて、手順 7 ～ 8 を繰り返してスコープ句を追加します。
 

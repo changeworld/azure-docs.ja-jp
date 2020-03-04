@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service (AKS) での Windows Server ノード プールの制限事項
 description: Windows Server ノード プールとアプリケーション ワークロードを Azure Kubernetes Service (AKS) 内で実行するときの既知の制限事項について説明します
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: mlearned
-ms.openlocfilehash: 3dd7399b68388d92d38b0f64c6e816cb94b3f295
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 157f890c65efd0de9fa7d8d7aa5cb43b4a902dfa
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768573"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615645"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Windows Server ノード プールとアプリケーション ワークロードについての現在の制限事項
 
@@ -54,9 +51,9 @@ AKS クラスターのマスター ノード (コントロール プレーン) �
 
 Windows ノード プールの AKS クラスターでは、Azure CNI (高度) ネットワーク モデルを使用する必要があります。 Kubenet (基本) ネットワークはサポートされていません。 ネットワーク モデルの違いの詳細については、[AKS のアプリケーションにおけるネットワークの概念][azure-network-models]に関する記事を参照してください。 - Azure CNI ネットワーク モデルでは、IP アドレス管理に関する追加の計画と考慮事項が必要です。 Azure CNI を計画して実装する方法の詳細については、[AKS での Azure CNI ネットワークの構成][configure-azure-cni]に関するページを参照してください。
 
-## <a name="can-i-change-the-min--of-pods-per-node"></a>ノードあたりのポッドの最小数を変更できますか?
+## <a name="can-i-change-the-max--of-pods-per-node"></a>ノードあたりのポッドの最大数を変更できますか?
 
-現時点では、クラスターの信頼性を確保するため、最小値を 30 ポッドに設定する必要があります。
+現時点では、クラスターの信頼性を確保するため、最大値を 30 ポッドに設定する必要があります。
 
 ## <a name="how-do-patch-my-windows-nodes"></a>Windows ノードに修正プログラムを適用するにはどうすればいいですか?
 

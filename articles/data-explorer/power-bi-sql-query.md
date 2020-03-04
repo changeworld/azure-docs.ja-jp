@@ -1,5 +1,5 @@
 ---
-title: Power BI で SQL クエリを使用して Azure Data Explorer のデータを視覚化する
+title: Power BI SQL クエリを使用して Azure Data Explorer のデータを視覚化する
 description: この記事では、Power BI でデータを視覚化するための 3 つのオプションのうち、1 つ (Azure Data Explorer クラスターに対する SQL クエリ) の方法について説明します。
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: e4e7858a54f3002a511269a2519135d5ac24ed68
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d402d4c1ee77d0f97d2a5c3bdf43d0cc62aac096
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024082"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560475"
 ---
 # <a name="visualize-data-from-azure-data-explorer-using-a-sql-query-in-power-bi"></a>Power BI で SQL クエリを使用して Azure Data Explorer のデータを視覚化する
 
@@ -48,11 +48,11 @@ Azure Data Explorer ではネイティブの照会言語を使用するのが一
 
     ![データベース、テーブル、クエリ オプション](media/power-bi-sql-query/database-table-query.png)
 
-    **設定** | **値** | **フィールドの説明**
+    **設定** | **Value** | **フィールドの説明**
     |---|---|---|
     | サーバー | *help.kusto.windows.net* | ヘルプ クラスターのURL (*https://* なし)。 その他のクラスターでは、URL が *\<クラスター名\>.\<リージョン\>.kusto.windows.net* 形式になります。 |
-    | Database | *サンプル* | 接続先のクラスターでホストされるサンプル データベース。 |
-    | データ接続モード | *インポート* | Power BI がデータをインポートするか、直接データ ソースに接続するかを決定します。 このコネクタでは、どちらかのオプションを使用できます。 |
+    | データベース | *サンプル* | 接続先のクラスターでホストされるサンプル データベース。 |
+    | データ接続モード | *[インポート]* | Power BI がデータをインポートするか、直接データ ソースに接続するかを決定します。 このコネクタでは、どちらかのオプションを使用できます。 |
     | コマンド タイムアウト | 空白 | タイムアウト エラーがスローされるまでのクエリの実行時間。 |
     | SQL ステートメント | この表の下に記載されているクエリをコピー | Azure Data Explorer によってネイティブ クエリに変換される SQL ステートメント。 |
     | その他のオプション | 既定値のまま | Azure Data Explorer クラスターには該当しないオプション。 |
@@ -70,7 +70,7 @@ Azure Data Explorer ではネイティブの照会言語を使用するのが一
 
 1. **[help.kusto.windows.net: Samples]** 画面で **[読み込み]** を選択します。
 
-    ![データを読み込む](media/power-bi-sql-query/load-data.png)
+    ![データの読み込み](media/power-bi-sql-query/load-data.png)
 
     メイン Power BI ウィンドウに、テーブルがレポート ビューで開き、サンプル データに基づいてレポートを作成することができます。
 
@@ -78,10 +78,10 @@ Azure Data Explorer ではネイティブの照会言語を使用するのが一
 
 [!INCLUDE [data-explorer-power-bi-visualize-basic](../../includes/data-explorer-power-bi-visualize-basic.md)]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この記事で作成したレポートが不要になったら、Power BI Desktop (.pbix) ファイルを削除してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Power BI 用 Azure Data Explorer コネクタを使用してデータを視覚化する](power-bi-connector.md)

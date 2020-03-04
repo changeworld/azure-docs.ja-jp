@@ -8,31 +8,35 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 07924201d4208a502aa979dda476c57cf6edd749
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 3ca3026a259e7f23bbfa01398a96cbdbfae1321c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77430552"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623976"
 ---
-# <a name="set-up-advanced-threat-protection-for-azure-key-vault-preview"></a>Azure Key Vault 用 Advanced Threat Protection を設定する (プレビュー)
+# <a name="threat-protection-for-azure-key-vault-preview"></a>Azure Key Vault 用 Threat Protection (プレビュー)
 
 Azure Key Vault 用 Advanced Threat Protection によって、セキュリティ インテリジェンスにレイヤーが追加されます。 このツールを使うと、Key Vault アカウントに対して害を及ぼす可能性のあるアクセスの試行または悪用を検出できます。 Azure Security Center でネイティブの Advanced Threat Protection を使用することにより、セキュリティの専門家でなくとも脅威に対処できます。また、追加のセキュリティ監視システムを習得する必要もありません。
 
 Security Center で異常なアクティビティが検出されると、アラートが表示されます。 また、サブスクリプション管理者に、不審なアクティビティの詳細と、特定された脅威を調査して修復する方法に関する推奨事項をメールで送信することもできます。
 
-## <a name="set-up-advanced-threat-protection-from-azure-security-center"></a>Azure Security Center から Advanced Threat Protection を設定する
+## <a name="configuring-threat-protection-from-security-center"></a>Security Center から Threat Protection を構成する
 
-既定では、Security Center の Standard レベルをサブスクライブすると、すべての Key Vault アカウントで Advanced Threat Protection が有効になります。 詳細については、[価格](security-center-pricing.md)に関するページをご覧ください。
+既定では、Security Center の Standard 価格レベルにサブスクライブすると、すべての Key Vault アカウントで Advanced Threat Protection が有効になります。 詳細については、[価格](security-center-pricing.md)に関するページをご覧ください。
 
-特定のサブスクリプションの保護を有効または無効にするには、次の手順に従います。
+特定のサブスクリプションの保護を有効または無効にするには、次のようにします。
 
 1. Security Center の左ペインから、 **[価格と設定]** を選択します。
+
 1. 脅威保護を有効または無効にするストレージ アカウントのサブスクリプションを選択します。
+
 1. **[価格レベル]** を選択します。
+
 1. **[リソースの種類ごとに価格レベルを選択]** グループから、 **[Key Vaults]** 行を見つけて、 **[有効]** または **[無効]** を選択します。
 
     [![Azure Security Center で Key Vault の Advanced Threat Protection を有効または無効にする](media/advanced-threat-protection-key-vault/atp-for-akv-enable-atp-for-akv.png)](media/advanced-threat-protection-key-vault/atp-for-akv-enable-atp-for-akv.png#lightbox)
+
 1. **[保存]** を選択します。
 
 
@@ -40,6 +44,7 @@ Security Center で異常なアクティビティが検出されると、アラ�
 
 この記事では、Azure Key Vault 用 Advanced Threat Protection を有効または無効にする方法について説明しました。 
 
-その他の関連資料については、次の記事を参照してください。
+関連資料については、次の記事をご覧ください。
 
-- [Security Center での Azure サービス レイヤーの脅威検出](security-center-alerts-service-layer.md):この記事では、Azure Key Vault の Advanced Threat Protection に関連したアラートについて説明します。
+- [Azure Security Center での脅威の防止](threat-protection.md) -- この記事では、Azure Security Center のセキュリティ アラートのソースについて説明します。
+- [Key Vault セキュリティ アラート](alerts-reference.md#alerts-azurekv)--すべての Azure Security Center アラートの参照テーブルの Key Vault セクション

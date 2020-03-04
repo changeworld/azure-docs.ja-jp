@@ -1,63 +1,42 @@
 ---
 title: Personalizer を構成する
-titleSuffix: Azure Cognitive Services
 description: サービス構成には、サービスによる報酬の処理方法、サービスによる探索の頻度、モデルの再トレーニング頻度、格納するデータ量などがあります。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 10/23/2019
-ms.author: diberry
-ms.openlocfilehash: d20f81bf7db2e098f2bca674c5540bc067577f30
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.date: 02/19/2020
+ms.openlocfilehash: ac31a9f907defeb44dbd4748a4395d3aec34d30c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833906"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623728"
 ---
-# <a name="configure-personalizer"></a>Personalizer を構成する
+# <a name="configure-personalizer-learning-loop"></a>Personalizer の学習ループを構成する
 
 サービス構成には、サービスによる報酬の処理方法、サービスによる探索の頻度、モデルの再トレーニング頻度、格納するデータ量などがあります。
 
-## <a name="create-personalizer-resource"></a>Personalizer リソースを作成する
-
-フィードバック ループごとに Personalizer リソースを作成します。
-
-1. [Azure ポータル](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)にサインインします。 前のリンクから、Personalizer サービスの**作成**ページに移動できます。
-1. サービス名を入力し、サブスクリプション、場所、価格レベル、リソース グループを選択します。
-1. 確認を選択し、 **[作成]** を選択します。
+Azure portal で、その Personalizer リソースの **[構成]** ページで学習ループを構成します。
 
 <a name="configure-service-settings-in-the-azure-portal"></a>
-
-## <a name="configure-service-in-the-azure-portal"></a>Azure portal でサービスを構成する
-
-1. [Azure portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) にサインインする
-1. Personalizer リソースを検索します。
-1. **[リソース管理]** セクションで、 **[設定]** を選択します。
-
-    Azure portal を終了する前に、 **[キー]** のページからいずれかのリソース キーをコピーします。 これは、[Personalizer SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer) を使用するために必要になります。
-
 <a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>
 
-### <a name="configure-reward-for-the-feedback-loop-based-on-use-case"></a>ユース ケースに基づいてフィードバック ループの報酬を構成する
+## <a name="configure-rewards-for-the-feedback-loop"></a>フィードバック ループの報酬を構成する
 
-サービスでフィードバック ループの報酬の使用を構成します。 以下の値を変更すると、現在の Personalizer モデルはリセットされ、過去 2 日分のデータで再トレーニングされます。
+学習ループの報酬を使用するようにサービスを構成します。 以下の値を変更すると、現在の Personalizer モデルがリセットされ、過去 2 日分のデータで再トレーニングされます。
 
-![フィードバック ループの報酬値を構成する](media/settings/configure-model-reward-settings.png)
+> [!div class="mx-imgBorder"]
+> ![フィードバック ループの報酬値を構成する](media/settings/configure-model-reward-settings.png)
 
-|値|目的|
+|Value|目的|
 |--|--|
 |Reward wait time (報酬の待機時間)|Personalizer が、Rank 呼び出しに対する報酬値を収集する時間 (Rank 呼び出しの時点から) を設定します。 この値を設定するには、次のことを決定します。「Personalizer で報酬呼び出しをどの程度待機する必要があるか。」 このウィンドウの後に到着した報酬はログには記録されますが、学習には使用されません。|
-|Default reward (既定の報酬)|Rank 呼び出しに関連付けられた報酬の待機時間ウィンドウ中に Personalizer が報酬呼び出しを受信しなかった場合、Personalizer は既定の報酬を割り当てます。 既定では、またほとんどのシナリオでは、既定の報酬は 0 です。|
+|Default reward (既定の報酬)|Rank 呼び出しに関連付けられた報酬の待機時間ウィンドウ中に Personalizer が報酬呼び出しを受信しなかった場合、Personalizer は既定の報酬を割り当てます。 既定では、またほとんどのシナリオでは、既定の報酬はゼロ (0) です。|
 |Reward aggregation (報酬の集計)|同じ Rank API 呼び出しに対して複数の報酬を受信した場合は、集計方式として **[Sum]\(合計\)** または **[Earliest]\(最も早い\)** が使用されます。 [Earliest]\(最も早い\) の場合、最も早く受信したスコアが採用され、残りは破棄されます。 これは、重複する可能性がある呼び出しの中から一意の報酬を選択する場合に便利です。 |
 
 これらの値を変更した後は、必ず **[保存]** を選択してください。
 
-### <a name="configure-exploration"></a>探索を構成する
+## <a name="configure-exploration-to-allow-the-learning-loop-to-adapt"></a>学習ループを調整できるように探索を構成する
 
-パーソナル化では、新しいパターンを検出し、代替手段を探ることによって、時間の経過に伴うユーザーの行動の変化に適応できます。 **[探索]** の値は、Rank 呼び出しの何パーセントが探索で応答されるかを決定します。
+パーソナル化では、トレーニングされたモデルの予測を使用する代わりに代替手段を探ることによって、新しいパターンを検出し、時間の経過に伴うユーザーの行動の変化に適応できます。 **[探索]** の値は、Rank 呼び出しの何パーセントが探索で応答されるかを決定します。
 
 この値を変更すると、現在の Personalizer モデルはリセットされ、過去 2 日分のデータで再トレーニングされます。
 
@@ -65,43 +44,39 @@ ms.locfileid: "75833906"
 
 この値を変更した後は、必ず **[保存]** を選択してください。
 
-### <a name="model-update-frequency"></a>モデルの更新頻度
+<a name="model-update-frequency"></a>
 
-すべてのアクティブ イベントからの Reward API 呼び出しからトレーニングされた最新のモデルは、Personalizer の Rank 呼び出しで自動的に使用されません。 **[Model update frequency]\(モデルの更新頻度\)** は、Rank 呼び出しによって使用されるモデルが更新される頻度を設定します。
+## <a name="configure-model-update-frequency-for-model-training"></a>モデル トレーニングのためのモデル更新頻度を構成する
 
-モデルの更新頻度を高くすると、ユーザーの動作の変化を詳細に追跡したい場合に便利です。 例としては、ライブ ニュース、バイラル コンテンツ、またはライブ商品入札で実行されるサイトがあります。 これらのシナリオでは、15 分間の頻度を使用できます。 ほとんどのユース ケースでは、更新頻度が低い方が効果的です。 1 分間の更新頻度は、Personalizer を使用してアプリケーションのコードをデバッグするとき、デモを実行するとき、または機械学習の側面を対話形式でテストするときに有用です。
+**[Model update frequency]\(モデルの更新頻度\)** は、モデルがトレーニングされる頻度を設定します。
+
+|頻度の設定|目的|
+|--|--|
+|1 分|1 分間の更新頻度は、Personalizer を使用してアプリケーションのコードを**デバッグ**するとき、デモを実行するとき、または機械学習の側面を対話形式でテストするときに有用です。|
+|約 15 分|モデルの更新頻度を高くすると、ユーザー動作の**変化を詳細に追跡**したい場合に便利です。 例としては、ライブ ニュース、バイラル コンテンツ、またはライブ商品入札で実行されるサイトがあります。 これらのシナリオでは、15 分間の頻度を使用できます。 |
+|1 時間|ほとんどのユース ケースでは、更新頻度が低い方が効果的です。|
 
 ![[Model update frequency]\(モデルの更新頻度\) により、新しい Personalizer モデルを再トレーニングする頻度を設定します。](media/settings/configure-model-update-frequency-settings-15-minutes.png)
 
 この値を変更した後は、必ず **[保存]** を選択してください。
 
-### <a name="data-retention"></a>データの保持
+## <a name="data-retention"></a>データの保持
 
 **[Data retention period]\(データ保持期間\)** により、Personalizer がデータのログを保持する日数を設定します。 Personalizer の効果を測定し、学習ポリシーを最適化するために使用する[オフライン評価](concepts-offline-evaluation.md)を実行するには、過去のデータ ログが必要です。
 
 この値を変更した後は、必ず **[保存]** を選択してください。
 
-## <a name="export-the-personalizer-model"></a>Personalizer モデルをエクスポートする
+<a name="clear-data-for-your-learning-loop"></a>
 
-**[モデルと学習設定]** のリソース管理セクションで、モデルの作成日と最終更新日を確認し、現在のモデルをエクスポートします。 Azure portal または Personalizer API を使用すると、アーカイブ目的でモデル ファイルをエクスポートすることができます。
+## <a name="settings-that-include-resetting-the-model"></a>モデルのリセットを含む設定
 
-![現在の Personalizer モデルをエクスポートする](media/settings/export-current-personalizer-model.png)
+次のアクションには、過去 2 日間のデータを使ったモデルの即時再トレーニングが含まれます。
 
-## <a name="clear-data-for-your-learning-loop"></a>学習ループのデータを消去する
+* 報酬
+* 探索
 
-1. Azure portal の Personalizer リソースで、 **[モデルと学習設定]** ページの **[データの消去]** を選択します。
-1. すべてのデータを消去し、学習ループを元の状態にリセットするには、3 つのチェック ボックスをすべてオンにします。
-
-    ![Azure portal で、Personalizer リソースからデータを消去します。](./media/settings/clear-data-from-personalizer-resource.png)
-
-    |値|目的|
-    |--|--|
-    |ログに記録された個人用設定と報酬のデータ。|このログ データは、オフライン評価で使用されます。 リソースをリセットする場合は、データを消去します。|
-    |Personalizer モデルのリセット。|このモデルは、再トレーニングのたびに変わります。 このトレーニング頻度は、 **[構成]** ページの **[upload model frequency]\(モデルのアップロードの頻度\)** で指定されています。 |
-    |学習ポリシーを既定に設定する。|オフライン評価の一部として学習ポリシーを変更した場合、これにより元の学習ポリシーにリセットされます。|
-
-1. **[選択したデータの消去]** を選択して、消去プロセスを開始します。 状態は、右上のナビゲーションにある Azure 通知で報告されます。
+すべてのデータを[クリア](how-to-manage-model.md)するには、**[モデルと学習設定]** ページを使用します。
 
 ## <a name="next-steps"></a>次のステップ
 
-[学習ポリシーの管理方法を確認する](how-to-learning-policy.md)
+[モデルを管理する方法について学習する](how-to-manage-model.md)

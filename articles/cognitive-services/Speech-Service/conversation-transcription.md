@@ -1,23 +1,23 @@
 ---
-title: 会話の文字起こし (プレビュー) とは - Speech サービス
+title: 会話の文字起こし (プレビュー) について - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: 会話の文字起こしとは、音声認識、話者識別、および各話者の文の属性 (ダイアライゼーションとも呼ばれる) を組み合わせて、任意の会話のリアルタイムまたは非同期 (あるいはその両方) の文字起こしを提供する音声テキスト変換ソリューションです。
 services: cognitive-services
-author: markamos
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 07e3e498a3bd2693b72079a8a731c3d139414c90
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 01/31/2020
+ms.author: dapine
+ms.openlocfilehash: 8e36a5c4d9ce2bc38565d6c9c256ed2cc7efe357
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806288"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561070"
 ---
-# <a name="what-is-conversation-transcription-preview"></a>会話の文字起こし (プレビュー) とは
+# <a name="about-conversation-transcription-preview"></a>会話の文字起こし (プレビュー) について
 
 会話の文字起こしとは、音声認識、話者識別、および各話者の文の属性 (_ダイアライゼーション_ とも呼ばれる) を組み合わせて、任意の会話のリアルタイムまたは非同期 (あるいはその両方) の文字起こしを提供する[音声テキスト変換](speech-to-text.md) ソリューションです。 会話の文字起こしでは、会話の話者を区別して、誰がいつ何を発言したのかを特定します。また、開発者はアプリケーションに音声テキスト変換を簡単に追加して、複数話者のダイアライゼーションを実行できます。
 
@@ -44,7 +44,7 @@ ms.locfileid: "74806288"
 
 会議の参加者は、会話の文字起こしにメモを取るのを任せて、会議に集中できます。 参加者は、メモを取ることで会議中に何かを聞き逃したりすることなく、積極的に会議に参加し、次のステップにすばやく進むことができます。
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 
 ここに、会話の文字起こしのしくみの概要を示します。
 
@@ -75,7 +75,7 @@ ms.locfileid: "74806288"
 
 現時点では、会話の文字起こしは "en-US" と "zh-CN" をサポートしており、利用できるリージョンは  *centralus* と  *eastasia* です。 その他のロケールのサポートが必要な場合は、[会話の文字起こし機能の担当者](mailto:CTSFeatureCrew@microsoft.com)にお問い合わせください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [リアルタイムで会話を文字起こしする](how-to-use-conversation-transcription-service.md)

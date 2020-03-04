@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 2/23/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 820e7187332b02993d3d8bcba9c01958cfbdd61d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b8a42723a9b56665160e660c0ea1451253c3d185
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965814"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588979"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Azure Active Directory を使用して BLOB とキューへのアクセスを承認する
 
@@ -27,7 +27,7 @@ Azure AD での承認は、すべてのパブリック リージョンおよび�
 
 Blob Storage ではさらに、Azure AD 資格情報で署名された Shared Access Signature (SAS) を作成することもサポートされています。 詳細については、[Shared Access Signatures を使用したデータへの制限付きアクセスの許可](storage-sas-overview.md)に関するページを参照してください。
 
-Azure Files では、ドメイン参加 VM に関してのみ SMB 経由の Azure AD での承認がサポートされています。 Azure Files に対して SMB 経由で Azure AD を使用する場合の詳細については、[SMB を使用した Azure Files の Azure Active Directory 認証の概要](../files/storage-files-active-directory-overview.md)に関するページを参照してください。
+Azure Files はドメイン参加 VM に関してのみ SMB 経由の AD (プレビュー) または Azure AD DS (GA) での承認をサポートしています。 Azure Files での SMB 経由の AD (プレビュー) または Azure AD DS (GA) を使用する方法の詳細については、「[SMB アクセスに対する Azure Files ID ベース認証サポートの概要](../files/storage-files-active-directory-overview.md)」を参照してください。
 
 Azure AD での承認は Azure Table Storage ではサポートされていません。 Table Storage への要求を承認するには、共有キーを使用します。
 

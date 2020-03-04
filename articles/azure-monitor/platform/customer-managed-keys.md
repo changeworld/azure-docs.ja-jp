@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 02/05/2020
-ms.openlocfilehash: eff751465c7b64429968b0305e6ad483943c374b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 02/24/2020
+ms.openlocfilehash: 2ea77be0a7aabefaf8f6ed9a5bd841ea1fdda263
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048182"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620307"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Monitor のカスタマー マネージド キーの構成 
 
@@ -86,8 +86,8 @@ Application Insights CMK の構成の場合、手順 3 と 6 については付�
 1. サブスクリプションのホワイトリスト登録 - これは、この初期アクセス機能に必要です
 2. Azure Key Vault の作成とキーの格納
 3. *クラスター* リソースを作成する
-4. Key Vault へのアクセス許可を付与する
-5. Azure Monitor のデータストア (ADX クラスター) のプロビジョニング
+4. Azure Monitor のデータストア (ADX クラスター) のプロビジョニング
+5. Key Vault へのアクセス許可を付与する
 6. Log Analytics ワークスペースの関連付け
 
 この手順は現時点で UI ではサポートされておらず、プロビジョニング プロセスは REST API を介して実行されます。
@@ -135,7 +135,7 @@ Azure Key Vault リソースを作成してから、データの暗号化に使�
 
 ### <a name="create-cluster-resource"></a>*クラスター* リソースを作成する
 
-このリソースは、Key Vault とワークスペースの間の中間 ID 接続として使用されます。 サブスクリプションがホワイトリストに登録されたことを示すメッセージが表示されたら、ワークスペースが配置されているリージョンで Log Analytics の*クラスター* リソースを作成します。 Application Insights と Log Analytics には別々のクラスター リソースが必要です。 クラスター リソースの種類は、作成時に "clusterType" プロパティを 'LogAnalytics' または 'ApplicationInsights' のいずれかに設定することによって定義されます。 クラスター リソースの種類を変更することはできません。
+このリソースは、Key Vault とワークスペースの間の中間 ID 接続として使用されます。 サブスクリプションがホワイトリストに登録されたことを示すメッセージが表示されたら、ワークスペースが配置されているリージョンで Log Analytics の*クラスター* リソースを作成します。 Application Insights と Log Analytics には別々のクラスター リソースが必要です。 *クラスター* リソースの種類は、作成時に "clusterType" プロパティを 'LogAnalytics' または 'ApplicationInsights' のいずれかに設定することによって定義されます。 クラスター リソースの種類を変更することはできません。
 
 Application Insights CMK の構成の場合、この手順については付録の内容に従ってください。
 
@@ -156,57 +156,69 @@ Content-type: application/json
    }
 }
 ```
+この ID は、作成時に "*クラスター*" リソースに割り当てられます。
 "clusterType" の値は、Application Insights CMK の "ApplicationInsights" です。
 
 **応答**
 
-ID は、作成時に*クラスター* リソースに割り当てられます。
+202 受理されました。 これは、非同期操作に対する標準の Resource Manager 応答です。
 
-```json
-{
-  "identity": {
-    "type": "SystemAssigned",
-    "tenantId": "tenant-id",
-    "principalId": "principle-id"
-  },
-  "properties": {
-    "provisioningState": "Succeeded",
-    "clusterType": "LogAnalytics", 
-    "clusterId": "cluster-id"
-  },
-  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",    //The cluster resource Id
-  "name": "cluster-name",
-  "type": "Microsoft.OperationalInsights/clusters",
-  "location": "region-name"
-}
-
-```
-"principalId" は、*クラスター* リソースのマネージド ID サービスによって生成される GUID です。
-
-> [!IMPORTANT]
-> "cluster-id" の値は、次の手順で必要になるため、コピーして保持します。
-
-何らかの理由で (別の名前または clusterType を使用して作成する場合など) *クラスター* リソースを削除する場合は、次の API 呼び出しを使用します。
+何らかの理由で (別の名前または clusterType を使用して作成する場合など) "*クラスター*" リソースを削除する場合は、次の REST API を使用します。
 
 ```rst
 DELETE
 https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
 ```
 
+### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Azure Monitor のデータストア (ADX クラスター) のプロビジョニング
+
+この機能の初期アクセス期間中は、前の手順が完了した後に、製品チームによって ADX クラスターが手動でプロビジョニングされます。 Microsoft チャネルを使用して、"*クラスター*" リソースの詳細を提供します。 "*クラスター*" リソースの GET REST API からの JSON 応答をコピーします。
+
+```rst
+GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+Authorization: Bearer <token>
+```
+
+**応答**
+```json
+{
+  "identity": {
+    "type": "SystemAssigned",
+    "tenantId": "tenant-id",
+    "principalId": "principal-Id"
+    },
+  "properties": {
+    "provisioningState": "Succeeded",
+    "clusterType": "LogAnalytics", 
+    "clusterId": "cluster-id"
+    },
+  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
+  "name": "cluster-name",
+  "type": "Microsoft.OperationalInsights/clusters",
+  "location": "region-name"
+  }
+```
+
+"principalId" は、*クラスター* リソースのマネージド ID サービスによって生成される GUID です。
+
+> [!IMPORTANT]
+> "cluster-id" の値は、次の手順で必要になるため、コピーして保持します。
+
+
 ### <a name="grant-key-vault-permissions"></a>Key Vault アクセス許可を付与する
 
-Key Vault を更新し、クラスター リソースのアクセス ポリシーを追加します。 その後、Key Vault へのアクセス許可は、データの暗号化に使用される Azure Monitor Storage に反映されます。
+> [!IMPORTANT]
+> この手順は、Azure Monitor データストア (ADX クラスター) のプロビジョニングが満たされたことの確認を、Microsoft チャネルを通じて製品グループから受信した後に実行する必要があります。 このプロビジョニングの前に Key Vault アクセス ポリシーを更新すると、失敗する場合があります。
+
+"*クラスター*" リソースにアクセス許可を付与する新しいアクセス ポリシーで Key Vault を更新します。 これらのアクセス許可は、データの暗号化のために下層の Azure Monitor ストレージによって使用されます。
 Azure portal で Key Vault を開き、[アクセス ポリシー]、[+ アクセス ポリシーの追加] の順にクリックして、次の設定で新しいポリシーを作成します。
 
-- [キーのアクセス許可]: [取得]、[キーを折り返す]、および [キーの折り返しを解除] を選択します。
-
-- [プリンシパルの選択]: クラスター ID を入力します。これは、前の手順の応答にある "clusterId" の値です。
+- [キーのアクセス許可]: [取得]、[キーを折り返す]、および [キーの折り返しを解除] の各アクセス許可を選択します。
+- [プリンシパルの選択]: 前の手順の応答で返された cluster-id 値 を入力します。
 
 ![Key Vault アクセス許可の付与](media/customer-managed-keys/grant-key-vault-permissions.png)
 
 *[取得]* アクセス許可は、キーを保護し、Azure Monitor データへのアクセスを保護するために、Key Vault が回復可能として構成されていることを確認するために必要です。
-
-*クラスター* リソースが Azure Resource Manager に反映されるまで数分かかります。 *クラスター* リソースの作成直後にこのアクセス ポリシーを構成すると、一時的なエラーが発生する場合があります。 この場合は、数分後に再試行してください。
 
 ### <a name="update-cluster-resource-with-key-identifier-details"></a>キー識別子の詳細を使用してクラスター リソースを更新する
 
@@ -225,16 +237,16 @@ Content-type: application/json
 
 {
    "properties": {
-       "KeyVaultProperties": {
-            KeyVaultUri: "https://<key-vault-name>.vault.azure.net",
-            KeyName: "<key-name>",
-            KeyVersion: "<current-version>"
-            },
+     "KeyVaultProperties": {
+       KeyVaultUri: "https://<key-vault-name>.vault.azure.net",
+       KeyName: "<key-name>",
+       KeyVersion: "<current-version>"
+       },
    },
    "location":"<region-name>",
    "identity": { 
-        "type": "systemAssigned" 
-        }
+     "type": "systemAssigned" 
+     }
 }
 ```
 "KeyVaultProperties" には Key Vault キー識別子の詳細が含まれています。
@@ -264,44 +276,6 @@ Content-type: application/json
   "location": "region-name"
 }
 ```
-
-### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Azure Monitor のデータストア (ADX クラスター) のプロビジョニング
-
-この機能の初期アクセス期間中は、前の手順が完了した後に、製品チームによって ADX クラスターが手動でプロビジョニングされます。 Microsoft とのチャネルを使用して、次の詳細情報を提供します。
-
-- 上記の手順が正常に完了したことの確認。
-
-- 前の手順からの JSON 応答。 これは Get API 呼び出しを使用していつでも取得することができます。
-
-   ```rst
-   GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
-   Authorization: Bearer <token>
-   ```
-
-   **応答**
-   ```json
-   {
-     "identity": {
-       "type": "SystemAssigned",
-       "tenantId": "tenant-id",
-       "principalId": "principal-Id"
-     },
-     "properties": {
-          "KeyVaultProperties": {
-               KeyVaultUri: "https://key-vault-name.vault.azure.net",
-               KeyName: "key-name",
-               KeyVersion: "current-version"
-               },
-       "provisioningState": "Succeeded",
-       "clusterType": "LogAnalytics", 
-       "clusterId": "cluster-id"
-     },
-     "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
-     "name": "cluster-name",
-     "type": "Microsoft.OperationalInsights/clusters",
-     "location": "region-name"
-   }
-   ```
 
 ### <a name="workspace-association-to-cluster-resource"></a>*クラスター* リソースへのワークスペースの関連付け
 

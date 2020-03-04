@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 01/24/2020
+ms.date: 02/24/2020
 ms.author: jgao
-ms.openlocfilehash: a67f360aa08f306d6462342d96f59e06a4d3b501
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: e881cde36bc56c175004e8d6adb9b7b85e9b5454
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251857"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616309"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>テンプレートでデプロイ スクリプトを使用する (プレビュー)
 
@@ -29,7 +29,7 @@ Azure Resource テンプレートでデプロイ スクリプトを使用する�
 デプロイ スクリプトの利点は次のとおりです。
 
 - 簡単にコーディング、使用、デバッグができます。 デプロイ スクリプトは、好みの開発環境で開発できます。 スクリプトは、テンプレートまたは外部スクリプト ファイルに埋め込むことができます。
-- スクリプト言語とプラットフォームを指定できます。 現時点では、Linux 環境での Azure PowerShell デプロイ スクリプトのみがサポートされています。
+- スクリプト言語とプラットフォームを指定できます。 現時点では、Linux 環境の Azure PowerShell および Azure CLI のデプロイ スクリプトがサポートされています。
 - スクリプトの実行に使用する ID を指定できるようにします。 現時点では、[Azure ユーザー割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) のみがサポートされています。
 - スクリプトにコマンド ライン引数を渡すことを許可します。
 - スクリプトの出力を指定して、デプロイに渡すことができます。
@@ -42,24 +42,42 @@ Azure Resource テンプレートでデプロイ スクリプトを使用する�
 
 ## <a name="prerequisites"></a>前提条件
 
-- **サブスクリプション レベルで共同作成者のロールが付与された、ユーザー割り当てのマネージド ID**。 この ID は、デプロイ スクリプトを実行するために使用されます。 作成するには、[Azure portal を使用してユーザー割り当ての管理対象 ID を作成する方法](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)、[Azure CLI を使用する方法](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)、または [Azure PowerShell を使用する方法](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)に関する記事を参照してください。 この識別 ID は、テンプレートをデプロイするときに必要です。 ID の形式は次のとおりです。
+- **ターゲットの resource-group への共同作成者のロールが付与されたユーザー割り当てマネージド ID**。 この ID は、デプロイ スクリプトを実行するために使用されます。 リソース グループの外部で操作を実行するには、追加のアクセス許可を付与する必要があります。 たとえば、新しいリソース グループを作成する場合は、サブスクリプション レベルに ID を割り当てます。
+
+  > [!NOTE]
+  > デプロイ スクリプト エンジンでは、バックグラウンドでストレージ アカウントとコンテナー インスタンスを作成する必要があります。  サブスクリプションで Azure ストレージ アカウント (Microsoft.Storage) と Azure コンテナー インスタンス (Microsoft.ContainerInstance) リソース プロバイダーを登録していない場合は、サブスクリプション レベルで共同作成者のロールを持つユーザー割り当てマネージド ID が必要です。
+
+  ID を作成するには、[Azure portal を使用してユーザー割り当てマネージド ID を作成する方法](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)、[Azure CLI を使用する方法](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)、または [Azure PowerShell を使用する方法](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)に関する各記事を参照してください。 この識別 ID は、テンプレートをデプロイするときに必要です。 ID の形式は次のとおりです。
 
   ```json
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
   ```
 
-  次の PowerShell スクリプトを使用して、リソース グループ名と ID 名を指定することで ID を取得します。
+  次の CLI または PowerShell スクリプトを使用して、リソース グループ名と ID 名を指定することで ID を取得します。
+
+  # <a name="cli"></a>[CLI](#tab/CLI)
+
+  ```azurecli-interactive
+  echo "Enter the Resource Group name:" &&
+  read resourceGroupName &&
+  echo "Enter the managed identity name:" &&
+  read idName &&
+  az identity show -g jgaoidentity1008rg -n jgaouami --query id
+  ```
+
+  # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
   ```azurepowershell-interactive
   $idGroup = Read-Host -Prompt "Enter the resource group name for the managed identity"
   $idName = Read-Host -Prompt "Enter the name of the managed identity"
 
-  $id = (Get-AzUserAssignedIdentity -resourcegroupname $idGroup -Name idName).Id
+  (Get-AzUserAssignedIdentity -resourcegroupname $idGroup -Name $idName).Id
   ```
+  ---
 
-- **Azure PowerShell バージョン 2.7.0、2.8.0 または 3.0.0**。 これらのバージョンは、テンプレートのデプロイには必要ありません。 ただし、これらのバージョンは、デプロイ スクリプトをローカルでテストするために必要です。 [Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 事前構成済みの Docker イメージを使用できます。  「[開発環境の設定](#configure-development-environment)」を参照してください。
+- **Azure PowerShell バージョン 3.0.0、2.8.0、または 2.7.0** あるいは **Azure CLI バージョン 2.0.80、2.0.79、2.0.78、または 2.0.77**。 これらのバージョンは、テンプレートのデプロイには必要ありません。 ただし、これらのバージョンは、デプロイ スクリプトをローカルでテストするために必要です。 [Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 事前構成済みの Docker イメージを使用できます。  「[開発環境の設定](#configure-development-environment)」を参照してください。
 
-## <a name="sample-template"></a>サンプル テンプレート
+## <a name="sample-templates"></a>サンプル テンプレート
 
 次の JSON はサンプルです。  最新のテンプレートのスキーマについては、[こちら](/azure/templates/microsoft.resources/deploymentscripts)をご覧ください。
 
@@ -67,9 +85,9 @@ Azure Resource テンプレートでデプロイ スクリプトを使用する�
 {
   "type": "Microsoft.Resources/deploymentScripts",
   "apiVersion": "2019-10-01-preview",
-  "name": "myDeploymentScript",
+  "name": "runPowerShellInline",
   "location": "[resourceGroup().location]",
-  "kind": "AzurePowerShell",
+  "kind": "AzurePowerShell", // or "AzureCLI"
   "identity": {
     "type": "userAssigned",
     "userAssignedIdentities": {
@@ -78,7 +96,7 @@ Azure Resource テンプレートでデプロイ スクリプトを使用する�
   },
   "properties": {
     "forceUpdateTag": 1,
-    "azPowerShellVersion": "3.0",
+    "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80"
     "arguments": "[concat('-name ', parameters('name'))]",
     "scriptContent": "
       param([string] $name)
@@ -86,8 +104,7 @@ Azure Resource テンプレートでデプロイ スクリプトを使用する�
       Write-Output $output
       $DeploymentScriptOutputs = @{}
       $DeploymentScriptOutputs['text'] = $output
-    ",
-    "primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
+    ", // or "primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
     "supportingScriptUris":[],
     "timeout": "PT30M",
     "cleanupPreference": "OnSuccess",
@@ -101,17 +118,26 @@ Azure Resource テンプレートでデプロイ スクリプトを使用する�
 
 プロパティ値の詳細:
 
-- **identity**: デプロイ スクリプト サービスは、ユーザー割り当てのマネージド ID を使用してスクリプトを実行します。 現時点では、ユーザー割り当てマネージド ID のみがサポートされています。
-- **kind**: スクリプトの種類を指定します。 現在は、Azure PowerShell スクリプトのみがサポートされています。 値は **AzurePowerShell** です。
+- **ID**:デプロイ スクリプト サービスは、ユーザー割り当てのマネージド ID を使用してスクリプトを実行します。 現時点では、ユーザー割り当てマネージド ID のみがサポートされています。
+- **種類**:スクリプトの種類を指定します。 現在、Azure PowerShell および Azure CLI のスクリプトがサポートされています。 値は、**AzurePowerShell** と **AzureCLI** です。
 - **forceUpdateTag**:テンプレートのデプロイ間でこの値を変更すると、デプロイ スクリプトが強制的に再実行されます。 パラメーターの defaultValue として設定する必要がある newGuid() 関数または utcNow() 関数を使用します。 詳細については、「[スクリプトを複数回実行する](#run-script-more-than-once)」を参照してください。
-- **azPowerShellVersion**:使用する Azure PowerShell モジュールのバージョンを指定します。 デプロイ スクリプトでは、現在バージョン 2.7.0、2.8.0、3.0.0 がサポートされています。
+- **azPowerShellVersion**/**azCliVersion**:使用するモジュールのバージョンを指定します。 現在、デプロイ スクリプトでは、Azure PowerShell バージョン 2.7.0、2.8.0、3.0.0 と、Azure CLI バージョン 2.0.80、2.0.79、2.0.78、2.0.77 がサポートされています。
 - **arguments**: パラメーター値を指定します。 値はスペースで区切ります。
 - **scriptContent**:スクリプトの内容を指定します。 外部スクリプトを実行するには、代わりに `primaryScriptUri` を使用します。 例については、「[インライン スクリプトを使用する](#use-inline-scripts)」および「[外部スクリプトを使用する](#use-external-scripts)」を参照してください。
-- **primaryScriptUri**:サポートされている PowerShell ファイル拡張子を使用して、プライマリ powershell スクリプトへのパブリックにアクセス可能な URL を指定します。
-- **supportingScriptUris**:`ScriptContent` または `PrimaryScriptUri` で呼び出される powershell ファイルをサポートするには、パブリックにアクセス可能な URL の配列を指定します。
-- **timeout**: [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)で指定される、スクリプトの許容最長実行時間を指定します。 既定値は **P1D** です。
+- **primaryScriptUri**:サポートされているファイル拡張子を含むプライマリ デプロイ スクリプトへのパブリックにアクセス可能な URL を指定します。
+- **supportingScriptUris**:`ScriptContent` または `PrimaryScriptUri` で呼び出されるサポート ファイルへのパブリックにアクセス可能な URL の配列を指定します。
+- **タイムアウト**:[ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)で指定される、スクリプトの許容最長実行時間を指定します。 既定値は **P1D** です。
 - **cleanupPreference**。 スクリプトの実行がターミナル状態になった際の、デプロイ リソースのクリーンアップ設定を指定します。 既定の設定は、**Always** です。これは、ターミナル状態 (Succeeded、Failed、Canceled) に関係なくリソースを削除することを意味します。 詳細については、「[デプロイ スクリプト リソースのクリーンアップ](#clean-up-deployment-script-resources)」を参照してください。
 - **retentionInterval**:デプロイ スクリプトの実行が終了状態に達した後、サービスがデプロイ スクリプト リソースを保持する間隔を指定します。 この期間が経過すると、デプロイ スクリプト リソースは削除されます。 期間は [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) のパターンに基づきます。 既定値は 7 日を意味する **P1D** です。 このプロパティは、cleanupPreference が *OnExpiration* に設定されている場合に使用されます。 *OnExpiration* プロパティは、現在有効になっていません。 詳細については、「[デプロイ スクリプト リソースのクリーンアップ](#clean-up-deployment-script-resources)」を参照してください。
+
+### <a name="additional-samples"></a>その他のサンプル
+
+- [証明書を作成してキー コンテナーに割り当てる](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json)
+
+- [ユーザー割り当てマネージド ID を作成してリソース グループに割り当て、デプロイ スクリプトを実行する](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-mi.json)。
+
+> [!NOTE]
+> 事前にユーザー割り当て ID を作成し、アクセス許可を付与しておくことをお勧めします。 デプロイ スクリプトを実行するものと同じテンプレートで、ID を作成してアクセス許可を付与すると、サインインおよびアクセス許可に関連するエラーが発生する場合があります。 アクセス許可が有効になるまでには少し時間がかかります。
 
 ## <a name="use-inline-scripts"></a>インライン スクリプトを使用する
 
@@ -122,9 +148,9 @@ Azure Resource テンプレートでデプロイ スクリプトを使用する�
 > [!NOTE]
 > インライン デプロイ スクリプトは二重引用符で囲まれているため、デプロイ スクリプト内の文字列は、代わりに単一引用符で囲む必要があります。 PowerShell のエスケープ文字は **&#92;** です。 前の JSON サンプルに示されているように、文字列の置換を使用することを検討することもできます。 名前パラメーターの既定値を表示します。
 
-このスクリプトは、1 つのパラメーターを受け取り、パラメーター値を出力します。 **DeploymentScriptOutputs** は、出力を格納するために使用されます。  出力セクションの**値**の線は、格納されている値にアクセスする方法を示しています。 `Write-Output` はデバッグ目的で使用されます。 出力ファイルにアクセスする方法については、「[デプロイ スクリプトのデバッグ](#debug-deployment-scripts)」を参照してください。  プロパティの説明については、「[サンプル テンプレート](#sample-template)」を参照してください。
+このスクリプトは、1 つのパラメーターを受け取り、パラメーター値を出力します。 **DeploymentScriptOutputs** は、出力を格納するために使用されます。  出力セクションの**値**の線は、格納されている値にアクセスする方法を示しています。 `Write-Output` はデバッグ目的で使用されます。 出力ファイルにアクセスする方法については、「[デプロイ スクリプトのデバッグ](#debug-deployment-scripts)」を参照してください。  プロパティの説明については、「[サンプル テンプレート](#sample-templates)」を参照してください。
 
-スクリプトを実行するには、 **[試してみる]** を選択して Cloud shell を開き、次のコードをシェル ウィンドウに貼り付けます。
+スクリプトを実行するには、 **[使ってみる]** を選択して Azure Cloud Shell を開き、次のコードをシェル ペインに貼り付けます。
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the name of the resource group to be created"
@@ -144,7 +170,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="use-external-scripts"></a>外部スクリプトを使用する
 
-インライン スクリプトに加えて、外部スクリプト ファイルを使用することもできます。 現時点では、**ps1** ファイル拡張子を持つ PowerShell スクリプトのみがサポートされています。 外部スクリプト ファイルを使用するには、`scriptContent` を `primaryScriptUri` に置き換えます。 次に例を示します。
+インライン スクリプトに加えて、外部スクリプト ファイルを使用することもできます。 **ps1** ファイル拡張子を持つプライマリ PowerShell スクリプトのみがサポートされています。 CLI スクリプトの場合、スクリプトが有効な bash スクリプトである限り、プライマリ スクリプトには任意の拡張子を設定できます (または拡張子なしにできます)。 外部スクリプト ファイルを使用するには、`scriptContent` を `primaryScriptUri` に置き換えます。 次に例を示します。
 
 ```json
 "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
@@ -170,11 +196,11 @@ Write-Host "Press [ENTER] to continue ..."
 ],
 ```
 
-サポート スクリプト ファイルは、インライン スクリプトとプライマリ スクリプト ファイルの両方から呼び出すことができます。
+サポート スクリプト ファイルは、インライン スクリプトとプライマリ スクリプト ファイルの両方から呼び出すことができます。 サポート スクリプト ファイルには、ファイル拡張子に関する制限はありません。
 
 サポート ファイルは、ランタイムで azscripts/azscriptinput にコピーされます。 インライン スクリプトおよびプライマリ スクリプト ファイルからサポート ファイルを参照するには、相対パスを使用します。
 
-## <a name="work-with-outputs-from-deployment-scripts"></a>デプロイ スクリプトからの出力を操作する
+## <a name="work-with-outputs-from-powershell-script"></a>PowerShell スクリプトからの出力を操作する
 
 次のテンプレートは、2 つの deploymentScripts リソース間で値を渡す方法を示しています。
 
@@ -185,6 +211,21 @@ Write-Host "Press [ENTER] to continue ..."
 ```json
 reference('<ResourceName>').output.text
 ```
+
+## <a name="work-with-outputs-from-cli-script"></a>CLI スクリプトからの出力を操作する
+
+PowerShell デプロイ スクリプトとは異なり、CLI/bash のサポートでは、スクリプトの出力を格納するための共通変数は公開されません。代わりに、スクリプトの出力ファイルが存在する場所を格納する **AZ_SCRIPTS_OUTPUT_PATH** という環境変数があります。 デプロイ スクリプトが Resource Manager テンプレートから実行される場合、この環境変数は Bash シェルによって自動的に設定されます。
+
+デプロイ スクリプトの出力は AZ_SCRIPTS_OUTPUT_PATH の場所に保存される必要があり、その出力は有効な JSON 文字列オブジェクトでなければなりません。 ファイルの内容は、キーと値のペアとして保存される必要があります。 たとえば、文字列の配列は、{ “MyResult”: [ “foo”, “bar”] } として格納されます。  配列の結果のみ ([ “foo”, “bar” ] など) の格納は、無効です。
+
+[!code-json[](~/resourcemanager-templates/deployment-script/deploymentscript-basic-cli.json?range=1-44)]
+
+前のサンプルでは、[jq](https://stedolan.github.io/jq/) が使用されています。 これには、コンテナー イメージが付属しています。 「[開発環境の設定](#configure-development-environment)」を参照してください。
+
+## <a name="handle-non-terminating-errors"></a>終了しないエラーを処理する
+
+デプロイ スクリプトで [ **$ErrorActionPreference**](/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7#erroractionpreference
+) 変数を使用することで、終了しないエラーに PowerShell が応答する方法を制御できます。 デプロイ スクリプト エンジンでは、値の設定も変更も行いません。  $ErrorActionPreference に設定した値に関係なく、デプロイ スクリプトでエラーが発生すると、そのスクリプトによってリソースのプロビジョニングの状態が *[失敗]* に設定されます。
 
 ## <a name="debug-deployment-scripts"></a>デプロイ スクリプトのデバッグ
 
@@ -264,7 +305,7 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
 ## <a name="configure-development-environment"></a>開発環境の設定
 
-現在、デプロイ スクリプトでは、Azure PowerShell バージョン 2.7.0、2.8.0、3.0.0 がサポートされています。  Windows コンピューターを使用している場合は、サポートされている Azure PowerShell バージョンのいずれかをインストールし、デプロイ スクリプトの開発とテストを開始できます。  Windows コンピューターがない場合、またはこれらの Azure PowerShell バージョンのいずれかがインストールされていない場合は、構成済みの Docker コンテナー イメージを使用できます。 次の手順では、Windows で Docker イメージを構成する方法について説明します。 Linux および Mac の場合、インターネット上で情報をご確認ください。
+デプロイ スクリプト開発環境として、事前構成済みの docker コンテナー イメージを使用できます。 次の手順では、Windows で Docker イメージを構成する方法について説明します。 Linux および Mac の場合、インターネット上で情報をご確認ください。
 
 1. 開発用コンピューターに [Docker Desktop](https://www.docker.com/products/docker-desktop) をインストールします。
 1. Docker Desktop を開きます。
@@ -281,7 +322,15 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
     docker pull mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
     ```
 
-    この例では、バージョン 2.7.0 を使用します。
+    この例では、PowerShell バージョン 2.7.0 を使用します。
+
+    Microsoft Container Registry (MCR) から CLI イメージをプルするには、次のようにします。
+
+    ```command
+    docker pull mcr.microsoft.com/azure-cli:2.0.80
+    ```
+
+    この例では、CLI バージョン 2.0.80 を使用します。 デプロイ スクリプトでは、[こちら](https://hub.docker.com/_/microsoft-azure-cli)にある既定の CLI コンテナー イメージが使用されます。
 
 1. Docker イメージをローカルで実行します。
 
@@ -297,12 +346,18 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
     **-it** は、コンテナー イメージを維持したままにすることを意味します。
 
+    CLI の例:
+
+    ```command
+    docker run -v d:/docker:/data -it mcr.microsoft.com/azure-cli:2.0.80
+    ```
+
 1. プロンプトが表示されたら、 **[Share it]\(共有する\)** を選択します。
-1. 次のスクリーンショットに示されているように、PowerShell スクリプトを実行します (d:\docker フォルダーに helloworld.ps1 ファイルがある場合)。
+1. 次のスクリーンショットは、d:\docker フォルダーに helloworld.ps1 ファイルがある場合に、PowerShell スクリプトを実行する方法を示しています。
 
     ![Resource Manager テンプレートのデプロイ スクリプト Docker cmd](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
 
-テストが正常に完了した PowerShell スクリプトは、デプロイ スクリプトとして使用できます。
+テストが正常に完了したスクリプトは、デプロイ スクリプトとして使用できます。
 
 ## <a name="next-steps"></a>次のステップ
 

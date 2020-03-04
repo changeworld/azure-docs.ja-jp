@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 2fa43cb9ec526cfab2367431712e09406556a529
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 63174e1d4950b9f18fd3693511c507ed2dd018b3
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191787"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500361"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>統合サービス環境 (ISE) を使用して Azure Logic Apps から Azure Virtual Network に接続する
 
@@ -41,7 +41,7 @@ ISE では、実行継続時間、ストレージのリテンション期間、�
 
 * [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)。 仮想ネットワークがない場合は、[Azure 仮想ネットワークの作成](../virtual-network/quick-create-portal.md)方法について学んでください。
 
-  * 仮想ネットワークには、ISE 内にリソースを作成およびデプロイするため、*空の*サブネットが 4 つ必要です。 各サブネットでは、ISE 用にさまざまな Logic Apps コンポーネントがサポートされます。 このようなサブネットは、事前に作成するか、同時にサブネットを作成できる ISE を作成するまで待つことができます。 [サブネット要件](#create-subnet)の詳細を参照してください。
+  * 仮想ネットワークには、ISE 内にリソースを作成およびデプロイするため、*空の*サブネットが 4 つ必要です。 各サブネットでは、ISE で使用されるさまざまな Logic Apps コンポーネントがサポートされます。 このようなサブネットは、事前に作成するか、同時にサブネットを作成できる ISE を作成するまで待つことができます。 [サブネット要件](#create-subnet)の詳細を参照してください。
 
   * サブネット名の最初の文字はアルファベット文字かアンダースコアにする必要があります。`<`、`>`、`%`、`&`、`\\`、`?`、`/` はいずれも使用できません。 
   
@@ -91,27 +91,25 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 
 | 目的 | Direction | 宛先ポート | 発信元サービス タグ | 宛先サービス タグ | Notes |
 |---------|-----------|-------------------|--------------------|-------------------------|-------|
-| Intrasubnet 通信 | 受信および送信 | * | 仮想ネットワークと ISE サブネットのアドレス空間 | 仮想ネットワークと ISE サブネットのアドレス空間 | トラフィックが各サブネット内をフローできるようにするために必要。 <p><p>**重要**:サブネット内のコンポーネント間の通信については、それらのサブネット内のすべてのポートを開いていることを確認してください。 |
-| Intersubnet 通信 | 受信および送信 | 80、443 | VirtualNetwork | VirtualNetwork | サブネット間の通信用 |
-| Azure Logic Apps からの通信 | 送信 | 80、443 | VirtualNetwork | インターネット | このポートは、Logic Apps サービスが通信する外部サービスに依存しています。 |
-| Azure Active Directory | 送信 | 80、443 | VirtualNetwork | AzureActiveDirectory | |
-| Azure Storage の依存関係 | 送信 | 80、443、445 | VirtualNetwork | ストレージ | |
-| Azure Logic Apps への通信 | 受信 | 443 | 内部 ISE: <br>VirtualNetwork <p><p>外部 ISE: <br>インターネット | VirtualNetwork | ロジック アプリ内の任意の要求トリガーまたは Webhook を呼び出すコンピューターまたはサービスの IP アドレス。 このポートを閉じるかブロックすると、要求トリガーでロジック アプリに HTTP 呼び出しできなくなります。 |
-| ロジック アプリの実行履歴 | 受信 | 443 | 内部 ISE: <br>VirtualNetwork <p><p>外部 ISE: <br>インターネット | VirtualNetwork | ロジック アプリの実行履歴を表示するコンピューターの IP アドレス。 このポートを閉じたりブロックしたりしても実行履歴を表示できますが、その実行履歴に含まれる各ステップの入出力は表示されなくなります。 |
-| 接続管理 | 送信 | 443 | VirtualNetwork  | AppService | |
-| 診断ログとメトリックの発行 | 送信 | 443 | VirtualNetwork  | AzureMonitor | |
-| Azure Traffic Manager からの通信 | 受信 | 内部 ISE:454 <p><p>外部 ISE:443 | AzureTrafficManager | VirtualNetwork | |
+| 仮想ネットワーク内のサブネット間通信 | 受信および送信 | * | ISE のサブネットがある仮想ネットワークのアドレス空間 | ISE のサブネットがある仮想ネットワークのアドレス空間 | トラフィックが仮想ネットワーク内のサブネットの "*間*" を通過するために必要です。 <p><p>**重要**:トラフィックが各サブネット内の "*コンポーネント*" 間を通過するには、各サブネット内のすべてのポートを開いていることを確認します。 |
+| ロジック アプリへの通信 | 受信 | 443 | 内部 ISE: <br>VirtualNetwork <p><p>外部 ISE: <br>インターネット | VirtualNetwork | ロジック アプリ内の任意の要求トリガーまたは Webhook を呼び出すコンピューターまたはサービスの ソース IP アドレス。 <p><p>**重要**:このポートを閉じるかブロックすると、要求トリガーを持つロジック アプリへの HTTP 呼び出しができなくなります。 |
+| ロジック アプリの実行履歴 | 受信 | 443 | 内部 ISE: <br>VirtualNetwork <p><p>外部 ISE: <br>インターネット | VirtualNetwork | ロジック アプリの実行履歴を表示するコンピューターまたはサービスのソース IP アドレス。 <p><p>**重要**:このポートを閉じたりブロックしたりしても実行履歴を表示できますが、その実行履歴に含まれる各ステップの入出力は表示されなくなります。 |
 | Logic Apps デザイナー - 動的プロパティ | 受信 | 454 | 許可する IP アドレスについては、 **[メモ]** 列を参照してください | VirtualNetwork | 要求は、そのリージョンの[受信](../logic-apps/logic-apps-limits-and-config.md#inbound) IP アドレスに対して Logic Apps アクセス エンドポイントから送信されます。 |
+| コネクタのデプロイ | 受信 | 454 | AzureConnectors | VirtualNetwork | コネクタのデプロイと更新に必要。 このポートを閉じたりブロックしたりすると、ISE のデプロイが失敗し、コネクタの更新や修正ができなくなります。 |
 | ネットワーク正常性チェック | 受信 | 454 | 許可する IP アドレスについては、 **[メモ]** 列を参照してください | VirtualNetwork | 要求は、そのリージョンの[受信](../logic-apps/logic-apps-limits-and-config.md#inbound)と[送信](../logic-apps/logic-apps-limits-and-config.md#outbound)の両方の IP アドレスに対して Logic Apps アクセス エンドポイントから送信されます。 |
 | App Service の管理の依存関係 | 受信 | 454、455 | AppServiceManagement | VirtualNetwork | |
-| コネクタのデプロイ | 受信 | 454 | AzureConnectors | VirtualNetwork | コネクタのデプロイと更新に必要。 このポートを閉じたりブロックしたりすると、ISE のデプロイが失敗し、コネクタの更新や修正ができなくなります。 |
+| Azure Traffic Manager からの通信 | 受信 | 内部 ISE:454 <p><p>外部 ISE:443 | AzureTrafficManager | VirtualNetwork | |
+| API Management - 管理エンドポイント | 受信 | 3443 | APIManagement | VirtualNetwork | |
 | コネクタ ポリシーのデプロイ | 受信 | 3443 | APIManagement | VirtualNetwork | コネクタのデプロイと更新に必要。 このポートを閉じたりブロックしたりすると、ISE のデプロイが失敗し、コネクタの更新や修正ができなくなります。 |
+| ロジック アプリからの通信 | 送信 | 80、443 | VirtualNetwork | 宛先によって異なる | ロジック アプリが通信する必要がある外部サービスのエンドポイント。 |
+| Azure Active Directory | 送信 | 80、443 | VirtualNetwork | AzureActiveDirectory | |
+| 接続管理 | 送信 | 443 | VirtualNetwork  | AppService | |
+| 診断ログとメトリックの発行 | 送信 | 443 | VirtualNetwork  | AzureMonitor | |
+| Azure Storage の依存関係 | 送信 | 80、443、445 | VirtualNetwork | ストレージ | |
 | Azure SQL 依存関係 | 送信 | 1433 | VirtualNetwork | SQL | |
 | Azure Resource Health | 送信 | 1886 | VirtualNetwork | AzureMonitor | 正常性の状態を Resource Health に公開するために必要 |
-| API Management - 管理エンドポイント | 受信 | 3443 | APIManagement | VirtualNetwork | |
 | ログから Event Hub ポリシーおよび監視エージェントへの依存関係 | 送信 | 5672 | VirtualNetwork | EventHub | |
 | ロール インスタンス間での Azure Cache for Redis インスタンスへのアクセス | 受信 <br>送信 | 6379 - 6383 | VirtualNetwork | VirtualNetwork | また、Azure Cache for Redis で動作する ISE の場合は、[「Azure Cache for Redis の FAQ」で説明されている送信ポートと受信ポート](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements)を開く必要があります。 |
-| Azure Load Balancer | 受信 | * | AzureLoadBalancer | VirtualNetwork | |
 ||||||
 
 <a name="create-environment"></a>
@@ -147,23 +145,19 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 
    **サブネットを作成する**
 
-   環境内にリソースを作成およびデプロイする場合、どのサービスにも委任されていない*空の*サブネットが 4 つ ISE に必要です。 環境の作成後に、これらのサブネット アドレスを変更することは*できません*。
+   環境内にリソースを作成およびデプロイする場合、どのサービスにも委任されていない*空の*サブネットが 4 つ ISE に必要です。 各サブネットでは、ISE で使用されるさまざまな Logic Apps コンポーネントがサポートされます。 環境の作成後に、これらのサブネット アドレスを変更することは*できません*。 各サブネットは、次の要件を満たしている必要があります。
 
-   > [!IMPORTANT]
-   > 
-   > サブネット名の最初の文字はアルファベット文字かアンダースコアにする必要があります (数字は禁止)。`<`、`>`、`%`、`&`、`\\`、`?`、`/` は使用できません。
-
-   また、各サブネットは、次の要件を満たしている必要があります。
+   * 名前の先頭がアルファベット文字かアンダースコア (数字ではない) で、名前に `<`、`>`、`%`、`&`、`\\`、`?`、`/` の文字が使用されていない。
 
    * [Classless Inter-Domain Routing (CIDR) 形式](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)とクラス B アドレス空間を使用する。
 
-   * 各サブネットには "*最小値*" として "*少なくとも*" 32 個のアドレスが必要なため、そのアドレス空間で最低でも `/27` を使用する。 次に例を示します。
+   * 各サブネットには "*最小*" で 32 個のアドレスが必要なため、アドレス空間で少なくとも `/27` を使用する。 次に例を示します。
+
+     * 2<sup>(32-28)</sup> は 2<sup>4</sup> (つまり 16) なので、`10.0.0.0/28` には 16 個のアドレスしかなく、これでは少なすぎます。
 
      * 2<sup>(32-27)</sup> は 2<sup>5</sup> (つまり 32) なので、`10.0.0.0/27` には 32 個のアドレスがあります。
 
-     * 2<sup>(32-24)</sup> は 2<sup>8</sup> (つまり 256) なので、`10.0.0.0/24` には 256 個のアドレスがあります。
-
-     * 2<sup>(32-28)</sup> は 2<sup>4</sup> (つまり 16) なので、`10.0.0.0/28` には 16 個のアドレスしかなく、これでは少なすぎます。
+     * 2<sup>(32-24)</sup> は 2<sup>8</sup> (つまり 256) なので、`10.0.0.0/24` には 256 個のアドレスがあります。 ただし、アドレスが増加しても追加の利点はありません。
 
      アドレス計算の詳細については、「[IPv4 CIDR blocks (IPv4 CIDR ブロック)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks)」を参照してください。
 

@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: e53bd3deae5ccd7339c7a6d491dc4ff0da44a277
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 47d9508c891d2b4fe74b42114783b02c58e8c91f
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77426226"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620003"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -201,7 +201,7 @@ New-AzStorageAccount `
 
 ## <a name="view-traffic-analytics"></a>トラフィック分析の表示
 
-ポータルの左側にある **[すべてのサービス]** を選択し、 **[フィルター]** ボックスに「*監視*」と入力します。 検索結果に **[監視]** が表示されたら、それを選択します。 トラフィック分析とその機能の探索を開始するには、 **[Network Watcher]** 、 **[トラフィック分析 ]** の順に選択します。
+Traffic Analytics を表示するには、ポータルの検索バーで **Network Watcher** を検索します。 Network Watcher にアクセスしたら、トラフィック分析とその機能を探索するために、左側のメニューから **[Traffic Analytics]** を選択します。 
 
 ![Traffic Analytics ダッシュボードへのアクセス](./media/traffic-analytics/accessing-the-traffic-analytics-dashboard.png)
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 10/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4db758ce0710f5b8b122feaadaa8b97a90dcb7cb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e3cdf44c2fc4c16bba283b6f884078dd947b1f34
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850438"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564775"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の課金モデル
 
@@ -140,4 +140,4 @@ Azure AD B2C テナントなどの Azure リソースを別のサブスクリプ
 
 ## <a name="next-steps"></a>次のステップ
 
-選択した Azure サブスクリプション内の使用状況と課金の詳細を確認するだけでなく、[使用状況レポート API](view-usage-reports.md) を使用して詳細な毎日の使用状況レポートを確認することもできます。
+最新の価格情報について、「[Azure Active Directory B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)」を参照します。

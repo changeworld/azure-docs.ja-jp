@@ -2,14 +2,14 @@
 title: トラブルシューティング - Personalizer
 description: この記事では、Personalizer についてよく寄せられる質問とその回答を示します。
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 02/26/2020
 ms.author: diberry
-ms.openlocfilehash: fec403da7f54098dbf197d14f3b16afd30bf5efc
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 432b33243bdb38cf359d4fea1a336500eb244464
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77469546"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650522"
 ---
 # <a name="personalizer-troubleshooting"></a>Personalizer のトラブルシューティング
 
@@ -32,6 +32,19 @@ ms.locfileid: "77469546"
 </details>
 
 ## <a name="learning-loop"></a>学習ループ
+
+<details>
+<summary>
+<b>Personalizer がないシステムでは、学習ループは 100% の一致を達成しません。これをどのように修正すればよいですか?</b></summary>
+
+**回答**: 学習ループで目標が達成されない理由は次のとおりです。
+* Rank API 呼び出しで送信された特徴量が十分ではない
+* 送信された特徴にバグがある (タイムスタンプなどの集計されていない特徴データが Rank API に送信されたなど)
+* ループ処理にバグがある (イベントの報酬データを Reward API に送信していないなど)
+
+修正するには、ループに送信された特徴を変更して処理を変更するか、報酬が Rank の応答の品質についての正しい評価であることを確認する必要があります。
+
+</details>
 
 <details>
 <summary>
@@ -91,7 +104,7 @@ ms.locfileid: "77469546"
 <details>
 <summary><b>学習ポリシーをインポートするにはどうすればよいですか?</b></summary>
 
-**回答**: [学習ポリシーの概念](concept-active-learning.md#understand-learning-policy-settings)と、新しい学習ポリシーを[適用する方法](how-to-learning-policy.md)をご覧ください。 学習ポリシーを選択したくない場合は、[オフライン評価](how-to-offline-evaluation.md)を使用すれば、現在のイベントに基づいて、学習ポリシーを提示することができます。
+**回答**: [学習ポリシーの概念](concept-active-learning.md#understand-learning-policy-settings)と、新しい学習ポリシーを[適用する方法](how-to-manage-model.md)をご覧ください。 学習ポリシーを選択したくない場合は、[オフライン評価](how-to-offline-evaluation.md)を使用すれば、現在のイベントに基づいて、学習ポリシーを提示することができます。
 
 </details>
 

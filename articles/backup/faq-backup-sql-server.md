@@ -4,12 +4,12 @@ description: Azure Backup を使用した Azure VM 上での SQL Server デー�
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 73224164286e35f8c9447dd24cd81d7242fbb7b6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: a973761bf16e2d271d718e4a8b29e08624276987
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172014"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597084"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Azure VM バックアップ上で実行されている SQL Server データベースに関する FAQ
 
@@ -37,13 +37,15 @@ ms.locfileid: "74172014"
 - 変更を保存し、ファイルを閉じます。
 - SQL Server インスタンスで、**タスク マネージャー**を開き、**AzureWLBackupCoordinatorSvc** サービスを再起動します。
 
-## <a name="can-i-control-as-to-how-many-concurrent-backups-run-on-the-sql-server"></a>SQL サーバー上で実行される同時実行バックアップの数を制御できますか?
+## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>SQL サーバー上で実行される同時実行バックアップの数を制御できますか?
 
 はい。 バックアップ ポリシーが実行される速度を調整して、SQL Server インスタンスへの影響を最小限に抑えることができます。 設定を変更するには:
 
 1. SQL Server インスタンスで、*C:\Program Files\Azure Workload Backup\bin* フォルダーに *ExtensionSettingsOverrides.json* ファイルを作成します。
 2. *ExtensionSettingsOverrides.json* ファイルで、**DefaultBackupTasksThreshold** 設定を小さな値 (たとえば、5) に変更します。 <br>
   `{"DefaultBackupTasksThreshold": 5}`
+<br>
+DefaultBackupTasksThreshold の既定値は **20** です。
 
 3. 変更を保存し、ファイルを閉じます。
 4. SQL Server インスタンスで、**タスク マネージャー**を開きます。 **AzureWLBackupCoordinatorSvc** サービスを再起動します。<br/> <br/>
@@ -58,7 +60,7 @@ SQL の制限に従って、セカンダリ レプリカにおいてコピーの
 
 ## <a name="can-i-protect-availability-groups-on-premises"></a>オンプレミスの可用性グループを保護できますか?
 
-No. Azure Backup は、Azure で実行されている SQL Server データベースを保護します。 可用性グループ (AG) が Azure とオンプレミスのコンピューターに分散しているとき、AG は、プライマリ レプリカが Azure で実行されている場合にのみ保護できます。 また、Azure Backup は、Recovery Services コンテナーと同じ Azure リージョンで実行されているノードしか保護しません。
+いいえ。 Azure Backup は、Azure で実行されている SQL Server データベースを保護します。 可用性グループ (AG) が Azure とオンプレミスのコンピューターに分散しているとき、AG は、プライマリ レプリカが Azure で実行されている場合にのみ保護できます。 また、Azure Backup は、Recovery Services コンテナーと同じ Azure リージョンで実行されているノードしか保護しません。
 
 ## <a name="can-i-protect-availability-groups-across-regions"></a>リージョンにまたがる可用性グループを保護できますか?
 
@@ -66,7 +68,7 @@ Azure Backup Recovery Services コンテナーは、そのコンテナーと同�
 
 ## <a name="do-successful-backup-jobs-create-alerts"></a>成功したバックアップ ジョブでアラートが作成されますか?
 
-No. 成功したバックアップ ジョブではアラートは生成されません。 アラートは、失敗したバックアップ ジョブに対してのみ送信されます。 ポータル アラートの詳細な動作は[ここ](backup-azure-monitoring-built-in-monitor.md)に記載されています。 ただし、成功したジョブに対してもアラートを生成することに関心がある場合は、[Azure Monitor を使用した監視](backup-azure-monitoring-use-azuremonitor.md)を使用できます。
+いいえ。 成功したバックアップ ジョブではアラートは生成されません。 アラートは、失敗したバックアップ ジョブに対してのみ送信されます。 ポータル アラートの詳細な動作は[ここ](backup-azure-monitoring-built-in-monitor.md)に記載されています。 ただし、成功したジョブに対してもアラートを生成することに関心がある場合は、[Azure Monitor を使用した監視](backup-azure-monitoring-use-azuremonitor.md)を使用できます。
 
 ## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>スケジュールされたバックアップ ジョブを [バックアップ ジョブ] メニューで確認できますか?
 
@@ -100,6 +102,6 @@ No. 成功したバックアップ ジョブではアラートは生成されま
 
   ![新しく追加されたデータベースを手動で検出する](./media/backup-azure-sql-database/view-newly-added-database.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure VM 上で実行されている[SQL Server データベースをバックアップする](backup-azure-sql-database.md)方法を学習します。

@@ -1,0 +1,83 @@
+### YamlMime:Landing
+title: 音声テキスト変換のドキュメント
+summary: Speech Service の音声変換 (音声認識とも呼ばれる) を使用すると、オーディオ ストリームをテキストにリアルタイムで文字起こしできます。
+metadata:
+  title: 音声テキスト変換のドキュメント - チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: 2dd9fa8c9af53c69a1790dd890b48a7092f5a5da
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77562810"
+landingContent:
+- title: はじめに
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 音声変換の概要
+      url: speech-to-text.md
+  - linkListType: quickstart
+    links:
+    - text: マイク入力を使用して音声を認識する
+      url: quickstarts/speech-to-text-from-microphone.md
+    - text: オーディオ ファイルから音声を認識する
+      url: quickstarts/speech-to-text-from-file.md
+    - text: Blob Storage に格納された音声を認識する
+      url: quickstarts/from-blob.md
+- title: ステップバイステップ ガイド
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 音声認識のソース言語を変更する
+      url: how-to-specify-source-language.md
+    - text: 音声認識モードを選択する
+      url: how-to-choose-recognition-mode.md
+    - text: フレーズ リストを使用して精度を向上させる
+      url: how-to-phrase-lists.md
+    - text: テナント モデルを使用して精度を向上させる
+      url: tutorial-tenant-model.md
+    - text: Custom Speech を使用して精度を向上させる
+      url: how-to-custom-speech.md
+    - text: 特定のマイク入力デバイスを選択する
+      url: how-to-select-audio-input-devices.md
+    - text: 自動ソース言語検出を使用する
+      url: how-to-automatic-language-detection.md
+    - text: 圧縮音声入力形式を使用する
+      url: how-to-use-codec-compressed-audio-input-streams.md
+    - text: 圧縮音声入力形式を使用する (iOS)
+      url: how-to-use-codec-compressed-audio-input-streams-ios.md
+    - text: 圧縮音声入力形式を使用する (Android)
+      url: how-to-use-codec-compressed-audio-input-streams-android.md
+  - linkListType: concept
+    links:
+    - text: Custom Speech データを準備する
+      url: how-to-custom-speech-test-data.md
+    - text: Custom Speech データを検査する
+      url: how-to-custom-speech-inspect-data.md
+    - text: カスタム音声の正確性を評価する
+      url: how-to-custom-speech-evaluate-data.md
+    - text: カスタム モデルをトレーニングする
+      url: how-to-custom-speech-train-model.md
+    - text: カスタム モデルをデプロイする
+      url: how-to-custom-speech-deploy-model.md
+    - text: ヒューマン ラベル付け文字起こしを作成する
+      url: how-to-custom-speech-human-labeled-transcriptions.md
+- title: リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 言語のサポート
+      url: language-support.md#speech-to-text
+    - text: 価格
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+    - text: 音声テキスト変換のよくあるご質問
+      url: faq-stt.md

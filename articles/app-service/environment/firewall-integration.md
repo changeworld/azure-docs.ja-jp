@@ -4,15 +4,15 @@ description: Azure Firewall と統合して、App Service 環境内からの送�
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 01/14/2020
+ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6b9633e8a37e665577f1e69e8008a64b7e139c1c
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f24a984a4b3e13039f1f9dcf0be459425c048c41
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513348"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565725"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service 環境をロックする
 
@@ -41,9 +41,11 @@ ASE との間のトラフィックは、次の規則に従っている必要が�
 
 ## <a name="locking-down-inbound-management-traffic"></a>受信管理トラフィックをロックダウンする
 
-ASE サブネットに NSG がまだ割り当てられていない場合は、作成します。 NSG 内のポート 454、455 で AppServiceManagement という名前のサービス タグからのトラフィックを許可する最初のルールを設定します。 パブリック IP から ASE を管理するために必要なものは、これだけです。 サービス タグの背後にあるアドレスは、Azure App Service の管理にのみ使用されます。 これらの接続を通過する管理トラフィックは暗号化され、認証証明書によって保護されます。 このチャネルの一般的なトラフィックには、顧客が開始したコマンドや正常性プローブなどが含まれます。 
+ASE サブネットに NSG がまだ割り当てられていない場合は、作成します。 NSG 内のポート 454、455 で AppServiceManagement という名前のサービス タグからのトラフィックを許可する最初のルールを設定します。 ASE を管理するためにパブリック IP に要求されるのは、AppServiceManagement タグからのアクセスを許可するルールのみです。 サービス タグの背後にあるアドレスは、Azure App Service の管理にのみ使用されます。 これらの接続を通過する管理トラフィックは暗号化され、認証証明書によって保護されます。 このチャネルの一般的なトラフィックには、顧客が開始したコマンドや正常性プローブなどが含まれます。 
 
 新しいサブネットを使用してポータルで作成された ASE は、AppServiceManagement タグの許可規則を含む NSG を使用して作成されます。  
+
+ASE では、ポート16001 で Load Balancer タグからの受信要求も許可する必要があります。 ポート 16001 上での Load Balancer からの要求は、Load Balancer と ASE のフロントエンドの間のキープアライブ チェックです。 ポート16001 がブロックされると、ASE は異常な状態になります。
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>ASE に合わせて Azure Firewall を構成する 
 
@@ -273,6 +275,21 @@ Linux は US Gov リージョンでは利用できないため、オプション
 | Azure SQL |
 | Azure Storage |
 | Azure Event Hub |
+
+#### <a name="ip-address-dependencies"></a>IP アドレスの依存関係
+
+| エンドポイント | 詳細 |
+|----------| ----- |
+| \*:123 | NTP クロック チェック。 トラフィックは、ポート 123 上の複数のエンドポイントでチェックされます |
+| \*:12000 | このポートは、一部のシステム監視に使用されています。 ブロックされている場合、一部の問題はトリアージが難しくなりますが、ASE は引き続き動作します |
+| 40.77.24.27:80 | ASE の問題の監視とアラート通知に必要 |
+| 40.77.24.27:443 | ASE の問題の監視とアラート通知に必要 |
+| 13.90.249.229:80 | ASE の問題の監視とアラート通知に必要 |
+| 13.90.249.229:443 | ASE の問題の監視とアラート通知に必要 |
+| 104.45.230.69:80 | ASE の問題の監視とアラート通知に必要 |
+| 104.45.230.69:443 | ASE の問題の監視とアラート通知に必要 |
+| 13.82.184.151:80 | ASE の問題の監視とアラート通知に必要 |
+| 13.82.184.151:443 | ASE の問題の監視とアラート通知に必要 |
 
 #### <a name="dependencies"></a>依存関係 ####
 

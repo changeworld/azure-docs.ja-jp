@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
-ms.openlocfilehash: c5c8a41aef92876ceaa66fb23c01c6ece1609f91
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: e313048986beca1991e38ce2e65ea12f954170d2
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484810"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598274"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight 上の Apache Spark クラスターで Apache Zeppelin Notebook を使用する
 
@@ -150,6 +150,25 @@ Zeppelin Notebook は、クラスターのヘッドノードに保存されま�
 ![ノートブックのダウンロード](./media/apache-spark-zeppelin-notebook/zeppelin-download-notebook.png "ノートブックのダウンロード")
 
 これにより、Notebook は JSON ファイルとしてダウンロード先に保存されます。
+
+## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>Shiro を使用して Enterprise セキュリティ パッケージ (ESP) クラスターで Zeppelin インタープリターへのアクセスを構成する
+前述のように、`%sh` インタープリターは HDInsight 4.0 以降ではサポートされていません。 さらに、`%sh` インタープリターは、シェル コマンドを使用した keytab へのアクセスなど、潜在的なセキュリティの問題が発生するため、HDInsight 3.6 の ESP クラスターからも削除されています。 つまり、既定では、 **[新しいメモの作成]** をクリックしても、インタープリター UI を使用しても `%sh` インタープリターは使用できません。 
+
+特権ドメイン ユーザーは、`Shiro.ini` ファイルを利用してインタープリター UI へのアクセスを制御できます。 したがって、これらのユーザーだけが、新しい `%sh` インタープリターを作成し、それぞれの新しい `%sh` インタープリターにアクセス許可を設定できます。 `shiro.ini` ファイルを使用してアクセスを制御するには、次の手順に従います。
+
+1. 既存のドメイン グループ名を使用して、新しいロールを定義します。 次の例で、`adminGroupName` は AAD の特権ユーザーのグループです。 グループ名には特殊文字や空白を使用しないでください。 `=` の後の文字によって、このロールのアクセス許可が付与されます。 `*` は、グループに完全なアクセス許可があることを意味します。
+
+    ```
+    [roles]
+    adminGroupName = *
+    ```
+
+2. Zeppelin インタープリターにアクセスするための新しいロールを追加します。 次の例では、`adminGroupName` 内のすべてのユーザーに Zeppelin インタープリターへのアクセス権が付与され、新しいインタープリターを作成できます。 `roles[]` 内の角かっこの間には、複数の役割をコンマで区切って指定できます。 その後、必要なアクセス許可を持つユーザーは、Zeppelin インタープリターにアクセスできます。
+
+    ```
+    [urls]
+    /api/interpreter/** = authc, roles[adminGroupName]
+    ```
 
 ## <a name="livy-session-management"></a>Livy セッションを管理する
 

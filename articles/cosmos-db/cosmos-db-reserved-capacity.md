@@ -4,15 +4,15 @@ description: Azure Cosmos DB の予約容量を購入して計算コストを節
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/18/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 8e29683b994d66e769a24bb2d386a2120cf8eab9
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 16e8f770445218e10ab7e7645a81325d11be55da
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367711"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505969"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Azure Cosmos DB の予約容量でコストを最適化する
 
@@ -30,7 +30,9 @@ Azure Cosmos DB の予約容量は、[Azure portal](https://portal.azure.com) �
 
 ## <a name="determine-the-required-throughput-before-purchase"></a>購入する前に必要なスループットを決定する
 
-予約のサイズは、既存の、または間もなくデプロイする Azure Cosmos DB リソースで使用されるスループットの合計量に基づく必要があります。 推奨される予約サイズは、次の手順を使用して Azure portal で確認できます。
+予約容量の購入のサイズは、既存の、または間もなくデプロイされる Azure Cosmos DB リソースが時間単位で使用するスループットの合計量を基にする必要があります。 次に例を示します。30,000 RU/秒の予約容量が時間単位の一貫した使用パターンである場合は、それを購入します。 この例で、30,000 RU/秒を超えてプロビジョニングされたスループットは、従量課金制の料金を使って課金されます。 プロビジョニングされたスループットが 1 時間あたり 30,000 RU/秒未満の場合、その時間の余剰の予約容量は無駄になります。
+
+購入の推奨は、お客様の時間単位の使用パターンに基づいて計算されます。 過去 7 日間、30 日間、および 60 日間の使用量が分析され、お客様の節約額が最大になる予約容量の購入が推奨されます。 推奨される予約サイズは、次の手順を使用して Azure portal で確認できます。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。  
 
@@ -46,7 +48,7 @@ Azure Cosmos DB の予約容量は、[Azure portal](https://portal.azure.com) �
 - **請求頻度** (毎月または前払い)
 - **スループットの種類** (RU とマルチマスター RU の比較)
 
-また、推奨のスコープを 1 つのリソース グループ、1 つのサブスクリプション、または Azure の登録全体に限定することができます。 過去 7 日間、30 日間、または 60 日の使用量に基づいて推奨を表示できます。
+また、推奨のスコープを 1 つのリソース グループ、1 つのサブスクリプション、または Azure の登録全体に限定することができます。 
 
 推奨の例を次に示します。
 

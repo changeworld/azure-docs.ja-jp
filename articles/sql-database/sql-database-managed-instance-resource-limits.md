@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 11/27/2019
-ms.openlocfilehash: eed0ed96efdc84697797c50578e11eee37d4d495
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 02/25/2020
+ms.openlocfilehash: 12d457d8d5e57dc4db16d9a191c7795a5f013574
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201732"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605012"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL Database マネージド インスタンスのリソース制限の概要
 
@@ -74,7 +74,7 @@ ms.locfileid: "77201732"
 | インスタンスごとの最大データベース ファイル数 | インスタンスのストレージ サイズまたは [Azure Premium ディスクの記憶域割り当ての領域](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)の上限に達していない限り、最大で 280 個。 | インスタンスのストレージ サイズの上限に達していない限り、データベースごとに 32,767 ファイル。 |
 | データ ファイルの最大サイズ | 現在利用可能なインスタンスのストレージ サイズ (最大 2 TB から 8 TB) と [Azure Premium ディスクの記憶域割り当ての領域](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)に制限されています。 | 現在利用可能なインスタンスのストレージ サイズ (最大 1 TB から 4 TB) に制限されています。 |
 | 最大ログ ファイル サイズ | 2 TB と現在利用可能なインスタンスのストレージ サイズに制限されています。 | 2 TB と現在利用可能なインスタンスのストレージ サイズに制限されています。 |
-| データ/ログの IOPS (概算) | インスタンス* あたり最大で 30 から 40 K IOPS、ファイルあたり 500 から 7500<br/>\*[IOPS を増やすには、ファイル サイズを大きくします](#file-io-characteristics-in-general-purpose-tier)| 5.5 K から 110 K (1375 IOPS/仮想コア)<br/>IO パフォーマンスを向上させるには、仮想コアを追加します。 |
+| データ/ログの IOPS (概算) | インスタンス* あたり最大で 30 から 40 K IOPS、ファイルあたり 500 から 7500<br/>\*[IOPS を増やすには、ファイル サイズを大きくします](#file-io-characteristics-in-general-purpose-tier)| 10 K から 200 K (2500 IOPS/仮想コア)<br/>IO パフォーマンスを向上させるには、仮想コアを追加します。 |
 | ログ書き込みのスループット制限 (インスタンスあたり) | 仮想コアあたり 3 MB/秒<br/>最大 22 MB/秒 | 仮想コアあたり 4 MB/秒<br/>最大 48 MB/秒 |
 | データ スループット (概算) | ファイルあたり 100 ～ 250 MB/秒<br/>\*[IO パフォーマンスを向上させるには、ファイル サイズを増やします](#file-io-characteristics-in-general-purpose-tier) | 制限なし。 |
 | ストレージ IO 待機時間 (概算) | 5 ～ 10 ms | 1 ～ 2 ms |
@@ -96,7 +96,7 @@ ms.locfileid: "77201732"
 
 General Purpose サービス レベルでは、すべてのデータベース ファイルが、ファイルのサイズに依存する専用の IOPS とスループットを取得します。 ファイルのサイズが大きいほど、IOPS とスループットが向上します。 次の表に、データベース ファイルの IO 特性を示します。
 
-| ファイル サイズ           | 0 から 128 GiB | 128 から 256 GiB | 256 から 512 GiB | 0.5 から 1 TiB    | 1 から 2 TiB    | 2 から 4 TiB | 4 から 8 TiB |
+| ファイル サイズ | >=0 および <=128 GiB | >128 および <=256 GiB | >256 および <= 512 GiB | >0.5 および <=1 TiB    | >1 および <=2 TiB    | >2 および <=4 TiB | >4 および <=8 TiB |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
 | ファイルあたりの IOPS       | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12,500   |
 | ファイルあたりのスループット | 100 MiB/秒 | 125 MiB/秒 | 150 MiB/秒 | 200 MiB/秒 | 250 MiB/秒 | 250 MiB/秒 | 480 MiB/s | 
@@ -107,7 +107,7 @@ General Purpose サービス レベルでは、すべてのデータベース �
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
-マネージド インスタンスは、[サポートされているリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)のみで作成できます。 現在サポートされていないリージョンでマネージド インスタンスを作成するには、[Azure portal 経由でサポート要求を送信](#obtaining-a-larger-quota-for-sql-managed-instance)できます。
+マネージド インスタンスは、[サポートされているリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)のみで作成できます。 現在サポートされていないリージョンでマネージド インスタンスを作成するには、[Azure portal 経由でサポート要求を送信](quota-increase-request.md)できます。
 
 ## <a name="supported-subscription-types"></a>サポートされているサブスクリプションの種類
 
@@ -122,13 +122,13 @@ General Purpose サービス レベルでは、すべてのデータベース �
 
 ## <a name="regional-resource-limitations"></a>リージョンのリソース制限
 
-サポートされているサブスクリプションの種類には、リージョンごとのリソース数の制限を組み入れることができます。 マネージド インスタンスには、サブスクリプションの種類に応じて、(特別な[サポート要求を Azure portal で](#obtaining-a-larger-quota-for-sql-managed-instance)作成することによって、オンデマンドで増加する可能性がある) Azure リージョンごとに 2 つの既定の制限があります。
+サポートされているサブスクリプションの種類には、リージョンごとのリソース数の制限を組み入れることができます。 マネージド インスタンスには、サブスクリプションの種類に応じて、(特別な[サポート要求を Azure portal で](quota-increase-request.md)作成することによって、オンデマンドで増加する可能性がある) Azure リージョンごとに 2 つの既定の制限があります。
 
 - **サブネットの制限**: マネージド インスタンスが単一リージョンにデプロイされているサブネットの最大数。
 - **仮想コア ユニットの制限**: 単一リージョン内のすべてのインスタンスを超えてデプロイできる仮想コア ユニットの最大数。 1 つの GP 仮想コアでは仮想コア ユニットを 1 つ使用し、1 つの BC 仮想コアでは仮想コア ユニットを 4 つ使用します。 インスタンスの合計数は、仮想コア ユニットの制限内である限り、制限されません。
 
 > [!Note]
-> これらの制限は既定の設定であり、技術的な制限ではありません。 現在のリージョンでさらに多くのマネージド インスタンスが必要な場合、[Azure portal でサポート要求](#obtaining-a-larger-quota-for-sql-managed-instance)を特別に作成して、これらの制限をオンデマンドで引き上げることができます。 サポート要求を送信せずに、代わりに、別の Azure リージョンに新しいマネージド インスタンスを作成することも可能です。
+> これらの制限は既定の設定であり、技術的な制限ではありません。 現在のリージョンでさらに多くのマネージド インスタンスが必要な場合、[Azure portal でサポート要求](quota-increase-request.md)を特別に作成して、これらの制限をオンデマンドで引き上げることができます。 サポート要求を送信せずに、代わりに、別の Azure リージョンに新しいマネージド インスタンスを作成することも可能です。
 
 次の表は、サポートされている種類のサブスクリプションを対象に、**既定のリージョン別制限**についてまとめたものです (既定の制限は、下に説明がある、サポート リクエストを利用して拡張できます)。
 
@@ -146,39 +146,9 @@ General Purpose サービス レベルでは、すべてのデータベース �
 
 \*\* 次のリージョンには、より大きなサブネットと仮想コアの制限があります。オーストラリア東部、米国東部、米国東部 2、北ヨーロッパ、米国中南部、東南アジア、英国南部、西ヨーロッパ、米国西部 2。
 
-## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>SQL マネージド インスタンスでのより大きなクォータの取得
+## <a name="request-a-quota-increase-for-sql-managed-instance"></a>SQL マネージド インスタンスのクォータの増加を要求する
 
-現在のリージョンでより多くのマネージド インスタンスが必要な場合、Azure portal を使用してクォータを拡張するためのサポート要求を送信します。
-より大きなクォータを取得するプロセスを開始するには、次の手順を実行します。
-
-1. **[ヘルプとサポート]** を開き、 **[新しいサポート要求]** をクリックします。
-
-   ![ヘルプとサポート](media/sql-database-managed-instance-resource-limits/help-and-support.png)
-2. 新しいサポート要求の [基本] タブで、次の手順を実行します。
-   - **[問題の種類]** で、 **[サービスとサブスクリプションの制限 (クォータ)]** を選択します。
-   - **[サブスクリプション]** で、ご使用のサブスクリプションを選択します。
-   - **[クォータの種類]** で、 **[SQL Database Managed Instance]** を選択します。
-   - **[サポート プラン]** で、お使いのサポート プランを選択します。
-
-     ![[問題の種類] クォータ](media/sql-database-managed-instance-resource-limits/issue-type-quota.png)
-
-3. **[次へ]** をクリックします。
-4. 新しいサポート リクエストの **[問題]** タブで、次の手順を実行します。
-   - **[重大度]** で、問題の重大度を選択します。
-   - **[詳細]** で、エラー メッセージなど、問題に関する追加情報を指定します。
-   - **[ファイルのアップロード]** で、より詳細な情報を含むファイル (最大 4 MB) を添付します。
-
-     ![問題の詳細](media/sql-database-managed-instance-resource-limits/problem-details.png)
-
-     > [!IMPORTANT]
-     > 有効な要求には、次の情報を含める必要があります。
-     > - サブスクリプションの制限を引き上げる必要があるリージョン。
-     > - クォータが増加した後の既存のサブネットで、サービス レベルごとに必要な仮想コア数 (既存のサブネットのいずれかを拡張する必要がある場合)。
-     > - 必要な新しいサブネット数と、新しいサブネット内でのサービス レベルあたりの仮想コア合計 (新しいサブネットにマネージド インスタンスをデプロイする必要がある場合)
-
-5. **[次へ]** をクリックします。
-6. 新しいサポート要求の [連絡先情報] タブで、希望する連絡方法 (電子メールまたは電話) と連絡先の詳細を入力します。
-7. **Create** をクリックしてください。
+現在のリージョンでより多くのマネージド インスタンスが必要な場合、Azure portal を使用してクォータを拡張するためのサポート要求を送信します。 詳細については、「[Azure SQL Database のクォータの増加を要求する](quota-increase-request.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

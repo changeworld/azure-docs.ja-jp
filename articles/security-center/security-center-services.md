@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 7ffab200b50a7c4d1af60a230f237b18e8afc621
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 8d905da733ea0573b91b289da43684ed8083c804
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754230"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616384"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Azure Security Center でサポートされている使用可能な機能
 
@@ -33,15 +33,15 @@ ms.locfileid: "75754230"
 
 ## <a name="vm-server-features"></a>仮想マシン/サーバーでサポートされる機能
 
-### <a name="windowstabfeatures-windows"></a>[Windows](#tab/features-windows)
+### <a name="windows"></a>[Windows](#tab/features-windows)
 
 |||||||||
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 ||**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Azure 以外のマシン**|**料金**
 |[Microsoft Defender ATP の統合](security-center-wdatp.md)|✔ (サポートされているバージョン)|✔ (サポートされているバージョン)|✔|Standard|
-|[仮想マシン動作分析の脅威検出アラート](security-center-alerts-iaas.md)|✔|✔|✔|推奨事項 (無料) 脅威の検出 (Standard)|
+|[仮想マシン動作分析の脅威検出アラート](threat-protection.md)|✔|✔|✔|推奨事項 (無料) 脅威の検出 (Standard)|
 |[ファイルレス脅威の検出アラート](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
-|[ネットワーク経由の脅威検出アラート](security-center-alerts-service-layer.md#azure-network-layer)|✔|✔|-|Standard|
+|[ネットワーク経由の脅威検出アラート](threat-protection.md#network-layer)|✔|✔|-|Standard|
 |[Just-In-Time VM アクセス](security-center-just-in-time.md)|✔|-|-|Standard|
 |[ネイティブ脆弱性評価](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
 |[ファイルの整合性の監視](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
@@ -59,7 +59,7 @@ ms.locfileid: "75754230"
 |[ネットワーク セキュリティ評価](security-center-network-recommendations.md)|✔|✔|-|無料|
 
 
-### <a name="linuxtabfeatures-linux"></a>[Linux](#tab/features-linux)
+### <a name="linux"></a>[Linux](#tab/features-linux)
 
 |||||||||
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
@@ -67,7 +67,7 @@ ms.locfileid: "75754230"
 |[Microsoft Defender ATP の統合](security-center-wdatp.md)|-|-|-|Standard|
 |[仮想マシン動作分析の脅威検出アラート](security-center-alerts-iaas.md)|✔ (サポートされているバージョン)|✔ (サポートされているバージョン)|✔|推奨事項 (無料) 脅威の検出 (Standard)|
 |[ファイルレス脅威の検出アラート](alerts-reference.md#alerts-windows)|-|-|-|Standard|
-|[ネットワーク経由の脅威検出アラート](security-center-alerts-service-layer.md#azure-network-layer)|✔|✔|-|Standard|
+|[ネットワーク経由の脅威検出アラート](threat-protection.md#network-layer)|✔|✔|-|Standard|
 |[Just-In-Time VM アクセス](security-center-just-in-time.md)|✔|-|-|Standard|
 |[ネイティブ脆弱性評価](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
 |[ファイルの整合性の監視](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
@@ -159,5 +159,5 @@ Azure Security Center では、次の PaaS リソースがサポートされて�
 - [Azure Security Center を導入するための設計上の考慮事項を計画し、理解する](security-center-planning-and-operations-guide.md)方法について説明しています。
 - [Security Center がサポートされているプラットフォーム](security-center-os-coverage.md)を確認します。
 - [Azure Security Center での VM と サーバーの脅威検出](security-center-alerts-iaas.md)の詳細を確認します。
-- [Azure Security Center の使用に関してよく寄せられる質問](security-center-faq.md)が記載されています。
+- [Azure Security Center についてよく寄せられる質問](faq-general.md)を確認します。
 - [Azure のセキュリティとコンプライアンスについてのブログ記事](https://blogs.msdn.com/b/azuresecurity/)を確認できます。

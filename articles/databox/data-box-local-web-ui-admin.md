@@ -1,5 +1,5 @@
 ---
-title: Azure Data Box、Azure Data Box Heavy のローカル Web UI 管理 | Microsoft Docs
+title: ローカル Web UI を使用した Azure Data Box/Azure Data Box Heavy の管理
 description: ローカル Web UI を使用して Data Box および Data Box Heavy デバイスを管理する方法について説明します
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: bf8af37b0caf51966e336bcb4cea0c4ece5ca9c7
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: cf7cf0a7aa2812d7a93c282cbda5f82dd83aac29
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496255"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560186"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>ローカル Web UI を使用して Data Box および Data Box Heavy を管理する
 
@@ -177,7 +177,7 @@ Data Box を再起動するには、次の手順を実行します。
 2. **[無効]** をクリックしてチェックサム検証を無効にします
 3. **[Apply]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure portal を使用して Data Box と Data Box Heavy を管理する](data-box-portal-admin.md)方法について学習します。
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 226ed1fcc72eada399c0a9a9eb4225d79cd83dd7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: efb6cd1a45ac14dcbd5b2b6d8e70f5ee096ddbd8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845890"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587279"
 ---
 # <a name="hyperscale-service-tier"></a>ハイパースケール サービス レベル
 
@@ -125,7 +125,7 @@ GO
 
 ## <a name="migrate-an-existing-azure-sql-database-to-the-hyperscale-service-tier"></a>既存の Azure SQL Database のハイパースケール サービス レベルへの移行
 
-既存の Azure SQL データベースをハイパースケールに移行するには、[Azure portal](https://portal.azure.com)、[T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current)、[Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase)、または [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update) を使用します。 現時点で、これは一方向にしか移行できません。 データのエクスポートとインポート以外の方法で、Hyperscale から別のサービス レベルにデータベースを移動することはできません。 概念実証 (POC) のために、運用データベースのコピーを作成して、コピーを Hyperscale に移行することをお勧めします。 既存の Azure SQL データベースの Hyperscale レベルへの移行は、データ サイズに左右される操作です。
+既存の Azure SQL データベースをハイパースケールに移行するには、[Azure portal](https://portal.azure.com)、[T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current)、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase)、または [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update) を使用します。 現時点で、これは一方向にしか移行できません。 データのエクスポートとインポート以外の方法で、Hyperscale から別のサービス レベルにデータベースを移動することはできません。 概念実証 (POC) のために、運用データベースのコピーを作成して、コピーを Hyperscale に移行することをお勧めします。 既存の Azure SQL データベースの Hyperscale レベルへの移行は、データ サイズに左右される操作です。
 
 次の T-SQL コマンドによってデータベースがハイパースケール サービス レベルに移行されます。 `ALTER DATABASE` ステートメントにエディションとサービス目標の両方を指定する必要があります。
 
@@ -174,7 +174,7 @@ Hyperscale の SLA については、「[SLA for Azure SQL Database の SLA](htt
 - 中国東部 2
 - 中国北部 2
 - 東アジア
-- East US
+- 米国東部
 - 米国東部 2
 - フランス中部
 - 東日本
@@ -192,48 +192,14 @@ Hyperscale の SLA については、「[SLA for Azure SQL Database の SLA](htt
 - 米国西部
 - 米国西部 2
 
-サポート対象として掲載されていないリージョンに Hyperscale データベースを作成したい場合は、Azure portal 経由でオンボード要求を送信できます。 サポート対象リージョンの一覧は随時更新されているため、最新のリージョンの一覧を確認してください。
+サポート対象として掲載されていないリージョンに Hyperscale データベースを作成したい場合は、Azure portal 経由でオンボード要求を送信できます。 手順については、「[Azure SQL Database のクォータの増加を要求する](quota-increase-request.md)」を参照してください。 要求を送信するときは、次のガイドラインに従ってください。
 
-掲載されていないリージョンに Hyperscale データベースを作成できるように要求するには:
-
-1. [Azure の [ヘルプとサポート] ブレード](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)に移動します
-
-2. [ **[新しいサポート リクエスト]** ](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) をクリックします
-
-    ![Azure の [ヘルプとサポート] ブレード](media/sql-database-service-tier-hyperscale/request-screen-1.png)
-
-3. **[問題の種類]** で、 **[サービスとサブスクリプションの制限 (クォータ)]** を選択します
-
-4. データベースの作成に使用するサブスクリプションを選択します
-
-5. **[クォータの種類]** で、 **[SQL データベース]** を選択します
-
-6. **[次へ: ソリューション]** をクリックします
-
-1. **[詳細の指定]** をクリックします
-
-    ![問題の詳細](media/sql-database-service-tier-hyperscale/request-screen-2.png)
-
-8. **[SQL Database のクォータの種類]** で **[その他のクォータ要求]** を選択します
-
-9. 次のテンプレートを入力します。
-
-    ![クォータの詳細](media/sql-database-service-tier-hyperscale/request-screen-3.png)
-
-    テンプレートで、以下の情報を指定します
-
-    > 新しいリージョンで Azure Hyperscale SQL Database を作成するための要求<br/> リージョン: [要求対象のリージョンを入力]  <br/>
-    > コンピューティング SKU/コア総数 (読み取り可能なレプリカを含む) <br/>
-    > 推定 TB 数 
-    >
-
-10. **[重要度 C]** を選択します。
-
-11. 適切な連絡方法を選択し、詳細を入力します。
-
-12. **[保存]** 、 **[続行]** の順にクリックします
+- [その他のクォータ要求](quota-increase-request.md#other) SQL データベースのクォータの種類を使用します。
+- テキストの詳細に、読み取り可能なレプリカを含むコンピューティング SKU/コア総数を追加します。
+- また、推定 TB を指定します。
 
 ## <a name="known-limitations"></a>既知の制限事項
+
 以下は、一般提供時点の Hyperscale サービス レベルに対する現在の制限事項です。  これらの制限事項ができるだけなくなるように、積極的に取り組んでいます。
 
 | 問題 | 説明 |

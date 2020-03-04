@@ -14,12 +14,12 @@ ms.date: 11/13/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a28a4ccbaa256133b785d2238657093ba40ea11f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 530eebea19d9e53f85a0079d6fba91c615ee6dd1
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024196"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498905"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールに対するセキュリティ アラートを構成する
 
@@ -32,11 +32,11 @@ Azure Active Directory (Azure AD) 組織内で疑わしいアクティビティ�
 1. [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)のロールであるユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
 1. **[Azure AD Privileged Identity Management]** を開きます。 概要ページの上部にバナーが表示されている場合は、この記事の **[新しいバージョン]** タブの指示に従ってください。 それ以外の場合は、 **[以前のバージョン]** タブの指示に従ってください。
 
-    ![Azure AD ロールの新しいバージョン](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+  [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 Azure AD ロールに関するセキュリティ アラートを調査するには、この記事の手順に従ってください。
 
-# <a name="new-versiontabnew"></a>[新しいバージョン](#tab/new)
+# <a name="new-version"></a>[新しいバージョン](#tab/new)
 
 ![Azure AD ロール - アラートと重大度を一覧表示するアラート ウィンドウ](./media/pim-how-to-configure-security-alerts/view-alerts.png)
 
@@ -135,7 +135,7 @@ Azure AD ロールに関するセキュリティ アラートを調査するに�
 
 ![設定を有効化および構成するための、アラートの [設定] ページ](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
 
-# <a name="previous-versiontabprevious"></a>[以前のバージョン](#tab/previous)
+# <a name="previous-version"></a>[以前のバージョン](#tab/previous)
 
 ![Azure AD ロール - アラートと重大度を一覧表示するアラート ウィンドウ](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 

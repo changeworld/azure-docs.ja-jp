@@ -1,0 +1,55 @@
+### YamlMime:Landing
+title: 音声翻訳のドキュメント
+summary: 音声サービスの音声翻訳により、オーディオ ストリームの複数言語での音声間翻訳や音声テキスト変換をリアルタイムに実行できます
+metadata:
+  title: 音声翻訳のドキュメント - チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: c45c16b4421bf48e5728f95e7043ef7ffc109c3a
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77562806"
+landingContent:
+- title: はじめに
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 音声翻訳とは何か
+      url: speech-translation.md
+  - linkListType: quickstart
+    links:
+    - text: 音声テキスト変換の翻訳
+      url: quickstarts/translate-speech-to-text.md
+    - text: 音声を複数のターゲット言語に翻訳する
+      url: quickstarts/translate-speech-to-text-multiple-languages.md
+    - text: 音声間翻訳
+      url: quickstarts/translate-speech-to-speech.md
+- title: ステップバイステップ ガイド
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 音声をリアルタイムで翻訳する
+      url: https://docs.microsoft.com/learn/modules/convert-speech-to-text
+  - linkListType: tutorial
+    links:
+    - text: REST API を使用してテキストを翻訳して合成する
+      url: ../translator/tutorial-build-flask-app-translation-synthesis.md
+- title: リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 言語のサポート
+      url: language-support.md#speech-translation
+    - text: 価格
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
+    - text: 音声翻訳のよくあるご質問
+      url: https://www.microsoft.com/translator/business/faq/

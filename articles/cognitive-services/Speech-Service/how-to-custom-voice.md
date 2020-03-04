@@ -1,5 +1,5 @@
 ---
-title: Custom Voice とは - 音声サービス
+title: カスタム音声を使用して合成を改善する - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: Custom Voice は、ブランド用に認識性の高い固有の音声を作成できる、一連のオンライン ツールです。 作業を始めるにあたって必要なのは、少数のオーディオ ファイルと関連する文字起こしだけです。 以下のリンクに従って、カスタム音声テキスト変換エクスペリエンスの作成を開始しましょう。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: dapine
-ms.openlocfilehash: 15d15ce2d4dfc55a51bf21ba005512606cc4997a
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 786cf687e569af172eabfaa9068ae61ffd6b2988
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424968"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562498"
 ---
 # <a name="get-started-with-custom-voice"></a>Custom Voice の概要
 
@@ -23,13 +23,13 @@ ms.locfileid: "77424968"
 
 ## <a name="whats-in-custom-voice"></a>Custom Voice の内容
 
-カスタム音声を開始する前に、Azure アカウントと音声サービスのサブスクリプションが必要になります。 アカウントを作成したら、データの準備、モデルのトレーニングおよびテスト、音声品質の評価、そしてカスタム音声モデルのデプロイを行えます。
+Custom Voice を開始する前に、Azure アカウントと音声サービスのサブスクリプションが必要になります。 アカウントを作成したら、データの準備、モデルのトレーニングおよびテスト、音声品質の評価、そしてカスタム音声モデルのデプロイを行えます。
 
 下の図では、[Custom Voice ポータル](https://aka.ms/customvoice)を使用してカスタム音声モデルを作成する手順を示しています。 リンクを使用して、詳細を確認してください。
 
 ![Custom Voice のアーキテクチャ図](media/custom-voice/custom-voice-diagram.png)
 
-1. [サブスクライブしてプロジェクトを作成する](#set-up-your-azure-account) - Azure アカウントを作成し、音声サービスのサブスクリプションを作成します。 この一元化されたサブスクリプションを通じて、音声テキスト変換、テキスト読み上げ、音声翻訳、Custom Voice ポータルにアクセスすることができます。 次に、音声サービス サブスクリプションを使用して、最初のカスタム音声プロジェクトを作成します。
+1. [サブスクライブしてプロジェクトを作成する](#set-up-your-azure-account) - Azure アカウントを作成し、音声サービスのサブスクリプションを作成します。 この一元化されたサブスクリプションを通じて、音声テキスト変換、テキスト読み上げ、音声翻訳、Custom Voice ポータルにアクセスすることができます。 次に、音声サービス サブスクリプションを使用して、最初の Custom Voice プロジェクトを作成します。
 
 2. [データをアップロードする](how-to-custom-voice-create-voice.md#upload-your-datasets) - Custom Voice ポータルまたは Custom Voice API を使用して、データ (オーディオとテキスト) をアップロードします。 ポータルで、発音スコアと信号対雑音比を調査および評価できます。 詳細については、[Custom Voice 用にデータを準備する方法](how-to-custom-voice-prepare-data.md)に関する記事を参照してください。
 
@@ -48,7 +48,7 @@ ms.locfileid: "77424968"
 
 Custom Speech ポータルを使用してカスタム モデルを作成する前に、音声サービス サブスクリプションが必要です。 Azure で音声サービス サブスクリプションを作成するには、以下の手順に従います。 Azure アカウントがない場合、新しいものにサインアップできます。  
 
-Azure アカウントと音声サービス サブスクリプションを作成したら、カスタム音声ポータルにサインインして、自分のサブスクリプションを接続する必要があります。
+Azure アカウントと音声サービス サブスクリプションを作成したら、Custom Voice ポータルにサインインして、自分のサブスクリプションを接続する必要があります。
 
 1. Azure portal から音声サービス サブスクリプション キーを取得します。
 2. [Custom Voice ポータル](https://aka.ms/custom-voice)にサインインします。
@@ -70,5 +70,5 @@ Azure アカウントと音声サービス サブスクリプションを作成�
 ## <a name="next-steps"></a>次のステップ
 
 - [Custom Voice のデータを用意する](how-to-custom-voice-prepare-data.md)
-- [カスタム音声を作成する](how-to-custom-voice-create-voice.md)
+- [Custom Voice を作成する](how-to-custom-voice-create-voice.md)
 - [ガイド:音声サンプルを録音する](record-custom-voice-samples.md)

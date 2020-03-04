@@ -1,29 +1,27 @@
 ---
 title: SharePoint ファイル - QnA Maker
-titleSuffix: Azure Cognitive Services
 description: ご自分のサポート情報にセキュリティで保護された SharePoint データ ソースを追加して、Active Directory によりセキュリティで保護されている可能性がある質問と回答でサポート情報を補強できます。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/24/2019
-ms.author: diberry
-ms.openlocfilehash: e28f144c33cbdf253603cb38ca56a4d304afd474
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/20/2020
+ms.openlocfilehash: 402d8239ee9fbac01e64e3624a7e4d8a13f2e7d8
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843294"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650437"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>ご自分のサポート情報にセキュリティで保護された SharePoint データ ソースを追加する
 
-ご自分のサポート情報にセキュリティで保護された SharePoint データ ソースを追加して、Active Directory によりセキュリティで保護されている可能性がある質問と回答でサポート情報を補強できます。
+ご自分のサポート情報にセキュリティで保護されたクラウドベースの SharePoint データ ソースを追加して、Active Directory によりセキュリティで保護されている可能性がある質問と回答でサポート情報を補強できます。
 
 ご自分のサポート情報にセキュリティで保護された SharePoint ドキュメントを追加する場合、QnA Maker マネージャーとして、QnA Maker 用の Active Directory に対するアクセス許可を要求する必要があります。 この、SharePoint にアクセスするアクセス許可が Active Directory マネージャーから QnA Maker に付与されると、再度それを取得する必要はありません。 それ以降サポート情報にドキュメントを追加する場合、それが同じ SharePoint リソース内にある場合、承認は不要です。
 
 QnA Maker サポート情報マネージャーが Active Directory マネージャーでない場合、Active Directory マネージャーにこの手順を完了するよう伝える必要があります。
+
+## <a name="prerequisites"></a>前提条件
+
+* クラウドベースの SharePoint - QnA Maker では、アクセス許可に Microsoft Graph を使用します。 SharePoint がオンプレミスにある場合は、Microsoft Graph がアクセス許可を判断できないため、SharePoint から抽出できません。
+* URL 形式 - QnA Maker では、共有用に生成され、形式が https://*.sharepoint.com の SharePoint URL のみがサポートされます。
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>サポート情報へのサポート対象ファイルの種類の追加
 

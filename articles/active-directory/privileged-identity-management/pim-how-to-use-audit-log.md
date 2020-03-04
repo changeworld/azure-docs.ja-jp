@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/13/2019
+ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d46036efa04b4e0225cad6e8a70cd31ad3c10bd
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a4a2eccc02d13bf5a2dfc8bf3ceb7887e4962489
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024179"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498525"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>PIM で Azure AD ロールの監査履歴を表示する
 
@@ -32,9 +32,9 @@ Privileged Identity Management (PIM) の監査履歴を使用すると、すべ�
 1. [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)のロールであるユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
 1. **[Azure AD Privileged Identity Management]** を開きます。 概要ページの上部にバナーが表示されている場合は、この記事の **[新しいバージョン]** タブの指示に従ってください。 それ以外の場合は、 **[以前のバージョン]** タブの指示に従ってください。
 
-    ![Azure AD ロールの新しいバージョン](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+    [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
-# <a name="new-versiontabnew"></a>[新しいバージョン](#tab/new)
+# <a name="new-version"></a>[新しいバージョン](#tab/new)
 
 Azure AD ロールの監査履歴を表示するには、次の手順に従います。
 
@@ -50,7 +50,7 @@ Azure AD ロールの監査履歴を表示するには、次の手順に従い�
 
 1. 定義済みの日付またはカスタムの範囲を使用して履歴をフィルターします。
 
-    ![フィルターを使用したリソースの監査の一覧](media/azure-pim-resource-rbac/rbac-resource-audit.png)
+    ![フィルターを使用したリソースの監査の一覧](media/pim-how-to-use-audit-log/resource-audit.png)
 
 ## <a name="view-my-audit"></a>自分の監査を表示する
 
@@ -66,9 +66,9 @@ Azure AD ロールの監査履歴を表示するには、次の手順に従い�
 
 1. 定義済みの日付またはカスタムの範囲を使用して履歴をフィルターします。
 
-    ![現在のユーザーに対する監査の一覧](media/azure-pim-resource-rbac/my-audit-time.png)
+    ![現在のユーザーに対する監査の一覧](media/pim-how-to-use-audit-log/audit-time-span.png)
 
-# <a name="previous-versiontabprevious"></a>[以前のバージョン](#tab/previous)
+# <a name="previous-version"></a>[以前のバージョン](#tab/previous)
 
 ## <a name="view-audit-history"></a>監査履歴を表示する
 

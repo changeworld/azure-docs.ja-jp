@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/05/2020
+ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a409d71ff3eae3bc62527a0669a74696246a50cd
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 77132ae9a10eda7170ac56f2b7c65a3ebcde8d6d
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048086"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499023"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールの設定を構成する
 
@@ -32,7 +32,7 @@ ms.locfileid: "77048086"
 1. [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)のロールであるユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
 1. **[Azure AD Privileged Identity Management]** を開きます。 概要ページの上部にバナーが表示されている場合は、この記事の **[新しいバージョン]** タブの指示に従ってください。 それ以外の場合は、 **[以前のバージョン]** タブの指示に従ってください。
 
-    ![Azure AD ロールの新しいバージョン](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+  [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 Azure AD ロールに対する要求を承認または拒否するには、この記事の手順に従ってください。
 
@@ -46,15 +46,15 @@ Azure AD ロールに対する要求を承認または拒否するには、こ�
 gt
 1. **[Azure AD Privileged Identity Management]** &gt; **[Azure AD ロール]** &gt; **[ロールの設定]** を開きます。
 
-    ![Azure リソース ロールを一覧表示する [ロールの設定] ページ](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
+    ![Azure AD ロールを一覧表示する [ロールの設定] ページ](./media/pim-how-to-change-default-settings/role-settings.png)
 
 1. 設定を構成するロールを選択します。
 
-    ![複数の割り当てとアクティブ化の設定を一覧表示する [ロールの設定の詳細] ページ](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
+    ![複数の割り当てとアクティブ化の設定を一覧表示する [ロールの設定の詳細] ページ](./media/pim-how-to-change-default-settings/role-settings-page.png)
 
 1. **[編集]** を選択して [ロールの設定] ページを開きます。
 
-    ![割り当てとアクティブ化の設定を更新するためのオプションがある [Edit role settings]/(ロールの設定の編集/) ページ](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+    ![割り当てとアクティブ化の設定を更新するためのオプションがある [Edit role settings]/(ロールの設定の編集/) ページ](./media/pim-how-to-change-default-settings/role-settings-edit.png)
 
     各ロールの [ロールの設定] ウィンドウでは、複数の設定を構成できます。
 
@@ -66,18 +66,18 @@ gt
 
 | | |
 | --- | --- |
-| **永続的に資格のある割り当てを許可する** | リソース管理者は、永続的に資格のある割り当てを行うことができます。 |
-| **次の後に、資格のある割り当ての有効期限が切れる** | リソース管理者は、すべての資格のある割り当てに、開始日と終了日の指定を必須にすることができます。 |
+| **永続的に資格のある割り当てを許可する** | 全体管理者と特権ロール管理者は、永続的に資格のある割り当てを割り当てることができます。 |
+| **次の後に、資格のある割り当ての有効期限が切れる** | 全体管理者と特権ロール管理者は、すべての資格のある割り当てに、開始日と終了日の指定を必須にすることができます。 |
 
 また、このような**アクティブな**割り当て期間のオプションからいずれかを選択することができます。
 
 | | |
 | --- | --- |
-| **永続するアクティブな割り当てを許可する** | リソース管理者は、永続的にアクティブな割り当てを行うことができます。 |
-| **アクティブ割り当ては次の期間後に期限切れになる** | リソース管理者は、すべてのアクティブな割り当てに、開始日と終了日の指定を必須にすることができます。 |
+| **永続するアクティブな割り当てを許可する** | 全体管理者と特権ロール管理者は、永続的にアクティブな割り当てを割り当てることができます。 |
+| **アクティブ割り当ては次の期間後に期限切れになる** | 全体管理者と特権ロール管理者は、すべてのアクティブな割り当てに、開始日と終了日の指定を必須にすることができます。 |
 
 > [!NOTE]
-> リソース管理者は､終了日時が指定されている割り当てのどれでも更新することができます｡ これに対し､ユーザーは[ロールの割り当てを延長または更新する](pim-resource-roles-renew-extend.md)セルフサービス要求を開始することができます｡
+> 全体管理者と特権ロール管理者は､終了日時が指定されているすべての割り当てを更新することができます｡ これに対し､ユーザーは[ロールの割り当てを延長または更新する](pim-resource-roles-renew-extend.md)セルフサービス要求を開始することができます｡
 
 ## <a name="require-multi-factor-authentication"></a>多要素認証が必要です
 
@@ -87,13 +87,13 @@ Privileged Identity Management では、2 つの異なるシナリオで、必�
 
 場合によっては、ユーザーをロールに短期間 (たとえば 1 日) 割り当てる必要があります。 この場合、割り当てられたユーザーがアクティブ化を要求する必要はありません。 このシナリオでは、ユーザーは割り当てられた時点からそのロールでアクティブになるため、各自がそのロールの割り当てを使用するときに、Privileged Identity Management で Multi-Factor Authentication を強制することができません。
 
-割り当てを実行するリソース管理者が、確かに本人が言うような人物であることを保証するために、 **[アクティブな割り当てに多要素認証が必要]** チェックボックスをオンにして、アクティブな割り当てに Multi-Factor Authentication を強制することができます。
+割り当てを実行する管理者が本人であることを確認するために、 **[アクティブな割り当てに多要素認証が必要]** チェックボックスをオンにして、アクティブな割り当てに Multi-Factor Authentication を強制できます。
 
 ### <a name="require-multi-factor-authentication-on-activation"></a>アクティブ化に Multi-Factor Authentication を要求する
 
 ロールの資格を持つユーザーに対して、アクティブ化する前に Azure Multi-Factor Authentication を使用していることを証明するように要求することができます。 Multi-Factor Authentication により、ユーザーが、確かに本人が言うような人物であることが合理的かつ確実に保証されます。 このオプションを強制すると、ユーザー アカウントが侵害された可能性がある状況で、重要なリソースが保護されます。
 
-アクティブ化には多要素認証の実行を必須にするには、 **[アクティブ化には Multi-Factor Authentication が必要です]** チェックボックスをオンにします。
+アクティブ化の前に多要素認証を要求するには、 **[ロールの編集] 設定**の [割り当て] タブで **[アクティブ化には Multi-Factor Authentication が必要です]** チェックボックスをオンにします。
 
 詳細については、[Multi-Factor Authentication と Privileged Identity Management](pim-how-to-require-mfa.md) に関するページを参照してください。
 

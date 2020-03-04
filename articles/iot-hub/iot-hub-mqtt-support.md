@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 694697be85b61ad2d59a0a4be1ced3581873cb77
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: 2b200692610302bb135982e5419dcda36d5cfe60
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111757"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648497"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -161,28 +161,27 @@ MQTT の接続パケットおよび切断パケットの場合、IoT Hub は **�
 
 **Windows の場合:**
 
-•   TelemetryMQTTWin32: Windows マシンでビルドされ実行されている Azure IoT ハブにテレメトリ メッセージを送信するためのコードが含まれています。
+* TelemetryMQTTWin32: Windows マシンでビルドされ実行されている Azure IoT ハブにテレメトリ メッセージを送信するためのコードが含まれています。
 
-•   SubscribeMQTTWin32: Windows マシン上の特定の IoT ハブのイベントをサブスクライブするためのコードが含まれています。
+* SubscribeMQTTWin32: Windows マシン上の特定の IoT ハブのイベントをサブスクライブするためのコードが含まれています。
 
-•   DeviceTwinMQTTWin32: Windows マシン上の Azure IoT ハブにあるデバイスのデバイス ツイン イベントに対してクエリを実行し、サブスクライブするためのコードが含まれています。
+* DeviceTwinMQTTWin32: Windows マシン上の Azure IoT ハブにあるデバイスのデバイス ツイン イベントに対してクエリを実行し、サブスクライブするためのコードが含まれています。
 
-•   PnPMQTTWin32: IoT プラグ アンド プレイのプレビュー版のデバイス機能を使用して、Windows マシンでビルドされ実行されている Azure IoT ハブにテレメトリ メッセージを送信するためのコードが含まれています。 IoT プラグ アンド プレイの詳細については、[こちら](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)を参照してください。
+* PnPMQTTWin32: IoT プラグ アンド プレイのプレビュー版のデバイス機能を使用して、Windows マシンでビルドされ実行されている Azure IoT ハブにテレメトリ メッセージを送信するためのコードが含まれています。 IoT プラグ アンド プレイの詳細については、[こちら](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)を参照してください。
 
 **Linux の場合:**
 
-•   MQTTLinux: Linux で実行されるコードとビルド スクリプトが含まれています (現時点までで WSL、Ubuntu、Raspbian でテスト済み)。
+* MQTTLinux: Linux で実行されるコードとビルド スクリプトが含まれています (現時点までで WSL、Ubuntu、Raspbian でテスト済み)。
 
-•   LinuxConsoleVS2019: WSL (Windows Linux サブ システム) をターゲットとする VS2019 プロジェクトの同じコードが含まれています。 このプロジェクトを使用すると、Linux で実行されているコードを Visual Studio からステップ バイ ステップでデバッグできます。
+* LinuxConsoleVS2019: WSL (Windows Linux サブ システム) をターゲットとする VS2019 プロジェクトの同じコードが含まれています。 このプロジェクトを使用すると、Linux で実行されているコードを Visual Studio からステップ バイ ステップでデバッグできます。
 
 **mosquitto_pub の場合:**
 
-•   このフォルダーには、Mosquitto.org によって提供される mosquitto_pub ユーティリティ ツールで使用される 2 つのサンプル コマンドが含まれています。
+このフォルダーには、Mosquitto.org によって提供される mosquitto_pub ユーティリティ ツールで使用される 2 つのサンプル コマンドが含まれています。
 
-Mosquitto_sendmessage: デバイスとして機能する Azure IoT ハブに単純なテキスト メッセージを送信します。
+* Mosquitto_sendmessage: デバイスとして機能する Azure IoT ハブに単純なテキスト メッセージを送信します。
 
-Mosquitto_subscribe: Azure IoT ハブで発生しているイベントを表示します。
-
+* Mosquitto_subscribe: Azure IoT ハブで発生しているイベントを表示します。
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>MQTT プロトコルの直接使用 (モジュールとして)
 
@@ -342,7 +341,7 @@ IoT Hub では、メッセージは**トピック名** `devices/{device_id}/mess
 
 |Status | 説明 |
 | ----- | ----------- |
-| 204 | 成功 (コンテンツは返されません) |
+| 200 | Success |
 | 429 | 要求が多すぎます (スロットル)。[IoT Hub スロットル](iot-hub-devguide-quotas-throttling.md)に関するページを参照してください。 |
 | 5** | サーバー エラー |
 
@@ -373,7 +372,7 @@ IoT Hub のデバイス ツインで報告されるプロパティをデバイ�
 
 |Status | 説明 |
 | ----- | ----------- |
-| 200 | Success |
+| 204 | 成功 (コンテンツは返されません) |
 | 400 | 正しくない要求。 無効な形式の JSON |
 | 429 | 要求が多すぎます (スロットル)。[IoT Hub スロットル](iot-hub-devguide-quotas-throttling.md)に関するページを参照してください。 |
 | 5** | サーバー エラー |

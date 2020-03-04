@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: 548a578365b03162396fb8618718ab1e7ce5b081
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 28b7a2b95e8ad23226f92f2b6fba085cc0fa1bfd
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400794"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565555"
 ---
 # <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>Azure Monitor for VMs Dependency Agent をアップグレードする方法
 
@@ -39,16 +39,9 @@ Dependency Agent VM 拡張機能を使用して、Windows VM 上のエージェ�
 1. 管理者権限を持つアカウントでコンピューターにサインオンします。
 
 2. **InstallDependencyAgent-Windows.exe** を実行してセットアップ ウィザードを開始します。
+   
+3. **Dependency Agent のセットアップ** ウィザードに従って、以前のバージョンの Dependency Agent をアンインストールし、最新バージョンをインストールします。
 
-3. **[Dependency Agent 9.9.1 の設定]** ダイアログ ボックスで、 **[同意する]** をクリックして使用許諾契約に同意します。
-
-5. **[Dependency Agent 9.9.0 のアンインストール]** ダイアログ ボックスで **[次へ]** をクリックします。 状態ページには、以前のバージョンのアンインストールの進行状況が表示されます。
-
-6. **[Dependency Agent 9.9.0 のアンインストール]** ダイアログ ボックスで、 **[アンインストール]** をクリックして、ダイアログ ボックスで指定したパスから以前のバージョンのアンインストールを続行します。 
-
-7. **[Dependency Agent 9.9.0 のアンインストール]** ダイアログ ボックスに、アンインストールの進行状況が表示されます。完了すると、 **[Completing Dependency Agent Uninstall]\(Dependency Agent のアンインストールの完了\)** ページが表示されます。 **[完了]** をクリックします。
-
-8. **[Dependency Agent 9.9.1 の設定]** ダイアログ ボックスに、インストールの進行状況が表示されます。 **[Completing Dependency Agent Uninstall]\(Dependency Agent のアンインストールの完了\)** ページが表示されたら、 **[完了]** をクリックします。 
 
 ### <a name="from-the-command-line"></a>コマンド ラインから
 

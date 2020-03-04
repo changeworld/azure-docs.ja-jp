@@ -3,12 +3,12 @@ title: Azure Functions ランタイム バージョンの概要
 description: Azure Functions では、複数のバージョンのランタイムがサポートされます。 バージョン間の違いと、適切なバージョンを選択する方法について説明します。
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 0138af15c89a4792b9ccb73a8b761577fad36c5e
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 21722d66129224038df20a0a1ef2bff989221224
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290378"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539503"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions ランタイム バージョンの概要
 
@@ -38,7 +38,7 @@ Azure Functions 1.x の試験段階の言語は新しいモデルを使用でき
 
 ## <a name="creating-1x-apps"></a>特定のバージョンで実行する
 
-既定では、Azure portal で Azure CLI によって作成された関数アプリはバージョン 2.x に設定されます。 このバージョンは必要に応じて変更できます。 ランタイムのバージョンを 1.x に変更できるのは、関数アプリを作成してから関数を追加するまでの間のみです。  2\.x と 3.x の間の移行は関数が含まれるアプリでも許可されますが、まず、新しいアプリでテストすることをお勧めします。
+既定では、Azure portal と Azure CLI で作成された関数アプリはバージョン 3.x に設定されます。 このバージョンは必要に応じて変更できます。 ランタイムのバージョンを 1.x に変更できるのは、関数アプリを作成してから関数を追加するまでの間のみです。  2\.x と 3.x の間の移行は関数が含まれるアプリでも許可されますが、まず、新しいアプリでテストすることをお勧めします。
 
 ## <a name="migrating-from-1x-to-later-versions"></a>1\.x からそれ以降のバージョンへの移行
 
@@ -104,7 +104,7 @@ Azure Functions バージョン 3.x は、バージョン 2.x との下位互換
 
 Azure の公開アプリから使用される Functions ランタイムのバージョンは、[`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version) アプリケーションの設定によって決まります。 次のランタイムのメジャー バージョン値がサポートされています。
 
-| 値 | ランタイム ターゲット |
+| Value | ランタイム ターゲット |
 | ------ | -------- |
 | `~3` | 3.x |
 | `~2` | 2.x |

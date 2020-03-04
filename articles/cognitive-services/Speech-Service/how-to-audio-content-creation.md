@@ -3,23 +3,23 @@ title: Audio Content Creation - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: Audio Content Creation は、Microsoft のテキスト読み上げ出力をご使用のアプリや製品に合わせてカスタマイズしたり微調整したりするためのオンライン ツールです。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.author: erhopf
-ms.openlocfilehash: b65a39489f0823a411a9dddf79ec3abd1e5ee20d
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 01/31/2020
+ms.author: dapine
+ms.openlocfilehash: aed9c0a72af063c84c0744757772e11c689ac14c
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806207"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561036"
 ---
-# <a name="audio-content-creation"></a>Audio Content Creation
+# <a name="improve-synthesis-with-audio-content-creation"></a>Audio Content Creation を使用して合成を向上させる
 
-[Audio Content Creation](https://aka.ms/audiocontentcreation) は、Microsoft のテキスト読み上げ出力をご使用のアプリやと製品に合わせてカスタマイズしたり微調整したりするためのオンライン ツールです。 このツールを使用すると、パブリックの音声やカスタムの音声をより正確で自然な表現にするために微調整したり、クラウドでの出力を管理したりすることができます。
+[Audio Content Creation](https://aka.ms/audiocontentcreation) は、Microsoft のテキスト読み上げ出力をご使用のアプリやと製品に合わせてカスタマイズしたり微調整したりするためのオンライン ツールです。 このツールを使用すると、パブリックの音声やカスタム音声をより正確で自然な表現にするために微調整したり、クラウドでの出力を管理したりすることができます。
 
 Audio Content Creation ツールは、[音声合成マークアップ言語 (SSML)](speech-synthesis-markup.md) に基づいています。 カスタマイズとチューニングを簡単にするために、Audio Content Creation を使用して、テキスト読み上げの出力をリアルタイムで視覚的に検査することができます。
 
@@ -99,7 +99,7 @@ Welcome to use Audio Content Creation to customize audio output for your product
 
 ### <a name="supported-audio-formats"></a>サポートされている音声形式
 
-| 形式 | 16 kHz サンプル レート | 24 kHz サンプル レート |
+| Format | 16 kHz サンプル レート | 24 kHz サンプル レート |
 |--------|--------------------|--------------------|
 | wav | riff-16khz-16bit-mono-pcm | riff-24khz-16bit-mono-pcm |
 | mp3 | audio-16khz-128kbitrate-mono-mp3 | audio-24khz-160kbitrate-mono-mp3 |
@@ -108,7 +108,7 @@ Welcome to use Audio Content Creation to customize audio output for your product
 
 * [Long Audio API](https://aka.ms/long-audio-api)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Speech Studio](https://speech.microsoft.com)

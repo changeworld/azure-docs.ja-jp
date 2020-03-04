@@ -1,5 +1,6 @@
 ---
-title: 資産を保護するためのセキュリティに関するベスト プラクティス - Microsoft Azure
+title: Azure 資産のセキュリティに関するベスト プラクティス
+titleSuffix: Azure security
 description: この記事では、Azure 内のデータ、アプリケーション、その他の資産を保護するための運用可能な一連のベスト プラクティスについて説明します。
 services: security
 documentationcenter: na
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 69e55b17814c5b5ada0813bd0de66cc3a9a591f4
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 72d7a2dd112e5e7a5105ff977e3917ccdfd7b53e
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219508"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500305"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure で運用可能なセキュリティに関するベスト プラクティス
 この記事では、Azure 内のデータ、アプリケーション、その他の資産を保護するための運用可能な一連のベスト プラクティスについて説明します。
@@ -220,7 +221,7 @@ Azure Policy の採用後に従うセキュリティのベストプラクティ�
 ## <a name="monitor-azure-ad-risk-reports"></a>Azure AD のリスク レポートの監視
 ほとんどのセキュリティ侵害は、攻撃者がユーザーの ID を盗むことにより環境にアクセスできるようになると発生します。 侵害された ID を検出するのは簡単な作業ではありません。 Azure AD では、アダプティブ機械学習アルゴリズムとヒューリスティックを使用して、ユーザー アカウントに関連する疑わしいアクションを検出します。 検出された疑わしいアクションはそれぞれ、[リスク検出](../../active-directory/reports-monitoring/concept-risk-events.md)と呼ばれるレコードに格納されます。 リスク検出は、Azure AD のセキュリティ レポートに記録されます。 詳細については、[危険な状態のユーザー セキュリティ レポート](../../active-directory/reports-monitoring/concept-user-at-risk.md)に関する記事、および[リスクの高いサインイン セキュリティ レポート](../../active-directory/reports-monitoring/concept-risky-sign-ins.md)に関する記事をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure を使用してクラウド ソリューションを設計、デプロイ、管理するときに使用するセキュリティのベスト プラクティスの詳細については、「[Azure セキュリティのベスト プラクティスとパターン](best-practices-and-patterns.md)」を参照してください。
 
 Azure のセキュリティとそれに関連する Microsoft サービスの一般情報については、以下のリソースを参照してください。

@@ -5,20 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 02/12/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 826b8e923575db3d6c6aee7ead230f87f1efb50e
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8d5ff722d4a035113af8528ed8adb396b01c81eb
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848444"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77504951"
 ---
-# <a name="enable-passwordless-security-key-sign-in-preview"></a>Azure AD へのパスワードレス セキュリティ キー サインインを有効にする (プレビュー)
+# <a name="enable-passwordless-security-key-sign-in-preview"></a>パスワードなしのセキュリティ キー サインインを有効にする (プレビュー)
 
 現在パスワードを使用していて、共有 PC 環境がある企業では、セキュリティ キーにより、ユーザー名やパスワードを入力しないで認証を行うシームレスな方法が、ワーカーに提供されます。 セキュリティ キーを使うと、ワーカーの生産性が向上し、セキュリティが強化されます。
 
@@ -33,14 +33,16 @@ ms.locfileid: "74848444"
 
 - [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
 - [統合されたセキュリティ情報の登録 (プレビュー)](concept-registration-mfa-sspr-combined.md)
-- [互換性のある FIDO2 セキュリティ キー](concept-authentication-passwordless.md#fido2-security-keys)
+- 互換性のある [FIDO2 セキュリティ キー](concept-authentication-passwordless.md#fido2-security-keys)
 - WebAuthN には、Windows 10 バージョン 1809 以降が必要です**
 
 Web アプリやサービスへのログインにセキュリティ キーを使用するには、WebAuthN プロトコルをサポートするブラウザーが必要です。 これには、Microsoft Edge、Chrome、Firefox、Safari などが含まれます。
 
 ## <a name="prepare-devices-for-preview"></a>プレビュー用にデバイスを準備する
 
-パイロット運用を行うデバイスでは、Windows 10 バージョン 1809 以降を実行する必要があります。 Windows 10 バージョン 1903 以降で操作することをお勧めします。
+使用する Azure AD 参加済みデバイスでは、Windows 10 バージョン 1809 以降が動作している必要があります。 Windows 10 バージョン 1903 以降で操作することをお勧めします。
+
+Hybrid Azure AD 参加済みデバイスでは、Windows 10 Insider Build 18945 以降が動作している必要があります。
 
 ## <a name="enable-passwordless-authentication-method"></a>パスワードなしの認証方法を有効にする
 
@@ -50,7 +52,7 @@ Web アプリやサービスへのログインにセキュリティ キーを使
 
 ### <a name="enable-fido2-security-key-method"></a>FIDO2 セキュリティ キーの方法を有効にする
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[認証方法]**  >  **[認証方法ポリシー (プレビュー)]** の順に移動します。
 1. 方法 **[FIDO2 セキュリティ キー]** で、次のオプションを選択します。
    1. **有効にする** - [はい] または [いいえ]
@@ -77,15 +79,15 @@ Web アプリやサービスへのログインにセキュリティ キーを使
 
 ![Microsoft Edge でのセキュリティ キーによるサインイン](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-edge-sign-in.png)
 
-## <a name="troubleshooting-and-feedback"></a>トラブルシューティングとサポート
+## <a name="troubleshooting-and-feedback"></a>トラブルシューティングとフィードバック
 
-この機能のプレビュー中に、フィードバックを共有したい場合、または問題が発生した場合は、Windows フィードバック ハブ アプリを使用して共有してください。
+この機能のプレビュー中に、フィードバックを共有したい場合、または問題が発生した場合は、次の手順を使用して Windows フィードバック ハブ アプリ経由で共有してください。
 
 1. **フィードバック ハブ**を起動し、サインインしていることを確認します。
 1. 次の分類でフィードバックを送信します。
-   1. カテゴリ:セキュリティとプライバシー
-   1. サブカテゴリ: FIDO
-1. ログをキャプチャするには、次のオプションを使用します: **[問題の再現]**
+   - カテゴリ:セキュリティとプライバシー
+   - サブカテゴリ: FIDO
+1. ログをキャプチャするには、 **[Recreate my Problem]\(問題の再現\)** オプションを使用します
 
 ## <a name="known-issues"></a>既知の問題
 
@@ -95,9 +97,9 @@ Web アプリやサービスへのログインにセキュリティ キーを使
 
 ### <a name="upn-changes"></a>UPN の変更
 
-ユーザーの UPN が変更された場合、その変更に対応するために FIDO2 セキュリティ キーを変更できなくなります。 解決策は、デバイスをリセットすることです。ユーザーは、FIDO2 のセキュリティ キーを再登録する必要があります。
+Microsoft では、Hybrid Azure AD 参加済みデバイスと Azure AD 参加済みデバイスに対する、UPN の変更を可能にする機能のサポートに取り組んでいます。 ユーザーの UPN が変更された場合、その変更に対応するために FIDO2 セキュリティ キーを変更できなくなります。 解決策は、デバイスをリセットすることです。その場合、ユーザーを再登録する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [FIDO2 セキュリティ キーでの Windows 10 のサインイン](howto-authentication-passwordless-security-key-windows.md)
 

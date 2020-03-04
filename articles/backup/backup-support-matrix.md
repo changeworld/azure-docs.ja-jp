@@ -3,12 +3,12 @@ title: Azure Backup のサポート マトリックス
 description: Azure Backup サービスのサポート設定と制限事項の概要を説明します。
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 37347e6febdfc3500c218238606fc96463da631c
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 15c2fdfbe63dd73e665a4bac01dd2cd1b1144949
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936242"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505856"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup のサポート マトリックス
 
@@ -43,7 +43,7 @@ Azure Backup では、Recovery Services コンテナーを使用して、バッ�
 
 オンプレミス マシンをバックアップしたい場合に何がサポートされるかを以下に示します。
 
-**マシン** | **バックアップされる項目** | **地域** | **機能**
+**マシン** | **バックアップされる項目** | **場所** | **機能**
 --- | --- | --- | ---
 **MARS エージェントを使用した Windows マシンの直接バックアップ** | ファイル、フォルダー、システム状態 | Recovery Services コンテナーへのバックアップ。 | 1 日に 3 回のバックアップ<br/><br/> アプリ対応のバックアップなし<br/><br/> ファイル、フォルダー、ボリュームの復元
 **MARS エージェントを使用した Linux マシンの直接バックアップ** | バックアップはサポートされていません
@@ -63,7 +63,7 @@ Azure Backup では、Recovery Services コンテナーを使用して、バッ�
 
 Azure VM をバックアップしたい場合に何がサポートされるかを以下に示します。
 
-**マシン** | **バックアップされる項目** | **地域** | **機能**
+**マシン** | **バックアップされる項目** | **場所** | **機能**
 --- | --- | --- | ---
 **VM 拡張機能を使用した Azure VM のバックアップ** | VM 全体 | コンテナーへのバックアップ。 | VM のバックアップを有効にするときにインストールされる拡張機能。<br/><br/> 1 日 1 回のバックアップ。<br/><br/> Windows VM の場合はアプリ対応バックアップ、Linux VM の場合はファイル整合性バックアップ。 Linux マシンでは、カスタム スクリプトを使用して、アプリ整合性を構成できます。<br/><br/> VM またはディスクの復元。<br/><br/> Azure VM は、オンプレミスの場所へはバックアップできません。
 **MARS エージェントを使用する Azure VM のバックアップ** | ファイル、フォルダー、システム状態 | コンテナーへのバックアップ。 | 1 日に 3 回のバックアップ。<br/><br/> VM 全体ではなく特定のファイルまたはフォルダーをバックアップしたい場合は、MARS エージェントを VM 拡張機能と共に実行できます。
@@ -78,8 +78,9 @@ Linux マシンをバックアップをしたい場合に何がサポートさ�
 --- | ---
 **Linux を実行しているオンプレミスのマシンの直接バックアップ** | サポートされていません。 MARS エージェントは Windows マシンにのみインストールできます。
 **エージェント拡張機能を使用した Linux を実行している Azure VM のバックアップ** | [カスタム スクリプト](backup-azure-linux-app-consistent.md)を使用したアプリ整合性バックアップ。<br/><br/> ファイルレベルの回復。<br/><br/> 復旧ポイントまたはディスクから VM を作成することによる復元。
-**DPM を使用した、Linux を実行しているオンプレミスまたは Azure VM のバックアップ** | Hyper-V および VMWare 上の Linux Guest VM のファイル整合性バックアップ。<br/><br/> Hyper-V および VMWare Linux ゲスト VM の VM の復元。<br/><br/> ファイル整合性バックアップは Azure VM では利用できません。
-**MABS を使用した、Linux を実行しているオンプレミス マシンまたは Azure VM のバックアップ** | Hyper-V および VMWare 上の Linux Guest VM のファイル整合性バックアップ。<br/><br/> Hyper-V および VMWare Linux ゲスト VM の VM の復元。<br/><br/> ファイル整合性バックアップは Azure VM では利用できません。
+**DPM を使用した、Linux を実行しているオンプレミス マシンでのバックアップ** | Hyper-V および VMWare 上の Linux Guest VM のファイル整合性バックアップ。<br/><br/> Hyper-V および VMWare Linux ゲスト VM の VM の復元。
+**MABS を使用した、Linux を実行しているオンプレミス マシンでのバックアップ** | Hyper-V および VMWare 上の Linux Guest VM のファイル整合性バックアップ。<br/><br/> Hyper-V および VMWare Linux ゲスト VM の VM の復元。
+**MABS または DPM を使用した Linux Azure VM のバックアップ** | サポートされていません。
 
 ## <a name="daylight-saving-time-support"></a>夏時間のサポート
 

@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 09c704237e3c1fde8a7591d610d1b801dd016c46
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5ec83857ebabc92bf86f9f84a43746a0e561218a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836662"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647596"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML アプリケーションを Azure AD B2C に登録する
 
@@ -259,7 +259,7 @@ SAML サービス プロバイダーと関連のメタデータ エンドポイ�
 
 変更を保存し、新しいポリシー ファイルをアップロードします。 両方のポリシー (拡張機能ファイルと証明書利用者ファイル) をアップロードした後、Web ブラウザーを開き、ポリシー メタデータに移動します。
 
-Azure AD B2C ポリシーのメタデータは、次の URL から入手できます。 `tenant-name` をご利用の Azure AD B2C テナントの名前に、`policy-name` をポリシーの名前 (ID) に置き換えます。
+Azure AD B2C ポリシー IDP メタデータは、SAML ID プロバイダーの構成を公開するために SAML プロトコルで使用される情報です。 メタデータは、サインインとサインアウト、証明書、サインイン方法など、サービスの場所を定義します。 Azure AD B2C ポリシーのメタデータは、次の URL から入手できます。 `tenant-name` をご利用の Azure AD B2C テナントの名前に、`policy-name` をポリシーの名前 (ID) に置き換えます。
 
 `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 
@@ -276,7 +276,6 @@ Azure AD B2C ポリシーのメタデータは、次の URL から入手でき�
 1. アプリケーションの**名前**を入力します。 たとえば、*SAMLApp1* です。
 1. **[サポートされているアカウントの種類]** で、 **[この組織のディレクトリ内のアカウントのみ]** を選択します。
 1. **[リダイレクト URI]** で **[Web]** を選択し、「`https://localhost`」と入力します。 この値は、後でアプリケーションの登録のマニフェストで変更します。
-1. **[openid と offline_access アクセス許可に対して管理者の同意を付与します]** を選択します。
 1. **[登録]** を選択します。
 
 ### <a name="42-update-the-app-manifest"></a>4.2 アプリ マニフェストを更新する
@@ -338,7 +337,7 @@ SAML テスト アプリケーションを使用するこのチュートリア�
 通常、次の一部またはすべてが必要です。
 
 * **メタデータ**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
-* **発行者**: `https://tenant-name.onmicrosoft.com/policy-name`
+* **発行者**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name`
 * **ログイン Url/SAML エンドポイント/SAML Url**:メタデータ ファイル内の値を確認します
 * **Certificate**: これは *B2C_1A_SamlIdpCert* ですが、秘密キーはありません。 証明書の公開キーを取得するには、次のようにします。
 

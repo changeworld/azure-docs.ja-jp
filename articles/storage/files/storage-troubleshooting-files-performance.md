@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 00187051eec27ee7b6b2d4927510a2ab9dee442e
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 09e55abcd97317b87f8a272afa51c6b4ace572e8
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708259"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598087"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Azure Files のパフォーマンスに関する問題のトラブルシューティング
 
@@ -22,11 +22,11 @@ ms.locfileid: "75708259"
 
 ### <a name="cause-1-share-experiencing-throttling"></a>原因 1:共有でのスロットルの発生
 
-Premium 共有の既定のクォータは 100 GiB であり、これは 100 ベースライン IOPS (1 時間に最高 300 のバーストの可能性あり) を提供します。 プロビジョニングとその IOPS との関係の詳細については、プランニング ガイドの[プロビジョニング済みの共有](storage-files-planning.md#provisioned-shares)に関するセクションを参照してください。
+Premium 共有の既定のクォータは 100 GiB であり、これは 100 ベースライン IOPS (1 時間に最高 300 のバーストの可能性あり) を提供します。 プロビジョニングとその IOPS との関係の詳細については、プランニング ガイドの[プロビジョニング済みの共有](storage-files-planning.md#understanding-provisioning-for-premium-file-shares)に関するセクションを参照してください。
 
 共有がスロットルされているかどうかを確認するには、ポータルで Azure メトリックスを利用できます。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. **[すべてのサービス]** を選択して「**メトリック**」を検索します。
 
@@ -102,7 +102,7 @@ Premium 共有の既定のクォータは 100 GiB であり、これは 100 ベ�
 
 - 複数の VM 間で負荷を分散します。
 - 同じ VM 上で、**nosharesock** オプションで複数のマウント ポイントを使用し、これらのマウント ポイント間で負荷を分散します。
-- Linux では、すべての fsync 呼び出しで SMB フラッシュが強制されないようにするために、**nostrictsync** オプションでのマウントを試してみてください。 Azure Files の場合、このオプションはデータの一貫性に干渉することはありませんが、ディレクトリの一覧に古いファイルのメタデータが表示される可能性があります (**ls -l** コマンド)。 ファイルのメタデータのクエリを直接実行する (**stat** コマンド) と、最新のファイルのメタデータが返されます。
+- Linux では、すべての **fsync** 呼び出しで SMB フラッシュが強制されないようにするために、**nostrictsync** オプションを使用したマウントを試してみてください。 Azure Files の場合、このオプションはデータの一貫性に干渉することはありませんが、ディレクトリの一覧に古いファイルのメタデータが表示される可能性があります (**ls -l** コマンド)。 ファイルのメタデータのクエリを直接実行する (**stat** コマンド) と、最新のファイルのメタデータが返されます。
 
 ## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>多大な開く/閉じる操作に関連するメタデータの過大なワークロードの長い待機時間。
 
