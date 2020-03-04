@@ -196,7 +196,7 @@
                 - name: Spring Boot アプリ
                   displayname: java
                   href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
-                - name: '[トラブルシューティング]'
+                - name: トラブルシューティング
                   href: app/java-troubleshoot.md
             - name: Node.js
               href: app/nodejs.md
@@ -451,7 +451,7 @@
                   href: app/separate-resources.md
                 - name: Application Insights での作業
                   href: app/how-do-i.md
-        - name: '[エクスポート]'
+        - name: エクスポート
           items:
             - name: 連続エクスポート
               href: app/export-telemetry.md
@@ -511,7 +511,7 @@
                 - name: テナントをまたいだ収集
                   displayname: Activity log
                   href: platform/activity-log-collect-tenants.md
-                - name: '[エクスポート]'
+                - name: エクスポート
                   displayname: Activity log
                   href: platform/activity-log-export.md
         - name: 診断設定
@@ -529,7 +529,7 @@
           href: platform/stream-monitoring-data-event-hubs.md
     - name: VM とゲスト OS の監視
       items:
-        - name: '[エージェント]'
+        - name: エージェント
           items:
             - name: エージェントの概要
               href: platform/agents-overview.md
@@ -542,7 +542,7 @@
                 - name: Windows
                   displayname: diagnostics extension
                   items:
-                    - name: '[インストールと構成]'
+                    - name: インストールと構成
                       items:
                         - name: インストール オプション
                           href: platform/diagnostics-extension-windows-install.md
@@ -619,7 +619,7 @@
                       href: platform/data-sources-custom-logs.md
                     - name: カスタム フィールド
                       href: platform/custom-fields.md
-            - name: '[トラブルシューティング]'
+            - name: トラブルシューティング
               items:
                 - name: Log Analytics VM 拡張機能
                   displayname: 'troubleshoot, troubleshooting'
