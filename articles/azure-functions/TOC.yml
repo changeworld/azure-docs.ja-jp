@@ -240,7 +240,7 @@
         - name: Jenkins プラグインを使用したデプロイ
           href: /azure/jenkins/jenkins-azure-functions-deploy
           maintainContext: true
-    - name: 構成
+    - name: '[構成]'
       items:
         - name: 関数アプリの管理
           href: functions-how-to-use-azure-function-app-settings.md
@@ -425,10 +425,10 @@
             - name: 概要
               href: functions-bindings-signalr-service.md
               displayName: SignalR Service
-            - name: 概要
+            - name: 入力
               href: functions-bindings-signalr-service-input.md
               displayName: SignalR Service
-            - name: 概要
+            - name: Output
               href: functions-bindings-signalr-service-output.md
               displayName: SignalR Service
         - name: テーブル ストレージ

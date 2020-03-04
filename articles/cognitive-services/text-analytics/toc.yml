@@ -44,6 +44,12 @@
       href: 'https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis'
     - name: Power Automate を使用して Excel に情報を抽出する
       href: tutorials/extract-excel-information.md
+- name: 概念
+  items:
+    - name: 名前付きエンティティの種類
+      href: named-entity-types.md
+    - name: 言語とリージョンのサポート
+      href: language-support.md
 - name: 操作方法ガイド
   items:
     - name: Text Analytics API を呼び出す
@@ -104,16 +110,10 @@
               href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics'
 - name: リソース
   items:
-    - name: MS Flow を使って Yammer グループ内のコメントのセンチメントを特定する
-      href: 'https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure'
     - name: 外部とコミュニティのコンテンツ
       href: text-analytics-resource-external-community.md
     - name: よく寄せられる質問
       href: text-analytics-resource-faq.md
-    - name: 言語とリージョンのサポート
-      href: language-support.md
-    - name: 名前付きエンティティの種類
-      href: named-entity-types.md
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
     - name: リージョン別の提供状況
@@ -122,9 +122,7 @@
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: スタック オーバーフロー
       href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'
-    - name: Subscription key
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=text-analytics'
     - name: 試してみる
       href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
-    - name: UserVoice
+    - name: フィードバックの送信
       href: 'https://cognitive.uservoice.com/forums/555922-text-analytics'
