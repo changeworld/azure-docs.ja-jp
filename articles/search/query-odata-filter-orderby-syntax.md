@@ -42,7 +42,7 @@ OData 式は単純なものから複雑なものまで幅がありますが、�
 - **定数**: 特定のデータ型のリテラル値です。
 
 > [!NOTE]
-> Azure コグニティブ検索の用語は、いくつかの点で [OData 標準](https://www.odata.org/documentation/)とは異なります。 Azure コグニティブ検索で**フィールド**と呼ばれているものは、OData では**プロパティ**と呼ばれています。同様に、**フィールド パス**は**プロパティ パス**に相当します。 Azure コグニティブ検索での**ドキュメント**を含む**インデックス**は、OData での**エンティティ**を含む**エンティティ セット**よりも広い意味で使用されています。 このリファレンス全体では、Azure Cognitive Search の用語が使用されます。
+> Azure Cognitive Search の用語は、いくつかの点で [OData 標準](https://www.odata.org/documentation/)とは異なります。 Azure Cognitive Search で**フィールド**と呼ばれているものは、OData では**プロパティ**と呼ばれています。同様に、**フィールド パス**は**プロパティ パス**に相当します。 Azure Cognitive Search での**ドキュメント**を含む**インデックス**は、OData での**エンティティ**を含む**エンティティ セット**よりも広い意味で使用されています。 このリファレンス全体では、Azure Cognitive Search の用語が使用されます。
 
 ## <a name="field-paths"></a>フィールド パス
 
