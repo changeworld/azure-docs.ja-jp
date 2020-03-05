@@ -1,18 +1,14 @@
 ---
 title: PowerShell を使用して Application Insights のアラートを設定する | Microsoft Docs
 description: Application Insights の構成を自動化して、メトリックの変更に関する電子メールを受け取ります。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 10/31/2016
-ms.openlocfilehash: cf03fa0055710dde86a0f74cd58344575494faf1
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: c19cb43d08b44b55c786e750e64a83e6f0c67381
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928567"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669847"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>PowerShell を使用して Application Insights のアラートを設定する
 
@@ -33,7 +29,7 @@ ms.locfileid: "73928567"
 * [Microsoft Web Platform Installer (v5 以上)](https://www.microsoft.com/web/downloads/platform.aspx)をインストールします。
 * このインストーラーを使用して Microsoft Azure PowerShell をインストールする。
 
-## <a name="connect-to-azure"></a>Azure への接続
+## <a name="connect-to-azure"></a>Azure に接続する
 Azure PowerShell を起動して、 [サブスクリプションに接続](/powershell/azure/overview)します。
 
 ```powershell

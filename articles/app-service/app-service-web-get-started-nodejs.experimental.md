@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Node.js Web アプリを作成する'
+title: クイック スタート:Node.js Web アプリを作成する
 description: Azure App Service に、初めての Node.js の Hello World を数分でデプロイします。 デプロイには、App Service への数あるデプロイ方法の 1 つである ZIP パッケージを使用します。
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
@@ -7,12 +7,12 @@ ms.date: 08/23/2019
 ms.custom: seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: c02caf7c70dfe88bd3312742fce08137bc360a2e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 585eb1f11a285722e34c6dd084f4c6cb26a06249
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671421"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247614"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Azure で Node.js Web アプリを作成する
 
@@ -20,7 +20,7 @@ ms.locfileid: "74671421"
 > この記事では、Windows 上の App Service にアプリをデプロイします。 _Linux_ 上の App Service に展開するには、「[Azure App Service on Linux での Node.js Web アプリの作成](./containers/quickstart-nodejs.md)」をご覧ください。
 >
 
-[Azure App Service](overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。  このクイック スタートでは、Azure App Service に Node.js アプリをデプロイする方法を示します。 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を使用して Web アプリを作成しますが、これらのコマンドは [Azure CLI](/cli/azure/install-azure-cli) を使用してローカルで実行することもできます。 [az webapp deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) コマンドを使用して、Node.js のサンプル コードを Web アプリにデプロイします。  
+[Azure App Service](overview.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。  このクイック スタートでは、Azure App Service に Node.js アプリをデプロイする方法を示します。 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を使用して Web アプリを作成しますが、これらのコマンドは [Azure CLI](/cli/azure/install-azure-cli) を使用してローカルで実行することもできます。 [az webapp deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) コマンドを使用して、Node.js のサンプル コードを Web アプリにデプロイします。  
 
 ![Azure で実行されるサンプル アプリ](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
@@ -34,7 +34,7 @@ ms.locfileid: "74671421"
 
 Cloud Shell で、クイックスタートのディレクトリを作成し、それに変更します。
 
-```azurecli-interactive
+```console
 mkdir quickstart
 
 cd $HOME/quickstart
@@ -42,13 +42,13 @@ cd $HOME/quickstart
 
 次に、以下のコマンドを実行して、サンプル アプリのリポジトリをクイックスタートのディレクトリに複製します。
 
-```azurecli-interactive
+```console
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
 ```
 
 実行中、次の例のような情報が表示されます。
 
-```bash
+```output
 Cloning into 'nodejs-docs-hello-world'...
 remote: Counting objects: 40, done.
 remote: Total 40 (delta 0), reused 0 (delta 0), pack-reused 40
@@ -102,7 +102,7 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app_na
 
 新しく作成された Web アプリに移動します。 `<app_name>` を一意のアプリ名に置き換えます。
 
-```
+```http
 http://<app_name>.azurewebsites.net
 ```
 
@@ -112,7 +112,7 @@ http://<app_name>.azurewebsites.net
 
 Cloud Shell で、アプリケーションのルート ディレクトリに移動し、サンプル プロジェクトの新しい ZIP ファイルを作成します。
 
-```azurecli-interactive
+```console
 cd nodejs-docs-hello-world  
 
 zip -r myUpdatedAppFiles.zip *.*
@@ -130,7 +130,7 @@ az webapp deployment source config-zip --resource-group myResourceGroup --name <
 
 Web ブラウザーを使用して、デプロイされたアプリケーションを参照します。
 
-```
+```http
 http://<app_name>.azurewebsites.net
 ```
 
@@ -186,7 +186,7 @@ Web アプリの [概要] ページを確認します。 ここでは、参照�
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Node.js と MongoDB](app-service-web-tutorial-nodejs-mongodb-app.md)

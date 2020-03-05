@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor の VMware Monitoring ソリューション | Microsoft Docs
 description: VMware の監視ソリューションを利用して ESXi ホストのログ管理と監視を行う方法について説明します。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: ac735c9131ebe7b7273d93a927cb4d4a8be24508
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c1622ef16155206d779c6d703fc7da568d233e7e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75399188"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664781"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Monitor の VMware Monitoring (非推奨) ソリューション
 
@@ -67,7 +66,7 @@ ESXi ホストからのすべての syslog データを受信する Linux オペ
 
 1. Azure portal で、`VMware_CL` のログ クエリを実行します。 Azure Monitor が syslog データを収集するときは、syslog 形式が維持されます。 ポータルでは、*Hostname* や *ProcessName*など、いくつかの特定のフィールドがキャプチャされます。  
 
-    ![型](./media/vmware/type.png)  
+    ![type](./media/vmware/type.png)  
 
     上の図のようなログ検索結果が表示される場合は、VMware Monitoring ソリューション ダッシュボードを使うように設定されています。  
 

@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor でのエージェント データ ソースの構成 | Microsoft Docs
 description: データ ソースは、Azure Monitor がエージェントや接続されている他のソースから収集するログ データを定義します。  この記事では、Azure Monitor でのデータ ソースの扱い方の概念、それらを構成する方法の詳細、および使用可能なさまざまなデータ ソースの概要について説明します。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: f7960adca1c3665dbf8737cb10a898c58b1542ec
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: aec3fe2386ce916c556f6da295a8554fff140259
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932833"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668776"
 ---
 # <a name="agent-data-sources-in-azure-monitor"></a>Azure Monitor のエージェント データ ソース
 Azure Monitor がエージェントから収集するデータは、構成されたデータ ソースによって定義されます。  エージェントからのデータは、一連のレコードを含んだ[ログ データ](data-platform-logs.md)として格納されます。  データ ソースはそれぞれ異なるタイプのレコードを作成し、各レコード タイプは独自のプロパティ セットを持っています。
@@ -45,7 +44,7 @@ Azure Monitor がエージェントから収集するデータは、構成され
 4. 構成の詳細については、上記の表のデータ ソース名をクリックして、リンク先のドキュメントを参照してください。
 
 
-## <a name="data-collection"></a>データ収集
+## <a name="data-collection"></a>データ コレクション
 データ ソースの構成は、数分以内に Azure Monitor に直接接続されたエージェントに配信されます。  指定されたデータがエージェントから収集され、各データ ソースに固有の間隔で Azure Monitor に直接配信されます。  詳しくは、各データ ソースのドキュメントを参照してください。
 
 接続された管理グループ内の System Center Operations Manager エージェントの場合、データ ソースの構成は管理パックに変換され、既定で 5 分ごとに管理グループに配信されます。  このエージェントは、他のエージェントと同じように管理パックをダウンロードし、指定されたデータを収集します。 データは、そのソースに応じて、管理サーバーに送信されてそこから Azure Monitor に転送されるか、エージェントが管理サーバーを介さずに Azure Monitor に送信します。 詳しくは、[Azure における監視ソリューションのデータ収集の詳細](../insights/solutions-inventory.md)に関するページを参照してください。  Operations Manager および Azure Monitor への接続と構成の配信頻度の変更の詳細については、[System Center Operations Manager との統合の構成](om-agents.md)に関するページを参照してください。
@@ -55,7 +54,7 @@ Azure Monitor がエージェントから収集するデータは、構成され
 ## <a name="log-records"></a>ログ レコード
 Azure Monitor によって収集されたすべてのログ データは、レコードとしてワークスペースに保存されます。  さまざまなデータ ソースから収集されたレコードは、独自のプロパティ セットを持ち、 **Type** プロパティによって識別されます。  各レコードの種類の詳細については、各データ ソースのドキュメントおよびソリューションを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Azure Monitor に機能を追加し、Azure Monitor ワークスペース内にデータを収集する[監視ソリューション](../insights/solutions.md)について学習します。
 * [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースと監視ソリューションから収集されたデータを分析します。  
 * データ ソースや監視ソリューションから収集された重要なデータについて事前に通知する[アラート](alerts-overview.md)を構成します。

@@ -1,19 +1,17 @@
 ---
 title: Azure Application Insights スナップショット デバッガーをアップグレードする
 description: .NET アプリ向けの Azure App Services で、または Nuget パッケージを使用して、スナップショット デバッガーを最新バージョンにアップグレードする方法
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: pharring
 ms.author: pharring
 ms.date: 03/28/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: d246fb36cc56a90faaf00c5b47ba69580a9c8a5d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6991db6055ca8556adff67f194bac0f4aa04cb06
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927187"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671394"
 ---
 # <a name="upgrading-the-snapshot-debugger"></a>スナップショット デバッガーのアップグレード
 
@@ -27,7 +25,7 @@ ms.locfileid: "74927187"
 
 サイト拡張機能を使用してスナップショット デバッガーを有効にした場合は、次のステップを使用してアップグレードできます。
 
-1. Azure ポータルにサインインします。
+1. Azure portal にサインインします。
 2. Application Insights とスナップショット デバッガーが有効になっているリソースに移動します。 たとえば、Web アプリの場合、次のように App Service リソースに移動します。
 
    ![DiagService01 という名前の個々の App Service リソースのスクリーンショット](./media/snapshot-debugger-upgrade/app-service-resource.png)
@@ -57,7 +55,7 @@ ms.locfileid: "74927187"
     > [!NOTE]
     > アップグレード プロセスの一環として、サイトが再起動されます。
 
-   ![App Service の監視の適用プロンプトのスクリーンショット。 テキスト ボックスに、次のメッセージが表示されます。"今からアプリの設定に対する変更が適用されて、Application Insights リソースを Web アプリにリンクするためのツールがインストールされます。 これによってサイトが再起動されます。 続行してもよろしいですか?" という警告が表示されます。](./media/snapshot-debugger-upgrade/apply-monitoring-settings.png)
+   ![App Service の監視の適用プロンプトのスクリーンショット。 テキスト ボックスに、次のメッセージが表示されます。"今からアプリの設定に対する変更が適用されて、Application Insights リソースを Web アプリにリンクするためのツールがインストールされます。 これによってサイトが再起動されます。 続行しますか?"](./media/snapshot-debugger-upgrade/apply-monitoring-settings.png)
 
 9. **[はい]** をクリックして変更を適用し、処理が完了するまで待ちます。
 

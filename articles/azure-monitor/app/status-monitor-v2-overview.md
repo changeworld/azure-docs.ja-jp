@@ -1,18 +1,16 @@
 ---
 title: Azure Application Insights エージェントの概要 | Microsoft Docs
 description: Application Insights エージェントの概要。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 61c3721745550b43aea730d0bcd2230b0435ff53
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 4a240bc62816a46bc37108777a8b081b74047738
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899612"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671173"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>オンプレミス サーバー用に Azure Monitor Application Insights エージェントをデプロイする
 
@@ -52,7 +50,7 @@ Application Insights エージェントは、 https://www.powershellgallery.com/
 - [既知の問題](status-monitor-v2-troubleshoot.md#known-issues)
 
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
 - Application Insights エージェントでプロキシのインストールはサポートされますか?
 
@@ -74,7 +72,7 @@ Application Insights エージェントは、 https://www.powershellgallery.com/
       union * | summarize count() by cloud_RoleName, cloud_RoleInstance
       ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 テレメトリの表示:
 

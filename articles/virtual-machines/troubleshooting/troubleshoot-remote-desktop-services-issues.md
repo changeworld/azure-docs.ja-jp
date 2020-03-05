@@ -12,19 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 92c4a40de7e35d0580fe407e36305a50ad68094c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 4b314fbdb9cbc0c0b797cbee8e92ee4702bbea81
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981787"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919466"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Azure VM でリモート デスクトップ サービスが起動しない
 
 この記事では、Azure 仮想マシン (VM) への接続時にリモート デスクトップ サービス (TermService) が起動しないか起動に失敗する場合の問題のトラブルシューティングを行う方法について説明します。
 
-> [!NOTE]  
-> Azure には、リソースの作成と操作を行うデプロイメント モデルが 2 種類あります。[Azure Resource Manager とクラシックです](../../azure-resource-manager/management/deployment-models.md)。 この記事では、Resource Manager デプロイ モデルの使用について説明します。 新しいデプロイでは、クラシック デプロイ モデルではなく、このモデルを使用することをお勧めします。
 
 ## <a name="symptoms"></a>現象
 

@@ -1,25 +1,19 @@
 ---
 title: Azure でのアラートと通知監視の概要
 description: Azure でのアラートの概要です。 アラート、クラシック アラート、およびアラート インターフェイス。
-ms.service: azure-monitor
 ms.subservice: alerts
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 01/28/2018
-ms.openlocfilehash: 7f6c7f22cef1cf49a9ff7b2cb87716abd61821c4
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: 7ca77531ed3e1fae8ec297e430597452c7512aea
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830328"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665666"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure のアラートの概要 
 
 この記事では、アラートの概要、利点、および使用方法について説明します。  
-
-
-
 
 ## <a name="what-are-alerts-in-microsoft-azure"></a>Microsoft Azure のアラートの概要
 アラートは、監視データで重要な状態が見つかると事前に通知します。 管理者は、その通知を見て、システムのユーザーが問題に気付く前に問題を識別して対処できます。 
@@ -41,26 +35,29 @@ ms.locfileid: "75830328"
 **シグナル**: ターゲット リソースによって出力されます。 シグナルにすることができるのは、メトリック、アクティビティ ログ、Application Insights、およびログです。
 
 **条件**: ターゲット リソースに適用されるシグナルとロジックの組み合わせ。 例 : 
-   - CPU 使用率 > 70%
-   - サーバー応答時間 > 4 ミリ秒 
-   - ログ クエリの結果数 > 100
+
+- CPU 使用率 > 70%
+- サーバー応答時間 > 4 ミリ秒 
+- ログ クエリの結果数 > 100
 
 **アラート名**: ユーザーによって構成されるアラート ルールの特定の名前。
 
 **アラートの説明**: ユーザーによって構成されるアラート ルールの説明。
 
 **[重大度]** :アラート ルールで指定されている条件が満たされた場合のアラートの重大度。 重大度の範囲は 0 ～ 4 です。
-   - 重大度 0 = 重大
-   - 重大度 1 = エラー
-   - 重大度 2 = 警告
-   - 重大度 3 = 情報
-   - 重大度 4 = 詳細情報 
+
+- 重大度 0 = 重大
+- 重大度 1 = エラー
+- 重大度 2 = 警告
+- 重大度 3 = 情報
+- 重大度 4 = 詳細情報 
 
 **アクション**:アラートが発生したときに実行される特定のアクション。 詳細については、[アクション グループ](../../azure-monitor/platform/action-groups.md)に関する記事をご覧ください。
 
 ## <a name="what-you-can-alert-on"></a>アラートできるもの
 
 [データ ソースの監視](../../azure-monitor/platform/data-sources.md)に関するページで説明されているように、メトリックとログについてアラートできます。 これらには次が含まれますが、これらに限定されるものではありません。
+
 - メトリックの値
 - ログの検索クエリ
 - アクティビティ ログのイベント
@@ -69,7 +66,7 @@ ms.locfileid: "75830328"
 
 Azure Monitor のメトリック、Application Insights、Log Analytics、および Service Health のアラート機能は以前は別々でした。 Azure では、ユーザー インターフェイスとさまざまなアラート方法が時間と共に統合され、改善されました。 この統合は現在も継続中です。 その結果、新しいアラート システムにまだ組み込まれていないアラート機能がいくつかあります。  
 
-| **モニター ソース** | **シグナルの種類**  | **説明** | 
+| **モニター ソース** | **シグナルの種類**  | **説明** |
 |-------------|----------------|-------------|
 | サービス正常性 | アクティビティ ログ  | サポートされていません。 「[サービス通知のアクティビティ ログ アラートを作成する](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)」をご覧ください。  |
 | Application Insights | Web 可用性テスト | サポートされていません。 [Web テスト アラート](../../azure-monitor/app/monitor-web-app-availability.md)に関するページをご覧ください。 Application Insights にデータを送信するようにインストルメント化されたすべての Web サイトで使用できます。 Web サイトの可用性または応答性が期待を下回る場合に通知を受け取ります。 |
@@ -114,7 +111,7 @@ Azure Monitor のメトリック、Application Insights、Log Analytics、およ
 
 [アラート] ページの上部にある次の値を選択すると、別のページが開きます。
 
-| 値 | 説明 |
+| Value | 説明 |
 |:---|:---|
 | アラート合計数 | 選択された条件に一致するアラートの総数。 この値を選択すると、フィルター処理されていない [すべてのアラート] ビューが開きます。 |
 | スマート グループ | 選択された条件に一致する、アラートから作成されたスマート グループの総数。 この値を選択すると、[すべてのアラート] ビューにスマート グループの一覧が開きます。

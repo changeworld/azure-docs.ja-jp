@@ -7,13 +7,14 @@ ms.author: ambapat
 manager: rkarlin
 ms.date: 01/02/2019
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: b9c458b42f7436377d41cf5095d404dedbe0ffd1
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 47dc1a84fbc80925e5b65db8c03683f9f026271b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191603"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194990"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault の仮想ネットワーク サービス エンドポイント
 

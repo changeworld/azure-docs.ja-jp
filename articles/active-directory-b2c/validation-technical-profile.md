@@ -3,20 +3,20 @@ title: カスタム ポリシーで検証技術プロファイルを定義する
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C のカスタム ポリシーで検証技術プロファイルを使用して要求を検証します。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: facef1e1288f2a64872efbf37a9a31fa05244a7e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 65a2eab05e7c475431602d9c2d3fc44b59bbc8f7
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950801"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78185728"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C のカスタム ポリシーで検証技術プロファイルを定義する
 
@@ -47,13 +47,13 @@ ms.locfileid: "74950801"
 
 **ValidationTechnicalProfiles** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | 説明 |
+| 要素 | 発生回数 | Description |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1:n | 参照元の技術プロファイルの出力要求の一部またはすべてを検証するために使用する技術プロファイル。 |
 
 **ValidationTechnicalProfile** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| 属性 | Required | Description |
 | --------- | -------- | ----------- |
 | ReferenceId | はい | ポリシーまたは親ポリシーで既に定義されている技術プロファイルの識別子。 |
 |ContinueOnError|いいえ| この検証技術プロファイルでエラーが発生した場合に後続の検証技術プロファイルの検証を続行するかどうかを示します。 有効な値: `true` または `false` (既定値。以降の検証プロファイルの処理が停止され、エラーが返されます)。 |
@@ -67,7 +67,7 @@ ms.locfileid: "74950801"
 
 **Precondition** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | `Type` | はい | 前提条件に対して実行するチェックまたはクエリの種類。 指定した要求がユーザーの現在の要求セット内に存在する場合にアクションが実行されるようにするには、`ClaimsExist` を指定する必要があります。または、指定した要求が存在し、その値が指定値と等しい場合にアクションが実行されるようにするには、`ClaimEquals` を指定する必要があります。 |
 | `ExecuteActionsIf` | はい | テストが true または false の場合に前提条件のアクションを実行するかどうかを示します。 |
@@ -77,7 +77,7 @@ ms.locfileid: "74950801"
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
 | Value | 1:n | チェックで使用されるデータ。 このチェックの種類が `ClaimsExist` の場合、このフィールドではクエリ対象の ClaimTypeReferenceId が指定されます。 チェックの種類が `ClaimEquals` の場合、このフィールドではクエリ対象の ClaimTypeReferenceId が指定されます。 一方、別の値要素には、チェック対象の値が含まれています。|
-| Action | 1:1 | オーケストレーション手順内の前提条件チェックが true の場合に実行する必要があるアクション。 **Action** の値は `SkipThisValidationTechnicalProfile` に設定されます。 関連付けられている検証技術プロファイルを実行しないことを指定します。 |
+| アクション | 1:1 | オーケストレーション手順内の前提条件チェックが true の場合に実行する必要があるアクション。 **Action** の値は `SkipThisValidationTechnicalProfile` に設定されます。 関連付けられている検証技術プロファイルを実行しないことを指定します。 |
 
 ### <a name="example"></a>例
 

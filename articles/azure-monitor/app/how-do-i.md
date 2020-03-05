@@ -1,18 +1,14 @@
 ---
 title: Azure Application Insights での作業 | Microsoft Docs
 description: Application Insights での FAQ。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 04/04/2017
-ms.openlocfilehash: 61bd5898c494018a2bacbd894d4dc2aac97f53b4
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 5b65087c361911f0714723c315e0b7f7e9bb74e6
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928414"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663859"
 ---
 # <a name="how-do-i--in-application-insights"></a>Application Insights での作業
 ## <a name="get-an-email-when-"></a>電子メールの受信
@@ -39,7 +35,7 @@ ms.locfileid: "73928414"
 
     telemetry.TrackMetric("Alarm", 10);
 
-または:
+または
 
     var measurements = new Dictionary<string,double>();
     measurements ["Alarm"] = 10;
@@ -100,7 +96,7 @@ ms.locfileid: "73928414"
 ### <a name="filter-out-anonymous-or-authenticated-users"></a>匿名ユーザーまたは認証済みユーザーのフィルター処理
 ユーザーがサインインしたら、[認証されたユーザー ID](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users) を設定できます。 (自動的には設定されません。)
 
-次に以下のことを行えます。
+この場合は、次のいずれかの操作を行うことができます。
 
 * 特定のユーザー ID で検索
 

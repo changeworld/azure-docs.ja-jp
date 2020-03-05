@@ -1,18 +1,17 @@
 ---
 title: 評価のために Azure Monitor for VMs (プレビュー) を有効にする | Microsoft Docs
 description: 1 つの Azure 仮想マシン上または仮想マシン スケール セット上で Azure Monitor for VMs を評価する方法について説明します。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: c77fabf0220ecfcb889ce7cb71fa075fde27226f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b79eaeed420426fe79b2b6caf19ba1d1be61939
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400589"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664613"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-evaluation"></a>評価のために Azure Monitor for VMs (プレビュー) を有効にする
 
@@ -23,7 +22,7 @@ ms.locfileid: "75400589"
 ## <a name="enable-monitoring-for-a-single-azure-vm"></a>1 つの Azure VM の監視を有効にする
 Azure VM の監視を有効にするには:
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. **[仮想マシン]** を選択します。
 
@@ -50,7 +49,7 @@ Azure VM の監視を有効にするには:
 
 Azure 仮想マシン スケール セットの監視を有効にするには:
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. **[仮想マシン スケール セット]** を選択します。
 

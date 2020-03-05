@@ -1,19 +1,18 @@
 ---
 title: Azure での管理ソリューション ファイルの作成 | Microsoft Docs
 description: 管理ソリューションには、パッケージ化された管理シナリオが用意されており、お客様はそれを Azure 環境に追加できます。  この記事では、管理ソリューションを作成してお使いの環境で使用したり顧客に提供したりする方法について、詳しく説明します。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d583f47a9c83abb1119262a2a6b70292cfa4ab69
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 999177f821b98adfa015520252bd3323d0892533
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977692"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662539"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Azure での管理ソリューション ファイルの作成 (プレビュー)
 > [!NOTE]
@@ -64,7 +63,7 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 
 | 属性 | 説明 |
 |:--- |:--- |
-| 型 |パラメーターのデータ型。 ユーザーに表示される入力コントロールは、データ型によって異なります。<br><br>bool - ドロップダウン ボックス<br>string - テキスト ボックス<br>int - テキスト ボックス<br>securestring - パスワード フィールド<br> |
+| type |パラメーターのデータ型。 ユーザーに表示される入力コントロールは、データ型によって異なります。<br><br>bool - ドロップダウン ボックス<br>string - テキスト ボックス<br>int - テキスト ボックス<br>securestring - パスワード フィールド<br> |
 | category |パラメーターの任意のカテゴリ。  同じカテゴリのパラメーターはグループ化されます。 |
 | control |文字列パラメーターの追加の機能。<br><br>datetime - Datetime コントロールが表示されます。<br>guid - GUID 値が自動的に生成され、パラメーターは表示されません。 |
 | description |パラメーターの説明です (省略可能)。  パラメーターの横の情報バルーンに表示されます。 |
@@ -77,7 +76,7 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 >
 >
 
-| パラメーター | 種類 | 説明 |
+| パラメーター | Type | 説明 |
 |:--- |:--- |:--- |
 | accountName |string |Azure automation アカウント名。 |
 | pricingTier |string |Log Analytics ワークスペースと Azure Automation アカウントの両方の価格レベル。 |
@@ -125,7 +124,7 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 
 ソリューション内のその他の要素のパラメーター値は、 **parameters('parameter name')** の構文を使用して参照します。  たとえば、ワークスペース名にアクセスするには、**parameters('workspaceName')** を使用します。
 
-## <a name="variables"></a>変数:
+## <a name="variables"></a>変数
 [Variables](../../azure-resource-manager/templates/template-syntax.md#variables) は、その他の管理ソリューションで使用する値です。  これらの値は、ソリューションをインストールするユーザーには公開されません。  これは、作成者に 1 つの場所を提供することを意図しており、それによって、ソリューション全体にわたって何度も使用する値を管理できるようにします。 **resources** 要素でハードコーディングするのとは異なり、ソリューション固有の値を変数で記述する必要があります。  これによってコードが読みやすくなるとともに、後のバージョンでこれらの値を簡単に変更することができます。
 
 次の例は、ソリューションで使用される一般的なパラメーターを持つ**variables**要素です。

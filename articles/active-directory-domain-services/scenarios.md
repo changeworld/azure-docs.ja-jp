@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 5d0035e7c87806012d13117ae5335b7de5f3c99d
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: ac67ef64ca4850c6e805b5314ace856114d889a7
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132293"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917232"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services の一般的なユースケースとシナリオ
 
@@ -97,7 +97,7 @@ Contoso では、このアプリケーションを Azure に移行し、現在�
 
 Azure AD DS を使用して、Azure にデプロイされているリモート デスクトップ サーバーに対して、マネージド ドメイン サービスを提供できます。 このデプロイ シナリオの詳細については、[Azure AD Domain Services を RDS デプロイに統合する方法][windows-rds]に関するページを参照してください。
 
-## <a name="domain-joined-hdinsight-clusters-preview"></a>ドメイン参加済み HDInsight クラスター (プレビュー)
+## <a name="domain-joined-hdinsight-clusters"></a>ドメイン参加済み HDInsight クラスター
 
 Azure AD DS のマネージド ドメインに Apache Ranger が有効な状態で参加する Azure HDInsight クラスターを設定できます。 Apache Ranger を使用して Hive ポリシーを作成して適用することができます。さらに、データ サイエンティストなどのユーザーが ODBC ベースのツール (Excel や Tableau など) を使用して Hive に接続できるようにすることができます。 Microsoft では、HBase、Spark、Storm などの他のワークロードもドメイン参加済み HDInsight に追加できるように作業を進めています。
 

@@ -1,18 +1,17 @@
 ---
 title: Azure Policy を使用して Azure Monitor for VMs を有効にする | Microsoft Docs
 description: この記事では、Azure Policy を使用して、複数の Azure 仮想マシンまたは仮想マシン スケール セットで Azure Monitor for VMs を有効にする方法について説明します。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: d9458230d07c1c40a3eec2d51879f58fac6543b5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 267072b06d936822eae7e7257d62566a020471bb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365820"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656230"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-by-using-azure-policy"></a>Azure Policy を使用して Azure Monitor for VMs (プレビュー) を有効にする
 
@@ -77,7 +76,7 @@ Azure PowerShell または Azure Resource Manager テンプレートを使用し
 
 次の表は、Azure VM のポリシー定義の一覧を示しています。
 
-|Name |説明 |種類 |
+|名前 |説明 |Type |
 |-----|------------|-----|
 |\[プレビュー\]:Azure Monitor for VMs の有効化 |指定されたスコープ (管理グループ、サブスクリプション、またはリソース グループ) 内の仮想マシン に対して Azure Monitor を有効にします。 Log Analytics ワークスペースをパラメーターとして受け取ります。 |イニシアティブ |
 |\[プレビュー\]:依存関係エージェントのデプロイの監査 - 一覧にない VM イメージ (OS) |VM イメージ (OS) が一覧で定義されておらず、このエージェントがインストールされていない場合は、VM を非準拠として報告します。 |ポリシー |
@@ -91,7 +90,7 @@ Azure PowerShell または Azure Resource Manager テンプレートを使用し
 
 次の表は、Azure 仮想マシン スケール セットのポリシー定義の一覧を示しています。
 
-|Name |説明 |種類 |
+|名前 |説明 |Type |
 |-----|------------|-----|
 |\[プレビュー\]:仮想マシン スケール セットに対して Azure Monitor を有効にする |指定されたスコープ (管理グループ、サブスクリプション、またはリソース グループ) 内の仮想マシン スケール セットに対して Azure Monitor を有効にします。 Log Analytics ワークスペースをパラメーターとして受け取ります。 注:スケール セットのアップグレード ポリシーが [手動] に設定されている場合は、そのセット内のすべての VM でアップグレードを呼び出して、それらの VM に拡張機能を適用します。 CLI では、これは `az vmss update-instances` です。 |イニシアティブ |
 |\[プレビュー\]:仮想マシン スケール セットにおける依存関係エージェントのデプロイの監査 - 一覧にない VM イメージ (OS) |VM イメージ (OS) が一覧で定義されておらず、このエージェントがインストールされていない場合は、仮想マシン スケール セットを非準拠として報告します。 |ポリシー |
@@ -103,7 +102,7 @@ Azure PowerShell または Azure Resource Manager テンプレートを使用し
 
 ここではスタンドアロン ポリシー (イニシアティブには含まれません) について説明します。
 
-|Name |説明 |種類 |
+|名前 |説明 |Type |
 |-----|------------|-----|
 |\[プレビュー\]:VM の Log Analytics ワークスペースの監査 - 不一致の報告 |ポリシーまたはイニシアチブの割り当てで指定された Log Analytics ワークスペースに VM がロギングされていない場合は、それらの VM を非準拠として報告します。 |ポリシー |
 
@@ -113,7 +112,7 @@ Azure PowerShell または Azure Resource Manager テンプレートを使用し
 
 ポリシーまたはイニシアチブを割り当てる場合、割り当てで選択されたスコープは、ここに一覧表示されているスコープまたはそのサブセットである可能性があります。 たとえば、管理グループ (対象範囲スコープ) ではなく、サブスクリプション (ポリシー スコープ) の割り当てを作成している可能性があります。 この場合、対象範囲の割合は、ポリシーまたはイニシアチブ スコープ内の VM 数を対象範囲スコープ内の VM 数で割った値を示します。 あるいは、ご自分がポリシー スコープからいくつかの VM、リソース グループ、またはサブスクリプションを除外している可能性があります。 これが空白の場合は、ポリシーまたはイニシアチブが存在しないか、アクセス許可がないことを示します。 情報は **[割り当ての状態]** の下に表示されます。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. Azure portal で、 **[モニター]** を選択します。 
 

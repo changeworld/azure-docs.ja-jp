@@ -3,17 +3,16 @@ title: イベント ハブへの Azure 監視データのストリーム配信
 description: パートナー SIEM または分析ツールにデータを取り込むために Azure 監視データをイベント ハブにストリーム配信する方法について学習します。
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 6a474bdceffa07b18530250a02a9ef94159a8e35
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: b22f779d616751ebaa3dad853d5aa23ec4969f23
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750341"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658865"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>イベント ハブへの Azure 監視データのストリーム配信
 Azure Monitor では、Azure や他のクラウド、オンプレミスのアプリケーションとサービスに対する包括的なフル スタック監視ソリューションが提供されます。 Azure Monitor を使用してデータを分析し、さまざまな監視シナリオに活用するだけでなく、環境内にある別の監視ツールにそれを送信することが必要な場合もあります。 ほとんどの場合、監視データを外部ツールにストリーム配信するうえで最も効率的なのは、[Azure Event Hubs](/azure/event-hubs/) を使用する方法です。 この記事では、各種ソースからイベント ハブに監視データをストリーム配信する方法について簡単に説明するほか、詳細なガイダンスへのリンクを紹介します。
@@ -33,7 +32,7 @@ Azure Monitor では、Azure や他のクラウド、オンプレミスのアプ
 ## <a name="monitoring-data-available"></a>利用可能な監視データ
 Azure アプリケーションの各種データ階層とそれぞれで利用できる監視データの種類については、「[Azure Monitor で使用する監視データのソース](data-sources.md)」で説明しています。 次の表に、これらの各階層の一覧と、イベント ハブにデータをストリーム配信する方法を示します。 詳細については、記載されているリンクを参照してください。
 
-| レベル | Data | 方法 |
+| レベル | Data | Method |
 |:---|:---|:---|
 | [Azure テナント](data-sources.md#azure-tenant) | Azure Active Directory 監査ログ | ご自分の AAD テナントでテナント診断設定を構成します。 詳細については、「[チュートリアル: Azure Active Directory ログを Azure イベント ハブにストリーム配信する](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)」を参照してください。 |
 | [Azure サブスクリプション](data-sources.md#azure-subscription) | [Azure Activity Log (Azure アクティビティ ログ)] | アクティビティ ログ イベントを Event Hubs にエクスポートするログ プロファイルを作成します。  詳細については、「[Azure アクティビティ ログをストレージまたは Azure Event Hubs にエクスポートする](activity-log-export.md)」を参照してください。 |

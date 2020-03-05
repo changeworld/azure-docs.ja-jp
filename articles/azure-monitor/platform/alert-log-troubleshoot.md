@@ -2,18 +2,16 @@
 title: Azure Monitor のログ アラートのトラブルシューティング | Microsoft Docs
 description: Azure のログ アラート ルールに関する一般的な問題、エラー、解決方法。
 author: yanivlavi
-services: azure-monitor
-ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 10/29/2018
 ms.author: yalavi
+ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: aa2f3481b63c98ec23e1db8213939278684a4cd6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 10/29/2018
+ms.openlocfilehash: acb9784b745fa90fc9cd264162930020e6d64751
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977632"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668504"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Azure Monitor のログ アラートのトラブルシューティング  
 

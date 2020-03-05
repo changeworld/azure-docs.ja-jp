@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: b27baed20d8e36bf5790036e2fdc0804a94a4ea1
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 0e19271b5c69610dd9f44c3121e195b80732279c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589438"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669541"
 ---
 # <a name="what-is-virtual-network-nat-public-preview"></a>Virtual Network NAT (パブリック プレビュー) とは
 
@@ -39,7 +39,7 @@ Virtual Network NAT (ネットワーク アドレス変換) は、仮想ネッ�
 
 
 >[!NOTE] 
->Virtual Network NAT は、現時点ではパブリック プレビューとして提供されています。 現在は、ご利用いただける[リージョン](#region-availability)が限られています。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.comsupport/legal/preview-supplemental-terms)」をご覧ください。
+>Virtual Network NAT は、現時点ではパブリック プレビューとして提供されています。 現在は、ご利用いただける[リージョン](#region-availability)が限られています。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms)」をご覧ください。
 
 ## <a name="static-ip-addresses-for-outbound-only"></a>アウトバウンド専用の静的 IP アドレス
 
@@ -200,5 +200,5 @@ NAT のサポートは、通常のサポート チャンネルを通じて提供
 ## <a name="next-steps"></a>次のステップ
 
 - [NAT ゲートウェイ リソース](./nat-gateway-resource.md)について学習する。
-- [UserVoice で新機能を提案する](https://aka/natuservoice)。
+- [UserVoice で新機能を提案する](https://aka.ms/natuservoice)。
 - [パブリック プレビューに関するフィードバックを送る](https://aka.ms/natfeedback)。

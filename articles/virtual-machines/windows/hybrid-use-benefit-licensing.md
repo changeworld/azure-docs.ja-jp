@@ -13,28 +13,26 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: d6e3d4d059e464795c712af1226d8202d00bfd74
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 470e38c21a250273216f93eb38a5334a4bb581e7
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461161"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77911791"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 向け Azure Hybrid Benefit
 ソフトウェア アシュアランスを取得したお客様は、Windows Server 向け Azure Hybrid Benefit により、オンプレミスの Windows Server ライセンスを使用し、Azure で Windows 仮想マシンを低コストで実行することができます。 Windows Server 向け Azure ハイブリッド特典を使用して、Windows OS 搭載の新しい仮想マシンをデプロイすることができます。 この記事では、Windows Server 向け Azure ハイブリッド特典での新しい VM のデプロイ方法と、既存の稼働中 VM を更新する方法について説明します。 Windows Server 向け Azure Hybrid Benefit のライセンスとコスト削減について詳しくは、[Windows Server 向け Azure Hybrid Benefit のライセンス ページ](https://azure.microsoft.com/pricing/hybrid-use-benefit/)をご覧ください。
 
-> [!Important]
-> 各 2 プロセッサ ライセンスまたは 16 コア ライセンスの各セットでは、最大 8 コアのインスタンスを 2 つ、または最大 16 コアのインスタンスを 1 つ利用できます。 Standard Edition のハイブリッド特典ライセンスは、オンプレミスまたは Azure 内のどちらかで 1 度のみ使用できます。 Datacenter Edition エディションの特典は、オンプレミスと Azure 内の両方で同時に使用することができます。
->
+各 2 プロセッサ ライセンスまたは 16 コア ライセンスの各セットでは、最大 8 コアのインスタンスを 2 つ、または最大 16 コアのインスタンスを 1 つ利用できます。 Standard Edition のハイブリッド特典ライセンスは、オンプレミスまたは Azure 内のどちらかで 1 度のみ使用できます。 Datacenter Edition エディションの特典は、オンプレミスと Azure 内の両方で同時に使用することができます。
 
-> [!Important]
-> SQL Server やサード パーティ製マーケットプレース ソフトウェアなどの追加のソフトウェアを搭載した VM を含め、Windows Server OS を実行するすべてのリージョンの任意の VM で Windows Server 向け Azure ハイブリッド特典の使用がサポートされるようになりました。 
->
+SQL Server やサード パーティ製マーケットプレース ソフトウェアなどの追加のソフトウェアを搭載した VM を含め、Windows Server OS を実行するすべてのリージョンの任意の VM で Windows Server 向け Azure ハイブリッド特典の使用がサポートされるようになりました。 
 
-> [!NOTE]
-> クラシック VM では、オンプレミスのカスタム イメージからの新規 VM のデプロイのみがサポートされています。 この記事でサポートされる機能を利用するには、最初にクラシック VM を Resource Manager モデルに移行する必要があります。
->
 
+## <a name="classic-vms"></a>クラシック VM
+
+クラシック VM では、オンプレミスのカスタム イメージからの新規 VM のデプロイのみがサポートされています。 この記事でサポートされる機能を利用するには、最初にクラシック VM を Resource Manager モデルに移行する必要があります。
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
  
 
 ## <a name="ways-to-use-azure-hybrid-benefit-for-windows-server"></a>Windows Server 向け Azure Hybrid Benefit の使用方法

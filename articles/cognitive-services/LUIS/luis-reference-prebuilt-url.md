@@ -8,18 +8,18 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 10/04/2019
 ms.author: diberry
-ms.openlocfilehash: 12831ede2b9d9251f2e02fa396ee7d2fb2d61240
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 49f145ce3e9022826abad5d274dd611bb2cc6530
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499495"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270344"
 ---
 # <a name="url-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの url 作成済みエンティティ
-url エンティティは、ドメイン名または IP アドレスを含む URL を抽出します。 このエンティティは既にトレーニングされているので、URL を含む発話の例をアプリケーションに追加する必要はありません。 url エンティティは、`en-us` カルチャでのみサポートされます。 
+url エンティティは、ドメイン名または IP アドレスを含む URL を抽出します。 このエンティティは既にトレーニングされているので、URL を含む発話の例をアプリケーションに追加する必要はありません。 url エンティティは、`en-us` カルチャでのみサポートされます。
 
 ## <a name="types-of-urls"></a>url のタイプ
 url は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-URL.yaml) GitHub リポジトリから管理されます。
@@ -30,7 +30,7 @@ url は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/ma
 
 `https://www.luis.ai is a great cognitive services example of artificial intelligence`
 
-#### <a name="v3-responsetabv3"></a>[V3 の応答](#tab/V3)
+#### <a name="v3-response"></a>[V3 の応答](#tab/V3)
 
 次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
 
@@ -41,7 +41,7 @@ url は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/ma
     ]
 }
 ```
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 の詳細な応答](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[V3 の詳細な応答](#tab/V3-verbose)
 
 次の JSON は、`verbose` パラメーターが `true` に設定されている場合です。
 
@@ -67,7 +67,7 @@ url は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/ma
     }
 }
 ```
-#### <a name="v2-responsetabv2"></a>[V2 の応答](#tab/V2)
+#### <a name="v2-response"></a>[V2 の応答](#tab/V2)
 
 次の例では、人工知能の優れたコグニティブ サービスの例である https://www.luis.ai の解決策を示します。
 
@@ -82,9 +82,9 @@ url は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/ma
 ]
 ```
 
-* * * 
+* * *
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
 

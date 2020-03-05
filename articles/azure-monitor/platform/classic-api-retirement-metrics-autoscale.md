@@ -1,18 +1,15 @@
 ---
 title: メトリックおよび自動スケーリング用クラシック デプロイ モデル API の Azure Monitor での提供終了
 description: メトリックおよび自動スケーリングのクラシック API (Azure Service Management (ASM) や RDFE デプロイ モデルともいう) の提供終了
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 11/19/2018
-ms.openlocfilehash: 7a93419ee84e6a50ce07cefa941a8df9f85b7b6e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 980f4e840f7778c6ea3025db9b37a3454267bac7
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552203"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663557"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>メトリックおよび自動スケーリング用クラシック デプロイ モデル API の Azure Monitor での提供終了
 
@@ -79,7 +76,7 @@ Azure サービスやそのワークロードに直接影響はありません�
 
 メトリックの場合: *この API は推奨されていません。Azure ポータル、Azure Monitor SDK、PowerShell、CLI を使用して、メトリックのクエリを実行してください*。
 
-## <a name="email-notifications"></a>電子メール通知
+## <a name="email-notifications"></a>メール通知
 
 提供終了に関する通知が、次のアカウント ロールのメール アドレスで送信されました。 
 
@@ -88,7 +85,7 @@ Azure サービスやそのワークロードに直接影響はありません�
 
 ご質問がある場合は、MonitorClassicAPIhelp@microsoft.com からお問い合わせください。  
 
-## <a name="references"></a>参照
+## <a name="references"></a>References
 
 - [Azure Monitor の新しい REST API](https://docs.microsoft.com/rest/api/monitor/) 
 - [新しい Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)

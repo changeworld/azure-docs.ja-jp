@@ -1,19 +1,17 @@
 ---
 title: Azure Application Insights における分散トレース | Microsoft Docs
 description: OpenCensus プロジェクトでローカル フォワーダーとパートナーシップを使用した分散トレースに対する Microsoft のサポートに関する情報を提供します
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5c07fac0590b833aa19909849271c59d65d42ad6
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 49e61a7677007c52d1a584c4b49ccaadc3a02df3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242444"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669592"
 ---
 # <a name="what-is-distributed-tracing"></a>分散トレースとは
 
@@ -38,7 +36,7 @@ Azure Monitor では、[アプリケーション マップ](https://docs.microso
 * [.NET](https://docs.microsoft.com/azure/application-insights/quick-monitor-portal)
 * [.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-dotnetcore-quick-start)
 * [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
-* [Node.JS](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
+* [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
 * [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
 * [Python (プレビュー)](opencensus-python.md)
 
@@ -54,7 +52,7 @@ Application Insights SDK に加えて、Application Insights では [OpenCensus]
 
 OpenCensus Web サイトには、[Python](https://opencensus.io/api/python/trace/usage.html) と [Go](https://godoc.org/go.opencensus.io) 向けの API リファレンス ドキュメント、および OpenCensus を使用するためのさまざまなガイドがあります。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [OpenCensus Python の使用ガイド](https://opencensus.io/api/python/trace/usage.html)
 * [アプリケーション マップ](./../../azure-monitor/app/app-map.md)

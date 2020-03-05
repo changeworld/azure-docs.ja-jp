@@ -1,19 +1,17 @@
 ---
 title: Azure Application Insights におけるテレメトリの関連付け | Microsoft Docs
 description: Application Insights におけるテレメトリの相関付け
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: bc73dfb1c4dc77abe0bd135ecf572fa05ddf6322
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 06897fffda490cdfcbb2a9cf6f55c7945e8afda0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951328"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672057"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights におけるテレメトリの相関付け
 
@@ -47,7 +45,7 @@ Application Insights は、分散しているテレメトリを相関付ける�
 
 結果において、すべてのテレメトリ項目がルートの `operation_Id` を共有していることに注目してください。 ページから Ajax の呼び出しが行われると、新しい一意の ID (`qJSXU`) が依存関係テレメトリに割り当てられ、pageView の ID が `operation_ParentId` として使用されます。 その後、サーバー要求で Ajax の ID が `operation_ParentId` として使用されます。
 
-| itemType   | 名前                      | id           | operation_ParentId | operation_Id |
+| itemType   | name                      | id           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | pageView   | Stock page                |              | STYz               | STYz         |
 | dependency | GET /Home/Stock           | qJSXU        | STYz               | STYz         |
@@ -206,7 +204,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | Application Insights                  | OpenTracing                                       |
 |------------------------------------   |-------------------------------------------------  |
-| `Request`、`PageView`                 | `span.kind = server` を含む `Span`                  |
+| `Request`, `PageView`                 | `span.kind = server` を含む `Span`                  |
 | `Dependency`                          | `span.kind = client` を含む `Span`                  |
 | `Request` と `Dependency` の `Id`    | `SpanId`                                          |
 | `Operation_Id`                        | `TraceId`                                         |
@@ -358,7 +356,7 @@ ASP.NET Core 2.0 では、HTTP ヘッダーの抽出と新しいアクティビ�
 
   Spring Boot スターターによって、`spring.application.name` プロパティに入力した値に対して `cloudRoleName` が自動的に割り当てられます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [カスタム テレメトリ](../../azure-monitor/app/api-custom-events-metrics.md)を記述します。
 - ASP.NET Core と ASP.NET の高度な相関シナリオについては、[カスタム操作の追跡](custom-operations-tracking.md)に関する記事を参照してください。

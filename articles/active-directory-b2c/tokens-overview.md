@@ -2,20 +2,20 @@
 title: トークンの概要 - Azure Active Directory B2C
 description: Azure Active Directory B2C で使用されるトークンについて説明します。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 543a3558333933e9d8d6262c76c1e6e9419be877
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: cbbd083a6b62733d71c316af95dffaa188b28955
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850846"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186490"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のトークンの概要
 
@@ -50,7 +50,7 @@ ID トークン内の要求は特定の順序では返されません。 新し�
 
 次の表は、Azure AD B2C によって発行される ID トークンとアクセス トークンで予期できる要求の一覧です。
 
-| Name | 要求 | 値の例 | 説明 |
+| 名前 | 要求 | 値の例 | 説明 |
 | ---- | ----- | ------------- | ----------- |
 | 対象ユーザー | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | トークンの受信者を示します。 Azure AD B2C では、対象ユーザーはアプリケーション ID です。 アプリケーションでは、この値を検証し、一致しない場合はトークンを拒否する必要があります。 対象ユーザーは、リソースと同義です。 |
 | 発行者 | `iss` |`https://{tenant}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | トークンを構築して返す Security Token Service (STS) を識別します。 また、ユーザーが認証されたディレクトリも識別します。 アプリケーションでは、発行者要求を検証し、トークンが適切なエンドポイントからのものであることを確認する必要があります。 |

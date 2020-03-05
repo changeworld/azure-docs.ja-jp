@@ -1,18 +1,17 @@
 ---
 title: PowerShell またはテンプレートを使用して Azure Monitor for VMs (クラシック) を有効にする
 description: この記事では、Azure PowerShell または Azure Resource Manager テンプレートを使用して、1 つ以上の Azure 仮想マシンまたは仮想マシン スケール セットで Azure Monitor for VMs を有効にする方法について説明します。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2019
-ms.openlocfilehash: 4fc5afe3bbb4b2ccf2329432347b23fe9a69c5ea
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e28a5dce4dda677ef4e5eb0ed08c42ec1f03c308
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977669"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251435"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>Azure PowerShell または Resource Manager テンプレートを使用して Azure Monitor for VMs (プレビュー) を有効にする
 
@@ -100,7 +99,7 @@ Azure CLI を使用するには、まず、ローカルに CLI をインスト�
 
         設定の変更が完了するまで数分かかる場合があります。 完了すると、次のような結果を含むメッセージが表示されます。
 
-        ```powershell
+        ```output
         provisioningState       : Succeeded
         ```
 
@@ -114,7 +113,7 @@ Azure CLI を使用するには、まず、ローカルに CLI をインスト�
 
         設定の変更が完了するまで数分かかる場合があります。 完了すると、次のような結果を含むメッセージが表示されます。
 
-        ```azurecli
+        ```output
         provisioningState       : Succeeded
         ```
 
@@ -155,7 +154,7 @@ New-AzResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <ResourceG
 ```
 設定の変更が完了するまで数分かかる場合があります。 完了すると、次のような結果を含むメッセージが表示されます。
 
-```powershell
+```output
 provisioningState       : Succeeded
 ```
 
@@ -171,7 +170,7 @@ az group deployment create --resource-group <ResourceGroupName> --template-file 
 
 出力結果は、以下のようになります。
 
-```azurecli
+```output
 provisioningState       : Succeeded
 ```
 

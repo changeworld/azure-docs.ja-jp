@@ -1,18 +1,14 @@
 ---
 title: Azure Application Insights を使用した ASP.NET の Web アプリ分析を設定する | Microsoft Docs
 description: オンプレミスまたは Azure でホストされている ASP.NET Web サイトのパフォーマンス、可用性、およびユーザー動作の分析ツールを構成します。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/08/2019
-ms.openlocfilehash: a72bb5dd02776fe8410bb515e4e17a292d12048f
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 0843d6c04bf6fc9bab07207072990fb3fb8f1844
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677673"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665920"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>ASP.NET Web サイトに Application Insights を設定する
 
@@ -29,7 +25,7 @@ ASP.NET Web サイトに Application Insights を追加するうえで必要な�
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-## <a name="ide"></a>手順 1: Application Insights SDK を追加する
+## <a name="ide"></a> ステップ 1:Application Insights SDK を追加する
 
 > [!IMPORTANT]
 > このサンプルのスクリーンショットは、Visual Studio 2017 バージョン 15.9.9 以降に基づきます。 Application Insights に追加する経験は、Visual Studio のバージョンや ASP.NET テンプレート タイプによって異なります。 旧バージョンでは、「Application Insights の構成」といった代替テキストがない場合があります。
@@ -60,14 +56,14 @@ Application Insights の構成画面:
 > [!NOTE]
 > デバッグ中はポータルにテレメトリを送信しない場合は、Application Insights SDK をアプリに追加するだけにして、ポータルのリソースの構成は行いません。 デバッグ中は、Visual Studio でテレメトリを表示することができます。 この構成ページには後で戻ってくることができます。また、アプリがデプロイされ、[実行時のテレメトリが有効にされる](../../azure-monitor/app/monitor-performance-live-website-now.md)まで待つこともできます。
 
-## <a name="run"></a>手順 2: アプリケーションを実行する
+## <a name="run"></a> ステップ 2:アプリケーションを実行する
 F5 キーを押して、アプリを実行します。 ある程度のテレメトリを生成するために、複数のページを開きます。
 
 Visual Studio で、ログに記録されたイベント数が表示されます。
 
 ![Visual Studio のスクリーンショット。 デバッグ中に表示される [Application Insights] ボタン。](./media/asp-net/00006-Events.png)
 
-## <a name="step-3-see-your-telemetry"></a>手順 3: テレメトリを確認する
+## <a name="step-3-see-your-telemetry"></a>手順 3:テレメトリを確認する
 Visual Studio または Application Insights Web ポータルで、テレメトリを確認できます。 Visual Studio でテレメトリを検索し、アプリのデバッグに役立てます。 システムを稼働させたら、Web ポータルでパフォーマンスと使用状況を監視します。 
 
 ### <a name="see-your-telemetry-in-visual-studio"></a>Visual Studio でのテレメトリの表示
@@ -124,7 +120,7 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 
 * [.NET アプリケーションを使って最初から Application Insights を構成する](https://www.youtube.com/watch?v=blnGAVgMAfA)ステップ バイ ステップの外部ビデオ。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 関心をお持ちの場合は、他にも次のようなトピックをご覧いただけます。
 
@@ -143,7 +139,7 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 * **[Visual Studio での Application Insights の操作](../../azure-monitor/app/visual-studio.md)**<br/>テレメトリ、診断検索、コードのドリル スルーを使用したデバッグについて説明しています。
 * **[Analytics](../../azure-monitor/log-query/get-started-portal.md)** - 強力なクエリ言語です。
 
-### <a name="alerts"></a>アラート
+### <a name="alerts"></a>警告
 
 * [可用性テスト](../../azure-monitor/app/monitor-web-app-availability.md): サイトが Web で表示できることを確認するためのテストを作成します。
 * [スマート診断](../../azure-monitor/app/proactive-diagnostics.md): これらのテストは自動的に実行されます。セットアップするために何かをする必要はありません。 アプリの要求が失敗する割合が異常な場合に通知します。

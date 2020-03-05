@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ae5c4cdd76f164d13da349c355a30d8b6dc83058
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: deb337d989a3658e909cefa7a9ab028e37792562
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102100"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918378"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Azure での SQL Server 仮想マシンへの接続
 
@@ -123,7 +123,7 @@ SQL Server 接続の設定を変更するとき、Azure は SQL Server Developer
 
 [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-connection-tcp-protocol.md)]
 
-## <a name="connect-with-ssms"></a>SSMS で接続する
+## <a name="connect-with-ssms"></a>SSMS との接続
 
 次の手順では、Azure VM の省略可能な DNS ラベルを作成し、SQL Server Management Studio (SSMS) と接続する方法を示します。
 
@@ -137,7 +137,7 @@ Azure VM で実行されている SQL Server に接続するための要件を�
 
 | 要件 | 説明 |
 |---|---|
-| [SQL Server 認証モードを有効にする](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode#SSMSProcedure) | Virtual Network で Active Directory を構成済みである場合を除き、VM にリモート接続するには SQL Server 認証が必要になります。 |
+| [SQL Server 認証モードを有効にする](/sql/database-engine/configure-windows/change-server-authentication-mode#use-ssms) | Virtual Network で Active Directory を構成済みである場合を除き、VM にリモート接続するには SQL Server 認証が必要になります。 |
 | [SQL ログインを作成する](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | SQL 認証を使用する場合、ターゲット データベースへのアクセス許可も持つ、ユーザー名とパスワードによる SQL ログインが必要です。 |
 | [TCP/IP プロトコルを有効にする](#manualtcp) | SQL Server では、TCP 経由の接続を許可する必要があります。 |
 | [SQL Server ポートのファイアウォール規則を有効にする](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) | VM 上のファイアウォールでは、SQL Server ポート (既定では 1433) の受信トラフィックを許可する必要があります。 |

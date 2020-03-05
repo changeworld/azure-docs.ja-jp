@@ -3,17 +3,16 @@ title: REST API を使用して Azure Monitor メトリック データベース
 description: REST API を使用して Azure リソースのカスタム メトリックを Azure Monitor メトリック ストアに送信する
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: a19b59c758f31ff1ef3416b59031202193d50522
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 84709c022631543101889f784231158ebb96b6f3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74285947"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662266"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>REST API を使用して Azure リソースのカスタム メトリックを Azure Monitor メトリック ストアに送信する
 
@@ -100,7 +99,7 @@ curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "g
 
 ## <a name="view-your-metrics"></a>メトリックの表示 
 
-1. Azure ポータルにサインインします。 
+1. Azure portal にサインインします。 
 
 1. 左側のメニューで **[モニター]** を選択します。 
 
@@ -117,6 +116,6 @@ curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "g
 1. **[メトリック]** ドロップダウン メニューで、**QueueDepth** を選択します。  
 
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [カスタム メトリック](../../azure-monitor/platform/metrics-custom-overview.md)の詳細を確認します。
 

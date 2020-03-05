@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor ログ クエリの関数 | Microsoft Docs
 description: この記事では、Azure Monitor で関数を使用して、あるクエリを別のログ クエリから呼び出す方法について説明します。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/15/2018
-ms.openlocfilehash: 8d8473b88327d3d17346a0351d0a9fc510152cd8
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 7d94e53abbe8f4d2953729aa2363c3906ce94f74
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894188"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670221"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリでの関数の使用
 
@@ -22,12 +21,12 @@ ms.locfileid: "72894188"
 
 Azure portal の Log Analytics で **[保存]** をクリックした後、次の表の情報を指定して関数を作成します。
 
-| Setting | 説明 |
+| 設定 | 説明 |
 |:---|:---|
 | 名前           | **クエリ エクスプローラー**に表示されるクエリの名前。 |
 | 名前を付けて保存        | Function |
 | 関数のエイリアス | この関数を他のクエリの中で使用するための短い名前。 スペースを含めることはできず、一意である必要があります。 |
-| Category       | 保存したクエリと関数を**クエリ エクスプローラー**内で整理するためのカテゴリ。 |
+| カテゴリ       | 保存したクエリと関数を**クエリ エクスプローラー**内で整理するためのカテゴリ。 |
 
 > [!NOTE]
 > Azure Monitor 内の関数に、別の関数を含めることはできません。
@@ -54,7 +53,7 @@ Update
 security_updates_last_day | where Title contains "SQL"
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Monitor ログ クエリの記述に関するその他のレッスンを参照してください。
 
 - [文字列操作](string-operations.md)

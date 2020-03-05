@@ -1,18 +1,16 @@
 ---
 title: Azure Application Insights エージェント API リファレンス
 description: Application Insights エージェント API リファレンス。 Enable-ApplicationInsightsMonitoring。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: dccd7e617174bef4a85cb6293cbcc459542310f9
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 8bbdc96a49fffc91f80d24a9eb0926766f86ee16
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899708"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671309"
 ---
 # <a name="application-insights-agent-api-enable-applicationinsightsmonitoring"></a>Application Insights エージェント API:Enable-ApplicationInsightsMonitoring
 
@@ -65,7 +63,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 ```
 
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>パラメーター
 
 ### <a name="-instrumentationkey"></a>-InstrumentationKey
 **必須。** このパラメーターを使用して、ターゲット コンピューター上のすべてのアプリによって使用される単一のインストルメンテーション キーを指定します。
@@ -91,12 +89,12 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 
 
 ### <a name="-enableinstrumentationengine"></a>-EnableInstrumentationEngine
-**省略可能。** インストルメンテーション エンジンを有効にして、マネージド プロセスの実行中に何が発生したかを示すイベントとメッセージを収集するには、このスイッチを使用します。 これらのイベントとメッセージには、依存関係の結果コード、HTTP 動詞、SQL コマンド テキストが含まれます。
+**省略可。** インストルメンテーション エンジンを有効にして、マネージド プロセスの実行中に何が発生したかを示すイベントとメッセージを収集するには、このスイッチを使用します。 これらのイベントとメッセージには、依存関係の結果コード、HTTP 動詞、SQL コマンド テキストが含まれます。
 
 インストルメンテーション エンジンを使用するとオーバーヘッドが増加します。これは、既定ではオフになっています。
 
 ### <a name="-acceptlicense"></a>-AcceptLicense
-**省略可能。** ヘッドレス インストールでライセンスおよびプライバシーに関する声明に同意する場合は、このスイッチを使用します。
+**省略可。** ヘッドレス インストールでライセンスおよびプライバシーに関する声明に同意する場合は、このスイッチを使用します。
 
 ### <a name="-ignoresharedconfig"></a>-IgnoreSharedConfig
 Web サーバーのクラスターがある場合、[共有構成](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)を使用している可能性があります。
@@ -110,7 +108,7 @@ HttpModule をこの共有構成に挿入することはできません。
 ### <a name="-whatif"></a>-WhatIf 
 **共通パラメーター。** 実際に監視を有効にせずに、入力パラメーターをテストして検証する場合は、このスイッチを使用します。
 
-## <a name="output"></a>Output
+## <a name="output"></a>出力
 
 
 #### <a name="example-output-from-a-successful-enablement"></a>正常に有効化された場合の出力例
@@ -146,7 +144,7 @@ Updating app pool permissions...
 Successfully enabled Application Insights Status Monitor
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
   テレメトリの表示:
  - パフォーマンスと使用状況を監視するための[メトリックを探索](../../azure-monitor/app/metrics-explorer.md)します。

@@ -2,18 +2,16 @@
 title: Azure Monitor でのログのメトリック アラートの作成
 description: 一般的なログ分析データでほぼリアルタイムのメトリック アラートを作成する方法に関するチュートリアル。
 author: yanivlavi
-services: monitoring
-ms.service: azure-monitor
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 358312bcbb23aee5a06eaa39898ff4e632cd8b4b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 9f61c62bc4960cb8e5bff31f84bd73a14240b613
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977613"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250712"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Azure Monitor でのログのメトリック アラートの作成
 
@@ -367,7 +365,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfrom
 
 または、Azure CLI を使用してリソース テンプレートをデプロイします。
 
-```CLI
+```azurecli
 az group deployment create --resource-group myRG --template-file metricfromLogsAlertStatic.json --parameters @metricfromLogsAlertStatic.parameters.json
 ```
 
@@ -683,7 +681,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfrom
 
 または、Azure CLI を使用してリソース テンプレートをデプロイします。
 
-```CLI
+```azurecli
 az group deployment create --resource-group myRG --template-file metricfromLogsAlertDynamic.json --parameters @metricfromLogsAlertDynamic.parameters.json
 ```
 

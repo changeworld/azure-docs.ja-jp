@@ -3,15 +3,15 @@ title: Microsoft Azure FXT Edge Filer の仕様 | Microsoft Docs
 description: Azure FXT Edge Filer ハードウェアの物理仕様と環境仕様
 author: ekpgh
 ms.service: fxt-edge-filer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 90d56ad0cec3d187d4c7307f8c004b14c3860390
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: c06b0c79e01257eebf566b9752269cb88c072d8a
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254710"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227470"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Azure FXT Edge Filer の仕様
 
@@ -48,7 +48,7 @@ Azure FXT Edge Filer は標準の 19 インチの機器ラックに収まるよ�
 
 | フィラーの寸法           |                          |
 |-----------------------------|--------------------------|
-| 高さ                      | 42.8 mm (1.68 インチ)    |
+| [高さ]                      | 42.8 mm (1.68 インチ)    |
 | 幅 (ラック イヤーを含む) | 482.0 mm (18.97 インチ)  |
 | 幅 - メイン エンクロージャ      | 434.0 mm (17.08 インチ) |
 | 奥行き - ラック イヤーからメイン エンクロージャの背面まで                   | 733.82 mm (29.61 インチ) |
@@ -66,9 +66,9 @@ Azure FXT Edge Filer は標準の 19 インチの機器ラックに収まるよ�
 
 | 梱包の寸法 | mm | インチ |
 |-------------------|-------------|--------|
-| 高さ            | 311.2       | 12.25" |
+| [高さ]            | 311.2       | 12.25" |
 | 幅             | 642.8       | 25.31" |
-| Length            | 1,051.1     | 41.38" |
+| 長さ            | 1,051.1     | 41.38" |
 
 ## <a name="power-and-thermal-specifications"></a>電源と温度の仕様
 
@@ -148,7 +148,7 @@ Azure FXT Edge Filer ノードでは可変速ファンが使用されている�
 
 ### <a name="airflow-shock-and-vibration"></a>エアフロー、衝撃、振動 
 
-| Attribute         | 仕様 |
+| 属性         | 仕様 |
 |-------------------|---------------|
 | エアフロー                    | システムのエアフローは前面から背面方向です。 システムは低圧の背面排気環境で運用する必要があります。 |
 | 衝撃 (運用時)         | 11 ミリ秒間 6 G (6 つの方向でテスト済み) |
@@ -160,7 +160,7 @@ Azure FXT Edge Filer ノードでは可変速ファンが使用されている�
 
 Azure FXT Edge Filer は、以下に示す規制に準拠します。 
 
-| Category       | 規制による仕様 | 
+| カテゴリ       | 規制による仕様 | 
 |----------------|--------------------------|
 | 一般的な安全性 | EN 60950-1:2006 +A1:2010 +A2:2013 +A11:2009 +A12:2011/IEC 60950-1:2005 ed2 +A1:2009 +A2:2013 <br>EN 62311:2008 | 
 | EMC            | FCC A、ICES-003  <br>EN 55032:2012/CISPR 32:2012  <br>EN 55032:2015/CISPR 32:2015  <br>EN 55024:2010 +A1:2015/CISPR 24:2010 +A1:2015  <br>EN 61000-3-2:2014/IEC 61000-3-2:2014 (Class D)   <br>EN 61000-3-3:2013/IEC 61000-3-3:2013 |

@@ -3,20 +3,20 @@ title: リソース所有者のパスワード資格情報フローを構成す�
 titleSuffix: Azure AD B2C
 description: Azure AD B2C で ROPC フローを構成する方法について説明します。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
-ms.author: marsma
+ms.date: 02/27/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 03ff564848298d31c8bf92169d9e5f66d024d711
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 70cd4f2ca3a4ac37bdf1d1e465d1f1a7d06ef9e1
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949186"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189703"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Azure AD B2C でリソース所有者のパスワード資格情報フロー を構成する
 
@@ -24,16 +24,7 @@ ms.locfileid: "74949186"
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Azure Active Directory B2C (Azure AD B2C) では、次のオプションがサポートされています。
-
-- **ネイティブ クライアント**:認証時のユーザー操作は、ユーザー側のデバイスでコードが実行されているときに発生します。 デバイスは、Android や iOS などのネイティブ オペレーティング システムで実行されているモバイル アプリケーションである可能性があります。
-- **パブリック クライアント フロー**:アプリケーションによって収集されたユーザーの資格情報のみが API 呼び出しで送信されます。 アプリケーションの資格情報は送信されません。
-- **新しい要求の追加**:新しい要求を追加するために、ID トークンの内容を変更することができます。
-
-次のフローはサポートされていません。
-
-- **サーバー対サーバー**:ID 保護システムは、対話の一環として、呼び出し元 (ネイティブ クライアント) から収集された信頼できる IP アドレスを必要とします。 サーバー側の API 呼び出しでは、サーバーの IP アドレスのみが使用されます。 失敗した認証の動的しきい値を超えた場合、ID 保護システムによって、繰り返される IP アドレスが攻撃者として特定される可能性があります。
-- **機密性の高いクライアント フロー**:アプリケーション クライアント ID は検証されますが、アプリケーション シークレットは検証されません。
+[!INCLUDE [active-directory-b2c-ropc-notes](../../includes/active-directory-b2c-ropc-notes.md)]
 
 ##  <a name="create-a-resource-owner-user-flow"></a>リソース所有者のユーザー フローを作成する
 
@@ -65,7 +56,7 @@ Azure Active Directory B2C (Azure AD B2C) では、次のオプションがサ�
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Key | 値 |
+| Key | Value |
 | --- | ----- |
 | username | leadiocl@outlook.com |
 | password | Passxword1 |
@@ -105,7 +96,7 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Key | 値 |
+| Key | Value |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |

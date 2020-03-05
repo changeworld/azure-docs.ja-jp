@@ -3,12 +3,12 @@ title: Azure Red Hat OpenShift クラスターに Azure Monitor for containers �
 description: この記事では、Azure Red Hat OpenShift でホストされている Azure Monitor を使用して Kubernetes クラスターの監視を構成する方法を説明します。
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: 215835c04a1877ccdb6454c4c3902332b9dc1ab2
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: c2fd3568be2c51296bb1377e91031ebfb7ca6ee3
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190070"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250697"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Azure Red Hat OpenShift クラスターに Azure Monitor for containers を構成する
 
@@ -113,7 +113,7 @@ Azure PowerShell または CLI を使用して監視を有効にするには、�
 
     出力結果は、以下のようになります。
 
-    ```azurecli
+    ```output
     provisioningState       : Succeeded
     ```
 
@@ -197,7 +197,7 @@ Azure PowerShell または CLI を使用して監視を有効にするには、�
 
     出力結果は、以下のようになります。
 
-    ```azurecli
+    ```output
     provisioningState       : Succeeded
     ```
 

@@ -2,21 +2,21 @@
 title: 承認コード フロー - Azure Active Directory B2C | Microsoft Docs
 description: Azure AD B2C と OpenID Connect 認証プロトコルを使用して Web アプリをビルドする方法を説明します。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6ddfefb69e53ec4801d913e01b00158a4905d2df
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 8248ca0abb1d633786b09b894bcd6b1089ab2d8c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850462"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190077"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OAuth 2.0 承認コード フロー
 
@@ -54,12 +54,12 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 | パラメーター | 必須 | 説明 |
 | --- | --- | --- |
-|{tenant}| Required | Azure AD B2C テナントの名前。|
-| {policy} | Required | 実行するユーザー フロー。 Azure AD B2C テナントに作成したユーザー フローの名前を指定します。 例: `b2c_1_sign_in`、`b2c_1_sign_up`、または`b2c_1_edit_profile`。 |
-| client_id |Required |[Azure Portal](https://portal.azure.com) でアプリに割り当てられたアプリケーション ID。 |
-| response_type |Required |応答の種類。承認コード フローでは `code` を指定する必要があります。 |
-| redirect_uri |Required |アプリのリダイレクト URI。アプリは、この URI で認証応答を送受信します。 ポータルで登録したいずれかのリダイレクト URI と完全に一致させる必要があります (ただし、URL エンコードが必要)。 |
-| scope |Required |スコープのスペース区切りリスト。 1 つのスコープ値が、要求されている両方のアクセス許可を Azure Active Directory (Azure AD) に示します。 クライアント ID をスコープとして使用することは、同じクライアント ID で表される、独自のサービスまたは Web API に対して使用できるアクセス トークンをアプリが必要とすることを示します。  `offline_access` スコープは、アプリがリソースに長時間アクセスするには更新トークンが必要になることを示します。 Azure AD B2C に ID トークンを要求するために、`openid` スコープを使用することもできます。 |
+|{tenant}| 必須 | Azure AD B2C テナントの名前。|
+| {policy} | 必須 | 実行するユーザー フロー。 Azure AD B2C テナントに作成したユーザー フローの名前を指定します。 例: `b2c_1_sign_in`、`b2c_1_sign_up`、または`b2c_1_edit_profile`。 |
+| client_id |必須 |[Azure Portal](https://portal.azure.com) でアプリに割り当てられたアプリケーション ID。 |
+| response_type |必須 |応答の種類。承認コード フローでは `code` を指定する必要があります。 |
+| redirect_uri |必須 |アプリのリダイレクト URI。アプリは、この URI で認証応答を送受信します。 ポータルで登録したいずれかのリダイレクト URI と完全に一致させる必要があります (ただし、URL エンコードが必要)。 |
+| scope |必須 |スコープのスペース区切りリスト。 1 つのスコープ値が、要求されている両方のアクセス許可を Azure Active Directory (Azure AD) に示します。 クライアント ID をスコープとして使用することは、同じクライアント ID で表される、独自のサービスまたは Web API に対して使用できるアクセス トークンをアプリが必要とすることを示します。  `offline_access` スコープは、アプリがリソースに長時間アクセスするには更新トークンが必要になることを示します。 Azure AD B2C に ID トークンを要求するために、`openid` スコープを使用することもできます。 |
 | response_mode |推奨 |結果として得られた承認コードをアプリに返すときに使用するメソッド。 `query`、`form_post`、または `fragment` を指定できます。 |
 | state |推奨 |要求に含まれる値。使用したい任意の内容の文字列を指定できます。 通常、クロスサイト リクエスト フォージェリ攻撃を防ぐために、ランダムに生成された一意の値が使用されます。 この状態は、認証要求の前にアプリ内のユーザーの状態に関する情報をエンコードする目的にも使用されます。 たとえば、ユーザーが表示していたページや実行されていたユーザー フローがその対象です。 |
 | prompt |省略可能 |ユーザーとの必要な対話の種類。 現在、有効な値は `login` のみです。この場合ユーザーは要求時に、その資格情報を入力する必要があります。 シングル サインオンは作用しません。 |
@@ -112,14 +112,14 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 | パラメーター | 必須 | 説明 |
 | --- | --- | --- |
-|{tenant}| Required | Azure AD B2C テナントの名前。|
-|{policy}| Required| 認証コードの取得に使用されたユーザー フロー。 この要求に別のユーザー フローを使用することはできません。 |
-| client_id |Required |[Azure Portal](https://portal.azure.com) でアプリに割り当てられたアプリケーション ID。|
+|{tenant}| 必須 | Azure AD B2C テナントの名前。|
+|{policy}| 必須| 認証コードの取得に使用されたユーザー フロー。 この要求に別のユーザー フローを使用することはできません。 |
+| client_id |必須 |[Azure Portal](https://portal.azure.com) でアプリに割り当てられたアプリケーション ID。|
 | client_secret | はい (Web アプリの場合) | [Azure portal](https://portal.azure.com/) で生成されたアプリケーション シークレット。 クライアントが安全にクライアント シークレットを格納できる Web アプリのシナリオでは、このフローでクライアント シークレットが使用されます。 ネイティブ アプリ (パブリック クライアント) のシナリオでは、クライアント シークレットは安全に保存できないため、この呼び出しでは使用されません。 クライアント シークレットを使用する場合は、定期的に変更してください。 |
-| grant_type |Required |付与の種類。 承認コード フローでは、付与の種類には `authorization_code` を指定する必要があります。 |
+| grant_type |必須 |付与の種類。 承認コード フローでは、付与の種類には `authorization_code` を指定する必要があります。 |
 | scope |推奨 |スコープのスペース区切りリスト。 1 つのスコープ値が、要求されている両方のアクセス許可を Azure AD に示します。 クライアント ID をスコープとして使用することは、同じクライアント ID で表される、独自のサービスまたは Web API に対して使用できるアクセス トークンをアプリが必要とすることを示します。  `offline_access` スコープは、アプリがリソースに長時間アクセスするには更新トークンが必要になることを示します。  Azure AD B2C に ID トークンを要求するために、`openid` スコープを使用することもできます。 |
-| code |Required |フローの最初の段階で取得した承認コード。 |
-| redirect_uri |Required |承認コードを受け取った、アプリケーションのリダイレクト URI。 |
+| code |必須 |フローの最初の段階で取得した承認コード。 |
+| redirect_uri |必須 |承認コードを受け取った、アプリケーションのリダイレクト URI。 |
 
 正常なトークン応答は次のようになります。
 
@@ -178,14 +178,14 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
 
 | パラメーター | 必須 | 説明 |
 | --- | --- | --- |
-|{tenant}| Required | Azure AD B2C テナントの名前。|
-|{policy} |Required |元の更新トークンの取得に使用されたユーザー フロー。 この要求に別のユーザー フローを使用することはできません。 |
-| client_id |Required |[Azure Portal](https://portal.azure.com) でアプリに割り当てられたアプリケーション ID。 |
+|{tenant}| 必須 | Azure AD B2C テナントの名前。|
+|{policy} |必須 |元の更新トークンの取得に使用されたユーザー フロー。 この要求に別のユーザー フローを使用することはできません。 |
+| client_id |必須 |[Azure Portal](https://portal.azure.com) でアプリに割り当てられたアプリケーション ID。 |
 | client_secret | はい (Web アプリの場合) | [Azure portal](https://portal.azure.com/) で生成されたアプリケーション シークレット。 クライアントが安全にクライアント シークレットを格納できる Web アプリのシナリオでは、このフローでクライアント シークレットが使用されます。 ネイティブ アプリ (パブリック クライアント) のシナリオでは、クライアント シークレットは安全に保存できないため、この呼び出しでは使用されません。 クライアント シークレットを使用する場合は、定期的に変更してください。 |
-| grant_type |Required |付与の種類。 この段階の承認コード フローでは、付与の種類には `refresh_token` を指定する必要があります。 |
+| grant_type |必須 |付与の種類。 この段階の承認コード フローでは、付与の種類には `refresh_token` を指定する必要があります。 |
 | scope |推奨 |スコープのスペース区切りリスト。 1 つのスコープ値が、要求されている両方のアクセス許可を Azure AD に示します。 クライアント ID をスコープとして使用することは、同じクライアント ID で表される、独自のサービスまたは Web API に対して使用できるアクセス トークンをアプリが必要とすることを示します。  `offline_access` スコープは、アプリがリソースに長時間アクセスするには更新トークンが必要になることを示します。  Azure AD B2C に ID トークンを要求するために、`openid` スコープを使用することもできます。 |
 | redirect_uri |省略可能 |承認コードを受け取った、アプリケーションのリダイレクト URI。 |
-| refresh_token |Required |フローの第 2 段階で取得した元の更新トークン。 |
+| refresh_token |必須 |フローの第 2 段階で取得した元の更新トークン。 |
 
 正常なトークン応答は次のようになります。
 

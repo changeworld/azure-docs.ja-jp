@@ -1,19 +1,18 @@
 ---
 title: 管理ソリューションでの保存された検索条件 | Microsoft Docs
 description: 通常、管理ソリューションには、ソリューションによって収集されたデータを分析するための、保存されたログ クエリが含まれています。 この記事では、Log Analytics の保存された検索条件を Resource Manager テンプレートで定義する方法について説明します。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/29/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5ff9c45ffb636f53951a763f617c25a2e8c09088
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 61fc64e140af091b5ff3f631398daf901557791b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977717"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663030"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics の保存された検索条件とアラートを管理ソリューションに追加する (プレビュー)
 
@@ -122,7 +121,7 @@ Azure にアラートを拡張すると、アクションを Azure のアクシ�
 > [!NOTE]
 > スケジュール名は、特定のワークスペース内では一意である必要があります。2 つのスケジュールが同じ ID を持つことはできません。スケジュールに関連付けられている、保存した検索条件がそれぞれ異なるとしても同様です。 また、Log Analytics API で作成する、すべての保存した検索条件、スケジュール、およびアクションは、小文字にする必要があります。
 
-### <a name="actions"></a>アクション
+### <a name="actions"></a>Actions
 スケジュールでは複数のアクションを使用できます。 アクションでは、メールの送信や Runbook の開始など、実行する 1 つ以上のプロセスを定義するか、または検索結果が条件に一致するためのしきい値を定義できます。 一部のアクションはそれらの両方を定義し、しきい値に達したときにプロセスが実行されます。
 アクションは、アクション グループ リソースまたはアクション リソースを使って定義できます。
 

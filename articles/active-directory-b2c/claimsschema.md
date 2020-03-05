@@ -2,20 +2,20 @@
 title: ClaimsSchema  - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C でカスタム ポリシーの ClaimsSchema 要素を指定します。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/24/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2861b882d9b4c00a1c4db87b2dd49d49dfeb53a6
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: b997e15b4e987b7a18890606326f52a82cb15212
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77581108"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189926"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -64,7 +64,7 @@ PredicateValidationReference| 0:1 | **PredicateValidationsInput**要素への参
 **DataType** 要素は次の値をサポートします。
 
 | Type | 説明 |
-| ------- | ----------- | 
+| ------- | ----------- |
 |boolean|ブール値 (`true` または `false`) を表します。|
 |date| 特定の時点を表します。通常は日付で表されます。 date の値は ISO 8601 規則に準拠します。|
 |dateTime|特定の時点を表します。通常、日時形式で表されます。 date の値は ISO 8601 規則に準拠します。|

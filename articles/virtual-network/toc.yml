@@ -356,6 +356,34 @@
           href: move-across-regions-publicip-portal.md
         - name: パブリック IP - PowerShell
           href: move-across-regions-publicip-powershell.md
+    - name: トラブルシューティング
+      items:
+        - name: 仮想ネットワーク ピアリングの問題をトラブルシューティングする
+          href: virtual-network-troubleshoot-peering-issues.md
+        - name: VNet または VPN 接続の構成および検証
+          href: virtual-network-configure-vnet-connections.md
+        - name: ネットワーク セキュリティ グループ
+          href: diagnose-network-traffic-filter-problem.md
+        - name: ルート
+          href: diagnose-network-routing-problem.md
+        - name: スループットのテスト
+          href: virtual-network-bandwidth-testing.md
+        - name: VM ネットワークの待ち時間のテスト
+          href: virtual-network-test-latency.md
+        - name: 仮想ネットワークを削除できない
+          href: virtual-network-troubleshoot-cannot-delete-vnet.md
+        - name: VM 間の接続に関する問題
+          href: virtual-network-troubleshoot-connectivity-problem-between-vms.md
+        - name: SMTP バナー チェック用の PTR の構成
+          href: create-ptr-for-smtp-service.md
+        - name: 仮想アプライアンスに関するトラブルシューティングのチェックリスト
+          href: virtual-network-troubleshoot-nva.md
+        - name: 送信 SMTP 接続のトラブルシューティング
+          href: troubleshoot-outbound-smtp-connectivity.md
+        - name: IP アドレス 168.63.129.16 について
+          href: what-is-ip-address-168-63-129-16.md
+        - name: Azure VM の接続に関する問題のトラブルシューティング
+          href: troubleshoot-vm-connectivity.md
     - name: 従来のデプロイ
       href: 'https://docs.microsoft.com/previous-versions/azure/virtual-network/create-virtual-network-classic'
 - name: リファレンス

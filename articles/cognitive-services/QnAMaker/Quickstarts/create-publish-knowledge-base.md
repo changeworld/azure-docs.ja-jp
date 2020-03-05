@@ -3,12 +3,12 @@ title: クイック スタート:ナレッジ ベースの作成、トレーニ�
 description: QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マニュアルなど、独自のコンテンツから作成できます。 この記事には、単純な FAQ Web ページから QnA Maker ナレッジ ベースを作成して、QnA Maker に関する質問に答える例が含まれています。
 ms.topic: quickstart
 ms.date: 02/08/2020
-ms.openlocfilehash: a4c4d9b2e8f4b816510fb35a75b3c9b8b2afa5e2
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: fd4e6a4c4288caaf714f4bfc15282b6c4b1e1111
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108733"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299093"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>クイック スタート:QnA Maker ナレッジ ベースの作成、トレーニング、発行
 
@@ -42,7 +42,7 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
 
     |設定|Value|
     |--|--|
-    |**[Enable multi-turn extraction from URLs, .pdf or .docx files]\(URL、.pdf、または .docx ファイルからの複数ターンの抽出を有効にする\)**|オン|
+    |**Enable multi-turn extraction from URLs, .pdf or .docx files (URL、.pdf、または .docx ファイルからの複数ターンの抽出を有効にする)**|オン|
     |**Default answer text (既定の回答テキスト)**| `Quickstart - default answer not found.`|
     |**+ Add URL (+ URL の追加)**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
     |**Chit-chat (おしゃべり)**|**[Professional]\(専門家\)** を選択します|
@@ -154,6 +154,5 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
 
 * [回答でのマークダウン形式](../reference-markdown-format.md)
 * QnA Maker の[データ ソース](../concepts/knowledge-base.md)。
-* [ボット リソースの構成設定](../tutorials/create-qna-bot.md)。
 
 

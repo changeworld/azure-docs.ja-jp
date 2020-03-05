@@ -1,18 +1,17 @@
 ---
 title: Windows コンピューターを Azure Monitor に接続する | Microsoft Docs
 description: この記事では、Windows 用 Log Analytics エージェントを使用して、他のクラウドやオンプレミス内にホストされている Windows コンピューターを Azure Monitor に接続する方法について説明します。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 8918c18c9356c583b9ea23138f0d0a0fb4dcd845
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 21efb16cf519d4bcad520af1c7d8818f36a77218
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689989"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668640"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows コンピューターを Azure Monitor に接続する
 
@@ -93,7 +92,7 @@ Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2
 
 次の表は、エージェントのセットアップ (Automation DSC を使用してデプロイする場合を含む) でサポートされる、特定パラメーターを示したものです。
 
-|MMA 固有のオプション                   |メモ         |
+|MMA 固有のオプション                   |Notes         |
 |---------------------------------------|--------------|
 | NOAPM=1                               | 省略可能なパラメーター。 .NET アプリケーション パフォーマンス監視なしでエージェントをインストールします。|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = ワークスペースに報告するようにエージェントを構成します                |

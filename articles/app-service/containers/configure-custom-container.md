@@ -1,14 +1,14 @@
 ---
 title: カスタム Linux コンテナーの構成
-description: Azure App Service のカスタム Linux コンテナーを構成する方法を学びます この記事では、最も一般的な構成タスクについて説明します。
+description: Azure App Service のカスタム Linux コンテナーを構成する方法を学びます この記事では、最も一般的な構成タスクを紹介しています。
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: d9d6311e69ba4e3893da81a16b06c8baed78cdcd
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 6baa1fbd4932aa83a54081ff166dcae7f258fff9
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671880"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255882"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Azure App Service のカスタム Linux コンテナーを構成する
 
@@ -18,7 +18,7 @@ ms.locfileid: "74671880"
 
 ## <a name="configure-port-number"></a>ポート番号を構成する
 
-カスタム イメージの Web サーバーは、80 以外のポートを使用できます。 カスタム コンテナーによって利用されるポートを Azure に指示するには、`WEBSITES_PORT` アプリ設定を使用します。 [このチュートリアルに含まれる Python サンプル](https://github.com/Azure-Samples/docker-django-webapp-linux)の GitHub ページは、`WEBSITES_PORT` を _8000_ に設定する必要があることを示しています。 Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを実行することにより設定できます。 例:
+カスタム イメージの Web サーバーは、80 以外のポートを使用できます。 カスタム コンテナーによって利用されるポートを Azure に指示するには、`WEBSITES_PORT` アプリ設定を使用します。 [このチュートリアルに含まれる Python サンプル](https://github.com/Azure-Samples/docker-django-webapp-linux)の GitHub ページは、`WEBSITES_PORT` を _8000_ に設定する必要があることを示しています。 Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを実行することにより設定できます。 次に例を示します。
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_PORT=8000
@@ -26,7 +26,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="configure-environment-variables"></a>環境変数を構成する
 
-カスタム コンテナーには、外部で指定する必要がある環境変数を使用できます。 Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを実行することによりこれらを渡すことができます。 例:
+カスタム コンテナーには、外部で指定する必要がある環境変数を使用できます。 Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを実行することによりこれらを渡すことができます。 次に例を示します。
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WORDPRESS_DB_HOST="myownserver.mysql.database.azure.com"
@@ -40,7 +40,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 永続的ストレージが無効になると、`/home` ディレクトリへの書き込みは、アプリの再起動後、または複数のインスタンス間で保持されません。 唯一の例外は `/home/LogFiles` ディレクトリであり、これは Docker およびコンテナーのログを格納するために使用されます。 永続的ストレージが有効になると、`/home` ディレクトリへのすべての書き込みは存続し、スケールアウトされたアプリのすべてのインスタンスからアクセスできます。
 
-既定では、永続的ストレージが*有効*になり、設定はアプリケーション設定では公開されません。 これを無効にするには、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを実行することにより `WEBSITES_ENABLE_APP_SERVICE_STORAGE` アプリ設定を指定します。 例:
+既定では、永続的ストレージが*有効*になり、設定はアプリケーション設定では公開されません。 これを無効にするには、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを実行することにより `WEBSITES_ENABLE_APP_SERVICE_STORAGE` アプリ設定を指定します。 次に例を示します。
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=false
@@ -112,7 +112,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 *docker-compose.yml* ファイルで、`volumes` オプションを `${WEBAPP_STORAGE_HOME}` にマップします。 
 
-`WEBAPP_STORAGE_HOME` は、アプリの永続的なストレージにマップされる App Service の環境変数です。 例:
+`WEBAPP_STORAGE_HOME` は、アプリの永続的なストレージにマップされる App Service の環境変数です。 次に例を示します。
 
 ```yaml
 wordpress:
@@ -160,7 +160,9 @@ wordpress:
 
 VNet 統合でカスタム コンテナーを使用する場合は、追加のコンテナー構成が必要になることがあります。 「[アプリを Azure 仮想ネットワークに統合する](../web-sites-integrate-with-vnet.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+[!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [チュートリアル:プライベート コンテナー リポジトリからデプロイする](tutorial-custom-docker-image.md)

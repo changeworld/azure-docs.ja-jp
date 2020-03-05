@@ -3,12 +3,12 @@ title: MABS で Hyper-V 仮想マシンをバックアップする
 description: この記事では、Microsoft Azure Backup Server (MABS) を使用した仮想マシンのバックアップと回復の手順について説明します。
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: e23a3a5ad57e07f95958d8a21e091d663a5c1185
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 00d1dd04522c51e4d68450a7b8f25d7159d63724
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586514"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255059"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Azure Backup Server を使用して Hyper-V 仮想マシンをバックアップする
 
@@ -171,7 +171,7 @@ MABS で Hyper-V 仮想マシンをバックアップするための前提条件
 
 1. SQL Server Management Studio を開き、MABS データベースをホストするインスタンスに接続します。
 
-2. クエリ `select * from tbl_SCH_ScheduleDefinition where JobDefinitionID='9B30D213-B836-4B9E-97C2-DB03C3EB39D7'` を実行します。 このクエリで **ScheduleID** が返されます。 次の手順で使用するので、この ID をメモします。
+2. クエリ `SELECT SCH.ScheduleId FROM tbl_JM_JobDefinition JD JOIN tbl_SCH_ScheduleDefinition SCH ON JD.JobDefinitionId = SCH.JobDefinitionId WHERE JD.Type = '282faac6-e3cb-4015-8c6d-4276fcca11d4' AND JD.IsDeleted = 0 AND SCH.IsDeleted = 0` を実行します。 このクエリで **ScheduleID** が返されます。 次の手順で使用するので、この ID をメモします。
 
 3. SQL Server Management Studio で **[SQL Server エージェント]** を展開し、次に **[ジョブ]** を展開します。 メモした **[ScheduleID]** を右クリックし、 **[ステップでジョブを開始]** を選択します。
 

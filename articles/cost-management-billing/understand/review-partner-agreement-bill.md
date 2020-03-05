@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: dd0d53fb89df5372d3974b85cdb659f6cfbbedd8
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 61d47c2f308555265ccabad4d7456026ee9a639c
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199094"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299314"
 ---
 # <a name="tutorial-review-your-microsoft-partner-agreement-invoice"></a>チュートリアル:Microsoft Partner Agreement の請求書を確認する
 
@@ -38,7 +38,7 @@ Azure にサブスクライブした日から 30 日以上経過している必�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-- Azure Portal ( https://portal.azure.com ) にサインインします。
+- Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft 顧客契約にアクセスできるかどうかを確認する
 

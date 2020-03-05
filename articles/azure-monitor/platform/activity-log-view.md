@@ -3,17 +3,16 @@ title: Azure Monitor で Azure アクティビティ ログ イベントを表�
 description: Azure Monitor で Azure アクティビティ ログを表示し、PowerShell、CLI、および REST API を使用して取得します。
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 46d26aa5dccd32438b2028e21eaa94f7993944d1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 9df7593a9fd191d3a734fba5e81fb1aecba08345
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749522"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668827"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>Azure アクティビティ ログ イベントを表示して取得する
 
@@ -34,7 +33,7 @@ ms.locfileid: "75749522"
 * **[リソースの種類]** :リソースの種類 (_Microsoft.Compute/virtualmachines_ など)。
 * **[操作名]** - Azure Resource Manager 操作の名前 (_Microsoft.SQL/servers/Write_ など)。
 * **[重大度]** :イベントの重大度レベル。 使用可能な値は、_Informational_、_Warning_、_Error_、_Critical_ です。
-* **[イベント開始者]** : 操作を実行したユーザー。
+* **イベント開始者**: 操作を実行したユーザー。
 * **[検索を開く]** :すべてのイベントのすべてのフィールド全体で、その文字列を検索するテキスト検索ボックスを開きます。
 
 ## <a name="categories-in-the-activity-log"></a>アクティビティ ログのカテゴリ

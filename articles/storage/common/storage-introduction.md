@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ddd4f45e88c0bcc63fb62cc816fae4dbad255841
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 602f5a794f90e52ac80ea71ea2ed3656a7e0e5e7
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157586"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269473"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure Storage の概要
 
@@ -141,7 +141,7 @@ Azure Storage のリソースは、HTTP/HTTPS 要求が可能な任意の言語�
 - [Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/)
 - [.NET 用 Azure Storage クライアント ライブラリ](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
 - [Java/Android 用 Azure Storage クライアント ライブラリ](https://docs.microsoft.com/java/api/overview/azure/storage)
-- [Node.js 用 Azure Storage クライアント ライブラリ](https://docs.microsoft.com/javascript/api/overview/azure/storage)
+- [Node.js 用 Azure Storage クライアント ライブラリ](https://docs.microsoft.com/javascript/api/overview/azure/storage-overview)
 - [Python 用 Azure Storage クライアント ライブラリ](https://github.com/Azure/azure-storage-python)
 - [PHP 用 Azure Storage クライアント ライブラリ](https://github.com/Azure/azure-storage-php)
 - [Ruby 用 Azure Storage クライアント ライブラリ](https://github.com/Azure/azure-storage-ruby)

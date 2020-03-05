@@ -1,18 +1,17 @@
 ---
 title: Azure Log Analytics の Alert Management ソリューション | Microsoft Docs
 description: 管理対象となる環境内のすべてのアラートは、Log Analytics のアラート管理ソリューションを使用して分析できます。  これは Log Analytics 内で生成されたアラートの統合に加えて、接続されている System Center Operations Manager 管理グループからのアラートを Log Analytics にインポートします。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
-ms.openlocfilehash: fe484d8b5a06946b844acb5e506ec4dcc99ebc23
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 48a825f31a1c5f2eab2fbb71b6f030b8acb5617d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932726"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668385"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics の Alert Management ソリューション
 
@@ -42,7 +41,7 @@ System Center Operations Manager 管理グループが Log Analytics ワーク�
 
 ソリューション管理パックの更新方法の詳細については、「 [Operations Manager を Log Analytics に接続する](../../azure-monitor/platform/om-agents.md)」を参照してください。
 
-## <a name="data-collection"></a>データ収集
+## <a name="data-collection"></a>データ コレクション
 ### <a name="agents"></a>エージェント
 次の表は、このソリューションの接続先としてサポートされているソースとその説明です。
 
@@ -119,5 +118,5 @@ Log Analytics ワークスペースに Alert Management ソリューションを
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Log Analytics におけるアラートの生成について詳しくは、 [Log Analytics のアラート](../../azure-monitor/platform/alerts-overview.md) に関するページを参照してください。

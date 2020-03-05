@@ -3,20 +3,20 @@ title: クライアント証明書を使用して RESTful サービスをセキ�
 titleSuffix: Azure AD B2C
 description: クライアント証明書を使用して Azure AD B2C でのカスタム REST API 要求交換をセキュリティで保護する
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/25/2017
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b6f4c24bb5587ca67fd2de0d8aad2c6f5218a41b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 98606443707c183a15a4bacd26646c3eac6c8a69
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850946"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186915"
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>クライアント証明書を使用して RESTful サービスをセキュリティで保護する
 
@@ -67,7 +67,7 @@ ms.locfileid: "76850946"
 
     ![Azure portal の [キーの作成] ページでポリシー キーをアップロードする](./media/secure-rest-api-dotnet-certificate-auth/rest-api-netfw-secure-client-cert-upload.png)
 
-7. **作成** を選択します。
+7. **［作成］** を選択します
 
 8. テナント内で利用できるキーを表示して、作成したキー `B2C_1A_B2cRestClientCertificate` を確認するには、 **[ポリシー キー]** を選択します。
 

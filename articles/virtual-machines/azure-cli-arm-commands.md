@@ -8,18 +8,18 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 899f453ef67fd094578e946c1cdd9ca4d427bf79
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: ad213cc02f707609a837ea66b79e51c6f2a617f8
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122456"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919772"
 ---
 # <a name="azure-classic-cli-commands"></a>Azure クラシック CLI コマンド 
 
-> [!IMPORTANT]
-> このトピックでは、Azure クラシック CLI のインストール方法について説明します。 クラシック CLI は非推奨です。クラシック デプロイ モデルでのみ使用してください。
-> その他すべてのデプロイについては、[Azure CLI](https://docs.microsoft.com/cli/azure/) を使用してください。
+[!INCLUDE [classic-vm-deprecation](../../includes/classic-vm-deprecation.md)]
+
+このトピックでは、Azure クラシック CLI のインストール方法について説明します。 クラシック CLI は非推奨です。クラシック デプロイ モデルでのみ使用してください。 その他すべてのデプロイについては、[Azure CLI](https://docs.microsoft.com/cli/azure/) を使用してください。
 
 この記事では、Azure リソースの作成と管理に一般的に使用される Azure クラシック コマンド ライン インターフェイス (CLI) コマンドの構文とオプションを説明します。 これは完全な参照資料ではありません。ご使用の CLI バージョンで異なるコマンドやパラメーターが表示される場合もあります。 
 

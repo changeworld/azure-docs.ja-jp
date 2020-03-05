@@ -1,25 +1,24 @@
 ---
 title: Azure Monitor ログ クエリ | Microsoft Docs
 description: Azure Monitor でログ クエリを記述する方法について説明しているリソースへの参照。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2019
-ms.openlocfilehash: 7c6530416f0eb6b822b6f5f3eb53f59aeae05d53
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: fc943ac3cf82d22a58d0ba3390ad8d9bbee6a4c9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894348"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669389"
 ---
 # <a name="azure-monitor-log-queries"></a>Azure Monitor ログ クエリ
 Azure Monitor ログは、Azure Data Explorer 上に構築されており、Azure Monitor ログ クエリでは、同じ Kusto クエリ言語のバージョンが使用されます。 [Kusto クエリ言語のドキュメント](/azure/kusto/query)には言語に関するすべての詳細が記載されているため、Azure Monitor ログ クエリを記述するためのプライマリ リソースとなります。 このページでは、クエリの記述方法を学習するためのその他のリソースへのリンクと、言語による Azure Monitor の実装の違いに関する情報へのリンクを示します。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 - 「[Azure Monitor Log Analytics の使用を開始する](get-started-portal.md)」は、Azure portal でのクエリの作成と結果の操作に関するレッスンです。
 - 「[Get started with Azure Monitor log queries (Azure Monitor ログ クエリの開始)](get-started-queries.md)」は、Azure Monitor ログ データを使用するクエリの記述に関するレッスンです。
@@ -57,6 +56,6 @@ Azure Monitor ログは、Azure Data Explorer 上に構築されており、Azur
 -  [SQL と Azure Monitor ログ クエリ](sql-cheatsheet.md)に関する記事は、SQL を使い慣れているユーザーにとって役立ちます。
 -  [Splunk と Azure Monitor ログ クエリ](splunk-cheatsheet.md)に関する記事は、Splunk を使い慣れているユーザーに役立ちます。
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 完全な [Kusto クエリ言語のリファレンス ドキュメント](/azure/kusto/query/)にアクセスします。

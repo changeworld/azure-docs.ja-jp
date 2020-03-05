@@ -1,19 +1,18 @@
 ---
 title: Azure Monitor リソース グループの分析情報 | Microsoft Docs
 description: Azure Monitor によるリソース グループ レベルで分散アプリケーションとサービスの正常性とパフォーマンスの概要
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: fba94a5e723bfbc2719b3b4cf5cd130eda382276
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 6d97e40bf2bf2298fb53609621db8ff2c6f1038f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553979"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663540"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Azure Monitor でリソース グループを監視する (プレビュー)
 
@@ -116,7 +115,7 @@ Azure Monitor for Resource Groups は、Azure Monitor Alerts Management シス�
 * サブスクリプション内の任意のリソース グループに対して Azure Monitor for Resource Groups を開く。
 * サブスクリプションに移動して、 **[リソース プロバイダー]** をクリックしてから、 **[Register for Alerts.Management]\(Alerts.Management への登録\)** をクリックする。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Monitor ブック](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
 - [Azure Resource Health](https://docs.microsoft.com/azure/service-health/resource-health-overview)

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 4c29658473aaa50168175c76234dfca34fcdad83
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 4a695957c287e69ff6b40e5a01254a729eaae441
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77594146"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273005"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Istio によりインテリジェントなルーティングとカナリア リリースを使用する
 
@@ -68,25 +68,25 @@ cd aks-voting-app/scenarios/intelligent-routing-with-istio
 
 最初に、次のようにして、サンプルの AKS 投票アプリ用の名前空間を `voting` という名前で、自分の AKS クラスターに作成します。
 
-```azurecli
+```console
 kubectl create namespace voting
 ```
 
 その名前空間に `istio-injection=enabled` というラベルを付けます。 このラベルにより、この名前空間のすべてのポッドにサイドカーとして Istio プロキシを自動的に挿入するよう、Istio に指示します。
 
-```azurecli
+```console
 kubectl label namespace voting istio-injection=enabled
 ```
 
 次に、AKS 投票アプリ用のコンポーネントを作成しましょう。 これらのコンポーネントを、前の手順で作成した `voting` 名前空間内に作成します。
 
-```azurecli
+```console
 kubectl apply -f kubernetes/step-1-create-voting-app.yaml --namespace voting
 ```
 
 次の出力例は、リソースが作成されたことを示しています。
 
-```console
+```output
 deployment.apps/voting-storage-1-0 created
 service/voting-storage created
 deployment.apps/voting-analytics-1-0 created
@@ -100,13 +100,13 @@ service/voting-app created
 
 作成されたポッドを確認するには、次のように [kubectl get pods][kubectl-get] コマンドを使用します。
 
-```azurecli
+```console
 kubectl get pods -n voting --show-labels
 ```
 
 次の出力例は、`voting-app` ポッドには 3 つのインスタンスがあり、`voting-analytics` ポッドと `voting-storage` ポッドにはどちらも 1 つのインスタンスがあることを示しています。 各ポッドには 2 つのコンテナーがあります。 これらのコンテナーの 1 つがコンポーネントであり、もう 1 つが `istio-proxy` です。
 
-```console
+```output
 NAME                                    READY     STATUS    RESTARTS   AGE   LABELS
 voting-analytics-1-0-57c7fccb44-ng7dl   2/2       Running   0          39s   app=voting-analytics,pod-template-hash=57c7fccb44,version=1.0
 voting-app-1-0-956756fd-d5w7z           2/2       Running   0          39s   app=voting-app,pod-template-hash=956756fd,version=1.0
@@ -144,26 +144,26 @@ Istio [ゲートウェイ][istio-reference-gateway]および[仮想サービス]
 
 `kubectl apply` コマンドを使用して、ゲートウェイと仮想サービス yaml をデプロイします。 これらのリソースがデプロイされる名前空間を必ず指定してください。
 
-```azurecli
+```console
 kubectl apply -f istio/step-1-create-voting-app-gateway.yaml --namespace voting
 ```
 
 次の出力例は、新しいゲートウェイと仮想サービスが作成されたことを示しています。
 
-```console
+```output
 virtualservice.networking.istio.io/voting-app created
 gateway.networking.istio.io/voting-app-gateway created
 ```
 
 次のコマンドを使用して、Istio イングレス ゲートウェイの IP アドレスを取得します。
 
-```azurecli
+```output
 kubectl get service istio-ingressgateway --namespace istio-system -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
 ```
 
 次の出力例では、イングレス ゲートウェイの IP アドレスが示されています。
 
-```
+```output
 20.188.211.19
 ```
 
@@ -183,13 +183,13 @@ kubectl get service istio-ingressgateway --namespace istio-system -o jsonpath='{
 
 `voting-analytics` コンポーネントのバージョン `1.1` をデプロイしましょう。 `voting` 名前空間にこのコンポーネントを作成します。
 
-```azurecli
+```console
 kubectl apply -f kubernetes/step-2-update-voting-analytics-to-1.1.yaml --namespace voting
 ```
 
 次の出力例は、リソースが作成されたことを示しています。
 
-```console
+```output
 deployment.apps/voting-analytics-1-1 created
 ```
 
@@ -223,7 +223,7 @@ deployment.apps/voting-analytics-1-1 created
 
 次の出力例では、バージョン間のサイト切り替えとして返される Web サイトの関連部分を示します。
 
-```console
+```output
   <div id="results"> Cats: 2 | Dogs: 4 </div>
   <div id="results"> Cats: 2 | Dogs: 4 </div>
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
@@ -244,13 +244,13 @@ deployment.apps/voting-analytics-1-1 created
 * ポリシーでは `peers.mtls.mode` を `STRICT` に設定して、`voting` 名前空間内のサービス間で相互 TLS が確実に実行されるようにします。
 * さらに、すべての宛先ルールで `trafficPolicy.tls.mode` を `ISTIO_MUTUAL` に設定します。 Istio では、強力な ID を持つサービスが提供され、Istio によって透過的に管理される相互 TLS とクライアント証明書を使用してサービス間の通信がセキュリティ保護されます。
 
-```azurecli
+```console
 kubectl apply -f istio/step-2-update-and-add-routing-for-all-components.yaml --namespace voting
 ```
 
 次の出力例は、新しいポリシー、宛先ルール、および仮想サービスが更新/作成されたことを示しています。
 
-```console
+```output
 virtualservice.networking.istio.io/voting-app configured
 policy.authentication.istio.io/default created
 destinationrule.networking.istio.io/voting-app created
@@ -286,7 +286,7 @@ virtualservice.networking.istio.io/voting-storage created
 
 次の出力例では、返される Web サイトの関連する部分を示します。
 
-```console
+```output
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
@@ -322,7 +322,7 @@ istioctl authn tls-check <pod-name[.namespace]> [<service>]
 
 次の出力例は、上記の各クエリで相互 TLS が実行されていることを示しています。 この出力では、相互 TLS を実行するポリシーと宛先ルールも示されています。
 
-```console
+```output
 # mTLS configuration between istio ingress pods and the voting-app service
 HOST:PORT                                    STATUS     SERVER     CLIENT     AUTHN POLICY       DESTINATION RULE
 voting-app.voting.svc.cluster.local:8080     OK         mTLS       mTLS       default/voting     voting-app/voting
@@ -364,13 +364,13 @@ voting-storage.voting.svc.cluster.local:6379     OK         mTLS       mTLS     
 
 最初に、これらの新しいコンポーネントに対応するように Istio の宛先ルールと仮想サービスを更新します。 これらの更新では、新しいコンポーネントに間違ってトラフィックがルーティングされないこと、予期せずユーザーにアクセス権が与えられないことが保証されます。
 
-```azurecli
+```console
 kubectl apply -f istio/step-3-add-routing-for-2.0-components.yaml --namespace voting
 ```
 
 次の出力例は、宛先ルールと仮想サービスが更新されたことを示しています。
 
-```console
+```output
 destinationrule.networking.istio.io/voting-app configured
 virtualservice.networking.istio.io/voting-app configured
 destinationrule.networking.istio.io/voting-analytics configured
@@ -381,13 +381,13 @@ virtualservice.networking.istio.io/voting-storage configured
 
 次に、各コンポーネントの新しいバージョン `2.0` 用の Kubernetes オブジェクトを追加しましょう。 `voting-storage` サービスも、MySQL 用のポート `3306` を含むように更新します。
 
-```azurecli
+```console
 kubectl apply -f kubernetes/step-3-update-voting-app-with-new-storage.yaml --namespace voting
 ```
 
 次の出力例では、Kubernetes オブジェクトが正常に更新または作成されたことが示されています。
 
-```console
+```output
 service/voting-storage configured
 secret/voting-storage-secret created
 deployment.apps/voting-storage-2-0 created
@@ -398,7 +398,7 @@ deployment.apps/voting-app-2-0 created
 
 バージョン `2.0` のすべてのポッドが実行されるまで待ちます。 `-w` 監視スイッチを指定して [kubectl get pods][kubectl-get] コマンドを使用し、`voting` 名前空間内のすべてのポッドでの変更を監視します。
 
-```azurecli
+```console
 kubectl get pods --namespace voting -w
 ```
 
@@ -428,13 +428,13 @@ AKS 投票アプリの新しいバージョンを正常にロールアウトで�
 
 次のように、`voting` 名前空間を削除することで、このシナリオで使用した AKS 投票アプリを自分の AKS クラスターから削除できます。
 
-```azurecli
+```console
 kubectl delete namespace voting
 ```
 
 次の出力例は、AKS 投票アプリのすべてのコンポーネントが自分の AKS クラスターから削除されたことを示しています。
 
-```console
+```output
 namespace "voting" deleted
 ```
 

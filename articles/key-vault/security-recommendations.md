@@ -5,16 +5,17 @@ services: key-vault
 author: barclayn
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: barclayn
 ms.custom: security-recommendations
-ms.openlocfilehash: 5aa3ebc602396bc2d7f83150c66535039b1389e6
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 9fd41ae9b61a9c74fd5d99dd71199cfde06f5cb2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73171332"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192372"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>Azure Key Vault のセキュリティに関する推奨事項
 
@@ -51,6 +52,6 @@ ms.locfileid: "73171332"
 |-|----|--|
 |ネットワークの露出を制限する | ネットワークのアクセスは、コンテナーのアクセスを必要とするソリューションで使用される仮想ネットワークに制限される必要があります。 「[Azure Key Vault の仮想ネットワーク サービス エンドポイント](key-vault-overview-vnet-service-endpoints.md)」の情報を確認してください | - |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 アプリケーション プロバイダーに追加のセキュリティ要件があるかどうかを確認する。 セキュリティで保護されたアプリケーションの開発の詳細については、[セキュリティで保護された開発に関するドキュメント](../security/fundamentals/abstract-develop-secure-apps.md)を参照してください。

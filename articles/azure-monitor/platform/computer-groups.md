@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor ログ クエリでのコンピューター グループ | Microsoft Docs
 description: Azure Monitor では、コンピューター グループを使用して、ログ クエリの範囲を特定のコンピューターのセットに限定することができます。  この記事では、コンピューター グループを作成する各種の方法とそれらをログ クエリで使用する方法について説明します。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
-ms.openlocfilehash: eedf04a2168c67449f97d8e462d4ff82653a22b3
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: a005b6cec811b8a584123dc4c8abab77766961e0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513705"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655339"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリでのコンピューター グループ
 Azure Monitor では、コンピューター グループを使用して、[ログ クエリ](../log-query/log-query-overview.md)の範囲を特定のコンピューターのセットに限定することができます。  それぞれのグループには、自分で定義したクエリを使用するか、さまざまなソースからグループをインポートすることでコンピューターを追加します。  そのグループをログ クエリに含めると、対応するグループ内のコンピューターと一致するレコードに検索結果が限定されます。
@@ -22,7 +21,7 @@ Azure Monitor では、コンピューター グループを使用して、[ロ�
 ## <a name="creating-a-computer-group"></a>コンピューター グループの作成
 Azure Monitor のコンピューター グループは、以下の表に示した方法のいずれかで作成できます。  それぞれの方法について、以降のセクションで詳しく説明します。 
 
-| 方法 | 説明 |
+| Method | 説明 |
 |:--- |:--- |
 | Log query |コンピューターの一覧を返すログ クエリを作成します。 |
 | Log Search API |ログ クエリの結果に基づいてプログラムからコンピューター グループを作成するには、Log Search API を使用します。 |
@@ -49,7 +48,7 @@ Azure Portal でログ検索からコンピューター グループを作成す
 
 | プロパティ | 説明 |
 |:---|:---|
-| Name   | ポータルに表示するクエリの名前。 |
+| 名前   | ポータルに表示するクエリの名前。 |
 | 関数のエイリアス | クエリ内でコンピューター グループを識別するのに使用される一意のエイリアス。 |
 | カテゴリ       | ポータル内でクエリを整理するためのカテゴリ。 |
 

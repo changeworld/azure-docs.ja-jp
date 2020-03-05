@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: bd93773e4d3c5e06bca752612dac6c563a2f5da1
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 2a99f85cf861c0c36ffac136cdf1f792b40719b2
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383488"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78262561"
 ---
 ### <a name="deploy-the-sentiment-analysis-container-to-an-aks-cluster"></a>感情分析コンテナーを AKS クラスターにデプロイする
 
@@ -44,7 +44,7 @@ ms.locfileid: "74383488"
 
 1. 任意のテキスト エディターを開きます。 この例では、Visual Studio Code を使います。
 
-    ```azurecli
+    ```console
     code .
     ```
 
@@ -103,7 +103,7 @@ ms.locfileid: "74383488"
 
     コマンドによってデプロイ構成が正常に適用された後、次の出力のようなメッセージが表示されます。
 
-    ```console
+    ```output
     deployment.apps "sentiment" created
     service "sentiment" created
     ```
@@ -115,7 +115,7 @@ ms.locfileid: "74383488"
 
     ポッドの実行状態の出力:
 
-    ```console
+    ```output
     NAME                         READY     STATUS    RESTARTS   AGE
     sentiment-5c9ccdf575-mf6k5   1/1       Running   0          1m
     ```
@@ -128,7 +128,7 @@ ms.locfileid: "74383488"
 
     ポッドの "*センチメント*" サービスの実行状態の出力:
 
-    ```console
+    ```output
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE
     kubernetes   ClusterIP      10.0.0.1      <none>           443/TCP          2m
     sentiment    LoadBalancer   10.0.100.64   168.61.156.180   5000:31234/TCP   2m

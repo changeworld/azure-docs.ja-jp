@@ -1,18 +1,14 @@
 ---
 title: Azure Application Insights による OpenCensus Go のトレース | Microsoft Docs
 description: OpenCensus Go のトレースをローカル フォワーダーおよび Application Insights と統合する手順について説明します。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/15/2018
-ms.openlocfilehash: ef67801fee574ae43d83af650d6b715e12426c7e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ddb8dfbf14f2c75e4d16693076e56a711d8861ad
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432559"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669983"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>Go から分散トレースを収集する (プレビュー)
 
@@ -28,7 +24,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure portal](https://portal.azure.com/) にサインインする
+[Azure portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="create-application-insights-resource"></a>Application Insights リソースを作成する
 
@@ -43,11 +39,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    構成ボックスが表示されたら、次の表を使用して入力フィールドに入力します。
 
-   | 設定        | 値           | 説明  |
+   | 設定        | Value           | 説明  |
    | ------------- |:-------------|:-----|
-   | **Name**      | グローバルに一意の値 | 監視しているアプリを識別する名前 |
+   | **名前**      | グローバルに一意の値 | 監視しているアプリを識別する名前 |
    | **リソース グループ**     | myResourceGroup      | App Insights データをホストする新しいリソース グループの名前 |
-   | **Location** | East US | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
+   | **場所** | 米国東部 | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
 
 2. **Create** をクリックしてください。
 

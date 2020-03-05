@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor ビューのフィルター | Microsoft Docs
 description: Azure Monitor ビューのフィルターを使用すると、ユーザーはビュー自体を変更せずに、特定のプロパティの値によってビュー内のデータをフィルター処理することができます。  この記事では、フィルターの使用方法およびカスタム ビューへの追加方法について説明します。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
-ms.openlocfilehash: 03950c7c87f659c5d1c032b5d3c1f74d136697c7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b4840ed30eb1f6dc8d6e6cef47da17807f9644d5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931976"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658576"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Azure Monitor ビューのフィルター
 [Azure Monitor ビュー](view-designer.md)内の**フィルター**を使用すると、ユーザーはビュー自体を変更せずに、特定のプロパティの値によってビュー内のデータをフィルター処理することができます。  たとえば、ビューのユーザーが、特定のコンピューターまたは複数のコンピューターからのデータだけをフィルター表示したビューを利用できます。  1 つのビューに複数のフィルターを作成して、ユーザーが複数のプロパティでフィルター処理することが可能です。  この記事では、フィルターの使用方法およびカスタム ビューへの追加方法について説明します。
@@ -34,11 +33,11 @@ ms.locfileid: "72931976"
 
 [ビューの編集](view-designer.md)時に、 **[フィルター]** タブからフィルターを作成します。  フィルターはビューに対してグローバルで、ビュー内のすべての部分に適用されます。  
 
-![フィルター設定](media/view-designer-filters/filters-settings.png)
+![フィルターの設定](media/view-designer-filters/filters-settings.png)
 
 フィルターの設定を次の表に示します。
 
-| Setting | 説明 |
+| 設定 | 説明 |
 |:---|:---|
 | フィールド名 | フィルター処理に使用されるフィールドの名前です。  このフィールドは、 **[値のクエリ]** にある集計フィールドと一致している必要があります。 |
 | 値のクエリ | ユーザー用のフィルターのドロップダウン リストを設定するために実行するクエリ。  特定のフィールドに対して一意の値を指定するには、このクエリにおいて [summarize](/azure/kusto/query/summarizeoperator) または [distinct](/azure/kusto/query/distinctoperator) のいずれかを使用する必要があり、また、それが **[フィールド名]** と一致している必要があります。  [sort](/azure/kusto/query/sortoperator) を使用すると、ユーザーに表示される値を並び替えることができます。 |
@@ -72,5 +71,5 @@ Severity という別のフィルターを追加した場合は、両方のフ�
 
     Event | where ${Computers} | where ${Severity} | summarize count() by EventLevelName
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * カスタム ビューに追加できる[視覚エフェクト パーツ](view-designer-parts.md)の詳細についてはこちらをご覧ください。

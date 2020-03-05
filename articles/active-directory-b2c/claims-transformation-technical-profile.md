@@ -3,20 +3,20 @@ title: 要求変換技術プロファイルを定義する
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C 内のカスタム ポリシーで要求変換技術プロファイルを定義します。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/13/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fbc1d59ac401adedcf897d0c16edb6904c89acc3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 84c1cf798e88e4067da8a495c1591143d2ee1bd0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77193440"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189788"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで要求変換技術プロファイルを定義する
 
@@ -37,7 +37,7 @@ ms.locfileid: "77193440"
   ...
 ```
 
-## <a name="output-claims"></a>出力要求
+## <a name="output-claims"></a>出力クレーム
 
 **OutputClaims** 要素は必須です。 技術プロファイルにより返される出力要求を、少なくとも 1 つを指定するようにしてください。 次の例は、出力要求で既定値を設定する方法を示しています。
 
@@ -104,7 +104,7 @@ TransformationClaimType="collection" />
 
 | 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
-| IncludeClaimResolvingInClaimsHandling  | いいえ | 入力要求と出力要求の場合、[要求の解決](claim-resolver-overview.md) が技術プロファイルに含まれるかどうかを指定します。 指定できる値: `true` または `false`  (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
+| IncludeClaimResolvingInClaimsHandling  | いいえ | 入力と出力の要求について、[要求の解決](claim-resolver-overview.md)を技術プロファイルに含めるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
 
 ## <a name="use-a-validation-technical-profile"></a>検証技術プロファイルの使用
 

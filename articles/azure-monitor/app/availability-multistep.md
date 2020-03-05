@@ -1,19 +1,15 @@
 ---
 title: 複数ステップ Web テストを使用した監視 - Azure Application Insights
 description: 複数手順の Web テストを設定して、Azure Application Insights で Web アプリケーションを監視します
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 10/23/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 8e630f324a7a0ebdfcc74941e760b80fabefa8d3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3b8baad127b16a1bd9d071d0c3d4df68da8c3304
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928965"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655942"
 ---
 # <a name="multi-step-web-tests"></a>複数手順の Web テスト
 
@@ -49,22 +45,22 @@ Visual Studio Web テストの作成に関するガイダンスについては�
 
 ### <a name="frequency--location"></a>頻度と場所
 
-|Setting| 説明
+|設定| 説明
 |----|----|----|
 |**テスト間隔**| 各テストの場所からテストを実行する頻度を設定します。 既定の間隔が 5 分で、テストの場所が 5 か所の場合、サイトは平均して毎分テストされます。|
 |**テストの場所**| 指定の URL にサーバーによって Web 要求が送信される送信元の場所です。 Web サイトの問題とネットワークの問題とを確実に区別するために、**最低でもテストの場所を 5 か所にすることが推奨されます**。 最大 16 個の場所を選択できます。
 
 ### <a name="success-criteria"></a>成功の基準
 
-|Setting| 説明
+|設定| 説明
 |----|----|----|
 | **テストのタイムアウト** |この値を引き下げると、応答が遅い場合に警告されます。 テストは、この期間内にサイトから応答が返されない場合に、エラーとしてカウントされます。 **[従属要求の解析]** をオンにした場合、すべての画像、スタイル ファイル、スクリプト、その他依存するリソースがこの期間内に受信される必要があります。|
 | **HTTP 応答** | 成功としてカウントされる、返される状態コード。 200 は、通常の Web ページが返されたことを示すコードです。|
 | **コンテンツの一致** | "Welcome!" などの文字列。 それぞれの応答に大文字小文字を区別した完全一致があるかどうかをテストします。 文字列は、(ワイルドカードを含まない) プレーン文字列である必要があります。 ページ コンテンツが変更された場合は、この文字列も更新する必要がある可能性があることに注意してください。 **コンテンツの一致では、英語のみがサポートされています。** |
 
-### <a name="alerts"></a>アラート
+### <a name="alerts"></a>警告
 
-|Setting| 説明
+|設定| 説明
 |----|----|----|
 |**準リアルタイム (プレビュー)** | 準リアルタイムのアラートを使用することが推奨されます。 この種類のアラートの構成は、可用性テストの作成後に実行されます。  |
 |**クラシック** | 新しい可用性テストでクラシック アラートを使用することはもう推奨されていません。|
@@ -145,7 +141,7 @@ Visual Studio を使用して Web テストを記録します。
 
 専用の[トラブルシューティングに関する記事](troubleshoot-availability.md)をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [可用性のアラート](availability-alerts.md)
 * [URL ping Web テスト](monitor-web-app-availability.md)

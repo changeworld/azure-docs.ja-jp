@@ -1,18 +1,15 @@
 ---
 title: Azure リソース ログでサポートされているサービスとスキーマ
 description: Azure リソース ログでサポートされているサービスとイベント スキーマについて説明します。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
-author: rboucher
-ms.author: robb
-ms.openlocfilehash: 044c453152d44420d5e78855751a2680698e89f3
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: de102c5dc4104aafc44b87b14aeea0b30cb7c083
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120147"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670391"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Azure リソース ログでサポートされているサービス、スキーマ、カテゴリ
 
@@ -25,7 +22,7 @@ ms.locfileid: "76120147"
 
 ## <a name="top-level-resource-logs-schema"></a>リソース ログの上位スキーマ
 
-| Name | 必須/省略可能 | 説明 |
+| 名前 | 必須/省略可能 | 説明 |
 |---|---|---|
 | time | 必須 | イベントのタイムスタンプ (UTC)。 |
 | resourceId | 必須 | イベントを出力したリソースのリソース ID。 テナント サービスの場合、形式は /tenants/tenant-id/providers/provider-name です。 |

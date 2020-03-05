@@ -1,23 +1,23 @@
 ---
 title: アラートとスマート グループの状態を管理する
 description: アラートとスマート グループ インスタンスの状態を管理します
-ms.service: azure-monitor
 ms.subservice: alerts
 ms.topic: conceptual
 author: anantr
-ms.author: robb
 ms.date: 09/24/2018
-ms.openlocfilehash: fd2a2a4b7d5033ecd35d02baa240bc7586e7a25d
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: a22d7b7b962b36f93ee804c64b3bc6b08ecceb0f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555673"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667518"
 ---
 # <a name="manage-alert-and-smart-group-states"></a>アラートとスマート グループの状態を管理する
+
 Azure Monitor のアラートは[アラート状態と監視条件](https://aka.ms/azure-alerts-overview)を持つようになり、スマート グループも同様に[スマート グループの状態](https://aka.ms/smart-groups)を持つようになりました。 状態の変更は、アラートまたはスマート グループにそれぞれ関連付けられた履歴にキャプチャされるようになりました。 この記事では、アラートおよびスマート グループの両方について、状態を変更するプロセスを説明します。
 
 ## <a name="change-the-state-of-an-alert"></a>アラートの状態を変更する
+
 1. 次のさまざまな方法で、アラートの状態を変更できます。 
     * [すべてのアラート] ページで、状態を変更するアラートの横にあるチェック ボックスをクリックし、[状態の変更]/(Change State/)  をクリックします。   
     ![監視](./media/alerts-managing-alert-states/state-all-alerts.jpg)
@@ -40,7 +40,7 @@ Azure Monitor のアラートは[アラート状態と監視条件](https://aka.
     1. スマート グループの [詳細] ページで、状態の変更をクリックすることができます        
     ![監視](./media/alerts-managing-alert-states/state-sg-details.jpg)
 1. [状態の変更] (Change State) をクリックすると、ポップアップが表示され、状態 (新規/確認済み/終了) を選択して必要に応じてコメントを入力できます。 
-![監視](./media/alerts-managing-alert-states/state-sg-change.jpg)
+![Monitoring](./media/alerts-managing-alert-states/state-sg-change.jpg)
    > [!NOTE]
    >  スマート グループの状態を変更しても、個々のメンバーのアラートの状態は変更されません。
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: c9513ca38c665a53bc14f284e87a1cc01035d135
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5728ce7125695b191de4f91d5bd9003384f428a7
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693188"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298310"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Azure VM を Availability Zones に移動する
 Azure の Availability Zones は、アプリケーションとデータをデータセンターの障害から保護するのに役立ちます。 それぞれの可用性ゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 回復性を確保するため、有効になっているリージョンにはいずれも最低 3 つのゾーンが別個に存在しています。 Availability Zones はリージョン内で物理的に分離されているため、データセンターで障害が発生してもアプリケーションとデータは保護されます。 Availability Zones により、Azure では仮想マシン (VM) の 99.99% のアップタイムというサービス レベル アグリーメント (SLA) が提供されます。 「[Azure の Availability Zones の概要](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region)」で説明されているように、Availability Zones は一部のリージョンでサポートされています。
@@ -70,7 +70,7 @@ VM を "*単一インスタンス*" として特定のリージョンにデプ�
     - [ロード バランサー](https://docs.microsoft.com/azure/load-balancer)
     - [パブリック IP](../virtual-network/virtual-network-public-ip-address.md)
     
-   その他のネットワーク コンポーネントについては、ネットワークに関する[ドキュメント](https://docs.microsoft.com/azure/#pivot=products&panel=network)を参照してください。
+   その他のネットワーク コンポーネントについては、ネットワークに関する[ドキュメント](https://docs.microsoft.com/azure/?pivot=products&panel=network)を参照してください。
 
     > [!IMPORTANT]
     > ターゲットでは、ゾーン冗長ロード バランサーを使用する必要があります。 詳しくは、「[Standard Load Balancer と可用性ゾーン](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)」をご覧ください。
@@ -89,7 +89,7 @@ VM を "*単一インスタンス*" として特定のリージョンにデプ�
 
     ![ターゲット リージョンの選択](media/azure-vms-to-zones/enable-rep-1.PNG)
 
-4. **[次へ:詳細設定]** を選択します。
+4. **詳細設定** を選択します。
 5. ターゲット サブスクリプション、ターゲット VM リソース グループ、仮想ネットワークに適切な値を選択します。
 6. **[可用性]** セクションで、VM の移動先となる可用性ゾーンを選択します。 
    > [!NOTE]
@@ -116,7 +116,7 @@ VM を "*単一インスタンス*" として特定のリージョンにデプ�
 
    - **最後に処理があった時点**:Site Recovery サービスによって処理された最新の復旧ポイントに VM をフェールオーバーします。 タイム スタンプが表示されます。 このオプションを使用すると、データの処理に時間がかからないため、目標復旧時間 (RTO) が低くなります。
    - **最新のアプリ整合性**:このオプションでは、すべての VM が最新のアプリ整合性の復旧ポイントにフェールオーバーされます。 タイム スタンプが表示されます。
-   - **カスタム**:任意の復旧ポイントを選択します。
+   - **Custom**:任意の復旧ポイントを選択します。
 
 3. Azure VM の移動先となるテスト用のターゲット Azure 仮想ネットワークを選択し、構成をテストします。 
 
@@ -143,7 +143,7 @@ VM に移動します。 **[レプリケーションの無効化]** を選択し
 > [!IMPORTANT]
 > 移動後に Site Recovery レプリケーションの請求を避けるため、前記の手順を行います。 ソース レプリケーションの設定は自動的にクリーンアップされます。 レプリケーションの一部としてインストールされた Site Recovery 拡張機能は削除されないため、手動で削除する必要がある点に注意してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure VM を可用性セットまたは可用性ゾーンに移動することによってその可用性を強化しました。 次には、移動した VM のディザスター リカバリーを設定できます。
 

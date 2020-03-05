@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/19/2019
+ms.date: 03/03/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: eb9231a84295240c20e34bfad56f406317c107da
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1003b862d7fbe19545cf705570866479132c1f03
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845491"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273170"
 ---
 ::: zone target="chromeless"
 
@@ -51,7 +51,7 @@ ms.locfileid: "76845491"
 
 次の手順は、デバイスを返送する場所によって決まります。 手順は、米国およびカナダ、欧州連合 (EU)、オーストラリア、アジア諸国で異なります。
 
-### <a name="in-us-or-canadatabin-us-or-canada"></a>[米国またはカナダ](#tab/in-us-or-canada)
+### <a name="in-us-or-canada"></a>[米国またはカナダ](#tab/in-us-or-canada)
 
 米国またはカナダでデバイスを返送するには、次の手順を実行します。
 
@@ -67,7 +67,7 @@ ms.locfileid: "76845491"
     - 追跡番号を伝えないと、集荷時に UPS から追加料金が請求されます。
     - 集荷のスケジュールを設定する代わりに、最寄りの持ち込み場所に Data Box Disk を持ち込むこともできます。
 
-### <a name="in-europetabin-europe"></a>[ヨーロッパ](#tab/in-europe)
+### <a name="in-europe"></a>[ヨーロッパ](#tab/in-europe)
 
 ヨーロッパでデバイスを返送するには、次の手順を実行します。
 
@@ -80,7 +80,7 @@ ms.locfileid: "76845491"
 4. 該当する国/地域の DHL Express の Web サイトにアクセスし、 **[Book a Courier Collection]\(宅配便の予約\) > [eReturn Shipment]\(電子返送\)** の順に選択します。    
 3. 貨物運送状番号を指定し、 **[Schedule Pickup]\(集荷のスケジュール\)** をクリックして集荷の手配を行います。
 
-### <a name="in-australiatabin-australia"></a>[オーストラリア](#tab/in-australia)
+### <a name="in-australia"></a>[オーストラリア](#tab/in-australia)
 
 オーストラリアの Azure データセンターには、追加のセキュリティ通知があります。 すべての国内配送には事前通知が必要です。 オーストラリアで集荷する場合は、次の手順を実行します。
 
@@ -88,7 +88,7 @@ ms.locfileid: "76845491"
 3. 箱にラベルを貼り付けます。 
 4. リンク先 (https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference ) からオンラインで集荷を予約します。 
 
-### <a name="in-japantabin-japan"></a>[日本](#tab/in-japan)
+### <a name="in-japan"></a>[日本](#tab/in-japan)
 
 1. 伝票に送信元の情報としてお客様の会社名と住所の情報を記入します。
 2. 次のメール テンプレートを使用して Quantium Solutions にメールを送信します。
@@ -115,7 +115,7 @@ ms.locfileid: "76845491"
 - メール: Customerservice.JP@quantiumsolutions.com 
 - 電話: 03-5755-0150 
 
-### <a name="in-koreatabin-korea"></a>[韓国](#tab/in-korea)
+### <a name="in-korea"></a>[韓国](#tab/in-korea)
 
 1. 必ず返品用の伝票を同封してください。
 2. 伝票があるときに集荷を依頼するには:
@@ -130,7 +130,7 @@ ms.locfileid: "76845491"
     4. 電話でのリクエストの場合は、口頭で確認を受け取ります。
 
 
-### <a name="in-singaporetabin-singapore"></a>[シンガポール](#tab/in-singapore)
+### <a name="in-singapore"></a>[シンガポール](#tab/in-singapore)
 
 1. 配送先住所ラベルを印刷し、箱に貼り付けます。 ラベルを破損または紛失した場合:
     - **[概要] > [出荷ラベルをダウンロード]** に移動し、返送ラベルを取得します。
@@ -157,7 +157,7 @@ ms.locfileid: "76845491"
 
 3. 配送業者に渡します。
 
-### <a name="in-self-managedtabin-selfmanaged"></a>[自己管理型](#tab/in-selfmanaged)
+### <a name="in-self-managed"></a>[自己管理型](#tab/in-selfmanaged)
 
 日本、シンガポール、韓国、西ヨーロッパで Data Box Disk を使用しており、なおかつ注文の作成時に自己管理型の配送オプションを選択した場合は、次の手順に従います。 
 
@@ -175,8 +175,6 @@ ms.locfileid: "76845491"
 3. Azure Data Box オペレーション チームがお客様と連絡を取り、Azure Datacenter への配送を手配します。
 
 ::: zone target="docs"
-
----
 
 ## <a name="next-steps"></a>次のステップ
 

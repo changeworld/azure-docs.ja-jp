@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 1d808210861d971b2915206e7be0fe9b955616c5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 6e4b5bc6d30f6caa2809b7aa1e72be70ae12dbc1
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720318"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193036"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure Synapse Analytics (旧称 SQL DW) アーキテクチャ 
 
@@ -25,7 +25,7 @@ Azure Synapse は、エンタープライズ データ ウェアハウスとビ�
 - SQL Analytics:完全な T-SQL ベースの分析 
     - SQL プール (プロビジョニング済み DWU での従量課金) – 一般公開
     - SQL オンデマンド (処理された TB 単位の課金) – (プレビュー)
-- Spark:緊密に統合された Apache Spark (プレビュー) 
+- Spark:緊密に統合された Apache Spark (プレビュー)
 - データ統合:ハイブリッド データ統合 (プレビュー)
 - Studio: 統一ユーザー エクスペリエンス。  (プレビュー)
 

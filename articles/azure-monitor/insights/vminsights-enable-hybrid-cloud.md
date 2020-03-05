@@ -1,18 +1,17 @@
 ---
 title: ハイブリッド環境での Azure Monitor (プレビュー) の有効化 |Microsoft Docs
 description: この記事では、1 つまたは複数の仮想マシンを含むハイブリッド クラウド環境において、Azure Monitor for VMs を有効にする方法について説明します。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 0afc67bf6d9e997ef615ecadc6836b36ed73e2ea
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bd44eebf8aceaf7fe32cf8cf1b1152db32acb344
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969684"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669626"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>ハイブリッド環境での Azure Monitor for VMs (プレビュー) の有効化
 
@@ -80,7 +79,7 @@ Dependency Agent が起動しない場合は、詳細なエラー情報のログ
 
 Dependency Agent のファイルは、次のディレクトリに保存されます。
 
-| ファイル | Location |
+| ファイル | 場所 |
 |:--|:--|
 | コア ファイル | /opt/microsoft/dependency-agent |
 | ログ ファイル | /var/opt/microsoft/dependency-agent/log |

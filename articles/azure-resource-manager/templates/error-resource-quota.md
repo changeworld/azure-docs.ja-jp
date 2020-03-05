@@ -3,12 +3,12 @@ title: クォータ エラー
 description: Azure Resource Manager でのリソースのデプロイ時のリソース クォータ エラーを解決する方法について説明します。
 ms.topic: troubleshooting
 ms.date: 03/09/2018
-ms.openlocfilehash: d36f7d12f432839760b68c85e1c5761e0caf8d85
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 9b5cce3258a29b6ac6a3db50f880e3242c4d5e8c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659357"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250158"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>リソース クォータのエラーを解決する
 
@@ -52,7 +52,7 @@ az vm list-usage --location "South Central US"
 
 次のような結果が返されます。
 
-```azurecli
+```output
 [
   {
     "currentValue": 0,

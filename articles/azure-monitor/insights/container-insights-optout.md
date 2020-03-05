@@ -3,12 +3,12 @@ title: Azure Kubernetes Service クラスターの監視を停止する方法 | 
 description: この記事では、コンテナー用の Azure Monitor で Azure AKS クラスターの監視を中断する方法について説明します。
 ms.topic: conceptual
 ms.date: 08/19/2019
-ms.openlocfilehash: fb75379ba6c8109316f78288222039627bcb5902
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 618a4d7e10212dd2b042724b1ea11c97920dad57
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715965"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250737"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>コンテナー用の Azure Monitor で Azure Kubernetes Service (AKS) の監視を停止する方法
 
@@ -139,7 +139,7 @@ az group deployment create --resource-group <ResourceGroupName> --template-file 
 
 設定の変更が完了するまで数分かかります。 完了すると、次のような結果を含むメッセージが返されます。
 
-```azurecli
+```output
 ProvisioningState       : Succeeded
 ```
 
@@ -157,7 +157,7 @@ New-AzResourceGroupDeployment -Name opt-out -ResourceGroupName <ResourceGroupNam
 
 設定の変更が完了するまで数分かかります。 完了すると、次のような結果を含むメッセージが返されます。
 
-```powershell
+```output
 ProvisioningState       : Succeeded
 ```
 

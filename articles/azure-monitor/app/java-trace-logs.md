@@ -1,18 +1,14 @@
 ---
 title: Azure Application Insights で Java トレース ログを探索する
 description: Application Insights を使用して Log4J または Logback のトレースを検索します
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/18/2019
-ms.openlocfilehash: f552ccdbc67df93913c698e5d763dbb62b48a4ad
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: da1b76d52ab93f4d1be7196d6eb7286579481119
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927239"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657216"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Application Insights を使用した Java トレース ログの探索
 トレース用に Logback または Log4J (v1.2 または v2.0) を使用している場合は、トレース ログを自動的に Application Insights に送信して、Application Insights でトレース ログを探索および検索できます。
@@ -192,7 +188,7 @@ Application Insights のアペンダーは、上記のコード サンプルに�
 
 ![Application Insights ポータルで [検索] を開きます](./media/java-trace-logs/01-diagnostics.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [診断検索][diagnostic]
 
 <!--Link references-->

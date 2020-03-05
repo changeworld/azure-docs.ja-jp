@@ -3,14 +3,14 @@ title: ステージング環境を設定する
 description: 非運用スロットにアプリをデプロイし、運用環境に autoswap をデプロイする方法について説明します。 信頼性を向上させ、デプロイからのアプリのダウンタイムを排除します。
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
-ms.date: 09/19/2019
+ms.date: 03/04/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 63070b2c1e6adbb0149446b218e6e58023b2d409
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 21e025088e59c7f65f848b332ecb393b05918261
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666459"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300873"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
@@ -23,7 +23,7 @@ ms.locfileid: "75666459"
 * スロットにアプリをデプロイした後に運用サイトにスワップすると、運用サイトへのスワップ前にスロットのすべてのインスタンスが準備されます。 これにより、アプリをデプロイする際のダウンタイムがなくなります。 トラフィックのリダイレクトはシームレスであるため、スワップ操作によって破棄される要求はありません。 スワップ前の検証が必要ない場合は、[自動スワップ](#Auto-Swap)を構成することで、このワークフロー全体を自動化できます。
 * スワップ後も、以前のステージング アプリ スロットに元の運用アプリが残っているため、 運用スロットにスワップした変更が想定どおりでない場合は、適切な動作が確認されている元のサイトにすぐに戻すことができます。
 
-サポートされるデプロイ スロット数は、App Service プラン レベルごとに異なります。 デプロイ スロットは追加料金なしでご利用いただけます。 使用しているアプリのサービス レベルでサポートされるスロット数を確認するには、「[App Service の制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#app-service-limits)」をご覧ください。 
+サポートされるデプロイ スロット数は、App Service プラン レベルごとに異なります。 デプロイ スロットは追加料金なしでご利用いただけます。 使用しているアプリのサービス レベルでサポートされるスロット数を確認するには、「[App Service の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)」をご覧ください。 
 
 アプリを別のサービス レベルにスケールするには、アプリが既に使用しているスロット数がターゲット レベルによってサポートされていることを確認します。 たとえば、**Standard** レベルではサポートされるデプロイ スロット数は 5 つのみなので、アプリのスロット数が 5 つより多い場合は、**Standard** レベルにスケール ダウンできません。 
 
@@ -303,7 +303,7 @@ New-AzWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot
 ---
 ### <a name="initiate-a-swap-with-a-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-the-source-slot"></a>プレビューでのスワップ (複数フェーズのスワップ) を開始し、送信先スロットの構成をソース スロットに適用する
 ```powershell
-$ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
+$ParametersObject = @{targetSlot  = "[slot name – e.g. "production"]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
@@ -316,7 +316,7 @@ Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType M
 ---
 ### <a name="swap-deployment-slots"></a>デプロイ スロットをスワップする
 ```powershell
-$ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
+$ParametersObject = @{targetSlot  = "[slot name – e.g. "production"]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 

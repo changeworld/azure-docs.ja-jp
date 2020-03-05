@@ -1,18 +1,14 @@
 ---
 title: Linux での Java Web アプリ パフォーマンスの監視 | Microsoft Docs
 description: Application Insights の CollectD プラグインを使用した Java Web サイトのアプリケーション パフォーマンスの拡張
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: 47e5e9dd81174b79e149ba29eec725c8c17eb1a6
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 687f97c305bffdfb408feb314ccded4f93ac574a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176397"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660735"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd:Application Insights での Linux パフォーマンス メトリック
 
@@ -98,7 +94,7 @@ Application Insights のリソースで、[メトリックを開いてグラフ�
 * 構成ファイルを編集します。 
 * `<Plugin ApplicationInsightsWriter>`に次のようなディレクティブ行を追加します。
 
-| ディレクティブ | 効果 |
+| ディレクティブ | 結果 |
 | --- | --- |
 | `Exclude disk` |`disk` プラグインによって収集されたすべてのデータを除外します |
 | `Exclude disk:read,write` |`read` および `write` という名前のソースを `disk` プラグインから除外します。 |

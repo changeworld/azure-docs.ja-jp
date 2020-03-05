@@ -1,18 +1,15 @@
 ---
 title: Azure Monitor クラシック アラートの自動移行プロセスのしくみについて
 description: 自動移行プロセスのしくみについて説明します。
-author: snehithm
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 08/19/2019
-ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: e0ac349554fa580c4ac88b26e76d0bea1ecf738b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 8df83439d6754440648688ac1cc36ff66556a4e4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932702"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668249"
 ---
 # <a name="understand-the-automatic-migration-process-for-your-classic-alert-rules"></a>クラシック アラート ルールの自動移行プロセスについて
 
@@ -57,7 +54,7 @@ ms.locfileid: "72932702"
   > [!NOTE]
   > リソース ロックの一時的な無効化や、ポリシー割り当ての変更など、お客様の対処が必要な場合は、2019 年 10 月 31 日までに問題を解決する必要があります。 それまでに問題が解決されない場合は、クラシック アラートの正常な移行を保証できません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [移行を準備する](alerts-prepare-migration.md)
 - [移行ツールの動作の理解](alerts-understand-migration.md)

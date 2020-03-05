@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.openlocfilehash: 66bb054ab75c5a4e387995bc64dbc026c073413f
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.custom: hdinsightactive
+ms.date: 03/04/2020
+ms.openlocfilehash: 36ff0d5f1fc96b2013555d37a869ebf629a22be7
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122620"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302136"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Azure Virtual Network 経由で HDInsight 上の Apache Kafka に接続する
 
@@ -38,7 +38,7 @@ HDInsight では、パブリック インターネット経由で Kafka に直�
   4. 各ネットワークの DNS サーバー間の転送を構成します。
   5. 仮想ネットワーク内の HDInsight クラスターに Kafka を作成します。
 
-     詳細については、「[オンプレミス ネットワークから Apache Kafka に接続する](#on-premises)」セクションを参照してください。 
+     詳細については、「[オンプレミス ネットワークから Apache Kafka に接続する](#on-premises)」セクションを参照してください。
 
 * VPN ゲートウェイと VPN クライアントを使用して、仮想ネットワークに各マシンを接続する。 この構成を有効にするには、次のタスクを実行します。
 
@@ -290,7 +290,7 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
 
 VPN ゲートウェイに接続するには、[ポイント対サイト接続の構成](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect)に関するドキュメントの「__Azure への接続__」セクションに従います。
 
-## <a id="python-client"></a> 例:Python クライアント
+## <a id="python-client"></a> 例: Python クライアント
 
 Kafka への接続を検証するには、次の手順に従って Python プロデューサーとコンシューマーを作成します。
 
@@ -366,7 +366,7 @@ Kafka への接続を検証するには、次の手順に従って Python プロ
 
     * __カスタム DNS サーバー経由での名前解決を有効化__ している場合は、`kafka_broker` エントリをワーカー ノードの FQDN に置き換えます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 仮想ネットワークでの HDInsight の使用については、[Azure HDInsight クラスター用の仮想ネットワーク デプロイの計画](../hdinsight-plan-virtual-network-deployment.md)に関するドキュメントを参照してください。
 

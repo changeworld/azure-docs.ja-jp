@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/27/2020
 ms.author: mlottner
-ms.openlocfilehash: 510a2c3f04cc4c307acad18ee3012d9407155f9f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 063e5c9e7d75fd1c07d148c265b1fe64eee3cbc8
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766458"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303530"
 ---
 # <a name="quickstart-create-custom-alerts"></a>クイック スタート:カスタム アラートの作成
 
@@ -80,7 +80,6 @@ ms.locfileid: "76766458"
 ## <a name="alerts-available-for-customization"></a>カスタマイズに使用できるアラート
 
 Azure Security Center for IoT には、ユーザーの特定のニーズに応じてカスタマイズできるアラートが多数用意されています。 アラートの重要度、データ ソース、説明、および各アラートを受信した場合の推奨される修復手順については、[カスタマイズ可能なアラートの表](concept-customizable-security-alerts.md)を確認してください。 
-|
 
 
 ## <a name="next-steps"></a>次のステップ

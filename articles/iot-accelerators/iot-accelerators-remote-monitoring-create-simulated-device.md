@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5044f8b85e59911633a4ffab509efc000948144a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bb8b23513738a6696d65bf7f06a741be2ada7a93
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65832575"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250251"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>新しいシミュレートされたデバイスの作成とテスト
 
@@ -28,11 +28,11 @@ ms.locfileid: "65832575"
 
 2 つ目のシナリオでは、Contoso がスマート電球の新しいデバイスをテストします。 このテストを実行するために、次の特性を備える、新しいシミュレートされたデバイスを作成します。
 
-*プロパティ*
+*Properties*
 
 | 名前                     | 値                      |
 | ------------------------ | --------------------------- |
-| 色                    | 白、赤、青            |
+| Color                    | 白、赤、青            |
 | 明るさ               | 0 から 100                    |
 | 推定寿命 | 10,000 時間からカウントダウン |
 
@@ -40,9 +40,9 @@ ms.locfileid: "65832575"
 
 次の表に、電球がクラウドにデータ ストリームとしてレポートするデータを示します。
 
-| Name   | 値      |
+| 名前   | 値      |
 | ------ | ----------- |
-| 状態 | "オン"、"オフ" |
+| Status | "オン"、"オフ" |
 | 気温 | 度 (華氏) |
 | オンライン | true、false |
 
@@ -64,7 +64,7 @@ ms.locfileid: "65832575"
 
 | 名前                     | 値 |
 | ------------------------ | -------|
-| 初期の色            | 白  |
+| 初期の色            | White  |
 | 初期の明るさ       | 75     |
 | 初期の寿命   | 10,000 |
 | 初期のテレメトリ状態 | "オン"   |
@@ -446,7 +446,7 @@ Visual Studio Code の**ターミナル** ウィンドウに、実行中のマ�
 
 ```azurecli-interactive
 # Install the IoT extension if it's not already installed
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 
 # Monitor telemetry sent to your hub
 az iot hub monitor-events --hub-name device-simulation-test
@@ -492,13 +492,13 @@ Postman を設定するには:
 
 シミュレーションを停止するには、Postman で **[Stop simulation]\(シミュレーションの停止\)** 要求を選択し、 **[Send]\(送信\)** をクリックします。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 ローカルで実行されている 2 つのマイクロサービスを Visual Studio Code インスタンスで停止することができます ( **[デバッグ] > [デバッグの停止]** )。
 
 IoT Hub および Cosmos DB のインスタンスが必要でなくなった場合は、不必要な課金を回避するために、Azure サブスクリプションからそれらを削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このガイドでは、カスタムのシミュレートされたデバイスの種類を作成し、デバイス シミュレーション マイクロサービスをローカルで実行してテストする方法について説明しました。
 

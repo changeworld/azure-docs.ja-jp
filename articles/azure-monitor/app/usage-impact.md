@@ -1,19 +1,17 @@
 ---
 title: Azure Application Insights の使用の影響 | Microsoft Docs
 description: さまざまなプロパティがアプリの各部のコンバージョン率に潜在的に及ぼす影響について分析します。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: f057ec6424f72370c48599296452d607107f6c34
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 787221c4df3f06029d19ee779a28bb763723f27d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406264"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671037"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Application Insights による影響分析
 

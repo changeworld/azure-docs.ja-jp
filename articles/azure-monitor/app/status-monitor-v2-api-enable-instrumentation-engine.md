@@ -1,20 +1,18 @@
 ---
 title: Azure Application Insights エージェント API リファレンス
 description: Application Insights エージェント API リファレンス。 Enable-InstrumentationEngine。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 796c2cc669e238499223d233cf4ddcf740af7c95
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: b3f298ac31cc584cd16553186359c87f69f27aad
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899724"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671358"
 ---
-# <a name="application-insights-agent-api-enable-instrumentationengine"></a>Application Insights Agent API: Enable-InstrumentationEngine
+# <a name="application-insights-agent-api-enable-instrumentationengine"></a>Application Insights エージェント API:Enable-InstrumentationEngine
 
 この記事では、[Az.ApplicationMonitor PowerShell モジュール](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)のメンバーであるコマンドレットについて説明します。
 
@@ -43,15 +41,15 @@ ms.locfileid: "72899724"
 PS C:\> Enable-InstrumentationEngine
 ```
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>パラメーター
 
 ### <a name="-acceptlicense"></a>-AcceptLicense
-**省略可能。** ヘッドレス インストールでライセンスおよびプライバシーに関する声明に同意する場合は、このスイッチを使用します。
+**省略可。** ヘッドレス インストールでライセンスおよびプライバシーに関する声明に同意する場合は、このスイッチを使用します。
 
 ### <a name="-verbose"></a>-Verbose
 **共通パラメーター。** 詳細なログを出力する場合はこのスイッチを使用します。
 
-## <a name="output"></a>Output
+## <a name="output"></a>出力
 
 
 #### <a name="example-output-from-successfully-enabling-the-instrumentation-engine"></a>インストルメンテーション エンジンが正常に有効化された場合の出力例
@@ -61,7 +59,7 @@ Configuring IIS Environment for instrumentation engine...
 Configuring registry for instrumentation engine...
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
   テレメトリの表示:
  - パフォーマンスと使用状況を監視するための[メトリックを探索](../../azure-monitor/app/metrics-explorer.md)します。

@@ -3,20 +3,20 @@ title: カスタム ポリシーでの技術プロファイルの概要
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C 内のカスタム ポリシーで技術プロファイルがどのように使用されるかについて学習します。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/11/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3b0e59912d740e30b0e29fb882542f1995ab6f54
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 48324d252e22ca898f923e1f0ad9b76df1c10861
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505659"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183654"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C カスタム ポリシーでの技術プロファイルについて
 
@@ -40,7 +40,7 @@ ms.locfileid: "77505659"
 - [セルフアサート](self-asserted-technical-profile.md) - ユーザーとやりとりします。 たとえば、ユーザーの資格情報を収集してサインインし、サインアップ ページまたはパスワードのリセットをレンダリングします。
 - [セッション管理](custom-policy-reference-sso.md) - さまざまな種類のセッションを処理します。
 - [Application Insights](../azure-monitor/app/usage-overview.md)
-- [ワンタイム パスワード](one-time-password-technical-profile.md) - ワンタイム パスワードの生成と確認を管理するためのサポートが提供されています。 
+- [ワンタイム パスワード](one-time-password-technical-profile.md) - ワンタイム パスワードの生成と確認を管理するためのサポートが提供されています。
 
 ## <a name="technical-profile-flow"></a>技術プロファイルのフロー
 
@@ -48,7 +48,7 @@ ms.locfileid: "77505659"
 
 ![技術プロファイルのフローを示している図](./media/technical-profiles-overview/technical-profile-idp-saml-flow.png)
  
-1. **シングル サインオン (SSO) セッション管理** - [SSO セッション管理](custom-policy-reference-sso.md)を使用して、技術プロファイルのセッション状態を復元します。 
+1. **シングル サインオン (SSO) セッション管理** - [SSO セッション管理](custom-policy-reference-sso.md)を使用して、技術プロファイルのセッション状態を復元します。
 1. **入力要求変換** - 要求バッグからピックアップされるすべての入力[要求変換](claimstransformations.md)の入力要求。  入力要求変換の出力要求は、後続の入力要求変換の入力要求になる場合があります。
 1. **入力要求** - 要求は要求バッグからピックアップされ、技術プロファイルに使用されます。 たとえば、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)では、入力要求を使用して、ユーザーが提供する出力要求を事前作成します。 REST API 技術プロファイルでは、入力要求を使用し、入力パラメーターを REST API エンドポイントに送信します。 Azure Active Directory では、アカウントの読み取り、更新、削除を行うために、一意識別子として入力要求を使用します。
 1. **技術プロファイルの実行** - 技術プロファイルでは、その要求を構成されたパーティと交換します。 次に例を示します。
@@ -64,7 +64,7 @@ ms.locfileid: "77505659"
 
 ## <a name="technical-profile-inclusion"></a>技術プロファイルを含める
 
-技術プロファイルには、設定を変更したり、新しい機能を追加したりするために、別の技術プロファイルを含めることができます。  `IncludeTechnicalProfile` 要素は、技術プロファイルの派生元となる基本技術プロファイルへの参照です。 レベルの数に制限はありません。 
+技術プロファイルには、設定を変更したり、新しい機能を追加したりするために、別の技術プロファイルを含めることができます。  `IncludeTechnicalProfile` 要素は、技術プロファイルの派生元となる基本技術プロファイルへの参照です。 レベルの数に制限はありません。
 
 たとえば、**AAD-UserReadUsingAlternativeSecurityId-NoError** 技術プロファイルには、**AAD-UserReadUsingAlternativeSecurityId** が含まれます。 この技術プロファイルを使うと、`RaiseErrorIfClaimsPrincipalDoesNotExist` メタデータ項目を `true` に設定し、ディレクトリにソーシャル アカウントが存在しない場合はエラーを発生させることができます。 **AAD-UserReadUsingAlternativeSecurityId-NoError** によってこの動作がオーバーライドされ、そのエラー メッセージは無効になります。
 

@@ -1,18 +1,17 @@
 ---
 title: Azure の管理ソリューションのベスト プラクティス | Microsoft Docs
 description: ''
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: 28ae01fe28b1b2d6af95567e529c7c9ae17920e4
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 837fb87d73698961ec1550b122840563d1707f8a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553936"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663200"
 ---
 # <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>Azure の管理ソリューションの作成に関するベスト プラクティス (プレビュー)
 > [!NOTE]
@@ -27,7 +26,7 @@ ms.locfileid: "72553936"
 - [データ フロー確認](../../azure-monitor/platform/view-designer-tiles.md)メッセージをソリューションのすべてのビューに追加して、必要なデータを収集するために構成する必要がある、データソースに関する指示をユーザーに提供します。  このメッセージは、必要なデータが見つからないときに、ビューのタイルに表示されます。
 
 
-## <a name="runbooks"></a>Runbook
+## <a name="runbooks"></a>Runbooks
 - スケジュールに従って実行する必要があるソリューションで、Runbook ごとに [Automation スケジュール](../../automation/automation-schedules.md)を追加します。
 - [IngestionAPI モジュール](https://www.powershellgallery.com/packages/OMSIngestionAPI/1.5)を、Log Analytics レポジトリへのデータ書き込みを行う、Runbook によって使用されるソリューションに挿入します。  このリソースを[参照](solutions-solution-file.md#solution-resource)するようにソリューションを構成して、ソリューションが削除されてもリソースが保持されるようにします。  これにより、複数のソリューションがモジュールを共有できます。
 - [Automation 変数](../../automation/automation-schedules.md)を使用して、ユーザーが後で変更できる値をソリューションに指定します。  ソリューションで変数を使用するように構成されていても、その値は引き続き変更できます。
@@ -37,12 +36,12 @@ ms.locfileid: "72553936"
 - [データ フロー確認](../../azure-monitor/platform/view-designer-tiles.md)メッセージをソリューションのすべてのビューに追加して、必要なデータを収集するために構成する必要がある、データソースに関する指示をユーザーに提供します。
 - ビューを[含める](solutions-solution-file.md#solution-resource)ようにソリューションを構成することで、ソリューションを削除したときに、ビューも一緒に削除されるようにします。
 
-## <a name="alerts"></a>アラート
+## <a name="alerts"></a>警告
 - ソリューション ファイルで受信者リストをパラメーターとして定義し、ユーザーがソリューションをインストールしたときに、定義できるようにします。
 - アラート ルールを[参照](solutions-solution-file.md#solution-resource)するようにソリューションを構成して、ユーザーがその構成を変更できるようにします。  受信者リストやアラートのしきい値を変更したり、アラート ルールを無効にしたりできます。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [管理ソリューションの設計および構築](solutions-creating.md)の基本的なプロセスを順を追って確認する。
 * [ソリューション ファイルの作成](solutions-solution-file.md)方法を確認する。
 * 管理ソリューションに、[保存した検索とアラートを追加する](solutions-resources-searches-alerts.md)。

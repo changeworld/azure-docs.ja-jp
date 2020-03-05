@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C のユーザー アクセスの管理 | Microsoft Docs
 description: Azure AD B2C を使用して、未成年者の識別、生年月日および国/地域のデータの収集、アプリケーションの利用規約への承諾の取得を行う方法を説明します。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/24/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fcdbf0d56b79662cccd90380489ede672e6a0a66
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: f04a3fea3801f917a3ae4aced04ef3824d1cfa82
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484113"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184521"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのユーザー アクセスの管理
 

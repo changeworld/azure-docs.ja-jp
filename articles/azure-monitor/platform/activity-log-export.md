@@ -3,17 +3,16 @@ title: Azure アクティビティ ログをエクスポートする
 description: Azure アクティビティ ログをストレージにエクスポートして Azure Event Hubs をアーカイブし、Azure の外部にエクスポートします。
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 1c2047fc4b92ecd5776cb835a2f2138c25f5cb65
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: edaa585ffb3448a80b021aa924a9d654ac829931
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845468"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668963"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure アクティビティ ログをストレージまたは Azure Event Hubs にエクスポートする
 
@@ -118,12 +117,12 @@ Azure portal の **[イベント ハブにエクスポート]** オプション�
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | プロパティ | Required | Description |
+    | プロパティ | 必須 | Description |
     | --- | --- | --- |
-    | Name |はい |ログ プロファイルの名前。 |
+    | 名前 |はい |ログ プロファイルの名前。 |
     | StorageAccountId |いいえ |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
     | serviceBusRuleId |いいえ |Event Hubs を作成する Service Bus 名前空間の Service Bus 規則 ID。 文字列の形式は `{service bus resource ID}/authorizationrules/{key name}` になります。 |
-    | Location |はい |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 |
+    | 場所 |はい |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 |
     | RetentionInDays |はい |ストレージ アカウントにイベントを保持する日数 (1 から 365 の範囲)。 値が 0 の場合、ログは無期限に保存されます。 |
     | カテゴリ |いいえ |収集するイベント カテゴリのコンマ区切りリスト。 指定できる値は、_Write_、_Delete_、_Action_ です。 |
 
@@ -161,7 +160,7 @@ Azure portal の **[イベント ハブにエクスポート]** オプション�
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-    | プロパティ | Required | 説明 |
+    | プロパティ | 必須 | 説明 |
     | --- | --- | --- |
     | name |はい |ログ プロファイルの名前。 |
     | storage-account-id |はい |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |

@@ -1,19 +1,15 @@
 ---
 title: クイック スタート:Azure Monitor Application Insights を使用して Web サイトを監視する
 description: このクイックスタートでは、Azure Monitor Application Insights を使用したクライアント (ブラウザー) 側の Web サイト監視をセットアップする手順を説明します
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: quickstart
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/15/2019
 ms.custom: mvc
-ms.openlocfilehash: 408b24c83c5b3d795a86d1ad0275d732bb54a6db
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 1c581867f1e7ebc29f2aaff97124a08bec4e3b40
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963621"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670850"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>クイック スタート:Azure Monitor Application Insights を使って Web サイトの監視を開始する
 
@@ -40,9 +36,9 @@ Application Insights は、オンプレミスまたはクラウドで実行さ�
 
     | 設定        | Value           | 説明  |
    | ------------- |:-------------|:-----|
-   | **Name**      | グローバルに一意の値 | 監視しているアプリを識別する名前。 |
+   | **名前**      | グローバルに一意の値 | 監視しているアプリを識別する名前。 |
    | **リソース グループ**     | myResourceGroup      | Application Insights データをホストする新しいリソース グループの名前。 新しいリソース グループを作成するか、既存のリソース グループを使用することができます。 |
-   | **地域** | East US | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
+   | **場所** | 米国東部 | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
 
 3. **Create** をクリックしてください。
 

@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: daba49e6861eb67fd07c6fcf618b2b2d6cdd8c89
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 424ef37885d685829a11d1864a72b043a562231c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133816"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920554"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Azure 上の Red Hat ワークロード
 Azure では、さまざまなオファリングを通じて Red Hat ワークロードがサポートされます。 Red Hat Enterprise Linux (RHEL) イメージは、Red Hat Update Infrastructure (RHUI) と同様、RHEL ワークロードの中核にあります。
@@ -39,7 +39,7 @@ Azure には、Red Hat Gold Image も用意されています。 これらのイ
 > 二重請求に関する注意:RHEL サブスクリプションに対してユーザーが 2 回支払いを行うと、二重請求が発生します。 これは通常、お客様が subscription-manager を使用して RHEL PAYG VM のエンタイトルメントをアタッチしている場合に発生します。 たとえば、subscription-manager を使用して RHEL PAYG イメージ上の SAP パッケージのエンタイトルメントをアタッチしているお客様は、RHEL の料金を 2 回 (PAYG プレミアム料金を通じて 1 回、SAP サブスクリプションを通じて 1 回) 支払うため、間接的に二重請求されます。 これは、BYOS イメージのユーザーには発生しません。
 
 ### <a name="generation-2-images"></a>第 2 世代イメージ
-第 2世代 VM には、第 1 世代 VM と比較して、新しい機能がいくつか備わっています。 詳細については、[第 2 世代に関するドキュメント](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)で説明されています。 RHEL イメージの観点からの主な違いは、第 2 世代 VM は BIOS ファームウェア インターフェイスではなく UEFI を使用し、ブート時にマスター ブート レコード (MBR) ではなく GUID パーティション テーブル (GPT) を使用することです。 特にこのことにより、2 TB 以上の OS ディスク サイズが可能になります。 また、[Mv2 シリーズの VM](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#mv2-series) は、第 2 世代イメージでのみ実行されます。
+第 2世代 VM には、第 1 世代 VM と比較して、新しい機能がいくつか備わっています。 詳細については、[第 2 世代に関するドキュメント](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)で説明されています。 RHEL イメージの観点からの主な違いは、第 2 世代 VM は BIOS ファームウェア インターフェイスではなく UEFI を使用し、ブート時にマスター ブート レコード (MBR) ではなく GUID パーティション テーブル (GPT) を使用することです。 特にこのことにより、2 TB 以上の OS ディスク サイズが可能になります。 また、[Mv2 シリーズの VM](../../mv2-series.md) は、第 2 世代イメージでのみ実行されます。
 
 RHEL 第 2 世代イメージは、マーケットプレースで入手できます。 Azure CLI を使用してすべてのイメージを一覧表示したら "gen2" を探し、VM デプロイ プロセスの [詳細設定] タブに移動して、第 2 世代 VM をデプロイします。
 

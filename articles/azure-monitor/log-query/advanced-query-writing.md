@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor での高度なクエリ | Microsoft Docs
 description: この記事では、Analytics ポータルを使用して Azure Monitor でクエリを記述することに関するチュートリアルを提供します。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/15/2018
-ms.openlocfilehash: 8895224bef037c8c3f8b28a6085359837478d924
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 3d228c62cd2d1bcb7f4515cd698186e2ebcbe929
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894496"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670289"
 ---
 # <a name="writing-advanced-queries-in-azure-monitor"></a>Azure Monitor での高度なクエリの記述
 
@@ -123,7 +122,7 @@ SecurityEvent
 | project TimeGenerated, Account, AccountType, Computer, EventType
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Monitor ログ データと共に [Kusto クエリ言語](/azure/kusto/query/)を使用することに関するその他のレッスンを参照してください。
 
 - [文字列操作](string-operations.md)

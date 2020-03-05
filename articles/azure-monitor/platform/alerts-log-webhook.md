@@ -2,18 +2,17 @@
 title: Azure アラートでのログ アラートに対する Webhook アクション
 description: この記事では、Log Analytics ワークスペースまたは Application Insights を使用してログ アラート ルールを作成する方法、アラートでデータが HTTP Webhook としてプッシュされる方法、および可能なさまざまなカスタマイズの詳細について説明します。
 author: yanivlavi
+ms.author: yalavi
 services: monitoring
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 3a072ae64104f8fded49ff6a00f5b58902c39903
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 7b1956ad2bf9bf38ba9edc4c7234078557564071
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838568"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667705"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>ログ アラート ルールの webhook アクション
 [Azure でログ アラートを作成する](alerts-log.md)ときは、[アクション グループを使用して構成](action-groups.md)し、1 つ以上のアクションを実行することができます。 この記事では、使用できるさまざまな Webhook アクションについて説明し、JSON ベースのカスタム Webhook の構成方法を示します。
@@ -41,7 +40,7 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
 | パラメーター | 変数 | 説明 |
 |:--- |:--- |:--- |
 | *AlertRuleName* |#alertrulename |アラート ルールの名前。 |
-| *重大度* |#severity |起動されたログ アラートに設定されている重大度。 |
+| *Severity* |#severity |起動されたログ アラートに設定されている重大度。 |
 | *AlertThresholdOperator* |#thresholdoperator |より大きい、またはより小さいを使用する、アラート ルールのしきい値演算子。 |
 | *AlertThresholdValue* |#thresholdvalue |アラート ルールのしきい値。 |
 | *LinkToSearchResults* |#linktosearchresults |アラートを作成したクエリからのレコードを返す Analytics ポータルへのリンク。 |
@@ -205,7 +204,7 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure アラートでのログ アラート](alerts-unified-log.md)について学習します。
 - [Azure でログ アラートを管理する](alerts-log.md)方法を理解します。
 - [Azure でアクション グループ](action-groups.md)を作成および管理します。

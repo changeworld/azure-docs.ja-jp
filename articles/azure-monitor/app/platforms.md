@@ -1,19 +1,15 @@
 ---
 title: 'Application Insights: 言語、プラットフォーム、統合 | Microsoft Docs'
 description: Application Insights で利用できる言語、プラットフォーム、統合
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/18/2019
 ms.reviewer: olegan
-ms.openlocfilehash: 01cebc3a86808d549f1a7dc3adfd2883bc289076
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: d87b1d0aa74263f249db2030f2366b93b8c2b421
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73061450"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669830"
 ---
 # <a name="supported-languages"></a>サポートされている言語
 

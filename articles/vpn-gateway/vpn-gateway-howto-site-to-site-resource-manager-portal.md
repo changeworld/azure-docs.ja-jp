@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 03/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2e6aeda0e84b11221af110bda738d6d93f258978
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 857b50a04466f43a25cf80d7930cfb4639dc9d65
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894986"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301952"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Azure Portal でサイト間接続を作成する
 
@@ -47,11 +47,11 @@ ms.locfileid: "75894986"
 * **アドレス空間:** 10.1.0.0/16
 * **サブスクリプション:** 使用するサブスクリプション
 * **[リソース グループ]:** TestRG1
-* **[リージョン]:** East US
+* **[リージョン]:** 米国東部
 * **サブネット:** FrontEnd:10.1.0.0/24、BackEnd:10.1.1.0/24 (この演習では省略可能)
 * **ゲートウェイ サブネットのアドレス範囲:** 10.1.255.0/27
 * **仮想ネットワーク ゲートウェイ名:** VNet1GW
-* **パブリック IP アドレス名:** VNet1GWIP
+* **パブリック IP アドレス名:** VNet1GWpip
 * **VPN の種類:** ルート ベース
 * **[接続の種類]** : サイト間 (IPsec)
 * **ゲートウェイの種類:** VPN
@@ -61,7 +61,7 @@ ms.locfileid: "75894986"
 
 ## <a name="CreatVNet"></a>1.仮想ネットワークの作成
 
-[!INCLUDE [Create a virtual network](../../includes/vpn-gateway-create-virtual-network-portal-include.md)]
+[!INCLUDE [Create a virtual network](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
 ## <a name="VNetGateway"></a>2.VPN ゲートウェイを作成する
 
@@ -71,13 +71,13 @@ ms.locfileid: "75894986"
 
 ### <a name="example-settings"></a>設定例
 
-* **インスタンスの詳細 > リージョン:** East US
+* **インスタンスの詳細 > リージョン:** 米国東部
 * **Virtual Network > 仮想ネットワーク:** VNet1
 * **インスタンスの詳細 > 名前:** VNet1GW
 * **インスタンスの詳細 > ゲートウェイの種類:** VPN
 * **インスタンスの詳細 > VPN の種類:** ルート ベース
 * **Virtual Network > ゲートウェイ サブネット アドレス範囲:** 10.1.255.0/27
-* **パブリック IP アドレス > パブリック IP アドレス名:** VNet1GWIP
+* **パブリック IP アドレス > パブリック IP アドレス名:** VNet1GWpip
 
 [!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
@@ -92,7 +92,7 @@ ms.locfileid: "75894986"
 
 * **[名前]:** Site1
 * **[リソース グループ]:** TestRG1
-* **[場所]:** East US
+* **[場所]:** 米国東部
 
 
 [!INCLUDE [Add a local network gateway](../../includes/vpn-gateway-add-local-network-gateway-portal-include.md)]

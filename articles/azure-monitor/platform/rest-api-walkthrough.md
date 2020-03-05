@@ -1,18 +1,15 @@
 ---
 title: Azure 監視 REST API のチュートリアル
 description: 要求を認証し、Azure Monitor REST API を使用して使用可能なメトリック定義およびメトリックの値を取得する方法を説明します。
-ms.service: azure-monitor
-ms.subservice: ''
+ms.subservice: metrics
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 03/19/2018
-ms.openlocfilehash: 6dff1fe974ad4ffa993e4df03b4903d7e46e1990
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 42a7034c586f4e01066e989dcb2b9fae4eebfa85
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162261"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250824"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 監視 REST API のチュートリアル
 
@@ -119,7 +116,7 @@ Invoke-RestMethod -Uri $request `
 
 結果として得られる JSON 応答本文は次の例のようになります。(2 番目のメトリックがディメンションを備えていることに注意してください)
 
-```JSON
+```json
 {
     "value": [
         {
@@ -257,7 +254,7 @@ Invoke-RestMethod -Uri $request `
 
 結果として得られる JSON 応答本文は次の例のようになります。
 
-```JSON
+```json
 {
   "timespan": "2018-03-01T00:00:00Z/2018-03-02T00:00:00Z",
   "value": [
@@ -330,7 +327,7 @@ Invoke-RestMethod -Uri $request `
 
 結果として得られる JSON 応答本文は次の例のようになります。
 
-```JSON
+```json
 {
   "cost": 0,
   "timespan": "2018-03-01T02:00:00Z/2018-03-01T02:05:00Z",
@@ -414,7 +411,7 @@ Invoke-RestMethod -Uri $request `
 
 結果として得られる JSON 応答本文は次の例のようになります。
 
-```JSON
+```json
 {
   "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metricdefinitions",
   "value": [
@@ -482,7 +479,7 @@ Invoke-RestMethod -Uri $request `
 
 結果として得られる JSON 応答本文は次の例のようになります。
 
-```JSON
+```json
 {
   "value": [
     {
@@ -530,7 +527,7 @@ Invoke-RestMethod -Uri $request `
 
 結果として得られる JSON 応答本文は次の例のようになります。
 
-```JSON
+```json
 {
   "value": [
     {
@@ -590,7 +587,7 @@ Invoke-RestMethod -Uri $request `
 
 たとえば、特定の Logic App のメトリック定義を取得するためには、次のコマンドを実行します。
 
-```
+```console
 armclient GET /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metricDefinitions?api-version=2016-03-01
 ```
 
@@ -636,7 +633,7 @@ Get-AzLogicApp -ResourceGroupName azmon-rest-api-walkthrough -Name contosotweets
 
 結果は次の例のようになります。
 
-```
+```output
 Id             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets
 Name           : ContosoTweets
 Type           : Microsoft.Logic/workflows
@@ -658,13 +655,13 @@ Version        : 08586982649483762729
 
 Azure CLI を使用して Azure Storage アカウントのリソース ID を取得するには、次の例で示すように、`az storage account show` コマンドを実行します。
 
-```
+```azurecli
 az storage account show -g azmon-rest-api-walkthrough -n contosotweets2017
 ```
 
 結果は次の例のようになります。
 
-```JSON
+```json
 {
   "accessTier": null,
   "creationTime": "2017-08-18T19:58:41.840552+00:00",

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 4a45f516f751609b413948278e2f2cfca47c9da2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: c0967c411aa10d046caee13441b046bf0f462442
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703305"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274321"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>クイック スタート:トークンを取得し、Python コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す
 
@@ -76,37 +76,42 @@ ms.locfileid: "76703305"
 
 #### <a name="step-2-download-your-python-project"></a>手順 2:Python プロジェクトのダウンロード
 
-[Python デーモン プロジェクトをダウンロードする](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
+> [!div renderon="docs"]
+> [Python デーモン プロジェクトをダウンロードする](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
 
-#### <a name="step-3-configure-your-python-project"></a>手順 3:Python プロジェクトの構成
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [コード サンプルをダウンロードします](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
 
-1. ディスクのルートに近いローカル フォルダー (例: **C:\Azure-Samples**) に zip ファイルを展開します。
-1. サブフォルダー **1-Call-MsGraph-WithSecret"** に移動します。
-1. **parameters.json** を編集し、`authority`、`client_id`、および `secret` フィールドの値を次のスニペットに置き換えます。
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > Enter_the_Supported_Account_Info_Here
 
-    ```json
-    "authority": "https://login.microsoftonline.com/Enter_the_Tenant_Id_Here",
-    "client_id": "Enter_the_Application_Id_Here",
-    "secret": "Enter_the_Client_Secret_Here"
-    ```
-    > > [!div renderon="portal" id="certandsecretspage" class="sxs-lookup"]
-    > > [新しいクライアント シークレットを生成する]()
+
+> [!div renderon="docs"]
+> #### <a name="step-3-configure-your-python-project"></a>手順 3:Python プロジェクトの構成
+> 
+> 1. ディスクのルートに近いローカル フォルダー (例: **C:\Azure-Samples**) に zip ファイルを展開します。
+> 1. サブフォルダー **1-Call-MsGraph-WithSecret"** に移動します。
+> 1. **parameters.json** を編集し、`authority`、`client_id`、および `secret` フィールドの値を次のスニペットに置き換えます。
+>
+>    ```json
+>    "authority": "https://login.microsoftonline.com/Enter_the_Tenant_Id_Here",
+>    "client_id": "Enter_the_Application_Id_Here",
+>    "secret": "Enter_the_Client_Secret_Here"
+>    ```
+>    各値の説明:
+>    - `Enter_the_Application_Id_Here` - 登録したアプリケーションの**アプリケーション (クライアント) ID**。
+>    - `Enter_the_Tenant_Id_Here` - この値を**テナント ID** または**テナント名** (例: contoso.microsoft.com) に置き換えます。
+>    - `Enter_the_Client_Secret_Here` - この値を手順 1 で作成されたクライアント シークレットに置き換えます。
+>
+> > [!TIP]
+> > **アプリケーション (クライアント) ID** と**ディレクトリ (テナント) ID** の値を見つけるには、Azure portal 上でアプリの **[概要]** ページに移動します。 新しいキーを生成するには、 **[証明書とシークレット]** ページに移動します。
     
-    > [!div class="sxs-lookup" renderon="portal"]
-    > > [!NOTE]
-    > > このクイックスタートは、Enter_the_Supported_Account_Info_Here をサポートしています。
-    
-    > [!div renderon="docs"]
-    >> 各値の説明:
-    >> * `Enter_the_Application_Id_Here` - 登録したアプリケーションの**アプリケーション (クライアント) ID**。
-    >> * `Enter_the_Tenant_Id_Here` - この値を**テナント ID** または**テナント名** (例: contoso.microsoft.com) に置き換えます。
-    >> * `Enter_the_Client_Secret_Here` - この値を手順 1 で作成されたクライアント シークレットに置き換えます。
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-admin-consent"></a>手順 3:管理者の同意
 
-    > [!div renderon="docs"]
-    > > [!TIP]
-    > > **アプリケーション (クライアント) ID** と**ディレクトリ (テナント) ID** の値を見つけるには、Azure portal 上でアプリの **[概要]** ページに移動します。 新しいキーを生成するには、 **[証明書とシークレット]** ページに移動します。
-    
-#### <a name="step-4-admin-consent"></a>手順 4:管理者の同意
+> [!div renderon="docs"]
+> #### <a name="step-4-admin-consent"></a>手順 4:管理者の同意
 
 この時点でアプリケーションを実行すると、*HTTP 403 - Forbidden* エラー "`Insufficient privileges to complete the operation`" が表示されます。 これは、すべての "*アプリ専用のアクセス許可*" には管理者の同意が必要であるために発生します。ディレクトリのグローバル管理者にお使いのアプリケーションに同意してもらう必要があります。 ご自身のロールに応じて、次のオプションのいずれかを選択します。
 
@@ -133,7 +138,11 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 >> * `Enter_the_Tenant_Id_Here` - この値を**テナント ID** または**テナント名** (例: contoso.microsoft.com) に置き換えます。
 >> * `Enter_the_Application_Id_Here` - 登録したアプリケーションの**アプリケーション (クライアント) ID**。
 
-#### <a name="step-5-run-the-application"></a>手順 5:アプリケーションの実行
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-4-run-the-application"></a>手順 4:アプリケーションの実行
+
+> [!div renderon="docs"]
+> #### <a name="step-5-run-the-application"></a>手順 5:アプリケーションの実行
 
 このサンプルの依存関係を 1 回インストールする必要があります
 

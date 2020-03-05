@@ -7,12 +7,12 @@ ms.date: 12/10/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: a34fdc2f6d6698f53dc2ff7fdc11d0a985b23415
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d6ccd3cc61f9d8244874823be76496a4f4e1073c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358761"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199769"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>クイック スタート:Python 用 Azure Queue storage クライアント ライブラリ v12
 
@@ -28,7 +28,7 @@ Python 用 Azure Queue storage クライアント ライブラリ v12 を使用�
 * キューからメッセージを削除する
 * キューを削除する
 
-[API のリファレンスのドキュメント](https://docs.microsoft.com/python/api/azure-storage-queue/index) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue) | [パッケージ (Python Package Index)](https://pypi.org/project/azure-storage-queue/) | [サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples)
+[API のリファレンスのドキュメント](https://docs.microsoft.com/python/api/azure-storage-queue/index) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue) | [パッケージ (Python Package Index)](https://pypi.org/project/azure-storage-queue/) | [サンプル](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -305,10 +305,10 @@ Done
 
 このクイックスタートでは、Python コードを使用して、キューを作成してそこにメッセージを追加する方法について説明しました。 その後、メッセージの表示、取得、削除について説明しました。 最後に、メッセージ キューを削除する方法を説明しました。
 
-チュートリアル、サンプル、クイック スタートなどのドキュメントについては、次のページを参照してください。[Python 開発者向けの Azure](https://docs.microsoft.com/azure/python/)
+チュートリアル、サンプル、クイック スタートなどのドキュメントについては、次のページを参照してください。
 
 > [!div class="nextstepaction"]
-> <bpt id="p1">[</bpt>Azure for Python Developers<ept id="p1">](https://docs.microsoft.com/azure/python/)</ept>
+> [Python 開発者向けの Azure](https://docs.microsoft.com/azure/python/)
 
 * 詳細については、「[Python 用 Azure Storage ライブラリ](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage)」を参照してください。
 * その他の Azure Queue storage サンプル アプリについては、[Azure Queue storage v12 Python クライアント ライブラリのサンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples) ページを参照してください。

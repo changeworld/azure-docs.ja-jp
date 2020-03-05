@@ -3,17 +3,16 @@ title: Azure Monitor でクラシック アラートおよび監視を更新す�
 description: Azure portal で [アラート] (クラシック) に表示されていたクラシック監視サービスと機能の提供終了の説明。
 author: yanivlavi
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: f4639d46a796924b4fe1dcbb46735abea128388f
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: dec4d6824644cabf8b1872da207b8554fee0b3d3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307085"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659477"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Azure Monitor のアラートと監視の統合によるクラシックなアラートと監視の置換
 
@@ -87,7 +86,7 @@ Azure Monitor の[クラシック アラート](../../azure-monitor/platform/ale
 - 頻度、複数のリソース/ディメンション、[動的しきい値](alerts-dynamic-thresholds.md)、リソース/シグナルの変更などの新しいメトリック アラート機能を使用するように編集された移行済みのアラート ルール。
 - 新しい通知、または SMS、音声通話、ITSM 統合などのアクションの種類を使用するように編集された移行済みのアクション グループ。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [新しい統合された Azure Monitor](../../azure-monitor/overview.md)について確認する。
 * 新しい [Azure のアラート](../../azure-monitor/platform/alerts-overview.md)の詳細を確認する。

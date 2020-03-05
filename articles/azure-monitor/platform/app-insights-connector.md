@@ -1,18 +1,17 @@
 ---
 title: Azure Application Insights アプリのデータを表示する | Microsoft Docs
 description: Application Insights Connector ソリューションを使用すると、Application Insights でアプリを監視しているときにパフォーマンスに関する問題を診断し、ユーザーがアプリで何を行っているかを理解することができます。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: d0cfca44878130e870c633040afcfbdd55ba8b7b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c143d8aa24d3479f4619ea2c220d4a0c593f9cb1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75396547"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665156"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector 管理ソリューション (非推奨)
 
@@ -177,7 +176,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 | プロパティ | 説明 |
 | --- | --- |
-| 種類 | ApplicationInsights |
+| Type | ApplicationInsights |
 | ClientIP |   |
 | TimeGenerated | レコードの時刻 |
 | ApplicationId | Application Insights アプリのインストルメンテーション キー |
@@ -226,7 +225,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="exception-specific-fields"></a>例外に固有のフィールド
 
-| 種類 | ApplicationInsights |
+| Type | ApplicationInsights |
 | --- | --- |
 | TelemetryType | 例外 |
 | ExceptionType | 例外の種類 |
@@ -245,7 +244,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 | プロパティ | 説明 |
 | --- | --- |
-| 種類 | ApplicationInsights |
+| Type | ApplicationInsights |
 | TelemetryType | Request |
 | ResponseCode | クライアントに送信された HTTP 応答 |
 | RequestSuccess | 成功または失敗を示します。 true または false |

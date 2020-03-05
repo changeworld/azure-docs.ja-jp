@@ -1,18 +1,14 @@
 ---
 title: Azure Application Insights を使用してライブ ASP.NET Web アプリを監視する | Microsoft Docs
 description: Web サイトを再デプロイせずにそのパフォーマンスを監視します。 オンプレミスまたは VM でホストされた ASP.NET Web アプリが対象です。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 08/26/2019
-ms.openlocfilehash: ac238ae5715e09b2e64737801a862d89852ec9d9
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 63d632df61548d15a1e0a606cf2e198207faf341
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820754"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670051"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Application Insights コードなしアタッチを使用した実行時の Web アプリのインストルメント化
 
@@ -326,7 +322,7 @@ Status Monitor を使用して実行時にのみインストルメント化す�
 
 * サイトがライブの状態であることを確認するために [Web テストを作成][availability]します。
 * Web ページ コードからの例外を参照してトレースの呼び出しを挿入するために、[Web クライアント テレメトリ][usage]を追加します。
-* トレースとログの呼び出しを挿入できるように、[Application Insights SDK をコードに追加][greenbrown]します。
+* トレースとログの呼び出しを挿入できるように、[Application Insights SDK をコードに追加][greenbrown]します
 
 <!--Link references-->
 

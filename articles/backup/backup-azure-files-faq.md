@@ -3,12 +3,12 @@ title: Azure Files のバックアップに関する FAQ
 description: この記事では、Azure Backup サービスを使用して Azure ファイル共有を保護する方法に関してよく寄せられる質問への回答を示します。
 ms.date: 07/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 053fe38b07fff5d289c72024ef185fbf5d647f70
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c69d4642aefbd599d3783dcdfa059a0cd9d129d9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293999"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302544"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Files のバックアップに関する質問
 
@@ -83,7 +83,7 @@ Azure ファイル共有のバックアップは現在プレビュー段階で�
 - NWW (ノルウェー西部)
 - SZN (スイス北部)
 
-上記以外の特定の geo で使用する必要がある場合は、[AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com) 宛てにメールをお送りください。
+上記以外の特定の geo で使用する必要がある場合は、[AskAzureBackupTeam@microsoft.com](mailto:askazurebackupteam@microsoft.com) 宛てにメールをお送りください。
 
 ### <a name="how-many-azure-file-shares-can-i-protect-in-a-vault"></a>コンテナーで保護できる Azure ファイル共有はいくつですか。
 
@@ -103,7 +103,7 @@ Azure Backup では、現在、Azure ファイル共有の 1 日 1 回のスケ�
 
 どの時点でも、ファイル共有のスナップショットを 200 個まで作成することができます。 この制限には、ポリシーの定義に従って Azure Backup により作成されたスナップショットの数も含まれます。 この制限に達した後でバックアップが失敗するようになったら、将来のバックアップを正常に実行できるよう、オンデマンドの復元ポイントを削除してください。
 
-## <a name="restore"></a>[復元]
+## <a name="restore"></a>復元
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share"></a>削除した Azure ファイル共有から復旧できますか。
 

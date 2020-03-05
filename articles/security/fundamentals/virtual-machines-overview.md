@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: 3cbe7788ca7486022513fabdca682cbb78615281
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: a1726e18ea8c1ba86d77d7b9ca3d50c444620361
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500381"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657165"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 仮想マシンのセキュリティの概要
 この記事では、仮想マシンで使用できるコアの Azure セキュリティ機能の概要を示します。
@@ -61,7 +61,7 @@ Azure の Microsoft マルウェア対策は、アプリケーションやテナ
 * [次世代の保護](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)  
 * [エンドポイントの保護と対応](/windows/security/threat-protection/windows-defender-atp/overview-endpoint-detection-response)
 * [調査と修復の自動化](/windows/security/threat-protection/windows-defender-atp/automated-investigations-windows-defender-advanced-threat-protection)
-* [セキュリティ スコア](/windows/security/threat-protection/windows-defender-atp/overview-secure-score-windows-defender-advanced-threat-protection)
+* [セキュリティ スコア](/windows/security/threat-protection/microsoft-defender-atp/configuration-score)
 * [高度な検出](/windows/security/threat-protection/windows-defender-atp/overview-hunting-windows-defender-advanced-threat-protection)
 * [管理と API](/windows/security/threat-protection/windows-defender-atp/management-apis)
 * [Microsoft の脅威保護](/windows/security/threat-protection/windows-defender-atp/threat-protection-integration)

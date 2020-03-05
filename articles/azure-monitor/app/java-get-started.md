@@ -1,18 +1,16 @@
 ---
 title: クイック スタート:Azure Application Insights を使用した Java Web アプリの分析
 description: 'Application Insights を使用した Java Web アプリのアプリケーション パフォーマンス監視 '
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: abc16f8e1fdc6b81634b926eeb287e5d03efdc40
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 484d4e8df8a8fdceed62a65858126a16d028121e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963684"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670085"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>クイック スタート:Java Web プロジェクトで Application Insights を使う
 
@@ -38,7 +36,7 @@ Application Insights は、ライブ アプリケーションのパフォーマ�
 
 *プロジェクトの種類を選択します。*
 
-# <a name="maventabmaven"></a>[Maven](#tab/maven)
+# <a name="maven"></a>[Maven](#tab/maven)
 
 プロジェクトが既に Maven を使用してビルドする設定になっている場合は、*pom.xml* ファイルに次のコードをマージします。
 
@@ -56,7 +54,7 @@ Application Insights は、ライブ アプリケーションのパフォーマ�
     </dependencies>
 ```
 
-# <a name="gradletabgradle"></a>[Gradle](#tab/gradle)
+# <a name="gradle"></a>[Gradle](#tab/gradle)
 
 プロジェクトが既に Gradle を使用してビルドする設定になっている場合は、*build.gradle* ファイルに次のコードをマージします。
 
@@ -70,7 +68,7 @@ Application Insights は、ライブ アプリケーションのパフォーマ�
     }
 ```
 
-# <a name="other-typestabother"></a>[その他の型](#tab/other)
+# <a name="other-types"></a>[その他の型](#tab/other)
 
 [最新バージョン](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)をダウンロードし、必要なファイルをプロジェクトにコピーして、以前のバージョンを置き換えます。
 

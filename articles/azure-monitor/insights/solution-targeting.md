@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor での監視ソリューションのターゲット設定 | Microsoft Docs
 description: 監視ソリューションのターゲット設定を行うことで、監視ソリューションを特定のエージェント セットに制限できます。  この記事では、スコープの構成を作成して、ソリューションに適用する方法について説明します。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: 04b47cb6079d9213c1a20425f62286f1b2aa778b
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: dd3279db67fb45aee43cf1b0ef1bebf49433eef4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555314"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663234"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Azure Monitor での監視ソリューションのターゲット設定 (プレビュー)
 サブスクリプションに監視ソリューションを追加すると、ソリューションは、既定では Log Analytics ワークスペースに接続されているすべての Windows エージェントと Linux エージェントに自動的にデプロイされます。  ソリューションを特定のエージェント セットに制限することで、コストを管理し、ソリューション用に収集されるデータの量を制限することもできます。  この記事では、**ソリューションのターゲット設定**を使用する方法について説明します。この機能を使用すると、ソリューションにスコープを適用することができます。
@@ -68,6 +67,6 @@ ms.locfileid: "72555314"
 
 - エージェントの正常性評価
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure Log Analytics 監視ソリューションをワークスペースに追加する](solutions.md)ことの関するページで、環境にインストールできるソリューションを含む監視ソリューションについて学習します。
 - [Azure Monitor のログ クエリにおけるコンピューター グループ](../platform/computer-groups.md)に関するページで、コンピューター グループの作成について学習します。

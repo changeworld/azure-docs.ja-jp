@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 84ef01b5e7fc3f628b1cdf7a1f13175604ebcdd4
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 60f6443e041c2f3a76a9027bebd33dc29a07f445
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137958"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197472"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>方法:Text Analytics API を使用してセンチメントを検出する
 
@@ -76,7 +76,7 @@ Text Analytics API には、2 つのバージョンの感情分析 (v2 と v3) �
 
 ### <a name="example-c-code"></a>C# のコード例
 
-このバージョンの感情分析を呼び出す C# アプリケーションの例については、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/SentimentV3.cs) をご覧ください。
+このバージョンの感情分析を呼び出す C# アプリケーションの例については、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/TextAnalyticsSentiment.cs) をご覧ください。
 
 
 #### <a name="version-21"></a>[バージョン 2.1](#tab/version-2)
@@ -268,7 +268,7 @@ Text Analytics API はステートレスです。 データはアカウントに
 + POST 要求は、ユーザーのサブスクリプションで有効な、個人用に設定された[アクセス キーとエンドポイント](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)を使用して `/sentiment` エンドポイントに対して行われます。
 + ドキュメント ID ごとのセンチメント スコアで構成される応答出力は、JSON を受け入れるすべてのアプリにストリーミングすることができます。 たとえば、Excel や Power BI です。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * [Text Analytics の概要](../overview.md)
 * [Text Analytics クライアント ライブラリの使用](../quickstarts/text-analytics-sdk.md)

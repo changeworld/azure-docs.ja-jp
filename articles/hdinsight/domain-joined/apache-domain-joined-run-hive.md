@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: ff612c43a058fce02bd801e15632c27979f22d17
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 90d7da9c8ddd8c9c595f2209dcc34e2f595acfd2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435869"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196928"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して HDInsight 上に Hive ポリシーを構成する
 
@@ -52,11 +52,11 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDIn
 2. **[Hive]** で **[CLUSTERNAME_Hive]** を選択します。 構成済みの 2 つのポリシーが表示されます。
 3. **[新しいポリシーの追加]** を選択し、次の値を入力します。
 
-    |プロパティ |値 |
+    |プロパティ |Value |
     |---|---|
     |ポリシー名|read-hivesampletable-all|
     |Hive Database|既定値 (default)|
-    |テーブル|hivesampletable|
+    |table|hivesampletable|
     |Hive Column|*|
     |ユーザーの選択|hiveuser1|
     |アクセス許可|select|
@@ -70,11 +70,11 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDIn
 
 5. 最後の 2 つの手順を繰り返して、次のプロパティを設定したもう 1 つのポリシーを作成します。
 
-    |プロパティ |値 |
+    |プロパティ |Value |
     |---|---|
     |ポリシー名|read-hivesampletable-devicemake|
     |Hive Database|既定値 (default)|
-    |テーブル|hivesampletable|
+    |table|hivesampletable|
     |Hive column|clientid、devicemake|
     |ユーザーの選択|hiveuser2|
     |アクセス許可|select|
@@ -152,7 +152,7 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDIn
 
 * Enterprise セキュリティ パッケージを使用した HDInsight クラスターの構成については、[ESP での HDInsight クラスターの構成](apache-domain-joined-configure.md)に関するページをご覧ください。
 * ESP での HDInsight クラスターの管理については、「[Enterprise セキュリティ パッケージを使用して HDInsight クラスターを管理する](apache-domain-joined-manage.md)」をご覧ください。
-* SSH を使用して ESP を含む HDInsight クラスターで Hive クエリを実行する方法については、「[HDInsight で SSH を使用する](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)」をご覧ください。
+* SSH を使用して ESP を含む HDInsight クラスターで Hive クエリを実行する方法については、「[HDInsight で SSH を使用する](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight)」をご覧ください。
 * Hive JDBC を使用して Hive に接続する方法については、[Hive の JDBC ドライバーを使用して Azure HDInsight の Apache Hive に接続する方法](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md)に関するページを参照してください。
 * Hive ODBC を使用して Excel を Hadoop に接続する方法については、[Microsoft Hive ODBC ドライバーを使用した Excel から Apache Hadoop への接続](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)に関するページを参照してください。
 * Power Query を使用して Excel を Hadoop に接続する方法については、「[Power Query を使用して Excel を Apache Hadoop に接続する](../hadoop/apache-hadoop-connect-excel-power-query.md)」を参照してください。

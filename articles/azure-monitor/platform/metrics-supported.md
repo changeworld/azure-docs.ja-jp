@@ -3,17 +3,16 @@ title: Azure Monitor でサポートされているメトリック (リソース
 description: Azure Monitor で使用できるメトリックの一覧 (リソースの種類別) です。
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: reference
 ms.date: 12/18/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: e67cd8c85d9ba85e32ef7aece402f97ab24243e5
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 3e43d2baf4337e7a986d59c47f805183a920c7a1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963446"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659681"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 
@@ -92,15 +91,15 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |OtherRequests|その他のゲートウェイ要求 (非推奨)|Count|合計|その他のゲートウェイ要求の数 - 代わりに、GatewayResponseCodeCategory ディメンションで多次元要求メトリックを使用します|Location、Hostname|
 |Duration|ゲートウェイ要求の全体の期間|ミリ秒|Average|ゲートウェイ要求の全体の期間 (ミリ秒単位)|Location、Hostname|
 |BackendDuration|バックエンド要求の期間|ミリ秒|Average|バックエンド要求の期間 (ミリ秒)|Location、Hostname|
-|容量|容量|Percent|Average|ApiManagement サービスの使用状況メトリック|Location|
-|EventHubTotalEvents|EventHub イベントの合計数|Count|合計|EventHub に送信されるイベントの数|Location|
-|EventHubSuccessfulEvents|成功した EventHub イベント数|Count|合計|成功した EventHub イベントの数|Location|
-|EventHubTotalFailedEvents|失敗した EventHub イベント数|Count|合計|失敗した EventHub イベントの数|Location|
-|EventHubRejectedEvents|拒否された EventHub イベント数|Count|合計|拒否された EventHub イベントの数 (誤った構成または未承認)|Location|
-|EventHubThrottledEvents|調整された EventHub イベント数|Count|合計|調整された EventHub イベントの数|Location|
-|EventHubTimedoutEvents|タイムアウトした EventHub イベント数|Count|合計|タイムアウトした EventHub イベントの数|Location|
-|EventHubDroppedEvents|破棄された EventHub イベント数|Count|合計|キューのサイズ制限に達したためスキップされたイベントの数|Location|
-|EventHubTotalBytesSent|EventHub イベントのサイズ|バイト|合計|EventHub イベントの合計サイズ (バイト単位)|Location|
+|容量|容量|Percent|Average|ApiManagement サービスの使用状況メトリック|場所|
+|EventHubTotalEvents|EventHub イベントの合計数|Count|合計|EventHub に送信されるイベントの数|場所|
+|EventHubSuccessfulEvents|成功した EventHub イベント数|Count|合計|成功した EventHub イベントの数|場所|
+|EventHubTotalFailedEvents|失敗した EventHub イベント数|Count|合計|失敗した EventHub イベントの数|場所|
+|EventHubRejectedEvents|拒否された EventHub イベント数|Count|合計|拒否された EventHub イベントの数 (誤った構成または未承認)|場所|
+|EventHubThrottledEvents|調整された EventHub イベント数|Count|合計|調整された EventHub イベントの数|場所|
+|EventHubTimedoutEvents|タイムアウトした EventHub イベント数|Count|合計|タイムアウトした EventHub イベントの数|場所|
+|EventHubDroppedEvents|破棄された EventHub イベント数|Count|合計|キューのサイズ制限に達したためスキップされたイベントの数|場所|
+|EventHubTotalBytesSent|EventHub イベントのサイズ|バイト|合計|EventHub イベントの合計サイズ (バイト単位)|場所|
 |Requests|Requests|Count|合計|複数のディメンションを持つゲートウェイ要求メトリック|Location、Hostname、LastErrorReason、BackendResponseCode、GatewayResponseCode、BackendResponseCodeCategory、GatewayResponseCodeCategory|
 
 
@@ -1066,7 +1065,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |CaptureBacklog|バックログのキャプチャ。|Count|合計|Microsoft.EventHub のバックログをキャプチャします。|EntityName|
 |CapturedMessages|キャプチャされたメッセージ数。|Count|合計|Microsoft.EventHub のキャプチャされたメッセージ数。|EntityName|
 |CapturedBytes|キャプチャされたバイト数。|バイト|合計|Microsoft.EventHub のキャプチャされたバイト数。|EntityName|
-|Size|Size|バイト|Average|EventHub のサイズ (バイト単位)。|EntityName|
+|サイズ|サイズ|バイト|Average|EventHub のサイズ (バイト単位)。|EntityName|
 |INREQS|受信要求数 (非推奨)|Count|合計|名前空間に対して受信した送信要求の合計数 (非推奨)|なし|
 |SUCCREQ|成功した要求数 (非推奨)|Count|合計|名前空間の成功した要求の合計数 (非推奨)|なし|
 |FAILREQ|失敗した要求数 (非推奨)|Count|合計|名前空間の失敗した要求の合計数 (非推奨)|なし|
@@ -1782,7 +1781,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |ActiveConnections|ActiveConnections|Count|合計|Microsoft.ServiceBus のアクティブな接続の合計数。|なし|
 |ConnectionsOpened|開かれている接続数。|Count|Average|Microsoft.ServiceBus の開かれている接続数。|EntityName|
 |ConnectionsClosed|切断された接続数。|Count|Average|Microsoft.ServiceBus の切断された接続数。|EntityName|
-|Size|Size|バイト|Average|キュー/トピックのサイズ (バイト単位)。|EntityName|
+|サイズ|サイズ|バイト|Average|キュー/トピックのサイズ (バイト単位)。|EntityName|
 |メッセージ|キュー/トピック内のメッセージの数。|Count|Average|キュー/トピック内のメッセージの数。|EntityName|
 |ActiveMessages|キュー/トピック内のアクティブなメッセージの数。|Count|Average|キュー/トピック内のアクティブなメッセージの数。|EntityName|
 |DeadletteredMessages|キュー/トピック内の配信不能メッセージの数。|Count|Average|キュー/トピック内の配信不能メッセージの数。|EntityName|

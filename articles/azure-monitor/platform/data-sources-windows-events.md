@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor での Windows イベント ログを収集および分析する | Microsoft Docs
 description: Azure Monitor による Windows イベント ログの収集を構成する方法、および Azure Monitor で作成されるレコードの詳細について説明します。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: dd8f1e0e79f85c5d91966bcba13052f297422e67
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932400"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670510"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Azure Monitor での Windows イベント ログのデータ ソース
 Windows イベント ログは、多くのアプリケーションが書き込みを行うため、Windows エージェントを使用してデータを収集する際の最も一般的な[データ ソース](agent-data-sources.md) の 1 つです。  システムやアプリケーションなどの標準ログに加えて、アプリケーションによって作成される監視が必要なカスタム ログを指定して、イベントを収集できます。
@@ -31,7 +30,7 @@ Azure Monitor は、設定で指定されている Windows イベント ログ�
 > [!NOTE]
 > Windows イベント ログの重要なイベントは、Azure Monitor ログで重大度が "エラー" になります。
 
-## <a name="data-collection"></a>データ収集
+## <a name="data-collection"></a>データ コレクション
 Azure Monitor は、監視対象のイベントが作成されたときに、選択された重大度に一致する各イベントをそのイベント ログから収集します。  エージェントは、収集元の場所を各イベント ログに記録します。  エージェントは、一定の期間オフラインになった場合、最後に停止した時点からのイベントを収集します。これには、エージェントがオフライン中に作成されたイベントも含まれます。  エージェントがオフラインのときに、未収集のイベントにラップされたイベント ログが上書きされた場合は、これらのイベントが収集されない可能性もあります。
 
 >[!NOTE]
@@ -53,7 +52,7 @@ Windows イベント レコードの型は **Event** になり、次の表に示
 | ParameterXml |XML 形式でのイベント パラメーターの値。 |
 | ManagementGroupName |System Center Operations Manager エージェントの管理グループの名前。  その他のエージェントの場合、この値は `AOI-<workspace ID>` です |
 | RenderedDescription |イベントの説明とパラメーターの値 |
-| Source |イベントのソース。 |
+| source |イベントのソース。 |
 | SourceSystem |イベント収集元のエージェントの種類。 <br> OpsManager – Windows エージェント、直接接続または Operations Manager による管理 <br> Linux – すべての Linux エージェント  <br> AzureStorage – Azure Diagnostics |
 | TimeGenerated |イベントが Windows で作成された日付と時刻。 |
 | UserName |イベントのログを記録したアカウントのユーザー名。 |
@@ -69,7 +68,7 @@ Windows イベント レコードの型は **Event** になり、次の表に示
 | Event &#124; where EventLevelName == "error" &#124; summarize count() by Source |ソース別の Windows エラー イベントの数。 |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * 分析のために別の [データ ソース](agent-data-sources.md) を収集するように Log Analytics を構成します。
 * [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。  
 * お使いの Windows エージェントから [パフォーマンス カウンターの収集](data-sources-performance-counters.md) を構成します。

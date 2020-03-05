@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 3cdabbd5f527934492ce7ff37ae7d0f756d91fc1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 083ed0001adb5524c124295eb3bc31f4afad99cf
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979429"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251006"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Azure Logic Apps で B2B エンタープライズ統合用の統合アカウントを作成および管理する
 
@@ -55,13 +55,13 @@ ms.locfileid: "75979429"
 
    ![統合アカウントの詳細の指定](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-details.png)
 
-   | プロパティ | 必須 | 値 | 説明 |
+   | プロパティ | 必須 | Value | 説明 |
    |----------|----------|-------|-------------|
-   | **Name** | はい | <*integration-account-name*> | 統合アカウントの名前。文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、およびピリオド (`.`) のみを含めることができます。 この例では、"Fabrikam-Integration" を使用します。 |
+   | **名前** | はい | <*integration-account-name*> | 統合アカウントの名前。文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、およびピリオド (`.`) のみを含めることができます。 この例では、"Fabrikam-Integration" を使用します。 |
    | **サブスクリプション** | はい | <*Azure サブスクリプション名*> | Azure サブスクリプションの名前 |
    | **リソース グループ** | はい | <*Azure-resource-group-name*> | 関連するリソースを整理するために使用する [Azure リソース グループ](../azure-resource-manager/management/overview.md)の名前。 この例では、"FabrikamIntegration-RG" という名前の新しいリソース グループを作成します。 |
-   | **Pricing Tier** | はい | <*pricing-level*> | 統合アカウントの価格レベル。後で変更できます。 この例では **[Free]** を選択します。 詳細については、以下のトピックを参照してください。 <p>- [Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/) |
-   | **Location** | はい | <*Azure-region*> | 統合アカウント メタデータの保存先となるリージョン。 ロジック アプリと同じ場所を選択するか、統合アカウントと同じ場所でロジック アプリを作成します。 この例では、[米国西部] を使用します。 <p>**注**:[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 内で統合アカウントを作成するには、その ISE を場所として選択します。 詳細については、「[ISE で統合アカウントを作成する](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)」を参照してください。 |
+   | **価格レベル** | はい | <*pricing-level*> | 統合アカウントの価格レベル。後で変更できます。 この例では **[Free]** を選択します。 詳細については、以下のトピックを参照してください。 <p>- [Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/) |
+   | **場所** | はい | <*Azure-region*> | 統合アカウント メタデータの保存先となるリージョン。 ロジック アプリと同じ場所を選択するか、統合アカウントと同じ場所でロジック アプリを作成します。 この例では、[米国西部] を使用します。 <p>**注**:[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 内で統合アカウントを作成するには、その ISE を場所として選択します。 詳細については、「[ISE で統合アカウントを作成する](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)」を参照してください。 |
    | **Log Analytics** | いいえ | Off、On | この例では、 **[Off]** の設定のままにします。 |
    |||||
 
@@ -140,13 +140,13 @@ ms.locfileid: "75979429"
 
 1. コマンド プロンプトで [**az resource** コマンド](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-update)を入力し、`skuName` を目的の上位レベルに設定します。
 
-   ```Azure CLI
+   ```azurecli
    az resource update --resource-group {ResourceGroupName} --resource-type Microsoft.Logic/integrationAccounts --name {IntegrationAccountName} --subscription {AzureSubscriptionID} --set sku.name={SkuName}
    ```
   
    たとえば、Basic レベルの場合は、`skuName` を `Standard` に設定できます。
 
-   ```Azure CLI
+   ```azurecli
    az resource update --resource-group FabrikamIntegration-RG --resource-type Microsoft.Logic/integrationAccounts --name Fabrikam-Integration --subscription XXXXXXXXXXXXXXXXX --set sku.name=Standard
    ```
 
@@ -164,13 +164,13 @@ ms.locfileid: "75979429"
 
 1. コマンド プロンプトで、[**az resource** コマンド](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-update)を入力し、`skuName` を目的のレベルに設定します。
 
-   ```Azure CLI
+   ```azurecli
    az resource update --resource-group <resourceGroupName> --resource-type Microsoft.Logic/integrationAccounts --name <integrationAccountName> --subscription <AzureSubscriptionID> --set sku.name=<skuName>
    ```
   
    たとえば、Standard レベルを使用している場合は、`skuName` を `Basic` に設定できます。
 
-   ```Azure CLI
+   ```azurecli
    az resource update --resource-group FabrikamIntegration-RG --resource-type Microsoft.Logic/integrationAccounts --name Fabrikam-Integration --subscription XXXXXXXXXXXXXXXXX --set sku.name=Basic
    ```
 

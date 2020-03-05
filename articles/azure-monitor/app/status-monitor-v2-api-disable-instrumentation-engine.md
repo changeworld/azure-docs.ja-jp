@@ -1,20 +1,18 @@
 ---
 title: Azure Application Insights エージェント API リファレンス
 description: Application Insights エージェント API リファレンス。 Disable-InstrumentationEngine。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: dd546107164632c821c1ee9a1629fe0a1ca071fc
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: dafa12db95a10df467bf0d042cfd9395720648b2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899756"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671377"
 ---
-# <a name="application-insights-agent-api-disable-instrumentationengine"></a>Application Insights Agent API: Disable-InstrumentationEngine
+# <a name="application-insights-agent-api-disable-instrumentationengine"></a>Application Insights エージェント API:Disable-InstrumentationEngine
 
 この記事では、[Az.ApplicationMonitor PowerShell モジュール](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)のメンバーであるコマンドレットについて説明します。
 
@@ -31,12 +29,12 @@ ms.locfileid: "72899756"
 PS C:\> Disable-InstrumentationEngine
 ```
 
-## <a name="parameters"></a>parameters 
+## <a name="parameters"></a>パラメーター 
 
 ### <a name="-verbose"></a>-Verbose
 **共通パラメーター。** 詳細なログを出力する場合はこのスイッチを使用します。
 
-## <a name="output"></a>Output
+## <a name="output"></a>出力
 
 
 #### <a name="example-output-from-successfully-disabling-the-instrumentation-engine"></a>インストルメンテーション エンジンが正常に無効化された場合の出力例
@@ -50,7 +48,7 @@ Configuring registry for instrumentation engine...
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
  Application Insights エージェントをさらに活用する:
  - Application Insights エージェントのトラブルシューティングを行う場合は、[こちらのガイド](status-monitor-v2-troubleshoot.md)を使用してください。

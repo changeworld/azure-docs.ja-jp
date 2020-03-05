@@ -3,22 +3,21 @@ title: Windows Azure Diagnostics 拡張機能 (WAD) のインストールと構�
 description: Azure Storage アカウントで Azure 診断データを収集して、使用可能なツールのいずれかで表示できるようにする方法について説明します。
 services: azure-monitor
 author: bwren
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.openlocfilehash: 5b3cc4cbaa663b7932609e85c544378a7cca69ef
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 929ab4109eb8d0e90b6c561a2135c0b7dd4205bb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77473219"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672261"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Windows Azure Diagnostics 拡張機能 (WAD) のインストールと構成
 Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲスト オペレーティング システムと Azure 仮想マシンと他のコンピューティング リソースのワークロードから監視データを収集します。 この記事では、Windows 診断拡張機能のインストールと構成の詳細と、Azure ストレージ アカウントでデータを保存する方法について説明します。
 
-診断拡張機能は、Azure では[仮想マシン拡張機能](/virtual-machines/extensions/overview)として実装されているため、Resource Manager テンプレート、PowerShell、および CLI を使用した場合と同じインストール オプションがサポートされています。 仮想マシン拡張機能のインストールと保守の詳細については、[Windows 用の仮想マシン拡張機能と機能](/virtual-machines/extensions/features-windows)に関する記事を参照してください。
+診断拡張機能は、Azure では[仮想マシン拡張機能](../../virtual-machines/extensions/overview.md)として実装されているため、Resource Manager テンプレート、PowerShell、および CLI を使用した場合と同じインストール オプションがサポートされています。 仮想マシン拡張機能のインストールと保守の詳細については、[Windows 用の仮想マシン拡張機能と機能](../../virtual-machines/extensions/features-windows.md)に関する記事を参照してください。
 
 ## <a name="install-with-azure-portal"></a>Azure portal を使用してインストールする
 Azure portal で、個々の仮想マシンに診断拡張機能をインストールし、構成することができます。構成を直接操作するのではなく、インターフェイスが用意されています。 診断拡張機能を有効にすると、最も一般的なパフォーマンス カウンターとイベントを備えた既定の構成が自動的に使用されます。 特定の要件に応じて、この既定構成を変更できます。

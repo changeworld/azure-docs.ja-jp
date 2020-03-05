@@ -1,18 +1,14 @@
 ---
 title: 新しい Azure Application Insights リソースの作成 | Microsoft Docs
 description: 新しいライブ アプリケーションを対象にした Application Insights 監視を手動でセットアップします。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 12/02/2019
-ms.openlocfilehash: 1ba6d6e1774db4e9c95b107e1482a0c6ce532bb5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 090c983dcca101557f8dec479d1267275d24908b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432629"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672040"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights リソースの作成
 
@@ -28,11 +24,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![左上隅にある + 記号をクリックします。 開発者ツールを選択し、Application Insights を選択する](./media/create-new-resource/new-app-insights.png)
 
-   | 設定        |  値           | 説明  |
+   | 設定        |  Value           | 説明  |
    | ------------- |:-------------|:-----|
-   | **Name**      | 一意の値 | 監視しているアプリを識別する名前。 |
+   | **名前**      | 一意の値 | 監視しているアプリを識別する名前。 |
    | **リソース グループ**     | myResourceGroup      | App Insights データをホストする新しいリソース グループまたは既存のリソース グループの名前。 |
-   | **Location** | East US | お近くの場所か、アプリがホストされている場所の近くを選択します。 |
+   | **場所** | 米国東部 | お近くの場所か、アプリがホストされている場所の近くを選択します。 |
 
 > [!NOTE]
 > 異なるリソースグループ間で同じリソース名を使用できますが、グローバルに一意の名前を使用すると便利です。 これは、必要な構文が簡略化するため、 [クロスリソース クエリを実行するする](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query#identifying-an-application)場合に便利です。

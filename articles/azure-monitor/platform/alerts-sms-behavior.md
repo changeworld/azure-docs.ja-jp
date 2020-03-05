@@ -2,21 +2,21 @@
 title: アクション グループの SMS アラート動作
 description: SMS メッセージの形式と登録解除、再登録、ヘルプ要求の SMS メッセージに応答する方法について説明します。
 author: dkamstra
+ms.author: dukek
 services: monitoring
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 02/16/2018
-ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 74666149824627308b6c5b026e0c9ba7a7750ada
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b75bda626f887f1224c1b0f18a80887983a2367d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60346299"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665308"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>アクション グループの SMS アラート動作
-## <a name="overview"></a>概要 ##
+
+## <a name="overview"></a>概要 
 アクション グループを使用して、アクションのリストを構成できます。 これらのグループはアラートを定義するときに使用し、アラートがトリガーされたときに特定のアクション グループに通知が送信されるようにします。 サポートされているアクションの 1 つは SMS です。SMS 通知は双方向通信をサポートします。 ユーザーは SMS に次のように対応できます。
 
 - **アラートの登録を解除する:** ユーザーはすべてのアクション グループまたは単一のアクション グループのすべての SMS アラートの登録を解除できます。
@@ -42,7 +42,7 @@ ms.locfileid: "60346299"
 >SMS アラートの登録を解除したユーザーが新しいアクション グループに追加されると、その新しいアクション グループの SMS アラートを受け取りますが、以前のすべてのアクション グループの登録は解除されたままになります。
 
 ## <a name="next-steps"></a>次の手順
-[アクティビティ ログのアラートの概要](alerts-overview.md)を把握し、アラートを生成する方法について学習します  
+[アクティビティ ログ アラートの概要](alerts-overview.md)を把握し、アラートを生成する方法について学習してください  
 [SMS レートの制限](alerts-rate-limiting.md)について学習します  
-[アクション グループ](../../azure-monitor/platform/action-groups.md)の詳細について学習します
+[アクション グループ](../../azure-monitor/platform/action-groups.md)の詳細を確認する
 

@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C を使用して QQ アカウントでのサインアップおよびサインインを設定する
 description: Azure Active Directory B2C を使用するアプリケーションで QQ アカウントを持つ顧客にサインアップとサインインを提供します。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2bda344c32d03425c7cfec4d253e18451eb1f5a1
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b0f15124c64e5cca54112987d486ddadaca79452
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850606"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187989"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して QQ アカウントでのサインアップおよびサインインを設定する
 
@@ -48,7 +48,7 @@ Azure Active Directory B2C (Azure AD B2C) で ID プロバイダーとして QQ 
 ## <a name="configure-qq-as-an-identity-provider"></a>QQ を ID プロバイダーとして構成する
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-1. ポータル ツールバーの **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントが含まれているディレクトリを選択します。
+1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. **[ID プロバイダー]** を選択してから、 **[QQ (プレビュー)]** を選択します。
 1. **[名前]** を入力します。 たとえば、「*QQ*」とします。

@@ -12,20 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: aedb9c8d178cb210efedf8ff4bcbbeca39f89e60
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 6c877690cf27edd73f1d828b8a1dda6f4f34e780
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981802"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918174"
 ---
 #  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>NSG で RDP ポートが有効ではないために VM にリモート接続できない
 
 この記事では、リモート デスクトップ プロトコル (RDP) のポートがネットワーク セキュリティ グループ (NSG) で有効になっていないために、Azure Windows 仮想マシン (VM) に接続できない問題を解決する方法について説明します。
 
-
-> [!NOTE] 
-> Azure には、リソースの作成と操作に関して 2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../azure-resource-manager/management/deployment-models.md)です。 新しいデプロイでは、クラシック デプロイ モデルではなく、Resource Manager デプロイ モデルを使用することをお勧めします。 
 
 ## <a name="symptom"></a>症状
 
@@ -41,7 +38,7 @@ NSG で RDP ポートを有効にするには、次の手順のようにしま�
 3. **[設定]** の **[ネットワーク]** を選択します。 
 4. **[受信ポートの規則]** で、RDP のポートが正しく設定されていることを確認します。 構成の例を次に示します。 
 
-    **[優先度]** :300 </br>
+    **[優先度]** :該当なし </br>
     **Name**:Port_3389 </br>
     **ポート (宛先)** :3389 </br>
     **プロトコル**:TCP </br>

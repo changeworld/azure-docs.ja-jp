@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: b2d49eeadf068cbaacaa5e147f38025c55f33ff4
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 9595ee87801fa4ce187a50197fc58d6c448eac24
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651363"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303224"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Azure Virtual Machines で Premium ファイル共有を使用して SQL Server フェールオーバー クラスター インスタンスを構成する
 
@@ -53,7 +53,7 @@ Premium ファイル共有は、多くのワークロードのニーズを満た
 
 多くのワークロードにはバースティング IO があるため、使用率が高い時間帯にチェックして、最大 IOPS と平均 IOPS の両方をメモしておくことをお勧めします。 Premium ファイル共有は、共有のサイズに基づいて IOPS を提供します。 また、Premium ファイル共有には、最大 1 時間、IO をベースライン量の 3 倍にバーストできる無料バースティングも用意されています。
 
-Premium ファイル共有のパフォーマンスの詳細については、「[ファイル共有のパフォーマンス レベル](https://docs.microsoft.com/azure/storage/files/storage-files-planning#file-share-performance-tiers)」を参照してください。
+Premium ファイル共有のパフォーマンスの詳細については、「[ファイル共有のパフォーマンス レベル](https://docs.microsoft.com/azure/storage/files/storage-files-planning#storage-tiers)」を参照してください。
 
 ### <a name="licensing-and-pricing"></a>ライセンスと価格
 
@@ -101,7 +101,7 @@ Filestream は、Premium ファイル共有のフェールオーバー クラス
 
    1. Azure portal で、 **[リソースの作成]** を選択して Azure Marketplace を開きます。 "**可用性セット**" を検索します。
    1. **[可用性セット]** を選択します。
-   1. **作成** を選択します。
+   1. **［作成］** を選択します
    1. **[可用性セットの作成]** で、次の値を指定します。
       - **Name**:可用性セットの名前。
       - **サブスクリプション**:Azure サブスクリプション。
@@ -332,7 +332,7 @@ Azure 仮想マシンでは、クラスターは、一度に 1 つのクラス�
 
 1. **[追加]** を選択します。 Azure Marketplace で "**ロード バランサー**" を検索します。 **[ロード バランサー]** を選択します。
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 1. 次の値を使用してロード バランサーを設定します。
 

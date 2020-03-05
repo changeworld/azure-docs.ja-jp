@@ -1,18 +1,14 @@
 ---
 title: Azure Application Insights の検索の使用 | Microsoft Docs
 description: Web アプリによって送信された未加工のテレメトリを検索およびフィルター処理します。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/30/2019
-ms.openlocfilehash: 77cd0a8d0c1a93e7dc1db931e987a172d31978ef
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 8039a55784f63030f330d6c1e2061e99b8b63bbf
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678029"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669677"
 ---
 # <a name="using-search-in-application-insights"></a>Application Insights の検索の使用
 
@@ -96,14 +92,14 @@ Visual Studio で [検索] ウィンドウを開きます。
 
 部分文字列ではなく、語句全体を検索します。 引用符で特殊文字を囲みます。
 
-| string | 検索*されない* | Found |
+| String | 検索*されない* | Found |
 | --- | --- | --- |
 | HomeController.About |`home`<br/>`controller`<br/>`out` | `homecontroller`<br/>`about`<br/>`"homecontroller.about"`|
-|米国|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"united states"`
+|United States|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"united states"`
 
 使用できる検索表現を次に示します。
 
-| サンプル クエリ | 効果 |
+| サンプル クエリ | 結果 |
 | --- | --- |
 | `apple` |時間範囲内でフィールドに "apple" という単語が含まれるすべてのイベントを検索します |
 | `apple AND banana` <br/>`apple banana` |両方の単語を含むイベントを検索します。 "and" ではなく大文字の "AND" を使用します。 <br/>短縮形。 |

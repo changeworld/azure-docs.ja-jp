@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor ログ クエリ言語の違い | Microsoft Docs
 description: Azure Monitor で使用される Kusto クエリ言語のリファレンス情報。 Azure Monitor に固有の追加要素と、Azure Monitor ログ クエリでサポートされていない要素が含まれています。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 16a221c0530d65e11589ac272a8e032de0cd3d2b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b4601968a318388086a60ef98e4359ae01f652ed
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933100"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662104"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Azure Monitor ログ クエリ言語の違い
 
@@ -56,7 +55,7 @@ ms.locfileid: "72933100"
 * [app()](app-expression.md)
 * [workspace()](workspace-expression.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Monitor ログ クエリを記述するための、さまざまなリソース](query-language.md)への参照を取得します。
 - 完全な [Kusto クエリ言語のリファレンス ドキュメント](/azure/kusto/query/)にアクセスします。

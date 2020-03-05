@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d53a3f270c1de3c8d533b5886e0051f6aa1ef10d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 961d10f3a0bc4be25a2981e5411cc6a8a75d2105
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74776740"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255096"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>Azure で適切な MariaDB サーバーオプションを選択する
 
@@ -78,16 +78,16 @@ Azure Database for MariaDB は、あらゆる種類のノード レベルの中�
 
 各オプションの管理上の考慮事項について、次の一覧で説明します。
 
-* Azure Database for MariaDB では、データベースを引き続きご自分で管理できます。 しかし、データベース エンジン、オペレーティング システム、ハードウェアを管理する必要はなくなります。 引き続き管理できる項目の例を次に示します。
+* Azure Database for MariaDB では、データベースを引き続きご自分で管理できます。 しかしながら、データベース エンジン、オペレーティング システム、ハードウェアを管理する必要はなくなります。 引き続き管理できる項目の例を次に示します。
 
   - データベース
   - サインイン
   - インデックスのチューニング
   - クエリのチューニング
   - 監査
-  - セキュリティ
+  - Security
 
-  また、別のデータ センターに高可用性を構成するために必要な構成や管理は、最小限で済むか、またはまったく行わないで済みます。
+  また、別のデータ センターに高可用性を構成するために必要な構成や管理は、最小限で済むか、まったく行わないで済みます。
 
 * Azure VM 上の MariaDB では、オペレーティング システムと MariaDB サーバー インスタンスの構成を全面的に制御できます。 VM では、オペレーティング システムとデータベース ソフトウェアを更新またはアップグレードするタイミングを自分で決定します。 また、ウイルス対策アプリケーションなどの追加ソフトウェアをインストールするタイミングも決定します。 修正プログラムの適用、バックアップ、高可用性の実現を大幅に簡素化するために、自動化された機能がいくつか用意されています。 VM のサイズ、ディスクの数、ストレージの構成を制御できます。 詳細については、[Azure の仮想マシンおよびクラウド サービスのサイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)に関する記事を参照してください。
 
@@ -97,9 +97,9 @@ Azure Database for MariaDB は、あらゆる種類のノード レベルの中�
 
 * 新しいオンプレミス ハードウェアの取得にかかる時間とコストを回避したい場合、Azure VM 上の MariaDB は、MariaDB データベースを必要とするアプリケーションや、Windows または Linux 上の MariaDB 機能にアクセスする必要があるアプリケーションに適したソリューションです。 このソリューションは、既存のオンプレミス アプリケーションとデータベースを Azure にそのまま移行する場合で、Azure Database for MariaDB が適さない場合にも適しています。
 
-  プレゼンテーション層、アプリケーション層、およびデータ層を変更する必要がないため、既存のソリューションを再設計する時間と予算が節約されます。 その代わりに、すべてのソリューションを Azure に移行することと、Azure プラットフォームで必要となる可能性のあるパフォーマンス最適化に取り組むことに集中できます。
+  プレゼンテーション層、アプリケーション層、データ層を変更する必要がないため、既存のソリューションを再設計する時間と予算が節約されます。 その代わりに、すべてのソリューションを Azure に移行することと、Azure プラットフォームで必要となる可能性のあるパフォーマンス最適化に取り組むことに集中できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 「[Azure Database for MariaDB の価格](https://azure.microsoft.com/pricing/details/MariaDB/)」を参照します。
-* [初めてのサーバーを作成](https://review.docs.microsoft.com/azure/MariaDB/quickstart-create-MariaDB-server-database-using-azure-portal)してみましょう。
+* [初めてのサーバーを作成](https://docs.microsoft.com/azure/MariaDB/quickstart-create-MariaDB-server-database-using-azure-portal)してみましょう。

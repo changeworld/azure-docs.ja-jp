@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor アラートに対する自主的移行ツールのしくみを理解する
 description: アラート移行ツールのしくみと問題のトラブルシューティングの方法について説明します。
-author: yalavi
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: yalavi
+author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 493fa4ac51bf593b7856b236c5d861ec029769d3
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: 8cc77d13567910797cd519ac193b848f3ea434da
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680683"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665274"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>移行ツールの動作の理解
 

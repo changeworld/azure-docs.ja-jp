@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 26309bb9a7b9785dbac7f42b0c20de99bca10a17
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: c27cde85952ca6d982accddad59eceae76e3f1e8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76769239"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194459"
 ---
 # <a name="certificate-creation-methods"></a>証明書の作成方法
 

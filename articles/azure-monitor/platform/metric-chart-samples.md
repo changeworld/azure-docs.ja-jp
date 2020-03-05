@@ -3,17 +3,16 @@ title: Azure Monitor のメトリック グラフの例
 description: Azure Monitor データの視覚化について学習します。
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 8cc653b8e5d2c239243bf6a09955b10011c7408b
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 1aaeb853a67b36a21a09db57e015029d10cd0c36
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538963"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660872"
 ---
 # <a name="metric-chart-examples"></a>メトリック グラフの例 
 
@@ -51,7 +50,7 @@ Azure プラットフォームでは [1,000 個を超えるメトリック](http
 
 メトリックの選択ツールで、お客様のストレージ アカウントと **[トランザクション]** メトリックを選択します。 グラフの種類を**棒グラフ**に切り替えます。 **[Apply splitting]\(分割の適用\)** をクリックし、 **[API 名]** ディメンションを選択します。 次に、 **[フィルターの追加]** をクリックし、もう一度 **[API 名]** ディメンションを選択します。 フィルター ダイアログで、グラフにプロットしたい API を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Monitor [Workbooks](../../azure-monitor/app/usage-workbooks.md) について学習します
 * [メトリックス エクスプローラー](metrics-charts.md)について学習します

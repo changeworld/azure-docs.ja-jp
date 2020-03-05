@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor ログ クエリの app() 式 | Microsoft Docs
 description: app 式は、同じリソース グループ、別のリソース グループ、または別のサブスクリプション内の特定の Application Insights アプリからデータを取得するために、Azure Monitor ログ クエリで使用します。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/25/2019
-ms.openlocfilehash: ffef73f88c8679d0b0be81222b1b61c4eaef5098
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5502df1cd119c0f63c65945d73431a17282ebc0c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933076"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670259"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure Monitor クエリでの app() 式
 
@@ -27,9 +26,9 @@ ms.locfileid: "72933076"
 
 ## <a name="arguments"></a>引数
 
-- *識別子*: 次の表のいずれかの形式を使用してアプリを識別します。
+- *識別子*:次の表のいずれかの形式を使用してアプリを識別します。
 
-| ID | 説明 | 例
+| 識別子 | 説明 | 例
 |:---|:---|:---|
 | リソース名 | 人間が判読できるアプリの名前 (別名 "コンポーネント名") | app("fabrikamapp") |
 | 修飾名 | "subscriptionName/resourceGroup/componentName" の形式のアプリのフルネーム | app('AI-Prototype/Fabrikam/fabrikamapp') |
@@ -37,7 +36,7 @@ ms.locfileid: "72933076"
 | Azure リソース ID | Azure リソースの識別子 |app("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
 
 
-## <a name="notes"></a>メモ
+## <a name="notes"></a>Notes
 
 * アプリケーションへの読み取りアクセスが必要です。
 * アプリケーションをその名前で識別することで、アクセス可能なすべてのサブスクリプション全体で一意であるとみなされます。 指定した名前を持つ複数のアプリケーションが存在する場合は、あいまいさのためにクエリが失敗します。 この場合、その他の識別子のいずれかを使用する必要があります。
@@ -70,7 +69,7 @@ union
 | where TimeGenerated between(todatetime("2018-02-08 15:00:00") .. todatetime("2018-12-08 15:05:00"))
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ワークスペースの式](workspace-expression.md)に関するページを見て、Log Analytics ワークスペースについて参照します。
 - [Azure Monitor データ](../../azure-monitor/log-query/log-query-overview.md)の格納方法を確認します。

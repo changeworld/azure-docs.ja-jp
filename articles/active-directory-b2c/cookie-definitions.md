@@ -3,20 +3,20 @@ title: Cookie の定義
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C で使われる Cookie の定義を提供します。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/23/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c6e48a663e4d1702851e11bc5124e56c52309d08
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b984b75b3a12606aa0d82c7e7b399d5dce59df33
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76908872"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189516"
 ---
 # <a name="cookies-definitions-for-azure-ad-b2c"></a>Azure AD B2C での Cookie の定義
 
@@ -39,7 +39,7 @@ Microsoft Azure AD B2C サービスは、SameSite ブラウザー構成と互換
 
 次の表では、Azure AD B2C で使われる Cookie の一覧を示します。
 
-| Name | Domain | 有効期限 | 目的 |
+| 名前 | Domain | 有効期限 | 目的 |
 | ----------- | ------ | -------------------------- | --------- |
 | `x-ms-cpim-admin` | main.b2cadmin.ext.azure.com | [ブラウザー セッション](session-behavior.md)の終了 | テナント間でユーザーのメンバーシップ データを保持します。 ユーザーがメンバーになっているテナントと、メンバーシップのレベル (管理者またはユーザー) です。 |
 | `x-ms-cpim-slice` | b2clogin.com、login.microsoftonline.com、ブランド化されたドメイン | [ブラウザー セッション](session-behavior.md)の終了 | 適切な運用インスタンスに要求をルーティングするために使われます。 |

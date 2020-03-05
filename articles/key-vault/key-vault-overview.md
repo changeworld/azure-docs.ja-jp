@@ -6,16 +6,17 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 97df5c309a3bdbf5055d67f893e33ab1a0c3232a
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 4e2953b107b017d032e737e2878472166c677839
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832774"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194956"
 ---
 # <a name="what-is-azure-key-vault"></a>Azure Key Vault とは?
 
@@ -79,5 +80,5 @@ Key Vault 自体は、ストレージ アカウント、イベント ハブ、�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [クイック スタート:CLI を使用した Azure キーコンテナーの作成](quick-create-cli.md)
+- [クイック スタート: CLI を使用した Azure キーコンテナーの作成](quick-create-cli.md)
 - [キー コンテナーからシークレットを読み取るように Azure Web アプリケーションを構成する](tutorial-web-application-keyvault.md)

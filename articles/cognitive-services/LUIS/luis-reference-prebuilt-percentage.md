@@ -8,18 +8,18 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 9e9aa3fc7c0ff76f6b93a8acc67681d1ed7cf4ad
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 31ea1c36139abcb1e102161ad76a203073ba4dfd
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491231"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270514"
 ---
 # <a name="percentage-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの percentage 作成済みエンティティ
-パーセンテージの値は、分数 `3 1/2` またはパーセンテージ `2%` として出現する可能性があります。 このエンティティは既にトレーニングされているので、パーセンテージを含む発話の例をアプリケーション意図に追加する必要はありません。 percentage エンティティは、[多くのカルチャ](luis-reference-prebuilt-entities.md)でサポートされています。 
+パーセンテージの値は、分数 `3 1/2` またはパーセンテージ `2%` として出現する可能性があります。 このエンティティは既にトレーニングされているので、パーセンテージを含む発話の例をアプリケーション意図に追加する必要はありません。 percentage エンティティは、[多くのカルチャ](luis-reference-prebuilt-entities.md)でサポートされています。
 
 ## <a name="types-of-percentage"></a>percentage のタイプ
 percentage は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L114) GitHub リポジトリから管理されます。
@@ -30,7 +30,7 @@ percentage は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
 
 `set a trigger when my stock goes up 2%`
 
-#### <a name="v3-responsetabv3"></a>[V3 の応答](#tab/V3)
+#### <a name="v3-response"></a>[V3 の応答](#tab/V3)
 
 次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
 
@@ -41,7 +41,7 @@ percentage は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
     ]
 }
 ```
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 の詳細な応答](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[V3 の詳細な応答](#tab/V3-verbose)
 次の JSON は、`verbose` パラメーターが `true` に設定されている場合です。
 
 ```json
@@ -66,7 +66,7 @@ percentage は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
     }
 }
 ```
-#### <a name="v2-responsetabv2"></a>[V2 の応答](#tab/V2)
+#### <a name="v2-response"></a>[V2 の応答](#tab/V2)
 
 次の例では、**builtin.percentage** エンティティの解決を示します。
 
@@ -83,10 +83,10 @@ percentage は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
     }
 ]
 ```
-* * * 
+* * *
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
 
-[ordinal](luis-reference-prebuilt-ordinal.md)、[number](luis-reference-prebuilt-number.md)、[temperature](luis-reference-prebuilt-temperature.md) エンティティについて学習します。 
+[ordinal](luis-reference-prebuilt-ordinal.md)、[number](luis-reference-prebuilt-number.md)、[temperature](luis-reference-prebuilt-temperature.md) エンティティについて学習します。

@@ -2,17 +2,15 @@
 title: CLI を使用してカスタム Linux コンテナーを管理する
 description: コマンド ラインから Azure App Service のカスタム Linux コンテナーを管理する方法について説明します。 アプリのプロビジョニングまたはメンテナンスを自動化します。
 keywords: Azure App Service, Web アプリ, CLI, Linux, OSS
-author: ahmedelnably
 ms.topic: article
 ms.date: 08/22/2017
-ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 773c8036a345383162013f9f7103164b0f382f12
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 5ca5322467402af710df68c82d747f8f8d65e142
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689058"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255920"
 ---
 # <a name="manage-web-app-for-containers-using-azure-cli"></a>Azure CLI を使って Web App for Containers を管理する
 
@@ -94,7 +92,7 @@ az webapp config set -n sname -g rgname --linux-fx-version "node|6.11"
 az webapp deployment source config -n sname -g rgname --repo-url <gitrepo url> --branch <branch>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure App Service on Linux とは](app-service-linux-intro.md)
 * [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)

@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor ログ クエリでの結合 | Microsoft Docs
 description: この記事には、Azure Monitor ログ クエリでの結合の使用に関するレッスンが含まれています。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: f2880044e48e59d0d5f005f9772cdd0f807f7f29
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2dace6968fbbe69f806c27fb7a46e60c63f78b4f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397822"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670204"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリでの結合
 
@@ -83,7 +82,7 @@ _kind_ 引数で結合の種類を指定します。 次の表で説明するよ
 | 結合の種類 | 説明 |
 |:---|:---|
 | innerunique | これは既定の結合モードです。 最初に左側のテーブルで一致する列の値が検索され、重複する値が削除されます。  次に一意の値のセットが、右側のテーブルと照合されます。 |
-| 内部 (inner) | 結果には、両方のテーブルの一致するレコードのみが含まれます。 |
+| inner | 結果には、両方のテーブルの一致するレコードのみが含まれます。 |
 | leftouter | 結果には、左側のテーブルのすべてのレコードと、右側のテーブルの一致するレコードが含まれます。 一致しない出力プロパティには、null 値が含まれます。  |
 | leftanti | 結果には、右側との一致が存在しない左側のレコードが含まれます。 結果テーブルには、左側のテーブルの列のみが含まれます。 |
 | leftsemi | 結果には、右側との一致が存在する左側のレコードが含まれます。 結果テーブルには、左側のテーブルの列のみが含まれます。 |

@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor for VMs (プレビュー) での監視を無効にする | Microsoft Docs
 description: この記事では、Azure Monitor for VMs で仮想マシンの監視を停止する方法について説明します。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/05/2018
-ms.openlocfilehash: b2d58b501429a47c3011fc727f756edeeb7775e6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fb4347e610920380792a17bb620e6d97a7d72505
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75399302"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669507"
 ---
 # <a name="disable-monitoring-of-your-vms-in-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) で VM の監視を無効にする
 
@@ -43,7 +42,7 @@ VM の監視を無効にする準備をするときは、これらの考慮事�
 >Azure Monitor for VMs を有効にする前に Service Map 監視ソリューションを使用していて、このソリューションにまだ依存している場合は、このソリューションを削除しないでください (次の説明の最後の手順は実行しないでください)。  
 >
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. Azure Portal で **[すべてのサービス]** を選択します。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて一覧から候補が絞り込まれます。 **[Log Analytics]** を選択します。
 3. Log Analytics ワークスペースの一覧で、Azure Monitor for VMs を有効化するときに選択したワークスペースを選択します。
 4. 左側で、 **[ソリューション]** を選択します。  
@@ -64,7 +63,7 @@ Azure Monitor for VMs を有効にする前に、ワークスペースで Window
 >
 > Log Analytics エージェントを削除する場合、これらのサービスとソリューションが VM を積極的に管理できないようにすることになります。 
 
-1. [Azure portal](https://portal.azure.com) にサインインする 
+1. [Azure portal](https://portal.azure.com) にサインインします。 
 2. Azure Portal で、 **[仮想マシン]** を選択します。 
 3. 一覧から VM を選択します。 
 4. 左側で、 **[拡張機能]** を選択します。 **[拡張機能]** ページで、**DependencyAgent** を選択します。

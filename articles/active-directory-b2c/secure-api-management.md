@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C を使用して Azure API Management API をセキュリティで保護する
 description: Azure Active Directory B2C によって発行されたアクセス トークンを使用して、Azure API Management API エンドポイントをセキュリティで保護する方法について説明します。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/31/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 942c565c885d59a14d64e7ec06beee0354e7c4ca
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 00938d831e70289b24acb599b81016aa6e564d78
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641632"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186932"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Azure AD B2C を使用して Azure API Management API をセキュリティで保護する
 
@@ -37,17 +37,17 @@ Azure API Management において Azure AD B2C を使用して API のセキュ�
 
 現在の**アプリケーション** エクスペリエンス、または新しく統合された**アプリの登録 (プレビュー)** エクスペリエンスを使用して、アプリケーション ID を取得できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregintro)。
 
-#### <a name="applicationstabapplications"></a>[アプリケーション](#tab/applications/)
+#### <a name="applications"></a>[アプリケーション](#tab/applications/)
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. **[管理]** で、 **[アプリケーション]** を選択します。
 1. *webapp1* または以前に作成した別のアプリケーションの **[アプリケーション ID]** 列の値を記録します。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリの登録 (プレビュー)]** を選択してから、 **[Owned applications]\(所有しているアプリケーション\)** タブを選択します。
@@ -73,7 +73,7 @@ Azure API Management において Azure AD B2C を使用して API のセキュ�
 
     この値は、次のセクションにおいて、Azure API Management で API を構成するときに使用します。
 
-次のセクションで使用する 2 つの URL (OpenID Connect の既知の構成エンドポイント URL と発行者 URI) を記録しているはずです。 例:
+次のセクションで使用する 2 つの URL (OpenID Connect の既知の構成エンドポイント URL と発行者 URI) を記録しているはずです。 次に例を示します。
 
 ```
 https://yourb2ctenant.b2clogin.com/yourb2ctenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_signupsignin1
@@ -154,13 +154,13 @@ API を呼び出すには、Azure AD B2C によって発行されたアクセス
 
 アクセス トークンと APIM サブスクリプション キーを記録したので、API に対するセキュリティで保護されたアクセスが正しく構成されているかどうかをテストできる準備ができました。
 
-1. [Postman](https://www.getpostman.com/) で、新しい `GET` 要求を作成します。 [要求 URL] に、前提条件の 1 つとして発行した API のスピーカー リスト エンドポイントを指定します。 例:
+1. [Postman](https://www.getpostman.com/) で、新しい `GET` 要求を作成します。 [要求 URL] に、前提条件の 1 つとして発行した API のスピーカー リスト エンドポイントを指定します。 次に例を示します。
 
     `https://contosoapim.azure-api.net/conference/speakers`
 
 1. さらに、次のヘッダーを追加します。
 
-    | Key | 値 |
+    | Key | Value |
     | --- | ----- |
     | `Authorization` | 先ほど記録したエンコード済みトークン値。先頭に `Bearer ` を付けます ("Bearer" の後にスペースを含めます) |
     | `Ocp-Apim-Subscription-Key` | 先ほど記録した APIM サブスクリプション キー |
@@ -271,7 +271,7 @@ API を呼び出すには、Azure AD B2C によって発行されたアクセス
 </policies>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure API Management ポリシーの詳細については、[APIM ポリシー リファレンスの索引](../api-management/api-management-policies.md)に関するページを参照してください。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: 3f028431fcd4b338d2e610ce1828a02b753c4d32
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: b86b1a2d8a49554cc3df99e0a32a2c0ccaacb560
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483709"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920010"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>リモート ツールを使用して Azure VM の問題をトラブルシューティングする
 
@@ -60,6 +60,9 @@ psexec \\<computer>-u user -s cmd
 スクリプトをストレージ アカウントにアップロードし、独自のコンテナーを生成します。 次に、VM に接続されているコンピューター上の Azure PowerShell で以下のスクリプトを実行します。
 
 ### <a name="for-classic-deployment-model-vms"></a>クラシック デプロイ モデル VM の場合
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 
 ```powershell
 #Set up the basic variables.
@@ -246,7 +249,7 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 5. サービスに対してすべての必要な変更を行います。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Enter-PSSession コマンドレットの詳細については、[Enter-PSSession](https://technet.microsoft.com/library/hh849707.aspx) を参照してください。
 - クラシック デプロイ モデルを使用した Windows のカスタム スクリプト拡張機能の詳細については、「[Windows でのカスタムのスクリプト拡張機能](../extensions/custom-script-classic.md)」を参照してください。

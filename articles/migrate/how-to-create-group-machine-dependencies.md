@@ -3,12 +3,12 @@ title: Azure Migrate で依存関係の視覚化を設定する
 description: Azure Migrate Server Assessment で依存関係の視覚化を設定することについて説明します。
 ms.topic: article
 ms.date: 2/24/2020
-ms.openlocfilehash: f5b0682adf345681c03bb6dbf14e9a0d9ba1fd58
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 054e2301160a885909630c2968863e5f9e25af69
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589060"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916287"
 ---
 # <a name="set-up-dependency-visualization"></a>依存関係の視覚化を設定する
 
@@ -76,7 +76,7 @@ Windows マシンにエージェントをインストールするには、次の
 5. **[追加]** をクリックして、新しい Log Analytics ワークスペースを追加します。 ポータルからコピーしたワークスペース ID とキーを貼り付けます。 **[次へ]** をクリックします。
 
 エージェントは、コマンド ラインからインストールするか、Configuration Manager または [Intigua](https://go.microsoft.com/fwlink/?linkid=2104196) などの自動化された方法を使用してインストールすることができます。
-- このような方法を使用して MMA エージェントをインストールする方法については、[詳細](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent)のページを参照してください。
+- このような方法を使用して MMA エージェントをインストールする方法については、[詳細](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)のページを参照してください。
 - この[スクリプト](https://go.microsoft.com/fwlink/?linkid=2104394)を使用して、MMA エージェントをインストールすることもできます。
 - MMA でサポートされる Windows オペレーティング システムの詳細については、[こちら](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-windows-operating-systems)をご覧ください。
 

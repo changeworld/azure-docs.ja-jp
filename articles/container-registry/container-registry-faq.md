@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 74863823f3e8ef32565e01981d3a742d696a8165
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 699ee2c2c3b1a90231f24663619cc590aae9889d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708310"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252078"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry に関するよく寄せられる質問
 
@@ -114,13 +114,13 @@ ACR は Docker Registry HTTP API V2 をサポートしています。 これら�
 
 Bash を使用している場合:
 
-```bash
+```azurecli
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv  | xargs -I% az acr repository delete -n myRegistry -t myRepository@%
 ```
 
 Powershell の場合:
 
-```powershell
+```azurecli
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv | %{ az acr repository delete -n myRegistry -t myRepository@$_ }
 ```
 
@@ -151,13 +151,13 @@ docker push myregistry.azurecr.io/1gb:latest
 
 Azure Portal でストレージの使用量が増加したことを確認できるか、または CLI を使用して使用量にクエリを実行できます。
 
-```bash
+```azurecli
 az acr show-usage -n myregistry
 ```
 
 Azure CLI またはポータルを使用してイメージを削除し、数分以内に更新された使用量を確認します。
 
-```bash
+```azurecli
 az acr repository delete -n myregistry --image 1gb
 ```
 
@@ -216,12 +216,12 @@ ACR は、さまざまなレベルのアクセス許可を提供する[カスタ
   その後、ユーザーに `AcrPull` または `AcrPush` ロールを割り当てることができます (次の例では `AcrPull` を使用しています)。
 
   ```azurecli
-    az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
-    ```
+  az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
+  ```
 
   または、そのアプリケーション ID で識別されたサービス プリンシパルにロールを割り当てます。
 
-  ```
+  ```azurecli
   az role assignment create --scope resource_id --role AcrPull --assignee 00000000-0000-0000-0000-000000000000
   ```
 
@@ -239,9 +239,9 @@ ACR は、さまざまなレベルのアクセス許可を提供する[カスタ
   az acr repository list -n myRegistry
   ```
 
- イメージをプルするには:
-    
-  ```azurecli
+* イメージをプルするには:
+
+  ```console
   docker pull myregistry.azurecr.io/hello-world
   ```
 
@@ -275,9 +275,10 @@ ACR は、さまざまなレベルのアクセス許可を提供する[カスタ
  - `docker pull` が引き続き失敗する場合は、Docker デーモンの問題である可能性があります。 この問題は一般に、Docker デーモンを再起動することによって緩和されます。 
  - Docker デーモンを再起動してもこの問題が引き続き表示される場合は、コンピューターとの何らかのネットワーク接続の問題である可能性があります。 コンピューター上の一般的なネットワークが正常かどうかを確認するには、次のコマンドを実行してエンドポイントの接続性をテストします。 この接続チェック コマンドを含む最小の`az acr` バージョンは、2.2.9 です。 以前のバージョンを使用している場合は、Azure CLI をアップグレードしてください。
  
-   ```azurecli
-    az acr check-health -n myRegistry
-    ```
+  ```azurecli
+  az acr check-health -n myRegistry
+  ```
+
  - すべての Docker クライアント操作に対して常に再試行メカニズムを用意する必要があります。
 
 ### <a name="docker-pull-is-slow"></a>Docker プル速度が遅い

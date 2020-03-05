@@ -3,20 +3,20 @@ title: カスタム ポリシーでの Azure MFA の技術プロファイル
 titleSuffix: Azure AD B2C
 description: Azure AD B2C での Azure Multi-Factor Authentication (MFA) 技術プロファイルのカスタム ポリシー リファレンス。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a8aaea6b2afb4d89e6e667edba0eeba2f4ddcca8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 05851dba9de06b5dfba2da4f455fbaf5e9376d08
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475057"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184283"
 ---
 # <a name="define-an-azure-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C カスタム ポリシーで Azure MFA 技術プロファイルを定義する
 
@@ -49,7 +49,7 @@ Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, 
 
 この技術プロファイルの最初のモードでは、コードが生成されて送信されます。 このモードに対しては、次のオプションを構成できます。
 
-### <a name="input-claims"></a>入力要求
+### <a name="input-claims"></a>入力クレーム
 
 **InputClaims** 要素には、Azure MFA に送信する要求の一覧が含まれます。 要求の名前を、MFA 技術プロファイルで定義されている名前にマップすることもできます。
 
@@ -62,15 +62,15 @@ Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, 
 
 **InputClaimsTransformations** 要素には、Azure MFA サービスに送信する前に、入力要求の変更または新しい入力要求の生成に使用される、**InputClaimsTransformation** 要素のコレクションが含まれる場合があります。
 
-### <a name="output-claims"></a>出力要求
+### <a name="output-claims"></a>出力クレーム
 
 Azure MFA プロトコル プロバイダーでは **OutputClaims** は返されないため、出力要求を指定する必要はありません。 ただし、`DefaultValue` 属性を設定している限り、Azure MFA ID プロバイダーによって返されない要求を含めることができます。
 
 **OutputClaimsTransformations** 要素には、出力要求を修正したり新しい要求を生成するために使用される、**OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。
 
-### <a name="metadata"></a>メタデータ
+### <a name="metadata"></a>Metadata
 
-| Attribute | 必須 | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | Operation | はい | **OneWaySMS** になっている必要があります。  |
 | UserMessageIfInvalidFormat | いいえ | 指定された電話番号が有効な電話番号ではない場合のカスタム エラー メッセージ |
@@ -111,7 +111,7 @@ Azure MFA プロトコル プロバイダーでは **OutputClaims** は返され
 
 この技術プロファイルの 2 番目のモードでは、コードが検証されます。 このモードに対しては、次のオプションを構成できます。
 
-### <a name="input-claims"></a>入力要求
+### <a name="input-claims"></a>入力クレーム
 
 **InputClaims** 要素には、Azure MFA に送信する要求の一覧が含まれます。 要求の名前を、MFA 技術プロファイルで定義されている名前にマップすることもできます。
 
@@ -122,15 +122,15 @@ Azure MFA プロトコル プロバイダーでは **OutputClaims** は返され
 
 **InputClaimsTransformations** 要素には、Azure MFA サービスの呼び出しの前に、入力要求の変更または新しい入力要求の生成に使用される、**InputClaimsTransformation** 要素のコレクションが含まれる場合があります。
 
-### <a name="output-claims"></a>出力要求
+### <a name="output-claims"></a>出力クレーム
 
 Azure MFA プロトコル プロバイダーでは **OutputClaims** は返されないため、出力要求を指定する必要はありません。 ただし、`DefaultValue` 属性を設定している限り、Azure MFA ID プロバイダーによって返されない要求を含めることができます。
 
 **OutputClaimsTransformations** 要素には、出力要求を修正したり新しい要求を生成するために使用される、**OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。
 
-## <a name="metadata"></a>メタデータ
+## <a name="metadata"></a>Metadata
 
-| Attribute | 必須 | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | Operation | はい | **Verify** になっている必要があります |
 | UserMessageIfInvalidFormat | いいえ | 指定された電話番号が有効な電話番号ではない場合のカスタム エラー メッセージ |

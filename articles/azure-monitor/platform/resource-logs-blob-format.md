@@ -3,17 +3,16 @@ title: Azure Monitor リソース ログの形式変更のための準備
 description: Azure リソース ログは、2018 年 11 月 1 日に追加 BLOB を使用する目的で移動されました。
 author: johnkemnetz
 services: monitoring
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 09a5d95ead9f294d54a7491734b11c7247353444
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b90b6f8eabbda229fbed4dcef6a5d863ea721faf
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894500"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659137"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>ストレージ アカウントにアーカイブされている Azure Monitor プラットフォーム ログの形式変更のための準備
 
@@ -132,7 +131,7 @@ Azure BLOB ストレージ内の PT1H.json ファイルの現在の形式では�
 
 現在の形式と、上述の JSON Lines 形式の両方に対応するには、カスタム ツールを更新する必要があります。 これにより、新しい形式でデータの表示が開始されるときに、ご利用のツールで作業が中断されることはなくなります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ストレージ アカウントへのリソース ログのアーカイブ](./../../azure-monitor/platform/archive-diagnostic-logs.md)について確認します。
 * [ストレージ アカウントへのアクティビティ ログ データのアーカイブ](./../../azure-monitor/platform/archive-activity-log.md)について確認します。

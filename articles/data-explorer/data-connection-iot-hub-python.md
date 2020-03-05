@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: cfd92546def21972e37781bd8a4b0bfefda9111f
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 76c8ca24882f465bf2a973dc59736745178fc61f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444215"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669524"
 ---
 # <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-python-preview"></a>Python を使用して Azure Data Explorer 用に IoT Hub データ接続を作成する (プレビュー)
 
@@ -30,7 +30,7 @@ ms.locfileid: "77444215"
 
 * [Python 3.4 以上](https://www.python.org/downloads/)。
 
-* [クラスターとデータベース](/create-cluster-database-python.md)。
+* [クラスターとデータベース](create-cluster-database-python.md)。
 
 * [テーブルと列のマッピング](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)。
 

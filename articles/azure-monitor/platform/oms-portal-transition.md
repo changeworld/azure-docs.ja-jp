@@ -1,18 +1,17 @@
 ---
 title: OMS ポータルの Azure への移行 | Microsoft Docs
 description: OMS ポータルは、すべての機能が Azure portal に移行されるのに伴い、非推奨となります。 この記事では、今回の切り替えの詳細について説明します。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 170973d15b5f49021a0507bdd2fd6a2632777d48
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 680cd9b44cc447f9bdea38cb9d04fc661fba9c79
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932145"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659256"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS ポータルの Azure への移行
 
@@ -61,7 +60,7 @@ Azure portal のアクセス管理は、OMS ポータルのアクセス管理よ
 |:---|:---|
 | ReadOnly | Log Analytics 閲覧者 |
 | Contributor | Log Analytics 共同作成者 |
-| 管理者 | Owner | 
+| 管理者 | 所有者 | 
  
 
 ## <a name="new-workspaces"></a>新しいワークスペース
@@ -105,5 +104,5 @@ OMS モバイル アプリは、OMS ポータルと共に非推奨となりま�
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
 [Operations Manager 管理グループを Log Analytics 接続している](om-agents.md)場合は、変更なしで引き続き動作します。 ただし、新しい接続の場合は、[Operations Management Suite を構成するための Microsoft System Center Operations Manager Management Pack](https://blogs.technet.microsoft.com/momteam/2018/07/25/microsoft-system-center-operations-manager-management-pack-to-configure-operations-management-suite/)に記載されているガイダンスに従う必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - OMS ポータルから Azure portal への移行に関するガイダンスについては、「[Common questions for transition from OMS portal to Azure portal for Log Analytics users (OMS ポータルから Azure portal への切り替えに関する Log Analytics ユーザーの一般的な質問)](oms-portal-faq.md)」を参照してください。

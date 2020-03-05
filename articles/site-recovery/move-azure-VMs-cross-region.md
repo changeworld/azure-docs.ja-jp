@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 92388c54804d85d2825a25abd0c234081670e8d4
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: dc37cb6fa05a2be56de7bf5536d7274190257d85
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74092183"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303921"
 ---
 # <a name="move-azure-vms-to-another-azure-region"></a>Azure VM を別の Azure リージョンに移動する
 
@@ -70,7 +70,7 @@ ms.locfileid: "74092183"
    - [ロード バランサー](https://docs.microsoft.com/azure/load-balancer)
    - [パブリック IP](../virtual-network/virtual-network-public-ip-address.md)
     
-   その他のネットワーク コンポーネントについては、[Azure ネットワークに関するドキュメント](https://docs.microsoft.com/azure/#pivot=products&panel=network)を参照してください。 
+   その他のネットワーク コンポーネントについては、[Azure ネットワークに関するドキュメント](https://docs.microsoft.com/azure/?pivot=products&panel=network)を参照してください。 
 
 4. 移動を行う前に構成をテストする場合は、ターゲット リージョンに手動で[非運用ネットワークを作成](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)します。 セットアップのテストは運用環境への影響が最小限で済むため、この方法をお勧めします。
     
@@ -112,7 +112,7 @@ Site Recovery は、サブスクリプションとリソース グループに�
 
    - **最後に処理があった時点**:Site Recovery サービスによって処理された最新の復旧ポイントに VM をフェールオーバーします。 タイム スタンプが表示されます。 このオプションを使用すると、データの処理に時間がかからないため、目標復旧時間 (RTO) が低くなります。
    - **最新のアプリ整合性**:すべての VM が最新のアプリ整合性の復旧ポイントにフェールオーバーされます。 タイム スタンプが表示されます。
-   - **カスタム**:任意の復旧ポイントを選択します。
+   - **Custom**:任意の復旧ポイントを選択します。
 
 3. Azure VM の移動先となるターゲット Azure 仮想ネットワークを選択し、構成をテストします。
 
@@ -143,7 +143,7 @@ Site Recovery は、サブスクリプションとリソース グループに�
 1. 「[ソース VM を準備する](#prepare-the-source-vms)」の手順 4 に記載されている該当するネットワーク リソースをソース リージョンからすべて削除します。
 2. 対応するストレージ アカウントをソース リージョンから削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure VM を別の Azure リージョンに移動する方法について説明しました。 次は、これらの VM のディザスター リカバリーを構成できます。
 

@@ -7,24 +7,24 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 11/07/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 0654916b344cf47cf9942b883d62d392c0552979
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: d584b00caef628eb9dfd085b1fdce2bb7b353988
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818929"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273517"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>LUIS モデルとキーの境界
-LUIS には、複数の境界領域があります。 1 つは[モデル境界](#model-boundaries)で、これにより LUIS で意図、エンティティ、および機能が制御されます。 2 つ目の領域は、キーの種類に基づく[クォータ制限](#key-limits)です。 3 つ目の境界領域は、LUIS Web サイトを制御するための[キーボードの組み合わせ](#keyboard-controls)です。 4 つ目の領域は、LUIS オーサリング Web サイトと LUIS [エンドポイント](luis-glossary.md#endpoint) API の間の[世界リージョン マッピング](luis-reference-regions.md)です。 
+LUIS には、複数の境界領域があります。 1 つは[モデル境界](#model-boundaries)で、これにより LUIS で意図、エンティティ、および機能が制御されます。 2 つ目の領域は、キーの種類に基づく[クォータ制限](#key-limits)です。 3 つ目の境界領域は、LUIS Web サイトを制御するための[キーボードの組み合わせ](#keyboard-controls)です。 4 つ目の領域は、LUIS オーサリング Web サイトと LUIS [エンドポイント](luis-glossary.md#endpoint) API の間の[世界リージョン マッピング](luis-reference-regions.md)です。
 
 
 ## <a name="model-boundaries"></a>モデル境界
 
-アプリが LUIS モデルの制限と境界を超えている場合は、[LUIS ディスパッチ](luis-concept-enterprise.md#dispatch-tool-and-model) アプリまたは [LUIS コンテナー](luis-container-howto.md)を使用することを検討してください。 
+アプリが LUIS モデルの制限と境界を超えている場合は、[LUIS ディスパッチ](luis-concept-enterprise.md#dispatch-tool-and-model) アプリまたは [LUIS コンテナー](luis-container-howto.md)を使用することを検討してください。
 
 |領域|制限|
 |--|:--|
@@ -49,7 +49,7 @@ LUIS には、複数の境界領域があります。 1 つは[モデル境界](
 | [バージョン](luis-concept-version.md)| アプリケーションごとに 100 バージョン |
 | [バージョン名][luis-how-to-manage-versions] | 10 文字。英数字とピリオド (.) に限定 |
 
-\* 既定の最大文字数: 50 文字。 
+\* 既定の最大文字数: 50 文字。
 
 <a name="intent-and-entity-naming"></a>
 
@@ -60,13 +60,13 @@ LUIS には、複数の境界領域があります。 1 つは[モデル境界](
 LUIS アプリでは、次のものが一意である必要があります。
 
 * バージョン名
-* 意図
+* intent
 * エンティティ
 * roles
 
 次のものは、適用されるスコープ内で一意である必要があります。
 
-* フレーズ リスト 
+* フレーズ リスト
 
 ## <a name="object-naming"></a>オブジェクト名の規則
 
@@ -85,9 +85,9 @@ Language Understand には、作成用に 1 つの種類と、予測エンドポ
 
 ## <a name="resource-key-limits"></a>リソースキーの制限
 
-リソース キーでは、オーサリングとエンドポイントで制限が異なります。 LUIS 予測クエリ エンドポイント キーは、エンドポイント クエリに対してのみ有効です。 
+リソース キーでは、オーサリングとエンドポイントで制限が異なります。 LUIS 予測クエリ エンドポイント キーは、エンドポイント クエリに対してのみ有効です。
 
-* Azure オーサリング リソースごとに 500 アプリケーション 
+* Azure オーサリング リソースごとに 500 アプリケーション
 
 |Key|Authoring|エンドポイント|目的|
 |--|--|--|--|
@@ -102,7 +102,7 @@ Language Understand には、作成用に 1 つの種類と、予測エンドポ
 
 ## <a name="keyboard-controls"></a>キーボード コントロール
 
-|キーボード入力 | 説明 | 
+|キーボード入力 | 説明 |
 |--|--|
 |Ctrl + E|トークンと発話一覧のエンティティの切り替え|
 

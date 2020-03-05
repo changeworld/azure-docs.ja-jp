@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 438143d3253f1cab1afb958a90f427dcba59a98e
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 8ea85b560f35c79b3d5066d794f587345810b5d0
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059250"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920860"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>オフライン モードでの Azure 仮想マシン エージェントのインストール 
 
@@ -35,13 +35,13 @@ Azure 仮想マシン エージェント (VM エージェント) は、ローカ
 
 オフライン モードで VM エージェントをインストールするには、次の手順に従います。
 
-### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>手順 1: VM の OS ディスクをデータ ディスクとして別の VM に接続する
+### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>手順 1:VM の OS ディスクをデータ ディスクとして別の VM に接続する
 
-1. 影響のあった VM の OS ディスクのスナップショットを取得し、スナップショットからディスクを作成し、そのディスクをトラブルシューティング用 VM にアタッチします。 詳細については、「[Azure portal で OS ディスクを復旧 VM に接続して Windows VM のトラブルシューティングを行う](troubleshoot-recovery-disks-portal-windows.md)」を参照してください。 クラシック VM の場合は、VM を削除して OS ディスクを保持し、OS ディスクをトラブルシューティング用 VM に接続します。
+1. 影響を受けている VM の OS ディスクのスナップショットを取得し、スナップショットからディスクを作成して、トラブルシューティング用 VM にディスクをアタッチします。 詳細については、[Azure portal を使用した OS ディスクの復旧 VM へのアタッチによる Windows VM のトラブルシューティング](troubleshoot-recovery-disks-portal-windows.md)に関するページを参照してください。 クラシック VM の場合は、VM を削除して OS ディスクを保持し、OS ディスクをトラブルシューティング用 VM に接続します。
 
 2.  トラブルシューティング ツール VM に接続します。 **[コンピューターの管理]**  >  **[ディスクの管理]** の順に開きます。 OS ディスクがオンラインであることと、ドライブ文字がディスク パーティションに割り当てられていることを確認します。
 
-### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>手順 2: Azure VM エージェントをインストールするように OS ディスクを変更する
+### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>手順 2:Azure VM エージェントをインストールするように OS ディスクを変更する
 
 1.  トラブルシューティング ツール VM へのリモート デスクトップ接続を作成します。
 
@@ -66,7 +66,7 @@ Azure 仮想マシン エージェント (VM エージェント) は、ローカ
         - HKEY_LOCAL_MACHINE\BROKENSYSTEM\\ControlSet001\Services\WindowsAzureTelemetryService
         - HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet001\Services\RdAgent
 
-8.  トラブルシューティング ツール VM 上の既存のファイルを、VM エージェントのインストール用リポジトリとして使用します。 次の手順を完了します。
+8.  トラブルシューティング ツール VM 上の既存のファイルを、VM エージェントのインストール用リポジトリとして使用します。 次の手順を実行します。
 
     1. トラブルシューティング ツール VM から、次のサブキーをレジストリ形式 (.reg) でエクスポートします。 
         - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\WindowsAzureGuestAgent
@@ -106,6 +106,8 @@ Resource Manager デプロイ モデルを使用して VM を作成した場合�
 
 ### <a name="use-the-provisionguestagent-property-for-classic-vms"></a>クラシック VM での ProvisionGuestAgent プロパティの使用
 
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 クラシック モデルを使用して VM を作成した場合は、Azure PowerShell モジュールを使用して **ProvisionGuestAgent** プロパティを更新します。 このプロパティによって、Azure は VM に VM エージェントがインストールされていることを認識します。
 
 **ProvisionGuestAgent** プロパティを設定するには、Azure PowerShell で次のコマンドを実行します。
@@ -123,7 +125,7 @@ Resource Manager デプロイ モデルを使用して VM を作成した場合�
    GuestAgentStatus:Microsoft.WindowsAzure.Commands.ServiceManagement.Model.PersistentVMModel.GuestAgentStatus
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure 仮想マシン エージェントの概要](../extensions/agent-windows.md)
 - [Windows 用の仮想マシン拡張機能とその機能](../extensions/features-windows.md)

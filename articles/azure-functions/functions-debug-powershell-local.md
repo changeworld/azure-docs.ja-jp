@@ -6,18 +6,16 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 36d15858e1fb535189891303a89b00021027f1e8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 133e89bd9187ae5e48fa208b407678760d31adfd
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227035"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163762"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>PowerShell Azure Functions をローカル環境でデバッグする
 
 Azure Functions では、関数を PowerShell スクリプトとして開発することができます。
-
-[!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
 
 次の標準的な開発ツールを使用する PowerShell スクリプトと同様、PowerShell 関数をローカル環境でデバッグできます。
 
@@ -108,7 +106,7 @@ PowerShell Core は、Windows PowerShell とサイドバイサイドでインス
 
 1. F1 キーを押してコマンド パレットを表示し、`Session` を検索します。
 
-1. **PowerShell:Show Session Menu\(PowerShell: セッション メニューの表示\)** を選択します。
+1. **[PowerShell:Show Session Menu]\(PowerShell: セッション メニューを表示\)** をクリックします。
 
 1. **[現在のセッション]** が **[PowerShell Core 6]** になっていない場合は、 **[切り替え:PowerShell Core 6]** を選択します。
 
@@ -131,7 +129,7 @@ F5 キーを押してデバッグを開始することもできます。
 * Functions ランタイム内の PowerShell 実行空間に、PowerShell デバッガーがアタッチされます。
 
 >[!NOTE]
-> Visual Studio Code で正しいデバッグのエクスペリエンスを実現するには、PSWorkerInProcConcurrencyUpperBound が 1 に設定されていることを確認する必要があります。 既定のプランです。
+> Visual Studio Code で正しいデバッグのエクスペリエンスを実現するには、PSWorkerInProcConcurrencyUpperBound が 1 に設定されていることを確認する必要があります。 これは既定値です。
 
 関数アプリが実行されたら、別の PowerShell コンソールを開いて、HTTP によってトリガーされる関数を呼び出す必要があります。
 
@@ -245,6 +243,6 @@ Azure Functions ランタイムでは、`run.ps1` スクリプトが実際に呼
 
 この中断が発生した場合は、`continue` または `c` コマンドを実行して、このブレークポイントをスキップします。 その後は、予期されるブレークポイントで停止します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 PowerShell を使用した Functions の開発の詳細については、「[Azure Functions PowerShell developer guide (Azure Functions PowerShell 開発者ガイド)](functions-reference-powershell.md)」をご覧ください。

@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: cynthn
-ms.openlocfilehash: c1c144ac9db040bfac45ecc7838401ae09c9e2c4
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: f69e245d72a63b942896cdd9f4a2225cb4c1706d
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137981"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208527"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>PowerShell を使用し、近接通信配置グループに VM をデプロイする
 
@@ -78,7 +78,7 @@ $ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPGResourceGroup -Name
 $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
 Stop-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
 Update-AzVM -VM $vm -ResourceGroupName $vm.ResourceGroupName -ProximityPlacementGroupId $ppg.Id
-Restart-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
+Start-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
 ```
 
 ### <a name="move-an-existing-vm-out-of-a-proximity-placement-group"></a>既存の VM を近接通信配置グループ外に移動する
@@ -89,9 +89,9 @@ Restart-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
 $ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPGResourceGroup -Name myPPG
 $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
 Stop-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
-$vm.ProximityPlacementGroupId = ""
+$vm.ProximityPlacementGroup = ""
 Update-AzVM -VM $vm -ResourceGroupName $vm.ResourceGroupName 
-Restart-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
+Start-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
 ```
 
 
@@ -158,7 +158,7 @@ $ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPG -Name myPPG
 $vmss = Get-AzVmss -ResourceGroupName myVMSSResourceGroup -VMScaleSetName myScaleSet
 Stop-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
 Update-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName -ProximityPlacementGroupId $ppg.Id
-Restart-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
+Start-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
 ```
 
 ### <a name="move-an-existing-scale-set-out-of-a-proximity-placement-group"></a>既存のスケール セットを近接通信配置グループ外に移動する
@@ -168,7 +168,7 @@ $vmss = Get-AzVmss -ResourceGroupName myVMSSResourceGroup -VMScaleSetName myScal
 Stop-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
 $vmss.ProximityPlacementGroup = ""
 Update-AzVmss -VirtualMachineScaleSet $vmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName  
-Restart-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
+Start-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
 ```
 
 ## <a name="next-steps"></a>次のステップ

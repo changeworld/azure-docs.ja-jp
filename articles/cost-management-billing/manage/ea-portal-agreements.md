@@ -3,16 +3,16 @@ title: Azure EA 契約と修正
 description: この記事では、Azure EA 契約と修正が Azure EA Portal の使用にどのように影響するかについて説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/03/2020
+ms.date: 03/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 727f3cb25d2f95ec4db9f12080005d464b69d6ad
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 5198bd240f0c4e23910504fd039d64a73ddb41c9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272405"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301422"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA 契約と修正
 
@@ -25,10 +25,6 @@ Azure のお客様についての修正は、パートナーまたは Microsoft 
 ## <a name="enrollment-provisioning-status"></a>登録のプロビジョニング状態
 
 新しい年額コミットメントの開始日は、リージョンのオペレーション センターで年額コミットメントの処理が行われた日付によって定義されます。 Azure EA Portal での年額コミットメントの注文は UTC タイム ゾーンで処理されるため、年額コミットメントの注文書が別のリージョンで処理された場合は、遅延が発生する可能性があります。 [https://www.explore.ms](https://www.explore.ms ) にある注文書の対象範囲の開始日は、年額コミットメントの開始を示しています。 対象範囲の開始日は、Azure EA Portal に年額コミットメントが表示された時点です。
-
-## <a name="special-pricing-and-azure-commitment-discount-amendments"></a>特別価格および Azure コミットメント割引の修正
-
-特別価格と Azure コミットメント割引 (ACD) の修正が必要な場合は、アカウント チームに相談する必要があります。 Azure Ops チームは、ビジネス デスクによって修正が処理され、Azure Ops チームに対して要求されてた後で、ACD を適用することができます。 ACD の割引は当月にのみ適用されます。 以前の月については、過去のクレジットによって補正されます。 
 
 ## <a name="support-offer-not-provisioned"></a>サポート プランがプロビジョニングされていない
 

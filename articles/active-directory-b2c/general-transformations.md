@@ -3,20 +3,20 @@ title: カスタム ポリシーの一般的な要求変換の例
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C の Identity Experience Framework (IEF) スキーマの一般的な要求変換の例。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/03/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 98d9730168764f0ba683a246f9ac224c13d3bf31
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: afdf2f531ede30d868123d89cac94fcfae070384
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982808"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188547"
 ---
 # <a name="general-claims-transformations"></a>一般要求変換
 
@@ -36,13 +36,13 @@ ms.locfileid: "76982808"
 この要求変換を使用して、文字列または数値の要求から別の要求に値をコピーします。 次の例では、externalEmail 要求の値を電子メール要求にコピーします。
 
 ```XML
-<ClaimsTransformation Id="CopyEmailAddress" TransformationMethod="CopyClaim"> 
+<ClaimsTransformation Id="CopyEmailAddress" TransformationMethod="CopyClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="externalEmail" TransformationClaimType="inputClaim"/>
   </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="email" TransformationClaimType="outputClaim"/>
-  </OutputClaims>         
+  </OutputClaims>
 </ClaimsTransformation>
 ```
 
@@ -51,7 +51,7 @@ ms.locfileid: "76982808"
 - 入力要求:
     - **inputClaim**: bob@contoso.com
 - 出力要求:
-    - **outputClaim**: bob@contoso.com 
+    - **outputClaim**: bob@contoso.com
 
 ## <a name="doesclaimexist"></a>DoesClaimExist
 
@@ -90,7 +90,7 @@ salt と secret を使用して、提供されたプレーン テキストをハ
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | plaintext | string | 暗号化される入力要求。 |
 | InputClaim | salt | string | salt パラメーター。 `CreateRandomString` 要求変換を使用して、ランダムな値を作成できます。 |
-| InputParameter | randomizerSecret | string | 既存の Azure AD B2C **ポリシー キー**をポイントします。 新しいポリシー キーを作成するには:Azure AD B2C テナントの **[管理]** で、 **[Identity Experience Framework]** を選択します。 **[ポリシー キー]** を選択して、テナント内で使用できるキーを確認します。 **[追加]** を選択します。 **[オプション]** には **[手動]** を選択します。 名前を指定します (プレフィックス *B2C_1A_* が自動的に追加される場合があります)。 **[シークレット]** テキスト ボックスに、使用するシークレットを入力します (1234567890 など)。 **[キー使用法]** には **[署名]** を選択します。 **作成** を選択します。 |
+| InputParameter | randomizerSecret | string | 既存の Azure AD B2C **ポリシー キー**をポイントします。 新しいポリシー キーを作成するには:Azure AD B2C テナントの **[管理]** で、 **[Identity Experience Framework]** を選択します。 **[ポリシー キー]** を選択して、テナント内で使用できるキーを確認します。 **[追加]** を選択します。 **[オプション]** には **[手動]** を選択します。 名前を指定します (プレフィックス *B2C_1A_* が自動的に追加される場合があります)。 **[シークレット]** テキスト ボックスに、使用するシークレットを入力します (1234567890 など)。 **[キー使用法]** には **[署名]** を選択します。 **［作成］** を選択します |
 | OutputClaim | hash | string | この要求変換が呼び出された後に生成される ClaimType。 `plaintext` inputClaim で構成されている要求。 |
 
 ```XML

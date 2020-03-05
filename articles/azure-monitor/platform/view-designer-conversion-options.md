@@ -3,16 +3,15 @@ title: Azure Monitor ビュー デザイナーからブックへの変換オプ�
 description: ''
 author: austonli
 ms.author: aul
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: f04ebc1a4a53825709479ca3f1dc7ce1245fc67f
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 7bfa831332451718c0c9c05023b90104d2b8b02b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77170708"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658712"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-conversion-options"></a>Azure Monitor ビュー デザイナーからブックへの変換オプション
 [ビュー デザイナー](view-designer.md)はカスタム ビューを作成できるようにする Azure Monitor の機能で、Log Analytics ワークスペース内のデータを、グラフ、リスト、タイムラインを使用して視覚化します。 これらは段階的に廃止され、追加の機能を提供するブックで置き換えられています。 この記事では、この 2 つの基本概念を比較し、ビューをブックに変換するためのオプションについて説明します。

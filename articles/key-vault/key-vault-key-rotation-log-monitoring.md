@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: ''
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a0aa20a8d1ddecfe401a4e099a4f298971779501
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f7fbc82c08d89d73d671a49fb31b9d3cca01c721
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720114"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195517"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>キー ローテーションと監査で Azure Key Vault を設定する
 

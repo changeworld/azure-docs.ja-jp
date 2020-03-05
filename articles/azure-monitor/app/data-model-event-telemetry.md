@@ -1,19 +1,15 @@
 ---
 title: Azure Application Insights Telemetry のデータ モデル - イベント テレメトリ | Microsoft Docs
 description: イベント テレメトリ用の Application Insights データ モデル
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 620983fb2174fe7f32a61503b0b87e8e7ce0c330
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: bd8b2581f7642f6825aaf0d1b51c8e94d4333d33
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678148"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671883"
 ---
 # <a name="event-telemetry-application-insights-data-model"></a>イベント テレメトリ:Application Insights データ モデル
 
@@ -35,7 +31,7 @@ ms.locfileid: "72678148"
 
 [!INCLUDE [application-insights-data-model-measurements](../../../includes/application-insights-data-model-measurements.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Application Insights の型とデータ モデルについては、[データ モデル](data-model.md)に関するページを参照してください。
 - [カスタム イベント テレメトリを記述します](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)。

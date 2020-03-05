@@ -15,22 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: kumud
-ms.openlocfilehash: dfc56d86d2e516a7c7bb82ef7a5e84105e049188
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: f4643aae0b28861f4ddb99d8dace749e62f930b8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404455"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199480"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Azure CLI を使用して仮想マシンのプライベート IP アドレスを構成する
 
-[!INCLUDE [virtual-networks-static-private-ip-selectors-arm-include](../../includes/virtual-networks-static-private-ip-selectors-arm-include.md)]
 
 [!INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
-
-[!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
-
-この記事では、Resource Manager デプロイ モデルについて説明します。 [クラシック デプロイ モデルで静的プライベート IP アドレスを管理する](virtual-networks-static-private-ip-classic-cli.md)こともできます。
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
@@ -197,7 +192,7 @@ rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
 
 ## <a name="remove-a-static-private-ip-address-from-a-vm"></a>VM から静的プライベート IP アドレスを削除する
 
-Azure Resource Manager デプロイ用の Azure CLI では、NIC から静的プライベート IP アドレスを削除することはできません。 前提条件は、以下のとおりです。
+Azure Resource Manager デプロイ用の Azure CLI では、NIC から静的プライベート IP アドレスを削除することはできません。 次の手順が必要です。
 - 動的 IP を使用した新しい NIC の作成
 - 新しく作成された NIC の VM に NIC を設定します。 
 
@@ -269,6 +264,6 @@ Azure Resource Manager デプロイ用の Azure CLI では、NIC から静的プ
     > [!NOTE]
     > VM が複数の NIC を持つのに十分な大きさである場合、**azure network nic delete** コマンドを実行して、古い NIC を削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [IP アドレス設定](virtual-network-network-interface-addresses.md)の管理について学習します。

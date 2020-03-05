@@ -8,27 +8,27 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 9777c62d97c70d4f6a0d0a4d912dea3fa8decd23
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 768c719211e8a8f2133d3798343d076e795a3da0
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499555"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273435"
 ---
 # <a name="personname-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの PersonName 作成済みエンティティ
 作成済みの personName エンティティは、人の名前を検出します。 このエンティティは既にトレーニングされているので、personName を含む発話の例をアプリケーション意図に追加する必要はありません。 personName エンティティは、英語および中国語の[カルチャ](luis-reference-prebuilt-entities.md)でサポートされます。
 
 ## <a name="resolution-for-personname-entity"></a>personName エンティティの解決
 
-クエリに対して次のエンティティ オブジェクトが返されます。
+次のエンティティ オブジェクトがクエリに対して返されます。
 
 `Is Jill Jones in Cairo?`
 
 
-#### <a name="v3-responsetabv3"></a>[V3 の応答](#tab/V3)
+#### <a name="v3-response"></a>[V3 の応答](#tab/V3)
 
 
 次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
@@ -40,7 +40,7 @@ ms.locfileid: "73499555"
     ]
 }
 ```
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 の詳細な応答](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[V3 の詳細な応答](#tab/V3-verbose)
 次の JSON は、`verbose` パラメーターが `true` に設定されている場合です。
 
 ```json
@@ -65,7 +65,7 @@ ms.locfileid: "73499555"
     }
 }
 ```
-#### <a name="v2-responsetabv2"></a>[V2 の応答](#tab/V2)
+#### <a name="v2-response"></a>[V2 の応答](#tab/V2)
 
 次の例では、**builtin.personName** エンティティの解決を示します。
 
@@ -79,10 +79,10 @@ ms.locfileid: "73499555"
 }
 ]
 ```
-* * * 
+* * *
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
 
-[email](luis-reference-prebuilt-email.md)、[number](luis-reference-prebuilt-number.md)、[ordinal](luis-reference-prebuilt-ordinal.md) エンティティについて学習します。 
+[email](luis-reference-prebuilt-email.md)、[number](luis-reference-prebuilt-number.md)、[ordinal](luis-reference-prebuilt-ordinal.md) エンティティについて学習します。

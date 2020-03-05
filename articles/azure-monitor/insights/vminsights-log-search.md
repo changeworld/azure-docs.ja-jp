@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor for VMs (プレビュー) からログを照会する方法 | Microsoft Docs
 description: Azure Monitor for VMs ソリューションは、メトリックとログ データを収集します。この記事では、レコードについて説明し、サンプル クエリを紹介します。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/19/2019
-ms.openlocfilehash: 690c7ba04cf849d973295a6ec27eaa38f9b807c3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e679345669d0954008e46f48d986930038a84c10
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75399321"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670714"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) からログを照会する方法
 
@@ -231,7 +230,7 @@ VMBoundPort のすべてのレコードは、以下のフィールドで識別�
 |ExecutableName | プロセスの実行可能ファイルの名前 | 
 |DisplayName | プロセス表示名 |
 |Role | プロセス ロール: *webserver*、*appServer*、*databaseServer*、*ldapServer*、*smbServer* |
-|Group | プロセス グループ名。 同じグループのプロセスは論理的に関連しています。たとえば、同じ製品またはシステム コンポーネントに属しています。 |
+|グループ | プロセス グループ名。 同じグループのプロセスは論理的に関連しています。たとえば、同じ製品またはシステム コンポーネントに属しています。 |
 |StartTime | プロセス プールの開始時刻 |
 |FirstPid | プロセス プール内の最初の PID |
 |説明 | プロセスの説明 |

@@ -15,12 +15,12 @@ ms.date: 02/18/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d6d621646aaa5c8c44a20cf327cd10fa31990b0
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 4ac09fb3faf55be6c07a1e0a88b6e2032c9ab8ce
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484538"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299331"
 ---
 # <a name="understand-the-azure-ad-schema"></a>Azure AD スキーマについて
 ディレクトリなどの Azure Active Directory (Azure AD) のオブジェクトは、ユーザー、グループ、連絡先などを表す、プログラムによる高レベルのデータ構造です。 Azure AD で新しいユーザーまたは連絡先を作成すると、そのオブジェクトの新しいインスタンスが作成されます。 これらのインスタンスは、プロパティに基づいて区別できます。
@@ -75,7 +75,7 @@ Azure AD には、次の 2 種類のプロパティがあります。
 1.  [Graph エクスプローラー](https://developer.microsoft.com/graph/graph-explorer)に移動します。
 1.  自分の全体管理者アカウントでサインインします。
 1.  左側で、 **[アクセス許可の変更]** を選択し、**Directory.ReadWrite.All** が*同意*になっていることを確認します。
-1.  クエリ https://graph.microsoft.com/beta/serviceprincipals/? $filter=startswith(Displayname,'Active') を実行します。 このクエリでは、サービス プリンシパルのフィルター処理された一覧が返されます。
+1.  クエリ `https://graph.microsoft.com/beta/serviceprincipals/?$filter=startswith(Displayname,'Active')` を実行します。 このクエリでは、サービス プリンシパルのフィルター処理された一覧が返されます。
 1.  `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` を見つけて、`"id"` の値を書き留めます。
     ```
     "value": [

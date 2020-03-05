@@ -3,20 +3,20 @@ title: カスタム ポリシーの JSON 要求変換の例
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C の Identity Experience Framework (IEF) スキーマの JSON 要求変換の例。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 12/10/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 56c46b8f2804e37544c94ec2d6ced7e8879b1ffa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ad8fcf578ae1c89856a9d7929af0aec813cb4082
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75367129"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187595"
 ---
 # <a name="json-claims-transformations"></a>JSON 要求変換
 
@@ -28,7 +28,7 @@ ms.locfileid: "75367129"
 
 要求値か定数を使用して JSON 文字列を生成します。 ドット表記に続くパス文字列は、JSON 文字列にデータを挿入する場所を示す目的で使用されます。 ドットで分けられた後、整数は JSON 配列のインデックスとして解釈され、整数以外は JSON オブジェクトのインデックスとして解釈されます。
 
-| アイテム | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | ドット表記に続く任意の文字列 | string | 要求値の挿入先となる JSON の JsonPath。 |
 | InputParameter | ドット表記に続く任意の文字列 | string | 定数文字列値の挿入先となる JSON の JsonPath。 |
@@ -94,7 +94,7 @@ ms.locfileid: "75367129"
 
 JSON データから、指定された要素を取得します。
 
-| アイテム | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputJson | string | 項目を取得する要求変換で使用される ClaimTypes。 |
 | InputParameter | claimToExtract | string | 抽出する JSON 要素の名前。 |
@@ -130,7 +130,7 @@ JSON データから、指定された要素を取得します。
 
 Json データから、指定された要素の一覧を取得します。
 
-| アイテム | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | jsonSourceClaim | string | 項目を取得する要求変換で使用される ClaimTypes。 |
 | InputParameter | errorOnMissingClaims | boolean | 要求の 1 つが不足している場合は、エラーをスローするかどうかを指定します。 |
@@ -184,7 +184,7 @@ Json データから、指定された要素の一覧を取得します。
 
 JSON データから、指定した数値の (長) 要素を取得します。
 
-| アイテム | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputJson | string | 項目を取得する要求変換で使用される ClaimTypes。 |
 | InputParameter | claimToExtract | string | 抽出する JSON 要素の名前。 |
@@ -227,7 +227,7 @@ JSON データから、指定した数値の (長) 要素を取得します。
 
 JSON データの配列から最初の要素を取得します。
 
-| アイテム | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputJsonClaim | string | JSON 配列から項目を取得する要求変換で使用される ClaimTypes。 |
 | OutputClaim | extractedClaim | string | この ClaimsTransformation が呼び出された後に生成される ClaimTypeは、 JSON 配列の最初の要素です。 |
@@ -256,7 +256,7 @@ JSON データの配列から最初の要素を取得します。
 
 XML データを JSON 形式に変換します。
 
-| アイテム | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | xml | string | データを XML から JSON 形式に変換する要求変換で使用される ClaimTypes。 |
 | OutputClaim | json | string | この ClaimsTransformation が呼び出された後に生成される ClaimType は、JSON 形式のデータであります。 |

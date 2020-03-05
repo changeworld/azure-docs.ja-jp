@@ -3,20 +3,20 @@ title: カスタム ポリシーを使用して Azure AD アカウントでの�
 titleSuffix: Azure AD B2C
 description: カスタム ポリシーを使用して Azure Active Directory B2C に Azure Active Directory アカウントでサインインするように設定します。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 64934dd5bc591415c0bad6ac3dc6a4a2d98dd005
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 5a6c85ebed7271655745de45694542fb359836e7
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136306"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188412"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>カスタム ポリシーを使用して Azure Active Directory B2C に Azure Active Directory アカウントでサインインするように設定する
 
@@ -75,7 +75,7 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 1. ポリシー キーの**名前**を入力します。 たとえば、「 `ContosoAppSecret` 」のように入力します。  作成時に、プレフィックス `B2C_1A_` がキーの名前に自動的に追加されるため、次のセクションの XML での参照は *B2C_1A_ContosoAppSecret* になります。
 1. **[シークレット]** に、前に記録したクライアント シークレットを入力します。
 1. **[キー使用法]** として [`Signature`] を選択します。
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 ## <a name="add-a-claims-provider"></a>クレーム プロバイダーを追加する
 

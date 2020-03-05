@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 54606b4fbbf7ae459298b3842f957de5256ba0df
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 799ed0e877bb3bddb3f179cdb3d6df6fca57e4d5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971147"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301354"
 ---
 # <a name="application-gateway-components"></a>アプリケーション ゲートウェイのコンポーネント
 
@@ -53,7 +53,7 @@ V1 SKU は、静的または動的な内部 IP アドレスと動的パブリッ
 >HTTP/2 プロトコルのサポートを利用できるのは、アプリケーション ゲートウェイ リスナーに接続しているクライアントだけです。 バックエンド サーバー プールへの通信は、常に HTTP/1.1 で行われます。 既定では、HTTP/2 のサポートは無効になっています。 必要であれば、有効にすることもできます。
 
 - リスナー構成で HTTP プロトコルか HTTPS プロトコルを指定します。
-- [WebSockets プロトコルと HTTP/2 プロトコル](overview.md#websocket-and-http2-traffic)のサポートはネイティブで提供されます。[WebSocket サポート](application-gateway-websocket.md)は既定で有効になっています。 ユーザーが構成可能な、WebSocket のサポートを選択的に有効または無効にするための設定はありません。 WebSocket は HTTP リスナーと HTTPS リスナーの両方で使用します。
+- [WebSockets プロトコルと HTTP/2 プロトコル](features.md#websocket-and-http2-traffic)のサポートはネイティブで提供されます。[WebSocket サポート](application-gateway-websocket.md)は既定で有効になっています。 ユーザーが構成可能な、WebSocket のサポートを選択的に有効または無効にするための設定はありません。 WebSocket は HTTP リスナーと HTTPS リスナーの両方で使用します。
 
 HTTPS リスナーは SSL 終了に使用します。 HTTPS リスナーは暗号化と解読の作業負荷をアプリケーション ゲートウェイにまかせるため、Web サーバーはオーバーヘッドの負担から解放されます。
 
@@ -115,9 +115,9 @@ Application Gateway は[示されている順序](configuration-overview.md#orde
 
 このコンポーネントは次の目的にも使用されます。
 
-- [Cookie ベースのセッション アフィニティ](overview.md#session-affinity)を利用し、ユーザー セッションを同じサーバー上で維持するかどうかを決定する。
+- [Cookie ベースのセッション アフィニティ](features.md#session-affinity)を利用し、ユーザー セッションを同じサーバー上で維持するかどうかを決定する。
 
-- [接続のドレイン](overview.md#connection-draining)を使用し、バックエンド プール メンバーを正常に削除する。
+- [接続のドレイン](features.md#connection-draining)を使用し、バックエンド プール メンバーを正常に削除する。
 
 - カスタム プローブを関連付け、バックエンドの正常性を監視する。要求タイムアウトの間隔を設定する。要求のホスト名とパスをオーバーライドする。App Service バックエンドの設定をワンクリックで簡単に指定できるようにする。
 
@@ -148,7 +148,7 @@ Application Gateway バックエンド プールのメンバーは、可用性�
 
 詳しくは、[アプリケーション ゲートウェイの正常性の監視](../application-gateway/application-gateway-probe-overview.md)に関する記事をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 アプリケーション ゲートウェイの作成
 

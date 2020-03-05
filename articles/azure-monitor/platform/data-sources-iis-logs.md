@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor での IIS ログ | Microsoft Docs
 description: インターネット インフォメーション サービス (IIS) は、Azure Monitor が収集できるログ ファイル内にユーザー アクティビティを格納します。  この記事では、IIS ログの収集を構成する方法、および Azure Monitor で作成されるレコードの詳細について説明します。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: a865f43585ccbb31569e2ca0987aae62a89a9281
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1b3ae6295a639c3d59643b106b920cb606572e0a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932488"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670578"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>Azure Monitor での IIS ログを収集する
 インターネット インフォメーション サービス (IIS) は、Azure Monitor が収集して[ログ データ](data-platform.md)として格納できるログ ファイル内にユーザー アクティビティを格納します。
@@ -27,7 +26,7 @@ Azure Monitor は W3C 形式で格納された IIS ログ ファイルのみを�
 Azure Monitor での IIS ログは、[[詳細設定] メニュー](agent-data-sources.md#configuring-data-sources)から構成します。  必要な構成は、 **[Collect W3C format IIS log files]** (W3C 形式の IIS ログ ファイルを収集する) を選択することのみです。
 
 
-## <a name="data-collection"></a>データ収集
+## <a name="data-collection"></a>データ コレクション
 Azure Monitor では、ログのタイムスタンプが変更されるたびに、各エージェントから IIS ログ エントリが収集されます。 ログは **5 分**ごとに読み取られます。 何らかの理由で、新しいファイルの作成時に IIS でロールオーバー時間の前にタイムスタンプが更新されない場合、新しいファイルの作成後にエントリが収集されます。 新しいファイル作成の頻度は、IIS サイトの **[Log File Rollover Schedule]\(ログ ファイルのロールオーバー スケジュール\)** 設定によって制御されます。この設定の既定値は 1 日に 1 回です。 設定が **[毎時]** である場合、Azure Monitor では 1 時間ごとにログが収集されます。 設定が **[毎日]** である場合、Azure Monitor では 24 時間ごとにログが収集されます。
 
 
@@ -69,6 +68,6 @@ IIS ログ レコードの型は **W3CIISLog** になり、次の表に示すプ
 | W3CIISLog &#124; where csHost=="www\.contoso.com" &#124; summarize count() by csUriStem |ホスト www\.contoso.com の URL 別の IIS ログ エントリの数。 |
 | W3CIISLog &#124; summarize sum(csBytes) by Computer &#124; take 500000 |各 IIS コンピューターによって受信された合計バイト数。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * 分析のために他の[データ ソース](agent-data-sources.md)を収集するように Azure Monitor を構成します。
 * [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。

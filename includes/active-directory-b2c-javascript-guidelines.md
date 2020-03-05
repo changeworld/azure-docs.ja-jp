@@ -1,16 +1,16 @@
 ---
-author: mmacy
+author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
 ms.date: 02/11/2020
-ms.author: marsma
-ms.openlocfilehash: 687853720e8f963d5a58093b824bb36e8063bcf7
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.author: mimart
+ms.openlocfilehash: ef08f1adc15475cd5dd38548ed39dc57532c0ef5
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77149076"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78185839"
 ---
 ## <a name="guidelines-for-using-javascript"></a>JavaScript の使用に関するガイドライン
 

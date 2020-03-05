@@ -1,19 +1,18 @@
 ---
 title: クイックスタート ASP.NET Core - Azure Monitor Application Insights
 description: Azure Monitor Application Insights で監視する ASP.NET Core Web アプリを迅速にセットアップする手順を説明します
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: e05926d7a76f47cc3c95088fa2d8f1a6e385bbbc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fa1651e88226080cca970cc756f2c0522b39f1be
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75399030"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670629"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>ASP.NET Core Web アプリケーションの監視を開始する
 
@@ -37,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure portal](https://portal.azure.com/) にサインインする
+[Azure portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="enable-application-insights"></a>Application Insights を有効にする
 
@@ -50,11 +49,11 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
     構成ボックスが表示されたら、次の表を使用して入力フィールドに入力します。
 
-   | 設定        |  値           | 説明  |
+   | 設定        |  Value           | 説明  |
    | ------------- |:-------------|:-----|
-   | **Name**      | グローバルに一意の値 | 監視しているアプリを識別する名前 |
+   | **名前**      | グローバルに一意の値 | 監視しているアプリを識別する名前 |
    | **リソース グループ**     | myResourceGroup      | App Insights データをホストする新しいリソース グループの名前。 新しいリソース グループを作成するか、既存のリソース グループを使用することができます。 |
-   | **Location** | East US | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
+   | **場所** | 米国東部 | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
 
 2. **Create** をクリックしてください。
 

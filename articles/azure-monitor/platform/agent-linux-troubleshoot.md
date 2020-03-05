@@ -1,18 +1,17 @@
 ---
 title: Azure Log Analytics Linux エージェントのトラブルシューティング | Microsoft Docs
 description: Azure Monitor の Linux 用 Log Analytics エージェントに関する最も一般的な問題の現象、原因、および解決策について説明します。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: b7036b305b4b1041fced3be68024be29d49a4990
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 24aa3462aef4f719e93d17389ff342084f6c7864
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086856"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668759"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 
 
@@ -153,7 +152,7 @@ OMS 出力プラグインを使用する代わりに、データ項目を `stdou
 * オンボード中に指定されたプロキシが正しくありません
 * Azure Monitor と Azure Automation サービスのエンドポイントがデータセンターでホワイトリストに登録されていない 
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 1. オプション `-v` が有効になった次のコマンドを使用して、Linux 用 Log Analytics エージェントで Azure Monitor に再オンボードします。 これにより、プロキシ経由で Azure Monitor に接続しているエージェントの詳細出力が可能になります。 
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key> -p <Proxy Conf> -v`
 
@@ -174,7 +173,7 @@ OMS 出力プラグインを使用する代わりに、データ項目を `stdou
 * Linux サーバーの日付と時刻が正しくありません 
 * 使用されているワークスペース ID とワークスペース キーが正しくありません
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 1. date コマンドを使用して、Linux サーバーの時刻を確認します。 時刻が現在の時刻より 15 分後または前である場合、オンボードは失敗します。 これを修正するには、Linux サーバーの日付やタイムゾーンを更新します。 
 2. 最新バージョンの Linux 用 Log Analytics エージェントをインストールしたことを確認します。  最新バージョンでは、時間の差によってオンボードが失敗する場合に通知するようになりました。
@@ -218,7 +217,7 @@ nss-pem パッケージ [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/n
 - Azure Monitor への接続がブロックされています
 - Linux 用 Log Analytics エージェントのデータがバックアップされています
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 1. ファイル `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf` が存在するかどうかをチェックして、Azure Monitor のオンボードに成功したかどうかを確認します。
 2. `omsadmin.sh` コマンドライン命令を使用して再オンボードします。
 3. プロキシを使用する場合は、上記のプロキシの解決手順を参照してください。
@@ -235,7 +234,7 @@ nss-pem パッケージ [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/n
 * Syslog が Linux サーバーに正しく転送されていません
 * 1 秒あたりに転送されるメッセージの数が多すぎて、Linux 用 Log Analytics エージェントの基本構成では処理できません
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 * Log Analytics ワークスペースでの Syslog の構成にすべてのファシリティと正しいログ レベルが含まれていることを確認します。 [Azure portal での Syslog コレクションの構成](../../azure-monitor/platform/data-sources-syslog.md#configure-syslog-in-the-azure-portal)に関するページを確認してください
 * 転送されたメッセージをネイティブの syslog メッセージング デーモン (`rsyslog`、`syslog-ng`) が受信できることを確認します
 * Syslog サーバーのファイアウォール設定をチェックして、メッセージがブロックされていないことを確認します
@@ -248,7 +247,7 @@ omsagent.log で `[error]: unexpected error error_class=Errno::EADDRINUSE error=
 ### <a name="probable-causes"></a>考えられる原因
 このエラーは、Linux Diagnostic Extension (LAD) が Log Analytics Linux VM 拡張機能と共にインストールされていて、omsagent として syslog データ コレクションと同じポートを使用していることを示します。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 1. root として、次のコマンドを実行します (25224 は例であり、お使いの環境では LAD が異なるポート番号を使用している可能性があることに注意してください)。
 
     ```
@@ -270,7 +269,7 @@ omsagent.log で `[error]: unexpected error error_class=Errno::EADDRINUSE error=
 * Linux Diagnostic Extension がインストールされています
 * Linux Diagnostic Extension をインストールしてアンインストールしましたが、omsagent が mdsd によって使用されていることを示すエラーがまだ表示され、削除できません。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 1. Linux Diagnostic Extension (LAD) をアンインストールします。
 2. Linux Diagnostic Extension のファイルが `/var/lib/waagent/Microsoft.Azure.Diagnostics.LinuxDiagnostic-<version>/` および `/var/opt/microsoft/omsagent/LAD/` に存在する場合は、それらを削除します。
 
@@ -280,7 +279,7 @@ omsagent.log で `[error]: unexpected error error_class=Errno::EADDRINUSE error=
 * omsagent のユーザーが、Nagios ログ ファイルの読み取りアクセス許可を持っていません
 * Nagios のソースとフィルターが、omsagent.conf ファイルからコメント解除されていません
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 1. こちらの[説明](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#nagios-alerts)に従って、Nagios ファイルから読み取るための omsagent ユーザーを追加します。
 2. `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` にある Linux 用 Log Analytics エージェントの一般構成ファイルで、Nagios のソースとフィルターの**両方**がコメント解除されていることを確認します。
 
@@ -308,7 +307,7 @@ omsagent.log で `[error]: unexpected error error_class=Errno::EADDRINUSE error=
 * Log Analytics エージェントのデータがバックアップされています
 * DSC ログの "*現在の構成が存在しません。-Path パラメーターで構成ファイルを指定して Start-DscConfiguration コマンドを実行し、現在の構成を先に作成します。* " `omsconfig.log` ログ ファイルに、`PerformRequiredConfigurationChecks` 操作に関するログ メッセージが存在しません。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 1. auditd パッケージのようなすべての依存関係をインストールします。
 2. ファイル `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf` が存在するかどうかをチェックして、Azure Monitor へのオンボードに成功したかどうかを確認します。  成功しなかった場合は、omsadmin.sh コマンド ラインの[指示](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)を使用して再オンボードします。
 4. プロキシを使用している場合は、上記のプロキシのトラブルシューティング手順を確認します。
@@ -373,7 +372,7 @@ omsagent.log で `[error]: unexpected error error_class=Errno::EADDRINUSE error=
 * Linux 用 Log Analytics エージェントで最新の構成が選択されていません
 * ポータルで変更された設定が適用されていません
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 **背景知識:** `omsconfig` は Linux 用 Log Analytics エージェントの構成エージェントであり、5 分ごとに新しいポータル側構成を検索します。 その後、この構成が、/etc/opt/microsoft/omsagent/conf/omsagent.conf にある Linux 用 Log Analytics エージェント構成ファイルに適用されます。
 
 * 場合によっては、Linux 用 Log Analytics エージェント構成エージェントがポータル構成サービスと通信できず、最新の構成が適用されないことがあります。
@@ -392,7 +391,7 @@ omsagent.log で `[error]: unexpected error error_class=Errno::EADDRINUSE error=
  * `[DATETIME] [error]: file not accessible by omsagent.`
 * Linux 用 Log Analytics エージェント バージョン 1.1.0-217 で修正された競合状態に関する既知の問題
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 1. ファイル `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf` が存在するかどうかをチェックして、Azure Monitor へのオンボードに成功したことを確認します。 成功していない場合は、次のいずれかを行います。  
 
   1. omsadmin.sh コマンド ラインの[指示](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)を使用して再オンボードします。
@@ -427,7 +426,7 @@ sudo sh ./onboard_agent.sh --purge
 * Log Analytics エージェントが、オペレーティング システムから削除されました
 * Log Analytics エージェント サービスが、ダウン、無効、または未構成になっています
 
-### <a name="resolution"></a>解決策 
+### <a name="resolution"></a>解像度 
 問題を修正するには次の手順を実行します。
 1. Azure portal から拡張機能を削除します。
 2. [指示](../../azure-monitor/learn/quick-collect-linux-computer.md)に従ってエージェントをインストールします。
@@ -441,7 +440,7 @@ sudo sh ./onboard_agent.sh --purge
 
 ホスト上の Log Analytics エージェント パッケージが期限切れです。
 
-### <a name="resolution"></a>解決策 
+### <a name="resolution"></a>解像度 
 問題を修正するには次の手順を実行します。
 
 1. [こちらのページ](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/)で最新リリースを確認します。

@@ -1,18 +1,14 @@
 ---
 title: Azure Application Insights による既定の SDK エンドポイントのオーバーライド
 description: Azure Government などのリージョンの既定の Azure Monitor Application Insights SDK エンドポイントを変更します。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/26/2019
-ms.openlocfilehash: c04b793512eccf6aaff7d3ed3cc65efdd3dfc303
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3aa18a6b96458533c3dc53f3f420ed264b298a3e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432585"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671989"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>既定のエンドポイントをオーバーライドする Application Insights
 
@@ -195,7 +191,7 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 
 現在、エンドポイントの変更が必要なリージョンは [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights) と [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide) のみです。
 
-|リージョン |  エンドポイント名 | 値 |
+|リージョン |  エンドポイント名 | Value |
 |-----------------|:------------|:-------------|
 | Azure 中国 | テレメトリ チャネル | `https://dc.applicationinsights.azure.cn/v2/track` |
 | Azure 中国 | QuickPulse (Live Metrics) |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
@@ -207,7 +203,7 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 現在、一般的に `api.applicationinsights.io' によってアクセスされる [Application Insights REST API](https://dev.applicationinsights.io/
 ) をお使いの場合、お客様のリージョンのローカルのエンドポイントを使用する必要があります。
 
-|リージョン |  エンドポイント名 | 値 |
+|リージョン |  エンドポイント名 | Value |
 |-----------------|:------------|:-------------|
 | Azure 中国 | REST API | `api.applicationinsights.azure.cn` |
 | Azure Government | REST API | `api.applicationinsights.us`|

@@ -1,19 +1,18 @@
 ---
 title: クイック スタート:Azure Monitor Application Insights を使用して Node.js を監視する
 description: Azure Monitor Application Insights で監視する Node.js Web アプリを迅速にセットアップする手順を説明します
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: a6d6d70336badeaa86c9982dfa977ea389ed5402
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 694d2ae529202223869fcbb2a084e32bccaedbf1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963531"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660225"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>クイック スタート:Azure Application Insights で Node.js Web アプリケーションの監視を開始する
 
@@ -43,11 +42,11 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
     | 設定        | Value           | 説明  |
    | ------------- |:-------------|:-----|
-   | **Name**      | グローバルに一意の値 | 監視しているアプリを識別する名前。 |
+   | **名前**      | グローバルに一意の値 | 監視しているアプリを識別する名前。 |
    | **リソース グループ**     | myResourceGroup      | AppInsights データをホストする新しいリソース グループの名前。 新しいリソース グループを作成するか、既存のリソース グループを使用することができます。 |
-   | **地域** | East US | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
+   | **場所** | 米国東部 | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
 
-3. **作成** を選択します。
+3. **［作成］** を選択します
 
 ## <a name="configure-appinsights-sdk"></a>AppInsights SDK を構成する
 

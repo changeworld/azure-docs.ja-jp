@@ -8,26 +8,26 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 6f262752a50b58eae8ffbea81b8e7fc4d8c65b98
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f7aa2a341a82d30f7022af49e626a3cd358854b7
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464980"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273477"
 ---
 # <a name="email-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの email 作成済みエンティティ
-email の抽出には、発話からのメール アドレス全体が含まれます。 このエンティティは既にトレーニングされているので、メールを含む発話の例をアプリケーション意図に追加する必要はありません。 email エンティティは、`en-us` カルチャでのみサポートされます。 
+email の抽出には、発話からのメール アドレス全体が含まれます。 このエンティティは既にトレーニングされているので、メールを含む発話の例をアプリケーション意図に追加する必要はありません。 email エンティティは、`en-us` カルチャでのみサポートされます。
 
 ## <a name="resolution-for-prebuilt-email"></a>作成済みの email の解決
 
-クエリに対して次のエンティティ オブジェクトが返されます。
+次のエンティティ オブジェクトがクエリに対して返されます。
 
 `please send the information to patti@contoso.com`
 
-#### <a name="v3-responsetabv3"></a>[V3 の応答](#tab/V3)
+#### <a name="v3-response"></a>[V3 の応答](#tab/V3)
 
 次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
 
@@ -38,7 +38,7 @@ email の抽出には、発話からのメール アドレス全体が含まれ�
     ]
 }
 ```
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 の詳細な応答](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[V3 の詳細な応答](#tab/V3-verbose)
 
 次の JSON は、`verbose` パラメーターが `true` に設定されている場合です。
 
@@ -64,7 +64,7 @@ email の抽出には、発話からのメール アドレス全体が含まれ�
     }
 }
 ```
-#### <a name="v2-responsetabv2"></a>[V2 の応答](#tab/V2)
+#### <a name="v2-response"></a>[V2 の応答](#tab/V2)
 
 次の例では、**builtin.email** エンティティの解決を示します。
 
@@ -81,10 +81,10 @@ email の抽出には、発話からのメール アドレス全体が含まれ�
     }
 ]
 ```
-* * * 
+* * *
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
 
-[number](luis-reference-prebuilt-number.md)、[ordinal](luis-reference-prebuilt-ordinal.md)、[percentage](luis-reference-prebuilt-percentage.md) について学習します。 
+[number](luis-reference-prebuilt-number.md)、[ordinal](luis-reference-prebuilt-ordinal.md)、[percentage](luis-reference-prebuilt-percentage.md) について学習します。

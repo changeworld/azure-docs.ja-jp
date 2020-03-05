@@ -1,22 +1,20 @@
 ---
 title: Azure Monitor でのアクティビティ ログ アラート
 description: アクティビティ ログで特定のイベントが発生した場合に、SMS、Webhook、電子メールなどで通知を受け取ります。
-ms.service: azure-monitor
 ms.subservice: alerts
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 09/17/2018
-ms.openlocfilehash: c42f72800a93de714f0cc126939a28a8a6b5fce4
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 26ecfdb33b92c91010af63ec14089dd148d6bad0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747526"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669015"
 ---
-# <a name="alerts-on-activity-log"></a>アクティビティ ログ アラート 
+# <a name="alerts-on-activity-log"></a>アクティビティ ログ アラート
 
 ## <a name="overview"></a>概要
+
 アクティビティ ログ アラートは、アラートに指定した条件と一致する新しい[アクティビティのログ イベント](activity-log-schema.md)が発生したときにアクティブになるアラートです。 [Azure アクティビティ ログ](platform-logs-overview.md)に記録されたイベントの順序と量に基づいて、アラートルールが起動します。 アクティビティ ログ アラートは Azure リソースであるため、Azure Resource Manager テンプレートを使用して作成できます。 これらは、Azure Portal で作成、更新、削除することもできます。 この記事では、アクティビティ ログ アラートの背後の概念について説明します。 アクティビティ ログ アラート ルールの作成と使用の詳細については、[アクティビティ ログ アラートの作成と管理](alerts-activity-log.md)に関するページをご覧ください。
 
 > [!NOTE]
@@ -45,7 +43,7 @@ JSON オブジェクトの任意の最上位プロパティに基づいて、ア
 - **[操作名]** : ロールベースのアクセス制御に使用される [Azure Resource Manager の操作](../../role-based-access-control/resource-provider-operations.md)名。 Azure Resource Manager に登録されていない操作は、アクティビティ ログ アラート ルールでは使用できません。
 - **レベル**:イベントの重大度レベル ([詳細]、[情報]、[警告]、[エラー]、[重大])。
 - **状態**: イベントの状態 (通常は [開始]、[失敗]、または [成功])。
-- **[イベント開始者]** : "呼び出し元" とも呼ばれます。 操作を実行したユーザーの電子メール アドレスまたは Azure Active Directory 識別子。
+- **イベント開始者**: "呼び出し元" とも呼ばれます。 操作を実行したユーザーの電子メール アドレスまたは Azure Active Directory 識別子。
 
 > [!NOTE]
 > 1 つのサブスクリプション内では、1 つのリソース レベル、リソース グループ内のすべてのリソース レベル、またはサブスクリプション レベル全体というスコープのアクティビティについて、最大 100 個のアラート ルールを作成できます。

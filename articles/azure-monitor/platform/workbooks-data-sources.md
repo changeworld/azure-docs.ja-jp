@@ -5,18 +5,17 @@ services: azure-monitor
 documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 368da2baaea1be41331d77f4dae1bdd9567b8cc5
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: d57910ae31d4db9be17b3dc46b5920a925ab4fcf
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872895"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658373"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Monitor ブックのデータ ソース
 
@@ -82,7 +81,7 @@ Azure Monitor には、Windows または Linux ゲスト オペレーティン�
 
 ![Kusto クエリ ウィンドウのスクリーンショット](./media/workbooks-overview/data-explorer.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * ブックの豊富な視覚化オプションの学習を[開始](workbooks-visualizations.md)します。
 * ブック リソースへのアクセスを[制御](workbooks-access-control.md)し、共有します。

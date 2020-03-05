@@ -3,12 +3,12 @@ title: 他のアプリケーションとの統合 - QnA Maker
 description: QnA Maker は、チャット ボットなどのクライアント アプリケーションや、Language Understanding (LUIS) などの他の自然言語処理サービスに統合されます。
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: f75ee92f2ecd14f5c3e017aeee2340cff0c92561
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 38b275aa2b8cf5768a2bc95634a7ff4892893eda
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843391"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300521"
 ---
 # <a name="design-knowledge-base-for-client-applications"></a>クライアント アプリケーション用にナレッジ ベースを設計する
 
@@ -20,7 +20,7 @@ QnA Maker は、[Microsoft Bot Framework](https://dev.botframework.com/) など�
 
 ## <a name="create-a-bot-without-writing-any-code"></a>コードを記述せずにボットを作成する
 
-ナレッジ ベースを公開した後、 **[公開]** ページで **[Create bot]\(ボットの作成\)** ボタンを選択して、ボットを作成します。 [ボットのチュートリアル](../tutorials/create-qna-bot.md)を使用して、ボタンを選択した後の動作について学習します。
+ナレッジ ベースを公開した後、 **[公開]** ページで **[Create bot]\(ボットの作成\)** ボタンを選択して、ボットを作成します。 [ボットのチュートリアル](../Quickstarts/create-publish-knowledge-base.md)を使用して、ボタンを選択した後の動作について学習します。
 
 ## <a name="providing-multi-turn-conversations"></a>複数ターン会話の提供
 

@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor で IIS 用に Blob Storage を使用し、イベント用にテーブル ストレージを使用する | Microsoft Docs
 description: Azure Monitor は、テーブル ストレージに診断を書き込む Azure サービスのログ、または Blob Storage に書き込まれた IIS ログを読み取ることができます。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 7edf778dc2429cc1054d1550a513d7461f8e7928
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 44368ab90abd189c6a8a0792494828c87142eb20
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77473179"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672397"
 ---
 # <a name="collect-data-from-azure-diagnostics-extension-to-azure-monitor-logs"></a>Azure Diagnostics 拡張機能から Azure Monitor ログにデータを収集する
 Azure Diagnostics 拡張機能は、仮想マシンを含む Azure コンピューティング リソースのゲスト オペレーティング システムから監視データを収集する、[Azure Monitor のエージェント](agents-overview.md)です。 この記事では、診断拡張機能によって収集されたデータを Azure Storage から Azure Monitor ログに収集する方法について説明します。
@@ -23,7 +22,7 @@ Azure Diagnostics 拡張機能は、仮想マシンを含む Azure コンピュ�
 ## <a name="supported-data-types"></a>サポートされるデータ型
 Azure Diagnostics 拡張機能では、データは Azure Storage アカウントに格納されます。 このデータを収集する Azure Monitor ログは、次の場所にある必要があります。
 
-| ログの種類 | リソースの種類 | Location |
+| ログの種類 | リソースの種類 | 場所 |
 | --- | --- | --- |
 | IIS ログ |Virtual Machines <br> Web ロールの比較 <br> Worker ロール |wad-iis-logfiles (Blob Storage) |
 | syslog |Virtual Machines |LinuxsyslogVer2v0 (Table Storage) |

@@ -2,7 +2,7 @@
 title: Azure Lsv2 シリーズの仮想マシン上でパフォーマンスを最適化する - ストレージ
 description: Lsv2 シリーズの仮想マシン上でソリューションのパフォーマンスを最適化する方法を紹介します。
 services: virtual-machines-windows
-author: laurenhughes
+author: sasha-melamed
 manager: gwallace
 ms.service: virtual-machines-windows
 ms.topic: article
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: a14e38cd93e7d6273282e209db8ce83ec99f16db
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 57b248908a02327f2521be05920259681a26817a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74068158"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920231"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Lsv2 シリーズの仮想マシン上でパフォーマンスを最適化する
 
@@ -96,6 +96,6 @@ Lsv2 VM にある 1.92 TB NVMe ディスク上のローカル ストレージは
 * **Windows Server 2019 のポーリング設定を調整できますか?**  
    ポーリング設定をユーザーが調整することはできません。
    
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure 上で[ストレージのパフォーマンスを高めるために最適化されたすべての VM](sizes-storage.md) の仕様を確認してください。

@@ -1,19 +1,18 @@
 ---
 title: 管理ソリューションの Azure Automation リソース | Microsoft Docs
 description: 一般的な管理ソリューションでは、Azure Automation の Runbook を追加して、監視データの収集や処理などのプロセスを自動化します。  この記事では、ソリューションに Runbook とその関連リソースを追加する方法について説明します。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/24/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d55af7354ea7d78263e55872e257a2814ebe4130
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8ef9f27546e9db95d5a41769e1b5bc7bc0c2f851
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401818"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663064"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>管理ソリューションへの Azure Automation リソースの追加 (プレビュー)
 > [!NOTE]
@@ -143,7 +142,7 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 
 
-## <a name="credentials"></a>[資格情報]
+## <a name="credentials"></a>資格情報
 [Azure Automation 資格情報](../../automation/automation-credentials.md)のタイプは **Microsoft.Automation/automationAccounts/credentials** であり、次のような構造をしています。  ソリューション ファイルにコード スニペットをコピーして貼り付け、パラメータ名を変更できるように、一般的な変数やパラメータが使用されています。 
 
 
@@ -166,7 +165,7 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 | プロパティ | 説明 |
 |:--- |:--- |
 | userName |資格情報のユーザー名です。 |
-| パスワード |資格情報のパスワードです。 |
+| password |資格情報のパスワードです。 |
 
 
 ## <a name="schedules"></a>スケジュール
@@ -241,7 +240,7 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 
 
-## <a name="variables"></a>変数:
+## <a name="variables"></a>変数
 [Azure Automation 変数](../../automation/automation-variables.md)のタイプは **Microsoft.Automation/automationAccounts/variables** であり、次のような構造をしています。  ソリューション ファイルにコード スニペットをコピーして貼り付け、パラメータ名を変更できるように、一般的な変数やパラメータが使用されています。
 
     {
@@ -265,7 +264,7 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 |:--- |:--- |
 | description | 変数の説明です (省略可能)。 |
 | isEncrypted | 変数を暗号化するかどうかを指定します。 |
-| 型 | 現在、このプロパティにはどのような効果もありません。  変数のデータ型は、初期値によって決定されます。 |
+| type | 現在、このプロパティにはどのような効果もありません。  変数のデータ型は、初期値によって決定されます。 |
 | value | 変数の値です。 |
 
 > [!NOTE]

@@ -2,18 +2,15 @@
 title: 診断設定を使用してエクスポート可能な Azure Monitor プラットフォーム メトリック
 description: Azure Monitor で使用できるメトリックの一覧 (リソースの種類別) です。
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: reference
 ms.date: 02/10/2020
-author: rboucher
-ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: e530663ef4ebfbef9371c48f4c70578b14a63605
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 7a75655d1707dd2491065974ed8addc4c2da1a6a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368241"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661364"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>診断設定を使用してエクスポート可能な Azure Monitor プラットフォーム メトリック
 
@@ -851,7 +848,7 @@ Azure Monitor バックエンドの複雑さにより、すべてのメトリッ
 | **はい**  | **はい** |  Microsoft.EventHub/namespaces  |  OUTMSGS  |  送信メッセージ (廃止) (非推奨)  |  Count  |  合計 | 
 | いいえ  | いいえ |  Microsoft.EventHub/namespaces  |  QuotaExceededErrors  |  クォータ超過エラー数。  |  Count  |  合計 | 
 | いいえ  | いいえ |  Microsoft.EventHub/namespaces  |  ServerErrors  |  サーバー エラー。  |  Count  |  合計 | 
-| いいえ  | いいえ |  Microsoft.EventHub/namespaces  |  Size  |  Size  |  バイト  |  Average | 
+| いいえ  | いいえ |  Microsoft.EventHub/namespaces  |  サイズ  |  サイズ  |  バイト  |  Average | 
 | いいえ  | いいえ |  Microsoft.EventHub/namespaces  |  SuccessfulRequests  |  成功した要求  |  Count  |  合計 | 
 | **はい**  | **はい** |  Microsoft.EventHub/namespaces  |  SUCCREQ  |  成功した要求数 (非推奨)  |  Count  |  合計 | 
 | **はい**  | **はい** |  Microsoft.EventHub/namespaces  |  SVRBSY  |  サーバー ビジー エラー数 (非推奨)  |  Count  |  合計 | 
@@ -1335,7 +1332,7 @@ Azure Monitor バックエンドの複雑さにより、すべてのメトリッ
 | **はい**  | **はい** |  Microsoft.ServiceBus/namespaces  |  OutgoingMessages  |  送信メッセージ  |  Count  |  合計 | 
 | いいえ  | いいえ |  Microsoft.ServiceBus/namespaces  |  ScheduledMessages  |  キュー/トピック内のスケジュール済みメッセージの数。  |  Count  |  Average | 
 | いいえ  | いいえ |  Microsoft.ServiceBus/namespaces  |  ServerErrors  |  サーバー エラー。  |  Count  |  合計 | 
-| いいえ  | いいえ |  Microsoft.ServiceBus/namespaces  |  Size  |  Size  |  バイト  |  Average | 
+| いいえ  | いいえ |  Microsoft.ServiceBus/namespaces  |  サイズ  |  サイズ  |  バイト  |  Average | 
 | いいえ  | いいえ |  Microsoft.ServiceBus/namespaces  |  SuccessfulRequests  |  成功した要求  |  Count  |  合計 | 
 | いいえ  | いいえ |  Microsoft.ServiceBus/namespaces  |  ThrottledRequests  |  スロットルされた要求数。  |  Count  |  合計 | 
 | いいえ  | いいえ |  Microsoft.ServiceBus/namespaces  |  UserErrors  |  ユーザー エラー数。  |  Count  |  合計 | 

@@ -1,18 +1,14 @@
 ---
 title: Application Insights のリリース注釈 | Microsoft Docs
 description: Application Insights で、メトリックス エクスプローラーのグラフにデプロイ マーカーまたはビルド マーカーを追加します。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/01/2019
-ms.openlocfilehash: f9ab1f1ef2b64c07a3b0c8ddf93d6ef4293517db
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e0e2a106b276110e13b3c68889e4d1d349ba73a4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73668111"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666515"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Application Insights のメトリック グラフの注釈
 
@@ -106,7 +102,7 @@ Azure DevOps を使わずに、GitHub の [CreateReleaseAnnotation](https://gith
 
 過去に関する注釈を作成する場合など、スクリプトを変更できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [作業項目を作成する](../../azure-monitor/app/diagnostic-search.md#create-work-item)
 * [PowerShell でのオートメーション](../../azure-monitor/app/powershell.md)

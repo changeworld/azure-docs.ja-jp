@@ -1,25 +1,23 @@
 ---
 title: Azure Application Insights による Web アプリケーションのユーザー リテンション期間分析 | Microsoft Docs
 description: アプリに戻るユーザーの数を分析します。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5f5f6235354adc565815ac2eab0a1c774267102d
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 37ae97d5fbc62e507f726c452999a7f6e7c989c6
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899415"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670969"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Azure Application Insights による Web アプリケーションのユーザー リテンション期間分析
 
 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) のリテンション期間機能を使用すると、アプリに戻るユーザーの数、およびそのユーザーが特定のタスクを実行したり目標を達成したりする頻度を分析できます。 たとえば、ゲームのサイトを運営する場合は、ゲームに負けた後にサイトに戻るユーザーの数と、勝った後に戻るユーザーの数を比較できます。 このデータによって、ユーザー エクスペリエンスとビジネス戦略の両方の強化に役立ちます。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 Application Insights ポータルのリテンション期間ツールにデータがまだ表示されていない場合は、[利用状況ツールの使用方法を確認](usage-overview.md)してください。
 
@@ -59,7 +57,7 @@ Application Insights ポータルのリテンション期間ツールにデー�
 カスタム イベントの記述について詳しくは、[こちら](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)をご覧ください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - 使用状況を把握できるようにするには、[カスタム イベント](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent)または[ページ ビュー](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)の送信を開始します。
 - カスタム イベントまたはページ ビューを既に送信した場合は、使用状況ツールを見て、自分のサービスがユーザーにどのように使用されているかを把握します。
     - [ユーザー、セッション、イベント](usage-segmentation.md)

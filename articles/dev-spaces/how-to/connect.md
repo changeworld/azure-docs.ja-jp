@@ -1,16 +1,16 @@
 ---
-title: 開発用マシンを AKS クラスターに接続する
+title: 開発用マシンを AKS クラスターに接続する (プレビュー)
 services: azure-dev-spaces
 ms.date: 11/04/2019
 ms.topic: conceptual
 description: Azure Dev Spaces を使用して AKS クラスターに開発用コンピューターを接続する方法について説明します
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: cba68702155475832930c791c3a7be014375ba04
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 13e6f16e66941be0ae463e8280827dc0b8183450
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770681"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196095"
 ---
 # <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>開発用マシンを AKS クラスターに接続する (プレビュー)
 
@@ -100,7 +100,7 @@ AKS クラスターへの接続が確立されると、Azure Dev Spaces によ�
 
 また、Azure Dev Spaces により「*Dev Spaces Connect*」というタイトルのウィンドウとそのすべての出力が作成されます。
 
-![Output](../media/how-to-connect/connect-output.png)
+![出力](../media/how-to-connect/connect-output.png)
 
 Azure Dev Spaces には、接続状態を示すステータス バー項目もあります。
 
@@ -234,7 +234,7 @@ MYAPP1_SERVICE_HOST=${services.myapp1}
 
 開発マシンを AKS クラスターに接続した後、*Dev Spaces Connect* ウィンドウにログ出力が書き込まれます。
 
-![Output](../media/how-to-connect/connect-output.png)
+![出力](../media/how-to-connect/connect-output.png)
 
 Azure Dev Spaces のステータス バーをクリックし、 *[診断情報の表示]* を選択します。 このコマンドを実行すると、ログ出力に現在の環境変数と DNS エントリが出力されます。
 

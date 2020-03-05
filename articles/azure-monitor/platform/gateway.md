@@ -1,18 +1,17 @@
 ---
 title: Log Analytics ゲートウェイを使ってコンピューターを接続する | Microsoft Docs
 description: デバイスと Operations Manager で監視されたコンピューターがインターネットにアクセスできないときに、Log Analytics ゲートウェイを使ってそれらを接続して Azure Automation および Log Analytics サービスにデータを送信します。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 30854382b5a6dfd0faabfc2f59340dc21518d6f2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 6c5325a21ffa74f5679a74b991f1c814eadc64ff
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773292"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672295"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>インターネットにアクセスできないコンピューターを Azure Monitor で Log Analytics ゲートウェイを使って接続する
 
@@ -154,7 +153,7 @@ or
  
 次の表に、セットアップでサポートされているパラメーターを示します。
 
-|パラメーター| メモ|
+|パラメーター| Notes|
 |----------|------| 
 |PORTNUMBER | リッスンするゲートウェイの TCP ポート番号 |
 |PROXY | プロキシ サーバーの IP アドレス |
@@ -371,7 +370,7 @@ Update Management ソリューションが 1 つまたは複数の VM で有効�
 
 次の表では、Log Analytics ゲートウェイに使えるパフォーマンス カウンターを示します。 パフォーマンス モニターを使ってカウンターを追加します。
 
-| **Name** | **説明** |
+| **名前** | **説明** |
 | --- | --- |
 | Log Analytics ゲートウェイ/アクティブなクライアント接続 |アクティブなクライアント ネットワーク (TCP) 接続の数 |
 | Log Analytics ゲートウェイ/エラーの数 |エラーの数 |

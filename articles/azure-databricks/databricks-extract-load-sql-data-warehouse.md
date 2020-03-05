@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: 9cab78e85b8644f29bfcd067b104b1b5c10c2266
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 8c7c9c2e3a1195422db30ba913b1cea3a1a360e4
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249849"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301694"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>チュートリアル:Azure Databricks を使用してデータの抽出、変換、読み込みを行う
 
@@ -59,7 +59,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
    この記事の手順を実行する際に、いくつかの特定の作業を行う必要があります。
 
-   * 記事の「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)」セクションの手順を行うときは、必ず、Data Lake Storage Gen2 アカウントのスコープ内で **ストレージ BLOB データ共同作成者**ロールをサービス プリンシパルに割り当ててください。 親リソース グループまたはサブスクリプションにロールを割り当てる場合、それらのロール割り当てがストレージ アカウントに伝達されるまで、アクセス許可関連のエラーが発生します。
+   * 記事の「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)」セクションの手順を行うときは、必ず、Data Lake Storage Gen2 アカウントのスコープ内で **ストレージ BLOB データ共同作成者**ロールをサービス プリンシパルに割り当ててください。 親リソース グループまたはサブスクリプションにロールを割り当てる場合、それらのロール割り当てがストレージ アカウントに伝達されるまで、アクセス許可関連のエラーが発生します。
 
       アクセス制御リスト (ACL) を使用して特定のファイルまたはディレクトリにサービス プリンシパルを関連付ける場合は、「[Azure Data Lake Storage Gen2 のアクセス制御](../storage/blobs/data-lake-storage-access-control.md)」を参照してください。
 

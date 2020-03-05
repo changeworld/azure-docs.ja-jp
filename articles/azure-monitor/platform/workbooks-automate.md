@@ -4,18 +4,17 @@ description: Azure Resource Manager テンプレートを介してデプロイ�
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: e3d29beab7b1d82f73c706897af9650b68be11f5
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 2c2d70d1c945e700a3fa42609f8aa0e1607ba77c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872912"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658406"
 ---
 # <a name="programmatically-manage-workbooks"></a>プログラムでブックを管理する
 
@@ -113,7 +112,7 @@ ms.locfileid: "74872912"
 ### <a name="workbook-types"></a>ブックの種類
 ブックの種類では、新しいブック インスタンスが表示されるブック ギャラリーの種類を指定します。 次のオプションがあります。
 
-| 種類 | ギャラリーの場所 |
+| Type | ギャラリーの場所 |
 | :------------- |:-------------|
 | `workbook` | Application Insights、Azure Monitor などのブック ギャラリーを含む、ほとんどのレポートで使用される既定値です。  |
 | `tsg` | Application Insights の [トラブルシューティング ガイド] ギャラリー |
@@ -122,7 +121,7 @@ ms.locfileid: "74872912"
 ### <a name="limitations"></a>制限事項
 技術的な理由により、このメカニズムを使用して Application Insights の _[ブック]_ ギャラリーにブック インスタンスを作成することはできません。 この制限については、解決に取り組んでいる最中です。 その間は、[トラブルシューティング ガイド] ギャラリー (workbookType: `tsg`) を使用して Application Insights に関連するブックをデプロイすることをお勧めします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 新しい [Azure Monitor for Storage エクスペリエンス](../insights/storage-insights-overview.md)を強化するためにブックがどのように使用されているかを確認してください。
 

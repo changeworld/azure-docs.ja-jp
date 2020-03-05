@@ -4,17 +4,16 @@ description: 作成済みのブックやパラメーター化されたカスタ�
 author: mrbullwinkle
 manager: carmonm
 services: azure-monitor
-ms.service: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: cf11ce3a77fb47b7d8586ef56141a72cd0a10c2e
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 29e675f3ae35df9211f58d45ad8450566d67a588
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872861"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658236"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor ブック
 
@@ -29,7 +28,7 @@ ms.locfileid: "74872861"
 ブックは現在、次のデータ ソースと互換性があります。
 
 * [ログ](workbooks-data-sources.md#logs)
-* [メトリック](workbooks-data-sources.md#metrics)
+* [Metrics](workbooks-data-sources.md#metrics)
 * [Azure Resource Graph](workbooks-data-sources.md#azure-resource-graph)
 * [アラート (プレビュー)](workbooks-data-sources.md#alerts-preview)
 * [ワークロードの正常性 (プレビュー)](workbooks-data-sources.md#workload-health-preview)
@@ -40,7 +39,7 @@ ms.locfileid: "74872861"
 
 ブックには、データを視覚化するための豊富な機能セットが用意されています。 各視覚化の種類の詳細な例については、以下の例のリンクを参照してください。
 
-* [Text](workbooks-visualizations.md#text)
+* [[テキスト]](workbooks-visualizations.md#text)
 * [グラフ](workbooks-visualizations.md#charts)
 * [グリッド](workbooks-visualizations.md#grids)
 * [タイル](workbooks-visualizations.md#tiles)
@@ -49,7 +48,7 @@ ms.locfileid: "74872861"
 
 ![ブックの視覚化の例](./media/workbooks-overview/visualizations.png)
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 ブックのエクスペリエンスを探索するには、最初に Azure Monitor サービスに移動します。 これを行うには、Azure portal の検索ボックスに「**Monitor**」と入力します。
 

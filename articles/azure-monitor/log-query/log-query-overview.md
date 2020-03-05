@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor のログ クエリの概要 | Microsoft Docs
 description: ログ クエリに関してよく寄せられる質問に回答し、その使用の概要を示します。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
-ms.openlocfilehash: 08af0ff3121d6721c9f5c1457655c345f50f91e0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 54a6f875bc33d24d412d2424c634d1019b4af399
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900269"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670119"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Azure Monitor のログ クエリの概要
 ログ クエリは、[Azure Monitor ログ](../platform/data-platform-logs.md)内に収集されたデータの価値を最大限に活用するのに役立ちます。 強力なクエリ言語により、複数のテーブルのデータを結合したり、大量のデータ セットを集約したり、最小限のコードによって複雑な操作を実行したりできます。 有用なデータが収集されていて、適切なクエリを作成する方法を理解していれば、ほぼすべての疑問に答えたり、分析を実行したりすることができます。
@@ -100,6 +99,6 @@ Log Analytics でログ クエリとその結果を対話形式で操作する�
 - **Azure Monitor Logs API。**  [Azure Monitor Logs API](https://dev.loganalytics.io) を使用すると、任意の REST API クライアントによってワークスペースからログ データを取得することができます。  API 要求には Azure Monitor に対して実行するクエリが含まれており、これにより取得するデータを決定します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure portal 内での Log Analytics の使用に関するチュートリアル](get-started-portal.md)を進めます。
 - [クエリの作成に関するチュートリアル](get-started-queries.md)を進めます。

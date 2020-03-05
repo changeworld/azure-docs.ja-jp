@@ -1,15 +1,14 @@
 ---
 title: REST API を使用して Azure リソースの正常性イベントを取得する |Microsoft Docs
 description: Azure REST API を使用して、Azure リソースの正常性イベントを取得します。
-ms.custom: REST
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/06/2017
-ms.openlocfilehash: 353bd65b0466902e450e38677a350a177a1d602c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6964a6c4e85c38d532b12e730a02c4df73be76e5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451384"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654003"
 ---
 # <a name="get-resource-health-using-the-rest-api"></a>REST API を使用して Resource Health を取得する 
 
@@ -36,7 +35,7 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/microsoft
 
 ### <a name="uri-parameters"></a>URI パラメーター
 
-| Name | 説明 |
+| 名前 | 説明 |
 | :--- | :---------- |
 | subscriptionId | Azure サブスクリプションを識別するサブスクリプション ID。 複数のサブスクリプションをお持ちの場合は､[Working with multiple subscriptions](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)を参照してください｡ |
 | api-version | 要求で使用する API のバージョン。<br /><br /> このドキュメントでは、api-version `2015-04-01` を使用し、上記の URL に含まれています。  |

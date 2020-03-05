@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor のドキュメントの最新情報
 description: 毎月更新される Azure Monitor のドキュメントに対する重要な更新。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2020
-ms.openlocfilehash: f390de40504d4d6065705ca23555ac2164c9847b
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: ecee13850e735f827a5465e0f49039f514afe233
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77065004"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657743"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor のドキュメントの最新情報
 この記事では、Azure Monitor に関して新たに執筆された記事または大幅に更新された記事を一覧で紹介しています。 毎月第 1 週目に更新され、前月から更新された記事が掲載されます。
@@ -22,7 +21,7 @@ ms.locfileid: "77065004"
 ### <a name="general"></a>全般
 - [Azure Monitor によって監視される内容](monitor-reference.md) - 新しい記事。
 
-### <a name="agents"></a>[エージェント]
+### <a name="agents"></a>エージェント
 - [Azure Log Analytics エージェントを使用してログ データを収集する](platform/log-analytics-agent.md) - ネットワーク ファイアウォールの要件に関する表が更新されています。
 
 
@@ -78,7 +77,7 @@ ms.locfileid: "77065004"
 
 ## <a name="december-2019"></a>2019 年 12 月
 
-### <a name="agents"></a>[エージェント]
+### <a name="agents"></a>エージェント
 - [Linux コンピューターを Azure Monitor に接続する](platform/agent-linux.md) - 新しい記事。
 
 ### <a name="alerts"></a>警告

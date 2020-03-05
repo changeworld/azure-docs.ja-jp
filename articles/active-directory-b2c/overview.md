@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C とは
 description: Azure Active Directory B2C を使用して、Facebook、Google、その他の ID プロバイダーでのソーシャル ログインなど、外部 ID をアプリケーションでサポートする方法について説明します。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
 ms.date: 09/19/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7159d695d502f2fba7a8b502eed7fdeffbe0ad03
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 61b6d5ea903d00519c58556bc99da7065741a6e3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841470"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184062"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Azure Active Directory B2C とは
 

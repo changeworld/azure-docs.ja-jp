@@ -7,12 +7,12 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: bc7d8d4aaec6ebe27a0f8d2ecc11ca408266f7ef
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 261c12e63f8f348e1673dbc46c89c614caf3283b
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453239"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296356"
 ---
 # <a name="add-authentication-and-manage-user-identities-in-your-mobile-apps"></a>ご利用のモバイル アプリに認証を追加し、ユーザー ID を管理する
 
@@ -21,7 +21,7 @@ ms.locfileid: "75453239"
 次のサービスを使用することで、ご利用のモバイル アプリ内でユーザー認証を有効にすることができます。
 
 ## <a name="visual-studio-app-center"></a>Visual Studio App Center
-[App Center Auth](/appcenter/auth/) はクラウドベースの ID 管理サービスです。開発者はこれを使用してユーザーを認証し、ユーザー ID を管理することができます。 App Center Auth は、Visual Studio App Center のその他の部分とも統合されます。 開発者は、ユーザー ID を使用して、他のサービスの[ユーザー データを表示したり](/appcenter/data/index)、個々のデバイスではなく[ユーザーにプッシュ通知を送信したり](/appcenter/push/push-to-user#app-center-auth-set-identity)することができます。 
+[App Center Auth](/appcenter/auth/) はクラウドベースの ID 管理サービスです。開発者はこれを使用してユーザーを認証し、ユーザー ID を管理することができます。 App Center Auth は、Visual Studio App Center のその他の部分とも統合されます。 開発者は、ユーザー ID を使用して、他のサービスの[ユーザー データを表示したり](/appcenter/data/index)、個々のデバイスではなく[ユーザーにプッシュ通知を送信したり](/appcenter/push/push-to-user#setting-user-identity)することができます。 
 
 **主な機能**
 - Azure Active Directory B2C (Azure AD B2C) を利用。 

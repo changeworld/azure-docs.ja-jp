@@ -1,18 +1,17 @@
 ---
 title: Azure の管理
 description: Azure 管理ツールに関するコンテンツへのリンクを含む、Azure のアプリケーションおよびリソースの管理の領域の概要です。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/07/2018
-ms.openlocfilehash: 337b340df10eb406fef3148b1d8bfde66b3b8ff6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 93180f088935531f83da785bb7a490f80909a6cd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979831"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669202"
 ---
 # <a name="azure-management---monitoring"></a>Azure の管理 - 監視
 
@@ -32,7 +31,7 @@ Azure の管理には、その一部として監視が含まれています。  
 ## <a name="monitor"></a>モニター
 監視とは、ビジネス アプリケーションやそのアプリが使用するリソースのパフォーマンス、正常性、可用性を見極めるために、データを収集し、分析することを指します。 効果的な監視戦略を策定すれば、アプリケーションの各種コンポーネントの動作状況を詳細に把握できるだけでなく、問題が顕在化する前に対処できるよう、重大な問題を事前に通知させることでアップタイムを向上できます。 Azure の監視は主に [Azure Monitor](../azure-monitor/overview.md) によって提供されます。これにより、監視データを格納するための一般的なストア、ご自身のアプリケーションをサポートしているさまざまな階層からデータを収集するための複数のデータ ソース、および収集されたデータを分析して応答する機能が提供されます。
 
-## <a name="configure"></a>[構成]
+## <a name="configure"></a>構成
 構成は、アプリケーションおよびリソースの初期デプロイと構成のほか、パッチと更新プログラムによる継続的なメンテナンスを指します。  スクリプトとポリシーを通じてこれらのタスクを自動化すれば、冗長性を排除し、時間と手間を最小限に抑えて正確性と効率性を高めることができます。  [Azure Automation](../automation/automation-intro.md) は、構成タスクを自動化するためのサービスを多数提供します。  プロセスを自動化する Runbook に加えて、構成および更新管理を提供します。これは、ポリシーを通じて構成を管理したり、更新プログラムの特定とデプロイを行ったりする際に役に立ちます。
 
 ## <a name="govern"></a>ガバナンス

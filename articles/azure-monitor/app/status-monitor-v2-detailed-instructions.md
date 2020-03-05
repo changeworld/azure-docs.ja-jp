@@ -1,18 +1,16 @@
 ---
 title: Azure Application Insights Agent の詳細な手順 | Microsoft Docs
 description: Application Insights Agent を使い始めるための詳細な手順です。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 3b053b7876494a3b2e6f392850c0323b56b1c3ec
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cd5ca5039b537859d5b31c901ed1f93877ecb629
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230266"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671207"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights Agent (旧称 Status Monitor v2): 詳しい手順
 
@@ -160,7 +158,7 @@ SerializationVersion           1.1.0.1
 2. 「**Version History (バージョン履歴)** 」一覧から最新バージョンのファイルを選択します。
 3. 「**Installation Options (インストール オプション)** 」の「**Manual Download (手動ダウンロード)** 」を選択します。
 
-### <a name="option-1-install-into-a-powershell-modules-directory"></a>オプション 1:PowerShell モジュールのディレクトリにインストールする
+### <a name="option-1-install-into-a-powershell-modules-directory"></a>オプション 1: PowerShell モジュールのディレクトリにインストールする
 手動でダウンロードした PowerShell モジュールを PowerShell ディレクトリにインストールし、PowerShell セッションで検出されるようにします。
 詳細については、「[PowerShell モジュールをインストールする](/powershell/scripting/developer/module/installing-a-powershell-module)」を参照してください。
 
@@ -225,7 +223,7 @@ Application Insights SDK では、アプリのテレメトリを Microsoft に�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
  テレメトリの表示:
 

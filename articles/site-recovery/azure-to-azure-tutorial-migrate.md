@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 00fc836f098f3c03afc9adebe2450f00750eb5ff
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 4882206692c334d6ab6af28feb5d2cba5277eea1
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954102"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303938"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure VM を別のリージョンに移動する
 
@@ -73,7 +73,7 @@ ms.locfileid: "73954102"
     - [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
     - [ロード バランサー](https://docs.microsoft.com/azure/load-balancer)
     -  [パブリック IP](../virtual-network/virtual-network-public-ip-address.md)
-    - その他のネットワーク コンポーネントについては、[ネットワークに関するドキュメント](https://docs.microsoft.com/azure/#pivot=products&panel=network)を参照してください。
+    - その他のネットワーク コンポーネントについては、[ネットワークに関するドキュメント](https://docs.microsoft.com/azure/?pivot=products&panel=network)を参照してください。
 
 
 
@@ -105,7 +105,7 @@ Site Recovery は、サブスクリプションとリソース グループに�
 
     ![レプリケーションを有効にする](media/tutorial-migrate-azure-to-azure/settings.png)
 
-## <a name="move"></a>Move
+## <a name="move"></a>詳細ビュー
 
 次の手順では、ターゲット リージョンに移動する方法を示します。
 
@@ -120,7 +120,7 @@ Site Recovery は、サブスクリプションとリソース グループに�
 移動した VM を確認した後、フェールオーバー ポイントを変更するか、元のポイントに戻す場合、 **[レプリケートされたアイテム]** で VM を右クリックし、 **[復旧ポイントの変更]** を選択します。 この手順で、別の復旧ポイントを指定し、そこにフェールオーバーする選択肢が与えられます。 
 
 
-## <a name="commit"></a>コミット 
+## <a name="commit"></a>Commit 
 
 移動後の VM を確認し、変更をコミットする準備ができたら、 **[レプリケートされたアイテム]** で VM を右クリックし、 **[コミット]** を選択します。 これでターゲット リージョンへの移動プロセスは完了です。 コミット ジョブが完了するまでお待ちください。
 
@@ -140,7 +140,7 @@ Site Recovery は、サブスクリプションとリソース グループに�
 1. 「[前提条件](#prerequisites)」で確認した、ソース リージョンの関連ネットワーク リソースをすべて削除します。
 1. 対応するストレージ アカウントをソース リージョンから削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure VM を別の Azure リージョンに移動しました。 引き続き、移動した VM のディザスター リカバリーを構成することができます。
 

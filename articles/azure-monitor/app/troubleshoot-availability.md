@@ -1,19 +1,17 @@
 ---
 title: Azure Application Insights 可用性テストのトラブルシューティング | Microsoft Docs
 description: Azure Application Insights の Web テストのトラブルシューティングを行います。 Web サイトが使用できなくなったり、応答速度が低下したりした場合に、アラートを受け取ります。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 71c16fa005710bb5816ec69716573b79fcae620a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f135aa6c0a4a55f8a42fd858572cc811e25b27c5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899543"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671105"
 ---
 # <a name="troubleshooting"></a>トラブルシューティング
 
@@ -83,7 +81,7 @@ Web hook 通知を受信するアプリケーションが利用可能である�
 
 ### <a name="can-i-call-code-from-my-web-test"></a>Web テストからコードを呼び出すことはできますか。
 
-No. テストの手順は、.webtest ファイルに含まれている必要があります。 他の Web テストの呼び出しまたはループの使用は許可されていません。 ただし、役に立つさまざまなプラグインがあります。
+いいえ。 テストの手順は、.webtest ファイルに含まれている必要があります。 他の Web テストの呼び出しまたはループの使用は許可されていません。 ただし、役に立つさまざまなプラグインがあります。
 
 
 ### <a name="is-there-a-difference-between-web-tests-and-availability-tests"></a>"Web テスト" と "可用性テスト" に違いはありますか。
@@ -92,7 +90,7 @@ No. テストの手順は、.webtest ファイルに含まれている必要が�
 
 ### <a name="id-like-to-use-availability-tests-on-our-internal-server-that-runs-behind-a-firewall"></a>ファイアウォールの内側で稼働している内部サーバーに対して可用性テストを使用したいと考えています。
 
-   解決策として、次の 2 つが考えられます。
+   この解決方法には、次の 2 つが挙げられます。
 
    * [Web テスト エージェントの IP アドレス](../../azure-monitor/app/ip-addresses.md)からの受信要求を許可するようにファイアウォールを構成します。
    * 内部サーバーを定期的にテストする独自のコードを作成します。 このコードを、バック グラウンド プロセスとして、ファイアウォールの内側のテスト サーバーで実行します。 テスト プロセスは、コア SDK パッケージ内の [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API を使用して、その結果を Application Insights に送信できます。 この方法では、テスト サーバーに Application Insights のインジェスト エンドポイントへの送信アクセスが必要となりますが、受信要求を許可する代替方法と比べて、セキュリティのリスクは大幅に小さくなります。 結果は可用性 Web テストブレードに表示されますが、エクスペリエンスはポータルによって作成されたテストに対して使用できるものより少し簡単になります。 カスタム可用性テストは、分析、検索、およびメトリックにも可用性の結果として表示されます。
@@ -128,7 +126,7 @@ No. テストの手順は、.webtest ファイルに含まれている必要が�
 
 ロールに基づいてユーザーに通知する必要がある場合は、新しいアラート エクスペリエンス/準リアルタイム アラートを使用します。 [アクション グループ](../platform/action-groups.md)を使用して、共同作成者/所有者/閲覧者のいずれかのロール (1 つのオプションとして組み合わされていない) を持つユーザーに対し、電子メール通知を構成することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [複数ステップ Web テスト](availability-multistep.md)
 * [URL の ping テスト](monitor-web-app-availability.md)

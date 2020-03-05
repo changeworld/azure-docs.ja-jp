@@ -1,19 +1,17 @@
 ---
 title: Azure Application Insights - 依存関係の自動収集 | Microsoft Docs
 description: Application Insights では、依存関係が自動的に収集されて視覚化されます。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: reference
 author: nikmd23
 ms.author: nimolnar
 ms.date: 04/29/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: e774690fae2314b8db6e14f19a67c7ae1ce3a203
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: eaafe19f5112b433d50a34aa551aa84d196726a5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064276"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665818"
 ---
 # <a name="dependency-auto-collection"></a>依存関係の自動収集
 

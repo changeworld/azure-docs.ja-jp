@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: f6b95f76af4c83459ac81ff1703d8588f649326c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 4b6d954d06f09bef5240bddc4860ddbc83513d69
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970544"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916593"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS の言語と地域のサポート
 
@@ -30,23 +30,23 @@ LUIS はサービス内にさまざまな機能を備えています。 すべ�
 
 LUIS が理解する発話の言語を次に示します。
 
-| 言語 |Locale  |  事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズ リストのレコメンデーション | \**[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(センチメントと<br>キーワード)|
+| Language |Locale  |  事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズ リストのレコメンデーション | \**[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(センチメントと<br>キーワード)|
 |--|--|:--:|:--:|:--:|:--:|
 | 英語 (米国) |`en-US` | ✔ | ✔  |✔|✔|
 | アラビア語 (プレビュー - 現代標準アラビア語) |`ar-AR`|-|-|-|-|
 | *[中国語](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
-| オランダ語 |`nl-NL` |✔|  -   |-|✔|
+| Dutch |`nl-NL` |✔|  -   |-|✔|
 | フランス語 (フランス) |`fr-FR` |✔| ✔ |✔ |✔|
 | フランス語 (カナダ) |`fr-CA` |-|   -   |-|✔|
-| ドイツ語 |`de-DE` |✔| ✔ |✔ |✔|
+| German |`de-DE` |✔| ✔ |✔ |✔|
 | ヒンディー語 | `hi-IN`|-|-|-|-|
-| イタリア語 |`it-IT` |✔| ✔ |✔|✔|
+| Italian |`it-IT` |✔| ✔ |✔|✔|
 | *[日本語](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|キー フレーズのみ|
-| 韓国語 |`ko-KR` |✔|   -   |-|キー フレーズのみ|
+| Korean |`ko-KR` |✔|   -   |-|キー フレーズのみ|
 | ポルトガル語 (ブラジル) |`pt-BR` |✔| ✔ |✔ |一部のサブカルチャのみ|
 | スペイン語 (スペイン) |`es-ES` |✔| ✔ |✔|✔|
 | スペイン語 (メキシコ)|`es-MX` |-|  -   |✔|✔|
-| トルコ語 | `tr-TR` |✔|-|-|センチメントのみ|
+| Turkish | `tr-TR` |✔|-|-|センチメントのみ|
 
 言語サポートは、[事前構築済みのエンティティ](luis-reference-prebuilt-entities.md)および[事前構築済みのドメイン](luis-reference-prebuilt-domains.md)によって異なります。
 
@@ -61,7 +61,7 @@ LUIS が理解する発話の言語を次に示します。
 [!INCLUDE [Text Analytics support notes](includes/text-analytics-support-notes.md)]
 
 ### <a name="speech-api-supported-languages"></a>Speech API のサポートされている言語
-Speech ディクテーション モードの言語については、Speech の「[Supported language (サポートされている言語)](https://docs.microsoft.com/azure/cognitive-services/Speech/api-reference-rest/supportedlanguages##interactive-and-dictation-mode)」を参照してください。
+Speech ディクテーション モードの言語については、Speech の「[Supported language (サポートされている言語)](../speech-service/speech-to-text.md)」を参照してください。
 
 ### <a name="bing-spell-check-supported-languages"></a>Bing Spell Check のサポートされている言語
 サポートされている言語と状態の一覧については、Bing Spell Check の[サポートされている言語](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages)に関するページをご覧ください。
@@ -77,19 +77,19 @@ Speech ディクテーション モードの言語については、Speech の�
 ## <a name="tokenization"></a>トークン化
 機械学習を実行するために、LUIS では、発話がカルチャに基づいて[トークン](luis-glossary.md#token)に分割されます。
 
-|言語|  すべてのスペースまたは特殊文字 | 文字レベル|複合語|[返されるトークン化されたエンティティ](luis-concept-data-extraction.md#tokenized-entity-returned)
+|Language|  すべてのスペースまたは特殊文字 | 文字レベル|複合語|[返されるトークン化されたエンティティ](luis-concept-data-extraction.md#tokenized-entity-returned)
 |--|:--:|:--:|:--:|:--:|
 |アラビア語|||||
-|中国語||✔||✔|
-|オランダ語|||✔|✔|
+|Chinese||✔||✔|
+|Dutch|||✔|✔|
 |英語 (en-us)|✔ ||||
 |フランス語 (fr-FR)|✔||||
 |フランス語 (fr-CA)|✔||||
-|ドイツ語|||✔|✔|
+|German|||✔|✔|
 | ヒンディー語 |✔|-|-|-|-|
-|イタリア語|✔||||
-|日本語||||✔|
-|韓国語||✔||✔|
+|Italian|✔||||
+|Japanese||||✔|
+|Korean||✔||✔|
 |ポルトガル語 (ブラジル)|✔||||
 |スペイン語 (es-ES)|✔||||
 |スペイン語 (es-MX)|✔||||
@@ -100,8 +100,8 @@ Speech ディクテーション モードの言語については、Speech の�
 
 |カルチャ|Version|目的|
 |--|--|--|
-|ドイツ語<br>`de-de`|1.0.0|複合語をその単一コンポーネントに分解しようとする機械学習ベースのトークナイザーを使用して分割することによって、単語をトークン化します。<br>ユーザーが発話として `Ich fahre einen krankenwagen` を入力した場合、それは `Ich fahre einen kranken wagen` に変換されます。 `kranken` と `wagen` を別のエンティティとして独立にマークすることが可能になります。|
-|ドイツ語<br>`de-de`|1.0.2|スペースで分割することによって、単語をトークン化します。<br> ユーザーが発話として `Ich fahre einen krankenwagen` を入力した場合、それは 1 つのトークンのままになります。 そのため、`krankenwagen` は 1 つのエンティティとしてマークされます。 |
+|German<br>`de-de`|1.0.0|複合語をその単一コンポーネントに分解しようとする機械学習ベースのトークナイザーを使用して分割することによって、単語をトークン化します。<br>ユーザーが発話として `Ich fahre einen krankenwagen` を入力した場合、それは `Ich fahre einen kranken wagen` に変換されます。 `kranken` と `wagen` を別のエンティティとして独立にマークすることが可能になります。|
+|German<br>`de-de`|1.0.2|スペースで分割することによって、単語をトークン化します。<br> ユーザーが発話として `Ich fahre einen krankenwagen` を入力した場合、それは 1 つのトークンのままになります。 そのため、`krankenwagen` は 1 つのエンティティとしてマークされます。 |
 
 ### <a name="migrating-between-tokenizer-versions"></a>トークナイザーのバージョン間の移行
 <!--

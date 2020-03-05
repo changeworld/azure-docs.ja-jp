@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b023b49955f642f1cafcb5f26ae67e657718bcd6
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: b84084dafe79a8caa9cdb70bc201f68834079845
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148234"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196078"
 ---
 # <a name="authentication-requests-and-responses"></a>認証、要求、応答
 

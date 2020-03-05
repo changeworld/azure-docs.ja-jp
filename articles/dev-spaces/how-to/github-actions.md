@@ -1,17 +1,17 @@
 ---
-title: GitHub のアクションと Azure Kubernetes Service
+title: GitHub のアクションと Azure Kubernetes Service (プレビュー)
 services: azure-dev-spaces
 ms.date: 02/04/2020
 ms.topic: conceptual
 description: GitHub アクションと Azure Dev Spaces を使用して、Azure Kubernetes Service で直接プル要求からの変更を確認およびテストする
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, GitHub アクション, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 35050d0c9d1e6062866747dc8544d03574a8d8fe
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 49715e38f36d4421b7327640ec8392a83b3c2996
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026100"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252373"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub のアクションと Azure Kubernetes Service (プレビュー)
 
@@ -39,7 +39,7 @@ Azure Dev Spaces は、プル要求がリポジトリのメイン ブランチ�
 
 Azure Container Registry (ACR) を作成します。
 
-```cmd
+```azurecli
 az acr create --resource-group MyResourceGroup --name <acrName> --sku Basic
 ```
 
@@ -52,7 +52,7 @@ az acr create --resource-group MyResourceGroup --name <acrName> --sku Basic
 
 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] を使用してサービス プリンシパルを作成します。 次に例を示します。
 
-```cmd
+```azurecli
 az ad sp create-for-rbac --sdk-auth --skip-assignment
 ```
 
@@ -60,19 +60,19 @@ JSON 出力は、後の手順で使用されるため保存します。
 
 [az aks show][az-aks-show] を使用して、AKS クラスターの *ID* を表示します。
 
-```cmd
+```azurecli
 az aks show -g MyResourceGroup -n MyAKS  --query id
 ```
 
 [az acr show][az-acr-show] を使用して、ACR の *ID* を表示します。
 
-```cmd
+```azurecli
 az acr show --name <acrName> --query id
 ```
 
 [az role assignment create][az-role-assignment-create] を使用して、AKS クラスターへの*共同作成者*アクセスと、ACR への *AcrPush* アクセスを付与します。
 
-```cmd
+```azurecli
 az role assignment create --assignee <ClientId> --scope <AKSId> --role Contributor
 az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 ```
@@ -158,7 +158,7 @@ git push origin bike-images
 
 ## <a name="clean-up-your-azure-resources"></a>Azure リソースをクリーンアップする
 
-```cmd
+```azurecli
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 

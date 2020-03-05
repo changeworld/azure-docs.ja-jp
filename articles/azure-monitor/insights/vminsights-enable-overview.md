@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor for VMs の有効化 (プレビュー) の概要 | Microsoft Docs
 description: Azure Monitor for VMs のデプロイと構成の方法を説明します。 システム要件を確認してください。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: ce95223e9501ad7bec2bd260a8fe6f1537db5593
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 44422f66f6fc995dcaf96947ea05b183c7131ea3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400614"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669575"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Azure Monitor for VMs の有効化 (プレビュー) の概要
 
@@ -40,7 +39,7 @@ Azure Monitor for VMs は、次のリージョンで Log Analytics ワークス�
 - 米国西部
 - 米国西部 2
 - 米国中南部
-- East US
+- 米国東部
 - 米国東部 2
 - 米国中部
 - 米国中北部
@@ -189,7 +188,7 @@ Log Analytics ワークスペースへのアクセスを制御する方法の詳
 
 この表で説明されているいずれかの方法で、Azure Monitor for VMs を有効にします。
 
-| デプロイの状態 | 方法 | 説明 |
+| デプロイの状態 | Method | 説明 |
 |------------------|--------|-------------|
 | 単一の Azure VM または仮想マシン スケール セット | [VM から有効にする](vminsights-enable-single-vm.md) | 単一の Azure VM を有効にするには、VM または仮想マシン スケール セットから直接 **Insights (プレビュー)** を選択します。 |
 | 複数の Azure VM または仮想マシン スケール セット | [Azure Policy を介して有効にする](vminsights-enable-at-scale-policy.md) | Azure Policy と使用可能なポリシー定義を使用すると、複数の Azure VM を有効にできます。 |

@@ -2,20 +2,19 @@
 title: Azure Monitor でクラシック メトリック アラートを使用して Webhook を呼び出す
 description: 他の Azure 以外のシステムに Azure メトリック アラートを再ルーティングする方法について説明します。
 author: harelbr
-services: azure-monitor
-ms.service: azure-monitor
+ms.author: harelbr
 ms.topic: conceptual
 ms.date: 04/03/2017
-ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: fd4bf2d404a7152da04e72d323f463c18167f5bf
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 27510871f9a022cb27c6b03b812ce1d37b47312c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705515"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665070"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Azure Monitor でクラシック メトリック アラートを使用して Webhook を呼び出す
+
 webhook を使用して、後処理やカスタム アクションのために、Azure アラート通知を他のシステムにルーティングすることができます。 SMS メッセージを送信するサービスへのアラートのルーティング、バグの記録、チャットやメッセージング サービスを使用したチームへの通知など、さまざまなアクションに対してアラートで webhook を使用できます。 
 
 この記事では、Azure メトリック アラートで webhook を設定する方法について説明します。 また、webhook に対する HTTP POST のペイロードの概要についても説明します。 Azure アクティビティ ログ アラート (イベントでのアラート) の設定とスキーマについては、「[Azure アクティビティ ログ アラートでの webhook の呼び出し](alerts-log-webhook.md)」を参照してください。
@@ -69,7 +68,7 @@ POST 操作には、すべてのメトリックベースのアラートについ
 ```
 
 
-| フィールド | Mandatory | 値の固定セット | メモ |
+| フィールド | Mandatory | 値の固定セット | Notes |
 |:--- |:--- |:--- |:--- |
 | status |Y |"Activated"、"Resolved" |設定した条件に基づいたアラートの状態。 |
 | context |Y | |アラート コンテキスト。 |

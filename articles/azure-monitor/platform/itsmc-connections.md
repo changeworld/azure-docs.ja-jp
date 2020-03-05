@@ -1,18 +1,17 @@
 ---
 title: Azure Log Analytics の IT Service Management Connector とのサポートされている接続 | Microsoft Docs
 description: この記事では、ITSM 製品/サービスを Azure Monitor の IT Service Management Connector (ITSMC) に接続して、ITSM 作業項目を一元的に監視して管理する方法に関する情報を提供します。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: a4b8e1ca245d90018647577f338ed0833cbaf324
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: c6cad29b6cc392746a2e56323302521302835b2f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990285"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665869"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM 製品/サービスを IT Service Management Connector に追加する
 この記事では、ITSM 製品/サービスと Log Analytics の IT Service Management Connector (ITSMC) の間の接続を構成して、作業項目を一元的に管理する方法に関する情報を提供します。 ITSMC の詳細については、[概要](../../azure-monitor/platform/itsmc-overview.md)に関する記事をご覧ください。
@@ -98,7 +97,7 @@ System Center Service Manager インスタンスを ITSMC に接続するには�
 
 - Azure サブスクリプションの詳細
 - リソース グループ名
-- Location
+- 場所
 - Service Manager サーバーの詳細 (サーバー名、ドメイン、ユーザー名とパスワード)
 - Web アプリのサイト名のプレフィックス
 - ServiceBus 名前空間。

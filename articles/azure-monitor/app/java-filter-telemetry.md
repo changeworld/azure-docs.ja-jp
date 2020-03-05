@@ -1,18 +1,14 @@
 ---
 title: Java Web アプリでの Azure Application Insights テレメトリのフィルター処理
 description: 監視する必要のないイベントをフィルターで除外して、テレメトリのトラフィックを削減します。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 3/14/2019
-ms.openlocfilehash: dd47ef68726f3f804dabbc9751e9c86dfe846559
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 020e54132e0ca0a9f9ccf0236f94515877015637
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927297"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659919"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Java Web アプリでのテレメトリのフィルター処理
 
@@ -270,6 +266,6 @@ public TelemetryProcessor successFilter() {
 
 * 有効なパラメーター値を指定していることを確認してください。 たとえば、期間は整数である必要があります。 無効な値を指定すると、フィルターは無視されます。 カスタム フィルターがコンストラクターまたは set メソッドから例外をスローした場合、これも無視されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [サンプリング](../../azure-monitor/app/sampling.md) - メトリックがゆがめられない代替方法として、サンプリングを検討してください。

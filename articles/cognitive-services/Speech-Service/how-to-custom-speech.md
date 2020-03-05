@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: dapine
-ms.openlocfilehash: 4a2887ef8b264628128872730422fd38d6b0ac0f
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: e30587ed4d09ba792516ebc7b16529a6ee5ac57c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425002"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918956"
 ---
 # <a name="what-is-custom-speech"></a>Custom Speech とは
 
@@ -43,7 +43,7 @@ Custom Speech で何らかの操作を行うには、Azure アカウントと音
 
 ## <a name="set-up-your-azure-account"></a>Azure アカウントの設定
 
-[Custom Speech ポータル](https://speech.microsoft.com/customspeech)を使用してカスタム モデルを作成するには、音声サービス サブスクリプションが必要です。 次の手順に従って、標準的な音声サービス サブスクリプションを作成してください:[Speech サブスクリプションの作成](get-started.md#try-the-speech-service-using-a-new-azure-account)。
+[Custom Speech ポータル](https://speech.microsoft.com/customspeech)を使用してカスタム モデルを作成するには、音声サービス サブスクリプションが必要です。 次の手順に従って、標準的な音声サービス サブスクリプションを作成してください:[Speech サブスクリプションの作成](get-started.md#new-resource)。
 
 > [!NOTE]
 > 必ず Standard (S0) サブスクリプションを作成してください。無料試用版 (F0) サブスクリプションはサポートされません。

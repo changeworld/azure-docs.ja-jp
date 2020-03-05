@@ -1,18 +1,16 @@
 ---
 title: OpenCensus Python を使用した Azure Application Insights における依存関係の追跡 | Microsoft Docs
 description: Python アプリの依存関係呼び出しを OpenCensus Python で監視します。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
-ms.openlocfilehash: 6217798f8175e7ecc1c1ec4068d7765444e4d2a2
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: e400669fd96518adead74a81fc332767c5f9b23b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368290"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669932"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>OpenCensus Python を使用した依存関係の追跡
 

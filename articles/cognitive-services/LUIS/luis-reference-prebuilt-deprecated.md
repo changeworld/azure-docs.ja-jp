@@ -8,20 +8,20 @@ ms.custom: seodec18
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 8c15ebacd0fd959fe789d7f3a9b33b16ee29a1b2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 46da828b7553fdf9cdded817febd3bb95cd4cbb9
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933620"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270673"
 ---
 # <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>LUIS アプリにおける非推奨の作成済みエンティティ
 以下の作成済みエンティティは非推奨であり、新しい LUIS アプリに追加することはできません。
 
-* **datetime**: **datetime** を使用する既存の LUIS アプリは **datetimeV2** に移行する必要がありますが、datetime エンティティはそれを使用する既存のアプリで機能し続けます。
+* **Datetime**: **datetime** を使用する既存の LUIS アプリは **datetimeV2** に移行する必要がありますが、datetime エンティティはそれを使用する既存のアプリで機能し続けます。
 * **geography**: **geography** を使用する既存の LUIS アプリは、2018 年 12 月までサポートされます。
 * **encyclopedia**: **encyclopedia** を使用する既存の LUIS アプリは、2018 年 12 月までサポートされます。
 
@@ -30,7 +30,7 @@ ms.locfileid: "68933620"
 
 #### <a name="3-geography-subtypes"></a>geography の 3 つのサブタイプ
 
-作成済みエンティティ   |   発話の例   |   JSON
+事前構築済みのエンティティ   |   発話の例   |   JSON
 ------|------|------|
 `builtin.geography.city`   |  `seattle`    |`{ "type": "builtin.geography.city", "entity": "seattle" }`|
 `builtin.geography.city`   |  `paris`    |`{ "type": "builtin.geography.city", "entity": "paris" }`|
@@ -43,7 +43,7 @@ ms.locfileid: "68933620"
 **encyclopedia** は `en-US` ロケールでのみ使用できます。
 
 #### <a name="encyclopedia-subtypes"></a>encyclopedia のサブタイプ
-encyclopedia 組み込みエンティティには、次の表に示す 100 を超えるサブタイプが含まれます。さらに、多くの場合、encyclopedia エンティティは複数のタイプにマップします。 たとえば、Ronald Reagan をクエリすると次のようになります。 
+encyclopedia 組み込みエンティティには、次の表に示す 100 を超えるサブタイプが含まれます。さらに、多くの場合、encyclopedia エンティティは複数のタイプにマップします。 たとえば、Ronald Reagan をクエリすると次のようになります。
 
 ```json
 {
@@ -65,7 +65,7 @@ encyclopedia 組み込みエンティティには、次の表に示す 100 を�
  ```
 
 
-作成済みエンティティ   |   作成済みエンティティ (サブタイプ)   |   発話の例
+事前構築済みのエンティティ   |   作成済みエンティティ (サブタイプ)   |   発話の例
 ------|------|------|
 `builtin.encyclopedia.people.person`| `builtin.encyclopedia.people.person`| `bryan adams` |
 `builtin.encyclopedia.people.person`| `builtin.encyclopedia.film.producer`| `walt disney` |
@@ -161,7 +161,7 @@ encyclopedia 組み込みエンティティには、次の表に示す 100 を�
 `builtin.encyclopedia.finance.stock_exchange`| `builtin.encyclopedia.finance.stock_exchange`| `tokyo stock exchange`|
 `builtin.encyclopedia.film.festival`| `builtin.encyclopedia.film.festival`| `berlin international film festival`|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[dimension](luis-reference-prebuilt-dimension.md)、[email](luis-reference-prebuilt-email.md)、[number](luis-reference-prebuilt-number.md) について学習します。 
+[dimension](luis-reference-prebuilt-dimension.md)、[email](luis-reference-prebuilt-email.md)、[number](luis-reference-prebuilt-number.md) について学習します。
 

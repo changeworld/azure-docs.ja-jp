@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor で Log Analytics ワークスペースを管理する | Microsoft Docs
 description: リソース、ワークスペース、またはテーブル レベルのアクセス許可を使用して、Log Analytics ワークスペースに格納されているデータへのアクセスを Azure Monitor で管理できます。 この記事では、完了する方法について説明します。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/22/2019
-ms.openlocfilehash: 3a75efc8c73c96bfff0ba94ca3e9753ea536fd53
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 24ff081d40d5cd3adf771511ca0b52d66c287b63
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289120"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272636"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Azure Monitor でログ データとワークスペースへのアクセスを管理する
 
@@ -89,6 +88,7 @@ if ($_.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null
 else
     { $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions = $true }
 Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
+}
 ```
 
 ### <a name="using-a-resource-manager-template"></a>Resource Manager テンプレートの使用
@@ -104,7 +104,7 @@ Azure Resource Manager テンプレートでアクセス モードを構成す�
 
 次のアクティビティにも、Azure のアクセス許可が必要です。
 
-|アクション |必要とされる Azure のアクセス許可 |メモ |
+|アクション |必要とされる Azure のアクセス許可 |Notes |
 |-------|-------------------------|------|
 | 監視ソリューションの追加と削除 | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | これらのアクセス許可は、リソース グループまたはサブスクリプション レベルで付与する必要があります。 |
 | 価格レベルの変更 | `Microsoft.OperationalInsights/workspaces/*/write` | |
@@ -132,7 +132,7 @@ Azure には、Log Analytics ワークスペース用に、次の 2 つの組み
 
 Log Analytics 閲覧者ロールには、次の Azure アクションが含まれています。
 
-| 種類    | 権限 | 説明 |
+| Type    | 権限 | 説明 |
 | ------- | ---------- | ----------- |
 | アクション | `*/read`   | すべての Azure リソースとリソース構成を表示する機能。 次のものを表示できます。 <br> 仮想マシン拡張機能の状態 <br> リソースに対する Azure Diagnostics の構成 <br> すべてのリソースのすべてのプロパティと設定。 <br> ワークスペースの場合、ワークスペース設定の読み取りとデータへのクエリ実行について、制限なしの完全なアクセスが許可されます。 上の詳細なオプションを参照してください。 |
 | アクション | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | 非推奨です。ユーザーに割り当てる必要はありません。 |

@@ -2,20 +2,20 @@
 title: カスタム ポリシーの日付要求変換の例
 description: Azure Active Directory B2C の Identity Experience Framework (IEF) スキーマの日付要求変換の例。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/03/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b831a3175e1dc8b19395d1c923b076ac9428690c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f3e5a7b90892f0ed0243d448ea1ac63fb56f277f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982910"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188836"
 ---
 # <a name="date-claims-transformations"></a>日付要求変換
 
@@ -114,7 +114,7 @@ ms.locfileid: "76982910"
 - 出力要求:
     - **outputClaim**:1559347200 (2019 年 6 月 1 日午前 12 時 00 分 00 秒)
 
-## <a name="convertdatetimetodateclaim"></a>ConvertDateTimeToDateClaim 
+## <a name="convertdatetimetodateclaim"></a>ConvertDateTimeToDateClaim
 
 **DateTime** ClaimType を **Date** ClaimType に変換します。 要求変換では、日付から時刻形式が削除されます。
 

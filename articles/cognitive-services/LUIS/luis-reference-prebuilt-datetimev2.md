@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 01/07/2020
 ms.author: diberry
-ms.openlocfilehash: 8c29ebd675bb6af66203c13824dacbe9ea2421a2
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 30132983f37323e798efd330f5cc8f15c0a9d2b6
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732797"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270731"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの datetimeV2 作成済みエンティティ
 
@@ -31,7 +31,7 @@ DatetimeV2 は、[Recognizers-text](https://github.com/Microsoft/Recognizers-Tex
 
 `8am on may 2nd 2019`
 
-#### <a name="v3-responsetab1-1"></a>[V3 の応答](#tab/1-1)
+#### <a name="v3-response"></a>[V3 の応答](#tab/1-1)
 
 ```json
 "entities": {
@@ -53,7 +53,7 @@ DatetimeV2 は、[Recognizers-text](https://github.com/Microsoft/Recognizers-Tex
 }
 ```
 
-#### <a name="v3-verbose-responsetab1-2"></a>[V3 の詳細な応答](#tab/1-2)
+#### <a name="v3-verbose-response"></a>[V3 の詳細な応答](#tab/1-2)
 
 ```json
 
@@ -91,7 +91,7 @@ DatetimeV2 は、[Recognizers-text](https://github.com/Microsoft/Recognizers-Tex
 }
 ```
 
-#### <a name="v2-responsetab1-3"></a>[V2 の応答](#tab/1-3)
+#### <a name="v2-response"></a>[V2 の応答](#tab/1-3)
 
 ```json
 "entities": [
@@ -116,7 +116,7 @@ DatetimeV2 は、[Recognizers-text](https://github.com/Microsoft/Recognizers-Tex
 |プロパティ名 |プロパティの型と説明|
 |---|---|
 |Entity|**string** - 日付、時刻、日付範囲、時刻範囲の種類を含む発話から抽出されたテキスト。|
-|型|**string** - [datetimeV2 のサブタイプ](#subtypes-of-datetimev2)の 1 つ
+|type|**string** - [datetimeV2 のサブタイプ](#subtypes-of-datetimev2)の 1 つ
 |startIndex|**int** - エンティティが開始する発話内の位置のインデックス。|
 |endIndex|**int** - エンティティが終了する発話内の位置のインデックス。|
 |resolution|1、2、または 4 つの[解決の値](#values-of-resolution)を持つ `values` 配列。|
@@ -147,7 +147,7 @@ DatetimeV2 は、[Recognizers-text](https://github.com/Microsoft/Recognizers-Tex
 |--|--|
 |timex|[ISO 8601 標準](https://en.wikipedia.org/wiki/ISO_8601)に従う TIMEX 形式および TimeML 言語を使用した注釈のための TIMEX3 属性で表された時刻、日付、日付範囲。 この注釈については、[TIMEX のガイドライン](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf)のページをご覧ください。|
 |mod|値の使用方法を説明する際に使用される用語 (例: `before`、`after`)。|
-|型|サブタイプ。`datetime`、`date`、`time`、`daterange`、`timerange`、`datetimerange`、`duration`、`set` のいずれかの項目を指定できます。|
+|type|サブタイプ。`datetime`、`date`、`time`、`daterange`、`timerange`、`datetimerange`、`duration`、`set` のいずれかの項目を指定できます。|
 |value|**省略可。** yyyy-MM-dd  (date)、HH:mm:ss (time)、yyyy-MM-dd HH:mm:ss (datetime) 形式の datetime オブジェクト。 `type` が `duration` の場合、値は秒数 (期間) です <br/> `type` が `datetime`、`date`、`time`、または duration の場合にのみ使用されます。|
 
 ## <a name="valid-date-values"></a>有効な日付の値
@@ -179,7 +179,7 @@ DatetimeV2 は、[Recognizers-text](https://github.com/Microsoft/Recognizers-Tex
 
 `May 2nd`
 
-#### <a name="v3-responsetab2-1"></a>[V3 の応答](#tab/2-1)
+#### <a name="v3-response"></a>[V3 の応答](#tab/2-1)
 
 ```json
 "entities": {
@@ -204,7 +204,7 @@ DatetimeV2 は、[Recognizers-text](https://github.com/Microsoft/Recognizers-Tex
 }
 ```
 
-#### <a name="v3-verbose-responsetab2-2"></a>[V3 の詳細な応答](#tab/2-2)
+#### <a name="v3-verbose-response"></a>[V3 の詳細な応答](#tab/2-2)
 
 ```json
 "entities": {
@@ -244,7 +244,7 @@ DatetimeV2 は、[Recognizers-text](https://github.com/Microsoft/Recognizers-Tex
 }
 ```
 
-#### <a name="v2-responsetab2-3"></a>[V2 の応答](#tab/2-3)
+#### <a name="v2-response"></a>[V2 の応答](#tab/2-3)
 
 ```json
   "entities": [
@@ -280,7 +280,7 @@ DatetimeV2 は、[Recognizers-text](https://github.com/Microsoft/Recognizers-Tex
 
 `May 2nd to May 5th`
 
-#### <a name="v3-responsetab3-1"></a>[V3 の応答](#tab/3-1)
+#### <a name="v3-response"></a>[V3 の応答](#tab/3-1)
 
 ```json
 
@@ -309,7 +309,7 @@ DatetimeV2 は、[Recognizers-text](https://github.com/Microsoft/Recognizers-Tex
 ```
 
 
-#### <a name="v3-verbose-responsetab3-2"></a>[V3 の詳細な応答](#tab/3-2)
+#### <a name="v3-verbose-response"></a>[V3 の詳細な応答](#tab/3-2)
 
 ```json
 
@@ -352,7 +352,7 @@ DatetimeV2 は、[Recognizers-text](https://github.com/Microsoft/Recognizers-Tex
 }
 ```
 
-#### <a name="v2-responsetab3-3"></a>[V2 の応答](#tab/3-3)
+#### <a name="v2-response"></a>[V2 の応答](#tab/3-3)
 
 ```json
 "entities": [
@@ -384,7 +384,7 @@ DatetimeV2 は、[Recognizers-text](https://github.com/Microsoft/Recognizers-Tex
 
 `Tuesday to Thursday`
 
-#### <a name="v3-responsetab4-1"></a>[V3 の応答](#tab/4-1)
+#### <a name="v3-response"></a>[V3 の応答](#tab/4-1)
 
 ```json
 "entities": {
@@ -411,7 +411,7 @@ DatetimeV2 は、[Recognizers-text](https://github.com/Microsoft/Recognizers-Tex
 }
 ```
 
-#### <a name="v3-verbose-responsetab4-2"></a>[V3 の詳細な応答](#tab/4-2)
+#### <a name="v3-verbose-response"></a>[V3 の詳細な応答](#tab/4-2)
 
 ```json
 "entities": {
@@ -453,7 +453,7 @@ DatetimeV2 は、[Recognizers-text](https://github.com/Microsoft/Recognizers-Tex
 }
 ```
 
-#### <a name="v2-responsetab4-3"></a>[V2 の応答](#tab/4-3)
+#### <a name="v2-response"></a>[V2 の応答](#tab/4-3)
 
 ```json
   "entities": [
@@ -492,7 +492,7 @@ API V2 からの変更点:
 
 `from 6pm to 7pm`
 
-#### <a name="v3-responsetab5-1"></a>[V3 の応答](#tab/5-1)
+#### <a name="v3-response"></a>[V3 の応答](#tab/5-1)
 
 次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
 
@@ -517,7 +517,7 @@ API V2 からの変更点:
     ]
 }
 ```
-#### <a name="v3-verbose-responsetab5-2"></a>[V3 の詳細な応答](#tab/5-2)
+#### <a name="v3-verbose-response"></a>[V3 の詳細な応答](#tab/5-2)
 
 次の JSON は、`verbose` パラメーターが `true` に設定されている場合です。
 
@@ -557,7 +557,7 @@ API V2 からの変更点:
     }
 }
 ```
-#### <a name="v2-responsetab5-3"></a>[V2 の応答](#tab/5-3)
+#### <a name="v2-response"></a>[V2 の応答](#tab/5-3)
 
 ```json
   "entities": [
@@ -588,7 +588,7 @@ API V2 からの変更点:
 
 `8am`
 
-#### <a name="v3-responsetab6-1"></a>[V3 の応答](#tab/6-1)
+#### <a name="v3-response"></a>[V3 の応答](#tab/6-1)
 
 ```json
 "entities": {
@@ -609,7 +609,7 @@ API V2 からの変更点:
     ]
 }
 ```
-#### <a name="v3-verbose-responsetab6-2"></a>[V3 の詳細な応答](#tab/6-2)
+#### <a name="v3-verbose-response"></a>[V3 の詳細な応答](#tab/6-2)
 
 ```json
 "entities": {
@@ -645,7 +645,7 @@ API V2 からの変更点:
     }
 }
 ```
-#### <a name="v2-responsetab6-3"></a>[V2 の応答](#tab/6-3)
+#### <a name="v2-response"></a>[V2 の応答](#tab/6-3)
 
 ```json
 "entities": [

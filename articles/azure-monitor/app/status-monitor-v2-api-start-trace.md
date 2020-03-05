@@ -1,18 +1,16 @@
 ---
 title: Azure Application Insights エージェント API リファレンス
 description: Application Insights エージェント API リファレンス。 トレースの開始。 Status Monitor と Application Insights SDK から ETW のログを収集します。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: c97315b3a215f10e5b8f9533bf09fa5ac30ee16f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: b9680101f1a22dd6d9c1617c8afc13a10ad1c594
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899648"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671224"
 ---
 # <a name="application-insights-agent-api-start-applicationinsightsmonitoringtrace"></a>Application Insights エージェント API:Start-ApplicationInsightsMonitoringTrace
 
@@ -53,27 +51,27 @@ ms.locfileid: "72899648"
 4. 既定では、スイッチが指定されていない場合、両方のイベントの種類が収集されます。
 
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>パラメーター
 
 ### <a name="-maxdurationinminutes"></a>-MaxDurationInMinutes
-**省略可能。** このパラメーターを使用して、このスクリプトでイベントが収集される時間を設定します。 既定値は 5 分です。
+**省略可。** このパラメーターを使用して、このスクリプトでイベントが収集される時間を設定します。 既定値は 5 分です。
 
 ### <a name="-logdirectory"></a>-LogDirectory
-**省略可能。** このスイッチを使用して、ETL ファイルの出力ディレクトリを設定します。 既定では、このファイルは PowerShell Modules ディレクトリに作成されます。 スクリプトの実行中は、完全なパスが表示されます。
+**省略可。** このスイッチを使用して、ETL ファイルの出力ディレクトリを設定します。 既定では、このファイルは PowerShell Modules ディレクトリに作成されます。 スクリプトの実行中は、完全なパスが表示されます。
 
 
 ### <a name="-collectsdkevents"></a>-CollectSdkEvents
-**省略可能。** このスイッチを使用して、Application Insights SDK イベントを収集します。
+**省略可。** このスイッチを使用して、Application Insights SDK イベントを収集します。
 
 ### <a name="-collectredfieldevents"></a>-CollectRedfieldEvents
-**省略可能。** このスイッチを使用して、Status Monitor と Redfield Runtime からイベントを収集します。
+**省略可。** このスイッチを使用して、Status Monitor と Redfield Runtime からイベントを収集します。
 
 ### <a name="-verbose"></a>-Verbose
 **共通パラメーター。** 詳細なログを出力する場合はこのスイッチを使用します。
 
 
 
-## <a name="output"></a>Output
+## <a name="output"></a>出力
 
 
 ### <a name="example-of-application-startup-logs"></a>アプリケーションの起動ログの例
@@ -106,7 +104,7 @@ Timeout Reached. Stopping...
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 その他のトラブルシューティング:
 

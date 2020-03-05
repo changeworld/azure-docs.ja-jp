@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
-ms.openlocfilehash: 03a07e70c967f92fe5dcc7c951aeea299b050405
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 85fad873b6c176d2278ea48709d2892ab515a025
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71326987"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303309"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>チュートリアル:Databricks Delta テーブルを更新する Data Lake キャプチャ パターンを実装する
 
@@ -38,11 +38,11 @@ ms.locfileid: "71326987"
 
   「[Azure Data Lake Storage Gen2 アカウントを作成する](data-lake-storage-quickstart-create-account.md)」を参照してください。
 
-* サービス プリンシパルを作成する。 「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
+* サービス プリンシパルを作成する。 UnitTesting.Conditions.ExportTestConditionAttribute について詳しくは、「[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
 
   この記事の手順を実行する際に、いくつかの特定の作業を行う必要があります。
 
-  :heavy_check_mark:記事の「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)」セクションの手順を実行するときに、必ず**ストレージ BLOB データ共同作成者**ロールをサービス プリンシパルに割り当ててください。
+  :heavy_check_mark:記事の「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)」セクションの手順を実行するときに、必ず**ストレージ BLOB データ共同作成者**ロールをサービス プリンシパルに割り当ててください。
 
   > [!IMPORTANT]
   > Data Lake Storage Gen2 ストレージ アカウントの範囲内のロールを割り当てるようにしてください。 親リソース グループまたはサブスクリプションにロールを割り当てることはできますが、それらのロール割り当てがストレージ アカウントに伝達されるまで、アクセス許可関連のエラーが発生します。
@@ -127,7 +127,7 @@ ms.locfileid: "71326987"
 
     ![Databricks でノートブックを作成する](./media/data-lake-storage-events/new-databricks-notebook.png "Databricks でノートブックを作成する")
 
-    **作成** を選択します。
+    **［作成］** を選択します
 
 ### <a name="create-and-populate-a-databricks-delta-table"></a>Databricks Delta テーブルを作成してデータを設定する
 
@@ -243,7 +243,7 @@ ms.locfileid: "71326987"
 
 3. ジョブの名前を指定し、`upsert-order-data` ワークブックを選択します。
 
-   ![ジョブを作成する](./media/data-lake-storage-events/create-spark-job.png "ジョブを作成する")
+   ![ジョブを作成する](./media/data-lake-storage-events/create-spark-job.png "ジョブの作成")
 
 ## <a name="create-an-azure-function"></a>Azure Function の作成
 
@@ -275,9 +275,9 @@ ms.locfileid: "71326987"
 
    以下の設定を追加します。
 
-   |設定名 | 値 |
+   |設定名 | Value |
    |----|----|
-   |**DBX_INSTANCE**| Databricks ワークスペースのリージョン。 次に例を示します。`westus2.azuredatabricks.net`|
+   |**DBX_INSTANCE**| Databricks ワークスペースのリージョン。 例: `westus2.azuredatabricks.net`|
    |**DBX_PAT**| 前に生成した個人用アクセス トークン。 |
    |**DBX_JOB_ID**|実行中のジョブの識別子。 ここでは、この値を `1` にします。|
 7. 関数アプリの概要ページで、 **[新しい関数]** をクリックします。
@@ -406,11 +406,11 @@ ms.locfileid: "71326987"
 
    ![テーブルに更新後のレコードが表示される](./media/data-lake-storage-events/final_query-2.png "テーブルに更新後のレコードが表示される")
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソース グループおよび関連するすべてのリソースは、不要になったら削除します。 これを行うには、ストレージ アカウントのリソース グループを選択し、 **[削除]** を選択してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Blob Storage のイベント処理](storage-blob-event-overview.md)

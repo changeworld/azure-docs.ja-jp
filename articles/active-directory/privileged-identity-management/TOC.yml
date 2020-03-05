@@ -83,7 +83,7 @@
           href: pim-resource-roles-configure-role-settings.md
         - name: アラートを構成する
           href: pim-resource-roles-configure-alerts.md
-        - name: アクティビティと監査履歴を表示する
+        - name: 監査履歴を表示する
           href: azure-pim-resource-rbac.md
         - name: カスタム ロールを使用する
           href: pim-resource-roles-custom-role-policy.md

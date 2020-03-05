@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor の Insights の概要 | Microsoft Docs
 description: Insights は、Azure Monitor で特定のアプリケーションやサービスを監視するためのカスタマイズされたエクスペリエンスを提供します。 この記事では、現在利用可能な分析情報のそれぞれについて簡単に説明します。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/22/2019
-ms.openlocfilehash: d1b53267daa2d47baf9976727bbaf3fa56172432
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 15ea7698c9e90fa8b0dfa20f71b552a2b0e9c7d2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832092"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657250"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Azure Monitor の Insights の概要
 Insights は、特定のアプリケーションやサービスを監視するためのカスタマイズされたエクスペリエンスを提供します。 [Azure Monitor データ プラットフォーム](../platform/data-platform.md)にデータを格納し、Azure Monitor のその他の機能を分析やアラートに使用しますが、追加のデータを収集したり、Azure portal で独自のユーザー エクスペリエンスを提供したりできます。 Azure portal で、Azure Monitor メニューの **[Insights]** セクションから分析情報にアクセスします。
@@ -52,6 +51,6 @@ Azure Monitor for VMs では、ご利用の Azure 仮想マシン (VM) および
 
 ![Azure Monitor for Networks](media/insights-overview/network-insights.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * 分析情報で利用される [Azure Monitor データ プラットフォーム](../platform/data-platform.md)について詳しく理解します。
 * 各種の [Azure Monitor によって使用されるデータ ソース](../platform/data-sources.md)と、それぞれの分析情報によって収集されるさまざまな種類のデータについて理解します。

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 0c997fffc1adc60f774e651ed458d253b35a3bdd
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: f422d1dd6c76d78448ae4fb1012a5dae8d6108b3
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612204"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299076"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメインを構成および管理するための管理 VM を作成する
 
@@ -59,7 +59,6 @@ Azure AD DS では、ユーザー、アプリケーション、サービスで�
 
 *AAD DC Administrators* グループのメンバーには、Azure AD DS のマネージド ドメインで以下のようなタスクを実行できる特権が付与されます。
 
-* コンピューターをマネージド ドメインに参加させる。
 * マネージド ドメイン内の *AADDC Computers* と *AADDC Users* のコンテナーに対して組み込みのグループ ポリシー オブジェクト (GPO) を構成する。
 * マネージド ドメイン上で DNS を管理する。
 * マネージド ドメイン上でカスタム組織単位 (OU) を作成し、管理する。

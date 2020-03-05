@@ -3,17 +3,16 @@ title: Azure Monitor のカスタム メトリック
 description: Azure Monitor のカスタム メトリックと、それらのモデリング方法について説明します。
 author: ancav
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 744958fc44a8d10bbc8ca5d44af8c473548ae5ca
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3e3f45c1802d501e2320930c35073ec89ff38124
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669164"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662350"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Azure Monitor のカスタム メトリック
 
@@ -93,16 +92,16 @@ Azure Monitor では、すべてのメトリックを 1 分刻みの間隔で保
 |
 
 その場合、結果として Azure Monitor に送信されるメトリックは次のようになります。
-* Min:4
-* Max:16
-* Sum:40
-* Count:4
+* 最小:4
+* 最大:16
+* 合計:40
+* カウント:4
 
 アプリケーションにおいて、ローカルでの事前集計ができず、収集してすぐに個別のサンプルまたはイベントを出力する必要がある場合、未処理の測定値を出力することができます。 たとえば、アプリでサインイン トランザクションが発生するたびに、ただ 1 つの測定値と共にメトリックを Azure Monitor に発行することもできます。 その場合、サインイン トランザクションに要した時間が 12 ミリ秒だとすると、送信されるメトリックは次のようになります。
-* Min:12
-* Max:12
-* Sum:12
-* Count:1
+* 最小:12
+* 最大:12
+* 合計:12
+* カウント:1
 
 このプロセスでは、ある 1 分の間に、同じメトリックとディメンションの組み合わせに対して複数の値を出力できます。 その場合は、Azure Monitor によって、ある 1 分の間に出力されたすべての未処理値が集計されます。
 
@@ -177,7 +176,7 @@ Azure Monitor では、すべてのメトリックを 1 分刻みの間隔で保
 |米国中南部| https:\//southcentralus.monitoring.azure.com/ |
 |米国中部      | https:\//centralus.monitoring.azure.com |
 |カナダ中部 | https:\//canadacentral.monitoring.azure.comc
-|East US| https:\//eastus.monitoring.azure.com/ |
+|米国東部| https:\//eastus.monitoring.azure.com/ |
 | **ヨーロッパ** | |
 |北ヨーロッパ    | https:\//northeurope.monitoring.azure.com/ |
 |西ヨーロッパ     | https:\//westeurope.monitoring.azure.com/ |
@@ -197,7 +196,7 @@ Azure Monitor では、すべてのメトリックを 1 分刻みの間隔で保
 ## <a name="quotas-and-limits"></a>クォータと制限
 Azure Monitor では、カスタム メトリックの使用に次の制限があります。
 
-|Category|制限|
+|カテゴリ|制限|
 |---|---|
 |アクティブ時系列/サブスクリプション/リージョン|50,000|
 |メトリックあたりのディメンション キー|10|
@@ -205,7 +204,7 @@ Azure Monitor では、カスタム メトリックの使用に次の制限が�
 
 アクティブ時系列は、メトリック、ディメンション キー、またはディメンション値の任意の一意な組み合わせであり、過去 12 時間以内にメトリック値が発行されたものとして定義されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 さまざまなサービスのカスタム メトリックを使用する。 
  - [Virtual Machines](collect-custom-metrics-guestos-resource-manager-vm.md)
  - [仮想マシン スケール セット](collect-custom-metrics-guestos-resource-manager-vmss.md)

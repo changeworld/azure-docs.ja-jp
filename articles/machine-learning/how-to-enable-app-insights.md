@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
-ms.author: peterlu
-author: peterclu
+ms.author: larryfr
+author: blackmist
 ms.date: 11/12/2019
-ms.openlocfilehash: 6498717f5d542be228483b9c323dbd8f3ca2ff00
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 34aba3c00ac0026abebbdfc93143aa5e7f788e8b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251925"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268480"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>ML Web サービス エンドポイントからのデータを監視および収集する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,39 +43,6 @@ ms.locfileid: "77251925"
 
 サービスへのメタデータと応答は、Web サービスのメタデータとモデルの予測に対応しており、メッセージ `"model_data_collection"` で Azure Application Insights のトレースに記録されます。 Azure Application Insights に直接クエリを実行してこのデータにアクセスしたり、長期の保持やさらなる処理のためにストレージ アカウントに対する[連続エクスポート](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry)を設定したりできます。 モデル データはその後、Azure Machine Learning で、ラベル付け、再トレーニング、説明、データ分析などの用途を設定するために使用できます。 
 
-## <a name="use-the-azure-portal-to-configure"></a>Azure portal を使用して構成する
-
-Azure portal で Azure Application Insights を有効または無効にすることができます。 
-
-1. [Azure portal](https://portal.azure.com) でワークスペースを開きます。
-
-1. **[デプロイ]** タブに移動し、Azure Application Insights を有効にするサービスを選択します。
-
-   [![[デプロイ] タブ上のサービスの一覧](./media/how-to-enable-app-insights/Deployments.PNG)](././media/how-to-enable-app-insights/Deployments.PNG#lightbox)
-
-3. **[編集]** を選択します。
-
-   [![[編集] ボタン](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
-
-4. **[詳細設定]** で、 **[AppInsights 診断を有効にする]** チェック ボックスをオンにします。
-
-   [![診断を有効にするために選択されたチェック ボックス](./media/how-to-enable-app-insights/AdvancedSettings.png)](././media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
-
-1. 画面下部の **[更新]** を選択して変更を適用します。
-
-### <a name="disable"></a>Disable
-
-1. [Azure portal](https://portal.azure.com) でワークスペースを開きます。
-1. **[デプロイ]** を選択し、サービスを選択し、 **[編集]** を選択します。
-
-   [![[編集] ボタンを使用する](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
-
-1. **[詳細設定]** で、 **[AppInsights 診断を有効にする]** チェック ボックスをオフにします。
-
-   [![診断を有効にするためのチェック ボックスをオフ](./media/how-to-enable-app-insights/uncheck.png)](././media/how-to-enable-app-insights/uncheck.png#lightbox)
-
-1. 画面下部の **[更新]** を選択して変更を適用します。
- 
 ## <a name="use-python-sdk-to-configure"></a>Python SDK を使用して構成する 
 
 ### <a name="update-a-deployed-service"></a>デプロイされたサービスを更新する

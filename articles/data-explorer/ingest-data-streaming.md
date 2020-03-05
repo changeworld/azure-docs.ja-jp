@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 4a0593ccd6bdf37520e73ba8ed421ec4b10ea52c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 279130fa310b107bd1a016c717c48af3d905251b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623301"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270158"
 ---
 # <a name="streaming-ingestion-preview"></a>ストリーミング インジェスト (プレビュー)
 
@@ -37,7 +37,7 @@ ms.locfileid: "77623301"
  
     ![ストリーミング インジェストのオン](media/ingest-data-streaming/streaming-ingestion-on.png)
  
-1. [Web UI](https://dataexplorer.azure.com/) で、ストリーミング データを受信するテーブルまたはデータベースに[ストリーミング インジェスト ポリシー](/azure/kusto/concepts/streamingingestionpolicy)を定義します。 
+1. [Web UI](https://dataexplorer.azure.com/) で、ストリーミング データを受信するテーブルまたはデータベースに[ストリーミング インジェスト ポリシー](/azure/kusto/management/streamingingestionpolicy)を定義します。 
 
     > [!NOTE]
     > * ポリシーがデータベース レベルで定義されている場合、データベース内のすべてのテーブルでストリーミング インジェストが有効になります。
@@ -63,7 +63,7 @@ ms.locfileid: "77623301"
 > [!WARNING]
 > ストリーミング インジェストの無効化には数時間かかることがあります。
 
-1. 関連するすべてのテーブルとデータベースから[ストリーミング インジェスト ポリシー](/azure/kusto/concepts/streamingingestionpolicy)をドロップします。 ストリーミング インジェスト ポリシーの削除によって、初期ストレージから列ストア (エクステントまたはシャード) 内の永続的なストレージへのストリーミング インジェストのデータ移動がトリガーされます。 データ移動には、初期ストレージ上のデータ量とクラスターによる CPU およびメモリ使用率に応じて、数秒から数時間かかることがあります。
+1. 関連するすべてのテーブルとデータベースから[ストリーミング インジェスト ポリシー](/azure/kusto/management/streamingingestionpolicy)をドロップします。 ストリーミング インジェスト ポリシーの削除によって、初期ストレージから列ストア (エクステントまたはシャード) 内の永続的なストレージへのストリーミング インジェストのデータ移動がトリガーされます。 データ移動には、初期ストレージ上のデータ量とクラスターによる CPU およびメモリ使用率に応じて、数秒から数時間かかることがあります。
 1. Azure portal で、Azure Data Explorer クラスターに移動します。 **[設定]** で **[構成]** を選択します。 
 1. **[構成]** ウィンドウで、 **[オフ]** を選択して **[ストリーミング インジェスト]** を無効にします。
 1. **[保存]** を選択します。
@@ -76,11 +76,11 @@ ms.locfileid: "77623301"
 * インジェスト要求ごとのデータ サイズの制限は 4 MB です。
 * テーブルとインジェスト マッピングの作成や変更など、スキーマの更新には、ストリーミング インジェスト サービスに最大 5 分かかることがあります。
 * クラスターでストリーミング インジェストを有効にすると、データがストリーミング経由で取り込まれていない場合でも、インジェスト データをストリーミングするためにクラスター マシンのローカル SSD ディスクの一部を使用して、ホット キャッシュに使用できるストレージを減らします。
-* [extent タグ](/azure/kusto/management/extents-overview.md#extent-tagging)は、ストリーミング インジェスト データには設定できません。
+* [extent タグ](/azure/kusto/management/extents-overview#extent-tagging)は、ストリーミング インジェスト データには設定できません。
 
 ストリーミング インジェストでは、次の機能はサポートされていません。
 * [データベース カーソル](/azure/kusto/management/databasecursor)。
-* [データ マッピング](/azure/kusto/management/mappings)。 [事前に作成された](/azure/kusto/management/tables#create-ingestion-mapping)データ マッピングのみがサポートされています。 
+* [データ マッピング](/azure/kusto/management/mappings)。 [事前に作成された](/azure/kusto/management/create-ingestion-mapping-command)データ マッピングのみがサポートされています。 
 
 ## <a name="next-steps"></a>次のステップ
 

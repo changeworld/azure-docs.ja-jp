@@ -3,8 +3,8 @@ title: クイック スタート:Azure portal を使用してインスタンス�
 titleSuffix: Azure Database Migration Service
 description: Azure portal を使用して Azure Database Migration Service のインスタンスを作成します。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 01/08/2020
-ms.openlocfilehash: 42638af9f51770a9a5738cd92f91c28439af273a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: efbf7d9db91b8c23151ca4337bd4d58f814a7096
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750089"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254975"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>クイック スタート:Azure Portal を使用して Azure Database Migration Service のインスタンスを作成する
 
@@ -65,7 +65,7 @@ Database Migration Service の最初のインスタンスを作成する前に�
 
         ![移行サービスの作成](media/quickstart-create-data-migration-service-portal/dms-create-service1.png)
 
-4. **作成** を選択します。
+4. **［作成］** を選択します
 
     しばらくすると、Azure Database Migration Service のインスタンスが作成され、使用できるようになります。 Azure Database Migration Service は、次の図のように表示されます。
 

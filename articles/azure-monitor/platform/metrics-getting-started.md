@@ -3,17 +3,16 @@ title: Azure メトリックス エクスプローラーの概要
 description: Azure メトリックス エクスプローラーを使用して、ご自分の最初のメトリック グラフを作成する方法について説明します。
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: ceaefffaf04a3ab266cde300e8c4b93a5e804796
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 920ff19b162843d1c2d631ad192ce1b3c4273a68
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861082"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662283"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Azure メトリックス エクスプローラーの概要
 
@@ -68,7 +67,7 @@ Azure Monitor メトリックス エクスプローラーは、グラフの描�
 
 グラフのスタイルおよびタイトルをカスタマイズして、グラフの詳細設定を変更することができます。 カスタマイズが完了したら、ダッシュボードにピン留めして作業内容を保存します。 メトリック アラートを構成することもできます。 Azure Monitor メトリックス エクスプローラーの上記のような高度な機能を学習するには、[製品のドキュメント](metrics-charts.md)に関するページの説明に従ってください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [メトリックス エクスプローラーの高度な機能を確認する](metrics-charts.md)
 * [メトリックス エクスプローラーのトラブルシューティング](metrics-troubleshoot.md)

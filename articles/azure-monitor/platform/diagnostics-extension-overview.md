@@ -1,18 +1,17 @@
 ---
 title: Azure Diagnostics 拡張機能の概要
 description: Azure Diagnostics は、Cloud Services、Virtual Machines、および Service Fabric でのデバッグ、パフォーマンス測定、監視、トラフィック分析に使用できます。
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: d9db4b4c8e6d82f29d227b9f8afe528e000c651e
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 6cb514312db525ffd2ccf9f7b70968daaa94f322
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467999"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672380"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Azure Diagnostics 拡張機能の概要
 Azure Diagnostics 拡張機能は、仮想マシンを含む Azure コンピューティング リソースのゲスト オペレーティング システムから監視データを収集する、[Azure Monitor のエージェント](agents-overview.md)です。 この記事では、Azure Diagnostics 拡張機能の概要と、サポートされている特定の機能、およびインストールと構成のオプションについて説明します。 
@@ -86,7 +85,7 @@ LAD では Azure Storage 内のテーブルにデータが書き込まれます�
 
 
 ## <a name="installation-and-configuration"></a>インストールと構成
-Diagnostic 拡張機能は、Azure では[仮想マシン拡張機能](/virtual-machines/extensions/overview)として実装されているため、Resource Manager テンプレート、PowerShell、および CLI を使用した場合と同じインストール オプションがサポートされています。 仮想マシン拡張機能のインストールとメンテナンスの詳細については、「[Windows 用の仮想マシンの拡張機能と機能](/virtual-machines/extensions/features-windows)」および「[Linux 用の仮想マシンの拡張機能とその機能](/virtual-machines/extensions/features-linux)」を参照してください。
+Diagnostic 拡張機能は、Azure では[仮想マシン拡張機能](../../virtual-machines/extensions/overview.md)として実装されているため、Resource Manager テンプレート、PowerShell、および CLI を使用した場合と同じインストール オプションがサポートされています。 仮想マシン拡張機能のインストールとメンテナンスの詳細については、「[Windows 用の仮想マシンの拡張機能と機能](../../virtual-machines/extensions/features-windows.md)」および「[Linux 用の仮想マシンの拡張機能とその機能](../../virtual-machines/extensions/features-linux.md)」を参照してください。
 
 また、Windows と Linux の両方の Diagnostics 拡張機能は、Azure portal で、仮想マシンのメニューの **[監視]** セクションの **[診断設定]** の下でインストールおよび構成することができます。
 

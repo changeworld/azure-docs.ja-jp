@@ -3,20 +3,20 @@ title: ContentDefinitions
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C でカスタム ポリシーの ContentDefinitions element 要素を指定します。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/17/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fd6a24c768056c949c05b9e2444bd49ef743c0ef
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: b55199ec2684ab7b95ce4e4988b19814c27b2cc3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425631"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189584"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -143,9 +143,9 @@ ms.locfileid: "77425631"
 
 #### <a name="metadata-keys"></a>メタデータ キー
 
-コンテンツ定義では、次のメタデータ項目がサポートされています。 
+コンテンツ定義では、次のメタデータ項目がサポートされています。
 
-| Key | Required | 説明 |
+| Key | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | DisplayName | いいえ | コンテンツ定義の名前を表す文字列。 |
 

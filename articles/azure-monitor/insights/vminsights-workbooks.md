@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor for VMs のブックを使用した対話型レポートの作成 | Microsoft Docs
 description: Azure Monitor for VMs 用の定義済みのブックやパラメーター化されたカスタム ブックを使用して複雑なレポートの作成を簡単にします。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: b89e61f0c268df0ed6dd69ae1c6d97f00678fc32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7ec24f1eca0b2cf1d5ea2c171573f7c5e47319af
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365922"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670680"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Azure Monitor for VMs のブックを使用した対話型レポートの作成
 
@@ -27,7 +26,7 @@ Workbooks は次のようなシナリオで便利です。
 
 Azure Monitor for VMs には、作業を始めるときに利用できる複数のブックが含まれます。次の表はそれらをまとめたものです。
 
-| Workbooks | 説明 | スコープ |
+| Workbooks | 説明 | Scope |
 |----------|-------------|-------|
 | パフォーマンス | 有効にされているすべての Log Analytics パフォーマンス カウンターを利用して、上位 N 位までのリストとグラフ ビューのカスタマイズ可能なバージョンを 1 つのブックで提供します。| 大規模 |
 | パフォーマンス カウンター | パフォーマンス カウンターの広範なセットに関する上位 N 位までのグラフ ビューです。 | 大規模 |
@@ -45,7 +44,7 @@ Azure Monitor for VMs には、作業を始めるときに利用できる複数�
 
 ブックは、個別に編集可能なグラフ、テーブル、テキスト、入力コントロールで構成される複数のセクションで構成されます。 ブックをより深く理解するため、テンプレートを開いて、カスタム ブックの作成について説明しましょう。 
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. **[仮想マシン]** を選択します。
 

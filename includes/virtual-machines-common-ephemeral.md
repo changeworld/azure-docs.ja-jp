@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: c3a7fb14dbd22730d95a5aaed146b59ad790ce6b
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: d848b92da5d4181832adff8499b3531d020c30c9
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775868"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155395"
 ---
 エフェメラル OS ディスクは、ローカルの仮想マシン (VM) ストレージで作成され、リモートの Azure Storage に保存されません。 エフェメラル OS ディスクは、ステートレス ワークロードで適切に動作します。この場合、アプリケーションは個々の VM 障害を許容しますが、VM のデプロイ時間または個々の VM インスタンスの再イメージ化によって影響をより強く受けます。 エフェメラル OS ディスクでは、OS ディスクへの読み取り/書き込み待機時間が短縮され、VM の再イメージ化が高速化されます。 
  
@@ -44,7 +44,7 @@ ms.locfileid: "70775868"
 
 ## <a name="size-requirements"></a>サイズの要件
 
-VM およびインスタンス イメージは、最大で VM キャッシュのサイズまでデプロイできます。 たとえば、マーケットプレースの標準の Windows Server イメージは約 127 GiB であり、これは 127 GiB より大きいキャッシュを持つ VM サイズが必要であることを意味します。 この場合、[Standard_DS2_v2](/azure/virtual-machines/windows/sizes-general#dsv2-series) のキャッシュ サイズは 86 GiB であり、十分な大きさではありません。 Standard_DS3_v2 のキャッシュ サイズは 172 GiB であり、十分な大きさです。 この場合、Standard_DS3_v2 が、このイメージで使用できる DSv2 シリーズの最小サイズ です。 Marketplace の基本の Linux イメージと `[smallsize]` で示される Windows Server イメージは約 30 GiB になる傾向があり、利用可能な VM サイズのほとんどを使用できます。
+VM およびインスタンス イメージは、最大で VM キャッシュのサイズまでデプロイできます。 たとえば、マーケットプレースの標準の Windows Server イメージは約 127 GiB であり、これは 127 GiB より大きいキャッシュを持つ VM サイズが必要であることを意味します。 この場合、[Standard_DS2_v2](~/articles/virtual-machines/dv2-dsv2-series.md) のキャッシュ サイズは 86 GiB であり、十分な大きさではありません。 Standard_DS3_v2 のキャッシュ サイズは 172 GiB であり、十分な大きさです。 この場合、Standard_DS3_v2 が、このイメージで使用できる DSv2 シリーズの最小サイズ です。 Marketplace の基本の Linux イメージと `[smallsize]` で示される Windows Server イメージは約 30 GiB になる傾向があり、利用可能な VM サイズのほとんどを使用できます。
 
 また、エフェメラル ディスクでは、VM サイズで Premium Storage がサポートされていることも必要です。 通常 (常にではありませんが)、 サイズには DSv2 や EsV3 のように名前に `s` があります。 詳細については、[Azure の VM サイズ](../articles/virtual-machines/linux/sizes.md)に関する記事で Premium Storage をサポートするサイズの詳細を参照してください。
 

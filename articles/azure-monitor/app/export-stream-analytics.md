@@ -1,18 +1,14 @@
 ---
 title: Azure Application Insights からの Stream Analytics のエクスポート | Microsoft Docs
 description: Stream Analytics は、Application Insights からエクスポートされたデータを継続的に変換、フィルター処理、ルーティングできます。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/08/2019
-ms.openlocfilehash: 3be1a643cbe942c0b740ae8ebcc2c7f2dda24854
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: b93bc49d005e3e54f1e5db84e6ff1adc49e25a65
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677946"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664016"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Application Insights からエクスポートされたデータを、Stream Analytics を使って処理する
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) は、[Application Insights からエクスポートされた](export-telemetry.md)データを処理するのに理想的なツールです。 Stream Analytics は、さまざまなソースからデータを取り込むことができます。 Stream Analytics は、データを変換してフィルター処理し、さまざまなシンクにルーティングできます。
@@ -184,7 +180,7 @@ ms.locfileid: "72677946"
 
 * このクエリは、次元配列の固定インデックスにある特定のディメンションに依存せず、ディメンション プロパティの値を追加します。
 
-## <a name="run-the-job"></a>ジョブを実行する
+## <a name="run-the-job"></a>ジョブの実行
 ジョブを開始する過去の日付を選択できます。 
 
 ![ジョブを選択し、[クエリ] をクリックします。 以下のサンプルを貼り付けます。](./media/export-stream-analytics/SA008.png)
@@ -215,7 +211,7 @@ Noam Ben Zeev が、Stream Analytics を使ってエクスポートされたデ�
 > 
 > 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [連続エクスポート](export-telemetry.md)
 * [データ モデルについては、プロパティの型と値のリファレンスで詳しく説明されています。](export-data-model.md)
 * [Application Insights](../../azure-monitor/app/app-insights-overview.md)

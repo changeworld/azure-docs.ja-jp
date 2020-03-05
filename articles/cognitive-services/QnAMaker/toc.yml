@@ -16,19 +16,14 @@
           href: Quickstarts/add-question-metadata-portal.md
         - name: 3. Postman または cURL を使用して回答を取得する
           href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
-    - name: バッチ ファイルを使用したテスト
-      href: Quickstarts/batch-testing.md
     - name: REST の使用
       href: Quickstarts/quickstart-rest-curl.md
     - name: SDK の使用
       href: Quickstarts/quickstart-sdk.md
 - name: チュートリアル
   items:
-    - name: KB を作成して回答する
-      displayName: 'curl, publish, chit-chat, chit chat'
-      href: Tutorials/create-publish-query-in-portal.md
-    - name: QnA Maker ボットを作成する
-      href: Tutorials/create-qna-bot.md
+    - name: バッチ ファイルを使用したテスト
+      href: Quickstarts/batch-testing.md
 - name: 概念
   items:
     - name: Azure リソース
@@ -77,9 +72,6 @@
           href: How-To/business-continuity-plan.md
     - name: ナレッジ ベースの管理
       items:
-        - name: ナレッジ ベースの作成と公開
-          href: Quickstarts/create-publish-knowledge-base.md
-          displayName: 'create bot, bot, publish to bot, test, edit'
         - name: QnA Maker と LUIS を使用したボットの作成
           href: Tutorials/integrate-qnamaker-luis.md
         - name: 言語の選択
@@ -109,8 +101,6 @@
           displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
     - name: クライアント アプリケーションとの併用
       items:
-        - name: Bot Framework
-          href: Tutorials/create-qna-bot.md
         - name: LUIS と QnA Maker
           href: Tutorials/integrate-qnamaker-luis.md
     - name: 分析とテレメトリ

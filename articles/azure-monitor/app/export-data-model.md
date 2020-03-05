@@ -1,18 +1,14 @@
 ---
 title: Azure Application Insights のデータ モデル | Microsoft Docs
 description: JSON の連続エクスポートからエクスポートされ、フィルターとして使用されるプロパティについて説明します。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/08/2019
-ms.openlocfilehash: 8f84e3179a6f949e4a322a2218736fc9ebe60442
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: e4dd2310169476e54c06083fee11b2e4cccecd8d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677910"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663877"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights エクスポート データ モデル
 次のテーブルは、 [Application Insights SDK](../../azure-monitor/app/app-insights-overview.md) からポータルに送信されるテレメトリのプロパティを一覧表示したものです。
@@ -109,14 +105,14 @@ ms.locfileid: "72677910"
 ## <a name="context"></a>Context
 テレメトリのすべての種類には、コンテキストのセクションが付いています。 これらのフィールドのすべてが各データ ポイントで送信されるわけではありません。
 
-| Path | 種類 | メモ |
+| Path | Type | Notes |
 | --- | --- | --- |
 | context.custom.dimensions [0] |object [ ] |カスタム プロパティ パラメーターによって設定される、キーと値の文字列ペア。 キーの最大長は 100 で、値の最大長は 1024 です。 100 を超える一意の値で、プロパティを検索することはできますが、セグメント化には使用できません。 ikey あたり最大 200 キー。 |
 | context.custom.metrics [0] |object [ ] |カスタム測定パラメーターと TrackMetrics によって設定される、キーと値のペア。 キーの最大長は 100 で、値は通常は数値です。 |
 | context.data.eventTime |string |UTC |
-| context.data.isSynthetic |ブール値 |要求がボットまたは Web テストから送られてきました。 |
+| context.data.isSynthetic |boolean |要求がボットまたは Web テストから送られてきました。 |
 | context.data.samplingRate |number |ポータルに送信される、SDK によって生成されたテレメトリの割合。 範囲 0.0 ～ 100.0。 |
-| context.device |object@ |クライアント デバイス |
+| context.device |object |クライアント デバイス |
 | context.device.browser |string |IE、Chrome、 ... |
 | context.device.browserVersion |string |Chrome 48.0、 ... |
 | context.device.deviceModel |string | |
@@ -141,14 +137,14 @@ ms.locfileid: "72677910"
 | context.operation.name |string |URL または要求の名前 |
 | context.operation.parentId |string |入れ子になった関連項目を許可します。 |
 | context.session.id |string |同じソースからの操作のグループの ID。 30 分間操作が行われないと、セッションの終了が通知されます。 |
-| context.session.isFirst |ブール値 | |
+| context.session.isFirst |boolean | |
 | context.user.accountAcquisitionDate |string | |
 | context.user.accountId |string | |
 | context.user.anonAcquisitionDate |string | |
 | context.user.anonId |string | |
 | context.user.authAcquisitionDate |string |[認証されたユーザー](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users) |
 | context.user.authId |string | |
-| context.user.isAuthenticated |ブール値 | |
+| context.user.isAuthenticated |boolean | |
 | context.user.storeRegion |string | |
 | internal.data.documentVersion |string | |
 | internal.data.id |string | Application Insights に項目が取り込まれるときに割り当てられる一意の ID |
@@ -156,9 +152,9 @@ ms.locfileid: "72677910"
 ## <a name="events"></a>events
 [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)によって生成されたカスタム イベント。
 
-| Path | 種類 | メモ |
+| Path | Type | Notes |
 | --- | --- | --- |
-| event [0] count |integer |100/([サンプリング](../../azure-monitor/app/sampling.md) レート)。 たとえば、4 =&gt; 25% です。 |
+| event [0] count |整数 (integer) |100/([サンプリング](../../azure-monitor/app/sampling.md) レート)。 たとえば、4 =&gt; 25% です。 |
 | event [0] name |string |イベント名。  最大長 250。 |
 | event [0] url |string | |
 | event [0] urlData.base |string | |
@@ -167,16 +163,16 @@ ms.locfileid: "72677910"
 ## <a name="exceptions"></a>例外
 サーバーおよびブラウザーの [例外](../../azure-monitor/app/asp-net-exceptions.md) をレポートします。
 
-| Path | 種類 | メモ |
+| Path | Type | Notes |
 | --- | --- | --- |
 | basicException [0] assembly |string | |
-| basicException [0] count |integer |100/([サンプリング](../../azure-monitor/app/sampling.md) レート)。 たとえば、4 =&gt; 25% です。 |
+| basicException [0] count |整数 (integer) |100/([サンプリング](../../azure-monitor/app/sampling.md) レート)。 たとえば、4 =&gt; 25% です。 |
 | basicException [0] exceptionGroup |string | |
 | basicException [0] exceptionType |string | |
 | basicException [0] failedUserCodeMethod |string | |
 | basicException [0] failedUserCodeAssembly |string | |
 | basicException [0] handledAt |string | |
-| basicException [0] hasFullStack |ブール値 | |
+| basicException [0] hasFullStack |boolean | |
 | basicException [0] id |string | |
 | basicException [0] method |string | |
 | basicException [0] message |string |例外メッセージ。 最大長 10k。 |
@@ -187,8 +183,8 @@ ms.locfileid: "72677910"
 | basicException [0] outerId |string | |
 | basicException [0] parsedStack [0] assembly |string | |
 | basicException [0] parsedStack [0] fileName |string | |
-| basicException [0] parsedStack [0] level |integer | |
-| basicException [0] parsedStack [0] line |integer | |
+| basicException [0] parsedStack [0] level |整数 (integer) | |
+| basicException [0] parsedStack [0] line |整数 (integer) | |
 | basicException [0] parsedStack [0] method |string | |
 | basicException [0] stack |string |最大長 10k。 |
 | basicException [0] typeName |string | |
@@ -196,7 +192,7 @@ ms.locfileid: "72677910"
 ## <a name="trace-messages"></a>トレース メッセージ
 [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) および[ログ アダプター](../../azure-monitor/app/asp-net-trace-logs.md)によって送信されます。
 
-| Path | 種類 | メモ |
+| Path | Type | Notes |
 | --- | --- | --- |
 | message [0] loggerName |string | |
 | message [0] parameters |string | |
@@ -206,18 +202,18 @@ ms.locfileid: "72677910"
 ## <a name="remote-dependency"></a>リモート依存関係
 TrackDependency によって送信されます。 サーバーでの [依存関係の呼び出し](../../azure-monitor/app/asp-net-dependencies.md) とブラウザーでの AJAX の呼び出しのパフォーマンスおよび使用状況をレポートするために使用されます。
 
-| Path | 種類 | メモ |
+| Path | Type | Notes |
 | --- | --- | --- |
-| remoteDependency [0] async |ブール値 | |
+| remoteDependency [0] async |boolean | |
 | remoteDependency [0] baseName |string | |
 | remoteDependency [0] commandName |string |例: "home/index" |
-| remoteDependency [0] count |integer |100/([サンプリング](../../azure-monitor/app/sampling.md) レート)。 たとえば、4 =&gt; 25% です。 |
+| remoteDependency [0] count |整数 (integer) |100/([サンプリング](../../azure-monitor/app/sampling.md) レート)。 たとえば、4 =&gt; 25% です。 |
 | remoteDependency [0] dependencyTypeName |string |HTTP、SQL、... |
 | remoteDependency [0] durationMetric.value |number |呼び出しから依存関係による応答の完了までの時間 |
 | remoteDependency [0] id |string | |
 | remoteDependency [0] name |string |URL。 最大長 250。 |
 | remoteDependency [0] resultCode |string |HTTP の依存関係から |
-| remoteDependency [0] success |ブール値 | |
+| remoteDependency [0] success |boolean | |
 | remoteDependency [0] type |string |Http、Sql、... |
 | remoteDependency [0] url |string |最大長 2000 |
 | remoteDependency [0] urlData.base |string |最大長 2000 |
@@ -227,14 +223,14 @@ TrackDependency によって送信されます。 サーバーでの [依存関�
 ## <a name="requests"></a>Requests
 [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)によって送信されます。 標準モジュールはこれを使用して、サーバーで測定されたサーバー応答時間をレポートします。
 
-| Path | 種類 | メモ |
+| Path | Type | Notes |
 | --- | --- | --- |
-| request [0] count |integer |100/([サンプリング](../../azure-monitor/app/sampling.md) レート)。 例: 4 =&gt; 25%。 |
+| request [0] count |整数 (integer) |100/([サンプリング](../../azure-monitor/app/sampling.md) レート)。 次に例を示します。4 =&gt; 25%。 |
 | request [0] durationMetric.value |number |要求の到着から応答までの時間。 1e7 == 1 秒 |
 | request [0] id |string |操作 ID |
 | request [0] name |string |GET/POST + URL ベース。  最大長 250 |
-| request [0] responseCode |integer |クライアントに送信された HTTP 応答 |
-| request [0] success |ブール値 |既定 == (responseCode &lt; 400) |
+| request [0] responseCode |整数 (integer) |クライアントに送信された HTTP 応答 |
+| request [0] success |boolean |既定 == (responseCode &lt; 400) |
 | request [0] url |string |ホストを含まない |
 | request [0] urlData.base |string | |
 | request [0] urlData.hashTag |string | |
@@ -245,14 +241,14 @@ TrackDependency によって送信されます。 サーバーでの [依存関�
 
 コンテキストの値は、クライアント OS やブラウザーのバージョンを示します。
 
-| Path | 種類 | メモ |
+| Path | Type | Notes |
 | --- | --- | --- |
-| clientPerformance [0] clientProcess.value |integer |HTML の取得終了からページの表示までの時間。 |
+| clientPerformance [0] clientProcess.value |整数 (integer) |HTML の取得終了からページの表示までの時間。 |
 | clientPerformance [0] name |string | |
-| clientPerformance [0] networkConnection.value |integer |ネットワーク接続の確立に要した時間。 |
-| clientPerformance [0] receiveRequest.value |integer |要求の送信の終了から応答での HTML の取得までの時間。 |
-| clientPerformance [0] sendRequest.value |integer |HTTP 要求の送信に要した時間。 |
-| clientPerformance [0] total.value |integer |要求の送信の開始からページの表示までの時間。 |
+| clientPerformance [0] networkConnection.value |整数 (integer) |ネットワーク接続の確立に要した時間。 |
+| clientPerformance [0] receiveRequest.value |整数 (integer) |要求の送信の終了から応答での HTML の取得までの時間。 |
+| clientPerformance [0] sendRequest.value |整数 (integer) |HTTP 要求の送信に要した時間。 |
+| clientPerformance [0] total.value |整数 (integer) |要求の送信の開始からページの表示までの時間。 |
 | clientPerformance [0] url |string |この要求の URL |
 | clientPerformance [0] urlData.base |string | |
 | clientPerformance [0] urlData.hashTag |string | |
@@ -262,10 +258,10 @@ TrackDependency によって送信されます。 サーバーでの [依存関�
 ## <a name="page-views"></a>ページ ビュー
 trackPageView() または [stopTrackPage](../../azure-monitor/app/api-custom-events-metrics.md#page-views)
 
-| Path | 種類 | メモ |
+| Path | Type | Notes |
 | --- | --- | --- |
-| view [0] count |integer |100/([サンプリング](../../azure-monitor/app/sampling.md) レート)。 たとえば、4 =&gt; 25% です。 |
-| view [0] durationMetric.value |integer |trackPageView() で、または startTrackPage() - stopTrackPage() によって、オプションで設定される値。 clientPerformance 値と同じではありません。 |
+| view [0] count |整数 (integer) |100/([サンプリング](../../azure-monitor/app/sampling.md) レート)。 たとえば、4 =&gt; 25% です。 |
+| view [0] durationMetric.value |整数 (integer) |trackPageView() で、または startTrackPage() - stopTrackPage() によって、オプションで設定される値。 clientPerformance 値と同じではありません。 |
 | view [0] name |string |ページのタイトル。  最大長 250 |
 | view [0] url |string | |
 | view [0] urlData.base |string | |
@@ -275,13 +271,13 @@ trackPageView() または [stopTrackPage](../../azure-monitor/app/api-custom-eve
 ## <a name="availability"></a>可用性
 [可用性 Web テスト](../../azure-monitor/app/monitor-web-app-availability.md)をレポートします。
 
-| Path | 種類 | メモ |
+| Path | Type | Notes |
 | --- | --- | --- |
-| availability [0] availabilityMetric.name |string |可用性 |
+| availability [0] availabilityMetric.name |string |availability |
 | availability [0] availabilityMetric.value |number |1.0 または 0.0 |
-| availability [0] count |integer |100/([サンプリング](../../azure-monitor/app/sampling.md) レート)。 たとえば、4 =&gt; 25% です。 |
+| availability [0] count |整数 (integer) |100/([サンプリング](../../azure-monitor/app/sampling.md) レート)。 たとえば、4 =&gt; 25% です。 |
 | availability [0] dataSizeMetric.name |string | |
-| availability [0] dataSizeMetric.value |integer | |
+| availability [0] dataSizeMetric.value |整数 (integer) | |
 | availability [0] durationMetric.name |string | |
 | availability [0] durationMetric.value |number |テストの実行時間 1e7==1 秒 |
 | availability [0] message |string |エラーの診断 |
@@ -296,7 +292,7 @@ TrackMetric() によって生成されます。
 
 メトリック値は context.custom.metrics[0] にあります。
 
-例:
+次に例を示します。
 
     {
      "metric": [ ],
@@ -322,7 +318,7 @@ TrackMetric() によって生成されます。
     }
 
 ## <a name="about-metric-values"></a>メトリック値について
-メトリック値は、メトリック レポートでもそれ以外でも、標準オブジェクト構造で報告されます。 例:
+メトリック値は、メトリック レポートでもそれ以外でも、標準オブジェクト構造で報告されます。 次に例を示します。
 
       "durationMetric": {
         "name": "contoso.org",

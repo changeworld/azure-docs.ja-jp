@@ -5,18 +5,17 @@ documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 74ede523c9747de4746fe1854bd1e352eba2f7e3
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: a1b5859341237c1b177ee8deaf636a67f4824948
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148897"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666549"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor データ プラットフォーム
 
@@ -67,7 +66,7 @@ Azure Monitor の分散トレースは、[Application Insights SDK](../app/distr
 
 次の表は、Azure Monitor のメトリックとログを比較しています。
 
-| Attribute  | メトリック | ログ |
+| 属性  | メトリック | ログ |
 |:---|:---|:---|
 | メリット | 軽量であり、アラートなどのリアルタイムに近いシナリオが可能です。 問題の迅速な検出に最適です。 | 豊富な分析クエリ言語を使用して分析されます。 詳細な分析と根本原因の識別に最適です。 |
 | Data | 数値のみ | テキストまたは数値データ |

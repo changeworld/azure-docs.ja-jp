@@ -1,20 +1,18 @@
 ---
 title: Azure Application Insights エージェント API リファレンス
 description: Application Insights エージェント API リファレンス。 Get-ApplicationInsightsMonitoringConfig。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 91e7bcbe79dfde8bbd4011748b40b692015af1c2
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 93ab8f613e5634b2eabe7c02189e223d3dfbb0a8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899744"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671275"
 ---
-# <a name="application-insights-agent-api-get-applicationinsightsmonitoringconfig"></a>Application Insights Agent API: Get-ApplicationInsightsMonitoringConfig
+# <a name="application-insights-agent-api-get-applicationinsightsmonitoringconfig"></a>Application Insights エージェント API:Get-ApplicationInsightsMonitoringConfig
 
 この記事では、[Az.ApplicationMonitor PowerShell モジュール](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)のメンバーであるコマンドレットについて説明します。
 
@@ -31,11 +29,11 @@ ms.locfileid: "72899744"
 PS C:\> Get-ApplicationInsightsMonitoringConfig
 ```
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>パラメーター
 
 必須パラメーターはありません。
 
-## <a name="output"></a>Output
+## <a name="output"></a>出力
 
 
 #### <a name="example-output-from-reading-the-config-file"></a>構成ファイルの読み取りからの出力例
@@ -48,7 +46,7 @@ Filters:
 2)InstrumentationKey: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxdefault AppFilter: .* MachineFilter: .*
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
   テレメトリの表示:
  - パフォーマンスと使用状況を監視するための[メトリックを探索](../../azure-monitor/app/metrics-explorer.md)します。
@@ -62,5 +60,5 @@ Filters:
 - トレースとログの呼び出しを挿入できるように、[Application Insights SDK をコードに追加](../../azure-monitor/app/asp-net.md)します。
  
  Application Insights エージェントをさらに活用する:
- - Application Insights Agent の[トラブルシューティング](status-monitor-v2-troubleshoot.md)を行うには、このガイドを参照してください。
+ - Application Insights エージェントのトラブルシューティングを行う場合は、[こちらのガイド](status-monitor-v2-troubleshoot.md)を使用してください。
  - [Set config](status-monitor-v2-api-set-config.md) コマンドレットを使用して、構成に変更を加えます。

@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor での Linux アプリケーション パフォーマンスの収集 | Microsoft Docs
 description: この記事では、MySQL および Apache HTTP Server のパフォーマンス カウンターを収集するように Linux 用 Log Analytics エージェントを構成するための詳細について説明します。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
-ms.openlocfilehash: 75fd0453534e3a656bb1d8e2940b716dadfdf869
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2fd148dbb85a4fd60fe63d4fb73128bf92dea1d8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75395847"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670561"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Azure Monitor で Linux アプリケーションのパフォーマンス カウンターを収集する 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -71,7 +70,7 @@ MySQL OMI プロバイダーのインストールには、MySQL OMI 認証ファ
 
 次の表は、mycimprovauth を使用するための構文に関する詳細を示しています。
 
-| 操作 | 例 | 説明
+| Operation | 例 | 説明
 |:--|:--|:--|
 | autoupdate *false または true* | mycimprovauth autoupdate false | 再起動または更新で認証ファイルが自動的に更新されるかどうかを設定します。 |
 | default *bind-address username password* | mycimprovauth default 127.0.0.1 root pwd | MySQL OMI 認証ファイル内の既定のインスタンスを設定します。<br>パスワード フィールドは、プレーンテキストで入力してください。MySQL OMI 認証ファイル内のパスワードは Base 64 でエンコードされます。 |

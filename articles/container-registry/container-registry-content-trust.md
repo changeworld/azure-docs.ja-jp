@@ -3,12 +3,12 @@ title: 署名済みのイメージの管理
 description: Azure Container Registry でコンテンツの信頼を有効にし、署名済みのイメージをプッシュしたりプルしたりする方法について説明します。
 ms.topic: article
 ms.date: 09/06/2019
-ms.openlocfilehash: 0418b13c352dc3b81d34501e7e76be6c54615a83
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: ce1e9e5cce0de58703e69df8db14cfbf3ecf04f3
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456459"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249936"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure Container Registry におけるコンテンツの信頼
 
@@ -76,7 +76,7 @@ docker build --disable-content-trust -t myacr.azurecr.io/myimage:v1 .
 
 以降、Azure portal と Azure CLI から `AcrImageSigner` ロールを付与する方法について詳しく説明します。
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 Azure portal でレジストリに移動し、 **[アクセス制御 (IAM)]**  >  **[ロール割り当ての追加]** を選択します。 **[ロール割り当ての追加]** の **[ロール]** で [`AcrImageSigner`] を選択し、ユーザーまたはサービス プリンシパルを**選択**して (複数可)、 **[保存]** を選択します。
 
@@ -99,7 +99,9 @@ az role assignment create --scope <registry ID> --role AcrImageSigner --assignee
 REGISTRY=myregistry
 USER=$(az account show --query user.name --output tsv)
 REGISTRY_ID=$(az acr show --name $REGISTRY --query id --output tsv)
+```
 
+```azurecli
 az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee $USER
 ```
 
@@ -192,7 +194,7 @@ umask 077; tar -zcvf docker_private_keys_backup.tar.gz ~/.docker/trust/private; 
 
 ![Azure portal でレジストリに対するコンテンツの信頼を無効にする][content-trust-03-portal]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * コンテンツの信頼の詳細については、[Docker のコンテンツの信頼][docker-content-trust]に関するページを参照してください。 この記事では要点を絞って説明しましたが、コンテンツの信頼は広範囲に及ぶテーマです。Docker のドキュメントで、さらに踏み込んだ情報を得ることができるでしょう。
 

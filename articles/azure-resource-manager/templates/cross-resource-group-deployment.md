@@ -3,12 +3,12 @@ title: サブスクリプションおよびリソース グループにまたが
 description: デプロイ時に複数の Azure サブスクリプションとリソース グループを対象にする方法について説明します。
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 8f5fbd51456003059f6a32fc32b32194a936434a
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 47573fedd7915d95d6ed98e3fd0aaf840331552b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154212"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250615"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>複数のサブスクリプションまたはリソース グループに Azure リソースをデプロイする
 
@@ -209,7 +209,7 @@ az group deployment create \
 
 次の表は、これらの関数が親と埋め込みのどちらのリソース グループおよびサブスクリプションに解決されるかを示しています。
 
-| テンプレートの種類 | スコープ | 解決策 |
+| テンプレートの種類 | Scope | 解像度 |
 | ------------- | ----- | ---------- |
 | 入れ子        | outer (既定) | 親リソース グループ |
 | 入れ子        | inner | サブ リソース グループ |
@@ -355,7 +355,7 @@ az group deployment create \
 
 前の例からの出力は次のようになります。
 
-```azurecli
+```output
 "outputs": {
   "defaultScopeRG": {
     "type": "String",

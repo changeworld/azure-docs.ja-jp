@@ -3,19 +3,19 @@ title: gitRepo ボリュームをコンテナー グループにマウントす�
 description: gitRepo ボリュームをマウントし、Git リポジトリの複製をコンテナー インスタンスに作成する方法について説明します。
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 708fca185227292e7cdf33952bde6f42b3d4951f
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 405cacd7a1649f95640a8dabf476729e101d03f8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533227"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252085"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Azure Container Instances に gitRepo ボリュームをマウントする
 
 *gitRepo ボリューム*をマウントし、Git リポジトリの複製をコンテナー インスタンスに作成する方法について説明します。
 
 > [!NOTE]
-> *gitRepo* ボリュームのマウントは現在、Linux コンテナーに限定されています。 Microsoft ではすべての機能を Windows コンテナーにも取り入れるように取り組んでいますが、現在のプラットフォームの違いは、[概要](container-instances-overview.md#linux-and-windows-containers)に関するページで確認できます。
+> *gitRepo* ボリュームのマウントは現在、Linux コンテナーに限定されています。 Microsoft ではすべての機能を Windows コンテナーに取り入れるように取り組んでいますが、現在のプラットフォームの違いは、[概要](container-instances-overview.md#linux-and-windows-containers)に関するページで確認できます。
 
 ## <a name="gitrepo-volume"></a>gitRepo ボリューム
 
@@ -48,8 +48,11 @@ az container create \
 
 gitRepo ボリュームがマウントされたことを確認するには、[az container exec][az-container-exec] を使ってコンテナー内のシェルを起動し、ディレクトリを一覧表示します。
 
-```console
-$ az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh
+```azurecli
+az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh
+```
+
+```output
 /usr/src/app # ls -l /mnt/aci-helloworld/
 total 16
 -rw-r--r--    1 root     root           144 Apr 16 16:35 Dockerfile
@@ -82,13 +85,13 @@ Azure Resource Manager テンプレートによるコンテナー インスタ�
 
 たとえば、プライベート GitHub リポジトリの Azure CLI `--gitrepo-url` パラメーターは、次のようになります ("gituser" は GitHub のユーザー名であり、"abcdef1234fdsa4321abcdef" はユーザーの個人用アクセス トークンです)。
 
-```azurecli
+```console
 --gitrepo-url https://gituser:abcdef1234fdsa4321abcdef@github.com/GitUser/some-private-repository
 ```
 
 Azure Repos Git リポジトリの場合、有効な PAT と組み合わせて任意のユーザー名を指定します (次の例のように "azurereposuser" を使用できます)。
 
-```azurecli
+```console
 --gitrepo-url https://azurereposuser:abcdef1234fdsa4321abcdef@dev.azure.com/your-org/_git/some-private-repository
 ```
 
@@ -98,7 +101,7 @@ GitHub:[コマンド ラインに使用する個人用アクセス トークン�
 
 Azure Repos:[アクセスの認証に使用する個人用アクセス トークンを作成する][pat-repos]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Container Instances にその他の種類のボリュームをマウントする方法について学習してください。
 

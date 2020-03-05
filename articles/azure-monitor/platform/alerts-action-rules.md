@@ -1,18 +1,15 @@
 ---
 title: Azure Monitor アラートのアクション ルール
 description: Azure Monitor におけるアクション ルールとはどのようなものか、およびそれを構成して管理する方法を説明します。
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: anantr
-ms.author: robb
 ms.date: 04/25/2019
-ms.openlocfilehash: e9de7a1fe4cee16cd1d22ba764ab9eccdf3979fd
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.subservice: alerts
+ms.openlocfilehash: 42f8d9cd30caa48376cda049f6404aa897a6866c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767689"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668470"
 ---
 # <a name="action-rules-preview"></a>アクション ルール (プレビュー)
 
@@ -54,7 +51,7 @@ Azure Monitor の**アラート** ランディング ページから **[アク�
 
 ![新しいアクション ルールの作成フロー](media/alerts-action-rules/action-rules-new-rule-creation-flow.png)
 
-### <a name="scope"></a>Scope (スコープ)
+### <a name="scope"></a>Scope
 
 最初にスコープ (Azure サブスクリプション、リソース グループ、またはターゲット リソース) を選択します。 また、1 つのサブスクリプション内のスコープの組み合わせを複数選択することもできます。
 
@@ -113,29 +110,29 @@ Azure Monitor の**アラート** ランディング ページから **[アク�
 
 Contoso では、毎週末、サブスクリプション **ContosoSub** 内のすべての VM で、すべての Sev4 アラートの通知を抑制します。
 
-**解決策:** 次のアクション ルールを作成します。
+**解決方法:** 次のアクション ルールを作成します。
 * スコープ = **ContosoSub**
 * フィルター
     * 重大度 = **Sev4**
     * リソースの種類 = **仮想マシン**
 * 繰り返しの抑制、毎週、**土曜日** と **日曜日** をオン
 
-### <a name="scenario-2-suppression-of-alerts-based-on-alert-context-payload"></a>シナリオ 2:アラート コンテキスト (ペイロード) に基づくアラートの抑制
+### <a name="scenario-2-suppression-of-alerts-based-on-alert-context-payload"></a>シナリオ 2: アラート コンテキスト (ペイロード) に基づくアラートの抑制
 
 Contoso では、メンテナンスのため、**ContosoSub** 内の **Computer-01** に対して生成されるすべてのログ アラートに対する通知を無期限に抑制します。
 
-**解決策:** 次のアクション ルールを作成します。
+**解決方法:** 次のアクション ルールを作成します。
 * スコープ = **ContosoSub**
 * フィルター
     * サービスの監視 = **Log Analytics**
     * アラート コンテキスト (ペイロード) に **Computer-01** が含まれる
 * 抑制を **[今すぐ (常に)]** に設定
 
-### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>シナリオ 3:リソース グループで定義されているアクション グループ
+### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>シナリオ 3: リソース グループで定義されているアクション グループ
 
 Contoso は、[1 つのサブスクリプション レベルで 1 つのメトリック アラート](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor)を定義しました。 ただし、リソース グループ **ContosoRG** から生成されるアラート専用にトリガーするアクションを定義したいと考えています。
 
-**解決策:** 次のアクション ルールを作成します。
+**解決方法:** 次のアクション ルールを作成します。
 * スコープ = **ContosoRG**
 * フィルターなし
 * アクション グループを **ContosoActionGroup** に設定
@@ -161,7 +158,7 @@ Contoso は、[1 つのサブスクリプション レベルで 1 つのメト�
 
 ![アクション ルールとログ アラート (結果の数)](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
 ### <a name="while-im-configuring-an-action-rule-id-like-to-see-all-the-possible-overlapping-action-rules-so-that-i-avoid-duplicate-notifications-is-it-possible-to-do-that"></a>アクション ルールを構成するとき、通知の重複を回避するため、重複する可能性のあるすべてのアクション ルールを確認したいのですが、 これを行うことはできますか?
 
@@ -216,6 +213,6 @@ VM1 のすべてのアラートについては、アクション グループ AG
  
 VM1 のすべてのアラートについては、アクション グループ AG1 が 1 回トリガーされます。 警告ルール "rule1" がトリガーされるときは常に、AG2 もさらにトリガーされます。 アクション ルールと警告ルール内で定義されるアクション グループは独立して動作し、重複は除去されません。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure でのアラートについてさらに詳しく学習する](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)

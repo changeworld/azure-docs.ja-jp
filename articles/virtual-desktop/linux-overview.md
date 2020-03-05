@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
-ms.openlocfilehash: 47e38d79e8aa4656b8164c94b4ef439bf431e01d
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: af5ab05cb772909cd36e2e6bfe1c100a5b83841c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049659"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660038"
 ---
 # <a name="linux-support"></a>Linux Support
 
@@ -21,6 +21,9 @@ Windows Virtual Desktop 用の Linux SDK を使用して、スタンドアロン
 ## <a name="what-is-the-linux-sdk"></a>Linux SDK とは
 
 SDK API を使用すると、リソース フィードの取得、デスクトップまたはリモート アプリケーション セッションへの接続、ファースト パーティのクライアントがサポートする多くのリダイレクトの使用を行うことができます。
+
+> [!NOTE]
+> SDK は現在開発中です。 利用できるようになったら、SDK にアクセスする手順をこのドキュメントに含め更新します。
 
 ### <a name="supported-linux-distributions"></a>サポートされている Linux ディストリビューション
 
@@ -54,8 +57,6 @@ Windows Virtual Desktop 用の Linux クライアントを開発する前に、�
 2. 使用可能なファースト パーティのクライアントをテストして、Windows Virtual Desktop のユーザー エクスペリエンスを理解します。
 
 ## <a name="next-steps"></a>次のステップ
-
-SDK は現在開発中です。 利用できるようになったら、SDK にアクセスする手順をこのドキュメントに含め更新します。
 
 次のクライアント用のドキュメントを確認してください。
 

@@ -3,20 +3,20 @@ title: 独自の属性をカスタム ポリシーに追加する
 titleSuffix: Azure AD B2C
 description: 拡張プロパティおよびカスタム属性を使用し、ユーザー インターフェイスにそれらを含めるチュートリアル。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c2361192a612cfd92003b1e3c36e85dbbd9090bb
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: c145b0efa2f1c06710e1d41f606f918a7439820a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482770"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189499"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C:カスタム プロファイル編集ポリシーでカスタム属性を使用する
 
@@ -56,7 +56,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
     * Web アプリケーションの名前: **WebApp-GraphAPI-DirectoryExtensions**。
     * アプリケーションの種類: **Web アプリ/API**。
     * サインオン URL: **https://{tenantName}.onmicrosoft.com/WebApp-GraphAPI-DirectoryExtensions**。
-5. **作成** を選択します。
+5. **［作成］** を選択します
 6. 新しく作成された Web アプリケーションを選択します。
 7. **［設定］**  >  **［必要なアクセス許可］** の順に選択します。
 8. API **Windows Azure Active Directory** を選択します。

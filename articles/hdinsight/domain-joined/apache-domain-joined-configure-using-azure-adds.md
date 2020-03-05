@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 02/03/2020
-ms.openlocfilehash: a3a23e2adb60b2b0fd5f4a5e790990ce2ad85fa9
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: cf239cbf69f3816e5ec03e07e2bd5fe370308f22
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031164"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196860"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>HDInsight での Azure Active Directory Domain Services を使用した Enterprise セキュリティ パッケージの構成
 
@@ -132,4 +132,4 @@ ESP を使用する HDInsight クラスターを作成する場合は、次の�
 ## <a name="next-steps"></a>次のステップ
 
 * Hive ポリシーの構成と Hive クエリの実行については、[ESP を使用した HDInsight クラスター用の Apache Hive ポリシーの構成](apache-domain-joined-run-hive.md)に関する記事を参照してください。
-* SSH と ESP を使用して HDInsight クラスターに接続する方法については、[Linux、Unix、または OS X からの HDInsight 上の Linux ベースの Hadoop での SSH キーの使用](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)に関する記事を参照してください。
+* SSH と ESP を使用して HDInsight クラスターに接続する方法については、[Linux、Unix、または OS X からの HDInsight 上の Linux ベースの Hadoop での SSH キーの使用](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight)に関する記事を参照してください。

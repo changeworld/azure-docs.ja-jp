@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor を使用して Azure リソースを監視する
 description: Azure Monitor で Azure リソースのデータを収集して分析する方法について説明します。
-ms.service: azure-monitor
 ms. subservice: logs
 ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 3081c0f8fa8450643a992c8e82840a44db263f76
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: c4b80e62d3800392b847a411dfc66c3278e72bba
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863980"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661866"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>クイック スタート:Azure Monitor を使用して Azure リソースを監視する
 [Azure Monitor](../overview.md) は、作成された時点から Azure リソースからのデータ収集を開始します。 このクイックスタートでは、リソースについて自動的に収集されるデータを簡単に説明し、特定のリソースの Azure portal でそのデータを表示する方法について説明します。 後で、追加のデータを収集するための構成を追加して Azure Monitor メニューに移動すると、同じツールを使用して、ご利用のサブスクリプション内のすべてのリソースについて収集されたデータにアクセスできます。
@@ -22,7 +21,7 @@ Azure リソースから収集される監視データの詳細な説明につ�
 
 ## <a name="sign-in-to-azure-portal"></a>Azure Portal にサインインする
 
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。 
+Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。 
 
 
 ## <a name="overview-page"></a>[概要] ページ

@@ -3,20 +3,20 @@ title: 暗黙的フローを使用したシングルページ サインイン
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C で OAuth 2.0 暗黙的フローを使用して、シングルページ サインインを追加する方法を学習します。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: efef55ab42313854ab27d323824a76488d520ad1
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 3e77e597fbd33a1f1358ecaa2d2aea3fe075a70f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850598"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187731"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OAuth 2.0 暗黙的フローを使用したシングルページ サインイン
 
@@ -51,7 +51,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &nonce=12345
 ```
 
-| パラメーター | Required | 説明 |
+| パラメーター | 必須 | 説明 |
 | --------- | -------- | ----------- |
 |{tenant}| はい | Azure AD B2C テナントの名前。|
 |{policy}| はい| 実行するユーザー フロー。 Azure AD B2C テナントに作成したユーザー フローの名前を指定します。 例: `b2c_1_sign_in`、`b2c_1_sign_up`、または`b2c_1_edit_profile`。 |
@@ -166,18 +166,18 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 | パラメーター | 必須 | 説明 |
 | --- | --- | --- |
-|{tenant}| Required | Azure AD B2C テナントの名前。|
-{policy}| Required| 実行するユーザー フロー。 Azure AD B2C テナントに作成したユーザー フローの名前を指定します。 例: `b2c_1_sign_in`、`b2c_1_sign_up`、または`b2c_1_edit_profile`。 |
-| client_id |Required |[Azure Portal](https://portal.azure.com) でアプリに割り当てられたアプリケーション ID。 |
-| response_type |Required |OpenID Connect サインインでは、 `id_token` を指定する必要があります。  応答の種類として `token` を含めることもできます。 ここで `token` を使用する場合、アプリは承認エンドポイントへ 2 度目の要求を行うことなく、すぐに承認エンドポイントからアクセス トークンを受け取ることができます。 応答の種類 `token` を使用する場合は、`scope` パラメーターに、トークンを発行するリソースを示すスコープを含める必要があります。 |
+|{tenant}| 必須 | Azure AD B2C テナントの名前。|
+{policy}| 必須| 実行するユーザー フロー。 Azure AD B2C テナントに作成したユーザー フローの名前を指定します。 例: `b2c_1_sign_in`、`b2c_1_sign_up`、または`b2c_1_edit_profile`。 |
+| client_id |必須 |[Azure Portal](https://portal.azure.com) でアプリに割り当てられたアプリケーション ID。 |
+| response_type |必須 |OpenID Connect サインインでは、 `id_token` を指定する必要があります。  応答の種類として `token` を含めることもできます。 ここで `token` を使用する場合、アプリは承認エンドポイントへ 2 度目の要求を行うことなく、すぐに承認エンドポイントからアクセス トークンを受け取ることができます。 応答の種類 `token` を使用する場合は、`scope` パラメーターに、トークンを発行するリソースを示すスコープを含める必要があります。 |
 | redirect_uri |推奨 |アプリのリダイレクト URI。アプリは、この URI で認証応答を送受信することができます。 ポータルで登録したいずれかのリダイレクト URI と完全に一致させる必要があります (ただし、URL エンコードが必要)。 |
-| scope |Required |スコープのスペース区切りリスト。  トークンを取得するには、意図したリソースに必要なすべてのスコープを含めます。 |
+| scope |必須 |スコープのスペース区切りリスト。  トークンを取得するには、意図したリソースに必要なすべてのスコープを含めます。 |
 | response_mode |推奨 |結果として得られたトークンをアプリに返す際に使用するメソッドを指定します。 暗黙的フローの場合は `fragment` を使用します。 他の 2 つのモード (`query` と `form_post`) を指定することはできますが、暗黙的フローでは機能しません。 |
 | state |推奨 |要求に含まれ、トークンの応答として返される値。  使用したい任意の内容の文字列を指定できます。  通常、クロスサイト リクエスト フォージェリ攻撃を防ぐために、ランダムに生成された一意の値が使用されます。  この状態は、認証要求の前にアプリ内のユーザーの状態に関する情報をエンコードする目的にも使用されます。 たとえば、ユーザーがいるページまたはビューです。 |
-| nonce |Required |要求に追加する (アプリによって生成された) 値。この値が、最終的な ID トークンに要求として追加されます。  アプリでこの値を確認することにより、トークン再生攻撃を緩和することができます。 通常この値は、要求の送信元を特定する、ランダム化された一意の文字列です。 |
-| prompt |Required |非表示の iframe のトークンを更新および取得するには、`prompt=none` を使用して、iframe がサインイン ページに停滞せずにすぐに応答できるようにします。 |
-| login_hint |Required |非表示の iframe のトークンを更新および取得するには、ある時点でそのユーザーが持っている可能性がある複数のセッションを区別できるように、このヒントにそのユーザーのユーザー名を含めます。 `preferred_username` 要求を使って、以前のサインインからユーザー名を抽出できます (`preferred_username` 要求を受け取るには、`profile` スコープが必要です)。 |
-| domain_hint |Required |`consumers` または `organizations` を指定できます。  非表示の iframe のトークンを更新および取得するには、要求に `domain_hint` 値を含めます。  使用する値を決定するには、以前のサインイン時の ID トークンから `tid` 要求を抽出します (`tid` 要求を受け取るには、`profile` スコープが必要です)。 `tid` 要求の値が `9188040d-6c67-4c5b-b112-36a304b66dad` の場合、`domain_hint=consumers` を使用します。  それ以外の場合は、 `domain_hint=organizations`を指定します。 |
+| nonce |必須 |要求に追加する (アプリによって生成された) 値。この値が、最終的な ID トークンに要求として追加されます。  アプリでこの値を確認することにより、トークン再生攻撃を緩和することができます。 通常この値は、要求の送信元を特定する、ランダム化された一意の文字列です。 |
+| prompt |必須 |非表示の iframe のトークンを更新および取得するには、`prompt=none` を使用して、iframe がサインイン ページに停滞せずにすぐに応答できるようにします。 |
+| login_hint |必須 |非表示の iframe のトークンを更新および取得するには、ある時点でそのユーザーが持っている可能性がある複数のセッションを区別できるように、このヒントにそのユーザーのユーザー名を含めます。 `preferred_username` 要求を使って、以前のサインインからユーザー名を抽出できます (`preferred_username` 要求を受け取るには、`profile` スコープが必要です)。 |
+| domain_hint |必須 |`consumers` または `organizations` を指定できます。  非表示の iframe のトークンを更新および取得するには、要求に `domain_hint` 値を含めます。  使用する値を決定するには、以前のサインイン時の ID トークンから `tid` 要求を抽出します (`tid` 要求を受け取るには、`profile` スコープが必要です)。 `tid` 要求の値が `9188040d-6c67-4c5b-b112-36a304b66dad` の場合、`domain_hint=consumers` を使用します。  それ以外の場合は、 `domain_hint=organizations`を指定します。 |
 
 `prompt=none` パラメーターを設定することによって、この要求はすぐに成功または失敗のいずれかになり、アプリケーションに戻ります。  成功すると、`response_mode` パラメーターで指定された方法を使用して、指定されたリダイレクト URI でアプリに応答が送信されます。
 
@@ -229,7 +229,7 @@ ID トークンとアクセス トークンは、どちらも短時間で期限�
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 
-| パラメーター | Required | 説明 |
+| パラメーター | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | {tenant} | はい | Azure AD B2C テナントの名前。 |
 | {policy} | はい | ご利用のアプリケーションからユーザーをサインアウトさせるために使用するユーザー フロー。 |

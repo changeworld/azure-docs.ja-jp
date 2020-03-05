@@ -1,18 +1,16 @@
 ---
 title: Azure Application Insights エージェント API リファレンス
 description: Application Insights エージェント API リファレンス。 Disable-ApplicationInsightsMonitoring。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: e30b9757600bbc4a9baf3db00534e3457a6574a5
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 0678186012678a68fa80a23685f8b346c8c5b859
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899769"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671292"
 ---
 # <a name="application-insights-agent-api-disable-applicationinsightsmonitoring"></a>Application Insights エージェント API:Disable-ApplicationInsightsMonitoring
 
@@ -32,12 +30,12 @@ ms.locfileid: "72899769"
 PS C:\> Disable-ApplicationInsightsMonitoring
 ```
 
-## <a name="parameters"></a>parameters 
+## <a name="parameters"></a>パラメーター 
 
 ### <a name="-verbose"></a>-Verbose
 **共通パラメーター。** 詳細なログを表示するにはこのスイッチを使用します。
 
-## <a name="output"></a>Output
+## <a name="output"></a>出力
 
 
 #### <a name="example-output-from-successfully-disabling-monitoring"></a>正常に監視を無効にした場合の出力例
@@ -64,7 +62,7 @@ Successfully disabled Application Insights Status Monitor
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
  Application Insights エージェントをさらに活用する:
  - Application Insights エージェントのトラブルシューティングを行う場合は、[こちらのガイド](status-monitor-v2-troubleshoot.md)を使用してください。

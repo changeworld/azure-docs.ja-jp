@@ -3,20 +3,20 @@ title: カスタム ポリシーの文字列要求変換の例
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C の Identity Experience Framework (IEF) スキーマの文字列要求変換の例
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/24/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e220009ec04ce732d99a53432077d681707e28d1
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 678385d9ed16a9821fc61be476e7eb9eaf6fd4f1
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585732"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183705"
 ---
 # <a name="string-claims-transformations"></a>文字列要求変換
 
@@ -117,7 +117,7 @@ ms.locfileid: "77585732"
 - 入力要求:
   - **email**: SomeOne@contoso.com
 - 入力パラメーター:
-    - **toCase**:[LOWER]
+    - **toCase**:LOWER
 - 出力要求:
   - **email**: someone@contoso.com
 
@@ -363,7 +363,7 @@ ms.locfileid: "77585732"
 - 出力要求:
     - **outputClaim**:Joe Fernando
 
-## <a name="getlocalizedstringstransformation"></a>GetLocalizedStringsTransformation 
+## <a name="getlocalizedstringstransformation"></a>GetLocalizedStringsTransformation
 
 ローカライズされた文字列を要求にコピーします。
 
@@ -428,9 +428,9 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 
 - 出力要求:
   - **subject**: Contoso アカウントの電子メール確認コード
-  - **message**:アカウントの確認が完了しました! 
-  - **codeIntro**:お客様のコード 
-  - **signature**:ご利用ありがとうございます  
+  - **message**:アカウントの確認が完了しました!
+  - **codeIntro**:お客様のコード
+  - **signature**:ご利用ありがとうございます
 
 
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
@@ -618,7 +618,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 | OutputClaim | outputClaim | string | 正規表現が一致する場合は、この出力要求に `outputClaimIfMatched` 入力パラメーターの値が含まれます。 一致するものがない場合は null になります。 |
 | OutputClaim | regexCompareResultClaim | boolean | 正規表現で結果の出力要求の種類が照合されます。これは照合の結果に基づいて、`true` または `false` として設定されます。 |
 
-たとえば、電話番号の正規表現パターンに基づいて、指定された電話番号が有効かどうかをチェックします。  
+たとえば、電話番号の正規表現パターンに基づいて、指定された電話番号が有効かどうかをチェックします。
 
 ```XML
 <ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="setClaimsIfRegexMatch">
@@ -755,7 +755,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 この要求変換は、文字列要求の種類に substring が含まれているかどうかをチェックする場合に使用します。 次の例では、`roles` 文字列要求の種類に **admin** の値が含まれているかどうかをチェックしています。
 
 ```XML
-<ClaimsTransformation Id="CheckIsAdmin" TransformationMethod="StringContains"> 
+<ClaimsTransformation Id="CheckIsAdmin" TransformationMethod="StringContains">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
   </InputClaims>
@@ -765,7 +765,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
   </InputParameters>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="isAdmin" TransformationClaimType="outputClaim"/>
-  </OutputClaims>         
+  </OutputClaims>
 </ClaimsTransformation>
 ```
 
@@ -777,7 +777,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
     - **contains**: "admin,"
     - **ignoreCase**: true
 - 出力要求:
-    - **outputClaim**: true 
+    - **outputClaim**: true
 
 ## <a name="stringsubstring"></a>StringSubstring
 
@@ -790,7 +790,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 | InputParameter | length | INT | substring の文字数。 |
 | OutputClaim | outputClaim | boolean | このインスタンスの startIndex から始まる長さの substring と等価な文字列。startIndex がこのインスタンスの長さと等しく、length がゼロの場合は空になります。 |
 
-たとえば、電話番号の国のプレフィックスを取得します。  
+たとえば、電話番号の国のプレフィックスを取得します。
 
 
 ```XML
@@ -828,7 +828,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 | InputParameter | newValue | string | 出現するすべての `oldValue` を置換する文字列 |
 | OutputClaim | outputClaim | boolean | oldValue のすべてのインスタンスが newValue で置き換えられることを除いて、現在の文字列と等価な文字列。 oldValue が現在のインスタンス内に見つからない場合、メソッドにより現在のインスタンスが変更せずに返されます。 |
 
-たとえば、電話番号の `-` 文字が削除されて正規化されます  
+たとえば、電話番号の `-` 文字が削除されて正規化されます
 
 
 ```XML
@@ -864,7 +864,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 | InputClaim | inputClaim | stringCollection | 連結する文字列を格納しているコレクション。 |
 | InputParameter | delimiter | string | 区切り記号として使用する文字列 (コンマ `,` など)。 |
 | OutputClaim | outputClaim | string | `inputClaim` 文字列コレクションのメンバーからなる、`delimiter` 入力パラメーターで区切られた文字列。 |
-  
+
 次の例では、ユーザー ロールの文字列コレクションが取得され、それがコンマ区切り文字列に変換されています。 このメソッドを使用して、Azure AD ユーザー アカウントに文字列コレクションを格納することができます。 後でディレクトリからアカウントを読み取るときに、`StringSplit` を使用してコンマ区切り文字列を文字列コレクションに戻します。
 
 ```XML
@@ -900,7 +900,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
 | InputClaim | inputClaim | string | 分割する substring を含む文字列要求の種類。 |
 | InputParameter | delimiter | string | 区切り記号として使用する文字列 (コンマ `,` など)。 |
 | OutputClaim | outputClaim | stringCollection | `delimiter` 入力パラメーターで区切られた文字列の要素に substring を格納する文字列コレクション。 |
-  
+
 次の例では、ユーザー ロールのコンマ区切り文字列が取得され、それが文字列コレクションに変換されています。
 
 ```XML
@@ -925,7 +925,7 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
   - **delimiter**: ","
 - 出力要求:
   - **outputClaim**: [ "Admin", "Author", "Reader" ]
-  
+
 ## <a name="string-claim-transformations-expressions"></a>文字列要求変換式
 Azure AD B2C のカスタム ポリシーにおける要求変換式は、テナント ID と技術プロファイル ID についてのコンテキスト情報を提供します。
 

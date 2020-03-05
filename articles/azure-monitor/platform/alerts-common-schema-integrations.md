@@ -1,18 +1,15 @@
 ---
 title: 共通アラート スキーマを Logic Apps と統合する方法
 description: 共通アラートのスキーマを利用してすべてのアラートを処理するロジック アプリを作成する方法について説明します。
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: ananthradhakrishnan
-ms.author: robb
+ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: 50a6067d271ad824f17df1ece36c3dd919c7b55b
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9042ed8ddbb698192e638fa7538f74561574c262
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555655"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668232"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>共通アラート スキーマを Logic Apps と統合する方法
 
@@ -138,7 +135,7 @@ ms.locfileid: "72555655"
     
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [アクション グループについて学習します](../../azure-monitor/platform/action-groups.md)。
 * [共通アラート スキーマについて学習します](https://aka.ms/commonAlertSchemaDocs)。

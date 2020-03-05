@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor for Storage (プレビュー) で Azure Storage サービスを監視する | Microsoft Docs
 description: この記事では、ストレージ管理者が Azure Storage アカウントのパフォーマンスと使用状況の問題をすばやく把握できる Azure Monitor for Storage の機能について説明します。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/15/2019
-ms.openlocfilehash: 790d6ad9fb26253697ea36b402799d3eb488ca47
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f23be7e764ad180a23c76abb7f9bb2218fd61e4c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401129"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662521"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Azure Monitor for Storage (プレビュー) でストレージ サービスを監視する
 
@@ -47,7 +46,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 
 所有するすべてのサブスクリプションのストレージ アカウントの使用状況と可用性を確認するには、次の手順のようにします。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. Azure portal の左側のウィンドウで **[モニター]** を選択し、 **[分析情報]** セクションの **[ストレージ アカウント (プレビュー)]** を選択します。
 

@@ -1,14 +1,17 @@
 ---
 title: Java 関数を Azure Storage に接続する
 description: Queue storage の出力バインドを使用して、HTTP によってトリガーされる Java 関数を Azure Storage に接続する方法を学習します。
+author: KarlErickson
+ms.author: karler
 ms.date: 10/14/2019
 ms.topic: quickstart
-ms.openlocfilehash: 72e3aad15ea8ef922d89a67891e223b65473b909
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+zone_pivot_groups: java-build-tools-set
+ms.openlocfilehash: 8ae69bfa7ed00e310205332e05c071158c5fc9a3
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198549"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272803"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>Java 関数を Azure Storage に接続する
 
@@ -112,10 +115,19 @@ final HttpResponseMessage ret = new Function().run(req, msg, context);
 
 前と同様に、次のコマンドを使用してプロジェクトをビルドし、Functions ランタイムをローカルで起動します。
 
+::: zone pivot="java-build-tools-maven"  
 ```bash
 mvn clean package 
 mvn azure-functions:run
 ```
+::: zone-end
+
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle jar --info
+gradle azureFunctionsRun
+```
+::: zone-end
 
 > [!NOTE]  
 > host.json で拡張バンドルを有効にしていたため、スタートアップ時に[ストレージ バインド拡張機能](functions-bindings-storage-blob.md#add-to-your-functions-app)が他の Microsoft バインド拡張機能と共に自動的にダウンロードされ、インストールされました。
@@ -138,9 +150,17 @@ curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 
 公開したアプリを更新するには、次のコマンドを再度実行します。  
 
-```azurecli
+::: zone pivot="java-build-tools-maven"  
+```bash
 mvn azure-functions:deploy
 ```
+::: zone-end
+
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle azureFunctionsDeploy
+```
+::: zone-end
 
 ここでも、cURL を使用して、デプロイした関数をテストすることができます。 前と同様に、次の例のように、POST 要求の本文で値 `AzureFunctions` を URL に渡します。
 

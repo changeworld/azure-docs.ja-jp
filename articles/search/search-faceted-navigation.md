@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 927f57ae3ca90f5701791022b68c4bf0d91d4e7d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 4008779f0ec16bcaf6b995cf7f33d15a8f1e5665
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112086"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190655"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Azure Cognitive Search へのファセット ナビゲーションの実装方法
 
@@ -34,11 +34,11 @@ ms.locfileid: "74112086"
 ## <a name="sample-code-and-demo"></a>サンプル コードとデモ
 この記事では、例としてジョブ検索ポータルを使用します。 この例は、ASP.NET MVC アプリケーションとして実装されます。
 
--   [Azure Cognitive Search ジョブ ポータル デモ](https://azjobsdemo.azurewebsites.net/)に関するページにある実際に使用可能なデモをオンラインで参照し、テストしてください。
+- [Azure Cognitive Search ジョブ ポータル デモ](http://azjobsdemo.azurewebsites.net/)に関するページにある実際に使用可能なデモをオンラインで参照し、テストしてください。
 
--   [GitHub の Azure 用サンプル リポジトリ](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)からコードをダウンロードします。
+- [GitHub の Azure 用サンプル リポジトリ](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)からコードをダウンロードします。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 初めて検索機能を開発する場合、ファセット ナビゲーションは自律的な検索機能の可能性を体現していると考えるのが最も適切です。 ファセット ナビゲーションは、定義済みのフィルターに基づくドリルダウン検索エクスペリエンスの一種であり、ポイント アンド クリック操作によって検索結果をすばやく絞り込むために使用されます。 
 
 ### <a name="interaction-model"></a>対話モデル

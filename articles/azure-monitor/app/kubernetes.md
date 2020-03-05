@@ -1,18 +1,16 @@
 ---
 title: Application Insights を使用して Azure Kubernetes Service (AKS) またはその他の Kubernetes でホストされたアプリケーション - Azure Monitor | Microsoft Docs
 description: Azure Monitor では、Kubernetes クラスター上でサービス メッシュ技術である Istio を利用して、Kubernetes でホストされているアプリケーションに対してアプリケーションの監視を提供しています。 これにより、クラスター内で実行されるポッドでの受信および送信要求に関する Application Insights テレメトリを収集できます。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: a7821db85d4218cbccb6c10f12ecbc624f2702fe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 15c75d4add9615df6c42aa6121557659e54354d0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432518"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666788"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Kubernetes でホストされるアプリケーションに対するゼロ インストルメンテーション アプリケーション監視
 

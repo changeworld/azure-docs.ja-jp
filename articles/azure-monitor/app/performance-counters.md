@@ -1,18 +1,14 @@
 ---
 title: Application Insights のパフォーマンス カウンター | Microsoft Docs
 description: Application Insights でシステムとカスタムの .NET パフォーマンス カウンターを監視します。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 12/13/2018
-ms.openlocfilehash: d313fed6a61ac98e596e6f8caca8f0e46a8c9600
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 94d2520c17867f6d70caffd002a76365a425986f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689074"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669881"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights のシステム パフォーマンス カウンター
 
@@ -150,7 +146,7 @@ ASP.NET Core でのパフォーマンス カウンターのサポートは制限
 * .NET Framework を対象とするアプリケーションの場合、すべてのバージョンの SDK でパフォーマンス カウンターがサポートされます。
 * SDK バージョン 2.8.0 以降では、Linux の CPU/メモリ カウンターがサポートされます。 Linux では、その他のカウンターはサポートされません。 Linux (およびその他の非 Windows 環境) でシステム カウンターを取得するには、[EventCounter](eventcounters.md) を使用することをお勧めします。
 
-## <a name="alerts"></a>アラート
+## <a name="alerts"></a>警告
 他のメトリックと同様に、パフォーマンス カウンターが指定した制限を超えた場合に警告する[アラートを設定](../../azure-monitor/app/alerts.md)できます。 [アラート] ウィンドウを開き、[アラートの追加] をクリックします。
 
 ## <a name="next"></a>次のステップ

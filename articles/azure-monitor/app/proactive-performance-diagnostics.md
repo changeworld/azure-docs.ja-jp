@@ -1,19 +1,15 @@
 ---
 title: スマート検出 - パフォーマンスの異常 |Microsoft Docs
 description: Application Insights は、アプリのテレメトリの高度な分析を実行し、潜在的なパフォーマンスの問題について警告します。 この機能には設定は不要です。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: b9a95bb2ee6ab137e974b46e24738ca5194f3bd2
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 3d8de08605d3dd693eb74a84a29c2efa6cad669a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820573"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671734"
 ---
 # <a name="smart-detection---performance-anomalies"></a>スマート検出 - パフォーマンスの異常
 
@@ -51,7 +47,7 @@ Application Insights は、アプリケーションのパフォーマンスの�
 
 
 
-## <a name="configure-email-notifications"></a>電子メール通知の構成
+## <a name="configure-email-notifications"></a>電子メール通知を構成する
 
 スマート検出による通知は既定で有効になっており、Application Insights リソースが存在するサブスクリプションへの[監視閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)および[監視共同作業者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)のアクセス権を持つ人に送信されます。 これを変更するには、電子メール通知の **[構成]** をクリックするか、または Application Insights で [スマート検出の設定] を開きます。 
   
@@ -61,10 +57,10 @@ Application Insights は、アプリケーションのパフォーマンスの�
 
 スマート検出のパフォーマンスの異常に関する電子メールは、Application Insights リソースごとに 1 日 1 通に制限されます。 この電子メールは、その日に検出された新しい問題が 1 つ以上ある場合にのみ送信されます。 どのメッセージも繰り返し送信されることはありません。 
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
 * *私のデータは Microsoft のスタッフに見られますか。*
-  * No. サービスは完全に自動化されています。 通知を受け取るだけです。 ユーザーのデータは [プライベート](../../azure-monitor/app/data-retention-privacy.md)です。
+  * いいえ。 サービスは完全に自動化されています。 通知を受け取るだけです。 ユーザーのデータは [プライベート](../../azure-monitor/app/data-retention-privacy.md)です。
 * *Application Insights によって収集されたすべてのデータが分析されるのですか。*
   * 現時点ではすべてではありません。 現在は、要求の応答時間、依存関係の応答時間、およびページの読み込み時間が分析されます。 その他のメトリックの分析も行われる予定です。
 
@@ -80,7 +76,7 @@ Application Insights は、アプリケーションのパフォーマンスの�
 
   * 前日 (UTC タイム ゾーンにおける終日) のテレメトリの分析が毎日実行されます。
 * *これにより、[メトリック アラート](../../azure-monitor/app/alerts.md)が置き換えられるのですか。*
-  * No.  異常と見なされる可能性のあるすべての動作を検出することを確約しているわけではありません。
+  * いいえ。  異常と見なされる可能性のあるすべての動作を検出することを確約しているわけではありません。
 
 
 * *通知に応答して何も行わない場合は、リマインダーが受信されますか*
@@ -174,10 +170,10 @@ Application Insights は、一部のユーザーにのみ影響する、また�
 
 時間の範囲とフィルターを変更して、テレメトリを調べます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これらの診断ツールを使用すると、アプリからテレメトリを調査できます。
 
-* [プロファイラー](profiler.md) 
+* [Profiler](profiler.md) 
 * [スナップショット デバッガー](../../azure-monitor/app/snapshot-debugger.md)
 * [Analytics](../../azure-monitor/log-query/get-started-portal.md)
 * [Analytics Smart Diagnostics](../../azure-monitor/app/analytics.md)

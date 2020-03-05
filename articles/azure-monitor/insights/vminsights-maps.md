@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor for VMs (プレビュー) を使用してアプリの依存関係を表示する
 description: マップは、Azure Monitor for VMs の機能です。 Windows および Linux システム上のアプリケーション コンポーネントが自動的に検出されて、サービス間の通信がマップされます。 この記事では、さまざまなシナリオでマップ機能を使用する方法について詳しく説明します。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: d91c4f7c3abdb06bfe0116e0fadf67c5b7a7a394
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cbdcd5cc8fa9475febd338f94f8b6fe1cb2fe406
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450719"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670748"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-preview-to-understand-application-components"></a>Azure Monitor for VMs (プレビュー) のマップ機能を使用してアプリケーション コンポーネントを把握する
 Azure Monitor for VMs では、Azure またはお客様の環境で実行する Windows および Linux 仮想マシン (VM) で検出されたアプリケーション コンポーネントを確認できます。 VM を確認する方法は 2 つあります。 VM から直接マップを表示するか、または Azure Monitor から、VM グループのコンポーネントを表すマップを表示します。 この記事は、これら 2 つの表示方法とマップ機能の使用方法を理解するうえで役立ちます。 
@@ -20,7 +19,7 @@ Azure Monitor for VMs では、Azure またはお客様の環境で実行する 
 Azure Monitor for VMs の構成については、[Azure Monitor for VMs の有効化](vminsights-enable-overview.md)に関する記事をご覧ください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
-[Azure portal](https://portal.azure.com) にサインインする
+[Azure portal](https://portal.azure.com) にサインインします。
 
 ## <a name="introduction-to-the-map-experience"></a>マップ エクスペリエンスの概要
 マップ エクスペリエンスについて学習する前に、マップの表示方法と、マップでどのように情報が視覚化されるかについて理解する必要があります。 マップ機能を VM から直接選択しても、Azure Monitor から選択しても、マップの表示に関して一貫したエクスペリエンスが得られます。 唯一の違いは、Azure Monitor から選択すると、多層アプリケーションまたはクラスターのすべてのメンバーが 1 つのマップに表示されることです。

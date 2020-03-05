@@ -3,20 +3,20 @@ title: カスタム ポリシーで JWT 発行者用の技術プロファイル�
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C 内のカスタム ポリシーで JSON Web トークン (JWT) 発行者用の技術プロファイルを定義します。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 10/30/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f0adbac14c2ae886bc002ae56ab0784b608d1e5d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: fa6da347289a12867a2416dea16631ba4758832f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841984"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187476"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで JWT トークン発行者用の技術プロファイルを定義する
 
@@ -45,7 +45,7 @@ Azure Active Directory B2C (Azure AD B2C) は、各認証フローを処理す�
 
 ## <a name="metadata"></a>Metadata
 
-| Attribute | Required | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | issuer_refresh_token_user_identity_claim_type | はい | OAuth2 認証コードと更新トークン内で、ユーザー ID の要求として使用されることになる要求。 既定では、別の SubjectNamingInfo 要求タイプを指定しない限り、`objectId` に設定するようにしてください。 |
 | SendTokenResponseBodyWithJsonNumbers | いいえ | 常に `true` に設定します。 数値が JSON 番号の代わりに文字列として指定されているレガシー形式の場合は、`false` に設定します。 この属性は、文字列などのプロパティを返す以前の実装に依存しているクライアントに必要です。 |
@@ -61,7 +61,7 @@ Azure Active Directory B2C (Azure AD B2C) は、各認証フローを処理す�
 
 CryptographicKeys 要素には次の属性が存在します。
 
-| Attribute | Required | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | issuer_secret | はい | JWT トークンを署名するために使用する X509 証明書 (RSA キー セット)。 これは、「[カスタム ポリシー作業の開始](custom-policy-get-started.md)」で構成した `B2C_1A_TokenSigningKeyContainer` キーです。 |
 | issuer_refresh_token_key | はい | 更新トークンを暗号化するために使用する X509 証明書 (RSA キー セット)。 「[カスタム ポリシー作業の開始](custom-policy-get-started.md)」で `B2C_1A_TokenEncryptionKeyContainer` キーを構成しました。 |

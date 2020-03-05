@@ -3,20 +3,20 @@ title: カスタム ポリシーを使ってリソース所有者のパスワー
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C 上で、カスタム ポリシーを使用して、リソース所有者のパスワード資格情報 (ROPC) フローを構成する方法について説明します。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: marsma
+ms.date: 02/27/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 95601735064451a91530907e5e6b59f579ff0e28
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 55b4750d2c601a4d3c66bcd8235a9718d6daaf9d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840266"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187003"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>カスタム ポリシーを使用して Azure Active Directory B2C でリソース所有者パスワード資格情報フローを構成する
 
@@ -24,17 +24,7 @@ ms.locfileid: "76840266"
 
 Azure Active Directory B2C (Azure AD B2C) では、リソース所有者パスワード資格情報 (ROPC) フローが OAuth の標準的な認証フローです。 このフローでは、アプリケーション (証明書利用者とも呼ばれます) によって有効な資格情報がトークンと交換されます。 資格情報には、ユーザー ID とパスワードが含まれます。 返されるトークンは、ID トークン、アクセス トークン、および更新トークンです。
 
-ROPC フローでは次のオプションがサポートされています。
-
-- **ネイティブ クライアント** - ユーザー側のデバイスでコードが実行されると、認証の間にユーザー操作が発生します。
-- **パブリック クライアント フロー** - アプリケーションによって収集されたユーザーの資格情報のみが、API 呼び出しで送信されます。 アプリケーションの資格情報は送信されません。
-- **新しい要求の追加** - 新しい要求を追加するために、ID トークンの内容を変更することができます。
-
-次のフローはサポートされていません。
-
-- **サーバー対サーバー** - ID 保護システムでは、対話の一環として、呼び出し元 (ネイティブ クライアント) から収集された信頼できる IP アドレスが必要です。 サーバー側の API 呼び出しでは、サーバーの IP アドレスのみが使用されます。 サインインの失敗が多すぎる場合、ID 保護システムでは繰り返される IP アドレスが攻撃者として調査される可能性があります。
-- **シングル ページ アプリケーション** - 主に JavaScript で記述されたフロントエンド アプリケーションです。 多くの場合、アプリケーションは AngularJS、Ember.js、Durandal.js などのフレームワークを使用して記述されます。
-- **機密性の高いクライアント フロー** - アプリケーションのクライアント ID は検証されますが、アプリケーションのシークレットは検証されません。
+[!INCLUDE [active-directory-b2c-ropc-notes](../../includes/active-directory-b2c-ropc-notes.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -264,8 +254,8 @@ ROPC フローでは次のオプションがサポートされています。
 | Key | Value |
 | --- | ----- |
 | username | `user-account` |
-| パスワード | `password1` |
-| grant_type | パスワード |
+| password | `password1` |
+| grant_type | password |
 | scope | openid `application-id` offline_access |
 | client_id | `application-id` |
 | response_type | token id_token |

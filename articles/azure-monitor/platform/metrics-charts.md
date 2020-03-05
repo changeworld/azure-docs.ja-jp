@@ -3,17 +3,16 @@ title: Azure メトリックス エクスプローラーの高度な機能
 description: Azure メトリックス エクスプローラーの高度な機能について説明します
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 67e4281b24a7489cf202d82bdddbe99992aac095
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c754f33ab5f4346413b6603ca2cd404acac5443f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60256779"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662402"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Azure メトリックス エクスプローラーの高度な機能
 
@@ -77,7 +76,7 @@ ms.locfileid: "60256779"
 
 メトリックをディメンションによって分割し、メトリックの異なるセグメントの比較を視覚化して、ディメンションの値が異常なセグメントを識別できます。
 
-### <a name="apply-splitting"></a>分割を適用する
+### <a name="apply-splitting"></a>[Apply splitting]\(分割の適用\)
 
 1. グラフの上の **[Apply splitting]\(分割の適用\)** をクリックします。
  
@@ -146,7 +145,7 @@ Y 軸の範囲を制御するには、 グラフの […] メニューを使用�
 
 * メトリックで定義されていないプロパティでグラフをセグメント化すると、グラフに何も表示されなくなります。 セグメント化 (分割) を削除するか、別のプロパティを選択してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
   [カスタム KPI ダッシュボードの作成](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-dashboards)に関する記事で、メトリックを使用した実用的なダッシュボードを作成するためのベスト プラクティスを確認します。
 

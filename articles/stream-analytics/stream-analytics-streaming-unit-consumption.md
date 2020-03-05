@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/28/2019
-ms.openlocfilehash: dd7579c97e2166e2822ee5674bbcd5a8ad64d2c7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 02/27/2020
+ms.openlocfilehash: 397e455c8b6a1097e2a32473036e1acd2bbdf2eb
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201494"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921149"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>ストリーミング ユニットの理解と調整
 
@@ -32,7 +32,7 @@ SU 使用率 (%) メトリックはワークロードのメモリ消費量を表
     ![Azure Portal での Stream Analytics ジョブの構成][img.stream.analytics.preview.portal.settings.scale]
     
 4. スライダーを使用してジョブの SU 数を設定します。 特定の SU 設定に限定されることに注意してください。 
-5. ジョブが実行されている場合でも、それに割り当てられている SU の数を変更することができます。 ジョブで[パーティション分割されていない出力](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#query-using-non-partitioned-output)を使用している場合、または[異なる PARTITION BY 値を使用する複数ステップのクエリ](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#multi-step-query-with-different-partition-by-values)がある場合は、これを行うことはできません。 ジョブの実行時にこの設定を変更するには、ジョブに少なくとも 6 つの SU が必要です。 ジョブを実行している場合、SU 値のセットからの選択に限られる可能性があります。 
+5. ジョブが実行されている場合でも、それに割り当てられている SU の数を変更することができます。 ジョブで[パーティション分割されていない出力](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#query-using-non-partitioned-output)を使用している場合、または[異なる PARTITION BY 値を使用する複数ステップのクエリ](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#multi-step-query-with-different-partition-by-values)がある場合は、これを行うことはできません。 ジョブを実行している場合、SU 値のセットからの選択に限られる可能性があります。 
 
 ## <a name="monitor-job-performance"></a>ジョブのパフォーマンスを監視する
 Azure Portal を使用して、ジョブのスループットを追跡できます。

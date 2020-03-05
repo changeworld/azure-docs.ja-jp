@@ -1,14 +1,14 @@
 ---
 title: 制限と境界 - QnA Maker
 description: QnA Maker には、ナレッジ ベースとサービスの一部について、メタデータの制限があります。 テストして発行するためには、これらの制限内にナレッジ ベースを維持することが重要です。
-ms.topic: article
+ms.topic: reference
 ms.date: 02/14/2020
-ms.openlocfilehash: ba53513f21cfc2a4f16fe17decdf0df41570201c
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 6375a6c6efc0c7016d9947e04e9479385aa80af5
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650369"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273350"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker ナレッジ ベースの制限と境界
 
@@ -84,20 +84,20 @@ URL ページから QnA を抽出するためにクロールできるディー�
 * メタデータ値でサポートされる文字: `:` と `|` を除くすべての文字
 * ファイル名の長さ: 200
 * サポートされるファイル形式: ".tsv"、".pdf"、".txt"、".docx"、".xlsx"
-* 代替の質問の最大数: 300
+* 代替の質問の最大数: 該当なし
 * 質問と回答のペアの最大数: 選択した **[Azure Cognitive Search レベル](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)** によって異なります。 質問と回答のペアは、Azure Cognitive Search インデックスのドキュメントにマップされます。
 * URL/HTML ページ: 100 万文字
 
 ## <a name="create-knowledge-base-call-limits"></a>ナレッジ ベースの作成の呼び出しの制限
 これらは、ナレッジ ベース作成操作 (つまり、 *[KB を作成する]* のクリック、または CreateKnowledgeBase API の呼び出し) ごとの制限を表します。
-* 回答ごとの代替の質問の最大数: 300
+* 回答ごとの代替の質問の最大数: 該当なし
 * URL の最大数: 10
 * ファイルの最大数: 10
 
 ## <a name="update-knowledge-base-call-limits"></a>ナレッジ ベースの更新の呼び出しの制限
 これらは、更新操作 (つまり、 *[Save and train]\(保存してトレーニング\)* のクリック、または UpdateKnowledgeBase API の呼び出し) ごとの制限を表します。
-* 各ソース名の長さ: 300
-* 追加または削除される代替の質問の最大数: 300
+* 各ソース名の長さ: 該当なし
+* 追加または削除される代替の質問の最大数: 該当なし
 * 追加または削除されるメタデータ フィールドの最大数: 10
 * 更新可能な URL の最大数: 5
 

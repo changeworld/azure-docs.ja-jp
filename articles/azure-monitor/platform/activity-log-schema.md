@@ -3,17 +3,16 @@ title: Azure アクティビティ ログのイベント スキーマ
 description: Azure アクティビティ ログ内の各カテゴリのイベント スキーマについて説明します。
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: reference
 ms.date: 12/04/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 272b71fe5fddea9299e5d660484fcbb3eb367d58
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: ccbb4175701c3535b790f25c9ed522911dda6707
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749469"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668844"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure アクティビティ ログのイベント スキーマ
 [Azure アクティビティ ログ](platform-logs-overview.md)により、Azure で発生したサブスクリプションレベルのイベントの分析が得られます。 この記事では、カテゴリごとにイベント スキーマを説明します。 
@@ -781,7 +780,7 @@ Azure アクティビティ ログをストレージ アカウントまたはイ
 > ストレージ アカウントに書き込まれるアクティビティ ログ データの形式は、2018 年 11 月 1 日に JSON 行に変更されました。 この形式変更の詳細については、「[ストレージ アカウントにアーカイブされている Azure Monitor リソース ログの形式変更のための準備](diagnostic-logs-append-blobs.md)」を参照してください。
 
 
-| リソース ログのスキーマ プロパティ | アクティビティ ログ REST API スキーマ プロパティ | メモ |
+| リソース ログのスキーマ プロパティ | アクティビティ ログ REST API スキーマ プロパティ | Notes |
 | --- | --- | --- |
 | time | eventTimestamp |  |
 | resourceId | resourceId | subscriptionId、resourceType、resourceGroupName は、すべて resourceId から推測されます。 |

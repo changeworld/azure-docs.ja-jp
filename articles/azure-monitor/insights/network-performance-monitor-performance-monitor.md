@@ -1,18 +1,17 @@
 ---
 title: Azure Log Analytics の Network Performance Monitor ソリューションのパフォーマンス監視機能 | Microsoft Docs
 description: Network Performance Monitor のパフォーマンス モニター機能を使うと、ネットワーク内のさまざまなポイントでネットワーク接続を監視できます。 クラウド展開やオンプレミスの場所、複数のデータ センターやブランチ オフィス、ミッション クリティカルな多層アプリケーション/マイクロ サービスを監視できます。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 745ec6ee8e69ad911e42b6360b3408d79d660718
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: dfbc4ea8e168ced95a4239dd100cf7277e0adf7b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898846"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654530"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Network Performance Monitor ソリューション:パフォーマンスの監視
 
@@ -128,5 +127,5 @@ Network Performance Monitor では、代理トランザクションを実行す�
  
 ![ノードのプロパティが選ばれたトポロジ マップ](media/network-performance-monitor-performance-monitor/topology-dashboard-root-cause.png) 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 詳細なネットワーク パフォーマンスのデータ レコードを表示するために、[ログを検索](../../azure-monitor/log-query/log-query-overview.md)します。

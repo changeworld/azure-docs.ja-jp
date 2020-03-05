@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: 6e2fa96584570e5837c4367c8be4701b7398fb0f
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/19/2020
+ms.openlocfilehash: 9606768288cc74afc24491149eb471944f45e2dc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152212"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921166"
 ---
 # <a name="module-k-means-clustering"></a>モジュール:K-Means クラスタリング
 
@@ -107,11 +107,11 @@ K-Means は、最も単純であり、よく知られている "*教師なし*" 
   
     -   **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合、[Train Clustering Model (クラスタリング モデルのトレーニング)](train-clustering-model.md) モジュールを使用することで、タグ付けしたデータセットを追加してモデルをトレーニングします。  
   
-### <a name="results"></a>[結果]
+## <a name="results"></a>[結果]
 
 モデルの構成とトレーニングが完了したら、スコアの生成に使用できるモデルは完成です。 しかし、モデルのトレーニングには複数の方法があり、結果を表示して使用するには複数の方法があります。 
 
-#### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>ワークスペースでモデルのスナップショットをキャプチャする
+### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>ワークスペースでモデルのスナップショットをキャプチャする
 
 [Train Clustering Model (クラスタリング モデルのトレーニング)](train-clustering-model.md) モジュールを使用した場合:
 
@@ -121,7 +121,7 @@ K-Means は、最も単純であり、よく知られている "*教師なし*" 
 
 保存されるモデルは、モデルを保存した時点のトレーニング データを表します。 パイプラインで使用したトレーニング データを後で更新しても、保存済みのモデルは更新されません。 
 
-#### <a name="see-the-clustering-result-dataset"></a>クラスタリングの結果のデータセットを表示する 
+### <a name="see-the-clustering-result-dataset"></a>クラスタリングの結果のデータセットを表示する 
 
 [Train Clustering Model (クラスタリング モデルのトレーニング)](train-clustering-model.md) モジュールを使用した場合:
 
@@ -142,3 +142,7 @@ K-Means は、最も単純であり、よく知られている "*教師なし*" 
 -   メトリックを変えるか、さらに反復処理して、複数のモデルを作成します。  
   
 一般に、クラスタリング モデルでは、どのような構成でもローカルで最適化された一連のクラスターが生成される可能性があります。 つまり、モデルから返される一連のクラスターは現在のデータ ポイントのみに適合し、他のデータに一般化することはできません。 別の初期構成を使用した場合、K-Means 法では、別の優れた構成が見つかる可能性があります。 
+
+## <a name="next-steps"></a>次のステップ
+
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

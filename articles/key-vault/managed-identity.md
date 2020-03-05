@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 75317f73ad724b4ce8ad7a894890b2269bd8c5d0
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 36a4871339401629300eedd77b6441aed10aabf3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837492"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199837"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>マネージド ID で Key Vault の認証を提供する
 
@@ -41,7 +42,7 @@ ms.locfileid: "73837492"
 
 まず、システムによって割り当てられた ID をアプリケーションに追加する必要があります。 
  
-### <a name="azure-portal"></a>Azure ポータル 
+### <a name="azure-portal"></a>Azure portal 
 
 ポータルでマネージド ID を設定するには、最初に通常の方法でアプリケーションを作成した後、機能を有効にします。 
 
@@ -49,7 +50,7 @@ ms.locfileid: "73837492"
 
 1. **[マネージド ID]** を選択します。 
 
-1. **[システム割り当て済み]** タブで、 **[状態]** を **[オン]** に切り替えます。 **[Save]** をクリックします。 
+1. **[システム割り当て済み]** タブで、 **[状態]** を **[オン]** に切り替えます。 **[保存]** をクリックします。 
 
     ![](./media/managed-identity-system-assigned.png)
 
@@ -87,7 +88,7 @@ az functionapp identity assign --name myApp --resource-group myResourceGroup
 ```
 ## <a name="grant-your-app-access-to-key-vault"></a>Key Vault へのアクセス許可をアプリに付与する 
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 1.  Key Vault リソースに移動します。 
 
@@ -109,7 +110,7 @@ az functionapp identity assign --name myApp --resource-group myResourceGroup
 az keyvault set-policy --name myKeyVault --object-id <PrincipalId> --secret-permissions get list 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Key Vault セキュリティ: ID 管理とアクセス管理](overview-security.md#identity-and-access-management)
 - [アクセス制御ポリシーを使用して Key Vault の認証を提供する](key-vault-group-permissions-for-apps.md)

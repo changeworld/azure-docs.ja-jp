@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C の課金モデル
 description: Azure AD B2C の月間アクティブ ユーザー (MAU) 課金モデルと、特定の Azure サブスクリプションの課金を有効にする方法について説明します。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/25/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e3cdf44c2fc4c16bba283b6f884078dd947b1f34
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 30ecb1e6faa29482a8d69dd1d08e4f127f515596
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77564775"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190009"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の課金モデル
 
@@ -99,7 +99,7 @@ Azure AD B2C テナントにリンクされているサブスクリプション�
 1. ドロップダウンから **[Azure AD B2C テナント]** を選択します。 自分がグローバル管理者であり、サブスクリプションにまだリンクされていないテナントのみが表示されます。 **[Azure AD B2C リソース名]** フィールドには、選択した Azure AD B2C テナントのドメイン名が入力されます。
 1. 自分が管理者であるアクティブな Azure **[サブスクリプション]** を選択します。
 1. **[リソース グループ]** の **[新規作成]** を選択し、 **[リソース グループの場所]** を指定します。 ここでのリソース グループ設定は、Azure AD B2C テナントの場所、パフォーマンス、または課金状態に影響しません。
-1. **作成** を選択します。
+1. **［作成］** を選択します
     ![Azure portal の Azure AD B2C リソース作成ページ](./media/billing/portal-01-create-b2c-resource-page.png)
 
 Azure AD B2C テナントについてこれらの手順を完了すると、Azure Direct または Enterprise Agreement の条項 (該当する場合) に従って Azure サブスクリプションに課金されます。

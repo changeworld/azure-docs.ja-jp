@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: eef9a99e4c94fa45e21abfc9d19fcef1230ffe76
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: afa9437a00c6f30688c7942feea94f7db7ed490a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75944690"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919347"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>クイック スタート:Python の長い形式の音声の非同期合成 (プレビュー)
 
@@ -30,7 +30,7 @@ ms.locfileid: "75944690"
 
 * Python 2.7.x または 3.x。
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download)、または任意のテキスト エディター。
-* Azure サブスクリプションと Speech サービスのサブスクリプション キー。 [Azure アカウントを作成](../../get-started.md#try-the-speech-service-using-a-new-azure-account)し、[Speech リソースを作成](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)してキーを取得します。 Speech リソースを作成する際は、価格レベルが **S0** に設定されていること、また場所が[サポート対象リージョン](../../regions.md#standard-and-neural-voices)に設定されていることを確認してください。
+* Azure サブスクリプションと Speech サービスのサブスクリプション キー。 [Azure アカウントを作成](../../get-started.md#new-resource)し、[Speech リソースを作成](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)してキーを取得します。 Speech リソースを作成する際は、価格レベルが **S0** に設定されていること、また場所が[サポート対象リージョン](../../regions.md#standard-and-neural-voices)に設定されていることを確認してください。
 
 ## <a name="create-a-project-and-import-required-modules"></a>プロジェクトの作成と必要なモジュールのインポート
 
@@ -189,7 +189,7 @@ python voice_synthesis_client.py --submit -key <your_key> -region <Region> -file
 > [!NOTE]
 > 複数の入力ファイルがある場合は、複数の要求を送信する必要があります。 注意すべきいくつかの制限事項があります。 
 > * クライアントは、各 Azure サブスクリプション アカウントに対して 1 秒あたり最大 **5** 個の要求をサーバーに送信できます。 制限を超えると、クライアントはエラー コード 429 (要求が多すぎます) を受け取ります。 1 秒あたりの要求の数を減らしてください
-> * サーバーは、各 Azure サブスクリプション アカウントに対して最大 **120** 個の要求を実行およびキューに登録できます。 制限を超えた場合、サーバーはエラー コード 429 (要求が多すぎます) を返します。 いくつかの要求が完了するまで、新しい要求を送信しないで待ってください
+> * サーバーは、各 Azure サブスクリプション アカウントに対して最大 **120** 個の要求を実行およびキューに登録できます。 制限を超えた場合、サーバーはエラー コード 429 (要求が多すぎます) を返します。 いくつかの要求が完了するまで、新しい要求を送信しないでお待ちください
 
 次のような出力が表示されます。
 

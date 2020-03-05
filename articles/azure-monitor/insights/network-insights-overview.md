@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor for Networks (プレビュー)
 description: デプロイされたすべてのネットワーク リソースの正常性とメトリックを構成なしで包括的に把握できる、Azure Monitor for Network の簡単な概要。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/07/2019
-ms.openlocfilehash: 3bb92b85779366081349dab777be67e063469678
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0f5b2fbd13cb9658e255fde727e115df748aaed9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839984"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654870"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Azure Monitor for Networks (プレビュー)
 Azure Monitor for Network では、デプロイされたすべてのネットワーク リソースの正常性とメトリックを構成なしで包括的に把握できます。 高度な検索機能を使用すると、リソースの依存関係を特定するのに役立ちます。たとえば、ホストされている Web サイト名を検索するだけで、Web サイトをホストしているリソースを特定できるというシナリオが可能になります。
@@ -21,7 +20,7 @@ Azure Monitor for Networks の **[概要]** ページでは、ネットワーク
 
 - 検索とフィルター処理
 - リソース正常性とメトリック
-- アラート 
+- 警告 
 - [依存関係] ビュー
 
 ![[概要] ページ](media/network-insights-overview/overview.png)
@@ -31,7 +30,7 @@ Azure Monitor for Networks の **[概要]** ページでは、ネットワーク
 
 検索ボックスは、リソースや関連するリソースを検索するために使用できます。 たとえば、パブリック IP がアプリケーション ゲートウェイに関連付けられているとします。 このパブリック IP の DNS 名を検索すると、パブリック IP と、関連付けられているアプリケーション ゲートウェイが特定されます。
 
-![Search](media/network-insights-overview/search.png)
+![検索](media/network-insights-overview/search.png)
 
 
 ## <a name="resource-health-and-metric"></a>リソース正常性とメトリック
@@ -45,7 +44,7 @@ Azure Monitor for Networks の **[概要]** ページでは、ネットワーク
 
 グリッド ビューの各要素をクリックできます。 [正常性] アイコンをクリックすると、その接続のリソース正常性にリダイレクトされます。 [アラート] をクリックすると、その接続のアラートとメトリックのそれぞれのページにリダイレクトされます。 
 
-## <a name="alerts"></a>アラート
+## <a name="alerts"></a>警告
 右側の **[アラート]** グリッドには、すべてのサブスクリプションで選択されたリソースに対して生成されたすべてのアラートのビューが表示されます。 アラート数をクリックすると、アラートの詳細に関するページに移動します。
 
 ## <a name="dependency-view"></a>[依存関係] ビュー
@@ -69,6 +68,6 @@ Application Gateway の **[依存関係]** ビューは、フロントエンド 
 
 **[Detailed Metric View]\(詳細メトリック ビュー\)** をクリックすると、アプリケーション ゲートウェイ、すべてのバックエンド プール リソース、フロントエンド IP に関する詳しいメトリックを含む事前構成されたブックを起動できます。 
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 
 - ネットワーク監視の詳細については、「[Azure Network Watcher とは](/azure/network-watcher/network-watcher-monitoring-overview)」をご覧ください。

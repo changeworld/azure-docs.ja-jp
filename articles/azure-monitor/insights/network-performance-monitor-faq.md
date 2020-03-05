@@ -1,18 +1,17 @@
 ---
 title: FAQ - Azure の Network Performance Monitor ソリューション | Microsoft Docs
 description: この記事では、Azure の Network Performance Monitor についてよく寄せられる質問について説明します。 Network Performance Monitor (NPM) は、ネットワークのパフォーマンスをほぼリアルタイムで監視し、ネットワーク パフォーマンスのボトルネックを検出して特定するのに役立ちます。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 7ee593a8db020134e13ea853f17f097d716f7814
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 0ef50dfd4d9c6eb0066e54b76167b9934fbb9cf0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538185"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654435"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor ソリューションの FAQ
 
@@ -204,7 +203,7 @@ E2EMedianLatency は、tcp ping テストの結果を集計した後 3 分ごと
 
 ### <a name="why-does-hop-by-hop-latency-numbers-differ-from-hoplatencyvalues"></a>ホップバイホップの待ち時間の値が HopLatencyValues と異なるのはなぜですか 
 HopLatencyValues は、ソースからエンドポイントまでを示します。
-次に例を示します。ホップ - A、B、C。 AvgHopLatency - 10、15、20。 つまり、ソースから A への待ち時間 = 10、ソースから B への待ち時間 = 15、ソースから C への待ち時間は 20 です。 UI では、トポロジ内の A-B ホップ間の待ち時間が 5 として計算されます
+たとえば次のようになります。ホップ - A、B、C。 AvgHopLatency - 10、15、20。 つまり、ソースから A への待ち時間 = 10、ソースから B への待ち時間 = 15、ソースから C への待ち時間は 20 です。 UI では、トポロジ内の A-B ホップ間の待ち時間が 5 として計算されます
 
 ### <a name="the-solution-shows-100-loss-but-there-is-connectivity-between-the-source-and-destination"></a>ソリューションは 100% の損失と示していますがソースと宛先の間の接続が存在します
 これが発生することがあるのは、ホスト ファイアウォールまたは中間ファイアウォール (ネットワーク ファイアウォールまたは Azure NSG) のいずれかが、NPM による監視に使用されているポート経由で (顧客が変更しない場合の既定はポート 8084) ソース エージェントと宛先の間の通信をブロックしている場合です。
@@ -272,6 +271,6 @@ NPM は、指定したポートでの TCP 相互接続をエージェントが�
 ### <a name="can-npm-report-latency-numbers-in-microseconds"></a>NPM は待機時間をマイクロ秒単位で報告できますか。
 NPM は UI では待機時間の数値をミリ秒単位に丸めます。 このデータは、さらに高い精度で (場合によっては小数点以下 4 桁で) 格納されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure の Network Performance Monitor ソリューション](../../azure-monitor/insights/network-performance-monitor.md)を参照して、Network Performance Monitor の詳細について学習します。

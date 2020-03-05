@@ -4,18 +4,17 @@ description: 作成済みのブックやパラメーター化されたカスタ�
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 1d1ee243fa9df8a77a6ce80ecb9d8e5336e8b19b
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 380b8a7ce286ab06b6935bf63bf3a0e82f371c2f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872759"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658015"
 ---
 # <a name="workbook-time-parameters"></a>ブックの時間パラメーター
 
@@ -28,7 +27,7 @@ ms.locfileid: "74872759"
 4. ポップアップ表示される新しいパラメーター ペインで、次のように入力します。
     1. Parameter name: `TimeRange` (パラメーター名: {2})
     2. [パラメーターの種類]\: [`Time range picker`ドロップ ダウン]
-    3. [必須ですか?]\: `checked` (オン)
+    3. [必須ですか?]\: `checked`オン
     4. [使用可能な時間の範囲]\:[過去 1 時間]、[過去 12 時間]、[過去 24 時間]、[過去 48 時間]、[過去 3 日間]、[過去 7 日間]、[ユーザー設定の時間範囲の選択を許可する]
 5. ツール バーの [保存] を選択して、パラメーターを作成します。
 
@@ -59,7 +58,7 @@ ms.locfileid: "74872759"
 1. テキスト コントロールをブックに追加します。
 2. マークダウンで、「`The chosen time range is {TimeRange:label}`」と入力します。
 3. _[編集完了]_ を選択します
-4. テキスト コントロールに、"_The chosen time range is 過去 24 時間_"
+4. テキスト コントロールに、"_The chosen time range is Last 24 hours\(選択された時間範囲は [過去 24 時間] です\)_ " というテキストが表示されます。
 
 ## <a name="time-parameter-options"></a>時間パラメーターのオプション
 | パラメーター | 説明 | 例 |
@@ -79,7 +78,7 @@ requests
 | make-series Requests = count() default = 0 on timestamp from {TimeRange:start} to {TimeRange:end} step {TimeRange:grain}
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * ブックの豊富な視覚化オプションの学習を[開始](workbooks-visualizations.md)します。
 * ブック リソースへのアクセスを[制御](workbooks-access-control.md)し、共有します。

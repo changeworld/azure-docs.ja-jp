@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 35f8a766c6d260e23ff854284d5b8ee047e64b42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 95c85309058911d6767eb44efd7b37ddac7a9119
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64926150"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915039"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>クラシック ストレージ リソース削除エラーのトラブルシューティング
 この記事では、Azure のクラシック ストレージ アカウント、コンテナー、*.vhd ページ BLOB ファイルを削除しようとして次のいずれかのエラーが発生した場合のトラブルシューティング ガイダンスを提供します。 
@@ -30,6 +30,10 @@ Azure ディスクについて詳しくは、[こちら](../../virtual-machines/
 
 
 ## <a name="steps-while-deleting-a-classic-virtual-machine"></a>クラシック仮想マシンを削除する場合の手順 
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
+
 1. クラシック仮想マシンを削除します。
 2. [ディスク] チェック ボックスがオンになっている場合、ページ BLOB *.vhd に関連付けられた (上の図に示されている) **ディスク リース**は解除されます。 実際のページ BLOB *.vhd ファイルはまだストレージ アカウントに残っています。
 ![仮想マシン (クラシック) の "削除" エラー ウィンドウが開いている、ポータルのスクリーンショット](./media/storage-classic-cannot-delete-storage-account-container-vhd/steps_while_deleting_classic_vm.jpg) 
@@ -43,7 +47,7 @@ Azure ディスクについて詳しくは、[こちら](../../virtual-machines/
 
 ユーザーが必要なくなったクラシック ストレージ アカウントを削除しようとすると、次の動作に気付く場合があります。
 
-#### <a name="azure-portal"></a>Azure ポータル 
+#### <a name="azure-portal"></a>Azure portal 
 ユーザーが [Azure portal](https://portal.azure.com) でクラシック ストレージ アカウントに移動し、 **[削除]** をクリックすると、ユーザーには、次のメッセージが表示されます。 
 
 仮想マシンにディスクが "アタッチされている" 場合
@@ -68,7 +72,7 @@ Azure ディスクについて詳しくは、[こちら](../../virtual-machines/
 
 ユーザーが不要になったクラシック ストレージ BLOB コンテナーを削除しようとすると、次の動作に気付く場合があります。
 
-#### <a name="azure-portal"></a>Azure ポータル 
+#### <a name="azure-portal"></a>Azure portal 
 Azure portal では、コンテナー内の *.vhd ページ BLOB ファイルを指す "ディスク" のリースが存在するため、ユーザーはそのコンテナーを削除できません。 仕様により、ディスクのリースを保持している vhd ファイルは誤って削除されないようになっています。 
 
 ![ストレージ コンテナー "リスト" ウィンドウが開いている、ポータルのスクリーンショット](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_container_portal.jpg)
@@ -79,13 +83,13 @@ Azure portal では、コンテナー内の *.vhd ページ BLOB ファイルを
 
 > <span style="color:cyan">**Remove-AzureStorageContainer -Context $context -Name vhds**</span>
 > 
-> <span style="color:red">Remove-AzureStorageContainer: リモート サーバーからエラーが返される:(412) There is currently a lease on the container and no lease ID was specified in the request. (現在、コンテナーにリースがありますが、リクエストでリース ID が指定されていませんでした。)HTTP 状態コード: 412 - HTTP エラー メッセージ: There is currently a lease on the container and no lease ID was specified in the request. (現在、コンテナーにリースがありますが、リクエストでリース ID が指定されていませんでした。)</span>
+> <span style="color:red">Remove-AzureStorageContainer: リモート サーバーがエラー(412) There is currently a lease on the container and no lease ID was specified in the request. (現在、コンテナーにリースがありますが、リクエストでリース ID が指定されていませんでした。)HTTP 状態コード: 412 - HTTP エラー メッセージ: There is currently a lease on the container and no lease ID was specified in the request. (現在、コンテナーにリースがありますが、リクエストでリース ID が指定されていませんでした。)</span>
 
 ## <a name="unable-to-delete-a-vhd"></a>vhd を削除できない 
 
 Azure の仮想マシンを削除した後、ユーザーが vhd ファイル (ページ BLOB) を削除しようとすると、次のメッセージが表示されます。
 
-#### <a name="azure-portal"></a>Azure ポータル 
+#### <a name="azure-portal"></a>Azure portal 
 ポータルでは、削除対象として選択されている BLOB のリストに応じて、2 つのエクスペリエンスが生じる場合があります。
 
 1. "リース中" の BLOB のみが選択されている場合、[削除] ボタンは表示されません。
@@ -101,7 +105,7 @@ Azure の仮想マシンを削除した後、ユーザーが vhd ファイル (�
 
 > <span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"** </span>
 > 
-> <span style="color:red">Remove-AzureStorageBlob : リモート サーバーからエラーが返される:(412) There is currently a lease on the blob and no lease ID was specified in the request. (現在、BLOB にリースがありますが、リクエストでリース ID が指定されていませんでした。)HTTP 状態コード: 412 - HTTP エラー メッセージ: There is currently a lease on the blob and no lease ID was specified in the request. (現在、BLOB にリースがありますが、リクエストでリース ID が指定されていませんでした。)</span>
+> <span style="color:red">Remove-AzureStorageBlob : リモート サーバーがエラー(412) There is currently a lease on the blob and no lease ID was specified in the request. (現在、BLOB にリースがありますが、リクエストでリース ID が指定されていませんでした。)HTTP 状態コード: 412 - HTTP エラー メッセージ: There is currently a lease on the blob and no lease ID was specified in the request. (現在、BLOB にリースがありますが、リクエストでリース ID が指定されていませんでした。)</span>
 
 
 ## <a name="resolution-steps"></a>解決手順

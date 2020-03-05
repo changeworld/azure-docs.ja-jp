@@ -1,18 +1,17 @@
 ---
 title: Azure での監視ソリューションのインベントリ | Microsoft Docs
 description: Azure Monitor の監視ソリューションには、特定の問題点に関するメトリックを提供するロジックや視覚化、データ取得規則が集約されています。  この記事では、Microsoft から利用できる管理ソリューションの一覧を示し、データ収集の手法および頻度に関する詳細について説明します。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/26/2018
-ms.openlocfilehash: 9b0140b843d7da1b892463bff7d6014a3f9584ad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7b88d957bce45bf518fc77584f1691de8010459a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402018"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663132"
 ---
 # <a name="inventory-and-data-collection-details-for-monitoring-solutions-in-azure"></a>Azure における監視ソリューションのインベントリとデータ収集の詳細
 [監視ソリューション](solutions.md)では、Azure のサービスを活用して、特定のアプリケーションまたはサービスの操作に対する詳細な分析情報を提供します。 通常、監視ソリューションではログ データが収集されます。また、収集されたデータを分析するクエリとビューが用意されています。 使用する任意のアプリケーションおよびサービスの Azure Monitor に監視ソリューションを追加できます。 管理ソリューションは通常、無料で使用できますが、データの収集に対して利用料金が発生する場合があります。

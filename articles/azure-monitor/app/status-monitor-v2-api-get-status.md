@@ -1,18 +1,16 @@
 ---
 title: Azure Application Insights エージェント API リファレンス
 description: Application Insights エージェント API リファレンス。 Get-ApplicationInsightsMonitoringStatus。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 9b1010404cb876ed818dd54cf527987c6cf0ffe0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 159dab4a228c822ef62c45c9ccceff638a9bea45
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899688"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671258"
 ---
 # <a name="application-insights-agent-api-get-applicationinsightsmonitoringstatus"></a>Application Insights エージェント API:Get-ApplicationInsightsMonitoringStatus
 
@@ -167,7 +165,7 @@ listdlls64.exe -accepteula w3wp
 0x000000000ad60000  0x108000  C:\Windows\TEMP\2.4.0.0.Microsoft.ApplicationInsights.Extensions.Intercept_x64.dll
 ```
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>パラメーター
 
 ### <a name="no-parameters"></a>(パラメーターなし)
 
@@ -177,12 +175,12 @@ listdlls64.exe -accepteula w3wp
 
 
 ### <a name="-powershellmodule"></a>-PowerShellModule
-**省略可能**。 このスイッチを使用すると、監視に必要なバージョン番号と DLL のパスがレポートされます。
+**オプション**。 このスイッチを使用すると、監視に必要なバージョン番号と DLL のパスがレポートされます。
 Application Insights SDK を含む任意の DLL のバージョンを特定する必要がある場合は、このオプションを使用します。
 
 ### <a name="-inspectprocess"></a>-InspectProcess
 
-**省略可能**。 このスイッチを使用すると、IIS が実行されているかどうかがレポートされます。
+**オプション**。 このスイッチを使用すると、IIS が実行されているかどうかがレポートされます。
 また、外部のツールをダウンロードして、必要な DLL が IIS ランタイムに読み込まれているかどうかを特定します。
 
 
@@ -194,10 +192,10 @@ Application Insights SDK を含む任意の DLL のバージョンを特定す�
 
 ### <a name="-force"></a>-Force
 
-**省略可能**。 InspectProcess でのみ使用されます。 このスイッチは、追加のツールがダウンロードされる前に表示されるユーザー プロンプトをスキップするために使用します。
+**オプション**。 InspectProcess でのみ使用されます。 このスイッチは、追加のツールがダウンロードされる前に表示されるユーザー プロンプトをスキップするために使用します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
  Application Insights エージェントをさらに活用する:
  - Application Insights エージェントのトラブルシューティングを行う場合は、[こちらのガイド](status-monitor-v2-troubleshoot.md)を使用してください。

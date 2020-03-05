@@ -1,15 +1,15 @@
 ---
 title: トラブルシューティング - QnA Maker
 description: QnA Maker サービスについてきわめて多く寄せられる質問を精選した一覧です。サービスの採用にかかる期間を短縮し、成果を上げるためにお役立てください。
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 02/21/2020
 ms.author: diberry
-ms.openlocfilehash: 9032f2cdc134289fef6c0cbc2e874198aefa90ee
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 4596c16a5d7c9053bf0e27af476c66fe8fa9ed35
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650386"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296101"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker のトラブルシューティング
 
@@ -224,7 +224,7 @@ QnA セットをナレッジ ベースに追加すると、回答のマークダ
 <details>
 <summary><b>QnA Maker で新しいボットを作成するにはどうすればよいですか?</b></summary>
 
-**回答**: Azure Bot Service でボットを作成するには、[こちら](./Tutorials/create-qna-bot.md)のドキュメントの手順に従ってください。
+**回答**: Azure Bot Service でボットを作成するには、[こちら](./Quickstarts/create-publish-knowledge-base.md)のドキュメントの手順に従ってください。
 
 </details>
 
@@ -255,7 +255,7 @@ QnA セットをナレッジ ベースに追加すると、回答のマークダ
 
 **回答**: Web サイトに QnA Maker サービスを Web チャット コントロールとして埋め込むには、次の手順に従ってください。
 
-1. [こちら](./Tutorials/create-qna-bot.md)の手順に従って、FAQ ボットを作成します。
+1. [こちら](./Quickstarts/create-publish-knowledge-base.md)の手順に従って、FAQ ボットを作成します。
 2. [こちら](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat)の手順に従って、Web チャットを有効にします。
 
 </details>

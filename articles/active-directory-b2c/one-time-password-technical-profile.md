@@ -3,20 +3,20 @@ title: ワンタイム パスワード (OTP) の確認を有効にする
 titleSuffix: Azure AD B2C
 description: Azure AD B2C カスタム ポリシーを使用してワンタイム パスワード (OTP) シナリオを設定する方法について説明します。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/10/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9becb91cfffd4553b2b8aa1a2d616963eae92ab0
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: 701fb64dd85526bc79cab48bf36d4583da71ca76
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114057"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184028"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C カスタム ポリシーでワンタイム パスワードの技術プロファイルを定義する
 
@@ -47,21 +47,21 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 この技術プロファイルの最初のモードでは、コードを生成します。 このモードで構成できるオプションを以下に示します。
 
-### <a name="input-claims"></a>入力要求
+### <a name="input-claims"></a>入力クレーム
 
 **InputClaims** 要素には、ワンタイム パスワード プロトコル プロバイダーに送信する必要がある要求の一覧が含まれています。 要求の名前を以下に定義されている名前にマップすることもできます。
 
-| ClaimReferenceId | Required | 説明 |
+| ClaimReferenceId | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | identifier | はい | 後でコードを確認する必要があるユーザーを識別する識別子。 一般に、電子メール アドレスや電話番号など、コードが配信される宛先の識別子として使用されます。 |
 
 **InputClaimsTransformations** 要素には、ワンタイム パスワード プロトコル プロバイダーに送信する前に、入力要求を変更するため、または新しい要求を生成するために使用される、**InputClaimsTransformation** 要素のコレクションが含まれる場合があります。
 
-### <a name="output-claims"></a>出力要求
+### <a name="output-claims"></a>出力クレーム
 
 **OutputClaims** 要素には、ワンタイム パスワード プロトコル プロバイダーによって生成される要求の一覧が含まれています。 要求の名前を以下に定義されている名前にマップすることもできます。
 
-| ClaimReferenceId | Required | 説明 |
+| ClaimReferenceId | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | otpGenerated | はい | セッションが Azure AD B2C によって管理される、生成されたコード。 |
 
@@ -71,7 +71,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 次の設定を使用して、コードの生成とメンテナンスを構成できます。
 
-| Attribute | Required | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | CodeExpirationInSeconds | いいえ | コードの有効期限までの時間 (秒)。 最小値: `60`、最大値: `1200`、既定値: `600`。 |
 | CodeLength | いいえ | コードの長さ。 既定値は `6` です。 |
@@ -113,18 +113,18 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 この技術プロファイルの 2 番目のモードでは、コードを確認します。 このモードで構成できるオプションを以下に示します。
 
-### <a name="input-claims"></a>入力要求
+### <a name="input-claims"></a>入力クレーム
 
 **InputClaims** 要素には、ワンタイム パスワード プロトコル プロバイダーに送信する必要がある要求の一覧が含まれています。 要求の名前を以下に定義されている名前にマップすることもできます。
 
-| ClaimReferenceId | Required | 説明 |
+| ClaimReferenceId | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | identifier | はい | 以前にコードを生成したユーザーを識別する識別子。 一般に、電子メール アドレスや電話番号など、コードが配信される宛先の識別子として使用されます。 |
 | otpToVerify | はい | ユーザーによって指定された確認コード。 |
 
 **InputClaimsTransformations** 要素には、ワンタイム パスワード プロトコル プロバイダーに送信する前に、入力要求を変更するため、または新しい要求を生成するために使用される、**InputClaimsTransformation** 要素のコレクションが含まれる場合があります。
 
-### <a name="output-claims"></a>出力要求
+### <a name="output-claims"></a>出力クレーム
 
 このプロトコル プロバイダーのコード確認中に提供される出力要求はありません。
 
@@ -134,7 +134,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 次の設定を使用して、コード確認に失敗したときに表示されるエラー メッセージを構成できます。
 
-| Attribute | Required | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | UserMessageIfSessionDoesNotExist | いいえ | コード確認セッションの有効期限が切れた場合にユーザーに表示するメッセージ。 コードの有効期限が切れているか、指定された識別子に対してコードが生成されたことがないかのいずれかです。 |
 | UserMessageIfMaxRetryAttempted | いいえ | 許容される確認の最大試行回数を超えた場合に、ユーザーに表示するメッセージ。 |

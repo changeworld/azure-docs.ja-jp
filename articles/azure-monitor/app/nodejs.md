@@ -1,18 +1,14 @@
 ---
 title: Azure Application Insights を使用して Node.js サービスを監視する | Microsoft Docs
 description: Application Insights を使用して Node.js サービスのパフォーマンスを監視して問題を診断します。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: 81f63380c041ae743a2b38e6ba89558b83e7497a
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 320ec62e642155002e42c59d4656f51673249eb1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820727"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670017"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Application Insights を使用して Node.js サービスとアプリを監視する
 
@@ -24,7 +20,7 @@ Node.js SDK では、受信と発信 HTTP 要求、例外のほか、システ�
 
 TelemetryClient API を使用して手動でインストルメント化すれば、ご使用のアプリとシステムのその他の側面も監視できます。 TelemetryClient API については、この記事の後半でさらに詳しく説明します。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 アプリまたはサービスの監視を設定するには、次の作業を完了します。
 
@@ -39,7 +35,7 @@ TelemetryClient API を使用して手動でインストルメント化すれば
 ### <a name="resource"></a>Application Insights リソースを設定する
 
 
-1. [Azure Portal][portal] にサインインします。
+1. [Azure portal][portal] にサインインします。
 2. **[リソースの作成]**  >  **[開発者ツール]**  >  **[Application Insights]** の順に選択します。 このリソースには、テレメトリ データを受信するためのエンドポイント、そのデータのストレージ、保存済みのレポートとダッシュボード、ルールとアラートの構成などが含まれています。
 
 3. リソース作成ページの **[アプリケーションの種類]** ボックスで **[Node.js アプリケーション]** を選択します。 アプリの種類によって、作成される既定のダッシュボードとレポートが決まります (どの Application Insights リソースでも、あらゆる言語およびプラットフォームからデータを収集できます)。
@@ -195,7 +191,7 @@ server.on("listening", () => {
 });
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ポータル内でテレメトリを監視する](../../azure-monitor/app/overview-dashboard.md)
 * [テレメトリに関する分析クエリを記述する](../../azure-monitor/log-query/get-started-portal.md)

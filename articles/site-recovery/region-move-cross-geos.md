@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: a48edda31f19ef4ce1ba23664eef1f51ba9cf8d1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: acaf16e7469b3ea4e5e391db91e37dc76be3b261
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970496"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298532"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Azure Government とパブリック リージョンの間で Azure VM を移動する 
 
@@ -100,7 +100,7 @@ VM を Azure にレプリケートするアクセス許可がお使いの Azure 
     - [ロード バランサー](https://docs.microsoft.com/azure/load-balancer)
     - [パブリック IP](../virtual-network/virtual-network-public-ip-address.md)
     
-    その他のネットワーク コンポーネントについては、ネットワークに関する[ドキュメント](https://docs.microsoft.com/azure/#pivot=products&panel=network)を参照してください。 
+    その他のネットワーク コンポーネントについては、ネットワークに関する[ドキュメント](https://docs.microsoft.com/azure/?pivot=products&panel=network)を参照してください。
 
 4. ターゲット リージョンへの最終的な切り替えを行う前に構成をテストしたい場合は、ターゲット リージョンに手動で[非運用ネットワークを作成](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)します。 運用環境への影響が最小限で済むため、この方法をお勧めします。
 
@@ -146,7 +146,7 @@ VM を Azure にレプリケートするアクセス許可がお使いの Azure 
 IP アドレス ベースのファイアウォール規則では、HTTPS (443) ポートの上に示されているすべての Azure URL への通信が許可される必要があります。 IP 範囲を簡略化および制限するために、URL フィルタリングを実行することをお勧めします。
 
 - **商用 IP** - [Azure データセンターの IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)と HTTPS (443) ポートを許可します。 AAD、バックアップ、レプリケーション、およびストレージ URL をサポートするために、サブスクリプションの Azure リージョンの IP アドレス範囲を許可します。  
-- **Government IP** - AAD、バックアップ、レプリケーション、およびストレージ URL をサポートするために、すべての米国政府リージョン (バージニア、テキサス、アリゾナ、およびアイオワ) の [Azure Government データセンターの IP 範囲](https://www.microsoft.com/en-us/download/details.aspx?id=57063)と HTTPS (443) ポートを許可します。  
+- **Government IP** - AAD、バックアップ、レプリケーション、およびストレージ URL をサポートするために、すべてのUSGov リージョン (バージニア、テキサス、アリゾナ、およびアイオワ) の [Azure Government データセンターの IP 範囲](https://www.microsoft.com/en-us/download/details.aspx?id=57063)と HTTPS (443) ポートを許可します。  
 
 #### <a name="run-setup"></a>セットアップを実行する
 ローカル管理者として統合セットアップを実行し、構成サーバーをインストールします。 プロセス サーバーとマスター ターゲット サーバーも既定で構成サーバーにインストールされます。
