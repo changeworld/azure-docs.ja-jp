@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 6ad583fdb880e36e6ac9c2dfda56bb68378ea598
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 87eb04b7323186175195babf6a602fa12d25176f
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314005"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206709"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>HDInsight にストレージ アカウントを追加する
 
@@ -46,9 +46,9 @@ HDInsight に Azure Storage "*アカウント*" を追加するためにスク�
 
 ## <a name="add-storage-account"></a>ストレージ アカウントの追加
 
-[スクリプトアクション](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster) を使用して、次の点を考慮して変更を適用します。
+[スクリプトアクション](hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster) を使用して、次の点を考慮して変更を適用します。
 
-|プロパティ | 値 |
+|プロパティ | Value |
 |---|---|
 |Bash スクリプト URI|`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`|
 |ノードの種類|Head|
@@ -64,7 +64,7 @@ Azure portal で HDInsight クラスターを表示しているときに、 __[�
 
 追加のストレージを確認するには、次に示す方法のいずれかを使用します。
 
-### <a name="powershell"></a>Powershell
+### <a name="powershell"></a>PowerShell
 
 このスクリプトは、指定されたクラスターに関連付けられているストレージ アカウント名を返します。 `CLUSTERNAME` を実際のクラスター名に置き換えてから、このスクリプトを実行してください。
 

@@ -3,17 +3,16 @@ title: Azure プラットフォーム ログをイベント ハブにストリ�
 description: サードパーティ製の SIEM やその他のログ分析ソリューションなどの外部システムにデータを送信するイベント ハブに、Azure リソース ログをストリーミングする方法について説明します。
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 00dcc1c1a1d823ab0f2497e47641916d391ee37b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 72341b6da0068ba4b7e3f53b08e6015cafb70f09
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750342"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658916"
 ---
 # <a name="stream-azure-platform-logs-to-azure-event-hubs"></a>Azure プラットフォーム ログを Azure Event Hubs にストリーミングする
 Azure のアクティビティ ログとリソース ログを含む Azure の[プラットフォーム ログ](platform-logs-overview.md)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。  この記事では、サードパーティ製の SIEM やその他のログ分析ソリューションなどの外部システムにデータを送信するイベント ハブに、プラットフォーム ログをストリーミングする方法について説明します。

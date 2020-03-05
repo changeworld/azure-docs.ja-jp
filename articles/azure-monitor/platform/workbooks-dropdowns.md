@@ -4,18 +4,17 @@ description: ドロップダウン パラメーターを含む作成済みのブ
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: df30b71e6ec9e982988ed75b187db08255e24b61
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: f3220a363025d80fd7636dbfc3af3d2d9d7bc040
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872878"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658286"
 ---
 # <a name="workbook-drop-down-parameters"></a>ブックのドロップダウン パラメーター
 
@@ -150,7 +149,7 @@ dependencies
 
 ![複数選択のドロップダウン パラメーターを示す画像](./media/workbook-dropdowns/dropdown-multiselect.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * ブックの豊富な視覚化オプションの学習を[開始](workbooks-visualizations.md)します。
 * ブック リソースへのアクセスを[制御](workbooks-access-control.md)し、共有します。

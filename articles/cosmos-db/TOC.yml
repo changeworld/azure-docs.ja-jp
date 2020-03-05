@@ -540,7 +540,10 @@
         - name: IP ファイアウォール
           href: firewall-support.md
         - name: 仮想ネットワークからのアクセス
+          displayName: service endpoint
           href: vnet-service-endpoint.md
+        - name: サービス タグ
+          href: ../virtual-network/service-tags-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: ロールベースのアクセス制御
           displayName: rbac
           href: role-based-access-control.md
@@ -983,6 +986,7 @@
         - name: IP ファイアウォールの構成
           href: how-to-configure-firewall.md
         - name: 仮想ネットワークからのアクセスの構成
+          displayName: service endpoints
           href: how-to-configure-vnet-service-endpoint.md
         - name: プライベート エンドポイントからアクセスを構成する
           href: how-to-configure-private-endpoints.md
