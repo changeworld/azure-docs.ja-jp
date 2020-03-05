@@ -1,19 +1,18 @@
 ---
 title: Azure Application Insights でカスタム ダッシュボードを作成する | Microsoft Docs
 description: Azure Application Insights を使ってカスタム KPI ダッシュボードを作成するチュートリアルです。
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: tutorial
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/3/2019
 ms.custom: mvc
-ms.openlocfilehash: 47d8eaff5f154e198c277ec2b63a2d09e66f7180
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: caf8b1899cad95ade6297e78e8f2cf35939ef189
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900501"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661636"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Azure Application Insights を使ってカスタム KPI ダッシュボードを作成する
 
@@ -35,7 +34,7 @@ Azure Portal で複数のダッシュボードを作成し、各ダッシュボ�
 - .NET アプリケーションを Azure にデプロイし、[Application Insights SDK の有効化](../../azure-monitor/app/asp-net.md)を実行します。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
 ## <a name="create-a-new-dashboard"></a>新しいダッシュボードを作成する
 単一のダッシュボードには、複数のアプリケーション、リソース グループ、サブスクリプションからのリソースを含めることができます。  お使いのアプリケーションの新しいダッシュボードを作成して、チュートリアルを開始します。  
@@ -102,7 +101,7 @@ Azure Application Insights の Logs (Analytics) は独立したサービスで�
     ```
 
 4. クエリの結果を検証するために、 **[実行]** をクリックします。
-5. ピン留めアイコン ![ピン留めアイコン](media/tutorial-app-dashboards/pushpin.png) をクリックし、ダッシュボードの名前を選択します。 最後のダッシュボードが使用された前の手順とは異なり、このオプションでダッシュボードを選ぶ理由は、Logs (Analytics) コンソールが独立したサービスであり、使用可能なすべての共有ダッシュボードから選ぶ必要があるためです。
+5. 右上のピン留めアイコン ![ピン留めアイコン](media/tutorial-app-dashboards/pushpin.png) をクリックし、ダッシュボードの名前を選択します。 最後のダッシュボードが使用された前の手順とは異なり、このオプションでダッシュボードを選ぶ理由は、Logs (Analytics) コンソールが独立したサービスであり、使用可能なすべての共有ダッシュボードから選ぶ必要があるためです。
 
 5. ダッシュボードに戻る前に別のクエリを追加しますが、今回はグラフとしてレンダリングして、ログ クエリをさまざまな方法でダッシュボードに視覚化できることを確認します。 次のクエリで開始します。このクエリでは、上位 10 個の操作をまとめて、ほとんどは除外しています。
 
@@ -124,7 +123,7 @@ Azure Application Insights の Logs (Analytics) は独立したサービスで�
 5. **[共有]** を選択して、変更をダッシュボードに再発行します。これで、ダッシュボードに Application Insights のさまざまなグラフや視覚エフェクトが含まれます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これでカスタム ダッシュボードを作成する方法の説明は終了しましたが、ケース スタディを含む Application Insights のドキュメントの残りの部分もご確認ください。
 
 > [!div class="nextstepaction"]

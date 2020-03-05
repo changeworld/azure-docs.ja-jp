@@ -1,18 +1,18 @@
 ---
-author: mmacy
+author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
-ms.author: marsma
-ms.openlocfilehash: ce49e9e26160017d64d745c9c7ad5402bc3ae2ca
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.author: mimart
+ms.openlocfilehash: 71a6654acd436c27bd2370646dede81778113860
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641557"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186145"
 ---
-#### <a name="applicationstabapplications"></a>[アプリケーション](#tab/applications/)
+#### <a name="applications"></a>[アプリケーション](#tab/applications/)
 
 1. **[アプリケーション]** を選択し、API へのアクセスを必要とする Web アプリケーションを選択します。 たとえば、*webapp1* とします。
 1. **[API アクセス]** を選択し、 **[追加]** を選択します。
@@ -20,7 +20,7 @@ ms.locfileid: "73641557"
 1. **[スコープの選択]** ボックスの一覧で、先ほど定義したスコープを選択します。 *demo.read* や *demo.write* などです。
 1. **[OK]** を選択します。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
 
 1. **[アプリの登録 (プレビュー)]** を選択し、API へのアクセスを必要とする Web アプリケーションを選択します。 たとえば、*webapp1* とします。
 1. **[管理]** の下にある **[API のアクセス許可]** を選択します。
@@ -29,7 +29,7 @@ ms.locfileid: "73641557"
 1. Web アプリケーションにアクセスを許可する API を選択します。 たとえば、*webapi1* とします。
 1. **[アクセス許可]** で、 **[デモ]** を展開し、前に定義したスコープを選択します。 *demo.read* や *demo.write* などです。
 1. **[アクセス許可の追加]** を選択します. 指示に従って、数分待ってから次の手順に進みます。
-1. **[(ご自身のテナント名) に管理者の同意を与えます]** を選択します。
+1. **[<テナント名> に管理者の同意を与えます]** を選択します。
 1. 現在サインインしているお使いの管理者アカウントを選択するか、少なくとも*クラウド アプリケーション管理者* ロールが割り当てられているお使いの Azure AD B2C テナントのアカウントでサインインします。
 1. **[Accept]\(承認\)** を選択します。
 1. **[更新]** を選択し、両方のスコープの **[状態]** に、"... に付与されました" が表示されていることを確認します。 アクセス許可が反映されるまでに数分かかる場合があります。

@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: a505145eeba47eda9950c5a4c8221e4c9ae4b3a4
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 9cab78e85b8644f29bfcd067b104b1b5c10c2266
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024077"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249849"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>チュートリアル:Azure Databricks を使用してデータの抽出、変換、読み込みを行う
 
@@ -106,8 +106,8 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     |**ワークスペース名**     | Databricks ワークスペースの名前を指定します。        |
     |**サブスクリプション**     | ドロップダウンから Azure サブスクリプションを選択します。        |
     |**リソース グループ**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../azure-resource-manager/management/overview.md)に関するページをご覧ください。 |
-    |**地域**     | **[米国西部 2]** を選択します。  使用可能な他のリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。      |
-    |**Pricing Tier**     |  **[Standard]** を選択します。     |
+    |**場所**     | **[米国西部 2]** を選択します。  使用可能な他のリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。      |
+    |**価格レベル**     |  **[Standard]** を選択します。     |
 
 3. アカウントの作成には数分かかります。 操作の状態を監視するには、上部の進行状況バーを確認します。
 
@@ -147,7 +147,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
     ![Databricks でノートブックの詳細を指定する](./media/databricks-extract-load-sql-data-warehouse/databricks-notebook-details.png "Databricks でノートブックの詳細を指定する")
 
-4. **作成** を選択します。
+4. **［作成］** を選択します
 
 5. 次のコード ブロックでは、Spark セッションでアクセスされる ADLS Gen 2 アカウント用の既定のサービス プリンシパル資格情報を設定します。 2 つ目のコード ブロックでは、特定の ADLS Gen 2 アカウントの資格情報を指定する設定にアカウント名を追加します。  いずれかのコード ブロックをコピーして、Azure Databricks ノートブックの最初のセルに貼り付けます。
 
@@ -227,7 +227,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     ```
    次のスニペットのような出力が表示されます。
 
-   ```bash
+   ```output
    +---------------------+---------+---------+------+-------------+----------+---------+-------+--------------------+------+--------+-------------+---------+--------------------+------+-------------+------+
    |               artist|     auth|firstName|gender|itemInSession|  lastName|   length|  level|            location|method|    page| registration|sessionId|                song|status|           ts|userId|
    +---------------------+---------+---------+------+-------------+----------+---------+-------+--------------------+------+--------+-------------+---------+--------------------+------+-------------+------+
@@ -253,7 +253,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
    次のスニペットに示されているような出力が得られます。
 
-   ```bash
+   ```output
    +---------+----------+------+--------------------+-----+
    |firstname|  lastname|gender|            location|level|
    +---------+----------+------+--------------------+-----+
@@ -289,7 +289,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
    次のスニペットに示されているような出力が得られます。
 
-   ```bash
+   ```output
    +---------+----------+------+--------------------+-----------------+
    |firstname|  lastname|gender|            location|subscription_type|
    +---------+----------+------+--------------------+-----------------+

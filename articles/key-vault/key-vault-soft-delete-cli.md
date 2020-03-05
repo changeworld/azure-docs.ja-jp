@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: aef4061a8349e6602ac4394cb31bbe76b6cb63c0
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 7288e5d8c01122bea7650274cdaf358c7fc24cd0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976303"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197319"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>CLI で Key Vault の論理的な削除を使用する方法
 
@@ -133,7 +134,7 @@ az keyvault key list-deleted --vault-name ContosoVault
 
 キー コンテナーと同様に、削除されたキー、シークレット、証明書は、復旧または消去しない限り、最大で 90 日間、削除済みの状態で維持されます。
 
-#### <a name="keys"></a>構成する
+#### <a name="keys"></a>[キー]
 
 論理的に削除されたキーを復旧するには:
 
@@ -150,7 +151,7 @@ az keyvault key recover --name ContosoFirstKey --vault-name ContosoVault
 az keyvault key purge --name ContosoFirstKey --vault-name ContosoVault
 ```
 
-**recover** アクションと **purge** アクションには、キー コンテナーのアクセス ポリシーに独自のアクセス許可が関連付けられています。 ユーザーまたはサービス プリンシパルが **recover** アクションまたは **purge** アクションを実行するには、そのキーまたはシークレットに対する適切なアクセス許可が必要です。 既定では、'all' ショートカットを使用してすべてのアクセス許可を付与するときに、**purge** はキー コンテナーのアクセス ポリシーには追加されません。 **purge** のアクセス許可は明示的に付与する必要があります。 
+**復旧**と**消去**アクションには、キー コンテナーのアクセス ポリシーに関連付けられた独自のアクセス許可があります。 ユーザーまたはサービス プリンシパルが **recover** アクションまたは **purge** アクションを実行するには、そのキーまたはシークレットに対する適切なアクセス許可が必要です。 既定では、'all' ショートカットを使用してすべてのアクセス許可を付与するときに、**purge** はキー コンテナーのアクセス ポリシーには追加されません。 **purge** のアクセス許可は明示的に付与する必要があります。 
 
 #### <a name="set-a-key-vault-access-policy"></a>キー コンテナーのアクセス ポリシーを設定する
 

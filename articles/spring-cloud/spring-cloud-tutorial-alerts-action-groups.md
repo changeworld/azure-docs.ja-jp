@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
-ms.openlocfilehash: 49fea7d568e356169f8bbf0dfd1f4ce5c80a7223
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: cf7e075244a83190b83e629ef300a4903b114a6d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690255"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920078"
 ---
 # <a name="tutorial-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>チュートリアル:アラートとアクション グループを使用して Spring Cloud のリソースを監視する
 
@@ -86,7 +86,7 @@ Azure Spring の要件に加え、このチュートリアルでは、次のリ�
 
 1. **[Done]** をクリックします。
 
-監視に使用できる条件の詳細については、「[ユーザー ポータルのメトリック オプション](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options)」を参照してください。
+監視に使用できる条件の詳細については、「[ユーザー ポータルのメトリック オプション](spring-cloud-concept-metrics.md#user-metrics-options)」を参照してください。
 
  **[アクション]** で、 **[アクション グループの選択]** をクリックします。 **[アクション]** ペインで、先ほど定義した**アクション グループ**を選択します。
 
@@ -109,7 +109,7 @@ Azure Spring の要件に加え、このチュートリアルでは、次のリ�
    ![ポータルの [新しいアラート ルール] のスクリーンショット](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>次のステップ
-* [ユーザー ポータルのメトリック オプション](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options)
+* [ユーザー ポータルのメトリック オプション](spring-cloud-concept-metrics.md#user-metrics-options)
 * [Azure portal でのアクション グループの作成および管理](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
 * [アクション グループの SMS アラート動作](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)
 * [チュートリアル:Azure Spring Cloud で分散トレースを使用する](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)

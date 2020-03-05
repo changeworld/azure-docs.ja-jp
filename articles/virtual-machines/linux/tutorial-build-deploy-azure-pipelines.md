@@ -53,7 +53,7 @@ Azure Pipelines では、オンプレミスまたは任意のクラウド上の�
 
 ただし、新しいユーザーの場合は、サンプル コードを使用すると、より適切に開始できます。 その場合は、GitHub の次のリポジトリをフォークします。
 
-#### <a name="javatabjava"></a>[Java](#tab/java)
+#### <a name="java"></a>[Java](#tab/java)
 
 ```
 https://github.com/spring-projects/spring-petclinic
@@ -62,7 +62,7 @@ https://github.com/spring-projects/spring-petclinic
 > [!NOTE]
 > Petclinic は、[Maven](https://spring.io/guides/gs/maven/) を使用してビルドされた [Java Spring Boot](https://spring.io/guides/gs/spring-boot) アプリケーションです。
 
-#### <a name="javascripttabjava-script"></a>[JavaScript](#tab/java-script)
+#### <a name="javascript"></a>[JavaScript](#tab/java-script)
 
 ```
 https://github.com/azure-devops/fabrikam-node
@@ -82,13 +82,13 @@ https://github.com/azure-devops/fabrikam-node
 前述したサンプル アプリは、Ubuntu 16.04 でテストされています。このクイックスタートでは、同じバージョンの Linux VM を使用することをお勧めします。
 アプリに使用されるランタイム スタックに基づいて、以下で説明する追加手順のようにします。
 
-#### <a name="javatabjava"></a>[Java](#tab/java)
+#### <a name="java"></a>[Java](#tab/java)
 
 - Java Spring Boot および Spring Cloud に基づくアプリをデプロイする場合は、[こちら](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804)のテンプレートを使用して、Azure に Linux VM を作成します。このテンプレートでは、完全にサポートされている OpenJDK ベースのランタイムが提供されます。
 - Tomcat サーバーに Java サーブレットをデプロイする場合は、[こちら](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804)の Azure テンプレートを使用して Java 8 で Linux VM を作成し、[サービスとして Tomcat 9.x を構成](https://tomcat.apache.org/tomcat-9.0-doc/setup.html)します。
 - Java EE ベースのアプリをデプロイする場合は、Azure テンプレートを使用して、[Linux VM + Java + WebSphere 9.x](https://azuremarketplace.microsoft.com/marketplace/apps/midvision.websphere-application-server-nde-90)、[Linux VM + Java + WebLogic 12.x](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.20191009-arm-oraclelinux-wls-admin)、または [Linux VM + Java](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) + WildFly/JBoss 14 を作成します 
 
-#### <a name="javascripttabjava-script"></a>[JavaScript](#tab/java-script)
+#### <a name="javascript"></a>[JavaScript](#tab/java-script)
 
 JavaScript アプリまたは Node.js アプリをインストールするには、アプリをデプロイするための Nginx Web サーバーを含む Linux VM が必要です。
 Nginx を含む Linux VM がまだない場合は、[こちらの例](/azure/virtual-machines/linux/quick-create-cli)の手順を使用してここで Azure に作成します。
@@ -101,7 +101,7 @@ Nginx を含む Linux VM がまだない場合は、[こちらの例](/azure/vir
 
 **[パイプライン]** セクション内の **[環境]** ハブで環境を作成できます。
 1.  Azure DevOps 組織にサインインし、プロジェクトに移動します。
-2.  プロジェクト内で、 **[パイプライン]** ページに移動します。 次に **[環境]** を選択し、 **[環境の作成]** をクリックします。 環境の **[名前]** (必須) と、 **説明** を指定します。
+2.  プロジェクト内で、 **[パイプライン]** ページに移動します。 次に **[環境]** を選択し、 **[環境の作成]** をクリックします。 環境の **[名前]** (必須) と、 **[説明]** を指定します。
 3.  環境に追加する **[リソース]** として **[仮想マシン]** を選択し、 **[次へ]** をクリックします。
 4.  オペレーティング システム (Windows/Linux) を選択し、**PS 登録スクリプトをコピー**します。 
 5.  次に、この環境に登録する各ターゲット VM で、管理者の PowerShell コマンド プロンプトから、コピーしたスクリプトを実行します。
@@ -141,7 +141,7 @@ Web アプリケーションを発行する継続的インテグレーション 
 
 1. Azure Pipelines によってリポジトリが分析され、適切なパイプライン テンプレートが推奨されます。
 
-#### <a name="javatabjava"></a>[Java](#tab/java)
+#### <a name="java"></a>[Java](#tab/java)
 
 **starter** テンプレートを選択し、Java プロジェクトをビルドして Apache Maven でテストを実行する次の YAML スニペットをコピーします。
 
@@ -165,7 +165,7 @@ Web アプリケーションを発行する継続的インテグレーション 
 
 詳しくは、[Maven での Java アプリのビルド](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/java)に関する記事に記載されている手順に従ってください。
 
-#### <a name="javascripttabjava-script"></a>[JavaScript](#tab/java-script)
+#### <a name="javascript"></a>[JavaScript](#tab/java-script)
 
 **starter** テンプレートを選択し、npm で一般的な Node.js プロジェクトをビルドする次の YAML スニペットをコピーします。
 

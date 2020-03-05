@@ -3,12 +3,12 @@ title: チュートリアル - Azure Kubernetes Service で Application Gateway 
 description: Azure Kubernetes Service を使用してイングレス コントローラーとしての Application Gateway を備えた Kubernetes クラスターを作成する方法を示すチュートリアル
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: b16b0a40d14ecde87b2637976299d05d37d706f3
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 14b8f6ba74a06c126da239671cbb2053df19af7d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472266"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251770"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>チュートリアル:Azure Kubernetes Service で Application Gateway イングレス コントローラーを作成する
 
@@ -765,7 +765,7 @@ App Gateway、AKS、AGIC をインストールしたら、[Azure Cloud Shell](ht
 
 プレースホルダーは適切な値に置き換えてください。 指定したリソース グループ内のすべてのリソースが削除されます。
 
-```bash
+```azurecli
 az group delete -n <resource-group>
 ```
 

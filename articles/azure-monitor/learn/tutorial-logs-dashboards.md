@@ -1,19 +1,18 @@
 ---
 title: Azure Log Analytics データのダッシュボードを作成して共有する | Microsoft Docs
 description: このチュートリアルでは、保存されているすべてのログ クエリを Log Analytics ダッシュボードに可視化して、環境をわかりやすく表示できるようにする方法について説明します。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
 ms.custom: mvc
-ms.openlocfilehash: d06ead285321b780490c816dc3d902dac1b6916f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 76ba79561df4a75004369d24c4c6af82de9b1cfc
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365567"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661534"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Log Analytics データのダッシュボードを作成して共有する
 
@@ -28,7 +27,7 @@ Log Analytics ダッシュボードは、保存されているすべてのログ
 このチュートリアルの例を完了するには、[Log Analytics ワークスペースに接続された](quick-collect-azurevm.md)既存の仮想マシンが必要です。  
  
 ## <a name="sign-in-to-azure-portal"></a>Azure Portal にサインインする
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。 
+Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。 
 
 ## <a name="create-a-shared-dashboard"></a>共有ダッシュボードを作成する
 **[ダッシュボード]** を選択して、既定の[ダッシュボード](../../azure-portal/azure-portal-dashboards.md)を開きます。 ダッシュ ボードの外観は次の例とは異なります。

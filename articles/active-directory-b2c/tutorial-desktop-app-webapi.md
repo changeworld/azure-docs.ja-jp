@@ -2,20 +2,20 @@
 title: チュートリアル:デスクトップ アプリケーションから Node.js Web API へのアクセスを許可する
 description: Active Directory B2C を使用して Node.js Web API を保護し、.NET デスクトップ アプリからそれを呼び出す方法に関するチュートリアル。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
-ms.author: marsma
+ms.author: mimart
 ms.date: 10/12/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: a72c45f80d03cda7b176c421cc5498dd16c242ec
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 59670cda68f54e4c0b20b361f0688e6766acba61
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849872"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183384"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用してデスクトップ アプリから Node.js Web API へのアクセスを許可する
 
@@ -51,7 +51,7 @@ ms.locfileid: "76849872"
 
 この前提条件のチュートリアルでは、*nativeapp1* という名前のネイティブ クライアント アプリケーションを登録しました。 次の手順では、前のセクションで *webapi1* に対して公開した API のスコープをそのネイティブ アプリケーションの登録に構成します。 これにより、デスクトップ アプリケーションが Azure AD B2C から Web API がそのリソースへの範囲指定がある検証されたアクセスを提供するのに使用できるアクセス トークンを取得できるようになります。 このチュートリアルでは、後でデスクトップ アプリケーションと Web API の両方のコード サンプルを構成して実行します。
 
-#### <a name="applicationstabapplications"></a>[アプリケーション](#tab/applications/)
+#### <a name="applications"></a>[アプリケーション](#tab/applications/)
 
 1. **[アプリケーション]** を選択し、*nativeapp1* を選択します。
 1. **[API アクセス]** を選択し、 **[追加]** を選択します。
@@ -59,7 +59,7 @@ ms.locfileid: "76849872"
 1. **[スコープの選択]** ボックスの一覧で、先ほど定義したスコープを選択します。 *demo.read* や *demo.write* などです。
 1. **[OK]** を選択します。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
 
 1. **[アプリの登録 (プレビュー)]** を選択し、API にアクセスできるようにするネイティブ クライアント アプリケーションを選択します。 たとえば、*nativeapp1* とします。
 1. **[管理]** の下にある **[API のアクセス許可]** を選択します。

@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
-ms.topic: conceptual
+ms.subservice: general
+ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2424fbac3c95c1c60e6ef61cba53e481f4bb478a
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 039b7e57c1f98368ab33f9f17e19a741dc9eb5f4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650743"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184912"
 ---
 # <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>Azure Event Grid での Key Vault の監視 (プレビュー)
 

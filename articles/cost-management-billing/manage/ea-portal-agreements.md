@@ -3,16 +3,16 @@ title: Azure EA 契約と修正
 description: この記事では、Azure EA 契約と修正が Azure EA Portal の使用にどのように影響するかについて説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: c38f28120b7c84077d8d5012c4be4698680e5fdb
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 727f3cb25d2f95ec4db9f12080005d464b69d6ad
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200814"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272405"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA 契約と修正
 

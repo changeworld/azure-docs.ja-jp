@@ -330,7 +330,7 @@ Windows Update の結果を照会するには、クラスターにサインイ�
 
      [![Windows Update 操作の状態の画像](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
 
-### <a name="diagnostics-logs"></a>[診断ログ]
+### <a name="diagnostics-logs"></a>診断ログ
 
 パッチ オーケストレーション アプリケーションのログは、Service Fabric のランタイム ログの一部として収集されます。
 

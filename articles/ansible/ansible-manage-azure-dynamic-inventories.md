@@ -4,12 +4,12 @@ description: Ansible を使用して Azure の動的インベントリを管理�
 keywords: Ansible, Azure, DevOps, Bash, Cloud Shell, 動的インベントリ
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: d2ebf202cfc9f94b28fc7a512e1fea452401aec6
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: cd225dcf8a0c307d49e985817b71c491559edb14
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77193601"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247848"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>チュートリアル:Ansible を使用して Azure リソースの動的インベントリを構成する
 
@@ -91,25 +91,25 @@ Ansible には、Azure リソースの動的インベントリを生成する [a
 
 1. GNU `wget` コマンドを使用して、`azure_rm.py` スクリプトを取得します。
 
-    ```azurecli-interactive
+    ```python
     wget https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/azure_rm.py
     ```
 
 1. `chmod` コマンドを使用して、`azure_rm.py` スクリプトへのアクセス許可を変更します。 次のコマンドでは、`+x` パラメーターを使用して、指定されたファイル (`azure_rm.py`) の実行を許可しています。
 
-    ```azurecli-interactive
+    ```python
     chmod +x azure_rm.py
     ```
 
 1. [ansible コマンド](https://docs.ansible.com/ansible/2.4/ansible.html)を使用して、リソース グループに接続します。 
 
-    ```azurecli-interactive
+    ```python
     ansible -i azure_rm.py ansible-inventory-test-rg -m ping 
     ```
 
 1. 接続されると、次の出力のような結果が表示されます。
 
-    ```Output
+    ```output
     ansible-inventory-test-vm1 | SUCCESS => {
         "changed": false,
         "failed": false,
@@ -147,7 +147,7 @@ Ansible 2.8 以降、Ansible では [Azure 動的インベントリ プラグイ
 
 1. 上記のコマンドを実行しているときに、次のエラーを受け取る場合があります。
 
-    ```Output
+    ```output
     Failed to connect to the host via ssh: Host key verification failed.
     ```
     
@@ -159,7 +159,7 @@ Ansible 2.8 以降、Ansible では [Azure 動的インベントリ プラグイ
 
 1. プレイブックを実行すると、次の出力のような結果が表示されます。
   
-    ```Output
+    ```output
     ansible-inventory-test-vm1_0324 : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
     ansible-inventory-test-vm2_8971 : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
     ```
@@ -170,7 +170,7 @@ Ansible 2.8 以降、Ansible では [Azure 動的インベントリ プラグイ
 
 - タグを設定した後は、そのタグを "有効" にする必要があります。 タグを有効にする 1 つの方法は、`export` コマンドを使用して `AZURE_TAGS` という名前の環境変数にタグをエクスポートするという方法です。
 
-    ```azurecli-interactive
+    ```console
     export AZURE_TAGS=nginx
     ```
     
@@ -182,7 +182,7 @@ Ansible 2.8 以降、Ansible では [Azure 動的インベントリ プラグイ
     
     現在は 1 つの仮想マシン (`AZURE_TAGS` 環境変数にエクスポートされた値とタグが一致する仮想マシン) しか表示されません。
 
-    ```Output
+    ```output
        ansible-inventory-test-vm1 | SUCCESS => {
         "changed": false,
         "failed": false,
@@ -194,7 +194,7 @@ Ansible 2.8 以降、Ansible では [Azure 動的インベントリ プラグイ
 
 - コマンド `ansible-inventory -i myazure_rm.yml --graph` を実行して、次の出力を取得します。
 
-    ```Output
+    ```output
         @all:
           |--@tag_Ansible_nginx:
           |  |--ansible-inventory-test-vm1_9e2f
@@ -215,7 +215,7 @@ Ansible 2.8 以降、Ansible では [Azure 動的インベントリ プラグイ
 
 1. `nginx.yml` という名前のファイルを作成します。
 
-   ```azurecli-interactive
+   ```console
    code nginx.yml
    ```
 
@@ -255,7 +255,7 @@ Ansible 2.8 以降、Ansible では [Azure 動的インベントリ プラグイ
 
 1. プレイブックを実行すると、次の結果のような出力が表示されます。
 
-    ```Output
+    ```output
     PLAY [Install and start Nginx on an Azure virtual machine] 
 
     TASK [Gathering Facts] 
@@ -285,13 +285,13 @@ Ansible 2.8 以降、Ansible では [Azure 動的インベントリ プラグイ
 
 1. `ansible-inventory-test-vm1` の仮想マシンに接続されている間に、[nginx -v](https://nginx.org/en/docs/switches.html) コマンドを実行して Nginx がインストールされていることを判定します。
 
-    ```azurecli-interactive
+    ```console
     nginx -v
     ```
 
 1. `nginx -v` コマンドを実行すると、Nginx のバージョン (2 行目) が表示され、Nginx がインストールされていることがわかります。
 
-    ```Output
+    ```output
     tom@ansible-inventory-test-vm1:~$ nginx -v
 
     nginx version: nginx/1.10.3 (Ubuntu)
@@ -303,7 +303,7 @@ Ansible 2.8 以降、Ansible では [Azure 動的インベントリ プラグイ
 
 1. `ansible-inventory-test-vm2` 仮想マシンに対して上記の手順を実行すると、Nginx を入手できる場所を示す情報メッセージが表示されます (これは、この時点で Nginx がインストールされていないことを意味しています)。
 
-    ```Output
+    ```output
     tom@ansible-inventory-test-vm2:~$ nginx -v
     The program 'nginx' can be found in the following packages:
     * nginx-core

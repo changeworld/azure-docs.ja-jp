@@ -1,19 +1,18 @@
 ---
 title: Log Analytics のアラートを使用してイベントに応答する | Microsoft Docs
 description: このチュートリアルでは、ワークスペース内の重要な情報の識別、問題に関する事前の通知、または問題を修正するためのアクションの呼び出しを行うために使用できる Log Analytics のアラートについて理解します。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/05/2018
 ms.custom: mvc
-ms.openlocfilehash: 11ce572cdb8a04dac07689b37eef76f354475df3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 756ce6c8551d259fc27855489b4276d90c7aa771
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365624"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670374"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Azure Monitor のアラートを使用してイベントに応答する
 Azure Monitor のアラートは、Log Analytics リポジトリ内の重要な情報を特定できます。 アラートは定期的にログ検索を自動的に実行するアラート ルールによって作成され、ログ検索の結果が特定の条件と一致している場合はアラート レコードが作成され、自動化された応答を実行するように構成できます。  このチュートリアルは、「[Log Analytics データのダッシュボードを作成して共有する](tutorial-logs-dashboards.md)」チュートリアルの続きです。   
@@ -27,7 +26,7 @@ Azure Monitor のアラートは、Log Analytics リポジトリ内の重要な�
 このチュートリアルの例を完了するには、[Log Analytics ワークスペースに接続された](../../azure-monitor/learn/quick-collect-azurevm.md)既存の仮想マシンが必要です。  
 
 ## <a name="sign-in-to-azure-portal"></a>Azure Portal にサインインする
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。 
+Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。 
 
 ## <a name="create-alerts"></a>アラートを作成する
 アラートは Azure Monitor のアラート ルールによって作成され、保存済みのクエリまたはカスタム ログ検索を一定の間隔で自動的に実行できます。  特定のパフォーマンス メトリック、特定のイベントが作成されたとき、イベントが欠如しているとき、または特定の時間枠内に作成されたイベントの数に基づくアラートを作成できます。  たとえば、アラートを使用して、平均 CPU 使用率が特定のしきい値を超えた場合、不足している更新が検出された場合、または特定の Windows サービスまたは Linux デーモンが実行されていないときにイベントが生成された場合に通知を受信することができます。  ログ検索の結果が特定の条件に一致すると、アラートが作成されます。 さらに、アラートの通知や別のプロセスの呼び出しなど、1 つ以上のアクションを自動的に実行できます。 

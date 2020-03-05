@@ -4,12 +4,12 @@ description: Jenkins とブルー/グリーン デプロイ パターンを使�
 keywords: Jenkins, Azure, 開発, Kubernetes, k8s, AKS, ブルー/グリーン デプロイ, 継続的デリバリー, CD
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: ae9c496cd820bf1263cac50fb676990ed65ed0ba
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 9d6551f910bd99322f844b44130ebb03732df83c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158559"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251469"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Jenkins とブルー/グリーン デプロイ パターンを使用した Azure Kubernetes Service (AKS) へのデプロイ
 
@@ -84,19 +84,19 @@ GitHub の Microsoft リポジトリに、Jenkins とブルー/グリーン パ�
 
 1. Azure アカウントにサインインします。 次のコマンドを入力した後に、サインインを完了する方法を説明する手順が示されます。 
     
-    ```bash
+    ```azurecli
     az login
     ```
 
 1. 前の手順で `az login` コマンドを実行すると、すべての Azure サブスクリプションの一覧が表示されます (サブスクリプション ID も含む)。 この手順では、既定の Azure サブスクリプションを設定します。 &lt;your-subscription-id> プレースホルダーを目的の Azure サブスクリプション ID に置き換えます。 
 
-    ```bash
+    ```azurecli
     az account set -s <your-subscription-id>
     ```
 
 1. リソース グループを作成します。 &lt;your-resource-group-name> プレースホルダーを新しいリソース グループの名前に置き換え、&lt;your-location> プレースホルダーを場所に置き換えます。 `az account list-locations` コマンドにより、すべての Azure の場所が表示されます。 AKS のプレビュー期間中は、すべての場所を使用できるわけではありません。 このとき、無効な場所を入力すると、エラー メッセージに利用可能な場所が一覧表示されます。
 
-    ```bash
+    ```azurecli
     az group create -n <your-resource-group-name> -l <your-location>
     ```
 
@@ -129,7 +129,7 @@ AKS でのブルー/グリーン デプロイの設定は、手動で行うこ�
 #### <a name="set-up-a-kubernetes-cluster-manually"></a>手動での Kubernetes クラスターの設定 
 1. Kubernetes 構成をプロファイル フォルダーにダウンロードします。
 
-    ```bash
+    ```azurecli
     az aks get-credentials -g <your-resource-group-name> -n <your-kubernetes-cluster-name> --admin
     ```
 
@@ -157,13 +157,13 @@ AKS でのブルー/グリーン デプロイの設定は、手動で行うこ�
     
     次のコマンドで、対応する IP アドレスの DNS 名を更新します。
 
-    ```bash
+    ```azurecli
     az network public-ip update --dns-name aks-todoapp --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
     ```
 
     `todoapp-test-blue` と `todoapp-test-green` の呼び出しを繰り返します。
 
-    ```bash
+    ```azurecli
     az network public-ip update --dns-name todoapp-blue --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
 
     az network public-ip update --dns-name todoapp-green --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
@@ -175,13 +175,13 @@ AKS でのブルー/グリーン デプロイの設定は、手動で行うこ�
 
 1. `az acr create` コマンドを実行して、Container Registry のインスタンスを作成します。 次のセクションでは、`login server` を Docker レジストリの URL として使用できます。
 
-    ```bash
+    ```azurecli
     az acr create -n <your-registry-name> -g <your-resource-group-name>
     ```
 
 1. `az acr credential` コマンドを実行して、Container Registry の資格情報を表示します。 次のセクションで必要になるため、Docker レジストリのユーザー名とパスワードを書き留めます。
 
-    ```bash
+    ```azurecli
     az acr credential show -n <your-registry-name>
     ```
 
@@ -224,7 +224,7 @@ AKS でのブルー/グリーン デプロイの設定は、手動で行うこ�
 
 1. お使いのリポジトリで `/deploy/aks/` に移動し、`Jenkinsfile` を開きます。
 
-2. ファイルを次のように更新します。
+2. この場合は、ファイルを次のように更新します。
 
     ```groovy
     def servicePrincipalId = '<your-service-principal>'
@@ -253,7 +253,7 @@ AKS でのブルー/グリーン デプロイの設定は、手動で行うこ�
 
 1. `deploy/aks/Jenkinsfile` というスクリプト パスを入力します。
 
-## <a name="run-the-job"></a>ジョブを実行する
+## <a name="run-the-job"></a>ジョブの実行
 
 1. ローカル環境でプロジェクトを正常に実行できることを確認します。 その方法は次のとおりです。[ローカル コンピューターでプロジェクトを実行します](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it)。
 
@@ -261,22 +261,22 @@ AKS でのブルー/グリーン デプロイの設定は、手動で行うこ�
 
 1. ジョブが実行されたことを確認するには、次の URL を参照します。
     - パブリック エンドポイント: `http://aks-todoapp<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
-    - 青のエンドポイント - `http://aks-todoapp-blue<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
+    - ブルーのエンドポイント - `http://aks-todoapp-blue<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
     - グリーンのエンドポイント - `http://aks-todoapp-green<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
 
 パブリックおよびブルーのテスト エンドポイントでは同じ更新が行われますが、グリーンのエンドポイントでは既定の tomcat イメージが表示されます。 
 
 ビルドを複数回実行する場合は、ブルーとグリーンのデプロイが順に繰り返されます。 つまり、現在の環境がブルーの場合、ジョブはグリーンの環境にデプロイしてテストを行います。 その後、テストが順調な場合、ジョブはアプリケーションのパブリック エンドポイントを更新して、グリーンの環境にトラフィックをルーティングします。
 
-## <a name="additional-information"></a>追加情報
+## <a name="additional-information"></a>関連情報
 
 ダウンタイムなしのデプロイの詳細については、この[クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/301-jenkins-aks-zero-downtime-deployment)を参照してください。 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルで作成したリソースは、不要になったら削除できます。
 
-```bash
+```azurecli
 az group delete -y --no-wait -n <your-resource-group-name>
 ```
 
@@ -284,7 +284,7 @@ az group delete -y --no-wait -n <your-resource-group-name>
 
 Jenkins プラグインでバグが発生した場合は、[Jenkins JIRA](https://issues.jenkins-ci.org/) で特定のコンポーネントについて問題を報告してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Jenkins とブルー/グリーンデプロイ パターンを使用した AKS へのデプロイ方法を説明しました。 Azure Jenkins プロバイダーの詳細については、Azure 上の Jenkins に関するサイトを参照してください。
 

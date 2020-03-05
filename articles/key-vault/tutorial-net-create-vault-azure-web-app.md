@@ -5,16 +5,17 @@ services: key-vault
 author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 84256d79ec543d038b4d3d3f3dc6901bbd003871
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: e636ab843a9801097bf770ca12c9d1e512750c91
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003370"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198118"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>チュートリアル:.NET で Azure Web アプリを使用して Azure Key Vault を使用する
 
@@ -50,11 +51,11 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 Azure Key Vault では資格情報が安全に格納されます。そのため資格情報はコードに表示されません。 ただし、キーを取得するためには Azure Key Vault に対して認証を行う必要があります。 Key Vault に対して認証を行うには、資格情報が必要となります。 これは従来からあるブートストラップ問題のジレンマです。 マネージド サービス ID (MSI) は、このプロセスを簡素化する "_ブートストラップ ID_" を提供することによって、この問題を解決します。
 
-Azure サービス (Azure Virtual Machines、Azure App Service、Azure Functions など) に対して MSI を有効にすると、Azure によって[サービス プリンシパル](basic-concepts.md)が作成されます。 MSI は、サービスのインスタンスのプリンシパルを Azure Active Directory (Azure AD) に作成し、サービス プリンシパルの資格情報をそのインスタンスに挿入します。
+Azure サービス (Azure Virtual Machines、Azure App Service、Azure Functions など) に対して MSI を有効にすると、Azure によって[サービス プリンシパル](basic-concepts.md)が作成されます。 MSI によってこれが Azure Active Directory (Azure AD) 内でサービスのインスタンスに対して行われ、サービス プリンシパルの資格情報がそのインスタンスに挿入されます。
 
 ![MSI ダイアグラム](media/MSI.png)
 
-次に、アクセス トークンを取得するために、ユーザーのコードが、Azure リソース上で利用可能なローカル メタデータ サービスを呼び出します。 そのコードは、Azure Key Vault サービスに対し、ローカルの MSI エンドポイントから取得したアクセス トークンを使用して認証を行います。
+次に、アクセス トークンを取得するために、Azure リソース上で利用可能なローカル メタデータ サービスがユーザーのコードによって呼び出されます。 そのコードは、Azure Key Vault サービスに対し、ローカルの MSI エンドポイントから取得したアクセス トークンを使用して認証を行います。
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
@@ -64,7 +65,7 @@ Azure CLI を使用して Azure にログインするには、次のように入
 az login
 ```
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
@@ -237,16 +238,16 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --s
 
 1. Visual Studio で、**key-vault-dotnet-core-quickstart** プロジェクトを選択します。
 2. **[発行]**  >  **[開始]** の順に選択します。
-3. **作成** を選択します。
+3. **［作成］** を選択します
 
 アプリケーションを実行すると、シークレット値を取得できることが確認できます。
 
 これで、シークレットを保存してキー コンテナーから取得する Web アプリを .NET で正常に作成できました。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 必要がなくなったら、仮想マシンとキー コンテナーを削除できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 >[!div class="nextstepaction"]
 >[Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)

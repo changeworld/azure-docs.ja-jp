@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: c0fed80f4ba9815cee49bc9968d542f168570986
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 530ae2b795b4d94802e9f0d3420f7b3af86936ad
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976362"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184640"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault の可用性と冗長性
 
@@ -37,11 +38,11 @@ Azure リージョン全体が使用できない場合がまれにあります�
   * シークレットの取得
   * キーのリスト
   * キー (のプロパティ) の取得
-  * 暗号化
+  * Encrypt
   * 復号化
   * ラップ
   * ラップ解除
-  * 確認
+  * Verify (英語の可能性あり)
   * 署名
   * バックアップ
 * フェールオーバーがフェールバックされると、すべての種類の要求 (つまり、読み取り "*および*" 書き込み要求) が可能になります。

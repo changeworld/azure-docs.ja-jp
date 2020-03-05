@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3eb76535a8047840a577f5b044001d85c20b13f0
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 84b36c1357bedfc120cec72af84fdd79f52a2f57
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188387"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245385"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure サブスクリプションの課金所有権を別のアカウントに譲渡する
 
@@ -45,7 +45,7 @@ ms.locfileid: "77188387"
 
     > [!IMPORTANT]
     >
-    > 新しいアカウントの Azure AD テナントにサブスクリプションを移行することを選択した場合は、サブスクリプション内のリソースを管理するすべての[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) の割り当てが完全に削除されます。 譲渡要求を受け入れた新しいアカウントのユーザーにのみ、サブスクリプションのリソースの管理アクセス権が付与されます。 詳細については、[別の Azure AD テナント内のユーザーへのサブスクリプションの譲渡](../../cognitive-services/acoustics/known-issues.md)に関するページを参照してください。 または、サブスクリプションを新しいアカウントのテナントに移行せずに、課金所有権を移行するサブスクリプション Azure AD テナントのチェック ボックスをオフにすることもできます。 これを行うと、Azure リソースを管理する既存の RBAC アクセス許可が維持されます。
+    > 新しいアカウントの Azure AD テナントにサブスクリプションを移行することを選択した場合は、サブスクリプション内のリソースを管理するすべての[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) の割り当てが完全に削除されます。 譲渡要求を受け入れた新しいアカウントのユーザーにのみ、サブスクリプションのリソースの管理アクセス権が付与されます。 詳細については、[別の Azure AD テナント内のユーザーへのサブスクリプションの譲渡](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)に関するページを参照してください。 または、サブスクリプションを新しいアカウントのテナントに移行せずに、課金所有権を移行するサブスクリプション Azure AD テナントのチェック ボックスをオフにすることもできます。 これを行うと、Azure リソースを管理する既存の RBAC アクセス許可が維持されます。
 
     ![譲渡の送信ページ](./media/billing-subscription-transfer/billing-send-transfer-request.PNG)
 

@@ -1,18 +1,17 @@
 ---
 title: Azure PowerShell のサンプル スクリプト - Log Analytics ワークスペースを作成する | Microsoft Docs
 description: Azure PowerShell のサンプル スクリプト - Log Analytics ワークスペースを作成する
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 09/07/2017
-ms.openlocfilehash: 242ba4d8487e25ae0d6c5fd7dc1525942deb2a64
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fc60be2364e80c288300d78cc5dd23eed4ea9e62
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363100"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658151"
 ---
 # <a name="create-a-log-analytics-workspace-with-powershell"></a>PowerShell を使用して Log Analytics ワークスペースを作成する
 
@@ -32,7 +31,7 @@ ms.locfileid: "75363100"
 
 このスクリプトでは、次のコマンドを使用して、サブスクリプション内に新しい Log Analytics ワークスペースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [Get-AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace) | 既存のワークスペースに関する情報を取得します。 |
 | [New-AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace) | 指定されたリソース グループと場所にワークスペースを作成します。 |

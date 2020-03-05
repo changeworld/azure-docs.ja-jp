@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
 monikerRange: vsts
-ms.openlocfilehash: 84e5533a17dc70fb5c835089f3a3cec1a86e35bf
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: eecb4dba39ff847515a4a312b7cb74698867c693
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596081"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247904"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Azure Kubernetes のデプロイ センター
 
@@ -39,7 +39,7 @@ Azure DevOps のデプロイ センターを利用すると、アプリケーシ
 
 1. AKS クラスターを作成するには、以下のコマンドを実行します。
 
-    ```cmd
+    ```azurecli
     # Create a resource group in the South India location:
 
     az group create --name azooaks --location southindia

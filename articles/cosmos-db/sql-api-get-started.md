@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
-ms.openlocfilehash: ba8b097dc852ba97d4223ba09f78d1f2cdb568e0
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 2681b2199f321f695bc621ed5580319a5e907b34
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587449"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274021"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>チュートリアル:.NET コンソール アプリをビルドして Azure Cosmos DB SQL API アカウントのデータを管理する
 
@@ -146,7 +146,7 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 
 1. 次のコードを追加して、**Main** メソッドから **GetStartedDemoAsync** 非同期タスクを実行します。 **Main** メソッドは例外をキャッチし、コンソールに書き込みます。
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="Main":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=Main)]
 
 1. F5 キーを押してアプリケーションを実行します。
 
@@ -160,7 +160,7 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 
 1. `CreateDatabaseAsync` メソッドをコピーし、`GetStartedDemoAsync` メソッドの下に貼り付けます。
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="CreateDatabaseAsync":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=CreateDatabaseAsync&highlight=7)]
 
     `CreateDatabaseAsync` によって、`databaseId` フィールドに指定された ID で新しいデータベース (ID `FamilyDatabase`) が作成されます (このデータベースがまだ存在していない場合)。
 
@@ -281,7 +281,7 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 
 1. `CreateContainerAsync` メソッドをコピーし、`CreateDatabaseAsync` メソッドの下に貼り付けます。 `CreateContainerAsync` によって、`LastName` プロパティによってパーティション化されている `containerId` フィールドに指定された ID で新しいコンテナー (ID `FamilyContainer`) が作成されます (このコンテナーがまだ存在していない場合)。
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="CreateContainerAsync&highlight":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=CreateContainerAsync&highlight=9)]
 
 1. CosmosClient をインスタンス化したところに、次のコードをコピーして貼り付けて、追加した **CreateContainer** メソッドを呼び出します。
 
@@ -313,12 +313,12 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 
 1. `Family`、`Parent`、`Child`、`Pet`、および `Address` クラスをコピーして `Family.cs` に貼り付けます。
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Family.cs":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Family.cs)]
 
 
 1. *Program.cs* に戻り、`AddItemsToContainerAsync` メソッドを `CreateContainerAsync` メソッドの後に追加します。
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="AddItemsToContainerAsync":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=AddItemsToContainerAsync)]
 
 
     コードによって、同じ ID を持つ項目が存在していないことが確認されます。 2 つの項目を挿入します。1 つは *Andersen Family* の項目、もう 1 つは *Wakefield Family* の項目です。
@@ -348,7 +348,7 @@ Azure Cosmos DB では、各コンテナーに格納された JSON ドキュメ�
 
 1. `QueryItemsAsync` メソッドをコピーし、`AddItemsToContainerAsync` メソッドの後に貼り付けます。
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="QueryItemsAsync":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=QueryItemsAsync&highlight=10-11,17-18)]
 
 1. ``GetStartedDemoAsync`` メソッドに ``QueryItemsAsync`` への呼び出しを追加します。
 
@@ -376,7 +376,7 @@ Azure Cosmos DB では、各コンテナーに格納された JSON ドキュメ�
 
 1. `ReplaceFamilyItemAsync` メソッドをコピーし、`QueryItemsAsync` メソッドの後に貼り付けます。
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="ReplaceFamilyItemAsync":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=ReplaceFamilyItemAsync&highlight=15)]
 
 1. `GetStartedDemoAsync` メソッドに `ReplaceFamilyItemAsync` への呼び出しを追加します。
 
@@ -405,7 +405,7 @@ Azure Cosmos DB では、各コンテナーに格納された JSON ドキュメ�
 
 1. `DeleteFamilyItemAsync` メソッドをコピーし、`ReplaceFamilyItemAsync` メソッドの後に貼り付けます。
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="DeleteFamilyItemAsync":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=DeleteFamilyItemAsync&highlight=10)]
 
 1. `GetStartedDemoAsync` メソッドに `DeleteFamilyItemAsync` への呼び出しを追加します。
 
@@ -435,11 +435,11 @@ Azure Cosmos DB では、各コンテナーに格納された JSON ドキュメ�
 
 1. `DeleteDatabaseAndCleanupAsync` メソッドをコピーし、`DeleteFamilyItemAsync` メソッドの後に貼り付けます。
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="DeleteDatabaseAndCleanupAsync":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=DeleteDatabaseAndCleanupAsync)]
 
 1. ``GetStartedDemoAsync`` メソッドに ``DeleteDatabaseAndCleanupAsync`` への呼び出しを追加します。
 
-    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="GetStartedDemoAsync":::
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=GetStartedDemoAsync&highlight=14)]
 
 1. F5 キーを押してアプリケーションを実行します。
 
