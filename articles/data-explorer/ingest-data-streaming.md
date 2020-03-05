@@ -7,23 +7,18 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 49129bede62e456cf2807cc879b7fc5e1793b65b
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 4a0593ccd6bdf37520e73ba8ed421ec4b10ea52c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424951"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623301"
 ---
 # <a name="streaming-ingestion-preview"></a>ストリーミング インジェスト (プレビュー)
 
 ストリーミング インジェストは、多様なボリューム データでインジェスト時間が 10 秒未満の低待機時間を必要とするシナリオを対象とします。 各テーブルへのデータ ストリームが比較的小さい (1 秒あたりのレコード数が少ない) 1 つまたは複数のデータベースで、数多くのテーブルの操作処理を最適化するために使用されますが、データ インジェスト ボリューム全体が高くなります (1 秒あたり数千レコード)。
 
 データ量がテーブルごとに 1 MB/秒を超える場合は、ストリーミング インジェストではなく、従来の (一括) インジェストを使用します。 さまざまなインジェスト方法の詳細については、「[Azure データ エクスプローラーでのデータ インジェスト](/azure/data-explorer/ingest-data-overview)」を参照してください。
-
-> [!NOTE]
-> ストリーミング インジェストでは、次の機能はサポートされていません。
-> * [データベース カーソル](/azure/kusto/management/databasecursor)。
-> * [データ マッピング](/azure/kusto/management/mappings)。 [事前に作成された](/azure/kusto/management/tables#create-ingestion-mapping)データ マッピングのみがサポートされています。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,6 +27,9 @@ ms.locfileid: "77424951"
 * [Azure Data Explorer クラスターとデータベース](create-cluster-database-portal.md)を作成する
 
 ## <a name="enable-streaming-ingestion-on-your-cluster"></a>クラスターでストリーミング インジェストを有効にする
+
+> [!WARNING]
+> ストリーミング インジェストを有効にする前に[制限事項](#limitations)を確認してください。
 
 1. Azure portal で、Azure Data Explorer クラスターに移動します。 **[設定]** で **[構成]** を選択します。 
 1. **[構成]** ウィンドウで、 **[オン]** を選択して **[ストリーミング インジェスト]** を有効にします。
@@ -49,8 +47,9 @@ ms.locfileid: "77424951"
 
 2 種類のストリーミング インジェストがサポートされています。
 
-* データ ソースとして使用される[イベント ハブ](/azure/data-explorer/ingest-data-event-hub)
-* カスタム インジェストでは、Azure Data Explorer クライアント ライブラリのいずれかを使用するアプリケーションを作成する必要があります。 サンプル アプリケーションについては、[ストリーミング インジェストのサンプル](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample)を参照してください。
+
+* データ ソースとして使用される[**イベント ハブ**](/azure/data-explorer/ingest-data-event-hub)
+* **カスタム インジェスト**では、Azure Data Explorer クライアント ライブラリのいずれかを使用するアプリケーションを作成する必要があります。 サンプル アプリケーションについては、[ストリーミング インジェストのサンプル](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample)を参照してください。
 
 ### <a name="choose-the-appropriate-streaming-ingestion-type"></a>適切なストリーミング インジェストの種類を選択する
 
@@ -78,6 +77,10 @@ ms.locfileid: "77424951"
 * テーブルとインジェスト マッピングの作成や変更など、スキーマの更新には、ストリーミング インジェスト サービスに最大 5 分かかることがあります。
 * クラスターでストリーミング インジェストを有効にすると、データがストリーミング経由で取り込まれていない場合でも、インジェスト データをストリーミングするためにクラスター マシンのローカル SSD ディスクの一部を使用して、ホット キャッシュに使用できるストレージを減らします。
 * [extent タグ](/azure/kusto/management/extents-overview.md#extent-tagging)は、ストリーミング インジェスト データには設定できません。
+
+ストリーミング インジェストでは、次の機能はサポートされていません。
+* [データベース カーソル](/azure/kusto/management/databasecursor)。
+* [データ マッピング](/azure/kusto/management/mappings)。 [事前に作成された](/azure/kusto/management/tables#create-ingestion-mapping)データ マッピングのみがサポートされています。 
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -2,23 +2,20 @@
 title: Azure Kubernetes Service (AKS) でのクラスター オートスケーラーの使用
 description: Azure Kubernetes Service (AKS) クラスターでのアプリケーションの需要を満たすように、クラスター オートスケーラーを使用してクラスターを自動的にスケーリングする方法について説明します。
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.author: mlearned
-ms.openlocfilehash: 033cf88e29ba4a9f7ce9397fe216f7380e70be07
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 0b94865d81afc56c24d470012c668662f003a1b8
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76713400"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596251"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションの需要を満たすようにクラスターを自動的にスケーリング
 
 Azure Kubernetes Service (AKS) のアプリケーションの需要に対応するには、ワークロードを実行するノードの数を調整する必要が生じる場合があります。 クラスター オートスケーラー コンポーネントは、リソース制約のためにスケジュールできないクラスター内のポッドを監視できます。 問題が検出されると、アプリケーションの需要を満たすためにノード プール内のノードの数が増やされます。 また、実行ポッドの不足について定期的にノードがチェックされ、必要に応じてノードの数が減らされます。 AKS クラスター内のノードの数を自動的に増減するこの機能を使用すると、効率的で、コスト効率の高いクラスターを実行できます。
 
-この記事では、AKS クラスターでクラスター オートスケーラーを有効にして管理する方法について説明します。 
+この記事では、AKS クラスターでクラスター オートスケーラーを有効にして管理する方法について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -106,6 +103,90 @@ az aks update \
 
 アプリケーションとサービスのパフォーマンスをモニターして、必要なパフォーマンスに一致するようにクラスター オートスケーラーのノード数を調整してください。
 
+## <a name="using-the-autoscaler-profile"></a>オートスケーラー プロファイルの使用
+
+クラスター全体のオートスケーラー プロファイルで既定値を変更することで、クラスター オートスケーラーの詳細をよりきめ細かに構成することもできます。 たとえばスケールダウン イベントは、ノードの使用率が低い状態で 10 分経過した後に発生します。 15 分ごとに実行されたワークロードがある場合は、15 分または 20 分経過後に使用率が低いノードをスケールダウンするようにオートスケーラー プロファイルを変更できます。 クラスター オートスケーラーを有効にすると、異なる設定を指定しない限り既定のプロファイルが使用されます。 クラスター オートスケーラー プロファイルでは、以下の設定を更新できます。
+
+| 設定                          | 説明                                                                              | 既定値 |
+|----------------------------------|------------------------------------------------------------------------------------------|---------------|
+| scan-interval                    | スケールアップまたはスケールダウンに関してクラスターが再評価される頻度                                    | 10 秒    |
+| scale-down-delay-after-add       | スケールアップ後に、スケールダウンの評価が再開されるまでの時間                               | 10 分    |
+| scale-down-delay-after-delete    | ノードの削除後に、スケールダウンの評価が再開されるまでの時間                          | scan-interval |
+| scale-down-delay-after-failure   | スケールダウンの失敗後に、スケールダウンの評価が再開されるまでの時間                     | 3 分     |
+| scale-down-unneeded-time         | ノードが不要になってからスケールダウンの対象になるまでの時間                  | 10 分    |
+| scale-down-unready-time          | 準備ができていないノードが不要になってからスケールダウンの対象になるまでの時間         | 20 分    |
+| scale-down-utilization-threshold | 要求されたリソースの合計を容量で割った値として定義される、ノード利用レベル。これを下回るノードはスケールダウンの対象と見なすことができます。 | 0.5 |
+| max-graceful-termination-sec     | ノードのスケールダウンを試みるときに、クラスター オートスケーラーがポッドの終了を待機する最大秒数。 | 600 秒   |
+
+> [!IMPORTANT]
+> クラスター オートスケーラー プロファイルは、クラスター オートスケーラーを使用するすべてのノード プールに影響を及ぼします。 ノード プールごとにオートスケーラー プロファイルを設定することはできません。
+
+### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
+
+クラスター オートスケーラーの設定プロファイルを設定するには、*aks-preview* CLI 拡張機能のバージョン 0.4.30 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールし、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムがあるかどうかを確認します。
+
+```azurecli-interactive
+# Install the aks-preview extension
+az extension add --name aks-preview
+
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
+
+### <a name="set-the-cluster-autoscaler-profile-on-an-existing-aks-cluster"></a>既存の AKS クラスターに対してクラスター オートスケーラー プロファイルを設定する
+
+*cluster-autoscaler-profile* パラメーターを指定して [az aks update][az-aks-update] コマンドを使用し、クラスターに対してクラスター オートスケーラー プロファイルを設定します。 次の例では、プロファイルでのスキャン間隔の設定を 30 秒として構成しています。
+
+```azurecli-interactive
+az aks update \
+  --resource-group myResourceGroup \
+  --name myAKSCluster \
+  --cluster-autoscaler-profile scan-interval=30s
+```
+
+クラスター内のノード プールに対してクラスター オートスケーラーを有効にすると、それらのクラスターでもクラスター オートスケーラー プロファイルが使用されます。 次に例を示します。
+
+```azurecli-interactive
+az aks nodepool update \
+  --resource-group myResourceGroup \
+  --cluster-name myAKSCluster \
+  --name mynodepool \
+  --enable-cluster-autoscaler \
+  --min-count 1 \
+  --max-count 3
+```
+
+> [!IMPORTANT]
+> クラスター オートスケーラー プロファイルを設定すると、クラスター オートスケーラーが有効にされた既存のノード プールでは、すぐにプロファイルの使用が開始されます。
+
+### <a name="set-the-cluster-autoscaler-profile-when-creating-an-aks-cluster"></a>AKS クラスター作成時にクラスター オートスケーラー プロファイルを設定する
+
+クラスターを作成するときに *cluster-autoscaler-profile* パラメーターを使用することもできます。 次に例を示します。
+
+```azurecli-interactive
+az aks create \
+  --resource-group myResourceGroup \
+  --name myAKSCluster \
+  --node-count 1 \
+  --enable-cluster-autoscaler \
+  --min-count 1 \
+  --max-count 3 \
+  --cluster-autoscaler-profile scan-interval=30s
+```
+
+上のコマンドでは、AKS クラスターを作成し、クラスター全体のオートスケーラー プロファイルのスキャン間隔を 30 秒と定義しています。 また、このコマンドでは、初期ノード プールに対してクラスター オートスケーラーを有効にし、最小ノード数を 1 に、最大ノード数を 3 に設定しています。
+
+### <a name="reset-cluster-autoscaler-profile-to-default-values"></a>クラスター オートスケーラー プロファイルを既定値にリセットする
+
+クラスターに対するクラスター オートスケーラー プロファイルをリセットするには、[az aks update][az-aks-update] コマンドを使用します。
+
+```azurecli-interactive
+az aks update \
+  --resource-group myResourceGroup \
+  --name myAKSCluster \
+  --cluster-autoscaler-profile ""
+```
+
 ## <a name="disable-the-cluster-autoscaler"></a>クラスター オートスケーラーの無効化
 
 クラスター オートスケーラーを今後使用しない場合は、[az aks update][az-aks-update] コマンドで *--disable-cluster-autoscaler* パラメーターを指定することで無効にできます。 クラスター オートスケーラーが無効になってもノードは削除されません。
@@ -129,9 +210,9 @@ az aks update \
 
 AKS では、ユーザーに代わってクラスター オートスケーラーが管理され、マネージド コントロール プレーンで実行されます。 マスター ノードのログは、結果として表示されるように構成する必要があります。
 
-クラスター オートスケーラーから Log Analytics にプッシュされるようにログを構成するには、次の手順を行います。
+クラスター オートスケーラーから Log Analytics にプッシュされるようにログを構成するには、次の手順に従います。
 
-1. Log Analytics にクラスターオートスケーラーのログをプッシュするように診断ログのルールを設定します。 [手順の詳細はこちらにあります](https://docs.microsoft.com/azure/aks/view-master-logs#enable-diagnostics-logs)。[ログ] のオプションを選択するときは、確実に `cluster-autoscaler` のボックスにチェックマークを入れます。
+1. Log Analytics にクラスター オートスケーラーのログをプッシュするように診断ログのルールを設定します。 [手順の詳細はこちらにあります](https://docs.microsoft.com/azure/aks/view-master-logs#enable-diagnostics-logs)。[ログ] のオプションを選択するときは、確実に `cluster-autoscaler` のボックスにチェックマークを入れます。
 1. Azure portal から、クラスターの [ログ] セクションをクリックします。
 1. Log Analytics に次のサンプル クエリを入力します。
 
@@ -140,7 +221,7 @@ AzureDiagnostics
 | where Category == "cluster-autoscaler"
 ```
 
-取得できるログがあれば、次のようなログが返されるはずです。
+取得するログがあれば、次の例のようなログが表示されるはずです。
 
 ![Log Analytics のログ](media/autoscaler/autoscaler-logs.png)
 
@@ -185,20 +266,20 @@ az aks nodepool update \
 この記事では、AKS ノードの数を自動的にスケーリングする方法について説明します。 また、ポッドの水平オートスケーラーを使用して、アプリケーションを実行するポッドの数を自動的に調整することもできます。 ポッドの水平オートスケーラーの使用手順については、「[AKS でのアプリケーションのスケーリング][aks-scale-apps]」を参照してください。
 
 <!-- LINKS - internal -->
+[aks-faq]: faq.md
+[aks-scale-apps]: tutorial-kubernetes-scale.md
+[aks-support-policies]: support-policies.md
 [aks-upgrade]: upgrade-cluster.md
+[autoscaler-profile-properties]: #using-the-autoscaler-profile
 [azure-cli-install]: /cli/azure/install-azure-cli
 [az-aks-show]: /cli/azure/aks#az-aks-show
 [az-extension-add]: /cli/azure/extension#az-extension-add
-[aks-scale-apps]: tutorial-kubernetes-scale.md
+[az-extension-update]: /cli/azure/extension#az-extension-update
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [az-aks-scale]: /cli/azure/aks#az-aks-scale
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
-[aks-support-policies]: support-policies.md
-[aks-faq]: faq.md
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
 
 <!-- LINKS - external -->
 [az-aks-update]: https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview

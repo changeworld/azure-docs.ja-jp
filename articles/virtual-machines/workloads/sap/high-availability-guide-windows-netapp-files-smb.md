@@ -1,5 +1,5 @@
 ---
-title: Azure NetApp Files (SMB) を使用した Windows 上の SAP NetWeaver 用の Azure Virtual Machines の高可用性 | Microsoft Docs
+title: Azure NetApp Files (SMB) を使用した Windows での SAP NW 用 Azure VM の HA | Microsoft Docs
 description: SAP アプリケーション用の Azure NetApp Files (SMB) を使用した Windows 上の Azure VM における SAP NetWeaver の高可用性
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: radeltch
-ms.openlocfilehash: d7c2bfbe3f277bbaf652191977434ea5fe4dbffd
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: b41db629c5308348f632b3dc51c75822ba361c60
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555295"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591355"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>SAP アプリケーション用の Azure NetApp Files (SMB) を使用した Windows 上の Azure VM における SAP NetWeaver の高可用性
 
@@ -193,11 +193,11 @@ SAP から、次のソフトウェアが必要です。
 ![図 3:ロック エントリは、フェールオーバー テスト後も保持されます](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-figure-3.png)  
 
 詳細については、「[ERS を使用した ASCS のエンキュー フェールオーバーのトラブルシューティング](https://wiki.scn.sap.com/wiki/display/SI/Troubleshooting+for+Enqueue+Failover+in+ASCS+with+ERS)」に関する説明を参照してください
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [SAP のための Azure Virtual Machines の計画と実装][planning-guide]
 * [SAP のための Azure Virtual Machines のデプロイ][deployment-guide]
 * [SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]
 * 高可用性を確立し、SAP のディザスター リカバリーを計画する方法について学びます 
 * HANA on Azure (大規模なインスタンス)。[Azure 上での SAP HANA (大規模なインスタンス) の高可用性およびディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md)に関するページを参照してください。
-* Azure VM 上の SAP HANA の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、[Azure Virtual Machines (VM) 上の SAP HANA の高可用性][sap-hana-ha]に関するページを参照してください。
+* Azure VM 上の SAP HANA の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、「[Azure Virtual Machines (VM) 上の SAP HANA の高可用性][sap-hana-ha]」を参照してください。

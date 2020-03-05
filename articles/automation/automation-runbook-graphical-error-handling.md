@@ -5,64 +5,67 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: db14ee3d7e28ba7896b7558a7d01cbe77ad4496b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dec715ec6741f4429d8b1d4f620ef3cb82d4c1d3
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421027"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649978"
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Azure Automation のグラフィカル Runbook におけるエラー処理
 
-Runbook の重要な設計原則として考慮する必要があるのは、Runbook で発生する可能性のあるさまざまな問題を特定することです。 それらの問題には、成功、予期されるエラー状態、予期しないエラー状態などがあります。
+Azure Automation のグラフィカル Runbook について考慮する必要がある重要な設計原則は、実行中に Runbook で発生する可能性のある問題を識別することです。 それらの問題には、成功、予期されるエラー状態、予期しないエラー状態などがあります。
 
-Runbook には、エラー処理が含まれている必要があります。 グラフィカル Runbook でアクティビティの出力を検証したり、エラーを処理したりするために、Windows PowerShell コード アクティビティを使用して、アクティビティの出力リンクに条件付きロジックを定義したり、他の方法を適用したりすることができます。          
+多くの場合、強制終了にならないエラーが Runbook アクティビティで発生すると、そのエラーに関係なく後続のすべてのアクティビティを処理することで、Windows PowerShell によってアクティビティが処理されます。 エラーで例外が生成される場合がありますが、それでも次のアクティビティは実行できます。
 
-多くの場合、Runbook アクティビティで強制終了にならないエラーが発生すると、後続のアクティビティはエラーに関係なく処理されます。 エラーで例外が生成される場合がありますが、それでも次のアクティビティは実行できます。 これが、PowerShell で設計されているエラー処理方法です。    
+グラフィカル Runbook には、実行に関する問題に対処するためのエラー処理コードが含まれている必要があります。 アクティビティの出力を検証したり、エラーを処理したりするために、PowerShell コード アクティビティを使用して、アクティビティの出力リンクに条件付きロジックを定義したり、他の方法を適用したりすることができます。
 
-実行中に発生する可能性がある PowerShell エラーには、強制終了になるエラーと強制終了にならないエラーがあります。 強制終了になるエラーと強制終了にならないエラーの違いは、次のとおりです。
+Azure Automation グラフィカル Runbook は、機能が向上して、エラー処理ができるようになりました。 例外を強制終了にならないエラーに変換して、アクティビティ間のエラー リンクを作成することができます。 機能が向上した処理により、Runbook でエラーをキャッチし、実行後の状態または予期しない状態を管理できます。 
 
-* **強制終了になるエラー**:実行中の重大なエラー。コマンド (またはスクリプトの実行) は完全に停止します。 例として、存在しないコマンドレットの使用、コマンドレットが実行できなくなるような構文エラー、その他の致命的なエラーなどが挙げられます。
+>[!NOTE]
+>この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
 
-* **強制終了にならないエラー**:重大でないエラー。無視して実行を継続できます。 例として、ファイルが見つからない、アクセス許可に問題があるなど、操作上のエラーが挙げられます。
+## <a name="powershell-error-types"></a>PowerShell のエラーの種類
 
-Azure Automation グラフィカル Runbook は、機能が向上して、エラー処理ができるようになりました。 例外を強制終了にならないエラーに変換して、アクティビティ間のエラー リンクを作成することができます。 この処理により、Runbook の作成者はエラーをキャッチし、実行後の状態または予期しない状態を管理することができます。  
+Runbook 実行中に発生する可能性がある PowerShell のエラーの種類としては、強制終了になるエラーと、強制終了にならないエラーがあります。
+ 
+### <a name="terminating-error"></a>強制終了になるエラー
+
+強制終了になるエラーは、コマンドまたはスクリプトの実行が完全に停止する、実行中の重大なエラーです。 例として、存在しないコマンドレットの使用、コマンドレットが実行できなくなるような構文エラー、その他の致命的なエラーなどが挙げられます。
+
+### <a name="non-terminating-error"></a>強制終了にならないエラー
+
+強制終了にならないエラーは、エラー状態にもかかわらず実行を継続できる、重大でないエラーです。 例として、ファイルが見つからないエラーや、アクセス許可の問題など、操作関係のエラーが挙げられます。
 
 ## <a name="when-to-use-error-handling"></a>エラー処理を使用する場合
 
-エラーまたは例外をスローする重大なアクティビティが存在する場合は、Runbook 内の次のアクティビティが処理されないようにして、エラーを適切に処理することが重要です。 これは特に、Runbook がビジネス操作プロセスまたはサービス操作プロセスをサポートしている場合に重要です。
+重要なアクティビティにおいてエラーまたは例外がスローされたときには、Runbook でエラー処理を使用します。 Runbook の次のアクティビティが処理されないようにして、エラーを適切に処理することが重要です。 エラー処理は特に、Runbook がビジネスやサービスの運用プロセスをサポートしている場合に重要です。
 
-Runbook の作成者は、エラーが発生する可能性のある各アクティビティに、他の任意のアクティビティを指すエラー リンクを追加できます。 リンク先アクティビティとしては、コード アクティビティ、コマンドレットの呼び出し、別の Runbook の呼び出しなど、任意の種類のアクティビティを指定できます。
+エラーが発生する可能性のあるアクティビティごとに、他の任意のアクティビティを指し示すエラー リンクを追加できます。 リンク先としては、コード アクティビティ、コマンドレットの呼び出し、別の Runbook の呼び出しなど、任意の種類のアクティビティを指定できます。 リンク先アクティビティには出力方向のリンクを追加することもでき、通常のリンクまたはエラー リンクのいずれかを設定できます。 Runbook ではリンクによって、コード アクティビティに頼らずに複雑なエラー処理ロジックを実装できます。
 
-また、リンク先アクティビティにもさらに出力方向のリンクを追加することができます。 それらのリンクは、通常のリンクにすることもエラー リンクにすることもできます。 つまり、Runbook の作成者は、コード アクティビティに頼らずに複雑なエラー処理ロジックを実装できます。 一般的な機能を備えた専用のエラー処理 Runbook を作成することをお勧めしますが、必須ではありません。 PowerShell コード アクティビティでのエラー処理ロジックは、唯一のオプションではありません。  
-
-たとえば、VM を起動し、その VM にアプリケーションをインストールしようとする Runbook があるとします。 VM が正しく起動しない場合は、次の 2 つのアクションを実行します。
+一般的な機能を備えた専用のエラー処理 Runbook を作成することをお勧めしますが、これを実践することは必須ではありません。 たとえば、仮想マシンを起動し、そこにアプリケーションをインストールしようとする Runbook があるとします。 VM が正しく起動しない場合、以下が実行されます。
 
 1. この問題に関する通知を送信する。
 2. 代わりの新しい VM を自動的にプロビジョニングする別の Runbook を開始する。
 
-ソリューションの 1 つは、手順 1. を処理するアクティビティを指すエラー リンクを作成することです。 たとえば、**Write-Warning** コマンドレットを、手順 2. のアクティビティ (**Start-AzureRmAutomationRunbook** コマンドレットなど) に接続することができます。
+解決策の 1 つは、手順 1. を処理するアクティビティを指し示すエラー リンクを Runbook 内に作成することです。 たとえば Runbook で、**Write-Warning** コマンドレットを、手順 2. のアクティビティ ([Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) コマンドレットなど) に接続できます。
 
-この動作は複数の Runbook で使用できるように汎用化することもできます。また、以前に提示したガイダンスに従い、これら 2 つのアクティビティを個別のエラー処理 Runbook に分けることもできます。 このエラー処理 Runbook を呼び出す前に、元の Runbook 内のデータからカスタム メッセージを構築し、パラメーターとしてエラー処理 Runbook に渡すことができます。
+この動作は、多くの Runbook で使用するために、以前に示したガイダンスに従ってこれら 2 つのアクティビティを別個のエラー処理用 Runbook に分けることで、汎用化することもできます。 元の Runbook からこのエラー処理 Runbook を呼び出す前に、データからカスタム メッセージを作成し、それをパラメーターとしてエラー処理 Runbook に渡すことができます。
 
 ## <a name="how-to-use-error-handling"></a>エラー処理を使用する方法
 
-各アクティビティには、例外を強制終了にならないエラーに変換する構成設定が用意されています。 既定では、この設定は無効です。 エラーを処理するアクティビティでは、この設定を有効にすることをお勧めします。  
+Runbook 内の各アクティビティには、例外を強制終了にならないエラーに変換する構成設定が用意されています。 既定では、この設定は無効です。 この設定は、Runbook でエラーが処理されるすべてのアクティビティに対して有効にすることが推奨されます。 この構成を有効にすると、Runbook ではエラー リンクを利用して、アクティビティの強制終了になるエラーとならないエラーの両方が、強制終了にならないエラーとして処理されます。  
 
-この構成を有効にすることで、アクティビティの強制終了になるエラーとならないエラーの両方が強制終了にならないエラーとして処理され、エラー リンクで処理できるようになります。  
+構成設定を有効にした後に、Runbook に、エラーを処理するアクティビティを作成します。 アクティビティで何らかのエラーが発生すると、出力方向のエラー リンクが使用されます。 アクティビティで通常の出力が生成された場合でも、通常リンクは使用されません。<br><br> ![Automation Runbook のエラー リンクの例](media/automation-runbook-graphical-error-handling/error-link-example.png)
 
-この設定を構成した後で、エラーを処理するアクティビティを作成します。 アクティビティで何らかのエラーが発生すると、出力方向のエラー リンクが使用されます。アクティビティが通常の出力を生成した場合でも、通常リンクは使用されません。<br><br> ![Automation Runbook のエラー リンクの例](media/automation-runbook-graphical-error-handling/error-link-example.png)
+次の例では、VM のコンピューター名を格納している変数が、Runbook によって取得されます。 その後、次のアクティビティで VM の起動が試みられます。<br><br> ![Automation Runbook のエラー処理の例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling.png)<br><br>      
 
-次の例では、Runbook が仮想マシンのコンピューター名を含む変数を取得します。 その後、次のアクティビティで、仮想マシンの起動を試みます。<br><br> ![Automation Runbook のエラー処理の例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling.png)<br><br>      
+**Get-AutomationVariable** アクティビティと [Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) コマンドレットは、例外をエラーに変換するように構成されています。 変数の取得や VM の起動で問題がある場合は、コードによってエラーが生成されます。<br><br> ![Automation Runbook のエラー処理アクティビティの設定](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)。
 
-**Get-AutomationVariable** アクティビティと **Start-AzureRmVm** は、例外をエラーに変換するように構成されています。 変数の取得や VM の起動に関する問題がある場合には、エラーが生成されます。<br><br> ![Automation Runbook のエラー処理アクティビティの設定](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)
-
-エラー リンクは、これらのアクティビティから単一の**エラー管理**アクティビティ (コード アクティビティ) にリンクされています。 このアクティビティは単純な PowerShell の式で構成されており、*Throw* キーワードで処理を停止し、 *$Error.Exception.Message* で現在の例外に関するメッセージを取得するようになっています。<br><br> ![Automation Runbook のエラー処理コードの例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
-
+エラー リンクは、これらのアクティビティから単一の**エラー管理**コード アクティビティにリンクされています。 このアクティビティは単純な PowerShell の式で構成されており、*Throw* キーワードで処理を停止し、`$Error.Exception.Message` で現在の例外について説明するメッセージを取得します。<br><br> ![Automation Runbook のエラー処理コードの例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 
 ## <a name="next-steps"></a>次のステップ
 
 * グラフィカル Runbook でのリンクおよびリンクの種類の詳細については、「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md#links-and-workflow)」を参照してください。
 
-* Runbook の実行、Runbook ジョブの監視方法、その他の技術的な詳細については、[Runbook ジョブの追跡](automation-runbook-execution.md)に関するページを参照してください。
-
+* Runbook の実行、Runbook ジョブの監視、その他の技術的な詳細については、「[Azure Automation での Runbook の実行](automation-runbook-execution.md)」を参照してください。

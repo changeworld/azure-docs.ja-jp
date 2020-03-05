@@ -3,16 +3,15 @@ title: ベスト プラクティスを実装するために Azure で Kubernetes
 description: kube-advisor を使用して Azure Kubernetes Service のご自身のデプロイでベスト プラクティスの実装を確認する方法について説明します
 services: container-service
 author: seanmck
-ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: 03c5eb2e32a0a8ec51844511276d9efba5651068
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 29ea7dba1df8bc7c68e3d17563a51b784ce4a561
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "65073774"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595435"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>クラスターでの Kubernetes のベスト プラクティスを確認する
 
@@ -67,7 +66,7 @@ kubectl delete -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa
 
 RBAC が有効になっていないクラスターに対してツールを実行している場合、クリーンアップは不要です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Kubernetes Service に関する問題のトラブルシューティング](troubleshooting.md)
 

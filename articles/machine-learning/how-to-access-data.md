@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6d68599af644e5bb03fc850a880b07c6a4d262a9
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: b31d0237f04ef535fa6528d5b3a04e5ee7256e22
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77370470"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623672"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Azure ストレージ サービスのデータにアクセスする
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -57,10 +57,10 @@ ms.locfileid: "77370470"
 [Azure&nbsp;Data Lake&nbsp;Storage Gen&nbsp;2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)| サービス プリンシパル| ✓ | ✓ | ✓ |✓
 Azure&nbsp;SQL&nbsp;Database| SQL 認証 <br>サービス プリンシパル| ✓ | ✓ | ✓ |✓
 Azure&nbsp;PostgreSQL | SQL 認証| ✓ | ✓ | ✓ |✓
-Azure&nbsp;Database&nbsp;for&nbsp;MySQL | SQL 認証|  | ✓ | ✓ |✓
-Databricks&nbsp;File&nbsp;System| 認証なし | | ✓* | ✓ * |✓* 
+Azure&nbsp;Database&nbsp;for&nbsp;MySQL | SQL 認証|  | ✓* | ✓* |✓*
+Databricks&nbsp;File&nbsp;System| 認証なし | | ✓** | ✓ ** |✓** 
 
-\* ローカル コンピューティング先のシナリオでのみサポートされます
+*MySQL は、パイプラインの [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) でのみサポートされています。<br> \** Databricks は、パイプラインの [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py) でのみサポートされています。
 
 ### <a name="storage-guidance"></a>ストレージのガイダンス
 
@@ -77,20 +77,22 @@ Azure Storage ソリューションをデータストアとして登録すると
 
 >[!IMPORTANT]
 > 現在のデータストアの作成と登録のプロセスの一部として、Azure Machine Learning は、ユーザーが指定したプリンシパル (ユーザー名、サービス プリンシパル、または SAS トークン) が基になるストレージ サービスにアクセスできることを検証します。 
-<br>
+<br><br>
 ただし、Azure Data Lake Storage Gen 1 および 2 データストアの場合、この検証は、[`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py) や [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-parquet-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-) などのデータ アクセス メソッドが呼び出されるときに後で行われます。 
 
 ### <a name="python-sdk"></a>Python SDK
 
 すべての登録メソッドは [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) クラスにあり、`register_azure_*` という形式になっています。
 
-`register()` メソッドを指定するために必要な情報は、[Azure portal](https://portal.azure.com)を使用して見つけることができます。
+`register()` メソッドを指定するために必要な情報は、[Azure portal](https://portal.azure.com) で見つけることができます。
+左側のウィンドウで **[ストレージ アカウント]** を選択し、登録するストレージ アカウントを選択します。 **[概要]** ページには、アカウント名、コンテナー、ファイル共有名などの情報が表示されます。 
 
-1. 左側のウィンドウで **[ストレージ アカウント]** を選択し、登録するストレージ アカウントを選択します。 
-2. アカウント名、コンテナー、ファイル共有名などの情報については、 **[概要]** ページに移動してください。 アカウント キーや SAS トークンなどの認証情報については、 **[設定]** ウィンドウの **[アクセス キー]** に移動します。 
+* アカウント キーや SAS トークンなどの認証項目については、 **[設定]** ウィンドウの **[アクセス キー]** に移動します。 
+
+* テナント ID やクライアント ID などのサービス プリンシパル項目については、 **[アプリの登録]** に移動して、使用するアプリを選択します。 対応する **[概要]** ページには、これらの項目が含まれます。
 
 > [!IMPORTANT]
-> お使いのストレージ アカウントが仮想ネットワーク内にある場合は、Azure BLOB データストアの作成のみがサポートされます。 お使いのワークスペースにストレージ アカウントへのアクセス権を付与するには、パラメーター `grant_workspace_access` を `True` に設定します。
+> お使いのストレージ アカウントが仮想ネットワーク内にある場合は、**SDK を使用した** BLOB、ファイル共有、ADLS Gen 1、および ADLS Gen 2 データストアの作成のみがサポートされます。 お使いのワークスペースにストレージ アカウントへのアクセス権を付与するには、パラメーター `grant_workspace_access` を `True` に設定します。
 
 次の例は、Azure BLOB コンテナー、Azure ファイル共有、および Azure Data Lake Storage Generation 2 をデータストアとして登録する方法を示しています。 その他のストレージ サービスについては、[`register_azure_*` メソッドに関する参照ドキュメント](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#methods)を参照してください。
 
@@ -134,7 +136,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 #### <a name="azure-data-lake-storage-generation-2"></a>Azure Data Lake Storage Generation 2
 
-Azure Data Lake Storage Generation 2 (ADLS Gen 2) データストアの場合、[register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) を使用して、[サービス プリンシパルのアクセス許可](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)を持つ Azure Data Lake Gen 2 ストレージに接続されている資格情報データストアを登録します。 詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)」をご覧ください。 
+Azure Data Lake Storage Generation 2 (ADLS Gen 2) データストアの場合、[register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) を使用して、[サービス プリンシパルのアクセス許可](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)を持つ Azure Data Lake Gen 2 ストレージに接続されている資格情報データストアを登録します。 サービス プリンシパルを利用するには、[お使いのアプリケーションを登録](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)し、ロールの割り当てを [閲覧者とデータ アクセス] に設定する必要があります。 詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)」をご覧ください。 
 
 次のコードでは、データストア `adlsgen2_datastore_name` を作成し、ワークスペース `ws` に登録しています。 このデータストアは、指定されたサービス プリンシパルの資格情報を使用して、`account_name` ストレージ アカウントのファイル システム `test` にアクセスします。
 
@@ -162,12 +164,19 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 
 Azure Machine Learning Studio のいくつかの手順で、新しいデータストアを作成します。
 
+> [!IMPORTANT]
+> お使いのストレージ アカウントが仮想ネットワーク内にある場合は、[SDK を使用した](#python-sdk)データストアの作成のみがサポートされます。 
+
 1. [Azure Machine Learning Studio](https://ml.azure.com/) にサインインします。
 1. 左側のウィンドウの **[管理]** で、 **[データストア]** を選択します。
 1. **[+ 新しいデータストア]** を選択します。
 1. 新しいデータストアのフォームに入力します。 このフォームは、選択した Azure Storage の種類と認証の種類に基づいて、インテリジェントに自動更新されます。
   
-フォームを入力するのに必要な情報は、[Azure portal](https://portal.azure.com) で見つけられます。 左側のウィンドウで **[ストレージ アカウント]** を選択し、登録するストレージ アカウントを選択します。 **[概要]** ページには、アカウント名、コンテナー、ファイル共有名などの情報が表示されます。 アカウント キーや SAS トークンなどの認証項目については、 **[設定]** ウィンドウの **[アクセス キー]** に移動します。
+フォームを入力するのに必要な情報は、[Azure portal](https://portal.azure.com) で見つけられます。 左側のウィンドウで **[ストレージ アカウント]** を選択し、登録するストレージ アカウントを選択します。 **[概要]** ページには、アカウント名、コンテナー、ファイル共有名などの情報が表示されます。 
+
+* アカウント キーや SAS トークンなどの認証項目については、 **[設定]** ウィンドウの **[アクセス キー]** に移動します。 
+
+* テナント ID やクライアント ID などのサービス プリンシパル項目については、 **[アプリの登録]** に移動して、使用するアプリを選択します。 対応する **[概要]** ページには、これらの項目が含まれます。 
 
 次の例は、Azure BLOB データストアを作成するときにフォームがどのように表示されるかを示しています。 
     

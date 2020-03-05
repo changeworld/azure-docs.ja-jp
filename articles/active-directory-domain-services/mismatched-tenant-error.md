@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 601574cc2a478dc53a261cfcb074e43a556dd4c0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 76dc964b7fe7f5e8acfcfb03b2e89bebb2caa176
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979511"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613386"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>既存の Azure AD Domain Services のマネージド ドメインでのディレクトリの不一致エラーを解決する
 
@@ -26,7 +26,7 @@ Azure Active Directory Domain Services (Azure AD DS) マネージド ドメイ�
 
 ## <a name="what-causes-this-error"></a>このエラーの原因
 
-ディレクトリの不一致エラーは、Azure AD DS マネージド ドメインと仮想ネットワークが 2 つの異なる Azure AD テナントに属している場合に発生します。 たとえば、Contoso の Azure AD テナントで実行される *aadds.contoso.com* という Azure AD DS マネージド ドメインがあるとします。 しかし、マネージド ドメインの Azure 仮想ネットワークは、Fabrikam の Azure AD テナントの一部です。
+ディレクトリの不一致エラーは、Azure AD DS マネージド ドメインと仮想ネットワークが 2 つの異なる Azure AD テナントに属している場合に発生します。 たとえば、Contoso の Azure AD テナントで実行される *aaddscontoso.com* という Azure AD DS マネージド ドメインがあるとします。 しかし、マネージド ドメインの Azure 仮想ネットワークは、Fabrikam の Azure AD テナントの一部です。
 
 Azure はロールベースのアクセス制御 (RBAC) を使用して、リソースへのアクセスを制限します。 Azure AD テナントで Azure AD DS を有効にすると、資格情報ハッシュがそのマネージド ドメインに同期されます。 この操作を行うには、ユーザーが Azure AD ディレクトリのテナント管理者である必要があり、資格情報へのアクセスが制御される必要があります。 Azure 仮想ネットワークにリソースをデプロイし、トラフィックを制御するには、Azure AD DS をデプロイする仮想ネットワークに対する管理特権が必要です。
 

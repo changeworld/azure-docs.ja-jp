@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 02/13/2020
+ms.date: 02/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 9858f7ac25f2063e62dce0322f1859a0a7fcf83b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 63b1adc7b25b732cda147c5c1d11cc37e7b39248
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198668"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562022"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure リソースの組み込みロール
 
@@ -115,6 +115,7 @@ ms.locfileid: "77198668"
 > | [Log Analytics Reader](#log-analytics-reader) | Log Analytics Reader は、すべての監視データの表示と検索、およびすべての Azure リソース上の Azure Diagnostics 構成の表示など、監視設定の表示を行うことができます。 | 73c42c96-874c-492b-b04d-ab87d138a893 |
 > | [Logic App Contributor](#logic-app-contributor) | ロジック アプリを管理できますが、アクセス権を変更することはできません。 | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
 > | [Logic App Operator](#logic-app-operator) | ロジック アプリの読み取り、有効化、無効化ができますが、編集または更新はできません。 | 515c2055-d9d4-4321-b1b9-bd0c9a0f79fe |
+> | [Managed Application Contributor Role](#managed-application-contributor-role) | マネージド アプリケーション リソースの作成を許可します。 | 641177b8-a67a-45b9-a033-47bc880bb21e |
 > | [Managed Application Operator Role](#managed-application-operator-role) | マネージド アプリケーション リソースに対する読み取りとアクションの実行が可能です。 | c7393b34-138c-406f-901b-d8cf2b17e6ae |
 > | [Managed Applications 閲覧者](#managed-applications-reader) | マネージド アプリおよび要求 JIT アクセスでリソースを読み取ることができます。 | b9331d33-8a36-4f8c-b097-4f54124fdb44 |
 > | [Managed Identity Contributor](#managed-identity-contributor) | ユーザー割り当て ID の作成、読み取り、更新、削除を行います | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
@@ -133,9 +134,10 @@ ms.locfileid: "77198668"
 > | [リソース ポリシーの共同作成者](#resource-policy-contributor) | リソース ポリシーの作成または変更、サポート チケットの作成、リソースまたは階層の読み取りを行う権限を持つユーザー。 | 36243c78-bf99-498c-9df9-86d9f8d28608 |
 > | [Scheduler Job Collections Contributor](#scheduler-job-collections-contributor) | スケジューラ ジョブ コレクションを管理できます。ただし、それらへのアクセスは含まれません。 | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
 > | [Search Service Contributor](#search-service-contributor) | Search サービスを管理できます。ただし、それらへのアクセスは含まれません。 | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
-> | [Security Admin](#security-admin) | Security Center のみ: セキュリティ ポリシーの表示、セキュリティ状態の表示、セキュリティ ポリシーの編集、アラートと推奨事項の表示、アラートと推奨事項の却下を行うことができます | fb1c8493-542b-48eb-b624-b4c8fea62acd |
-> | [セキュリティ マネージャー (レガシ)](#security-manager-legacy) | これは、レガシ ロールです。 代わりにセキュリティ管理者をご使用ください。 | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
-> | [Security Reader](#security-reader) | Security Center のみ: 推奨事項とアラート、セキュリティ ポリシー、セキュリティの状態を表示することはできますが、変更することはできません | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
+> | [Security Admin](#security-admin) | セキュリティ ポリシーの表示、セキュリティ状態の表示、セキュリティ ポリシーの編集、アラートと推奨事項の表示、アラートと推奨事項の却下を行うことができます。 | fb1c8493-542b-48eb-b624-b4c8fea62acd |
+> | [Security Assessment Contributor](#security-assessment-contributor) | 評価を Security Center にプッシュできます | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
+> | [セキュリティ マネージャー (レガシ)](#security-manager-legacy) | これは、レガシ ロールです。 代わりに Security Admin を使用してください。 | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
+> | [Security Reader](#security-reader) | 推奨事項とアラート、セキュリティ ポリシー、セキュリティの状態を表示することはできますが、変更することはできません。 | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | [Site Recovery Contributor](#site-recovery-contributor) | 資格情報コンテナーの作成とロールの割り当てを除く、Site Recovery サービスを管理できます | 6670b86e-a3f7-4917-ac9b-5d6ab1be4567 |
 > | [Site Recovery Operator](#site-recovery-operator) | フェールオーバーとフェールバックを実行できますが、その他の Site Recovery 管理操作は実行しません | 494ae006-db33-4328-bf46-533a6560a3ca |
 > | [Site Recovery Reader](#site-recovery-reader) | Site Recovery の状態を表示できますが、その他の管理操作は実行できません | dbaa88c4-0c30-4179-9fb3-46319faa6149 |
@@ -167,6 +169,8 @@ ms.locfileid: "77198668"
 > | [Virtual Machine User Login](#virtual-machine-user-login) | ポータルで仮想マシンを表示し、通常のユーザーとしてログインします。 | fb879df8-f326-4884-b1cf-06f3ad86be52 |
 > | [Web Plan Contributor](#web-plan-contributor) | Web サイトの Web プランを管理できます。ただし、それらへのアクセスは含まれません。 | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | [Website Contributor](#website-contributor) | Web サイト (Web プランではない) を管理できます。ただし、それらへのアクセスは含まれません。 | de139f84-1756-47ae-9be6-808fbbe84772 |
+> | [Workbook Contributor](#workbook-contributor) | 共有ブックを保存できます。 | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
+> | [Workbook Reader](#workbook-reader) | ブックの読み取りが可能です。 | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
 
 
 ## <a name="owner"></a>所有者
@@ -346,7 +350,7 @@ ms.locfileid: "77198668"
 > | Microsoft.ApiManagement/service/restore/action | ユーザーが指定したストレージ アカウント内の指定されたコンテナーからの API Management サービスの復元 |
 > | Microsoft.ApiManagement/service/updatecertificate/action | API Management サービスの SSL 証明書をアップロードします。 |
 > | Microsoft.ApiManagement/service/updatehostname/action | API Management サービスのカスタム ドメイン名を設定、更新、または削除します。 |
-> | Microsoft.ApiManagement/service/write | API Management サービスの新しいインスタンスの作成 |
+> | Microsoft.ApiManagement/service/write | API Management サービス インスタンスの作成または更新 |
 > | Microsoft.Authorization/*/read | 承認の読み取り |
 > | Microsoft.Insights/alertRules/* | アラート ルールの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
@@ -690,6 +694,7 @@ ms.locfileid: "77198668"
 > | **Id** | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
 > | **アクション** |  |
 > | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | 管理対象クラスターの clusterAdmin 資格情報を一覧表示します。 |
+> | Microsoft.ContainerService/managedClusters/accessProfiles/listCredential/action | 資格情報の一覧の取得を使用し、ロール名を指定してマネージド クラスターのアクセス プロファイルを取得します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -1540,6 +1545,8 @@ ms.locfileid: "77198668"
 > | Microsoft.Databox/jobs/listsecrets/action |  |
 > | Microsoft.Databox/jobs/listcredentials/action | 注文に関連する暗号化されていない資格情報を一覧表示します。 |
 > | Microsoft.Databox/locations/availableSkus/action | このメソッドは、使用可能な SKU の一覧を返します。 |
+> | Microsoft.Databox/locations/validateInputs/action | このメソッドでは、すべての種類の検証が行われます。 |
+> | Microsoft.Databox/locations/regionConfiguration/action | このメソッドでは、リージョンの構成が返されます。 |
 > | Microsoft.Databox/locations/validateAddress/action | 配送先住所を検証し、存在する場合には別の住所を指定します。 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
@@ -1565,6 +1572,7 @@ ms.locfileid: "77198668"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.EventGrid/eventSubscriptions/write | eventSubscription を作成または更新します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -1851,6 +1859,8 @@ ms.locfileid: "77198668"
 > | Microsoft.LabServices/labAccounts/createLab/action | ラボ アカウントにラボを作成します。 |
 > | Microsoft.LabServices/labAccounts/sizes/getRegionalAvailability/action |  |
 > | Microsoft.LabServices/labAccounts/getRegionalAvailability/action | ラボ アカウントの下で構成されたサイズ カテゴリ別のリージョン別の提供状況を取得します。 |
+> | Microsoft.LabServices/labAccounts/getPricingAndAvailability/action | ラボ アカウントのサイズ、地域、およびオペレーティング システムの組み合わせの価格と可用性を取得します。 |
+> | Microsoft.LabServices/labAccounts/getRestrictionsAndUsage/action | このサブスクリプションのコアに関する制限と使用状況を取得します |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 > | **NotActions** |  |
@@ -1964,6 +1974,25 @@ ms.locfileid: "77198668"
 > | Microsoft.Web/connections/*/read | 接続を読み取ります。 |
 > | Microsoft.Web/customApis/*/read | カスタム API を読み取ります。 |
 > | Microsoft.Web/serverFarms/read | App Service プランのプロパティを取得します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="managed-application-contributor-role"></a>Managed Application Contributor Role
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | マネージド アプリケーション リソースの作成を許可します。 |
+> | **Id** | 641177b8-a67a-45b9-a033-47bc880bb21e |
+> | **アクション** |  |
+> | */read | 機密データを除くあらゆる種類のリソースの読み取り |
+> | Microsoft.Solutions/applications/* |  |
+> | Microsoft.Solutions/register/action | ソリューションに登録します。 |
+> | Microsoft.Resources/subscriptions/resourceGroups/* |  |
+> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -2337,7 +2366,7 @@ ms.locfileid: "77198668"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | Security Center のみ: セキュリティ ポリシーの表示、セキュリティ状態の表示、セキュリティ ポリシーの編集、アラートと推奨事項の表示、アラートと推奨事項の却下を行うことができます |
+> | **説明** | セキュリティ ポリシーの表示、セキュリティ状態の表示、セキュリティ ポリシーの編集、アラートと推奨事項の表示、アラートと推奨事項の却下を行うことができます。 |
 > | **Id** | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
@@ -2358,11 +2387,26 @@ ms.locfileid: "77198668"
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
+## <a name="security-assessment-contributor"></a>Security Assessment Contributor
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | 評価を Security Center にプッシュできます |
+> | **Id** | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
+> | **アクション** |  |
+> | Microsoft.Security/assessments/write | サブスクリプションで利用可能なセキュリティ評価を作成または更新します |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
 ## <a name="security-manager-legacy"></a>セキュリティ マネージャー (レガシ)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | これは、レガシ ロールです。 代わりにセキュリティ管理者をご使用ください。 |
+> | **説明** | これは、レガシ ロールです。 代わりに Security Admin を使用してください。 |
 > | **Id** | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
@@ -2386,7 +2430,7 @@ ms.locfileid: "77198668"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | Security Center のみ: 推奨事項とアラート、セキュリティ ポリシー、セキュリティの状態を表示することはできますが、変更することはできません |
+> | **説明** | 推奨事項とアラート、セキュリティ ポリシー、セキュリティの状態を表示することはできますが、変更することはできません。 |
 > | **Id** | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
@@ -3114,6 +3158,9 @@ ms.locfileid: "77198668"
 > | Microsoft.Compute/locations/* | コンピューティングの場所の作成と管理 |
 > | Microsoft.Compute/virtualMachines/* | 仮想マシンの作成と管理 |
 > | Microsoft.Compute/virtualMachineScaleSets/* | 仮想マシン スケールセットの作成と管理 |
+> | Microsoft.Compute/disks/write | 新しいディスクを作成するか、既存のディスクを更新します。 |
+> | Microsoft.Compute/disks/read | ディスクのプロパティを取得します。 |
+> | Microsoft.Compute/disks/delete | ディスクを削除します。 |
 > | Microsoft.DevTestLab/schedules/* |  |
 > | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
 > | Microsoft.Network/applicationGateways/backendAddressPools/join/action | アプリケーション ゲートウェイのバックエンド アドレス プールを接続します。 警告不可能です。 |
@@ -3214,6 +3261,38 @@ ms.locfileid: "77198668"
 > | Microsoft.Web/serverFarms/join/action |  |
 > | Microsoft.Web/serverFarms/read | App Service プランのプロパティを取得します。 |
 > | Microsoft.Web/sites/* | Web サイトの作成と管理 (サイト作成では、関連付けられた App Service プランに対する書き込みアクセス許可も必要です) |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="workbook-contributor"></a>Workbook Contributor
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | 共有ブックを保存できます。 |
+> | **Id** | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
+> | **アクション** |  |
+> | Microsoft.Insights/workbooks/write | ブックを作成または更新します |
+> | Microsoft.Insights/workbooks/delete | ブックを削除します |
+> | Microsoft.Insights/workbooks/read | ブックを読み取ります |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="workbook-reader"></a>Workbook Reader
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | ブックの読み取りが可能です。 |
+> | **Id** | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
+> | **アクション** |  |
+> | microsoft.insights/workbooks/read | ブックを読み取ります |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |

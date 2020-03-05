@@ -1,5 +1,5 @@
 ---
-title: Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の SAP NetWeaver 用の Azure Virtual Machines の高可用性 | Microsoft Docs
+title: Azure NetApp Files での SLES 上の SAP NW 用の Azure VM の高可用性 | Microsoft Docs
 description: SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の SAP NetWeaver の高可用性ガイド
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: radeltch
-ms.openlocfilehash: 1a413ce55604ef8b5c3219e8de466fcc23d41bac
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 18aecfc5ea40c8368fbf4d4a07f86e71047265f7
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990943"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598648"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性
 

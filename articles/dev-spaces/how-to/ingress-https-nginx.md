@@ -5,12 +5,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Azure Dev Spaces をカスタム NGINX イングレス コントローラーを使用するように構成し、そのイングレス コントローラーを使用して HTTPS を構成する方法を説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: 39f17636779c4160867311af67ebc621b685f2d3
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 9c3598ea39dd7b48c622126a9adbaa75d4c9d934
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486204"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622415"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>カスタム NGINX イングレス コントローラーの使用と HTTPS の構成
 
@@ -96,7 +96,11 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
-[values.yaml][values-yaml] を開き、*MY_CUSTOM_DOMAIN* には自分自身のドメインを使用し、 *<REPLACE_ME_WITH_HOST_SUFFIX>* のすべてのインスタンスを *nginx.MY_CUSTOM_DOMAIN* に置き換えます。 また、*kubernetes.io/ingress.class: nginx-azds  # Dev Spaces-specific* を *kubernetes.io/ingress.class: nginx  # Custom Ingress* に置き換えます。 更新された `values.yaml` ファイルの例を次に示します。
+[values.yaml][values-yaml] を開き、以下の更新を加えます。
+* *MY_CUSTOM_DOMAIN* には自分自身のドメインを使用し、 *<REPLACE_ME_WITH_HOST_SUFFIX>* のすべてのインスタンスを *nginx.MY_CUSTOM_DOMAIN* に置き換えます。 
+* *kubernetes.io/ingress.class: traefik-azds  # Dev Spaces-specific* を *kubernetes.io/ingress.class: nginx  # Custom Ingress* に置き換えます。 
+
+更新された `values.yaml` ファイルの例を次に示します。
 
 ```yaml
 # This is a YAML-formatted file.
@@ -149,6 +153,9 @@ http://dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 ```
 
 `azds list-uris` コマンドからパブリック URL を開いて、*bikesharingweb* サービスに移動します。 上記の例では、*bikesharingweb* サービスのパブリック URL は `http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/` です。
+
+> [!NOTE]
+> *bikesharingweb* サービスではなくエラー ページが表示される場合は、*kubernetes.io/ingress.class* 注釈と、*values.yaml* ファイル内のホストの**両方**を更新したことを確認してください。
 
 `azds space select` コマンドを使用すると、*dev* の下に子空間を作成し、子開発空間にアクセスするための URL を列挙できます。
 

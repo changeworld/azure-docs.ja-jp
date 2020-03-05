@@ -6,15 +6,15 @@
       href: load-balancer-overview.md
 - name: クイック スタート
   items:
-    - name: ポータル
+    - name: ロード バランサーの作成 - ポータル
       href: quickstart-load-balancer-standard-public-portal.md
-    - name: Azure CLI
+    - name: ロード バランサーの作成 - Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
-    - name: Azure PowerShell
+    - name: ロード バランサーの作成 - PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
-    - name: Azure Resource Manager テンプレート
+    - name: ロード バランサーの作成 - テンプレート
       href: quickstart-load-balancer-standard-public-template.md
-      displayName: ARM
+  expanded: true
 - name: チュートリアル
   items:
     - name: VM へのインターネット トラフィックの負荷分散を行う

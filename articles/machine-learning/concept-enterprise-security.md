@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: 7b6bd33346df9496c4c30353b68c11bdd7fad7a2
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b37b386273947f8c39fe182e4f29b7b080addf7b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486395"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605625"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning のエンタープライズ セキュリティ
 
@@ -37,7 +37,6 @@ ms.locfileid: "77486395"
 [![Azure Machine Learning での認証](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication-expanded.png#lightbox)
 
 詳細については、「[Azure Machine Learning のリソースとワークフローの認証を設定する](how-to-setup-authentication.md)」を参照してください。 この記事では、サービス プリンシパルや自動化ワークフローの使用など、認証に関する情報と例を提供します。
-
 
 ### <a name="authentication-for-web-service-deployment"></a>Web サービスのデプロイ用の認証
 
@@ -77,6 +76,9 @@ Azure Machine Learning では、Web サービスに関してキーとトーク�
 | Web サービスを呼び出す | ✓ | ✓ | ✓ |
 
 組み込みのロールがニーズを満たしていない場合は、カスタムのロールを作成できます。 カスタム ロールは、ワークスペースと Machine Learning コンピューティングに対する操作でのみサポートされます。 カスタム ロールでは、ワークスペースとそのワークスペース内のコンピューティング リソースに対する読み取り、書き込み、または削除のアクセス許可を持つことができます。 ロールは、特定のワークスペース レベル、特定のリソース グループ レベル、または特定のサブスクリプション レベルで使用できるようにすることができます。 詳細については、[Azure Machine Learning ワークスペースでのユーザーとロールの管理](how-to-assign-roles.md)に関するページを参照してください。
+
+> [!WARNING]
+> Azure Machine Learning は現在、Azure Active Directory の企業間コラボレーションではサポートされていません。
 
 ### <a name="securing-compute-targets-and-data"></a>コンピューティング先とデータのセキュリティ保護
 

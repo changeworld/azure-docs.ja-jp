@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 01/25/2020
-ms.openlocfilehash: ff128d148abb87959894aee94d257ae71a3ca65e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/24/2020
+ms.openlocfilehash: 9236fab332758308ceb8bde1f83a9f3ac8ee6789
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773842"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587585"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapping Data Flow のパフォーマンスとチューニング ガイド
 
@@ -36,7 +36,7 @@ Mapping Data Flow を設計する際に、[構成] パネルの [データ プ�
 
 Integration Runtime でコア数を増やすと、Spark コンピューティング環境内のノード数が増加し、データの読み取り、書き込み、変換のための処理能力が向上します。
 * 処理速度を入力速度より高くしたい場合は、**コンピューティング最適化**クラスターを試してください。
-* メモリにより多くのデータをキャッシュしたい場合は、**メモリ最適化**クラスターを試してください。
+* メモリにより多くのデータをキャッシュしたい場合は、**メモリ最適化**クラスターを試してください。 メモリ最適化では、コンピューティング最適化よりもコアあたりの価格が高くなりますが、おそらく変換速度がより高速になります。
 
 ![新しい IR](media/data-flow/ir-new.png "新しい IR")
 
@@ -87,17 +87,24 @@ Integration Runtime の作成方法の詳細については、「[Azure Data Fac
 
 DTU の制限に達したら、ソースとシンクの Azure SQL DB と DW のサイズ変更をスケジュールしてから、パイプラインを実行して、スループットを増やし、Azure スロットルを最小化します。 パイプラインの実行が完了したら、データベースのサイズを変更して通常のラン レートに戻します。
 
-### <a name="azure-sql-dw-only-use-staging-to-load-data-in-bulk-via-polybase"></a>[Azure SQL DW のみ] ステージングを使用して、Polybase を介してデータを一括で読み込む
+* SQL DB テーブルにする 88.7 万行および 74 列と、1 つの派生列変換がある SQL DB ソース テーブルの場合、メモリ最適化の 80 コアのデバッグ用 Azure IR を使用して、エンド ツー エンドで約 3 分かかります。
+
+### <a name="azure-synapse-sql-dw-only-use-staging-to-load-data-in-bulk-via-polybase"></a>[Azure Synapse SQL DW のみ] ステージングを使用して、Polybase を介してデータを一括で読み込む
 
 DW への行単位の挿入を回避するには、シンク設定で **[Enable Staging]\(ステージングの有効化\)** をオンにして、ADF で [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) を使用できるようにします。 PolyBase を使用すると、ADF はデータを一括で読み込むことができます。
 * パイプラインからデータ フロー アクティビティを実行する場合は、一括読み込み中にデータをステージングするために、BLOB または ADLS Gen2 ストレージの場所を選択する必要があります。
 
+* Synapse テーブルにする 74 列の 421 MB ファイルと、1 つの派生列変換から成るファイル ソースの場合、メモリ最適化の 80 コアのデバッグ用 Azure IR を使用して、エンド ツー エンドで約 4 分かかります。
+
 ## <a name="optimizing-for-files"></a>ファイルのための最適化
 
-変換ごとに、データ ファクトリで使用するパーティション構成を [最適化] タブで設定できます。
+変換ごとに、データ ファクトリで使用するパーティション構成を [最適化] タブで設定できます。最初に、既定のパーティション分割と最適化を維持してファイル ベースのシンクをテストすることが、適切な実施方法です。
+
 * 小さいファイルの場合は、 *[単一パーティション]* を選択すると、小さいファイルをパーティション分割するように Spark に要求するよりも効果的で速い場合があります。
 * ソース データに関する十分な情報がない場合は、 *[ラウンド ロビン]* パーティション分割を選択して、パーティションの数を設定します。
 * データに適切なハッシュ キーになる列が含まれている場合は、 *[ハッシュ パーティション分割]* を選択します。
+
+* 74 列ある 421 MB ファイルのファイル シンクと、1 つの派生列変換があるファイル ソースの場合、メモリ最適化の 80 コアのデバッグ用 Azure IR を使用して、エンド ツー エンドで約 2 分かかります。
 
 データ プレビューおよびパイプライン デバッグでデバッグする場合、ファイルベースのソース データセットの制限とサンプリングのサイズは、読み取られる行数ではなく、返される行数にのみ適用されます。 これは、ご自身のデバッグの実行のパフォーマンスに影響を与え、場合によってはフローが失敗する可能性があります。
 * デバッグ クラスターは既定では小規模な単一ノードのクラスターであるため、デバッグにはサンプルの小さいファイルを使用することをお勧めします。 [Debug Settings]\(デバッグ設定\) にアクセスし、一時ファイルを使用しているお使いのデータの小さなサブセットをポイントします。

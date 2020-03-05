@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 7c4d6a01ccaeffb4042753dc0a904d970631383f
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 9b156193035d87472c462bae37e405e0317d8402
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045186"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650301"
 ---
 # <a name="vcore-model-overview"></a>仮想コア モデルの概要
 
@@ -89,7 +89,7 @@ Fsv2 シリーズが利用可能なリージョンについては、[Fsv2 シリ
 - M シリーズは、Gen5 で提供されるよりも多くのメモリと高いコンピューティング制限を要求するワークロードのためのメモリ最適化のハードウェア オプションです。
 - M シリーズでは、仮想コアあたり 29 GB と 128 個の仮想コアを提供し、Gen5 に比べて、メモリ制限が 8 倍の 4 TB 近くまで増加します。
 
-サブスクリプションとリージョンで M シリーズ ハードウェアを有効にするには、サポート リクエストを開く必要があります。 サポート リクエストが承認されると、M シリーズの選択とプロビジョニングのエクスペリエンスは、他のハードウェアの世代と同じパターンに従います。 M シリーズが利用可能なリージョンについては、[M シリーズの可用性](#m-series)に関するセクションを参照してください。
+サブスクリプションとリージョンで M シリーズ ハードウェアを有効にするには、サポート リクエストが開かれている必要があります。 サブスクリプションの種類は、従量課金制やマイクロソフト エンタープライズ契約 (EA) を含む有料のオファーである必要があります。  サポート リクエストが承認されると、M シリーズの選択とプロビジョニングのエクスペリエンスは、他のハードウェアの世代と同じパターンに従います。 M シリーズが利用可能なリージョンについては、[M シリーズの可用性](#m-series)に関するセクションを参照してください。
 
 
 ### <a name="compute-and-memory-specifications"></a>コンピューティングとメモリの仕様
@@ -142,7 +142,7 @@ Azure portal では、作成時に SQL データベースまたはプールの�
   
 **既存のマネージドインスタンスのハードウェア世代を変更するには**
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 マネージド インスタンスのページで、[設定] セクションの下にある **[価格レベル]** リンクを選択します
 
@@ -150,43 +150,25 @@ Azure portal では、作成時に SQL データベースまたはプールの�
 
 **[価格レベル]** ページで、前の手順で説明したようにハードウェア世代を変更できます。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 次の PowerShell スクリプトを使用します：
 
 ```powershell-interactive
-$subscriptionId = "**************"
-Select-AzSubscription -Subscription $subscriptionId
-
-$instanceName = "********"
-$resourceGroup = "****"
-
-# THIS IS IMPORTANT PARAMETER:
-$sku = @{name = "GP_Gen5" }
-
-# NOTE: These properties are not necessary, but it would be good to set them to the current values:
-# You might want to change vCores or storage with hardware generation
-# $admin_login = "******"
-# $admin_pass = "******"
-# $location = "***** # for example: ""northeurope"
-# $vCores = 8
-# $maxStorage = 1024
-# $license = "BasePrice"
-# $subnetId = "/subscriptions/****/subnets/*******"
-
-## NOTE: Uncomment some of the properties below if you have set them.
-$properties = New-Object System.Object
-# $properties | Add-Member -type NoteProperty -name subnetId -Value $subnetId
-# $properties | Add-Member -type NoteProperty -name administratorLogin -Value $admin_login
-# $properties | Add-Member -type NoteProperty -name administratorLoginPassword -Value $admin_pass
-# $properties | Add-Member -type NoteProperty -name vCores -Value $vCores
-# $properties | Add-Member -type NoteProperty -name storageSizeInGB -Value $maxStorage
-# $properties | Add-Member -type NoteProperty -name licenseType -Value $license
-
-Set-AzResource -Properties $properties -ResourceName $instanceName -ResourceType "Microsoft.SQL/managedInstances" -Sku $sku -ResourceGroupName $resourceGroup -Force -ApiVersion "2015-05-01-preview"
+Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -ComputeGeneration Gen5
 ```
 
-必ず、マネージド インスタンスのサブスクリプション ID、名前、およびリソースグループを入力してください。
+詳細については [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance) コマンドを調べてください。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+次の CLI コマンドを使用します。
+
+```azurecli-interactive
+az sql mi update -g mygroup -n myinstance --family Gen5
+```
+
+詳細については [az sql mi update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update) コマンドを調べてください。
 
 ---
 
@@ -194,7 +176,7 @@ Set-AzResource -Properties $properties -ResourceName $instanceName -ResourceType
 
 #### <a name="gen4gen5-1"></a>Gen4/Gen5
 
-新しい Gen4 データベースは、オーストラリア東部とブラジル南部リージョンでサポートされなくなりました。 
+Gen4 ハードウェアは[段階的に廃止中](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/)であり、新しいデプロイでは利用できなくなりました。 すべての新しいデータベースを Gen5 ハードウェアにデプロイする必要があります。
 
 Gen5 は、世界中のほとんどのリージョンで使用できます。
 

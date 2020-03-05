@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/09/2019
+ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: 8fe38870f593dd57d8e4dad5601ea404e99c3d10
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 39b7e94747f556b61f661968f7126d122156d9cf
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031562"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622010"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自動スケーリングとゾーン冗長 Application Gateway v2 
 
@@ -26,8 +26,8 @@ Application Gateway と Web アプリケーション ファイアウォール (W
   ゾーン冗長性は、Azure ゾーンが使用可能な場所でのみ使用できます。 他のリージョンでは、その他のすべての機能がサポートされます。 詳しくは、「[Azure の Availability Zones の概要](../availability-zones/az-overview.md#services-support-by-region)」をご覧ください。
 - **静的 VIP**: Application Gateway v2 SKU では、静的 VIP の種類だけがサポートされます。 これにより、アプリケーション ゲートウェイに関連付けられた VIP は、デプロイのライフサイクルの間は、再起動後であっても変化しません。  v1 には静的 VIP がないため、アプリケーション ゲートウェイを経由して App Services にルーティングするドメイン名の IP アドレスの代わりに、アプリケーション ゲートウェイの URL を使用する必要があります。
 - **ヘッダーの書き換え**: Application Gateway では、HTTP 要求と応答のヘッダーを v2 SKU で追加、削除、更新することができます。 詳しくは、「[Application Gateway で HTTP ヘッダーを書き換える](rewrite-http-headers.md)」をご覧ください
-- **Key Vault の統合 (プレビュー)** : Application Gateway v2 では、HTTPS が有効なリスナーにアタッチされているサーバー証明書用の Key Vault との統合 (パブリック プレビュー段階) がサポートされます。 詳細については、「[Key Vault 証明書での SSL 終焉](key-vault-certs.md)」を参照してください。
-- **Azure Kubernetes Service のイングレス コントローラー (プレビュー)** : Application Gateway v2 のイングレス コントローラーを使うと、AKS クラスターと呼ばれる Azure Kubernetes Service (AKS) に対するイングレスとして Azure Application Gateway を使用できます。 詳しくは、[ドキュメントのページ](https://azure.github.io/application-gateway-kubernetes-ingress/)をご覧ください。
+- **Key Vault の統合**: Application Gateway v2 では、HTTPS 対応リスナーにアタッチされているサーバー証明書用の Key Vault との統合をサポートします。 詳細については、「[Key Vault 証明書での SSL 終焉](key-vault-certs.md)」を参照してください。
+- **Azure Kubernetes Service のイングレス コントローラー**: Application Gateway v2 のイングレス コントローラーを使うと、AKS クラスターと呼ばれる Azure Kubernetes Service (AKS) に対するイングレスとして Azure Application Gateway を使用できます。 詳細については、「[Application Gateway イングレス コントローラーとは](ingress-controller-overview.md)」を参照してください。
 - **パフォーマンスの向上**: v2 SKU では、Standard/WAF SKU と比較して、SSL オフロードのパフォーマンスが最大で 5 倍になります。
 - **デプロイと更新の時間の短縮**: v2 SKU では、Standard/WAF SKU と比較して、デプロイと更新の時間が短縮されます。 これには、WAF の構成の変更も含まれます。
 

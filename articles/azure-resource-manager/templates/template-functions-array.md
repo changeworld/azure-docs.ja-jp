@@ -3,12 +3,12 @@ title: テンプレート関数 - 配列とオブジェクト
 description: Azure Resource Manager テンプレートで、配列とオブジェクトを操作するために使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: a38ab0fb2ddb15c3e853ae1b249df9a8364c6910
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 1359951c00ba04e641ae84636459a8836924c729
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207368"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591185"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの配列とオブジェクトの関数
 
@@ -1067,7 +1067,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ## <a name="range"></a>range
 
-`range(startingInteger, numberOfElements)`
+`range(startIndex, count)`
 
 始点となる整数から、指定した数の項目が含まれる配列を作成します。
 
@@ -1075,8 +1075,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | パラメーター | Required | Type | 説明 |
 |:--- |:--- |:--- |:--- |
-| startingInteger |はい |INT |配列の最初の整数です。 |
-| numberofElements |はい |INT |配列内の整数の数。 |
+| startIndex |はい |INT |配列の最初の整数です。 startIndex と count の合計は、2147483647 より大きくてはいけません。 |
+| count |はい |INT |配列内の整数の数。 10000 までの負でない整数にする必要があります。 |
 
 ### <a name="return-value"></a>戻り値
 

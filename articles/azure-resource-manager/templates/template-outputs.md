@@ -2,13 +2,13 @@
 title: テンプレート内の出力
 description: Azure Resource Manager テンプレートで出力値を定義する方法について説明します。
 ms.topic: conceptual
-ms.date: 09/05/2019
-ms.openlocfilehash: 7244e1ac0eff973d550a2bae8a70fa5055ca2248
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/25/2020
+ms.openlocfilehash: ec96b45cdc5ccf488d46c2d8da03caf16d002dfa
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476197"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622851"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの出力
 
@@ -43,6 +43,24 @@ outputs セクションでは、値を条件付きで返すことができます
 
 条件付き出力の簡単な例については、[条件付き出力テンプレート](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json)に関する説明をご覧ください。
 
+## <a name="dynamic-number-of-outputs"></a>動的な出力の数
+
+場合により、テンプレートの作成時に、返す必要がある値のインスタンスの数が不明なシナリオもあります。 **copy** 要素を使用することで、可変数の値を返すことができます。
+
+```json
+"outputs": {
+  "storageEndpoints": {
+    "type": "array",
+    "copy": {
+      "count": "[parameters('storageCount')]",
+      "input": "[reference(concat(copyIndex(), variables('baseName'))).primaryEndpoints.blob]"
+    }
+  }
+}
+```
+
+詳細については、「[Azure Resource Manager テンプレートでの出力の反復](copy-outputs.md)」を参照してください。
+
 ## <a name="linked-templates"></a>リンク済みテンプレート
 
 リンク済みテンプレートから出力値を取得するには、親テンプレートで [reference](template-functions-resource.md#reference) 関数を使用します。 親テンプレートの構文は次のとおりです。
@@ -69,7 +87,7 @@ outputs セクションでは、値を条件付きで返すことができます
 
 デプロイ履歴から出力値を取得するには、スクリプトを使用できます。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeployment `
@@ -77,7 +95,7 @@ outputs セクションでは、値を条件付きで返すことができます
   -Name <deployment-name>).Outputs.resourceID.value
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az group deployment show \

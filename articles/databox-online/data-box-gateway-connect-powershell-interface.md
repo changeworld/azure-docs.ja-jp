@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Data Box Gateway デバイスに Windows PowerShell インターフェイス経由で接続し、管理する | Microsoft Docs
+title: Windows PowerShell を使用して Azure Data Box Gateway デバイスへの接続と管理を行う
 description: Data Box Gateway に Windows PowerShell インターフェイス経由で接続し、管理する方法について説明します。
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 08/02/2019
 ms.author: alkohli
-ms.openlocfilehash: 650777d849e172686e8b46502a84db8c519174e7
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 6c9f3455a07001a8d1b9b8a1e84f2af3392b5690
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775191"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561869"
 ---
 # <a name="manage-an-azure-data-box-gateway-device-via-windows-powershell"></a>Azure Data Box Gateway デバイスを Windows PowerShell 経由で管理する
 
@@ -49,6 +49,6 @@ Azure Data Box Gateway ソリューションでは、ネットワーク経由で
 
 [!INCLUDE [View device information](../../includes/data-box-edge-gateway-view-device-info.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure portal で [Azure Data Box Gateway](data-box-gateway-deploy-prep.md) を配置する。

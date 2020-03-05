@@ -1,5 +1,5 @@
 ---
-title: Azure Data Explorer クラスターに適した VM SKU を選択する
+title: お使いの Azure Data Explorer クラスターに適した VM SKU を選択する
 description: この記事では、Azure Data Explorer クラスターに最適な SKU サイズを選択する方法について説明します。
 author: avneraa
 ms.author: avnera
@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
-ms.openlocfilehash: 8293fd2d84189cc1f1df3564abbfdcbf86e3543e
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 2d078f9715a0cfa171f0c88776a4ab78c15215a8
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186741"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561852"
 ---
 # <a name="select-the-correct-vm-sku-for-your-azure-data-explorer-cluster"></a>Azure Data Explorer クラスターに適した VM SKU を選択する 
 
@@ -47,7 +47,7 @@ Azure Data Explorer クラスターを作成する場合は、計画されたワ
 
 使用可能な SKU の種類の主な違いを次の表で説明します。
  
-| Attribute | D SKU | L SKU |
+| 属性 | D SKU | L SKU |
 |---|---|---
 |**小規模な SKU**|最小サイズは 2 つのコアを含む D11|最小サイズは 4 つのコアを含む L4 |
 |**可用性**|すべてのリージョンで利用できます (DS+PS バージョンの可用性はさらに制限されます)|一部のリージョンで利用できます |
@@ -68,7 +68,7 @@ Azure Data Explorer クラスターを作成する場合は、計画されたワ
 
 Azure Data Explorer クラスター VM の技術仕様を次の表で説明します。
 
-|**Name**| **カテゴリ** | **SSD サイズ** | **コア** | **RAM** | **Premium Storage ディスク (1&nbsp;TB)**| **クラスターあたりの最小インスタンス数** | **クラスターあたりの最大インスタンス数**
+|**名前**| **カテゴリ** | **SSD サイズ** | **コア** | **RAM** | **Premium Storage ディスク (1&nbsp;TB)**| **クラスターあたりの最小インスタンス数** | **クラスターあたりの最大インスタンス数**
 |---|---|---|---|---|---|---|---
 |D11 v2| コンピューティング最適化 | 75&nbsp;GB    | 2 | 14&nbsp;GB | 0 | 1 | 8 (1 である開発/テスト SKU を除く)
 |D12 v2| コンピューティング最適化 | 150&nbsp;GB   | 4 | 28&nbsp;GB | 0 | 2 | 16
@@ -85,7 +85,7 @@ Azure Data Explorer クラスター VM の技術仕様を次の表で説明し�
 * Azure Data Explorer [ListSkus API](/dotnet/api/microsoft.azure.management.kusto.clustersoperationsextensions.listskus?view=azure-dotnet) を使用して、リージョンごとの更新された VM SKU の一覧を表示できます。 
 * [さまざまな SKU](/azure/virtual-machines/windows/sizes) の詳細について参照してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * さまざまなニーズに応じて VM SKU を変更することによって、エンジン クラスターをいつでも[スケールアップまたはスケールダウン](manage-cluster-vertical-scaling.md)できます。 
 

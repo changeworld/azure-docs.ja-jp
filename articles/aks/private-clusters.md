@@ -2,17 +2,14 @@
 title: プライベート Azure Kubernetes Service クラスターを作成する
 description: プライベート Azure Kubernetes Service (AKS) クラスターの作成方法について説明します
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
-ms.date: 1/24/2020
-ms.author: mlearned
-ms.openlocfilehash: 934dfdb43d6d2e4ccc346b728f0ac4f5febea327
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.date: 2/21/2020
+ms.openlocfilehash: 4b4ba130d9ff63291abdd46617b0692e844a60bf
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932591"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649509"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>プライベート Azure Kubernetes Service クラスターを作成する (プレビュー)
 
@@ -31,13 +28,45 @@ ms.locfileid: "76932591"
 * Azure CLI バージョン 2.0.77 以降、および Azure CLI AKS Preview 拡張機能バージョン 0.4.18
 
 ## <a name="currently-supported-regions"></a>現在サポートされているリージョン
+
+* オーストラリア東部
+* オーストラリア南東部
+* ブラジル南部
+* カナダ中部
+* カナダ東部
+* 米国中部
+* 東アジア
+* 米国東部
+* 米国東部 2
+* 米国東部 2 EUAP
+* フランス中部
+* ドイツ北部
+* 東日本
+* 西日本
+* 韓国中部
+* 韓国南部
+* 米国中北部
+* 北ヨーロッパ
+* 北ヨーロッパ
+* 米国中南部
+* 英国南部
+* 西ヨーロッパ
 * 米国西部
 * 米国西部 2
 * 米国東部 2
-* カナダ中部
+
+## <a name="currently-supported-availability-zones"></a>現在サポートされている Availability Zones
+
+* 米国中部
+* 米国東部
+* 米国東部 2
+* フランス中部
+* 東日本
 * 北ヨーロッパ
+* 東南アジア
+* 英国南部
 * 西ヨーロッパ
-* オーストラリア東部
+* 米国西部 2
 
 ## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>最新の Azure CLI AKS Preview 拡張機能をインストールする
 
@@ -98,6 +127,7 @@ az aks create \
 > Docker ブリッジ アドレス CIDR (172.17.0.1/16) がサブネット CIDR と競合する場合は、Docker ブリッジ アドレスを適切に変更します。
 
 ## <a name="connect-to-the-private-cluster"></a>プライベート クラスターに接続する
+
 API サーバー エンドポイントには、パブリック IP アドレスがありません。 そのため、仮想ネットワーク内に Azure 仮想マシン (VM) を作成し、API サーバーに接続する必要があります。 そのためには、次の手順を実行します。
 
 1. クラスターに接続するための資格情報を取得します。
@@ -131,7 +161,8 @@ API サーバー エンドポイントには、パブリック IP アドレス�
 * カスタム DNS サーバーを使用するには、この IP 168.63.129.16 に転送する DNS を備えた AD サーバーをデプロイします。
 
 ## <a name="limitations"></a>制限事項 
-* 現在、Availability Zones は米国東部 2 と米国西部 2 のリージョンでのみサポートされています。
+* 承認済み IP 範囲は、プライベート API サーバー エンドポイントには適用できません。パブリック API サーバーにのみ適用されます
+* Availability Zones は現在、特定のリージョンでサポートされています。このドキュメントの冒頭をご覧ください 
 * [Azure Private Link サービスの制限事項][private-link-service]は、プライベートクラスター、Azure プライベート エンドポイント、および仮想ネットワークサービスエンドポイントに適用されます。これらは現在、同一の仮想ネットワークではサポートされていません。
 * プライベート Azure 仮想ネットワーク内のプライベート Azure Container Instances (ACI) をスピンすることは、プライベート クラスター内の仮想ノードではサポートされていません
 * プライベート クラスターですぐに使用できる Azure DevOps 統合はサポートされていません

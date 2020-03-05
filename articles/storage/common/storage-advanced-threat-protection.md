@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/04/2020
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: f9889f58ead8d1dd35ceb50fa100b2b466cbe7cf
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d97b63aa87bfd8cf8ca1a3f5b213d6b16ca066df
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022394"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616858"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection for Azure Storage を構成する
 
@@ -31,7 +31,7 @@ Advanced Threat Protection for Azure Storage では、脅威の検出のため�
 
 Advanced Threat Protection は、次のセクションで説明するいくつかの方法で構成することができます。
 
-### <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 1. [Azure ポータル](https://portal.azure.com/)を開きます。
 1. ご利用の Azure Storage アカウントに移動します。 **[設定]** で **[高度なセキュリティ]** を選択します。
@@ -41,7 +41,7 @@ Advanced Threat Protection は、次のセクションで説明するいくつ�
 
     ![Azure Storage Advanced Threat Protection をオンにする](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
-### <a name="azure-security-centertabazure-security-center"></a>[Azure Security Center](#tab/azure-security-center)
+### <a name="azure-security-center"></a>[Azure Security Center](#tab/azure-security-center)
 
 Azure Security Center で Standard レベルにサブスクライブすると、Advanced Threat Protection がご利用のすべてのストレージ アカウントで自動的に設定されます。 次のようにして、特定のサブスクリプションのストレージ アカウントで Advanced Threat Protection を有効または無効にすることができます。
 
@@ -57,11 +57,11 @@ Azure Security Center で Standard レベルにサブスクライブすると、
     ![Security Center で ATP を有効にする](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
 1. **[保存]** をクリックします。
 
-### <a name="templatetabtemplate"></a>[テンプレート](#tab/template)
+### <a name="template"></a>[テンプレート](#tab/template)
 
 Azure Resource Manager テンプレートを使用して、Advanced Threat Protection が有効になっている Azure Storage アカウントをデプロイします。 詳細については、[Advanced Threat Protection でのストレージ アカウント](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/)に関するページを参照してください。
 
-### <a name="azure-policytabazure-policy"></a>[Azure Policy](#tab/azure-policy)
+### <a name="azure-policy"></a>[Azure Policy](#tab/azure-policy)
 
 特定のサブスクリプションまたはリソース グループ内のストレージ アカウント全体で Advanced Threat Protection を有効にするには、Azure Policy を使用します。
 
@@ -79,14 +79,14 @@ Azure Resource Manager テンプレートを使用して、Advanced Threat Prote
 
     ![[ポリシー定義] ページ](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
-### <a name="rest-apitabrest-api"></a>[REST API](#tab/rest-api)
+### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
 Rest API のコマンドを使用して、特定のストレージ アカウントの Advanced Threat Protection 設定を作成、更新、または取得します。
 
 * [Advanced Threat Protection - 作成](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
 * [Advanced Threat Protection - 取得](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
 
-### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 次の PowerShell コマンドレットを使用します。
 
@@ -116,9 +116,9 @@ Azure Security Center の [[セキュリティ アラート]](../../security-cen
 
 ![Azure Storage Advanced Threat Protection のアラート メール](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert.png)
 
-## <a name="protection-alerts"></a>保護アラート
+## <a name="security-alerts"></a>セキュリティのアラート
 
-アラートは、ストレージ アカウントへの通常とは異なる、害を及ぼす可能性のあるアクセス試行やストレージ アカウントの悪用が発生すると、生成されます。 Azure Storage のアラートの一覧については、「[Azure Security Center でのデータ サービスの脅威検出](../../security-center/security-center-alerts-data-services.md#azure-storage)」の「**ストレージ**」セクションを参照してください。
+アラートは、ストレージ アカウントへの通常とは異なる、害を及ぼす可能性のあるアクセス試行やストレージ アカウントの悪用が発生すると、生成されます。 Azure Storage のアラートの一覧については、[Azure Security Center でのデータ サービスの脅威の防止](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurestorage)に関するページの、**ストレージ**に関するセクションを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

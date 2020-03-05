@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 3d5b1ab4e72ec759098e9c71515200f89a8dfe82
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: aec8048c7ef2eb0d944cdd2a863e23578f4f87e5
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931208"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561682"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
@@ -60,6 +60,17 @@ Storage Explorer を使用すると、Azure リソースに接続するために
 
 現在、この問題に対する RBAC 関連のソリューションはありません。 回避策として、SAS URI を要求して[リソースにアタッチ](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)することができます。
 
+### <a name="recommended-built-in-rbac-roles"></a>推奨される組み込みの RBAC ロール
+
+Storage Explorer を使用するために必要なアクセス許可を提供できる組み込み RBAC ロールは複数あります。 そうしたロールの一部を以下に示します。
+- [所有者](/azure/role-based-access-control/built-in-roles#owner):リソースへのアクセスを含め、すべてを管理します。 **注**: このロールでは、キー アクセスが付与されます。
+- [共同作成者](/azure/role-based-access-control/built-in-roles#contributor):リソースへのアクセスを除き、すべてを管理します。 **注**: このロールでは、キー アクセスが付与されます。
+- [閲覧者](/azure/role-based-access-control/built-in-roles#reader):リソースを読み取って一覧表示します。
+- [ストレージ アカウント共同作業者](/azure/role-based-access-control/built-in-roles#storage-account-contributor): ストレージ アカウントの完全な管理。 **注**: このロールでは、キー アクセスが付与されます。
+- [ストレージ BLOB データ所有者](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner):Azure Storage の BLOB コンテナーおよびデータに対するフル アクセス。
+- [ストレージ BLOB データ共同作成者](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor):Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を行います。
+- [ストレージ BLOB データ閲覧者](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader):Azure Storage コンテナーと BLOB の読み取りと一覧表示を行います。
+
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>エラー:証明書チェーンの自己署名証明書 (および同様のエラー)
 
 証明書のエラーは、通常、次のいずれかの状況で発生します。
@@ -80,7 +91,7 @@ Storage Explorer は自己署名証明書または信頼されない証明書が
     * [Windows](https://slproweb.com/products/Win32OpenSSL.html):任意の Light バージョンで十分です。
     * Mac と Linux:お使いのオペレーティング システムに付属しているはずです。
 2. OpenSSL を実行します。
-    * Windows:インストール ディレクトリを開き、 **/bin/** を選択し、**openssl.exe** をダブルクリックします。
+    * Windows: インストール ディレクトリを開き、 **/bin/** を選択し、**openssl.exe** をダブルクリックします。
     * Mac と Linux:ターミナルから `openssl` を実行します。
 3. `s_client -showcerts -connect microsoft.com:443` を実行します。
 4. 自己署名証明書を検索します。 どの証明書が自己署名かわからない場合は、Subject (発行先) `("s:")` と Issuer (発行元) `("i:")` が同じであるものをすべてメモします。
@@ -195,7 +206,7 @@ macOS のキーチェーンは、Storage Explorer 認証ライブラリの問題
 * ネットワーク ツールで使用されるポート番号を確認します。
 * Storage Explorer のプロキシ設定として、ローカル ホストの URL とネットワーク ツールのポート番号を入力します。 この操作を正しく行うと、お使いのネットワーク ツールは、Storage Explorer が管理エンドポイントとサービスエンドポイントに対して行ったネットワーク要求のログ記録を開始します。 たとえば、ブラウザーで BLOB エンドポイントに対して「`https://cawablobgrs.blob.core.windows.net/`」を入力すると、次のような応答が返されます。
 
-  ![サンプル コード](./media/storage-explorer-troubleshooting/4022502_en_2.png)
+  ![コード サンプル](./media/storage-explorer-troubleshooting/4022502_en_2.png)
 
   この応答は、アクセスできなくても、リソースが存在することを示しています。
 
@@ -244,20 +255,20 @@ macOS のキーチェーンは、Storage Explorer 認証ライブラリの問題
 
 すべての接続を処理した後、再追加されていないすべての接続名に対して、破損したデータ (存在する場合) をクリアし、Storage Explorer の標準手順を使用してそれらを再び追加する必要があります。
 
-# <a name="windowstabwindows"></a>[Windows](#tab/Windows)
+# <a name="windows"></a>[Windows](#tab/Windows)
 
 1. **[スタート]** メニューで **[資格情報マネージャー]** を検索して開きます。
 2. **[Windows 資格情報]** に移動します。
 3. **[汎用資格情報]** で、`<connection_type_key>/<corrupted_connection_name>` キー (たとえば、`StorageExplorer_CustomConnections_Accounts_v1/account1`) が含まれているエントリを探します。
 4. これらのエントリを削除してから、接続をもう一度追加してください。
 
-# <a name="macostabmacos"></a>[macOS](#tab/macOS)
+# <a name="macos"></a>[macOS](#tab/macOS)
 
 1. Spotlight (コマンド キーとスペース キー) を開き、 **[キーチェーン アクセス]** を検索します。
 2. `<connection_type_key>/<corrupted_connection_name>` キー (たとえば、`StorageExplorer_CustomConnections_Accounts_v1/account1`) が含まれているエントリを探します。
 3. これらのエントリを削除してから、接続をもう一度追加してください。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/Linux)
+# <a name="linux"></a>[Linux](#tab/Linux)
 
 ローカル資格情報の管理は、Linux ディストリビューションによって異なります。 Linux ディストリビューションにローカル資格情報管理用の組み込み GUI ツールが用意されていない場合は、サードパーティ製のツールをインストールしてローカル資格情報を管理できます。 たとえば、Linux のローカル資格情報を管理するためのオープンソース GUI である [Seahorse](https://wiki.gnome.org/Apps/Seahorse/) を使用できます。
 
@@ -309,7 +320,7 @@ Linux 用の Storage Explorer の場合、次のパッケージが最も一般�
 > [!NOTE]
 > Storage Explorer バージョン 1.7.0 以前には .NET Core 2.0 が必要です。 新しいバージョンの .NET Core がインストールされている場合は、[Storage Explorer に修正プログラムを適用](#patching-storage-explorer-for-newer-versions-of-net-core)する必要があります。 Storage Explorer 1.8.0 以降を実行している場合は、.NET Core 2.2 まで使用できます。 現時点で、2.2 を超えるバージョンは動作が検証されていません。
 
-# <a name="ubuntu-1904tab1904"></a>[Ubuntu 19.04](#tab/1904)
+# <a name="ubuntu-1904"></a>[Ubuntu 19.04](#tab/1904)
 
 1. Storage Explorer をダウンロードします。
 2. [.NET Core Runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current) をインストールします。
@@ -318,7 +329,7 @@ Linux 用の Storage Explorer の場合、次のパッケージが最も一般�
    sudo apt-get install libgconf-2-4 libgnome-keyring0
    ```
 
-# <a name="ubuntu-1804tab1804"></a>[Ubuntu 18.04](#tab/1804)
+# <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
 1. Storage Explorer をダウンロードします。
 2. [.NET Core Runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-current) をインストールします。
@@ -327,7 +338,7 @@ Linux 用の Storage Explorer の場合、次のパッケージが最も一般�
    sudo apt-get install libgconf-2-4 libgnome-keyring-common libgnome-keyring0
    ```
 
-# <a name="ubuntu-1604tab1604"></a>[Ubuntu 16.04](#tab/1604)
+# <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. Storage Explorer をダウンロードします。
 2. [.NET Core Runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current) をインストールします。
@@ -336,7 +347,7 @@ Linux 用の Storage Explorer の場合、次のパッケージが最も一般�
    sudo apt install libgnome-keyring-dev
    ```
 
-# <a name="ubuntu-1404tab1404"></a>[Ubuntu 14.04](#tab/1404)
+# <a name="ubuntu-1404"></a>[Ubuntu 14.04](#tab/1404)
 
 1. Storage Explorer をダウンロードします。
 2. [.NET Core Runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current) をインストールします。
@@ -366,7 +377,7 @@ Azure portal の **[Explorer で開く]** ボタンが機能しない場合は�
 * Google Chrome
 * Microsoft Internet Explorer
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これらの解決策のいずれもうまくいかない場合は、[GitHub でイシューを開いてください](https://github.com/Microsoft/AzureStorageExplorer/issues)。 これは、左下隅にある **[Report issue to GitHub]\(GitHub にイシューを報告する\)** ボタンを選択して実行することもできます。
 

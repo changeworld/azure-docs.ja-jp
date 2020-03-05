@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/16/2020
+ms.date: 02/20/2020
 ms.author: radeltch
-ms.openlocfilehash: 7471fc6d7f10c849ba79fedf88961d6c3c99913f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: e48cb1baa515e6a1549bf913a3c3e4cf50e1fff6
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314200"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525483"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>SUSE Linux Enterprise Server for SAP Applications マルチ SID 上の Azure VM での SAP NetWeaver の高可用性ガイド
 
@@ -83,7 +83,7 @@ ms.locfileid: "76314200"
 * [Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]
 * [SUSE SAP HA ベスト プラクティス ガイド][suse-ha-guide]: このガイドには、オンプレミスで Netweaver HA と SAP HANA System Replication を設定するために必要なすべての情報が記載されています。 一般的なベースラインとしてこのガイドを使用してください。 このガイドには詳細な情報が提供されています。
 * [SUSE High Availability Extension 12 SP3 リリース ノート][suse-ha-12sp3-relnotes]
-* [マルチ SID クラスターに対する SUSE のサポート](https://www.suse.com/c/sap-workloads-going-green/)
+* [SLES 12 および SLES 15 用 SUSE マルチ SID クラスター ガイド](https://documentation.suse.com/sbp/all/html/SBP-SAP-MULTI-SID/index.html)
 
 ## <a name="overview"></a>概要
 

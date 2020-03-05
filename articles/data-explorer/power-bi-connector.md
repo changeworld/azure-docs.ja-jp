@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 361ea6ed76207e8e9721f64df61738b6cd9631dc
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a95d45481bed17e46429e3a22dff4b8cc62354a9
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024212"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560492"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Power BI 用 Azure Data Explorer コネクタを使用してデータを視覚化する
 
@@ -42,10 +42,10 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
     ![クラスター、データベース、テーブルのオプション](media/power-bi-connector/cluster-database-table.png)
 
-    **設定** | **値** | **フィールドの説明**
+    **設定** | **Value** | **フィールドの説明**
     |---|---|---|
     | クラスター | *https://help.kusto.windows.net* | ヘルプ クラスターの URL。 その他のクラスターでは、URL が *https://\<クラスター名\>.\<リージョン\>.kusto.windows.net* 形式になります。 |
-    | Database | 空白 | 接続先のクラスターでホストされるデータベース。 これは後の手順で選択します。 |
+    | データベース | 空白 | 接続先のクラスターでホストされるデータベース。 これは後の手順で選択します。 |
     | テーブル名 | 空白 | データベース内のいずれかのテーブル、または <code>StormEvents \| take 1000</code> のようなクエリ。 これは後の手順で選択します。 |
     | [詳細オプション] | 空白 | クエリのオプション (結果セットのサイズなど)。 |
     | データ接続モード | *DirectQuery* | Power BI がデータをインポートするか、直接データ ソースに接続するかを決定します。 このコネクタでは、どちらかのオプションを使用できます。 |
@@ -89,10 +89,10 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
 [!INCLUDE [data-explorer-power-bi-visualize-basic](../../includes/data-explorer-power-bi-visualize-basic.md)]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この記事で作成したレポートが不要になったら、Power BI Desktop (.pbix) ファイルを削除してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Power BI 用 Azure Data Explorer コネクタを使用してデータのクエリを実行するためのヒント](power-bi-best-practices.md#tips-for-using-the-azure-data-explorer-connector-for-power-bi-to-query-data)

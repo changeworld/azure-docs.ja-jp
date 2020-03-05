@@ -247,6 +247,8 @@
           href: virtual-machine-scale-sets-networking.md
         - name: OS の自動アップグレード
           href: virtual-machine-scale-sets-automatic-upgrade.md
+        - name: 自動インスタンス修復 (プレビュー)
+          href: virtual-machine-scale-sets-automatic-instance-repairs.md
         - name: インスタンス保護
           href: virtual-machine-scale-sets-instance-protection.md
         - name: スケールイン ポリシー

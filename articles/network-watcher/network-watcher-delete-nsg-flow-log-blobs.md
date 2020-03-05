@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2019
 ms.author: damendo
-ms.openlocfilehash: 6898bed0645146af9c0131307459e31bad661329
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6d535bcc2e0831baae658796f76c8087d74c6a85
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036304"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587211"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>Network Watcher のネットワーク セキュリティ グループ フロー ログのストレージ BLOB の削除
 
@@ -134,7 +134,7 @@ Write-Output ('Retention policy for all NSGs evaluated and completed successfull
    .\Delete-NsgFlowLogsBlobs.ps1 -SubscriptionId <subscriptionId> -Location  <location> -Confirm
    ```
     
-## <a name="next-steps"></a>次の手順
-- お客様は、[Azure Scheduler](https://azure.microsoft.com/services/scheduler/) または [Azure Automation](https://azure.microsoft.com/services/automation/) を使用してスクリプトの実行を自動化できます
+## <a name="next-steps"></a>次のステップ
+- お客様は、[Azure Logic Apps](../logic-apps/logic-apps-overview.md) または [Azure Automation](https://azure.microsoft.com/services/automation/) を使用してスクリプトの実行を自動化できます
 - NSG のログ記録の詳細については、[ネットワーク セキュリティ グループ (NSG) のための Azure Monitor ログ](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関するページを参照してください。
 

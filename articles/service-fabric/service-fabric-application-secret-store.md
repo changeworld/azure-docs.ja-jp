@@ -3,12 +3,12 @@ title: Azure Service Fabric セントラル シークレット ストア
 description: この記事では、Azure Service Fabric のセントラル シークレット ストアを使用する方法について説明します。
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.openlocfilehash: bc6ea6260bf50d5b4f8e294e0a3827426f90bee3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 11fb94a9fba40e6f2474ad64f5eb0c454be28ca0
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980940"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589166"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Azure Service Fabric のセントラル シークレット ストア 
 この記事では、Azure Service Fabric のセントラル シークレットストア (CSS) を使用して Service Fabric アプリケーションでシークレットを作成する方法について説明します。 CSS は、パスワード、トークン、キーなどの機密データを暗号化してメモリに保持するローカル シークレット ストア キャッシュです。
@@ -76,7 +76,8 @@ Resource Manager を使用してシークレット リソースを作成する�
 REST API を使用して `supersecret` シークレット リソースを作成するために、`https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview` に PUT 要求を出します。 シークレット リソースを作成するには、クラスター証明書または管理者クライアント証明書が必要です。
 
 ```powershell
-Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview -Method PUT -CertificateThumbprint <CertThumbprint>
+$json = '{"properties": {"kind": "inlinedValue", "contentType": "text/plain", "description": "supersecret"}}'
+Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview -Method PUT -CertificateThumbprint <CertThumbprint> -Body $json
 ```
 
 ## <a name="set-the-secret-value"></a>シークレット値を設定する
@@ -125,8 +126,12 @@ Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecre
 
 REST API を使用してシークレット値を設定するには、次のスクリプトを使用します。
 ```powershell
-$Params = @{"properties": {"value": "mysecretpassword"}}
+$Params = '{"properties": {"value": "mysecretpassword"}}'
 Invoke-WebRequest -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret/values/ver1?api-version=6.4-preview -Method PUT -Body $Params -CertificateThumbprint <ClusterCertThumbprint>
+```
+### <a name="examine-the-secret-value"></a>シークレット値を確認する
+```powershell
+Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -Uri "https:<clusterfqdn>/Resources/Secrets/supersecret/values/ver1/list_value?api-version=6.4-preview"
 ```
 ## <a name="use-the-secret-in-your-application"></a>アプリケーションでのシークレットの使用
 

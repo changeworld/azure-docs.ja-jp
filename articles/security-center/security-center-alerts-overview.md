@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 6fc4b40e9b65f17b0af61b601826279e99410ed1
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 514de1435519282335124bfd67bac82669240b78
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920753"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616507"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure Security Center のセキュリティ アラート
 
@@ -72,15 +72,15 @@ Azure Security Center での脅威の特定には、異常検出も使用され�
 Security Center は、アラートに重要度を割り当て、各アラートに対処する優先順位を付けることができます。これにより、リソースが侵害されたときに、すぐにアクセスできるようになります。 重要度は、アラートの発行に使用された Security Center の信頼度と、アラートの原因となったアクティビティの背後に悪意のある意図があったかどうかの信頼レベルに基づいて決まります。
 
 > [!NOTE]
-> アラートの重大度は、ポータルと REST API で表示方法が異なります。その違いを次の一覧に示します。
+> アラートの重大度は、ポータルと、日付が 01-01-2019 より前のバージョンの REST API では表示方法が異なります。 古いバージョンの API を使用している場合は、以下で説明するように一貫したエクスペリエンスのためにアップグレードしてください。
 
-* **高:** リソースが侵害されている可能性が高いことを示します。 すぐに調べる必要があります。 Security Center には、悪意のある意図と、アラートの発行に使用される検出結果の両方に高い信頼性があります。 たとえば、資格情報の盗難に使用される一般的なツールである Mimikatz など、既知の悪質なツールの実行を検出するアラートです。
-* **中 (REST API では低)** :リソースが侵害されたことを示す可能性がある不審なアクティビティです。
+- **高:** リソースが侵害されている可能性が高いことを示します。 すぐに調べる必要があります。 Security Center には、悪意のある意図と、アラートの発行に使用される検出結果の両方に高い信頼性があります。 たとえば、資格情報の盗難に使用される一般的なツールである Mimikatz など、既知の悪質なツールの実行を検出するアラートです。
+- **中:** リソースが侵害されたことを示す可能性がある不審なアクティビティです。
 分析または検出結果における Security Center の信頼性は中であり、悪意のある意図の信頼性は中から高です。 通常、これらは機械学習または異常に基づく検出です。 たとえば、異常な場所からのサインイン試行です。
-* **低 (REST API では情報)** :良性の陽性またはブロックされた攻撃の可能性があります。
+- **低:** 良性の陽性またはブロックされた攻撃の可能性があります。
    * Security Center は、その意図に悪意があるかどうか、アクティビティが無害かどうかを確信していません。 たとえば、ログのクリアは、攻撃者がトラックを隠そうとしたときに発生することがあるアクションですが、多くの場合、管理者が実行する日常的な操作です。
    * 通常、攻撃がブロックされても、調査が推奨される興味深いケースでなければ、Security Center からは通知されません。 
-* **情報 (REST API でサイレント)** :セキュリティ インシデントに掘り下げるとき、または特定のアラート ID を指定して REST API を使用する場合にのみ、情報アラートが表示されます。 通常、インシデントは複数のアラートで構成され、その一部は単なる情報として表示される場合がありますが、他のアラートとのコンテキストによっては詳しい調査が推奨される可能性があります。 
+- **情報:** セキュリティ インシデントに掘り下げるとき、または特定のアラート ID を指定して REST API を使用する場合にのみ、情報アラートが表示されます。 通常、インシデントは複数のアラートで構成され、その一部は単なる情報として表示される場合がありますが、他のアラートとのコンテキストによっては詳しい調査が推奨される可能性があります。 
  
 
 ## <a name="continuous-monitoring-and-assessments"></a>継続的な監視と評価
@@ -98,14 +98,20 @@ Azure Security Center では、脅威に関する状況の変化を継続的に�
 
 次のトピックでは、リソースの種類に応じてさまざまなアラートを説明します。
 
-* [IaaS VM とサーバーのアラート](security-center-alerts-iaas.md)
-* [ネイティブ コンピューティングのアラート](security-center-alerts-compute.md)
-* [データ サービスのアラート](security-center-alerts-data-services.md)
+* [IaaS Windows マシンのアラート](threat-protection.md#windows-machines)
+* [IaaS Linux マシンのアラート](threat-protection.md#linux-machines)
+* [Azure App Service のアラート](threat-protection.md#app-services)
+* [Azure コンテナーのアラート](threat-protection.md#azure-containers)
+* [SQL Database および SQL Data Warehouse のアラート](threat-protection.md#data-sql)
+* [Azure Storage のアラート](threat-protection.md#azure-storage)
+* [Cosmos DB のアラート](threat-protection.md#cosmos-db)
 
 次のトピックでは、Security Center が、Azure にデプロイされたリソースに追加の保護レイヤーを適用するために、Azure インフラストラクチャとの統合から収集したさまざまなテレメトリを活用する方法について説明します。
 
-* [サービス層のアラート](security-center-alerts-service-layer.md)
-* [Azure WAF と Azure DDoS Protection の脅威検出](security-center-alerts-integration.md)
+* [Azure 管理レイヤー (Azure Resource Manager) のアラート (プレビュー)](threat-protection.md#management-layer)
+* [Azure Key Vault のアラート (プレビュー)](threat-protection.md#azure-keyvault)
+* [Azure ネットワーク レイヤーのアラート](threat-protection.md#network-layer)
+* [その他のサービスからのアラート](threat-protection.md#alerts-other)
 
 ## <a name="what-are-security-incidents"></a>セキュリティ インシデントとは
 

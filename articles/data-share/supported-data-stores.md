@@ -6,12 +6,12 @@ author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 5d4b1282b0a08657aea6f8a13aae7ed1fe49079b
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 11c759dc8865da9de63e3acbfa1d4e26836d010a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964211"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622455"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure Data Share でサポートされているデータ ストア
 
@@ -47,7 +47,7 @@ Azure Data Share では、データ コンシューマーがデータを受け�
 | Azure Synapse Analytics (以前の Azure SQL DW) | ✓ | | ✓| ✓| ✓|
 
 ## <a name="share-from-a-storage-account"></a>ストレージ アカウントからの共有
-Azure Data Share では、Azure Data Lake Gen1 および Azure Data Lake Gen2 からのファイル、フォルダー、ファイル システムの共有がサポートされています。 また、Azure Blob Storage からの BLOB、フォルダー、コンテナーの共有もサポートされています。 スナップショット ベースの共有でフォルダーが共有されている場合、データ コンシューマーは、共有データの完全なコピーを作成するか、増分スナップショット機能を利用して新規または更新されたファイルのみをコピーするか選択できます。 同じ名前の既存のファイルは上書きされます。
+Azure Data Share では、Azure Data Lake Gen1 および Azure Data Lake Gen2 からのファイル、フォルダー、ファイル システムの共有がサポートされています。 また、Azure Blob Storage からの BLOB、フォルダー、コンテナーの共有もサポートされています。 現時点では、ブロック BLOB のみがサポートされています。 スナップショット ベースの共有でフォルダーが共有されている場合、データ コンシューマーは、共有データの完全なコピーを作成するか、増分スナップショット機能を利用して新規または更新されたファイルのみをコピーするか選択できます。 同じ名前の既存のファイルは上書きされます。
 
 ## <a name="share-from-a-sql-based-source"></a>SQL ベースのソースからの共有
 Azure Data Share では、Azure SQL Database および Azure Synapse Analytics (旧称 Azure SQL DW) からのテーブルまたはビューの共有がサポートされています。 データ コンシューマーは、データを Azure Data Lake Storage Gen2 または Azure Blob Storage に、csv または parquet ファイルとして受け入れることができます。 完全スナップショットを使用すると、ターゲット ファイルの内容が上書きされます。 また、データ コンシューマーはデータを SQL テーブルに受け入れることもできます。 ターゲット SQL テーブルがデータ コンシューマー側で使用できない場合は、Azure Data Share によって送信元スキーマを使って SQL テーブルが作成されます。 完全スナップショットを使用すると、ソース テーブルの内容がターゲット SQL テーブルに追加されます。 増分スナップショットは現在サポートされていません。

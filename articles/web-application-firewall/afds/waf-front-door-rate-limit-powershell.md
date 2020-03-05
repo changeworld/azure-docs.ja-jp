@@ -5,18 +5,18 @@ author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
 services: web-application-firewall
-ms.date: 08/21/2019
+ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: 831d0876c67aa36248a54f3935e5ce7884c736ef
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: b034159c3d12927f6425b3dc3c5b5609af9b0b76
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186621"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649366"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Azure PowerShell を使用して Web アプリケーション ファイアウォールのレート制限ルールを構成する
-Azure Front Door 用の Azure Web アプリケーション ファイアウォール (WAF) のレート制限ルールでは、1 分間に単一のクライアント IP から送信できる要求数を制御します。
-この記事では、Azure PowerShell を使用して WAF レート制限ルールを構成し、単一クライアントから Web アプリケーション (URL に */promo* が含まれる) に送信できる要求数を制御する方法を説明します。
+Azure Front Door 用の Azure Web アプリケーション ファイアウォール (WAF) のレート制限ルールでは、1 分間にクライアントから送信できる要求数を制御します。
+この記事では、Azure PowerShell を使用して WAF レート制限ルールを構成し、クライアントから Web アプリケーション (URL に */promo* が含まれる) に送信できる要求数を制御する方法を示します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -32,7 +32,7 @@ Azure PowerShell には、Azure リソースの管理に [Azure Resource Manager
 Connect-AzAccount
 
 ```
-Front Door モジュールをインストールする前に、現在のバージョンの PowerShellGet がインストールされていることを確認します。 次のコマンドを実行して、PowerShell を再度開きます。
+Front Door モジュールをインストールする前に、現在のバージョンの PowerShellGet がインストールされていることを確認してください。 次のコマンドを実行したら、PowerShell を再度開きます。
 
 ```
 Install-Module PowerShellGet -Force -AllowClobber
@@ -102,7 +102,7 @@ URL 一致条件 (URL に /promo が含まれる) を定義するには、[New-A
 > [!NOTE]
 > Front Door フロントエンドにセキュリティ ポリシーをリンクさせるために必要な *WebApplicationFirewallPolicyLink* プロパティの設定は 1 回だけです。 それ以降のポリシーの更新は、自動的にフロントエンドに適用されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Front Door](../../frontdoor/front-door-overview.md) の詳細を確認する。 
 

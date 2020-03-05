@@ -4,15 +4,15 @@ description: Azure App Service のネットワーク機能について、およ�
 author: ccompy
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 02/27/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 208bf37bfcdf0f86fad11611279d1b4e642fb18a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0fd904b15a830e2b261057a11d1a8f3a4d584fe1
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971759"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649228"
 ---
 # <a name="app-service-networking-features"></a>App Service のネットワーク機能
 
@@ -28,7 +28,7 @@ Azure App Service は分散システムです。 受信した HTTP/HTTPS 要求�
 |---------------------|-------------------|
 | アプリに割り当てられたアドレス | ハイブリッド接続 |
 | アクセス制限 | ゲートウェイが必要な VNet 統合 |
-| サービス エンドポイント | VNet 統合 (プレビュー) |
+| サービス エンドポイント | VNet 統合 |
 
 特に記載のない限り、これらの機能はすべて併用可能です。 機能を組み合わせることで、さまざまな問題を解決できます。
 
@@ -56,7 +56,9 @@ Azure App Service は分散システムです。 受信した HTTP/HTTPS 要求�
 | 異なるリージョン内にある Azure Virtual Network のリソースにアクセスする | ゲートウェイが必要な VNet 統合 </br> ASE と VNet ピアリング |
 | サービス エンドポイントによって保護されているリソースにアクセスする | VNet 統合 </br> ASE |
 | Azure に接続されていないプライベート ネットワーク内にあるリソースにアクセスする | ハイブリッド接続 |
-| 複数の ExpressRoute 回線を越えてリソースにアクセスする | VNet 統合 (現時点では RFC 1918 アドレスのみに制限) </br> ASE | 
+| 複数の ExpressRoute 回線を越えてリソースにアクセスする | VNet 統合 </br> ASE | 
+| Web アプリからの送信トラフィックをセキュリティで保護する | VNet 統合とネットワーク セキュリティ グループ </br> ASE | 
+| Web アプリからの送信トラフィックをルーティングする | VNet 統合とルーティング テーブル </br> ASE | 
 
 
 ### <a name="default-networking-behavior"></a>既定のネットワークの動作
@@ -101,7 +103,7 @@ Azure Virtual Network (VNet) 内のリソースからのみアプリに到達で
 
 サービス エンドポイントを使用すると、アプリに対する**受信**アクセスについて、送信元アドレスが選択したサブネット セットからのものであるアクセスのみに限定できます。 この機能は、IP アクセス制限と連携して動作します。 サービス エンドポイントを設定する場合のユーザー エクスペリエンスは、IP アクセス制限の場合と同じです。 パブリック アドレスおよび VNet 内のサブネットを指定して、許可と拒否のアクセス ルール リストを作成できます。 この機能は、次のようなシナリオをサポートしています。
 
-![service endpoints](media/networking-features/service-endpoints.png)
+![サービス エンドポイント](media/networking-features/service-endpoints.png)
 
 * アプリに Application Gateway を設定して、アプリに対する受信トラフィックをロックダウンする
 * アプリに対するアクセスを VNet 内のリソースのもののみに制限する。 この対象には、VM や ASE のほか、VNet 統合を使用するアプリも含めることができます。 
@@ -151,10 +153,12 @@ App Service の "ゲートウェイが必要な VNet 統合" 機能を使用す�
 * 同じリージョンにある Resource Manager VNet 内のリソースにアクセスする
 * サービス エンドポイントで保護されているリソースにアクセスする 
 * ExpressRoute または VPN 接続越しにアクセス可能なリソースにアクセスする
+* すべての送信トラフィックをセキュリティで保護する 
+* すべての送信トラフィックにトンネリングを強制する。 
 
 ![VNet 統合](media/networking-features/vnet-integration.png)
 
-この機能はプレビュー段階です。運用環境のワークロードには使用しないでください。 この機能の詳細については、[App Service の VNet 統合][vnetintegration]に関するドキュメントを参照してください。
+この機能の詳細については、[App Service の VNet 統合][vnetintegration]に関するドキュメントを参照してください。
 
 ## <a name="app-service-environment"></a>App Service 環境 
 

@@ -4,20 +4,18 @@ description: Azure Functions の Durable Functions 拡張機能で人による�
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 6a442ac0d515f9cca9201767087a9b59588edeed
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 0c16ef092c30a94cd04b55c91d3643ac29b82be0
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769576"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562107"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions での人による操作 - 電話確認サンプル
 
 このサンプルでは、人による操作を含む [Durable Functions](durable-functions-overview.md) オーケストレーションを構築する方法を示します。 自動プロセスに実際の人が関与する場合、プロセスは人への通知の送信と応答の受信を非同期に行うことができる必要があります。 また、人がいない可能性にも対応する必要があります (この最後の部分では、タイムアウトが重要になります)。
 
 このサンプルでは、SMS ベースの電話確認システムを実装します。 この種のフローは、顧客の電話番号を確認するとき、または多要素認証 (MFA) に、よく使われます。 それは、実装全体が 2 つの小さい関数を使って行われる強力な例です。 データベースなどの外部データ ストアは必要ありません。
-
-[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -37,26 +35,32 @@ ms.locfileid: "75769576"
 
 この記事では、サンプル アプリで使われている次の関数について説明します。
 
-* **E4_SmsPhoneVerification**
-* **E4_SendSmsChallenge**
+* `E4_SmsPhoneVerification`:タイムアウトや再試行の管理など、電話確認処理を実行する[オーケストレーター関数](durable-functions-bindings.md#orchestration-trigger)。
+* `E4_SendSmsChallenge`:テキスト メッセージを介してコードを送信する[オーケストレーター関数](durable-functions-bindings.md#activity-trigger)。
 
-以下のセクションでは、C# スクリプトと JavaScript で使用される構成とコードについて説明します。 Visual Studio 開発用のコードは、この記事の最後に記載されています。
+### <a name="e4_smsphoneverification-orchestrator-function"></a>E4_SmsPhoneVerification オーケストレーター関数
 
-## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>SMS 確認オーケストレーション (Visual Studio Code と Azure Portal のサンプル コード)
+# <a name="c"></a>[C#](#tab/csharp)
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs?range=17-70)]
+
+> [!NOTE]
+> 最初はわかりにくいかもしれませんが、このオーケストレーター関数は完全に決定論的です。 これが決定論的であるのは、タイマーの期限切れ日時を計算するために `CurrentUtcDateTime` プロパティが使われており、オーケストレーター コード内のこのポイントで再生されるたびに同じ値を返すためです。 この動作が重要なのは、`Task.WhenAny` の呼び出しを繰り返すたびに、`winner` が確実に同じ結果になるようにするためです。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **E4_SmsPhoneVerification** 関数は、オーケストレーター関数用の標準的な *function.json* を使います。
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/function.json)]
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/function.json)]
 
 関数を実装するコードを次に示します。
 
-### <a name="c-script"></a>C# スクリプト
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
-
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
+
+> [!NOTE]
+> 最初はわかりにくいかもしれませんが、このオーケストレーター関数は完全に決定論的です。 これが決定論的であるのは、タイマーの期限切れ日時を計算するために `currentUtcDateTime` プロパティが使われており、オーケストレーター コード内のこのポイントで再生されるたびに同じ値を返すためです。 この動作が重要なのは、`context.df.Task.any` の呼び出しを繰り返すたびに、`winner` が確実に同じ結果になるようにするためです。
+
+---
 
 開始されると、このオーケストレーター関数は次のことを行います。
 
@@ -67,29 +71,31 @@ ms.locfileid: "75769576"
 
 ユーザーは、4 桁のコードで SMS メッセージを受け取ります。 ユーザーが同じ 4 桁のコードをオーケストレーター関数のインスタンスに返送して確認プロセスを完了するまでに、90 秒の猶予があります。 正しくないコードを送信した場合、(同じ 90 秒の間に) さらに 3 回 正しいコードの送信を試みることができます。
 
-> [!NOTE]
-> 最初はわかりにくいかもしれませんが、このオーケストレーター関数は完全に決定論的です。 それが決定論的なのは、タイマーの期限切れ日時を計算するために `CurrentUtcDateTime` (.NET) および `currentUtcDateTime` (JavaScript) プロパティが使用され、これらのプロパティが、オーケストレーター コード内のこのポイントで再生されるたびに同じ値を返すためです。 この動作は、`Task.WhenAny` (.NET) または `context.df.Task.any` (JavaScript) への呼び出しが繰り返されるたびに、確実に同じ `winner` が得られるようにするために重要です。
-
 > [!WARNING]
 > タイマーが期限切れになる必要がなくなった場合は (上の例でチャレンジ応答を受け取った場合)、[タイマーをキャンセルする](durable-functions-timers.md)ことが重要です。
 
-## <a name="send-the-sms-message"></a>SMS メッセージの送信
+## <a name="e4_sendsmschallenge-activity-function"></a>E4_SendSmsChallenge アクティビティ関数
 
-**E4_SendSmsChallenge** 関数は、Twilio バインディングを使って、4 桁のコードを含む SMS メッセージをエンド ユーザーに送信します。 *function.json* の定義は次のようになります。
+**E4_SendSmsChallenge** 関数では、Twilio バインディングを使って、4 桁のコードを含む SMS メッセージをエンド ユーザーに送信します。
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/function.json)]
+# <a name="c"></a>[C#](#tab/csharp)
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs?range=72-89)]
+
+> [!NOTE]
+> サンプル コードを実行するには、`Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget パッケージをインストールする必要があります。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+*function.json* の定義は次のようになります。
+
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/function.json)]
 
 次に示すのは、4 桁のチャレンジ コードを生成して SMS メッセージを送信するコードです。
 
-### <a name="c-script"></a>C# スクリプト
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
-
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/index.js)]
 
-この **E4_SendSmsChallenge** 関数は、プロセスがクラッシュしたりリプレイされたりする場合であっても、1 回だけしか呼び出されません。 エンド ユーザーが複数の SMS メッセージを受け取るのは望ましくないので、これはよいことです。 戻り値の `challengeCode` は自動的に永続化されるので、オーケストレーター関数はいつでも正しいコードがわかります。
+---
 
 ## <a name="run-the-sample"></a>サンプルを実行する
 
@@ -147,15 +153,6 @@ Content-Length: 145
 
 {"runtimeStatus":"Completed","input":"+1425XXXXXXX","output":false,"createdTime":"2017-06-29T19:20:49Z","lastUpdatedTime":"2017-06-29T19:22:23Z"}
 ```
-
-## <a name="visual-studio-sample-code"></a>Visual Studio のサンプル コード
-
-Visual Studio プロジェクトの単一の C# ファイルとしてのオーケストレーションを次に示します。
-
-> [!NOTE]
-> 下のサンプル コードを実行するには、`Microsoft.Azure.WebJobs.Extensions.Twilio` NuGet パッケージをインストールする必要があります。
-
-[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs)]
 
 ## <a name="next-steps"></a>次のステップ
 

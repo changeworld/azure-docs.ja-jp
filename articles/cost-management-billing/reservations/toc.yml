@@ -26,6 +26,8 @@
           href: ../../data-explorer/pricing-reserved-capacity.md?toc=/azure/billing/TOC.json
         - name: Azure Databricks の予約を購入する
           href: prepay-databricks-reserved-capacity.md
+        - name: Azure Cache for Redis の予約を購入する
+          href: ../../azure-cache-for-redis/cache-reserved-pricing.md?toc=/azure/billing/TOC.json
         - name: App Service の予約を購入する
           href: prepay-app-service-isolated-stamp.md
         - name: Azure ソフトウェア プランの予約を購入する

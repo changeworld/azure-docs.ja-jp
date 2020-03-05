@@ -1,45 +1,71 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Front Door Service のドキュメント
+summary: Azure Front Door は、グローバルな Web アプリを高速にデリバリーするためのセキュリティで保護されたスケーラブルなエントリ ポイントです。
 metadata:
   title: Azure Front Door Service のドキュメント
-  meta.description: 'Azure Front Door Service provides a scalable and secure entry point for fast delivery of your global web applications. Learn how to use Front Door with our quickstarts, tutorials, and samples.'
+  description: Azure Front Door Service では、グローバルな Web アプリケーションを高速に配信するためのセキュリティで保護されたスケーラブルなエントリ ポイントが提供されます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Front Door の使用方法を確認してください。
   services: frontdoor
-  author: dlepow
   ms.service: frontdoor
   ms.topic: landing-page
-  ms.date: 9/14/2018
-  ms.author: danlep
-abstract:
-  description: Azure Front Door Service では、グローバルな Web アプリケーションを高速に配信するためのセキュリティで保護されたスケーラブルなエントリ ポイントが提供されます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Front Door の使用方法を確認してください。
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: グローバル Web アプリケーションの高可用性を実現する、Front Door を作成します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure Portal
-            href: quickstart-create-front-door.md
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: ニーズに応じた Azure Front Door Service の構成方法について学習します。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="front-door-custom-domain.md">Front Door にカスタム ドメインを追加する</a>
-          - html: <a href="front-door-custom-domain-https.md">カスタム ドメインの HTTPS を有効にする</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: コマンド ライン
-            html: '<p><a href="/cli/azure/ext/front-door">Azure CLI</a></p><p><a href="https://go.microsoft.com/fwlink/?linkid=2020942">Azure PowerShell</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/frontdoor">REST API</a></p>
+  author: vhorne
+  ms.author: victorh
+  ms.date: 03/03/2020
+  ms.openlocfilehash: 7fdf859bc3d8f970fe16bd031d4fd60919c49a92
+  ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/04/2020
+  ms.locfileid: "78273282"
+landingContent:
+- title: Azure Front Door について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Front Door とは
+      url: front-door-overview.md
+- title: Front Door を作成する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Front Door を作成する
+      url: quickstart-create-front-door.md
+- title: カスタム ドメインの追加
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Front Door にカスタム ドメインを追加する
+      url: front-door-custom-domain.md
+  - linkListType: how-to-guide
+    links:
+    - text: フロント ドアにルート ドメインまたは頂点ドメインをオンボードする
+      url: front-door-how-to-onboard-apex-domain.md
+- title: geo フィルタリングについて
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ドメインに対する geo フィルタリングとは
+      url: front-door-geo-filtering.md
+  - linkListType: tutorial
+    links:
+    - text: geo フィルタリング WAF ポリシーを設定する
+      url: front-door-tutorial-geo-filtering.md
+- title: HTTPS の構成
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Front Door カスタム ドメインで HTTPS を構成する
+      url: front-door-custom-domain-https.md
+- title: Azure Front Door のトラブルシューティング
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ルーティングに関する一般的な問題
+      url: front-door-troubleshoot-routing.md
+    - text: 許可された証明機関
+      url: front-door-troubleshoot-allowed-ca.md
+- title: Azure の負荷分散について
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure 負荷分散
+      url: front-door-lb-with-azure-app-delivery-suite.md

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 1d82261d4b5c1a66498c33610670d7a38acbb197
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 91480b3ba0a2bbd3e8c31adb931f5baabe1b07ce
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152331"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605597"
 ---
 # <a name="execute-python-script-module"></a>Python スクリプトの実行モジュール
 
@@ -91,7 +91,7 @@ os.system(f"pip install scikit-misc")
 
     ![Python 実行入力マップ](media/module/python-module.png)
 
-4. 新しい Python パッケージまたはコードをインクルードするには、それらのカスタム リソースを含んだ ZIP ファイルを**スクリプト バンドル**で追加します。 **スクリプト バンドル**への入力は、あらかじめワークスペースにアップロードされた ZIP ファイルであることが必要です。 
+4. 新しい Python パッケージまたはコードをインクルードするには、それらのカスタム リソースを含む ZIP ファイルを**スクリプト バンドル**で追加します。 **スクリプト バンドル**への入力は、ファイルの種類をデータセットとしてワークスペースにアップロードされた ZIP ファイルであることが必要です。 
 
     アップロード済みの ZIP アーカイブに格納されていれば、どのファイルでもパイプラインの実行中に使用できます。 アーカイブにディレクトリ構造が含まれていても、その構造は維持されます。ただしその場合は、**src** というディレクトリをパスの先頭に追加する必要があります。
 

@@ -6,27 +6,27 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 02/25/2019
 ms.author: tamram
-ms.openlocfilehash: eb3523ca55e67d7a26ae608da8963dbf6124f2f7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 42cef26143eaeb49c4aa80dc5e1b05eb7be943cc
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975821"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616841"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>汎用 v2 ストレージ アカウントにアップグレードする
 
 汎用 v2 ストレージ アカウントは、最新の Azure Storage の機能をサポートし、汎用 v1 と BLOB ストレージ アカウントのすべての機能が組み込まれています。 ほとんどのストレージ シナリオに汎用 v2 アカウントをお勧めします。 汎用 v2 アカウントは、業界内の他社に引けを取らないトランザクション料金で、Azure Storage に対してギガバイトあたり容量の最低価格を提供しています。 汎用 v2 アカウントでは、ホットまたはクールの既定のアカウント アクセス層と、ホット、クール、またはアーカイブ間の BLOB レベル階層がサポートされます。
 
-汎用 v1 または BLOB ストレージ アカウントから汎用 v2 ストレージ アカウントにアップグレードする方法は簡単です。 Azure portal、PowerShell、または Azure CLI を使用してアップグレードできます。
+汎用 v1 または BLOB ストレージ アカウントから汎用 v2 ストレージ アカウントへのアップグレードは簡単です。 Azure portal、PowerShell、または Azure CLI を使用してアップグレードできます。 汎用 v2 ストレージ アカウントへのアップグレードに伴うダウンタイムやデータ損失のリスクはありません。 アカウントのアップグレードは、アカウントの種類を変更する、Azure Resource Manager の単純な操作によって行われます。
 
 > [!IMPORTANT]
 > 汎用 v1 または BLOB ストレージ アカウントから汎用 v2 へのアップグレードは永続的であり、元に戻すことはできません。
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. ストレージ アカウントに移動します。
 3. **[設定]** セクションで **[構成]** をクリックします。
 4. **[アカウントの種類]** の **[アップグレード]** をクリックします。
@@ -35,7 +35,7 @@ ms.locfileid: "75975821"
 
     ![アカウントの種類をアップグレードする](../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -46,7 +46,7 @@ PowerShell を使用して汎用 v1 アカウントを汎用 v2 アカウント�
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
 ```
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLI を使用して汎用 v1 アカウントを汎用 v2 アカウントにアップグレードするには、まず Azure CLI の最新バージョンをインストールします。 CLI のインストールについては、[Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
 

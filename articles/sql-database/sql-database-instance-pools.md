@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 98757677eae6d21b02d6b0b2a3abade453b5dfed
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: c1e740fbfa4bf1e8a77a2d9d6060ab39dba7ae7b
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552782"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587398"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>SQL Database インスタンス プール (プレビュー) とは
 
@@ -126,7 +126,7 @@ ms.locfileid: "75552782"
 
 プール内の単一インスタンスまたはデータベースに関連する問題が発生している場合は、Azure SQL Database マネージド インスタンスの通常のサポート チケットを作成する必要があります。
 
-インスタンス プールの有無にかかわらず、より大きなマネージド インスタンスのデプロイを作成するには、より大きなリージョン クォータを取得する必要があります。 [より大きなクォータを要求するには標準のマネージド インスタンス プロシージャ](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance)を使用しますが、インスタンス プールを使用している場合は、デプロイ ロジックによって、"*プール レベルで*" の仮想コアの合計消費量がクォータと比較され、クォータをさらに増やすことなく、新しいリソースの作成を許可するかどうかが決定されることに注意してください。
+インスタンス プールの有無にかかわらず、より大きなマネージド インスタンスのデプロイを作成するには、より大きなリージョン クォータを取得する必要があります。 詳細については、「[Azure SQL Database のクォータの増加を要求する](quota-increase-request.md)」を参照してください。 インスタンス プールを使用している場合は、デプロイ ロジックによって*プール レベルでの*仮想コアの合計消費量がクォータと比較され、クォータをさらに増やすことなく新しいリソースの作成を許可するかどうかが決定されることに注意してください。
 
 ## <a name="instance-pool-billing"></a>インスタンス プールの課金
 

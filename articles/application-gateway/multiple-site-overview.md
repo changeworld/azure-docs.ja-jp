@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 1/7/2020
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: 0192d27ebfa696376ce79f90a6ceeb816dfb1e46
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: ac9dd31e01b1915642951aeddb10d3eae118d943
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75719955"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523783"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway の複数サイトのホスト
 
@@ -21,7 +21,7 @@ ms.locfileid: "75719955"
 ![imageURLroute](./media/multiple-site-overview/multisite.png)
 
 > [!IMPORTANT]
-> 規則は、ポータルにおける表示順に処理されます。 基本リスナーを構成する前に、まずマルチサイト リスナーを構成することを強くお勧めします。  そうすることで、トラフィックが確実に適切なバックエンドにルーティングされます。 基本リスナーが先に表示されていて、なおかつ受信要求と一致した場合、そのリスナーによって要求が処理されます。
+> v1 SKU では、規則はポータルに一覧表示されている順序で処理されます。 v2 SKU では、完全一致の優先順位が高くなります。 基本リスナーを構成する前に、まずマルチサイト リスナーを構成することを強くお勧めします。  そうすることで、トラフィックが確実に適切なバックエンドにルーティングされます。 基本リスナーが先に表示されていて、なおかつ受信要求と一致した場合、そのリスナーによって要求が処理されます。
 
 `http://contoso.com` の要求は ContosoServerPool にルーティングされ、`http://fabrikam.com` は FabrikamServerPool にルーティングされます。
 

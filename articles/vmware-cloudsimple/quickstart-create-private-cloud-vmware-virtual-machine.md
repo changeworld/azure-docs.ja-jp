@@ -1,6 +1,6 @@
 ---
-title: クイックスタート - AVS プライベート クラウドに VMware VM を作成する
-description: AVS プライベート クラウドに VMware VM を作成する方法について説明します
+title: クイック スタート - プライベート クラウドに Azure VMware VM を作成する - Azure VMware Solution by CloudSimple
+description: CloudSimple プライベート クラウドに Azure VMware VM を作成する方法について説明します
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,42 +8,42 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: cbe88afc4f566bad4bacb408346d4dd25a2f6c96
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 4ac818cfd267b781366c0e32c9f93cc885dff99c
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020065"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566150"
 ---
-# <a name="create-vmware-virtual-machines-on-your-avs-private-cloud"></a>AVS プライベート クラウドに VMware 仮想マシンを作成する
+# <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>プライベート クラウドに VMware 仮想マシンを作成する
 
-AVS プライベート クラウドに仮想マシンを作成するには、最初に Azure portal から AVS ポータルにアクセスします。
+プライベート クラウドに仮想マシンを作成するには、最初に Azure portal から CloudSimple ポータルにアクセスします。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
 Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
-## <a name="access-the-avs-portal"></a>AVS ポータルへのアクセス
+## <a name="access-the-cloudsimple-portal"></a>CloudSimple ポータルにアクセスする
 
 1. **[すべてのサービス]** を選択します。
-2. **AVS サービス**を検索します。
-3. AVS プライベート クラウドを作成する AVS サービスを選択します。
-4. **[概要]** ページから、 **[Go to the AVS portal]\(AVS ポータルに移動する\)** をクリックして AVS ポータルの新しいブラウザー タブを開きます。 メッセージが表示されたら、Azure サインインの資格情報でサインインします。 
+2. **CloudSimple Services** を検索します。
+3. プライベート クラウドを作成する CloudSimple サービスを選択します。
+4. **[概要]** ページから、 **[Go to the CloudSimple portal]\(CloudSimple ポータルに移動する\)** をクリックして CloudSimple ポータルの新しいブラウザー タブを開きます。  メッセージが表示されたら、Azure サインインの資格情報でサインインします。  
 
-    ![AVS ポータルを起動する](media/launch-cloudsimple-portal.png)
+    ![CloudSimple ポータルを起動する](media/launch-cloudsimple-portal.png)
 
 ## <a name="launch-vcenter-web-ui"></a>vCenter の Web UI を起動する
 
 vCenter を起動して、仮想マシンとポリシーを設定できるようになりました。
 
-vCenter にアクセスするには、AVS ポータルから始めます。 ホーム ページの **[Common Tasks]\(一般タスク\)** で、 **[Launch vSphere Client]\(vSphere クライアントを起動\)** をクリックします。 AVS プライベート クラウドを選択し、AVS プライベート クラウドで **[Launch vSphere Client]\(vSphere クライアントを起動\)** をクリックします。
+vCenter にアクセスするには、CloudSimple ポータルから始めます。 ホーム ページの **[Common Tasks]\(一般タスク\)** で、 **[Launch vSphere Client]\(vSphere クライアントを起動\)** をクリックします。  プライベート クラウドを選択し、プライベート クラウドで **[Launch vSphere Client]\(vSphere クライアントを起動\)** をクリックします。
 
    ![vSphere Client を起動する](media/launch-vcenter-from-cloudsimple-portal.png)
 
 ## <a name="upload-an-iso-or-vsphere-template"></a>ISO または vSphere テンプレートをアップロードする
 
   > [!WARNING]
-  > ISO のアップロードには、vSphere HTML5 クライアントを使用します。 Flash クライアントを使用するとエラーになることがあります。
+  > ISO のアップロードには、vSphere HTML5 クライアントを使用します。  Flash クライアントを使用するとエラーになる場合があります。
 
 1. VM を作成し、それをローカル システムで使用できるようにするための、vCenter にアップロードする ISO または vSphere テンプレートを取得します。
 2. vCenter で、 **[Disk]\(ディスク\)** アイコンをクリックして、 **[vsanDatastore]** を選択します。 **[Files]\(ファイル\)** をクリックし、 **[New Folder]\(新しいフォルダー\)** をクリックします。
@@ -78,7 +78,7 @@ vCenter にアクセスするには、AVS ポータルから始めます。 ホ�
 8. 作成している VM の ISO のゲスト OS を選択し、 **[次へ]** をクリックします。
     ![新しい VM](media/vcvm07.png)
 
-9. ハード ディスクとネットワークのオプションを選択します。 [New CD/DVD Drive]\(新しい CD または DVD ドライブ\) で、 **[Datastore ISO file]\(データストアの ISO ファイル\)** を選択します。 パブリック IP アドレスからこの VM へのトラフィックを許可する場合は、ネットワークを **[vm-1]** として選択します。
+9. ハード ディスクとネットワークのオプションを選択します。 [New CD/DVD Drive]\(新しい CD または DVD ドライブ\) で、 **[Datastore ISO file]\(データストアの ISO ファイル\)** を選択します。  パブリック IP アドレスからこの VM へのトラフィックを許可する場合は、ネットワークを **[vm-1]** として選択します。
     ![新しい VM](media/vcvm08.png)
 
 10. 選択ウィンドウが開きます。 ISOs and Templates フォルダーに以前アップロードしたファイルを選択し、 **[OK]** をクリックします。
@@ -90,17 +90,17 @@ vCenter にアクセスするには、AVS ポータルから始めます。 ホ�
 これで VM が Workload コンピューティング リソースに追加され、使用する準備ができました。 
 ![新しい VM](media/vcvm12.png)
 
-これで、基本的なセットアップが完了しました。 オンプレミスの VM インフラストラクチャを使用する場合と同様の方法で、AVS プライベート クラウドの使用を開始できます。
+これで、基本的なセットアップが完了しました。 オンプレミスの VM インフラストラクチャを使用する場合と同様の方法で、プライベート クラウドの使用を開始できます。
 
-以降のセクションには、AVS プライベート クラウドのワークロードのための DNS および DHCP サーバーのセットアップや、既定のネットワーク構成の変更に関するオプション情報が含まれています。
+以降のセクションには、プライベート クラウド ワークロードのための DNS および DHCP サーバーのセットアップや、既定のネットワーク構成の変更に関するオプション情報が含まれています。
 
 ## <a name="add-users-and-identity-sources-to-vcenter-optional"></a>vCenter にユーザーと ID ソースを追加する (省略可能)
 
-AVS では、既定の vCenter ユーザー アカウントにユーザー名 `cloudowner@AVS.local` が割り当てられます。 開始するために、追加のアカウントを設定する必要はありません。 通常、AVS では、通常の操作を実行するために必要な特権が管理者に割り当てられます。 オンプレミスの Active Directory または Azure AD を、AVS プライベート クラウド上の[追加の ID ソース](set-vcenter-identity.md)として設定します。
+CloudSimple は、既定の vCenter ユーザー アカウントにユーザー名 `cloudowner@cloudsimple.local` を割り当てます。 開始するために、追加のアカウントを設定する必要はありません。  CloudSimple は通常、管理者に、通常の操作を実行するために必要な特権を割り当てます。  オンプレミスの Active Directory または Azure AD を、プライベート クラウド上の[追加の ID ソース](set-vcenter-identity.md)としてセットアップします。
 
 ## <a name="create-a-dns-and-dhcp-server-optional"></a>DNS および DHCP サーバーを作成する (省略可能)
 
-AVS プライベート クラウド環境で実行されるアプリケーションとワークロードには、ルックアップと IP アドレスの割り当てのための名前解決と DHCP サービスが必要です。 これらのサービスを提供する、適切な DHCP と DNS インフラストラクチャが必要です。 vCenter で仮想マシンを構成して、AVS プライベート クラウド環境でこれらのサービスを提供することができます。
+プライベート クラウド環境で実行されるアプリケーションとワークロードには、ルックアップと IP アドレスの割り当てのための名前解決と DHCP サービスが必要です。 これらのサービスを提供する、適切な DHCP と DNS インフラストラクチャが必要です。 vCenter で仮想マシンを構成して、プライベート クラウド環境でこれらのサービスを提供することができます。
 
 前提条件
 
@@ -114,7 +114,7 @@ AVS プライベート クラウド環境で実行されるアプリケーショ
 
 #### <a name="linux-based-dns-server-setup"></a>Linux ベースの DNS サーバーの設定
 
-Linux では、DNS サーバーを設定するためのさまざまなパッケージが提供されています。 オープン ソースの BIND DNS サーバーを設定するための手順へのリンクを次に示します。
+Linux では、DNS サーバーを設定するためのさまざまなパッケージが提供されています。  オープン ソースの BIND DNS サーバーを設定するための手順へのリンクを次に示します。
 
 [セットアップの例](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-centos-7)
 
@@ -128,11 +128,11 @@ Linux では、DNS サーバーを設定するためのさまざまなパッケ�
 
 ## <a name="customize-networking-configuration-optional"></a>ネットワーク構成をカスタマイズする (省略可能)
 
-AVS ポータルの [Network]\(ネットワーク\) ページでは、VM に対するファイアウォール テーブルやパブリック IP アドレスの構成を指定できます。
+CloudSimple ポータルの [ネットワーク] ページを使用すると、VM のファイアウォール テーブルやパブリック IP アドレスの構成を指定できます。
 
 ### <a name="allocate-public-ips"></a>パブリック IP を割り当てる
 
-1. AVS ポータルで、 **[Network]\(ネットワーク\) > [Public IP]\(パブリック IP\)** に移動します。
+1. CloudSimple ポータルで、 **[Network]\(ネットワーク\) > [Public IP]\(パブリック IP\)** に移動します。
 2. **[Allocate Public IP]\(パブリック IP を割り当てる\)** をクリックします。
 3. IP アドレス エントリを識別する名前を入力します。
 4. 既定の場所はそのままにします。
@@ -207,10 +207,10 @@ python3 -m http.server 80
 ```
 デスクトップ上でブラウザーを起動し、パブリック IP アドレスのポート 80 を指定して VM 上のファイルを参照します。
 
-### <a name="default-avs-firewall-rules-for-public-ip"></a>パブリック IP のための既定の AVS ファイアウォール規則
+### <a name="default-cloudsimple-firewall-rules-for-public-ip"></a>パブリック IP のための既定の CloudSimple ファイアウォール規則
 
 * VPN トラフィック:VPN とすべてのワークロード ネットワークおよび管理ネットワークの間のすべてのトラフィックが許可されます。
-* AVS プライベート クラウドの内部トラフィック: (上記の) ワークロード ネットワークおよび管理ネットワークの間のすべての East-West トラフィックが許可されます。
+* プライベート クラウド内部トラフィック:(上記の) ワークロード ネットワークおよび管理ネットワークの間のすべての East-West トラフィックが許可されます。
 * インターネット トラフィック:
   * ワークロード ネットワークおよび管理ネットワークに対するインターネットからのすべての受信トラフィックは拒否されます。
   * ワークロード ネットワークまたは管理ネットワークからインターネットへのすべての発信トラフィックは許可されます。
@@ -219,7 +219,7 @@ python3 -m http.server 80
 
 ## <a name="install-solutions-optional"></a>ソリューションをインストールする (省略可能)
 
-AVS プライベート クラウドにソリューションをインストールして、AVS プライベート クラウドの vCenter 環境を最大限に利用できます。 仮想マシンを保護するために、バックアップ、ディザスター リカバリー、レプリケーション、およびその他の機能をセットアップすることができます。 例として、VMware Site Recovery Manager (VMware SRM) や Veeam Backup & Replication などがあります。
+CloudSimple プライベート クラウドにソリューションをインストールして、プライベート クラウド vCenter 環境を最大限に活用することができます。 仮想マシンを保護するために、バックアップ、ディザスター リカバリー、レプリケーション、およびその他の機能をセットアップすることができます。 例として、VMware Site Recovery Manager (VMware SRM) や Veeam Backup & Replication などがあります。
 
 ソリューションをインストールするには、一定期間の追加の特権を要求する必要があります。 [権限をエスカレートする](escalate-private-cloud-privileges.md)ことに関するページを参照してください。
 
@@ -227,4 +227,4 @@ AVS プライベート クラウドにソリューションをインストール
 
 * [Azure での VMware VM の使用](quickstart-create-vmware-virtual-machine.md)
 * [Azure ExpressRoute を使用してオンプレミスのネットワークに接続する](on-premises-connection.md)
-* [AVS ネットワーク上の VPN ゲートウェイを設定する](vpn-gateway.md)
+* [CloudSimple ネットワーク上の VPN ゲートウェイを設定する](vpn-gateway.md)
