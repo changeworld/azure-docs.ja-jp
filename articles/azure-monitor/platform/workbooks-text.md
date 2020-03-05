@@ -4,18 +4,17 @@ description: 作成済みのブックやパラメーター化されたカスタ�
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 3b7affb9c7d7be790d4279c1db8174a5dd3b2c2a
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: c5fb585d0eb6aeb7866c2ab04b324ee31fe903ca
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872776"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658051"
 ---
 # <a name="workbook-text-parameters"></a>ブックのテキスト パラメーター
 
@@ -30,8 +29,8 @@ ms.locfileid: "74872776"
 4. ポップアップ表示される新しいパラメーター ペインで、次のように入力します。
     1. Parameter name: `SlowRequestThreshold` (パラメーター名: {2})
     2. [パラメーターの種類]\: [`Text`ドロップ ダウン]
-    3. [必須ですか?]\: オン
-    4. [クエリから既定値を取得します]\: オフ
+    3. [必須ですか?]\: `checked`オン
+    4. [クエリから既定値を取得します]\: オン
 5. ツール バーの [保存] を選択して、パラメーターを作成します。
 
     ![テキスト パラメーターの作成を示す画像](./media/workbooks-text/text-create.png)
@@ -56,7 +55,7 @@ ms.locfileid: "74872776"
     | extend SlowRequestPercent = 100.0 * SlowRequests / AllRequests
     | order by SlowRequests desc
     ```
-4. クエリを実行し、結果を確認します
+4. クエリを実行して結果を確認します。
 
     ![KQL で参照されるテキスト パラメーターを示す画像](./media/workbooks-text/text-reference.png)
 
@@ -68,7 +67,7 @@ ms.locfileid: "74872776"
 4. ポップアップ表示される新しいパラメーター ペインで、次のように入力します。
     1. Parameter name: `SlowRequestThreshold` (パラメーター名: {2})
     2. [パラメーターの種類]\: [`Text`ドロップ ダウン]
-    3. [必須ですか?]\: オン
+    3. [必須ですか?]\: `checked`オン
     4. [クエリから既定値を取得します]\: オン
 5. KQL ボックスに、このスニペットを追加します。
     ```kusto
@@ -84,7 +83,7 @@ ms.locfileid: "74872776"
 > [!NOTE]
 > この例では Application Insights データを照会していますが、このアプローチは、任意のログ ベースのデータ ソース (Log Analytics、Azure Resource Graph など) に使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * ブックの豊富な視覚化オプションの学習を[開始](workbooks-visualizations.md)します。
 * ブック リソースへのアクセスを[制御](workbooks-access-control.md)し、共有します。

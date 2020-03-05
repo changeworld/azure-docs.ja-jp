@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 1/14/2020
 ms.author: cbasoglu
-ms.openlocfilehash: 00617fc09f471eaf3dc13a5aa691c4aab2e1e2ec
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: b41967033b00144ca5bd52ce23cf8aabcea6749e
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424917"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228081"
 ---
 # <a name="speech-services-with-sovereign-clouds"></a>ソブリン クラウドを使用した音声サービス
 
@@ -35,7 +35,7 @@ ms.locfileid: "77424917"
   - テキスト読み上げ
   - 音声翻訳
 - サポートされていない機能
-  - カスタム音声
+  - Custom Voice
   - テキスト読み上げ用のニューラル音声
 - サポート対象のロケール:次の言語のロケールがサポートされています。
   - アラビア語 (ar-*)
@@ -56,7 +56,7 @@ ms.locfileid: "77424917"
 - SpeechSDK の TTS: *config.FromHost("https[]()://chinaeast2.tts.speech.azure.cn", "\<your-key\>");*
 - 認証トークン: https[]()://chinaeast2.api.cognitive.azure.cn/sts/v1.0/issueToken
 - Azure Portal: https://portal.azure.cn
-- Custom Speech ポータル: https://chinaeast2.cris.azure.cn/Home/CustomSpeech
+- Custom Speech ポータル: https://speech.azure.cn/CustomSpeech
 - 利用可能な SKU:S0
 - サポートされている機能:
   - 音声テキスト変換
@@ -64,7 +64,7 @@ ms.locfileid: "77424917"
   - テキスト読み上げ
   - 音声翻訳
 - サポートされていない機能
-  - カスタム音声
+  - Custom Voice
   - テキスト読み上げ用のニューラル音声
 - サポート対象のロケール:次の言語のロケールがサポートされています。
   - アラビア語 (ar-*)
