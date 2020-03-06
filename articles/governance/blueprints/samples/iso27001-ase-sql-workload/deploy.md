@@ -109,7 +109,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 以下の表は、ブループリント アーティファクトのパラメーターの一覧を示しています。
 
-|アーティファクト名|アーティファクトの種類|パラメーター名|[説明]|
+|アーティファクト名|アーティファクトの種類|パラメーター名|説明|
 |-|-|-|-|
 |Log Analytics resource group (Log Analytics リソース グループ)|Resource group|Name|**[ロック済み]** - **組織名**と `-workload-log-rg` を連結して、リソース グループを一意にします。|
 |Log Analytics resource group (Log Analytics リソース グループ)|Resource group|Location|**[ロック済み]** - ブループリントのパラメーターを使用します。|
