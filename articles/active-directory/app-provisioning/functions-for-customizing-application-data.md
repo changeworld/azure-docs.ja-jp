@@ -493,7 +493,7 @@ RemoveDuplicates([proxyAddresses])
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
-| **[appRoleAssignments]** |Required |String |**[appRoleAssignments]** オブジェクト |
+| **appRoleAssignments** |Required |String |**appRoleAssignments** オブジェクト |
 
 ---
 ### <a name="split"></a>Split
