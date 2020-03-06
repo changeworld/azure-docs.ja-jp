@@ -210,7 +210,7 @@ module.exports = function (context, req) {
 |**name**| 該当なし |必須 - 認証トークンの関数コードで使用される変数名。 「[コードから認証トークンの入力バインドを使用する](#token-input-code)」をご覧ください。|
 |**type**| 該当なし |必須 - `token` に設定する必要があります。|
 |**direction**| 該当なし |必須 - `in` に設定する必要があります。|
-|**identity**|**[ID]**|必須 - 操作を実行するために使用する ID です。 次の値のいずれかです。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
+|**identity**|**ID**|必須 - 操作を実行するために使用する ID です。 次の値のいずれかです。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
 |**userId**|**UserId**  |_identity_ が `userFromId` に設定された場合にのみ必要です。 以前ログインしたユーザーに関連付けられたユーザー プリンシパル ID です。|
 |**userToken**|**UserToken**|_identity_ が `userFromToken` に設定された場合にのみ必要です。 関数アプリの有効なトークンです。 |
 |**リソース**|**resource**|必須 - トークンが要求される Azure AD リソース URL です。|
@@ -345,10 +345,10 @@ module.exports = function (context, req) {
 |**name**| 該当なし |必須 - Excel テーブルの関数コードで使用される変数名。 「[コードから Excel テーブルの入力バインドを使用する](#excel-input-code)」をご覧ください。|
 |**type**| 該当なし |必須 - `excel` に設定する必要があります。|
 |**direction**| 該当なし |必須 - `in` に設定する必要があります。|
-|**identity**|**[ID]**|必須 - 操作を実行するために使用する ID です。 次の値のいずれかです。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
+|**identity**| **ID**|必須 - 操作を実行するために使用する ID です。 次の値のいずれかです。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
 |**userId**|**UserId**  |_identity_ が `userFromId` に設定された場合にのみ必要です。 以前ログインしたユーザーに関連付けられたユーザー プリンシパル ID です。|
 |**userToken**|**UserToken**|_identity_ が `userFromToken` に設定された場合にのみ必要です。 関数アプリの有効なトークンです。 |
-|**path**|**[パス]**|必須 - OneDrive での Excel ブックへのパスです。|
+|**path**|**パス**|必須 - OneDrive での Excel ブックへのパスです。|
 |**worksheetName**|**WorksheetName**|テーブルが検出されたワークシートです。|
 |**tableName**|**TableName**|テーブルの名前。 指定しないと、ワークシートの内容が使用されます。|
 
@@ -507,10 +507,10 @@ module.exports = function (context, req) {
 |**name**| 該当なし |必須 - 認証トークンの関数コードで使用される変数名。 「[コードから Excel テーブルの出力バインドを使用する](#excel-output-code)」をご覧ください。|
 |**type**| 該当なし |必須 - `excel` に設定する必要があります。|
 |**direction**| 該当なし |必須 - `out` に設定する必要があります。|
-|**identity**|**[ID]**|必須 - 操作を実行するために使用する ID です。 次の値のいずれかです。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
+|**identity**| **ID**|必須 - 操作を実行するために使用する ID です。 次の値のいずれかです。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
 |**UserId** |**userId** |_identity_ が `userFromId` に設定された場合にのみ必要です。 以前ログインしたユーザーに関連付けられたユーザー プリンシパル ID です。|
 |**userToken**|**UserToken**|_identity_ が `userFromToken` に設定された場合にのみ必要です。 関数アプリの有効なトークンです。 |
-|**path**|**[パス]**|必須 - OneDrive での Excel ブックへのパスです。|
+|**path**|**パス**|必須 - OneDrive での Excel ブックへのパスです。|
 |**worksheetName**|**WorksheetName**|テーブルが検出されたワークシートです。|
 |**tableName**|**TableName**|テーブルの名前。 指定しないと、ワークシートの内容が使用されます。|
 |**updateType**|**UpdateType**|必須 - テーブルに対して行われる変更の種類です。 次の値のいずれかです。<ul><li><code>update</code> - OneDrive 内のテーブルの内容を置き換えます。</li><li><code>append</code> - 新しい行を作成することで、OneDrive 内のテーブルの末尾にペイロードを追加します。</li></ul>|
@@ -653,10 +653,10 @@ module.exports = function (context, req) {
 |**name**| 該当なし |必須 - ファイルの関数コードで使用される変数名。 「[コードから OneDrive ファイルの入力バインドを使用する](#onedrive-input-code)」をご覧ください。|
 |**type**| 該当なし |必須 - `onedrive` に設定する必要があります。|
 |**direction**| 該当なし |必須 - `in` に設定する必要があります。|
-|**identity**|**[ID]**|必須 - 操作を実行するために使用する ID です。 次の値のいずれかです。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
+|**identity**| **ID**|必須 - 操作を実行するために使用する ID です。 次の値のいずれかです。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
 |**userId**|**UserId**  |_identity_ が `userFromId` に設定された場合にのみ必要です。 以前ログインしたユーザーに関連付けられたユーザー プリンシパル ID です。|
 |**userToken**|**UserToken**|_identity_ が `userFromToken` に設定された場合にのみ必要です。 関数アプリの有効なトークンです。 |
-|**path**|**[パス]**|必須 - OneDrive でのファイルへのパスです。|
+|**path**|**パス**|必須 - OneDrive でのファイルへのパスです。|
 
 <a name="onedrive-input-code"></a>
 ### <a name="file-input---usage"></a>ファイルの入力 - 使用方法
@@ -801,10 +801,10 @@ module.exports = function (context, req) {
 |**name**| 該当なし |必須 - ファイルの関数コードで使用される変数名。 「[コードから OneDrive ファイルの出力バインドを使用する](#onedrive-output-code)」をご覧ください。|
 |**type**| 該当なし |必須 - `onedrive` に設定する必要があります。|
 |**direction**| 該当なし |必須 - `out` に設定する必要があります。|
-|**identity**|**[ID]**|必須 - 操作を実行するために使用する ID です。 次の値のいずれかです。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
+|**identity**| **ID**|必須 - 操作を実行するために使用する ID です。 次の値のいずれかです。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
 |**UserId** |**userId** |_identity_ が `userFromId` に設定された場合にのみ必要です。 以前ログインしたユーザーに関連付けられたユーザー プリンシパル ID です。|
 |**userToken**|**UserToken**|_identity_ が `userFromToken` に設定された場合にのみ必要です。 関数アプリの有効なトークンです。 |
-|**path**|**[パス]**|必須 - OneDrive でのファイルへのパスです。|
+|**path**|**パス**|必須 - OneDrive でのファイルへのパスです。|
 
 <a name="onedrive-output-code"></a>
 #### <a name="file-output---usage"></a>ファイルの出力 - 使用方法
@@ -952,7 +952,7 @@ module.exports = function (context, req) {
 |**name**| 該当なし |必須 - メール メッセージの関数コードで使用される変数名。 「[コードから Outlook メッセージの出力バインドを使用する](#outlook-output-code)」をご覧ください。|
 |**type**| 該当なし |必須 - `outlook` に設定する必要があります。|
 |**direction**| 該当なし |必須 - `out` に設定する必要があります。|
-|**identity**|**[ID]**|必須 - 操作を実行するために使用する ID です。 次の値のいずれかです。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
+|**identity**| **ID**|必須 - 操作を実行するために使用する ID です。 次の値のいずれかです。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
 |**userId**|**UserId**  |_identity_ が `userFromId` に設定された場合にのみ必要です。 以前ログインしたユーザーに関連付けられたユーザー プリンシパル ID です。|
 |**userToken**|**UserToken**|_identity_ が `userFromToken` に設定された場合にのみ必要です。 関数アプリの有効なトークンです。 |
 
@@ -1388,7 +1388,7 @@ module.exports = function (context, req) {
 |**name**| 該当なし |必須 - メール メッセージの関数コードで使用される変数名。 「[コードから Outlook メッセージの出力バインドを使用する](#outlook-output-code)」をご覧ください。|
 |**type**| 該当なし |必須 - `graphWebhookSubscription` に設定する必要があります。|
 |**direction**| 該当なし |必須 - `out` に設定する必要があります。|
-|**identity**|**[ID]**|必須 - 操作を実行するために使用する ID です。 次の値のいずれかです。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
+|**identity**| **ID**|必須 - 操作を実行するために使用する ID です。 次の値のいずれかです。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
 |**userId**|**UserId**  |_identity_ が `userFromId` に設定された場合にのみ必要です。 以前ログインしたユーザーに関連付けられたユーザー プリンシパル ID です。|
 |**userToken**|**UserToken**|_identity_ が `userFromToken` に設定された場合にのみ必要です。 関数アプリの有効なトークンです。 |
 |**action**|**操作**|必須 - バインドが実行する必要があるアクションを指定します。 次の値のいずれかです。<ul><li><code>create</code> - 新しいサブスクリプションを登録します。</li><li><code>delete</code> - 指定したサブスクリプションを削除します。</li><li><code>refresh</code> - 指定したサブスクリプションが期限切れにならないように更新します。</li></ul>|
