@@ -181,8 +181,8 @@ ms.locfileid: "75459587"
    |フィールド  |値  |
    |---------|---------|
    | **関数のエイリアス** | 名前 `sentiment` を使用して、URL とキーを入力するためのオプションを提示する **[手動で Azure Machine Learning 関数設定を指定します]** を選択します。      |
-   | **[URL]**| Web サービス URL を貼り付けます。|
-   |**[キー]** | API キーを貼り付けます。 |
+   | **URL**| Web サービス URL を貼り付けます。|
+   |**キー** | API キーを貼り付けます。 |
   
    ![Machine Learning 関数を Stream Analytics ジョブに追加するための設定](./media/stream-analytics-machine-learning-integration-tutorial/add-machine-learning-function.png)  
     
