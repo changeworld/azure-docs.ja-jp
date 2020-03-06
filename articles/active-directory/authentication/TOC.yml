@@ -175,7 +175,7 @@
           href: howto-mfaserver-deploy-upgrade.md
         - name: PhoneFactor からアップグレードする
           href: howto-mfaserver-deploy-upgrade-pf.md
-        - name: '[Windows 認証]'
+        - name: Windows 認証
           href: howto-mfaserver-windows.md
         - name: IIS Web アプリ
           href: howto-mfaserver-iis.md
