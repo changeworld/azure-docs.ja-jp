@@ -12,7 +12,8 @@
       href: quickstart-load-balancer-standard-public-cli.md
     - name: ロード バランサーの作成 - PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
-    - name: ロード バランサーの作成 - テンプレート
+    - name: ロード バランサーの作成 - ARM テンプレート
+      displayName: Resource Manager
       href: quickstart-load-balancer-standard-public-template.md
   expanded: true
 - name: チュートリアル

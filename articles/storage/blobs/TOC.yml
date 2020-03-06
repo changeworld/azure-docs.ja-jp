@@ -162,6 +162,8 @@
               href: storage-blobs-latency.md
             - name: Azure Storage の予約容量
               href: storage-blob-reserved-capacity.md
+            - name: コストの計画と管理
+              href: ../common/storage-plan-manage-costs.md
         - name: コンカレンシー
           href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: BLOB データを検索して理解する
@@ -419,12 +421,6 @@
                   href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-storage
             - name: Xamarin
               href: storage-xamarin-blob-storage.md
-        - name: BLOB の管理
-          items:
-            - name: Azure CLI
-              href: ../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Azure クラシック CLI
-              href: ../common/storage-azure-cli-nodejs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: リージョン間で移動する
           href: ../common/storage-account-move.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: トラブルシューティング
@@ -636,8 +632,24 @@
           href: ../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: 概念
       items:
-        - name: ストレージ アカウント
+        - name: ビッグ データの処理
+          href: ../blobs/data-lake-storage-data-scenarios.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Hadoop 用 Azure BLOB ファイル システム ドライバー
+          href: ../blobs/data-lake-storage-abfs-driver.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Azure BLOB ファイル システムの URI
+          href: ../blobs/data-lake-storage-introduction-abfs-uri.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 階層型名前空間について
+          href: ../blobs/data-lake-storage-namespace.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: ストレージ アカウントについて
           href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: ベスト プラクティス
+          href: data-lake-storage-best-practices.md
+        - name: データの冗長性
+          href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: データ転送ソリューション
+          href: ../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: コンカレンシー
+          href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Security
           items:
             - name: データ操作の承認
@@ -652,23 +664,6 @@
               href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Azure プライベート エンドポイントの使用
               href: ../common/storage-private-endpoints.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: データの冗長性
-          href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: データ移行
-          items:
-            - name: データ転送ソリューションの比較
-              href: ../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-              items:
-                - name: 大規模なデータセット、低速のネットワーク帯域幅
-                  href: ../common/storage-solution-large-dataset-low-network.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 大規模なデータセット、中速 - 高速のネットワーク帯域幅
-                  href: ../common/storage-solution-large-dataset-moderate-high-network.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 小規模なデータセット、低速 - 中速のネットワーク帯域幅
-                  href: ../common/storage-solution-small-dataset-low-moderate-network.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 定期的なデータの転送
-                  href: ../common/storage-solution-periodic-data-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: コンカレンシー
-          href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 互換性
           items:
             - name: マルチプロトコル アクセス
@@ -679,14 +674,6 @@
               href: data-lake-storage-supported-azure-services.md
             - name: サポートされるオープン ソース プラットフォーム
               href: data-lake-storage-supported-open-source-platforms.md
-        - name: ビッグ データの処理
-          href: ../blobs/data-lake-storage-data-scenarios.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Hadoop 用 Azure BLOB ファイル システム ドライバー
-          href: ../blobs/data-lake-storage-abfs-driver.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Azure BLOB ファイル システムの URI
-          href: ../blobs/data-lake-storage-introduction-abfs-uri.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 階層型名前空間について
-          href: ../blobs/data-lake-storage-namespace.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 監視とトラブルシューティング
           items:
             - name: 監視、診断、およびトラブルシューティング
@@ -697,13 +684,19 @@
               href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Storage Analytics のログ
               href: ../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: ベスト プラクティス
-          href: data-lake-storage-best-practices.md
     - name: 方法
       items:
-        - name: Data Lake 用のストレージ アカウントの作成
-          href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: データのセキュリティ保護
+        - name: 作成
+          items:
+            - name: 汎用 v2 ストレージ アカウントの作成
+              href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 移行
+          items:
+            - name: Data Lake Storage Gen1 からアップグレードする
+              href: ../blobs/data-lake-storage-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: オンプレミスの HDFS ストアを移行する
+              href: ../blobs/data-lake-storage-migrate-on-premises-HDFS-cluster.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: セキュリティで保護
           items:
             - name: データへのアクセスを承認する
               items:
@@ -767,19 +760,7 @@
                   href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: トランスポート層セキュリティの有効化
                   href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 障害復旧
-          items:
-            - name: 最終同期時刻プロパティを確認する
-              href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: アカウントのフェールオーバーを開始する
-              href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: ストレージ エミュレーターを使用する
-          items:
-            - name: Azurite オープンソース エミュレーターを使用する
-              href: ../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Azure Storage エミュレーターを使用する
-              href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: ディレクトリ、ファイル、ACL の管理
+        - name: 管理する
           items:
             - name: .NET
               href: data-lake-storage-directory-file-acl-dotnet.md
@@ -795,19 +776,9 @@
               href: data-lake-storage-directory-file-acl-cli.md
             - name: ストレージ エクスプローラー
               href: data-lake-storage-explorer.md
-        - name: パフォーマンスを最適化する
-          items:
-            - name: 概要
-              href: ../blobs/data-lake-storage-performance-tuning-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: HDInsight の Apache Spark を最適化する
-              href: ../blobs/data-lake-storage-performance-tuning-spark.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: HDInsight の Hive を最適化する
-              href: ../blobs/data-lake-storage-performance-tuning-hive.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: HDInsight の MapReduce を最適化する
-              href: ../blobs/data-lake-storage-performance-tuning-mapreduce.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: HDInsight の Storm を最適化する
-              href: ../blobs/data-lake-storage-performance-tuning-storm.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: データの転送
+            - name: Hadoop ファイル システム CLI
+              href: ../blobs/data-lake-storage-use-hdfs-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 転送
           items:
             - name: AzCopy
               items:
@@ -821,14 +792,28 @@
               href: ../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: データ移動ライブラリを使用してデータを転送する
               href: ../common/storage-use-data-movement-library.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: データの移行
+        - name: 最適化
           items:
-            - name: Data Lake Storage Gen1 からアップグレードする
-              href: ../blobs/data-lake-storage-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: オンプレミスの HDFS ストアを移行する
-              href: ../blobs/data-lake-storage-migrate-on-premises-HDFS-cluster.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Hadoop ファイル システム CLI で使用する
-          href: ../blobs/data-lake-storage-use-hdfs-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: パフォーマンスを最適化する
+              href: ../blobs/data-lake-storage-performance-tuning-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: HDInsight の Apache Spark を最適化する
+              href: ../blobs/data-lake-storage-performance-tuning-spark.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: HDInsight の Hive を最適化する
+              href: ../blobs/data-lake-storage-performance-tuning-hive.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: HDInsight の MapReduce を最適化する
+              href: ../blobs/data-lake-storage-performance-tuning-mapreduce.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: HDInsight の Storm を最適化する
+              href: ../blobs/data-lake-storage-performance-tuning-storm.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 復旧
+          items:
+            - name: 最終同期時刻プロパティを確認する
+              href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: エミュレート
+          items:
+            - name: Azurite オープンソース エミュレーターを使用する
+              href: ../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Azure Storage エミュレーターを使用する
+              href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: リファレンス
       items:
         - name: .NET

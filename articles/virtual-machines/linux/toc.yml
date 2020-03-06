@@ -468,7 +468,7 @@
               href: image-builder-gallery.md
             - name: 既存のイメージの更新
               href: image-builder-gallery-update-image-version.md
-            - name: '[トラブルシューティング]'
+            - name: トラブルシューティング
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: イメージを検索および使用する
           href: cli-ps-findimage.md
@@ -520,7 +520,7 @@
       items:
         - name: Ansible
           items:
-            - name: '[インストールと構成]'
+            - name: インストールと構成
               href: ansible-install-configure.md
             - name: Linux VM の作成
               href: ansible-create-vm.md
@@ -528,7 +528,7 @@
               href: ansible-manage-linux-vm.md
         - name: Terraform
           items:
-            - name: '[インストールと構成]'
+            - name: インストールと構成
               href: ../../terraform/terraform-install-configure.md
             - name: 完全な VM の作成
               href: ../../terraform/terraform-create-complete-vm.md
@@ -726,6 +726,10 @@
           href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 可用性ゾーンに移動する
           href: ../../site-recovery/move-azure-vms-avset-azone.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: メンテナンス コントロールの構成を別のリージョンに移動する
+          href: ../move-region-maintenance-configuration.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: メンテナンス コントロールの構成リソースを別のリージョンに移動する
+          href: ../move-region-maintenance-configuration-resources.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: AWS とオンプレミスの VM を移行する
           href: ../windows/on-prem-to-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
           items:
@@ -775,5 +779,5 @@
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'
     - name: よく寄せられる質問
       href: faq.md
-- name: '[トラブルシューティング]'
+- name: トラブルシューティング
   href: ../troubleshooting/index.yml

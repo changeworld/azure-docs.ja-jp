@@ -543,7 +543,7 @@
               href: ../linux/image-builder-user-assigned-identity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: テンプレート リファレンス
               href: ../linux/image-builder-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: '[トラブルシューティング]'
+            - name: トラブルシューティング
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: イメージを検索および使用する
           href: cli-ps-findimage.md
@@ -703,6 +703,10 @@
           href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 可用性ゾーンに移動する
           href: ../../site-recovery/move-azure-vms-avset-azone.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: メンテナンス コントロールの構成を別のリージョンに移動する
+          href: ../move-region-maintenance-configuration.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: メンテナンス コントロールの構成リソースを別のリージョンに移動する
+          href: ../move-region-maintenance-configuration-resources.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: AWS とオンプレミスの VM を移行する
           href: on-prem-to-azure.md
           items:
@@ -712,7 +716,7 @@
               href: aws-to-azure.md
             - name: Azure Site Recovery を使用する
               href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-- name: '[トラブルシューティング]'
+- name: トラブルシューティング
   href: ../troubleshooting/index.yml
 - name: リファレンス
   items:

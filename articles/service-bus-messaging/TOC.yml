@@ -28,11 +28,7 @@
             - name: Java
               href: service-bus-java-how-to-use-queues.md
             - name: Node.js
-              items:
-                - name: azure/service-bus パッケージ
-                  href: service-bus-nodejs-how-to-use-queues-new-package.md
-                - name: azure-sb パッケージ
-                  href: service-bus-nodejs-how-to-use-queues.md
+              href: service-bus-nodejs-how-to-use-queues-new-package.md
             - name: PHP
               href: service-bus-php-how-to-use-queues.md
             - name: Python
@@ -54,11 +50,7 @@
             - name: Java
               href: service-bus-java-how-to-use-topics-subscriptions.md
             - name: Node.js
-              items:
-                - name: azure/service-bus パッケージ
-                  href: service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md
-                - name: azure-sb パッケージ
-                  href: service-bus-nodejs-how-to-use-topics-subscriptions.md
+              href: service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md
             - name: PHP
               href: service-bus-php-how-to-use-topics-subscriptions.md
             - name: Python
@@ -184,6 +176,10 @@
           href: service-bus-end-to-end-tracing.md
         - name: 多層 Service Bus アプリケーションを構築する
           href: service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
+        - name: キューからのメッセージの送受信 (レガシ azure-sb)
+          href: service-bus-nodejs-how-to-use-queues.md
+        - name: メッセージの発行とサブスクライブ (レガシ azure-sb)
+          href: service-bus-nodejs-how-to-use-topics-subscriptions.md
     - name: 管理する
       items:
         - name: Azure PowerShell を使用したエンティティのプロビジョニング

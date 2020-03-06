@@ -121,6 +121,7 @@
         - name: 動的マニフェスト
           href: filters-dynamic-manifest-overview.md
         - name: フィルター
+          displayName: "manifest, dynamic manifest, filter, hls, dash, m3u8, mpd,\tcontent delivery"
           href: filters-concept.md
         - name: ストリーミング エンドポイント
           displayName: 'origin, packager, cdn'
@@ -307,6 +308,8 @@
       items:
         - name: 資産の公開 - CLI
           href: cli-publish-asset.md
+        - name: ストリーミング ロケーターの作成と URL の構築
+          href: create-streaming-locator-build-url.md
         - name: 結果のダウンロード
           href: download-results-howto.md
         - name: 説明的なオーディオの通知

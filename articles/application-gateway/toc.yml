@@ -39,6 +39,8 @@
   items:
     - name: 基本
       items:
+        - name: Application Gateway の機能
+          href: features.md
         - name: Application Gateway のしくみ
           href: how-application-gateway-works.md
         - name: Application Gateway のコンポーネント

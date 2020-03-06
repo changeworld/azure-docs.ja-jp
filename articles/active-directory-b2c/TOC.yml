@@ -48,6 +48,8 @@
   href: code-samples.md
 - name: 概念
   items:
+    - name: Azure AD B2C のベスト プラクティス
+      href: best-practices.md
     - name: アプリケーションの種類
       href: application-types.md
     - name: 認証プロトコル

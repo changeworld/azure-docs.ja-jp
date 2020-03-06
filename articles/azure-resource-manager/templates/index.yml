@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Azure Resource Manager テンプレートのドキュメント
-summary: Resource Manager テンプレートは JavaScript Object Notation (JSON) ファイルであり、プロジェクトのインフラストラクチャと構成が定義されています。
+title: ARM テンプレートのドキュメント
+summary: Azure Resource Manager テンプレートとは、プロジェクトのインフラストラクチャと構成を定義する JavaScript Object Notation (JSON) ファイルです。
 metadata:
-  title: Azure Resource Manager のドキュメント
+  title: ARM テンプレートのドキュメント
   description: Azure Resource Manager テンプレートを開発し、それらを使用して Azure リソースをデプロイする方法について説明します
   services: azure-resource-manager
   ms.service: azure-resource-manager
@@ -11,15 +11,15 @@ metadata:
   ms.collection: na
   author: mumian
   ms.author: jgao
-  ms.date: 12/19/2019
-  ms.openlocfilehash: 43cd4dadc33ddc498106084ee26ef0819c14b973
-  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.date: 03/04/2020
+  ms.openlocfilehash: 0ea805d87db78d0a7fadad0a07e01e9387d568a5
+  ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/25/2019
-  ms.locfileid: "75469932"
+  ms.lasthandoff: 03/05/2020
+  ms.locfileid: "78299246"
 landingContent:
-- title: Azure Resource Manager テンプレートについて
+- title: ARM テンプレートについて
   linkLists:
   - linkListType: overview
     links:

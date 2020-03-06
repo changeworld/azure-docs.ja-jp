@@ -1,8 +1,8 @@
-- name: Azure Resource Manager テンプレートのドキュメント
+- name: ARM テンプレートのドキュメント
   href: index.yml
 - name: 概要
   items:
-    - name: Azure Resource Manager テンプレートとは
+    - name: ARM テンプレートとは
       href: overview.md
 - name: クイックスタート
   items:

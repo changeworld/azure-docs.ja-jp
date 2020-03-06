@@ -8,19 +8,19 @@
       href: what-is-ml-studio.md
     - name: Microsoft の ML 製品の比較
       href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context
-- name: チュートリアル
+- name: クイックスタート
   items:
     - name: 初めての実験を作成する
       displayName: quickstart
       href: create-experiment.md
-    - name: 予測ソリューションを作成する
-      items:
-        - name: 1 - 実験の作成
-          href: tutorial-part1-credit-risk.md
-        - name: 2 - トレーニングと評価
-          href: tutorial-part2-credit-risk-train.md
-        - name: 3 - Web サービスのデプロイ
-          href: tutorial-part3-credit-risk-deploy.md
+- name: チュートリアル
+  items:
+    - name: '1:予測実験の作成'
+      href: tutorial-part1-credit-risk.md
+    - name: '2:ソリューションのトレーニングと評価'
+      href: tutorial-part2-credit-risk-train.md
+    - name: '3:Web サービスのデプロイ'
+      href: tutorial-part3-credit-risk-deploy.md
 - name: サンプル
   items:
     - name: 使用可能なデータセット
@@ -44,13 +44,13 @@
     - name: モデル管理
       displayName: 'deploy, consume, web service'
       href: deploy-consume-web-service-guide.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: ワークスペースを管理する
       items:
         - name: 作成
           href: create-workspace.md
-        - name: 管理
+        - name: 管理する
           href: manage-workspace.md
         - name: トラブルシューティング
           href: troubleshooting-creating-ml-workspace.md
@@ -114,9 +114,9 @@
         - name: Web サービスのデプロイ
           displayName: 'deploy, multiple regions'
           href: deploy-a-machine-learning-web-service.md
-        - name: 動作のしくみ
+        - name: しくみ
           href: model-progression-experiment-to-web-service.md
-        - name: デプロイの準備をする
+        - name: 展開を準備する
           href: convert-training-experiment-to-scoring-experiment.md
         - name: 外部データを使用する
           displayName: 'import, export'
@@ -147,7 +147,7 @@
           href: dedicated-capacity-for-bes-jobs.md
     - name: ユース ケース
       items:
-        - name: 顧客離れ
+        - name: 顧客離反
           href: azure-ml-customer-churn-scenario.md
         - name: センチメント分析
           href: text-analytics-module-tutorial.md
