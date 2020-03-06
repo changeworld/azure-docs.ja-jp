@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/14/2019
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 662a04dbcc39f3fa95b0098eb8fe556b18b3495b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230573"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357550"
 ---
 # <a name="manage-your-function-app"></a>お使いの関数アプリの管理 
 
@@ -27,7 +27,7 @@ Azure Functions では、関数アプリに個々の関数の実行コンテキ�
 
 ## <a name="get-started-in-the-azure-portal"></a>Azure portal での作業開始
 
-まず、[Azure Portal] に移動し、Azure アカウントにサインインします。 ポータルの上部にある検索バーで関数アプリの名前を入力し、一覧からその関数アプリを選択します。 関数アプリを選択すると、次のページが表示されます。
+まず、[Azure Portal] に移動し、Azure アカウントにサインインします。 ポータルの上部にある検索バーで Function App の名前を入力し、一覧からその関数アプリを選択します。 関数アプリを選択すると、次のページが表示されます。
 
 ![Azure Portal の関数アプリの概要](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 
@@ -79,7 +79,7 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 この記事の残りの部分では、Functions で便利な Azure portal で使用できる次の App Service 機能について説明します。
 
 + [App Service Editor](#editor)
-+ [Console](#console)
++ [コンソール](#console)
 + [高度なツール (Kudu)](#kudu)
 + [デプロイ オプション](#deployment)
 + [CORS](#cors)
@@ -143,7 +143,7 @@ az functionapp cors add --name <FUNCTION_APP_NAME> \
 関数が HTTP トリガーを使用するとき、呼び出しに、最初に認証を必須とすることができます。 App Service では、Azure Active Directory 認証と、Facebook、Microsoft、Twitter などのソーシャル プロバイダーを使用したサインインがサポートされます。 特定の認証プロバイダーの構成の詳細については、[Azure App Service での認証の概要](../app-service/overview-authentication-authorization.md)に関するページを参照してください。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 + [Azure App Service の設定の構成](../app-service/configure-common.md)
 + [Azure Functions の継続的なデプロイ](functions-continuous-deployment.md)

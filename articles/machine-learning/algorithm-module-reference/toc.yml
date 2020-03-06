@@ -144,11 +144,5 @@
       href: score-svd-recommender.md
     - name: SVD レコメンダーのトレーニング
       href: train-svd-recommender.md
-- name: 異常検出
-  items:
-    - name: PCA ベースの異常検出
-      href: pca-based-anomaly-detection.md
-    - name: 異常検出モデルのトレーニング
-      href: train-anomaly-detection-model.md
 - name: モジュールのエラーとトラブルシューティング
   href: designer-error-codes.md

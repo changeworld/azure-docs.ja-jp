@@ -9,12 +9,12 @@ metadata:
   ms.service: azure-app-configuration
   ms.topic: landing-page
   ms.date: 02/03/2020
-  ms.openlocfilehash: 15a1d5ddd84a9683a2666ecbd58918b99186278e
-  ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+  ms.openlocfilehash: 25cff0d0ea007bdd55131ab334a5813344991d0e
+  ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/19/2020
-  ms.locfileid: "77468163"
+  ms.lasthandoff: 03/06/2020
+  ms.locfileid: "78672127"
 landingContent:
 - title: Azure App Configuration について
   linkLists:
@@ -60,6 +60,8 @@ landingContent:
       url: quickstart-azure-functions-csharp.md
     - text: Spring Boot アプリをコーディングする
       url: quickstart-java-spring-app.md
+    - text: Azure Resource Manager テンプレート
+      url: quickstart-resource-manager.md
   - linkListType: tutorial
     links:
     - text: ASP.NET Core で動的な構成を使用する

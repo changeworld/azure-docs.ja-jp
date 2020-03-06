@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 01/17/2020
+ms.date: 03/05/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 5672334ab42ab474d862ae4c9649b94b58bb6af4
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: ab7496c82e3a2b1f70a5de38b8008bb5ff504a01
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157273"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672104"
 ---
 Azure Storage では、数種類のストレージ アカウントが提供されています。 各種類は異なる機能をサポートし、独自の価格モデルがあります。 アプリケーションに最適な種類を判断するために、ストレージ アカウントを作成する前にこれらの違いを検討してください。 ストレージ アカウントには、次の種類があります。
 
@@ -33,14 +33,14 @@ Azure Storage では、数種類のストレージ アカウントが提供さ�
 | FileStorage   | ファイルのみ | Premium                       | 該当なし                            | LRS、ZRS<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div>                               | リソース マネージャー             | Encrypted              |
 | BlobStorage         | BLOB (ブロック BLOB と追加 BLOB のみ) | Standard                      | ホット、クール、アーカイブ<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS、GRS、RA-GRS                  | リソース マネージャー             | Encrypted              |
 
-<div id="deployment-model"><sup>1</sup> Azure Resource Manager デプロイ モデルが推奨されます。 一部の場所では、クラシック デプロイ モデルを使用するストレージ アカウントを引き続き作成でき、既存のクラシック アカウントもサポートされます。 詳細については、「<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model">Azure Resource Manager とクラシック デプロイ:デプロイ モデルとリソースの状態について</a>」を参照してください。</div>
+<div id="deployment-model"><sup>1</sup> Azure Resource Manager デプロイ モデルが推奨されます。 一部の場所では、クラシック デプロイ モデルを使用するストレージ アカウントを引き続き作成でき、既存のクラシック アカウントもサポートされます。 詳細については、「<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model">Azure Resource Manager とクラシック デプロイ:デプロイ モデルとリソースの状態について</a>」を参照してください。</div><br/>
 
-<div id="encryption"><sup>2</sup> すべてのストレージ アカウントは、保存データ用の Storage Service Encryption (SSE) を使用して暗号化されます。 詳細については、「<a href="https://docs.microsoft.com/azure/storage/common/storage-service-encryption">保存データ向け Azure Storage Service Encryption</a>」をご覧ください。</div>
+<div id="encryption"><sup>2</sup> すべてのストレージ アカウントは、保存データ用の Storage Service Encryption (SSE) を使用して暗号化されます。 詳細については、「<a href="https://docs.microsoft.com/azure/storage/common/storage-service-encryption">保存データ向け Azure Storage Service Encryption</a>」をご覧ください。</div><br/>
 
-<div id="archive"><sup>3</sup> アーカイブ 層は、個々の BLOB のレベルでのみ利用でき、ストレージ アカウント レベルでは利用できません。 ブロック BLOB と追加 BLOB のみをアーカイブできます。 詳細については、「<a href="https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers">Azure BLOB ストレージ: ホット ストレージ層、クール ストレージ層、アーカイブ ストレージ層</a>」をご覧ください。</div>
+<div id="archive"><sup>3</sup> アーカイブ 層は、個々の BLOB のレベルでのみ利用でき、ストレージ アカウント レベルでは利用できません。 ブロック BLOB と追加 BLOB のみをアーカイブできます。 詳細については、「<a href="https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers">Azure BLOB ストレージ: ホット ストレージ層、クール ストレージ層、アーカイブ ストレージ層</a>」をご覧ください。</div><br/>
 
-<div id="zone-redundant-storage"><sup>4</sup> ゾーン冗長ストレージ (ZRS) および geo ゾーン冗長ストレージ (GZRS と RA-GZRS) (プレビュー) は、特定のリージョンの Standard 汎用 V2、BlockBlobStorage、および FileStorage アカウントでのみ使用できます。 Azure Storage の冗長オプションの詳細については、「<a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy">Azure Storage の冗長性</a>」を参照してください。</div>
+<div id="zone-redundant-storage"><sup>4</sup> ゾーン冗長ストレージ (ZRS) および geo ゾーン冗長ストレージ (GZRS と RA-GZRS) (プレビュー) は、特定のリージョンの Standard 汎用 V2、BlockBlobStorage、および FileStorage アカウントでのみ使用できます。 Azure Storage の冗長オプションの詳細については、「<a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy">Azure Storage の冗長性</a>」を参照してください。</div><br/>
 
-<div id="premium-performance">汎用 v2 および汎用 V1 アカウント用の <sup>5</sup> Premium パフォーマンスは、ディスクとページ BLOB でのみ使用できます。 ブロックまたは BLOB の追加用の Premium パフォーマンスは、BlockBlobStorage アカウントでのみ使用できます。 ファイル用の Premium パフォーマンスは、FileStorage アカウントでのみ使用できます。</div>
+<div id="premium-performance">汎用 v2 および汎用 V1 アカウント用の <sup>5</sup> Premium パフォーマンスは、ディスクとページ BLOB でのみ使用できます。 ブロックまたは BLOB の追加用の Premium パフォーマンスは、BlockBlobStorage アカウントでのみ使用できます。 ファイル用の Premium パフォーマンスは、FileStorage アカウントでのみ使用できます。</div><br/>
 
 <div id="data-lake-gen2"><sup>6</sup>Azure Data Lake Storage Gen2 は、Azure Blob ストレージを基礎に構築されたビッグ データ分析専用の機能セットです。 Data Lake Storage Gen2 は、階層型名前空間が有効になった汎用の V2 ストレージ アカウントでのみサポートされています。 Data Lake Storage Gen2 の詳細については、「<a href="https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage Gen2 の概要</a>」を参照してください。</div>

@@ -87,6 +87,8 @@
           href: networking-features.md
         - name: Application Gateway とサービス エンドポイントの併用
           href: networking/app-gateway-with-service-endpoints.md
+        - name: プライベート エンドポイント
+          href: networking/private-endpoint.md
     - name: 受信 IP と送信 IP
       href: overview-inbound-outbound-ips.md
     - name: Virtual Network 統合

@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 89c9b59a1f258e57adc98a917160d2ed2d6f4e33
-  ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+  ms.openlocfilehash: 256bae142cad43325f96871c377eaa53660ffafe
+  ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/28/2020
-  ms.locfileid: "78163915"
+  ms.lasthandoff: 03/06/2020
+  ms.locfileid: "78673540"
 highlightedContent:
   items:
   - title: Azure 開発者向けファースト ステップ ガイド
@@ -1247,7 +1247,7 @@ tools:
     imageSrc: https://docs.microsoft.com/media/logos/logo_python.svg
     url: https://docs.microsoft.com/azure/python/
   - title: .NET
-    imageSrc: https://docs.microsoft.com/media/logos/logo_NET.svg
+    imageSrc: ./media/index/net-logo.svg
     url: https://docs.microsoft.com/dotnet/azure/
   - title: Node.js
     imageSrc: https://docs.microsoft.com/media/logos/logo_nodejs.svg
@@ -1288,7 +1288,7 @@ additionalContent:
       url: azure-government/index.yml
     - title: Azure Germany
       summary: ドイツのデータ処理規則に準拠する専用クラウド。
-      url: germany/index.md
+      url: germany/index.yml
     - title: Azure China 21Vianet
       summary: 中国に配置され、21Vianet によって運営される専用クラウド。
       url: https://docs.microsoft.com/azure/china/

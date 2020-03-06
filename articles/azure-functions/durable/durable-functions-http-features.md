@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
 ms.openlocfilehash: a7d8891c6f925cfac326685f01ba5f6149a1b233
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76262862"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356674"
 ---
 # <a name="http-features"></a>HTTP 機能
 
@@ -41,11 +41,11 @@ Durable Functions 拡張機能で公開されているすべての組み込み�
 
 [オーケストレーション クライアントのバインド](durable-functions-bindings.md#orchestration-client)により、便利な HTTP 応答ペイロードを生成できる API が公開されます。 たとえば、特定のオーケストレーション インスタンスの管理 API へのリンクを含む応答を作成できます。 次の例では、この API を新しいオーケストレーション インスタンスに使用する方法を示す HTTP トリガー関数を示します。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **index.js**
 
@@ -114,7 +114,7 @@ Durable Functions 2.0 以降、オーケストレーションでは、[オーケ
 
 次のコード例は、送信 HTTP 要求を行うオーケストレーター関数を示しています。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -134,7 +134,7 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -172,7 +172,7 @@ Durable Functions では、承認のために Azure Active Directory (Azure AD) 
 
 次のコードは、.NET オーケストレーター関数の例です。 この関数では、Azure Resource Manager の [Virtual Machines REST API](https://docs.microsoft.com/rest/api/compute/virtualmachines) を使用して、仮想マシンを再起動する認証済み呼び出しを行います。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RestartVm")]
@@ -198,7 +198,7 @@ public static async Task RunOrchestrator(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");

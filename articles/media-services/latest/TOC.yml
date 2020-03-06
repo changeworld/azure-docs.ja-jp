@@ -72,7 +72,7 @@
       items:
         - name: 概要
           href: encoding-concept.md
-          displayName: 'encoding, presets, jobs, adaptive, bitrate'
+          displayName: 'encoding, presets, jobs, adaptive, bitrate, billing'
         - name: Standard Encoder の形式
           displayName: 'containers, codecs'
           href: media-encoder-standard-formats.md

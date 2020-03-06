@@ -4,11 +4,11 @@ description: Azure Policy の定義には、コンプライアンスが管理お
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: 502c8a87c4e915ebd1fd764915daa9c89a307097
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544132"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78354954"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
