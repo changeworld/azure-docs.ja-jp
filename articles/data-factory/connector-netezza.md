@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
 ms.openlocfilehash: c51469997af23be7a5e1b88677ecadb37e10ac64
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440552"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357202"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Azure Data Factory を使用して Netezza からデータをコピーする
 
@@ -55,7 +55,7 @@ Netezza のリンクされたサービスでは、次のプロパティがサポ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | **type** プロパティを **Netezza** に設定する必要があります。 | はい |
+| type | **type** プロパティを **Netezza** に設定する必要があります。 | はい |
 | connectionString | Netezza に接続するための ODBC 接続文字列。 <br/>パスワードを Azure Key Vault に格納して、接続文字列から `pwd` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 | はい |
 | connectVia | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
@@ -120,9 +120,9 @@ Netezza からデータをコピーするには、データセットの **type**
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは、次のように設定する必要があります:**NetezzaTable** | はい |
+| type | データセットの type プロパティは、次のように設定する必要があります:**NetezzaTable** | はい |
 | schema | スキーマの名前。 |いいえ (アクティビティ ソースの "query" が指定されている場合)  |
-| テーブル | テーブルの名前。 |いいえ (アクティビティ ソースの "query" が指定されている場合)  |
+| table | テーブルの名前。 |いいえ (アクティビティ ソースの "query" が指定されている場合)  |
 | tableName | スキーマがあるテーブルの名前。 このプロパティは下位互換性のためにサポートされています。 新しいワークロードでは、`schema` と `table` を使用します。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -156,7 +156,7 @@ Netezza からデータをコピーするには、コピー アクティビテ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの **type** プロパティを **NetezzaSource** に設定する必要があります。 | はい |
+| type | コピー アクティビティのソースの **type** プロパティを **NetezzaSource** に設定する必要があります。 | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 例: `"SELECT * FROM MyTable"` | いいえ (データセットの "tableName" が指定されている場合) |
 | partitionOptions | Netezza からのデータの読み込みに使用されるデータ パーティション分割オプションを指定します。 <br>指定できる値は、**None** (既定値)、**DataSlice**、**DynamicRange** です。<br>パーティション オプションが有効になっている場合 (つまり、`None` ではない場合)、Netezza データベースから同時にデータを読み込む並列処理の次数は、コピー アクティビティの [`parallelCopies`](copy-activity-performance.md#parallel-copy) の設定によって制御されます。 | いいえ |
 | partitionSettings | データ パーティション分割の設定のグループを指定します。 <br>パーティション オプションが `None` でない場合に適用されます。 | いいえ |

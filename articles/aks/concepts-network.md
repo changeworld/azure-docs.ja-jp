@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 02/28/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 5800254ab44b5b0f1048ce2200f90c06a8d1666a
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596166"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357111"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションに対するネットワークの概念
 

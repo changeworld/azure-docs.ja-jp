@@ -12,11 +12,11 @@ manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 06/18/2019
 ms.openlocfilehash: 0d04ea7d7003f274b252e057b7afced7759bfaae
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928522"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357269"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムを作成して構成する
 
@@ -219,7 +219,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 ### <a name="scale-considerations"></a>スケールに関する考慮事項
 
-#### <a name="scale-out"></a>スケールアウト
+#### <a name="scale-out"></a>スケール アウト
 
 セルフホステッド IR で、プロセッサ使用率が高く、使用可能なメモリが低減している場合、複数のコンピューターで負荷をスケールアウトするために、新しいノードを追加します。 タイムアウトのため、またはセルフホステッド IR ノードがオフライン状態であるために、アクティビティが失敗した場合に、ノードをゲートウェイに追加すると役立ちます。
 
@@ -258,7 +258,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Hybrid-data-movement-across-multiple-Azure-Data-Factories/player]
 
-### <a name="terminology"></a>用語集
+### <a name="terminology"></a>用語
 
 - **共有された IR**:物理インフラストラクチャで実行されている元のセルフホステッド IR。  
 - **リンクされた IR**:別の共有された IR を参照する IR。 リンクされた IR は論理 IR であり、共有された別のセルフホステッド IR のインフラストラクチャを使用します。
@@ -434,6 +434,6 @@ msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 
 セルフホステッド統合ランタイム コンピューター上でポート 8060 を開かない場合は、資格情報の設定アプリケーション以外のメカニズムを使用して、データ ストア資格情報を構成します。 たとえば、**New-AzDataFactoryV2LinkedServiceEncryptCredential** PowerShell コマンドレットを使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細な手順については、[チュートリアル:オンプレミスのデータをクラウドにコピーする](tutorial-hybrid-copy-powershell.md)

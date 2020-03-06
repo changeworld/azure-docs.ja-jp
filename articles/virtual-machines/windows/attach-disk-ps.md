@@ -8,11 +8,11 @@ ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: ce995a84d2290845e83416caf9c8b0004242eed4
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033678"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355930"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>PowerShell を使用して Windows VM にデータ ディスクを接続する
 
@@ -115,6 +115,6 @@ $vm = Add-AzVMDataDisk -CreateOption Attach -Lun 0 -VM $vm -ManagedDiskId $disk.
 Update-AzVM -VM $vm -ResourceGroupName $rgName
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 テンプレートを使用してマネージド ディスクをデプロイすることもできます。 詳細については、「[Azure Resource Manager テンプレートでの管理ディスクの使用](using-managed-disks-template-deployments.md)」または複数のデータ ディスクをデプロイする[クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-data-disk)を参照してください。

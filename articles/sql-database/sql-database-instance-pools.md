@@ -12,11 +12,11 @@ ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
 ms.openlocfilehash: c1e740fbfa4bf1e8a77a2d9d6060ab39dba7ae7b
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587398"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360405"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>SQL Database インスタンス プール (プレビュー) とは
 

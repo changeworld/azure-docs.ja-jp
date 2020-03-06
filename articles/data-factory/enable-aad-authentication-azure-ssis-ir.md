@@ -12,11 +12,11 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 5/14/2019
 ms.openlocfilehash: 70367a38fbf7b59486e2eaaf6c05634aa7575869
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927443"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360412"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムに対して Azure Active Directory 認証を有効にする
 
@@ -198,7 +198,7 @@ PowerShell を使用して Azure-SSIS IR をプロビジョニングするには
 
 1.  [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018)  モジュールをインストールします。
 
-2.  スクリプトで `CatalogAdminCredential` パラメーターを設定しないでください。 例:
+2.  スクリプトで `CatalogAdminCredential` パラメーターを設定しないでください。 次に例を示します。
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `

@@ -14,11 +14,11 @@ ms.date: 09/25/2017
 ms.author: malop
 ms.reviewer: kumud
 ms.openlocfilehash: 24bcc7e698527cd39958c53b48a0b36404c36bb4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048840"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360375"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Azure サービスの仮想ネットワーク統合
 
