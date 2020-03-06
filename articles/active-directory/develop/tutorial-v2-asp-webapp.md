@@ -429,7 +429,7 @@ Visual Studio でアプリケーションをテストするには、F5 キーを
 |---|---|---|
 |**Name** |ユーザーのフルネーム | ユーザーの姓と名
 |**ユーザー名** |user<span>@domain.com</span> | ユーザーの識別に使用されるユーザー名|
-|**[件名]** |サブジェクト |Web 全体でユーザーを一意に識別する文字列|
+|**件名** |サブジェクト |Web 全体でユーザーを一意に識別する文字列|
 |**テナント ID** |Guid | ユーザーの Azure AD 組織を一意に表す **guid**|
 
 さらに、認証要求内にあるすべての要求を示した表を確認する必要があります。 詳細については、[ID トークンに含まれる要求の一覧](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)を参照してください。
