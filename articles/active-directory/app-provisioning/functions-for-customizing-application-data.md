@@ -485,7 +485,7 @@ RemoveDuplicates([proxyAddresses])
 
 ---
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
-**関数:**<br> SingleAppRoleAssignment([appRoleAssignments])
+**関数:**<br> SingleAppRoleAssignment(appRoleAssignments)
 
 **説明:**<br> 指定したアプリケーションで 1 人のユーザーに割り当てられた appRoleAssignments の全一覧から、単一の appRoleAssignment を返します。 appRoleAssignments オブジェクトを単一のロール名文字列に変換するために、この関数が必要になります。 ベスト プラクティスは、確実に 1 つの appRoleAssignment だけが一度に 1 人のユーザーに割り当てられるようにすることです。複数のロールが割り当てられると、返されるロール文字列を予測できません。 
 

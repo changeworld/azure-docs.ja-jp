@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
 ms.openlocfilehash: 5a41d5653de0d8a9f674009904756892ac343609
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930917"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356292"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Azure Data Factory を使用して Teradata Vantage からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -53,7 +53,7 @@ Teradata Vantage から、サポートされている任意のシンク デー�
 
 セルフホステッド統合ランタイムのバージョンが 3.18 より前の場合は、統合ランタイム マシンに [.NET Data Provider for Teradata](https://go.microsoft.com/fwlink/?LinkId=278886) バージョン 14 以降をインストールしてください。 
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -66,7 +66,7 @@ Teradata のリンクされたサービスでは、次のプロパティがサ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは **Teradata** に設定する必要があります。 | はい |
-| connectionString | Teradata インスタンスに接続するために必要な情報を指定します。 以下のサンプルを参照してください。<br/>パスワードを Azure Key Vault に格納して、`password` 構成を接続文字列から取り出すこともできます。 詳細については、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。 | はい |
+| connectionString | Teradata インスタンスに接続するために必要な情報を指定します。 以下のサンプルを参照してください。<br/>パスワードを Azure Key Vault に格納して、接続文字列から `password` 構成をプルすることもできます。 詳細については、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。 | はい |
 | username | Teradata に接続するユーザー名を指定します。 Windows 認証の使用時に適用されます。 | いいえ |
 | password | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 [Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)ことも選択できます。 <br>Windows 認証の使用時、または基本認証で Key Vault のパスワードを参照するときに適用されます。 | いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |はい |
@@ -75,7 +75,7 @@ Teradata のリンクされたサービスでは、次のプロパティがサ�
 
 | プロパティ | 説明 | 既定値 |
 |:--- |:--- |:--- |
-| 文字セット | セッションに使用する文字セット。 例: `CharacterSet=UTF16`。<br><br/>この値には、ユーザー定義の文字セットのほか、次のいずれかの定義済みの文字セットを指定できます。 <br/>- ASCII<br/>- UTF8<br/>- UTF16<br/>- LATIN1252_0A<br/>- LATIN9_0A<br/>- LATIN1_0A<br/>- Shift-JIS (Windows、DOS 互換、KANJISJIS_0S)<br/>- EUC (Unix 互換、KANJIEC_0U)<br/>- IBM Mainframe (KANJIEBCDIC5035_0I)<br/>- KANJI932_1S0<br/>- BIG5 (TCHBIG5_1R0)<br/>- GB (SCHGB2312_1T0)<br/>- SCHINESE936_6R0<br/>- TCHINESE950_8R0<br/>- NetworkKorean (HANGULKSC5601_2R4)<br/>- HANGUL949_7R0<br/>- ARABIC1256_6A0<br/>- CYRILLIC1251_2A0<br/>- HEBREW1255_5A0<br/>- LATIN1250_1A0<br/>- LATIN1254_7A0<br/>- LATIN1258_8A0<br/>- THAI874_4A0 | 既定値は `ASCII` です。 |
+| CharacterSet | セッションに使用する文字セット。 例: `CharacterSet=UTF16`。<br><br/>この値には、ユーザー定義の文字セットのほか、次のいずれかの定義済みの文字セットを指定できます。 <br/>- ASCII<br/>- UTF8<br/>- UTF16<br/>- LATIN1252_0A<br/>- LATIN9_0A<br/>- LATIN1_0A<br/>- Shift-JIS (Windows、DOS 互換、KANJISJIS_0S)<br/>- EUC (Unix 互換、KANJIEC_0U)<br/>- IBM Mainframe (KANJIEBCDIC5035_0I)<br/>- KANJI932_1S0<br/>- BIG5 (TCHBIG5_1R0)<br/>- GB (SCHGB2312_1T0)<br/>- SCHINESE936_6R0<br/>- TCHINESE950_8R0<br/>- NetworkKorean (HANGULKSC5601_2R4)<br/>- HANGUL949_7R0<br/>- ARABIC1256_6A0<br/>- CYRILLIC1251_2A0<br/>- HEBREW1255_5A0<br/>- LATIN1250_1A0<br/>- LATIN1254_7A0<br/>- LATIN1258_8A0<br/>- THAI874_4A0 | 既定値は `ASCII` です。 |
 | MaxRespSize |SQL 要求の応答バッファーの最大サイズ。単位はキロバイト (KB) です。 例: `MaxRespSize=‭10485760‬`。<br/><br/>Teradata Database バージョン 16.00 以降では、7361536 が最大値となります。 それより前のバージョンを使用する接続の場合、最大値は 1048576 です。 | 既定値は `65536` です。 |
 
 **基本認証を使用した例**
@@ -207,7 +207,7 @@ Teradata からデータをコピーするために、コピー アクティビ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティは `TeradataSource` に設定する必要があります。 | はい |
-| query | カスタム SQL クエリを使用してデータを読み取ります。 例: `"SELECT * FROM MyTable"`。<br>パーティション分割された読み込みを有効にするときは、クエリ内で対応する組み込みのパーティション パラメーターをすべてフックする必要があります。 例については、「[Teradata からの並列コピー](#parallel-copy-from-teradata)」セクションを参照してください。 | いいえ (データセットのテーブルが指定されている場合) |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 たとえば `"SELECT * FROM MyTable"` です。<br>パーティション分割された読み込みを有効にするときは、クエリ内で対応する組み込みのパーティション パラメーターをすべてフックする必要があります。 例については、「[Teradata からの並列コピー](#parallel-copy-from-teradata)」セクションを参照してください。 | いいえ (データセットのテーブルが指定されている場合) |
 | partitionOptions | Teradata からのデータの読み込みに使用されるデータ パーティション分割オプションを指定します。 <br>指定できる値は、**None** (既定値)、**Hash**、**DynamicRange** です。<br>パーティション オプションが有効になっている場合 (つまり、`None` ではない場合)、Teradata から同時にデータを読み込む並列処理の次数は、コピー アクティビティの [`parallelCopies`](copy-activity-performance.md#parallel-copy) の設定によって制御されます。 | いいえ |
 | partitionSettings | データ パーティション分割の設定のグループを指定します。 <br>パーティション オプションが `None` でない場合に適用されます。 | いいえ |
 | partitionColumnName | 並列コピーの範囲パーティションまたはハッシュ パーティションで使用されるソース列の名前を指定します。 指定されていない場合は、テーブルのプライマリ インデックスが自動検出され、パーティション列として使用されます。 <br>パーティション オプションが `Hash` または `DynamicRange` である場合に適用されます。 クエリを使用してソース データを取得する場合は、WHERE 句で `?AdfHashPartitionCondition` または `?AdfRangePartitionColumnName` をフックします。 例については、「[Teradata からの並列コピー](#parallel-copy-from-teradata)」セクションを参照してください。 | いいえ |
@@ -263,7 +263,7 @@ Data Factory の Teradata コネクタは、Teradata からデータを並列で
 | シナリオ                                                     | 推奨設定                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 大きなテーブル全体を読み込む。                                   | **パーティション オプション**: Hash。 <br><br/>実行中に、Data Factory によって自動的に PK 列が検出され、それにハッシュが適用されて、データがパーティションごとにコピーされます。 |
-| カスタム クエリを使用して大量のデータを読み込む。                 | **パーティション オプション**: Hash。<br>**クエリ**: `SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>`。<br>**パーティション列**: ハッシュ パーティションの適用に使用される列を指定します。 指定されていない場合は、Teradata データセットで指定したテーブルの PK 列が Data Factory によって自動検出されます。<br><br>実行中に、Data Factory によって `?AdfHashPartitionCondition` がハッシュ パーティション ロジックに置き換えられ、Teradata に送信されます。 |
+| カスタム クエリを使用して大量のデータを読み込む。                 | **パーティション オプション**: Hash。<br>**クエリ**: `SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>`<br>**パーティション列**: ハッシュ パーティションの適用に使用される列を指定します。 指定されていない場合は、Teradata データセットで指定したテーブルの PK 列が Data Factory によって自動検出されます。<br><br>実行中に、Data Factory によって `?AdfHashPartitionCondition` がハッシュ パーティション ロジックに置き換えられ、Teradata に送信されます。 |
 | カスタム クエリを使用して大量のデータを読み込む (範囲パーティション分割のために値が均等に分散されている整数列がある場合)。 | **パーティション オプション**: 動的範囲パーティション。<br>**クエリ**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`<br>**パーティション列**: データのパーティション分割に使用される列を指定します。 整数データ型の列に対してパーティション分割を実行できます。<br>**パーティションの上限**と**パーティションの下限**: パーティション列に対してフィルター処理を実行して、下限から上限までの範囲内のデータのみを取得する場合に指定します。<br><br>実行中に、Data Factory によって `?AdfRangePartitionColumnName`、`?AdfRangePartitionUpbound`、`?AdfRangePartitionLowbound` が各パーティションの実際の列名および値の範囲に置き換えられ、Teradata に送信されます。 <br>たとえば、パーティション列 "ID" で下限が 1、上限が 80 に設定され、並列コピーが 4 に設定されている場合、Data Factory は 4 つのパーティションでデータを取得します。 これらの ID の範囲はそれぞれ [1, 20]、[21, 40]、[41, 60]、[61, 80] です。 |
 
 **例: ハッシュ パーティションを使用してクエリを実行する**
@@ -298,14 +298,14 @@ Data Factory の Teradata コネクタは、Teradata からデータを並列で
 
 Teradata からデータをコピーするときには、次のマッピングが適用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
 
-| Teradata のデータ型 | Data Factory の中間データ型 |
+| Teradata データ型 | Data Factory の中間データ型 |
 |:--- |:--- |
 | BigInt |Int64 |
 | BLOB |Byte[] |
 | Byte |Byte[] |
 | ByteInt |Int16 |
-| Char |string |
-| Clob |string |
+| Char |String |
+| Clob |String |
 | Date |DateTime |
 | Decimal |Decimal |
 | Double |Double |
@@ -336,15 +336,15 @@ Teradata からデータをコピーするときには、次のマッピング�
 | Timestamp |DateTime |
 | Timestamp With Time Zone |DateTime |
 | VarByte |Byte[] |
-| VarChar |string |
+| VarChar |String |
 | VarGraphic |サポートされていません。 ソース クエリで明示的なキャストを適用します。 |
 | xml |サポートされていません。 ソース クエリで明示的なキャストを適用します。 |
 
 
-## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
+## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

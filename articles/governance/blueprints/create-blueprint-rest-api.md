@@ -4,11 +4,11 @@ description: このクイックスタートでは、Azure Blueprints と REST AP
 ms.date: 02/26/2020
 ms.topic: quickstart
 ms.openlocfilehash: 3e7e7c67822eec939c7d7752f8771d3b486abc3c
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650233"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356778"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>クイック スタート:REST API で Azure Blueprint を定義して割り当てる
 
