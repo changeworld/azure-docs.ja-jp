@@ -141,7 +141,7 @@ module.exports = function (context, myQueueItem) {
 | **name**| 該当なし | 関数シグネチャの入力パラメーターの名前。|
 |**tableName** |**TableName**|モバイル アプリのデータ テーブルの名前|
 | **id**| **Id** | 取得するレコードの識別子。 静的にすることも、関数を呼び出すトリガーに基づいて設定することもできます。 たとえば、関数にキュー トリガーを使用した場合、`"id": "{queueTrigger}"` は、キュー メッセージの文字列値を、取得するレコード ID として使用します。|
-|**connection**|**[接続]**|モバイル アプリの URL を含むアプリ設定の名前。 この関数は、この URL を使用して、モバイル アプリに対して必要な REST 操作を作成します。 モバイル アプリの URL を含むアプリ設定を Function App で作成し、入力バインドの `connection` プロパティでアプリ設定の名前を指定します。 URL は、`http://<appname>.azurewebsites.net` のようになります。
+|**connection**|**接続**|モバイル アプリの URL を含むアプリ設定の名前。 この関数は、この URL を使用して、モバイル アプリに対して必要な REST 操作を作成します。 モバイル アプリの URL を含むアプリ設定を Function App で作成し、入力バインドの `connection` プロパティでアプリ設定の名前を指定します。 URL は、`http://<appname>.azurewebsites.net` のようになります。
 |**apiKey**|**ApiKey**|モバイル アプリの API キーを含むアプリ設定の名前。 [API キーを Node.js モバイル アプリに実装する](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)場合や、[API キーを .NET モバイル アプリに実装する](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)場合は、API キーを指定します。 キーを指定するには、API キーを含むアプリ設定を Function App で作成し、アプリ設定の名前を指定した `apiKey` プロパティを入力バインドに追加します。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
