@@ -160,6 +160,8 @@
       items:
         - name: Azure portal から
           items:
+            - name: 概要
+              href: azure-file-share-backup-overview.md
             - name: バックアップ
               href: backup-afs.md
             - name: 復元

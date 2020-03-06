@@ -155,8 +155,8 @@
           href: active-directory-acs-migration.md
         - name: 無効化された Access Control Service 名前空間を再アクティブ化する
           href: howto-reactivate-disabled-acs-namespaces.md
-    - name: Azure AD Graph API を使用する
-      href: ../develop/active-directory-graph-api-quickstart.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Microsoft Graph API を使用する
+      href: ../develop/microsoft-graph-intro.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
     - name: 開発者向け AD FS
       href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers'
 - name: References
@@ -164,8 +164,8 @@
     - name: 認証ライブラリ
       displayName: ADAL
       href: active-directory-authentication-libraries.md
-    - name: Azure AD Graph API
-      href: ../develop/active-directory-graph-api.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Microsoft Graph API
+      href: ../develop/microsoft-graph-intro.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
     - name: アプリケーション マニフェスト
       href: ../develop/reference-app-manifest.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
     - name: 認証と承認エラー コード
