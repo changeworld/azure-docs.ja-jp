@@ -78,7 +78,7 @@ Azure Monitor for containers を使用して Windows Server クラスターを�
 | |警告 |該当なし |
 | |Critical |< 100% |
 | |Unknown |過去 30 分以内に報告していない場合 |
-|**[Node]** | | |
+|**Node** | | |
 | |Healthy |> 85% |
 | |警告 |60 - 84% |
 | |Critical |< 60% |
