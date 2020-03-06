@@ -60,6 +60,6 @@ QnA Maker の新機能について説明します。
 > [!div class="nextstepaction"]
 > [QnA Maker サービスを作成する](how-to/set-up-qnamaker-service-azure.md)
 
-## <a name="cognitive-service-updates"></a>コグニティブ サービスの更新プログラム
+## <a name="cognitive-service-updates"></a>Cognitive Services の更新プログラム
 
 [Cognitive Services に対する Azure 更新プログラムのお知らせ](https://azure.microsoft.com/updates/?product=cognitive-services)
