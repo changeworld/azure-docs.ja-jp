@@ -537,7 +537,7 @@ RemoveDuplicates 関数は複数値の文字列を受け取り、各値が一意
 
   | 名前 | 必須/繰り返し | 種類 | メモ |
   |--- | --- | --- | --- |
-  | **[appRoleAssignments]** |必須 |string |**[appRoleAssignments]** オブジェクト |
+  | **appRoleAssignments** |必須 |string |**appRoleAssignments** オブジェクト |
 
 ---
 ### <a name="split"></a>Split
