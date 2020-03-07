@@ -16,11 +16,11 @@ ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
 ms.openlocfilehash: 47f58b25b082784177910d14ab95d8d242fda71a
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750321"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358546"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>仮想マシンのネットワーク帯域幅
 
@@ -68,7 +68,7 @@ VM の各サイズで想定される送信スループットとサポートさ�
 
 接続の確立と終了はパケット処理ルーチンと CPU を共有するため、接続の確立と終了の頻度もネットワーク パフォーマンスに影響を与える場合があります。 予測されるトラフィック パターンに対してワークロードをベンチマークし、パフォーマンスのニーズを満たすようにワークロードを適切にスケールアウトすることをお勧めします。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [仮想マシンのオペレーティング システムに対するネットワーク スループットを最適化する](virtual-network-optimize-network-bandwidth.md)
 - 仮想マシンの[ネットワーク スループットをテストする](virtual-network-bandwidth-testing.md)

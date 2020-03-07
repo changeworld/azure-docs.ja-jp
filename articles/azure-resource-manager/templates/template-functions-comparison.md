@@ -4,11 +4,11 @@ description: Azure Resource Manager テンプレートで値を比較するた�
 ms.topic: conceptual
 ms.date: 09/05/2017
 ms.openlocfilehash: 67cb1c1f92694ca217e99fb6528fb1d00f2cfcf6
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207313"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358615"
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの比較関数
 
@@ -29,7 +29,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | Required | Type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数、文字列、配列、オブジェクト |等しいかどうかを確認する 1 番目の値。 |
 | arg2 |はい |整数、文字列、配列、オブジェクト |等しいかどうかを確認する 2 番目の値。 |
@@ -185,7 +185,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | Required | Type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数または文字列 |大きいかどうかを比較する 1 番目の値。 |
 | arg2 |はい |整数または文字列 |大きいかどうかを比較する 2 番目の値。 |
@@ -261,7 +261,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | Required | Type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数または文字列 |以上かどうかを比較する 1 番目の値。 |
 | arg2 |はい |整数または文字列 |以上かどうかを比較する 2 番目の値。 |
@@ -337,7 +337,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | Required | Type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数または文字列 |小さいかどうかを比較する 1 番目の値。 |
 | arg2 |はい |整数または文字列 |小さいかどうかを比較する 2 番目の値。 |
@@ -413,7 +413,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | Required | Type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数または文字列 |以下かどうかを比較する 1 番目の値。 |
 | arg2 |はい |整数または文字列 |以下かどうかを比較する 2 番目の値。 |
