@@ -105,6 +105,42 @@
           href: Tutorials/integrate-qnamaker-luis.md
     - name: 分析とテレメトリ
       href: How-To/get-analytics-knowledge-base.md
+    - name: REST API の使用
+      items:
+        - name: 新しいナレッジ ベースの作成
+          items:
+            - name: 'C#'
+              href: Quickstarts/create-new-kb-csharp.md
+            - name: Go
+              href: Quickstarts/create-new-kb-go.md
+            - name: Java
+              href: Quickstarts/create-new-kb-java.md
+            - name: Python
+              href: Quickstarts/create-new-kb-python.md
+        - name: ナレッジ ベースの公開
+          items:
+            - name: 'C#'
+              href: Quickstarts/publish-kb-csharp.md
+            - name: Go
+              href: Quickstarts/publish-kb-go.md
+            - name: Java
+              href: Quickstarts/publish-kb-java.md
+            - name: Node.js
+              href: 'Quickstarts/publish-kb-nodejs.md#publish-a-knowledge-base'
+            - name: Python
+              href: Quickstarts/publish-kb-python.md
+        - name: 回答の取得
+          items:
+            - name: 'C#'
+              href: Quickstarts/get-answer-from-knowledge-base-csharp.md
+            - name: Go
+              href: Quickstarts/get-answer-from-knowledge-base-go.md
+            - name: Java
+              href: Quickstarts/get-answer-from-knowledge-base-java.md
+            - name: Node.js
+              href: Quickstarts/get-answer-from-knowledge-base-nodejs.md
+            - name: Python
+              href: Quickstarts/get-answer-from-knowledge-base-python.md
 - name: リファレンス
   items:
     - name: Languages
