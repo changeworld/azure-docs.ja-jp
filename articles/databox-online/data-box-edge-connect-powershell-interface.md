@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 06/25/2019
 ms.author: alkohli
 ms.openlocfilehash: f49396331a31f7ca9eaf453dc8bf6880da2e0da8
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613858"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384573"
 ---
 # <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Azure Data Box Edge デバイスを Windows PowerShell 経由で管理する
 

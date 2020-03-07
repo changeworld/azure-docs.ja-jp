@@ -13,11 +13,11 @@ ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 9ca44b1917cfaed5d01c31f8f06d98e5e4b611a8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438918"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356305"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>コピー アクティビティのパフォーマンスとチューニングに関するガイド
 
@@ -264,7 +264,7 @@ Data Factory サービスとコピー アクティビティのパフォーマン
      * [Data Management Gateway のスケーラビリティ](data-factory-data-management-gateway-high-availability-scalability.md)
    * [Data Management Gateway](#considerations-for-data-management-gateway)
    * [ソース](#considerations-for-the-source)
-   * [シンク](#considerations-for-the-sink)
+   * [Sink](#considerations-for-the-sink)
    * [シリアル化と逆シリアル化](#considerations-for-serialization-and-deserialization)
    * [圧縮](#considerations-for-compression)
    * [列マッピング](#considerations-for-column-mapping)

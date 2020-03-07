@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: 61670d757611bd0c1dd11c389282b18edb3d7fa1
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873677"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356547"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos アカウントを管理する
 
 この記事では、Azure portal、Azure PowerShell、Azure CLI、Azure Resource Manager テンプレートを使用し、Azure Cosmos アカウントでさまざまなタスクを管理する方法を紹介します。
 
-## <a name="create-an-account"></a>アカウントの作成
+## <a name="create-an-account"></a>アカウントを作成する
 
 ### <a id="create-database-account-via-portal"></a>Azure Portal
 
@@ -228,7 +228,7 @@ Cosmos アカウントに自動フェールオーバーを構成した後、リ�
 
 [PowerShell を使用した手動フェールオーバーのトリガー](manage-with-powershell.md#trigger-manual-failover)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Cosmos アカウント、データベース、コンテナーの管理方法に関する詳細と例については、次の記事をお読みください。
 

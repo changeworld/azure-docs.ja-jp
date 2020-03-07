@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/08/2020
 ms.author: jingwang
 ms.openlocfilehash: 0e138e954501df3cf3c3c8819d0198ad9a9288f0
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754465"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358498"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティ
 
@@ -125,7 +125,7 @@ Azure Data Factory でコピー アクティビティを使用するには、次
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティの場合は、`Copy` に設定します。 | はい |
+| type | コピー アクティビティの場合は、`Copy` に設定します。 | はい |
 | inputs | ソース データを指すように作成したデータセットを指定します。 コピー アクティビティは、1 つの入力のみをサポートします。 | はい |
 | outputs | シンク データを指すように作成したデータセットを指定します。 コピー アクティビティは、1 つの出力のみをサポートします。 | はい |
 | typeProperties | コピー アクティビティを構成するプロパティを指定します。 | はい |

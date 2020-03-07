@@ -14,11 +14,11 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: ace636152f6a0c9bf3896860eb17cc291bef2887
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77085131"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377259"
 ---
 # <a name="authentication-flows"></a>認証フロー
 

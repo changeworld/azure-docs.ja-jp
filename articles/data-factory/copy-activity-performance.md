@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/24/2019
 ms.openlocfilehash: 28d0da369083d75bc175111d808828e186a366fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444132"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358378"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>コピー アクティビティのパフォーマンスとスケーラビリティに関するガイド
 
@@ -293,7 +293,7 @@ Azure Data Factory には、次のパフォーマンス最適化機能があり�
 
 ここでは、サポートされているいくつかのデータ ストアについて、パフォーマンスの監視とチューニングに関するリファレンス情報をいくつか示します。
 
-* Azure Blob ストレージ:[Blob ストレージのスケーラビリティとパフォーマンスのターゲット](../storage/blobs/scalability-targets.md)および [Blob ストレージのパフォーマンスとスケーラビリティのチェックリスト](../storage/blobs/storage-performance-checklist.md)。
+* Azure Blob ストレージ:[BLOB ストレージのスケーラビリティとパフォーマンスのターゲット](../storage/blobs/scalability-targets.md)および [BLOB ストレージのパフォーマンスとスケーラビリティのチェックリスト](../storage/blobs/storage-performance-checklist.md)。
 * Azure Table ストレージ:[Table ストレージのスケーラビリティとパフォーマンスのターゲット](../storage/tables/scalability-targets.md)および [Table ストレージのパフォーマンスとスケーラビリティのチェックリスト](../storage/tables/storage-performance-checklist.md)。
 * Azure SQL Database:[パフォーマンスを監視](../sql-database/sql-database-single-database-monitor.md)し、データベース トランザクション ユニット (DTU) の割合を確認できます。
 * Azure SQL Data Warehouse: その機能は、データ ウェアハウス単位 (DWU) で測定されます。 「[Azure SQL Data Warehouse のコンピューティング能力の管理 (概要)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)」を参照してください。

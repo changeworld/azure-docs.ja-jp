@@ -4,11 +4,11 @@ description: タグを適用して、課金や管理のために Azure リソー
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.openlocfilehash: c7f8d8672e205fa677bff33c8ed173c1105b26c6
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77166598"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357341"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>タグを使用した Azure リソースの整理
 
