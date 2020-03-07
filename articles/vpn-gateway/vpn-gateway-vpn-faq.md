@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: yushwang
 ms.openlocfilehash: c556b71acf814203a67317039dafeede5f7b65a6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016750"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356685"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway に関する FAQ
 

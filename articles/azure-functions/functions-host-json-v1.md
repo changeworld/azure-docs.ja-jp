@@ -4,11 +4,11 @@ description: Azure Functions の v1 ランタイムの host.json ファイルの
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.openlocfilehash: 2b00e2343e0959e07b195e2e98c6719a1893b8c8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769610"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357978"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Functions 1.x の host.json のリファレンス
 

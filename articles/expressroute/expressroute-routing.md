@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
 ms.openlocfilehash: 3eafb8aff5525f668e6fe0bddb261b1117b5e38b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048175"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356040"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute のルーティングの要件
 ExpressRoute を使用して Microsoft クラウド サービスに接続するには、ルーティングをセットアップして管理する必要があります。 一部の接続プロバイダーでは、ルーティングのセットアップと管理が管理されたサービスとして提供されています。 このサービスが提供されているかどうか、接続プロバイダーに問い合わせてください。 提供されていない場合は、次の要件に従う必要があります。
@@ -156,7 +156,7 @@ ExpressRoute をトランジット ルーターとして構成することはで
 | **Microsoft Azure リージョン** | **リージョン BGP コミュニティ** | **ストレージ BGP コミュニティ** | **SQL BGP コミュニティ** | **Cosmos DB BGP コミュニティ** |
 | --- | --- | --- | --- | --- |
 | **北米** | |
-| East US | 12076:51004 | 12076:52004 | 12076:53004 | 12076:54004 |
+| 米国東部 | 12076:51004 | 12076:52004 | 12076:53004 | 12076:54004 |
 | 米国東部 2 | 12076:51005 | 12076:52005 | 12076:53005 | 12076:54005 |
 | 米国西部 | 12076:51006 | 12076:52006 | 12076:53006 | 12076:54006 |
 | 米国西部 2 | 12076:51026 | 12076:52026 | 12076:53026 | 12076:54026 |
