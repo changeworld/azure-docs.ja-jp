@@ -44,7 +44,7 @@ Language Understanding (LUIS) には、次の 2 つのサービスと API セッ
 
 LUIS では、次の 3 種類の Azure リソースを使用できます。 
  
-|Key|目的|コグニティブ サービス `kind`|コグニティブ サービス `type`|
+|Key|目的|Cognitive Service `kind`|Cognitive Service `type`|
 |--|--|--|--|
 |[オーサリング キー](#programmatic-key)|作成、トレーニング、発行、テストを使用して、アプリケーションのデータにアクセスして管理します。 プログラムを使用して LUIS アプリを作成する場合は、LUIS オーサリング キーを作成します。<br><br>`LUIS.Authoring` キーの目的は、次のことを可能にすることです。<br>* トレーニングや発行など、Language Understanding のアプリとモデルをプログラムで管理する<br> * [共同作成者ロール](#contributions-from-other-authors)にユーザーを割り当てることで、オーサリング リソースへのアクセス許可を制御する|`LUIS.Authoring`|`Cognitive Services`|
 |[予測キー](#prediction-endpoint-runtime-key)| 予測エンドポイント要求に対してクエリを実行します。 クライアント アプリでスターター リソースによって提供される 1000 件を超えて予測を要求する前に、LUIS 予測キーを作成します。 |`LUIS`|`Cognitive Services`|
