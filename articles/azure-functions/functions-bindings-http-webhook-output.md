@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: a25658677e436edf4d001599bb4981f527016596
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210684"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356066"
 ---
 # <a name="azure-functions-http-output-bindings"></a>Azure Functions での HTTP 出力バインド
 
@@ -18,7 +18,7 @@ HTTP 要求送信者に応答するには、HTTP 出力バインドを使用し�
 
 HTTP によってトリガーされる関数の既定の戻り値は次のとおりです。
 
-- Functions 2.x 以降では、本文が空の `HTTP 204 No Content`
+- Functions 2.x 以降は、本文が空の `HTTP 204 No Content`
 - Functions 1.x では、本文が空の `HTTP 200 OK`
 
 ## <a name="configuration"></a>構成

@@ -4,18 +4,18 @@ description: Blob Storage のイベントをサブスクライブするには、
 author: normesta
 ms.author: normesta
 ms.reviewer: cbrooks
-ms.date: 12/06/2018
-ms.topic: quickstart
+ms.date: 03/05/2020
+ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: dc8ed420fdb04d04c02c91f2fa90939562b91645
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 7f2807783f2750dbf87d22dfc6e356914e560e5d
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845620"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398178"
 ---
-# <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>クイック スタート: Azure CLI を使用してストレージ イベントを Web エンドポイントにルーティングする
+# <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>クイック スタート:Azure CLI を使用してストレージ イベントを Web エンドポイントにルーティングする
 
 Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、Azure CLI を使用して Blob Storage のイベントをサブスクライブし、イベントをトリガーして結果を表示します。
 
@@ -33,11 +33,11 @@ CLI をローカルにインストールして使用することを選択した�
 
 Cloud Shell を使用していない場合は、先に `az login` でサインインする必要があります。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 Event Grid のトピックは Azure リソースであり、Azure リソース グループに配置する必要があります。 リソース グループは、Azure リソースをまとめてデプロイして管理するための論理上のコレクションです。
 
-[az group create](/cli/azure/group) コマンドでリソース グループを作成します。 
+[az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。 
 
 次の例では、`<resource_group_name>` という名前のリソース グループを場所 *westcentralus* に作成します。  `<resource_group_name>` を、リソース グループの一意の名前に置き換えます。
 
@@ -146,7 +146,7 @@ az storage blob upload --file testfile.txt --container-name testcontainer --name
 
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 引き続きこのストレージ アカウントとイベント サブスクリプションを使用する場合は、この記事で作成したリソースをクリーンアップしないでください。 引き続き使用する予定がない場合は、次のコマンドを使用して、この記事で作成したリソースを削除します。
 
 `<resource_group_name>` は、先ほど作成したリソース グループに置き換えます。
@@ -155,7 +155,7 @@ az storage blob upload --file testfile.txt --container-name testcontainer --name
 az group delete --name <resource_group_name>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 トピックを作成し、イベントをサブスクライブする方法がわかったら、Blob Storage のイベントについて、また Event Grid でできることについて、さらに情報を収集しましょう。
 

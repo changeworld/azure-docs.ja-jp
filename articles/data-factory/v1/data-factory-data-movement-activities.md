@@ -13,11 +13,11 @@ ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: fbaa8c3544b35978786404619879f59ab91a6979
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931916"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358531"
 ---
 # <a name="move-data-by-using-copy-activity"></a>コピー アクティビティを使用したデータの移動
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -94,7 +94,7 @@ Azure Data Factory は、米国西部、米国東部、北ヨーロッパ リー
 
 | コピー先データ ストアの地理的な場所 | コピー先データ ストアのリージョン | データ移動に使用するリージョン |
 |:--- |:--- |:--- |
-| 米国 | East US | East US |
+| United States | 米国東部 | 米国東部 |
 | &nbsp; | 米国東部 2 | 米国東部 2 |
 | &nbsp; | 米国中部 | 米国中部 |
 | &nbsp; | 米国中北部 | 米国中北部 |
@@ -102,7 +102,7 @@ Azure Data Factory は、米国西部、米国東部、北ヨーロッパ リー
 | &nbsp; | 米国中西部 | 米国中西部 |
 | &nbsp; | 米国西部 | 米国西部 |
 | &nbsp; | 米国西部 2 | 米国西部 2 |
-| カナダ | カナダ東部 | カナダ中部 |
+| Canada | カナダ東部 | カナダ中部 |
 | &nbsp; | カナダ中部 | カナダ中部 |
 | ブラジル | ブラジル南部 | ブラジル南部 |
 | ヨーロッパ | 北ヨーロッパ | 北ヨーロッパ |
@@ -137,7 +137,7 @@ Azure Data Factory は、米国西部、米国東部、北ヨーロッパ リー
 Data Factory コピー ウィザードは、コピー アクティビティのあるパイプラインを作成するのに役立ちます。 このパイプラインを使用すると、リンクされたサービス、データセット、およびパイプラインの " *JSON 定義を作成しなくても* "、サポートされているソースからデータをコピーできます。 このウィザードの詳細については、「 [Data Factory コピー ウィザード](data-factory-copy-wizard.md) 」をご覧ください。  
 
 ### <a name="by-using-json-scripts"></a>JSON スクリプトを使用
-Visual Studio または Azure PowerShell で Data Factory エディターを使用すると、パイプラインの JSON 定義を作成できます (コピー アクティビティを使用)。 その後、その定義をデプロイして、Data Factory にパイプラインを作成することができます。 手順については、「[チュートリアル: Azure Data Factory パイプラインでコピー アクティビティを使用する方法](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。    
+Visual Studio または Azure PowerShell で Data Factory エディターを使用すると、パイプラインの JSON 定義を作成できます (コピー アクティビティを使用)。 その後、その定義をデプロイして、Data Factory にパイプラインを作成することができます。 「[チュートリアル:Azure Data Factory パイプラインでコピー アクティビティを使用する方法](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。    
 
 JSON プロパティ (名前、説明、入力テーブル、出力テーブル、ポリシーなど) は、あらゆる種類のアクティビティで使用できます。 アクティビティの `typeProperties` セクションで使用できるプロパティは、各アクティビティの種類によって異なります。
 
@@ -210,6 +210,6 @@ Data Factory でのスケジュール設定と実行のしくみに関する詳�
 
 データ ストアのネイティブ型システムから .NET 型へのマッピングは、該当するデータ ストアの記事を参照してください (サポートされるデータ ストアの表に示されているリンクをクリックしてください)。 このマッピングを使用して、テーブル作成時に適切な型を決定でき、コピー アクティビティによって適切な変換が実行されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * コピー アクティビティの詳細については、「 [Azure Blob Storage から Azure SQL Database にデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」を参照してください。
 * オンプレミスのデータ ストアからクラウド データ ストアへのデータの移動については、 [オンプレミスのデータ ストアからクラウド データ ストアへのデータの移動](data-factory-move-data-between-onprem-and-cloud.md)に関するページをご覧ください。

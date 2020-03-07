@@ -9,11 +9,11 @@ ms.custom: mvc
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 0c88db652efe54a497af094160fb426be7c43d16
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260839"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357072"
 ---
 # <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>クイック スタート:Azure portal を使用して Service Bus キューを作成する
 このクイックスタートでは、Service Bus キューとの間でメッセージを送受信し、[Azure portal][Azure portal] を使用してその名前空間内にメッセージング名前空間とキューを作成し、その名前空間に対する承認資格情報を取得する方法について説明します。 次に、[.NET Standard ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)を使用して、このキューからメッセージを送受信する方法について説明します。

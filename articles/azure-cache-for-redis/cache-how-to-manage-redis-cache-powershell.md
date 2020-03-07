@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
 ms.openlocfilehash: a385d3ed7ef46389f96de72c98ffc29cebf60ec4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978843"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355858"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Azure PowerShell を使用した Azure Cache for Redis の管理
 > [!div class="op_single_selector"]
@@ -119,10 +119,10 @@ Microsoft Azure Germany の詳細については、「[Microsoft Azure Germany](
 
 | パラメーター | 説明 | Default |
 | --- | --- | --- |
-| Name |キャッシュの名前 | |
-| Location |キャッシュの場所 | |
+| 名前 |キャッシュの名前 | |
+| 場所 |キャッシュの場所 | |
 | ResourceGroupName |キャッシュを作成するリソース グループの名前 | |
-| Size |キャッシュのサイズ。 有効な値は次のとおりです。P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250MB、1GB、2.5GB、6GB、13GB、26GB、53GB |1GB |
+| サイズ |キャッシュのサイズ。 有効な値は次のとおりです。P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250MB、1GB、2.5GB、6GB、13GB、26GB、53GB |1GB |
 | ShardCount |クラスタリングが有効になっている Premium キャッシュを作成するときに作成するシャードの数。 有効な値は次のとおりです。1、2、3、4、5、6、7、8、9、10 | |
 | SKU |キャッシュの SKU を指定します。 有効な値は次のとおりです。Basic、Standard、Premium |Standard |
 | RedisConfiguration |Redis 構成の設定を指定します。 各設定の詳細については、次の「 [RedisConfiguration プロパティ](#redisconfiguration-properties) 」の表をご覧ください。 | |

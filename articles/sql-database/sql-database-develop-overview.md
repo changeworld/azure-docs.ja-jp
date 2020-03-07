@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 11/14/2019
 ms.openlocfilehash: 26aa9948a44727ff4c8092eb5131b1c054bf5442
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082450"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356553"
 ---
 # <a name="sql-database-application-development-overview"></a>SQL Database アプリケーションの開発の概要
 
@@ -38,7 +38,7 @@ Azure SQL Database へのアクセスは、ログインとファイアウォー�
 
 詳細については、[データベース アクセスとログインの管理](sql-database-manage-logins.md)に関するページを参照してください。
 
-## <a name="connections"></a>Connections
+## <a name="connections"></a>接続
 
 クライアント接続ロジックの中で、タイムアウトが 30 秒になるように既定値をオーバーライドします。 既定では 15 秒ですが、インターネットに依存する接続の場合、それでは短すぎます。
 
@@ -59,6 +59,6 @@ Azure SQL データベースの計画メンテナンス イベントに備える
 - Azure SQL Database へのクライアント接続はプロキシを使用せずに、データベースに直接やり取りする場合があります。 1433 以外のポートが重要になります。 詳細については、「[Azure SQL Database connectivity architecture](sql-database-connectivity-architecture.md)」 (Azure SQL データベース接続アーキテクチャ) および「[ADO.NET 4.5 用の 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)」を参照してください。
 - マネージド インスタンス向けのネットワーク構成については、[マネージド インスタンス向けのネットワーク構成](sql-database-howto-managed-instance.md#network-configuration)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [SQL Database の機能](sql-database-technical-overview.md)すべてを確認します。

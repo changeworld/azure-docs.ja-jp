@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
 ms.openlocfilehash: fac6c29d5371c536c20eca58d90ee5d54d7e90d1
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462668"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357731"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内のリソースの名前解決
 
@@ -55,7 +55,7 @@ Azure では、パブリック DNS 名の解決と共に、同じ仮想ネット
 >
 >
 
-### <a name="features"></a>[機能]
+### <a name="features"></a>機能
 
 Azure で提供される名前解決の機能を次に示します。
 * 使いやすさ。 構成は必要ありません。
