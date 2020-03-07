@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: jingwang
 ms.openlocfilehash: 874c685491774e2a318ae0a8b7394945a51b2f7f
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77423812"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358479"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Azure Data Factory を使用した Oracle をコピー元またはコピー先とするデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -65,7 +65,7 @@ Oracle データベースから、サポートされている任意のシンク 
 
 Oracle のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | Required |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは **Oracle** に設定する必要があります。 | はい |
 | connectionString | Oracle Database インスタンスに接続するために必要な情報を指定します。 <br/>パスワードを Azure Key Vault に格納して、接続文字列から `password` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。 <br><br>**サポートされる接続の種類**:**Oracle SID** または **Oracle サービス名**を使用してデータベースを識別できます。<br>- SID を使用する場合: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>- サービス名を使用する場合: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;`<br>Oracle ネイティブ接続オプションの詳細については、Oracle サーバー上の [TNSNAMES.ORA](http://www.orafaq.com/wiki/Tnsnames.ora) にエントリを追加することを選択できます。また ADF Oracle のリンクされたサービスでは、Oracle サービス名の接続の種類を使用することを選択して、対応するサービス名を構成できます。 | はい |
@@ -170,7 +170,7 @@ Oracle の接続で暗号化を有効にするには、2 つのオプション�
 
 Oracle をコピー元またはコピー先としてデータをコピーするには、データセットの type プロパティを `OracleTable` に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | Required |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | データセットの type プロパティは `OracleTable` に設定する必要があります。 | はい |
 | schema | スキーマの名前。 |ソースの場合はいいえ、シンクの場合ははい  |
@@ -209,7 +209,7 @@ Oracle をコピー元またはコピー先としてデータをコピーする�
 
 Oracle からデータをコピーするは、コピー アクティビティのソースの種類を `OracleSource` に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | Required |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティは `OracleSource` に設定する必要があります。 | はい |
 | oracleReaderQuery | カスタム SQL クエリを使用してデータを読み取ります。 たとえば `"SELECT * FROM MyTable"` です。<br>パーティション分割された読み込みを有効にするときは、クエリ内で対応する組み込みのパーティション パラメーターをすべてフックする必要があります。 例については、「[Oracle からの並列コピー](#parallel-copy-from-oracle)」セクションを参照してください。 | いいえ |
@@ -256,7 +256,7 @@ Oracle からデータをコピーするは、コピー アクティビティの
 
 Oracle にデータをコピーするには、コピー アクティビティのシンクの種類を `OracleSink` に設定します。 コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | Required |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのシンクの type プロパティは、`OracleSink` に設定する必要があります。 | はい |
 | writeBatchSize | バッファー サイズが `writeBatchSize` に達したら、SQL テーブルにデータを挿入します。<br/>使用可能な値: 整数 (行数)。 |いいえ (既定値は 10,000) |
