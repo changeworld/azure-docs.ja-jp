@@ -96,8 +96,12 @@
   items:
     - name: Event Grid の概念
       href: concepts.md
-    - name: セキュリティと認証
-      href: security-authentication.md
+    - name: Security
+      items:
+        - name: 認証
+          href: security-authentication.md
+        - name: 承認
+          href: security-authorization.md
     - name: 配信と再試行
       href: delivery-and-retry.md
     - name: イベント フィルター

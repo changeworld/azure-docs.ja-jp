@@ -214,7 +214,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 |||  
 |-|-|  
 |Name|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
-|種類|サポートされているアナライザーの一覧に含まれるアナライザーの種類です。 下記の[アナライザー](#AnalyzerTable)の表の **analyzer_type** 列をご覧ください。|  
+|Type|サポートされているアナライザーの一覧に含まれるアナライザーの種類です。 下記の[アナライザー](#AnalyzerTable)の表の **analyzer_type** 列をご覧ください。|  
 |オプション|下記の[アナライザー](#AnalyzerTable)の表に列記されている定義済みアナライザーの有効なオプションを指定する必要があります。|  
 
 #### <a name="custom-analyzers"></a>カスタム アナライザー
@@ -222,7 +222,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 |||  
 |-|-|  
 |Name|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
-|種類|"#Microsoft.Azure.Search.CustomAnalyzer" を指定する必要があります。|  
+|Type|"#Microsoft.Azure.Search.CustomAnalyzer" を指定する必要があります。|  
 |CharFilters|[文字フィルター](#char-filters-reference)の表に列記されている定義済みの文字フィルターのいずれか、またはインデックスの定義で指定されているカスタム文字フィルターに設定します。|  
 |トークナイザー|必須。 下記の[トークナイザー](#Tokenizers)の表に列記されている定義済みのトークナイザーのいずれか、またはインデックスの定義で指定されているカスタム トークナイザーに設定します。|  
 |TokenFilters|[トークン フィルター](#TokenFilters)の表に列記されている定義済みのトークン フィルターのいずれか、またはインデックスの定義で指定されているカスタム トークン フィルターに設定します。|  
@@ -239,7 +239,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 |||  
 |-|-|  
 |Name|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
-|種類|サポートされている文字フィルターの一覧に含まれる文字フィルターの種類です。 下記の[文字フィルター](#char-filters-reference)の表の **char_filter_type** 列をご覧ください。|  
+|Type|サポートされている文字フィルターの一覧に含まれる文字フィルターの種類です。 下記の[文字フィルター](#char-filters-reference)の表の **char_filter_type** 列をご覧ください。|  
 |オプション|指定した[文字フィルター](#char-filters-reference)の種類で有効なオプションを使用する必要があります。|  
 
 ### <a name="tokenizers"></a>トークナイザー
@@ -252,7 +252,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 |||  
 |-|-|  
 |Name|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
-|種類|サポートされているトークナイザーの一覧のトークナイザー名を使用します。 下記の[トークナイザー](#Tokenizers)の表の **tokenizer_type** 列をご覧ください。|  
+|Type|サポートされているトークナイザーの一覧のトークナイザー名を使用します。 下記の[トークナイザー](#Tokenizers)の表の **tokenizer_type** 列をご覧ください。|  
 |オプション|下記の[トークナイザー](#Tokenizers)の表で示されている特定のトークナイザーの種類の有効なオプションを指定する必要があります。|  
 
 ### <a name="token-filters"></a>トークン フィルター
@@ -263,7 +263,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 |||  
 |-|-|  
 |Name|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
-|種類|サポートされているトークン フィルターの一覧のトークン フィルター名を使用します。 下記の[トークン フィルター](#TokenFilters)の表の **token_filter_type** 列をご覧ください。|  
+|Type|サポートされているトークン フィルターの一覧のトークン フィルター名を使用します。 下記の[トークン フィルター](#TokenFilters)の表の **token_filter_type** 列をご覧ください。|  
 |オプション|特定のトークン フィルターの種類の[トークン フィルター](#TokenFilters)を使用する必要があります。|  
 
 <a name="PropertyReference"></a>  
