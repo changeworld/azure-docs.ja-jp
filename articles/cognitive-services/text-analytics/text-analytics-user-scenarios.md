@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
-ms.topic: overview
-ms.date: 02/25/2020
+ms.topic: conceptual
+ms.date: 03/04/2020
 ms.author: aahi
-ms.openlocfilehash: 560f34d21a68cecc4950db5dcceb9c8ef7b05a49
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 6847059de2a8685a56719f07a041a40456f2aa06
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77614432"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396116"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Text Analytics API のユーザー シナリオの例
 
