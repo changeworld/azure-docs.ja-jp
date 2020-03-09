@@ -9,11 +9,11 @@ ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: 965897afc8e23c123575de0c497d4071ff4ca85a
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767102"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358145"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>チュートリアル:カスタム イメージを作成し、プライベート レジストリから App Service 内で実行する
 
