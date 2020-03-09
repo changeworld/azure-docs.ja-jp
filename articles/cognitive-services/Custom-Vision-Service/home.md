@@ -19,7 +19,7 @@ ms.locfileid: "74978596"
 ---
 # <a name="what-is-custom-vision"></a>Custom Vision とは
 
-Custom Vision は、独自の画像分類器を構築、デプロイ、改良できるようにするコグニティブ サービスです。 画像分類器は、視覚特性に基づいて画像にラベル ("_クラス_" を表す) を適用する AI サービスです。 [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) サービスとは異なり、Custom Vision では適用するラベルをユーザーが決定できます。
+Custom Vision は、独自の画像分類器を構築、デプロイ、改良できるようにする Cognitive Services です。 画像分類器は、視覚特性に基づいて画像にラベル ("_クラス_" を表す) を適用する AI サービスです。 [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) サービスとは異なり、Custom Vision では適用するラベルをユーザーが決定できます。
 
 ## <a name="what-it-does"></a>実行内容
 
