@@ -1,5 +1,5 @@
 ---
-title: Azure Functions ランタイムに到達できないエラーのトラブルシューティング
+title: Azure Functions Runtime に到達できない エラーのトラブルシューティング
 description: 無効なストレージ アカウントのトラブルシューティング方法について説明します。
 author: alexkarcher-msft
 ms.topic: article
@@ -12,7 +12,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 02/07/2020
 ms.locfileid: "77063783"
 ---
-# <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>"Azure Functions ランタイムに到達できない" エラーのトラブルシューティング
+# <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>Azure Functions Runtime に到達できない" エラーのトラブルシューティング
 
 この記事は、Azure portal に表示される次のエラー文字列をトラブルシューティングする場合に役立ちます。
 
