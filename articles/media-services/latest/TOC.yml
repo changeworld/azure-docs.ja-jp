@@ -186,9 +186,14 @@
               href: live-event-error-codes.md
             - name: ジョブ エラー コード
               href: job-error-codes.md
-    - name: 高可用性のガイダンス
-      displayName: 'failover, bcdr'
-      href: media-services-high-availability-guidance.md
+    - name: 高可用性
+      items:
+        - name: エンコード
+          displayName: 'failover, bcdr'
+          href: media-services-high-availability-encoding.md
+        - name: ストリーミング
+          displayName: 'failover, bcdr'
+          href: media-services-high-availability-streaming.md
     - name: v2 から v3 への移行ガイダンス
       href: migrate-from-v2-to-v3.md
       displayName: naming

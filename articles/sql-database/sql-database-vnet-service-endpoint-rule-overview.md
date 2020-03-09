@@ -12,11 +12,11 @@ ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
 ms.openlocfilehash: 0562d609231d69d95f1d2b5b838663b704f8f2f3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972714"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357230"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>データベース サーバー用の仮想ネットワーク サービス エンドポイントおよび規則を使用する
 
@@ -235,7 +235,7 @@ PowerShell を使用して、**IgnoreMissingVNetServiceEndpoint** フラグを�
 
 ## <a name="azure-portal-steps"></a>Azure Portal の手順
 
-1. [Azure portal][http-azure-portal-link-ref-477t] にサインインする
+1. [Azure portal][http-azure-portal-link-ref-477t] にサインインします。
 
 2. **SQL サーバー**を検索して選択してから、使用するサーバーを選択します。 **[セキュリティ]** で、 **[ファイアウォールと仮想ネットワーク]** を選択します。
 

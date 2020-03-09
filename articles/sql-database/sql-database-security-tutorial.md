@@ -11,11 +11,11 @@ ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019
 ms.openlocfilehash: 05ea21f7b3221425e5b052797d79e629fdfe3ba5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818034"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360455"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>チュートリアル:単一データベースまたはプールされたデータベースをセキュリティで保護する
 
@@ -331,14 +331,14 @@ Advanced Data Security を有効にするには:
 
 1. 必要に応じて、 **[データの暗号化]** を **[オン]** に設定します。 **[保存]** を選択します。
 
-    ![Transparent Data Encryption](./media/sql-database-security-tutorial/encryption-settings.png)
+    ![透過的なデータ暗号化](./media/sql-database-security-tutorial/encryption-settings.png)
 
 > [!NOTE]
 > 暗号化の状態を確認するには、[SSMS](./sql-database-connect-query-ssms.md) を使用してデータベースに接続し、[sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) ビューの `encryption_state` 列にクエリを実行します。 状態 `3` は、データベースが暗号化されていることを示します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、いくつかの簡単な手順を使ってデータベースのセキュリティを向上させる方法について説明しました。 以下の方法について学習しました。
+このチュートリアルでは、いくつかの簡単な手順を使ってデータベースのセキュリティを向上させる方法について説明しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > - サーバーレベルとデータベースレベルのファイアウォール規則を作成する

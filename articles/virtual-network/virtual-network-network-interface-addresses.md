@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
 ms.openlocfilehash: a2a85d98bf29e78d58bf0c578ce79943bae21fc1
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543088"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355681"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Azure ネットワーク インターフェイスの IP アドレスの追加、変更、削除
 
@@ -53,8 +53,8 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 
    |設定|必須|詳細|
    |---|---|---|
-   |Name|はい|ネットワーク インターフェイスについて一意である必要があります|
-   |種類|はい|IP 構成を既存のネットワーク インターフェイスに追加しており、各ネットワーク インターフェイスには必ず[プライマリ](#primary) IP 構成があるため、選ぶことができるオプションは **セカンダリ** のみです。|
+   |名前|はい|ネットワーク インターフェイスについて一意である必要があります|
+   |Type|はい|IP 構成を既存のネットワーク インターフェイスに追加しており、各ネットワーク インターフェイスには必ず[プライマリ](#primary) IP 構成があるため、選ぶことができるオプションは **セカンダリ** のみです。|
    |プライベート IP アドレスの割り当て方法|はい|[**動的**](#dynamic):Azure により、ネットワーク インターフェイスがデプロイされているサブネット アドレスの範囲で次に利用可能なアドレスが割り当てられます。 [**静的**](#static):ネットワーク インターフェイスがデプロイされているサブネット アドレスの範囲で未使用のアドレスを自分で割り当てます。|
    |パブリック IP アドレス|いいえ|**無効:** パブリック IP アドレス リソースは現在 IP 構成に関連付けられていません。 **有効:** 既存の IPv4 パブリック IP アドレスを選択するか、新しく作成します。 パブリック IP アドレスの作成方法については、「[Public IP addresses](virtual-network-public-ip-address.md#create-a-public-ip-address)」(パブリック IP アドレス) の記事をご覧ください。|
 6. 「[VM オペレーティング システムに IP アドレスを追加する](virtual-network-multiple-ip-addresses-portal.md#os-config)」の手順に従って、セカンダリ プライベート IP アドレスを仮想マシンのオペレーティング システムに手動で追加します。 仮想マシンのオペレーティング システムに IP アドレスを手動で追加する前の特別な考慮事項については、「[プライベート](#private)」を参照してください。 仮想マシンのオペレーティング システムにパブリック IP アドレスは追加しないでください。

@@ -271,7 +271,7 @@ SQL 統合変更追跡ポリシーを使用するときは、個別のデータ�
 ## <a name="mapping-between-sql-and-azure-cognitive-search-data-types"></a>SQL データ型と Azure Cognitive Search データ型間のマッピング
 | SQL データ型 | ターゲット インデックス フィールドに許可される型 | メモ |
 | --- | --- | --- |
-| ビット |Edm.Boolean、Edm.String | |
+| bit |Edm.Boolean、Edm.String | |
 | int、smallint、tinyint |Edm.Int32、Edm.Int64、Edm.String | |
 | bigint |Edm.Int64、Edm.String | |
 | real、float |Edm.Double、Edm.String | |
@@ -279,7 +279,7 @@ SQL 統合変更追跡ポリシーを使用するときは、個別のデータ�
 | char、nchar、varchar、nvarchar |Edm.String<br/>Collection(Edm.String) |SQL 文字列が JSON 文字列配列 `["red", "white", "blue"]` を表している場合、その SQL 文字列を使用して、Collection(Edm.String) フィールドを設定できます |
 | smalldatetime、datetime、datetime2、date、datetimeoffset |Edm.DateTimeOffset、Edm.String | |
 | uniqueidentifer |Edm.String | |
-| 地理 |Edm.GeographyPoint |型が POINT で SRID が 4326 (既定) の地理インスタンスのみがサポートされます。 |
+| geography |Edm.GeographyPoint |型が POINT で SRID が 4326 (既定) の地理インスタンスのみがサポートされます。 |
 | rowversion |該当なし |行バージョン列は検索インデックスに保存できませんが、変更追跡に利用できます。 |
 | time、timespan、binary、varbinary、image、xml、geometry、CLR 型 |該当なし |サポートされていません |
 

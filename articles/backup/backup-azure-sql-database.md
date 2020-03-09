@@ -4,11 +4,11 @@ description: この記事では、SQL Server を Azure に バックアップす
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.openlocfilehash: 39f2348a95be95a03dada45d48952dce99ec4ec7
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74462594"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392833"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Azure VM での SQL Server Backup について
 
@@ -76,36 +76,36 @@ SQL Server データベースは、低い回復ポイントの目標値 (RPO) �
 
 * **バックアップの設定:プライマリ**
 
-**バックアップの種類** | **Node**
+**バックアップの種類** | **[Node]**
     --- | ---
-    完全 | プライマリ
+    [完全] | プライマリ
     差分 | プライマリ
     ログ |  プライマリ
     コピーのみの完全 |  プライマリ
 
 * **バックアップの設定:セカンダリのみ**
 
-**バックアップの種類** | **Node**
+**バックアップの種類** | **[Node]**
 --- | ---
-完全 | プライマリ
+[完全] | プライマリ
 差分 | プライマリ
 ログ |  セカンダリ
 コピーのみの完全 |  セカンダリ
 
 * **バックアップの設定:セカンダリ**
 
-**バックアップの種類** | **Node**
+**バックアップの種類** | **[Node]**
 --- | ---
-完全 | プライマリ
+[完全] | プライマリ
 差分 | プライマリ
 ログ |  セカンダリ
 コピーのみの完全 |  セカンダリ
 
 * **バックアップの設定なし**
 
-**バックアップの種類** | **Node**
+**バックアップの種類** | **[Node]**
 --- | ---
-完全 | プライマリ
+[完全] | プライマリ
 差分 | プライマリ
 ログ |  セカンダリ
 コピーのみの完全 |  セカンダリ
@@ -133,11 +133,11 @@ Windows 2008 R2 で **SQL 2008** および **2008 R2** を実行している場�
 
       ![[ログイン - 新規作成] ダイアログ ボックスで [検索] を選択する](./media/backup-azure-sql-database/new-login-search.png)
 
-  4. Windows 仮想サービス アカウント **NT SERVICE\AzureWLBackupPluginSvc** は、仮想マシンの登録と SQL 検出フェーズ中に作成済みです。 **[選択するオブジェクト名を入力します]** に示されているようにアカウント名を入力します。 **[名前の確認]** を選択して名前解決を行います。 Click **OK**.
+  4. Windows 仮想サービス アカウント **NT SERVICE\AzureWLBackupPluginSvc** は、仮想マシンの登録と SQL 検出フェーズ中に作成済みです。 **[選択するオブジェクト名を入力します]** に示されているようにアカウント名を入力します。 **[名前の確認]** を選択して名前解決を行います。 **[OK]** をクリックします。
 
       ![[名前の確認] を選択して不明なサービス名を解決する](./media/backup-azure-sql-database/check-name.png)
 
-  5. **[サーバー ロール]** で、**sysadmin** ロールが選択されていることを確認します。 Click **OK**. この時点で、必要な権限が揃っているはずです。
+  5. **[サーバー ロール]** で、**sysadmin** ロールが選択されていることを確認します。 **[OK]** をクリックします。 この時点で、必要な権限が揃っているはずです。
 
       ![sysadmin サーバー ロールが選択されていることを確認する](./media/backup-azure-sql-database/sysadmin-server-role.png)
 
@@ -215,7 +215,7 @@ catch
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * SQL Server データベースのバックアップに[ついて学習します](backup-sql-server-database-azure-vms.md)。
 * バックアップされた SQL Server データベースの復元に[ついて学習します](restore-sql-database-azure-vm.md)。

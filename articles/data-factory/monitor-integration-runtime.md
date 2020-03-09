@@ -11,11 +11,11 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 2399849b87e44c5cb70d2db987ae18d8d2d9c552
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77564042"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358422"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイムを監視する  
 **統合ランタイム**は、異なるネットワーク環境間のさまざまなデータ統合機能を提供するために Azure Data Factory によって使われるコンピューティング インフラストラクチャです。 3 種類の統合ランタイムが Data Factory によって提供されています。
@@ -44,7 +44,7 @@ Azure 統合ランタイムのコンピューティング リソースは、Azur
 -------- | ------------- | 
 | 名前 | Azure 統合ランタイムの名前です。 |  
 | State | Azure 統合ランタイムの状態です。 | 
-| Location | Azure 統合ランタイムの場所です。 Azure 統合ランタイムの場所について詳しくは、[統合ランタイムの概要](concepts-integration-runtime.md)に関する記事をご覧ください。 |
+| 場所 | Azure 統合ランタイムの場所です。 Azure 統合ランタイムの場所について詳しくは、[統合ランタイムの概要](concepts-integration-runtime.md)に関する記事をご覧ください。 |
 | DataFactoryName | Azure 統合ランタイムが属しているデータ ファクトリの名前です。 | 
 | ResourceGroupName | データ ファクトリが属しているリソース グループの名前です。  |
 | 説明 | 統合ランタイムの説明です。  |
@@ -163,7 +163,7 @@ Azure-SSIS 統合ランタイムは、SSIS パッケージ実行専用の Azure 
 | OtherErrors | Azure-SSIS 統合ランタイムのノード固有ではない対処が必要なエラーです。 |
 | LastOperation | 対処が必要なエラーが発生した Azure-SSIS 統合ランタイムでの前回の開始/停止操作が失敗した場合の結果です。 |
 | State | Azure-SSIS 統合ランタイムの全体的な状態 (初期/開始中/開始済み/停止中/停止済み) です。 |
-| Location | Azure-SSIS 統合ランタイムの場所です。 |
+| 場所 | Azure-SSIS 統合ランタイムの場所です。 |
 | NodeSize | Azure-SSIS 統合ランタイムの各ノードのサイズです。 |
 | NodeCount | Azure-SSIS 統合ランタイムのノードの数です。 |
 | MaxParallelExecutionsPerNode | Azure-SSIS 統合ランタイムのノードごとの並列実行の数です。 |
