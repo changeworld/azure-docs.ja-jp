@@ -125,7 +125,7 @@ Azure Cognitive Search では、Lucene によって提供される 35 個のア�
 
 ## <a name="see-also"></a>関連項目  
 
-+ [インデックスの作成 &#40;Azure コグニティブ検索 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
++ [インデックスの作成 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
 
 + [AnalyzerName クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername)  
 
