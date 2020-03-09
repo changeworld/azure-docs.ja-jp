@@ -21,11 +21,11 @@ ms.locfileid: "68619940"
 # <a name="enterprise-strategies-for-a-luis-app"></a>LUIS アプリのエンタープライズ戦略
 エンタープライズ アプリについて以下の設計戦略を確認してください。
 
-## <a name="when-you-expect-luis-requests-beyond-the-quota"></a>クォータを超える LUIS 要求が予想される場合
+## <a name="when-you-expect-luis-requests-beyond-the-quota"></a>クォータを超える LUIS リクエストが予想される場合
 
 LUIS には、Azure リソースの価格レベルに基づいて、月間クォータと 1 秒あたりのクォータがあります。 
 
-お使いの LUIS アプリの要求レートが許可されている[クォータ レート](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)を超えると、次のことができます。
+お使いの LUIS アプリのリクエストレートが許可されている[クォータ レート](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)を超えると、次のことができます。
 
 * [同じアプリ定義](#use-multiple-apps-with-same-app-definition)を使用して、より多くの LUIS アプリに負荷を分散します。 これには、必要に応じて、[コンテナー](luis-container-howto.md)から LUIS を実行することが含まれます。 
 * [複数のキーを作成してアプリに割り当てます](#assign-multiple-luis-keys-to-same-app)。 
