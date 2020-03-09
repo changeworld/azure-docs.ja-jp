@@ -4,11 +4,11 @@ description: Azure Resource Manager を使用して、Azure のリソースを�
 ms.topic: overview
 ms.date: 08/29/2019
 ms.openlocfilehash: f7e11ada8bf10baa99faf08d2b4b401e3bea2d9e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75455866"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78344626"
 ---
 # <a name="azure-resource-manager-overview"></a>Azure Resource Manager の概要
 
@@ -58,7 +58,7 @@ Resource Manager を使用すると、以下のことができます。
 
 Azure には、[管理グループ](../../governance/management-groups/overview.md)、サブスクリプション、[リソース グループ](#resource-groups)、およびリソースという 4 つのレベルのスコープが用意されています。 次の図に、これらのレイヤーの例を示します。
 
-![スコープ](./media/overview/scope-levels.png)
+![Scope](./media/overview/scope-levels.png)
 
 これらのスコープ レベルのいずれかに管理設定を適用します。 選択するレベルで、設定の適用範囲が決まります。 上位レベルの設定が下位レベルに継承されます。 たとえば、サブスクリプションに[ポリシー](../../governance/policy/overview.md)を適用すると、そのポリシーはサブスクリプション内のすべてのリソース グループとリソースに適用されます。 リソース グループにポリシーを適用すると、そのポリシーはリソース グループとそのすべてのリソースに適用されます。 ただし、別のリソース グループにそのポリシー割り当てはありません。
 

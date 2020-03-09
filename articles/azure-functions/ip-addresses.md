@@ -4,11 +4,11 @@ description: 関数アプリの着信 IP アドレスと送信 IP アドレス�
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.openlocfilehash: a1c4174b8f1f2349cbd35c32cbee468ee5b4cd4a
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612889"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356895"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions の IP アドレス
 
@@ -25,7 +25,7 @@ IP アドレスは、個々の関数ではなく、関数アプリに関連付�
 
 各関数アプリには、1 つの着信 IP アドレスがあります。 この IP アドレスを確認するには、次のようにします。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 関数アプリに移動します。
 3. **[プラットフォーム機能]** を選択します。
 4. **[プロパティ]** を選択すると、 **[仮想 IP アドレス]** の下に着信 IP アドレスが表示されます。
@@ -115,7 +115,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 関数アプリが App Service 環境内で実行されるかどうかを確認するには、次のようにします。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 関数アプリに移動します。
 3. **[概要]** タブを選択します。
 4. App Service プランの階層は、 **[App Service プラン/価格レベル]** の下に表示されます。 App Service 環境の価格レベルは、 **[Isolated]** です。

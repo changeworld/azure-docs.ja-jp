@@ -12,11 +12,11 @@ ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 01/21/2020
 ms.openlocfilehash: b9fdd1b25e53e1cdc8aa76564304a61adaa8d804
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201596"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360527"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance とは
 

@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 7/13/2019
 ms.author: rohink
 ms.openlocfilehash: d84a7a908bd3bb5cfb2958a617be437f3b6b154e
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934898"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357671"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Azure DNS を使用して Azure サービス用のカスタム ドメイン設定を提供する
 
@@ -40,7 +40,7 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 |プロパティ  |Value  |説明  |
 |---------|---------|---------|
-|Name     | myfunctionapp        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
+|名前     | myfunctionapp        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
 |Type     | CNAME        | CNAME レコードを別名として使用します。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
@@ -65,7 +65,7 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 |プロパティ  |Value  |説明  |
 |---------|---------|---------|
-|Name     | mywebserver        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
+|名前     | mywebserver        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
 |Type     | A        | リソースは IP アドレスなので、A レコードを使用します。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
@@ -92,7 +92,7 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 |プロパティ  |Value  |説明  |
 |---------|---------|---------|
-|Name     | mywebserver        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
+|名前     | mywebserver        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
 |Type     | CNAME        | CNAME レコードを別名として使用します。 リソースが IP アドレスを使用していた場合、A レコードが使用されます。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
@@ -128,7 +128,7 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 |プロパティ  |Value  |説明  |
 |---------|---------|---------|
-|Name     | asverify.mystorageaccount        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
+|名前     | asverify.mystorageaccount        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
 |Type     | CNAME        | CNAME レコードを別名として使用します。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
@@ -156,7 +156,7 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 |プロパティ  |Value  |説明  |
 |---------|---------|---------|
-|Name     | cdnverify.mycdnendpoint        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
+|名前     | cdnverify.mycdnendpoint        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
 |Type     | CNAME        | CNAME レコードを別名として使用します。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
