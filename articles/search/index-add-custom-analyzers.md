@@ -146,7 +146,7 @@ ms.locfileid: "74113635"
 
 [REST API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) の**アナライザー テスト操作**を使用して、指定したテキストがアナライザーによってどのようにトークンに分割されるかを確認できます。
 
-**要求**
+**Request**
 ```
   POST https://[search service name].search.windows.net/indexes/[index name]/analyze?api-version=[api-version]
   Content-Type: application/json
@@ -157,7 +157,7 @@ ms.locfileid: "74113635"
      "text": "Vis-à-vis means Opposite"
   }
 ```
-**応答**
+**Response**
 ```
   {
     "tokens": [
@@ -240,7 +240,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 |-|-|  
 |Name|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
 |Type|サポートされている文字フィルターの一覧に含まれる文字フィルターの種類です。 下記の[文字フィルター](#char-filters-reference)の表の **char_filter_type** 列をご覧ください。|  
-|オプション|指定した[文字フィルター](#char-filters-reference)の種類で有効なオプションを使用する必要があります。|  
+|Options|指定した[文字フィルター](#char-filters-reference)の種類で有効なオプションを使用する必要があります。|  
 
 ### <a name="tokenizers"></a>トークナイザー
 
@@ -253,7 +253,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 |-|-|  
 |Name|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
 |Type|サポートされているトークナイザーの一覧のトークナイザー名を使用します。 下記の[トークナイザー](#Tokenizers)の表の **tokenizer_type** 列をご覧ください。|  
-|オプション|下記の[トークナイザー](#Tokenizers)の表で示されている特定のトークナイザーの種類の有効なオプションを指定する必要があります。|  
+|Options|下記の[トークナイザー](#Tokenizers)の表で示されている特定のトークナイザーの種類の有効なオプションを指定する必要があります。|  
 
 ### <a name="token-filters"></a>トークン フィルター
 
@@ -264,7 +264,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 |-|-|  
 |Name|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
 |Type|サポートされているトークン フィルターの一覧のトークン フィルター名を使用します。 下記の[トークン フィルター](#TokenFilters)の表の **token_filter_type** 列をご覧ください。|  
-|オプション|特定のトークン フィルターの種類の[トークン フィルター](#TokenFilters)を使用する必要があります。|  
+|Options|特定のトークン フィルターの種類の[トークン フィルター](#TokenFilters)を使用する必要があります。|  
 
 <a name="PropertyReference"></a>  
 
