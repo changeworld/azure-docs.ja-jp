@@ -110,20 +110,18 @@
           href: howto-registration-mfa-sspr-combined-troubleshoot.md
     - name: Azure AD のパスワード保護
       items:
-        - name: オンプレミスの統合
-          items:
-            - name: Azure AD のパスワード保護をデプロイする
-              href: howto-password-ban-bad-on-premises-deploy.md
-            - name: Azure AD のパスワード保護を構成する
-              href: howto-password-ban-bad-on-premises-operations.md
-            - name: Azure AD のパスワード保護を監視する
-              href: howto-password-ban-bad-on-premises-monitor.md
-            - name: Azure AD のパスワード保護をトラブルシューティングする
-              href: howto-password-ban-bad-on-premises-troubleshoot.md
-            - name: よく寄せられる質問
-              href: howto-password-ban-bad-on-premises-faq.md
-            - name: オンプレミスのエージェントのバージョン履歴
-              href: howto-password-ban-bad-on-premises-agent-versions.md
+        - name: オンプレミスでの計画とデプロイ
+          href: howto-password-ban-bad-on-premises-deploy.md
+        - name: オンプレミスでの有効化と構成
+          href: howto-password-ban-bad-on-premises-operations.md
+        - name: オンプレミスのデプロイの監視
+          href: howto-password-ban-bad-on-premises-monitor.md
+        - name: オンプレミスのデプロイのトラブルシューティング
+          href: howto-password-ban-bad-on-premises-troubleshoot.md
+        - name: オンプレミスの FAQ
+          href: howto-password-ban-bad-on-premises-faq.md
+        - name: オンプレミスのエージェントのバージョン履歴
+          href: howto-password-ban-bad-on-premises-agent-versions.md
     - name: Azure AD スマート ロックアウト
       href: howto-password-smart-lockout.md
     - name: パスワードレス

@@ -75,10 +75,10 @@
       href: samples-notebooks.md
     - name: Azure Open Datasets
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
+    - name: デザイナーのデータセット
+      href: sample-designer-datasets.md
     - name: エンドツーエンドの MLOps の例
       href: 'https://github.com/microsoft/MLOps'
-    - name: デザイナー サンプル データセット
-      href: designer-sample-datasets.md
 - name: 概念
   items:
     - name: ワークスペース

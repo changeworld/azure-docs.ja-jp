@@ -24,6 +24,8 @@
           href: hana-data-tiering-extension-nodes.md
         - name: 運用モデルと責任
           href: hana-operations-model.md
+        - name: 互換性のあるオペレーティング システム
+          href: os-compatibility-matrix-hana-large-instance.md
     - name: Architecture
       items:
         - name: 全般的なアーキテクチャ

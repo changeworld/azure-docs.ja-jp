@@ -81,8 +81,12 @@
           href: batch-aad-auth-management.md
         - name: Batch で Key Vault に安全にアクセスする
           href: credential-access-key-vault.md
-    - name: アプリケーション パッケージの使用
-      href: batch-application-packages.md
+    - name: ファイルとアプリケーションをプール ノードにコピーする
+      items:
+        - name: アプリケーション パッケージの使用
+          href: batch-application-packages.md
+        - name: リソース ファイルを作成する
+          href: resource-files.md
     - name: プールの作成と管理
       items:
         - name: 自動スケール コンピューティング ノード
@@ -123,12 +127,12 @@
           href: batch-user-accounts.md
         - name: 多数のタスクを送信する
           href: large-number-tasks.md
+        - name: 効率のためにジョブのスケジュールを設定する
+          href: batch-job-schedule.md
         - name: ジョブとタスクのエラーを確認する
           href: batch-job-task-error-checking.md
-        - name: Batch サービスのエラーの検出と処理
+        - name: Batch サービス エラーの検出と処理
           href: batch-retry-after-errors.md
-    - name: リソース ファイルを作成する
-      href: resource-files.md
     - name: ジョブとタスク出力を保持する
       href: batch-task-output.md
       items:

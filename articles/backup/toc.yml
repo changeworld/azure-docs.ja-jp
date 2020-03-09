@@ -142,10 +142,16 @@
       items:
         - name: 概要
           href: backup-azure-about-mars.md
+        - name: インストールまたはアップグレード
+          items:
+            - name: MARS エージェントのインストール
+              href: install-mars-agent.md
+            - name: MARS エージェントのアップグレード
+              href: upgrade-mars-agent.md
         - name: バックアップ
           items:
             - name: Windows Server のファイルとフォルダーのバックアップ
-              href: backup-configure-vault.md
+              href: backup-windows-with-mars-agent.md
             - name: Windows Server のシステム状態のバックアップ
               href: backup-azure-system-state.md
         - name: 復元

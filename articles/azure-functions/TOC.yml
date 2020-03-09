@@ -50,6 +50,8 @@
       href: /learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr
     - name: TensorFlow を使用した機械学習
       href: functions-machine-learning-tensorflow.md
+    - name: PyTorch を使用した画像の分類
+      href: machine-learning-pytorch.md
     - name: カスタム Linux イメージの作成
       href: functions-create-function-linux-custom-image.md
     - name: IoT Edge デバイス上の Functions

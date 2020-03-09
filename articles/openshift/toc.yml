@@ -35,8 +35,8 @@
           href: howto-aad-app-configuration.md
     - name: Azure Red Hat OpenShift クラスターでスタンドアロンの Prometheus をデプロイする
       href: howto-deploy-prometheus.md
-    - name: Azure Red Hat OpenShift クラスター内でプロジェクトを管理する
-      href: howto-manage-projects.md
+    - name: プライベートの Azure Red Hat OpenShift クラスターの作成
+      href: howto-create-private-cluster.md
     - name: 監視およびログ記録
       items:
         - name: Azure Monitor for containers (プレビュー)

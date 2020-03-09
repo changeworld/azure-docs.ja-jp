@@ -193,10 +193,8 @@
           items:
             - name: Text to Speech REST API
               href: rest-text-to-speech.md
-        - name: 音素セットの使用
-          items:
-            - name: Speech API (SAPI) の音素セットの使用
-              href: sapi-phoneset-usage.md
+        - name: SSML 音素セット
+          href: speech-ssml-phonetic-sets.md
     - name: リソース
       items:
         - name: 音声テキスト変換のよくあるご質問
@@ -494,19 +492,14 @@
           href: speech-devices-sdk.md
         - name: Speech Devices SDK を取得する
           href: get-speech-devices-sdk.md
-        - name: リリース ノート
-          href: devices-sdk-release-notes.md
-        - name: Roobo v1 の詳細
-          href: speech-devices-sdk-roobo-v1.md
-        - name: Roobo v2 の詳細
-          href: speech-devices-sdk-roobo-v2.md
-        - name: マイクの仕様
     - name: ハードウェア
       items:
         - name: マイク配列の推奨事項
           href: speech-devices-sdk-microphone.md
-        - name: Roobo v1 キット
+        - name: Roobo v1 の詳細
           href: speech-devices-sdk-roobo-v1.md
+        - name: Roobo v2 の詳細
+          href: speech-devices-sdk-roobo-v2.md
     - name: クイック スタート
       items:
         - name: Speech Devices SDK を使用する

@@ -165,6 +165,22 @@
               href: map-get-information-from-coordinate.md
             - name: A から B までのルートを表示する
               href: map-route.md
+        - name: 空間 IO モジュール
+          items:
+            - name: 空間 IO モジュールの使用
+              href: how-to-use-spatial-io-module.md
+            - name: シンプルなデータ レイヤーの追加
+              href: spatial-io-add-simple-data-layer.md
+            - name: 空間データの読み取りと書き込み
+              href: spatial-io-read-write-spatial-data.md
+            - name: OGC マップ レイヤーの追加
+              href: spatial-io-add-ogc-map-layer.md
+            - name: WFS サービスへの接続
+              href: spatial-io-connect-wfs-service.md
+            - name: コア操作の活用
+              href: spatial-io-core-operations.md
+            - name: サポートされるデータ形式の詳細
+              href: spatial-io-supported-data-format-details.md
         - name: Web SDK でサポートされているブラウザー
           href: supported-browsers.md
     - name: Android SDK を使った開発

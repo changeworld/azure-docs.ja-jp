@@ -30,6 +30,8 @@
       href: create-private-endpoint-storage-portal.md
     - name: Cosmos DB アカウントに非公開で接続する
       href: create-private-endpoint-cosmosdb-portal.md
+    - name: Web アプリに非公開で接続する
+      href: create-private-endpoint-webapp-portal.md
     - name: プライベート エンドポイントのネットワーク ポリシーを無効にする
       href: disable-private-endpoint-network-policy.md
     - name: Private Link サービスのネットワーク ポリシーを無効にする
