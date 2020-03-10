@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: d41fd7f66ecef3a563345424d7dc4366e47d3f0e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226559"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356106"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions でのトリガーとバインドの概念
 
@@ -88,6 +88,6 @@ JavaScript などの動的に型指定される言語の場合は、*function.js
   - [HTTP によってトリガーされない関数を手動で実行する](functions-manually-run-non-http.md)
 - [バインド エラーの処理](./functions-bindings-errors.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [Azure Functions バインド拡張機能を登録する](./functions-bindings-register.md)
