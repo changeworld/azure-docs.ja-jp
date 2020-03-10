@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: e98655dca7d682e5c42f3b0ae7f26c892bd12377
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: c64d87b2430cc1d733a67bbc1e803590a37b1714
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76710708"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190774"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>チュートリアル:Python および TensorFlow を使用して Azure Functions で機械学習モデルを適用する
 
@@ -59,7 +59,7 @@ ms.locfileid: "76710708"
 *start* フォルダーに移動して、次のコマンドを実行し、`.venv` という名前の仮想環境を作成してアクティブにします。 必ず、Azure Functions でサポートされている Python 3.7 を使用してください。
 
 
-# <a name="bashtabbash"></a>[bash](#tab/bash)
+# <a name="bash"></a>[bash](#tab/bash)
 
 ```bash
 cd start
@@ -79,7 +79,7 @@ source .venv/bin/activate
 sudo apt-get install python3-venv
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 cd start
@@ -93,7 +93,7 @@ py -m venv .venv
 .venv\scripts\activate
 ```
 
-# <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+# <a name="cmd"></a>[Cmd](#tab/cmd)
 
 ```cmd
 cd start
@@ -133,7 +133,7 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
     func new --name classify --template "HTTP trigger"
     ```
 
-    このコマンドによって、関数の名前 (*classify*) と同じ名前のフォルダーが作成されます。 このフォルダーには 2 つのファイルが格納されています。1 つは関数コードが含まれている *\_\_init\_\_.py* で、もう 1 つは関数のトリガーとその入出力バインドを記述した *function.json* です。 これらのファイルの内容の詳細については、[「Azure で HTTP によってトリガーされる Python 関数を作成する」の「ファイルの内容の確認」](functions-create-first-function-python.md#optional-examine-the-file-contents)を参照してください。
+    このコマンドによって、関数の名前 (*classify*) と同じ名前のフォルダーが作成されます。 このフォルダーには 2 つのファイルが格納されています。1 つは関数コードが含まれている *\_\_init\_\_.py* で、もう 1 つは関数のトリガーとその入出力バインドを記述した *function.json* です。 これらのファイルのコンテンツの詳細については、Python クイックスタートの「[ファイルの内容を確認する](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#optional-examine-the-file-contents)」を参照してください。
 
 
 ## <a name="run-the-function-locally"></a>関数をローカルで実行する
@@ -158,19 +158,19 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
 
 1. *start* フォルダーで次のコマンドを実行して、モデル ファイルを *classify* フォルダーにコピーします。 コマンドには、必ず `\*` を含めてください。 
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     cp ../resources/model/* classify
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     copy ..\resources\model\* classify
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     copy ..\resources\model\* classify
@@ -182,19 +182,19 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
 
 1. *start* フォルダーで次のコマンドを実行して、ヘルパー コードが含まれるファイルを *classify* フォルダーにコピーします。
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     cp ../resources/predict.py classify
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     copy ..\resources\predict.py classify
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     copy ..\resources\predict.py classify
@@ -266,19 +266,19 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
 
 1. Python で HTTP サーバーを起動します。
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
 
     ```bash 
     python -m http.server
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
     ```powershell
     py -m http.server
     ```
 
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
 
     ```cmd
     py -m http.server

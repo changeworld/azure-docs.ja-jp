@@ -6,15 +6,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 02/24/2020
+ms.date: 02/26/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 81d69f2274abf075be2f97b0edc67af2eea62327
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: b7c4bac7523cdec36beac64e2cd204588b0935fb
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77614472"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155447"
 ---
 <a name="HOLTop"></a>
 
@@ -32,8 +32,9 @@ ms.locfileid: "77614472"
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
 * [Visual Studio IDE](https://visualstudio.microsoft.com/vs/)
-
-[!INCLUDE [text-analytics-resource-creation](resource-creation.md)]
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Text Analytics リソースを作成"  target="_blank">Text Analytics リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 
+    * アプリケーションを Text Analytics API に接続するには、作成するリソースのキーとエンドポイントが必要です。 この作業は、このクイックスタートの中で後から行います。
+    * Free 価格レベルを使ってサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
 
 ## <a name="setting-up"></a>設定
 
@@ -44,6 +45,20 @@ Visual Studio IDE を使用して新しい .NET Core コンソール アプリ�
 #### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
 
 **ソリューション エクスプローラー**でソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールします。 パッケージ マネージャーが開いたら、 **[参照]** を選択し、 **[プレリリースを含める]** をオンにして、`Azure.AI.TextAnalytics` を検索します。 バージョン `1.0.0-preview.2` を選択し、 **[インストール]** を選択します。 [パッケージ マネージャー コンソール](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)を使用してもかまいません。
+
+> [!TIP]
+> クイックスタートのコード ファイル全体を一度に見たい場合は、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/TextAnalytics/program.cs) にアクセスしてください。このクイックスタートのコード例が掲載されています。 You can find it <bpt id="p1">[</bpt>on GitHub<ept id="p1">](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/TextAnalytics/program.cs)</ept>, which contains the code examples in this quickstart. 
+
+#### <a name="version-21"></a>[バージョン 2.1](#tab/version-2)
+
+**ソリューション エクスプローラー**でソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールします。 パッケージ マネージャーが開いたら、 **[参照]** を選択して `Microsoft.Azure.CognitiveServices.Language.TextAnalytics` を検索します。 それをクリックして **[インストール]** をクリックします。 [パッケージ マネージャー コンソール](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)を使用してもかまいません。
+
+> [!TIP]
+> クイックスタートのコード ファイル全体を一度に見たい場合は、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/TextAnalytics/program.cs) にアクセスしてください。このクイックスタートのコード例が掲載されています。 You can find it <bpt id="p1">[</bpt>on GitHub<ept id="p1">](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/samples/TextAnalytics/synchronous/Program.cs)</ept>, which contains the code examples in this quickstart. 
+
+---
+
+#### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
 
 *program.cs* ファイルを開き、次の `using` ディレクティブを追加します。
 
@@ -82,8 +97,6 @@ static void Main(string[] args)
 ```
 
 #### <a name="version-21"></a>[バージョン 2.1](#tab/version-2)
-
-**ソリューション エクスプローラー**でソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールします。 パッケージ マネージャーが開いたら、 **[参照]** を選択して `Microsoft.Azure.CognitiveServices.Language.TextAnalytics` を検索します。 それをクリックして **[インストール]** をクリックします。 [パッケージ マネージャー コンソール](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)を使用してもかまいません。
 
 *program.cs* ファイルを開き、次の `using` ディレクティブを追加します。
 
@@ -167,7 +180,7 @@ static void SentimentAnalysisExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Document sentiment: Positive
@@ -220,7 +233,7 @@ static void LanguageDetectionExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Language:
@@ -236,7 +249,7 @@ Language:
 
 [!code-csharp[Language Detection example](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=languageDetection)]
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Language: English
@@ -270,7 +283,7 @@ static void EntityRecognitionExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Named Entities:
@@ -299,7 +312,7 @@ static void EntityPIIExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Personally Identifiable Information Entities:
@@ -335,7 +348,7 @@ static void EntityLinkingExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Linked Entities:
@@ -409,7 +422,7 @@ static void KeyPhraseExtractionExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Key phrases:
@@ -424,7 +437,7 @@ Key phrases:
 [!code-csharp[Key phrase extraction example](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=keyPhraseExtraction)]
 
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Key phrases:

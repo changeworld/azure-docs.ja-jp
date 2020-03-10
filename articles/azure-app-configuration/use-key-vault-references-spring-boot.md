@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 17d86f25de6eecee535d6f812f4ef0b078a4b6db
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d1fb963753577e9518d93262f9c9c7a1cf984005
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75752498"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656009"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>チュートリアル:Java Spring アプリで Key Vault 参照を使用する
 
@@ -43,9 +43,9 @@ App Configuration に格納されているその他のキーの場合と同様�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを開始する前に、[.NET Core SDK](https://dotnet.microsoft.com/download) をインストールします。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+* Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
+* バージョン 8 を含む、サポートされている [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk)。
+* [Apache Maven](https://maven.apache.org/download.cgi) バージョン 3.0 以降。
 
 ## <a name="create-a-vault"></a>コンテナーの作成
 
@@ -56,12 +56,12 @@ App Configuration に格納されているその他のキーの場合と同様�
 1. 結果リストで、左側の **[キー コンテナー]** を選択します。
 1. **[キー コンテナー]** で、 **[追加]** を選択します。
 1. **[キー コンテナーの作成]** の右側に、次の情報を入力します。
-    - **[サブスクリプション]** を選択してサブスクリプションを選択します。
-    - **[リソース グループ]** で、 **[新規作成]** を選択し、リソース グループの名前を入力します。
-    - **[キー コンテナー名]** では、一意の名前が必要です。 このチュートリアルでは、「**Contoso-vault2**」と入力します。
-    - **[リージョン]** ドロップダウン リストで、場所を選択します。
+    * **[サブスクリプション]** を選択してサブスクリプションを選択します。
+    * **[リソース グループ]** で、 **[新規作成]** を選択し、リソース グループの名前を入力します。
+    * **[キー コンテナー名]** では、一意の名前が必要です。 このチュートリアルでは、「**Contoso-vault2**」と入力します。
+    * **[リージョン]** ドロップダウン リストで、場所を選択します。
 1. **[キー コンテナーの作成]** オプションは既定値のままにしておきます。
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 この時点で、お使いの Azure アカウントが、この新しいコンテナーへのアクセスが承認されている唯一のアカウントになります。
 
@@ -74,23 +74,23 @@ App Configuration に格納されているその他のキーの場合と同様�
 1. Key Vault のプロパティ ページで、 **[シークレット]** を選択します。
 1. **[Generate/Import]\(生成/インポート\)** を選択します。
 1. **[シークレットの作成]** ウィンドウで、次の値を入力します。
-    - **[アップロード オプション]** :「**Manual**」と入力します。
-    - **Name**:「**Message**」と入力します。
-    - **値**: 「**Hello from Key Vault**」と入力します。
+    * **[アップロード オプション]** :「**Manual**」と入力します。
+    * **Name**:「**Message**」と入力します。
+    * **値**: 「**Hello from Key Vault**」と入力します。
 1. **[シークレットの作成]** の他のプロパティは既定値のままにしておきます。
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>App Configuration に Key Vault 参照を追加する
 
-1. [Azure portal](https://portal.azure.com) にサインインする **[すべてのリソース]** を選択し、クイック スタートで作成した App Configuration ストア インスタンスを選択します。
+1. [Azure portal](https://portal.azure.com) にサインインします。 **[すべてのリソース]** を選択し、クイック スタートで作成した App Configuration ストア インスタンスを選択します。
 
 1. **[構成エクスプローラー]** を選択します。
 
 1. **[+ 作成]** 、 **[キー コンテナー参照]** の順に選択し、次の値を指定します。
-    - **[キー]** : **[/application/config.keyvaultmessage]** を選択します。
-    - **ラベル**:この値は空白のままにしておきます。
-    - **[サブスクリプション]** 、 **[リソース グループ]** 、 **[キー コンテナー]** : 前のセクションで作成したキー コンテナーの値に対応する値を入力します。
-    - **[シークレット]** : 前のセクションで作成した、**Message** という名前のシークレットを選択します。
+    * **[キー]** : **[/application/config.keyvaultmessage]** を選択します。
+    * **ラベル**:この値は空白のままにしておきます。
+    * **[サブスクリプション]** 、 **[リソース グループ]** 、 **[キー コンテナー]** : 前のセクションで作成したキー コンテナーの値に対応する値を入力します。
+    * **[シークレット]** : 前のセクションで作成した、**Message** という名前のシークレットを選択します。
 
 ## <a name="connect-to-key-vault"></a>Key Vault に接続する
 
@@ -119,8 +119,15 @@ App Configuration に格納されているその他のキーの場合と同様�
 
 1. 次のコマンドを実行して、サービス プリンシパルがキー コンテナーにアクセスできるようにします。
 
+    ```console
+    az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get
     ```
-    az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
+
+1. 次のコマンドを実行して object-id を取得し、それを App Configuration に追加します。
+
+    ```console
+    az ad sp show --id <clientId-of-your-service-principal>
+    az role assignment create --role "App Configuration Data Reader" --assignee-object-id <objectId-of-your-service-principal> --resource-group <your-resource-group>
     ```
 
 1. 前の手順で表示されたサービス プリンシパルの値を使用して次の環境変数を作成します。
@@ -130,7 +137,7 @@ App Configuration に格納されているその他のキーの場合と同様�
     * **AZURE_TENANT_ID**: *tenantId*
 
 > [!NOTE]
-> これらの Key Vault 資格情報は、お使いのアプリケーション内でのみ使用されます。 アプリケーションは、これらの資格情報を使用して Key Vault に直接認証されます。 これらが App Configuration サービスに渡されることはありません。
+> これらの Key Vault 資格情報は、お使いのアプリケーション内でのみ使用されます。  アプリケーションの認証は、App Configuration サービスを必要とせず、これらの資格情報を使用して Key Vault に対して直接行われます。  Key Vault は、キーを共有したり公開したりすることなく、アプリケーションと App Configuration サービスの両方の認証を提供します。
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>Key Vault 参照を使用するようコードを更新する
 
@@ -157,17 +164,73 @@ App Configuration に格納されているその他のキーの場合と同様�
     }
     ```
 
+1. *AzureCredentials.java* という新しいファイルを作成し、次のコードを追加します。
+
+    ```java
+    package com.example;
+
+    import com.azure.core.credential.TokenCredential;
+    import com.azure.identity.EnvironmentCredentialBuilder;
+    import com.microsoft.azure.spring.cloud.config.AppConfigurationCredentialProvider;
+    import com.microsoft.azure.spring.cloud.config.KeyVaultCredentialProvider;
+
+    public class AzureCredentials implements AppConfigurationCredentialProvider, KeyVaultCredentialProvider{
+
+        @Override
+        public TokenCredential getKeyVaultCredential(String uri) {
+            return getCredential();
+        }
+
+        @Override
+        public TokenCredential getAppConfigCredential(String uri) {
+            return getCredential();
+        }
+
+        private TokenCredential getCredential() {
+            return new EnvironmentCredentialBuilder().build();
+        }
+
+    }
+    ```
+
+1. *AppConfiguration.java* という新しいファイルを作成します。 さらに、次のコードを追加します。
+
+    ```java
+    package com.example;
+
+    import org.springframework.context.annotation.Bean;
+    import org.springframework.context.annotation.Configuration;
+
+    @Configuration
+    public class AppConfiguration {
+
+        @Bean
+        public AzureCredentials azureCredentials() {
+            return new AzureCredentials();
+        }
+    }
+    ```
+
+1. リソースの META-INF ディレクトリに、*spring.factories* という新しいファイルを作成し、次のコードを追加します。
+
+    ```factories
+    org.springframework.cloud.bootstrap.BootstrapConfiguration=\
+    com.example.AppConfiguration
+    ```
+
 1. Spring Boot アプリケーションを Maven でビルドし、実行します。次に例を示します。
 
     ```shell
     mvn clean package
     mvn spring-boot:run
     ```
+
 1. アプリケーションが実行されたら、*curl* を使用してアプリケーションをテストできます。次に例を示します。
 
       ```shell
       curl -X GET http://localhost:8080/
       ```
+
     App Configuration ストアに入力したメッセージが表示されます。 Key Vault に入力したメッセージも表示されます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
