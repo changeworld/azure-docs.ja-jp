@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 9d9033689472fbc462eefd3d31c2b36a19add81a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 45cb07de9ddc7854e6da8b8739acfaa95dd0ed01
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589472"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304125"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>NAT ゲートウェイ リソースを使用した仮想ネットワークの設計 (パブリック プレビュー)
 
@@ -34,7 +34,7 @@ NAT ゲートウェイ リソースは、[Virtual Network NAT](nat-overview.md) 
 
 
 >[!NOTE] 
->Virtual Network NAT は、現時点ではパブリック プレビューとして提供されています。 現在は、ご利用いただける[リージョン](nat-overview.md#region-availability)が限られています。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.comsupport/legal/preview-supplemental-terms)」をご覧ください。
+>Virtual Network NAT は、現時点ではパブリック プレビューとして提供されています。 現在は、ご利用いただける[リージョン](nat-overview.md#region-availability)が限られています。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms)」をご覧ください。
 
 ## <a name="how-to-deploy-nat"></a>NAT をデプロイする方法
 
@@ -349,21 +349,25 @@ SNAT ポートは、同じ送信先 IP アドレスおよび同じ送信先ポ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Virtual Network NAT](nat-overview.md) について理解を深める。
-- NAT ゲートウェイを検証するためのチュートリアル
-  * [Azure CLI](tutorial-create-validate-nat-gateway-cli.md)
-  * [PowerShell](tutorial-create-validate-nat-gateway-cli.md)
-  * [ポータル](tutorial-create-validate-nat-gateway-cli.md)
-- NAT ゲートウェイ リソースをデプロイするためのクイックスタート
-  * [Azure CLI](./quickstart-create-nat-gateway-cli.md)
-  * [PowerShell](./quickstart-create-nat-gateway-powershell.md)
-  * [ポータル](./quickstart-create-nat-gateway-portal.md)
-- [可用性ゾーン](../availability-zones/az-overview.md)について理解を深める。
-- [Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md) について理解を深める。
-- [可用性ゾーンと Standard Load Balancer](../load-balancer/load-balancer-standard-availability-zones.md) について理解を深める。
-- NAT ゲートウェイ リソース API について理解を深める。
-  * [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
-  * [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)
-  * [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)。
-- [UserVoice で新機能を提案する](https://aka/natuservoice)。
-- [パブリック プレビューに関するフィードバックを送る](https://aka.ms/natfeedback)。
+* [仮想ネットワーク NAT](nat-overview.md) について学習する。
+* [NAT ゲートウェイ リソースのメトリックとアラート](nat-metrics.md)について学習する。
+* [NAT ゲートウェイ リソースのトラブルシューティング](troubleshoot-nat.md)について学習する。
+* [UserVoice で新機能を提案する](https://aka.ms/natuservoice)。
+* [パブリック プレビューに関するフィードバックを送る](https://aka.ms/natfeedback)。
+* NAT ゲートウェイを検証するためのチュートリアル
+  - [Azure CLI](tutorial-create-validate-nat-gateway-cli.md)
+  - [PowerShell](tutorial-create-validate-nat-gateway-cli.md)
+  - [ポータル](tutorial-create-validate-nat-gateway-cli.md)
+* NAT ゲートウェイ リソースをデプロイするためのクイックスタート
+  - [Azure CLI](./quickstart-create-nat-gateway-cli.md)
+  - [PowerShell](./quickstart-create-nat-gateway-powershell.md)
+  - [ポータル](./quickstart-create-nat-gateway-portal.md)
+* NAT ゲートウェイ リソース API について学習する
+  - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
+  - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)
+  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)。
+* [可用性ゾーン](../availability-zones/az-overview.md)について学習する。
+* [Standard Load Balancer ](../load-balancer/load-balancer-standard-overview.md) について学習する。
+* [可用性ゾーンと Standard Load Balancer](../load-balancer/load-balancer-standard-availability-zones.md) について学習する。
+
+

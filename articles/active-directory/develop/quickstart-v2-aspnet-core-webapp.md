@@ -12,19 +12,15 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c11f7daf68585d63d19fca282ef2f4a306303ac7
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 72c363c34a3e7e01cb32917dd87237e4bbfc9490
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160731"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249144"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>クイック スタート:ASP.NET Core Web アプリに Microsoft サインインを追加する
-
-このクイック スタートでは、ASP.NET Core Web アプリで、(hotmail.com、outlook.com などの) 個人アカウント、また職場や学校のアカウントを任意の Azure Active Directory (Azure AD) インスタンスからサインインさせる方法を学びます。
-
-![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro.svg)
-
+このクイックスタートでは、ASP.NET Core Web アプリで、(hotmail.com、outlook.com などの) 個人アカウント、また職場や学校のアカウントを任意の Azure Active Directory (Azure AD) インスタンスからサインインさせる方法を、コード サンプルを使用して学びます。 (図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください)。
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>クイック スタート アプリを登録してダウンロードする
 > クイック スタート アプリケーションを開始する方法としては、次の 2 つの選択肢があります。
@@ -66,22 +62,32 @@ ms.locfileid: "77160731"
 
 #### <a name="step-2-download-your-aspnet-core-project"></a>手順 2:ASP.NET Core プロジェクトのダウンロード
 
-- [Visual Studio 2019 ソリューションのダウンロード](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
-
-#### <a name="step-3-configure-your-visual-studio-project"></a>手順 3:Visual Studio プロジェクトの構成
-
-1. ルート フォルダー内のローカル フォルダー (例: **C:\Azure-Samples**) に ZIP ファイルを展開します。
-1. Visual Studio 2019 を使用する場合は、Visual Studio でソリューションを開きます (任意)。
-1. **appsettings.json** ファイルを編集します。 `ClientId` を探し、`ClientId` の値を、登録済みのアプリケーションの**アプリケーション (クライアント) ID** 値で更新します。 
-
-    ```json
-    "ClientId": "Enter_the_Application_Id_here"
-    "TenantId": "Enter_the_Tenant_Info_Here"
-    ```
+> [!div renderon="docs"]
+> [Visual Studio 2019 ソリューションのダウンロード](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
+> Visual Studio 2019 を使用してプロジェクトを実行します。
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [コード サンプルをダウンロードします]()
+
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>手順 3:アプリが構成され、実行準備ができる
+> アプリのプロパティの値を使用してプロジェクトを構成したら、実行する準備は完了です。 
+> [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > このクイックスタートは、Enter_the_Supported_Account_Info_Here をサポートしています。
+> > Enter_the_Supported_Account_Info_Here
+> [!div renderon="docs"]
+> #### <a name="step-3-run-your-visual-studio-project"></a>手順 3:Visual Studio プロジェクトを実行する
+> 1. ルート フォルダー内のローカル フォルダー (例: **C:\Azure-Samples**) に ZIP ファイルを展開します。
+> 1. Visual Studio でソリューションを開きます。 
+> 1. **appsettings.json** ファイルを編集します。 `ClientId` を探し、`ClientId` の値を、登録済みのアプリケーションの**アプリケーション (クライアント) ID** 値で更新します。 
+>
+>    ```json
+>    "ClientId": "Enter_the_Application_Id_here"
+>    "TenantId": "Enter_the_Tenant_Info_Here"
+>    ```
+
+
 
 > [!div renderon="docs"]
 > 各値の説明:
@@ -97,6 +103,9 @@ ms.locfileid: "77160731"
 ## <a name="more-information"></a>詳細情報
 
 このセクションでは、ユーザーをサインインさせるために必要なコードの概要を示します。 この概要、コードの機能や主な引数について理解するために、また、既存の ASP.NET Core アプリケーションにサインインを追加する場合にも役立ちます。
+
+### <a name="how-the-sample-works"></a>このサンプルのしくみ
+![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro.svg)
 
 ### <a name="startup-class"></a>スタートアップ クラス
 

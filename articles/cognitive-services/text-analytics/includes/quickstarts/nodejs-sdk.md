@@ -6,15 +6,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 01/13/2020
+ms.date: 02/26/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: dd8f8e415f2e83b6f08aa00953e42daecead7652
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 9f4c5e8d491bcff420e354657ff7302a22cd7583
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77371954"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155519"
 ---
 <a name="HOLTop"></a>
 
@@ -33,8 +33,9 @@ ms.locfileid: "77371954"
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
 * 最新バージョンの [Node.js](https://nodejs.org/)。
-
-[!INCLUDE [text-analytics-resource-creation](resource-creation.md)]
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Text Analytics リソースを作成"  target="_blank">Text Analytics リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 
+    * アプリケーションを Text Analytics API に接続するには、作成するリソースのキーとエンドポイントが必要です。 この作業は、このクイックスタートの中で後から行います。
+    * Free 価格レベルを使ってサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
 
 ## <a name="setting-up"></a>設定
 
@@ -175,7 +176,7 @@ sentimentAnalysis(textAnalyticsClient)
 
 コンソール ウィンドウで `node index.js` を使用してコードを実行します。
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 ID: 0
@@ -201,7 +202,7 @@ ID: 0
 
 コンソール ウィンドウで `node index.js` を使用してコードを実行します。
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 [ { id: '1', score: 0.87 } ]
@@ -236,7 +237,7 @@ languageDetection(textAnalyticsClient);
 
 コンソール ウィンドウで `node index.js` を使用してコードを実行します。
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 ID: 0
@@ -251,7 +252,7 @@ ID: 0
 
 コンソール ウィンドウで `node index.js` を使用してコードを実行します。
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Document ID: 1 , Language: English
@@ -294,7 +295,7 @@ entityRecognition(textAnalyticsClient);
 
 コンソール ウィンドウで `node index.js` を使用してコードを実行します。
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Document ID: 0
@@ -346,7 +347,7 @@ entityPiiRecognition(textAnalyticsClient);
 
 コンソール ウィンドウで `node index.js` を使用してコードを実行します。
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Document ID: 0
@@ -383,7 +384,7 @@ linkedEntityRecognition(textAnalyticsClient);
 
 コンソール ウィンドウで `node index.js` を使用してコードを実行します。
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Document ID: 0
@@ -428,7 +429,7 @@ Document ID: 0
 
 コンソール ウィンドウで `node index.js` を使用してコードを実行します。
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Document ID: 1
@@ -484,7 +485,7 @@ keyPhraseExtraction(textAnalyticsClient);
 
 コンソール ウィンドウで `node index.js` を使用してコードを実行します。
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 ID: 0
@@ -499,7 +500,7 @@ ID: 0
 
 コンソール ウィンドウで `node index.js` を使用してコードを実行します。
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 [

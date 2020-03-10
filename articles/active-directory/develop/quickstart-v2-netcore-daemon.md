@@ -13,18 +13,16 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6f7e2380bff7d6d3e6fafd1b3d44b65de972e57d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: e42be651de6fc70f5fe075a1bc1bee8010b886d7
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703390"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274348"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>クイック スタート:トークンを取得し、コンソール アプリの ID を使用して Microsoft Graph API を呼び出す
 
-このチュートリアルでは、アプリ自体の ID を使用してアクセス トークンを取得した後、Microsoft Graph API を呼び出して、ディレクトリ内の[ユーザーの一覧](https://docs.microsoft.com/graph/api/user-list)を表示する .NET Core アプリケーションを記述する方法について説明します。 このシナリオは、オペレーターがいない無人のジョブや、ユーザーの ID ではなくアプリケーション ID を使用して実行する必要がある Windows サービスがある状況で役立ちます。
-
-![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
+このチュートリアルでは、アプリ自体の ID を使用してアクセス トークンを取得した後、Microsoft Graph API を呼び出して、ディレクトリ内の[ユーザーの一覧](https://docs.microsoft.com/graph/api/user-list)を表示する .NET Core アプリケーションを記述する方法について説明します。 このシナリオは、オペレーターがいない無人のジョブや、ユーザーの ID ではなくアプリケーション ID を使用して実行する必要がある Windows サービスがある状況で役立ちます。 (図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください)。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -74,37 +72,44 @@ ms.locfileid: "76703390"
 
 #### <a name="step-2-download-your-visual-studio-project"></a>手順 2:Visual Studio プロジェクトをダウンロードする
 
-[Visual Studio プロジェクトをダウンロードする](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
+> [!div renderon="docs"]
+> [Visual Studio プロジェクトをダウンロードする](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>手順 3:Visual Studio プロジェクトの構成
+> [!div class="sxs-lookup" renderon="portal"]
+> Visual Studio 2019 を使用してプロジェクトを実行します。
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [コード サンプルをダウンロードします](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
 
-1. ディスクのルートに近いローカル フォルダー (例: **C:\Azure-Samples**) に zip ファイルを展開します。
-1. Visual Studio でソリューション **1-Call-MSGraph\daemon-console.sln** を開きます (省略可能)。
-1. **appsettings.json** を編集し、`ClientId`、`Tenant`、および `ClientSecret` フィールドの値を次のように置き換えます。
-
-    ```json
-    "Tenant": "Enter_the_Tenant_Id_Here",
-    "ClientId": "Enter_the_Application_Id_Here",
-    "ClientSecret": "Enter_the_Client_Secret_Here"
-    ```
-    > > [!div renderon="portal" id="certandsecretspage" class="sxs-lookup"]
-    > > [新しいクライアント シークレットを生成する]()
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > Enter_the_Supported_Account_Info_Here
     
-    > [!div class="sxs-lookup" renderon="portal"]
-    > > [!NOTE]
-    > > このクイックスタートは、Enter_the_Supported_Account_Info_Here をサポートしています。
-    
-    > [!div renderon="docs"]
-    >> 各値の説明:
-    >> * `Enter_the_Application_Id_Here` - 登録したアプリケーションの**アプリケーション (クライアント) ID**。
-    >> * `Enter_the_Tenant_Id_Here` - この値を**テナント ID** または**テナント名** (例: contoso.microsoft.com) に置き換えます。
-    >> * `Enter_the_Client_Secret_Here` - この値を手順 1 で作成されたクライアント シークレットに置き換えます。
+> [!div renderon="docs"]
+> #### <a name="step-3-configure-your-visual-studio-project"></a>手順 3:Visual Studio プロジェクトの構成
+> 
+> 1. ディスクのルートに近いローカル フォルダー (例: **C:\Azure-Samples**) に zip ファイルを展開します。
+> 1. Visual Studio でソリューション **1-Call-MSGraph\daemon-console.sln** を開きます (省略可能)。
+> 1. **appsettings.json** を編集し、`ClientId`、`Tenant`、および `ClientSecret` フィールドの値を次のように置き換えます。
+> 
+>    ```json
+>    "Tenant": "Enter_the_Tenant_Id_Here",
+>    "ClientId": "Enter_the_Application_Id_Here",
+>    "ClientSecret": "Enter_the_Client_Secret_Here"
+>    ```
+>   各値の説明:
+>   - `Enter_the_Application_Id_Here` - 登録したアプリケーションの**アプリケーション (クライアント) ID**。
+>   - `Enter_the_Tenant_Id_Here` - この値を**テナント ID** または**テナント名** (例: contoso.microsoft.com) に置き換えます。
+>   - `Enter_the_Client_Secret_Here` - この値を手順 1 で作成されたクライアント シークレットに置き換えます。
 
-    > [!div renderon="docs"]
-    > > [!TIP]
-    > > **アプリケーション (クライアント) ID** と**ディレクトリ (テナント) ID** の値を見つけるには、Azure portal 上でアプリの **[概要]** ページに移動します。 新しいキーを生成するには、 **[証明書とシークレット]** ページに移動します。
-    
-#### <a name="step-4-admin-consent"></a>手順 4:管理者の同意
+> [!div renderon="docs"]
+> > [!TIP]
+> > **アプリケーション (クライアント) ID** と**ディレクトリ (テナント) ID** の値を見つけるには、Azure portal 上でアプリの **[概要]** ページに移動します。 新しいキーを生成するには、 **[証明書とシークレット]** ページに移動します。
+
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-admin-consent"></a>手順 3:管理者の同意
+
+> [!div renderon="docs"]
+> #### <a name="step-4-admin-consent"></a>手順 4:管理者の同意
 
 この時点でアプリケーションを実行すると、*HTTP 403 - Forbidden* エラー "`Insufficient privileges to complete the operation`" が表示されます。 これは、すべての "*アプリ専用のアクセス許可*" には管理者の同意が必要であるために発生します。これは、ディレクトリのグローバル管理者にお使いのアプリケーションに同意してもらう必要があることを意味します。 ご自身のロールに応じて、次のオプションのいずれかを選択します。
 
@@ -134,7 +139,11 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 > [!NOTE]
 > 前の URL を使用してアプリに同意を与えた後でエラー "*AADSTS50011:No reply address is registered for the application*" (AADSTS50011: アプリケーションの応答アドレスが登録されていません) が表示される場合があります。 これは、このアプリケーションと URL にはリダイレクト URI がないために発生します。このエラーは無視してください。
 
-#### <a name="step-5-run-the-application"></a>手順 5:アプリケーションの実行
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-4-run-the-application"></a>手順 4:アプリケーションの実行
+
+> [!div renderon="docs"]
+> #### <a name="step-5-run-the-application"></a>手順 5:アプリケーションの実行
 
 Visual Studio を使用している場合は、**F5** キーを押してアプリケーションを実行します。それ以外の場合は、コマンド プロンプトまたはコンソールを使用してアプリケーションを実行します。
 
@@ -152,6 +161,9 @@ dotnet run
 > このクイック スタート アプリケーションは、クライアント シークレットを使用して、それ自体を機密クライアントとして識別します。 クライアント シークレットはプロジェクト ファイルにプレーン テキストとして追加されるため、セキュリティ上の理由から、アプリケーションを運用アプリケーションと見なす前に、クライアント シークレットの代わりに証明書を使用することをお勧めします。 証明書の使用方法の詳細については、このサンプルの GitHub リポジトリにある[これらの手順](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/#variation-daemon-application-using-client-credentials-with-certificates)を参照してください。
 
 ## <a name="more-information"></a>詳細情報
+
+### <a name="how-the-sample-works"></a>このサンプルのしくみ
+![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
 
 ### <a name="msalnet"></a>MSAL.NET
 

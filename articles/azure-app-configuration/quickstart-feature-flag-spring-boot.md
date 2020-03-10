@@ -6,12 +6,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.author: lcozzens
-ms.openlocfilehash: 4438851ef7ea015060926075f46822de877b85b3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 4a8d7f50ecf385388b63b9d83525a39737e0d157
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766433"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655754"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>クイック スタート:Spring Boot アプリに機能フラグを追加する
 
@@ -21,9 +21,9 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-- バージョン 8 を含む、サポートされている [Java Development Kit SDK](https://docs.microsoft.com/java/azure/jdk)。
-- [Apache Maven](https://maven.apache.org/download.cgi) バージョン 3.0 以降。
+* Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
+* バージョン 8 を含む、サポートされている [Java Development Kit SDK](https://docs.microsoft.com/java/azure/jdk)。
+* [Apache Maven](https://maven.apache.org/download.cgi) バージョン 3.0 以降。
 
 ## <a name="create-an-app-configuration-instance"></a>App Configuration インスタンスを作成する
 
@@ -42,14 +42,14 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
 
 1. <https://start.spring.io/> を参照します。
 
-2. 次のオプションを指定します。
+1. 次のオプションを指定します。
 
-   - **Java** で **Maven** プロジェクトを生成します。
-   - **Spring Boot** のバージョンとして、2.0 以降を指定します。
-   - アプリケーションの**グループ (Group)** と**成果物 (Artifact)** の名前を指定します。  この記事では、`com.example` と `demo` を使用します。
-   - **Spring Web** の依存関係を追加します。
+   * **Java** で **Maven** プロジェクトを生成します。
+   * **Spring Boot** のバージョンとして、2.0 以降を指定します。
+   * アプリケーションの**グループ (Group)** と**成果物 (Artifact)** の名前を指定します。  この記事では、`com.example` と `demo` を使用します。
+   * **Spring Web** の依存関係を追加します。
 
-3. 前の各オプションを指定してから、 **[プロジェクトの生成]** を選択します。 メッセージが表示されたら、ローカル コンピューターにプロジェクトをダウンロードします。
+1. 前の各オプションを指定してから、 **[プロジェクトの生成]** を選択します。 メッセージが表示されたら、ローカル コンピューターにプロジェクトをダウンロードします。
 
 ## <a name="add-feature-management"></a>機能管理を追加する
 
@@ -57,20 +57,41 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
 
 1. テキスト エディターで *pom.xml* ファイルを開き、`<dependencies>` の一覧に以下を追加します。
 
+### <a name="spring-cloud-11x"></a>Spring Cloud 1.1.x
+
     ```xml
     <dependency>
         <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.2.1</version>
+        <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
+        <version>1.1.2</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-        <version>1.2.1</version>
+        <version>1.1.2</version>
     </dependency>
     <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+    ```
+
+### <a name="spring-cloud-12x"></a>Spring Cloud 1.2.x
+
+    ```xml
+    <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
+        <version>1.2.2</version>
+    </dependency>
+    <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-azure-feature-management-web</artifactId>
+        <version>1.2.2</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
     </dependency>
     ```
 
@@ -108,6 +129,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
         }
     }
     ```
+
 1. アプリのパッケージ ディレクトリに、*MessageProperties.java* という名前の新しい Java ファイルを作成します。
 
     ```java
@@ -131,7 +153,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
     }
     ```
 
-1. アプリのパッケージ ディレクトリに、*HelloController.java* という名前の新しい Java ファイルを作成します。 
+1. アプリのパッケージ ディレクトリに、*HelloController.java* という名前の新しい Java ファイルを作成します。
 
     ```java
     package com.example.demo;
@@ -220,36 +242,36 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
 
     ```
 
-6. CSS という名前の新しいフォルダーを `static` の下に作成し、その中に *main.css* という名前の新しい CSS ファイルを作成します。
+1. CSS という名前の新しいフォルダーを `static` の下に作成し、その中に *main.css* という名前の新しい CSS ファイルを作成します。
 
     ```css
     html {
-    position: relative;
-    min-height: 100%;
+     position: relative;
+     min-height: 100%;
     }
     body {
-    margin-bottom: 60px;
+     margin-bottom: 60px;
     }
     .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px;
-    line-height: 60px;
-    background-color: #f5f5f5;
+     position: absolute;
+     bottom: 0;
+     width: 100%;
+     height: 60px;
+     line-height: 60px;
+     background-color: #f5f5f5;
     }
 
     body > .container {
-    padding: 60px 15px 0;
+     padding: 60px 15px 0;
     }
 
     .footer > .container {
-    padding-right: 15px;
-    padding-left: 15px;
+     padding-right: 15px;
+     padding-left: 15px;
     }
 
     code {
-    font-size: 80%;
+     font-size: 80%;
     }
     ```
 
@@ -284,6 +306,6 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
 
 このクイックスタートでは、新しい App Configuration ストアを作成し、この構成ストアを使用して、[機能管理ライブラリ](https://go.microsoft.com/fwlink/?linkid=2074664)を介して Spring Boot Web アプリの機能を管理しました。
 
-- [機能管理](./concept-feature-management.md)の詳細を確認します。
-- [機能フラグを管理](./manage-feature-flags.md)します。
-- [Spring Boot Core アプリ内で機能フラグを使用](./use-feature-flags-spring-boot.md)します。
+* [機能管理](./concept-feature-management.md)の詳細を確認します。
+* [機能フラグを管理](./manage-feature-flags.md)します。
+* [Spring Boot Core アプリ内で機能フラグを使用](./use-feature-flags-spring-boot.md)します。

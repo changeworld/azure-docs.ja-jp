@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 02/10/2020
-ms.openlocfilehash: 15a3801a7ea99d6d799bcd8adf340b03f36bc196
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 93fb9ec735de1abf89eb217d0f4096fcfc0afe94
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121624"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227099"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>クイック スタート:Jupyter Notebook を使用して Python で Azure Cognitive Search インデックスを作成する
 
@@ -126,7 +126,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
     }
     ```
 
-2. 別のセルで、要求を作成します。 この PUT 要求では、ご利用の検索サービスのインデックス コレクションがターゲットとされ、前のセルで指定したインデックス スキーマに基づいてインデックスが作成されます。
+2. 別のセルで、要求を作成します。 この POST 要求では、ご利用の検索サービスのインデックス コレクションがターゲットとされ、前のセルで指定したインデックス スキーマに基づいてインデックスが作成されます。
 
    ```python
    url = endpoint + "indexes" + api_version

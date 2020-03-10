@@ -11,18 +11,16 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 745d7335f70fb082ced16341742e3eb77a34f563
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 34d9af03b42df4a2806e82bb1e1fa376f099ae4c
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120470"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271061"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>クイック スタート:Windows デスクトップ アプリからトークンを取得し、Microsoft Graph API を呼び出す
 
-このクイック スタートでは、個人や仕事、学校のアカウントへのサインイン、アクセス トークンの取得、Microsoft Graph API の呼び出しを実行できる Windows デスクトップ .NET (WPF) アプリケーションの作成方法を学びます。
-
-![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-windows-desktop/windesktop-intro.svg)
+このクイック スタートでは、個人や仕事、学校のアカウントへのサインイン、アクセス トークンの取得、Microsoft Graph API の呼び出しを実行できる Windows デスクトップ .NET (WPF) アプリケーションの作成方法を学びます。 (図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください)。
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>クイック スタート アプリを登録してダウンロードする
@@ -63,23 +61,33 @@ ms.locfileid: "77120470"
 
 #### <a name="step-2-download-your-visual-studio-project"></a>手順 2:Visual Studio プロジェクトをダウンロードする
 
-[Visual Studio プロジェクトのダウンロード](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip) ([GitHub でプロジェクトを表示](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/))
+> [!div renderon="docs"]
+> [Visual Studio プロジェクトをダウンロードする](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)  
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>手順 3:Visual Studio プロジェクトの構成
+> [!div class="sxs-lookup" renderon="portal"]
+> Visual Studio 2019 を使用してプロジェクトを実行します。
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [コード サンプルをダウンロードします](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)
 
-1. ディスクのルートに近いローカル フォルダー (例: **C:\Azure-Samples**) に zip ファイルを展開します。
-1. Visual Studio でプロジェクトを開きます。
-1. **App.Xaml.cs** を編集し、`ClientId` フィールドと `Tenant` フィールドの値を次のコードに置き換えます。
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>手順 3:アプリが構成され、実行準備ができる
+> アプリのプロパティの値を使用してプロジェクトを構成したら、実行する準備は完了です。 
 
-    ```csharp
-    private static string ClientId = "Enter_the_Application_Id_here";
-    private static string Tenant = "Enter_the_Tenant_Info_Here";
-    ```
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > このクイックスタートは、Enter_the_Supported_Account_Info_Here をサポートしています。
+> > Enter_the_Supported_Account_Info_Here
 
 > [!div renderon="docs"]
+> #### <a name="step-3-configure-your-visual-studio-project"></a>手順 3:Visual Studio プロジェクトの構成
+> 1. ディスクのルートに近いローカル フォルダー (例: **C:\Azure-Samples**) に zip ファイルを展開します。
+> 1. Visual Studio でプロジェクトを開きます。
+> 1. **App.Xaml.cs** を編集し、`ClientId` フィールドと `Tenant` フィールドの値を次のコードに置き換えます。
+>
+>    ```csharp
+>    private static string ClientId = "Enter_the_Application_Id_here";
+>    private static string Tenant = "Enter_the_Tenant_Info_Here";
+>    ```
+> 
 > 各値の説明:
 > - `Enter_the_Application_Id_here` - 登録したアプリケーションの**アプリケーション (クライアント) ID**。
 > - `Enter_the_Tenant_Info_Here` - 次のいずれかのオプションに設定します。
@@ -92,8 +100,10 @@ ms.locfileid: "77120470"
 
 ## <a name="more-information"></a>詳細情報
 
-### <a name="msalnet"></a>MSAL.NET
+### <a name="how-the-sample-works"></a>このサンプルのしくみ
+![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-windows-desktop/windesktop-intro.svg)
 
+### <a name="msalnet"></a>MSAL.NET
 MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) はユーザーをサインインし、Microsoft ID プラットフォームによって保護されている API へのアクセス用のトークンを要求するために使用するライブラリです。 MSAL は、Visual Studio の "**パッケージ マネージャー コンソール**" で次のコマンドを実行してインストールできます。
 
 ```powershell

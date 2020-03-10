@@ -1,36 +1,45 @@
 ---
-title: チュートリアル:JSON BLOB からテキストと構造をすばやく抽出する
+title: チュートリアル:Azure Blob に対する REST と AI
 titleSuffix: Azure Cognitive Search
-description: Postman と Azure Cognitive Search REST API を使用した、JSON BLOB のコンテンツに対するテキスト抽出と自然言語処理の例を、順を追って説明します。
+description: Postman と Azure Cognitive Search REST API を使用した、Blob Storage のコンテンツに対するテキスト抽出と自然言語処理の例を、順を追って説明します。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 5dffafba0f0dc0dc108bf2c82929c157018d8dbb
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/26/2020
+ms.openlocfilehash: 8acafa14afab507b704806056efac0f877a47684
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113660"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190724"
 ---
-# <a name="tutorial-extract-text-and-structure-from-json-blobs-in-azure-using-rest-apis-azure-cognitive-search"></a>チュートリアル:REST API (Azure Cognitive Search) を使用して Azure の JSON BLOB からテキストと構造を抽出する
+# <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>チュートリアル:REST と AI を使用して Azure Blob から検索可能なコンテンツを生成する
 
-Azure Blob Storage に非構造化テキストまたは画像のコンテンツがある場合、[AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)を使用すると、情報を抽出し、フルテキスト検索やナレッジ マイニングのシナリオに役立つ新しいコンテンツを作成することができます。 パイプラインでは画像ファイル (JPG、PNG、TIFF) を処理できますが、このチュートリアルでは、ワードベースのコンテンツに焦点を当て、言語検出とテキスト分析を適用して、クエリ、ファセット、およびフィルターで利用できる新しいフィールドと情報を作成します。
+Azure Blob Storage に非構造化テキストまたは画像がある場合、[AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)で情報を抽出し、フルテキスト検索やナレッジ マイニングのシナリオに役立つ新しいコンテンツを作成することができます。 パイプラインでは画像を処理できますが、この REST チュートリアルではテキストに焦点を当て、言語検出と自然言語処理を適用して、クエリ、ファセット、フィルターで活用できる新しいフィールドを作成します。
+
+このチュートリアルでは、Postman と [Search REST API](https://docs.microsoft.com/rest/api/searchservice/) を使用して次のタスクを実行します。
 
 > [!div class="checklist"]
-> * まずは、Azure Blob Storage で、PDF、MD、DOCX、PPTX などのドキュメント全体 (非構造化テキスト) から始める。
+> * まずは、Azure Blob Storage で、PDF、HTML、DOCX、PPTX などのドキュメント全体 (非構造化テキスト) から始める。
 > * テキストの抽出、言語の検出、エンティティの認識、キー フレーズの検出を行うパイプラインを定義する。
 > * 出力 (生コンテンツと、パイプラインで生成された名前と値のペア) を格納するためのインデックスを定義する。
 > * 変換と分析を開始し、インデックスを作成して読み込むパイプラインを実行する。
 > * フルテキスト検索と豊富なクエリ構文を使用して結果を探索する。
 
-このチュートリアルを完了するには、いくつかのサービスに加えて、REST API 呼び出しを行うための [Postman デスクトップ アプリ](https://www.getpostman.com/)または別の Web テスト ツールが必要です。 
-
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-## <a name="download-files"></a>ファイルをダウンロードする
+## <a name="prerequisites"></a>前提条件
+
++ [Azure ストレージ](https://azure.microsoft.com/services/storage/)
++ [Postman デスクトップ アプリ](https://www.getpostman.com/)
++ [作成](search-create-service-portal.md)または[既存の検索サービスの用意](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
+
+> [!Note]
+> このチュートリアルには無料のサービスを使用できます。 無料の検索サービスでは、3 つのインデックス、3 つのインデクサー、3 つのデータ ソースという制限があります。 このチュートリアルでは、それぞれ 1 つずつ作成します。 開始する前に、ご利用のサービスに新しいリソースを受け入れる余地があることを確認してください。
+
+## <a name="download-files"></a>ファイルのダウンロード
 
 1. こちらの [OneDrive フォルダー](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)を開き、左上隅の **[ダウンロード]** をクリックして、コンピューターにファイルをコピーします。 
 
@@ -38,7 +47,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="1---create-services"></a>1 - サービスを作成する
 
-このチュートリアルでは、インデックス作成とクエリに Azure Cognitive Search を使用するほか、AI エンリッチメントには Cognitive Services を、データ提供には Azure Blob Storage を使用します。 可能である場合は、近接性と管理性を高めるために、3 つのサービスすべてを同じリージョンおよびリソース グループ内に作成します。 実際には、Azure Storage アカウントは任意のリージョンに置くことができます。
+このチュートリアルでは、インデックス作成とクエリに Azure Cognitive Search を使用するほか、AI エンリッチメントにはバックエンドで Cognitive Services を、データ提供には Azure Blob Storage を使用します。 このチュートリアルは、Cognitive Services の無料割り当て分 (インデクサーあたり 1 日に 20 トランザクション) を超えないようにしているため、作成する必要のあるサービスは Search と Storage だけです。
+
+可能である場合は、近接性と管理性を高めるために、両方を同じリージョンおよびリソース グループ内に作成してください。 実際には、Azure Storage アカウントは任意のリージョンに置くことができます。
 
 ### <a name="start-with-azure-storage"></a>Azure Storage の使用を開始する
 
@@ -102,9 +113,9 @@ Azure Blob Storage と同様に、アクセス キーを収集してください
 
 2. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
-    クエリ キーも入手します。 読み取り専用アクセスを使用してクエリ要求を発行することをお勧めします。
+   クエリ キーも入手します。 読み取り専用アクセスを使用してクエリ要求を発行することをお勧めします。
 
-![サービス名、管理キー、クエリ キーの取得](media/search-get-started-nodejs/service-name-and-keys.png)
+   ![サービス名、管理キー、クエリ キーの取得](media/search-get-started-nodejs/service-name-and-keys.png)
 
 すべての要求で、自分のサービスに送信される各要求のヘッダーに API キーが必要になります。 有効なキーにより、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼が確立されます。
 
@@ -475,31 +486,27 @@ Free レベルを使用している場合は、次のメッセージが表示さ
    cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2019-05-06
    ```
 
-これらのクエリは、Cognitive Search によって作成された新しいフィールドでクエリ構文やフィルターを操作するいくつかの方法を示しています。その他のクエリの例については、[Search Documents REST API の例](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples)、[単純構文クエリの例](search-query-simple-examples.md)、および[完全な Lucene クエリの例](search-query-lucene-examples.md)に関するページを参照してください。
+これらのクエリは、Cognitive Search によって作成された新しいフィールドでクエリ構文やフィルターを操作するいくつかの方法を示しています。 その他のクエリの例については、[Search Documents REST API の例](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples)、[単純構文クエリの例](search-query-simple-examples.md)、および[完全な Lucene クエリの例](search-query-lucene-examples.md)に関するページを参照してください。
 
 <a name="reset"></a>
 
 ## <a name="reset-and-rerun"></a>リセットして再実行する
 
-パイプライン開発の初期の実験的な段階では、設計反復のための最も実用的なアプローチは、Azure Cognitive Search からオブジェクトを削除してリビルドできるようにすることです。 リソース名は一意です。 オブジェクトを削除すると、同じ名前を使用して再作成することができます。
+開発の初期の実験的な段階では、設計反復のための最も実用的なアプローチは、Azure Cognitive Search からオブジェクトを削除してリビルドできるようにすることです。 リソース名は一意です。 オブジェクトを削除すると、同じ名前を使用して再作成することができます。
 
-新しい定義でドキュメントのインデックスを再作成するには、以下の操作を行います。
+ポータルを使用して、インデックス、インデクサー、データ ソース、およびスキルセットを削除できます。 インデクサーを削除するときは、必要に応じて、インデックス、スキルセット、およびデータ ソースを選択して同時に削除できます。
 
-1. インデクサー、インデックス、およびスキルセットを削除します。
-2. オブジェクトを変更します。
-3. サービス上で再作成してパイプラインを実行します。 
+![検索オブジェクトを削除する](./media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png "ポータル内で検索オブジェクトを削除する")
 
-ポータルを使用して、インデックス、インデクサー、およびスキルセットを削除できます。または、**DELETE** を使用し、各オブジェクトの URL を指定することもできます。 次のコマンドは、インデクサーを削除します。
+または、**DELETE** を使用して、各オブジェクトの URL を指定します。 次のコマンドは、インデクサーを削除します。
 
 ```http
-DELETE https://[YOUR-SERVICE-NAME]].search.windows.net/indexers/cog-search-demo-idxr?api-version=2019-05-06
+DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr?api-version=2019-05-06
 ```
 
 正常に削除されると、状態コード 204 が返されます。
 
-コードが成熟したら、リビルド戦略を改善することもできます。 詳細については、[インデックスをリビルドする方法](search-howto-reindex.md)に関するページをご覧ください。
-
-## <a name="takeaways"></a>ここまでのポイント
+## <a name="takeaways"></a>重要なポイント
 
 このチュートリアルでは、構成要素 (データ ソース、スキルセット、インデックス、およびインデクサー) の作成によってエンリッチされたインデックス作成パイプラインを作成するための、基本的な手順を示します。
 
@@ -507,13 +514,15 @@ DELETE https://[YOUR-SERVICE-NAME]].search.windows.net/indexers/cog-search-demo-
 
 最後に、結果をテストし、今後の反復のためにシステムをリセットする方法について学習しました。 インデックスに対するクエリを発行すると、エンリッチされたインデックス作成パイプラインによって作成された出力が返されることを学習しました。 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-チュートリアルの後に最も短時間でクリーンアップする方法は、Azure Cognitive Search サービスと Azure Blob service が含まれているリソース グループを削除することです。 両方のサービスを同じグループに配置すると仮定した場合は、ここでリソース グループを削除すると、このチュートリアル用に作成したサービスと保存したコンテンツを含み、そのリソース グループ内のすべてのものが完全に削除されます。 Portal では、リソース グループ名は各サービスの [概要] ページに表示されます。
+所有するサブスクリプションを使用している場合は、プロジェクトの終了時に、不要になったリソースを削除することをお勧めします。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
 
-## <a name="next-steps"></a>次の手順
+ポータルの左側のナビゲーション ペインにある [すべてのリソース] または [リソース グループ] リンクを使って、リソースを検索および管理できます。
 
-カスタム スキルを使ってパイプラインをカスタマイズまたは拡張します。 カスタム スキルを作成してスキルセットに追加すると、自分で作成したテキストまたは画像分析をオンボードできます。 
+## <a name="next-steps"></a>次のステップ
+
+AI エンリッチメント パイプラインのオブジェクトをすべて理解したら、スキルセットの定義と個々のスキルについて詳しく見てみましょう。
 
 > [!div class="nextstepaction"]
-> [例:AI エンリッチメント用のカスタム スキルを作成する](cognitive-search-create-custom-skill-example.md)
+> [スキルセットを作成する方法](cognitive-search-defining-skillset.md)

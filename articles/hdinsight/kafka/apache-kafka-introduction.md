@@ -1,27 +1,27 @@
 ---
 title: HDInsight での Apache Kafka の概要 - Azure
 description: HDInsight での Apache Kafka について説明します。Apache Kafka の機能と役割について説明し、例および概要情報の入手先を紹介します。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: overview
-ms.date: 06/13/2019
-ms.openlocfilehash: 543a18ad48384e3502231f85516a092468db2387
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.custom: hdinsightactive
+ms.date: 02/25/2020
+ms.openlocfilehash: 92f56f3b405470bc8ae0e9ebab2450ddc31b3c6a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560101"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672176"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight での Apache Kafka の概要
 
-[Apache Kafka](https://kafka.apache.org) はオープン ソースの分散ストリーム プラットフォームで、リアルタイムのストリーミング データ パイプラインとアプリケーションの構築に使用できます。 Kafka は、名前付きデータ ストリームへの公開および購読ができる、メッセージ キューと同様のメッセージ ブローカー機能も提供しています。 
+[Apache Kafka](https://kafka.apache.org) はオープン ソースの分散ストリーム プラットフォームで、リアルタイムのストリーミング データ パイプラインとアプリケーションの構築に使用できます。 Kafka は、名前付きデータ ストリームへの公開および購読ができる、メッセージ キューと同様のメッセージ ブローカー機能も提供しています。
 
 以下に、HDInsight 上の Kafka の固有の特性を示します。
 
-* これは、簡単な構成プロセスを提供する管理されたサービスです。 その結果は、Microsoft によってテスト済みのサポートされている構成になります。
+* これは、単純化された構成プロセスを提供するマネージド サービスです。 その結果は、Microsoft によってテスト済みのサポートされている構成になります。
 
 * Microsoft は、kafka の稼働時間に対し、99.9 % のサービス レベル アグリーメント (SLA) を提供しています。 詳細については、「[HDInsight の SLA](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/)」を参照してください。
 
@@ -29,7 +29,7 @@ ms.locfileid: "77560101"
 
     マネージド ディスクについて詳しくは、「[Azure Managed Disks の概要](../../virtual-machines/windows/managed-disks-overview.md)」をご覧ください。
 
-* Kafka はラックの 1 次元ビューで設計されています。 Azure は、更新ドメイン (UD) と障害ドメイン (FD) の 2 次元にラックを分割します。 Microsoft は、複数の UD と FD の間で Kafka のパーティションとレプリカを再調整するツールを提供しています。 
+* Kafka はラックの 1 次元ビューで設計されています。 Azure は、更新ドメイン (UD) と障害ドメイン (FD) の 2 次元にラックを分割します。 Microsoft は、複数の UD と FD の間で Kafka のパーティションとレプリカを再調整するツールを提供しています。
 
     詳細については、[HDInsight 上の Apache Kafka による高可用性](apache-kafka-high-availability.md)に関するページを参照してください。
 
@@ -41,15 +41,15 @@ ms.locfileid: "77560101"
 
     詳細については、[HDInsight 上の Apache Kafka のログの分析](apache-kafka-log-analytics-operations-management.md)に関するページを参照してください。
 
-### <a name="apache-kafka-on-hdinsight-architecture"></a>HDInsight 上の Apache Kafka のアーキテクチャ
+## <a name="apache-kafka-on-hdinsight-architecture"></a>HDInsight 上の Apache Kafka のアーキテクチャ
 
 次の図は、コンシューマー グループ、パーティション分割、レプリケーションを使ってイベントの並列読み取りとフォールト トレランスを実現する標準的な Kafka の構成を示しています。
 
 ![Kafka クラスター構成の図](./media/apache-kafka-introduction/kafka-cluster-diagram.png)
 
-Apache ZooKeeper は Kafka クラスターの状態を管理します。 Zookeeper は同時、耐障害性、および待機時間の短いトランザクション用に作成されています。 
+Apache ZooKeeper は Kafka クラスターの状態を管理します。 Zookeeper は同時、耐障害性、および待機時間の短いトランザクション用に作成されています。
 
-Kafka では、**トピック**にレコード (データ) が格納されます。 レコードは、**プロデューサー**によって生成され、**コンシューマー**によって消費されます。 プロデューサーは Kafka **ブローカー**にレコードを送信します。 HDInsight クラスターの各ワーカー ノードが、Kafka のブローカーです。 
+Kafka では、**トピック**にレコード (データ) が格納されます。 レコードは、**プロデューサー**によって生成され、**コンシューマー**によって消費されます。 プロデューサーは Kafka **ブローカー**にレコードを送信します。 HDInsight クラスターの各ワーカー ノードが、Kafka のブローカーです。
 
 トピックは、ブローカー間でレコードを分割します。 レコードの使用時に、パーティションあたり最大 1 つのコンシューマーを使用して、データの並列処理を実現できます。
 
@@ -59,35 +59,17 @@ Kafka では、**トピック**にレコード (データ) が格納されます
 
 以下に、HDInsight 上の Kafka を使用して実行できる一般的なタスクと パターンを示します。
 
-* **Apache Kafka のデータのレプリケーション**: Kafka には、MirrorMaker ユーティリティが用意されています。このユーティリティにより、Kafka クラスター間でデータがレプリケートされます。
-
-    MirrorMaker の使用方法については、[HDInsight 上の Apache Kafka を使用した Apache Kafka トピックのレプリケート](apache-kafka-mirroring.md)に関するページを参照してください。
-
-* **発行-購読のメッセージング パターン**: Kafka では、Kafka トピックにレコードを発行するためのプロデューサー API が提供されます。 コンシューマー API は、トピックの購読に使用されます。
-
-    詳細については、[HDInsight での Apache Kafka の使用開始](apache-kafka-get-started.md)に関するページを参照してください。
-
-* **ストリーム処理**:リアルタイムのストリーム処理には、通常、Kafka と共に Apache Storm または Spark が使用されます。 Kafka 0.10.0.0 (HDInsight バージョン 3.5 および 3.6) では、Storm や Spark を必要とせずに、ストリーミング ソリューションを構築できるストリーミング API が導入されました。
-
-    詳細については、[HDInsight での Apache Kafka の使用開始](apache-kafka-get-started.md)に関するページを参照してください。
-
-* **水平スケール**: Kafka では、HDInsight クラスター内のノード間でストリームが分割されます。 コンシューマー プロセスを各パーティションと関連付けることにより、レコード使用時の負荷分散を実現することができます。
-
-    詳細については、[HDInsight での Apache Kafka の使用開始](apache-kafka-get-started.md)に関するページを参照してください。
-
-* **順番どおりの配信**: 各パーティション内で、レコードは、受信された順番にストリームに格納されます。 パーティションごとに 1 つのコンシューマー プロセスを関連付けることで、レコードが順番通りに確実に処理されるようになります。
-
-    詳細については、[HDInsight での Apache Kafka の使用開始](apache-kafka-get-started.md)に関するページを参照してください。
-
-## <a name="use-cases"></a>ユース ケース
-
-* **メッセージング**: Kafka は発行-購読のメッセージ パターンをサポートするため、メッセージ ブローカーとしてよく使用されます。
-
-* **アクティビティの追跡**: Kafka ではレコードの受信順序のログ記録が提供されるため、アクティビティの追跡と再現に使用することができます。 たとえば、Web サイト上またはアプリケーション内のユーザー アクションです。
-
-* **集計**:ストリーム処理を使用して異なるストリームからの情報を集計し、情報をまとめて運用データに一元化することができます。
-
-* **変換**: ストリーム処理を使用して入力された複数のトピックからのデータを結合し、1 つまたは複数の出力トピックに変換することができます。
+|用途 |説明 |
+|---|---|
+|Apache Kafka のデータのレプリケーション|Kafka には、MirrorMaker ユーティリティが用意されています。このユーティリティにより、Kafka クラスター間でデータがレプリケートされます。 MirrorMaker の使用方法については、[HDInsight 上の Apache Kafka を使用した Apache Kafka トピックのレプリケート](apache-kafka-mirroring.md)に関するページを参照してください。|
+|発行-購読のメッセージング パターン|Kafka では、Kafka トピックにレコードを発行するためのプロデューサー API が提供されます。 コンシューマー API は、トピックの購読に使用されます。 詳細については、[HDInsight での Apache Kafka の使用開始](apache-kafka-get-started.md)に関するページを参照してください。|
+|ストリーム処理|リアルタイムのストリーム処理には、通常、Kafka と共に Apache Storm または Spark が使用されます。 Kafka 0.10.0.0 (HDInsight バージョン 3.5 および 3.6) では、Storm や Spark を必要とせずに、ストリーミング ソリューションを構築できるストリーミング API が導入されました。 詳細については、[HDInsight での Apache Kafka の使用開始](apache-kafka-get-started.md)に関するページを参照してください。|
+|水平スケール|Kafka では、HDInsight クラスター内のノード間でストリームが分割されます。 コンシューマー プロセスを各パーティションと関連付けることにより、レコード使用時の負荷分散を実現することができます。 詳細については、[HDInsight での Apache Kafka の使用開始](apache-kafka-get-started.md)に関するページを参照してください。|
+|順番どおりの配信|各パーティション内で、レコードは、受信された順番にストリームに格納されます。 パーティションごとに 1 つのコンシューマー プロセスを関連付けることで、レコードが順番通りに確実に処理されるようになります。 詳細については、[HDInsight での Apache Kafka の使用開始](apache-kafka-get-started.md)に関するページを参照してください。|
+|メッセージング|Kafka は発行-購読のメッセージ パターンをサポートするため、メッセージ ブローカーとしてよく使用されます。|
+|アクティビティの追跡|Kafka ではレコードの受信順序のログ記録が提供されるため、アクティビティの追跡と再現に使用することができます。 たとえば、Web サイト上またはアプリケーション内のユーザー アクションです。|
+|集計|ストリーム処理を使用して異なるストリームからの情報を集計し、情報をまとめて運用データに一元化することができます。|
+|変換|ストリーム処理を使用して入力された複数のトピックからのデータを結合し、1 つまたは複数の出力トピックに変換することができます。|
 
 ## <a name="next-steps"></a>次のステップ
 

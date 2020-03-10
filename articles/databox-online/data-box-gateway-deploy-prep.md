@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: fdb4b7c370d5edadf3e0e5bc0d1ae548da6bcaa9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0446ee4fb238d2fa8447f998536c3c14d968f630
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438658"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303207"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>チュートリアル:Azure Data Box Gateway のデプロイを準備する
 
@@ -93,30 +93,30 @@ Data Box Gateway リソースを作成するには、Azure portal で次の手�
     - Azure portal (URL: [https://portal.azure.com](https://portal.azure.com))。
     - または、Azure Government ポータル (URL: [https://portal.azure.us](https://portal.azure.us))。 詳細については、[ポータルを使用して Azure Government に接続する](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)方法に関するページを参照してください。
 
-2. 左側のウィンドウで、 **[+ リソースの作成]** を選択します。 **[Data Box Edge / Data Box Gateway]** を検索します。 [Data Box Edge / Data Box Gateway] を選択します。 **作成** を選択します。
-3. Data Box Gateway デバイスに使用するサブスクリプションを選択します。 Data Box Gateway リソースをデプロイするリージョンを選択します。 このリリースでは、米国東部、東南アジア、西ヨーロッパを選択できます。 デバイスをデプロイする地理的リージョンに最も近い場所を選択します。 **[Data Box Gateway]** オプションで **[作成]** を選択します。
+2. 左側のウィンドウで、 **[+ リソースの作成]** を選択します。 **[Data Box Edge / Data Box Gateway]** を検索します。 [Data Box Edge / Data Box Gateway] を選択します。 **［作成］** を選択します
+3. Data Box Gateway デバイスに使用するサブスクリプションを選択します。 Data Box Gateway リソースをデプロイするリージョンを選択します。 Azure Stack Edge リソースを使用できるすべてのリージョンの一覧については、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関するページを参照してください。 デバイスをデプロイする地理的リージョンに最も近い場所を選択します。 **[Data Box Gateway]** オプションで **[作成]** を選択します。
 
     ![Data Box Gateway サービスの検索](media/data-box-gateway-deploy-prep/data-box-gateway-edge-sku.png)
 
 4. **[基本]** タブで、次の**プロジェクト情報**を入力または選択します。
     
-    |設定  |値  |
+    |設定  |Value  |
     |---------|---------|
     |サブスクリプション    |事前に選択した内容に応じて自動的に設定されます。 サブスクリプションは、課金アカウントにリンクされます。 |
     |Resource group  |既存のグループを選択するか、新しいグループを作成します。<br>Azure リソース グループの詳細については[こちら](../azure-resource-manager/management/overview.md)をご覧ください。     |
 
 5. 次の**インスタンス情報**を入力または選択します。
 
-    |設定  |値  |
+    |設定  |Value  |
     |---------|---------|
-    |Name   | リソースを識別するわかりやすい名前を入力します。<br>名前は 2 - 50 文字で、英字、数字、ハイフンを使用します。<br> 名前の最初と最後には、英字か数字を使用します。        |   
-    |リージョン     |このリリースでは、リソースのデプロイ先として、米国東部、東南アジア、西ヨーロッパを選択できます。 Azure Government の場合は、「[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)」に記載されているすべての政府機関向けリージョンを選択できます。 <br> デバイスをデプロイする地理的リージョンに最も近い場所を選択します。|
+    |名前   | リソースを識別するわかりやすい名前を入力します。<br>名前は 2 - 50 文字で、英字、数字、ハイフンを使用します。<br> 名前の最初と最後には、英字か数字を使用します。        |   
+    |リージョン     |Azure Stack Edge リソースを使用できるすべてのリージョンの一覧については、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関するページを参照してください。 Azure Government の場合は、「[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)」に記載されているすべての政府機関向けリージョンを選択できます。 <br> デバイスをデプロイする地理的リージョンに最も近い場所を選択します。|
     
     ![Data Box Gateway リソースの作成](media/data-box-gateway-deploy-prep/data-box-gateway-resource.png)
     
 6. **[Review + create]\(レビュー + 作成\)** を選択します。
  
-7. **[確認と作成]** タブで、**価格の詳細**、**使用条件**、リソースの詳細を確認します。 **作成** を選択します。
+7. **[確認と作成]** タブで、**価格の詳細**、**使用条件**、リソースの詳細を確認します。 **［作成］** を選択します
 
     ![Data Box Gateway リソースの詳細を確認する](media/data-box-gateway-deploy-prep/data-box-gateway-resource1.png)
 

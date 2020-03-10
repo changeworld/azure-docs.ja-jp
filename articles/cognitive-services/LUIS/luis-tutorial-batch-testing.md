@@ -1,26 +1,18 @@
 ---
 title: チュートリアル:問題を見つけるためのバッチ テスト - LUIS
-titleSuffix: Azure Cognitive Services
-description: このチュートリアルでは、バッチ テストを使用してアプリでの発話予測の問題を検出し、修正する方法を説明します。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
+description: このチュートリアルでは、バッチ テストを使用して、Language Understanding (LUIS) アプリの品質を検証する方法について説明します。
 ms.topic: tutorial
-ms.date: 12/19/2019
-ms.author: diberry
-ms.openlocfilehash: 54beb26554fd823c46f961b4cc7057f347ad343c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/02/2020
+ms.openlocfilehash: c276f0b52f83937fbe3b6fd9e0b7c1a66f665095
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447966"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250550"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>チュートリアル:バッチ テスト用のデータセット
 
-このチュートリアルでは、バッチ テストを使用してアプリでの発話予測の問題を検出し、修正する方法を説明します。
+このチュートリアルでは、バッチ テストを使用して、Language Understanding (LUIS) アプリの品質を検証する方法について説明します。
 
 バッチ テストでは、ラベルの付いた発話とエンティティの既知のセットを使用して、アクティブなトレーニング済みのモデルの状態を検証できます。 JSON 形式のバッチ ファイルで、発話を追加し、その発話内で予測されるようにしたいエンティティ ラベルを設定します。
 
@@ -28,11 +20,9 @@ ms.locfileid: "75447966"
 
 * テストあたりの発話の最大数は 1000。
 * 重複はなし。
-* 許可されるエンティティ型: シンプルおよび複合の機械学習エンティティのみ。 バッチ テストは、機械学習された意図とエンティティに対してのみ有効です。
+* 許可されるエンティティ型: 機械学習エンティティのみ。
 
-このチュートリアル以外のアプリを使用している場合は、意図に既に追加されている発話の例を使用*しないでください*。
-
-
+このチュートリアル以外のアプリを使用している場合は、アプリに既に追加されている発話の例を使用 "*しないでください*"。
 
 **このチュートリアルで学習する内容は次のとおりです。**
 
@@ -42,33 +32,34 @@ ms.locfileid: "75447966"
 > * バッチ テスト ファイルを作成する
 > * バッチ テストを実行する
 > * テスト結果を確認する
-> * エラーを修正する
-> * バッチを再テストする
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="import-example-app"></a>サンプル アプリをインポートする
 
-最後のチュートリアルで作成した、**HumanResources** という名前のアプリを引き続き使用します。
+ピザの注文 (例: `1 pepperoni pizza on thin crust`) を受け付けるアプリをインポートします。
 
-次の手順に従います。
+1.  [アプリの JSON ファイル](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-with-machine-learned-entity.json?raw=true)をダウンロードして保存します。
 
-1.  [アプリの JSON ファイル](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json?raw=true)をダウンロードして保存します。
+1. [プレビューの LUIS ポータル](https://preview.luis.ai/)を使用して、新しいアプリに JSON をインポートし、`Pizza app` という名前を付けます。
 
+1. ナビゲーションの右上隅にある **[Train]\(トレーニング\)** を選択して、アプリのトレーニングを行います。
 
-2. JSON を新しいアプリにインポートします。
+## <a name="what-should-the-batch-file-utterances-include"></a>バッチ ファイルの発話に含めるべき内容
 
-3. **[管理]** セクションの **[バージョン]** タブで、バージョンを複製し、それに `batchtest` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 バージョン名は URL ルートの一部として使用されるため、URL 内で有効ではない文字を名前に含めることはできません。
+バッチ ファイルには、発話と共に、開始位置と終了位置を含むラベル付けされた機械学習エンティティが最上位に存在する必要があります。 既にアプリに存在する例の一部を発話に使用することは避けてください。 意図やエンティティを肯定的に予測したいと考える発話を使用する必要があります。
 
-4. アプリをトレーニングします。
+テストは意図やエンティティごとに分けてもかまいませんし、すべてのテスト (発話の数は 1,000 個まで) を同じファイルに含めてもかまいません。
 
 ## <a name="batch-file"></a>バッチ ファイル
 
-1. テキスト エディターで `HumanResources-jobs-batch.json` を作成するか、または[ダウンロード](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-jobs-batch.json?raw=true)します。
+サンプル JSON には、テスト ファイルの体裁を示すために、ラベル付けされたエンティティを含む発話が 1 つ含まれています。 実際のテストでは、適切な意図と機械学習エンティティがラベル付けされた発話を多数含める必要があります。
+
+1. テキスト エディターで `pizza-with-machine-learned-entity-test.json` を作成するか、または[ダウンロード](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/batch-tests/pizza-with-machine-learned-entity-test.json?raw=true)します。
 
 2. JSON 形式のバッチ ファイルで、テストで予測されるようにしたい**意図**を持つ発話を追加します。
 
-   [!code-json[Add the intents to the batch test file](~/samples-luis/documentation-samples/tutorials/HumanResources-jobs-batch.json "Add the intents to the batch test file")]
+   [!code-json[Add the intents to the batch test file](~/samples-cognitive-services-data-files/luis/batch-tests/pizza-with-machine-learned-entity-test.json "Add the intent to the batch test file")]
 
 ## <a name="run-the-batch"></a>バッチを実行する
 
@@ -76,18 +67,17 @@ ms.locfileid: "75447966"
 
 2. 右側のパネルで、 **[Batch testing panel]\(バッチ テスト パネル\)** を選択します。
 
-    [![バッチ テスト パネルが強調表示されている LUIS アプリのスクリーンショット](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png)](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png#lightbox)
-
 3. **[Import dataset]\(データセットのインポート\)** を選択します。
 
     > [!div class="mx-imgBorder"]
-    > ![データセットのインポートが強調表示されている LUIS アプリのスクリーンショット](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png)
+    > ![データセットのインポートが強調表示されている LUIS アプリのスクリーンショット](./media/luis-tutorial-batch-testing/import-dataset-button.png)
 
-4. `HumanResources-jobs-batch.json` ファイルのファイルの場所を選択します。
+4. `pizza-with-machine-learned-entity-test.json` ファイルのファイルの場所を選択します。
 
-5. データセットに `intents only` という名前を付け、 **[完了]** を選択します。
+5. データセットに `pizza test` という名前を付け、 **[完了]** を選択します。
 
-    ![ファイルの選択](./media/luis-tutorial-batch-testing/hr-import-new-dataset-ddl.png)
+    > [!div class="mx-imgBorder"]
+    > ![ファイルを選択する](./media/luis-tutorial-batch-testing/import-dataset-modal.png)
 
 6. **[実行]** ボタンを選択します。
 
@@ -95,147 +85,64 @@ ms.locfileid: "75447966"
 
 8. グラフと凡例で結果を確認します。
 
-    [![バッチ テストの結果を含む LUIS アプリのスクリーンショット](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png)](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png#lightbox)
+## <a name="review-batch-results-for-intents"></a>意図のバッチ結果を確認する
 
-## <a name="review-batch-results"></a>バッチ結果を確認する
+このテスト結果は、アクティブなバージョンで、テストの発話がどのように予測されるかをグラフィカルに示しています。
 
 バッチのグラフには、結果の 4 つのセクションが表示されます。 グラフの右側にはフィルターがあります。 このフィルターには意図とエンティティが含まれています。 [グラフのセクション](luis-concept-batch-test.md#batch-test-results)またはグラフ内の点を選択すると、関連付けられた発話がグラフの下に表示されます。
 
 グラフの上にカーソルを置いている間は、マウス ホイールでグラフ内の表示を拡大または縮小できます。 これは、まとめて緊密にクラスタ化されたグラフ上に多数の点が存在する場合に役立ちます。
 
-このグラフには 4 つのセクションがあり、そのうちの 2 つのセクションは赤色で表示されます。 **これらは注目すべきセクションです**。
+このグラフには 4 つのセクションがあり、そのうちの 2 つのセクションは赤色で表示されます。
 
-### <a name="getjobinformation-test-results"></a>GetJobInformation のテスト結果
+1. フィルター一覧の **ModifyOrder** 意図を選択します。
 
-フィルターで表示されている **GetJobInformation** のテスト結果は、4 つの予測のうちの 2 つが成功したことを示しています。 グラフの下に発話を表示するには、右下のセクションにある名前 **[False negative] (検知漏れ)** を選択します。
+    > [!div class="mx-imgBorder"]
+    > ![フィルター一覧から ModifyOrder 意図を選択する](./media/luis-tutorial-batch-testing/select-intent-from-filter-list.png)
 
-キーボードの Ctrl + E キーを使用してラベル ビューに切り替え、ユーザーの発話のテキストを正確に表示します。
+    発話は**真陽性**として予測されます。つまり発話が、バッチ ファイルにリストされたその陽性の予測と適切に一致したことを意味します。
 
-発話 `Is there a database position open in Los Colinas?` には _GetJobInformation_ のラベルが付けられていますが、現在のモデルでは発話が _ApplyForJob_ と予測されています。
+    > [!div class="mx-imgBorder"]
+    > ![発話がその陽性の予測と適切に一致](./media/luis-tutorial-batch-testing/intent-predicted-true-positive.png)
 
-**ApplyForJob** の例は **GetJobInformation** の例のほぼ 3 倍あります。 この発話の例のばらつきが **ApplyForJob** 意図に有利に働き、誤った予測の原因となります。
+    フィルター一覧内の緑色のチェックマークでも、それぞれの意図のテストの成功が示されます。 その他の意図はすべて 1/1 の正のスコアで表示されています。これは、それぞれの意図に対する発話のテストが、バッチ テストにリストされていない意図に対する陰性テストとして実行されたためです。
 
-両方の意図に同じエラーの数があることに注意してください。 1 つの意図での正しくない予測が、もう一方の意図にも影響を与えます。 1 つの意図で発話が誤って予測され、もう 1 つの意図でも誤って予測されなかったため、これらはどちらもエラーになります。
+1. **Confirmation** 意図を選択します。 この意図はバッチ テストにはリストされていません。つまりこれは、バッチ テストにリストされた発話の陰性テストとなります。
 
-<a name="fix-the-app"></a>
+    > [!div class="mx-imgBorder"]
+    > ![バッチ ファイルにリストされていない意図について、発話が正常に陰性と予測された](./media/luis-tutorial-batch-testing/true-negative-intent.png)
 
-## <a name="how-to-fix-the-app"></a>アプリの修正方法
+    グリッドとフィルター内の緑色のテキストが示すように、陰性テストは成功しています。
 
-このセクションの目的は、アプリを修正することによって、**GetJobInformation** ですべての発話が正しく予測されるようにすることです。
+## <a name="review-batch-test-results-for-entities"></a>エンティティのバッチ テスト結果を確認する
 
-一見すばやい修正として、これらのバッチ ファイルの発話を正しい意図に追加する方法があります。 これは本来の方法ではありません。 それらを例として追加せずに、LUIS にこれらの発話を正しく予測させる必要があります。
+ModifyOrder エンティティは、サブエンティティを伴ったマシン エンティティとして、最上位のエンティティが一致したかどうかを表示すると共に、サブエンティティがどのように予測されたかを表示します。
 
-また、**ApplyForJob** の発話を、発話の量が **GetJobInformation** と同じになるまで削除する方法も考えられます。 それにより、テスト結果は修正される可能性がありますが、次回 LUIS がその意図を正確に予測することができなくなります。
+1. フィルター一覧の **ModifyOrder** エンティティを選択し、グリッド内の円を選択します。
 
-**GetJobInformation** にさらに発話を追加するという修正を行います。 仕事に応募 "_ではなく_"、仕事情報の検索という意図を対象にしたまま、発話の長さ、単語の選択、単語の配置を変えてみてください。
+1. エンティティの予測がグラフの下に表示されます。 期待と一致する予測は実線で、期待と一致しない予測は点線で表示されます。
 
-### <a name="add-more-utterances"></a>さらに発話を追加する
+    > [!div class="mx-imgBorder"]
+    > ![バッチ ファイルでエンティティの親が正常に予測された](./media/luis-tutorial-batch-testing/labeled-entity-prediction.png)
 
-1. 上部のナビゲーション パネルにある **[テスト]** ボタンを選択することによってバッチ テスト パネルを閉じます。
+## <a name="finding-errors-with-a-batch-test"></a>バッチ テストでエラーを探す
 
-2. 意図の一覧から **[GetJobInformation]** を選択します。
+このチュートリアルでは、テストを実行して結果を解釈する方法について説明しました。 テストの原理やテストに失敗した場合の対処方法については取り上げていません。
 
-3. 長さ、単語の選択、単語の配置などがさまざまなさらに多くの発話を追加して、用語 `resume`、`c.v.`、および `apply` が確実に含まれるようにします。
-
-    |**GetJobInformation** 意図の発話の例|
-    |--|
-    |若い食肉牛の倉庫での新しい仕事には履歴書で申し込む必要がありますか?|
-    |今日、屋根ふきの仕事はどこにありますか?|
-    |履歴書が必要な医療コーディングの仕事があったと聞きました。|
-    |大学生が自分の履歴書を書くのを手伝う仕事をしたいと思います。 |
-    |ここに、コンピューターを使用するコミュニティ大学の新しいポストを探している私の履歴書があります。|
-    |児童保護および在宅介護では、どのような地位を得られますか?|
-    |新聞社に見習いデスクはありますか?|
-    |私の履歴書は、 私が調達、予算、および赤字の分析を得意としていることを示しています。 この種類の仕事は何かありますか?|
-    |現時点で、地球掘削の仕事はどこにありますか?|
-    |私は EMS ドライバーとして 8 年間働いてきました。 新しい仕事は何かありますか?|
-    |新しい食品取り扱いの仕事には申し込みが必要ですか?|
-    |獲得できる新しい庭仕事はいくつありますか?|
-    |労使関係および労使交渉の新しい人事ポストはありますか?|
-    |私は図書館およびアーカイブ管理の修士号を持っています。 新しい地位は何かありますか?|
-    |現在、市場に 13 歳のための子守の仕事は何かありますか?|
-
-    発話内の **[Job] (仕事)** エンティティにラベルを付けないでください。 チュートリアルのこのセクションは、意図の予測にのみ焦点を絞っています。
-
-4. 右上のナビゲーションにある **[トレーニング]** を選択することによってアプリをトレーニングします。
-
-## <a name="verify-the-new-model"></a>新しいモデルを確認する
-
-バッチ テスト内の発話が正しく予測されていることを確認するために、バッチ テストを再度実行します。
-
-1. 上部のナビゲーション バーの **[Test]\(テスト\)** を選択します。 バッチの結果がまだ開いている場合は、 **[Back to list] (一覧に戻る)** を選択します。
-
-1. バッチ名の右にある省略記号 (***...***) ボタンを選択し、 **[実行]** を選択します。 バッチ テストが完了するまで待ちます。 **[See results] (結果の表示)** ボタンが緑色になっていることに注意してください。 これは、バッチ全体が正常に実行されたことを示します。
-
-1. **[See results]\(結果の表示\)** を選択します。 どの意図も、意図名の左側に緑色のアイコンが表示されています。
-
-## <a name="create-batch-file-with-entities"></a>エンティティを含むバッチ ファイルを作成する
-
-バッチ テストでエンティティを確認するために、バッチ JSON ファイル内でエンティティにラベルを付ける必要があります。
-
-単語の合計 ([トークン](luis-glossary.md#token)) 数に関するエンティティの変動が予測品質に影響を与える場合があります。 ラベルの付いた発話を含む意図に指定されるトレーニング データに、さまざまな長さのエンティティが含まれていることを確認してください。
-
-バッチ ファイルを初めて記述してテストする場合は、機能することがわかっているいくつかの発話とエンティティ、および誤って予測される可能性があると思われるいくつかの発話とエンティティで開始することが最善です。 これは、問題領域にすばやく焦点を絞るのに役立ちます。 いくつかの異なる仕事名 (これは予測されませんでした) を使用して **GetJobInformation** および **ApplyForJob** 意図をテストした後、 **[Job] (仕事)** エンティティの特定の値に予測の問題があるかどうかを確認するためにこのバッチ テスト ファイルが開発されました。
-
-テストの発話で指定される **[Job] (仕事)** エンティティの値は通常、1 つまたは 2 つの単語であり、いくつかの例ではそれ以上の単語数になります。 _独自の_ 人事アプリに一般に多数の単語の仕事名が存在する場合、このアプリで **[Job] (仕事)** エンティティのラベルが付けられている発話の例はうまく機能しません。
-
-1. [VSCode](https://code.visualstudio.com/) などのテキスト エディターで `HumanResources-entities-batch.json` を作成するか、または[ダウンロード](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json?raw=true)します。
-
-2. JSON 形式のバッチ ファイルで、テストで予測されるようにしたい**意図**を持つ発話や、その発話内の任意のエンティティの場所を含むオブジェクトの配列を追加します。 エンティティはトークン ベースであるため、各エンティティを文字で開始および終了するようにしてください。 発話をスペースで開始または終了しないでください。 これにより、バッチ ファイルのインポート中にエラーが発生します。
-
-   [!code-json[Add the intents and entities to the batch test file](~/samples-luis/documentation-samples/tutorials/HumanResources-entities-batch.json "Add the intents and entities to the batch test file")]
-
-
-## <a name="run-the-batch-with-entities"></a>エンティティを含むバッチを実行する
-
-1. 上部のナビゲーション バーの **[Test]\(テスト\)** を選択します。
-
-2. 右側のパネルで、 **[Batch testing panel]\(バッチ テスト パネル\)** を選択します。
-
-3. **[Import dataset]\(データセットのインポート\)** を選択します。
-
-4. `HumanResources-entities-batch.json` ファイルのファイル システムの場所を選択します。
-
-5. データセットに `entities` という名前を付け、 **[完了]** を選択します。
-
-6. **[実行]** ボタンを選択します。 テストが完了するまで待ちます。
-
-7. **[See results]\(結果の表示\)** を選択します。
-
-## <a name="review-entity-batch-results"></a>エンティティのバッチの結果を確認する
-
-すべての意図が正しく予測されたグラフが開きます。 右側のフィルターを下へスクロールして、エラーを含むエンティティの予測を見つけます。
-
-1. フィルター内の **[Job] (仕事)** エンティティを選択します。
-
-    ![フィルター内のエラーのエンティティの予測](./media/luis-tutorial-batch-testing/hr-entities-filter-errors.png)
-
-    グラフが変化して、エンティティの予測が表示されます。
-
-2. グラフの左下のセクションで **[False Negative] (検知漏れ)** を選択します。 次に、キーボードの組み合わせ Ctrl + E を使用して、トークン ビューに切り替えます。
-
-    [![エンティティの予測のトークン ビュー](./media/luis-tutorial-batch-testing/token-view-entities.png)](./media/luis-tutorial-batch-testing/token-view-entities.png#lightbox)
-
-    グラフの下の発話を確認すると、仕事名に `SQL` が含まれていると常にエラーが発生することがわかります。 発話の例と [Job] (仕事) フレーズ リストを確認すると、SQL は 1 回だけ、より大きな仕事名 `sql/oracle database administrator` の一部としてのみ使用されています。
-
-## <a name="fix-the-app-based-on-entity-batch-results"></a>エンティティのバッチの結果に基づいてアプリを修正する
-
-アプリを修正するには、LUIS が SQL ジョブの変動を正しく判定することが必要です。 その修正には、いくつかのオプションがあります。
-
-* SQL を使用し、これらの単語を [Job] (仕事) エンティティとしてラベル付けする、さらに多くの発話の例を明示的に追加する。
-* フレーズ リストにさらに多くの SQL ジョブを明示的に追加する。
-
-これらのタスクは、ユーザーに実行が任されます。
-
-エンティティが正しく予測される前に[パターン](luis-concept-patterns.md)を追加しても、この問題は修正されません。 これは、パターンが、そのパターン内のすべてのエンティティが検出されるまで一致しないためです。
+* テストでは、陽性と陰性の両方の発話をカバーするようにしてください (異なってはいるが関連性がある意図に対して予測される発話も含む)。
+* 失敗した発話については、次のタスクを実行してから、再度テストを行ってください。
+    * 現在の意図とエンティティの例を確認し、アクティブなバージョンの発話の例が、意図とエンティティのどちらのラベル付けについても適切であることを確認します。
+    * アプリによる意図とエンティティの予測を支援する機能を追加します。
+    * 陽性の発話の例をさらに追加します。
+    * 意図全体が対象となるように発話の例のバランスを確認します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](./includes/cleanup-resources-preview-portal.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-step"></a>次のステップ
 
-チュートリアルでは、バッチ テストを使用して、現在のモデルの問題を検出しました。 モデルを修正し、バッチ ファイルを使用して再テストを行い、変更が正しいことを確認しました。
+このチュートリアルでは、バッチ テストを使用して、現在のモデルを検証しました。
 
 > [!div class="nextstepaction"]
 > [パターンについて](luis-tutorial-pattern.md)

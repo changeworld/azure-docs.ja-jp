@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: tamram
-ms.openlocfilehash: 57ab56fe3028da9011e86c589209e7505e69e719
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 58532c6eb6e01a993bce7d6e22a7b5274a465963
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650915"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298186"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>クイック スタート:Azure CLI を使用して BLOB を作成、ダウンロード、一覧表示する
 
@@ -28,6 +28,8 @@ Azure CLI は、Azure リソースを管理するための、Azure のコマン�
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
+## <a name="install-the-azure-cli-locally"></a>Azure CLI をローカルにインストールする
+
 Azure CLI をローカルにインストールして使用することを選択した場合、このクイックスタートでは Azure CLI バージョン 2.0.46 以降を実行していることが必要です。 `az --version` を実行して、バージョンを判断します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 Azure CLI をローカルで実行している場合、ログインして認証を行う必要があります。 Azure Cloud Shell を使用している場合、この手順は必要ありません。 Azure CLI にログインするには、`az login` を実行して、ブラウザー ウィンドウで認証を行います。
@@ -36,11 +38,13 @@ Azure CLI をローカルで実行している場合、ログインして認証�
 az login
 ```
 
+Azure CLI を使用した認証について詳しくは、「[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli)」をご覧ください。
+
 ## <a name="authorize-access-to-blob-storage"></a>Blob Storage へのアクセスを承認する
 
 Blob Storage へのアクセスは、Azure CLI から Azure AD の資格情報を使用するか、またはストレージ アカウントのアクセス キーを使用して承認することができます。 Azure AD の資格情報を使用することをお勧めします。 この記事では、Azure AD を使用して、Blob Storage の操作を承認する方法について説明します。
 
-Blob Storage を対象とするデータの操作では、Azure CLI コマンドで `--auth-mode` パラメーターがサポートされます。特定の操作を承認する方法をパラメーターで指定できます。 Azure AD の資格情報を使用して承認するには、`--auth-mode` パラメーターを `login` に設定します。 詳細については、[Azure AD 資格情報で Azure CLI コマンドを実行して BLOB またはキューのデータにアクセスする方法](../common/authorize-active-directory-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関するページを参照してください。
+Blob Storage を対象とするデータの操作では、Azure CLI コマンドで `--auth-mode` パラメーターがサポートされます。特定の操作を承認する方法をパラメーターで指定できます。 Azure AD の資格情報を使用して承認するには、`--auth-mode` パラメーターを `login` に設定します。 詳細については、「[Azure CLI を使用して BLOB またはキュー データへのアクセスを承認する](../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
 
 `--auth-mode` パラメーターがサポートされるのは、Blob Storage のデータの操作だけです。 リソース グループの作成やストレージ アカウントの作成など、管理操作の承認では自動的に Azure AD の資格情報が使用されます。
 
@@ -149,7 +153,7 @@ azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このクイックスタートで作成したストレージ アカウントも含め、リソース グループ内のどのリソースも必要なくなった場合は、[az group delete](/cli/azure/group) コマンドでリソース グループを削除します。 山かっこ内のプレースホルダーをお客様独自の値に置き換えてください。
+ストレージ アカウントなど、このクイックスタートの一部として作成したリソースを削除する場合は、[az group delete](/cli/azure/group) コマンドを使用してリソース グループを削除します。 山かっこ内のプレースホルダーをお客様独自の値に置き換えてください。
 
 ```azurecli
 az group delete \

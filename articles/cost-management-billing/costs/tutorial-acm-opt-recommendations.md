@@ -3,17 +3,17 @@ title: チュートリアル - 推奨事項に従って Azure のコストを削
 description: このチュートリアルは、最適化の推奨事項に従って対処すると、Azure のコスト削減に役立ちます。
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 796d843461d5d622988f7992439a7c4426186761
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6f84b3fb75a3774dc14fd1ea045ab9cf1eeb5451
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199961"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245406"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>チュートリアル:推奨事項に従ってコストを最適化する
 
@@ -32,7 +32,7 @@ Azure Cost Management は Azure Advisor と連携して、コストの最適化�
 - サブスクリプション
 - Resource group
 
-14 日間以上のアクティビティがあるアクティブな仮想マシンが必要です。
+新しいサブスクリプションをご利用の場合、すぐには Cost Management 機能を使用できません。 すべての Cost Management 機能を使用できるようになるまでに、最大 48 時間かかる場合があります。 また、14 日間以上のアクティビティがあるアクティブな仮想マシンが必要です。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 Azure Portal [https://portal.azure.com](https://portal.azure.com/) にサインインします。

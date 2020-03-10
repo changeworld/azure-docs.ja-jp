@@ -11,27 +11,24 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 59c2b3b910a9585362643bfcf7cdf9fa2df977bc
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 3bfcc1ef8c58f71811af604fbc07736a13102e83
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77611991"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249080"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>クイック スタート:Java Web アプリに "Microsoft でサインイン" を追加する
 
 このクイックスタートでは、Java Web アプリを Microsoft ID プラットフォームと統合する方法を説明します。 お使いのアプリによって、ユーザーがサインインされ、Microsoft Graph API を呼び出すためのアクセス トークンが取得されて、Microsoft Graph API への要求が行われます。
 
-このクイックスタートを完了すると、アプリケーションは、個人用の Microsoft アカウント (outlook.com、live.com など) と、Azure Active Directory を使用する会社や組織の職場または学校アカウントのサインインを受け入れるようになります。
-
-![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-java-webapp/java-quickstart.svg)
+このクイックスタートを完了すると、アプリケーションは、個人用の Microsoft アカウント (outlook.com、live.com など) と、Azure Active Directory を使用する会社や組織の職場または学校アカウントのサインインを受け入れるようになります。 (図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください)。
 
 ## <a name="prerequisites"></a>前提条件
 
 このサンプルを実行するには、次のものが必要になります。
 
 - [Java Development Kit (JDK)](https://openjdk.java.net/) 8 以降および [Maven](https://maven.apache.org/)。
-- Azure Active Directory (Azure AD) テナント。 Azure AD テナントの取得方法の詳細については、[Azure AD テナントの取得方法](https://azure.microsoft.com/documentation/articles/active-directory-howto-tenant/)に関するページを参照してください。
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>クイック スタート アプリを登録してダウンロードする
@@ -73,7 +70,7 @@ ms.locfileid: "77611991"
 >
 > このクイックスタートのコード サンプルを動作させるには、以下の操作が必要です。
 >
-> 1. 応答 URL として `https://localhost:8080/msal4jsamples/secure/aad` および `https://localhost:8080/msal4jsamples/graph/me` を追加します。
+> 1. 応答 URL として `https://localhost:8080/msal4jsample/secure/aad` および `https://localhost:8080/msal4jsample/graph/me` を追加します。
 > 1. クライアント シークレットを作成します。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [これらの変更を行います]()
@@ -82,46 +79,65 @@ ms.locfileid: "77611991"
 > > ![構成済み](media/quickstart-v2-aspnet-webapp/green-check.png) アプリケーションはこれらの属性で構成されています。
 
 #### <a name="step-2-download-the-code-sample"></a>手順 2:コード サンプルのダウンロード
+> [!div renderon="docs"]
+> [コード サンプルのダウンロード](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
 
- [コード サンプルのダウンロード](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
+> [!div class="sxs-lookup" renderon="portal"]
+> プロジェクトをダウンロードし、ルート フォルダーに近いローカル フォルダー (例: **C:\Azure-Samples**) に ZIP ファイルを展開します。
+> 
+> localhost で https を使用するには、server.ssl.key プロパティを入力します。 自己署名証明書を生成するには、keytool ユーティリティ (JRE に含まれています) を使用します。
+>
+>  ```
+>   Example:
+>   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
+>
+>   server.ssl.key-store-type=PKCS12  
+>   server.ssl.key-store=classpath:keystore.p12  
+>   server.ssl.key-store-password=password  
+>   server.ssl.key-alias=testCert
+>   ```
+>   生成されたキーストア ファイルを "resources" フォルダーに配置します。
+   
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [コード サンプルをダウンロードします]()
 
-#### <a name="step-3-configure-the-code-sample"></a>手順 3:コード サンプルの構成
+> [!div renderon="docs"]
+> #### <a name="step-3-configure-the-code-sample"></a>手順 3:コード サンプルの構成
+> 1. ZIP ファイルをローカル フォルダーに展開します。
+> 1. 統合開発環境を使用する場合は、その IDE でサンプルを開きます (オプション)。
+> 1. application.properties ファイルを開きます。これは、src/main/resources/ フォルダーにあり、フィールド *aad. clientId*、*aad. authority*、および *aad.secretKey* の値を **アプリケーション ID**、**テナント ID**、および**クライアント シークレット**のそれぞれの値で置き換えます。
+>
+>    ```file
+>    aad.clientId=Enter_the_Application_Id_here
+>    aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
+>    aad.secretKey=Enter_the_Client_Secret_Here
+>    aad.redirectUriSignin=https://localhost:8080/msal4jsample/secure/aad
+>    aad.redirectUriGraph=https://localhost:8080/msal4jsample/graph/me
+>    aad.msGraphEndpointHost="https://graph.microsoft.com/"
+>    ```
+> 各値の説明:
+>
+> - `Enter_the_Application_Id_here` - 登録したアプリケーションのアプリケーション ID。
+> - `Enter_the_Client_Secret_Here` - 登録済みアプリケーション用に **[証明書とシークレット]** で作成した **[クライアント シークレット]** です。
+> - `Enter_the_Tenant_Info_Here` - 登録したアプリケーションの**ディレクトリ (テナント) ID** 値です。
+> 1. localhost で https を使用するには、server.ssl.key プロパティを入力します。 自己署名証明書を生成するには、keytool ユーティリティ (JRE に含まれています) を使用します。
+>
+>  ```
+>   Example:
+>   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
+>
+>   server.ssl.key-store-type=PKCS12  
+>   server.ssl.key-store=classpath:keystore.p12  
+>   server.ssl.key-store-password=password  
+>   server.ssl.key-alias=testCert
+>   ```
+>   生成されたキーストア ファイルを "resources" フォルダーに配置します。
 
- 1. ZIP ファイルをローカル フォルダーに展開します。
- 1. 統合開発環境を使用する場合は、その IDE でサンプルを開きます (オプション)。
- 1. application.properties ファイルを開きます。これは、src/main/resources/ フォルダーにあり、フィールド *aad. clientId*、*aad. authority*、および *aad.secretKey* の値を **アプリケーション ID**、**テナント ID**、および**クライアント シークレット**のそれぞれの値で置き換えます。
 
-    ```file
-    aad.clientId=Enter_the_Application_Id_here
-    aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
-    aad.secretKey=Enter_the_Client_Secret_Here
-    aad.redirectUriSignin=https://localhost:8080/msal4jsample/secure/aad
-    aad.redirectUriGraph=https://localhost:8080/msal4jsample/graph/me
-    aad.msGraphEndpointHost="https://graph.microsoft.com/"
-    ```
-
-    > [!div renderon="docs"]
-    > 各値の説明:
-    >
-    > - `Enter_the_Application_Id_here` - 登録したアプリケーションのアプリケーション ID。
-    > - `Enter_the_Client_Secret_Here` - 登録済みアプリケーション用に **[証明書とシークレット]** で作成した **[クライアント シークレット]** です。
-    > - `Enter_the_Tenant_Info_Here` - 登録したアプリケーションの**ディレクトリ (テナント) ID** 値です。
-
- 1. localhost で https を使用するには、server.ssl.key プロパティを入力します。 自己署名証明書を生成するには、keytool ユーティリティ (JRE に含まれています) を使用します。
-
-   ```
-   Example:
-   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
-
-   server.ssl.key-store-type=PKCS12  
-   server.ssl.key-store=classpath:keystore.p12  
-   server.ssl.key-store-password=password  
-   server.ssl.key-alias=testCert
-   ```
-
-   生成されたキーストア ファイルを "resources" フォルダーに配置します。
-
-#### <a name="step-4-run-the-code-sample"></a>手順 4:コード サンプルの実行
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-run-the-code-sample"></a>手順 3:コード サンプルの実行
+> [!div renderon="docs"]
+> #### <a name="step-4-run-the-code-sample"></a>手順 4:コード サンプルの実行
 
 プロジェクトを実行するには、次のいずれかを行うことができます。
 
@@ -137,10 +153,15 @@ IDE から Web アプリケーションを実行している場合は、[実行]
     - "*サインアウト*": 現在のユーザーをアプリケーションからサインアウトし、ホーム ページにリダイレクトします。
     - *Show User Info (ユーザー情報の表示)* :Microsoft Graph のトークンを取得し、そのトークンを含む要求で Microsoft Graph を呼び出します。これにより、サインインしたユーザーに関する基本情報が返されます。
 
+
+   
 > [!IMPORTANT]
 > このクイック スタート アプリケーションは、クライアント シークレットを使用して、それ自体を機密クライアントとして識別します。 クライアント シークレットはプロジェクト ファイルにプレーン テキストとして追加されるため、セキュリティ上の理由から、アプリケーションを運用アプリケーションと見なす前に、クライアント シークレットの代わりに証明書を使用することをお勧めします。 証明書の使用方法の詳細については、「[アプリケーションを認証するための証明書資格情報](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials)」を参照してください。
 
 ## <a name="more-information"></a>詳細情報
+
+### <a name="how-the-sample-works"></a>このサンプルのしくみ
+![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-java-webapp/java-quickstart.svg)
 
 ### <a name="getting-msal"></a>MSAL の取得
 

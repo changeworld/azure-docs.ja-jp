@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:コードを使わずに監視データを取り込む - Azure Data Explorer
+title: チュートリアル:コードを使わずに Azure Data Explorer で監視データを取り込む
 description: このチュートリアルでは、コードを 1 行も書かずに Azure Data Explorer に監視データを取り込み、そのデータにクエリを実行する方法について説明します。
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: 24e09f6578431e6b7f2a83be13bae59bf2e707de
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 3a53a660da2257540f23bc6438fc5933e5229c76
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986208"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198050"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>チュートリアル:Azure Data Explorer で監視データを取り込んでクエリを実行する 
 
@@ -43,7 +43,7 @@ ms.locfileid: "76986208"
 
 Azure の診断メトリックとログ、アクティビティ ログは、Azure サービスによって生成され、そのサービスの動作に関するデータを提供します。 
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[診断メトリック](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[診断メトリック](#tab/diagnostic-metrics)
 #### <a name="example"></a>例
 
 診断メトリックは、1 分の時間グレインで集計されます。 クエリ期間に対する Azure Data Explorer メトリックイベント スキーマの例を次に示します。
@@ -77,7 +77,7 @@ Azure の診断メトリックとログ、アクティビティ ログは、Azur
 }
 ```
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[診断ログ](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[診断ログ](#tab/diagnostic-logs)
 #### <a name="example"></a>例
 
 Azure Data Explorer の[診断インジェスト ログ](using-diagnostic-logs.md#diagnostic-logs-schema)の例を次に示します。
@@ -133,7 +133,7 @@ Azure Data Explorer の[診断インジェスト ログ](using-diagnostic-logs.m
     }
 }
 ```
-# <a name="activity-logstabactivity-logs"></a>[アクティビティ ログ](#tab/activity-logs)
+# <a name="activity-logs"></a>[アクティビティ ログ](#tab/activity-logs)
 #### <a name="example"></a>例
 
 Azure アクティビティ ログは、サブスクリプションのリソースに対して実行された操作を分析できるサブスクリプション レベルのログです。 アクセスを確認するためのアクティビティログ イベントの例を次に示します。
@@ -210,7 +210,7 @@ Azure Monitor ログの構造は表形式ではありません。 データを�
 
 Azure Data Explorer の Web UI を使用して、Azure Data Explorer データベースにターゲット テーブルを作成します。
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[診断メトリック](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[診断メトリック](#tab/diagnostic-metrics)
 #### <a name="create-tables-for-the-diagnostic-metrics"></a>診断メトリックのためのテーブルを作成する
 
 1. *TestDatabase* データベースで、診断メトリック レコードを格納する *DiagnosticMetrics* という名前のテーブルを作成します。 次の `.create table` 管理コマンドを使用します。
@@ -235,7 +235,7 @@ Azure Data Explorer の Web UI を使用して、Azure Data Explorer データ�
     .alter-merge table DiagnosticRawRecords policy retention softdelete = 0d
     ```
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[診断ログ](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[診断ログ](#tab/diagnostic-logs)
 #### <a name="create-tables-for-the-diagnostic-logs"></a>診断ログのためのテーブルを作成する 
 
 1. *TestDatabase* データベースで、診断ログ レコードを格納する *DiagnosticLogs* という名前のテーブルを作成します。 次の `.create table` 管理コマンドを使用します。
@@ -258,7 +258,7 @@ Azure Data Explorer の Web UI を使用して、Azure Data Explorer データ�
     .alter-merge table DiagnosticRawRecords policy retention softdelete = 0d
     ```
 
-# <a name="activity-logstabactivity-logs"></a>[アクティビティ ログ](#tab/activity-logs)
+# <a name="activity-logs"></a>[アクティビティ ログ](#tab/activity-logs)
 #### <a name="create-tables-for-the-activity-logs"></a>アクティビティ ログのためのテーブルを作成する 
 
 1. アクティビティ ログ レコードを受け取る *ActivityLogs* という名前のテーブルを *TestDatabase* データベース内に作成します。 テーブルを作成するには、次の Azure Data Explorer クエリを実行します。
@@ -284,7 +284,7 @@ Azure Data Explorer の Web UI を使用して、Azure Data Explorer データ�
 
  データ形式が `json` であるため、データのマッピングが必須です。 `json` のマッピングでは、json の各パスがテーブルの列名にマップされます。
 
-# <a name="diagnostic-metrics--diagnostic-logstabdiagnostic-metricsdiagnostic-logs"></a>[診断メトリックと診断ログ](#tab/diagnostic-metrics+diagnostic-logs) 
+# <a name="diagnostic-metrics--diagnostic-logs"></a>[診断メトリックと診断ログ](#tab/diagnostic-metrics+diagnostic-logs) 
 #### <a name="map-diagnostic-metrics-and-logs-to-the-table"></a>診断メトリックとログをテーブルにマップする
 
 診断メトリックとログのデータをテーブルにマップするには、次のクエリを使用します。
@@ -293,7 +293,7 @@ Azure Data Explorer の Web UI を使用して、Azure Data Explorer データ�
 .create table DiagnosticRawRecords ingestion json mapping 'DiagnosticRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
 ```
 
-# <a name="activity-logstabactivity-logs"></a>[アクティビティ ログ](#tab/activity-logs)
+# <a name="activity-logs"></a>[アクティビティ ログ](#tab/activity-logs)
 #### <a name="map-activity-logs-to-the-table"></a>アクティビティ ログをテーブルにマップする
 
 アクティビティ ログのデータをテーブルにマップするには、次のクエリを使用します。
@@ -305,7 +305,7 @@ Azure Data Explorer の Web UI を使用して、Azure Data Explorer データ�
 
 ### <a name="create-the-update-policy-for-metric-and-log-data"></a>メトリックおよびログのデータの更新ポリシーを作成する
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[診断メトリック](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[診断メトリック](#tab/diagnostic-metrics)
 #### <a name="create-data-update-policy-for-diagnostics-metrics"></a>診断メトリックのデータ更新ポリシーを作成する
 
 1. コレクション内の各値が個別の行を受け取るように診断メトリック レコードのコレクションを展開する[関数](/azure/kusto/management/functions)を作成します。 [`mv-expand`](/azure/kusto/query/mvexpandoperator) 演算子を使用します。
@@ -333,7 +333,7 @@ Azure Data Explorer の Web UI を使用して、Azure Data Explorer データ�
     .alter table DiagnosticMetrics policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticMetricsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[診断ログ](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[診断ログ](#tab/diagnostic-logs)
 #### <a name="create-data-update-policy-for-diagnostics-logs"></a>診断ログのデータ更新ポリシーを作成する
 
 1. コレクション内の各値が個別の行を受け取るように診断ログ レコードのコレクションを展開する[関数](/azure/kusto/management/functions)を作成します。 Azure Data Explorer クラスターでインジェスト ログを有効にし、[インジェスト ログ スキーマ](/azure/data-explorer/using-diagnostic-logs#diagnostic-logs-schema)を使用します。 成功したインジェストと失敗したインジェスト用にテーブルを 1 つ作成します。インジェストが成功した場合は、いくつかのフィールド (ErrorCode など) が空になります。 [`mv-expand`](/azure/kusto/query/mvexpandoperator) 演算子を使用します。
@@ -366,7 +366,7 @@ Azure Data Explorer の Web UI を使用して、Azure Data Explorer データ�
     .alter table DiagnosticLogs policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticLogsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
-# <a name="activity-logstabactivity-logs"></a>[アクティビティ ログ](#tab/activity-logs)
+# <a name="activity-logs"></a>[アクティビティ ログ](#tab/activity-logs)
 #### <a name="create-data-update-policy-for-activity-logs"></a>アクティビティ ログのデータ更新ポリシーを作成する
 
 1. コレクション内の各値が個別の行を受け取るようにアクティビティ ログ レコードのコレクションを展開する[関数](/azure/kusto/management/functions)を作成します。 [`mv-expand`](/azure/kusto/query/mvexpandoperator) 演算子を使用します。
@@ -415,7 +415,7 @@ Azure 診断設定により、ストレージ アカウントまたはイベン�
     |---|---|---|
     | **サブスクリプション** | *該当するサブスクリプション* | イベント ハブに使用する Azure サブスクリプションを選択します。|
     | **リソース グループ** | *test-resource-group* | 新しいリソース グループを作成します。 |
-    | **地域** | ニーズに最も適したリージョンを選択します。 | 他のリソースと同じ場所に、Event Hubs 名前空間を作成します。
+    | **場所** | ニーズに最も適したリージョンを選択します。 | 他のリソースと同じ場所に、Event Hubs 名前空間を作成します。
     | **名前空間名** | *AzureMonitoringData* | 名前空間を識別する一意の名前を選択します。
     | **イベント ハブ名** | *DiagnosticData* | イベント ハブは、固有のスコープ コンテナーを提供する名前空間以下にあります。 |
     | **コンシューマー グループ名** | *adxpipeline* | コンシューマー グループ名を作成します。 コンシューマー グループを使用すると、複数の使用アプリケーションがそれぞれイベント ストリーム ビューを持つことができるようになります。 |
@@ -425,7 +425,7 @@ Azure 診断設定により、ストレージ アカウントまたはイベン�
 
 ここで、診断メトリックとログ、アクティビティ ログをイベント ハブに接続する必要があります。
 
-# <a name="diagnostic-metrics--diagnostic-logstabdiagnostic-metricsdiagnostic-logs"></a>[診断メトリックと診断ログ](#tab/diagnostic-metrics+diagnostic-logs) 
+# <a name="diagnostic-metrics--diagnostic-logs"></a>[診断メトリックと診断ログ](#tab/diagnostic-metrics+diagnostic-logs) 
 ### <a name="connect-diagnostic-metrics-and-logs-to-your-event-hub"></a>診断メトリックとログをイベント ハブに接続する
 
 メトリックをエクスポートするリソースを選択します。 診断データのエクスポートは、Event Hubs 名前空間、Azure Key Vault、Azure IoT Hub、Azure Data Explorer クラスターなど、複数のリソースの種類でサポートされます。 このチュートリアルでは、Azure Data Explorer クラスターをリソースとして使用し、クエリ パフォーマンスのメトリックとインジェスト結果のログを確認します。
@@ -452,7 +452,7 @@ Azure 診断設定により、ストレージ アカウントまたはイベン�
 
 1. **[保存]** を選択します。
 
-# <a name="activity-logstabactivity-logs"></a>[アクティビティ ログ](#tab/activity-logs)
+# <a name="activity-logs"></a>[アクティビティ ログ](#tab/activity-logs)
 ### <a name="connect-activity-logs-to-your-event-hub"></a>アクティビティ ログをイベント ハブに接続する
 
 1. Azure portal の左側のメニューで、 **[アクティビティ ログ]** を選択します。
@@ -501,7 +501,7 @@ Azure 診断設定により、ストレージ アカウントまたはイベン�
 
     ![イベント ハブのデータ接続](media/ingest-data-no-code/event-hub-data-connection.png)
 
-# <a name="diagnostic-metrics--diagnostic-logstabdiagnostic-metricsdiagnostic-logs"></a>[診断メトリックと診断ログ](#tab/diagnostic-metrics+diagnostic-logs) 
+# <a name="diagnostic-metrics--diagnostic-logs"></a>[診断メトリックと診断ログ](#tab/diagnostic-metrics+diagnostic-logs) 
 
 1. **[データ接続]** ウィンドウで、次の設定を使用します。
 
@@ -526,9 +526,9 @@ Azure 診断設定により、ストレージ アカウントまたはイベン�
     | **列マッピング** | *DiagnosticRawRecordsMapping* | 自分が *TestDatabase* データベースに作成したマッピング。これにより、受信 JSON データが *DiagnosticRawRecords* テーブルの列名とデータ型にマッピングされます。|
     | | |
 
-1. **作成** を選択します。  
+1. **［作成］** を選択します  
 
-# <a name="activity-logstabactivity-logs"></a>[アクティビティ ログ](#tab/activity-logs)
+# <a name="activity-logs"></a>[アクティビティ ログ](#tab/activity-logs)
 
 1. **[データ接続]** ウィンドウで、次の設定を使用します。
 
@@ -553,14 +553,14 @@ Azure 診断設定により、ストレージ アカウントまたはイベン�
     | **列マッピング** | *ActivityLogsRawRecordsMapping* | 自分が *TestDatabase* データベースに作成したマッピング。これにより、受信 JSON データが *ActivityLogsRawRecords* の列名とデータ型にマッピングされます。|
     | | |
 
-1. **作成** を選択します。  
+1. **［作成］** を選択します  
 ---
 
 ## <a name="query-the-new-tables"></a>新しいテーブルのクエリを実行する
 
 パイプラインをデータが流れるようになりました。 クラスター経由での取り込みには既定で 5 分かかるので、データが流れるのを数分待ってから、クエリを始めます。
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[診断メトリック](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[診断メトリック](#tab/diagnostic-metrics)
 ### <a name="query-the-diagnostic-metrics-table"></a>診断メトリック テーブルに対してクエリを実行する
 
 次のクエリでは、Azure Data Explorer の診断メトリック レコードからクエリ期間のデータを分析します。
@@ -579,7 +579,7 @@ DiagnosticMetrics
 |   | 00:06.156 |
 | | |
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[診断ログ](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[診断ログ](#tab/diagnostic-logs)
 ### <a name="query-the-diagnostic-logs-table"></a>診断ログ テーブルに対してクエリを実行する
 
 このパイプラインからは、イベント ハブを介してインジェストが生成されます。 それらのインジェストの結果を確認します。
@@ -599,7 +599,7 @@ DiagnosticLogs
 |   | 00:06.156 | TestDatabase | DiagnosticRawRecords | https://rtmkstrldkereneus00.blob.core.windows.net/20190827-readyforaggregation/1133_TestDatabase_DiagnosticRawRecords_6cf02098c0c74410bd8017c2d458b45d.json.zip
 | | |
 
-# <a name="activity-logstabactivity-logs"></a>[アクティビティ ログ](#tab/activity-logs)
+# <a name="activity-logs"></a>[アクティビティ ログ](#tab/activity-logs)
 ### <a name="query-the-activity-logs-table"></a>アクティビティ ログ テーブルに対してクエリを実行する
 
 次のクエリでは、Azure Data Explorer のアクティビティ ログ レコードのデータを分析します。

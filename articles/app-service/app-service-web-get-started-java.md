@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 3cf759294a31fcf90c5a3f4a6cdc68e3c35882e0
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 1929e78b1787e4e5d50908fd3cfc0292de8ea92b
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425386"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226348"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>クイック スタート:Azure App Service on Windows で Java アプリを作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "77425386"
 > この記事では、Windows 上の App Service にアプリをデプロイします。 _Linux_ 上の App Service にデプロイするには、[Linux での Java Web アプリの作成](./containers/quickstart-java.md)に関するページを参照してください。
 >
 
-[Azure App Service](overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。  このクイックスタートでは、[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を [Azure Web App Plugin for Maven](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) と共に使用して Java Web アーカイブ (WAR) ファイルをデプロイする方法を示します。
+[Azure App Service](overview.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。  このクイックスタートでは、[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を [Azure Web App Plugin for Maven](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) と共に使用して Java Web アーカイブ (WAR) ファイルをデプロイする方法を示します。
 
 > [!NOTE]
 > IntelliJ や Eclipse のような一般的な IDE を使っても同じことができます。 [Azure Toolkit for IntelliJ のクイック スタート](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app)または [Azure Toolkit for Eclipse のクイック スタート](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app)で類似するドキュメントを確認してください。
@@ -119,9 +119,20 @@ mvn package azure-webapp:deploy
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 ## <a name="next-steps"></a>次のステップ
+> [!div class="nextstepaction"]
+> [Java を使用して Azure SQL データベースに接続する](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
+
+> [!div class="nextstepaction"]
+> [Java を使用して Azure DB for MySQL に接続する](/azure/mysql/connect-java?toc=/azure/java/toc.json)
+
+> [!div class="nextstepaction"]
+> [Java を使用して Azure DB for PostgreSQL に接続する](/azure/postgresql/connect-java?toc=/azure/java/toc.json)
 
 > [!div class="nextstepaction"]
 > [Java 開発者向けの Azure リソース](/java/azure/)
 
 > [!div class="nextstepaction"]
 > [カスタム ドメインをマップする](app-service-web-tutorial-custom-domain.md)
+
+> [!div class="nextstepaction"]
+> [Azure 用の Maven プラグインの詳細はこちら](https://github.com/microsoft/azure-maven-plugins)

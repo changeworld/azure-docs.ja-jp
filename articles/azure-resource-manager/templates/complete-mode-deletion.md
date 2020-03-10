@@ -2,13 +2,13 @@
 title: 完全モードの削除
 description: リソースの種類に応じて Azure Resource Manager テンプレートで完全モードがどのように処理されるかを示します。
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 80d2ee356e3bc15a178862c453bf7f1ab8d66c77
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 02/26/2020
+ms.openlocfilehash: 5f797974212636460306c6a17869d6b8380545ab
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207810"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664408"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>完全モード デプロイでの Azure リソースの削除
 
@@ -141,7 +141,6 @@ ms.locfileid: "77207810"
 > - [Microsoft.ResourceHealth](#microsoftresourcehealth)
 > - [Microsoft.Resources](#microsoftresources)
 > - [Microsoft.SaaS](#microsoftsaas)
-> - [Microsoft.Scheduler](#microsoftscheduler)
 > - [Microsoft.Search](#microsoftsearch)
 > - [Microsoft.Security](#microsoftsecurity)
 > - [Microsoft.SecurityGraph](#microsoftsecuritygraph)
@@ -297,6 +296,9 @@ ms.locfileid: "77207810"
 > | automationAccounts | はい |
 > | automationAccounts / configurations | はい |
 > | automationAccounts / jobs | いいえ |
+> | automationAccounts / privateEndpointConnectionProxies | いいえ |
+> | automationAccounts / privateEndpointConnections | いいえ |
+> | automationAccounts / privateLinkResources | いいえ |
 > | automationAccounts / runbooks | はい |
 > | automationAccounts / softwareUpdateConfigurations | いいえ |
 > | automationAccounts / webhooks | いいえ |
@@ -687,7 +689,7 @@ ms.locfileid: "77207810"
 > | ReservationTransactions | いいえ |
 > | Tags | いいえ |
 > | tenants | いいえ |
-> | Terms | いいえ |
+> | 用語 | いいえ |
 > | UsageDetails | いいえ |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
@@ -716,6 +718,7 @@ ms.locfileid: "77207810"
 > | registries / importImage | いいえ |
 > | registries / privateEndpointConnectionProxies | いいえ |
 > | registries / privateEndpointConnectionProxies / validate | いいえ |
+> | registries / privateEndpointConnections | いいえ |
 > | registries / privateLinkResources | いいえ |
 > | registries / queueBuild | いいえ |
 > | registries / regenerateCredential | いいえ |
@@ -1057,6 +1060,7 @@ ms.locfileid: "77207810"
 > | partnerNamespaces / eventChannels | いいえ |
 > | partnerRegistrations | はい |
 > | partnerTopics | はい |
+> | partnerTopics / eventSubscriptions | いいえ |
 > | systemTopics | はい |
 > | systemTopics / eventSubscriptions | いいえ |
 > | topics | はい |
@@ -1293,6 +1297,7 @@ ms.locfileid: "77207810"
 > | ------------- | ----------- |
 > | getEntities | いいえ |
 > | managementGroups | いいえ |
+> | managementGroups / settings | いいえ |
 > | resources | いいえ |
 > | startTenantBackfill | いいえ |
 > | tenantBackfillStatus | いいえ |
@@ -1554,6 +1559,7 @@ ms.locfileid: "77207810"
 > | legacyPeerings | いいえ |
 > | peerAsns | いいえ |
 > | peerings | はい |
+> | peeringServiceCountries | いいえ |
 > | peeringServiceProviders | いいえ |
 > | peeringServices | はい |
 
@@ -1678,13 +1684,6 @@ ms.locfileid: "77207810"
 > | ------------- | ----------- |
 > | applications | はい |
 > | saasresources | いいえ |
-
-## <a name="microsoftscheduler"></a>Microsoft.Scheduler
-
-> [!div class="mx-tableFixed"]
-> | リソースの種類 | 完全モードの削除 |
-> | ------------- | ----------- |
-> | jobcollections | はい |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
@@ -2015,6 +2014,7 @@ ms.locfileid: "77207810"
 > | リソースの種類 | 完全モードの削除 |
 > | ------------- | ----------- |
 > | devices | はい |
+> | registeredSubscriptions | いいえ |
 > | vendors | いいえ |
 > | vendors / skus | いいえ |
 > | vendors / vnfs | いいえ |

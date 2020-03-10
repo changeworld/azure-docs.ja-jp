@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: 95733f579740f2928cda917eec0023bf00d53076
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 8e2f8fd7f99c359949b02959cc442f2f3d3ebfff
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722659"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912156"
 ---
 # <a name="deprecation-of-tls-10-and-11-in-iot-hub-and-device-provisioning-service"></a>IoT Hub および Device Provisioning Service での TLS 1.0 および 1.1 の非推奨
 
@@ -25,12 +25,12 @@ ms.locfileid: "76722659"
 
 ## <a name="supported-ciphers"></a>サポートされる暗号
 
-TLS ハンドシェイク中は、次の暗号のみが許可されます。
+TLS ハンドシェイクで使用されるさまざまな暗号が使用可能になるタイムラインを次に示します。
 
-* TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-* TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-* TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
-* TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+* TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 (現在サポートされています)
+* TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 (2020 年の後半にサポートされる予定です)
+* TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (2020 年の後半にサポートされる予定です)
+* TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (2020 年の後半にサポートされる予定です)
 
 
 ## <a name="customer-feedback"></a>カスタマー フィードバック

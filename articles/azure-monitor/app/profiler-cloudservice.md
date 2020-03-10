@@ -1,19 +1,17 @@
 ---
 title: Application Insights でライブ Azure Cloud Services をプロファイリングする | Microsoft Docs
 description: Azure Cloud Services に対して Application Insights Profiler を有効にします。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 682711d7681e3646ae14686b01542bc5d7432179
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 3fbeb1120e97a884135cd4622a49ef97fd43e58e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820501"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671666"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Application Insights でライブ Azure Cloud Services をプロファイリングする
 
@@ -39,7 +37,7 @@ Application Insights Profiler は、Azure Diagnostics 拡張機能と共にイ�
 
 1. Profiler を有効にするために Azure Diagnostics 拡張機能を次のように構成します。
 
-    a. アプリケーション ロールで、[Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) の *diagnostics.wadcfgx* ファイルを探します。  
+    a. アプリケーション ロールで、次に示すように [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) の *diagnostics.wadcfgx* ファイルを探します。  
 
       ![診断構成ファイルの場所](./media/profiler-cloudservice/cloudservice-solutionexplorer.png)  
 
@@ -70,7 +68,7 @@ Application Insights Profiler は、Azure Diagnostics 拡張機能と共にイ�
 
 1. 新しい診断構成でサービスをデプロイすると、ご利用のサービスで Application Insights Profiler が実行されるように構成されます。
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * アプリケーションへのトラフィックを生成します (たとえば、[可用性テスト](monitor-web-app-availability.md)を起動します)。 その後、Application Insights インスタンスへのトレースの送信が開始されるまで 10 ～ 15 分待機します。
 * Azure ポータルで [Profiler トレース](profiler-overview.md?toc=/azure/azure-monitor/toc.json)を表示します。

@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Azure Data Explorer クラスターとデータベースを作成する
+title: クイック スタート:Azure Data Explorer クラスターと DB を作成する
 description: このクイック スタートでは、Azure Data Explorer クラスターとデータベースを作成し、データを取り込む (読み込む) 方法について説明します。
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.openlocfilehash: 895b26fc7f35303cbef6c9df543c87ca435c2290
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: e97a712664a5864062fef2bba36dda76175af715
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984355"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199854"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>クイック スタート:Azure Data Explorer クラスターとデータベースを作成する
 

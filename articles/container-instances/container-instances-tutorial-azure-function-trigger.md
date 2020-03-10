@@ -4,12 +4,12 @@ description: HTTP によってトリガーされるサーバーレス PowerShell
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.custom: ''
-ms.openlocfilehash: 49eb0721972a92f33bda2532367bc78280b6e655
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 51146886e3f52cb6a60d49da0d57aea1e2c55106
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533371"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196537"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>チュートリアル:HTTP によってトリガーされる Azure 関数を使用してコンテナー グループを作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "74533371"
 
 ## <a name="prerequisites"></a>前提条件
 
-ご利用の OS に Visual Studio Code と Azure Functions をインストールして使用するための前提条件については、[Azure で初めての PowerShell 関数を作成する方法](../azure-functions/functions-create-first-function-powershell.md#prerequisites)に関するページを参照してください。
+ご利用の OS に Visual Studio Code と Azure Functions をインストールして使用するための前提条件については、[Azure で初めての関数を作成する方法](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-powershell#configure-your-environment)に関するページを参照してください。
 
 この記事の一部の手順では、Azure CLI を使用します。 Azure Cloud Shell または Azure CLI のローカル インストールを使用してそれらの手順を実行できます。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
@@ -183,7 +183,7 @@ az container logs --resource-group myfunctionapp --name mycontainergroup
 Hello from an Azure container instance triggered by an Azure function
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルで作成したリソースのいずれかが不要になった場合は、[az group delete][az-group-delete] コマンドを実行して、リソース グループとそれに含まれているすべてのリソースを削除できます。 このコマンドは、作成したコンテナー レジストリだけでなく、実行中のコンテナーと関連するすべてのリソースを削除します。
 
@@ -191,9 +191,9 @@ Hello from an Azure container instance triggered by an Azure function
 az group delete --name myfunctionapp
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、HTTP 要求を受け取ってコンテナー グループのデプロイをトリガーする Azure 関数を作成しました。 以下の方法について学習しました。
+このチュートリアルでは、HTTP 要求を受け取ってコンテナー グループのデプロイをトリガーする Azure 関数を作成しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * Visual Studio Code と Azure Functions 拡張機能を使用して、HTTP によってトリガーされる基本的な PowerShell 関数を作成する。

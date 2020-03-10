@@ -6,22 +6,22 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: brendm
-ms.openlocfilehash: e4d3a7fbdb938071b754a16179bcd021985383cc
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 0815aa084462d1b829d64cd7c5d6fa7cebf534fc
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277502"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273208"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Azure Spring Cloud で分散トレースを使用する
 
-Azure Spring Cloud の分散トレース ツールを使用すると、複雑な問題を簡単にデバッグおよび監視できます。 Azure Spring Cloud によって [Azure Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) と [Azure の Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) が統合されています。 この統合により、Azure portal から強力な分散トレース機能を利用できます。
+Azure Spring Cloud の分散トレース ツールを使用すると、複雑な問題を簡単にデバッグおよび監視できます。 Azure Spring Cloud は、[Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) と Azure の [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) を統合します。 この統合により、Azure portal から強力な分散トレース機能を利用できます。
 
 この記事では、次の方法について説明します。
 
 > [!div class="checklist"]
 > * Azure portal で分散トレースを有効にする。
-> * Azure Spring Cloud Sleuth をアプリケーションに追加する。
+> * Spring Cloud Sleuth をアプリケーションに追加する。
 > * マイクロサービス アプリケーションの依存関係マップを表示する。
 > * さまざまなフィルターを使用してトレース データを検索する。
 
@@ -39,7 +39,7 @@ Azure Spring Cloud の分散トレース ツールを使用すると、複雑な
 
    この変更が完了すると、Zipkin センダーは Web に送信できるようになります。
 
-1. [Azure Spring Cloud アプリケーションの準備ガイド](spring-cloud-tutorial-prepare-app-deployment.md)に従っている場合は、この手順をスキップします。 それ以外の場合は、ローカルの開発環境にアクセスし、次の Azure Spring Cloud Sleuth 依存関係を含むように pom.xml ファイルを編集します。
+1. [Azure Spring Cloud アプリケーションの準備ガイド](spring-cloud-tutorial-prepare-app-deployment.md)に従っている場合は、この手順をスキップします。 それ以外の場合は、ローカルの開発環境にアクセスし、次の Spring Cloud Sleuth 依存関係を含むように pom.xml ファイルを編集します。
 
     ```xml
     <dependencyManagement>

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: 884f5ab6fa57b201e1a9105729bf96e10931dca1
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 84ed5db54874231d8bde4d892eedbc60c42a3430
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604070"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918759"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Security Center とは
 
@@ -39,7 +39,7 @@ Azure Security Center は、3 つの緊急性が高いセキュリティの課�
 
 -   **セキュリティ体制を強化する**:Security Center を使用すると、ご自分の環境を評価することができ、リソースの状態や、それらがセキュリティで保護されているかどうかを把握できます。
 
--   **脅威からの保護**:Security Center ではワークロードが評価され、脅威防止の推奨事項と脅威検出アラートが生成されます。
+-   **脅威からの保護**:Security Center ではワークロードが評価され、脅威防止の推奨事項とセキュリティ アラートが生成されます。
 
 -   **より迅速にセキュリティ保護**:Security Center では、すべてがクラウドの速度で行われます。 ネイティブに統合されているので、Security Center のデプロイは容易であり、Azure サービスによる自動プロビジョニングと保護が提供されます。
 
@@ -51,7 +51,7 @@ Security Center はネイティブで Azure の一部なので、Service Fabric�
 
 さらに、Security Center によって、クラウド内またはオンプレミス上にある Azure 以外のサーバーおよび仮想マシンが保護されます。Microsoft Monitoring Agent をインストールすることで、Windows サーバーと Linux サーバーのどちらにも対応できます。 Azure 仮想マシンは、Security Center 内に自動プロビジョニングされます。
 
-エージェントと Azure から収集されたイベントは、セキュリティ分析エンジンで相互に関連付けられ、調整された推奨事項 (強化タスク) が提供されます。これに従うことで、ワークロードをセキュリティで保護できます。また、脅威検出アラートも提供されます。 このようなアラートはできるだけ早く調査し、ワークロードに対して悪意のある攻撃が行われていないことを確認する必要があります。
+エージェントと Azure から収集されたイベントは、セキュリティ分析エンジンで相互に関連付けられ、調整された推奨事項 (強化タスク) が提供されます。これに従うことで、ワークロードをセキュリティで保護できます。また、セキュリティ アラートも提供されます。 このようなアラートはできるだけ早く調査し、ワークロードに対して悪意のある攻撃が行われていないことを確認する必要があります。
 
 Security Center を有効にすると、Security Center に組み込まれたセキュリティ ポリシーが、Security Center カテゴリのビルトインのイニシアティブとして Azure Policy に反映されます。 ビルトインのイニシアティブは、Security Center のすべての登録済みサブスクリプション (Free または Standard レベル) に対して自動的に割り当てられます。 組み込みイニシアティブに含まれるのは監査ポリシーだけです。 Azure Policy における Security Center のポリシーの詳細については、「[セキュリティ ポリシーの操作](tutorial-security-policy.md)」を参照してください。
 
@@ -107,9 +107,9 @@ Security Center の脅威の防止機能には、サイバー キルチェーン
 
 ![Security Center の攻撃に対する推奨事項](media/security-center-intro/sc-attack-recommendation.png)
 
-### <a name="advanced-threat-protection"></a>高度な脅威保護
+### <a name="integration-with-microsoft-defender-advanced-threat-protection"></a>Microsoft Defender Advanced Threat Protection との統合
 
-Security Center では、Windows Defender Advanced Threat Protection とのネイティブ統合をすぐに利用できます。 つまり、Windows 仮想マシンとサーバーは、構成を行うことなく Security Center の推奨事項および評価と完全に統合されます。 高度な脅威検出は、Linux 仮想マシンおよびサーバー用にも提供されており、すぐに利用できます。
+Security Center には、Microsoft Defender Advanced Threat Protection との自動ネイティブ統合機能が備わっています。 つまり、Windows マシンと Linux マシンは、構成を行うことなく Security Center の推奨事項および評価と完全に統合されます。
 
 さらに、Security Center では、サーバー環境のアプリケーション制御ポリシーを自動化することができます。 Security Center の適応型アプリケーション制御を使用すると、Windows サーバー全体の包括的なアプリのホワイトリストを作成できます。 ルールを作成して違反を確認する必要はありません。すべて自動的に行われます。
 
@@ -129,7 +129,7 @@ Security Center には、Azure SQL 内のデータの自動分類を実行する
 
 ### <a name="protect-iot-and-hybrid-cloud-workloads"></a>IoT およびハイブリッド クラウド ワークロードを保護する
 
-Azure Security Center for IoT (モノのインターネット) は、エッジ、オンプレミス、Azure、その他のクラウド上で実行されているワークロードにまたがる統一された可視性と制御、アダプティブな脅威の防止、およびインテリジェントな脅威の検出と対応を提供することによって、ハイブリッド ワークロード保護を簡素化します。 詳細については、[Azure Security Center for IoT](https://docs.microsoft.com/azure/asc-for-iot/) に関するページを参照してください。
+Azure Security Center for IoT (モノのインターネット) は、エッジ、オンプレミス、Azure、その他のクラウド上で実行されているワークロードにまたがる統一された可視性と制御、アダプティブな脅威の防止、脅威に対するインテリジェントな保護と対応を提供することによって、ハイブリッド ワークロード保護を簡素化します。 詳細については、[Azure Security Center for IoT](https://docs.microsoft.com/azure/asc-for-iot/) に関するページを参照してください。
 
 ## <a name="get-secure-faster"></a>より迅速にセキュリティ保護
 
@@ -146,6 +146,5 @@ Security Center で、Azure および Azure リソースとのシームレスで
 ## <a name="next-steps"></a>次のステップ
 
 - Security Center を使用するには、Microsoft Azure のサブスクリプションが必要です。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/free/)にサインアップできます。
-- Security Center の Free 価格レベルは、Azure サブスクリプションがある場合に有効です。 高度なセキュリティ管理と脅威検出の機能を利用するには、Standard 価格レベルにアップグレードする必要があります。 Standard レベルは無料でお試しいただくことができます。 詳しくは、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」ページをご覧ください。
-- 今すぐ Security Center Standard を有効にする準備ができたら、「[クイック スタート:Azure サブスクリプションでの Security Center Standard の利用開始](security-center-get-started.md)」の詳細な手順を参照してください。
-
+- Security Center の Free 価格レベルは、Azure サブスクリプションがある場合に有効です。 高度なセキュリティ管理と脅威に対する保護の機能を利用するには、Standard 価格レベルにアップグレードする必要があります。 Standard レベルは 30 日間無料でお試しいただくことができます。 詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」を参照してください。
+- 今すぐ Security Center Standard を有効にする準備ができたら、「[クイックスタート:Azure サブスクリプションでの Security Center Standard の利用開始](security-center-get-started.md)」の詳細な手順を参照してください。

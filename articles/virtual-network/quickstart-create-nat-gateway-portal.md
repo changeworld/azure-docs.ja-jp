@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 429c221609005136663d5e64a1b8650027cba411
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: c6da4b54dbc982c69e9d3004a5da8f63deffa3e9
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588741"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246029"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>クイック スタート:Azure portal を使用した NAT ゲートウェイの作成
 
@@ -32,27 +32,24 @@ ms.locfileid: "77588741"
 
 [Azure portal](https://portal.azure.com) にサインインします。
 
-### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
+## <a name="virtual-network-and-parameters"></a>仮想ネットワークとパラメーター
 
-VM をデプロイして NAT ゲートウェイを使用する前に、リソース グループおよび仮想ネットワークを作成しておく必要があります。  
+VM をデプロイして NAT ゲートウェイを使用する前に、リソース グループおよび仮想ネットワークを作成しておく必要があります。
 
-1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[仮想ネットワーク]** の順に選択するか、Marketplace 検索で**仮想ネットワーク**を検索します。
+このセクションの手順では、各パラメーターを次のように置き換える必要があります。
 
-2. **[仮想ネットワークの作成]** に次の情報を入力または選択します。
+| パラメーター                   | Value                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupNAT |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | 米国東部 2      |
+| **\<IPv4-address-space>**   | 192.168.0.0\16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 192.168.0.0\24          |
 
-    | 設定 | Value |
-    | ------- | ----- |
-    | 名前 | 「**myVNet**」と入力します。 |
-    | アドレス空間 | 「**192.168.0.0/16**」と入力します。 |
-    | サブスクリプション | サブスクリプションを選択します。|
-    | Resource group | [新規作成] - **[myResourceGroupNAT]** を選択します。 |
-    | Location | **[米国東部 2]** を選択します。|
-    | サブネット - 名前 | 「**mySubnet**」と入力します。 |
-    | サブネット アドレス範囲 | 「**192.168.0.0/24**」と入力します。 |
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-3. 残りの部分は既定値のままにし、 **[作成]** を選択します。
-
-### <a name="create-a-vm-to-use-the-nat-gateway"></a>NAT ゲートウェイを使用する VM の作成
+## <a name="create-a-vm-to-use-the-nat-gateway"></a>NAT ゲートウェイを使用する VM の作成
 
 今度は、NAT サービスを使用する VM を作成します。 この VM には、ユーザーが VM にアクセスできるようにするための、インスタンスレベルのパブリック IP として使用するパブリック IP があります。 NAT サービスはフロー方向を認識し、サブネットの既定のインターネットの宛先を置き換えます。 VM のパブリック IP アドレスは、送信接続には使用されません。
 
@@ -103,7 +100,7 @@ VM をデプロイして NAT ゲートウェイを使用する前に、リソー
     | 名前 | 「**myPublicIP**」と入力します。 |
     | サブスクリプション | サブスクリプションを選択します。|
     | Resource group | **[myResourceGroupNAT]** を選択します。 |
-    | Location | **[米国東部 2]** を選択します。|
+    | 場所 | **[米国東部 2]** を選択します。|
 
 3. 残りの部分は既定値のままにし、 **[作成]** を選択します。
 

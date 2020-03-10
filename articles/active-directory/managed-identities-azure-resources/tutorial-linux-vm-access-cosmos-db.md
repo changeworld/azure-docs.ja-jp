@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/09/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8eb77802a4d6c29bb16912f1d74d950b6461b598
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: f15a269656f205b0acb6a49740dd4c625c0bdd41
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74183339"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248274"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>チュートリアル:Linux VM のシステム割り当てマネージド ID を使用して Azure Cosmos DB にアクセスする 
 
@@ -74,7 +74,7 @@ az resource show --id /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE 
 ```
 応答には、システム割り当てマネージド ID の詳細が含まれています (次のセクションで使用するので、principalID をメモしてください)。
 
-```bash  
+```output  
 {
     "id": "/subscriptions/<SUBSCRIPTION ID>/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAMe>",
   "identity": {
@@ -96,7 +96,7 @@ az role assignment create --assignee <MI PRINCIPALID> --role '<ROLE NAME>' --sco
 
 応答には、作成されたロール割り当ての詳細が含まれています。
 
-```
+```output
 {
   "id": "/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.DocumentDB/databaseAccounts/<COSMOS DB ACCOUNT>/providers/Microsoft.Authorization/roleAssignments/5b44e628-394e-4e7b-bbc3-d6cd4f28f15b",
   "name": "5b44e628-394e-4e7b-bbc3-d6cd4f28f15b",
@@ -159,13 +159,13 @@ CURL 応答では、キーのリストが返されます。  たとえば、読�
 
 これで Cosmos DB アカウントのアクセス キーが取得できました。これを Cosmos DB SDK に渡して、アカウントにアクセスするための呼び出しを行うことができます。  簡単な例として、アクセス キーを Azure CLI に渡す場合があります。  Azure Portal の Cosmos DB アカウント ブレードの **[概要]** タブから `<COSMOS DB CONNECTION URL>` を取得できます。  `<ACCESS KEY>` を前述の手順で取得した値に置き換えます。
 
-```bash
+```azurecli
 az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection "<COSMOS DB CONNECTION URL>" --key <ACCESS KEY>
 ```
 
 この CLI コマンドは、コレクションに関する詳細を返します。
 
-```bash
+```output
 {
   "collection": {
     "_conflicts": "conflicts/",
@@ -223,7 +223,7 @@ az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Linux 仮想マシン上のシステム割り当てマネージド ID を使用し、Cosmos DB にアクセスする方法について学びました。  Cosmos DB の詳細については、以下を参照してください：
 

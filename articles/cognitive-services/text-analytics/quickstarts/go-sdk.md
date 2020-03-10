@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 01/29/2020
+ms.date: 02/26/2020
 ms.author: aahi
-ms.openlocfilehash: 5623be028cfe10c0ea6786b24bf75ae2bf9c5255
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 0b4495616c750b2b3e8431e011d71ae8671af1ef
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560788"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912644"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-for-go"></a>クイック スタート:Go 用 Text Analytics クライアント ライブラリを使用する
 
@@ -28,12 +28,11 @@ ms.locfileid: "77560788"
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
 * 最新バージョンの [Go](https://golang.org/dl/)
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Text Analytics リソースを作成"  target="_blank">Text Analytics リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 
+    * アプリケーションを Text Analytics API に接続するには、作成するリソースのキーとエンドポイントが必要です。 この作業は、このクイックスタートの中で後から行います。
+    * Free 価格レベルを使ってサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
 
 ## <a name="setting-up"></a>設定
-
-### <a name="create-a-text-analytics-azure-resource"></a>Text Analytics Azure リソースを作成する 
-
-[!INCLUDE [text-analytics-resource-creation](../includes/quickstarts/resource-creation.md)]
 
 ### <a name="create-a-new-go-project"></a>新しい Go プロジェクトを作成する
 
@@ -129,7 +128,7 @@ func GetTextAnalyticsClient() textanalytics.BaseClient {
 
 プロジェクト内で `SentimentAnalysis()` を呼び出します。
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Document ID: 1 , Sentiment Score: 0.87
@@ -148,7 +147,7 @@ Document ID: 4 , Sentiment Score: 1.00
 
 プロジェクト内で `LanguageDetection()` を呼び出します。
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Document ID: 0 , Language: English 
@@ -166,7 +165,7 @@ Document ID: 2 , Language: Chinese_Simplified
 
 プロジェクト内で `ExtractEntities()` を呼び出します。
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Document ID: 1
@@ -206,7 +205,7 @@ Document ID: 2
 
 プロジェクト内で `ExtractKeyPhrases()` を呼び出します。
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Document ID: 1

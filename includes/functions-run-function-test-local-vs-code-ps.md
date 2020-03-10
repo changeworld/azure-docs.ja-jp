@@ -2,20 +2,20 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 01/16/2020
+ms.date: 02/19/2020
 ms.author: glenga
-ms.openlocfilehash: 916aa2552e5dd004ec767df98ce7c78f7320efd0
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: edf5fc33ec14d41630462cca1a4ace0663473196
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964130"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191049"
 ---
 ## <a name="run-the-function-locally"></a>関数をローカルで実行する
 
-Azure Functions プロジェクトをローカルで実行してデバッグするために、Azure Functions Core Tools は Visual Studio Code と統合されています。  
+Azure Functions プロジェクトをローカルで実行してデバッグするために、Azure Functions Core Tools は Visual Studio Code と統合されています。 Visual Studio Code をデバッグする方法の詳細については、「[PowerShell Azure Functions をローカル環境でデバッグする](../articles/azure-functions/functions-debug-powershell-local.md)」を参照してください。 
 
-1. 関数をデバッグするには、デバッガーにアタッチする前に、[`Wait-Debugger`](/powershell/module/microsoft.powershell.utility/wait-debugger?view=powershell-6) コマンドレットへの呼び出しを関数コードに挿入し、F5 を押して関数アプリ プロジェクトを開始してからデバッガーをアタッチします。 Core Tools からの出力が**ターミナル** パネルに表示されます。
+1. F5 キーを押して関数アプリ プロジェクトを起動します。 Core Tools からの出力が**ターミナル** パネルに表示されます。
 
 1. **ターミナル** パネルで、HTTP によってトリガーされる関数の URL エンドポイントをコピーします。
 
@@ -38,9 +38,6 @@ Azure Functions プロジェクトをローカルで実行してデバッグす�
 
     ![[ターミナル] パネルでの関数の実行](./media/functions-run-function-test-local-vs-code-ps/function-execution-terminal.png)
 
-1. デバッグを停止するには、Ctrl キーを押しながら C キーを押して Core Tools を停止します。
+1. 完了したら、**Ctrl + C** キーを押して Core Tools を停止します。
 
 関数がローカル コンピューター上で正常に動作することを確認したら、プロジェクトを Azure に発行します。
-
-> [!NOTE]
-> 関数を Azure に公開する前に、`Wait-Debugger` への呼び出しを必ず削除してください。 

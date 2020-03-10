@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 1/16/2020
 ms.author: ushan
 ms.custom: devops
-ms.openlocfilehash: eba793a761bd9f96b1a4ec5d4730f08187a758ef
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 5707a99b329915b35131fe793b0dfabd02348677
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76515259"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912530"
 ---
 # <a name="tutorial-integrated-devops-for-iaas-and-paas-on-azure"></a>チュートリアル:Azure における IaaS と PaaS のために統合された DevOps
 
@@ -55,12 +55,12 @@ Azure Pipelines では、仮想マシンにデプロイするための機能が�
 6. 完了すると、仮想マシンにデプロイするよう継続的デリバリー パイプラインが構成されます。  
    ![AzDevOps_pipeline](media/tutorial-devops-azure-pipelines-classic/azdevops-pipeline.png)
 7. 仮想マシンへのデプロイが進行中であることがわかります。 リンクをクリックすると、パイプラインに移動できます。 **Release-1** をクリックしてデプロイを表示します。 または、 **[編集]** をクリックして、リリース パイプラインの定義を変更することもできます。 
-8. 構成する VM が複数ある場合は、手順 2 から手順 5 を繰り返して、他の VM をデプロイ グループに追加します。 
+8. 構成する VM が複数ある場合は、他の VM がデプロイ グループに追加されるように手順 2 から手順 5 を繰り返します。 
 9. 完了したら、パイプラインの定義をクリックして、Azure DevOps 組織に移動し、リリース パイプラインの **[編集]** をクリックします。 
    ![AzDevOps_edit_pipeline](media/tutorial-devops-azure-pipelines-classic/azdevops-edit-pipeline.png)
 10. **[dev]\(開発\)** ステージの **[1 job, 1 task]\(1 ジョブ、1 タスク\)** というリンクをクリックします。 **[デプロイ]** フェーズをクリックします。  
    ![AzDevOps_deploymentGroup](media/tutorial-devops-azure-pipelines-classic/azdevops-deployment-group.png)
-11. 右側の構成ペインから、既定では、すべてのターゲットへのローリング アップデートが並列で実行されるようにパイプラインが構成されていることがわかります。 デプロイは、1 つずつ、またはスライダーを使用してパーセンテージを基準にして行うように構成することができます。  
+11. 右側の構成ペインから、既定では、すべてのターゲットへのローリング アップデートが並列で実行されるようにパイプラインが構成されていることがわかります。 デプロイは、1 つずつ、またはスライダーを使用してパーセンテージを基準にして行われるように構成することができます。  
   
   
 **カナリア**では、一部の少数のユーザーにゆっくり変更を展開することによりリスクを軽減します。 新バージョンへの信頼度が上がってきたら、インフラストラクチャ内のより多くのサーバーへのリリースを開始し、より多くのユーザーを誘導することができます。 "**仮想マシン**" へのカナリア デプロイは、Azure portal から継続的デリバリー オプションを使用して構成することができます。 その詳細な手順は次のとおりです。 
@@ -69,7 +69,7 @@ Azure Pipelines では、仮想マシンにデプロイするための機能が�
 3. カナリア デプロイに含める VM にユーザー定義タグを追加します。 たとえば、"canary" とします。
 4. それらの VM のパイプラインが構成されたら、パイプラインをクリックし、Azure DevOps 組織を起動して、パイプラインを**編集**し、**開発**ステージに移動します。 "canary" というフィルターにタグを追加します。 
 5. デプロイ グループ フェーズをもう 1 つ追加し、そのデプロイ グループ内の他の VM をターゲットにするためのタグを使用してそのフェーズを構成します。  
-6. 必要に応じて、カナリア デプロイのレベルを上げたり拒否できるように手動の検証手順を構成します。 
+6. 必要に応じて、カナリア デプロイを昇格または拒否できる手動の検証手順を構成します。 
    ![AzDevOps_Canary](media/tutorial-devops-azure-pipelines-classic/azdevops-canary-deploy.png)
 
 **ブルーグリーン**では、同一のスタンバイ環境を設けることでデプロイのダウンタイムを短くします。 どの時点でも、いずれか 1 つの環境が有効になります。 新リリースに向けた準備の過程で、テストの最終ステージをグリーン環境で行います。 グリーン環境でソフトウェアが正常に動作していれば、トラフィックを切り替えて、すべて受信要求をグリーン環境に誘導します。この時点で、ブルー環境はアイドルとなります。

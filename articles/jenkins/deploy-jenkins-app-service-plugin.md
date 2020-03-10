@@ -4,12 +4,12 @@ description: Azure App Service Jenkins プラグインを使用して、Jenkins 
 keywords: Jenkins, Azure, 開発, App Service
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: de1bf0ea06210c86ff1da21dcac667754f11d7f4
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: fcaf45003e865cc5aac3f6bd4580479a27d38b50
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158516"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251455"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Jenkins プラグインを使用した Azure App Service へのデプロイ 
 
@@ -207,10 +207,13 @@ Azure Container Registry を使用している場合は、 **[Docker registry UR
 ### <a name="for-azure-app-service-on-linux"></a>Azure App Service on Linux の場合
 
 1. Web アプリを検証するには、Azure CLI で次のコマンドを実行します。
-    ```CLI
+    
+    ```azurecli
     az acr repository list -n <myRegistry> -o json
     ```
+    
     次のメッセージが表示されます。
+    
     ```CLI
     ["calculator"]
     ```
@@ -227,11 +230,11 @@ Azure Container Registry を使用している場合は、 **[Docker registry UR
 
 Jenkins プラグインでバグが発生した場合は、[Jenkins JIRA](https://issues.jenkins-ci.org/) で特定のコンポーネントについて問題を報告してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure App Service Jenkins プラグインを使用して Azure にデプロイしました。
 
-以下の方法について学習しました。
+以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * ファイルのアップロードを介して Azure App Service をデプロイするように Jenkins を構成する 

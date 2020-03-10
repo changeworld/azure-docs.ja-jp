@@ -7,20 +7,21 @@ ms.author: brysmith
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: 7f5e24261fd5d006004a51186e22f6bfe1b8ab32
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 5a7c4ce6d5868efef4cfb4fbe2183ec8337ff5b6
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589183"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301847"
 ---
 # <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>チュートリアル:ML の実験コードを運用コードに変換する
 
-機械学習プロジェクトでは、実際のデータセットを使用して Jupyter Notebook などのアジャイル ツールで仮説をテストする実験が必要です。 運用のためのモデルの準備ができたら、モデル コードを運用コード リポジトリに配置する必要があります。 場合によっては、モデル コードを Python スクリプトに変換して、運用コード リポジトリに配置する必要があります。 このチュートリアルでは、実験コードを Python スクリプトにエクスポートする方法について、推奨される方法を説明します。  
+機械学習プロジェクトでは、実際のデータセットを使用して Jupyter Notebook などのアジャイル ツールで仮説をテストする実験が必要です。 運用のためのモデルの準備ができたら、モデル コードを運用コード リポジトリに配置する必要があります。 場合によっては、モデル コードを Python スクリプトに変換して、運用コード リポジトリに配置する必要があります。 このチュートリアルでは、実験コードを Python スクリプトにエクスポートする方法について、推奨される方法を説明します。
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
+>
 > * 不要なコードを消去する
 > * Jupyter Notebook コードを関数にリファクタリングする
 > * 関連タスク用の Python スクリプトを作成する
@@ -41,7 +42,7 @@ from sklearn.linear_model import Ridge
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 import joblib
- 
+
 X, y = load_diabetes(return_X_y=True)
 
 X_train, X_test, y_train, y_test = train_test_split(
@@ -64,13 +65,15 @@ joblib.dump(value=reg, filename=model_name)
 ## <a name="refactor-code-into-functions"></a>コードを関数にリファクタリングする
 
 次に、Jupyter コードを関数にリファクタリングする必要があります。 コードを関数にリファクタリングすると、単体テストが容易になり、コードの保守性が向上します。 このセクションでは、次のようにリファクタリングします。
+
 - Diabetes Ridge 回帰トレーニング ノートブック (`experimentation/Diabetes Ridge Regression Training.ipynb`)
 - Diabetes Ridge 回帰スコアリング ノートブック (`experimentation/Diabetes Ridge Regression Scoring.ipynb`)
 
 ### <a name="refactor-diabetes-ridge-regression-training-notebook-into-functions"></a>Diabetes Ridge 回帰トレーニング ノートブックを関数にリファクタリングする
+
 `experimentation/Diabetes Ridge Regression Training.ipynb` で、次の手順を実行します。
 
-1. パラメーター `data` および `alpha` を取って、モデルを返す、`train_model` という関数を作成します。 
+1. パラメーター `data` および `alpha` を取って、モデルを返す、`train_model` という関数を作成します。
 1. “Train Model on Training Set” および “Validate Model on Validation Set” の見出しの下にあるコードを `train_model` 関数にコピーします。
 
 `train_model` 関数は次のコードのようになります。
@@ -106,7 +109,7 @@ def main():
 
     model_name = "sklearn_regression_model.pkl"
     alpha = 0.5
-    
+
     X, y = load_diabetes(return_X_y=True)
 
     X_train, X_test, y_train, y_test = train_test_split(
@@ -147,7 +150,7 @@ def main():
 
     model_name = "sklearn_regression_model.pkl"
     alpha = 0.5
-    
+
     X, y = load_diabetes(return_X_y=True)
 
     X_train, X_test, y_train, y_test = train_test_split(
@@ -163,6 +166,7 @@ main()
 ```
 
 ### <a name="refactor-diabetes-ridge-regression-scoring-notebook-into-functions"></a>Diabetes Ridge 回帰スコアリング ノートブックを関数にリファクタリングする
+
 `experimentation/Diabetes Ridge Regression Scoring.ipynb` で、次の手順を実行します。
 
 1. パラメーターを取らず、何も返さない、`init` という新しい関数を作成します。
@@ -212,6 +216,7 @@ request_header = {}
 prediction = run(raw_data, request_header)
 print("Test result: ", prediction)
 ```
+
 前のコードでは、変数 `raw_data` と `request_header` を設定し、`raw_data` と `request_header` で関数 `run` を呼び出し、予測を出力します。
 
 リファクタリング後、`experimentation/Diabetes Ridge Regression Scoring.ipynb` はマークダウンのない次のコードのようになります。
@@ -242,11 +247,14 @@ print("Test result: ", prediction)
 ```
 
 ## <a name="combine-related-functions-in-python-files"></a>Python ファイルで関連する関数を結合する
+
 3 番目に、コードの再利用を容易にするために、関連する関数を Python ファイルにマージする必要があります。 このセクションでは、次のノートブック用の Python ファイルを作成します。
+
 - Diabetes Ridge 回帰トレーニング ノートブック (`experimentation/Diabetes Ridge Regression Training.ipynb`)
 - Diabetes Ridge 回帰スコアリング ノートブック (`experimentation/Diabetes Ridge Regression Scoring.ipynb`)
 
 ### <a name="create-python-file-for-the-diabetes-ridge-regression-training-notebook"></a>Diabetes Ridge 回帰トレーニング ノートブック用の Python ファイルを作成する
+
 コマンド プロンプトで、nbconvert パッケージと `experimentation/Diabetes Ridge Regression Training.ipynb` のパスを使用する次のステートメントを実行して、ノートブックを実行可能スクリプトに変換します。
 
 ```
@@ -274,7 +282,7 @@ def train_model(data, alpha):
 def main():
     model_name = "sklearn_regression_model.pkl"
     alpha = 0.5
-    
+
     X, y = load_diabetes(return_X_y=True)
 
     X_train, X_test, y_train, y_test = train_test_split(
@@ -292,6 +300,7 @@ main()
 MLOpsPython リポジトリの `diabetes_regression/training` ディレクトリにある `train.py` ファイルは、コマンドライン引数 (つまり、`build_id`、`model_name`、および `alpha`) をサポートしています。 動的なモデル名と `alpha` 値をサポートするために、コマンドライン引数のサポートを `train.py` ファイルに追加することはできますが、コードを正常に実行するための必須ではありません。
 
 ### <a name="create-python-file-for-the-diabetes-ridge-regression-scoring-notebook"></a>Diabetes Ridge 回帰スコアリング ノートブック用の Python ファイルを作成する
+
 コマンド プロンプトで、nbconvert パッケージと `experimentation/Diabetes Ridge Regression Scoring.ipynb` のパスを使用する次のステートメントを実行して、ノートブックを実行可能スクリプトに変換します。
 
 ```
@@ -344,11 +353,13 @@ def init():
 ```
 
 ## <a name="create-unit-tests-for-each-python-file"></a>各 Python ファイルの単体テストを作成する
+
 4 番目に、各 Python ファイルに対して単体テストを作成する必要があります。これにより、コードがより堅牢になり、保守しやすくなります。 このセクションでは、`train.py` の関数の 1 つに対して単体テストを作成します。
 
-`train.py` には 2 つの関数 `train_model` と `main` が含まれています。 各関数には単体テストが必要ですが、このチュートリアルでは Pytest フレームワークを使用して `train_model` 関数の単体テストを 1 つだけ作成します。  Pytest は、唯一の Python 単体テスト フレームワークではありませんが、とても一般的に使用されているものの 1 つです。 詳細については、[Pytest](https://pytest.org) をご覧ください。
+`train.py` には 2 つの関数 `train_model` と `main` が含まれています。 各関数には単体テストが必要ですが、このチュートリアルでは Pytest フレームワークを使用して `train_model` 関数の単体テストを 1 つだけ作成します。 Pytest は、唯一の Python 単体テスト フレームワークではありませんが、とても一般的に使用されているものの 1 つです。 詳細については、[Pytest](https://pytest.org) をご覧ください。
 
 単体テストには通常、次の 3 つの主要なアクションが含まれています。
+
 - オブジェクトを配置する (必要なオブジェクトの作成と設定)
 - オブジェクトを操作する
 - 予期されるものに対してアサートを行う
@@ -379,29 +390,40 @@ class TestTrain:
 ```
 
 ## <a name="use-your-own-model-with-mlopspython-code-template"></a>MLOpsPython コード テンプレートで独自のモデルを使用する
-このガイドの手順に従っている場合は、MLOpsPython リポジトリで使用可能なトレーニング/スコア/テスト スクリプトに関連する一連のスクリプトを使用できます。  上記の構造に従って、次の手順では、独自の機械学習プロジェクトでこれらのファイルを使用するために必要なことについて順を追って説明します。  
 
-1.  ファースト ステップ ガイドに従う
-2.  トレーニング コードを置き換える
-3.  スコア コードを置き換える
-4.  評価コードを更新する
+このガイドの手順に従っている場合は、MLOpsPython リポジトリで使用可能なトレーニング/スコア/テスト スクリプトに関連する一連のスクリプトを使用できます。  上記の構造に従って、次の手順では、独自の機械学習プロジェクトでこれらのファイルを使用するために必要なことについて順を追って説明します。
+
+1. MLOpsPython の[ファースト ステップ](https://github.com/microsoft/MLOpsPython/blob/master/docs/getting_started.md) ガイドに従う
+2. MLOpsPython の[ブートストラップの手順](https://github.com/microsoft/MLOpsPython/blob/master/bootstrap/README.md)に従って、プロジェクトの開始点を作成する
+3. トレーニング コードを置き換える
+4. スコア コードを置き換える
+5. 評価コードを更新する
 
 ### <a name="follow-the-getting-started-guide"></a>ファースト ステップ ガイドに従う
-サポート インフラストラクチャとパイプラインで MLOpsPython を実行するには、ファースト ステップ ガイドに従う必要があります。  構造とパイプラインが適切に機能することを確認するために、独自のコードを組み込む前に MLOpsPython コードをそのままデプロイすることをお勧めします。  また、リポジトリのコード構造を理解するのにも役立ちます。
+MLOpsPython を実行するためのサポート インフラストラクチャとパイプラインを用意するには、[ファースト ステップ](https://github.com/microsoft/MLOpsPython/blob/master/docs/getting_started.md) ガイドに従う必要があります。
+
+### <a name="follow-the-bootstrap-instructions"></a>ブートストラップの手順に従う
+
+「[MLOpsPython リポジトリからのブートストラップ](https://github.com/microsoft/MLOpsPython/blob/master/bootstrap/README.md)」ガイドは、プロジェクトのリポジトリを迅速に準備するのに役立ちます。
+
+**注:** ブートストラップ スクリプトでは diabetes_regression フォルダーの名前が選択したプロジェクト名に変更されるため、パスが関係している場合はプロジェクトを `[project name]` として参照しています。
 
 ### <a name="replace-training-code"></a>トレーニング コードを置き換える
-ソリューションを独自のコードで機能させるには、モデルのトレーニングに使用するコードを置き換え、対応する単体テストを削除または置換することが必要です。  具体的には、次の手順に従います。
 
-1. `diabetes_regression\training\train.py` を置き換えます。 このスクリプトはローカルまたは Azure ML コンピューティングでモデルをトレーニングします。
-1. `tests/unit/code_test.py` にあるトレーニング単体テストを削除または置換します
+ソリューションを独自のコードで機能させるには、モデルのトレーニングに使用するコードを置き換え、対応する単体テストを削除または置換することが必要です。 具体的には、次の手順に従います。
+
+1. `[project name]/training/train.py` を置き換えます。 このスクリプトはローカルまたは Azure ML コンピューティングでモデルをトレーニングします。
+1. `[project name]/training/test_train.py` にあるトレーニング単体テストを削除または置換します
 
 ### <a name="replace-score-code"></a>スコア コードを置き換える
-モデルでリアルタイム推論機能を提供するには、スコア コードを置き換える必要があります。 MLOpsPython テンプレートは、スコア コードを使用してモデルをデプロイし、ACI、AKS、または Web アプリでリアルタイム スコアリングを行います。  スコアリングを継続する場合は、`diabetes_regression/scoring/score.py` を置き換えます。
+
+モデルでリアルタイム推論機能を提供するには、スコア コードを置き換える必要があります。 MLOpsPython テンプレートは、スコア コードを使用してモデルをデプロイし、ACI、AKS、または Web アプリでリアルタイム スコアリングを行います。 スコアリングを継続する場合は、`[project name]/scoring/score.py` を置き換えます。
 
 ### <a name="update-evaluation-code"></a>評価コードを更新する
-MLOpsPython テンプレートは、evaluate_model スクリプトを使用して、新しくトレーニングされたモデルと現在の運用モデルのパフォーマンスを平均二乗誤差に基づいて比較します。 新しくトレーニングされたモデルのパフォーマンスが現在の運用モデルよりも優れている場合、パイプラインは継続されます。 そうでない場合、パイプラインは停止されます。 評価を継続するには、`diabetes_regression/evaluate/evaluate_model.py` 内の `mse` のすべてのインスタンスを必要なメトリックに置き換えます。 
 
-評価を削除するには、`.pipelines\diabetes_regression-variables` の DevOps パイプライン変数 `RUN_EVALUATION` を `false` に設定します。
+MLOpsPython テンプレートは、evaluate_model スクリプトを使用して、新しくトレーニングされたモデルと現在の運用モデルのパフォーマンスを平均二乗誤差に基づいて比較します。 新しくトレーニングされたモデルのパフォーマンスが現在の運用モデルよりも優れている場合、パイプラインは継続されます。 そうでない場合、パイプラインは取り消されます。 評価を継続するには、`[project name]/evaluate/evaluate_model.py` 内の `mse` のすべてのインスタンスを必要なメトリックに置き換えます。
+
+評価を削除するには、`.pipelines/[project name]-variables-template.yml` の DevOps パイプライン変数 `RUN_EVALUATION` を `false` に設定します。
 
 ## <a name="next-steps"></a>次のステップ
 

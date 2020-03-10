@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 99ba530d4857520693060d83ad78a7f127003a3d
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: f521cc68476e2f9df1cc8288cf41156da3851cd0
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732326"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251891"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>チュートリアル:Azure Portal と Standard Load Balancer を使用して、可用性ゾーン間で VM の負荷を分散します
 
@@ -43,7 +43,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
 ## <a name="create-a-standard-load-balancer"></a>Standard Load Balancer を作成する
 
@@ -52,13 +52,13 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
 1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[ロード バランサー]** の順にクリックします。
 2. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[確認と作成]** を選択します。
 
-    | 設定                 | 値                                              |
+    | 設定                 | Value                                              |
     | ---                     | ---                                                |
     | サブスクリプション               | サブスクリプションを選択します。    |    
     | Resource group         | **[新規作成]** を選択して、テキスト ボックスに「*MyResourceGroupLBAZ*」と入力します。|
-    | Name                   | *myLoadBalancer*                                   |
+    | 名前                   | *myLoadBalancer*                                   |
     | リージョン         | **[西ヨーロッパ]** を選択します。                                        |
-    | 種類          | **[パブリック]** を選択します。                                        |
+    | Type          | **[パブリック]** を選択します。                                        |
     | SKU           | **[Standard]** を選択します。                          |
     | パブリック IP アドレス | **[新規作成]** を選択します。 |
     | パブリック IP アドレス名              | テキスト ボックスに「*myPublicIP*」と入力します。   |
@@ -69,16 +69,20 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
 
 このセクションでは、仮想ネットワークを作成し、そのリージョンの複数のゾーンに仮想マシンを作成し、ゾーン冗長ロード バランサーをテストするために仮想マシンに IIS をインストールします。 今後ゾーンに障害が発生すると、同じゾーン内の VM のヘルス プローブは失敗し、トラフィックは他のゾーン内の VM によって引き続き処理されます。
 
-### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
-バックエンド サーバーを展開するための仮想ネットワークを作成します。
+## <a name="virtual-network-and-parameters"></a>仮想ネットワークとパラメーター
 
-1. 画面の左上で **[リソースの作成]**  >  **[ネットワーク]**  >  **[仮想ネットワーク]** の順にクリックし、仮想ネットワークの以下の値を入力します。
-    - *myVnet* - 仮想ネットワークの名前。
-    - *myResourceGroupLBAZ* - 既存のリソース グループの名前。
-    - *myBackendSubnet* - サブネット名。
-2. **[作成]** をクリックして、仮想ネットワークを作成します。
+このセクションの手順では、各パラメーターを次のように置き換える必要があります。
 
-    ![仮想ネットワークの作成](./media/load-balancer-standard-public-availability-zones-portal/2-load-balancer-virtual-network.png)
+| パラメーター                   | Value                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupLBAZ (既存のリソース グループを選択) |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | 西ヨーロッパ      |
+| **\<IPv4-address-space>**   | 10.0.0.0\16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.0.0.0\24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
 

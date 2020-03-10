@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 2570e3753dd93173166c6b563e9add69bed3f862
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: d2c5a094c45eeca779a33a39261bd3fc17d53d1a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922269"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913856"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service 向けの Linux Python アプリを構成する
 
@@ -47,6 +47,28 @@ Python バージョンを 3.7 に設定するには、[Cloud Shell](https://shel
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --linux-fx-version "PYTHON|3.7"
 ```
+
+## <a name="customize-build-automation"></a>ビルドの自動化のカスタマイズ
+
+ビルドの自動化を有効にして Git または zip パッケージを使用してアプリをデプロイする場合、App Service のビルド自動化によって、次の手順が実行されます。
+
+1. `PRE_BUILD_SCRIPT_PATH` によって指定された場合、カスタム スクリプトを実行します。
+1. `pip install -r requirements.txt` を実行します。
+1. リポジトリのルートに *manage.py* がある場合、*manage.py collectstatic* を実行します。 ただし、`DISABLE_COLLECTSTATIC` が `true` に設定されている場合、この手順はスキップされます。
+1. `POST_BUILD_SCRIPT_PATH` によって指定された場合、カスタム スクリプトを実行します。
+
+`PRE_BUILD_COMMAND`、`POST_BUILD_COMMAND`、`DISABLE_COLLECTSTATIC` は、既定では空の環境変数です。 ビルド前のコマンドを実行するには、`PRE_BUILD_COMMAND` を定義します。 ビルド後のコマンドを実行するには、`POST_BUILD_COMMAND` を定義します。 Django アプリをビルドするときに collectstatic の実行を無効にするには、`DISABLE_COLLECTSTATIC=true` を設定します。
+
+次の例では、一連のコマンドに対して 2 つの変数をコンマ区切りで指定しています。
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+ビルドの自動化をカスタマイズするためのその他の環境変数については、「[Oryx の構成](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)」を参照してください。
+
+Linux の Python アプリが App Service でどのように実行、ビルドされるかについて詳しくは、[Python アプリの検出とビルドに関する Oryx のドキュメント](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/python.md)を参照してください。
 
 ## <a name="container-characteristics"></a>コンテナーの特性
 

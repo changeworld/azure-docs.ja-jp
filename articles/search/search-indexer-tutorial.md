@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure SQL データベースのデータに C# でインデックスを付ける
+title: 'チュートリアル:Azure SQL データベースから抽出したデータのインデックスを C# で作成する '
 titleSuffix: Azure Cognitive Search
 description: この C# チュートリアルでは、Azure SQL データベースに接続して検索可能なデータを抽出し、Azure Cognitive Search インデックスにそれを読み込みます。
 manager: nitinme
@@ -7,21 +7,23 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/26/2020
-ms.openlocfilehash: 978587b68e719b79db31ff25adaf2b38d2235095
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.date: 02/28/2020
+ms.openlocfilehash: 7660c89032ea3ef8371655b94b75c1f60603ee32
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650079"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193970"
 ---
-# <a name="tutorial-index-azure-sql-data-in-c-using-azure-cognitive-search-indexers"></a>チュートリアル:Azure Cognitive Search インデクサーを使用して C# で Azure SQL データのインデックスを作成する
+# <a name="tutorial-use-c-to-index-data-from-sql-databases-in-azure-cognitive-search"></a>チュートリアル:C# を使用して SQL データベースから抽出したデータのインデックスを Azure Cognitive Search に作成する
 
-Azure SQL データベースから検索可能なデータを抽出して検索インデックスに送信する[インデクサー](search-indexer-overview.md)を、C# を使用して構成します。 このチュートリアルでは、[Azure Cognitive Search .NET クライアント ライブラリ](https://aka.ms/search-sdk)と .NET Core コンソール アプリケーションを使用して次のタスクを行います。
+Azure SQL データベースから検索可能なデータを抽出し、それを Azure Cognitive Search の検索インデックスに送信するように[インデクサー](search-indexer-overview.md)を構成します。 
+
+このチュートリアルでは、C# と [.NET SDK](https://aka.ms/search-sdk) を使用して次のタスクを実行します。
 
 > [!div class="checklist"]
 > * Azure SQL Database に接続するデータ ソースを作成する
-> * インデクサーを構成する
+> * インデクサーの作成
 > * インデクサーを実行してインデックスにデータを読み込む
 > * 検証ステップとしてインデックスを照会する
 
@@ -36,39 +38,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > [!Note]
 > このチュートリアルには無料のサービスを使用できます。 無料の検索サービスでは、3 つのインデックス、3 つのインデクサー、3 つのデータ ソースという制限があります。 このチュートリアルでは、それぞれ 1 つずつ作成します。 開始する前に、ご利用のサービスに新しいリソースを受け入れる余地があることを確認してください。
 
-## <a name="download-source-code"></a>ソース コードのダウンロード
+## <a name="download-files"></a>ファイルのダウンロード
 
 このチュートリアルのソース コードは、[Azure-Samples/search-dotnet-getting-started](https://github.com/Azure-Samples/search-dotnet-getting-started) GitHub リポジトリ内の [DotNetHowToIndexer](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToIndexers) フォルダーにあります。
 
-## <a name="get-a-key-and-url"></a>キーと URL を入手する
+## <a name="1---create-services"></a>1 - サービスを作成する
 
-API 呼び出しには、サービス URL とアクセス キーが必要です。 両方を使用して検索サービスが作成されるので、Azure Cognitive Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
+このチュートリアルでは、インデックス作成とクエリに Azure Cognitive Search を使用し、外部データ ソースとして Azure SQL Database を使用します。 可能である場合は、近接性と管理性を高めるために、両方のサービスを同じリージョンおよびリソース グループ内に作成してください。 実際には、Azure SQL Database の場所はどのリージョンでもかまいません。
 
-1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
+### <a name="start-with-azure-sql-database"></a>最初に Azure SQL Database で行う作業
 
-1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
-
-   ![HTTP エンドポイントとアクセス キーを取得する](media/search-get-started-postman/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
-
-## <a name="set-up-connections"></a>接続を設定する
-
-1. Visual Studio を起動し、**DotNetHowToIndexers.sln** を開きます。
-
-1. ソリューション エクスプローラーで **appsettings.json** を開き、プレースホルダーの値を検索サービスへの接続情報に置き換えます。 完全な URL が "https://my-demo-service.search.windows.net" である場合、指定するサービス名は "my-demo-service" です。
-
-    ```json
-    {
-      "SearchServiceName": "Put your search service name here",
-      "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
-      "AzureSqlConnectionString": "Put your Azure SQL database connection string here",
-    }
-    ```
-
-最後のエントリには、既存のデータベースを指定する必要があります。 これは、次の手順で作成します。
-
-## <a name="prepare-sample-data"></a>サンプル データの準備
-
-この手順では、インデクサーがクロールできる外部データ ソースを Azure SQL Database に作成します。 Azure Portal とサンプルの *hotels.sql* ファイルを使用して、Azure SQL Database にデータセットを作成することができます。 Azure Cognitive Search で使用されるのは、ビューやクエリから生成されるようなフラット化された行セットです。 サンプル ソリューションの SQL ファイルでは、単一のテーブルを作成してデータを投入します。
+この手順では、インデクサーがクロールできる外部データ ソースを Azure SQL Database に作成します。 Azure portal とサンプル ダウンロードの *hotels.sql* ファイルを使用して、Azure SQL Database にデータセットを作成することができます。 Azure Cognitive Search で使用されるのは、ビューやクエリから生成されるようなフラット化された行セットです。 サンプル ソリューションの SQL ファイルでは、単一のテーブルを作成してデータを投入します。
 
 既に Azure SQL Database リソースがある場合は、hotels テーブルをそこに追加して、手順 4. から始めてください。
 
@@ -104,59 +84,45 @@ API 呼び出しには、サービス URL とアクセス キーが必要です�
     Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
     ```
 
-1. Visual Studio で **appsettings.json** ファイルの 3 つ目のエントリとして、接続文字列を "AzureSqlConnectionString" に貼り付けます。
+この接続文字列は、次の演習で環境を設定するときに必要になります。
+
+### <a name="azure-cognitive-search"></a>Azure Cognitive Search
+
+次のコンポーネントは Azure Cognitive Search であり、[ポータルで作成](search-create-service-portal.md)できます。 このチュートリアルは Free レベルを使用して完了できます。 
+
+### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Azure Cognitive Search のための管理者 API キーと URL を取得する
+
+API 呼び出しには、サービス URL とアクセス キーが必要です。 両方を使用して検索サービスが作成されるので、Azure Cognitive Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
+
+1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
+
+1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
+
+   ![HTTP エンドポイントとアクセス キーを取得する](media/search-get-started-postman/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
+
+## <a name="2---set-up-your-environment"></a>2 - 環境を設定する
+
+1. Visual Studio を起動し、**DotNetHowToIndexers.sln** を開きます。
+
+1. ソリューション エクスプローラーで **appsettings.json** を開き、接続情報を指定します。
+
+1. 完全な URL が "https://my-demo-service.search.windows.net" である場合、`searchServiceName` に指定するサービス名は "my-demo-service" です。
+
+1. `AzureSqlConnectionString` には、次のような文字列形式を指定します: `"Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"`
 
     ```json
     {
       "SearchServiceName": "<placeholder-Azure-Search-service-name>",
       "SearchServiceAdminApiKey": "<placeholder-admin-key-for-Azure-Search>",
-      "AzureSqlConnectionString": "Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
+      "AzureSqlConnectionString": "<placeholder-ADO.NET-connection-string",
     }
     ```
 
-1. **appsettings.json** ファイルで、接続文字列にパスワードを入力します。 データベースとユーザー名は接続文字列にコピーされますが、パスワードは手動で入力する必要があります。
+1. 接続文字列に有効なパスワードが含まれていることを確認してください。 データベース名とユーザー名はコピーされますが、パスワードは手動で入力する必要があります。
 
-## <a name="build-the-solution"></a>ソリューションをビルドします。
+## <a name="3---create-the-pipeline"></a>3 - パイプラインを作成する
 
-F5 キーを押して、ソリューションをビルドします。 プログラムがデバッグ モードで実行されます。 コンソール ウィンドウで各操作の状態が報告されます。
-
-   ![コンソール出力](./media/search-indexer-tutorial/console-output.png "コンソール出力")
-
-コードは Visual Studio でローカルに実行され、Azure 上の検索サービスに接続されます。次に、それが Azure SQL Database に接続され、データセットが取得されます。 このように多くの操作が伴うため、障害が発生し得るポイントがいくつも存在します。 エラーが発生した場合は、まず次の条件を確認してください。
-
-+ 指定する Search サービスの接続情報は、このチュートリアルのサービス名に限定されます。 完全な URL を入力した場合、インデックスの作成時に接続エラーで操作が停止します。
-
-+ **appsettings.json** のデータベース接続情報。 これは、ポータルから取得した ADO.NET 接続文字列に、実際のデータベースの有効なユーザー名とパスワードを反映したものであることが必要です。 ユーザー アカウントには、データを取得するためのアクセス許可が必要です。 ローカル クライアントの IP アドレスに、アクセス権が付与されている必要があります。
-
-+ リソース制限。 既に述べたように、Free レベルは、インデックス、インデクサー、データ ソースがいずれも 3 つまでに制限されています。 上限に達した場合、新しいオブジェクトを作成できなくなります。
-
-## <a name="check-results"></a>結果をチェックする
-
-Azure portal を使用してオブジェクトの作成を検証し、**検索エクスプローラー**を使用してインデックスを照会します。
-
-1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、それぞれのリストを順に開き、オブジェクトが作成されていることを確認します。 **インデックス**、**インデクサー**、**データ ソース**の名前は、それぞれ "hotels"、"azure-sql-indexer"、"azure-sql" です。
-
-   ![インデクサーとデータ ソースのタイル](./media/search-indexer-tutorial/tiles-portal.png)
-
-1. hotels インデックスを選択します。 hotels ページの先頭のタブは **[検索エクスプローラー]** です。 
-
-1. **[検索]** をクリックして空のクエリを発行します。 
-
-   インデックスの 3 つのエントリが JSON ドキュメントとして返されます。 Search エクスプローラーは、構造全体が見えるようにドキュメントを JSON 形式で返します。
-
-   ![インデックスのクエリ](./media/search-indexer-tutorial/portal-search.png "インデックスのクエリ")
-   
-1. 次に、検索文字列として「`search=river&$count=true`」を入力します。 
-
-   このクエリは、`river` という語についてフルテキスト検索を呼び出すもので、その結果には、一致したドキュメントの件数が含まれます。 一致したドキュメントの件数は、インデックスが大きく数千から数百万のドキュメントが含まれている場合のテストで役立ちます。 今回のケースで、このクエリに一致するドキュメントは 1 件だけです。
-
-1. 最後に、JSON 出力を必要なフィールドに限定するため、検索文字列として「`search=river&$count=true&$select=hotelId, baseRate, description`」を入力します。 
-
-   クエリの応答が選択フィールドに制限され、より簡潔な出力内容が得られます。
-
-## <a name="explore-the-code"></a>コードを調べる
-
-サンプル コードで作成される内容がわかったので、ソリューションに戻ってコードを確認してみましょう。 関連するコードは 2 つのファイルにあります。
+インデクサーには、データ ソース オブジェクトとインデックスが必要です。 関連するコードは 2 つのファイルにあります。
 
   + **hotel.cs**: インデックスを定義するスキーマが含まれています。
   + **Program.cs**: サービスの構造を作成したり管理したりするための関数が含まれています。
@@ -230,17 +196,61 @@ public string HotelName { get; set; }
   }
   ```
 
+## <a name="4---build-the-solution"></a>4 - ソリューションをビルドする
+
+F5 キーを押して、ソリューションをビルドおよび実行します。 プログラムがデバッグ モードで実行されます。 コンソール ウィンドウで各操作の状態が報告されます。
+
+   ![コンソール出力](./media/search-indexer-tutorial/console-output.png "コンソール出力")
+
+コードは Visual Studio でローカルに実行され、Azure 上の検索サービスに接続されます。次に、それが Azure SQL Database に接続され、データセットが取得されます。 このように多くの操作が伴うため、障害が発生し得るポイントがいくつも存在します。 エラーが発生した場合は、まず次の条件を確認してください。
+
++ 指定する Search サービスの接続情報は、このチュートリアルのサービス名に限定されます。 完全な URL を入力した場合、インデックスの作成時に接続エラーで操作が停止します。
+
++ **appsettings.json** のデータベース接続情報。 これは、ポータルから取得した ADO.NET 接続文字列に、実際のデータベースの有効なユーザー名とパスワードを反映したものであることが必要です。 ユーザー アカウントには、データを取得するためのアクセス許可が必要です。 ローカル クライアントの IP アドレスに、アクセス権が付与されている必要があります。
+
++ リソース制限。 既に述べたように、Free レベルは、インデックス、インデクサー、データ ソースがいずれも 3 つまでに制限されています。 上限に達した場合、新しいオブジェクトを作成できなくなります。
+
+## <a name="5---search"></a>5 - 検索する
+
+Azure portal を使用してオブジェクトの作成を検証し、**検索エクスプローラー**を使用してインデックスを照会します。
+
+1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、それぞれのリストを順に開き、オブジェクトが作成されていることを確認します。 **インデックス**、**インデクサー**、**データ ソース**の名前は、それぞれ "hotels"、"azure-sql-indexer"、"azure-sql" です。
+
+   ![インデクサーとデータ ソースのタイル](./media/search-indexer-tutorial/tiles-portal.png)
+
+1. hotels インデックスを選択します。 hotels ページの先頭のタブは **[検索エクスプローラー]** です。 
+
+1. **[検索]** をクリックして空のクエリを発行します。 
+
+   インデックスの 3 つのエントリが JSON ドキュメントとして返されます。 Search エクスプローラーは、構造全体が見えるようにドキュメントを JSON 形式で返します。
+
+   ![インデックスのクエリ](./media/search-indexer-tutorial/portal-search.png "インデックスのクエリ")
+   
+1. 次に、検索文字列として「`search=river&$count=true`」を入力します。 
+
+   このクエリは、`river` という語についてフルテキスト検索を呼び出すもので、その結果には、一致したドキュメントの件数が含まれます。 一致したドキュメントの件数は、インデックスが大きく数千から数百万のドキュメントが含まれている場合のテストで役立ちます。 今回のケースで、このクエリに一致するドキュメントは 1 件だけです。
+
+1. 最後に、JSON 出力を必要なフィールドに限定するため、検索文字列として「`search=river&$count=true&$select=hotelId, baseRate, description`」を入力します。 
+
+   クエリの応答が選択フィールドに制限され、より簡潔な出力内容が得られます。
+
+## <a name="reset-and-rerun"></a>リセットして再実行する
+
+開発の初期の実験的な段階では、設計反復のための最も実用的なアプローチは、Azure Cognitive Search からオブジェクトを削除してリビルドできるようにすることです。 リソース名は一意です。 オブジェクトを削除すると、同じ名前を使用して再作成することができます。
+
+このチュートリアルのサンプル コードでは、コードを再実行できるよう、既存のオブジェクトをチェックしてそれらを削除しています。
+
+ポータルを使用して、インデックス、インデクサー、およびデータ ソースを削除することもできます。
+
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 所有するサブスクリプションを使用している場合は、プロジェクトの終了時に、不要になったリソースを削除することをお勧めします。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
 
 ポータルの左側のナビゲーション ペインにある [すべてのリソース] または [リソース グループ] リンクを使って、リソースを検索および管理できます。
 
-無料サービスを使っている場合は、3 つのインデックス、インデクサー、およびデータソースに制限されることに注意してください。 ポータルで個別の項目を削除して、制限を超えないようにすることができます。
-
 ## <a name="next-steps"></a>次のステップ
 
-Azure Cognitive Search では、複数の Azure データ ソースでインデクサーを利用できます。 次のステップで、Azure Blob Storage のインデクサーを詳しく見てみましょう。
+SQL Database のインデックス作成の基礎を理解したら、インデクサーの構成について詳しく見てみましょう。
 
 > [!div class="nextstepaction"]
-> [Azure Blob Storage 内ドキュメントのインデックスを Azure Search で作成する](search-howto-indexing-azure-blob-storage.md)
+> [Azure SQL データベースのインデクサーを構成する](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: 268e6c5a999244eb643990143d1102d129b7af68
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 71a330523f1d3393a365fec29fb66f5c9773b6cc
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310058"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207066"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して Azure Functions アプリを作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "76310058"
 
 6. **[Configuration Explorer]\(構成エクスプローラー)**  >  **[+ 作成]** の順に選択して、次のキーと値のペアを追加します。
 
-    | Key | 値 |
+    | Key | Value |
     |---|---|
     | TestApp:Settings:Message | Azure App Configuration からのデータ |
 
@@ -42,11 +42,7 @@ ms.locfileid: "76310058"
 
 ## <a name="connect-to-an-app-configuration-store"></a>App Configuration ストアに接続する
 
-1. プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。 **[参照]** タブで以下の NuGet パッケージを検索し、プロジェクトに追加します。 見つからない場合は、 **[プレリリースを含める]** チェック ボックスをオンにします。
-
-    ```
-    Microsoft.Extensions.Configuration.AzureAppConfiguration 3.0.0-preview-010550001-251 or later
-    ```
+1. プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。 **[参照]** タブで `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet パッケージを検索し、プロジェクトに追加します。 見つからない場合は、 **[プレリリースを含める]** チェック ボックスをオンにします。
 
 2. *Function1.cs* を開き、.Net Core 構成および App Configuration 構成プロバイダーの名前空間を追加します。
 
@@ -54,6 +50,7 @@ ms.locfileid: "76310058"
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
+
 3. `IConfiguration` のシングルトン インスタンスを作成するために、`Configuration` という名前の `static` プロパティを追加します。 `AddAzureAppConfiguration()` を呼び出して App Configuration に接続するための `static` コンストラクターを追加します。 これによって、アプリケーションの起動時に一度だけ構成が読み込まれます。 以後、すべての Functions 呼び出しについて、同じ構成インスタンスが使用されます。
 
     ```csharp
@@ -66,6 +63,7 @@ ms.locfileid: "76310058"
         Configuration = builder.Build();
     }
     ```
+
 4. 構成から値を読み取るように `Run` メソッドを更新します。
 
     ```csharp
@@ -76,7 +74,7 @@ ms.locfileid: "76310058"
 
         string keyName = "TestApp:Settings:Message";
         string message = Configuration[keyName];
-            
+
         return message != null
             ? (ActionResult)new OkObjectResult(message)
             : new BadRequestObjectResult($"Please create a key-value with the key '{keyName}' in App Configuration.");
@@ -90,14 +88,18 @@ ms.locfileid: "76310058"
     ```CLI
         setx ConnectionString "connection-string-of-your-app-configuration-store"
     ```
+
     Windows PowerShell を使用する場合は、次のコマンドを実行します。
 
     ```azurepowershell
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
     ```
+
     macOS または Linux を使用する場合は、次のコマンドを実行します。
 
+    ```bash
         export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```
 
 2. F5 キーを押して関数をテストします。 メッセージが表示されたら、Visual Studio からの要求に同意し、**Azure Functions Core (CLI)** ツールをダウンロードしてインストールします。 また、ツールで HTTP 要求を処理できるように、ファイアウォールの例外を有効にすることが必要になる場合もあります。
 

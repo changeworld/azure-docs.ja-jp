@@ -1,36 +1,35 @@
 ---
-title: Azure DevOps Projects を使用して Node.js 用の CI/CD パイプラインを作成する
+title: GatsbyJS と Azure DevOps Projects を使用して PWA 用の CI/CD パイプラインを作成する
 description: DevOps Projects を利用すると、Azure を使い始めるのが簡単になります。 いくつかの簡単な手順により、選択した Azure サービス上でアプリを稼働させることができます。
 ms.prod: devops
 ms.technology: devops-cicd
 services: vsts
 documentationcenter: vs-devops-build
-author: mlearned
-manager: gwallace
+author: arob98
+manager: angrobe
 editor: ''
 ms.assetid: ''
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 07/09/2018
-ms.author: mlearned
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
+ms.date: 02/24/2020
+ms.author: angrobe
+ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 35eebeaa393ff75ada11752aaf9f195efddfa12b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 508a61d6bbb00692855e09601aed67ab3be9cc8d
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049797"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78209069"
 ---
 #  <a name="quickstart-create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-projects"></a>クイック スタート:Azure DevOps Projects を使用して Azure Pipelines に Node.js 用の CI/CD パイプラインを作成する
-
-このクイックスタートでは、Azure DevOps Projects の簡素化されたエクスペリエンスを使用して、Azure Pipelines 内に Node.js アプリ用の継続的インテグレーション (CI) および継続的デリバリー (CD) のパイプラインを設定します。 Azure DevOps Projects では、アプリの開発、デプロイ、監視に必要なすべてのものが設定されます。 
+このクイックスタートでは、[GatsbyJS](https://www.gatsbyjs.org/) と簡略化された Azure DevOps プロジェクトの作成エクスペリエンスを使用して NodeJS のプログレッシブ Web アプリ (PWA) を作成します。 完了すると、Azure Pipelines に PWA 用の継続的インテグレーション (CI) と継続的デリバリー (CD) パイプラインが作成されます。 Azure DevOps Projects により、開発、デプロイ、監視に必要なものがすべて設定されます。
 
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
-- [Azure DevOps](https://azure.microsoft.com/services/devops/) のアカウントと組織。
+- [Azure DevOps](https://azure.microsoft.com/services/devops/) 組織。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -40,42 +39,121 @@ DevOps Projects によって、Azure Pipelines に CI/CD パイプラインが�
 
    ![Azure portal で Azure リソースを作成する](_img/azure-devops-project-nodejs/create-azure-resource.png)
 
-1. **[DevOps Projects]** を検索して選択し、 **[作成]** を選択します。
+2. **[DevOps Projects]** を検索して選択し、 **[作成]** を選択します。
+
+ ![DevOps プロジェクトを作成する](_img/azure-devops-project-nodejs/create-devops-project.png) 
 
 ## <a name="select-a-sample-application-and-azure-service"></a>サンプル アプリケーションと Azure サービスを選択する
 
-1. Node.js サンプル アプリケーションを選択します。  
-    Node.js のサンプルでは、複数のアプリケーション フレームワークから選択できます。
+1. Node.js サンプル アプリケーションを選択します。   
 
-1. 既定のサンプル フレームワークは Express.js です。 既定の設定のままにして、 **[次へ]** を選択します。  
-    **Web App on Windows** が既定の展開先です。  前に選択したアプリケーション フレームワークによって、ここで使用可能な Azure サービスのデプロイ ターゲットの種類が決まります。  
+ ![Node.js サンプルを選択する](_img/azure-devops-project-nodejs/select-nodejs-devops-project.png) 
 
-2. 既定のサービスのままにして、 **[次へ]** を選択します。
- 
-## <a name="configure-azure-devops-and-an-azure-subscription"></a>Azure DevOps と Azure サブスクリプションを構成する 
+2. 既定のサンプル フレームワークは **Express.js** です。 選択内容を **[シンプルな Node.js アプリ]** に変更し、 **[次へ]** を選択します。 
 
-1. 新しい Azure DevOps 組織を作成するか、既存の組織を選択します。 
-   
-   1. プロジェクトの名前を入力します。
-      
-   1. Azure サブスクリプションと場所を選択し、アプリケーションの名前を入力して、 **[完了]** を選択します。  
-      数分後、DevOps Projects ダッシュボードが Azure portal に表示されます。 サンプル アプリケーションが Azure DevOps 組織内のリポジトリに設定され、ビルドが実行され、アプリケーションが Azure にデプロイされます。 このダッシュボードでは、コード リポジトリ、CI/CD パイプライン、および Azure のアプリケーションが可視化されます。
-   
-1. **[参照]** を選択すると、実行中のアプリケーションが表示されます。
-   
-   ![CI/CD パイプラインのダッシュボード ビュー](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
+ ![[シンプルな Node.js アプリ] を選択する](_img/azure-devops-project-nodejs/simple-nodejs-project.png) 
 
-DevOps Projects によって、CI ビルドおよびリリース トリガーが自動的に構成されました。  Web サイトに最新の作業を自動的にデプロイする CI/CD プロセスを使用して、Node.js アプリに対してチームで共同作業を行う準備ができました。
+3. この手順で使用できるデプロイ ターゲットが、手順 2 で選択したアプリケーション フレームワークによって決まります。  この例では、 **[Windows Web アプリ]** が既定のデプロイ ターゲットです。  **[Web App for Containers]** を設定したままにし、 **[次へ]** を選択します。
 
-## <a name="commit-code-changes-and-execute-cicd"></a>コードの変更をコミットし、CI/CD を実行する
+ ![デプロイ ターゲットを選択する](_img/azure-devops-project-nodejs/select-web-server.png) 
 
-DevOps Projects によって、Azure Repos または GitHub に Git リポジトリが作成されます。 リポジトリを表示し、アプリケーションにコード変更を加えるには、次の手順に従います。
+## <a name="configure-a-project-name-and-an-azure-subscription"></a>プロジェクト名と Azure サブスクリプションを構成する
 
-1. DevOps Projects ダッシュボードの左側にあるマスター分岐のリンクを選択します。  
-このリンクは、新しく作成された Git リポジトリのビューを開きます。
+1. DevOps プロジェクト作成ワークフローの最後の手順では、プロジェクト名を割り当てて、Azure サブスクリプションを選択し、 **[Done]\(完了\)** を選択します。  
 
-1. リポジトリのクローン URL を表示するには、ブラウザーの右上の **[複製]** を選択します。   
-    お気に入りの IDE で Git リポジトリを複製できます。 次のいくつかの手順では、Web ブラウザーを使用してマスター ブランチに直接コード変更を行い、コミットできます。
+ ![プロジェクト名を割り当ててサブスクリプションを選択する](_img/azure-devops-project-nodejs/assign-project-name.png) 
+
+2. 概要ページが表示されると同時に、プロジェクトがビルドされ、アプリケーションが Azure にデプロイされます。 しばらくすると、プロジェクトが [Azure DevOps 組織](https://dev.azure.com/)に作成されます。ここには、Git リポジトリ、かんばんボード、デプロイ パイプライン、テスト計画、アプリに必要な成果物が含まれています。  
+
+## <a name="managing-your-project"></a>プロジェクトを管理する
+
+1. **[すべてのリソース]** に移動し、自分の DevOps プロジェクトを見つけます。 自分の **DevOps プロジェクト**を選択します。
+
+![リソースの一覧にある Azure DevOps ダッシュボード](_img/azure-devops-project-nodejs/azure-devops-project-in-resource-list.png)
+
+2. ダッシュボードが表示され、プロジェクト ホームページ、コード リポジトリ、CI/CD パイプライン、実行中のアプリへのリンクが可視化されます。 **[プロジェクト ホームページ]** を選択してアプリケーションを **Azure DevOps** で表示し、別のブラウザー タブで **[アプリケーション エンドポイント]** を選択してライブ サンプル アプリを表示します。  GatsbyJS によって生成された PWA を使用するよう、後でこのサンプルを変更します。
+
+![Azure DevOps ダッシュボード](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
+
+3. お使いの Azure DevOps プロジェクトから、チーム メンバーを招待して共同作業を行ったり、かんばんボードを確立して作業の追跡を開始したりできます。  詳細については、[このページ](https://docs.microsoft.com/azure/devops/user-guide/what-is-azure-devops?view=azure-devops)を参照してください。
+
+![Azure DevOps の概要](_img/azure-devops-project-nodejs/azure-devops-overview.png)
+
+## <a name="clone-the-repo-and-install-your-gatsby-pwa"></a>リポジトリをクローンして Gatsby PWA をインストールする
+
+DevOps Projects によって、Azure Repos または GitHub に Git リポジトリが作成されます。 この例では、Azure リポジトリが作成されます。  次の手順では、リポジトリをクローンして変更を行います。
+
+1. お使いの **DevOps プロジェクト**から **[リポジトリ]** を選択し、 **[クローン]** をクリックします。  Git リポジトリをデスクトップにクローンするメカニズムにはさまざまあります。  実際の開発エクスペリエンスに合ったものを選択してください。  
+
+![リポジトリを複製する](_img/azure-devops-project-nodejs/clone-the-repo.png)
+
+2. リポジトリがデスクトップにクローンされたら、スターター テンプレートにいくつかの変更を加えます。 まず、ターミナルから GatsbyJS CLI をインストールします。
+```powershell
+npm install -g gatsby
+```
+
+3. ターミナルから、お使いのリポジトリのルートに移動します。 これには、次のような 3 つのフォルダーが含まれています。
+```powershell
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----        2/23/2020  10:42 PM                Application
+d-----        2/23/2020   3:05 PM                ArmTemplates
+d-----        2/23/2020   3:05 PM                Tests
+```
+
+4. Application フォルダー内のすべてのファイルが必要とは限りません。これは、Gatsby スターターに置き換えるためです。 次のコマンドを順次実行し、スリム化します。
+```powershell
+cp .\Application\Dockerfile .
+rmdir Application
+```
+
+5. Gatsby CLI を使用してサンプル PWA を生成します。 ターミナルから `gatsby new` を実行して PWA ウィザードを開始し、スターター テンプレート用に `gatsby-starter-blog` を選択します。 これは、次のサンプルのようになります。
+```powershell
+c:\myproject> gatsby new
+√ What is your project called? ... my-gatsby-project
+? What starter would you like to use? » - Use arrow-keys. Return to submit.
+    gatsby-starter-default
+    gatsby-starter-hello-world
+>   gatsby-starter-blog
+    (Use a different starter)
+```
+
+6. これで、`my-gatsby-project` という名前のフォルダーが作成されました。 その名前を `Application` に変更し、`Dockerfile` をそれにコピーします。
+```powershell
+mv my-gatsby-project Application
+mv Dockerfile Application
+```
+
+7. お好みのエディターで Dockerfile を開き、最初の行を `FROM node:8` から `FROM node:12` に変更します。 この変更により、お使いのコンテナーでは、Node.js のバージョン 8.x ではなくバージョン 12.x が使用されるようになります。 GatsbyJS には、最新バージョンの Node.js が必要です。
+
+8. 次に、Application フォルダー内の package.json ファイルを開き、お使いの開発および運用サーバーが使用可能なすべてのネットワーク インターフェイス (例: 0.0.0.0) とポート 80 でリッスンするように [scripts フィールド](https://docs.npmjs.com/files/package.json#scripts)を編集します。 これらの設定を行わないと、コンテナー アプリ サービスは、コンテナー内で実行されている Node.js アプリにトラフィックをルーティングできません。 `scripts` フィールドは以下のようになります。 具体的には、`develop`、`serve`、`start` のターゲットを既定値から変更します。
+```json
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop  -H 0.0.0.0 -p 80",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npm run serve",
+    "serve": "npm run build && gatsby serve -H 0.0.0.0 -p 80",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  }
+```
+
+## <a name="edit-your-cicd-pipelines"></a>CI/CD パイプラインを編集する
+
+1. 前のセクションのコードをコミットする前に、ビルドおよびリリース パイプラインにいくつかの変更を加えます。 "ビルド パイプライン" を編集し、Node.js バージョン 12.x を使用するよう Node のタスクを更新します。 **[タスクのバージョン]** フィールドを 1.x に、 **[バージョン]** フィールドを 12.x に設定します。
+![Node.js を 12.x に更新する](_img/azure-devops-project-nodejs/build-pipeline-update-node.png)
+
+2. このクイックスタートでは、単体テストを作成していないため、ビルド パイプラインではこれらの手順を無効にしています。 テストの作成時に、これらの手順を再度有効にすることができます。 右クリックして **[Install test dependencies]\(テストの依存関係のインストール\)** および **[Run unit tests]\(単体テストの実行\)** というラベルの付いたタスクを選択し、それらを無効にします。
+
+![ビルド テストを無効にする](_img/azure-devops-project-nodejs/disable-build-unittests.png)
+
+3. リリース パイプラインを編集します。
+![リリース パイプラインを編集する](_img/azure-devops-project-nodejs/edit-release-pipeline.png)
+
+4. ビルド パイプラインと同様に、12.x を使用するよう Node タスクを変更し、この 2 つのテスト タスクを無効にします。 実際のリリースは、このスクリーンショットのようになります。
+
+![完成したリリース パイプライン](_img/azure-devops-project-nodejs/release-pipeline-complete.png)
 
 1. ブラウザーの左側で、**views/index.pug** ファイルに移動します。
 
@@ -85,77 +163,36 @@ DevOps Projects によって、Azure Repos または GitHub に Git リポジト
 1. **[コミット]** を選択し、変更を保存します。
 
 1. ブラウザーで DevOps Projects ダッシュボードに移動します。   
-進行中のビルドが表示されるようになりました。 行った変更は、CI/CD パイプラインを介して自動的にビルドおよびデプロイされます。
+進行中のビルドが表示されるようになりました。 行った変更は、CI/CD パイプラインを通じて自動的にビルド、デプロイされます。
 
-## <a name="examine-the-azure-cicd-pipeline"></a>Azure CI/CD パイプラインを調べる
+## <a name="commit-your-changes-and-examine-the-azure-cicd-pipeline"></a>変更をコミットして Azure CI/CD パイプラインを調査する
 
-前の手順で、DevOps Projects によって完全な CI/CD パイプラインが自動的に構成されました。 パイプラインを探索し、必要に応じてカスタマイズします。 ビルドおよびリリース パイプラインについて理解するには、次の手順を行います。
+前の 2 つの手順では、Gatsby で生成された PWA を Git リポジトリに追加し、コードをビルドしてデプロイするようパイプラインを編集しました。 コードをコミットし、ビルドおよびリリース パイプラインでその進捗を監視できます。
 
-1. DevOps Projects ダッシュボードの上部の **[ビルド パイプライン]** を選択します。  
-このリンクによって、ブラウザーのタブが開かれ、新しいプロジェクトのビルド パイプラインが表示されます。
+1. ターミナルでプロジェクトの Git リポジトリのルートから、次のコマンドを実行してコードを Azure DevOps プロジェクトにプッシュします。
+```powershell
+git add .
+git commit -m "My first Gatsby PWA"
+git push
+```
 
-1. **[状態]** フィールドをポイントして、省略記号 (...) を選択します。  
-    この操作により、キューへの新しいビルドの挿入、ビルドの一時停止、ビルド パイプラインの編集などのいくつかのアクティビティを開始できるメニューが開きます。
+2. `git push` が完了するとすぐにビルドが開始されます。 **Azure DevOps ダッシュボード**で、進捗状況を確認できます。
 
-1. **[編集]** を選択します。
+![リソースの一覧にある Azure DevOps ダッシュボード](_img/azure-devops-project-nodejs/azure-devops-project-in-resource-list.png)
 
-1. このウィンドウで、ビルド パイプラインのさまざまなタスクを調べることができます。  
-ビルドでは、Git リポジトリからのソースのフェッチ、依存関係の復元、デプロイに使用した出力の発行など、さまざまなタスクが実行されます。
-
-1. ビルド パイプラインの上部で、ビルド パイプラインの名前を選択します。
-
-1. ビルド パイプラインの名前をよりわかりやすい名前に変更し、 **[保存してキューに登録]** を選択して、 **[保存]** を選択します。
-
-1. ご自身のビルド パイプラインの名前の下で、 **[履歴]** を選択します。   
-**[履歴]** ウィンドウに、ビルドの最近の変更の監査証跡が表示されます。  ビルド パイプラインに対するすべての変更が Azure Pipelines によって追跡されるため、各バージョンを比較できます。
-
-1. **[トリガー]** を選択します。   
- DevOps Projects では、CI トリガーが自動的に作成され、リポジトリに対してコミットするたびに新しいビルドが開始されます。  必要に応じて、CI プロセスのブランチを含めるか除外するかを選択できます。
-
-1. **[保持]** を選択します。   
-シナリオに基づいて、特定の数のビルドを保持または削除するポリシーを指定できます。
-
-1. **[ビルドとリリース]** を選択し、 **[リリース]** を選択します。  
- DevOps Projects により、Azure へのデプロイを管理するリリース パイプラインが作成されます。
-
-1. 左側で、リリース パイプラインの横にある省略記号 (...) を選択し、 **[編集]** を選択します。  
-リリース パイプラインには、リリース プロセスが定義されています。
-
-12. **[成果物]** で、 **[ドロップ]** を選択します。  
-    前の手順で調べたビルド パイプラインでは、成果物に使用される出力が生成されます。 
-
-1. **[ドロップ]** アイコンの横にある **[継続的配置トリガー]** を選択します。  
-このリリース パイプラインには、新しいビルド成果物が使用可能になるたびにデプロイを実行する有効な CD トリガーがあります。 必要に応じて、手動でのデプロイが必須となるように、トリガーを無効にすることができます。 
+3. 数分後に、ビルドおよびリリース パイプラインが完了し、PWA がコンテナーにデプロイされます。 上記のダッシュボードから **[アプリケーション エンドポイント]** リンクをクリックすると、ブログ用の Gatsby スターター プロジェクトが表示されます。
 
 
-1. 左側の **[タスク]** を選択します。   
-タスクは、デプロイ プロセスによって実行されるアクティビティです。 この例では、Azure App Service にデプロイするタスクが作成されました。
-
-
-1. 右側の **[リリースの表示]** を選択します。  
-このビューには、リリースの履歴が表示されます。
-
-1. いずれかのリリースの横にある省略記号 (...) を選択し、 **[開く]** を選択します。  
-リリース概要、関連付けられた作業項目、テストなど、調べる必要があるいくつかのメニューがあります。
-
-1. **[コミット]** を選択します。   
-このビューには、特定のデプロイに関連付けられているコードのコミットが表示されます。
-
-1. **[ログ]** を選択します。  
-ログには、デプロイ プロセスに関する有用な情報が含まれます。 これらは、デプロイ中とデプロイ後の両方に表示できます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-作成した Azure App Service とその他の関連リソースが必要なくなったら、削除してかまいません。 DevOps Projects ダッシュボードで**削除**機能を使用します。
+作成した Azure App Service と関連するその他のリソースは、必要なくなったら削除してかまいません。 DevOps Projects ダッシュボードで**削除**機能を使用します。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-CI/CD プロセスを構成したときに、ビルドとリリース パイプラインが自動的に作成されました。 チームのニーズを満たすようにこれらのビルドおよびリリース パイプラインを変更できます。 CI/CD パイプラインの詳細については、以下を参照してください。
+CI/CD プロセスを構成すると、ビルドおよびリリース パイプラインが自動的に作成されます。 これらのビルドおよびリリース パイプラインを、チームのニーズを満たすように変更できます。 CI/CD パイプラインの詳細については、以下を参照してください。
 
 > [!div class="nextstepaction"]
 > [CD プロセスをカスタマイズする](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
 
-## <a name="videos"></a>ビデオ
-
-> [!VIDEO https://www.youtube.com/embed/3etwjubReJs]

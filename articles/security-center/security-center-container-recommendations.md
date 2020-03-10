@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: memildin
-ms.openlocfilehash: b8b8b05f703a3eb05936ca95e2047a13650914cf
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: b1e1402f58b103570d6a98a5f9a01c8168abf749
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604263"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912362"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>Azure Security Center のコンテナーの推奨事項を理解する
 
@@ -35,7 +35,7 @@ Azure Security Center では、コンテナーを保護するのに役立つ次�
 
     ![[コンテナー] タブ](./media/security-center-container-recommendations/container-cis-benchmark.png)
 
-- **コンテナーに対する脅威のリアルタイムの検出**<br> Security Center は、AuditD コンポーネントを含む Linux マシン上のコンテナーに対してリアルタイムの脅威検出を提供します。 アラートは、ホスト上での特権を持つコンテナーの作成、Secure Shell (SSH) サーバーが Docker コンテナー内で実行されているしるし、暗号マイナーの使用など、いくつかの疑わしい Docker アクティビティを識別します。 ユーザーは、この情報を使用して、迅速にセキュリティの問題を修復し、コンテナーのセキュリティを強化することができます。
+- **コンテナーに対するリアルタイムの脅威の防止**<br> Security Center では、AuditD コンポーネントを含む Linux マシン上のコンテナーに対してリアルタイムの脅威の防止が行われます。 アラートは、ホスト上での特権を持つコンテナーの作成、Secure Shell (SSH) サーバーが Docker コンテナー内で実行されているしるし、暗号マイナーの使用など、いくつかの疑わしい Docker アクティビティを識別します。 ユーザーは、この情報を使用して、迅速にセキュリティの問題を修復し、コンテナーのセキュリティを強化することができます。
 
     ![[コンテナー] タブ](./media/security-center-container-recommendations/docker-threat-detection.png)
 

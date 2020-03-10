@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 4d4703ccb4ee96eb69a780f91eae1eb6da9e1578
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5b39186a39fbd2398fb4045ba62797e321fc3284
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225179"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249863"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してインターネット トラフィックを VM に負荷分散する
 
@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
 ## <a name="create-a-standard-load-balancer"></a>Standard Load Balancer を作成する
 
@@ -47,13 +47,13 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[ロード バランサー]** の順にクリックします。
 2. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[確認と作成]** を選択します。
 
-    | Setting                 | 値                                              |
+    | 設定                 | Value                                              |
     | ---                     | ---                                                |
-    | Subscription               | サブスクリプションを選択します。    |    
+    | サブスクリプション               | サブスクリプションを選択します。    |    
     | Resource group         | **[新規作成]** を選択して、テキスト ボックスに「*myResourceGroupSLB*」と入力します。|
     | 名前                   | *myLoadBalancer*                                   |
     | リージョン         | **[西ヨーロッパ]** を選択します。                                        |
-    | 種類          | **[パブリック]** を選択します。                                        |
+    | Type          | **[パブリック]** を選択します。                                        |
     | SKU           | **[Standard]** を選択します。                          |
     | パブリック IP アドレス | **[新規作成]** を選択します。 |
     | パブリック IP アドレス名              | テキスト ボックスに「*myPublicIP*」と入力します。   |
@@ -83,7 +83,7 @@ Load Balancer でアプリの状態を監視するには、正常性プローブ
 2. **[設定]** で **[正常性プローブ]** をクリックし、 **[追加]** をクリックします。
 3. 正常性プローブの作成では、以下の値を使用します。
      
-    | Setting | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | 名前 | 「*myHealthProbe*」と入力します。 |
     | Protocol | **[HTTP]** を選択します。 |
@@ -101,7 +101,7 @@ Load Balancer でアプリの状態を監視するには、正常性プローブ
 2. **[設定]** で **[負荷分散規則]** をクリックし、 **[追加]** をクリックします。
 3. 負荷分散規則の構成には、以下の値を使用します。
 
-    | Setting | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | 名前 | 「*myHTTPRule*」と入力します。 |
     | Protocol | **[TCP]** を選択します。 |
@@ -116,22 +116,20 @@ Load Balancer でアプリの状態を監視するには、正常性プローブ
 
 このセクションでは、仮想ネットワークを作成し、Load Balancer のバックエンド プール用に 3 台の仮想マシンを作成して、Load Balancer をテストするために仮想マシンに IIS をインストールします。
 
-### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
+## <a name="virtual-network-and-parameters"></a>仮想ネットワークとパラメーター
 
-1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[仮想ネットワーク]** の順に選択します。
-2. **[仮想ネットワークの作成]** に次の情報を入力または選択します。
+このセクションの手順では、各パラメーターを次のように置き換える必要があります。
 
-    | Setting | 値 |
-    | ------- | ----- |
-    | 名前 | 「*myVNet*」と入力します。 |
-    | アドレス空間 | 「*10.1.0.0/16*」を入力します。 |
-    | Subscription | サブスクリプションを選択します。|
-    | Resource group | 既存のリソース *[myResourceGroupSLB]* を選択します。 |
-    | Location | **[西ヨーロッパ]** を選択します。|
-    | サブネット - 名前 | 「*myBackendSubnet*」と入力します。 |
-    | サブネット アドレス範囲 | 「*10.1.0.0/24*」と入力します。 |
-    
-3. 残りの部分は既定値のままにし、 **[作成]** を選択します。
+| パラメーター                   | Value                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupSLB (既存のリソース グループを選択) |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | 西ヨーロッパ      |
+| **\<IPv4-address-space>**   | 10.1.0.0\16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0\24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-virtual-machines"></a>仮想マシンを作成する
 
@@ -239,11 +237,11 @@ Standard Load Balancer は、バックエンド プール内の Standard IP ア�
    2. **[ロード バランサーを選択します]** で、 *[myLoadBalancer]* を選択します。
    3. **[バックエンド プールの選択]** で、 *[myBackendPool]* を選択します。 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソース グループ、Load Balancer、および関連するすべてのリソースは、不要になったら削除します。 これを行うには、Load Balancer を含む *[myResouceGroupSLB]* リソース グループを選択して、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Standard Load Balancer の作成、VM のアタッチ、Load Balancer のトラフィック規則と正常性プローブの構成を行ってから、Load Balancer をテストしました。 また、負荷分散セットから VM を削除し、バックエンド アドレス プールに VM を追加して戻しました。 Azure Load Balancer についてさらに学習するには、Azure Load Balancer のチュートリアルに進みます。
 

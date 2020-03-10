@@ -11,20 +11,19 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 2710263aa099618d57f763edd199673ae04b53ed
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 34f0fb57b4432a8153f2cbaa8cb60edbb9a6f494
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160491"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271077"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>クイック スタート: Python Web アプリに Microsoft でサインインを追加する
 
 このクイックスタートでは、Python Web アプリを Microsoft ID プラットフォームと統合する方法を説明します。 お使いのアプリによって、ユーザーがサインインされ、Microsoft Graph API を呼び出すためのアクセス トークンが取得されて、Microsoft Graph API への要求が行われます。
 
-このガイドを完了すると、アプリケーションは、個人用の Microsoft アカウント (outlook.com、live.com など) と、Azure Active Directory を使用する会社や組織の職場または学校アカウントのサインインを受け入れるようになります。
+このガイドを完了すると、アプリケーションは、個人用の Microsoft アカウント (outlook.com、live.com など) と、Azure Active Directory を使用する会社や組織の職場または学校アカウントのサインインを受け入れるようになります。 (図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください)。
 
-![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-python-webapp/python-quickstart.svg)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -92,45 +91,56 @@ ms.locfileid: "77160491"
 > > ![構成済み](media/quickstart-v2-aspnet-webapp/green-check.png) アプリケーションはこの属性で構成されています
 
 #### <a name="step-2-download-your-project"></a>手順 2:プロジェクトのダウンロード
+> [!div renderon="docs"]
+> [コード サンプルのダウンロード](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
 
-[コード サンプルのダウンロード](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
-
-#### <a name="step-3-configure-the-application"></a>手順 3: アプリケーションの構成
-
-1. ルート フォルダーに近いローカル フォルダー (例: **C:\Azure-Samples**) に zip ファイルを展開します。
-1. 統合開発環境を使用する場合は、その IDE でサンプルを開きます (オプション)。
-1. **app_config.py** ファイルを開きます。このファイルはルート フォルダーにあり、次のコード スニペットに置き換えることができます。
-
-```python
-CLIENT_ID = "Enter_the_Application_Id_here"
-CLIENT_SECRET = "Enter_the_Client_Secret_Here"
-AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
-```
+> [!div class="sxs-lookup" renderon="portal"]
+> プロジェクトをダウンロードし、ルート フォルダーに近いローカル フォルダー (例: **C:\Azure-Samples**) に ZIP ファイルを展開します。
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [コード サンプルをダウンロードします](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
 
 > [!div renderon="docs"]
+> #### <a name="step-3-configure-the-application"></a>手順 3: アプリケーションの構成
+> 
+> 1. ルート フォルダーに近いローカル フォルダー (例: **C:\Azure-Samples**) に zip ファイルを展開します。
+> 1. 統合開発環境を使用する場合は、その IDE でサンプルを開きます (オプション)。
+> 1. **app_config.py** ファイルを開きます。このファイルはルート フォルダーにあり、次のコード スニペットに置き換えることができます。
+> 
+> ```python
+> CLIENT_ID = "Enter_the_Application_Id_here"
+> CLIENT_SECRET = "Enter_the_Client_Secret_Here"
+> AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
+> ```
 > 各値の説明:
 >
 > - `Enter_the_Application_Id_here` - 登録したアプリケーションのアプリケーション ID。
 > - `Enter_the_Client_Secret_Here` - 登録済みアプリケーション用に **[証明書とシークレット]** で作成した **[クライアント シークレット]** です。
 > - `Enter_the_Tenant_Name_Here` - 登録したアプリケーションの**ディレクトリ (テナント) ID** 値です。
 
-#### <a name="step-4-run-the-code-sample"></a>手順 4:コード サンプルの実行
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-run-the-code-sample"></a>手順 3:コード サンプルの実行
+
+> [!div renderon="docs"]
+> #### <a name="step-4-run-the-code-sample"></a>手順 4:コード サンプルの実行
 
 1. MSAL Python ライブラリ、Flask フレームワーク、サーバー側のセッション管理用の Flask-Sessions、および requests を、次のように pip を使用してインストールする必要があります。
 
-   ```Shell
-   pip install -r requirements.txt
-   ```
+    ```Shell
+    pip install -r requirements.txt
+    ```
 
 2. シェルまたはコマンド ラインから app.py を実行する:
 
-   ```Shell
-   python app.py
-   ```
+    ```Shell
+    python app.py
+    ```
    > [!IMPORTANT]
    > このクイック スタート アプリケーションは、クライアント シークレットを使用して、それ自体を機密クライアントとして識別します。 クライアント シークレットはプロジェクト ファイルにプレーン テキストとして追加されるため、セキュリティ上の理由から、アプリケーションを運用アプリケーションと見なす前に、クライアント シークレットの代わりに証明書を使用することをお勧めします。 証明書の使用方法の詳細については、[これらの手順](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials)を参照してください。
 
 ## <a name="more-information"></a>詳細情報
+
+### <a name="how-the-sample-works"></a>このサンプルのしくみ
+![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-python-webapp/python-quickstart.svg)
 
 ### <a name="getting-msal"></a>MSAL の取得
 MSAL は、ユーザーをサインインさせるために使用されたり、Microsoft ID プラットフォームによって保護されている API にアクセスするためのトークンを要求するために使用されたりするライブラリです。

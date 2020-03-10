@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 07d4b206c5651bb708ed8b56437a8769dff46557
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 940636a5e368a84aaaf0d4490bf874d56d3ddb6e
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225161"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251909"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>チュートリアル:Azure portal を使用した Standard Load Balancer による可用性ゾーン内での VM の負荷分散
 
@@ -41,7 +41,7 @@ ms.locfileid: "74225161"
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
 ## <a name="create-a-public-standard-load-balancer-instance"></a>パブリック Standard Load Balancer インスタンスを作成する
 
@@ -50,31 +50,37 @@ Standard Load Balancer では、標準パブリック IP アドレスだけが�
 1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[Load Balancer]** の順に選択します。
 2. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[確認と作成]** を選択します。
 
-    | Setting                 | 値                                              |
+    | 設定                 | Value                                              |
     | ---                     | ---                                                |
-    | Subscription               | サブスクリプションを選択します。    |    
+    | サブスクリプション               | サブスクリプションを選択します。    |    
     | Resource group         | **[新規作成]** を選択して、テキスト ボックスに「*MyResourceGroupZLB*」と入力します。|
     | 名前                   | *myLoadBalancer*                                   |
     | リージョン         | **[西ヨーロッパ]** を選択します。                                        |
-    | 種類          | **[パブリック]** を選択します。                                        |
+    | Type          | **[パブリック]** を選択します。                                        |
     | SKU           | **[Standard]** を選択します。                          |
     | パブリック IP アドレス | **[新規作成]** を選択します。 |
     | パブリック IP アドレス名              | テキスト ボックスに「*myPublicIP*」と入力します。   |
     |可用性ゾーン| **[1]** を選択します。    |
 3. **[確認と作成]** タブで、 **[作成]** をクリックします。   
 
-   ## <a name="create-backend-servers"></a>バックエンド サーバーの作成
+## <a name="create-backend-servers"></a>バックエンド サーバーの作成
 
 このセクションでは、仮想ネットワークを作成します。 また、リージョンの同じゾーン (つまり、ゾーン 1) に 2 つの仮想マシンを作成して、ロード バランサーのバックエンド プールに追加します。 次に、ゾーン冗長ロード バランサーをテストするために仮想マシンに IIS をインストールします。 1 つの VM が失敗した場合、同じゾーンの VM の正常性プローブが失敗します。 同じゾーン内の他の VM によって処理されるトラフィックは続行されます。
 
-### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
-1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[仮想ネットワーク]** の順に選択します。  次の仮想ネットワークの値を入力します。
-    - **myVnet** - 仮想ネットワークの名前。
-    - **myResourceGroupZLB** - 既存のリソース グループの名前。
-    - **myBackendSubnet** - サブネット名。
-2. **[作成]** を選択して、仮想ネットワークを作成します。
+## <a name="virtual-network-and-parameters"></a>仮想ネットワークとパラメーター
 
-    ![仮想ネットワークの作成](./media/tutorial-load-balancer-standard-zonal-portal/create-virtual-network.png)
+このセクションの手順では、各パラメーターを次のように置き換える必要があります。
+
+| パラメーター                   | Value                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupZLB (既存のリソース グループを選択) |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | 西ヨーロッパ      |
+| **\<IPv4-address-space>**   | 10.0.0.0\16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.0.0.0\24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
 
@@ -216,11 +222,11 @@ Standard Load Balancer では、標準パブリック IP アドレスだけが�
       ![IIS Web サーバー](./media/tutorial-load-balancer-standard-zonal-portal/load-balancer-test.png)
 3. 動作中のロード バランサーを確認するには、表示されている VM を強制的に停止します。 ブラウザーを更新して、ブラウザーに表示される他のサーバー名を参照します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソース グループ、ロード バランサー、および関連するすべてのリソースは、不要になったら削除します。 ロード バランサーを含むリソース グループを選択ます。 次に、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Standard Load Balancer](load-balancer-standard-overview.md) の詳細を確認する。
 - [可用性ゾーン間で VM の負荷分散を行う](tutorial-load-balancer-standard-public-zone-redundant-portal.md)。

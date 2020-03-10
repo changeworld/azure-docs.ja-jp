@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2019
 ms.openlocfilehash: fd363f7b685db5e309827a0c5e635264e676b388
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926192"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357193"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Azure Data Factory を使用して SAP テーブルからデータをコピーする
 
@@ -62,7 +62,7 @@ SAP テーブルから、サポートされている任意のシンク データ
   - Remote Function Call (RFC) の宛先を使用するための認可。
   - S_SDSAUTH 認可オブジェクトの "実行" アクティビティに対するアクセス許可。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -74,7 +74,7 @@ SAP BW オープン ハブのリンクされたサービスでは、次のプロ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| `type` | `type` プロパティは、`SapTable` に設定する必要があります。 | はい |
+| `type` | `type` プロパティは `SapTable` に設定する必要があります。 | はい |
 | `server` | SAP インスタンスがあるサーバーの名前。<br/>SAP アプリケーション サーバーへの接続に使用されます。 | いいえ |
 | `systemNumber` | SAP システムのシステム番号。<br/>SAP アプリケーション サーバーへの接続に使用されます。<br/>許可されている値:2 桁の 10 進数の文字列として表されます。 | いいえ |
 | `messageServer` | SAP メッセージ サーバーのホスト名。<br/>SAP メッセージ サーバーへの接続に使用されます。 | いいえ |
@@ -84,7 +84,7 @@ SAP BW オープン ハブのリンクされたサービスでは、次のプロ
 | `clientId` | SAP システム内のクライアントの ID。<br/>許可されている値:3 桁の 10 進数の文字列として表されます。 | はい |
 | `language` | SAP システムで使用する言語。<br/>既定値は `EN` です。| いいえ |
 | `userName` | SAP サーバーにアクセスできるユーザーの名前。 | はい |
-| `password` | ユーザーのパスワード。 このフィールドを `SecureString` 型でマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| `password` | ユーザーのパスワードです。 このフィールドを `SecureString` 型でマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | `sncMode` | テーブルが配置されている SAP サーバーにアクセスするための SNC アクティブ化インジケーター。<br/>SNC を使用して SAP サーバーに接続する場合に使用されます。<br/>使用できる値は、`0` (オフ、既定値) または `1` (オン) です。 | いいえ |
 | `sncMyName` | テーブルが配置されている SAP サーバーにアクセスするためのイニシエーターの SNC 名。<br/>`sncMode` がオンのときに適用されます。 | いいえ |
 | `sncPartnerName` | テーブルが配置されている SAP サーバーにアクセスするための通信パートナーの SNC 名。<br/>`sncMode` がオンのときに適用されます。 | いいえ |
@@ -92,7 +92,7 @@ SAP BW オープン ハブのリンクされたサービスでは、次のプロ
 | `sncQop` | 適用する SNC の保護品質レベル。<br/>`sncMode` がオンのときに適用されます。 <br/>使用できる値は、`1` (認証)、`2` (整合性)、`3` (プライバシー)、`8` (既定)、`9` (最大) です。 | いいえ |
 | `connectVia` | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」で前述されているように、セルフホステッド統合ランタイムが必要です。 |はい |
 
-**例 1:SAP アプリケーション サーバーに接続する**
+**例 1: SAP アプリケーション サーバーに接続する**
 
 ```json
 {
@@ -144,7 +144,7 @@ SAP BW オープン ハブのリンクされたサービスでは、次のプロ
 }
 ```
 
-### <a name="example-3-connect-by-using-snc"></a>例 3:SNC を使用して接続する
+### <a name="example-3-connect-by-using-snc"></a>例 3: SNC を使用して接続する
 
 ```json
 {
@@ -182,7 +182,7 @@ SAP BW オープン ハブのリンクされたサービスとの間でデータ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| `type` | `type` プロパティは、`SapTableResource` に設定する必要があります。 | はい |
+| `type` | `type` プロパティは `SapTableResource` に設定する必要があります。 | はい |
 | `tableName` | データのコピー元である SAP テーブルの名前。 | はい |
 
 ### <a name="example"></a>例
@@ -214,7 +214,7 @@ SAP テーブルからデータをコピーするために、次のプロパテ�
 
 | プロパティ                         | 説明                                                  | 必須 |
 | :------------------------------- | :----------------------------------------------------------- | :------- |
-| `type`                             | `type` プロパティは、`SapTableSource` に設定する必要があります。         | はい      |
+| `type`                             | `type` プロパティは `SapTableSource` に設定する必要があります。         | はい      |
 | `rowCount`                         | 取得する行の数。                              | いいえ       |
 | `rfcTableFields`                   | SAP テーブルからコピーするフィールド (列)。 たとえば、「 `column0, column1` 」のように入力します。 | いいえ       |
 | `rfcTableOptions`                  | SAP テーブルの行をフィルターにかけるためのオプション。 たとえば、「 `COLUMN0 EQ 'SOMEVALUE'` 」のように入力します。 この記事で後に提供する SAP クエリ演算子の表も参照してください。 | いいえ       |
@@ -234,7 +234,7 @@ SAP テーブルからデータをコピーするために、次のプロパテ�
 
 `rfcTableOptions` では、次の一般的な SAP クエリ演算子を使用して行をフィルター処理できます。
 
-| Operator | 説明 |
+| 演算子 | 説明 |
 | :------- | :------- |
 | `EQ` | 等しい |
 | `NE` | 等しくない |
@@ -298,11 +298,11 @@ SAP テーブルからデータをコピーするとき、SAP テーブルのデ
 | `N` (Numeric) | `String` |
 | `X` (Binary および Raw) | `String` |
 
-## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
+## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するページを参照してください。

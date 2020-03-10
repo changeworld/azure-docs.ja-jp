@@ -4,17 +4,17 @@ description: この記事では、パートナーが Azure Cost Management の�
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/10/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 9f35f0ae2b310fba462a3f45038496854077da27
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: f81ec71ffe5cdf7f70e309282307a1c4bb293219
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117595"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245473"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>パートナー向け Azure Cost Management の利用を開始する
 
@@ -140,18 +140,14 @@ Azure portal で、パートナー テナントにサインインし、 **[Cost 
 
 コスト可視性ポリシーが有効になっている場合、サブスクリプション使用量のあるすべてのサービスが、従量課金制の料金でコストを示します。 予約使用量は、実際のコストも償却済みコストも料金がゼロと表示されます。 購入およびエンタイトルメントは特定のサブスクリプションに関連付けられません。 そのため、サブスクリプション スコープでは購入は表示されません。
 
-顧客テナントのコストを表示するには、 **[コストの管理と請求]** を開き、関連する Microsoft Partner Agreement の課金アカウントを選択します。
 
-![課金アカウントを選択する](./media/get-started-partners/select-billing-account.png)
+### <a name="view-customer-costs"></a>顧客のコストを表示する
 
-**[課金]** で **[Azure サブスクリプション]** を選択し、顧客を選択します。
-
-![Azure サブスクリプションの顧客を選択する](./media/get-started-partners/subscriptions-select-customer.png)
-
-**[コスト分析]** を選択し、コストの確認を開始します。
-コスト分析、予算、アラートは、従量課金制の料金に基づいたコストで、サブスクリプションとリソース グループの RBAC スコープで利用できます。
+顧客テナントのコストを表示するには、 **[コストの管理と請求]** を開きます。 **[コスト分析]** を選択し、顧客テナントのサブスクリプションにスコープを変更して、コストの確認を始めます。
 
 ![顧客としてコスト分析を表示する ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
+
+コスト分析、予算、アラートは、従量課金制の料金に基づいたコストで、サブスクリプションとリソース グループの RBAC スコープで利用できます。
 
 RBAC スコープの予約インスタンスの償却ビューおよび実際のコストでは、料金がゼロと表示されます。 予約インスタンスのコストは、購入が行われた課金スコープでのみ表示されます。
 
@@ -213,7 +209,7 @@ RBAC スコープの予約インスタンスの償却ビューおよび実際の
 | resourceGroup | ライフサイクル リソース管理に使用される Azure リソース グループの名前。 | リソース グループの名前。 |
 | instanceID (または) ResourceID | リソース インスタンスの識別子。 | 完全なリソース プロパティを含む ResourceURI として表示されます。 |
 | resourceLocation | リソースの場所の名前。 | リソースの場所。 |
-| Location | リソースの正規化された場所。 | 該当なし |
+| 場所 | リソースの正規化された場所。 | 該当なし |
 | effectivePrice | 価格設定通貨でのサービスの実効単価。 製品、サービス ファミリ、測定、オファーに対して一意です。 課金アカウントの価格シートの価格で使用されます。 階層化された価格または含まれている数量がある場合は、使用量のブレンド価格が表示されます。 | 調整が行われた後の単価。 |
 | Quantity | 購入または消費された測定量。 請求期間中に使用された測定の量。 | ユニットの数。 調整中に、これが課金システム内の情報に一致していることを確認してください。 |
 | unitOfMeasure | サービスが課金される単位を特定します。 たとえば、GB や時間数など。 | サービスが課金される単位を特定します。 たとえば、GB、時間、および 10,000 単位など。 |

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: memildin
-ms.openlocfilehash: d208629ee29bb9102f16fcb1d541677bd4a4d5fa
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 330cbc3f28f5e549d5a21417c3d7ccc1e5444769
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431699"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919534"
 ---
 # <a name="monitoring-the-security-of-your-containers"></a>コンテナーのセキュリティを監視する
 
@@ -29,7 +29,7 @@ Azure Security Center では、コンテナー セキュリティの次の 3 つ
 
 - **Azure Kubernetes Service クラスターの強化** - Azure Kubernetes Service クラスターの構成内に脆弱性が検出された場合、Security Center では推奨事項を提供します。 表示される可能性のある特定の推奨事項の詳細については、[Kubernetes サービスの推奨事項](recommendations-reference.md#recs-containers)に関する記事を参照してください。
 
-- **ランタイム保護** - Security Center の Standard 価格レベルを使用している場合は、コンテナー化された環境に対してリアルタイムでの脅威検出が行われます。 Security Center では、ホストおよび AKS クラスター レベルでの不審なアクティビティに対して、アラートを生成します。 表示される可能性がある関連のセキュリティ アラートの詳細については、アラートの参照テーブルの「[Azure Kubernetes Service クラスターのアラート](alerts-reference.md#alerts-akscluster)」と「[コンテナーのアラート - ホスト レベル](alerts-reference.md#alerts-containerhost)」のセクションを参照してください。
+- **ランタイムの保護** - Security Center の Standard 価格レベルを使用している場合は、コンテナー化された環境に対してリアルタイムでの脅威の防止が行われます。 Security Center では、ホストおよび AKS クラスター レベルでの不審なアクティビティに対して、アラートを生成します。 表示される可能性がある関連のセキュリティ アラートの詳細については、アラートの参照テーブルの「[Azure Kubernetes Service クラスターのアラート](alerts-reference.md#alerts-akscluster)」と「[コンテナーのアラート - ホスト レベル](alerts-reference.md#alerts-containerhost)」のセクションを参照してください。
 
 ## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>ARM ベース コンテナー レジストリの脆弱性をスキャンする 
 

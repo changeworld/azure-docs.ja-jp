@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 07/03/2019
 ms.author: cynthn
-ms.openlocfilehash: f5b4bf14be264d16109ddc10cd3b667e728642c6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ed29c92d20a6b0d749ec44a22f42ec446ec58650
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980700"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919568"
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>他の Azure サブスクリプションまたはリソース グループへの Windows VM の移動
 この記事では、リソース グループまたはサブスクリプション間で Windows 仮想マシン (VM) を移動する方法について説明します。 サブスクリプション間での移動は、個人のサブスクリプションで作成した VM を、会社のサブスクリプションに移動して作業を続ける場合に便利です。 移動するために VM を開始する必要はありません。移動の間も、継続して実行される必要があります。
@@ -35,13 +35,13 @@ ms.locfileid: "75980700"
 仮想マシンを他のリソース グループに移動するには、依存リソースも必ずすべて移動する必要があります。 これらのリソースごとにリソース ID を含むリストを取得するには、[Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) コマンドレットを使用します。
 
 ```azurepowershell-interactive
- Get-AzResource -ResourceGroupName <sourceResourceGroupName> | Format-list -wrap -Property ResourceId
+ Get-AzResource -ResourceGroupName myResourceGroup | Format-table -wrap -Property ResourceId
 ```
 
-[Move-AzResource](https://docs.microsoft.com/powershell/module/az.resources/move-azresource) に対し、リソース ID のコンマ区切りリストとして前のコマンドの出力を使用すると、各リソースを移動先に移動できます。
+前のコマンドの出力を使用して、各リソースを移動先に移動するためのリソース ID のコンマ区切りリストを作成し、そのリストを [Move-AzResource](https://docs.microsoft.com/powershell/module/az.resources/move-azresource) で使用できます。
 
 ```azurepowershell-interactive
-Move-AzResource -DestinationResourceGroupName "<myDestinationResourceGroup>" `
+Move-AzResource -DestinationResourceGroupName "myDestinationResourceGroup" `
     -ResourceId <myResourceId,myResourceId,myResourceId>
 ```
 

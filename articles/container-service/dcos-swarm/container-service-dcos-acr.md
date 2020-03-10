@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: 8319f2f5405271679d0c11d4ac68492cdec8fc14
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e1dccc42301cf73fb215d99636dfee9eef9bc59e
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66148931"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274154"
 ---
 # <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>(非推奨) DC/OS クラスターで ACR を使用してアプリケーションをデプロイする
 
@@ -46,7 +46,7 @@ az acr create --resource-group myResourceGroup --name myContainerRegistry$RANDOM
 
 レジストリを作成すると、Azure CLI では次のようなデータが出力されるようになります。 後の手順で使うので、`name` と `loginServer` を書き留めておいてください。
 
-```azurecli
+```output
 {
   "adminUserEnabled": false,
   "creationDate": "2017-06-06T03:40:56.511597+00:00",
@@ -91,9 +91,9 @@ Azure Container Registry について詳しくは、「[プライベート Docke
 FQDN=$(az acs list --resource-group myResourceGroup --query "[0].masterProfile.fqdn" --output tsv)
 ```
 
-DC/OS に基づくクラスターのマスター (または最初のマスター) との SSH 接続を作成します。 クラスターの作成時に既定以外の値が使用されている場合は、ユーザー名を更新します。
+DC/OS に基づくクラスターのマスター (または最初のマスター) との SSH 接続を作成します。 クラスターの作成時に既定値ではない値が使用されている場合は、ユーザー名を更新します。
 
-```azurecli-interactive
+```console
 ssh azureuser@$FQDN
 ```
 
@@ -107,13 +107,13 @@ docker -H tcp://localhost:2375 login --username=myContainerRegistry23489 --passw
 
 コンテナー レジストリの認証値を含む圧縮ファイルを作成します。
 
-```azurecli-interactive
+```console
 tar czf docker.tar.gz .docker
 ```
 
 このファイルを、クラスターの共有記憶域にコピーします。 これにより、DC/OS クラスターのすべてのノードでファイルを使うことができるようになります。
 
-```azurecli-interactive
+```console
 cp docker.tar.gz /mnt/share/dcosshare
 ```
 
@@ -123,25 +123,25 @@ cp docker.tar.gz /mnt/share/dcosshare
 
 Ubuntu イメージからコンテナーを作成します。
 
-```azurecli-interactive
+```console
 docker run ubuntu --name base-image
 ```
 
 コンテナーを新しいイメージにキャプチャします。 イメージ名には、コンテナー レジストリの `loginServer` 名が `loginServer/imageName` の形式で含まれる必要があります。
 
-```azurecli-interactive
+```console
 docker -H tcp://localhost:2375 commit base-image mycontainerregistry30678.azurecr.io/dcos-demo
 ```
 
 Azure Container Registry にログインします。 名前は loginServer 名に、--username はコンテナー レジストリの名前に、--password は提供されたパスワードの 1 つに、それぞれ置き換えます。
 
-```azurecli-interactive
+```console
 docker login --username=myContainerRegistry23489 --password=//=ls++q/m+w+pQDb/xCi0OhD=2c/hST mycontainerregistry2675.azurecr.io
 ```
 
 最後に、ACR レジストリにイメージをアップロードします。 この例では、dcos-demo という名前のイメージをアップロードします。
 
-```azurecli-interactive
+```console
 docker push mycontainerregistry30678.azurecr.io/dcos-demo
 ```
 
@@ -189,11 +189,11 @@ ACR レジストリからイメージを使うには、*acrDemo.json* という�
 
 DC/OC CLI を使ってアプリケーションをデプロイします。
 
-```azurecli-interactive
+```console
 dcos marathon app add acrDemo.json
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Container Registry を使うように DC/OS を構成し、次のタスクが含まれました。
 

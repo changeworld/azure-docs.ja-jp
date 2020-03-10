@@ -14,14 +14,17 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: fd31528325ddbe913333bc228fc3847242abcd24
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: f4c021531a4d04bf16e5dbee4172952433f675d9
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083753"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913006"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Azure Media Analytics で動作を検出する
+
+> [!NOTE]
+> **Azure Media Motion Detector** メディア プロセッサは廃止予定です。 廃止日については、[レガシ コンポーネント](legacy-components.md)に関するトピックをご参照ください。
  
 ## <a name="overview"></a>概要
 
@@ -39,7 +42,7 @@ ms.locfileid: "74083753"
 ## <a name="task-configuration-preset"></a>タスクの構成 (プリセット)
 **Azure Media Motion Detector**でタスクを作成するときは、構成プリセットを指定する必要があります。 
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 次のパラメーターを使用できます。
 
 | 名前 | オプション | 説明 | Default |

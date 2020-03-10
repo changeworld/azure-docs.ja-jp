@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 04/03/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: a1c19523508f434c114df884824d1595376bac21
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c02595ebdb2f011dcc94b517771a79a4b2df754d
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276920"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161722"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>チュートリアル:Azure Spatial Anchors を使用して新しい Android アプリを作成する手順
 
@@ -26,7 +26,7 @@ ms.locfileid: "74276920"
 - <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4 以降</a>がインストールされている Windows または macOS マシン。
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">開発者向け</a>の <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore 対応</a> Android デバイス。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 Android Studio を起動します。 **[Android Studio へようこそ]** ウィンドウで、 **[新規 Android Studio プロジェクトの開始]** を選択します。 または、既に開かれているプロジェクトがある場合は、 **[ファイル]** -> **[新規プロジェクト]** を選択します。
 
@@ -123,18 +123,18 @@ dependencies {
 
 ## <a name="attach-a-local-azure-spatial-anchor"></a>ローカル Azure Spatial Anchor のアタッチ
 
-次のエントリを含むように `Gradle Scripts\build.gradle (Module: app)` を変更します。 このコードにより、ご自分のアプリは確実に Azure Spatial Anchors バージョン 1.3.0 を対象とするようになります。 ただし、Azure Spatial Anchors の任意の最新バージョンの参照が機能します。
+次のエントリを含むように `Gradle Scripts\build.gradle (Module: app)` を変更します。 このコードにより、アプリは確実に Azure Spatial Anchors バージョン 2.2.0 を対象とするようになります。 ただし、Azure Spatial Anchors の任意の最新バージョンの参照が機能します。 [こちら](https://github.com/Azure/azure-spatial-anchors-samples/releases)でリリース ノートを確認できます。
 
 ```
 dependencies {
     ...
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[1.3.0]"
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[1.3.0]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[2.2.0]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[2.2.0]"
     ...
 }
 ```
 
-`app\java\<PackageName>`-> **[新規]** -> **[Java Class]\(Java クラス\)** を右クリックします。 **[名前]** を _MyFirstApp_ に設定し、 **[スーパークラス]** を _android.app.Application_ に設定します。 他のオプションはそのままにします。 Click **OK**. `MyFirstApp.java` というファイルが作成されます。 そこに次の import を追加します。
+`app\java\<PackageName>`-> **[新規]** -> **[Java Class]\(Java クラス\)** を右クリックします。 **[名前]** を _MyFirstApp_ に設定し、 **[スーパークラス]** を _android.app.Application_ に設定します。 他のオプションはそのままにします。 **[OK]** をクリックします。 `MyFirstApp.java` というファイルが作成されます。 そこに次の import を追加します。
 
 ```java
 import com.microsoft.CloudServices;

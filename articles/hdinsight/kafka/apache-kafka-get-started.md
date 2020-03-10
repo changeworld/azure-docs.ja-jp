@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/24/2020
-ms.openlocfilehash: 286b16d850b1c1c26069c50cd4045bf7f3dd3c14
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 9e220c7a7813f89eacab5137362e39153d2b334a
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623498"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207185"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure HDInsight 内に Apache Kafka クラスターを作成する
 
@@ -78,7 +78,7 @@ HDInsight で Apache Kafka クラスターを作成するには、次の手順�
 
     **[セキュリティとネットワーク]** タブを選択します。
 
-1. このクイック スタートでは、既定のセキュリティ設定をそのまま使用します。 Enterprise セキュリティ パッケージの詳細については、「[Azure Active Directory Domain Services を使用して、Enterprise セキュリティ パッケージで HDInsight クラスターを構成する](../domain-joined/apache-domain-joined-configure-using-azure-adds.md)」を参照してください。 Apache Kafka のディスク暗号化に独自のキーを使用する方法については、「[Azure HDInsight で Apache Kafka 用に自分のキーを持ち込む](apache-kafka-byok.md)」を参照してください。
+1. このクイック スタートでは、既定のセキュリティ設定をそのまま使用します。 Enterprise セキュリティ パッケージの詳細については、「[Azure Active Directory Domain Services を使用して、Enterprise セキュリティ パッケージで HDInsight クラスターを構成する](../domain-joined/apache-domain-joined-configure-using-azure-adds.md)」を参照してください。 Apache Kafka ディスク暗号化に独自のキーを使用する方法については、「[お客様が管理するキー ディスクの暗号化](../disk-encryption.md)」を参照してください
 
    クラスターを仮想ネットワークに接続したい場合は、 **[仮想ネットワーク]** ボックスの一覧からいずれかの仮想ネットワークを選択します。
 

@@ -10,16 +10,16 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 11/07/2019
 ms.author: aahi
-ms.openlocfilehash: 0f16c687f9816e99e05c2495a05596bd988ca9d2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 66bc1e5441210b8d9153812c826643159fe53d50
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827317"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251321"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Text Analytics API とは
 
-Text Analytics API は、未加工のテキストに対して高度な自然言語処理を実行できるクラウドベースのサービスであり、主要な機能として感情分析、キー フレーズ抽出、言語検出、エンティティ認識の 4 つを備えています。
+Text Analytics API は、未加工のテキストに対して高度な自然言語処理を実行できるクラウドベースのサービスであり、主要な機能として感情分析、キー フレーズ抽出、言語検出、名前付きエンティティの認識の 4 つを備えています。
 
 この API は、機械学習と AI のアルゴリズムを開発プロジェクトで利用できるようクラウドに集めた [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/) に含まれます。
 
@@ -51,7 +51,7 @@ Text Analytics API は、未加工のテキストに対して高度な自然言�
 
 2. 未加工の非構造化テキストとしてデータを含む[要求を JSON で表します](how-tos/text-analytics-how-to-call-api.md#json-schema)。
 
-3. 任意のリソース (感情分析、キー フレーズ抽出、言語検出、エンティティ識別) を付加し、新規登録時に確立されたエンドポイントに要求を投稿します。
+3. 任意のリソース (感情分析、キー フレーズ抽出、言語検出、名前付きエンティティの認識) を付加し、新規登録時に確立されたエンドポイントに要求を投稿します。
 
 4. 応答をローカルでストリームまたは保存します。 要求に基づき、結果は感情スコア、抽出されたキー フレーズのコレクション、または言語コードになります。
 
@@ -83,7 +83,7 @@ ID をベースに出力は 1 つの JSON ドキュメントとして返され�
 
 Text Analytics API のエンドポイントはすべて、未加工のテキスト データを受け取ります。 現在の上限はドキュメントあたり 5,120 文字です。それより大きなドキュメントを分析する必要がある場合は小さなまとまりに分割できます。
 
-| 制限 | 値 |
+| 制限 | Value |
 |------------------------|---------------|
 | 1 つのドキュメントの最大サイズ | [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) で測定される 5,120 文字。 |
 | 要求全体の最大サイズ | 1 MB |
@@ -94,9 +94,9 @@ Text Analytics API のエンドポイントはすべて、未加工のテキス�
 | レベル          | 1 秒あたりの要求数 | 1 分あたりの要求数 |
 |---------------|---------------------|---------------------|
 | S/マルチサービス | 1000                | 1000                |
-| S0/F0         | 100                 | 300                 |
-| S1            | 200                 | 300                 |
-| S2            | 300                 | 300                 |
+| S0/F0         | 100                 | 該当なし                 |
+| S1            | 200                 | 該当なし                 |
+| S2            | 該当なし                 | 該当なし                 |
 | S3            | 500                 | 500                 |
 | S4            | 1000                | 1000                |
 
@@ -106,7 +106,7 @@ Text Analytics API のエンドポイントはすべて、未加工のテキス�
 
 Text Analytics API では、テキストの表現と文字数の計算に Unicode エンコーディングが使用されます。 要求は UTF-8 と UTF-16 の両方で提出できます。文字数に測定可能な違いはありません。 Unicode コードポイントは文字の長さのヒューリスティックとして使用され、テキスト分析データを制限するという目的では同等と見なされます。 [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) を利用して文字数を取得する場合、データ サイズの測定に使用しているものと同じ方法を使用することになります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 + Text Analytics 用の [Azure リソースを作成](../cognitive-services-apis-create-account.md)して、対象のアプリケーションのキーとエンドポイントを取得します。
 

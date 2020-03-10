@@ -6,16 +6,16 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 41e9ff79ad3f7abeda1b946295e8e0eb519c2554
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 46750383c1436a2d053d6db7fed858c7c0f8a9fe
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561759"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226309"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>チュートリアル:Azure App Service でユーザーをエンド ツー エンドで認証および承認する
 
-[Azure App Service](overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 さらに、App Service には、[ユーザーの認証と承認](overview-authentication-authorization.md)のためのサポートが組み込まれています。 このチュートリアルでは、App Service の認証と承認を使用してアプリケーションをセキュリティで保護する方法を示します。 ここでは ASP.NET Core アプリと Angular.js フロントエンドが使用されていますが、これはほんの一例です。 App Service の認証と承認では、すべての言語のランタイムがサポートされています。このチュートリアルに沿って、お好みの言語に適用する方法を学習することができます。
+[Azure App Service](overview.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。 さらに、App Service には、[ユーザーの認証と承認](overview-authentication-authorization.md)のためのサポートが組み込まれています。 このチュートリアルでは、App Service の認証と承認を使用してアプリケーションをセキュリティで保護する方法を示します。 ここでは ASP.NET Core アプリと Angular.js フロントエンドが使用されていますが、これはほんの一例です。 App Service の認証と承認では、すべての言語のランタイムがサポートされています。このチュートリアルに沿って、お好みの言語に適用する方法を学習することができます。
 
 チュートリアルでは、サンプル アプリを使用して、自己完結型アプリをセキュリティで保護する方法を示します (「[バックエンド アプリの認証と承認を有効にする](#enable-authentication-and-authorization-for-back-end-app)」を参照)。
 
@@ -237,7 +237,7 @@ ID プロバイダーとして Azure Active Directory を使用します。 詳�
 
 ### <a name="enable-authentication-and-authorization-for-front-end-app"></a>フロントエンド アプリの認証と承認を有効にする
 
-フロントエンド アプリに対して同じ手順を行いますが、最後の手順はスキップします。 フロントエンド アプリでは、クライアント ID は必要ありません。
+バックエンド アプリに対しても同じ手順を行いますが、最後の手順はスキップします。 フロントエンド アプリでは、クライアント ID は必要ありません。
 
 必要に応じて、`http://<front-end-app-name>.azurewebsites.net` に移動します。 セキュリティで保護されたサインイン ページにリダイレクトされるようになったはずです。 サインインした後でも、まだバックエンド アプリのデータにアクセスすることはできません。次の 3 つの作業を行う必要があります。
 

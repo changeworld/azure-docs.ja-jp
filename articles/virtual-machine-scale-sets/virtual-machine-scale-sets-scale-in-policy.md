@@ -1,32 +1,32 @@
 ---
 title: Azure 仮想マシン スケール セットでカスタム スケールイン ポリシーを使用する
 description: Azure 仮想マシン スケール セットで、自動スケーリング構成を使用してインスタンス数を管理するカスタム スケールイン ポリシーを使用する方法について説明します
-author: avverma
+services: virtual-machine-scale-sets
+author: avirishuv
+manager: vashan
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 02/26/2020
 ms.author: avverma
-ms.openlocfilehash: 8e51ebab36d75d1c9512446ee0370f7359a72551
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: ffcdaf76bdd08ee5505ddbeff6a6698e231b6171
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271762"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919840"
 ---
-# <a name="preview-use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>プレビュー:Azure 仮想マシン スケール セットでカスタム スケールイン ポリシーを使用する
+# <a name="use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットでカスタム スケールイン ポリシーを使用する
 
-仮想マシン スケール セットのデプロイは、プラットフォームのメトリックやユーザー定義のカスタム メトリックなど、メトリックの配列に基づいて、スケールアウトまたはスケールインできます。 スケールアウトではスケール セット モデルに基づいて新しい仮想マシンが作成されるのに対し、スケールインでは、スケールセットのワークロードの変化に応じて、構成や機能が異なる可能性のある実行中の仮想マシンが調整されます。 
+仮想マシン スケール セットのデプロイは、プラットフォームのメトリックやユーザー定義のカスタム メトリックなど、メトリックの配列に基づいて、スケールアウトまたはスケールインできます。 スケールアウトではスケール セット モデルに基づいて新しい仮想マシンが作成されるのに対し、スケールインでは、スケール セットのワークロードの変化に応じて、構成や機能が異なる可能性のある実行中の仮想マシンが調整されます。 
 
-スケールイン ポリシー機能を使用すると、ユーザーは、仮想マシンがスケールインされる順序を構成することができます。 プレビューでは、次の 3 つのスケールイン構成が導入されています。 
+スケールイン ポリシー機能を使用すると、ユーザーは、3 つのスケールイン構成によって、仮想マシンがスケールインされる順序を構成できます。 
 
 1. Default
 2. NewestVM
 3. OldestVM
-
-***このプレビュー機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。***
 
 ### <a name="default-scale-in-policy"></a>Default スケールイン ポリシー
 
@@ -54,6 +54,17 @@ ms.locfileid: "76271762"
 
 スケールイン ポリシーは、次の方法を使用して仮想マシン スケール セット モデルで定義できます。
 
+### <a name="azure-portal"></a>Azure portal
+ 
+次の手順で、新しいスケール セットを作成するときのスケールイン ポリシーを定義します。 
+ 
+1. **[仮想マシン スケール セット]** に移動します。
+1. **[+ 追加]** を選択して、新しいスケール セットを作成します。
+1. **[スケーリング]** タブにアクセスします。 
+1. **[スケールイン ポリシー]** セクションを見つけます。
+1. ドロップダウンからスケールイン ポリシーを選択します。
+1. 新しいスケール セットの作成が完了したら、 **[確認と作成]** ボタンを選択します。
+
 ### <a name="using-api"></a>API の使用
 
 API 2019-03-01 を使用して、仮想マシン スケール セットで PUT を実行します。
@@ -70,6 +81,33 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
         } 
     }    
 } 
+```
+### <a name="azure-powershell"></a>Azure PowerShell
+
+リソース グループを作成した後、スケールイン ポリシーを *OldestVM* に設定して新しいスケール セットを作成します。
+
+```azurepowershell-interactive
+New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "<VMSS location>"
+New-AzVmss `
+  -ResourceGroupName "myResourceGroup" `
+  -Location "<VMSS location>" `
+  -VMScaleSetName "myScaleSet" `
+  -ScaleInPolicy “OldestVM”
+```
+
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+
+次の例では、新しいスケール セットを作成するときにスケールイン ポリシーが定義されます。 まずリソース グループを作成し、その後、スケールイン ポリシーを *OldestVM* に設定して新しいスケール セットを作成します。 
+
+```azurecli-interactive
+az group create --name <myResourceGroup> --location <VMSSLocation>
+az vmss create \
+  --resource-group <myResourceGroup> \
+  --name <myVMScaleSet> \
+  --image UbuntuLTS \
+  --admin-username <azureuser> \
+  --generate-ssh-keys \
+  --scale-in-policy OldestVM
 ```
 
 ### <a name="using-template"></a>テンプレートの使用
@@ -94,6 +132,15 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
 
 スケールイン ポリシーの変更は、スケールイン ポリシーの適用と同じプロセスで行います。 たとえば、上の例でポリシーを OldestVM から NewestVM に変更する場合は、次の方法で実行できます。
 
+### <a name="azure-portal"></a>Azure portal
+
+Azure portal を使用して、既存のスケール セットのスケールイン ポリシーを変更できます。 
+ 
+1. 既存の仮想マシン スケール セットで、左側のメニューから **[スケーリング]** を選択します。
+1. **[スケールイン ポリシー]** タブを選択します。
+1. ドロップダウンからスケールイン ポリシーを選択します。
+1. 完了したら、 **[保存]** を選択します。 
+
 ### <a name="using-api"></a>API の使用
 
 API 2019-03-01 を使用して、仮想マシン スケール セットで PUT を実行します。
@@ -110,6 +157,27 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
         } 
     }    
 }
+```
+### <a name="azure-powershell"></a>Azure PowerShell
+
+既存のスケール セットのスケールイン ポリシーを更新します。
+
+```azurepowershell-interactive
+Update-AzVmss `
+ -ResourceGroupName "myResourceGroup" `
+ -VMScaleSetName "myScaleSet" `
+ -ScaleInPolicy “OldestVM”
+```
+
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+
+次に示すのは、既存のスケール セットのスケールイン ポリシーを更新する例です。 
+
+```azurecli-interactive
+az vmss update \  
+  --resource-group <myResourceGroup> \
+  --name <myVMScaleSet> \
+  --scale-in-policy OldestVM
 ```
 
 ### <a name="using-template"></a>テンプレートの使用
@@ -167,9 +235,9 @@ NewestVM を Default または OldestVM に変更する場合も、同じプロ�
 
 非ゾーン仮想マシン スケール セットの場合は、スケール セット全体で最も新しい VM が削除対象に選択されます。 "保護されている" VM は削除からスキップされます。 
 
-## <a name="troubleshoot"></a>[トラブルシューティング]
+## <a name="troubleshoot"></a>トラブルシューティング
 
-1. スケールイン ポリシーを有効にできない: "タイプ 'properties' のオブジェクトにメンバー 'scaleInPolicy' が見つかりませんでした" でエラー メッセージが始まる "BadRequest" エラーが発生する場合は、仮想マシン スケール セットに使用されている API のバージョンを確認します。 このプレビューでは、API バージョン 2019-03-01 以降が必要です。
+1. スケールイン ポリシーを有効にできない: "タイプ 'properties' のオブジェクトにメンバー 'scaleInPolicy' が見つかりませんでした" でエラー メッセージが始まる "BadRequest" エラーが発生する場合は、仮想マシン スケール セットに使用されている API のバージョンを確認します。 この機能では、API バージョン 2019-03-01 以降が必要です。
 
 2. 間違った VM がスケールインに選択される: 上記の例を参照してください。 仮想マシン スケール セットがゾーン デプロイの場合、スケールイン ポリシーは、最初に不均衡なゾーンに適用され、ゾーンが均衡された後でスケール セット全体に適用されます。 スケールインの順序が上記の例と一致しない場合は、仮想マシン スケール セット チームにトラブルシューティングのためのクエリを提出してください。
 

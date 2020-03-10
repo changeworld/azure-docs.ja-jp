@@ -4,12 +4,12 @@ description: このチュートリアルでは、PowerShell を使用して、Az
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 280e25834d015d89ab7cbba2a2b2b0f36dcf19fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2fb08d7aba3e35fb6147b75bbcee35b46873b5f6
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457852"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252734"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure で Service Fabric クラスターのランタイムをアップグレードする
 
@@ -42,7 +42,7 @@ ms.locfileid: "75457852"
 このチュートリアルを開始する前に
 
 * Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成する
-* [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) または [Azure CLI](/cli/azure/install-azure-cli) をインストールする。
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) または [Azure CLI](/cli/azure/install-azure-cli) をインストールします。
 * セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を Azure に作成します
 * Windows 開発環境を設定します。 [Visual Studio 2019](https://www.visualstudio.com)、**Azure 開発**ワークロード、**ASP.NET および Web 開発**ワークロード、 **.NET Core クロス プラットフォーム開発**ワークロードをインストールします。  その後、[.NET 開発環境](service-fabric-get-started.md)をセットアップします。
 
@@ -108,7 +108,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint $endpoint `
                              -StoreLocation CurrentUser -StoreName My
 ```
 
-```azurecli
+```console
 sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.azure.com:19080 \
 --pem ./aztestcluster201709151446.pem --no-verify
 ```
@@ -150,7 +150,7 @@ MaxPercentUpgradeDomainDeltaUnhealthyNodes : 0
 ApplicationHealthPolicyMap                 : {}
 ```
 
-```azurecli
+```console
 sfctl cluster upgrade-status
 
 {

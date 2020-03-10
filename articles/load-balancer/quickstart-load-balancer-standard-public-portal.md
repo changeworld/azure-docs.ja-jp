@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: eab8298362bfb3ad790d13fcbf47e0fe624ed3fd
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 2477d91ac885d4ef39df7b9246f7272d66c3f7ee
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470192"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251872"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>クイック スタート:VM の負荷を分散するロード バランサーを Azure portal を使用して作成する
 
@@ -110,21 +110,20 @@ Load Balancer でアプリの状態を監視するには、正常性プローブ
 
 このセクションでは、仮想ネットワークを作成し、Load Balancer のバックエンド プール用に 3 台の仮想マシンを作成して、Load Balancer をテストするために仮想マシンに IIS をインストールします。
 
-### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
-1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[仮想ネットワーク]** の順に選択します。
+## <a name="virtual-network-and-parameters"></a>仮想ネットワークとパラメーター
 
-1. **[仮想ネットワークの作成]** に次の情報を入力または選択します。
+このセクションの手順では、各パラメーターを次のように置き換える必要があります。
 
-    | 設定 | Value |
-    | ------- | ----- |
-    | 名前 | 「*myVNet*」と入力します。 |
-    | アドレス空間 | 「*10.1.0.0/16*」を入力します。 |
-    | サブスクリプション | サブスクリプションを選択します。|
-    | Resource group | 既存のリソース *[myResourceGroupSLB]* を選択します。 |
-    | Location | **[西ヨーロッパ]** を選択します。|
-    | サブネット - 名前 | 「*myBackendSubnet*」と入力します。 |
-    | サブネット アドレス範囲 | 「*10.1.0.0/24*」と入力します。 |
-1. 残りの部分は既定値のままにし、 **[作成]** を選択します。
+| パラメーター                   | Value                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupSLB |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | 西ヨーロッパ      |
+| **\<IPv4-address-space>**   | 10.1.0.0\16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.1.0.0\24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-virtual-machines"></a>仮想マシンを作成する
 パブリック IP の SKU とロード バランサーの SKU は一致している必要があります。 Standard Load Balancer の場合、Standard IP アドレスの VM をバックエンド プールで使用します。 このセクションでは、先ほど作成したロード バランサーのバックエンド プールに後で追加される 3 つの異なるゾーン ("*ゾーン 1*"、"*ゾーン 2*"、および "*ゾーン 3*") 内に、Standard パブリック IP アドレスを持つ 3 台の VM (*myVM1*、*myVM2*、および *myVM3*) を作成します。 Basic を選択した場合は、Basic IP アドレスの VM を使用します。

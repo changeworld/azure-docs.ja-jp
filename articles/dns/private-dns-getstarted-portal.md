@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 10/11/2019
 ms.author: rohink
-ms.openlocfilehash: 8391d92a2e2970378c11c043ca9f5d4f6dc44696
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 52bf9e061eb57c7ce6ea698b7468b5ba5e11b4e8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939364"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78244961"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure プライベート DNS ゾーンを作成する
 
@@ -48,23 +48,31 @@ DNS ゾーンにはドメインの DNS エントリが含まれています。 A
 
 1. **[Create Private DNS zone]\(プライベート DNS ゾーンの作成\)** ページで、以下の値を入力または選択します。
 
-   - **[リソース グループ]** : **[新規作成]** を選択し、「*MyAzureResourceGroup*」と入力して、 **[OK]** を選択します。 Azure サブスクリプション内で一意となるリソース グループ名を使用してください。 
+   - **[リソース グループ]** : **[新規作成]** を選択し、「*MyAzureResourceGroup*」と入力して、 **[OK]** を選択します。 Azure サブスクリプション内で一意となるリソース グループ名を使用してください。
    -  **Name**:この例では、「*private.contoso.com*」と入力します。
 1. **[リソース グループの場所]** には **[米国中西部]** を選択します。
 
 1. **[確認および作成]** を選択します。
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 ゾーンの作成には数分かかることがあります。
 
-## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
+## <a name="virtual-network-and-parameters"></a>仮想ネットワークとパラメーター
 
-1. ポータル ページの左上で、 **[リソースの作成]** 、 **[ネットワーク]** 、 **[仮想ネットワーク]** の順に選択します。
-2. **[名前]** に「**myAzureVNet**」と入力します。
-3. **[リソース グループ]** では、 **[MyAzureResourceGroup]** を選択します。
-4. **[場所]** には **[米国中西部]** を選択します。
-5. その他は既定値のままにして **[作成]** を選択します。
+このセクションの手順では、各パラメーターを次のように置き換える必要があります。
+
+| パラメーター                   | Value                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | MyAzureResourceGroup (既存のリソース グループを選択) |
+| **\<virtual-network-name>** | MyAzureVNet          |
+| **\<region-name>**          | 米国中西部      |
+| **\<IPv4-address-space>**   | 10.2.0.0\16          |
+| **\<subnet-name>**          | MyAzureSubnet        |
+| **\<subnet-address-range>** | 10.2.0.0\24          |
+
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="link-the-virtual-network"></a>仮想ネットワークのリンク
 
@@ -88,9 +96,8 @@ DNS ゾーンにはドメインの DNS エントリが含まれています。 A
 1. リソース グループに **[MyAzureResourceGroup]** を選択します。
 1. 仮想マシンの名前には「**myVM01**」と入力します。
 1. **[リージョン]** に **[米国中西部]** を選択します。
-1. 管理者のユーザー名には、「**azureadmin**」と入力します。
-2. パスワードとして「**Azure12345678**」を入力し、確認のためにもう一度パスワードを入力します。
-
+1. 管理者ユーザーの名前を入力します。
+2. パスワードの入力と確認入力を行います。
 5. **[パブリック受信ポート]** で **[選択したポートを許可する]** を選択し、 **[受信ポートを選択]** で **[RDP (3389)]** を選択します。
 10. そのページの他の値は既定のままとし、 **[Next: Disks >]\(次へ: ディスク >\)** をクリックします。
 11. **[ディスク]** ページは既定値のままとし、 **[Next: Networking >]\(次へ: ネットワーク >\)** をクリックします。

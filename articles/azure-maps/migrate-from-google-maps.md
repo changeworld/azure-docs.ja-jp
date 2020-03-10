@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 175625ab9fca9103bde027c3c0ea0986806ad846
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 7b73923b7fc32ae83bfc8405d074835c02031a63
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208304"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913703"
 ---
 # <a name="migrate-from-google-maps-to-azure-maps"></a>Google マップから Azure Maps に移行する
 
@@ -39,10 +39,13 @@ Azure Maps は、あらゆる業界の開発者に強力な地理空間機能を
 | Elevation                   | 対応予定                                |
 | Geocoding (Forward/Reverse) | ✓                                      |
 | 地理的位置情報                 | 該当なし                                    |
+| Nearest Roads               | ✓                                      |
 | Places Search               | ✓                                      |
 | Places Details              | 該当なし – Web サイトと電話番号を利用可能 |
 | Places Photos               | 該当なし                                    |
 | Place Autocomplete          | ✓                                      |
+| Snap to Road                | ✓                                      |
+| Speed Limits                | ✓                                      |
 | Static Maps                 | ✓                                      |
 | Static Street View          | 該当なし                                    |
 | タイム ゾーン                   | ✓                                      |
@@ -87,7 +90,9 @@ Azure Maps に関する役に立つ技術リソースの一覧を次に示しま
 - 開発者フォーラム: [https://aka.ms/AzureMapsForums](https://aka.ms/AzureMapsForums)
 - ビデオ: [https://aka.ms/AzureMapsVideos](https://aka.ms/AzureMapsVideos)
 - ブログ: [https://aka.ms/AzureMapsBlog](https://aka.ms/AzureMapsBlog)
+- 技術ブログ: [https://aka.ms/AzureMapsTechBlog](https://aka.ms/AzureMapsTechBlog)
 - Azure Maps のフィードバック (UserVoice): [https://aka.ms/AzureMapsFeedback](https://aka.ms/AzureMapsFeedback)
+- [Azure Maps Jupyter Notebook][https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook ]
 
 ## <a name="migration-support"></a>移行サポート
 

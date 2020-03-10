@@ -2,14 +2,14 @@
 author: aahill
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/14/2019
+ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: b553cd2bed68bc8df7241f4f843b32ec13b1a08a
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 8e3f08be70a2a6b932b849ff28dd762828abf229
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77372274"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155456"
 ---
 <a name="HOLTop"></a>
 
@@ -27,8 +27,9 @@ ms.locfileid: "77372274"
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
 * [Python 3.x](https://www.python.org/)
-
-[!INCLUDE [text-analytics-resource-creation](resource-creation.md)]
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Text Analytics リソースを作成"  target="_blank">Text Analytics リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 
+    * アプリケーションを Text Analytics API に接続するには、作成するリソースのキーとエンドポイントが必要です。 この作業は、このクイックスタートの中で後から行います。
+    * Free 価格レベルを使ってサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
 
 ## <a name="setting-up"></a>設定
 
@@ -150,7 +151,7 @@ def sentiment_analysis_example(client):
 sentiment_analysis_example(client)
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Document Sentiment: positive
@@ -177,7 +178,7 @@ Negative=0.020
 
 [!code-python[sentiment analysis](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=sentimentAnalysis)]
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Document ID: 1 , Sentiment Score: 0.87
@@ -210,7 +211,7 @@ language_detection_example(client)
 ```
 
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Language:  French
@@ -223,7 +224,7 @@ Language:  French
 [!code-python[language detection](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=languageDetection)]
 
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Document ID: 1 , Language: English
@@ -262,7 +263,7 @@ def entity_recognition_example(client):
 entity_recognition_example(client)
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Named Entities:
@@ -294,7 +295,7 @@ def entity_pii_example(client):
 entity_pii_example(client)
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Personally Identifiable Information Entities: 
@@ -333,7 +334,7 @@ def entity_linking_example(client):
 entity_linking_example(client)
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Linked Entities:
@@ -391,7 +392,7 @@ Linked Entities:
 
 [!code-python[Entity recognition](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=entityRecognition)]
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Document ID: 1
@@ -461,7 +462,7 @@ key_phrase_extraction_example(client)
 ```
 
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
     Key Phrases:
@@ -476,7 +477,7 @@ key_phrase_extraction_example(client)
 [!code-python[key phrase extraction](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=keyPhrases)]
 
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Document ID: 1

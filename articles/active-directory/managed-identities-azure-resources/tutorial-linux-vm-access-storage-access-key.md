@@ -1,5 +1,5 @@
 ---
-title: チュートリアル`:`マネージド ID を使用して Azure Storage にアクセスする - Linux - Azure AD
+title: チュートリアル`:` マネージド ID を使用してアクセス キーで Azure Storage にアクセスする - Linux - Azure AD
 description: Linux VM のシステム割り当てマネージド ID を使用して Azure Storage にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 03/04/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35c31fbf8c7c1aa37134a1808cd3f54a559833c1
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 86f875fa80f8bb8dd33a369a23f49833162cd417
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74183432"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273818"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>チュートリアル:Linux VM のシステム割り当てマネージド ID を使用してアクセス キーで Azure Storage にアクセスする
 
@@ -68,7 +68,7 @@ ms.locfileid: "74183432"
 2. 左側のパネルの **[アクセス制御 (IAM)]** リンクをクリックします。  
 3. ページの上部にある **[+ ロール割り当ての追加]** をクリックして、VM 用に新しいロールの割り当てを追加します
 4. ページの右側で、 **[ロール]** を "ストレージ アカウント キー オペレーターのサービス ロール" に設定します。 
-5. 次のドロップダウンで、 **[アクセスの割り当て先]** を "仮想マシン" リソースに設定します。  
+5. 次のドロップダウンで、 **[アクセスの割り当て先]** を ［仮想マシン］ リソースに設定します。  
 6. 次に、適切なサブスクリプションが **[サブスクリプション]** ドロップダウンにリストされていることを確認してから、 **[リソース グループ]** を [すべてのリソース グループ] に設定します。  
 7. 最後に、 **[選択]** のドロップダウンで Linux 仮想マシンを選択し、 **[保存]** をクリックします。 
 
@@ -194,7 +194,7 @@ az storage blob download -c <CONTAINER NAME> -n test.txt -f test-download.txt --
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Linux VM のシステム割り当てマネージド ID を使用してアクセス キーで Azure Storage にアクセスする方法について説明しました。  Azure Storage アクセス キーの詳細については、以下を参照してください。
 

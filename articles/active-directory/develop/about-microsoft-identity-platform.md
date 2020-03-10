@@ -12,18 +12,18 @@ ms.date: 12/09/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
-ms.openlocfilehash: 3c18440e87cf50e370b21b5f0ca33b42e0069fc1
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 8714b7a96197cb4a59b29bada31b5559961bf8e3
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161428"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300215"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Microsoft ID プラットフォームの進化
 
 Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) 開発者プラットフォームの進化版です。 これにより、ユーザーをサインインし、Microsoft API (Microsoft Graph) や開発者が構築した API を呼び出すためのトークンを取得するアプリケーションを開発者がビルドできます。 これは、認証サービス、オープン ソース ライブラリ、(開発者ポータルとアプリケーション API による) アプリケーションの登録と構成、完全な開発者向けドキュメント、クイックスタート サンプル、コード サンプル、チュートリアル、ハウツー ガイド、その他の開発者向けコンテンツによって構成されています。 Microsoft ID プラットフォームでは、OAuth 2.0 や OpenID Connect など業界標準のプロトコルがサポートされています。
 
-これまで、ほとんどの開発者は Azure AD v1.0 プラットフォームを使用して (Azure AD によりプロビジョニングされる) 職場や学校のアカウントを認証してきました。これは、Azure AD Authentication Library (ADAL)、アプリケーションの登録と構成用の Azure portal、プログラムによるアプリケーション構成用の Azure AD Graph API を使用して、Azure AD v1.0 エンドポイントからトークンを要求することによって行われていました。
+これまで、ほとんどの開発者は Azure AD v1.0 プラットフォームを使用して (Azure AD によりプロビジョニングされる) 職場や学校のアカウントを認証してきました。これは、Azure AD Authentication Library (ADAL)、アプリケーションの登録と構成用の Azure portal、プログラムによるアプリケーション構成用の Microsoft Graph API を使用して、Azure AD v1.0 エンドポイントからトークンを要求することによって行われていました。
 
 統合 Microsoft ID プラットフォーム (v2.0) を使用すると、コードを一回記述すれば、自分のアプリケーションで Microsoft のあらゆる ID を認証できます。 いくつかのプラットフォームでは、完全にサポートされているオープンソースの Microsoft Authentication Library (MSAL) を ID プラットフォームのエンドポイントに使用することが推奨されます。 MSAL は簡単に使えて、ユーザーに優れたシングル サインオン (SSO) 機能を提供します。開発者は Microsoft Secure Development Lifecycle (SDL) を使用して開発し、高い信頼性とパフォーマンスを実現できます。 API を呼び出すとき、増分同意を活用するようにアプリケーションを構成できます。これにより、実行時にアプリケーションの使用がこれを保証するまで、同意要求をより侵略的な範囲で遅延させることができます。  MSAL では Azure Active Directory B2C もサポートされるため、顧客は、好みのソーシャル、エンタープライズ、またはローカル アカウント ID を使用して、アプリケーションや API にシングル サインオン アクセスできます。
 
@@ -49,7 +49,7 @@ Azure portal **[アプリの登録](https://go.microsoft.com/fwlink/?linkid=2083
 
 Azure AD B2C との統合では (ソーシャルまたはローカル ID を認証する場合)、Azure AD B2C テナントにアプリケーションを登録する必要があります。 このエクスペリエンスも Azure portal の一部です。
 
-**Microsoft Graph のアプリケーション API** は現在、プレビュー段階です。 この API を使用し、Microsoft のあらゆる ID を認証するよう、Microsoft ID プラットフォームと統合されたアプリケーションをプログラミングで構成します。 ただし、この API の一般利用が始まるまで、Azure AD Graph 1.6 API とアプリケーション マニフェストを使用する必要があります。
+[アプリケーション API](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0) を使用して、Microsoft のあらゆる ID を認証するよう、Microsoft ID プラットフォームと統合されたアプリケーションをプログラミングで構成します。
 
 ### <a name="msal-libraries"></a>MSAL ライブラリ
 

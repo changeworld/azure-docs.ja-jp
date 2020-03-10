@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 02/02/2020
 ms.author: juliako
-ms.openlocfilehash: aee4390d9b892eddbd7dc59887f5268e4c35d3f7
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: efd8386f464bfdf2ac27d3be07e6572dc27952e1
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989792"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163592"
 ---
 # <a name="what-is-video-indexer"></a>Video Indexer とは
 
@@ -27,9 +27,14 @@ Video Indexer で分析情報の抽出を開始するには、アカウントを
 
 ![Azure Media Services Video Indexer フローの図](./media/video-indexer-overview/model-chart.png)
 
+
 ## <a name="compliance-privacy-and-security"></a>コンプライアンス、プライバシー、セキュリティ
- 
-重要な注意事項として、Video Indexer の使用に適用されるすべての法律に従う必要があります。また、他の人の権利を犯したり、他の人に害を及ぼしたりする可能性のある方法で Video Indexer またはその他の Azure サービスを使用することはできません。 生体認証データなどのビデオを Video Indexer サービスにアップロードして処理と保管を行う前に、ビデオに写っている個人から適切なすべての同意を得ることを含め、適切な権限をすべて持っている必要があります。 Video Indexer のコンプライアンス、プライバシー、セキュリティについては、Microsoft の [Cognitive Services の条項](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)に関するページを参照してください。 Microsoft のプライバシー義務とデータの取り扱いについては、Microsoft の[プライバシー ステートメント](https://privacy.microsoft.com/PrivacyStatement)、[オンライン サービス条件](https://www.microsoft.com/licensing/product-licensing/products) ("OST")、および[データ処理の補遺](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA") に関するページをご確認ください。 データの保持、削除、破棄などのその他のプライバシー情報は、OST および[こちら](faq.md)で確認できます。 Video Indexer を使用すると、Cognitive Services の条項、OST、DPA、およびプライバシー ステートメントに従うことに同意したものと見なされます。
+
+重要な注意事項として、Video Indexer の使用に適用されるすべての法律に従う必要があります。また、他の人の権利を犯したり、他の人に害を及ぼしたりする可能性のある方法で Video Indexer または何らかの Azure サービスを使用することはできません。
+
+Video Indexer にビデオまたは画像をアップロードする前に、ビデオまたは画像を使用するための適切な権限をすべて取得している必要があります。これには、法律で義務づけられている場合において、ビデオまたは画像に含まれる人物から、Video Indexer および Azure でのデータの使用、処理、および保存について、必要なすべての同意を得ることが含まれます (このような人物が存在する場合)。 一部の法的管轄区域では、生体認証データなどの特定のカテゴリのデータの収集、オンライン処理、および保管に関して特別な法的要件が課せられる場合があります。 特別な法的要件の対象となるデータの処理と保管のために Video Indexer と Azure を使用する前に、適用される可能性のあるこのような法的要件に準拠していることを確認する必要があります。
+
+Video Indexer のコンプライアンス、プライバシー、およびセキュリティについては、Microsoft [セキュリティ センター](https://www.microsoft.com/TrustCenter/CloudServices/Azure/default.aspx)にアクセスしてください。 Microsoft のプライバシー義務、データの取り扱いと保持の慣行 (データの削除方法など) については、Microsoft の[プライバシーに関する声明](https://privacy.microsoft.com/PrivacyStatement)、[オンライン サービス規約](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ("OST")、および[データ処理の補遺](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA") に関するページをご確認ください。 Video Indexer を使用することによって、OST、DPA およびプライバシーに関する声明に従うことに同意したものとみなされます。
 
 ## <a name="what-can-i-do-with-video-indexer"></a>Video Indexer を使って何ができますか?
 
@@ -42,7 +47,7 @@ Video Indexer の分析情報は、次のような多くのシナリオに適用
 * *コンテンツ モデレーション*: テキストとビジュアルのコンテンツ モデレーション モデルを使用して、不適切なコンテンツからユーザーの安全を維持し、公開したコンテンツが組織の値と一致することを検証します。 コンテンツに関して、特定のビデオを自動的にブロックしたり、ユーザーに通知したりすることができます。
 * *推奨事項*:ビデオの分析情報は、ユーザーに関連のあるビデオ モーメントを強調表示することで、ユーザー エンゲージメントを向上させるために使用できます。 各ビデオに追加のメタデータをタグ付けすることで、ユーザーに最も関連性の高いビデオをお勧めし、ニーズに合うビデオの部分を強調表示することができます。
 
-## <a name="features"></a>[機能]
+## <a name="features"></a>機能
 
 次の一覧は、Video Indexer のビデオとオーディオ モデルを使用して、ビデオから取得できる分析情報を示しています。
 

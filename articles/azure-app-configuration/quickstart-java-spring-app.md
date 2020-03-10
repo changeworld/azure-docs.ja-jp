@@ -10,12 +10,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: lcozzens
-ms.openlocfilehash: 172fe646b294ca511a22128094c56172c4268018
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2521adfda731c06c879f5cfeb6283567228bf664
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750295"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919364"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して Java Spring アプリを作成する
 
@@ -31,9 +31,9 @@ ms.locfileid: "75750295"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **[Configuration Explorer]\(構成エクスプローラー)**  >  **[+ 作成]** の順に選択して、次のキーと値のペアを追加します。
+1. **[Configuration Explorer]\(構成エクスプローラー)**  >  **[+ 作成]** の順に選択して、次のキーと値のペアを追加します。
 
-    | Key | 値 |
+    | Key | Value |
     |---|---|
     | /application/config.message | こんにちは |
 
@@ -43,32 +43,44 @@ ms.locfileid: "75750295"
 
 [Spring Initializr](https://start.spring.io/) を使用して、新しい Spring Boot プロジェクトを作成します。
 
-1. [https://www.microsoft.com]\(<https://start.spring.io/>) を参照します。
+1. <https://start.spring.io/> を参照します。
 
-2. 次のオプションを指定します。
+1. 次のオプションを指定します。
 
-   * **Java** で **Maven** プロジェクトを生成します。
-   * **Spring Boot** のバージョンとして、2.0 以降を指定します。
-   * アプリケーションの**グループ (Group)** と**成果物 (Artifact)** の名前を指定します。
-   * **Spring Web** の依存関係を追加します。
+   - **Java** で **Maven** プロジェクトを生成します。
+   - **Spring Boot** のバージョンとして、2.0 以降を指定します。
+   - アプリケーションの**グループ (Group)** と**成果物 (Artifact)** の名前を指定します。
+   - **Spring Web** の依存関係を追加します。
 
-3. 前の各オプションを指定してから、 **[プロジェクトの生成]** を選択します。 メッセージが表示されたら、ローカル コンピューター上のパスにプロジェクトをダウンロードします。
+1. 前の各オプションを指定してから、 **[プロジェクトの生成]** を選択します。 メッセージが表示されたら、ローカル コンピューター上のパスにプロジェクトをダウンロードします。
 
 ## <a name="connect-to-an-app-configuration-store"></a>App Configuration ストアに接続する
 
 1. ファイルをローカル システム上に展開したら、シンプルな Spring Boot アプリケーションの編集を開始できます。 アプリのルート ディレクトリで *pom.xml* ファイルを探します。
 
-2. テキスト エディターで *pom.xml* ファイルを開き、Spring Cloud Azure Config スターターを `<dependencies>` のリストに追加します。
+1. テキスト エディターで *pom.xml* ファイルを開き、Spring Cloud Azure Config スターターを `<dependencies>` のリストに追加します。
+
+    **Spring Cloud 1.1.x**
 
     ```xml
     <dependency>
         <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0</version>
+        <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
+        <version>1.1.2</version>
     </dependency>
     ```
 
-3. アプリのパッケージ ディレクトリに、*MessageProperties.java* という名前の新しい Java ファイルを作成します。 次の行を追加します。
+    **Spring Cloud 1.2.x**
+
+    ```xml
+    <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
+        <version>1.2.2</version>
+    </dependency>
+    ```
+
+1. アプリのパッケージ ディレクトリに、*MessageProperties.java* という名前の新しい Java ファイルを作成します。 次の行を追加します。
 
     ```java
     package com.example.demo;
@@ -89,7 +101,7 @@ ms.locfileid: "75750295"
     }
     ```
 
-4. アプリのパッケージ ディレクトリに、*HelloController.java* という名前の新しい Java ファイルを作成します。 次の行を追加します。
+1. アプリのパッケージ ディレクトリに、*HelloController.java* という名前の新しい Java ファイルを作成します。 次の行を追加します。
 
     ```java
     package com.example.demo;
@@ -112,7 +124,7 @@ ms.locfileid: "75750295"
     }
     ```
 
-5. メイン アプリケーションの Java ファイルを開き、`@EnableConfigurationProperties` を追加してこの機能を有効にします。
+1. メイン アプリケーションの Java ファイルを開き、`@EnableConfigurationProperties` を追加してこの機能を有効にします。
 
     ```java
     import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -126,10 +138,28 @@ ms.locfileid: "75750295"
     }
     ```
 
-6. アプリの resources ディレクトリに、`bootstrap.properties` という名前の新しいファイルを作成し、そのファイルに以下の行を追加します。 サンプルの値を、App Configuration ストアの適切なプロパティに置き換えます。
+1. アプリの resources ディレクトリに、`bootstrap.properties` という名前の新しいファイルを作成し、そのファイルに以下の行を追加します。 サンプルの値を、App Configuration ストアの適切なプロパティに置き換えます。
 
     ```CLI
-    spring.cloud.azure.appconfiguration.stores[0].connection-string=[your-connection-string]
+    spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
+    ```
+
+1. **APP_CONFIGURATION_CONNECTION_STRING** という名前の環境変数に、App Configuration ストアへのアクセス キーを設定します。 コマンド ラインで次のコマンドを実行してコマンド プロンプトを再起動し、変更が反映されるようにします。
+
+    ```CLI
+        setx APP_CONFIGURATION_CONNECTION_STRING "connection-string-of-your-app-configuration-store"
+    ```
+
+    Windows PowerShell を使用する場合は、次のコマンドを実行します。
+
+    ```azurepowershell
+        $Env:APP_CONFIGURATION_CONNECTION_STRING = "connection-string-of-your-app-configuration-store"
+    ```
+
+    macOS または Linux を使用する場合は、次のコマンドを実行します。
+
+    ```console
+        export APP_CONFIGURATION_CONNECTION_STRING='connection-string-of-your-app-configuration-store'
     ```
 
 ## <a name="build-and-run-the-app-locally"></a>アプリをビルドしてローカルで実行する

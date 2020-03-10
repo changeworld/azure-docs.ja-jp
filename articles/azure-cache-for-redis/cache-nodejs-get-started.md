@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: e0458fd257942a455daef911a303437fea03b11b
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 07e2d6f174e5af4af9bdcac73dc74f5cf061ed41
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122012"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300487"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>クイック スタート:Node.js で Azure Cache for Redis を使用する
 
@@ -55,7 +55,7 @@ var client = redis.createClient(6380, process.env.REDISCACHEHOSTNAME,
 
 ## <a name="create-a-new-nodejs-app"></a>新しい Node.js アプリを作成する
 
-*redistest.js* という名前の新しいスクリプト ファイルを作成します。
+*redistest.js* という名前の新しいスクリプト ファイルを作成します。 `npm install redis bluebird` コマンドを使用して、必要なパッケージをインストールします。
 
 次の例の JavaScript をファイルに追加します。 このコードでは、キャッシュ ホスト名とキー環境変数を使用して Azure Cache for Redis のインスタンスに接続する方法を示しています。 コードでは、キャッシュ内の文字列値の格納および取得も行います。 `PING` および `CLIENT LIST` コマンドも実行されます。 Redis と [node_redis](https://github.com/mranney/node_redis) クライアントを使用する他の例については、[https://redis.js.org/](https://redis.js.org/) を参照してください。
 
@@ -63,6 +63,7 @@ var client = redis.createClient(6380, process.env.REDISCACHEHOSTNAME,
 var redis = require("redis");
 var bluebird = require("bluebird");
 
+// Convert Redis client API to use promises, to make it usable with async/await syntax
 bluebird.promisifyAll(redis.RedisClient.prototype);
 bluebird.promisifyAll(redis.Multi.prototype);
 
@@ -108,7 +109,7 @@ node redistest.js
 
 ![完了した Redis Cache キャッシュ アプリ](./media/cache-nodejs-get-started/redis-cache-app-complete.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 次のチュートリアルに進む場合は、このクイック スタートで作成したリソースを維持して、再利用することができます。
 
@@ -128,7 +129,7 @@ node redistest.js
 
 しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Node.js アプリケーションから Azure Cache for Redis を使用する方法を説明しました。 ASP.NET Web アプリと Azure Cache for Redis を使用するには、次のクイック スタートに進みます。
 

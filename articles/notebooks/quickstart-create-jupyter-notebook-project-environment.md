@@ -3,12 +3,12 @@ title: カスタム環境で Azure Notebooks プレビュー プロジェクト�
 description: インストールされているパッケージとスタートアップ スクリプトの特定のセットで構成された新しいプロジェクトを Azure Notebooks プレビューで作成します。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 999133dd7d9d792956f9a2c93ec218e458c921e8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 6388cb7997cac5bef25975043a13c4e080f288d4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647069"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196843"
 ---
 # <a name="quickstart-create-a-project-with-a-custom-environment-in-azure-notebooks-preview"></a>クイック スタート:カスタム環境で Azure Notebooks プレビューのプロジェクトを作成する
 
@@ -51,11 +51,14 @@ Azure Notebooks のプロジェクトは、ノートブック、データ ファ
 
 1. **[+ 追加]** コマンドでは、操作とプロジェクト内のファイルから選択されたターゲット ファイルによって定義されるステップが作成されます。 次の操作がサポートされています。
 
-    | 操作 | 説明 |
-    | --- | --- |
-    | requirements.txt | Python プロジェクトでは、requirements.txt ファイルで依存関係が定義されています。 このオプションでは、プロジェクトのファイル一覧から適切なファイルを選択し、表示される追加のドロップダウンで Python のバージョンも選択します。 必要な場合は、 **[キャンセル]** を選択してプロジェクトに戻り、ファイルをアップロードまたは作成してから、 **[Project Settings]\(プロジェクトの設定\)**  >  **[Environment]\(環境\)** タブに戻って、新しいステップを作成します。 このステップを配置した場合、プロジェクトでノートブックを実行すると、`pip install -r <file>` が自動的に実行されます |
-    | シェル スクリプト | 環境を初期化するために実行するコマンドが含まれる bash シェル スクリプト (通常は、拡張子が *.sh* のファイル) を指定するために使用します。 |
-    | Environment.yml | 環境を管理するために Conda を使用する Python プロジェクトでは、*environments.yml* ファイルを使用して依存関係を記述します。 このオプションでは、プロジェクトのファイル一覧から適切なファイルを選択します。 |
+   | Operation | 説明 |
+   | --- | --- |
+   | requirements.txt | Python プロジェクトでは、requirements.txt ファイルで依存関係が定義されています。 このオプションでは、プロジェクトのファイル一覧から適切なファイルを選択し、表示される追加のドロップダウンで Python のバージョンも選択します。 必要な場合は、 **[キャンセル]** を選択してプロジェクトに戻り、ファイルをアップロードまたは作成してから、 **[Project Settings]\(プロジェクトの設定\)**  >  **[Environment]\(環境\)** タブに戻って、新しいステップを作成します。 このステップを配置した場合、プロジェクトでノートブックを実行すると、`pip install -r <file>` が自動的に実行されます |
+   | シェル スクリプト | 環境を初期化するために実行するコマンドが含まれる bash シェル スクリプト (通常は、拡張子が *.sh* のファイル) を指定するために使用します。 |
+   | Environment.yml | 環境を管理するために Conda を使用する Python プロジェクトでは、*environments.yml* ファイルを使用して依存関係を記述します。 このオプションでは、プロジェクトのファイル一覧から適切なファイルを選択します。 |
+
+   > [!WARNING]
+   > これは開発段階のプレビュー サービスであるため、現在、`Environment.yml` 設定がプロジェクトに正しく適用されないという問題が確認されています。 現時点では、指定した環境ファイルが、プロジェクトとそこに含まれる Jupyter ノートブックに読み込まれません。
 
 1. いずれかのセットアップ ステップを削除するには、ステップの右側にある **[X]** を選択します。
 

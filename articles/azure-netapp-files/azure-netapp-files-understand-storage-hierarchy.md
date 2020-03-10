@@ -12,18 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/16/2019
+ms.date: 02/27/2020
 ms.author: b-juche
-ms.openlocfilehash: c2984e012ae83a8bc17d72ed4eac0c5c469c2694
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 70d3a2a501952a5e20b1ff8e99f48f4d7aefce8d
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65522865"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163966"
 ---
 # <a name="what-is-the-storage-hierarchy-of-azure-netapp-files"></a>Azure NetApp Files のストレージ階層とは
 
 Azure NetApp Files のボリュームを作成する前に、プロビジョニング容量のプールを購入して設定する必要があります。  容量プールを設定するには、NetApp アカウントが必要です。 ストレージ階層についての理解は、Azure NetApp Files のリソースを設定および管理するうえで役立ちます。
+
+> [!IMPORTANT] 
+> Azure NetApp Files は現在、サブスクリプション間でのリソースの移行をサポートしていません。
 
 ## <a name="azure_netapp_files_account"></a>NetApp アカウント
 
@@ -56,7 +59,7 @@ Azure NetApp Files のボリュームを作成する前に、プロビジョニ�
 
 ![ストレージ階層の概念図](../media/azure-netapp-files/azure-netapp-files-storage-hierarchy.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure NetApp Files のリソース制限](azure-netapp-files-resource-limits.md)
 - [Azure NetApp Files に登録する](azure-netapp-files-register.md)

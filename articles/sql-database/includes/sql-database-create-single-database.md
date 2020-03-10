@@ -6,12 +6,12 @@ ms.topic: include
 ms.date: 02/14/2020
 ms.author: mathoma
 ms.reviewer: vanto
-ms.openlocfilehash: 3e2c8a424c9a3744bfb91d03632965c15613a424
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: d800d273cce995c618422a3a9d0934b2657e6ef5
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252140"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194302"
 ---
 この手順では、Azure SQL Database の単一データベースを作成します。 
 
@@ -56,7 +56,7 @@ Azure portal を使用して、リソース グループと単一データベー
 
      ![SQL データベースの詳細](../media/sql-database-get-started-portal/sql-db-basic-db-details.png)
 
-   - **[プロビジョニング済み]** を選択します。
+   - **[プロビジョニング済み]** を選択します。  または、 **[サーバーレス]** を選択して、サーバーレス データベースを作成します。
 
      ![プロビジョニング済みの第 4 世代](../media/sql-database-get-started-portal/create-database-provisioned.png)
 
@@ -162,64 +162,30 @@ AZ CLI を使用して、リソース グループと単一データベースを
 
    ```azurecli-interactive
    #!/bin/bash
-   # Set variables
-   subscriptionID=<SubscriptionID>
-   resourceGroupName=myResourceGroup-$RANDOM
-   location=SouthCentralUS
-   adminLogin=azureuser
-   password="PWD27!"+`openssl rand -base64 18`
-   serverName=mysqlserver-$RANDOM
-   databaseName=mySampleDatabase
-   drLocation=NorthEurope
-   drServerName=mysqlsecondary-$RANDOM
-   failoverGroupName=failovergrouptutorial-$RANDOM
+   # set variables
+   $subscription = "<subscriptionID>"
+   $randomIdentifier = $(Get-Random)
 
-   # The ip address range that you want to allow to access your DB. 
-   # Leaving at 0.0.0.0 will prevent outside-of-azure connections to your DB
-   startip=0.0.0.0
-   endip=0.0.0.0
+   $resourceGroup = "resource-$randomIdentifier"
+   $location = "East US"
+   
+   $login = "sampleLogin"
+   $password = "samplePassword123!"
+
+   $server = "server-$randomIdentifier"
+   $database = "database-$randomIdentifier"
   
-   # Connect to Azure
-   az login
+   az login # connect to Azure
+   az account set -s $subscription # set subscription context for the Azure account
 
-   # Set the subscription context for the Azure account
-   az account set -s $subscriptionID
-
-   # Create a resource group
    echo "Creating resource group..."
-   az group create \
-      --name $resourceGroupName \
-      --location $location \
-      --tags Owner[=SQLDB-Samples]
+   az group create --name $resourceGroup --location $location
 
-   # Create a logical server in the resource group
    echo "Creating primary logical server..."
-   az sql server create \
-      --name $serverName \
-      --resource-group $resourceGroupName \
-      --location $location  \
-      --admin-user $adminLogin \
-      --admin-password $password
+   az sql server create --name $server --resource-group $resourceGroup --location $location --admin-user $login --admin-password $password
 
-   # Configure a firewall rule for the server
-   echo "Configuring firewall..."
-   az sql server firewall-rule create \
-      --resource-group $resourceGroupName \
-      --server $serverName \
-      -n AllowYourIp \
-      --start-ip-address $startip \
-      --end-ip-address $endip
-
-   # Create a gen5 1vCore database in the server 
    echo "Creating a gen5 2 vCore database..."
-   az sql db create \
-      --resource-group $resourceGroupName \
-      --server $serverName \
-      --name $databaseName \
-      --sample-name AdventureWorksLT \
-      --edition GeneralPurpose \
-      --family Gen5 \
-      --capacity 2
+   az sql db create --resource-group $resourceGroup --server $server --name $database --sample-name AdventureWorksLT --edition GeneralPurpose --family Gen5 --capacity 2
    ```
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。

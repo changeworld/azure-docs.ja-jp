@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
 ms.openlocfilehash: 38ff40b537730418fe9f0f8295884dae98a2fe0d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974140"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357694"
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>パブリック IP アドレスの作成、変更、削除
 
@@ -50,7 +50,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 3. **パブリック IP アドレス** にある **Create** を選択します｡
 4. **Create public IP address** にある以下の設定に対して値を入力または選択して､**Create** を選択します｡
 
-   |Setting|必須|詳細|
+   |設定|必須|詳細|
    |---|---|---|
    |IP バージョン|はい| IPv4 または IPv6 またはその両方を選択します。 両方を選択すると、パブリック IP アドレスが 2 つ (IPv4 アドレスが 1 つと IPv6 アドレスが 1 つ) 作成されます。 [Azure VNET での IPv6](../virtual-network/ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に関する詳細情報。|
    |SKU|はい|SKU の導入前に作成されたパブリック IP アドレスはすべて、**Basic** SKU のパブリック IP アドレスです。 パブリック IP アドレスが作成された後に SKU を変更することはできません。 スタンドアロンの仮想マシン、可用性セット内の仮想マシン、または仮想マシン スケール セットは、Basic または Standard SKU を使用できます。 可用性セットまたはスケール セットまたはスタンドアロン VM の仮想マシン間での SKU の混在は許可されません。 **Basic** SKU: 可用性ゾーンをサポートするリージョンにパブリック IP アドレスを作成している場合、既定では **[可用性ゾーン]** 設定が *[なし]* に設定されます。 基本パブリック IP では、可用性ゾーンはサポートされていません。 **Standard** SKU: Standard SKU のパブリック IP を仮想マシンまたはロード バランサーのフロント エンドに関連付けることができます。 可用性ゾーンをサポートするリージョンにパブリック IP アドレスを作成している場合、既定では **[Availability zone] \(可用性ゾーン)** 設定が *[Zone-redundant] \(ゾーン冗長)* に設定されます。 可用性ゾーンの詳細については、 **[Availability zone] \(可用性ゾーン)** 設定を参照してください。 アドレスを標準のロード バランサーに関連付ける場合は、Standard SKU が必要です。 標準のロード バランサーの詳細については、「[Azure Load Balancer の Standard SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。 標準 SKU のパブリック IP アドレスを仮想マシンのネットワーク インターフェイスに割り当てるときは、[ネットワーク セキュリティ グループ](security-overview.md#network-security-groups)で、特定のトラフィックを明示的に許可する必要があります。 ネットワーク セキュリティ グループを作成して関連付け、目的のトラフィックを明示的に許可するまで、そのリソースとの通信は失敗します。|
@@ -62,7 +62,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
    |IP アドレスの割り当て ("**両方**" の IP バージョンを選択した場合のみ表示)|はい、"**両方**" の IP バージョンを選択した場合|上記の IP アドレスの割り当てと同じ制限|
    |サブスクリプション|はい|パブリック IP を関連付けるリソースと同じ[サブスクリプション](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)内に存在する必要があります。|
    |Resource group|はい|パブリック IP を関連付けるリソースと同じであっても異なっていても、[リソース グループ](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)に存在させることができます。|
-   |Location|はい|パブリック IP を関連付けるリソースと同じ[場所](https://azure.microsoft.com/regions) (リージョンとも呼ばれる) に存在する必要があります。|
+   |場所|はい|パブリック IP を関連付けるリソースと同じ[場所](https://azure.microsoft.com/regions) (リージョンとも呼ばれる) に存在する必要があります。|
    |可用性ゾーン| いいえ | この設定は、サポートされている場所を選択した場合にのみ表示されます。 サポートされている場所の一覧については、「[Availability zones overview (可用性ゾーンの概要)](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。 **Basic** SKU を選択した場合は、 *[なし]* が自動的に選択されます。 特定のゾーンを保証したい場合は、特定のゾーンを選択できます。 どちらの選択肢もゾーン冗長ではありません。 **Standard** SKU を選択した場合は、[ゾーン冗長] が自動的に選択され、データ パスのゾーン障害からの復元性が高くなります。 特定のゾーンを保証したい場合は (これは、ゾーン障害からの復元性が高くありません)、特定のゾーンを選択できます。
 
 **コマンド**
@@ -107,14 +107,14 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 
 パブリック IP アドレスでタスクを実行するには、[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または次の表に記載されている適切なアクションが割り当てられている[カスタム](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ロールにアカウントが割り当てられている必要があります。
 
-| Action                                                             | 名前                                                           |
+| アクション                                                             | 名前                                                           |
 | ---------                                                          | -------------                                                  |
 | Microsoft.Network/publicIPAddresses/read                           | パブリック IP アドレスの読み取り                                          |
 | Microsoft.Network/publicIPAddresses/write                          | パブリック IP アドレスの作成または更新                           |
 | Microsoft.Network/publicIPAddresses/delete                         | パブリック IP アドレスの削除                                     |
 | Microsoft.Network/publicIPAddresses/join/action                    | リソースへのパブリック IP アドレスの関連付け                    |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [PowerShell](powershell-samples.md) か [Azure CLI](cli-samples.md) のサンプル スクリプト、または Azure [Resource Manager テンプレート](template-samples.md)を利用したパブリック IP アドレスの作成
 - パブリック IP アドレスに対する [Azure ポリシー](policy-samples.md) の作成と適用

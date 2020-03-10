@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d250377e15b957c10322dbba9ca587dd58944ad
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 51c14fd7f427c29c47521a7355309e62ab2254ca
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74794978"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298617"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory における属性マッピングの式の書き方
 クラウド プロビジョニングを構成するときに指定できる属性マッピングの種類の 1 つは、式マッピングです。 
@@ -30,13 +30,13 @@ ms.locfileid: "74794978"
 
 * 式全体は、関数の形式で定義する必要があります。名前の後にかっこで囲んだ引数を続けます。 <br>
   *FunctionName(`<<argument 1>>`,`<<argument N>>`)*
-* 各関数内で他の関数を入れ子にすることができます。 例: <br> *FunctionOne(FunctionTwo(`<<argument1>>`))*
+* 各関数内で他の関数を入れ子にすることができます。 次に例を示します。 <br> *FunctionOne(FunctionTwo(`<<argument1>>`))*
 * 関数には、次の 3 つの異なる種類の引数を渡すことができます。
   
   1. 属性。角かっこで囲む必要があります。 例: [attributeName]
-  2. 文字列定数。二重引用符で囲む必要があります。 例: "米国"
-  3. 他の関数 例: FunctionOne(`<<argument1>>`, FunctionTwo(`<<argument2>>`))
-* 文字列定数では、文字列に円記号 (\) または引用符 (") を含める必要がある場合は、円記号 (\) でエスケープする必要があります。 例: "会社名:\\"Contoso\\""
+  2. 文字列定数。二重引用符で囲む必要があります。 次に例を示します。"米国"
+  3. 他の関数 次に例を示します。FunctionOne(`<<argument1>>`, FunctionTwo(`<<argument2>>`))
+* 文字列定数では、文字列に円記号 (\) または引用符 (") を含める必要がある場合は、円記号 (\) でエスケープする必要があります。 次に例を示します。"会社名:\\"Contoso\\""
 
 ## <a name="list-of-functions"></a>関数の一覧
 | 関数の一覧 | 説明 |
@@ -60,7 +60,7 @@ ms.locfileid: "74794978"
 |[IsNullOrEmpty](#isnullorempty)|式が null または空の文字列の場合、IsNullOrEmpty 関数は true を返します。|         
 |[IsPresent](#ispresent)|式の評価結果が Null でもなく、空でもない文字列の場合、IsPresent 関数は true を返します。|    
 |[IsString](#isstring)|式を文字列型として評価できる場合、IsString 関数の評価結果は True になります。|
-|[項目](#item)|Item 関数は複数値の文字列/属性から 1 つの項目を返します。|
+|[Item](#item)|Item 関数は複数値の文字列/属性から 1 つの項目を返します。|
 |[Join](#join) |Join() は Append() によく似ていますが、Join() では複数の **source** 文字列値を 1 つの文字列に結合できます。文字列値は **separator** で区切って指定します。| 
 |[Left](#left)|Left 関数は文字列の左端から数えて指定した文字数分の文字を返します。|
 |[Mid](#mid) |source 値の部分文字列を返します。 部分文字列は、source 文字列の文字のみを含む文字列です。|
@@ -73,7 +73,7 @@ ms.locfileid: "74794978"
 |[Split](#split)|指定された区切り記号文字を使用して、文字列を複数値の配列に分割します。|
 |[StringFromSID](#stringfromsid)|StringFromSid 関数は、セキュリティ識別子が含まれるバイト配列を文字列に変換します。| 
 |[StripSpaces](#stripspaces) |source 文字列からすべての空白文字 (" ") を削除します。| 
-|[Switch](#switch)|**source** 値が **key** と一致するときに、その **key** の **value** を返します。 | 
+|[スイッチ](#switch)|**source** 値が **key** と一致するときに、その **key** の **value** を返します。 | 
 |[ToLower](#tolower)|*source* 文字列値を受け取り、指定されたカルチャ ルールを使用して小文字に変換します。| 
 |[ToUpper](#toupper)|*source* 文字列値を受け取り、指定されたカルチャ ルールを使用して大文字に変換します。|
 |[Trim](#trim)|Trim 関数は、文字列の先頭と末尾の空白文字を削除します。|
@@ -87,22 +87,22 @@ ms.locfileid: "74794978"
 
 **パラメーター:**<br> 
 
-   | 名前 | 必須/繰り返し | 種類 | メモ |
+   | 名前 | 必須/繰り返し | Type | Notes |
    | --- | --- | --- | --- |
-   | **source セクション** |必須 |string |通常は、source オブジェクトの属性の名前。 |
-   | **suffix** |必須 |string |source 値の末尾に追加する文字列。 |
+   | **source** |必須 |String |通常は、source オブジェクトの属性の名前。 |
+   | **suffix** |必須 |String |source 値の末尾に追加する文字列。 |
 
 ---
 ### <a name="bitand"></a>BitAnd
 **説明:**  
 BitAnd 関数は、値に指定のビットを設定します。
 
-**構文:**  
+**構文 :**  
 `num BitAnd(num value1, num value2)`
 
 * value1, value2: ともに AND になる数値
 
-**解説:**  
+**備考:**  
 この関数は両方のパラメーターをバイナリ表現に変換し、ビットを次に設定します。
 
 * 0 - *value1* と *value2* 内の対応するビットの 1 つまたは両方が 0 の場合
@@ -121,10 +121,10 @@ BitAnd 関数は、値に指定のビットを設定します。
 **説明:**  
 CBool 関数は、式の評価結果に基づいてブール値を返します。
 
-**構文:**  
+**構文 :**  
 `bool CBool(exp Expression)`
 
-**解説:**  
+**備考:**  
 式の評価結果が 0 以外の値の場合は CBool によって True が返され、それ以外の場合は False が返されます。
 
 **例:**  
@@ -137,7 +137,7 @@ CBool 関数は、式の評価結果に基づいてブール値を返します�
 **説明:**  
 ConvertFromBase64 関数は、指定した base64 でエンコードされた値を正規の文字列に変換します。
 
-**構文:**  
+**構文 :**  
 `str ConvertFromBase64(str source)` - エンコードには Unicode を想定しています  
 `str ConvertFromBase64(str source, enum Encoding)`
 
@@ -156,7 +156,7 @@ ConvertFromBase64 関数は、指定した base64 でエンコードされた値
 ConvertToBase64 関数は、文字列を Unicode の base64 文字列に変換します。  
 整数の配列の値を、base 64 桁でエンコードされているそれと同等の文字列表現に変換します。
 
-**構文:**  
+**構文 :**  
 `str ConvertToBase64(str source)`
 
 **例:**  
@@ -168,10 +168,10 @@ ConvertToBase64 関数は、文字列を Unicode の base64 文字列に変換�
 **説明:**  
 ConvertToUTF8Hex 関数は、文字列を UTF8 の 16 進数でエンコードされた値に変換します。
 
-**構文:**  
+**構文 :**  
 `str ConvertToUTF8Hex(str source)`
 
-**解説:**  
+**備考:**  
 この関数の出力形式は、DN 属性の形式として Azure Active Directory で使用されます。
 
 **例:**  
@@ -183,7 +183,7 @@ ConvertToUTF8Hex 関数は、文字列を UTF8 の 16 進数でエンコード�
 **説明:**  
 Count 関数は、複数値の属性内の要素数を返します。
 
-**構文:**  
+**構文 :**  
 `num Count(mvstr attribute)`
 
 ---
@@ -191,7 +191,7 @@ Count 関数は、複数値の属性内の要素数を返します。
 **説明:**  
 CStr 関数は、文字列データ型に変換します。
 
-**構文:**  
+**構文 :**  
 `str CStr(num value)`  
 `str CStr(ref value)`  
 `str CStr(bool value)`  
@@ -207,7 +207,7 @@ CStr 関数は、文字列データ型に変換します。
 **説明:**  
 DateFromNum 関数は、AD の日付形式の値を DateTime 型に変換します。
 
-**構文:**  
+**構文 :**  
 `dt DateFromNum(num value)`
 
 **例:**  
@@ -220,7 +220,7 @@ DateFromNum 関数は、AD の日付形式の値を DateTime 型に変換しま�
 **説明:**  
 DNComponent 関数は、指定した DN コンポーネントの値を左から返します。
 
-**構文:**  
+**構文 :**  
 `str DNComponent(ref dn, num ComponentNumber)`
 
 * dn: 解釈する参照属性
@@ -231,11 +231,11 @@ DNComponent 関数は、指定した DN コンポーネントの値を左から�
 dn が "cn=Joe,ou=…," の場合は、Joe が返されます。
 
 ---
-### <a name="error"></a>Error
+### <a name="error"></a>エラー
 **説明:**  
 Error 関数は、カスタム エラーを返すために使用します。
 
-**構文:**  
+**構文 :**  
 `void Error(str ErrorMessage)`
 
 **例:**  
@@ -250,18 +250,18 @@ Error 関数は、カスタム エラーを返すために使用します。
 
 **パラメーター:**<br> 
 
-   | 名前 | 必須/繰り返し | 種類 | メモ |
+   | 名前 | 必須/繰り返し | Type | Notes |
    | --- | --- | --- | --- |
-   | **source セクション** |必須 |string |通常は、source オブジェクトの属性の名前。 |
-   | **inputFormat** |必須 |string |有効な形式の source 値。 サポートされる形式については、[https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) をご覧ください。 |
-   | **outputFormat** |必須 |string |出力日付の形式。 |
+   | **source** |必須 |String |通常は、source オブジェクトの属性の名前。 |
+   | **inputFormat** |必須 |String |有効な形式の source 値。 サポートされる形式については、[https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) をご覧ください。 |
+   | **outputFormat** |必須 |String |出力日付の形式。 |
 
 ---
 ### <a name="guid"></a>Guid
 **説明:**  
 GUID 関数は、新しいランダムな GUID を生成します。
 
-**構文:**  
+**構文 :**  
 `str Guid()`
 
 ---
@@ -269,7 +269,7 @@ GUID 関数は、新しいランダムな GUID を生成します。
 **説明:**  
 IIF 関数は、指定した条件に基づいて、使用できる一連の値のうち、いずれかを返します。
 
-**構文:**  
+**構文 :**  
 `var IIF(exp condition, var valueIfTrue, var valueIfFalse)`
 
 * condition: 評価結果が true または false になる任意の値または式。
@@ -285,7 +285,7 @@ IIF 関数は、指定した条件に基づいて、使用できる一連の値�
 **説明:**  
 InStr 関数は文字列内の最初の部分文字列を検索します。
 
-**構文:**  
+**構文 :**  
 
 `num InStr(str stringcheck, str stringmatch)`  
 `num InStr(str stringcheck, str stringmatch, num start)`  
@@ -296,7 +296,7 @@ InStr 関数は文字列内の最初の部分文字列を検索します。
 * start: 部分文字列の検索開始位置
 * compare: vbTextCompare または vbBinaryCompare
 
-**解説:**  
+**備考:**  
 部分文字列が見つかった位置を返します。見つからなかった場合は 0 を返します。
 
 **例:**  
@@ -311,10 +311,10 @@ InStr 関数は文字列内の最初の部分文字列を検索します。
 **説明:**  
 式の評価結果が Null の場合、IsNull 関数は true を返します。
 
-**構文:**  
+**構文 :**  
 `bool IsNull(var Expression)`
 
-**解説:**  
+**備考:**  
 属性の場合、Null は属性の不在によって表されます。
 
 **例:**  
@@ -326,10 +326,10 @@ CS または MV に属性がない場合は True を返します。
 **説明:**  
 式が null または空の文字列の場合、IsNullOrEmpty 関数は true を返します。
 
-**構文:**  
+**構文 :**  
 `bool IsNullOrEmpty(var Expression)`
 
-**解説:**  
+**備考:**  
 属性の場合は、属性がないか、存在しても空の文字列の場合、評価結果は True になります。  
 この関数の逆の関数は IsPresent です。
 
@@ -342,10 +342,10 @@ CS または MV に属性がないか、空の文字列の場合は True を返�
 **説明:**  
 式の評価結果が Null でもなく、空でもない文字列の場合、IsPresent 関数は true を返します。
 
-**構文:**  
+**構文 :**  
 `bool IsPresent(var expression)`
 
-**解説:**  
+**備考:**  
 この関数の逆関数は IsNullOrEmpty です。
 
 **例:**  
@@ -356,13 +356,13 @@ CS または MV に属性がないか、空の文字列の場合は True を返�
 **説明:**  
 Item 関数は複数値の文字列/属性から 1 つの項目を返します。
 
-**構文:**  
+**構文 :**  
 `var Item(mvstr attribute, num index)`
 
 * attribute: 複数値の属性
 * index: 複数値の文字列内の項目へのインデックス。
 
-**解説:**  
+**備考:**  
 Contains 関数は複数値の属性内の項目に対するインデックスを返すため、Item 関数を Contains 関数と共に使用すると便利です。
 
 インデックスが範囲外にある場合は、エラーをスローします。
@@ -376,14 +376,14 @@ Contains 関数は複数値の属性内の項目に対するインデックス�
 **説明:**  
 式を文字列型として評価できる場合、IsString 関数の評価結果は True になります。
 
-**構文:**  
+**構文 :**  
 `bool IsString(var expression)`
 
-**解説:**  
+**備考:**  
 CStr() が式の解析に成功するかどうかを判断するために使用します。
 
 ---
-### <a name="join"></a>結合
+### <a name="join"></a>Join
 **関数:**<br> Join(separator, source1, source2, …)
 
 **説明:**<br> Join() は Append() によく似ていますが、Join() では複数の **source** 文字列値を 1 つの文字列に結合できます。文字列値は **separator** で区切って指定します。
@@ -392,23 +392,23 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-   | 名前 | 必須/繰り返し | 種類 | メモ |
+   | 名前 | 必須/繰り返し | Type | Notes |
    | --- | --- | --- | --- |
-   | **separator** |必須 |string |source 値を 1 つの文字列に連結するときに、各値を区切るのに使用する文字列。 区切り記号が必要ない場合は、“” とすることができます。 |
-   | **source1  … sourceN** |必須、回数は可変 |string |結合する文字列値。 |
+   | **separator** |必須 |String |source 値を 1 つの文字列に連結するときに、各値を区切るのに使用する文字列。 区切り記号が必要ない場合は、“” とすることができます。 |
+   | **source1  … sourceN** |必須、回数は可変 |String |結合する文字列値。 |
 
 ---
 ### <a name="left"></a>Left
 **説明:**  
 Left 関数は文字列の左端から数えて指定した文字数分の文字を返します。
 
-**構文:**  
+**構文 :**  
 `str Left(str string, num NumChars)`
 
 * string: 返される文字を含む文字列
 * NumChars: 文字列の左端から数えて返される文字数を指定する数値
 
-**解説:**  
+**備考:**  
 string 内の最初の numChars 文字分の文字を含む文字列。
 
 * numChars = 0 の場合、空の文字列を返します。
@@ -429,11 +429,11 @@ string に含まれる文字数が numChars で指定した数より少ない場
 
 **パラメーター:**<br> 
 
-   | 名前 | 必須/繰り返し | 種類 | メモ |
+   | 名前 | 必須/繰り返し | Type | Notes |
    | --- | --- | --- | --- |
-   | **source セクション** |必須 |string |通常、属性の名前。 |
-   | **start** |必須 |integer |部分文字列が始まる **source** 文字列のインデックス。 文字列内の最初の文字のインデックスは 1、2 番目の文字のインデックスは 2です (以降同様)。 |
-   | **length** |必須 |integer |部分文字列の長さ。 length が **source** 文字列の外で終わる場合は、**start** インデックスから **source** 文字列の末尾までの部分文字列を返します。 |
+   | **source** |必須 |String |通常、属性の名前。 |
+   | **start** |必須 |整数 (integer) |部分文字列が始まる **source** 文字列のインデックス。 文字列内の最初の文字のインデックスは 1、2 番目の文字のインデックスは 2です (以降同様)。 |
+   | **length** |必須 |整数 (integer) |部分文字列の長さ。 length が **source** 文字列の外で終わる場合は、**start** インデックスから **source** 文字列の末尾までの部分文字列を返します。 |
 
 ---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
@@ -443,9 +443,9 @@ string に含まれる文字数が numChars で指定した数より少ない場
 
 **パラメーター:**<br> 
 
-   | 名前 | 必須/繰り返し | 種類 | メモ |
+   | 名前 | 必須/繰り返し | Type | Notes |
    | --- | --- | --- | --- |
-   | **source セクション** |必須 |string | 通常は、名または姓の属性です。 |
+   | **source** |必須 |String | 通常は、名または姓の属性です。 |
 
 ---
 ### <a name="not"></a>Not
@@ -455,16 +455,16 @@ string に含まれる文字数が numChars で指定した数より少ない場
 
 **パラメーター:**<br> 
 
-   | 名前 | 必須/繰り返し | 種類 | メモ |
+   | 名前 | 必須/繰り返し | Type | Notes |
    | --- | --- | --- | --- |
-   | **source セクション** |必須 |Boolean String |有効な **source** 値は "True" または "False" です。 |
+   | **source** |必須 |Boolean String |有効な **source** 値は "True" または "False" です。 |
 
 ---
 ### <a name="removeduplicates"></a>RemoveDuplicates
 **説明:**  
 RemoveDuplicates 関数は複数値の文字列を受け取り、各値が一意になるように処理します。
 
-**構文:**  
+**構文 :**  
 `mvstr RemoveDuplicates(mvstr attribute)`
 
 **例:**  
@@ -497,15 +497,15 @@ RemoveDuplicates 関数は複数値の文字列を受け取り、各値が一意
 
 **パラメーター:**<br> 
 
-   | 名前 | 必須/繰り返し | 種類 | メモ |
+   | 名前 | 必須/繰り返し | Type | Notes |
    | --- | --- | --- | --- |
-   | **source セクション** |必須 |string |通常は、**source** オブジェクトの属性の名前。 |
-   | **oldValue** |省略可能 |string |**source** または **template** に含まれる置換前の値。 |
-   | **regexPattern** |省略可能 |string |**source**に含まれる置換前の値の正規表現パターン。 または、**replacementPropertyName** が使われるときは、**replacementPropertyName** から値を抽出するパターン。 |
-   | **regexGroupName** |省略可能 |string |**regexPattern**内のグループの名前。 **replacementPropertyName** を使用した場合にのみ、このグループの値が **replacementPropertyName** から **replacementValue** として抽出されます。 |
-   | **replacementValue** |省略可能 |string |古い値を置き換える新しい値。 |
-   | **replacementAttributeName** |省略可能 |string |置換値に使用する属性の名前 |
-   | **template** |省略可能。 |string |**template** の値を指定した場合、template 内で **oldValue** が検索され、**source** の値で置換されます。 |
+   | **source** |必須 |String |通常は、**source** オブジェクトの属性の名前。 |
+   | **oldValue** |省略可能 |String |**source** または **template** に含まれる置換前の値。 |
+   | **regexPattern** |省略可能 |String |**source**に含まれる置換前の値の正規表現パターン。 または、**replacementPropertyName** が使われるときは、**replacementPropertyName** から値を抽出するパターン。 |
+   | **regexGroupName** |省略可能 |String |**regexPattern**内のグループの名前。 **replacementPropertyName** を使用した場合にのみ、このグループの値が **replacementPropertyName** から **replacementValue** として抽出されます。 |
+   | **replacementValue** |省略可能 |String |古い値を置き換える新しい値。 |
+   | **replacementAttributeName** |省略可能 |String |置換値に使用する属性の名前 |
+   | **template** |省略可能 |String |**template** の値を指定した場合、template 内で **oldValue** が検索され、**source** の値で置換されます。 |
 
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
@@ -522,9 +522,9 @@ RemoveDuplicates 関数は複数値の文字列を受け取り、各値が一意
 
 **パラメーター:**<br> 
 
-   | 名前 | 必須/繰り返し | 種類 | メモ |
+   | 名前 | 必須/繰り返し | Type | Notes |
    | --- | --- | --- | --- |
-   | **uniqueValueRule1  … uniqueValueRuleN** |2 つ以上必要であり、上限はありません |string | 評価する一意値生成ルールの一覧。 |
+   | **uniqueValueRule1  … uniqueValueRuleN** |2 つ以上必要であり、上限はありません |String | 評価する一意値生成ルールの一覧。 |
 
 
 ---
@@ -535,9 +535,9 @@ RemoveDuplicates 関数は複数値の文字列を受け取り、各値が一意
 
 **パラメーター:**<br> 
 
-  | 名前 | 必須/繰り返し | 種類 | メモ |
+  | 名前 | 必須/繰り返し | Type | Notes |
   |--- | --- | --- | --- |
-  | **appRoleAssignments** |必須 |string |**appRoleAssignments** オブジェクト |
+  | **[appRoleAssignments]** |必須 |String |**[appRoleAssignments]** オブジェクト |
 
 ---
 ### <a name="split"></a>Split
@@ -547,17 +547,17 @@ RemoveDuplicates 関数は複数値の文字列を受け取り、各値が一意
 
 **パラメーター:**<br> 
 
-   | 名前 | 必須/繰り返し | 種類 | メモ |
+   | 名前 | 必須/繰り返し | Type | Notes |
    | --- | --- | --- | --- |
-   | **source セクション** |必須 |string |**source** 値。 |
-   | **delimiter** |必須 |string |文字列の分割に使用される文字を指定します (例: ",") |
+   | **source** |必須 |String |**source** 値。 |
+   | **delimiter** |必須 |String |文字列の分割に使用される文字を指定します (例: ",") |
 
 ---
 ### <a name="stringfromsid"></a>StringFromSid
 **説明:**  
 StringFromSid 関数は、セキュリティ識別子が含まれるバイト配列を文字列に変換します。
 
-**構文:**  
+**構文 :**  
 `str StringFromSid(bin ObjectSID)`  
 
 ---
@@ -568,9 +568,9 @@ StringFromSid 関数は、セキュリティ識別子が含まれるバイト配
 
 **パラメーター:**<br> 
 
-   | 名前 | 必須/繰り返し | 種類 | メモ |
+   | 名前 | 必須/繰り返し | Type | Notes |
    | --- | --- | --- | --- |
-   | **source セクション** |必須 |string |**source セクション セクション** 値。 |
+   | **source** |必須 |String |**source** 値。 |
 
 ---
 ### <a name="switch"></a>Switch
@@ -580,12 +580,12 @@ StringFromSid 関数は、セキュリティ識別子が含まれるバイト配
 
 **パラメーター:**<br> 
 
-   | 名前 | 必須/繰り返し | 種類 | メモ |
+   | 名前 | 必須/繰り返し | Type | Notes |
    | --- | --- | --- | --- |
-   | **source セクション** |必須 |string |**Source** 値。 |
-   | **defaultValue** |省略可能 |string |source がどの key とも一致しないときに使用される既定値。 空の文字列 ("") を指定できます。 |
-   | **key** |必須 |string |**source** 値と比較する **key**。 |
-   | **値** |必須 |string |key と一致する **source** の置換値。 |
+   | **source** |必須 |String |確認する**source** 値。 |
+   | **defaultValue** |省略可能 |String |source がどの key とも一致しないときに使用される既定値。 空の文字列 ("") を指定できます。 |
+   | **key** |必須 |String |**source** 値と比較する **key**。 |
+   | **value** |必須 |String |key と一致する **source** の置換値。 |
 
 ---
 ### <a name="tolower"></a>ToLower
@@ -595,10 +595,10 @@ StringFromSid 関数は、セキュリティ識別子が含まれるバイト配
 
 **パラメーター:**<br> 
 
-   | 名前 | 必須/繰り返し | 種類 | メモ |
+   | 名前 | 必須/繰り返し | Type | Notes |
    | --- | --- | --- | --- |
-   | **source セクション** |必須 |string |通常は、source オブジェクトの属性の名前。 |
-   | **culture** |省略可能 |string |RFC 4646 に基づくカルチャ名の形式は、*languagecode2-country/regioncode2* です。ここで、*languagecode2* は 2 文字の言語コードで、*country/regioncode2* は 2 文字のサブカルチャ コードです。 例には、日本語 (日本) の場合の ja-JP と英語 (米国) の場合の en-US が含まれています。 2 文字の言語コードが使用できない場合は、ISO 639-2 から派生した 3 文字のコードが使用されます。|
+   | **source** |必須 |String |通常は、source オブジェクトの属性の名前。 |
+   | **culture** |省略可能 |String |RFC 4646 に基づくカルチャ名の形式は、*languagecode2-country/regioncode2* です。ここで、*languagecode2* は 2 文字の言語コードで、*country/regioncode2* は 2 文字のサブカルチャ コードです。 例には、日本語 (日本) の場合の ja-JP と英語 (米国) の場合の en-US が含まれています。 2 文字の言語コードが使用できない場合は、ISO 639-2 から派生した 3 文字のコードが使用されます。|
 
 ---
 
@@ -609,10 +609,10 @@ StringFromSid 関数は、セキュリティ識別子が含まれるバイト配
 
 **パラメーター:**<br> 
 
-  | 名前 | 必須/繰り返し | 種類 | メモ |
+  | 名前 | 必須/繰り返し | Type | Notes |
   | --- | --- | --- | --- |
-  | **source セクション** |必須 |string |通常は、source オブジェクトの属性の名前。 |
-  | **culture** |省略可能 |string |RFC 4646 に基づくカルチャ名の形式は、*languagecode2-country/regioncode2* です。ここで、*languagecode2* は 2 文字の言語コードで、*country/regioncode2* は 2 文字のサブカルチャ コードです。 例には、日本語 (日本) の場合の ja-JP と英語 (米国) の場合の en-US が含まれています。 2 文字の言語コードが使用できない場合は、ISO 639-2 から派生した 3 文字のコードが使用されます。|
+  | **source** |必須 |String |通常は、source オブジェクトの属性の名前。 |
+  | **culture** |省略可能 |String |RFC 4646 に基づくカルチャ名の形式は、*languagecode2-country/regioncode2* です。ここで、*languagecode2* は 2 文字の言語コードで、*country/regioncode2* は 2 文字のサブカルチャ コードです。 例には、日本語 (日本) の場合の ja-JP と英語 (米国) の場合の en-US が含まれています。 2 文字の言語コードが使用できない場合は、ISO 639-2 から派生した 3 文字のコードが使用されます。|
 
 ---
 
@@ -620,7 +620,7 @@ StringFromSid 関数は、セキュリティ識別子が含まれるバイト配
 **説明:**  
 Trim 関数は、文字列の先頭と末尾の空白文字を削除します。
 
-**構文:**  
+**構文 :**  
 `str Trim(str value)`  
 
 **例:**  
@@ -635,14 +635,14 @@ proxyAddress 属性の値ごとに先頭と末尾の空白文字を削除しま�
 **説明:**  
 Word 関数は、使用する区切り記号と返す単語の番号を表すパラメーターに基づいて、文字列内に含まれる単語を返します。
 
-**構文:**  
+**構文 :**  
 `str Word(str string, num WordNumber, str delimiters)`
 
 * string: 返される単語を含む文字列。
 * WordNumber: 返すべき単語の番号を指定する数値。
 * delimiters: 単語を識別するために使用される区切り記号を表す文字列
 
-**解説:**  
+**備考:**  
 delimiters 内のいずれかの文字で区切られた string 内の各文字列が、単語として識別されます。
 
 * num < 1 の場合、空の文字列を返します。
@@ -784,7 +784,7 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 * **出力**: 上記の 2 つの UPN 値がディレクトリに既に存在する場合は "Jo.Smith@contoso.com"
 
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 
 - [プロビジョニングとは](what-is-provisioning.md)
 - [Azure AD Connect クラウド プロビジョニングとは](what-is-cloud-provisioning.md)

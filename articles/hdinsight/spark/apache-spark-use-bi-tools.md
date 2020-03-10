@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 10/03/2019
-ms.openlocfilehash: 3fd1405d8421d71f52d9cd215dd055ce1595abd0
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.custom: hdinsightactive,mvc
+ms.date: 03/02/2020
+ms.openlocfilehash: d7330225ecbdc6715847821a47c140a3c2b8d1b9
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327272"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251950"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>チュートリアル:HDInsight での Power BI を使用した Apache Spark データの分析
 
@@ -128,57 +128,57 @@ Power BI サービスを使用すると、組織全体でレポートとダッ�
 
 1. Power BI Desktop を開きます。
 
-1. **[ホーム]** タブで **[発行]** をクリックします。
+1. **[ホーム]** タブで **[発行]** を選択します。
 
     ![Power BI Desktop から発行する](./media/apache-spark-use-bi-tools/apache-spark-bi-publish.png "Power BI Desktop から発行する")
 
 1. データセットを発行してレポートするワークスペースを選択して、 **[選択]** をクリックします。 次の図では、既定値の **[マイ ワークスペース]** が選択されています。
 
-    ![データセットを発行してレポートするワークスペースの選択](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "データセットを発行してレポートするワークスペースの選択") 
+    ![データセットを発行してレポートするワークスペースの選択](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "データセットを発行してレポートするワークスペースの選択")
 
-1. 発行に成功したら、 **[Open 'BuildingTemperature.pbix' in Power BI]\('BuildingTemperature.pbix' を Power BI で開く\)** をクリックします。
+1. 発行に成功したら、 **[Open 'BuildingTemperature.pbix' in Power BI]\('BuildingTemperature.pbix' を Power BI で開く\)** を選択します。
 
-    ![発行の成功、クリックして資格情報を入力](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "発行の成功、クリックして資格情報を入力") 
+    ![発行の成功、クリックして資格情報を入力](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "発行の成功、クリックして資格情報を入力")
 
-1. Power BI サービスで、 **[資格情報を入力する]** をクリックします。
+1. Power BI サービスで、 **[資格情報を入力する]** を選択します。
 
     ![Power BI サービスで資格情報を入力](./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png "Power BI サービスで資格情報を入力")
 
-1. **[資格情報を編集]** をクリックします。
+1. **[資格情報を編集]** を選択します。
 
     ![Power BI サービスで資格情報を編集](./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png "Power BI サービスで資格情報を編集")
 
-1. HDInsight のログイン アカウント情報を入力し、 **[サインイン]** をクリックします。 既定のアカウント名は *admin* です。
+1. HDInsight のログイン アカウント情報を入力し、 **[サインイン]** を選択します。 既定のアカウント名は *admin* です。
 
     ![Spark クラスターへのサインイン](./media/apache-spark-use-bi-tools/apache-spark-bi-sign-in.png "Spark クラスターへのサインイン")
 
-1. 左ウィンドウ枠で **[ワークスペース]**  >  **[マイ ワークスペース]**  >  **[レポート]** の順に移動して、 **[BuildingTemperature]** をクリックします。
+1. 左ペインで **[ワークスペース]**  >  **[マイ ワークスペース]**  >  **[レポート]** の順に移動して、 **[BuildingTemperature]** を選択します。
 
     ![左側のペインのレポートの下に一覧表示されたレポート](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "左側のペインのレポートの下に一覧表示されたレポート")
 
     左ウィンドウ枠の **[データセット]** にも **[BuildingTemperature]** が表示されます。
 
-    これで、Power BI Desktop で作成したビジュアルが Power BI サービスで使用できるようになりました。 
+    これで、Power BI Desktop で作成したビジュアルが Power BI サービスで使用できるようになりました。
 
-1. 視覚エフェクトにカーソルを合わせ、右上隅のピン アイコンをクリックします。
+1. 視覚エフェクトにカーソルを合わせ、右上隅のピン アイコンを選択します。
 
     ![Power BI サービスのレポート](./media/apache-spark-use-bi-tools/apache-spark-bi-service-report.png "Power BI サービスのレポート")
 
-1. [新しいダッシュボード] を選択して、名前 `Building temperature` を入力し、 **[ピン留め]** をクリックします。
+1. [新しいダッシュボード] を選択して、名前 `Building temperature` を入力し、 **[ピン留め]** を選択します。
 
     ![新しいダッシュボードにピン留め](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "新しいダッシュボードにピン留め")
 
-1. レポートで、 **[ダッシュボードへ移動]** をクリックします。
+1. レポートで、 **[ダッシュボードへ移動]** を選択します。
 
 ビジュアルはダッシュボードにピン留めされます。他のビジュアルをレポートに追加して、同じダッシュボードにピン留めすることもできます。 レポートとダッシュボードの詳細については、「[Power BI のレポート](https://powerbi.microsoft.com/documentation/powerbi-service-reports/)」のほか、[Power BI のダッシュボード](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/)に関する記事を参照してください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 チュートリアルを完了したら、必要に応じてクラスターを削除できます。 HDInsight を使用すると、データは Azure Storage に格納されるため、クラスターは、使用されていない場合に安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。
 
 クラスターを削除するには、「[ブラウザー、PowerShell、または Azure CLI を使用して HDInsight クラスターを削除する](../hdinsight-delete-cluster.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、[Microsoft Power BI](https://powerbi.microsoft.com/) を使用して [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) で Apache Spark クラスター内のデータを視覚化する方法を学習しました。 次の記事に進み、Machine Learning アプリケーションを作成できることを確認します。
 

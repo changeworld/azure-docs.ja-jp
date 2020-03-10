@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 491ba986c6ca71be0bc5b13e2f9f0717ffec99a4
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 485eb14938fc7e490ea2d68c9090cdfdbf01cc8f
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028880"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252556"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>クイック スタート:Azure portal を使用してプライベート エンドポイントを作成する
 
@@ -28,26 +28,22 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 ## <a name="create-a-vm"></a>VM の作成
 このセクションでは、Private Link リソース (この例では、Azure 上の SQL サーバー) へのアクセスに使用する VM をホストするために、仮想ネットワークとサブネットを作成します。
 
-### <a name="create-the-virtual-network"></a>仮想ネットワークの作成
-
+## <a name="virtual-network-and-parameters"></a>仮想ネットワークとパラメーター
 
 このセクションでは、Private Link リソースへのアクセスに使用する VM をホストするために、仮想ネットワークとサブネットを作成します。
 
-1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[仮想ネットワーク]** の順に選択します。
-1. **[仮想ネットワークの作成]** に次の情報を入力または選択します。
+このセクションの手順では、各パラメーターを次のように置き換える必要があります。
 
-    | 設定 | 値 |
-    | ------- | ----- |
-    | Name | 「*MyVirtualNetwork*」と入力します。 |
-    | アドレス空間 | 「*10.1.0.0/16*」を入力します。 |
-    | サブスクリプション | サブスクリプションを選択します。|
-    | Resource group | **[新規作成]** を選択し、「*myResourceGroup*」と入力して、 **[OK]** を選択します。 |
-    | Location | **[WestCentralUS]** を選択します。|
-    | サブネット - 名前 | 「*mySubnet*」と入力します。 |
-    | サブネット アドレス範囲 | 「*10.1.0.0/24*」と入力します。 |
-    |||
-1. 残りは既定値のままにして、 **[作成]** を選択します。
+| パラメーター                   | Value                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroup |
+| **\<virtual-network-name>** | myVirtualNetwork          |
+| **\<region-name>**          | 米国中西部    |
+| **\<IPv4-address-space>**   | 10.1.0.0\16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0\24          |
 
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-virtual-machine"></a>仮想マシンの作成
 
@@ -55,7 +51,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. **[仮想マシンの作成 - 基本]** に次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
     | サブスクリプション | サブスクリプションを選択します。 |
@@ -65,7 +61,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | リージョン | **[WestCentralUS]** を選択します。 |
     | 可用性のオプション | 既定値 **[インフラストラクチャ冗長は必要ありません]** をそのまま使用します。 |
     | Image | **[Windows Server 2019 Datacenter]** を選択します。 |
-    | Size | 既定値 **[Standard DS1 v2]** をそのまま使用します。 |
+    | サイズ | 既定値 **[Standard DS1 v2]** をそのまま使用します。 |
     | **管理者アカウント** |  |
     | ユーザー名 | 任意のユーザー名を入力します。 |
     | Password | 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
@@ -76,13 +72,13 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | Windows ライセンスを既にお持ちの場合 | 既定値 **[なし]** のままにします。 |
     |||
 
-1. **[次へ:ディスク]** を選択します。
+1. **ディスク** を選択します。
 
 1. **[仮想マシンの作成 - Disk]** で、既定値のままにし、 **[Next: Networking]\(次へ : ネットワーク\)** を選択します。
 
 1. **[仮想マシンの作成 - ネットワーク]** で次の情報を選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | 仮想ネットワーク | 既定値 **[MyVirtualNetwork]** のままにします。  |
     | アドレス空間 | 既定値 **[10.1.0.0/24]** のままにします。|
@@ -104,7 +100,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. **[SQL データベースの作成 - 基本]** で次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | **データベースの詳細** | |
     | サブスクリプション | サブスクリプションを選択します。 |
@@ -115,12 +111,12 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 5. **[サーバー]** の **[新規作成]** を選択します。 
 6. **[新しいサーバー]** で、次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     |サーバー名  | 「*myserver*」と入力します。 この名前を取得する場合は、一意の名前を作成します。|
     | サーバー管理者のログイン| 任意の管理者名を入力します。 |
     | Password | 任意のパスワードを入力します。 パスワードは 8 文字以上で、定義された要件を満たす必要があります。 |
-    | Location | SQL サーバーを配置する Azure リージョンを選択します。 |
+    | 場所 | SQL サーバーを配置する Azure リージョンを選択します。 |
     
 7. **[OK]** を選択します。 
 8. **[Review + create]\(レビュー + 作成\)** を選択します。 **[確認および作成]** ページが表示され、Azure によって構成が検証されます。 
@@ -135,19 +131,19 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 2. **[プライベート リンク センター - 概要]** の**サービスへのプライベート接続を構築する**オプションで、 **[開始]** を選択します。
 1. **[Create a private endpoint (Preview) - Basics]\(プライベート エンドポイント (プレビュー) の作成 - 基本\)** で次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
     | サブスクリプション | サブスクリプションを選択します。 |
     | Resource group | **[myResourceGroup]** を選択します。 これは前のセクションで作成しました。|
     | **インスタンスの詳細** |  |
-    | Name | 「*myPrivateEndpoint*」と入力します。 この名前を取得する場合は、一意の名前を作成します。 |
+    | 名前 | 「*myPrivateEndpoint*」と入力します。 この名前を取得する場合は、一意の名前を作成します。 |
     |リージョン|**[WestCentralUS]** を選択します。|
     |||
-5. **[次へ:リソース]** を選択します。
+5. **リソース** を選択します。
 6. **[プライベート エンドポイントの作成 - リソース]** で、次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     |接続方法  | 自分のディレクトリ内の Azure リソースに接続するように選択します。|
     | サブスクリプション| サブスクリプションを選択します。 |
@@ -155,10 +151,10 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | リソース |*[myServer]* を選択します。|
     |ターゲット サブリソース |*[sqlServer]* を選択します。|
     |||
-7. **[次へ:構成]** を選択します。
+7. **構成** を選択します。
 8. **[Create a private endpoint (Preview) - Configuration]\(プライベート エンドポイント (プレビュー) の作成 - 構成\)** で次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     |**ネットワーク**| |
     | 仮想ネットワーク| *[MyVirtualNetwork]* を選択します。 |
@@ -216,7 +212,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 4. **[サーバーに接続]** で、次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | サーバーの種類| **データベース エンジン**を選択します。|
     | サーバー名| *myserver.database.windows.net* を選択します。 |

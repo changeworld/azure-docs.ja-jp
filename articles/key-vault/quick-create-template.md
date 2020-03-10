@@ -6,22 +6,23 @@ author: mumian
 manager: dougeby
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 09/17/2019
+ms.custom: mvc,subject-armqs
+ms.date: 02/27/2020
 ms.author: jgao
-ms.openlocfilehash: 0462039efa02998b41560d6c308653809875ab1c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 015ae2e8e36d4a563138051bce33f5d283bde789
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982128"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78297921"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>クイック スタート:Resource Manager テンプレートを使用した Azure Key Vault からのシークレットの設定と取得
 
 [Azure Key Vault](./key-vault-overview.md) は、キー、パスワード、証明書、その他のシークレットなど、シークレットのための安全な保管場所を提供するクラウド サービスです。 このクイック スタートでは、Resource Manager テンプレートをデプロイしてキー コンテナーとシークレットを作成する過程を中心に取り上げます。
 
-[Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)は JavaScript Object Notation (JSON) ファイルであり、プロジェクトのインフラストラクチャと構成が定義されています。 このテンプレートでは、デプロイしようとしているものを、それを作成する一連のプログラミング コマンドを記述しなくても記述できる、宣言型の構文を使用しています。 Resource Manager テンプレートの開発に関する詳細を学ぶには、[Resource Manager ドキュメント](/azure/azure-resource-manager/)と[テンプレート リファレンス](/azure/templates/microsoft.keyvault/allversions)を参照してください。
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -34,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     1. **[試してみる]** を選択し、シェル ウィンドウにスクリプトを貼り付けて、次の Azure PowerShell または Azure CLI コマンドを実行します。 スクリプトを貼り付けるには、シェルを右クリックし、 **[貼り付け]** を選択します。
 
-        # <a name="clitabcli"></a>[CLI](#tab/CLI)
+        # <a name="cli"></a>[CLI](#tab/CLI)
         ```azurecli-interactive
         echo "Enter your email address that is used to sign in to Azure:" &&
         read upn &&
@@ -42,7 +43,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         echo "Press [ENTER] to continue ..."
         ```
 
-        # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+        # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
         ```azurepowershell-interactive
         $upn = Read-Host -Prompt "Enter your email address used to sign in to Azure"
         (Get-AzADUser -UserPrincipalName $upn).Id
@@ -55,20 +56,24 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-vault-and-a-secret"></a>コンテナーとシークレットを作成する
 
+### <a name="review-the-template"></a>テンプレートを確認する
+
 このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-key-vault-create/)からのものです。
 
-[!code-json[<Azure Resource Manager template create key vault>](~/quickstart-templates/101-key-vault-create/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-key-vault-create/azuredeploy.json" range="1-150" highlight="107-148":::
 
 テンプレートでは、次の 2 つの Azure リソースが定義されています。
 
-* **Microsoft.KeyVault/vaults**: Azure キー コンテナーが作成されます。
-* **Microsoft.KeyVault/vaults/secrets**: キー コンテナー シークレットが作成されます。
+* [**Microsoft.KeyVault/vaults**](/azure/templates/microsoft.keyvault/vaults): Azure キー コンテナーが作成されます。
+* [**Microsoft.KeyVault/vaults/secrets**](/azure/templates/microsoft.keyvault/vaults/secrets): キー コンテナー シークレットが作成されます。
 
 その他の Azure Key Vault テンプレートのサンプルは[こちら](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault)から入手できます。
 
+### <a name="deploy-the-template"></a>テンプレートのデプロイ
+
 1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。 このテンプレートを使用すると、キー コンテナーとシークレットが作成されます。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-key-vault-create%2Fazuredeploy.json"><img src="./media/quick-create-template/deploy-to-azure.png" alt="deploy to azure"/></a>
+    [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-key-vault-create%2Fazuredeploy.json)
 
 2. 次の値を選択または入力します。
 
@@ -80,7 +85,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     * **リソース グループ**: **[新規作成]** を選択し、リソース グループの一意の名前を入力し、 **[OK]** をクリックします。
     * **場所**: 場所を選択します。  たとえば **[米国中部]** です。
     * **Key Vault 名**: キー コンテナーの名前を入力します。この名前は、.vault.azure.net 名前空間内でグローバルに一意である必要があります。 次のセクションでデプロイを検証するときに、その名前が必要です。
-    * **テナント ID**: テンプレート関数によって自動的にテナント ID が取得されます。既定値を変更しないでください。
+    * **テナント ID**: テンプレート関数によって自動的にテナント ID が取得されます。  既定値を変更しないでください。
     * **Ad ユーザー ID**: [前提条件](#prerequisites)から取得した Azure AD ユーザー オブジェクト ID を入力します。
     * **シークレット名**: キー コンテナーに格納するシークレットの名前を入力します。  たとえば、**adminpassword** にします。
     * **シークレット値**: シークレットの値を入力します。  パスワードを保管する場合、前提条件で作成したパスワードを使用することをお勧めします。
@@ -91,11 +96,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 テンプレートをデプロイするには Azure portal を使用します。 Azure portal だけでなく、Azure PowerShell、Azure CLI、および REST API を使用することもできます。 他のデプロイ方法については、「[テンプレートのデプロイ](../azure-resource-manager/templates/deploy-powershell.md)」を参照してください。
 
-## <a name="validate-the-deployment"></a>デプロイの検証
+## <a name="review-deployed-resources"></a>デプロイされているリソースを確認する
 
 Azure portal を使用し、キー コンテナーとシークレットを確認するか、次の Azure CLI または Azure PowerShell スクリプトを使用し、作成されたシークレットを一覧表示できます。
 
-# <a name="clitabcli"></a>[CLI](#tab/CLI)
+# <a name="cli"></a>[CLI](#tab/CLI)
 
 ```azurecli-interactive
 echo "Enter your key vault name:" &&
@@ -104,7 +109,7 @@ az keyvault secret list --vault-name $keyVaultName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ```azurepowershell-interactive
 $keyVaultName = Read-Host -Prompt "Enter your key vault name"
@@ -116,11 +121,11 @@ Write-Host "Press [ENTER] to continue..."
 
 出力は次のようになります。
 
-# <a name="clitabcli"></a>[CLI](#tab/CLI)
+# <a name="cli"></a>[CLI](#tab/CLI)
 
 ![Resource Manager テンプレート、Key Vault 統合、デプロイ ポータル検証の出力](./media/quick-create-template/resource-manager-template-portal-deployment-cli-output.png)
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ![Resource Manager テンプレート、Key Vault 統合、デプロイ ポータル検証の出力](./media/quick-create-template/resource-manager-template-portal-deployment-powershell-output.png)
 
@@ -128,9 +133,9 @@ Write-Host "Press [ENTER] to continue..."
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Key Vault に関する他のクイック スタートとチュートリアルは、このクイック スタートに基づいています。 後続のクイック スタートおよびチュートリアルを引き続き実行する場合は、これらのリソースをそのまま残しておくことをお勧めします。
-不要になったら、リソース グループを削除します。これにより、Key Vault と関連リソースが削除されます。 Azure CLI または Azure PowerShell を使用してリソース グループを削除するには次を実行します。
+不要になったら、リソース グループを削除します。これにより、Key Vault と関連リソースが削除されます。 Azure CLI または Azure PowerShell を使用してリソース グループを削除するには、次を実行します。
 
-# <a name="clitabcli"></a>[CLI](#tab/CLI)
+# <a name="cli"></a>[CLI](#tab/CLI)
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -139,7 +144,7 @@ az group delete --name $resourceGroupName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"

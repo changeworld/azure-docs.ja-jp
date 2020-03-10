@@ -4,12 +4,12 @@ description: このチュートリアルでは、Azure の Service Fabric クラ
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 9f3049f5a46918d9e70e27fe862372de2cf577ae
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f1b813576a94541cdc2ab0a67fea71b6f49696c5
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639056"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251792"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure で Service Fabric クラスターのスケーリングを行う
 
@@ -38,7 +38,7 @@ ms.locfileid: "75639056"
 このチュートリアルを開始する前に
 
 * Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成する
-* [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) または [Azure CLI](/cli/azure/install-azure-cli) をインストールする。
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) または [Azure CLI](/cli/azure/install-azure-cli) をインストールします。
 * セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を Azure に作成します
 
 ## <a name="important-considerations-and-guidelines"></a>重要な考慮事項とガイドライン
@@ -93,7 +93,7 @@ Azure クラスターをスケーリングするときには、次のガイド�
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ChangingInstanceCount"
 ```
 または、次の Azure CLI コマンドを使用します。
-```azure-cli
+```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
@@ -799,7 +799,7 @@ Azure 内で実行されている Service Fabric クラスターで定義され�
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "AddingNodeType"
 ```
 または、次の Azure CLI コマンドを使用します。
-```azure-cli
+```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
@@ -845,7 +845,7 @@ Service Fabric クラスターを作成した後は、クラスターのノー�
 
 リソース グループから最新のデプロイの[テンプレートとパラメーター ファイルをエクスポート](#export-the-template-for-the-resource-group)します。  *parameters.json* ファイルを開きます。  このチュートリアルの[サンプル テンプレート][template]を使用してクラスターをデプロイした場合は、クラスター内に 3 つのノード タイプがあります。  
 
-2 つ目のノード タイプの VM のサイズは、*vmNodeType1Size* パラメーターで設定されています。  *vmNodeType1Size* パラメーターの値を Standard_D2_V2 から [Standard_D3_V2](/azure/virtual-machines/windows/sizes-general#dv2-series) に変更します。そうすると、各 VM インスタンスのリソースが 2 倍になります。
+2 つ目のノード タイプの VM のサイズは、*vmNodeType1Size* パラメーターで設定されています。  *vmNodeType1Size* パラメーターの値を Standard_D2_V2 から [Standard_D3_V2](../virtual-machines/dv2-dsv2-series.md) に変更します。そうすると、各 VM インスタンスのリソースが 2 倍になります。
 
 3 つすべてのノード タイプの VM SKU は、*vmImageSku* パラメーターで設定されています。  繰り返しになりますが、ノード タイプの VM SKU の変更は慎重に行う必要があり、プライマリ ノード タイプではお勧めしません。
 
@@ -856,7 +856,7 @@ Service Fabric クラスターを作成した後は、クラスターのノー�
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ScaleUpNodeType"
 ```
 または、次の Azure CLI コマンドを使用します。
-```azure-cli
+```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 

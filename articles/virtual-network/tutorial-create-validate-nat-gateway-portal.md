@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: a314af3d53936a58f9dfb3694ec1114ecdc3d521
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 4baf12533bed523c81ff41a81975f5bf5b918ac2
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587007"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250820"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>チュートリアル:Azure portal を使用した NAT ゲートウェイの作成と NAT サービスのテスト
 
@@ -36,27 +36,24 @@ ms.locfileid: "77587007"
 
 次の手順では、完全なテスト環境の構成とテスト自体の実行について説明します。 まず、ソースの作業から始めます。後のステップで作成する NAT ゲートウェイ リソースが使用されます。
 
-### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
+## <a name="virtual-network-and-parameters"></a>仮想ネットワークとパラメーター
 
 VM をデプロイして NAT ゲートウェイを使用する前に、リソース グループおよび仮想ネットワークを作成しておく必要があります。
 
-1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[仮想ネットワーク]** の順に選択するか、Marketplace 検索で**仮想ネットワーク**を検索します。
+このセクションの手順では、各パラメーターを次のように置き換える必要があります。
 
-2. **[仮想ネットワークの作成]** に次の情報を入力または選択します。
+| パラメーター                   | Value                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupNAT |
+| **\<virtual-network-name>** | myVNetsource          |
+| **\<region-name>**          | 米国東部 2      |
+| **\<IPv4-address-space>**   | 192.168.0.0\16          |
+| **\<subnet-name>**          | mySubnetsource        |
+| **\<subnet-address-range>** | 192.168.0.0\24          |
 
-    | 設定 | Value |
-    | ------- | ----- |
-    | 名前 | 「**myVNetsource**」と入力します。 |
-    | アドレス空間 | 「**192.168.0.0/16**」と入力します。 |
-    | サブスクリプション | サブスクリプションを選択します。|
-    | Resource group | [新規作成] - **[myResourceGroupNAT]** を選択します。 |
-    | Location | **[米国東部 2]** を選択します。|
-    | サブネット - 名前 | 「**mySubnetsource**」と入力します。 |
-    | サブネット アドレス範囲 | 「**192.168.0.0/24**」と入力します。 |
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-3. 残りの部分は既定値のままにし、 **[作成]** を選択します。
-
-### <a name="create-source-virtual-machine"></a>ソース仮想マシンの作成
+## <a name="create-source-virtual-machine"></a>ソース仮想マシンの作成
 
 今度は、NAT サービスを使用する VM を作成します。 この VM には、ユーザーが VM にアクセスできるようにするための、インスタンスレベルのパブリック IP として使用するパブリック IP があります。 NAT サービスはフロー方向を認識し、サブネットの既定のインターネットの宛先を置き換えます。 VM のパブリック IP アドレスは、送信接続には使用されません。
 
@@ -111,7 +108,7 @@ NAT ゲートウェイでは、1 つまたは複数のパブリック IP アド�
     | 名前 | 「**myPublicIPsource**」と入力します。 |
     | サブスクリプション | サブスクリプションを選択します。|
     | Resource group | **[myResourceGroupNAT]** を選択します。 |
-    | Location | **[米国東部 2]** を選択します。|
+    | 場所 | **[米国東部 2]** を選択します。|
 
 3. 残りの部分は既定値のままにし、 **[作成]** を選択します。
 
@@ -161,25 +158,25 @@ NAT ゲートウェイでは、1 つまたは複数のパブリック IP アド�
 
 今度は、NAT サービスをテストできるよう、NAT サービスによって変換された送信トラフィックの宛先を作成しましょう。
 
-### <a name="configure-virtual-network-for-destination"></a>宛先の仮想ネットワークの構成
+
+## <a name="virtual-network-and-parameters-for-destination"></a>宛先の仮想ネットワークとパラメーター
 
 宛先の VM をデプロイする前に、宛先の仮想マシンを配置できる仮想ネットワークを作成する必要があります。 次の手順はソース VM の手順と同じですが、宛先エンドポイントを公開するための若干の変更が追加されています。
 
-1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[仮想ネットワーク]** の順に選択します。
+このセクションの手順では、各パラメーターを次のように置き換える必要があります。
 
-2. **[仮想ネットワークの作成]** に次の情報を入力または選択します。
+| パラメーター                   | Value                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupNAT |
+| **\<virtual-network-name>** | myVNetdestination          |
+| **\<region-name>**          | 米国東部 2      |
+| **\<IPv4-address-space>**   | 192.168.0.0\16          |
+| **\<subnet-name>**          | mySubnetdestination        |
+| **\<subnet-address-range>** | 192.168.0.0\24          |
 
-    | 設定 | Value |
-    | ------- | ----- |
-    | 名前 | 「**myVNetdestination**」と入力します。 |
-    | アドレス空間 | 「**192.168.0.0/16**」と入力します。 |
-    | サブスクリプション | サブスクリプションを選択します。|
-    | Resource group | [新規作成] - **[myResourceGroupNAT]** を選択します。 |
-    | Location | **[米国東部 2]** を選択します。|
-    | サブネット - 名前 | 「**mySubnetdestination**」と入力します。 |
-    | サブネット アドレス範囲 | 「**192.168.0.0/24**」と入力します。 |
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-### <a name="create-destination-virtual-machine"></a>接続先の仮想マシンの作成
+## <a name="create-destination-virtual-machine"></a>接続先の仮想マシンの作成
 
 1. ポータルの左上で、 **[リソースの作成]**  >  **[Compute]\(計算\)**  >  **[Ubuntu Server 18.04 LTS]** を選択するか、Marketplace 検索で **Ubuntu Server 18.04 LTS** を検索します。
 

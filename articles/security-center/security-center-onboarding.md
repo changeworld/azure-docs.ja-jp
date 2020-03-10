@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
 ms.author: memildin
-ms.openlocfilehash: db74415d3c6c5f6636a150d212bc2bc3d790fbec
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: be26a9d4c66412518079de303ac0764d979c3e7c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686391"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912054"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>セキュリティ強化のための Azure Security Center Standard へのオンボード
 ハイブリッド クラウドのワークロードで強化されたセキュリティ管理と脅威保護を利用するには、Security Center Standard にアップグレードします。 Standard は無料で試用できます。 詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください。
 
-Security Center Standard は次の機能を備えています。
+Security Center Standard レベルには以下が含まれています。
 
 - **ハイブリッド セキュリティ** - オンプレミスとクラウドのすべてのワークロードのセキュリティを、統合された 1 つのビューで確認できます。 セキュリティ ポリシーを適用し、ハイブリッド クラウドのワークロードのセキュリティを継続的に評価することで、セキュリティ標準に確実に準拠できます。 ファイアウォールやその他のパートナー ソリューションなどのさまざまなソースから、セキュリティ データを収集、検索、分析します。
-- **高度な脅威検出** - 高度な分析と Microsoft インテリジェント セキュリティ グラフを使用して、巧妙化していくサイバー攻撃に対応します。 組み込みの行動分析と機械学習を活用して、各種攻撃やゼロデイ攻撃を特定します。 ネットワーク、マシン、クラウド サービスに対する攻撃や侵害後のアクティビティを監視します。 対話型のツールと状況に応じた脅威インテリジェンスにより、調査を効率化します。
+- **セキュリティ アラート** - 高度な分析と Microsoft インテリジェント セキュリティ グラフを使用して、巧妙化していくサイバー攻撃に対応します。 組み込みの行動分析と機械学習を活用して、各種攻撃やゼロデイ攻撃を特定します。 ネットワーク、マシン、クラウド サービスに対する攻撃や侵害後のアクティビティを監視します。 対話型のツールと状況に応じた脅威インテリジェンスにより、調査を効率化します。
 - **アクセスとアプリケーションの制御** - 特定のワークロードに適応し、機械学習を活用したホワイトリスト登録の推奨事項を適用することで、マルウェアや他の望ましくないアプリケーションをブロックします。 Azure VM の管理ポートへの制御された Just-In-Time アクセスによってネットワーク攻撃対象領域を縮小することで、ブルート フォース攻撃などのネットワーク攻撃にさらされる機会を大幅に減らします。
 
 ## <a name="detecting-unprotected-resources"></a>保護されていないリソースの検出
@@ -42,7 +42,7 @@ Azure サブスクリプション全体を Standard レベルにアップグレ�
 ## <a name="upgrade-an-azure-subscription-or-workspace"></a>Azure サブスクリプションまたはワークスペースをアップグレードする
 サブスクリプションまたはワークスペースを Standard にアップグレードするには:
 1. Security Center メイン メニューの **[使用の開始]** を選択します。
-  ![使用の開始](./media/security-center-onboarding/get-started.png)
+  ![作業の開始](./media/security-center-onboarding/get-started.png)
 2. Security Center の **[アップグレード]** に、オンボードの対象となるサブスクリプションとワークスペースが一覧表示されます。 
    - 展開可能な **[Apply your trial] \(試用版を適用)** をクリックすると、すべてのサブスクリプションとワークスペースの一覧を各試用版の資格の状態と共に表示できます。
    -    試用版の対象にならないサブスクリプションとワークスペースをアップグレードできます。
@@ -105,7 +105,7 @@ Security Center では、Azure 以外のコンピューターのセキュリテ�
 
    **[直接エージェント]** ブレードには、Windows または Linux エージェントをダウンロードするためのリンクや、エージェントの構成で使用するワークスペース ID とキーが表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、Security Center の高度なセキュリティのメリットを得るために、Azure リソースと Azure 以外のリソースをオンボードする方法について説明しました。 オンボードされたリソースを活用するには、以下を参照してください。
 
 - [データ収集を有効にする](security-center-enable-data-collection.md)

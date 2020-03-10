@@ -1,20 +1,22 @@
 ---
-title: Java と Maven を使用して関数を Azure に発行する
-description: Java と Maven を使用して、HTTP によってトリガーされる関数を作成し、Azure に発行します。
-author: rloutlaw
+title: Java と Maven または Gradle を使用して関数を Azure に発行する
+description: Java と Maven または Gradle を使用して、HTTP によってトリガーされる関数を作成し、Azure に発行します。
+author: KarlErickson
+ms.author: karler
 ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: f226736050319d57cd0bc123fdb2211e0faeae11
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+zone_pivot_groups: java-build-tools-set
+ms.openlocfilehash: dbdcf2552b453fa72bfec616a02bd45afc45fb0f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208848"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272727"
 ---
-# <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>クイック スタート:Java と Maven を使用して関数を作成し、Azure に発行する
+# <a name="quickstart-use-java-and-mavengradle-to-create-and-publish-a-function-to-azure"></a>クイック スタート:Java と Maven または Gradle を使用して関数を作成し、Azure に発行する
 
-この記事では、Maven コマンドライン ツールを使用して Java 関数を作成し、Azure Functions に発行する方法を示します。 完了すると、関数コードは Azure の[サーバーレス ホスティング プラン](functions-scale.md#consumption-plan)で実行され、HTTP 要求によってトリガーされます。
+この記事では、Maven または Gradle コマンドライン ツールを使用して Java 関数を作成し、Azure Functions に発行する方法を示します。 完了すると、関数コードは Azure の[サーバーレス ホスティング プラン](functions-scale.md#consumption-plan)で実行され、HTTP 要求によってトリガーされます。
 
 <!--
 > [!NOTE] 
@@ -26,9 +28,15 @@ ms.locfileid: "77208848"
 Java を使用して関数を開発するには、以下のものがインストールされている必要があります。
 
 - [Java Developer Kit](https://aka.ms/azure-jdks)、バージョン 8
-- [Apache Maven](https://maven.apache.org)、バージョン 3.0 以降
 - [Azure CLI]
 - [Azure Functions Core Tools](./functions-run-local.md#v2) バージョン 2.6.666 以降
+::: zone pivot="java-build-tools-maven" 
+- [Apache Maven](https://maven.apache.org)、バージョン 3.0 以降
+::: zone-end
+
+::: zone pivot="java-build-tools-gradle"  
+- [Gradle](https://gradle.org/) バージョン 4.10 以降
+::: zone-end 
 
 アクティブな Azure サブスクリプションも必要です。 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -36,34 +44,20 @@ Java を使用して関数を開発するには、以下のものがインスト
 > [!IMPORTANT]
 > このクイックスタートを行うには、JAVA_HOME 環境変数を JDK のインストール場所に設定する必要があります。
 
-## <a name="generate-a-new-functions-project"></a>新しい Functions プロジェクトを生成する
+## <a name="prepare-a-functions-project"></a>Functions プロジェクトを準備する
 
+::: zone pivot="java-build-tools-maven" 
 空のフォルダーで次のコマンドを実行して、[Maven アーキタイプ](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html)から Functions プロジェクトを生成します。
 
-### <a name="linuxmacos"></a>Linux/macOS
-
 ```bash
-mvn archetype:generate \
-    -DarchetypeGroupId=com.microsoft.azure \
-    -DarchetypeArtifactId=azure-functions-archetype 
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype 
 ```
 
 > [!NOTE]
+> PowerShell を使用している場合は、パラメーターの前後に "" を追加してください。
+
+> [!NOTE]
 > コマンドの実行で問題が発生した場合は、使用されている `maven-archetype-plugin` のバージョンを確認します。 `.pom` ファイルがない空のディレクトリでコマンドを実行しているため、Maven を古いバージョンからアップグレードした場合は、`~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` から古いバージョンのプラグインを使用しようとしている可能性があります。 その場合は、`maven-archetype-plugin` ディレクトリを削除した後、コマンドを再実行します。
-
-### <a name="windows"></a>Windows
-
-```powershell
-mvn archetype:generate `
-    "-DarchetypeGroupId=com.microsoft.azure" `
-    "-DarchetypeArtifactId=azure-functions-archetype"
-```
-
-```cmd
-mvn archetype:generate ^
-    "-DarchetypeGroupId=com.microsoft.azure" ^
-    "-DarchetypeArtifactId=azure-functions-archetype"
-```
 
 Maven により、デプロイ時にプロジェクトの生成を終了するための値の入力が求められます。 入力を求められたら、次の値を入力します。
 
@@ -79,7 +73,35 @@ Maven により、デプロイ時にプロジェクトの生成を終了する�
 
 「`Y`」と入力するか、Enter キーを押して確認します。
 
-Maven により、_artifactId_ という名前の新しいフォルダーにプロジェクト ファイルが作成されます (この例では `fabrikam-functions`)。 
+Maven により、_artifactId_ という名前の新しいフォルダーにプロジェクト ファイルが作成されます (この例では `fabrikam-functions`)。 次のコマンドを実行して、作成したプロジェクト フォルダーにディレクトリを変更します。
+```bash
+cd fabrikam-function
+```
+
+::: zone-end 
+::: zone pivot="java-build-tools-gradle"
+次のコマンドを使用して、サンプル プロジェクトを複製します。
+
+```bash
+git clone https://github.com/Azure-Samples/azure-functions-samples-java.git
+cd azure-functions-samples-java/
+```
+
+`build.gradle` を開き、次のセクションの `appName` を一意の名前に変更して、Azure にデプロイするときにドメイン名が競合しないようにします。 
+
+```gradle
+azurefunctions {
+    resourceGroup = 'java-functions-group'
+    appName = 'azure-functions-sample-demo'
+    pricingTier = 'Consumption'
+    region = 'westus'
+    runtime {
+      os = 'windows'
+    }
+    localDebug = "transport=dt_socket,server=y,suspend=n,address=5005"
+}
+```
+::: zone-end
 
 テキスト エディターで *src/main/java* パスの新しい Function.java ファイルを開き、生成されたコードを確認します。 このコードは、要求の本文をエコーする、[HTTP によってトリガーされる](functions-bindings-http-webhook.md)関数です。 
 
@@ -88,17 +110,25 @@ Maven により、_artifactId_ という名前の新しいフォルダーにプ�
 
 ## <a name="run-the-function-locally"></a>関数をローカルで実行する
 
-次のコマンドを実行します。このコマンドでは、ディレクトリを新しく作成されたプロジェクト フォルダーに変更し、関数プロジェクトをビルドして実行します。
+次のコマンドを実行して、関数プロジェクトをビルドして実行します。
 
-```console
-cd fabrikam-function
+::: zone pivot="java-build-tools-maven" 
+```bash
 mvn clean package 
 mvn azure-functions:run
 ```
+::: zone-end 
+
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle jar --info
+gradle azureFunctionsRun
+```
+::: zone-end 
 
 プロジェクトをローカルで実行すると、次のような Azure Functions Core Tools からの出力が表示されます。
 
-```Output
+```output
 ...
 
 Now listening on: http://0.0.0.0:7071
@@ -112,11 +142,11 @@ Http Functions:
 
 新しいターミナル ウィンドウで cURL を使用して、コマンド ラインから関数をトリガーします。
 
-```CMD
+```bash
 curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 ```
 
-```Output
+```output
 Hello AzureFunctions!
 ```
 ローカルで実行する場合、[関数キー](functions-bindings-http-webhook-trigger.md#authorization-keys)は必要ありません。 関数のコードを停止するには、ターミナルで `Ctrl+C` を使います。
@@ -135,13 +165,22 @@ az login
 > [!TIP]
 > 対象のアカウントで複数のサブスクリプションにアクセスできる場合は、[az account set](/cli/azure/account#az-account-set) を使用して、このセッションの既定のサブスクリプションを設定します。 
 
-次の Maven コマンドを使用して、対象のプロジェクトを新しい関数アプリにデプロイします。 
+次のコマンドを使用して、対象のプロジェクトを新しい関数アプリにデプロイします。 
 
-```azurecli
+
+::: zone pivot="java-build-tools-maven" 
+```bash
 mvn azure-functions:deploy
 ```
+::: zone-end 
 
-この `azure-functions:deploy` Maven ターゲットでは、次のリソースが Azure に作成されます。
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle azureFunctionsDeploy
+```
+::: zone-end
+
+これにより、Azure に次のリソースが作成されます。
 
 + リソース グループ。 指定した _resourceGroup_ の名前が付けられます。
 + ストレージ アカウント。 Functions に必要です。 名前は、ストレージ アカウント名の要件に基づいてランダムに生成されます。
@@ -175,13 +214,13 @@ mvn azure-functions:deploy
 
 `cURL` を使用して Azure で実行されている関数アプリを検証するには、次のサンプルの URL を、ポータルからコピーした URL に置き換えます。
 
-```azurecli
+```console
 curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpTrigger-Java?code=zYRohsTwBlZ68YF.... --data AzureFunctions
 ```
 
 これにより、要求の本文に `AzureFunctions` が含まれる POST 要求が関数エンドポイントに送信されます。 次の応答が表示されます。
 
-```Output
+```output
 Hello AzureFunctions!
 ```
 

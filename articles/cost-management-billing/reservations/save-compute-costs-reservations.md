@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: banders
-ms.openlocfilehash: c1cced862bee1ec4579f3e6e5145968dec7613e4
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 1c5dd5ebd5023b75aad5dabf6a721a1193a6224d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500570"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272198"
 ---
 # <a name="what-are-azure-reservations"></a>Azure の予約とは
 
@@ -42,6 +42,7 @@ Azure の予約は、仮想マシン、Azure BLOB ストレージまたは Azure
 - **Azure Database for PostgreSQL** - 予約にはコンピューティング コストのみが含まれます。 予約には、PostgreSQL データベース サーバーに関連するソフトウェア、ネットワーク、またはストレージの料金は含まれません。
 - **Azure Database for MariaDB** - 予約にはコンピューティング コストのみが含まれます。 予約には、MariaDB データベース サーバーに関連するソフトウェア、ネットワーク、またはストレージの料金は含まれません。
 - **Azure Data Explorer** - 予約の対象となるのは、マークアップ料金です。 クラスターに関連付けられているコンピューティング、ネットワーク、またはストレージの料金は、予約の対象になりません。
+- **Azure Cache for Redis** - 予約にはコンピューティング コストのみが含まれます。 Redis キャッシュ インスタンスに関連付けられているネットワークまたはストレージの料金は、予約の対象になりません。
 - **Premium SSD Managed Disks** - 予約は、特定のディスク SKU に対して行います。 
 
 ソフトウェア プラン:

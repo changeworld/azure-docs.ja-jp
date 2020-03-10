@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 01/29/2020
+ms.date: 02/26/2020
 ms.author: aahi
-ms.openlocfilehash: f34d4e50042f0fd05a224ff096c2b472224248f8
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 0d4d32a413dd22c55f1b2f01dce3a3df81f5f729
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76992300"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919670"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-for-ruby"></a>クイック スタート:Ruby 用 Text Analytics クライアント ライブラリを使用する
 
@@ -39,12 +39,11 @@ Text Analytics クライアント ライブラリを使って次のことを実�
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
 * 最新バージョンの [Ruby](https://www.ruby-lang.org/)
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Text Analytics リソースを作成"  target="_blank">Text Analytics リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 
+    * アプリケーションを Text Analytics API に接続するには、作成するリソースのキーとエンドポイントが必要です。 この作業は、このクイックスタートの中で後から行います。
+    * Free 価格レベルを使ってサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
 
 ## <a name="setting-up"></a>設定
-
-### <a name="create-a-text-analytics-azure-resource"></a>Text Analytics Azure リソースを作成する 
-
-[!INCLUDE [text-analytics-resource-creation](../includes/quickstarts/resource-creation.md)]
 
 ### <a name="create-a-new-ruby-application"></a>新しい Ruby アプリケーションを作成する
 
@@ -129,7 +128,7 @@ end
 SentimentAnalysisExample(textAnalyticsClient)
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 ===== SENTIMENT ANALYSIS =====
@@ -157,7 +156,7 @@ Document ID: 4 , Sentiment Score: 1.00
 DetectLanguageExample(textAnalyticsClient)
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 ===== LANGUAGE EXTRACTION ======
@@ -184,7 +183,7 @@ Document ID: 3 , Language: Chinese_Simplified
 RecognizeEntitiesExample(textAnalyticsClient)
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 ===== ENTITY RECOGNITION =====
@@ -243,7 +242,7 @@ Document ID: 2
 KeyPhraseExtractionExample(textAnalyticsClient)
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Document ID: 1

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 7daa2da76bf3097679a72bfdef069db20ae66087
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: f9567238e4bb025fad41e7db33613a63d2fc25dd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161734"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77911765"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure での第 2 世代 VM のサポート
 
@@ -33,18 +33,18 @@ ms.locfileid: "77161734"
 第 1 世代 VM は、Azure のすべての VM サイズでサポートされています (Mv2 シリーズ VM を除く)。 Azure では、次の選択された VM シリーズに対して第 2 世代のサポートが提供されるようになりました。
 
 * [B シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
-* [DC シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dc-series)
-* [Dsv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv2-series)および [Dsv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
-* [Esv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#esv3-series)
-* [Fsv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-compute#fsv2-series-1)
+* [DC シリーズ](../dcv2-series.md)
+* [DSv2 シリーズ](../dv2-dsv2-series.md)および[Dsv3 シリーズ](../dv3-dsv3-series.md)
+* [Esv3 シリーズ](../ev3-esv3-series.md)
+* [Fsv2 シリーズ](../fsv2-series.md)
 * [GS シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
-* [HB シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#hb-series)
-* [HC シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#hc-series)
-* [Ls シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series)と [Lsv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-storage#lsv2-series)
-* [Mv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series)
-* [NCv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#ncv2-series)と [NCv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#ncv3-series)
-* [ND シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nd-series)
-* [NVv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nvv3-series--1)
+* [HB シリーズ](../hb-series.md)
+* [HC シリーズ](../hc-series.md)
+* [Ls シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series)と [Lsv2 シリーズ](../lsv2-series.md)
+* [Mv2 シリーズ](../mv2-series.md)
+* [NCv2 シリーズ](../ncv2-series.md)と [NCv3 シリーズ](../ncv3-series.md)
+* [ND シリーズ](../nd-series.md)
+* [NVv3 シリーズ](../nvv3-series.md)
 
 > [!NOTE]
 > Mv2 シリーズは第 2 世代の VM イメージのみで動作するため、Mv2 シリーズ VM に対する第 2 世代 VM イメージの使用は一般提供されています。 第 1 世代の VM イメージは、Mv2 シリーズの VM ではサポートされていません。 
@@ -58,8 +58,9 @@ ms.locfileid: "77161734"
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
 * Ubuntu Server 16.04、18.04、19.04、19.10 
-* RHEL 8.0、7.6、7.5、7.4、7.0
-* Cent OS 8.0
+* RHEL 8.1、8.0、7.7、7.6、7.5、7.4、7.0
+* Cent OS 8.0、7.7、7.6、7.5、7.4
+* Oracle Linux 7.7、7.7-CI
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>オンプレミスと Azure 第 2 世代 VM の比較
 
@@ -110,10 +111,10 @@ Azure portal で第 2 世代 (Gen2) VM を作成する手順を以下に示し�
 1. 左側の Azure Marketplace から **[すべて表示]** をクリックします。
 1. Gen2 をサポートするイメージを選択します。
 1. **Create** をクリックしてください。
-1. **[詳細設定]** タブで、**VM generation]/(VM の生成/)** [ セクションで、] **[Gen 2** オプションを選択します。
-1. **[基本]** タブの **[インスタンスの詳細]** で、 **[サイズ]** にアクセスし、 **[VM サイズの選択]** ブレードを開きます。
+1. **[詳細設定]** タブで、 **[VM generation]\(VM の世代\)** セクションで、 **[Gen 2]** オプションを選択します。
+1. **[基本]** タブの **[インスタンスの詳細]** で、 **[サイズ]** に移動し、 **[VM サイズの選択]** ブレードを開きます。
 1. [サポートされている第 2 世代 VM](#generation-2-vm-sizes) を選択します。
-1. [Azure portal 作成フロー](quick-create-portal.md)を参照して、VM の作成を完了します。
+1. [Azure portal での作成フロー](quick-create-portal.md)を参照して、VM の作成を完了します。
 
 ![Gen 1 または Gen 2 の VM を選択する](./media/generation-2/gen1-gen2-select.png)
 
@@ -198,11 +199,11 @@ OS として Windows Server 2012 を使用して VM を作成している場合�
 * **VM を第 1 世代から第 2 世代に移行できますか?**  
     いいえ。VM を作成した後にその世代を変更することはできません。 VM の世代を切り替える必要がある場合は、異なる世代の新しい VM を作成してください。
 
-* **Gen2 VM を作成しようとすると、サイズ セレクターで VM サイズが有効になっていないのはなぜですか。**
+* **Gen2 VM を作成しようとすると、サイズ セレクターで VM サイズが有効になっていないのはなぜですか?**
 
     これを解決するには、次の手順を実行します。
 
-    1. **[詳細]** タブで、 **[VM generation]/(VM の生成/)** プロパティが **[Gen 2]** に設定されていることを確認します。
+    1. **[詳細]** タブで、 **[VM generation]\(VM の世代\)** プロパティが **[Gen 2]** に設定されていることを確認します。
     1. [Gen2 VM をサポートする VM サイズ](#generation-2-vm-sizes)を検索していることを確認します。
 
 ## <a name="next-steps"></a>次のステップ

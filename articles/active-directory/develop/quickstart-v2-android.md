@@ -11,23 +11,22 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: bbaaf4b26beec56cd8608abc8a2f9cdd3a4cda3f
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: a184b035e3296f82ecdacf74a99ea7148d99bd49
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084530"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271112"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>クイック スタート:Android アプリからユーザーにサインインし、Microsoft Graph API を呼び出す
 
-このクイックスタートでは、コード サンプルを使用して、Android アプリケーションから Microsoft ID プラットフォームを使用することによって個人、仕事、または学校のアカウントへのサインイン、アクセス トークンの取得、Microsoft Graph API の呼び出しを行う方法を示します。
+このクイックスタートでは、コード サンプルを使用して、Android アプリケーションから Microsoft ID プラットフォームを使用することによって個人、仕事、または学校のアカウントへのサインイン、アクセス トークンの取得、Microsoft Graph API の呼び出しを行う方法を示します。 (図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください)。
 
-アプリケーションは、Microsoft ID プラットフォームがアプリケーションとトークンを共有できるように、Azure Active Directory 内のアプリ オブジェクトによって表現される必要があります。
+アプリケーションは、Microsoft ID プラットフォームがアプリケーションにトークンを提供できるように、Azure Active Directory 内のアプリ オブジェクトによって表現される必要があります。
 
 > [!div renderon="docs"]
 > 便宜上、コード サンプルには、`AndroidManifest.xml` ファイルで事前に構成された既定の `redirect_uri` が付属しているため、最初に独自のアプリ オブジェクトを登録する必要はありません。 `redirect_uri` は、アプリの署名キーに一部基づいています。 サンプル プロジェクトは、指定された `redirect_uri` が機能するように署名キーを使用して事前に構成されています。 アプリ オブジェクトの登録とアプリケーションとの統合の詳細については、「[Android アプリケーションからユーザーにサインインし、Microsoft Graph を呼び出す](tutorial-v2-android.md)」のチュートリアルを参照してください。
 
-![サンプル アプリのスクリーンショット](media/quickstart-v2-android/android-intro.svg)
 
 > [!NOTE]
 > **前提条件**
@@ -44,73 +43,14 @@ ms.locfileid: "77084530"
 > > ![構成済み](media/quickstart-v2-android/green-check.png) アプリケーションはこれらの属性で構成されています
 >
 > ### <a name="step-2-download-the-project"></a>手順 2:プロジェクトのダウンロード 
-> * [コード サンプルをダウンロードします](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip)
+> [!div class="sxs-lookup" renderon="portal"]
+> Android Studio を使用してプロジェクトを実行します。
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [コード サンプルをダウンロードします](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip)
 >
-> ### <a name="step-3-configure-your-project"></a>手順 3:プロジェクトを構成する
-> 1. プロジェクトを解凍し、Android Studio で開きます。
-> 2. Inside **app** > **src** > **main** > **res** > **raw** の内部で、**auth_config_multiple_account.json** を開き、以下のコードに置き換えます。
-> ```javascript 
-> {
->   "client_id" : "Enter_the_Application_Id_Here",
->   "authorization_user_agent" : "DEFAULT",
->   "redirect_uri" : "Enter_the_Redirect_Uri_Here",
->   "account_mode" : "MULTIPLE",
->   "broker_redirect_uri_registered": true,
->   "authorities" : [
->     {
->       "type": "AAD",
->       "audience": {
->         "type": "Enter_the_Audience_Info_Here",
->         "tenant_id": "Enter_the_Tenant_Info_Here"
->       }
->     }
->   ]
-> }
-> ```
-
 > [!div class="sxs-lookup" renderon="portal"]
-> 3. Inside **app** > **src** > **main** > **res** > **raw** の内部で、**auth_config_single_account.json** を開き、以下のコードに置き換えます。
-> ```javascript 
-> {
->   "client_id" : "Enter_the_Application_Id_Here",
->   "authorization_user_agent" : "DEFAULT",
->   "redirect_uri" : "Enter_the_Redirect_Uri_Here",
->   "account_mode" : "SINGLE",
->   "broker_redirect_uri_registered": true,
->   "authorities" : [
->     {
->       "type": "AAD",
->       "audience": {
->         "type": "Enter_the_Audience_Info_Here",
->         "tenant_id": "Enter_the_Tenant_Info_Here"
->       }
->     }
->   ]
-> }
-> ```
-
-> [!div class="sxs-lookup" renderon="portal"]
-> 4. **app** > **src** > **main** の内部で、**AndroidManifest.xml** を開きます。
-> 5. **manifest\application** ノードで、**activity android:name="com.microsoft.identity.client.BrowserTabActivity"** ノードを以下のノードに置き換えます。    
-> ```xml
-> <!--Intent filter to catch Microsoft's callback after Sign In-->
-> <activity android:name="com.microsoft.identity.client.BrowserTabActivity">
->     <intent-filter>
->         <action android:name="android.intent.action.VIEW" />
->         <category android:name="android.intent.category.DEFAULT" />
->         <category android:name="android.intent.category.BROWSABLE" />
->         <!--
->             Add in your scheme/host from registered redirect URI 
->             note that the leading "/" is required for android:path
->         -->
->         <data 
->             android:host="Enter_the_Package_Name"
->             android:path="/Enter_the_Signature_Hash"
->             android:scheme= "msauth" />
->     </intent-filter>
-> </activity>
-> ```
-> 6. アプリを実行します。   
+> ### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>手順 3:アプリが構成され、実行準備ができる
+> アプリのプロパティの値を使用してプロジェクトを構成したら、実行する準備は完了です。 
 > このサンプル アプリは、**単一アカウント モード**画面で開始します。 既定のスコープである **user.read** は既定で指定されます。これは、Microsoft Graph API 呼び出し時にご自分のプロファイル データを読み取るときに使用します。 Microsoft Graph API 呼び出しの URL は、既定で指定されます。 このどちらも必要に応じて変更できます。
 >
 > ![単一および複数アカウントの使用状況を示す MSAL サンプル アプリ](./media/quickstart-v2-android/quickstart-sample-app.png)
@@ -126,7 +66,7 @@ ms.locfileid: "77084530"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > このクイックスタートは、Enter_the_Supported_Account_Info_Here をサポートしています。
+> > Enter_the_Supported_Account_Info_Here
 
 > [!div renderon="docs"]
 > ## <a name="step-1-get-the-sample-app"></a>手順 1:サンプル アプリを入手する
@@ -151,6 +91,8 @@ ms.locfileid: "77084530"
 > 複数アカウント モードでは、同じ手順を繰り返すことができます。  さらに、サインインしているアカウントを削除することもできます。その場合、そのアカウントのキャッシュされたトークンも削除されます。
 
 ## <a name="how-the-sample-works"></a>このサンプルのしくみ
+![サンプル アプリのスクリーンショット](media/quickstart-v2-android/android-intro.svg)
+
 
 コードは、単一および複数アカウントの MSAL アプリを記述する方法を示すフラグメントに分かれています。 コード ファイルは、次のように整理されています。
 
@@ -171,7 +113,7 @@ ms.locfileid: "77084530"
 MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) はユーザーをサインインし、Microsoft ID プラットフォームによって保護されている API へのアクセス用のトークンを要求するために使用するライブラリです。 Gradle 3.0 以降では、**Gradle Scripts** > **build.gradle (Module: app)** の **Dependencies** に以下を追加すると、ライブラリがインストールされます。
 
 ```gradle  
-implementation 'com.microsoft.identity.client:msal:1.0.0'
+implementation 'com.microsoft.identity.client:msal:1.+'
 ```
 
 これは、サンプル プロジェクトの build.gradle (Module: app) で確認できます。
@@ -179,7 +121,7 @@ implementation 'com.microsoft.identity.client:msal:1.0.0'
 ```java
 dependencies {
     ...
-    implementation 'com.microsoft.identity.client:msal:1.0.+'
+    implementation 'com.microsoft.identity.client:msal:1.+'
     ...
 }
 ```

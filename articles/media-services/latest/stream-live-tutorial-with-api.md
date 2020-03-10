@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 47d526ea410bc449c91ae4fb10913850c447f1b3
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: cb6095f1579334b9fe35a02a3006de32ff551989
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582643"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268171"
 ---
 # <a name="tutorial-stream-live-with-media-services"></a>チュートリアル:Media Services によるライブ ストリーム配信
 
@@ -47,7 +47,7 @@ Azure Media Services では、[ライブ イベント](https://docs.microsoft.co
 - [Media Services アカウントを作成する](create-account-cli-how-to.md)<br/>リソース グループ名および Media Services アカウント名として使用した値を覚えておいてください。
 - 「[Azure CLI で Azure Media Services API にアクセスする](access-api-cli-how-to.md)」の手順に従い、資格情報を保存します。 API にアクセスするために必要となります。
 - イベントのブロードキャストに使用するカメラまたはデバイス (ラップトップなど)。
-- カメラからの信号を Media Services ライブ ストリーミング サービスに送信されるストリームに変換するオンプレミスのライブ エンコーダー。 ストリームは **RTMP** または **Smooth Streaming** 形式である必要があります。
+- カメラからの信号を Media Services ライブ ストリーミング サービスに送信されるストリームに変換するオンプレミスのライブ エンコーダー。詳細については、[推奨されるオンプレミス ライブ エンコーダー](recommended-on-premises-live-encoders.md)に関するページをご覧ください。 ストリームは **RTMP** または **Smooth Streaming** 形式である必要があります。
 
 > [!TIP]
 > 先に進む前に、「[Live streaming with Media Services v3](live-streaming-overview.md)」(Media Services v3 によるライブ ストリーミング) を確認してください。 
@@ -171,7 +171,7 @@ foreach (StreamingPath path in paths.StreamingPaths)
 
 ライブ イベントが停止すると、イベントがオンデマンド コンテンツに自動的に変換されます。 イベントを停止して削除した後でも、アセットを削除しない限り、ユーザーはアーカイブされたコンテンツをビデオ オン デマンドとしてストリーム配信できます。 イベントがアセットを使用している場合はアセットを削除できません。まずイベントを削除する必要があります。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルで作成した Media Services アカウントとストレージ アカウントも含め、リソース グループ内のどのリソースも必要なくなった場合は、前に作成したリソース グループを削除します。
 
@@ -184,11 +184,11 @@ az group delete --name amsResourceGroup
 > [!IMPORTANT]
 > ライブ イベントを実行したままにすると課金が発生します。 プロジェクトやプログラムがクラッシュする、またはなんらかの理由で閉じられると、ライブ イベントが課金状態で実行されたままになるため、ご注意ください。
 
-## <a name="ask-questions-give-feedback-get-updates"></a>質問する。フィードバックする。最新情報を入手する
+## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
 
 「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ファイルをストリーミングする](stream-files-tutorial-with-api.md)
  

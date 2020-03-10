@@ -1,6 +1,6 @@
 ---
 title: 'クイック スタート:コンピューティングをスケーリングする - Azure portal '
-description: Azure Portal で Azure SQL Data Warehouse のコンピューティングをスケーリングします。 コンピューティングをスケールアウトしてパフォーマンスを向上させます。または、コンピューティングをスケールバックしてコストを削減します。
+description: Azure portal で SQL プールのコンピューティングをスケーリングします。 コンピューティングをスケールアウトしてパフォーマンスを向上させます。または、コンピューティングをスケールバックしてコストを削減します。
 services: sql-data-warehouse
 author: Antvgski
 manager: craigg
@@ -10,55 +10,49 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 59d929165ac9618d68707e2f13741e7bbba7b37f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 7463849223fdf81466237c7d0c912763988e80e6
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685961"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200349"
 ---
-# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure SQL Data Warehouse のコンピューティングをスケーリングする
+# <a name="quickstart-scale-compute-in-azure-synapse-analytics-sql-pool-in-the-azure-portal"></a>クイック スタート:Azure Synapse Analytics の SQL プールのコンピューティングを Azure portal でスケーリングする
 
-Azure Portal で Azure SQL Data Warehouse のコンピューティングをスケーリングします。 [コンピューティングをスケールアウト](sql-data-warehouse-manage-compute-overview.md)してパフォーマンスを向上させます。または、コンピューティングをスケールバックしてコストを削減します。 
+Azure portal で SQL プールのコンピューティングをスケーリングします。 [コンピューティングをスケールアウト](sql-data-warehouse-manage-compute-overview.md)してパフォーマンスを向上させます。または、コンピューティングをスケールバックしてコストを削減します。 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure Portal](https://portal.azure.com/) にサインインします。
+[Azure portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-既存のデータ ウェアハウスをスケーリングできます。または、[ポータルでの作成と接続に関するクイック スタート](create-data-warehouse-portal.md)を使用して、**mySampleDataWarehouse** という名前のデータ ウェアハウスを作成できます。  このクイックスタートでは、**mySampleDataWarehouse** をスケーリングします。
+既存の SQL プールをスケーリングできます。または、[ポータルでの作成と接続に関するクイックスタート](create-data-warehouse-portal.md)を使用して、**mySampleDataWarehouse** という名前の SQL プールを作成してください。  このクイックスタートでは、**mySampleDataWarehouse** をスケーリングします。
 
 >[!Note]
->スケーリングするには、お使いのデータ ウェアハウスがオンラインになっている必要があります。 
+>スケーリングする SQL プールがオンラインになっている必要があります。 
 
 ## <a name="scale-compute"></a>コンピューティングのスケーリング
 
-データ ウェアハウス ユニットを増減することにより、SQL Data Warehouse のコンピューティング リソースをスケーリングできます。 [ポータルでの作成と接続に関するクイック スタート]\(create-data-warehouse-portal.md)では、**mySampleDataWarehouse** を作成し、それを 400 DWU で初期化しました。 次の手順では、**mySampleDataWarehouse** の DWU を調整します。
+SQL プールのコンピューティング リソースは、Data Warehouse ユニットを増減することによってスケーリングできます。 [ポータルでの作成と接続に関するクイック スタート]\(create-data-warehouse-portal.md)では、**mySampleDataWarehouse** を作成し、それを 400 DWU で初期化しました。 次の手順では、**mySampleDataWarehouse** の DWU を調整します。
 
 Data Warehouse ユニットを変更するには:
 
-1. Azure portal の左側のページで **[SQL データ ウェアハウス]** をクリックします。
-2. **[SQL データ ウェアハウス]** ページで **mySampleDataWarehouse** を選びます。 データ ウェアハウスが開きます。
+1. Azure portal の左側のページで **[Azure Synapse Analytics (以前の SQL DW)]** をクリックします。
+2. **[Azure Synapse Analytics (以前の SQL DW)]** ページから **[mySampleDataWarehouse]** を選択します。 SQL プールが開きます。
 3. **[スケール]** をクリックします。
 
     ![[スケール] をクリックします。](media/quickstart-scale-compute-portal/click-scale.png)
 
-2. [スケール] パネルで、スライダーを左または右に移動して DWU 設定を変更します。
+2. [スケール] パネルで、スライダーを左または右に移動して DWU 設定を変更します。 次に、[スケール] を選択します。
 
     ![スライダーの移動](media/quickstart-scale-compute-portal/scale-dwu.png)
 
-3. **[Save]** をクリックします。 確認メッセージが表示されます。 **[はい]** をクリックして確定します。キャンセルするには、 **[いいえ]** をクリックします。
-
-    ![[保存] をクリックします。](media/quickstart-scale-compute-portal/confirm-change.png)
-
-
-
-## <a name="next-steps"></a>次の手順
-ここでは、データ ウェアハウスの計算をスケーリングする方法について学習しました。 Azure SQL Data Warehouse の詳細については、データの読み込みに関するチュートリアルを参照してください。
+## <a name="next-steps"></a>次のステップ
+ここでは、SQL プールのコンピューティングをスケーリングする方法について説明しました。 SQL プールに関する理解をさらに深めるために、データの読み込みに関するチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
->[SQL Data Warehouse にデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)
+>[SQL プールにデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)

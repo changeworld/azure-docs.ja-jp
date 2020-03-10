@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 5c182d6119f59daaf21e4b4e1304363eeb0c11e5
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: cfd0f8a9a3180b14b4da9dc61e252054fe06628c
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273498"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274168"
 ---
 # <a name="deprecated-deploy-kubernetes-cluster-for-linux-containers"></a>(非推奨) Linux コンテナー用の Kubernetes クラスターをデプロイする
 
@@ -21,7 +21,7 @@ ms.locfileid: "76273498"
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-このクイック スタートでは、Azure CLI を使用して Kubernetes クラスターをデプロイします。 次に、Web フロントエンドと Redis インスタンスで構成される複数コンテナー アプリケーションをデプロイして、このクラスターで実行します。 完了すると、このアプリケーションはインターネット経由でアクセス可能になります。 
+このクイックスタートでは、Azure CLI を使用して Kubernetes クラスターをデプロイします。 次に、Web フロントエンドと Redis インスタンスで構成される複数コンテナー アプリケーションをデプロイして、このクラスターで実行します。 完了すると、このアプリケーションはインターネット経由でアクセス可能になります。 
 
 このドキュメントで使用されているサンプル アプリケーションは、Python で作成されています。 ここで詳しく説明している概念と手順は、あらゆるコンテナー イメージを Kubernetes クラスターにデプロイする目的で使用できます。 このプロジェクトに関連してあらかじめ作成された Kubernetes マニフェスト ファイルとコード、Dockerfile は、[GitHub](https://github.com/Azure-Samples/azure-voting-app-redis.git) で入手できます。
 
@@ -41,7 +41,7 @@ CLI をローカルにインストールして使用する場合、このクイ�
 
 次の例では、*myResourceGroup* という名前のリソース グループを *westeurope* の場所に作成します。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
 ```
 
@@ -64,7 +64,7 @@ az group create --name myResourceGroup --location westeurope
 
 [az acs create](/cli/azure/acs#az-acs-create) コマンドを使用して Azure Container Service に Kubernetes クラスターを作成します。 次の例では、1 つの Linux マスター ノードと 3 つの Linux エージェント ノードを含む、*myK8sCluster* という名前のクラスターを作成します。
 
-```azurecli-interactive 
+```azurecli-interactive
 az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --name myK8sCluster --generate-ssh-keys
 ```
 
@@ -76,23 +76,23 @@ az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --
 
 Kubernetes クラスターを管理するには、Kubernetes のコマンドライン クライアントである [kubectl](https://kubernetes.io/docs/user-guide/kubectl/) を使用します。 
 
-Azure CloudShell を使用している場合、kubectl は既にインストールされています。 ローカルにインストールする場合には、[az acs kubernetes install-cli](/cli/azure/acs/kubernetes) コマンドを使用します。
+Azure Cloud Shell を使用している場合、kubectl は既にインストールされています。 ローカルにインストールする場合には、[az acs kubernetes install-cli](/cli/azure/acs/kubernetes) コマンドを使用します。
 
 Kubernetes クラスターに接続するように kubectl を構成するには、[az acs kubernetes get-credentials](/cli/azure/acs/kubernetes) コマンドを実行します。 この手順では、資格情報をダウンロードし、Kubernetes CLI を構成してそれらの資格情報を使用します。
 
-```azurecli-interactive 
+```azurecli-interactive
 az acs kubernetes get-credentials --resource-group=myResourceGroup --name=myK8sCluster
 ```
 
 クラスターへの接続を確認するには、クラスター ノードの一覧を返す [kubectl get](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) コマンドを使用します。
 
-```azurecli-interactive
+```console
 kubectl get nodes
 ```
 
 出力:
 
-```bash
+```output
 NAME                    STATUS                     AGE       VERSION
 k8s-agent-14ad53a1-0    Ready                      10m       v1.6.6
 k8s-agent-14ad53a1-1    Ready                      10m       v1.6.6
@@ -169,13 +169,13 @@ spec:
 
 [kubectl create](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create) コマンドを使用してアプリケーションを実行します。
 
-```azurecli-interactive
+```console
 kubectl create -f azure-vote.yml
 ```
 
 出力:
 
-```bash
+```output
 deployment "azure-vote-back" created
 service "azure-vote-back" created
 deployment "azure-vote-front" created
@@ -188,13 +188,13 @@ service "azure-vote-front" created
 
 進行状況を監視するには、[kubectl get service](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) コマンドを `--watch` 引数と一緒に使用します。
 
-```azurecli-interactive
+```console
 kubectl get service azure-vote-front --watch
 ```
 
 最初に、*azure-vote-front* サービスの **EXTERNAL-IP** が "*保留中*" として表示されます。 EXTERNAL-IP アドレスが "*保留中*" から "*IP アドレス*" に変わると、`CTRL-C` を使用してkubectl ウォッチ プロセスを停止します。 
   
-```bash
+```output
 azure-vote-front   10.0.34.242   <pending>     80:30676/TCP   7s
 azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
 ```
@@ -206,7 +206,7 @@ azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
 ## <a name="delete-cluster"></a>クラスターを削除する
 クラスターが必要なくなったら、[az group delete](/cli/azure/group#az-group-delete) コマンドを使用して、リソース グループ、コンテナー サービス、およびすべての関連リソースを削除できます。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
 ```
 

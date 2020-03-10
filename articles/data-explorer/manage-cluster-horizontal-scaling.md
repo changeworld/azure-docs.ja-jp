@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: d0c9fe9ebd040ee59ae8717e95fd1911eaef61be
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: ff7420619cffc2287ab8ff6332df605d56329549
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560458"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664135"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>需要の変化に対応するために Azure Data Explorer のクラスターの水平スケーリング (スケールアウト) を管理する
 
@@ -59,13 +59,14 @@ Azure Data Explorer クラスターのスケーリングには、2 つのワー�
 * クラスター インスタンスの数が、ユーザーによって定義された最大インスタンス数を下回っている。
 * キャッシュ使用率が 1 時間を超過している。
 * CPU が高い状態が 1 時間を超えている。
+* インジェストの使用率が高い状態が 1 時間を超えている。
 
 > [!NOTE]
 > スケールアウトのロジックでは現在、インジェスト使用率のメトリックは考慮されません。 このメトリックがユース ケースにとって重要である場合は、[カスタム自動スケーリング](#custom-autoscale)を使用します。
 
 **スケールイン**
 
-クラスターが低使用率状態に近づいた場合は、低コスト化しつつパフォーマンスを維持するために、スケールインが行われます。 クラスターをスケールインすることが安全であることを確認するために、複数のメトリックが使用されます。 スケールインが行われる前の 7 日間、以下のルールが日次で評価されます。
+クラスターが低使用率状態に近づいた場合は、低コスト化しつつパフォーマンスを維持するために、スケールインが行われます。 クラスターをスケールインすることが安全であることを確認するために、複数のメトリックが使用されます。 スケールインが行われる前の 6 時間にわたって、次のルールが 1 時間ごとに評価されます。
 * インスタンス数が 2 以上であり、定義されている最低インスタンス数を上回っている。
 * リソースのオーバーロードがないことを確認するために、スケールインが実行される前に、必ず次のメトリックが検証される。 
     * キャッシュ使用率が高くない

@@ -1,20 +1,19 @@
 ---
-title: Apache Hadoop テクノロジ スタックとは - Azure HDInsight
+title: Apache Hadoop と MapReduce の概要 - Azure HDInsight
 description: HDInsight の概要のほか、Apache Hadoop テクノロジ スタックとそのコンポーネントについて紹介します。
-keywords: Azure Hadoop, Hadoop Azure, Hadoop の紹介, Hadoop の概要, Hadoop テクノロジ スタック, Hadoop の概説, Hadoop 入門, Hadoop クラスターとは, Hadoop クラスターについて, Hadoop の使用目的
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
-ms.date: 08/15/2019
-ms.openlocfilehash: 193b8f59a805de4303bfc38d397a821cc068dcc0
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
+ms.date: 02/27/2020
+ms.openlocfilehash: 7e8dd69b7c58e090c30ea1aa59feddab610dd3c5
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088198"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78244887"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Azure HDInsight の Apache Hadoop の概要
 
@@ -24,7 +23,7 @@ Azure HDInsight は、フル マネージドの、全範囲に対応した、ク
 
 HDInsight で利用可能な Hadoop テクノロジ スタック コンポーネントを確認するには、[HDInsight で利用可能なコンポーネントとバージョン](../hdinsight-component-versioning.md)に関する記事を参照してください。 HDInsight の Hadoop については、[HDInsight 向けの Azure の機能](https://azure.microsoft.com/services/hdinsight/)に関するページを参照してください。
 
-## <a id="whatis"></a>MapReduce とは
+## <a name="what-is-mapreduce"></a>MapReduce とは
 
 Apache Hadoop MapReduce は、膨大なデータを処理するジョブを記述するためのソフトウェア フレームワークです。 入力データは、独立したチャンクに分割されます。 各チャンクは、クラスター内のノード全体で並列に処理されます。 MapReduce ジョブは次の 2 つの関数で構成されます。
 
@@ -32,7 +31,7 @@ Apache Hadoop MapReduce は、膨大なデータを処理するジョブを記�
 
 * **Reducer**: Mapper で出力されるタプルを使用して、Mapper データから、より小さい結合結果を作成する要約操作を実行します。
 
-次の図では、基本的なワード カウント MapReduce ジョブの例を示します。   
+次の図では、基本的なワード カウント MapReduce ジョブの例を示します。
 
  ![HDI.WordCountDiagram](./media/apache-hadoop-introduction/hdi-word-count-diagram.gif)
 
@@ -51,12 +50,12 @@ Hadoop ストリーミングは、STDIN と STDOUT 上で mapper や reducer と
 
     [key]/t[value]
 
-詳細については、「 [Hadoop ストリーミング](https://hadoop.apache.org/docs/r1.2.1/streaming.html)」を参照してください。
+詳細については、「 [Hadoop ストリーミング](https://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html)」を参照してください。
 
 HDInsight での Hadoop ストリーミングの使用例については、以下のドキュメントを参照してください。
 
 * [C# MapReduce ジョブの開発](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [HDInsight で Apache Hadoop クラスターを作成する](apache-hadoop-linux-create-cluster-get-started-portal.md)

@@ -12,19 +12,15 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 503cfb1e299c4e96e4e87107ce25af273848ca8f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: eae26df61af203f9c3d09606ef96b5506f2e8701
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160629"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249121"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>クイック スタート:ASP.NET Web アプリに Microsoft ID プラットフォーム サインインを追加する
-
-このクイック スタートでは、ASP.NET Web アプリで、(hotmail.com、outlook.com などの) 個人アカウント、また職場や学校のアカウントに任意の Azure Active Directory (Azure AD) インスタンスからサインインします。
-
-![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.svg)
-
+このクイックスタートでは、ASP.NET Web アプリで、(hotmail.com、outlook.com などの) 個人アカウント、また職場や学校のアカウントを任意の Azure Active Directory (Azure AD) インスタンスからサインインさせる方法を、コード サンプルを使用して学びます。  (図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください)。
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>クイック スタート アプリを登録してダウンロードする
 > クイック スタート アプリケーションを開始する方法としては、次の 2 つの選択肢があります。
@@ -64,26 +60,33 @@ ms.locfileid: "77160629"
 
 #### <a name="step-2-download-your-project"></a>手順 2:プロジェクトのダウンロード
 
-[Visual Studio 2019 ソリューションのダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
+> [!div renderon="docs"]
+> [Visual Studio 2019 ソリューションのダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>手順 3:Visual Studio プロジェクトの構成
+> [!div renderon="portal"]
+> Visual Studio 2019 を使用してプロジェクトを実行します。
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [コード サンプルをダウンロードします]()
+
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>手順 3:アプリが構成され、実行準備ができる
+> アプリのプロパティの値を使用してプロジェクトを構成しました。 
+
+> [!div renderon="docs"]
+> #### <a name="step-3-run-your-visual-studio-project"></a>手順 3:Visual Studio プロジェクトを実行する
 
 1. ルート フォルダーに近いローカル フォルダー (例: **C:\Azure-Samples**) に zip ファイルを展開します。
 1. Visual Studio でソリューションを開きます (AppModelv2-WebApp-OpenIDConnect-DotNet.sln)
 1. Visual Studio のバージョンによっては、プロジェクト `AppModelv2-WebApp-OpenIDConnect-DotNet` を右クリックして **[NuGet パッケージの復元]** を選択することが必要になる場合があります。
 1. パッケージ マネージャー コンソール ([表示]、[その他のウィンドウ]、[パッケージ マネージャー コンソール] の順に選択) を開き、以下を実行します。`Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`
-1. **[Web.config]** を編集し、`ClientId` パラメーターと `Tenant` パラメーターを次のように置き換えます。
-
-    ```xml
-    <add key="ClientId" value="Enter_the_Application_Id_here" />
-    <add key="Tenant" value="Enter_the_Tenant_Info_Here" />
-    ```
-> [!div class="sxs-lookup" renderon="portal"]
-> > [!NOTE]
-> > このクイックスタートは、Enter_the_Supported_Account_Info_Here をサポートしています。 
 
 > [!div renderon="docs"]
-> 各値の説明:
+> 5. **[Web.config]** を編集し、`ClientId` パラメーターと `Tenant` パラメーターを次のように置き換えます。
+>    ```xml
+>    <add key="ClientId" value="Enter_the_Application_Id_here" />
+>    <add key="Tenant" value="Enter_the_Tenant_Info_Here" />
+>    ```
+>    各値の説明:
 > - `Enter_the_Application_Id_here` - 登録したアプリケーションのアプリケーション ID。
 > - `Enter_the_Tenant_Info_Here` - 以下のいずれかのオプション。
 >   - アプリケーションでサポートされるのが **[所属する組織のみ]** である場合、この値を**テナント ID** または**テナント名** (例: contoso.onmicrosoft.com) に置き換えます
@@ -94,9 +97,16 @@ ms.locfileid: "77160629"
 > > - *[アプリケーション ID]* 、 *[ディレクトリ (テナント) ID]* 、 *[サポートされているアカウントの種類]* の値を見つけるには、 **[概要]** ページに移動します。
 > > - **Web.config** 内の `redirectUri` の値と、Azure AD でアプリ登録用に定義された**リダイレクト URI** が確実に対応するようにします (対応していない場合、アプリ登録の **[認証]** メニューに移動し、**リダイレクト URI** を一致するように更新します)。
 
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > Enter_the_Supported_Account_Info_Here
+
 ## <a name="more-information"></a>詳細情報
 
 このセクションでは、ユーザーをサインインさせるために必要なコードの概要を示します。 この概要、コードの機能や主な引数について理解するために、また、既存の ASP.NET アプリケーションにサインインを追加する場合にも役立ちます。
+
+### <a name="how-the-sample-works"></a>このサンプルのしくみ
+![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.svg)
 
 ### <a name="owin-middleware-nuget-packages"></a>OWIN ミドルウェア NuGet パッケージ
 

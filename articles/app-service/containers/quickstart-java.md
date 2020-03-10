@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: f07c4d8b440216cb676484ae2f510b2736b7d17c
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: faea0759f86e9d12530df6c647d903eacdade5c4
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443909"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228061"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>クイック スタート:Azure App Service on Linux で Java アプリを作成する
 
@@ -95,7 +95,7 @@ Confirm (Y/N)? : Y
 
 もう一度 `pom.xml` に移動してプラグイン構成が更新されていることを確認します。必要に応じて、pom ファイルで App Service の他の構成を直接変更できます。その一般的なものを次に示します。
 
- プロパティ | Required | 説明 | Version
+ プロパティ | 必須 | 説明 | Version
 ---|---|---|---
 `<schemaVersion>` | false | 構成スキーマのバージョンを指定します。 サポートされる値は `v1`、`v2` です。 | 1.5.2
 `<resourceGroup>` | true | Web アプリの Azure リソース グループ。 | 0.1.0 以降
@@ -136,6 +136,15 @@ az group delete --name <your resource group name; for example: helloworld-155840
 このコマンドの実行には、少し時間がかかる場合があります。
 
 ## <a name="next-steps"></a>次のステップ
+
+> [!div class="nextstepaction"]
+> [Java を使用して Azure SQL データベースに接続する](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
+
+> [!div class="nextstepaction"]
+> [Java を使用して Azure DB for MySQL に接続する](/azure/mysql/connect-java?toc=/azure/java/toc.json)
+
+> [!div class="nextstepaction"]
+> [Java を使用して Azure DB for PostgreSQL に接続する](/azure/postgresql/connect-java?toc=/azure/java/toc.json)
 
 > [!div class="nextstepaction"]
 > [Java アプリを構成する](configure-custom-container.md)

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 812680e587ac5c5c8b3d949199a615fcd85fa610
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 301b68d0dfaeef6d5cfdd4d7a5a504794ac877f4
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485354"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205826"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>サンプル ラベル付けツールを使用したラベルによる Form Recognizer モデルのトレーニング
 
@@ -35,12 +35,19 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="set-up-the-sample-labeling-tool"></a>サンプル ラベル付けツールを設定する
 
 サンプル ラベル付けツールを実行するには、Docker エンジンを使用します。 次の手順に従って、Docker コンテナーを設定します。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。
-1. まず、ホスト コンピューターに Docker をインストールします。 ホスト コンピューターには、ローカル コンピューター ([Windows](https://docs.docker.com/docker-for-windows/)、[macOS](https://docs.docker.com/docker-for-mac/)、または [Linux](https://docs.docker.com/install/)) を使用できます。 あるいは、[Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/index)、[Azure Container Instances](https://docs.microsoft.com/azure/container-instances/index)、または [Azure Stack にデプロイされている](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy?view=azs-1910) Kubernetes クラスターなど、Azure 内の Docker ホスティング サービスを使用することもできます。 ホスト コンピューターは、次のハードウェア要件を満たしている必要があります。
+1. まず、ホスト コンピューターに Docker をインストールします。 このガイドでは、ローカル コンピューターをホストとして使用する方法について説明します。 Azure で Docker ホスティング サービスを使用する場合は、「[サンプルのラベル付けツールのデプロイ](../deploy-label-tool.md)」攻略ガイドを参照してください。 
+
+   ホスト コンピューターは、次のハードウェア要件を満たしている必要があります。
 
     | コンテナー | 最小値 | 推奨|
     |:--|:--|:--|
     |サンプル ラベル付けツール|2 コア、4 GB メモリ|4 コア、8 GB メモリ|
-    
+
+   お使いのオペレーティング システムに該当する手順に従って、マシンに Docker をインストールします。 
+   * [Windows](https://docs.docker.com/docker-for-windows/)
+   * [macOS](https://docs.docker.com/docker-for-mac/)
+   * [Linux](https://docs.docker.com/install/)。
+
 1. `docker pull` コマンドを使用して、サンプル ラベル付けツールのコンテナーを取得します。
     ```
     docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
@@ -116,17 +123,23 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="apply-labels-to-text"></a>ラベルをテキストに適用する
 
-次に、ラベルを作成し、モデルに認識させるテキスト要素に適用します。
+次に、タグ (ラベル) を作成し、モデルに認識させるテキスト要素に適用します。
 
-1. 最初に、タグ エディター ペインを使用して、識別するタグ (ラベル) を作成します。
+1. まず、タグ エディター ペインを使用して、識別するタグを作成します。
+  1. **+** をクリックして、新しいタグを作成します。
+  1. タグ名を入力します。
+  1. Enter キーを押して、タグを保存します。
 1. メインのエディターで、クリックしたままドラッグすることで、強調表示されたテキスト要素から 1 つまたは複数の単語を選択します。
+1. 適用するタグをクリックするか、対応するキーボード キーを押します。 数字キーは、最初の 10 個のタグのホットキーとして割り当てられます。 タグの順序は、タグ エディター ペインの上矢印と下矢印のアイコンを使用して変更できます。
+    > [!Tip]
+    > フォームにラベルを付けるときは、次のヒントに留意してください。
+    > * 適用できるタグは、選択したテキスト要素ごとに 1 つのみです。
+    > * 各タグは、1 ページにつき 1 回のみ適用できます。 同じフォームに同じ値が複数回出現する場合は、インスタンスごとに異なるタグを作成します。 たとえば、"invoice # 1"、"invoice # 2" などとします。
+    > * タグは複数のページにまたがることはできません。
+    > * フォームに表示されるラベル値は、2 つの異なるタグを使用して 2 つの部分に分割しないでください。 たとえば、アドレス フィールドが複数の行にまたがる場合でも、1 つのタグを使用してラベルを付ける必要があります。
+    > * タグが付けられたフィールドには値のみを含めます。キーは含めないでください。
+    > * テーブル データは自動的に検出され、最終的な出力 JSON ファイルに表示されます。 ただし、モデルが一部のテーブル データを検出できない場合は、これらのフィールドに手動でタグを付けることもできます。 テーブル内のセルごとに異なるラベルを使用してタグ付けします。 さまざまな行数を含むテーブルがフォームにある場合は、できるだけ大きなテーブルを含む 1 つ以上のフォームにタグを付けてください。
 
-    > [!NOTE]
-    > 現在、複数のページにまたがるテキストを選択することはできません。
-1. 適用するタグをクリックするか、対応するキーボード キーを押します。 選択した各テキスト要素には 1 つのタグのみを適用できます。各タグは 1 ページにつき 1 回のみ適用できます。
-
-    > [!TIP]
-    > 数字キーは、最初の 10 個のタグのホットキーとして割り当てられます。 タグの順序は、タグ エディター ペインの上矢印と下矢印のアイコンを使用して変更できます。
 
 上記の手順に従って 5 つのフォームにラベルを付けてから、次の手順に進みます。
 

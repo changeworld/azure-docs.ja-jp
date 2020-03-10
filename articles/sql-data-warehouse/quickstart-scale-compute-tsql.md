@@ -1,6 +1,6 @@
 ---
-title: 'クイック スタート:コンピューティングをスケーリングする - T-SQL '
-description: T-SQL と SQL Server Management Studio (SSMS) を使用して、Azure SQL Data Warehouse のコンピューティングをスケーリングします。 コンピューティングをスケールアウトしてパフォーマンスを向上させます。または、コンピューティングをスケールバックしてコストを削減します。
+title: Azure Synapse Analytics のコンピューティングをスケーリングする - T-SQL
+description: T-SQL と SQL Server Management Studio (SSMS) を使用して、Azure Synapse Analytics のコンピューティングをスケーリングします。 コンピューティングをスケールアウトしてパフォーマンスを向上させます。または、コンピューティングをスケールバックしてコストを削減します。
 services: sql-data-warehouse
 author: Antvgski
 manager: craigg
@@ -10,17 +10,17 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 6729552262d7bea619948ddba406418b80cf69dc
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: a6d47a41375c00b9bdad5079f8e1f11cf369120a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685946"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200417"
 ---
-# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>クイック スタート:T-SQL を使用して Azure SQL Data Warehouse のコンピューティングをスケーリングする
+# <a name="quickstart-scale-compute-in-azure-synapse-analytics-using-t-sql"></a>クイック スタート:T-SQL を使用して Azure Synapse Analytics のコンピューティングをスケーリングする
 
-T-SQL と SQL Server Management Studio (SSMS) を使用して、Azure SQL Data Warehouse のコンピューティングをスケーリングします。 [コンピューティングをスケールアウト](sql-data-warehouse-manage-compute-overview.md)してパフォーマンスを向上させます。または、コンピューティングをスケールバックしてコストを削減します。 
+T-SQL と SQL Server Management Studio (SSMS) を使用して、Azure Synapse Analytics (旧称 SQL DW) のコンピューティングをスケーリングします。 [コンピューティングをスケールアウト](sql-data-warehouse-manage-compute-overview.md)してパフォーマンスを向上させます。または、コンピューティングをスケールバックしてコストを削減します。 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
@@ -43,25 +43,25 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    | 設定       | 推奨値 | 説明 | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | サーバーの種類 | データベース エンジン | この値は必須です |
-   | サーバー名 | 完全修飾サーバー名 | たとえば、**mynewserver-20171113.database.windows.net** です。 |
+   | サーバー名 | 完全修飾サーバー名 | 例: **mySampleDataWarehouseservername.database.windows.net** |
    | 認証 | SQL Server 認証 | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
    | ログイン | サーバー管理者アカウント | サーバーの作成時に指定したアカウントです。 |
-   | パスワード | サーバー管理者アカウントのパスワード | これは、サーバーの作成時に指定したパスワードです。 |
+   | Password | サーバー管理者アカウントのパスワード | サーバーの作成時に指定したパスワードです。 |
 
-    ![[サーバーに接続]](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
+    ![サーバーへの接続](media/quickstart-scale-compute-tsql/connect-to-server.png)
 
-4. **[接続]** をクリックします。 SSMS でオブジェクト エクスプローラー ウィンドウが開きます。 
+3. **[Connect]** をクリックします。 SSMS で [オブジェクト エクスプローラー] ウィンドウが開きます。
 
-5. オブジェクト エクスプローラーで、 **[データベース]** を展開します。 **mySampleDatabase** を展開して、新しいデータベースのオブジェクトを表示します。
+4. オブジェクト エクスプローラーで、 **[データベース]** を展開します。 **mySampleDataWarehouse** を展開して、新しいデータベースのオブジェクトを表示します。
 
-    ![データベース オブジェクト](media/create-data-warehouse-portal/connected.png) 
+    ![データベース オブジェクト](media/quickstart-scale-compute-tsql/connected.png)
 
 ## <a name="view-service-objective"></a>サービス目標の表示
 サービス目標設定には、データ ウェアハウスの Data Warehouse ユニットの数が含まれています。 
 
 データ ウェアハウスの現在の Data Warehouse ユニットを表示するには:
 
-1. **mynewserver-20171113.database.windows.net** への接続で、**System Databases** を展開します。
+1. **mySampleDataWarehouseservername.database.windows.net** への接続で、**System Databases** を展開します。
 2. **master** を右クリックし、 **[新しいクエリ]** を選択します。 新しいクエリ ウィンドウが開きます。
 3. 次のクエリを実行して、sys.database_service_objectives 動的管理ビューから選択します。 
 
@@ -80,11 +80,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 4. 次の結果は、**mySampleDataWarehouse** のサービス目標が DW400 であることを示しています。 
 
-    ![現在の DWU の表示](media/quickstart-scale-compute-tsql/view-current-dwu.png)
-
+    ![iew-current-dwu](media/quickstart-scale-compute-tsql/view-current-dwu.png)
 
 ## <a name="scale-compute"></a>コンピューティングのスケーリング
-SQL Data Warehouse では、Data Warehouse ユニットを調整してコンピューティング リソースを増減させることができます。 [ポータルでの作成と接続](create-data-warehouse-portal.md)では、**mySampleDataWarehouse** を作成し、それを 400 DWU で初期化しました。 次の手順では、**mySampleDataWarehouse** の DWU を調整します。
+Azure Synapse では、Data Warehouse ユニットを調整してコンピューティング リソースを増減させることができます。 [ポータルでの作成と接続](create-data-warehouse-portal.md)では、**mySampleDataWarehouse** を作成し、それを 400 DWU で初期化しました。 次の手順では、**mySampleDataWarehouse** の DWU を調整します。
 
 Data Warehouse ユニットを変更するには:
 
@@ -93,8 +92,7 @@ Data Warehouse ユニットを変更するには:
 
     ```Sql
     ALTER DATABASE mySampleDataWarehouse
-    MODIFY (SERVICE_OBJECTIVE = 'DW300c')
-    ;
+    MODIFY (SERVICE_OBJECTIVE = 'DW300c');
     ```
 
 ## <a name="monitor-scale-change-request"></a>スケール変更要求の監視
@@ -113,7 +111,7 @@ Data Warehouse ユニットを変更するには:
         WHERE 
             1=1
             AND resource_type_desc = 'Database'
-            AND major_resource_id = 'MySampleDataWarehouse'
+            AND major_resource_id = 'mySampleDataWarehouse'
             AND operation = 'ALTER DATABASE'
         ORDER BY
             start_time DESC
@@ -134,7 +132,7 @@ Data Warehouse ユニットを変更するには:
 
 ## <a name="check-operation-status"></a>操作の状態の確認
 
-SQL Data Warehouse に対するさまざまな管理操作に関する情報を返すには、[sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) DMV で次のクエリを実行します。 たとえば、操作と操作の状態 (IN_PROGRESS または COMPLETED) が返されます。
+Azure Synapse に対するさまざまな管理操作に関する情報を返すには、[sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) DMV で次のクエリを実行します。 たとえば、操作と操作の状態 (IN_PROGRESS または COMPLETED) が返されます。
 
 ```sql
 SELECT *
@@ -143,12 +141,12 @@ FROM
 WHERE
     resource_type_desc = 'Database'
 AND 
-    major_resource_id = 'MySampleDataWarehouse'
+    major_resource_id = 'mySampleDataWarehouse'
 ```
 
 
-## <a name="next-steps"></a>次の手順
-ここでは、データ ウェアハウスの計算をスケーリングする方法について学習しました。 Azure SQL Data Warehouse の詳細については、データの読み込みに関するチュートリアルを参照してください。
+## <a name="next-steps"></a>次のステップ
+ここでは、データ ウェアハウスの計算をスケーリングする方法について学習しました。 Azure Synapse に関する理解をさらに深めるために、データの読み込みに関するチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
->[SQL Data Warehouse にデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)
+>[Azure Synapse Analytics にデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)

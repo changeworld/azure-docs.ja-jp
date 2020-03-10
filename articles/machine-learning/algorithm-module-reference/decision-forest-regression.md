@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 3c412937e59927a9f3f3218b0da3382f0b67c230
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 6d326b3cb5a964e43ce77ee459533a4271d5ed73
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152382"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919942"
 ---
 # <a name="decision-forest-regression-module"></a>デシジョン フォレスト回帰モジュール
 
@@ -59,6 +59,8 @@ ms.locfileid: "77152382"
     - **[Single Parameter]\(単一パラメーター\)**
 
       モデルの構成方法がわかっている場合、特定の値のセットを引数として渡すことができます。 これらの値は、実験によって得られるか、またはガイダンスとして得られます。
+
+    - **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターはわからないが、パラメーター スイープを実行したい場合は、このオプションを選択します。 反復する値の範囲を選択します。[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)では、指定した設定の可能なすべての組み合わせに対して反復処理を行い、最適な結果を生成するハイパーパラメーターを決定します。 
 
 
 

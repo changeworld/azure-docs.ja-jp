@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 02/03/2020
+ms.date: 03/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 922e8a71a22db975685cb82bbd51a125c619ccf2
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 17d391a7e6b8ef0558fb73afe363cd96deb60a7d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989496"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78262528"
 ---
 ### <a name="regions"></a>利用可能なリージョン
 
@@ -30,6 +30,9 @@ Azure Bastion を使用して VM に接続するときは、接続先となる A
 ### <a name="rdpssh"></a>RDP または SSH クライアントは必要ですか?
 
 ご使用の Azure portal 内でお客様の Azure 仮想マシンに RDP または SSH アクセスするために RDP または SSH クライアントは必要ありません。 [Azure portal](https://portal.azure.com) を使用して、ブラウザー内で仮想マシンに直接 RDP または SSH アクセスすることができます。
+
+### <a name="rdscal"></a>Azure Bastion には、Azure でホストされる VM を管理する目的で RDS CAL が必要ですか?
+いいえ、管理の目的にのみ使用する場合、Azure Bastion による Windows Server VM へのアクセスに [RDS CAL](https://www.microsoft.com/en-us/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) は必要ありません。
 
 ### <a name="agent"></a>Azure 仮想マシン内で実行するエージェントは必要ですか?
 

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 11/05/2019
+ms.date: 02/27/2020
 ms.author: sngun
-ms.openlocfilehash: 6af5f4c3ab028f8f0c6945eba86ec79dd6027680
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 1f2051addfa1266b754d230c3804834c63f89002
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587466"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274069"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>チュートリアル:Azure Cosmos DB で .NET SDK を使用して ASP.NET Core MVC Web アプリケーションを開発する
 
@@ -171,6 +171,38 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 これらの手順が完了したら、Visual Studio に表示されている *cshtml* ドキュメントをすべて閉じてください。これらのビューは後で使用します。
 
+### <a name="initialize-services"></a>サービスを宣言して初期化する
+
+最初に、Azure Cosmos DB に接続して使用するためのロジックを含むクラスを追加します。 このチュートリアルでは、このロジックを `CosmosDBService` というクラス、および `ICosmosDBService` というインターフェイス内にカプセル化します。 このサービスによって、CRUD 操作が実行されます。 また、不完全な項目の一覧表示、項目の作成、編集、削除などのフィード読み取り操作も実行されます。
+
+1. **ソリューション エクスプローラー**で、プロジェクトを右クリックして **[追加]**  >  **[新しいフォルダー]** を選択します。 フォルダーに *Services* という名前を付けます。
+
+1. **Services** フォルダー右クリックし、 **[追加]**  >  **[クラス]** を選択します。 新しいクラスに *CosmosDBService* という名前を付け、 **[追加]** を選択します。
+
+1. *CosmosDBService.cs* の内容を次のコードに置き換えます。
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
+
+1. **Services** フォルダー右クリックし、 **[追加]**  >  **[クラス]** を選択します。 新しいクラスに *ICosmosDBService* という名前を付け、 **[追加]** を選択します。
+
+1. 次のコードを *ICosmosDBService* クラスに追加します。
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
+
+1. 対象のソリューションの *Startup.cs* ファイルを開き、`ConfigureServices` メソッドを次の内容で置き換えます。
+
+    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="ConfigureServices":::
+
+    この手順のコードでは、構成に基づいて、[ASP.NET Core の依存関係挿入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)を通じて挿入されるシングルトン インスタンスとして、クライアントを初期化します。
+
+1. 同じファイル内で、次のメソッド **InitializeCosmosClientInstanceAsync** を追加します。このメソッドにより、構成が読み取られ、クライアントが初期化されます。
+
+   [!code-csharp[](~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs?name=InitializeCosmosClientInstanceAsync)]
+
+1. 次のスニペットに示すように、プロジェクトの *appsettings.json* ファイルで構成を定義します。
+
+   :::code language="json" source="~/samples-cosmosdb-dotnet-core-web-app/src/appsettings.json":::
+
 ### <a name="add-a-controller"></a>コントローラーを追加する
 
 1. **ソリューション エクスプローラー**で、**Controllers** フォルダーを右クリックし、 **[追加]**  >  **[コントローラー]** を選択します。
@@ -189,66 +221,19 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 メソッド パラメーターの **Bind** 属性も使用して、オーバーポスティング攻撃から保護します。 詳細については、「[チュートリアル:ASP.NET MVC の Entity Framework を使用して CRUD 機能を実装する][Basic CRUD Operations in ASP.NET MVC]」を参照してください。
 
-## <a name="connect-to-cosmosdb"></a>手順 5: Azure Cosmos DB への接続
-
-MVC の標準的な構成要素を準備できたので、次は Azure Cosmos DB に接続するコードを追加し、CRUD 操作を実行しましょう。
-
-### <a name="perform-crud-operations"></a>データに対して CRUD 操作を実行する
-
-最初に、Azure Cosmos DB に接続して使用するためのロジックを含むクラスを追加します。 このチュートリアルでは、このロジックを `CosmosDBService` というクラス、および `ICosmosDBService` というインターフェイス内にカプセル化します。 このサービスによって、CRUD 操作が実行されます。 また、不完全な項目の一覧表示、項目の作成、編集、削除などのフィード読み取り操作も実行されます。
-
-1. **ソリューション エクスプローラー**で、プロジェクトを右クリックして **[追加]**  >  **[新しいフォルダー]** を選択します。 フォルダーに *Services* という名前を付けます。
-
-1. **Services** フォルダー右クリックし、 **[追加]**  >  **[クラス]** を選択します。 新しいクラスに *CosmosDBService* という名前を付け、 **[追加]** を選択します。
-
-1. *CosmosDBService.cs* の内容を次のコードに置き換えます。
-
-   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
-
-1. 前の 2 つの手順を繰り返しますが、今回は *ICosmosDBService* という名前を使用し、次のコードを使用します。
-
-   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
-
-1. **ConfigureServices** ハンドラーに、次の行を追加します。
-
-    ```csharp
-    services.AddSingleton<ICosmosDbService>(InitializeCosmosClientInstanceAsync(Configuration.GetSection("CosmosDb")).GetAwaiter().GetResult());
-    ```
-
-    前の手順のコードは、コンストラクターの一部として `CosmosClient` を受け取ります。 ASP.NET Core パイプラインに従って、プロジェクトの *Startup.cs* ファイルにアクセスする必要があります。 この手順のコードでは、構成に基づいて、[ASP.NET Core の依存関係挿入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)を通じて挿入されるシングルトン インスタンスとして、クライアントを初期化します。
-
-1. 同じファイル内で、次のメソッド **InitializeCosmosClientInstanceAsync** を追加します。このメソッドにより、構成が読み取られ、クライアントが初期化されます。
-
-    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="InitializeCosmosClientInstanceAsync":::
-
-1. この構成は、プロジェクトの *appsettings.json* ファイル内で定義します。 ファイルを開き、**CosmosDb** という名前のセクションを追加します。
-
-   ```csharp
-     "CosmosDb": {
-        "Account": "<enter the URI from the Keys blade of the Azure Portal>",
-        "Key": "<enter the PRIMARY KEY, or the SECONDARY KEY, from the Keys blade of the Azure  Portal>",
-        "DatabaseName": "Tasks",
-        "ContainerName": "Items"
-      }
-   ```
-
-アプリケーションを実行すると、ASP.NET Core のパイプラインによって **CosmosDbService** がインスタンス化され、単一のインスタンスがシングルトンとして保持されます。 **ItemController** によってクライアント側の要求が処理されると、この単一のインスタンスが受信され、これが CRUD 操作に使用されます。
-
-このプロジェクトをビルドして実行すると、次のように表示されます。
-
-![このデータベース チュートリアルで作成された、ToDo リスト Web アプリケーションのスクリーンショット](./media/sql-api-dotnet-application/build-and-run-the-project-now.png)
-
-## <a name="run-the-application"></a>手順 6: ローカルでアプリケーションを実行する
+## <a name="run-the-application"></a>手順 5: ローカルでアプリケーションを実行する
 
 ローカル コンピューターでアプリケーションをテストするには、次の手順を実行します。
 
 1. Visual Studio で F5 キーを押して、デバッグ モードでアプリケーションをビルドします。 すると、アプリケーションがビルドされてブラウザーが起動し、先ほど見た空のグリッド ページが表示されます。
 
    ![このチュートリアルで作成された、ToDo リスト Web アプリケーションのスクリーンショット](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png)
+   
+   アプリケーションでホーム ページを開くようにするには、URL に `/Item` を追加します。
 
 1. **[Create New]** リンクをクリックし、 **[Name]** フィールドと **[Description]** フィールドに値を追加します。 **[Completed]** チェック ボックスはオフのままにします。 これを選択すると、アプリによって新しい項目が完了状態で追加されます。 この項目は、初期の一覧に表示されなくなります。
 
-1. **作成** を選択します。 アプリによって **[Index]** ビューにリダイレクトされ、追加した項目が一覧に表示されます。 **To-Do** リストに他にもいくつか項目を追加してみてください。
+1. **［作成］** を選択します アプリによって **[Index]** ビューにリダイレクトされ、追加した項目が一覧に表示されます。 **To-Do** リストに他にもいくつか項目を追加してみてください。
 
     ![[Index] ビューのスクリーンショット](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png)
   
@@ -260,7 +245,7 @@ MVC の標準的な構成要素を準備できたので、次は Azure Cosmos DB
 
 1. アプリケーションのテストが完了したら、Ctrl キーを押しながら F5 キーを押してアプリケーションのデバッグを中止します。 これで、アプリケーションをデプロイする準備が整いました。
 
-## <a name="deploy-the-application-to-azure"></a>手順 7: アプリケーションの配置
+## <a name="deploy-the-application-to-azure"></a>手順 6: アプリケーションの配置
 
 以上で、Azure Cosmos DB と連携するアプリケーションが完成しました。今度は、この Web アプリを Azure App Service にデプロイします。  
 

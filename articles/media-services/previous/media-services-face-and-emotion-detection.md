@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: b6cbca454d1463ffe6e73d7021ea563e7121b7be
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 2d746167f993438e5fce467365844df2078c08a6
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084621"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919313"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Azure Media Analytics での顔と感情の検出
+
+> [!NOTE]
+> **Azure Media Face Detector** メディア プロセッサは廃止予定です。 廃止日については、[レガシ コンポーネント](legacy-components.md)に関するトピックをご参照ください。
 
 ## <a name="overview"></a>概要
 
@@ -80,7 +83,7 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
 #### <a name="attribute-descriptions"></a>属性の説明
 | 属性名 | 説明 |
 | --- | --- |
-| Mode |Fast: 処理速度は速くなりますが、精度が低下します (既定値)。|
+| モード |Fast: 処理速度は速くなりますが、精度が低下します (既定値)。|
 
 ### <a name="json-output"></a>JSON 出力
 次の JSON 出力例は途中までです。
@@ -155,7 +158,7 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
 #### <a name="attribute-descriptions"></a>属性の説明
 | 属性名 | 説明 |
 | --- | --- |
-| Mode |Faces:顔検出のみ。<br/>PerFaceEmotion:検出された顔ごとに、感情を個別に返します。<br/>AggregateEmotion:フレーム内のすべての顔の平均的感情値を返します。 |
+| モード |Faces:顔検出のみ。<br/>PerFaceEmotion:検出された顔ごとに、感情を個別に返します。<br/>AggregateEmotion:フレーム内のすべての顔の平均的感情値を返します。 |
 | AggregateEmotionWindowMs |AggregateEmotion モードが選択されている場合に使用します。 各集計結果を生成するために使用するビデオの長さを指定します (ミリ秒単位)。 |
 | AggregateEmotionIntervalMs |AggregateEmotion モードが選択されている場合に使用します。 集計結果を生成する頻度を指定します。 |
 

@@ -1,18 +1,14 @@
 ---
 title: Azure Application Insights から Power BI にエクスポートする | Microsoft Docs
 description: Power BI で Analytics クエリを表示できます。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 08/10/2018
-ms.openlocfilehash: 3ec20f82bc12b60e5b88a02bb92a4a0ada4dcae7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0e17ca6e07ec76f0a7a1cb04f7aa13619fb9970c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73668004"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663999"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Application Insights のデータを Power BI に入力する
 [Power BI](https://www.powerbi.com/) は、データを分析し、洞察を共有できる一連のビジネス ツールです。 あらゆるデバイスで機能豊富なダッシュボードを利用できます。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) の Analytics クエリなど、さまざまなソースのデータを組み合わせることができます。
@@ -123,7 +119,7 @@ Analytics クエリから取得するデータセットを小さくすると要�
 
 ### <a name="get-the-adapter"></a>アダプターの入手
 1. [Power BI](https://app.powerbi.com/) にサインインします。
-2. **[データを取得]** ![左下隅の GetData アイコンのスクリーンショット](./media/export-power-bi/001.png)、 **[サービス]** の順に開きます。
+2. **[データの取得]** (![左下隅の GetData アイコンのスクリーンショット](./media/export-power-bi/001.png))、 **[サービス]** の順に開きます。
 
     ![Application Insights データ ソースから取得する手順のスクリーンショット](./media/export-power-bi/002.png)
 
@@ -148,7 +144,7 @@ Application Insights のグラフを他のソースのグラフや Analytics ク
 
 最初のインポート後は、ダッシュボードとレポートが毎日更新されます。 データセットの更新スケジュールを管理できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Power BI - 詳細](https://www.powerbi.com/learning/)
 * [Analytics のチュートリアル](../../azure-monitor/log-query/get-started-portal.md)
 

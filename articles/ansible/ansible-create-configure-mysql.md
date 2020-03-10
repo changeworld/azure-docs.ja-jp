@@ -4,12 +4,12 @@ description: Ansible を使用して Azure Database for MySQL サーバーを作
 keywords: ansible、azure、devops、bash、プレイブック、mysql、データベース
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: f068b3022c94466a20b524240dc293392b1f42ff
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 9cd574417733518b993bb242c2c168aba338e34a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603112"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247869"
 ---
 # <a name="tutorial-configure-databases-in-azure-database-for-mysql-using-ansible"></a>チュートリアル:Ansible を使用して Azure Database for MySQL のデータベースを構成する
 
@@ -157,9 +157,13 @@ ansible-playbook mysql_firewall.yml
 
 このセクションでは、以前に作成したサーバーへ接続するために Azure Cloud Shell を使用します。
 
-1. 次のコードの **[使ってみる]** ボタンを選択します。
+1. 下のボタンを選択して shell.azure.com を開きます。
 
-    ```azurecli-interactive
+   [![埋め込みの起動](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell を起動する")](https://shell.azure.com)
+
+1. 次のコードを入力します。
+
+    ```sql
     mysql -h mysqlserveransible.mysql.database.azure.com -u mysqladmin@mysqlserveransible -p
     ```
 
@@ -171,7 +175,7 @@ ansible-playbook mysql_firewall.yml
     
     すべて正常に実行されると、次の結果のような出力が表示されます。
     
-    ```
+    ```output
     demo@Azure:~$ mysql -h mysqlserveransible.mysql.database.azure.com -u mysqladmin@mysqlserveransible -p
     Enter password:
     Welcome to the MySQL monitor.  Commands end with ; or \g.

@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: このクイックスタートでは、Azure Dev Spaces と Visual Studio Code を使用し、Azure Kubernetes Service 上で Node.js アプリケーションのデバッグと迅速な反復型開発を行う方法について説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: edece2d2100ce24d244cfd70936d850e1cf2f66e
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 74063e03e8298e388efd6888fc05bcbbc9aefa4b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602670"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245066"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-nodejs---azure-dev-spaces"></a>クイック スタート:Visual Studio Code と Node.js を使用して Kubernetes 上でデバッグと反復処理を行う - Azure Dev Spaces
 
@@ -30,7 +30,7 @@ ms.locfileid: "77602670"
 
 [サポートされているリージョン][supported-regions]で AKS クラスターを作成する必要があります。 次のコマンドを使用すると、*MyResourceGroup* というリソース グループと *MyAKS* という AKS クラスターが作成されます。
 
-```cmd
+```azurecli
 az group create --name MyResourceGroup --location eastus
 az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 ```
@@ -42,9 +42,11 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 > [!NOTE]
 > この `use-dev-spaces` コマンドでは、Azure Dev Spaces CLI がまだインストールされていない場合にはこれもインストールされます。 Azure Dev Spaces CLI を Azure Cloud Shell にインストールすることはできません。
 
-```cmd
-$ az aks use-dev-spaces -g MyResourceGroup -n MyAKS
+```azurecli
+az aks use-dev-spaces -g MyResourceGroup -n MyAKS
+```
 
+```output
 'An Azure Dev Spaces Controller' will be created that targets resource 'MyAKS' in resource group 'MyResourceGroup'. Continue? (y/N): y
 
 Creating and selecting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAKS' in resource group 'MyResourceGroup'...2m 24s
@@ -155,7 +157,7 @@ Visual Studio Code でコマンド パレットを開くには、 **[表示]** �
 
 ## <a name="clean-up-your-azure-resources"></a>Azure リソースをクリーンアップする
 
-```cmd
+```azurecli
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 

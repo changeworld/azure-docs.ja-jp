@@ -4,12 +4,12 @@ description: このチュートリアルでは、Visual Studio Team Services ま
 keywords: Jenkins, Azure, 開発,仮想マシン, CICD
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 380d547aaee68ad40ae12a4836826d2addae3a18
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: cae28b293a6217996b44c839dc8836ec940c3155
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77606379"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192610"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>チュートリアル:Jenkins と Azure DevOps Services を使用して Azure の Linux 仮想マシンにアプリをデプロイする
 
@@ -96,9 +96,9 @@ Linux 仮想マシン (VM) を含む[配置グループ](https://docs.microsoft.
 5. **[Trigger release in TFS/Team Services]\(TFS/Team Services でリリースをトリガーする)** を選択します。 Azure DevOps Services 組織の URI を入力します (例: **https://{your-organization-name}.visualstudio.com**)。
 6. **プロジェクト**の名前を入力します。
 7. リリース パイプラインの名前を選択します (このリリース パイプラインは、後で Azure DevOps Services で作成します)。
-8. Azure DevOps Services 環境または Team Foundation Server 環境に接続するための資格情報を選択します。
+8. Azure DevOps Services 環境または Azure DevOps Server 環境に接続するための資格情報を選択します。
    - Azure DevOps Services を使用している場合は、 **[ユーザー名]** を空白のままにしておきます。 
-   - オンプレミス版の Team Foundation Server を使用している場合は、ユーザー名とパスワードを入力します。    
+   - オンプレミス版の Azure DevOps Server を使用している場合は、ユーザー名とパスワードを入力します。    
    ![Jenkins のビルド後のアクションを構成する](media/tutorial-build-deploy-jenkins/trigger-release-from-jenkins.png)
 5. Jenkins プロジェクトを保存します。
 

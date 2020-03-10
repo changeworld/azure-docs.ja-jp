@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: allensu
-ms.openlocfilehash: e316da12345c0bf1ea3682dadb1a7a65f250747b
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: f21b440ee0e2c53d9824300e85b683629c1575da
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191100"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252544"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Private Link サービスを作成する
 
@@ -29,21 +29,22 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 最初に、仮想ネットワークを作成します。 次に、Private Link サービスで使用する内部ロード バランサーを作成します。
 
-### <a name="create-the-virtual-network"></a>仮想ネットワークの作成
+## <a name="virtual-network-and-parameters"></a>仮想ネットワークとパラメーター
 
 このセクションでは、仮想ネットワークを作成します。 また、ご自分の Private Link サービスにアクセスするロード バランサーをホストするサブネットを作成します。
 
-1. ポータルの画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[仮想ネットワーク]** の順に選択します。
+このセクションの手順では、各パラメーターを次のように置き換える必要があります。
 
-1. **[仮想ネットワークの作成]** ペインで、これらの値を入力または選択します。
+| パラメーター                   | Value                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupLB |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | 米国東部 2      |
+| **\<IPv4-address-space>**   | 10.3.0.0\16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.3.0.0\24          |
 
-   - **Name**:「**myVNet**」と入力します。
-   - **ResourceGroup**: **[新規作成]** を選択して「**myResourceGroupLB**」と入力し、 **[OK]** を選択します。
-   - **[サブネット]**  >  **[名前]** : 「**myBackendSubnet**」と入力します。
-
-1. **作成** を選択します。
-
-   ![仮想ネットワークの作成](../load-balancer/media/tutorial-load-balancer-basic-internal-portal/2-load-balancer-virtual-network.png)
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-a-standard-load-balancer"></a>Standard Load Balancer の作成
 
@@ -57,8 +58,8 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | ---                     | ---                                                |
     | **サブスクリプション**               | サブスクリプションを選択します。    |
     | **リソース グループ**         | ボックスから **[myResourceGroupLB]** を選択します。|
-    | **Name**                   | 「**myLoadBalancer**」と入力します。                                   |
-    | **[リージョン]**         | **[米国東部 2]** を選択します。                                        |
+    | **名前**                   | 「**myLoadBalancer**」と入力します。                                   |
+    | **リージョン**         | **[米国東部 2]** を選択します。                                        |
     | **Type**          | **[内部]** を選択します。                                        |
     | **SKU**           | **[Standard]** を選択します。                          |
     | **Virtual Network**           | **[myVNet]** を選択します。                          |
@@ -146,8 +147,8 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | **サブスクリプション**      | サブスクリプションを選択します。                                                     |
     | **リソース グループ**    | **[myResourceGroupLB]** を選択します。                                                    |
     | インスタンスの詳細: |                                                                              |
-    | **Name**              | 「**myPrivateLinkService**」と入力します。 |
-    | **[リージョン]**            | **[米国東部 2]** を選択します。                                                        |
+    | **名前**              | 「**myPrivateLinkService**」と入力します。 |
+    | **リージョン**            | **[米国東部 2]** を選択します。                                                        |
 
 1. **[次へ: 送信設定]** を選択します。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 482154a37334b056719a18355f87b467d4fe95c7
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 2aeb2ab4cfb4ed5e8652638aaced320cc7119d3e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604241"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919483"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Security Center でのテナント間の管理
 
@@ -50,7 +50,7 @@ ms.locfileid: "77604241"
 - **推奨事項の修復**:さまざまなテナントからの多くのリソースの[推奨事項](security-center-recommendations.md)を一度に監視して修復します。 そして、全テナントにわたって最も高いリスクを示す脆弱性にすぐに対処できます。
 - **アラートの管理**:さまざまなテナントにわたって[アラート](security-center-alerts-overview.md)を検出します。 実行可能な[修復の手順](security-center-managing-and-responding-alerts.md)に準拠していないリソースに対してアクションを実行します。
 
-- **高度なクラウド防御機能などの管理**:[Just-in-Time (JIT) VM アクセス](security-center-just-in-time.md)、[アダプティブ ネットワークのセキュリティ強化機能](security-center-adaptive-network-hardening.md)、[適応型アプリケーション制御](security-center-adaptive-application.md)など、さまざまな脅威検出サービスや保護サービスを管理します。
+- **高度なクラウド防御機能などの管理**:[Just-in-Time (JIT) VM アクセス](security-center-just-in-time.md)、[アダプティブ ネットワークのセキュリティ強化機能](security-center-adaptive-network-hardening.md)、[適応型アプリケーション制御](security-center-adaptive-application.md)などのさまざまな脅威の防止サービスを管理します。
  
 ## <a name="next-steps"></a>次のステップ
 この記事では、Security Center でのテナント間の管理のしくみについて説明します。 セキュリティ センターの詳細については、次を参照してください。

@@ -1,19 +1,19 @@
 ---
 title: Azure HDInsight での対話型クエリとは
 description: Azure HDInsight の対話型クエリ (別名 Apache Hive LLAP) の紹介
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: overview
-ms.date: 09/17/2019
-ms.openlocfilehash: f03797a8c7df1609a32f934bc090c7adc899aa9a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.custom: hdinsightactive
+ms.date: 03/03/2020
+ms.openlocfilehash: e133e08e333cb478269a93cce963566e195d6949
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198924"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271949"
 ---
 # <a name="what-is-interactive-query-in-azure-hdinsight"></a>Azure HDInsight での対話型クエリとは
 
@@ -36,35 +36,19 @@ HDInsight クラスターの作成について詳しくは、[HDInsight 内で�
 
 Hive クエリを実行するには、次のオプションがあります。
 
-* Microsoft Power BI を使用する
-
-    [Azure HDInsight 上の Power BI を使用した対話型クエリの Apache Hive データの視覚化](./apache-hadoop-connect-hive-power-bi-directquery.md)に関する記事をご覧ください。[Azure HDInsight 上の Power BI を使用したビッグ データの視覚化](../hadoop/apache-hadoop-connect-hive-power-bi.md)に関する記事をご覧ください。
-
-* Visual Studio を使用する
-
-    [Data Lake Tools for Visual Studio を使用した Azure HDInsight への接続と Apache Hive クエリの実行](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-apache-hive-queries)に関するページをご覧ください。
-
-* Visual Studio Code の使用
-
-    [Apache Hive、LLAP、pySpark に Visual Studio Code を使用する](../hdinsight-for-vscode.md)方法に関する記事を参照してください。
-* Apache Ambari Hive ビューを使用して Apache Hive を実行する。
-  
-    [Azure HDInsight 上の Apache Hadoop で Apache Hive ビューを使用する](../hadoop/apache-hadoop-use-hive-ambari-view.md)方法に関する記事をご覧ください。
-
-* Beeline を使用して Apache Hive を実行する。
-  
-    [Beeline による HDInsight 上の Apache Hive と Apache Hadoop の使用](../hadoop/apache-hadoop-use-hive-beeline.md)に関する記事をご覧ください。
-  
-    Beeline はヘッド ノードまたは空のエッジ ノードから使用できます。 空のエッジ ノードから Beeline を使用することをお勧めします。 空のエッジ ノードを使って HDInsight クラスターを作成する方法の詳細については、「[HDInsight での空のエッジ ノードの使用](../hdinsight-apps-use-edge-node.md)」を参照してください。
-* Hive ODBC を使用して Apache Hive を実行する。
-  
-    [Microsoft Hive ODBC ドライバーを使用した Excel から Apache Hadoop への接続](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)に関するページをご覧ください。
+|Method |説明 |
+|---|---|
+|Microsoft Power BI|[Azure HDInsight 上の Power BI を使用した対話型クエリの Apache Hive データの視覚化](./apache-hadoop-connect-hive-power-bi-directquery.md)に関する記事および [Azure HDInsight 上の Power BI を使用したビッグ データの視覚化](../hadoop/apache-hadoop-connect-hive-power-bi.md)に関する記事をご覧ください。|
+|Visual Studio|[Data Lake Tools for Visual Studio を使用した Azure HDInsight への接続と Apache Hive クエリの実行](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-apache-hive-queries)に関するページをご覧ください。|
+|Visual Studio Code|[Apache Hive、LLAP、pySpark に Visual Studio Code を使用する](../hdinsight-for-vscode.md)方法に関する記事を参照してください。|
+|Apache Ambari Hive ビュー|[Azure HDInsight 上の Apache Hadoop で Apache Hive ビューを使用する](../hadoop/apache-hadoop-use-hive-ambari-view.md)方法に関する記事をご覧ください。 HDInsight 4.0 では、Hive ビューは使用できません。|
+|Apache Beeline|[Beeline による HDInsight 上の Apache Hive と Apache Hadoop の使用](../hadoop/apache-hadoop-use-hive-beeline.md)に関する記事をご覧ください。 Beeline はヘッド ノードまたは空のエッジ ノードから使用できます。 空のエッジ ノードから Beeline を使用することをお勧めします。 空のエッジ ノードを使って HDInsight クラスターを作成する方法の詳細については、「[HDInsight での空のエッジ ノードの使用](../hdinsight-apps-use-edge-node.md)」を参照してください。|
+|Hive ODBC|[Microsoft Hive ODBC ドライバーを使用した Excel から Apache Hadoop への接続](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)に関するページをご覧ください。|
 
 Java Database Connectivity (JDBC) 接続文字列は次の方法で調べることができます。
 
-1. `https://<cluster name>.AzureHDInsight.net` という URL を使用して Apache Ambari にサインインします。
-2. 左側のメニューで **[Hive]** を選択します。
-3. URL をコピーするには、クリップボード アイコンを選択します。
+1. Web ブラウザーから、`https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` に移動します。ここで、`CLUSTERNAME` はクラスターの名前です。
+1. URL をコピーするには、クリップボード アイコンを選択します。
 
    ![HDInsight Hadoop 対話型クエリ LLAP JDBC](./media/apache-interactive-query-get-started/hdinsight-hadoop-use-interactive-hive-jdbc.png)
 

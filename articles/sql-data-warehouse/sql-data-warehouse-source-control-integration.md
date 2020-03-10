@@ -1,6 +1,6 @@
 ---
 title: ソース管理の統合
-description: Azure Repos (Git および GitHub) を使用したネイティブなソース管理の統合による、SQL Data Warehouse のエンタープライズ クラスのデータベース DevOps エクスペリエンス。
+description: Azure Repos (Git および GitHub) を使用したネイティブなソース管理の統合による、SQL プールのエンタープライズ クラスのデータベース DevOps エクスペリエンス。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: integration
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: fc1fdddc7a157828fcc4770c4e8237af9a45fdc3
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1a4939e8c349f36fe745becb811717983caa95c0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720029"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198221"
 ---
-# <a name="source-control-integration-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のソース管理の統合
+# <a name="source-control-integration-for-sql-pool"></a>SQL プールのためのソース管理の統合
 
-このチュートリアルでは、SQL Server Data Tools (SSDT) データベース プロジェクトをソース管理と統合する方法について概説します。  ソース管理の統合は、SQL Data Warehouse を使用して継続的インテグレーションおよびデプロイ パイプラインを構築するための最初の手順です。 
+このチュートリアルでは、SQL Server Data Tools (SSDT) データベース プロジェクトをソース管理と統合する方法について概説します。  ソース管理の統合は、Azure Synapse Analytics の SQL プール リソースを使用して継続的インテグレーションと継続的デプロイのパイプラインを構築するための最初の手順です。 
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -81,4 +81,4 @@ ms.locfileid: "76720029"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure SQL Data Warehouse 向けの開発](sql-data-warehouse-overview-develop.md)
+- [SQL プールのための開発](sql-data-warehouse-overview-develop.md)

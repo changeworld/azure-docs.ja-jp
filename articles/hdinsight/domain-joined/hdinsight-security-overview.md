@@ -1,18 +1,18 @@
 ---
 title: Azure HDInsight のエンタープライズ セキュリティの概要
 description: Azure HDInsight でエンタープライズ セキュリティを確保するためのさまざまな方法について説明します。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: overview
-ms.date: 09/23/2019
-ms.openlocfilehash: 0e7b2db188ef6ee7d6b80ba5da4010112008ad70
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.date: 03/03/2020
+ms.openlocfilehash: 95bfe7d7788133d8548598cb30c8084bf64a977f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122112"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267713"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight のエンタープライズ セキュリティの概要
 
@@ -36,13 +36,13 @@ VNET にデプロイされるすべてのクラスターには、クラスター
 
 HDInsight の [Enterprise セキュリティ パッケージ](apache-domain-joined-architecture.md) は、Active Directory ベースの認証、マルチ ユーザー サポート、およびロールベースのアクセス制御を提供します。 Active Directory 統合は、[Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md) を使用して実現されます。 これらの機能を使用して、マネージド Active Directory ドメインに参加している HDInsight クラスターを作成できます。 その後、認証してクラスターにサインインできる企業の従業員の一覧を構成できるようになります。
 
-この設定により、企業の従業員は、ドメイン資格情報を使用してクラスター ノードにサインインできます。 また、ドメイン資格情報を使用して、クラスターと対話する他の承認済みエンドポイント (Apache Ambari Views、ODBC、JDBC、PowerShell、REST API など) で認証することもできます。 
+この設定により、企業の従業員は、ドメイン資格情報を使用してクラスター ノードにサインインできます。 また、ドメイン資格情報を使用して、クラスターと対話する他の承認済みエンドポイント (Apache Ambari Views、ODBC、JDBC、PowerShell、REST API など) で認証することもできます。
 
 ### <a name="authorization"></a>承認
 
 ほとんどの企業では、すべての従業員がすべてのエンタープライズ リソースにはアクセスできないようにするベスト プラクティスに従っています。 同様に、管理者はクラスター リソースのロールベースのアクセス制御ポリシーを定義できます。 これは、ESP クラスターでのみ使用できます。
 
-Hadoop 管理者は、Apache Ranger のプラグインを使用して、ロールベースのアクセス制御 (RBAC) を構成して Apache [Hive](apache-domain-joined-run-hive.md)、[HBase](apache-domain-joined-run-hbase.md) および [Kafka](apache-domain-joined-run-kafka.md) を保護できます。 RBAC ポリシーを構成すると、組織内のロールにアクセス許可を関連付けることができます。 この抽象化レイヤーを使用すると、より簡単に、ユーザーが作業の責任を果たすために必要なアクセス許可のみを持つようにできます。 また、Ranger により、従業員のデータ アクセスとアクセス制御ポリシーに加えられた変更を監査できます。
+Hadoop 管理者は、Apache Ranger のプラグインを使用し、ロールベースのアクセス制御 (RBAC) を構成して Apache [Hive](apache-domain-joined-run-hive.md)、[HBase](apache-domain-joined-run-hbase.md)、および [Kafka](apache-domain-joined-run-kafka.md) を保護できます。 RBAC ポリシーを構成すると、組織内のロールにアクセス許可を関連付けることができます。 この抽象化レイヤーを使用すると、より簡単に、ユーザーが作業の責任を果たすために必要なアクセス許可のみを持つようにできます。 また、Ranger により、従業員のデータ アクセスとアクセス制御ポリシーに加えられた変更を監査できます。
 
 たとえば、管理者は [Apache Ranger](https://ranger.apache.org/) を構成して Hive のアクセス制御ポリシーを設定できます。 この機能により、行レベルおよび列レベルのフィルター処理 (データ マスキング) が実現され、権限のないユーザーから機密データがフィルター処理されます。
 
@@ -50,9 +50,9 @@ Hadoop 管理者は、Apache Ranger のプラグインを使用して、ロー�
 
 リソースにおいて許可されていないアクセスや意図しないアクセスを追跡するには、クラスター リソース、およびデータへのアクセスをすべて監査する必要があります。 HDInsight クラスター リソースを許可されていないユーザーから保護し、データをセキュリティで保護することが重要です。
 
-管理者は HDInsight クラスター リソースとデータへのすべてのアクセスを表示し、レポートを作成できます。 また、管理者は Apache Ranger のサポートされているエンドポイントで作成されたアクセス制御ポリシーのすべての変更を表示し、レポートを作成することもできます。 
+管理者は HDInsight クラスター リソースとデータへのすべてのアクセスを表示し、レポートを作成できます。 また、管理者は Apache Ranger のサポートされているエンドポイントで作成されたアクセス制御ポリシーのすべての変更を表示し、レポートを作成することもできます。
 
-Apache Ranger および Ambari 監査ログと ssh アクセス ログにアクセスするには、[Azure Monitor を有効](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing)にし、監査レコードを提供するテーブルを表示します。
+Apache Ranger および Ambari 監査ログと ssh アクセス ログにアクセスするには、[Azure Monitor を有効](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing)にし、監査レコードが記載されたテーブルを表示します。
 
 ### <a name="encryption"></a>暗号化
 

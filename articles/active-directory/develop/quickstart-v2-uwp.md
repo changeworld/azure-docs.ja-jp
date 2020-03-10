@@ -11,18 +11,16 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 86401e0a827d1941b2d183d8c17371ba915c81ae
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e78477b9c046bbdbcb67a3ff1a5420c0808a748e
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063698"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274319"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>クイック スタート:ユニバーサル Windows プラットフォーム (UWP) アプリケーションから Microsoft Graph API を呼び出す
 
-このクイック スタートには、ユニバーサル Windows プラットフォーム (UWP) アプリケーションから個人用アカウントや職場または学校アカウントを持つユーザーのサインイン、アクセス トークンの取得、Microsoft Graph API の呼び出しを行う方法を示すコード サンプルが含まれています。
-
-![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-uwp/uwp-intro.svg)
+このクイック スタートには、ユニバーサル Windows プラットフォーム (UWP) アプリケーションから個人用アカウントや職場または学校アカウントを持つユーザーのサインイン、アクセス トークンの取得、Microsoft Graph API の呼び出しを行う方法を示すコード サンプルが含まれています。 (図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください)。
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>クイック スタート アプリを登録してダウンロードする
@@ -64,22 +62,32 @@ ms.locfileid: "77063698"
 
 #### <a name="step-2-download-your-visual-studio-project"></a>手順 2:Visual Studio プロジェクトをダウンロードする
 
- - [Visual Studio プロジェクトをダウンロードする](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
+> [!div renderon="docs"]
+> [Visual Studio プロジェクトをダウンロードする](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>手順 3:Visual Studio プロジェクトの構成
+> [!div class="sxs-lookup" renderon="portal"]
+> Visual Studio 2019 を使用してプロジェクトを実行します。
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [コード サンプルをダウンロードします](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
 
-1. ディスクのルートに近いローカル フォルダー (例: **C:\Azure-Samples**) に zip ファイルを展開します。
-1. Visual Studio でプロジェクトを開きます。 UWP SDK のインストールを求められる場合があります。 その場合は、受け入れます。
-1. **MainPage.Xaml.cs** を編集し、`ClientId` フィールドの値を次のように置き換えます。
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>手順 3:アプリが構成され、実行準備ができる
+> アプリのプロパティの値を使用してプロジェクトを構成したら、実行する準備は完了です。 
 
-    ```csharp
-    private const string ClientId = "Enter_the_Application_Id_here";
-    ```
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > このクイックスタートは、Enter_the_Supported_Account_Info_Here をサポートしています。    
+> > Enter_the_Supported_Account_Info_Here
 
 > [!div renderon="docs"]
+> #### <a name="step-3-configure-your-visual-studio-project"></a>手順 3:Visual Studio プロジェクトの構成
+> 
+> 1. ディスクのルートに近いローカル フォルダー (例: **C:\Azure-Samples**) に zip ファイルを展開します。
+> 1. Visual Studio でプロジェクトを開きます。 UWP SDK のインストールを求められる場合があります。 その場合は、受け入れます。
+> 1. **MainPage.Xaml.cs** を編集し、`ClientId` フィールドの値を次のように置き換えます。
+>
+>    ```csharp
+>    private const string ClientId = "Enter_the_Application_Id_here";
+>    ```
 > 各値の説明:
 > - `Enter_the_Application_Id_here` - 登録したアプリケーションのアプリケーション ID。
 >
@@ -90,13 +98,15 @@ ms.locfileid: "77063698"
 
 Windows マシンでクイックスタートを試すには:
 
-1. Visual Studio ツールバーで、適切なプラットフォーム (おそらく ARM ではなく、**x64** または **x86**) を選択します。
-   > ターゲット デバイスが *[デバイス]* から *[ローカル コンピューター]* に変わるのを確認します。
+1. Visual Studio ツールバーで、適切なプラットフォーム (おそらく ARM ではなく、**x64** または **x86**) を選択します。 ターゲット デバイスが *[デバイス]* から *[ローカル コンピューター]* に変わるのを確認します。
 1. [デバッグ]、 **[デバッグなしで開始]** の順に選択します。
 
 ## <a name="more-information"></a>詳細情報
 
 このセクションでは、このクイック スタートについての詳しい情報を取り上げます。
+
+### <a name="how-the-sample-works"></a>このサンプルのしくみ
+![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-uwp/uwp-intro.svg)
 
 ### <a name="msalnet"></a>MSAL.NET
 

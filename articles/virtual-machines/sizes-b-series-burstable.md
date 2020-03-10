@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: a22964b0bfa4e6a46e3c9f31195ea0a6add82646
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 5121ef8eb3123d830233e91968c69b331d255bd0
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492580"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161082"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>負荷の急増に対応できる B シリーズ仮想マシンのサイズ
 
@@ -25,7 +25,11 @@ Premium Storage: サポートされています
 
 Premium Storage キャッシュ:サポートされていません
 
-| Size | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | VM のベース CPU パフォーマンス | VM の最大 CPU パフォーマンス | 初期のクレジット | 1 時間に蓄積されるクレジット | 蓄積できるクレジットの最大値 | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数 |
+ライブ マイグレーション: サポートされています
+
+メモリ保持更新: サポートされています
+
+| サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | VM のベース CPU パフォーマンス | VM の最大 CPU パフォーマンス | 初期のクレジット | 1 時間に蓄積されるクレジット | 蓄積できるクレジットの最大値 | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | Standard_B1ls<sup>1</sup> | 1  | 0.5 | 4   | 5%   | 100%  | 30  | 3   | 72   | 2  | 200/10    | 160/10    | 2  |
 | Standard_B1s              | 1  | 1   | 4   | 10%  | 100%  | 30  | 6   | 144  | 2  | 400/10    | 320/10    | 2  |

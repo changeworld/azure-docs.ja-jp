@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 03/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0bd53b72c334b35daea0864acf61cc432c272ae
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: aba42e6bd9b11e47d793219c0ff06b9177d609f5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442124"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298821"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>既存の同期済み AD フォレストに対してクラウド プロビジョニングのパイロットを実施する 
 
@@ -31,7 +31,7 @@ ms.locfileid: "77442124"
 3. クラウド プロビジョニングでオブジェクトの完全一致が実行されるよう、パイロット スコープ内のオブジェクトに ms-ds-consistencyGUID が事前設定されていることを確認します。 
 
    > [!NOTE]
-   > Azure AD Connect 同期では、グループ オブジェクトの *ms-ds-consistencyGUID* が既定では設定されません。 [こちらのブログ記事](https://blogs.technet.microsoft.com/markrenoden/2017/10/13/choosing-a-sourceanchor-for-groups-in-multi-forest-sync-with-aad-connect/)に記載の手順に従って、グループ オブジェクトの *ms-ds-consistencyGUID* を設定してください。
+   > Azure AD Connect 同期では、グループ オブジェクトの *ms-ds-consistencyGUID* が既定では設定されません。
 
 4. これは高度なシナリオです。 このチュートリアルに記載の手順に正確に従うようにします。
 
@@ -71,7 +71,7 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
     **[Connected System]\(接続先システム\):** カスタム同期規則の作成対象となる AD コネクタを選択します<br>
     **[Connected System Object Type]\(接続先システム オブジェクトの種類\):** User<br>
     **[Metaverse Object Type]\(メタバース オブジェクトの種類\):** Person<br>
-    **[リンクの種類]:** 結合<br>
+    **[リンクの種類]:** Join<br>
     **[優先順位]:** システム内で一意になる値を指定します<br>
     **[タグ]:** 空のままにします<br>
     ![カスタム規則](media/how-to-cloud-custom-user-rule/user2.png)</br>
@@ -119,7 +119,7 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>Azure AD Connect プロビジョニング エージェントをインストールする
 1. 使用するサーバーにエンタープライズ管理者のアクセス許可でサインインします。  [AD と Azure の基本的な環境](tutorial-basic-ad-azure.md)に関するチュートリアルを使用している場合、これは CP1 になります。
-2. Azure AD Connect クラウド プロビジョニング エージェントを[こちら](https://go.microsoft.com/fwlink/?linkid=2109037)からダウンロードします。
+2. [こちら](how-to-install.md#install-the-agent)に記載されている手順を使用して、Azure AD Connect クラウド プロビジョニング エージェントをダウンロードします。
 3. Azure AD Connect クラウドプロビジョニング (AADConnectProvisioningAgent.Installer) を実行します。
 3. スプラッシュ スクリーンでライセンス条項に**同意**し、 **[インストール]** をクリックします。</br>
 ![[ようこそ] 画面](media/how-to-install/install1.png)</br>

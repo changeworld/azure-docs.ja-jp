@@ -8,20 +8,28 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: c923dfed24253ce2e3551c13a457f19d155a1e40
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: a9c045162e650b4468fb53676e367d2c658bf7cc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068410"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912574"
 ---
+## <a name="what-is-the-time-required-for-migration"></a>移行にはどれくらいの時間が必要ですか?
+
+移行の計画と実行は、アーキテクチャの複雑さに大きく左右され、数か月かかることがあります。  
+
+## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>IaaS VM (クラシック) での新しい顧客の定義は何ですか?
+
+2020 年 2 月 (廃止開始の前月) の時点でお使いのサブスクリプションに IaaS VM (クラシック) が含まれていなったお客様は、新しいお客様とみなされます。 
+
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>この移行計画は Azure 仮想マシン上で実行されている既存のサービスやアプリケーションに影響しますか? 
 
-いいえ。 VM (クラシック) は、一般公開で完全にサポートされるサービスです。 引き続きこうしたリソースを利用して、Microsoft Azure のフットプリントを拡大できます。
+2023 年 3 月 1 日になるまで、IaaS VM (クラシック) には影響しません。 IaaS VM (クラシック) は、一般提供で完全にサポートされるサービスです。 引き続きこうしたリソースを利用して、Microsoft Azure のフットプリントを拡大できます。 2023 年 3 月 1 日に、これらの VM は完全に廃止され、アクティブまたは割り当て済みのすべての VM は停止され、割り当て解除されます。 Cloud Services (クラシック) やストレージ アカウント (クラシック) などの他のクラシック リソースに影響することはありません。   
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>近日中に移行する予定がない場合、VM はどうなりますか? 
 
-既存のクラシック API やリソース モデルが廃止されることはありません。 Resource Manager デプロイ モデルで使用できる高度な機能により、移行が簡単になります。 Resource Manager の IaaS に含まれる [機能強化をいくつか](../articles/azure-resource-manager/management/deployment-models.md) 確認することを強くお勧めします。
+2023 年 3 月 1 日に、IaaS VM (クラシック) は完全に廃止され、アクティブまたは割り当て済みのすべての VM は停止され、割り当て解除されます。 ビジネスへの影響を回避するため、移行の計画を今すぐ開始し、2023 年 3 月 1 日より前に移行を完了することを強くお勧めします。 既存のクラシック API、Cloud Services、およびリソース モデルが廃止されることはありません。 Resource Manager デプロイ モデルで使用できる高度な機能により、移行が簡単になります。 これらのリソースの Azure Resource Manager への移行計画を開始することをお勧めします。 
 
 ## <a name="what-does-this-migration-plan-mean-for-my-existing-tooling"></a>既存のツールにとって、この移行計画はどのような意味がありますか? 
 
@@ -37,7 +45,7 @@ Resource Manager デプロイ モデルへのツールの更新は、移行計�
 
 ## <a name="can-i-roll-back-my-migration-if-the-commit-operation-fails"></a>コミット操作が失敗した場合、移行をロールバックすることはできますか? 
 
-コミット操作が失敗した場合は、移行を中止できません。 コミット操作を含むすべての移行操作がべき等です。 したがって、しばらくしてから操作を再試行することをお勧めします。 エラーが続く場合は、サポート チケットを作成するか、[Microsoft Q&A](https://docs.microsoft.com/answers/index.html) でフォーラム投稿を作成してください。
+コミット操作が失敗した場合は、移行を中止できません。 コミット操作を含むすべての移行操作がべき等です。 したがって、しばらくしてから操作を再試行することをお勧めします。 それでもエラーが発生する場合は、サポート チケットを作成してください。
 
 ## <a name="do-i-have-to-buy-another-express-route-circuit-if-i-have-to-use-iaas-under-resource-manager"></a>Resource Manager で IaaS を使用する必要がある場合、別の Express Route 回線を購入する必要はありますか? 
 

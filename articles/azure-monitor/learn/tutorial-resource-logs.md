@@ -1,18 +1,17 @@
 ---
 title: Azure リソースからリソース ログを収集し、Azure Monitor で分析する
 description: このチュートリアルでは、Azure リソースから Log Analytics ワークスペースにリソース ログが収集されるように診断設定を構成します。ワークスペースでは、ログ クエリを使用してログを分析できます。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 90b2a9bc9e3e8aa6297f02a46163717a2bf58a22
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: d356042d65c419163de4951e64a635a22ea90e6d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532615"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269190"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>チュートリアル:Azure リソースからリソース ログを収集して分析する
 
@@ -47,7 +46,7 @@ Azure Monitor の Log Analytics ワークスペースでは、さまざまなソ
    - **サブスクリプション**:ワークスペースを格納するサブスクリプションを選択します。 監視対象のリソースと同じサブスクリプションにする必要はありません。
    - **リソース グループ**:既存のリソース グループを選択するか、 **[新規作成]** をクリックして新しく作成します。 監視対象のリソースと同じリソース グループにする必要はありません。
    - **[場所]** :Azure リージョンを選択するか、新しいリージョンを作成します。 監視対象のリソースと同じ場所にする必要はありません。
-   - **価格レベル**:データが 7 日間保持される *[無料]* を選択します。 この価格レベルは後で変更できます。 さまざまな価格レベルの詳細を確認するには、 **[Log Analytics の価格]** リンクをクリックします。
+   - **価格レベル**:価格レベルとして *[従量課金制]* を選択します。 この価格レベルは後で変更できます。 さまざまな価格レベルの詳細を確認するには、 **[Log Analytics の価格]** リンクをクリックします。
 
     ![新しいワークスペース](media/tutorial-resource-logs/new-workspace.png)
 

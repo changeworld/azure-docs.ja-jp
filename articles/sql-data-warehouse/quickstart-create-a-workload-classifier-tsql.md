@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート:ワークロード分類子を作成する - T-SQL '
+title: クイック スタート:ワークロード分類子を作成する - T-SQL
 description: T-SQL を使用して重要度の高いワークロード分類子を作成します。
 services: sql-data-warehouse
 author: ronortloff
@@ -7,15 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
 ms.subservice: workload-management
-ms.date: 05/01/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1375605b6dab385b53af9212023767003e686e60
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.custom: azure-synapse
+ms.openlocfilehash: 9f15317141e56614cf6fe04f46ff478a73266775
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646286"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200500"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>クイック スタート:T-SQL を使用してワークロード分類子を作成する
 
@@ -24,7 +25,7 @@ ms.locfileid: "73646286"
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 > [!NOTE]
-> SQL Data Warehouse を作成すると、新しい課金対象サービスを使用することになる場合があります。  詳細については、「[SQL Data Warehouse の価格](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)」を参照してください。
+> Azure Synapse Analytics の SQL Analytics インスタンスを作成すると、新しい課金対象サービスを使用することになる場合があります。  詳細については、「[Azure Synapse Analytics の価格](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)」を参照してください。
 >
 >
 
@@ -34,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure Portal](https://portal.azure.com/) にサインインします。
+[Azure portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="create-login-for-theceo"></a>TheCEO のログインを作成する
 
@@ -78,7 +79,7 @@ WITH (WORKLOAD_GROUP = 'xlargerc'
 SELECT * FROM sys.workload_management_workload_classifiers
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 ```sql
 DROP WORKLOAD CLASSIFIER [wgcTheCEO]
@@ -95,7 +96,7 @@ DROP USER [TheCEO]
 
 1. [Azure portal](https://portal.azure.com) にサインインし、データ ウェアハウスを選択します。
 
-    ![リソースのクリーンアップ](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
+    ![リソースをクリーンアップする](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
 2. コンピューティング リソースを一時停止するには、 **[一時停止]** ボタンを選択します。 データ ウェアハウスが一時停止すると、ボタンの表示が **[開始]** になります。  コンピューティング リソースを再開するには、 **[開始]** を選択します。
 
@@ -105,8 +106,8 @@ DROP USER [TheCEO]
 
 5. リソース グループを削除するには、**myResourceGroup** を選択して、 **[リソース グループの削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - これで、ワークロード分類子が作成されました。 TheCEO としていくつかのクエリを実行して、それらがどのように実行されるかを確認します。 クエリと割り当てられている重要度を確認するには、「[sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql)」を参照してください。
-- Azure SQL Data Warehouse ワークロードの管理の詳細については、[ワークロードの重要度](sql-data-warehouse-workload-importance.md)と、[ワークロードの分類](sql-data-warehouse-workload-classification.md)に関するページを参照してください。
-- [ワークロードの重要度を構成する](sql-data-warehouse-how-to-configure-workload-importance.md)方法に関する記事と、[Workload Management を管理および監視する](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)方法を参照してください。
+- SQL Analytics ワークロードの管理の詳細については、[ワークロードの重要度](sql-data-warehouse-workload-importance.md)と、[ワークロードの分類](sql-data-warehouse-workload-classification.md)に関するページを参照してください。
+- [ワークロードの重要度の構成](sql-data-warehouse-how-to-configure-workload-importance.md)と [Workload Management の管理と監視](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)に関するハウツー記事を参照してください。

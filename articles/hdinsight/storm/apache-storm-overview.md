@@ -2,19 +2,18 @@
 title: Apache Storm とは - Azure HDInsight
 description: Apache Storm を利用すると、データ ストリームをリアルタイムで処理できます。 Azure HDInsight を利用すると、Azure クラウド上に Storm クラスターを簡単に作成できます。 Visual Studio では、C# を使用して Storm ソリューションを作成し、それを HDInsight Storm クラスターにデプロイできます。
 author: hrasheed-msft
-ms.reviewer: jasonh
-keywords: Apache Storm のユース ケース,Storm クラスター,Apache Storm とは
-ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
-ms.topic: overview
-ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: b291d5babb0680f5f1a742efcf624a82c804de68
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.reviewer: jasonh
+ms.service: hdinsight
+ms.topic: overview
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 03/02/2020
+ms.openlocfilehash: 24981c10985cd353fcd476f416e89c94ad6b6cc6
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460009"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271898"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Azure HDInsight での Apache Storm とは
 
@@ -34,13 +33,9 @@ HDInsight における Storm の機能は次のとおりです。
 
     * Trident Java インターフェイスをサポートします。 メッセージの厳密に 1 回の処理、トランザクションのデータストア永続化、一般的なストリーム分析操作のセットをサポートする Storm トポロジの作成が可能になります。
 
-* **動的スケーリング**:Storm トポロジの実行に影響を与えることなく、worker ノードを追加または削除することができます。
+* **動的スケーリング**:Storm トポロジの実行に影響を与えることなく、worker ノードを追加または削除することができます。 スケーリング操作を通じて追加された新しいノードを利用するためには、実行中のトポロジを非アクティブ化したり再アクティブ化したりする必要があります。
 
-    * スケーリング操作を通じて追加された新しいノードを利用するためには、実行中のトポロジを非アクティブ化したり再アクティブ化したりする必要があります。
-
-* **さまざまな Azure サービスを使ってストリーミング パイプラインを作成**:HDInsight の Storm は、Event Hubs、SQL Database、Azure Storage、Azure Data Lake Store など、他の Azure サービスと連携します。
-
-    Azure サービスと連携するソリューションの例については、[HDInsight 上の Apache Storm で Event Hubs からのイベントを処理する方法](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)に関するページを参照してください。
+* **さまざまな Azure サービスを使ってストリーミング パイプラインを作成**:HDInsight の Storm は、Event Hubs、SQL Database、Azure Storage、Azure Data Lake Store など、他の Azure サービスと連携します。 Azure サービスと連携するソリューションの例については、[HDInsight 上の Apache Storm で Event Hubs からのイベントを処理する方法](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)に関するページを参照してください。
 
 リアルタイム分析ソリューションに Apache Storm を利用している企業の一覧については、[Apache Storm を使用している企業](https://storm.apache.org/Powered-By.html)に関するページを参照してください。
 
@@ -72,19 +67,12 @@ HDInsight 上に新しい Storm クラスターを数分で作成できます。
 
 ## <a name="ease-of-use"></a>使いやすさ
 
-* __Secure Shell (SSH) 接続__:SSH を使用してインターネット経由で Storm クラスターのヘッド ノードにアクセスすることができます。 クラスターには、SSH を使用して直接コマンドを実行できます。
-
-  詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
-
-* __Web 接続__:すべての HDInsight クラスターで Ambari Web UI が提供されます。 Ambari Web UI を使用すれば、クラスター上のサービスの監視、構成、管理を簡単に行うことができます。 Storm クラスターには Storm UI も用意されています。 Storm UI を使用すれば、お使いのブラウザーから Storm トポロジの実行を監視および管理できます。
-
-  詳細については、[Apache Ambari Web UI を使用した HDInsight の管理](../hdinsight-hadoop-manage-ambari.md)および[Apache Storm UI を使用した監視および管理](apache-storm-deploy-monitor-topology-linux.md#monitor-and-manage-a-topology-using-the-storm-ui)に関するドキュメントを参照してください。
-
-* __Azure PowerShell と Azure クラシック CLI__:PowerShell とクラシック CLI はいずれも、HDInsight やその他の Azure サービスを操作するためにクライアント システムから使用できるコマンドライン ユーティリティです。
-
-* __Visual Studio 統合__:Azure Data Lake Tools for Visual Studio には、SCP.NET フレームワークを使用して C# Storm トポロジを作成するためのプロジェクト テンプレートが含まれています。 また、Data Lake Tools には、HDInsight の Storm によるソリューションのデプロイ、監視、管理のためのツールも用意されています。
-
-  詳細については、[HDInsight Tools for Visual Studio を使用した C# Storm トポロジの開発](apache-storm-develop-csharp-visual-studio-topology.md)に関する記事を参照してください。
+|用途 |説明 |
+|---|---|
+|Secure Shell (SSH) 接続|SSH を使用してインターネット経由で Storm クラスターのヘッド ノードにアクセスすることができます。 クラスターには、SSH を使用して直接コマンドを実行できます。 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。|
+|Web 接続|すべての HDInsight クラスターで Ambari Web UI が提供されます。 Ambari Web UI を使用すれば、クラスター上のサービスの監視、構成、管理を簡単に行うことができます。 Storm クラスターには Storm UI も用意されています。 Storm UI を使用すれば、お使いのブラウザーから Storm トポロジの実行を監視および管理できます。 詳細については、[Apache Ambari Web UI を使用した HDInsight の管理](../hdinsight-hadoop-manage-ambari.md)および[Apache Storm UI を使用した監視および管理](apache-storm-deploy-monitor-topology-linux.md#monitor-and-manage-a-topology-using-the-storm-ui)に関するドキュメントを参照してください。|
+|Azure PowerShell と Azure CLI|PowerShell と Azure CLI はいずれも、HDInsight やその他の Azure サービスを操作するためにクライアント システムから使用できるコマンドライン ユーティリティです。|
+|Visual Studio 統合|Azure Data Lake Tools for Visual Studio には、SCP.NET フレームワークを使用して C# Storm トポロジを作成するためのプロジェクト テンプレートが含まれています。 また、Data Lake Tools には、HDInsight の Storm によるソリューションのデプロイ、監視、管理のためのツールも用意されています。 詳細については、[HDInsight Tools for Visual Studio を使用した C# Storm トポロジの開発](apache-storm-develop-csharp-visual-studio-topology.md)に関する記事を参照してください。|
 
 ## <a name="integration-with-other-azure-services"></a>その他の Azure サービスとの統合
 
@@ -100,9 +88,7 @@ HDInsight 上に新しい Storm クラスターを数分で作成できます。
 
 ## <a name="support"></a>サポート
 
-HDInsight の Storm には、完全なエンタープライズレベルの継続性サポートが付属します。 HDInsight の Storm では、99.9% の SLA も保証されています。 つまり、Microsoft では、Storm クラスターが 99.9% 以上の時間にわたって外部に接続されることを保証しています。
-
-詳細については、「[Azure のサポート](https://azure.microsoft.com/support/options/)」を参照してください。
+HDInsight の Storm には、完全なエンタープライズレベルの継続性サポートが付属します。 HDInsight の Storm では、99.9% の SLA も保証されています。 つまり、Microsoft では、Storm クラスターが 99.9% 以上の時間にわたって外部に接続されることを保証しています。 詳細については、「[Azure のサポート](https://azure.microsoft.com/support/options/)」を参照してください。
 
 ## <a name="apache-storm-use-cases"></a>Apache Storm のユース ケース
 
@@ -120,9 +106,7 @@ HDInsight の Storm には、完全なエンタープライズレベルの継続
 
 ## <a name="development"></a>開発
 
-.NET 開発者は、Data Lake Tools for Visual Studio を使い、トポロジの設計と実装を C# で行うことができます。 Java と C# のコンポーネントを使用するハイブリッド トポロジを作成することもできます。
-
-詳細については、「 [Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](apache-storm-develop-csharp-visual-studio-topology.md)」をご覧ください。
+.NET 開発者は、Data Lake Tools for Visual Studio を使い、トポロジの設計と実装を C# で行うことができます。 Java と C# のコンポーネントを使用するハイブリッド トポロジを作成することもできます。 詳細については、「 [Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](apache-storm-develop-csharp-visual-studio-topology.md)」をご覧ください。
 
 任意の IDE を使用して、Java ソリューションを開発することもできます。 詳細については、[HDInsight 上の Apache Storm の Java トポロジの開発](apache-storm-develop-java-topology.md)に関するページを参照してください。
 
@@ -132,9 +116,7 @@ Storm コンポーネントの開発には、Python も使用できます。 詳
 
 ### <a name="guaranteed-message-processing"></a>メッセージの処理の保証
 
-Apache Storm では、さまざまなレベルでメッセージの処理が保証されています。 たとえば、基本的な Storm アプリケーションは少なくとも 1 回の処理を保証でき、[Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) は正確に 1 回の処理を保証できます。
-
-詳細については、apache.org の「 [Guarantees on data processing (データ処理の保証)](https://storm.apache.org/about/guarantees-data-processing.html) 」をご覧ください。
+Apache Storm では、さまざまなレベルでメッセージの処理が保証されています。 たとえば、基本的な Storm アプリケーションは少なくとも 1 回の処理を保証でき、[Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) は正確に 1 回の処理を保証できます。 詳細については、apache.org の「 [Guarantees on data processing (データ処理の保証)](https://storm.apache.org/about/guarantees-data-processing.html) 」をご覧ください。
 
 ### <a name="ibasicbolt"></a>IBasicBolt
 

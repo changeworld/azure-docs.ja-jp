@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:ウェアハウスの作成 - Azure Powershell
-description: Azure PowerShell を使用して、SQL Database の論理サーバー、サーバーレベルのファイアウォール規則、データ ウェアハウスをすばやく作成します。
+title: クイック スタート:データ ウェアハウスを作成する (PowerShell)
+description: Azure PowerShell からサーバーレベルのファイアウォール規則を使用して、Azure Synapse Analytics データ ウェアハウスの論理サーバーをすばやく作成します。
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,22 +10,24 @@ ms.subservice: development
 ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 94dcc0dee5dd4fe81eb5ce067d7ace31edeca353
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 9df9b4b1bdb33a856d9e31d65981e8654af049d2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461510"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200007"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Azure SQL Data Warehouse を作成し、クエリを実行する
+# <a name="quickstart-create--query-a-data-warehouse-with-azure-powershell"></a>クイック スタート:Azure PowerShell を使用してデータ ウェアハウスを作成し、クエリを実行する
 
-Azure PowerShell を使用して Azure SQL Data Warehouse をすばやく作成します。
+Azure PowerShell から SQL プールをプロビジョニングすることによって、Azure Synapse Analytics データ ウェアハウスを作成します。
+
+## <a name="prerequisites"></a>前提条件
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 > [!NOTE]
-> SQL Data Warehouse を作成すると、新しい課金対象サービスを使用することになる場合があります。  詳細については、「[SQL Data Warehouse の価格](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)」を参照してください。
+> ウェアハウスを作成すると、新しい課金対象サービスを使用することになる場合があります。  詳細については、「[Azure Synapse Analytics の価格](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)」を参照してください。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -68,7 +70,7 @@ $password = "ChangeYourAdminPassword1"
 $startip = "0.0.0.0"
 $endip = "0.0.0.0"
 # The database name
-$databasename = "mySampleDataWarehosue"
+$databasename = "mySampleDataWarehouse"
 ```
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
@@ -78,6 +80,7 @@ $databasename = "mySampleDataWarehosue"
 ```powershell
 New-AzResourceGroup -Name $resourcegroupname -Location $location
 ```
+
 ## <a name="create-a-logical-server"></a>論理サーバーの作成
 
 [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) コマンドを使用して [Azure SQL 論理サーバー](../sql-database/sql-database-logical-servers.md)を作成します。 論理サーバーには、ひとまとめにして管理される一連のデータベースが含まれています。 次の例では、管理者ユーザー `ServerAdmin` とパスワード `ChangeYourAdminPassword1` を使用し、ランダムに名前を付けたサーバーをリソース グループ内に作成しています。 これらの定義済みの値は、必要に応じて別の値に置き換えてください。
@@ -100,7 +103,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 ```
 
 > [!NOTE]
-> SQL Database と SQL Data Warehouse はポート 1433 上で通信します。 企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 1433 が開放されない限り、Azure SQL サーバーに接続することはできません。
+> SQL エンドポイントの通信は、ポート 1433 で行われます。 企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 1433 が開放されない限り、Azure SQL サーバーに接続することはできません。
 >
 
 
@@ -121,10 +124,10 @@ New-AzSqlDatabase `
 必要なパラメーターは以下のとおりです。
 
 * **RequestedServiceObjectiveName**:要求する[データ ウェアハウス ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)の量。 この量を増やすと、コンピューティング コストが増加します。 サポートされている値の一覧については、[メモリとコンカレンシーの制限](memory-concurrency-limits.md)に関する記事をご覧ください。
-* **DatabaseName**:作成する SQL Data Warehouse の名前。
+* **DatabaseName**:作成するデータ ウェアハウスの名前。
 * **ServerName**:作成の際に使用するサーバーの名前。
 * **ResourceGroupName**:使用するリソース グループ。 サブスクリプションで使用可能なリソース グループを調べるには Get-AzureResource を使用します。
-* **Edition**:SQL Data Warehouse を作成するには、"DataWarehouse" に設定する必要があります。
+* **Edition**:データ ウェアハウスを作成するには、"DataWarehouse" に設定する必要があります。
 
 省略可能なパラメーターは次のとおりです。
 
@@ -148,6 +151,6 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>次のステップ
 
-ここではデータ ウェアハウスを作成し、ファイアウォール規則を作成し、データ ウェアハウスに接続していくつかのクエリを実行しました。 Azure SQL Data Warehouse の詳細については、データの読み込みに関するチュートリアルを参照してください。
+ここではデータ ウェアハウスを作成し、ファイアウォール規則を作成し、データ ウェアハウスに接続していくつかのクエリを実行しました。 さらに理解を深めるために、データの読み込みに関するチュートリアルに進んでください。
 > [!div class="nextstepaction"]
->[SQL Data Warehouse にデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)
+>[データ ウェアハウスにデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)

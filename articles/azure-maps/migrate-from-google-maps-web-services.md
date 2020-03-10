@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: fac83a7a5137a50a26721da58395cc2e915f222d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: fae9b8a2101329383cc90c8f7f0ff225e3a9059c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086191"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913820"
 ---
 # <a name="migrate-web-service-from-google-maps"></a>Google マップから Web サービスを移行する
 
@@ -24,21 +24,24 @@ Azure Maps と Google マップでは、どちらの場合も REST Web サービ
 
 | Google マップ サービス API | Azure Maps サービス API                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| 道順              | [Route](https://docs.microsoft.com/rest/api/maps/route)                               |
-| 距離行列         | [ルート マトリックス](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview) |
-| ジオコーディング               | [Search](https://docs.microsoft.com/rest/api/maps/search)                             |
-| 場所の検索           | [Search](https://docs.microsoft.com/rest/api/maps/search)                             |
-| 場所のオートコンプリート      | [Search](https://docs.microsoft.com/rest/api/maps/search)                             |
-| 静的マップ              | [Render](https://docs.microsoft.com/rest/api/maps/render/getmapimage)                 |
-| タイム ゾーン               | [タイム ゾーン](https://docs.microsoft.com/rest/api/maps/timezone)                        |
+| 道順              | [Route](https://docs.microsoft.com/rest/api/maps/route)                                     |
+| 距離行列         | [ルート マトリックス](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)       |
+| ジオコーディング               | [Search](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| 場所の検索           | [Search](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| 場所のオートコンプリート      | [Search](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| Snap to Road            | 「[ルートと道順を計算する](#calculate-routes-and-directions)」セクションを参照してください。            |
+| Speed Limits            | 「[座標の逆ジオコーディング](#reverse-geocode-a-coordinate)」セクションを参照してください。                  |
+| 静的マップ              | [Render](https://docs.microsoft.com/rest/api/maps/render/getmapimage)                       |
+| タイム ゾーン               | [タイム ゾーン](https://docs.microsoft.com/rest/api/maps/timezone)                              |
 
 次のサービス API は、Azure Maps では現在使用できません。
 
 - Elevation
 - 地理的位置情報
-- 場所の詳細と場所の写真。 電話番号と Web サイトの URL は、Azure Maps Search API で利用できます。
+- 場所の詳細と写真。電話番号と Web サイトの URL は、Azure Maps Search API で利用できます。
 - Map URL
-- 道路。 速度制限のデータは、Azure Maps のルート API と逆ジオコーディング API を介して利用することができます。
+- Nearest Roads - Web SDK を使用して実現できますが ([こちら](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Basic%20snap%20to%20road%20logic
+)を参照)、現在サービスとしては提供されていません。
 - 静的ストリート ビュー
 
 Azure Maps には、必要になる可能性のある追加の REST Web サービスがいくつか用意されています。
@@ -176,8 +179,8 @@ Azure Maps を使用してルートと道順を計算します。 Azure Maps に
 
 Azure Maps のルート指定サービスでは、ルート指定の計算用として次の API が提供されます。
 
-- [**ルート計算**](https://docs.microsoft.com/rest/api/maps/route/getroutedirections): ルートが計算されます。要求はただちに処理されます。 この API では、GET 要求と POST 要求の両方がサポートされます。 大量のウェイポイントを指定する場合、または多数のルート オプションを使用する場合は、POST 要求を使用してください。 POST を使用すれば、URL 要求が長くなりすぎて問題が発生するのを確実に防ぐことができるためです。
-- [**ルートのバッチ処理**](https://docs.microsoft.com/rest/api/maps/route/postroutedirectionsbatchpreview): 最大 1,000 個のルート要求を含む要求が作成されます。これらの座標は一定期間内に処理されます。 すべてのデータはサーバーで並列処理されます。 処理が完了したら、すべての結果をまとめてダウンロードできます。
+- [**ルート計算**](https://docs.microsoft.com/rest/api/maps/route/getroutedirections): ルートが計算されます。要求はただちに処理されます。 この API では、GET 要求と POST 要求の両方がサポートされます。 大量のウェイポイントを指定する場合、または多くのルート オプションを使用する場合は、URL 要求が長くなりすぎて問題が発生することがないように POST 要求が推奨されます。 Azure Maps の POST Route Direction には、数千の[サポート ポイント](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#supportingpoints)を受け取り、それらを使用してポイント間の論理ルート パスを再作成するオプションがあります (Snap to Road)。 
+- [**ルートのバッチ処理**](https://docs.microsoft.com/rest/api/maps/route/postroutedirectionsbatchpreview): 最大 1,000 個のルート要求を含む要求が作成されます。これらの座標は一定期間内に処理されます。 すべてのデータはサーバーで並行して処理され、完了すると、完全な結果セットをダウンロードすることができます。
 - [**モビリティ サービス**](https://docs.microsoft.com/rest/api/maps/mobility): 公共輸送を使用するルートと道順が計算されます。
 
 次の表では、Google マップ API パラメーターと、それに相当する Azure Maps の API パラメーターを相互参照で示しています。
@@ -365,7 +368,7 @@ Azure Maps では、ピンの位置を "経度 緯度" 形式で指定する必�
 - `geodesic` - 経路を地球の曲線に沿った線にする必要があるかどうかを示します。
 - `weight` - 経路の線の太さ (ピクセル単位)。
 
-マップ上の座標間に、赤色の線の不透明度と太さ (ピクセル) を URL パラメーターで追加します。 次の例では、線の不透明度は 50% で、太さは 4 ピクセルです。 座標は、経度: -110、緯度:45 および経度: -100、緯度:50 です。
+マップ上の座標間に、赤色の線の不透明度と太さ (ピクセル) を URL パラメーターで追加します。 次の例では、線の不透明度は 50% で、太さは 4 ピクセルです。 座標は経度: -110、緯度: 座標 (経度: -100、緯度: 50) の間に追加するには、50 を使用しています。
 
 ```
 &path=color:0xFF000088|weight:4|45,-110|50,-100
@@ -394,7 +397,7 @@ Azure Maps では、ピンの位置を "経度 緯度" 形式で指定する必�
 - `lw` - 線の幅 (ピクセル単位)。
 - `ra` - 円の半径をメートル単位で指定します。
 
-座標間に、赤色の線の不透明度と太さ (ピクセル) を URL パラメーターで追加します。 次の例では、線の不透明度は 50% で、太さは 4 ピクセルです。 座標は、経度: -110、緯度: 45 および経度: -100、緯度:50 です。
+座標間に、赤色の線の不透明度と太さ (ピクセル) を URL パラメーターで追加します。 次の例では、線の不透明度は 50% で、太さは 4 ピクセルです。 座標は、経度: -110、座標 (経度: -100、緯度: 50) の間に追加するには、50 を使用しています。
 
 ```
 &path=lcFF0000|la.5|lw4||-110 45|-100 50

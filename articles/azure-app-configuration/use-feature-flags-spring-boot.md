@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2019
 ms.author: mametcal
 ms.custom: mvc
-ms.openlocfilehash: 8c66e2995462701f7ddaefc3a2623c02fee883ef
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 090ede85301f9e7aff14394c8fb5c7d558d98dd4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687202"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656026"
 ---
 # <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>チュートリアル:Spring Boot アプリ内で機能フラグを使用する
 
@@ -29,7 +29,7 @@ Spring Boot Core 機能管理ライブラリでは、Spring Boot アプリケー
 
 [Spring Boot アプリに機能フラグを追加するクイックスタート](./quickstart-feature-flag-spring-boot.md)では、Spring Boot アプリケーションに機能フラグを追加する複数の方法が示されています。 このチュートリアルでは、それらの方法についてより詳細に説明します。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、次の内容を学習します。
 
 > [!div class="checklist"]
 > * アプリケーションの主要部分に機能フラグを追加して、機能の可用性を制御します。
@@ -51,11 +51,23 @@ public HelloController(FeatureManager featureManager) {
 
 App Configuration に Spring Boot アプリケーションを接続する最も簡単な方法は、構成プロバイダーを使用することです。
 
+### <a name="spring-cloud-11x"></a>Spring Cloud 1.1.x
+
 ```xml
 <dependency>
     <groupId>com.microsoft.azure</groupId>
-    <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-    <version>1.1.0.M4</version>
+    <artifactId>spring-cloud-azure-feature-management-web</artifactId>
+    <version>1.1.1</version>
+</dependency>
+```
+
+### <a name="spring-cloud-12x"></a>Spring Cloud 1.2.x
+
+```xml
+<dependency>
+    <groupId>com.microsoft.azure</groupId>
+    <artifactId>spring-cloud-azure-feature-management-web</artifactId>
+    <version>1.2.1</version>
 </dependency>
 ```
 
@@ -69,32 +81,31 @@ App Configuration に Spring Boot アプリケーションを接続する最も�
 
 ```yml
 feature-management:
-  featureSet:
-    features:
-      FeatureA: true
-      FeatureB: false
-      FeatureC:
-        EnabledFor:
-          -
-            name: Percentage
-            parameters:
-              value: 50
+  feature-set:
+    feature-a: true
+    feature-b: false
+    feature-c:
+      enabled-for:
+        -
+          name: Percentage
+          parameters:
+            value: 50
 ```
 
 慣例により、この YML ドキュメントの `feature-management` セクションが機能フラグの設定に使用されます。 前述の例は、`EnabledFor` プロパティにフィルターが定義されている 3 つの機能フラグを示しています。
 
-* `FeatureA` は "*オン*" です。
-* `FeatureB` は "*オフ*" です。
-* `FeatureC` は、`Parameters` プロパティとともに `Percentage` という名前のフィルターを指定します。 `Percentage` は、構成可能なフィルターです。 この例で、`Percentage` は、`FeatureC` フラグが "*オン*" になる確率を 50% に指定しています。
+* `feature-a` は "*オン*" です。
+* `feature-b` は "*オフ*" です。
+* `feature-c` は、`parameters` プロパティとともに `Percentage` という名前のフィルターを指定します。 `Percentage` は、構成可能なフィルターです。 この例で、`Percentage` は、`feature-c` フラグが "*オン*" になる確率を 50% に指定しています。
 
 ## <a name="feature-flag-checks"></a>機能フラグのチェック
 
-機能管理の基本的なパターンでは、最初に機能フラグが "*オン*" に設定されているかどうかをチェックします。 そうなっている場合は、機能マネージャーが、機能に含まれているアクションを実行します。 例:
+機能管理の基本的なパターンでは、最初に機能フラグが "*オン*" に設定されているかどうかをチェックします。 そうなっている場合は、機能マネージャーが、機能に含まれているアクションを実行します。 次に例を示します。
 
 ```java
 private FeatureManager featureManager;
 ...
-if (featureManager.isEnabled("FeatureA"))
+if (featureManager.isEnabledAsync("feature-a"))
 {
     // Run the following code
 }
@@ -118,11 +129,11 @@ public class HomeController {
 
 ## <a name="controller-actions"></a>コントローラー アクション
 
-MVC コントローラーでは、`@FeatureGate` 属性を使用して、特定のアクションを有効にするかどうかを制御できます。 次の `Index` アクションを実行するには、`FeatureA` が "*オン*" になっている必要があります。
+MVC コントローラーでは、`@FeatureGate` 属性を使用して、特定のアクションを有効にするかどうかを制御できます。 次の `Index` アクションを実行するには、`feature-a` が "*オン*" になっている必要があります。
 
 ```java
 @GetMapping("/")
-@FeatureGate(feature = "FeatureA")
+@FeatureGate(feature = "feature-a")
 public String index(Model model) {
     ...
 }
@@ -132,7 +143,7 @@ public String index(Model model) {
 
 ## <a name="mvc-filters"></a>MVC フィルター
 
-MVC フィルターは、機能フラグの状態に基づいてアクティブになるように設定できます。 以下のコードは、`FeatureFlagFilter` という名前の MVC フィルターを追加します。 このフィルターは、`FeatureA` が有効になっている場合のみ、MVC パイプライン内でトリガーされます。
+MVC フィルターは、機能フラグの状態に基づいてアクティブになるように設定できます。 以下のコードは、`FeatureFlagFilter` という名前の MVC フィルターを追加します。 このフィルターは、`feature-a` が有効になっている場合のみ、MVC パイプライン内でトリガーされます。
 
 ```java
 @Component
@@ -144,7 +155,7 @@ public class FeatureFlagFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-        if(!featureManager.isEnabled("FeatureA")) {
+        if(!featureManager.isEnabled("feature-a")) {
             chain.doFilter(request, response);
             return;
         }
@@ -154,13 +165,13 @@ public class FeatureFlagFilter implements Filter {
 }
 ```
 
-## <a name="routes"></a>Routes
+## <a name="routes"></a>ルート
 
-機能フラグを使用して、ルートをリダイレクトすることができます。 次のコードでは、`FeatureA` が有効になっている場合にユーザーがリダイレクトされます。
+機能フラグを使用して、ルートをリダイレクトすることができます。 次のコードでは、`feature-a` が有効になっている場合にユーザーがリダイレクトされます。
 
 ```java
 @GetMapping("/redirect")
-@FeatureGate(feature = "FeatureA", fallback = "/getOldFeature")
+@FeatureGate(feature = "feature-a", fallback = "/getOldFeature")
 public String getNewFeature() {
     // Some New Code
 }
@@ -171,7 +182,7 @@ public String getOldFeature() {
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Spring Boot アプリケーションで `spring-cloud-azure-feature-management-web` ライブラリを使用して機能フラグを実装する方法について説明しました。 Spring Boot と App Configuration での機能管理サポートの詳細については、次のリソースを参照してください。
 

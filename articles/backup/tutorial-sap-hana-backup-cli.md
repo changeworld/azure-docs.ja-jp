@@ -3,12 +3,12 @@ title: チュートリアル - CLI を使用した Azure での SAP HANA DB の�
 description: このチュートリアルでは、Azure CLI を使用して、Azure VM 上で稼働している SAP HANA データベースを Azure Backup Recovery Services コンテナーにバックアップする方法について説明します。
 ms.topic: tutorial
 ms.date: 12/4/2019
-ms.openlocfilehash: 6d35b6ebfc6f47f5775c24407b645b97112387c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cdc8a8fb09a086a2b9212c21d071f267991fa275
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75470807"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206624"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure VM 内の SAP HANA データベースをバックアップする
 
@@ -68,7 +68,7 @@ westus2    saphanaVault     saphanaResourceGroup
 
 ## <a name="register-and-protect-the-sap-hana-instance"></a>SAP HANA インスタンスの登録と保護
 
-Azure サービスで SAP HANA インスタンス (SAP HANA がインストールされている VM) を検出するには、SAP HANA マシン上で[事前登録スクリプト](https://aka.ms/scriptforpermsonhana)を実行する必要があります。 スクリプトを実行する前に、[前提条件](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#prerequisites)がすべて満たされていることを確認してください。 スクリプトの動作の詳細については、「[アクセス許可の設定](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#setting-up-permissions)」セクションを参照してください。
+Azure サービスで SAP HANA インスタンス (SAP HANA がインストールされている VM) を検出するには、SAP HANA マシン上で[事前登録スクリプト](https://aka.ms/scriptforpermsonhana)を実行する必要があります。 スクリプトを実行する前に、[前提条件](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#prerequisites)がすべて満たされていることを確認してください。 スクリプトで実行される処理の詳細については、「[事前登録スクリプトで実行される処理](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)」セクションをご参照ください。
 
 スクリプトを実行すると、前に作成した Recovery Services コンテナーに SAP HANA インスタンスを登録できます。 インスタンスを登録するには、[az backup container register](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-register) コマンドレットを使用します。 *VMResourceId* は、SAP HANA をインストールするために作成した VM のリソース ID です。
 

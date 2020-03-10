@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 1bf023dc886481354306a763a0f9c56286c57e05
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: e94ffb3d34082745c3d7ca86cfda2b93c0ed08da
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749869"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919415"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Azure VM のシステム再起動について
 
@@ -30,10 +30,7 @@ Azure で実行中のアプリケーションを VM の再起動とダウンタ�
 
 このレベルの冗長性をアプリケーションに提供するには、2 台以上の VM を可用性セットにグループ化することをお勧めします。 このような構成により、計画的または計画外のメンテナンス イベント中に、少なくとも 1 つの VM が利用可能となり、99.95% の [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_5/) が満たされます。
 
-可用性セットの詳細については、次の記事を参照してください。
-
-- [VM の可用性の管理](../windows/manage-availability.md)
-- [VM の可用性の構成](../windows/classic/configure-availability.md)
+可用性セットの詳細については、[VM の可用性の管理](../windows/manage-availability.md)に関する記事を参照してください。
 
 ## <a name="resource-health-information"></a>Resource Health の情報
 

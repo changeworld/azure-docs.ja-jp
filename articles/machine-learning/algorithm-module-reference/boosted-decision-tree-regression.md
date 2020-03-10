@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 5298655437e04736e56193c443b8a770ea929606
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 10821639fb26af935326bda0bff7895105da675c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152416"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919959"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>ブースト デシジョン ツリー回帰モジュール
 
@@ -54,7 +54,9 @@ ms.locfileid: "77152416"
   
 2.  **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。  
   
-    -   **Single Parameter (単一パラメーター)** : モデルの構成方法を決めている場合はこのオプションを選択し、特定の値のセットを引数として渡します。  
+    -   **Single Parameter (単一パラメーター)** : モデルの構成方法を決めている場合はこのオプションを選択し、特定の値のセットを引数として渡します。 
+     
+    -   **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターはわからないが、パラメーター スイープを実行したい場合は、このオプションを選択します。 反復する値の範囲を選択します。[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)では、指定した設定の可能なすべての組み合わせに対して反復処理を行い、最適な結果を生成するハイパーパラメーターを決定します。    
    
   
 3. **[Maximum number of leaves per tree]\(ツリーあたりの最大リーフ数\)** :ツリーに作成できる終端ノード (リーフ) の最大数を指定します。  
@@ -75,7 +77,6 @@ ms.locfileid: "77152416"
 
     ランダム シードは、既定では 0 に設定されます。これは、初期シード値がシステム クロックから取得されることを意味します。
   
-8. **[Allow unknown categorical levels]\(未知のカテゴリ レベルを許可する\)** :このオプションを選択すると、トレーニングと検証のセットに存在する未知の値に対してグループが作成されます。 このオプションをオフにした場合、モデルに与えることができる値は、トレーニング データに含まれているものに限定されます。 既知の値に対してはモデルの精度が低くなる可能性がある一方、新しい (不明な) 値に対しては予測精度が向上する可能性があります。
 
 9. トレーニング データセットと次のいずれかのトレーニング モジュールを追加します。
 

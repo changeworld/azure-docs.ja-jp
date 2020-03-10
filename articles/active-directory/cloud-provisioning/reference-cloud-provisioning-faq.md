@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/02/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2067bea25dae05c496c81929ae65d00565bf4f1
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: fbc1baa86bb81c8975587e84427a72ccc044805e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020762"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916576"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect に関する FAQ
 
@@ -71,6 +71,14 @@ Azure AD Connect 同期では、プロビジョニングがオンプレミスの
 **Q:クラウド プロビジョニングを使用してユーザーをプロビジョニングしています。構成を削除しました。Azure AD に古い同期済みオブジェクトが表示されたままなのはなぜですか?** 
 
 構成を削除しても、Azure AD 内の同期済みオブジェクトがクラウド プロビジョニングによってクリーンアップされることはありません。 古いオブジェクトが表示されないようにするには、構成のスコープを空のグループまたは組織単位に変更します。 プロビジョニングが実行されてオブジェクトがクリーンアップされたら、構成を無効にして削除してください。 
+
+**Q:Exchange ハイブリッドがサポートされないことには、どのような意味があるのですか?**
+
+Exchange ハイブリッド展開機能を利用すると、オンプレミスと Office 365 で Exchange メールボックスが共存できるようになります。 Azure AD Connect により、Azure AD の特定の属性セットがオンプレミスのディレクトリに同期されます。  現在クラウド プロビジョニング エージェントでは、これらの属性がオンプレミス ディレクトリに同期されません。したがって、クラウド プロビジョニング エージェントは、Azure AD Connect を置き換える機能としてはサポートされません。
+
+**Q:クラウド プロビジョニング エージェントを Windows Server Core にインストールすることはできますか?**
+
+いいえ。Server Core へのエージェントのインストールはサポートされません。
 
 ## <a name="next-steps"></a>次のステップ 
 

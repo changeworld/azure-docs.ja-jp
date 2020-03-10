@@ -9,11 +9,11 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 3d5f3ade3ef3b79ddb3996b5bf2d609b11aff8a5
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748565"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356046"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage の監視、診断、およびトラブルシューティング
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -506,7 +506,7 @@ SAS トークンを生成するためのストレージ クライアント ラ�
 
 ストレージ クライアント ライブラリによって生成された以下のクライアント側のログには、作成する BLOB 用のコンテナーをクライアントが検出できないという問題が示されています。 このログには、以下のストレージ操作の詳細が示されています。
 
-| 要求 ID | 操作 |
+| 要求 ID | Operation |
 | --- | --- |
 | 07b26a5d-... |**DeleteIfExists** メソッド。 この操作には、コンテナーの存在をチェックする **HEAD** 要求が含まれていることに注意してください。 |
 | e2d06d78… |**CreateIfNotExists** 。 この操作には、コンテナーの存在をチェックする **HEAD** 要求が含まれていることに注意してください。 ここで、 **HEAD** から 404 メッセージが返されますが、処理を続行します。 |
@@ -562,7 +562,7 @@ SAS トークンを生成するためのストレージ クライアント ラ�
 
 以下の表に、ストレージ ログのログ ファイルのサーバー側ログ メッセージの例を示します。
 
-| Name | 値 |
+| 名前 | Value |
 | --- | --- |
 | 要求の開始時刻 | 2014-05-30T06:17:48.4473697Z |
 | 操作の種類     | GetBlobProperties            |
@@ -627,7 +627,7 @@ client.SetServiceProperties(sp);
 ### <a name="the-client-is-receiving-409-messages"></a>クライアントが HTTP 409 (競合) のメッセージを受け取る
 次の表は、**DeleteIfExists** と、その直後の同じ BLOB コンテナー名を使用した **CreateIfNotExists** の 2 つのクライアント操作に関するサーバー側のログからの抜粋を示しています。 どちらのクライアント操作でも、2 つの要求がサーバーに送信されます (1 つ目がコンテナーの存在をチェックする **GetContainerProperties** 要求で、その次が **DeleteContainer** 要求または **CreateContainer** 要求です)。
 
-| Timestamp | 操作 | 結果 | コンテナー名 | クライアント要求 ID |
+| Timestamp | Operation | 結果 | コンテナー名 | クライアント要求 ID |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-… |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-… |

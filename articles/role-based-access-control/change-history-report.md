@@ -1,6 +1,6 @@
 ---
-title: Azure リソースに対する RBAC の変更のアクティビティ ログを表示する | Microsoft Docs
-description: 過去 90 日間の Azure リソースに対するロールベースのアクセス制御 (RBAC) の変更のアクティビティ ログを表示します。
+title: Azure RBAC の変更のアクティビティ ログを表示する
+description: 過去 90 日間の Azure リソースに対する Azure のロールベースのアクセス制御 (Azure RBAC) の変更のアクティビティ ログを表示します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,24 +11,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/02/2019
+ms.date: 02/27/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 753c626fe44193b83cbd992f225fe01c2ff67f89
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: e2024bd14241184338195ed635039bae774da816
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744806"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161784"
 ---
-# <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>Azure リソースに対する RBAC の変更のアクティビティ ログを表示する
+# <a name="view-activity-logs-for-azure-rbac-changes"></a>Azure RBAC の変更のアクティビティ ログを表示する
 
-監査やトラブルシューティングなどの目的で、Azure リソースに対するロールベースのアクセス制御 (RBAC) の変更に関する情報が必要になる場合があります。 サブスクリプション内のロール割り当てまたはロール定義を変更したときは常に、[Azure アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)に変更が記録されます。 アクティビティ ログを確認すると、過去 90 日間の RBAC のすべての変更を確認できます。
+監査やトラブルシューティングなどの目的で、Azure のロールベースのアクセス制御 (Azure RBAC) の変更に関する情報が必要になる場合があります。 サブスクリプション内のロール割り当てまたはロール定義が変更されると、常に [Azure アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)に変更が記録されます。 アクティビティ ログを表示して、過去 90 日間の Azure RBAC のすべての変更を確認できます。
 
 ## <a name="operations-that-are-logged"></a>ログに記録される操作
 
-アクティビティ ログに記録される RBAC 関連の操作を次に示します。
+アクティビティ ログに記録される Azure RBAC 関連の操作を次に示します。
 
 - ロール割り当ての作成
 - ロール割り当ての削除
@@ -37,19 +37,18 @@ ms.locfileid: "75744806"
 
 ## <a name="azure-portal"></a>Azure portal
 
-作業を開始する最も簡単な方法は、Azure Portal でアクティビティ ログを表示することです。 次のスクリーンショットでは、ロール割り当て操作とロール定義操作だけを表示するようにフィルター処理されたアクティビティ ログの例を示します。 また、ログを CSV ファイルとしてダウンロードするためのリンクも含まれています。
+作業を開始する最も簡単な方法は、Azure Portal でアクティビティ ログを表示することです。 次のスクリーンショットは、アクティビティ ログのロール割り当て操作の例を示しています。 ログを CSV ファイルとしてダウンロードするオプションも含まれています。
 
 ![Portal を使用したアクティビティ ログ - スクリーンショット](./media/change-history-report/activity-log-portal.png)
 
-ポータルのアクティビティ ログには複数のフィルターがあります。 RBAC 関連のフィルターを次に示します。
+ポータルのアクティビティ ログには複数のフィルターがあります。 Azure RBAC 関連のフィルターを次に示します。
 
-|Assert  |値  |
-|---------|---------|
-|イベント カテゴリ     | <ul><li>管理</li></ul>         |
-|操作     | <ul><li>ロール割り当ての作成</li> <li>ロール割り当ての削除</li> <li>カスタムのロール定義の作成または更新</li> <li>カスタムのロール定義の削除</li></ul>      |
+| Assert | Value |
+| --------- | --------- |
+| イベント カテゴリ | <ul><li>管理</li></ul> |
+| Operation | <ul><li>ロール割り当ての作成</li><li>ロール割り当ての削除</li><li>カスタムのロール定義の作成または更新</li><li>カスタムのロール定義の削除</li></ul> |
 
-
-アクティビティ ログについて詳しくは、「[アクティビティ ログでのイベントの表示](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)」をご覧ください。
+アクティビティ ログの詳細については、「[リソースのアクションを監査するアクティビティ ログの表示](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)」を参照してください。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -77,14 +76,14 @@ Get-AzLog -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Act
 
 ```Example
 Caller                  : alain@example.com
-EventTimestamp          : 4/20/2018 9:18:07 PM
+EventTimestamp          : 2/27/2020 9:18:07 PM
 $_.Authorization.Action : Microsoft.Authorization/roleAssignments/write
 Properties              :
                           statusCode     : Created
                           serviceRequestId: 11111111-1111-1111-1111-111111111111
 
 Caller                  : alain@example.com
-EventTimestamp          : 4/20/2018 9:18:05 PM
+EventTimestamp          : 2/27/2020 9:18:05 PM
 $_.Authorization.Action : Microsoft.Authorization/roleAssignments/write
 Properties              :
                           requestbody    : {"Id":"22222222-2222-2222-2222-222222222222","Properties":{"PrincipalId":"33333333-3333-3333-3333-333333333333","RoleDefinitionId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers
@@ -96,21 +95,21 @@ Properties              :
 
 Azure CLI を使用してアクティビティ ログを表示するには、[az monitor activity-log list](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) コマンドを使用します。
 
-このコマンドでは、開始時刻以降のリソース グループのアクティビティ ログが一覧表示されます。
+次のコマンドでは、リソース グループの 2 月 27 日から 7 日間のアクティビティ ログが一覧表示されます。
 
 ```azurecli
-az monitor activity-log list --resource-group pharma-sales --start-time 2018-04-20T00:00:00Z
+az monitor activity-log list --resource-group pharma-sales --start-time 2020-02-27 --offset 7d
 ```
 
-このコマンドでは、開始時刻以降の承認リソース プロバイダーのアクティビティ ログが一覧表示されます。
+次のコマンドでは、Authorization リソース プロバイダーの 2 月 27 日から 7 日間のアクティビティ ログが一覧表示されます。
 
 ```azurecli
-az monitor activity-log list --resource-provider "Microsoft.Authorization" --start-time 2018-04-20T00:00:00Z
+az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 2020-02-27 --offset 7d
 ```
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor ログ
 
-[Azure Monitor ログ](../log-analytics/log-analytics-overview.md)は、Azure のすべてのリソースの RBAC の変更の収集および分析に使用できる、もう 1 つのツールです。 Azure Monitor ログには、次のような利点があります。
+[Azure Monitor ログ](../log-analytics/log-analytics-overview.md)は、Azure のすべてのリソースに対する Azure RBAC の変更の収集および分析に使用できる別のツールです。 Azure Monitor ログには、次のような利点があります。
 
 - 複雑なクエリとロジックを記述する
 - アラート、Power BI、およびその他のツールと統合する
@@ -123,27 +122,27 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 
 1. ワークスペースの [Activity Log Analytics ソリューションを構成します](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution)。
 
-1. [アクティビティ ログを表示します](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution)。 Activity Log Analytics ソリューションの [概要] ページに簡単に移動するには、 **[Log Analytics]** オプションをクリックします。
+1. [アクティビティ ログを表示します](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution)。 Activity Log Analytics ソリューションの [概要] ページに簡単に移動する方法は、 **[ログ]** オプションをクリックすることです。
 
    ![ポータルの Azure Monitor ログのオプション](./media/change-history-report/azure-log-analytics-option.png)
 
-1. 必要に応じて、[ログ検索](../log-analytics/log-analytics-log-search.md)ページまたは[高度な分析ポータル](../azure-monitor/log-query/get-started-portal.md)を使用してログのクエリを実行し、ログを確認します。 これら 2 つのオプションの詳細については、[ログ検索ページまたは高度な分析ポータル](../azure-monitor/log-query/portals.md)に関するページをご覧ください。
+1. 必要に応じて、[Azure Monitor Log Analytics](../azure-monitor/log-query/get-started-portal.md) を使用して、ログのクエリと表示を行うことができます。 詳細については、「[Azure Monitor でログ クエリの使用を開始する](../azure-monitor/log-query/get-started-queries.md)」を参照してください。
 
 ターゲットのリソース プロバイダー別に編成された新しいロール割り当てを返すクエリを、次に示します。
 
-```
+```Kusto
 AzureActivity
-| where TimeGenerated > ago(60d) and OperationNameValue startswith "Microsoft.Authorization/roleAssignments/write" and ActivityStatus == "Succeeded"
+| where TimeGenerated > ago(60d) and Authorization contains "Microsoft.Authorization/roleAssignments/write" and ActivityStatus == "Succeeded"
 | parse ResourceId with * "/providers/" TargetResourceAuthProvider "/" *
 | summarize count(), makeset(Caller) by TargetResourceAuthProvider
 ```
 
 グラフに表示されるロール割り当ての変更を返すクエリを、次に示します。
 
-```
+```Kusto
 AzureActivity
-| where TimeGenerated > ago(60d) and OperationNameValue startswith "Microsoft.Authorization/roleAssignments"
-| summarize count() by bin(TimeGenerated, 1d), OperationNameValue
+| where TimeGenerated > ago(60d) and Authorization contains "Microsoft.Authorization/roleAssignments"
+| summarize count() by bin(TimeGenerated, 1d), OperationName
 | render timechart
 ```
 

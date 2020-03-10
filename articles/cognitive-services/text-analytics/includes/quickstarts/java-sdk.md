@@ -6,15 +6,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 02/11/2020
+ms.date: 02/26/2020
 ms.author: aahi
 ms.reviewer: tasharm, assafi
-ms.openlocfilehash: eeaef4a9970609c43c03cd784436796a6f8af174
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 79b4063d6b65d6861dd7864c4225e91f4ea5bc6d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77211388"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155406"
 ---
 <a name="HOLTop"></a>
 
@@ -24,9 +24,9 @@ ms.locfileid: "77211388"
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
 * [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) バージョン 8 以降
-
-
-[!INCLUDE [text-analytics-resource-creation](resource-creation.md)]
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Text Analytics リソースを作成"  target="_blank">Text Analytics リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 
+    * アプリケーションを Text Analytics API に接続するには、作成するリソースのキーとエンドポイントが必要です。 この作業は、このクイックスタートの中で後から行います。
+    * Free 価格レベルを使ってサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
 
 ## <a name="setting-up"></a>設定
 
@@ -138,7 +138,7 @@ static void sentimentAnalysisExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Recognized document sentiment: positive, Positive Score: 1.00, Neutral Score: 0.00, Negative Score: 0.00.
@@ -166,7 +166,7 @@ static void detectLanguageExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Detected primary language: French, ISO 6391 name: fr, score: 1.00.
@@ -199,7 +199,7 @@ static void recognizeEntitiesExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Recognized entity: Seattle, entity category: Location, entity sub-category: GPE, offset: 26, length: 7, score: 0.92.
@@ -229,7 +229,7 @@ static void recognizePIIEntitiesExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Recognized personal identifiable information entity: 123-12-1234, entity category: U.S. Social Security Number (SSN), entity sub-category: N/A, offset: 33, length: 11, score: 0.85.
@@ -268,7 +268,7 @@ static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Linked Entities:
@@ -310,7 +310,7 @@ static void extractKeyPhrasesExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```console
 Recognized phrases: 
