@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
 ms.openlocfilehash: 68cabbd00dd0b738590109cc39d8df82f5b7362d
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75681179"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356947"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Azure で App Service プランを管理する
 

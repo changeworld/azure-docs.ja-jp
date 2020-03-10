@@ -7,11 +7,11 @@ ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 2027629e1e9e297c97cbf40485ebe7dc2e3e6c0d
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368932"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398226"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions の Azure Event Grid トリガー
 

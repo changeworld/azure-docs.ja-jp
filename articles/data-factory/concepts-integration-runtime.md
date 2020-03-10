@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/28/2020
 ms.openlocfilehash: 194bc7983019a616d534a4146f86fff59f9719dc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990523"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357219"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイム
 Integration Runtime (IR) は、異なるネットワーク環境間で以下のデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。
