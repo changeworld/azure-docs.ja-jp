@@ -20,7 +20,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 11/13/2019
 ms.locfileid: "74028127"
 ---
-# <a name="manage-emergency-access-accounts-in-azure-ad"></a>Azure AD で緊急アクセス用管アカウントを管理する
+# <a name="manage-emergency-access-accounts-in-azure-ad"></a>Azure AD で緊急アクセス用管理者アカウントを管理する
 
 管理者として別のユーザーのアカウントへのサインインやアクティブ化ができなくなるので、Azure Active Directory (Azure AD) 組織から誤ってロックアウトされないようにすることが重要です。 複数の "*緊急アクセス用アカウント*" を組織に作成することにより、誤って管理アクセスが不可能になることによる影響を軽減できます。
 
