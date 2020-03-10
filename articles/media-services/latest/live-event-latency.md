@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services 内の LiveEvent の待機時間 | Microsoft Docs
-description: このトピックでは、LiveEvent の待機時間の概要を説明し、低待機時間を設定する方法を示します。
+title: Azure Media Services の LiveEvent の低待機時間設定 | Microsoft Docs
+description: このトピックでは、LiveEvent の低待機時間設定の概要について説明し、低待機時間の設定方法を示します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,14 +13,14 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/22/2019
 ms.author: juliako
-ms.openlocfilehash: 393b87aeed759950b946ccb45a008da9af4b7ebe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a82a0644fac099b568ab86ea213b98cd8e7d5c22
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702791"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199650"
 ---
-# <a name="live-event-latency-in-media-services"></a>Media Services 内のライブ イベントの待機時間
+# <a name="live-event-low-latency-settings"></a>ライブ イベントの低待機時間設定
 
 この記事では、[ライブ イベント](https://docs.microsoft.com/rest/api/media/liveevents)に対して低待機時間を設定する方法を示します。 さらに、さまざまなプレーヤーで低待機時間の設定を使用したときの一般的な結果について説明します。 結果は、CDN およびネットワーク待機時間によって異なります。
 
@@ -75,7 +75,7 @@ LiveEvent liveEvent = new LiveEvent(
 > [!NOTE]
 > エンドツーエンドの待機時間は、ローカル ネットワークの状態や、CDN キャッシュ レイヤーの導入によって変動する可能性があります。 正しい構成でテストする必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ライブ ストリーミングの概要](live-streaming-overview.md)
 - [ライブ ストリーミングのチュートリアル](stream-live-tutorial-with-api.md)

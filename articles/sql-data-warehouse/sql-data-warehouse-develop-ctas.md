@@ -1,6 +1,6 @@
 ---
 title: CREATE TABLE AS SELECT (CTAS)
-description: ソリューションを開発するための、Azure SQL Data Warehouse での CREATE TABLE AS SELECT (CTAS) ステートメントに関する説明と例。
+description: ソリューションを開発するための SQL Analytics の CREATE TABLE AS SELECT (CTAS) ステートメントの説明と例。
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,17 +10,17 @@ ms.subservice: development
 ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seoapril2019
-ms.openlocfilehash: 4992bb00fa5397ef6a4e055e08b445d35f5ed77a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 09a543ac4b4f77f0c7b7efd2411b962fa9fa2769
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685853"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195908"
 ---
-# <a name="create-table-as-select-ctas-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での CREATE TABLE AS SELECT (CTAS)
+# <a name="create-table-as-select-ctas-in-sql-analytics"></a>SQL Analytics の CREATE TABLE AS SELECT (CTAS)
 
-この記事では、ソリューションを開発するための、Azure SQL Data Warehouse の CREATE TABLE AS SELECT (CTAS) T-SQL ステートメントについて説明します。 この記事では、コード例も示します。
+この記事では、ソリューションを開発するための SQL Analytics の CREATE TABLE AS SELECT (CTAS) T-SQL ステートメントについて説明します。 この記事には、コード例も記載されています。
 
 ## <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
@@ -123,7 +123,7 @@ DROP TABLE FactInternetSales_old;
 
 ## <a name="use-ctas-to-work-around-unsupported-features"></a>CTAS を使用したサポートされていない機能の回避
 
-CTAS を使用して、下記のサポートされていない多くの機能を回避することもできます。 この方法は、多くの場合、コードが準拠するだけでなく、SQL Data Warehouse 上でより高速に実行されるため、有益です。 このパフォーマンスは、完全並列化設計の結果となります。 シナリオには以下が含まれます。
+CTAS を使用して、下記のサポートされていない多くの機能を回避することもできます。 この方法は、多くの場合、コードが準拠するだけでなく、SQL Analytics 上でより高速に実行されるため、有益です。 このパフォーマンスは、完全並列化設計の結果となります。 シナリオには以下が含まれます。
 
 * ANSI JOINS を使用した UPDATE
 * ANSI JOIN を使用した DELETE
@@ -132,11 +132,11 @@ CTAS を使用して、下記のサポートされていない多くの機能を
 > [!TIP]
 > "CTAS 優先" で考えましょう。 CTAS を使って問題を解決することは、結果として書き込むデータが増えたとしても、一般的には適切なアプローチです。
 
-## <a name="ansi-join-replacement-for-update-statements"></a>UPDATE ステートメントの代わりに使用する ANSI JOIN
+## <a name="ansi-join-replacement-for-update-statements"></a>更新ステートメントの ANSI 結合置換
 
 更新は、複雑になることがあります。 ANSI JOIN 構文を使用して UPDATE または DELETE を実行する、3 つ以上のテーブルを結合するような更新があります。
 
-このテーブルを更新しなければならない状況だと想定します。
+たとえば、次のテーブルを更新する必要があるとします。
 
 ```sql
 CREATE TABLE [dbo].[AnnualCategorySales]
@@ -174,7 +174,7 @@ ON    [acs].[EnglishProductCategoryName]    = [fis].[EnglishProductCategoryName]
 AND    [acs].[CalendarYear]                = [fis].[CalendarYear];
 ```
 
-SQL Data Warehouse では、`UPDATE` ステートメントの `FROM` 句での ANSI JOIN がサポートされていないため、前の例を変更しないで使用することはできません。
+SQL Analytics では、`UPDATE` ステートメントの `FROM` 句での ANSI JOIN がサポートされていないため、前の例を変更しないで使用することはできません。
 
 CTAS と暗黙的結合を組み合わせて使用することで、前の例を置き換えることができます。
 
@@ -208,7 +208,7 @@ DROP TABLE CTAS_acs;
 
 ## <a name="ansi-join-replacement-for-delete-statements"></a>DELETE ステートメントの代わりに使用する ANSI JOIN
 
-CTAS を使用するのが、データを削除する最適な方法である場合があります。特に、ANSI JOIN 構文が使用される `DELETE` ステートメントの場合です。 これは、SQL Data Warehouse では、`DELETE` ステートメントの `FROM` 句での ANSI JOIN がサポートされていないためです。 データを削除するのではなく、保持したいデータを選択します。
+CTAS を使用するのが、データを削除する最適な方法である場合があります。特に、ANSI JOIN 構文が使用される `DELETE` ステートメントの場合です。 これは、SQL Analytics が `DELETE` ステートメントの `FROM` 句での ANSI の結合をサポートしていないためです。 データを削除するのではなく、保持したいデータを選択します。
 
 以下は、変換された `DELETE` ステートメントの例です。
 
@@ -295,7 +295,7 @@ AS
 SELECT @d*@f as result;
 ```
 
-「result」の列では、式のデータ型と null 値の許容が引き継がれます。 データ型を引き継ぐと、結果にわずかな差異が出る場合があります。
+"結果" 列に、式のデータ型と NULL 値の許容値が引き継がれることに注目してください。 データ型を引き継ぐと、結果にわずかな差異が出る場合があります。
 
 次の例を試してみてください。
 
@@ -307,11 +307,11 @@ SELECT result,result*@d
 from ctas_r;
 ```
 
-結果 (result) に格納される値が異なります。 result 列の永続化された値が他の式で使用されるため、エラーの深刻度が増します。
+結果の格納される値が異なります。 result 列の永続化された値が他の式で使用されるため、エラーの深刻度が増します。
 
 ![CTAS の結果のスクリーンショット](media/sql-data-warehouse-develop-ctas/ctas-results.png)
 
-これは、データを移行する場合に重要になります。 2 番目のクエリの方が正確ではありますが、問題があります。 ソース システムと比較するとデータが異なるため、移行中の整合性に疑問が出てきます。 これは、「正しくない」結果が実は正しいという珍しいケースなのです。
+これは、データを移行する場合に重要になります。 2 番目のクエリの方が正確ではありますが、問題があります。 ソース システムと比較するとデータが異なるため、移行中の整合性に疑問が出てきます。 これは、"間違った" 答えが実際は正しいものである場合のまれなケースの 1 つです。
 
 2 つの結果に差異があるのは、暗黙の型変換が原因です。 1 つ目の例の場合、テーブルで列が定義されています。 行が挿入されると、暗黙の型変換が実行されます。 2 つ目の例では、列のデータ型が式で定義されているため、暗黙の型変換は実行されません。
 
@@ -330,7 +330,7 @@ AS
 SELECT ISNULL(CAST(@d*@f AS DECIMAL(7,2)),0) as result
 ```
 
-以下の点に注意してください。
+次のことを考慮してください。
 
 * CAST または CONVERT を使用できます。
 * null 値の許容を強制するには、COALESCE ではなく ISNULL を使用してください。 以下の注意を参照してください。
@@ -412,9 +412,9 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 CTAS では、型の一貫性と null 値の許容プロパティを保持することが、エンジニアリング上のベスト プラクティスだということがわかります。 計算の整合性を維持するのに役立つほか、パーティションの切り替えも確実に実行できます。
 
-CTAS は、SQL Data Warehouse で最も重要なステートメントの 1 つです。 よく理解しておいてください。 [CTAS のドキュメント](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)を参照してください。
+CTAS は、SQL Analytics で最も重要なステートメントの 1 つです。 よく理解しておいてください。 [CTAS のドキュメント](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 開発に関するその他のヒントについては、 [開発の概要](sql-data-warehouse-overview-develop.md)に関するページをご覧ください。
 
