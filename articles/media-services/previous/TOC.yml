@@ -393,6 +393,7 @@
           href: media-services-deliver-asset-download.md
         - name: フェールオーバー ストリーミング シナリオ
           href: media-services-implement-failover.md
+          displayName: 'HA, high availability'
     - name: 使用
       items:
         - name: 既存のプレーヤーを使用したメディアの再生

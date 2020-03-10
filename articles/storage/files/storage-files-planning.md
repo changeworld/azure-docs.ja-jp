@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 88c35b7b1420b5d89f9215f7da3ccf24870024e9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b5bf5cc5c44226236f39a6e32c33ebe346e36eeb
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356578"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78941051"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 [Azure Files](storage-files-introduction.md) は、サーバーレスの Azure ファイル共有を直接マウントすることと、Azure File Sync を使用してオンプレミスで Azure ファイル共有をキャッシュすることの 2 つの主な方法でデプロイできます。選択するデプロイ オプションによって、デプロイを計画する際に考慮する必要がある内容が変わります。 
@@ -45,7 +45,7 @@ Azure ファイル共有にアクセスするには、ファイル共有のユ�
 ストレージ アカウント キーを使って Azure ファイル共有にアクセスする場合は、「[ネットワーク](#networking)」セクションの説明に従って、サービス エンドポイントを使用することをお勧めします。
 
 ## <a name="networking"></a>ネットワーク
-Azure ファイル共有には、ストレージ アカウントのパブリック エンドポイントを介して、どこからでもアクセスできます。 つまり、ユーザーのログオン ID によって承認された要求など、認証済みの要求は、Azure の内外から安全に送信できます。 多くのお客様の環境では、Azure VM からの Azure ファイル共有のマウントは成功しても、オンプレミス ワークステーションでの最初のマウントは失敗します。 その理由は、SMB での通信に使用されるポート (445) が、多くの組織とインターネット サービス プロバイダー (ISP) によってブロックされているためです。 
+Azure ファイル共有には、ストレージ アカウントのパブリック エンドポイントを介して、どこからでもアクセスできます。 つまり、ユーザーのログオン ID によって承認された要求など、認証済みの要求は、Azure の内外から安全に送信できます。 多くのお客様の環境では、Azure VM からの Azure ファイル共有のマウントは成功しても、オンプレミス ワークステーションでの最初のマウントは失敗します。 その理由は、SMB での通信に使用されるポート (445) が、多くの組織とインターネット サービス プロバイダー (ISP) によってブロックされているためです。 ポート 445 からのアクセスを許可する ISP または許可しない ISP の概要を確認するには、[TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx) を参照してください。
 
 Azure ファイル共有へのアクセスのブロックを解除するための次の主な 2 つのオプションがあります。
 
