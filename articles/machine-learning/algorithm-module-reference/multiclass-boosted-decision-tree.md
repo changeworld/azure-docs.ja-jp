@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: 0bcca16bd89781428773eda168e6ee3c2f5784ef
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/19/2020
+ms.openlocfilehash: 7d51e3007b7773e28d846f8d30178426f5668cfb
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152178"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920061"
 ---
 # <a name="multiclass-boosted-decision-tree"></a>多クラスのブースト デシジョン ツリー
 
@@ -35,25 +35,26 @@ ms.locfileid: "77152178"
 1.  **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。
 
     + **Single Parameter (単一パラメーター)** : モデルの構成方法がわかっている場合、特定の値のセットを引数として渡すことができます。
-
-
-    *  **[Maximum number of leaves per tree]\(ツリーあたりの最大リーフ数\)** は、ツリーに作成できる終端ノード (リーフ) の最大数を制限します。
     
-        この値を増やすと、ツリーのサイズが大きくなって精度が上がる反面、オーバーフィットが発生したり、トレーニング時間が長くなったりするおそれがあります。
+    + **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわかっておらず、パラメーター スイープを実行したい場合は、このオプションを選択します。 反復する値の範囲を選択します。[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)では、指定した設定の可能なすべての組み合わせに対して反復処理を行い、最適な結果を生成するハイパーパラメーターを決定します。  
+
+1. **[Maximum number of leaves per tree]\(ツリーあたりの最大リーフ数\)** は、ツリーに作成できる終端ノード (リーフ) の最大数を制限します。
+    
+        By increasing this value, you potentially increase the size of the tree and achieve higher precision, at the risk of overfitting and longer training time.
   
-    * **[Minimum number of samples per leaf node]\(リーフ ノードごとの最小サンプル数\)** は、ツリーの終端ノード (リーフ) を作成するうえで必要なケース数を指定します。  
+1. **[Minimum number of samples per leaf node]\(リーフ ノードごとの最小サンプル数\)** は、ツリーの終端ノード (リーフ) を作成するうえで必要なケース数を指定します。  
 
-         この値を増やすと、新しいルールを作成するためのしきい値が大きくなります。 たとえば、既定値の 1 では、ケースが 1 つであっても新しいルールを作成できます。 この値を 5 に増やした場合、同じ条件を満たすケースがトレーニング データに少なくとも 5 つ含まれている必要があります。
+         By increasing this value, you increase the threshold for creating new rules. For example, with the default value of 1, even a single case can cause a new rule to be created. If you increase the value to 5, the training data would have to contain at least five cases that meet the same conditions.
 
-    * **[学習速度]** は、学習時のステップ サイズを定義します。 0 から 1 までの数値を入力してください。
+1. **[学習速度]** は、学習時のステップ サイズを定義します。 0 から 1 までの数値を入力してください。
 
-         学習器がどの程度の速さ (遅さ) で最適解に収束するかは、学習速度によって決まります。 ステップ サイズが大きすぎると、最適解から離れていってしまう可能性があります。 ステップ サイズが小さすぎると、トレーニングが最適解に収束するまでの時間が長くなります。
+         The learning rate determines how fast or slow the learner converges on an optimal solution. If the step size is too large, you might overshoot the optimal solution. If the step size is too small, training takes longer to converge on the best solution.
 
-    * **[Number of trees constructed]\(構築するツリーの数\)** は、集団として作成するデシジョン ツリーの総数を指定します。 作成するデシジョン ツリーを増やすと、カバレッジが向上する可能性はありますが、トレーニング時間が長くなります。
+1. **[Number of trees constructed]\(構築するツリーの数\)** は、集団として作成するデシジョン ツリーの総数を指定します。 作成するデシジョン ツリーを増やすと、カバレッジが向上する可能性はありますが、トレーニング時間が長くなります。
 
-    *  **[Random number seed]\(乱数シード\)** に、ランダム シード値として使用する値 (負でない整数) を必要に応じて設定します。 シードを指定することによって、同じデータとパラメーターで繰り返し実行したときの再現性が確保されます。  
+1. **[Random number seed]\(乱数シード\)** に、ランダム シード値として使用する値 (負でない整数) を必要に応じて設定します。 シードを指定することによって、同じデータとパラメーターで繰り返し実行したときの再現性が確保されます。  
 
-         ランダム シードは、既定では 42 に設定されています。 異なるランダム シードを使用して連続実行すると、都度異なる結果を得ることができます。
+         The random seed is set by default to 42. Successive runs using different random seeds can have different results.
 
 > [!Note]
 > **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、タグ付けされたデータセットと[モデルのトレーニング](./train-model.md) モジュールを接続します。

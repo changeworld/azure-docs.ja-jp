@@ -6,18 +6,18 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/30/2018
-ms.author: pabutler
-ms.openlocfilehash: 506b34281ba8ab5b669c87b4699fb8b138c8734a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/27/2020
+ms.author: evansma
+ms.openlocfilehash: d744c0bdcae177ca5cee5617622f04da7312e15f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819185"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268312"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Azure と Dynamics 365 のコンサルティング サービス プラン
 
-この記事では、Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> または <a href="https://appsource.microsoft.com">AppSource</a> のいずれかにコンサルティング サービス オファーを発行する方法について説明します。 Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365</a>、<a href="https://powerbi.microsoft.com">Power BI</a>、および <a href="https://powerapps.microsoft.com">PowerApps</a> に基づくソリューションは、AppSource 上に掲載できます。 これ以外の Microsoft <a href="https://azure.microsoft.com/services">Azure サービス</a>に基づくその他のオファーは、Azure Marketplace 内に掲載できます。
+この記事では、Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> または <a href="https://appsource.microsoft.com">AppSource</a> のいずれかにコンサルティング サービス オファーを発行する方法について説明します。 Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365</a>、<a href="https://powerbi.microsoft.com">Power BI</a>、および <a href="https://powerapps.microsoft.com">Power Apps</a> に基づくソリューションは、AppSource 上に掲載できます。 これ以外の Microsoft <a href="https://azure.microsoft.com/services">Azure サービス</a>に基づくその他のオファーは、Azure Marketplace 内に掲載できます。
 
 ## <a name="publishing-benefits"></a>公開の利点
 
@@ -35,16 +35,18 @@ Microsoft のいずれかのマーケットプレースに発行することに�
 - 「[コンサルティング サービスの前提条件](./cpp-consulting-service-prerequisites.md)」には、コンサルティング サービス オファーを発行するための要件が記載されています。
  
     - Microsoft Azure
-    - Dynamics 365 for Customer Engagement 
-    - Dynamics 365 for Finance & Operations 
+    - Dynamics 365 Customer Engagement 
+    - Dynamics 365 Finance & Operations 
+    - Dynamics 365 Customer Insights
     - Dynamics 365 Business Central 
     - Power BI 
-    - PowerApps
+    - Power Apps
+    - Power Automate
 - [オファーの新規作成](./cpp-consulting-service-create-offer.md)関するページには、Cloud パートナー ポータルを使用して、コンサルティング サービス オファー エントリを作成するために必要な手順が記載されています。
     - [オファー設定を定義する](./cpp-consulting-service-define-offer-settings.md)。
     - [ネットショップの詳細を入力し、Azure Marketplace と AppSource のどちらで発行するかを入力する](./cpp-consulting-service-storefront-details.md)。
 - [オファーの発行に関する記事](./cpp-consulting-service-publish-offer.md)には、発行するオファーを送信する方法が記載されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これらの手順でコンサルティング サービス プランを発行する前に、コンサルティング サービス プランを発行するための[前提条件](./cpp-consulting-service-prerequisites.md)を満たす必要があります。

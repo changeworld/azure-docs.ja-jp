@@ -4,15 +4,15 @@ description: Azure Cosmos DB の SQL システム関数 StringToNumber につい
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8b9596738d9b02fa26f9c363287323b905654a1f
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 5ca8d0c4a6d244823dda6f0f79a3cf5c743a12a9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349227"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296424"
 ---
 # <a name="stringtonumber-azure-cosmos-db"></a>StringToNumber (Azure Cosmos DB)
  数値に変換された式を返します。 式を変換できない場合は、undefined を返します。  
@@ -34,7 +34,7 @@ StringToNumber(<str_expr>)
   
 ## <a name="examples"></a>例
   
-  次の例では、異なる型間で `StringToNumber` がどのように動作するかを示します。 
+  次の例は、異なる型間で `StringToNumber` がどのように動作するかを示します。 
 
 空白は数値の前後のみで使用できます。
 
@@ -83,7 +83,11 @@ SELECT
 {{}}
 ```  
 
-## <a name="next-steps"></a>次の手順
+## <a name="remarks"></a>解説
+
+このシステム関数では、インデックスは使用されません。
+
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB の文字列関数](sql-query-string-functions.md)
 - [Azure Cosmos DB のシステム関数](sql-query-system-functions.md)

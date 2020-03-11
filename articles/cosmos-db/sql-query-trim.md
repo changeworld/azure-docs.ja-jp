@@ -4,15 +4,15 @@ description: Azure Cosmos DB の SQL システム関数 TRIM について説明�
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: bcb62dc5b43e05fa96ce9bfb428d6fc9160edde9
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 073efbd91e637a17693617b16c7787d61e150ad7
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349112"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304244"
 ---
 # <a name="trim-azure-cosmos-db"></a>TRIM (Azure Cosmos DB)
  文字列式の先頭と末尾の空白を削除して返します。  
@@ -46,7 +46,11 @@ SELECT TRIM("   abc") AS t1, TRIM("   abc   ") AS t2, TRIM("abc   ") AS t3, TRIM
 [{"t1": "abc", "t2": "abc", "t3": "abc", "t4": "abc"}]  
 ``` 
 
-## <a name="next-steps"></a>次の手順
+## <a name="remarks"></a>解説
+
+このシステム関数では、インデックスは使用されません。
+
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB の文字列関数](sql-query-string-functions.md)
 - [Azure Cosmos DB のシステム関数](sql-query-system-functions.md)

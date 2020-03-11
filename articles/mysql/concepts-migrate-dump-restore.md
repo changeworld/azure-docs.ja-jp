@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 65cd5e637434c717ab9ba1b5598c467eea9b4a74
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 2/27/2020
+ms.openlocfilehash: b15da2aa83231bfdc8732995888349b06ab56d15
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770936"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163779"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>ダンプと復元を使用した Azure Database for MySQL への MySQL データベースの移行
 この記事では、Azure Database for MySQL でデータベースをバックアップして復元する一般的な 2 つの方法について説明します
@@ -22,10 +22,10 @@ ms.locfileid: "74770936"
 このハウツー ガイドの手順を実行するには、以下が必要です。
 - [Azure Database for MySQL サーバー - Azure Portal を使用して作成](quickstart-create-mysql-server-database-using-azure-portal.md)
 - コンピューターにインストールされている [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) コマンド ライン ユーティリティ
-- ダンプおよび復元コマンドを実行する、MySQL Workbench ([MySQL Workbench のダウンロード](https://dev.mysql.com/downloads/workbench/))、Toad、Navicat、またはサード パーティ製の他の MySQL ツール
+- ダンプおよび復元コマンドを実行する MySQL Workbench ([MySQL Workbench のダウンロード](https://dev.mysql.com/downloads/workbench/))、またはサード パーティ製の他の MySQL ツール。
 
 ## <a name="use-common-tools"></a>一般的なツールの使用
-MySQL Workbench、mysqldump、Toad、Navicat などの一般的なユーティリティとツールを使用して、Azure Database for MySQL にリモートで接続し、データを復元します。 こうしたツールは、インターネットに接続されたクライアント コンピューターで、Azure Database for MySQL に接続するときに使用します。 SSL で暗号化された接続を使ってセキュリティを強化するために、[Azure Database for MySQL での SSL 接続の構成](concepts-ssl-connection-security.md)に関するページもご覧ください。 Azure Database for MySQL に移行するとき、ダンプ ファイルをクラウドの特別な場所に移動する必要はありません。 
+MySQL Workbench または mysqldump などの一般的なユーティリティとツールを使用して、Azure Database for MySQL にリモートで接続してデータを復元します。 こうしたツールは、インターネットに接続されたクライアント コンピューターで、Azure Database for MySQL に接続するときに使用します。 SSL で暗号化された接続を使ってセキュリティを強化するために、[Azure Database for MySQL での SSL 接続の構成](concepts-ssl-connection-security.md)に関するページもご覧ください。 Azure Database for MySQL に移行するとき、ダンプ ファイルをクラウドの特別な場所に移動する必要はありません。 
 
 ## <a name="common-uses-for-dump-and-restore"></a>ダンプと復元の一般的な使用法
 いくつかの一般的なシナリオでは、mysqldump や mysqlpump などの MySQL ユーティリティを使用して、データベースをダンプし、Azure MySQL Database に読み込むことができます。 他のシナリオでは、代わりに[インポートとエクスポート](concepts-migrate-import-export.md)の方法を使用できます。
@@ -61,7 +61,7 @@ $ mysqldump --opt -u [uname] -p[pass] [dbname] > [backupfile.sql]
 指定するパラメーターは次のとおりです。
 - [uname]: データベースのユーザー名 
 - [pass]: データベースのパスワード (-p とパスワードの間にスペースがありません) 
-- [dbname]­: データベースの名前 
+- [dbname]: データベースの名前 
 - [backupfile.sql]: データベース バックアップのファイル名 
 - [--opt]: mysqldump オプション 
 
@@ -80,7 +80,7 @@ $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sq
 ```
 
 ## <a name="create-a-database-on-the-target-azure-database-for-mysql-server"></a>Azure Database for MySQL ターゲット サーバーでのデータベースの作成
-データを移行する Azure Database for MySQL ターゲット サーバーに空のデータベースを作成します。 データベースは、MySQL Workbench、Toad、Navicat などのツールを使用して作成します。 データベースの名前は、ダンプされたデータが含まれるデータベースと同じにすることも、別の名前でデータベースを作成することもできます。
+データを移行する Azure Database for MySQL ターゲット サーバーに空のデータベースを作成します。 MySQL Workbench などのツールを使用して、データベースを作成します。 データベースの名前は、ダンプされたデータが含まれるデータベースと同じにすることも、別の名前でデータベースを作成することもできます。
 
 接続するために、Azure Database for MySQL の **[概要]** で接続情報を見つけます。
 
@@ -119,6 +119,6 @@ $ mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p test
 5. **参照**ボタンを使用して、データベース ファイルを検索します。 
 6. **[実行]** をクリックすると、バックアップがエクスポートされ、SQL コマンドが実行された後、データベースが再作成されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure Database for MySQL にアプリケーションを接続します](./howto-connection-string.md)。
 - Azure Database for MySQL へのデータベースの移行については、「[データベース移行ガイド](https://aka.ms/datamigration)」をご覧ください。

@@ -13,12 +13,12 @@ ms.date: 04/08/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: dbbe501b27bf7ae4d4cb4bc00501aeb1fb06819e
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 5e4c6fb91b93b1035c68350a5f77a3c16db7323f
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161224"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300114"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Azure Active Directory との統合
 
@@ -38,13 +38,13 @@ ms.locfileid: "77161224"
 
 ### <a name="browse-for-users-manage-user-provisioning-and-control-access-to-your-application"></a>ユーザーの参照、ユーザーのプロビジョニングの管理、およびアプリケーションへのアクセスの制御
 
-**ディレクトリのユーザーを参照します。**  他のユーザーを招待したりアクセスを許可するときは、Graph API を使用して組織内のユーザーを検索して参照できます。電子メール アドレスを入力する必要はありません。 ユーザーは、組織の詳細な階層の表示も含めて、使い慣れたアドレス帳スタイルのインターフェイスを使用して参照できます。 [Graph API](active-directory-graph-api.md) に関する詳細を参照してください。
+**ディレクトリのユーザーを参照します。**  他のユーザーを招待したりアクセスを許可するときは、Microsoft Graph API を使用して組織内のユーザーを検索して参照できます。メール アドレスを入力する必要はありません。 ユーザーは、組織の詳細な階層の表示も含めて、使い慣れたアドレス帳スタイルのインターフェイスを使用して参照できます。 [Microsoft Graph API](https://docs.microsoft.com/graph/overview) の詳細についてご確認ください。
 
-**顧客が既に管理している Active Directory のグループと配布リストを再利用します。**  Azure AD には、顧客が電子メールの配布やアクセスの管理に既に使用しているグループが含まれます。 Graph API を使用して、これらのグループを再利用できます。顧客がアプリケーションで別のグループ セットを作成して管理する必要はありません。 グループの情報は、サインイン トークンでアプリケーションにも送信できます。 [Graph API](active-directory-graph-api.md) に関する詳細を参照してください。
+**顧客が既に管理している Active Directory のグループと配布リストを再利用します。**  Azure AD には、顧客が電子メールの配布やアクセスの管理に既に使用しているグループが含まれます。 Microsoft Graph API を使用して、これらのグループを再利用できます。顧客がアプリケーションで別のグループ セットを作成して管理する必要はありません。 グループの情報は、サインイン トークンでアプリケーションにも送信できます。 [Microsoft Graph API](https://docs.microsoft.com/graph/overview) の詳細についてご確認ください。
 
-**Azure AD を使用して、アプリケーションにアクセスできるユーザーを制御します。**  Azure AD の管理者およびアプリケーション所有者は、特定のユーザーおよびグループにアプリケーションへのアクセスを割り当てることができます。 Graph API を使用すると、このリストを読み取ったり、リストを使用してアプリケーション内のリソースやアクセスのプロビジョニングとプロビジョニング解除を制御したりできます。
+**Azure AD を使用して、アプリケーションにアクセスできるユーザーを制御します。**  Azure AD の管理者およびアプリケーション所有者は、特定のユーザーおよびグループにアプリケーションへのアクセスを割り当てることができます。 Microsoft Graph API を使用すると、このリストを読み取ったり、リストを使用してアプリケーション内のリソースやアクセスのプロビジョニングとプロビジョニング解除を制御したりできます。
 
-**ロール ベースの Access Control に Azure AD を使用します。**  管理者とアプリケーション所有者は、アプリケーションを Azure AD に登録するときに定義したロールに、ユーザーやグループを割り当てることができます。 ロール情報はサインイン トークンでアプリケーションに送信され、Graph API を使用して読み取ることができます。 [承認への Azure AD の使用](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/)に関する詳細を参照してください。
+**ロール ベースの Access Control に Azure AD を使用します。**  管理者とアプリケーション所有者は、アプリケーションを Azure AD に登録するときに定義したロールに、ユーザーやグループを割り当てることができます。 ロール情報はサインイン トークンでアプリケーションに送信され、Microsoft Graph API を使用して読み取ることができます。 [承認への Azure AD の使用](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/)に関する詳細を参照してください。
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>ユーザーのプロファイル、予定表、電子メール、連絡先、ファイル、その他へのアクセスの取得
 

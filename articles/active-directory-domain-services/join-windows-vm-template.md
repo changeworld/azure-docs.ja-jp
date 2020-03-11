@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: e3dffca1d5e98de60941aab4400469810c9cfc30
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: c9b25fe7bc47e05972aebb194e9d94c1ea6dd247
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613761"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298736"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure Active Directory Domain Services マネージド ドメインに Windows Server 仮想マシンを参加させる
 
@@ -34,7 +34,7 @@ Azure 仮想マシン (VM) のデプロイと構成を自動化するには、Re
     * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
 * Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
     * 必要であれば、1 つ目のチュートリアルで [Azure Active Directory Domain Services インスタンスを作成して構成][create-azure-ad-ds-instance]します。
-* Azure AD テナントの *Azure AD DC administrators* グループのメンバーであるユーザー アカウント。
+* Azure AD DS のマネージド ドメインの一部であるユーザー アカウント。
 
 ## <a name="azure-resource-manager-template-overview"></a>Azure Resource Manager テンプレートの概要
 
@@ -88,13 +88,13 @@ Windows Server VM を作成して、それを Azure AD DS マネージド ドメ
     |---------------------------|-------|
     | サブスクリプション              | Azure AD Domain Services を有効にしたのと同じ Azure サブスクリプションを選択してください。 |
     | Resource group            | お使いの VM 用のリソース グループを選択します。 |
-    | Location                  | お使いの VM 用の場所を選択します。 |
+    | 場所                  | お使いの VM 用の場所を選択します。 |
     | 既存の VNET の名前        | VM の接続先となる既存の仮想ネットワークの名前 (*myVnet* など)。 |
     | 既存のサブネットの名前      | 既存の仮想ネットワーク サブネットの名前 (*Workloads* など)。 |
     | DNS ラベル プレフィックス          | VM に使用する DNS 名を入力します (*myvm* など)。 |
     | VM サイズ                   | VM サイズを指定します (*Standard_DS2_v2* など)。 |
     | 参加するドメイン            | Azure AD DS マネージド ドメインの DNS 名 (*aaddscontoso.com* など)。 |
-    | ドメイン ユーザー名           | `contosoadmin@aaddscontoso.com` など、VM をマネージド ドメインに参加させるために使用する必要がある、Azure AD DS マネージド ドメインでのユーザー アカウント。 このアカウントは、 *[Azure AD DC administrators]\(Azure AD DC 管理者\)* グループのメンバーになっている必要があります。 |
+    | ドメイン ユーザー名           | `contosoadmin@aaddscontoso.com` など、VM をマネージド ドメインに参加させるために使用する必要がある、Azure AD DS マネージド ドメインでのユーザー アカウント。 このアカウントは、Azure AD DS のマネージド ドメインの一部である必要があります。 |
     | ドメイン パスワード           | 前の設定で指定したユーザー アカウントのパスワード。 |
     | オプションの OU パス          | VM を追加するカスタム OU。 このパラメーターに値を指定しない場合、VM は既定の *[AAD DC Computers]\(AAD DC コンピューター\)* の OU に追加されます。 |
     | VM 管理者のユーザー名         | VM 上に作成するためのローカル管理者アカウントを指定します。 |
@@ -104,7 +104,7 @@ Windows Server VM を作成して、それを Azure AD DS マネージド ドメ
 
 > [!WARNING]
 > **パスワードの取り扱いには注意してください。**
-> テンプレート パラメーター ファイルでは、 *[Azure AD DC administrators]\(Azure AD DC 管理者\)* グループのメンバーになっているユーザー アカウントのパスワードが要求されます。 このファイルに値を手動で入力して、ファイル共有やその他の共有の場所上でアクセス可能なままにしておくことはできません。
+> テンプレート パラメーター ファイルでは、Azure AD DS のマネージド ドメインの一部であるユーザー アカウントのパスワードが要求されます。 このファイルに値を手動で入力して、ファイル共有やその他の共有の場所上でアクセス可能なままにしておくことはできません。
 
 デプロイが正常に完了するまでには、数分かかります。 完了すると、Windows VM が作成されて、Azure AD DS マネージド ドメインに参加します。 VM は、ドメイン アカウントを使用して、管理やサインインを行うことができます。
 
@@ -121,9 +121,9 @@ Azure AD DS マネージド ドメインへの参加を検討している既存�
     |---------------------------|-------|
     | サブスクリプション              | Azure AD Domain Services を有効にしたのと同じ Azure サブスクリプションを選択してください。 |
     | Resource group            | 既存の VM に使用するリソース グループを選択します。 |
-    | Location                  | 既存の VM の場所を選択します。 |
+    | 場所                  | 既存の VM の場所を選択します。 |
     | VM リスト                   | Azure AD DS マネージド ドメインに参加させるために、*MyVM1,myVM2* のように、既存の VM のコンマ区切りリストを入力します。 |
-    | ドメイン参加ユーザー名     | `contosoadmin@aaddscontoso.com` など、VM をマネージド ドメインに参加させるために使用する必要がある、Azure AD DS マネージド ドメインでのユーザー アカウント。 このアカウントは、 *[Azure AD DC administrators]\(Azure AD DC 管理者\)* グループのメンバーになっている必要があります。 |
+    | ドメイン参加ユーザー名     | `contosoadmin@aaddscontoso.com` など、VM をマネージド ドメインに参加させるために使用する必要がある、Azure AD DS マネージド ドメインでのユーザー アカウント。 このアカウントは、Azure AD DS のマネージド ドメインの一部である必要があります。 |
     | ドメイン参加ユーザー パスワード | 前の設定で指定したユーザー アカウントのパスワード。 |
     | オプションの OU パス          | VM を追加するカスタム OU。 このパラメーターに値を指定しない場合、VM は既定の *[AAD DC Computers]\(AAD DC コンピューター\)* の OU に追加されます。 |
 
@@ -131,7 +131,7 @@ Azure AD DS マネージド ドメインへの参加を検討している既存�
 
 > [!WARNING]
 > **パスワードの取り扱いには注意してください。**
-> テンプレート パラメーター ファイルでは、 *[Azure AD DC administrators]\(Azure AD DC 管理者\)* グループのメンバーになっているユーザー アカウントのパスワードが要求されます。 このファイルに値を手動で入力して、ファイル共有やその他の共有の場所上でアクセス可能なままにしておくことはできません。
+> テンプレート パラメーター ファイルでは、Azure AD DS のマネージド ドメインの一部であるユーザー アカウントのパスワードが要求されます。 このファイルに値を手動で入力して、ファイル共有やその他の共有の場所上でアクセス可能なままにしておくことはできません。
 
 デプロイが正常に完了するまでには、しばらくかかります。 完了すると、指定した Windows VM が Azure AD DS マネージド ドメインに参加し、ドメイン アカウントを使用して管理やサインインができるようになります。
 

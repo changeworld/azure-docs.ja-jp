@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 02/06/2020
-ms.openlocfilehash: 5f9e15b83c36c6c19fbe93c5f1df365f6f763c81
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/28/2020
+ms.openlocfilehash: e2d1a1c6e924e879e05af80e2e36a38e8a5cde66
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187683"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273953"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>セルフホステッド IR を Azure Data Factory で Azure-SSIS IR のプロキシとして構成する
 
@@ -165,8 +165,9 @@ Azure-SSIS IR で実行される 2 番目のステージング タスクは個�
 
 ## <a name="current-limitations"></a>現在の制限
 
-- ODBC (Open Database Connectivity)、OLEDB、フラット ファイルの接続マネージャーと、ODBC、OLEDB、フラット ファイルのソースまたは OLEDB 変換先を使用するデータ フロー タスクのみが現在サポートされています。 
+- ODBC (Open Database Connectivity)、OLEDB、またはフラット ファイルの接続マネージャーと、ODBC、OLEDB、またはフラット ファイルのソースを使用するデータ フロー タスクのみが現在サポートされています。 
 - *アカウント キー*、*Shared Access Signature (SAS) URI*、または*サービス プリンシパル*の認証を使って構成された Azure Blob Storage のリンクされたサービスのみが現在サポートされています。
+- OLEDB ソースの *ParameterMapping* はまだサポートされていません。 回避策として、*AccessMode* として*変数からの SQL コマンド*を使用し、*式*を使用して SQL コマンドに変数やパラメーターを挿入してください。 これを示すため、[Azure Storage Explorer](https://storageexplorer.com/) で SAS URI ( *https://ssisazurefileshare.blob.core.windows.net/publicpreview?sp=rl&st=2018-04-08T14%3A10%3A00Z&se=2020-04-10T14%3A10%3A00Z&sv=2017-04-17&sig=mFxBSnaYoIlMmWfxu9iMlgKIvydn85moOnOch6%2F%2BheE%3D&sr=c* ) を入力し、パブリック プレビュー コンテナーの *SelfhostedIrProxy/Limitations* フォルダーからサンプル パッケージ *(ParameterMappingSample.dtsx)* を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

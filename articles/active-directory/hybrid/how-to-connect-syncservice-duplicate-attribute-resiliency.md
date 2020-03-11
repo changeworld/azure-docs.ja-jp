@@ -16,15 +16,15 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a65af5a5ea0629b617c4e736d8c110cbb9aa540c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5585f0cd04dca4145f0322db9d625e35372b24b5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60348811"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298345"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>ID 同期と重複属性の回復性
-重複属性の回復性は、Microsoft のいずれかの同期ツールを実行しているときに **UserPrincipalName** や **ProxyAddress** の競合によって引き起こされる不整合を避けるために Azure Active Directory に備えられている機能です。
+重複属性の回復性は、Microsoft のいずれかの同期ツールを実行しているときに **UserPrincipalName** と SMTP **ProxyAddress** の競合によって引き起こされる不整合を避けるために Azure Active Directory に備えられている機能です。
 
 この 2 つの属性は、通常、特定の Azure Active Directory テナント内のすべての **User**、**Group**、および **Contact** オブジェクトにわたって一意である必要があります。
 
@@ -40,7 +40,10 @@ ms.locfileid: "60348811"
 
 ## <a name="behavior-with-duplicate-attribute-resiliency"></a>重複属性の回復性による動作
 属性が重複するオブジェクトのプロビジョニングまたは更新を完全に失敗させる代わりに、Azure Active Directory は一意性の制約に違反する重複属性を "検疫" します。 この属性が、UserPrincipalName のように、プロビジョニングに必要な場合、サービスはプレースホルダー値を割り当てます。 これらの一時的な値の形式は、  
-“***\<OriginalPrefix>+\<4DigitNumber>\@\<InitialTenantDomain>.onmicrosoft.com***” です。  
+_**\<OriginalPrefix>+\<4DigitNumber>\@\<InitialTenantDomain>.onmicrosoft.com**_ です。
+
+属性の回復性プロセスでは、UPN と SMTP **ProxyAddress** の値のみが処理されます。
+
 **ProxyAddress** のように、この属性が必須でない場合、Azure Active Directory は競合属性を検疫し、オブジェクトの作成または更新を続行します。
 
 属性の検疫時に、競合に関する情報は、従来の動作で使用されるのと同じエラー レポート電子メールで送信されます。 ただし、この情報は、検疫が発生した際にエラー レポートに 1 回表示されるだけで、その後の電子メールではログに記録されません。 また、このオブジェクトのエクスポートは成功しているため、同期クライアントはエラーをログに記録せず、後続の同期サイクルで作成/更新操作を再試行しません。
@@ -121,7 +124,7 @@ ms.locfileid: "60348811"
 ## <a name="microsoft-365-admin-center"></a>Microsoft 365 管理センター
 Microsoft 365 管理センターでは、ディレクトリ同期エラーを表示できます。 Microsoft 365 管理センターのレポートには、これらのエラーを持つ **User** オブジェクトだけが表示されます。 **Group** と **Contact** の間の競合に関する情報は表示されません。
 
-![アクティブ ユーザー](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "アクティブ ユーザー")
+![アクティブ ユーザー](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "[アクティブ ユーザー]")
 
 Microsoft 365 管理センターでディレクトリ同期エラーを表示する方法については、「 [Office 365 でディレクトリ同期エラーを確認する](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)」を参照してください。
 
@@ -129,7 +132,7 @@ Microsoft 365 管理センターでディレクトリ同期エラーを表示す
 重複属性の競合があるオブジェクトがこの新しい動作で処理されると、テナントの技術的通知の連絡先に送信される標準の ID 同期のエラー レポート メールに、通知が含められます。 ただし、この動作には重要な変更があります。 以前は、重複属性の競合に関する情報が、競合が解決されるまで、後続のすべてのエラー レポートに含められました。 この新しい動作では、特定の競合のエラー通知は、競合する属性が検疫されたときに 1 回だけ表示されます。
 
 ProxyAddress の競合に関する電子メール通知の例を、次に示します。  
-    ![アクティブ ユーザー](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "アクティブ ユーザー")  
+    ![アクティブ ユーザー](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "[アクティブ ユーザー]")  
 
 ## <a name="resolving-conflicts"></a>競合の解決
 これらのエラーのトラブルシューティングの方針と解決の方法は、以前の重複属性エラーの処理方法と変わりはありません。 唯一の違いは、タイマー タスクがサービス側のテナント全体をスイープして、競合が解決したら問題の属性を適切なオブジェクトに自動的に追加することです。
@@ -142,7 +145,7 @@ ProxyAddress の競合に関する電子メール通知の例を、次に示し�
 **主要な動作:**
 
 1. 特定の属性構成を持つオブジェクトは、検疫されている重複属性ではなく、エクスポート エラーを受信し続けます。  
-   例:
+   次に例を示します。
    
     a. AD で、UPN を **Joe\@contoso.com** および ProxyAddress **smtp:Joe\@contoso.com** として新しいユーザーが作成されました。
    
@@ -154,7 +157,7 @@ ProxyAddress の競合に関する電子メール通知の例を、次に示し�
 **Office ポータル レポート**:
 
 1. UPN 競合セットの 2 つのオブジェクトの詳細なエラー メッセージは、同一です。 つまり、両方で UPN が変更/検疫されたと示されますが、実際には一方だけでデータが変更されています。
-2. UPN 競合の詳細なエラー メッセージは、UPN を変更/検疫したユーザーの正しくない displayName を表示します。 例:
+2. UPN 競合の詳細なエラー メッセージは、UPN を変更/検疫したユーザーの正しくない displayName を表示します。 次に例を示します。
    
     a. **ユーザー A** が最初に **UPN = User\@contoso.com** で同期を実行します。
    
@@ -167,7 +170,7 @@ ProxyAddress の競合に関する電子メール通知の例を、次に示し�
 **ID 同期のエラー レポート**:
 
 *この問題を解決する方法の手順*のリンクが正しくありません。  
-    ![アクティブ ユーザー](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "アクティブ ユーザー")  
+    ![アクティブ ユーザー](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "[アクティブ ユーザー]")  
 
 指している必要があります[https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency)。
 

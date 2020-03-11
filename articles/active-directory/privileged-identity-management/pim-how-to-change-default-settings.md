@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/07/2020
+ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77132ae9a10eda7170ac56f2b7c65a3ebcde8d6d
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 4dd525973a8c8ba5bb3103126b4ddb5b6973590a
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77499023"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205026"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールの設定を構成する
 
@@ -107,7 +107,7 @@ Privileged Identity Management では、2 つの異なるシナリオで、必�
 
 ## <a name="require-approval-to-activate"></a>アクティブ化の承認を必須にする
 
-ロールをアクティブ化するには承認を必須にする場合は、次の手順を実行します。
+複数の承認者を設定した場合、承認は、承認者が 1 人でも承認または拒否すると直ちに完了します。 少なくとも 2 人のユーザーから承認を要求することはできません。 ロールをアクティブ化するために承認を必須にする場合は、次の手順を実行します。
 
 1. **[アクティブにするには承認が必要です]** チェックボックスをオンにします。
 

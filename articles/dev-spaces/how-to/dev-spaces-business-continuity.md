@@ -8,12 +8,12 @@ ms.topic: conceptual
 description: Azure Dev Spaces と Azure Kubernetes Services を使用して、ビジネス継続性の提供とディザスター リカバリーの準備を行う方法について説明します
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 8a223e9610d2b243cd78bf8b674262d6438421a9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 37c0048bfa7e72b25eb56603fc027045eba25cea
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438518"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78295829"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Azure Dev Spaces での事業継続とディザスター リカバリー
 
@@ -27,11 +27,9 @@ Azure Dev Spaces は Azure Kubernetes Service (AKS) の機能です。 AKS で�
 
 AKS の複数リージョンのデプロイの概要については、「[複数リージョンへのデプロイを計画する](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment)」を参照してください。
 
-Azure Dev Spaces と互換性のある AKS クラスターのデプロイについては、「[Azure Cloud Shell を使用して Kubernetes クラスターを作成する](https://docs.microsoft.com/azure/dev-spaces/how-to/create-cluster-cloud-shell)」を参照してください。
-
 ### <a name="enable-dev-spaces-via-the-azure-portal"></a>Azure portal を使用して Dev Spaces を有効にする
 
-Azure portal で各クラスターのプロパティの下にある **[Dev Spaces]** ナビゲーション項目をクリックします。 次に、Dev Spaces を有効にするオプションを選択します。
+Azure portal で各クラスターの設定にある **[Dev Spaces]** メニュー項目を選択します。 次に、Dev Spaces を有効にするオプションを選択して保存します。
 
 ![Azure portal による Dev Spaces の有効化](../media/common/enable-dev-spaces.jpg)
 
@@ -41,7 +39,7 @@ Azure portal で各クラスターのプロパティの下にある **[Dev Space
 
 コマンド ラインで Dev Spaces を有効にすることもできます。
 
-```cmd
+```azurecli
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
 
@@ -53,11 +51,11 @@ Dev Spaces を使用する場合は、通常、お客様の Kubernetes クラス
 
 ## <a name="select-the-correct-aks-cluster-to-use-for-dev-spaces"></a>Dev Spaces に使用する適切な AKS クラスターを選択する
 
-チームのベースラインを実行するバックアップ クラスターを適切に構成できたら、いつでもバックアップ クラスターにすばやく切り替えることができます。 その後、Dev Spaces で操作している個々のサービスを再稼働できます。
+チームのベースラインを実行するバックアップ クラスターを適切に構成できたら、いつでもバックアップ クラスターにすばやく切り替えることができます。 その後、子の Dev Spaces で操作している個々のサービスを再稼働できます。
 
 次の CLI コマンドを使用して、別のクラスターを選択します。
 
-```cmd
+```azurecli
 az aks use-dev-spaces -g <new resource group name> -n <new cluster name>
 ```
 

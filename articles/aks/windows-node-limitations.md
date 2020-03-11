@@ -4,12 +4,12 @@ description: Windows Server ノード プールとアプリケーション ワ�
 services: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.openlocfilehash: 157f890c65efd0de9fa7d8d7aa5cb43b4a902dfa
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 65c62324a27e8377a1cc9833595b15cf08c6c820
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615645"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298174"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Windows Server ノード プールとアプリケーション ワークロードについての現在の制限事項
 
@@ -69,7 +69,7 @@ Windows ノード プールの AKS クラスターでは、Azure CNI (高度) �
 
 ## <a name="how-many-node-pools-can-i-create"></a>ノード プールはいくつ作成できますか?
 
-AKS クラスターでは、最大で 8 つのノード プールを作成できます。 それらのノード プール全体で最大 400 個のノードを使用できます。 [ノード プールの制限][nodepool-limitations]に関するページを参照してください。
+AKS クラスターでは、最大で 10 のノード プールを作成できます。 それらのノード プール全体で最大 1,000 個のノードを使用できます。 [ノード プールの制限][nodepool-limitations]に関するページを参照してください。
 
 ## <a name="what-can-i-name-my-windows-node-pools"></a>Windows ノード プールにはどのような名前を指定できますか?
 

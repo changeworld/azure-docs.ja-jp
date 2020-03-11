@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: f28c33f20556825d84edda34752ac64714327526
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 8fc85781f139b45e9e37f6e0f7cc36974041352d
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697338"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300011"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>方法:アプリのサービス利用規約とプライバシーに関する声明を構成する
 
@@ -53,7 +53,7 @@ Azure Active Directory (Azure AD) アカウントおよび Microsoft アカウ�
 
 * [Azure portal を使用する](#azure-portal)
 * [アプリ オブジェクト JSON を使用する](#app-object-json)
-* [MSGraph beta REST API を使用する](#msgraph-beta-rest-api)
+* [Microsoft Graph API を使用する](#msgraph-rest-api)
 
 ### <a name="azure-portal"></a>Azure portal を使用する
 Azure portal で次の手順に従います。
@@ -77,12 +77,12 @@ Azure portal で次の手順に従います。
     }
 ```
 
-### <a name="msgraph-beta-rest-api"></a>MSGraph beta REST API を使用する
+### <a name="msgraph-rest-api"></a>Microsoft Graph API を使用する
 
-プログラムを使用してすべてのアプリを更新するには、MSGraph beta REST API を使用してすべてのアプリを更新し、サービス利用規約とプライバシーに関する声明のドキュメントへのリンクを含めることができます。
+プログラムを使用してすべてのアプリを更新するには、Microsoft Graph API を使用してすべてのアプリを更新し、サービス利用規約とプライバシーに関する声明のドキュメントへのリンクを含めることができます。
 
 ```
-PATCH https://graph.microsoft.com/beta/applications/{application id}
+PATCH https://graph.microsoft.com/v1.0/applications/{application id}
 { 
     "appId": "{your application id}", 
     "info": { 
@@ -97,4 +97,4 @@ PATCH https://graph.microsoft.com/beta/applications/{application id}
 
 > [!NOTE]
 > * 次のフィールド (`supportUrl`、`marketingUrl`、`logoUrl`) に割り当てた既存の値を上書きしないように注意してください。
-> * MSGraph beta REST API は、Azure AD アカウントを使ってサインインしたときにのみ動作します。 個人用 Microsoft アカウントはサポートされていません。
+> * Microsoft Graph API は、Azure AD アカウントを使用してサインインした場合にのみ機能します。 個人用 Microsoft アカウントはサポートされていません。

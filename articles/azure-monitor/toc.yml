@@ -213,6 +213,8 @@
               items:
                 - name: クライアント側の JavaScript
                   href: app/javascript.md
+                - name: JavaScript のソース マップ
+                  href: app/source-map-support.md
             - name: Application Insights API の概要
               displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
               href: app/api-custom-events-metrics.md
@@ -1005,6 +1007,8 @@
               href: platform/alerts-activity-log.md
             - name: 管理イベントをアクティビティ ログ アラートに移行する
               href: platform/migrate-management-alerts.md
+            - name: webhook スキーマ
+              href: platform/activity-log-alerts-webhook.md
         - name: アクティビティ ログのサービス正常性アラート
           items:
             - name: 通知の表示
@@ -1023,8 +1027,6 @@
               href: platform/alerts-common-schema-definitions.md
             - name: 共通アラート スキーマを Logic Apps と統合する
               href: platform/alerts-common-schema-integrations.md
-            - name: webhook スキーマ
-              href: platform/activity-log-alerts-webhook.md
             - name: SMS アラート動作
               href: platform/alerts-sms-behavior.md
             - name: 通知のレート制限

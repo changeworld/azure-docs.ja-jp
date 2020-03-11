@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2da009189e0265aafcb26b7ec96837965f1ea0c5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f17192e738bb82fb348c660488e6296aa550bd25
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76838549"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913482"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサーの一般的なエラーと警告のトラブルシューティング
 
@@ -37,7 +37,7 @@ API バージョン `2019-05-06` 以降では、項目レベルのインデク�
 | key | エラーまたは警告によって影響を受けるドキュメントのドキュメント ID。 | https:\//coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
 | name | エラーまたは警告が発生した場所を示す操作名。 これは、次の構造によって生成されます: [category].[subcategory].[resourceType].[resourceName] | DocumentExtraction.azureblob.myBlobContainerName Enrichment.WebApiSkill.mySkillName Projection.SearchIndex.OutputFieldMapping.myOutputFieldName Projection.SearchIndex.MergeOrUpload.myIndexName Projection.KnowledgeStore.Table.myTableName |
 | message | エラーまたは警告の概要。 | Web API 要求が失敗したため、スキルを実行できませんでした。 |
-| 詳細 | カスタム スキルの実行に失敗した場合の WebApi 応答など、問題を診断するのに役立つその他の詳細情報。 | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 source, Func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.` ...スタック トレースの残り... |
+| details | カスタム スキルの実行に失敗した場合の WebApi 応答など、問題を診断するのに役立つその他の詳細情報。 | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 source, Func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.` ...スタック トレースの残り... |
 | documentationLink | 問題をデバッグして解決するための詳細情報が記載された関連ドキュメントへのリンク。 このリンクは、多くの場合、このページの以下のいずれかのセクションを指します。 | https://go.microsoft.com/fwlink/?linkid=2106475 |
 
 <a name="could-not-read-document"/>
@@ -46,7 +46,7 @@ API バージョン `2019-05-06` 以降では、項目レベルのインデク�
 
 インデクサーで、データ ソースからドキュメントを読み取ることができませんでした。 これは、次の理由で発生する可能性があります。
 
-| 理由 | 詳細/例 | 解決策 |
+| 理由 | 詳細/例 | 解像度 |
 | --- | --- | --- |
 | 異なるドキュメント間でフィールドの型が一致していません | 値の型が列の型と合いません。 authors 列に `'{47.6,-122.1}'` を格納できませんでした。  想定されている型は JArray です。 | 異なるドキュメント間で各フィールドの型が同じであることを確認します。 たとえば、最初のドキュメントの `'startTime'` フィールドが DateTime で、2 つ目のドキュメントが文字列である場合、このエラーが発生します。 |
 | データ ソースの基となるサービスのエラー | (Cosmos DB から) `{"Errors":["Request rate is large"]}` | ストレージ インスタンスが正常に稼働していることを確認します。 場合によっては、スケーリングやパーティション分割を調整する必要があります。 |
@@ -57,7 +57,7 @@ API バージョン `2019-05-06` 以降では、項目レベルのインデク�
 ## <a name="error-could-not-extract-content-or-metadata-from-your-document"></a>エラー:ドキュメントから内容やメタデータを抽出できませんでした
 BLOB データ ソースを使用するインデクサーで、ドキュメント (PDF ファイルなど) から内容やメタデータを抽出できませんでした。 これは、次の理由で発生する可能性があります。
 
-| 理由 | 詳細/例 | 解決策 |
+| 理由 | 詳細/例 | 解像度 |
 | --- | --- | --- |
 | BLOB がサイズ制限を超えています | ドキュメントは `'150441598'` バイトです。これは、現在のサービス レベルのドキュメント抽出の最大サイズである `'134217728'` バイトを超えています。 | [BLOB インデックス作成エラー](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | BLOB にサポートされていないコンテンツ タイプがあります | ドキュメントにサポートされていないコンテンツ タイプ `'image/png'` があります | [BLOB インデックス作成エラー](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
@@ -69,7 +69,7 @@ BLOB データ ソースを使用するインデクサーで、ドキュメン�
 ## <a name="error-could-not-parse-document"></a>エラー:Could not parse document (ドキュメントを解析できませんでした)
 インデクサーによってデータ ソースからドキュメントが読み取られましたが、ドキュメントの内容を指定されたフィールド マッピング スキーマに変換する際に問題が発生しました。 これは、次の理由で発生する可能性があります。
 
-| 理由 | 詳細/例 | 解決策 |
+| 理由 | 詳細/例 | 解像度 |
 | --- | --- | --- |
 | ドキュメント キーがありません | ドキュメント キーを指定しない、または空にすることはできません | すべてのドキュメントに有効なドキュメント キーがあることを確認します |
 | ドキュメント キーが無効です | ドキュメント キーは 1024 文字以内にする必要があります | 検証要件を満たすようにドキュメント キーを変更します。 |
@@ -81,7 +81,7 @@ BLOB データ ソースを使用するインデクサーで、ドキュメン�
 ## <a name="error-could-not-execute-skill"></a>エラー:スキルを実行できませんでした
 インデクサーがスキルセットでスキルを実行できませんでした。
 
-| 理由 | 詳細/例 | 解決策 |
+| 理由 | 詳細/例 | 解像度 |
 | --- | --- | --- |
 | 一時的な接続に関する問題 | 一時的なエラーが発生しました。 後でもう一度やり直してください。 | 予期しない接続の問題が発生することがあります。 後でインデクサーを使用してドキュメントをもう一度実行してください。 |
 | 潜在的な製品バグ | 予期しないエラーが発生しました。 | これはエラーのクラスが不明であり、製品バグがある可能性があることを意味します。 サポートを受けるには、[サポート チケット](https://ms.portal.azure.com/#create/Microsoft.Support)を提出してください。 |
@@ -140,7 +140,7 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 
 ドキュメントは読み取りおよび処理されましたが、インデクサーによって検索インデックスに追加することができませんでした。 これは、次の理由で発生する可能性があります。
 
-| 理由 | 詳細/例 | 解決策 |
+| 理由 | 詳細/例 | 解像度 |
 | --- | --- | --- |
 | フィールドに大きすぎる用語が含まれています | ドキュメント内の用語が [32 KB の制限](search-limits-quotas-capacity.md#api-request-limits)を超えています | この制限を回避するには、フィールドがフィルター可能、ファセット可能、または並べ替え可能として構成されていないことを確実にします。
 | ドキュメントが大きすぎてインデックスを作成できません | ドキュメントが [API 要求の最大サイズ](search-limits-quotas-capacity.md#api-request-limits)を超えています | [大規模なデータ セットのインデックスを作成する方法](search-howto-large-index.md)
@@ -152,9 +152,9 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 
 <a name="could-not-index-document-because-the-indexer-data-to-index-was-invalid"/>
 
-## <a name="error-could-not-index-document-because-the-indexer-data-to-index-was-invalid"></a>エラー:インデックスを作成するインデクサー データが無効なため、ドキュメントのインデックスを作成できませんでした
+## <a name="error-could-not-index-document-because-some-of-the-documents-data-was-not-valid"></a>エラー:ドキュメントのデータの一部が無効なため、ドキュメントのインデックスを作成できませんでした
 
-ドキュメントが読み取られ、処理されましたが、インデックス フィールドの構成とインデクサーによって抽出されたデータの性質が一致していないため、検索インデックスに追加できませんでした。 これは、次の理由で発生する可能性があります。
+ドキュメントはインデクサーによって読み取られ、処理されましたが、インデックス フィールドの構成とインデクサーによって抽出および処理されたデータが一致していないため、検索インデックスに追加できませんでした。 これは、次の理由で発生する可能性があります。
 
 | 理由 | 詳細/例
 | --- | ---
@@ -166,12 +166,11 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 
 これらのすべてのケースで、インデックス スキーマが正しく作成され、[インデクサー フィールド マッピング](search-indexer-field-mappings.md)が適切に設定されていることを確認するには、[サポートされているデータ型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)および[インデクサーのデータ型マップ](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search)に関する記事を参照してください。 エラー メッセージには、不一致の原因を突き止めるのに役立つ詳細が含まれます。
 
-<a name="could-not-process-document-within-indexer-max-run-time"/>
-
 ## <a name="error-integrated-change-tracking-policy-cannot-be-used-because-table-has-a-composite-primary-key"></a>エラー:テーブルに複合主キーが含まれているため、統合された変更追跡ポリシーを使用できません
 
 これは、SQL テーブルに適用されます。通常、これは、キーが複合キーとして定義されている場合、またはテーブルで一意のクラスター化インデックスが定義されている場合 (Azure Search インデックスではなく SQL インデックスの場合と同様) に発生します。 主な理由は、[一意のクラスター化インデックス](https://docs.microsoft.com/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15)の場合、キー属性が複合主キーになるように変更されるためです。 この場合、SQL テーブルに一意のクラスター化インデックスが含まれていないこと、またはキー フィールドが、重複したキーが含まれていないことが保証されているフィールドにマップされていることを確認してください。
 
+<a name="could-not-process-document-within-indexer-max-run-time"/>
 
 ## <a name="error-could-not-process-document-within-indexer-max-run-time"></a>エラー:インデクサーの最大実行時間内にドキュメントを処理できませんでした
 
@@ -183,7 +182,7 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 
 このエラーは、インデクサーが[データをナレッジ ストアに投影](knowledge-store-projection-overview.md)しようとして失敗した場合に発生します。  この失敗は、一貫性があり修正可能な場合もあれば、プロジェクション出力シンクの一時的な失敗で、解決するには待機して再試行することが必要な場合もあります。  既知の障害状態と考えられる解決策のセットを次に示します。
 
-| 理由 | 詳細/例 | 解決策 |
+| 理由 | 詳細/例 | 解像度 |
 | --- | --- | --- |
 | コンテナー `'containerName'` 内のプロジェクション BLOB `'blobUri'` を更新できませんでした |指定されたコンテナーが存在しません。 | インデクサーは、指定されたコンテナーが既に作成されているかどうかを確認し、必要に応じて作成します。ただし、このチェックは、インデクサーの実行ごとに 1 回だけ実行されます。 このエラーは、この手順の後に、何らかによってコンテナーが削除されたことを意味します。  このエラーを解決するには、ストレージ アカウント情報をそのままにして、インデクサーが完了するのを待ってから再実行します。 |
 | コンテナー `'containerName'` 内のプロジェクション BLOB `'blobUri'` を更新できませんでした |データをトランスポート接続に書き込めません: リモート ホストによって、既存の接続は強制的に切断されました。 | これは、Azure Storage の一時的な失敗であると予想されるため、インデクサーを再実行して解決する必要があります。 このエラーが常に発生する場合は、さらに調査できるように、[サポート チケット](https://ms.portal.azure.com/#create/Microsoft.Support)を提出してください。  |
@@ -220,7 +219,7 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 }
 ```
 
-| 理由 | 詳細/例 | 解決策 |
+| 理由 | 詳細/例 | 解像度 |
 | --- | --- | --- |
 | スキルの入力タイプが正しくありません。 | "必須のスキルの入力が予期された型 `String` ではありませんでした。 名前: `text`、ソース: `/document/merged_content`。"  "必須のスキルの入力が予期された形式ではありませんでした。 名前: `text`、ソース: `/document/merged_content`。"  "非配列 `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` で反復処理できません。"  "非配列 `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` で `0` を選択できません" | 特定のスキルでは、入力が特定の型であることを想定しています。たとえば[センチメント スキル](cognitive-search-skill-sentiment.md)では、`text` が文字列である必要があります。 入力に文字列以外の値が指定されている場合、そのスキルは実行されず、出力は生成されません。 データ セットの型が統一されていることを確認するか、[カスタム Web API スキル](cognitive-search-custom-skill-web-api.md)を使用して入力を前処理します。 配列に対してスキルを反復する場合は、スキル コンテキストをチェックし、入力の正しい位置に `*` があることを確認します。 通常、コンテキストと入力ソースの両方が配列の `*` で終わる必要があります。 |
 | スキルの入力がありません | "必須のスキルの入力がありません。 名前: `text`、ソース: `/document/merged_content`" "不足値 `/document/normalized_images/0/imageTags`。"  "長さ `0` の非配列 `/document/pages` で `0` を選択できません。" | すべてのドキュメントでこの警告が表示される場合は、入力したパスに入力ミスがある可能性が高いので、プロパティ名の大文字と小文字の区別、パス内の `*` が余分に追加されているか欠落しているかを確認し、データ ソースのドキュメントから必要な入力が与えられることを確認します。 |

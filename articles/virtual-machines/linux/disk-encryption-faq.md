@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 77b092920bff75c806ec78a933d23df546bf636a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 45febcffed747f75b6c8b78c2e4b93a047f81b0a
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036362"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205876"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>IaaS VM のための Azure Disk Encryption に関してよくあるご質問
 
@@ -100,7 +100,7 @@ Azure Disk Encryption を構成するには、最新バージョンの Azure Pow
 
 ## <a name="can-i-apply-updates-to-a-linux-red-hat-vm-that-uses-the-yum-update"></a>yum update を使用する Linux Red Hat VM に更新プログラムを適用できますか。
 
-はい。Red Hat Linux VM に対して yum update を実行できます。  詳細については、「[ファイアウォール内の Linux パッケージの管理](disk-encryption-troubleshooting.md#linux-package-management-behind-a-firewall)」を参照してください。
+はい。Red Hat Linux VM に対して yum update を実行できます。  詳細については、[分離されたネットワークでの Azure Disk Encryption](disk-encryption-isolated-network.md) に関する記事を参照してください。
 
 ## <a name="what-is-the-recommended-azure-disk-encryption-workflow-for-linux"></a>Linux で推奨される Azure Disk Encryption ワークフローは何ですか。
 
@@ -137,7 +137,7 @@ Azure Backup には、同じサブスクリプションおよびリージョン�
 
 [Azure Disk Encryption フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDiskEncryption)で質問したり、フィードバックを提供したりできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Azure Disk Encryption に関して最もよく寄せられるご質問について説明しました。 このサービスの詳細については、以下の記事を参照してください。
 
 - [Azure Disk Encryption の概要](disk-encryption-overview.md)

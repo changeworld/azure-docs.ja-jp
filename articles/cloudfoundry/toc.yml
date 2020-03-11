@@ -1,6 +1,6 @@
 - name: Cloud Foundry のドキュメント
-  href: index.md
-- name: クイック スタート
+  href: index.yml
+- name: クイックスタート
   expanded: true
   items:
     - name: Marketplace テンプレート

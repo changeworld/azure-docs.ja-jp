@@ -4,15 +4,15 @@ description: Azure Cosmos DB の SQL システム関数 StringToBoolean につ�
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8719857dca16585a045f8174dbac8df455f38f38
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: ce11db91eff51e669f0917fbf34b1d560d0e9f07
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349258"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296543"
 ---
 # <a name="stringtoboolean-azure-cosmos-db"></a>StringToBoolean (Azure Cosmos DB)
  ブール値に変換された式を返します。 式を変換できない場合は、undefined を返します。  
@@ -86,7 +86,11 @@ SELECT
 [{}]
 ```  
 
-## <a name="next-steps"></a>次の手順
+## <a name="remarks"></a>解説
+
+このシステム関数では、インデックスは使用されません。
+
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB の文字列関数](sql-query-string-functions.md)
 - [Azure Cosmos DB のシステム関数](sql-query-system-functions.md)

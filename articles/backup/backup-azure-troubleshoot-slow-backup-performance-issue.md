@@ -4,12 +4,12 @@ description: Azure Backup のパフォーマンスに関する問題の原因を
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: f8988d3df7f61d2fce4c8fa5b49e42e872c185b8
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: ed91a1cd8600f4e1ac208b0036c3d4ba74c0e6bb
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603143"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78295965"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Azure Backup でファイルとフォルダーのバックアップが遅い場合のトラブルシューティング
 
@@ -44,19 +44,19 @@ ms.locfileid: "77603143"
 
 バックアップ対象コンピューターにパフォーマンスのボトルネックが存在すると、遅延が生じるおそれがあります。 たとえば、コンピューターのディスク読み取り/書き込み能力や、ネットワーク経由のデータ送信に使用できる帯域幅は、ボトルネックの原因となる可能性があります。
 
-Windows には、これらのボトルネックを検出することができる[パフォーマンス モニター](h https://techcommunity.microsoft.com/t5/ask-the-performance-team/windows-performance-monitor-overview/ba-p/375481) (Perfmon) という組み込みのツールが用意されています。
+Windows には、これらのボトルネックを検出することができる[パフォーマンス モニター](https://techcommunity.microsoft.com/t5/ask-the-performance-team/windows-performance-monitor-overview/ba-p/375481) (Perfmon) という組み込みのツールが用意されています。
 
 バックアップを最適化するために、パフォーマンス カウンターとボトルネック診断の目安となる範囲を以下に示します。
 
 | カウンター | Status |
 | --- | --- |
-| Logical Disk(Physical Disk)--%idle |• 100 ～ 50% アイドル = 正常</br>• 49 ～ 20% アイドル = 警告または監視</br>• 19 ～ 0% アイドル = 重大または基準不適合 |
-| Logical Disk(Physical Disk)--%Avg.Disk Sec Read or Write |• 0.001 ～ 0.015 ミリ秒 = 正常</br>• 0.015 ～ 0.025 ミリ秒 = 警告または監視</br>• 0.026 ミリ秒以上 = 重大または基準不適合 |
+| Logical Disk(Physical Disk)--%idle |* 100% から 50% アイドル = 正常</br>* 49% から 20% アイドル = 警告または監視</br>* 19% から 0% アイドル = 重大または基準不適合 |
+| Logical Disk(Physical Disk)--%Avg.Disk Sec Read or Write |* 0.001 から 0.015 ミリ秒 = 正常</br>* 0.015 から 0.025 ミリ秒 = 警告または監視</br>* 0.026 ミリ秒以上 = 重大または基準不適合 |
 | Logical Disk(Physical Disk)--Current Disk Queue Length (全インスタンス) |要求数が 80 件の状態が 6 分超 |
-| Memory--Pool Non Paged Bytes |• プールの 60% 未満を消費 = 正常<br>• プールの 61 ～ 80% を消費 = 警告または監視</br>• プールの 80% 超を消費 = 重大または基準不適合 |
-| Memory--Pool Paged Bytes |• プールの 60% 未満を消費 = 正常</br>• プールの 61 ～ 80% を消費 = 警告または監視</br>• プールの 80% 超を消費 = 重大または基準不適合 |
-| Memory--Available Megabytes |• 空きメモリ 50% 以上 = 正常</br>• 空きメモリ 25% = 監視</br>• 空きメモリ 10% = 警告</br>• 空きメモリ 100 MB または 5% 未満 = 重大または基準不適合 |
-| Processor--\%Processor Time (全インスタンス) |• 60% 未満を消費 = 正常</br>• 61 ～ 90% を消費 = 監視または注意</br>• 91 ～ 100% を消費 = 重大 |
+| Memory--Pool Non Paged Bytes |* プールの 60% 未満を消費 = 正常<br>* プールの 61% から 80% を消費 = 警告または監視</br>* プールの 80% 超を消費 = 重大または基準不適合 |
+| Memory--Pool Paged Bytes |* プールの 60% 未満を消費 = 正常</br>* プールの 61% から 80% を消費 = 警告または監視</br>* プールの 80% 超を消費 = 重大または基準不適合 |
+| Memory--Available Megabytes |* 空きメモリ 50% 以上 = 正常</br>* 空きメモリ 25% = 監視</br>* 空きメモリ 10% = 警告</br>* 空きメモリ 100 MB または 5% 未満 = 重大または基準不適合 |
+| Processor--\%Processor Time (全インスタンス) |* 60% 未満を消費 = 正常</br>* 61% から 90% を消費 = 監視または注意</br>* 91% から 100% を消費 = 重大 |
 
 > [!NOTE]
 > インフラストラクチャが原因であることがわかった場合は、パフォーマンス向上のために定期的にディスクを最適化することをお勧めします。

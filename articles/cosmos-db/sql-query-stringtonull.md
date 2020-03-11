@@ -4,15 +4,15 @@ description: Azure Cosmos DB の SQL システム関数 StringToNull につい�
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: c7ea3ca82cadb1351d8581f3d652ce060d67969b
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 7e17547f88465103b61eabec04978ea806ffa2c9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349253"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296441"
 ---
 # <a name="stringtonull-azure-cosmos-db"></a>StringToNull (Azure Cosmos DB)
  null 値に変換された式を返します。 式を変換できない場合は、undefined を返します。  
@@ -85,7 +85,11 @@ SELECT
 [{}]
 ```  
 
-## <a name="next-steps"></a>次の手順
+## <a name="remarks"></a>解説
+
+このシステム関数では、インデックスは使用されません。
+
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB の文字列関数](sql-query-string-functions.md)
 - [Azure Cosmos DB のシステム関数](sql-query-system-functions.md)

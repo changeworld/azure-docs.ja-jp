@@ -220,10 +220,22 @@ groups:
     title: Linux
   - id: platform-android
     title: Android
+- id: programming-languages-set-twelve
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C+
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-objectivec
+    title: Objective-C
 metadata:
-  ms.openlocfilehash: 38e3ec0926385f7bacdc256d8e2cba90fc9dd19e
-  ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+  ms.openlocfilehash: 8fa472af612fd9bf2446e49d4e290eb3e2e23ef3
+  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/04/2020
-  ms.locfileid: "78271054"
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78944440"

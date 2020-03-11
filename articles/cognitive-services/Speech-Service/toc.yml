@@ -45,10 +45,6 @@
           href: how-to-automatic-language-detection.md
         - name: 圧縮音声入力形式を使用する
           href: how-to-use-codec-compressed-audio-input-streams.md
-        - name: 圧縮音声入力形式を使用する (iOS)
-          href: how-to-use-codec-compressed-audio-input-streams-ios.md
-        - name: 圧縮音声入力形式を使用する (Android)
-          href: how-to-use-codec-compressed-audio-input-streams-android.md
     - name: カスタマイズ
       items:
         - name: データを準備する
@@ -63,6 +59,10 @@
           href: how-to-custom-speech-deploy-model.md
         - name: ヒューマン ラベル付け文字起こしを作成する
           href: how-to-custom-speech-human-labeled-transcriptions.md
+        - name: カスタム キーワードの名前付けのガイドライン
+          href: speech-devices-sdk-kws-guidelines.md
+        - name: カスタム キーワード認識
+          href: speech-devices-sdk-create-kws.md
     - name: リファレンス
       items:
         - name: Speech SDK API シリーズ
@@ -156,10 +156,6 @@
               href: how-to-custom-voice-create-voice.md
             - name: 音声サンプルを録音する
               href: record-custom-voice-samples.md
-            - name: カスタム キーワードの名前付けのガイドライン
-              href: speech-devices-sdk-kws-guidelines.md
-            - name: カスタム キーワード認識
-              href: speech-devices-sdk-create-kws.md
         - name: Audio Content Creation
           items:
             - name: Audio Content Creation
@@ -413,6 +409,12 @@
           items:
             - name: 音声アシスタントの FAQ
               href: faq-voice-assistants.md
+    - name: カスタム キーワード
+      items:
+        - name: カスタム キーワードの名前付けのガイドライン
+          href: speech-devices-sdk-kws-guidelines.md
+        - name: カスタム キーワード認識
+          href: speech-devices-sdk-create-kws.md
 - name: Hosting
   expanded: false
   items:
@@ -445,8 +447,6 @@
           href: ship-application.md
     - name: クイック スタート
       items:
-        - name: プロジェクトの作成
-          href: quickstarts/create-project.md
         - name: Speech SDK を設定する
           href: quickstarts/setup-platform.md
           displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'

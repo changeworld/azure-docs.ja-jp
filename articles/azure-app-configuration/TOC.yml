@@ -42,6 +42,8 @@
       href: enable-dynamic-configuration-dotnet.md
     - name: Azure Functions で動的な構成を有効にする
       href: enable-dynamic-configuration-azure-functions-csharp.md
+    - name: Spring Boot で動的な構成を有効にする
+      href: enable-dynamic-configuration-java-spring-app.md
     - name: .NET Core アプリ内で機能フラグを使用する
       href: use-feature-flags-dotnet-core.md
     - name: Spring Boot アプリ内で機能フラグを使用する

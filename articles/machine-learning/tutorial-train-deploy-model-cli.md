@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 1f609c33ea474508eb107c0df9993c2ba3483660
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 761011cba71c3907994616904cc854003abda7ee
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087032"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245131"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>チュートリアル:CLI からのモデルのトレーニングとデプロイ
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -68,7 +68,7 @@ git clone https://github.com/microsoft/MLOps.git
 リポジトリには、トレーニング済みのモデルを Web サービスとしてデプロイするために使用される以下のファイルが含まれています。
 
 * `aciDeploymentConfig.yml`:__デプロイ構成__ ファイル。 このファイルでは、モデルに必要なホスティング環境を定義します。
-* `inferenceConfig.yml`:推論構成__ ファイル。 このファイルでは、モデルを使用してデータをスコア付けするためにサービスによって使用されるソフトウェア環境を定義します。
+* `inferenceConfig.yml`:__推論構成__ファイル。 このファイルでは、モデルを使用してデータをスコア付けするためにサービスによって使用されるソフトウェア環境を定義します。
 * `score.py`:受信データを受け取り、モデルを使用してスコア付けした後、応答を返す python スクリプト。
 * `scoring-env.yml`:モデルと `score.py` スクリプトの実行に必要な conda の依存関係。
 * `testdata.json`:デプロイ済み Web サービスのテストに使用できるデータ ファイル。
@@ -381,7 +381,7 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aci
 
 `inferenceConfig.yml` ファイルでは、推論にモデルを使用する方法に関する情報が提供されます。 たとえば、これはエントリ スクリプト (`score.py`) とソフトウェアの依存関係を参照します。 
 
-このファイルの構造について詳しくは、「[推論構成スキーマ](reference-azure-machine-learning-cli.md#inference-configuration-schema)」を参照してください。 エントリ スクリプトの詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md#prepare-deployment-artifacts)」を参照してください。
+このファイルの構造について詳しくは、「[推論構成スキーマ](reference-azure-machine-learning-cli.md#inference-configuration-schema)」を参照してください。 エントリ スクリプトの詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md#prepare-to-deploy)」を参照してください。
 
 `aciDeploymentConfig.yml` は、サービスをホストするために使用されるデプロイ環境を示します。 デプロイ構成は、デプロイに使用するコンピューティング先に固有です。 この例では、Azure Container インスタンスが使用されます。 詳しくは、「[デプロイ構成スキーマ](reference-azure-machine-learning-cli.md#deployment-configuration-schema)」を参照してください。
 

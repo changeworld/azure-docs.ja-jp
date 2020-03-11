@@ -2,15 +2,15 @@
 title: Azure VM から Update Management、Change Tracking、および Inventory ソリューションをオンボードする
 description: Azure 仮想マシンを Azure Automation の一部である Update Management、Change Tracking、および Inventory ソリューションでオンボードする方法について説明します。
 services: automation
-ms.date: 03/20/2019
+ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 93222b1b38fa37ec577da6377fdd9aff3fe12018
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 621b429f5dc3a6b6620e4d41ad46763e1d4fa226
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421818"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299530"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Azure 仮想マシンから Update Management、Change Tracking、および Inventory ソリューションをオンボードする
 
@@ -22,13 +22,17 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="enable-the-solutions"></a>ソリューションの有効化
 
-既存の仮想マシンに移動します。 **［操作］** の下の **［更新プログラムの管理］** 、 **［インベントリ］** または **［変更の追跡］** を選択します。 仮想マシンは、ご使用の Automation アカウントの場所に関係なく任意のリージョンに存在できます。 VM からのソリューションをオンボードする場合、VM がワークスペースにオンボードされているかを判断するために、`Microsoft.OperationalInsights/workspaces/read` アクセス許可を保持している必要があります。 一般的に必要な追加のアクセス許可については、[コンピューターのオンボードに必要なアクセス許可](automation-role-based-access-control.md#onboarding)に関する記事をご覧ください。
+最初に、VM 上でソリューションのいずれか 1 つ、または 3 つすべてを有効にします。
 
-ソリューションを VM に対してのみ有効にするには、 **［Enable for this VM］\(この VM で有効にする\)** が選択されていることを確認します。 複数のマシンをソリューションにオンボードするには、 **[Enable for VMs in this subscription]\(このサブスクリプションの VM を有効にする\)** を選択し、 **[Click to select machines to enable]\(クリックして有効にするマシンを選択\)** を選択します。 一度に複数のマシンをオンボードする方法については、「[Update Management、Change Tracking、および Inventory ソリューションのオンボード](automation-onboard-solutions-from-automation-account.md)」を参照してください。
+1. [Azure portal](https://portal.azure.com) の左側のペインから **[仮想マシン]** を選択するか、 **[ホーム]** ページから **[仮想マシン]** を検索して選択します。
+2. ソリューションを有効にする VM を選択します。
+3. VM ページの **[操作]** で、 **[更新プログラムの管理]** 、 **[インベントリ]** 、または **[変更の追跡]** を選択します。 仮想マシンは、ご使用の Automation アカウントの場所に関係なく任意のリージョンに存在できます。 VM からソリューションをオンボードする場合、VM がワークスペースにオンボードされているかどうかを判断するために、`Microsoft.OperationalInsights/workspaces/read` アクセス許可を保持している必要があります。 必要な追加のアクセス許可については、[マシンのオンボードに必要なアクセス許可](automation-role-based-access-control.md#onboarding)に関する記事をご覧ください。
+
+一度に複数のマシンをオンボードする方法については、「[Update Management、Change Tracking、および Inventory ソリューションのオンボード](automation-onboard-solutions-from-automation-account.md)」を参照してください。
 
 Log Analytics ワークスペースと Automation アカウントを選択し、 **[有効にする]** を選択して、ソリューションを有効にします。 ソリューションを有効にするには最大 15 分かかります。
 
-![Update Management ソリューションのオンボード](media/automation-onboard-solutions-from-vm/onboard-solution.png)
+![Update Management ソリューションのオンボード](media/automation-tutorial-update-management/manageupdates-update-enable.png)
 
 他のソリューションに移動し、 **[有効化]** を選択します。 これらのソリューションは前に有効にしたソリューションと同じワークスペースと Automation アカウントを使用するため、Log Analytics ワークスペースと Automation アカウントのドロップダウン リストは無効になっています。
 
@@ -37,7 +41,7 @@ Log Analytics ワークスペースと Automation アカウントを選択し、
 
 ## <a name="scope-configuration"></a>スコープ構成
 
-各ソリューションは、ワークスペース内のスコープ構成を使用して、ソリューションの対象となるコンピューターを決定します。 スコープ構成は、ソリューションのスコープを特定のコンピューターに限定するために使用される、1 つ以上の保存された検索条件のグループです。 スコープ構成にアクセスするには、Automation アカウントで、 **[関連リソース]** の下の **[ワークスペース]** を選択します。 ワークスペースで、 **[ワークスペースのデータ ソース]** の下の **[スコープ構成]** を選択します。
+各ソリューションは、ワークスペース内のスコープ構成を使用して、ソリューションの対象となるコンピューターを決定します。 スコープ構成は、ソリューションのスコープを特定のコンピューターに限定するために使用される、1 つ以上の保存された検索条件のグループです。 スコープ構成にアクセスするには、Automation アカウントで、 **[関連リソース]** の下の **[ワークスペース]** を選択します。 ワークスペースで、 **[Workspace data sources]\(ワークスペース データ ソース\)** の下の **[Scope Configurations]\(スコープ構成\)** を選択します。
 
 選択したワークスペースに Update Management または Change Tracking ソリューションがまだない場合は、次のスコープ構成が作成されます。
 
@@ -55,7 +59,7 @@ Log Analytics ワークスペースと Automation アカウントを選択し、
 
 ワークスペースに移動します。 **[全般]** の下の **[保存された検索]** を選択します。 次の表は、これらのソリューションで使用される 2 つの保存された検索条件を示しています。
 
-|Name     |カテゴリ  |エイリアス  |
+|名前     |カテゴリ  |エイリアス  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | 更新プログラム        | Updates__MicrosoftDefaultComputerGroup         |
@@ -99,7 +103,7 @@ Log Analytics ワークスペースと Automation アカウントを選択し、
 
 * VM の開始/停止の Runbook スケジュール
 * VM の開始/停止の Runbook
-* 変数:
+* 変数
 
 Automation アカウントの自分のワークスペースを Log Analytics ワークスペースからリンク解除することもできます。 自分のワークスペースで、 **[関連リソース]** の **[Automation アカウント]** を選択します。 [Automation アカウント] ページで **[アカウントのリンク解除]** を選択します。
 
@@ -115,5 +119,7 @@ Update Management から VM を削除するには:
 ソリューションを使用する方法を学習するためのチュートリアルに進みます。
 
 * [チュートリアル - VM の更新プログラムの管理](automation-tutorial-update-management.md)
+
 * [チュートリアル - VM 上のソフトウェアの特定](automation-tutorial-installed-software.md)
+
 * [チュートリアル - VM に対する変更のトラブルシューティング](automation-tutorial-troubleshoot-changes.md)

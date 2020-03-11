@@ -1,56 +1,71 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: API Management のドキュメント
+summary: API Management を使用して、API を社外、パートナー、社内の開発者に対して安全かつ大規模に発行する方法について説明します。 任意の場所でホストされている既存のバックエンド サービス用の最新の API ゲートウェイを作成し、管理する方法について説明します。
 metadata:
-  title: Azure API Management のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
-  description: API Management を使用して、API を社外、パートナー、社内の開発者に対して安全かつ大規模に発行する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、任意の場所にホストされた既存のバックエンド サービスの最新型 API ゲートウェイを作成して管理する方法を紹介します。
+  title: API Management のドキュメント
+  description: API Management を使用して、API を社外、パートナー、社内の開発者に対して安全かつ大規模に発行する方法について説明します。 任意の場所でホストされている既存のバックエンド サービス用の最新の API ゲートウェイを作成し、管理する方法について説明します。
   services: api-management
-  author: georgewallace
-  manager: gwallace
   ms.service: api-management
   ms.topic: landing-page
-  ms.date: 11/15/2017
+  author: georgewallace
   ms.author: gwallace
-abstract:
-  description: API Management を使用して、API を社外、パートナー、社内の開発者に対して安全かつ大規模に発行する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、任意の場所にホストされた既存のバックエンド サービスの最新型 API ゲートウェイを作成して管理する方法を紹介します。
-sections:
-  - title: 5 分間のクイックスタート
-    items:
-      - type: paragraph
-        text: API Management インスタンスを作成します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
-            text: インスタンスの作成 - ポータル
-            href: /azure/api-management/get-started-create-service-instance
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/logo_powershell.svg'
-            text: インスタンスの作成 - PowerShell
-            href: /azure/api-management/powershell-create-service-instance
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: API Management の管理方法を学習します。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/api-management/import-and-publish">最初の API をインポートして発行する</a>
-          - html: <a href="/azure/api-management/api-management-howto-add-products">成果物を作成して発行する</a>
-          - html: <a href="/azure/api-management/mock-api-responses">API の応答の模擬テストを実行する</a>
-          - html: <a href="/azure/api-management/transform-api">API を変換して保護する</a>
-          - html: <a href="/azure/api-management/api-management-howto-use-azure-monitor">発行した API を監視する</a>
-          - html: <a href="/azure/api-management/api-management-howto-api-inspector">要求トレースを使用して API をデバッグする</a>
-          - html: <a href="/azure/api-management/api-management-get-started-revise-api">リビジョンを使用して互換性に影響しない変更を安全に行う</a>
-          - html: <a href="/azure/api-management/api-management-get-started-publish-versions">API の複数のバージョンを発行する</a>
-          - html: <a href="/azure/api-management/api-management-customize-styles">開発者ポータルのページのスタイルをカスタマイズする</a>
-  - title: サンプル
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/api-management/policy-samples">ポリシー</a>
-          - html: <a href="/azure/api-management/powershell-samples">Azure PowerShell</a>
-          - html: '<a href="https://docs.microsoft.com/azure/architecture/reference-architectures/enterprise-integration/basic-enterprise-integration">参照アーキテクチャ</a>'
+  ms.date: 03/08/2020
+  ms.openlocfilehash: 2ed84dfdfcabafe7222b8cb64a853ed04e2335a2
+  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78944164"
+landingContent:
+- title: API Management について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: API Management とは
+      url: api-management-key-concepts.md
+    - text: 機能の利用可能性
+      url: api-management-features.md
+- title: インスタンスを作成する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure portal
+      url: get-started-create-service-instance.md
+    - text: Azure PowerShell
+      url: powershell-create-service-instance.md
+- title: API Management の管理
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 1. 最初の API のインポートと発行
+      url: import-and-publish.md
+    - text: 2. 製品を作成して発行する
+      url: api-management-howto-add-products.md
+    - text: 3. API の応答の模擬テストを実行する
+      url: mock-api-responses.md
+    - text: 4. API を変換および保護する
+      url: transform-api.md
+    - text: 5. 発行された API を監視する
+      url: api-management-howto-use-azure-monitor.md
+    - text: 6. 要求トレースを使用して API をデバッグする
+      url: api-management-howto-api-inspector.md
+    - text: 7. リビジョンを使用して互換性に影響しない変更を安全に行う
+      url: api-management-get-started-revise-api.md
+    - text: 8. API の複数のバージョンを発行する
+      url: api-management-get-started-publish-versions.md
+    - text: 9. 開発者ポータル ページのスタイルをカスタマイズする
+      url: api-management-customize-styles.md
+- title: サンプル
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: ポリシー
+      url: policy-samples.md
+    - text: Azure PowerShell
+      url: powershell-samples.md
+- title: Architecture
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: 基本的なエンタープライズ統合
+      url: https://docs.microsoft.com/azure/architecture/reference-architectures/enterprise-integration/basic-enterprise-integration

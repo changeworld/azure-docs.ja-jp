@@ -3,18 +3,18 @@ title: Azure DevOps Projects のドキュメント
 summary: Azure DevOps Projects により、既存のコードと Git リポジトリが簡単に使用できるようになり、サンプル アプリケーションのいずれかを選択して Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成することができます。
 metadata:
   title: Azure DevOps Projects のドキュメント
-  description: Azure DevOps Projects により、既存のコードと Git リポジトリが簡単に使用できるようになり、サンプル アプリケーションのいずれかを選択して Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成することができます。
+  description: 既存のコードと Git リポジトリを使用するか、サンプル アプリを選択して、Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成することができます。
   ms.service: devops-project
   ms.topic: landing-page
   author: 
   ms.author: 
   ms.date: 03/05/2020
-  ms.openlocfilehash: 0c67ed2fdffd80c447608348429985477dd426df
-  ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+  ms.openlocfilehash: f03a03b353ffa0d0562169a51a2552c2f2ab143b
+  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/06/2020
-  ms.locfileid: "78674190"
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78942466"
 landingContent:
 - title: Azure DevOps Projects について
   linkLists:

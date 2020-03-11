@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.openlocfilehash: 3370fc72b45720e2aae5731623843a1bc498911c
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 71a02e47db288890d1392f5423da0ef817ecd690
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651953"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303122"
 ---
 # <a name="data-ingestion-in-azure-machine-learning"></a>Azure Machine Learning のデータ インジェスト
 
@@ -55,7 +55,7 @@ Azure Data Factory データフローの埋め込みデータ系列機能|
 
 ## <a name="use-the-python-sdk"></a>Python SDK の使用 
 
-[Python SDK](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py) を使用して、[Azure Machine Learning パイプライン](how-to-create-your-first-pipeline.md)の手順にデータ インジェスト タスクを組み込むことができます。
+[Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml) を使用して、[Azure Machine Learning パイプライン](how-to-create-your-first-pipeline.md)の手順にデータ インジェスト タスクを組み込むことができます。
 
 次の表は、データ インジェスト タスクに SDK と ML パイプラインの手順を使用する場合の長所と短所をまとめたものです。
 
@@ -71,4 +71,5 @@ Azure Data Factory データフローの埋め込みデータ系列機能|
 
 ## <a name="next-steps"></a>次のステップ
 
+* [Azure Data Factory](how-to-data-ingest-adf.md) を使用して、機械学習のデータ インジェスト パイプラインを作成する方法について説明します。
 * [Azure Pipelines](how-to-cicd-data-ingestion.md) を使用して、データ インジェスト パイプラインの開発ライフ サイクルを自動化および管理する方法について説明します。

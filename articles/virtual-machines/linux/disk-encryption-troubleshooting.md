@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: c1e96a3acf2a576e0656afb3abea9dd787bf989a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: dd21b6520dc68a6f7faa5500054b2865556e3dfb
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750055"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205910"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk Encryption トラブルシューティング ガイド
 
@@ -69,7 +69,7 @@ Microsoft.OSTCExtensions.AzureDiskEncryptionForLinux 拡張機能は非推奨に
 
 Linux OS ディスクの暗号化シーケンスは、OS ドライブを一時的にマウント解除します。 その後、OS ディスク全体のブロック単位の暗号化を実行した後、OS ディスクを暗号化された状態で再マウントします。 Linux のディスク暗号化では、暗号化が行われている間、VM を同時に使用することはできません。 暗号化を完了するために必要な時間は、VM のパフォーマンス特性によって大幅に異なる可能性があります。 これらの特性には、ディスクのサイズとストレージ アカウントのストレージが Standard であるか Premium (SSD) であるかが含まれます。
 
-暗号化の状態を確認するには、[Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) コマンドから返される **ProgressMessage** フィールドをポーリングします。 OS ドライブが暗号化されている間、VM はメンテナンス状態に入り、進行中のプロセスの中断を防ぐため SSH を無効にします。 暗号化が進行している時間の大半は、**EncryptionInProgress** メッセージによって状況がレポートされます。 数時間後、**VMRestartPending** メッセージによって VM を再起動するように求められます。 例:
+暗号化の状態を確認するには、[Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) コマンドから返される **ProgressMessage** フィールドをポーリングします。 OS ドライブが暗号化されている間、VM はメンテナンス状態に入り、進行中のプロセスの中断を防ぐため SSH を無効にします。 暗号化が進行している時間の大半は、**EncryptionInProgress** メッセージによって状況がレポートされます。 数時間後、**VMRestartPending** メッセージによって VM を再起動するように求められます。 次に例を示します。
 
 
 ```azurepowershell
@@ -96,21 +96,7 @@ VM を再起動するように求められた後と VM の再開後、再起動�
 
 ## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>ファイアウォール内の Azure Disk Encryption のトラブルシューティング
 
-ファイアウォール、プロキシ要件、またはネットワーク セキュリティ グループ (NSG) 設定によって接続が制限されていると、必要なタスクを実行するための拡張機能が中断することがあります。 この中断によって、"拡張機能の状態が VM で取得できません" などのステータス メッセージが表示される可能性があります。 想定されるシナリオで、暗号化が完了できません。 以下のセクションで、調査することが推奨される一般的なファイアウォールの問題について説明します。
-
-### <a name="network-security-groups"></a>ネットワーク セキュリティ グループ
-適用されるネットワーク セキュリティ グループ設定で、ディスクの暗号化のために規定されている、ネットワーク構成の[前提条件](disk-encryption-overview.md#networking-requirements)を満たすようエンドポイントが設定されている必要があります。
-
-### <a name="azure-key-vault-behind-a-firewall"></a>ファイアウォールの内側にある Azure Key Vault
-
-[Azure AD の資格情報](disk-encryption-linux-aad.md#)を使用して暗号化を有効にする場合、ターゲット VM は、Azure Active Directory のエンドポイントと Key Vault のエンドポイントの両方への接続を許可する必要があります。 現在の Azure Active Directory 認証エンドポイントは、「[Office 365 の URL と IP アドレスの範囲](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges)」ドキュメンテーションのセクション 56 と 59 に記載されています。 Key Vault の説明は、「[ファイアウォールの向こう側にある Access Azure Key Vault へのアクセス](../../key-vault/key-vault-access-behind-firewall.md)」方法に関するドキュメンテーションにあります。
-
-### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service 
-VM は、その VM 内からしかアクセスできない既知のルーティング不可能な IP アドレス (`169.254.169.254`) を使用する [Azure Instance Metadata サービス](../windows/instance-metadata-service.md) エンドポイントにアクセスできる必要があります。  ローカル HTTP トラフィックをこのアドレスに変更する (たとえば X-Forwarded-For ヘッダーを追加する) プロキシ構成はサポートされません。
-
-### <a name="linux-package-management-behind-a-firewall"></a>ファイアウォール内の Linux パッケージの管理
-
-実行時の Linux 用 Azure Disk Encryption は、暗号化を有効にする前の必要な前提条件コンポーネントのインストールを、ターゲット ディストリビューションのパッケージ管理システムに依存しています。 ファイアウォールの設定が原因で、これらのコンポーネントを VM にダウンロードしてインストールできない場合、想定される次のシーケンスが失敗します。 このパッケージ管理システムを構成するための手順は、ディストリビューションによって大きく異なっている可能性があります。 Red Hat では、プロキシが必要な場合は、サブスクリプション マネージャーと yum が正しく設定されていることを確認する必要があります。 詳細については、「[How to troubleshoot subscription-manager and yum problems](https://access.redhat.com/solutions/189533)」(subscription-manager と yum の問題をトラブルシューティングする方法) を参照してください。  
+[分離されたネットワークでのディスク暗号化](disk-encryption-isolated-network.md)
 
 ## <a name="troubleshooting-encryption-status"></a>暗号化の状態のトラブルシューティング 
 
@@ -120,7 +106,7 @@ PowerShell で Azure Disk Encryption を無効にするには、最初に [Disab
 
 CLI で Azure Disk Encryption を無効にするには、[az vm encryption disable](/cli/azure/vm/encryption) を使用します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このドキュメントでは、Azure Disk Encryption で発生する一般的な問題の詳細と、それらの問題のトラブルシューティング方法について説明しました。 このサービスと機能の詳細については、次の記事を参照してください。
 

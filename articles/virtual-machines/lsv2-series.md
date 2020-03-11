@@ -2,17 +2,17 @@
 title: Lsv2 シリーズ - Azure Virtual Machines
 description: Lsv2 シリーズ VM の仕様。
 services: virtual-machines
-author: jonbeck7
+author: sasha-melamed
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: b10433190ccc7703938bed2a75a5d816f073295e
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 103e19d6e299956b5ee1ad45b577e25f9f2de1c4
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587262"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164034"
 ---
 # <a name="lsv2-series"></a>Lsv2 シリーズ
 
@@ -31,7 +31,11 @@ Premium Storage: サポートされています
 
 Premium Storage キャッシュ:サポートされていません
 
-| Size | vCPU | メモリ (GiB) | 一時ディスク<sup>1</sup> (GiB) | NVMe ディスク<sup>2</sup> | NVMe ディスク スループット<sup>3</sup> (読み取り IOPS/MBps) | キャッシュ不使用時の最大データ ディスク スループット (IOPs/MBps)<sup>4</sup> | 最大データ ディスク数 | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
+ライブ マイグレーション:サポートされていません
+
+メモリ保持更新:サポートされていません
+
+| サイズ | vCPU | メモリ (GiB) | 一時ディスク<sup>1</sup> (GiB) | NVMe ディスク<sup>2</sup> | NVMe ディスク スループット<sup>3</sup> (読み取り IOPS/MBps) | キャッシュ不使用時の最大データ ディスク スループット (IOPs/MBps)<sup>4</sup> | 最大データ ディスク数 | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |---|---|---|---|---|---|---|---|---|
 | Standard_L8s_v2   |  8 |  64 |  80 |  1 x 1.92 TB  | 400000/2000  | 8000/160   | 16 | 2/3200   |
 | Standard_L16s_v2  | 16 | 128 | 160 |  2 x 1.92 TB  | 800000/4000  | 16000/320  | 32 | 4/6400   |

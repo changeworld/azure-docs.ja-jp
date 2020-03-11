@@ -1,6 +1,6 @@
 ---
-title: 削除されたデータ ウェアハウスを復元する
-description: 削除された Azure SQL Data Warehouse を復元する方法を説明します。
+title: 削除された SQL プールを復元する
+description: 削除された SQL プールを復元するためのハウツー ガイド。
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -11,26 +11,26 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e508eff3b322b49a6dc50d818c8bcccc3e924ff2
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 34851203432b7e2daf44e840e45275de76bc3b3a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759654"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196634"
 ---
-# <a name="restore-a-deleted-azure-sql-data-warehouse"></a>削除された Azure SQL Data Warehouse を復元する
+# <a name="restore-a-deleted-sql-pool-using-azure-synapse-analytics"></a>Azure Synapse Analytics を使用して削除された SQL プールを復元する
 
-この記事では、Azure portal と PowerShell を使用して、削除された SQL Data Warehouse を復元する方法について説明します。
+この記事では、Azure portal または PowerShell を使用して SQL を復元する方法について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-**DTU 容量を確認します。** 各 SQL Data Warehouse は、既定の DTU クォータが割り当てられている SQL サーバー (例: myserver.database.windows.net) でホストされます。  データベースを復元するための十分な DTU クォータが SQL Server に残っていることを確認する必要があります。 必要な DTU を計算する方法と DTU を要求する方法については、 [DTU クォータの変更の要求](sql-data-warehouse-get-started-create-support-ticket.md)に関するトピックをご覧ください。
+**DTU 容量を確認します。** 各 SQL プールは、既定の DTU クォータが割り当てられている SQL サーバー (例: myserver.database.windows.net) でホストされます。  データベースを復元するための十分な DTU クォータが SQL Server に残っていることを確認する必要があります。 必要な DTU を計算する方法と DTU を要求する方法については、 [DTU クォータの変更の要求](sql-data-warehouse-get-started-create-support-ticket.md)に関するトピックをご覧ください。
 
 ## <a name="restore-a-deleted-data-warehouse-through-powershell"></a>削除されたデータ ウェアハウスを PowerShell を使用して復元する
 
-削除された SQL Data Warehouse を復元するには、[Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) コマンドレットを使用します。 対応する論理サーバーも削除されている場合、そのデータ ウェアハウスは復元できません。
+削除された SQL プールを復元するには、[Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) コマンドレットを使用します。 対応する論理サーバーも削除されている場合、そのデータ ウェアハウスは復元できません。
 
 1. 開始する前に、必ず [Azure PowerShell をインストール](https://docs.microsoft.com/powershell/azure/overview)してください。
 2. PowerShell を開きます。
@@ -86,5 +86,5 @@ $RestoredDatabase.status
     ![データベース名を指定する](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-21.png)
 
 ## <a name="next-steps"></a>次の手順
-- [既存のデータ ウェアハウスの復元](sql-data-warehouse-restore-active-paused-dw.md)
-- [geo バックアップ データ ウェアハウスから復元する](sql-data-warehouse-restore-from-geo-backup.md)
+- [既存の SQL プールを復元する](sql-data-warehouse-restore-active-paused-dw.md)
+- [geo バックアップ SQL プールからの復元](sql-data-warehouse-restore-from-geo-backup.md)

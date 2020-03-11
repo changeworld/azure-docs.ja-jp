@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: reference
 author: peterclu
 ms.author: peterlu
-ms.date: 12/17/2019
-ms.openlocfilehash: d3feb62c0c7fa24dd998add08d17ebd1d4e9ee6c
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.date: 02/22/2020
+ms.openlocfilehash: ece4b7a85ff5738900b8f999cc2f14ba35ecab0d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162584"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920095"
 ---
-# <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーのアルゴリズムとモジュールのリファレンス
+# <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナーのアルゴリズムとモジュールのリファレンス (プレビュー)
 
 このリファレンス コンテンツでは、Azure Machine Learning デザイナー (プレビュー) で使用可能な各機械学習アルゴリズムとモジュールの技術的な背景について説明します。
 
@@ -32,7 +32,7 @@ ms.locfileid: "77162584"
 ## <a name="data-preparation-modules"></a>データ準備モジュール
 
 
-| 機能 | 説明 | [Module] |
+| 機能 | 説明 | Module |
 | --- |--- | --- |
 | データの入力と出力 | クラウド ソースのデータをパイプラインに移動します。 パイプラインの実行中に、結果や中間データを Azure Storage、SQL データベース、または Hive に書き込みます。また、クラウド ストレージを使用して、パイプライン間でデータを交換します。  | [データの手動入力](enter-data-manually.md) <br/> [データのエクスポート](export-data.md) <br/> [データのインポート](import-data.md) |
 | データの変換 | 機械学習に固有のデータに対する操作 (データの正規化やビン分割、次元削減、さまざまなファイル形式の間でのデータの変換など)。| [列の追加](add-columns.md) <br/> [行の追加](add-rows.md) <br/> [算術演算の適用](apply-math-operation.md) <br/> [SQL 変換の適用](apply-sql-transformation.md) <br/> [見つからないデータのクリーンアップ](clean-missing-data.md) <br/> [クリップの値](clip-values.md) <br/> [CSV への変換](convert-to-csv.md) <br/> [データセットへの変換](convert-to-dataset.md) <br/> [インジケーター値への変換](convert-to-indicator-values.md) <br/> [メタデータの編集](edit-metadata.md) <br/> [データの結合](join-data.md) <br/> [データの正規化](normalize-data.md) <br/> [パーティションとサンプル](partition-and-sample.md)  <br/> [重複する行の削除](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [列変換の選択](select-columns-transform.md) <br/> [データセット内の列の選択](select-columns-in-dataset.md) <br/> [データの分割](split-data.md) |
@@ -41,7 +41,7 @@ ms.locfileid: "77162584"
 
 ## <a name="machine-learning-algorithms"></a>機械学習のアルゴリズム
 
-| 機能 | 説明 | [Module] |
+| 機能 | 説明 | Module |
 | --- |--- | --- |
 | 回帰 | 値を予測します。 | [ブースト デシジョン ツリー回帰](boosted-decision-tree-regression.md) <br/> [デシジョン フォレスト回帰](decision-forest-regression.md) <br/> [線形回帰](linear-regression.md)  <br/> [ニューラル ネットワーク回帰](neural-network-regression.md)  <br/> |
 | クラスタリング | データをグループ化します。| [K-Means クラスタリング](k-means-clustering.md)
@@ -49,7 +49,7 @@ ms.locfileid: "77162584"
 
 ## <a name="modules-for-building-and-evaluating-models"></a>モデルを構築および評価するためのモジュール
 
-| 機能 | 説明 | [Module] |
+| 機能 | 説明 | Module |
 | --- |--- | --- |
 | モデル トレーニング | アルゴリズムを介してデータを実行します。 |  [クラスタリング モデルのトレーニング](train-clustering-model.md) <br/> [モデルのトレーニング](train-model.md)  <br/> [モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md) |
 | モデルのスコアリングと評価 | トレーニング済みモデルの正確性を測定します。 | [変換の適用](apply-transformation.md) <br/> [クラスターへのデータの割り当て](assign-data-to-clusters.md) <br/> [モデルのクロス検証](cross-validate-model.md) <br/> [モデルの評価](evaluate-model.md) <br/> [モデルのスコア付け](score-model.md) |
@@ -57,6 +57,7 @@ ms.locfileid: "77162584"
 | R 言語 | コードを記述し、それをモジュール内に埋め込んで、R をパイプラインと統合します。 | [R スクリプトの実行](execute-r-script.md) |
 | Text Analytics | 構造化テキストと非構造化テキストの両方を操作するための特別な計算ツールを提供します。 | [テキストからの N Gram 特徴抽出](extract-n-gram-features-from-text.md) <br/> [特徴ハッシュ](feature-hashing.md) <br/> [テキストの前処理](preprocess-text.md) |
 | 推奨 | 推奨モデルを構築します。 | [レコメンダーの評価](evaluate-recommender.md) <br/> [SVD レコメンダーのスコア付け](score-svd-recommender.md) <br/> [SVD レコメンダーのトレーニング](train-SVD-recommender.md) |
+| 異常検出 | 異常検出モデルを構築します。 | [PCA ベースの異常検出](pca-based-anomaly-detection.md) <br/> [異常検出モデルのトレーニング](train-anomaly-detection-model.md) |
 
 ## <a name="error-messages"></a>エラー メッセージ
 

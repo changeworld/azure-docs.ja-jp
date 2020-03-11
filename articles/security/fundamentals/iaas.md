@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: barclayn
-ms.openlocfilehash: 6a775da59680004dadf0cec872057adfd5a16f49
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 0a4daf61d6b791a01f5bfb18e6cfca8118b2f421
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749864"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255939"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure における IaaS ワークロードのセキュリティに関するベスト プラクティス
 この記事では、VM とオペレーティング システムのセキュリティに関するベスト プラクティスについて説明します。
@@ -68,7 +68,7 @@ VM 保護の第一歩は、承認されたユーザーのみが新しい VM を�
 可用性セットは、Azure で使用できる論理グループであり、グループに配置された VM リソースは、Azure データ センター内にデプロイされるときに互いに分離されます。 Azure では、可用性セット内に配置された VM は、複数の物理サーバー、コンピューティング ラック、ストレージ ユニット、およびネットワーク スイッチ間で実行されることが保証されます。 ハードウェアまたは Azure ソフトウェアの障害が発生した場合に影響を受けるのは VM のサブセットに限定され、顧客は引き続きアプリケーション全体を利用できます。 可用性セットは、信頼性の高いクラウド ソリューションを構築する際に不可欠な機能です。
 
 ## <a name="protect-against-malware"></a>マルウェアを防ぐ
-ウイルスやスパイウェアなどの悪意のあるソフトウェアを識別して削除するために、マルウェア対策保護を導入する必要があります。 [Microsoft Antimalware](antimalware.md) または Microsoft パートナーのエンドポイント保護ソリューション ([Trend Micro](https://help.deepsecurity.trendmicro.com/Welcome.html)、[Symantec](https://www.symantec.com/products)、[McAfee](https://www.mcafee.com/us/products.aspx)、[Windows Defender](https://www.microsoft.com/windows/comprehensive-security)、および[System Center Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)) をインストールします。
+ウイルスやスパイウェアなどの悪意のあるソフトウェアを識別して削除するために、マルウェア対策保護を導入する必要があります。 [Microsoft Antimalware](antimalware.md) または Microsoft パートナーのエンドポイント保護ソリューション ([Trend Micro](https://help.deepsecurity.trendmicro.com/Welcome.html)、[Broadcom](https://www.broadcom.com/products)、[McAfee](https://www.mcafee.com/us/products.aspx)、[Windows Defender](https://www.microsoft.com/windows/comprehensive-security)、および [System Center Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)) をインストールします。
 
 Microsoft Antimalware には、リアルタイム保護、スケジュールされたスキャン、マルウェアの駆除、シグネチャの更新、エンジンの更新、サンプルのレポート、および除外イベントの収集などの機能が含まれます。 運用環境とは別にホストされている環境では、マルウェア対策拡張機能を使用して、VM とクラウド サービスを保護できます。
 

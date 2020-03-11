@@ -1,18 +1,18 @@
 ---
 title: Apache Spark & Hive - Hive Warehouse Connector - Azure HDInsight
 description: Azure HDInsight 上で Hive Warehouse Connector を使用して Apache Spark と Apache Hive を統合する方法について説明します。
-author: nakhanha
-ms.author: nakhanha
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/08/2019
-ms.openlocfilehash: 765bbc352c493124c1adec68eff456f4d0de3d49
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 03/02/2020
+ms.openlocfilehash: f386530ffb3a074a5c1db1d9f28535d28c8b1284
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744878"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252415"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Hive Warehouse Connector を使用して Apache Spark と Apache Hive を統合する
 
@@ -54,17 +54,17 @@ Hive Warehouse Connector でサポートされる操作の一部を次に示し�
 
 #### <a name="from-your-interactive-query-cluster"></a>対話型クエリ クラスターから
 
-1. `https://LLAPCLUSTERNAME.azurehdinsight.net` を使用してクラスターの Apache Ambari ホームページに移動します。`LLAPCLUSTERNAME` は、対話型クエリ クラスターの名前です。
+1. `https://LLAPCLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/configs` を使用してクラスターの Apache Ambari Hive ページに移動します。`LLAPCLUSTERNAME` は、対話型クエリ クラスターの名前です。
 
-1. **[Hive]**  >  **[CONFIGS]**  >  **[Advanced]**  >  **[Advanced hive-site]**  >  **[hive.zookeeper.quorum]** に移動し、値を書き留めます。 値は次のようになります。`zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`
+1. **[Advanced]**  >  **[General]**  >  **[hive.metastore.uris]** に移動し、値を書き留めます。 値は次のようになります。`thrift://iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`
 
-1. **[Hive]**  >  **[CONFIGS]**  >  **[Advanced]**  >  **[General]**  >  **[hive.metastore.uris]** に移動し、値を書き留めます。 値は次のようになります。`thrift://iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`
+1. **[Advanced]**  >  **[Advanced hive-site]**  >  **[hive.zookeeper.quorum]** に移動し、値を書き留めます。 値は次のようになります。`zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`
 
 #### <a name="from-your-apache-spark-cluster"></a>Apache Spark クラスターから
 
-1. `https://SPARKCLUSTERNAME.azurehdinsight.net` を使用してクラスターの Apache Ambari ホームページに移動します。`SPARKCLUSTERNAME` は Apache Spark クラスターの名前です。
+1. `https://SPARKCLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/configs` を使用してクラスターの Apache Ambari Hive ページに移動します。`SPARKCLUSTERNAME` は Apache Spark クラスターの名前です。
 
-1. **[Hive]**  >  **[CONFIGS]**  >  **[Advanced]**  >  **[Advanced hive-interactive-site]**  >  **[hive.llap.daemon.service.hosts]** に移動し、値を書き留めます。 値は次のようになります。`@llap0`
+1. **[Advanced]**  >  **[Advanced hive-interactive-site]**  >  **[hive.llap.daemon.service.hosts]** に移動し、値を書き留めます。 値は次のようになります。`@llap0`
 
 ### <a name="configure-spark-cluster-settings"></a>Spark クラスター設定の構成
 
@@ -74,11 +74,11 @@ Spark Ambari Web UI から、 **[Spark2]**  >  **[CONFIGS]**  >  **[Custom spark
 
 必要に応じて **[Add Property]\(プロパティの追加\)** を選択し、次のものを追加または更新します。
 
-| Key | 値 |
+| Key | Value |
 |----|----|
 |`spark.hadoop.hive.llap.daemon.service.hosts`|**hive.llap.daemon.service.hosts** から先ほど取得した値。|
-|`spark.sql.hive.hiveserver2.jdbc.url`|`jdbc:hive2://LLAPCLUSTERNAME.azurehdinsight.net:443/;user=admin;password=PWD;ssl=true;transportMode=http;httpPath=/hive2`. JDBC 接続文字列に設定します。これにより、対話型クエリ クラスター上の Hiveserver2 に接続されます。 `LLAPCLUSTERNAME` を対話型クエリ クラスターの名前に置き換えます。 `PWD` を実際のパスワードで置き換えます。|
-|`spark.datasource.hive.warehouse.load.staging.dir`|`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp`. HDFS と互換性のある適切なステージング ディレクトリに設定します。 2 つの異なるクラスターがある場合、ステージング ディレクトリは、HiveServer2 がそこにアクセスできるよう、LLAP クラスターのストレージ アカウントのステージング ディレクトリにあるフォルダーである必要があります。  `STORAGE_ACCOUNT_NAME` をクラスターによって使用されているストレージ アカウントの名前に置き換え、`STORAGE_CONTAINER_NAME` をストレージ コンテナーの名前に置き換えます。|
+|`spark.sql.hive.hiveserver2.jdbc.url`|`jdbc:hive2://LLAPCLUSTERNAME.azurehdinsight.net:443/;user=admin;password=PWD;ssl=true;transportMode=http;httpPath=/hive2` JDBC 接続文字列に設定します。これにより、対話型クエリ クラスター上の Hiveserver2 に接続されます。 `LLAPCLUSTERNAME` を対話型クエリ クラスターの名前に置き換えます。 `PWD` を実際のパスワードで置き換えます。|
+|`spark.datasource.hive.warehouse.load.staging.dir`|`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp` HDFS と互換性のある適切なステージング ディレクトリに設定します。 2 つの異なるクラスターがある場合、ステージング ディレクトリは、HiveServer2 がそこにアクセスできるよう、LLAP クラスターのストレージ アカウントのステージング ディレクトリにあるフォルダーである必要があります。  `STORAGE_ACCOUNT_NAME` をクラスターによって使用されているストレージ アカウントの名前に置き換え、`STORAGE_CONTAINER_NAME` をストレージ コンテナーの名前に置き換えます。|
 |`spark.datasource.hive.warehouse.metastoreUri`|**hive.metastore.uris** から先ほど取得した値。|
 |`spark.security.credentials.hiveserver2.enabled`|YARN クライアント デプロイ モードの場合は `false` に設定します。|
 |`spark.hadoop.hive.zookeeper.quorum`|**hive.zookeeper.quorum** から先ほど取得した値。|
@@ -174,7 +174,7 @@ Spark は、Hive によって管理される ACID テーブルへの書き込み
     ```scala
     hive.table("sampletable_colorado").show()
     ```
-    
+
     ![Hive Warehouse Connector の Hive テーブルの表示](./media/apache-hive-warehouse-connector/hive-warehouse-connector-show-hive-table.png)
 
 ### <a name="structured-streaming-writes"></a>構造化ストリーミングの書き込み
@@ -261,5 +261,5 @@ Hive Warehouse Connector を使用すると、Spark ストリーミングを使�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [HDInsight での対話型クエリの使用](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-interactive-query-get-started)
+* [HDInsight での対話型クエリの使用](./apache-interactive-query-get-started.md)
 * [Zeppelin、Livy、spark-submit、pyspark を使用した Hive Warehouse Connector の操作の例](https://community.hortonworks.com/articles/223626/integrating-apache-hive-with-apache-spark-hive-war.html)

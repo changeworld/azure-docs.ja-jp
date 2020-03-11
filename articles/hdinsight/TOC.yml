@@ -708,6 +708,8 @@
               href: ./interactive-query/interactive-query-troubleshoot-zookeeperhiveclientexception-hiveserver-configs.md
             - name: Apache HIVE のトラブルシューティング
               href: ./hdinsight-troubleshoot-hive.md
+            - name: Apache Hive ログによってヘッド ノードのディスク領域全体が占有される
+              href: ./interactive-query/interactive-query-troubleshoot-hive-logs-diskspace-full-headnodes.md
 - name: ML サービス
   items:
     - name: 概要

@@ -9,16 +9,16 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: reference
 ms.date: 10/10/2019
-ms.openlocfilehash: d022b1124146a1e506401e6cee257805e3a38fd3
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: b83effa95b17d712d4019f8ab5bf13c4f02a7d2b
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526551"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206522"
 ---
 # <a name="known-issues-and-troubleshooting-the-azure-data-science-virtual-machine"></a>Azure Data Science Virtual Machine の既知の問題とトラブルシューティング
 
-この記事は、Azure Data Science Virtual Machine の使用時に発生したエラーや障害を見つけて修正するのに役立ちます。
+この記事は、Azure Data Science Virtual Machine の使用時に発生する可能性のあるエラーや障害を見つけて修正するのに役立ちます。
 
 ## <a name="python-package-installation-issues"></a>Python パッケージのインストールに関する問題
 
@@ -30,13 +30,18 @@ ms.locfileid: "77526551"
 
 ### <a name="disk-encryption-fails-on-the-ubuntu-dsvm"></a>Ubuntu DSVM でディスクの暗号化が失敗する
 
-Azure Disk Encryption (ADE) は、現在 Ubuntu DSVM ではサポートされていません。 回避策として、[カスタマー マネージド キーを使用して Azure Storage 暗号化](../../storage/common/storage-encryption-keys-portal.md)を構成することを検討してください。
+Azure Disk Encryption (ADE) は、現在 Ubuntu DSVM ではサポートされていません。 回避策として、[Azure Managed Disks のサーバー側暗号化](../../virtual-machines/windows/disk-encryption.md)を構成することを検討してください。
 
 ## <a name="tool-appears-disabled"></a>ツールが無効に見える
 
 ### <a name="hyper-v-does-not-work-on-the-windows-dsvm"></a>Hyper-V が Windows DSVM で動作しない
 
-起動パフォーマンスのために一部のサービスを無効にしているので、これは予期される動作です。 再度有効にするには、Windows DSVM の検索バーを開き、"サービス" と入力します。次に、すべての Hyper-V サービスを [手動] に設定し、[Hyper-V Virtual Machine Management] を [自動] に設定します。
+Hyper-V が最初は Windows で正しく動作しないのは、想定されている動作です。 ブート パフォーマンスのために、一部のサービスを無効にしました。 Hyper-V を有効化するには、次の手順に従います。
+
+1. Windows DSVM で検索バーを開きます
+1. 「サービス」と入力します
+1. すべての Hyper-V サービスを "手動" に設定します
+1. "Hyper-V 仮想マシンの管理" を "自動" に設定します
 
 最後の画面は、次のようになります。
 

@@ -5,21 +5,22 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.custom: ''
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse
 ms.devlang: ''
 ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 08/22/2019
-ms.openlocfilehash: dda65c94671044f3c5a569a3f9753951de9eee3a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/05/2020
+tags: azure-synapse
+ms.openlocfilehash: e22205e81178ac0caff4b71462ece776238900f6
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76717689"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191947"
 ---
-# <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL Database および SQL Data Warehouse のデータの検出と分類
+# <a name="azure-sql-database-and-azure-synapse-analytics-data-discovery--classification"></a>Azure SQL Database と Azure Synapse Analytics のデータ検出と分類
 
 データの検出と分類では、Azure SQL Database に組み込まれる、データベースの機微なデータの**検出**、**分類**、**ラベル付け** & **報告**を行う高度な機能が用意されています。
 
@@ -32,7 +33,7 @@ ms.locfileid: "76717689"
 データの検出と分類は、高度な SQL セキュリティ機能の統合パッケージである [Advanced Data Security](sql-database-advanced-data-security.md) (ADS) オファリングの一部です。 データの検出と分類は、SQL ADS ポータルを使って一元的にアクセスおよび管理できます。
 
 > [!NOTE]
-> このドキュメントは、Azure SQL Database と Azure SQL Data Warehouse に関するものです。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。 SQL Server (オンプレミス) については、「[SQL Data Discovery and Classification (SQL のデータの検出と分類)](https://go.microsoft.com/fwlink/?linkid=866999)」をご覧ください。
+> このドキュメントは、Azure SQL Database と Azure Synapse に関するものです。 わかりやすいように、SQL Database という言葉で SQL Database と Azure Synapse の両方を言い表します。 SQL Server (オンプレミス) については、「[SQL Data Discovery and Classification (SQL のデータの検出と分類)](https://go.microsoft.com/fwlink/?linkid=866999)」をご覧ください。
 
 ## <a id="subheading-1"></a>データの検出と分類とは
 
@@ -138,7 +139,7 @@ Information Protection ポリシー管理の一環として、カスタム ラ�
 
 ## <a id="subheading-5"></a>分類の管理
 
-# <a name="t-sqltabazure-t-sql"></a>[T-SQL](#tab/azure-t-sql)
+# <a name="t-sql"></a>[T-SQL](#tab/azure-t-sql)
 T-SQL を使って、列の分類を追加/削除し、データベース全体のすべての分類を取得することができます。
 
 > [!NOTE]
@@ -148,7 +149,7 @@ T-SQL を使って、列の分類を追加/削除し、データベース全体�
 - 1 つ以上の列の分類の削除:[DROP SENSITIVITY CLASSIFICATION](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - データベースのすべての分類の表示: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-# <a name="rest-apistabazure-rest-api"></a>[REST API](#tab/azure-rest-api)
+# <a name="rest-apis"></a>[REST API](#tab/azure-rest-api)
 REST API を使用して、分類および推奨事項をプログラムで管理できます。 公開された REST API は、次の操作をサポートします。
 
 - [作成または更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) - 指定された列の機密ラベルを作成または更新します
@@ -159,7 +160,7 @@ REST API を使用して、分類および推奨事項をプログラムで管�
 - [現在の内容をデータベース別に一覧表示](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) - 指定されたデータベースの現在の機密ラベルを取得します
 - [推奨される内容をデータベース別に一覧表示](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) - 指定されたデータベースの推奨される機密ラベルを取得します
 
-# <a name="powershell-cmdlettabazure-powelshell"></a>[PowerShell コマンドレット](#tab/azure-powelshell)
+# <a name="powershell-cmdlet"></a>[PowerShell コマンドレット](#tab/azure-powelshell)
 PowerShell を使用して、Azure SQL Database と Managed Instance の分類および推奨事項を管理できます。
 
 ### <a name="powershell-cmdlet-for-azure-sql-database"></a>Azure SQL Database 用の PowerShell コマンドレット

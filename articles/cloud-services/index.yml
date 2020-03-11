@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: Azure Cloud Services のドキュメント
+summary: Cloud Services を使用して、可用性と拡張性に優れたクラウド アプリケーションや API をホストして実行する方法について説明します。 仮想マシン ホストを管理して、ソフトウェアを構成、修正、インストールする方法について説明します。
+metadata:
+  title: Azure Cloud Services のドキュメント
+  description: Cloud Services を使用して、可用性とスケーラビリティが高いクラウド アプリケーションや API をホストして実行する方法について説明します。
+  ms.service: cloud-services
+  service: cloud-services
+  ms.topic: landing-page
+  author: tgore03
+  ms.author: tagore
+  ms.date: 03/06/2020
+  ms.openlocfilehash: 11699a28ab3b5863812c9c171428896aeaaefec1
+  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78943176"
+landingContent:
+- title: Cloud Services について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Cloud Services とは
+      url: cloud-services-choose-me.md
+  - linkListType: video
+    links:
+    - text: Cloud Services のビデオ ライブラリ
+      url: https://azure.microsoft.com/documentation/videos/index/?services=cloud-services
+- title: はじめに
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: ASP.NET
+      url: cloud-services-dotnet-get-started.md
+    - text: Python for Visual Studio
+      url: cloud-services-python-ptvs.md
+- title: 開発
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: PHP Web ロールと worker ロールの作成
+      url: ../cloud-services-php-create-web-role.md
+    - text: Node.js アプリケーションの作成とデプロイ
+      url: cloud-services-nodejs-develop-deploy-app.md
+    - text: Express を使用した Node.js Web アプリケーションの作成とデプロイ
+      url: cloud-services-nodejs-develop-deploy-express-app.md
+- title: 配置
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: ポータルでのクラウド サービスの作成とデプロイ
+      url: cloud-services-how-to-create-deploy-portal.md
+    - text: PowerShell での空のクラウド サービス コンテナーの作成
+      url: cloud-services-powershell-create-cloud-container.md
+- title: 管理する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 一般的な管理タスク
+      url: cloud-services-how-to-manage-portal.md
+    - text: クラウド サービスの構成
+      url: cloud-services-how-to-configure-portal.md

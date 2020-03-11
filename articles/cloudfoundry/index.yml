@@ -1,0 +1,52 @@
+### YamlMime:Landing
+title: Cloud Foundry on Azure のドキュメント
+summary: Cloud Foundry は、さまざまな言語やフレームワークで開発された 12 ファクター アプリケーションをビルド、デプロイ、運用するためのオープンソースのサービスとしてのプラットフォーム (PaaS) です。
+metadata:
+  title: Cloud Foundry on Azure のドキュメント
+  description: Cloud Foundry は、さまざまな言語やフレームワークで開発された 12 ファクター アプリケーションをビルド、デプロイ、運用するためのオープンソースのサービスとしてのプラットフォーム (PaaS) です。
+  services: multiple
+  ms.service: multiple
+  ms.devlang: devops
+  ms.topic: landing-page
+  author: georgewallace
+  ms.author: gwallace
+  ms.date: 03/08/2020
+  ms.openlocfilehash: 5c2ad3d9e471c339223ad21092b89e6aee64995d
+  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78943173"
+landingContent:
+- title: Cloud Foundry on Azure について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Cloud Foundry on Azure の概要
+      url: ../virtual-machines/linux/cloudfoundry-get-started.md
+- title: はじめに
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Cloud Foundry on Azure のデプロイ
+      url: https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry
+  - linkListType: how-to-guide
+    links:
+    - text: 初めてのアプリのデプロイ
+      url: ../virtual-machines/linux/cloudfoundry-deploy-your-first-app.md
+- title: リソース
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Pivotal Cloud Foundry on Azure
+      url: https://pivotal.io/partners/microsoft
+    - text: Cloud Foundry と Azure を統合する
+      url: how-cloud-foundry-integrates-with-azure.md
+    - text: Cloud Foundry on Azure のインストール
+      url: https://docs.pivotal.io/pivotalcf/1-11/customizing/pcf_azure.html
+    - text: Cloud Foundry 用の Azure DevOps プラグイン
+      url: https://github.com/Microsoft/vsts-cloudfoundry
+    - text: Cloud Foundry 用の Microsoft Log Analytics Nozzle
+      url: https://github.com/Azure/oms-log-analytics-firehose-nozzle
+    - text: Cloud Foundry の詳細
+      url: https://docs.cloudfoundry.org/

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2e175e1ed62a4afb2a532add161dd2ab63ba9b1c
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 0eac35a91e4d5158335d6797d49a09f8f6f391e3
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349777"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303751"
 ---
 # <a name="left-azure-cosmos-db"></a>LEFT (Azure Cosmos DB)
  指定された文字数分、文字列の左側の部分を返します。  
@@ -49,8 +49,12 @@ SELECT LEFT("abc", 1) AS l1, LEFT("abc", 2) AS l2
 [{"l1": "a", "l2": "ab"}]  
 ```  
 
-## <a name="next-steps"></a>次の手順
+## <a name="remarks"></a>解説
 
-- [文字列関数 (Azure Cosmos DB)](sql-query-string-functions.md)
-- [システム関数 (Azure Cosmos DB)](sql-query-system-functions.md)
+このシステム関数は、[範囲インデックス](index-policy.md#includeexclude-strategy)の恩恵を受けます。
+
+## <a name="next-steps"></a>次のステップ
+
+- [Azure Cosmos DB の文字列関数](sql-query-string-functions.md)
+- [Azure Cosmos DB のシステム関数](sql-query-system-functions.md)
 - [Azure Cosmos DB の概要](introduction.md)

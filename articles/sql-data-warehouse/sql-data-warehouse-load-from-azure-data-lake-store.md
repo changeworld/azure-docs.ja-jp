@@ -1,34 +1,34 @@
 ---
 title: 'チュートリアル: Azure Data Lake Storage からデータを読み込む'
-description: PolyBase 外部テーブルを使用して Azure Data Lake Storage から Azure SQL Data Warehouse にデータを読み込みます。
+description: PolyBase 外部テーブルを使用して、SQL 分析用に Azure Data Lake Storage からデータを読み込みます。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 12/06/2019
+ms.date: 03/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: fdbf0eb849549071b4cbbb961c9e9f71fce1faf8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.custom: azure-synapse
+ms.openlocfilehash: b0b9cffe0b69545a6d0219941b48ac9eb0f399b3
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923640"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300589"
 ---
-# <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Azure Data Lake Storage から Azure SQL Data Warehouse へのデータの読み込み
-このガイドでは、PolyBase 外部テーブルを使用して Azure Data Lake Storage から Azure SQL Data Warehouse にデータを読み込む方法について説明します。 Data Lake Storage の格納データに対してアドホック クエリを実行できますが、最高のパフォーマンスを得るには、SQL Data Warehouse にデータをインポートすることをお勧めします。 
+# <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>SQL 分析用に Azure Data Lake Storage からデータを読み込む
+このガイドでは、PolyBase 外部テーブルを使用して Azure Data Lake Storage からデータを読み込む方法について説明します。 Data Lake Storage の格納データに対してアドホック クエリを実行できますが、パフォーマンスを最適化するにはデータをインポートすることをお勧めします。 
 
 > [!NOTE]  
-> 読み込みの代替手段は、[COPY ステートメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)です (現在、パブリック プレビュー段階)。 COPY ステートメントに関するご意見やご感想は、配布リストの sqldwcopypreview@service.microsoft.com までメールでお寄せください。
+> 読み込みの代替手段は、[COPY ステートメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)です (現在、パブリック プレビュー段階)。  COPY ステートメントを使用すると、柔軟性が最大化されます。 COPY ステートメントに関するご意見やご感想は、配布リストの sqldwcopypreview@service.microsoft.com までメールでお寄せください。
 >
 > [!div class="checklist"]
 
 > * Data Lake Storage から読み込む必要のあるデータベース オブジェクトを作成する。
 > * Data Lake Storage ディレクトリに接続する。
-> * Azure SQL Data Warehouse にデータを読み込む。
+> * データ ウェアハウスにデータを読み込む。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -37,15 +37,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このチュートリアルを実行するには、次のものが必要です。
 
-* Azure SQL Data Warehouse。 [Azure SQL Data Warehouse の作成とクエリ](create-data-warehouse-portal.md)に関するページをご覧ください。
+* SQL プール。 [SQL プールの作成とデータのクエリ](create-data-warehouse-portal.md)に関するページをご覧ください。
 * Data Lake Storage アカウント。 [Azure Data Lake Storage の使用開始](../data-lake-store/data-lake-store-get-started-portal.md)に関する記事を参照してください。 このストレージ アカウントでは、次のいずれかの資格情報を構成または指定して読み込む必要があります。ストレージ アカウントに対する適切な RBAC ロールを持つストレージ アカウント キー、Azure Directory アプリケーション ユーザー、または AAD ユーザー。 
 
-##  <a name="create-a-credential"></a>資格情報を作成する
+##  <a name="create-a-credential"></a>資格情報の作成
 AAD パススルーを使用して認証する場合は、このセクションを省略し、「外部データ ソースを作成する」に進むことができます。 AAD パススルーを使用する場合は、データベース スコープ資格情報を作成または指定する必要はありませんが、AAD ユーザーがストレージ アカウントに対する適切な RBAC ロール (ストレージ BLOB データ閲覧者、共同作成者、または所有者ロール) を持っていることを確認してください。 詳細については、[こちら](https://techcommunity.microsoft.com/t5/Azure-SQL-Data-Warehouse/How-to-use-PolyBase-by-authenticating-via-AAD-pass-through/ba-p/862260)で説明しています。 
 
 Data Lake Storage アカウントにアクセスするには、資格情報シークレットを暗号化するためのデータベース マスター キーを作成する必要があります。 その後、データベース スコープ資格情報を作成して、シークレットを格納します。 サービス プリンシパル (Azure Directory アプリケーション ユーザー) を使用して認証する場合、データベース スコープ資格情報には AAD 内で設定されたサービス プリンシパル資格情報が格納されます。 データベース スコープ資格情報を使用して、Gen2 のストレージ アカウント キーを格納することもできます。
 
 サービス プリンシパルを使用して Data Lake Store に接続するには、**最初に** Azure Active Directory Application を作成し、アクセス キーを作成して、そのアプリケーションに Data Lake Storage アカウントへのアクセス許可を付与する必要があります。 手順については、[Active Directory を使用した Azure Data Lake Storage に対する認証](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)に関するページをご覧ください。
+
+コントロール レベルのアクセス許可を持つユーザーを使用して SQL プールにログインし、データベースに対して次の SQL ステートメントを実行します。
 
 ```sql
 -- A: Create a Database Master Key.
@@ -194,7 +196,7 @@ OPTION (LABEL = 'CTAS : Load [dbo].[DimProduct]');
 
 
 ## <a name="optimize-columnstore-compression"></a>列ストア圧縮の最適化
-既定では、SQL Data Warehouse には、テーブルがクラスター化列ストア インデックスとして格納されます。 読み込みの完了時、一部のデータ行が、列ストアに圧縮されない可能性があります。  これにはさまざまな理由があります。 詳細については、 [列ストア インデックスの管理](sql-data-warehouse-tables-index.md)に関するページをご覧ください。
+既定では、テーブルはクラスター化列ストア インデックスとして定義されます。 読み込みの完了時、一部のデータ行が、列ストアに圧縮されない可能性があります。  これにはさまざまな理由があります。 詳しくは、[列ストア インデックスの管理](sql-data-warehouse-tables-index.md)に関するページをご覧ください。
 
 読み込み後のクエリのパフォーマンスと列ストア圧縮を最適化するには、列ストア インデックスですべての行が強制的に圧縮されるようにテーブルを再構築します。
 
@@ -212,19 +214,20 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 次の例は、統計の作成の出発点として適しています。 これによりディメンション テーブルの各列と、ファクト テーブルの各結合列に、単一列の統計が作成されます。 他のファクト テーブルの列には、後で単一列または複数列の統計をいつでも追加できます。
 
 ## <a name="achievement-unlocked"></a>結果
-データが Azure SQL Data Warehouse に正常に読み込まれました。 すばらしい結果です。
+データがデータ ウェアハウスに正常に読み込まれました。 すばらしい結果です。
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 このチュートリアルでは、外部テーブルを作成して Data Lake Storage Gen1 の格納データの構造を定義した後、PolyBase の CREATE TABLE AS SELECT ステートメントを使って、データ ウェアハウスにデータを読み込みました。 
 
 以下のことを行いました。
 > [!div class="checklist"]
+>
 > * Data Lake Storage から読み込む必要のあるデータベース オブジェクトを作成しました。
 > * Data Lake Storage ディレクトリに接続しました。
-> * Azure SQL Data Warehouse にデータを読み込みました。
+> * データ ウェアハウスにデータを読み込みました。
 >
 
-データの読み込みは、SQL Data Warehouse を使ってデータ ウェアハウス ソリューションを開発する際の最初の手順です。 開発リソースを確認してください。
+データの読み込みは、Azure Synapse Analytics を使ってデータ ウェアハウス ソリューションを開発する際の最初の手順です。 開発リソースを確認してください。
 
 > [!div class="nextstepaction"]
-> [SQL Data Warehouse でテーブルを開発する方法を学習する](sql-data-warehouse-tables-overview.md)
+> [データ ウェアハウス用のテーブルを開発する方法を学習する](sql-data-warehouse-tables-overview.md)

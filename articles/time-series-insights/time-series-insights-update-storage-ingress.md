@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 44c942e43cd4be1d04f56e828e3e17c58713a706
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 2f12cf303c58f0fa614c59ffe643c6c2ee5d2415
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77559846"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246183"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューのデータ ストレージおよびイングレス
 
@@ -159,10 +159,10 @@ Azure Time Series Insights プレビューには現在、一般的な **0.5 MBps
 
 Time Series Insights プレビューの*従量課金制* (PAYG) SKU 環境を作成するときは、次の 2 つの Azure リソースを作成します。
 
-* ウォーム ストレージ用に構成できる Azure Time Series Insights プレビュー環境。
+* ウォーム データ ストレージ用に構成できる Azure Time Series Insights プレビュー環境。
 * コールド データ ストレージ用の Azure Storage General Purpose V1 BLOB アカウント。
 
-ウォーム ストア内のデータは、[Time Series Query](./time-series-insights-update-tsq.md) および [Azure Time Series Insights プレビュー エクスプローラー](./time-series-insights-update-explorer.md)を使用することによってのみ使用できます。 
+ウォーム ストア内のデータは、[Time Series Query](./time-series-insights-update-tsq.md) および [Azure Time Series Insights プレビュー エクスプローラー](./time-series-insights-update-explorer.md)を使用することによってのみ使用できます。 ウォーム ストアには、Time Series Insights 環境の作成時に選択された[保有期間](./time-series-insights-update-plan.md#the-preview-environment)内の最新のデータが含まれます。
 
 Time Series Insights プレビューを使うと、コールド ストア データが [Parquet ファイル形式](#parquet-file-format-and-folder-structure)で Azure Blob Storage に保存されます。 Time Series Insights プレビューでは、このコールド ストア データが排他的に管理されますが、標準の Parquet ファイルとして直接読み取ることができます。
 
@@ -186,12 +186,7 @@ Azure Blob Storage の詳細については、[Storage Blob の概要](../storag
 
 Azure Time Series Insights プレビューの PAYG 環境を作成すると、Azure Storage General Purpose V1 BLOB アカウントが、長期的なコールド ストアとして作成されます。  
 
-Azure Time Series Insights プレビューでは、Azure Storage アカウントで、各イベントの最大 2 つのコピーが発行されます。 最初のコピーでは、インジェスト時刻によってイベントが並べ替えられています。 このイベント順序は**常に保持される**ため、シーケンスの問題なく他のサービスでイベントにアクセスできます。 
-
-> [!NOTE]
-> Spark、Hadoop、その他の使い慣れたツールを使用して、未加工の Parquet ファイルを処理することもできます。 
-
-また、Time Series Insights プレビューでは、Time Series Insights クエリに対して最適になるように、Parquet ファイルのパーティションが再分割されます。 この再パーティション分割されたデータのコピーも保存されます。 
+Azure Time Series Insights プレビューでは、Azure Storage アカウントで、各イベントごとに最大 2 つのコピーが保持されます。 1 つのコピーには、イベントがインジェスト時間によって並べ替えられて格納され、常に時間順に並べられた一連のイベントにアクセスできるようになります。 時間の経過と共に、Time Series Insights プレビューでは、高パフォーマンスの Time Series Insights クエリに最適化するために、データの再パーティション分割コピーも作成されます。 
 
 パブリック プレビュー中、データは、Azure Storage アカウントに無期限に格納されます。
 
@@ -199,15 +194,11 @@ Azure Time Series Insights プレビューでは、Azure Storage アカウント
 
 クエリのパフォーマンスとデータの可用性を確保するため、Time Series Insights プレビューによって作成されたすべての BLOB を編集または削除しないでください。
 
-#### <a name="accessing-and-exporting-data-from-time-series-insights-preview"></a>Time Series Insights プレビューからのデータのアクセスとエクスポート
+#### <a name="accessing-time-series-insights-preview-cold-store-data"></a>Time Series Insights プレビューのコールド ストア データへのアクセス 
 
-他のサービスと連携して使用するために、Time Series Insights プレビュー エクスプローラーに表示されているデータにアクセスする場合があります。 たとえば、データを使用して、Power BI でレポートを作成したり、Azure Machine Learning Studio で機械学習モデルをトレーニングしたりすることができます。 または、データを使用して、Jupyter ノートブックの変換、視覚化、モデル化を行うことができます。
+[Time Series Insights プレビュー エクスプローラー](./time-series-insights-update-explorer.md)および [Time Series Query](./time-series-insights-update-tsq.md) からデータにアクセスするだけでなく、コールド ストアに格納されている Parquet ファイルから直接データにアクセスすることもできます。 たとえば、Jupyter Notebook でデータの読み取り、変換、クレンジングを行った後、それを使用して同じ Spark ワークフローで Azure Machine Learning モデルをトレーニングできます。
 
-次の 3 つの一般的な方法でデータにアクセスできます。
-
-* Time Series Insights プレビュー エクスプローラーから。 エクスプローラーからデータを CSV ファイルとしてエクスポートできます。 詳細については、[Time Series Insights プレビュー エクスプローラー](./time-series-insights-update-explorer.md)に関するページを参照してください。
-* Get Events クエリを使用して Time Series Insights Preview API から。 この API の詳細については、[Time Series クエリ](./time-series-insights-update-tsq.md)に関するページを参照してください。
-* Azure Storage アカウントから直接。 Time Series Insights プレビューのデータへのアクセスに使用するどのアカウントにも、読み取りアクセス権が必要です。 詳細については、[ストレージ アカウント リソースへのアクセスの管理](../storage/blobs/storage-manage-access-to-resources.md)に関するページを参照してください。
+Azure Storage アカウントから直接データにアクセスするには、Time Series Insights プレビュー データを格納するために使用しているアカウントへの読み取りアクセスが必要です。 次に、「[Parquet ファイル形式](#parquet-file-format-and-folder-structure)」セクションで説明されている `PT=Time` フォルダーにある Parquet ファイルの作成時刻に基づいて、選択したデータを読み取ることができます。  ストレージ アカウントへの読み取りアクセスを有効にする方法の詳細については、[ストレージ アカウント リソースへのアクセスの管理](../storage/blobs/storage-manage-access-to-resources.md)に関するページを参照してください。
 
 #### <a name="data-deletion"></a>データの削除
 
@@ -215,7 +206,7 @@ Time Series Insights プレビューのファイルは削除しないでくだ�
 
 ### <a name="parquet-file-format-and-folder-structure"></a>Parquet ファイル形式とフォルダー構造
 
-Parquet は、効率的なストレージとパフォーマンスのために設計されている、オープンソースの列指向ファイル形式です。 Time Series Insights プレビューでは、このような理由で Parquet が使用されています。 データは、大規模なクエリのパフォーマンスのために時系列 ID でパーティション分割されます。  
+Parquet は、効率的なストレージとパフォーマンスのために設計されている、オープンソースの列指向ファイル形式です。 Time Series Insights プレビューでは、Parquet を使用して、大規模な時系列 ID ベースのクエリ パフォーマンスを実現します。  
 
 Parquet ファイルの種類の詳細については、[Parquet のドキュメント](https://parquet.apache.org/documentation/latest/)を参照してください。
 
@@ -225,11 +216,11 @@ Time Series Insights プレビューでは、次のようにデータのコピ�
 
   `V=1/PT=Time/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
-* 2 つ目の再パーティション分割されるコピーは、タイム シリーズ ID のグループ化によってパーティション分割され、`PT=TsId` フォルダーに格納されます。
+* 2 つ目の再パーティション分割されるコピーは、時系列 ID に応じてグループ化され、`PT=TsId` フォルダーに格納されます。
 
   `V=1/PT=TsId/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
-どちらの場合も、時刻値は BLOB の作成時刻に対応します。 `PT=Time` フォルダー内のデータは保持されます。 `PT=TsId` フォルダー内のデータは、時間の経過と共にクエリに合わせて最適化され、静的なままではありません。
+どちらの場合も、Parquet ファイルの time プロパティは BLOB の作成時刻に対応します。 `PT=Time` フォルダー内のデータは、一旦ファイルに書き込まれると、変更されずに保持されます。 `PT=TsId` フォルダー内のデータは、時間の経過と共にクエリに合わせて最適化され、静的ではありません。
 
 > [!NOTE]
 > * `<YYYY>` は、4 桁の年表記に対応します。
@@ -239,10 +230,10 @@ Time Series Insights プレビューでは、次のようにデータのコピ�
 Time Series Insights プレビューのイベントは、次のように、Parquet ファイル コンテンツにマップされます。
 
 * 各イベントは、1 行にマップされます。
-* すべての行には、イベントのタイムスタンプの **timestamp** 列が含まれています。 タイムスタンプ プロパティが null になることはありません。 イベント ソースでタイムスタンプ プロパティが指定されていない場合の既定値は、**イベント ソース エンキュー時刻**になります。 タイムスタンプは常に UTC です。
-* すべての行には、Time Series Insights 環境の作成時に定義される時系列 ID 列が含まれます。 プロパティ名には、サフィックス `_string` が含まれます。
+* すべての行には、イベントのタイムスタンプの **timestamp** 列が含まれています。 タイムスタンプ プロパティが null になることはありません。 イベント ソースでタイムスタンプ プロパティが指定されていない場合の既定値は、**イベント ソース エンキュー時刻**になります。 格納されているタイムスタンプは、常に UTC 形式です。
+* すべての行には、Time Series Insights 環境の作成時に定義される時系列 ID (TSID) 列が含まれます。 TSID プロパティ名には、サフィックス `_string` が含まれます。
 * テレメトリ データとして送信される他のすべてのプロパティは、プロパティの型に応じて、`_string` (文字列)、`_bool` (ブール値)、`_datetime` (datetime)、または `_double` (double) で終わる列名にマップされます。
-* このマップ スキームは、**V=1** として参照される、ファイル形式の最初のバージョンに適用されます。 この機能の発展に伴い、名前が増分される可能性があります。
+* このマッピング スキーマは、ファイル形式の最初のバージョンに適用され、**V = 1** として参照され、同じ名前のベース フォルダーに格納されます。 この機能が進化するにつれて、このマッピング スキーマが変更され、参照名が増える可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 

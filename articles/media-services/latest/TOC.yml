@@ -7,6 +7,11 @@
     - name: Media Services の最新情報
       displayName: release notes
       href: release-notes.md
+- name: クイックスタート
+  items:
+    - name: ポータルと Wirecast を使用したライブ イベント
+      displayName: 'live, event, portal, wirecast'
+      href: live-events-wirecast-quickstart.md
 - name: チュートリアル
   expanded: true
   items:
@@ -189,10 +194,10 @@
     - name: 高可用性
       items:
         - name: エンコード
-          displayName: 'failover, bcdr'
+          displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-encoding.md
         - name: ストリーミング
-          displayName: 'failover, bcdr'
+          displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-streaming.md
     - name: v2 から v3 への移行ガイダンス
       href: migrate-from-v2-to-v3.md

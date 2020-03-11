@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: aacba12b32e9da75c2a4b9a20c0faa235cf6836a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e1249913300be532cc6514f1478bbc6f4183c001
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459303"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300555"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Microsoft Azure と Oracle Cloud Infrastructure を統合した Oracle アプリケーション ソリューション (プレビュー)
 
@@ -28,7 +28,7 @@ Microsoft と Oracle は、低待機時間、高スループットのクロス�
 このクロスクラウド接続を使用すると、多層アプリケーションを分割し、Oracle Cloud Infrastructure (OCI) 上ではデータベース層を、Microsoft Azure 上ではアプリケーション層と他の層を実行できます。 このエクスペリエンスは、ソリューション スタック全体を 1 つのクラウドで実行する場合と似ています。 
 
 > [!IMPORTANT]
-> このクロスクラウド機能は現在プレビュー段階であり、[制限事項が適用されます](#preview-limitations)。 Azure と OCI の間で低待機時間の接続を確立するには、最初にお使いの Azure サブスクリプションでこの機能を有効にする必要があります。 この簡単な[アンケート フォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)を完了することで、プレビューに登録する必要があります。 サブスクリプションが登録されると、メールが届きます。 確認メールを受信するまで、この機能を使用することはできません。 Microsoft の担当者に問い合わせて、このプレビューを有効にすることもできます。 プレビュー機能へのアクセスは可用性の対象であり、Microsoft の独自の判断によって制限されます。 アンケートを完了しても、アクセスが保証されるわけではありません。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することは避けてください。 特定の機能はサポート対象ではなく、機能が制限されることがあるか、Azure の場所によっては利用できない場合があります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
+> このクロスクラウド機能は現在プレビュー段階であり、[制限事項が適用されます](#region-availability)。 Azure と OCI の間で低待機時間の接続を確立するには、最初にお使いの Azure サブスクリプションでこの機能を有効にする必要があります。 この簡単な[アンケート フォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)を完了することで、プレビューに登録する必要があります。 サブスクリプションが登録されると、メールが届きます。 確認メールを受信するまで、この機能を使用することはできません。 Microsoft の担当者に問い合わせて、このプレビューを有効にすることもできます。 プレビュー機能へのアクセスは可用性の対象であり、Microsoft の独自の判断によって制限されます。 アンケートを完了しても、アクセスが保証されるわけではありません。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することは避けてください。 特定の機能はサポート対象ではなく、機能が制限されることがあるか、Azure の場所によっては利用できない場合があります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
 
 Oracle ソリューションを完全に Azure インフラストラクチャにデプロイすることに興味がある場合は、「[Oracle VM images and their deployment on Microsoft Azure (Oracle VM イメージとその Microsoft Azure へのデプロイ)](oracle-vm-solutions.md)」を参照してください。
 
@@ -48,9 +48,13 @@ Oracle ソリューションを完全に Azure インフラストラクチャに
 
 ![Azure OCI ソリューションの概要](media/oracle-oci-overview/crosscloud.png)
 
-## <a name="preview-limitations"></a>プレビューの制限事項
+## <a name="region-availability"></a>利用可能なリージョン 
 
-* プレビューでのクロスクラウド接続は、Azure 米国東部 (eastus)、英国南部 (uksouth)、およびカナダ中部 (canadacentral) リージョンと OCI Ashburn (米国東部)、ロンドン (英国南部)、およびトロント (カナダ南東部) リージョンに限定されています。 英国南部については、待機時間が短くなるように相互接続をデプロイするときに、OCI の可用性ドメイン 1 (AD 1) を使用してください。
+クラウド間の接続は、次のリージョンに制限されています。
+* Azure 米国東部 (eastus) および OCI Ashburn (米国東部)
+* Azure 英国南部 (uksouth) および OCI ロンドン (英国南部)
+* Azure カナダ中部 (canadacentral) および OCI トロント (カナダ南東部)
+* Azure 西ヨーロッパ (westeurope) および OCI アムステルダム (オランダ北西部)
 
 ## <a name="networking"></a>ネットワーク
 

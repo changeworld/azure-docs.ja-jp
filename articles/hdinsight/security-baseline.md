@@ -5,15 +5,15 @@ author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/22/2020
+ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7d6b4f8a7965a7cbcab2616650b40ed93087072b
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: a0e6d96f2e3d2686bdf96e5d7e25bf801f0fa9e5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589682"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303275"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>HDInsight 用の Azure セキュリティ ベースライン
 
@@ -21,7 +21,7 @@ HDInsight 用の Azure セキュリティ ベースラインには、デプロ�
 
 このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法に関する推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview) に基づいて作成されています。
 
-詳細については、[Azure セキュリティ ベースラインの概要](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)に関するページをご覧ください。
+詳細については、[Azure セキュリティ ベースラインの概要](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)に関するページを参照してください。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
@@ -65,7 +65,7 @@ https://docs.microsoft.com/azure/security-center/security-center-network-recomme
 
 ### <a name="13-protect-critical-web-applications"></a>1.3:重要な Web アプリケーションを保護する
 
-**ガイダンス**:適用できません。ベンチマークでは、Web アプリケーションをホストしている Azure アプリ サービスまたはコンピューティング リソースを対象にしています。
+**ガイダンス**: 適用なし。ベンチマークでは、Web アプリケーションをホストしている Azure アプリ サービスまたはコンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -125,7 +125,7 @@ HDInsight の管理 IP アドレス: https://docs.microsoft.com/azure/hdinsight/
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7:Web アプリケーションへのトラフィックを管理する
 
-**ガイダンス**:適用できません。ベンチマークでは、Web アプリケーションをホストしている Azure アプリ サービスまたはコンピューティング リソースを対象にしています。
+**ガイダンス**: 適用なし。ベンチマークでは、Web アプリケーションをホストしている Azure アプリ サービスまたはコンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -331,7 +331,7 @@ Log Analytics のログ データに関するアラートを送信する方法:
 
 https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
-**Azure Security Center の監視**: 現在は使用できません
+**Azure Security Center の監視**: はい
 
 **責任**: Customer
 
@@ -491,7 +491,7 @@ Azure Security Center でユーザーの ID およびアクセス アクティ�
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Azure Security Center の監視**: 現在は使用できません
+**Azure Security Center の監視**: はい
 
 **責任**: Customer
 
@@ -659,7 +659,7 @@ https://docs.microsoft.com/azure/data-lake-store/data-lake-store-security-overvi
 
 Azure Storage アカウントの転送中の暗号化の概要:
 
-https://docs.microsoft.com/azure/storage/common/storage-security-guide#encryption-in-transit
+https://docs.microsoft.com/azure/storage/blobs/security-recommendations
 
 **Azure Security Center の監視**: はい
 
@@ -713,7 +713,7 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Security Center の監視**: 現在は使用できません
 
-**責任**: Customer
+**責任**: 共有
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8:機密情報を保存時に暗号化する
 
@@ -779,7 +779,7 @@ Rapid7、Qualys、またはその他の脆弱性管理プラットフォーム �
 
 Rapid7 エージェントを手動でインストールする方法:
 
-https://insightvm.help.rapid7.com/v1.0/docs/agent-installation-on-linux
+https://insightvm.help.rapid7.com/docs/azure-security-center
 
 
 Qualys エージェントを手動でインストールする方法:
@@ -926,11 +926,12 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 - 許可されないリソースの種類
 - 許可されるリソースの種類
 
-サブスクリプション内のリソースのクエリまたは検出を行うには、Azure Resource Graph を使用します。  環境に存在するすべての Azure リソースが承認されていることを確認します。
+サブスクリプション内のリソースのクエリまたは検出を行うには、Azure Resource Graph を使用します。 環境に存在するすべての Azure リソースが承認されていることを確認します。
 
 Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 Azure Graph を使用してクエリを作成する方法: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -972,7 +973,9 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 - 許可されないリソースの種類
 - 許可されるリソースの種類
 
+
 Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 Azure Policy を使用して特定のリソースの種類を拒否する方法: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
@@ -993,9 +996,7 @@ Azure Policy を使用して特定のリソースの種類を拒否する方法:
 **ガイダンス**:"Microsoft Azure Management" アプリに対して [アクセスのブロック] を構成することによって、Azure Resource Manager を操作するユーザーの機能を制限するには、Azure 条件付きアクセスを使用します。
 
 
-条件付きアクセスを構成して Azure Resource Manager へのアクセスをブロックする方法:
-
-https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+条件付きアクセスを構成して Azure Resource Manager へのアクセスをブロックする方法: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -1003,7 +1004,7 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12:コンピューティング リソース内でスクリプトを実行するユーザーの機能を制限する
 
-**ガイダンス**:使用できません。クラスターのユーザー (管理者以外) は、ジョブを実行するために個々のノードへのアクセスを必要としないため、これは Azure HDInsight には適用できません。 クラスター管理者には、すべてのクラスター ノードへのルート アクセス権があります。
+**ガイダンス**: 適用なし。クラスターのユーザー (管理者以外) は、ジョブを実行するために個々のノードへのアクセスを必要としないため、これは Azure HDInsight には適用できません。 クラスター管理者には、すべてのクラスター ノードへのルート アクセス権があります。
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -1011,7 +1012,7 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13:リスクの高いアプリケーションを物理的または論理的に分離する
 
-**ガイダンス**:適用できません。ベンチマークでは、Web アプリケーションをホストしている Azure アプリ サービスまたはコンピューティング リソースを対象にしています。
+**ガイダンス**: 適用なし。ベンチマークでは、Web アプリケーションをホストしている Azure アプリ サービスまたはコンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -1095,7 +1096,7 @@ https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6:カスタム オペレーティング システム イメージを安全に格納する
 
-**ガイダンス**:使用できません。カスタム イメージは、Azure HDInsight には適用できません。
+**ガイダンス**: 適用なし。カスタム イメージは、Azure HDInsight には適用できません。
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -1343,7 +1344,7 @@ https://docs.microsoft.com/azure/security-center/security-center-planning-and-op
 
 **ガイダンス**:Security Center は、アラートに重要度を割り当て、各アラートに対処する優先順位を付けることができます。これにより、リソースが侵害されたときに、すぐにアクセスできるようになります。 重要度は、アラートの発行に使用された Security Center の信頼度と、アラートの原因となったアクティビティの背後に悪意のある意図があったかどうかの信頼レベルに基づいて決まります。
 
-**Azure Security Center の監視**: 現在は使用できません
+**Azure Security Center の監視**: はい
 
 **責任**: Customer
 
@@ -1421,3 +1422,7 @@ Microsoft が管理しているクラウド インフラストラクチャ、サ
 
 **責任**: 共有
 
+## <a name="next-steps"></a>次のステップ
+
+- [Azure セキュリティ ベンチマーク](https://docs.microsoft.com/azure/security/benchmarks/overview)に関するページを参照します
+- [Azure セキュリティ ベースライン](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)の詳細について学習します

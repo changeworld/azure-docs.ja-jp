@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 4ffcd82931b4df92aa2885eb043deae90a70526f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 737b25fd4c83c459f033bd7b07f6362909e38056
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695349"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299885"
 ---
 # <a name="migrating-applications-to-msalnet"></a>MSAL.NET へのアプリケーションの移行
 
@@ -165,7 +165,7 @@ OAuth 2 アクセス許可は、v1.0 Web API (リソース) アプリケーシ�
 
 ### <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>v1.0 アプリケーションの特定の OAuth2 アクセス許可へのアクセス権を要求するスコープ
 
-v1.0 アプリケーションの特定のスコープのためにトークンを取得する場合 (AAD グラフ、 https://graph.windows.net) など)、目的のリソース ID とそのリソースの目的の OAuth2 アクセス許可を連結して、`scopes` を作成する必要はありません。
+Microsoft Graph API (https://graph.microsoft.com) など、v1.0 トークンを受け入れるアプリケーションのためにトークンを取得する場合、目的のリソース識別子とそのリソースの目的の OAuth2 アクセス許可を連結して、`scopes` を作成する必要があります。
 
 たとえば、App ID URI が `ResourceId` である v1.0 Web API にユーザーの名前でアクセスするには、以下を使用します。
 
@@ -173,10 +173,10 @@ v1.0 アプリケーションの特定のスコープのためにトークンを
 var scopes = new [] {  ResourceId+"/user_impersonation"};
 ```
 
-AAD グラフ API (https://graph.windows.net/) を使用して、MSAL.NET Azure Active Directory で読み取りと書き込みを行う場合、次のスニペットのようにスコープ リストを作成します。
+Microsoft Graph API (https://graph.microsoft.com/) を使用して、MSAL.NET Azure Active Directory で読み取りと書き込みを行う場合、次のスニペットのようにスコープのリストを作成します。
 
 ```csharp
-ResourceId = "https://graph.windows.net/";
+ResourceId = "https://graph.microsoft.com/";
 var scopes = new [] { ResourceId + "Directory.Read", ResourceID + "Directory.Write"}
 ```
 

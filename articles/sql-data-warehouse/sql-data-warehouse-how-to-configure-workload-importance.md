@@ -1,26 +1,26 @@
 ---
 title: ワークロードの重要度の構成
-description: 要求レベルの重要度を設定する方法について説明します。
+description: Azure Synapse Analytics で要求レベルの重要度を設定する方法について説明します。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.subservice: workload-management
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 02/04/2020
 ms.author: rortloff
-ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 59ba4b936f6098b0d0b3f5e571f107af088206e0
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.reviewer: jrasnick
+ms.custom: azure-synapse
+ms.openlocfilehash: 8b2a4333717938edf9f3039e29e8df88cece7cc1
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692696"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196799"
 ---
-# <a name="configure-workload-importance-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのワークロードの重要度の構成
+# <a name="configure-workload-importance-in-azure-synapse-analytics"></a>Azure Synapse Analytics でのワークロードの重要度の構成
 
-SQL Data Warehouse で重要度を設定すると、クエリのスケジュール設定に影響を与えることができます。 重要度の高いクエリが、重要度の低いクエリよりも先に実行されるようスケジュールされます。 重要度をクエリに割り当てるには、ワークロード分類子を作成する必要があります。
+Azure Synapse の SQL Analytics で重要度を設定すると、クエリのスケジュール設定に影響を与えることができます。 重要度の高いクエリが、重要度の低いクエリよりも先に実行されるようスケジュールされます。 重要度をクエリに割り当てるには、ワークロード分類子を作成する必要があります。
 
 ## <a name="create-a-workload-classifier-with-importance"></a>重要度を使用したワークロード分類子を作成する
 
@@ -35,8 +35,8 @@ Select name from sys.sysusers
 ```sql
 CREATE WORKLOAD CLASSIFIER ExecReportsClassifier  
     WITH (WORKLOAD_GROUP = 'xlargerc'
-                   ,MEMBERNAME        = 'name'  
-                   ,IMPORTANCE        =  above_normal);  
+         ,MEMBERNAME     = 'name'  
+         ,IMPORTANCE     =  above_normal);  
 
 ```
 
@@ -45,8 +45,8 @@ CREATE WORKLOAD CLASSIFIER ExecReportsClassifier 
 ```sql
 CREATE WORKLOAD CLASSIFIER AdhocClassifier  
     WITH (WORKLOAD_GROUP = 'xlargerc'
-                   ,MEMBERNAME        = 'name'  
-                   ,IMPORTANCE        =  below_normal);  
+         ,MEMBERNAME     = 'name'  
+         ,IMPORTANCE     =  below_normal);  
 ```
 
 ## <a name="next-steps"></a>次の手順

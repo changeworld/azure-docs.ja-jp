@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 838d65da90ec0daef69375e5a75bcb497a0c3512
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: ada96d0d4b167e30cb6e271aa02d0d399a9ae7d3
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900399"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303088"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>データ転送用の Azure ソリューションを選択する
 
@@ -50,10 +50,10 @@ ms.locfileid: "69900399"
 
 - 使用可能なネットワーク帯域幅が制限されているか存在せず、かつ大規模なデータセットを転送しますか。
   
-    "はい" の場合は、[シナリオ 1:ネットワーク帯域幅が低速または存在しない場合の大規模なデータセットの転送](storage-solution-large-dataset-low-network.md)に関するページを参照してください。
+    "はい" の場合は、[シナリオ 1: ネットワーク帯域幅が低速または存在しない場合の大規模なデータセットの転送](storage-solution-large-dataset-low-network.md)に関するページを参照してください。
 - 大規模なデータセットをネットワーク経由で転送し、かつ中程度から高いネットワーク帯域幅が存在しますか。
 
-    "はい" の場合は、[シナリオ 2:中程度から高速のネットワーク帯域幅での大規模なデータセットの転送](storage-solution-large-dataset-moderate-high-network.md)に関するページを参照してください。
+    "はい" の場合は、[シナリオ 2: 中程度から高速のネットワーク帯域幅での大規模なデータセットの転送](storage-solution-large-dataset-moderate-high-network.md)に関するページを参照してください。
 - ネットワーク経由で少数のファイルを時折転送するだけですか。
 
     "はい" の場合は、[シナリオ 3: ネットワーク帯域幅が制限されているか中程度の場合の小規模なデータセットの転送](storage-solution-small-dataset-low-moderate-network.md)に関するページを参照してください。
@@ -63,18 +63,17 @@ ms.locfileid: "69900399"
 - 進行中の継続的なデータ転送を探していますか。
 
     "はい" の場合は、[シナリオ 4: 定期的なデータの転送](storage-solution-periodic-data-transfer.md)に関するページに記載されているスクリプト/プログラム オプションを使用します。
- 
 
 ## <a name="data-transfer-feature-in-azure-portal"></a>Azure portal のデータ転送機能
 
 Azure portal で Azure Storage アカウントにアクセスして、 **[データ転送]** 機能を選択することもできます。 環境内のネットワーク帯域幅、転送するデータのサイズ、およびデータ転送の頻度を指定します。 指定した情報に対応する最適なデータ転送ソリューションが表示されます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Storage Explorer の概要を理解する](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/)
 - [AzCopy の概要を理解する](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
 - [Azure Storage での Azure PowerShell の使用](https://docs.microsoft.com/azure/storage/common/storage-powershell-guide-full)
-- [Azure Storage での Azure CLI の使用](https://docs.microsoft.com/azure/storage/common/storage-azure-cli)
+- [クイック スタート: Azure CLI を使用して BLOB を作成、ダウンロード、一覧表示する](../blobs/storage-quickstart-blobs-cli.md)
 - 内容は次のとおりです。
 
     - [オフライン転送用の Azure Data Box、Azure Data Box Disk、および Azure Data Box Heavy](https://docs.microsoft.com/azure/databox/)

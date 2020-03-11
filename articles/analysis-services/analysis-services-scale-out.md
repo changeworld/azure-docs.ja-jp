@@ -4,15 +4,15 @@ description: Azure Analysis Services サーバーをスケールアウトによ�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 03/02/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fd91701a20b8a760eadcafe6f93f9ba5857a1c9f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 3ea304d038618fc428f20e7ad72b398f593d09a8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310188"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247988"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services のスケールアウト
 
@@ -74,19 +74,23 @@ SSMS を使用して、詳細プロパティで ReplicaSyncMode を設定しま�
 
 ## <a name="monitor-qpu-usage"></a>QPU の使用状況を監視する
 
-お使いのサーバーでスケールアウトが必要かどうかを判断するには、Azure Portal でメトリックを使用して監視します。 QPU が頻繁に上限に達するようであれば、モデルに対するクエリの数が、お使いのプランに設定されている QPU の制限を超過していることになります。 クエリ スレッド プール キュー内のキュー数が、利用可能な QPU を超過した場合も、クエリ プールのジョブ キュー長のメトリックは増加します。 
+お使いのサーバーでスケールアウトが必要かどうかを判断するには、Azure portal でメトリックを使用して[サーバーを監視します](analysis-services-monitor.md)。 QPU が頻繁に上限に達するようであれば、モデルに対するクエリの数が、お使いのプランに設定されている QPU の制限を超過していることになります。 クエリ スレッド プール キュー内のキュー数が、利用可能な QPU を超過した場合も、クエリ プールのジョブ キュー長のメトリックは増加します。 
 
 注意しておくとよいもう 1 つのメトリックは、ServerResourceType 別の平均 QPU です。 このメトリックは、プライマリ サーバーの平均 QPU とクエリ プールの平均 QPU を比較します。 
 
 ![スケールアウトのメトリックのクエリを実行する](media/analysis-services-scale-out/aas-scale-out-monitor.png)
 
-### <a name="to-configure-qpu-by-serverresourcetype"></a>ServerResourceType 別の QPU を構成する
+**ServerResourceType 別の QPU を構成する**
+
 1. メトリックの折れ線グラフで、 **[メトリックの追加]** をクリックします。 
 2. **[リソース]** でサーバーを選択し、 **[メトリック名前空間]** で **[Analysis Services standard metrics]\(Analysis Services の標準的なメトリック)** を選択します。次に、 **[メトリック]** で **[QPU]** を選択し、 **[集計]** で **[平均]** を選択します。 
 3. **[Apply Splitting]\(分割の適用)** をクリックします。 
 4. **[値]** で、 **[ServerResourceType]** を選択します。  
 
-詳細については、[サーバー メトリックの監視](analysis-services-monitor.md)に関する記事をご覧ください。
+### <a name="detailed-diagnostic-logging"></a>詳細な診断ログ
+
+スケールアウトされたサーバー リソースのより詳細な診断には、Azure Monitor ログを使用します。 ログに対して Log Analytics クエリを使用して、サーバーおよびレプリカ別に QPU とメモリを分割できます。 詳細については、[Analysis Services の診断ログ](analysis-services-logging.md#example-queries)に関するページのクエリの例を参照してください。
+
 
 ## <a name="configure-scale-out"></a>スケールアウトを構成する
 
@@ -132,7 +136,7 @@ SSMS を使用して、詳細プロパティで ReplicaSyncMode を設定しま�
 |-1     |  無効       |
 |0     | レプリケーション中        |
 |1     |  リハイドレート中       |
-|2     |   [完了]       |
+|2     |   完了       |
 |3     |   失敗      |
 |4     |    終了処理中     |
 |||
@@ -166,7 +170,7 @@ SSMS、Visual Studio、および PowerShell、Azure 関数アプリ、AMO の接
 
 複数のレプリカを持つサーバーの価格レベルを変更できます。 同じ価格レベルがすべてのレプリカに適用されます。 スケーリング操作では、まずすべてのレプリカが一度に停止された後、すべてのレプリカが新しい価格レベルで起動されます。
 
-## <a name="troubleshoot"></a>[トラブルシューティング]
+## <a name="troubleshoot"></a>トラブルシューティング
 
 **問題:** ユーザーに "**Cannot find server '\<Name of the server>' instance in connection mode 'ReadOnly'** " (接続モード 'ReadOnly' でサーバー '<サーバーの名前>' インスタンスが見つかりません) というエラーが表示されます。
 

@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
-ms.openlocfilehash: fc1f81c616dc6ee664bb5be924f2a1586646d16d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 544de1b4ac46a58d533f71a46266807a3b93820a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76279156"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920044"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>診断設定でログとメトリックを分析する
 
@@ -32,7 +32,7 @@ Azure Spring Cloud の診断機能を使用することで、次のいずれか�
 
 ## <a name="metrics"></a>メトリック
 
-メトリックの完全な一覧については、[Spring Cloud のメトリック](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options)に関する記事を参照してください。
+メトリックの完全な一覧については、[Spring Cloud のメトリック](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-metrics-options)に関する記事を参照してください。
 
 まず、これらのサービスのいずれかを有効にしてデータを受信します。 Log Analytics の構成については、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/get-started-portal.md)」を参照してください。 
 
@@ -114,7 +114,7 @@ Log Analytics で使用されるクエリ言語の詳細については、「[Az
 1. アプリケーション ログを確認するには、**insights-logs-applicationconsole** という名前のコンテナーを検索します。
 1. アプリケーション メトリックを確認するには、**insights-metrics-pt1m** という名前のコンテナーを検索します。
 
-ストレージ アカウントへの診断情報の送信の詳細については、「[Azure Storage への診断データの保存と表示](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-to-storage)」を参照してください。
+ストレージ アカウントへの診断情報の送信の詳細については、「[Azure Storage への診断データの保存と表示](../storage/common/storage-introduction.md)」を参照してください。
 
 ### <a name="use-your-event-hub"></a>イベント ハブを使用する
 

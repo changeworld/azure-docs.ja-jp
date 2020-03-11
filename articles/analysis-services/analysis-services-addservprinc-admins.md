@@ -8,19 +8,16 @@ ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b75740e9bff714ad68c93bea7e387e60da2f1c59
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 1370f65405963ebf825e986e6801607a0d96156e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212499"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298090"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>サーバー管理者ロールへのサービス プリンシパルの追加 
 
  無人の PowerShell タスクを自動化するには、管理対象の Analysis Services サーバー上で、サービス プリンシパルに**サーバー管理者**権限が付与されている必要があります。 この記事では、Azure AS サーバー上のサーバー管理者ロールにサービス プリンシパルを追加する方法について説明します。 これは、SQL Server Management Studio または Resource Manager テンプレートを使用して行うことができます。
- 
-> [!NOTE]
-> Azure PowerShell コマンドレットを使用したサーバー操作の場合、サービス プリンシパルが、[Azure のロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) でリソースの**所有者**ロールに属している必要もあります。 
 
 ## <a name="before-you-begin"></a>開始する前に
 このタスクを完了するには、Azure Active Directory にサービス プリンシパルが登録されている必要があります。
@@ -96,6 +93,24 @@ Azure Resource Manager テンプレートを使用して Analysis Services サ�
     ]
 }
 ```
+
+## <a name="using-managed-identities"></a>マネージド ID の使用
+
+マネージド ID は、Analysis Services 管理者の一覧に追加することもできます。 たとえば、[システムによって割り当てられたマネージド ID を持つロジック アプリ](../logic-apps/create-managed-service-identity.md)があり、これにお使いの Analysis Services サーバーを管理する権限を付与するとします。
+
+Azure portal と API シリーズのほとんどの部分では、マネージド ID はサービス プリンシパルのオブジェクト ID を使用して識別されます。 ただし、Analysis Services では、クライアント ID を使用して識別する必要があります。 サービス プリンシパルのクライアント ID を取得するには、Azure CLI を使用できます。
+
+```bash
+az ad sp show --id <ManagedIdentityServicePrincipalObjectId> --query appId -o tsv
+```
+
+PowerShell を使用することもできます。
+
+```powershell
+(Get-AzureADServicePrincipal -ObjectId <ManagedIdentityServicePrincipalObjectId>).AppId
+```
+
+次に、上記のように、このクライアント ID をテナント ID と組み合わせて使用して、Analysis Services 管理者の一覧にマネージド ID を追加できます。
 
 ## <a name="related-information"></a>関連情報
 
