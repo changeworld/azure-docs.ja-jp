@@ -19,9 +19,9 @@ ms.locfileid: "60822843"
 
 Event Grid の SDK を使うと、プログラムでリソースの管理やイベントの投稿を行うことができます。
 
-## <a name="management-sdks"></a>管理 SDK
+## <a name="management-sdks"></a>Management SDK
 
-管理 SDK を使うと、Event Grid のトピックとサブスクリプションを作成、更新、および削除できます。 現時点では、次の SDK を利用できます。
+Management SDK を使うと、Event Grid のトピックとサブスクリプションを作成、更新、および削除できます。 現時点では、次の SDK を利用できます。
 
 * [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid)
 * [Go](https://github.com/Azure/azure-sdk-for-go)
