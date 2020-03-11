@@ -127,7 +127,7 @@
               href: container-registry-check-health.md
             - name: よく寄せられる質問
               href: container-registry-faq.md
-- name: 処理手順
+- name: タスク
   expanded: true
   items:
     - name: 概要
@@ -181,6 +181,8 @@
               href: container-registry-tasks-authentication-key-vault.md
         - name: Buildpack を使用したイメージのビルド (プレビュー)
           href: container-registry-tasks-pack-build.md
+        - name: タスク ログを表示する
+          href: container-registry-tasks-logs.md
 - name: リファレンス
   expanded: false
   items:

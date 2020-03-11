@@ -185,47 +185,29 @@
         - name: モデルの作成とトレーニング
           items:
             - name: アルゴリズムを選択する
-              href: /azure/machine-learning/studio/algorithm-choice?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: /azure/machine-learning/how-to-select-algorithms?context=azure/machine-learning/team-data-science-process/context/ml-context
             - name: アルゴリズム チート シート
-              href: /azure/machine-learning/studio/algorithm-cheat-sheet?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: /azure/machine-learning/algorithm-cheat-sheet?context=azure/machine-learning/team-data-science-process/context/ml-context
     - name: 運用環境でのモデルのデプロイ
       href: deploy-models-in-production.md
 - name: 関連項目
   items:
     - name: Azure Machine Learning
       href: ../
-    - name: Azure AI ギャラリー
-      href: 'https://gallery.azure.ai'
-    - name: Cortana Analytics
+    - name: Cognitive Services
+      href: 'https://docs.microsoft.com/azure/cognitive-services/'
+    - name: 異常検出
+      href: apps-anomaly-detection-api.md
+    - name: 予測的なメンテナンス
       items:
-        - name: 異常検出
-          href: apps-anomaly-detection-api.md
-        - name: Cognitive Services
-          href: 'https://docs.microsoft.com/azure/cognitive-services/'
-        - name: 予測的なメンテナンス
-          items:
-            - name: 概要
-              href: cortana-analytics-playbook-predictive-maintenance.md
-            - name: Architecture
-              href: cortana-analytics-architecture-predictive-maintenance.md
-            - name: テクニカル ガイド
-              href: cortana-analytics-technical-guide-predictive-maintenance.md
+        - name: 概要
+          href: predictive-maintenance-playbook.md
+        - name: Architecture
+          href: predictive-maintenance-architecture.md
+        - name: テクニカル ガイド
+          href: predictive-maintenance-technical-guide.md
 - name: リソース
   items:
-    - name: ブログ
-      items:
-        - name: TDSP の最近の更新
-          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/10/09/the-microsoft-team-data-science-process-tdsp-recent-updates/'
-        - name: Azure Machine Learning での TDSP の使用
-          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/09/25/using-the-team-data-science-process-tdsp-in-azure-machine-learning/'
-        - name: TDSP のデータ サイエンス ユーティリティ v.0.11
-          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/01/11/announcing-data-science-utilities-version-0-11-for-the-team-data-science-process/'
-        - name: TDSP の最新のユーティリティ
-          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/04/05/latest-rev-of-utilities-for-microsoft-team-data-science-process-tdsp-now-available/'
-        - name: データ サイエンス プロジェクト計画のテンプレート
-          href: 'https://blogs.msdn.microsoft.com/buckwoody/2017/10/24/a-data-science-microsoft-project-template-you-can-use-in-your-solutions/'
-        - name: Cortana Intelligence と Machine Learning のブログ
-          href: 'https://blogs.technet.microsoft.com/machinelearning/'
     - name: TDSP を使用している組織
       items:
         - name: New Signature
