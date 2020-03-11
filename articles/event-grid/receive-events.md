@@ -368,6 +368,6 @@ module.exports = function (context, req) {
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Event Grid の管理 SDK と発行 SDK](./sdk-overview.md) を確認する
+* [Azure Event Grid の Management SDK と Publish SDK](./sdk-overview.md) を確認する
 * [カスタム トピックを投稿する](./post-to-custom-topic.md)方法を確認する
 * [BLOB ストレージにアップロード済みの画像のサイズ変更](resize-images-on-storage-blob-upload-event.md)などの Event Grid と関数の詳細なチュートリアルを試す
