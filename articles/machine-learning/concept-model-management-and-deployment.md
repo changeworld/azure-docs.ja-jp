@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 02/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 11a6a668b1028ba1640ef076606d4aeb4c3aae6e
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 82866d452289a29dcdcacc12db8048acb7a351ba
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589370"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250860"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps:Azure Machine Learning を使用したモデル管理、デプロイ、および監視
 
@@ -71,6 +71,11 @@ Azure Machine Learning の環境を使用して、プロジェクトのソフト
 アクティブなデプロイで使用されている登録済みモデルは削除できません。
 詳細については、[モデルのデプロイ](how-to-deploy-and-where.md#registermodel)に関するページの、モデルの登録のセクションを参照してください。
 
+### <a name="profile-models"></a>モデルのプロファイル
+
+Azure Machine Learning は、モデルのデプロイ時に作成されるサービスの CPU とメモリの要件を把握するのに役立ちます。 モデルを実行して CPU 使用率、メモリ使用率、応答の待機時間などの情報を返す、サービスのプロファイル テストを行います。 また、リソースの使用状況に基づいて CPU とメモリに関する推奨事項が提示されます。
+詳細については、[モデルのデプロイ](how-to-deploy-and-where.md#profilemodel)に関するページの、プロファイルのセクションを参照してください。
+
 ### <a name="package-and-debug-models"></a>モデルをパッケージ化しデバッグする
 
 モデルは、運用環境にデプロイされる前に、Docker イメージにパッケージ化されます。 ほとんどの場合、イメージの作成は、バックグラウンドでデプロイ時に自動的に行われます。 イメージは、手動で指定できます。
@@ -78,10 +83,6 @@ Azure Machine Learning の環境を使用して、プロジェクトのソフト
 デプロイで問題が発生した場合は、トラブルシューティングとデバッグを行うためにローカルの開発環境にデプロイできます。
 
 詳細については、「[モデルをデプロイする](how-to-deploy-and-where.md#registermodel)」と「[デプロイのトラブルシューティング](how-to-troubleshoot-deployment.md)」を参照してください。
-
-### <a name="validate-and-profile-models"></a>モデルを検証しプロファイルする
-
-Azure Machine Learning は、プロファイリングを使用して、モデルのデプロイ時に使用する最適な CPU とメモリの設定を判断できます。 モデルの検証は、プロファイリング プロセスに提供したデータを使用して、このプロセスの一部として行われます。
 
 ### <a name="convert-and-optimize-models"></a>モデルを変換して最適化する
 

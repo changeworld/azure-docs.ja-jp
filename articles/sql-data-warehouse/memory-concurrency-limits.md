@@ -1,25 +1,25 @@
 ---
 title: メモリと同時実行の制限
-description: Azure SQL Data Warehouse のさまざまなパフォーマンス レベルとリソース クラスに割り当てられたメモリおよびコンカレンシーの制限を表示します。
+description: Azure Synapse Analytics のさまざまなパフォーマンス レベルとリソース クラスに割り当てられたメモリおよびコンカレンシーの制限を表示します。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 12/04/2019
+ms.date: 02/04/2020
 ms.author: rortloff
-ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: dfdaef0002f068dc4c9044e979b169de779cf6d5
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.reviewer: jrasnick
+ms.custom: azure-synapse
+ms.openlocfilehash: 73c7b756009035c8592c85bec3a6b7d85d93666c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851283"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200687"
 ---
-# <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のメモリおよびコンカレンシーの制限
-Azure SQL Data Warehouse のさまざまなパフォーマンス レベルとリソース クラスに割り当てられたメモリおよびコンカレンシーの制限を表示します。  
+# <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Azure Synapse Analytics のメモリと同時実行の制限
+Azure Synapse Analytics のさまざまなパフォーマンス レベルとリソース クラスに割り当てられたメモリおよびコンカレンシーの制限を表示します。  
 
 ## <a name="data-warehouse-capacity-settings"></a>データ ウェアハウスの容量設定
 次の表は、さまざまなパフォーマンス レベルでのデータ ウェアハウスの最大容量を示しています。 パフォーマンス レベルを変更するには、[コンピューティングのスケーリング (ポータル)](quickstart-scale-compute-portal.md) に関するページを参照してください。
@@ -34,7 +34,7 @@ Azure SQL Data Warehouse のさまざまなパフォーマンス レベルとリ
 | DW200c            | 1             | 60                             |   120                          |
 | DW300c            | 1             | 60                             |   180                          |
 | DW400c            | 1             | 60                             |   240                          |
-| DW500c            | 1             | 60                             |   300                          |
+| DW500c            | 1             | 60                             |   該当なし                          |
 | DW1000c           | 2             | 30                             |   600                          |
 | DW1500c           | 3             | 20                             |   900                          |
 | DW2000c           | 4             | 15                             |  1200                          |
@@ -52,7 +52,7 @@ Azure SQL Data Warehouse のさまざまなパフォーマンス レベルとリ
 ## <a name="concurrency-maximums-for-workload-groups"></a>ワークロード グループの同時実行の最大値
 [ワークロード グループ](sql-data-warehouse-workload-isolation.md)が導入され、コンカレンシー スロットの概念は適用されなくなりました。  要求ごとのリソースはパーセント単位で割り当てられ、ワークロード グループの定義で指定されます。  ただし、コンカレンシー スロットを削除したとしても、サービス レベルに基づいてクエリごとに必要なリソースの最小量があります。  次の表では、サービス レベル全体のクエリごとに必要なリソースの最小量と、実現可能な関連するコンカレンシー数を定義しています。 
 
-|Service Level|同時クエリの最大数|REQUEST_MIN_RESOURCE_GRANT_PERCENT でサポートされる最小量 (%)|
+|サービス レベル|同時クエリの最大数|REQUEST_MIN_RESOURCE_GRANT_PERCENT でサポートされる最小量 (%)|
 |---|---|---|
 |DW100c|4|25%|
 |DW200c|8|12.5%|
@@ -73,13 +73,13 @@ Azure SQL Data Warehouse のさまざまなパフォーマンス レベルとリ
 ||||
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>リソース クラスのコンカレンシーの最大値
-各クエリを効率的に実行するために十分なリソースが提供されるよう、SQL Data Warehouse は各クエリにコンカレンシー スロットを割り当てることで、リソース使用率を追跡します。 システムは、重要度とコンカレンシー スロットに基づいて、クエリをキューに入れます。 十分な数のコンカレンシー スロットが利用できるようになるまで、クエリはキュー内で待機します。 [重要度](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance)とコンカレンシー スロットによって、CPU の優先順位付けも決定されます。 詳細については、[ワークロードの分析](analyze-your-workload.md)に関するページを参照してください。
+各クエリに効率的に実行するために十分なリソースを確保するために、Azure Synapse の SQL Analytics では、各クエリに同時実行スロットを割り当てることで、リソースの使用率が追跡されます。 システムは、重要度とコンカレンシー スロットに基づいて、クエリをキューに入れます。 十分な数のコンカレンシー スロットが利用できるようになるまで、クエリはキュー内で待機します。 [重要度](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance)とコンカレンシー スロットによって、CPU の優先順位付けも決定されます。 詳細については、[ワークロードの分析](analyze-your-workload.md)に関するページを参照してください。
 
 **静的リソース クラス**
 
 次の表は、[静的なリソース クラス](resource-classes-for-workload-management.md)ごとの最大のコンカレント クエリ数とコンカレンシー スロット数を示しています。  
 
-| Service Level | 同時クエリの最大数 | 割り当てられるコンカレンシー スロット数 | staticrc10 で使用されるスロット数 | staticrc20 で使用されるスロット数 | staticrc30 で使用されるスロット数 | staticrc40 で使用されるスロット数 | staticrc50 で使用されるスロット数 | staticrc60 で使用されるスロット数 | staticrc70 で使用されるスロット数 | staticrc80 で使用されるスロット数 |
+| サービス レベル | 同時クエリの最大数 | 割り当てられるコンカレンシー スロット数 | staticrc10 で使用されるスロット数 | staticrc20 で使用されるスロット数 | staticrc30 で使用されるスロット数 | staticrc40 で使用されるスロット数 | staticrc50 で使用されるスロット数 | staticrc60 で使用されるスロット数 | staticrc70 で使用されるスロット数 | staticrc80 で使用されるスロット数 |
 |:-------------:|:--------------------------:|:---------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
 | DW100c        |  4                         |    4                        | 1         | 2          | 4          | 4          | 4         |  4         |  4         |  4         |
 | DW200c        |  8                         |    8                        | 1         | 2          | 4          | 8          |  8         |  8         |  8         |  8        |
@@ -93,7 +93,7 @@ Azure SQL Data Warehouse のさまざまなパフォーマンス レベルとリ
 | DW3000c       | 64                         |  120                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
 | DW5000c       | 64                         |  200                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
 | DW6000c       | 128                        |  240                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
-| DW7500c       | 128                        |  300                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
+| DW7500c       | 128                        |  該当なし                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
 | DW10000c      | 128                        |  400                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
 | DW15000c      | 128                        |  600                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
 | DW30000c      | 128                        | 1200                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
@@ -102,7 +102,7 @@ Azure SQL Data Warehouse のさまざまなパフォーマンス レベルとリ
 
 次の表は、[動的なリソース クラス](resource-classes-for-workload-management.md)ごとの最大のコンカレンシー クエリ数とコンカレンシー スロット数を示しています。 動的リソース クラスは、すべてのサービス レベルにおいて small-medium-large-xlarge リソース クラスに対して 3-10-22-70 のメモリ割り当て率を使用します。
 
-| Service Level | 同時クエリの最大数 | 割り当てられるコンカレンシー スロット数 | smallrc で使用されるスロット数 | mediumrc で使用されるスロット数 | largerc で使用されるスロット数 | xlargerc で使用されるスロット数 |
+| サービス レベル | 同時クエリの最大数 | 割り当てられるコンカレンシー スロット数 | smallrc で使用されるスロット数 | mediumrc で使用されるスロット数 | largerc で使用されるスロット数 | xlargerc で使用されるスロット数 |
 |:-------------:|:--------------------------:|:---------------------------:|:---------------------:|:----------------------:|:---------------------:|:----------------------:|
 | DW100c        |  4                         |    4                        | 1                     |  1                     |  1                    |   2                    |
 | DW200c        |  8                         |    8                        | 1                     |  1                     |  1                    |   5                    |
@@ -116,7 +116,7 @@ Azure SQL Data Warehouse のさまざまなパフォーマンス レベルとリ
 | DW3000c       | 32                         |  120                        | 3                     | 12                     |  26                   |  84                    |
 | DW5000c       | 32                         |  200                        | 6                     | 20                     |  44                   | 140                    |
 | DW6000c       | 32                         |  240                        | 7                     | 24                     |  52                   | 168                    |
-| DW7500c       | 32                         |  300                        | 9                     | 30                     |  66                   | 210                    |
+| DW7500c       | 32                         |  該当なし                        | 9                     | 30                     |  66                   | 210                    |
 | DW10000c      | 32                         |  400                        | 12                    | 40                     |  88                   | 280                    |
 | DW15000c      | 32                         |  600                        | 18                    | 60                     | 132                   | 420                    |
 | DW30000c      | 32                         | 1200                        | 36                    | 120                    | 264                   | 840                    |
@@ -124,7 +124,7 @@ Azure SQL Data Warehouse のさまざまなパフォーマンス レベルとリ
 
 クエリの実行を開始するのに十分な数のコンカレンシー スロットが空いていない場合、クエリはキューに入れられ、重要度に基づいて実行されます。  重要度が同じ場合、クエリは先入れ先出しで実行されます。  クエリが完了してクエリおよびスロットの数が制限値を下回ると、キューに入れられていたクエリは解放されます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ワークロードをさらに最適化するためにリソース クラスを活用する方法の詳細については、次の記事を参照してください。
 * [ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)

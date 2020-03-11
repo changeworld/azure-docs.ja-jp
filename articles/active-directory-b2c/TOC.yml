@@ -329,6 +329,8 @@
                       href: restful-technical-profile.md
                     - name: SAML
                       href: saml-technical-profile.md
+                    - name: SAML トークン発行者
+                      href: saml-issuer-technical-profile.md
                     - name: セルフアサート
                       href: self-asserted-technical-profile.md
                     - name: SSO セッション

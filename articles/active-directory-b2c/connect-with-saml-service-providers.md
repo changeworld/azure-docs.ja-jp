@@ -3,21 +3,21 @@ title: Azure AD B2C を SAML IdP としてアプリケーションに構成す�
 title-suffix: Azure AD B2C
 description: アプリケーション (サービス プロバイダー) に SAML プロトコル アサーションを提供するように Azure AD B2C を構成する方法。 Azure AD B2C は、SAML アプリケーションに対して単一の ID プロバイダー (IdP) として機能します。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/24/2020
-ms.author: marsma
+ms.date: 02/27/2020
+ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5ec83857ebabc92bf86f9f84a43746a0e561218a
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 1c362cd2924de73b2e40e634fe554ff1526e09d8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77647596"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189652"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML アプリケーションを Azure AD B2C に登録する
 
@@ -63,7 +63,7 @@ SAML サービス プロバイダーと関連のメタデータ エンドポイ�
 
 ## <a name="1-set-up-certificates"></a>1.証明書を設定する
 
-サービス プロバイダーと Azure AD B2C の間に信頼関係を構築するには、X509 証明書とその秘密キーを提供する必要があります。
+サービス プロバイダーと Azure AD B2C の間に信頼関係を構築するには、Web アプリの X509 証明書を用意する必要があります。
 
 * **サービス プロバイダーの証明書**
   * 秘密キーが Web アプリに保存されている証明書。 この証明書は、Azure AD B2C に送信される SAML 要求に署名するためにサービス プロバイダーによって使用されます。 Azure AD B2C では、サービス プロバイダーのメタデータから公開キーを読み取り、署名が検証されます。
@@ -106,7 +106,7 @@ SAML サービス プロバイダーと関連のメタデータ エンドポイ�
 1. **[名前]** に「*SamlIdpCert*」などを入力します。 プレフィックス *B2C_1A_* がキーの名前に自動的に追加されます。
 1. ファイルのアップロード コントロールを使用して証明書をアップロードします。
 1. 証明書のパスワードを入力します。
-1. **作成** を選択します。
+1. **［作成］** を選択します
 1. キーが想定どおりに表示されることを確認します。 たとえば、*B2C_1A_SamlIdpCert* です。
 
 ## <a name="2-prepare-your-policy"></a>2.ドライブを準備する
@@ -142,11 +142,11 @@ SAML サービス プロバイダーと関連のメタデータ エンドポイ�
       </CryptographicKeys>
       <InputClaims/>
       <OutputClaims/>
-      <UseTechnicalProfileForSessionManagement ReferenceId="SM-Saml"/>
+      <UseTechnicalProfileForSessionManagement ReferenceId="SM-Saml-sp"/>
     </TechnicalProfile>
 
     <!-- Session management technical profile for SAML based tokens -->
-    <TechnicalProfile Id="SM-Saml">
+    <TechnicalProfile Id="SM-Saml-sp">
       <DisplayName>Session Management Provider</DisplayName>
       <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
     </TechnicalProfile>

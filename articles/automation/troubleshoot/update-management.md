@@ -4,16 +4,16 @@ description: Azure の Update Management ソリューションに関する問題
 services: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 05/31/2019
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 5ee1a20d4a3c46cab484b03b5fcc212a79d19047
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 1b0047cda3664759f4f1b6499c8a54ee22f98ab3
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513271"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227452"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Update Management の問題をトラブルシューティングする
 
@@ -24,6 +24,36 @@ ms.locfileid: "76513271"
 仮想マシン (VM) にソリューションをオンボードしようとしているときに問題が発生した場合は、ローカル コンピューター上の **[アプリケーションとサービス ログ]** にある **Operations Manager** ログで、イベント ID 4502 のイベントと **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** を含むイベント詳細を確認してください。
 
 次のセクションでは、具体的なエラー メッセージと、考えられる個別の解決策を示します。 他のオンボードの問題については、[ソリューションをオンボードする際のトラブルシューティング](onboarding.md)に関する記事を参照してください。
+
+## <a name="scenario-superseded-update-indicated-as-missing-in-update-management"></a>シナリオ:置き換え済みの更新プログラムが Update Management で不足として示される
+
+### <a name="issue"></a>問題
+
+古い更新プログラムは、置き換え済みだったとしても、Azure アカウントの Update Management に不足として表示されます。 同じ脆弱性を修正しているより新しい更新プログラムを利用できるので、置き換え済みの更新プログラムは、インストールする必要がないものです。 Update Management では、置き換えが行われる更新プログラムを優先し、置き換え済みの更新プログラムは無視して適用しません。 関連する問題の詳細については、「[更新プログラムが置き換えられている](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer)」を参照してください。
+
+### <a name="cause"></a>原因
+
+置き換え済みの更新プログラムが、適用されないと見なされるように、拒否済みとして正しく示されていません。
+
+### <a name="resolution"></a>解像度
+
+置き換え済みの更新プログラムが 100% 適用されなくなっている場合には、その更新プログラムの承認状態を **[拒否済み]** に変更する必要があります。 すべての更新プログラムに対してこれを行うには、次の操作を行います。
+
+1. Automation アカウントで **[Update Management]** を選択して、マシンの状態を表示します。 「[更新の評価を表示する](../manage-update-multi.md#view-an-update-assessment)」を参照してください。
+
+2. 置き換え済みの更新プログラムが 100 パーセント適用されないことを確認します。 
+
+3. 更新プログラムに関する疑問がなければ、更新プログラムを拒否済みとしてマークします。 
+
+4. [コンピューター] を選択して、[準拠] 列で、準拠するための再スキャンを適用します。 「[複数のマシンの更新プログラムの管理](../manage-update-multi.md)」を参照してください。
+
+5. 置き換え済みの他の更新プログラムに対して、上記の手順を繰り返してください。
+
+6. クリーンアップ ウィザードを実行して、拒否済みの更新プログラムからのファイルを削除します。 
+
+7. WSUS の場合は、置き換え済みの更新プログラムをすべて手動で消去して、インフラストラクチャを更新します。
+
+8. この手順を定期的に繰り返して表示の問題を修正し、更新プログラムの管理に使用されるディスク領域量を最小限に抑えます。
 
 ## <a name="nologs"></a>シナリオ:Update Management のポータルにマシンが表示されない
 
@@ -45,7 +75,7 @@ Hybrid Runbook Worker の再登録と再インストールが必要になる場�
 
 自分のワークスペースで定義したクォータに達していて、それ以上のデータの格納が妨げられている可能性があります。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 * OS に応じて、[Windows](update-agent-issues.md#troubleshoot-offline) 用または [Linux](update-agent-issues-linux.md#troubleshoot-offline) 用のトラブルシューティング ツールを実行します。
 
@@ -86,7 +116,7 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 Automation リソース プロバイダーがサブスクリプションに登録されていません。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 Automation リソース プロバイダーを登録するには、Azure portal で次の手順に従います。
 
@@ -113,7 +143,7 @@ The components for the 'Update Management' solution have been enabled, and now t
 - Automation アカウントとの通信がブロックされています。
 - オンボードしている VM の複製元が、Microsoft Monitoring Agent (MMA) がインストールされた状態で sysprep されなかった複製マシンであった可能性があります。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 1. [ネットワークの計画](../automation-hybrid-runbook-worker.md#network-planning)に関する記事にアクセスし、Update Management を動作させるために許可する必要があるアドレスとポートを確認してください。
 2. 複製されたイメージを使用する場合:
@@ -136,7 +166,7 @@ The client has permission to perform action 'Microsoft.Compute/virtualMachines/w
 
 このエラーは、更新プログラムの展開に含まれる別のテナントの Azure VM を持つ更新プログラムの展開を作成するときに発生します。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 次の回避策を使用して、これらの項目をスケジュールします。 スケジュールを作成するには、`-ForUpdate` スイッチを指定して [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) コマンドレットを使用します。 次に、[AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
 ) コマンドレットを使用して、他のテナントのマシンを `-NonAzureComputer` パラメーターに渡します。 以下の例は、その方法を示しています。
@@ -161,7 +191,7 @@ New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -Automa
 
 Windows Update はいくつかのレジストリ キーによって変更でき、そのいずれかによって再起動の動作が変更されることがあります。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 「[レジストリを編集して自動更新を構成する](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)」と、[「再起動の管理に使われるレジストリ キー](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart)」に記載されているレジストリ キーを確認して、マシンが正しく構成されていることを確認します。
 
@@ -185,7 +215,7 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 * MMA に対する更新があり、SourceComputerId が変更されました。
 * Automation アカウントで 2,000 個の同時ジョブの制限に達した場合は、更新の実行が制限されました。 各展開は 1 つのジョブと見なされ、更新プログラムの展開内の各マシンは 1 つのジョブとカウントされます。 Automation アカウントで現在実行されている他のオートメーション ジョブや更新プログラムの展開は、すべて同時ジョブ制限の対象になります。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 該当する場合は、更新プログラムの展開に[動的グループ](../automation-update-management-groups.md)を使用します。 追加として:
 
@@ -208,7 +238,7 @@ Update Management に Windows マシンを登録すると、展開なしで更�
 
 Windows では、更新プログラムは、使用可能になるとすぐに自動的にインストールされます。 この動作が原因で、更新プログラムをマシンに展開するスケジュールを設定しなかった場合、混乱が生じる可能性があります。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 レジストリ キー `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` の既定値は、4: **自動でダウンロードしてインストールする**に設定されています。
 
@@ -230,7 +260,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 マシンが既に Update Management 用の別のワークスペースにオンボードされています。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 1. 「[Update Management のポータルにマシンが表示されない](#nologs)」の手順に従って、マシンのレポート先が正しいワークスペースであることを確認します。
 2. [Hybrid Runbook グループを削除する](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group)ことにより、マシン上の古いアーティファクトをクリーンアップしてから、再試行します。
@@ -261,7 +291,7 @@ Access is denied. (Exception form HRESULT: 0x80070005(E_ACCESSDENIED))
 
 プロキシ、ゲートウェイ、またはファイアウォールがネットワーク通信をブロックしている可能性があります。 
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 ネットワークを見直し、適切なポートとアドレスが許可されていることを確認します。 Update Management および Hybrid Runbook Worker で必要なポートとアドレスの一覧については、[ネットワーク要件](../automation-hybrid-runbook-worker.md#network-planning)を参照してください。
 
@@ -279,7 +309,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 Hybrid Runbook Worker が自己署名証明書を生成できませんでした。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 **C:\ProgramData\Microsoft\Crypto\RSA** フォルダーへの読み取りアクセスがシステム アカウントにあることを確認してから、再試行します。
 
@@ -289,7 +319,7 @@ Hybrid Runbook Worker が自己署名証明書を生成できませんでした�
 
 更新の既定のメンテナンス時間は 120 分です。 メンテナンス期間は、最大 6 時間つまり 360 分まで増やすことができます。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 スケジュール済みの更新プログラムの展開で失敗したものがあれば編集し、メンテナンス期間を延長します。
 
@@ -307,7 +337,7 @@ Hybrid Runbook Worker が自己署名証明書を生成できませんでした�
 
 更新エージェント (Windows 上の Windows Update エージェント、Linux ディストリビューション用のパッケージ マネージャー) が正しく構成されていません。 Update Management は、必要な更新プログラム、パッチの状態、展開されたパッチの結果を提供するために、マシンの更新エージェントを利用しています。 この情報がないと、Update Management は必要なパッチやインストール済みのパッチを適切にレポートすることができません。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 マシンで更新プログラムをローカルで実行してみてください。 これが失敗した場合は、通常、更新エージェントに構成エラーがあることを意味します。
 
@@ -355,7 +385,7 @@ HRESULT が表示される場合は、赤で表示された例外をダブルク
 * マシンにアクセスできません。
 * 更新プログラムに、解決されていない依存関係がありました。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 正常に開始した後に更新プログラムの実行中にエラーが発生した場合は、実行で影響を受けたマシンからの[ジョブ出力を確認](../manage-update-multi.md#view-results-of-an-update-deployment)します。 マシンからの特定のエラー メッセージが見つかれば、調査して対処することができます。 Update Management で更新プログラムをデプロイするには、パッケージ マネージャーが正常である必要があります。
 

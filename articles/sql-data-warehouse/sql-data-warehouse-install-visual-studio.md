@@ -1,28 +1,28 @@
 ---
 title: Visual Studio 2019 をインストールする
-description: Azure SQL Data Warehouse 用に Visual Studio と SQL Server Development Tools (SSDT) をインストールします
+description: SQL Analytics 用に Visual Studio と SQL Server Development Tools (SSDT) をインストールします
 services: sql-data-warehouse
-ms.custom: seo-lt-2019
+ms.custom: azure-synapse
 ms.workload: azure-vs
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: development
-ms.date: 01/07/2020
+ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: b2b7b2413a187c446aace4eb1e416dea1b4258d3
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: b9ad0f4aedc5a095bfa70dec1b67e52cd4d152e0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750659"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195341"
 ---
-# <a name="getting-started-with-visual-studio-2019-for-sql-data-warehouse"></a>SQL Data Warehouse 用の Visual Studio 2019 を始める
+# <a name="getting-started-with-visual-studio-2019"></a>Visual Studio 2019 の概要
 Visual Studio **2019** SQL Server Data Tools (SSDT) は次のことを可能にする単一ツールです。
 
-- SQL Data Warehouse 用のアプリケーションを接続、クエリ実行、開発する 
+- アプリケーションを接続、クエリ実行、開発する
 - オブジェクト エクスプローラーを活用し、テーブル、ビュー、ストアド プロシージャなど、データ モデル内のあらゆるオブジェクトを視覚的に調べます。
 - オブジェクトの T-SQL データ定義言語 (DDL) スクリプトを生成する
 - 状態に基づく手法と SSDT データベース プロジェクトを利用し、データ ウェアハウスを開発する
@@ -34,7 +34,7 @@ Visual Studio **16.3 以上**をダウンロードし、インストールする
 
 ## <a name="unsupported-features-in-ssdt"></a>SSDT でサポートされていない機能
 
-SQL Data Warehouse の機能リリースに SSDT のサポートが含まれない場合があります。 現在サポートされていない機能は次のとおりです。
+SQL Analytics の機能リリースに SSDT のサポートが含まれない場合があります。 現在サポートされていない機能は次のとおりです。
 
 - [具体化されたビュー](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest) (作業中)
 - [順序指定クラスター化列ストア インデックス](https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?view=azure-sqldw-latest#examples--and-) (作業中)
@@ -49,16 +49,18 @@ SQL Data Warehouse の機能リリースに SSDT のサポートが含まれな�
 
 ## <a name="next-steps"></a>次のステップ
 
-これで、最新バージョンの SSDT がインストールされたので、SQL Data Warehouse に[接続][connect]できるようになりました。
+これで、最新バージョンの SSDT がインストールされたので、SQL プールに[接続][connect]できるようになりました。
 
 <!--Anchors-->
 
 <!--Image references-->
 
 <!--Articles-->
+
 [connect]: ./sql-data-warehouse-query-visual-studio.md
 
 <!--Other-->
+
 [Visual Studio 2019 をダウンロードする]: https://visualstudio.microsoft.com/downloads/
 [Installing Visual Studio]: https://msdn.microsoft.com/library/e2h7fzkw.aspx
 [SSDT Download]: https://msdn.microsoft.com/library/mt204009.aspx

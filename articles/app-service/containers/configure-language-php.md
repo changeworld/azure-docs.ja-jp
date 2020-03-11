@@ -4,12 +4,12 @@ description: アプリ用に事前構築済みの PHP コンテナーを構成�
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: a3de4769193d95a3ef483924c4d65c4fa1cc9f8d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: ad121d605e521704597471b446fa79cb43dfccc7
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671834"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255846"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Azure App Service 向けの Linux PHP アプリを構成する
 
@@ -39,56 +39,30 @@ PHP バージョンを 7.2 に設定するには、[Cloud Shell](https://shell.a
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "PHP|7.2"
 ```
 
-## <a name="run-composer"></a>Composer を実行する
+## <a name="customize-build-automation"></a>ビルドの自動化のカスタマイズ
 
-既定では、Kudu は [Composer](https://getcomposer.org/) を実行しません。 Kudu デプロイ中に Composer 自動化を有効にするには、[カスタム デプロイ スクリプト](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)を指定する必要があります。
+ビルドの自動化を有効にして Git または zip パッケージを使用してアプリをデプロイする場合、App Service のビルドの自動化によって、次の手順が実行されます。
 
-ローカル ターミナル ウィンドウから、ディレクトリをリポジトリのルートに変更します。 [コマンドライン インストール手順](https://getcomposer.org/download/)に従って、*composer.phar* をダウンロードします。
+1. `PRE_BUILD_SCRIPT_PATH` によって指定された場合、カスタム スクリプトを実行します。
+1. `php composer.phar install` を実行します。
+1. `POST_BUILD_SCRIPT_PATH` によって指定された場合、カスタム スクリプトを実行します。
 
-次のコマンドを実行します。
+`PRE_BUILD_COMMAND` および `POST_BUILD_COMMAND` は、既定では空の環境変数です。 ビルド前のコマンドを実行するには、`PRE_BUILD_COMMAND` を定義します。 ビルド後のコマンドを実行するには、`POST_BUILD_COMMAND` を定義します。
 
-```bash
-npm install kuduscript -g
-kuduscript --php --scriptType bash --suppressPrompt
+次の例では、一連のコマンドに対して 2 つの変数をコンマ区切りで指定しています。
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
 ```
 
-リポジトリのルートには、*composer.phar* 以外に、 *.deployment* と *deploy.sh* の 2 つの新しいファイルがあります。これらのファイルは、App Service の Windows および Linux 構成の両方に対して機能します。
+ビルドの自動化をカスタマイズするためのその他の環境変数については、「[Oryx の構成](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)」を参照してください。
 
-*deploy.sh* を開いて、`Deployment` セクションを見つけます。 セクション全体を次のコードに置き換えます。
-
-```bash
-##################################################################################################################################
-# Deployment
-# ----------
-
-echo PHP deployment
-
-# 1. KuduSync
-if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
-  "$KUDU_SYNC_CMD" -v 50 -f "$DEPLOYMENT_SOURCE" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.hg;.deployment;deploy.sh"
-  exitWithMessageOnError "Kudu Sync failed"
-fi
-
-# 3. Initialize Composer Config
-initializeDeploymentConfig
-
-# 4. Use composer
-echo "$DEPLOYMENT_TARGET"
-if [ -e "$DEPLOYMENT_TARGET/composer.json" ]; then
-  echo "Found composer.json"
-  pushd "$DEPLOYMENT_TARGET"
-  php composer.phar install $COMPOSER_ARGS
-  exitWithMessageOnError "Composer install failed"
-  popd
-fi
-##################################################################################################################################
-```
-
-すべての変更内容をコミットし、コードをもう一度デプロイします。 これで Composer はデプロイの自動化の一部として実行しているはずです。
+Linux 上で App Service によって PHP アプリが実行されビルドされる方法に関する詳細については、[Oryx ドキュメントの PHP アプリが検出されビルドされる方法](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/php.md)に関するページを参照してください。
 
 ## <a name="customize-start-up"></a>スタートアップのカスタマイズ
 
-既定では、ビルトイン PHP コンテナーは Apache サーバーを実行します。 起動時に `apache2ctl -D FOREGROUND"` を実行します。 必要に応じて、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行することにより、起動時に別のコマンドを実行できます。
+既定では、組み込みの PHP コンテナーによって Apache サーバーが実行されます。 起動時に `apache2ctl -D FOREGROUND"` を実行します。 必要に応じて、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行することにより、起動時に別のコマンドを実行できます。
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
@@ -142,7 +116,7 @@ PHP のインストールを変更する必要がある場合は、以下の手�
 
 PHP_INI_USER、PHP_INI_PERDIR、および PHP_INI_ALL ディレクティブ ([php.ini ディレクティブ](https://www.php.net/manual/ini.list.php)を参照) をカスタマイズするには、 *.htaccess* ファイルをアプリのルート ディレクトリに追加します。
 
-*.htaccess* ファイルで、`php_value <directive-name> <value>` 構文を使用してディレクティブを追加します。 例:
+*.htaccess* ファイルで、`php_value <directive-name> <value>` 構文を使用してディレクティブを追加します。 次に例を示します。
 
 ```
 php_value upload_max_filesize 1000M
@@ -224,23 +198,15 @@ zend_extension=/home/site/wwwroot/bin/xdebug.so
 動作中の PHP アプリが App Service で異なる動作をしたり、エラーが発生した場合は、次のことを試してください。
 
 - [ログ ストリームにアクセス](#access-diagnostic-logs)します。
-- 実稼働モードでローカルにアプリをテストします。 App Service では、実稼働モードで Node.js アプリが実行されるので、プロジェクトがローカルで実稼働モードで予想どおりに動作することを確認する必要があります。 例:
+- 実稼働モードでローカルにアプリをテストします。 App Service では、実稼働モードで Node.js アプリが実行されるので、プロジェクトがローカルで実稼働モードで予想どおりに動作することを確認する必要があります。 次に例を示します。
     - *composer.json* に応じて、実稼働モードに別々のパッケージ (`require` と `require-dev`) がインストールされる場合があります。
     - 特定の Web フレームワークでは、実稼働モードで静的ファイルを別にデプロイすることがあります。
     - 特定の Web フレームワークでは、実稼働モードで実行しているときにカスタム スタートアップ スクリプトを使用することがあります。
 - デバッグ モードで Azure App Service でアプリを実行します。 たとえば、[Laravel](https://meanjs.org/) で、[`APP_DEBUG` アプリ設定を `true` に指定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)することにより、実稼働環境でのデバッグ メッセージを出力するようにアプリを構成できます。
 
-### <a name="robots933456"></a>robots933456
+[!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
-コンテナー ログで次のメッセージが表示されることがあります。
-
-```
-2019-04-08T14:07:56.641002476Z "-" - - [08/Apr/2019:14:07:56 +0000] "GET /robots933456.txt HTTP/1.1" 404 415 "-" "-"
-```
-
-このメッセージは無視してかまいません。 `/robots933456.txt` は、コンテナーが要求を処理できるかどうかを調べるために App Service が使用するダミーの URL パスです。 404 応答は、パスが存在しないことを示すだけですが、コンテナーが正常であり、要求に応答できる状態であることを App Service に知らせます。
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [チュートリアル:PHP アプリと MySQL](tutorial-php-mysql-app.md)

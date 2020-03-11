@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 0cc9328fa08f7e9125ecb41576c67f95382bc1bf
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 17b78e03e330e342e9d558dd3ca5d9071bcd3c2f
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892372"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163932"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Azure Data Factory を使用して OData ソースからデータをコピーする
 
@@ -38,7 +38,7 @@ OData ストアから、サポートされている任意のシンク データ 
 具体的には、この OData コネクタは以下をサポートします。
 
 - OData バージョン 3.0 および 4.0。
-- 次の認証のいずれかを使用したデータのコピー。**匿名**、**基本**、**Windows**、**AAD サービス プリンシパル**、**Azure リソースのマネージド ID**。
+- 次の認証のいずれかを使用したデータのコピー。**匿名**、**基本**、**Windows**、および **AAD サービス プリンシパル**。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -56,11 +56,11 @@ OData のリンクされたサービスでは、次のプロパティがサポ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | **type** プロパティは **OData** に設定する必要があります。 |はい |
+| type | **type** プロパティは **OData** に設定する必要があります。 |はい |
 | url | OData サービスのルート URL。 |はい |
-| authenticationType | OData ソースに接続するために使用される認証の種類。 使用できる値は、**Anonymous**、**Basic**、**Windows**、**AadServicePrincipal**、および **ManagedServiceIdentity** です。 ユーザー ベースの OAuth はサポートされていません。 | はい |
+| authenticationType | OData ソースに接続するために使用される認証の種類。 使用可能な値は、 **[匿名]** 、 **[基本]** 、 **[Windows]** 、および **[AadServicePrincipal]** です。 ユーザー ベースの OAuth はサポートされていません。 | はい |
 | userName | 基本認証または Windows 認証を使用する場合は、**userName** を指定します。 | いいえ |
-| パスワード | **userName** に指定したユーザー アカウントの **password** を指定します。 Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 また、[Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | いいえ |
+| password | **userName** に指定したユーザー アカウントの **password** を指定します。 Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 また、[Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | いいえ |
 | servicePrincipalId | Azure Active Directory アプリケーションのクライアント ID を指定します。 | いいえ |
 | aadServicePrincipalCredentialType | サービス プリンシパル認証に使用する資格情報の種類を指定します。 使用できる値: `ServicePrincipalKey` または `ServicePrincipalCert`。 | いいえ |
 | servicePrincipalKey | Azure Active Directory アプリケーションのキーを指定します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ |
@@ -205,7 +205,7 @@ OData からデータをコピーするには、データセットの **type** �
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの **type** プロパティは **ODataResource** に設定する必要があります。 | はい |
+| type | データセットの **type** プロパティは **ODataResource** に設定する必要があります。 | はい |
 | path | OData リソースへのパス。 | はい |
 
 **例**
@@ -241,7 +241,7 @@ OData からデータをコピーする場合、コピー アクティビティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの **type** プロパティは **ODataSource** に設定する必要があります。 | はい |
+| type | コピー アクティビティのソースの **type** プロパティは **ODataSource** に設定する必要があります。 | はい |
 | query | データをフィルター処理するための OData クエリ オプション。 例: `"$select=Name,Description&$top=5"`.<br/><br/>**注**:OData コネクタは、次の結合された URL からデータをコピーします。`[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]` 詳細については、[OData の URL コンポーネント](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)に関するページを参照してください。 | いいえ |
 
 **例**

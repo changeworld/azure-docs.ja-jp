@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 08/30/2019
+ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a9559f85e31a38c50034d6aacc8f65e4d68aec2
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f25f13c60a60e1a397e4c63443ee786a9acdf6d1
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014434"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273794"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Azure Active Directory レポート API にアクセスするための前提条件
 
@@ -85,11 +85,11 @@ Azure AD Reporting API にアクセスするようにディレクトリを構成
     d. **[登録]** を選択します。 
 
 
-## <a name="grant-permissions"></a>アクセス許可を付与する 
+## <a name="grant-permissions"></a>[アクセス許可の付与] 
 
 アクセスする API によっては、アプリに次のアクセス許可を付与する必要があります。  
 
-| API | アクセス許可 |
+| API | 権限 |
 | --- | --- |
 | Windows Azure Active Directory | ディレクトリ データの読み取り |
 | Microsoft Graph | すべての監査ログ データの読み取り |
@@ -106,7 +106,7 @@ Azure AD Reporting API にアクセスするようにディレクトリを構成
 
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/05.png)
 
-2. **[API アクセス許可の要求]** ページで、 **[サポートされているレガシ API]** の **[Azure Active Directory Graph]** を見つけます。 
+2. **[API アクセス許可の要求] ページ**で、 **[サポートされているレガシ API]** の **[Azure Active Directory Graph]** を見つけます。 
 
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/06.png)
 
@@ -183,25 +183,22 @@ Reporting API への呼び出しを構成するときに、これらの値が必
 
     b. **[有効期限]** として、 **[2 年]** を選択します。
 
-    c. **[Save]** をクリックします。
+    c. **[保存]** をクリックします。
 
     d. キー値をコピーします。
 
 ## <a name="troubleshoot-errors-in-the-reporting-api"></a>レポート API でのエラーのトラブルシューティング
 
-このセクションでは、MS Graph API を使用してアクティビティ レポートにアクセスする際に表示される可能性のあるエラー メッセージと、その解決手順を示します。
+このセクションでは、Microsoft Graph API を使用してアクティビティ レポートにアクセスする際に生じる可能性のある一般的なエラー メッセージと、その解決手順を示します。
 
-### <a name="500-http-internal-server-error-while-accessing-microsoft-graph-v2-endpoint"></a>Microsoft Graph V2 エンドポイントへのアクセス中の 500 HTTP 内部サーバー エラー
 
-現在、Microsoft Graph v2 エンドポイントはサポートされていません。必ず、Microsoft Graph v1 エンドポイントを使用して、アクティビティ ログにアクセスしてください。
-
-### <a name="error-failed-to-get-user-roles-from-ad-graph"></a>エラー:AD Graph からユーザー ロールを取得できませんでした
+### <a name="error-failed-to-get-user-roles-from-microsoft-graph"></a>エラー:Microsoft Graph からユーザー ロールを取得できませんでした
 
  Graph エクスプローラーを使用してサインインするときにエラーが発生しないようにするには、Graph エクスプローラーの UI の両方のサインイン ボタンを使用してアカウントにサインインします。 
 
 ![Graph エクスプローラー](./media/troubleshoot-graph-api/graph-explorer.png)
 
-### <a name="error-failed-to-do-premium-license-check-from-ad-graph"></a>エラー:AD Graph から Premium ライセンスを確認できませんでした 
+### <a name="error-failed-to-do-premium-license-check-from-microsoft-graph"></a>エラー:Microsoft Graph から Premium ライセンスを確認できませんでした 
 
 Graph エクスプローラーを使用してサインインにアクセスしようとしたときにこのようなエラー メッセージが表示された場合は、左側のナビゲーションのアカウントの下にある **[アクセス許可の変更]** を選択し、 **[Tasks.ReadWrite]** と **[Directory.Read.All]** を選びます。 
 
@@ -218,11 +215,11 @@ Graph エクスプローラーを使用してサインインにアクセスし�
 
 ### <a name="error-application-missing-aad-read-directory-data-permission"></a>エラー:アプリケーションに AAD の 'ディレクトリ データの読み取り' アクセス許可がありません 
 
-### <a name="error-application-missing-msgraph-api-read-all-audit-log-data-permission"></a>エラー:アプリケーションに MSGraph API の 'すべての監査ログ データの読み取り' アクセス許可がありません
+### <a name="error-application-missing-microsoft-api-read-all-audit-log-data-permission"></a>エラー:アプリケーションに Microsoft API の 'すべての監査ログ データの読み取り' アクセス許可がありません
 
 「[Azure Active Directory レポート API にアクセスするための前提条件](howto-configure-prerequisites-for-reporting-api.md)」の手順に従って、アプリケーションが適切なアクセス許可のセットを使用して実行されていることを確認してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Active Directory レポート API と証明書を使用してデータを取得します](tutorial-access-api-with-certificates.md)
 * [監査 API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 

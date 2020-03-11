@@ -337,7 +337,8 @@
               href: spot-portal.md
             - name: PowerShell
               href: spot-powershell.md
-            - name: Template
+            - name: ARM テンプレート
+              displayName: Azure Resource Manager
               href: ../linux/spot-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
             - name: エラー コード
               href: ../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
@@ -349,16 +350,17 @@
               href: create-vm-specialized-portal.md
             - name: PowerShell
               href: create-vm-specialized.md
-        - name: 'テンプレートと C# の使用'
+        - name: 'Resource Manager テンプレートと C# の使用'
           href: csharp-template.md
+          displayName: Azure Resource Manager
         - name: Chef を使用した VM の作成
           href: ../../chef/chef-automation.md
         - name: Java の使用
           href: java.md
         - name: Python の使用
           href: python.md
-        - name: テンプレートの使用
-          displayName: 'Azure Resource Manager template, ARM'
+        - name: Resource Manager テンプレートの使用
+          displayName: Azure Resource Manager template
           href: ps-template.md
         - name: VM への接続
           href: connect-logon.md
@@ -473,7 +475,8 @@
           href: change-drive-letter.md
         - name: 可用性セットの変更
           href: change-availability-set.md
-        - name: テンプレートのダウンロード
+        - name: Resource Manager テンプレートのエクスポート
+          displayName: Azure Resource Manager
           href: download-template.md
         - name: Azure VM エージェント
           href: ../extensions/agent-windows.md
@@ -543,7 +546,8 @@
               href: image-builder-gallery-update-image-version.md
             - name: スクリプトの格納
               href: ../linux/image-builder-user-assigned-identity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: テンプレート リファレンス
+            - name: Resource Manager テンプレート リファレンス
+              displayName: Azure Resource Manager
               href: ../linux/image-builder-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: トラブルシューティング
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
@@ -620,7 +624,8 @@
               href: attach-managed-disk-portal.md
         - name: ディスクを取り外す
           href: detach-disk.md
-        - name: テンプレートによるディスクのデプロイ
+        - name: Resource Manager テンプレートによるディスクのデプロイ
+          displayName: Azure Resource Manager
           href: using-managed-disks-template-deployments.md
         - name: 共有ディスクを有効にする
           href: disks-shared-enable.md
@@ -690,6 +695,7 @@
         - name: PowerShell
           href: /azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
         - name: Azure Resource Manager テンプレート
+          displayName: ARM
           href: /azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
         - name: REST
           href: /azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm?context=azure/virtual-machines/windows/context/windows-vm-context
@@ -743,7 +749,8 @@
       href: /azure/templates/microsoft.compute/allversions
 - name: リソース
   items:
-    - name: テンプレートの作成
+    - name: Resource Manager テンプレートを作成する
+      displayName: Azure Resource Manager
       href: ../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Microsoft Learn でスキルを身に付ける
       href: /learn/browse/?products=azure-virtual-machines

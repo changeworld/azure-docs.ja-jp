@@ -2,17 +2,17 @@
 title: Mv2 シリーズ - Azure Virtual Machines
 description: Mv2 シリーズ VM の仕様。
 services: virtual-machines
-author: jonbeck7
+author: ayshakeen
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: caa80443a189874bfd699dba412fb749c8711556
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 6fb0f93d3ac124b21bbc52ddc57bc720de6406e6
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492504"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163898"
 ---
 # <a name="mv2-series"></a>Mv2 シリーズ
 
@@ -24,16 +24,20 @@ Premium Storage: サポートされています
 
 Premium Storage キャッシュ:サポートされています
 
+ライブ マイグレーション: サポートされていません
+
+メモリ保持更新: サポートされていません
+
 書き込みアクセラレータ:[サポートされています](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
-|Size | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
+|サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |---|---|---|---|---|---|---|---|
 | Standard_M208ms_v2<sup>1</sup> | 208 | 5700 | 4096 | 64 | 80000 / 800 (7040) | 40000 / 1000 | 8/1,6000 |
 | Standard_M208s_v2<sup>1</sup> | 208 | 2850 | 4096 | 64 | 80000 / 800 (7040) | 40000 / 1000 | 8/1,6000 |
 | Standard_M416ms_v2<sup>1、2</sup> | 416 | 11400 | 8192 | 64 | 250000 / 1600 (14080) | 80000 / 2000 | 8 / 32000 |
 | Standard_M416s_v2<sup>1、2</sup> | 416 | 5700 | 8192 | 64 | 250000 / 1600 (14080) | 80000 / 2000 | 8 / 32000 |
 
-<sup>1</sup> Mv2 シリーズの VM は第 2 世代のみです。 Linux を使用している場合、イメージを検索して選択する方法については、[Azure での第 2 世代 VM のサポート](/linux/generation-2.md)に関するページを参照してください。
+<sup>1</sup> Mv2 シリーズの VM は第 2 世代のみです。 Linux を使用している場合、イメージを検索して選択する方法については、[Azure での第 2 世代 VM のサポート](./linux/generation-2.md)に関するページを参照してください。
 
 <sup>2</sup> M416ms_v2 および M416s_v2 のサイズについては、次のイメージの初期サポートしかないことに注意してください:"GEN2:SUSE Linux Enterprise Server (SLES) 12 SP4 for SAP Applications"
 

@@ -10,28 +10,36 @@ ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 924705b7ce1d324583077797714491bdf3fc5cc9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.custom: azure-synapse
+ms.openlocfilehash: 257b33802ea95138ef8149ef9302b14ca379e7ac
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721219"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195564"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>Gen2 キャッシュを監視する方法
-Gen2 ストレージ アーキテクチャでは、Gen2 データ ウェアハウス用に設計された NVMe ベースの SSD に搭載されているキャッシュ内で、最も頻繁に照会される列ストア セグメントを自動的に階層化します。 キャッシュに常駐しているセグメントをクエリが取得すると、より優れたパフォーマンスが実現します。 この記事では、ワークロードが Gen2 キャッシュを最適に活用しているかどうかを判断することで、パフォーマンスが遅いクエリを監視し、トラブルシューティングする方法について説明します。  
+
+この記事では、ワークロードが Gen2 キャッシュを最適に活用しているかどうかを判断することで、パフォーマンスが遅いクエリを監視し、トラブルシューティングする方法について説明します。
+
+Gen2 ストレージ アーキテクチャでは、Gen2 データ ウェアハウス用に設計された NVMe ベースの SSD に搭載されているキャッシュ内で、最も頻繁に照会される列ストア セグメントを自動的に階層化します。 キャッシュに常駐しているセグメントをクエリが取得すると、より優れたパフォーマンスが実現します。
+ 
 ## <a name="troubleshoot-using-the-azure-portal"></a>Azure Portal を使用したトラブルシューティング
-Azure Monitor を使用すれば、Gen2 キャッシュ メトリックを表示して、クエリのパフォーマンスをトラブルシューティングできます。 まず Azure portal に移動し、[監視] をクリックします。
 
-![Azure Monitor](./media/sql-data-warehouse-cache-portal/cache_0.png)
+Azure Monitor を使用すれば、Gen2 キャッシュ メトリックを表示して、クエリのパフォーマンスをトラブルシューティングできます。 まず Azure portal に移動し、 **[監視]** 、 **[メトリック]** 、 **[+ スコープの選択]** の順にクリックします。
 
-メトリック ボタンを選択し、データ ウェアハウスの **[サブスクリプション]** 、 **[リソース** **グループ]** 、 **[リソースの種類]** 、 **[リソース名]** を記入します。
+![Azure Monitor](./media/sql-data-warehouse-cache-portal/cache-0.png)
 
-Gen2 キャッシュをトラブルシューティングするための主要なメトリックは、 **[キャッシュ ヒット率]** と **[キャッシュ使用率]** です。 次の 2 つのメトリックを表示するように、Azure メトリック グラフを構成します。
+検索バーとドロップダウン バーを使用して、お使いのデータ ウェアハウスを見つけます。 次に、[適用] を選択します。
 
-![キャッシュ メトリック](./media/sql-data-warehouse-cache-portal/cache_1.png)
+![Azure Monitor](./media/sql-data-warehouse-cache-portal/cache-1.png)
 
+Gen2 キャッシュをトラブルシューティングするための主要なメトリックは、 **[キャッシュ ヒット率]** と **[キャッシュ使用率]** です。 **[キャッシュ ヒット率]** を選択した後、 **[メトリックの追加]** ボタンをクリックして **[キャッシュの使用率]** を追加します。 
+
+![キャッシュ メトリック](./media/sql-data-warehouse-cache-portal/cache-2.png)
 
 ## <a name="cache-hit-and-used-percentage"></a>キャッシュのヒット率と使用率
+
 以下の表は、キャッシュ メトリックの値に基づくシナリオを示しています。
 
 |                                | **高いキャッシュ ヒット率** | **低いキャッシュ ヒット率** |

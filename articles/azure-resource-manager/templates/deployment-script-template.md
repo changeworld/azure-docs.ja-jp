@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 03/03/2020
 ms.author: jgao
-ms.openlocfilehash: e881cde36bc56c175004e8d6adb9b7b85e9b5454
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 3129d4c664ec487f2def6cc0d2668b7493f4c988
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616309"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272644"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>テンプレートでデプロイ スクリプトを使用する (プレビュー)
 
@@ -222,10 +222,16 @@ PowerShell デプロイ スクリプトとは異なり、CLI/bash のサポー�
 
 前のサンプルでは、[jq](https://stedolan.github.io/jq/) が使用されています。 これには、コンテナー イメージが付属しています。 「[開発環境の設定](#configure-development-environment)」を参照してください。
 
-## <a name="handle-non-terminating-errors"></a>終了しないエラーを処理する
+## <a name="develop-deployment-scripts"></a>デプロイ スクリプトを開発する
+
+### <a name="handle-non-terminating-errors"></a>終了しないエラーを処理する
 
 デプロイ スクリプトで [ **$ErrorActionPreference**](/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7#erroractionpreference
 ) 変数を使用することで、終了しないエラーに PowerShell が応答する方法を制御できます。 デプロイ スクリプト エンジンでは、値の設定も変更も行いません。  $ErrorActionPreference に設定した値に関係なく、デプロイ スクリプトでエラーが発生すると、そのスクリプトによってリソースのプロビジョニングの状態が *[失敗]* に設定されます。
+
+### <a name="pass-secured-strings-to-deployment-script"></a>セキュリティで保護された文字列をデプロイ スクリプトに渡す
+
+Container Instances で環境変数を設定すると、コンテナーによって実行されるアプリケーションまたはスクリプトの動的な構成を提供できます。 デプロイ スクリプトでは、Azure Container Instance と同じ方法で、セキュリティで、セキュリティで保護されていない環境変数と保護されている環境変数が処理されます。 詳細については、「[コンテナー インスタンスで環境変数を設定する](../../container-instances/container-instances-environment-variables.md#secure-values)」を参照してください。
 
 ## <a name="debug-deployment-scripts"></a>デプロイ スクリプトのデバッグ
 

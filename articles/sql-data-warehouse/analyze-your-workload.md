@@ -1,30 +1,30 @@
 ---
 title: ワークロードの分析
-description: Azure SQL Data Warehouse でのワークロードに対するクエリの優先順位付けを分析するための手法。
+description: Azure Synapse Analytics でのワークロードに対するクエリの優先順位付けを分析するための手法。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 03/13/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 14e53c1ebe63fac0f7c8e29f66ee5aa0cb3b9526
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 9b1432c41e56c6e0bc3fd80f9c2dbb36374d9e2a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693116"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199997"
 ---
-# <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の ワークロードの分析 | Microsoft Docs
+# <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Azure Synapse Analytics でワークロードを分析する
 
-Azure SQL Data Warehouse のワークロードの分析手法。
+Azure Synapse Analytics で SQL Analytics ワークロードを分析するための手法。
 
 ## <a name="resource-classes"></a>リソース クラス
 
-SQL Data Warehouse には、システム リソースをクエリに割り当てるためのリソース クラスが用意されています。  リソース クラスの詳細については、[「ワークロード管理とリソース クラス](resource-classes-for-workload-management.md)」を参照してください。  クエリに割り当てられたリソース クラスが現在利用可能なリソースより多くを必要とする場合、クエリは待機します。
+SQL Analytics には、システム リソースをクエリに割り当てるリソース クラスが用意されています。  リソース クラスの詳細については、[「ワークロード管理とリソース クラス](resource-classes-for-workload-management.md)」を参照してください。  クエリに割り当てられたリソース クラスが現在利用可能なリソースより多くを必要とする場合、クエリは待機します。
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>キューに配置されたクエリの検出とその他の DMV
 
@@ -63,7 +63,7 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-SQL Data Warehouse には、次の待機の種類があります。
+SQL Analytics には、次の待機の種類があります。
 
 * **LocalQueriesConcurrencyResourceType**: コンカレンシー スロットのフレームワークの外に配置されたクエリ。 DMV クエリと、 `SELECT @@VERSION` のようなシステム関数は、ローカル クエリの例です。
 * **UserConcurrencyResourceType**: コンカレンシー スロットのフレームワーク内に配置されたクエリ。 エンドユーザー テーブルに対するクエリは、このリソースの種類を使用した例です。
@@ -151,6 +151,6 @@ FROM    sys.dm_pdw_wait_stats w
 ;
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-データベース ユーザーの管理とセキュリティの詳細については、「 [SQL Data Warehouse でのデータベース保護](sql-data-warehouse-overview-manage-security.md)」を参照してください。 大規模なリソース クラスを使用して、クラスター化された列ストア インデックスの品質を向上させる方法については、「 [セグメントの品質を向上させるためのインデックスの再構築](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)」を参照してください。
+データベース ユーザーの管理とセキュリティの詳細については、[SQL Analytics でのデータベース保護](sql-data-warehouse-overview-manage-security.md)に関する記事を参照してください。 大規模なリソース クラスを使用して、クラスター化された列ストア インデックスの品質を向上させる方法については、「 [セグメントの品質を向上させるためのインデックスの再構築](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)」を参照してください。

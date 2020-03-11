@@ -1,6 +1,6 @@
 ---
-title: Fivetran クイックスタート
-description: Fivetran と Azure SQL Data Warehouse の使用をすぐに開始します。
+title: クイック スタート:Fivetran とデータ ウェアハウス
+description: Fivetran と Azure Synapse Analytics データ ウェアハウスの使用を開始します。
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
@@ -10,54 +10,55 @@ ms.subservice: integration
 ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: c9b4a15cd6cbae80d80407ba929bfbfa1402eeb5
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: b068b2436aaa1df22e3c83a54fb384f925149cc2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689230"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194616"
 ---
-# <a name="get-started-quickly-with-fivetran-and-sql-data-warehouse"></a>Fivetran と Azure SQL Data Warehouse の使用をすぐに開始する
+# <a name="quickstart-fivetran-with-data-warehouse"></a>クイック スタート:Fivetran とデータ ウェアハウス 
 
-このクイック スタートでは、Azure SQL Data Warehouse を使用する新しい Fivetran ユーザーを設定する方法について説明します。 この記事では、SQL Data Warehouse インスタンスが既に用意されていることを前提としています。
+このクイック スタートでは、SQL プールにプロビジョニングされた Azure Synapse Analytics データ ウェアハウスを操作する新しい Fivetran ユーザーを設定する方法について説明します。 この記事では、データ ウェアハウスが既に用意されていることを前提としています。
 
 ## <a name="set-up-a-connection"></a>接続を設定する
 
-1. Azure SQL Data Warehouse に接続するために使用する完全修飾サーバー名とデータベース名を検索します。
+1. お使いのデータ ウェアハウスに接続するために使用する完全修飾サーバー名とデータベース名を検索します。
     
-    この情報を見つける方法については、「[Azure SQL Data Warehouse への接続](sql-data-warehouse-connect-overview.md)」を参照してください。
+    この情報を見つける方法については、[データ ウェアハウスへの接続](sql-data-warehouse-connect-overview.md)に関する記事を参照してください。
 
 2. セットアップ ウィザードで、データベースの接続方法として直接接続か SSH トンネルの使用を選択します。
 
    データベースに直接接続する場合は、アクセスを許可するファイアウォール ルールを作成する必要があります。 この方法は、最も簡単かつ最も安全な方法です。
 
-   SSH トンネルを使用して接続を選択する場合は、Fivetran はネットワーク上の別のサーバーに接続します。 このサーバーがデータベースへの SSH トンネルを提供します。 仮想ネットワーク上のアクセスできないサブネット内にデータベースがある場合、この方法を使用する必要があります。
+   SSH トンネルを使用して接続することを選択した場合、Fivetran によってネットワーク上の別のサーバーに接続されます。 このサーバーがデータベースへの SSH トンネルを提供します。 仮想ネットワーク上のアクセスできないサブネット内にデータベースがある場合、この方法を使用する必要があります。
 
-3. IP アドレス **52.0.2.4** をサーバー レベルのファイアウォールに追加し、Fivetran から SQL Data Warehouse インスタンスに入ってくる接続を許可します。
+3. IP アドレス **52.0.2.4** をサーバーレベルのファイアウォールに追加して、Fivetran からお使いのデータ ウェアハウスへの受信接続を許可します。
 
    詳細については、「[サーバーレベルのファイアウォール規則を作成する](create-data-warehouse-portal.md#create-a-server-level-firewall-rule)」を参照してください。
 
 ## <a name="set-up-user-credentials"></a>ユーザー資格情報を設定する
 
-1. SQL Server Management Studio または任意のツールを利用し、自分の Azure SQL Data Warehouse に接続します。 サーバー管理者ユーザーとしてサインインします。 次に、次の SQL コマンドを実行し、Fivetran のユーザーを作成します。
+1. SQL Server Management Studio (SSMS) または任意のツールを使用して、お使いのデータ ウェアハウスに接続します。 サーバー管理者ユーザーとしてサインインします。 次に、次の SQL コマンドを実行し、Fivetran のユーザーを作成します。
+
     - マスター データベースで: 
     
-      ```
+      ```sql
       CREATE LOGIN fivetran WITH PASSWORD = '<password>'; 
       ```
 
-    - SQL Data Warehouse データベースの場合:
+    - データ ウェアハウス データベースで:
 
-      ```
+      ```sql
       CREATE USER fivetran_user_without_login without login;
       CREATE USER fivetran FOR LOGIN fivetran;
       GRANT IMPERSONATE on USER::fivetran_user_without_login to fivetran;
       ```
 
-2. ウェアハウスに対する次のアクセス許可を Fivetran ユーザーに付与します。
+2. お使いのデータ ウェアハウスに対する次のアクセス許可を Fivetran ユーザーに付与します。
 
-    ```
+    ```sql
     GRANT CONTROL to fivetran;
     ```
 
@@ -67,7 +68,7 @@ ms.locfileid: "74689230"
 
     静的リソース クラスを使用することをお勧めします。 `staticrc20` リソース クラスから始めることができます。 `staticrc20` リソース クラスでは、ご利用のパフォーマンス レベルに関係なく、ユーザーごとに 200 MB が割り当てられます。 列ストア インデックスが最初のリソース クラス レベルで失敗した場合、リソース クラスを上げます。
 
-    ```
+    ```sql
     EXEC sp_addrolemember '<resource_class_name>', 'fivetran';
     ```
 
@@ -76,7 +77,7 @@ ms.locfileid: "74689230"
 
 ## <a name="sign-in-to-fivetran"></a>Fivetran にサインインする
 
-Fivetran にサインインするには、SQL Data Warehouse へのアクセスに使用する資格情報を入力します。 
+Fivetran にサインインするには、お使いのデータ ウェアハウスにアクセスするために使用する資格情報を入力します。 
 
 * ホスト (自分のサーバーの名前)。
 * ポート。

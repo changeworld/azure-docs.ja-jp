@@ -201,7 +201,7 @@
       items:
         - name: 入力
           href: stream-analytics-troubleshoot-input.md
-        - name: Output
+        - name: 出力
           href: stream-analytics-troubleshoot-output.md
         - name: クエリ ロジック
           href: stream-analytics-troubleshoot-query.md
@@ -223,6 +223,9 @@
       href: stream-analytics-scale-with-machine-learning-functions.md
 - name: Stream Analytics クエリ言語
   items:
+    - name: Stream Analytics クエリ言語の概要
+      href: /stream-analytics-query/stream-analytics-query-language-reference
+      maintainContext: true
     - name: 組み込み関数
       items:
         - name: 組み込み関数の概要
@@ -406,7 +409,7 @@
             - name: POWER
               href: /stream-analytics-query/power-azure-stream-analytics
               maintainContext: true
-            - name: '[ROUND]'
+            - name: ROUND
               href: /stream-analytics-query/round-azure-stream-analytics.md
               maintainContext: true
             - name: SIGN
@@ -443,7 +446,7 @@
             - name: LEN
               href: /stream-analytics-query/len-azure-stream-analytics
               maintainContext: true
-            - name: '[LOWER]'
+            - name: LOWER
               href: /stream-analytics-query/lower-azure-stream-analytics
               maintainContext: true
             - name: PATINDEX
@@ -452,13 +455,13 @@
             - name: REGEXMATCH
               href: /stream-analytics-query/regexmatch-azure-stream-analytics
               maintainContext: true
-            - name: '[REPLACE]'
+            - name: REPLACE
               href: /stream-analytics-query/replace-azure-stream-analytics.md
               maintainContext: true
-            - name: '[SUBSTRING]'
+            - name: SUBSTRING
               href: /stream-analytics-query/substring-azure-stream-analytics
               maintainContext: true
-            - name: '[UPPER]'
+            - name: UPPER
               href: /stream-analytics-query/upper-azure-stream-analytics
               maintainContext: true
         - name: ウィンドウ関数

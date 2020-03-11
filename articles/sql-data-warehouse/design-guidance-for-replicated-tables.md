@@ -1,6 +1,6 @@
 ---
 title: レプリケートされたテーブルの設計ガイダンス
-description: Azure SQL Data Warehouse スキーマでレプリケート テーブルを設計するための推奨事項。 
+description: SQL Analytics でのレプリケートされたテーブルの設計に関する推奨事項
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,32 +10,32 @@ ms.subservice: development
 ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 18577cb729c9f17a112979cd1ebb763af38b9ca2
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: ff141b0da0eb2fe68bbeccb7e39292a70b7305f0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693051"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194752"
 ---
-# <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でレプリケート テーブルを使用するための設計ガイダンス
-この記事では、SQL Data Warehouse スキーマでレプリケート テーブルを設計するための推奨事項を紹介します。 これらの推奨事項を使用すると、データの移動が少なくなり、クエリの複雑さが軽減されることでクエリ パフォーマンスが向上します。
+# <a name="design-guidance-for-using-replicated-tables-in-sql-analytics"></a>SQL Analytics でレプリケートされたテーブルを使用するための設計ガイダンス
+この記事では、SQL Analytics スキーマでレプリケート テーブルを設計するための推奨事項を紹介します。 これらの推奨事項を使用すると、データの移動が少なくなり、クエリの複雑さが軽減されることでクエリ パフォーマンスが向上します。
 
 > [!VIDEO https://www.youtube.com/embed/1VS_F37GI9U]
 
 ## <a name="prerequisites"></a>前提条件
-この記事では、読者が SQL Data Warehouse のデータ分散とデータ移動の概念を理解していることを前提としています。  詳細については、[アーキテクチャ](massively-parallel-processing-mpp-architecture.md)に関する記事を参照してください。 
+この記事では、SQL Analytics のデータ分散とデータ移動の概念を理解していることを前提としています。  詳細については、[アーキテクチャ](massively-parallel-processing-mpp-architecture.md)に関する記事を参照してください。 
 
 テーブル設計の一環として、ご利用のデータと、そのデータを照会する方法についてできる限り理解してください。  たとえば、次のような質問を考えてみます。
 
 - テーブルの大きさはどの程度か。   
 - どの程度の頻度でテーブルが更新されるか。   
-- データ ウェアハウス内にファクト テーブルとディメンション テーブルがあるか。   
+- SQL Analytics データベース内にファクト テーブルとディメンション テーブルがあるか。   
 
 ## <a name="what-is-a-replicated-table"></a>レプリケート テーブルとは
 レプリケート テーブルには、各コンピューティング ノード上でアクセスできるテーブルの完全なコピーがあります。 テーブルをレプリケートすると、結合または集計の前に、コンピューティング ノード内のデータを転送する必要がなくなります。 テーブルには複数のコピーが含まれているため、テーブルのサイズが 2 GB 未満に圧縮されている場合にレプリケート テーブルが最も効果的に機能します。  2 GB はハード制限ではありません。  データが静的で変化しない場合は、さらに大きなテーブルをレプリケートできます。
 
-次の図は、各コンピューティング ノード上でアクセスできるレプリケート テーブルを示したものです。 SQL Data Warehouse では、レプリケート テーブルは各コンピューティング ノード上のディストリビューション データベースに完全にコピーされます。 
+次の図は、各コンピューティング ノード上でアクセスできるレプリケート テーブルを示したものです。 SQL Analytics では、レプリケート テーブルは各コンピューティング ノード上のディストリビューション データベースに完全にコピーされます。 
 
 ![レプリケート テーブル](media/guidance-for-using-replicated-tables/replicated-table.png "レプリケート テーブル")  
 
@@ -49,8 +49,8 @@ ms.locfileid: "73693051"
 次の場合、レプリケート テーブルでは最適なクエリ パフォーマンスが得られない可能性があります。
 
 - テーブルで、頻繁な挿入、更新、削除操作が行われる。 これらのデータ操作言語 (DML) 操作では、レプリケート テーブルの再構築が必要となります。 頻繁に再構築すると、パフォーマンスが低下する場合があります。
-- データ ウェアハウスが頻繁にスケーリングされる。 データ ウェアハウスをスケーリングすると、コンピューティング ノードの数が変わるため、レプリケート テーブルの再構築が発生します。
-- テーブルに多数の列があっても、通常、データ操作でアクセスする列はごく少数である。 このシナリオでは、テーブル全体をレプリケートするのではなく、テーブルを分散し、頻繁にアクセスする列にインデックスを作成する方が効果的であると考えられます｡ クエリでデータ移動が必要な場合、SQL Data Warehouse は要求された列のデータを移動するだけです。 
+- SQL Analytics データベースは頻繁にスケーリングされます。 SQL Analytics データベースをスケーリングすると、コンピューティング ノードの数が変わるため、レプリケート テーブルの再構築が発生します。
+- テーブルに多数の列があっても、通常、データ操作でアクセスする列はごく少数である。 このシナリオでは、テーブル全体をレプリケートするのではなく、テーブルを分散し、頻繁にアクセスする列にインデックスを作成する方が効果的であると考えられます｡ クエリでデータ移動が必要な場合、SQL Analytics では、要求された列のデータのみが移動されます。 
 
 ## <a name="use-replicated-tables-with-simple-query-predicates"></a>単純なクエリ述語でレプリケート テーブルを使用する
 テーブルを分散するかレプリケートするかを選択する前に、そのテーブルに対して実行を計画するクエリの種類について考えてみます。 できる限り、次のようにしてください。
@@ -118,11 +118,11 @@ WHERE d.FiscalYear = 2004
 
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>レプリケート テーブルを変更する場合のパフォーマンスに関する考慮事項
-SQL Data Warehouse は、テーブルのマスター バージョンを保持することによってレプリケート テーブルを実装します。 そのマスター バージョンは、各コンピューティング ノード上の 1 つのディストリビューション データベースにコピーされます。 変更があったときには、SQL Data Warehouse がまずマスター テーブルを更新します。 そして､Compute ノードのすべてでテーブルを再構築します｡ レプリケート テーブルの再構築では、すべての Compute ノードにテーブルがコピーされ､インデックスが再構築されます｡  たとえば､DW400 上のレプリケート テーブルには､データのコピーが 5 部あります｡  各 Compute ノードにマスター コピー 1 部と完全コピー 1 部  すべてのデータは分散データベースに格納されます｡ SQL Data Warehouse はこのモデルを使用して､データ変更ステートメントを高速に処理し､柔軟なスケーリング操作を行えるようにしています｡ 
+SQL Analytics では、テーブルのマスター バージョンを保持することによってレプリケート テーブルが実装されます。 そのマスター バージョンは、各コンピューティング ノード上の 1 つのディストリビューション データベースにコピーされます。 変更があった場合、SQL Analytics では、まずマスター テーブルが更新されます。 そして､Compute ノードのすべてでテーブルを再構築します｡ レプリケート テーブルの再構築では、すべての Compute ノードにテーブルがコピーされ､インデックスが再構築されます｡  たとえば､DW400 上のレプリケート テーブルには､データのコピーが 5 部あります｡  各 Compute ノードにマスター コピー 1 部と完全コピー 1 部  すべてのデータは分散データベースに格納されます｡ SQL Analytics では、このモデルを使用して､データ変更ステートメントの高速処理と柔軟なスケーリング操作がサポートされます。 
 
 再構築が必要になるのは、次の操作の後です。
 - データが読み込まれるまたは変更される
-- データ ウェアハウスが別のレベルにスケーリングされる
+- SQL Analytics インスタンスが別のレベルにスケーリングされる
 - テーブル定義が更新される
 
 次の操作の後は、再構築は不要です。
@@ -132,7 +132,7 @@ SQL Data Warehouse は、テーブルのマスター バージョンを保持す
 再構築は、データが変更された直後には行われるわけではありません。 再構築は、初めてクエリがテーブルから選択するときにトリガーされます。  各 Compute ノードにデータが非同期にコピーされる間､再構築をトリガーしたクエリはマスター バージョンのテーブルからただちにデータを読み取ります｡ データのコピーが完了するまで､以降のクエリはマスター バージョンのテーブルを使い続けます｡  別の再構築を強制するレプリケート テーブルに対するアクティビティが発生すると､データ コピーは無効になり､次の select ステートメントによって再びデータ コピーがトリガーされます｡ 
 
 ### <a name="use-indexes-conservatively"></a>インデックスは控えめに使用する
-標準的なインデックス作成方法は、レプリケート テーブルにも当てはまります。 SQL Data Warehouse は、再構築の一環として、各レプリケート テーブル インデックスを再構築します。 インデックスを使用するのは、インデックスの再構築にかかるコストよりもパフォーマンスの向上が重要な場合のみにしてください。  
+標準的なインデックス作成方法は、レプリケート テーブルにも当てはまります。 SQL Analytics では、再構築の一環として、各レプリケート テーブル インデックスが再構築されます。 インデックスを使用するのは、インデックスの再構築にかかるコストよりもパフォーマンスの向上が重要な場合のみにしてください。  
  
 ### <a name="batch-data-loads"></a>データの読み込みをバッチ処理する
 レプリケート テーブルにデータを読み込む場合、複数の読み込みをバッチ処理することで、再構築を最小限に抑えるようにします。 select ステートメントを実行する前に、バッチ処理された読み込みすべてを実行します。
@@ -179,11 +179,11 @@ SELECT [ReplicatedTable] = t.[name]
 SELECT TOP 1 * FROM [ReplicatedTable]
 ``` 
  
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 レプリケート テーブルを作成するには、次のいずれかのステートメントを使用します。
 
-- [CREATE TABLE (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [CREATE TABLE AS SELECT (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [CREATE TABLE (SQL Analytics)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+- [CREATE TABLE AS SELECT (SQL Analytics)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 分散テーブルの概要については、[分散テーブル](sql-data-warehouse-tables-distribute.md)に関するページを参照してください。
 

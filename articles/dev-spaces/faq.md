@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Azure Dev Spaces についての一般的ないくつかの質問にお答えします
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: 964fa9ec4948bf178c310af8e35913fda5f70c0f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 285fdb7892d2da40dd50e025cb1dd7644ec17ae0
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934177"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255721"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Azure Dev Spaces についてよく寄せられる質問
 
@@ -64,6 +64,14 @@ Azure Dev Spaces についてよく寄せられる質問に回答します。
 ## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-restricted-egress-traffic-for-cluster-nodes"></a>クラスター ノードのエグレス トラフィックが制限されている AKS クラスターで Azure Dev Spaces を使用できますか?
 
 はい。正しい FQDN が許可されていると、[クラスター ノードに対する制限されたエグレス トラフィック][aks-restrict-egress-traffic]が有効になっている AKS クラスターで Azure Dev Spaces を使用できます。 Azure Dev Spaces での「クラスターノードに対する制限されたエグレストラフィックが有効な AKS クラスター」の使用の詳細については、[こちら](configure-networking.md#ingress-and-egress-network-traffic-requirements)を参照してください。
+
+## <a name="can-i-use-azure-dev-spaces-on-rbac-enabled-aks-clusters"></a>RBAC が有効化された AKS クラスター上で Azure Dev Spaces を使用することはできますか。
+
+はい。RBAC が有効化されているかに関わらず、AKS クラスター上で Azure Dev Spaces を使用することができます。
+
+## <a name="what-happens-when-i-enable-ingress-for-project-in-visual-studio"></a>Visual Studio でプロジェクトのイングレスを有効にすると、どうなりますか。
+
+Visual Studio を使用してプロジェクトを準備する場合は、サービスのイングレスを有効にすることを選択できます。 イングレスを有効にすると、AKS クラスター上で実行されるときにサービスにアクセスするためのパブリック エンドポイントが作成されます。これは、オプションです。 イングレスを有効にしなかった場合は、AKS クラスター内からのみサービスにアクセスできます。
 
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled

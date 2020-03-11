@@ -1,6 +1,6 @@
 ---
 title: 透過的なデータ暗号化 (T-SQL)
-description: SQL Data Warehouse での透過的なデータ暗号化 (TDE) (T-SQL)
+description: Azure Synapse Analytics での Transparent Data Encryption (TDE) (T-SQL)
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 04/30/2019
 ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4e7f4f31cd8b899e3fcf79568ea62830313936b9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bd6f40b8389284c1932a2f16a70060cd56e412fb
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822608"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195807"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde"></a>Transparent Data Encryption (TDE) の概要
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "73822608"
 Transparent Data Encryption (TDE) を有効にするには、管理者か dbmanager ロールのメンバーである必要があります。
 
 ## <a name="enabling-encryption"></a>暗号化の有効化
-SQL Data Warehouse の TDE を有効にするには、次の手順を実行します。
+TDE を有効にするには、次の手順に従います。
 
 1. 管理者のログインまたは master データベースの *dbmanager* ロールのメンバーであるログインを使用して、データベースをホストしているサーバーの **master** データベースに接続します
 2. データベースの暗号化するには、次のステートメントを実行します。
@@ -41,7 +41,7 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 ```
 
 ## <a name="disabling-encryption"></a>暗号化の無効化
-SQL Data Warehouse の TDE を無効にするには、次の手順を実行します。
+TDE を無効にするには、次の手順に従います。
 
 1. 管理者のログインまたは master データベースの *dbmanager* ロールのメンバーであるログインを使用して、 **master** データベースに接続します
 2. データベースの暗号化するには、次のステートメントを実行します。
@@ -51,12 +51,12 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION OFF;
 ```
 
 > [!NOTE]
-> 一時停止した SQL Data Warehouse は、TDE 設定を変更する前に再開する必要があります。
+> TDE 設定を変更する前に、一時停止した SQL プールを再開する必要があります。
 > 
 > 
 
 ## <a name="verifying-encryption"></a>暗号化の検証
-SQL Data Warehouse の暗号化状態を確認するには、次の手順を実行します。
+暗号化の状態を確認するには、次の手順を実行します。
 
 1. 管理者のログインまたは master データベースの *dbmanager* ロールのメンバーであるログインを使用して、 **master** データベースまたはインスタンス データベースに接続します
 2. データベースの暗号化するには、次のステートメントを実行します。

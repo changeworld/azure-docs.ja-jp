@@ -1,22 +1,23 @@
 ---
 title: Azure Machine Learning を使用したデータの分析
-description: Azure Machine Learning を使用し、Azure SQL Data Warehouse で保存されたデータに基づいて予測機械学習モデルを構築します。
+description: Azure Machine Learning を使用して、Azure Synapse に格納されたデータに基づいて予測機械学習モデルを構築します。
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: integration
-ms.date: 03/22/2019
+ms.date: 02/05/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 892d4642d700949d1d1169c69926021c751cef67
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+tag: azure-Synapse
+ms.openlocfilehash: f6765fdbb65f62bb790d1e8781512db572170b10
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721287"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195891"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータの分析
 > [!div class="op_single_selector"]
@@ -28,7 +29,7 @@ ms.locfileid: "76721287"
 > 
 > 
 
-このチュートリアルでは、Azure Machine Learning を使用し、Azure SQL Data Warehouse で保存されたデータに基づいて予測機械学習モデルを構築します。 具体的には、顧客が自転車を購入する可能性があるかどうかを予測することで、Adventure Works (自転車店) のターゲット マーケティング キャンペーンを作成します。
+このチュートリアルでは、Azure Machine Learning を使用して、Azure Synapse に格納されたデータに基づいて予測機械学習モデルを構築します。 具体的には、顧客が自転車を購入する可能性があるかどうかを予測することで、Adventure Works (自転車店) のターゲット マーケティング キャンペーンを作成します。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Integrating-Azure-Machine-Learning-with-Azure-SQL-Data-Warehouse/player]
 > 
@@ -37,7 +38,7 @@ ms.locfileid: "76721287"
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルの手順を実行するには、次のものが必要です。
 
-* AdventureWorksDW サンプル データが事前に読み込まれた SQL Data Warehouse。 これをプロビジョニングするには、 [SQL Data Warehouse の作成](create-data-warehouse-portal.md) に関するページを参照し、サンプル データの読み込みを選択してください。 データ ウェアハウスは既にあってもサンプル データがない場合は、 [サンプル データを手動で読み込む](sql-data-warehouse-load-sample-databases.md)ことができます。
+* AdventureWorksDW サンプル データが事前に読み込まれた SQL プール。 これをプロビジョニングするには、[SQL プールの作成](create-data-warehouse-portal.md)に関するページを参照し、サンプル データを読み込むことを選択します。 データ ウェアハウスは既にあってもサンプル データがない場合は、 [サンプル データを手動で読み込む](sql-data-warehouse-load-sample-databases.md)ことができます。
 
 ## <a name="1-get-the-data"></a>1.データを取得する
 このデータは、AdventureWorksDW データベースの dbo.vTargetMail ビューにあります。 このデータを読み取るには、次の手順を実行します。
@@ -46,7 +47,7 @@ ms.locfileid: "76721287"
 2. 画面の左下にある **[+ 新規]** をクリックし、 **[Blank Experiment]\(空白の実験\)** を選択します。
 3. 実験の名前を入力します: Targeted Marketing。
 4. **[Data Input and output]\(データの入力と出力\)** の **[データのインポート]** モジュールを、モジュール ウィンドウからキャンバスにドラッグします。
-5. [プロパティ] ウィンドウで、SQL Data Warehouse データベースの詳細を指定します。
+5. [プロパティ] ウィンドウで、SQL プールの詳細を指定します。
 6. 目的のデータを読み取るためのデータベース **クエリ** を指定します。
 
 ```sql
@@ -128,7 +129,7 @@ FROM [dbo].[vTargetMail]
 * スコア付け確率: 顧客が自転車を購入する可能性
 * スコア付けラベル: モデルによって行われた分類 - 自転車を購入する顧客 (1) か、購入しない顧客 (0) このラベル付けの確率のしきい値は 50% に設定されており、調整できます。
 
-[BikeBuyer] 列 (実際) をスコア付けラベル (予測) と比較すると、モデルのパフォーマンスがどの程度優れていたかを評価できます。 次に、このモデルを使用して新規顧客の予測を行い、Web サービスとしてこのモデルを発行したり、SQL Data Warehouse に結果を書き戻したりできます。
+[BikeBuyer] 列 (実際) をスコア付けラベル (予測) と比較すると、モデルのパフォーマンスがどの程度優れていたかを評価できます。 次に、このモデルを使用して新規顧客の予測を行い、Web サービスとしてこのモデルを発行したり、Azure Synapse に結果を書き戻したりできます。
 
 ## <a name="next-steps"></a>次のステップ
 予測機械学習モデルの構築の詳細については、 [Azure での機械学習の概要](https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/)に関するページを参照してください。

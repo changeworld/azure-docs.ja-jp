@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/28/2019
+ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f19744e6c860ae315b681f5eb090cba23b153af
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: b77486064139895799ac5a48327377154f75da6d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008350"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273837"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのリスクの高いサインイン レポート
 
@@ -52,15 +52,15 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 "危険なサインイン" レポートは、Azure AD の全エディションで利用できます。 ただしエディションによってレポートの粒度が異なります。 
 
-- **Azure Active Directory Free エディションと Basic エディション**では、危険なサインインの一覧を取得できます。 
+- **Azure Active Directory Free エディション**では、危険なサインインの一覧を取得します。 
 
 - 加えて、**Azure Active Directory Premium 1** エディションでは、各レポートについて検出された、基になるリスク検出の一部を調べることができます。 
 
 - **Azure Active Directory Premium 2** エディションでは、基になるすべてのリスク検出について最も詳しい情報が得られます。また、構成されているリスク レベルに対して自動的に対応するセキュリティ ポリシーを構成することができます。
 
-## <a name="risky-sign-ins-report-for-azure-ad-free-and-basic-edition"></a>Azure AD の Free エディションと Basic エディションにおける危険なサインイン レポート
+## <a name="risky-sign-ins-report-for-azure-ad-free-edition"></a>Azure AD の Free エディションにおける危険なサインイン レポート
 
-Azure AD の Free および Basic エディションでは、管理対象ユーザーに関して検出された、リスクの高いサインインの一覧を提供します。 各レコードには、次の属性が含まれています。
+Azure AD の Free エディションでは、管理しているユーザーに関して検出された、リスクの高いサインインの一覧を提供します。 各レコードには、次の属性が含まれています。
 
 - **ユーザー** - サインイン操作中に使用されたユーザーの名前。
 - **IP** - Azure Active Directory への接続に使用されたデバイスの IP アドレス。
@@ -74,7 +74,7 @@ Azure AD の Free および Basic エディションでは、管理対象ユー�
 
 - 解決
 - 誤検知に設定
-- 無視
+- Ignore
 - 再度有効にする
 
 ![リスクの高いサインイン](./media/concept-risky-sign-ins/21.png)
@@ -128,7 +128,7 @@ Azure AD Premium エディションのリスクの高いサインイン レポ�
 
 ![リスクの高いサインイン](./media/concept-risky-sign-ins/325.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ユーザー リスク ポリシーを構成する方法](../identity-protection/howto-user-risk-policy.md)
 - [リスク修復ポリシーを構成する方法](../identity-protection/howto-user-risk-policy.md)

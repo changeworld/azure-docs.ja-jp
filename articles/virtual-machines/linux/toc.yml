@@ -251,8 +251,8 @@
       items:
         - name: CLI の使用
           href: create-cli-complete.md
-        - name: テンプレートの使用
-          displayName: 'Azure Resource Manager, ARM'
+        - name: Resource Manager テンプレートを使用する
+          displayName: Azure Resource Manager
           href: create-ssh-secured-vm-from-template.md
         - name: REST API を使用する
           href: create-vm-rest-api.md
@@ -270,8 +270,9 @@
               href: spot-cli.md
             - name: ポータル
               href: ../windows/spot-portal.md?toc=/azure/virtual-machines/linux/toc.json
-            - name: Template
+            - name: ARM テンプレート
               href: spot-template.md
+              displayName: Azure Resource Manager
             - name: エラー コード
               href: ../error-codes-spot.md?toc=/azure/virtual-machines/linux/toc.json
     - name: クラシックから Azure Resource Manager に移行する
@@ -462,8 +463,9 @@
               href: image-builder-overview.md
             - name: Azure CLI の使用
               href: image-builder.md
-            - name: テンプレート リファレンス
+            - name: Resource Manager テンプレート リファレンス
               href: image-builder-json.md
+              displayName: 'ARM,Resource Manager'
             - name: イメージ ギャラリー用のビルド
               href: image-builder-gallery.md
             - name: 既存のイメージの更新
@@ -631,7 +633,7 @@
               href: attach-disk-portal.md
         - name: ディスクを取り外す
           href: detach-disk.md
-        - name: テンプレートによるディスクのデプロイ
+        - name: Resource Manager テンプレートによるディスクのデプロイ
           displayName: 'Azure Resource Manager, ARM'
           href: using-managed-disks-template-deployments.md
         - name: 共有ディスクを有効にする
@@ -757,9 +759,10 @@
       href: /rest/api/compute
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.compute/allversions
+      displayName: ARM
 - name: リソース
   items:
-    - name: テンプレートの作成
+    - name: Resource Manager テンプレートを作成する
       displayName: 'Azure Resource Manager, ARM'
       href: /azure/azure-resource-manager/
     - name: Microsoft Learn でスキルを身に付ける

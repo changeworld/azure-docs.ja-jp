@@ -4,7 +4,7 @@
   items:
     - name: Service Fabric とは
       href: service-fabric-overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: .NET アプリケーションの作成
@@ -91,7 +91,7 @@
   items:
     - name: Service Fabric のベスト プラクティスの概要
       href: service-fabric-best-practices-overview.md
-    - name: セキュリティ
+    - name: Security
       href: service-fabric-best-practices-security.md
     - name: ネットワーク
       href: service-fabric-best-practices-networking.md
@@ -121,9 +121,9 @@
       href: service-fabric-content-roadmap.md
     - name: アプリケーションのシナリオ
       href: service-fabric-application-scenarios.md
-    - name: アーキテクチャ
+    - name: Architecture
       href: service-fabric-architecture.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: Service Fabric のセキュリティ
           href: service-fabric-best-practices-security.md
@@ -133,7 +133,7 @@
           href: service-fabric-cluster-security.md
         - name: 組み込みのセキュリティ制御
           href: service-fabric-security-controls.md
-    - name: 用語集
+    - name: 用語
       href: service-fabric-technical-overview.md
     - name: アプリケーションの構築
       items:
@@ -145,7 +145,7 @@
               href: service-fabric-containers-overview.md
             - name: Docker Compose (プレビュー)
               href: service-fabric-docker-compose.md
-            - name: リソース ガバナンス
+            - name: リソース管理
               href: service-fabric-resource-governance.md
         - name: Reliable Service
           items:
@@ -177,7 +177,7 @@
           items:
             - name: Reliable Actors の概要
               href: service-fabric-reliable-actors-introduction.md
-            - name: アーキテクチャ
+            - name: Architecture
               href: service-fabric-reliable-actors-platform.md
             - name: サービスレベルの機能の実装
               href: service-fabric-reliable-actors-using.md
@@ -280,7 +280,7 @@
               href: service-fabric-cluster-nodetypes.md
             - name: Azure でのクラスターのアップグレード
               href: service-fabric-cluster-upgrade.md
-            - name: スケーリング
+            - name: Scaling
               href: service-fabric-cluster-scaling.md
             - name: クラスター ネットワークのパターン
               href: service-fabric-patterns-networking.md
@@ -290,13 +290,13 @@
               href: service-fabric-standalone-clusters-overview.md
             - name: スタンドアロン クラスターのアップグレード
               href: service-fabric-cluster-upgrade-standalone.md
-            - name: スケーリング
+            - name: Scaling
               href: service-fabric-cluster-scaling-standalone.md
         - name: Cluster Resource Manager
           items:
             - name: Cluster Resource Manager の概要
               href: service-fabric-cluster-resource-manager-introduction.md
-            - name: アーキテクチャ
+            - name: Architecture
               href: service-fabric-cluster-resource-manager-architecture.md
             - name: クラスターについて説明する
               href: service-fabric-cluster-resource-manager-cluster-description.md
@@ -316,6 +316,8 @@
               href: service-fabric-cluster-resource-manager-defragmentation-metrics.md
             - name: クラスターの分散
               href: service-fabric-cluster-resource-manager-balancing.md
+            - name: サブクラスタリング
+              href: service-fabric-cluster-resource-manager-subclustering.md
             - name: Throttling
               href: service-fabric-cluster-resource-manager-advanced-throttling.md
             - name: サービスの移動
@@ -358,7 +360,7 @@
       href: concepts-managed-identity.md
     - name: コンテナー リポジトリの資格情報の構成
       href: configure-container-repository-credentials.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: 開発環境を設定する
       items:

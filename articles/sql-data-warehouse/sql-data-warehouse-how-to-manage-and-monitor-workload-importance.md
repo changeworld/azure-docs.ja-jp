@@ -1,26 +1,26 @@
 ---
 title: ワークロードの重要度の管理と監視
-description: Azure SQL Data Warehouse で要求レベルの重要度を管理および監視する方法について説明します。
+description: Azure Synapse Analytics で要求レベルの重要度を管理および監視する方法について説明します。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.subservice: workload-management
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 02/04/2020
 ms.author: rortloff
-ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: ee9acb873c5118733de142045457028c3f4d5f61
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.reviewer: jrasnick
+ms.custom: azure-synapse
+ms.openlocfilehash: 6274bff9f9c57bfb06e58e1c4bfce6b6e265ac62
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692715"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195619"
 ---
-# <a name="manage-and-monitor-workload-importance-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのワークロードの重要度の管理と監視
+# <a name="manage-and-monitor-workload-importance-in-azure-synapse-analytics"></a>Azure Synapse Analytics でワークロードの重要度の管理と監視を行う
 
-DMV とカタログ ビューを使用して、Azure SQL Data Warehouse での要求レベルの重要度を管理および監視します。
+DMV とカタログ ビューを使用して、Azure Synapse で SQL Analytics の要求レベルの重要度を管理および監視します。
 
 ## <a name="monitor-importance"></a>重要度を監視する
 
@@ -39,7 +39,7 @@ ORDER BY r.start_time
 
 ## <a name="manage-importance-with-catalog-views"></a>カタログ ビューで重要度を管理する
 
-カタログ ビュー sys.workload_management_workload_classifiers には、Azure SQL Data Warehouse インスタンスの分類子に関する情報が含まれています。 リソース クラスにマップされるシステム定義分類子を除外するには、次のコードを実行します。
+sys.workload_management_workload_classifiers カタログ ビューには、分類子に関する情報が含まれています。 リソース クラスにマップされるシステム定義分類子を除外するには、次のコードを実行します。
 
 ```sql
 SELECT *
@@ -68,7 +68,7 @@ IF EXISTS (SELECT 1 FROM sys.workload_management_workload_classifiers WHERE name
 GO
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - 分類の詳細については、[ワークロード分類](sql-data-warehouse-workload-classification.md)に関するページを参照してください。
 - 重要度の詳細については、[ワークロードの重要度](sql-data-warehouse-workload-importance.md)に関するページを参照してください
 
