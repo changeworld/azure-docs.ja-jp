@@ -33,11 +33,11 @@ Azure Cognitive Search とのすべてのプログラミング インターフ�
 | インターフェイス | 最新のメジャー バージョン | Status |
 | --- | --- | --- |
 | [.NET SDK](https://aka.ms/search-sdk) |9.0 |一般公開、2019 年 5 月にリリース済み |
-| [.NET SDK のプレビュー](https://aka.ms/search-sdk-preview) |8.0-preview |プレビュー、2019 年 4 月にリリース済み |
-| [サービス REST API](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |一般公開 |
-| [サービス REST API 2019-05-06 プレビュー](search-api-preview.md) |2019-05-06-Preview |プレビュー |
-| [.NET 管理 SDK](https://aka.ms/search-mgmt-sdk) |3.0 |一般公開 |
-| [管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |一般公開 |
+| [.NET SDK Preview](https://aka.ms/search-sdk-preview) |8.0-preview |プレビュー、2019 年 4 月にリリース済み |
+| [Service REST API](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |一般公開 |
+| [Service REST API 2019-05-06-Preview	](search-api-preview.md) |2019-05-06-Preview |プレビュー |
+| [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |3.0 |一般公開 |
+| [Management REST API](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |一般公開 |
 
 REST API の場合は、各呼び出しに対して `api-version` を含める必要があります。 `api-version` を使用すると、プレビュー API などの特定のバージョンを対象にするのが容易になります。 次の例に、 `api-version` パラメーターを指定する方法を示します。
 
