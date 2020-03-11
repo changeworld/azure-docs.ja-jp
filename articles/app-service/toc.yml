@@ -33,7 +33,7 @@
       items:
         - name: .NET Core と SQL DB
           href: app-service-web-tutorial-dotnetcore-sqldb.md
-        - name: .NET と SQL DB
+        - name: .NET Framework と SQL DB
           href: app-service-web-tutorial-dotnet-sqldatabase.md
         - name: PHP と MySQL
           href: app-service-web-tutorial-php-mysql.md
@@ -87,8 +87,6 @@
           href: networking-features.md
         - name: Application Gateway とサービス エンドポイントの併用
           href: networking/app-gateway-with-service-endpoints.md
-        - name: プライベート エンドポイント
-          href: networking/private-endpoint.md
     - name: 受信 IP と送信 IP
       href: overview-inbound-outbound-ips.md
     - name: Virtual Network 統合

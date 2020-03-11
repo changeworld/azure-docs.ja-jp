@@ -89,7 +89,7 @@
       href: relational-nosql.md
     - name: グローバル配信
       items:
-        - name: 概要
+        - name: グローバル配信の概要
           displayName: 'replication, replicate, geo distribution'
           href: distribute-data-globally.md
         - name: 一貫性レベル
@@ -118,7 +118,7 @@
           href: globally-distributed-transactional-analytical-storage.md
     - name: パーティション分割
       items:
-        - name: 概要
+        - name: パーティション分割の概要
           href: partitioning-overview.md
         - name: パーティション分割と水平スケーリング
           href: partition-data.md
@@ -461,7 +461,7 @@
           href: modeling-data.md
         - name: インデックス作成
           items:
-            - name: 概要
+            - name: インデックス作成の概要
               displayName: 'range, spatial'
               href: index-overview.md
             - name: インデックス作成ポリシー
@@ -476,7 +476,7 @@
           href: database-transactions-optimistic-concurrency.md
     - name: Change Feed
       items:
-        - name: 概要
+        - name: 変更フィードの概要
           href: change-feed.md
         - name: 変更フィードの読み取り
           href: read-change-feed.md
@@ -530,7 +530,7 @@
           href: cosmos-db-reserved-capacity.md
     - name: Security
       items:
-        - name: 概要
+        - name: セキュリティの概要
           href: database-security.md
         - name: データの暗号化
           href: database-encryption-at-rest.md
@@ -564,12 +564,12 @@
   items:
     - name: Cassandra API
       items:
-        - name: はじめに
-          href: cassandra-introduction.md
-        - name: ワイヤ プロトコルのサポート
-          href: cassandra-support.md
-        - name: エラスティック スケール
-          href: manage-scale-cassandra.md
+        - name: 概要
+          items:
+            - name: Cosmos DB の Cassandra API とは
+              href: cassandra-introduction.md
+            - name: ワイヤ プロトコルのサポート
+              href: cassandra-support.md
         - name: クイックスタート
           items:
             - name: .NET
@@ -591,6 +591,10 @@
             - name: 4 - データの移行
               displayName: import
               href: cassandra-import-data.md
+        - name: 概念
+          items:
+            - name: エラスティック スケール
+              href: manage-scale-cassandra.md
         - name: 操作方法ガイド
           items:
             - name: Change Feed
@@ -628,12 +632,14 @@
               href: cli-samples-cassandra.md
     - name: MongoDB API
       items:
-        - name: はじめに
-          href: mongodb-introduction.md
-        - name: ワイヤ プロトコルのサポート (3.2)
-          href: mongodb-feature-support.md
-        - name: ワイヤ プロトコルのサポート (3.6)
-          href: mongodb-feature-support-36.md
+        - name: 概要
+          items:
+            - name: Cosmos DB の MongoDB API とは
+              href: mongodb-introduction.md
+            - name: ワイヤ プロトコルのサポート (3.2)
+              href: mongodb-feature-support.md
+            - name: ワイヤ プロトコルのサポート (3.6)
+              href: mongodb-feature-support-36.md
         - name: クイックスタート
           items:
             - name: .NET
@@ -719,10 +725,12 @@
     - name: Gremlin API
       displayName: 'graph, graph database'
       items:
-        - name: はじめに
-          href: graph-introduction.md
-        - name: ワイヤ プロトコルのサポート
-          href: gremlin-support.md
+        - name: 概要
+          items:
+            - name: Cosmos DB の Germlin API とは
+              href: graph-introduction.md
+            - name: ワイヤ プロトコルのサポート
+              href: gremlin-support.md
         - name: クイックスタート
           items:
             - name: Gremlin Console
@@ -778,8 +786,10 @@
               href: cli-samples-gremlin.md
     - name: テーブル API
       items:
-        - name: はじめに
-          href: table-introduction.md
+        - name: 概要
+          items:
+            - name: Cosmos DB の Table API とは
+              href: table-introduction.md
         - name: クイックスタート
           items:
             - name: .NET
@@ -849,10 +859,14 @@
               href: /rest/api/storageservices/table-service-rest-api
     - name: etcd API
       items:
-        - name: はじめに
-          href: etcd-api-introduction.md
-        - name: Azure Kubernetes と Azure Cosmos DB
-          href: bootstrap-kubernetes-cluster.md
+        - name: 概要
+          items:
+            - name: Cosmos DB の etcd API とは
+              href: etcd-api-introduction.md
+        - name: 操作方法ガイド
+          items:
+            - name: Azure Kubernetes と Azure Cosmos DB
+              href: bootstrap-kubernetes-cluster.md
 - name: 操作方法ガイド
   items:
     - name: Azure Cosmos アカウントの使用

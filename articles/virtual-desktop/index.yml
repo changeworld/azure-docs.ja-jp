@@ -1,41 +1,52 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Windows Virtual Desktop のドキュメント
+summary: 任意のデバイスに仮想デスクトップ エクスペリエンスとリモート アプリを提供します。 Microsoft 365 と Azure を連携させ、ユーザーに唯一のマルチセッション Windows 10 エクスペリエンス (優れたスケーリングと IT コストの削減) を提供します。
 metadata:
-  title: Windows Virtual Desktop のドキュメント | Microsoft Docs
+  title: Windows Virtual Desktop のドキュメント
   description: Windows Virtual Desktop for Azure は、クラウドで仮想化されたマルチユーザー Windows 10 Enterprise エクスペリエンスです。
-  author: Heidilohr
-  manager: lizross
   ms.service: virtual-desktop
   services: virtual-desktop
   ms.topic: landing-page
-  ms.date: 02/20/2019
+  manager: lizross
+  author: Heidilohr
   ms.author: helohr
-abstract:
-  description: 任意のデバイスに仮想デスクトップ エクスペリエンスとリモート アプリを提供します。 Microsoft 365 と Azure を連携させ、ユーザーに唯一のマルチセッション Windows 10 エクスペリエンス (優れたスケーリングと IT コストの削減) を提供します。
-sections:
-  - title: 概要
-    items:
-      - type: paragraph
-        text: Windows Virtual Desktop とその使用方法について説明します。 チュートリアル、操作方法、リファレンス コンテンツなどによって、ホスト プールとテナントを設定し、Windows Virtual Desktop 環境のユーザーにロールを割り当てる方法が示されます。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/virtual-desktop/overview">Windows Virtual Desktop とは</a>
-  - title: ステップバイステップ チュートリアル
-    items:
-      - type: paragraph
-        text: Windows Virtual Desktop をインストールして構成する方法のほか、準備ができたときにクライアントに接続する方法について説明します。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/virtual-desktop/tenant-setup-azure-active-directory">Windows Virtual Desktop でテナントを作成する</a>
-          - html: <a href="/azure/virtual-desktop/create-host-pools-azure-marketplace">Azure Marketplace を使用してホスト プールを作成する</a>
-          - html: <a href="/azure/virtual-desktop/manage-app-groups">Windows Virtual Desktop のアプリ グループを管理する</a>
-          - html: <a href="/azure/virtual-desktop/create-service-principal-role-powershell">PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/powershell/windows-virtual-desktop/overview">PowerShell</a>
+  ms.date: 03/06/2020
+  ms.openlocfilehash: f37b0cd68c62813dd4c642d9e45a20a91d08c31c
+  ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/07/2020
+  ms.locfileid: "78898669"
+landingContent:
+- title: Windows Virtual Desktop について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Windows Virtual Desktop とは
+      url: overview.md
+- title: はじめに
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Windows Virtual Desktop でテナントを作成する
+      url: tenant-setup-azure-active-directory.md
+    - text: Azure Marketplace を使用してホスト プールを作成する
+      url: create-host-pools-azure-marketplace.md
+    - text: Windows Virtual Desktop のアプリ グループを管理する
+      url: manage-app-groups.md
+    - text: PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する
+      url: create-service-principal-role-powershell.md
+- title: Windows Virtual Desktop に接続する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Windows デスクトップ クライアント
+      url: connect-windows-7-and-10.md
+    - text: Web クライアント
+      url: connect-web.md
+    - text: Android クライアント
+      url: connect-android.md
+    - text: macOS クライアント
+      url: connect-macos.md
+    - text: iOS クライアント
+      url: connect-ios.md

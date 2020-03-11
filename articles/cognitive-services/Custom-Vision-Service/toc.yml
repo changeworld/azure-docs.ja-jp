@@ -57,6 +57,8 @@
       href: test-your-model.md
     - name: 分類子の改善
       href: getting-started-improving-your-classifier.md
+    - name: ドメインの選択
+      href: select-domain.md
     - name: 予測 API の使用
       href: use-prediction-api.md
     - name: Smart Labeler の使用

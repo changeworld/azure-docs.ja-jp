@@ -44,6 +44,8 @@
       href: functions-openapi-definition.md
     - name: 仮想ネットワークへの接続
       href: functions-create-vnet.md
+    - name: プライベート サイトへのアクセスの確立
+      href: functions-create-private-site-access.md
     - name: Event Grid でのイメージのサイズ変更
       href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: サーバーレス Web アプリの作成

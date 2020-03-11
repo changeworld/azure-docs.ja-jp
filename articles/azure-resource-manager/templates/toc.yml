@@ -145,10 +145,6 @@
             - name: 出力
               displayName: 'iteration,copy'
               href: copy-outputs.md
-        - name: サブスクリプション レベルのリソース
-          href: deploy-to-subscription.md
-        - name: 管理グループ レベルのリソース
-          href: deploy-to-management-group.md
     - name: オーサリング ツールを使用する
       items:
         - name: VS Code
@@ -182,7 +178,15 @@
           href: rollback-on-error.md
         - name: SAS トークンによるテンプレートのセキュリティ保護
           href: secure-template-with-sas-token.md
-        - name: 複数のリソース グループまたはサブスクリプションへのデプロイ
+    - name: スコープ付きのデプロイ
+      items:
+        - name: サブスクリプション
+          href: deploy-to-subscription.md
+        - name: 管理グループ
+          href: deploy-to-management-group.md
+        - name: Tenant
+          href: deploy-to-tenant.md
+        - name: 複数のリソース グループまたはサブスクリプション
           href: cross-resource-group-deployment.md
     - name: パラメーターを指定する
       items:
