@@ -19,7 +19,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 12/08/2019
 ms.locfileid: "74928135"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-api-an-azure-cognitive-service"></a>クイック スタート:Azure コグニティブ サービスである Bing Image Search API で画像を検索する 
+# <a name="quickstart-search-for-images-with-the-bing-image-search-api-an-azure-cognitive-service"></a>クイック スタート:Azure Cognitive Services である Bing Image Search API で画像を検索する 
 
 このクイックスタートを使用して、Azure Cognitive Services の Bing Image Search API に検索要求を送信します。 この Java アプリケーションは、検索クエリを API に送信し、その結果から最初の画像の URL を表示します。 このアプリケーションは Java で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
