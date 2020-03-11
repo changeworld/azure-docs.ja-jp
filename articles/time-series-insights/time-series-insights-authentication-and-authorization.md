@@ -100,7 +100,7 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
 このセクションでは、Time Series Insights GA や Preview API に対するクエリの作成に使用される、一般的な HTTP 要求ヘッダーとパラメーターについて説明します。 API 固有の要件は、[Time Series Insights REST API リファレンス ドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/)に詳しく記載されています。
 
 > [!TIP]
-> REST Api の使用方法、HTTP 要求の作成方法、および HTTP 応答の処理方法の詳細については、[Azure REST API リファレンス](https://docs.microsoft.com/rest/api/azure/) を参照してください。
+> REST API の使用方法、HTTP 要求の作成方法、および HTTP 応答の処理方法の詳細については、[Azure REST API リファレンス](https://docs.microsoft.com/rest/api/azure/) を参照してください。
 
 ### <a name="authentication"></a>認証
 
