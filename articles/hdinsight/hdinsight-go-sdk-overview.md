@@ -351,7 +351,7 @@ client.Resize(context.Background(), "<Resource Group Name>", "<Cluster Name>", h
 
 ## <a name="cluster-monitoring"></a>クラスターの監視
 
-HDInsight 管理 SDK を使用して、Operations Management Suite (OMS) でご自身のクラスターの監視を管理することもできます。
+HDInsight Management SDK を使用して、Operations Management Suite (OMS) でご自身のクラスターの監視を管理することもできます。
 
 管理に使用するために `ClusterClient` を作成したときと同様に、監視に使用するために `ExtensionClient` を作成する必要があります。 上記の [認証] セクションを完了すると、次のように `ExtensionClient` を作成できます。
 
