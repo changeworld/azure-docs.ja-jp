@@ -58,7 +58,7 @@ Azure Cognitive Search 上に構築されたソリューションでは、次の
 + 最小構成でのサービスの基本コスト (サービスの作成)
 + スケールアップ (レプリカまたはパーティションの追加) 時の増分コスト
 + 帯域幅料金 (送信データ転送) 
-+ コグニティブ検索 (AI エンリッチメントには Cognitive Services、ナレッジ ストアには Azure Storage をアタッチする)
++ Cognitive Search (AI エンリッチメントには Cognitive Services、ナレッジ ストアには Azure Storage をアタッチする)
 
 ### <a name="service-costs"></a>サービスのコスト
 
