@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b9240b863eef4d460cd8d3a47304fb96ffb4bc8
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 9a237ad35d9d5d8abee784926563d972d0ee95f9
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917782"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672648"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>プライマリ更新トークンとは
 
@@ -33,7 +33,7 @@ PRT の要求と使用においては、次の Windows コンポーネントが�
 * **Azure AD CloudAP プラグイン**: CloudAP フレームワーク上に構築される Azure AD 固有のプラグインであり、Windows サインイン中に Azure AD を使用してユーザーの資格情報を確認します。
 * **Azure AD WAM プラグイン**: WAM フレームワーク上に構築される Azure AD 固有のプラグインであり、Azure AD を認証に利用するアプリケーションへの SSO を有効にします。
 * **Dsreg**: Windows 10 上の Azure AD 固有のコンポーネントであり、すべてのデバイス状態のデバイス登録プロセスを処理します。
-* **トラステッド プラットフォーム モジュール** (TPM): TPM はデバイスに組み込まれるハードウェア コンポーネントであり、ユーザーとデバイスを秘匿するためのハードウェア ベースのセキュリティ機能を提供します。 詳細については、「[トラステッド プラットフォーム モジュール技術概要](https://docs.microsoft.com/windows/security/information-protection/tpm/trusted-platform-module-overview)」の記事を参照してください。
+* **トラステッド プラットフォーム モジュール** (TPM): TPM はデバイスに組み込まれるハードウェア コンポーネントであり、ユーザーとデバイスを秘匿するためのハードウェア ベースのセキュリティ機能を提供します。 詳細については、「[トラステッド プラットフォーム モジュール技術概要](/windows/security/information-protection/tpm/trusted-platform-module-overview)」の記事を参照してください。
 
 ## <a name="what-does-the-prt-contain"></a>PRT には何が含まれますか?
 
@@ -48,7 +48,7 @@ PRT は Azure AD から送信される不透明な BLOB であり、その内容
 
 ## <a name="how-is-a-prt-issued"></a>PRT はどのようにして発行されますか?
 
-デバイス登録は、Azure AD でのデバイス ベース認証の前提条件です。 PRT は登録済みデバイス上のユーザーにのみ発行されます。 デバイス登録の詳細については、「[Windows Hello for Business とデバイスの登録](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-how-it-works-device-registration)」の記事を参照してください。 デバイス登録中、dsreg コンポーネントによって暗号化キーの組が 2 セット生成されます。
+デバイス登録は、Azure AD でのデバイス ベース認証の前提条件です。 PRT は登録済みデバイス上のユーザーにのみ発行されます。 デバイス登録の詳細については、「[Windows Hello for Business とデバイスの登録](/windows/security/identity-protection/hello-for-business/hello-how-it-works-device-registration)」の記事を参照してください。 デバイス登録中、dsreg コンポーネントによって暗号化キーの組が 2 セット生成されます。
 
 * デバイス キー (dkpub/dkpriv)
 * トランスポート キー (tkpub/tkpriv)

@@ -3,12 +3,12 @@ title: クライアント認証用に Azure Active Directory をセットアッ�
 description: Service Fabric クラスターのクライアントを認証するための Azure Active Directory (Azure AD) の設定方法について学習します。
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: 2a6ffdb1c1fdc447545477286a6d131be2449cdb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 28c4c65cfcc77607dfe9a463a09ecd10389a6eca
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843822"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193384"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>クライアント認証用に Azure Active Directory をセットアップする
 
@@ -104,7 +104,7 @@ Service Fabric Explorer で Azure AD にサインインしようとすると、�
 Service Fabric Explorer に相当するクラスター (Web) アプリケーションは Azure AD に対する認証を試み、要求の一部として、戻り先のリダイレクト URL を指定しています。 しかし、その URL が Azure AD アプリケーションの **[応答 URL]** のリストに表示されません。
 
 #### <a name="solution"></a>解決策
-Azure AD ページで **[アプリの登録]** を選択し、ご利用のクラスター アプリケーションを選択して、 **[応答 URL]** ボタンを選択します。 **[応答 URL]** ウィンドウで、Service Fabric Explorer の URL をリストに追加するか、リスト内の項目のいずれかと置き換えます。 変更を保存します。
+クラスターの Azure AD アプリ登録ページで **[認証]** を選択し、 **[リダイレクト URI]** セクションでリストに Service Fabric Explorer URL を追加します。 変更を保存します。
 
 ![Web アプリケーションの応答 URL][web-application-reply-url]
 

@@ -1,6 +1,6 @@
 ---
 title: T-SQL 言語要素
-description: Azure SQL Data Warehouse でサポートされる T-SQL ステートメントのドキュメントにリンクします。
+description: SQL Analytics でサポートされている T-SQL ステートメントのドキュメントへのリンク。
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: query
 ms.date: 06/13/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 02f463e12547ba64a05e04988d9c192bba4f6a27
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: edd77d711654a7f2793eb3c08b93e85fc0a89e8f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692528"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198424"
 ---
-# <a name="t-sql-language-elements-supported-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でサポートされる T-SQL 言語要素
-Azure SQL Data Warehouse でサポートされる T-SQL 言語要素のドキュメントにリンクします。
+# <a name="t-sql-language-elements-supported-in-sql-analytics"></a>SQL Analytics でサポートされている T-SQL 言語要素
+SQL Analytics でサポートされている T-SQL 言語要素のドキュメントへのリンク。
 
 ## <a name="core-elements"></a>コア要素
 * [構文表記規則](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)
@@ -47,10 +47,10 @@ Azure SQL Data Warehouse でサポートされる T-SQL 言語要素のドキュ
 * [TRY...CATCH](https://msdn.microsoft.com/library/ms175976.aspx)
 * [WHILE](https://msdn.microsoft.com/library/ms178642.aspx)
 
-## <a name="operators"></a>演算子
+## <a name="operators"></a>オペレーター
 * [+ (加算)](https://msdn.microsoft.com/library/ms178565.aspx)
 * [+ (文字列連結)](https://msdn.microsoft.com/library/ms177561.aspx)
-* [- (負)](https://msdn.microsoft.com/library/ms189480.aspx)
+* [- (負号)](https://msdn.microsoft.com/library/ms189480.aspx)
 * [- (減算)](https://msdn.microsoft.com/library/ms189518.aspx)
 * [* (乗算)](https://msdn.microsoft.com/library/ms176019.aspx)
 * [/ (除算)](https://msdn.microsoft.com/library/ms175009.aspx)
@@ -73,16 +73,16 @@ Azure SQL Data Warehouse でサポートされる T-SQL 言語要素のドキュ
 * [NOT](https://msdn.microsoft.com/library/ms189455.aspx)
 * [OR](https://msdn.microsoft.com/library/ms188361.aspx)
 
-### <a name="bitwise-operators"></a>ビット演算子
-* [& (ビット演算子 AND)](https://msdn.microsoft.com/library/ms174965.aspx)
-* [| (ビット演算子 OR)](https://msdn.microsoft.com/library/ms186714.aspx)
+### <a name="bitwise-operators"></a>ビットごとの演算子
+* [& (ビット演算 AND)](https://msdn.microsoft.com/library/ms174965.aspx)
+* [| (ビットごとの OR)](https://msdn.microsoft.com/library/ms186714.aspx)
 * [^ (ビットごとの排他的 OR)](https://msdn.microsoft.com/library/ms190277.aspx)
 * [~ (ビット演算子 NOT)](https://msdn.microsoft.com/library/ms173468.aspx)
 * [^= (ビットごとの排他的 OR 代入)](https://msdn.microsoft.com/library/cc627413.aspx)
-* [|= (ビット演算子 OR EQUALS)](https://msdn.microsoft.com/library/cc627409.aspx)
-* [&= (ビット演算子 AND EQUALS)](https://msdn.microsoft.com/library/cc627427.aspx)
+* [|= (ビットごとの OR 代入)](https://msdn.microsoft.com/library/cc627409.aspx)
+* [&= (ビットごとの AND 代入)](https://msdn.microsoft.com/library/cc627427.aspx)
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>関数
 * [@@DATEFIRST](https://msdn.microsoft.com/library/ms187766.aspx)
 * [@@ERROR](https://msdn.microsoft.com/library/ms188790.aspx)
 * [@@LANGUAGE](https://msdn.microsoft.com/library/ms177557.aspx)
@@ -232,7 +232,7 @@ Azure SQL Data Warehouse でサポートされる T-SQL 言語要素のドキュ
 ## <a name="diagnostic-sessions"></a>診断セッション
 * [CREATE DIAGNOSTICS SESSION](https://msdn.microsoft.com/library/mt204029.aspx)
 
-## <a name="procedures"></a>プロシージャ
+## <a name="procedures"></a>手順
 * [sp_addrolemember](https://msdn.microsoft.com/library/ms187750.aspx)
 * [sp_columns](https://msdn.microsoft.com/library/ms176077.aspx)
 * [sp_configure](https://msdn.microsoft.com/library/ms188787.aspx)
@@ -277,6 +277,6 @@ Azure SQL Data Warehouse でサポートされる T-SQL 言語要素のドキュ
 * [SET TRANSACTION ISOLATION LEVEL](https://msdn.microsoft.com/library/ms173763.aspx)
 * [SET XACT_ABORT](https://msdn.microsoft.com/library/ms188792.aspx)
 
-## <a name="next-steps"></a>次の手順
-その他の参照情報については、[Azure SQL Data Warehouse の T-SQL ステートメント](sql-data-warehouse-reference-tsql-statements.md)に関するページと[Azure SQL Data Warehouse のシステム ビュー](sql-data-warehouse-reference-tsql-system-views.md)に関するページを参照してください。
+## <a name="next-steps"></a>次のステップ
+詳細については、[SQL Analytics の T-SQL ステートメント](sql-data-warehouse-reference-tsql-statements.md)と [SQL Analytics のシステム ビュー](sql-data-warehouse-reference-tsql-system-views.md)に関する記事を参照してください。
 

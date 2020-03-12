@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
-ms.openlocfilehash: 27978d367ded7a31d73949cd675ae9e6f8cb887c
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: fc208a3542528fb4554a365a02e13c2da3055cf2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264001"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192202"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Azure Spring Cloud アプリのログをリアルタイムでストリーム配信する
 Azure Spring Cloud では Azure CLI のログ ストリーミングを使ってトラブルシューティングのためにリアルタイムのアプリケーション コンソール ログを取得できます。 さらに、[診断設定でログとメトリックを分析する](./diagnostic-services.md)こともできます。
@@ -20,6 +20,9 @@ Azure Spring Cloud では Azure CLI のログ ストリーミングを使って�
 
 * Spring Cloud (最小バージョン 0.2.0) 用の [Azure CLI 拡張機能](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#install-the-azure-cli-extension)のインストール。
 * [Spring Cloud アプリ](./spring-cloud-quickstart-launch-app-cli.md)などのアプリケーションを実行する **Azure Spring Cloud** のインスタンス。
+
+> [!NOTE]
+>  ASC CLI 拡張機能はバージョン 0.2.0 から 0.2.1 に更新されました。 この変更によってログ ストリーミングのコマンドの構文が影響を受けます。`az spring-cloud app logs` が `az spring-cloud app log tail` に取って代わります。 コマンド: `az spring-cloud app log tail` は今後のリリースで非推奨になります。 バージョン 0.2.0 を使用している場合、0.2.1 にアップグレードできます。 まず、コマンド `az extension remove -n spring-cloud` を使用して古いバージョンを削除します。  次に、コマンド `az extension add -n spring-cloud` で 0.2.1 をインストールします。
 
 ## <a name="use-cli-to-tail-logs"></a>ログ末尾に CLI を使用する
 
@@ -33,7 +36,7 @@ az configure --defaults spring-cloud=<service instance name>
 ### <a name="tail-log-for-app-with-single-instance"></a>1 つのインスタンスを持つアプリのログ末尾
 auth-service という名前のアプリにインスタンスが 1 つしかない場合は、次のコマンドを使用してアプリ インスタンスのログを表示できます。
 ```
-az spring-cloud app log tail -n auth-service
+az spring-cloud app logs -n auth-service
 ```
 これにより、次のログが返されます。
 ```
@@ -66,7 +69,7 @@ auth-service-default-12-75cc4577fc-n25mh  Running   UP
 次に、オプション `-i/--instance` オプションを使用して、アプリ インスタンスのログをストリーミングできます。
 
 ```
-az spring-cloud app log tail -n auth-service -i auth-service-default-12-75cc4577fc-pw7hb
+az spring-cloud app logs -n auth-service -i auth-service-default-12-75cc4577fc-pw7hb
 ```
 
 アプリ インスタンスの詳細は、Azure portal から取得することもできます。  Azure Spring Cloud サービスの左側のナビゲーション ウィンドウで **[アプリ]** を選択した後、 **[App Instances]\(アプリ インスタンス\)** を選択します。
@@ -75,11 +78,11 @@ az spring-cloud app log tail -n auth-service -i auth-service-default-12-75cc4577
 既定では、`az spring-cloud ap log tail` は、アプリ コンソールにストリーミングされた既存のログのみを出力し、終了します。 新しいログをストリーミングする場合は、次のように -f (--follow) を追加します。  
 
 ```
-az spring-cloud app log tail -n auth-service -f
+az spring-cloud app logs -n auth-service -f
 ``` 
 サポートされているすべてのログ オプションを確認するには:
 ``` 
-az spring-cloud app log tail -h 
+az spring-cloud app logs -h 
 ```
 
 ## <a name="next-steps"></a>次のステップ

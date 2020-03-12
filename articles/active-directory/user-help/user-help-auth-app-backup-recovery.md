@@ -1,5 +1,5 @@
 ---
-title: Microsoft Authenticator アプリを使用してアカウントをバックアップおよび復旧する - Azure AD
+title: Microsoft Authenticator アプリを使用してアカウントをバックアップおよび回復する - Azure AD
 description: Microsoft Authenticator アプリを使用して、バックアップされたアカウント資格情報をバックアップおよび復旧する方法について説明します。
 services: active-directory
 author: curtand
@@ -8,17 +8,17 @@ ms.subservice: user-help
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 02/25/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: d1b28000a14ec0825435742efe238e713f116ba7
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 2ac761355fc528fe3e4b4b5f05ee0a6e317ff99a
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063936"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78297990"
 ---
-# <a name="backup-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを使用してアカウント資格情報をバックアップおよび復旧する
+# <a name="back-up-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを使用してアカウント資格情報をバックアップおよび回復する
 
 **適用対象:**
 
@@ -81,23 +81,41 @@ Microsoft Authenticator アプリは、アカウント資格情報と、アカ�
 
 ### <a name="to-provide-additional-verification-for-personal-accounts"></a>個人用アカウントに対して追加の検証を提供するには
 
-1. Microsoft Authenticator アプリの **[アカウント]** 画面で、復旧するアカウントの横にあるドロップダウン矢印を選択します。
+1. Microsoft Authenticator アプリの **[アカウント]** 画面で、回復するアカウントを選択します。 Android デバイスでは、回復するアカウントの横にある矢印を選択します。
 
     ![使用可能なアカウントとそれに関連付けられたドロップダウン矢印を表示している Microsoft Authenticator アプリ](./media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png)
 
-2. **[Sign in to recover]\(サインインして復旧する\)** を選択し、追加の検証として電子メール アドレスまたは電話番号を確認します。
+    iOS デバイスでは、回復するアカウントをタップして、アカウントの全画面表示を開きます。
 
-    ![サインイン情報を入力できる Microsoft Authenticator アプリ](./media/user-help-auth-app-backup-recovery/backup-and-recovery-sign-in.png)
+    ![使用可能なアカウントとそれに関連付けられたドロップダウン矢印を表示している Microsoft Authenticator アプリ](./media/user-help-auth-app-backup-recovery/ios-select-account-to-recover.png)
+
+2. サインインしてアカウントを回復します。 Android デバイスでは、 **[回復するにはサインインする]** を選択します。
+
+    ![Android でサインイン情報を入力できる Microsoft Authenticator アプリ](./media/user-help-auth-app-backup-recovery/backup-and-recovery-sign-in.png)
+
+    iOS デバイスでは、回復するアカウントのタイルをタップし、サインインと回復のオプションをタップします。 次に、パスワードを入力し、追加認証として電子メール アドレスまたは電話番号を確認します。
+
+    ![iOS でサインイン情報を入力できる Microsoft Authenticator アプリ](./media/user-help-auth-app-backup-recovery/ios-sign-in-to-recover.png)
 
 ### <a name="to-provide-additional-verification-for-work-or-school-accounts"></a>職場または学校アカウントに対して追加の検証を提供するには
 
-1. Microsoft Authenticator アプリの **[アカウント]** 画面で、復旧するアカウントの横にあるドロップダウン矢印を選択します。
+1. サインインしてアカウントを回復します。 Android デバイスでは、 **[回復するにはサインインする]** を選択します。
 
-    ![使用可能なアカウントとそれに関連付けられたドロップダウン矢印を表示している Microsoft Authenticator アプリ](./media/user-help-auth-app-backup-recovery/backup-and-recovery-additional-accts.png)
+    ![Android で職場または学校アカウントを回復する Microsoft Authenticator アプリ](./media/user-help-auth-app-backup-recovery/backup-and-recovery-additional-accts.png)
 
-2. **[Scan QR code to recover] (QR コードをスキャンして復旧)** を選択してから、QR コードをスキャンします。
+    iOS デバイスでは、回復したいアカウントをタップして、アカウントの全画面表示を開きます。
 
-    ![QR コードをスキャンできる Microsoft Authenticator アプリ](./media/user-help-auth-app-backup-recovery/backup-and-recovery-scan-qr-code.png)
+    ![iOS で職場または学校アカウントを回復する Microsoft Authenticator アプリ](./media/user-help-auth-app-backup-recovery/ios-recover-work-or-school-account.png)
+
+2. QR コードを使用してアカウントを回復することができます。 **[Scan QR code to recover] (QR コードをスキャンして復旧)** を選択してから、QR コードをスキャンします。
+
+    Android の場合:
+
+    ![Android 上の Microsoft Authenticator アプリ、QR コードのスキャンが可能](./media/user-help-auth-app-backup-recovery/backup-and-recovery-scan-qr-code.png)
+
+    iOS の場合:
+
+    ![iOS 上の Microsoft Authenticator アプリ、QR コードのスキャンが可能](./media/user-help-auth-app-backup-recovery/ios-scan-qr-code.png)
 
     >[!NOTE]
     >QR コードとその取得方法の詳細については、管理者がセキュリティ情報を有効にしたかどうかに基づいて、[Microsoft Authenticator アプリの概要](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install)に関するページまたは [Authenticator アプリを使用するためのセキュリティ情報の設定](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app)に関するページを参照してください。
@@ -108,17 +126,17 @@ Microsoft Authenticator アプリは、アカウント資格情報と、アカ�
 
 バックアップを使用できない理由はいくつかあります。
 
-- **オペレーティング システムの変更。** バックアップは、iOS の場合は iCloud、Android の場合は Microsoft のクラウド ストレージ プロバイダーに保存されます。 つまり、Android デバイスと iOS デバイスを切り替えるとバックアップは利用できなくなります。 切り替える場合は、Microsoft Authenticator アプリ内で手動でアカウントを作成し直す必要があります。
+- **オペレーティング システムの変更**: バックアップは、iOS の場合は iCloud、Android の場合は Microsoft のクラウド ストレージ プロバイダーに保存されます。 つまり、Android デバイスと iOS デバイスを切り替えるとバックアップは利用できなくなります。 切り替える場合は、Microsoft Authenticator アプリ内で手動でアカウントを作成し直す必要があります。
 
-- **ネットワークの問題。** ネットワーク関連の問題が発生している場合は、ネットワークに接続していることと自分のアカウントに正しくサインインしていることを確認してください。
+- **ネットワークの問題**: ネットワーク関連の問題が発生している場合は、ネットワークに接続していることと自分のアカウントに正しくサインインしていることを確認してください。
 
-- **アカウントの問題。** アカウント関連の問題が発生している場合は、自分のアカウントに正しくサインインしていることを確認してください。 iOS の場合、これは、お使いの iPhone と同じ AppleID アカウントを使用して iCloud にサインインする必要があることを意味します。
+- **アカウントの問題**: アカウント関連の問題が発生している場合は、自分のアカウントに正しくサインインしていることを確認してください。 iOS の場合、これは、お使いの iPhone と同じ AppleID アカウントを使用して iCloud にサインインする必要があることを意味します。
 
-- **不注意による削除。** 以前のデバイスから、またはクラウド ストレージ アカウントの管理中にバックアップ アカウントを削除した可能性があります。 このような状況では、アプリ内にアカウントを手動で再作成する必要があります。
+- **不注意による削除**: 以前のデバイスから、またはオンライン ストレージ アカウントの管理中にバックアップ アカウントを削除した可能性があります。 このような状況では、アプリ内にアカウントを手動で再作成する必要があります。
 
-- **既存の Microsoft Authenticator アカウント。** Microsoft Authenticator アプリ内にアカウントを既に設定してある場合、アプリではバックアップしたアカウントを復旧できません。 復旧防止により、アカウントの詳細情報が古い情報で上書きされないことが保証されます。 このような状況では、バックアップを復旧する前に Authenticator アプリで設定した既存のアカウントから既存のアカウント情報を削除する必要があります。
+- **既存の Microsoft Authenticator アカウント**: Microsoft Authenticator アプリ内にアカウントを既に設定してある場合、アプリではバックアップしたアカウントを復旧できません。 復旧防止により、アカウントの詳細情報が古い情報で上書きされないことが保証されます。 このような状況では、バックアップを復旧する前に Authenticator アプリで設定した既存のアカウントから既存のアカウント情報を削除する必要があります。
 
-- **バックアップが最新ではない。** バックアップ情報が古い場合は、Microsoft の回復アカウントに再度サインインすることで、その情報を更新するように求められることがあります。 回復アカウントとは、バックアップを保存するために最初に使用した個人用の Microsoft アカウントです。 サインインが必要な場合は、メニューまたは操作バーに赤いドットが表示されます。 この赤いドットを選択すると、もう一度サインインして情報を更新するように求められます。
+- **バックアップが最新ではない**: バックアップ情報が古い場合は、Microsoft の回復アカウントに再度サインインすることで、その情報を更新するように求められることがあります。 回復アカウントとは、バックアップを保存するために最初に使用した個人用の Microsoft アカウントです。 サインインが必要な場合は、メニューまたは操作バーに赤いドットが表示されるか、バックアップからの回復を完了するためにサインインを求める感嘆符が表示されます。 このアイコンを選択すると、もう一度サインインして情報を更新するように求められます。
 
 ## <a name="next-steps"></a>次のステップ
 

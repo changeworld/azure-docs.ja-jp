@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: 23e04bf651c199364f23bf36f327de94c709d643
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: b7a50a2dabc9503ca5dbdd3388e29cfc69963885
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028576"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252597"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Azure Private Link を使用して Azure Cosmos アカウントに非公開で接続する
 
@@ -25,26 +25,22 @@ Azure プライベート エンドポイントは、Azure におけるプライ�
 
 ## <a name="create-a-vm"></a>VM の作成
 
-### <a name="create-the-virtual-network"></a>仮想ネットワークの作成
+## <a name="virtual-network-and-parameters"></a>仮想ネットワークとパラメーター
 
 このセクションでは、Private Link リソース (この例では、Azure Cosmos アカウント) へのアクセスに使用する VM をホストするために、仮想ネットワークとサブネットを作成します。
 
-1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[仮想ネットワーク]** の順に選択します。
+このセクションの手順では、各パラメーターを次のように置き換える必要があります。
 
-1. **[仮想ネットワークの作成]** に次の情報を入力または選択します。
+| パラメーター                   | Value                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroup|
+| **\<virtual-network-name>** | myVirtualNetwork         |
+| **\<region-name>**          | 米国中西部     |
+| **\<IPv4-address-space>**   | 10.1.0.0\16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0\24          |
 
-    | 設定 | 値 |
-    | ------- | ----- |
-    | Name | 「*MyVirtualNetwork*」と入力します。 |
-    | アドレス空間 | 「*10.1.0.0/16*」を入力します。 |
-    | サブスクリプション | サブスクリプションを選択します。|
-    | Resource group | **[新規作成]** を選択し、「*myResourceGroup*」と入力して、 **[OK]** を選択します。 |
-    | Location | **[WestCentralUS]** を選択します。|
-    | サブネット - 名前 | 「*mySubnet*」と入力します。 |
-    | サブネット アドレス範囲 | 「*10.1.0.0/24*」と入力します。 |
-    |||
-
-1. 残りは既定値のままにして、 **[作成]** を選択します。
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-the-virtual-machine"></a>仮想マシンの作成
 
@@ -52,7 +48,7 @@ Azure プライベート エンドポイントは、Azure におけるプライ�
 
 1. **[仮想マシンの作成 - 基本]** に次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
     | サブスクリプション | サブスクリプションを選択します。 |
@@ -62,7 +58,7 @@ Azure プライベート エンドポイントは、Azure におけるプライ�
     | リージョン | **[WestCentralUS]** を選択します。 |
     | 可用性のオプション | 既定値 **[インフラストラクチャ冗長は必要ありません]** をそのまま使用します。 |
     | Image | **[Windows Server 2019 Datacenter]** を選択します。 |
-    | Size | 既定値 **[Standard DS1 v2]** をそのまま使用します。 |
+    | サイズ | 既定値 **[Standard DS1 v2]** をそのまま使用します。 |
     | **管理者アカウント** |  |
     | ユーザー名 | 任意のユーザー名を入力します。 |
     | Password | 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
@@ -73,13 +69,13 @@ Azure プライベート エンドポイントは、Azure におけるプライ�
     | Windows ライセンスを既にお持ちの場合 | 既定値 **[なし]** のままにします。 |
     |||
 
-1. **[次へ:ディスク]** を選択します。
+1. **ディスク** を選択します。
 
 1. **[仮想マシンの作成 - Disk]** で、既定値のままにし、 **[Next: Networking]\(次へ : ネットワーク\)** を選択します。
 
 1. **[仮想マシンの作成 - ネットワーク]** で次の情報を選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | 仮想ネットワーク | 既定値 **[MyVirtualNetwork]** のままにします。  |
     | アドレス空間 | 既定値 **[10.1.0.0/24]** のままにします。|

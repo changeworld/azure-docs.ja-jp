@@ -1,6 +1,6 @@
 ---
-title: クラスター エラー ディクショナリを作成する
-description: クラスター エラー ディクショナリを作成する方法について説明します。
+title: Azure HDInsight でクラスターを作成する - エラー ディクショナリ
+description: Azure HDInsight クラスターの作成時に発生するエラーのトラブルシューティング方法について説明します
 author: karkrish
 ms.author: v-todmc
 ms.reviewer: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/19/2019
-ms.openlocfilehash: 979e83c0eeaac4555fc5144bca479f0b5656cd28
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: b0dc974185ad616d57327e9cc3743db9ecb20e54
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617537"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302731"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: クラスター作成時のエラー
 
@@ -36,7 +36,7 @@ ms.locfileid: "77617537"
 
 HDInsight サービスから、クラスター作成要求の一部として指定したスクリプト操作 URL にアクセスできません。 サービスでは、スクリプト操作にアクセスしようとすると、上記のエラー メッセージを受け取ります。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 - HTTP または HTTPS URL の場合は、incognito ブラウザー ウィンドウからアクセスを試行して、URL を確認します。
 - WASB URL の場合は、要求で指定したストレージ アカウントにスクリプトが存在することを確認します。 また、このストレージ アカウント用のストレージ キーが正しいことを確認します。
@@ -58,7 +58,7 @@ HDInsight サービスから、クラスター作成要求の一部として指�
 
 HDInsight サービスから、クラスター作成要求の一部として指定したスクリプト操作 URL にアクセスできません。 サービスでは、スクリプト操作にアクセスしようとすると、上記のエラー メッセージを受け取ります。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 対応する Azure Data Lake Storage Gen 1 アカウントをクラスターに追加します。 また、Data Lake Storage Gen 1 アカウントにアクセスするサービス プリンシパルをクラスターに追加します。
 
@@ -74,7 +74,7 @@ HDInsight サービスから、クラスター作成要求の一部として指�
 
 指定した仮想マシンのサイズがロールで許可されていません。 このエラーは、VM サイズの値が予期したとおりに動作しないか、コンピューターのロールに適していないことが原因で発生する可能性があります。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 エラー メッセージには、VM サイズの有効な値が表示されます。 これらの値のいずれかを選択し、クラスター作成要求を再試行してください。
 
@@ -90,7 +90,7 @@ HDInsight サービスから、クラスター作成要求の一部として指�
 
 クラスター作成時に指定した **VirtualNetworkId** の値が正しい形式ではありません。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 **VirtualNetworkId** とサブネットの値が正しい形式であることを確認してください。 **VirtualNetworkId** の値を取得するには、次のようにします。
 
@@ -114,7 +114,7 @@ HDInsight サービスから、クラスター作成要求の一部として指�
 
 クラスター作成要求時に指定したカスタム スクリプトは、クラスターが正常にデプロイされた後に実行されます。 このエラー コードは、\<SCRIPT_NAME\> という名前のカスタム スクリプトの実行中エラーが発生したことを示しています。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 スクリプトはカスタム スクリプトであるため、問題のトラブルシューティングを行い、必要に応じてスクリプトを再実行することをお勧めします。 スクリプト エラーのトラブルシューティングを行うには、/var/lib/ambari-agent/* フォルダー内のログを調べます。 または、Ambari UI の **[操作]** ページを開き、**run_customscriptaction** 操作を選択して、エラーの詳細を表示します。
 
@@ -130,7 +130,7 @@ HDInsight サービスから、クラスター作成要求の一部として指�
 
 カスタム メタストアと選択された HDInsight クラスターのバージョンに互換性がありません。 現在、HDInsight 4.0 クラスターでは Metastore バージョン 3.0 以降のみがサポートされていますが、HDInsight 3.6 クラスターでは Metastore バージョン 3.0 以降はサポートされていません。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 ご利用の HDInsight クラスターのバージョンでサポートされている Metastore のバージョンのみを使用します。 カスタム メタストアを指定しない場合、HDInsight では内部でメタストアが作成され、クラスターの削除時に削除されます。
 
@@ -146,7 +146,7 @@ HDInsight サービスから、クラスター作成要求の一部として指�
 
 ネットワーク セキュリティ グループ (NSG) のファイアウォール規則により、重要な Azure の正常性および管理サービスとのクラスター通信がブロックされています。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 ネットワーク セキュリティ グループを使用してネットワーク トラフィックを制御する予定の場合は、HDInsight をインストールする前に、次の操作を実行します。
 
@@ -167,7 +167,7 @@ HDInsight サービスから、クラスター作成要求の一部として指�
 
 ID の管理に必要なアクセス許可を指定しませんでした。 ユーザー割り当てマネージド ID に、Azure Data Lake Storage Gen2 ストレージ アカウントの Blob Storage 共同作成者ロールがありません。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 1. Azure portal を開きます。
 1. ストレージ アカウントに移動します。
@@ -188,7 +188,7 @@ ID の管理に必要なアクセス許可を指定しませんでした。 ユ�
 
 ネットワーク セキュリティ グループまたはユーザー定義ルート (UDR) で HDInsight クラスターへの受信トラフィックを制御する場合は、クラスターで Azure の重要な正常性および管理サービスと通信できることを確認してください。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 ネットワーク セキュリティ グループを使用してネットワーク トラフィックを制御する予定の場合は、HDInsight をインストールする前に、次の操作を実行します。
 
@@ -208,7 +208,7 @@ ID の管理に必要なアクセス許可を指定しませんでした。 ユ�
 
 通常、このエラーは、一時的な問題または Azure の停止が発生した場合に生成されます。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 [Azure の状態](https://status.azure.com)ページで、クラスターのデプロイに影響する可能性がある Azure の停止を確認してください。 停止が発生していない場合は、クラスターのデプロイを再試行してください。
 

@@ -1,5 +1,6 @@
 ---
-title: 通信セキュリティ - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
+title: Microsoft Threat Modeling Tool の通信セキュリティ
+titleSuffix: Azure
 description: Threat Modeling Tool で公開されている脅威への対応
 services: security
 documentationcenter: na
@@ -15,23 +16,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 54d34a120c575fd01f746131d909058951d1facf
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: b861c54cfffe409946a2b23de4c7ccf2cd85433a
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839248"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269894"
 ---
-# <a name="security-frame-communication-security--mitigations"></a>セキュリティ フレーム: 通信のセキュリティ | 軽減策 
-| 製品/サービス | 記事 |
+# <a name="security-frame-communication-security--mitigations"></a>セキュリティ フレーム:通信のセキュリティ | 軽減策 
+| 製品/サービス | [アーティクル] |
 | --------------- | ------- |
 | **Azure Event Hub** | <ul><li>[SSL/TLS を使用して Event Hub への通信をセキュリティで保護する](#comm-ssltls)</li></ul> |
 | **Dynamics CRM** | <ul><li>[サービス アカウントの権限を確認し、カスタム サービスまたは ASP.NET ページで CRM のセキュリティが考慮されていることをチェックする](#priv-aspnet)</li></ul> |
 | **Azure Data Factory** | <ul><li>[オンプレミス SQL Server を Azure Data Factory に接続しているときはデータ管理ゲートウェイを使用する](#sqlserver-factory)</li></ul> |
 | **Identity Server** | <ul><li>[Identity Server へのすべてのトラフィックで HTTPS 接続が使用されていることを確認する](#identity-https)</li></ul> |
 | **Web アプリケーション** | <ul><li>[SSL、TLS、および DTLS 接続の認証に X.509 証明書が使用されていることを確認する](#x509-ssltls)</li><li>[Azure App Service でカスタム ドメインに対して SSL 証明書を構成する](#ssl-appservice)</li><li>[Azure App Service へのすべてのトラフィックに HTTPS 接続を強制する](#appservice-https)</li><li>[HTTP Strict Transport Security (HSTS) を有効にする](#http-hsts)</li></ul> |
-| **データベース** | <ul><li>[SQL Server 接続の暗号化と証明書の検証を確認する](#sqlserver-validation)</li><li>[SQL サーバーへの通信を強制的に暗号化する](#encrypted-sqlserver)</li></ul> |
-| **Azure Storage** | <ul><li>[Azure Storage への通信が HTTPS 経由であることを確認する](#comm-storage)</li><li>[HTTPS を有効にできない場合は、BLOB のダウンロード後に MD5 ハッシュを検証する](#md5-https)</li><li>[SMB 3.0 対応クライアントを使用して Azure ファイル共有に転送中のデータの暗号化を確認する](#smb-shares)</li></ul> |
+| **[データベース]** | <ul><li>[SQL Server 接続の暗号化と証明書の検証を確認する](#sqlserver-validation)</li><li>[SQL サーバーへの通信を強制的に暗号化する](#encrypted-sqlserver)</li></ul> |
+| **Azure ストレージ** | <ul><li>[Azure Storage への通信が HTTPS 経由であることを確認する](#comm-storage)</li><li>[HTTPS を有効にできない場合は、BLOB のダウンロード後に MD5 ハッシュを検証する](#md5-https)</li><li>[SMB 3.0 対応クライアントを使用して Azure ファイル共有に転送中のデータの暗号化を確認する](#smb-shares)</li></ul> |
 | **モバイル クライアント** | <ul><li>[証明書のピン留めを実装する](#cert-pinning)</li></ul> |
 | **WCF** | <ul><li>[HTTPS - セキュリティで保護されたトランスポート チャネルを有効にする](#https-transport)</li><li>[WCF: メッセージのセキュリティ保護レベルを EncryptAndSign に設定する](#message-protection)</li><li>[WCF: 最小権限のアカウントを使用して WCF サービスを実行する](#least-account-wcf)</li></ul> |
 | **Web API** | <ul><li>[Web API へのすべてのトラフィックに HTTPS 接続を強制する](#webapi-https)</li></ul> |
@@ -44,7 +45,7 @@ ms.locfileid: "73839248"
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Azure Event Hub | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [Event Hubs の認証とセキュリティ モデルの概要](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
@@ -55,7 +56,7 @@ ms.locfileid: "73839248"
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Dynamics CRM | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -66,7 +67,7 @@ ms.locfileid: "73839248"
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Azure Data Factory | 
-| **SDL フェーズ**               | Deployment |  
+| **SDL フェーズ**               | デプロイ |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | リンクされたサービスの種類 - Azure とオンプレミス |
 | **参照**              |[オンプレミスと Azure Data Factory の間でデータを移動する](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway)、[データ管理ゲートウェイ](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
@@ -77,7 +78,7 @@ ms.locfileid: "73839248"
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Identity Server | 
-| **SDL フェーズ**               | Deployment |  
+| **SDL フェーズ**               | デプロイ |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [IdentityServer3 - キー、署名、および暗号化](https://identityserver.github.io/Documentation/docsv2/configuration/crypto.html)、[IdentityServer3 - デプロイ](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) |
@@ -87,8 +88,8 @@ ms.locfileid: "73839248"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -98,8 +99,8 @@ ms.locfileid: "73839248"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | EnvironmentType - Azure |
 | **参照**              | [アプリに対する HTTPS を Azure App Service で有効にする](../../app-service/configure-ssl-bindings.md) |
@@ -109,8 +110,8 @@ ms.locfileid: "73839248"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | EnvironmentType - Azure |
 | **参照**              | [Azure App Service に HTTPS を適用する](../../app-service/configure-ssl-bindings.md#enforce-https) |
@@ -142,8 +143,8 @@ ms.locfileid: "73839248"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [OWASP HTTP Strict Transport Security チート シートを有効にする](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) |
@@ -153,8 +154,8 @@ ms.locfileid: "73839248"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Database | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | データベース | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | SQL Azure  |
 | **属性**              | SQL バージョン - V12 |
 | **参照**              | [SQL Database 用のセキュリティで保護された接続文字列の書き込みに関するベスト プラクティス](https://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) |
@@ -164,11 +165,11 @@ ms.locfileid: "73839248"
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Database | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | データベース | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | OnPrem |
 | **属性**              | SQL バージョン - MsSQL2016、SQL バージョン - MsSQL2012、SQL バージョン - MsSQL2014 |
-| **参照**              | [データベース エンジンへの暗号化された接続を有効にする](https://msdn.microsoft.com/library/ms191192)  |
+| **参照**              | [データベース エンジンへの暗号化接続の有効化](https://msdn.microsoft.com/library/ms191192)  |
 | **手順** | SSL 暗号化を有効にすると、SQL Server のインスタンスとアプリケーションの間で行われるネットワーク経由データ転送のセキュリティが向上します。 |
 
 ## <a id="comm-storage"></a>Azure Storage への通信が HTTPS 経由であることを確認する
@@ -176,7 +177,7 @@ ms.locfileid: "73839248"
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Azure Storage | 
-| **SDL フェーズ**               | Deployment |  
+| **SDL フェーズ**               | デプロイ |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [Azure Storage トランスポート レベルの暗号化 - HTTPS の使用](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_encryption-in-transit) |
@@ -187,7 +188,7 @@ ms.locfileid: "73839248"
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Azure Storage | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | StorageType - BLOB |
 | **参照**              | [Windows Azure BLOB MD5 の概要](https://blogs.msdn.microsoft.com/windowsazurestorage/2011/02/17/windows-azure-blob-md5-overview/) |
@@ -198,7 +199,7 @@ ms.locfileid: "73839248"
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | モバイル クライアント | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | StorageType - ファイル |
 | **参照**              | [Azure File Storage](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/#comment-2529238931)、[Windows クライアントでの Azure File Storage SMB のサポート](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files/#_mount-the-file-share) |
@@ -209,7 +210,7 @@ ms.locfileid: "73839248"
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Azure Storage | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック、Windows Phone |
 | **属性**              | 該当なし  |
 | **参照**              | [証明書と公開キーのピン留め](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning#.Net) |
@@ -286,7 +287,7 @@ namespace CertificatePinningExample
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | WCF | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | NET Framework 3 |
 | **属性**              | 該当なし  |
 | **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_transport_security_enabled) |
@@ -297,7 +298,7 @@ namespace CertificatePinningExample
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | WCF | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | .NET Framework 3 |
 | **属性**              | 該当なし  |
 | **参照**              | [MSDN](https://msdn.microsoft.com/library/ff650862.aspx) |
@@ -326,7 +327,7 @@ string GetData(int value);
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | WCF | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | .NET Framework 3 |
 | **属性**              | 該当なし  |
 | **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648826.aspx ) |
@@ -337,7 +338,7 @@ string GetData(int value);
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Web API | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | MVC5、MVC6 |
 | **属性**              | 該当なし  |
 | **参照**              | [Web API コント ローラーでの SSL の適用](https://www.asp.net/web-api/overview/security/working-with-ssl-in-web-api) |
@@ -378,7 +379,7 @@ public class ValuesController : ApiController
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Azure Cache for Redis | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [Azure Redis SSL サポート](https://azure.microsoft.com/documentation/articles/cache-faq/#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis) |
@@ -391,7 +392,7 @@ Redis は、信頼された環境の信頼されたクライアントによっ�
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | IoT フィールド ゲートウェイ | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -402,7 +403,7 @@ Redis は、信頼された環境の信頼されたクライアントによっ�
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | IoT クラウド ゲートウェイ | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [通信プロトコルの選択](https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#messaging) |

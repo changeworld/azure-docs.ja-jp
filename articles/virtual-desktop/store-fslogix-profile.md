@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: fb473ec55ec6a5e93ba4ad22bf500414d54e4a5d
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 165e87b47deca2b7f175ec07b5c615ac25db0dd2
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367208"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251744"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Windows Virtual Desktop の FSLogix プロファイル コンテナーのストレージ オプション
 
@@ -24,8 +24,9 @@ Windows Virtual Desktop では、推奨されるユーザー プロファイル 
 
 ## <a name="azure-platform-details"></a>Azure プラットフォームの詳細
 
-|[機能]|Azure Files|Azure NetApp Files|記憶域スペース ダイレクト|
+|機能|Azure Files|Azure NetApp Files|記憶域スペース ダイレクト|
 |--------|-----------|------------------|---------------------|
+|使用事例|汎用|オンプレミスの NetApp からの Ultra パフォーマンスまたは移行|クロス プラットフォーム|
 |プラットフォーム サービス|はい。Azure ネイティブ ソリューションです。|はい。Azure ネイティブ ソリューションです。|いいえ。自己管理型です。|
 |リージョン別の提供状況|すべてのリージョン|[リージョンの選択](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|すべてのリージョン|
 |冗長性|ローカル冗長/ゾーン冗長/geo 冗長|ローカル冗長|ローカル冗長/ゾーン冗長/geo 冗長|
@@ -36,12 +37,12 @@ Windows Virtual Desktop では、推奨されるユーザー プロファイル 
 
 ## <a name="azure-management-details"></a>Azure 管理の詳細
 
-|[機能]|Azure Files|Azure NetApp Files|記憶域スペース ダイレクト|
+|機能|Azure Files|Azure NetApp Files|記憶域スペース ダイレクト|
 |--------|-----------|------------------|---------------------|
 |アクセス|クラウド、オンプレミス、ハイブリッド (Azure ファイル同期)|クラウド、オンプレミス (ExpressRoute 経由)|クラウド、オンプレミス|
 |バックアップ|Azure Backup スナップショット統合|Azure NetApp Files スナップショット|Azure Backup スナップショット統合|
 |セキュリティとコンプライアンス|[Azure でサポートされているあらゆる証明書](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|ISO 完了|[Azure でサポートされているあらゆる証明書](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
-|Azure Active Directory の統合|Azure Active Directory と Azure Active Directory Domain Services|[Azure Active Directory Domain Services と Native Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Native Active Directory または Azure Active Directory Domain Services サポートのみ|
+|Azure Active Directory の統合|[Native Active Directory と Azure Active Directory Domain Services](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview)|[Azure Active Directory Domain Services と Native Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Native Active Directory または Azure Active Directory Domain Services サポートのみ|
 
 ストレージ方法を選択したら、「[Windows Virtual Desktop の価格](https://azure.microsoft.com/pricing/details/virtual-desktop/)」で Microsoft の価格設定に関する情報をご覧ください。
 

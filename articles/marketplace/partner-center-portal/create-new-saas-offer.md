@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/22/2020
-ms.openlocfilehash: 4cac2fcd16f779a6b31e36ca175801eedaa31d5d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.date: 02/28/2020
+ms.openlocfilehash: 9d06b34b459bf1d48aa293a889af57fb6192015d
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705821"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208867"
 ---
 # <a name="create-a-new-saas-offer"></a>新しい SaaS オファーを作成する
 
@@ -44,7 +44,7 @@ ms.locfileid: "76705821"
 
 <br>例:Test Offer 1&#8482;
 
-**作成** を選択します。  このオファーのために、 **[オファーの概要]** ページが作成されます。  
+**［作成］** を選択します  このオファーのために、 **[オファーの概要]** ページが作成されます。  
 
 <!---
 ![Offer overview on Partner Center](./media/commercial-marketplace-offer-overview.png)
@@ -134,16 +134,7 @@ SaaS オファーでは、定額料金、ユーザー単位、または従量制
 
 体験版を有効にすると、一定の期間顧客がオファーを試すことができるデモ環境を構成するよう求められます。 
 
-### <a name="type-of-test-drive"></a>体験版の種類
-
-- **[Azure Resource Manager](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)** : お客様のソリューションを構成しているすべての Azure リソースが含まれたデプロイ テンプレート。 このシナリオに適合するのは、Azure リソースしか使用されていない製品です。
-- **[Dynamics 365 for Business Central](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)** : Microsoft が Business Central エンタープライズ リソース プランニング システム (財務、運用、サプライ チェーン、CRM など) 用の体験版サービスをホストおよび維持します。ここには、プロビジョニングとデプロイも含まれます。  
-- **[Dynamics 365 for Customer Engagement](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer)** : Microsoft が Customer Engagement システム (販売、サービス、プロジェクト サービス、フィールド サービスなど) 用の体験版サービスをホストおよび維持します。ここには、プロビジョニングとデプロイも含まれます。  
-- **[Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer)** : Microsoft が Finance and Operations エンタープライズ リソース プランニング システム (財務、運用、製造、サプライ チェーンなど) 用の体験版サービスをホストおよび維持します。ここには、プロビジョニングとデプロイも含まれます。 
-- **[ロジック アプリ](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)** : あらゆる複雑なソリューション アーキテクチャに対応するデプロイ テンプレート。 すべてのカスタム製品には、この種類の体験版を使用する必要があります。
-- **[Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview)** : カスタムビルドされたダッシュボードへの埋め込みリンク。 インタラクティブな Power BI の視覚化のデモンストレーションを行う製品には、この種類の体験版を使用する必要があります。 ここで必要なことは、埋め込み Power BI の URL をアップロードすることだけです。
-
-#### <a name="additional-test-drive-resources"></a>体験版に関するその他のリソース
+#### <a name="test-drive-resources"></a>体験版リソース
 - [体験版の技術的なベスト プラクティス](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [体験版のマーケティングのベスト プラクティス](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
 - [1 ページにまとめた体験版の概要](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
@@ -234,7 +225,7 @@ Standard Contract Amendments (標準契約の修正) を使用すると、発行
 - **名前** (必須): ここで定義した名前は、お客様が選択したマーケットプレース上でオファーのリスト登録のタイトルとして表示されます。 名前は、前の **[新しいオファー]** のエントリに基づいて事前入力されます。 この名前は商標登録されている場合があります。 これは、絵文字 (商標および著作権マークの場合を除く) を含むことができず、50 文字以下にする必要があります。
 - **概要** (必須): マーケットプレースのリスト登録の検索結果で使用される、お客様のオファーの簡単な説明を入力します。 このフィールドには、最大で 100 文字のテキストを入力できます。
 - **説明** (必須): マーケットプレースのリスト登録の概要で表示される、お客様のオファーの説明を入力します。 価値提案、主なメリット、カテゴリまたは業界との関連性、アプリ内の購入機会、必要な情報開示、詳細情報へのリンクを含めることを検討してください。
-このフィールドには、最大で 3,000 文字のテキストを入力できます。 その他のヒントについては、記事「[Write a great app description (アプリの優れた説明を書く)](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)」を参照してください。
+このフィールドには、マークアップを含めて最大で 3,000 文字のテキストを入力できます。 その他のヒントについては、記事「[Write a great app description (アプリの優れた説明を書く)](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)」を参照してください。
 - **検索キーワード**: マーケットプレースで顧客がお客様のオファーを見つけるために使用できる検索キーワードを最大 3 つ入力します。
 - **作業を開始するための手順** (必須): お客様のアプリを構成して使用を開始する方法を潜在顧客に対して説明します。  このクイック スタートには、より詳細なオンライン ドキュメントへのリンクを含めることができます。 このフィールドには、最大で 3,000 文字のテキストを入力できます。
 
@@ -290,7 +281,7 @@ Standard Contract Amendments (標準契約の修正) を使用すると、発行
 #### <a name="files-and-images"></a>ファイルと画像
 
 - **ドキュメント** (必須):　お客様のオファーに関するマーケティング ドキュメント (PDF 形式) を追加します。オファーごとに少なくとも 1 つ、最大で 3 つのドキュメントを指定します。
-- **画像** (省略可能): オファーのロゴ画像はマーケットプレース全体のさまざまな場所に表示される可能性があるため、以下のサイズが必要になります。小: 48 x 48 ピクセル _(必須)、_ 中: 90 x 90 ピクセル、大: 216 x 216 ピクセル _(必須)、_ ワイド: 255 x 115 ピクセル、およびヒーロー: 815 x 290 ピクセル。 すべての画像は .PNG 形式である必要があります。
+- **画像** (省略可能): オファーのロゴ画像はマーケットプレース全体のさまざまな場所に表示される可能性があるため、以下のサイズが必要になります。小: 48 x 48 ピクセル _(必須)、_ 中: 90 x 90 ピクセル " _(必須)_ "、大: 216 x 216 ピクセル _(必須)、_ ワイド:255 x 115 ピクセル、およびヒーロー: 815 x 290 ピクセル。 すべての画像は .PNG 形式である必要があります。
 - **スクリーンショット** (必須): お客様のオファーについて説明しているスクリーンショットを追加します。 最大 5 つのスクリーンショットを追加できます。サイズは 1,280 x 720 ピクセルにする必要があります。 すべての画像は .PNG 形式である必要があります。
 - **ビデオ** (省略可能): お客様のオファーについて説明しているビデオへのリンクを追加します。 顧客へのオファーと共に表示される YouTube や Vimeo のビデオへのリンクを使用できます。 また、ビデオのサムネイル画像を入力する必要があります。PNG 形式で、サイズは 1,280 x 720 ピクセルにします。 オファーごとに最大 4 つのビデオを表示できます。
 

@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f1656d730d55d4c5ab7fb963e49a8057ad88c9f
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 80f8d66795971c6a5c84be7088387e63d7acd7a7
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185534"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248682"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシでカスタム ドメインを構成する
 
@@ -130,9 +130,9 @@ Azure Active Directory アプリケーション プロキシ経由でアプリ�
 
 ワイルドカード証明書は、そのワイルドカードが外部 URL に一致する限り使用できます。 [ワイルドカード アプリケーション](application-proxy-wildcard.md)にはワイルドカード証明書を使用する必要があります。 証明書を使用してサブドメインにもアクセスする場合は、同じ証明書内にサブジェクトの別名としてサブドメイン ワイルドカードを追加する必要があります。 たとえば、サブジェクトの別名として *\*.apps.adventure-works.com* を追加しない限り、 *\*.adventure-works.com* の証明書は *\*.apps.adventure-works.com* に対して機能しません。 
 
-クライアント デバイスに証明書チェーンがインストールされている場合は、独自の公開キー インフラストラクチャ (PKI) によって発行された証明書を使用できます。 Intune は、これらの証明書をマネージド デバイスにデプロイできます。 マネージド デバイス以外の場合は、これらの証明書を手動でインストールする必要があります。
+クライアント デバイスに証明書チェーンがインストールされている場合は、独自の公開キー インフラストラクチャ (PKI) によって発行された証明書を使用できます。 Intune は、これらの証明書をマネージド デバイスにデプロイできます。 マネージド デバイス以外の場合は、これらの証明書を手動でインストールする必要があります。 
 
-プライベート ルート CA は使用しないことをお勧めします。 プライベート ルート CA はクライアント コンピューターにプッシュする必要もあり、これによって多くの課題が発生します。 
+プライベート ルート CA はクライアント コンピューターにプッシュする必要もあるため、プライベート ルート CA を使用することはお勧めしません。これにより、多くの問題が生じる可能性があります。
 
 ### <a name="certificate-management"></a>証明書の管理
 

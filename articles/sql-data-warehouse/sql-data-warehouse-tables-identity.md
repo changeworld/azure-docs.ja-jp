@@ -1,6 +1,6 @@
 ---
 title: IDENTITY を使用して代理キーを作成する
-description: IDENTITY プロパティを使用して Azure SQL Data Warehouse のテーブルに代理キーを作成する場合の推奨事項と例。
+description: IDENTITY プロパティを使用して SQL Analytics のテーブルに代理キーを作成する場合の推奨事項と例。
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,25 +10,25 @@ ms.subservice: development
 ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 0ee15b975b5513077b26cceeb80ea3fb8c02456b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: c29b83b3473b8a4224587195587feacf834f2d72
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692475"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199429"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse で IDENTITY を使用して代理キーを作成する
+# <a name="using-identity-to-create-surrogate-keys-in-sql-analytics"></a>SQL Analytics で IDENTITY を使用して代理キーを作成する
 
-IDENTITY プロパティを使用して Azure SQL Data Warehouse のテーブルに代理キーを作成する場合の推奨事項と例。
+IDENTITY プロパティを使用して SQL Analytics のテーブルに代理キーを作成する場合の推奨事項と例。
 
 ## <a name="what-is-a-surrogate-key"></a>代理キーとは
 
-テーブルの代理キーは、各行の一意の識別子を持つ列です。 代理キーはテーブル データからは生成されません。 データ モデラーは、データ ウェアハウス モデルを設計するときに、テーブルに代理キーを作成するのを好みます。 IDENTITY プロパティを使うと、この目的を簡単かつ効果的に達成でき、読み込みのパフォーマンスが影響を受けることもありません。  
+テーブルの代理キーは、各行の一意の識別子を持つ列です。 代理キーはテーブル データからは生成されません。 データ モデラーは、SQL Analytics モデルを設計するときに、テーブルに代理キーを作成するのを好みます。 IDENTITY プロパティを使うと、この目的を簡単かつ効果的に達成でき、読み込みのパフォーマンスが影響を受けることもありません。  
 
 ## <a name="creating-a-table-with-an-identity-column"></a>IDENTITY 列があるテーブルを作成する
 
-IDENTITY プロパティは、読み込みパフォーマンスに影響を与えずに、データ ウェアハウス内のすべてのディストリビューションにスケールアウトするように設計されています。 そのため、IDENTITY の実装はこれらの目標を達成するようになっています。
+IDENTITY プロパティは、読み込みパフォーマンスに影響を与えずに、SQL Analytics データベース内のすべてのディストリビューションにスケールアウトするように設計されています。 そのため、IDENTITY の実装はこれらの目標を達成するようになっています。
 
 次のステートメントのような構文を使って、テーブルを最初に作成するときに、IDENTITY プロパティを持つようにテーブルを定義できます。
 
@@ -50,7 +50,7 @@ WITH
 
 ### <a name="allocation-of-values"></a>値の割り当て
 
-IDENTITY プロパティは、代理値が割り当てられる順序を保証しません。順序は、SQL Server と Azure SQL Database の動作を反映します。 ただし、Azure SQL Data Warehouse では保証のなさがいっそう顕著です。
+IDENTITY プロパティは、代理値が割り当てられる順序を保証しません。順序は、SQL Server と Azure SQL Database の動作を反映します。 ただし、SQL Analytics では、保証が存在しないことがより顕著になります。
 
 次にその例を示します。
 
@@ -87,12 +87,12 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 
 既存の IDENTITY 列を選択して新しいテーブルにすると、次のいずれかの条件が満たされている場合を除き、新しい列は IDENTITY プロパティを継承します。
 
-- SELECT ステートメントに結合が含まれる。
-- 複数の SELECT ステートメントが UNION を使って結合されている。
+- SELECT ステートメントに結合が含まれています。
+- 複数の SELECT ステートメントが UNION を使用して結合されている。
 - IDENTITY 列が SELECT リストに複数回出現する。
 - IDENTITY 列が式の一部である。
 
-これらの条件のいずれかが当てはまる場合、列は IDENTITY プロパティを継承する代わりに NOT NULL で作成されます。
+これらの条件が 1 つでも満たされている場合は、列に IDENTITY プロパティは継承されず、代わりに NOT NULL として作成されます。
 
 ### <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
@@ -100,7 +100,7 @@ CREATE TABLE AS SELECT (CTAS) は、SELECT..INTO と同じ SQL Server 動作に�
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>IDENTITY 列に値を明示的に挿入する
 
-SQL Data Warehouse は、`SET IDENTITY_INSERT <your table> ON|OFF` 構文をサポートしています。 この構文を使って、IDENTITY 列に値を明示的に挿入できます。
+SQL Analytics では `SET IDENTITY_INSERT <your table> ON|OFF` 構文がサポートされています。 この構文を使って、IDENTITY 列に値を明示的に挿入できます。
 
 多くのデータ モデラーは、ディメンションの特定の行に定義済みの負の値を使うことを好みます。 たとえば、-1 や "unknown member" 行です。
 
@@ -161,7 +161,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > 現在は、IDENTITY 列のあるテーブルへのデータの読み込みに、`CREATE TABLE AS SELECT` を使うことはできません。
 >
 
-データの読み込みの詳細については、「[Azure SQL Data Warehouse 用の抽出、読み込み、変換 (ELT) の設計](design-elt-data-loading.md)」と[読み込みのベスト プラクティス](guidance-for-loading-data.md)に関するページを参照してください。
+データの読み込みの詳細については、[SQL Analytics 向けの抽出、読み込み、変換 (ELT) の設計](design-elt-data-loading.md)と[読み込みのベスト プラクティス](guidance-for-loading-data.md)に関するページを参照してください。
 
 ## <a name="system-views"></a>システム ビュー
 
@@ -195,7 +195,7 @@ AND     tb.name = 'T1'
 - 列が分散キーでもある場合
 - テーブルが外部テーブルである場合
 
-次の関連する関数は、SQL Data Warehouse ではサポートされません。
+次の関連する関数は、SQL Analytics ではサポートされません。
 
 - [IDENTITY()](/sql/t-sql/functions/identity-function-transact-sql)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql)
@@ -239,7 +239,7 @@ AND     tb.name = 'T1'
 ;
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [テーブルの概要](/azure/sql-data-warehouse/sql-data-warehouse-tables-overview)
 - [CREATE TABLE (Transact-SQL) IDENTITY (プロパティ)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)

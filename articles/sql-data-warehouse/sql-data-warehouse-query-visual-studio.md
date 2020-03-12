@@ -1,6 +1,6 @@
 ---
 title: VSTS を使用して接続する
-description: Visual Studio を使用して Azure SQL Data Warehouse にクエリを実行します。
+description: Visual Studio を使用して Azure Synapse Analytics に対してクエリを実行します。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 08/15/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e2d37b2d71f605077903197d25b5da2803e34ad3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 88dc534b8753311e49cafa9f84705258cdb0883d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685576"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198628"
 ---
-# <a name="connect-to-sql-data-warehouse-with-visual-studio-and-ssdt"></a>Visual Studio および SSDT を使用して SQL Data Warehouse に接続する
+# <a name="connect-to-azure-synapse-analytics-with-visual-studio-and-ssdt"></a>Visual Studio と SSDT を使用して Azure Synapse Analytics に接続する
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
@@ -28,34 +28,34 @@ ms.locfileid: "73685576"
 > 
 > 
 
-Visual Studio を使用して、わずか数分で Azure SQL Data Warehouse に対するクエリを実行します。 この方法では、Visual Studio 2019 の SQL Server Data Tools (SSDT) 拡張機能が使用されます。 
+Visual Studio を使用して、わずか数分で Azure Synapse 内の SQL プールに対してクエリを実行します。 この方法では、Visual Studio 2019 の SQL Server Data Tools (SSDT) 拡張機能が使用されます。 
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを使用するには、次のものが必要です。
 
-* 既存の SQL データ ウェアハウス。 その作成方法については、 [SQL Data Warehouse の作成][Create a SQL Data Warehouse]に関するページを参照してください。
-* Visual Studio 用の SSDT。 Visual Studio をお持ちの方は既に SSDT を所有していると思われます。 インストールの手順とオプションの詳細については、 [Visual Studio と SSDT のインストール][Installing Visual Studio and SSDT]に関するページを参照してください。
-* 完全修飾 SQL サーバー名。 これを特定するには、 [SQL Data Warehouse への接続][Connect to SQL Data Warehouse]に関するページを参照してください。
+* 既存の SQL プール。 作成するには、[SQL プールの作成](sql-data-warehouse-get-started-provision.md)に関する記事を参照してください。
+* Visual Studio 用の SSDT。 Visual Studio を使用している場合は、既に Visual Studio 用の SSDT を持っている可能性があります。 インストールの手順とオプションの詳細については、 [Visual Studio と SSDT のインストール](sql-data-warehouse-install-visual-studio.md)に関するページを参照してください。
+* 完全修飾 SQL サーバー名。 この情報については、[SQL プールへの接続](sql-data-warehouse-connect-overview.md)に関する記事を参照してください。
 
-## <a name="1-connect-to-your-sql-data-warehouse"></a>1.SQL Data Warehouse への接続
+## <a name="1-connect-to-your-sql-pool"></a>1.SQL プールに接続する
 1. Visual Studio 2019 を開きます。
-2. SQL Server オブジェクト エクスプローラーを開きます。 これを行うには、 **[表示]**  >  **[SQL Server オブジェクト エクスプローラー]** の順に選択します。
+2. **[表示]**  >  **[SQL Server オブジェクト エクスプローラー]** を選択して SQL Server オブジェクト エクスプローラーを開きます。
    
-    ![[SQL Server オブジェクト エクスプローラー]][1]
+    ![[SQL Server オブジェクト エクスプローラー]](media/sql-data-warehouse-query-visual-studio/open-ssdt.png)
 3. **[SQL Server の追加]** アイコンをクリックします。
    
-    ![[SQL Server の追加]][2]
+    ![[SQL Server の追加]](media/sql-data-warehouse-query-visual-studio/add-server.png)
 4. [サーバーへの接続] ウィンドウのフィールドに入力します。
    
-    ![[サーバーへの接続]][3]
+    ![[サーバーへの接続]](media/sql-data-warehouse-query-visual-studio/connection-dialog.png)
    
    * **[サーバー名]** : 前の手順で特定した**サーバー名**を入力します。
    * **[認証]** : **[SQL Server 認証]** または **[Active Directory 統合認証]** を選択します。
    * **[ユーザー名]** と **[パスワード]** : 先ほど [SQL Server 認証] を選択した場合は、ユーザー名とパスワードを入力します。
-   * **[接続]** をクリックします。
+   * **[Connect]** をクリックします。
 5. 確認のために、Azure SQL Server を展開します。 サーバーに関連付けられているデータベースが表示されます。 AdventureWorksDW を展開すると、サンプル データベース内のテーブルが表示されます。
    
-    ![Explore AdventureWorksDW][4]
+    ![Explore AdventureWorksDW](media/sql-data-warehouse-query-visual-studio/explore-sample.png)
 
 ## <a name="2-run-a-sample-query"></a>2.サンプル クエリの実行
 これで、データベースへの接続が確立されました。次はクエリを記述してみましょう。
@@ -63,40 +63,20 @@ Visual Studio を使用して、わずか数分で Azure SQL Data Warehouse に�
 1. SQL Server オブジェクト エクスプローラーでデータベースを右クリックします。
 2. **[新しいクエリ]** を選択します。 新しいクエリ ウィンドウが開きます。
    
-    ![[新しいクエリ]][5]
-3. 次の TSQL クエリをクエリ ウィンドウにコピーします。
+    ![[新しいクエリ]](media/sql-data-warehouse-query-visual-studio/new-query2.png)
+3. 次の T-SQL クエリをクエリ ウィンドウにコピーします。
    
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. クエリを実行します。 そのためには、緑色の矢印をクリックするか、 `CTRL`+`SHIFT`+`E`のショートカット キーを使用します。
+4. 緑色の矢印をクリックしてクエリを実行するか、ショートカット キー `CTRL`+`SHIFT`+`E` を使用します。
    
-    ![Run query][6]
+    ![Run query](media/sql-data-warehouse-query-visual-studio/run-query.png)
 5. クエリ結果を確認します。 この例では、FactInternetSales テーブルに 60,398 行が含まれています。
    
-    ![Query results][7]
+    ![Query results](media/sql-data-warehouse-query-visual-studio/query-results.png)
 
-## <a name="next-steps"></a>次の手順
-これで接続してクエリを実行することができます。[Power BI でデータを視覚化][visualizing the data with PowerBI]してみてください。
+## <a name="next-steps"></a>次のステップ
+これで接続してクエリを実行することができます。[Power BI でデータを視覚化](sql-data-warehouse-get-started-visualize-with-power-bi.md)してみてください。
 
-Azure Active Directory 認証を使用するために環境を構成する方法については、 [SQL Data Warehouse の認証][Authenticate to SQL Data Warehouse]に関するページを参照してください。
-
-<!--Arcticles-->
-[Connect to SQL Data Warehouse]: sql-data-warehouse-connect-overview.md
-[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
-[Installing Visual Studio and SSDT]: sql-data-warehouse-install-visual-studio.md
-[Authenticate to SQL Data Warehouse]: sql-data-warehouse-authentication.md
-[visualizing the data with PowerBI]: sql-data-warehouse-get-started-visualize-with-power-bi.md  
-
-<!--Other-->
-[Azure portal]: https://portal.azure.com
-
-<!--Image references-->
-
-[1]: media/sql-data-warehouse-query-visual-studio/open-ssdt.png
-[2]: media/sql-data-warehouse-query-visual-studio/add-server.png
-[3]: media/sql-data-warehouse-query-visual-studio/connection-dialog.png
-[4]: media/sql-data-warehouse-query-visual-studio/explore-sample.png
-[5]: media/sql-data-warehouse-query-visual-studio/new-query2.png
-[6]: media/sql-data-warehouse-query-visual-studio/run-query.png
-[7]: media/sql-data-warehouse-query-visual-studio/query-results.png
+Azure Active Directory 認証を使用するために環境を構成する方法については、[SQL プールの認証](sql-data-warehouse-authentication.md)に関するページを参照してください。

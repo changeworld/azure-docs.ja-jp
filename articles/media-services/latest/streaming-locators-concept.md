@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/26/2019
+ms.date: 03/04/2020
 ms.author: juliako
-ms.openlocfilehash: 1cc0132cc17217c858060e107dfcfc090a3ef8a7
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 3a9568e1a0307cd1713c511ef42c065424306548
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611000"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302884"
 ---
 # <a name="streaming-locators"></a>ストリーミング ロケーター
 
@@ -90,7 +90,7 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 
 関連するアセット名に基づくストリーミング ロケーターを取得するには、次の操作を使用します。
 
-|言語|API|
+|Language|API|
 |---|---|
 |REST|[liststreaminglocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators)|
 |CLI|[az ams asset list-streaming-locators](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
@@ -98,12 +98,13 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 |Java|[AssetStreamingLocator](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
 |Node.js|[listStreamingLocators](https://docs.microsoft.com/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
 
-## <a name="also-see"></a>関連トピック
+## <a name="see-also"></a>関連項目
 
 * [アセット](assets-concept.md)
 * [ストリーミング ポリシー](streaming-policy-concept.md)
 * [コンテンツ キー ポリシー](content-key-policy-concept.md)
+* [チュートリアル:.NET を使用してビデオをアップロード、エンコード、ストリーム配信する](stream-files-tutorial-with-api.md)
 
 ## <a name="next-steps"></a>次のステップ
 
-[チュートリアル:.NET を使用してビデオをアップロード、エンコード、ストリーム配信する](stream-files-tutorial-with-api.md)
+[ストリーミング ロケーターを作成して URL を構築する方法](create-streaming-locator-build-url.md)

@@ -5,15 +5,15 @@ author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/22/2020
+ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e1323467db875968f45557c6a7c0afdfee5e4221
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: ca8d0daf5b6d9bbad0d8fa24b4b150c5e6cd6b73
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589670"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300912"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database"></a>Azure SQL Database 用の Azure セキュリティ ベースライン
 
@@ -124,10 +124,7 @@ https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
 **ガイダンス**: Advanced Threat Protection (ATP) for Azure SQL Database を有効にします。  不審なデータベース アクティビティ、潜在的な脆弱性、SQL インジェクション攻撃や、異常なデータベース アクセスやクエリのパターンが見つかった場合に、ユーザーはアラートを受信します。 Advanced Threat Protection ではまた、アラートが Azure Security Center とも統合されます。
 
-
-Advanced Threat Protection for Azure SQL Database とその使用方法の概要:
-
-https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
+Advanced Threat Protection for Azure SQL Database の概要とその使用方法: https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
 
 **Azure Security Center の監視**: はい
 
@@ -164,11 +161,14 @@ https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9:ネットワーク デバイスの標準的なセキュリティ構成を維持する
 
-**ガイダンス**: Azure Policy を使用して Azure SQL Database サーバー インスタンスのネットワーク セキュリティ構成を定義して実装します。 "Microsoft.Sql" 名前空間を使用してカスタム ポリシー定義を定義するか、または Azure SQL Database サーバーのネットワーク保護のために設計されたいずれかの組み込みのポリシー定義を使用できます。 Azure SQL Database サーバーに適用できる組み込みのネットワーク セキュリティ ポリシーの例を次に示します。"SQL Server は仮想ネットワーク サービス エンドポイントを使用する必要がある"
+**ガイダンス**: Azure Policy を使用して Azure SQL Database サーバー インスタンスのネットワーク セキュリティ構成を定義して実装します。 "Microsoft.Sql" 名前空間を使用してカスタム ポリシー定義を定義するか、または Azure SQL Database サーバーのネットワーク保護のために設計されたいずれかの組み込みのポリシー定義を使用できます。 Azure SQL Database サーバーに適用できる組み込みのネットワーク セキュリティ ポリシーの例を次に示します。"SQL Server は仮想ネットワーク サービス エンドポイントを使用する必要がある"。
+ 
 
 Azure Resource Management テンプレート、ロールベースのアクセス制御 (RBAC)、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することによって大規模な Azure デプロイを簡略化するには、Azure Blueprints を使用します。 ブループリントを新しいサブスクリプションと環境に容易に適用し、バージョン管理によって制御と管理を微調整します。
 
+
 Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 Azure Blueprint を作成する方法: https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
@@ -251,7 +251,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-metrics-diag-logging
 
 診断を Azure SQL Analytics にストリーミングする方法:
 
-https://docs.microsoft.com/azure/sql-database/sql-database-metrics-diag-logging#stream-into-azure-sql-analytics
+https://docs.microsoft.com/azure/sql-database/sql-database-metrics-diag-logging#stream-diagnostic-telemetry-into-sql-analytics
 
 **Azure Security Center の監視**: はい
 
@@ -457,13 +457,27 @@ https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getst
 
 **ガイダンス**: 環境内で疑わしいアクティビティまたは安全でないアクティビティが環境で発生したときに、Azure Active Directory セキュリティ レポートを使用して、ログおよびアラートを生成します。
 
+
+
 データベースへのアクセスや悪用のための異常で、かつ有害なおそれのある試みを示す異常なアクティビティを検出するには、Advanced Threat Protection for Azure SQL Database を使用します。
 
-危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk
 
-Azure Security Center でユーザーの ID とアクセス アクティビティを監視する方法: https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-Advanced Threat Protection および潜在的なアラートを確認する: https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview#advanced-threat-protection-alerts
+危険なアクティビティのフラグが設定された Azure AD ユーザーを特定する方法:
+
+https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk
+
+
+
+Azure Security Center でユーザーの ID およびアクセス アクティビティを監視する方法:
+
+https://docs.microsoft.com/azure/security-center/security-center-identity-access
+
+
+
+Advanced Threat Protection および潜在的なアラートを確認する:
+
+https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview#advanced-threat-protection-alerts
 
 
 **Azure Security Center の監視**: はい
@@ -473,6 +487,7 @@ Advanced Threat Protection および潜在的なアラートを確認する: htt
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8:承認された場所からのみ Azure リソースを管理する
 
 **ガイダンス**: ポータルや Azure Resource Management での IP アドレス範囲または国/地域の特定の論理グループからのアクセスのみを許可するには、条件付きアクセスのネームド ロケーションを使用します。
+
 
 Azure でネームド ロケーションを構成する方法: https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
@@ -579,7 +594,7 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2:機密情報を格納または処理するシステムを分離する
 
-**ガイダンス**: 開発、テスト、および運用で別々のサブスクリプションまたは管理グループ、あるいはその両方を実装します。 リソースは Vnet/サブネットで分離し、適切にタグ付けして、NSG または Azure Firewall 内でセキュリティで保護する必要があります。 機密データを格納または処理するリソースは分離されている必要があります。 Private Link を使用します。Vnet 内に Azure SQL Server をデプロイし、プライベート エンドポイントを使用して非公開で接続します。
+**ガイダンス**:開発、テスト、および運用で別々のサブスクリプションまたは管理グループ、あるいはその両方を実装します。 リソースは Vnet/サブネットで分離し、適切にタグ付けして、NSG または Azure Firewall 内でセキュリティで保護する必要があります。 機密データを格納または処理するリソースは分離されている必要があります。 Private Link を使用します。Vnet 内に Azure SQL Server をデプロイし、プライベート エンドポイントを使用して非公開で接続します。
 
 
 
@@ -714,7 +729,7 @@ Azure アクティビティ ログ イベントのアラートを作成する方
 https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 
-**Azure Security Center の監視**: 現在は使用できません
+**Azure Security Center の監視**: はい
 
 **責任**: Customer
 
@@ -774,7 +789,7 @@ Azure Security Center で脆弱性評価レポートをエクスポートする�
 
 https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment#implementing-vulnerability-assessment
 
-**Azure Security Center の監視**: はい
+**Azure Security Center の監視**: 適用なし
 
 **責任**: Customer
 
@@ -796,11 +811,15 @@ Azure Security Center のセキュリティ スコアの概要: https://docs.mic
 
 **ガイダンス**: サブスクリプション内のすべてのリソース (Azure SQL Server インスタンスを含む) のクエリや検出を実行するには、Azure Resource Graph を使用します。  テナント内の適切な (読み取り) アクセス許可を持っており、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙できることを確認します。
 
+
 従来の Azure リソースは Resource Graph で検出できますが、今後は Azure Resource Manager リソースを作成して使用することを強くお勧めします。
+
 
 Azure Graph を使用してクエリを作成する方法: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
+
 Azure サブスクリプションを表示する方法: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+
 
 Azure RBAC の概要: https://docs.microsoft.com/azure/role-based-access-control/overview
 
@@ -810,9 +829,13 @@ Azure RBAC の概要: https://docs.microsoft.com/azure/role-based-access-control
 
 ### <a name="62-maintain-asset-metadata"></a>6.2:資産メタデータを保持する
 
-**ガイダンス**: メタデータを提供する Azure リソースにタグを適用すると、それらのリソースが各分類に論理的に整理されます。
+**ガイダンス**:メタデータを提供する Azure リソースにタグを適用すると、それらのリソースが各分類に論理的に整理されます。
 
-タグを作成して使用する方法: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+
+
+タグを作成して使用する方法:
+
+https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -820,13 +843,25 @@ Azure RBAC の概要: https://docs.microsoft.com/azure/role-based-access-control
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3:承認されていない Azure リソースを削除する
 
-**ガイダンス**: 必要に応じて、タグ付け、管理グループ、および個別のサブスクリプションを使用して、資産の整理と追跡を行います。 定期的にインベントリを調整し、承認されていないリソースがサブスクリプションから適切なタイミングで削除されるようにします。
+**ガイダンス**:必要に応じて、タグ付け、管理グループ、および個別のサブスクリプションを使用して、資産の整理と追跡を行います。 定期的にインベントリを調整し、承認されていないリソースがサブスクリプションから適切なタイミングで削除されるようにします。
 
-追加の Azure サブスクリプションを作成する方法: https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-管理グループを作成する方法: https://docs.microsoft.com/azure/governance/management-groups/create
 
-タグを作成して使用する方法: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+追加の Azure サブスクリプションを作成する方法:
+
+https://docs.microsoft.com/azure/billing/billing-create-subscription
+
+
+
+管理グループを作成する方法:
+
+https://docs.microsoft.com/azure/governance/management-groups/create
+
+
+
+タグを作成して使用する方法:
+
+https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -834,7 +869,7 @@ Azure RBAC の概要: https://docs.microsoft.com/azure/role-based-access-control
 
 ### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4:承認された Azure リソースとソフトウェア タイトルのインベントリを管理する
 
-**ガイダンス**: コンピューティング リソース用に承認された Azure リソースと承認されたソフトウェアの一覧を定義します。
+**ガイダンス**:コンピューティング リソース用に承認された Azure リソースと承認されたソフトウェアの一覧を定義します。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -847,7 +882,7 @@ Azure RBAC の概要: https://docs.microsoft.com/azure/role-based-access-control
 - 許可されないリソースの種類
 - 許可されるリソースの種類
 
-サブスクリプション内のリソースのクエリまたは検出を実行するには、Azure Resource Graph を使用します。 環境に存在するすべての Azure リソースが承認されていることを確認します。
+サブスクリプション内のリソースのクエリまたは検出を行うには、Azure Resource Graph を使用します。 環境に存在するすべての Azure リソースが承認されていることを確認します。
 
 Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -888,11 +923,12 @@ Azure Graph を使用してクエリを作成する方法: https://docs.microsof
 - 許可されないリソースの種類
 - 許可されるリソースの種類
 
-サブスクリプション内のリソースのクエリまたは検出を実行するには、Azure Resource Graph を使用します。 環境に存在するすべての Azure リソースが承認されていることを確認します。
+サブスクリプション内のリソースのクエリまたは検出を行うには、Azure Resource Graph を使用します。 環境に存在するすべての Azure リソースが承認されていることを確認します。
 
 Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 Azure Policy を使用して特定のリソースの種類を拒否する方法: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+
 
 **Azure Security Center の監視**: 適用なし
 
@@ -908,12 +944,10 @@ Azure Policy を使用して特定のリソースの種類を拒否する方法:
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resources-manager-via-scripts"></a>6.11:スクリプトを使用して Azure Resource Manager を操作するユーザーの機能を制限する
 
-**ガイダンス**: "Microsoft Azure Management" アプリに対して [アクセスのブロック] を構成することによって、Azure Resource Manager を操作するユーザーの機能を制限するには、Azure Conditional Access を使用します。
+**ガイダンス**:"Microsoft Azure Management" アプリに対して [アクセスのブロック] を構成することによって、Azure Resource Manager を操作するユーザーの機能を制限するには、Azure 条件付きアクセスを使用します。
 
 
-条件付きアクセスを構成して Azure Resource Manager へのアクセスをブロックする方法:
-
-https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+条件付きアクセスを構成して Azure Resource Manager へのアクセスをブロックする方法: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -990,7 +1024,7 @@ https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5:Azure リソースの構成を安全に格納する
 
-**ガイダンス**: カスタム Azure ポリシー定義を使用する場合は、Azure DevOps または Azure Repos を使ってコードを安全に格納して管理します。
+**ガイダンス**:カスタム Azure ポリシー定義を使用する場合は、Azure DevOps または Azure Repos を使ってコードを安全に格納して管理します。
 
 
 
@@ -1152,7 +1186,7 @@ Azure SQL Server でのバックアップおよびビジネス継続性の概要
 
 https://docs.microsoft.com/azure/sql-database/sql-database-business-continuity
 
-**Azure Security Center の監視**: 適用なし
+**Azure Security Center の監視**: はい
 
 **責任**: 共有
 
@@ -1204,7 +1238,7 @@ Key Vault で論理的な削除を有効にする方法:
 
 https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
-**Azure Security Center の監視**: 現在は使用できません
+**Azure Security Center の監視**: はい
 
 **責任**: Customer
 
@@ -1214,7 +1248,7 @@ https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azu
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1:インシデント対応ガイドを作成する
 
-**ガイダンス**: 担当者の役割を定義している記述されたインシデント対応計画があること、およびインシデント処理/管理のフェーズが存在することを確認します。
+**ガイダンス**:インシデント処理/管理のフェーズと担当者の役割を定義している記述されたインシデント対応計画があることを確認します。
 
 
 
@@ -1228,7 +1262,7 @@ https://docs.microsoft.com/azure/security-center/security-center-planning-and-op
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2:インシデントのスコアリングと優先順位付けの手順を作成する
 
-**ガイダンス**: Security Center は、アラートに重要度を割り当て、各アラートに対処する優先順位を付けることができます。これにより、リソースが侵害されたときに、すぐにアクセスできるようになります。 重要度は、アラートの発行に使用された Security Center の信頼度と、アラートの原因となったアクティビティの背後に悪意のある意図があったかどうかの信頼レベルに基づいて決まります。
+**ガイダンス**:Security Center は、アラートに重要度を割り当て、各アラートに対処する優先順位を付けることができます。これにより、リソースが侵害されたときに、すぐにアクセスできるようになります。 重要度は、アラートの発行に使用された Security Center の信頼度と、アラートの原因となったアクティビティの背後に悪意のある意図があったかどうかの信頼レベルに基づいて決まります。
 Azure Security Center のセキュリティ アラート: https://docs.microsoft.com/azure/security-center/security-center-alerts-overview
 
 
@@ -1238,7 +1272,7 @@ Azure Security Center のセキュリティ アラート: https://docs.microsoft
 
 ### <a name="103-test-security-response-procedures"></a>10.3:セキュリティ対応手順のテスト
 
-**ガイダンス**: 定期的にシステムのインシデント対応機能をテストする演習を実施します。 弱点やギャップを特定し、必要に応じて計画を見直します。
+**ガイダンス**:定期的にシステムのインシデント対応機能をテストする演習を実施します。 弱点やギャップを特定し、必要に応じて計画を見直します。
 
 
 
@@ -1266,7 +1300,7 @@ https://docs.microsoft.com/azure/security-center/security-center-provide-securit
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5:インシデント対応システムにセキュリティ アラートを組み込む
 
-**ガイダンス**: 連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Sentinel にストリーミングできます。
+**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Sentinel にストリーミングできます。
 
 
 連続エクスポートを構成する方法:
@@ -1284,7 +1318,7 @@ https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6:セキュリティ アラートへの対応を自動化する
 
-**ガイダンス**: セキュリティ アラートやセキュリティに関する推奨事項に対して "Logic Apps" 経由で応答を自動的にトリガーするには、Azure Security Center のワークフローの自動化機能を使用します。
+**ガイダンス**:セキュリティ アラートやセキュリティに関する推奨事項に対して "Logic Apps" 経由で応答を自動的にトリガーするには、Azure Security Center のワークフローの自動化機能を使用します。
 
 
 
@@ -1292,7 +1326,7 @@ https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
 https://docs.microsoft.com/azure/security-center/workflow-automation
 
-**Azure Security Center の監視**: はい
+**Azure Security Center の監視**: 現在は使用できません
 
 **責任**: Customer
 
@@ -1302,15 +1336,19 @@ https://docs.microsoft.com/azure/security-center/workflow-automation
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、60 日以内に確実に修復されるようにします
 
-**ガイダンス**: 侵入テストが Microsoft のポリシーに違反しないようにするために、Microsoft の活動規則に従ってください。
+**ガイダンス**:侵入テストが Microsoft のポリシーに違反しないようにするために、Microsoft の活動規則に従ってください。
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
 
 
-Microsoft が管理しているクラウド インフラストラクチャ、サービス、アプリケーションに対する Red Teaming およびライブ サイト侵入テストに関する Microsoft の戦略と実施の詳細: https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+Microsoft が管理しているクラウド インフラストラクチャ、サービス、アプリケーションに対する Red Teaming およびライブ サイト侵入テストに関する Microsoft の戦略と実施の詳細については、こちらの https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e で確認できます。
 
 **Azure Security Center の監視**: 適用なし
 
 **責任**: 共有
 
+## <a name="next-steps"></a>次のステップ
+
+- [Azure セキュリティ ベンチマーク](https://docs.microsoft.com/azure/security/benchmarks/overview)に関するページを参照します
+- [Azure セキュリティ ベースライン](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)の詳細について学習します

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 71f15d959bf9d42e67cd7c35ca91d6cd2caa718d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 7787a765bf48adc15f4675c6c03ff3d04fa388c6
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152467"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918497"
 ---
 # <a name="add-rows-module"></a>Add Rows (行の追加) モジュール
 
@@ -32,7 +32,7 @@ ms.locfileid: "77152467"
 
 2 つのデータセットの行を連結するには、それぞれの行のスキーマがまったく同じである必要があります。 つまり、列の数と列内のデータの型が同じである必要があります。
 
-1.  **Add Rows (行の追加)** モジュールをパイプラインにドラッグします。これは **[Manipulate]\(操作\)** カテゴリの **[Data Transformation]\(データ変換\)** の下にあります。
+1.  **Add Rows (行の追加)** モジュールをパイプラインにドラッグします。これは **[データ変換]** の下で見つけることができます。
 
 2. データセットを 2 つの入力ポートに接続します。 追加するデータセットは、2 番目 (右) のポートに接続する必要があります。 
   

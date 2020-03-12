@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: fdc6834f3fb5ee97f27a6397645b965863e90a6b
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 164f07f6545c1c225814958bba5722536b11a9b4
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190537"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269431"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Windows を実行している N シリーズ VM に AMD GPU ドライバーをインストールする
 
@@ -31,13 +31,20 @@ Windows を実行している新しい Azure NVv4 シリーズ VM の GPU 機能
 
 | OS | Driver |
 | -------- |------------- |
-| Windows 10 EVD - ビルド 1903 <br/><br/>Windows 10 - ビルド 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [19.Q4.1](https://download.microsoft.com/download/7/e/5/7e558ac0-3fff-413d-af62-800285a2fc53/Radeon-Pro-Software-for-Enterprise-19.Q4.1-Technical-Preview.exe) (.exe) |
+| Windows 10 EVD - ビルド 1903 <br/><br/>Windows 10 - ビルド 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20.Q1.1](https://download.microsoft.com/download/3/8/9/3893407b-e8aa-4079-8592-735d7dd1c19a/Radeon-Pro-Software-for-Enterprise-GA.exe) (.exe) |
+
 
 ## <a name="driver-installation"></a>ドライバーのインストール
 
 1. リモートデスクトップで、各 NVv4 シリーズ VM に接続します。
 
-1. ドライバーのセットアップ ファイルをダウンロードし、抽出します。 フォルダーに移動して 'setup.exe' を実行し、ご使用の Windows オペレーティング システム用のサポートされるドライバーをインストールします。
+2. NVv4 プレビューのお客様は、VM を停止し、停止 (割り当て解除) 状態に移行するまでお待ちください。
+
+3. VM を起動してから、フォルダー "...\AMDCleanUninstallUtility" にある "amdcleanuputility-x64.exe" を実行してプレビュー ドライバーをアンインストールします。 正確なパスは、以前のドライバーのインストール ファイルの場所によって異なります。  
+
+4. 最新のドライバーをダウンロードしてインストールします。
+
+5. VM を再起動してください。
 
 ## <a name="verify-driver-installation"></a>ドライバーのインストールの確認
 

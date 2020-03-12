@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:Azure portal および SSMS を使用してデータを読み込む
-description: チュートリアルでは、Azure portal と SQL Server Management Studio を使って、グローバル Azure BLOB から Azure SQL Data Warehouse に WideWorldImportersDW データ ウェアハウスを読み込みます。
+description: このチュートリアルでは、Azure portal と SQL Server Management Studio を使用して、グローバル Azure BLOB から Azure Synapse Analytics SQL プールに WideWorldImportersDW データ ウェアハウスを読み込みます。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,22 +10,22 @@ ms.subservice: load-data
 ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: a2adc2acdb9c1d850bb12833540ed8da51701e58
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: seo-lt-2019, synapse-analytics
+ms.openlocfilehash: d8242731466df9b80a6a6c3f0e340d6deb76e7d4
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75370138"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304040"
 ---
-# <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>チュートリアル:Azure SQL Data Warehouse へのデータの読み込み
+# <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>チュートリアル:Azure Synapse Analytics SQL プールにデータを読み込む
 
-このチュートリアルでは、PolyBase を使用して、Azure Blob Storage から Azure SQL Data Warehouse に WideWorldImportersDW データ ウェアハウスを読み込みます。 このチュートリアルでは、[Azure Portal](https://portal.azure.com) と [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) を使って、次のことを行います。
+このチュートリアルでは、PolyBase を使用して、Azure Blob Storage から Azure Synapse Analytics SQL プール内のデータ ウェアハウスに WideWorldImportersDW データ ウェアハウスを読み込みます。 このチュートリアルでは、[Azure Portal](https://portal.azure.com) と [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) を使って、次のことを行います。
 
 > [!div class="checklist"]
-> * Azure Portal でデータ ウェアハウスを作成する
+> * Azure portal で SQL プールを使用してデータ ウェアハウスを作成する
 > * Azure Portal でサーバーレベルのファイアウォール規則を設定する
-> * SSMS でデータ ウェアハウスに接続する
+> * SSMS を使用して SQL プールに接続する
 > * データを読み込むように指定されたユーザーを作成する
 > * Azure BLOB をデータ ソースとして使用する外部テーブルを作成する
 > * CTAS T-SQL ステートメントを使ってデータをデータ ウェアハウスに読み込む
@@ -41,103 +41,85 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure portal](https://portal.azure.com/) にサインインする
+[Azure portal](https://portal.azure.com/) にサインインします。
 
-## <a name="create-a-blank-sql-data-warehouse"></a>空の SQL データ ウェアハウスを作成する
+## <a name="create-a-blank-data-warehouse-in-sql-pool"></a>SQL プールに空のデータ ウェアハウスを作成する
 
-Azure SQL データ ウェアハウスは、定義された一連の[コンピューティング リソース](memory-concurrency-limits.md)を使用して作成されます。 データベースは、[Azure リソース グループ](../azure-resource-manager/management/overview.md)内と [Azure SQL 論理サーバー](../sql-database/sql-database-features.md)内に作成されます。 
+SQL プールは、定義された一連の[コンピューティング リソース](memory-concurrency-limits.md)を使用して作成されます。 SQL プールは、[Azure リソース グループ](../azure-resource-manager/management/overview.md)内と [Azure SQL 論理サーバー](../sql-database/sql-database-features.md)内に作成されます。 
 
-空の SQL データ ウェアハウスを作成するには、次の手順に従います。 
+次の手順のようにして、空の SQL プールを作成します。 
 
-1. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
+1. Azure portal で、 **[リソースの作成]** を選択します。
 
-2. **[新規]** ページの **[データベース]** を選択し、 **[新規]** ページの **[おすすめ]** で **[SQL Data Warehouse]** を選択します。
+1. **[新規]** ページの **[データベース]** を選択し、 **[新規]** ページの **[おすすめ]** で **[Azure Synapse Analytics]** を選択します。
 
-    ![データ ウェアハウスを作成する](media/load-data-wideworldimportersdw/create-empty-data-warehouse.png)
+    ![SQL プールを作成する](media/load-data-wideworldimportersdw/create-empty-data-warehouse.png)
 
-3. SQL Data Warehouse のフォームで、次の情報を入力します。   
+1. **[プロジェクトの詳細]** セクションに次の情報を入力します。   
 
-   | 設定 | 推奨値 | 説明 | 
-   | ------- | --------------- | ----------- | 
-   | **データベース名** | SampleDW | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](/sql/relational-databases/databases/database-identifiers)」を参照してください。 | 
+   | 設定 | 例 | 説明 | 
+   | ------- | --------------- | ----------- |
    | **サブスクリプション** | 該当するサブスクリプション  | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
-   | **リソース グループ** | SampleRG | 有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |
-   | **ソースの選択** | 空のデータベース | 空のデータベースの作成を指定します。 データ ウェアハウスはデータベースの一種です。|
+   | **リソース グループ** | myResourceGroup | 有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |
 
-    ![データ ウェアハウスを作成する](media/load-data-wideworldimportersdw/create-data-warehouse.png)
-
-4. **[サーバー]** をクリックして、新しいデータベース用の新しいサーバーを作成して構成します。 **[新しいサーバー]** フォームには次の情報を入力してください。 
+1. **[SQL プールの詳細]** で、SQL プールの名前を指定します。 次に、ドロップダウンから既存のサーバーを選択するか、 **[サーバー]** 設定の **[新規作成]** を選択して新しいサーバーを作成します。 フォームに次の情報を入力します。 
 
     | 設定 | 推奨値 | 説明 | 
     | ------- | --------------- | ----------- |
+    |**SQL プール名**|SampleDW| 有効なデータベース名については、「[Database Identifiers (データベース識別子)](/sql/relational-databases/databases/database-identifiers)」を参照してください。 | 
     | **サーバー名** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 | 
     | **サーバー管理者ログイン** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。|
     | **パスワード** | 有効なパスワード | パスワードには 8 文字以上が使用され、大文字、小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が含まれている必要があります。 |
-    | **Location** | 有効な場所 | リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。 |
+    | **場所** | 有効な場所 | リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。 |
 
     ![データベース サーバーを作成する](media/load-data-wideworldimportersdw/create-database-server.png)
 
-5. **[選択]** をクリックします。
+1. **パフォーマンス レベルを選択します**。 スライダーは、既定で **[DW1000c]** に設定されています。 スライダーを上下に移動して、目的のパフォーマンス スケールを選択します。 
 
-6. **[パフォーマンス レベル]** をクリックし、データ ウェアハウスが Gen1 または Gen2 のいずれであるかということと、Data Warehouse ユニットの数を指定します。 
+    ![データベース サーバーを作成する](media/load-data-wideworldimportersdw/create-data-warehouse.png)
 
-7. このチュートリアルでは、**Gen1** サービス レベルを選択します。 スライダーは、既定で **[DW400]** に設定されています。  上下に動かしてどうなるか試してみてください。 
+1. **[追加の設定]** ページで、 **[既存のデータを使用します]** を [なし] に設定し、 **[照合順序]** は既定値の *SQL_Latin1_General_CP1_CI_AS* のままにします。 
 
-    ![パフォーマンスを構成する](media/load-data-wideworldimportersdw/configure-performance.png)
+1. **[確認と作成]** を選択して設定を確認し、 **[作成]** を選択してデータ ウェアハウスを作成します。 **[通知]** メニューから **[デプロイ中]** ページを開くことで、進行状況を監視できます。 
 
-8. **[Apply]** をクリックします。
-9. [SQL Data Warehouse] ページで、空のデータベースの **[照合順序]** を選びます。 このチュートリアルでは、既定の値を使います。 照合順序の詳細については、「[Collations (照合順序)](/sql/t-sql/statements/collations)」を参照してください。
-
-11. これで SQL Database フォームの入力が完了したので、 **[作成]** をクリックして、データベースをプロビジョニングします。 プロビジョニングには数分かかります。 
-
-    ![[作成] をクリックする](media/load-data-wideworldimportersdw/click-create.png)
-
-12. ツール バーの **[通知]** をクリックして、デプロイ プロセスを監視します。
-    
      ![通知 (notification)](media/load-data-wideworldimportersdw/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則を作成する
 
-SQL Data Warehouse サービスでは、外部のアプリケーションやツールに、サーバーまたはサーバー上のすべてのデータベースへの接続を禁止するファイアウォールが、サーバーレベルで作成されます。 接続できるようにするには、特定の IP アドレスに接続を許可するファイアウォール規則を追加します。  次の手順に従って、クライアントの IP アドレスに対する[サーバーレベルのファイアウォール規則](../sql-database/sql-database-firewall-configure.md)を作成します。 
+Azure Synapse Analytics サービスでは、外部のアプリケーションやツールに、サーバーまたはサーバー上のすべてのデータベースへの接続を禁止するファイアウォールが、サーバーレベルで作成されます。 接続できるようにするには、特定の IP アドレスに接続を許可するファイアウォール規則を追加します。  次の手順に従って、クライアントの IP アドレスに対する[サーバーレベルのファイアウォール規則](../sql-database/sql-database-firewall-configure.md)を作成します。 
 
 > [!NOTE]
-> SQL Data Warehouse の通信は、ポート 1433 で行われます。 企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 1433 が開放されない限り、Azure SQL Database サーバーに接続することはできません。
+> Azure Synapse Analytics SQL プールの通信は、ポート 1433 で行われます。 企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 1433 が開放されない限り、Azure SQL Database サーバーに接続することはできません。
 >
 
-1. デプロイが完了したら、左側のメニューから **[SQL データベース]** をクリックし、**SQL データベース** ページで、**SampleDW** をクリックします。 このデータベースの概要ページが開くと、完全修飾サーバー名 (**sample-svr.database.windows.net** など) や追加の構成オプションが表示されます。 
 
-2. この完全修飾サーバー名をコピーします。以降のクイック スタートでサーバーとそのデータベースに接続する際に必要となります。 サーバー設定を開くには、サーバー名をクリックします。
+1. デプロイが完了したら、ナビゲーション メニューの検索ボックスでプール名を検索し、SQL プール リソースを選択します。 サーバー名を選択します。 
 
-    ![サーバー名を検索する](media/load-data-wideworldimportersdw/find-server-name.png) 
+    ![リソースに移動する](media/load-data-wideworldimportersdw/search-for-sql-pool.png) 
 
-3. サーバー設定を開くには、サーバー名をクリックします。
+1. サーバー名を選択します。 
+    ![サーバー名](media/load-data-wideworldimportersdw/find-server-name.png) 
+
+1. **[ファイアウォール設定の表示]** を選択します。 SQL プール サーバーの **[ファイアウォール設定]** ページが開きます。 
 
     ![サーバー設定](media/load-data-wideworldimportersdw/server-settings.png) 
 
-5. **[ファイアウォール設定の表示]** をクリックします。 SQL Database サーバーの **[ファイアウォール設定]** ページが開きます。 
+1. **[ファイアウォールと仮想ネットワーク]** ページで **[クライアント IP の追加]** を選択し、現在の IP アドレスを新しいファイアウォール規則に追加します。 ファイアウォール規則は、単一の IP アドレスまたは IP アドレスの範囲に対して、ポート 1433 を開くことができます。
 
     ![サーバーのファイアウォール規則](media/load-data-wideworldimportersdw/server-firewall-rule.png) 
 
-4.  現在の IP アドレスをファイアウォール規則に追加するには、ツール バーの **[クライアント IP の追加]** をクリックします。 ファイアウォール規則は、単一の IP アドレスまたは IP アドレスの範囲に対して、ポート 1433 を開くことができます。
+1. **[保存]** を選択します。 論理サーバーでポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
 
-5. **[保存]** をクリックします。 論理サーバーでポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
-
-6. **[OK]** をクリックし、 **[ファイアウォール設定]** ページを閉じます。
-
-この IP アドレスを使って、SQL Server とそのデータ ウェアハウスに接続できるようになります。 接続するには、SQL Server Management Studio または他の適当なツールを使います。 接続するときは、前に作成した serveradmin アカウントを使います。  
+クライアント IP アドレスを使用して SQL Server に接続できるようになります。 接続するには、SQL Server Management Studio または他の適当なツールを使います。 接続するときは、前に作成した serveradmin アカウントを使います。  
 
 > [!IMPORTANT]
 > 既定では、すべての Azure サービスで、SQL Database ファイアウォール経由のアクセスが有効になります。 このページの **[オフ]** をクリックし、 **[保存]** をクリックして、すべての Azure サービスに対してファイアウォールを無効にします。
 
 ## <a name="get-the-fully-qualified-server-name"></a>完全修飾サーバー名を取得する
 
-Azure Portal で、SQL サーバーの完全修飾サーバー名を取得します。 後でサーバーに接続するときに、完全修飾名を使います。
+完全修飾サーバー名は、サーバーへの接続に使用される名前です。 Azure portal で SQL プール リソースに移動し、 **[サーバー名]** で完全修飾名を確認します。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
-2. 左側のメニューから **[SQL データベース]** を選択し、 **[SQL データベース]** ページで目的のデータベースをクリックします。 
-3. そのデータベースの Azure Portal ページの **[基本]** ウィンドウで、**サーバー名**を見つけてコピーします。 この例の完全修飾名は mynewserver-20171113.database.windows.net です。 
-
-    ![接続情報](media/load-data-wideworldimportersdw/find-server-name.png)  
+![サーバー名](media/load-data-wideworldimportersdw/find-server-name.png) 
 
 ## <a name="connect-to-the-server-as-server-admin"></a>サーバー管理者としてサーバーに接続する
 
@@ -150,14 +132,14 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     | 設定      | 推奨値 | 説明 | 
     | ------------ | --------------- | ----------- | 
     | サーバーの種類 | データベース エンジン | この値は必須です |
-    | サーバー名 | 完全修飾サーバー名 | たとえば、**sample-svr.database.windows.net** は完全修飾サーバー名です。 |
+    | サーバー名 | 完全修飾サーバー名 | たとえば、**sqlpoolservername.database.windows.net** は完全修飾サーバー名です。 |
     | 認証 | SQL Server 認証 | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
     | ログイン | サーバー管理者アカウント | これはサーバーを作成したときに指定したアカウントです。 |
     | Password | サーバー管理者アカウントのパスワード | これはサーバーを作成したときに指定したパスワードです。 |
 
     ![[サーバーに接続]](media/load-data-wideworldimportersdw/connect-to-server.png)
 
-4. **[接続]** をクリックします。 SSMS で [オブジェクト エクスプローラー] ウィンドウが開きます。 
+4. **[Connect]** をクリックします。 SSMS で [オブジェクト エクスプローラー] ウィンドウが開きます。 
 
 5. オブジェクト エクスプローラーで、 **[データベース]** を展開します。 **[システム データベース]** 、 **[master]** の順に展開し、マスター データベースのオブジェクトを表示します。  **SampleDW** を展開して、新しいデータベースのオブジェクトを表示します。
 
@@ -165,7 +147,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 ## <a name="create-a-user-for-loading-data"></a>データを読み込むためのユーザーを作成する
 
-サーバー管理者アカウントは管理操作を実行するためのものであり、ユーザー データに対するクエリの実行には適していません。 データの読み込みは、メモリを大量に消費する操作です。 メモリの最大値は、使用している SQL Data Warehouse の世代、[データ ウェアハウス ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)、[リソース クラス](resource-classes-for-workload-management.md)に従って定義されます。 
+サーバー管理者アカウントは管理操作を実行するためのものであり、ユーザー データに対するクエリの実行には適していません。 データの読み込みは、メモリを大量に消費する操作です。 メモリの最大値は、使用している SQL プールの世代、[データ ウェアハウス ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)、[リソース クラス](resource-classes-for-workload-management.md)に従って定義されます。 
 
 データの読み込みに専用のログインとユーザーを作成することをお勧めします。 その後、適切な最大メモリ割り当てを有効にする[リソース クラス](resource-classes-for-workload-management.md)に読み込みユーザーを追加します。
 
@@ -208,7 +190,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 2. 完全修飾サーバー名を入力し、ログインとして「**LoaderRC60**」と入力します。  LoaderRC60 のパスワードを入力します。
 
-3. **[接続]** をクリックします。
+3. **[Connect]** をクリックします。
 
 4. 接続する準備ができると、オブジェクト エクスプローラーに 2 つのサーバー接続が表示されます。 1 つは ServerAdmin としての接続、もう 1 つは LoaderRC60 としての接続です。
 
@@ -216,7 +198,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 ## <a name="create-external-tables-and-objects"></a>外部テーブルとオブジェクトを作成する
 
-新しいデータ ウェアハウスにデータを読み込むプロセスを始める準備ができました。 今後の参考として、データを Azure Blob Storage に取得する方法やソースから直接 SQL Data Warehouse に読み込む方法については、[読み込みの概要](sql-data-warehouse-overview-load.md)に関するページを参照してください。
+新しいデータ ウェアハウスにデータを読み込むプロセスを始める準備ができました。 今後の参考として、データを Azure Blob Storage に取得する方法やソースから直接 SQL プールに読み込む方法については、[読み込みの概要](sql-data-warehouse-overview-load.md)に関するページを参照してください。
 
 次の SQL スクリプトを実行して、読み込むデータに関する情報を指定します。 この情報には、データが置かれている場所、データの内容の形式、およびデータのテーブル定義が含まれます。 データは、グローバル Azure BLOB に存在します。
 
@@ -266,7 +248,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     CREATE SCHEMA wwi;
     ```
 
-7. 外部テーブルを作成する テーブルの定義は SQL Data Warehouse に格納されますが、テーブルは Azure Blob Storage に格納されているデータを参照します。 次の T-SQL コマンドを実行して、複数の外部テーブルを作成します。これらのテーブルは、そのすべてが以前に外部データ ソースで定義した Azure BLOB を指します。
+7. 外部テーブルを作成する テーブルの定義はデータベースに格納されていますが、テーブルでは Azure Blob Storage に格納されているデータが参照されます。 次の T-SQL コマンドを実行して、複数の外部テーブルを作成します。これらのテーブルは、そのすべてが以前に外部データ ソースで定義した Azure BLOB を指します。
 
     ```sql
     CREATE EXTERNAL TABLE [ext].[dimension_City](
@@ -545,15 +527,15 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
     ![外部テーブルを表示する](media/load-data-wideworldimportersdw/view-external-tables.png)
 
-## <a name="load-the-data-into-your-data-warehouse"></a>データ ウェアハウスにデータを読み込む
+## <a name="load-the-data-into-sql-pool"></a>SQL プールにデータを読み込む
 
-このセクションでは、定義した外部テーブルを使って、サンプル データを Azure BLOB から SQL Data Warehouse に読み込みます。  
+このセクションでは、定義した外部テーブルを使って、サンプル データを Azure BLOB から SQL プールに読み込みます。  
 
 > [!NOTE]
 > このチュートリアルでは、最終テーブルにデータを直接読み込みます。 運用環境では、通常、CREATE TABLE AS SELECT を使用して、ステージング テーブルに読み込みます。 データがステージング テーブルにある間に、必要な変換を実行できます。 ステージング テーブルのデータを運用テーブルに追加するには、INSERT...SELECT ステートメントを使用します。 詳細については、「[運用テーブルにデータを挿入する](guidance-for-loading-data.md#inserting-data-into-a-production-table)」を参照してください。
 > 
 
-このスクリプトは [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL ステートメントを使って、Azure Storage Blob からデータ ウェアハウスの新しいテーブルにデータを読み込みます。 CTAS は、select ステートメントの結果に基づいて新しいテーブルを作成します。 新しいテーブルでは、select ステートメントの結果と同じ列およびデータ型が保持されます。 select ステートメントが外部テーブルから選択すると、SQL Data Warehouse はデータ ウェアハウスのリレーショナル テーブルにデータをインポートします。 
+このスクリプトは [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL ステートメントを使って、Azure Storage Blob からデータ ウェアハウスの新しいテーブルにデータを読み込みます。 CTAS は、select ステートメントの結果に基づいて新しいテーブルを作成します。 新しいテーブルでは、select ステートメントの結果と同じ列およびデータ型が保持されます。 select ステートメントによって外部テーブルから選択されると、データ ウェアハウスのリレーショナル テーブルにデータがインポートされます。 
 
 このスクリプトでは、wwi.dimension_Date テーブルと wwi.fact_Sale テーブルへのデータの読み込みは行いません。 これらのテーブルは、大量の行を格納できるようにするため、後続の手順で生成されます。
 
@@ -704,7 +686,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     ;
     ```
 
-2. 読み込んだデータを表示します。 数 GB のデータを読み込み、高パフォーマンスのクラスター化列ストア インデックスに圧縮しています。 SampleDW で新しいクエリ ウィンドウを開き、次のクエリを実行して読み込みの状態を表示します。 SQL Data Warehouse での処理にはある程度の時間がかかります。クエリを開始したら、完了するまでお待ちください。
+2. 読み込んだデータを表示します。 数 GB のデータを読み込み、高パフォーマンスのクラスター化列ストア インデックスに圧縮しています。 SampleDW で新しいクエリ ウィンドウを開き、次のクエリを実行して読み込みの状態を表示します。 SQL プールでの処理にはある程度の時間がかかります。クエリを開始したら、完了するまでお待ちください。
 
     ```sql
     SELECT
@@ -977,7 +959,8 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     ```
 
 ## <a name="populate-the-replicated-table-cache"></a>レプリケートされたテーブルのキャッシュを事前設定する
-SQL Data Warehouse は、個々の計算ノードにデータをキャッシュすることでテーブルをレプリケートします。 このキャッシュは、テーブルに対してクエリが実行されたときに事前設定されます。 したがって、レプリケートされたテーブルに対する初回クエリでは、キャッシュの事前設定のために余分に時間がかかります。 キャッシュの事前設定後は、レプリケートされたテーブルに対するクエリが高速に実行されます。
+
+SQL プールでは、個々の計算ノードにデータをキャッシュすることでテーブルがレプリケートされます。 このキャッシュは、テーブルに対してクエリが実行されたときに事前設定されます。 したがって、レプリケートされたテーブルに対する初回クエリでは、キャッシュの事前設定のために余分に時間がかかります。 キャッシュの事前設定後は、レプリケートされたテーブルに対するクエリが高速に実行されます。
 
 レプリケートされたテーブルのキャッシュを計算ノードで事前設定するには、次の SQL クエリを実行します。 
 
@@ -1112,16 +1095,16 @@ SQL Data Warehouse は、個々の計算ノードにデータをキャッシュ�
 
 以下のことを行いました。
 > [!div class="checklist"]
-> * Azure Portal でデータ ウェアハウスを作成しました
+> * Azure portal で SQL プールを使用してデータ ウェアハウスを作成しました
 > * Azure Portal でサーバーレベルのファイアウォール規則を設定する
-> * SSMS でデータ ウェアハウスに接続しました
+> * SSMS を使用して SQL プールに接続しました
 > * データを読み込むように指定されたユーザーを作成しました
 > * Azure Storage Blob のデータ用の外部テーブルを作成しました
 > * CTAS T-SQL ステートメントを使ってデータをデータ ウェアハウスに読み込みました
 > * データ読み込みの進行状況を表示しました
 > * 新しく読み込まれたデータの統計を作成しました
 
-開発の概要に進んで、既存のデータベースを SQL Data Warehouse に移行する方法を学習してください。
+開発の概要に進んで、既存のデータベースを Azure Synapse SQL プールに移行する方法を学習してください。
 
 > [!div class="nextstepaction"]
->[既存のデータベースを SQL Data Warehouse に移行するための設計上の決定](sql-data-warehouse-overview-develop.md)
+>[既存のデータベースを SQL プールに移行するための設計上の決定](sql-data-warehouse-overview-develop.md)

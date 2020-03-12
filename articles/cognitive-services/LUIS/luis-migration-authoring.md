@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/05/2019
+ms.date: 02/28/2020
 ms.author: diberry
-ms.openlocfilehash: 6e1005e3d9c3769de3249f3244d65a656edc963e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ec6f9592a4c149be382fab66cca27d929644d988
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891747"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194511"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Azure リソース オーサリング キーに移行する
 
@@ -104,13 +104,21 @@ _Azure portal_ のオーサリング リソースの **[Access Control (IAM)]** 
 
 移行プロセスの後、自分が所有するアプリはすべて、LUIS ポータルの **[マイ アプリ]** ページで利用できます。
 
-## <a name="troubleshooting"></a>トラブルシューティング
+## <a name="troubleshooting-the-migration-process-for-luis-authoring"></a>LUIS オーサリングの移行プロセスのトラブルシューティング
 
-* LUIS オーサリング キーは、移行プロセスが完了した後に LUIS ポータルにのみ表示されます。 LUIS CLI などを使用してオーサリング キーを作成する場合でも、ユーザーは移行プロセスを完了する必要があります。
+* LUIS オーサリング キーは、移行プロセスが完了した後に LUIS ポータルにのみ表示されます。 LUIS CLI などを使用してオーサリング キーを作成する場合でも、ユーザーは LUIS ポータルで移行プロセスを完了する必要があります。
 * 移行されたユーザーが、移行されていないユーザーを Azure リソースの共同作成者として追加した場合、移行されていないユーザーは、移行しない限りアプリにアクセスできません。
 * 移行されていないユーザーがアプリの所有者ではなく、他のユーザーが所有する他のアプリのコラボレーターであり、所有者が移行プロセスを実行済みの場合、アプリにアクセスするには、このユーザーも移行する必要があります。
 * 移行されていないユーザーが別の移行されたユーザーをコラボレーターとしてアプリに追加した場合、移行されたユーザーをコラボレーターとしてアプリに追加できないため、エラーが発生します。 その後、移行されていないユーザーは移行プロセスを行い、Azure リソースを作成し、移行されたユーザーをそのリソースの共同作成者として追加する必要があります。
 
-## <a name="next-steps"></a>次の手順
+次の場合、移行プロセス中にエラーが発生します。
+* サブスクリプションで Cognitive Services リソースを作成することが許可されていません
+* 移行がアプリケーションのランタイムに悪影響を及ぼします。 移行すると、すべての共同編集者がアプリから削除されます。また、他のアプリの共同編集者の場合はそのアプリから削除されます。 このプロセスは、割り当てたキーも削除されることを意味します。 他のアプリでキーが割り当てられている場合、移行はブロックされます。 移行する前に、割り当てたキーを安全に削除します。 割り当てたキーがランタイムで使用されていないことがわかっている場合、移行を続行するには、キーを削除する必要があります。
+
+次の URL 形式を使用して、アプリの Azure リソース一覧にアクセスします。
+
+`https://www.luis.ai/applications/REPLACE-WITH-YOUR-APP-ID/versions/REPLACE-WITH-YOUR-VERSION-ID/manage/resources`
+
+## <a name="next-steps"></a>次のステップ
 
 * [アプリをオーサリング リソースに移行する方法](luis-migration-authoring-steps.md)

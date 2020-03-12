@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 3f18537b4b038844c9aa824593e354c23c792370
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6af6f01449f2f43e6799ef6d7821b9d71b24e603
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026419"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252346"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Azure CLI を使用してデバイスの接続性を監視する
 
@@ -33,16 +33,19 @@ Azure CLI IoT 拡張機能を使用して、デバイスから IoT Central に�
 インストールするには、コマンド ラインから次のコマンドを実行します。
 
 ```cmd/sh
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 ```
 
-次を実行して拡張機能のバージョンを確認します。 
+次を実行して拡張機能のバージョンを確認します。
+
 ```cmd/sh
 az --version
 ```
-azure-cli-iot-ext 拡張機能が 0.8.1 以上になっているはずです。 そうでない場合は次を実行します。
+
+azure-iot 拡張機能が 0.8.1 以上になっているはずです。 そうでない場合は次を実行します。
+
 ```cmd/sh
-az extension update --name azure-cli-iot-ext
+az extension update --name azure-iot
 ```
 
 ## <a name="using-the-extension"></a>拡張機能を使用する

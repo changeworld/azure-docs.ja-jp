@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 934a4fdf7cabb89c4b98c7800252cb24d4e23abf
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 3369dc7cde7082659df556e008adb5e45b4c011c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "77013907"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246204"
 ---
 ## <a name="limitations"></a>制限事項
 
@@ -98,6 +98,8 @@ Azure で VM を作成するときに、VM に使用する専用ホストを選�
 ソフトウェア ライセンス、ストレージ、およびネットワークの使用量は、ホストおよび VM とは別に課金されます。 それらの課金対象アイテムに変更はありません。
 
 詳しくは、「[Azure 専用ホストの価格](https://aka.ms/ADHPricing)」をご覧ください。
+
+また、Azure Dedicated Host](../articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md)の[予約インスタンスを使用してコストを節約することもできます。
  
 ## <a name="vm-families-and-hardware-generations"></a>VM ファミリとハードウェアの世代
 

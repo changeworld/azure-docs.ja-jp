@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: ARO, OpenShift, aquasec, Twistlock, Red Hat
-ms.openlocfilehash: 4241296a991283f14fbb294fdc059ecde58d6d75
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.openlocfilehash: e1c1dd9f27a207f78dd22e271f6b070c7f92f622
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77069755"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271373"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Azure Red Hat OpenShift クラスター内で特権コンテナーを実行する
 
@@ -121,17 +121,24 @@ Enforcer のデプロイ時に、次のフィールドを設定します。
 
 これから変更を加えるベースの手順は、[Prisma Cloud のデプロイに関するドキュメント](https://docs.paloaltonetworks.com/prisma/prisma-cloud/19-11/prisma-cloud-compute-edition-admin/install/install_openshift.html)で確認できます。
 
-最初に新しい OpenShift プロジェクトを作成します。
+最初に、「Prisma Cloud のインストール」および「Prisma Cloud ソフトウェアのダウンロード」の説明に従って `twistcli` ツールをインストールします。
+
+新しい OpenShift プロジェクトを作成する
 ```
 oc new-project twistlock
 ```
 
-「コンソールをインストールする」セクションまではドキュメントに従い、内部コンテナー レジストリを作成するのではなく Prisma Cloud コンテナー レジストリを使用してください。
+省略可能なセクションである「Prisma Cloud イメージをプライベート レジストリにプッシュする」をスキップします。 Azure Red Hat OpenShift では機能しません。 代わりにオンライン レジストリを使用します。
+
+公式のドキュメントに従って、以下に説明する修正を適用できます。
+「コンソールをインストールする」のセクションから開始してください。
 
 ### <a name="install-console"></a>コンソールをインストールする
 
 手順 2 の `oc create -f twistlock_console.yaml` では、名前空間の作成時にエラーが表示されます。
 名前空間は事前に `oc new-project` コマンドを使用して作成されているため、これは無視してもかまいません。
+
+ストレージの種類として `azure-disk` を使用します。
 
 ### <a name="create-an-external-route-to-console"></a>コンソールへの外部ルートを作成する
 

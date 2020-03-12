@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: ec99db9406c5c83cdcbf322c45cea40c6643ee8f
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: e9ae19e503b6b54e881af3c6477f77ffa1c930b0
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770885"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252607"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Azure Database for MySQL での監視
 サーバーに関する監視データは、ワークロードをトラブルシューティングしたり最適化したりするのに役立ちます。 Azure Database for MySQL には、サーバーの動作への洞察を提供する各種のメトリックが用意されています。
@@ -22,23 +22,23 @@ ms.locfileid: "74770885"
 ### <a name="list-of-metrics"></a>メトリックの一覧
 これらのメトリックは、Azure Database for MySQL に使用できます。
 
-|メトリック|メトリックの表示名|単位|説明|
+|メトリック|メトリックの表示名|ユニット|説明|
 |---|---|---|---|
 |cpu_percent|CPU 使用率|Percent|使用されている CPU の割合|
 |memory_percent|メモリの割合|Percent|使用されているメモリの割合|
 |io_consumption_percent|IO の割合|Percent|使用されている IO の割合|
 |storage_percent|ストレージの割合|Percent|サーバーの最大数のうち使用されているストレージの割合|
-|storage_used|使用済みストレージ|Bytes|使用されているストレージの量。 サービスで使用されるストレージには、データベース ファイル、トランザクション ログ、サーバー ログが含まれることがあります。|
+|storage_used|使用済みストレージ|バイト|使用されているストレージの量。 サービスで使用されるストレージには、データベース ファイル、トランザクション ログ、サーバー ログが含まれることがあります。|
 |serverlog_storage_percent|サーバー ログ ストレージの割合|Percent|サーバーの最大サーバー ログ ストレージのうち、使用されているサーバー ログ ストレージの割合。|
-|serverlog_storage_usage|サーバー ログ ストレージの使用量|Bytes|使用されているサーバー ログ ストレージの量。|
-|serverlog_storage_limit|サーバー ログ ストレージの上限|Bytes|このサーバーの最大サーバー ログ ストレージ。|
-|storage_limit|ストレージの制限|Bytes|このサーバーの最大のストレージ|
+|serverlog_storage_usage|サーバー ログ ストレージの使用量|バイト|使用されているサーバー ログ ストレージの量。|
+|serverlog_storage_limit|サーバー ログ ストレージの上限|バイト|このサーバーの最大サーバー ログ ストレージ。|
+|storage_limit|ストレージの制限|バイト|このサーバーの最大のストレージ|
 |active_connections|アクティブな接続|Count|サーバーへのアクティブな接続の数|
 |connections_failed|失敗した接続|Count|サーバーへの失敗した接続の数|
 |seconds_behind_master|レプリケーションのラグ (秒単位)|Count|レプリカ サーバーがマスター サーバーから遅延している秒数。|
-|network_bytes_egress|Network Out|Bytes|アクティブな接続全体のネットワーク送信。|
-|network_bytes_ingress|Network In|Bytes|アクティブな接続全体のネットワーク受信。|
-|backup_storage_used|使用済みバックアップ ストレージ|Bytes|使用されているバックアップ ストレージの量。|
+|network_bytes_egress|Network Out|バイト|アクティブな接続全体のネットワーク送信。|
+|network_bytes_ingress|Network In|バイト|アクティブな接続全体のネットワーク受信。|
+|backup_storage_used|使用済みバックアップ ストレージ|バイト|使用されているバックアップ ストレージの量。|
 
 ## <a name="server-logs"></a>サーバー ログ
 サーバーで低速クエリ ログと監査ログを有効にしできます。 これらのログは、Azure Monitor ログ、Event Hubs、およびストレージ アカウントでの Azure 診断ログを通じて入手することもできます。 ログの詳細については、 [監査ログ](concepts-audit-logs.md)と[低速クエリ ログ](concepts-server-logs.md)の記事を参照してください。
@@ -52,15 +52,30 @@ ms.locfileid: "74770885"
 ## <a name="performance-recommendations"></a>パフォーマンスに関する推奨事項
 [パフォーマンスの推奨事項](concepts-performance-recommendations.md)機能によって、ワークロード パフォーマンス改善の機会が特定されます。 パフォーマンスの推奨事項によって、ワークロードのパフォーマンスを改善する可能性がある新しいインデックスを作成するための推奨事項が提供されます。 推奨インデックスを作成するために、この機能は、クエリ ストアから報告されたスキーマ、ワークロードなどのさまざまなデータベースの特性を考慮します。 顧客は、パフォーマンスに関する推奨事項を実装した後、パフォーマンスをテストし、変更の影響を評価する必要があります。
 
-## <a name="service-health"></a>サービス正常性
-[Azure サービスの正常性](../service-health/overview.md)は、サブスクリプション内のすべてのサービス正常性通知のビューを提供します。 使用している Azure サービスやリージョンに影響を与える可能性のある問題または変更が発生した場合は、希望する通信チャネル経由で通知を受けるようにサービス正常性アラートを設定できます。
+## <a name="planned-maintenance-notification"></a>計画メンテナンスの通知
 
-**計画メンテナンス**のイベントの種類を使用して、Azure Database for MySQL の予定メンテナンス イベントを表示できます。 **サービス正常性アラート**を作成する方法については、「[サービス通知のアクティビティ ログ アラートを作成する](../service-health/alerts-activity-log-service-notifications.md)」の記事を参照してください。
+**計画メンテナンスの通知**によって、Azure Database for MySQL に対して今後予定されているメンテナンスに関するアラートを受信できます。 これらの通知は [Service Health](../service-health/overview.md) の計画メンテナンスに統合されており、サブスクリプションに対してスケジュールされたすべてのメンテナンスを 1 か所に表示できます。 また、異なるリソースに対しては異なる連絡先が必要になる場合があるため、さまざまなリソース グループに対して適切なユーザーへの通知をスケーリングすることも可能です。 今後のメンテナンスに関する通知は、イベントの 72 時間前に送信されます。
+
+> [!Note]
+> Microsoft では、**計画メンテナンスの通知**の 72 時間での通知をすべてのイベントに対して提供するために、あらゆる試みを行います。 ただし、重大時やセキュリティ更新プログラムに関する場合には、イベントが迫ってからでも通知が送信されたり、あるいは通知が省略されたりすることがあります。
+
+### <a name="to-receive-planned-maintenance-notification"></a>計画メンテナンスの通知を受信するには
+
+1. [ポータル](https://portal.azure.com)で、 **[サービス正常性]** を選択します。
+2. **[アラート]** セクションで、 **[正常性アラート]** を選択します。
+3. **[+ サービス正常性アラートの追加]** を選択し、フィールドに入力します。
+4. 必須フィールドに入力します。 
+5. **[イベントの種類]** を選択し、 **[計画メンテナンス]** または **[すべて選択]** を選択します
+6. **[アクション グループ]** で、アラートの受信方法 (電子メールの取得、ロジック アプリのトリガーなど) を定義します。  
+7. [ルールの作成時に有効にする] を確実に [はい] に設定します。
+8. **[アラート ルールの作成]** を選択してアラートを完成させます
+
+**サービス正常性アラート**の作成方法の詳細な手順については、「[サービス通知のアクティビティ ログ アラートを作成する](../service-health/alerts-activity-log-service-notifications.md)」を参照してください。
 
 > [!IMPORTANT]
-> 計画メンテナンスの通知は、米国東部および英国南部向けのプレビューでのみ使用できます。
+> 計画メンテナンスの通知は現在、プレビュー段階です
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - メトリックに対するアラートの作成のガイダンスについては、[アラートを設定する方法](howto-alert-on-metric.md)に関するページをご覧ください。
 - Azure Portal、REST API、または CLI を使用してメトリックへのアクセスおよびメトリックのエクスポートを行う方法の詳細については、[Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)に関する記事をご覧ください。
 - [サーバーの監視のベスト プラクティス](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-mysql-monitoring/)に関するブログをお読みください。

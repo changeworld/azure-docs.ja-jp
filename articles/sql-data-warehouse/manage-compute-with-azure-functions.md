@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:Azure Functions を使用してコンピューティングを管理する
-description: Azure Functions を使用してデータ ウェアハウスのコンピューティングを管理する方法。
+description: Azure 関数を使用し、Azure Synapse Analytics で SQL プールのコンピューティングを管理する方法。
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -10,27 +10,27 @@ ms.subservice: consume
 ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: bc350ed092c063dcc7eca479f064114be9eb28f5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: a08c2c3c0167f0d82fe901e19b02db22b0ad56c5
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693011"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193245"
 ---
-# <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse で Azure Functions を使用してコンピューティング リソースを管理します。
+# <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Azure Synapse Analytics SQL プールで Azure Functions を使用してコンピューティング リソースを管理します
 
-このチュートリアルでは、Azure SQL Data Warehouse で Azure Functions を使用してデータ ウェアハウスのコンピューティング リソースを管理します。
+このチュートリアルでは、Azure Synapse Analytics で Azure Functions を使用し、SQL プールのコンピューティング リソースを管理します。
 
-Azure Function App を SQL Data Warehouse と組み合わせて使用するためには、ご利用のデータ ウェアハウス インスタンスと同じサブスクリプションに、共同作成者のアクセス権を持った[サービス プリンシパル アカウント](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)を作成する必要があります。 
+Azure Function App を SQL プールと組み合わせて使用するためには、ご利用の SQL プール インスタンスと同じサブスクリプションに、共同作成者のアクセス権を持った[サービス プリンシパル アカウント](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)を作成する必要があります。 
 
 ## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用してタイマーベースのスケーリングを展開する
 
 このテンプレートを展開するには、次の情報が必要です。
 
-- SQL DW インスタンスが存在するリソース グループの名前
-- SQL DW インスタンスが存在する論理サーバーの名前
-- SQL DW インスタンスの名前
+- SQL プール インスタンスが存在するリソース グループの名前
+- SQL プール インスタンスが存在する論理サーバーの名前
+- SQL プール インスタンスの名前
 - Azure Active Directory のテナント ID (ディレクトリ ID)
 - サブスクリプション ID 
 - サービス プリンシパルのアプリケーション ID
@@ -119,17 +119,17 @@ Azure Function App を SQL Data Warehouse と組み合わせて使用するた�
 5. 次のように operation 変数を目的の動作に設定します。
 
    ```javascript
-   // Resume the data warehouse instance
+   // Resume the SQL pool instance
    var operation = {
        "operationType": "ResumeDw"
    }
 
-   // Pause the data warehouse instance
+   // Pause the SQL pool instance
    var operation = {
        "operationType": "PauseDw"
    }
 
-   // Scale the data warehouse instance to DW600
+   // Scale the SQL pool instance to DW600
    var operation = {
        "operationType": "ScaleDw",
        "ServiceLevelObjective": "DW600"
@@ -173,11 +173,11 @@ Azure Function App を SQL Data Warehouse と組み合わせて使用するた�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Functions を[タイマーでトリガーする方法](../azure-functions/functions-create-scheduled-function.md)について確認します。
 
-SQL Data Warehouse の[サンプル リポジトリ](https://github.com/Microsoft/sql-data-warehouse-samples)を確認します。
+SQL プールの[サンプル リポジトリ](https://github.com/Microsoft/sql-data-warehouse-samples)を確認します。
 
 
 

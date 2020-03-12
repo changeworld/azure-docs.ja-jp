@@ -2,17 +2,17 @@
 title: DC シリーズ - Azure Virtual Machines
 description: DC シリーズ VM の仕様。
 services: virtual-machines
-author: jonbeck7
+author: susaxen
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: lahugh
-ms.openlocfilehash: c4e141b7854925f5d12afce19481a6e9c2f8dd1d
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: fd8f01f0fc7180d271404ffee4496ff9cbac7222
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599612"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205927"
 ---
 # <a name="preview-dcv2-series"></a>プレビュー:DCv2 シリーズ
 
@@ -25,11 +25,15 @@ Premium Storage: サポート対象*
 
 Premium Storage キャッシュ:サポート対象*
 
+ライブ移行:サポートされていません
+
+メモリ保持更新:サポートされていません
+
 *Standard_DC8_v2 を除く
 
 
 
-| Size             | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (MBps) |
+| サイズ             | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (MBps) |
 |------------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|-------------------------------------------|----------------------------------------------|
 | Standard_DC1s_v2 | 1    | 4           | 50                     | 1              | 2000/16 (21)                                                            | 1600/24                                   | 2                                            |
 | Standard_DC2s_v2 | 2    | 8           | 100                    | 2              | 4000/32 (43)                                                            | 3200/48                                   | 2                                            |
@@ -37,7 +41,9 @@ Premium Storage キャッシュ:サポート対象*
 | Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16000/128 (172)                                                         | 12800/192                                 | 2                                            |
 
 - DCv2 シリーズの VM は、[第 2 世代の VM](./linux/generation-2.md#creating-a-generation-2-vm) であり、`Gen2` イメージのみをサポートしています。
-
+- 現在英国南部でのみ使用できます。
+- 前世代の機密コンピューティング VM:[DC シリーズ](sizes-previous-gen.md)
+- Azure Portal を使用する DCv2 VM の作成 [VM の作成 - ポータル](./linux/quick-create-portal.md)
 
 
 

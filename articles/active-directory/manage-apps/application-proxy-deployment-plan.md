@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: 959d959cd269884b3b75c4c23bfd0054ae64ced7
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: b3278615b90fe2ef539456c3f00eb877918aa9c2
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033646"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248371"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD アプリケーション プロキシのデプロイ計画
 
@@ -68,7 +68,7 @@ Azure AD アプリケーション プロキシを構成して実装するには�
 
 * **サービスの制限**: 個々のテナントによるリソースの過剰消費から保護するために、アプリケーションおよびテナントごとにスロットリングの制限が設定されています。 これらの制限については、「[Azure AD サービスの制限と制約](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions)」を参照してください。 このようなスロットルの制限は、通常の使用量をはるかに超えるベンチマークに基づいて行われます。これにより、ほとんどのデプロイに十分なバッファーが提供されます。
 
-* **公開証明書**:カスタム ドメイン名を使用している場合、マイクロソフト以外の信頼された証明機関によって発行された公開証明書を取得する必要があります。 組織の要件によって異なりますが、証明書の入手には時間がかかることがあります。できるだけ早くこのプロセスを開始することをお勧めします。 Azure アプリケーション プロキシでは、標準、[ワイルドカード](application-proxy-wildcard.md)、または SAN ベースの証明書がサポートされます。
+* **公開証明書**:カスタム ドメイン名を使用している場合は、SSL 証明書を取得する必要があります。 組織の要件によって異なりますが、証明書の入手には時間がかかることがあります。できるだけ早くこのプロセスを開始することをお勧めします。 Azure アプリケーション プロキシでは、標準、[ワイルドカード](application-proxy-wildcard.md)、または SAN ベースの証明書がサポートされます。 詳細については、「[Azure AD アプリケーション プロキシでカスタム ドメインを構成する](application-proxy-configure-custom-domain.md)」を参照してください。
 
 * **ドメインの要件**:Kerberos 制約付き委任 (KCD) を利用してご自分の発行済みアプリケーションにシングル サインオンするには、コネクタを実行するサーバーとアプリを実行するサーバーがドメインに参加し、かつ同じドメインまたは信頼する側のドメインに属していることが必要です。
 このトピックについて詳しくは、「[KCD for single sign-on with Application Proxy (アプリケーション プロキシを使用したシングル サインオンのための KCD)](application-proxy-configure-single-sign-on-with-kcd.md)」をご覧ください。 コネクタ サービスはローカル システムのコンテキストで実行します。カスタム ID を使用するように構成しないでください。
@@ -93,8 +93,8 @@ Azure AD アプリケーション プロキシを構成して実装するには�
 
 | 情報の種類| 収集する情報 |
 |---|---|
-| サービスの種類| 例: SharePoint、SAP、CRM、カスタム Web アプリケーション、API |
-| アプリケーション プラットフォーム | 例: Windows IIS、Linux 上の Apache、Tomcat、NGINX |
+| サービスの種類| 次に例を示します。SharePoint、SAP、CRM、カスタム Web アプリケーション、API |
+| アプリケーション プラットフォーム | 次に例を示します。Windows IIS、Linux 上の Apache、Tomcat、NGINX |
 | ドメイン メンバーシップ| Web サーバーの完全修飾ドメイン名 (FQDN) |
 | アプリケーションの場所 | インフラストラクチャ内で Web サーバーまたはファームがある場所 |
 | 内部アクセス | 内部でアプリケーションにアクセスするときに使用される正確な URL。 <br> ファームでどの種類の負荷分散が使用されているか。 <br> アプリケーションがそれ自体以外のソースのコンテンツを描画するかどうか。<br> アプリケーションが WebSocket で動作するかどうかを決定します。 |
@@ -121,7 +121,7 @@ Azure AD アプリケーション プロキシを構成して実装するには�
 
 * 管理者は、アプリケーション プロキシを介して発行されたアプリケーションに対するユーザー割り当てのライフサイクルを定義して監視できます。
 
-**セキュリティ**
+**Security**
 
 * グループ メンバーシップで、または個別にアプリケーションに割り当てられたユーザーのみが、それらのアプリケーションにアクセスできます。
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: 62728f5b66825eb6698e37bb7ad3adbad831b465
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: fac9cba28f90f3642de660ed7d070b165c06bb2e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615344"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303258"
 ---
 # <a name="container-security-in-security-center"></a>Security Center のコンテナーのセキュリティ
 
@@ -33,10 +33,12 @@ Azure Security Center は、コンテナー セキュリティ用の Azure ネ�
 
 これらの機能を使用する方法については、「[コンテナーのセキュリティを監視する](monitor-container-security.md)」を参照してください。
 
-## <a name="vulnerability-management---scanning-container-images-preview"></a>脆弱性管理 - コンテナー イメージのスキャン (プレビュー)
+## <a name="vulnerability-management---scanning-container-images"></a>脆弱性管理 - コンテナー イメージのスキャン
 ARM ベースの Azure コンテナー レジストリを監視するには、Security Center の Standard レベルになっていることを確認してください ([価格](/azure/security-center/security-center-pricing)に関するページを参照してください)。 次に、オプションのコンテナー レジストリ バンドルを有効にします。 新しいイメージがプッシュされると、Security Center では、業界最高レベルの脆弱性スキャン ベンダーである Qualys のスキャナーを使用してイメージがスキャンされます。
 
 Qualys または Security Center によって問題が見つかった場合は、Security Center ダッシュボードで通知されます。 Security Center には、すべての脆弱性について、実行可能な推奨事項、重大度の分類、および問題の修正方法に関するガイダンスが表示されます。 コンテナーの Security Center の推奨事項の詳細については、[推奨事項の参照リスト](recommendations-reference.md#recs-containers)を参照してください。
+
+Security Center では、スキャナーによる検出結果がフィルター処理および分類されます。 イメージが正常な場合、Security Center ではそのように示されます。 Security Center では、解決の必要な問題があるイメージに対してのみ、セキュリティに関する推奨事項が生成されます。 問題があるときにだけ通知することにより、Security Center では不要な情報アラートの可能性が減ります。
 
 ## <a name="environment-hardening"></a>環境のセキュリティ強化
 
@@ -65,7 +67,7 @@ AKS には、クラスターのセキュリティ体制をセキュリティで�
 
 Security Center は、コンテナー化された環境に対するリアルタイムの脅威検出機能を備えており、不審なアクティビティに対してはアラートが生成されます。 ユーザーは、この情報を使用して、迅速にセキュリティの問題を修復し、コンテナーのセキュリティを強化することができます。
 
-脅威は、ホストおよび AKS クラスター レベルで検出されます。 詳細については、[Azure コンテナーに対する脅威の防止](threat-protection.md#azure-containers)に関する記事を参照してください。
+脅威は、ホストおよび AKS クラスター レベルで検出されます。 詳細については、[Azure コンテナーに対する脅威の検出](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-)に関する記事を参照してください。
 
 
 ## <a name="container-security-faq"></a>コンテナー セキュリティに関してよく寄せられる質問
@@ -73,10 +75,12 @@ Security Center は、コンテナー化された環境に対するリアルタ�
 ### <a name="what-types-of-images-can-azure-security-center-scan"></a>Azure Security Center ではどのような種類のイメージをスキャンできますか。
 Security Center では、シェル アクセスを与える Linux OS ベースのイメージがスキャンされます。 
 
-Qualys スキャナーでは、[Docker スクラッチ](https://hub.docker.com/_/scratch/)のようなスーパー ミニマリスト イメージがサポートされておらず、また、アプリケーションとそのランタイム依存関係のみが含まれる (パッケージ マネージャー、シェル、OS がない) "Distroless" イメージがサポートされていません。
+Qualys スキャナーでは、[Docker スクラッチ](https://hub.docker.com/_/scratch/)のようなスーパー ミニマリスト イメージ、またはアプリケーションとそのランタイム依存関係のみが含まれ、パッケージ マネージャー、シェル、OS は含まれない、"ディストリビューションレス" イメージは、サポートされていません。
 
-### <a name="how-does-we-scan-azure-security-center-scan-an-image"></a>Azure Security Center スキャンではどのような方法でイメージをスキャンできますか。
-イメージはレジストリから抽出されます。 その後、隔離されたサンドボックスの中で、既知の脆弱性の一覧を抽出する Qualys スキャナーによって実行されます。
+### <a name="how-does-azure-security-center-scan-an-image"></a>Azure Security Center ではどのような方法でイメージがスキャンされますか。
+イメージがレジストリから抽出されます。 その後、隔離されたサンドボックスの中で、既知の脆弱性の一覧を抽出する Qualys スキャナーによって実行されます。
+
+Security Center では、スキャナーによる検出結果がフィルター処理および分類されます。 イメージが正常な場合、Security Center ではそのように示されます。 Security Center では、解決の必要な問題があるイメージに対してのみ、セキュリティに関する推奨事項が生成されます。 問題があるときにだけ通知することにより、Security Center では不要な情報アラートの可能性が減ります。
 
 ### <a name="how-often-does-azure-security-center-scan-my-images"></a>Azure Security Center ではどのくらいの頻度でイメージがスキャンされますか。
 イメージ スキャンはプッシュのたびにトリガーされます。

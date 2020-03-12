@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/20/2019
-ms.openlocfilehash: a0874826529b5c9ca5d6d4107fe820cd522d81d0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 4e46efaf17ae9bad5df6f1f61f401d3e6de58a85
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894047"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250234"
 ---
 # <a name="apache-zookeeper-server-fails-to-form-a-quorum-in-azure-hdinsight"></a>Apache ZooKeeper サーバーが Azure HDInsight にクォーラムを形成できない
 
@@ -20,24 +20,31 @@ ms.locfileid: "75894047"
 
 ## <a name="issue"></a>問題
 
-Apache ZooKeeper サーバーが正常ではない場合の症状として、リソース マネージャー/名前ノードの両方がスタンバイ モードになっていること、単純な HDFS 操作が機能していないこと、`zkFailoverController` が停止されて開始できないこと、Zookeeper エラーによって Yarn/Spark/Livy ジョブが失敗することがあります。 次のようなエラー メッセージが表示される場合があります。
+Apache ZooKeeper サーバーが正常ではない場合の症状として、リソース マネージャー/名前ノードの両方がスタンバイ モードになっていること、単純な HDFS 操作が機能していないこと、`zkFailoverController` が停止されて開始できないこと、Zookeeper エラーによって Yarn/Spark/Livy ジョブが失敗することがあります。 セキュリティで保護された Spark クラスターまたはインタラクティブ Hive クラスターで LLAP デーモンを起動できない場合もあります。 次のようなエラー メッセージが表示される場合があります。
 
 ```
 19/06/19 08:27:08 ERROR ZooKeeperStateStore: Fatal Zookeeper error. Shutting down Livy server.
 19/06/19 08:27:08 INFO LivyServer: Shutting down Livy server.
 ```
 
+Zookeeper サーバーが /var/log/zookeeper/zookeeper-zookeeper-server-\*.out で任意の Zookeeper ホストにログオンすると、次のエラーが表示される場合もあります。
+
+```
+2020-02-12 00:31:52,513 - ERROR [CommitProcessor:1:NIOServerCnxn@178] - Unexpected Exception:
+java.nio.channels.CancelledKeyException
+```
+
 ## <a name="cause"></a>原因
 
 スナップショット ファイルの容量が大きいか、スナップショット ファイルが破損している場合、ZooKeeper サーバーはクォーラムの形成に失敗します。そのため、ZooKeeper に関連するサービスが異常になります。 ZooKeeper サーバーではデータ ディレクトリから古いスナップショット ファイルが削除されず、代わりにユーザーが定期的なタスクを実行して ZooKeeper の正常性を維持する必要があります。 詳しくは、[ZooKeeper の強みと制限事項](https://zookeeper.apache.org/doc/r3.3.5/zookeeperAdmin.html#sc_strengthsAndLimitations)に関するページをご覧ください。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
-ZooKeeper データ ディレクトリ `/hadoop/zookeeper/version-2` と `/hadoop/hdinsight-zookeepe/version-2` を調べて、スナップショット ファイルのサイズが大きいかどうかを確認します。 大きなスナップショットが存在する場合は、次の手順を実行します。
+ZooKeeper データ ディレクトリ `/hadoop/zookeeper/version-2` と `/hadoop/hdinsight-zookeeper/version-2` を調べて、スナップショット ファイルのサイズが大きいかどうかを確認します。 大きなスナップショットが存在する場合は、次の手順を実行します。
 
-1. `/hadoop/zookeeper/version-2` と `/hadoop/hdinsight-zookeepe/version-2` 内のスナップショットをバックアップします。
+1. `/hadoop/zookeeper/version-2` と `/hadoop/hdinsight-zookeeper/version-2` 内のスナップショットをバックアップします。
 
-1. `/hadoop/zookeeper/version-2` と `/hadoop/hdinsight-zookeepe/version-2` 内のスナップショットをクリーンアップします。
+1. `/hadoop/zookeeper/version-2` と `/hadoop/hdinsight-zookeeper/version-2` 内のスナップショットをクリーンアップします。
 
 1. Apache Ambari UI からすべての ZooKeeper サーバーを再起動します。
 

@@ -1,6 +1,6 @@
 ---
 title: ビデオ
-description: Azure SQL Data Warehouse のさまざまなビデオの再生リストへのリンク。
+description: Azure Synapse Analytics のさまざまなビデオの再生リストへのリンク。
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 02/15/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5d01ff2eb74844997eb1640123e4af59abe2340b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: bc6d0aed017dea46a781ca2b1d8d238e9d761e1b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692438"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192168"
 ---
-# <a name="azure-sql-data-warehouse---videos"></a>Azure SQL Data Warehouse - ビデオ
+# <a name="azure-synapse-analytics---sql-pool-videos"></a>Azure Synapse Analytics - SQL プールのビデオ
 
-新機能とパフォーマンスの向上の詳細については、最新の Azure SQL Data Warehouse に関するビデオをご覧ください。 
+新機能とパフォーマンスの向上の詳細については、最新の Azure Synapse SQL プールに関するビデオをご覧ください。 
 
-開始するには、下の概要ビデオを選択して、Azure SQL Data Warehouse への新しい更新プログラムについて学習してください。 また、サイバー犯罪などの実際のシナリオに取り組むために、最新の Data Warehouse パターンの使用方法についても説明します。
+開始するには、下の概要ビデオを選択して、Azure Synapse SQL プールへの新しい更新プログラムについて学習してください。 また、サイバー犯罪などの実際のシナリオに取り組むために、最新のデータ ウェアハウス パターンの使用方法についても説明します。
 </br>
 
 <a href="https://www.youtube.com/watch?v=7MDCWgxPnVY&list=PLXtHYVsvn_b_v4EKljH6dGo9qJ7JjItWL&index=2">

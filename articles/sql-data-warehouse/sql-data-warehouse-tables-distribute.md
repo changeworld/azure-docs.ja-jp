@@ -1,6 +1,6 @@
 ---
 title: 分散テーブルの設計ガイダンス
-description: Azure SQL Data Warehouse のハッシュ分散テーブルおよびラウンド ロビン分散テーブルを設計するための推奨事項。
+description: SQL Analytics のハッシュ分散テーブルおよびラウンド ロビン分散テーブルを設計するための推奨事項。
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,18 +10,18 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 025c60485625a4ab4d2e29b1e81d8574f6187b93
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.custom: azure-synapse
+ms.openlocfilehash: 3a07dd6ccd5d0bf3440df21b2af4e67cbcf663c9
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049128"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199446"
 ---
-# <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での分散テーブルの設計に関するガイダンス
-Azure SQL Data Warehouse のハッシュ分散テーブルおよびラウンド ロビン分散テーブルを設計するための推奨事項。
+# <a name="guidance-for-designing-distributed-tables-in-sql-analytics"></a>SQL Analytics での分散テーブルの設計に関するガイダンス
+SQL Analytics のハッシュ分散テーブルおよびラウンド ロビン分散テーブルを設計するための推奨事項。
 
-この記事では、読者が SQL Data Warehouse のデータ分散とデータ移動の概念を理解していることを前提としています。  詳細については、「[Azure SQL Data Warehouse - 超並列処理 (MPP) アーキテクチャ](massively-parallel-processing-mpp-architecture.md)」を参照してください。 
+この記事では、SQL Analytics のデータ分散とデータ移動の概念を理解していることを前提としています。  詳細については、[SQL Analytics の超並列処理 (MPP) アーキテクチャ](massively-parallel-processing-mpp-architecture.md)に関する記事を参照してください。 
 
 ## <a name="what-is-a-distributed-table"></a>分散テーブルについて
 分散テーブルは単一のテーブルとして表示されますが、実際には、行が 60 のディストリビューションにわたって格納されています。 行はハッシュ アルゴリズムまたはラウンド ロビン アルゴリズムを使って、分散されます。  
@@ -34,7 +34,7 @@ Azure SQL Data Warehouse のハッシュ分散テーブルおよびラウンド 
 
 - テーブルの大きさはどの程度か。   
 - どの程度の頻度でテーブルが更新されるか。   
-- データ ウェアハウス内にファクト テーブルとディメンション テーブルがあるか。   
+- SQL Analytics データベース内にファクト テーブルとディメンション テーブルがあるか。   
 
 
 ### <a name="hash-distributed"></a>ハッシュによる分散
@@ -42,7 +42,7 @@ Azure SQL Data Warehouse のハッシュ分散テーブルおよびラウンド 
 
 ![分散テーブル](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "分散テーブル")  
 
-同一値は常に同じディストリビューションにハッシュされるため、データ ウェアハウスには行の位置情報に関する組み込みのナレッジがあります。 SQL Data Warehouse ではこのナレッジを使用して、クエリ時のデータ移動を最小化し、クエリ パフォーマンスを向上させます。 
+同一値は常に同じディストリビューションにハッシュされるため、SQL Analytics には行の位置情報に関する組み込みのナレッジがあります。 SQL Analytics ではこのナレッジを使用して、クエリ時のデータ移動を最小化し、クエリ パフォーマンスを向上させます。 
 
 ハッシュ分散テーブルは、スター スキーマにある大規模なファクト テーブルに適しています。 非常に多数の行を格納し、その上で高度なパフォーマンスを実現できます。 もちろん、期待通りの分散システムのパフォーマンスを得るために役立つ設計上の考慮事項はいくつかあります。 適切なディストリビューション列を選択することはそのような考慮事項の 1 つであり、この記事で説明されています。 
 
@@ -65,7 +65,7 @@ Azure SQL Data Warehouse のハッシュ分散テーブルおよびラウンド 
 - 結合がクエリの他の結合ほど重要ではない場合
 - テーブルが一時ステージング テーブルである場合
 
-[Azure SQL Data Warehouse へのニューヨークのタクシー データの読み込み](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse)に関するチュートリアルでは、ラウンド ロビン ステージング テーブルにデータを読み込む例を示しています。
+[ニューヨークのタクシー データの読み込み](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse)に関するチュートリアルでは、SQL Analytics でラウンド ロビン ステージング テーブルにデータを読み込む例を示しています。
 
 
 ## <a name="choosing-a-distribution-column"></a>ディストリビューション列の選択
@@ -109,7 +109,7 @@ WITH
 
 ### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>データ移動を最小化するディストリビューション列を選択する
 
-正確なクエリ結果を得るために、クエリでは 1 つの計算ノードから別の計算ノードへとデータを移動させる場合があります。 データ移動は、一般的に、クエリに分散テーブルでの結合と集計が含まれる場合に発生します。 データ移動を最小化するディストリビューション列を選択することが、SQL Data Warehouse のパフォーマンスを最適化するための最も重要な戦略の 1 つです。
+正確なクエリ結果を得るために、クエリでは 1 つの計算ノードから別の計算ノードへとデータを移動させる場合があります。 データ移動は、一般的に、クエリに分散テーブルでの結合と集計が含まれる場合に発生します。 データ移動を最小化するディストリビューション列を選択することが、SQL Analytics データベースのパフォーマンスを最適化するための最も重要な戦略の 1 つです。
 
 データ移動を最小化するために、以下のようなディストリビューション列を選択します。
 
@@ -213,11 +213,11 @@ RENAME OBJECT [dbo].[FactInternetSales] TO [FactInternetSales_ProductKey];
 RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 分散テーブルを作成するには、以下のいずれかのステートメントを使用します。
 
-- [CREATE TABLE (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [CREATE TABLE AS SELECT (Azure SQL Data Warehouse](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [CREATE TABLE (SQL Analytics)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+- [CREATE TABLE AS SELECT (SQL Analytics)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 

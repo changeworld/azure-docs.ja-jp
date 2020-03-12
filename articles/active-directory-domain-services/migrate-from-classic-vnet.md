@@ -9,18 +9,23 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 114a460b3db67af278f813de2e7a18d571cf3c28
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: e7caacf23cb489da6f9f85748ae839bc4babff8e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613442"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917307"
 ---
 # <a name="migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>クラシック仮想ネットワーク モデルから Resource Manager への Azure AD Domain Services の移行
 
 Azure Active Directory Domain Services (AD DS) では、現在クラシック仮想ネットワーク モデルを使用しているお客様に対して、Resource Manager 仮想ネットワーク モデルへの 1 回限りの移動がサポートされています。 Resource Manager デプロイ モデルを使用する Azure AD DS マネージド ドメインでは、詳細なパスワード ポリシー、監査ログ、アカウント ロックアウト保護などの追加機能が提供されます。
 
 この記事では、移行の利点および考慮事項と、既存の Azure AD DS インスタンスの移行を成功させるために必要な手順について説明します。
+
+> [!NOTE]
+> 2017 年に、Azure AD Domain Services は、Azure Resource Manager ネットワークでホストするために使用できるようになりました。 それ以後、Azure Resource Manager の最新機能を使用して、よりセキュリティで保護されたサービスを構築できるようになりました。 Azure Resource Manager デプロイによってクラシック デプロイは完全に置き換えられるため、Azure AD DS のクラシック仮想ネットワークのデプロイは 2023 年 3 月 1 日に廃止されます。
+>
+> 詳細については、[公式の非推奨に関する通知](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/)を参照してください
 
 ## <a name="overview-of-the-migration-process"></a>移行プロセスの概要
 
@@ -319,7 +324,7 @@ Migrate-Aadds `
     -Credentials $creds
 ```
 
-### <a name="restore"></a>[復元]
+### <a name="restore"></a>復元
 
 最後の手段として、最新の利用可能なバックアップから Azure AD Domain Services を復元できます。 移行の手順 1 で、最新のバックアップを確実に使用可能にするため、バックアップが実行されます。 このバックアップは 30 日間保存されます。
 

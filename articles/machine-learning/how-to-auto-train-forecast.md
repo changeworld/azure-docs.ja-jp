@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f5bd6b741f85f35fe03c941ed09728354d6b3d2d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 859f8a9c2bf644461c8945255de9f925b4e943f4
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905709"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251843"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>時系列予測モデルを自動トレーニングする
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -113,7 +113,7 @@ test_labels = test_data.pop(label).values
 
 [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) オブジェクトは、自動化された機械学習タスクに必要な設定とデータを定義します。 回帰の問題と同様に、タスクの種類、イテレーションの数、トレーニング データ、クロス検証の数など、標準的なトレーニング パラメーターを定義します。 予測タスクの場合は、実験に影響を与える追加パラメーターを設定する必要があります。 次の表に、各パラメーターとその使用法を示します。
 
-| Param | 説明 | Required |
+| Param | 説明 | 必須 |
 |-------|-------|-------|
 |`time_column_name`|時系列の構築とその頻度の推定に使用される入力データで、datetime 列を指定するために使用されます。|✓|
 |`grain_column_names`|入力データ内の個々の系列グループを定義する名前。 グレインが定義されていない場合、データ セットは 1 つの時系列であると見なされます。||
@@ -178,13 +178,14 @@ best_run, fitted_model = local_run.get_output()
 ### <a name="configure-a-dnn-enable-forecasting-experiment"></a>DNN が有効な予測実験を構成する
 
 > [!NOTE]
-> 自動機械学習での予測における DNN サポートはプレビュー段階です。
+> 自動機械学習での予測における DNN サポートはプレビュー段階です。また、ローカル実行ではサポートされていません。
 
 DNN を活用して予測を行うためには、AutoMLConfig の `enable_dnn` パラメーターを true に設定する必要があります。 
 
-DNN を使用するために、GPU SKU の AML コンピューティング クラスターと少なくとも 2 つのノードをコンピューティング ターゲットとして使用することをお勧めします。 詳細については、[AML コンピューティングのドキュメント](how-to-set-up-training-targets.md#amlcompute)をご覧ください。 GPU を含む VM サイズの詳細については、「[GPU 最適化済み仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)」をご覧ください。
+GPU SKU の AML コンピューティング クラスターと少なくとも 2 つのノードをコンピューティング ターゲットとして使用することをお勧めします。 DNN トレーニングが完了するのに十分な時間を確保するために、実験のタイムアウトを最短でも数時間に設定することをお勧めします。
+GPU を含む AML コンピューティングと VM サイズの詳細については、「 [AML のコンピューティングに関するドキュメント](how-to-set-up-training-targets.md#amlcompute) 」と「 [GPU 最適化仮想マシンのサイズに関するドキュメント](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)」をご参照ください。
 
-DNN トレーニングが完了するのに十分な時間を確保するために、実験のタイムアウトを少なくとも数時間に設定することをお勧めします。
+DNN を利用した詳細なコード例については、[飲料生産予測 ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb) をご参照ください。
 
 ### <a name="view-feature-engineering-summary"></a>特徴エンジニアリングの概要を確認する
 

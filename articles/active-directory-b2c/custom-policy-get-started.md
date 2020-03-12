@@ -1,21 +1,22 @@
 ---
-title: カスタム ポリシーの概要 - Azure Active Directory B2C
+title: カスタム ポリシーの概要
+titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C でのカスタム ポリシーの概要について説明します。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/18/2019
-ms.author: marsma
+ms.date: 02/28/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5a0e5846dd541e4997c271aee180b3790efa16e9
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: dc87628d8b47435012c3d20ec2e72ac186983555
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114039"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189329"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーの概要
 
@@ -27,7 +28,7 @@ ms.locfileid: "77114039"
 
 - まだ持っていない場合は、[お使いの Azure サブスクリプションにリンクされている Azure AD B2C テナント](tutorial-create-tenant.md)を作成します。
 - Azure AD B2C と通信できるように、自分が作成した[テナントにアプリケーションを登録](tutorial-register-applications.md)します。
-- [Facebook アカウントでのサインアップとサインインの設定](identity-provider-facebook.md)に関する記事の手順を完了して、Facebook アプリケーションを構成します。
+- [Facebook アカウントでのサインアップとサインインの設定](identity-provider-facebook.md)に関する記事の手順を完了して、Facebook アプリケーションを構成します。 Facebook アプリケーションがなくてもカスタム ポリシーを使用できますが、カスタム ポリシーでソーシャル ログインを有効にする方法を見せる目的でこのチュートリアルで使用されています。
 
 ## <a name="add-signing-and-encryption-keys"></a>署名および暗号化キーを追加します。
 
@@ -43,7 +44,7 @@ ms.locfileid: "77114039"
 1. **名前**に`TokenSigningKeyContainer`を入力します。 プレフィックス `B2C_1A_` が自動的に追加される場合があります。
 1. **キー タイプ**については、**RSA** を選択します。
 1. **[キー使用法]** には **[署名]** を選択します。
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 ### <a name="create-the-encryption-key"></a>暗号化キーを作成します。
 
@@ -52,7 +53,7 @@ ms.locfileid: "77114039"
 1. **名前**に`TokenEncryptionKeyContainer`を入力します。 プレフィックス `B2C_1A`_ が自動的に追加される場合があります。
 1. **キー タイプ**については、**RSA** を選択します。
 1. **[キー使用法]** には **[暗号化]** を選択します。
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 ### <a name="create-the-facebook-key"></a>Facebook のキーを作成します。
 
@@ -63,7 +64,7 @@ ms.locfileid: "77114039"
 1. **名前**には、`FacebookSecret`を入力します。 プレフィックス `B2C_1A_` が自動的に追加される場合があります。
 1. **シークレット**で、developers.facebook.com から Facebook アプリケーションの*アプリ シークレット*を入力します。 この値はシークレットであり、アプリケーション ID ではありません。
 1. **[キー使用法]** には **[署名]** を選択します。
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 ## <a name="register-identity-experience-framework-applications"></a>Identity Experience Framework アプリケーションを登録する
 
@@ -84,7 +85,7 @@ Azure AD B2C では、ローカル アカウントでのユーザーのサイン
 1. **名前**には、`IdentityExperienceFramework`を入力します。
 1. **アプリケーションの種類**については、**Web アプリケーション/ API** を選択します。
 1. **サインオン URL** には、`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`を入力します。ここで、`your-tenant-name`は、Azure AD B2C テナント ドメイン名です。 ここでは、すべての URL で [b2clogin.com](b2clogin.md) を使用してください。
-1. **作成** を選択します。 作成した後は、アプリケーション ID をコピーし、後で使用するために保存します。
+1. **［作成］** を選択します 作成した後は、アプリケーション ID をコピーし、後で使用するために保存します。
 
 #### <a name="app-registrations-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
 
@@ -116,7 +117,7 @@ Azure AD B2C では、ローカル アカウントでのユーザーのサイン
 1. **名前**には、`ProxyIdentityExperienceFramework`を入力します。
 1. **アプリケーションの種類**については、**ネイティブ**を選択します。
 1. **リダイレクト URI** には、`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`を入力します。ここで、`your-tenant-name`は Azure AD B2C テナントです。
-1. **作成** を選択します。 作成した後は、アプリケーション ID をコピーし、後で使用するために保存します。
+1. **［作成］** を選択します 作成した後は、アプリケーション ID をコピーし、後で使用するために保存します。
 1. **[設定]** を選択し、 **[必要なアクセス許可]** を選択したら、 **[追加]** を選択します。
 1. **[API を選択します]** を選択し、**IdentityExperienceFramework** を検索して選択してから、 **[選択]** をクリックします。
 1. **[IdentityExperienceFramework にアクセスする]** の横のチェックボックスにチェックを入れて、 **[選択する]** をクリックし、 **[完了]** をクリックします。
@@ -221,6 +222,8 @@ GitHub からカスタム ポリシー スターター パックを取得し、S
 1. 同じアカウントでサインインし、構成が正しく行われていることを確認します。
 
 ## <a name="add-facebook-as-an-identity-provider"></a>Facebook を ID プロバイダーとして追加する
+
+[前提条件](#prerequisites)で説明したように、Facebook はカスタム ポリシーを使用するための必須条件では "*ありません*" が、カスタム ポリシーでソーシャル ログインを連携できることを示す目的でここでは使用されています。
 
 1. `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** ファイルで、`client_id` の値を Facebook アプリケーション ID に置き換えます。
 

@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2cb7d82efd010fd7c3395a4f6a9217370d9e5779
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 758ac13530752df481d27e7e253f025f5c8d6430
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349585"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302204"
 ---
 # <a name="replace-azure-cosmos-db"></a>REPLACE (Azure Cosmos DB)
- 指定された文字列値のすべての出現箇所をもう 1 つの文字列値に置き換えます。  
+ 指定した文字列値をすべて別の文字列値に置き換えます。  
   
 ## <a name="syntax"></a>構文
   
@@ -43,7 +43,7 @@ REPLACE(<str_expr1>, <str_expr2>, <str_expr3>)
   次の例は、クエリ内での `REPLACE` の使用方法を示しています。  
   
 ```sql
-SELECT REPLACE("This is a Test", "Test", "desk") AS replace 
+SELECT REPLACE("This is a Test", "Test", "desk") AS replace
 ```  
   
  結果セットは次のようになります。  
@@ -52,7 +52,11 @@ SELECT REPLACE("This is a Test", "Test", "desk") AS replace
 [{"replace": "This is a desk"}]  
 ```  
 
-## <a name="next-steps"></a>次の手順
+## <a name="remarks"></a>解説
+
+このシステム関数では、インデックスは使用されません。
+
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB の文字列関数](sql-query-string-functions.md)
 - [Azure Cosmos DB のシステム関数](sql-query-system-functions.md)

@@ -1,20 +1,19 @@
 ---
 title: Apache Hive と HiveQL とは - Azure HDInsight
 description: Apache Hive は、Apache Hadoop 用のデータ ウェアハウス システムです。 Transact-SQL に似た HiveQL を使用して、Hive に格納されているデータを照会することができます。 このドキュメントでは、Azure HDInsight で Hive と HiveQL を使用する方法について説明します。
-keywords: HiveQL, Hive とは, Hadoop HiveQL, Hive の使い方, Hive について, Hive の概要
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 10/04/2019
-ms.openlocfilehash: e07939bd5f0264df637fda439d96be213a8d28d1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 02/28/2020
+ms.openlocfilehash: 20fdafc3077d1017c17d1055596dab150dffec72
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499202"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206641"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight における Apache Hive と HiveQL
 
@@ -24,13 +23,12 @@ Hive では、大規模な構造化データに構造を投影することがで
 
 HDInsight には、特定のワークロード用に調整されたいくつかのクラスター タイプがあります。 Hive クエリには、次のクラスター タイプが最も一般的に使用されます。
 
-* __対話型クエリ__:[Low Latency Analytical Processing (LLAP)](https://cwiki.apache.org/confluence/display/Hive/LLAP) 機能を提供して対話型クエリの応答時間を向上させる Hadoop クラスター。 詳細については、[HDInsight での Interactive Query の使用](../interactive-query/apache-interactive-query-get-started.md)に関するドキュメントをご覧ください。
-
-* __Hadoop__:バッチ処理ワークロード用に調整された Hadoop クラスター。 詳細については、[HDInsight での Apache Hadoop の使用](../hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するドキュメントを参照してください。
-
-* __Spark__:Apache Spark には、Hive を操作するための機能が組み込まれています。 詳細については、「[HDInsight での Apache Spark の開始](../spark/apache-spark-jupyter-spark-sql.md)」をご覧ください。
-
-* __HBase__:HiveQL を使用して、Apache HBase に格納されているデータを照会できます。 詳細については、「[HDInsight での Apache HBase の開始](../hbase/apache-hbase-tutorial-get-started-linux.md)」をご覧ください。
+|クラスターの種類 |説明|
+|---|---|
+|Interactive Query|[Low Latency Analytical Processing (LLAP)](https://cwiki.apache.org/confluence/display/Hive/LLAP) 機能を提供して対話型クエリの応答時間を向上させる Hadoop クラスター。 詳細については、[HDInsight での Interactive Query の使用](../interactive-query/apache-interactive-query-get-started.md)に関するドキュメントをご覧ください。|
+|Hadoop|バッチ処理ワークロード用に調整された Hadoop クラスター。 詳細については、[HDInsight での Apache Hadoop の使用](../hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するドキュメントを参照してください。|
+|Spark|Apache Spark には、Hive を操作するための機能が組み込まれています。 詳細については、「[HDInsight での Apache Spark の開始](../spark/apache-spark-jupyter-spark-sql.md)」をご覧ください。|
+|hbase|HiveQL を使用して、Apache HBase に格納されているデータを照会できます。 詳細については、「[HDInsight での Apache HBase の開始](../hbase/apache-hbase-tutorial-get-started-linux.md)」をご覧ください。|
 
 ## <a name="how-to-use-hive"></a>Hive の使用方法
 
@@ -106,11 +104,11 @@ Hive は **ユーザー定義関数 (UDF)** で拡張することもできます
 
 * [日付/時刻の形式を Apache Hive タイムスタンプに変換する Hive ユーザー定義関数の例](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
 
-## <a id="data"></a>サンプル データ
+## <a name="example-data"></a>サンプル データ
 
 HDInsight の Hive には、`hivesampletable` という名前の内部テーブルがあらかじめ読み込まれています。 HDInsight には、Hive で使用できるサンプル データ セットも用意されています。 これらのデータ セットは、`/example/data` および `/HdiSamples` ディレクトリに格納されています。 これらのディレクトリは、クラスターの既定のストレージ内に存在します。
 
-## <a id="job"></a>Hive クエリの例
+## <a name="example-hive-query"></a>Hive クエリの例
 
 次の HiveQL ステートメントは、`/example/data/sample.log` ファイルに列を投影します。
 
@@ -133,17 +131,14 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 
 前の例では、HiveQL ステートメントは次のアクションを実行します。
 
-* `DROP TABLE`:テーブルが既に存在する場合は、それを削除します。
-
-* `CREATE EXTERNAL TABLE`:新しい**外部**テーブルを Hive に作成します。 外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に、元の形式で残されます。
-
-* `ROW FORMAT`:データの形式を Hive に伝えます。 ここでは、各ログのフィールドは、スペースで区切られています。
-
-* `STORED AS TEXTFILE LOCATION`:データの格納先 (`example/data` ディレクトリ) と、データがテキストとして格納されていることを Hive に伝えます。 データは 1 つのファイルに格納することも、ディレクトリ内の複数のファイルに分散することもできます。
-
-* `SELECT`:列 **t4** に値 **[ERROR]** が含まれているすべての行の数を選択します。 この値を含む行が 3 行あるため、このステートメントでは値 **3** が返されます。
-
-* `INPUT__FILE__NAME LIKE '%.log'` - Hive は、ディレクトリ内のすべてのファイルにスキーマの適用を試みます。 このケースでは、ディレクトリにスキーマに一致しないファイルが含まれています。 結果にガベージ データが含まれないように、このステートメントを使用して、.log で終わるファイルのデータのみを返す必要があることを Hive に指示します。
+|ステートメント |説明 |
+|---|---|
+|DROP TABLE|テーブルが既に存在する場合は、それを削除します。|
+|CREATE EXTERNAL TABLE|新しい**外部**テーブルを Hive に作成します。 外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に、元の形式で残されます。|
+|ROW FORMAT|データの形式を Hive に伝えます。 ここでは、各ログのフィールドは、スペースで区切られています。|
+|STORED AS TEXTFILE LOCATION|データの格納先 (`example/data` ディレクトリ) と、データがテキストとして格納されていることを Hive に伝えます。 データは 1 つのファイルに格納することも、ディレクトリ内の複数のファイルに分散することもできます。|
+|SELECT|列 **t4**に値**[ERROR]** が含まれているすべての行の数を選択します。 この値を含む行が 3 行あるため、このステートメントでは値 **3** が返されます。|
+|INPUT__FILE__NAME LIKE '%.log'|Hive によって、ディレクトリ内のすべてのファイルにスキーマの適用が試みられます。 このケースでは、ディレクトリにスキーマに一致しないファイルが含まれています。 結果にガベージ データが含まれないように、このステートメントを使用して、.log で終わるファイルのデータのみを返す必要があることを Hive に指示します。|
 
 > [!NOTE]  
 > 基になるデータが外部ソースによって更新されると考えられる場合は、外部テーブルを使用する必要があります。 たとえば、データの自動アップロード処理や MapReduce 操作の場合です。
@@ -169,18 +164,18 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 
 これらのステートメントは次のアクションを実行します。
 
-* `CREATE TABLE IF NOT EXISTS`:テーブルが存在しない場合は作成します。 **EXTERNAL** キーワードが使用されていないため、このステートメントは内部テーブルを作成します。 このテーブルは Hive データ ウェアハウスに格納され、完全に Hive によって管理されます。
-
-* `STORED AS ORC`:Optimized Row Columnar (ORC) 形式でデータを格納します。 ORC は、Hive データを格納するための高度に最適化された効率的な形式です。
-
-* `INSERT OVERWRITE ... SELECT`: **[ERROR]** を含む **log4jLogs** テーブルの行を選択し、**errorLogs** テーブルにそのデータを挿入します。
+|ステートメント |説明 |
+|---|---|
+|CREATE TABLE IF NOT EXISTS|テーブルが存在しない場合は作成します。 **EXTERNAL** キーワードが使用されていないため、このステートメントは内部テーブルを作成します。 このテーブルは Hive データ ウェアハウスに格納され、完全に Hive によって管理されます。|
+|STORED AS ORC|Optimized Row Columnar (ORC) 形式でデータを格納します。 ORC は、Hive データを格納するための高度に最適化された効率的な形式です。|
+|INSERT OVERWRITE ...SELECT|**[ERROR] **を含む **log4jLogs** テーブルの行を選択し、** errorLogs** テーブルにそのデータを挿入します。|
 
 > [!NOTE]  
 > 外部テーブルとは異なり、内部デーブルを削除すると、基盤となるデータも削除されます。
 
 ## <a name="improve-hive-query-performance"></a>Hive クエリ パフォーマンスの向上
 
-### <a id="usetez"></a>Apache Tez
+### <a name="apache-tez"></a>Apache Tez
 
 [Apache Tez](https://tez.apache.org) は、Hive などの大量のデータを扱うアプリケーションを同じ規模で遥かに効率的に実行可能にするフレームワークです。 Tez は、既定で有効になっています。  [「Apache Hive on Tez」設計ドキュメント](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez)には、実装の選択肢および構成の調整に関する詳細が記載されています。
 
@@ -212,7 +207,7 @@ SQL Server Integration Services (SSIS) を使用して Hive ジョブを実行�
 
 Apache Oozie は Hadoop ジョブを管理するワークフローおよび調整システムです。 Hive で Apache Oozie を使用する方法の詳細については、[Oozie を使用したワークフローの定義および実行](../hdinsight-use-oozie-linux-mac.md)に関するドキュメントをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、Hive と、HDInsight での Hadoop との使用方法に関する説明は終わりです。次のリンクを使用して、Azure HDInsight を操作するその他の方法について調べることもできます。
 

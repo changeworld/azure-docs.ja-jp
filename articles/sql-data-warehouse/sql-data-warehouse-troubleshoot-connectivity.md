@@ -1,6 +1,6 @@
 ---
 title: 接続性のトラブルシューティング
-description: Azure SQL Data Warehouse の接続性のトラブルシューティング。
+description: SQL Analytics の接続の問題を解決する
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -10,17 +10,17 @@ ms.subservice: supportability
 ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: d1139032176b3b44c58471b87cabd10ffeaa3d20
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 003366a6d88e018090475b6fb22d9042a97af823
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692428"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192253"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>接続の問題のトラブルシューティング
 
-この記事では、SQL Data Warehouse の接続に関連する一般的な問題を解決する方法を挙げます。
+この記事では、SQL Analytics データベースの接続に関連する一般的な問題を解決する方法を挙げます。
 - [サービスが使えることを確認する](./sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
 - [一時停止中の操作やスケーリング操作を確認する](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
 - [ファイアウォール設定を確認する](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
@@ -32,33 +32,33 @@ ms.locfileid: "73692428"
 
 ## <a name="check-service-availability"></a>サービスが使えることを確認する
 
-このサービスが利用できるかどうかを確認します。 Azure portal で、接続しようとしている SQL Data Warehouse に移動します。 左側 TOC パネルで、 **[問題の診断と解決]** をクリックします。
+このサービスが利用できるかどうかを確認します。 Azure portal で、接続しようとしている SQL Analytics データベースに移動します。 左側 TOC パネルで、 **[問題の診断と解決]** をクリックします。
 
 ![[リソース正常性] の選択](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
-SQL Data Warehouse の状態がここに表示されます。 サービスが **[使用可能]** ではない場合、他の手順を試してください。
+SQL Analytics の状態がここに表示されます。 サービスが **[使用可能]** ではない場合、他の手順を試してください。
 
 ![サービスは利用可能](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
 
-[リソース正常性] にデータ ウェアハウスが一時停止されているか、スケーリング中であることが表示されている場合、ガイダンスに従いデータ ウェアハウスを再開します。
+[リソース正常性] に SQL Analytics インスタンスが一時停止されているか、スケーリング中であることが表示されている場合、ガイダンスに従いインスタンスを再開します。
 
 ![一時停止中のサービス](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) リソースの正常性に関する追加情報がここにあります。
 
 ## <a name="check-for-paused-or-scaling-operation"></a>一時停止中の操作やスケーリング操作を確認する
 
-SQL データ ウェアハウスが一時停止しているか、スケーリング中であるかをポータルで確認します。
+SQL Analytics インスタンスが一時停止しているか、スケーリング中であるかをポータルで確認します。
 
 ![一時停止中のサービス](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-サービスが一時停止されているか、スケーリング中の場合、メンテナンス スケジュール中でないことを確認します。 SQL Data Warehouse のポータルの *[概要]* に、選択されているメンテナンス スケジュールが表示されます。
+サービスが一時停止されているか、スケーリング中の場合、メンテナンス スケジュール中でないことを確認します。 SQL Analytics のポータルの *[概要]* に、選択されているメンテナンス スケジュールが表示されます。
 
 ![[概要] のメンテナンス スケジュール](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-表示されない場合、このメンテナンスがスケジュールされたイベントではないことを IT 管理者に確認します。 SQL Data Warehouse を再開するには、[こちら](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute)の手順を行います。
+表示されない場合、このメンテナンスがスケジュールされたイベントではないことを IT 管理者に確認します。 SQL Analytics インスタンスを再開するには、[こちら](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute)の手順を行います。
 
 ## <a name="check-your-firewall-settings"></a>ファイアウォール設定を確認する
 
-SQL Data Warehouse の通信は、ポート 1433 で行われます。   企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 1433 が開放されない限り、Azure SQL Database サーバーに接続することはできません。 ファイアウォール構成の詳細は[こちら](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)にあります。
+SQL Analytics データベースの通信は、ポート 1433 で行われます。   企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 1433 が開放されない限り、Azure SQL Database サーバーに接続することはできません。 ファイアウォール構成の詳細は[こちら](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)にあります。
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>VNet/サービス エンドポイント設定を確認する
 
@@ -68,7 +68,7 @@ SQL Data Warehouse の通信は、ポート 1433 で行われます。   企
 
 ### <a name="software"></a>ソフトウェア
 
-最新のツールで SQL Data Warehouse に接続していることを確認します。
+最新のツールで SQL Analytics データベースに接続していることを確認します。
 
 * SSMS
 * Azure Data Studio
@@ -113,7 +113,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>接続が途切れる問題
 
-キューに追加された要求の数が多く、サーバーに大きな負荷がかかっていないか確認します。 場合によっては、データ ウェアハウスを拡張し、リソースを増やす必要があります。
+キューに追加された要求の数が多く、サーバーに大きな負荷がかかっていないか確認します。 場合によっては、SQL Analytics インスタンスを拡張し、リソースを増やす必要があります。
 
 ## <a name="common-error-messages"></a>一般的なエラー メッセージ
 

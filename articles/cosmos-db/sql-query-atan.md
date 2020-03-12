@@ -4,18 +4,18 @@ description: Azure Cosmos DB の Arctangent (ATAN) SQL システム関数で、�
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8fd398e343a3e617ceb9f49ca8f31ee776a7f073
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 899c94a939be7825dca82522eab235bde9252896
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873456"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302680"
 ---
 # <a name="atan-azure-cosmos-db"></a>ATAN (Azure Cosmos DB)
- タンジェントが指定された数値式となる角度をラジアン単位で返します。 アークタンジェントとも呼ばれます。  
+ タンジェントが指定された数値式となる角度をラジアン単位で返します。 これはアークタンジェント (逆正接) とも呼ばれます。  
   
 ## <a name="syntax"></a>構文
   
@@ -46,8 +46,11 @@ SELECT ATAN(-45.01) AS atan
 [{"atan": -1.5485826962062663}]  
 ```  
   
+## <a name="remarks"></a>解説
 
-## <a name="next-steps"></a>次の手順
+このシステム関数では、インデックスは使用されません。
+
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB の数学関数](sql-query-mathematical-functions.md)
 - [Azure Cosmos DB のシステム関数](sql-query-system-functions.md)

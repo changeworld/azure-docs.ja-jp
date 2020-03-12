@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: ae7812670da836efa326b9224547e4d1b64374c2
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 9213ef03f383dec7109652246411fac154b4a7f9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873286"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302510"
 ---
 # <a name="log-azure-cosmos-db"></a>LOG (Azure Cosmos DB)
  指定された数値式の自然対数を返します。  
@@ -39,9 +39,9 @@ LOG (<numeric_expr> [, <base>])
   
   既定では、LOG() は自然対数を返します。 省略可能な底パラメーターを使用して、対数の底を別の値に変更できます。  
   
-  自然対数は、底 **e** に対する自然対数です。ここで、**e** は、2.718281828 にほぼ等しい無理定数です。  
+  自然対数は **e** を底とする対数です。ここで、**e** は 2.718281828 にほぼ等しい無理定数です。  
   
-  数値の指数の自然対数は数自体です:LOG( EXP( n ) ) = n。 数値の自然対数の指数は数自体です:EXP( LOG( n ) ) = n。  
+  数値の指数の自然対数は、その数値自体になります。LOG( EXP( n ) ) = n。 また、数値の自然対数の指数は、その数値自体になります。EXP( LOG( n ) ) = n。  
   
 ## <a name="examples"></a>例
   
@@ -69,7 +69,11 @@ SELECT EXP(LOG(10)) AS expLog
 [{expLog: 10.000000000000002}]  
 ```  
 
-## <a name="next-steps"></a>次の手順
+## <a name="remarks"></a>解説
+
+このシステム関数では、インデックスは使用されません。
+
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB の数学関数](sql-query-mathematical-functions.md)
 - [Azure Cosmos DB のシステム関数](sql-query-system-functions.md)

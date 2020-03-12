@@ -1,39 +1,37 @@
 ---
-title: Azure Dev Spaces を AKS にインストールし、クライアント側ツールをインストールする
+title: AKS で Azure Dev Spaces を有効にしてクライアント側ツールをインストールする
 services: azure-dev-spaces
 ms.date: 07/24/2019
 ms.topic: conceptual
-description: Azure Dev Spaces を AKS クラスターにインストールし、クライアント側ツールをインストールする方法について説明します。
+description: AKS クラスターで Azure Dev Spaces を有効にして、クライアント側ツールをインストールする方法について説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: 0fd4cce9d25922bea50963c4e87e110759673bbc
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 0b7f6cb4a801c84df59bd5157d8c2a1a15eaaf7e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770630"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302901"
 ---
-# <a name="install-azure-dev-spaces-on-aks-and-the-client-side-tooling"></a>Azure Dev Spaces を AKS にインストールし、クライアント側ツールをインストールする
+# <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>AKS クラスターで Azure Dev Spaces を有効にして、クライアント側ツールをインストールする
 
-この記事では、Azure Dev Spaces を AKS クラスターにインストールする方法と、クライアント側ツールをインストールする方法をいくつかを紹介します。
+この記事では、AKS クラスターで Azure Dev Spaces を有効にする方法と、クライアント側ツールをインストールする方法をいくつかを紹介します。
 
-## <a name="install-azure-dev-spaces-using-the-cli"></a>CLI を使用して Azure Dev Spaces をインストールする
+## <a name="enable-azure-dev-spaces-using-the-cli"></a>CLI を使用して Azure Dev Spaces を有効にする
 
-CLI を使用して Dev Spaces をインストールする前に、以下が必要です。
+CLI を使用して Dev Spaces を有効にする前に、以下が必要です。
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、[無料のアカウント][az-portal-create-account]を作成できます。
 * [Azure CLI がインストールされていること][install-cli]。
 * [サポートされているリージョン][supported-regions]の [AKS クラスター][create-aks-cli]。
 
 `use-dev-spaces` コマンドを使用して AKS クラスターで Dev Spaces を有効にし、プロンプトに従います。
 
-```cmd
+```azurecli
 az aks use-dev-spaces -g myResourceGroup -n myAKSCluster
 ```
 
 上のコマンドを使用すると、*myResourceGroup* グループ内の *myAKSCluster* クラスターで Dev Spaces が有効になり、*default* 開発空間が作成されます。
 
-```cmd
-$ az aks use-dev-spaces -g myResourceGroup -n myAKSCluster
-
+```console
 'An Azure Dev Spaces Controller' will be created that targets resource 'myAKSCluster' in resource group 'myResourceGroup'. Continue? (y/N): y
 
 Creating and selecting Azure Dev Spaces Controller 'myAKSCluster' in resource group 'myResourceGroup' that targets resource 'myAKSCluster' in resource group 'myResourceGroup'...2m 24s
@@ -51,23 +49,23 @@ Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is
 
 `use-dev-spaces` コマンドでは、Azure Dev Spaces CLI もインストールされます。
 
-## <a name="install-azure-dev-spaces-using-the-azure-portal"></a>Azure portal を使用して Azure Dev Spaces をインストールする
+## <a name="enable-azure-dev-spaces-using-the-azure-portal"></a>Azure portal を使用して Azure Dev Spaces を有効にする
 
-Azure portal を使用して Dev Spaces をインストールする前に、以下が必要です。
+Azure portal を使用して Dev Spaces を有効にする前に、以下が必要です。
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、[無料のアカウント][az-portal-create-account]を作成できます。
 * [サポートされているリージョン][supported-regions]の [AKS クラスター][create-aks-portal]。
 
-Azure portal を使用して Azure Dev Spaces をインストールするには:
-1. [Azure portal][az-portal] にサインインする
+Azure portal を使用して Azure Dev Spaces を有効にするには:
+1. [Azure portal][az-portal] にサインインします。
 1. AKS クラスターに移動します。
-1. *[Dev Spaces]* をクリックします。
+1. *[Dev Spaces]* メニュー項目を選択します。
 1. *[Dev Spaces を有効にする]* を *[はい]* に変更して *[保存]* をクリックします。
 
 ![Azure portal での Dev Spaces の有効化](../media/how-to-setup-dev-spaces/enable-dev-spaces-portal.png)
 
-Azure portal を使用して Azure Dev Spaces をインストールしても、Azure Dev Spaces 用のクライアント側ツールはインストール**されません**。
+Azure portal を使用して Azure Dev Spaces を有効にしても、Azure Dev Spaces 用のクライアント側ツールはインストール**されません**。
 
-## <a name="install-the-client-side-tooling"></a>クライアント側ツールをインストールする
+## <a name="install-the-client-side-tools"></a>クライアント側ツールをインストールする
 
 Azure Dev Spaces クライアント側ツールを使用すると、ローカル コンピューターから AKS クラスター上の dev 領域と対話できます。 クライアント側ツールをインストールする方法はいくつかあります。
 

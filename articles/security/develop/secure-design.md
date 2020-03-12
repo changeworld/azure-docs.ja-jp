@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 316ed596cfa49987e229004c388267286ff50927
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 889897cfd4dc8714ae3aea556f0924c9dbcd7825
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000963"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299416"
 ---
 # <a name="design-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で設計する
 この記事では、クラウド向けのアプリケーションを設計するときに考慮すべきセキュリティ アクティビティと制御について説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) の要件と設計のフェーズ中に考慮すべきセキュリティの質問と概念に加えて、トレーニング用のリソースについて説明します。 目標は、より安全なアプリケーションの設計に使用できるアクティビティと Azure サービスの定義を手助けすることです。
@@ -27,7 +27,7 @@ ms.locfileid: "71000963"
 
 - トレーニング
 - 必要条件
-- 設計
+- デザイン
 
 ## <a name="training"></a>トレーニング
 クラウド アプリケーションの開発を開始する前に、Azure のセキュリティとプライバシーについて理解する時間をとってください。 この手順を実行することで、アプリケーションの悪用可能な脆弱性の重大度と数を減らすことができます。 絶えず変化する脅威の状況に適切に対応するための準備がさらに整います。
@@ -38,7 +38,7 @@ ms.locfileid: "71000963"
 
   - [Azure 開発者向けファースト ステップ ガイド](../../guides/developer/azure-developer-guide.md)では、開発のニーズに対応するために Azure プラットフォームの使用を検討している開発者に必要不可欠な情報を提供しています。
 
-  - [SDK/ツール](https://docs.microsoft.com/azure/index#pivot=sdkstools)では、Azure で使用できるツールについて説明しています。
+  - [SDK/ツール](https://docs.microsoft.com/azure/index?pivot=sdkstools)では、Azure で使用できるツールについて説明しています。
 
   - [Azure DevOps Services](https://docs.microsoft.com/azure/devops/) では、開発用の共同作業ツールを提供しています。 これらのツールには、高性能パイプライン、無料の Git リポジトリ、構成可能なかんばんボード、広範囲で自動化されたクラウドベースのロード テスト機能などがあります。
     [DevOps リソース センター](https://docs.microsoft.com/azure/devops/learn/)では、DevOps 手法、Git バージョン管理、アジャイル方式、Microsoft での DevOps の取り組み、独自の DevOps の進行状況を評価するための方法を学習するためのリソースがまとめられています。
@@ -97,7 +97,7 @@ OWASP の上位 10 件は、Web アプリケーションに対する重大なセ
 
   - データの漏洩や改ざんなどの攻撃をどのように克服するのか?
 
-## <a name="design"></a>設計
+## <a name="design"></a>デザイン
 
 設計フェーズは、設計と機能の仕様のベスト プラクティスを確立するために不可欠です。 また、プロジェクト全体を通してセキュリティとプライバシーの問題を軽減するのに役立つリスク分析を実行するためにも不可欠です。
 
@@ -126,7 +126,7 @@ OWASP の上位 10 件は、Web アプリケーションに対する重大なセ
 必ず、最新のバージョンのフレームワークと、そのフレームワークで使用できるすべてのセキュリティ機能を使用してください。 Microsoft は、すべての開発者がクラウド アプリケーションを提供するための、あらゆるプラットフォームまたは言語で動作する包括的な[開発ツールのセット](https://azure.microsoft.com/product-categories/developer-tools/)を提供しています。 さまざまな [SDK](https://azure.microsoft.com/downloads/) から選択することで、任意の言語でコーディングすることができます。
 フル機能の統合開発環境 (IDE) と、高度なデバッグ機能と組み込みの Azure サポートを備えたエディターを利用できます。
 
-Microsoft は、Azure でのアプリケーションの開発に使用できるさまざまな[言語、フレームワーク、およびツール](https://docs.microsoft.com/azure/index#pivot=sdkstools&panel=sdkstools-all)を提供しています。 たとえば、[.NET および .NET Core 開発者向けの Azure](https://docs.microsoft.com/dotnet/azure/) です。 提供されている言語とフレームワークごとに、すぐに使用を開始するのに役立つクイック スタート、チュートリアル、および API リファレンスがあります。
+Microsoft は、Azure でのアプリケーションの開発に使用できるさまざまな[言語、フレームワーク、およびツール](https://docs.microsoft.com/azure/index?pivot=sdkstools&panel=sdkstools-all)を提供しています。 たとえば、[.NET および .NET Core 開発者向けの Azure](https://docs.microsoft.com/dotnet/azure/) です。 提供されている言語とフレームワークごとに、すぐに使用を開始するのに役立つクイック スタート、チュートリアル、および API リファレンスがあります。
 
 Azure は、Web サイトと Web アプリケーションのホストに使用できるさまざまなサービスを提供しています。 これらのサービスにより、.NET、.NET Core、Java、Ruby、Node.js、PHP、Python のうち、使い慣れた言語で開発を行うことができます。
 [Azure App Service Web Apps](../../app-service/overview.md) (Web Apps) はこれらのサービスの 1 つです。
@@ -158,7 +158,7 @@ Azure は、Web サイトと Web アプリケーションのホストに使用�
 | 否認            | 否認防止       | Azure の[監視と診断](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)を有効にする。|
 | 情報漏えい | 機密情報       | [保存中](../fundamentals/encryption-atrest.md)と[転送中](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit)の機密データを暗号化する。 |
 | サービス拒否      | 可用性          | 潜在的なサービス拒否状態のパフォーマンス メトリックを監視する。 接続のフィルターを実装する。 [Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md#next-steps) をアプリケーション設計のベスト プラクティスと組み合わせることにより、DDoS 攻撃に対する防御が提供されます。|
-| 特権の昇格 | Authorization         | Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md) を使用します。|
+| 特権の昇格 | 承認         | Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md) を使用します。|
 
 ### <a name="reduce-your-attack-surface"></a>攻撃の対象となる領域を減らす
 
@@ -316,7 +316,7 @@ Azure Key Vault は*シークレット ストア*であり、アプリケーシ�
 
 アプリケーションが、ユーザーのログイン、パスワードのリセット、パスワードの変更、アカウントのロックアウト、ユーザー登録などのユーザー管理イベントの成功と失敗を監視していることを確認します。 これらのイベントのログを記録すると、疑わしい動作を検出して対処するのに役立ちます。 だれがアプリケーションにアクセスしているかといった、操作データを収集することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次の記事では、セキュリティで保護されたアプリケーションを開発してデプロイするのに役立つセキュリティ制御とアクティビティが推奨されています。
 
 - [セキュリティで保護されたアプリケーションを開発する](secure-develop.md)

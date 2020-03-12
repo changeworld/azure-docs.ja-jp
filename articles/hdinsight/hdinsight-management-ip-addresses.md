@@ -1,19 +1,19 @@
 ---
 title: Azure HDInsight の管理 IP アドレス
 description: Azure HDInsight で仮想ネットワーク用のネットワーク セキュリティ グループとユーザー定義ルートを適切に構成するために、どの IP アドレスからの受信トラフィックを許可する必要があるかについて説明します。
-author: hol82
-ms.author: hol
-ms.reviewer: hrasheed
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/16/2019
-ms.openlocfilehash: 982e80f4c47a6f59b65edb06461a9d592248cc61
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.custom: hdinsightactive
+ms.date: 03/03/2020
+ms.openlocfilehash: 5e8f39b58f258742108fe323d9395efd87bc288f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76929881"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271801"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight の管理 IP アドレス
 
@@ -73,7 +73,7 @@ Azure で提供される DNS サービスを使用している場合は、ポー
 | イギリス | 英国西部 | 51.141.13.110</br>51.141.7.20 | \*:443 | 受信 |
 | &nbsp; | 英国南部 | 51.140.47.39</br>51.140.52.16 | \*:443 | 受信 |
 | United States | 米国中部 | 13.89.171.122</br>13.89.171.124 | \*:443 | 受信 |
-| &nbsp; | East US | 13.82.225.233</br>40.71.175.99 | \*:443 | 受信 |
+| &nbsp; | 米国東部 | 13.82.225.233</br>40.71.175.99 | \*:443 | 受信 |
 | &nbsp; | 米国中北部 | 157.56.8.38</br>157.55.213.99 | \*:443 | 受信 |
 | &nbsp; | 米国中西部 | 52.161.23.15</br>52.161.10.167 | \*:443 | 受信 |
 | &nbsp; | 米国西部 | 13.64.254.98</br>23.101.196.19 | \*:443 | 受信 |
@@ -84,8 +84,9 @@ Azure Government に使用する IP アドレスについては、「[Azure Gove
 
 詳細については、「[ネットワーク トラフィックのコントロール](hdinsight-plan-virtual-network-deployment.md#networktraffic)」のセクションをご覧ください。
 
-ユーザー定義ルート (UDR) を使用する場合は、次ホップが "インターネット" に設定されている上記 IP へのルートを指定し、VNET からそれらの IP への送信トラフィックを許可してください。
+ユーザー定義ルート (UDR) を使用する場合は、次ホップが "インターネット" に設定されている上記 IP へのルートを指定し、仮想ネットワークからそれらの IP への送信トラフィックを許可してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure HDInsight クラスターの仮想ネットワークの作成](hdinsight-create-virtual-network.md)
+* [Azure HDInsight で使用されるネットワーク セキュリティ グループ (NSG) サービス タグ](hdinsight-service-tags.md)

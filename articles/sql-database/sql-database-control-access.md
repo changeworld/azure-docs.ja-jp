@@ -1,30 +1,30 @@
 ---
 title: アクセス権の付与
-description: Microsoft Azure SQL Database と SQL Data Warehouse へのアクセスを許可する方法について説明します。
+description: Microsoft Azure SQL Database および Azure Synapse へのアクセス権の付与について説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse
 ms.custom: sql-data-warehouse, seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 05/08/2019
-ms.openlocfilehash: 05a949bbd99a36c41143190d216116f78c433951
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/06/2020
+ms.openlocfilehash: 5142cc941b37cfef7be79e5129b6df7094bfd00e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826608"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197846"
 ---
-# <a name="azure-sql-database-and-sql-data-warehouse-access-control"></a>Azure SQL Database と SQL Data Warehouse へのアクセスの制御
+# <a name="azure-sql-database-and-azure-synapse-access-control"></a>Azure SQL Database と Azure Synapse のアクセスの制御
 
-Azure の [SQL Database](sql-database-technical-overview.md) と [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) では、セキュリティを提供するために、IP アドレスで接続を制限するファイアウォール規則、ユーザーに ID の指定を要求する認証メカニズム、ユーザーを特定の操作とデータに限定する承認メカニズムによってアクセスを制御します。 
+Azure の [SQL Database](sql-database-technical-overview.md) と [Azure Synapse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) では、セキュリティを提供するために、IP アドレスで接続を制限するファイアウォール規則、ユーザーに ID の指定を要求する認証メカニズム、ユーザーを特定の操作とデータに限定する承認メカニズムによってアクセスを制御します。 
 
 > [!IMPORTANT]
-> SQL Database のセキュリティ機能の概要については、[SQL のセキュリティの概要](sql-database-security-overview.md)に関するページを参照してください。 チュートリアルについては、「[Azure SQL データベースのセキュリティ保護](sql-database-security-tutorial.md)」を参照してください。 SQL Data Warehouse のセキュリティ機能の概要については、[SQL Data Warehouse のセキュリティの概要](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)に関するページを参照してください。
+> SQL Database のセキュリティ機能の概要については、[SQL のセキュリティの概要](sql-database-security-overview.md)に関するページを参照してください。 チュートリアルについては、「[Azure SQL データベースのセキュリティ保護](sql-database-security-tutorial.md)」を参照してください。 Azure Synapse の SQL Analytics のセキュリティ機能の概要については、[Azure Synapse のセキュリティの概要](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)に関する記事を参照してください。
 
 ## <a name="firewall-and-firewall-rules"></a>ファイアウォールとファイアウォール規則
 
@@ -45,13 +45,13 @@ SQL Database は、2 種類の認証をサポートしています。
 
   この認証方法では、Azure Active Directory で管理されている ID を使用し、管理、統合されたドメインをサポートしています。 Azure Active Directory 認証を使用する場合は、"Azure AD 管理者" という、Azure AD ユーザーとグループを管理できるサーバー管理者を別に作成する必要があります。 この管理者は、通常のサーバー管理者が実行できるすべての操作も実行できます。 Azure AD 管理者を作成して Azure Active Directory 認証を有効にする方法のチュートリアルについては、「 [Azure Active Directory の認証を使用して SQL Database に接続する](sql-database-aad-authentication.md) 」を参照してください。
 
-データベース エンジンは、30 分以上アイドル状態が続くと接続を閉じます。 接続する前に、もう一度ログインする必要があります。 SQL Database への継続したアクティブな接続では、少なくとも 10 時間ごとに再認証が必要になります (データベース エンジンによって実行されます)。 データベース エンジンは最初に送信されたパスワードを使用して再認証を試みるため、ユーザー入力は必要ありません。 パフォーマンス上の理由により、パスワードが SQL Database でリセットされると、接続プールが原因で接続がリセットされた場合でも、接続は再認証されません。 これは、オンプレミスの SQL Server とは異なる動作です。 接続が最初に承認されて以来パスワードが変更されている場合は、その接続を終了し、新しいパスワードを使用して新しい接続を作成する必要があります。 `KILL DATABASE CONNECTION` アクセス許可を持つユーザーは、[KILL](https://docs.microsoft.com/sql/t-sql/language-elements/kill-transact-sql) コマンドを使用して SQL Database への接続を明示的に終了できます。
+データベース エンジンは、30 分以上アイドル状態が続くと接続を閉じます。 接続する前に、もう一度ログインする必要があります。 SQL Database への継続したアクティブな接続では、少なくとも 10 時間ごとに再認証が必要になります (データベース エンジンによって実行されます)。 データベース エンジンは最初に送信されたパスワードを使用して再認証を試みるため、ユーザー入力は必要ありません。 パフォーマンス上の理由により、パスワードが SQL Database でリセットされると、接続プールが原因で接続がリセットされた場合でも、接続は再認証されません。 これは、オンプレミスの SQL Server の動作とは異なります。 接続が最初に承認された後でパスワードが変更されている場合は、接続を終了し、新しいパスワードを使用して新しい接続を行う必要があります。 `KILL DATABASE CONNECTION` アクセス許可を持つユーザーは、[KILL](https://docs.microsoft.com/sql/t-sql/language-elements/kill-transact-sql) コマンドを使用して SQL Database への接続を明示的に終了できます。
 
 ユーザー アカウントを master データベースに作成し、サーバーのすべてのデータベースでアクセス許可を付与することができます。または、ユーザー アカウントをデータベース自体に作成することができます (包含ユーザーと呼ばれます)。 ログインの作成と管理については、[ログインの管理](sql-database-manage-logins.md)に関するページを参照してください。 包含データベースを使用して、移植性とスケーラビリティを高めます。 包含ユーザーの詳細については、「[包含データベース ユーザー - データベースの可搬性を確保する](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)」、「[CREATE USER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql)」、「[包含データベース](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases)」を参照してください。
 
 ベスト プラクティスとしては、アプリケーションで専用アカウントを使用して認証することをお勧めします。この方法により、アプリケーションに付与されるアクセス許可を制限し、アプリケーション コードが SQL インジェクション攻撃に対して脆弱な場合に、悪意のあるアクティビティのリスクを軽減できます。 [包含データベース ユーザー](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)を作成する方法をお勧めします。この方法により、アプリがデータベースから直接認証を受けることができます。 
 
-## <a name="authorization"></a>Authorization
+## <a name="authorization"></a>承認
 
 承認とは、Azure SQL Database でユーザーが許可される操作を示すものであり、ユーザー アカウントのデータベース [ロールのメンバーシップ](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles)と[オブジェクト レベルのアクセス許可](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)によって制御されます。 ベスト プラクティスとして、必要最低限の特権をユーザーに付与することをお勧めします。 接続しているサーバー管理者のアカウントは db_owner のメンバーであり、データベース内ですべての操作を実行する権限を持ちます。 スキーマのアップグレードやその他の管理操作をデプロイするために、このアカウントを保存します。 アクセス許可が限定された "ApplicationUser" アカウントを使用して、アプリケーションで必要な最小限の特権により、アプリケーションをデータベースに接続します。 詳細については、[ログインの管理](sql-database-manage-logins.md)に関するページを参照してください。
 
@@ -64,7 +64,7 @@ SQL Database は、2 種類の認証をサポートしています。
 - [データのマスキング](sql-database-dynamic-data-masking-get-started.md) を使用すると、機密データの公開を制限できます。
 - [ストアド プロシージャ](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) を使用すると、データベースで実行できるアクションを制限できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - SQL Database のセキュリティ機能の概要については、[SQL のセキュリティの概要](sql-database-security-overview.md)に関するページを参照してください。
 - ファイアウォール規則の詳細については、[ファイアウォール規則](sql-database-firewall-configure.md)に関するページを参照してください。

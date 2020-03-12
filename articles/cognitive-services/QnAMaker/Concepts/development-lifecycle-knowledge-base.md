@@ -1,22 +1,14 @@
 ---
 title: ナレッジ ベースのライフサイクル - QnA Maker
-titleSuffix: Azure Cognitive Services
 description: QnA Maker は、モデル変更、音声例、公開、エンドポイント クエリからのデータ収集の最適な反復サイクルを学習します。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 01/27/2020
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: b1978e45a7554358ddd948879143411f89e4c1b2
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/27/2020
+ms.openlocfilehash: 98fbd81baa717c981486f33cfb2b3a608cec27c7
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843407"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914954"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>QnA Maker におけるナレッジ ベースのライフサイクル
 QnA Maker は、モデル変更、音声例、公開、エンドポイント クエリからのデータ収集の最適な反復サイクルを学習します。
@@ -87,4 +79,4 @@ QnA Maker ナレッジ ベース (KB) エンドポイントでは、KB のコン
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [信頼度スコア](./confidence-score.md)
+> [アクティブ ラーニングの提案](./active-learning-suggestions.md)

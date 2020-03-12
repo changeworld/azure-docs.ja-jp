@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: c8d2ef0330a32d5cab88355cc749322ec3a5ea30
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ff4079263fd7afb02e132a798997687fad7e9961
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530937"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206981"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight での Apache Kafka に関してよく寄せられる質問
 
@@ -50,7 +50,7 @@ HDInsight Kafka クラスターには、次のリソースが含まれていま�
 
 ## <a name="is-my-data-encrypted-can-i-use-my-own-keys"></a>データは暗号化されますか? 独自のキーを使用できますか?
 
-マネージド ディスク上の Kafka メッセージはすべて、[Azure Storage Service Encryption (SSE)](../../storage/common/storage-service-encryption.md) を使用して暗号化されます。 既定では、転送中のデータ (たとえば、クライアントからブローカーに送信されるデータとその反対) は、暗号化されません。 [独自の SSL を設定する](./apache-kafka-ssl-encryption-authentication.md)ことによって、このようなトラフィックを暗号化できます。 さらに、HDInsight では、保存データを暗号化するために、独自のキーを管理することができます。 詳細については、「[Azure HDInsight で Apache Kafka 用に自分のキーを持ち込む](apache-kafka-byok.md)」を参照してください。
+マネージド ディスク上の Kafka メッセージはすべて、[Azure Storage Service Encryption (SSE)](../../storage/common/storage-service-encryption.md) を使用して暗号化されます。 既定では、転送中のデータ (たとえば、クライアントからブローカーに送信されるデータとその反対) は、暗号化されません。 [独自の SSL を設定する](./apache-kafka-ssl-encryption-authentication.md)ことによって、このようなトラフィックを暗号化できます。 さらに、HDInsight では、保存データを暗号化するために、独自のキーを管理することができます。 詳細については、「[お客様が管理するキー ディスクの暗号化](../disk-encryption.md)」を参照してください。
 
 ## <a name="how-do-i-connect-clients-to-my-cluster"></a>クライアントを自分のクラスターに接続する方法
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: 286e2ad460e98cfeceab52a3ac21bcba8da2cc7f
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: f187dba4eace61695a72e4b7b08731e65ff0d7f9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612810"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299110"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services マネージド ドメインに対するドメイン参加の問題のトラブルシューティング
 
@@ -55,7 +55,7 @@ Azure AD DS マネージド ドメインに参加するための資格情報を�
 
 1. UPN 形式を使用して資格情報を指定します (例: `dee@aaddscontoso.onmicrosoft.com`)。 この UPN が Azure AD で正しく構成されていることを確認してください。
     * 複数のユーザーがテナントで同じ UPN プレフィックスを使用していたり、使用する UPN プレフィックスが最大文字数を超えている場合は、アカウントの *SAMAccountName* が自動生成されることがあります。 そのため、お使いのアカウントの *SAMAccountName* 形式が想定した形式やオンプレミス ドメインで使用する形式と異なる可能性があります。
-1. "*AAD DC 管理者*" グループに属するユーザー アカウントの資格情報を使用して、VM を Azure AD DS マネージド ドメインに参加させます。
+1. Azure AD DS のマネージド ドメインの一部であるユーザー アカウントの資格情報を使用して、マネージド ドメインへの VM の参加を試みます。
 1. [パスワード同期が有効になっている][enable-password-sync]ことを確認し、最初のパスワード同期が完了するまで十分な時間待機します。
 
 ## <a name="next-steps"></a>次のステップ

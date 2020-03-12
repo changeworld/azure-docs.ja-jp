@@ -4,15 +4,15 @@ description: Azure Cosmos DB の SQL システム関数 RIGHT について説明
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 5aeee91db0b1ce891d7e4090a074ddda1f15a576
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 247616d2ac4f2a5799a5896d679f6e6d5917d5a6
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349539"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302153"
 ---
 # <a name="right-azure-cosmos-db"></a>RIGHT (Azure Cosmos DB)
  指定された文字数分、文字列の右側の部分を返します。  
@@ -49,7 +49,11 @@ SELECT RIGHT("abc", 1) AS r1, RIGHT("abc", 2) AS r2
 [{"r1": "c", "r2": "bc"}]  
 ```  
 
-## <a name="next-steps"></a>次の手順
+## <a name="remarks"></a>解説
+
+このシステム関数では、インデックスは使用されません。
+
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB の文字列関数](sql-query-string-functions.md)
 - [Azure Cosmos DB のシステム関数](sql-query-system-functions.md)

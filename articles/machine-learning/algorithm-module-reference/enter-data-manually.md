@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 61c3dde49d4cd298fb3a0f19dc1d8c00e54977af
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 949cdb4c53531a548380a6f0116fb45f91d7ba66
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152348"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268769"
 ---
 # <a name="enter-data-manually-module"></a>データの手動入力モジュール
 
@@ -89,11 +89,9 @@ ms.locfileid: "77152348"
         |0.00016|0.004|0.999961|0.00784|1|  
         |0|0.004|0.999955|0.008615|1|  
   
-4.  それぞれの行の後に Enter キーを押して改行します。  
-  
-     **最後の行の後で必ず Enter キーを押してください。** 
+4.  それぞれの行の後に Enter キーを押して改行します。      
      
-     複数回 Enter キーを押して空の後続行を複数追加した場合、最後の空行は削除されてトリミングされますが、他の空行は欠損値として扱われます。  
+     複数回 Enter キーを押して空の後続行を複数追加した場合、空の行は削除されてトリミングされます。  
   
      欠損値を含んだ行を作成した場合、それらの行は、後からいつでもフィルターで除去できます。  
   

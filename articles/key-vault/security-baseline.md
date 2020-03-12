@@ -5,15 +5,15 @@ author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/22/2020
+ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9b767693691557f684bee59aa1764395dc42bffe
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 7c15786e9a5d2fe65c20a26606087cee994ab54b
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589702"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302850"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Key Vault 用の Azure セキュリティ ベースライン
 
@@ -110,9 +110,7 @@ Azure Key Vault 用 Advanced Threat Protection を設定する: https://docs.mic
 **ガイダンス**: Azure Key Vault インスタンスへのアクセスが必要なリソースについては、Azure Key Vault の Azure サービス タグを使用して、ネットワーク セキュリティ グループまたは Azure Firewall に対するネットワーク アクセス制御を定義します。 セキュリティ規則を作成するときは、特定の IP アドレスの代わりにサービス タグを使うことができます。 規則の適切なソースまたは宛先フィールドにサービス タグ名 (ApiManagement など) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。
 
 
-Azure サービス タグの概要:
-
-https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+Azure サービス タグの概要: https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 **Azure Security Center の監視**: 適用なし
 
@@ -133,7 +131,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 Azure Policy のサンプル:
 
-https://docs.microsoft.com/azure/governance/policy/samples/#networ
+https://docs.microsoft.com/azure/governance/policy/samples
 
 クイック スタート:ポータル内でブループリントを定義して割り当てる:
 
@@ -309,13 +307,9 @@ https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
 (Get-AzResource -ResourceId [KeyVaultResourceID]).Properties.AccessPolicies
 
-Azure Active Directory にアプリケーションを登録する:
+Azure Active Directory にアプリケーションを登録する: https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#registering-an-application-with-azure-active-directory
 
-https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#registering-an-application-with-azure-active-directory
-
-キー コンテナーへのアクセスをセキュリティで保護する:
-
-https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
+キー コンテナーへのアクセスをセキュリティで保護する: https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 
 **Azure Security Center の監視**: はい
 
@@ -376,12 +370,12 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: すべての管理タスクに専用マシン (特権アクセス ワークステーション) を使用する
 
-**ガイダンス**: Azure Multi-Factor Authentication (MFA) が構成された特権アクセス ワークステーション (PAW) を使用してログインし、Key Vault 対応リソースを構成します。
-
+**ガイダンス**: Azure Multi-Factor Authentication (MFA) が構成された特権アクセス ワークステーション (PAW) を使用してログインし、Key Vault 対応リソースを構成します。 
 
 特権アクセス ワークステーション: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations 
 
 クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+
 
 **Azure Security Center の監視**: 適用なし
 
@@ -391,32 +385,20 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **ガイダンス**: Azure Active Directory (AAD) Privileged Identity Management (PIM) を使用して、環境内で疑わしいアクティビティまたは安全でないアクティビティが発生したときにログとアラートを生成します。 AAD のリスク検出を使用して、危険なユーザーの行動に関するアラートとレポートを表示します。 追加のログ記録を行うには、Azure Security Center のリスク検出アラートを Azure Monitor に送信し、アクショングループを使用してカスタムのアラートまたは通知を構成します。
 
-
 Azure Key Vault 用 Advanced Threat Protection (ATP) を有効にして、疑わしいアクティビティに関するアラートを生成します。
 
-
-Azure AD Privileged Identity Management (PIM) をデプロイする:
-
-https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+Azure AD Privileged Identity Management (PIM) をデプロイする: https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
 Azure Key Vault 用 Advanced Threat Protection を設定する (プレビュー): https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault
 
+Azure Key Vault のアラート (プレビュー): https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurekv
 
-Azure Key Vault のアラート (プレビュー):
+Azure Active Directory リスク検出: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
-https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurekv
-
-
-Azure Active Directory リスク検出:
-
-https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+Azure portal でのアクション グループの作成および管理: https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
 
 
-Azure portal でのアクション グループの作成および管理:
-
-https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
-
-**Azure Security Center の監視**: 現在は使用できません
+**Azure Security Center の監視**: はい
 
 **責任**: Customer
 
@@ -426,6 +408,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
 
 Azure Active Directory 条件付きアクセスの場所の条件の概要: https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
+
 **Azure Security Center の監視**: 現在は使用できません
 
 **責任**: Customer
@@ -433,6 +416,8 @@ Azure Active Directory 条件付きアクセスの場所の条件の概要: http
 ### <a name="39-use-azure-active-directory"></a>3.9: Azure Active Directory を使用する
 
 **ガイダンス**: Key Vault などの Azure リソースの主要な認証および承認システムとして Azure Active Directory (AAD) を使用します。 これにより、ロールベースのアクセス制御 (RBAC) で機密性の高いリソースを管理できるようになります。
+
+ 
 
 クイック スタート:Azure Active Directory で新しいテナントを作成する: https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
 
@@ -445,10 +430,14 @@ Azure Active Directory 条件付きアクセスの場所の条件の概要: http
 **ガイダンス**: Azure Active Directory (AAD) のログを確認して、Azure Key Vault 管理者ロールを持つ古いアカウントを検出します。 また、AAD アクセス レビューを使用して、グループ メンバーシップ、Azure Key Vault へのアクセスに使用される可能性のあるエンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 ユーザー アクセスを定期的 (たとえば、90 日ごと) に確認し、正当なユーザーだけが継続してアクセスできるようにする必要があります。
 
 
-Azure Active Directory のレポートと監視のドキュメント: https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+Azure Active Directory のレポートと監視のドキュメント:
+
+https://docs.microsoft.com/azure/active-directory/reports-monitoring/
 
 
-Azure AD アクセス レビューとは: https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+Azure AD アクセス レビューとは:
+
+https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
 **Azure Security Center の監視**: はい
 
@@ -460,7 +449,7 @@ Azure AD アクセス レビューとは: https://docs.microsoft.com/azure/activ
 
 Azure AD ログを Azure Monitor ログと統合する: https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-古い Key Vault ソリューションからの移行: https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault#migrating-from-the-old-key-vault-solution       
+古い Key Vault ソリューションからの移行: https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault#migrating-from-the-old-key-vault-solution
 
 **Azure Security Center の監視**: はい
 
@@ -468,17 +457,13 @@ Azure AD ログを Azure Monitor ログと統合する: https://docs.microsoft.c
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: アカウント ログイン動作の偏差に関するアラートを生成する
 
-**ガイダンス**: Azure Active Directory の Identity Protection およびリスク検出機能を使用すると、Azure Key Vault で保護されたリソースに関連して検出された疑わしいアクションへの自動応答を構成できます。 組織のセキュリティ対応を実装するには、Azure Sentinel によって自動応答を有効にする必要があります。
-
+**ガイダンス**: Azure Active Directory の Identity Protection およびリスク検出機能を使用すると、Azure Key Vault で保護されたリソースに関連して検出された疑わしいアクションへの自動応答を構成できます。 組織のセキュリティ対応を実装するには、Azure Sentinel によって自動応答を有効にする必要があります。 
 
 Azure Active Directory ポータルのリスクの高いサインイン レポート: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins 
 
 方法:リスク ポリシーを構成して有効にする: https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
-
-Azure Sentinel をオンボードする方法:
-
-https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Azure Sentinel をオンボードする方法: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Azure Security Center の監視**: はい
 
@@ -501,10 +486,10 @@ https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 
-**ガイダンス**: タグを使用すると、Azure Key Vault 対応リソースに関する機密情報を格納または処理する Azure リソースの追跡に役立ちます。
-
+**ガイダンス**: タグを使用すると、Azure Key Vault 対応リソースに関する機密情報を格納または処理する Azure リソースの追跡に役立ちます。 
 
 タグを使用した Azure リソースの整理: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+
 
 **Azure Security Center の監視**: 適用なし
 
@@ -514,13 +499,12 @@ https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **ガイダンス**: Azure Key Vault へのアクセスをセキュリティで保護するには、特定のサブネットへのアクセスを制限するように構成された仮想ネットワーク サービス エンドポイントを使用します。
 
-
 ファイアウォール規則が有効になると、許可されたサブネットまたは IP アドレス範囲から要求が送信された場合にのみ、Azure Key Vault データ プレーンの操作を実行できます。 これは、Azure portal での Azure Key Vault へのアクセスにも適用されます。 Azure portal からキー コンテナーを参照することはできますが、クライアント マシンが許可リストに登録されていない場合は、キー、シークレット、または証明書を一覧表示できないことがあります。 これは、Azure Key Vault の選択機能およびその他の Azure サービスにも影響します。 キー コンテナーを一覧表示できても、キーを一覧表示できないことがあります (ファイアウォール規則によってクライアント マシンでその操作が許可されていない場合)。
-
 
 Azure Key Vault のファイアウォールと仮想ネットワークを構成する: https://docs.microsoft.com/azure/key-vault/key-vault-network-security
 
 Azure Key Vault の仮想ネットワーク サービス エンドポイント: https://docs.microsoft.com/azure/key-vault/key-vault-overview-vnet-service-endpoints
+
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -536,16 +520,17 @@ Azure Key Vault のファイアウォールと仮想ネットワークを構成�
 
 Azure Key Vault のログ記録: https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
+
 **Azure Security Center の監視**: はい
 
 **責任**: Customer
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4:転送中のすべての機密情報を暗号化する
 
-**ガイダンス**: 認証、管理、データ プレーン アクセスに関する Azure Key Vault へのトラフィックはすべて暗号化され、HTTPS (ポート 443) 経由で送信されます。 (ただし CRL については、トラフィックが HTTP (ポート 80) 経由になる場合があります。)
-
+**ガイダンス**: 認証、管理、データ プレーン アクセスに関する Azure Key Vault へのトラフィックはすべて暗号化され、HTTPS (ポート 443) 経由で送信されます。 (ただし CRL については、トラフィックが HTTP (ポート 80) 経由になる場合があります。) 
 
 ファイアウォールの向こう側にある Azure Key Vault へのアクセス: https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall
+
 
 **Azure Security Center の監視**: 適用なし
 
@@ -652,7 +637,7 @@ Azure Security Center でセキュア スコアを向上する:
 
 https://docs.microsoft.com/azure/security-center/security-center-secure-score
 
-**Azure Security Center の監視**: 現在は使用できません
+**Azure Security Center の監視**: 適用なし
 
 **責任**: Customer
 
@@ -710,7 +695,7 @@ https://docs.microsoft.com/azure/governance/management-groups/create
 
 ### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4:承認された Azure リソースとソフトウェア タイトルのインベントリを管理する
 
-**ガイダンス**: コンピューティング リソース用に承認された Azure リソースと承認されたソフトウェアの一覧を定義します。
+**ガイダンス**:コンピューティング リソース用に承認された Azure リソースと承認されたソフトウェアの一覧を定義します。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -728,6 +713,7 @@ https://docs.microsoft.com/azure/governance/management-groups/create
 チュートリアル:コンプライアンスを強制するポリシーの作成と管理: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 クイック スタート:Azure Resource Graph エクスプローラーを使用して初めての Resource Graph クエリを実行する: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+
 
 **Azure Security Center の監視**: 適用なし
 
@@ -768,6 +754,7 @@ https://docs.microsoft.com/azure/governance/management-groups/create
 
 Azure Policy のサンプル: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
+
 **Azure Security Center の監視**: 適用なし
 
 **責任**: Customer
@@ -782,7 +769,8 @@ Azure Policy のサンプル: https://docs.microsoft.com/azure/governance/policy
 
 ### <a name="611-limit-users-ability-to-interact-with-azureresources-manager-via-scripts"></a>6.11:スクリプトを使用して Azure Resource Manager を操作するユーザーの権限を制限する
 
-**ガイダンス**: Azure Conditional Access を使用して Azure Resource Manager を操作するユーザーの権限を制限するには、"Microsoft Azure 管理" アプリに対して [アクセスのブロック] を構成します。 これにより、Key Vault の構成を含むリソースなど、高セキュリティ環境内のリソースの作成と変更を防ぐことができます。
+**ガイダンス**: Azure Conditional Access を使用して Azure Resource Manager (ARM) を操作するユーザーの権限を制限するには、"Microsoft Azure 管理" アプリに対して [アクセスのブロック] を構成します。 これにより、Key Vault の構成を含むリソースなど、高セキュリティ環境内のリソースの作成と変更を防ぐことができます。
+
 
 条件付きアクセスを使用して Azure 管理へのアクセスを管理する: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
@@ -814,17 +802,29 @@ Azure Policy のサンプル: https://docs.microsoft.com/azure/governance/policy
 
 **ガイダンス**: Azure Key Vault インスタンスの構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.KeyVault" 名前空間で Azure Policy エイリアスを使用します。 Azure Key Vault に次のような組み込みの Azure Policy 定義を使用することもできます。
 
-- キー コンテナー オブジェクトが回復可能でなければならない
-- Key Vault の診断設定を Log Analytics ワークスペースにデプロイする
-- Key Vault で診断ログを有効にする必要がある
-- Key Vault で仮想ネットワーク サービス エンドポイントを使用する必要がある
-- Key Vault の診断設定をイベント ハブにデプロイする
+
+キー コンテナー オブジェクトが回復可能でなければならない
+
+Key Vault の診断設定を Log Analytics ワークスペースにデプロイする
+
+Key Vault で診断ログを有効にする必要がある
+
+Key Vault で仮想ネットワーク サービス エンドポイントを使用する必要がある
+
+Key Vault の診断設定をイベント ハブにデプロイする
+
 
 Azure Key Vault インスタンスの安全な構成基準として Azure Security Center の推奨事項を使用します。
 
-使用可能な Azure Policy エイリアスを表示する方法: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-チュートリアル:コンプライアンスを強制するポリシーの作成と管理: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+使用可能な Azure Policy エイリアスを表示する方法:
+
+https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+
+
+チュートリアル:コンプライアンスを強制するポリシーの作成と管理:
+
+https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Azure Security Center の監視**: はい
 
@@ -867,7 +867,7 @@ https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5:Azure リソースの構成を安全に格納する
 
-**ガイダンス**: Azure Key Vault 対応リソースにカスタムの Azure Policy 定義を使用している場合は、Azure DevOps/Repos を使用してコードを安全に格納して管理します。
+**ガイダンス**: Azure Key Vault 対応リソースにカスタムの Azure Policy 定義を使用している場合は、Azure Repos を使用してコードを安全に格納して管理します。
 
 
 Azure DevOps にコードを格納する方法: 
@@ -1050,6 +1050,7 @@ Key Vault のシークレットをバックアップする方法: https://docs.m
 
 Azure Backup を有効にする方法: https://docs.microsoft.com/azure/backup
 
+
 **Azure Security Center の監視**: 適用なし
 
 **責任**: Customer
@@ -1103,6 +1104,7 @@ Key Vault のシークレットを復元する方法: https://docs.microsoft.com
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: バックアップとカスタマー マネージド キーの保護を確保する
 
 **ガイダンス**: Azure Key Vault に対して論理的な削除が有効になっていることを確認します。 論理的な削除では、削除されたキーコンテナーと、キー、シークレット、証明書などのコンテナー オブジェクトを復元できます。 
+
 
 Azure Key Vault の論理的な削除を使用する方法: 
 
@@ -1171,7 +1173,7 @@ https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4:セキュリティ インシデントの連絡先の詳細を指定し、セキュリティ インシデントのアラート通知を構成します
 
-**ガイダンス**: セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) でユーザーのデータが違法または権限のないユーザーによってアクセスされたことが検出された場合に、Microsoft からの連絡先として使用されます。  事後にインシデントをレビューして、問題が解決されていることを確認します。
+**ガイダンス**:セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) でユーザーのデータが違法または権限のないユーザーによってアクセスされたことが検出された場合に、Microsoft からの連絡先として使用されます。  事後にインシデントをレビューして、問題が解決されていることを確認します。
 
 
 
@@ -1199,7 +1201,7 @@ Azure Sentinel にアラートをストリーミングする方法:
 
 https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
-**Azure Security Center の監視**: 適用なし
+**Azure Security Center の監視**: 現在は使用できません
 
 **責任**: Customer
 
@@ -1213,7 +1215,7 @@ https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
 https://docs.microsoft.com/azure/security-center/workflow-automation
 
-**Azure Security Center の監視**: 適用なし
+**Azure Security Center の監視**: 現在は使用できません
 
 **責任**: Customer
 
@@ -1239,3 +1241,7 @@ https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **責任**: 共有
 
+## <a name="next-steps"></a>次のステップ
+
+- 「[Azure セキュリティ ベンチマーク](https://docs.microsoft.com/azure/security/benchmarks/overview)」を参照します
+- [Azure セキュリティ ベースライン](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)の詳細について学習します

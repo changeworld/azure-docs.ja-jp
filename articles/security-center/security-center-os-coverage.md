@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 089fcc89f330e47a09187b5338176bf23fd801bb
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: e13149ba802f0f8b9a565e0aabd86ae05167f18b
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603754"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208821"
 ---
 # <a name="supported-platforms"></a>サポートされているプラットフォーム 
 
@@ -35,7 +35,6 @@ Azure サブスクリプションでアクティブ化された Azure 環境で�
 
 > [!NOTE]
 > すべてのセキュリティ機能を利用するには、Azure Security Center が使用する [Log Analytics エージェント](../azure-monitor/platform/agents-overview.md#log-analytics-agent)をインストールし、[Azure Security Center にデータを送信するように適切に構成する](security-center-enable-data-collection.md#manual-agent)必要があります。
-
 
 次のセクションでは、Azure Security Center が使用する [Log Analytics エージェント](../azure-monitor/platform/agents-overview.md#log-analytics-agent)を実行できる、サポート対象のサーバー オペレーティング システムの一覧を示します。
 
@@ -86,38 +85,6 @@ Azure Security Center は Azure サービスと統合し、Windows ベースの�
 
 クラウド サービスで実行する仮想マシン もサポートされます。 監視されるのは、運用スロットで実行するクラウド サービスの Web ロールと worker ロールだけです。 Cloud Services の詳細については、「[Azure Cloud Services の概要](../cloud-services/cloud-services-choose-me.md)」をご覧ください。
 
-## PaaS サービス <a name="paas-services"></a>
-
-Azure Security Center では、次の Azure PaaS リソースがサポートされています。
-
-* SQL
-* PostgreSQL
-* MySQL
-* Cosmos DB
-* ストレージ アカウント
-* App Service
-* Function
-* クラウド サービス
-* VNet
-* Subnet
-* NIC
-* NSG
-* Batch アカウント
-* Service Fabric アカウント
-* Automation アカウント
-* Load Balancer
-* 検索
-* Service Bus 名前空間
-* Stream Analytics
-* イベント ハブの名前空間
-* ロジック アプリ
-* Redis
-* Data Lake Analytics
-* Data Lake Store
-* Key Vault
-
-上記の PaaS リソースの一覧でサポートされている機能の詳細については、「[PaaS サービスでサポートされる機能](security-center-services.md#paas-services)」をご覧ください。
-
 Azure Stack に存在する Virtual Machines の保護もサポートされています。 Security Center と Azure Stack との統合の詳細については、[Azure Stack 仮想マシンの Security Center へのオンボード](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
@@ -126,4 +93,4 @@ Azure Stack に存在する Virtual Machines の保護もサポートされて�
 - [Security Center でデータを管理および保護する](security-center-data-security.md)方法を確認します。
 - [Azure Security Center を導入するための設計上の考慮事項を計画し、理解する](security-center-planning-and-operations-guide.md)方法について説明しています。
 - [さまざまなクラウド環境で使用できる機能](security-center-services.md)について確認します。
-- [Azure Security Center での VM と サーバーの脅威検出](security-center-alerts-iaas.md)の詳細を確認します。
+- [Azure Security Center での Windows マシンおよび Linux マシンの脅威の防止](threat-protection.md#windows-machines)について詳しく確認します。

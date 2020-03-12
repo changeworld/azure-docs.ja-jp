@@ -14,45 +14,42 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
-ms.author: zhchia
-ms.openlocfilehash: d9720ca769eab8cf0e4ee763c720f6ba12ebb1d9
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.author: Zhchia
+ms.openlocfilehash: 27a26a0c8378f34794afd87cf11b6bb878f7b53c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063307"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248423"
 ---
 # <a name="tutorial-configure-rollbar-for-automatic-user-provisioning"></a>チュートリアル:Rollbar を構成し、自動ユーザー プロビジョニングに対応させる
 
-このチュートリアルの目的は、Azure AD が自動的にユーザーまたはグループを Rollbar にプロビジョニングまたは Rollbar からプロビジョニング解除するように構成するために、Rollbar と Azure Active Directory (Azure AD) で実行される手順を示すことです。
+このチュートリアルでは、自動ユーザー プロビジョニングを構成するために Rollbar と Azure Active Directory (Azure AD) の両方で行う必要がある手順について説明します。 構成すると、Azure AD では、Azure AD プロビジョニング サービスを使用して、[Rollbar](https://rollbar.com/pricing/) に対するユーザーとグループのプロビジョニングおよびプロビジョニング解除が自動的に行われます。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。 
 
-> [!NOTE]
-> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。
->
-> 現在、このコネクタはパブリック プレビュー段階にあります。 プレビュー機能を使用するための一般的な Microsoft Azure 使用条件の詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
+## <a name="capabilities-supported"></a>サポートされる機能
+> [!div class="checklist"]
+> * Rollbar でユーザーを作成する
+> * アクセスが不要になった場合に Rollbar のユーザーを削除する
+> * Azure AD と Rollbar の間でユーザー属性の同期を維持する
+> * Rollbar でグループとグループ メンバーシップをプロビジョニングする
+> * Rollbar への[シングル サインオン](https://docs.microsoft.com/azure/active-directory/saas-apps/rollbar-tutorial) (推奨)
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
-* Azure AD テナント。
+* [Azure AD テナント](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* プロビジョニングを構成するための[アクセス許可](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。 
 * Enterprise プランがある [Rollbar テナント](https://rollbar.com/pricing/)。
 * Admin アクセス許可がある Rollbar のユーザー アカウント。
 
-## <a name="assigning-users-to-rollbar"></a>Rollbar へのユーザーの割り当て
+## <a name="step-1-plan-your-provisioning-deployment"></a>手順 1. プロビジョニングのデプロイを計画する
+1. [プロビジョニング サービスのしくみ](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)を確認します。
+2. [プロビジョニングの対象](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)となるユーザーを決定します。
+3. [Azure AD と Rollbar の間でマップする](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)データを決定します。 
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
-
-自動ユーザー プロビジョニングを構成して有効にする前に、Rollbar へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを Rollbar に割り当てることができます。
-* [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
-
-## <a name="important-tips-for-assigning-users-to-rollbar"></a>ユーザーを Rollbar に割り当てる際の重要なヒント
-
-* 単一の Azure AD ユーザーを Rollbar に割り当て、自動ユーザー プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
-
-* Rollbar にユーザーを割り当てるときは、有効なアプリケーション固有ロール (使用可能な場合) を割り当てダイアログで選択する必要があります。 **既定のアクセス** ロールのユーザーは、プロビジョニングから除外されます。
-
-## <a name="setup-rollbar-for-provisioning"></a>プロビジョニングのために Rollbar をセットアップする
+## <a name="step-2-configure-rollbar-to-support-provisioning-with-azure-ad"></a>手順 2. Azure AD でのプロビジョニングをサポートするように Rollbar を構成する
 
 Azure AD での自動ユーザー プロビジョニング用に Rollbar を構成する前に、Rollbar で SCIM プロビジョニングを有効にする必要があります。
 
@@ -60,42 +57,31 @@ Azure AD での自動ユーザー プロビジョニング用に Rollbar を構�
 
     ![Rollbar 管理コンソール](media/rollbar-provisioning-tutorial/image00.png)
 
-2. **[Rollbar Tenant Name] (Rollbar テナント名) > [Account Access Tokens] (アカウント アクセス トークン)** に移動します。
+2. **[Rollbar Tenant Name] (Rollbar テナント名) > [ID プロバイダー]** に移動します。
 
-    ![Rollbar 管理コンソール](media/rollbar-provisioning-tutorial/account.png)
+    ![Rollbar ID プロバイダー](media/rollbar-provisioning-tutorial/idp.png)
 
-3. **[SCIM]** の値をコピーします。 この値を、Azure portal で Rollbar アプリケーションの [プロビジョニング] タブ内の [シークレット トークン] フィールドに入力します。
+3. **[プロビジョニングのオプション]** まで下にスクロールします。 アクセス トークンをコピーします。 この値を、Azure portal で Rollbar アプリケーションの [プロビジョニング] タブ内の **[シークレット トークン]** フィールドに入力します。 **[Enable user and team provisioning]\(ユーザーとチームのプロビジョニングを有効にする\)** チェックボックスをオンにし、 **[保存]** をクリックします。
 
-    ![Rollbar 管理コンソール](media/rollbar-provisioning-tutorial/scim.png)
+    ![Rollbar アクセス トークン](media/rollbar-provisioning-tutorial/token.png)
 
-## <a name="add-rollbar-from-the-gallery"></a>ギャラリーから Rollbar を追加する
 
-Azure AD を使用した自動ユーザー プロビジョニング用に Rollbar を構成するには、Azure AD アプリケーション ギャラリーから管理対象の SaaS アプリケーションの一覧に Rollbar を追加する必要があります。
+## <a name="step-3-add-rollbar-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから Rollbar を追加する
 
-**Azure AD アプリケーション ギャラリーから Rollbar を追加するには、次の手順を行います。**
+Azure AD アプリケーション ギャラリーから Rollbar を追加して、Rollbar へのプロビジョニングの管理を開始します。 SSO のために Rollbar を以前に設定している場合は、その同じアプリケーションを使用することができます。 ただし、統合を初めてテストするときは、別のアプリを作成することをお勧めします。 ギャラリーからアプリケーションを追加する方法の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)を参照してください。 
 
-1. **[Azure portal](https://portal.azure.com)** の左側のナビゲーション パネルで、 **[Azure Active Directory]** を選択します。
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>手順 4. プロビジョニングの対象となるユーザーを定義する 
 
-    ![Azure Active Directory のボタン](common/select-azuread.png)
+Azure AD プロビジョニング サービスを使用すると、アプリケーションへの割り当て、ユーザーまたはグループの属性に基づいてプロビジョニングされるユーザーのスコープを設定できます。 割り当てに基づいてアプリにプロビジョニングされるユーザーのスコープを設定する場合、以下の[手順](../manage-apps/assign-user-or-group-access-portal.md)を使用して、ユーザーとグループをアプリケーションに割り当てることができます。 ユーザーまたはグループの属性のみに基づいてプロビジョニングされるユーザーのスコープを設定する場合、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)で説明されているスコープ フィルターを使用できます。 
 
-2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+* Rollbar にユーザーとグループを割り当てるときは、**既定のアクセス**以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)してロールを追加することができます。 
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+* 小さいところから始めましょう。 全員にロールアウトする前に、少数のユーザーとグループでテストします。 プロビジョニングのスコープが割り当て済みユーザーとグループに設定される場合、これを制御するには、1 つまたは 2 つのユーザーまたはグループをアプリに割り当てます。 スコープがすべてのユーザーとグループに設定されている場合は、[属性ベースのスコープ フィルター](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)を指定できます。 
 
-3. 新しいアプリケーションを追加するには、ウィンドウの上部にある **[新しいアプリケーション]** ボタンを選びます。
 
-    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
+## <a name="step-5-configure-automatic-user-provisioning-to-rollbar"></a>手順 5. Rollbar への自動ユーザー プロビジョニングを構成する 
 
-4. 検索ボックスに「**Rollbar**」と入力し、結果パネルで **[Rollbar]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
-
-    ![結果一覧の Rollbar](common/search-new-app.png)
-
-## <a name="configuring-automatic-user-provisioning-to-rollbar"></a>Rollbar への自動ユーザー プロビジョニングの構成 
-
-このセクションでは、Azure AD プロビジョニング サービスを構成し、Azure AD でのユーザーやグループの割り当てに基づいて Rollbar のユーザーやグループを作成、更新、無効化する手順について説明します。
-
-> [!TIP]
-> Rollbar では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Rollbar シングル サインオンのチュートリアル](rollbar-tutorial.md)に関するページで説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+このセクションでは、Azure AD でのユーザー、グループ、またはその両方の割り当てに基づいて、TestApp でユーザー、グループ、またはその両方が作成、更新、および無効化されるように Azure AD プロビジョニング サービスを構成する手順について説明します。
 
 ### <a name="to-configure-automatic-user-provisioning-for-rollbar-in-azure-ad"></a>Azure AD で Rollbar の自動ユーザー プロビジョニングを構成するには
 
@@ -115,33 +101,40 @@ Azure AD を使用した自動ユーザー プロビジョニング用に Rollba
 
     ![[プロビジョニング] タブ](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションで、以前に取得した**アカウント アクセス トークン**の値を **[シークレット トークン]** に入力します。 **[テスト接続]** をクリックして、Azure AD から Rollbar への接続を確保します。 接続できない場合は、使用中の Rollbar アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクションで、以前に取得したアクセス トークンの値を **[シークレット トークン]** に入力します。 **[テスト接続]** をクリックして、Azure AD から Rollbar への接続を確保します。 接続できない場合は、使用中の Rollbar アカウントに管理者アクセス許可を確保してから、もう一度試します。
 
-    ![Rollbar 管理コンソール](media/rollbar-provisioning-tutorial/admin.png)
+    ![プロビジョニング](./media/rollbar-provisioning-tutorial/admin.png)
 
 6. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
     ![通知用メール](common/provisioning-notification-email.png)
 
-7. **[保存]** をクリックします。
+7. **[保存]** を選択します。
 
 8. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Rollbar]\(Azure Active Directory ユーザーを Rollbar に同期する\)** を選択します。
 
-    ![Rollbar ユーザー マッピング](media/rollbar-provisioning-tutorial/usermapping.png)
+9. **[属性マッピング]** セクションで、Azure AD から Rollbar に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Rollbar のユーザー アカウントとの照合に使用されます。 [一致する対象の属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)を変更する場合は、その属性に基づいたユーザーのフィルター処理が確実に Rollbar API でサポートされているようにする必要があります。 **[保存]** ボタンをクリックして変更をコミットします。
 
-9. **[属性マッピング]** セクションで、Azure AD から Rollbar に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Rollbar のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
-
-    ![Rollbar ユーザーの属性](media/rollbar-provisioning-tutorial/userattribute.png)
+   |属性|Type|
+   |---|---|
+   |userName|String|
+   |externalId|String|
+   |active|Boolean|
+   |name.familyName|String|
+   |name.givenName|String|
+   |emails[type eq "work"]|String|
 
 10. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to Rollbar]\(Azure Active Directory グループを Rollbar に同期する\)** を選択します。
 
-    ![Rollbar グループ マッピング](media/rollbar-provisioning-tutorial/groupmapping.png)
-
 11. **[属性マッピング]** セクションで、Azure AD から Rollbar に同期されるグループ属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Rollbar のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![Rollbar グループ属性](media/rollbar-provisioning-tutorial/groupattribute.png)
+      |属性|Type|
+      |---|---|
+      |displayName|String|
+      |externalId|String|
+      |members|リファレンス|
 
-12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
+12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
 13. Rollbar に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
@@ -155,15 +148,20 @@ Azure AD を使用した自動ユーザー プロビジョニング用に Rollba
 
     ![プロビジョニング構成の保存](common/provisioning-configuration-save.png)
 
-    これにより、 **[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Rollbar に対して実行されたすべてのアクションが記載されています。
+この操作により、 **[設定]** セクションの **[スコープ]** で定義したすべてのユーザーとグループの初期同期サイクルが開始されます。 初期サイクルは後続の同期よりも実行に時間がかかります。後続のサイクルは、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 
 
-    Azure AD プロビジョニング ログの読み方について詳しくは、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」をご覧ください。
-    
+## <a name="step-6-monitor-your-deployment"></a>手順 6. デプロイを監視する
+プロビジョニングを構成したら、次のリソースを使用してデプロイを監視します。
+
+1. [プロビジョニング ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
+2. [進行状況バー](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
+3. プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)を参照してください。
+
 ## <a name="additional-resources"></a>その他のリソース
 
-* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>次のステップ
 
-* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)
+* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)

@@ -3,12 +3,12 @@ title: よく寄せられる質問に対する回答
 description: '一般的な質問への回答:Recovery Services コンテナーを含む Azure Backup の機能、バックアップの対象、しくみ、暗号化、制限。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: c8449ef27ca73cd6e0c2908ce4cbebea2c513dbc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: db09a31154b680097b6b46e8f9e2cce2ad09d108
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450089"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255032"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - よく寄せられる質問
 
@@ -123,7 +123,7 @@ BMR/システム状態 |バックアップ対象のコンピューターの BMR 
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>Recovery Services コンテナーを使用してバックアップできるデータ量に制限はありますか。
 
-Recovery Services コンテナーを使用してバックアップできるデータ量に制限はありません。
+Recovery Services コンテナーを使用してバックアップできる合計データ量に制限はありません。 個々のデータ ソース (Azure VM 以外) は、最大 54,400 GB のサイズにすることができます。 制限の詳細については、[サポート マトリックスのコンテナーの制限に関するセクション](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support)を参照してください。
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>Recovery Services コンテナーに転送されたデータのサイズが、バックアップ対象として選択したデータよりも小さいのはなぜでしょうか。
 

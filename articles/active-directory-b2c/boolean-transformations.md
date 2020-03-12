@@ -3,20 +3,20 @@ title: カスタム ポリシーのブール値要求変換の例
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C の Identity Experience Framework (IEF) スキーマのブール値要求変換の例。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/03/2020
-ms.author: marsma
+ms.date: 03/03/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 130fca4d5894316e7684270ff9d6361e9d9f9dd3
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: e470ea65085bf71f0052567d5bf367661852d1cb
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620830"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268015"
 ---
 # <a name="boolean-claims-transformations"></a>ブール値要求変換
 
@@ -116,7 +116,7 @@ ms.locfileid: "77620830"
 
 ## <a name="comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue
 
-要求のブール値が `true` または `false` と等しいことを確認して、圧縮の結果を返します。 
+要求のブール値が `true` または `false` と等しいことを確認して、圧縮の結果を返します。
 
 | Item | TransformationClaimType  | データ型  | Notes |
 | ---- | ------------------------ | ---------- | ----- |
@@ -148,7 +148,7 @@ ms.locfileid: "77620830"
 - 入力パラメーター:
     - **valueToCompareTo**: true
 - 出力要求:
-    - **compareResult**: false 
+    - **compareResult**: false
 
 
 

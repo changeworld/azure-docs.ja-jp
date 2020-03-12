@@ -2,13 +2,13 @@
 title: リソースでのタグのサポート
 description: タグをサポートしている Azure リソースの種類を示します。 すべての Azure サービスの詳細を提供します。
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 09dd71ef8c3ac4803a988dffbdca47116c967a0e
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 02/26/2020
+ms.openlocfilehash: 6100c667c7df0b3e1740777565d260af9fa818a3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207929"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657575"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure リソースでのタグのサポート
 この記事では、リソースの種類が[タグ](tag-resources.md)をサポートしているかどうかについて説明します。 「**タグのサポート**」というラベルが付けられた列は、リソースの種類にタグのプロパティがあるかどうかを示します。 「**コスト レポートのタグ**」というラベルが付けられた列は、リソースの種類がタグをコスト レポートに渡すかどうかを示します。 [Cost Management のコスト分析](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options)および [Azure の請求書と毎日の使用データ](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)で、タグ別にコストを表示できます。
@@ -116,8 +116,8 @@ ms.locfileid: "77207929"
 > - [Microsoft.Migrate](#microsoftmigrate)
 > - [Microsoft.MixedReality](#microsoftmixedreality)
 > - [Microsoft.NetApp](#microsoftnetapp)
-> - [Microsoft.Notebooks](#microsoftnotebooks)
 > - [Microsoft.Network](#microsoftnetwork)
+> - [Microsoft.Notebooks](#microsoftnotebooks)
 > - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
 > - [Microsoft.ObjectStore](#microsoftobjectstore)
 > - [Microsoft.OffAzure](#microsoftoffazure)
@@ -136,7 +136,6 @@ ms.locfileid: "77207929"
 > - [Microsoft.ResourceHealth](#microsoftresourcehealth)
 > - [Microsoft.Resources](#microsoftresources)
 > - [Microsoft.SaaS](#microsoftsaas)
-> - [Microsoft.Scheduler](#microsoftscheduler)
 > - [Microsoft.Search](#microsoftsearch)
 > - [Microsoft.Security](#microsoftsecurity)
 > - [Microsoft.SecurityGraph](#microsoftsecuritygraph)
@@ -292,6 +291,9 @@ ms.locfileid: "77207929"
 > | automationAccounts | はい | はい |
 > | automationAccounts / configurations | はい | はい |
 > | automationAccounts / jobs | いいえ | いいえ |
+> | automationAccounts / privateEndpointConnectionProxies | いいえ | いいえ |
+> | automationAccounts / privateEndpointConnections | いいえ | いいえ |
+> | automationAccounts / privateLinkResources | いいえ | いいえ |
 > | automationAccounts / runbooks | はい | はい |
 > | automationAccounts / softwareUpdateConfigurations | いいえ | いいえ |
 > | automationAccounts / webhooks | いいえ | いいえ |
@@ -682,7 +684,7 @@ ms.locfileid: "77207929"
 > | ReservationTransactions | いいえ | いいえ |
 > | Tags | いいえ | いいえ |
 > | tenants | いいえ | いいえ |
-> | Terms | いいえ | いいえ |
+> | 用語 | いいえ | いいえ |
 > | UsageDetails | いいえ | いいえ |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
@@ -711,6 +713,7 @@ ms.locfileid: "77207929"
 > | registries / importImage | いいえ | いいえ |
 > | registries / privateEndpointConnectionProxies | いいえ | いいえ |
 > | registries / privateEndpointConnectionProxies / validate | いいえ | いいえ |
+> | registries / privateEndpointConnections | いいえ | いいえ |
 > | registries / privateLinkResources | いいえ | いいえ |
 > | registries / queueBuild | いいえ | いいえ |
 > | registries / regenerateCredential | いいえ | いいえ |
@@ -1052,6 +1055,7 @@ ms.locfileid: "77207929"
 > | partnerNamespaces / eventChannels | いいえ | いいえ |
 > | partnerRegistrations | はい | はい |
 > | partnerTopics | はい | はい |
+> | partnerTopics / eventSubscriptions | いいえ | いいえ |
 > | systemTopics | はい | はい |
 > | systemTopics / eventSubscriptions | いいえ | いいえ |
 > | topics | はい | はい |
@@ -1288,6 +1292,7 @@ ms.locfileid: "77207929"
 > | ------------- | ----------- | ----------- |
 > | getEntities | いいえ | いいえ |
 > | managementGroups | いいえ | いいえ |
+> | managementGroups / settings | いいえ | いいえ |
 > | resources | いいえ | いいえ |
 > | startTenantBackfill | いいえ | いいえ |
 > | tenantBackfillStatus | いいえ | いいえ |
@@ -1395,15 +1400,7 @@ ms.locfileid: "77207929"
 > | netAppAccounts | はい | いいえ |
 > | netAppAccounts / capacityPools | はい | いいえ |
 > | netAppAccounts / capacityPools / volumes | はい | いいえ |
-> | netAppAccounts / capacityPools / volumes / mountTargets | はい | いいえ |
-> | netAppAccounts / capacityPools / volumes / snapshots | はい | いいえ |
-
-## <a name="microsoftnotebooks"></a>Microsoft.Notebooks
-
-> [!div class="mx-tableFixed"]
-> | リソースの種類 | タグのサポート | コスト レポートのタグ |
-> | ------------- | ----------- | ----------- |
-> | NotebookProxies | いいえ | いいえ |
+> | netAppAccounts / capacityPools / volumes / snapshots | いいえ | いいえ |
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -1495,6 +1492,13 @@ ms.locfileid: "77207929"
 > Azure Front Door Service の場合は、リソースの作成時にタグを適用できますが、タグの更新や追加は現在サポートされていません。
 
 
+## <a name="microsoftnotebooks"></a>Microsoft.Notebooks
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | タグのサポート | コスト レポートのタグ |
+> | ------------- | ----------- | ----------- |
+> | NotebookProxies | いいえ | いいえ |
+
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 
 > [!div class="mx-tableFixed"]
@@ -1556,6 +1560,7 @@ ms.locfileid: "77207929"
 > | legacyPeerings | いいえ | いいえ |
 > | peerAsns | いいえ | いいえ |
 > | peerings | はい | はい |
+> | peeringServiceCountries | いいえ | いいえ |
 > | peeringServiceProviders | いいえ | いいえ |
 > | peeringServices | はい | はい |
 
@@ -1680,13 +1685,6 @@ ms.locfileid: "77207929"
 > | ------------- | ----------- | ----------- |
 > | applications | はい | はい |
 > | saasresources | いいえ | いいえ |
-
-## <a name="microsoftscheduler"></a>Microsoft.Scheduler
-
-> [!div class="mx-tableFixed"]
-> | リソースの種類 | タグのサポート | コスト レポートのタグ |
-> | ------------- | ----------- | ----------- |
-> | jobcollections | はい | はい |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
@@ -2026,6 +2024,7 @@ ms.locfileid: "77207929"
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
 > | devices | はい | はい |
+> | registeredSubscriptions | いいえ | いいえ |
 > | vendors | いいえ | いいえ |
 > | vendors / skus | いいえ | いいえ |
 > | vendors / vnfs | いいえ | いいえ |

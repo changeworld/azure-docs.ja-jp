@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: bb1913d77616869c889c464a41e8166b3a88b03c
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 8c76333d5a2be8a2c589dbe54389b023fef34854
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028874"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252528"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Azure プライベート エンドポイントを使用して非公開でストレージ アカウントに接続する
 Azure プライベート エンドポイントは、Azure におけるプライベート リンクの基本的な構成要素です。 仮想マシン (VM) などの Azure リソースとプライベート リンク リソースとの非公開での通信が可能になります。
@@ -29,24 +29,22 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 ## <a name="create-a-vm"></a>VM の作成
 このセクションでは、プライベート リンク リソース (この例では、ストレージ アカウント) へのアクセスに使用する VM をホストするために、仮想ネットワークとサブネットを作成します。
 
-### <a name="create-the-virtual-network"></a>仮想ネットワークの作成
+## <a name="virtual-network-and-parameters"></a>仮想ネットワークとパラメーター
 
 このセクションでは、プライベート リンク リソースへのアクセスに使用する VM をホストするために、仮想ネットワークとサブネットを作成します。
 
-1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[仮想ネットワーク]** の順に選択します。
-1. **[仮想ネットワークの作成]** に次の情報を入力または選択します。
+このセクションの手順では、各パラメーターを次のように置き換える必要があります。
 
-    | 設定 | 値 |
-    | ------- | ----- |
-    | Name | 「*MyVirtualNetwork*」と入力します。 |
-    | アドレス空間 | 「*10.1.0.0/16*」を入力します。 |
-    | サブスクリプション | サブスクリプションを選択します。|
-    | Resource group | **[新規作成]** を選択し、「*myResourceGroup*」と入力して、 **[OK]** を選択します。 |
-    | Location | **[WestCentralUS]** を選択します。|
-    | サブネット - 名前 | 「*mySubnet*」と入力します。 |
-    | サブネット アドレス範囲 | 「*10.1.0.0/24*」と入力します。 |
-    |||
-1. 残りは既定値のままにして、 **[作成]** を選択します。
+| パラメーター                   | Value                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroup |
+| **\<virtual-network-name>** | myVirtualNetwork          |
+| **\<region-name>**          | 米国中西部      |
+| **\<IPv4-address-space>**   | 10.1.0.0\16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0\24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 
 ### <a name="create-virtual-machine"></a>仮想マシンの作成
@@ -55,7 +53,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. **[仮想マシンの作成 - 基本]** に次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
     | サブスクリプション | サブスクリプションを選択します。 |
@@ -65,7 +63,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | リージョン | **[WestCentralUS]** を選択します。 |
     | 可用性のオプション | 既定値 **[インフラストラクチャ冗長は必要ありません]** をそのまま使用します。 |
     | Image | **[Windows Server 2019 Datacenter]** を選択します。 |
-    | Size | 既定値 **[Standard DS1 v2]** をそのまま使用します。 |
+    | サイズ | 既定値 **[Standard DS1 v2]** をそのまま使用します。 |
     | **管理者アカウント** |  |
     | ユーザー名 | 任意のユーザー名を入力します。 |
     | Password | 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
@@ -76,13 +74,13 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | Windows ライセンスを既にお持ちの場合 | 既定値 **[なし]** のままにします。 |
     |||
 
-1. **[次へ:ディスク]** を選択します。
+1. **ディスク** を選択します。
 
 1. **[仮想マシンの作成 - Disk]** で、既定値のままにし、 **[Next: Networking]\(次へ : ネットワーク\)** を選択します。
 
 1. **[仮想マシンの作成 - ネットワーク]** で次の情報を選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | 仮想ネットワーク | 既定値 **[MyVirtualNetwork]** のままにします。  |
     | アドレス空間 | 既定値 **[10.1.0.0/24]** のままにします。|
@@ -103,7 +101,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. **[ストレージ アカウントの作成 - 基本]** で、次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
     | サブスクリプション | サブスクリプションを選択します。 |
@@ -116,18 +114,18 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | レプリケーション | **[読み取りアクセス geo 冗長ストレージ (RA-GRS)]** を選択します。 |
     |||
   
-3. **[次へ:ネットワーク]** を選択します。
+3. **ネットワーク** を選択します。
 4. **[ストレージ アカウントの作成] - [ネットワーク]** で、接続方法に **[プライベート エンドポイント]** を選択します。
 5. **[ストレージ アカウントの作成] - [ネットワーク]** で、 **[プライベート エンドポイントの追加]** を選択します。 
 6. **[プライベート エンドポイントの作成]** で、次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | Value |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
     | サブスクリプション | サブスクリプションを選択します。 |
     | Resource group | **[myResourceGroup]** を選択します。 これは前のセクションで作成しました。|
-    |Location|**[WestCentralUS]** を選択します。|
-    |Name|「*myPrivateEndpoint*」と入力します。  |
+    |場所|**[WestCentralUS]** を選択します。|
+    |名前|「*myPrivateEndpoint*」と入力します。  |
     |ストレージ サブリソース|既定値の **[BLOB]** のままにします。 |
     | **ネットワーク** |  |
     | 仮想ネットワーク  | リソース グループの *[myResourceGroup]* から、 *[MyVirtualNetwork]* を選択します。 |

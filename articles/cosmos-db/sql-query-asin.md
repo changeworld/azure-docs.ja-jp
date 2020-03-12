@@ -4,15 +4,15 @@ description: Azure Cosmos DB の Arcsine (ASIN) SQL システム関数が、サ�
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 3e790eb5ae5eb780637b199a1a65dec2dd02d1bc
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 8b70738a439b6c64a84a63adf63c83995530e92e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871740"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302697"
 ---
 # <a name="asin-azure-cosmos-db"></a>ASIN (Azure Cosmos DB)
  サインが指定された数値式となる角度をラジアン単位で返します。 アークサインとも呼ばれます。  
@@ -46,7 +46,11 @@ SELECT ASIN(-1) AS asin
 [{"asin": -1.5707963267948966}]  
 ```  
 
-## <a name="next-steps"></a>次の手順
+## <a name="remarks"></a>解説
+
+このシステム関数では、インデックスは使用されません。
+
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB の数学関数](sql-query-mathematical-functions.md)
 - [Azure Cosmos DB のシステム関数](sql-query-system-functions.md)

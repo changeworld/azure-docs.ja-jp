@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: dec715ec6741f4429d8b1d4f620ef3cb82d4c1d3
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 4f975af233973ce5fac75ca46e334af5d91e8edc
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649978"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246268"
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Azure Automation のグラフィカル Runbook におけるエラー処理
 
@@ -20,7 +20,7 @@ Azure Automation のグラフィカル Runbook について考慮する必要が
 
 グラフィカル Runbook には、実行に関する問題に対処するためのエラー処理コードが含まれている必要があります。 アクティビティの出力を検証したり、エラーを処理したりするために、PowerShell コード アクティビティを使用して、アクティビティの出力リンクに条件付きロジックを定義したり、他の方法を適用したりすることができます。
 
-Azure Automation グラフィカル Runbook は、機能が向上して、エラー処理ができるようになりました。 例外を強制終了にならないエラーに変換して、アクティビティ間のエラー リンクを作成することができます。 機能が向上した処理により、Runbook でエラーをキャッチし、実行後の状態または予期しない状態を管理できます。 
+Azure Automation グラフィカル Runbook は、機能が向上して、エラー処理ができるようになりました。 例外を強制終了にならないエラーに変換して、アクティビティ間のエラー リンクを作成することができます。 機能が向上した処理により、Runbook でエラーをキャッチし、実行後の状態または予期しない状態を管理できます。 
 
 >[!NOTE]
 >この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
@@ -50,11 +50,11 @@ Runbook 実行中に発生する可能性がある PowerShell のエラーの種
 
 解決策の 1 つは、手順 1. を処理するアクティビティを指し示すエラー リンクを Runbook 内に作成することです。 たとえば Runbook で、**Write-Warning** コマンドレットを、手順 2. のアクティビティ ([Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) コマンドレットなど) に接続できます。
 
-この動作は、多くの Runbook で使用するために、以前に示したガイダンスに従ってこれら 2 つのアクティビティを別個のエラー処理用 Runbook に分けることで、汎用化することもできます。 元の Runbook からこのエラー処理 Runbook を呼び出す前に、データからカスタム メッセージを作成し、それをパラメーターとしてエラー処理 Runbook に渡すことができます。
+この動作は、多くの Runbook で使用するために、これら 2 つのアクティビティを別個のエラー処理用 Runbook に分けることで、汎用化することもできます。 元の Runbook からこのエラー処理 Runbook を呼び出す前に、データからカスタム メッセージを作成し、それをパラメーターとしてエラー処理 Runbook に渡すことができます。
 
 ## <a name="how-to-use-error-handling"></a>エラー処理を使用する方法
 
-Runbook 内の各アクティビティには、例外を強制終了にならないエラーに変換する構成設定が用意されています。 既定では、この設定は無効です。 この設定は、Runbook でエラーが処理されるすべてのアクティビティに対して有効にすることが推奨されます。 この構成を有効にすると、Runbook ではエラー リンクを利用して、アクティビティの強制終了になるエラーとならないエラーの両方が、強制終了にならないエラーとして処理されます。  
+Runbook 内の各アクティビティには、例外を強制終了にならないエラーに変換する構成設定が用意されています。 既定では、この設定は無効です。 この設定は、Runbook でエラーが処理されるすべてのアクティビティに対して有効にすることが推奨されます。 この設定では、Runbook ではエラー リンクを利用して、アクティビティの強制終了になるエラーとならないエラーの両方が、強制終了にならないエラーとして処理されます。  
 
 構成設定を有効にした後に、Runbook に、エラーを処理するアクティビティを作成します。 アクティビティで何らかのエラーが発生すると、出力方向のエラー リンクが使用されます。 アクティビティで通常の出力が生成された場合でも、通常リンクは使用されません。<br><br> ![Automation Runbook のエラー リンクの例](media/automation-runbook-graphical-error-handling/error-link-example.png)
 
@@ -62,7 +62,7 @@ Runbook 内の各アクティビティには、例外を強制終了にならな
 
 **Get-AutomationVariable** アクティビティと [Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) コマンドレットは、例外をエラーに変換するように構成されています。 変数の取得や VM の起動で問題がある場合は、コードによってエラーが生成されます。<br><br> ![Automation Runbook のエラー処理アクティビティの設定](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)。
 
-エラー リンクは、これらのアクティビティから単一の**エラー管理**コード アクティビティにリンクされています。 このアクティビティは単純な PowerShell の式で構成されており、*Throw* キーワードで処理を停止し、`$Error.Exception.Message` で現在の例外について説明するメッセージを取得します。<br><br> ![Automation Runbook のエラー処理コードの例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
+エラー リンクは、これらのアクティビティから単一の**エラー管理**コード アクティビティにリンクされています。 このアクティビティは単純な PowerShell の式で構成されており、**スロー** キーワードで処理を停止し、`$Error.Exception.Message` で現在の例外について説明するメッセージを取得します。<br><br> ![Automation Runbook のエラー処理コードの例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 
 ## <a name="next-steps"></a>次のステップ
 

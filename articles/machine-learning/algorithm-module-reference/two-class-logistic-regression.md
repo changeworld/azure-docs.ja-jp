@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 541d1001f8b5881f2773f795d7bd849704cbd796
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: b1afd99a569de96e9075b4b5b6eff902abd8642e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153691"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916763"
 ---
 # <a name="two-class-logistic-regression-module"></a>2 クラスのロジスティック回帰モジュール
 
@@ -41,6 +41,8 @@ ms.locfileid: "77153691"
 2.  **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。  
   
     -   **Single Parameter (単一パラメーター)** : モデルの構成方法がわかっている場合、特定の値のセットを引数として渡すことができます。  
+
+    -   **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわからない場合は、[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)モジュールを使用することにより、最適なパラメーターを見つけることができます。 ある値の範囲を指定すると、トレーナーにより設定の複数の組み合わせに対して反復処理が行され、最適な結果を生み出す値の組み合わせが決定されます。
   
 3.  **[Optimization tolerance]\(最適化の許容範囲\)** に、モデルを最適化する際に使用するしきい値を指定します。 指定したしきい値をイテレーション間の改善が下回った場合に、アルゴリズムは解に収束したと見なされ、トレーニングが終了します。  
   

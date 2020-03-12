@@ -1,6 +1,6 @@
 ---
-title: PowerShell コマンドレット
-description: データベースの一時停止と再開など、Azure SQL Data Warehouse でよく使用される PowerShell コマンドレットを紹介します。
+title: PowerShell と REST API
+description: データベースを一時停止および再開する方法など、Azure Synapse Analytics SQL プールの主な PowerShell コマンドレットを確認してください。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -11,19 +11,21 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c5f85f102d72ac2e4a0315109748d48573f49407
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: c0c8b1e9b7526bd45d037f053715613b53ec163f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721185"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198458"
 ---
-# <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>SQL Data Warehouse の PowerShell コマンドレットと REST API
-SQL Data Warehouse の管理タスクの多くは、Azure PowerShell コマンドレットまたは REST API を使用して管理できます。  以下に示す例では、PowerShell コマンドを使用して、SQL Data Warehouse で一般的なタスクを自動化する方法を示しています。  適切な REST の例については、 [REST を使用したのスケーラビリティの管理](sql-data-warehouse-manage-compute-rest-api.md)に関する記事をご覧ください。
+# <a name="powershell--rest-apis-for-azure-synapse-analytics-sql-pool"></a>Azure Synapse Analytics SQL プールの PowerShell と REST API
+
+Azure PowerShell コマンドレットまたは REST API を使用して、多くの Azure Synapse Analytics SQL プール管理タスクを管理できます。  以下に示す例では、PowerShell コマンドを使用して、SQL プールで一般的なタスクを自動化する方法を示しています。  適切な REST の例については、 [REST を使用したのスケーラビリティの管理](sql-data-warehouse-manage-compute-rest-api.md)に関する記事をご覧ください。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-started-with-azure-powershell-cmdlets"></a>Azure PowerShell コマンドレットの使用開始
+
 1. Windows PowerShell を開きます。
 2. PowerShell プロンプトで、次のコマンドを実行して Azure Resource Manager にサインインし、サブスクリプションを選択します。
    
@@ -33,12 +35,13 @@ SQL Data Warehouse の管理タスクの多くは、Azure PowerShell コマン�
     Select-AzSubscription -SubscriptionName "MySubscription"
     ```
 
-## <a name="pause-sql-data-warehouse-example"></a>SQL Data Warehouse の一時停止の例
+## <a name="pause-data-warehouse-example"></a>データ ウェアハウスの一時停止の例
 "Server01" という名前のサーバーでホストされている "Database02" という名前のデータベースを一時停止します。  サーバーは "ResourceGroup1" という名前の Asure リソース グループ内にあります。
 
 ```Powershell
 Suspend-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 ```
+
 バリエーションであるこの例では、取得したオブジェクトを [Suspend-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/suspend-azsqldatabase) にパイプ処理します。  その結果、データベースが一時停止されます。 最後のコマンドは結果を表示します。
 
 ```Powershell
@@ -47,7 +50,8 @@ $resultDatabase = $database | Suspend-AzSqlDatabase
 $resultDatabase
 ```
 
-## <a name="start-sql-data-warehouse-example"></a>SQL Data Warehouse の開始の例
+## <a name="start-data-warehouse-example"></a>データ ウェアハウスの開始の例
+
 "Server01" という名前のサーバーでホストされている "Database02" という名前のデータベースを再開します。 サーバーは "ResourceGroup1" という名前のリソース グループ内にあります。
 
 ```Powershell
@@ -67,7 +71,7 @@ $resultDatabase = $database | Resume-AzSqlDatabase
 > 
 
 ## <a name="other-supported-powershell-cmdlets"></a>その他のサポートされている PowerShell コマンドレット
-Azure SQL Data Warehouse でサポートされている PowerShell コマンドレットを次に示します。
+これらの PowerShell コマンドレットは、Azure Synapse Analytics データ ウェアハウスでサポートされています。
 
 * [Get-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase)
 * [Get-AzSqlDeletedDatabaseBackup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup)
@@ -83,7 +87,7 @@ Azure SQL Data Warehouse でサポートされている PowerShell コマンド�
 ## <a name="next-steps"></a>次のステップ
 PowerShell のその他の例については、次のトピックをご覧ください。
 
-* [PowerShell を使用して SQL Data Warehouse を作成する](create-data-warehouse-powershell.md)
+* [PowerShell を使用してデータ ウェアハウスを作成する](create-data-warehouse-powershell.md)
 * [データベースの復元](sql-data-warehouse-restore-database-powershell.md)
 
-PowerShell で自動化できるその他のタスクについては、[Azure SQL Database コマンドレット](https://docs.microsoft.com/powershell/module/az.sql)に関するページを参照してください。 Azure SQL Data Warehouse ではサポートされていない Azure SQL Database コマンドレットがあります。  REST で自動化できるタスクの一覧については、「[Azure SQL Database の操作](https://msdn.microsoft.com/library/azure/dn505719.aspx)」を参照してください。
+PowerShell で自動化できるその他のタスクについては、[Azure SQL Database コマンドレット](https://docs.microsoft.com/powershell/module/az.sql)に関するページを参照してください。 Azure Synapse Analytics データ ウェアハウスでは、すべての Azure SQL Database コマンドレットがサポートされているわけではありません。  REST で自動化できるタスクの一覧については、「[Azure SQL Database の操作](/rest/api/sql/)」を参照してください。

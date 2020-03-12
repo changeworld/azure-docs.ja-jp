@@ -1,22 +1,22 @@
 ---
 title: ワークロードの管理
-description: Azure SQL Data Warehouse でのワークロード管理の実装に関するガイダンス。
+description: Azure Synapse Analytics でのワークロード管理の実装に関するガイダンス。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/13/2020
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 287ad5467f9f3aac7eb8c9d7c19ea15c380c6879
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.custom: azure-synapse
+ms.openlocfilehash: 14ea742a40afff8105560f1003655004687c7c9e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935408"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197659"
 ---
 # <a name="what-is-workload-management"></a>ワークロード管理とは
 
@@ -36,11 +36,11 @@ ms.locfileid: "76935408"
 
 
 ## <a name="workload-management-concepts"></a>ワークロード管理の概念
-以前は、[リソース クラス](resource-classes-for-workload-management.md)を通じて SQL Data Warehouse のクエリ パフォーマンスを管理していました。  リソース クラスがクエリにメモリを割り当てることができるかどうかは、ロールのメンバーシップに基づきます。  リソース クラスの主な課題は、構成が完了すると、ワークロードを制御するためのガバナンスや機能がなくなることです。  
+以前は、Azure Synapse の SQL Analytics では、[リソース クラス](resource-classes-for-workload-management.md)を使用してクエリのパフォーマンスを管理していました。  リソース クラスがクエリにメモリを割り当てることができるかどうかは、ロールのメンバーシップに基づきます。  リソース クラスの主な課題は、構成が完了すると、ワークロードを制御するためのガバナンスや機能がなくなることです。  
 
 たとえば、アドホック ユーザー ロールのメンバーシップを smallrc に付与すると、そのユーザーはシステム上のメモリの 100% を消費できました。  リソース クラスでは、リソースを予約して重要なワークロードで使用できるようにするための方法がありません。
 
-SQL Data Warehouse のワークロード管理は、次の 3 つの大まかな概念で構成されています。[ワークロードの分類](sql-data-warehouse-workload-classification.md)、[ワークロードの重要度](sql-data-warehouse-workload-importance.md)、そして[ワークロードの分離](sql-data-warehouse-workload-isolation.md)です。  これらの機能により、ワークロードによるシステム リソースの活用方法をより細かく制御できます。
+Azure Synapse の SQL Analytics ワークロード管理は、次の 3 つの大まかな概念で構成されています。[ワークロードの分類](sql-data-warehouse-workload-classification.md)、[ワークロードの重要度](sql-data-warehouse-workload-importance.md)、そして[ワークロードの分離](sql-data-warehouse-workload-isolation.md)です。  これらの機能により、ワークロードによるシステム リソースの活用方法をより細かく制御できます。
 
 ワークロードの分類は、ワークロード グループに要求を割り当て、重要度のレベルを設定するという概念です。  従来、この割り当ては、[sp_addrolemember](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management#change-a-users-resource-class) を使用してロールのメンバーシップを介して行われていました。  これを、[CREATE WORKLOAD CLASSIFER](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql) を使用して実行できるようになりました。  分類機能では、ラベル、セッション、要求を分類する時間などの豊富なオプションのセットが提供されます。
 

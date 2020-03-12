@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 529e188d1a4ee00cee7f3d023ab45a48dd0d3c5f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9883256fc801d37acd4ea10226bd9e541f9135f7
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428385"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268654"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Azure での Linux Data Science Virtual Machine を使用したデータ サイエンス
 
@@ -187,6 +187,8 @@ R を使用して、データを確認し、基本的な機械学習を実行し
    ![Azure Machine Learning Studio (クラシック) のプライマリ認証トークン](./media/linux-dsvm-walkthrough/workspace-token.png)
 1. **AzureML** パッケージを読み込み、DSVM 上の R セッションで、 使用するトークンとワークスペース ID を用いて変数の値を設定します。
 
+        if(!require("devtools")) install.packages("devtools")
+        devtools::install_github("RevolutionAnalytics/AzureML")
         if(!require("AzureML")) install.packages("AzureML")
         require(AzureML)
         wsAuth = "<authorization-token>"
@@ -206,9 +208,23 @@ R を使用して、データを確認し、基本的な機械学習を実行し
         return(colnames(predictDF)[apply(predictDF, 1, which.max)])
         }
 
+1. このワークスペースの settings.json ファイルを作成します。
+
+        vim ~/.azureml/settings.json
+
+1. 次の内容が確実に settings.json に含まれているようにします。
+
+         {"workspace":{
+           "id": "<workspace-id>",
+           "authorization_token": "<authorization-token>",
+           "api_endpoint": "https://studioapi.azureml.net",
+           "management_endpoint": "https://management.azureml.net"
+         }
+
 
 1. **publishWebService** 関数を使用して、**predictSpam** 関数を AzureML に発行します。
 
+        ws <- workspace()
         spamWebService <- publishWebService(ws, fun = predictSpam, name="spamWebService", inputSchema = smallTrainSet, data.frame=TRUE)
 
 1. この関数は、**predictSpam** 関数を受け取り、入力と出力が定義された **spamWebService** という名前の Web サービスを作成してから、新しいエンドポイントに関する情報を返します。

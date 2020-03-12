@@ -1,6 +1,6 @@
 ---
 title: T-SQL ステートメント
-description: Azure SQL Data Warehouse でサポートされる T-SQL ステートメントのドキュメントにリンクします。
+description: SQL Analytics でサポートされている T-SQL ステートメントのドキュメントへのリンク。
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: query
 ms.date: 05/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 861675941693697a20da189edebe33d91918782c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: d37e1b727829505940b77c7a82293f90050a87c0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685523"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198356"
 ---
-# <a name="t-sql-statements-supported-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でサポートされる T-SQL ステートメント
-Azure SQL Data Warehouse でサポートされる T-SQL ステートメントのドキュメントにリンクします。
+# <a name="t-sql-statements-supported-in-sql-analytics"></a>SQL Analytics での T-SQL ステートメントのサポート
+SQL Analytics でサポートされている T-SQL ステートメントのドキュメントへのリンク。
 
 ## <a name="data-definition-language-ddl-statements"></a>データ定義言語 (DDL) ステートメント
 * [ALTER DATABASE](https://msdn.microsoft.com/library/mt204042.aspx)
@@ -79,7 +79,7 @@ Azure SQL Data Warehouse でサポートされる T-SQL ステートメントの
 ## <a name="query-statements"></a>クエリ ステートメント
 * [SELECT](https://msdn.microsoft.com/library/ms189499.aspx)
 * [WITH common_table_expression](https://msdn.microsoft.com/library/ms175972.aspx)
-* [EXCEPT and INTERSECT](https://msdn.microsoft.com/library/ms188055.aspx)
+* [EXCEPT および INTERSECT](https://msdn.microsoft.com/library/ms188055.aspx)
 * [EXPLAIN](https://msdn.microsoft.com/library/mt631615.aspx)
 * [FROM](https://msdn.microsoft.com/library/ms177634.aspx)
 * [PIVOT および UNPIVOT の使用](https://msdn.microsoft.com/library/ms177410.aspx)
@@ -95,7 +95,7 @@ Azure SQL Data Warehouse でサポートされる T-SQL ステートメントの
 * [サブクエリ](https://msdn.microsoft.com/library/mt631613.aspx)
 
 ## <a name="security-statements"></a>セキュリティ ステートメント
-* アクセス許可:[GRANT](https://msdn.microsoft.com/library/ms187965.aspx)、[DENY](https://msdn.microsoft.com/library/ms188338.aspx)、[REVOKE](https://msdn.microsoft.com/library/ms187728.aspx)
+* 権限:[GRANT](https://msdn.microsoft.com/library/ms187965.aspx)、[DENY](https://msdn.microsoft.com/library/ms188338.aspx)、[REVOKE](https://msdn.microsoft.com/library/ms187728.aspx)
 * [ALTER AUTHORIZATION](https://msdn.microsoft.com/library/ms187359.aspx)
 * [ALTER CERTIFICATE](https://msdn.microsoft.com/library/ms189511.aspx)
 * [ALTER DATABASE ENCRYPTION KEY](https://msdn.microsoft.com/library/bb630389.aspx)
@@ -119,5 +119,5 @@ Azure SQL Data Warehouse でサポートされる T-SQL ステートメントの
 * [DROP USER](https://msdn.microsoft.com/library/ms189438.aspx)
 * [OPEN MASTER KEY](https://msdn.microsoft.com/library/ms174433.aspx)
 
-## <a name="next-steps"></a>次の手順
-その他の参照情報については、[Azure SQL Data Warehouse の T-SQL ステートメント](sql-data-warehouse-reference-tsql-language-elements.md)に関するページと [Azure SQL Data Warehouse のシステム ビュー](sql-data-warehouse-reference-tsql-system-views.md)に関するページを参照してください。
+## <a name="next-steps"></a>次のステップ
+詳細については、[SQL Analytics の T-SQL 言語要素](sql-data-warehouse-reference-tsql-language-elements.md)と [SQL Analytics のシステム ビュー](sql-data-warehouse-reference-tsql-system-views.md)に関する記事を参照してください。

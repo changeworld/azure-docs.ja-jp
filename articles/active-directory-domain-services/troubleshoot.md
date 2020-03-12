@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 3cb57fae2b1c67ece321a294e56612f49358405a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: c4b2dea05b459d6e9ae4eb086fa127d88a84a768
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612722"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249200"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services の一般的なエラーとトラブルシューティングの手順
 
@@ -138,7 +138,7 @@ Azure AD テナント内の 1 人以上のユーザーが Azure AD DS マネー�
       * [Azure AD Connect の最新の推奨リリース](https://www.microsoft.com/download/details.aspx?id=47594)をデプロイまたは更新している。
       * [完全同期を実行する][hybrid-phs]ように Azure AD Connect を構成している。
       * ディレクトリのサイズによっては、ユーザー アカウントと資格情報ハッシュが Azure AD DS で使用できるようになるまでに時間がかかる場合があります。 十分に時間を空けてから、マネージド ドメインに対して認証を試行してください。
-      * 前の手順を確認しても問題が解決しない場合は、"*Microsoft Azure AD Sync サービス*" を再起動してみてください。 [管理 VM][management-vm] でコマンド プロンプトを開いて、次のコマンドを実行します。
+      * 前の手順を確認しても問題が解決しない場合は、"*Microsoft Azure AD Sync サービス*" を再起動してみてください。 Azure AD Connect サーバーから、コマンドプロンプトを開き、次のコマンドを実行します。
     
         ```console
         net stop 'Microsoft Azure AD Sync'

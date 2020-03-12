@@ -1,23 +1,23 @@
 ---
-title: Azure Machine Learning デザイナーを使用してモデルを再トレーニングする
+title: Azure Machine Learning デザイナーを使用してモデルを再トレーニングする (プレビュー)
 titleSuffix: Azure Machine Learning
-description: 発行されたパイプラインを使用して Azure Machine Learning デザイナーでモデルを再トレーニングする方法について説明します。
+description: 発行されたパイプラインを使用して Azure Machine Learning デザイナー (プレビュー) でモデルを再トレーニングする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.author: peterlu
-author: peterclu
-ms.date: 12/15/2019
-ms.openlocfilehash: d1382da739fd8ca56d4cc53c2c302331bdfbf1c3
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.author: keli19
+author: likebupt
+ms.date: 02/24/2020
+ms.openlocfilehash: 8e7874ec2a0ea160d29f8755ca8680c4dfbeec1d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311871"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268497"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーを使用してモデルを再トレーニングする
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+# <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナーを使用してモデルを再トレーニングする (プレビュー)
+[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 この攻略ガイドでは、Azure Machine Learning デザイナーを使用して機械学習モデルを再トレーニングする方法について説明します。 発行されたパイプラインを使用して、再トレーニング用の機械学習ワークフローを自動化する方法を確認してください。
 
@@ -69,11 +69,11 @@ ms.locfileid: "76311871"
 
 1. **Train Model** (モデルのトレーニング) モジュールを選択します。
 
-1. 設定ウィンドウで **[出力]** を選択します。
+1. 設定ウィンドウで **[Outputs+logs]\(出力とログ\)** を選択します。
 
-1. **[Trained_model]** を選択してモデルをダウンロードします。
+1. **[View output]\(出力の表示\)** アイコンをクリックし、ポップアップ ウィンドウの指示に従って、トレーニングされたモデルを見つけます。
 
-![トレーニング済みモデルのダウンロード方法を示すスクリーンショット](./media/how-to-retrain-designer/download-model.png)
+![トレーニング済みモデルのダウンロード方法を示すスクリーンショット](./media/how-to-retrain-designer/trained-model-view-output.png)
 
 ## <a name="create-a-pipeline-parameter"></a>パイプライン パラメーターを作成する
 
@@ -119,7 +119,7 @@ ms.locfileid: "76311871"
 
 1. 実行するパイプラインを選択します。
 
-1. **[実行]** を選択します。
+1. **[Submit]\(送信\)** をクリックします。
 
 1. 設定ダイアログでは、新しいデータセットを指し示す、新しい入力データ パスの値を指定できます。
 
@@ -127,7 +127,9 @@ ms.locfileid: "76311871"
 
 ### <a name="submit-runs-with-code"></a>コードを使用して実行を送信する
 
-プログラムによって REST エンドポイントにアクセスする方法は、開発環境に応じて複数あります。 パイプラインの **[Consume] (使用)** タブでパラメーターを使用してパイプラインの実行を送信する方法を示すコード サンプルが用意されています。
+概要パネルには、発行されたパイプラインの REST エンドポイントが表示されます。 エンドポイントを呼び出すことにより、発行されたパイプラインを再トレーニングできます。
+
+REST 呼び出しを行うには、OAuth 2.0 ベアラー型認証ヘッダーが必要です。 ワークスペースの認証を設定し、パラメーター化された REST を呼び出す方法については、次の[チュートリアル セクション](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

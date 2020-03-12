@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: c87673fef0079ff1b04b0840da0434b090cda67c
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 03e6c2ecbf8fa0c5f71218d29b67cb03cdf3d5db
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153657"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916797"
 ---
 # <a name="two-class-neural-network-module"></a>2 クラス ニューラル ネットワーク モジュール
 
@@ -42,7 +42,9 @@ ms.locfileid: "77153657"
   
 2.  **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。  
   
-    -   **Single Parameter (単一パラメーター)** : モデルを構成する方法が既にわかっている場合は、このオプションを選択します。  
+    -   **Single Parameter (単一パラメーター)** : モデルを構成する方法が既にわかっている場合は、このオプションを選択します。
+
+    -   **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわからない場合は、[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)モジュールを使用することにより、最適なパラメーターを見つけることができます。 ある値の範囲を指定すると、トレーナーにより設定の複数の組み合わせに対して反復処理が行され、最適な結果を生み出す値の組み合わせが決定されます。  
 
 3.  **[隠れ層の仕様]** には、作成するネットワーク アーキテクチャの種類を選択します。  
   

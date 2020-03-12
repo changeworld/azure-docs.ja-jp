@@ -9,20 +9,35 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 10/11/2019
-ms.openlocfilehash: b83eb1556ed3f4a41409faf70f6ba9d8cd28322d
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 10e4ba16e00a37d532a2eceb69fedb8f5b62be8b
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732180"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301660"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning との Git 統合
 
-[Git](https://git-scm.com/) は、プロジェクトの共有と共同作業を可能にする、一般的なバージョン管理システムです。 トレーニング ジョブを Azure Machine Learning に送信するとき、トレーニング ファイルがローカル git リポジトリに格納されていれば、リポジトリに関する情報がトレーニング プロセスの一部として追跡されます。
+[Git](https://git-scm.com/) は、プロジェクトでの共有と共同作業を可能にする、一般的なバージョン管理システムです。 
+
+Azure Machine Learning は、作業を追跡するために Git リポジトリを完全にサポートしています。したがって、自分の共有ワークスペース ファイル システムにリポジトリをクローンしたり、ローカル ワークステーションで Git を使用したり、CI/CD パイプラインから Git を使用したりすることができます。
+
+ジョブを Azure Machine Learning に送信するとき、ソース ファイルがローカル git リポジトリに格納されていれば、リポジトリに関する情報がトレーニング プロセスの一部として追跡されます。
 
 Azure Machine Learning は、ローカル git リポジトリにある情報を追跡するため、特定の中央リポジトリには関連付けられません。 リポジトリは、GitHub、GitLab、Bitbucket、Azure DevOps、または他の任意の git 互換サービスから複製できます。
 
-## <a name="how-does-git-integration-work"></a>Git 統合のしくみ
+## <a name="clone-git-repositories-into-your-workspace-file-system"></a>Git リポジトリをワークスペース ファイル システムにクローンする
+Azure Machine Learning では、ワークスペース内のすべてのユーザーに共有ファイル システムが提供されます。
+このファイル共有に Git リポジトリをクローンするには、コンピューティング インスタンスを作成して、ターミナルを開くことをお勧めします。
+ターミナルを開くと、完全な Git クライアントにアクセスできるようになり、Git CLI エクスペリエンスを使用して Git のクローンや操作を行うことができます。
+
+作業中のブランチで他のユーザーが直接衝突しないように、リポジトリを自分のユーザー ディレクトリにクローンすることをお勧めします。
+
+認証可能なすべての Git リポジトリ (GitHub、Azure Repos、BitBucket など) をクローンできます。
+
+Git CLI の使用方法のガイドについては、[こちら](https://guides.github.com/introduction/git-handbook/)を参照してください。
+
+## <a name="track-code-that-comes-from-git-repositories"></a>Git リポジトリから取得したコードを追跡する
 
 Python SDK または Machine Learning CLI からトレーニング実行を送信すると、モデルのトレーニングに必要なファイルがワークスペースにアップロードされます。 ご利用の開発環境で `git` コマンドが使用可能な場合、アップロード プロセスでは、ファイルが git リポジトリに格納されているかどうかを確認するためにそのコマンドが使用されます。 その場合、git リポジトリからの情報もトレーニング実行の一部としてアップロードされます。 この情報は、トレーニング実行の次のプロパティに格納されます。
 

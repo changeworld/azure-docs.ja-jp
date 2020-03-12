@@ -1,6 +1,6 @@
 ---
 title: システム ビュー
-description: Azure SQL Data Warehouse でサポートされるシステム ビューのドキュメントにリンクします。
+description: SQL Analytics でサポートされているシステム ビューのドキュメントへのリンク。
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,18 +10,18 @@ ms.subservice: query
 ms.date: 01/06/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 36f0738dc478d7a1144527acb29118a7a99ef5ac
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.custom: azure-synapse
+ms.openlocfilehash: 694bb1d970f7f5c36b074e64ee41c3d34b55c482
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690779"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198305"
 ---
-# <a name="system-views-supported-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でサポートされるシステム ビュー
-Azure SQL Data Warehouse でサポートされる T-SQL ステートメントのドキュメントにリンクします。
+# <a name="system-views-supported-in-sql-analytics"></a>SQL Analytics でサポートされているシステム ビュー
+SQL Analytics でサポートされている T-SQL ステートメントのドキュメントへのリンク。
 
-## <a name="sql-data-warehouse-catalog-views"></a>SQL Data Warehouse カタログ ビュー
+## <a name="sql-analytics-catalog-views"></a>SQL Analytics のカタログ ビュー
 * [sys.pdw_column_distribution_properties](https://msdn.microsoft.com/library/mt204022.aspx)
 * [sys.pdw_distributions](https://msdn.microsoft.com/library/mt203892.aspx)
 * [sys.pdw_index_mappings](https://msdn.microsoft.com/library/mt203912.aspx)
@@ -65,8 +65,8 @@ Azure SQL Data Warehouse でサポートされる T-SQL ステートメントの
 * [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql)
 * [sys.dm_workload_management_workload_groups_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql) (プレビュー)
 
-## <a name="sql-server-dmvs-applicable-to-sql-data-warehouse"></a>SQL Data Warehouse に適用可能な SQL Server DMV
-次の DMV は、SQL Data Warehouse に適用できますが、 **マスター** データベースに接続して実行する必要があります。
+## <a name="sql-server-dmvs-applicable-to-sql-analytics"></a>SQL Analytics に適用される SQL Server DMV
+次の DMV は、SQL Analytics に適用できますが、**マスター** データベースに接続して実行する必要があります。
 
 * [sys.database_service_objectives](https://msdn.microsoft.com/library/mt712619.aspx)
 * [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx)
@@ -145,17 +145,17 @@ Azure SQL Data Warehouse でサポートされる T-SQL ステートメントの
 * [sys.types](https://msdn.microsoft.com/library/ms188021.aspx)
 * [sys.views](https://msdn.microsoft.com/library/ms190334.aspx)
 
-## <a name="sql-server-dmvs-available-in-sql-data-warehouse"></a>SQL Data Warehouse で使用可能な SQL Server DMV
-SQL Data Warehouse では、多くの SQL Server 動的管理ビュー (DMV) が公開されています。 これらのビューは、SQL Data Warehouse でクエリされると、ディストリビューションで実行されている SQL Database の状態を報告します。
+## <a name="sql-server-dmvs-available-in-sql-analytics"></a>SQL Analytics で使用できる SQL Server DMV
+SQL Analytics には、SQL Server の動的管理ビュー (DMV) の多くが表示されます。 これらのビューは、SQL Analytics でクエリされると、ディストリビューションで実行されている SQL Database の状態を報告します。
 
-SQL Data Warehouse と Analytics Platform System の Parallel Data Warehouse (PDW) はどちらも、同じシステム ビューを使用します。 各 DMV には pdw_node_id という列があります。これは、コンピューティング ノードの識別子です。 
+SQL Analytics と並列データ ウェアハウス (PDW) には、同じシステム ビューが使用されます。 各 DMV には pdw_node_id という列があります。これは、コンピューティング ノードの識別子です。 
 
 > [!NOTE]
 > これらのビューを使用するには、次の表に示すように "pdw_nodes_" を名前に挿入します。
 > 
 > 
 
-| SQL Data Warehouse での DMV 名 | SQL Server Transact-SQL の記事|
+| SQL Analytics の DMV 名 | SQL Server Transact-SQL の記事|
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql)| 
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql)| 
@@ -217,8 +217,8 @@ SQL Data Warehouse と Analytics Platform System の Parallel Data Warehouse (PD
 | sys.dm_pdw_nodes_tran_session_transactions |[sys.dm_tran_session_transactions](https://msdn.microsoft.com/library/ms188739.aspx) |
 | sys.dm_pdw_nodes_tran_top_version_generators |[sys.dm_tran_top_version_generators](https://msdn.microsoft.com/library/ms188778.aspx) |
 
-## <a name="sql-server-2016-polybase-dmvs-available-in-sql-data-warehouse"></a>SQL Data Warehouse で使用可能な SQL Server 2016 PolyBase DMV
-次の DMV は、SQL Data Warehouse に適用できますが、 **マスター** データベースに接続して実行する必要があります。
+## <a name="sql-server-2016-polybase-dmvs-available-in-sql-analytics"></a>SQL Analytics で使用できる SQL Server 2016 PolyBase DMV
+次の DMV は、SQL Analytics に適用できますが、**マスター** データベースに接続して実行する必要があります。
 
 * [sys.dm_exec_compute_node_errors](https://msdn.microsoft.com/library/mt146380.aspx)
 * [sys.dm_exec_compute_node_status](https://msdn.microsoft.com/library/mt146382.aspx)
@@ -243,4 +243,4 @@ SQL Data Warehouse と Analytics Platform System の Parallel Data Warehouse (PD
 * [VIEWS](https://msdn.microsoft.com/library/ms181381.aspx)
 
 ## <a name="next-steps"></a>次のステップ
-その他の参照情報については、[Azure SQL Data Warehouse の T-SQL ステートメント](sql-data-warehouse-reference-tsql-statements.md)に関するページと [Azure SQL Data Warehouse の T-SQL 言語要素](sql-data-warehouse-reference-tsql-language-elements.md)に関するページを参照してください。
+詳細については、[SQL Analytics の T-SQL ステートメント](sql-data-warehouse-reference-tsql-statements.md)と [SQL Analytics の T-SQL 言語要素](sql-data-warehouse-reference-tsql-language-elements.md)に関する記事を参照してください。

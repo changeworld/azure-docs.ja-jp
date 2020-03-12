@@ -1,6 +1,6 @@
 ---
 title: 条件付きアクセス
-description: Azure SQL Database と Data Warehouse 用に条件付きアクセスを構成する方法を説明します。
+description: Azure SQL Database と Azure Synapse 用に条件付きアクセスを構成する方法を説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,25 +10,26 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 03/29/2019
-ms.openlocfilehash: 9b8c0dbe03e47d32d8194408663973f07a07b1b9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/06/2020
+tag: azure-synpase
+ms.openlocfilehash: f2431ee7c62079a3691a5ea99e562460df8f9309
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827161"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197574"
 ---
-# <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Azure SQL Database と Data Warehouse での条件付きアクセス (MFA)  
+# <a name="conditional-access-mfa-with-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database と Azure Synapse Analytics での条件付きアクセス (MFA)
 
-Azure [SQL Database](sql-database-technical-overview.md)、[Managed Instance](sql-database-managed-instance.md)、および [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) では、Microsoft の条件付きアクセスがサポートされています。 
+Azure [SQL Database](sql-database-technical-overview.md)、[Managed Instance](sql-database-managed-instance.md)、および [Azure Synapse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) では、Microsoft の条件付きアクセスがサポートされています。 
 
 > [!NOTE]
-> このトピックは Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。
+> このトピックは Azure SQL サーバーのほか、その Azure SQL サーバーで作成される SQL Database と Azure Synapse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と Azure Synapse の両方を言い表します。
 
 次の手順では、条件付きアクセス ポリシーを適用するように SQL Database を構成する方法を示します。  
 
 ## <a name="prerequisites"></a>前提条件  
-- Azure Active Directory 認証をサポートするように SQL Database または SQL Data Warehouse を構成する必要があります。 具体的な手順については、「[SQL Database または SQL Data Warehouse で Azure Active Directory 認証を構成して管理する](sql-database-aad-authentication-configure.md)」を参照してください。  
+- Azure Active Directory 認証をサポートするように SQL Database または SQL Data Warehouse を構成する必要があります。 具体的な手順については、「[SQL Database または Azure Synapse で Azure Active Directory 認証を構成して管理する](sql-database-aad-authentication-configure.md)」を参照してください。  
 - 多要素認証が有効になっている場合は、最新の SSMS などのサポートされているツールに接続する必要があります。 詳細については、「[SQL Server Management Studio 用に Azure SQL Database の多要素認証を構成する](sql-database-ssms-mfa-authentication-configure.md)」を参照してください。  
 
 ## <a name="configure-ca-for-azure-sql-dbdw"></a>Azure SQL DB/DW 用に CA を構成する  
@@ -44,15 +45,15 @@ Azure [SQL Database](sql-database-technical-overview.md)、[Managed Instance](sq
    3 番目のスクリーンショットに示されているように **[Azure SQL Database]** が表示されない場合は、以下の手順を実行します。   
    - AAD 管理者アカウントで SSMS を使用して、Azure SQL DB/DW インスタンスにサインインします。  
    - `CREATE USER [user@yourtenant.com] FROM EXTERNAL PROVIDER` を実行します。  
-   - AAD にサインインし、AAD のアプリケーションに Azure SQL Database と Data Warehouse がリストされていることを確認します。  
+   - AAD にサインインし、AAD のアプリケーションに Azure SQL Database と Azure Synapse がリストされていることを確認します。  
 
 5. **[アクセス制御]** を選択し、 **[許可]** を選択してから適用するポリシーを確認します。 この例では、 **[多要素認証が必要です]** を選択します。  
    ![アクセス権の付与を選択する](./media/sql-database-conditional-access/grant-access.png)  
 
 ## <a name="summary"></a>まとめ  
 これで、Azure AD Premium を使用して Azure SQL DB/DW に接続できるようにする選択されたアプリケーション (Azure SQL Database) で、選択された条件付きアクセス ポリシー **[多要素認証が必要です]** が適用されるようになりました。  
-Azure SQL Database と Database and Data Warehouse での多要素認証に関するご質問は、MFAforSQLDB@microsoft.com にお問い合わせください。  
+Azure SQL Database と Database and Azure Synapse での多要素認証に関するご質問は、MFAforSQLDB@microsoft.com にお問い合わせください。  
 
-## <a name="next-steps"></a>次の手順  
+## <a name="next-steps"></a>次のステップ  
 
 チュートリアルについては、「[Azure SQL データベースのセキュリティ保護](sql-database-security-tutorial.md)」を参照してください。

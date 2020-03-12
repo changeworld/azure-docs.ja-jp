@@ -7,19 +7,19 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/14/2020
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: fd9bd846beba718cb305907d4d0c5a613d2ef816
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.custom: azure-synapse
+ms.openlocfilehash: 69a200d4fda940f072960da9224f84a22db51647
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029950"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193800"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring-preview"></a>Azure Synapse Analytics - ワークロード管理ポータル監視 (プレビュー)
-この記事では、[ワークロード グループ](sql-data-warehouse-workload-isolation.md#workload-groups)のリソース使用率とクエリ アクティビティを監視する方法について説明します。 Azure メトリックス エクスプローラーの構成方法の詳細については、「[Azure メトリックス エクスプローラーの概要](../azure-monitor/platform/metrics-getting-started.md)」を参照してください。  システム リソースの消費を監視する方法の詳細については、Azure SQL Data Warehouse 監視に関するドキュメントの「[リソース使用率](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization)」セクションを参照してください。
+この記事では、[ワークロード グループ](sql-data-warehouse-workload-isolation.md#workload-groups)のリソース使用率とクエリ アクティビティを監視する方法について説明します。 Azure メトリックス エクスプローラーの構成方法の詳細については、「[Azure メトリックス エクスプローラーの概要](../azure-monitor/platform/metrics-getting-started.md)」を参照してください。  システム リソースの消費を監視する方法の詳細については、Azure Synapse Analytics 監視に関するドキュメントの「[リソース使用率](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization)」セクションを参照してください。
 ワークロード管理を監視するために用意されているワークロード グループ メトリックには、リソース割り当てとクエリ アクティビティの 2 つの異なるカテゴリがあります。  これらのメトリックは、ワークロード グループ別に分割およびフィルター処理できます。  メトリックは、システム定義メトリック (リソース クラス ワークロード グループ) であるか、([CREATE WORKLOAD GROUP](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) 構文を使用してユーザーによって作成された) ユーザー定義メトリックであるかに基づいて、分割およびフィルター処理できます。
 
 ## <a name="workload-management-metric-definitions"></a>ワークロード管理メトリックの定義
@@ -76,7 +76,7 @@ WITH ( WORKLOAD_GROUP = 'wgDataAnalyst'
 ![bottle-necked-wg](media/sql-data-warehouse-workload-management-portal-monitor/bottle-necked-wg.png) このグラフは、9% のリソースの上限に対してこのワークロード グループの使用率が 90% を超えていることを示しています ("*Workload group allocation by max resource percent (最大リソース割合別のワークロード グループの割り当て) メトリック*" より)。  "*Workload group queued queries (ワークロード グループのキューに登録されたクエリ) メトリック*" に示されているように、クエリが常にキューに登録されています。  この場合、`CAP_PERCENTAGE_RESOURCE` を大きくして 9% を超える値にすると、より多くのクエリを同時に実行できるようになります。  `CAP_PERCENTAGE_RESOURCE` を大きくする場合は、使用可能なリソースが十分にあり、他のワークロード グループによって分離されていないことが前提となります。  "*Effective cap resource percent (有効な上限リソース割合) メトリック*" を確認して、上限が引き上げられていることを確認します。  さらにスループットが必要な場合は、`REQUEST_MIN_RESOURCE_GRANT_PERCENT` を大きくして 3 を超える値にすることも検討してください。  `REQUEST_MIN_RESOURCE_GRANT_PERCENT` を大きくすると、クエリの実行速度が向上する可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
-[クイック スタート:T-SQL を使用してワークロードの分離を構成する](quickstart-configure-workload-isolation-tsql.md)<br>
+[クイック スタート: T-SQL を使用してワークロードの分離を構成する](quickstart-configure-workload-isolation-tsql.md)<br>
 [CREATE WORKLOAD GROUP (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)<br>
 [CREATE WORKLOAD CLASSIFIER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest)<br>
 [リソース使用率の監視](sql-data-warehouse-concept-resource-utilization-query-activity.md)

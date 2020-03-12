@@ -4,15 +4,15 @@ description: Azure Cosmos DB の Cotangent (COT) SQL システム関数で、数
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: f049d1295eef3e6a45abeaafe8c22d376f90abe1
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 25c907644f58ee40ea08e5636d68dc0e84564a28
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871501"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299489"
 ---
 # <a name="cot-azure-cosmos-db"></a>COT (Azure Cosmos DB)
  数値式で指定されたラジアン単位の角度の三角関数コタンジェントを返します。  
@@ -45,9 +45,12 @@ SELECT COT(124.1332) AS cot
 ```json
 [{"cot": -0.040311998371148884}]  
 ```  
-  
 
-## <a name="next-steps"></a>次の手順
+## <a name="remarks"></a>解説
+
+このシステム関数では、インデックスは使用されません。
+
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB の数学関数](sql-query-mathematical-functions.md)
 - [Azure Cosmos DB のシステム関数](sql-query-system-functions.md)

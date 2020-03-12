@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 772c16dc292d8bce4b927c9c2ce3ff6ee0ed399d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 827c76610162d74c5283177fef4989204321f44b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152127"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268693"
 ---
 # <a name="partition-and-sample-module"></a>Partition and Sample (パーティションとサンプル) モジュール
 
@@ -154,9 +154,9 @@ ms.locfileid: "77152127"
 
 5. 複数のパーティションを操作する場合は、**Partition and Sample (パーティションとサンプル)** モジュールのインスタンスをさらに追加して、各パーティションを処理する必要があります。
 
-    たとえば、年齢を使用して、以前に 4 つのフォールドに患者をパーティション分割したとします。 個々のフォールドを操作するには、**Partition and Sample (パーティションとサンプル)** モジュールの 4 つのコピーが必要になり、以下に示すように、それぞれに異なるフォールドを選択します。 **[Assign to Folds]\(フォールドに割り当てる\)** 出力を直接使用するのは適切ではありません。  
+    たとえば、2 番目の行の **Partition and Sample (パーティションとサンプル)** モジュールは、 **[Assign to Folds]\(フォールドに割り当てる\)** に設定され、3 番目の行のモジュールは **[Pick Fold]\(フォールドを選択する\)** に設定されます。   
 
-    [![パーティションとサンプル](./media/partition-and-sample/partition-and-sample.png)](./media/partition-and-sample/partition-and-sample-lg.png#lightbox)
+    ![パーティションとサンプル](./media/module/partition-and-sample.png)
 
 5. パイプラインを実行します。
 

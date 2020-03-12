@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2019
 ms.author: rogirdh
-ms.openlocfilehash: 63543c0ac34536b736bd4b8cdbd47fdd98e9f9be
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 0e2e16ccc04ff6df80597d646a00c40551e4cfd0
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802208"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302051"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Azure と Oracle Cloud Infrastructure 間の直接相互接続をセットアップする  
 
@@ -35,7 +35,7 @@ ms.locfileid: "71802208"
 
 * Azure と OCI 間の接続を確立するには、アクティブな Azure サブスクリプションとアクティブな OCI テナントが必要です。
 
-* 接続は、Azure ExpressRoute のピアリング場所が OCI FastConnect のピアリング場所に近接しているか、同じ場所にある場合にのみ可能です。 「[プレビューの制限事項](oracle-oci-overview.md#preview-limitations)」を参照してください。
+* 接続は、Azure ExpressRoute のピアリング場所が OCI FastConnect のピアリング場所に近接しているか、同じ場所にある場合にのみ可能です。 [利用可能なリージョン](oracle-oci-overview.md#region-availability)に関するページを参照してください。
 
 * お使いの Azure サブスクリプションでこのプレビュー機能を有効にする必要があります。
 
@@ -99,7 +99,7 @@ Microsoft では、ネットワーク相互接続の自動デプロイを有効�
 
 この時点で、削除とプロビジョニング解除のプロセスが完了します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * OCI と Azure 間のクロスクラウド接続の詳細については、[Oracle のドキュメント](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm)をご覧ください。
 * [Terraform スクリプト](https://aka.ms/azureociinterconnecttf)を使って、Azure で対象の Oracle アプリケーションのインフラストラクチャをデプロイし、ネットワークの相互接続を構成します。 

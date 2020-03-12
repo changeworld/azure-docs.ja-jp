@@ -1,5 +1,6 @@
 ---
-title: 構成管理 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
+title: Microsoft Threat Modeling Tool の構成管理
+titleSuffix: Azure
 description: Threat Modeling Tool で公開されている脅威への対応
 services: security
 documentationcenter: na
@@ -15,32 +16,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: fedf8118f5581056e40594419c17f074c339a61b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 3c89fae09583c96cf8139885fe2554cf6784b4e3
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161546"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269821"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>セキュリティ フレーム:構成管理 | 対応策 
-| 製品/サービス | 記事 |
+| 製品/サービス | [アーティクル] |
 | --------------- | ------- |
 | **Web アプリケーション** | <ul><li>[コンテンツ セキュリティ ポリシー (CSP) を実装し、インライン javascript を無効にする](#csp-js)</li><li>[ブラウザーの XSS フィルターを有効にする](#xss-filter)</li><li>[デプロイの前に ASP.NET アプリケーションでトレースおよびデバッグを無効にする](#trace-deploy)</li><li>[信頼できるソースのサード パーティ製 javascript にのみアクセスする](#js-trusted)</li><li>[認証された ASP.NET ページに、UI Redressing (クリックジャッキング) に対する防御が組み込まれていることを確認する](#ui-defenses)</li><li>[ASP.NET Web アプリケーションで CORS が有効になっている場合、信頼されたオリジンのみが許可されていることを確認する](#cors-aspnet)</li><li>[ASP.NET ページで ValidateRequest 属性を有効にする](#validate-aspnet)</li><li>[ローカルでホストされている最新の JavaScript ライブラリを使用する](#local-js)</li><li>[自動 MIME スニッフィングを無効にする](#mime-sniff)</li><li>[Windows Azure Web サイトで標準的なサーバー ヘッダーを削除して、フィンガープリントを残すことを回避する](#standard-finger)</li></ul> |
-| **データベース** | <ul><li>[データベース エンジンにアクセスできるように Windows ファイアウォールを構成する](#firewall-db)</li></ul> |
+| **[データベース]** | <ul><li>[データベース エンジン アクセスを有効にするための Windows ファイアウォールを構成する](#firewall-db)</li></ul> |
 | **Web API** | <ul><li>[ASP.NET Web API で CORS が有効になっている場合、信頼されたオリジンのみが許可されていることを確認する](#cors-api)</li><li>[機密データを含む Web API の構成ファイルのセクションを暗号化する](#config-sensitive)</li></ul> |
 | **IoT デバイス** | <ul><li>[強力な資格情報ですべての管理インターフェイスが保護されていることを確認する](#admin-strong)</li><li>[不明なコードがデバイスで実行できないことを確認する](#unknown-exe)</li><li>[BitLocker で OS と IoT デバイスの追加のパーティションを暗号化する](#partition-iot)</li><li>[デバイスで有効になっているのが最小サービス/機能のみであることを確認する](#min-enable)</li></ul> |
 | **IoT フィールド ゲートウェイ** | <ul><li>[BitLocker で OS と IoT フィールド ゲートウェイの追加のパーティションを暗号化する](#field-bit-locker)</li><li>[インストール中にフィールド ゲートウェイの既定のログイン資格情報が変更されていることを確認する](#default-change)</li></ul> |
 | **IoT クラウド ゲートウェイ** | <ul><li>[接続されているデバイスのファームウェアを最新の状態に保つためのプロセスが、クラウド ゲートウェイで実装されていることを確認する](#cloud-firmware)</li></ul> |
 | **コンピューターの信頼の境界** | <ul><li>[デバイスのエンドポイント セキュリティ制御が組織ポリシーに従って構成されていることを確認する](#controls-policies)</li></ul> |
-| **Azure Storage** | <ul><li>[Azure ストレージ アクセス キーの管理がセキュリティで保護されていることを確認する](#secure-keys)</li><li>[Azure Storage で CORS が有効になっている場合、信頼されたオリジンのみが許可されていることを確認する](#cors-storage)</li></ul> |
+| **Azure ストレージ** | <ul><li>[Azure ストレージ アクセス キーの管理がセキュリティで保護されていることを確認する](#secure-keys)</li><li>[Azure Storage で CORS が有効になっている場合、信頼されたオリジンのみが許可されていることを確認する](#cors-storage)</li></ul> |
 | **WCF** | <ul><li>[WCF のサービス調整機能を有効にする](#throttling)</li><li>[WCF - メタデータからの情報の漏えい](#info-metadata)</li></ul> | 
 
 ## <a id="csp-js"></a>コンテンツ セキュリティ ポリシー (CSP) を実装し、インライン javascript を無効にする
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [コンテンツ セキュリティ ポリシーの概要](https://www.html5rocks.com/en/tutorials/security/content-security-policy/)、[コンテンツ セキュリティ ポリシー リファレンス](https://content-security-policy.com/)、[セキュリティ機能](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/)、[コンテンツ セキュリティ ポリシーの概要](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy)、[CSP が使用可能か](https://caniuse.com/#feat=contentsecuritypolicy) |
@@ -71,8 +72,8 @@ Example: var str="alert(1)"; eval(str);
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [XSS 保護フィルター](https://www.owasp.org/index.php/List_of_useful_HTTP_headers#X-XSS-Protection) |
@@ -82,8 +83,8 @@ Example: var str="alert(1)"; eval(str);
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [ASP.NET デバッグの概要](https://msdn.microsoft.com/library/ms227556.aspx)、[ASP.NET トレースの概要](https://msdn.microsoft.com/library/bb386420.aspx)、[方法:ASP.NET アプリケーションのトレースを有効にする](https://msdn.microsoft.com/library/0x5wc973.aspx)、[方法:ASP.NET アプリケーションのデバッグを有効にする](https://msdn.microsoft.com/library/e8z01xdh(VS.80).aspx) |
@@ -93,8 +94,8 @@ Example: var str="alert(1)"; eval(str);
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -104,8 +105,8 @@ Example: var str="alert(1)"; eval(str);
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [OWASP: クリックジャッキング対策に関するチートシート](https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet)、[IE Internals - X-Frame-Options によるクリックジャッキングへの対応](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
@@ -139,8 +140,8 @@ X-FRAME-OPTIONS ヘッダーを設定するには、IIS web.config を使用し�
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | Web フォーム、MVC5 |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -170,8 +171,8 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://exampl
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | Web フォーム、MVC5 |
 | **属性**              | 該当なし  |
 | **参照**              | [要求の検証 - スクリプト攻撃の防止](https://www.asp.net/whitepapers/request-validation) |
@@ -196,8 +197,8 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://exampl
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -207,8 +208,8 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://exampl
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [IE8 のセキュリティ パート V:包括的な保護](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx)、[MIME タイプ](https://en.wikipedia.org/wiki/Mime_type) |
@@ -227,7 +228,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://exampl
 ```
 
 ### <a name="example"></a>例
-グローバルな Application\_BeginRequest を使用してヘッダーを追加します 
+グローバルな Application\_BeginRequest を使用してヘッダーを追加します。 
 ```csharp
 void Application_BeginRequest(object sender, EventArgs e)
 {
@@ -236,7 +237,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 ```
 
 ### <a name="example"></a>例
-カスタム HTTP モジュールを実装します 
+カスタム HTTP モジュールを実装します。 
 ```csharp
 public class XContentTypeOptionsModule : IHttpModule
 {
@@ -272,8 +273,8 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | EnvironmentType - Azure |
 | **参照**              | [Windows Azure Web サイトでの標準的なサーバー ヘッダーの削除](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/) |
@@ -283,8 +284,8 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Database | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | データベース | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | SQL Azure、OnPrem |
 | **属性**              | 該当なし、SQL バージョン - V12 |
 | **参照**              | [Azure SQL データベース ファイアウォールを構成する方法](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/)、[データベース エンジンにアクセスできるように Windows ファイアウォールを構成する](https://msdn.microsoft.com/library/ms175043) |
@@ -295,7 +296,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Web API | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | MVC 5 |
 | **属性**              | 該当なし  |
 | **参照**              | [ASP.NET Web API 2 でのクロス オリジン要求を有効にする](https://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api)、[ASP.NET Web API - ASP.NET Web API 2 における CORS サポート](https://msdn.microsoft.com/magazine/dn532203.aspx) |
@@ -391,7 +392,7 @@ public class ResourcesController : ApiController
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Web API | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | MVC 6 |
 | **属性**              | 該当なし  |
 | **参照**              | [ASP.NET Core 1.0 でのクロス オリジン要求 (CORS) の有効化](https://docs.asp.net/en/latest/security/cors.html) |
@@ -483,18 +484,18 @@ public void ConfigureServices(IServiceCollection services)
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Web API | 
-| **SDL フェーズ**               | Deployment |  
+| **SDL フェーズ**               | デプロイ |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [方法:DPAPI を使用して ASP.NET 2.0 内の構成セクションを暗号化する方法](https://msdn.microsoft.com/library/ff647398.aspx)、[保護された構成プロバイダーの指定](https://msdn.microsoft.com/library/68ze1hb2.aspx)、[Azure Key Vault を使用してアプリケーション シークレットを保護する](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
-| **手順** | Web.config、appsettings.json などの構成ファイルは、一般的に、ユーザー名、パスワード、データベース接続文字列、暗号化キーなどの機密情報の保持に使用されます。 この情報を保護しないと、アプリケーションは、アカウントのユーザー名とパスワード、データベース名、サーバー名などの機密情報を取得する、攻撃者や悪意のあるユーザーに対して脆弱になります。 構成ファイルの重要なセクションは、デプロイ タイプ (azure/on-prem) に基づいて、DPAPI または Azure Key Vault などのサービスを使用して暗号化してください。 |
+| **参照**              | [方法: DPAPI を使用して ASP.NET 2.0 内の構成セクションを暗号化する方法](https://msdn.microsoft.com/library/ff647398.aspx)、[保護された構成プロバイダーの指定](https://msdn.microsoft.com/library/68ze1hb2.aspx)、[Azure Key Vault を使用してアプリケーション シークレットを保護する](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
+| **手順** | Web.config、appsettings.json などの構成ファイルは、一般的に、ユーザー名、パスワード、データベース接続文字列、暗号化キーなどの機密情報の保持に使用されます。 この情報を保護しないと、アプリケーションは、アカウントのユーザー名とパスワード、データベース名、サーバー名などの機密情報を取得する、攻撃者や悪意のあるユーザーに対して脆弱になります。 構成ファイルの重要なセクションは、デプロイメント タイプ (azure/on-prem) に基づいて、DPAPI または Azure Key Vault などのサービスを使用して暗号化してください。 |
 
 ## <a id="admin-strong"></a>強力な資格情報ですべての管理インターフェイスが保護されていることを確認する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | IoT デバイス | 
-| **SDL フェーズ**               | Deployment |  
+| **SDL フェーズ**               | デプロイ |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -505,7 +506,7 @@ public void ConfigureServices(IServiceCollection services)
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | IoT デバイス | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [Windows 10 IoT Core でのセキュア ブートと BitLocker デバイス暗号化の有効化](https://docs.microsoft.com/windows/iot-core/secure-your-device/securebootandbitlocker) |
@@ -516,7 +517,7 @@ public void ConfigureServices(IServiceCollection services)
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | IoT デバイス | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -527,7 +528,7 @@ public void ConfigureServices(IServiceCollection services)
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | IoT デバイス | 
-| **SDL フェーズ**               | Deployment |  
+| **SDL フェーズ**               | デプロイ |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -538,7 +539,7 @@ public void ConfigureServices(IServiceCollection services)
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | IoT フィールド ゲートウェイ | 
-| **SDL フェーズ**               | Deployment |  
+| **SDL フェーズ**               | デプロイ |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -549,7 +550,7 @@ public void ConfigureServices(IServiceCollection services)
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | IoT フィールド ゲートウェイ | 
-| **SDL フェーズ**               | Deployment |  
+| **SDL フェーズ**               | デプロイ |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -560,7 +561,7 @@ public void ConfigureServices(IServiceCollection services)
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | IoT クラウド ゲートウェイ | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | ゲートウェイの選択 - Azure IoT Hub |
 | **参照**              | [IoT Hub を使用したデバイス管理の概要](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/)、[デバイス ファームウェアの更新方法](../../iot-hub/tutorial-firmware-update.md) |
@@ -571,7 +572,7 @@ public void ConfigureServices(IServiceCollection services)
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | コンピューターの信頼の境界 | 
-| **SDL フェーズ**               | Deployment |  
+| **SDL フェーズ**               | デプロイ |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -582,7 +583,7 @@ public void ConfigureServices(IServiceCollection services)
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Azure Storage | 
-| **SDL フェーズ**               | Deployment |  
+| **SDL フェーズ**               | デプロイ |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [Azure Storage セキュリティ ガイド - ストレージ アカウント キーの管理](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_managing-your-storage-account-keys) |
@@ -593,7 +594,7 @@ public void ConfigureServices(IServiceCollection services)
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Azure Storage | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [Azure Storage サービスの CORS のサポート](https://msdn.microsoft.com/library/azure/dn535601.aspx) |
@@ -604,7 +605,7 @@ public void ConfigureServices(IServiceCollection services)
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | WCF | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | .NET Framework 3 |
 | **属性**              | 該当なし  |
 | **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com) |
@@ -627,7 +628,7 @@ public void ConfigureServices(IServiceCollection services)
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | WCF | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | .NET Framework 3 |
 | **属性**              | 該当なし  |
 | **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com) |

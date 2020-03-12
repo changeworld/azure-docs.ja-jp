@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor のカスタマー マネージド キーの構成
 description: カスタマー マネージド キー (CMK) を、Azure Key Vault キーを使用して Log Analytics ワークスペースのデータを暗号化するように構成するための情報と手順。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 02/24/2020
-ms.openlocfilehash: 2ea77be0a7aabefaf8f6ed9a5bd841ea1fdda263
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: b3e110766b2e131330f3108b7938e9e5e01e48a4
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620307"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208561"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Monitor のカスタマー マネージド キーの構成 
 
@@ -185,7 +184,7 @@ Authorization: Bearer <token>
   "identity": {
     "type": "SystemAssigned",
     "tenantId": "tenant-id",
-    "principalId": "principal-Id"
+    "principalId": "principal-id"
     },
   "properties": {
     "provisioningState": "Succeeded",
@@ -199,10 +198,10 @@ Authorization: Bearer <token>
   }
 ```
 
-"principalId" は、*クラスター* リソースのマネージド ID サービスによって生成される GUID です。
+"principal-id" は、"*クラスター*" リソースのマネージド ID サービスによって生成される GUID です。
 
 > [!IMPORTANT]
-> "cluster-id" の値は、次の手順で必要になるため、コピーして保持します。
+> "principal-id" の値は、次の手順で必要になるため、コピーして保持します。
 
 
 ### <a name="grant-key-vault-permissions"></a>Key Vault アクセス許可を付与する
@@ -214,7 +213,7 @@ Authorization: Bearer <token>
 Azure portal で Key Vault を開き、[アクセス ポリシー]、[+ アクセス ポリシーの追加] の順にクリックして、次の設定で新しいポリシーを作成します。
 
 - [キーのアクセス許可]: [取得]、[キーを折り返す]、および [キーの折り返しを解除] の各アクセス許可を選択します。
-- [プリンシパルの選択]: 前の手順の応答で返された cluster-id 値 を入力します。
+- [プリンシパルの選択]: 前の手順の応答で返された principal-id 値を入力します。
 
 ![Key Vault アクセス許可の付与](media/customer-managed-keys/grant-key-vault-permissions.png)
 
@@ -529,10 +528,10 @@ ID は、作成時に*クラスター* リソースに割り当てられます�
   "location": "region-name"
 }
 ```
-"principalId" は、マネージド ID サービスによって生成された GUID です。
+"principle-id" は、マネージド ID サービスによって生成された GUID です。
 
 > [!IMPORTANT]
-> "cluster-id" の値は、次の手順で必要になるため、コピーして保持します。
+> "principle-id" の値は、次の手順で必要になるため、コピーして保持します。
 
 ### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>[コンポーネント - 作成または更新](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate) API を使用してコンポーネントを*クラスター* リソースに関連付ける
 
